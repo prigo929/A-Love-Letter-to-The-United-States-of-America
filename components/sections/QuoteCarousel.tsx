@@ -86,11 +86,7 @@ export function QuoteCarousel() {
     >
       {/* Background texture */}
       <div
-        className="absolute inset-0 opacity-10 pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cpolygon points='30,3 36,21 57,21 40,33 46,54 30,42 14,54 20,33 3,21 24,21' fill='rgba(255,215,0,0.2)'/%3E%3C/svg%3E")`,
-          backgroundSize: '120px 120px',
-        }}
+        className="absolute inset-0 opacity-10 pointer-events-none bg-star-pattern-quote"
         aria-hidden="true"
       />
 

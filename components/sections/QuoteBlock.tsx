@@ -104,7 +104,7 @@ export function QuoteBlock({
             {year && <span className="font-normal opacity-60 ml-1">({year})</span>}
           </cite>
           {role && (
-            <span className={cn('text-sm font-body', isDark ? 'text-white/60' : 'text-gray-500')}>
+            <span className={cn('text-sm font-body', isDark ? 'text-white/60' : 'light-surface-copy-soft')}>
               {role}
             </span>
           )}

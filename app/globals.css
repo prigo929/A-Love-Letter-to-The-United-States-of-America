@@ -126,7 +126,12 @@
 
   /* ── Gradient text ───────────────────────────────────────────────────── */
   .text-gradient-gold {
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-glory-gold) 0%,
+      var(--color-glory-gold-dark) 50%,
+      var(--color-glory-gold) 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -135,10 +140,110 @@
   }
 
   .text-gradient-glory {
-    background: linear-gradient(135deg, #B22234 0%, #FFD700 50%, #3C3B6E 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-glory-red) 0%,
+      var(--color-glory-gold) 50%,
+      var(--color-glory-blue) 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  .hero-overlay-gradient {
+    background: linear-gradient(
+      135deg,
+      rgba(10, 10, 30, 0.9) 0%,
+      rgba(60, 59, 110, 0.7) 40%,
+      rgba(139, 26, 38, 0.6) 100%
+    );
+  }
+
+  .hero-bottom-fade {
+    background: linear-gradient(to bottom, transparent, var(--color-navy-dark));
+  }
+
+  .hero-title-shell {
+    font-size: clamp(56px, 11vw, 148px);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .hero-title-top,
+  .hero-title-bottom {
+    display: block;
+    color: #fff;
+    text-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.6),
+      0 12px 40px rgba(0, 0, 0, 0.8);
+  }
+
+  .hero-title-middle {
+    display: block;
+    line-height: 1.1;
+    margin: 0.05em 0;
+    font-weight: 900;
+    background: linear-gradient(
+      90deg,
+      var(--color-glory-red) 0%,
+      var(--color-glory-red) 25%,
+      #ffffff 45%,
+      #ffffff 55%,
+      var(--color-glory-blue) 75%,
+      var(--color-glory-blue) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.7));
+  }
+
+  .hero-star-small {
+    @apply h-3 w-3 opacity-60;
+  }
+
+  .hero-star-large {
+    @apply h-5 w-5 opacity-100;
+  }
+
+  .bg-opening-noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  }
+
+  .bg-star-pattern-grid {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpolygon points='20,2 24,14 38,14 27,22 31,36 20,28 9,36 13,22 2,14 16,14' fill='rgba(255,215,0,0.06)'/%3E%3C/svg%3E");
+    background-size: 80px 80px;
+  }
+
+  .bg-star-pattern-quote {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cpolygon points='30,3 36,21 57,21 40,33 46,54 30,42 14,54 20,33 3,21 24,21' fill='rgba(255,215,0,0.2)'/%3E%3C/svg%3E");
+    background-size: 120px 120px;
+  }
+
+  .bg-star-pattern-sm {
+    background-image: var(--tw-bg-star-pattern);
+    background-size: 40px 40px;
+  }
+
+  .light-surface-copy {
+    @apply text-navy-mid/70;
+  }
+
+  .light-surface-copy-soft {
+    @apply text-navy-mid/55;
+  }
+
+  .light-surface-field {
+    @apply bg-white border-parchment-dark text-navy-dark placeholder:text-navy-mid/40 focus:border-glory-gold;
+  }
+
+  .light-surface-icon {
+    @apply text-navy-mid/45;
+  }
+
+  .card-hover-shadow {
+    box-shadow: 0 16px 48px rgba(13, 17, 23, 0.14);
   }
 
   /* ── Glass morphism ──────────────────────────────────────────────────── */
@@ -208,5 +313,25 @@
     );
     background-size: 200% 100%;
     animation: shimmer 1.5s linear infinite;
+  }
+
+  .motion-delay-0 {
+    transition-delay: 0ms;
+  }
+
+  .motion-delay-40 {
+    transition-delay: 40ms;
+  }
+
+  .motion-delay-80 {
+    transition-delay: 80ms;
+  }
+
+  .motion-delay-120 {
+    transition-delay: 120ms;
+  }
+
+  .motion-delay-160 {
+    transition-delay: 160ms;
   }
 }

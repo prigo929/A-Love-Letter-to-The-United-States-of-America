@@ -7,7 +7,7 @@
 import { motion } from 'framer-motion'
 import { staggerFast, fadeUp } from '@/lib/animations'
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
-import { KEY_STATS } from '@/lib/constants'
+import { HOME_COPY, KEY_STATS } from '@/lib/data/home'
 import { cn } from '@/lib/utils'
 
 export function StatBar() {
@@ -15,8 +15,7 @@ export function StatBar() {
     <section className="bg-navy-dark border-y border-white/10 relative overflow-hidden">
       {/* Star pattern background */}
       <div
-        className="absolute inset-0 opacity-30"
-        style={{ backgroundImage: 'var(--tw-bg-star-pattern)', backgroundSize: '40px 40px' }}
+        className="absolute inset-0 opacity-30 bg-star-pattern-sm"
         aria-hidden="true"
       />
 
@@ -65,9 +64,7 @@ export function StatBar() {
         </motion.div>
 
         {/* Source line */}
-        <p className="text-center font-body text-xs text-white/25 mt-4">
-          Sources: World Bank, SIPRI, NPS, Nobel Foundation, DoD — 2024 data
-        </p>
+        <p className="text-center font-body text-xs text-white/25 mt-4">{HOME_COPY.statSources}</p>
       </div>
     </section>
   )

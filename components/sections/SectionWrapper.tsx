@@ -15,10 +15,10 @@ interface SectionWrapperProps {
 }
 
 const variantStyles: Record<SectionVariant, string> = {
-  light:    'bg-white text-gray-900',
+  light:    'bg-white text-navy-dark',
   dark:     'bg-navy-mid text-white',
   navy:     'bg-navy-dark text-white',
-  parchment:'bg-parchment text-gray-900',
+  parchment:'bg-parchment text-navy-dark',
   glory:    'bg-glory-gradient text-white',
 }
 

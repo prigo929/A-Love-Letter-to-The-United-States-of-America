@@ -215,21 +215,19 @@ export const cardHover = {
   rest: {
     scale: 1,
     y: 0,
-    boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
     transition: { duration: 0.3, ease: 'easeOut' },
   },
   hover: {
     scale: 1.02,
     y: -4,
-    boxShadow: '0 16px 48px rgba(0,0,0,0.14)',
     transition: { duration: 0.3, ease: 'easeOut' },
   },
 }
 
 /** Button hover fill effect */
 export const buttonFill = {
-  rest:  { width: '0%' },
-  hover: { width: '100%', transition: { duration: 0.35, ease: 'easeOut' } },
+  rest:  { scaleX: 0, originX: 0 },
+  hover: { scaleX: 1, originX: 0, transition: { duration: 0.35, ease: 'easeOut' } },
 }
 
 // ─── Navigation ───────────────────────────────────────────────────────────────

@@ -15,10 +15,7 @@ export function OpeningStatement() {
     <section className="bg-parchment relative overflow-hidden" aria-labelledby="opening-heading">
       {/* Decorative noise texture overlay */}
       <div
-        className="absolute inset-0 opacity-40 pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E")`,
-        }}
+        className="absolute inset-0 opacity-40 pointer-events-none bg-opening-noise"
         aria-hidden="true"
       />
 
@@ -71,17 +68,17 @@ export function OpeningStatement() {
 
           {/* Body text */}
           <motion.div variants={fadeUp} className="max-w-2xl space-y-5 text-left md:text-center">
-            <p className="font-body text-lg text-gray-700 leading-relaxed">
+            <p className="font-body text-lg light-surface-copy leading-relaxed">
               This is not nationalism. This is not propaganda. These are <strong>facts</strong> — 
-              backed by data from the World Bank, Nobel Foundation, SIPRI, and every major 
+              backed by data from the World Bank, Nobel Foundation, OECD, and every major 
               international institution that measures human achievement.
             </p>
-            <p className="font-body text-lg text-gray-700 leading-relaxed">
+            <p className="font-body text-lg light-surface-copy leading-relaxed">
               From the Grand Canyon to the semiconductor chip. From the Declaration of 
               Independence to the iPhone. From jazz in New Orleans to a man walking on the Moon. 
               America's story is humanity's greatest story.
             </p>
-            <p className="font-body text-lg text-gray-700 leading-relaxed">
+            <p className="font-body text-lg light-surface-copy leading-relaxed">
               This is that story. Told in full. Told with pride.
             </p>
           </motion.div>
