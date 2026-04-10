@@ -18,7 +18,7 @@ interface CardProps {
 }
 
 const variantStyles = {
-  default: 'bg-white text-gray-900 border border-gray-100 shadow-card',
+  default: 'bg-white text-navy-dark border border-parchment-dark shadow-card',
   dark:    'bg-navy-light text-white border border-white/10',
   navy:    'bg-navy-mid text-white border border-white/5',
   gold:    'bg-glory-gold text-navy-dark border-2 border-glory-gold shadow-gold',
@@ -49,7 +49,7 @@ export function Card({
     'rounded-2xl overflow-hidden',
     variantStyles[variant],
     paddingStyles[padding],
-    hover && 'transition-all duration-300 cursor-pointer',
+    hover && 'transition-all duration-300 cursor-pointer hover:card-hover-shadow',
     className
   )
 
@@ -61,7 +61,6 @@ export function Card({
         whileHover={{
           y: -4,
           scale: 1.01,
-          boxShadow: '0 16px 48px rgba(0,0,0,0.14)',
         }}
         transition={{ duration: 0.25, ease: 'easeOut' }}
       >

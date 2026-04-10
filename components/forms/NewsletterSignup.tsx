@@ -69,7 +69,7 @@ export function NewsletterSignup({ variant = 'dark', className }: NewsletterSign
             <p className={cn('font-display text-xl font-semibold', isDark ? 'text-white' : 'text-navy-dark')}>
               Welcome, Patriot!
             </p>
-            <p className={cn('font-body text-sm', isDark ? 'text-white/60' : 'text-gray-500')}>
+            <p className={cn('font-body text-sm', isDark ? 'text-white/60' : 'light-surface-copy-soft')}>
               You're now part of a community celebrating the greatest nation on Earth.
             </p>
           </motion.div>
@@ -89,7 +89,7 @@ export function NewsletterSignup({ variant = 'dark', className }: NewsletterSign
                 <Mail
                   className={cn(
                     'absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none',
-                    isDark ? 'text-white/40' : 'text-gray-400'
+                    isDark ? 'text-white/40' : 'light-surface-icon'
                   )}
                   aria-hidden="true"
                 />
@@ -104,7 +104,7 @@ export function NewsletterSignup({ variant = 'dark', className }: NewsletterSign
                     'focus:outline-none focus:ring-2 focus:ring-glory-gold/50',
                     isDark
                       ? 'bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-glory-gold'
-                      : 'bg-white border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-glory-gold',
+                      : 'light-surface-field',
                     errors.email && 'border-glory-red focus:ring-glory-red/30'
                   )}
                   aria-invalid={!!errors.email}
@@ -154,7 +154,7 @@ export function NewsletterSignup({ variant = 'dark', className }: NewsletterSign
               )}
             </AnimatePresence>
 
-            <p className={cn('font-body text-xs mt-3', isDark ? 'text-white/30' : 'text-gray-400')}>
+            <p className={cn('font-body text-xs mt-3', isDark ? 'text-white/30' : 'light-surface-copy-soft')}>
               No spam. Unsubscribe anytime. We celebrate America, not your inbox.
             </p>
           </motion.form>

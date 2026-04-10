@@ -21,7 +21,7 @@ const variantStyles: Record<BadgeVariant, string> = {
   blue:    'bg-glory-blue/20 text-glory-blue-light border border-glory-blue/30',
   white:   'bg-white/15 text-white border border-white/25',
   glass:   'bg-white/10 backdrop-blur-sm text-white border border-white/20',
-  success: 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/25',
+  success: 'bg-glory-blue/20 text-glory-gold border border-glory-blue/30',
 }
 
 const sizeStyles: Record<BadgeSize, string> = {
@@ -36,7 +36,7 @@ const dotColors: Record<BadgeVariant, string> = {
   blue:    'bg-glory-blue-light',
   white:   'bg-white',
   glass:   'bg-white',
-  success: 'bg-emerald-400',
+  success: 'bg-glory-gold',
 }
 
 export function Badge({

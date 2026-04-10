@@ -7,17 +7,14 @@ import { motion } from 'framer-motion'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 import { NavigationCard } from '@/components/sections/NavigationCard'
 import { NAV_SECTIONS } from '@/lib/constants'
+import { HOME_COPY } from '@/lib/data/home'
 
 export function SectionGrid() {
   return (
     <section className="bg-navy-dark relative" aria-labelledby="sections-heading">
       {/* Star pattern bg */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-20"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpolygon points='20,2 24,14 38,14 27,22 31,36 20,28 9,36 13,22 2,14 16,14' fill='rgba(255,215,0,0.06)'/%3E%3C/svg%3E")`,
-          backgroundSize: '80px 80px',
-        }}
+        className="absolute inset-0 pointer-events-none opacity-20 bg-star-pattern-grid"
         aria-hidden="true"
       />
 
@@ -41,8 +38,7 @@ export function SectionGrid() {
             Explore Every Dimension
           </motion.h2>
           <motion.p variants={fadeUp} className="font-body text-lg text-white/60 max-w-2xl mx-auto">
-            From its $28.8 trillion economy to 63 national parks. From the Constitution 
-            to the semiconductor. Every chapter of America's extraordinary story.
+            {HOME_COPY.sectionGridSummary}
           </motion.p>
         </motion.div>
 

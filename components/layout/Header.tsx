@@ -17,6 +17,13 @@ import { cn } from '@/lib/utils'
 
 // Top-level nav labels (subset shown in header)
 const PRIMARY_NAV = NAV_SECTIONS.slice(0, 6)  // Economy → Innovation
+const LOGO_STAR_DELAY_CLASSES = [
+  'motion-delay-0',
+  'motion-delay-40',
+  'motion-delay-80',
+  'motion-delay-120',
+  'motion-delay-160',
+] as const
 
 export function Header() {
   const [scrolled,    setScrolled]    = useState(false)
@@ -77,11 +84,10 @@ export function Header() {
                   <Star
                     key={i}
                     className={cn(
-                      'transition-all duration-300',
-                      i < 0 ? 'w-3 h-3 fill-glory-gold text-glory-gold' : 'w-3 h-3 fill-glory-gold/60 text-glory-gold/60',
+                      'w-3 h-3 fill-glory-gold/60 text-glory-gold/60 transition-all duration-300',
+                      LOGO_STAR_DELAY_CLASSES[i],
                       'group-hover:fill-glory-gold group-hover:text-glory-gold group-hover:scale-110'
                     )}
-                    style={{ transitionDelay: `${i * 40}ms` }}
                     aria-hidden="true"
                   />
                 ))}
@@ -280,7 +286,6 @@ export function Header() {
                           ? 'bg-glory-gold/15 text-glory-gold'
                           : 'text-white/80 hover:bg-white/10 hover:text-white'
                       )}
-                      style={{ animationDelay: `${i * 50}ms` }}
                     >
                       {section.title}
                       {'badge' in section && (

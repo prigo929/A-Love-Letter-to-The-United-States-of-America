@@ -6,8 +6,8 @@ import { twMerge } from 'tailwind-merge'
  * Combines clsx + tailwind-merge so Tailwind classes compose cleanly
  * without specificity conflicts.
  *
- * Usage: cn('px-4 py-2', condition && 'bg-red-500', 'px-6')
- *   → 'py-2 bg-red-500 px-6'  (px-6 overrides px-4)
+ * Usage: cn('px-4 py-2', condition && 'bg-glory-red', 'px-6')
+ *   → 'py-2 bg-glory-red px-6'  (px-6 overrides px-4)
  */
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
