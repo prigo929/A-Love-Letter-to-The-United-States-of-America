@@ -106,29 +106,29 @@ export function HeroSection() {
   }, [])
 
   const images = HERO_IMAGES.map((img) => ({
-    src: `https://images.unsplash.com/${img.unsplash}?q=85&w=1920&auto=format&fit=crop`,
+    src:
+      "src" in img
+        ? img.src
+        : `https://images.unsplash.com/${img.unsplash}?q=85&w=1920&auto=format&fit=crop`,
     alt: img.alt,
   }))
 
   return (
     <div
       ref={containerRef}
-      className="relative min-h-screen-safe flex flex-col items-center justify-center overflow-hidden bg-navy-dark"
+      className="relative min-h-screen-safe flex flex-col items-center justify-center overflow-hidden bg-navy-dark pt-24 md:pt-28 lg:pt-32"
       role="banner"
       aria-label="America: The Greatest Nation hero section"
     >
       {/* ── Background Image Carousel ──────────────────────────────────────── */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{ y: bgY }}
-      >
+      <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         <AnimatePresence>
           <motion.div
             key={currentImage}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 2, ease: 'easeInOut' }}
+            transition={{ duration: 2, ease: "easeInOut" }}
             className="absolute inset-0"
           >
             <Image
@@ -150,7 +150,8 @@ export function HeroSection() {
       <div
         className="absolute inset-0 z-[1]"
         style={{
-          background: 'linear-gradient(135deg, rgba(10,10,30,0.90) 0%, rgba(60,59,110,0.70) 40%, rgba(139,26,38,0.60) 100%)',
+          background:
+            "linear-gradient(135deg, rgba(10,10,30,0.90) 0%, rgba(60,59,110,0.70) 40%, rgba(139,26,38,0.60) 100%)",
         }}
         aria-hidden="true"
       />
@@ -158,7 +159,9 @@ export function HeroSection() {
       {/* Bottom fade into next section */}
       <div
         className="absolute bottom-0 left-0 right-0 h-40 z-[2]"
-        style={{ background: 'linear-gradient(to bottom, transparent, #0d1117)' }}
+        style={{
+          background: "linear-gradient(to bottom, transparent, #0d1117)",
+        }}
         aria-hidden="true"
       />
 
@@ -191,26 +194,57 @@ export function HeroSection() {
           {/* Main title — BEBAS NEUE */}
           <motion.h1
             variants={heroTitle}
-            className="font-hero leading-none text-white text-balance"
+            className="font-hero leading-none text-center"
             style={{
-              fontSize: 'clamp(56px, 11vw, 148px)',
-              letterSpacing: '0.04em',
-              textShadow: '0 4px 40px rgba(0,0,0,0.6)',
+              fontSize: "clamp(56px, 11vw, 148px)",
+              letterSpacing: "0.02em",
+              fontFamily: '"Archivo Black", system-ui, sans-serif',
+              textTransform: "uppercase",
             }}
           >
-            THE UNITED<br />
+            {/* THE UNITED - Crisp White with Deep Cinematic Shadow */}
             <span
               style={{
-                background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 60%, #FFD700 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                display: "block",
+                color: "#FFFFFF",
+                textShadow:
+                  "0 4px 12px rgba(0,0,0,0.6), 0 12px 40px rgba(0,0,0,0.8)",
+              }}
+            >
+              THE UNITED
+            </span>
+
+            {/* STATES - CSS-Only Red, White, and Blue Sweep */}
+            <span
+              style={{
+                display: "block",
+                fontWeight: 900,
+                /* Smooth gradient using official US Flag colors */
+                background:
+                  "linear-gradient(90deg, #B31942 0%, #B31942 25%, #FFFFFF 45%, #FFFFFF 55%, #0A3161 75%, #0A3161 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                /* Using drop-shadow on the element so the gradient shadow doesn't clip */
+                filter: "drop-shadow(0px 8px 16px rgba(0,0,0,0.7))",
+                margin: "0.05em 0",
+                lineHeight: "1.1",
               }}
             >
               STATES
             </span>
-            <br />
-            OF AMERICA
+
+            {/* OF AMERICA - Matching Top Text */}
+            <span
+              style={{
+                display: "block",
+                color: "#FFFFFF",
+                textShadow:
+                  "0 4px 12px rgba(0,0,0,0.6), 0 12px 40px rgba(0,0,0,0.8)",
+              }}
+            >
+              OF AMERICA
+            </span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -232,7 +266,7 @@ export function HeroSection() {
                 key={i}
                 className="text-glory-gold fill-glory-gold"
                 style={{
-                  width:  i === 6 ? 20 : 12,
+                  width: i === 6 ? 20 : 12,
                   height: i === 6 ? 20 : 12,
                   opacity: i === 6 ? 1 : 0.6,
                 }}
@@ -269,8 +303,8 @@ export function HeroSection() {
                 onClick={() => setCurrentImage(i)}
                 className={`h-0.5 rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-glory-gold ${
                   i === currentImage
-                    ? 'w-8 bg-glory-gold'
-                    : 'w-3 bg-white/40 hover:bg-white/70'
+                    ? "w-8 bg-glory-gold"
+                    : "w-3 bg-white/40 hover:bg-white/70"
                 }`}
               />
             ))}
@@ -287,14 +321,16 @@ export function HeroSection() {
         style={{ opacity }}
         aria-hidden="true"
       >
-        <span className="font-body text-xs text-white/40 tracking-widest uppercase">Scroll</span>
+        <span className="font-body text-xs text-white/40 tracking-widest uppercase">
+          Scroll
+        </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
           <ChevronDown className="w-5 h-5 text-glory-gold" />
         </motion.div>
       </motion.div>
     </div>
-  )
+  );
 }

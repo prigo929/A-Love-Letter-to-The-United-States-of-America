@@ -1,3 +1,4 @@
+import path from 'path'
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
@@ -9,6 +10,12 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com',
         pathname: '/**',
+      },
+      {
+        // Unsplash photo and download pages
+        protocol: 'https',
+        hostname: 'unsplash.com',
+        pathname: '/photos/**',
       },
       {
         // Pexels images
@@ -25,9 +32,16 @@ const nextConfig: NextConfig = {
     ],
     // Prefer WebP/AVIF for smaller file sizes
     formats: ['image/avif', 'image/webp'],
+    // Allow the quality levels used by next/image in this app
+    qualities: [75, 85],
     // Device breakpoints for responsive images
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+
+  // ─── Turbopack ───────────────────────────────────────────────────
+  turbopack: {
+    root: path.resolve(__dirname),
   },
 
   // ─── Compiler ────────────────────────────────────────────────────
@@ -69,12 +83,6 @@ const nextConfig: NextConfig = {
         ],
       },
     ]
-  },
-
-  // ─── Experimental ────────────────────────────────────────────────
-  experimental: {
-    // Optimize packages for server components
-    optimizePackageImports: ['lucide-react', 'recharts', 'framer-motion'],
   },
 
   // ─── Redirects ───────────────────────────────────────────────────

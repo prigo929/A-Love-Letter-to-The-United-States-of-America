@@ -66,7 +66,7 @@ export const NAV_SECTIONS = [
     title: 'Military',
     href:  '/military',
     description: 'The most powerful military in the history of civilization',
-    imageSrc: 'https://images.unsplash.com/photo-1508189860359-777d945909ef?q=80&w=800&auto=format&fit=crop',
+    imageSrc: 'https://unsplash.com/photos/ZiLJnc_iR90/download?force=true&w=800',
     badge: '$886B Budget',
     items: [
       { label: 'Overview',       href: '/military',                description: '$886B budget, 1.3M active duty' },
@@ -249,8 +249,8 @@ export const HERO_IMAGES = [
   },
   {
     id:       'aircraft-carrier',
-    unsplash: 'photo-1508189860359-777d945909ef',
-    alt:      'US Navy aircraft carrier at sea, projecting power across the ocean',
+    src:      'https://unsplash.com/photos/ZiLJnc_iR90/download?force=true&w=1920',
+    alt:      'US Air Force cargo plane on the tarmac, ready for rapid deployment',
   },
   {
     id:       'silicon-valley',

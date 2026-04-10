@@ -78,7 +78,7 @@ export function Header() {
                     key={i}
                     className={cn(
                       'transition-all duration-300',
-                      i < 3 ? 'w-3 h-3 fill-glory-gold text-glory-gold' : 'w-2 h-2 fill-glory-gold/60 text-glory-gold/60',
+                      i < 0 ? 'w-3 h-3 fill-glory-gold text-glory-gold' : 'w-3 h-3 fill-glory-gold/60 text-glory-gold/60',
                       'group-hover:fill-glory-gold group-hover:text-glory-gold group-hover:scale-110'
                     )}
                     style={{ transitionDelay: `${i * 40}ms` }}
