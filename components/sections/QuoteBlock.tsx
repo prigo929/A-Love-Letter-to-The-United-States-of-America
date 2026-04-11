@@ -10,6 +10,7 @@ interface QuoteBlockProps {
   quote:        string
   attribution:  string
   role?:        string
+  title?:       string
   year?:        number
   imageSrc?:    string
   imageAlt?:    string
@@ -28,6 +29,7 @@ export function QuoteBlock({
   quote,
   attribution,
   role,
+  title,
   year,
   imageSrc,
   imageAlt,
@@ -36,6 +38,7 @@ export function QuoteBlock({
   className,
 }: QuoteBlockProps) {
   const isDark = variant === 'dark'
+  const subtitle = role ?? title
 
   return (
     <motion.blockquote
@@ -103,9 +106,9 @@ export function QuoteBlock({
             — {attribution}
             {year && <span className="font-normal opacity-60 ml-1">({year})</span>}
           </cite>
-          {role && (
+          {subtitle && (
             <span className={cn('text-sm font-body', isDark ? 'text-white/60' : 'light-surface-copy-soft')}>
-              {role}
+              {subtitle}
             </span>
           )}
         </div>
