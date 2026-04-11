@@ -1,17 +1,23 @@
-'use client'
+"use client";
 
 // ─── Newsletter Section (Home Page) ──────────────────────────────────────────
 
-import { motion } from 'framer-motion'
-import { fadeUp, staggerContainer } from '@/lib/animations'
-import { NewsletterSignup } from '@/components/forms/NewsletterSignup'
-import { Star } from 'lucide-react'
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer } from "@/lib/animations";
+import { NewsletterSignup } from "@/components/forms/NewsletterSignup";
+import { Star } from "lucide-react";
 
 export function NewsletterSection() {
   return (
-    <section className="bg-navy-mid relative overflow-hidden py-24 md:py-32" aria-labelledby="newsletter-heading">
+    <section
+      className="bg-navy-mid relative overflow-hidden py-24 md:py-32"
+      aria-labelledby="newsletter-heading"
+    >
       {/* Red/gold accent lines */}
-      <div className="absolute top-0 left-0 right-0 h-1 flex" aria-hidden="true">
+      <div
+        className="absolute top-0 left-0 right-0 h-1 flex"
+        aria-hidden="true"
+      >
         <div className="flex-1 bg-glory-red" />
         <div className="w-24 bg-glory-gold" />
         <div className="flex-1 bg-glory-blue" />
@@ -22,12 +28,19 @@ export function NewsletterSection() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col items-center gap-6"
         >
-          <motion.div variants={fadeUp} className="flex gap-1.5" aria-hidden="true">
+          <motion.div
+            variants={fadeUp}
+            className="flex gap-1.5"
+            aria-hidden="true"
+          >
             {[...Array(3)].map((_, i) => (
-              <Star key={i} className="w-5 h-5 fill-glory-gold text-glory-gold" />
+              <Star
+                key={i}
+                className="w-5 h-5 fill-glory-gold text-glory-gold"
+              />
             ))}
           </motion.div>
 
@@ -39,8 +52,11 @@ export function NewsletterSection() {
             Join the Celebration
           </motion.h2>
 
-          <motion.p variants={fadeUp} className="font-body text-lg text-white/60 max-w-md leading-relaxed">
-            Get updates on new content celebrating America's achievements — from 
+          <motion.p
+            variants={fadeUp}
+            className="font-body text-lg text-white/60 max-w-md leading-relaxed"
+          >
+            Get updates on new content celebrating America's achievements — from
             economic milestones to scientific breakthroughs to natural wonders.
           </motion.p>
 
@@ -50,5 +66,5 @@ export function NewsletterSection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

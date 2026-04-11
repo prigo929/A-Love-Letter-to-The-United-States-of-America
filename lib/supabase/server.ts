@@ -2,9 +2,9 @@
 // Use this in Server Components, Server Actions, and Route Handlers.
 // NEVER import this in Client Components.
 
-import { createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
-import type { Database } from '@/types/database.types'
+import { createServerClient } from "@supabase/ssr";
+import { cookies } from "next/headers";
+import type { Database } from "@/types/database.types";
 
 /**
  * Creates a Supabase client for Server Components.
@@ -12,7 +12,7 @@ import type { Database } from '@/types/database.types'
  * Call this inside async Server Components or Server Actions.
  */
 export async function getSupabaseServerClient() {
-  const cookieStore = await cookies()
+  const cookieStore = await cookies();
 
   return createServerClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -20,21 +20,21 @@ export async function getSupabaseServerClient() {
     {
       cookies: {
         getAll() {
-          return cookieStore.getAll()
+          return cookieStore.getAll();
         },
         setAll(cookiesToSet) {
           try {
             cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options)
-            )
+              cookieStore.set(name, value, options),
+            );
           } catch {
             // setAll is called from a Server Component — cookies can't be
             // mutated there. The middleware handles session refresh instead.
           }
         },
       },
-    }
-  )
+    },
+  );
 }
 
 /**
@@ -43,7 +43,7 @@ export async function getSupabaseServerClient() {
  * NEVER expose the service role key to the browser.
  */
 export function getSupabaseAdminClient() {
-  const { createClient } = require('@supabase/supabase-js')
+  const { createClient } = require("@supabase/supabase-js");
 
   return createClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -53,6 +53,6 @@ export function getSupabaseAdminClient() {
         autoRefreshToken: false,
         persistSession: false,
       },
-    }
-  )
+    },
+  );
 }

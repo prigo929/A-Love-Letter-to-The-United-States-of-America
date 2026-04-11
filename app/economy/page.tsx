@@ -3,22 +3,29 @@
 // VC, dollar dominance, and sub-section navigation.
 // Server Component — chart components imported as client leaves.
 
-import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import { TrendingUp, DollarSign, BarChart3, Globe, Rocket, Building2 } from 'lucide-react'
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  TrendingUp,
+  DollarSign,
+  BarChart3,
+  Globe,
+  Rocket,
+  Building2,
+} from "lucide-react";
 
-import { Breadcrumb }    from '@/components/layout/Breadcrumb'
-import { SectionWrapper } from '@/components/sections/SectionWrapper'
-import { StatCard }       from '@/components/sections/StatCard'
-import { FactCard }       from '@/components/sections/FactCard'
-import { QuoteBlock }     from '@/components/sections/QuoteBlock'
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { SectionWrapper } from "@/components/sections/SectionWrapper";
+import { StatCard } from "@/components/sections/StatCard";
+import { FactCard } from "@/components/sections/FactCard";
+import { QuoteBlock } from "@/components/sections/QuoteBlock";
 
 // ── Chart components (client) ────────────────────────────────────────────────
-import { GdpBarChart }       from '@/components/data/GdpBarChart'
-import { SP500Chart }        from '@/components/data/SP500Chart'
-import { VCBarChart }        from '@/components/data/VCCharts'
-import { DollarReserveChart } from '@/components/data/DollarMarketCharts'
+import { GdpBarChart } from "@/components/data/GdpBarChart";
+import { SP500Chart } from "@/components/data/SP500Chart";
+import { VCBarChart } from "@/components/data/VCCharts";
+import { DollarReserveChart } from "@/components/data/DollarMarketCharts";
 
 // ── Data ────────────────────────────────────────────────────────────────────
 import {
@@ -43,56 +50,56 @@ import {
   DOLLAR_OVERVIEW_PARAGRAPHS,
   TRADE_OVERVIEW_PARAGRAPHS,
   type GdpDataPoint,
-} from '@/lib/data/economy-data'
+} from "@/lib/data/economy-data";
 
-import { BLUR_PLACEHOLDER, cn } from '@/lib/utils'
+import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: 'Economy | America: The Greatest Nation',
+  title: "Economy | America: The Greatest Nation",
   description:
-    'The US economy — $28.8 trillion in GDP, the world\'s largest stock markets, the global reserve currency, and the innovation capital of Earth. A deep-dive into American economic dominance.',
-  alternates: { canonical: '/economy' },
+    "The US economy — $28.8 trillion in GDP, the world's largest stock markets, the global reserve currency, and the innovation capital of Earth. A deep-dive into American economic dominance.",
+  alternates: { canonical: "/economy" },
   openGraph: {
-    title: 'The Engine of the World — US Economy',
+    title: "The Engine of the World — US Economy",
     description:
-      'America\'s economic dominance explained: $28.8T GDP, 47% of global VC, world reserve currency, and 659+ unicorn companies.',
-    url: '/economy',
+      "America's economic dominance explained: $28.8T GDP, 47% of global VC, world reserve currency, and 659+ unicorn companies.",
+    url: "/economy",
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200&auto=format&fit=crop',
+        url: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200&auto=format&fit=crop",
         width: 1200,
         height: 630,
-        alt: 'New York Stock Exchange — heart of the world\'s largest economy',
+        alt: "New York Stock Exchange — heart of the world's largest economy",
       },
     ],
   },
-}
+};
 
 // ─── JSON-LD Structured Data ──────────────────────────────────────────────────
 
 const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'The United States Economy — The Engine of the World',
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "The United States Economy — The Engine of the World",
   description:
-    'A comprehensive analysis of US economic dominance: GDP, capital markets, venture capital, the dollar, and trade.',
-  url: 'https://america-greatest.vercel.app/economy',
-  author: { '@type': 'Organization', name: 'America: The Greatest Nation' },
-}
+    "A comprehensive analysis of US economic dominance: GDP, capital markets, venture capital, the dollar, and trade.",
+  url: "https://america-greatest.vercel.app/economy",
+  author: { "@type": "Organization", name: "America: The Greatest Nation" },
+};
 
 // ─── TOC Sections (anchors) ───────────────────────────────────────────────────
 
 const TOC_ITEMS = [
-  { label: 'Overview',         href: '#overview'         },
-  { label: 'GDP & Scale',      href: '#gdp'              },
-  { label: 'Capital Markets',  href: '#capital-markets'  },
-  { label: 'Venture Capital',  href: '#venture-capital'  },
-  { label: 'The Dollar',       href: '#dollar'           },
-  { label: 'Trade & Exports',  href: '#trade'            },
-  { label: 'Sub-Pages',        href: '#sub-pages'        },
-]
+  { label: "Overview", href: "#overview" },
+  { label: "GDP & Scale", href: "#gdp" },
+  { label: "Capital Markets", href: "#capital-markets" },
+  { label: "Venture Capital", href: "#venture-capital" },
+  { label: "The Dollar", href: "#dollar" },
+  { label: "Trade & Exports", href: "#trade" },
+  { label: "Sub-Pages", href: "#sub-pages" },
+];
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
@@ -111,7 +118,6 @@ export default function EconomyPage() {
       <div className="relative bg-navy-dark">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-[220px_1fr] lg:gap-12 xl:grid-cols-[260px_1fr]">
-
             {/* Sticky TOC — desktop only */}
             <aside className="hidden lg:block">
               <div className="sticky top-24 py-16">
@@ -136,7 +142,9 @@ export default function EconomyPage() {
                 {/* Quick stat box */}
                 <div className="mt-10 rounded-2xl border border-glory-gold/20 bg-glory-gold/5 p-4">
                   <p className="font-hero text-4xl text-glory-gold">$28.8T</p>
-                  <p className="mt-1 font-body text-xs text-white/50">US GDP 2024</p>
+                  <p className="mt-1 font-body text-xs text-white/50">
+                    US GDP 2024
+                  </p>
                   <p className="mt-2 font-body text-xs text-glory-gold">
                     ~25% of world GDP
                   </p>
@@ -146,12 +154,8 @@ export default function EconomyPage() {
 
             {/* Main content */}
             <main className="min-w-0 py-16">
-
               {/* Breadcrumb */}
-              <Breadcrumb
-                items={[{ label: 'Economy' }]}
-                className="mb-8"
-              />
+              <Breadcrumb items={[{ label: "Economy" }]} className="mb-8" />
 
               {/* ── Section 1: Overview ─────────────────────────────────── */}
               <section id="overview" className="mb-20 scroll-mt-24">
@@ -181,7 +185,7 @@ export default function EconomyPage() {
                       label={stat.label}
                       description={stat.description}
                       source={stat.source}
-                      variant={stat.color === 'gold' ? 'gold' : 'dark'}
+                      variant={stat.color === "gold" ? "gold" : "dark"}
                     />
                   ))}
                 </div>
@@ -218,12 +222,14 @@ export default function EconomyPage() {
                 {/* GDP Per Capita Chart */}
                 <div className="mb-10 rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
                   <GdpBarChart
-                    data={GDP_PER_CAPITA.map((d): GdpDataPoint => ({
-                      country: d.country,
-                      gdp: d.gdpPerCapita,
-                      flag: d.flag,
-                      highlight: d.highlight,
-                    }))}
+                    data={GDP_PER_CAPITA.map(
+                      (d): GdpDataPoint => ({
+                        country: d.country,
+                        gdp: d.gdpPerCapita,
+                        flag: d.flag,
+                        highlight: d.highlight,
+                      }),
+                    )}
                     title="GDP Per Capita: USA vs G7 & Emerging Markets (2024)"
                     subtitle="At $82,700 per person, Americans produce more wealth per capita than any major nation"
                     source="IMF World Economic Outlook 2024"
@@ -452,16 +458,24 @@ export default function EconomyPage() {
                         </p>
                         <div className="mb-3 flex gap-4 border-t border-white/8 pt-3">
                           <div>
-                            <p className="font-hero text-2xl text-glory-gold">{eco.unicorns}+</p>
-                            <p className="font-body text-xs text-white/40">Unicorns</p>
+                            <p className="font-hero text-2xl text-glory-gold">
+                              {eco.unicorns}+
+                            </p>
+                            <p className="font-body text-xs text-white/40">
+                              Unicorns
+                            </p>
                           </div>
                           <div>
-                            <p className="font-hero text-2xl text-white">{eco.vcFunding}</p>
-                            <p className="font-body text-xs text-white/40">Annual VC</p>
+                            <p className="font-hero text-2xl text-white">
+                              {eco.vcFunding}
+                            </p>
+                            <p className="font-body text-xs text-white/40">
+                              Annual VC
+                            </p>
                           </div>
                         </div>
                         <p className="font-body text-xs text-white/40">
-                          {eco.keyCompanies.join(' · ')}
+                          {eco.keyCompanies.join(" · ")}
                         </p>
                       </div>
                     ))}
@@ -526,7 +540,9 @@ export default function EconomyPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/40 to-transparent" />
                   <div className="absolute bottom-6 left-0 right-0 px-6">
                     <p className="font-body text-center text-sm text-white/70">
-                      The dollar&apos;s reserve status confers the &ldquo;exorbitant privilege&rdquo; — the US can finance its deficits in its own currency at favorable global rates
+                      The dollar&apos;s reserve status confers the
+                      &ldquo;exorbitant privilege&rdquo; — the US can finance
+                      its deficits in its own currency at favorable global rates
                     </p>
                   </div>
                 </div>
@@ -592,14 +608,14 @@ export default function EconomyPage() {
                 </h3>
                 <div className="space-y-3">
                   {[
-                    { label: 'Aircraft & Parts',       value: 132, pct: 100 },
-                    { label: 'Petroleum Products',     value: 119, pct: 90  },
-                    { label: 'Semiconductors',         value: 87,  pct: 66  },
-                    { label: 'Medical Devices',        value: 74,  pct: 56  },
-                    { label: 'Automobiles',            value: 65,  pct: 49  },
-                    { label: 'Pharmaceuticals',        value: 63,  pct: 48  },
-                    { label: 'Agricultural Products',  value: 58,  pct: 44  },
-                    { label: 'Industrial Machinery',   value: 52,  pct: 39  },
+                    { label: "Aircraft & Parts", value: 132, pct: 100 },
+                    { label: "Petroleum Products", value: 119, pct: 90 },
+                    { label: "Semiconductors", value: 87, pct: 66 },
+                    { label: "Medical Devices", value: 74, pct: 56 },
+                    { label: "Automobiles", value: 65, pct: 49 },
+                    { label: "Pharmaceuticals", value: 63, pct: 48 },
+                    { label: "Agricultural Products", value: 58, pct: 44 },
+                    { label: "Industrial Machinery", value: 52, pct: 39 },
                   ].map((item) => (
                     <div key={item.label} className="flex items-center gap-4">
                       <p className="w-44 shrink-0 font-body text-sm text-white/70 sm:w-52">
@@ -689,13 +705,12 @@ export default function EconomyPage() {
                   ))}
                 </div>
               </section>
-
             </main>
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
 
 // ─── Economy Hero ─────────────────────────────────────────────────────────────
@@ -733,25 +748,28 @@ function EconomyHero() {
           </p>
 
           <h1 className="mb-6 font-hero text-6xl leading-none tracking-wide text-white sm:text-7xl md:text-8xl">
-            THE ENGINE<br />
+            THE ENGINE
+            <br />
             <span className="text-glory-gold">OF THE WORLD</span>
           </h1>
 
           <p className="mb-8 font-body text-lg leading-relaxed text-white/70 md:text-xl">
             The United States economy is the most powerful economic force in the
-            history of human civilization — $28.8 trillion in annual output,
-            the world&apos;s reserve currency, and the innovation capital of Earth.
+            history of human civilization — $28.8 trillion in annual output, the
+            world&apos;s reserve currency, and the innovation capital of Earth.
           </p>
 
           {/* Three hero stats */}
           <div className="flex flex-wrap gap-6">
             {[
-              { value: '$28.8T', label: 'GDP 2024', sub: 'World Bank' },
-              { value: '25%',    label: 'of World GDP', sub: 'IMF' },
-              { value: '136',    label: 'Fortune 500 HQs', sub: 'Fortune 2024' },
+              { value: "$28.8T", label: "GDP 2024", sub: "World Bank" },
+              { value: "25%", label: "of World GDP", sub: "IMF" },
+              { value: "136", label: "Fortune 500 HQs", sub: "Fortune 2024" },
             ].map((stat) => (
               <div key={stat.value} className="text-center">
-                <p className="font-hero text-4xl text-glory-gold md:text-5xl">{stat.value}</p>
+                <p className="font-hero text-4xl text-glory-gold md:text-5xl">
+                  {stat.value}
+                </p>
                 <p className="font-body text-sm text-white/70">{stat.label}</p>
                 <p className="font-body text-xs text-white/35">{stat.sub}</p>
               </div>
@@ -760,5 +778,5 @@ function EconomyHero() {
         </div>
       </div>
     </section>
-  )
+  );
 }

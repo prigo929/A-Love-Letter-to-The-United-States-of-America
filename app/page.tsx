@@ -2,42 +2,42 @@
 // Assembles the full 11-section home page in order.
 // Server Component — all client components imported as leaves.
 
-import type { Metadata } from 'next'
-import { HeroSection }        from '@/components/sections/HeroSection'
-import { OpeningStatement }   from '@/components/sections/OpeningStatement'
-import { StatBar }            from '@/components/sections/StatBar'
-import { SectionGrid }        from '@/components/sections/SectionGrid'
-import { WhyAmericaSection }  from '@/components/sections/WhyAmericaSection'
-import { MapPreviewSection }  from '@/components/sections/MapPreviewSection'
-import { VideoSection }       from '@/components/sections/VideoSection'
-import { DataTeaserSection }  from '@/components/sections/DataTeaserSection'
-import { QuoteCarousel }      from '@/components/sections/QuoteCarousel'
-import { GalleryPreviewSection } from '@/components/sections/GalleryPreviewSection'
-import { NewsletterSection }  from '@/components/sections/NewsletterSection'
-import { SITE }               from '@/lib/constants'
+import type { Metadata } from "next";
+import { HeroSection } from "@/components/sections/HeroSection";
+import { OpeningStatement } from "@/components/sections/OpeningStatement";
+import { StatBar } from "@/components/sections/StatBar";
+import { SectionGrid } from "@/components/sections/SectionGrid";
+import { WhyAmericaSection } from "@/components/sections/WhyAmericaSection";
+import { MapPreviewSection } from "@/components/sections/MapPreviewSection";
+import { VideoSection } from "@/components/sections/VideoSection";
+import { DataTeaserSection } from "@/components/sections/DataTeaserSection";
+import { QuoteCarousel } from "@/components/sections/QuoteCarousel";
+import { GalleryPreviewSection } from "@/components/sections/GalleryPreviewSection";
+import { NewsletterSection } from "@/components/sections/NewsletterSection";
+import { SITE } from "@/lib/constants";
 
 // ─── Page Metadata ────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title:       `${SITE.name} | Home`,
+  title: `${SITE.name} | Home`,
   description: SITE.description,
-  alternates:  { canonical: '/' },
+  alternates: { canonical: "/" },
   openGraph: {
-    title:       `${SITE.name} | The Greatest Nation in History`,
+    title: `${SITE.name} | The Greatest Nation in History`,
     description: SITE.description,
-    url:         '/',
+    url: "/",
   },
-}
+};
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 const jsonLd = {
-  '@context':  'https://schema.org',
-  '@type':     'WebPage',
-  name:        `${SITE.name} — Home`,
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: `${SITE.name} — Home`,
   description: SITE.description,
-  url:         SITE.url,
-}
+  url: SITE.url,
+};
 
 export default function HomePage() {
   return (
@@ -79,5 +79,5 @@ export default function HomePage() {
       {/* Section 11: Newsletter signup — Supabase connected */}
       <NewsletterSection />
     </>
-  )
+  );
 }

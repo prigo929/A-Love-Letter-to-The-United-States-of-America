@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 // ─── Hero Section ─────────────────────────────────────────────────────────────
 // Full-viewport cinematic hero with:
@@ -9,71 +9,81 @@
 //  • Two CTA buttons
 //  • Animated scroll indicator
 
-import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import { ChevronDown, Star } from 'lucide-react'
-import { Button } from '@/components/ui/Button'
-import { heroContainer, heroTitle, heroSubtitle, heroCTA } from '@/lib/animations'
-import { HERO_IMAGES, SITE } from '@/lib/constants'
-import { BLUR_PLACEHOLDER } from '@/lib/utils'
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+import { ChevronDown, Star } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import {
+  heroContainer,
+  heroTitle,
+  heroSubtitle,
+  heroCTA,
+} from "@/lib/animations";
+import { HERO_IMAGES, SITE } from "@/lib/constants";
+import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 // ─── Particle Stars Canvas ────────────────────────────────────────────────────
 
 function ParticleCanvas() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
     // Resize canvas to full viewport
     const resize = () => {
-      canvas.width  = window.innerWidth
-      canvas.height = window.innerHeight
-    }
-    resize()
-    window.addEventListener('resize', resize)
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    resize();
+    window.addEventListener("resize", resize);
 
     // Create stars
-    const STAR_COUNT = 120
+    const STAR_COUNT = 120;
     const stars = Array.from({ length: STAR_COUNT }, () => ({
-      x:       Math.random() * canvas.width,
-      y:       Math.random() * canvas.height,
-      r:       Math.random() * 1.5 + 0.3,
-      alpha:   Math.random(),
-      speed:   Math.random() * 0.005 + 0.002,
-      offset:  Math.random() * Math.PI * 2,
-    }))
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5 + 0.3,
+      alpha: Math.random(),
+      speed: Math.random() * 0.005 + 0.002,
+      offset: Math.random() * Math.PI * 2,
+    }));
 
-    let frame: number
-    let t = 0
+    let frame: number;
+    let t = 0;
 
     const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       stars.forEach((star) => {
         // Twinkle: sinusoidal opacity
-        const twinkle = (Math.sin(t * star.speed * 10 + star.offset) + 1) / 2
-        ctx.beginPath()
-        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(255, 215, 0, ${twinkle * 0.7 + 0.1})`
-        ctx.fill()
-      })
+        const twinkle = (Math.sin(t * star.speed * 10 + star.offset) + 1) / 2;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 215, 0, ${twinkle * 0.7 + 0.1})`;
+        ctx.fill();
+      });
 
-      t++
-      frame = requestAnimationFrame(draw)
-    }
+      t++;
+      frame = requestAnimationFrame(draw);
+    };
 
-    draw()
+    draw();
 
     return () => {
-      cancelAnimationFrame(frame)
-      window.removeEventListener('resize', resize)
-    }
-  }, [])
+      cancelAnimationFrame(frame);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
 
   return (
     <canvas
@@ -81,36 +91,36 @@ function ParticleCanvas() {
       className="absolute inset-0 z-10 pointer-events-none"
       aria-hidden="true"
     />
-  )
+  );
 }
 
 // ─── Hero Component ───────────────────────────────────────────────────────────
 
 export function HeroSection() {
-  const [currentImage, setCurrentImage] = useState(0)
-  const containerRef  = useRef<HTMLDivElement>(null)
+  const [currentImage, setCurrentImage] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Parallax scroll
-  const { scrollY } = useScroll()
-  const textY        = useTransform(scrollY, [0, 600], [0, -120])
-  const bgY          = useTransform(scrollY, [0, 600], [0, 160])
-  const opacity      = useTransform(scrollY, [0, 400], [1, 0])
+  const { scrollY } = useScroll();
+  const textY = useTransform(scrollY, [0, 600], [0, -120]);
+  const bgY = useTransform(scrollY, [0, 600], [0, 160]);
+  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   // Image carousel — cycle every 6 seconds
   useEffect(() => {
     const id = setInterval(() => {
-      setCurrentImage((i) => (i + 1) % HERO_IMAGES.length)
-    }, 6000)
-    return () => clearInterval(id)
-  }, [])
+      setCurrentImage((i) => (i + 1) % HERO_IMAGES.length);
+    }, 6000);
+    return () => clearInterval(id);
+  }, []);
 
   const images = HERO_IMAGES.map((img) => ({
     src:
-      'src' in img
+      "src" in img
         ? img.src
         : `https://images.unsplash.com/${img.unsplash}?q=85&w=1920&auto=format&fit=crop`,
     alt: img.alt,
-  }))
+  }));
 
   return (
     <div
@@ -333,5 +343,5 @@ export function HeroSection() {
         </motion.div>
       </div>
     </div>
-  )
+  );
 }

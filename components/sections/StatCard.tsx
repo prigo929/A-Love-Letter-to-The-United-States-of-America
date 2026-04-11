@@ -1,29 +1,29 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { scaleUp } from '@/lib/animations'
-import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
-import { cn } from '@/lib/utils'
+import { motion } from "framer-motion";
+import { scaleUp } from "@/lib/animations";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { cn } from "@/lib/utils";
 
 interface StatCardProps {
-  value:        number
-  prefix?:      string
-  suffix?:      string
-  decimals?:    number
-  label:        string
-  description?: string
-  source?:      string
-  icon?:        React.ReactNode
-  variant?:     'dark' | 'navy' | 'gold' | 'glass'
-  className?:   string
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+  label: string;
+  description?: string;
+  source?: string;
+  icon?: React.ReactNode;
+  variant?: "dark" | "navy" | "gold" | "glass";
+  className?: string;
 }
 
 const variantStyles = {
-  dark:  'bg-navy-light border border-white/10 text-white',
-  navy:  'bg-navy-mid border border-white/5 text-white',
-  gold:  'bg-glory-gold/10 border border-glory-gold/30 text-white',
-  glass: 'bg-white/5 backdrop-blur-glass border border-white/15 text-white',
-}
+  dark: "bg-navy-light border border-white/10 text-white",
+  navy: "bg-navy-mid border border-white/5 text-white",
+  gold: "bg-glory-gold/10 border border-glory-gold/30 text-white",
+  glass: "bg-white/5 backdrop-blur-glass border border-white/15 text-white",
+};
 
 export function StatCard({
   value,
@@ -34,7 +34,7 @@ export function StatCard({
   description,
   source,
   icon,
-  variant   = 'dark',
+  variant = "dark",
   className,
 }: StatCardProps) {
   return (
@@ -42,11 +42,11 @@ export function StatCard({
       variants={scaleUp}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-60px' }}
+      viewport={{ once: true, margin: "-60px" }}
       className={cn(
-        'rounded-2xl p-6 md:p-8 flex flex-col gap-2',
+        "rounded-2xl p-6 md:p-8 flex flex-col gap-2",
         variantStyles[variant],
-        className
+        className,
       )}
     >
       {icon && (
@@ -84,5 +84,5 @@ export function StatCard({
         </p>
       )}
     </motion.div>
-  )
+  );
 }

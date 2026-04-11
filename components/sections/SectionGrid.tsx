@@ -1,17 +1,20 @@
-'use client'
+"use client";
 
 // ─── Section Navigation Grid ──────────────────────────────────────────────────
 // 3×4 grid of NavigationCards — one per major section.
 
-import { motion } from 'framer-motion'
-import { fadeUp, staggerContainer } from '@/lib/animations'
-import { NavigationCard } from '@/components/sections/NavigationCard'
-import { NAV_SECTIONS } from '@/lib/constants'
-import { HOME_COPY } from '@/lib/data/home'
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer } from "@/lib/animations";
+import { NavigationCard } from "@/components/sections/NavigationCard";
+import { NAV_SECTIONS } from "@/lib/constants";
+import { HOME_COPY } from "@/lib/data/home";
 
 export function SectionGrid() {
   return (
-    <section className="bg-navy-dark relative" aria-labelledby="sections-heading">
+    <section
+      className="bg-navy-dark relative"
+      aria-labelledby="sections-heading"
+    >
       {/* Star pattern bg */}
       <div
         className="absolute inset-0 pointer-events-none opacity-20 bg-star-pattern-grid"
@@ -24,10 +27,13 @@ export function SectionGrid() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, margin: "-60px" }}
           className="text-center mb-16 md:mb-20"
         >
-          <motion.p variants={fadeUp} className="section-eyebrow justify-center">
+          <motion.p
+            variants={fadeUp}
+            className="section-eyebrow justify-center"
+          >
             Everything That Makes America Great
           </motion.p>
           <motion.h2
@@ -37,7 +43,10 @@ export function SectionGrid() {
           >
             Explore Every Dimension
           </motion.h2>
-          <motion.p variants={fadeUp} className="font-body text-lg text-white/60 max-w-2xl mx-auto">
+          <motion.p
+            variants={fadeUp}
+            className="font-body text-lg text-white/60 max-w-2xl mx-auto"
+          >
             {HOME_COPY.sectionGridSummary}
           </motion.p>
         </motion.div>
@@ -47,7 +56,7 @@ export function SectionGrid() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
+          viewport={{ once: true, margin: "-40px" }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
         >
           {NAV_SECTIONS.map((section) => (
@@ -58,11 +67,11 @@ export function SectionGrid() {
               description={section.description}
               imageSrc={section.imageSrc}
               imageAlt={`${section.title} — explore this section`}
-              badge={'badge' in section ? section.badge : undefined}
+              badge={"badge" in section ? section.badge : undefined}
             />
           ))}
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

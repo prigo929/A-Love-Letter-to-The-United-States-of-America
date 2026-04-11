@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 // ─── GDP Bar Chart ────────────────────────────────────────────────────────────
 // Recharts bar chart comparing GDP across major economies.
@@ -14,16 +14,16 @@ import {
   ResponsiveContainer,
   Cell,
   LabelList,
-} from 'recharts'
-import { motion } from 'framer-motion'
-import { fadeUp } from '@/lib/animations'
-import type { GdpDataPoint } from '@/lib/data/economy-data'
+} from "recharts";
+import { motion } from "framer-motion";
+import { fadeUp } from "@/lib/animations";
+import type { GdpDataPoint } from "@/lib/data/economy-data";
 
 interface GdpBarChartProps {
-  data: GdpDataPoint[]
-  title?: string
-  subtitle?: string
-  source?: string
+  data: GdpDataPoint[];
+  title?: string;
+  subtitle?: string;
+  source?: string;
 }
 
 // ── Custom Tooltip ─────────────────────────────────────────────────────────────
@@ -33,12 +33,12 @@ function CustomTooltip({
   payload,
   label,
 }: {
-  active?: boolean
-  payload?: Array<{ value: number; payload: GdpDataPoint }>
-  label?: string
+  active?: boolean;
+  payload?: Array<{ value: number; payload: GdpDataPoint }>;
+  label?: string;
 }) {
-  if (!active || !payload?.length) return null
-  const item = payload[0]
+  if (!active || !payload?.length) return null;
+  const item = payload[0];
 
   return (
     <div className="rounded-xl border border-white/15 bg-navy-dark/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
@@ -48,21 +48,23 @@ function CustomTooltip({
       <p className="font-hero text-2xl text-glory-gold">
         ${item.value.toFixed(1)}T
       </p>
-      <p className="font-body text-xs text-white/50">GDP (2024, USD Trillions)</p>
+      <p className="font-body text-xs text-white/50">
+        GDP (2024, USD Trillions)
+      </p>
     </div>
-  )
+  );
 }
 
 // ── Custom Bar Label ───────────────────────────────────────────────────────────
 
 function CustomLabel(props: {
-  x?: number
-  y?: number
-  width?: number
-  value?: number
-  index?: number
+  x?: number;
+  y?: number;
+  width?: number;
+  value?: number;
+  index?: number;
 }) {
-  const { x = 0, y = 0, width = 0, value = 0 } = props
+  const { x = 0, y = 0, width = 0, value = 0 } = props;
   return (
     <text
       x={x + width / 2}
@@ -75,16 +77,21 @@ function CustomLabel(props: {
     >
       ${value.toFixed(1)}T
     </text>
-  )
+  );
 }
 
-export function GdpBarChart({ data, title, subtitle, source }: GdpBarChartProps) {
+export function GdpBarChart({
+  data,
+  title,
+  subtitle,
+  source,
+}: GdpBarChartProps) {
   return (
     <motion.div
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-60px' }}
+      viewport={{ once: true, margin: "-60px" }}
       className="w-full"
     >
       {(title || subtitle) && (
@@ -115,11 +122,11 @@ export function GdpBarChart({ data, title, subtitle, source }: GdpBarChartProps)
             <XAxis
               dataKey="country"
               tick={{
-                fill: 'rgba(255,255,255,0.55)',
+                fill: "rgba(255,255,255,0.55)",
                 fontSize: 11,
-                fontFamily: 'var(--font-body)',
+                fontFamily: "var(--font-body)",
               }}
-              axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
+              axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
               tickLine={false}
               angle={-35}
               textAnchor="end"
@@ -127,9 +134,9 @@ export function GdpBarChart({ data, title, subtitle, source }: GdpBarChartProps)
             />
             <YAxis
               tick={{
-                fill: 'rgba(255,255,255,0.4)',
+                fill: "rgba(255,255,255,0.4)",
                 fontSize: 11,
-                fontFamily: 'var(--font-body)',
+                fontFamily: "var(--font-body)",
               }}
               axisLine={false}
               tickLine={false}
@@ -137,13 +144,13 @@ export function GdpBarChart({ data, title, subtitle, source }: GdpBarChartProps)
             />
             <Tooltip
               content={<CustomTooltip />}
-              cursor={{ fill: 'rgba(255,255,255,0.04)' }}
+              cursor={{ fill: "rgba(255,255,255,0.04)" }}
             />
             <Bar dataKey="gdp" radius={[6, 6, 0, 0]} maxBarSize={60}>
               {data.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
-                  fill={entry.highlight ? '#FFD700' : '#3C3B6E'}
+                  fill={entry.highlight ? "#FFD700" : "#3C3B6E"}
                   opacity={entry.highlight ? 1 : 0.75}
                 />
               ))}
@@ -159,5 +166,5 @@ export function GdpBarChart({ data, title, subtitle, source }: GdpBarChartProps)
         </p>
       )}
     </motion.div>
-  )
+  );
 }

@@ -6,17 +6,17 @@ A cinematic, large-scale web experience celebrating the United States of America
 
 ## Tech Stack
 
-| Layer | Tech |
-|---|---|
-| Framework | Next.js 14 (App Router) |
-| Styling | Tailwind CSS v3 with custom USA theme |
-| Database | Supabase (PostgreSQL) |
-| Deployment | Vercel |
-| Animations | Framer Motion |
-| Charts | Recharts + D3.js |
-| Icons | Lucide React |
-| Forms | React Hook Form + Zod |
-| State | Zustand |
+| Layer      | Tech                                  |
+| ---------- | ------------------------------------- |
+| Framework  | Next.js 14 (App Router)               |
+| Styling    | Tailwind CSS v3 with custom USA theme |
+| Database   | Supabase (PostgreSQL)                 |
+| Deployment | Vercel                                |
+| Animations | Framer Motion                         |
+| Charts     | Recharts + D3.js                      |
+| Icons      | Lucide React                          |
+| Forms      | React Hook Form + Zod                 |
+| State      | Zustand                               |
 
 ---
 
@@ -35,6 +35,7 @@ cp .env.local.example .env.local
 ```
 
 Fill in your Supabase credentials:
+
 - `NEXT_PUBLIC_SUPABASE_URL` — from Supabase Dashboard → Project Settings → API
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY` — same location
 - `SUPABASE_SERVICE_ROLE_KEY` — same location (keep secret, server-only)
@@ -122,34 +123,36 @@ usa-patriot-site/
 
 ## Build Phases
 
-| Phase | Status | Description |
-|---|---|---|
+| Phase       | Status          | Description                                 |
+| ----------- | --------------- | ------------------------------------------- |
 | **Phase 1** | ✅ **Complete** | Foundation: layout, theme, components, hero |
-| Phase 2 | 🔜 Next | Home page: all sections fully built |
-| Phase 3 | 🔜 | Economy section |
-| Phase 4 | 🔜 | Nature & Geography |
-| Phase 5 | 🔜 | Military |
-| Phase 6 | 🔜 | Constitution & Democracy |
-| Phase 7 | 🔜 | Culture |
-| Phase 8 | 🔜 | Innovation & Technology |
-| Phase 9 | 🔜 | Science & Inventions |
-| Phase 10 | 🔜 | Universities |
-| Phase 11-18 | 🔜 | Quality of Life → Launch |
+| Phase 2     | 🔜 Next         | Home page: all sections fully built         |
+| Phase 3     | 🔜              | Economy section                             |
+| Phase 4     | 🔜              | Nature & Geography                          |
+| Phase 5     | 🔜              | Military                                    |
+| Phase 6     | 🔜              | Constitution & Democracy                    |
+| Phase 7     | 🔜              | Culture                                     |
+| Phase 8     | 🔜              | Innovation & Technology                     |
+| Phase 9     | 🔜              | Science & Inventions                        |
+| Phase 10    | 🔜              | Universities                                |
+| Phase 11-18 | 🔜              | Quality of Life → Launch                    |
 
 ---
 
 ## Design System
 
 ### Colors
-| Token | Hex | Use |
-|---|---|---|
-| `glory-red` | `#B22234` | Primary actions, accents |
+
+| Token        | Hex       | Use                         |
+| ------------ | --------- | --------------------------- |
+| `glory-red`  | `#B22234` | Primary actions, accents    |
 | `glory-blue` | `#3C3B6E` | Headers, links, backgrounds |
-| `glory-gold` | `#FFD700` | Stat numbers, highlights |
-| `navy-dark` | `#0d1117` | Page background |
-| `parchment` | `#F5F0E8` | Light quote sections |
+| `glory-gold` | `#FFD700` | Stat numbers, highlights    |
+| `navy-dark`  | `#0d1117` | Page background             |
+| `parchment`  | `#F5F0E8` | Light quote sections        |
 
 ### Fonts
+
 - **Bebas Neue** — hero display numbers, large titles
 - **Playfair Display** — editorial headings (h1–h4)
 - **Inter** — body copy, labels, UI text
@@ -169,6 +172,7 @@ usa-patriot-site/
 ## Data Sources
 
 All statistics are sourced from official institutions:
+
 - World Bank, IMF, OECD
 - SIPRI (military spending)
 - National Park Service
@@ -180,4 +184,4 @@ All statistics are sourced from official institutions:
 
 ---
 
-*Made with ❤️ in the USA 🇺🇸*
+_Made with ❤️ in the USA 🇺🇸_

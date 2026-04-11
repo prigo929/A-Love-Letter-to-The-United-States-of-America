@@ -2,60 +2,64 @@
 // Dark navy footer with navigation links, star motif, and flag animation.
 // Server Component.
 
-import Link from 'next/link'
-import { Star, Heart } from 'lucide-react'
-import { NAV_SECTIONS, SITE } from '@/lib/constants'
-import { yearsSince1776 } from '@/lib/utils'
+import Link from "next/link";
+import { Star, Heart } from "lucide-react";
+import { NAV_SECTIONS, SITE } from "@/lib/constants";
+import { yearsSince1776 } from "@/lib/utils";
 
 // Footer nav — a curated subset of sections
 const FOOTER_SECTIONS = [
   {
-    heading: 'Explore',
+    heading: "Explore",
     links: [
-      { label: 'Economy',          href: '/economy' },
-      { label: 'Nature & Parks',   href: '/nature' },
-      { label: 'Military',         href: '/military' },
-      { label: 'Constitution',     href: '/constitution' },
-      { label: 'Culture',          href: '/culture' },
+      { label: "Economy", href: "/economy" },
+      { label: "Nature & Parks", href: "/nature" },
+      { label: "Military", href: "/military" },
+      { label: "Constitution", href: "/constitution" },
+      { label: "Culture", href: "/culture" },
     ],
   },
   {
-    heading: 'Innovation',
+    heading: "Innovation",
     links: [
-      { label: 'Technology',       href: '/innovation' },
-      { label: 'Science',          href: '/science' },
-      { label: 'Universities',     href: '/universities' },
-      { label: 'Quality of Life',  href: '/quality-of-life' },
-      { label: 'Global Leadership',href: '/global-leadership' },
+      { label: "Technology", href: "/innovation" },
+      { label: "Science", href: "/science" },
+      { label: "Universities", href: "/universities" },
+      { label: "Quality of Life", href: "/quality-of-life" },
+      { label: "Global Leadership", href: "/global-leadership" },
     ],
   },
   {
-    heading: 'Data & Media',
+    heading: "Data & Media",
     links: [
-      { label: 'Data & Studies',   href: '/data' },
-      { label: 'Photo Gallery',    href: '/gallery' },
-      { label: 'Timeline',         href: '/timeline' },
-      { label: 'Map Explorer',     href: '/explorer' },
-      { label: 'All Sections',     href: '/sitemap' },
+      { label: "Data & Studies", href: "/data" },
+      { label: "Photo Gallery", href: "/gallery" },
+      { label: "Timeline", href: "/timeline" },
+      { label: "Map Explorer", href: "/explorer" },
+      { label: "All Sections", href: "/sitemap" },
     ],
   },
-]
+];
 
 export function Footer() {
-  const currentYear  = new Date().getFullYear()
-  const yearsOld     = yearsSince1776()
+  const currentYear = new Date().getFullYear();
+  const yearsOld = yearsSince1776();
 
   return (
-    <footer className="bg-navy-dark border-t border-white/10 text-white" role="contentinfo">
-
+    <footer
+      className="bg-navy-dark border-t border-white/10 text-white"
+      role="contentinfo"
+    >
       {/* ── Main Footer Body ────────────────────────────────────────────────── */}
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-
           {/* Brand column */}
           <div className="lg:col-span-2">
             {/* Logo */}
-            <Link href="/" className="inline-flex items-center gap-2.5 mb-6 group">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2.5 mb-6 group"
+            >
               <div className="flex gap-0.5 items-center">
                 {[...Array(5)].map((_, i) => (
                   <Star
@@ -77,16 +81,23 @@ export function Footer() {
 
             <p className="font-body text-white/55 text-sm leading-relaxed max-w-xs mb-6">
               A cinematic celebration of the United States of America —
-              {yearsOld} years of freedom, innovation, and unrivaled achievement.
+              {yearsOld} years of freedom, innovation, and unrivaled
+              achievement.
             </p>
 
             {/* Est. badge */}
             <div className="inline-flex items-center gap-2 bg-glory-gold/10 border border-glory-gold/25 rounded-full px-4 py-2">
-              <Star className="w-3 h-3 fill-glory-gold text-glory-gold" aria-hidden="true" />
+              <Star
+                className="w-3 h-3 fill-glory-gold text-glory-gold"
+                aria-hidden="true"
+              />
               <span className="font-body text-xs text-glory-gold font-semibold tracking-widest uppercase">
                 Est. 1776 · {yearsOld} Years Strong
               </span>
-              <Star className="w-3 h-3 fill-glory-gold text-glory-gold" aria-hidden="true" />
+              <Star
+                className="w-3 h-3 fill-glory-gold text-glory-gold"
+                aria-hidden="true"
+              />
             </div>
           </div>
 
@@ -130,17 +141,21 @@ export function Footer() {
           {/* "Made with love in the USA" */}
           <p className="font-body text-xs text-white/35 flex items-center gap-1.5">
             Made with
-            <Heart className="w-3 h-3 fill-glory-red text-glory-red animate-pulse" aria-label="love" />
+            <Heart
+              className="w-3 h-3 fill-glory-red text-glory-red animate-pulse"
+              aria-label="love"
+            />
             in the
             <span className="text-glory-gold font-semibold">USA 🇺🇸</span>
           </p>
 
           {/* Disclaimer */}
           <p className="font-body text-xs text-white/20 text-center sm:text-right max-w-xs">
-            All statistics sourced from official government, academic, and international institutions.
+            All statistics sourced from official government, academic, and
+            international institutions.
           </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

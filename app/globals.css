@@ -3,7 +3,7 @@
    ──────────────────────────────────────────────────────────────────────────── */
 
 /* Google Fonts — preloaded in layout.tsx via next/font for performance */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap");
 
 /* Tailwind layers */
 @tailwind base;
@@ -15,29 +15,31 @@
   :root {
     /* CSS custom properties — mirrors tailwind.config colors for use in
        inline styles and non-Tailwind contexts */
-    --color-glory-red:        #B22234;
-    --color-glory-red-dark:   #8B1A26;
-    --color-glory-blue:       #3C3B6E;
-    --color-glory-blue-dark:  #2a2950;
-    --color-glory-gold:       #FFD700;
-    --color-glory-gold-dark:  #CC9900;
-    --color-navy-dark:        #0d1117;
-    --color-navy-mid:         #1a1f3a;
-    --color-navy-light:       #252b4a;
-    --color-parchment:        #F5F0E8;
+    --color-glory-red: #b22234;
+    --color-glory-red-dark: #8b1a26;
+    --color-glory-blue: #3c3b6e;
+    --color-glory-blue-dark: #2a2950;
+    --color-glory-gold: #ffd700;
+    --color-glory-gold-dark: #cc9900;
+    --color-navy-dark: #0d1117;
+    --color-navy-mid: #1a1f3a;
+    --color-navy-light: #252b4a;
+    --color-parchment: #f5f0e8;
 
     /* Scroll behavior */
     scroll-behavior: smooth;
   }
 
   /* Box sizing reset */
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
   }
 
   /* Base typography */
   html {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: "Inter", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -49,8 +51,13 @@
   }
 
   /* Headings use Playfair Display */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', Georgia, serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Playfair Display", Georgia, serif;
     font-weight: 700;
     line-height: 1.15;
   }
@@ -90,14 +97,17 @@
   }
 
   /* Images */
-  img, video {
+  img,
+  video {
     max-width: 100%;
     height: auto;
   }
 
   /* Reduced motion — respect user preference */
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -109,9 +119,15 @@
 /* ─── Component Layer ───────────────────────────────────────────────────── */
 @layer components {
   /* ── Typography helpers ──────────────────────────────────────────────── */
-  .font-display { font-family: 'Playfair Display', Georgia, serif; }
-  .font-hero    { font-family: 'Bebas Neue', Impact, sans-serif; }
-  .font-body    { font-family: 'Inter', system-ui, sans-serif; }
+  .font-display {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+  .font-hero {
+    font-family: "Bebas Neue", Impact, sans-serif;
+  }
+  .font-body {
+    font-family: "Inter", system-ui, sans-serif;
+  }
 
   /* ── Section heading pattern ─────────────────────────────────────────── */
   .section-eyebrow {
@@ -120,7 +136,7 @@
   }
   .section-eyebrow::before,
   .section-eyebrow::after {
-    content: '★';
+    content: "★";
     font-size: 8px;
   }
 
@@ -167,7 +183,7 @@
   .hero-title-shell {
     font-size: clamp(56px, 11vw, 148px);
     letter-spacing: 0.02em;
-    font-family: 'Archivo Black', system-ui, sans-serif;
+    font-family: "Archivo Black", system-ui, sans-serif;
     text-transform: uppercase;
   }
 
@@ -268,7 +284,7 @@
   }
   .star-divider::before,
   .star-divider::after {
-    content: '';
+    content: "";
     flex: 1;
     height: 1px;
     @apply bg-glory-gold/30;
@@ -291,11 +307,17 @@
 /* ─── Utility Layer ─────────────────────────────────────────────────────── */
 @layer utilities {
   /* Viewport units that account for mobile browser chrome */
-  .min-h-screen-safe { min-height: 100svh; }
-  .h-screen-safe     { height: 100svh; }
+  .min-h-screen-safe {
+    min-height: 100svh;
+  }
+  .h-screen-safe {
+    height: 100svh;
+  }
 
   /* Text balance for headings */
-  .text-balance { text-wrap: balance; }
+  .text-balance {
+    text-wrap: balance;
+  }
 
   /* Clip text for gradient */
   .clip-text {
@@ -305,21 +327,33 @@
   }
 
   /* No scrollbar (for carousels) */
-  .no-scrollbar::-webkit-scrollbar { display: none; }
-  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 
   /* Perspective for 3D hover effects */
-  .perspective-1000 { perspective: 1000px; }
-  .preserve-3d      { transform-style: preserve-3d; }
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
 
-  .gallery-masonry-rows { grid-auto-rows: minmax(140px, auto); }
+  .gallery-masonry-rows {
+    grid-auto-rows: minmax(140px, auto);
+  }
 
   /* Shimmer animation for loading states */
   .shimmer-bg {
-    background: linear-gradient(90deg,
-      rgba(255,255,255,0.05) 0%,
-      rgba(255,255,255,0.12) 50%,
-      rgba(255,255,255,0.05) 100%
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.12) 50%,
+      rgba(255, 255, 255, 0.05) 100%
     );
     background-size: 200% 100%;
     animation: shimmer 1.5s linear infinite;

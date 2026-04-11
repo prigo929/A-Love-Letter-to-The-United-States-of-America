@@ -1,22 +1,22 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
-import { scaleUp } from '@/lib/animations'
-import { Badge } from '@/components/ui/Badge'
-import { BLUR_PLACEHOLDER } from '@/lib/utils'
-import { cn } from '@/lib/utils'
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { scaleUp } from "@/lib/animations";
+import { Badge } from "@/components/ui/Badge";
+import { BLUR_PLACEHOLDER } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 interface NavigationCardProps {
-  href:        string
-  title:       string
-  description: string
-  imageSrc:    string
-  imageAlt:    string
-  badge?:      string
-  className?:  string
+  href: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  badge?: string;
+  className?: string;
 }
 
 export function NavigationCard({
@@ -33,8 +33,8 @@ export function NavigationCard({
       variants={scaleUp}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-40px' }}
-      className={cn('group', className)}
+      viewport={{ once: true, margin: "-40px" }}
+      className={cn("group", className)}
     >
       <Link
         href={href}
@@ -58,7 +58,9 @@ export function NavigationCard({
           {/* Badge on image */}
           {badge && (
             <div className="absolute top-3 left-3">
-              <Badge variant="gold" size="sm">{badge}</Badge>
+              <Badge variant="gold" size="sm">
+                {badge}
+              </Badge>
             </div>
           )}
 
@@ -82,5 +84,5 @@ export function NavigationCard({
         </div>
       </Link>
     </motion.div>
-  )
+  );
 }

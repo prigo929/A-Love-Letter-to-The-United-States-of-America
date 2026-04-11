@@ -1,77 +1,85 @@
-'use client'
+"use client";
 
 // ─── Header ───────────────────────────────────────────────────────────────────
 // Sticky header with glass morphism that appears after scrolling.
 // Desktop: horizontal nav with mega-menu dropdowns.
 // Mobile: hamburger → slide-in drawer with staggered links.
 
-import { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ChevronDown, Star } from 'lucide-react'
-import { Button } from '@/components/ui/Button'
-import { NAV_SECTIONS } from '@/lib/constants'
-import { mobileMenu, megaMenu, megaMenuLinks, megaMenuLink } from '@/lib/animations'
-import { cn } from '@/lib/utils'
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ChevronDown, Star } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import { NAV_SECTIONS } from "@/lib/constants";
+import {
+  mobileMenu,
+  megaMenu,
+  megaMenuLinks,
+  megaMenuLink,
+} from "@/lib/animations";
+import { cn } from "@/lib/utils";
 
 // Top-level nav labels (subset shown in header)
-const PRIMARY_NAV = NAV_SECTIONS.slice(0, 6)  // Economy → Innovation
+const PRIMARY_NAV = NAV_SECTIONS.slice(0, 6); // Economy → Innovation
 const LOGO_STAR_DELAY_CLASSES = [
-  'motion-delay-0',
-  'motion-delay-40',
-  'motion-delay-80',
-  'motion-delay-120',
-  'motion-delay-160',
-] as const
+  "motion-delay-0",
+  "motion-delay-40",
+  "motion-delay-80",
+  "motion-delay-120",
+  "motion-delay-160",
+] as const;
 
 export function Header() {
-  const [scrolled,    setScrolled]    = useState(false)
-  const [mobileOpen,  setMobileOpen]  = useState(false)
-  const [activeMenu,  setActiveMenu]  = useState<string | null>(null)
-  const pathname = usePathname()
-  const menuTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const pathname = usePathname();
+  const menuTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // ── Scroll detection ───────────────────────────────────────────────────────
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // ── Close mobile menu on route change ─────────────────────────────────────
-  useEffect(() => { setMobileOpen(false) }, [pathname])
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   // ── Lock body scroll when mobile menu is open ──────────────────────────────
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [mobileOpen])
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
 
   // ── Mega menu hover handlers (with delay to prevent flicker) ──────────────
   const handleMenuEnter = (title: string) => {
-    if (menuTimeout.current) clearTimeout(menuTimeout.current)
-    setActiveMenu(title)
-  }
+    if (menuTimeout.current) clearTimeout(menuTimeout.current);
+    setActiveMenu(title);
+  };
   const handleMenuLeave = () => {
-    menuTimeout.current = setTimeout(() => setActiveMenu(null), 150)
-  }
+    menuTimeout.current = setTimeout(() => setActiveMenu(null), 150);
+  };
 
   return (
     <>
       {/* ── Main Header ──────────────────────────────────────────────────── */}
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           scrolled
-            ? 'bg-navy-dark/95 backdrop-blur-glass border-b border-white/10 shadow-xl'
-            : 'bg-transparent'
+            ? "bg-navy-dark/95 backdrop-blur-glass border-b border-white/10 shadow-xl"
+            : "bg-transparent",
         )}
         role="banner"
       >
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
-
             {/* ── Logo ───────────────────────────────────────────────────── */}
             <Link
               href="/"
@@ -84,9 +92,9 @@ export function Header() {
                   <Star
                     key={i}
                     className={cn(
-                      'w-3 h-3 fill-glory-gold/60 text-glory-gold/60 transition-all duration-300',
+                      "w-3 h-3 fill-glory-gold/60 text-glory-gold/60 transition-all duration-300",
                       LOGO_STAR_DELAY_CLASSES[i],
-                      'group-hover:fill-glory-gold group-hover:text-glory-gold group-hover:scale-110'
+                      "group-hover:fill-glory-gold group-hover:text-glory-gold group-hover:scale-110",
                     )}
                     aria-hidden="true"
                   />
@@ -104,7 +112,10 @@ export function Header() {
             </Link>
 
             {/* ── Desktop Nav ────────────────────────────────────────────── */}
-            <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+            <nav
+              className="hidden lg:flex items-center gap-1"
+              aria-label="Main navigation"
+            >
               {PRIMARY_NAV.map((section) => (
                 <div
                   key={section.title}
@@ -115,19 +126,22 @@ export function Header() {
                   <Link
                     href={section.href}
                     className={cn(
-                      'flex items-center gap-1 px-3 py-2 rounded-lg font-body text-sm font-medium',
-                      'transition-colors duration-150',
-                      'text-white/80 hover:text-white hover:bg-white/10',
-                      pathname.startsWith(section.href) && 'text-glory-gold bg-glory-gold/10',
-                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold'
+                      "flex items-center gap-1 px-3 py-2 rounded-lg font-body text-sm font-medium",
+                      "transition-colors duration-150",
+                      "text-white/80 hover:text-white hover:bg-white/10",
+                      pathname.startsWith(section.href) &&
+                        "text-glory-gold bg-glory-gold/10",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold",
                     )}
-                    aria-current={pathname.startsWith(section.href) ? 'page' : undefined}
+                    aria-current={
+                      pathname.startsWith(section.href) ? "page" : undefined
+                    }
                   >
                     {section.title}
                     <ChevronDown
                       className={cn(
-                        'w-3.5 h-3.5 transition-transform duration-200',
-                        activeMenu === section.title && 'rotate-180'
+                        "w-3.5 h-3.5 transition-transform duration-200",
+                        activeMenu === section.title && "rotate-180",
                       )}
                       aria-hidden="true"
                     />
@@ -165,13 +179,17 @@ export function Header() {
                           role="none"
                         >
                           {section.items.map((item) => (
-                            <motion.li key={item.href} variants={megaMenuLink} role="none">
+                            <motion.li
+                              key={item.href}
+                              variants={megaMenuLink}
+                              role="none"
+                            >
                               <Link
                                 href={item.href}
                                 className={cn(
-                                  'flex flex-col px-4 py-2.5 hover:bg-white/8 transition-colors duration-150',
-                                  'focus-visible:outline-none focus-visible:bg-white/8',
-                                  pathname === item.href && 'bg-glory-gold/10'
+                                  "flex flex-col px-4 py-2.5 hover:bg-white/8 transition-colors duration-150",
+                                  "focus-visible:outline-none focus-visible:bg-white/8",
+                                  pathname === item.href && "bg-glory-gold/10",
                                 )}
                                 role="menuitem"
                               >
@@ -263,7 +281,9 @@ export function Header() {
             >
               {/* Drawer header */}
               <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
-                <span className="font-hero text-xl text-white tracking-wider">AMERICA</span>
+                <span className="font-hero text-xl text-white tracking-wider">
+                  AMERICA
+                </span>
                 <button
                   onClick={() => setMobileOpen(false)}
                   className="p-2 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
@@ -280,15 +300,15 @@ export function Header() {
                     <Link
                       href={section.href}
                       className={cn(
-                        'flex items-center justify-between w-full px-4 py-3 rounded-xl',
-                        'font-body font-semibold text-base transition-colors duration-150',
+                        "flex items-center justify-between w-full px-4 py-3 rounded-xl",
+                        "font-body font-semibold text-base transition-colors duration-150",
                         pathname.startsWith(section.href)
-                          ? 'bg-glory-gold/15 text-glory-gold'
-                          : 'text-white/80 hover:bg-white/10 hover:text-white'
+                          ? "bg-glory-gold/15 text-glory-gold"
+                          : "text-white/80 hover:bg-white/10 hover:text-white",
                       )}
                     >
                       {section.title}
-                      {'badge' in section && (
+                      {"badge" in section && (
                         <span className="text-xs font-body text-glory-gold/70 font-normal">
                           {section.badge}
                         </span>
@@ -298,13 +318,22 @@ export function Header() {
                 ))}
 
                 <div className="mt-4 pt-4 border-t border-white/10 space-y-3">
-                  <Link href="/data" className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold">
+                  <Link
+                    href="/data"
+                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
+                  >
                     Data & Studies
                   </Link>
-                  <Link href="/gallery" className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold">
+                  <Link
+                    href="/gallery"
+                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
+                  >
                     Gallery
                   </Link>
-                  <Link href="/timeline" className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold">
+                  <Link
+                    href="/timeline"
+                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
+                  >
                     Timeline
                   </Link>
                 </div>
@@ -320,5 +349,5 @@ export function Header() {
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }

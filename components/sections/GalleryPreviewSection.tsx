@@ -1,17 +1,23 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, X, ZoomIn, MapPin } from 'lucide-react'
-import { fadeUp, scaleUp, staggerContainer } from '@/lib/animations'
-import { GALLERY_PREVIEW_IMAGES } from '@/lib/data/home'
-import { BLUR_PLACEHOLDER, cn } from '@/lib/utils'
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, X, ZoomIn, MapPin } from "lucide-react";
+import { fadeUp, scaleUp, staggerContainer } from "@/lib/animations";
+import { GALLERY_PREVIEW_IMAGES } from "@/lib/data/home";
+import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 
-type GalleryImage = (typeof GALLERY_PREVIEW_IMAGES)[number]
+type GalleryImage = (typeof GALLERY_PREVIEW_IMAGES)[number];
 
-function Lightbox({ image, onClose }: { image: GalleryImage; onClose: () => void }) {
+function Lightbox({
+  image,
+  onClose,
+}: {
+  image: GalleryImage;
+  onClose: () => void;
+}) {
   return (
     <AnimatePresence>
       <>
@@ -57,7 +63,9 @@ function Lightbox({ image, onClose }: { image: GalleryImage; onClose: () => void
 
           <div className="flex items-center gap-4 border-t border-white/10 bg-navy-dark px-6 py-4">
             <div className="flex-1">
-              <p className="font-body text-sm font-semibold text-white">{image.caption}</p>
+              <p className="font-body text-sm font-semibold text-white">
+                {image.caption}
+              </p>
               <p className="font-body text-xs text-white/50">{image.alt}</p>
             </div>
             <span className="rounded-full border border-glory-gold/25 bg-glory-gold/10 px-3 py-1 font-body text-xs font-semibold uppercase tracking-wider text-glory-gold">
@@ -67,7 +75,7 @@ function Lightbox({ image, onClose }: { image: GalleryImage; onClose: () => void
         </motion.div>
       </>
     </AnimatePresence>
-  )
+  );
 }
 
 function GalleryCard({
@@ -75,15 +83,15 @@ function GalleryCard({
   onClick,
   priority = false,
 }: {
-  image: GalleryImage
-  onClick: () => void
-  priority?: boolean
+  image: GalleryImage;
+  onClick: () => void;
+  priority?: boolean;
 }) {
   const aspectClass = {
-    tall: 'aspect-[3/4]',
-    wide: 'aspect-[16/9]',
-    normal: 'aspect-[4/3]',
-  }[image.span]
+    tall: "aspect-[3/4]",
+    wide: "aspect-[16/9]",
+    normal: "aspect-[4/3]",
+  }[image.span];
 
   return (
     <motion.div
@@ -92,10 +100,10 @@ function GalleryCard({
       onClick={onClick}
       role="button"
       tabIndex={0}
-      onKeyDown={(event) => event.key === 'Enter' && onClick()}
+      onKeyDown={(event) => event.key === "Enter" && onClick()}
       aria-label={`View full image: ${image.caption}`}
     >
-      <div className={cn('relative w-full overflow-hidden', aspectClass)}>
+      <div className={cn("relative w-full overflow-hidden", aspectClass)}>
         <Image
           src={image.src}
           alt={image.alt}
@@ -121,25 +129,31 @@ function GalleryCard({
 
         <div className="absolute bottom-0 left-0 right-0 translate-y-2 p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
           <p className="flex items-center gap-1.5 font-body text-sm font-semibold leading-tight text-white">
-            <MapPin className="h-3 w-3 shrink-0 text-glory-gold" aria-hidden="true" />
+            <MapPin
+              className="h-3 w-3 shrink-0 text-glory-gold"
+              aria-hidden="true"
+            />
             {image.caption}
           </p>
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
 
 export function GalleryPreviewSection() {
-  const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null)
+  const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
 
   return (
-    <section className="relative overflow-hidden bg-navy-dark py-24 md:py-32" aria-labelledby="gallery-heading">
+    <section
+      className="relative overflow-hidden bg-navy-dark py-24 md:py-32"
+      aria-labelledby="gallery-heading"
+    >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, margin: "-60px" }}
           variants={staggerContainer}
           className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end"
         >
@@ -161,7 +175,10 @@ export function GalleryPreviewSection() {
               className="group inline-flex items-center gap-2 font-body font-semibold text-glory-gold transition-all duration-200 hover:gap-3"
             >
               Explore Full Gallery
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              <ArrowRight
+                className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                aria-hidden="true"
+              />
             </Link>
           </motion.div>
         </motion.div>
@@ -169,33 +186,59 @@ export function GalleryPreviewSection() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
+          viewport={{ once: true, margin: "-40px" }}
           variants={staggerContainer}
           className="gallery-masonry-rows grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4"
         >
           <div className="row-span-2">
-            <GalleryCard image={GALLERY_PREVIEW_IMAGES[0]} onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[0])} priority />
+            <GalleryCard
+              image={GALLERY_PREVIEW_IMAGES[0]}
+              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[0])}
+              priority
+            />
           </div>
           <div className="col-span-2">
-            <GalleryCard image={GALLERY_PREVIEW_IMAGES[1]} onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[1])} priority />
+            <GalleryCard
+              image={GALLERY_PREVIEW_IMAGES[1]}
+              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[1])}
+              priority
+            />
           </div>
           <div>
-            <GalleryCard image={GALLERY_PREVIEW_IMAGES[2]} onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[2])} />
+            <GalleryCard
+              image={GALLERY_PREVIEW_IMAGES[2]}
+              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[2])}
+            />
           </div>
           <div>
-            <GalleryCard image={GALLERY_PREVIEW_IMAGES[3]} onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[3])} />
+            <GalleryCard
+              image={GALLERY_PREVIEW_IMAGES[3]}
+              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[3])}
+            />
           </div>
           <div className="col-span-2">
-            <GalleryCard image={GALLERY_PREVIEW_IMAGES[4]} onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[4])} />
+            <GalleryCard
+              image={GALLERY_PREVIEW_IMAGES[4]}
+              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[4])}
+            />
           </div>
           <div>
-            <GalleryCard image={GALLERY_PREVIEW_IMAGES[6]} onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[6])} />
+            <GalleryCard
+              image={GALLERY_PREVIEW_IMAGES[6]}
+              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[6])}
+            />
           </div>
           <div className="row-span-2">
-            <GalleryCard image={GALLERY_PREVIEW_IMAGES[5]} onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[5])} />
+            <GalleryCard
+              image={GALLERY_PREVIEW_IMAGES[5]}
+              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[5])}
+            />
           </div>
           <div>
-            <GalleryCard image={GALLERY_PREVIEW_IMAGES[7]} onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[7])} />
+            <GalleryCard
+              image={GALLERY_PREVIEW_IMAGES[7]}
+              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[7])}
+            />
           </div>
         </motion.div>
 
@@ -211,12 +254,20 @@ export function GalleryPreviewSection() {
             className="group inline-flex items-center gap-2 rounded-xl border border-glory-gold/30 bg-glory-gold/10 px-8 py-4 font-body text-base font-semibold text-glory-gold transition-all duration-200 hover:bg-glory-gold/20"
           >
             View All Photos
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            <ArrowRight
+              className="h-4 w-4 transition-transform group-hover:translate-x-1"
+              aria-hidden="true"
+            />
           </Link>
         </motion.div>
       </div>
 
-      {lightboxImage && <Lightbox image={lightboxImage} onClose={() => setLightboxImage(null)} />}
+      {lightboxImage && (
+        <Lightbox
+          image={lightboxImage}
+          onClose={() => setLightboxImage(null)}
+        />
+      )}
     </section>
-  )
+  );
 }

@@ -5,32 +5,32 @@
 // Performance note: Always use viewport={{ once: true, margin: "-100px" }}
 // on motion.div to prevent re-triggering on scroll up.
 
-import type { Variants, Transition } from 'framer-motion'
+import type { Variants, Transition } from "framer-motion";
 
 // ─── Shared Transitions ───────────────────────────────────────────────────────
 
 export const easeOutCubic: Transition = {
   duration: 0.8,
   ease: [0.16, 1, 0.3, 1], // Custom cubic-bezier — fast then soft landing
-}
+};
 
 export const easeOutExpo: Transition = {
   duration: 1.0,
   ease: [0.19, 1, 0.22, 1],
-}
+};
 
 export const spring: Transition = {
-  type: 'spring',
+  type: "spring",
   stiffness: 120,
   damping: 20,
   mass: 1,
-}
+};
 
 export const springBouncy: Transition = {
-  type: 'spring',
+  type: "spring",
   stiffness: 200,
   damping: 15,
-}
+};
 
 // ─── Reveal Animations ───────────────────────────────────────────────────────
 
@@ -42,16 +42,16 @@ export const fadeUp: Variants = {
     y: 0,
     transition: easeOutCubic,
   },
-}
+};
 
 /** Fade in only (no movement) */
 export const fadeIn: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
-}
+};
 
 /** Slide in from the left */
 export const slideInLeft: Variants = {
@@ -61,7 +61,7 @@ export const slideInLeft: Variants = {
     x: 0,
     transition: easeOutCubic,
   },
-}
+};
 
 /** Slide in from the right */
 export const slideInRight: Variants = {
@@ -71,7 +71,7 @@ export const slideInRight: Variants = {
     x: 0,
     transition: easeOutCubic,
   },
-}
+};
 
 /** Scale up with fade — for cards and images */
 export const scaleUp: Variants = {
@@ -81,7 +81,7 @@ export const scaleUp: Variants = {
     scale: 1,
     transition: easeOutCubic,
   },
-}
+};
 
 /** Hero text word-by-word reveal */
 export const heroWord: Variants = {
@@ -95,7 +95,7 @@ export const heroWord: Variants = {
       ease: [0.19, 1, 0.22, 1],
     },
   },
-}
+};
 
 // ─── Container / Stagger ─────────────────────────────────────────────────────
 
@@ -108,7 +108,7 @@ export const staggerContainer: Variants = {
       delayChildren: 0.2,
     },
   },
-}
+};
 
 /** Slower stagger — for featured sections */
 export const staggerSlow: Variants = {
@@ -119,7 +119,7 @@ export const staggerSlow: Variants = {
       delayChildren: 0.3,
     },
   },
-}
+};
 
 /** Fast stagger — for stat bars, small items */
 export const staggerFast: Variants = {
@@ -130,7 +130,7 @@ export const staggerFast: Variants = {
       delayChildren: 0.1,
     },
   },
-}
+};
 
 // ─── Hero Specific ────────────────────────────────────────────────────────────
 
@@ -143,7 +143,7 @@ export const heroContainer: Variants = {
       delayChildren: 0.3,
     },
   },
-}
+};
 
 /** Title line reveal in hero */
 export const heroTitle: Variants = {
@@ -157,7 +157,7 @@ export const heroTitle: Variants = {
       ease: [0.19, 1, 0.22, 1],
     },
   },
-}
+};
 
 /** Subtitle reveal */
 export const heroSubtitle: Variants = {
@@ -170,7 +170,7 @@ export const heroSubtitle: Variants = {
       ease: [0.19, 1, 0.22, 1],
     },
   },
-}
+};
 
 /** CTA buttons appear last */
 export const heroCTA: Variants = {
@@ -180,16 +180,16 @@ export const heroCTA: Variants = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: 'easeOut',
+      ease: "easeOut",
     },
   },
-}
+};
 
 // ─── Number Counter ───────────────────────────────────────────────────────────
 // Used with Framer Motion's useMotionValue + animate()
 // See: components/sections/AnimatedCounter.tsx
 
-export const COUNTER_DURATION = 2.0  // seconds
+export const COUNTER_DURATION = 2.0; // seconds
 
 // ─── Page Transitions ─────────────────────────────────────────────────────────
 
@@ -199,14 +199,14 @@ export const pageTransition: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' },
+    transition: { duration: 0.5, ease: "easeOut" },
   },
   exit: {
     opacity: 0,
     y: -10,
-    transition: { duration: 0.3, ease: 'easeIn' },
+    transition: { duration: 0.3, ease: "easeIn" },
   },
-}
+};
 
 // ─── Interactive Elements ─────────────────────────────────────────────────────
 
@@ -215,37 +215,41 @@ export const cardHover = {
   rest: {
     scale: 1,
     y: 0,
-    transition: { duration: 0.3, ease: 'easeOut' },
+    transition: { duration: 0.3, ease: "easeOut" },
   },
   hover: {
     scale: 1.02,
     y: -4,
-    transition: { duration: 0.3, ease: 'easeOut' },
+    transition: { duration: 0.3, ease: "easeOut" },
   },
-}
+};
 
 /** Button hover fill effect */
 export const buttonFill = {
-  rest:  { scaleX: 0, originX: 0 },
-  hover: { scaleX: 1, originX: 0, transition: { duration: 0.35, ease: 'easeOut' } },
-}
+  rest: { scaleX: 0, originX: 0 },
+  hover: {
+    scaleX: 1,
+    originX: 0,
+    transition: { duration: 0.35, ease: "easeOut" },
+  },
+};
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
 /** Mobile nav menu slides from right */
 export const mobileMenu: Variants = {
-  hidden: { x: '100%', opacity: 0 },
+  hidden: { x: "100%", opacity: 0 },
   visible: {
     x: 0,
     opacity: 1,
     transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
   },
   exit: {
-    x: '100%',
+    x: "100%",
     opacity: 0,
-    transition: { duration: 0.25, ease: 'easeIn' },
+    transition: { duration: 0.25, ease: "easeIn" },
   },
-}
+};
 
 /** Mega menu dropdown */
 export const megaMenu: Variants = {
@@ -254,15 +258,15 @@ export const megaMenu: Variants = {
     opacity: 1,
     y: 0,
     scaleY: 1,
-    transition: { duration: 0.25, ease: 'easeOut' },
+    transition: { duration: 0.25, ease: "easeOut" },
   },
   exit: {
     opacity: 0,
     y: -8,
     scaleY: 0.95,
-    transition: { duration: 0.15, ease: 'easeIn' },
+    transition: { duration: 0.15, ease: "easeIn" },
   },
-}
+};
 
 /** Stagger for mega menu links */
 export const megaMenuLinks: Variants = {
@@ -270,16 +274,16 @@ export const megaMenuLinks: Variants = {
   visible: {
     transition: { staggerChildren: 0.06, delayChildren: 0.1 },
   },
-}
+};
 
 export const megaMenuLink: Variants = {
   hidden: { opacity: 0, x: -10 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.3, ease: 'easeOut' },
+    transition: { duration: 0.3, ease: "easeOut" },
   },
-}
+};
 
 // ─── Chart Animations ────────────────────────────────────────────────────────
 
@@ -290,7 +294,7 @@ export const barGrow: Variants = {
     scaleY: 1,
     transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
   },
-}
+};
 
 // ─── Quote Carousel ───────────────────────────────────────────────────────────
 
@@ -299,14 +303,14 @@ export const quoteEnter: Variants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
   exit: {
     opacity: 0,
     x: -40,
-    transition: { duration: 0.4, ease: 'easeIn' },
+    transition: { duration: 0.4, ease: "easeIn" },
   },
-}
+};
 
 // ─── Timeline ────────────────────────────────────────────────────────────────
 
@@ -318,12 +322,12 @@ export const timelineItem: Variants = {
     x: 0,
     transition: easeOutCubic,
   },
-}
+};
 
 export const timelineLine: Variants = {
   hidden: { scaleY: 0, originY: 0 },
   visible: {
     scaleY: 1,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
-}
+};
