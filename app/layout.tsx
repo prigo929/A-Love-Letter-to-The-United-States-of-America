@@ -6,6 +6,7 @@ import type { Metadata, Viewport } from 'next'
 import { Bebas_Neue, Playfair_Display, Inter } from 'next/font/google'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { BackToTop, ReadingProgressBar } from '@/components/layout/PageChrome'
 import { SITE } from '@/lib/constants'
 import '@/app/globals.css'
 
@@ -142,6 +143,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       className={`${bebasNeue.variable} ${playfairDisplay.variable} ${inter.variable}`}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <head>
@@ -152,10 +154,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         {/* DNS prefetch for Unsplash images */}
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://unsplash.com" />
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
       </head>
 
       <body className="bg-navy-dark text-white antialiased font-body">
+        <ReadingProgressBar />
+
         {/* Skip to content link — accessibility */}
         <a href="#main-content" className="skip-to-content">
           Skip to main content
@@ -171,6 +177,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Footer */}
         <Footer />
+        <BackToTop />
       </body>
     </html>
   )

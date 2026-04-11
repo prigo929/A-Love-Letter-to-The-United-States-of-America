@@ -227,6 +227,13 @@
     background-size: 40px 40px;
   }
 
+  .bg-map-preview-grid {
+    background-image:
+      linear-gradient(rgba(255, 215, 0, 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 215, 0, 0.15) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
   .light-surface-copy {
     @apply text-navy-mid/70;
   }
@@ -304,6 +311,8 @@
   /* Perspective for 3D hover effects */
   .perspective-1000 { perspective: 1000px; }
   .preserve-3d      { transform-style: preserve-3d; }
+
+  .gallery-masonry-rows { grid-auto-rows: minmax(140px, auto); }
 
   /* Shimmer animation for loading states */
   .shimmer-bg {
