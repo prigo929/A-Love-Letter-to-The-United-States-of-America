@@ -96,7 +96,6 @@ const nextConfig: NextConfig = {
         destination: "/nature/national-parks",
         permanent: false,
       },
-      { source: "/economy", destination: "/economy", permanent: false },
     ];
   },
 };
