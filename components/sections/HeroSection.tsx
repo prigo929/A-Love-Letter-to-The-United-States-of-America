@@ -11,7 +11,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { motion, useMotionValueEvent, useScroll, AnimatePresence } from 'framer-motion'
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { ChevronDown, Star } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { heroContainer, heroTitle, heroSubtitle, heroCTA } from '@/lib/animations'
@@ -84,59 +84,17 @@ function ParticleCanvas() {
   )
 }
 
-function applyHeroParallax(
-  latest: number,
-  backgroundEl: HTMLDivElement | null,
-  contentEl: HTMLDivElement | null,
-  indicatorEl: HTMLDivElement | null
-) {
-  const backgroundOffset = Math.min((latest / 600) * 160, 160)
-  const contentOffset = Math.max((latest / 600) * -120, -120)
-  const fade = Math.max(0, Math.min(1, 1 - latest / 400))
-
-  if (backgroundEl) {
-    backgroundEl.style.transform = `translate3d(0, ${backgroundOffset}px, 0)`
-  }
-
-  if (contentEl) {
-    contentEl.style.transform = `translate3d(0, ${contentOffset}px, 0)`
-    contentEl.style.opacity = `${fade}`
-  }
-
-  if (indicatorEl) {
-    indicatorEl.style.opacity = `${fade}`
-  }
-}
-
 // ─── Hero Component ───────────────────────────────────────────────────────────
 
 export function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const backgroundLayerRef = useRef<HTMLDivElement>(null)
-  const contentLayerRef = useRef<HTMLDivElement>(null)
-  const scrollIndicatorRef = useRef<HTMLDivElement>(null)
+  const containerRef  = useRef<HTMLDivElement>(null)
 
   // Parallax scroll
   const { scrollY } = useScroll()
-
-  useMotionValueEvent(scrollY, 'change', (latest) => {
-    applyHeroParallax(
-      latest,
-      backgroundLayerRef.current,
-      contentLayerRef.current,
-      scrollIndicatorRef.current
-    )
-  })
-
-  useEffect(() => {
-    applyHeroParallax(
-      scrollY.get(),
-      backgroundLayerRef.current,
-      contentLayerRef.current,
-      scrollIndicatorRef.current
-    )
-  }, [scrollY])
+  const textY        = useTransform(scrollY, [0, 600], [0, -120])
+  const bgY          = useTransform(scrollY, [0, 600], [0, 160])
+  const opacity      = useTransform(scrollY, [0, 400], [1, 0])
 
   // Image carousel — cycle every 6 seconds
   useEffect(() => {
@@ -162,14 +120,14 @@ export function HeroSection() {
       aria-label="America: The Greatest Nation hero section"
     >
       {/* ── Background Image Carousel ──────────────────────────────────────── */}
-      <div ref={backgroundLayerRef} className="absolute inset-0 z-0 will-change-transform">
+      <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         <AnimatePresence>
           <motion.div
             key={currentImage}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 2, ease: 'easeInOut' }}
+            transition={{ duration: 2, ease: "easeInOut" }}
             className="absolute inset-0"
           >
             <Image
@@ -185,25 +143,38 @@ export function HeroSection() {
             />
           </motion.div>
         </AnimatePresence>
-      </div>
+      </motion.div>
 
       {/* ── Gradient Overlay ───────────────────────────────────────────────── */}
-      <div className="absolute inset-0 z-[1] hero-overlay-gradient" aria-hidden="true" />
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(10,10,30,0.90) 0%, rgba(60,59,110,0.70) 40%, rgba(139,26,38,0.60) 100%)",
+        }}
+        aria-hidden="true"
+      />
 
       {/* Bottom fade into next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 z-[2] hero-bottom-fade" aria-hidden="true" />
+      <div
+        className="absolute bottom-0 left-0 right-0 h-40 z-[2]"
+        style={{
+          background: "linear-gradient(to bottom, transparent, #0d1117)",
+        }}
+        aria-hidden="true"
+      />
 
       {/* ── Particle Stars ─────────────────────────────────────────────────── */}
       <ParticleCanvas />
 
       {/* ── Hero Content ───────────────────────────────────────────────────── */}
-      <div
-        ref={contentLayerRef}
-        className="relative z-20 text-center px-4 sm:px-6 max-w-6xl mx-auto will-change-transform"
+      <motion.div
+        className="relative z-20 text-center px-4 sm:px-6 max-w-6xl mx-auto"
+        style={{ y: textY }}
       >
         <motion.div
           variants={heroContainer}
-          initial="hidden"
+          initial={false}
           animate="visible"
           className="flex flex-col items-center gap-6 md:gap-8"
         >
@@ -222,13 +193,55 @@ export function HeroSection() {
           {/* Main title — BEBAS NEUE */}
           <motion.h1
             variants={heroTitle}
-            className="font-hero hero-title-shell leading-none text-center"
+            className="font-hero leading-none text-center"
+            style={{
+              fontSize: "clamp(56px, 11vw, 148px)",
+              letterSpacing: "0.02em",
+              fontFamily: '"Archivo Black", system-ui, sans-serif',
+              textTransform: "uppercase",
+            }}
           >
-            <span className="hero-title-top">THE UNITED</span>
+            {/* THE UNITED - Crisp White with Deep Cinematic Shadow */}
+            <span
+              style={{
+                display: "block",
+                color: "#FFFFFF",
+                textShadow:
+                  "0 4px 12px rgba(0,0,0,0.6), 0 12px 40px rgba(0,0,0,0.8)",
+              }}
+            >
+              THE UNITED
+            </span>
 
-            <span className="hero-title-middle">STATES</span>
+            {/* STATES - CSS-Only Red, White, and Blue Sweep */}
+            <span
+              style={{
+                display: "block",
+                fontWeight: 900,
+                background:
+                  "linear-gradient(90deg, #B31942 0%, #B31942 25%, #FFFFFF 45%, #FFFFFF 55%, #0A3161 75%, #0A3161 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                filter: "drop-shadow(0px 8px 16px rgba(0,0,0,0.7))",
+                margin: "0.05em 0",
+                lineHeight: "1.1",
+              }}
+            >
+              STATES
+            </span>
 
-            <span className="hero-title-bottom">OF AMERICA</span>
+            {/* OF AMERICA - Matching Top Text */}
+            <span
+              style={{
+                display: "block",
+                color: "#FFFFFF",
+                textShadow:
+                  "0 4px 12px rgba(0,0,0,0.6), 0 12px 40px rgba(0,0,0,0.8)",
+              }}
+            >
+              OF AMERICA
+            </span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -248,11 +261,12 @@ export function HeroSection() {
             {[...Array(13)].map((_, i) => (
               <Star
                 key={i}
-                className={
-                  i === 6
-                    ? 'hero-star-large text-glory-gold fill-glory-gold'
-                    : 'hero-star-small text-glory-gold fill-glory-gold'
-                }
+                className="text-glory-gold fill-glory-gold"
+                style={{
+                  width: i === 6 ? 20 : 12,
+                  height: i === 6 ? 20 : 12,
+                  opacity: i === 6 ? 1 : 0.6,
+                }}
               />
             ))}
           </motion.div>
@@ -260,7 +274,7 @@ export function HeroSection() {
           {/* CTA Buttons */}
           <motion.div
             variants={heroCTA}
-            className="flex flex-col sm:flex-row items-center gap-4 mt-2"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2 w-full"
           >
             <Button href="/economy" variant="gold" size="xl">
               Explore the Nation
@@ -273,7 +287,7 @@ export function HeroSection() {
           {/* Image carousel indicators */}
           <motion.div
             variants={heroCTA}
-            className="flex gap-2 mt-2"
+            className="flex justify-center gap-2 mt-2 w-full"
             aria-label="Background image selection"
             role="tablist"
           >
@@ -293,28 +307,31 @@ export function HeroSection() {
             ))}
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* ── Scroll Indicator ───────────────────────────────────────────────── */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2.5, duration: 0.8 }}
+      <div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
         aria-hidden="true"
       >
-        <div ref={scrollIndicatorRef} className="flex flex-col items-center gap-2 will-change-transform">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2.5, duration: 0.8 }}
+          style={{ opacity }}
+          className="flex flex-col items-center gap-2"
+        >
           <span className="font-body text-xs text-white/40 tracking-widest uppercase">
             Scroll
           </span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           >
             <ChevronDown className="w-5 h-5 text-glory-gold" />
           </motion.div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </div>
   )
 }

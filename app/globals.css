@@ -167,6 +167,7 @@
   .hero-title-shell {
     font-size: clamp(56px, 11vw, 148px);
     letter-spacing: 0.02em;
+    font-family: 'Archivo Black', system-ui, sans-serif;
     text-transform: uppercase;
   }
 
@@ -186,12 +187,12 @@
     font-weight: 900;
     background: linear-gradient(
       90deg,
-      var(--color-glory-red) 0%,
-      var(--color-glory-red) 25%,
+      #b31942 0%,
+      #b31942 25%,
       #ffffff 45%,
       #ffffff 55%,
-      var(--color-glory-blue) 75%,
-      var(--color-glory-blue) 100%
+      #0a3161 75%,
+      #0a3161 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
