@@ -236,7 +236,7 @@ export const ECONOMY_HERO_STATS: EconomyStat[] = [
     value: 47,
     suffix: '%',
     label: 'Global VC',
-    description: 'America's share of world VC',
+    description: 'America\'s share of world VC',
     source: 'NVCA 2024',
     color: 'white',
   },
