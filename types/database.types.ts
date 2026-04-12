@@ -33,6 +33,7 @@ export interface Database {
           created_at?: string;
           source?: string | null;
         };
+        Relationships: [];
       };
 
       // ── Gallery Images ────────────────────────────────────────────
@@ -64,6 +65,7 @@ export interface Database {
         Update: Partial<
           Database["public"]["Tables"]["gallery_images"]["Insert"]
         >;
+        Relationships: [];
       };
 
       // ── Timeline Events ───────────────────────────────────────────
@@ -91,6 +93,7 @@ export interface Database {
         Update: Partial<
           Database["public"]["Tables"]["timeline_events"]["Insert"]
         >;
+        Relationships: [];
       };
 
       // ── Chart Data ────────────────────────────────────────────────
@@ -118,6 +121,7 @@ export interface Database {
           created_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["chart_data"]["Insert"]>;
+        Relationships: [];
       };
 
       // ── Inventions ────────────────────────────────────────────────
@@ -147,6 +151,7 @@ export interface Database {
           created_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["inventions"]["Insert"]>;
+        Relationships: [];
       };
 
       // ── Page Visits (Analytics) ───────────────────────────────────
@@ -162,6 +167,7 @@ export interface Database {
           visited_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["page_visits"]["Insert"]>;
+        Relationships: [];
       };
 
       // ── Quiz Questions ────────────────────────────────────────────
@@ -187,6 +193,7 @@ export interface Database {
         Update: Partial<
           Database["public"]["Tables"]["quiz_questions"]["Insert"]
         >;
+        Relationships: [];
       };
     };
 
