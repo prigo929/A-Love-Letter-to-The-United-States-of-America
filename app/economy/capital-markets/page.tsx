@@ -107,7 +107,7 @@ export default function CapitalMarketsPage() {
       {/* Hero */}
       <div className="relative bg-navy-dark pt-28 pb-16">
         <Image
-          src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1920&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1920&auto=format&fit=crop&rot=180"
           alt="Stock market trading screens"
           fill
           className="object-cover opacity-20"

@@ -413,7 +413,7 @@ export default function TradeAndExportsPage() {
               </div>
               <div className="relative hidden md:block">
                 <Image
-                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=800&auto=format&fit=crop"
+                  src="https://unsplash.com/photos/vHKEcWFO41s/download?force=true&w=800"
                   alt="New York City — export capital of American financial services"
                   fill
                   className="object-cover opacity-50"

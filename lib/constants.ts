@@ -39,7 +39,7 @@ export const NAV_SECTIONS = [
     href: "/economy",
     description: "The engine of the world — $28.8T GDP and counting",
     imageSrc:
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop&rot=180",
     badge: "#1 Economy",
     items: [
       {
