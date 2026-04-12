@@ -603,7 +603,7 @@ export const ECONOMY_SUB_PAGES = [
     description:
       "NYSE, NASDAQ, and Wall Street — the financial backbone of civilization",
     imageSrc:
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop&rot=180",
     imageAlt: "Stock market trading screens",
     badge: "$47T+",
   },
