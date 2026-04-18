@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { getServerLocale } from "@/lib/i18n/server";
 
 export const metadata: Metadata = {
   title: "Culture",
   description: "An empty layout scaffold for the Culture hub page.",
 };
 
-export default function CulturePage() {
+export default async function CulturePage() {
+  const locale = await getServerLocale();
+  const breadcrumb = locale === "ro" ? "Cultură" : "Culture";
+
   return (
     <main className="min-h-screen bg-navy-dark pt-24 text-white">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <Breadcrumb items={[{ label: "Culture" }]} className="mb-8" />
+        <Breadcrumb items={[{ label: breadcrumb }]} className="mb-8" />
       </div>
 
       <section

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { getServerLocale } from "@/lib/i18n/server";
 
 export const metadata: Metadata = {
   title: "American Aesthetics",
@@ -7,14 +8,19 @@ export const metadata: Metadata = {
     "An empty visual gallery scaffold for the American Aesthetics page.",
 };
 
-export default function AmericanAestheticsPage() {
+export default async function AmericanAestheticsPage() {
+  const locale = await getServerLocale();
+  const breadcrumbCulture = locale === "ro" ? "Cultură" : "Culture";
+  const breadcrumbPage =
+    locale === "ro" ? "Estetica Americană" : "American Aesthetics";
+
   return (
     <main className="min-h-screen bg-navy-dark pt-24 text-white">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <Breadcrumb
           items={[
-            { label: "Culture", href: "/culture" },
-            { label: "American Aesthetics" },
+            { label: breadcrumbCulture, href: "/culture" },
+            { label: breadcrumbPage },
           ]}
           className="mb-8"
         />

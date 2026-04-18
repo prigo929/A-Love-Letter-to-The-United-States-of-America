@@ -7,6 +7,7 @@
 
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
+import { getServerLocale } from "@/lib/i18n/server";
 import { cn } from "@/lib/utils";
 import type { BreadcrumbItem } from "@/types/content.types";
 
@@ -16,13 +17,20 @@ interface BreadcrumbProps {
   dark?: boolean;
 }
 
-export function Breadcrumb({ items, className, dark = true }: BreadcrumbProps) {
+export async function Breadcrumb({
+  items,
+  className,
+  dark = true,
+}: BreadcrumbProps) {
+  const locale = await getServerLocale();
+  const homeLabel = locale === "ro" ? "Acasă" : "Home";
+  const ariaLabel = locale === "ro" ? "Fir de navigare" : "Breadcrumb";
   // Structured data for search engines so they can understand the page hierarchy.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "/" },
+      { "@type": "ListItem", position: 1, name: homeLabel, item: "/" },
       ...items.map((item, index) => ({
         "@type": "ListItem",
         position: index + 2,
@@ -41,7 +49,7 @@ export function Breadcrumb({ items, className, dark = true }: BreadcrumbProps) {
       />
       {/* Visible breadcrumb trail for users. */}
       <nav
-        aria-label="Breadcrumb"
+        aria-label={ariaLabel}
         className={cn(
           "flex flex-wrap items-center gap-1.5 font-body text-sm",
           dark ? "text-white/50" : "text-navy-mid/60",
@@ -56,7 +64,7 @@ export function Breadcrumb({ items, className, dark = true }: BreadcrumbProps) {
           )}
         >
           <Home className="h-3.5 w-3.5" aria-hidden="true" />
-          <span className="sr-only">Home</span>
+          <span className="sr-only">{homeLabel}</span>
         </Link>
 
         {items.map((item, index) => (

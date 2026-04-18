@@ -9,6 +9,7 @@ export type Locale = (typeof LOCALES)[number];
 
 export const DEFAULT_LOCALE: Locale = "en";
 export const LANGUAGE_STORAGE_KEY = "usa-patriot-language";
+export const LANGUAGE_COOKIE_KEY = "usa-patriot-language";
 
 export const LANGUAGE_OPTIONS = [
   { label: "English", code: "EN", flag: "🇺🇸", locale: "en" },

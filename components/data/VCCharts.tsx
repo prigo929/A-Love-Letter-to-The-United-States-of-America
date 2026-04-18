@@ -19,6 +19,7 @@ import {
 } from "recharts";
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import type { VCDataPoint, UnicornDataPoint } from "@/lib/data/economy-data";
 
 // ─── VC Bar Chart ─────────────────────────────────────────────────────────────
@@ -52,6 +53,11 @@ function VCTooltip({
 }
 
 export function VCBarChart({ data, title, source }: VCBarChartProps) {
+  const { locale } = useLanguage();
+  const ofGlobalLabel =
+    locale === "ro" ? "din venture capitalul global" : "of global VC";
+  const sourceLabel = locale === "ro" ? "Sursă:" : "Source:";
+
   return (
     <motion.div
       variants={fadeUp}
@@ -102,7 +108,23 @@ export function VCBarChart({ data, title, source }: VCBarChartProps) {
               tickFormatter={(v) => `$${v}B`}
             />
             <Tooltip
-              content={<VCTooltip />}
+              content={(props) => {
+                if (!props.active || !props.payload?.length) return null;
+                const item = props.payload[0];
+                return (
+                  <div className="rounded-xl border border-white/15 bg-navy-dark/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
+                    <p className="mb-1 font-body text-sm font-semibold text-white">
+                      {props.label}
+                    </p>
+                    <p className="font-hero text-2xl text-glory-gold">
+                      ${item.value}B
+                    </p>
+                    <p className="font-body text-xs text-white/50">
+                      {item.payload.percentage}% {ofGlobalLabel}
+                    </p>
+                  </div>
+                );
+              }}
               cursor={{ fill: "rgba(255,255,255,0.04)" }}
             />
             <Bar dataKey="investment" radius={[5, 5, 0, 0]} maxBarSize={55}>
@@ -120,7 +142,7 @@ export function VCBarChart({ data, title, source }: VCBarChartProps) {
 
       {source && (
         <p className="mt-3 text-right font-body text-xs text-white/30">
-          Source: {source}
+          {sourceLabel} {source}
         </p>
       )}
     </motion.div>
@@ -167,6 +189,10 @@ function UnicornLegend({
 }
 
 export function UnicornPieChart({ data, title, source }: UnicornPieChartProps) {
+  const { locale } = useLanguage();
+  const unicornLabel = locale === "ro" ? "unicorni" : "unicorns";
+  const sourceLabel = locale === "ro" ? "Sursă:" : "Source:";
+
   return (
     <motion.div
       variants={fadeUp}
@@ -208,7 +234,7 @@ export function UnicornPieChart({ data, title, source }: UnicornPieChartProps) {
             <Legend content={<UnicornLegend />} />
             <Tooltip
               formatter={(value: number, name: string) => [
-                `${value} unicorns`,
+                `${value} ${unicornLabel}`,
                 name,
               ]}
               contentStyle={{
@@ -225,7 +251,7 @@ export function UnicornPieChart({ data, title, source }: UnicornPieChartProps) {
 
       {source && (
         <p className="mt-3 text-right font-body text-xs text-white/30">
-          Source: {source}
+          {sourceLabel} {source}
         </p>
       )}
     </motion.div>

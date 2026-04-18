@@ -12,8 +12,9 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { FactCard } from "@/components/sections/FactCard";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
+import { getServerLocale } from "@/lib/i18n/server";
 import {
-  TRADE_OVERVIEW_PARAGRAPHS,
+  getTradeOverviewParagraphs,
   US_EXPORT_CATEGORIES,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -183,7 +184,123 @@ const TOP_EXPORT_COMPANIES = [
   },
 ];
 
-export default function TradeAndExportsPage() {
+export default async function TradeAndExportsPage() {
+  const locale = await getServerLocale();
+  const breadcrumbEconomy = locale === "ro" ? "Economie" : "Economy";
+  const pageLabel = locale === "ro" ? "Comerț și Exporturi" : "Trade & Exports";
+  const overviewParagraphs = getTradeOverviewParagraphs(locale);
+  const tradeFacts =
+    locale === "ro"
+      ? [
+          {
+            ...TRADE_FACTS[0],
+            fact: "Exporturile americane de bunuri depășesc anual 2 trilioane de dolari",
+            detail:
+              "Avioane Boeing, semiconductori Intel și Qualcomm, dispozitive medicale Medtronic, produse petrochimice ExxonMobil — America exportă cele mai complexe și valoroase bunuri de pe Pământ.",
+          },
+          {
+            ...TRADE_FACTS[1],
+            fact: "Exporturile americane de servicii depășesc 1 trilion de dolari — cele mai mari din lume",
+            detail:
+              "Servicii financiare de la Goldman Sachs și JPMorgan, software de la Microsoft și Salesforce, educație de la Harvard și MIT, divertisment de la Hollywood — exporturile americane de servicii sunt invidiate de toată lumea.",
+          },
+          {
+            ...TRADE_FACTS[2],
+            fact: "America domină exporturile aerospațiale — Boeing vinde în peste 150 de țări",
+            detail:
+              "Numai sectorul aerospațial și de apărare generează exporturi anuale de peste 132 mld. $. Fiecare mare companie aeriană din lume zboară cu motoare, avioane sau avionică americană.",
+          },
+          {
+            ...TRADE_FACTS[3],
+            fact: "America hrănește lumea — peste 58 mld. $ exporturi agricole anual",
+            detail:
+              "SUA sunt cel mai mare exportator mondial de soia, porumb, bumbac și migdale și printre lideri la grâu, carne de pasăre și porc. Fermierii americani cultivă hrană care ajunge în fiecare colț al globului.",
+          },
+          {
+            ...TRADE_FACTS[4],
+            fact: "Exporturile farmaceutice americane salvează vieți pe toate continentele",
+            detail:
+              "Pfizer, Merck, Eli Lilly, Johnson & Johnson — exporturile farmaceutice ale SUA depășesc anual 63 mld. $. Vaccinurile mRNA pentru COVID au fost singure un eveniment de export de peste 50 mld. $.",
+          },
+          {
+            ...TRADE_FACTS[5],
+            fact: "Exporturile americane de software și proprietate intelectuală depășesc 200 mld. $ anual",
+            detail:
+              "Microsoft Windows, Adobe Creative Suite, Salesforce, AWS, App Store-ul Apple — software-ul american este infrastructura invizibilă a economiei globale.",
+          },
+        ]
+      : TRADE_FACTS;
+  const copy =
+    locale === "ro"
+      ? {
+          heroAlt: "Port de containere — motorul exporturilor americane",
+          heroEyebrow: "Comerț și Exporturi",
+          heroLead: "AMERICA ALIMENTEAZĂ",
+          heroAccent: "COMERȚUL GLOBAL",
+          heroBody:
+            "Avioane, semiconductori, produse farmaceutice, petrol, produse agricole și trilioane în software și servicii financiare. America nu doar face comerț — furnizează lumii cele mai avansate și valoroase bunuri ale ei.",
+          overviewTitle: "Mașina de export a Americii",
+          exportTitle: "Principalele categorii de export ale SUA (2024)",
+          exportBody:
+            "Spre deosebire de țările în curs de dezvoltare care exportă materii prime, Statele Unite exportă cele mai sofisticate produse cu marjă mare din lume — avioane, microcipuri, dispozitive medicale și produse farmaceutice. Sunt produse care cer decenii și miliarde în cercetare și dezvoltare, consolidând poziția Americii în vârful lanțului valoric global.",
+          topCategorySuffix: "% din categoria de top",
+          exportSource: "Sursă: US Census Bureau / Bureau of Economic Analysis 2024",
+          partnersTitle: "Principalii parteneri comerciali ai Americii",
+          partnersBody:
+            "Comerțul total al SUA (bunuri + servicii) depășește anual 6 trilioane de dolari. Cele mai mari relații comerciale se întind pe tot globul — de la Canada și Mexic în cadrul USMCA până la centrele tehnologice și de producție ale Asiei.",
+          championsTitle: "Campionii globali ai exporturilor americane",
+          companyLabel: "Companie",
+          sectorLabel: "Sector",
+          hqLabel: "Sediu",
+          roleLabel: "Rol global",
+          numbersTitle: "Cifrele exporturilor",
+          servicesEyebrow: "Superputerea ascunsă a exporturilor",
+          servicesTitle: "Serviciile: surplusul comercial de un trilion de dolari al Americii",
+          servicesP1:
+            "Deși SUA au deficit comercial la bunuri, ele au un surplus masiv în servicii — aproximativ 250+ mld. $ anual. Consultanță financiară, cloud computing, licențiere TV și film, educație universitară pentru studenți străini, abonamente software și consultanță — aceste exporturi invizibile depășesc ceea ce majoritatea țărilor vând în bunuri.",
+          servicesP2:
+            "Când o bancă din Coreea plătește Goldman Sachs pentru consultanță M&A, când o firmă germană licențiază Adobe Creative Suite, când un student brazilian plătește taxa la Harvard — America exportă bogăție fără să trimită niciun container.",
+          servicesImageAlt:
+            "New York City — capitala exporturilor americane de servicii financiare",
+          quoteTitle: "Al 40-lea președinte al Statelor Unite",
+          prevLink: "← Dominația Dolarului",
+          nextLink: "↑ Prezentare economie",
+        }
+      : {
+          heroAlt: "Container port — America's export machine",
+          heroEyebrow: "Trade & Exports",
+          heroLead: "AMERICA POWERS",
+          heroAccent: "GLOBAL COMMERCE",
+          heroBody:
+            "Aircraft, semiconductors, pharmaceuticals, petroleum, agricultural products, and trillions in software and financial services. America doesn't just trade — it supplies the world with its most advanced and high-value goods.",
+          overviewTitle: "America's Export Machine",
+          exportTitle: "Top US Export Categories (2024)",
+          exportBody:
+            "Unlike developing nations that export raw commodities, the United States exports the world's most sophisticated, highest-margin goods — aircraft, microchips, medical devices, and pharmaceuticals. These are products that take decades and billions in R&D to develop, cementing America's position at the top of the global value chain.",
+          topCategorySuffix: "% of top category",
+          exportSource: "Source: US Census Bureau / Bureau of Economic Analysis 2024",
+          partnersTitle: "America's Top Trading Partners",
+          partnersBody:
+            "US total trade (goods + services) exceeds $6 trillion annually. The largest trading relationships span the entire globe — from Canada and Mexico under USMCA to Asia's technology and manufacturing hubs.",
+          championsTitle: "America's Global Export Champions",
+          companyLabel: "Company",
+          sectorLabel: "Sector",
+          hqLabel: "HQ",
+          roleLabel: "Global Role",
+          numbersTitle: "The Export Numbers",
+          servicesEyebrow: "The Hidden Export Superpower",
+          servicesTitle: "Services: America's Trillion-Dollar Trade Surplus",
+          servicesP1:
+            "While the US runs a trade deficit in goods, it runs a massive surplus in services — approximately $250+ billion annually. Financial advisory, cloud computing, film and TV licensing, university education for foreign students, software subscriptions, and consulting — these invisible exports dwarf what most nations sell in goods.",
+          servicesP2:
+            "When a Korean bank pays Goldman Sachs for M&A advisory, when a German firm licenses Adobe Creative Suite, when a Brazilian student pays Harvard tuition — America exports wealth without shipping a single container.",
+          servicesImageAlt:
+            "New York City — export capital of American financial services",
+          quoteTitle: "40th President of the United States",
+          prevLink: "← Dollar Dominance",
+          nextLink: "↑ Economy Overview",
+        };
+
   // Used to scale each export bar relative to the biggest category.
   const maxExport = Math.max(...US_EXPORT_CATEGORIES.map((c) => c.exports));
 
@@ -193,7 +310,7 @@ export default function TradeAndExportsPage() {
       <div className="relative bg-navy-dark pt-28 pb-16">
         <Image
           src={SITE_IMAGES.economyPort}
-          alt="Container port — America's export machine"
+          alt={copy.heroAlt}
           fill
           className="object-cover opacity-20"
           priority
@@ -205,22 +322,19 @@ export default function TradeAndExportsPage() {
         <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <Breadcrumb
             items={[
-              { label: "Economy", href: "/economy" },
-              { label: "Trade & Exports" },
+              { label: breadcrumbEconomy, href: "/economy" },
+              { label: pageLabel },
             ]}
             className="mb-8"
           />
-          <p className="mb-4 section-eyebrow">Trade & Exports</p>
+          <p className="mb-4 section-eyebrow">{copy.heroEyebrow}</p>
           <h1 className="mb-4 font-hero text-6xl text-white sm:text-7xl">
-            AMERICA POWERS
+            {copy.heroLead}
             <br />
-            <span className="text-glory-gold">GLOBAL COMMERCE</span>
+            <span className="text-glory-gold">{copy.heroAccent}</span>
           </h1>
           <p className="max-w-2xl font-body text-lg text-white/65 leading-relaxed">
-            Aircraft, semiconductors, pharmaceuticals, petroleum, agricultural
-            products, and trillions in software and financial services. America
-            doesn&apos;t just trade — it supplies the world with its most
-            advanced and high-value goods.
+            {copy.heroBody}
           </p>
         </div>
       </div>
@@ -231,9 +345,9 @@ export default function TradeAndExportsPage() {
           {/* Overview */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
-              America&apos;s Export Machine
+              {copy.overviewTitle}
             </h2>
-            {TRADE_OVERVIEW_PARAGRAPHS.map((para, i) => (
+            {overviewParagraphs.map((para, i) => (
               <p
                 key={i}
                 className="mb-5 font-body text-lg leading-relaxed text-white/65"
@@ -248,15 +362,10 @@ export default function TradeAndExportsPage() {
               layout feels more editorial and less dashboard-like. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
-              Top US Export Categories (2024)
+              {copy.exportTitle}
             </h2>
             <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
-              Unlike developing nations that export raw commodities, the United
-              States exports the world&apos;s most sophisticated, highest-margin
-              goods — aircraft, microchips, medical devices, and
-              pharmaceuticals. These are products that take decades and billions
-              in R&D to develop, cementing America&apos;s position at the top of
-              the global value chain.
+              {copy.exportBody}
             </p>
 
             <div className="space-y-4 rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
@@ -280,7 +389,7 @@ export default function TradeAndExportsPage() {
                         style={{ width: `${pct}%` }}
                       >
                         <span className="font-body text-xs font-semibold text-navy-dark opacity-0 group-hover:opacity-100 transition-opacity">
-                          {pct}% of top category
+                          {pct}{copy.topCategorySuffix}
                         </span>
                       </div>
                     </div>
@@ -288,7 +397,7 @@ export default function TradeAndExportsPage() {
                 );
               })}
               <p className="pt-2 text-right font-body text-xs text-white/30">
-                Source: US Census Bureau / Bureau of Economic Analysis 2024
+                {copy.exportSource}
               </p>
             </div>
           </section>
@@ -296,13 +405,10 @@ export default function TradeAndExportsPage() {
           {/* Trade partners */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
-              America&apos;s Top Trading Partners
+              {copy.partnersTitle}
             </h2>
             <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
-              US total trade (goods + services) exceeds $6 trillion annually.
-              The largest trading relationships span the entire globe — from
-              Canada and Mexico under USMCA to Asia&apos;s technology and
-              manufacturing hubs.
+              {copy.partnersBody}
             </p>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {TRADE_PARTNERS.map((partner) => (
@@ -330,7 +436,7 @@ export default function TradeAndExportsPage() {
           {/* Top export companies */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
-              America&apos;s Global Export Champions
+              {copy.championsTitle}
             </h2>
             <div className="overflow-hidden rounded-2xl border border-white/10 bg-navy-mid">
               <div className="overflow-x-auto">
@@ -338,16 +444,16 @@ export default function TradeAndExportsPage() {
                   <thead>
                     <tr className="border-b border-white/10 bg-white/5">
                       <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        Company
+                        {copy.companyLabel}
                       </th>
                       <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        Sector
+                        {copy.sectorLabel}
                       </th>
                       <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        HQ
+                        {copy.hqLabel}
                       </th>
                       <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        Global Role
+                        {copy.roleLabel}
                       </th>
                     </tr>
                   </thead>
@@ -382,10 +488,10 @@ export default function TradeAndExportsPage() {
           {/* Facts */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
-              The Export Numbers
+              {copy.numbersTitle}
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {TRADE_FACTS.map((fact) => (
+              {tradeFacts.map((fact) => (
                 <FactCard
                   key={fact.id}
                   fact={fact.fact}
@@ -403,34 +509,22 @@ export default function TradeAndExportsPage() {
             <div className="grid md:grid-cols-2">
               <div className="p-8">
                 <p className="mb-2 section-eyebrow">
-                  The Hidden Export Superpower
+                  {copy.servicesEyebrow}
                 </p>
                 <h2 className="mb-4 font-display text-2xl font-bold text-white">
-                  Services: America&apos;s Trillion-Dollar Trade Surplus
+                  {copy.servicesTitle}
                 </h2>
                 <p className="font-body text-base leading-relaxed text-white/65">
-                  While the US runs a trade deficit in goods, it runs a massive
-                  <span className="text-glory-gold font-semibold">
-                    {" "}
-                    surplus
-                  </span>{" "}
-                  in services — approximately $250+ billion annually. Financial
-                  advisory, cloud computing, film and TV licensing, university
-                  education for foreign students, software subscriptions, and
-                  consulting — these invisible exports dwarf what most nations
-                  sell in goods.
+                  {copy.servicesP1}
                 </p>
                 <p className="mt-4 font-body text-sm leading-relaxed text-white/55">
-                  When a Korean bank pays Goldman Sachs for M&A advisory, when a
-                  German firm licenses Adobe Creative Suite, when a Brazilian
-                  student pays Harvard tuition — America exports wealth without
-                  shipping a single container.
+                  {copy.servicesP2}
                 </p>
               </div>
               <div className="relative hidden md:block">
                 <Image
                   src={SITE_IMAGES.economyTradeSkyline}
-                  alt="New York City — export capital of American financial services"
+                  alt={copy.servicesImageAlt}
                   fill
                   className="object-cover opacity-50"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -443,9 +537,13 @@ export default function TradeAndExportsPage() {
           </section>
 
           <QuoteBlock
-            quote="Trade is the handmaiden of freedom. A country that can sell its best goods and ideas to the world will always maintain its competitive edge."
+            quote={
+              locale === "ro"
+                ? "Comerțul este slujitorul libertății. O țară care își poate vinde cele mai bune bunuri și idei în lume își va păstra mereu avantajul competitiv."
+                : "Trade is the handmaiden of freedom. A country that can sell its best goods and ideas to the world will always maintain its competitive edge."
+            }
             attribution="Ronald Reagan"
-            title="40th President of the United States"
+            title={copy.quoteTitle}
             variant="dark"
           />
 
@@ -455,13 +553,13 @@ export default function TradeAndExportsPage() {
               href="/economy/dollar-dominance"
               className="font-body text-sm text-white/50 hover:text-white transition-colors"
             >
-              ← Dollar Dominance
+              {copy.prevLink}
             </Link>
             <Link
               href="/economy"
               className="font-body text-sm font-semibold text-glory-gold hover:text-glory-gold-dark transition-colors"
             >
-              ↑ Economy Overview
+              {copy.nextLink}
             </Link>
           </div>
         </div>

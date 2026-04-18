@@ -22,6 +22,7 @@ import {
 } from "recharts";
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import type { GdpDataPoint } from "@/lib/data/economy-data";
 
 interface GdpBarChartProps {
@@ -102,6 +103,15 @@ export function GdpBarChart({
   valueSuffix = "T",
   valueLabel = "GDP (2024, USD Trillions)",
 }: GdpBarChartProps) {
+  const { locale } = useLanguage();
+  const localizedValueLabel =
+    locale === "ro" && valueLabel === "GDP (2024, USD Trillions)"
+      ? "PIB (2024, trilioane USD)"
+      : locale === "ro" && valueLabel === "GDP per Capita (2024, USD Thousands)"
+        ? "PIB pe cap de locuitor (2024, mii USD)"
+        : valueLabel;
+  const sourceLabel = locale === "ro" ? "Sursă:" : "Source:";
+
   return (
     <motion.div
       variants={fadeUp}
@@ -163,7 +173,7 @@ export function GdpBarChart({
               content={
                 <CustomTooltip
                   valueSuffix={valueSuffix}
-                  valueLabel={valueLabel}
+                  valueLabel={localizedValueLabel}
                 />
               }
               cursor={{ fill: "rgba(255,255,255,0.04)" }}
@@ -186,7 +196,7 @@ export function GdpBarChart({
 
       {source && (
         <p className="mt-3 text-right font-body text-xs text-white/30">
-          Source: {source}
+          {sourceLabel} {source}
         </p>
       )}
     </motion.div>
