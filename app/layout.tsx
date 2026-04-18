@@ -15,6 +15,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop, ReadingProgressBar } from "@/components/layout/PageChrome";
+import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { SITE } from "@/lib/constants";
 import "@/app/globals.css";
 
@@ -178,26 +179,28 @@ export default function RootLayout({
       </head>
 
       <body className="bg-navy-dark text-white antialiased font-body">
-        <ReadingProgressBar />
+        <LanguageProvider>
+          <ReadingProgressBar />
 
-        {/* Skip to content link — accessibility */}
-        <a href="#main-content" className="skip-to-content">
-          Skip to main content
-        </a>
+          {/* Skip to content link — accessibility */}
+          <a href="#main-content" className="skip-to-content">
+            Skip to main content
+          </a>
 
-        {/* Sticky header */}
-        <Header />
+          {/* Sticky header */}
+          <Header />
 
-        {/* Page content */}
-        <main id="main-content" tabIndex={-1} className="outline-none">
-          {children}
-        </main>
+          {/* Page content */}
+          <main id="main-content" tabIndex={-1} className="outline-none">
+            {children}
+          </main>
 
-        {/* Footer + site-wide helper widgets */}
-        <Footer />
-        <BackToTop />
-        <Analytics />
-        <SpeedInsights />
+          {/* Footer + site-wide helper widgets */}
+          <Footer />
+          <BackToTop />
+          <Analytics />
+          <SpeedInsights />
+        </LanguageProvider>
       </body>
     </html>
   );

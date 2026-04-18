@@ -6,10 +6,27 @@
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import { NavigationCard } from "@/components/sections/NavigationCard";
-import { NAV_SECTIONS } from "@/lib/constants";
+import { getLocalizedNavSections } from "@/lib/constants";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { HOME_COPY } from "@/lib/data/home";
 
 export function SectionGrid() {
+  const { locale } = useLanguage();
+  const navSections = getLocalizedNavSections(locale);
+  const copy =
+    locale === "ro"
+      ? {
+          eyebrow: "Tot Ceea Ce Face America Măreață",
+          title: "Explorează Fiecare Dimensiune",
+          summary:
+            "De la economia sa de 28,8 trilioane de dolari la 63 de parcuri naționale. De la Constituție la semiconductor. Fiecare capitol al poveștii extraordinare a Americii.",
+        }
+      : {
+          eyebrow: "Everything That Makes America Great",
+          title: "Explore Every Dimension",
+          summary: HOME_COPY.sectionGridSummary,
+        };
+
   return (
     <section
       className="bg-navy-dark relative"
@@ -34,20 +51,20 @@ export function SectionGrid() {
             variants={fadeUp}
             className="section-eyebrow justify-center"
           >
-            Everything That Makes America Great
+            {copy.eyebrow}
           </motion.p>
           <motion.h2
             variants={fadeUp}
             id="sections-heading"
             className="font-display text-h2 text-white mb-4"
           >
-            Explore Every Dimension
+            {copy.title}
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="font-body text-lg text-white/60 max-w-2xl mx-auto"
           >
-            {HOME_COPY.sectionGridSummary}
+            {copy.summary}
           </motion.p>
         </motion.div>
 
@@ -59,7 +76,7 @@ export function SectionGrid() {
           viewport={{ once: true, margin: "-40px" }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
         >
-          {NAV_SECTIONS.map((section) => (
+          {navSections.map((section) => (
             <NavigationCard
               key={section.href}
               href={section.href}

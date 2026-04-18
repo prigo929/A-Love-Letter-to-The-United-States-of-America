@@ -33,7 +33,8 @@ import {
   heroSubtitle,
   heroCTA,
 } from "@/lib/animations";
-import { HERO_IMAGES, SITE } from "@/lib/constants";
+import { getSiteTagline, HERO_IMAGES } from "@/lib/constants";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 // ─── Particle Stars Canvas ────────────────────────────────────────────────────
@@ -108,6 +109,29 @@ export function HeroSection() {
   // Local component state: which image in the slideshow is currently active.
   const [currentImage, setCurrentImage] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const { locale } = useLanguage();
+  const copy =
+    locale === "ro"
+      ? {
+          eyebrow: "Fondată în 1776 · Povestea Americii",
+          titleLines: ["STATELE", "UNITE", "ALE AMERICII"],
+          exploreCta: "Explorează Națiunea",
+          allSectionsCta: "Vezi Toate Secțiunile",
+          imageAlts: [
+            "Declarația de Independență și simboluri ale fondării Statelor Unite",
+            "Podul Golden Gate peste golful San Francisco",
+            "Lansare SpaceX pe cerul Floridei",
+            "Linia orizontului din New York la apus",
+            "Statele Unite noaptea, văzute din spațiu",
+          ],
+        }
+      : {
+          eyebrow: "Est. 1776 · The American Story",
+          titleLines: ["THE UNITED", "STATES", "OF AMERICA"],
+          exploreCta: "Explore the Nation",
+          allSectionsCta: "View All Sections",
+          imageAlts: HERO_IMAGES.map((image) => image.alt),
+        };
 
   // Parallax scroll:
   // Framer Motion reads the page scroll position and converts it into animated
@@ -128,9 +152,9 @@ export function HeroSection() {
   }, []);
 
   // Convert the shared data format into the minimal shape this component needs.
-  const images = HERO_IMAGES.map((img) => ({
+  const images = HERO_IMAGES.map((img, index) => ({
     src: img.src,
-    alt: img.alt,
+    alt: copy.imageAlts[index] ?? img.alt,
   }));
 
   return (
@@ -210,7 +234,7 @@ export function HeroSection() {
           >
             <div className="w-12 h-px bg-glory-gold" aria-hidden="true" />
             <span className="font-body text-xs md:text-sm text-glory-gold tracking-[0.35em] uppercase font-semibold">
-              Est. 1776 · The American Story
+              {copy.eyebrow}
             </span>
             <div className="w-12 h-px bg-glory-gold" aria-hidden="true" />
           </motion.div>
@@ -227,8 +251,8 @@ export function HeroSection() {
               fontFamily: '"Archivo Black", system-ui, sans-serif',
               textTransform: "uppercase",
             }}
-          >
-            {/* THE UNITED - Crisp White with Deep Cinematic Shadow */}
+            >
+              {/* THE UNITED - Crisp White with Deep Cinematic Shadow */}
             <span
               style={{
                 display: "block",
@@ -237,7 +261,7 @@ export function HeroSection() {
                   "0 4px 12px rgba(0,0,0,0.6), 0 12px 40px rgba(0,0,0,0.8)",
               }}
             >
-              THE UNITED
+              {copy.titleLines[0]}
             </span>
 
             {/* STATES - CSS-Only Red, White, and Blue Sweep */}
@@ -255,7 +279,7 @@ export function HeroSection() {
                 lineHeight: "1.1",
               }}
             >
-              STATES
+              {copy.titleLines[1]}
             </span>
 
             {/* OF AMERICA - Matching Top Text */}
@@ -267,7 +291,7 @@ export function HeroSection() {
                   "0 4px 12px rgba(0,0,0,0.6), 0 12px 40px rgba(0,0,0,0.8)",
               }}
             >
-              OF AMERICA
+              {copy.titleLines[2]}
             </span>
           </motion.h1>
 
@@ -276,7 +300,7 @@ export function HeroSection() {
             variants={heroSubtitle}
             className="font-display text-xl md:text-3xl lg:text-4xl text-white/85 italic font-normal max-w-3xl leading-relaxed"
           >
-            {SITE.tagline}
+            {getSiteTagline(locale)}
           </motion.p>
 
           {/* Star row decoration */}
@@ -304,10 +328,10 @@ export function HeroSection() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2 w-full"
           >
             <Button href="/economy" variant="gold" size="xl">
-              Explore the Nation
+              {copy.exploreCta}
             </Button>
             <Button href="/sitemap" variant="ghost" size="xl">
-              View All Sections
+              {copy.allSectionsCta}
             </Button>
           </motion.div>
 

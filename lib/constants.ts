@@ -10,6 +10,7 @@
 // start in HERO_IMAGES at the bottom of this file.
 
 import { SITE_IMAGES } from "@/lib/site-images";
+import type { Locale } from "@/lib/i18n/config";
 
 // ─── Colors (mirrors tailwind.config.ts) ─────────────────────────────────────
 export const COLORS = {
@@ -422,3 +423,320 @@ export const HERO_IMAGES = [
     alt: "The United States at night as seen from space",
   },
 ] as const;
+
+const NAV_SECTION_TRANSLATIONS_RO: Record<
+  string,
+  {
+    title: string;
+    description: string;
+    badge?: string;
+    items: Record<string, { label: string; description: string }>;
+  }
+> = {
+  "/economy": {
+    title: "Economie",
+    description: "Motorul lumii — PIB de 28,8 trilioane de dolari și în creștere",
+    badge: "#1 Economie",
+    items: {
+      "/economy/gdp-growth": {
+        label: "PIB și Dimensiune",
+        description: "Cea mai mare economie de pe Pământ",
+      },
+      "/economy/capital-markets": {
+        label: "Piețe de Capital",
+        description: "NYSE, NASDAQ și Wall Street",
+      },
+      "/economy/startups-venture-capital": {
+        label: "Capital de Risc",
+        description: "50% din venture capitalul global ajunge aici",
+      },
+      "/economy/dollar-dominance": {
+        label: "Dominația Dolarului",
+        description: "Moneda de rezervă a lumii",
+      },
+      "/economy/trade-and-exports": {
+        label: "Comerț și Exporturi",
+        description: "America alimentează comerțul global",
+      },
+    },
+  },
+  "/nature": {
+    title: "Natură",
+    description: "Din Arctica până la tropice — frumusețe naturală fără rival",
+    badge: "63 Parcuri Naționale",
+    items: {
+      "/nature/national-parks": {
+        label: "Parcuri Naționale",
+        description: "63 de parcuri pe 85 de milioane de acri",
+      },
+      "/nature/alaska": {
+        label: "Alaska",
+        description: "Ultima frontieră",
+      },
+      "/nature/rockies": {
+        label: "Munții Stâncoși",
+        description: "53 de vârfuri de peste 14.000 de picioare",
+      },
+      "/nature/grand-canyon": {
+        label: "Grand Canyon",
+        description: "Un mile adâncime, 277 de mile lungime",
+      },
+      "/nature/yellowstone": {
+        label: "Yellowstone",
+        description: "Primul parc național din lume",
+      },
+      "/nature/great-lakes": {
+        label: "Marile Lacuri",
+        description: "21% din apa dulce de la suprafață a Pământului",
+      },
+    },
+  },
+  "/military": {
+    title: "Armată",
+    description:
+      "Cea mai puternică forță militară din istoria civilizației",
+    badge: "Buget de 886 Mld. $",
+    items: {
+      "/military": {
+        label: "Prezentare Generală",
+        description: "886 Mld. $, 1,3 milioane de militari activi",
+      },
+      "/military/navy": {
+        label: "Marina SUA",
+        description: "11 grupuri de atac cu portavion",
+      },
+      "/military/air-force": {
+        label: "Forțele Aeriene SUA",
+        description: "Cele mai avansate din istorie",
+      },
+      "/military/space-force": {
+        label: "Forța Spațială",
+        description: "Prima armă spațială din lume",
+      },
+      "/military/global-bases": {
+        label: "Baze Globale",
+        description: "Peste 800 de baze în peste 80 de țări",
+      },
+      "/military/intelligence": {
+        label: "Informații",
+        description: "CIA, NSA, DIA — anvergură fără egal",
+      },
+    },
+  },
+  "/constitution": {
+    title: "Constituție",
+    description: "250 de ani de guvernare democratică neîntreruptă",
+    badge: "Fondată în 1776",
+    items: {
+      "/constitution": {
+        label: "Temelia",
+        description: "1776 — miracolul de la Philadelphia",
+      },
+      "/constitution/bill-of-rights": {
+        label: "Carta Drepturilor",
+        description: "Primele 10 amendamente",
+      },
+      "/constitution/first-amendment": {
+        label: "Primul Amendament",
+        description: "Cea mai largă libertate de exprimare de pe Pământ",
+      },
+      "/constitution/second-amendment": {
+        label: "Al Doilea Amendament",
+        description: "Dreptul de a purta arme",
+      },
+      "/constitution/federalism": {
+        label: "Federalism",
+        description: "Laboratoare ale democrației",
+      },
+      "/constitution/separation-of-powers": {
+        label: "Separarea Puterilor",
+        description: "Tirania devine aproape imposibilă",
+      },
+    },
+  },
+  "/culture": {
+    title: "Cultură",
+    description:
+      "America nu a construit doar o națiune — a construit cultura globală",
+    badge: "Cultură Globală",
+    items: {
+      "/culture": {
+        label: "Prezentare Generală",
+        description: "Hubul cultural și teza despre soft power",
+      },
+      "/culture/the-american-high-school": {
+        label: "Liceul American",
+        description: "O privire antropologică asupra experienței adolescentine",
+      },
+      "/culture/american-aesthetics": {
+        label: "Estetica Americană",
+        description: "O galerie vizuală a interioarelor americane",
+      },
+      "/culture#intro": {
+        label: "Teza Soft Power",
+        description: "Argumentul central pentru influența culturală americană",
+      },
+      "/culture#feature": {
+        label: "Melting Pot",
+        description: "Loc rezervat pentru viitorul element WebGL cultural",
+      },
+    },
+  },
+  "/innovation": {
+    title: "Inovație",
+    description:
+      "Internetul, iPhone-ul, AI-ul — toate au fost create în America",
+    badge: "Silicon Valley",
+    items: {
+      "/innovation/internet-history": {
+        label: "Internetul",
+        description: "De la ARPANET la World Wide Web",
+      },
+      "/innovation/ai-and-tech": {
+        label: "AI și Tehnologie",
+        description: "OpenAI, Google și Anthropic conduc drumul",
+      },
+      "/innovation/smartphones": {
+        label: "Smartphone-uri",
+        description: "iPhone-ul a schimbat lumea",
+      },
+      "/innovation/cloud-computing": {
+        label: "Cloud Computing",
+        description: "AWS alimentează internetul",
+      },
+      "/innovation/space-technology": {
+        label: "Tehnologie Spațială",
+        description: "De la NASA la SpaceX",
+      },
+      "/innovation/gaming": {
+        label: "Gaming",
+        description: "De la Atari la Epic Games",
+      },
+    },
+  },
+  "/science": {
+    title: "Știință",
+    description: "Au construit lumea modernă, invenție cu invenție",
+    badge: "400+ Premii Nobel",
+    items: {
+      "/science/inventions-pre-1890": {
+        label: "Invenții înainte de 1890",
+        description: "Telegraf, bec, telefon",
+      },
+      "/science/inventions-1890-1945": {
+        label: "Invenții 1890–1945",
+        description: "Avion, bandă de asamblare, fisiune nucleară",
+      },
+      "/science/inventions-post-1991": {
+        label: "Miracole Postbelice",
+        description: "Tranzistor, microcip, internet",
+      },
+      "/science/medicine-and-biotech": {
+        label: "Medicină și Biotehnologie",
+        description: "NIH, vaccinuri, progrese medicale majore",
+      },
+    },
+  },
+  "/universities": {
+    title: "Universități",
+    description:
+      "7 dintre primele 10 universități din lume sunt americane",
+    badge: "În Vârful Lumii",
+    items: {
+      "/universities/ivy-league": {
+        label: "Ivy League",
+        description: "Harvard, Yale, Princeton și multe altele",
+      },
+      "/universities/stem-powerhouses": {
+        label: "Centre STEM",
+        description: "MIT, Stanford, Caltech",
+      },
+      "/universities/business-schools": {
+        label: "Școli de Business",
+        description: "HBS, Wharton, Booth",
+      },
+      "/universities/public-research-universities": {
+        label: "Cercetare Publică",
+        description: "Berkeley, Michigan, UT Austin",
+      },
+    },
+  },
+  "/quality-of-life": {
+    title: "Calitatea Vieții",
+    description: "Cel mai ridicat nivel de trai pentru cei mai mulți oameni",
+    badge: "Visul American",
+    items: {
+      "/quality-of-life": {
+        label: "Prezentare Generală",
+        description: "Pagina principală a secțiunii despre nivelul de trai",
+      },
+      "/quality-of-life#stats": {
+        label: "Grilă de Statistici",
+        description: "Venit PPP, dimensiunea locuinței, mașini și sănătate",
+      },
+      "/quality-of-life#luxury": {
+        label: "Lux Democratizat",
+        description: "Secțiune despre abundență și acces",
+      },
+      "/quality-of-life#comparison": {
+        label: "Grafic Comparativ",
+        description: "Loc rezervat pentru graficul comparativ D3",
+      },
+    },
+  },
+  "/global-leadership": {
+    title: "Leadership Global",
+    description:
+      "Națiunea indispensabilă — conduce lumea liberă din 1945",
+    badge: "Liderul Lumii Libere",
+    items: {
+      "/global-leadership/nato": {
+        label: "Alianța NATO",
+        description: "Apărătorul lumii libere",
+      },
+      "/global-leadership/dollar-as-reserve": {
+        label: "Dolarul ca Rezervă",
+        description: "Peste 60% din rezervele globale",
+      },
+      "/global-leadership/soft-power": {
+        label: "Soft Power",
+        description: "De la Hollywood la Harvard",
+      },
+      "/global-leadership/un": {
+        label: "ONU și Instituțiile",
+        description: "Fondatorul ordinii postbelice",
+      },
+    },
+  },
+};
+
+export function getLocalizedNavSections(locale: Locale) {
+  if (locale === "en") return NAV_SECTIONS;
+
+  return NAV_SECTIONS.map((section) => {
+    const translation = NAV_SECTION_TRANSLATIONS_RO[section.href];
+
+    if (!translation) return section;
+
+    return {
+      ...section,
+      title: translation.title,
+      description: translation.description,
+      badge: translation.badge ?? section.badge,
+      items: section.items.map((item) => ({
+        ...item,
+        label: translation.items[item.href]?.label ?? item.label,
+        description:
+          translation.items[item.href]?.description ?? item.description,
+      })),
+    };
+  });
+}
+
+export function getSiteTagline(locale: Locale) {
+  if (locale === "ro") {
+    return "Cea mai mare națiune din istoria civilizației umane";
+  }
+
+  return SITE.tagline;
+}

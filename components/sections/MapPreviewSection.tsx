@@ -8,6 +8,7 @@ import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import { COLORS } from "@/lib/constants";
 import { STATE_FACTS } from "@/lib/data/home";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const GEO_URL = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
@@ -48,12 +49,100 @@ interface MapGeography {
 export function MapPreviewSection() {
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
   const [hoveredGeo, setHoveredGeo] = useState<string | null>(null);
+  const { locale } = useLanguage();
+  const stateFacts =
+    locale === "ro"
+      ? {
+          CA: {
+            fact: "A 5-a cea mai mare economie din lume dacă ar fi o țară",
+            emoji: "🌊",
+          },
+          TX: {
+            fact: "Cel mai mare producător de petrol din SUA — 43% din producția internă",
+            emoji: "🤠",
+          },
+          NY: {
+            fact: "Găzduiește NYSE — cea mai mare bursă din lume",
+            emoji: "🗽",
+          },
+          FL: {
+            fact: "Centrul Spațial Kennedy — de aici America ajunge la stele",
+            emoji: "🚀",
+          },
+          WA: {
+            fact: "Locul de naștere al Boeing, Microsoft și Amazon",
+            emoji: "💻",
+          },
+          AK: {
+            fact: "Cel mai mare stat — de două ori cât Texasul, cu 100.000 de ghețari",
+            emoji: "🏔️",
+          },
+          HI: {
+            fact: "Singurul stat american cu pădure tropicală și vulcani activi",
+            emoji: "🌺",
+          },
+          IL: {
+            fact: "Chicago — al treilea oraș al Americii și centrul financiar al Midwestului",
+            emoji: "🌃",
+          },
+          PA: {
+            fact: "Leagănul democrației americane — Constituția a fost semnată la Philadelphia",
+            emoji: "🔔",
+          },
+          MA: {
+            fact: "Acasă pentru Harvard, MIT și începutul Revoluției Americane",
+            emoji: "📚",
+          },
+          VA: {
+            fact: "Acasă pentru Pentagon — centrul celei mai puternice armate din lume",
+            emoji: "⭐",
+          },
+          NV: {
+            fact: "Las Vegas — capitala divertismentului, cu PIB anual de peste 70 Mld. $",
+            emoji: "🎰",
+          },
+          CO: {
+            fact: "53 de vârfuri peste 14.000 de picioare — mai multe decât orice alt stat",
+            emoji: "⛰️",
+          },
+          AZ: {
+            fact: "Grand Canyon — cea mai vizitată minune naturală din Statele Unite",
+            emoji: "🏜️",
+          },
+          WY: {
+            fact: "Yellowstone — primul parc național din lume, fondat în 1872",
+            emoji: "🦬",
+          },
+        }
+      : STATE_FACTS;
+  const copy =
+    locale === "ro"
+      ? {
+          eyebrow: "De la un Ocean la Altul",
+          title: "Explorează America",
+          description:
+            "Treci cu cursorul peste orice stat pentru a descoperi ce îl face excepțional. Fiecare stat spune o poveste.",
+          featured: "Stat evidențiat",
+          hover: "Treci cu cursorul pentru a explora",
+          tooltipFallback: "Apasă pentru a explora acest stat",
+          cta: "Deschide Exploratorul Complet al Hărții",
+        }
+      : {
+          eyebrow: "From Sea to Shining Sea",
+          title: "Explore America",
+          description:
+            "Hover any state to discover what makes it exceptional. Every state is a story.",
+          featured: "Featured state",
+          hover: "Hover to explore",
+          tooltipFallback: "Click to explore this state",
+          cta: "Open Full Map Explorer",
+        };
 
   const handleMouseEnter = useCallback(
     (geo: MapGeography, evt: React.MouseEvent<SVGPathElement>) => {
       const fips = geo.id?.toString().padStart(2, "0") ?? "";
       const abbrev = FIPS_TO_ABBREV[fips] ?? "";
-      const fact = STATE_FACTS[abbrev];
+      const fact = stateFacts[abbrev as keyof typeof stateFacts];
       const name = geo.properties?.name ?? abbrev;
 
       setHoveredGeo(geo.rsmKey);
@@ -65,7 +154,7 @@ export function MapPreviewSection() {
         fact,
       });
     },
-    [],
+    [stateFacts],
   );
 
   const handleMouseLeave = useCallback(() => {
@@ -101,21 +190,20 @@ export function MapPreviewSection() {
             variants={fadeUp}
             className="section-eyebrow justify-center"
           >
-            From Sea to Shining Sea
+            {copy.eyebrow}
           </motion.p>
           <motion.h2
             id="map-heading"
             variants={fadeUp}
             className="mb-4 font-display text-h2 text-white"
           >
-            Explore America
+            {copy.title}
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="mx-auto max-w-xl font-body text-lg text-white/55"
           >
-            Hover any state to discover what makes it exceptional. Every state
-            is a story.
+            {copy.description}
           </motion.p>
         </motion.div>
 
@@ -144,7 +232,7 @@ export function MapPreviewSection() {
                   geographies.map((geo: MapGeography) => {
                     const fips = geo.id?.toString().padStart(2, "0") ?? "";
                     const abbrev = FIPS_TO_ABBREV[fips] ?? "";
-                    const hasFact = !!STATE_FACTS[abbrev];
+                    const hasFact = !!stateFacts[abbrev as keyof typeof stateFacts];
                     const isHovered = hoveredGeo === geo.rsmKey;
 
                     return (
@@ -200,7 +288,7 @@ export function MapPreviewSection() {
                   aria-hidden="true"
                 />
                 <span className="font-body text-xs text-white/50">
-                  Featured state
+                  {copy.featured}
                 </span>
               </div>
               <div className="flex items-center gap-2">
@@ -209,7 +297,7 @@ export function MapPreviewSection() {
                   aria-hidden="true"
                 />
                 <span className="font-body text-xs text-white/50">
-                  Hover to explore
+                  {copy.hover}
                 </span>
               </div>
             </div>
@@ -248,7 +336,7 @@ export function MapPreviewSection() {
                     </p>
                   ) : (
                     <p className="font-body text-xs italic text-white/40">
-                      Click to explore this state
+                      {copy.tooltipFallback}
                     </p>
                   )}
                 </div>
@@ -268,7 +356,7 @@ export function MapPreviewSection() {
             href="/explorer"
             className="group inline-flex items-center gap-2 rounded-xl border border-glory-gold/30 bg-glory-gold/10 px-6 py-3 font-body text-sm font-semibold text-glory-gold transition-all duration-200 hover:bg-glory-gold/20"
           >
-            Open Full Map Explorer
+            {copy.cta}
             <ArrowRight
               className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
               aria-hidden="true"
