@@ -33,7 +33,7 @@ import globalLeadership from "@/IMAGES/USA from Space/Planet Earth.jpg";
 import homeUsaAtNightFromSpace from "@/IMAGES/USA from Space/USA at night from Space.jpg";
 import homeAirForcePlane from "@/IMAGES/Military/Air Force/home-air-force-plane.jpg";
 import homeSpacexLaunch from "@/IMAGES/Science/SpaceX launch.jpg";
-import scienceLab from "@/IMAGES/Science/spacex-OHOU-5UVIYQ-unsplash.jpg";
+import scienceLab from "@/IMAGES/Science/science-lab.jpg";
 import homeSiliconValley from "@/IMAGES/Technology/macro of a silicon wafer.jpg";
 import siliconValleyOffice from "@/IMAGES/Technology/Apple Headquarters.jpg";
 
