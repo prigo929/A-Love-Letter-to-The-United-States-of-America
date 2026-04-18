@@ -12,7 +12,9 @@ import {
   useEffect,
   useMemo,
   useState,
+  startTransition,
 } from "react";
+import { useRouter } from "next/navigation";
 import {
   DEFAULT_LOCALE,
   isLocale,
@@ -34,13 +36,29 @@ export function LanguageProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [locale, setLocale] = useState<Locale>(DEFAULT_LOCALE);
+  const router = useRouter();
+  const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
+
+  const setLocale = (nextLocale: Locale) => {
+    if (nextLocale === locale) {
+      return;
+    }
+
+    setLocaleState(nextLocale);
+
+    // Server-rendered routes like /economy and /nature read the locale from a
+    // cookie, so we refresh the current route after changing languages to make
+    // them re-render immediately instead of waiting for a manual page reload.
+    startTransition(() => {
+      router.refresh();
+    });
+  };
 
   useEffect(() => {
     try {
       const storedLocale = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
       if (storedLocale && isLocale(storedLocale)) {
-        setLocale(storedLocale);
+        setLocaleState(storedLocale);
       }
     } catch {
       // Ignore storage errors and keep the default language.

@@ -47,7 +47,7 @@ export function QuoteBlock({
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
       className={cn(
-        "relative max-w-4xl mx-auto text-center px-8 md:px-16",
+        "relative mx-auto mb-12 max-w-4xl px-8 text-center md:mb-16 md:px-16",
         className,
       )}
     >
