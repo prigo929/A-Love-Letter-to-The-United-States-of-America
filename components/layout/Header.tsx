@@ -155,15 +155,15 @@ export function Header() {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="absolute top-full left-1/2 mt-1 w-64 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/15 bg-navy-dark/92 shadow-2xl backdrop-blur-glass isolate"
+                        className="absolute top-full left-1/2 mt-1 w-64 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/20 bg-navy-dark/65 shadow-2xl backdrop-blur-2xl isolate"
                         onMouseEnter={() => handleMenuEnter(section.title)}
                         onMouseLeave={handleMenuLeave}
                         role="menu"
                       >
-                        {/* Keep the dropdown consistently dark even after scroll,
-                            so page text behind it never reduces readability. */}
+                        {/* Keep the dropdown consistently blurred in both states,
+                            but add enough tint that background text never wins. */}
                         <div
-                          className="absolute inset-0 bg-navy-dark/80 backdrop-blur-glass"
+                          className="absolute inset-0 bg-gradient-to-b from-navy-dark/45 via-navy-dark/55 to-navy-dark/65 backdrop-blur-2xl"
                           aria-hidden="true"
                         />
 
