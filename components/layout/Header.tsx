@@ -155,13 +155,20 @@ export function Header() {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 bg-navy-dark/98 backdrop-blur-glass border border-white/15 rounded-2xl shadow-2xl overflow-hidden"
+                        className="absolute top-full left-1/2 mt-1 w-64 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/15 bg-navy-dark/92 shadow-2xl backdrop-blur-glass isolate"
                         onMouseEnter={() => handleMenuEnter(section.title)}
                         onMouseLeave={handleMenuLeave}
                         role="menu"
                       >
+                        {/* Keep the dropdown consistently dark even after scroll,
+                            so page text behind it never reduces readability. */}
+                        <div
+                          className="absolute inset-0 bg-navy-dark/80 backdrop-blur-glass"
+                          aria-hidden="true"
+                        />
+
                         {/* Section header */}
-                        <div className="px-4 py-3 border-b border-white/10 bg-white/5">
+                        <div className="relative z-10 px-4 py-3 border-b border-white/10 bg-white/5">
                           <p className="font-body text-xs text-glory-gold uppercase tracking-widest font-semibold">
                             {section.title}
                           </p>
@@ -175,7 +182,7 @@ export function Header() {
                           variants={megaMenuLinks}
                           initial="hidden"
                           animate="visible"
-                          className="py-2"
+                          className="relative z-10 py-2"
                           role="none"
                         >
                           {section.items.map((item) => (
@@ -205,7 +212,7 @@ export function Header() {
                         </motion.ul>
 
                         {/* View all link */}
-                        <div className="px-4 py-3 border-t border-white/10 bg-white/5">
+                        <div className="relative z-10 px-4 py-3 border-t border-white/10 bg-white/5">
                           <Link
                             href={section.href}
                             className="font-body text-xs text-glory-gold hover:text-glory-gold-dark font-semibold tracking-wide uppercase flex items-center gap-1 transition-colors"
