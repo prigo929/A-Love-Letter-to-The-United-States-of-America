@@ -348,9 +348,6 @@ export function HeroSection() {
           style={{ opacity }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="font-body text-xs text-white/40 tracking-widest uppercase">
-            Scroll
-          </span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
