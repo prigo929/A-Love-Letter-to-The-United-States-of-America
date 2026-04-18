@@ -1,6 +1,19 @@
 # America: The Greatest Nation
 
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-18-20232A?style=for-the-badge&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Vercel](https://img.shields.io/badge/Vercel-Deploy-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-Backend-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
+[![Languages](https://img.shields.io/badge/Languages-EN%20%7C%20RO-B22234?style=for-the-badge)](#translation-system)
+[![Status](https://img.shields.io/badge/Status-Active%20Build-FFD700?style=for-the-badge&labelColor=0d1117)](#status)
+
 A cinematic Next.js site about the United States built as a long-form patriotic experience: large hero media, editorial sections, data visualizations, image-led storytelling, and deep-dive pages for topics like economy, culture, quality of life, and more.
+
+> A patriotic editorial web experience, not a template.
+>
+> The goal of this repo is to make the site feel intentional, premium, data-backed, and unmistakably American.
 
 This repo is not a generic marketing site. It is structured like a content platform:
 
@@ -9,6 +22,17 @@ This repo is not a generic marketing site. It is structured like a content platf
 - centralized image management through `IMAGES/` + `lib/site-images.ts`
 - bilingual UI support for English and Romanian
 - data-driven content in `lib/data/*` instead of hardcoded JSX
+
+## Quick Snapshot
+
+| Area | What makes this repo interesting |
+| --- | --- |
+| Visual style | cinematic hero, editorial sections, patriotic palette, strong imagery |
+| Content model | facts and media are centralized instead of being scattered in JSX |
+| Images | local asset library in `IMAGES/` managed through one registry |
+| Internationalization | English + Romanian UI with client + server locale handling |
+| Storytelling | homepage is structured like a sequence, not a landing-page template |
+| Deep dives | economy section already works as a real content vertical |
 
 ## What Is Built
 
@@ -33,6 +57,17 @@ Current routes:
 
 The culture and quality-of-life pages are currently clean scaffolds with TODO zones, ready for content drops.
 
+## Experience Highlights
+
+- rotating homepage hero with curated local imagery
+- animated mega-menu with desktop dropdowns and mobile overlay
+- reading progress bar and floating back-to-top button
+- data teaser charts with USA-highlighted comparisons
+- map preview, video preview, quote carousel, and gallery preview sections
+- economy section with full landing page plus five deep-dive routes
+- local image library with category folders for easier media management
+- Romanian translation mode wired through provider state and cookies
+
 ## Stack
 
 | Layer | Tech |
@@ -49,6 +84,8 @@ The culture and quality-of-life pages are currently clean scaffolds with TODO zo
 | Analytics | Vercel Analytics + Speed Insights |
 
 ## Dev Commands
+
+### Fast start
 
 ```bash
 npm install
@@ -71,6 +108,13 @@ Note:
 
 - `npm run dev` intentionally uses webpack because this repo previously hit Turbopack stability issues during local development.
 - production builds still use standard `next build`.
+
+### Recommended pre-push check
+
+```bash
+npm run type-check
+npm run build
+```
 
 ## Environment Variables
 
@@ -134,6 +178,22 @@ IMAGES/
   categorized local image library used by the site
 ```
 
+## Content Map
+
+If you are new to the repo, this is the shortest useful mental model:
+
+```text
+IMAGES/ -> lib/site-images.ts -> lib/data/* or lib/constants.ts -> components -> pages
+```
+
+That flow is the backbone of the project:
+
+- media lives in `IMAGES/`
+- image keys are centralized in `SITE_IMAGES`
+- content and statistics live in `lib/data/*`
+- components render the content
+- pages assemble the full experience
+
 ## Homepage Architecture
 
 The home page in [`app/page.tsx`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/app/page.tsx) is intentionally composed from reusable sections.
@@ -158,6 +218,15 @@ Support utilities mounted globally in the layout:
 - back-to-top button
 - language provider
 - analytics and speed insights
+
+## Feature Flags Without a Feature Flag System
+
+This repo does not use a formal feature-flag service right now, but it is still easy to stage work:
+
+- scaffold a route page and leave TODO zones in place
+- wire the route into navigation early if useful
+- keep facts in data files so unfinished sections do not contaminate shared components
+- keep visual experiments isolated in their own section component
 
 ## Image Workflow
 
@@ -188,6 +257,14 @@ If you want to change a homepage hero image:
 2. import it in [`site-images.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/site-images.ts)
 3. replace the hero key in [`constants.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/constants.ts)
 
+### Why this is better than raw URLs everywhere
+
+- easier swaps
+- fewer broken references
+- easier reuse across sections
+- less chance of Vercel/Linux case-sensitivity failures
+- one obvious place to audit what the live site is using
+
 ## Content Workflow
 
 Most factual content is intentionally stored in data files.
@@ -204,6 +281,13 @@ Use these rules:
 - change section order in page files
 - change visual layout in component files
 - change images via `SITE_IMAGES`
+
+### Good editing discipline
+
+- use data files for numbers, lists, cards, and repeated text
+- keep page files focused on structure
+- keep shared visuals inside components
+- keep filenames stable once the site depends on them
 
 ## Translation System
 
@@ -230,6 +314,13 @@ If you add a new route and want it translated:
 2. create a `copy` object inside the page or data getter
 3. render translated labels from that object
 
+### Current translation approach
+
+- client surfaces like the header use the language provider
+- server routes use cookie-based locale reads
+- shared datasets can expose localized getters
+- Romanian is treated as a first-class display mode, not a mock toggle
+
 ## Reusable Components Worth Knowing
 
 Layout:
@@ -255,6 +346,8 @@ Charts:
 - [DollarMarketCharts.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/data/DollarMarketCharts.tsx)
 
 ## “How Do I Change X?”
+
+This is the practical operator section.
 
 ### Change homepage section order
 
@@ -303,6 +396,10 @@ This is not a neutral design system. If you add new sections, preserve the estab
 - patriotic palette
 - minimal generic placeholder UI
 
+### Design principle
+
+If a new section looks like a generic SaaS block, it is probably wrong for this repo.
+
 ## Deployment
 
 The project is designed for Vercel.
@@ -320,6 +417,14 @@ If Vercel fails on static image imports:
 
 - check the exact filename casing in [`site-images.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/site-images.ts)
 - remember macOS may hide case mistakes that Linux CI will reject
+
+### Build sanity checklist
+
+- `npm run type-check` passes
+- local image paths match real file names exactly
+- new routes are linked intentionally
+- translated routes still render without client-only assumptions
+- no content was hardcoded into JSX if it belongs in `lib/data/*`
 
 ## Practical Notes
 
@@ -340,16 +445,28 @@ If Vercel fails on static image imports:
 - Romanian translation mode wired through real cookie + provider state
 - economy section built as a real editorial/data hybrid, not just cards and charts
 
+## Roadmap Energy
+
+Good next expansions for this repo:
+
+- finish the culture hub with real content blocks and media
+- turn quality-of-life from scaffold to full narrative section
+- deepen the explorer and gallery experiences
+- tighten per-route metadata and translated SEO copy
+- expand the Romanian coverage to every remaining visible string
+- continue improving the README as the repo gets more opinionated
+
 ## Status
 
-This repo already has a strong home page and a substantial economy section.
-
-Most likely next expansion areas:
-
-- filling the culture scaffolds
-- filling the quality-of-life scaffolds
-- expanding map explorer and gallery depth
-- tightening SEO metadata on all translated routes
+| Area | Status |
+| --- | --- |
+| Homepage | strong and feature-rich |
+| Economy | substantial and already production-shaped |
+| Culture | scaffolded, ready for content |
+| Quality of Life | scaffolded, ready for content |
+| Translation | live for shared UI and major route content |
+| Image system | centralized and local-first |
+| README | now aligned with the actual repo |
 
 ---
 
