@@ -12,26 +12,26 @@
 // Keep keys descriptive and stable. For example, `homeGrandCanyon` tells you
 // both where the image is used (home page) and what it shows (Grand Canyon).
 
-import chicagoSkyline from "@/IMAGES/Cities/chicago-skyline.jpg";
-import homeNycSkyline from "@/IMAGES/Cities/home-nyc-skyline.jpg";
-import constitutionDocument from "@/IMAGES/Constitution/constitution-document.jpg";
+import chicagoSkyline from "@/IMAGES/Cities/Golden Gate Bridge.jpg";
+import homeNycSkyline from "@/IMAGES/Cities/Manhattan One World Trade Center Close-up.jpg";
+import constitutionDocument from "@/IMAGES/Constitution/We The People Wooden Background.jpg";
 import cultureFlagCrowd from "@/IMAGES/Culture/culture-flag-crowd.jpg";
 import harvardCampus from "@/IMAGES/Education/harvard-campus.jpg";
 import economyDollar from "@/IMAGES/Economy/economy-dollar.jpg";
 import economyGrowth from "@/IMAGES/Economy/economy-growth.jpg";
 import economyNYSEUpsideDown from "@/IMAGES/Economy/economy-nyse-upside-down.jpg";
 import economyPort from "@/IMAGES/Economy/economy-port.jpg";
-import economyTradeSkyline from "@/IMAGES/Economy/economy-trade-skyline.jpg";
+import economyTradeSkyline from "@/IMAGES/Infrastructure/I-110 and I-115 Interchange Los Angeles.jpg";
 import qualityOfLifeHouse from "@/IMAGES/Housing/quality-of-life-house.jpg";
 import grandTeton from "@/IMAGES/Landscapes/grand-teton.jpg";
 import homeGrandCanyon from "@/IMAGES/Landscapes/home-grand-canyon.jpg";
 import homeWheatFields from "@/IMAGES/Landscapes/home-wheat-fields.jpg";
 import yellowstonePrismatic from "@/IMAGES/Landscapes/yellowstone-prismatic.jpg";
-import globalLeadership from "@/IMAGES/Leadership/global-leadership.jpg";
+import globalLeadership from "@/IMAGES/USA from Space/Planet Earth.jpg";
 import homeAirForcePlane from "@/IMAGES/Military/home-air-force-plane.jpg";
-import scienceLab from "@/IMAGES/Science/science-lab.jpg";
-import homeSiliconValley from "@/IMAGES/Technology/home-silicon-valley.jpg";
-import siliconValleyOffice from "@/IMAGES/Technology/silicon-valley-office.jpg";
+import scienceLab from "@/IMAGES/Science/spacex-OHOU-5UVIYQ-unsplash.jpg";
+import homeSiliconValley from "@/IMAGES/Technology/macro of a silicon wafer.jpg";
+import siliconValleyOffice from "@/IMAGES/Technology/Apple Headquarters.jpg";
 
 // Export plain `.src` strings so the rest of the app can use them in Next Image
 // components without caring which physical file they came from.
