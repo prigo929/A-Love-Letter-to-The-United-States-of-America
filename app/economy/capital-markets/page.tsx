@@ -14,10 +14,11 @@ import { FactCard } from "@/components/sections/FactCard";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { SP500Chart } from "@/components/data/SP500Chart";
 import { MarketCapChart } from "@/components/data/DollarMarketCharts";
+import { getServerLocale } from "@/lib/i18n/server";
 import {
   SP500_HISTORY,
   MARKET_CAP_BY_EXCHANGE,
-  CAPITAL_MARKETS_FACTS,
+  getCapitalMarketsFacts,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -111,14 +112,128 @@ const MAJOR_US_EXCHANGES = [
   },
 ];
 
-export default function CapitalMarketsPage() {
+export default async function CapitalMarketsPage() {
+  const locale = await getServerLocale();
+  const breadcrumbEconomy = locale === "ro" ? "Economie" : "Economy";
+  const pageLabel = locale === "ro" ? "Piețe de Capital" : "Capital Markets";
+  const sharedFacts = getCapitalMarketsFacts(locale);
+  const localFacts =
+    locale === "ro"
+      ? [
+          {
+            ...CAPITAL_MARKETS_EXTENDED_FACTS[0],
+            fact: "NYSE funcționează neîntrerupt din 1792, încă de la acordul Buttonwood",
+            detail:
+              "Fondată sub un platan pe Wall Street, NYSE este mai veche decât majoritatea națiunilor de pe Pământ și centrul finanțelor globale de peste 230 de ani.",
+          },
+          {
+            ...CAPITAL_MARKETS_EXTENDED_FACTS[1],
+            fact: "ETF-urile pe S&P 500 tranzacționează peste 50 mld. $ în fiecare zi de bursă",
+            detail:
+              "Doar ETF-ul SPY depășește frecvent 50 de miliarde de dolari volum zilnic — mai mult decât PIB-ul anual al multor națiuni, tranzacționat într-o singură zi pe o singură bursă americană.",
+          },
+          {
+            ...CAPITAL_MARKETS_EXTENDED_FACTS[2],
+            fact: "Private equity-ul american administrează peste 12 trilioane de dolari",
+            detail:
+              "Industria americană de private equity — Blackstone, Apollo, KKR, Carlyle — administrează mai mult capital decât PIB-ul Chinei, Japoniei și Germaniei la un loc doar în piețele private.",
+          },
+          {
+            ...CAPITAL_MARKETS_EXTENDED_FACTS[3],
+            fact: "70% din activele hedge fund-urilor globale sunt gestionate din Statele Unite",
+            detail:
+              "Greenwich, Connecticut și Midtown Manhattan găzduiesc cei mai sofisticați alocatori de capital din lume. Numai Bridgewater al lui Ray Dalio administrează peste 150 mld. $.",
+          },
+          {
+            ...CAPITAL_MARKETS_EXTENDED_FACTS[4],
+            fact: "Piața IPO din SUA strânge mai mult capital decât următoarele 5 burse la un loc",
+            detail:
+              "Companii din toată lumea — Alibaba, Arm Holdings, Spotify — aleg listarea pe bursele americane pentru a accesa profunzimea capitalului american. Nu există rival.",
+          },
+          {
+            ...CAPITAL_MARKETS_EXTENDED_FACTS[5],
+            fact: "Piața americană a titlurilor de Trezorerie este cea mai lichidă piață financiară din istorie",
+            detail:
+              "Peste 700 de miliarde de dolari în titluri de Trezorerie SUA se tranzacționează în fiecare zi — mai mult decât PIB-ul anual al majorității țărilor. Această lichiditate este fundația stabilității financiare globale.",
+          },
+        ]
+      : CAPITAL_MARKETS_EXTENDED_FACTS;
+  const exchanges =
+    locale === "ro"
+      ? [
+          {
+            ...MAJOR_US_EXCHANGES[0],
+            description:
+              "Cea mai mare bursă din lume după capitalizare — casa celor mai iconice corporații ale lumii, de la JPMorgan Chase la Berkshire Hathaway.",
+          },
+          {
+            ...MAJOR_US_EXCHANGES[1],
+            description:
+              "Bursa tehnologiei — locul unde sunt listate Apple, Microsoft, NVIDIA, Alphabet, Amazon și Meta. NASDAQ este sinonimă cu dominația tehnologică americană.",
+          },
+          {
+            ...MAJOR_US_EXCHANGES[2],
+            description:
+              "Cea mai importantă bursă de derivate din lume — stabilește prețuri globale pentru orice, de la futures pe porumb la swap-uri de dobândă și opțiuni valutare.",
+          },
+        ]
+      : MAJOR_US_EXCHANGES;
+  const copy =
+    locale === "ro"
+      ? {
+          heroAlt: "Ecrane de tranzacționare bursieră",
+          heroEyebrow: "Piețe de Capital",
+          heroLead: "WALL STREET",
+          heroAccent: "ALIMENTEAZĂ LUMEA",
+          heroBody:
+            "NYSE + NASDAQ: 47 de trilioane de dolari capitalizare combinată. Titlurile de Trezorerie americane ca reper global pentru rata fără risc. Cele mai adânci, transparente și lichide piețe de capital din istoria umană.",
+          marketCapTitle: "Capitalizarea burselor — SUA vs. lume",
+          marketCapBody:
+            "Statele Unite găzduiesc cele mai mari două burse de pe Pământ — la o distanță uriașă. NYSE (25,1T $) și NASDAQ (22,4T $) reprezintă împreună mai multă capitalizare decât următoarele cinci burse combinate. Bursele americane nu doar conduc — domină.",
+          marketCapChartTitle: "Capitalizarea burselor globale (2024, trilioane USD)",
+          benchmarkTitle: "S&P 500 — reperul lumii",
+          benchmarkBody:
+            "Niciun indice nu este urmărit mai atent. Niciun indice nu este replicat mai larg. S&P 500 urmărește cele mai mari 500 de companii americane listate public — iar performanța lui este, de facto, fișa de evaluare a prosperității capitaliste globale. Din 1980, a generat randamente totale de peste 3.900%.",
+          benchmarkChartTitle:
+            "S&P 500 — 45 de ani de performanță a piețelor americane de capital",
+          exchangesTitle: "Marile burse ale Americii",
+          estLabel: "Înființată",
+          advantageTitle: "Avantajul piețelor de capital",
+          quoteTitle: "Președinte și CEO, Berkshire Hathaway — Omaha, Nebraska",
+          prevLink: "← PIB și Dimensiune",
+          nextLink: "Startup-uri și VC →",
+        }
+      : {
+          heroAlt: "Stock market trading screens",
+          heroEyebrow: "Capital Markets",
+          heroLead: "WALL STREET",
+          heroAccent: "POWERS THE WORLD",
+          heroBody:
+            "NYSE + NASDAQ: $47 trillion in combined market capitalization. The US Treasury as the world's risk-free benchmark. The deepest, most transparent, most liquid capital markets in human history.",
+          marketCapTitle: "Stock Exchange Market Cap — US vs World",
+          marketCapBody:
+            "The United States hosts the two largest stock exchanges on Earth — by a staggering margin. The NYSE ($25.1T) and NASDAQ ($22.4T) together represent more market capitalization than the next five exchanges combined. American exchanges don't just lead — they dominate.",
+          marketCapChartTitle: "Global Stock Exchange Market Cap (2024, USD Trillions)",
+          benchmarkTitle: "The S&P 500 — The World's Benchmark",
+          benchmarkBody:
+            "No index is watched more closely. No index is replicated more widely. The S&P 500 tracks the 500 largest publicly traded US companies — and its performance is the world's de facto report card on capitalist prosperity. Since 1980, it has delivered total returns exceeding 3,900%.",
+          benchmarkChartTitle:
+            "S&P 500 — 45 Years of American Capital Market Performance",
+          exchangesTitle: "America's Major Exchanges",
+          estLabel: "Est.",
+          advantageTitle: "The Capital Markets Advantage",
+          quoteTitle: "Chairman & CEO, Berkshire Hathaway — Omaha, Nebraska",
+          prevLink: "← GDP & Scale",
+          nextLink: "Startups & VC →",
+        };
+
   return (
     <>
       {/* Hero */}
       <div className="relative bg-navy-dark pt-28 pb-16">
         <Image
           src={SITE_IMAGES.economyNYSEUpsideDown}
-          alt="Stock market trading screens"
+          alt={copy.heroAlt}
           fill
           className="object-cover opacity-20"
           priority
@@ -130,21 +245,19 @@ export default function CapitalMarketsPage() {
         <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <Breadcrumb
             items={[
-              { label: "Economy", href: "/economy" },
-              { label: "Capital Markets" },
+              { label: breadcrumbEconomy, href: "/economy" },
+              { label: pageLabel },
             ]}
             className="mb-8"
           />
-          <p className="mb-4 section-eyebrow">Capital Markets</p>
+          <p className="mb-4 section-eyebrow">{copy.heroEyebrow}</p>
           <h1 className="mb-4 font-hero text-6xl text-white sm:text-7xl">
-            WALL STREET
+            {copy.heroLead}
             <br />
-            <span className="text-glory-gold">POWERS THE WORLD</span>
+            <span className="text-glory-gold">{copy.heroAccent}</span>
           </h1>
           <p className="max-w-2xl font-body text-lg text-white/65 leading-relaxed">
-            NYSE + NASDAQ: $47 trillion in combined market capitalization. The
-            US Treasury as the world&apos;s risk-free benchmark. The deepest,
-            most transparent, most liquid capital markets in human history.
+            {copy.heroBody}
           </p>
         </div>
       </div>
@@ -156,19 +269,15 @@ export default function CapitalMarketsPage() {
               Uses a reusable chart component instead of custom SVG code in this file. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
-              Stock Exchange Market Cap — US vs World
+              {copy.marketCapTitle}
             </h2>
             <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
-              The United States hosts the two largest stock exchanges on Earth —
-              by a staggering margin. The NYSE ($25.1T) and NASDAQ ($22.4T)
-              together represent more market capitalization than the next five
-              exchanges combined. American exchanges don&apos;t just lead — they
-              dominate.
+              {copy.marketCapBody}
             </p>
             <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
               <MarketCapChart
                 data={MARKET_CAP_BY_EXCHANGE}
-                title="Global Stock Exchange Market Cap (2024, USD Trillions)"
+                title={copy.marketCapChartTitle}
                 source="World Federation of Exchanges 2024"
               />
             </div>
@@ -177,19 +286,15 @@ export default function CapitalMarketsPage() {
           {/* S&P 500 */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
-              The S&P 500 — The World&apos;s Benchmark
+              {copy.benchmarkTitle}
             </h2>
             <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
-              No index is watched more closely. No index is replicated more
-              widely. The S&P 500 tracks the 500 largest publicly traded US
-              companies — and its performance is the world&apos;s de facto
-              report card on capitalist prosperity. Since 1980, it has delivered
-              total returns exceeding 3,900%.
+              {copy.benchmarkBody}
             </p>
             <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
               <SP500Chart
                 data={SP500_HISTORY}
-                title="S&P 500 — 45 Years of American Capital Market Performance"
+                title={copy.benchmarkChartTitle}
                 source="S&P Global / Yahoo Finance"
               />
             </div>
@@ -199,10 +304,10 @@ export default function CapitalMarketsPage() {
               Generated from the MAJOR_US_EXCHANGES array above. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
-              America&apos;s Major Exchanges
+              {copy.exchangesTitle}
             </h2>
             <div className="grid gap-5 md:grid-cols-3">
-              {MAJOR_US_EXCHANGES.map((exchange) => (
+              {exchanges.map((exchange) => (
                 <div
                   key={exchange.name}
                   className="rounded-2xl border border-white/10 bg-navy-mid p-6 transition-colors hover:border-glory-gold/30"
@@ -212,7 +317,7 @@ export default function CapitalMarketsPage() {
                       {exchange.name}
                     </h3>
                     <span className="rounded-full bg-white/8 px-2.5 py-1 font-body text-xs text-white/50">
-                      Est. {exchange.founded}
+                      {copy.estLabel} {exchange.founded}
                     </span>
                   </div>
                   <p className="mb-2 font-hero text-xl text-white">
@@ -232,10 +337,10 @@ export default function CapitalMarketsPage() {
           {/* Extended facts */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
-              The Capital Markets Advantage
+              {copy.advantageTitle}
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {CAPITAL_MARKETS_EXTENDED_FACTS.map((fact) => (
+              {[...sharedFacts, ...localFacts].map((fact) => (
                 <FactCard
                   key={fact.id}
                   fact={fact.fact}
@@ -249,9 +354,13 @@ export default function CapitalMarketsPage() {
           </section>
 
           <QuoteBlock
-            quote="The stock market is a mechanism for transferring wealth from the impatient to the patient. American investors who stayed patient through every crisis became the wealthiest people in history."
+            quote={
+              locale === "ro"
+                ? "Bursa este un mecanism prin care averea este transferată de la cei nerăbdători la cei răbdători. Investitorii americani care au rămas răbdători prin fiecare criză au devenit cei mai bogați oameni din istorie."
+                : "The stock market is a mechanism for transferring wealth from the impatient to the patient. American investors who stayed patient through every crisis became the wealthiest people in history."
+            }
             attribution="Warren Buffett"
-            title="Chairman & CEO, Berkshire Hathaway — Omaha, Nebraska"
+            title={copy.quoteTitle}
             variant="dark"
           />
 
@@ -261,13 +370,13 @@ export default function CapitalMarketsPage() {
               href="/economy/gdp-growth"
               className="font-body text-sm text-white/50 transition-colors hover:text-white"
             >
-              ← GDP & Scale
+              {copy.prevLink}
             </Link>
             <Link
               href="/economy/startups-venture-capital"
               className="font-body text-sm font-semibold text-glory-gold transition-colors hover:text-glory-gold-dark"
             >
-              Startups & VC →
+              {copy.nextLink}
             </Link>
           </div>
         </div>

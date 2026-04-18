@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { getServerLocale } from "@/lib/i18n/server";
 
 export const metadata: Metadata = {
   title: "Quality of Life",
@@ -7,11 +8,21 @@ export const metadata: Metadata = {
     "An empty layout scaffold for the Quality of Life section.",
 };
 
-export default function QualityOfLifePage() {
+export default async function QualityOfLifePage() {
+  const locale = await getServerLocale();
+  const copy =
+    locale === "ro"
+      ? {
+          breadcrumb: "Calitatea Vieții",
+        }
+      : {
+          breadcrumb: "Quality of Life",
+        };
+
   return (
     <main className="min-h-screen bg-navy-dark pt-24 text-white">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <Breadcrumb items={[{ label: "Quality of Life" }]} className="mb-8" />
+        <Breadcrumb items={[{ label: copy.breadcrumb }]} className="mb-8" />
       </div>
 
       <section

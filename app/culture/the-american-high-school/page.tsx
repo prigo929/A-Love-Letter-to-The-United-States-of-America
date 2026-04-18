@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { getServerLocale } from "@/lib/i18n/server";
 
 // TODO: Import and call useSoundscape hook here for gym sounds
 
@@ -9,14 +10,19 @@ export const metadata: Metadata = {
     "An empty anthropological-style layout scaffold for the American High School page.",
 };
 
-export default function AmericanHighSchoolPage() {
+export default async function AmericanHighSchoolPage() {
+  const locale = await getServerLocale();
+  const breadcrumbCulture = locale === "ro" ? "Cultură" : "Culture";
+  const breadcrumbPage =
+    locale === "ro" ? "Liceul American" : "The American High School";
+
   return (
     <main className="min-h-screen bg-navy-dark pt-24 text-white">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <Breadcrumb
           items={[
-            { label: "Culture", href: "/culture" },
-            { label: "The American High School" },
+            { label: breadcrumbCulture, href: "/culture" },
+            { label: breadcrumbPage },
           ]}
           className="mb-8"
         />

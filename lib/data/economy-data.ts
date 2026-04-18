@@ -8,6 +8,7 @@
 // - If you want to change chart titles/layout, edit the React page/component.
 
 import { SITE_IMAGES } from "@/lib/site-images";
+import type { Locale } from "@/lib/i18n/config";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -647,3 +648,278 @@ export const ECONOMY_SUB_PAGES = [
     badge: "$2T+ Exports",
   },
 ];
+
+export function getEconomyHeroStats(locale: Locale) {
+  if (locale === "ro") {
+    return [
+      {
+        ...ECONOMY_HERO_STATS[0],
+        label: "PIB (2024)",
+        description: "Cea mai mare economie din istoria umană",
+      },
+      {
+        ...ECONOMY_HERO_STATS[1],
+        label: "Piețele Bursiere SUA",
+        description: "NYSE + NASDAQ împreună",
+      },
+      {
+        ...ECONOMY_HERO_STATS[2],
+        label: "Sedii Fortune 500",
+        description: "Mai multe decât orice altă națiune",
+      },
+      {
+        ...ECONOMY_HERO_STATS[3],
+        label: "VC Global",
+        description: "Ponderea Americii din venture capitalul mondial",
+      },
+    ];
+  }
+
+  return ECONOMY_HERO_STATS;
+}
+
+export function getGdpFacts(locale: Locale) {
+  if (locale === "ro") {
+    return [
+      {
+        ...GDP_FACTS[0],
+        fact: "SUA reprezintă aproximativ 25% din PIB-ul mondial total",
+        detail:
+          "Cu doar 4,2% din populația lumii, America generează un sfert din întreaga producție economică globală.",
+      },
+      {
+        ...GDP_FACTS[1],
+        fact: "Cea mai mare economie pentru peste 100 de ani consecutivi",
+        detail:
+          "Statele Unite sunt cea mai mare economie a lumii încă de la sfârșitul anilor 1800 — o domnie neîntreruptă de peste un secol.",
+      },
+      {
+        ...GDP_FACTS[2],
+        fact: "Cheltuielile consumatorilor americani ≈ întregul PIB al Germaniei",
+        detail:
+          "Consumul gospodăriilor americane este de aproximativ 19 trilioane de dolari — mai mare decât PIB-ul oricărei națiuni, cu excepția SUA.",
+      },
+      {
+        ...GDP_FACTS[3],
+        fact: "12 dintre cele mai valoroase 20 de companii din lume sunt americane",
+        detail:
+          "Apple, Microsoft, NVIDIA, Alphabet, Amazon, Meta, Berkshire Hathaway — elita corporativă globală este covârșitor americană.",
+      },
+    ];
+  }
+
+  return GDP_FACTS;
+}
+
+export function getCapitalMarketsFacts(locale: Locale) {
+  if (locale === "ro") {
+    return [
+      {
+        ...CAPITAL_MARKETS_FACTS[0],
+        fact: "NYSE funcționează neîntrerupt din 1792",
+        detail:
+          "Bursa din New York este cea mai mare bursă din lume după capitalizare — peste 25 de trilioane de dolari — și ancora financiară a lumii de peste 230 de ani.",
+      },
+      {
+        ...CAPITAL_MARKETS_FACTS[1],
+        fact: "Titlurile de Trezorerie SUA sunt reperul global pentru rata fără risc",
+        detail:
+          "Orice model financiar de pe Pământ folosește randamentele Trezoreriei SUA ca bază pentru randamentele fără risc. Piața americană de obligațiuni are 27 de trilioane de dolari — cea mai adâncă și mai lichidă din istorie.",
+      },
+      {
+        ...CAPITAL_MARKETS_FACTS[2],
+        fact: "NASDAQ listează cele mai valoroase companii tech din istorie",
+        detail:
+          "Apple, Microsoft, NVIDIA, Alphabet, Amazon, Meta — toate listate pe o singură bursă americană. NASDAQ Composite a generat un randament de peste 4.500% din 1985.",
+      },
+    ];
+  }
+
+  return CAPITAL_MARKETS_FACTS;
+}
+
+export function getVcFacts(locale: Locale) {
+  if (locale === "ro") {
+    return [
+      {
+        ...VC_FACTS[0],
+        fact: "America atrage aproximativ 47% din toate investițiile globale de VC",
+        detail:
+          "În 2023, startup-urile din SUA au atras aproximativ 170 de miliarde de dolari în venture capital — aproape jumătate din tot VC-ul investit pe Pământ, deși SUA au doar 4% din populația lumii.",
+      },
+      {
+        ...VC_FACTS[1],
+        fact: "659+ unicorni americani — peste 52% din totalul global",
+        detail:
+          'Un "unicorn" este o companie privată evaluată la cel puțin 1 miliard de dolari. America a construit mai multe astfel de companii decât toate celelalte națiuni la un loc.',
+      },
+      {
+        ...VC_FACTS[2],
+        fact: "Peste 55% dintre startup-urile americane de un miliard de dolari au fost fondate de imigranți",
+        detail:
+          "Elon Musk, Sergey Brin, Andy Grove, Jensen Huang — deschiderea Americii către talent este o superputere economică de bază.",
+      },
+    ];
+  }
+
+  return VC_FACTS;
+}
+
+export function getDollarFacts(locale: Locale) {
+  if (locale === "ro") {
+    return [
+      {
+        ...DOLLAR_FACTS[0],
+        fact: "USD este păstrat în peste 57% din toate rezervele valutare globale",
+        detail:
+          "Băncile centrale din toată lumea dețin împreună 6,8 trilioane de dolari în rezerve americane. Următoarea monedă — Euro — are doar 20%.",
+      },
+      {
+        ...DOLLAR_FACTS[1],
+        fact: "Peste 40% din tranzacțiile globale SWIFT sunt în dolari americani",
+        detail:
+          "Comerțul internațional, materiile prime, petrolul, gazele, aurul — toate sunt evaluate și decontate în dolari. Asta creează un avantaj structural extraordinar pentru economia americană.",
+      },
+      {
+        ...DOLLAR_FACTS[2],
+        fact: "Piețele globale de petrol sunt decontate aproape exclusiv în dolari",
+        detail:
+          "De la acordurile petrodolarului din anii 1970, petrolul — cea mai tranzacționată marfă din lume — este denominat în USD în aproape toate piețele de pe Pământ.",
+      },
+    ];
+  }
+
+  return DOLLAR_FACTS;
+}
+
+export function getEconomyOverviewParagraphs(locale: Locale) {
+  if (locale === "ro") {
+    return [
+      "Economia Statelor Unite este cea mai puternică forță economică din istoria civilizației umane — nu din întâmplare, nu doar datorită geografiei, ci prin design. Un sistem constituțional care protejează proprietatea privată, impune respectarea contractelor și răsplătește inițiativa individuală a creat condițiile pentru o explozie de bogăție, productivitate și inovație fără egal în 5.000 de ani de istorie economică.",
+      "La 28,8 trilioane de dolari în 2024, economia SUA nu este doar cea mai mare — este categoric diferită de orice altă economie de pe Pământ. Este simultan cea mai mare piață de consum din lume, cel mai important centru financiar, principala destinație pentru investițiile străine directe, liderul inovării tehnologice și emitentul monedei de rezervă globale. Nicio altă națiune nu a purtat vreodată toate aceste cinci coroane în același timp.",
+      "Cifrele sunt uluitoare, dar povestea din spatele lor este și mai remarcabilă: un sistem construit pe piețe libere, bariere reduse la intrare, toleranță pentru distrugerea creativă și o politică de imigrație care a atras cei mai ambițioși oameni ai lumii timp de 250 de ani. Economia americană nu reușește în ciuda capitalismului — reușește datorită lui.",
+    ];
+  }
+
+  return ECONOMY_OVERVIEW_PARAGRAPHS;
+}
+
+export function getGdpOverviewParagraphs(locale: Locale) {
+  if (locale === "ro") {
+    return [
+      "Privește bine scara: economia Statelor Unite produce anual bunuri și servicii în valoare de 28,8 trilioane de dolari. Asta înseamnă mai mult decât următoarele trei economii ca mărime — China, Germania și Japonia — la un loc. Reprezintă aproximativ 25% din întreaga producție economică globală generată de o țară care are doar 4,2% din populația lumii.",
+      "Ceea ce face această realizare și mai extraordinară este durabilitatea ei. Statele Unite au fost cea mai mare economie a lumii timp de peste 130 de ani consecutivi — prin Marea Criză Economică, două războaie mondiale, Războiul Rece, criza financiară din 2008 și pandemia COVID-19. Nicio altă economie modernă nu a demonstrat această combinație de scară și reziliență.",
+    ];
+  }
+
+  return GDP_OVERVIEW_PARAGRAPHS;
+}
+
+export function getCapitalMarketsParagraphs(locale: Locale) {
+  if (locale === "ro") {
+    return [
+      "Bursa din New York și NASDAQ reprezintă împreună cele mai adânci, lichide și transparente piețe de capital din istoria umanității. Capitalizarea lor cumulată depășește 47 de trilioane de dolari — mai mult decât PIB-ul oricărei națiuni, cu excepția Statelor Unite. Aceste piețe nu sunt doar locuri unde se tranzacționează acțiuni; ele sunt motorul prin care este finanțată inovația americană.",
+      "Piața americană de obligațiuni — cu 27 de trilioane de dolari doar în titluri de Trezorerie restante — este fundamentul finanțelor globale. Randamentele titlurilor de Trezorerie ale SUA sunt rata de referință pentru randamentele fără risc în întreaga lume. Când instituții din Tokyo până la Frankfurt evaluează orice activ financiar, pornesc de la ceea ce plătește guvernul SUA.",
+    ];
+  }
+
+  return CAPITAL_MARKETS_PARAGRAPHS;
+}
+
+export function getVcOverviewParagraphs(locale: Locale) {
+  if (locale === "ro") {
+    return [
+      "Silicon Valley nu este doar un loc — este o filosofie făcută realitate. Ecosistemul de venture capital centrat în zona golfului San Francisco, cu sateliți în New York, Boston, Seattle, Austin și Miami, direcționează mai mult capital răbdător și dispus la risc către inovația aflată la început de drum decât restul lumii la un loc.",
+      "Cifrele sunt uimitoare: startup-urile americane au atras aproximativ 170 de miliarde de dolari în venture capital în 2023 — aproape jumătate din tot VC-ul investit global. Rezultatul? 659 de companii unicorn, adică 52% din întreg ecosistemul global. De la iPhone la Google Search și ChatGPT, instrumentele care definesc civilizația modernă s-au născut aici.",
+    ];
+  }
+
+  return VC_OVERVIEW_PARAGRAPHS;
+}
+
+export function getDollarOverviewParagraphs(locale: Locale) {
+  if (locale === "ro") {
+    return [
+      "Dolarul american nu este doar moneda a 335 de milioane de americani — este sistemul de operare al economiei globale. De la acordul Bretton Woods din 1944 și consolidat de aranjamentele petrodolarului din anii 1970, dolarul a servit drept monedă de rezervă, mijloc de comerț și depozit final de valoare pentru lume. Acest statut oferă Statelor Unite un «privilegiu exorbitant» — capacitatea de a se împrumuta în propria monedă la costuri competitive la nivel global.",
+      "Astăzi, 57,4% din toate rezervele valutare globale sunt deținute în dolari americani. Peste 40% din comerțul internațional este facturat în dolari indiferent dacă Statele Unite sunt sau nu parte a tranzacției. Petrolul, cea mai tranzacționată marfă din lume, este evaluat în dolari pe aproape fiecare piață de pe Pământ. Aceste realități structurale încorporează cererea de dolari în arhitectura financiară a fiecărei națiuni.",
+    ];
+  }
+
+  return DOLLAR_OVERVIEW_PARAGRAPHS;
+}
+
+export function getTradeOverviewParagraphs(locale: Locale) {
+  if (locale === "ro") {
+    return [
+      "Statele Unite sunt atât cel mai mare importator din lume, cât și unul dintre cei mai importanți exportatori — reflexia unei economii atât de dinamice încât produce și consumă la o scară pe care nicio altă națiune nu o poate egala. Exporturile americane de bunuri depășesc anual 2 trilioane de dolari, conduse de avioane, produse petroliere, semiconductori, dispozitive medicale și produse farmaceutice.",
+      "Dincolo de bunuri, America domină exportul de servicii — servicii financiare, software, educație, divertisment și consultanță profesională. Firme americane precum JP Morgan, Goldman Sachs, McKinsey și Harvard Business School exportă capitalul intelectual care pune în mișcare economii din întreaga lume. Când adaugi serviciile în ecuație, povestea exporturilor americane este mult mai impresionantă decât lasă să se înțeleagă deficitul comercial de bunuri.",
+    ];
+  }
+
+  return TRADE_OVERVIEW_PARAGRAPHS;
+}
+
+export function getEconomyQuotes(locale: Locale) {
+  if (locale === "ro") {
+    return [
+      {
+        ...ECONOMY_QUOTES[0],
+        quote:
+          "Marea virtute a sistemului de piață liberă este că nu îi pasă ce culoare au oamenii; nu îi pasă care este religia lor; îi pasă doar dacă pot produce ceva ce vrei să cumperi.",
+        title: "Laureat Nobel pentru Economie",
+      },
+      {
+        ...ECONOMY_QUOTES[1],
+        quote:
+          "Nu există limite pentru creștere și progres uman atunci când bărbații și femeile sunt liberi să își urmeze visurile.",
+        title: "Al 40-lea președinte al Statelor Unite",
+      },
+      {
+        ...ECONOMY_QUOTES[2],
+        quote:
+          "Prima lecție a economiei este raritatea: nu există niciodată suficient din nimic pentru a-i satisface pe toți cei care își doresc acel lucru. Prima lecție a politicii este să ignore prima lecție a economiei.",
+        title: "Economist și Senior Fellow, Hoover Institution",
+      },
+    ];
+  }
+
+  return ECONOMY_QUOTES;
+}
+
+export function getEconomySubPages(locale: Locale) {
+  if (locale === "ro") {
+    return [
+      {
+        ...ECONOMY_SUB_PAGES[0],
+        title: "PIB și Dimensiune",
+        description:
+          "Cea mai mare economie din istoria umană — 28,8 trilioane de dolari și în creștere",
+      },
+      {
+        ...ECONOMY_SUB_PAGES[1],
+        title: "Piețe de Capital",
+        description:
+          "NYSE, NASDAQ și Wall Street — coloana vertebrală financiară a civilizației",
+      },
+      {
+        ...ECONOMY_SUB_PAGES[2],
+        title: "Startup-uri și VC",
+        description: "Silicon Valley și dincolo de ea — locul unde este finanțat viitorul",
+      },
+      {
+        ...ECONOMY_SUB_PAGES[3],
+        title: "Dominația Dolarului",
+        description:
+          "Moneda de rezervă a lumii — sistemul de operare al finanțelor globale",
+      },
+      {
+        ...ECONOMY_SUB_PAGES[4],
+        title: "Comerț și Exporturi",
+        description:
+          "America alimentează comerțul global — de la avioane la software",
+      },
+    ];
+  }
+
+  return ECONOMY_SUB_PAGES;
+}

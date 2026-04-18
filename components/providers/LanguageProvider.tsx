@@ -16,6 +16,7 @@ import {
 import {
   DEFAULT_LOCALE,
   isLocale,
+  LANGUAGE_COOKIE_KEY,
   LANGUAGE_OPTIONS,
   LANGUAGE_STORAGE_KEY,
   type Locale,
@@ -52,6 +53,8 @@ export function LanguageProvider({
     } catch {
       // Ignore storage errors. The UI should still work for the current session.
     }
+
+    document.cookie = `${LANGUAGE_COOKIE_KEY}=${locale}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
 
     document.documentElement.lang = locale;
   }, [locale]);
