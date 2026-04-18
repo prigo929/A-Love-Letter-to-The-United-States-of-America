@@ -92,11 +92,13 @@ function ChartCard({
         <ResponsiveContainer width="100%" height={200}>
           <BarChart
             data={data}
-            margin={{ top: 16, right: 16, bottom: 4, left: -16 }}
+            margin={{ top: 16, right: 16, bottom: 8, left: 8 }}
             barCategoryGap="25%"
           >
             <XAxis
               dataKey="country"
+              interval={0}
+              padding={{ left: 10, right: 10 }}
               tick={{
                 fill: "rgba(255,255,255,0.45)",
                 fontSize: 11,
