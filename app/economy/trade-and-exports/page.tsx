@@ -446,6 +446,7 @@ export default function TradeAndExportsPage() {
             quote="Trade is the handmaiden of freedom. A country that can sell its best goods and ideas to the world will always maintain its competitive edge."
             attribution="Ronald Reagan"
             title="40th President of the United States"
+            variant="dark"
           />
 
           {/* Nav */}

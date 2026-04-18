@@ -335,6 +335,7 @@ export default function GdpGrowthPage() {
             quote="In the long run, economic freedom and political freedom go hand in hand. The free market is the only system that has ever lifted masses of people out of poverty."
             attribution="Milton Friedman"
             title="Nobel Laureate in Economics, University of Chicago"
+            variant="dark"
           />
 
           {/* Back nav */}

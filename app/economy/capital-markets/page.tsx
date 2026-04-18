@@ -252,6 +252,7 @@ export default function CapitalMarketsPage() {
             quote="The stock market is a mechanism for transferring wealth from the impatient to the patient. American investors who stayed patient through every crisis became the wealthiest people in history."
             attribution="Warren Buffett"
             title="Chairman & CEO, Berkshire Hathaway — Omaha, Nebraska"
+            variant="dark"
           />
 
           {/* Back nav */}
