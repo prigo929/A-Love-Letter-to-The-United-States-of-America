@@ -910,8 +910,8 @@ function EconomyHero({
     >
       {/* Background image */}
       <Image
-        src={SITE_IMAGES.economyTradeSkyline}
-        alt="New York City skyline at night — the financial capital of the world"
+        src={SITE_IMAGES.economyNyseHero}
+        alt="New York Stock Exchange trading floor"
         fill
         className="object-cover"
         priority

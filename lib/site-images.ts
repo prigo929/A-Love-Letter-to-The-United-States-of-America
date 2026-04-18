@@ -21,6 +21,7 @@ import cultureFlagCrowd from "@/IMAGES/Culture/Statue Of Liberty.jpg";
 import harvardCampus from "@/IMAGES/Education/Columbia University.jpg";
 import economyDollar from "@/IMAGES/Economy/100 dollar bill.jpg";
 import economyGrowth from "@/IMAGES/Economy/economy-growth.jpg";
+import economyNyseHero from "@/IMAGES/Economy/New York Stock Exchange.jpg";
 import economyNYSEUpsideDown from "@/IMAGES/Economy/economy-nyse-upside-down.jpg";
 import economyPort from "@/IMAGES/Economy/economy-port.jpg";
 import economyTradeSkyline from "@/IMAGES/Infrastructure/I-110 and I-115 Interchange Los Angeles.jpg";
@@ -67,6 +68,7 @@ export const SITE_IMAGES = {
   economyNYSEUpsideDown: economyNYSEUpsideDown.src,
   economyDollar: economyDollar.src,
   economyGrowth: economyGrowth.src,
+  economyNyseHero: economyNyseHero.src,
   economyPort: economyPort.src,
   economyTradeSkyline: economyTradeSkyline.src,
 } as const;
