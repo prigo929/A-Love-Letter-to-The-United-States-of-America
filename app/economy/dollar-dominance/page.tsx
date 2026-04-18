@@ -12,6 +12,7 @@ import {
   DOLLAR_FACTS,
   DOLLAR_OVERVIEW_PARAGRAPHS,
 } from "@/lib/data/economy-data";
+import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -123,7 +124,7 @@ export default function DollarDominancePage() {
       {/* Hero */}
       <div className="relative bg-navy-dark pt-28 pb-16">
         <Image
-          src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?q=80&w=1920&auto=format&fit=crop"
+          src={SITE_IMAGES.economyDollar}
           alt="US dollar bills — the world's reserve currency"
           fill
           className="object-cover opacity-25"

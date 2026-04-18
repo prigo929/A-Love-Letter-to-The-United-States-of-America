@@ -115,10 +115,7 @@ export function HeroSection() {
   }, []);
 
   const images = HERO_IMAGES.map((img) => ({
-    src:
-      "src" in img
-        ? img.src
-        : `https://images.unsplash.com/${img.unsplash}?q=85&w=1920&auto=format&fit=crop`,
+    src: img.src,
     alt: img.alt,
   }));
 

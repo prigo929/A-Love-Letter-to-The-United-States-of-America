@@ -10,6 +10,7 @@ import {
   TRADE_OVERVIEW_PARAGRAPHS,
   US_EXPORT_CATEGORIES,
 } from "@/lib/data/economy-data";
+import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -180,7 +181,7 @@ export default function TradeAndExportsPage() {
       {/* Hero */}
       <div className="relative bg-navy-dark pt-28 pb-16">
         <Image
-          src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1920&auto=format&fit=crop"
+          src={SITE_IMAGES.economyPort}
           alt="Container port — America's export machine"
           fill
           className="object-cover opacity-20"
@@ -413,7 +414,7 @@ export default function TradeAndExportsPage() {
               </div>
               <div className="relative hidden md:block">
                 <Image
-                  src="https://unsplash.com/photos/vHKEcWFO41s/download?force=true&w=800"
+                  src={SITE_IMAGES.economyTradeSkyline}
                   alt="New York City — export capital of American financial services"
                   fill
                   className="object-cover opacity-50"

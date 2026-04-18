@@ -1,6 +1,8 @@
 // ─── App Constants ────────────────────────────────────────────────────────────
 // Single source of truth for colors, breakpoints, and navigation data.
 
+import { SITE_IMAGES } from "@/lib/site-images";
+
 // ─── Colors (mirrors tailwind.config.ts) ─────────────────────────────────────
 export const COLORS = {
   gloryRed: "#B22234",
@@ -38,8 +40,7 @@ export const NAV_SECTIONS = [
     title: "Economy",
     href: "/economy",
     description: "The engine of the world — $28.8T GDP and counting",
-    imageSrc:
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop&rot=180",
+    imageSrc: SITE_IMAGES.economyNYSEUpsideDown,
     badge: "#1 Economy",
     items: [
       {
@@ -73,8 +74,7 @@ export const NAV_SECTIONS = [
     title: "Nature",
     href: "/nature",
     description: "From the Arctic to the tropics — unrivaled natural beauty",
-    imageSrc:
-      "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.grandTeton,
     badge: "63 National Parks",
     items: [
       {
@@ -113,8 +113,7 @@ export const NAV_SECTIONS = [
     title: "Military",
     href: "/military",
     description: "The most powerful military in the history of civilization",
-    imageSrc:
-      "https://unsplash.com/photos/ZiLJnc_iR90/download?force=true&w=800",
+    imageSrc: SITE_IMAGES.homeAirForcePlane,
     badge: "$886B Budget",
     items: [
       {
@@ -153,8 +152,7 @@ export const NAV_SECTIONS = [
     title: "Constitution",
     href: "/constitution",
     description: "250 years of unbroken democratic government",
-    imageSrc:
-      "https://images.unsplash.com/photo-1617791160536-598cf32026fb?q=80&w=800&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.constitutionDocument,
     badge: "Est. 1776",
     items: [
       {
@@ -193,8 +191,7 @@ export const NAV_SECTIONS = [
     title: "Culture",
     href: "/culture",
     description: "America didn't just build a nation — it built global culture",
-    imageSrc:
-      "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?q=80&w=800&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.cultureFlagCrowd,
     badge: "Global Culture",
     items: [
       {
@@ -233,8 +230,7 @@ export const NAV_SECTIONS = [
     title: "Innovation",
     href: "/innovation",
     description: "The internet, the iPhone, AI — all made in America",
-    imageSrc:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.homeSiliconValley,
     badge: "Silicon Valley",
     items: [
       {
@@ -273,8 +269,7 @@ export const NAV_SECTIONS = [
     title: "Science",
     href: "/science",
     description: "They built the modern world, one invention at a time",
-    imageSrc:
-      "https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=800&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.scienceLab,
     badge: "400+ Nobel Prizes",
     items: [
       {
@@ -303,8 +298,7 @@ export const NAV_SECTIONS = [
     title: "Universities",
     href: "/universities",
     description: "7 of the top 10 universities in the world are American",
-    imageSrc:
-      "https://images.unsplash.com/photo-1564981797816-1043664bf78d?q=80&w=800&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.harvardCampus,
     badge: "Top of the World",
     items: [
       {
@@ -333,8 +327,7 @@ export const NAV_SECTIONS = [
     title: "Quality of Life",
     href: "/quality-of-life",
     description: "The highest standard of living for the most people",
-    imageSrc:
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.qualityOfLifeHouse,
     badge: "American Dream",
     items: [
       {
@@ -368,8 +361,7 @@ export const NAV_SECTIONS = [
     title: "Global Leadership",
     href: "/global-leadership",
     description: "The indispensable nation — leading the free world since 1945",
-    imageSrc:
-      "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=800&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.globalLeadership,
     badge: "Free World Leader",
     items: [
       {
@@ -396,32 +388,30 @@ export const NAV_SECTIONS = [
   },
 ] as const;
 
-// ─── Unsplash Image IDs (for section placeholders) ────────────────────────────
-// Format: https://images.unsplash.com/photo-{ID}?q=80&w={W}&auto=format&fit=crop
 export const HERO_IMAGES = [
   {
     id: "grand-canyon",
-    unsplash: "photo-1508193638397-1c4234db14d8",
+    src: SITE_IMAGES.homeGrandCanyon,
     alt: "Grand Canyon at sunrise, illuminated in deep orange and gold",
   },
   {
     id: "nyc-skyline",
-    unsplash: "photo-1538970272646-f61fabb3a8a2",
+    src: SITE_IMAGES.homeNycSkyline,
     alt: "New York City skyline at dusk, Manhattan glittering with lights",
   },
   {
     id: "aircraft-carrier",
-    src: "https://unsplash.com/photos/ZiLJnc_iR90/download?force=true&w=1920",
+    src: SITE_IMAGES.homeAirForcePlane,
     alt: "US Air Force cargo plane on the tarmac, ready for rapid deployment",
   },
   {
     id: "silicon-valley",
-    unsplash: "photo-1518770660439-4636190af475",
+    src: SITE_IMAGES.homeSiliconValley,
     alt: "Silicon Valley tech campus — the innovation capital of Earth",
   },
   {
     id: "wheat-fields",
-    unsplash: "photo-1500382017468-9049fed747ef",
+    src: SITE_IMAGES.homeWheatFields,
     alt: "Golden wheat fields at sunset — America's vast agricultural heartland",
   },
 ] as const;

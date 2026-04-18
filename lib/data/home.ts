@@ -1,3 +1,4 @@
+import { SITE_IMAGES } from "@/lib/site-images";
 import type { ContentBlockItem } from "@/types/content.types";
 
 export const KEY_STATS = [
@@ -78,8 +79,7 @@ export const WHY_AMERICA_BLOCKS: ContentBlockItem[] = [
       "No nation in history has maintained the same constitutional framework for as long as the United States — 250 years and counting. While empires fell, republics collapsed, and constitutions were rewritten across the globe, America's founding document endured through civil war, world wars, economic depression, and social upheaval.",
       "The First Amendment alone is without parallel: no nation on Earth extends freedom of speech as broadly as the United States. The Bill of Rights was not a gift from government — it was a recognition of rights that existed before government. That distinction changes everything.",
     ],
-    imageSrc:
-      "https://images.unsplash.com/photo-1617791160536-598cf32026fb?q=80&w=1200&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.constitutionDocument,
     imageAlt:
       "The United States Constitution — the longest-surviving written national constitution in history",
     imagePosition: "right",
@@ -111,8 +111,7 @@ export const WHY_AMERICA_BLOCKS: ContentBlockItem[] = [
       "The telephone. The airplane. The transistor. The microchip. The internet. The iPhone. The mRNA vaccine. Artificial intelligence. Every technology that defines modern civilization traces its lineage to American laboratories, garages, and university campuses.",
       "America receives approximately 50% of all global venture capital investment. It is home to 7 of the world's top 10 universities. Its researchers have won more Nobel Prizes than the next three nations combined. This is not coincidence — it is the fruit of a system that rewards risk-taking, tolerates failure, and celebrates the individual.",
     ],
-    imageSrc:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.homeSiliconValley,
     imageAlt:
       "Microchip circuit board — symbol of American technological dominance",
     imagePosition: "left",
@@ -144,8 +143,7 @@ export const WHY_AMERICA_BLOCKS: ContentBlockItem[] = [
       "No country on Earth possesses such extraordinary diversity of natural landscapes within a single border. The United States spans Arctic tundra in Alaska, tropical rainforests in Hawaii, towering granite walls in Yosemite, geothermal wonders in Yellowstone, the world's largest canyon, and the Great Lakes — containing 21% of Earth's entire surface freshwater.",
       "Theodore Roosevelt called the preservation of this land \"the greatest gift a generation can give to those who come after.\" America answered that call with the world's first national park system — 63 parks protecting 85 million acres, more than most countries' entire landmass.",
     ],
-    imageSrc:
-      "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.grandTeton,
     imageAlt:
       "Grand Teton National Park — a crown jewel of the American national park system",
     imagePosition: "right",
@@ -178,8 +176,7 @@ export const WHY_AMERICA_BLOCKS: ContentBlockItem[] = [
       "The United States maintains 11 aircraft carrier strike groups — the rest of the world combined has roughly four. Its defense budget of $886 billion exceeds the next ten nations' budgets combined. It operates bases in more than 80 countries, maintains a nuclear triad, and fields the most technologically advanced military force in history.",
       "But American military power is not merely about hardware. It is about what that power has preserved: the post-1945 rules-based international order, the freedom of navigation that enables global trade, and the security umbrella under which democracies across Europe, Asia, and the Pacific have flourished for eight decades.",
     ],
-    imageSrc:
-      "https://unsplash.com/photos/ZiLJnc_iR90/download?force=true&w=1200",
+    imageSrc: SITE_IMAGES.homeAirForcePlane,
     imageAlt:
       "US Air Force cargo plane on the tarmac — symbol of American military reach and readiness",
     imagePosition: "left",
@@ -213,8 +210,7 @@ export const VIDEO_PREVIEWS = [
     description:
       "From the Rocky Mountains to the Florida Everglades — a cinematic journey through America's unrivaled natural wonders.",
     youtubeId: null,
-    thumbnailSrc:
-      "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?q=80&w=800&auto=format&fit=crop",
+    thumbnailSrc: SITE_IMAGES.homeGrandCanyon,
     thumbnailAlt: "Grand Canyon at sunrise — the American landscape",
     duration: "8:42",
     category: "Nature",
@@ -225,8 +221,7 @@ export const VIDEO_PREVIEWS = [
     description:
       "From Edison's lab to Silicon Valley — the story of how American ingenuity rewired the world.",
     youtubeId: null,
-    thumbnailSrc:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
+    thumbnailSrc: SITE_IMAGES.homeSiliconValley,
     thumbnailAlt: "Silicon Valley technology — American innovation",
     duration: "12:18",
     category: "Innovation",
@@ -237,8 +232,7 @@ export const VIDEO_PREVIEWS = [
     description:
       "The story of the most powerful military in history — and the peace it has kept for 80 years.",
     youtubeId: null,
-    thumbnailSrc:
-      "https://unsplash.com/photos/ZiLJnc_iR90/download?force=true&w=800",
+    thumbnailSrc: SITE_IMAGES.homeAirForcePlane,
     thumbnailAlt: "US Air Force cargo plane — Defender of Freedom",
     duration: "15:05",
     category: "Military",
@@ -278,15 +272,15 @@ export const NOBEL_PRIZES_DATA = [
 export const GALLERY_PREVIEW_IMAGES = [
   {
     id: "yosemite",
-    src: "https://images.unsplash.com/photo-1562016600-ece013f4714d?q=80&w=800&auto=format&fit=crop",
-    alt: "Yosemite Valley — Half Dome reflected in the Merced River at sunset",
-    caption: "Yosemite Valley, California",
+    src: SITE_IMAGES.grandTeton,
+    alt: "Grand Teton National Park — jagged peaks rising over the American West",
+    caption: "Grand Teton National Park, Wyoming",
     category: "National Parks",
     span: "tall",
   },
   {
     id: "nyc",
-    src: "https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?q=80&w=800&auto=format&fit=crop",
+    src: SITE_IMAGES.homeNycSkyline,
     alt: "New York City skyline at golden hour seen from above",
     caption: "Manhattan, New York City",
     category: "Cities",
@@ -294,7 +288,7 @@ export const GALLERY_PREVIEW_IMAGES = [
   },
   {
     id: "air-force",
-    src: "https://unsplash.com/photos/ZiLJnc_iR90/download?force=true&w=800",
+    src: SITE_IMAGES.homeAirForcePlane,
     alt: "US Air Force cargo plane on the tarmac — American airpower and rapid deployment",
     caption: "US Air Force Mobility Command",
     category: "Military",
@@ -302,7 +296,7 @@ export const GALLERY_PREVIEW_IMAGES = [
   },
   {
     id: "grand-canyon",
-    src: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?q=80&w=800&auto=format&fit=crop",
+    src: SITE_IMAGES.homeGrandCanyon,
     alt: "Grand Canyon at sunrise, illuminated in deep orange and red",
     caption: "Grand Canyon, Arizona",
     category: "National Parks",
@@ -310,7 +304,7 @@ export const GALLERY_PREVIEW_IMAGES = [
   },
   {
     id: "silicon-valley",
-    src: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop",
+    src: SITE_IMAGES.siliconValleyOffice,
     alt: "Modern tech office interior — Silicon Valley innovation hub",
     caption: "Silicon Valley, California",
     category: "Innovation",
@@ -318,7 +312,7 @@ export const GALLERY_PREVIEW_IMAGES = [
   },
   {
     id: "yellowstone",
-    src: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?q=80&w=800&auto=format&fit=crop",
+    src: SITE_IMAGES.yellowstonePrismatic,
     alt: "Yellowstone Grand Prismatic Spring — vivid geothermal colors",
     caption: "Yellowstone National Park, Wyoming",
     category: "National Parks",
@@ -326,7 +320,7 @@ export const GALLERY_PREVIEW_IMAGES = [
   },
   {
     id: "chicago",
-    src: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=800&auto=format&fit=crop",
+    src: SITE_IMAGES.chicagoSkyline,
     alt: "Chicago skyline at night reflected in Lake Michigan",
     caption: "Chicago, Illinois",
     category: "Cities",
@@ -334,7 +328,7 @@ export const GALLERY_PREVIEW_IMAGES = [
   },
   {
     id: "harvard",
-    src: "https://images.unsplash.com/photo-1564981797816-1043664bf78d?q=80&w=800&auto=format&fit=crop",
+    src: SITE_IMAGES.harvardCampus,
     alt: "Harvard University campus in autumn — the most famous university on Earth",
     caption: "Harvard University, Cambridge",
     category: "Universities",

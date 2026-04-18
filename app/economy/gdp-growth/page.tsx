@@ -16,6 +16,7 @@ import {
   GDP_FACTS,
   type GdpDataPoint,
 } from "@/lib/data/economy-data";
+import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -122,7 +123,7 @@ export default function GdpGrowthPage() {
       {/* Hero */}
       <div className="relative bg-navy-dark pt-28 pb-16">
         <Image
-          src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1920&auto=format&fit=crop"
+          src={SITE_IMAGES.economyGrowth}
           alt="New York City financial district"
           fill
           className="object-cover opacity-25"

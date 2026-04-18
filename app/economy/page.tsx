@@ -51,7 +51,7 @@ import {
   TRADE_OVERVIEW_PARAGRAPHS,
   type GdpDataPoint,
 } from "@/lib/data/economy-data";
-
+import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     url: "/economy",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200&auto=format&fit=crop&rot=180",
+        url: SITE_IMAGES.economyNYSEUpsideDown,
         width: 1200,
         height: 630,
         alt: "New York Stock Exchange — heart of the world's largest economy",
@@ -298,7 +298,7 @@ export default function EconomyPage() {
                 {/* Capital Markets image */}
                 <div className="relative mb-10 overflow-hidden rounded-2xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200&auto=format&fit=crop&rot=180"
+                    src={SITE_IMAGES.economyNYSEUpsideDown}
                     alt="Stock market trading screens — the heartbeat of global capital"
                     width={1200}
                     height={500}
@@ -529,7 +529,7 @@ export default function EconomyPage() {
                 {/* Dollar image */}
                 <div className="relative mb-10 overflow-hidden rounded-2xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?q=80&w=1200&auto=format&fit=crop"
+                    src={SITE_IMAGES.economyDollar}
                     alt="US dollar bills — the world's reserve currency"
                     width={1200}
                     height={400}
@@ -592,7 +592,7 @@ export default function EconomyPage() {
                 {/* Trade visual */}
                 <div className="my-10 overflow-hidden rounded-2xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1200&auto=format&fit=crop"
+                    src={SITE_IMAGES.economyPort}
                     alt="Container port — America's export machine"
                     width={1200}
                     height={450}
@@ -724,7 +724,7 @@ function EconomyHero() {
     >
       {/* Background image */}
       <Image
-        src="https://unsplash.com/photos/vHKEcWFO41s/download?force=true&w=1920"
+        src={SITE_IMAGES.economyTradeSkyline}
         alt="New York City skyline at night — the financial capital of the world"
         fill
         className="object-cover"

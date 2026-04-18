@@ -2,6 +2,8 @@
 // All static data for the Economy section and its sub-pages.
 // Components import from here — never hardcode in JSX.
 
+import { SITE_IMAGES } from "@/lib/site-images";
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface GdpDataPoint {
@@ -593,7 +595,7 @@ export const ECONOMY_SUB_PAGES = [
     description:
       "The largest economy in human history — $28.8 trillion and counting",
     imageSrc:
-      "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=800&auto=format&fit=crop",
+      SITE_IMAGES.economyGrowth,
     imageAlt: "New York City financial district skyline",
     badge: "$28.8T",
   },
@@ -603,7 +605,7 @@ export const ECONOMY_SUB_PAGES = [
     description:
       "NYSE, NASDAQ, and Wall Street — the financial backbone of civilization",
     imageSrc:
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop&rot=180",
+      SITE_IMAGES.economyNYSEUpsideDown,
     imageAlt: "Stock market trading screens",
     badge: "$47T+",
   },
@@ -612,7 +614,7 @@ export const ECONOMY_SUB_PAGES = [
     title: "Startups & VC",
     description: "Silicon Valley and beyond — where the future is funded",
     imageSrc:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop",
+      SITE_IMAGES.siliconValleyOffice,
     imageAlt: "Modern startup office",
     badge: "47% of global VC",
   },
@@ -622,7 +624,7 @@ export const ECONOMY_SUB_PAGES = [
     description:
       "The world's reserve currency — the operating system of global finance",
     imageSrc:
-      "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?q=80&w=800&auto=format&fit=crop",
+      SITE_IMAGES.economyDollar,
     imageAlt: "US dollar bills close up",
     badge: "57% of reserves",
   },
@@ -631,7 +633,7 @@ export const ECONOMY_SUB_PAGES = [
     title: "Trade & Exports",
     description: "America powers global commerce — from aircraft to software",
     imageSrc:
-      "https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&auto=format&fit=crop",
+      SITE_IMAGES.economyPort,
     imageAlt: "Container port with cargo ships",
     badge: "$2T+ Exports",
   },

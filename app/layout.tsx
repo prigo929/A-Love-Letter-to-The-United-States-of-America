@@ -166,15 +166,8 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* DNS prefetch for Unsplash images */}
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
-        <link rel="dns-prefetch" href="https://unsplash.com" />
+        {/* DNS prefetch for CDN-hosted map data */}
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-        <link
-          rel="preconnect"
-          href="https://images.unsplash.com"
-          crossOrigin="anonymous"
-        />
       </head>
 
       <body className="bg-navy-dark text-white antialiased font-body">

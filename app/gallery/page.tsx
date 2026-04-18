@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { ParallaxSection } from "@/components/sections/ParallaxSection";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Gallery",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <ParallaxSection
-      imageSrc="https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?q=80&w=1600&auto=format&fit=crop"
+      imageSrc={SITE_IMAGES.homeNycSkyline}
       imageAlt="New York City skyline at dusk"
       className="pt-24"
       minHeight="min-h-screen"

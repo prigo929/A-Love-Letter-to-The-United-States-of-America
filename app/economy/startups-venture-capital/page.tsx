@@ -15,6 +15,7 @@ import {
   STARTUP_ECOSYSTEMS,
   VC_OVERVIEW_PARAGRAPHS,
 } from "@/lib/data/economy-data";
+import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -120,7 +121,7 @@ export default function StartupsVCPage() {
       {/* Hero */}
       <div className="relative bg-navy-dark pt-28 pb-16">
         <Image
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920&auto=format&fit=crop"
+          src={SITE_IMAGES.siliconValleyOffice}
           alt="Modern startup office — Silicon Valley innovation culture"
           fill
           className="object-cover opacity-20"
