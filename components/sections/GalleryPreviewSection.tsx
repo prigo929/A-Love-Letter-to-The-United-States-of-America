@@ -1,5 +1,12 @@
 "use client";
 
+// Homepage closing gallery section.
+//
+// Beginner guide:
+// - To change which images appear here, edit GALLERY_PREVIEW_IMAGES in
+//   lib/data/home.ts
+// - This file only controls layout, hover effects, and the lightbox behavior
+
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -148,6 +155,7 @@ function GalleryCard({
 
 export function GalleryPreviewSection() {
   const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
+  // Used to build the category pills automatically from the gallery data.
   const categories = [...new Set(GALLERY_PREVIEW_IMAGES.map((image) => image.category))];
 
   return (
@@ -249,6 +257,8 @@ export function GalleryPreviewSection() {
           variants={staggerContainer}
           className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]"
         >
+          {/* This layout is intentionally hand-curated rather than `.map()`ed in
+              one loop so the ending gallery feels editorial instead of uniform. */}
           <div className="grid gap-4">
             <GalleryCard
               image={GALLERY_PREVIEW_IMAGES[0]}

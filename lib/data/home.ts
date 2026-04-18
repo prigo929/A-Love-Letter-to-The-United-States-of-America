@@ -1,6 +1,20 @@
+// Data file for the homepage.
+//
+// This file is where a non-programmer should usually edit homepage content:
+// - key stats
+// - section copy
+// - video cards
+// - chart data
+// - gallery images
+//
+// Images are pulled from SITE_IMAGES, so changing a homepage image usually
+// means replacing the image key used here.
+
 import { SITE_IMAGES } from "@/lib/site-images";
 import type { ContentBlockItem } from "@/types/content.types";
 
+// Small facts bar near the top of the homepage.
+// Change these values if you want to update the animated counters.
 export const KEY_STATS = [
   {
     id: "gdp",
@@ -64,6 +78,7 @@ export const HOME_COPY = {
     "Sources: World Bank, SIPRI, NPS, Nobel Foundation, DoD — 2024 data",
 } as const;
 
+// Placeholder copy for the economy landing summary used on the homepage.
 export const ECONOMY_PAGE_COPY = {
   heroValue: "$28.8T",
   description:
@@ -71,6 +86,9 @@ export const ECONOMY_PAGE_COPY = {
   body: "Phase 3 — Economy section — coming soon. Full charts, data, and analysis of America's unrivaled economic dominance.",
 } as const;
 
+// Four long-form homepage feature blocks used by WhyAmericaSection.
+// To change the image in one block, swap the `imageSrc` entry to another value
+// from SITE_IMAGES.
 export const WHY_AMERICA_BLOCKS: ContentBlockItem[] = [
   {
     heading: "The Land of the Free",
@@ -239,6 +257,7 @@ export const VIDEO_PREVIEWS = [
   },
 ] as const;
 
+// These three datasets power the mini charts in DataTeaserSection.
 export const GDP_COMPARISON_DATA = [
   { country: "USA", value: 28.8, isUSA: true },
   { country: "China", value: 17.7, isUSA: false },
@@ -269,6 +288,13 @@ export const NOBEL_PRIZES_DATA = [
   { country: "Russia", value: 21, isUSA: false },
 ] as const;
 
+// Homepage gallery preview data.
+//
+// Important:
+// - `src` decides which image file is shown
+// - `caption` is the short label users see
+// - `category` powers the small category pills
+// - `span` changes the card shape in the layout
 export const GALLERY_PREVIEW_IMAGES = [
   {
     id: "yosemite",

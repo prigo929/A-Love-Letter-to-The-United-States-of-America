@@ -1,5 +1,11 @@
 // ─── Root Layout ─────────────────────────────────────────────────────────────
-// Sets up: fonts, global providers, header/footer, page transitions.
+// Sets up the global shell for the entire site.
+//
+// Beginner guide:
+// - Header/footer changes usually belong in the components/layout folder
+// - Site-wide metadata (title/description/social preview defaults) lives here
+// - Global CSS is loaded from app/globals.css
+//
 // Everything here wraps EVERY page.
 
 import type { Metadata, Viewport } from "next";
@@ -187,7 +193,7 @@ export default function RootLayout({
           {children}
         </main>
 
-        {/* Footer */}
+        {/* Footer + site-wide helper widgets */}
         <Footer />
         <BackToTop />
         <Analytics />

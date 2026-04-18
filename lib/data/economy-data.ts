@@ -1,6 +1,11 @@
 // ─── Economy Section Data ─────────────────────────────────────────────────────
 // All static data for the Economy section and its sub-pages.
 // Components import from here — never hardcode in JSX.
+//
+// Beginner guide:
+// - If you want to change economy page numbers, edit them here.
+// - If you want to swap economy images, use SITE_IMAGES keys here.
+// - If you want to change chart titles/layout, edit the React page/component.
 
 import { SITE_IMAGES } from "@/lib/site-images";
 
@@ -110,6 +115,8 @@ export const GDP_COMPARISON: GdpDataPoint[] = [
 ];
 
 export const GDP_PER_CAPITA: GdpPerCapitaPoint[] = [
+  // Values here are in thousands of USD per person.
+  // Example: 82.7 means roughly $82,700, not $82.7 trillion.
   { country: "United States", gdpPerCapita: 82.7, flag: "🇺🇸", highlight: true },
   { country: "Germany", gdpPerCapita: 54.3, flag: "🇩🇪" },
   { country: "United Kingdom", gdpPerCapita: 46.5, flag: "🇬🇧" },
@@ -207,6 +214,8 @@ export const US_EXPORT_CATEGORIES: TradeDataPoint[] = [
 ];
 
 // ─── Economy Hero Stats ───────────────────────────────────────────────────────
+// These cards appear near the top of /economy.
+// `suffix` controls the unit label shown next to the number.
 
 export const ECONOMY_HERO_STATS: EconomyStat[] = [
   {
