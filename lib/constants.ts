@@ -1,5 +1,13 @@
 // ─── App Constants ────────────────────────────────────────────────────────────
-// Single source of truth for colors, breakpoints, and navigation data.
+// Single source of truth for:
+// - site metadata (name, description, URL)
+// - reusable colors
+// - top navigation structure
+// - hero carousel images
+//
+// Beginners: if you want to change text in the header menu, start in
+// NAV_SECTIONS below. If you want to change the home page hero slideshow,
+// start in HERO_IMAGES at the bottom of this file.
 
 import { SITE_IMAGES } from "@/lib/site-images";
 
@@ -34,6 +42,12 @@ export const SITE = {
 
 // ─── Navigation Structure ─────────────────────────────────────────────────────
 // Powers both the header mega-menu and the sitemap page.
+//
+// Each section card in the navigation is data-driven:
+// - `title` is the visible section name
+// - `href` is where it links
+// - `imageSrc` is the image shown in the menu card
+// - `items` are the submenu links
 
 export const NAV_SECTIONS = [
   {
@@ -388,6 +402,9 @@ export const NAV_SECTIONS = [
   },
 ] as const;
 
+// These images rotate in the full-screen homepage hero.
+// To swap one, replace the `src` value with another SITE_IMAGES entry and
+// update the `alt` text so it still describes the new photo accurately.
 export const HERO_IMAGES = [
   {
     id: "grand-canyon",

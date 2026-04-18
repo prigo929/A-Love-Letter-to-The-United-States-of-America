@@ -1,6 +1,12 @@
 // ─── Economy Page ─────────────────────────────────────────────────────────────
-// Phase 3: Full Economy section with hero, overview, GDP, capital markets,
-// VC, dollar dominance, and sub-section navigation.
+// Main landing page for the Economy section.
+//
+// Beginner guide:
+// - To change the numbers used by the charts/cards, edit lib/data/economy-data.ts
+// - To change which sections appear on this page, edit the JSX below.
+// - To change the hero image, update the SITE_IMAGES key used in metadata or the
+//   EconomyHero component further down in this file.
+//
 // Server Component — chart components imported as client leaves.
 
 import type { Metadata } from "next";
@@ -28,6 +34,8 @@ import { VCBarChart } from "@/components/data/VCCharts";
 import { DollarReserveChart } from "@/components/data/DollarMarketCharts";
 
 // ── Data ────────────────────────────────────────────────────────────────────
+// This page is intentionally data-driven. Most factual edits belong in
+// `lib/data/economy-data.ts`, not inside JSX.
 import {
   GDP_COMPARISON,
   GDP_PER_CAPITA,
@@ -219,7 +227,9 @@ export default function EconomyPage() {
                   />
                 </div>
 
-                {/* GDP Per Capita Chart */}
+                {/* GDP Per Capita Chart
+                    The data numbers are stored in thousands, so the chart uses
+                    valueSuffix="K" to display values like 82.7K = $82,700. */}
                 <div className="mb-10 rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
                   <GdpBarChart
                     data={GDP_PER_CAPITA.map(

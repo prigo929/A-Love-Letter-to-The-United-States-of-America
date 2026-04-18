@@ -1,5 +1,12 @@
 "use client";
 
+// Homepage chart preview section.
+//
+// Beginner guide:
+// - The chart numbers themselves come from lib/data/home.ts
+// - This file only controls how those numbers are rendered visually
+// - If a unit/title is wrong, fix the chart config in `charts` below
+
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
@@ -89,6 +96,7 @@ function ChartCard({
       </div>
 
       <div className="min-h-[200px] flex-1 px-2 pb-4">
+        {/* Recharts handles the responsive sizing inside this container. */}
         <ResponsiveContainer width="100%" height={200}>
           <BarChart
             data={data}
@@ -154,6 +162,8 @@ function ChartCard({
 }
 
 export function DataTeaserSection() {
+  // These three cards are configured here so a content editor can quickly
+  // change labels/units without touching the reusable chart markup above.
   const charts: ChartCardProps[] = [
     {
       title: "GDP ($Trillion)",

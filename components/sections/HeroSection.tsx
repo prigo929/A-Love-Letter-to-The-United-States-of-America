@@ -8,6 +8,11 @@
 //  • Staggered text reveal on mount
 //  • Two CTA buttons
 //  • Animated scroll indicator
+//
+// Beginner guide:
+// - The rotating hero images come from `HERO_IMAGES` in lib/constants.ts
+// - The actual image files live in /IMAGES and are registered in lib/site-images.ts
+// - So the usual image change path is: IMAGES -> site-images.ts -> constants.ts
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -114,6 +119,7 @@ export function HeroSection() {
     return () => clearInterval(id);
   }, []);
 
+  // Convert the shared data format into the minimal shape this component needs.
   const images = HERO_IMAGES.map((img) => ({
     src: img.src,
     alt: img.alt,
@@ -126,7 +132,9 @@ export function HeroSection() {
       role="banner"
       aria-label="America: The Greatest Nation hero section"
     >
-      {/* ── Background Image Carousel ──────────────────────────────────────── */}
+      {/* ── Background Image Carousel ────────────────────────────────────────
+          Only one image is visible at a time. The fade animation is handled by
+          AnimatePresence + motion.div. */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         <AnimatePresence>
           <motion.div
@@ -197,7 +205,9 @@ export function HeroSection() {
             <div className="w-12 h-px bg-glory-gold" aria-hidden="true" />
           </motion.div>
 
-          {/* Main title — BEBAS NEUE */}
+          {/* Main title.
+              The big patriotic styling is intentionally hard-coded here because
+              this headline is a custom art-directed treatment, not normal body text. */}
           <motion.h1
             variants={heroTitle}
             className="font-hero leading-none text-center"

@@ -57,6 +57,38 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ---
 
+## Common Edits
+
+### Change an image
+
+Most images are managed through one central file: `lib/site-images.ts`
+
+Use this workflow:
+
+1. Put the new image file inside the appropriate folder in `IMAGES/`
+2. Import that file in `lib/site-images.ts`
+3. Replace the matching `SITE_IMAGES.someKey` value in the content file that uses it
+
+Common places that use those image keys:
+
+- `lib/constants.ts` for header menu images and the homepage hero slideshow
+- `lib/data/home.ts` for homepage sections, videos, charts, and gallery images
+- `lib/data/economy-data.ts` for economy section images and factual content
+
+### Reorder homepage sections
+
+Edit `app/page.tsx`. The section order in the JSX is the order shown on the live homepage.
+
+### Change homepage numbers or gallery images
+
+Edit `lib/data/home.ts`.
+
+### Change economy charts or facts
+
+Edit `lib/data/economy-data.ts`.
+
+---
+
 ## Deploy to Vercel
 
 ```bash

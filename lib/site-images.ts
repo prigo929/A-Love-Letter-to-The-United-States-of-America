@@ -1,3 +1,13 @@
+// Central image registry for the whole site.
+//
+// If you want to swap an image:
+// 1. Put the new file somewhere inside /IMAGES.
+// 2. Import it here.
+// 3. Replace the matching value in SITE_IMAGES below.
+//
+// Most content files do NOT import image files directly. They import a key from
+// SITE_IMAGES instead, which makes image changes much easier to manage.
+
 import chicagoSkyline from "@/IMAGES/Cities/chicago-skyline.jpg";
 import homeNycSkyline from "@/IMAGES/Cities/home-nyc-skyline.jpg";
 import constitutionDocument from "@/IMAGES/Constitution/constitution-document.jpg";
@@ -19,6 +29,8 @@ import scienceLab from "@/IMAGES/Science/science-lab.jpg";
 import homeSiliconValley from "@/IMAGES/Technology/home-silicon-valley.jpg";
 import siliconValleyOffice from "@/IMAGES/Technology/silicon-valley-office.jpg";
 
+// Export plain `.src` strings so the rest of the app can use them in Next Image
+// components without caring which physical file they came from.
 export const SITE_IMAGES = {
   homeGrandCanyon: homeGrandCanyon.src,
   homeNycSkyline: homeNycSkyline.src,
