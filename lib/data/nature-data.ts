@@ -4,10 +4,11 @@
 //
 // Beginner guide:
 // - To change nature page stats, edit them here.
-// - To swap images, update the Unsplash URL strings below.
+// - To swap images, update the SITE_IMAGES keys below.
 // - To change chart data, edit the array exports.
 
 import type { Locale } from "@/lib/i18n/config";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -164,7 +165,7 @@ export const FEATURED_PARKS: NationalPark[] = [
     visitors: 3.9,
     area: 2220,
     highlight: "World's first national park — 10,000 hydrothermal features",
-    imageSrc: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?q=80&w=800&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.yellowstoneNationalPark,
     imageAlt: "Grand Prismatic Spring, Yellowstone National Park",
   },
   {
@@ -184,7 +185,7 @@ export const FEATURED_PARKS: NationalPark[] = [
     visitors: 3.7,
     area: 748,
     highlight: "El Capitan, Half Dome, and the world's tallest waterfall in North America",
-    imageSrc: "https://images.unsplash.com/photo-1562310503-a918c4c61e38?q=80&w=800&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.yosemiteNationalPark,
     imageAlt: "Yosemite Valley with El Capitan at sunrise",
   },
   {
@@ -194,7 +195,7 @@ export const FEATURED_PARKS: NationalPark[] = [
     visitors: 0.6,
     area: 6075,
     highlight: "20,310 ft — highest peak in North America, in a park the size of New Hampshire",
-    imageSrc: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.denaliNationalPark,
     imageAlt: "Denali mountain peak in Alaska",
   },
   {
@@ -204,7 +205,7 @@ export const FEATURED_PARKS: NationalPark[] = [
     visitors: 2.9,
     area: 1013,
     highlight: "Going-to-the-Sun Road through 700 miles of trails and pristine alpine wilderness",
-    imageSrc: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.glacierNationalPark,
     imageAlt: "Glacier National Park's turquoise alpine lakes",
   },
   {
@@ -214,7 +215,7 @@ export const FEATURED_PARKS: NationalPark[] = [
     visitors: 4.9,
     area: 148,
     highlight: "Towering Navajo sandstone cliffs — the iconic American canyon experience",
-    imageSrc: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800&auto=format&fit=crop",
+    imageSrc: SITE_IMAGES.zionNationalPark,
     imageAlt: "Zion National Park canyon and river",
   },
 ];

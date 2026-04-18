@@ -26,10 +26,15 @@ import economyNYSEUpsideDown from "@/IMAGES/Economy/economy-nyse-upside-down.jpg
 import economyPort from "@/IMAGES/Economy/economy-port.jpg";
 import economyTradeSkyline from "@/IMAGES/Infrastructure/I-110 and I-115 Interchange Los Angeles.jpg";
 import qualityOfLifeHouse from "@/IMAGES/Housing/USA Suburb house.jpg";
+import denaliNationalPark from "@/IMAGES/Landscapes/Mount Denali National Park.jpg";
+import glacierNationalPark from "@/IMAGES/Landscapes/Glacier National Park.jpg";
 import grandTeton from "@/IMAGES/Landscapes/Yosemite National Park Road.jpg";
 import homeGrandCanyon from "@/IMAGES/Landscapes/home-grand-canyon.jpg";
 import homeWheatFields from "@/IMAGES/Landscapes/home-wheat-fields.jpg";
+import yosemiteNationalPark from "@/IMAGES/Landscapes/Yosemite National Park.jpg";
+import yellowstoneNationalPark from "@/IMAGES/Landscapes/Yellowstone National Park.jpg";
 import yellowstonePrismatic from "@/IMAGES/Landscapes/yellowstone-prismatic.jpg";
+import zionNationalPark from "@/IMAGES/Landscapes/Zion National Park.jpg";
 import globalLeadership from "@/IMAGES/USA from Space/Planet Earth.jpg";
 import homeUsaAtNightFromSpace from "@/IMAGES/USA from Space/USA at night from Space.jpg";
 import homeAirForcePlane from "@/IMAGES/Military/Air Force/home-air-force-plane.jpg";
@@ -71,4 +76,9 @@ export const SITE_IMAGES = {
   economyNyseHero: economyNyseHero.src,
   economyPort: economyPort.src,
   economyTradeSkyline: economyTradeSkyline.src,
+  denaliNationalPark: denaliNationalPark.src,
+  glacierNationalPark: glacierNationalPark.src,
+  yosemiteNationalPark: yosemiteNationalPark.src,
+  yellowstoneNationalPark: yellowstoneNationalPark.src,
+  zionNationalPark: zionNationalPark.src,
 } as const;
