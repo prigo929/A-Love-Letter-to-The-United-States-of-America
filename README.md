@@ -89,7 +89,7 @@ The culture and quality-of-life pages are currently clean scaffolds with TODO zo
 
 ## Dev Commands
 
-### Fast start
+### Fast Start
 
 ```bash
 npm install
@@ -108,12 +108,12 @@ npm run start
 npm run type-check
 ```
 
-Note:
+Notes:
 
 - `npm run dev` intentionally uses webpack because this repo previously hit Turbopack stability issues during local development.
 - production builds still use standard `next build`.
 
-### Recommended pre-push check
+### Recommended Pre-Push Check
 
 ```bash
 npm run type-check
@@ -140,15 +140,15 @@ This repo uses Supabase for newsletter signup storage.
 
 1. Create a Supabase project
 2. Open the SQL editor
-3. Run [`supabase-schema.sql`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/supabase-schema.sql)
+3. Run `supabase-schema.sql`
 4. Add your environment variables in `.env.local`
 
 Relevant files:
 
-- [newsletter.ts](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/app/actions/newsletter.ts)
-- [client.ts](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/supabase/client.ts)
-- [server.ts](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/supabase/server.ts)
-- [database.types.ts](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/types/database.types.ts)
+- `app/actions/newsletter.ts`
+- `lib/supabase/client.ts`
+- `lib/supabase/server.ts`
+- `types/database.types.ts`
 
 ## Project Shape
 
@@ -200,21 +200,21 @@ That flow is the backbone of the project:
 
 ## Homepage Architecture
 
-The home page in [`app/page.tsx`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/app/page.tsx) is intentionally composed from reusable sections.
+The home page in `app/page.tsx` is intentionally composed from reusable sections.
 
 Key section components:
 
-- [HeroSection.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/HeroSection.tsx)
-- [OpeningStatement.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/OpeningStatement.tsx)
-- [StatBar.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/StatBar.tsx)
-- [SectionGrid.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/SectionGrid.tsx)
-- [WhyAmericaSection.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/WhyAmericaSection.tsx)
-- [MapPreviewSection.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/MapPreviewSection.tsx)
-- [VideoSection.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/VideoSection.tsx)
-- [DataTeaserSection.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/DataTeaserSection.tsx)
-- [QuoteCarousel.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/QuoteCarousel.tsx)
-- [GalleryPreviewSection.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/GalleryPreviewSection.tsx)
-- [NewsletterSection.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/NewsletterSection.tsx)
+- `components/sections/HeroSection.tsx`
+- `components/sections/OpeningStatement.tsx`
+- `components/sections/StatBar.tsx`
+- `components/sections/SectionGrid.tsx`
+- `components/sections/WhyAmericaSection.tsx`
+- `components/sections/MapPreviewSection.tsx`
+- `components/sections/VideoSection.tsx`
+- `components/sections/DataTeaserSection.tsx`
+- `components/sections/QuoteCarousel.tsx`
+- `components/sections/GalleryPreviewSection.tsx`
+- `components/sections/NewsletterSection.tsx`
 
 Support utilities mounted globally in the layout:
 
@@ -236,32 +236,32 @@ This repo does not use a formal feature-flag service right now, but it is still 
 
 This repo is optimized so you can manage images without hunting through JSX.
 
-### The rule
+### The Rule
 
 Do not scatter raw image paths across the app unless there is a good reason.
 
 Use this flow:
 
-1. add the file somewhere in [`IMAGES`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/IMAGES)
-2. import it in [`site-images.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/site-images.ts)
+1. add the file somewhere in `IMAGES/`
+2. import it in `lib/site-images.ts`
 3. expose it as a stable `SITE_IMAGES.someKey`
 4. consume that key from data files or components
 
-### Where images are typically wired
+### Where Images Are Typically Wired
 
-- [`constants.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/constants.ts) for nav cards and hero slideshow
-- [`home.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/data/home.ts) for homepage content
-- [`economy-data.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/data/economy-data.ts) for economy pages
+- `lib/constants.ts` for nav cards and hero slideshow
+- `lib/data/home.ts` for homepage content
+- `lib/data/economy-data.ts` for economy pages
 
 ### Example
 
 If you want to change a homepage hero image:
 
 1. add the new file to `IMAGES/`
-2. import it in [`site-images.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/site-images.ts)
-3. replace the hero key in [`constants.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/constants.ts)
+2. import it in `lib/site-images.ts`
+3. replace the hero key in `lib/constants.ts`
 
-### Why this is better than raw URLs everywhere
+### Why This Is Better Than Raw URLs Everywhere
 
 - easier swaps
 - fewer broken references
@@ -275,9 +275,9 @@ Most factual content is intentionally stored in data files.
 
 Main content sources:
 
-- [`home.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/data/home.ts)
-- [`economy-data.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/data/economy-data.ts)
-- [`constants.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/constants.ts)
+- `lib/data/home.ts`
+- `lib/data/economy-data.ts`
+- `lib/constants.ts`
 
 Use these rules:
 
@@ -286,7 +286,7 @@ Use these rules:
 - change visual layout in component files
 - change images via `SITE_IMAGES`
 
-### Good editing discipline
+### Good Editing Discipline
 
 - use data files for numbers, lists, cards, and repeated text
 - keep page files focused on structure
@@ -302,9 +302,9 @@ The site currently supports:
 
 Core files:
 
-- [`config.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/i18n/config.ts)
-- [`LanguageProvider.tsx`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/providers/LanguageProvider.tsx)
-- [`server.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/i18n/server.ts)
+- `lib/i18n/config.ts`
+- `components/providers/LanguageProvider.tsx`
+- `lib/i18n/server.ts`
 
 How it works:
 
@@ -318,7 +318,7 @@ If you add a new route and want it translated:
 2. create a `copy` object inside the page or data getter
 3. render translated labels from that object
 
-### Current translation approach
+### Current Translation Approach
 
 - client surfaces like the header use the language provider
 - server routes use cookie-based locale reads
@@ -329,57 +329,57 @@ If you add a new route and want it translated:
 
 Layout:
 
-- [Header.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/layout/Header.tsx)
-- [Footer.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/layout/Footer.tsx)
-- [Breadcrumb.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/layout/Breadcrumb.tsx)
-- [PageChrome.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/layout/PageChrome.tsx)
+- `components/layout/Header.tsx`
+- `components/layout/Footer.tsx`
+- `components/layout/Breadcrumb.tsx`
+- `components/layout/PageChrome.tsx`
 
 Content:
 
-- [FactCard.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/FactCard.tsx)
-- [StatCard.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/StatCard.tsx)
-- [QuoteBlock.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/QuoteBlock.tsx)
-- [ParallaxSection.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/ParallaxSection.tsx)
-- [AccordionSection.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/sections/AccordionSection.tsx)
+- `components/sections/FactCard.tsx`
+- `components/sections/StatCard.tsx`
+- `components/sections/QuoteBlock.tsx`
+- `components/sections/ParallaxSection.tsx`
+- `components/sections/AccordionSection.tsx`
 
 Charts:
 
-- [GdpBarChart.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/data/GdpBarChart.tsx)
-- [SP500Chart.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/data/SP500Chart.tsx)
-- [VCCharts.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/data/VCCharts.tsx)
-- [DollarMarketCharts.tsx](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/components/data/DollarMarketCharts.tsx)
+- `components/data/GdpBarChart.tsx`
+- `components/data/SP500Chart.tsx`
+- `components/data/VCCharts.tsx`
+- `components/data/DollarMarketCharts.tsx`
 
-## “How Do I Change X?”
+## How Do I Change X?
 
 This is the practical operator section.
 
 ### Change homepage section order
 
-Edit [`app/page.tsx`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/app/page.tsx)
+Edit `app/page.tsx`
 
 ### Change homepage hero images
 
-Edit [`constants.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/constants.ts)
+Edit `lib/constants.ts`
 
 ### Change homepage stats, cards, gallery content, videos, or chart data
 
-Edit [`home.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/data/home.ts)
+Edit `lib/data/home.ts`
 
 ### Change economy facts, overview text, quote content, or subpage card data
 
-Edit [`economy-data.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/data/economy-data.ts)
+Edit `lib/data/economy-data.ts`
 
 ### Change header navigation or submenu structure
 
-Edit [`constants.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/constants.ts)
+Edit `lib/constants.ts`
 
 ### Change the language options
 
-Edit [`config.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/i18n/config.ts)
+Edit `lib/i18n/config.ts`
 
 ### Change sitewide look and reusable CSS helpers
 
-Edit [`globals.css`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/app/globals.css)
+Edit `app/globals.css`
 
 ## Design Notes
 
@@ -400,7 +400,7 @@ This is not a neutral design system. If you add new sections, preserve the estab
 - patriotic palette
 - minimal generic placeholder UI
 
-### Design principle
+### Design Principle
 
 If a new section looks like a generic SaaS block, it is probably wrong for this repo.
 
@@ -419,10 +419,10 @@ Then push to GitHub and deploy through Vercel.
 
 If Vercel fails on static image imports:
 
-- check the exact filename casing in [`site-images.ts`](/Users/alinprigoreanu/Documents/The United States of America/Website - Patriotic USA/usa-patriot-site/lib/site-images.ts)
+- check the exact filename casing in `lib/site-images.ts`
 - remember macOS may hide case mistakes that Linux CI will reject
 
-### Build sanity checklist
+### Build Sanity Checklist
 
 - `npm run type-check` passes
 - local image paths match real file names exactly
@@ -470,7 +470,7 @@ Good next expansions for this repo:
 | Quality of Life | scaffolded, ready for content |
 | Translation | live for shared UI and major route content |
 | Image system | centralized and local-first |
-| README | now aligned with the actual repo |
+| README | aligned with the actual repo |
 
 ---
 
