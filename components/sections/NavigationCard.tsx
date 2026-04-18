@@ -66,7 +66,7 @@ export function NavigationCard({
               <Badge
                 variant="gold"
                 size="sm"
-                className="max-w-[8.75rem] whitespace-normal px-2 py-1 text-[10px] leading-tight tracking-[0.12em] shadow-[0_6px_20px_rgba(0,0,0,0.18)]"
+                className="max-w-none whitespace-nowrap px-2.5 py-1 text-[10px] leading-none tracking-[0.08em] shadow-[0_6px_20px_rgba(0,0,0,0.18)]"
               >
                 {badge}
               </Badge>
