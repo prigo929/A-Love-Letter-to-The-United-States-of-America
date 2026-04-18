@@ -9,7 +9,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Star } from "lucide-react";
+import { Languages, Menu, X, ChevronDown, Star } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { NAV_SECTIONS } from "@/lib/constants";
 import {
@@ -29,13 +29,21 @@ const LOGO_STAR_DELAY_CLASSES = [
   "motion-delay-120",
   "motion-delay-160",
 ] as const;
+const LANGUAGE_OPTIONS = [
+  { label: "English", code: "EN", flag: "🇺🇸" },
+  { label: "Română", code: "RO", flag: "🇷🇴" },
+] as const;
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] =
+    useState<(typeof LANGUAGE_OPTIONS)[number]>(LANGUAGE_OPTIONS[0]);
   const pathname = usePathname();
   const menuTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const languageMenuRef = useRef<HTMLDivElement>(null);
 
   // ── Scroll detection ───────────────────────────────────────────────────────
   useEffect(() => {
@@ -47,6 +55,7 @@ export function Header() {
   // ── Close mobile menu on route change ─────────────────────────────────────
   useEffect(() => {
     setMobileOpen(false);
+    setLanguageMenuOpen(false);
   }, [pathname]);
 
   // ── Lock body scroll when mobile menu is open ──────────────────────────────
@@ -57,6 +66,21 @@ export function Header() {
     };
   }, [mobileOpen]);
 
+  // ── Close language menu on outside click ─────────────────────────────────
+  useEffect(() => {
+    const handlePointerDown = (event: MouseEvent) => {
+      if (
+        languageMenuRef.current &&
+        !languageMenuRef.current.contains(event.target as Node)
+      ) {
+        setLanguageMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    return () => document.removeEventListener("mousedown", handlePointerDown);
+  }, []);
+
   // ── Mega menu hover handlers (with delay to prevent flicker) ──────────────
   const handleMenuEnter = (title: string) => {
     if (menuTimeout.current) clearTimeout(menuTimeout.current);
@@ -64,6 +88,13 @@ export function Header() {
   };
   const handleMenuLeave = () => {
     menuTimeout.current = setTimeout(() => setActiveMenu(null), 150);
+  };
+
+  const handleLanguageSelect = (
+    language: (typeof LANGUAGE_OPTIONS)[number],
+  ) => {
+    setSelectedLanguage(language);
+    setLanguageMenuOpen(false);
   };
 
   return (
@@ -237,6 +268,64 @@ export function Header() {
 
             {/* ── Desktop CTA ────────────────────────────────────────────── */}
             <div className="hidden lg:flex items-center gap-3">
+              <div ref={languageMenuRef} className="relative">
+                <button
+                  type="button"
+                  onClick={() => setLanguageMenuOpen((open) => !open)}
+                  className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 py-2 font-body text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
+                  aria-haspopup="menu"
+                  aria-expanded={languageMenuOpen}
+                  aria-label="Choose language"
+                >
+                  <Languages className="h-4 w-4 text-glory-gold" />
+                  <span>{selectedLanguage.flag}</span>
+                  <span>{selectedLanguage.code}</span>
+                  <ChevronDown
+                    className={cn(
+                      "h-3.5 w-3.5 transition-transform duration-200",
+                      languageMenuOpen && "rotate-180",
+                    )}
+                    aria-hidden="true"
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {languageMenuOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.18 }}
+                      className="absolute right-0 top-full z-60 mt-2 w-44 overflow-hidden rounded-2xl border border-white/15 bg-navy-dark/80 shadow-2xl backdrop-blur-2xl"
+                      role="menu"
+                    >
+                      {LANGUAGE_OPTIONS.map((language) => (
+                        <button
+                          key={language.code}
+                          type="button"
+                          onClick={() => handleLanguageSelect(language)}
+                          className={cn(
+                            "flex w-full items-center justify-between px-4 py-3 text-left font-body text-sm transition-colors hover:bg-white/8",
+                            selectedLanguage.code === language.code
+                              ? "bg-glory-gold/10 text-glory-gold"
+                              : "text-white/80",
+                          )}
+                          role="menuitem"
+                        >
+                          <span className="flex items-center gap-2">
+                            <span>{language.flag}</span>
+                            <span>{language.label}</span>
+                          </span>
+                          <span className="text-xs tracking-widest">
+                            {language.code}
+                          </span>
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
               <Button href="/sitemap" variant="ghost" size="sm">
                 All Sections
               </Button>
@@ -349,6 +438,35 @@ export function Header() {
                   <Button href="/economy" variant="gold" size="lg" fullWidth>
                     Explore the Nation
                   </Button>
+                </div>
+
+                <div className="mt-8 border-t border-white/10 px-4 pt-6">
+                  <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.28em] text-glory-gold">
+                    Language
+                  </p>
+                  <div className="space-y-2">
+                    {LANGUAGE_OPTIONS.map((language) => (
+                      <button
+                        key={language.code}
+                        type="button"
+                        onClick={() => handleLanguageSelect(language)}
+                        className={cn(
+                          "flex w-full items-center justify-between rounded-xl border px-4 py-3 text-left font-body text-sm transition-colors",
+                          selectedLanguage.code === language.code
+                            ? "border-glory-gold/35 bg-glory-gold/10 text-glory-gold"
+                            : "border-white/10 bg-white/5 text-white/75 hover:bg-white/10 hover:text-white",
+                        )}
+                      >
+                        <span className="flex items-center gap-2">
+                          <span>{language.flag}</span>
+                          <span>{language.label}</span>
+                        </span>
+                        <span className="text-xs tracking-widest">
+                          {language.code}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </nav>
             </motion.div>
