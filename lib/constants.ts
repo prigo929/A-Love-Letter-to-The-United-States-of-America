@@ -56,7 +56,7 @@ export const NAV_SECTIONS = [
     href: "/economy",
     description: "The engine of the world — $28.8T GDP and counting",
     imageSrc: SITE_IMAGES.economyNYSEUpsideDown,
-    badge: "#1 Economy",
+    badge: "$28.8T GDP",
     items: [
       {
         label: "GDP & Scale",
@@ -436,7 +436,7 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
   "/economy": {
     title: "Economie",
     description: "Motorul lumii — PIB de 28,8 trilioane de dolari și în creștere",
-    badge: "#1 Economie",
+    badge: "$28,8T PIB",
     items: {
       "/economy/gdp-growth": {
         label: "PIB și Dimensiune",
