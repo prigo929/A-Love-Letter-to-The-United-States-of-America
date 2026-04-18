@@ -1,13 +1,17 @@
 # America: The Greatest Nation
 
-[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-18-20232A?style=for-the-badge&logo=react)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Vercel](https://img.shields.io/badge/Vercel-Deploy-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
-[![Supabase](https://img.shields.io/badge/Supabase-Backend-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
-[![Languages](https://img.shields.io/badge/Languages-EN%20%7C%20RO-B22234?style=for-the-badge)](#translation-system)
-[![Status](https://img.shields.io/badge/Status-Active%20Build-FFD700?style=for-the-badge&labelColor=0d1117)](#status)
+[![Next.js 16](https://img.shields.io/badge/Next.js-16-111111?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![App Router](https://img.shields.io/badge/Router-App%20Router-0A3161?style=flat-square)](https://nextjs.org/docs/app)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-1E5AA8?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind](https://img.shields.io/badge/Tailwind-Custom%20Theme-3C8DAD?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Motion-Framer-7A1F3D?style=flat-square)](https://www.framer.com/motion/)
+[![Charts](https://img.shields.io/badge/Charts-Recharts%20%2B%20D3-B22234?style=flat-square)](#experience-highlights)
+[![Maps](https://img.shields.io/badge/Maps-react--simple--maps-3C3B6E?style=flat-square)](#experience-highlights)
+[![Images](https://img.shields.io/badge/Images-Local%20Registry-7A5C00?style=flat-square)](#image-workflow)
+[![Languages](https://img.shields.io/badge/Languages-English%20%7C%20Rom%C3%A2n%C4%83-8C1C2B?style=flat-square)](#translation-system)
+[![Backend](https://img.shields.io/badge/Backend-Supabase-1C8C5E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.com/)
+[![Deploy](https://img.shields.io/badge/Deploy-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com/)
+[![Status](https://img.shields.io/badge/Status-Active%20Build-D4AF37?style=flat-square&labelColor=0d1117)](#status)
 
 A cinematic Next.js site about the United States built as a long-form patriotic experience: large hero media, editorial sections, data visualizations, image-led storytelling, and deep-dive pages for topics like economy, culture, quality of life, and more.
 
