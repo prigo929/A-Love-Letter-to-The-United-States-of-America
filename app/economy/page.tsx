@@ -233,6 +233,8 @@ export default function EconomyPage() {
                     title="GDP Per Capita: USA vs G7 & Emerging Markets (2024)"
                     subtitle="At $82,700 per person, Americans produce more wealth per capita than any major nation"
                     source="IMF World Economic Outlook 2024"
+                    valueSuffix="K"
+                    valueLabel="GDP per capita (2024, USD Thousands)"
                   />
                 </div>
 

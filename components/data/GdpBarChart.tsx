@@ -24,6 +24,8 @@ interface GdpBarChartProps {
   title?: string;
   subtitle?: string;
   source?: string;
+  valueSuffix?: string;
+  valueLabel?: string;
 }
 
 // ── Custom Tooltip ─────────────────────────────────────────────────────────────
@@ -32,10 +34,14 @@ function CustomTooltip({
   active,
   payload,
   label,
+  valueSuffix,
+  valueLabel,
 }: {
   active?: boolean;
   payload?: Array<{ value: number; payload: GdpDataPoint }>;
   label?: string;
+  valueSuffix: string;
+  valueLabel: string;
 }) {
   if (!active || !payload?.length) return null;
   const item = payload[0];
@@ -46,11 +52,10 @@ function CustomTooltip({
         {item.payload.flag} {label}
       </p>
       <p className="font-hero text-2xl text-glory-gold">
-        ${item.value.toFixed(1)}T
+        ${item.value.toFixed(1)}
+        {valueSuffix}
       </p>
-      <p className="font-body text-xs text-white/50">
-        GDP (2024, USD Trillions)
-      </p>
+      <p className="font-body text-xs text-white/50">{valueLabel}</p>
     </div>
   );
 }
@@ -63,8 +68,9 @@ function CustomLabel(props: {
   width?: number;
   value?: number;
   index?: number;
+  valueSuffix?: string;
 }) {
-  const { x = 0, y = 0, width = 0, value = 0 } = props;
+  const { x = 0, y = 0, width = 0, value = 0, valueSuffix = "T" } = props;
   return (
     <text
       x={x + width / 2}
@@ -75,7 +81,8 @@ function CustomLabel(props: {
       fontFamily="var(--font-hero)"
       letterSpacing="0.05em"
     >
-      ${value.toFixed(1)}T
+      ${value.toFixed(1)}
+      {valueSuffix}
     </text>
   );
 }
@@ -85,6 +92,8 @@ export function GdpBarChart({
   title,
   subtitle,
   source,
+  valueSuffix = "T",
+  valueLabel = "GDP (2024, USD Trillions)",
 }: GdpBarChartProps) {
   return (
     <motion.div
@@ -140,10 +149,15 @@ export function GdpBarChart({
               }}
               axisLine={false}
               tickLine={false}
-              tickFormatter={(v) => `$${v}T`}
+              tickFormatter={(v) => `$${v}${valueSuffix}`}
             />
             <Tooltip
-              content={<CustomTooltip />}
+              content={
+                <CustomTooltip
+                  valueSuffix={valueSuffix}
+                  valueLabel={valueLabel}
+                />
+              }
               cursor={{ fill: "rgba(255,255,255,0.04)" }}
             />
             <Bar dataKey="gdp" radius={[6, 6, 0, 0]} maxBarSize={60}>
@@ -154,7 +168,7 @@ export function GdpBarChart({
                   opacity={entry.highlight ? 1 : 0.75}
                 />
               ))}
-              <LabelList content={<CustomLabel />} />
+              <LabelList content={<CustomLabel valueSuffix={valueSuffix} />} />
             </Bar>
           </BarChart>
         </ResponsiveContainer>

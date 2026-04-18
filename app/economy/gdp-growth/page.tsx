@@ -207,6 +207,8 @@ export default function GdpGrowthPage() {
                 title="GDP Per Capita by Country (2024, USD Thousands)"
                 subtitle="At $82,700 per person, the average American produces more than any major nation"
                 source="IMF World Economic Outlook 2024"
+                valueSuffix="K"
+                valueLabel="GDP per capita (2024, USD Thousands)"
               />
             </div>
           </section>
