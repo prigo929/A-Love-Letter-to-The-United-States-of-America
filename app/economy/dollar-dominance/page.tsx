@@ -319,6 +319,7 @@ export default function DollarDominancePage() {
             quote="America's ability to borrow in its own currency at the world's lowest rates is not luck — it is the reward for having built the most trustworthy financial system in human history."
             attribution="Lawrence Summers"
             title="Former US Secretary of the Treasury, Harvard University"
+            variant="dark"
           />
 
           {/* Nav */}

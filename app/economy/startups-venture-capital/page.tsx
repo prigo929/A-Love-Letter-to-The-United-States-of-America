@@ -398,6 +398,7 @@ export default function StartupsVCPage() {
             quote="The startup ecosystem is the most powerful wealth-creation and problem-solving machine ever invented. America built it, and America keeps improving it."
             attribution="Marc Andreessen"
             title="Co-Founder, Andreessen Horowitz — Menlo Park, California"
+            variant="dark"
           />
 
           {/* Nav */}

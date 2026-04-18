@@ -277,6 +277,7 @@ export default function EconomyPage() {
                 quote={ECONOMY_QUOTES[0].quote}
                 attribution={ECONOMY_QUOTES[0].attribution}
                 title={ECONOMY_QUOTES[0].title}
+                variant="dark"
               />
 
               {/* ── Section 3: Capital Markets ──────────────────────────── */}
@@ -509,6 +510,7 @@ export default function EconomyPage() {
                 quote={ECONOMY_QUOTES[1].quote}
                 attribution={ECONOMY_QUOTES[1].attribution}
                 title={ECONOMY_QUOTES[1].title}
+                variant="dark"
               />
 
               {/* ── Section 5: Dollar Dominance ─────────────────────────── */}
@@ -666,6 +668,7 @@ export default function EconomyPage() {
                 quote={ECONOMY_QUOTES[2].quote}
                 attribution={ECONOMY_QUOTES[2].attribution}
                 title={ECONOMY_QUOTES[2].title}
+                variant="dark"
               />
 
               {/* ── Section 7: Sub-Page Navigation ──────────────────────── */}
