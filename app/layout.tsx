@@ -4,6 +4,7 @@
 
 import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Playfair_Display, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop, ReadingProgressBar } from "@/components/layout/PageChrome";
@@ -195,6 +196,7 @@ export default function RootLayout({
         {/* Footer */}
         <Footer />
         <BackToTop />
+        <Analytics />
       </body>
     </html>
   );
