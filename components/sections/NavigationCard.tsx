@@ -63,7 +63,11 @@ export function NavigationCard({
           {/* Badge on image */}
           {badge && (
             <div className="absolute top-3 left-3">
-              <Badge variant="gold" size="sm">
+              <Badge
+                variant="gold"
+                size="sm"
+                className="max-w-[8.75rem] whitespace-normal px-2 py-1 text-[10px] leading-tight tracking-[0.12em] shadow-[0_6px_20px_rgba(0,0,0,0.18)]"
+              >
                 {badge}
               </Badge>
             </div>
