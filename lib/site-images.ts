@@ -28,7 +28,7 @@ import homeGrandCanyon from "@/IMAGES/Landscapes/home-grand-canyon.jpg";
 import homeWheatFields from "@/IMAGES/Landscapes/home-wheat-fields.jpg";
 import yellowstonePrismatic from "@/IMAGES/Landscapes/yellowstone-prismatic.jpg";
 import globalLeadership from "@/IMAGES/USA from Space/Planet Earth.jpg";
-import homeAirForcePlane from "@/IMAGES/Military/home-air-force-plane.jpg";
+import homeAirForcePlane from "@/IMAGES/Military/Air Force/home-air-force-plane.jpg";
 import scienceLab from "@/IMAGES/Science/spacex-OHOU-5UVIYQ-unsplash.jpg";
 import homeSiliconValley from "@/IMAGES/Technology/macro of a silicon wafer.jpg";
 import siliconValleyOffice from "@/IMAGES/Technology/Apple Headquarters.jpg";
