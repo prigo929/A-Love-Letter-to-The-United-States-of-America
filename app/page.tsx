@@ -1,5 +1,12 @@
 // ─── Home Page ────────────────────────────────────────────────────────────────
-// Assembles the full 11-section home page in order.
+// Assembles the full homepage in order.
+//
+// Beginner guide:
+// - If you want to re-order sections on the homepage, change the JSX order in
+//   HomePage() below.
+// - If you want to change the text/images inside a section, edit that section's
+//   data file or component instead of this file.
+//
 // Server Component — all client components imported as leaves.
 
 import type { Metadata } from "next";
@@ -42,6 +49,7 @@ const jsonLd = {
 export default function HomePage() {
   return (
     <>
+      {/* Structured data for search engines. Safe to leave alone unless SEO changes. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

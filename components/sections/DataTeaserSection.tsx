@@ -1,5 +1,16 @@
 "use client";
 
+// Homepage chart preview section.
+//
+// Beginner guide:
+// - The chart numbers themselves come from lib/data/home.ts
+// - This file only controls how those numbers are rendered visually
+// - If a unit/title is wrong, fix the chart config in `charts` below
+//
+// `use client` is required because this component uses browser-only features:
+// - scroll/viewport detection via Framer Motion
+// - animated chart rendering in the browser
+
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
@@ -16,6 +27,7 @@ import {
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import { COLORS } from "@/lib/constants";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import {
   GDP_COMPARISON_DATA,
   MILITARY_SPENDING_DATA,
@@ -30,6 +42,8 @@ interface ChartTooltipProps {
 }
 
 function ChartTooltip({ active, payload, label, unit }: ChartTooltipProps) {
+  // Recharts calls this repeatedly while the mouse moves over the chart.
+  // Returning null means "show no tooltip right now".
   if (!active || !payload?.length) return null;
 
   return (
@@ -63,6 +77,8 @@ function ChartCard({
   index,
 }: ChartCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  // `useInView` becomes true once this card scrolls into view, which lets us
+  // delay the bar animation until the user actually sees the chart.
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
@@ -89,14 +105,17 @@ function ChartCard({
       </div>
 
       <div className="min-h-[200px] flex-1 px-2 pb-4">
+        {/* Recharts handles the responsive sizing inside this container. */}
         <ResponsiveContainer width="100%" height={200}>
           <BarChart
             data={data}
-            margin={{ top: 16, right: 16, bottom: 4, left: -16 }}
+            margin={{ top: 16, right: 16, bottom: 8, left: 8 }}
             barCategoryGap="25%"
           >
             <XAxis
               dataKey="country"
+              interval={0}
+              padding={{ left: 10, right: 10 }}
               tick={{
                 fill: "rgba(255,255,255,0.45)",
                 fontSize: 11,
@@ -118,6 +137,7 @@ function ChartCard({
               animationDuration={900}
               animationEasing="ease-out"
             >
+              {/* One Cell per bar lets us color the USA differently from the rest. */}
               {data.map((entry) => (
                 <Cell
                   key={entry.country}
@@ -132,11 +152,12 @@ function ChartCard({
                   fontSize: 10,
                   fontFamily: "Inter",
                 }}
-                formatter={(value: number) =>
-                  value >= 1000
+                formatter={(value: number) => {
+                  if (unit) return `${value}${unit}`;
+                  return value >= 1000
                     ? `${(value / 1000).toFixed(1)}k`
-                    : String(value)
-                }
+                    : String(value);
+                }}
               />
             </Bar>
           </BarChart>
@@ -151,35 +172,75 @@ function ChartCard({
 }
 
 export function DataTeaserSection() {
+  const { locale } = useLanguage();
+  // These three cards are configured here so a content editor can quickly
+  // change labels/units without touching the reusable chart markup above.
   const charts: ChartCardProps[] = [
     {
-      title: "GDP ($Trillion)",
-      subtitle: "World Economy",
+      title: locale === "ro" ? "PIB (trilioane $)" : "GDP ($Trillion)",
+      subtitle: locale === "ro" ? "Economia Mondială" : "World Economy",
       data: [...GDP_COMPARISON_DATA],
       unit: "T",
-      source: "World Bank 2024",
-      highlight: "US GDP is larger than China, Japan, and Germany combined",
+      source: locale === "ro" ? "Banca Mondială 2024" : "World Bank 2024",
+      highlight:
+        locale === "ro"
+          ? "PIB-ul SUA este mai mare decât China, Japonia și Germania la un loc"
+          : "US GDP is larger than China, Japan, and Germany combined",
       index: 0,
     },
     {
-      title: "Military Spending ($B)",
-      subtitle: "Defense Budget",
+      title:
+        locale === "ro"
+          ? "Cheltuieli Militare (mld. $)"
+          : "Military Spending ($B)",
+      subtitle: locale === "ro" ? "Buget de Apărare" : "Defense Budget",
       data: [...MILITARY_SPENDING_DATA],
       unit: "B",
       source: "SIPRI 2024",
-      highlight: "US spends more than the next 10 nations combined",
+      highlight:
+        locale === "ro"
+          ? "SUA cheltuiește mai mult decât următoarele 10 națiuni la un loc"
+          : "US spends more than the next 10 nations combined",
       index: 1,
     },
     {
-      title: "Nobel Prizes Won",
-      subtitle: "Scientific Achievement",
+      title:
+        locale === "ro" ? "Premii Nobel Câștigate" : "Nobel Prizes Won",
+      subtitle:
+        locale === "ro" ? "Realizare Științifică" : "Scientific Achievement",
       data: [...NOBEL_PRIZES_DATA],
       unit: "",
-      source: "Nobel Foundation — All time",
-      highlight: "America has won 3× more Nobels than the UK, the #2 nation",
+      source:
+        locale === "ro"
+          ? "Fundația Nobel — Total istoric"
+          : "Nobel Foundation — All time",
+      highlight:
+        locale === "ro"
+          ? "America a câștigat de 3 ori mai multe Nobel decât Regatul Unit, țara aflată pe locul 2"
+          : "America has won 3× more Nobels than the UK, the #2 nation",
       index: 2,
     },
   ];
+  const copy =
+    locale === "ro"
+      ? {
+          eyebrow: "Cifrele Nu Mint",
+          title: "Date Dure. Fapte de Necontestat.",
+          description:
+            "Fiecare grafic, fiecare studiu, fiecare indice spune aceeași poveste. America conduce, la o distanță uriașă.",
+          usLegend: "Statele Unite",
+          othersLegend: "Alte națiuni",
+          cta: "Vezi Analiza Completă",
+        }
+      : {
+          eyebrow: "The Numbers Don't Lie",
+          title: "Hard Data. Undeniable Facts.",
+          description:
+            "Every bar chart, every study, every index tells the same story. America leads, by an enormous margin.",
+          usLegend: "United States",
+          othersLegend: "Other nations",
+          cta: "See Full Analysis",
+        };
 
   return (
     <section
@@ -203,21 +264,20 @@ export function DataTeaserSection() {
             variants={fadeUp}
             className="section-eyebrow justify-center"
           >
-            The Numbers Don&apos;t Lie
+            {copy.eyebrow}
           </motion.p>
           <motion.h2
             id="data-heading"
             variants={fadeUp}
             className="mb-4 font-display text-h2 text-white"
           >
-            Hard Data. Undeniable Facts.
+            {copy.title}
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="mx-auto max-w-xl font-body text-lg text-white/55"
           >
-            Every bar chart, every study, every index tells the same story.
-            America leads, by an enormous margin.
+            {copy.description}
           </motion.p>
         </motion.div>
 
@@ -247,7 +307,7 @@ export function DataTeaserSection() {
                 aria-hidden="true"
               />
               <span className="font-body text-xs text-white/50">
-                United States
+                {copy.usLegend}
               </span>
             </div>
             <div className="flex items-center gap-2">
@@ -256,7 +316,7 @@ export function DataTeaserSection() {
                 aria-hidden="true"
               />
               <span className="font-body text-xs text-white/50">
-                Other nations
+                {copy.othersLegend}
               </span>
             </div>
           </div>
@@ -265,7 +325,7 @@ export function DataTeaserSection() {
             href="/data"
             className="group inline-flex items-center gap-2 rounded-xl border border-glory-gold/30 bg-glory-gold/10 px-6 py-3 font-body text-sm font-semibold text-glory-gold transition-all duration-200 hover:bg-glory-gold/20"
           >
-            See Full Analysis
+            {copy.cta}
             <ArrowRight
               className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
               aria-hidden="true"

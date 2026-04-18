@@ -1,4 +1,10 @@
 // ─── Startups & Venture Capital Sub-Page ─────────────────────────────────────
+// Deep-dive page about US startups, unicorns, and venture capital.
+//
+// Beginner guide:
+// - Most charts and factual datasets come from lib/data/economy-data.ts
+// - This file mainly controls page layout and page-specific supporting blocks
+// - To change the hero photo, update SITE_IMAGES.siliconValleyOffice below
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -7,13 +13,14 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { FactCard } from "@/components/sections/FactCard";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { VCBarChart, UnicornPieChart } from "@/components/data/VCCharts";
+import { getServerLocale } from "@/lib/i18n/server";
 import {
   VC_BY_COUNTRY,
   UNICORNS_BY_COUNTRY,
-  VC_FACTS,
+  getVcFacts,
   STARTUP_TIMELINE,
   STARTUP_ECOSYSTEMS,
-  VC_OVERVIEW_PARAGRAPHS,
+  getVcOverviewParagraphs,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -26,6 +33,7 @@ export const metadata: Metadata = {
 };
 
 const VC_EXTENDED_FACTS = [
+  // Extra facts used only on this page.
   {
     id: "vc-total",
     fact: "US startups raised ~$170B in VC in 2023 — 47% of the global total",
@@ -77,6 +85,7 @@ const VC_EXTENDED_FACTS = [
 ];
 
 const TOP_VC_FIRMS = [
+  // Local data for the VC firm cards further down the page.
   {
     name: "Sequoia Capital",
     aum: "$85B+",
@@ -115,14 +124,162 @@ const TOP_VC_FIRMS = [
   },
 ];
 
-export default function StartupsVCPage() {
+export default async function StartupsVCPage() {
+  const locale = await getServerLocale();
+  const breadcrumbEconomy = locale === "ro" ? "Economie" : "Economy";
+  const pageLabel = locale === "ro" ? "Startup-uri și VC" : "Startups & VC";
+  const sharedFacts = getVcFacts(locale);
+  const overviewParagraphs = getVcOverviewParagraphs(locale);
+  const localFacts =
+    locale === "ro"
+      ? [
+          {
+            ...VC_EXTENDED_FACTS[0],
+            fact: "Startup-urile americane au atras aproximativ 170 mld. $ în 2023 — 47% din totalul global",
+            detail:
+              "Cu doar 4,2% din populația lumii, America atrage aproape jumătate din întreg venture capitalul investit pe Pământ. Nicio altă țară nu s-a apropiat în epoca modernă.",
+          },
+          {
+            ...VC_EXTENDED_FACTS[1],
+            fact: "Absolvenții Stanford au fondat companii evaluate la peste 3,5 trilioane de dolari",
+            detail:
+              "Google, NVIDIA, Netflix, Instagram, PayPal, Yahoo, Cisco, HP, Sun Microsystems — toate au legături puternice cu Stanford.",
+          },
+          {
+            ...VC_EXTENDED_FACTS[2],
+            fact: "Startup-urile americane de AI au atras 67 mld. $ în 2023 — 65% din investiția globală în AI",
+            detail:
+              "OpenAI, Anthropic, Inflection AI, Scale AI și multe altele — revoluția AI este finanțată în mod covârșitor de capital și talent american.",
+          },
+          {
+            ...VC_EXTENDED_FACTS[3],
+            fact: "Legile americane ale falimentului fac eșecul suportabil — un avantaj-cheie al inovației",
+            detail:
+              "Protecția Chapter 11 le permite antreprenorilor americani să se restructureze și să încerce din nou. Această toleranță față de eșec este un motor central al culturii startup-urilor americane.",
+          },
+          {
+            ...VC_EXTENDED_FACTS[4],
+            fact: "55% dintre fondatorii startup-urilor americane de un miliard de dolari au fost imigranți sau copiii lor",
+            detail:
+              "Elon Musk, Sergey Brin, Jensen Huang, Pierre Omidyar, Jerry Yang, Andy Grove — America construiește măreție din talent venit de pretutindeni.",
+          },
+          {
+            ...VC_EXTENDED_FACTS[5],
+            fact: "Primele 10 randamente VC din SUA au creat peste 2 trilioane de dolari valoare din investiții mici",
+            detail:
+              "Investiția Sequoia de 60M $ în Google a returnat 12B $. Cele 13M $ ale Benchmark în eBay au devenit 2,5B $. VC-ul american este cel mai puternic mecanism de creare de bogăție inventat vreodată.",
+          },
+        ]
+      : VC_EXTENDED_FACTS;
+  const vcFirms =
+    locale === "ro"
+      ? [
+          { ...TOP_VC_FIRMS[0], city: "Menlo Park, California" },
+          { ...TOP_VC_FIRMS[1], city: "San Francisco, California" },
+          { ...TOP_VC_FIRMS[2], city: "Palo Alto, California" },
+          { ...TOP_VC_FIRMS[3], city: "San Francisco, California" },
+          { ...TOP_VC_FIRMS[4], city: "Menlo Park, California" },
+          { ...TOP_VC_FIRMS[5], city: "New York, New York" },
+        ]
+      : TOP_VC_FIRMS;
+  const ecosystems =
+    locale === "ro"
+      ? STARTUP_ECOSYSTEMS.map((eco) => ({
+          ...eco,
+          nickname:
+            eco.nickname === "The VC Capital of Earth"
+              ? "Capitala VC a Pământului"
+              : eco.nickname === "Finance & Media Hub"
+                ? "Hub financiar și media"
+                : eco.nickname === "Biotech & DeepTech"
+                  ? "Biotech și deep tech"
+                  : eco.nickname === "Cloud & E-Commerce"
+                    ? "Cloud și e-commerce"
+                    : eco.nickname === "Silicon Hills"
+                      ? "Silicon Hills"
+                      : "Poarta către cripto și America Latină",
+        }))
+      : STARTUP_ECOSYSTEMS;
+  const copy =
+    locale === "ro"
+      ? {
+          heroAlt: "Birou modern de startup — cultura inovației din Silicon Valley",
+          heroEyebrow: "Venture Capital și Startup-uri",
+          heroLead: "SILICON VALLEY",
+          heroAccent: "ESTE O PLANETĂ",
+          heroBody:
+            "Niciun colț al Pământului nu a produs mai multe companii transformatoare, mai mulți miliardari sau mai multă tehnologie care schimbă lumea pe kilometru pătrat. Ecosistemul american de startup-uri este o forță a naturii.",
+          overviewTitle: "De ce America conduce lumea în capitalul pentru inovație",
+          vcChartTitle: "Investiții venture capital după țară (2023, miliarde USD)",
+          unicornTitle: "Economia unicornilor — 659+ și în creștere",
+          unicornBody:
+            "Un «unicorn» — o companie privată evaluată la cel puțin 1 miliard de dolari — era cândva considerat o raritate mitologică. America a construit 659, reprezentând peste 52% din totalul global. Numai în California s-au născut mai mulți unicorni decât în toată Europa la un loc.",
+          unicornChartTitle: "Companii unicorn după țara de origine (2024)",
+          rewiredTitle: "Companiile care au rescris civilizația umană",
+          rewiredBody:
+            "Cele mai importante companii ale erei digitale au fost fondate de americani — sau de imigranți veniți în America. Nu este o coincidență. Combinația dintre talentul de la Stanford și MIT, venture capitalul răbdător, protecția puternică a proprietății intelectuale și o cultură care celebrează ambiția a creat laboratorul perfect pentru inovații care schimbă lumea.",
+          yearLabel: "An",
+          companyLabel: "Companie",
+          founderLabel: "Fondator(i)",
+          industryLabel: "Industrie",
+          valueLabel: "Valoarea de azi",
+          ecosystemsTitle: "Ecosistemele de startup ale Americii",
+          ecosystemsBody:
+            "Silicon Valley ia cele mai multe titluri, dar ecosistemul american de startup-uri se întinde acum în șase mari centre metropolitane — fiecare cu propria specializare, bază de talent și comunitate de investitori.",
+          unicornsLabel: "Unicorni",
+          annualVcLabel: "VC anual",
+          firmsTitle: "Cele mai influente firme VC din lume",
+          firmsBody:
+            "Toate cele mai importante firme de venture capital din lume își au sediul în Statele Unite. Aceste firme nu doar investesc — ele modelează strategia tehnologică globală, recrutează cei mai buni ingineri din lume și fabrică companiile de mâine.",
+          portfolioLabel: "Portofoliu notabil:",
+          numbersTitle: "În cifre",
+          quoteTitle: "Co-fondator, Andreessen Horowitz — Menlo Park, California",
+          prevLink: "← Piețe de Capital",
+          nextLink: "Dominația Dolarului →",
+        }
+      : {
+          heroAlt: "Modern startup office — Silicon Valley innovation culture",
+          heroEyebrow: "Venture Capital & Startups",
+          heroLead: "SILICON VALLEY",
+          heroAccent: "IS A PLANET",
+          heroBody:
+            "No corner of Earth has produced more transformative companies, more billionaires, or more world-changing technology per square mile. America's startup ecosystem is a force of nature.",
+          overviewTitle: "Why America Leads the World in Innovation Capital",
+          vcChartTitle: "Venture Capital Investment by Country (2023, USD Billions)",
+          unicornTitle: "The Unicorn Economy — 659+ and Counting",
+          unicornBody:
+            'A "unicorn" — a private company valued at $1 billion or more — was once considered a mythological rarity. America has built 659 of them, representing over 52% of the global total. More unicorns have been born in California alone than in all of Europe combined.',
+          unicornChartTitle: "Unicorn Companies by Country of Origin (2024)",
+          rewiredTitle: "The Companies That Rewired Human Civilization",
+          rewiredBody:
+            "The most consequential companies of the digital age were founded by Americans — or immigrants who came to America. This is not a coincidence. The combination of Stanford and MIT talent, patient venture capital, strong IP protection, and a culture that celebrates ambition created a perfect laboratory for world-changing innovation.",
+          yearLabel: "Year",
+          companyLabel: "Company",
+          founderLabel: "Founder(s)",
+          industryLabel: "Industry",
+          valueLabel: "Today's Value",
+          ecosystemsTitle: "America's Startup Ecosystems",
+          ecosystemsBody:
+            "Silicon Valley gets the headlines, but the American startup ecosystem now spans six major metropolitan hubs — each with its own specialization, talent base, and investor community.",
+          unicornsLabel: "Unicorns",
+          annualVcLabel: "Annual VC",
+          firmsTitle: "The World's Most Influential VC Firms",
+          firmsBody:
+            "Every one of the world's most consequential venture capital firms is headquartered in the United States. These firms don't just invest — they shape global technology strategy, recruit the world's best engineers, and manufacture the companies of tomorrow.",
+          portfolioLabel: "Notable portfolio:",
+          numbersTitle: "By the Numbers",
+          quoteTitle: "Co-Founder, Andreessen Horowitz — Menlo Park, California",
+          prevLink: "← Capital Markets",
+          nextLink: "Dollar Dominance →",
+        };
+
   return (
     <>
       {/* Hero */}
       <div className="relative bg-navy-dark pt-28 pb-16">
         <Image
           src={SITE_IMAGES.siliconValleyOffice}
-          alt="Modern startup office — Silicon Valley innovation culture"
+          alt={copy.heroAlt}
           fill
           className="object-cover opacity-20"
           priority
@@ -134,21 +291,19 @@ export default function StartupsVCPage() {
         <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <Breadcrumb
             items={[
-              { label: "Economy", href: "/economy" },
-              { label: "Startups & VC" },
+              { label: breadcrumbEconomy, href: "/economy" },
+              { label: pageLabel },
             ]}
             className="mb-8"
           />
-          <p className="mb-4 section-eyebrow">Venture Capital & Startups</p>
+          <p className="mb-4 section-eyebrow">{copy.heroEyebrow}</p>
           <h1 className="mb-4 font-hero text-6xl text-white sm:text-7xl">
-            SILICON VALLEY
+            {copy.heroLead}
             <br />
-            <span className="text-glory-gold">IS A PLANET</span>
+            <span className="text-glory-gold">{copy.heroAccent}</span>
           </h1>
           <p className="max-w-2xl font-body text-lg text-white/65 leading-relaxed">
-            No corner of Earth has produced more transformative companies, more
-            billionaires, or more world-changing technology per square mile.
-            America&apos;s startup ecosystem is a force of nature.
+            {copy.heroBody}
           </p>
         </div>
       </div>
@@ -156,12 +311,13 @@ export default function StartupsVCPage() {
       {/* Content */}
       <div className="bg-navy-dark">
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 space-y-16">
-          {/* Overview paras */}
+          {/* Overview paras
+              Long-form shared copy pulled from economy-data.ts. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
-              Why America Leads the World in Innovation Capital
+              {copy.overviewTitle}
             </h2>
-            {VC_OVERVIEW_PARAGRAPHS.map((para, i) => (
+            {overviewParagraphs.map((para, i) => (
               <p
                 key={i}
                 className="mb-5 font-body text-lg leading-relaxed text-white/65"
@@ -171,49 +327,45 @@ export default function StartupsVCPage() {
             ))}
           </section>
 
-          {/* VC Chart */}
+          {/* VC Chart
+              Reusable bar chart comparing venture capital by country. */}
           <section>
             <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
               <VCBarChart
                 data={VC_BY_COUNTRY}
-                title="Venture Capital Investment by Country (2023, USD Billions)"
+                title={copy.vcChartTitle}
                 source="NVCA / Pitchbook 2024"
               />
             </div>
           </section>
 
-          {/* Unicorn chart */}
+          {/* Unicorn chart
+              Pie chart used here because the goal is share-of-total comparison. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
-              The Unicorn Economy — 659+ and Counting
+              {copy.unicornTitle}
             </h2>
             <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
-              A "unicorn" — a private company valued at $1 billion or more — was
-              once considered a mythological rarity. America has built 659 of
-              them, representing over 52% of the global total. More unicorns
-              have been born in California alone than in all of Europe combined.
+              {copy.unicornBody}
             </p>
             <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
               <UnicornPieChart
                 data={UNICORNS_BY_COUNTRY}
-                title="Unicorn Companies by Country of Origin (2024)"
+                title={copy.unicornChartTitle}
                 source="Pitchbook 2024"
               />
             </div>
           </section>
 
-          {/* Startup Timeline table */}
+          {/* Startup Timeline table
+              A table works well here because users may want to scan founders,
+              industries, and valuations row-by-row. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
-              The Companies That Rewired Human Civilization
+              {copy.rewiredTitle}
             </h2>
             <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
-              The most consequential companies of the digital age were founded
-              by Americans — or immigrants who came to America. This is not a
-              coincidence. The combination of Stanford and MIT talent, patient
-              venture capital, strong IP protection, and a culture that
-              celebrates ambition created a perfect laboratory for
-              world-changing innovation.
+              {copy.rewiredBody}
             </p>
             <div className="overflow-hidden rounded-2xl border border-white/10 bg-navy-mid">
               <div className="overflow-x-auto">
@@ -221,19 +373,19 @@ export default function StartupsVCPage() {
                   <thead>
                     <tr className="border-b border-white/10 bg-white/5">
                       <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        Year
+                        {copy.yearLabel}
                       </th>
                       <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        Company
+                        {copy.companyLabel}
                       </th>
                       <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        Founder(s)
+                        {copy.founderLabel}
                       </th>
                       <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        Industry
+                        {copy.industryLabel}
                       </th>
                       <th className="px-5 py-4 text-right font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        Today's Value
+                        {copy.valueLabel}
                       </th>
                     </tr>
                   </thead>
@@ -268,18 +420,17 @@ export default function StartupsVCPage() {
             </div>
           </section>
 
-          {/* Startup Ecosystems */}
+          {/* Startup Ecosystems
+              Generated from the STARTUP_ECOSYSTEMS array in economy-data.ts. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
-              America&apos;s Startup Ecosystems
+              {copy.ecosystemsTitle}
             </h2>
             <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
-              Silicon Valley gets the headlines, but the American startup
-              ecosystem now spans six major metropolitan hubs — each with its
-              own specialization, talent base, and investor community.
+              {copy.ecosystemsBody}
             </p>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {STARTUP_ECOSYSTEMS.map((eco) => (
+              {ecosystems.map((eco) => (
                 <div
                   key={eco.city}
                   className="overflow-hidden rounded-2xl border border-white/10 bg-navy-mid transition-all hover:border-glory-gold/30 hover:shadow-[0_0_25px_rgba(255,215,0,0.08)]"
@@ -302,7 +453,7 @@ export default function StartupsVCPage() {
                           {eco.unicorns}+
                         </p>
                         <p className="font-body text-xs text-white/40">
-                          Unicorns
+                          {copy.unicornsLabel}
                         </p>
                       </div>
                       <div className="rounded-lg bg-white/5 p-3 text-center">
@@ -310,7 +461,7 @@ export default function StartupsVCPage() {
                           {eco.vcFunding}
                         </p>
                         <p className="font-body text-xs text-white/40">
-                          Annual VC
+                          {copy.annualVcLabel}
                         </p>
                       </div>
                     </div>
@@ -326,17 +477,13 @@ export default function StartupsVCPage() {
           {/* Top VC Firms */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
-              The World&apos;s Most Influential VC Firms
+              {copy.firmsTitle}
             </h2>
             <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
-              Every one of the world&apos;s most consequential venture capital
-              firms is headquartered in the United States. These firms
-              don&apos;t just invest — they shape global technology strategy,
-              recruit the world&apos;s best engineers, and manufacture the
-              companies of tomorrow.
+              {copy.firmsBody}
             </p>
             <div className="grid gap-4 md:grid-cols-2">
-              {TOP_VC_FIRMS.map((firm) => (
+              {vcFirms.map((firm) => (
                 <div
                   key={firm.name}
                   className="rounded-2xl border border-white/10 bg-navy-mid p-5 transition-colors hover:border-glory-gold/25"
@@ -353,7 +500,7 @@ export default function StartupsVCPage() {
                     {firm.city}
                   </p>
                   <p className="font-body text-xs leading-relaxed text-white/50">
-                    <span className="text-white/35">Notable portfolio: </span>
+                    <span className="text-white/35">{copy.portfolioLabel} </span>
                     {firm.portfolio}
                   </p>
                 </div>
@@ -364,10 +511,10 @@ export default function StartupsVCPage() {
           {/* Facts grid */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
-              By the Numbers
+              {copy.numbersTitle}
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {[...VC_FACTS, ...VC_EXTENDED_FACTS].map((fact) => (
+              {[...sharedFacts, ...localFacts].map((fact) => (
                 <FactCard
                   key={fact.id}
                   fact={fact.fact}
@@ -381,9 +528,14 @@ export default function StartupsVCPage() {
           </section>
 
           <QuoteBlock
-            quote="The startup ecosystem is the most powerful wealth-creation and problem-solving machine ever invented. America built it, and America keeps improving it."
+            quote={
+              locale === "ro"
+                ? "Ecosistemul startup-urilor este cel mai puternic mecanism de creare de bogăție și rezolvare de probleme inventat vreodată. America l-a construit, iar America continuă să îl îmbunătățească."
+                : "The startup ecosystem is the most powerful wealth-creation and problem-solving machine ever invented. America built it, and America keeps improving it."
+            }
             attribution="Marc Andreessen"
-            title="Co-Founder, Andreessen Horowitz — Menlo Park, California"
+            title={copy.quoteTitle}
+            variant="dark"
           />
 
           {/* Nav */}
@@ -392,13 +544,13 @@ export default function StartupsVCPage() {
               href="/economy/capital-markets"
               className="font-body text-sm text-white/50 hover:text-white transition-colors"
             >
-              ← Capital Markets
+              {copy.prevLink}
             </Link>
             <Link
               href="/economy/dollar-dominance"
               className="font-body text-sm font-semibold text-glory-gold hover:text-glory-gold-dark transition-colors"
             >
-              Dollar Dominance →
+              {copy.nextLink}
             </Link>
           </div>
         </div>

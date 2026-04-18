@@ -1,5 +1,15 @@
 "use client";
 
+// Homepage closing gallery section.
+//
+// Beginner guide:
+// - To change which images appear here, edit GALLERY_PREVIEW_IMAGES in
+//   lib/data/home.ts
+// - This file only controls layout, hover effects, and the lightbox behavior
+//
+// `use client` is required because this section uses local React state for the
+// lightbox and browser-side animation effects.
+
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,17 +17,28 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, X, ZoomIn, MapPin } from "lucide-react";
 import { fadeUp, scaleUp, staggerContainer } from "@/lib/animations";
 import { GALLERY_PREVIEW_IMAGES } from "@/lib/data/home";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 
-type GalleryImage = (typeof GALLERY_PREVIEW_IMAGES)[number];
+type GalleryImage = {
+  id: string;
+  src: string;
+  alt: string;
+  caption: string;
+  category: string;
+  span: "tall" | "wide" | "normal";
+};
 
 function Lightbox({
   image,
   onClose,
+  closeLabel,
 }: {
   image: GalleryImage;
   onClose: () => void;
+  closeLabel: string;
 }) {
+  // This modal only exists when the user has clicked an image.
   return (
     <AnimatePresence>
       <>
@@ -43,7 +64,7 @@ function Lightbox({
           <button
             onClick={onClose}
             className="absolute right-4 top-4 z-10 rounded-lg bg-black/60 p-2 text-white/80 transition-colors hover:bg-black/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
-            aria-label="Close lightbox"
+            aria-label={closeLabel}
           >
             <X className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -83,12 +104,15 @@ function GalleryCard({
   onClick,
   priority = false,
   className,
+  frameClassName,
 }: {
   image: GalleryImage;
   onClick: () => void;
   priority?: boolean;
   className?: string;
+  frameClassName?: string;
 }) {
+  // `span` comes from the data file and controls the visual shape of the card.
   const aspectClass = {
     tall: "aspect-[3/4]",
     wide: "aspect-[16/9]",
@@ -108,7 +132,12 @@ function GalleryCard({
       onKeyDown={(event) => event.key === "Enter" && onClick()}
       aria-label={`View full image: ${image.caption}`}
     >
-      <div className={cn("relative w-full overflow-hidden", aspectClass)}>
+      <div
+        className={cn(
+          "relative w-full overflow-hidden",
+          frameClassName ?? aspectClass,
+        )}
+      >
         <Image
           src={image.src}
           alt={image.alt}
@@ -147,8 +176,108 @@ function GalleryCard({
 }
 
 export function GalleryPreviewSection() {
+  const { locale } = useLanguage();
+  // `lightboxImage` stores the currently open image. `null` means the modal is closed.
   const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
-  const categories = [...new Set(GALLERY_PREVIEW_IMAGES.map((image) => image.category))];
+  const images =
+    locale === "ro"
+      ? [
+          {
+            ...GALLERY_PREVIEW_IMAGES[0],
+            alt: "Statele Unite noaptea văzute din orbită, cu marile centre urbane strălucind pe continent",
+            caption: "Statele Unite noaptea, din spațiu",
+            category: "Scară Globală",
+          },
+          {
+            ...GALLERY_PREVIEW_IMAGES[1],
+            alt: "One World Trade Center dominând Lower Manhattan într-un portret urban vertical",
+            caption: "Lower Manhattan, New York City",
+            category: "Orașe",
+          },
+          {
+            ...GALLERY_PREVIEW_IMAGES[2],
+            alt: "Un drum prin Yosemite National Park sub granit și pădure de pini",
+            caption: "Yosemite National Park, California",
+            category: "Natură",
+          },
+          {
+            ...GALLERY_PREVIEW_IMAGES[3],
+            alt: "Golden Gate Bridge tăind ceața și lumina Pacificului deasupra golfului San Francisco",
+            caption: "Golden Gate Bridge, San Francisco",
+            category: "Orașe",
+          },
+          {
+            ...GALLERY_PREVIEW_IMAGES[4],
+            alt: "Statuia Libertății dominând portul New York ca simbol al identității americane",
+            caption: "Statuia Libertății, portul New York",
+            category: "Cultură",
+          },
+          {
+            ...GALLERY_PREVIEW_IMAGES[5],
+            alt: "Campusul Columbia University, încadrat de arhitectură clasică și densitate urbană",
+            caption: "Columbia University, New York",
+            category: "Universități",
+          },
+          {
+            ...GALLERY_PREVIEW_IMAGES[6],
+            alt: "O casă spațioasă din suburbia americană, cu peluză și stradă largă",
+            caption: "Suburbia Americană",
+            category: "Calitatea Vieții",
+          },
+          {
+            ...GALLERY_PREVIEW_IMAGES[7],
+            alt: "O rachetă SpaceX lansându-se într-un nor de foc și fum",
+            caption: "Lansare SpaceX, Florida",
+            category: "Inovație",
+          },
+        ]
+      : GALLERY_PREVIEW_IMAGES;
+  const copy =
+    locale === "ro"
+      ? {
+          eyebrow: "America Prin Obiectiv",
+          title: "O Călătorie Vizuală",
+          description:
+            "Opt cadre, organizate în jurul scării și simbolului: orbită, skyline, drum, monument, campus, suburbie, rampă de lansare. Galeria închide acum homepage-ul cu imagini care par curatoriate, nu întâmplătoare.",
+          previewLabel: "Previzualizare Galerie",
+          featuredFrames: "Cadre Evidențiate",
+          visualThemes: "Teme Vizuale",
+          previewBody:
+            "Deschide orice cadru pentru o privire mai atentă sau intră în galeria completă pentru a transforma această previzualizare într-o arhivă vizuală mai amplă.",
+          cta: "Explorează Galeria Completă",
+          closing:
+            "Secțiunea finală merge acum de la orbită la nivelul străzii: continent, skyline, peisaj, monument, campus, casă și rampă de lansare. Se citește mai mult ca o secvență și mai puțin ca o grămadă de miniaturi.",
+          bottomCta: "Vezi Toate Fotografiile",
+          closeLightbox: "Închide lightbox-ul",
+        }
+      : {
+          eyebrow: "America Through the Lens",
+          title: "A Visual Journey",
+          description:
+            "Eight frames, organized around scale and symbol: orbit, skyline, road, monument, campus, suburb, launchpad. The gallery now closes the homepage with images that feel curated rather than incidental.",
+          previewLabel: "Gallery Preview",
+          featuredFrames: "Featured Frames",
+          visualThemes: "Visual Themes",
+          previewBody:
+            "Open any frame for a closer look, or jump into the full gallery page to turn this preview into a deeper visual archive.",
+          cta: "Explore Full Gallery",
+          closing:
+            "The final section now moves from orbit to street level: continent, skyline, landscape, monument, campus, home, and launch. It reads more like a sequence and less like a loose pile of thumbnails.",
+          bottomCta: "View All Photos",
+          closeLightbox: "Close lightbox",
+        };
+  // Used to build the category pills automatically from the gallery data.
+  const categories = [...new Set(images.map((image) => image.category))];
+  const [
+    usaFromSpace,
+    manhattan,
+    yosemiteRoad,
+    goldenGate,
+    statueOfLiberty,
+    columbia,
+    suburbHouse,
+    spacexLaunch,
+  ] = images;
 
   return (
     <section
@@ -170,22 +299,20 @@ export function GalleryPreviewSection() {
         >
           <div className="max-w-3xl">
             <motion.p variants={fadeUp} className="section-eyebrow">
-              America Through the Lens
+              {copy.eyebrow}
             </motion.p>
             <motion.h2
               id="gallery-heading"
               variants={fadeUp}
               className="max-w-2xl font-display text-h2 text-white"
             >
-              A Visual Journey
+              {copy.title}
             </motion.h2>
             <motion.p
               variants={fadeUp}
               className="mt-4 max-w-2xl font-body text-lg leading-relaxed text-white/58"
             >
-              Eight frames. Cities, institutions, innovation, landscapes, and
-              the physical scale of the country itself. This closing gallery
-              turns the homepage into something you can read and then see.
+              {copy.description}
             </motion.p>
             <motion.div
               variants={fadeUp}
@@ -207,13 +334,13 @@ export function GalleryPreviewSection() {
             className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
           >
             <p className="font-body text-xs font-semibold uppercase tracking-[0.28em] text-glory-gold">
-              Gallery Preview
+              {copy.previewLabel}
             </p>
             <div className="mt-5 grid grid-cols-2 gap-4">
               <div>
                 <p className="font-hero text-4xl leading-none text-white">8</p>
                 <p className="mt-1 font-body text-xs uppercase tracking-[0.18em] text-white/45">
-                  Featured Frames
+                  {copy.featuredFrames}
                 </p>
               </div>
               <div>
@@ -221,19 +348,19 @@ export function GalleryPreviewSection() {
                   {categories.length}
                 </p>
                 <p className="mt-1 font-body text-xs uppercase tracking-[0.18em] text-white/45">
-                  Visual Themes
+                  {copy.visualThemes}
                 </p>
               </div>
             </div>
             <p className="mt-5 font-body text-sm leading-relaxed text-white/55">
-              Open any frame for a closer look, or jump into the full gallery
-              page to turn this preview into a deeper visual archive.
+              {copy.previewBody}
             </p>
+            {/* This CTA goes to the dedicated gallery page. */}
             <Link
               href="/gallery"
               className="group mt-6 inline-flex items-center gap-2 rounded-xl border border-glory-gold/30 bg-glory-gold/10 px-5 py-3 font-body text-sm font-semibold text-glory-gold transition-all duration-200 hover:bg-glory-gold/20"
             >
-              Explore Full Gallery
+              {copy.cta}
               <ArrowRight
                 className="h-4 w-4 transition-transform group-hover:translate-x-1"
                 aria-hidden="true"
@@ -247,55 +374,67 @@ export function GalleryPreviewSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
           variants={staggerContainer}
-          className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]"
+          className="space-y-4"
         >
-          <div className="grid gap-4">
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-stretch">
             <GalleryCard
-              image={GALLERY_PREVIEW_IMAGES[0]}
-              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[0])}
+              image={manhattan}
+              onClick={() => setLightboxImage(manhattan)}
               priority
               className="border border-white/10 bg-white/5 shadow-2xl"
+              frameClassName="h-full min-h-[480px] lg:min-h-[640px]"
             />
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+
+            <div className="grid gap-4">
               <GalleryCard
-                image={GALLERY_PREVIEW_IMAGES[5]}
-                onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[5])}
-                className="border border-white/10"
+                image={usaFromSpace}
+                onClick={() => setLightboxImage(usaFromSpace)}
+                priority
+                className="border border-white/10 bg-white/5 shadow-2xl"
+                frameClassName="min-h-[280px] md:min-h-[360px]"
               />
-              <GalleryCard
-                image={GALLERY_PREVIEW_IMAGES[6]}
-                onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[6])}
-                className="border border-white/10"
-              />
-              <GalleryCard
-                image={GALLERY_PREVIEW_IMAGES[7]}
-                onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[7])}
-                className="border border-white/10 sm:col-span-2 xl:col-span-1"
-              />
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <GalleryCard
+                  image={yosemiteRoad}
+                  onClick={() => setLightboxImage(yosemiteRoad)}
+                  className="border border-white/10"
+                  frameClassName="min-h-[220px]"
+                />
+                <GalleryCard
+                  image={goldenGate}
+                  onClick={() => setLightboxImage(goldenGate)}
+                  className="border border-white/10"
+                  frameClassName="min-h-[220px]"
+                />
+              </div>
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-[1fr_1fr_1.2fr_1fr]">
             <GalleryCard
-              image={GALLERY_PREVIEW_IMAGES[1]}
-              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[1])}
-              priority
-              className="border border-white/10 sm:col-span-2"
-            />
-            <GalleryCard
-              image={GALLERY_PREVIEW_IMAGES[2]}
-              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[2])}
+              image={statueOfLiberty}
+              onClick={() => setLightboxImage(statueOfLiberty)}
               className="border border-white/10"
+              frameClassName="min-h-[240px]"
             />
             <GalleryCard
-              image={GALLERY_PREVIEW_IMAGES[3]}
-              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[3])}
+              image={columbia}
+              onClick={() => setLightboxImage(columbia)}
               className="border border-white/10"
+              frameClassName="min-h-[240px]"
             />
             <GalleryCard
-              image={GALLERY_PREVIEW_IMAGES[4]}
-              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[4])}
-              className="border border-white/10 sm:col-span-2"
+              image={suburbHouse}
+              onClick={() => setLightboxImage(suburbHouse)}
+              className="border border-white/10"
+              frameClassName="min-h-[240px]"
+            />
+            <GalleryCard
+              image={spacexLaunch}
+              onClick={() => setLightboxImage(spacexLaunch)}
+              className="border border-white/10"
+              frameClassName="min-h-[240px]"
             />
           </div>
         </motion.div>
@@ -308,14 +447,13 @@ export function GalleryPreviewSection() {
           className="mt-10 flex flex-col gap-5 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between"
         >
           <p className="max-w-2xl font-body text-sm leading-relaxed text-white/45">
-            Landscapes, skylines, institutions, and industry. The gallery ends
-            the homepage with tangible places rather than abstractions.
+            {copy.closing}
           </p>
           <Link
             href="/gallery"
             className="group inline-flex items-center justify-center gap-2 rounded-xl border border-glory-gold/30 bg-glory-gold/10 px-8 py-4 font-body text-base font-semibold text-glory-gold transition-all duration-200 hover:bg-glory-gold/20 md:justify-start"
           >
-            View All Photos
+            {copy.bottomCta}
             <ArrowRight
               className="h-4 w-4 transition-transform group-hover:translate-x-1"
               aria-hidden="true"
@@ -328,6 +466,7 @@ export function GalleryPreviewSection() {
         <Lightbox
           image={lightboxImage}
           onClose={() => setLightboxImage(null)}
+          closeLabel={copy.closeLightbox}
         />
       )}
     </section>

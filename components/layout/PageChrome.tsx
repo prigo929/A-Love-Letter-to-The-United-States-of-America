@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronUp } from "lucide-react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { cn } from "@/lib/utils";
 
 export function ReadingProgressBar() {
   const [progress, setProgress] = useState(0);
+  const { locale } = useLanguage();
 
   useEffect(() => {
     const onScroll = () => {
@@ -28,7 +30,7 @@ export function ReadingProgressBar() {
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={Math.round(progress * 100)}
-      aria-label="Reading progress"
+      aria-label={locale === "ro" ? "Progres de citire" : "Reading progress"}
     >
       <motion.div
         className="h-full origin-left bg-glory-gold shadow-glow-gold"
@@ -42,6 +44,7 @@ export function ReadingProgressBar() {
 
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
+  const { locale } = useLanguage();
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 600);
@@ -67,7 +70,11 @@ export function BackToTop() {
             "transition-colors duration-200",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-dark",
           )}
-          aria-label="Scroll back to top"
+          aria-label={
+            locale === "ro"
+              ? "Derulează înapoi în partea de sus"
+              : "Scroll back to top"
+          }
         >
           <ChevronUp className="h-5 w-5" aria-hidden="true" />
         </motion.button>

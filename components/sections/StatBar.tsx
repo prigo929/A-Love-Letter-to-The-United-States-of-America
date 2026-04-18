@@ -8,9 +8,68 @@ import { motion } from "framer-motion";
 import { staggerFast, fadeUp } from "@/lib/animations";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { HOME_COPY, KEY_STATS } from "@/lib/data/home";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { cn } from "@/lib/utils";
 
 export function StatBar() {
+  const { locale } = useLanguage();
+  const stats =
+    locale === "ro"
+      ? [
+          {
+            id: "gdp",
+            prefix: "#",
+            value: 1,
+            suffix: " Economie",
+            label: "PIB de 28,8 trilioane $",
+            color: "gold" as const,
+          },
+          {
+            id: "population",
+            value: 335,
+            suffix: "M+",
+            label: "Americani",
+            description: "335 de milioane de povești",
+            color: "white" as const,
+          },
+          {
+            id: "national-parks",
+            value: 63,
+            label: "Parcuri Naționale",
+            description: "85 de milioane de acri de natură protejată",
+            color: "white" as const,
+          },
+          {
+            id: "military-bases",
+            value: 800,
+            suffix: "+",
+            label: "Baze Militare",
+            description: "Prezență globală",
+            color: "white" as const,
+          },
+          {
+            id: "nobel-prizes",
+            value: 400,
+            suffix: "+",
+            label: "Premii Nobel",
+            description: "Mai multe decât orice altă națiune",
+            color: "white" as const,
+          },
+          {
+            id: "military",
+            prefix: "#",
+            value: 1,
+            label: "Putere Militară",
+            description: "Buget de apărare de 886 Mld. $",
+            color: "gold" as const,
+          },
+        ]
+      : KEY_STATS;
+  const statSources =
+    locale === "ro"
+      ? "Surse: Banca Mondială, SIPRI, NPS, Fundația Nobel, DoD — date din 2024"
+      : HOME_COPY.statSources;
+
   return (
     <section className="bg-navy-dark border-y border-white/10 relative overflow-hidden">
       {/* Star pattern background */}
@@ -27,7 +86,7 @@ export function StatBar() {
           viewport={{ once: true, margin: "-60px" }}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-white/10 rounded-2xl overflow-hidden"
         >
-          {KEY_STATS.map((stat, i) => (
+          {stats.map((stat) => (
             <motion.div
               key={stat.id}
               variants={fadeUp}
@@ -65,7 +124,7 @@ export function StatBar() {
 
         {/* Source line */}
         <p className="text-center font-body text-xs text-white/25 mt-4">
-          {HOME_COPY.statSources}
+          {statSources}
         </p>
       </div>
     </section>

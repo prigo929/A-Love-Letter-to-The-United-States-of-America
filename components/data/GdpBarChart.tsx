@@ -3,6 +3,11 @@
 // ─── GDP Bar Chart ────────────────────────────────────────────────────────────
 // Recharts bar chart comparing GDP across major economies.
 // Highlights the US bar in glory-gold. Client component (Recharts requirement).
+//
+// Beginner guide:
+// - This component only draws the chart
+// - The actual numbers come from the page or data file that calls it
+// - `valueSuffix` lets the same chart work for trillions ("T") or thousands ("K")
 
 import {
   BarChart,
@@ -17,6 +22,7 @@ import {
 } from "recharts";
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import type { GdpDataPoint } from "@/lib/data/economy-data";
 
 interface GdpBarChartProps {
@@ -24,18 +30,25 @@ interface GdpBarChartProps {
   title?: string;
   subtitle?: string;
   source?: string;
+  valueSuffix?: string;
+  valueLabel?: string;
 }
 
 // ── Custom Tooltip ─────────────────────────────────────────────────────────────
+// This controls the small popup shown when the user hovers a bar.
 
 function CustomTooltip({
   active,
   payload,
   label,
+  valueSuffix,
+  valueLabel,
 }: {
   active?: boolean;
   payload?: Array<{ value: number; payload: GdpDataPoint }>;
   label?: string;
+  valueSuffix: string;
+  valueLabel: string;
 }) {
   if (!active || !payload?.length) return null;
   const item = payload[0];
@@ -46,16 +59,16 @@ function CustomTooltip({
         {item.payload.flag} {label}
       </p>
       <p className="font-hero text-2xl text-glory-gold">
-        ${item.value.toFixed(1)}T
+        ${item.value.toFixed(1)}
+        {valueSuffix}
       </p>
-      <p className="font-body text-xs text-white/50">
-        GDP (2024, USD Trillions)
-      </p>
+      <p className="font-body text-xs text-white/50">{valueLabel}</p>
     </div>
   );
 }
 
 // ── Custom Bar Label ───────────────────────────────────────────────────────────
+// This prints the number above each bar.
 
 function CustomLabel(props: {
   x?: number;
@@ -63,8 +76,9 @@ function CustomLabel(props: {
   width?: number;
   value?: number;
   index?: number;
+  valueSuffix?: string;
 }) {
-  const { x = 0, y = 0, width = 0, value = 0 } = props;
+  const { x = 0, y = 0, width = 0, value = 0, valueSuffix = "T" } = props;
   return (
     <text
       x={x + width / 2}
@@ -75,7 +89,8 @@ function CustomLabel(props: {
       fontFamily="var(--font-hero)"
       letterSpacing="0.05em"
     >
-      ${value.toFixed(1)}T
+      ${value.toFixed(1)}
+      {valueSuffix}
     </text>
   );
 }
@@ -85,7 +100,18 @@ export function GdpBarChart({
   title,
   subtitle,
   source,
+  valueSuffix = "T",
+  valueLabel = "GDP (2024, USD Trillions)",
 }: GdpBarChartProps) {
+  const { locale } = useLanguage();
+  const localizedValueLabel =
+    locale === "ro" && valueLabel === "GDP (2024, USD Trillions)"
+      ? "PIB (2024, trilioane USD)"
+      : locale === "ro" && valueLabel === "GDP per Capita (2024, USD Thousands)"
+        ? "PIB pe cap de locuitor (2024, mii USD)"
+        : valueLabel;
+  const sourceLabel = locale === "ro" ? "Sursă:" : "Source:";
+
   return (
     <motion.div
       variants={fadeUp}
@@ -108,6 +134,7 @@ export function GdpBarChart({
       )}
 
       <div className="h-[320px] w-full md:h-[380px]">
+        {/* ResponsiveContainer makes the chart fill the available width/height. */}
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={data}
@@ -140,12 +167,19 @@ export function GdpBarChart({
               }}
               axisLine={false}
               tickLine={false}
-              tickFormatter={(v) => `$${v}T`}
+              tickFormatter={(v) => `$${v}${valueSuffix}`}
             />
             <Tooltip
-              content={<CustomTooltip />}
+              content={
+                <CustomTooltip
+                  valueSuffix={valueSuffix}
+                  valueLabel={localizedValueLabel}
+                />
+              }
               cursor={{ fill: "rgba(255,255,255,0.04)" }}
             />
+            {/* `dataKey="gdp"` tells Recharts which property in each data item
+                should be used for the bar heights. */}
             <Bar dataKey="gdp" radius={[6, 6, 0, 0]} maxBarSize={60}>
               {data.map((entry, index) => (
                 <Cell
@@ -154,7 +188,7 @@ export function GdpBarChart({
                   opacity={entry.highlight ? 1 : 0.75}
                 />
               ))}
-              <LabelList content={<CustomLabel />} />
+              <LabelList content={<CustomLabel valueSuffix={valueSuffix} />} />
             </Bar>
           </BarChart>
         </ResponsiveContainer>
@@ -162,7 +196,7 @@ export function GdpBarChart({
 
       {source && (
         <p className="mt-3 text-right font-body text-xs text-white/30">
-          Source: {source}
+          {sourceLabel} {source}
         </p>
       )}
     </motion.div>

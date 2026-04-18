@@ -1,5 +1,12 @@
 "use client";
 
+// Reusable highlighted fact box.
+//
+// Beginner guide:
+// - This is for short facts with optional supporting detail
+// - `color` changes the accent styling
+// - `variant` changes the background shell
+
 import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
 import { scaleUp } from "@/lib/animations";
@@ -46,6 +53,7 @@ export function FactCard({
         className,
       )}
     >
+      {/* Top row: icon on the left, optional category pill on the right */}
       <div className="flex items-center justify-between">
         <div
           className={cn(
@@ -71,12 +79,14 @@ export function FactCard({
         {fact}
       </p>
 
+      {/* Longer explanation under the headline fact */}
       {detail && (
         <p className="font-body text-sm leading-relaxed text-white/55">
           {detail}
         </p>
       )}
 
+      {/* Source sits at the bottom so cards line up cleanly in a grid */}
       {source && (
         <p className="mt-auto border-t border-white/8 pt-2 font-body text-xs text-white/30">
           {source}

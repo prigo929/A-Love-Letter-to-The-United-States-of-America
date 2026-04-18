@@ -17,6 +17,7 @@ import {
 } from "recharts";
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import type { SP500DataPoint } from "@/lib/data/economy-data";
 
 interface SP500ChartProps {
@@ -49,6 +50,28 @@ function CustomTooltip({
 }
 
 export function SP500Chart({ data, title, subtitle, source }: SP500ChartProps) {
+  const { locale } = useLanguage();
+  const copy =
+    locale === "ro"
+      ? {
+          yearPrefix: "Anul",
+          indexLevel: "Nivelul indicelui S&P 500",
+          dotCom: "Dot-com",
+          gfc: "Criza Financiară",
+          totalReturn: "Randament total 1980 → 2024",
+          annualReturn: "Randament mediu anual",
+          source: "Sursă:",
+        }
+      : {
+          yearPrefix: "Year",
+          indexLevel: "S&P 500 Index Level",
+          dotCom: "Dot-com",
+          gfc: "GFC",
+          totalReturn: "1980 → 2024 Total Return",
+          annualReturn: "Annual Average Return",
+          source: "Source:",
+        };
+
   return (
     <motion.div
       variants={fadeUp}
@@ -110,7 +133,24 @@ export function SP500Chart({ data, title, subtitle, source }: SP500ChartProps) {
                 v >= 1000 ? `${(v / 1000).toFixed(1)}k` : v
               }
             />
-            <Tooltip content={<CustomTooltip />} />
+            <Tooltip
+              content={(props) => {
+                if (!props.active || !props.payload?.length) return null;
+                return (
+                  <div className="rounded-xl border border-white/15 bg-navy-dark/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
+                    <p className="mb-1 font-body text-xs text-white/50">
+                      {copy.yearPrefix} {props.label}
+                    </p>
+                    <p className="font-hero text-2xl text-glory-gold">
+                      {props.payload[0].value?.toLocaleString()}
+                    </p>
+                    <p className="font-body text-xs text-white/50">
+                      {copy.indexLevel}
+                    </p>
+                  </div>
+                );
+              }}
+            />
 
             {/* Annotation lines */}
             <ReferenceLine
@@ -118,7 +158,7 @@ export function SP500Chart({ data, title, subtitle, source }: SP500ChartProps) {
               stroke="rgba(255,255,255,0.2)"
               strokeDasharray="4 4"
               label={{
-                value: "Dot-com",
+                value: copy.dotCom,
                 fill: "rgba(255,255,255,0.35)",
                 fontSize: 10,
                 fontFamily: "var(--font-body)",
@@ -129,7 +169,7 @@ export function SP500Chart({ data, title, subtitle, source }: SP500ChartProps) {
               stroke="rgba(255,255,255,0.2)"
               strokeDasharray="4 4"
               label={{
-                value: "GFC",
+                value: copy.gfc,
                 fill: "rgba(255,255,255,0.35)",
                 fontSize: 10,
                 fontFamily: "var(--font-body)",
@@ -158,13 +198,13 @@ export function SP500Chart({ data, title, subtitle, source }: SP500ChartProps) {
       <div className="mt-4 flex flex-wrap gap-4">
         <div className="rounded-lg border border-glory-gold/20 bg-glory-gold/8 px-4 py-2.5">
           <p className="font-body text-xs text-white/50">
-            1980 → 2024 Total Return
+            {copy.totalReturn}
           </p>
           <p className="font-hero text-xl text-glory-gold">+3,915%</p>
         </div>
         <div className="rounded-lg border border-white/10 bg-white/5 px-4 py-2.5">
           <p className="font-body text-xs text-white/50">
-            Annual Average Return
+            {copy.annualReturn}
           </p>
           <p className="font-hero text-xl text-white">~10.5%</p>
         </div>
@@ -172,7 +212,7 @@ export function SP500Chart({ data, title, subtitle, source }: SP500ChartProps) {
 
       {source && (
         <p className="mt-3 text-right font-body text-xs text-white/30">
-          Source: {source}
+          {copy.source} {source}
         </p>
       )}
     </motion.div>

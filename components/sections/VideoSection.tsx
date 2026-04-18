@@ -6,11 +6,63 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Play, X, Clock, Tag } from "lucide-react";
 import { fadeUp, scaleUp, staggerContainer } from "@/lib/animations";
 import { VIDEO_PREVIEWS } from "@/lib/data/home";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 
 export function VideoSection() {
+  const { locale } = useLanguage();
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
-  const active = VIDEO_PREVIEWS.find((video) => video.id === activeVideo);
+  const videos =
+    locale === "ro"
+      ? [
+          {
+            ...VIDEO_PREVIEWS[0],
+            title: "Peisajul American",
+            description:
+              "Din Munții Stâncoși până în Everglades-ul Floridei — o călătorie cinematografică prin minunile naturale fără egal ale Americii.",
+            category: "Natură",
+          },
+          {
+            ...VIDEO_PREVIEWS[1],
+            title: "Construită prin Inovație",
+            description:
+              "Din laboratorul lui Edison până în Silicon Valley — povestea felului în care ingeniozitatea americană a reconfigurat lumea.",
+            category: "Inovație",
+          },
+          {
+            ...VIDEO_PREVIEWS[2],
+            title: "Apărătoarea Libertății",
+            description:
+              "Povestea celei mai puternice armate din istorie — și a păcii pe care a menținut-o timp de 80 de ani.",
+            category: "Armată",
+          },
+        ]
+      : VIDEO_PREVIEWS;
+  const active = videos.find((video) => video.id === activeVideo);
+  const copy =
+    locale === "ro"
+      ? {
+          eyebrow: "America în Mișcare",
+          title: "Privește Povestea",
+          description:
+            "Documentare cinematografice care celebrează peisajele, inovațiile și apărătorii Americii.",
+          phaseNotice:
+            "★ Seria completă de documentare vine în Faza 16 — Galeria Media ★",
+          closeLabel: "Închide video-ul",
+          modalNotice: "🎬 Video-ul complet va fi disponibil în Faza 16 — Galeria Media",
+          playPrefix: "Redă:",
+        }
+      : {
+          eyebrow: "America in Motion",
+          title: "Watch the Story",
+          description:
+            "Cinematic documentaries celebrating America's landscapes, innovations, and defenders.",
+          phaseNotice:
+            "★ Full documentary series coming in Phase 16 — Media Gallery ★",
+          closeLabel: "Close video",
+          modalNotice: "🎬 Full video available in Phase 16 — Media Gallery",
+          playPrefix: "Play:",
+        };
 
   return (
     <section
@@ -31,7 +83,7 @@ export function VideoSection() {
           className="mb-14"
         >
           <motion.p variants={fadeUp} className="section-eyebrow">
-            America in Motion
+            {copy.eyebrow}
           </motion.p>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <motion.h2
@@ -39,14 +91,13 @@ export function VideoSection() {
               variants={fadeUp}
               className="font-display text-h2 text-white"
             >
-              Watch the Story
+              {copy.title}
             </motion.h2>
             <motion.p
               variants={fadeUp}
               className="max-w-sm font-body text-sm text-white/50"
             >
-              Cinematic documentaries celebrating America&apos;s landscapes,
-              innovations, and defenders.
+              {copy.description}
             </motion.p>
           </div>
         </motion.div>
@@ -58,7 +109,7 @@ export function VideoSection() {
           variants={staggerContainer}
           className="grid grid-cols-1 gap-6 md:grid-cols-3"
         >
-          {VIDEO_PREVIEWS.map((video, index) => (
+          {videos.map((video, index) => (
             <motion.div
               key={video.id}
               variants={scaleUp}
@@ -72,7 +123,7 @@ export function VideoSection() {
               onKeyDown={(event) =>
                 event.key === "Enter" && setActiveVideo(video.id)
               }
-              aria-label={`Play: ${video.title}`}
+              aria-label={`${copy.playPrefix} ${video.title}`}
             >
               <div
                 className={cn(
@@ -143,7 +194,7 @@ export function VideoSection() {
           variants={fadeUp}
           className="mt-8 text-center font-body text-sm text-white/30"
         >
-          ★ Full documentary series coming in Phase 16 — Media Gallery ★
+          {copy.phaseNotice}
         </motion.p>
       </div>
 
@@ -181,7 +232,7 @@ export function VideoSection() {
                 <button
                   onClick={() => setActiveVideo(null)}
                   className="rounded-lg p-2 text-white/60 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
-                  aria-label="Close video"
+                  aria-label={copy.closeLabel}
                 >
                   <X className="h-5 w-5" aria-hidden="true" />
                 </button>
@@ -211,7 +262,7 @@ export function VideoSection() {
                   </p>
                   <div className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3">
                     <span className="font-body text-sm text-white/60">
-                      🎬 Full video available in Phase 16 — Media Gallery
+                      {copy.modalNotice}
                     </span>
                   </div>
                 </div>

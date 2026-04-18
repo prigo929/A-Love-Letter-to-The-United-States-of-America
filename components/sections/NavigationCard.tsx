@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { scaleUp } from "@/lib/animations";
 import { Badge } from "@/components/ui/Badge";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +29,10 @@ export function NavigationCard({
   badge,
   className,
 }: NavigationCardProps) {
+  const { locale } = useLanguage();
+  const ariaLabel =
+    locale === "ro" ? `Explorează ${title}` : `Explore ${title}`;
+
   return (
     <motion.div
       variants={scaleUp}
@@ -39,7 +44,7 @@ export function NavigationCard({
       <Link
         href={href}
         className="block rounded-2xl overflow-hidden bg-navy-light border border-white/10 h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
-        aria-label={`Explore ${title}`}
+        aria-label={ariaLabel}
       >
         {/* Image */}
         <div className="relative h-52 overflow-hidden">
@@ -58,7 +63,11 @@ export function NavigationCard({
           {/* Badge on image */}
           {badge && (
             <div className="absolute top-3 left-3">
-              <Badge variant="gold" size="sm">
+              <Badge
+                variant="gold"
+                size="sm"
+                className="max-w-[8.75rem] whitespace-normal px-2 py-1 text-[10px] leading-tight tracking-[0.12em] shadow-[0_6px_20px_rgba(0,0,0,0.18)]"
+              >
                 {badge}
               </Badge>
             </div>

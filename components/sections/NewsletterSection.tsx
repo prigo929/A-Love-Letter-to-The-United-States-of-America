@@ -5,9 +5,24 @@
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import { NewsletterSignup } from "@/components/forms/NewsletterSignup";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { Star } from "lucide-react";
 
 export function NewsletterSection() {
+  const { locale } = useLanguage();
+  const copy =
+    locale === "ro"
+      ? {
+          title: "Alătură-te Celebrării",
+          description:
+            "Primește actualizări despre conținut nou care celebrează realizările Americii — de la repere economice la descoperiri științifice și minuni naturale.",
+        }
+      : {
+          title: "Join the Celebration",
+          description:
+            "Get updates on new content celebrating America's achievements — from economic milestones to scientific breakthroughs to natural wonders.",
+        };
+
   return (
     <section
       className="bg-navy-mid relative overflow-hidden py-24 md:py-32"
@@ -49,15 +64,14 @@ export function NewsletterSection() {
             id="newsletter-heading"
             className="font-display text-h2 text-white"
           >
-            Join the Celebration
+            {copy.title}
           </motion.h2>
 
           <motion.p
             variants={fadeUp}
             className="font-body text-lg text-white/60 max-w-md leading-relaxed"
           >
-            Get updates on new content celebrating America's achievements — from
-            economic milestones to scientific breakthroughs to natural wonders.
+            {copy.description}
           </motion.p>
 
           <motion.div variants={fadeUp} className="w-full max-w-md">

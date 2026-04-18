@@ -6,10 +6,38 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/animations";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { yearsSince1776 } from "@/lib/utils";
 
 export function OpeningStatement() {
   const years = yearsSince1776();
+  const { locale } = useLanguage();
+  const copy =
+    locale === "ro"
+      ? {
+          badge: `Fondată în 1776 · ${years} ani de măreție`,
+          quoteStart:
+            "Nu a existat niciodată, în toată istoria omenirii, o națiune care să fi făcut mai mult pentru libertate, să fi creat mai multă bogăție, să fi produs mai multă inovație sau să fi oferit mai multe oportunități mai multor oameni decât",
+          emphasis: " Statele Unite ale Americii",
+          quoteEnd: ".",
+          paragraphs: [
+            "Acesta nu este naționalism. Aceasta nu este propagandă. Acestea sunt fapte — susținute de date de la Banca Mondială, Fundația Nobel, OECD și de la orice instituție internațională importantă ce măsoară realizările umane.",
+            "De la Grand Canyon la cipul semiconductor. De la Declarația de Independență la iPhone. De la jazz-ul din New Orleans la omul care a pășit pe Lună. Povestea Americii este cea mai mare poveste a omenirii.",
+            "Aceasta este acea poveste. Spusă în întregime. Spusă cu mândrie.",
+          ],
+        }
+      : {
+          badge: `Est. 1776 · ${years} Years of Greatness`,
+          quoteStart:
+            "There has never been, in all of human history, a nation that has done more for freedom, created more wealth, produced more innovation, or offered more opportunity to more people than the",
+          emphasis: " United States of America",
+          quoteEnd: ".",
+          paragraphs: [
+            "This is not nationalism. This is not propaganda. These are facts — backed by data from the World Bank, Nobel Foundation, OECD, and every major international institution that measures human achievement.",
+            "From the Grand Canyon to the semiconductor chip. From the Declaration of Independence to the iPhone. From jazz in New Orleans to a man walking on the Moon. America's story is humanity's greatest story.",
+            "This is that story. Told in full. Told with pride.",
+          ],
+        };
 
   return (
     <section
@@ -66,7 +94,7 @@ export function OpeningStatement() {
               id="opening-heading"
               className="font-body text-xs font-semibold text-glory-blue tracking-[0.35em] uppercase"
             >
-              Est. 1776 · {years} Years of Greatness
+              {copy.badge}
             </span>
             <Star
               className="w-4 h-4 fill-glory-gold text-glory-gold"
@@ -89,14 +117,13 @@ export function OpeningStatement() {
             variants={fadeUp}
             className="font-display text-2xl md:text-4xl lg:text-5xl text-navy-dark italic leading-relaxed font-normal text-balance"
           >
-            "There has never been, in all of human history, a nation that has
-            done more for freedom, created more wealth, produced more
-            innovation, or offered more opportunity to more people than the
+            "
+            {copy.quoteStart}
             <strong className="font-bold not-italic text-glory-red">
-              {" "}
-              United States of America
+              {copy.emphasis}
             </strong>
-            ."
+            {copy.quoteEnd}
+            "
           </motion.p>
 
           {/* Body text */}
@@ -104,21 +131,14 @@ export function OpeningStatement() {
             variants={fadeUp}
             className="max-w-2xl space-y-5 text-left md:text-center"
           >
-            <p className="font-body text-lg light-surface-copy leading-relaxed">
-              This is not nationalism. This is not propaganda. These are{" "}
-              <strong>facts</strong> — backed by data from the World Bank, Nobel
-              Foundation, OECD, and every major international institution that
-              measures human achievement.
-            </p>
-            <p className="font-body text-lg light-surface-copy leading-relaxed">
-              From the Grand Canyon to the semiconductor chip. From the
-              Declaration of Independence to the iPhone. From jazz in New
-              Orleans to a man walking on the Moon. America's story is
-              humanity's greatest story.
-            </p>
-            <p className="font-body text-lg light-surface-copy leading-relaxed">
-              This is that story. Told in full. Told with pride.
-            </p>
+            {copy.paragraphs.map((paragraph) => (
+              <p
+                key={paragraph}
+                className="font-body text-lg light-surface-copy leading-relaxed"
+              >
+                {paragraph}
+              </p>
+            ))}
           </motion.div>
 
           {/* Bottom divider with stars */}

@@ -19,6 +19,7 @@ import {
 } from "recharts";
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import type {
   DollarReservePoint,
   MarketCapPoint,
@@ -60,6 +61,11 @@ export function DollarReserveChart({
   title,
   source,
 }: DollarReserveChartProps) {
+  const { locale } = useLanguage();
+  const sourceLabel = locale === "ro" ? "Sursă:" : "Source:";
+  const usdReserve =
+    data.find((entry) => entry.currency.includes("US Dollar")) ?? data[0];
+
   return (
     <motion.div
       variants={fadeUp}
@@ -107,7 +113,7 @@ export function DollarReserveChart({
                   fontFamily="var(--font-hero)"
                   fill="#FFD700"
                 >
-                  57.4%
+                  {usdReserve ? `${usdReserve.percentage.toFixed(1)}%` : "N/A"}
                 </tspan>
                 <tspan
                   x="50%"
@@ -141,7 +147,7 @@ export function DollarReserveChart({
 
       {source && (
         <p className="mt-4 text-right font-body text-xs text-white/30">
-          Source: {source}
+          {sourceLabel} {source}
         </p>
       )}
     </motion.div>
@@ -179,6 +185,9 @@ function MarketCapTooltip({
 }
 
 export function MarketCapChart({ data, title, source }: MarketCapChartProps) {
+  const { locale } = useLanguage();
+  const sourceLabel = locale === "ro" ? "Sursă:" : "Source:";
+
   return (
     <motion.div
       variants={fadeUp}
@@ -247,7 +256,7 @@ export function MarketCapChart({ data, title, source }: MarketCapChartProps) {
 
       {source && (
         <p className="mt-3 text-right font-body text-xs text-white/30">
-          Source: {source}
+          {sourceLabel} {source}
         </p>
       )}
     </motion.div>

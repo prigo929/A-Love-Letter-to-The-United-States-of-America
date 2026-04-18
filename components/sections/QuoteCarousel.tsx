@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { quoteEnter, fadeUp } from "@/lib/animations";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const QUOTES = [
   {
@@ -76,21 +77,109 @@ const QUOTES = [
 ];
 
 export function QuoteCarousel() {
+  const { locale } = useLanguage();
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const quotes =
+    locale === "ro"
+      ? [
+          {
+            id: 1,
+            quote:
+              "America nu va fi niciodată distrusă din exterior. Dacă ne clătinăm și ne pierdem libertățile, va fi pentru că ne-am distrus singuri.",
+            attribution: "Abraham Lincoln",
+            role: "Al 16-lea președinte al Statelor Unite",
+            year: 1858,
+          },
+          {
+            id: 2,
+            quote:
+              "Cele mai bune minți nu sunt în guvern. Dacă ar fi fost, mediul de afaceri le-ar fi luat imediat.",
+            attribution: "Ronald Reagan",
+            role: "Al 40-lea președinte al Statelor Unite",
+            year: 1980,
+          },
+          {
+            id: 3,
+            quote:
+              "Pot spune — nu ca o banalitate patriotică, ci cu deplină cunoaștere a rădăcinilor metafizice, epistemologice, etice, politice și estetice necesare — că Statele Unite ale Americii sunt cea mai mare, cea mai nobilă și, în principiile sale fondatoare, singura țară morală din istoria lumii.",
+            attribution: "Ayn Rand",
+            role: "Filosoafă și romancieră care a emigrat în SUA pentru a scăpa de Uniunea Sovietică",
+            year: 1964,
+          },
+          {
+            id: 4,
+            quote:
+              "La începutul unei schimbări, patriotul este un om rar, curajos, urât și disprețuit. Când cauza lui reușește, cei timizi i se alătură, pentru că atunci nu mai costă nimic să fii patriot.",
+            attribution: "Mark Twain",
+            role: "Autor și umorist american",
+            year: 1904,
+          },
+          {
+            id: 5,
+            quote:
+              "Am ales America pentru că este singura țară din lume în care guvernul nu îți spune ce să faci.",
+            attribution: "Albert Einstein",
+            role: "Fizician laureat al Premiului Nobel, care a ales să devină cetățean american",
+            year: 1940,
+          },
+          {
+            id: 6,
+            quote:
+              "Nu întreba ce poate face țara ta pentru tine — întreabă ce poți face tu pentru țara ta.",
+            attribution: "John F. Kennedy",
+            role: "Al 35-lea președinte al Statelor Unite",
+            year: 1961,
+          },
+          {
+            id: 7,
+            quote:
+              "Libertatea nu este niciodată la mai mult de o generație distanță de dispariție. Nu am transmis-o copiilor prin sânge. Trebuie să fie apărată, protejată și predată mai departe.",
+            attribution: "Ronald Reagan",
+            role: "Al 40-lea președinte al Statelor Unite",
+            year: 1964,
+          },
+          {
+            id: 8,
+            quote:
+              "O societate care pune egalitatea înaintea libertății nu va obține nici una, nici alta. O societate care pune libertatea înaintea egalității va obține un grad înalt din ambele.",
+            attribution: "Milton Friedman",
+            role: "Economist laureat al Premiului Nobel",
+            year: 1980,
+          },
+        ]
+      : QUOTES;
+  const copy =
+    locale === "ro"
+      ? {
+          eyebrow: "Cuvinte Care Rămân",
+          title: "Au Spus-o Cel Mai Bine",
+          previous: "Citatul anterior",
+          next: "Citatul următor",
+          navigation: "Navigare citate",
+          byLabel: "Citat de",
+        }
+      : {
+          eyebrow: "Words That Endure",
+          title: "They Said It Best",
+          previous: "Previous quote",
+          next: "Next quote",
+          navigation: "Quote navigation",
+          byLabel: "Quote by",
+        };
 
   useEffect(() => {
     if (isPaused) return;
     const id = setInterval(() => {
-      setCurrent((i) => (i + 1) % QUOTES.length);
+      setCurrent((i) => (i + 1) % quotes.length);
     }, 6000);
     return () => clearInterval(id);
-  }, [isPaused]);
+  }, [isPaused, quotes.length]);
 
-  const prev = () => setCurrent((i) => (i - 1 + QUOTES.length) % QUOTES.length);
-  const next = () => setCurrent((i) => (i + 1) % QUOTES.length);
+  const prev = () => setCurrent((i) => (i - 1 + quotes.length) % quotes.length);
+  const next = () => setCurrent((i) => (i + 1) % quotes.length);
 
-  const quote = QUOTES[current];
+  const quote = quotes[current];
 
   return (
     <section
@@ -115,10 +204,10 @@ export function QuoteCarousel() {
           className="text-center mb-12"
         >
           <p className="section-eyebrow justify-center text-glory-gold/80">
-            Words That Endure
+            {copy.eyebrow}
           </p>
           <h2 id="quotes-heading" className="font-display text-h2 text-white">
-            They Said It Best
+            {copy.title}
           </h2>
         </motion.div>
 
@@ -182,14 +271,14 @@ export function QuoteCarousel() {
           <button
             onClick={prev}
             className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors focus-visible:ring-2 focus-visible:ring-glory-gold focus-visible:outline-none"
-            aria-label="Previous quote"
+            aria-label={copy.previous}
           >
             <ChevronLeft className="w-5 h-5" aria-hidden="true" />
           </button>
           <button
             onClick={next}
             className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors focus-visible:ring-2 focus-visible:ring-glory-gold focus-visible:outline-none"
-            aria-label="Next quote"
+            aria-label={copy.next}
           >
             <ChevronRight className="w-5 h-5" aria-hidden="true" />
           </button>
@@ -199,14 +288,14 @@ export function QuoteCarousel() {
         <div
           className="flex justify-center gap-2 mt-10"
           role="tablist"
-          aria-label="Quote navigation"
+          aria-label={copy.navigation}
         >
-          {QUOTES.map((q, i) => (
+          {quotes.map((q, i) => (
             <button
               key={q.id}
               role="tab"
               aria-selected={i === current}
-              aria-label={`Quote by ${q.attribution}`}
+              aria-label={`${copy.byLabel} ${q.attribution}`}
               onClick={() => setCurrent(i)}
               className={`rounded-full transition-all duration-300 focus-visible:ring-2 focus-visible:ring-glory-gold focus-visible:outline-none ${
                 i === current

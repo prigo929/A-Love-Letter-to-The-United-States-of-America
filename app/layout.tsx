@@ -1,5 +1,11 @@
 // ─── Root Layout ─────────────────────────────────────────────────────────────
-// Sets up: fonts, global providers, header/footer, page transitions.
+// Sets up the global shell for the entire site.
+//
+// Beginner guide:
+// - Header/footer changes usually belong in the components/layout folder
+// - Site-wide metadata (title/description/social preview defaults) lives here
+// - Global CSS is loaded from app/globals.css
+//
 // Everything here wraps EVERY page.
 
 import type { Metadata, Viewport } from "next";
@@ -9,6 +15,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop, ReadingProgressBar } from "@/components/layout/PageChrome";
+import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { SITE } from "@/lib/constants";
 import "@/app/globals.css";
 
@@ -172,26 +179,28 @@ export default function RootLayout({
       </head>
 
       <body className="bg-navy-dark text-white antialiased font-body">
-        <ReadingProgressBar />
+        <LanguageProvider>
+          <ReadingProgressBar />
 
-        {/* Skip to content link — accessibility */}
-        <a href="#main-content" className="skip-to-content">
-          Skip to main content
-        </a>
+          {/* Skip to content link — accessibility */}
+          <a href="#main-content" className="skip-to-content">
+            Skip to main content
+          </a>
 
-        {/* Sticky header */}
-        <Header />
+          {/* Sticky header */}
+          <Header />
 
-        {/* Page content */}
-        <main id="main-content" tabIndex={-1} className="outline-none">
-          {children}
-        </main>
+          {/* Page content */}
+          <main id="main-content" tabIndex={-1} className="outline-none">
+            {children}
+          </main>
 
-        {/* Footer */}
-        <Footer />
-        <BackToTop />
-        <Analytics />
-        <SpeedInsights />
+          {/* Footer + site-wide helper widgets */}
+          <Footer />
+          <BackToTop />
+          <Analytics />
+          <SpeedInsights />
+        </LanguageProvider>
       </body>
     </html>
   );
