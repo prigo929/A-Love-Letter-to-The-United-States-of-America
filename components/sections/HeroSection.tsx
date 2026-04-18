@@ -13,6 +13,9 @@
 // - The rotating hero images come from `HERO_IMAGES` in lib/constants.ts
 // - The actual image files live in /IMAGES and are registered in lib/site-images.ts
 // - So the usual image change path is: IMAGES -> site-images.ts -> constants.ts
+//
+// `use client` is required because this section depends on browser-only APIs:
+// timers, canvas drawing, and scroll-based animation.
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -102,10 +105,13 @@ function ParticleCanvas() {
 // ─── Hero Component ───────────────────────────────────────────────────────────
 
 export function HeroSection() {
+  // Local component state: which image in the slideshow is currently active.
   const [currentImage, setCurrentImage] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Parallax scroll
+  // Parallax scroll:
+  // Framer Motion reads the page scroll position and converts it into animated
+  // values we can attach directly to styles below.
   const { scrollY } = useScroll();
   const textY = useTransform(scrollY, [0, 600], [0, -120]);
   const bgY = useTransform(scrollY, [0, 600], [0, 160]);
@@ -113,9 +119,11 @@ export function HeroSection() {
 
   // Image carousel — cycle every 6 seconds
   useEffect(() => {
+    // setInterval runs in the browser and advances the slideshow repeatedly.
     const id = setInterval(() => {
       setCurrentImage((i) => (i + 1) % HERO_IMAGES.length);
     }, 6000);
+    // Cleanup matters: without this, the timer would keep running after unmount.
     return () => clearInterval(id);
   }, []);
 
@@ -160,7 +168,8 @@ export function HeroSection() {
         </AnimatePresence>
       </motion.div>
 
-      {/* ── Gradient Overlay ───────────────────────────────────────────────── */}
+      {/* ── Gradient Overlay ─────────────────────────────────────────────────
+          This darkens the photo so white text stays readable on top of it. */}
       <div
         className="absolute inset-0 z-[1]"
         style={{
@@ -170,7 +179,8 @@ export function HeroSection() {
         aria-hidden="true"
       />
 
-      {/* Bottom fade into next section */}
+      {/* Bottom fade into next section
+          This softens the transition from the hero into the darker section below. */}
       <div
         className="absolute bottom-0 left-0 right-0 h-40 z-[2]"
         style={{

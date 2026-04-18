@@ -9,12 +9,18 @@
 //
 // Images are pulled from SITE_IMAGES, so changing a homepage image usually
 // means replacing the image key used here.
+//
+// Why this file exists:
+// React components should focus on layout and behavior. Keeping the content in
+// one place makes updates easier and reduces the chance of editing the wrong file.
 
 import { SITE_IMAGES } from "@/lib/site-images";
 import type { ContentBlockItem } from "@/types/content.types";
 
 // Small facts bar near the top of the homepage.
 // Change these values if you want to update the animated counters.
+// `as const` at the end tells TypeScript to keep these values very specific,
+// which helps catch mistakes when other files read this data.
 export const KEY_STATS = [
   {
     id: "gdp",
@@ -89,6 +95,11 @@ export const ECONOMY_PAGE_COPY = {
 // Four long-form homepage feature blocks used by WhyAmericaSection.
 // To change the image in one block, swap the `imageSrc` entry to another value
 // from SITE_IMAGES.
+//
+// Each block has:
+// - text content (`heading`, `subheading`, `paragraphs`)
+// - one image (`imageSrc`, `imageAlt`)
+// - small supporting fact pills (`facts`)
 export const WHY_AMERICA_BLOCKS: ContentBlockItem[] = [
   {
     heading: "The Land of the Free",
@@ -258,6 +269,7 @@ export const VIDEO_PREVIEWS = [
 ] as const;
 
 // These three datasets power the mini charts in DataTeaserSection.
+// The chart component reads `country` and `value` from each item.
 export const GDP_COMPARISON_DATA = [
   { country: "USA", value: 28.8, isUSA: true },
   { country: "China", value: 17.7, isUSA: false },
@@ -295,6 +307,8 @@ export const NOBEL_PRIZES_DATA = [
 // - `caption` is the short label users see
 // - `category` powers the small category pills
 // - `span` changes the card shape in the layout
+//
+// If the gallery layout looks odd after changing an item, check `span` first.
 export const GALLERY_PREVIEW_IMAGES = [
   {
     id: "yosemite",

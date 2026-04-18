@@ -7,6 +7,10 @@
 //
 // Most content files do NOT import image files directly. They import a key from
 // SITE_IMAGES instead, which makes image changes much easier to manage.
+//
+// Naming tip:
+// Keep keys descriptive and stable. For example, `homeGrandCanyon` tells you
+// both where the image is used (home page) and what it shows (Grand Canyon).
 
 import chicagoSkyline from "@/IMAGES/Cities/chicago-skyline.jpg";
 import homeNycSkyline from "@/IMAGES/Cities/home-nyc-skyline.jpg";
@@ -31,6 +35,10 @@ import siliconValleyOffice from "@/IMAGES/Technology/silicon-valley-office.jpg";
 
 // Export plain `.src` strings so the rest of the app can use them in Next Image
 // components without caring which physical file they came from.
+//
+// Why not export the full imported object?
+// Next.js image imports are objects with metadata. Most of this app only needs
+// the final image URL string, so `.src` keeps downstream files simpler.
 export const SITE_IMAGES = {
   homeGrandCanyon: homeGrandCanyon.src,
   homeNycSkyline: homeNycSkyline.src,

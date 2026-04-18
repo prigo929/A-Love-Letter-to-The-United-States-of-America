@@ -1,6 +1,10 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+// General helper functions used across many files.
+// Beginners: these are small reusable tools. Instead of rewriting the same
+// logic in multiple components, we put it here once and import it where needed.
+
 // ─── Class Name Utility ───────────────────────────────────────────────────────
 /**
  * Combines clsx + tailwind-merge so Tailwind classes compose cleanly
@@ -8,6 +12,10 @@ import { twMerge } from "tailwind-merge";
  *
  * Usage: cn('px-4 py-2', condition && 'bg-glory-red', 'px-6')
  *   → 'py-2 bg-glory-red px-6'  (px-6 overrides px-4)
+ *
+ * In plain English:
+ * this is the helper you use when a component needs classes that depend on
+ * conditions, props, or variants.
  */
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -22,6 +30,7 @@ export function formatNumber(n: number): string {
 
 /** Format billions/trillions: 28.8e12 → "$28.8T" */
 export function formatCompact(n: number, prefix = "", suffix = ""): string {
+  // The function checks biggest units first, then falls back to smaller ones.
   if (n >= 1e12) return `${prefix}${(n / 1e12).toFixed(1)}T${suffix}`;
   if (n >= 1e9) return `${prefix}${(n / 1e9).toFixed(1)}B${suffix}`;
   if (n >= 1e6) return `${prefix}${(n / 1e6).toFixed(1)}M${suffix}`;
@@ -58,6 +67,9 @@ export function truncate(text: string, maxLength: number): string {
 /**
  * Generate an Unsplash URL with standard quality params.
  * Example: unsplashUrl('photo-1234567890', 1920, 1080)
+ *
+ * Note: the site now mostly uses local files from /IMAGES instead.
+ * This helper remains available for any future remote-image use.
  */
 export function unsplashUrl(
   photoId: string,
@@ -72,6 +84,10 @@ export function unsplashUrl(
  * Generate a tiny base64 blur placeholder for next/image.
  * In production, use `plaiceholder` or `blurDataURL` from Unsplash's
  * blurhash API. This is a safe fallback gray.
+ *
+ * Why this exists:
+ * Next/Image can show a very small blurred image while the real image loads,
+ * which makes the page feel less jumpy.
  */
 export const BLUR_PLACEHOLDER =
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
@@ -99,6 +115,7 @@ export function isValidEmail(email: string): boolean {
 
 /** Chunk an array into sub-arrays of size n */
 export function chunk<T>(array: T[], size: number): T[][] {
+  // Example: chunk([1,2,3,4], 2) -> [[1,2],[3,4]]
   const result: T[][] = [];
   for (let i = 0; i < array.length; i += size) {
     result.push(array.slice(i, i + size));
@@ -108,6 +125,7 @@ export function chunk<T>(array: T[], size: number): T[][] {
 
 /** Return random items from array */
 export function sample<T>(array: T[], n: number): T[] {
+  // This creates a shuffled copy first so the original array stays unchanged.
   const shuffled = [...array].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, n);
 }

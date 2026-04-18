@@ -6,6 +6,9 @@
 // - To change which images appear here, edit GALLERY_PREVIEW_IMAGES in
 //   lib/data/home.ts
 // - This file only controls layout, hover effects, and the lightbox behavior
+//
+// `use client` is required because this section uses local React state for the
+// lightbox and browser-side animation effects.
 
 import { useState } from "react";
 import Image from "next/image";
@@ -25,6 +28,7 @@ function Lightbox({
   image: GalleryImage;
   onClose: () => void;
 }) {
+  // This modal only exists when the user has clicked an image.
   return (
     <AnimatePresence>
       <>
@@ -96,6 +100,7 @@ function GalleryCard({
   priority?: boolean;
   className?: string;
 }) {
+  // `span` comes from the data file and controls the visual shape of the card.
   const aspectClass = {
     tall: "aspect-[3/4]",
     wide: "aspect-[16/9]",
@@ -154,6 +159,7 @@ function GalleryCard({
 }
 
 export function GalleryPreviewSection() {
+  // `lightboxImage` stores the currently open image. `null` means the modal is closed.
   const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
   // Used to build the category pills automatically from the gallery data.
   const categories = [...new Set(GALLERY_PREVIEW_IMAGES.map((image) => image.category))];
@@ -237,6 +243,7 @@ export function GalleryPreviewSection() {
               Open any frame for a closer look, or jump into the full gallery
               page to turn this preview into a deeper visual archive.
             </p>
+            {/* This CTA goes to the dedicated gallery page. */}
             <Link
               href="/gallery"
               className="group mt-6 inline-flex items-center gap-2 rounded-xl border border-glory-gold/30 bg-glory-gold/10 px-5 py-3 font-body text-sm font-semibold text-glory-gold transition-all duration-200 hover:bg-glory-gold/20"

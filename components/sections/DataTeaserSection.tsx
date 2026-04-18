@@ -6,6 +6,10 @@
 // - The chart numbers themselves come from lib/data/home.ts
 // - This file only controls how those numbers are rendered visually
 // - If a unit/title is wrong, fix the chart config in `charts` below
+//
+// `use client` is required because this component uses browser-only features:
+// - scroll/viewport detection via Framer Motion
+// - animated chart rendering in the browser
 
 import { useRef } from "react";
 import Link from "next/link";
@@ -37,6 +41,8 @@ interface ChartTooltipProps {
 }
 
 function ChartTooltip({ active, payload, label, unit }: ChartTooltipProps) {
+  // Recharts calls this repeatedly while the mouse moves over the chart.
+  // Returning null means "show no tooltip right now".
   if (!active || !payload?.length) return null;
 
   return (
@@ -70,6 +76,8 @@ function ChartCard({
   index,
 }: ChartCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  // `useInView` becomes true once this card scrolls into view, which lets us
+  // delay the bar animation until the user actually sees the chart.
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
@@ -128,6 +136,7 @@ function ChartCard({
               animationDuration={900}
               animationEasing="ease-out"
             >
+              {/* One Cell per bar lets us color the USA differently from the rest. */}
               {data.map((entry) => (
                 <Cell
                   key={entry.country}
