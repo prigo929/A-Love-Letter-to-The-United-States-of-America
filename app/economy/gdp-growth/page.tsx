@@ -1,4 +1,11 @@
 // ─── GDP & Scale Sub-Page ─────────────────────────────────────────────────────
+// Deep-dive page for the economy section.
+//
+// Beginner guide:
+// - Most numbers and chart data come from lib/data/economy-data.ts
+// - This file mostly decides page order, headings, and which reusable
+//   components are used
+// - If you want to swap the hero photo, change SITE_IMAGES.economyGrowth below
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -27,6 +34,8 @@ export const metadata: Metadata = {
 };
 
 const GDP_EXTENDED_FACTS = [
+  // This page has a few extra facts stored locally because they are specific to
+  // this subpage and not reused elsewhere.
   {
     id: "gdp-streak",
     fact: "The US has held the #1 GDP rank for 130+ consecutive years",
@@ -120,7 +129,8 @@ const STATE_GDP_RANKINGS = [
 export default function GdpGrowthPage() {
   return (
     <>
-      {/* Hero */}
+      {/* Hero
+          A full-width intro block with background image + headline + summary. */}
       <div className="relative bg-navy-dark pt-28 pb-16">
         <Image
           src={SITE_IMAGES.economyGrowth}
@@ -155,10 +165,13 @@ export default function GdpGrowthPage() {
         </div>
       </div>
 
-      {/* Content */}
+      {/* Content
+          The rest of the page is broken into stacked sections so it reads like
+          a long-form article instead of one giant block. */}
       <div className="bg-navy-dark">
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 space-y-16">
-          {/* GDP Comparison */}
+          {/* GDP Comparison
+              Reusable chart component fed by shared data from economy-data.ts */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
               The United States vs. The World
@@ -181,7 +194,8 @@ export default function GdpGrowthPage() {
             </div>
           </section>
 
-          {/* GDP Per Capita */}
+          {/* GDP Per Capita
+              The numbers are stored in thousands, so 82.7 means $82,700. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
               Per Capita: Rich People, Rich Country
@@ -237,7 +251,9 @@ export default function GdpGrowthPage() {
             </div>
           </section>
 
-          {/* State GDPs */}
+          {/* State GDPs
+              This one uses a plain HTML table instead of a chart because the
+              comparison is short and easier to scan in rows. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
               American States vs. Nations

@@ -3,6 +3,11 @@
 // ─── GDP Bar Chart ────────────────────────────────────────────────────────────
 // Recharts bar chart comparing GDP across major economies.
 // Highlights the US bar in glory-gold. Client component (Recharts requirement).
+//
+// Beginner guide:
+// - This component only draws the chart
+// - The actual numbers come from the page or data file that calls it
+// - `valueSuffix` lets the same chart work for trillions ("T") or thousands ("K")
 
 import {
   BarChart,
@@ -29,6 +34,7 @@ interface GdpBarChartProps {
 }
 
 // ── Custom Tooltip ─────────────────────────────────────────────────────────────
+// This controls the small popup shown when the user hovers a bar.
 
 function CustomTooltip({
   active,
@@ -61,6 +67,7 @@ function CustomTooltip({
 }
 
 // ── Custom Bar Label ───────────────────────────────────────────────────────────
+// This prints the number above each bar.
 
 function CustomLabel(props: {
   x?: number;
@@ -117,6 +124,7 @@ export function GdpBarChart({
       )}
 
       <div className="h-[320px] w-full md:h-[380px]">
+        {/* ResponsiveContainer makes the chart fill the available width/height. */}
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={data}
@@ -160,6 +168,8 @@ export function GdpBarChart({
               }
               cursor={{ fill: "rgba(255,255,255,0.04)" }}
             />
+            {/* `dataKey="gdp"` tells Recharts which property in each data item
+                should be used for the bar heights. */}
             <Bar dataKey="gdp" radius={[6, 6, 0, 0]} maxBarSize={60}>
               {data.map((entry, index) => (
                 <Cell

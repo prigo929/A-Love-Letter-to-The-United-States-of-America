@@ -1,4 +1,10 @@
 // ─── Capital Markets Sub-Page ─────────────────────────────────────────────────
+// Deep-dive page about US stock exchanges and capital markets.
+//
+// Beginner guide:
+// - Shared chart data comes from lib/data/economy-data.ts
+// - This file controls page structure and page-specific copy
+// - To change the hero photo, update SITE_IMAGES.economyNYSEUpsideDown below
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -24,6 +30,8 @@ export const metadata: Metadata = {
 };
 
 const CAPITAL_MARKETS_EXTENDED_FACTS = [
+  // Page-specific supporting facts. Shared facts stay in economy-data.ts;
+  // local facts that belong only to this page can live here.
   {
     id: "nyse-history",
     fact: "The NYSE has operated continuously under the buttonwood tree agreement since 1792",
@@ -75,6 +83,7 @@ const CAPITAL_MARKETS_EXTENDED_FACTS = [
 ];
 
 const MAJOR_US_EXCHANGES = [
+  // Simple content array used to generate the three exchange cards below.
   {
     name: "NYSE",
     founded: 1792,
@@ -143,7 +152,8 @@ export default function CapitalMarketsPage() {
       {/* Content */}
       <div className="bg-navy-dark">
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 space-y-16">
-          {/* Market cap comparison */}
+          {/* Market cap comparison
+              Uses a reusable chart component instead of custom SVG code in this file. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
               Stock Exchange Market Cap — US vs World
@@ -185,7 +195,8 @@ export default function CapitalMarketsPage() {
             </div>
           </section>
 
-          {/* Major exchanges */}
+          {/* Major exchanges
+              Generated from the MAJOR_US_EXCHANGES array above. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
               America&apos;s Major Exchanges

@@ -1,4 +1,10 @@
 // ─── Dollar Dominance Sub-Page ────────────────────────────────────────────────
+// Deep-dive page about why the US dollar still anchors the global economy.
+//
+// Beginner guide:
+// - Shared facts and overview paragraphs come from lib/data/economy-data.ts
+// - This file decides page structure and page-specific content blocks
+// - To change the hero photo, update SITE_IMAGES.economyDollar below
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -23,6 +29,7 @@ export const metadata: Metadata = {
 };
 
 const DOLLAR_EXTENDED_FACTS = [
+  // Extra facts that belong only to this page.
   {
     id: "dollar-countries",
     fact: "Over 65 countries peg or tightly link their currency to the US dollar",
@@ -74,6 +81,7 @@ const DOLLAR_EXTENDED_FACTS = [
 ];
 
 const DOLLAR_TIMELINE = [
+  // Timeline entries are plain data objects so the page can render them with one map().
   {
     year: 1944,
     event: "Bretton Woods Agreement",
@@ -154,7 +162,9 @@ export default function DollarDominancePage() {
             oil. An 80-year reign that has never been seriously threatened.
           </p>
 
-          {/* Key dollar stats */}
+          {/* Key dollar stats
+              Short highlights rendered from a small inline array because they
+              are unique to this hero block. */}
           <div className="mt-8 flex flex-wrap gap-6">
             {[
               {
@@ -191,7 +201,8 @@ export default function DollarDominancePage() {
       {/* Content */}
       <div className="bg-navy-dark">
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 space-y-16">
-          {/* Overview */}
+          {/* Overview
+              Long-form paragraphs pulled from the shared economy data file. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
               The Exorbitant Privilege
@@ -206,7 +217,8 @@ export default function DollarDominancePage() {
             ))}
           </section>
 
-          {/* Reserve chart */}
+          {/* Reserve chart
+              Reusable chart component driven by shared reserve-share data. */}
           <section>
             <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
               <DollarReserveChart
@@ -217,7 +229,8 @@ export default function DollarDominancePage() {
             </div>
           </section>
 
-          {/* Timeline */}
+          {/* Timeline
+              A visual history section generated from the DOLLAR_TIMELINE array above. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
               80 Years of Dollar Supremacy
@@ -254,7 +267,8 @@ export default function DollarDominancePage() {
             </div>
           </section>
 
-          {/* Extended facts */}
+          {/* Extended facts
+              Combines shared facts from economy-data.ts with page-local facts. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
               The Dollar Advantage — In Detail
@@ -273,7 +287,8 @@ export default function DollarDominancePage() {
             </div>
           </section>
 
-          {/* Dedollarization callout */}
+          {/* Dedollarization callout
+              A highlighted editorial block rather than a chart or data table. */}
           <section className="rounded-2xl border border-glory-red/20 bg-glory-red/5 p-6 md:p-8">
             <h2 className="mb-4 font-display text-xl font-semibold text-white">
               On &ldquo;De-Dollarization&rdquo; — A Reality Check

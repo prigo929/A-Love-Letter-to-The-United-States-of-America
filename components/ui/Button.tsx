@@ -3,6 +3,12 @@
 // ─── Button Component ─────────────────────────────────────────────────────────
 // Four variants: primary (red), secondary (blue outline), ghost, gold.
 // Includes animated fill effect on hover via Framer Motion.
+//
+// Beginner guide:
+// - Use this component instead of writing raw <button> and <a> styles over and over
+// - Pass `href` if the button should navigate to another page
+// - Skip `href` if it should run code like a normal button click
+// - `variant` changes colors, `size` changes spacing/text size
 
 import { forwardRef } from "react";
 import Link from "next/link";
@@ -42,6 +48,8 @@ interface ButtonAsLink extends ButtonBaseProps {
 export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 // ─── Style maps ───────────────────────────────────────────────────────────────
+// These objects translate simple prop values like `variant="gold"` into the
+// full Tailwind class strings needed for styling.
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: [
@@ -85,6 +93,7 @@ export const Button = forwardRef<
   HTMLButtonElement & HTMLAnchorElement,
   ButtonProps
 >(function Button(props, ref) {
+  // Pull the shared props out first. This makes the render logic below easier to read.
   const {
     variant = "primary",
     size = "md",
@@ -113,6 +122,8 @@ export const Button = forwardRef<
     className,
   );
 
+  // Shared inner content used by both the link version and the button version.
+  // This avoids duplicating the icon/label/loading markup twice.
   const content = (
     <>
       {/* Loading spinner */}
@@ -157,6 +168,7 @@ export const Button = forwardRef<
   );
 
   // ── Render as Link ────────────────────────────────────────────────────────
+  // If `href` exists, this component behaves like navigation instead of a button action.
   if ("href" in props && props.href) {
     const { href, external } = props;
     if (external) {
@@ -187,6 +199,7 @@ export const Button = forwardRef<
   }
 
   // ── Render as button ──────────────────────────────────────────────────────
+  // Otherwise this is a normal clickable button that can submit forms or run handlers.
   const { type = "button", onClick } = props as ButtonAsButton;
   return (
     <motion.button

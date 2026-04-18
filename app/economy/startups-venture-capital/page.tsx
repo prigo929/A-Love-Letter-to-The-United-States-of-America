@@ -1,4 +1,10 @@
 // ─── Startups & Venture Capital Sub-Page ─────────────────────────────────────
+// Deep-dive page about US startups, unicorns, and venture capital.
+//
+// Beginner guide:
+// - Most charts and factual datasets come from lib/data/economy-data.ts
+// - This file mainly controls page layout and page-specific supporting blocks
+// - To change the hero photo, update SITE_IMAGES.siliconValleyOffice below
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -26,6 +32,7 @@ export const metadata: Metadata = {
 };
 
 const VC_EXTENDED_FACTS = [
+  // Extra facts used only on this page.
   {
     id: "vc-total",
     fact: "US startups raised ~$170B in VC in 2023 — 47% of the global total",
@@ -77,6 +84,7 @@ const VC_EXTENDED_FACTS = [
 ];
 
 const TOP_VC_FIRMS = [
+  // Local data for the VC firm cards further down the page.
   {
     name: "Sequoia Capital",
     aum: "$85B+",
@@ -156,7 +164,8 @@ export default function StartupsVCPage() {
       {/* Content */}
       <div className="bg-navy-dark">
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 space-y-16">
-          {/* Overview paras */}
+          {/* Overview paras
+              Long-form shared copy pulled from economy-data.ts. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
               Why America Leads the World in Innovation Capital
@@ -171,7 +180,8 @@ export default function StartupsVCPage() {
             ))}
           </section>
 
-          {/* VC Chart */}
+          {/* VC Chart
+              Reusable bar chart comparing venture capital by country. */}
           <section>
             <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
               <VCBarChart
@@ -182,7 +192,8 @@ export default function StartupsVCPage() {
             </div>
           </section>
 
-          {/* Unicorn chart */}
+          {/* Unicorn chart
+              Pie chart used here because the goal is share-of-total comparison. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
               The Unicorn Economy — 659+ and Counting
@@ -202,7 +213,9 @@ export default function StartupsVCPage() {
             </div>
           </section>
 
-          {/* Startup Timeline table */}
+          {/* Startup Timeline table
+              A table works well here because users may want to scan founders,
+              industries, and valuations row-by-row. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
               The Companies That Rewired Human Civilization
@@ -268,7 +281,8 @@ export default function StartupsVCPage() {
             </div>
           </section>
 
-          {/* Startup Ecosystems */}
+          {/* Startup Ecosystems
+              Generated from the STARTUP_ECOSYSTEMS array in economy-data.ts. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
               America&apos;s Startup Ecosystems

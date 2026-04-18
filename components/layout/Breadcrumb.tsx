@@ -1,3 +1,10 @@
+// Reusable breadcrumb navigation for inner pages.
+//
+// Beginner guide:
+// - `items` is the list of page levels after Home
+// - This component also outputs SEO-friendly breadcrumb JSON-LD
+// - Use it near the top of deep pages like /economy/gdp-growth
+
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -10,6 +17,7 @@ interface BreadcrumbProps {
 }
 
 export function Breadcrumb({ items, className, dark = true }: BreadcrumbProps) {
+  // Structured data for search engines so they can understand the page hierarchy.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -26,10 +34,12 @@ export function Breadcrumb({ items, className, dark = true }: BreadcrumbProps) {
 
   return (
     <>
+      {/* Search engines read this script; users do not see it on the page. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {/* Visible breadcrumb trail for users. */}
       <nav
         aria-label="Breadcrumb"
         className={cn(
@@ -58,6 +68,7 @@ export function Breadcrumb({ items, className, dark = true }: BreadcrumbProps) {
               className="h-3 w-3 shrink-0 opacity-40"
               aria-hidden="true"
             />
+            {/* Earlier items are links; the last item is the current page label. */}
             {item.href && index < items.length - 1 ? (
               <Link
                 href={item.href}

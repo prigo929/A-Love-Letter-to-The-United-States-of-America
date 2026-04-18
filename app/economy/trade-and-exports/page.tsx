@@ -1,4 +1,10 @@
 // ─── Trade & Exports Sub-Page ─────────────────────────────────────────────────
+// Deep-dive page about America's export engine and trading relationships.
+//
+// Beginner guide:
+// - Shared overview paragraphs and export-category data come from economy-data.ts
+// - This file controls how those facts are presented on the page
+// - To change the hero photo, update SITE_IMAGES.economyPort below
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -21,6 +27,8 @@ export const metadata: Metadata = {
 };
 
 const TRADE_FACTS = [
+  // These facts are specific to the trade page, so they live here instead of
+  // the shared economy data file.
   {
     id: "trade-goods-total",
     fact: "US merchandise exports exceed $2 trillion annually",
@@ -72,6 +80,7 @@ const TRADE_FACTS = [
 ];
 
 const TRADE_PARTNERS = [
+  // Trading partner cards are rendered from this array lower down the page.
   {
     country: "Canada",
     flag: "🇨🇦",
@@ -123,6 +132,7 @@ const TRADE_PARTNERS = [
 ];
 
 const TOP_EXPORT_COMPANIES = [
+  // Same pattern here: a simple local content array used to build a grid.
   {
     company: "Boeing",
     sector: "Aerospace",
@@ -174,6 +184,7 @@ const TOP_EXPORT_COMPANIES = [
 ];
 
 export default function TradeAndExportsPage() {
+  // Used to scale each export bar relative to the biggest category.
   const maxExport = Math.max(...US_EXPORT_CATEGORIES.map((c) => c.exports));
 
   return (
@@ -232,7 +243,9 @@ export default function TradeAndExportsPage() {
             ))}
           </section>
 
-          {/* Export categories chart */}
+          {/* Export categories chart
+              This page uses hand-built progress bars instead of Recharts so the
+              layout feels more editorial and less dashboard-like. */}
           <section>
             <h2 className="mb-6 font-display text-h2 text-white">
               Top US Export Categories (2024)
@@ -262,6 +275,8 @@ export default function TradeAndExportsPage() {
                     <div className="h-7 w-full overflow-hidden rounded-full bg-white/8">
                       <div
                         className="flex h-full items-center rounded-full bg-gradient-to-r from-glory-red to-glory-gold px-3 transition-all duration-700"
+                        // Dynamic inline width is used here because the bar
+                        // length depends on the data value for each category.
                         style={{ width: `${pct}%` }}
                       >
                         <span className="font-body text-xs font-semibold text-navy-dark opacity-0 group-hover:opacity-100 transition-opacity">

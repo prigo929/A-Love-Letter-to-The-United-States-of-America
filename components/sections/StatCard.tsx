@@ -1,5 +1,13 @@
 "use client";
 
+// Reusable stat display card.
+//
+// Beginner guide:
+// - `value` is the main number
+// - `prefix` and `suffix` let you add things like "$" or "T"
+// - `label` is the main text underneath
+// - `description` and `source` are optional supporting text
+
 import { motion } from "framer-motion";
 import { scaleUp } from "@/lib/animations";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
@@ -49,13 +57,15 @@ export function StatCard({
         className,
       )}
     >
+      {/* Optional visual icon above the number */}
       {icon && (
         <div className="text-glory-gold mb-2 w-10 h-10" aria-hidden="true">
           {icon}
         </div>
       )}
 
-      {/* The big animated number */}
+      {/* The big animated number.
+          AnimatedCounter handles the count-up effect once the card scrolls into view. */}
       <div className="font-hero text-stat-lg text-glory-gold leading-none">
         <AnimatedCounter
           value={value}

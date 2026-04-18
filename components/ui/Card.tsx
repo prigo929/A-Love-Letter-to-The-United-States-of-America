@@ -3,6 +3,12 @@
 // ─── Card Component ───────────────────────────────────────────────────────────
 // Generic card shell used across the site.
 // For section navigation cards, see NavigationCard.tsx.
+//
+// Beginner guide:
+// - Use this when you want a bordered panel with standard site styling
+// - `variant` changes the look
+// - `padding` changes the inner spacing
+// - `hover` adds the floating hover animation
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -45,6 +51,8 @@ export function Card({
   onClick,
   as: Tag = "div",
 }: CardProps) {
+  // Build one final class string from the selected variant, padding, and any
+  // extra classes passed in by the caller.
   const classes = cn(
     "rounded-2xl overflow-hidden",
     variantStyles[variant],
@@ -54,6 +62,7 @@ export function Card({
     className,
   );
 
+  // If the card is interactive, render the animated motion wrapper.
   if (hover || onClick) {
     return (
       <motion.div
@@ -70,5 +79,6 @@ export function Card({
     );
   }
 
+  // Otherwise render a plain semantic tag like <div>, <article>, or <section>.
   return <Tag className={classes}>{children}</Tag>;
 }
