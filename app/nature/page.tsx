@@ -227,6 +227,7 @@ export default async function NaturePage() {
                 quote={quotes[0].quote}
                 attribution={quotes[0].attribution}
                 title={quotes[0].title}
+                variant="dark"
               />
 
               {/* ── Section 3: Featured Parks ────────────────────────────── */}
@@ -357,6 +358,7 @@ export default async function NaturePage() {
                 quote={quotes[1].quote}
                 attribution={quotes[1].attribution}
                 title={quotes[1].title}
+                variant="dark"
               />
 
               {/* ── Section 5: Regional Wonders ──────────────────────────── */}
@@ -416,6 +418,7 @@ export default async function NaturePage() {
                 quote={quotes[2].quote}
                 attribution={quotes[2].attribution}
                 title={quotes[2].title}
+                variant="dark"
               />
 
               {/* ── Section 6: Sub-Page Navigation ──────────────────────── */}

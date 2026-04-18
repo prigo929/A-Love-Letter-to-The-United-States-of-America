@@ -173,6 +173,7 @@ export default async function YellowstonePage() {
           <QuoteBlock
             quote="Yellowstone is not just a national park. It is a window into geological time, a living laboratory of evolution, and proof that if you leave nature alone, it heals itself magnificently."
             attribution="E.O. Wilson" title="Biologist, Harvard University"
+            variant="dark"
           />
 
           <div className="flex items-center justify-between border-t border-white/10 pt-8">

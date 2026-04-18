@@ -258,6 +258,7 @@ export default async function NationalParksPage() {
             quote="The national parks are the one thing America has done right that the rest of the world envies. We set aside the best of what we had and said: this belongs to everyone, forever."
             attribution="Wallace Stegner"
             title="Author & Conservationist, Stanford University"
+            variant="dark"
           />
 
           {/* Nav */}

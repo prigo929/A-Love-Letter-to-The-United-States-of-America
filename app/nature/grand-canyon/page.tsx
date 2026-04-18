@@ -150,6 +150,7 @@ export default async function GrandCanyonPage() {
           <QuoteBlock
             quote="Do nothing to mar its grandeur, sublimity and loveliness. You cannot improve on it. But what you can do is to keep it for your children, your children's children, and for all who come after you."
             attribution="Theodore Roosevelt" title="26th President, speaking at the Grand Canyon, May 6, 1903"
+            variant="dark"
           />
 
           <div className="flex items-center justify-between border-t border-white/10 pt-8">

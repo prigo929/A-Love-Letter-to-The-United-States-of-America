@@ -133,6 +133,7 @@ export default async function RockiesPage() {
           <QuoteBlock
             quote="The Rocky Mountains are not a feature of this country — they are the country. Stand on the Great Divide and you are standing at the center of everything."
             attribution="Wallace Stegner" title="Author, The Sound of Mountain Water"
+            variant="dark"
           />
 
           <div className="flex items-center justify-between border-t border-white/10 pt-8">

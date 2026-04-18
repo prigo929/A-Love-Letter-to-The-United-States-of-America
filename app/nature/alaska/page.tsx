@@ -265,6 +265,7 @@ export default async function AlaskaPage() {
             quote="Alaska is not a place on the edge of anywhere. Alaska is the center of everything — the last great wilderness, the last frontier of the last great country."
             attribution="Joe Vogler"
             title="Alaskan Independence Advocate & Frontier Pioneer"
+            variant="dark"
           />
 
           {/* Nav */}

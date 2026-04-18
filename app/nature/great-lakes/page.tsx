@@ -244,6 +244,7 @@ export default async function GreatLakesPage() {
           <QuoteBlock
             quote="The Great Lakes are a gift that most Americans take for granted. One-fifth of the world's fresh water, sitting in the heartland of the most powerful nation on Earth. Future generations will understand their value more clearly than we do."
             attribution="David Dempsey" title="Author, On the Brink: The Great Lakes in the 21st Century"
+            variant="dark"
           />
 
           <div className="flex items-center justify-between border-t border-white/10 pt-8">
