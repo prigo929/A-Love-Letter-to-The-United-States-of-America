@@ -397,28 +397,28 @@ export const NAV_SECTIONS = [
 // update the `alt` text so it still describes the new photo accurately.
 export const HERO_IMAGES = [
   {
-    id: "grand-canyon",
-    src: SITE_IMAGES.homeGrandCanyon,
-    alt: "Grand Canyon at sunrise, illuminated in deep orange and gold",
+    id: "declaration-independence",
+    src: SITE_IMAGES.homeDeclarationIndependence,
+    alt: "Declaration of Independence with patriotic styling and founding-era symbolism",
   },
   {
-    id: "nyc-skyline",
-    src: SITE_IMAGES.homeNycSkyline,
-    alt: "New York City skyline at dusk, Manhattan glittering with lights",
+    id: "golden-gate-bridge",
+    src: SITE_IMAGES.homeGoldenGateBridge,
+    alt: "Golden Gate Bridge rising through coastal light and fog",
   },
   {
-    id: "aircraft-carrier",
-    src: SITE_IMAGES.homeAirForcePlane,
-    alt: "US Air Force cargo plane on the tarmac, ready for rapid deployment",
+    id: "spacex-launch",
+    src: SITE_IMAGES.homeSpacexLaunch,
+    alt: "SpaceX rocket launch lifting into the sky",
   },
   {
-    id: "silicon-valley",
-    src: SITE_IMAGES.homeSiliconValley,
-    alt: "Silicon Valley tech campus — the innovation capital of Earth",
+    id: "new-york-sunset",
+    src: SITE_IMAGES.homeNycSunset,
+    alt: "New York skyline at sunset with the city glowing in warm light",
   },
   {
-    id: "wheat-fields",
-    src: SITE_IMAGES.homeWheatFields,
-    alt: "Golden wheat fields at sunset — America's vast agricultural heartland",
+    id: "usa-at-night-from-space",
+    src: SITE_IMAGES.homeUsaAtNightFromSpace,
+    alt: "The United States at night as seen from space",
   },
 ] as const;
