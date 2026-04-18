@@ -38,7 +38,7 @@ export function SectionGrid() {
         aria-hidden="true"
       />
 
-      <div className="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+      <div className="relative mx-auto max-w-[86rem] px-4 py-24 sm:px-6 lg:px-8 md:py-32">
         {/* Section heading */}
         <motion.div
           variants={staggerContainer}
@@ -74,7 +74,7 @@ export function SectionGrid() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-5"
         >
           {navSections.map((section) => (
             <NavigationCard
