@@ -94,11 +94,13 @@ function GalleryCard({
   onClick,
   priority = false,
   className,
+  frameClassName,
 }: {
   image: GalleryImage;
   onClick: () => void;
   priority?: boolean;
   className?: string;
+  frameClassName?: string;
 }) {
   // `span` comes from the data file and controls the visual shape of the card.
   const aspectClass = {
@@ -120,7 +122,12 @@ function GalleryCard({
       onKeyDown={(event) => event.key === "Enter" && onClick()}
       aria-label={`View full image: ${image.caption}`}
     >
-      <div className={cn("relative w-full overflow-hidden", aspectClass)}>
+      <div
+        className={cn(
+          "relative w-full overflow-hidden",
+          frameClassName ?? aspectClass,
+        )}
+      >
         <Image
           src={image.src}
           alt={image.alt}
@@ -162,7 +169,19 @@ export function GalleryPreviewSection() {
   // `lightboxImage` stores the currently open image. `null` means the modal is closed.
   const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
   // Used to build the category pills automatically from the gallery data.
-  const categories = [...new Set(GALLERY_PREVIEW_IMAGES.map((image) => image.category))];
+  const categories = [
+    ...new Set(GALLERY_PREVIEW_IMAGES.map((image) => image.category)),
+  ];
+  const [
+    usaFromSpace,
+    manhattan,
+    yosemiteRoad,
+    goldenGate,
+    statueOfLiberty,
+    columbia,
+    suburbHouse,
+    spacexLaunch,
+  ] = GALLERY_PREVIEW_IMAGES;
 
   return (
     <section
@@ -197,9 +216,9 @@ export function GalleryPreviewSection() {
               variants={fadeUp}
               className="mt-4 max-w-2xl font-body text-lg leading-relaxed text-white/58"
             >
-              Eight frames. Cities, institutions, innovation, landscapes, and
-              the physical scale of the country itself. This closing gallery
-              turns the homepage into something you can read and then see.
+              Eight frames, organized around scale and symbol: orbit, skyline,
+              road, monument, campus, suburb, launchpad. The gallery now closes
+              the homepage with images that feel curated rather than incidental.
             </motion.p>
             <motion.div
               variants={fadeUp}
@@ -262,57 +281,67 @@ export function GalleryPreviewSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
           variants={staggerContainer}
-          className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]"
+          className="space-y-4"
         >
-          {/* This layout is intentionally hand-curated rather than `.map()`ed in
-              one loop so the ending gallery feels editorial instead of uniform. */}
-          <div className="grid gap-4">
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-stretch">
             <GalleryCard
-              image={GALLERY_PREVIEW_IMAGES[0]}
-              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[0])}
+              image={manhattan}
+              onClick={() => setLightboxImage(manhattan)}
               priority
               className="border border-white/10 bg-white/5 shadow-2xl"
+              frameClassName="h-full min-h-[480px] lg:min-h-[640px]"
             />
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+
+            <div className="grid gap-4">
               <GalleryCard
-                image={GALLERY_PREVIEW_IMAGES[5]}
-                onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[5])}
-                className="border border-white/10"
+                image={usaFromSpace}
+                onClick={() => setLightboxImage(usaFromSpace)}
+                priority
+                className="border border-white/10 bg-white/5 shadow-2xl"
+                frameClassName="min-h-[280px] md:min-h-[360px]"
               />
-              <GalleryCard
-                image={GALLERY_PREVIEW_IMAGES[6]}
-                onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[6])}
-                className="border border-white/10"
-              />
-              <GalleryCard
-                image={GALLERY_PREVIEW_IMAGES[7]}
-                onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[7])}
-                className="border border-white/10 sm:col-span-2 xl:col-span-1"
-              />
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <GalleryCard
+                  image={yosemiteRoad}
+                  onClick={() => setLightboxImage(yosemiteRoad)}
+                  className="border border-white/10"
+                  frameClassName="min-h-[220px]"
+                />
+                <GalleryCard
+                  image={goldenGate}
+                  onClick={() => setLightboxImage(goldenGate)}
+                  className="border border-white/10"
+                  frameClassName="min-h-[220px]"
+                />
+              </div>
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-[1fr_1fr_1.2fr_1fr]">
             <GalleryCard
-              image={GALLERY_PREVIEW_IMAGES[1]}
-              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[1])}
-              priority
-              className="border border-white/10 sm:col-span-2"
-            />
-            <GalleryCard
-              image={GALLERY_PREVIEW_IMAGES[2]}
-              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[2])}
+              image={statueOfLiberty}
+              onClick={() => setLightboxImage(statueOfLiberty)}
               className="border border-white/10"
+              frameClassName="min-h-[240px]"
             />
             <GalleryCard
-              image={GALLERY_PREVIEW_IMAGES[3]}
-              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[3])}
+              image={columbia}
+              onClick={() => setLightboxImage(columbia)}
               className="border border-white/10"
+              frameClassName="min-h-[240px]"
             />
             <GalleryCard
-              image={GALLERY_PREVIEW_IMAGES[4]}
-              onClick={() => setLightboxImage(GALLERY_PREVIEW_IMAGES[4])}
-              className="border border-white/10 sm:col-span-2"
+              image={suburbHouse}
+              onClick={() => setLightboxImage(suburbHouse)}
+              className="border border-white/10"
+              frameClassName="min-h-[240px]"
+            />
+            <GalleryCard
+              image={spacexLaunch}
+              onClick={() => setLightboxImage(spacexLaunch)}
+              className="border border-white/10"
+              frameClassName="min-h-[240px]"
             />
           </div>
         </motion.div>
@@ -325,8 +354,9 @@ export function GalleryPreviewSection() {
           className="mt-10 flex flex-col gap-5 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between"
         >
           <p className="max-w-2xl font-body text-sm leading-relaxed text-white/45">
-            Landscapes, skylines, institutions, and industry. The gallery ends
-            the homepage with tangible places rather than abstractions.
+            The final section now moves from orbit to street level: continent,
+            skyline, landscape, monument, campus, home, and launch. It reads
+            more like a sequence and less like a loose pile of thumbnails.
           </p>
           <Link
             href="/gallery"
