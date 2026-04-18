@@ -60,6 +60,9 @@ export function DollarReserveChart({
   title,
   source,
 }: DollarReserveChartProps) {
+  const usdReserve =
+    data.find((entry) => entry.currency.includes("US Dollar")) ?? data[0];
+
   return (
     <motion.div
       variants={fadeUp}
@@ -107,7 +110,7 @@ export function DollarReserveChart({
                   fontFamily="var(--font-hero)"
                   fill="#FFD700"
                 >
-                  57.4%
+                  {usdReserve ? `${usdReserve.percentage.toFixed(1)}%` : "N/A"}
                 </tspan>
                 <tspan
                   x="50%"

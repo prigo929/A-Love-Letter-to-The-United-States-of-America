@@ -134,11 +134,12 @@ function ChartCard({
                   fontSize: 10,
                   fontFamily: "Inter",
                 }}
-                formatter={(value: number) =>
-                  value >= 1000
+                formatter={(value: number) => {
+                  if (unit) return `${value}${unit}`;
+                  return value >= 1000
                     ? `${(value / 1000).toFixed(1)}k`
-                    : String(value)
-                }
+                    : String(value);
+                }}
               />
             </Bar>
           </BarChart>
