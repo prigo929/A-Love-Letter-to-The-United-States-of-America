@@ -23,7 +23,6 @@ import {
   motion,
   useScroll,
   useTransform,
-  AnimatePresence,
 } from "framer-motion";
 import { ChevronDown, Star } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -165,23 +164,21 @@ export function HeroSection() {
       aria-label="America: The Greatest Nation hero section"
     >
       {/* ── Background Image Carousel ────────────────────────────────────────
-          Only one image is visible at a time. The fade animation is handled by
-          AnimatePresence + motion.div. */}
+          Render all images and fade their opacity to avoid load flickering during transitions. */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
-        <AnimatePresence>
+        {images.map((img, index) => (
           <motion.div
-            key={currentImage}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            key={index}
+            initial={{ opacity: index === 0 ? 1 : 0 }}
+            animate={{ opacity: index === currentImage ? 1 : 0 }}
             transition={{ duration: 2, ease: "easeInOut" }}
             className="absolute inset-0"
           >
             <Image
-              src={images[currentImage].src}
-              alt={images[currentImage].alt}
+              src={img.src}
+              alt={img.alt}
               fill
-              priority={currentImage === 0}
+              priority={index === 0}
               className="object-cover"
               placeholder="blur"
               blurDataURL={BLUR_PLACEHOLDER}
@@ -189,7 +186,7 @@ export function HeroSection() {
               quality={85}
             />
           </motion.div>
-        </AnimatePresence>
+        ))}
       </motion.div>
 
       {/* ── Gradient Overlay ─────────────────────────────────────────────────
