@@ -44,6 +44,15 @@ export function LanguageProvider({
       return;
     }
 
+    try {
+      window.localStorage.setItem(LANGUAGE_STORAGE_KEY, nextLocale);
+    } catch {
+      // Ignore storage errors. The UI should still update for the current session.
+    }
+
+    document.cookie = `${LANGUAGE_COOKIE_KEY}=${nextLocale}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
+    document.documentElement.lang = nextLocale;
+
     setLocaleState(nextLocale);
 
     // Server-rendered routes like /economy and /nature read the locale from a
@@ -66,12 +75,6 @@ export function LanguageProvider({
   }, []);
 
   useEffect(() => {
-    try {
-      window.localStorage.setItem(LANGUAGE_STORAGE_KEY, locale);
-    } catch {
-      // Ignore storage errors. The UI should still work for the current session.
-    }
-
     document.cookie = `${LANGUAGE_COOKIE_KEY}=${locale}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
 
     document.documentElement.lang = locale;
