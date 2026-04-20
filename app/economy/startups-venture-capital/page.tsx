@@ -171,6 +171,12 @@ export default async function StartupsVCPage() {
           },
         ]
       : VC_EXTENDED_FACTS;
+  const byTheNumbersFacts = [
+    ...sharedFacts.filter(
+      (fact) => fact.id !== "vc-share" && fact.id !== "immigrant-founders",
+    ),
+    ...localFacts,
+  ];
   const vcFirms =
     locale === "ro"
       ? [
@@ -514,7 +520,7 @@ export default async function StartupsVCPage() {
               {copy.numbersTitle}
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {[...sharedFacts, ...localFacts].map((fact) => (
+              {byTheNumbersFacts.map((fact) => (
                 <FactCard
                   key={fact.id}
                   fact={fact.fact}

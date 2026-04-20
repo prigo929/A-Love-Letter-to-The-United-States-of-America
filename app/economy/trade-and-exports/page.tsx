@@ -6,12 +6,12 @@
 // - This file controls how those facts are presented on the page
 // - To change the hero photo, update SITE_IMAGES.economyPort below
 
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { FactCard } from "@/components/sections/FactCard";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
+import type { Locale } from "@/lib/i18n/config";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
   getTradeOverviewParagraphs,
@@ -20,12 +20,22 @@ import {
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Trade & Exports | Economy | America: The Greatest Nation",
+const getPageMetadata = (locale: Locale) => ({
+  title:
+    locale === "ro"
+      ? "Comerț și Exporturi | Economie | America: The Greatest Nation"
+      : "Trade & Exports | Economy | America: The Greatest Nation",
   description:
-    "America exports $2T+ in goods — aircraft, semiconductors, medical devices, petroleum, and agricultural products — plus trillions in services, software, and financial expertise.",
+    locale === "ro"
+      ? "America exportă peste 2 trilioane de dolari în bunuri — avioane, semiconductori, dispozitive medicale, petrol și produse agricole — plus trilioane în servicii, software și expertiză financiară."
+      : "America exports $2T+ in goods — aircraft, semiconductors, medical devices, petroleum, and agricultural products — plus trillions in services, software, and financial expertise.",
   alternates: { canonical: "/economy/trade-and-exports" },
-};
+});
+
+export async function generateMetadata() {
+  const locale = await getServerLocale();
+  return getPageMetadata(locale);
+}
 
 const TRADE_FACTS = [
   // These facts are specific to the trade page, so they live here instead of
@@ -189,6 +199,23 @@ export default async function TradeAndExportsPage() {
   const breadcrumbEconomy = locale === "ro" ? "Economie" : "Economy";
   const pageLabel = locale === "ro" ? "Comerț și Exporturi" : "Trade & Exports";
   const overviewParagraphs = getTradeOverviewParagraphs(locale);
+  const exportCategories =
+    locale === "ro"
+      ? US_EXPORT_CATEGORIES.map((category) => ({
+          ...category,
+          category:
+            {
+              "Aircraft & Parts": "Avioane și componente",
+              "Petroleum Products": "Produse petroliere",
+              Semiconductors: "Semiconductori",
+              "Medical Devices": "Dispozitive medicale",
+              Automobiles: "Automobile",
+              Pharmaceuticals: "Produse farmaceutice",
+              "Agricultural Products": "Produse agricole",
+              "Industrial Machinery": "Mașini industriale",
+            }[category.category] ?? category.category,
+        }))
+      : US_EXPORT_CATEGORIES;
   const tradeFacts =
     locale === "ro"
       ? [
@@ -230,6 +257,61 @@ export default async function TradeAndExportsPage() {
           },
         ]
       : TRADE_FACTS;
+  const tradePartners =
+    locale === "ro"
+      ? TRADE_PARTNERS.map((partner) => ({
+          ...partner,
+          country:
+            {
+              Canada: "Canada",
+              Mexico: "Mexic",
+              China: "China",
+              Germany: "Germania",
+              Japan: "Japonia",
+              "South Korea": "Coreea de Sud",
+              "United Kingdom": "Regatul Unit",
+              India: "India",
+            }[partner.country] ?? partner.country,
+          direction:
+            {
+              "Largest overall partner": "Cel mai mare partener per total",
+              "#1 goods trading partner 2023": "Partenerul nr. 1 la comerțul cu bunuri în 2023",
+              "Largest goods deficit": "Cel mai mare deficit la bunuri",
+              "Key machinery & auto partner": "Partener-cheie pentru utilaje și auto",
+              "Technology & automotive": "Tehnologie și industrie auto",
+              "Semiconductors & EVs": "Semiconductori și vehicule electrice",
+              "Services surplus partner": "Partener pentru surplusul de servicii",
+              "Fastest-growing partner": "Partenerul cu cea mai rapidă creștere",
+            }[partner.direction] ?? partner.direction,
+        }))
+      : TRADE_PARTNERS;
+  const topExportCompanies =
+    locale === "ro"
+      ? TOP_EXPORT_COMPANIES.map((company) => ({
+          ...company,
+          sector:
+            {
+              Aerospace: "Aerospațial",
+              Energy: "Energie",
+              "Consumer Tech": "Tehnologie de consum",
+              "Software / Cloud": "Software / Cloud",
+              Industrial: "Industrial",
+              "Medical Devices": "Dispozitive medicale",
+              Agriculture: "Agricultură",
+            }[company.sector] ?? company.sector,
+          note:
+            {
+              "Largest US goods exporter": "Cel mai mare exportator american de bunuri",
+              "Petroleum products leader": "Lider în produse petroliere",
+              "$100B+ in international revenue": "Peste 100 mld. $ venituri internaționale",
+              "Azure & Office 365 globally": "Azure și Office 365 la nivel global",
+              "Heavy machinery to 190 countries": "Utilaje grele în 190 de țări",
+              "Jet engines, power equipment": "Motoare de avion și echipamente energetice",
+              "Devices used in every hospital globally": "Dispozitive folosite în spitale din toată lumea",
+              "Feed the world from the Great Plains": "Hrănesc lumea din Marile Câmpii",
+            }[company.note] ?? company.note,
+        }))
+      : TOP_EXPORT_COMPANIES;
   const copy =
     locale === "ro"
       ? {
@@ -302,7 +384,7 @@ export default async function TradeAndExportsPage() {
         };
 
   // Used to scale each export bar relative to the biggest category.
-  const maxExport = Math.max(...US_EXPORT_CATEGORIES.map((c) => c.exports));
+  const maxExport = Math.max(...exportCategories.map((c) => c.exports));
 
   return (
     <>
@@ -369,7 +451,7 @@ export default async function TradeAndExportsPage() {
             </p>
 
             <div className="space-y-4 rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
-              {US_EXPORT_CATEGORIES.map((cat) => {
+              {exportCategories.map((cat) => {
                 const pct = Math.round((cat.exports / maxExport) * 100);
                 return (
                   <div key={cat.category} className="group">
@@ -411,7 +493,7 @@ export default async function TradeAndExportsPage() {
               {copy.partnersBody}
             </p>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {TRADE_PARTNERS.map((partner) => (
+              {tradePartners.map((partner) => (
                 <div
                   key={partner.country}
                   className="rounded-2xl border border-white/10 bg-navy-mid p-4 transition-colors hover:border-glory-gold/25"
@@ -458,7 +540,7 @@ export default async function TradeAndExportsPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {TOP_EXPORT_COMPANIES.map((company, i) => (
+                    {topExportCompanies.map((company, i) => (
                       <tr
                         key={i}
                         className="border-b border-white/5 transition-colors hover:bg-white/3"

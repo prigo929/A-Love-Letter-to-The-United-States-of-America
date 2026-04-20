@@ -15,7 +15,6 @@ import {
   Cell,
   PieChart,
   Pie,
-  Legend,
 } from "recharts";
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
@@ -163,34 +162,81 @@ const PIE_COLORS = [
   "#3C3B6E",
   "#5554A0",
   "#8B1A26",
-  "#252b4a",
+  "#5B8CFF",
   "#374151",
 ];
 
 function UnicornLegend({
-  payload,
+  data,
+  locale,
 }: {
-  payload?: Array<{ value: string; color: string }>;
+  data: UnicornDataPoint[];
+  locale: "en" | "ro";
 }) {
-  if (!payload) return null;
+  const unicornLabel = locale === "ro" ? "unicorni" : "unicorns";
+
   return (
-    <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 pt-4">
-      {payload.map((entry, index) => (
-        <li key={index} className="flex items-center gap-1.5">
-          <span
-            className="inline-block h-2.5 w-2.5 rounded-full"
-            style={{ backgroundColor: entry.color }}
-          />
-          <span className="font-body text-xs text-white/60">{entry.value}</span>
+    <ul className="grid gap-2 pt-5 sm:grid-cols-2">
+      {data.map((entry, index) => (
+        <li
+          key={entry.country}
+          className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-3 py-2"
+        >
+          <div className="flex items-center gap-2">
+            <span
+              className="inline-block h-2.5 w-2.5 rounded-full"
+              style={{ backgroundColor: PIE_COLORS[index % PIE_COLORS.length] }}
+            />
+            <span className="font-body text-xs font-medium text-white/70">
+              {entry.country}
+            </span>
+          </div>
+          <div className="text-right">
+            <p className="font-body text-xs font-semibold text-white">
+              {entry.unicorns} {unicornLabel}
+            </p>
+            <p className="font-body text-[11px] text-glory-gold">
+              {entry.percentage}%
+            </p>
+          </div>
         </li>
       ))}
     </ul>
   );
 }
 
+function UnicornTooltip({
+  active,
+  payload,
+}: {
+  active?: boolean;
+  payload?: Array<{ value: number; name: string; payload: UnicornDataPoint }>;
+}) {
+  const { locale } = useLanguage();
+
+  if (!active || !payload?.length) return null;
+
+  const item = payload[0];
+  const shareLabel = locale === "ro" ? "din totalul global" : "of global total";
+  const unicornLabel = locale === "ro" ? "unicorni" : "unicorns";
+
+  return (
+    <div className="rounded-xl border border-white/15 bg-navy-dark/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
+      <p className="mb-1 font-body text-sm font-semibold text-white">
+        {item.name}
+      </p>
+      <p className="font-hero text-2xl text-glory-gold">
+        {item.value} {unicornLabel}
+      </p>
+      <p className="font-body text-xs text-white/50">
+        {item.payload.percentage}% {shareLabel}
+      </p>
+    </div>
+  );
+}
+
 export function UnicornPieChart({ data, title, source }: UnicornPieChartProps) {
   const { locale } = useLanguage();
-  const unicornLabel = locale === "ro" ? "unicorni" : "unicorns";
   const sourceLabel = locale === "ro" ? "Sursă:" : "Source:";
 
   return (
@@ -207,7 +253,7 @@ export function UnicornPieChart({ data, title, source }: UnicornPieChartProps) {
         </h3>
       )}
 
-      <div className="h-[280px] w-full">
+      <div className="h-[320px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -216,12 +262,10 @@ export function UnicornPieChart({ data, title, source }: UnicornPieChartProps) {
               nameKey="country"
               cx="50%"
               cy="50%"
-              innerRadius={60}
-              outerRadius={100}
+              innerRadius={68}
+              outerRadius={112}
               paddingAngle={2}
-              label={({ name, percentage }) =>
-                percentage > 4 ? `${percentage}%` : ""
-              }
+              label={false}
               labelLine={false}
             >
               {data.map((_, index) => (
@@ -231,23 +275,12 @@ export function UnicornPieChart({ data, title, source }: UnicornPieChartProps) {
                 />
               ))}
             </Pie>
-            <Legend content={<UnicornLegend />} />
-            <Tooltip
-              formatter={(value: number, name: string) => [
-                `${value} ${unicornLabel}`,
-                name,
-              ]}
-              contentStyle={{
-                backgroundColor: "#0d1117",
-                border: "1px solid rgba(255,255,255,0.15)",
-                borderRadius: "12px",
-                fontFamily: "var(--font-body)",
-                color: "#fff",
-              }}
-            />
+            <Tooltip content={<UnicornTooltip />} />
           </PieChart>
         </ResponsiveContainer>
       </div>
+
+      <UnicornLegend data={data} locale={locale} />
 
       {source && (
         <p className="mt-3 text-right font-body text-xs text-white/30">
