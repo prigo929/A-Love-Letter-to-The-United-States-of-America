@@ -152,7 +152,7 @@ function ChartCard({
                   fontSize: 10,
                   fontFamily: "Inter",
                 }}
-                formatter={(value: number) => {
+                formatter={(value: any) => {
                   if (unit) return `${value}${unit}`;
                   return value >= 1000
                     ? `${(value / 1000).toFixed(1)}k`

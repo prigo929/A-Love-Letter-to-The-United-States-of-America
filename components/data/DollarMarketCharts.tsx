@@ -126,7 +126,7 @@ export function DollarReserveChart({
                 </tspan>
               </text>
               <Tooltip
-                formatter={(value: number, name: string) => [`${value}%`, name]}
+                formatter={(value: any, name: any) => [`${value}%`, name]}
                 contentStyle={{
                   backgroundColor: "#0d1117",
                   border: "1px solid rgba(255,255,255,0.15)",

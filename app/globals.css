@@ -5,10 +5,9 @@
 /* Google Fonts — preloaded in layout.tsx via next/font for performance */
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap");
 
-/* Tailwind layers */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind v4 import */
+@import "tailwindcss";
+@config "../tailwind.config.ts";
 
 /* ─── Base Layer ─────────────────────────────────────────────────────────── */
 @layer base {
