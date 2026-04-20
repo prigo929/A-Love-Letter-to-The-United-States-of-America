@@ -29,11 +29,10 @@ import qualityOfLifeHouse from "@/IMAGES/Housing/USA Suburb house.jpg";
 import denaliNationalPark from "@/IMAGES/Landscapes/Mount Denali National Park.jpg";
 import glacierNationalPark from "@/IMAGES/Landscapes/Glacier National Park.jpg";
 import grandTeton from "@/IMAGES/Landscapes/Yosemite National Park Road.jpg";
-import homeGrandCanyon from "@/IMAGES/Landscapes/home-grand-canyon.jpg";
-import homeWheatFields from "@/IMAGES/Landscapes/home-wheat-fields.jpg";
+import homeGrandCanyon from "@/IMAGES/Landscapes/Grand Canyon National Park.jpg";
 import yosemiteNationalPark from "@/IMAGES/Landscapes/Yosemite National Park.jpg";
 import yellowstoneNationalPark from "@/IMAGES/Landscapes/Yellowstone National Park.jpg";
-import yellowstonePrismatic from "@/IMAGES/Landscapes/yellowstone-prismatic.jpg";
+import yellowstonePrismatic from "@/IMAGES/Landscapes/yellowstone-grand-prismatic-spring-sunset.jpg";
 import zionNationalPark from "@/IMAGES/Landscapes/Zion National Park.jpg";
 import globalLeadership from "@/IMAGES/USA from Space/Planet Earth.jpg";
 import homeUsaAtNightFromSpace from "@/IMAGES/USA from Space/USA at night from Space.jpg";
@@ -59,7 +58,6 @@ export const SITE_IMAGES = {
   homeSpacexLaunch: homeSpacexLaunch.src,
   homeSiliconValley: homeSiliconValley.src,
   homeUsaAtNightFromSpace: homeUsaAtNightFromSpace.src,
-  homeWheatFields: homeWheatFields.src,
   constitutionDocument: constitutionDocument.src,
   grandTeton: grandTeton.src,
   yellowstonePrismatic: yellowstonePrismatic.src,
