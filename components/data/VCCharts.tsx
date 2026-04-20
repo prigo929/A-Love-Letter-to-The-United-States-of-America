@@ -72,7 +72,7 @@ export function VCBarChart({ data, title, source }: VCBarChartProps) {
       )}
 
       <div className="h-[280px] w-full">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height="100%" minWidth={0}>
           <BarChart
             data={data}
             margin={{ top: 20, right: 20, left: 10, bottom: 60 }}
@@ -254,7 +254,7 @@ export function UnicornPieChart({ data, title, source }: UnicornPieChartProps) {
       )}
 
       <div className="h-[320px] w-full">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height="100%" minWidth={0}>
           <PieChart>
             <Pie
               data={data}

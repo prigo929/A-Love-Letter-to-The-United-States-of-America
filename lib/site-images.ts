@@ -34,6 +34,7 @@ import yosemiteNationalPark from "@/IMAGES/Landscapes/Yosemite National Park.jpg
 import yellowstoneNationalPark from "@/IMAGES/Landscapes/Yellowstone National Park.jpg";
 import yellowstonePrismatic from "@/IMAGES/Landscapes/yellowstone-grand-prismatic-spring-sunset.jpg";
 import zionNationalPark from "@/IMAGES/Landscapes/Zion National Park.jpg";
+import greatLakesChicago from "@/IMAGES/Landscapes/the-great-lakes-with-chicago.jpg";
 import globalLeadership from "@/IMAGES/USA from Space/Planet Earth.jpg";
 import homeUsaAtNightFromSpace from "@/IMAGES/USA from Space/USA at night from Space.jpg";
 import homeAirForcePlane from "@/IMAGES/Military/Air Force/home-air-force-plane.jpg";
@@ -79,4 +80,5 @@ export const SITE_IMAGES = {
   yosemiteNationalPark: yosemiteNationalPark.src,
   yellowstoneNationalPark: yellowstoneNationalPark.src,
   zionNationalPark: zionNationalPark.src,
+  greatLakesChicago: greatLakesChicago.src,
 } as const;

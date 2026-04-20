@@ -242,9 +242,8 @@ export const NATURE_SUB_PAGES: NatureSubPage[] = [
     href: "/nature/great-lakes",
     title: "The Great Lakes",
     description: "21% of Earth's surface freshwater — the inland seas of America",
-    // No local Great Lakes image — using high-quality Unsplash aerial
-    imageSrc: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=800&auto=format&fit=crop",
-    imageAlt: "Lake Superior aerial view — the largest Great Lake",
+    imageSrc: SITE_IMAGES.greatLakesChicago,
+    imageAlt: "The Great Lakes with Chicago",
     badge: "21% Global Freshwater",
   },
 ];

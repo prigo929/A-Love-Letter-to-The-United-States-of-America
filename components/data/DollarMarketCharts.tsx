@@ -82,8 +82,8 @@ export function DollarReserveChart({
 
       <div className="grid gap-8 md:grid-cols-2 md:items-center">
         {/* Pie */}
-        <div className="h-[260px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="h-65 w-full">
+          <ResponsiveContainer width="100%" height="100%" minWidth={0}>
             <PieChart>
               <Pie
                 data={data}
@@ -202,8 +202,8 @@ export function MarketCapChart({ data, title, source }: MarketCapChartProps) {
         </h3>
       )}
 
-      <div className="h-[280px] w-full">
-        <ResponsiveContainer width="100%" height="100%">
+      <div className="h-70 w-full">
+        <ResponsiveContainer width="100%" height="100%" minWidth={0}>
           <BarChart
             data={data}
             layout="vertical"

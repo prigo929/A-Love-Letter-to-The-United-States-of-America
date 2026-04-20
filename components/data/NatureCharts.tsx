@@ -91,7 +91,7 @@ export function ParkVisitorsChart({
         </div>
       )}
       <div className="h-[300px] w-full md:h-[360px]">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height="100%" minWidth={0}>
           <BarChart
             data={data}
             layout="vertical"
@@ -211,7 +211,7 @@ export function BiodiversityChart({
         </div>
       )}
       <div className="h-[300px] w-full">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height="100%" minWidth={0}>
           <BarChart
             data={data}
             margin={{ top: 20, right: 20, left: 10, bottom: 60 }}
@@ -333,7 +333,7 @@ export function GreatLakesChart({
         </div>
       )}
       <div className="h-[260px] w-full">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height="100%" minWidth={0}>
           <BarChart
             data={data}
             margin={{ top: 20, right: 20, left: 10, bottom: 10 }}
