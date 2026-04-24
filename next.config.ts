@@ -30,12 +30,17 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
-    // Prefer WebP/AVIF for smaller file sizes
-    formats: ["image/avif", "image/webp"],
+    // Prefer WebP for faster real-world first loads. AVIF can be smaller, but
+    // it is slower to encode on first request, which hurts perceived speed.
+    formats: ["image/webp"],
     // Allow the quality levels used by next/image in this app
     qualities: [75, 85],
-    // Device breakpoints for responsive images
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    // Cache optimized images aggressively so repeat visits and route
+    // transitions do not keep paying the transform cost.
+    minimumCacheTTL: 60 * 60 * 24 * 365,
+    // Device breakpoints for responsive images. Keep the set useful, but avoid
+    // generating unnecessary ultra-large variants for most screens.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1536, 1920, 2560],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
 
@@ -68,6 +73,17 @@ const nextConfig: NextConfig = {
       {
         // Cache static assets aggressively
         source: "/images/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        // Hero videos and other static clips should also be treated as
+        // immutable assets once deployed.
+        source: "/videos/(.*)",
         headers: [
           {
             key: "Cache-Control",
