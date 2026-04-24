@@ -59,14 +59,6 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: [
-          // Preload critical fonts
-          {
-            key: "Link",
-            value: [
-              '</fonts/bebas-neue.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin',
-              '</fonts/playfair-display.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin',
-            ].join(", "),
-          },
           // Security headers
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "DENY" },
