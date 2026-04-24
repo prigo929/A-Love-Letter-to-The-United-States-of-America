@@ -38,8 +38,233 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 // ─── Particle Stars Canvas ────────────────────────────────────────────────────
 
-function ParticleCanvas() {
+type ParticleLayer = "near" | "mid" | "far";
+type ParticleShape = "dot" | "star";
+
+type Particle = {
+  baseX: number;
+  baseY: number;
+  x: number;
+  y: number;
+  size: number;
+  alpha: number;
+  alphaPulse: number;
+  twinkleSpeed: number;
+  twinkleOffset: number;
+  vx: number;
+  vy: number;
+  driftX: number;
+  driftY: number;
+  arcAmplitude: number;
+  arcFrequency: number;
+  arcOffset: number;
+  blur: number;
+  shape: ParticleShape;
+  layer: ParticleLayer;
+  colorIndex: number;
+};
+
+type ParticleTheme = {
+  palette: [number, number, number][];
+  accentOpacity: number;
+};
+
+const PARTICLE_THEMES: ParticleTheme[] = [
+  { palette: [[255, 215, 120], [255, 238, 188], [214, 67, 67]], accentOpacity: 0.9 },
+  { palette: [[255, 178, 96], [255, 225, 173], [203, 51, 51]], accentOpacity: 0.86 },
+  { palette: [[214, 235, 255], [136, 192, 255], [255, 255, 255]], accentOpacity: 0.78 },
+  { palette: [[255, 188, 111], [255, 227, 171], [209, 84, 84]], accentOpacity: 0.88 },
+  { palette: [[205, 229, 255], [255, 255, 255], [120, 164, 255]], accentOpacity: 0.76 },
+];
+
+const LAYER_CONFIG = {
+  near: {
+    count: 24,
+    size: [1.8, 3.8],
+    alpha: [0.28, 0.72],
+    pulse: [0.12, 0.32],
+    speedX: [0.07, 0.18],
+    speedY: [-0.56, -0.2],
+    blur: [8, 18],
+    parallax: 18,
+    breathe: 0.018,
+  },
+  mid: {
+    count: 44,
+    size: [0.9, 2.2],
+    alpha: [0.18, 0.5],
+    pulse: [0.08, 0.22],
+    speedX: [0.035, 0.115],
+    speedY: [-0.32, -0.11],
+    blur: [4, 10],
+    parallax: 11,
+    breathe: 0.012,
+  },
+  far: {
+    count: 88,
+    size: [0.35, 1.15],
+    alpha: [0.06, 0.26],
+    pulse: [0.03, 0.14],
+    speedX: [0.012, 0.058],
+    speedY: [-0.19, -0.045],
+    blur: [0, 4],
+    parallax: 5,
+    breathe: 0.008,
+  },
+} as const;
+
+const HERO_PARTICLE_ZONES = [
+  { x: [0.06, 0.22], y: [0.14, 0.52], weight: 1.25 },
+  { x: [0.78, 0.94], y: [0.12, 0.5], weight: 1.25 },
+  { x: [0.24, 0.38], y: [0.08, 0.28], weight: 0.8 },
+  { x: [0.62, 0.76], y: [0.08, 0.28], weight: 0.8 },
+  { x: [0.12, 0.34], y: [0.58, 0.92], weight: 1.05 },
+  { x: [0.66, 0.9], y: [0.58, 0.92], weight: 1.05 },
+  { x: [0.38, 0.62], y: [0.66, 0.98], weight: 0.72 },
+  { x: [0.02, 0.98], y: [0.02, 0.98], weight: 0.45 },
+] as const;
+
+function randomBetween(min: number, max: number) {
+  return min + Math.random() * (max - min);
+}
+
+function lerp(start: number, end: number, amount: number) {
+  return start + (end - start) * amount;
+}
+
+function lerpColor(
+  start: [number, number, number],
+  end: [number, number, number],
+  amount: number,
+): [number, number, number] {
+  return [
+    lerp(start[0], end[0], amount),
+    lerp(start[1], end[1], amount),
+    lerp(start[2], end[2], amount),
+  ];
+}
+
+function getDesktopDensityMultiplier(width: number) {
+  if (width >= 1600) return 1.32;
+  if (width >= 1280) return 1.2;
+  if (width >= 1024) return 1.1;
+  return 1;
+}
+
+function pickWeightedZone() {
+  const totalWeight = HERO_PARTICLE_ZONES.reduce((sum, zone) => sum + zone.weight, 0);
+  let roll = Math.random() * totalWeight;
+
+  for (const zone of HERO_PARTICLE_ZONES) {
+    roll -= zone.weight;
+    if (roll <= 0) return zone;
+  }
+
+  return HERO_PARTICLE_ZONES[HERO_PARTICLE_ZONES.length - 1];
+}
+
+function createParticle(
+  layer: ParticleLayer,
+  width: number,
+  height: number,
+): Particle {
+  const config = LAYER_CONFIG[layer];
+  const zone = pickWeightedZone();
+  const x = randomBetween(zone.x[0] * width, zone.x[1] * width);
+  const y = randomBetween(zone.y[0] * height, zone.y[1] * height);
+  const shapeRoll = Math.random();
+  const shape: ParticleShape =
+    layer === "near"
+      ? shapeRoll > 0.9
+        ? "star"
+        : "dot"
+      : layer === "mid"
+        ? shapeRoll > 0.94
+          ? "star"
+          : "dot"
+        : shapeRoll > 0.975
+          ? "star"
+          : "dot";
+  const colorIndex =
+    shape === "star"
+      ? Math.floor(Math.random() * 2)
+      : Math.floor(Math.random() * 3);
+
+  return {
+    baseX: x,
+    baseY: y,
+    x,
+    y,
+    size: randomBetween(config.size[0], config.size[1]),
+    alpha: randomBetween(config.alpha[0], config.alpha[1]),
+    alphaPulse: randomBetween(config.pulse[0], config.pulse[1]),
+    twinkleSpeed: randomBetween(0.3, 1.4),
+    twinkleOffset: randomBetween(0, Math.PI * 2),
+    vx: randomBetween(config.speedX[0], config.speedX[1]),
+    vy: randomBetween(config.speedY[0], config.speedY[1]),
+    driftX: randomBetween(6, 26),
+    driftY: randomBetween(4, 16),
+    arcAmplitude: Math.random() > 0.72 ? randomBetween(8, 28) : randomBetween(1, 8),
+    arcFrequency: randomBetween(0.15, 0.55),
+    arcOffset: randomBetween(0, Math.PI * 2),
+    blur: randomBetween(config.blur[0], config.blur[1]),
+    shape,
+    layer,
+    colorIndex,
+  };
+}
+
+function respawnParticle(particle: Particle, width: number, height: number) {
+  const next = createParticle(particle.layer, width, height);
+  Object.assign(particle, next, {
+    baseY: height + randomBetween(12, 120),
+    y: height + randomBetween(12, 120),
+  });
+}
+
+function ParticleCanvas({ currentImage }: { currentImage: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const themeRef = useRef<ParticleTheme>({
+    palette: PARTICLE_THEMES[0].palette.map((color) => [...color] as [number, number, number]),
+    accentOpacity: PARTICLE_THEMES[0].accentOpacity,
+  });
+  const targetThemeRef = useRef<ParticleTheme>(PARTICLE_THEMES[0]);
+  const pointerRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
+
+  useEffect(() => {
+    targetThemeRef.current = PARTICLE_THEMES[currentImage % PARTICLE_THEMES.length];
+  }, [currentImage]);
+
+  const drawStar = (
+    ctx: CanvasRenderingContext2D,
+    x: number,
+    y: number,
+    outerRadius: number,
+  ) => {
+    const spikes = 5;
+    const innerRadius = outerRadius * 0.44;
+    let rotation = -Math.PI / 2;
+    const step = Math.PI / spikes;
+
+    ctx.beginPath();
+    ctx.moveTo(x, y - outerRadius);
+
+    for (let i = 0; i < spikes; i += 1) {
+      ctx.lineTo(
+        x + Math.cos(rotation) * outerRadius,
+        y + Math.sin(rotation) * outerRadius,
+      );
+      rotation += step;
+      ctx.lineTo(
+        x + Math.cos(rotation) * innerRadius,
+        y + Math.sin(rotation) * innerRadius,
+      );
+      rotation += step;
+    }
+
+    ctx.closePath();
+    ctx.fill();
+  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -47,49 +272,130 @@ function ParticleCanvas() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Resize canvas to full viewport
+    const particles: Particle[] = [];
+
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      particles.length = 0;
+      const densityMultiplier = getDesktopDensityMultiplier(canvas.width);
+      (Object.keys(LAYER_CONFIG) as ParticleLayer[]).forEach((layer) => {
+        const particleCount = Math.round(LAYER_CONFIG[layer].count * densityMultiplier);
+        for (let i = 0; i < particleCount; i += 1) {
+          particles.push(createParticle(layer, canvas.width, canvas.height));
+        }
+      });
     };
+
     resize();
+
     window.addEventListener("resize", resize);
 
-    // Create stars
-    const STAR_COUNT = 120;
-    const stars = Array.from({ length: STAR_COUNT }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.5 + 0.3,
-      alpha: Math.random(),
-      speed: Math.random() * 0.005 + 0.002,
-      offset: Math.random() * Math.PI * 2,
-    }));
+    const handlePointerMove = (event: MouseEvent) => {
+      const x = event.clientX / window.innerWidth - 0.5;
+      const y = event.clientY / window.innerHeight - 0.5;
+      pointerRef.current.targetX = x;
+      pointerRef.current.targetY = y;
+    };
+
+    const handlePointerLeave = () => {
+      pointerRef.current.targetX = 0;
+      pointerRef.current.targetY = 0;
+    };
+
+    window.addEventListener("mousemove", handlePointerMove);
+    window.addEventListener("mouseleave", handlePointerLeave);
 
     let frame: number;
-    let t = 0;
+    let lastTime = performance.now();
 
-    const draw = () => {
+    const draw = (time: number) => {
+      const delta = Math.min((time - lastTime) / 16.6667, 2.4);
+      lastTime = time;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      stars.forEach((star) => {
-        // Twinkle: sinusoidal opacity
-        const twinkle = (Math.sin(t * star.speed * 10 + star.offset) + 1) / 2;
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 215, 0, ${twinkle * 0.7 + 0.1})`;
-        ctx.fill();
+      const pointer = pointerRef.current;
+      pointer.x += (pointer.targetX - pointer.x) * 0.05;
+      pointer.y += (pointer.targetY - pointer.y) * 0.05;
+
+      const breathe = Math.sin(time * 0.00018);
+      const theme = themeRef.current;
+      const targetTheme = targetThemeRef.current;
+      theme.accentOpacity = lerp(theme.accentOpacity, targetTheme.accentOpacity, 0.035);
+      theme.palette = theme.palette.map((color, index) =>
+        lerpColor(color, targetTheme.palette[index] ?? targetTheme.palette[0], 0.035),
+      ) as [number, number, number][];
+
+      particles.forEach((particle, index) => {
+        const config = LAYER_CONFIG[particle.layer];
+
+        particle.baseX += particle.vx * delta;
+        particle.baseY += particle.vy * delta;
+
+        if (
+          particle.baseY < -140 ||
+          particle.baseX > canvas.width + 120 ||
+          particle.baseX < -120
+        ) {
+          respawnParticle(particle, canvas.width, canvas.height);
+        }
+
+        const arc = Math.sin(time * 0.001 * particle.arcFrequency + particle.arcOffset) * particle.arcAmplitude;
+        const swayX = Math.sin(time * 0.00055 + index * 0.23) * particle.driftX;
+        const swayY = Math.cos(time * 0.0004 + index * 0.19) * particle.driftY;
+        const breatheScale = 1 + breathe * config.breathe;
+        const parallaxX = pointer.x * config.parallax;
+        const parallaxY = pointer.y * config.parallax * 0.7;
+
+        particle.x =
+          canvas.width / 2 +
+          (particle.baseX + swayX + arc - canvas.width / 2) * breatheScale +
+          parallaxX;
+        particle.y =
+          canvas.height / 2 +
+          (particle.baseY + swayY - canvas.height / 2) * breatheScale +
+          parallaxY;
+
+        const twinkle =
+          particle.alpha +
+          ((Math.sin(time * 0.001 * particle.twinkleSpeed + particle.twinkleOffset) + 1) / 2) *
+            particle.alphaPulse;
+        const alpha = Math.min(twinkle * theme.accentOpacity, 0.95);
+        const rgb = theme.palette[particle.colorIndex % theme.palette.length];
+        const rgbString = `${Math.round(rgb[0])}, ${Math.round(rgb[1])}, ${Math.round(rgb[2])}`;
+
+        ctx.save();
+        ctx.fillStyle = `rgba(${rgbString}, ${alpha})`;
+        ctx.strokeStyle = `rgba(${rgbString}, ${Math.min(alpha + 0.08, 1)})`;
+        ctx.shadowBlur = particle.blur;
+        ctx.shadowColor = `rgba(${rgbString}, ${Math.min(alpha + 0.15, 1)})`;
+
+        if (particle.shape === "dot") {
+          ctx.beginPath();
+          ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          drawStar(
+            ctx,
+            particle.x,
+            particle.y,
+            Math.max(particle.size * (particle.layer === "far" ? 1.5 : 2.1), 1.4),
+          );
+        }
+
+        ctx.restore();
       });
 
-      t++;
       frame = requestAnimationFrame(draw);
     };
 
-    draw();
+    frame = requestAnimationFrame(draw);
 
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("resize", resize);
+      window.removeEventListener("mousemove", handlePointerMove);
+      window.removeEventListener("mouseleave", handlePointerLeave);
     };
   }, []);
 
@@ -155,6 +461,18 @@ export function HeroSection() {
     src: img.src,
     alt: copy.imageAlts[index] ?? img.alt,
   }));
+  const titleShadow =
+    "0 2px 4px rgba(0,0,0,0.38), 0 6px 14px rgba(0,0,0,0.3), 0 12px 32px rgba(0,0,0,0.24)";
+  const titleLineStyle = {
+    display: "block",
+    textShadow: titleShadow,
+  } as const;
+  const statesLineStyle = {
+    display: "block",
+    fontWeight: 900,
+    margin: "0.05em 0",
+    lineHeight: "1.1",
+  } as const;
 
   return (
     <div
@@ -211,7 +529,7 @@ export function HeroSection() {
       />
 
       {/* ── Particle Stars ─────────────────────────────────────────────────── */}
-      <ParticleCanvas />
+      <ParticleCanvas currentImage={currentImage} />
 
       {/* ── Hero Content ───────────────────────────────────────────────────── */}
       <motion.div
@@ -250,44 +568,42 @@ export function HeroSection() {
             }}
             >
               {/* THE UNITED - Crisp White with Deep Cinematic Shadow */}
-            <span
-              style={{
-                display: "block",
-                color: "#FFFFFF",
-                textShadow:
-                  "0 4px 12px rgba(0,0,0,0.6), 0 12px 40px rgba(0,0,0,0.8)",
-              }}
-            >
+            <span style={{ ...titleLineStyle, color: "#FFFFFF" }}>
               {copy.titleLines[0]}
             </span>
 
             {/* STATES - CSS-Only Red, White, and Blue Sweep */}
             <span
-              style={{
-                display: "block",
-                fontWeight: 900,
-                background:
-                  "linear-gradient(90deg, #B31942 0%, #B31942 25%, #FFFFFF 45%, #FFFFFF 55%, #0A3161 75%, #0A3161 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                filter: "drop-shadow(0px 8px 16px rgba(0,0,0,0.7))",
-                margin: "0.05em 0",
-                lineHeight: "1.1",
-              }}
+              className="relative"
+              style={statesLineStyle}
             >
-              {copy.titleLines[1]}
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 select-none pointer-events-none"
+                style={{
+                  color: "rgba(255,255,255,0.001)",
+                  textShadow: titleShadow,
+                }}
+              >
+                {copy.titleLines[1]}
+              </span>
+              <span
+                className="relative"
+                style={{
+                  display: "block",
+                  background:
+                    "linear-gradient(90deg, #B31942 0%, #B31942 25%, #FFFFFF 45%, #FFFFFF 55%, #0A3161 75%, #0A3161 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                {copy.titleLines[1]}
+              </span>
             </span>
 
             {/* OF AMERICA - Matching Top Text */}
-            <span
-              style={{
-                display: "block",
-                color: "#FFFFFF",
-                textShadow:
-                  "0 4px 12px rgba(0,0,0,0.6), 0 12px 40px rgba(0,0,0,0.8)",
-              }}
-            >
+            <span style={{ ...titleLineStyle, color: "#FFFFFF" }}>
               {copy.titleLines[2]}
             </span>
           </motion.h1>
