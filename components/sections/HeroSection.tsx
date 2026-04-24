@@ -240,6 +240,7 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
   });
   const targetThemeRef = useRef<ParticleTheme>(PARTICLE_THEMES[0]);
   const pointerRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
+  const viewportSizeRef = useRef({ width: 0, height: 0 });
 
   useEffect(() => {
     // Each hero slide has its own particle color palette.
@@ -285,20 +286,63 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
     if (!ctx) return;
 
     const particles: Particle[] = [];
+    const allowMouseParallax =
+      typeof window.matchMedia !== "function"
+        ? true
+        : window.matchMedia("(pointer: fine)").matches;
+
+    const syncParticleDensity = (width: number, height: number) => {
+      let particleIndex = 0;
+      const densityMultiplier = getDesktopDensityMultiplier(width);
+
+      (Object.keys(LAYER_CONFIG) as ParticleLayer[]).forEach((layer) => {
+        const targetCount = Math.round(LAYER_CONFIG[layer].count * densityMultiplier);
+        const currentLayerParticles = particles.filter((particle) => particle.layer === layer).length;
+
+        for (let i = currentLayerParticles; i < targetCount; i += 1) {
+          particles.push(createParticle(layer, width, height));
+        }
+
+        particleIndex += targetCount;
+      });
+
+      if (particles.length > particleIndex) {
+        particles.splice(particleIndex);
+      }
+    };
 
     const resize = () => {
       // Match the canvas to the full browser window so the particles cover
       // the whole hero section.
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      particles.length = 0;
-      const densityMultiplier = getDesktopDensityMultiplier(canvas.width);
-      (Object.keys(LAYER_CONFIG) as ParticleLayer[]).forEach((layer) => {
-        const particleCount = Math.round(LAYER_CONFIG[layer].count * densityMultiplier);
-        for (let i = 0; i < particleCount; i += 1) {
-          particles.push(createParticle(layer, canvas.width, canvas.height));
-        }
-      });
+      const nextWidth = window.innerWidth;
+      const nextHeight = window.innerHeight;
+      const previousWidth = viewportSizeRef.current.width;
+      const previousHeight = viewportSizeRef.current.height;
+
+      canvas.width = nextWidth;
+      canvas.height = nextHeight;
+
+      // On mobile, the browser chrome changes the viewport height while you
+      // scroll. Rebuilding the whole field on every tiny height change makes
+      // the particles appear to "restart", so we rescale them instead.
+      if (!particles.length || !previousWidth || !previousHeight) {
+        particles.length = 0;
+        syncParticleDensity(nextWidth, nextHeight);
+      } else {
+        const widthRatio = nextWidth / previousWidth;
+        const heightRatio = nextHeight / previousHeight;
+
+        particles.forEach((particle) => {
+          particle.baseX *= widthRatio;
+          particle.x *= widthRatio;
+          particle.baseY *= heightRatio;
+          particle.y *= heightRatio;
+        });
+
+        syncParticleDensity(nextWidth, nextHeight);
+      }
+
+      viewportSizeRef.current = { width: nextWidth, height: nextHeight };
     };
 
     resize();
@@ -317,8 +361,10 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
       pointerRef.current.targetY = 0;
     };
 
-    window.addEventListener("mousemove", handlePointerMove);
-    window.addEventListener("mouseleave", handlePointerLeave);
+    if (allowMouseParallax) {
+      window.addEventListener("mousemove", handlePointerMove);
+      window.addEventListener("mouseleave", handlePointerLeave);
+    }
 
     let frame: number;
     let lastTime = performance.now();
@@ -421,8 +467,10 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("resize", resize);
-      window.removeEventListener("mousemove", handlePointerMove);
-      window.removeEventListener("mouseleave", handlePointerLeave);
+      if (allowMouseParallax) {
+        window.removeEventListener("mousemove", handlePointerMove);
+        window.removeEventListener("mouseleave", handlePointerLeave);
+      }
     };
   }, []);
 

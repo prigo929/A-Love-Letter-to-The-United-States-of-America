@@ -117,8 +117,12 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+    const seekableVideo = video as HTMLVideoElement & {
+      fastSeek?: (time: number) => void;
+    };
 
     restartLockRef.current = false;
+    let restartTimeoutId: number | null = null;
 
     if (video.readyState >= 3) {
       // If the browser already has enough data to play the video (for example
@@ -136,6 +140,7 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
     const restartFromBeginning = () => {
       if (restartLockRef.current || !video.duration) return;
       restartLockRef.current = true;
+      video.pause();
 
       // Some browsers need the seek to finish before a new `play()` call will
       // actually resume motion. We wait for `seeked`, then clear the lock.
@@ -145,20 +150,24 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
       };
 
       video.addEventListener("seeked", handleSeeked, { once: true });
-      video.currentTime = 0.02;
+      if (typeof seekableVideo.fastSeek === "function") {
+        seekableVideo.fastSeek(0.02);
+      } else {
+        video.currentTime = 0.02;
+      }
 
       // Safety net: if `seeked` is skipped or delayed, still try to resume.
-      window.setTimeout(() => {
+      restartTimeoutId = window.setTimeout(() => {
         if (!restartLockRef.current) return;
         restartLockRef.current = false;
         resumePlayback();
-      }, 80);
+      }, 120);
     };
 
     const syncLoop = () => {
       // Jump back slightly before the final frame so the user never sees the
       // native pause that some browsers show at the end of a loop.
-      if (video.duration && video.currentTime >= video.duration - 0.18) {
+      if (video.duration && video.currentTime >= video.duration - 0.22) {
         restartFromBeginning();
       }
     };
@@ -167,14 +176,31 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
       restartFromBeginning();
     };
 
+    const handlePause = () => {
+      // Mobile browsers can briefly enter a paused state at the end of the
+      // clip before firing all the normal loop events. If that happens while
+      // the page is visible, restart immediately.
+      if (
+        document.visibilityState === "visible" &&
+        (video.ended || (video.duration && video.currentTime >= video.duration - 0.25))
+      ) {
+        restartFromBeginning();
+      }
+    };
+
     const intervalId = window.setInterval(syncLoop, 16);
     video.addEventListener("timeupdate", syncLoop);
     video.addEventListener("ended", handleEnded);
+    video.addEventListener("pause", handlePause);
 
     return () => {
+      if (restartTimeoutId !== null) {
+        window.clearTimeout(restartTimeoutId);
+      }
       window.clearInterval(intervalId);
       video.removeEventListener("timeupdate", syncLoop);
       video.removeEventListener("ended", handleEnded);
+      video.removeEventListener("pause", handlePause);
     };
   }, [text]);
 
@@ -312,6 +338,7 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
               autoPlay
               muted
               playsInline
+              loop
               preload="auto"
               onCanPlay={() => setVideoReady(true)}
               onLoadedData={() => setVideoReady(true)}
