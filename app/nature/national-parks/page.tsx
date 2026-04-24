@@ -1,6 +1,11 @@
 // ─── National Parks Sub-Page ──────────────────────────────────────────────────
 // Hero: local SITE_IMAGES.yosemiteNationalPark
 // Cinematic grid: uses FEATURED_PARKS (all local SITE_IMAGES)
+//
+// Beginner guide:
+// - Most shared park facts and chart datasets come from lib/data/nature-data.ts
+// - This file mainly decides presentation order and page-only copy
+// - FEATURED_PARKS is the source for the cinematic park grid below
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -59,10 +64,14 @@ const PARKS_SYSTEM_FACTS_RO = [
 ];
 
 export default async function NationalParksPage() {
+  // This page is mostly data-driven. Once we know the locale, the rest of the
+  // component becomes a matter of choosing the right arrays and labels.
   const locale       = await getServerLocale();
   const isRo         = locale === "ro";
   const systemFacts  = isRo ? PARKS_SYSTEM_FACTS_RO : PARKS_SYSTEM_FACTS_EN;
 
+  // The stat wall values are kept as data here so the animated component can
+  // stay generic and be reused on other nature pages.
   const statWall = [
     { value: 63,  suffix: "",    label: isRo ? "Parcuri Naționale" : "National Parks",  sub: isRo ? "Și tot mai multe în viitor" : "And counting",                     color: "#4ade80" },
     { value: 423, suffix: "",    label: isRo ? "Total Situri NPS" : "Total NPS Sites", sub: isRo ? "Inclusiv monumente și maluri" : "Including monuments & seashores", color: "#FFD700" },
@@ -100,6 +109,8 @@ export default async function NationalParksPage() {
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 space-y-16">
 
           <section>
+            {/* The chart component only needs data + labels; all drawing logic
+                lives inside the reusable chart itself. */}
             <h2 className="mb-6 font-display text-h2 text-white">{isRo ? "Cele Mai Vizitate Parcuri" : "Most Visited Parks"}</h2>
             <p className="mb-6 font-body text-lg text-white/65 leading-relaxed">
               {isRo
@@ -114,6 +125,8 @@ export default async function NationalParksPage() {
           </section>
 
           <section>
+            {/* `FEATURED_PARKS` comes from the shared nature data file, which
+                makes it easier to reuse the same park list elsewhere later. */}
             <h2 className="mb-6 font-display text-h2 text-white">{isRo ? "Bijuteriile Coroanei" : "Crown Jewels"}</h2>
             <ParkCinematicGrid parks={FEATURED_PARKS}
               visitLabel={isRo ? "Vizite/an" : "Visits/yr"}

@@ -125,11 +125,17 @@ const TOP_VC_FIRMS = [
 ];
 
 export default async function StartupsVCPage() {
+  // This page follows the same pattern as the other economy pages:
+  // 1. read the locale
+  // 2. choose translated/shared datasets
+  // 3. pass those arrays into reusable visual components
   const locale = await getServerLocale();
   const breadcrumbEconomy = locale === "ro" ? "Economie" : "Economy";
   const pageLabel = locale === "ro" ? "Startup-uri și VC" : "Startups & VC";
   const sharedFacts = getVcFacts(locale);
   const overviewParagraphs = getVcOverviewParagraphs(locale);
+  // Local facts extend the shared dataset with startup details that are unique
+  // to this page, such as Stanford, AI, and immigration examples.
   const localFacts =
     locale === "ro"
       ? [
@@ -171,12 +177,16 @@ export default async function StartupsVCPage() {
           },
         ]
       : VC_EXTENDED_FACTS;
+  // We intentionally filter a couple of shared facts here so the "by the
+  // numbers" grid does not duplicate ideas already highlighted elsewhere.
   const byTheNumbersFacts = [
     ...sharedFacts.filter(
       (fact) => fact.id !== "vc-share" && fact.id !== "immigrant-founders",
     ),
     ...localFacts,
   ];
+  // The remaining arrays below are just content definitions for repeated card
+  // layouts farther down the page.
   const vcFirms =
     locale === "ro"
       ? [

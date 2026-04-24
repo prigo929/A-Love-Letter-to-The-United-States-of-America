@@ -128,11 +128,15 @@ const DOLLAR_TIMELINE = [
 ];
 
 export default async function DollarDominancePage() {
+  // Start by resolving the request locale, then build the translated timeline,
+  // facts, and labels from that single value.
   const locale = await getServerLocale();
   const breadcrumbEconomy = locale === "ro" ? "Economie" : "Economy";
   const pageLabel = locale === "ro" ? "Dominația Dolarului" : "Dollar Dominance";
   const sharedFacts = getDollarFacts(locale);
   const overviewParagraphs = getDollarOverviewParagraphs(locale);
+  // These page-only facts explain dollar dominance from angles that are not
+  // reused on the other economy pages.
   const localFacts =
     locale === "ro"
       ? [
@@ -174,6 +178,8 @@ export default async function DollarDominancePage() {
           },
         ]
       : DOLLAR_EXTENDED_FACTS;
+  // The timeline is plain data on purpose so the render section can stay
+  // simple and focus on structure instead of hard-coded event blocks.
   const timeline =
     locale === "ro"
       ? [

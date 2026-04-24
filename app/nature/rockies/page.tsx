@@ -1,5 +1,10 @@
 // ─── Rocky Mountains Sub-Page ─────────────────────────────────────────────────
 // Hero: local SITE_IMAGES.glacierNationalPark
+//
+// Beginner guide:
+// - Shared Rockies facts come from lib/data/nature-data.ts
+// - Park lists and extra regional facts here are specific to this subpage
+// - Visual effects like snow and parallax are handled by reusable nature components
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -46,12 +51,16 @@ const ROCKIES_EXTENDED_RO = [
 ];
 
 export default async function RockiesPage() {
+  // Keep locale selection at the top so every translated dataset is prepared
+  // before the JSX starts.
   const locale   = await getServerLocale();
   const isRo     = locale === "ro";
   const facts    = getRockiesFacts(locale);
   const parks    = isRo ? ROCKIES_PARKS_RO : ROCKIES_PARKS_EN;
   const extFacts = isRo ? ROCKIES_EXTENDED_RO : ROCKIES_EXTENDED_EN;
 
+  // A shared stat object format lets one animated component work across many
+  // different nature subpages.
   const statWall = [
     { value: 3000, suffix: " mi",   label: isRo ? "Lungime Lanț Muntos" : "Mountain Length",      sub: isRo ? "De la New Mexico până în Canada" : "New Mexico to northern Canada",  color: "#e2e8f0" },
     { value: 53,   suffix: "",      label: isRo ? "Vârfuri 14.000 ft" : "14,000 ft Peaks",         sub: isRo ? "Doar în Colorado" : "In Colorado alone",                              color: "#FFD700" },

@@ -113,10 +113,14 @@ const MAJOR_US_EXCHANGES = [
 ];
 
 export default async function CapitalMarketsPage() {
+  // Read the locale first, then derive all translated labels and page-specific
+  // fact arrays from that one value.
   const locale = await getServerLocale();
   const breadcrumbEconomy = locale === "ro" ? "Economie" : "Economy";
   const pageLabel = locale === "ro" ? "Piețe de Capital" : "Capital Markets";
   const sharedFacts = getCapitalMarketsFacts(locale);
+  // Shared facts come from the central data file; local facts stay here when
+  // they only belong to this one subpage.
   const localFacts =
     locale === "ro"
       ? [
@@ -158,6 +162,8 @@ export default async function CapitalMarketsPage() {
           },
         ]
       : CAPITAL_MARKETS_EXTENDED_FACTS;
+  // These cards are simple data objects so the JSX can render them with a
+  // small `.map()` instead of repeating the same markup three times.
   const exchanges =
     locale === "ro"
       ? [

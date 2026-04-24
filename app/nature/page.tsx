@@ -65,14 +65,22 @@ const jsonLd = {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function NaturePage() {
+  // The locale decides all copy on the page.
+  // `isRo` is just a short helper boolean so the JSX stays readable below.
   const locale     = await getServerLocale();
   const isRo       = locale === "ro";
+
+  // This page is intentionally data-driven.
+  // Most factual content changes should happen in `lib/data/nature-data.ts`,
+  // not by hard-coding new strings directly into the JSX.
   const heroStats  = getNatureHeroStats(locale);
   const paragraphs = getNatureOverviewParagraphs(locale);
   const facts      = getNatureOverviewFacts(locale);
   const subPages   = getNatureSubPages(locale);
   const quotes     = getNatureQuotes(locale);
 
+  // `AnimatedStatWall` expects a very specific visual data shape, so we map the
+  // shared content data into the format that component needs.
   const statWallData = heroStats.map((s) => ({
     value: s.value,
     suffix: s.suffix,
@@ -154,6 +162,8 @@ export default async function NaturePage() {
             {/* Sticky TOC */}
             <aside className="hidden lg:block">
               <div className="sticky top-24 py-16">
+                {/* This is a simple in-page table of contents.
+                    Each link jumps to the matching section id below. */}
                 <p className="mb-4 font-body text-xs font-semibold uppercase tracking-widest text-glory-gold">
                   {isRo ? "Cuprins" : "Contents"}
                 </p>
@@ -204,6 +214,8 @@ export default async function NaturePage() {
 
               {/* ── Overview ─────────────────────────────────────────────── */}
               <section id="overview" className="mb-20 scroll-mt-24">
+                {/* `scroll-mt-24` keeps the sticky header from covering the
+                    section title when someone jumps here from the TOC. */}
                 <p className="section-eyebrow">
                   {isRo ? "Faza 4 — Natură și Geografie" : "Phase 4 — Nature & Geography"}
                 </p>

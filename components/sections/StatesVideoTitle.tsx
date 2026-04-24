@@ -3,22 +3,30 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 
 type StatesVideoTitleProps = {
+  // The actual word we render, e.g. "STATES" or "UNITE".
   text: string;
+  // Shadow string shared with the rest of the hero title.
   shadow: string;
 };
 
 type TextMetrics = {
+  // The measured size of the hidden text span in the browser.
   width: number;
   height: number;
+  // The typographic values we reuse for both the fallback and the video mask.
   fontSize: number;
   fontFamily: string;
   fontWeight: string;
   letterSpacing: number;
 };
 
+// We keep the public URL stable so the component does not need to know
+// which source file in /VIDEOS was copied into /public/videos.
 const FLAG_VIDEO_URL = "/videos/flag-loop.mp4";
 
 function escapeXml(value: string) {
+  // SVG markup is just text under the hood, so special characters must be
+  // escaped before we inject a word into the SVG string.
   return value
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
@@ -28,11 +36,17 @@ function escapeXml(value: string) {
 }
 
 function sanitizeId(value: string) {
+  // React's generated ids can contain characters that are awkward in SVG ids.
+  // We strip them down so gradient/filter ids stay predictable and valid.
   return value.replace(/[^a-zA-Z0-9_-]/g, "");
 }
 
 export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
+  // We render one invisible HTML text node first, then ask the browser how big
+  // it really is. That measured size becomes the source of truth for the SVGs.
   const measureRef = useRef<HTMLSpanElement>(null);
+  // We keep a ref to the <video> so we can inspect its load state and manually
+  // reset playback before the final paused frame becomes visible.
   const videoRef = useRef<HTMLVideoElement>(null);
   const [metrics, setMetrics] = useState<TextMetrics | null>(null);
   const [videoReady, setVideoReady] = useState(false);
@@ -44,12 +58,16 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
     if (!measureElement) return;
 
     const updateMetrics = () => {
+      // Read the real rendered size of the hidden text.
       const rect = measureElement.getBoundingClientRect();
       if (!rect.width || !rect.height) {
         setMetrics(null);
         return;
       }
 
+      // Read the actual computed font styles from the browser. This matters
+      // because SVG text and HTML text only line up when they share the same
+      // font settings.
       const computedStyle = window.getComputedStyle(measureElement);
       const computedLetterSpacing =
         computedStyle.letterSpacing === "normal"
@@ -66,12 +84,18 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
       });
     };
 
+    // Measure immediately on mount.
     updateMetrics();
+    // Measure again if the viewport changes.
     window.addEventListener("resize", updateMetrics);
 
+    // Measure again if the text box itself changes size because of responsive
+    // layout, font settling, or locale changes.
     const resizeObserver = new ResizeObserver(updateMetrics);
     resizeObserver.observe(measureElement);
 
+    // Wait for fonts to finish loading, then measure one more time so the SVG
+    // matches the final font metrics instead of a temporary fallback font.
     void document.fonts?.ready?.then(updateMetrics);
 
     return () => {
@@ -81,6 +105,8 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
   }, [text]);
 
   useEffect(() => {
+    // Whenever the word changes, treat the video as "not ready" again until
+    // the new render confirms otherwise.
     setVideoReady(false);
     setVideoError(false);
   }, [text]);
@@ -90,10 +116,14 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
     if (!video) return;
 
     if (video.readyState >= 3) {
+      // If the browser already has enough data to play the video (for example
+      // because it came from cache), mark it ready immediately.
       setVideoReady(true);
     }
 
     const syncLoop = () => {
+      // Jump back a tiny bit before the real end of the clip. This hides the
+      // visible pause some browsers show on the very last frame.
       if (video.duration && video.currentTime >= video.duration - 0.12) {
         video.currentTime = 0.02;
         void video.play();
@@ -101,6 +131,7 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
     };
 
     const handleEnded = () => {
+      // Safety net: if the browser still reaches "ended", restart right away.
       video.currentTime = 0.02;
       void video.play();
     };
@@ -118,11 +149,15 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
 
   const maskSvg = useMemo(() => {
     if (!metrics) return "";
+    // Extra padding around the SVG text prevents the left/right edges of the
+    // letters and the soft shadow from being clipped.
     const horizontalBleed = Math.max(metrics.fontSize * 0.08, 8);
     const verticalBleed = Math.max(metrics.fontSize * 0.18, 12);
     const svgWidth = metrics.width + horizontalBleed * 2;
     const svgHeight = metrics.height + verticalBleed * 2;
 
+    // This SVG is not shown directly. It is used as the mask shape for the
+    // video layer, so only the letters reveal the flag clip.
     const svg = `
       <svg xmlns="http://www.w3.org/2000/svg" width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${svgWidth} ${svgHeight}" preserveAspectRatio="xMidYMid meet">
         <text
@@ -142,6 +177,7 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
     return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
   }, [metrics, text]);
 
+  // Show the fallback until we know the text metrics and the video is playable.
   const showFallback = !metrics || !videoReady || videoError;
   const statesLineStyle = {
     display: "block",
@@ -166,11 +202,14 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
         className="relative block whitespace-nowrap"
         style={{ visibility: "hidden" }}
       >
+        {/* Invisible measuring text. It exists only to give us exact font metrics. */}
         {text}
       </span>
 
       {metrics ? (
         <>
+          {/* Soft shadow layer. This sits behind both the video version and the
+              gradient fallback so the middle word matches the other hero lines. */}
           <svg
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 block overflow-visible"
@@ -213,6 +252,8 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
             </text>
           </svg>
 
+          {/* Video layer. The video is real, but the SVG mask makes it visible
+              only through the letter shapes. */}
           <span
             aria-hidden="true"
             className="pointer-events-none absolute block overflow-hidden"
@@ -249,6 +290,8 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
             />
           </span>
 
+          {/* Fallback gradient text. This is what we show while the video is not
+              ready, or if the video fails to load. */}
           <svg
             aria-hidden="true"
             className="pointer-events-none absolute block overflow-visible"

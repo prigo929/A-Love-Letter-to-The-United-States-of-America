@@ -115,6 +115,8 @@ const LAYER_CONFIG = {
 } as const;
 
 const HERO_PARTICLE_ZONES = [
+  // These weighted zones let us place more particles around the outer parts
+  // of the hero and fewer directly over the main title.
   { x: [0.06, 0.22], y: [0.14, 0.52], weight: 1.25 },
   { x: [0.78, 0.94], y: [0.12, 0.5], weight: 1.25 },
   { x: [0.24, 0.38], y: [0.08, 0.28], weight: 0.8 },
@@ -153,6 +155,7 @@ function getDesktopDensityMultiplier(width: number) {
 }
 
 function pickWeightedZone() {
+  // Pick one zone randomly, but let higher-weight zones win more often.
   const totalWeight = HERO_PARTICLE_ZONES.reduce((sum, zone) => sum + zone.weight, 0);
   let roll = Math.random() * totalWeight;
 
@@ -169,10 +172,14 @@ function createParticle(
   width: number,
   height: number,
 ): Particle {
+  // Start by picking where on screen this particle should be born.
   const config = LAYER_CONFIG[layer];
   const zone = pickWeightedZone();
   const x = randomBetween(zone.x[0] * width, zone.x[1] * width);
   const y = randomBetween(zone.y[0] * height, zone.y[1] * height);
+
+  // Pick the particle shape.
+  // Nearer layers get slightly more stars so the foreground feels richer.
   const shapeRoll = Math.random();
   const shape: ParticleShape =
     layer === "near"
@@ -216,6 +223,8 @@ function createParticle(
 }
 
 function respawnParticle(particle: Particle, width: number, height: number) {
+  // When a particle drifts too far away, recycle it instead of creating a
+  // totally new object. This is cheaper for the browser.
   const next = createParticle(particle.layer, width, height);
   Object.assign(particle, next, {
     baseY: height + randomBetween(12, 120),
@@ -233,6 +242,8 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
   const pointerRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
 
   useEffect(() => {
+    // Each hero slide has its own particle color palette.
+    // When the background image changes, aim for the matching palette.
     targetThemeRef.current = PARTICLE_THEMES[currentImage % PARTICLE_THEMES.length];
   }, [currentImage]);
 
@@ -276,6 +287,8 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
     const particles: Particle[] = [];
 
     const resize = () => {
+      // Match the canvas to the full browser window so the particles cover
+      // the whole hero section.
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       particles.length = 0;
@@ -311,10 +324,14 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
     let lastTime = performance.now();
 
     const draw = (time: number) => {
+      // `delta` keeps the animation from jumping too far if the browser slows
+      // down for a moment between frames.
       const delta = Math.min((time - lastTime) / 16.6667, 2.4);
       lastTime = time;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // Smooth the mouse input so the particle field feels cinematic instead
+      // of twitchy.
       const pointer = pointerRef.current;
       pointer.x += (pointer.targetX - pointer.x) * 0.05;
       pointer.y += (pointer.targetY - pointer.y) * 0.05;
@@ -330,6 +347,7 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
       particles.forEach((particle, index) => {
         const config = LAYER_CONFIG[particle.layer];
 
+        // Move the particle forward through the scene.
         particle.baseX += particle.vx * delta;
         particle.baseY += particle.vy * delta;
 
@@ -341,6 +359,12 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
           respawnParticle(particle, canvas.width, canvas.height);
         }
 
+        // Build the final position from several small motions layered together:
+        // - the main drift
+        // - a side-to-side sway
+        // - an occasional arc
+        // - a slow global breathing motion
+        // - a subtle mouse parallax offset
         const arc = Math.sin(time * 0.001 * particle.arcFrequency + particle.arcOffset) * particle.arcAmplitude;
         const swayX = Math.sin(time * 0.00055 + index * 0.23) * particle.driftX;
         const swayY = Math.cos(time * 0.0004 + index * 0.19) * particle.driftY;
@@ -372,10 +396,12 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
         ctx.shadowColor = `rgba(${rgbString}, ${Math.min(alpha + 0.15, 1)})`;
 
         if (particle.shape === "dot") {
+          // Dots are the main soft-glow particles.
           ctx.beginPath();
           ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
           ctx.fill();
         } else {
+          // Stars are rarer accents that add more visual sparkle.
           drawStar(
             ctx,
             particle.x,

@@ -26,6 +26,7 @@ This repo is not a generic marketing site. It is structured like a content platf
 - centralized image management through `IMAGES/` + `lib/site-images.ts`
 - bilingual UI support for English and Romanian
 - data-driven content in `lib/data/*` instead of hardcoded JSX
+- section verticals that now include both economy and nature/geography
 
 ## Quick Snapshot
 
@@ -36,7 +37,7 @@ This repo is not a generic marketing site. It is structured like a content platf
 | Images | local asset library in `IMAGES/` managed through one registry |
 | Internationalization | English + Romanian UI with client + server locale handling |
 | Storytelling | homepage is structured like a sequence, not a landing-page template |
-| Deep dives | economy section already works as a real content vertical |
+| Deep dives | economy and nature already work as real content verticals |
 
 ## What Is Built
 
@@ -49,6 +50,13 @@ Current routes:
   - `/economy/startups-venture-capital`
   - `/economy/dollar-dominance`
   - `/economy/trade-and-exports`
+- `/nature` full landing page plus deep dives:
+  - `/nature/alaska`
+  - `/nature/rockies`
+  - `/nature/grand-canyon`
+  - `/nature/yellowstone`
+  - `/nature/great-lakes`
+  - `/nature/national-parks`
 - `/culture`
 - `/culture/the-american-high-school`
 - `/culture/american-aesthetics`
@@ -69,8 +77,10 @@ The culture and quality-of-life pages are currently clean scaffolds with TODO zo
 - data teaser charts with USA-highlighted comparisons
 - map preview, video preview, quote carousel, and gallery preview sections
 - economy section with full landing page plus five deep-dive routes
+- nature section with a full landing page, animated visual components, and six deep-dive routes
 - local image library with category folders for easier media management
 - Romanian translation mode wired through provider state and cookies
+- custom `STATES` homepage title treatment in `StatesVideoTitle.tsx`
 
 ## Stack
 
@@ -158,6 +168,7 @@ app/
   layout.tsx                     root shell
   globals.css                    site-wide styles
   economy/                       economy landing + deep dives
+  nature/                        nature landing + deep dives
   culture/                       culture hub + scaffolds
   quality-of-life/               scaffold
   gallery/ data/ timeline/ explorer/ sitemap/
@@ -166,6 +177,7 @@ components/
   layout/                        header, footer, breadcrumb, page chrome
   sections/                      editorial homepage and section components
   data/                          reusable chart components
+  nature/                        animated, client-side nature visuals
   forms/                         newsletter form
   providers/                     language provider
 
@@ -205,6 +217,7 @@ The home page in `app/page.tsx` is intentionally composed from reusable sections
 Key section components:
 
 - `components/sections/HeroSection.tsx`
+- `components/sections/StatesVideoTitle.tsx`
 - `components/sections/OpeningStatement.tsx`
 - `components/sections/StatBar.tsx`
 - `components/sections/SectionGrid.tsx`
@@ -222,6 +235,15 @@ Support utilities mounted globally in the layout:
 - back-to-top button
 - language provider
 - analytics and speed insights
+
+### Home Hero Notes
+
+The homepage hero is more custom than the rest of the landing page.
+
+- `HeroSection.tsx` owns the image carousel, particle canvas, parallax motion, CTA row, and title stack
+- `StatesVideoTitle.tsx` renders the middle `STATES` line as a masked flag-video treatment
+- the top and bottom title lines remain regular DOM text
+- if you need to change hero media, start with `lib/constants.ts`, `lib/site-images.ts`, and `public/videos/`
 
 ## Feature Flags Without a Feature Flag System
 
@@ -277,6 +299,7 @@ Main content sources:
 
 - `lib/data/home.ts`
 - `lib/data/economy-data.ts`
+- `lib/data/nature-data.ts`
 - `lib/constants.ts`
 
 Use these rules:
@@ -348,6 +371,11 @@ Charts:
 - `components/data/SP500Chart.tsx`
 - `components/data/VCCharts.tsx`
 - `components/data/DollarMarketCharts.tsx`
+- `components/data/NatureCharts.tsx`
+
+Nature-specific visuals:
+
+- `components/nature/NatureAnimations.tsx`
 
 ## How Do I Change X?
 
@@ -369,6 +397,10 @@ Edit `lib/data/home.ts`
 
 Edit `lib/data/economy-data.ts`
 
+### Change nature facts, overview text, quote content, or subpage card data
+
+Edit `lib/data/nature-data.ts`
+
 ### Change header navigation or submenu structure
 
 Edit `lib/constants.ts`
@@ -380,6 +412,14 @@ Edit `lib/i18n/config.ts`
 ### Change sitewide look and reusable CSS helpers
 
 Edit `app/globals.css`
+
+### Change the `STATES` homepage title effect
+
+Start with:
+
+- `components/sections/StatesVideoTitle.tsx`
+- `components/sections/HeroSection.tsx`
+- `public/videos/flag-loop.mp4`
 
 ## Design Notes
 
@@ -403,6 +443,69 @@ This is not a neutral design system. If you add new sections, preserve the estab
 ### Design Principle
 
 If a new section looks like a generic SaaS block, it is probably wrong for this repo.
+
+## AI Notes
+
+This section is for future AI-assisted edits. The goal is to explain how the codebase is intended to work so automated changes preserve the current architecture and visual standard.
+
+### Core Logic
+
+- pages should mostly assemble data and reusable components
+- facts, stats, quotes, and repeated cards should live in `lib/data/*`
+- shared imagery should be registered through `lib/site-images.ts`
+- locale handling should happen near the top of a page or inside localized data getters
+- interactive or animated behavior should live in focused client components, not be spread through server page files
+
+### Architectural Decisions
+
+- Next.js App Router is used so pages can stay server-first while interactive sections remain client islands
+- the repo is organized by editorial verticals such as `economy` and `nature`, not by generic marketing-page slices
+- data files exist to keep factual content maintainable and to stop large pages from turning into copy dumps
+- image indirection through `SITE_IMAGES` reduces broken-path bugs and makes media swaps predictable
+- analytics and Speed Insights are mounted once in `app/layout.tsx` so observability stays global and consistent
+
+### Visual Decisions
+
+- the site is intentionally cinematic, not neutral
+- strong imagery, patriotic color, editorial spacing, and motion are part of the product identity
+- charts and stat walls should feel integrated into the narrative, not like dashboard leftovers
+- if a new section looks like a generic SaaS feature grid, it is probably off-brand
+
+### Homepage Decisions
+
+- the homepage is a story sequence, not a standard hero-plus-features template
+- `HeroSection.tsx` is intentionally dense because it owns a custom visual system: slideshow, particles, parallax, and title treatment
+- `StatesVideoTitle.tsx` exists because the middle hero line needed a more art-directed effect than plain text could provide
+- homepage sections are broken into separate components so visual experiments stay isolated
+
+### Economy and Nature Decisions
+
+- `app/economy/page.tsx` and `app/nature/page.tsx` are the two most complete editorial hubs in the repo
+- both use the same general pattern: hero -> stats -> overview -> charts/tables/media -> fact cards -> quote -> next routes
+- deep-dive subpages are meant to be substantive long-form pages, not thin SEO pages
+- new verticals should follow this pattern instead of shipping one shallow landing page
+
+### Editing Rules For AI
+
+- prefer updating data files before adding more hardcoded strings to JSX
+- preserve bilingual behavior whenever visible copy changes
+- preserve the art-directed visual tone instead of simplifying into generic layouts
+- prefer reusable components over inflating already large page files
+- when touching imagery, update `SITE_IMAGES` rather than scattering raw imports
+- run `npm run type-check` after changes
+
+### Where AI Should Start
+
+| Task | First place to inspect |
+| --- | --- |
+| Homepage copy or card content | `lib/data/home.ts` |
+| Homepage hero behavior | `components/sections/HeroSection.tsx` |
+| `STATES` title effect | `components/sections/StatesVideoTitle.tsx` |
+| Economy content | `lib/data/economy-data.ts` |
+| Nature content | `lib/data/nature-data.ts` |
+| Image swaps | `lib/site-images.ts` |
+| Locale logic | `components/providers/LanguageProvider.tsx`, `lib/i18n/server.ts` |
+| Global shell and analytics | `app/layout.tsx` |
 
 ## Deployment
 
@@ -448,6 +551,8 @@ If Vercel fails on static image imports:
 - local image library instead of scattered remote URLs
 - Romanian translation mode wired through real cookie + provider state
 - economy section built as a real editorial/data hybrid, not just cards and charts
+- nature section built with its own charts, animations, and long-form subpages
+- homepage hero includes a custom video-backed `STATES` title treatment
 
 ## Roadmap Energy
 
@@ -466,6 +571,7 @@ Good next expansions for this repo:
 | --- | --- |
 | Homepage | strong and feature-rich |
 | Economy | substantial and already production-shaped |
+| Nature | substantial and already production-shaped |
 | Culture | scaffolded, ready for content |
 | Quality of Life | scaffolded, ready for content |
 | Translation | live for shared UI and major route content |

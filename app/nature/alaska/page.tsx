@@ -1,6 +1,11 @@
 // ─── Alaska Sub-Page ──────────────────────────────────────────────────────────
 // Hero: local SITE_IMAGES.denaliNationalPark (Mount Denali)
 // Secondary: Unsplash aurora only for AuroraBackground base layer (no local aurora shot)
+//
+// Beginner guide:
+// - Shared Alaska facts come from lib/data/nature-data.ts
+// - The wildlife/extreme-scale arrays here belong only to this page
+// - `AuroraBackground` adds atmosphere, while the actual hero photo is still a normal Next Image
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -56,11 +61,14 @@ const ALASKA_EXTENDED_FACTS_RO = [
 ];
 
 export default async function AlaskaPage() {
+  // Resolve the locale once, then choose the translated content arrays from it.
   const locale = await getServerLocale();
   const isRo   = locale === "ro";
   const facts  = getAlaskaFacts(locale);
   const extFacts = isRo ? ALASKA_EXTENDED_FACTS_RO : ALASKA_EXTENDED_FACTS_EN;
 
+  // These summary numbers feed the animated stat wall component near the top
+  // of the page.
   const statWall = [
     { value: 663,   suffix: "K mi²", label: isRo ? "Suprafață Totală" : "Total Area",          sub: isRo ? "De 2,5× mai mare decât Texas" : "2.5× the size of Texas",       color: "#4ade80" },
     { value: 20310, suffix: " ft",   label: isRo ? "Altitudine Denali" : "Denali Elevation",   sub: isRo ? "Cel mai înalt vârf din America de Nord" : "Highest peak in N. America", color: "#FFD700" },

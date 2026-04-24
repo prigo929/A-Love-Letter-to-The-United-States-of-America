@@ -127,9 +127,13 @@ const STATE_GDP_RANKINGS = [
 ];
 
 export default async function GdpGrowthPage() {
+  // Locale decides which copy block and which translated supporting arrays are
+  // used for this request. The page itself stays server-rendered.
   const locale = await getServerLocale();
   const breadcrumbEconomy = locale === "ro" ? "Economie" : "Economy";
   const pageLabel = locale === "ro" ? "PIB și Dimensiune" : "GDP & Scale";
+  // These local arrays let the page translate or swap a few facts without
+  // editing the shared source data used elsewhere in the economy section.
   const extendedFacts =
     locale === "ro"
       ? [
@@ -183,6 +187,8 @@ export default async function GdpGrowthPage() {
           { ...STATE_GDP_RANKINGS[6], comparison: "Mai mare decât Elveția" },
         ]
       : STATE_GDP_RANKINGS;
+  // `copy` keeps all visible labels together so the JSX below reads more like
+  // layout structure and less like a wall of inline strings.
   const copy =
     locale === "ro"
       ? {

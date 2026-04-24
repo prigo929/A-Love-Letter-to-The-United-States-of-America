@@ -1,4 +1,8 @@
 // ─── Grand Canyon Sub-Page ────────────────────────────────────────────────────
+// Beginner guide:
+// - Shared Grand Canyon facts come from lib/data/nature-data.ts
+// - The geology layers below are page-only because they drive a custom visual
+// - Hero and parallax images are pulled from SITE_IMAGES
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -54,12 +58,15 @@ const GC_EXTENDED_RO = [
 ];
 
 export default async function GrandCanyonPage() {
+  // Pick language first, then swap in the right geology labels and supporting
+  // facts for the rest of the page.
   const locale   = await getServerLocale();
   const isRo     = locale === "ro";
   const facts    = getGrandCanyonFacts(locale);
   const layers   = isRo ? GEOLOGY_LAYERS_RO : GEOLOGY_LAYERS_EN;
   const extFacts = isRo ? GC_EXTENDED_RO : GC_EXTENDED_EN;
 
+  // This uniform array shape is what the reusable animated stat wall expects.
   const statWall = [
     { value: 277,  suffix: " mi",    label: isRo ? "Lungime" : "Length",          sub: isRo ? "De-a lungul râului Colorado" : "Along the Colorado River",    color: "#fb923c" },
     { value: 18,   suffix: " mi",    label: isRo ? "Lățime Max." : "Max Width",   sub: isRo ? "Margine la margine, la cel mai lat" : "Rim to rim at widest", color: "#FFD700" },
