@@ -1,6 +1,11 @@
 // ─── Yellowstone Sub-Page ─────────────────────────────────────────────────────
 // Hero: local SITE_IMAGES.yellowstonePrismatic (Grand Prismatic Spring)
 // Secondary: local SITE_IMAGES.yellowstoneNationalPark
+//
+// Beginner guide:
+// - Shared Yellowstone facts come from lib/data/nature-data.ts
+// - The arrays in this file are page-only supporting details and comparison cards
+// - If you want to swap the imagery, edit the SITE_IMAGES keys used below
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -71,13 +76,19 @@ const YS_EXTENDED_FACTS_RO = [
 ];
 
 export default async function YellowstonePage() {
+  // `isRo` is a small helper so the JSX can read cleanly below. Instead of
+  // repeating `locale === "ro"` everywhere, the page chooses once here.
   const locale = await getServerLocale();
   const isRo   = locale === "ro";
   const facts  = getYellowstoneFacts(locale);
+  // These arrays are plain content definitions for the repeated grids/tables
+  // farther down the page.
   const hydrothermal = isRo ? HYDROTHERMAL_FEATURES_RO : HYDROTHERMAL_FEATURES_EN;
   const wildlife     = isRo ? YS_WILDLIFE_RO : YS_WILDLIFE_EN;
   const extFacts     = isRo ? YS_EXTENDED_FACTS_RO : YS_EXTENDED_FACTS_EN;
 
+  // The animated stat wall expects a uniform object shape, so we prepare that
+  // data once here and let the component handle the visuals.
   const statWall = [
     { value: 1872,  suffix: "",    label: isRo ? "Înființat" : "Established",            sub: isRo ? "Primul parc național din lume" : "World's first national park",          color: "#FFD700" },
     { value: 10000, suffix: "+",   label: isRo ? "Fenomene Hidrotermale" : "Hydrothermal Features", sub: isRo ? "Mai mult decât restul lumii" : "More than rest of world combined", color: "#fb923c" },

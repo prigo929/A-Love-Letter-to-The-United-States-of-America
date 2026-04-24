@@ -1,5 +1,10 @@
 "use client";
 
+// This component builds an FAQ-style accordion:
+// - click a question
+// - expand the matching answer
+// - optionally allow multiple answers to stay open at the same time
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
@@ -26,14 +31,22 @@ export function AccordionSection({
   dark = true,
   allowMultiple = false,
 }: AccordionSectionProps) {
+  // We store open item ids in a Set because:
+  // - checking "is this open?" is simple
+  // - adding/removing ids is simple
+  // - it also works naturally for both single-open and multi-open modes
   const [openIds, setOpenIds] = useState<Set<string>>(new Set());
 
   const toggle = (id: string) => {
     setOpenIds((prev) => {
+      // Never mutate React state directly.
+      // Instead, copy the old Set and change the copy.
       const next = new Set(prev);
       if (next.has(id)) {
+        // If the item is already open, clicking closes it.
         next.delete(id);
       } else {
+        // In single-open mode, close everything else first.
         if (!allowMultiple) next.clear();
         next.add(id);
       }
@@ -55,6 +68,7 @@ export function AccordionSection({
       )}
 
       {items.map((item) => {
+        // Recalculate this for each item so styling and icon state stay in sync.
         const isOpen = openIds.has(item.id);
 
         return (
@@ -122,6 +136,8 @@ export function AccordionSection({
             <AnimatePresence initial={false}>
               {isOpen && (
                 <motion.div
+                  // Framer Motion animates from closed -> open -> closed
+                  // by changing height and opacity over time.
                   id={`accordion-panel-${item.id}`}
                   role="region"
                   aria-labelledby={`accordion-header-${item.id}`}

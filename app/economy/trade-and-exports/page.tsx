@@ -195,10 +195,14 @@ const TOP_EXPORT_COMPANIES = [
 ];
 
 export default async function TradeAndExportsPage() {
+  // Locale drives every translated paragraph, label, and data variant on the
+  // page. Keeping that choice here avoids locale checks throughout the JSX.
   const locale = await getServerLocale();
   const breadcrumbEconomy = locale === "ro" ? "Economie" : "Economy";
   const pageLabel = locale === "ro" ? "Comerț și Exporturi" : "Trade & Exports";
   const overviewParagraphs = getTradeOverviewParagraphs(locale);
+  // This shared export-category dataset is translated here before it is passed
+  // into the chart/card UI below.
   const exportCategories =
     locale === "ro"
       ? US_EXPORT_CATEGORIES.map((category) => ({
@@ -216,6 +220,8 @@ export default async function TradeAndExportsPage() {
             }[category.category] ?? category.category,
         }))
       : US_EXPORT_CATEGORIES;
+  // These supporting facts belong only to the trade page, so they are kept
+  // local instead of expanding the shared data file unnecessarily.
   const tradeFacts =
     locale === "ro"
       ? [

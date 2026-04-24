@@ -102,6 +102,8 @@ const jsonLd = {
 // ─── TOC Sections (anchors) ───────────────────────────────────────────────────
 
 function getEconomyPageCopy(locale: Locale) {
+  // Keep page labels and small UI strings in one place.
+  // This makes the large page component below much easier to read and edit.
   if (locale === "ro") {
     return {
       tocLabel: "Cuprins",
@@ -274,6 +276,9 @@ function getEconomyPageCopy(locale: Locale) {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function EconomyPage() {
+  // This page is assembled from shared data helpers.
+  // If a number, paragraph, or quote is wrong, the first place to inspect is
+  // usually `lib/data/economy-data.ts`, not the JSX below.
   const locale = await getServerLocale();
   const copy = getEconomyPageCopy(locale);
   const economyHeroStats = getEconomyHeroStats(locale);
@@ -307,6 +312,7 @@ export default async function EconomyPage() {
             {/* Sticky TOC — desktop only */}
             <aside className="hidden lg:block">
               <div className="sticky top-24 py-16">
+                {/* These links jump to ids further down this same page. */}
                 <p className="mb-4 font-body text-xs font-semibold uppercase tracking-widest text-glory-gold">
                   {copy.tocLabel}
                 </p>
@@ -340,7 +346,7 @@ export default async function EconomyPage() {
 
             {/* Main content */}
             <main className="min-w-0 py-16">
-              {/* Breadcrumb */}
+              {/* Breadcrumb shows where this page sits in the site structure. */}
               <Breadcrumb items={[{ label: copy.breadcrumb }]} className="mb-8" />
 
               {/* ── Section 1: Overview ─────────────────────────────────── */}

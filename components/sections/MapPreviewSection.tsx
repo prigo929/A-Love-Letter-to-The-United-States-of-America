@@ -1,5 +1,11 @@
 "use client";
 
+// This section shows an interactive USA map.
+// When the user hovers a state:
+// - that state changes color
+// - a tooltip follows the mouse
+// - the tooltip shows a short fact for that state if we have one
+
 import { useState, useCallback } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -12,6 +18,9 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const GEO_URL = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
+// The map library gives us numeric FIPS codes for states.
+// Our fact data uses 2-letter abbreviations like "CA" and "TX".
+// This object translates between the two systems.
 const FIPS_TO_ABBREV: Record<string, string> = {
   "06": "CA",
   "48": "TX",
@@ -47,7 +56,9 @@ interface MapGeography {
 }
 
 export function MapPreviewSection() {
+  // Tooltip holds the floating card near the mouse cursor.
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
+  // hoveredGeo stores which SVG state shape is currently highlighted.
   const [hoveredGeo, setHoveredGeo] = useState<string | null>(null);
   const { locale } = useLanguage();
   const stateFacts =
@@ -140,11 +151,13 @@ export function MapPreviewSection() {
 
   const handleMouseEnter = useCallback(
     (geo: MapGeography, evt: React.MouseEvent<SVGPathElement>) => {
+      // Convert the state id coming from the map into our content key.
       const fips = geo.id?.toString().padStart(2, "0") ?? "";
       const abbrev = FIPS_TO_ABBREV[fips] ?? "";
       const fact = stateFacts[abbrev as keyof typeof stateFacts];
       const name = geo.properties?.name ?? abbrev;
 
+      // Save both the highlighted shape and the tooltip content/position.
       setHoveredGeo(geo.rsmKey);
       setTooltip({
         x: evt.clientX,
@@ -158,11 +171,13 @@ export function MapPreviewSection() {
   );
 
   const handleMouseLeave = useCallback(() => {
+    // When the mouse leaves a state, remove both the highlight and the tooltip.
     setHoveredGeo(null);
     setTooltip(null);
   }, []);
 
   const handleMouseMove = useCallback((evt: React.MouseEvent) => {
+    // Keep the same tooltip content, but move the tooltip with the cursor.
     setTooltip((prev) =>
       prev ? { ...prev, x: evt.clientX, y: evt.clientY } : null,
     );
@@ -230,6 +245,9 @@ export function MapPreviewSection() {
               <Geographies geography={GEO_URL}>
                 {({ geographies }: { geographies: MapGeography[] }) =>
                   geographies.map((geo: MapGeography) => {
+                    // Each state's color depends on:
+                    // 1. whether we have a featured fact for it
+                    // 2. whether it is currently hovered
                     const fips = geo.id?.toString().padStart(2, "0") ?? "";
                     const abbrev = FIPS_TO_ABBREV[fips] ?? "";
                     const hasFact = !!stateFacts[abbrev as keyof typeof stateFacts];
@@ -306,6 +324,8 @@ export function MapPreviewSection() {
           <AnimatePresence>
             {tooltip && (
               <motion.div
+                // `fixed` positioning lets the tooltip follow the mouse across
+                // the viewport instead of getting clipped by the map container.
                 key="tooltip"
                 initial={{ opacity: 0, scale: 0.9, y: 8 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}

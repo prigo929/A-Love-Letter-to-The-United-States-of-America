@@ -1,5 +1,10 @@
 // ─── Great Lakes Sub-Page ─────────────────────────────────────────────────────
 // No local Great Lakes image — uses high-quality Unsplash aerial of Lake Superior.
+//
+// Beginner guide:
+// - Shared Great Lakes facts and chart data come from lib/data/nature-data.ts
+// - The lake detail arrays in this file are page-specific supporting content
+// - `GREAT_LAKES_HERO` is split out as a constant so the hero image can be swapped in one place
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -194,12 +199,15 @@ const GL_EXTENDED_RO = [
 ];
 
 export default async function GreatLakesPage() {
+  // The page chooses language-specific arrays here so the render section below
+  // can stay focused on layout instead of translation branching.
   const locale = await getServerLocale();
   const isRo = locale === "ro";
   const facts = getGreatLakesFacts(locale);
   const lakes = isRo ? LAKES_DETAIL_RO : LAKES_DETAIL_EN;
   const extFacts = isRo ? GL_EXTENDED_RO : GL_EXTENDED_EN;
 
+  // These values drive the animated headline stats section.
   const statWall = [
     {
       value: 21,
