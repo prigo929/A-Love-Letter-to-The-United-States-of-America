@@ -105,10 +105,12 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
       void video.play();
     };
 
+    const intervalId = window.setInterval(syncLoop, 16);
     video.addEventListener("timeupdate", syncLoop);
     video.addEventListener("ended", handleEnded);
 
     return () => {
+      window.clearInterval(intervalId);
       video.removeEventListener("timeupdate", syncLoop);
       video.removeEventListener("ended", handleEnded);
     };
