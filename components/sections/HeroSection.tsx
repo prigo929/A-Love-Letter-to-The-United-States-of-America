@@ -26,6 +26,7 @@ import {
 } from "framer-motion";
 import { ChevronDown, Star } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { StatesVideoTitle } from "@/components/sections/StatesVideoTitle";
 import {
   heroContainer,
   heroTitle,
@@ -467,13 +468,6 @@ export function HeroSection() {
     display: "block",
     textShadow: titleShadow,
   } as const;
-  const statesLineStyle = {
-    display: "block",
-    fontWeight: 900,
-    margin: "0.05em 0",
-    lineHeight: "1.1",
-  } as const;
-
   return (
     <div
       ref={containerRef}
@@ -572,35 +566,7 @@ export function HeroSection() {
               {copy.titleLines[0]}
             </span>
 
-            {/* STATES - CSS-Only Red, White, and Blue Sweep */}
-            <span
-              className="relative"
-              style={statesLineStyle}
-            >
-              <span
-                aria-hidden="true"
-                className="absolute inset-0 select-none pointer-events-none"
-                style={{
-                  color: "rgba(255,255,255,0.001)",
-                  textShadow: titleShadow,
-                }}
-              >
-                {copy.titleLines[1]}
-              </span>
-              <span
-                className="relative"
-                style={{
-                  display: "block",
-                  background:
-                    "linear-gradient(90deg, #B31942 0%, #B31942 25%, #FFFFFF 45%, #FFFFFF 55%, #0A3161 75%, #0A3161 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                {copy.titleLines[1]}
-              </span>
-            </span>
+            <StatesVideoTitle text={copy.titleLines[1]} shadow={titleShadow} />
 
             {/* OF AMERICA - Matching Top Text */}
             <span style={{ ...titleLineStyle, color: "#FFFFFF" }}>
