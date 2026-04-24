@@ -48,6 +48,9 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
   // We keep a ref to the <video> so we can inspect its load state and manually
   // reset playback before the final paused frame becomes visible.
   const videoRef = useRef<HTMLVideoElement>(null);
+  // This lock prevents multiple loop-reset events from firing at nearly the
+  // same time when the video is close to its final frame.
+  const restartLockRef = useRef(false);
   const [metrics, setMetrics] = useState<TextMetrics | null>(null);
   const [videoReady, setVideoReady] = useState(false);
   const [videoError, setVideoError] = useState(false);
@@ -115,25 +118,53 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
     const video = videoRef.current;
     if (!video) return;
 
+    restartLockRef.current = false;
+
     if (video.readyState >= 3) {
       // If the browser already has enough data to play the video (for example
       // because it came from cache), mark it ready immediately.
       setVideoReady(true);
     }
 
+    const resumePlayback = () => {
+      void video.play().catch(() => {
+        // Ignore autoplay/playback promise noise. The fallback UI already
+        // handles real loading failures through `videoError`.
+      });
+    };
+
+    const restartFromBeginning = () => {
+      if (restartLockRef.current || !video.duration) return;
+      restartLockRef.current = true;
+
+      // Some browsers need the seek to finish before a new `play()` call will
+      // actually resume motion. We wait for `seeked`, then clear the lock.
+      const handleSeeked = () => {
+        restartLockRef.current = false;
+        resumePlayback();
+      };
+
+      video.addEventListener("seeked", handleSeeked, { once: true });
+      video.currentTime = 0.02;
+
+      // Safety net: if `seeked` is skipped or delayed, still try to resume.
+      window.setTimeout(() => {
+        if (!restartLockRef.current) return;
+        restartLockRef.current = false;
+        resumePlayback();
+      }, 80);
+    };
+
     const syncLoop = () => {
-      // Jump back a tiny bit before the real end of the clip. This hides the
-      // visible pause some browsers show on the very last frame.
-      if (video.duration && video.currentTime >= video.duration - 0.12) {
-        video.currentTime = 0.02;
-        void video.play();
+      // Jump back slightly before the final frame so the user never sees the
+      // native pause that some browsers show at the end of a loop.
+      if (video.duration && video.currentTime >= video.duration - 0.18) {
+        restartFromBeginning();
       }
     };
 
     const handleEnded = () => {
-      // Safety net: if the browser still reaches "ended", restart right away.
-      video.currentTime = 0.02;
-      void video.play();
+      restartFromBeginning();
     };
 
     const intervalId = window.setInterval(syncLoop, 16);
