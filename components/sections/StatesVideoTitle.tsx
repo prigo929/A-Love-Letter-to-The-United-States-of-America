@@ -312,7 +312,8 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
               autoPlay
               muted
               playsInline
-              preload="metadata"
+              preload="auto"
+              onCanPlay={() => setVideoReady(true)}
               onLoadedData={() => setVideoReady(true)}
               onError={() => {
                 console.log("Video Error");
