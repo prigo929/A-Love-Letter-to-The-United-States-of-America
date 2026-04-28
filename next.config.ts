@@ -29,6 +29,12 @@ const nextConfig: NextConfig = {
         hostname: "*.nasa.gov",
         pathname: "/**",
       },
+      {
+        // Wikimedia Commons document scans and portraits
+        protocol: "https",
+        hostname: "upload.wikimedia.org",
+        pathname: "/wikipedia/**",
+      },
     ],
     // Prefer WebP for faster real-world first loads. AVIF can be smaller, but
     // it is slower to encode on first request, which hurts perceived speed.
