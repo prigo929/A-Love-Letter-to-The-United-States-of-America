@@ -76,7 +76,7 @@ export function InkParticles({ count = 120 }: { count?: number }) {
 
 function CountUp({ to, delay=0 }: { to: number; delay?: number }) {
   const ref  = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "-20px" });
   const mv   = useMotionValue(0);
 
   useEffect(() => {
@@ -107,13 +107,12 @@ export function MetricCard({ value, suffix="", label, sublabel, delay=0 }: {
   return (
     <motion.div
       initial={{ opacity:0, y:40, scale:.95 }}
-      whileInView={{ opacity:1, y:0, scale:1 }}
-      viewport={{ once:true, margin:"-60px" }}
-      transition={{ duration:.7, delay, ease:[0.16,1,0.3,1] }}
-      whileHover={{ y:-6, transition:{ duration:.25 } }}
-      className="group relative rounded-xl border border-[rgba(201,168,76,.2)] bg-[rgba(18,24,31,.7)] p-7 backdrop-blur-xl transition-all duration-300 hover:border-[rgba(201,168,76,.5)] hover:shadow-[0_0_40px_rgba(201,168,76,.12),0_0_80px_rgba(201,168,76,.06),inset_0_1px_0_rgba(201,168,76,.15)]"
+      whileInView={{ opacity:1, y:0, scale:1, transition: { duration:.7, delay, ease:[0.16,1,0.3,1] } }}
+      viewport={{ once:true, margin:"-20px" }}
+      whileHover={{ y:-6 }}
+      className="group relative rounded-xl border border-[rgba(201,168,76,.2)] bg-[rgba(18,24,31,.7)] p-7 backdrop-blur-xl transition-[border-color,box-shadow] duration-300 hover:border-[rgba(201,168,76,.5)] hover:shadow-[0_0_40px_rgba(201,168,76,.12),0_0_80px_rgba(201,168,76,.06),inset_0_1px_0_rgba(201,168,76,.15)]"
     >
-      <p className="mb-2 font-display leading-none" style={{ fontSize:"clamp(40px,5vw,64px)", background:"linear-gradient(180deg,#E8C878 0%,#C9A84C 50%,#8B6A2A 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>
+      <p className="mb-2 font-hero leading-none" style={{ fontSize:"clamp(48px,5vw,72px)", background:"linear-gradient(180deg,#E8C878 0%,#C9A84C 50%,#8B6A2A 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>
         <CountUp to={value} delay={delay*1000}/>{suffix}
       </p>
       <p className="font-body text-sm font-semibold leading-snug text-[#F5F0E8]">{label}</p>
