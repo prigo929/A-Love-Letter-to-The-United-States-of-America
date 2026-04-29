@@ -150,7 +150,7 @@ export default async function ConstitutionPage() {
               {isRo ? "Pasaje ce Au Schimbat Lumea" : "Passages That Changed the World"}
             </h2>
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-              {isRo ? "Treci cu cursorul peste orice clauză pentru a-i ilumina moștenirea. Fiecare propoziție este în vigoare chiar acum." : "Hover over any clause to illuminate its legacy. Every sentence is in force right now."}
+              {isRo ? "Dă click pe orice clauză pentru a-i ilumina moștenirea. Fiecare propoziție este în vigoare chiar acum." : "Click over any clause to illuminate its legacy. Every sentence is in force right now."}
             </p>
             <ClauseVault clauses={getConstitutionClauses(isRo)} isRo={isRo} />
           </Section>

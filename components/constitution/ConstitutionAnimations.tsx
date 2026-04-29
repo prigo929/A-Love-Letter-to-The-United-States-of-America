@@ -195,7 +195,7 @@ export function ClauseVault({ clauses, isRo }: { clauses: ConstitutionClause[], 
                   <span className="text-xl text-[#C9A84C]">✦</span>
                 </div>
                 <p className="font-display text-lg italic text-[#F5F0E8]/60">
-                  {isRo ? "Treci cu cursorul peste orice clauză pentru a-i ilumina moștenirea" : "Hover over any clause to illuminate its legacy"}
+                  {isRo ? "Dă click pe orice clauză pentru a-i ilumina moștenirea" : "Click over any clause to illuminate its legacy"}
                 </p>
               </div>
             </motion.div>
