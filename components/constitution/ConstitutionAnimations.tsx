@@ -1,4 +1,11 @@
 "use client";
+// ─── Constitution Interactive Animations ───────────────────────────────────────
+// This file contains all the "interactive" parts of the exhibit.
+// From counting numbers to the interactive state simulator.
+//
+// For Beginners: We use "framer-motion" here, which is a library for creating
+// smooth animations. When you see "motion.div", it's a special type of box
+// that knows how to move, fade in, or scale up.
 
 import { useState, useEffect, useRef, useCallback, useMemo, useId } from "react";
 import { motion, AnimatePresence, useInView, useMotionValue, animate } from "framer-motion";
@@ -7,7 +14,8 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import type { ConstitutionClause, FoundingFather, Amendment, PresidentialTransfer, StatePolicy, PowersCheckExample } from "@/lib/data/constitution-data";
 
 // ── Aurora ────────────────────────────────────────────────────────────────────
-
+// This component creates a subtle, glowing background effect (like the Aurora Borealis).
+// It makes the page feel "alive" and premium without being distracting.
 export function ConstitutionAurora() {
   return (
     <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
@@ -102,7 +110,8 @@ function CountUp({ to, delay=0 }: { to: number; delay?: number }) {
 }
 
 // ── MetricCard ────────────────────────────────────────────────────────────────
-
+// A reusable card to show a key statistic (like "27 Amendments").
+// It animates in from the bottom when it enters the visitor's screen.
 export function MetricCard({ value, suffix="", label, sublabel, delay=0 }: {
   value: number; suffix?: string; label: string; sublabel: string; delay?: number;
 }) {
@@ -124,7 +133,10 @@ export function MetricCard({ value, suffix="", label, sublabel, delay=0 }: {
 }
 
 // ── ClauseVault ───────────────────────────────────────────────────────────────
-
+// This is an interactive viewer for specific parts (Clauses) of the Constitution.
+// Visitors can hover or click to see why a specific sentence changed the world.
+//
+// Principle: "Transparency". By making the text interactive, we make it accessible.
 const TENSION_COLORS: Record<string,string> = { settled:"#4ade80", moderate:"#fbbf24", contested:"#fb923c", "highly-contested":"#ef4444" };
 const TENSION_LABELS: Record<string,string> = { settled:"Settled Law", moderate:"Moderately Contested", contested:"Actively Contested", "highly-contested":"Highly Contested" };
 
@@ -252,7 +264,8 @@ export function ClauseVault({ clauses, isRo }: { clauses: ConstitutionClause[], 
 }
 
 // ── FounderConstellation ──────────────────────────────────────────────────────
-
+// A visual map of the Founding Fathers. Think of it like a family tree or a network.
+// It shows how these individuals were connected and what they built together.
 export function FounderConstellation({ founders, isRo }: { founders: FoundingFather[], isRo?: boolean }) {
   const [active,  setActive]  = useState<FoundingFather|null>(null);
   const [hovered, setHovered] = useState<string|null>(null);
@@ -399,7 +412,9 @@ export function AmendmentAccordion({ amendments, isRo }: { amendments: Amendment
 }
 
 // ── SeparationDiagram ─────────────────────────────────────────────────────────
-
+// This visualizes "Checks and Balances".
+// It shows the three branches of government: Legislative, Executive, and Judicial.
+// Principle: No single person or group should have too much power.
 const BPOS = {
   legislative:{ x:180, y:260, label:"Legislative", icon:"🏛️", desc:"Congress · 535 members" },
   executive:  { x:620, y:260, label:"Executive",   icon:"🦅", desc:"President · Enforces law" },
@@ -483,7 +498,8 @@ export function SeparationDiagram({ examples, isRo }: { examples: PowersCheckExa
 }
 
 // ── TransferTimeline ──────────────────────────────────────────────────────────
-
+// This shows how power moves from one President to another peacefully.
+// Principle: "Peaceful Transfer of Power". It's a cornerstone of American democracy.
 export function TransferTimeline({ transfers, isRo }: { transfers: PresidentialTransfer[], isRo?: boolean }) {
   const [selected, setSelected] = useState<PresidentialTransfer|null>(null);
   return (
@@ -540,7 +556,11 @@ export function TransferTimeline({ transfers, isRo }: { transfers: PresidentialT
 }
 
 // ── FederalismSimulator ───────────────────────────────────────────────────────
-
+// This is the most complex part of the code!
+// It allows visitors to "play" with policy settings (like taxes) to see which
+// U.S. states match their preferences.
+//
+// Principle: "Laboratory of Democracy". States can try different things to see what works.
 export function FederalismSimulator({ states, isRo }: { states: StatePolicy[], isRo?: boolean }) {
   const [corpTax,  setCorpTax]  = useState(5);
   const [minWage,  setMinWage]  = useState(10);

@@ -1,4 +1,9 @@
 // ─── First Amendment Sub-Page ─────────────────────────────────────────────────
+// This page focuses on the First Amendment — the bedrock of American liberty.
+// It explains why the U.S. has the strongest free speech laws in the world.
+//
+// For Beginners: This page uses comparative data to show the difference 
+// between "Free Speech" in America versus other democratic nations.
 
 import type { Metadata } from "next";
 import Image from "next/image";

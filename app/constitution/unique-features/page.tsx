@@ -1,4 +1,9 @@
 // ─── Unique Features Sub-Page ────────────────────────────────────────────────
+// This page highlights the "Special" parts of the U.S. Constitution
+// that you won't find in many other countries.
+//
+// For Beginners: This page is like a "Top 10" list of interesting facts
+// about how the American government was designed differently.
 
 import type { Metadata } from "next";
 import Image from "next/image";

@@ -1,6 +1,10 @@
-// ─── Constitution & Democracy Section Data ────────────────────────────────────
-// Central data store for Phase 6.
-// All Amendment objects strictly follow the Amendment interface — no extras.
+// ─── Constitution Exhibit Main Data ──────────────────────────────────────────
+// This file acts as our "Library". It stores all the facts, names, and 
+// historical context used across the entire Constitution exhibit.
+//
+// For Beginners: This is mostly "JSON-like" data. We define a "Type" 
+// (like ConstitutionClause) to tell the computer exactly what kind of 
+// information a clause should have (name, text, impact, etc.).
 
 import type { Locale } from "@/lib/i18n/config";
 
@@ -102,7 +106,8 @@ export const CONSTITUTION_METRICS: ConstitutionMetric[] = [
 ];
 
 // ─── Founding Fathers — Public-Domain Oil Paintings from Wikimedia Commons ───
-
+// The individuals who designed the system.
+// We include their "connections" to build the interactive constellation map.
 export const FOUNDING_FATHERS: FoundingFather[] = [
   {
     id: "washington",
@@ -245,7 +250,8 @@ export const FOUNDING_FATHERS: FoundingFather[] = [
 ];
 
 // ─── Constitution Clauses ─────────────────────────────────────────────────────
-
+// These are the specific sections of the Constitution.
+// We include the "Impact" so visitors can understand WHY these words matter.
 export const CONSTITUTION_CLAUSES: ConstitutionClause[] = [
   {
     id: "commerce",
@@ -428,7 +434,8 @@ export const CONSTITUTION_CLAUSES: ConstitutionClause[] = [
 ];
 
 // ─── Bill of Rights — clean Amendment objects ────────────────────────────────
-
+// The first 10 amendments that protect individual liberties.
+// We bridge history and modern life by explaining "What It Means Today".
 export const BILL_OF_RIGHTS: Amendment[] = [
   {
     number: 1, romanNumeral: "I",

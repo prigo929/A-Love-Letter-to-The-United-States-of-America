@@ -1,6 +1,10 @@
 // ─── Bill of Rights Sub-Page ─────────────────────────────────────────────────
-// Full interactive amendment explorer with accordion cards, original parchment
-// image, and global comparison data.
+// This page is a deep dive into the first 10 amendments of the Constitution.
+// It uses an "Accordion" (a collapsible list) so visitors can explore
+// one amendment at a time without feeling overwhelmed.
+//
+// For Beginners: This page combines text from "constitution-data.ts" with 
+// interactive components to create a specialized learning experience.
 
 import type { Metadata } from "next";
 import Image from "next/image";

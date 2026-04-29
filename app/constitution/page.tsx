@@ -1,5 +1,10 @@
 // ─── Constitution & Democracy Main Hub Page ───────────────────────────────────
-// Museum-grade cinematic experience — scroll-driven storytelling
+// This is the "brain" of the Constitution exhibit. It brings together all the
+// interactive pieces (animations, data, and sections) to tell the story of
+// the U.S. Constitution in a cinematic, museum-like way.
+//
+// For Beginners: This file uses "Next.js" (the framework) and "React" (the UI library).
+// It's like a recipe that tells the browser which components to show and where.
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -42,6 +47,9 @@ export const metadata: Metadata = {
   },
 };
 
+// A simple helper to create a "Section" of the page.
+// In coding, we use helpers to avoid writing the same code over and over again.
+// This ensures every section has the same spacing and a nice line at the top.
 function Section({ id, eyebrow, children }: { id: string; eyebrow?: string; children: React.ReactNode }) {
   return (
     <section id={id} className="relative mb-8 scroll-mt-24 py-16">
@@ -53,8 +61,12 @@ function Section({ id, eyebrow, children }: { id: string; eyebrow?: string; chil
 }
 
 export default async function ConstitutionPage() {
+  // We check the language (English or Romanian) so we can show the right text.
+  // This is called "Internationalization" or "i18n".
   const locale   = await getServerLocale();
   const isRo     = locale === "ro";
+
+  // We pull in the data (numbers, names, facts) from our database files.
   const metrics  = getConstitutionMetrics(locale);
   const subPages = getConstitutionSubPages(locale);
 
@@ -70,6 +82,8 @@ export default async function ConstitutionPage() {
 
       {/* ══════════════════════════════════════════════════════════════════════
           BLOOMBERG STAT: 4,543 words
+          This section shows a big number to grab the visitor's attention.
+          The U.S. Constitution is famous for being very short but very powerful.
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="relative bg-[#080B12]">
         <InkParticles count={40} />
@@ -86,7 +100,10 @@ export default async function ConstitutionPage() {
       <div className="relative bg-[#080B12]">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 
-          {/* ── I. The Document ─────────────────────────────────────────────── */}
+          {/* ── I. The Document ─────────────────────────────────────────────── 
+              This is the first major chapter of our digital exhibit.
+              We start with the text itself before moving into the philosophy.
+          */}
           <CinematicSectionBreak
             chapter="I"
             title={isRo ? "Documentul Viu" : "The Living Document"}

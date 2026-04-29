@@ -1,4 +1,9 @@
 // ─── Democracy Track Record Sub-Page ─────────────────────────────────────────
+// This page explores the history of presidential elections and power transfers.
+// It visualizes the "Stability" of the American system over 230+ years.
+//
+// For Beginners: This page uses the "TransferTimeline" component to show
+// how power has moved peacefully from one leader to the next.
 
 import type { Metadata } from "next";
 import Image from "next/image";

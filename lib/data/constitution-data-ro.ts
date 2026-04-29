@@ -1,3 +1,10 @@
+// ─── Constitution Exhibit Romanian Data ──────────────────────────────────────
+// This file is the Romanian (ro) version of our "Library".
+// It contains all the translated text for the Romanian version of the site.
+//
+// For Beginners: This data matches the structure in "constitution-data.ts"
+// perfectly, but with Romanian text. This allows the site to switch
+// languages without changing the layout or logic.
 import type { ConstitutionClause, FoundingFather, Amendment, PresidentialTransfer, StatePolicy, PowersCheckExample } from "./constitution-data";
 
 export const FOUNDING_FATHERS_RO: FoundingFather[] = [

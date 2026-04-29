@@ -1,4 +1,10 @@
 "use client";
+// ─── Cinematic Storytelling Components ─────────────────────────────────────────
+// This file contains high-end UI components that help tell the story of
+// the Constitution in a "Cinematic" way.
+//
+// For Beginners: These components use "Props" (properties) to customize how they look.
+// For example, "isRo" is a prop that tells the component to show Romanian text.
 
 import { useRef, useMemo, useId } from "react";
 import {
@@ -39,10 +45,8 @@ function CountUp({ to, suffix = "", delay = 0 }: { to: number; suffix?: string; 
   return <span ref={ref}>0{suffix}</span>;
 }
 
-// ═════════════════════════════════════════════════════════════════════════════
-// 1. CINEMATIC STAT — Bloomberg-style full-screen number
-// ═════════════════════════════════════════════════════════════════════════════
-
+// 1. CINEMATIC STAT — A huge, impact-focused number.
+// We use this to highlight scale, like the "$31 Trillion economy" or "237 years".
 export function CinematicStat({
   value,
   suffix = "",
@@ -111,10 +115,9 @@ export function CinematicStat({
   );
 }
 
-// ═════════════════════════════════════════════════════════════════════════════
-// 2. CINEMATIC HERO — "We the People" scroll-driven reveal
-// ═════════════════════════════════════════════════════════════════════════════
-
+// 2. CINEMATIC HERO — The grand introduction of the exhibit.
+// It uses a parallax effect (where background moves slower than foreground)
+// to create a feeling of depth and importance.
 export function CinematicHero({ isRo }: { isRo: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -400,6 +403,9 @@ function TransferNode({
   );
 }
 
+// 3. THE UNBROKEN LINE — A vertical timeline of power transfers.
+// This is a metaphor for the stability of American democracy.
+// As you scroll, the "golden thread" follows you down the page.
 export function UnbrokenLine({
   transfers,
   isRo,
@@ -605,10 +611,9 @@ export function CinematicPullQuote({
   );
 }
 
-// ═════════════════════════════════════════════════════════════════════════════
-// 6. CONSTITUTION RACE — Animated racing bar chart
-// ═════════════════════════════════════════════════════════════════════════════
-
+// 5. CONSTITUTION RACE — A data visualization "race" between nations.
+// It shows how most constitutions fail or get replaced while the U.S. bar keeps going.
+// Principle: "Stability". A stable constitution provides a predictable environment for growth.
 interface ConstitutionEra {
   country: string;
   start: number;

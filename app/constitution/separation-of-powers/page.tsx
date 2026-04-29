@@ -1,4 +1,9 @@
 // ─── Separation of Powers Sub-Page ──────────────────────────────────────────
+// This page explains "Checks and Balances" — how the three branches of
+// government (Congress, President, and Supreme Court) watch over each other.
+//
+// For Beginners: This page uses a "Triangle of Tension" diagram. It's a
+// visual way to see how no single branch can become a dictator.
 
 import type { Metadata } from "next";
 import Image from "next/image";

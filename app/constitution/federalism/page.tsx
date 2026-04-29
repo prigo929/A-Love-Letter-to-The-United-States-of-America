@@ -1,4 +1,10 @@
 // ─── Federalism Sub-Page ─────────────────────────────────────────────────────
+// This page explains "Federalism" — the division of power between the 
+// National government and the State governments.
+//
+// For Beginners: We use an interactive "Simulator" here. It's a game-like
+// tool that shows how different states have different laws, which is why
+// we call them the "Laboratories of Democracy."
 
 import type { Metadata } from "next";
 import Image from "next/image";

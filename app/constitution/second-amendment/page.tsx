@@ -1,4 +1,9 @@
 // ─── Second Amendment Sub-Page ───────────────────────────────────────────────
+// This page explores the Second Amendment and the right to bear arms.
+// It explains the landmark court cases that have shaped gun laws.
+//
+// For Beginners: This page highlights the "Core Debate" — showing both sides
+// of how the law is interpreted in modern America.
 
 import type { Metadata } from "next";
 import Image from "next/image";
