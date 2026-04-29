@@ -342,6 +342,36 @@ export const CONSTITUTION_CLAUSES: ConstitutionClause[] = [
     ],
     tension: "moderate",
   },
+  {
+    id: "general-welfare",
+    article: "Article I · Section 8 · Clause 1",
+    name: "The General Welfare Clause",
+    originalText: "The Congress shall have Power To lay and collect Taxes, Duties, Imposts and Excises, to pay the Debts and provide for the common Defence and general Welfare of the United States;",
+    summary: "The phrase that authorized the modern American social safety net.",
+    modernImpact: "This clause allows Congress to spend money on nearly anything that benefits the public. It is the constitutional foundation for Social Security, Medicare, federal education funding, and the entire social safety net.",
+    context1787: "The Founders debated whether 'general welfare' meant Congress could do anything, or only spend money on the specific powers listed later in the section. Madison argued for strict limits; Hamilton argued for broad spending power.",
+    contextToday: "Hamilton won. The Supreme Court eventually ruled that Congress can tax and spend for the general welfare independently of its other powers, authorizing trillions in annual federal spending.",
+    timeline: [
+      { year: 1936, event: "United States v. Butler", detail: "The Court adopted Hamilton's broad view: Congress has independent power to tax and spend for the general welfare." },
+      { year: 1937, event: "Steward Machine Co. v. Davis", detail: "Upheld the Social Security Act, cementing the federal government's role in the social safety net." },
+    ],
+    tension: "settled",
+  },
+  {
+    id: "take-care",
+    article: "Article II · Section 3",
+    name: "The Take Care Clause",
+    originalText: "...he shall take Care that the Laws be faithfully executed...",
+    summary: "Nine words that define the President's core duty and maximum power.",
+    modernImpact: "This clause commands the President to enforce laws passed by Congress, even those they disagree with. However, it also grants broad discretion in how to enforce them, serving as the basis for executive orders and prosecutorial discretion.",
+    context1787: "The Founders wanted an energetic executive to enforce the law, contrasting with the weak national government under the Articles of Confederation, but explicitly withheld the power to make or suspend laws.",
+    contextToday: "Presidents use 'enforcement discretion' to shape policy without Congress—such as prioritizing certain environmental regulations over others. The boundary between enforcing and legislating is constantly litigated.",
+    timeline: [
+      { year: 1952, event: "Youngstown Sheet & Tube Co. v. Sawyer", detail: "Truman couldn't seize steel mills to resolve a strike; the President must execute laws, not make them." },
+      { year: 2014, event: "DACA Implementation", detail: "Obama used prosecutorial discretion under the Take Care Clause to defer deportation for childhood arrivals." },
+    ],
+    tension: "highly-contested",
+  },
 ];
 
 // ─── Bill of Rights — clean Amendment objects ────────────────────────────────

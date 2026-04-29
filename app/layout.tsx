@@ -64,6 +64,7 @@ const STATES_VIDEO_PRELOAD_SRC = "/videos/flag-loop.mp4";
 // ─── Site-wide Metadata ───────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE.url),
   // ── Basic ────────────────────────────────────────────────────────────────
   title: {
     default: `${SITE.name} | A Celebration of the United States`,

@@ -40,7 +40,7 @@ const nextConfig: NextConfig = {
     // it is slower to encode on first request, which hurts perceived speed.
     formats: ["image/webp"],
     // Allow the quality levels used by next/image in this app
-    qualities: [75, 85],
+    qualities: [75, 85, 100],
     // Cache optimized images aggressively so repeat visits and route
     // transitions do not keep paying the transform cost.
     minimumCacheTTL: 60 * 60 * 24 * 365,

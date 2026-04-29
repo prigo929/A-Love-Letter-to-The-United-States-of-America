@@ -249,31 +249,35 @@ export default async function UniqueFeaturesPage() {
             <div className="overflow-hidden rounded-2xl border border-[rgba(201,168,76,0.15)] bg-[#12181F]">
               {pyramid.map((level, i) => {
                 const isLast = i === pyramid.length - 1;
-                const width = `${30 + (i / (pyramid.length - 1)) * 70}%`;
+                const width = `${15 + (i / (pyramid.length - 1)) * 85}%`;
                 return (
                   <div
                     key={level.level}
-                    className={`flex items-center gap-4 px-5 py-4 ${isLast ? "border-t-2 border-[rgba(201,168,76,0.3)] bg-[rgba(201,168,76,0.04)]" : "border-b border-white/5"}`}
+                    className={`flex flex-col gap-3 px-6 py-5 ${isLast ? "border-t-2 border-[rgba(201,168,76,0.3)] bg-[rgba(201,168,76,0.04)]" : "border-b border-white/5"}`}
                   >
-                    <div
-                      className="h-6 shrink-0 rounded-full transition-all"
-                      style={{
-                        width,
-                        background: isLast
-                          ? "linear-gradient(90deg, #8B6A2A, #C9A84C, #E8C878)"
-                          : `rgba(201,168,76,${0.15 + i * 0.08})`,
-                      }}
-                    />
-                    <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-baseline gap-2">
-                        <span className={`font-hero text-xl ${isLast ? "text-[#C9A84C]" : "text-[#F5F0E8]"}`}>
+                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+                      <div className="flex items-baseline gap-3">
+                        <span className={`font-hero text-2xl ${isLast ? "text-[#C9A84C]" : "text-[#F5F0E8]"}`}>
                           {level.count}
                         </span>
-                        <span className={`font-body text-sm font-semibold ${isLast ? "text-[#C9A84C]" : "text-[#F5F0E8]"}`}>
+                        <span className={`font-body text-sm uppercase tracking-wider font-semibold ${isLast ? "text-[#C9A84C]" : "text-[#B8B4AC]"}`}>
                           {level.level}
                         </span>
                       </div>
-                      <p className="font-body text-xs text-[#6B6860]">{level.description}</p>
+                      <p className="font-body text-sm text-[#8B8880]">{level.description}</p>
+                    </div>
+                    
+                    <div className="h-1.5 w-full rounded-full bg-black/40 overflow-hidden">
+                      <div
+                        className="h-full rounded-full transition-all duration-700 ease-out"
+                        style={{
+                          width,
+                          background: isLast
+                            ? "linear-gradient(90deg, #8B6A2A, #C9A84C, #E8C878)"
+                            : `rgba(201,168,76,${0.25 + i * 0.12})`,
+                          boxShadow: isLast ? "0 0 12px rgba(201,168,76,0.4)" : "none",
+                        }}
+                      />
                     </div>
                   </div>
                 );
