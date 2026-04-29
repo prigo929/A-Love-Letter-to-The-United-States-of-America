@@ -98,7 +98,6 @@ export default async function ConstitutionPage() {
         </div>
 
         <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-2">
-          <p className="font-body text-[10px] uppercase tracking-[0.3em] text-[#6B6860]">{isRo ? "Derulează" : "Scroll"}</p>
           <div className="h-8 w-px overflow-hidden rounded-full bg-[rgba(201,168,76,0.2)]">
             <div className="h-4 w-px bg-[#C9A84C] animate-bounce" />
           </div>
