@@ -36,7 +36,8 @@ export interface ConstitutionClause {
   name: string;
   originalText: string;
   summary: string;
-  modernImpact: string;
+  impactUS: string;
+  impactWorld: string;
   context1787: string;
   contextToday: string;
   timeline: { year: number; event: string; detail: string }[];
@@ -97,7 +98,7 @@ export const CONSTITUTION_METRICS: ConstitutionMetric[] = [
   { id: "articles",   value: 7,    label: "Articles in the Original Constitution",          sublabel: "Architectural elegance" },
   { id: "amendments", value: 27,   label: "Amendments Ratified",                            sublabel: "In 237 years — barely altered" },
   { id: "elections",  value: 59,   label: "Presidential Elections",                          sublabel: "Zero coups. Zero suspensions." },
-  { id: "words",      value: 4543, label: "Words That Govern a $27 Trillion Economy",       sublabel: "Shortest major national constitution" },
+  { id: "words",      value: 4543, label: "Words That Govern a $31 Trillion Economy",       sublabel: "Shortest major national constitution" },
 ];
 
 // ─── Founding Fathers — Public-Domain Oil Paintings from Wikimedia Commons ───
@@ -252,7 +253,8 @@ export const CONSTITUTION_CLAUSES: ConstitutionClause[] = [
     name: "The Commerce Clause",
     originalText: "To regulate Commerce with foreign Nations, and among the several States, and with the Indian Tribes;",
     summary: "32 words that authorize virtually every federal economic regulation.",
-    modernImpact: "These 32 words authorize every federal regulation of the American economy — from the Civil Rights Act of 1964 to environmental law to FDA food safety standards. The Commerce Clause is the constitutional backbone of the $27 trillion American economy.",
+    impactUS: "These 32 words authorize every federal regulation of the American economy — from the Civil Rights Act of 1964 to FDA food safety standards. The Commerce Clause is the constitutional backbone of the $31 trillion American economy.",
+    impactWorld: "By creating a frictionless free-trade zone across a continent, it enabled the US to become an economic superpower. It serves as the primary template for the European Union's single market.",
     context1787: "States were taxing goods from neighboring states like foreign nations. Virginia taxed Maryland goods at the Potomac River crossing. The new nation was fracturing economically.",
     contextToday: "Federal courts cite this clause 847 times per year in commercial disputes. Amazon's interstate commerce, pharmaceutical regulations, and agricultural subsidies are all authorized by 32 words written in 1787.",
     timeline: [
@@ -268,14 +270,14 @@ export const CONSTITUTION_CLAUSES: ConstitutionClause[] = [
     name: "Freedom of Speech, Religion & Press",
     originalText: "Congress shall make no law respecting an establishment of religion, or prohibiting the free exercise thereof; or abridging the freedom of speech, or of the press...",
     summary: "The broadest free speech protection in the world — protecting even speech 95% of Americans find repugnant.",
-    modernImpact: "The United States protects more speech than any other democracy. Burning the flag, neo-Nazi marches, and offensive art are all protected. Currently active in 3rd and 5th Circuit cases on social media content moderation, campus speech zones, and religious exemptions.",
+    impactUS: "The United States protects more speech than any other democracy. Burning the flag, neo-Nazi marches, and offensive art are all legally protected. It shapes how social media companies operate natively.",
+    impactWorld: "It established the global gold standard for free expression. Even international human rights tribunals often look to First Amendment jurisprudence when deciding global censorship cases.",
     context1787: "The Founders had lived through British censorship, licensing of the press, and imprisonment for criticizing the Crown. They were solving a problem they had personally experienced.",
     contextToday: "Simultaneously the most settled and most actively litigated constitutional provision. Social media, campaign finance, and religious liberty cases ensure it is never truly 'resolved.'",
     timeline: [
       { year: 1919, event: "Schenck v. United States", detail: "'Clear and present danger' test — first major First Amendment case." },
       { year: 1969, event: "Brandenburg v. Ohio", detail: "Modern standard: government can only restrict speech inciting 'imminent lawless action.'" },
       { year: 1989, event: "Texas v. Johnson", detail: "Flag burning is protected speech. Shocked many Americans but upheld the principle." },
-      { year: 2023, event: "303 Creative v. Elenis", detail: "First Amendment protects a web designer's right to decline same-sex wedding websites." },
     ],
     tension: "highly-contested",
   },
@@ -285,12 +287,12 @@ export const CONSTITUTION_CLAUSES: ConstitutionClause[] = [
     name: "Right to Bear Arms",
     originalText: "A well regulated Militia, being necessary to the security of a free State, the right of the people to keep and bear Arms, shall not be infringed.",
     summary: "27 words. The most actively litigated constitutional provision post-2022.",
-    modernImpact: "Heller (2008) confirmed an individual right. Bruen (2022) changed how courts evaluate gun regulations. Over 40 states have active 2nd Amendment cases. The doctrine is in maximum flux.",
+    impactUS: "Heller (2008) confirmed an individual right to bear arms. Bruen (2022) changed how courts evaluate gun regulations. Over 40 states have active 2nd Amendment cases in flux.",
+    impactWorld: "A uniquely American phenomenon. The US is one of only three countries globally (along with Mexico and Guatemala) that constitutionally protect the right to bear arms, profoundly isolating US gun culture from global norms.",
     context1787: "The Founders had just used armed citizens to defeat the most powerful military in the world and were deeply suspicious of standing armies.",
     contextToday: "Post-Bruen, lower courts have overturned laws ranging from bump stock bans to domestic violence restrictions. The legal doctrine is being entirely rebuilt.",
     timeline: [
       { year: 2008, event: "DC v. Heller", detail: "5-4: Individual right to possess firearms in the home for self-defense." },
-      { year: 2010, event: "McDonald v. Chicago", detail: "Incorporated against states — cities cannot ban handguns." },
       { year: 2022, event: "New York State Rifle & Pistol Assoc. v. Bruen", detail: "Laws must conform to historical tradition — overturning frameworks across the country." },
     ],
     tension: "highly-contested",
@@ -301,11 +303,11 @@ export const CONSTITUTION_CLAUSES: ConstitutionClause[] = [
     name: "Equal Protection Clause",
     originalText: "...nor deny to any person within its jurisdiction the equal protection of the laws.",
     summary: "Written to protect freed slaves — now protects everyone. The most consequential text since the original document.",
-    modernImpact: "Brown v. Board, Loving v. Virginia, Reed v. Reed, Obergefell v. Hodges, Students for Fair Admissions. The 14th Amendment's Equal Protection Clause has reshaped American society more than any legislative act.",
+    impactUS: "Brown v. Board, Loving v. Virginia, Obergefell v. Hodges. The 14th Amendment's Equal Protection Clause has reshaped American society more than any legislative act.",
+    impactWorld: "It introduced the concept of constitutional equality. The text profoundly influenced the UN's Universal Declaration of Human Rights and the equality clauses of post-WWII constitutions globally.",
     context1787: "Not in the original Constitution — ratified in 1868 after 750,000 Americans died answering whether Black Americans were persons under the law.",
-    contextToday: "Currently contested: affirmative action in university admissions (post-SFFA), racial gerrymandering, criminal justice disparities. The clause's meaning is perpetually renegotiated.",
+    contextToday: "Currently contested: affirmative action in university admissions, racial gerrymandering, criminal justice disparities. The clause's meaning is perpetually renegotiated.",
     timeline: [
-      { year: 1896, event: "Plessy v. Ferguson", detail: "'Separate but equal' — a catastrophic misreading that legalized Jim Crow for 58 years." },
       { year: 1954, event: "Brown v. Board of Education", detail: "Separate is inherently unequal. Unanimous court corrected 58 years of error." },
       { year: 2015, event: "Obergefell v. Hodges", detail: "Marriage equality. 5-4. The 14th Amendment applied to same-sex couples." },
     ],
@@ -317,11 +319,11 @@ export const CONSTITUTION_CLAUSES: ConstitutionClause[] = [
     name: "The Supremacy Clause",
     originalText: "This Constitution, and the Laws of the United States which shall be made in Pursuance thereof... shall be the supreme Law of the Land...",
     summary: "The clause that makes the United States one nation rather than 50 separate countries.",
-    modernImpact: "When state law conflicts with federal law, the Supremacy Clause settles it. It is why states couldn't nullify the Civil Rights Act, why Arizona's immigration enforcement was struck down, and why marijuana remains federally illegal despite state legalization.",
+    impactUS: "When state law conflicts with federal law, the Supremacy Clause settles it. It is why states couldn't nullify the Civil Rights Act and why Arizona's immigration enforcement was struck down.",
+    impactWorld: "It pioneered the modern federal state system. Nations like Germany, Australia, and Brazil modeled their federal-state hierarchies explicitly on this clause to avoid fragmentation.",
     context1787: "Under the Articles of Confederation, states regularly ignored federal law. The nation was ungovernable. The Supremacy Clause was the constitutional answer.",
-    contextToday: "Contested zones: immigration enforcement, marijuana legalization, environmental regulation preemption. The clause's application is never fully settled — that is federalism working as designed.",
+    contextToday: "Contested zones: immigration enforcement, marijuana legalization, environmental regulation preemption. The clause's application is never fully settled.",
     timeline: [
-      { year: 1819, event: "McCulloch v. Maryland", detail: "Maryland cannot tax the federal bank. Federal law supremacy established." },
       { year: 1958, event: "Cooper v. Aaron", detail: "Arkansas cannot nullify Brown v. Board. Supremacy Clause is not optional." },
       { year: 2012, event: "Arizona v. United States", detail: "Arizona's immigration enforcement struck down — immigration is federal domain." },
     ],
@@ -333,7 +335,8 @@ export const CONSTITUTION_CLAUSES: ConstitutionClause[] = [
     name: "The Necessary & Proper Clause",
     originalText: "To make all Laws which shall be necessary and proper for carrying into Execution the foregoing Powers...",
     summary: "The 'elastic clause' — stretching congressional power to meet every challenge the Founders couldn't foresee.",
-    modernImpact: "Without this clause, Congress could only do what the Constitution explicitly listed. With it, Congress created the Federal Reserve, NASA, the NSA, the interstate highway system, and regulates the internet — none explicitly in Article I.",
+    impactUS: "Without this clause, Congress could only do what the Constitution explicitly listed. With it, Congress created the Federal Reserve, NASA, the NSA, and the interstate highway system.",
+    impactWorld: "It demonstrated that written constitutions don't have to be brittle. It showed emerging democracies how to write a foundational document that survives the industrial and digital revolutions without snapping.",
     context1787: "The Founders knew they couldn't enumerate every power needed to govern a growing nation. They needed a flexible connector between listed powers and practical governance.",
     contextToday: "Invoked to justify the Louisiana Purchase, national banking, the draft, and nearly every federal agency. The constitutional permission slip for the modern administrative state.",
     timeline: [
@@ -343,35 +346,85 @@ export const CONSTITUTION_CLAUSES: ConstitutionClause[] = [
     tension: "moderate",
   },
   {
-    id: "general-welfare",
-    article: "Article I · Section 8 · Clause 1",
-    name: "The General Welfare Clause",
-    originalText: "The Congress shall have Power To lay and collect Taxes, Duties, Imposts and Excises, to pay the Debts and provide for the common Defence and general Welfare of the United States;",
-    summary: "The phrase that authorized the modern American social safety net.",
-    modernImpact: "This clause allows Congress to spend money on nearly anything that benefits the public. It is the constitutional foundation for Social Security, Medicare, federal education funding, and the entire social safety net.",
-    context1787: "The Founders debated whether 'general welfare' meant Congress could do anything, or only spend money on the specific powers listed later in the section. Madison argued for strict limits; Hamilton argued for broad spending power.",
-    contextToday: "Hamilton won. The Supreme Court eventually ruled that Congress can tax and spend for the general welfare independently of its other powers, authorizing trillions in annual federal spending.",
-    timeline: [
-      { year: 1936, event: "United States v. Butler", detail: "The Court adopted Hamilton's broad view: Congress has independent power to tax and spend for the general welfare." },
-      { year: 1937, event: "Steward Machine Co. v. Davis", detail: "Upheld the Social Security Act, cementing the federal government's role in the social safety net." },
-    ],
-    tension: "settled",
-  },
-  {
     id: "take-care",
     article: "Article II · Section 3",
     name: "The Take Care Clause",
     originalText: "...he shall take Care that the Laws be faithfully executed...",
     summary: "Nine words that define the President's core duty and maximum power.",
-    modernImpact: "This clause commands the President to enforce laws passed by Congress, even those they disagree with. However, it also grants broad discretion in how to enforce them, serving as the basis for executive orders and prosecutorial discretion.",
-    context1787: "The Founders wanted an energetic executive to enforce the law, contrasting with the weak national government under the Articles of Confederation, but explicitly withheld the power to make or suspend laws.",
-    contextToday: "Presidents use 'enforcement discretion' to shape policy without Congress—such as prioritizing certain environmental regulations over others. The boundary between enforcing and legislating is constantly litigated.",
+    impactUS: "This clause commands the President to enforce laws passed by Congress. However, it grants broad discretion in how to enforce them, serving as the basis for prosecutorial discretion and executive orders.",
+    impactWorld: "It established the concept of the Chief Executive in a republic. Prior to this, executive power meant a King who made the laws. This defined the executive as a manager of laws made by the people.",
+    context1787: "The Founders wanted an energetic executive to enforce the law, contrasting with the weak national government under the Articles of Confederation, but explicitly withheld the power to make laws.",
+    contextToday: "Presidents use 'enforcement discretion' to shape policy without Congress—such as prioritizing certain environmental regulations over others.",
     timeline: [
       { year: 1952, event: "Youngstown Sheet & Tube Co. v. Sawyer", detail: "Truman couldn't seize steel mills to resolve a strike; the President must execute laws, not make them." },
       { year: 2014, event: "DACA Implementation", detail: "Obama used prosecutorial discretion under the Take Care Clause to defer deportation for childhood arrivals." },
     ],
     tension: "highly-contested",
   },
+  {
+    id: "impeachment",
+    article: "Article II · Section 4",
+    name: "The Impeachment Clause",
+    originalText: "The President, Vice President and all civil Officers of the United States, shall be removed from Office on Impeachment for, and Conviction of, Treason, Bribery, or other high Crimes and Misdemeanors.",
+    summary: "The ultimate failsafe mechanism against a tyrannical or corrupt executive.",
+    impactUS: "It creates an escape hatch for democracy. Knowing it exists has deterred absolute power. It forced Nixon to resign and checked Clinton and Trump through grueling public trials.",
+    impactWorld: "It revolutionized the concept of accountability. Before 1787, the only way to remove a head of state was assassination or violent revolution. This provided a legal mechanism for bloodless regime change.",
+    context1787: "Benjamin Franklin noted that historically, removing a corrupt executive required assassination. The Founders wanted a peaceful, legal way to remove a rogue president without destroying the republic.",
+    contextToday: "Highly weaponized in hyper-partisan eras. Once a 'break glass in case of emergency' tool, it has been used three times in the last 25 years.",
+    timeline: [
+      { year: 1868, event: "Andrew Johnson Impeachment", detail: "First presidential impeachment. Acquitted by a single vote in the Senate, establishing the precedent that impeachment is not just for political disagreement." },
+      { year: 1974, event: "Nixon Resignation", detail: "Facing certain impeachment and conviction for Watergate, Nixon became the first and only president to resign." },
+    ],
+    tension: "highly-contested",
+  },
+  {
+    id: "pardon",
+    article: "Article II · Section 2",
+    name: "The Pardon Power",
+    originalText: "...and he shall have Power to grant Reprieves and Pardons for Offences against the United States, except in Cases of Impeachment.",
+    summary: "The absolute, unreviewable power of mercy granted to one person.",
+    impactUS: "Presidents have used it to heal national wounds (Ford pardoning Nixon, Carter pardoning draft dodgers) and to correct systemic injustices. It is the only unchecked power in the Constitution.",
+    impactWorld: "Derived from the British monarch's 'prerogative of mercy,' it became a standard feature of modern republics, ensuring that the rigid justice system always has a human override.",
+    context1787: "Alexander Hamilton argued that without a mechanism for mercy, the justice system would appear too cruel, and in times of rebellion, a well-timed pardon could restore tranquility.",
+    contextToday: "Fiercely debated when presidents pardon political allies or preemptively pardon family members. The Supreme Court has repeatedly confirmed it cannot be limited by Congress or the Courts.",
+    timeline: [
+      { year: 1868, event: "Johnson's Amnesty Proclamation", detail: "Pardoned all former Confederates, aiming to quickly reunify a fractured nation post-Civil War." },
+      { year: 1974, event: "Ford pardons Nixon", detail: "A highly controversial move that likely cost Ford the 1976 election but spared the country a multi-year trial of a former president." },
+    ],
+    tension: "moderate",
+  },
+  {
+    id: "treaty",
+    article: "Article II · Section 2",
+    name: "The Treaty Clause",
+    originalText: "He shall have Power, by and with the Advice and Consent of the Senate, to make Treaties, provided two thirds of the Senators present concur...",
+    summary: "The architectural blueprint for American foreign policy.",
+    impactUS: "It creates a massive hurdle for international agreements. A president can negotiate, but needing 67 Senators makes treaties incredibly difficult, heavily favoring American isolationism and executive agreements.",
+    impactWorld: "It killed the League of Nations when the US Senate refused to ratify it, changing the course of the 20th century. The sheer difficulty of the 2/3rds requirement shapes how foreign nations negotiate with the US.",
+    context1787: "The Founders wanted the President to lead foreign policy but feared one person could sell out the nation's interests to a foreign power. They forced the President to get the Senate's overwhelming approval.",
+    contextToday: "Because formal treaties are so hard to pass, modern presidents use 'Executive Agreements' (like the Iran Nuclear Deal or Paris Climate Accord) which don't require Senate approval but can be instantly reversed by the next president.",
+    timeline: [
+      { year: 1919, event: "Senate Rejects Treaty of Versailles", detail: "Woodrow Wilson negotiated the end of WWI, but the Senate refused to ratify it, keeping the US out of the League of Nations." },
+      { year: 1949, event: "NATO Treaty Ratified", detail: "The Senate overwhelmingly approved NATO, fundamentally shifting the US from an isolationist stance to a global superpower." },
+    ],
+    tension: "contested",
+  },
+  {
+    id: "full-faith",
+    article: "Article IV · Section 1",
+    name: "The Full Faith and Credit Clause",
+    originalText: "Full Faith and Credit shall be given in each State to the public Acts, Records, and judicial Proceedings of every other State.",
+    summary: "The invisible glue that prevents chaos between state borders.",
+    impactUS: "It ensures your New York driver's license works in Florida, your Texas marriage is valid in California, and a debt judgment in Ohio can be collected in Nevada. It makes 50 states function as one society.",
+    impactWorld: "A revolutionary concept in federalism. It provided the intellectual foundation for the European Union's concept of mutual recognition across member states.",
+    context1787: "Under the Articles of Confederation, states acted like foreign countries. A criminal could escape debt or justice simply by crossing a state line.",
+    contextToday: "It was the central battleground for marriage equality before the Supreme Court ruled. Today, it is deeply contested regarding interstate abortion travel and gender-affirming care laws.",
+    timeline: [
+      { year: 1996, event: "Defense of Marriage Act (DOMA)", detail: "Congress explicitly tried to bypass this clause by allowing states to refuse to recognize same-sex marriages from other states." },
+      { year: 2015, event: "V.L. v. E.L.", detail: "The Supreme Court ruled unanimously that states must recognize adoptions granted by other states, regardless of their own laws." },
+    ],
+    tension: "highly-contested",
+  }
 ];
 
 // ─── Bill of Rights — clean Amendment objects ────────────────────────────────
@@ -646,11 +699,23 @@ export const POWERS_CHECK_EXAMPLES: PowersCheckExample[] = [
 // ─── Rights at Risk ───────────────────────────────────────────────────────────
 
 export const RIGHTS_AT_RISK_STATS = [
-  { value: 1_400_000_000, label: "People living under constitutions with no meaningful free speech", color: "gold" as const, source: "Freedom House 2024" },
-  { value: 67,            label: "Countries that arrested journalists last year",                    color: "red"  as const, source: "RSF Press Freedom Index 2024" },
-  { value: 83_000,        label: "People imprisoned for criticizing their government",               color: "gold" as const, source: "Amnesty International 2024" },
+  { value: 3_040_000_000, label: "People living in countries rated 'Not Free'", color: "gold" as const, source: "Freedom House 2026" },
+  { value: 67,            label: "Countries that imprisoned journalists last year",                    color: "red"  as const, source: "Committee to Protect Journalists (CPJ) 2026" },
+  { value: 83_000,        label: "People imprisoned for criticizing their government",               color: "gold" as const, source: "Amnesty International 2026" },
   { value: 12,            label: "Countries with a constitution older than 50 years",               color: "red"  as const, source: "Comparative Constitutions Project" },
 ];
+
+export function getRightsAtRiskStats(isRo: boolean) {
+  if (isRo) {
+    return [
+      { ...RIGHTS_AT_RISK_STATS[0], label: "Oameni care trăiesc în țări clasificate drept 'Nelibere'" },
+      { ...RIGHTS_AT_RISK_STATS[1], label: "Țări care au încarcerat jurnaliști anul trecut" },
+      { ...RIGHTS_AT_RISK_STATS[2], label: "Oameni încarcerați pentru criticarea guvernului lor" },
+      { ...RIGHTS_AT_RISK_STATS[3], label: "Țări cu o constituție mai veche de 50 de ani" },
+    ];
+  }
+  return RIGHTS_AT_RISK_STATS;
+}
 
 // ─── Sub-Page Navigation ──────────────────────────────────────────────────────
 
@@ -728,7 +793,7 @@ export function getConstitutionMetrics(locale: Locale): ConstitutionMetric[] {
       { ...CONSTITUTION_METRICS[1], label: "Articole în Constituția Originală",                      sublabel: "Eleganță arhitecturală" },
       { ...CONSTITUTION_METRICS[2], label: "Amendamente Ratificate",                                 sublabel: "În 237 de ani — aproape neschimbată" },
       { ...CONSTITUTION_METRICS[3], label: "Alegeri Prezidențiale",                                  sublabel: "Zero lovituri de stat. Zero suspendări." },
-      { ...CONSTITUTION_METRICS[4], label: "Cuvinte care Guvernează o Economie de 27 Trilioane $",   sublabel: "Cea mai scurtă constituție națională majoră" },
+      { ...CONSTITUTION_METRICS[4], label: "Cuvinte care Guvernează o Economie de 31 Trilioane $",   sublabel: "Cea mai scurtă constituție națională majoră" },
     ];
   }
   return CONSTITUTION_METRICS;

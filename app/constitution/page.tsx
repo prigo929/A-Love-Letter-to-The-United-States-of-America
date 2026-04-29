@@ -26,7 +26,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import {
   CONSTITUTION_CLAUSES, FOUNDING_FATHERS, BILL_OF_RIGHTS,
   PRESIDENTIAL_TRANSFERS, STATES_POLICY_DATA, POWERS_CHECK_EXAMPLES,
-  RIGHTS_AT_RISK_STATS, getConstitutionSubPages, getConstitutionMetrics,
+  RIGHTS_AT_RISK_STATS, getConstitutionSubPages, getConstitutionMetrics, getRightsAtRiskStats,
 } from "@/lib/data/constitution-data";
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/constitution" },
   openGraph: {
     title: "The Longest Experiment in Democracy",
-    description: "4,543 words that govern a $27 trillion economy. 59 presidential elections. Zero coups.",
+    description: "4,543 words that govern a $31 trillion economy. 59 presidential elections. Zero coups.",
     url: "/constitution",
     images: [{ url: "/images/constitution/bill-of-rights-page-1.jpg", width: 1200, height: 630, alt: "The United States Bill of Rights" }],
   },
@@ -74,7 +74,7 @@ export default async function ConstitutionPage() {
         <InkParticles count={40} />
         <CinematicStat
           value={4543}
-          label={isRo ? "cuvinte ce guvernează o economie de 27 trilioane $" : "words governing a $27 trillion economy"}
+          label={isRo ? "cuvinte ce guvernează o economie de 31 trilioane $" : "words governing a $31 trillion economy"}
           sublabel={isRo ? "Cea mai scurtă constituție națională majoră" : "The shortest major national constitution"}
         />
       </div>
@@ -98,8 +98,8 @@ export default async function ConstitutionPage() {
             <div className="mb-8 grid gap-6 md:grid-cols-2">
               <p className="font-body text-lg leading-relaxed text-[#B8B4AC]">
                 {isRo
-                  ? "4.543 de cuvinte. Scrise de 55 de bărbați în 116 zile la Philadelphia, în vara anului 1787. Aceleași cuvinte care autorizau comerțul de-a lungul râului Potomac autorizează astăzi economia de 27 de trilioane de dolari a Americii."
-                  : "4,543 words. Written by 55 men in 116 days in Philadelphia, in the summer of 1787. The same words that authorized commerce along the Potomac River in 1787 authorize America's $27 trillion economy today."}
+                  ? "4.543 de cuvinte. Scrise de 55 de bărbați în 116 zile la Philadelphia, în vara anului 1787. Aceleași cuvinte care autorizau comerțul de-a lungul râului Potomac autorizează astăzi economia de 31 de trilioane de dolari a Americii."
+                  : "4,543 words. Written by 55 men in 116 days in Philadelphia, in the summer of 1787. The same words that authorized commerce along the Potomac River in 1787 authorize America's $31 trillion economy today."}
               </p>
               <p className="font-body text-lg leading-relaxed text-[#B8B4AC]">
                 {isRo
@@ -120,7 +120,7 @@ export default async function ConstitutionPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#080B12] via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <p className="font-hero text-4xl text-[#C9A84C]">4,543</p>
-                <p className="font-body text-sm text-[#F5F0E8]/70">{isRo ? "cuvinte ce guvernează o economie de 27 trilioane $" : "words governing a $27 trillion economy"}</p>
+                <p className="font-body text-sm text-[#F5F0E8]/70">{isRo ? "cuvinte ce guvernează o economie de 31 trilioane $" : "words governing a $31 trillion economy"}</p>
               </div>
               <p className="absolute bottom-6 right-6 font-body text-xs text-[#6B6860]">{isRo ? "Arhivele Naționale · Washington, DC" : "US National Archives · Washington, DC"}</p>
             </div>
@@ -134,7 +134,7 @@ export default async function ConstitutionPage() {
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
               {isRo ? "Treci cu cursorul peste orice clauză pentru a-i ilumina moștenirea. Fiecare propoziție este în vigoare chiar acum." : "Hover over any clause to illuminate its legacy. Every sentence is in force right now."}
             </p>
-            <ClauseVault clauses={CONSTITUTION_CLAUSES} />
+            <ClauseVault clauses={CONSTITUTION_CLAUSES} isRo={isRo} />
           </Section>
 
           {/* ── Founders ─────────────────────────────────────────────────────── */}
@@ -150,7 +150,7 @@ export default async function ConstitutionPage() {
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
               {isRo ? "55 de delegați. 116 zile. Un singur scop. Dă click pe orice stea pentru a explora viețile și contribuțiile lor." : "55 delegates. 116 days. One purpose. Click any star to explore their lives and contributions."}
             </p>
-            <FounderConstellation founders={FOUNDING_FATHERS} />
+            <FounderConstellation founders={FOUNDING_FATHERS} isRo={isRo} />
           </Section>
 
           <CinematicPullQuote
@@ -174,7 +174,7 @@ export default async function ConstitutionPage() {
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
               {isRo ? "Motivul pentru care criticarea acestei pagini este protejată constituțional." : "The reason criticizing this page is constitutionally protected."}
             </p>
-            <AmendmentAccordion amendments={BILL_OF_RIGHTS} />
+            <AmendmentAccordion amendments={BILL_OF_RIGHTS} isRo={isRo} />
             <div className="mt-6 flex justify-end">
               <Link href="/constitution/bill-of-rights" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#C9A84C] hover:text-[#E8C878] transition-colors">
                 {isRo ? "Explorare Completă →" : "Full Explorer →"}
@@ -195,7 +195,7 @@ export default async function ConstitutionPage() {
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
               {isRo ? "Trei ramuri. Fiecare verificând celelalte două. Un triunghi de tensiune permanentă." : "Three branches. Each checking the other two. A triangle of permanent tension."}
             </p>
-            <SeparationDiagram examples={POWERS_CHECK_EXAMPLES} />
+            <SeparationDiagram examples={POWERS_CHECK_EXAMPLES} isRo={isRo} />
             <div className="mt-6 flex justify-end">
               <Link href="/constitution/separation-of-powers" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#C9A84C] hover:text-[#E8C878] transition-colors">
                 {isRo ? "Analiză Completă →" : "Full Analysis →"}
@@ -216,7 +216,7 @@ export default async function ConstitutionPage() {
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
               {isRo ? "Mișcă levierele. Vezi ce state corespund cel mai bine — și ce rezultate reale au produs." : "Move the policy levers. See which states match your settings — and what real-world outcomes they produced."}
             </p>
-            <FederalismSimulator states={STATES_POLICY_DATA} />
+            <FederalismSimulator states={STATES_POLICY_DATA} isRo={isRo} />
             <div className="mt-6 flex justify-end">
               <Link href="/constitution/federalism" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#C9A84C] hover:text-[#E8C878] transition-colors">
                 {isRo ? "Simulator Complet →" : "Full Simulator →"}
@@ -277,6 +277,42 @@ export default async function ConstitutionPage() {
                 : "Watch the world's constitutions rise and collapse. America's golden bar never stops."}
             </p>
             <ConstitutionRace isRo={isRo} />
+
+            {/* Norway vs US Context */}
+            <div className="mt-8 rounded-xl border border-[rgba(201,168,76,0.15)] bg-[rgba(201,168,76,0.02)] p-6 md:p-8">
+              <h3 className="mb-4 font-display text-xl text-[#F5F0E8] flex items-center gap-3">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[rgba(201,168,76,0.1)] text-xs font-bold text-[#C9A84C]">?</span>
+                {isRo ? "Excepția: Norvegia (1814)" : "The Exception: Norway (1814)"}
+              </h3>
+              <p className="mb-6 font-body text-sm leading-relaxed text-[#B8B4AC]">
+                {isRo
+                  ? "Deși ambele țări și-au păstrat documentele originale, Norvegia și-a transformat radical sistemul de guvernare prin amendamente, în timp ce S.U.A. a menținut aceeași structură fundamentală."
+                  : "While both countries have kept their original documents, Norway radically transformed its actual system of government, whereas the U.S. has maintained the exact same fundamental structure."}
+              </p>
+              
+              <div className="grid gap-6 md:grid-cols-2">
+                <div>
+                  <h4 className="mb-2 font-display text-base font-semibold text-[#C9A84C]">
+                    {isRo ? "Schimbări Structurale: 27 vs. 300+" : "Structural Changes: 27 vs. 300+"}
+                  </h4>
+                  <p className="font-body text-xs leading-relaxed text-[#8B8880]">
+                    {isRo
+                      ? "Constituția SUA a avut doar 27 de amendamente, menținând limba originală. Norvegia a avut peste 300 de amendamente și a rescris întregul document în 2014, deoarece limbajul originar în stil danez devenise prea dificil de citit."
+                      : "The US Constitution only has 27 amendments, maintaining its original language. Norway has had over 300 amendments and rewrote the entire document in modern Norwegian in 2014 because the 1814 Danish-style language became unreadable to modern citizens."}
+                  </p>
+                </div>
+                <div>
+                  <h4 className="mb-2 font-display text-base font-semibold text-[#C9A84C]">
+                    {isRo ? "Revizuiri Radicale" : "Radical Revisions"}
+                  </h4>
+                  <ul className="space-y-2 font-body text-xs leading-relaxed text-[#8B8880]">
+                    <li><strong className="text-[#B8B4AC]">1884 ({isRo ? "Parlamentarism" : "Parliamentarism"}):</strong> {isRo ? "Guvernul trebuie să aibă sprijinul majorității parlamentare." : "Introduced parliamentarism; cabinet requires parliamentary majority."}</li>
+                    <li><strong className="text-[#B8B4AC]">2009 ({isRo ? "Abolirea Unei Camere" : "Abolishing a House"}):</strong> {isRo ? "A trecut la un sistem unicameral, abolind o cameră a Parlamentului." : "Abolished a House of Parliament, switching to a unicameral system."}</li>
+                    <li><strong className="text-[#B8B4AC]">2012 ({isRo ? "Religie de Stat" : "State Religion"}):</strong> {isRo ? "A eliminat statutul Bisericii Evanghelice Luterane ca religie oficială." : "Removed the Evangelical-Lutheran Church as the official state religion."}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </Section>
         </div>
       </div>
@@ -314,7 +350,7 @@ export default async function ConstitutionPage() {
                     : "The rights Americans take for granted are not the default state of human civilization. They are the exception. They were built. They must be kept."}
                 </p>
               </div>
-              <RightsCounter stats={RIGHTS_AT_RISK_STATS} />
+              <RightsCounter stats={getRightsAtRiskStats(isRo)} />
             </div>
           </Section>
 

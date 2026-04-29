@@ -637,7 +637,7 @@ export function ConstitutionRace({ isRo }: { isRo: boolean }) {
   const [currentYear, setCurrentYear] = useState(1789);
   const [isPlaying, setIsPlaying] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const endYear = 2024;
+  const endYear = 2026;
 
   useEffect(() => {
     if (inViewRef && !isPlaying && currentYear === 1789) {

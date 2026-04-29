@@ -86,8 +86,10 @@ function CountUp({ to, delay=0 }: { to: number; delay?: number }) {
         duration: 2.2, ease: [0.16,1,0.3,1],
         onUpdate: v => {
           if (!ref.current) return;
-          ref.current.textContent = to>=1_000_000
-            ? `${(v/1_000_000).toFixed(1)}B`
+          ref.current.textContent = to >= 1_000_000_000
+            ? `${(v / 1_000_000_000).toFixed(1)}B`
+            : to >= 1_000_000
+            ? `${(v / 1_000_000).toFixed(1)}M`
             : v.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         },
       });
@@ -126,7 +128,7 @@ export function MetricCard({ value, suffix="", label, sublabel, delay=0 }: {
 const TENSION_COLORS: Record<string,string> = { settled:"#4ade80", moderate:"#fbbf24", contested:"#fb923c", "highly-contested":"#ef4444" };
 const TENSION_LABELS: Record<string,string> = { settled:"Settled Law", moderate:"Moderately Contested", contested:"Actively Contested", "highly-contested":"Highly Contested" };
 
-export function ClauseVault({ clauses }: { clauses: ConstitutionClause[] }) {
+export function ClauseVault({ clauses, isRo }: { clauses: ConstitutionClause[], isRo?: boolean }) {
   const [active, setActive]   = useState<ConstitutionClause|null>(null);
   const [hovered, setHovered] = useState<string|null>(null);
 
@@ -180,7 +182,9 @@ export function ClauseVault({ clauses }: { clauses: ConstitutionClause[] }) {
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-[rgba(201,168,76,.3)] bg-[rgba(201,168,76,.05)]">
                   <span className="text-xl text-[#C9A84C]">✦</span>
                 </div>
-                <p className="font-display text-lg italic text-[#F5F0E8]/60">Hover over any clause to illuminate its legacy</p>
+                <p className="font-display text-lg italic text-[#F5F0E8]/60">
+                  {isRo ? "Treci cu cursorul peste orice clauză pentru a-i ilumina moștenirea" : "Hover over any clause to illuminate its legacy"}
+                </p>
               </div>
             </motion.div>
           ) : (
@@ -196,9 +200,15 @@ export function ClauseVault({ clauses }: { clauses: ConstitutionClause[] }) {
                 <div className="h-2 w-2 rounded-full" style={{ backgroundColor:TENSION_COLORS[active.tension] }}/>
                 <span className="font-body text-xs" style={{ color:TENSION_COLORS[active.tension] }}>{TENSION_LABELS[active.tension]}</span>
               </div>
-              <div className="mb-5">
-                <p className="mb-2 font-body text-xs font-semibold uppercase tracking-[.15em] text-[#6B6860]">Why It Changed the World</p>
-                <p className="font-body text-sm leading-relaxed text-[#B8B4AC]">{active.modernImpact}</p>
+              <div className="mb-5 grid gap-4 sm:grid-cols-2">
+                <div>
+                  <p className="mb-2 font-body text-[10px] font-semibold uppercase tracking-[.15em] text-[#C9A84C]">Why It Changed the US</p>
+                  <p className="font-body text-sm leading-relaxed text-[#B8B4AC]">{active.impactUS}</p>
+                </div>
+                <div>
+                  <p className="mb-2 font-body text-[10px] font-semibold uppercase tracking-[.15em] text-[#C9A84C]">Why It Changed the World</p>
+                  <p className="font-body text-sm leading-relaxed text-[#B8B4AC]">{active.impactWorld}</p>
+                </div>
               </div>
               <div className="mb-5 rounded-xl border border-white/8 bg-white/3 p-4">
                 <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[.15em] text-[#C9A84C]">Echo Across Time</p>
@@ -243,7 +253,7 @@ export function ClauseVault({ clauses }: { clauses: ConstitutionClause[] }) {
 
 // ── FounderConstellation ──────────────────────────────────────────────────────
 
-export function FounderConstellation({ founders }: { founders: FoundingFather[] }) {
+export function FounderConstellation({ founders, isRo }: { founders: FoundingFather[], isRo?: boolean }) {
   const [active,  setActive]  = useState<FoundingFather|null>(null);
   const [hovered, setHovered] = useState<string|null>(null);
 
@@ -281,7 +291,9 @@ export function FounderConstellation({ founders }: { founders: FoundingFather[] 
             );
           })}
         </svg>
-        <p className="mt-2 text-center font-body text-xs text-white/25">Click any star to explore · Lines show collaboration</p>
+        <p className="mt-2 text-center font-body text-xs text-white/25">
+          {isRo ? "Dă click pe orice stea pentru a explora · Liniile indică colaborarea" : "Click any star to explore · Lines show collaboration"}
+        </p>
       </div>
 
       <AnimatePresence mode="wait">
@@ -339,7 +351,7 @@ const AM_COLORS = {
   blue:{ border:"border-[rgba(27,45,79,.4)]"    },
 };
 
-export function AmendmentAccordion({ amendments }: { amendments: Amendment[] }) {
+export function AmendmentAccordion({ amendments, isRo }: { amendments: Amendment[], isRo?: boolean }) {
   const [expanded, setExpanded] = useState<number|null>(null);
   return (
     <div className="grid gap-3 sm:grid-cols-2">
@@ -394,7 +406,7 @@ const BPOS = {
   judicial:   { x:400, y:80,  label:"Judicial",    icon:"⚖️", desc:"Supreme Court · Interprets law" },
 };
 
-export function SeparationDiagram({ examples }: { examples: PowersCheckExample[] }) {
+export function SeparationDiagram({ examples, isRo }: { examples: PowersCheckExample[], isRo?: boolean }) {
   const [selected, setSelected] = useState<PowersCheckExample|null>(null);
   const fp = selected ? BPOS[selected.from] : null;
   const tp = selected ? BPOS[selected.to]   : null;
@@ -429,7 +441,9 @@ export function SeparationDiagram({ examples }: { examples: PowersCheckExample[]
         </svg>
       </div>
       <div className="rounded-2xl border border-white/8 bg-[#12181F] p-5">
-        <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[.15em] text-[#6B6860]">Show me a real-world check:</p>
+        <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[.15em] text-[#6B6860]">
+          {isRo ? "Arată-mi un control real:" : "Show me a real-world check:"}
+        </p>
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {examples.map(ex=>(
             <button key={ex.id} onClick={()=>setSelected(selected?.id===ex.id?null:ex)}
@@ -463,7 +477,7 @@ export function SeparationDiagram({ examples }: { examples: PowersCheckExample[]
 
 // ── TransferTimeline ──────────────────────────────────────────────────────────
 
-export function TransferTimeline({ transfers }: { transfers: PresidentialTransfer[] }) {
+export function TransferTimeline({ transfers, isRo }: { transfers: PresidentialTransfer[], isRo?: boolean }) {
   const [selected, setSelected] = useState<PresidentialTransfer|null>(null);
   return (
     <div className="space-y-4">
@@ -516,7 +530,7 @@ export function TransferTimeline({ transfers }: { transfers: PresidentialTransfe
 
 // ── FederalismSimulator ───────────────────────────────────────────────────────
 
-export function FederalismSimulator({ states }: { states: StatePolicy[] }) {
+export function FederalismSimulator({ states, isRo }: { states: StatePolicy[], isRo?: boolean }) {
   const [corpTax,  setCorpTax]  = useState(5);
   const [minWage,  setMinWage]  = useState(10);
   const [regIndex, setRegIndex] = useState(5);
