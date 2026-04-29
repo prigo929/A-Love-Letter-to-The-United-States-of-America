@@ -273,8 +273,12 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
           <p className="font-body text-[10px] uppercase tracking-[0.3em] text-[#6B6860]">
             Scroll
           </p>
-          <div className="h-8 w-px overflow-hidden rounded-full bg-[rgba(201,168,76,0.2)]">
-            <div className="h-4 w-px bg-[#C9A84C] animate-bounce" />
+          <div className="h-8 w-5 rounded-full border border-[rgba(201,168,76,0.3)] flex justify-center pt-1.5">
+            <motion.div
+              className="w-1 h-1 bg-[#C9A84C] rounded-full"
+              animate={{ y: [0, 12, 0], opacity: [1, 0.4, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            />
           </div>
         </motion.div>
       </div>
