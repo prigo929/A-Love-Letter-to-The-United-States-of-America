@@ -416,25 +416,27 @@ export function UnbrokenLine({
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <div ref={containerRef} className="relative" style={{ position: "relative" }}>
-      {/* The unbroken golden line */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-[rgba(201,168,76,0.1)]">
-        <motion.div
-          className="absolute left-0 top-0 w-full origin-top"
-          style={{
-            height: lineHeight,
-            background:
-              "linear-gradient(180deg, #8B6A2A 0%, #C9A84C 30%, #E8C878 60%, #C9A84C 100%)",
-            boxShadow: "0 0 12px rgba(201,168,76,0.3), 0 0 40px rgba(201,168,76,0.1)",
-          }}
-        />
-      </div>
+    <div ref={containerRef} className="relative">
+      {/* The unbroken golden line and transfers */}
+      <div className="relative">
+        <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-[rgba(201,168,76,0.1)]">
+          <motion.div
+            className="absolute left-0 top-0 w-full origin-top"
+            style={{
+              height: lineHeight,
+              background:
+                "linear-gradient(180deg, #8B6A2A 0%, #C9A84C 30%, #E8C878 60%, #C9A84C 100%)",
+              boxShadow: "0 0 12px rgba(201,168,76,0.3), 0 0 40px rgba(201,168,76,0.1)",
+            }}
+          />
+        </div>
 
-      {/* Transfer nodes */}
-      <div className="relative space-y-12 py-8 md:space-y-16">
-        {transfers.map((t, i) => (
-          <TransferNode key={t.year} transfer={t} index={i} isRo={isRo} />
-        ))}
+        {/* Transfer nodes */}
+        <div className="relative space-y-12 py-8 md:space-y-16">
+          {transfers.map((t, i) => (
+            <TransferNode key={t.year} transfer={t} index={i} isRo={isRo} />
+          ))}
+        </div>
       </div>
 
       {/* Bottom statement */}
