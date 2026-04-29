@@ -170,7 +170,7 @@ export default async function ConstitutionPage() {
 
           <Section id="bill-of-rights">
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "Zece Garanții. 233 de Ani." : "Ten Guarantees. 233 Years."}
+              {isRo ? "Zece Garanții. 235 de Ani." : "Ten Guarantees. 235 Years."}
             </h2>
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
               {isRo ? "Motivul pentru care criticarea acestei pagini este protejată constituțional." : "The reason criticizing this page is constitutionally protected."}

@@ -130,7 +130,7 @@ export default async function BillOfRightsPage() {
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
             }}>
-              {isRo ? "233 DE ANI." : "233 YEARS."}
+              {isRo ? "235 DE ANI." : "235 YEARS."}
             </span>
           </h1>
 

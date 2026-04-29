@@ -723,7 +723,7 @@ export const CONSTITUTION_SUB_PAGES = [
   {
     href: "/constitution/bill-of-rights",
     title: "The Bill of Rights",
-    description: "10 amendments, 45 rights, 233 years of protection",
+    description: "10 amendments, 45 rights, 235 years of protection",
     imageSrc: "/images/constitution/bill-of-rights-page-1.jpg",
     imageAlt: "The Bill of Rights — original engrossed parchment, National Archives",
     badge: "10 Amendments",
@@ -775,7 +775,7 @@ export const CONSTITUTION_SUB_PAGES = [
 export function getConstitutionSubPages(locale: Locale) {
   if (locale === "ro") {
     return [
-      { ...CONSTITUTION_SUB_PAGES[0], title: "Declarația Drepturilor",     description: "10 amendamente, 45 drepturi, 233 de ani de protecție" },
+      { ...CONSTITUTION_SUB_PAGES[0], title: "Declarația Drepturilor",     description: "10 amendamente, 45 drepturi, 235 de ani de protecție" },
       { ...CONSTITUTION_SUB_PAGES[1], title: "Primul Amendament",          description: "Cea mai largă protecție a libertății de exprimare din lume" },
       { ...CONSTITUTION_SUB_PAGES[2], title: "Laboratoare ale Democrației",description: "50 de state, 50 de experimente de politici publice" },
       { ...CONSTITUTION_SUB_PAGES[3], title: "Separarea Puterilor",        description: "Sistemul care face tirania aproape imposibilă" },
