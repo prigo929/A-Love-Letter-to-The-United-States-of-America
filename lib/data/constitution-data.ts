@@ -798,3 +798,25 @@ export function getConstitutionMetrics(locale: Locale): ConstitutionMetric[] {
   }
   return CONSTITUTION_METRICS;
 }
+
+import { FOUNDING_FATHERS_RO, CONSTITUTION_CLAUSES_RO, BILL_OF_RIGHTS_RO, PRESIDENTIAL_TRANSFERS_RO, POWERS_CHECK_EXAMPLES_RO } from "./constitution-data-ro";
+
+export function getFoundingFathers(isRo: boolean) {
+  return isRo ? FOUNDING_FATHERS_RO : FOUNDING_FATHERS;
+}
+
+export function getConstitutionClauses(isRo: boolean) {
+  return isRo ? CONSTITUTION_CLAUSES_RO : CONSTITUTION_CLAUSES;
+}
+
+export function getBillOfRights(isRo: boolean) {
+  return isRo ? BILL_OF_RIGHTS_RO : BILL_OF_RIGHTS;
+}
+
+export function getPresidentialTransfers(isRo: boolean) {
+  return isRo ? PRESIDENTIAL_TRANSFERS_RO : PRESIDENTIAL_TRANSFERS;
+}
+
+export function getPowersCheckExamples(isRo: boolean) {
+  return isRo ? POWERS_CHECK_EXAMPLES_RO : POWERS_CHECK_EXAMPLES;
+}

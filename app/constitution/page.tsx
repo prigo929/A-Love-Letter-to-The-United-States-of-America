@@ -24,9 +24,10 @@ import {
 import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import {
-  CONSTITUTION_CLAUSES, FOUNDING_FATHERS, BILL_OF_RIGHTS,
-  PRESIDENTIAL_TRANSFERS, STATES_POLICY_DATA, POWERS_CHECK_EXAMPLES,
-  RIGHTS_AT_RISK_STATS, getConstitutionSubPages, getConstitutionMetrics, getRightsAtRiskStats,
+  STATES_POLICY_DATA,
+  getConstitutionSubPages, getConstitutionMetrics, getRightsAtRiskStats,
+  getFoundingFathers, getConstitutionClauses, getBillOfRights,
+  getPresidentialTransfers, getPowersCheckExamples
 } from "@/lib/data/constitution-data";
 
 export const metadata: Metadata = {
@@ -134,7 +135,7 @@ export default async function ConstitutionPage() {
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
               {isRo ? "Treci cu cursorul peste orice clauză pentru a-i ilumina moștenirea. Fiecare propoziție este în vigoare chiar acum." : "Hover over any clause to illuminate its legacy. Every sentence is in force right now."}
             </p>
-            <ClauseVault clauses={CONSTITUTION_CLAUSES} isRo={isRo} />
+            <ClauseVault clauses={getConstitutionClauses(isRo)} isRo={isRo} />
           </Section>
 
           {/* ── Founders ─────────────────────────────────────────────────────── */}
@@ -150,7 +151,7 @@ export default async function ConstitutionPage() {
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
               {isRo ? "55 de delegați. 116 zile. Un singur scop. Dă click pe orice stea pentru a explora viețile și contribuțiile lor." : "55 delegates. 116 days. One purpose. Click any star to explore their lives and contributions."}
             </p>
-            <FounderConstellation founders={FOUNDING_FATHERS} isRo={isRo} />
+            <FounderConstellation founders={getFoundingFathers(isRo)} isRo={isRo} />
           </Section>
 
           <CinematicPullQuote
@@ -174,7 +175,7 @@ export default async function ConstitutionPage() {
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
               {isRo ? "Motivul pentru care criticarea acestei pagini este protejată constituțional." : "The reason criticizing this page is constitutionally protected."}
             </p>
-            <AmendmentAccordion amendments={BILL_OF_RIGHTS} isRo={isRo} />
+            <AmendmentAccordion amendments={getBillOfRights(isRo)} isRo={isRo} />
             <div className="mt-6 flex justify-end">
               <Link href="/constitution/bill-of-rights" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#C9A84C] hover:text-[#E8C878] transition-colors">
                 {isRo ? "Explorare Completă →" : "Full Explorer →"}
@@ -195,7 +196,7 @@ export default async function ConstitutionPage() {
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
               {isRo ? "Trei ramuri. Fiecare verificând celelalte două. Un triunghi de tensiune permanentă." : "Three branches. Each checking the other two. A triangle of permanent tension."}
             </p>
-            <SeparationDiagram examples={POWERS_CHECK_EXAMPLES} isRo={isRo} />
+            <SeparationDiagram examples={getPowersCheckExamples(isRo)} isRo={isRo} />
             <div className="mt-6 flex justify-end">
               <Link href="/constitution/separation-of-powers" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#C9A84C] hover:text-[#E8C878] transition-colors">
                 {isRo ? "Analiză Completă →" : "Full Analysis →"}
@@ -258,7 +259,7 @@ export default async function ConstitutionPage() {
             </p>
           </Section>
 
-          <UnbrokenLine transfers={PRESIDENTIAL_TRANSFERS} isRo={isRo} />
+          <UnbrokenLine transfers={getPresidentialTransfers(isRo)} isRo={isRo} />
 
           <div className="mt-6 flex justify-end pb-8">
             <Link href="/constitution/democracy-track-record" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#C9A84C] hover:text-[#E8C878] transition-colors">

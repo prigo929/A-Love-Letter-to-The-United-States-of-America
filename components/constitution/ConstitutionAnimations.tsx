@@ -139,7 +139,7 @@ export function ClauseVault({ clauses, isRo }: { clauses: ConstitutionClause[], 
         <div className="pointer-events-none absolute inset-0" style={{ backgroundImage:"repeating-linear-gradient(to bottom,transparent,transparent 27px,rgba(180,160,120,.12) 27px,rgba(180,160,120,.12) 28px)" }}/>
         <div className="relative max-h-[560px] overflow-y-auto p-8 md:p-10">
           <div className="mb-8 text-center">
-            <p className="mb-2 font-body text-xs font-semibold uppercase tracking-[.25em] text-[#8B6A2A]">United States Constitution</p>
+            <p className="mb-2 font-body text-xs font-semibold uppercase tracking-[.25em] text-[#8B6A2A]">{isRo ? "Constituția Statelor Unite" : "United States Constitution"}</p>
             <div className="mx-auto h-px w-32 bg-[#C9A84C]/40"/>
           </div>
           <div className="space-y-6">
@@ -166,7 +166,7 @@ export function ClauseVault({ clauses, isRo }: { clauses: ConstitutionClause[], 
             ))}
           </div>
           <div className="mt-10 border-t border-[#C9A84C]/25 pt-6 text-center">
-            <p style={{ fontFamily:"'EB Garamond','Georgia',serif", fontSize:13, color:"#6B5A2E", fontStyle:"italic" }}>Done in Convention by the Unanimous Consent of the States present · September 17, 1787</p>
+            <p style={{ fontFamily:"'EB Garamond','Georgia',serif", fontSize:13, color:"#6B5A2E", fontStyle:"italic" }}>{isRo ? "Făcut în Convenție cu Consimțământul Unanim al Statelor prezente · 17 Septembrie 1787" : "Done in Convention by the Unanimous Consent of the States present · September 17, 1787"}</p>
           </div>
         </div>
       </div>
@@ -202,29 +202,29 @@ export function ClauseVault({ clauses, isRo }: { clauses: ConstitutionClause[], 
               </div>
               <div className="mb-5 grid gap-4 sm:grid-cols-2">
                 <div>
-                  <p className="mb-2 font-body text-[10px] font-semibold uppercase tracking-[.15em] text-[#C9A84C]">Why It Changed the US</p>
+                  <p className="mb-2 font-body text-[10px] font-semibold uppercase tracking-[.15em] text-[#C9A84C]">{isRo ? "De ce a schimbat SUA" : "Why It Changed the US"}</p>
                   <p className="font-body text-sm leading-relaxed text-[#B8B4AC]">{active.impactUS}</p>
                 </div>
                 <div>
-                  <p className="mb-2 font-body text-[10px] font-semibold uppercase tracking-[.15em] text-[#C9A84C]">Why It Changed the World</p>
+                  <p className="mb-2 font-body text-[10px] font-semibold uppercase tracking-[.15em] text-[#C9A84C]">{isRo ? "De ce a schimbat Lumea" : "Why It Changed the World"}</p>
                   <p className="font-body text-sm leading-relaxed text-[#B8B4AC]">{active.impactWorld}</p>
                 </div>
               </div>
               <div className="mb-5 rounded-xl border border-white/8 bg-white/3 p-4">
-                <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[.15em] text-[#C9A84C]">Echo Across Time</p>
+                <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[.15em] text-[#C9A84C]">{isRo ? "Ecou peste Timp" : "Echo Across Time"}</p>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <p className="mb-1 font-body text-[10px] uppercase tracking-wider text-[#6B6860]">1787 Context</p>
+                    <p className="mb-1 font-body text-[10px] uppercase tracking-wider text-[#6B6860]">{isRo ? "Contextul din 1787" : "1787 Context"}</p>
                     <p className="font-body text-xs leading-relaxed text-[#B8B4AC]">{active.context1787}</p>
                   </div>
                   <div>
-                    <p className="mb-1 font-body text-[10px] uppercase tracking-wider text-[#6B6860]">Today</p>
+                    <p className="mb-1 font-body text-[10px] uppercase tracking-wider text-[#6B6860]">{isRo ? "Astăzi" : "Today"}</p>
                     <p className="font-body text-xs leading-relaxed text-[#B8B4AC]">{active.contextToday}</p>
                   </div>
                 </div>
               </div>
               <div>
-                <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[.15em] text-[#6B6860]">Impact Timeline</p>
+                <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[.15em] text-[#6B6860]">{isRo ? "Cronologia Impactului" : "Impact Timeline"}</p>
                 <div className="space-y-3">
                   {active.timeline.map((item,i)=>(
                     <div key={i} className="flex gap-3">
@@ -375,18 +375,18 @@ export function AmendmentAccordion({ amendments, isRo }: { amendments: Amendment
                       <p style={{fontFamily:"'EB Garamond','Georgia',serif",fontSize:13,fontStyle:"italic",color:"#B8B4AC",lineHeight:1.7}}>&ldquo;{a.originalText}&rdquo;</p>
                     </blockquote>
                     <div>
-                      <p className="mb-2 font-body text-[10px] font-semibold uppercase tracking-[.2em] text-[#6B6860]">What It Means Today</p>
-                      <ul className="space-y-1.5">{a.whatItMeans.map((m,i)=><li key={i} className="flex gap-2 font-body text-xs text-[#B8B4AC]"><span className="mt-0.5 h-1 w-1 shrink-0 rounded-full bg-[#C9A84C]"/>{m}</li>)}</ul>
+                      <p className="mb-2 font-body text-[10px] font-semibold uppercase tracking-[.2em] text-[#6B6860]">{isRo ? "Ce Înseamnă Astăzi" : "What It Means Today"}</p>
+                      <ul className="space-y-1.5">{a.whatItMeans.map((w,i)=><li key={i} className="flex gap-2 font-body text-xs text-[#B8B4AC]"><span className="mt-0.5 h-1 w-1 shrink-0 rounded-full bg-[#C9A84C]"/>{w}</li>)}</ul>
                     </div>
                     <div>
-                      <p className="mb-2 font-body text-[10px] font-semibold uppercase tracking-[.2em] text-[#6B6860]">Real-World Examples</p>
+                      <p className="mb-2 font-body text-[10px] font-semibold uppercase tracking-[.2em] text-[#6B6860]">{isRo ? "Exemple din Lumea Reală" : "Real-World Examples"}</p>
                       <ul className="space-y-1.5">{a.realWorldExamples.map((ex,i)=><li key={i} className="flex gap-2 font-body text-xs text-[#B8B4AC]"><span className="text-[#C9A84C]">→</span>{ex}</li>)}</ul>
                     </div>
                     <div>
-                      <p className="mb-2 font-body text-[10px] font-semibold uppercase tracking-[.2em] text-[#6B6860]">Global Comparison</p>
+                      <p className="mb-2 font-body text-[10px] font-semibold uppercase tracking-[.2em] text-[#6B6860]">{isRo ? "Comparație Globală" : "Global Comparison"}</p>
                       <div className="space-y-1.5">{a.globalComparison.map((g,i)=><div key={i} className="flex gap-2 rounded-lg border border-white/6 bg-white/3 px-3 py-2"><span className="font-body text-xs font-semibold text-[#F5F0E8]">{g.country}:</span><span className="font-body text-xs text-[#6B6860]">{g.comparison}</span></div>)}</div>
                     </div>
-                    {a.deepDiveHref&&<a href={a.deepDiveHref} className="inline-flex items-center gap-1.5 rounded-lg border border-[rgba(201,168,76,.3)] px-4 py-2 font-body text-xs font-semibold text-[#C9A84C] transition-all hover:bg-[rgba(201,168,76,.08)]">Full Deep Dive →</a>}
+                    {a.deepDiveHref&&<a href={a.deepDiveHref} className="inline-flex items-center gap-1.5 rounded-lg border border-[rgba(201,168,76,.3)] px-4 py-2 font-body text-xs font-semibold text-[#C9A84C] transition-all hover:bg-[rgba(201,168,76,.08)]">{isRo ? "Explorare Completă →" : "Full Deep Dive →"}</a>}
                   </div>
                 </motion.div>
               )}
@@ -408,8 +408,15 @@ const BPOS = {
 
 export function SeparationDiagram({ examples, isRo }: { examples: PowersCheckExample[], isRo?: boolean }) {
   const [selected, setSelected] = useState<PowersCheckExample|null>(null);
-  const fp = selected ? BPOS[selected.from] : null;
-  const tp = selected ? BPOS[selected.to]   : null;
+
+  const localizedBPOS = useMemo(() => ({
+    legislative:{ x:180, y:260, label: isRo ? "Legislativ" : "Legislative", icon:"🏛️", desc: isRo ? "Congres · 535 membri" : "Congress · 535 members" },
+    executive:  { x:620, y:260, label: isRo ? "Executiv" : "Executive",   icon:"🦅", desc: isRo ? "Președinte · Aplică legea" : "President · Enforces law" },
+    judicial:   { x:400, y:80,  label: isRo ? "Judiciar" : "Judicial",    icon:"⚖️", desc: isRo ? "Curtea Supremă · Interpretează legea" : "Supreme Court · Interprets law" },
+  }), [isRo]);
+
+  const fp = selected ? localizedBPOS[selected.from as keyof typeof localizedBPOS] : null;
+  const tp = selected ? localizedBPOS[selected.to as keyof typeof localizedBPOS]   : null;
 
   return (
     <div className="space-y-6">
@@ -427,7 +434,7 @@ export function SeparationDiagram({ examples, isRo }: { examples: PowersCheckExa
           {selected&&fp&&tp&&(
             <motion.line key={selected.id} x1={fp.x} y1={fp.y} x2={tp.x} y2={tp.y} stroke="#C9A84C" strokeWidth="2.5" markerEnd="url(#arr)" initial={{pathLength:0,opacity:0}} animate={{pathLength:1,opacity:1}} transition={{duration:.6}} filter="url(#bg)"/>
           )}
-          {Object.entries(BPOS).map(([k,p])=>{
+          {Object.entries(localizedBPOS).map(([k,p])=>{
             const isA=selected&&(selected.from===k||selected.to===k);
             return (
               <g key={k}>
@@ -506,17 +513,21 @@ export function TransferTimeline({ transfers, isRo }: { transfers: PresidentialT
           >
             <div className="mb-3 flex flex-wrap items-center gap-3">
               <span className="font-display text-3xl font-semibold text-[#C9A84C]">{selected.year}</span>
-              {selected.crisis&&<span className="rounded-full border border-[rgba(192,57,43,.5)] bg-[rgba(192,57,43,.1)] px-3 py-1 font-body text-xs text-[#C0392B]">Constitutional Crisis</span>}
+              {selected.crisis&&<span className="rounded-full border border-[rgba(192,57,43,.5)] bg-[rgba(192,57,43,.1)] px-3 py-1 font-body text-xs text-[#C0392B]">{isRo ? "Criză Constituțională" : "Constitutional Crisis"}</span>}
             </div>
             <p className="mb-2 font-body text-sm font-semibold text-[#F5F0E8]">{selected.from} → {selected.to}</p>
             <p className="mb-4 font-body text-sm leading-relaxed text-[#B8B4AC]">{selected.context}</p>
-            {selected.crisis&&selected.crisisDetail&&<div className="mb-4 rounded-xl border border-[rgba(192,57,43,.2)] bg-[rgba(192,57,43,.06)] p-4"><p className="mb-1 font-body text-[10px] font-semibold uppercase tracking-wider text-[#C0392B]">The Crisis</p><p className="font-body text-xs leading-relaxed text-[#B8B4AC]">{selected.crisisDetail}</p></div>}
-            {selected.verdict&&<div className="rounded-xl border border-green-500/20 bg-green-900/10 p-4"><p className="mb-1 font-body text-[10px] font-semibold uppercase tracking-wider text-green-400">The Verdict</p><p className="font-body text-xs leading-relaxed text-[#B8B4AC]">{selected.verdict}</p></div>}
+            {selected.crisis&&selected.crisisDetail&&<div className="mb-4 rounded-xl border border-[rgba(192,57,43,.2)] bg-[rgba(192,57,43,.06)] p-4"><p className="mb-1 font-body text-[10px] font-semibold uppercase tracking-wider text-[#C0392B]">{isRo ? "Criza" : "The Crisis"}</p><p className="font-body text-xs leading-relaxed text-[#B8B4AC]">{selected.crisisDetail}</p></div>}
+            {selected.verdict&&<div className="rounded-xl border border-green-500/20 bg-green-900/10 p-4"><p className="mb-1 font-body text-[10px] font-semibold uppercase tracking-wider text-green-400">{isRo ? "Verdictul" : "The Verdict"}</p><p className="font-body text-xs leading-relaxed text-[#B8B4AC]">{selected.verdict}</p></div>}
           </motion.div>
         )}
       </AnimatePresence>
       <div className="grid grid-cols-3 gap-3">
-        {[{v:String(transfers.length),l:"Transfers",s:"1797–2025"},{v:String(transfers.filter(t=>t.crisis).length),l:"Crisis Transfers",s:"Constitution survived all"},{v:"0",l:"Coups",s:"Zero. In 228 years."}].map(s=>(
+        {[
+          {v:String(transfers.length),l:isRo ? "Transferuri" : "Transfers",s:"1797–2025"},
+          {v:String(transfers.filter(t=>t.crisis).length),l:isRo ? "Transferuri în Criză" : "Crisis Transfers",s:isRo ? "Constituția a supraviețuit tuturor" : "Constitution survived all"},
+          {v:"0",l:isRo ? "Lovituri de Stat" : "Coups",s:isRo ? "Zero. În 228 ani." : "Zero. In 228 years."}
+        ].map(s=>(
           <div key={s.l} className="rounded-xl border border-white/8 bg-[#12181F] p-4 text-center">
             <p className="font-display text-2xl text-[#C9A84C]">{s.v}</p>
             <p className="font-body text-xs font-semibold text-[#F5F0E8]">{s.l}</p>
@@ -546,12 +557,12 @@ export function FederalismSimulator({ states, isRo }: { states: StatePolicy[], i
   return (
     <div className="grid gap-6 lg:grid-cols-[340px_1fr]">
       <div className="rounded-2xl border border-[rgba(201,168,76,.15)] bg-[#12181F] p-6">
-        <p className="mb-1 font-body text-xs font-semibold uppercase tracking-[.15em] text-[#C9A84C]">Policy Controls</p>
-        <p className="mb-6 font-body text-xs text-[#6B6860]">Adjust levers — watch states respond</p>
+        <p className="mb-1 font-body text-xs font-semibold uppercase tracking-[.15em] text-[#C9A84C]">{isRo ? "Controale Politice" : "Policy Controls"}</p>
+        <p className="mb-6 font-body text-xs text-[#6B6860]">{isRo ? "Ajustează pârghiile — vezi cum reacționează statele" : "Adjust levers — watch states respond"}</p>
         {[
-          {label:"Corporate Tax Rate",min:0,max:10,step:.5,value:corpTax,set:setCorpTax,unit:"%"},
-          {label:"Minimum Wage",min:7.25,max:20,step:.25,value:minWage,set:setMinWage,unit:"$/hr"},
-          {label:"Regulatory Burden",min:1,max:10,step:.5,value:regIndex,set:setRegIndex,unit:"/10"},
+          {label:isRo ? "Impozitul pe Profit" : "Corporate Tax Rate",min:0,max:10,step:.5,value:corpTax,set:setCorpTax,unit:"%"},
+          {label:isRo ? "Salariul Minim" : "Minimum Wage",min:7.25,max:20,step:.25,value:minWage,set:setMinWage,unit:"$/hr"},
+          {label:isRo ? "Povara Reglementării" : "Regulatory Burden",min:1,max:10,step:.5,value:regIndex,set:setRegIndex,unit:"/10"},
         ].map(sl=>(
           <div key={sl.label} className="mb-5">
             <div className="mb-2 flex justify-between">
@@ -559,16 +570,21 @@ export function FederalismSimulator({ states, isRo }: { states: StatePolicy[], i
               <span className="font-hero text-base text-[#C9A84C]">{sl.value}{sl.unit}</span>
             </div>
             <input type="range" min={sl.min} max={sl.max} step={sl.step} value={sl.value} onChange={e=>sl.set(Number(e.target.value))} className="w-full cursor-pointer" style={{accentColor:"#C9A84C"}}/>
-            <div className="mt-1 flex justify-between font-body text-[10px] text-[#6B6860]"><span>Low</span><span>High</span></div>
+            <div className="mt-1 flex justify-between font-body text-[10px] text-[#6B6860]"><span>{isRo ? "Scăzut" : "Low"}</span><span>{isRo ? "Ridicat" : "High"}</span></div>
           </div>
         ))}
         {best&&(
           <div className="mt-2 rounded-xl border border-[rgba(201,168,76,.3)] bg-[rgba(201,168,76,.06)] p-4">
-            <p className="mb-1 font-body text-[10px] font-semibold uppercase tracking-wider text-[#C9A84C]">Your Bundle Most Closely Matches:</p>
+            <p className="mb-1 font-body text-[10px] font-semibold uppercase tracking-wider text-[#C9A84C]">{isRo ? "Pachetul Tău se Potrivește Cel Mai Bine Cu:" : "Your Bundle Most Closely Matches:"}</p>
             <p className="font-display text-2xl font-semibold text-[#F5F0E8]">⭐ {best.name}</p>
-            <p className="mb-3 font-body text-xs text-[#C9A84C]">Match Score: {Math.round(best.score*100)}%</p>
+            <p className="mb-3 font-body text-xs text-[#C9A84C]">{isRo ? "Scor de Potrivire:" : "Match Score:"} {Math.round(best.score*100)}%</p>
             <div className="grid grid-cols-2 gap-2 text-center">
-              {[{label:"GDP Growth",value:`+${best.gdpGrowth5yr}%`},{label:"Net Migration",value:`${best.netMigration>0?"+":""}${best.netMigration.toLocaleString()}k`},{label:"Corp Tax",value:`${best.corporateTax}%`},{label:"Business Rank",value:`#${best.businessRank}`}].map(s=>(
+              {[
+                {label:isRo ? "Creștere PIB" : "GDP Growth",value:`+${best.gdpGrowth5yr}%`},
+                {label:isRo ? "Migrație Netă" : "Net Migration",value:`${best.netMigration>0?"+":""}${best.netMigration.toLocaleString()}k`},
+                {label:isRo ? "Impozit Profit" : "Corp Tax",value:`${best.corporateTax}%`},
+                {label:isRo ? "Locul în Afaceri" : "Business Rank",value:`#${best.businessRank}`}
+              ].map(s=>(
                 <div key={s.label} className="rounded-lg border border-white/8 bg-white/3 py-2">
                   <p className="font-hero text-sm text-[#C9A84C]">{s.value}</p>
                   <p className="font-body text-[9px] text-[#6B6860]">{s.label}</p>
@@ -579,7 +595,7 @@ export function FederalismSimulator({ states, isRo }: { states: StatePolicy[], i
         )}
       </div>
       <div>
-        <p className="mb-4 font-body text-xs text-[#6B6860]">States colored by alignment with your settings · Gold = closest match</p>
+        <p className="mb-4 font-body text-xs text-[#6B6860]">{isRo ? "Statele sunt colorate după alinierea cu setările tale · Aur = cea mai apropiată potrivire" : "States colored by alignment with your settings · Gold = closest match"}</p>
         <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 xl:grid-cols-4">
           {scored.sort((a,b)=>b.score-a.score).map(state=>(
             <div key={state.id} onMouseEnter={()=>setHovered(state)} onMouseLeave={()=>setHovered(null)}
