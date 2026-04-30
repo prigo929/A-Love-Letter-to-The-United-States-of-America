@@ -711,16 +711,16 @@ export function ChapterFooter({ isRo }: { isRo: boolean }) {
           exit={{ y: 20, opacity: 0 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="fixed bottom-0 left-0 right-0 z-50 pointer-events-none"
+          style={{
+            background: "linear-gradient(180deg, transparent 0%, rgba(8,11,18,0.9) 40%)",
+            WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%)",
+            maskImage: "linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%)",
+          }}
         >
-          <div
-            className="mx-auto flex max-w-screen-lg items-center justify-center gap-4 px-4 py-3"
-            style={{
-              background: "linear-gradient(180deg, transparent 0%, rgba(8,11,18,0.9) 40%)",
-            }}
-          >
+          <div className="flex items-center justify-center gap-4 px-4 py-3">
             {/* Left line */}
             <div
-              className="hidden h-px flex-1 sm:block"
+              className="hidden h-px flex-1 max-w-[200px] sm:block"
               style={{
                 background: "linear-gradient(90deg, transparent, rgba(201,168,76,0.2))",
               }}
@@ -745,7 +745,7 @@ export function ChapterFooter({ isRo }: { isRo: boolean }) {
 
             {/* Right line */}
             <div
-              className="hidden h-px flex-1 sm:block"
+              className="hidden h-px flex-1 max-w-[200px] sm:block"
               style={{
                 background: "linear-gradient(90deg, rgba(201,168,76,0.2), transparent)",
               }}
