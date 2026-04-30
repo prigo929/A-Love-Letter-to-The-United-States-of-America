@@ -49,7 +49,7 @@ const GEARS: GearInfo[] = [
     label: "LEGISLATIVE",
     labelRo: "LEGISLATIV",
     article: "ARTICLE I",
-    cx: 175, cy: 160,
+    cx: 185, cy: 170,
     outerR: 95, innerR: 78,
     teeth: 16,
     direction: 1,
@@ -65,7 +65,7 @@ const GEARS: GearInfo[] = [
     label: "EXECUTIVE",
     labelRo: "EXECUTIV",
     article: "ARTICLE II",
-    cx: 525, cy: 160,
+    cx: 515, cy: 170,
     outerR: 95, innerR: 78,
     teeth: 16,
     direction: -1,
@@ -81,7 +81,7 @@ const GEARS: GearInfo[] = [
     label: "JUDICIAL",
     labelRo: "JUDICIAR",
     article: "ARTICLE III",
-    cx: 350, cy: 400,
+    cx: 350, cy: 455,
     outerR: 95, innerR: 78,
     teeth: 16,
     direction: 1,
@@ -171,7 +171,7 @@ export function GearDiagram({ isRo }: { isRo: boolean }) {
         }} />
 
         <svg
-          viewBox="0 0 700 540"
+          viewBox="0 0 700 600"
           className="w-full"
           role="img"
           aria-label={isRo ? "Diagrama separării puterilor" : "Separation of Powers gear diagram"}
@@ -201,8 +201,8 @@ export function GearDiagram({ isRo }: { isRo: boolean }) {
           {GEARS.map((gear) => {
             const isActive = activeGear === gear.id;
             // Midpoint between center and gear for label placement
-            const midX = (CENTER_X + gear.cx) / 2;
-            const midY = (CENTER_Y + gear.cy) / 2;
+            const midX = CENTER_X + (gear.cx - CENTER_X) * 0.38;
+            const midY = CENTER_Y + (gear.cy - CENTER_Y) * 0.38;
             const angle = Math.atan2(gear.cy - CENTER_Y, gear.cx - CENTER_X);
             const labelAngle = (angle * 180) / Math.PI;
 
@@ -323,7 +323,7 @@ export function GearDiagram({ isRo }: { isRo: boolean }) {
                 {/* Branch label */}
                 <text
                   x={gear.cx}
-                  y={gear.cy - gear.outerR - 16}
+                  y={gear.id === "judicial" ? gear.cy + gear.outerR + 24 : gear.cy - gear.outerR - 16}
                   textAnchor="middle"
                   fill={isActive ? "#E8C878" : "#C9A84C"}
                   fontSize="10"

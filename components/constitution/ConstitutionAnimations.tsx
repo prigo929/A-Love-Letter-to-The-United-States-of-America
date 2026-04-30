@@ -367,7 +367,7 @@ const AM_COLORS = {
 export function AmendmentAccordion({ amendments, isRo }: { amendments: Amendment[], isRo?: boolean }) {
   const [expanded, setExpanded] = useState<number|null>(null);
   return (
-    <div className="grid gap-3 sm:grid-cols-2">
+    <div className="grid gap-3 sm:grid-cols-2 items-start">
       {amendments.map(a=>{
         const isOpen=expanded===a.number;
         return (
