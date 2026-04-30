@@ -1,0 +1,30 @@
+﻿[Wait]
+Path=unavail.cur
+
+[IBeam]
+Path=America Text Select.cur
+
+[Help]
+Path=America Question.cur
+
+[Crosshair]
+Path=America Presicion.cur
+
+[NWPen]
+Path=America pen.cur
+
+[Hand]
+Path=America hand.cur
+
+[Arrow]
+Path=America Arrow.cur
+
+[SizeWE]
+Path=America 1.cur
+
+[SizeNS]
+Path=America 2.cur
+
+[UpArrow]
+Path=America 3.cur
+
