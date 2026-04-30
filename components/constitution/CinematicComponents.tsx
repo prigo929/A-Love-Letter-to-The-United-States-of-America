@@ -125,28 +125,23 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
     offset: ["start start", "end start"],
   });
 
-  // Phase 1: "We the People" — fades out very quickly
-  const wtpOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const wtpScale   = useTransform(scrollYProgress, [0, 0.2], [1, 0.85]);
-  const wtpY       = useTransform(scrollYProgress, [0, 0.2], [0, -80]);
+  // Phase 1: Main headline — appears as hero enters view
+  const headlineOpacity = useTransform(scrollYProgress, [0, 0.15, 0.65, 0.9], [0, 1, 1, 0]);
+  const headlineY       = useTransform(scrollYProgress, [0, 0.15, 0.65, 0.9], [60, 0, 0, -20]);
 
-  // Phase 2: Main headline — overlaps heavily with Phase 1
-  const headlineOpacity = useTransform(scrollYProgress, [0.15, 0.35, 0.65, 0.9], [0, 1, 1, 0]);
-  const headlineY       = useTransform(scrollYProgress, [0.15, 0.35, 0.65, 0.9], [60, 0, 0, -20]);
-
-  // Phase 3: Subtitle + CTAs — follows almost immediately
-  const subtitleOpacity = useTransform(scrollYProgress, [0.25, 0.4, 0.65, 0.9], [0, 1, 1, 0]);
-  const subtitleY       = useTransform(scrollYProgress, [0.25, 0.4], [30, 0]);
+  // Phase 2: Subtitle + CTAs — follows quickly
+  const subtitleOpacity = useTransform(scrollYProgress, [0.1, 0.2, 0.65, 0.9], [0, 1, 1, 0]);
+  const subtitleY       = useTransform(scrollYProgress, [0.1, 0.2], [30, 0]);
 
   // Background parchment watermark
   const parchmentOpacity = useTransform(scrollYProgress, [0, 0.1, 0.65, 0.95], [0, 0.04, 0.04, 0.01]);
   const bgScale          = useTransform(scrollYProgress, [0, 1], [1.12, 1]);
 
   // Golden line
-  const lineWidth = useTransform(scrollYProgress, [0.15, 0.35], ["0%", "100%"]);
+  const lineWidth = useTransform(scrollYProgress, [0, 0.15], ["0%", "100%"]);
 
   // Scroll indicator
-  const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.03, 0.1], [0, 0.8, 0]);
+  const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.03, 0.15], [0, 0.8, 0]);
 
   return (
     <section
@@ -171,36 +166,7 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
         <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#080B12]/60 via-[#080B12]/30 to-[#080B12]" />
         <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#080B12]/50 via-transparent to-[#080B12]/50" />
 
-        {/* Phase 1: "We the People" */}
-        <motion.div
-          className="absolute z-10 text-center"
-          style={{
-            opacity: wtpOpacity,
-            scale: wtpScale,
-            y: wtpY,
-            willChange: "transform, opacity",
-          }}
-        >
-          <p
-            className="select-none"
-            style={{
-              fontFamily: "'EB Garamond', 'Georgia', serif",
-              fontSize: "clamp(48px, 10vw, 120px)",
-              fontStyle: "italic",
-              fontWeight: 400,
-              color: "#C9A84C",
-              textShadow: "0 0 80px rgba(201,168,76,0.3), 0 0 160px rgba(201,168,76,0.1)",
-              letterSpacing: "0.04em",
-            }}
-          >
-            We the People
-          </p>
-          <p className="mt-4 font-body text-sm tracking-[0.3em] uppercase text-[#6B6860]">
-            {isRo ? "Statele Unite ale Americii · Înf. 1776" : "United States of America · Est. 1776"}
-          </p>
-        </motion.div>
-
-        {/* Phase 2: Main headline */}
+        {/* Main headline */}
         <motion.div
           className="absolute z-10 mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8"
           style={{ opacity: headlineOpacity, y: headlineY, willChange: "transform, opacity" }}
@@ -658,32 +624,18 @@ export function ConstitutionRace({ isRo }: { isRo: boolean }) {
 
   useEffect(() => {
     if (!isPlaying) return;
-
-    // Crescendo pacing: slow → accelerating → sprint → dramatic freeze
-    const getInterval = (year: number): number => {
-      if (year < 1850) return 100;   // Methodical — early republic
-      if (year < 1950) return 50;    // Accelerating — industrial era
-      if (year < 2020) return 15;    // Sprint — modern era
-      return 30;                      // Slight slowdown for final years
-    };
-
-    let animFrame: ReturnType<typeof setTimeout>;
-    const step = () => {
+    intervalRef.current = setInterval(() => {
       setCurrentYear((prev) => {
         if (prev >= endYear) {
           setIsPlaying(false);
+          if (intervalRef.current) clearInterval(intervalRef.current);
           return endYear;
         }
-        const next = prev + 1;
-        // Schedule next tick with era-appropriate timing
-        animFrame = setTimeout(step, getInterval(next));
-        return next;
+        return prev + 1;
       });
-    };
-    animFrame = setTimeout(step, getInterval(currentYear));
-
+    }, 30);
     return () => {
-      clearTimeout(animFrame);
+      if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [isPlaying]);
 

@@ -723,12 +723,8 @@ export function RightsCounter({ stats }: { stats: {value:number;label:string;col
             </div>
             <div className="flex-1 min-w-0">
               <p className="font-body text-sm leading-snug text-[#F5F0E8]">{s.label}</p>
-              <div className="mt-1 flex items-center gap-2">
+              <div className="mt-1">
                 <span className="font-body text-[9px] text-[#6B6860]" style={{ fontVariantNumeric: "tabular-nums" }}>{s.source}</span>
-                <span className="text-[8px] text-[rgba(201,168,76,.3)]">·</span>
-                <span className={`font-body text-[9px] font-semibold uppercase tracking-wider ${s.color === "gold" ? "text-[rgba(201,168,76,.4)]" : "text-[rgba(192,57,43,.4)]"}`}>
-                  {s.color === "gold" ? "◉ VERIFIED" : "◉ CRITICAL"}
-                </span>
               </div>
             </div>
           </motion.div>

@@ -7,7 +7,7 @@
 // into digital form — every detail is intentional.
 
 import { useRef, useState, useEffect } from "react";
-import { motion, useInView, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { motion, AnimatePresence, useInView, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 
 // ── ExhibitCase ───────────────────────────────────────────────────────────────
 // Wraps content in a museum-vitrine container with recessed glass illusion.
@@ -395,139 +395,206 @@ export function InscriptionText({
 }
 
 // ── ScrollToDissolveEntrance ──────────────────────────────────────────────────
-// The "curtain rises" moment. A title card that dissolves as the user scrolls.
-// User-agency driven — no timers, no forced delays.
-// As the user scrolls, elements fade, drift apart, and scale down, revealing
-// the CinematicHero behind.
+// The "curtain rises" moment. A fixed overlay title card that dissolves as
+// the user scrolls DOWN. Fully reversible — scrolling back up restores it.
+// Only responds to positive scroll (overscroll / bounce up won't trigger it).
 export function ScrollToDissolveEntrance({
   isRo,
 }: {
   isRo: boolean;
 }) {
+  const { scrollY } = useScroll();
+
+  // Dissolve within first 150px of downward scroll
+  // useTransform clamps below 0, so upward overscroll keeps opacity at 1
+  const overlayOpacity = useTransform(scrollY, [0, 60, 150], [1, 0.3, 0]);
+  const titleScale = useTransform(scrollY, [0, 150], [1, 0.95]);
+  const titleY = useTransform(scrollY, [0, 150], [0, -30]);
+  const scrollHintOpacity = useTransform(scrollY, [0, 20, 80], [0.7, 0.5, 0]);
+
+  // pointer-events disabled when substantially dissolved (reversible)
+  const [interactive, setInteractive] = useState(true);
+  useMotionValueEvent(scrollY, "change", (v) => {
+    setInteractive(v < 100);
+  });
+
+  return (
+    <motion.div
+      className={`fixed inset-0 z-40 flex items-center justify-center ${!interactive ? "pointer-events-none" : ""}`}
+      style={{ opacity: overlayOpacity }}
+    >
+      {/* Heavy vault darkness */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "radial-gradient(ellipse 80% 60% at 50% 50%, #0A0E16 0%, #020406 100%)",
+        }}
+      />
+
+      {/* Marble texture */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: "url('/images/constitution/marble-texture.webp')",
+          backgroundRepeat: "repeat",
+          backgroundSize: "512px 512px",
+          opacity: 0.015,
+          mixBlendMode: "screen",
+        }}
+      />
+
+      <motion.div
+        className="relative z-10 text-center px-6"
+        style={{ scale: titleScale, y: titleY }}
+      >
+        {/* Stars row — top */}
+        <p
+          className="mb-6 select-none text-[#C9A84C]"
+          style={{
+            fontSize: "clamp(10px, 1.2vw, 14px)",
+            letterSpacing: "0.5em",
+          }}
+        >
+          ★ ★ ★ ★ ★ ★ ★ ★ ★
+        </p>
+
+        {/* Title */}
+        <h1
+          className="select-none font-hero uppercase"
+          style={{
+            fontSize: "clamp(28px, 5vw, 64px)",
+            letterSpacing: "0.15em",
+            color: "#F5F0E8",
+          }}
+        >
+          {isRo ? "CONSTITUȚIA" : "THE CONSTITUTION"}
+        </h1>
+        <p
+          className="mt-3 select-none"
+          style={{
+            fontFamily: "'EB Garamond', 'Georgia', serif",
+            fontSize: "clamp(14px, 2vw, 24px)",
+            fontStyle: "italic",
+            fontWeight: 400,
+            color: "rgba(201,168,76,0.65)",
+          }}
+        >
+          {isRo
+            ? "a Statelor Unite ale Americii"
+            : "of the United States of America"}
+        </p>
+
+        {/* Divider */}
+        <div
+          className="mx-auto mt-8 h-px w-24"
+          style={{
+            background: "linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent)",
+          }}
+        />
+
+        <p
+          className="mt-5 select-none font-body text-[#6B6860]"
+          style={{
+            fontSize: "clamp(10px, 1vw, 12px)",
+            letterSpacing: "0.3em",
+            textTransform: "uppercase",
+          }}
+        >
+          {isRo ? "Un Exhibit Interactiv" : "An Interactive Exhibit"}
+        </p>
+
+        {/* Stars row — bottom */}
+        <p
+          className="mt-6 select-none text-[#C9A84C]"
+          style={{
+            fontSize: "clamp(10px, 1.2vw, 14px)",
+            letterSpacing: "0.5em",
+          }}
+        >
+          ★ ★ ★ ★ ★ ★ ★ ★ ★
+        </p>
+      </motion.div>
+
+      {/* Scroll-to-enter hint */}
+      <motion.div
+        className="absolute bottom-12 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3"
+        style={{ opacity: scrollHintOpacity }}
+      >
+        <p
+          className="font-body uppercase text-[#6B6860]"
+          style={{ fontSize: "10px", letterSpacing: "0.3em" }}
+        >
+          {isRo ? "Derulează pentru a Intra" : "Scroll to Enter"}
+        </p>
+        <motion.div
+          className="h-6 w-px bg-gradient-to-b from-[rgba(201,168,76,0.4)] to-transparent"
+          animate={{ scaleY: [1, 0.4, 1], opacity: [0.6, 0.2, 0.6] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </motion.div>
+    </motion.div>
+  );
+}
+
+// ── WeThePeople ──────────────────────────────────────────────────────────────
+// Dedicated scroll-locked section for the "We the People" reveal.
+// Its own 120vh container gives it ~20vh of comfortable scroll visibility
+// before the user moves into the CinematicHero.
+export function WeThePeople({ isRo }: { isRo: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  // Title card dissolves as user scrolls
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.5, 0.8], [1, 0.6, 0]);
-  const titleScale = useTransform(scrollYProgress, [0, 0.8], [1, 0.9]);
-  const titleY = useTransform(scrollYProgress, [0, 0.8], [0, -60]);
-  const starsSpread = useTransform(scrollYProgress, [0, 0.6], [0, 40]);
-  const scrollHintOpacity = useTransform(scrollYProgress, [0, 0.05, 0.15], [0, 0.7, 0]);
-  // Overlay that fades out to reveal hero
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.6, 1], [1, 0.5, 0]);
+  // Stay fully visible through most of the section, fade out at the end
+  const opacity = useTransform(scrollYProgress, [0, 0.6, 1], [1, 1, 0]);
+  const scale   = useTransform(scrollYProgress, [0, 0.6, 1], [1, 1, 0.9]);
+  const y       = useTransform(scrollYProgress, [0.6, 1], [0, -60]);
 
   return (
-    <div ref={containerRef} className="relative" style={{ height: "80vh" }}>
-      <motion.div
-        className="sticky top-0 z-30 flex h-screen items-center justify-center overflow-hidden"
-        style={{ opacity: overlayOpacity }}
-      >
-        {/* Heavy vault darkness */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(ellipse 80% 60% at 50% 50%, #0A0E16 0%, #020406 100%)",
-          }}
-        />
-
-        {/* Marble texture */}
+    <section
+      ref={containerRef}
+      className="relative bg-[#080B12]"
+      style={{ height: "120vh" }}
+    >
+      <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
+        {/* Subtle marble ambient */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             backgroundImage: "url('/images/constitution/marble-texture.webp')",
             backgroundRepeat: "repeat",
             backgroundSize: "512px 512px",
-            opacity: 0.015,
+            opacity: 0.02,
             mixBlendMode: "screen",
           }}
         />
 
         <motion.div
           className="relative z-10 text-center"
-          style={{ opacity: titleOpacity, scale: titleScale, y: titleY }}
+          style={{ opacity, scale, y, willChange: "transform, opacity" }}
         >
-          {/* Stars row — top */}
-          <motion.p
-            className="mb-6 select-none text-[#C9A84C]"
-            style={{
-              fontSize: "clamp(12px, 1.5vw, 18px)",
-              letterSpacing: starsSpread,
-            }}
-          >
-            ★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★
-          </motion.p>
-
-          {/* Title */}
-          <h1
-            className="select-none font-hero uppercase"
-            style={{
-              fontSize: "clamp(36px, 6vw, 72px)",
-              letterSpacing: "0.12em",
-              color: "#F5F0E8",
-              textShadow: "0 0 80px rgba(201,168,76,0.15)",
-            }}
-          >
-            {isRo ? "CONSTITUȚIA" : "THE CONSTITUTION"}
-          </h1>
           <p
-            className="mt-2 select-none font-body"
+            className="select-none"
             style={{
               fontFamily: "'EB Garamond', 'Georgia', serif",
-              fontSize: "clamp(16px, 2.5vw, 28px)",
+              fontSize: "clamp(48px, 10vw, 120px)",
               fontStyle: "italic",
               fontWeight: 400,
-              color: "rgba(201,168,76,0.7)",
+              color: "#C9A84C",
+              textShadow: "0 0 80px rgba(201,168,76,0.3), 0 0 160px rgba(201,168,76,0.1)",
+              letterSpacing: "0.04em",
             }}
           >
-            {isRo
-              ? "a Statelor Unite ale Americii"
-              : "of the United States of America"}
+            We the People
           </p>
-
-          <p
-            className="mt-8 select-none font-body text-[#6B6860]"
-            style={{
-              fontSize: "clamp(11px, 1.2vw, 14px)",
-              letterSpacing: "0.25em",
-            }}
-          >
-            ·{"  "}{isRo ? "Un Exhibit Interactiv" : "An Interactive Exhibit"}{"  "}·
+          <p className="mt-4 font-body text-sm tracking-[0.3em] uppercase text-[#6B6860]">
+            {isRo ? "Statele Unite ale Americii · Înf. 1776" : "United States of America · Est. 1776"}
           </p>
-
-          {/* Stars row — bottom */}
-          <motion.p
-            className="mt-6 select-none text-[#C9A84C]"
-            style={{
-              fontSize: "clamp(12px, 1.5vw, 18px)",
-              letterSpacing: starsSpread,
-            }}
-          >
-            ★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★
-          </motion.p>
         </motion.div>
-
-        {/* Scroll-to-enter hint */}
-        <motion.div
-          className="absolute bottom-12 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3"
-          style={{ opacity: scrollHintOpacity }}
-        >
-          <p
-            className="font-body uppercase text-[#6B6860]"
-            style={{ fontSize: "10px", letterSpacing: "0.3em" }}
-          >
-            {isRo ? "Derulează pentru a Intra" : "Scroll to Enter"}
-          </p>
-          <motion.div
-            className="h-6 w-px bg-gradient-to-b from-[rgba(201,168,76,0.4)] to-transparent"
-            animate={{ scaleY: [1, 0.4, 1], opacity: [0.6, 0.2, 0.6] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </motion.div>
-      </motion.div>
-    </div>
+      </div>
+    </section>
   );
 }
 
@@ -581,18 +648,20 @@ export function ConservationSpotlight({
 // Uses IntersectionObserver to detect which chapter is in view.
 const CHAPTER_IDS = [
   { id: "overview", chapter: "I", en: "The Living Document", ro: "Documentul Viu" },
+  { id: "the-document", chapter: "I", en: "The Living Document", ro: "Documentul Viu" },
   { id: "founders", chapter: "II", en: "Architects of Liberty", ro: "Arhitecții Libertății" },
   { id: "bill-of-rights", chapter: "III", en: "Bill of Rights", ro: "Declarația Drepturilor" },
   { id: "separation-of-powers", chapter: "IV", en: "Separation of Powers", ro: "Separarea Puterilor" },
   { id: "federalism", chapter: "V", en: "Laboratories of Democracy", ro: "Laboratoare ale Democrației" },
   { id: "track-record", chapter: "VI", en: "250 Years of Evidence", ro: "250 de Ani de Dovezi" },
+  { id: "constitution-race", chapter: "VI", en: "250 Years of Evidence", ro: "250 de Ani de Dovezi" },
   { id: "rights-at-risk", chapter: "VII", en: "Global Context", ro: "Context Global" },
   { id: "world-without", chapter: "VIII", en: "The World Without", ro: "Lumea Fără" },
+  { id: "explore", chapter: "VIII", en: "The World Without", ro: "Lumea Fără" },
 ];
 
 export function ChapterFooter({ isRo }: { isRo: boolean }) {
   const [activeChapter, setActiveChapter] = useState<typeof CHAPTER_IDS[0] | null>(null);
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const observerMap = new Map<string, IntersectionObserverEntry>();
@@ -614,7 +683,6 @@ export function ChapterFooter({ isRo }: { isRo: boolean }) {
           }
         }
         setActiveChapter(topmost);
-        setVisible(topmost !== null);
       },
       { threshold: 0.1, rootMargin: "-10% 0px -10% 0px" }
     );
@@ -633,54 +701,58 @@ export function ChapterFooter({ isRo }: { isRo: boolean }) {
     };
   }, []);
 
-  if (!activeChapter) return null;
-
   return (
-    <motion.div
-      initial={{ y: 20, opacity: 0 }}
-      animate={visible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed bottom-0 left-0 right-0 z-50 pointer-events-none"
-    >
-      <div
-        className="mx-auto flex max-w-screen-lg items-center justify-center gap-4 px-4 py-3"
-        style={{
-          background: "linear-gradient(180deg, transparent 0%, rgba(8,11,18,0.9) 40%)",
-        }}
-      >
-        {/* Left line */}
-        <div
-          className="hidden h-px flex-1 sm:block"
-          style={{
-            background: "linear-gradient(90deg, transparent, rgba(201,168,76,0.2))",
-          }}
-        />
-
-        {/* Chapter indicator */}
-        <p
-          className="font-body uppercase text-[rgba(201,168,76,0.5)]"
-          style={{
-            fontSize: "11px",
-            letterSpacing: "0.2em",
-            fontWeight: 600,
-          }}
+    <AnimatePresence>
+      {activeChapter && (
+        <motion.div
+          key="chapter-footer"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 20, opacity: 0 }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="fixed bottom-0 left-0 right-0 z-50 pointer-events-none"
         >
-          <span className="text-[rgba(201,168,76,0.3)]">
-            {isRo ? "Capitol" : "Chapter"} {activeChapter.chapter}{" "}
-            {isRo ? "din" : "of"} VIII
-          </span>
-          <span className="mx-3 text-[rgba(201,168,76,0.15)]">·</span>
-          <span>{isRo ? activeChapter.ro : activeChapter.en}</span>
-        </p>
+          <div
+            className="mx-auto flex max-w-screen-lg items-center justify-center gap-4 px-4 py-3"
+            style={{
+              background: "linear-gradient(180deg, transparent 0%, rgba(8,11,18,0.9) 40%)",
+            }}
+          >
+            {/* Left line */}
+            <div
+              className="hidden h-px flex-1 sm:block"
+              style={{
+                background: "linear-gradient(90deg, transparent, rgba(201,168,76,0.2))",
+              }}
+            />
 
-        {/* Right line */}
-        <div
-          className="hidden h-px flex-1 sm:block"
-          style={{
-            background: "linear-gradient(90deg, rgba(201,168,76,0.2), transparent)",
-          }}
-        />
-      </div>
-    </motion.div>
+            {/* Chapter indicator */}
+            <p
+              className="font-body uppercase text-[rgba(201,168,76,0.5)]"
+              style={{
+                fontSize: "11px",
+                letterSpacing: "0.2em",
+                fontWeight: 600,
+              }}
+            >
+              <span className="text-[rgba(201,168,76,0.3)]">
+                {isRo ? "Capitol" : "Chapter"} {activeChapter.chapter}{" "}
+                {isRo ? "din" : "of"} VIII
+              </span>
+              <span className="mx-3 text-[rgba(201,168,76,0.15)]">·</span>
+              <span>{isRo ? activeChapter.ro : activeChapter.en}</span>
+            </p>
+
+            {/* Right line */}
+            <div
+              className="hidden h-px flex-1 sm:block"
+              style={{
+                background: "linear-gradient(90deg, rgba(201,168,76,0.2), transparent)",
+              }}
+            />
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

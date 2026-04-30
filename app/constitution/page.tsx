@@ -33,6 +33,7 @@ import {
   BreathingSection,
   InscriptionText,
   ScrollToDissolveEntrance,
+  WeThePeople,
   ConservationSpotlight,
   ChapterFooter,
 } from "@/components/constitution/ExhibitComponents";
@@ -88,7 +89,12 @@ export default async function ConstitutionPage() {
       <ScrollToDissolveEntrance isRo={isRo} />
 
       {/* ══════════════════════════════════════════════════════════════════════
-          CINEMATIC HERO — Scroll-driven "We the People" reveal
+          WE THE PEOPLE — Dedicated scroll-locked section
+          ══════════════════════════════════════════════════════════════════════ */}
+      <WeThePeople isRo={isRo} />
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          CINEMATIC HERO — Main headline + CTAs
           ══════════════════════════════════════════════════════════════════════ */}
       <CinematicHero isRo={isRo} />
 
