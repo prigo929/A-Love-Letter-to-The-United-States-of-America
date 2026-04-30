@@ -1,24 +1,20 @@
-// ─── Federalism Sub-Page ─────────────────────────────────────────────────────
-// This page explains "Federalism" — the division of power between the 
-// National government and the State governments.
-//
-// For Beginners: We use an interactive "Simulator" here. It's a game-like
-// tool that shows how different states have different laws, which is why
-// we call them the "Laboratories of Democracy."
+// ─── Federalism Deep-Dive — "The Policy Laboratory" ─────────────────────────
+// The full Bloomberg-terminal-grade policy simulator.
+// 50 states, granular levers, interactive US map, migration vectors.
 
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumb }           from "@/components/layout/Breadcrumb";
 import { QuoteBlock }           from "@/components/sections/QuoteBlock";
-import { ConstitutionAurora, InkParticles, FederalismSimulator } from "@/components/constitution/ConstitutionAnimations";
+import { ConstitutionAurora, InkParticles } from "@/components/constitution/ConstitutionAnimations";
+import { PolicyLaboratory }     from "@/components/constitution/PolicyLaboratory";
 import { getServerLocale }      from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER }     from "@/lib/utils";
-import { STATES_POLICY_DATA }   from "@/lib/data/constitution-data";
 
 export const metadata: Metadata = {
-  title: "Federalism | Constitution | America: The Greatest Nation",
-  description: "50 states, 50 policy laboratories. How American federalism produces the most diverse, dynamic, and competitive governance system on Earth.",
+  title: "Federalism — Policy Laboratory | Constitution | America: The Greatest Nation",
+  description: "50 states, 50 policy laboratories. Design your ideal state and discover which real American state already lives that way. The most dynamic governance system on Earth.",
 };
 
 const FEDERALISM_FACTS_EN = [
@@ -46,6 +42,7 @@ export default async function FederalismPage() {
 
   return (
     <>
+      {/* ── Hero ── */}
       <div className="relative overflow-hidden bg-[#080B12] pt-28 pb-16">
         <ConstitutionAurora />
         <InkParticles count={60} />
@@ -61,30 +58,41 @@ export default async function FederalismPage() {
           <Breadcrumb items={[{ label: isRo ? "Constituție" : "Constitution", href: "/constitution" }, { label: isRo ? "Federalism" : "Federalism" }]} className="mb-8" />
           <p className="mb-4 font-body text-xs font-semibold uppercase tracking-[0.3em] text-[#C9A84C]">{isRo ? "Laboratoare ale Democrației" : "Laboratories of Democracy"}</p>
           <h1 className="mb-6 font-hero leading-none" style={{ fontSize: "clamp(3rem,7vw,6rem)" }}>
-            <span className="block text-[#F5F0E8]">{isRo ? "50 DE STATE." : "50 STATES."}</span>
+            <span className="block text-[#F5F0E8]">{isRo ? "LABORATORUL" : "THE POLICY"}</span>
             <span className="block" style={{ background: "linear-gradient(135deg,#D4AF6A,#E8C878,#C9A84C)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              {isRo ? "50 DE EXPERIMENTE." : "50 EXPERIMENTS."}
+              {isRo ? "DE POLITICI." : "LABORATORY."}
             </span>
           </h1>
           <p className="max-w-2xl font-body text-lg leading-relaxed text-[#B8B4AC]">
-            {isRo ? "Judecătorul Brandeis a numit-o 'laboratorul democrației'. Cincizeci de state competitive cu politici diferite, producând date reale despre ce funcționează — sistemul de guvernare cel mai dinamic de pe Pământ." : "Justice Brandeis called it the 'laboratory of democracy.' Fifty competitive states with different policies, producing real data on what works — the most dynamic governance system on Earth."}
+            {isRo
+              ? "Proiectează-ți statul ideal. Descoperă care stat american trăiește deja așa. Analizează rezultatele reale — PIB, migrație, venit, ocupare. 50 de state. 50 de experimente. Un singur document le face posibile."
+              : "Design your ideal state. Discover which real American state already lives that way. Analyze real outcomes — GDP, migration, income, employment. 50 states. 50 experiments. One document makes it all possible."}
           </p>
         </div>
       </div>
 
       <div className="bg-[#080B12]">
-        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 space-y-16">
+        <div className="mx-auto max-w-[1400px] px-4 py-16 sm:px-6 lg:px-8 space-y-16">
 
-          {/* Simulator */}
+          {/* ── Policy Laboratory ── */}
           <section>
-            <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">{isRo ? "Simulatorul de Politici" : "Policy Simulator"}</h2>
-            <p className="mb-8 font-body text-base text-[#B8B4AC]">
-              {isRo ? "Ajustează levierele politice. Vezi ce state au politici similare — și ce rezultate reale au produs acele politici." : "Adjust the policy levers. See which states have similar policies — and what real-world outcomes those policies have actually produced."}
-            </p>
-            <FederalismSimulator states={STATES_POLICY_DATA} />
+            <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <h2 className="mb-2 font-display text-h2 text-[#F5F0E8]">{isRo ? "Simulator Interactiv" : "Interactive Simulator"}</h2>
+                <p className="max-w-xl font-body text-sm text-[#B8B4AC]">
+                  {isRo
+                    ? "Ajustează levierele politice din panoul din stânga. Harta se actualizează instant. Click pe orice stat pentru date detaliate."
+                    : "Adjust the policy levers in the left panel. The map updates instantly. Click any state for detailed data."}
+                </p>
+              </div>
+              <p className="font-body text-[9px] uppercase tracking-[0.15em] text-[#6B6860]">
+                {isRo ? "Al 10-lea Amendament · Puterea Rezervată Statelor" : "10th Amendment · Powers Reserved to the States"}
+              </p>
+            </div>
+            <PolicyLaboratory isRo={isRo} />
           </section>
 
-          {/* Laboratories section */}
+          {/* ── Laboratories in Action ── */}
           <section>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">{isRo ? "Laboratoarele în Acțiune" : "The Laboratories in Action"}</h2>
             <p className="mb-8 font-body text-base text-[#B8B4AC]">
@@ -92,7 +100,7 @@ export default async function FederalismPage() {
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {facts.map((fact) => (
-                <div key={fact.id} className="rounded-2xl border border-[rgba(201,168,76,0.12)] bg-[#12181F] p-5">
+                <div key={fact.id} className="rounded-sm p-5" style={{ border: "1px solid rgba(201,168,76,0.08)", background: "linear-gradient(168deg, rgba(12,16,24,0.95) 0%, rgba(8,11,18,0.98) 100%)" }}>
                   <p className="mb-2 font-body text-sm font-semibold leading-snug text-[#F5F0E8]">{fact.fact}</p>
                   <p className="font-body text-xs leading-relaxed text-[#B8B4AC]">{fact.detail}</p>
                 </div>
@@ -100,8 +108,8 @@ export default async function FederalismPage() {
             </div>
           </section>
 
-          {/* 10th Amendment callout */}
-          <section className="overflow-hidden rounded-2xl border border-[rgba(201,168,76,0.2)] bg-[#12181F]">
+          {/* ── 10th Amendment callout ── */}
+          <section className="overflow-hidden rounded-sm" style={{ border: "1px solid rgba(201,168,76,0.12)", background: "linear-gradient(168deg, rgba(12,16,24,0.95) 0%, rgba(8,11,18,0.98) 100%)" }}>
             <div className="grid md:grid-cols-2">
               <div className="p-8">
                 <p className="mb-2 font-body text-xs font-semibold uppercase tracking-[0.2em] text-[#C9A84C]">{isRo ? "Al 10-lea Amendament" : "The 10th Amendment"}</p>
