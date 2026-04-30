@@ -180,7 +180,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bebasNeue.variable} ${playfairDisplay.variable} ${inter.variable}`}
+      className={`${bebasNeue.variable} ${playfairDisplay.variable} ${inter.variable} overflow-x-hidden`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
@@ -210,7 +210,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body className="bg-navy-dark text-white antialiased font-body">
+      <body className="bg-navy-dark text-white antialiased font-body overflow-x-hidden">
         <LanguageProvider>
           <ReadingProgressBar />
 
