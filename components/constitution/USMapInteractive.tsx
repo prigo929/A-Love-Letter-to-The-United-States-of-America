@@ -8,28 +8,28 @@ import { useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { StatePolicyExtended } from "@/lib/data/federalism-data";
 
-// ── Tile-grid cartogram — industry-standard layout ──────────────────────────
-// Matches the Bloomberg / NYT / FiveThirtyEight hex-tile convention.
-// 11 columns × 7 rows, manually positioned for geographic accuracy.
+// ── Tile-grid cartogram — manually positioned ──────────────────────────────
 const TILE_SIZE = 48;
 const GAP = 3;
-const COLS = 11;
-const ROWS = 7;
+const COLS = 12;
+const ROWS = 8;
 const TILE_POSITIONS: Record<string, [number, number]> = {
   // Row 0
-  AK: [0, 0], ME: [10, 0],
+  AK: [0, 0], ME: [11, 0],
   // Row 1
-  WA: [0, 1], ID: [1, 1], MT: [2, 1], ND: [3, 1], MN: [4, 1], IL: [5, 1], WI: [6, 1], MI: [7, 1], NY: [8, 1], RI: [9, 1], MA: [10, 1],
+  VT: [9, 1], NH: [10, 1],
   // Row 2
-  OR: [0, 2], NV: [1, 2], WY: [2, 2], SD: [3, 2], IA: [4, 2], IN: [5, 2], OH: [6, 2], PA: [7, 2], NJ: [8, 2], CT: [9, 2], NH: [10, 2],
+  WA: [0, 2], ID: [1, 2], MT: [2, 2], ND: [3, 2], MN: [4, 2], WI: [5, 2], MI: [6, 2], NY: [8, 2], MA: [9, 2], RI: [10, 2],
   // Row 3
-  CA: [0, 3], UT: [1, 3], CO: [2, 3], NE: [3, 3], MO: [4, 3], KY: [5, 3], WV: [6, 3], VA: [7, 3], MD: [8, 3], DE: [9, 3], VT: [10, 3],
+  OR: [0, 3], NV: [1, 3], WY: [2, 3], SD: [3, 3], IA: [4, 3], IL: [5, 3], IN: [6, 3], OH: [7, 3], PA: [8, 3], NJ: [9, 3], CT: [10, 3],
   // Row 4
-  AZ: [1, 4], NM: [2, 4], KS: [3, 4], AR: [4, 4], TN: [5, 4], NC: [6, 4], SC: [7, 4],
+  CA: [0, 4], UT: [1, 4], CO: [2, 4], NE: [3, 4], MO: [4, 4], KY: [5, 4], WV: [6, 4], VA: [7, 4], MD: [8, 4], DE: [9, 4],
   // Row 5
-  HI: [0, 5], TX: [2, 5], OK: [3, 5], LA: [4, 5], MS: [5, 5], AL: [6, 5], GA: [7, 5],
+  AZ: [1, 5], NM: [2, 5], KS: [3, 5], AR: [4, 5], TN: [5, 5], NC: [6, 5], SC: [7, 5],
   // Row 6
-  FL: [7, 6],
+  OK: [3, 6], LA: [4, 6], MS: [5, 6], AL: [6, 6], GA: [7, 6],
+  // Row 7
+  HI: [0, 7], TX: [3, 7], FL: [8, 7],
 };
 
 function scoreToColor(score: number): string {
