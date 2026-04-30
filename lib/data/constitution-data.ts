@@ -247,6 +247,29 @@ export const FOUNDING_FATHERS: FoundingFather[] = [
       { title: "Friends Divided", author: "Gordon Wood" },
     ],
   },
+  {
+    id: "jay",
+    name: "John Jay",
+    years: "1745–1829",
+    role: "1st Chief Justice of the United States · Co-author of The Federalist Papers · President of the Continental Congress",
+    quote: "Those who own the country ought to govern it.",
+    quoteSource: "Letter to Gouverneur Morris, 1783",
+    portraitSrc: "/images/founders/john-jay.jpg",
+    portraitAlt: "John Jay — Gilbert Stuart portrait, c. 1794",
+    cx: 85, cy: 52,
+    connections: ["hamilton", "madison", "washington"],
+    contributions: [
+      "Served as the first Chief Justice of the United States — defining the role and dignity of the Supreme Court from its inception",
+      "Co-authored 5 Federalist Papers (Nos. 2–5, 64) — arguing for the Constitution's power over foreign affairs and the dangers of disunion",
+      "Negotiated the Jay Treaty with Britain (1794) — averting a second war and establishing America's diplomatic credibility",
+      "As President of the Continental Congress, helped steer the young republic through its most precarious years",
+      "His New York Anti-Slavery Society work laid groundwork for gradual emancipation in the state",
+    ],
+    recommendedReading: [
+      { title: "John Jay: Founding Father", author: "Walter Stahr" },
+      { title: "The Federalist Papers", author: "Hamilton, Madison & Jay" },
+    ],
+  },
 ];
 
 // ─── Constitution Clauses ─────────────────────────────────────────────────────

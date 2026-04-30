@@ -146,6 +146,29 @@ export const FOUNDING_FATHERS_RO: FoundingFather[] = [
       { title: "Friends Divided", author: "Gordon Wood" },
     ],
   },
+  {
+    id: "jay",
+    name: "John Jay",
+    years: "1745–1829",
+    role: "Primul Președinte al Curții Supreme · Co-autor al Lucrărilor Federaliste · Președintele Congresului Continental",
+    quote: "Cei care dețin țara ar trebui să o guverneze.",
+    quoteSource: "Scrisoare către Gouverneur Morris, 1783",
+    portraitSrc: "/images/founders/john-jay.jpg",
+    portraitAlt: "John Jay",
+    cx: 85, cy: 52,
+    connections: ["hamilton", "madison", "washington"],
+    contributions: [
+      "A servit ca primul Președinte al Curții Supreme a Statelor Unite — definind rolul și demnitatea Curții Supreme de la început",
+      "Co-autor a 5 Lucrări Federaliste (Nr. 2–5, 64) — argumentând pentru puterea Constituției asupra afacerilor externe și pericolele dezbinării",
+      "A negociat Tratatul Jay cu Marea Britanie (1794) — evitând un al doilea război și stabilind credibilitatea diplomatică a Americii",
+      "Ca Președinte al Congresului Continental, a ajutat la ghidarea tinerei republici prin cei mai precari ani",
+      "Munca sa la Societatea Anti-Sclavie din New York a pus bazele emancipării graduale în stat",
+    ],
+    recommendedReading: [
+      { title: "John Jay: Founding Father", author: "Walter Stahr" },
+      { title: "The Federalist Papers", author: "Hamilton, Madison & Jay" },
+    ],
+  },
 ];
 
 export const CONSTITUTION_CLAUSES_RO: ConstitutionClause[] = [

@@ -116,8 +116,7 @@ export function CinematicStat({
 }
 
 // 2. CINEMATIC HERO — The grand introduction of the exhibit.
-// It uses a parallax effect (where background moves slower than foreground)
-// to create a feeling of depth and importance.
+// "We the People" is visible on load, then scrolls into the headline phase.
 export function CinematicHero({ isRo }: { isRo: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -125,29 +124,34 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
     offset: ["start start", "end start"],
   });
 
-  // Phase 1: Main headline — appears as hero enters view
-  const headlineOpacity = useTransform(scrollYProgress, [0, 0.15, 0.65, 0.9], [0, 1, 1, 0]);
-  const headlineY       = useTransform(scrollYProgress, [0, 0.15, 0.65, 0.9], [60, 0, 0, -20]);
+  // Phase 1: "We the People" — visible on load, fades as user scrolls
+  const wtpOpacity = useTransform(scrollYProgress, [0, 0.25, 0.35], [1, 1, 0]);
+  const wtpScale   = useTransform(scrollYProgress, [0, 0.35], [1, 0.88]);
+  const wtpY       = useTransform(scrollYProgress, [0, 0.35], [0, -60]);
 
-  // Phase 2: Subtitle + CTAs — follows quickly
-  const subtitleOpacity = useTransform(scrollYProgress, [0.1, 0.2, 0.65, 0.9], [0, 1, 1, 0]);
-  const subtitleY       = useTransform(scrollYProgress, [0.1, 0.2], [30, 0]);
+  // Phase 2: Main headline — fades in as "We the People" fades out
+  const headlineOpacity = useTransform(scrollYProgress, [0.3, 0.42, 0.72, 0.92], [0, 1, 1, 0]);
+  const headlineY       = useTransform(scrollYProgress, [0.3, 0.42, 0.72, 0.92], [60, 0, 0, -20]);
+
+  // Phase 3: Subtitle + CTAs
+  const subtitleOpacity = useTransform(scrollYProgress, [0.38, 0.48, 0.72, 0.92], [0, 1, 1, 0]);
+  const subtitleY       = useTransform(scrollYProgress, [0.38, 0.48], [30, 0]);
 
   // Background parchment watermark
-  const parchmentOpacity = useTransform(scrollYProgress, [0, 0.1, 0.65, 0.95], [0, 0.04, 0.04, 0.01]);
+  const parchmentOpacity = useTransform(scrollYProgress, [0, 0.15, 0.72, 0.95], [0, 0.04, 0.04, 0.01]);
   const bgScale          = useTransform(scrollYProgress, [0, 1], [1.12, 1]);
 
   // Golden line
-  const lineWidth = useTransform(scrollYProgress, [0, 0.15], ["0%", "100%"]);
+  const lineWidth = useTransform(scrollYProgress, [0.3, 0.42], ["0%", "100%"]);
 
-  // Scroll indicator
-  const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.03, 0.15], [0, 0.8, 0]);
+  // Scroll indicator — visible at the start
+  const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.02, 0.12], [0.7, 0.7, 0]);
 
   return (
     <section
       ref={containerRef}
       className="relative bg-[#080B12]"
-      style={{ height: "130vh", position: "relative" }}
+      style={{ height: "200vh", position: "relative" }}
     >
       <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden">
         {/* Parchment watermark */}
@@ -166,7 +170,36 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
         <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#080B12]/60 via-[#080B12]/30 to-[#080B12]" />
         <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#080B12]/50 via-transparent to-[#080B12]/50" />
 
-        {/* Main headline */}
+        {/* Phase 1: "We the People" */}
+        <motion.div
+          className="absolute z-10 text-center"
+          style={{
+            opacity: wtpOpacity,
+            scale: wtpScale,
+            y: wtpY,
+            willChange: "transform, opacity",
+          }}
+        >
+          <p
+            className="select-none"
+            style={{
+              fontFamily: "'EB Garamond', 'Georgia', serif",
+              fontSize: "clamp(48px, 10vw, 120px)",
+              fontStyle: "italic",
+              fontWeight: 400,
+              color: "#C9A84C",
+              textShadow: "0 0 80px rgba(201,168,76,0.3), 0 0 160px rgba(201,168,76,0.1)",
+              letterSpacing: "0.04em",
+            }}
+          >
+            We the People
+          </p>
+          <p className="mt-4 font-body text-sm tracking-[0.3em] uppercase text-[#6B6860]">
+            {isRo ? "Statele Unite ale Americii · Înf. 1776" : "United States of America · Est. 1776"}
+          </p>
+        </motion.div>
+
+        {/* Phase 2: Main headline */}
         <motion.div
           className="absolute z-10 mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8"
           style={{ opacity: headlineOpacity, y: headlineY, willChange: "transform, opacity" }}
