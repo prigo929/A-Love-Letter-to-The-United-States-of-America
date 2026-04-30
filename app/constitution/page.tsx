@@ -14,7 +14,7 @@ import { QuoteBlock }  from "@/components/sections/QuoteBlock";
 import {
   ConstitutionAurora, InkParticles, MetricCard,
   ClauseVault, FounderConstellation, AmendmentAccordion,
-  SeparationDiagram, FederalismSimulator, RightsCounter,
+  SeparationDiagram, RightsCounter,
 } from "@/components/constitution/ConstitutionAnimations";
 import {
   CinematicHero,
@@ -25,6 +25,10 @@ import {
   WorldWithout,
   ScrollProgressSidebar,
 } from "@/components/constitution/CinematicComponents";
+import { MidnightGallery } from "@/components/constitution/MidnightGallery";
+import { GearDiagram } from "@/components/constitution/GearDiagram";
+import { LuxuryClosing } from "@/components/constitution/LuxuryClosing";
+import { FederalismHook } from "@/components/constitution/FederalismHook";
 import {
   ExhibitCase,
   AccessionLabel,
@@ -32,15 +36,12 @@ import {
   Entablature,
   BreathingSection,
   InscriptionText,
-  ScrollToDissolveEntrance,
-  WeThePeople,
   ConservationSpotlight,
   ChapterFooter,
 } from "@/components/constitution/ExhibitComponents";
 import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import {
-  STATES_POLICY_DATA,
   getConstitutionSubPages, getConstitutionMetrics, getRightsAtRiskStats,
   getFoundingFathers, getConstitutionClauses, getBillOfRights,
   getPresidentialTransfers, getPowersCheckExamples
@@ -84,17 +85,7 @@ export default async function ConstitutionPage() {
   return (
     <>
       {/* ══════════════════════════════════════════════════════════════════════
-          SCROLL-TO-DISSOLVE ENTRANCE — Title card that dissolves on scroll
-          ══════════════════════════════════════════════════════════════════════ */}
-      <ScrollToDissolveEntrance isRo={isRo} />
-
-      {/* ══════════════════════════════════════════════════════════════════════
-          WE THE PEOPLE — Dedicated scroll-locked section
-          ══════════════════════════════════════════════════════════════════════ */}
-      <WeThePeople isRo={isRo} />
-
-      {/* ══════════════════════════════════════════════════════════════════════
-          CINEMATIC HERO — Main headline + CTAs
+          CINEMATIC HERO — "We the People" + headline + CTAs
           ══════════════════════════════════════════════════════════════════════ */}
       <CinematicHero isRo={isRo} />
 
@@ -233,12 +224,14 @@ export default async function ConstitutionPage() {
                 : "55 delegates. 116 days. One purpose."}
             </NutGraf>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "Constelația Fondatorilor" : "The Founders' Constellation"}
+              {isRo ? "Galeria de la Miezul Nopții" : "The Midnight Gallery"}
             </h2>
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-              {isRo ? "Dă click pe orice stea pentru a explora viețile și contribuțiile lor." : "Click any star to explore their lives and contributions."}
+              {isRo
+                ? "Un seif privat, climatizat, adânc sub Arhivele Naționale. Dă click pe un portret pentru a deschide dosarul."
+                : "A private, climate-controlled vault deep beneath the National Archives. Click a portrait to open the dossier."}
             </p>
-            <FounderConstellation founders={getFoundingFathers(isRo)} isRo={isRo} />
+            <MidnightGallery founders={getFoundingFathers(isRo)} isRo={isRo} />
           </Section>
 
           <CinematicPullQuote
@@ -293,6 +286,8 @@ export default async function ConstitutionPage() {
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
               {isRo ? "Un triunghi de tensiune permanentă — proiectat prin design, nu prin accident." : "A triangle of permanent tension — by design, not by accident."}
             </p>
+            <GearDiagram isRo={isRo} />
+            <div className="mt-8" />
             <SeparationDiagram examples={getPowersCheckExamples(isRo)} isRo={isRo} />
             <div className="mt-6 flex justify-end">
               <Link href="/constitution/separation-of-powers" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#C9A84C] hover:text-[#E8C878] transition-colors">
@@ -308,18 +303,20 @@ export default async function ConstitutionPage() {
           />
 
           <Section id="federalism">
+            <NutGraf>
+              {isRo
+                ? "50 de state. 50 de experimente. Rezultate reale."
+                : "50 states. 50 experiments. Real outcomes."}
+            </NutGraf>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
               {isRo ? "50 de State. 50 de Experimente." : "50 States. 50 Experiments."}
             </h2>
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-              {isRo ? "Mișcă levierele. Vezi ce state corespund cel mai bine — și ce rezultate reale au produs." : "Move the policy levers. See which states match your settings — and what real-world outcomes they produced."}
+              {isRo
+                ? "Proiectează-ți statul ideal. Descoperă care stat american trăiește deja așa — și ce rezultate reale a produs."
+                : "Design your ideal state. Discover which real American state already lives that way — and what outcomes it produces."}
             </p>
-            <FederalismSimulator states={STATES_POLICY_DATA} isRo={isRo} />
-            <div className="mt-6 flex justify-end">
-              <Link href="/constitution/federalism" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#C9A84C] hover:text-[#E8C878] transition-colors">
-                {isRo ? "Simulator Complet →" : "Full Simulator →"}
-              </Link>
-            </div>
+            <FederalismHook isRo={isRo} />
           </Section>
         </div>
       </div>
@@ -527,6 +524,11 @@ export default async function ConstitutionPage() {
 
         </div>
       </div>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          LUXURY CLOSING — "This exhibit is free. These rights are yours."
+          ══════════════════════════════════════════════════════════════════════ */}
+      <LuxuryClosing isRo={isRo} />
     </>
   );
 }
