@@ -196,7 +196,7 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
             We the People
           </p>
           <p className="mt-4 font-body text-sm tracking-[0.3em] uppercase text-[#6B6860]">
-            {isRo ? "Statele Unite ale Americii · Înf. 1787" : "United States of America · Est. 1787"}
+            {isRo ? "Statele Unite ale Americii · Înf. 1776" : "United States of America · Est. 1776"}
           </p>
         </motion.div>
 

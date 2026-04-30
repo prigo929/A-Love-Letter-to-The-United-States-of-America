@@ -20,12 +20,19 @@ import {
   CinematicHero,
   CinematicStat,
   UnbrokenLine,
-  CinematicSectionBreak,
   CinematicPullQuote,
   ConstitutionRace,
   WorldWithout,
   ScrollProgressSidebar,
 } from "@/components/constitution/CinematicComponents";
+import {
+  ExhibitCase,
+  AccessionLabel,
+  NutGraf,
+  Entablature,
+  BreathingSection,
+  InscriptionText,
+} from "@/components/constitution/ExhibitComponents";
 import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import {
@@ -86,6 +93,17 @@ export default async function ConstitutionPage() {
           The U.S. Constitution is famous for being very short but very powerful.
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="relative bg-[#080B12]">
+        {/* Marble texture ambient layer */}
+        <div
+          className="pointer-events-none absolute inset-0 z-0"
+          style={{
+            backgroundImage: "url('/images/constitution/marble-texture.webp')",
+            backgroundRepeat: "repeat",
+            backgroundSize: "512px 512px",
+            opacity: 0.025,
+            mixBlendMode: "screen",
+          }}
+        />
         <InkParticles count={40} />
         <CinematicStat
           value={4543}
@@ -98,18 +116,34 @@ export default async function ConstitutionPage() {
           SECTIONS — Main content
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="relative bg-[#080B12]">
+        {/* Marble texture ambient layer — GPU-friendly static bitmap */}
+        <div
+          className="pointer-events-none absolute inset-0 z-0"
+          style={{
+            backgroundImage: "url('/images/constitution/marble-texture.webp')",
+            backgroundRepeat: "repeat",
+            backgroundSize: "512px 512px",
+            opacity: 0.025,
+            mixBlendMode: "screen",
+          }}
+        />
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 
           {/* ── I. The Document ─────────────────────────────────────────────── 
               This is the first major chapter of our digital exhibit.
               We start with the text itself before moving into the philosophy.
           */}
-          <CinematicSectionBreak
+          <Entablature
             chapter="I"
             title={isRo ? "Documentul Viu" : "The Living Document"}
           />
 
           <Section id="overview" eyebrow={isRo ? "Constituție și Democrație" : "Constitution & Democracy"}>
+            <NutGraf>
+              {isRo
+                ? "4.543 de cuvinte. 237 de ani. Zero întreruperi."
+                : "4,543 words. 237 years. Zero interruptions."}
+            </NutGraf>
             <h2 className="mb-6 font-display text-h1 text-[#F5F0E8]">
               {isRo ? "Documentul care Conduce Lumea" : "The Document That Runs the World"}
             </h2>
@@ -125,23 +159,32 @@ export default async function ConstitutionPage() {
                   : "237 years of unbroken constitutional democracy. 59 presidential elections. Zero coups. Zero suspensions. Zero monarchs. A record no other nation on Earth comes close to matching."}
               </p>
             </div>
-            <div className="relative overflow-hidden rounded-2xl">
-              <Image
-                src="/images/constitution/constitution-page-1.jpg"
-                alt="United States Constitution, Page 1 — original parchment, National Archives"
-                width={1200} height={500}
-                className="h-[320px] w-full object-cover object-top md:h-[420px]"
-                placeholder="blur" blurDataURL={BLUR_PLACEHOLDER}
-                quality={100}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#080B12]/80 via-transparent to-[#080B12]/80" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080B12] via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6">
-                <p className="font-hero text-4xl text-[#C9A84C]">4,543</p>
-                <p className="font-body text-sm text-[#F5F0E8]/70">{isRo ? "cuvinte ce guvernează o economie de 31 trilioane $" : "words governing a $31 trillion economy"}</p>
+            <ExhibitCase>
+              <div className="relative overflow-hidden">
+                <Image
+                  src="/images/constitution/constitution-page-1.jpg"
+                  alt="United States Constitution, Page 1 — original parchment, National Archives"
+                  width={1200} height={500}
+                  className="h-[320px] w-full object-cover object-top md:h-[420px]"
+                  placeholder="blur" blurDataURL={BLUR_PLACEHOLDER}
+                  quality={100}
+                  style={{ filter: "sepia(15%) contrast(1.05) brightness(0.95)" }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#080B12]/80 via-transparent to-[#080B12]/80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#080B12] via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6">
+                  <p className="font-hero text-4xl text-[#C9A84C]">4,543</p>
+                  <p className="font-body text-sm text-[#F5F0E8]/70">{isRo ? "cuvinte ce guvernează o economie de 31 trilioane $" : "words governing a $31 trillion economy"}</p>
+                </div>
+                <AccessionLabel
+                  title={isRo ? "Constituția Statelor Unite, Pagina 1" : "United States Constitution, Page 1"}
+                  date={isRo ? "17 Septembrie 1787" : "September 17, 1787"}
+                  medium={isRo ? "Cerneală de fier pe pergament" : "Iron gall ink on parchment"}
+                  collection={isRo ? "Arhivele Naționale · Grupul 11" : "National Archives · Record Group 11"}
+                  accessionNumber="ARC #1667751"
+                />
               </div>
-              <p className="absolute bottom-6 right-6 font-body text-xs text-[#6B6860]">{isRo ? "Arhivele Naționale · Washington, DC" : "US National Archives · Washington, DC"}</p>
-            </div>
+            </ExhibitCase>
           </Section>
 
           {/* ── Clause Vault ──────────────────────────────────────────────────── */}
@@ -155,18 +198,26 @@ export default async function ConstitutionPage() {
             <ClauseVault clauses={getConstitutionClauses(isRo)} isRo={isRo} />
           </Section>
 
+          {/* ── Breathing section — emotional reset ── */}
+          <BreathingSection word={isRo ? "LIBERTATE" : "LIBERTY"} />
+
           {/* ── Founders ─────────────────────────────────────────────────────── */}
-          <CinematicSectionBreak
+          <Entablature
             chapter="II"
             title={isRo ? "Arhitecții Libertății" : "Architects of Liberty"}
           />
 
           <Section id="founders">
+            <NutGraf>
+              {isRo
+                ? "55 de delegați. 116 zile. Un singur scop."
+                : "55 delegates. 116 days. One purpose."}
+            </NutGraf>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
               {isRo ? "Constelația Fondatorilor" : "The Founders' Constellation"}
             </h2>
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-              {isRo ? "55 de delegați. 116 zile. Un singur scop. Dă click pe orice stea pentru a explora viețile și contribuțiile lor." : "55 delegates. 116 days. One purpose. Click any star to explore their lives and contributions."}
+              {isRo ? "Dă click pe orice stea pentru a explora viețile și contribuțiile lor." : "Click any star to explore their lives and contributions."}
             </p>
             <FounderConstellation founders={getFoundingFathers(isRo)} isRo={isRo} />
           </Section>
@@ -180,18 +231,20 @@ export default async function ConstitutionPage() {
           />
 
           {/* ── Bill of Rights ───────────────────────────────────────────────── */}
-          <CinematicSectionBreak
+          <Entablature
             chapter="III"
             title={isRo ? "Declarația Drepturilor" : "Bill of Rights"}
           />
 
           <Section id="bill-of-rights">
+            <NutGraf>
+              {isRo
+                ? "Motivul pentru care criticarea acestei pagini este protejată constituțional."
+                : "The reason criticizing this page is constitutionally protected."}
+            </NutGraf>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
               {isRo ? "Zece Garanții. 235 de Ani." : "Ten Guarantees. 235 Years."}
             </h2>
-            <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-              {isRo ? "Motivul pentru care criticarea acestei pagini este protejată constituțional." : "The reason criticizing this page is constitutionally protected."}
-            </p>
             <AmendmentAccordion amendments={getBillOfRights(isRo)} isRo={isRo} />
             <div className="mt-6 flex justify-end">
               <Link href="/constitution/bill-of-rights" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#C9A84C] hover:text-[#E8C878] transition-colors">
@@ -200,18 +253,26 @@ export default async function ConstitutionPage() {
             </div>
           </Section>
 
+          {/* ── Breathing section — emotional reset ── */}
+          <BreathingSection word={isRo ? "JUSTIȚIE" : "JUSTICE"} />
+
           {/* ── Separation of Powers ─────────────────────────────────────────── */}
-          <CinematicSectionBreak
+          <Entablature
             chapter="IV"
             title={isRo ? "Separarea Puterilor" : "Separation of Powers"}
           />
 
           <Section id="separation-of-powers">
+            <NutGraf>
+              {isRo
+                ? "Trei ramuri. Fiecare verificând celelalte două."
+                : "Three branches. Each checking the other two."}
+            </NutGraf>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
               {isRo ? "De Ce Tirania Este Aproape Imposibilă" : "Why Tyranny Is Nearly Impossible"}
             </h2>
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-              {isRo ? "Trei ramuri. Fiecare verificând celelalte două. Un triunghi de tensiune permanentă." : "Three branches. Each checking the other two. A triangle of permanent tension."}
+              {isRo ? "Un triunghi de tensiune permanentă — proiectat prin design, nu prin accident." : "A triangle of permanent tension — by design, not by accident."}
             </p>
             <SeparationDiagram examples={getPowersCheckExamples(isRo)} isRo={isRo} />
             <div className="mt-6 flex justify-end">
@@ -222,7 +283,7 @@ export default async function ConstitutionPage() {
           </Section>
 
           {/* ── Federalism ───────────────────────────────────────────────────── */}
-          <CinematicSectionBreak
+          <Entablature
             chapter="V"
             title={isRo ? "Laboratoare ale Democrației" : "Laboratories of Democracy"}
           />
@@ -260,14 +321,19 @@ export default async function ConstitutionPage() {
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="relative bg-[#080B12]">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <CinematicSectionBreak
+          <Entablature
             chapter="VI"
             title={isRo ? "250 de Ani de Dovezi" : "250 Years of Evidence"}
           />
 
           <Section id="track-record">
+            <NutGraf>
+              {isRo
+                ? "Fiecare. Singură. Dată."
+                : "Every. Single. Time."}
+            </NutGraf>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "Fiecare. Singură. Dată." : "Every. Single. Time."}
+              {isRo ? "Linia Neîntreruptă" : "The Unbroken Line"}
             </h2>
             <p className="mb-4 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
               {isRo
@@ -351,7 +417,10 @@ export default async function ConstitutionPage() {
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="relative bg-[#080B12]">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <CinematicSectionBreak
+          {/* ── Breathing section — emotional reset ── */}
+          <BreathingSection word={isRo ? "UNIUNE" : "UNION"} />
+
+          <Entablature
             chapter="VII"
             title={isRo ? "Context Global" : "Global Context"}
           />
@@ -359,6 +428,11 @@ export default async function ConstitutionPage() {
           <Section id="rights-at-risk">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
+                <NutGraf>
+                  {isRo
+                    ? "Construite. Nu moștenite."
+                    : "Built. Not inherited."}
+                </NutGraf>
                 <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
                   {isRo ? "Acestea Nu Sunt Normale" : "These Are Not the Default"}
                 </h2>
@@ -373,7 +447,7 @@ export default async function ConstitutionPage() {
           </Section>
 
           {/* ── VIII. The World Without ───────────────────────────────── */}
-          <CinematicSectionBreak
+          <Entablature
             chapter="VIII"
             title={isRo ? "Lumea Fără" : "The World Without"}
           />
