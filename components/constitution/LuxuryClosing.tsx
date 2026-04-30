@@ -44,7 +44,7 @@ export function LuxuryClosing({ isRo }: { isRo: boolean }) {
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-screen-md px-4 text-center">
+      <div className="relative z-10 w-full mx-auto max-w-screen-md px-4 text-center">
         {/* Top cornice */}
         <motion.div
           initial={{ scaleX: 0 }}
@@ -67,7 +67,7 @@ export function LuxuryClosing({ isRo }: { isRo: boolean }) {
             style={{
               fontFamily: "'EB Garamond', 'Georgia', serif",
               fontStyle: "italic",
-              fontSize: "clamp(20px, 3vw, 32px)",
+              fontSize: "clamp(20px, 5vw, 32px)",
               lineHeight: 1.5,
               color: "#F5F0E8",
             }}
@@ -81,7 +81,7 @@ export function LuxuryClosing({ isRo }: { isRo: boolean }) {
             style={{
               fontFamily: "'EB Garamond', 'Georgia', serif",
               fontStyle: "italic",
-              fontSize: "clamp(20px, 3vw, 32px)",
+              fontSize: "clamp(20px, 5vw, 32px)",
               lineHeight: 1.5,
               color: "#F5F0E8",
             }}
@@ -94,7 +94,7 @@ export function LuxuryClosing({ isRo }: { isRo: boolean }) {
             style={{
               fontFamily: "'EB Garamond', 'Georgia', serif",
               fontStyle: "italic",
-              fontSize: "clamp(20px, 3vw, 32px)",
+              fontSize: "clamp(20px, 5vw, 32px)",
               lineHeight: 1.5,
               background: "linear-gradient(180deg, #E8C878 0%, #C9A84C 60%, #8B6A2A 100%)",
               WebkitBackgroundClip: "text",
@@ -121,14 +121,14 @@ export function LuxuryClosing({ isRo }: { isRo: boolean }) {
 
         {/* Action buttons */}
         <motion.div
-          className="flex flex-wrap items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           <button
             onClick={handleShare}
-            className="inline-flex items-center gap-2 rounded-sm px-6 py-3 font-body text-xs font-semibold uppercase tracking-[0.2em] transition-all hover:bg-[rgba(201,168,76,0.12)]"
+            className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-sm px-4 sm:px-6 py-4 sm:py-3 font-body text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] transition-all hover:bg-[rgba(201,168,76,0.12)]"
             style={{
               border: "1px solid rgba(201,168,76,0.25)",
               color: "#C9A84C",
@@ -140,7 +140,7 @@ export function LuxuryClosing({ isRo }: { isRo: boolean }) {
           </button>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="inline-flex items-center gap-2 rounded-sm px-6 py-3 font-body text-xs font-semibold uppercase tracking-[0.2em] text-[#6B6860] transition-all hover:text-[#C9A84C]"
+            className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-sm px-4 sm:px-6 py-4 sm:py-3 font-body text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#6B6860] transition-all hover:text-[#C9A84C]"
             style={{
               border: "1px solid rgba(201,168,76,0.08)",
             }}
