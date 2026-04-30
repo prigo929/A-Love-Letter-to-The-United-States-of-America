@@ -54,10 +54,10 @@ const GEARS: GearInfo[] = [
     teeth: 16,
     direction: 1,
     powers: [
-      { en: "Makes Laws", ro: "Creează Legi" },
-      { en: "Controls Budget", ro: "Controlează Bugetul" },
-      { en: "Declares War", ro: "Declară Război" },
-      { en: "Confirms Judges", ro: "Confirmă Judecătorii" },
+      { en: "Makes Laws (Subject to Veto)", ro: "Creează Legi (Supuse Veto-ului)" },
+      { en: "Controls Budget (Limits Exec)", ro: "Controlează Bugetul (Limitează Executivul)" },
+      { en: "Declares War (Checks Cmdr)", ro: "Declară Război (Controlează Comandantul)" },
+      { en: "Confirms Judges (Consent)", ro: "Confirmă Judecători (Consimțământ)" },
     ],
   },
   {
@@ -70,10 +70,10 @@ const GEARS: GearInfo[] = [
     teeth: 16,
     direction: -1,
     powers: [
-      { en: "Enforces Laws", ro: "Aplică Legile" },
-      { en: "Commands Military", ro: "Comandă Armata" },
-      { en: "Signs Treaties", ro: "Semnează Tratate" },
-      { en: "Veto Power", ro: "Puterea de Veto" },
+      { en: "Enforces Laws (Subject to Courts)", ro: "Aplică Legile (Supus Instanțelor)" },
+      { en: "Commands Military (If Funded)", ro: "Comandă Armata (Dacă e Finanțată)" },
+      { en: "Signs Treaties (Needs Senate)", ro: "Semnează Tratate (Necesită Senatul)" },
+      { en: "Veto Power (Can be Overridden)", ro: "Puterea de Veto (Poate fi Anulată)" },
     ],
   },
   {
@@ -86,10 +86,10 @@ const GEARS: GearInfo[] = [
     teeth: 16,
     direction: 1,
     powers: [
-      { en: "Reviews Laws", ro: "Revizuiește Legi" },
-      { en: "Interprets Constitution", ro: "Interpretează Constituția" },
-      { en: "Judicial Review", ro: "Control Judiciar" },
-      { en: "Lifetime Tenure", ro: "Mandat pe Viață" },
+      { en: "Reviews Laws (Can Strike Down)", ro: "Revizuiește Legi (Le Poate Anula)" },
+      { en: "Interprets Const. (Final Say)", ro: "Interpretează Const. (Cuvântul Final)" },
+      { en: "Lifetime Tenure (Can be Impeached)", ro: "Mandat pe Viață (Poate fi Demis)" },
+      { en: "No Direct Enforcement Power", ro: "Fără Putere Directă de Execuție" },
     ],
   },
 ];
@@ -200,11 +200,14 @@ export function GearDiagram({ isRo }: { isRo: boolean }) {
           {/* ── Constitutional Bridges — axle lines with Article labels ── */}
           {GEARS.map((gear) => {
             const isActive = activeGear === gear.id;
-            // Midpoint between center and gear for label placement
-            const midX = CENTER_X + (gear.cx - CENTER_X) * 0.38;
-            const midY = CENTER_Y + (gear.cy - CENTER_Y) * 0.38;
+            // SSR-safe rounding for calculated SVG properties
+            const r2 = (n: number) => Math.round(n * 100) / 100;
+            const midX = r2(CENTER_X + (gear.cx - CENTER_X) * 0.38);
+            const midY = r2(CENTER_Y + (gear.cy - CENTER_Y) * 0.38);
             const angle = Math.atan2(gear.cy - CENTER_Y, gear.cx - CENTER_X);
-            const labelAngle = (angle * 180) / Math.PI;
+            let rawLabelAngle = (angle * 180) / Math.PI;
+            if (rawLabelAngle > 90 || rawLabelAngle < -90) rawLabelAngle += 180;
+            const labelAngle = r2(rawLabelAngle);
 
             return (
               <g key={`bridge-${gear.id}`}>
@@ -226,7 +229,7 @@ export function GearDiagram({ isRo }: { isRo: boolean }) {
                   fontFamily="'Inter',sans-serif"
                   fontWeight="600"
                   letterSpacing=".15em"
-                  transform={`rotate(${labelAngle > 90 || labelAngle < -90 ? labelAngle + 180 : labelAngle}, ${midX}, ${midY})`}
+                  transform={`rotate(${labelAngle}, ${midX}, ${midY})`}
                   style={{ transition: "fill 0.3s ease" }}
                 >
                   {gear.article}
@@ -396,10 +399,10 @@ export function GearDiagram({ isRo }: { isRo: boolean }) {
                 transition={{ duration: 0.2 }}
               >
                 <p className="font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-[rgba(201,168,76,0.25)]">
-                  ⚙ {isRo ? "SELECTEAZĂ O RAMURĂ PENTRU DETALII" : "SELECT A BRANCH FOR DETAILS"}
+                  ⚙ {isRo ? "SELECTEAZĂ O RAMURĂ • PUTERILE SUNT LIMITATE" : "SELECT A BRANCH • POWERS ARE CONSTRAINED"}
                 </p>
-                <p className="mt-1 font-body text-xs text-[#6B6860]" style={{ fontFamily: "'IBM Plex Mono', 'Courier New', monospace" }}>
-                  {isRo ? "Click pe o roată pentru a vedea puterile constituționale" : "Click a gear to see constitutional powers"}
+                <p className="mt-1 max-w-xl font-body text-xs leading-relaxed text-[#6B6860]" style={{ fontFamily: "'IBM Plex Mono', 'Courier New', monospace" }}>
+                  {isRo ? "Observă cum rotirea unei roți forțează celelalte să se miște. Dacă se împing în direcții opuse, mașinăria se oprește." : "Notice how turning one gear forces the others to move. If they push in opposite directions, the machine halts."}
                 </p>
               </motion.div>
             )}

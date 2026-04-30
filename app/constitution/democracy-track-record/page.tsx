@@ -91,8 +91,8 @@ export default async function DemocracyTrackRecordPage() {
             {isRo ? "Recordul de 250 de Ani" : "The 250-Year Track Record"}
           </p>
           <h1 className="mb-6 font-hero leading-none tracking-wide" style={{ fontSize: "clamp(3rem,7vw,6.5rem)" }}>
-            <span className="block text-[#F5F0E8]">{isRo ? "FIECARE." : "EVERY."}</span>
-            <span className="block text-[#F5F0E8]">{isRo ? "SINGURĂ." : "SINGLE."}</span>
+            <span className="block text-[#F5F0E8]">{isRo ? "DE" : "EVERY."}</span>
+            <span className="block text-[#F5F0E8]">{isRo ? "FIECARE." : "SINGLE."}</span>
             <span className="block" style={{
               background: "linear-gradient(135deg, #D4AF6A, #E8C878, #C9A84C)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",

@@ -425,9 +425,9 @@ export function SeparationDiagram({ examples, isRo }: { examples: PowersCheckExa
   const [selected, setSelected] = useState<PowersCheckExample|null>(null);
 
   const localizedBPOS = useMemo(() => ({
-    legislative:{ x:180, y:260, label: isRo ? "Legislativ" : "Legislative", icon:"🏛️", desc: isRo ? "Congres · 535 membri" : "Congress · 535 members" },
-    executive:  { x:620, y:260, label: isRo ? "Executiv" : "Executive",   icon:"🦅", desc: isRo ? "Președinte · Aplică legea" : "President · Enforces law" },
-    judicial:   { x:400, y:80,  label: isRo ? "Judiciar" : "Judicial",    icon:"⚖️", desc: isRo ? "Curtea Supremă · Interpretează legea" : "Supreme Court · Interprets law" },
+    legislative:{ x:250, y:260, label: isRo ? "Legislativ" : "Legislative", icon:"🏛️", desc: isRo ? "Congres · 535 membri" : "Congress · 535 members" },
+    executive:  { x:550, y:260, label: isRo ? "Executiv" : "Executive",   icon:"🦅", desc: isRo ? "Președinte · Aplică legea" : "President · Enforces law" },
+    judicial:   { x:400, y:60,  label: isRo ? "Judiciar" : "Judicial",    icon:"⚖️", desc: isRo ? "Curtea Supremă · Interpretează legea" : "Supreme Court · Interprets law" },
   }), [isRo]);
 
   const fp = selected ? localizedBPOS[selected.from as keyof typeof localizedBPOS] : null;
@@ -438,17 +438,76 @@ export function SeparationDiagram({ examples, isRo }: { examples: PowersCheckExa
       <div className="overflow-hidden rounded-2xl border border-white/8 bg-[#080B12]/80 p-6">
         <svg viewBox="0 0 800 340" className="w-full" role="img" aria-label="Separation of powers">
           <defs>
-            <marker id="arr" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#C9A84C"/></marker>
+            <marker id="arr" markerWidth="10" markerHeight="7" refX="7.5" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#C9A84C"/></marker>
             <filter id="bg"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
           </defs>
           {!selected&&<>
-            <line x1="180" y1="260" x2="400" y2="80" stroke="rgba(201,168,76,.2)" strokeWidth="1" strokeDasharray="4 4"/>
-            <line x1="620" y1="260" x2="400" y2="80" stroke="rgba(201,168,76,.2)" strokeWidth="1" strokeDasharray="4 4"/>
-            <line x1="180" y1="260" x2="620" y2="260" stroke="rgba(201,168,76,.2)" strokeWidth="1" strokeDasharray="4 4"/>
+            <line x1="250" y1="260" x2="400" y2="60" stroke="rgba(201,168,76,.2)" strokeWidth="1" strokeDasharray="4 4"/>
+            <line x1="550" y1="260" x2="400" y2="60" stroke="rgba(201,168,76,.2)" strokeWidth="1" strokeDasharray="4 4"/>
+            <line x1="250" y1="260" x2="550" y2="260" stroke="rgba(201,168,76,.2)" strokeWidth="1" strokeDasharray="4 4"/>
           </>}
-          {selected&&fp&&tp&&(
-            <motion.line key={selected.id} x1={fp.x} y1={fp.y} x2={tp.x} y2={tp.y} stroke="#C9A84C" strokeWidth="2.5" markerEnd="url(#arr)" initial={{pathLength:0,opacity:0}} animate={{pathLength:1,opacity:1}} transition={{duration:.6}} filter="url(#bg)"/>
-          )}
+          {selected&&fp&&tp&&(() => {
+            const dx = tp.x - fp.x;
+            const dy = tp.y - fp.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            
+            // Line starts exactly at the edge of the source circle (radius 52)
+            const startX = fp.x + (dx * 52) / dist;
+            const startY = fp.y + (dy * 52) / dist;
+            
+            // Line ends mathematically inside the arrowhead (60 units away from target)
+            const lineEndX = tp.x - (dx * 60) / dist;
+            const lineEndY = tp.y - (dy * 60) / dist;
+            
+            // Arrowhead tip touches exactly the edge of the target circle (radius 52)
+            const arrowTipX = tp.x - (dx * 52) / dist;
+            const arrowTipY = tp.y - (dy * 52) / dist;
+            
+            const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
+            
+            // Calculate exact length for perfect animation speeds and strokeDasharray
+            const lineDx = lineEndX - startX;
+            const lineDy = lineEndY - startY;
+            const lineLength = Math.sqrt(lineDx * lineDx + lineDy * lineDy);
+            const duration = lineLength / 350; // Constant speed across all distances
+
+            // Bounding box logic for Safari filter fix
+            const minX = Math.min(startX, lineEndX);
+            const minY = Math.min(startY, lineEndY);
+
+            return (
+              <g key={selected.id}>
+                {/* 
+                  SAFARI FIX: Safari clips SVG filters on perfectly horizontal elements 
+                  because their bounding box area is 0. We wrap the line in a group with a 
+                  transparent rect to force a valid bounding box for the glow filter.
+                */}
+                <g filter="url(#bg)">
+                  <rect x={minX - 20} y={minY - 20} width={Math.abs(lineDx) + 40} height={Math.abs(lineDy) + 40} fill="none" pointerEvents="none" />
+                  <motion.line 
+                    x1={startX} y1={startY} x2={lineEndX} y2={lineEndY}
+                    stroke="#C9A84C" 
+                    strokeWidth="2.5" 
+                    strokeLinecap="round"
+                    strokeDasharray={lineLength}
+                    initial={{ strokeDashoffset: lineLength, opacity: 0 }} 
+                    animate={{ strokeDashoffset: 0, opacity: 1 }} 
+                    transition={{ duration, ease: "easeInOut" }} 
+                  />
+                </g>
+                <g transform={`translate(${arrowTipX}, ${arrowTipY}) rotate(${angle})`}>
+                  <motion.polygon 
+                    points="0,0 -14,-5 -14,5" 
+                    fill="#C9A84C" 
+                    initial={{ opacity: 0, scale: 0 }} 
+                    animate={{ opacity: 1, scale: 1 }} 
+                    transition={{ delay: duration - 0.1, duration: 0.2 }} 
+                    filter="url(#bg)"
+                  />
+                </g>
+              </g>
+            );
+          })()}
           {Object.entries(localizedBPOS).map(([k,p])=>{
             const isA=selected&&(selected.from===k||selected.to===k);
             return (
