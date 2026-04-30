@@ -658,18 +658,32 @@ export function ConstitutionRace({ isRo }: { isRo: boolean }) {
 
   useEffect(() => {
     if (!isPlaying) return;
-    intervalRef.current = setInterval(() => {
+
+    // Crescendo pacing: slow → accelerating → sprint → dramatic freeze
+    const getInterval = (year: number): number => {
+      if (year < 1850) return 100;   // Methodical — early republic
+      if (year < 1950) return 50;    // Accelerating — industrial era
+      if (year < 2020) return 15;    // Sprint — modern era
+      return 30;                      // Slight slowdown for final years
+    };
+
+    let animFrame: ReturnType<typeof setTimeout>;
+    const step = () => {
       setCurrentYear((prev) => {
         if (prev >= endYear) {
           setIsPlaying(false);
-          if (intervalRef.current) clearInterval(intervalRef.current);
           return endYear;
         }
-        return prev + 1;
+        const next = prev + 1;
+        // Schedule next tick with era-appropriate timing
+        animFrame = setTimeout(step, getInterval(next));
+        return next;
       });
-    }, 30);
+    };
+    animFrame = setTimeout(step, getInterval(currentYear));
+
     return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      clearTimeout(animFrame);
     };
   }, [isPlaying]);
 

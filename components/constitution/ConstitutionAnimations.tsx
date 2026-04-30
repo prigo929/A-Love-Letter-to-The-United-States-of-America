@@ -611,6 +611,39 @@ export function FederalismSimulator({ states, isRo }: { states: StatePolicy[], i
                 </div>
               ))}
             </div>
+
+            {/* ── Cascading Economic Effects ── */}
+            <div className="mt-4 rounded-lg border border-[rgba(201,168,76,.15)] bg-[#080B12]/60 p-3">
+              <p className="mb-2 font-body text-[9px] font-semibold uppercase tracking-[.15em] text-[rgba(201,168,76,.5)]">
+                {isRo ? "── Efecte Economice în Cascadă ──" : "── Cascading Economic Effects ──"}
+              </p>
+              <div className="space-y-1.5">
+                {(() => {
+                  // Dynamic calculations based on slider positions
+                  const capitalVelocity = ((10 - corpTax) * 1.8 + (10 - regIndex) * 1.2 - minWage * 0.3).toFixed(1);
+                  const workforceRate = (58 + minWage * 0.4 + (10 - regIndex) * 0.5 + corpTax * 0.1).toFixed(1);
+                  const businessFormation = ((10 - corpTax) * 1.1 + (10 - regIndex) * 0.9 - minWage * 0.15).toFixed(1);
+                  const stateRevenue = (2800 + corpTax * 220 + minWage * 15 + regIndex * 50).toFixed(0);
+                  const effects = [
+                    { label: isRo ? "Viteza Investițiilor de Capital" : "Capital Investment Velocity", value: `${Number(capitalVelocity) > 0 ? "+" : ""}${capitalVelocity}%`, dir: Number(capitalVelocity) },
+                    { label: isRo ? "Rata Participării Forței de Muncă" : "Workforce Participation Rate", value: `${workforceRate}%`, dir: Number(workforceRate) - 63 },
+                    { label: isRo ? "Rata Formării de Afaceri" : "Business Formation Rate", value: `${Number(businessFormation) > 0 ? "+" : ""}${businessFormation}%`, dir: Number(businessFormation) },
+                    { label: isRo ? "Venituri de Stat per Capita" : "State Revenue per Capita", value: `$${Number(stateRevenue).toLocaleString()}`, dir: Number(stateRevenue) - 4000 },
+                  ];
+                  return effects.map(e => (
+                    <div key={e.label} className="flex items-center justify-between font-body" style={{ fontVariantNumeric: "tabular-nums" }}>
+                      <span className="text-[10px] text-[#6B6860]">{e.label}</span>
+                      <span className="flex items-center gap-1">
+                        <span className="text-[10px] font-semibold text-[#C9A84C]">{e.value}</span>
+                        <span className={`text-[9px] ${e.dir > 0 ? "text-green-400" : e.dir < 0 ? "text-red-400" : "text-[#6B6860]"}`}>
+                          {e.dir > 0 ? "▲" : e.dir < 0 ? "▼" : "─"}
+                        </span>
+                      </span>
+                    </div>
+                  ));
+                })()}
+              </div>
+            </div>
           </div>
         )}
       </div>
@@ -650,20 +683,57 @@ export function FederalismSimulator({ states, isRo }: { states: StatePolicy[], i
 
 export function RightsCounter({ stats }: { stats: {value:number;label:string;color:"gold"|"red";source:string}[] }) {
   return (
-    <div className="space-y-5">
-      {stats.map((s,i)=>(
-        <motion.div key={i} initial={{opacity:0,x:-30}} whileInView={{opacity:1,x:0}} viewport={{once:true,margin:"-60px"}} transition={{duration:.6,delay:i*.12,ease:[0.16,1,0.3,1]}}
-          className="flex items-center gap-4 rounded-xl border border-white/6 bg-[#12181F] px-5 py-4"
-        >
-          <p className="shrink-0 font-hero text-2xl md:text-3xl leading-none" style={{background:s.color==="gold"?"linear-gradient(180deg,#E8C878 0%,#C9A84C 100%)":"linear-gradient(180deg,#E87878 0%,#C0392B 100%)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>
-            <CountUp to={s.value}/>
-          </p>
-          <div className="flex-1">
-            <p className="font-body text-sm leading-snug text-[#F5F0E8]">{s.label}</p>
-            <p className="mt-0.5 font-body text-[10px] text-[#6B6860]">{s.source}</p>
-          </div>
-        </motion.div>
-      ))}
+    <div className="overflow-hidden rounded-xl border border-[rgba(201,168,76,.12)]" style={{ background: "linear-gradient(168deg, rgba(12,16,24,0.95) 0%, rgba(8,11,18,0.98) 100%)" }}>
+      {/* Ledger header */}
+      <div className="border-b border-[rgba(201,168,76,.1)] px-5 py-3" style={{ background: "rgba(201,168,76,0.03)" }}>
+        <p className="font-body text-[9px] font-semibold uppercase tracking-[.2em] text-[rgba(201,168,76,.5)]">
+          Global Rights Assessment Ledger
+        </p>
+      </div>
+      {/* Ledger rows */}
+      <div className="divide-y divide-[rgba(201,168,76,.06)]">
+        {stats.map((s,i)=>(
+          <motion.div key={i} initial={{opacity:0,x:-20}} whileInView={{opacity:1,x:0}} viewport={{once:true,margin:"-40px"}} transition={{duration:.5,delay:i*.1,ease:[0.16,1,0.3,1]}}
+            className="flex items-center gap-4 px-5 py-4"
+          >
+            {/* Status indicator — wax-seal style */}
+            <div
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
+              style={{
+                background: s.color === "gold"
+                  ? "radial-gradient(circle, rgba(201,168,76,0.15) 0%, rgba(201,168,76,0.04) 70%)"
+                  : "radial-gradient(circle, rgba(192,57,43,0.15) 0%, rgba(192,57,43,0.04) 70%)",
+                border: `1px solid ${s.color === "gold" ? "rgba(201,168,76,.2)" : "rgba(192,57,43,.2)"}`,
+              }}
+            >
+              <span
+                className="font-hero text-lg leading-none"
+                style={{
+                  background: s.color === "gold"
+                    ? "linear-gradient(180deg,#E8C878 0%,#C9A84C 100%)"
+                    : "linear-gradient(180deg,#E87878 0%,#C0392B 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  fontVariantNumeric: "tabular-nums",
+                }}
+              >
+                <CountUp to={s.value}/>
+              </span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="font-body text-sm leading-snug text-[#F5F0E8]">{s.label}</p>
+              <div className="mt-1 flex items-center gap-2">
+                <span className="font-body text-[9px] text-[#6B6860]" style={{ fontVariantNumeric: "tabular-nums" }}>{s.source}</span>
+                <span className="text-[8px] text-[rgba(201,168,76,.3)]">·</span>
+                <span className={`font-body text-[9px] font-semibold uppercase tracking-wider ${s.color === "gold" ? "text-[rgba(201,168,76,.4)]" : "text-[rgba(192,57,43,.4)]"}`}>
+                  {s.color === "gold" ? "◉ VERIFIED" : "◉ CRITICAL"}
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 }

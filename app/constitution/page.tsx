@@ -32,6 +32,9 @@ import {
   Entablature,
   BreathingSection,
   InscriptionText,
+  ScrollToDissolveEntrance,
+  ConservationSpotlight,
+  ChapterFooter,
 } from "@/components/constitution/ExhibitComponents";
 import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -80,12 +83,20 @@ export default async function ConstitutionPage() {
   return (
     <>
       {/* ══════════════════════════════════════════════════════════════════════
+          SCROLL-TO-DISSOLVE ENTRANCE — Title card that dissolves on scroll
+          ══════════════════════════════════════════════════════════════════════ */}
+      <ScrollToDissolveEntrance isRo={isRo} />
+
+      {/* ══════════════════════════════════════════════════════════════════════
           CINEMATIC HERO — Scroll-driven "We the People" reveal
           ══════════════════════════════════════════════════════════════════════ */}
       <CinematicHero isRo={isRo} />
 
       {/* Floating scroll progress sidebar — xl screens only */}
       <ScrollProgressSidebar isRo={isRo} />
+
+      {/* Persistent running chapter indicator */}
+      <ChapterFooter isRo={isRo} />
 
       {/* ══════════════════════════════════════════════════════════════════════
           BLOOMBERG STAT: 4,543 words
@@ -159,32 +170,34 @@ export default async function ConstitutionPage() {
                   : "237 years of unbroken constitutional democracy. 59 presidential elections. Zero coups. Zero suspensions. Zero monarchs. A record no other nation on Earth comes close to matching."}
               </p>
             </div>
-            <ExhibitCase>
-              <div className="relative overflow-hidden">
-                <Image
-                  src="/images/constitution/constitution-page-1.jpg"
-                  alt="United States Constitution, Page 1 — original parchment, National Archives"
-                  width={1200} height={500}
-                  className="h-[320px] w-full object-cover object-top md:h-[420px]"
-                  placeholder="blur" blurDataURL={BLUR_PLACEHOLDER}
-                  quality={100}
-                  style={{ filter: "sepia(15%) contrast(1.05) brightness(0.95)" }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#080B12]/80 via-transparent to-[#080B12]/80" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#080B12] via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-6">
-                  <p className="font-hero text-4xl text-[#C9A84C]">4,543</p>
-                  <p className="font-body text-sm text-[#F5F0E8]/70">{isRo ? "cuvinte ce guvernează o economie de 31 trilioane $" : "words governing a $31 trillion economy"}</p>
+            <ConservationSpotlight>
+              <ExhibitCase>
+                <div className="relative overflow-hidden">
+                  <Image
+                    src="/images/constitution/constitution-page-1.jpg"
+                    alt="United States Constitution, Page 1 — original parchment, National Archives"
+                    width={1200} height={500}
+                    className="h-[320px] w-full object-cover object-top md:h-[420px]"
+                    placeholder="blur" blurDataURL={BLUR_PLACEHOLDER}
+                    quality={100}
+                    style={{ filter: "sepia(15%) contrast(1.05) brightness(0.95)" }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#080B12]/80 via-transparent to-[#080B12]/80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080B12] via-transparent to-transparent" />
+                  <div className="absolute bottom-6 left-6">
+                    <p className="font-hero text-4xl text-[#C9A84C]">4,543</p>
+                    <p className="font-body text-sm text-[#F5F0E8]/70">{isRo ? "cuvinte ce guvernează o economie de 31 trilioane $" : "words governing a $31 trillion economy"}</p>
+                  </div>
+                  <AccessionLabel
+                    title={isRo ? "Constituția Statelor Unite, Pagina 1" : "United States Constitution, Page 1"}
+                    date={isRo ? "17 Septembrie 1787" : "September 17, 1787"}
+                    medium={isRo ? "Cerneală de fier pe pergament" : "Iron gall ink on parchment"}
+                    collection={isRo ? "Arhivele Naționale · Grupul 11" : "National Archives · Record Group 11"}
+                    accessionNumber="ARC #1667751"
+                  />
                 </div>
-                <AccessionLabel
-                  title={isRo ? "Constituția Statelor Unite, Pagina 1" : "United States Constitution, Page 1"}
-                  date={isRo ? "17 Septembrie 1787" : "September 17, 1787"}
-                  medium={isRo ? "Cerneală de fier pe pergament" : "Iron gall ink on parchment"}
-                  collection={isRo ? "Arhivele Naționale · Grupul 11" : "National Archives · Record Group 11"}
-                  accessionNumber="ARC #1667751"
-                />
-              </div>
-            </ExhibitCase>
+              </ExhibitCase>
+            </ConservationSpotlight>
           </Section>
 
           {/* ── Clause Vault ──────────────────────────────────────────────────── */}

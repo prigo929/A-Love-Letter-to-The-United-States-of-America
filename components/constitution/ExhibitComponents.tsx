@@ -6,8 +6,8 @@
 // These components translate the physical gravitas of a museum exhibit
 // into digital form — every detail is intentional.
 
-import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useInView, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 
 // ── ExhibitCase ───────────────────────────────────────────────────────────────
 // Wraps content in a museum-vitrine container with recessed glass illusion.
@@ -391,5 +391,296 @@ export function InscriptionText({
     >
       {children}
     </motion.p>
+  );
+}
+
+// ── ScrollToDissolveEntrance ──────────────────────────────────────────────────
+// The "curtain rises" moment. A title card that dissolves as the user scrolls.
+// User-agency driven — no timers, no forced delays.
+// As the user scrolls, elements fade, drift apart, and scale down, revealing
+// the CinematicHero behind.
+export function ScrollToDissolveEntrance({
+  isRo,
+}: {
+  isRo: boolean;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Title card dissolves as user scrolls
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.5, 0.8], [1, 0.6, 0]);
+  const titleScale = useTransform(scrollYProgress, [0, 0.8], [1, 0.9]);
+  const titleY = useTransform(scrollYProgress, [0, 0.8], [0, -60]);
+  const starsSpread = useTransform(scrollYProgress, [0, 0.6], [0, 40]);
+  const scrollHintOpacity = useTransform(scrollYProgress, [0, 0.05, 0.15], [0, 0.7, 0]);
+  // Overlay that fades out to reveal hero
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.6, 1], [1, 0.5, 0]);
+
+  return (
+    <div ref={containerRef} className="relative" style={{ height: "80vh" }}>
+      <motion.div
+        className="sticky top-0 z-30 flex h-screen items-center justify-center overflow-hidden"
+        style={{ opacity: overlayOpacity }}
+      >
+        {/* Heavy vault darkness */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse 80% 60% at 50% 50%, #0A0E16 0%, #020406 100%)",
+          }}
+        />
+
+        {/* Marble texture */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: "url('/images/constitution/marble-texture.webp')",
+            backgroundRepeat: "repeat",
+            backgroundSize: "512px 512px",
+            opacity: 0.015,
+            mixBlendMode: "screen",
+          }}
+        />
+
+        <motion.div
+          className="relative z-10 text-center"
+          style={{ opacity: titleOpacity, scale: titleScale, y: titleY }}
+        >
+          {/* Stars row — top */}
+          <motion.p
+            className="mb-6 select-none text-[#C9A84C]"
+            style={{
+              fontSize: "clamp(12px, 1.5vw, 18px)",
+              letterSpacing: starsSpread,
+            }}
+          >
+            ★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★
+          </motion.p>
+
+          {/* Title */}
+          <h1
+            className="select-none font-hero uppercase"
+            style={{
+              fontSize: "clamp(36px, 6vw, 72px)",
+              letterSpacing: "0.12em",
+              color: "#F5F0E8",
+              textShadow: "0 0 80px rgba(201,168,76,0.15)",
+            }}
+          >
+            {isRo ? "CONSTITUȚIA" : "THE CONSTITUTION"}
+          </h1>
+          <p
+            className="mt-2 select-none font-body"
+            style={{
+              fontFamily: "'EB Garamond', 'Georgia', serif",
+              fontSize: "clamp(16px, 2.5vw, 28px)",
+              fontStyle: "italic",
+              fontWeight: 400,
+              color: "rgba(201,168,76,0.7)",
+            }}
+          >
+            {isRo
+              ? "a Statelor Unite ale Americii"
+              : "of the United States of America"}
+          </p>
+
+          <p
+            className="mt-8 select-none font-body text-[#6B6860]"
+            style={{
+              fontSize: "clamp(11px, 1.2vw, 14px)",
+              letterSpacing: "0.25em",
+            }}
+          >
+            ·{"  "}{isRo ? "Un Exhibit Interactiv" : "An Interactive Exhibit"}{"  "}·
+          </p>
+
+          {/* Stars row — bottom */}
+          <motion.p
+            className="mt-6 select-none text-[#C9A84C]"
+            style={{
+              fontSize: "clamp(12px, 1.5vw, 18px)",
+              letterSpacing: starsSpread,
+            }}
+          >
+            ★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★{"  "}★
+          </motion.p>
+        </motion.div>
+
+        {/* Scroll-to-enter hint */}
+        <motion.div
+          className="absolute bottom-12 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3"
+          style={{ opacity: scrollHintOpacity }}
+        >
+          <p
+            className="font-body uppercase text-[#6B6860]"
+            style={{ fontSize: "10px", letterSpacing: "0.3em" }}
+          >
+            {isRo ? "Derulează pentru a Intra" : "Scroll to Enter"}
+          </p>
+          <motion.div
+            className="h-6 w-px bg-gradient-to-b from-[rgba(201,168,76,0.4)] to-transparent"
+            animate={{ scaleY: [1, 0.4, 1], opacity: [0.6, 0.2, 0.6] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+}
+
+// ── ConservationSpotlight ────────────────────────────────────────────────────
+// Wraps an artifact in an archival vault spotlight.
+// The darkness is heavy (not empty). The spotlight has a warm amber tint
+// like the controlled lighting in the Archives Rotunda.
+export function ConservationSpotlight({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "center center"],
+  });
+
+  // Spotlight expands from 20% to 100% radius as element enters viewport center
+  const spotlightRadius = useTransform(scrollYProgress, [0, 0.5, 1], [15, 50, 100]);
+  const spotlightOpacity = useTransform(scrollYProgress, [0, 0.3, 0.8], [0, 0.7, 1]);
+
+  return (
+    <div ref={ref} className={`relative ${className}`}>
+      {children}
+      {/* Conservation-grade spotlight overlay */}
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-10"
+        style={{
+          opacity: useTransform(spotlightOpacity, (v: number) => 1 - v),
+          background: "radial-gradient(circle at 50% 50%, transparent 0%, transparent 20%, rgba(4,6,10,0.97) 45%)",
+        }}
+      />
+      {/* Warm amber tint on the spotlight edge */}
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-10 mix-blend-overlay"
+        style={{
+          opacity: useTransform(spotlightRadius, (r: number) => r < 60 ? 0.08 : 0),
+          background: "radial-gradient(circle at 50% 50%, rgba(201,168,76,0.15) 0%, transparent 60%)",
+        }}
+      />
+    </div>
+  );
+}
+
+// ── ChapterFooter ────────────────────────────────────────────────────────────
+// Persistent running chapter indicator at viewport bottom.
+// Replaces the 2xl-only sidebar with something always visible.
+// Uses IntersectionObserver to detect which chapter is in view.
+const CHAPTER_IDS = [
+  { id: "overview", chapter: "I", en: "The Living Document", ro: "Documentul Viu" },
+  { id: "founders", chapter: "II", en: "Architects of Liberty", ro: "Arhitecții Libertății" },
+  { id: "bill-of-rights", chapter: "III", en: "Bill of Rights", ro: "Declarația Drepturilor" },
+  { id: "separation-of-powers", chapter: "IV", en: "Separation of Powers", ro: "Separarea Puterilor" },
+  { id: "federalism", chapter: "V", en: "Laboratories of Democracy", ro: "Laboratoare ale Democrației" },
+  { id: "track-record", chapter: "VI", en: "250 Years of Evidence", ro: "250 de Ani de Dovezi" },
+  { id: "rights-at-risk", chapter: "VII", en: "Global Context", ro: "Context Global" },
+  { id: "world-without", chapter: "VIII", en: "The World Without", ro: "Lumea Fără" },
+];
+
+export function ChapterFooter({ isRo }: { isRo: boolean }) {
+  const [activeChapter, setActiveChapter] = useState<typeof CHAPTER_IDS[0] | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observerMap = new Map<string, IntersectionObserverEntry>();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          observerMap.set(entry.target.id, entry);
+        });
+
+        // Find the topmost visible section
+        let topmost: typeof CHAPTER_IDS[0] | null = null;
+        let topmostTop = Infinity;
+        for (const ch of CHAPTER_IDS) {
+          const entry = observerMap.get(ch.id);
+          if (entry?.isIntersecting && entry.boundingClientRect.top < topmostTop) {
+            topmost = ch;
+            topmostTop = entry.boundingClientRect.top;
+          }
+        }
+        setActiveChapter(topmost);
+        setVisible(topmost !== null);
+      },
+      { threshold: 0.1, rootMargin: "-10% 0px -10% 0px" }
+    );
+
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      CHAPTER_IDS.forEach((ch) => {
+        const el = document.getElementById(ch.id);
+        if (el) observer.observe(el);
+      });
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, []);
+
+  if (!activeChapter) return null;
+
+  return (
+    <motion.div
+      initial={{ y: 20, opacity: 0 }}
+      animate={visible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed bottom-0 left-0 right-0 z-50 pointer-events-none"
+    >
+      <div
+        className="mx-auto flex max-w-screen-lg items-center justify-center gap-4 px-4 py-3"
+        style={{
+          background: "linear-gradient(180deg, transparent 0%, rgba(8,11,18,0.9) 40%)",
+        }}
+      >
+        {/* Left line */}
+        <div
+          className="hidden h-px flex-1 sm:block"
+          style={{
+            background: "linear-gradient(90deg, transparent, rgba(201,168,76,0.2))",
+          }}
+        />
+
+        {/* Chapter indicator */}
+        <p
+          className="font-body uppercase text-[rgba(201,168,76,0.5)]"
+          style={{
+            fontSize: "11px",
+            letterSpacing: "0.2em",
+            fontWeight: 600,
+          }}
+        >
+          <span className="text-[rgba(201,168,76,0.3)]">
+            {isRo ? "Capitol" : "Chapter"} {activeChapter.chapter}{" "}
+            {isRo ? "din" : "of"} VIII
+          </span>
+          <span className="mx-3 text-[rgba(201,168,76,0.15)]">·</span>
+          <span>{isRo ? activeChapter.ro : activeChapter.en}</span>
+        </p>
+
+        {/* Right line */}
+        <div
+          className="hidden h-px flex-1 sm:block"
+          style={{
+            background: "linear-gradient(90deg, rgba(201,168,76,0.2), transparent)",
+          }}
+        />
+      </div>
+    </motion.div>
   );
 }
