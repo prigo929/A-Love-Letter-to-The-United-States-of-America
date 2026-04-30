@@ -181,9 +181,13 @@ export default async function ConstitutionPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-[#080B12]/80 via-transparent to-[#080B12]/80" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#080B12] via-transparent to-transparent" />
-                  <div className="absolute bottom-6 left-6">
+                  {/* Top gradient for mobile readability of the stat */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#080B12]/80 via-transparent to-transparent md:hidden" />
+                  <div className="absolute top-6 left-6 md:top-auto md:bottom-6 md:left-6">
                     <p className="font-hero text-4xl text-[#C9A84C]">4,543</p>
-                    <p className="font-body text-sm text-[#F5F0E8]/70">{isRo ? "cuvinte ce guvernează o economie de 31 trilioane $" : "words governing a $31 trillion economy"}</p>
+                    <p className="font-body text-sm text-[#F5F0E8]/70 max-w-[180px] md:max-w-none">
+                      {isRo ? "cuvinte ce guvernează o economie de 31 trilioane $" : "words governing a $31 trillion economy"}
+                    </p>
                   </div>
                   <AccessionLabel
                     title={isRo ? "Constituția Statelor Unite, Pagina 1" : "United States Constitution, Page 1"}
