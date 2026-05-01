@@ -1,4 +1,6 @@
-# America: The Greatest Nation
+<div align="center">
+  <h1>🇺🇸 America: The Greatest Nation</h1>
+  <p><em>A cinematic, data-backed Next.js platform celebrating the United States.</em></p>
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-111111?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![App Router](https://img.shields.io/badge/Router-App%20Router-0A3161?style=flat-square)](https://nextjs.org/docs/app)
@@ -13,10 +15,11 @@
 [![Deploy](https://img.shields.io/badge/Deploy-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com/)
 [![Status](https://img.shields.io/badge/Status-Active%20Build-D4AF37?style=flat-square&labelColor=0d1117)](#status)
 
-A cinematic Next.js site about the United States built as a long-form patriotic experience: large hero media, editorial sections, data visualizations, image-led storytelling, and deep-dive pages for topics like economy, culture, quality of life, and more.
+</div>
 
-> A patriotic editorial web experience, not a template.
->
+---
+
+> 🦅 **A patriotic editorial web experience, not a generic template.**  
 > The goal of this repo is to make the site feel intentional, premium, data-backed, and unmistakably American.
 
 This repo is not a generic marketing site. It is structured like a content platform:
@@ -39,24 +42,22 @@ This repo is not a generic marketing site. It is structured like a content platf
 | Storytelling | homepage is structured like a sequence, not a landing-page template |
 | Deep dives | economy and nature already work as real content verticals |
 
-## What Is Built
+## 🗺️ What Is Built
 
-Current routes:
+<details>
+<summary><strong>🏠 Core Pages</strong></summary>
 
 - `/` home page with hero, statement, stats, section grid, Why America blocks, map preview, video preview, data teaser charts, quote carousel, gallery preview, newsletter
-- `/economy` full landing page plus deep dives:
-  - `/economy/gdp-growth`
-  - `/economy/capital-markets`
-  - `/economy/startups-venture-capital`
-  - `/economy/dollar-dominance`
-  - `/economy/trade-and-exports`
-- `/nature` full landing page plus deep dives:
-  - `/nature/alaska`
-  - `/nature/rockies`
-  - `/nature/grand-canyon`
-  - `/nature/yellowstone`
-  - `/nature/great-lakes`
-  - `/nature/national-parks`
+- `/gallery`
+- `/data`
+- `/timeline`
+- `/explorer`
+- `/sitemap`
+</details>
+
+<details>
+<summary><strong>🦅 The Constitution</strong> (Interactive Civics)</summary>
+
 - `/constitution` full interactive landing page plus deep dives:
   - `/constitution/separation-of-powers`
   - `/constitution/federalism`
@@ -65,15 +66,39 @@ Current routes:
   - `/constitution/second-amendment`
   - `/constitution/democracy-track-record`
   - `/constitution/unique-features`
+</details>
+
+<details>
+<summary><strong>📈 The Economy</strong> (Data-Driven Vertical)</summary>
+
+- `/economy` full landing page plus deep dives:
+  - `/economy/gdp-growth`
+  - `/economy/capital-markets`
+  - `/economy/startups-venture-capital`
+  - `/economy/dollar-dominance`
+  - `/economy/trade-and-exports`
+</details>
+
+<details>
+<summary><strong>🌲 Natural Majesty</strong> (Geography Vertical)</summary>
+
+- `/nature` full landing page plus deep dives:
+  - `/nature/alaska`
+  - `/nature/rockies`
+  - `/nature/grand-canyon`
+  - `/nature/yellowstone`
+  - `/nature/great-lakes`
+  - `/nature/national-parks`
+</details>
+
+<details>
+<summary><strong>🎭 Culture & Life</strong> (Scaffolded)</summary>
+
 - `/culture`
-- `/culture/the-american-high-school`
-- `/culture/american-aesthetics`
+  - `/culture/the-american-high-school`
+  - `/culture/american-aesthetics`
 - `/quality-of-life`
-- `/gallery`
-- `/data`
-- `/timeline`
-- `/explorer`
-- `/sitemap`
+</details>
 
 The culture and quality-of-life pages are currently clean scaffolds with TODO zones, ready for content drops.
 
@@ -205,12 +230,25 @@ IMAGES/
   categorized local image library used by the site
 ```
 
-## Content Map
+## 🧭 Content Map
 
 If you are new to the repo, this is the shortest useful mental model:
 
-```text
-IMAGES/ -> lib/site-images.ts -> lib/data/* or lib/constants.ts -> components -> pages
+```mermaid
+graph LR
+    A[🖼️ IMAGES/] --> B[📜 lib/site-images.ts]
+    B --> C[📊 lib/data/*]
+    B --> D[⚙️ lib/constants.ts]
+    C --> E[🧱 Components]
+    D --> E
+    E --> F[🖥️ Pages]
+    
+    style A fill:#0A3161,stroke:#fff,stroke-width:2px,color:#fff
+    style B fill:#1E5AA8,stroke:#fff,stroke-width:2px,color:#fff
+    style C fill:#3C8DAD,stroke:#fff,stroke-width:2px,color:#fff
+    style D fill:#3C8DAD,stroke:#fff,stroke-width:2px,color:#fff
+    style E fill:#B22234,stroke:#fff,stroke-width:2px,color:#fff
+    style F fill:#8C1C2B,stroke:#fff,stroke-width:2px,color:#fff
 ```
 
 That flow is the backbone of the project:
