@@ -57,6 +57,14 @@ Current routes:
   - `/nature/yellowstone`
   - `/nature/great-lakes`
   - `/nature/national-parks`
+- `/constitution` full interactive landing page plus deep dives:
+  - `/constitution/separation-of-powers`
+  - `/constitution/federalism`
+  - `/constitution/bill-of-rights`
+  - `/constitution/first-amendment`
+  - `/constitution/second-amendment`
+  - `/constitution/democracy-track-record`
+  - `/constitution/unique-features`
 - `/culture`
 - `/culture/the-american-high-school`
 - `/culture/american-aesthetics`
@@ -78,6 +86,7 @@ The culture and quality-of-life pages are currently clean scaffolds with TODO zo
 - map preview, video preview, quote carousel, and gallery preview sections
 - economy section with full landing page plus five deep-dive routes
 - nature section with a full landing page, animated visual components, and six deep-dive routes
+- constitution section featuring interactive gear physics, policy sliders, dynamic SVGs, and a 50-state map
 - local image library with category folders for easier media management
 - Romanian translation mode wired through provider state and cookies
 - custom `STATES` homepage title treatment in `StatesVideoTitle.tsx`
@@ -169,6 +178,7 @@ app/
   globals.css                    site-wide styles
   economy/                       economy landing + deep dives
   nature/                        nature landing + deep dives
+  constitution/                  interactive civics landing + deep dives
   culture/                       culture hub + scaffolds
   quality-of-life/               scaffold
   gallery/ data/ timeline/ explorer/ sitemap/
@@ -178,6 +188,7 @@ components/
   sections/                      editorial homepage and section components
   data/                          reusable chart components
   nature/                        animated, client-side nature visuals
+  constitution/                  interactive SVG animations, physics, and maps
   forms/                         newsletter form
   providers/                     language provider
 
@@ -300,6 +311,7 @@ Main content sources:
 - `lib/data/home.ts`
 - `lib/data/economy-data.ts`
 - `lib/data/nature-data.ts`
+- `lib/data/constitution-data.ts`
 - `lib/constants.ts`
 
 Use these rules:
@@ -315,6 +327,83 @@ Use these rules:
 - keep page files focused on structure
 - keep shared visuals inside components
 - keep filenames stable once the site depends on them
+
+## Beginner's Guide: Understanding and Modifying the Code
+
+If you're new to React, Next.js, or Tailwind CSS, this project might look complex, but it follows a few simple, repeating patterns. Here is a cheat sheet on what things mean and how to change them safely.
+
+### 1. The Component Pattern (`.tsx` files)
+Most files in `components/` or `app/` end in `.tsx`. These are React components. 
+Think of a component as a custom HTML tag. 
+For example, in `app/page.tsx`, you might see `<StatBar />`. That is not standard HTML; it is a custom block of code defined in `components/sections/StatBar.tsx`. 
+- **To change what a component says:** Find the component file (e.g., `StatBar.tsx`), look for the text, and change it. If you don't see the text there, it is likely being passed in from a data file like `lib/data/home.ts`.
+- **To change how it looks:** Look at the `className="..."` attribute. We use Tailwind CSS, which means styles are written directly in the class names (e.g., `text-white` makes text white, `mt-4` adds margin-top).
+
+### 2. How the UI "Reacts" to Language (`isRo`)
+You will see `{isRo ? "Salut" : "Hello"}` everywhere in the codebase.
+- `isRo` is a boolean (true/false) variable meaning "Is Romanian?".
+- The `?` and `:` is a ternary operator. It means: "If `isRo` is true, show the first string. Otherwise, show the second string."
+- **To modify text:** Always remember to modify both the English and the Romanian strings to keep the site fully translated!
+
+### 3. Understanding Framer Motion (`<motion.div>`)
+You will often see `<motion.div>` instead of standard `<div>`. This comes from the Framer Motion animation library.
+- **`initial={{ opacity: 0, y: 20 }}`**: How the element looks before it animates in (invisible, pushed down by 20 pixels).
+- **`animate={{ opacity: 1, y: 0 }}`**: What the element animates *to* (fully visible, back to its normal position).
+- **`transition={{ duration: 0.8 }}`**: How long the animation takes.
+- **To change an animation:** Simply adjust these numbers. If you want a slower fade-in, change `duration: 0.8` to `duration: 1.5`.
+
+### 4. How Pages Are Assembled (`app/*/page.tsx`)
+In Next.js, any file named `page.tsx` inside the `app/` folder automatically becomes a web page.
+- `app/page.tsx` is the homepage (`/`).
+- `app/economy/page.tsx` is the economy page (`/economy`).
+- These files rarely contain heavy logic or styling. Instead, they act like a "table of contents", stacking pre-built components on top of each other. 
+- **To reorder sections:** Simply cut and paste the `<Section>` blocks inside `page.tsx` to rearrange the page layout.
+
+### 5. Managing Colors and Aesthetics
+This project uses a highly customized color palette tailored to a patriotic "Vault" theme.
+- **Navy Backgrounds:** Usually defined as `bg-[#080B12]` or `bg-navy-dark`.
+- **Gold Accents:** Usually `text-[#C9A84C]` or `bg-[#C9A84C]`.
+- **Text:** `text-[#F5F0E8]` for primary white text, and `text-[#B8B4AC]` for secondary gray text.
+- **To change a color:** Search for these hex codes (e.g., `#C9A84C`) and replace them, but be careful—the site's cinematic feel relies heavily on this specific palette.
+
+### 6. Where the Data Lives (`lib/data/`)
+If you want to update statistics (like GDP, population, or historical dates), **do not look in the component files**. 
+We keep "facts" separated from "design".
+- Go to `lib/data/economy-data.ts`, `lib/data/nature-data.ts`, etc.
+- You will see standard JavaScript arrays and objects holding numbers and text.
+- Change the data there, and the charts and UI components will automatically update everywhere on the site!
+
+### 7. How to Add a New Page
+Next.js uses "file-based routing", which makes adding pages incredibly easy.
+1. Inside the `app/` folder, create a new folder for your route (e.g., `app/history/`).
+2. Inside that folder, create a file specifically named `page.tsx`.
+3. Add a basic React component: 
+   ```tsx
+   export default function HistoryPage() { 
+     return <div className="pt-32 text-center">My History Page</div>; 
+   }
+   ```
+4. Go to `http://localhost:3000/history` in your browser, and you will see your new page!
+
+### 8. How to Change or Add Images
+This project strictly organizes images so we don't have broken links scattered across hundreds of files.
+1. Place your new image in the `IMAGES/` folder (e.g., `IMAGES/history/founding-fathers.jpg`).
+2. Open `lib/site-images.ts` and import it at the top:
+   ```ts
+   import foundingFathers from "@/IMAGES/history/founding-fathers.jpg";
+   ```
+3. Add it to the `SITE_IMAGES` object at the bottom of the file.
+4. Now, anywhere in the site, you can securely use `SITE_IMAGES.history.foundingFathers.src`.
+
+### 9. SVGs and Interactive Diagrams
+If you see `<svg>` tags in the code (like in the map or the Constitution gears), they are drawing graphics directly using math!
+- We use SVG (Scalable Vector Graphics) for interactive diagrams because they never lose quality when zoomed in and can be animated smoothly.
+- **To change a color in a diagram:** Look for the `fill="..."` (inside color) or `stroke="..."` (outline color) attributes inside the `<path>` or `<circle>` tags.
+
+### 10. Common Errors and How to Fix Them
+- **"Hydration failed" or "Text content did not match"**: This happens if the server generates English text, but your browser tries to render Romanian immediately, or if there's a slight mismatch in math calculations. It's a harmless warning in dev mode, but try to keep dynamic math rounded.
+- **"Cannot find module"**: You might have deleted a file, renamed it, or misspelled an import path. Check the spelling at the very top of the file!
+- **"Cannot read properties of undefined (reading 'src')"**: You forgot to export your image correctly from `lib/site-images.ts`. Go double-check your registry!
 
 ## Translation System
 
@@ -401,6 +490,10 @@ Edit `lib/data/economy-data.ts`
 
 Edit `lib/data/nature-data.ts`
 
+### Change constitution data, historical checks, or policy settings
+
+Edit `lib/data/constitution-data.ts` or `lib/data/federalism-data.ts`
+
 ### Change header navigation or submenu structure
 
 Edit `lib/constants.ts`
@@ -478,10 +571,10 @@ This section is for future AI-assisted edits. The goal is to explain how the cod
 - `StatesVideoTitle.tsx` exists because the middle hero line needed a more art-directed effect than plain text could provide
 - homepage sections are broken into separate components so visual experiments stay isolated
 
-### Economy and Nature Decisions
+### Economy, Nature, and Constitution Decisions
 
-- `app/economy/page.tsx` and `app/nature/page.tsx` are the two most complete editorial hubs in the repo
-- both use the same general pattern: hero -> stats -> overview -> charts/tables/media -> fact cards -> quote -> next routes
+- `app/economy/page.tsx`, `app/nature/page.tsx`, and `app/constitution/page.tsx` are the core editorial hubs in the repo
+- they use the same general pattern: hero -> stats -> overview -> charts/media/interactive -> fact cards -> quote -> next routes
 - deep-dive subpages are meant to be substantive long-form pages, not thin SEO pages
 - new verticals should follow this pattern instead of shipping one shallow landing page
 
@@ -503,6 +596,8 @@ This section is for future AI-assisted edits. The goal is to explain how the cod
 | `STATES` title effect | `components/sections/StatesVideoTitle.tsx` |
 | Economy content | `lib/data/economy-data.ts` |
 | Nature content | `lib/data/nature-data.ts` |
+| Constitution content | `lib/data/constitution-data.ts`, `lib/data/federalism-data.ts` |
+| Constitution interactions | `components/constitution/*` |
 | Image swaps | `lib/site-images.ts` |
 | Locale logic | `components/providers/LanguageProvider.tsx`, `lib/i18n/server.ts` |
 | Global shell and analytics | `app/layout.tsx` |
@@ -552,6 +647,7 @@ If Vercel fails on static image imports:
 - Romanian translation mode wired through real cookie + provider state
 - economy section built as a real editorial/data hybrid, not just cards and charts
 - nature section built with its own charts, animations, and long-form subpages
+- constitution section featuring Bloomberg-grade interactive SVGs, SVG ratchet physics, and a policy sandbox
 - homepage hero includes a custom video-backed `STATES` title treatment
 
 ## Roadmap Energy
@@ -572,6 +668,7 @@ Good next expansions for this repo:
 | Homepage | strong and feature-rich |
 | Economy | substantial and already production-shaped |
 | Nature | substantial and already production-shaped |
+| Constitution | fully interactive, production-ready, interactive physics and maps |
 | Culture | scaffolded, ready for content |
 | Quality of Life | scaffolded, ready for content |
 | Translation | live for shared UI and major route content |
