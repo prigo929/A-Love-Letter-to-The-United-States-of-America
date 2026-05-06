@@ -171,11 +171,6 @@ export const NAV_SECTIONS = [
     badge: "Est. 1776",
     items: [
       {
-        label: "The Foundation",
-        href: "/constitution",
-        description: "1776 — the miracle in Philadelphia",
-      },
-      {
         label: "Bill of Rights",
         href: "/constitution/bill-of-rights",
         description: "The first 10 amendments",
@@ -199,6 +194,11 @@ export const NAV_SECTIONS = [
         label: "Separation of Powers",
         href: "/constitution/separation-of-powers",
         description: "Tyranny made nearly impossible",
+      },
+      {
+        label: "Electoral Archive Map",
+        href: "/constitution/electoral-map",
+        description: "Historical 50-state interactive map",
       },
     ],
   },
@@ -528,10 +528,6 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
     description: "250 de ani de guvernare democratică neîntreruptă",
     badge: "Fondată în 1776",
     items: {
-      "/constitution": {
-        label: "Temelia",
-        description: "1776 — miracolul de la Philadelphia",
-      },
       "/constitution/bill-of-rights": {
         label: "Carta Drepturilor",
         description: "Primele 10 amendamente",
@@ -551,6 +547,10 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "/constitution/separation-of-powers": {
         label: "Separarea Puterilor",
         description: "Tirania devine aproape imposibilă",
+      },
+      "/constitution/electoral-map": {
+        label: "Arhiva Electorală",
+        description: "Harta interactivă istorică a celor 50 de state",
       },
     },
   },
