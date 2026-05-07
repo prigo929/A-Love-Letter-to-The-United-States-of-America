@@ -23,7 +23,8 @@ export const PARTY_COLORS: Record<string, string> = {
   DEM: "#4169E1", REP: "#E64141", FED: "#8B4513", DR: "#2E8B57", WHIG: "#DAA520",
   PROG: "#9370DB", DIX: "#FF8C00", AI: "#CD853F", BM: "#8A2BE2", SR: "#D2691E", NR: "#A0522D",
   IND: "#9932CC", VACANT: "#1A1A24", AM: "#8FBC8F", NULL: "#2F4F4F", KN: "#B22222", CU: "#4682B4",
-  SDEM: "#8B0000", POP: "#FFD700"
+  SDEM: "#8B0000", POP: "#FFD700",
+  "DR-J": "#2E8B57", "DR-A": "#4682B4", "DR-C": "#8B4513", "DR-CL": "#DAA520"
 };
 
 export const PARTY_FULL_NAMES: Record<string, string> = {
@@ -101,7 +102,13 @@ const ELECTIONS: Record<number, ElectionRecord> = {
   1812: { winner: "DR", loser: "FED", winnerStates: ["Georgia","Kentucky","Louisiana","Maryland","North Carolina","Ohio","Pennsylvania","South Carolina","Tennessee","Vermont","Virginia"] },
   1816: { winner: "DR", loser: "FED", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1816 && !["Connecticut","Delaware","Massachusetts"].includes(n)) },
   1820: { winner: "DR", loser: "DR", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1820), note: "Monroe unopposed" },
-  1824: { winner: "DR", loser: "DR", winnerStates: ["Alabama","Illinois","Indiana","Louisiana","Maryland","Mississippi","Missouri","New Jersey","North Carolina","Pennsylvania","South Carolina","Tennessee"], note: "J.Q. Adams chosen by House" },
+  1824: { 
+    winner: "DR-J", loser: "DR-A", 
+    winnerStates: ["Alabama","Illinois","Indiana","Louisiana","Maryland","Mississippi","Missouri","New Jersey","North Carolina","Pennsylvania","South Carolina","Tennessee"],
+    anomalies: { "Maine": "DR-A", "Massachusetts": "DR-A", "New Hampshire": "DR-A", "New York": "DR-A", "Rhode Island": "DR-A", "Vermont": "DR-A", "Georgia": "DR-C", "Virginia": "DR-C", "Kentucky": "DR-CL", "Ohio": "DR-CL" },
+    thirdPartyCandidates: { "DR-J": "Andrew Jackson", "DR-A": "John Q. Adams", "DR-C": "William Crawford", "DR-CL": "Henry Clay" },
+    note: "Jackson won popular/electoral plurality; House chose J.Q. Adams" 
+  },
   1828: { winner: "DEM", loser: "NR", winnerStates: ["Alabama","Georgia","Illinois","Indiana","Kentucky","Louisiana","Maine","Mississippi","Missouri","New Hampshire","New York","North Carolina","Ohio","Pennsylvania","South Carolina","Tennessee","Virginia"] },
   1832: { winner: "DEM", loser: "NR", winnerStates: ["Alabama","Georgia","Illinois","Indiana","Maine","Mississippi","Missouri","New Hampshire","New York","North Carolina","Ohio","Pennsylvania","Tennessee","Virginia"], anomalies: { "Vermont": "AM", "South Carolina": "NULL" }, thirdPartyCandidates: { "AM": "William Wirt", "NULL": "John Floyd" } },
   1836: { winner: "DEM", loser: "WHIG", winnerStates: ["Alabama","Arkansas","Connecticut","Illinois","Louisiana","Maine","Michigan","Mississippi","Missouri","New Hampshire","New York","North Carolina","Pennsylvania","Rhode Island","Virginia"] },
@@ -312,9 +319,12 @@ function buildYear(year: number): YearData {
     if (activeEl.anomalies && activeEl.anomalies[name]) {
       presParty = activeEl.anomalies[name];
     }
-    // Set candidate to null if not an election year to trigger "OFF-YEAR" UI
     if (!el) presCandidate = undefined; 
-    else presCandidate = presParty === "DEM" ? activeEl.demCandidate || pData.dem : activeEl.repCandidate || pData.rep;
+    else {
+      if (presParty === "DEM") presCandidate = activeEl.demCandidate || pData.dem;
+      else if (presParty === "REP") presCandidate = activeEl.repCandidate || pData.rep;
+      else presCandidate = activeEl.thirdPartyCandidates?.[presParty] || (year < 1860 && (presParty === "DR" || presParty === "FED") ? (presParty === "DR" ? activeEl.demCandidate : activeEl.repCandidate) : PARTY_FULL_NAMES[presParty] || presParty);
+    }
 
     // Senate (independent baseline: state lean + split overrides)
     const senBase = year < 1856 ? presParty : R_BASE.has(name) ? "REP" : D_BASE.has(name) ? "DEM" : presParty;

@@ -109,12 +109,20 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
                 <div className="flex flex-col">
                   <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: PARTY_COLORS[parties[0]?.[0]] }}>
                     {viewMode === "President" ? (
-                      parties[0]?.[0] === "DEM" ? yd.demCandidate : 
-                      parties[0]?.[0] === "REP" ? yd.repCandidate : 
-                      (yd.thirdPartyCandidates?.[parties[0]?.[0]] || PARTY_FULL_NAMES[parties[0]?.[0]] || parties[0]?.[0])
+                      (yd.thirdPartyCandidates?.[parties[0]?.[0]] || 
+                       ((parties[0]?.[0] === "DEM" || (year < 1860 && parties[0]?.[0] === "DR")) ? yd.demCandidate :
+                        (parties[0]?.[0] === "REP" || (year < 1860 && parties[0]?.[0] === "FED")) ? yd.repCandidate : 
+                        yd.demCandidate || PARTY_FULL_NAMES[parties[0]?.[0]] || parties[0]?.[0])
+                      )
                     ) : PARTY_FULL_NAMES[parties[0]?.[0]] || parties[0]?.[0]}
                     {!isOffYear && parties[0]?.[1] > (parties[1]?.[1] || 0) && <span className="ml-1 text-white">✓</span>}
                   </span>
+                  {viewMode === "President" && !isOffYear && (
+                    <span className="font-mono text-[9px] text-[#8A8780] opacity-80">
+                      {(parties[0]?.[0] === "DEM" || (year < 1860 && parties[0]?.[0] === "DR")) ? yd.demPopVote.toLocaleString() : 
+                       (parties[0]?.[0] === "REP" || (year < 1860 && parties[0]?.[0] === "FED")) ? yd.repPopVote.toLocaleString() : ""}
+                    </span>
+                  )}
                   {yd.unopposed && <span className="font-mono text-[8px] text-[#8A8780] uppercase tracking-tighter">{isRo ? "FĂRĂ OPOZIȚIE" : "UNOPPOSED"}</span>}
                 </div>
               </div>
@@ -127,11 +135,19 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
                   <div className="flex flex-col items-end">
                     <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: PARTY_COLORS[parties[1]?.[0]] }}>
                       {viewMode === "President" ? (
-                        parties[1]?.[0] === "DEM" ? yd.demCandidate : 
-                        parties[1]?.[0] === "REP" ? yd.repCandidate : 
-                        (yd.thirdPartyCandidates?.[parties[1]?.[0]] || PARTY_FULL_NAMES[parties[1]?.[0]] || parties[1]?.[0])
+                        (yd.thirdPartyCandidates?.[parties[1]?.[0]] || 
+                         ((parties[1]?.[0] === "DEM" || (year < 1860 && parties[1]?.[0] === "DR")) ? yd.demCandidate :
+                          (parties[1]?.[0] === "REP" || (year < 1860 && parties[1]?.[0] === "FED")) ? yd.repCandidate : 
+                          yd.repCandidate || PARTY_FULL_NAMES[parties[1]?.[0]] || parties[1]?.[0])
+                        )
                       ) : PARTY_FULL_NAMES[parties[1]?.[0]] || parties[1]?.[0]}
                     </span>
+                    {viewMode === "President" && !isOffYear && (
+                      <span className="font-mono text-[9px] text-[#8A8780] opacity-80">
+                        {(parties[1]?.[0] === "DEM" || (year < 1860 && parties[1]?.[0] === "DR")) ? yd.demPopVote.toLocaleString() : 
+                         (parties[1]?.[0] === "REP" || (year < 1860 && parties[1]?.[0] === "FED")) ? yd.repPopVote.toLocaleString() : ""}
+                      </span>
+                    )}
                   </div>
                   <span className="font-display text-2xl font-black text-[#F5F0E8]">{parties[1]?.[1] || 0}</span>
                 </div>
