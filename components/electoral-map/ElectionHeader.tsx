@@ -43,6 +43,28 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
   const topParty = parties[0]?.[0] || "OTHER";
   const secondParty = parties[1]?.[0] || "OTHER";
 
+  let netGainStr = "";
+  if (viewMode === "House" || viewMode === "Senate") {
+    const currIdx = ELECTORAL_HISTORY.findIndex(h => h.year === year);
+    if (currIdx > 0) {
+      const prevYd = ELECTORAL_HISTORY[currIdx - 1];
+      let prevCount = 0;
+      const currCount = parties[0]?.[1] || 0;
+      for (const sd of Object.values(prevYd.states)) {
+        if (viewMode === "House") {
+          prevCount += topParty === "DEM" ? sd.house.demReps : sd.house.repReps;
+        } else if (viewMode === "Senate") {
+          if (sd.senate.party1 === topParty) prevCount++;
+          if (sd.senate.party2 === topParty) prevCount++;
+        }
+      }
+      const delta = currCount - prevCount;
+      if (delta > 0) netGainStr = `+${delta} net gain`;
+      else if (delta < 0) netGainStr = `${delta} net loss`;
+      else netGainStr = "No net change";
+    }
+  }
+
   return (
     <div className="mb-6">
       {/* ── METADATA BAR ──────────────────────────────────────────────────────── */}
@@ -106,13 +128,13 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
       {viewMode === "Senate" && (
         <div className="mt-1 flex justify-between font-mono text-[9px] text-[#8A8780]">
           <span>67 seats not up for election</span>
-          <span>Flipped +2 seats</span>
+          <span style={{ color: PARTY_COLORS[topParty] }}>{netGainStr}</span>
         </div>
       )}
 
       {viewMode === "House" && (
         <div className="mt-1 flex justify-between font-mono text-[9px] text-[#8A8780]">
-          <span style={{ color: PARTY_COLORS[topParty] }}>+2 net gain</span>
+          <span style={{ color: PARTY_COLORS[topParty] }}>{netGainStr}</span>
           <span></span>
         </div>
       )}

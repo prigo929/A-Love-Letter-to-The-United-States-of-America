@@ -58,7 +58,7 @@ export function TimelineScrubber({
   const phX = yearToX(currentYear);
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full select-none touch-none">
       <div className="mb-1.5 flex items-center justify-between px-0.5">
         <div className="flex items-center gap-2">
           <button onClick={() => setPlaying(p => !p)}
@@ -76,13 +76,13 @@ export function TimelineScrubber({
         </motion.span>
       </div>
 
-      <svg ref={ref} viewBox={`0 0 ${TW} ${TRACK_H}`}
-        className="w-full cursor-pointer select-none"
-        onPointerDown={onDown}
-        onPointerMove={(e) => { if (dragging) snap(e.clientX); }}
-        onPointerUp={() => setDragging(false)}
-        onPointerLeave={() => setDragging(false)}
-        style={{ touchAction: "none" }}>
+      <div className="relative w-full">
+        <svg ref={ref} viewBox={`0 0 ${TW} ${TRACK_H}`}
+          className="w-full cursor-pointer"
+          onPointerDown={onDown}
+          onPointerMove={(e) => { if (dragging) snap(e.clientX); }}
+          onPointerUp={() => setDragging(false)}
+          onPointerLeave={() => setDragging(false)}>
 
         {/* Era background bands */}
         {ERAS.map((era) => {
@@ -116,14 +116,6 @@ export function TimelineScrubber({
                 x2={x} y2={TRACK_H / 2 + (active ? 12 : 5)}
                 stroke={active ? "#C9A84C" : hov ? "rgba(201,168,76,0.5)" : "rgba(201,168,76,0.15)"}
                 strokeWidth={active ? 2 : 0.5} />
-              {label && (
-                <text x={x} y={TRACK_H / 2 + (active ? 24 : 18)} textAnchor="middle"
-                  fill={active ? "#C9A84C" : hov ? "rgba(201,168,76,0.6)" : "rgba(201,168,76,0.2)"}
-                  fontSize={active ? "8" : "6"} fontFamily="'Inter',monospace"
-                  fontWeight={active ? "700" : "400"}>
-                  {y}
-                </text>
-              )}
             </g>
           );
         })}
@@ -132,7 +124,32 @@ export function TimelineScrubber({
         <circle cx={phX} cy={TRACK_H / 2} r={dragging ? 5 : 3.5} fill="#C9A84C" />
         <circle cx={phX} cy={TRACK_H / 2} r={dragging ? 9 : 7}
           fill="none" stroke="rgba(201,168,76,0.2)" strokeWidth={0.5} />
-      </svg>
+        </svg>
+
+        {/* HTML Labels for accurate positioning without SVG scaling overlap */}
+        <div className="absolute top-[52px] left-[3%] right-[3%] h-4 pointer-events-none">
+          {YEARS.map((y, idx) => {
+            const active = y === currentYear;
+            const hov = y === hoverY;
+            if (!showLabel(y)) return null;
+            
+            // Prevent collision: hide year if it's too close to currentYear but not active/hover
+            if (!active && !hov && y !== MIN_YEAR && y !== MAX_YEAR && Math.abs(y - currentYear) <= 8) return null;
+
+            let positionClasses = "-translate-x-1/2";
+            let leftStyle = `${(idx / (YEARS.length - 1)) * 100}%`;
+            
+            if (idx === 0) { positionClasses = ""; leftStyle = "0%"; }
+            else if (idx === YEARS.length - 1) { positionClasses = "-translate-x-full"; leftStyle = "100%"; }
+
+            return (
+              <div key={`lbl-${y}`} className={`absolute font-mono tracking-tighter ${positionClasses} ${active ? "text-[10px] font-bold text-[#C9A84C] -translate-y-1" : hov ? "text-[9px] text-[rgba(201,168,76,0.6)]" : "text-[9px] text-[rgba(201,168,76,0.3)]"}`} style={{ left: leftStyle, fontVariantNumeric: "tabular-nums" }}>
+                {y}
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }

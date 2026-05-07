@@ -247,16 +247,15 @@ export function MapRenderer({
                 <pattern id="split-rd" width="1" height="1" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
                   <polygon points="0,0 1,0 0,1" fill={pc("REP")} /><polygon points="1,0 1,1 0,1" fill={pc("DEM")} />
                 </pattern>
-                {/* Universal flip hash overlay */}
                 <pattern id="flip-hash" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
                   <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(255,255,255,0.22)" strokeWidth="2.5" />
                 </pattern>
-                <pattern id="half-flip-1" width="1" height="1" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
-                  <polygon points="0,0 1,0 0,1" fill="url(#flip-hash)" />
-                </pattern>
-                <pattern id="half-flip-2" width="1" height="1" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
-                  <polygon points="1,0 1,1 0,1" fill="url(#flip-hash)" />
-                </pattern>
+                <clipPath id="clip-half-1" clipPathUnits="objectBoundingBox">
+                  <polygon points="0,0 1,0 0,1" />
+                </clipPath>
+                <clipPath id="clip-half-2" clipPathUnits="objectBoundingBox">
+                  <polygon points="1,0 1,1 0,1" />
+                </clipPath>
               </defs>
               <Geographies geography={geoUrl}>
                 {({ geographies }: { geographies: MapGeo[] }) => {
@@ -286,13 +285,14 @@ export function MapRenderer({
                     // Determine if this state is flipped in the current view
                     let isFlipped = false;
                     let flipUrl = "url(#flip-hash)";
+                    let flipClip = "none";
                     if (!isTerritory) {
                       if (viewMode === "President" && flip.presFlip) isFlipped = true;
                       else if (viewMode === "Governor" && flip.govFlip) isFlipped = true;
                       else if (viewMode === "Senate") {
                         if (flip.senFlip1 && flip.senFlip2) { isFlipped = true; flipUrl = "url(#flip-hash)"; }
-                        else if (flip.senFlip1) { isFlipped = true; flipUrl = "url(#half-flip-1)"; }
-                        else if (flip.senFlip2) { isFlipped = true; flipUrl = "url(#half-flip-2)"; }
+                        else if (flip.senFlip1) { isFlipped = true; flipUrl = "url(#flip-hash)"; flipClip = "url(#clip-half-1)"; }
+                        else if (flip.senFlip2) { isFlipped = true; flipUrl = "url(#flip-hash)"; flipClip = "url(#clip-half-2)"; }
                       }
                     }
 
@@ -314,9 +314,9 @@ export function MapRenderer({
                       elements.push(
                         <Geography key={`${geo.rsmKey}-flip`} geography={geo}
                           style={{
-                            default: { fill: flipUrl, stroke: "none", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
-                            hover: { fill: flipUrl, stroke: "none", outline: "none", pointerEvents: "none" as const },
-                            pressed: { fill: flipUrl, outline: "none" },
+                            default: { fill: flipUrl, clipPath: flipClip !== "none" ? flipClip : undefined, stroke: "none", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
+                            hover: { fill: flipUrl, clipPath: flipClip !== "none" ? flipClip : undefined, stroke: "none", outline: "none", pointerEvents: "none" as const },
+                            pressed: { fill: flipUrl, clipPath: flipClip !== "none" ? flipClip : undefined, outline: "none" },
                           }}
                           tabIndex={-1}
                         />
