@@ -35,7 +35,7 @@ export default async function ElectoralMapPage() {
         <ConstitutionAurora />
         <InkParticles count={50} />
         <Image
-          src="/images/us-buildings/us-capitol-building.jpg"
+          src="/images/us-buildings/us-capitol.jpg"
           alt="US Capitol building at dusk"
           fill
           className="object-cover opacity-15"
@@ -89,7 +89,7 @@ export default async function ElectoralMapPage() {
           {/* Quick stat pills */}
           <div className="mt-8 flex flex-wrap gap-3">
             {[
-              { label: isRo ? "Alegeri Acoperite" : "Elections Covered", value: "6" },
+              { label: isRo ? "Alegeri Acoperite" : "Elections Covered", value: "59" },
               { label: isRo ? "Perspective" : "Perspectives", value: "4" },
               { label: isRo ? "State" : "States", value: "50" },
             ].map((stat) => (
