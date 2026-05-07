@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ELECTORAL_HISTORY, getStateData, getFlipData, PARTY_COLORS, STATE_ADMISSION } from "@/lib/data/electoral-data";
+import { ELECTORAL_HISTORY, getStateData, getFlipData, PARTY_COLORS, STATE_ADMISSION, PARTY_FULL_NAMES } from "@/lib/data/electoral-data";
 
 function pc(p: string) { return PARTY_COLORS[p] || "#C9A84C"; }
 
@@ -20,16 +20,20 @@ export function StateDetailPanel({
   const races: { label: string; blocks: { party: string; detail: string; flipped: boolean }[] }[] = [
     {
       label: isRo ? "Președinte" : "President",
-      blocks: [{ party: data.president.party, detail: data.president.party, flipped: flip.presFlip }],
+      blocks: [{ 
+        party: data.president.party, 
+        detail: data.president.candidate ? `${data.president.candidate} (${PARTY_FULL_NAMES[data.president.party] || data.president.party})` : (PARTY_FULL_NAMES[data.president.party] || data.president.party), 
+        flipped: flip.presFlip 
+      }],
     },
     {
       label: isRo ? "Senat" : "Senate",
       blocks: data.senate.split
         ? [
-            { party: data.senate.party1, detail: data.senate.party1, flipped: flip.senFlip1 },
-            { party: data.senate.party2, detail: data.senate.party2, flipped: flip.senFlip2 },
+            { party: data.senate.party1, detail: PARTY_FULL_NAMES[data.senate.party1] || data.senate.party1, flipped: flip.senFlip1 },
+            { party: data.senate.party2, detail: PARTY_FULL_NAMES[data.senate.party2] || data.senate.party2, flipped: flip.senFlip2 },
           ]
-        : [{ party: data.senate.party1, detail: data.senate.party1, flipped: flip.senFlip1 || flip.senFlip2 }],
+        : [{ party: data.senate.party1, detail: PARTY_FULL_NAMES[data.senate.party1] || data.senate.party1, flipped: flip.senFlip1 || flip.senFlip2 }],
     },
     {
       label: isRo ? "Cameră" : "House",
@@ -41,7 +45,7 @@ export function StateDetailPanel({
     },
     {
       label: isRo ? "Guvernator" : "Governor",
-      blocks: [{ party: data.governor.party, detail: data.governor.party, flipped: flip.govFlip }],
+      blocks: [{ party: data.governor.party, detail: PARTY_FULL_NAMES[data.governor.party] || data.governor.party, flipped: flip.govFlip }],
     },
   ];
 
