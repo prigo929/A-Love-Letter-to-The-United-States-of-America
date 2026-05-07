@@ -44,6 +44,7 @@ export const STATE_ADMISSION: Record<string, number> = {
   Nevada:1864,Nebraska:1867,Colorado:1876,"North Dakota":1889,"South Dakota":1889,
   Montana:1889,Washington:1889,Idaho:1890,Wyoming:1890,Utah:1896,Oklahoma:1907,
   "New Mexico":1912,Arizona:1912,Alaska:1959,Hawaii:1959,
+  "District of Columbia":1961,
 };
 
 // ── Electoral Eras (for timeline annotations) ─────────────────────────────
@@ -67,7 +68,8 @@ const EV: Record<string,number> = {
   "New Hampshire":4,"New Jersey":14,"New Mexico":5,"New York":28,"North Carolina":16,
   "North Dakota":3,Ohio:17,Oklahoma:7,Oregon:8,Pennsylvania:19,"Rhode Island":4,
   "South Carolina":9,"South Dakota":3,Tennessee:11,Texas:40,Utah:6,Vermont:3,
-  Virginia:13,Washington:12,"West Virginia":4,Wisconsin:10,Wyoming:3
+  Virginia:13,Washington:12,"West Virginia":4,Wisconsin:10,Wyoming:3,
+  "District of Columbia":3
 };
 const HOUSE: Record<string,number> = {
   Alabama:7,Alaska:1,Arizona:9,Arkansas:4,California:52,Colorado:8,Connecticut:5,
@@ -77,7 +79,8 @@ const HOUSE: Record<string,number> = {
   "New Hampshire":2,"New Jersey":12,"New Mexico":3,"New York":26,"North Carolina":14,
   "North Dakota":1,Ohio:15,Oklahoma:5,Oregon:6,Pennsylvania:17,"Rhode Island":2,
   "South Carolina":7,"South Dakota":1,Tennessee:9,Texas:38,Utah:4,Vermont:1,
-  Virginia:11,Washington:10,"West Virginia":2,Wisconsin:8,Wyoming:1
+  Virginia:11,Washington:10,"West Virginia":2,Wisconsin:8,Wyoming:1,
+  "District of Columbia":0
 };
 
 const NAMES = Object.keys(STATE_ADMISSION);
