@@ -53,7 +53,7 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
             <span className="font-display text-2xl font-black text-[#F5F0E8]">{parties[0]?.[1] || 0}</span>
             <div className="flex flex-col">
               <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: PARTY_COLORS[topParty] }}>
-                {PARTY_FULL_NAMES[topParty] || topParty}
+                {viewMode === "President" ? (topParty === "DEM" ? yd.demCandidate : yd.repCandidate) : PARTY_FULL_NAMES[topParty] || topParty}
                 <span className="ml-1 text-white">✓</span>
               </span>
             </div>
@@ -65,7 +65,7 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
           <div className="flex items-center gap-2">
             <div className="flex flex-col items-end">
               <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: PARTY_COLORS[secondParty] }}>
-                {PARTY_FULL_NAMES[secondParty] || secondParty}
+                {viewMode === "President" ? (secondParty === "DEM" ? yd.demCandidate : secondParty === "REP" ? yd.repCandidate : PARTY_FULL_NAMES[secondParty] || secondParty) : PARTY_FULL_NAMES[secondParty] || secondParty}
               </span>
             </div>
             <span className="font-display text-2xl font-black text-[#F5F0E8]">{parties[1]?.[1] || 0}</span>
@@ -88,18 +88,18 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
         })}
         {/* Center Threshold Line */}
         <div className="absolute inset-y-0 z-10 w-[2px] bg-[#080B12]" style={{ left: `${thresholdPct}%` }} />
-        <div className="absolute -top-[16px] z-10 -translate-x-1/2 font-mono text-[8px] font-bold text-[#6B6860] bg-[#080B12] px-1"
+        <div className="absolute -top-[16px] z-10 -translate-x-1/2 whitespace-nowrap bg-[#080B12] px-1 font-mono text-[8px] font-bold text-[#6B6860]"
           style={{ left: `${thresholdPct}%`, fontVariantNumeric: "tabular-nums" }}>
-          {viewMode === "President" ? winThreshold : viewMode === "Senate" ? "50" : viewMode === "House" ? "218 FOR CONTROL" : winThreshold}
+          {viewMode === "President" ? `${winThreshold} TO WIN` : viewMode === "Senate" ? "50 FOR CONTROL" : viewMode === "House" ? "218 FOR CONTROL" : winThreshold}
         </div>
       </div>
 
       {/* ── BOTTOM DATA BAR ───────────────────────────────────────────────────── */}
       {viewMode === "President" && (
         <div className="mt-1 flex justify-between font-mono text-[9px] text-[#8A8780]">
-          <span>75,019,616 votes (48.43%)</span>
-          <span>154.9 million total votes</span>
-          <span>77,304,184 votes (49.91%)</span>
+          <span>{topParty === "DEM" ? yd.demPopVote.toLocaleString() : yd.repPopVote.toLocaleString()} votes ({((topParty === "DEM" ? yd.demPopVote : yd.repPopVote) / yd.totalPopVote * 100).toFixed(1)}%)</span>
+          <span>{(yd.totalPopVote / 1000000).toFixed(1)}M total votes</span>
+          <span>{secondParty === "DEM" ? yd.demPopVote.toLocaleString() : yd.repPopVote.toLocaleString()} votes ({((secondParty === "DEM" ? yd.demPopVote : yd.repPopVote) / yd.totalPopVote * 100).toFixed(1)}%)</span>
         </div>
       )}
       
