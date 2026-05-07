@@ -36,17 +36,17 @@ export const PARTY_FULL_NAMES: Record<string, string> = {
 
 // ── State Admission Years ─────────────────────────────────────────────────
 export const STATE_ADMISSION: Record<string, number> = {
-  Delaware:1787,Pennsylvania:1787,"New Jersey":1787,Georgia:1788,Connecticut:1788,
-  Massachusetts:1788,Maryland:1788,"South Carolina":1788,"New Hampshire":1788,
-  Virginia:1788,"New York":1788,"North Carolina":1789,"Rhode Island":1790,
-  Vermont:1791,Kentucky:1792,Tennessee:1796,Ohio:1803,Louisiana:1812,Indiana:1816,
-  Mississippi:1817,Illinois:1818,Alabama:1819,Maine:1820,Missouri:1821,
-  Arkansas:1836,Michigan:1837,Florida:1845,Texas:1845,Iowa:1846,Wisconsin:1848,
-  California:1850,Minnesota:1858,Oregon:1859,Kansas:1861,"West Virginia":1863,
-  Nevada:1864,Nebraska:1867,Colorado:1876,"North Dakota":1889,"South Dakota":1889,
-  Montana:1889,Washington:1889,Idaho:1890,Wyoming:1890,Utah:1896,Oklahoma:1907,
-  "New Mexico":1912,Arizona:1912,Alaska:1959,Hawaii:1959,
-  "District of Columbia":1961,
+  "Delaware": 1787, "Pennsylvania": 1787, "New Jersey": 1787, "Georgia": 1788, "Connecticut": 1788,
+  "Massachusetts": 1788, "Maryland": 1788, "South Carolina": 1788, "New Hampshire": 1788,
+  "Virginia": 1788, "New York": 1788, "North Carolina": 1789, "Rhode Island": 1790,
+  "Vermont": 1791, "Kentucky": 1792, "Tennessee": 1796, "Ohio": 1803, "Louisiana": 1812, "Indiana": 1816,
+  "Mississippi": 1817, "Illinois": 1818, "Alabama": 1819, "Maine": 1820, "Missouri": 1821,
+  "Arkansas": 1836, "Michigan": 1837, "Florida": 1845, "Texas": 1845, "Iowa": 1846, "Wisconsin": 1848,
+  "California": 1850, "Minnesota": 1858, "Oregon": 1859, "Kansas": 1861, "West Virginia": 1863,
+  "Nevada": 1864, "Nebraska": 1867, "Colorado": 1876, "North Dakota": 1889, "South Dakota": 1889,
+  "Montana": 1889, "Washington": 1889, "Idaho": 1890, "Wyoming": 1890, "Utah": 1896, "Oklahoma": 1907,
+  "New Mexico": 1912, "Arizona": 1912, "Alaska": 1959, "Hawaii": 1959,
+  "District of Columbia": 1961,
 };
 
 // ── Electoral Eras (for timeline annotations) ─────────────────────────────
@@ -62,27 +62,27 @@ export const ERAS: { label: string; start: number; end: number; color: string }[
 ];
 
 // ── Electoral Votes (2020 apportionment, used for modern; historical approximate) ─
-const EV: Record<string,number> = {
-  Alabama:9,Alaska:3,Arizona:11,Arkansas:6,California:54,Colorado:10,Connecticut:7,
-  Delaware:3,Florida:30,Georgia:16,Hawaii:4,Idaho:4,Illinois:19,Indiana:11,Iowa:6,
-  Kansas:6,Kentucky:8,Louisiana:8,Maine:4,Maryland:10,Massachusetts:11,Michigan:15,
-  Minnesota:10,Mississippi:6,Missouri:10,Montana:4,Nebraska:5,Nevada:6,
-  "New Hampshire":4,"New Jersey":14,"New Mexico":5,"New York":28,"North Carolina":16,
-  "North Dakota":3,Ohio:17,Oklahoma:7,Oregon:8,Pennsylvania:19,"Rhode Island":4,
-  "South Carolina":9,"South Dakota":3,Tennessee:11,Texas:40,Utah:6,Vermont:3,
-  Virginia:13,Washington:12,"West Virginia":4,Wisconsin:10,Wyoming:3,
-  "District of Columbia":3
+const EV: Record<string, number> = {
+  "Alabama": 9, "Alaska": 3, "Arizona": 11, "Arkansas": 6, "California": 54, "Colorado": 10, "Connecticut": 7,
+  "Delaware": 3, "Florida": 30, "Georgia": 16, "Hawaii": 4, "Idaho": 4, "Illinois": 19, "Indiana": 11, "Iowa": 6,
+  "Kansas": 6, "Kentucky": 8, "Louisiana": 8, "Maine": 4, "Maryland": 10, "Massachusetts": 11, "Michigan": 15,
+  "Minnesota": 10, "Mississippi": 6, "Missouri": 10, "Montana": 4, "Nebraska": 5, "Nevada": 6,
+  "New Hampshire": 4, "New Jersey": 14, "New Mexico": 5, "New York": 28, "North Carolina": 16,
+  "North Dakota": 3, "Ohio": 17, "Oklahoma": 7, "Oregon": 8, "Pennsylvania": 19, "Rhode Island": 4,
+  "South Carolina": 9, "South Dakota": 3, "Tennessee": 11, "Texas": 40, "Utah": 6, "Vermont": 3,
+  "Virginia": 13, "Washington": 12, "West Virginia": 4, "Wisconsin": 10, "Wyoming": 3,
+  "District of Columbia": 3
 };
-const HOUSE: Record<string,number> = {
-  Alabama:7,Alaska:1,Arizona:9,Arkansas:4,California:52,Colorado:8,Connecticut:5,
-  Delaware:1,Florida:28,Georgia:14,Hawaii:2,Idaho:2,Illinois:17,Indiana:9,Iowa:4,
-  Kansas:4,Kentucky:6,Louisiana:6,Maine:2,Maryland:8,Massachusetts:9,Michigan:13,
-  Minnesota:8,Mississippi:4,Missouri:8,Montana:2,Nebraska:3,Nevada:4,
-  "New Hampshire":2,"New Jersey":12,"New Mexico":3,"New York":26,"North Carolina":14,
-  "North Dakota":1,Ohio:15,Oklahoma:5,Oregon:6,Pennsylvania:17,"Rhode Island":2,
-  "South Carolina":7,"South Dakota":1,Tennessee:9,Texas:38,Utah:4,Vermont:1,
-  Virginia:11,Washington:10,"West Virginia":2,Wisconsin:8,Wyoming:1,
-  "District of Columbia":0
+const HOUSE: Record<string, number> = {
+  "Alabama": 7, "Alaska": 1, "Arizona": 9, "Arkansas": 4, "California": 52, "Colorado": 8, "Connecticut": 5,
+  "Delaware": 1, "Florida": 28, "Georgia": 14, "Hawaii": 2, "Idaho": 2, "Illinois": 17, "Indiana": 9, "Iowa": 4,
+  "Kansas": 4, "Kentucky": 6, "Louisiana": 6, "Maine": 2, "Maryland": 8, "Massachusetts": 9, "Michigan": 13,
+  "Minnesota": 8, "Mississippi": 4, "Missouri": 8, "Montana": 2, "Nebraska": 3, "Nevada": 4,
+  "New Hampshire": 2, "New Jersey": 12, "New Mexico": 3, "New York": 26, "North Carolina": 14,
+  "North Dakota": 1, "Ohio": 15, "Oklahoma": 5, "Oregon": 6, "Pennsylvania": 17, "Rhode Island": 2,
+  "South Carolina": 7, "South Dakota": 1, "Tennessee": 9, "Texas": 38, "Utah": 4, "Vermont": 1,
+  "Virginia": 11, "Washington": 10, "West Virginia": 2, "Wisconsin": 8, "Wyoming": 1,
+  "District of Columbia": 0
 };
 
 const NAMES = Object.keys(STATE_ADMISSION);
@@ -93,72 +93,72 @@ const NAMES = Object.keys(STATE_ADMISSION);
 type ElectionRecord = { winner: string; loser: string; winnerStates: string[]; demCandidate?: string; repCandidate?: string; anomalies?: Record<string, string>; thirdPartyCandidates?: Record<string, string>; note?: string; unopposed?: boolean };
 
 const ELECTIONS: Record<number, ElectionRecord> = {
-  1788: { winner: "FED", loser: "NONE", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1789), unopposed: true, note: "Washington unopposed" },
-  1792: { winner: "FED", loser: "NONE", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1792), unopposed: true, note: "Washington unopposed" },
-  1796: { winner: "FED", loser: "DR", winnerStates: ["Connecticut","Delaware","Massachusetts","New Hampshire","New Jersey","New York","Rhode Island","Vermont"], note: "Adams vs Jefferson" },
-  1800: { winner: "DR", loser: "FED", winnerStates: ["Georgia","Kentucky","New York","North Carolina","Pennsylvania","South Carolina","Tennessee","Virginia"], note: "Jefferson revolution" },
-  1804: { winner: "DR", loser: "FED", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1804 && n !== "Connecticut" && n !== "Delaware"), note: "Jefferson landslide" },
-  1808: { winner: "DR", loser: "FED", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1808 && !["Connecticut","Delaware","Massachusetts","New Hampshire","Rhode Island"].includes(n)) },
-  1812: { winner: "DR", loser: "FED", winnerStates: ["Georgia","Kentucky","Louisiana","Maryland","North Carolina","Ohio","Pennsylvania","South Carolina","Tennessee","Vermont","Virginia"] },
-  1816: { winner: "DR", loser: "FED", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1816 && !["Connecticut","Delaware","Massachusetts"].includes(n)) },
-  1820: { winner: "DR", loser: "DR", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1820), note: "Monroe unopposed" },
+  1788: { winner: "FED", loser: "NONE", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1789), unopposed: true, note: "Washington unopposed" },
+  1792: { winner: "FED", loser: "NONE", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1792), unopposed: true, note: "Washington unopposed" },
+  1796: { winner: "FED", loser: "DR", winnerStates: ["Connecticut", "Delaware", "Massachusetts", "New Hampshire", "New Jersey", "New York", "Rhode Island", "Vermont"], note: "Adams vs Jefferson" },
+  1800: { winner: "DR", loser: "FED", winnerStates: ["Georgia", "Kentucky", "New York", "North Carolina", "Pennsylvania", "South Carolina", "Tennessee", "Virginia"], note: "Jefferson revolution" },
+  1804: { winner: "DR", loser: "FED", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1804 && n !== "Connecticut" && n !== "Delaware"), note: "Jefferson landslide" },
+  1808: { winner: "DR", loser: "FED", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1808 && !["Connecticut", "Delaware", "Massachusetts", "New Hampshire", "Rhode Island"].includes(n)) },
+  1812: { winner: "DR", loser: "FED", winnerStates: ["Georgia", "Kentucky", "Louisiana", "Maryland", "North Carolina", "Ohio", "Pennsylvania", "South Carolina", "Tennessee", "Vermont", "Virginia"] },
+  1816: { winner: "DR", loser: "FED", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1816 && !["Connecticut", "Delaware", "Massachusetts"].includes(n)) },
+  1820: { winner: "DR", loser: "DR", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1820), note: "Monroe unopposed" },
   1824: { 
     winner: "DR-J", loser: "DR-A", 
-    winnerStates: ["Alabama","Illinois","Indiana","Louisiana","Maryland","Mississippi","Missouri","New Jersey","North Carolina","Pennsylvania","South Carolina","Tennessee"],
+    winnerStates: ["Alabama", "Illinois", "Indiana", "Louisiana", "Maryland", "Mississippi", "Missouri", "New Jersey", "North Carolina", "Pennsylvania", "South Carolina", "Tennessee"],
     anomalies: { "Maine": "DR-A", "Massachusetts": "DR-A", "New Hampshire": "DR-A", "New York": "DR-A", "Rhode Island": "DR-A", "Vermont": "DR-A", "Georgia": "DR-C", "Virginia": "DR-C", "Kentucky": "DR-CL", "Ohio": "DR-CL" },
     thirdPartyCandidates: { "DR-J": "Andrew Jackson", "DR-A": "John Q. Adams", "DR-C": "William Crawford", "DR-CL": "Henry Clay" },
     note: "Jackson won popular/electoral plurality; House chose J.Q. Adams" 
   },
-  1828: { winner: "DEM", loser: "NR", winnerStates: ["Alabama","Georgia","Illinois","Indiana","Kentucky","Louisiana","Maine","Mississippi","Missouri","New Hampshire","New York","North Carolina","Ohio","Pennsylvania","South Carolina","Tennessee","Virginia"] },
-  1832: { winner: "DEM", loser: "NR", winnerStates: ["Alabama","Georgia","Illinois","Indiana","Maine","Mississippi","Missouri","New Hampshire","New York","North Carolina","Ohio","Pennsylvania","Tennessee","Virginia"], anomalies: { "Vermont": "AM", "South Carolina": "NULL" }, thirdPartyCandidates: { "AM": "William Wirt", "NULL": "John Floyd" } },
-  1836: { winner: "DEM", loser: "WHIG", winnerStates: ["Alabama","Arkansas","Connecticut","Illinois","Louisiana","Maine","Michigan","Mississippi","Missouri","New Hampshire","New York","North Carolina","Pennsylvania","Rhode Island","Virginia"] },
-  1840: { winner: "WHIG", loser: "DEM", winnerStates: ["Connecticut","Delaware","Georgia","Indiana","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","New Jersey","New York","North Carolina","Ohio","Pennsylvania","Rhode Island","Tennessee","Vermont"] },
-  1844: { winner: "DEM", loser: "WHIG", winnerStates: ["Alabama","Arkansas","Georgia","Illinois","Indiana","Louisiana","Maine","Michigan","Mississippi","Missouri","New Hampshire","New York","Pennsylvania","South Carolina","Texas","Virginia"] },
-  1848: { winner: "WHIG", loser: "DEM", winnerStates: ["Connecticut","Delaware","Florida","Kentucky","Louisiana","Massachusetts","Maryland","New Jersey","New York","North Carolina","Ohio","Pennsylvania","Rhode Island","Tennessee","Vermont"] },
-  1852: { winner: "DEM", loser: "WHIG", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1852 && !["Kentucky","Massachusetts","Tennessee","Vermont"].includes(n)) },
-  1856: { winner: "DEM", loser: "REP", winnerStates: ["Alabama","Arkansas","California","Delaware","Florida","Georgia","Illinois","Indiana","Kentucky","Louisiana","Mississippi","Missouri","New Jersey","North Carolina","Pennsylvania","South Carolina","Tennessee","Texas","Virginia"], anomalies: { "Maryland": "KN" }, thirdPartyCandidates: { "KN": "Millard Fillmore" } },
-  1860: { winner: "REP", loser: "SDEM", winnerStates: ["California","Connecticut","Illinois","Indiana","Iowa","Maine","Massachusetts","Michigan","Minnesota","New Hampshire","New Jersey","New York","Ohio","Oregon","Pennsylvania","Rhode Island","Vermont","Wisconsin"], anomalies: { "Kentucky": "CU", "Tennessee": "CU", "Virginia": "CU", "Alabama": "SDEM", "Arkansas": "SDEM", "Delaware": "SDEM", "Florida": "SDEM", "Georgia": "SDEM", "Louisiana": "SDEM", "Maryland": "SDEM", "Mississippi": "SDEM", "North Carolina": "SDEM", "South Carolina": "SDEM", "Texas": "SDEM" }, thirdPartyCandidates: { "CU": "John Bell", "SDEM": "John Breckinridge" }, note: "Lincoln; Civil War begins" },
-  1864: { winner: "REP", loser: "DEM", winnerStates: ["California","Connecticut","Illinois","Indiana","Iowa","Kansas","Maine","Maryland","Massachusetts","Michigan","Minnesota","Missouri","Nevada","New Hampshire","New York","Ohio","Oregon","Pennsylvania","Rhode Island","Vermont","West Virginia","Wisconsin"], note: "Lincoln re-election" },
-  1868: { winner: "REP", loser: "DEM", winnerStates: ["Alabama","Arkansas","California","Connecticut","Florida","Illinois","Indiana","Iowa","Kansas","Maine","Massachusetts","Michigan","Minnesota","Missouri","Nebraska","Nevada","New Hampshire","New York","North Carolina","Ohio","Oregon","Pennsylvania","Rhode Island","South Carolina","Tennessee","Vermont","West Virginia","Wisconsin"] },
-  1872: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1872 && !["Georgia","Kentucky","Maryland","Missouri","Tennessee","Texas"].includes(n)) },
-  1876: { winner: "REP", loser: "DEM", winnerStates: ["California","Colorado","Florida","Illinois","Iowa","Kansas","Louisiana","Maine","Massachusetts","Michigan","Minnesota","Nebraska","Nevada","New Hampshire","Ohio","Oregon","Pennsylvania","Rhode Island","South Carolina","Vermont","Wisconsin"], note: "Disputed; Hayes-Tilden" },
-  1880: { winner: "REP", loser: "DEM", winnerStates: ["California","Colorado","Connecticut","Illinois","Indiana","Iowa","Kansas","Maine","Massachusetts","Michigan","Minnesota","Nebraska","Nevada","New Hampshire","New York","Ohio","Oregon","Pennsylvania","Rhode Island","Vermont","Wisconsin"] },
-  1884: { winner: "DEM", loser: "REP", winnerStates: ["Alabama","Arkansas","Connecticut","Delaware","Florida","Georgia","Indiana","Kentucky","Louisiana","Maryland","Mississippi","Missouri","New Jersey","New York","North Carolina","South Carolina","Tennessee","Texas","Virginia","West Virginia"], note: "Cleveland" },
-  1888: { winner: "REP", loser: "DEM", winnerStates: ["California","Colorado","Illinois","Indiana","Iowa","Kansas","Maine","Massachusetts","Michigan","Minnesota","Nebraska","Nevada","New Hampshire","New York","Ohio","Oregon","Pennsylvania","Rhode Island","Vermont","Wisconsin"], note: "Harrison; lost popular vote" },
-  1892: { winner: "DEM", loser: "REP", winnerStates: ["Alabama","Arkansas","California","Connecticut","Delaware","Florida","Georgia","Illinois","Indiana","Kentucky","Louisiana","Maryland","Mississippi","Missouri","New Jersey","New York","North Carolina","South Carolina","Tennessee","Texas","Virginia","West Virginia","Wisconsin"], anomalies: { "Colorado": "POP", "Idaho": "POP", "Kansas": "POP", "Nevada": "POP" }, thirdPartyCandidates: { "POP": "James Weaver" }, note: "Cleveland return" },
-  1896: { winner: "REP", loser: "DEM", winnerStates: ["California","Connecticut","Delaware","Illinois","Indiana","Iowa","Kansas","Kentucky","Maine","Maryland","Massachusetts","Michigan","Minnesota","New Hampshire","New Jersey","New York","North Dakota","Ohio","Oregon","Pennsylvania","Rhode Island","Vermont","West Virginia","Wisconsin"], note: "McKinley vs Bryan" },
-  1900: { winner: "REP", loser: "DEM", winnerStates: ["California","Connecticut","Delaware","Idaho","Illinois","Indiana","Iowa","Kansas","Maine","Maryland","Massachusetts","Michigan","Minnesota","Nebraska","New Hampshire","New Jersey","New York","North Dakota","Ohio","Oregon","Pennsylvania","Rhode Island","South Dakota","Utah","Vermont","Washington","West Virginia","Wisconsin","Wyoming"] },
-  1904: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1904 && !["Alabama","Arkansas","Florida","Georgia","Kentucky","Louisiana","Maryland","Mississippi","Missouri","North Carolina","South Carolina","Tennessee","Texas","Virginia"].includes(n)) },
-  1908: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1908 && !["Alabama","Arkansas","Colorado","Florida","Georgia","Kentucky","Louisiana","Maryland","Mississippi","Missouri","Nebraska","Nevada","North Carolina","Oklahoma","South Carolina","Tennessee","Texas","Virginia"].includes(n)) },
-  1912: { winner: "DEM", loser: "PROG", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1912 && !["California","Michigan","Minnesota","Pennsylvania","South Dakota","Washington","Utah","Vermont"].includes(n)), anomalies: { "California": "PROG", "Michigan": "PROG", "Minnesota": "PROG", "Pennsylvania": "PROG", "South Dakota": "PROG", "Washington": "PROG", "Utah": "REP", "Vermont": "REP" }, thirdPartyCandidates: { "PROG": "Theodore Roosevelt" }, note: "Wilson; TR splits GOP" },
-  1916: { winner: "DEM", loser: "REP", winnerStates: ["Alabama","Arizona","Arkansas","California","Colorado","Florida","Georgia","Idaho","Kansas","Kentucky","Louisiana","Maryland","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Mexico","North Carolina","North Dakota","Ohio","Oklahoma","South Carolina","Tennessee","Texas","Utah","Virginia","Washington","Wisconsin","Wyoming"] },
-  1920: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1920 && !["Alabama","Arkansas","Florida","Georgia","Kentucky","Louisiana","Mississippi","North Carolina","South Carolina","Tennessee","Texas","Virginia"].includes(n)), note: "Harding landslide" },
-  1924: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1924 && !["Alabama","Arkansas","Florida","Georgia","Louisiana","Mississippi","North Carolina","Oklahoma","South Carolina","Tennessee","Texas","Virginia","Wisconsin"].includes(n)), anomalies: { "Wisconsin": "PROG" }, thirdPartyCandidates: { "PROG": "Robert La Follette" } },
-  1928: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1928 && !["Alabama","Arkansas","Georgia","Louisiana","Massachusetts","Mississippi","Rhode Island","South Carolina"].includes(n)), note: "Hoover" },
-  1932: { winner: "DEM", loser: "REP", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1932 && !["Connecticut","Delaware","Maine","New Hampshire","Pennsylvania","Vermont"].includes(n)), note: "FDR; New Deal begins" },
-  1936: { winner: "DEM", loser: "REP", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1936 && !["Maine","Vermont"].includes(n)), note: "FDR landslide; 46 of 48 states" },
-  1940: { winner: "DEM", loser: "REP", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1940 && !["Colorado","Indiana","Iowa","Kansas","Maine","Michigan","Nebraska","North Dakota","South Dakota","Vermont"].includes(n)), note: "FDR third term" },
-  1944: { winner: "DEM", loser: "REP", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1944 && !["Colorado","Indiana","Iowa","Kansas","Maine","Nebraska","North Dakota","Ohio","South Dakota","Vermont","Wisconsin","Wyoming"].includes(n)), note: "FDR fourth term" },
-  1948: { winner: "DEM", loser: "REP", winnerStates: ["Arizona","Arkansas","California","Colorado","Florida","Georgia","Idaho","Illinois","Iowa","Kentucky","Massachusetts","Minnesota","Missouri","Montana","Nevada","New Mexico","North Carolina","Ohio","Oklahoma","Rhode Island","Tennessee","Texas","Utah","Virginia","Washington","West Virginia","Wisconsin","Wyoming"], anomalies: { "Alabama": "DIX", "Louisiana": "DIX", "Mississippi": "DIX", "South Carolina": "DIX" }, thirdPartyCandidates: { "DIX": "Strom Thurmond" }, note: "Truman; Dixiecrat revolt" },
-  1952: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1952 && !["Alabama","Arkansas","Georgia","Kentucky","Louisiana","Mississippi","North Carolina","South Carolina","West Virginia"].includes(n)), note: "Eisenhower" },
-  1956: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1956 && !["Alabama","Arkansas","Georgia","Maryland","Mississippi","Missouri","North Carolina","South Carolina"].includes(n)) },
-  1960: { winner: "DEM", loser: "REP", winnerStates: ["Alabama","Arkansas","Connecticut","Delaware","Georgia","Hawaii","Illinois","Louisiana","Maryland","Massachusetts","Michigan","Minnesota","Missouri","Nevada","New Jersey","New Mexico","New York","North Carolina","Pennsylvania","Rhode Island","South Carolina","Texas","West Virginia"], note: "JFK" },
-  1964: { winner: "DEM", loser: "REP", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1964 && !["Alabama","Arizona","Georgia","Louisiana","Mississippi","South Carolina"].includes(n)), note: "LBJ landslide" },
-  1968: { winner: "REP", loser: "DEM", winnerStates: ["Alaska","California","Colorado","Delaware","Florida","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","South Carolina","South Dakota","Tennessee","Utah","Vermont","Virginia","Wisconsin","Wyoming"], anomalies: { "Alabama": "AI", "Arkansas": "AI", "Georgia": "AI", "Louisiana": "AI", "Mississippi": "AI" }, thirdPartyCandidates: { "AI": "George Wallace" }, note: "Nixon; Wallace 3rd party" },
+  1828: { winner: "DEM", loser: "NR", winnerStates: ["Alabama", "Georgia", "Illinois", "Indiana", "Kentucky", "Louisiana", "Maine", "Mississippi", "Missouri", "New Hampshire", "New York", "North Carolina", "Ohio", "Pennsylvania", "South Carolina", "Tennessee", "Virginia"] },
+  1832: { winner: "DEM", loser: "NR", winnerStates: ["Alabama", "Georgia", "Illinois", "Indiana", "Maine", "Mississippi", "Missouri", "New Hampshire", "New York", "North Carolina", "Ohio", "Pennsylvania", "Tennessee", "Virginia"], anomalies: { "Vermont": "AM", "South Carolina": "NULL" }, thirdPartyCandidates: { "AM": "William Wirt", "NULL": "John Floyd" } },
+  1836: { winner: "DEM", loser: "WHIG", winnerStates: ["Alabama", "Arkansas", "Connecticut", "Illinois", "Louisiana", "Maine", "Michigan", "Mississippi", "Missouri", "New Hampshire", "New York", "North Carolina", "Pennsylvania", "Rhode Island", "Virginia"] },
+  1840: { winner: "WHIG", loser: "DEM", winnerStates: ["Connecticut", "Delaware", "Georgia", "Indiana", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "New Jersey", "New York", "North Carolina", "Ohio", "Pennsylvania", "Rhode Island", "Tennessee", "Vermont"] },
+  1844: { winner: "DEM", loser: "WHIG", winnerStates: ["Alabama", "Arkansas", "Georgia", "Illinois", "Indiana", "Louisiana", "Maine", "Michigan", "Mississippi", "Missouri", "New Hampshire", "New York", "Pennsylvania", "South Carolina", "Texas", "Virginia"] },
+  1848: { winner: "WHIG", loser: "DEM", winnerStates: ["Connecticut", "Delaware", "Florida", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "New Jersey", "New York", "North Carolina", "Ohio", "Pennsylvania", "Rhode Island", "Tennessee", "Vermont"] },
+  1852: { winner: "DEM", loser: "WHIG", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1852 && !["Kentucky", "Massachusetts", "Tennessee", "Vermont"].includes(n)) },
+  1856: { winner: "DEM", loser: "REP", winnerStates: ["Alabama", "Arkansas", "California", "Delaware", "Florida", "Georgia", "Illinois", "Indiana", "Kentucky", "Louisiana", "Mississippi", "Missouri", "New Jersey", "North Carolina", "Pennsylvania", "South Carolina", "Tennessee", "Texas", "Virginia"], anomalies: { "Maryland": "KN" }, thirdPartyCandidates: { "KN": "Millard Fillmore" } },
+  1860: { winner: "REP", loser: "SDEM", winnerStates: ["California", "Connecticut", "Illinois", "Indiana", "Iowa", "Maine", "Massachusetts", "Michigan", "Minnesota", "New Hampshire", "New Jersey", "New York", "Ohio", "Oregon", "Pennsylvania", "Rhode Island", "Vermont", "Wisconsin"], anomalies: { "Kentucky": "CU", "Tennessee": "CU", "Virginia": "CU", "Alabama": "SDEM", "Arkansas": "SDEM", "Delaware": "SDEM", "Florida": "SDEM", "Georgia": "SDEM", "Louisiana": "SDEM", "Maryland": "SDEM", "Mississippi": "SDEM", "North Carolina": "SDEM", "South Carolina": "SDEM", "Texas": "SDEM" }, thirdPartyCandidates: { "CU": "John Bell", "SDEM": "John Breckinridge" }, note: "Lincoln; Civil War begins" },
+  1864: { winner: "REP", loser: "DEM", winnerStates: ["California", "Connecticut", "Illinois", "Indiana", "Iowa", "Kansas", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Missouri", "Nevada", "New Hampshire", "New York", "Ohio", "Oregon", "Pennsylvania", "Rhode Island", "Vermont", "West Virginia", "Wisconsin"], note: "Lincoln re-election" },
+  1868: { winner: "REP", loser: "DEM", winnerStates: ["Alabama", "Arkansas", "California", "Connecticut", "Florida", "Illinois", "Indiana", "Iowa", "Kansas", "Maine", "Massachusetts", "Michigan", "Minnesota", "Missouri", "Nebraska", "Nevada", "New Hampshire", "New York", "North Carolina", "Ohio", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "Tennessee", "Vermont", "West Virginia", "Wisconsin"] },
+  1872: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1872 && !["Georgia", "Kentucky", "Maryland", "Missouri", "Tennessee", "Texas"].includes(n)) },
+  1876: { winner: "REP", loser: "DEM", winnerStates: ["California", "Colorado", "Florida", "Illinois", "Iowa", "Kansas", "Louisiana", "Maine", "Massachusetts", "Michigan", "Minnesota", "Nebraska", "Nevada", "New Hampshire", "Ohio", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "Vermont", "Wisconsin"], note: "Disputed; Hayes-Tilden" },
+  1880: { winner: "REP", loser: "DEM", winnerStates: ["California", "Colorado", "Connecticut", "Illinois", "Indiana", "Iowa", "Kansas", "Maine", "Massachusetts", "Michigan", "Minnesota", "Nebraska", "Nevada", "New Hampshire", "New York", "Ohio", "Oregon", "Pennsylvania", "Rhode Island", "Vermont", "Wisconsin"] },
+  1884: { winner: "DEM", loser: "REP", winnerStates: ["Alabama", "Arkansas", "Connecticut", "Delaware", "Florida", "Georgia", "Indiana", "Kentucky", "Louisiana", "Maryland", "Mississippi", "Missouri", "New Jersey", "New York", "North Carolina", "South Carolina", "Tennessee", "Texas", "Virginia", "West Virginia"], note: "Cleveland" },
+  1888: { winner: "REP", loser: "DEM", winnerStates: ["California", "Colorado", "Illinois", "Indiana", "Iowa", "Kansas", "Maine", "Massachusetts", "Michigan", "Minnesota", "Nebraska", "Nevada", "New Hampshire", "New York", "Ohio", "Oregon", "Pennsylvania", "Rhode Island", "Vermont", "Wisconsin"], note: "Harrison; lost popular vote" },
+  1892: { winner: "DEM", loser: "REP", winnerStates: ["Alabama", "Arkansas", "California", "Connecticut", "Delaware", "Florida", "Georgia", "Illinois", "Indiana", "Kentucky", "Louisiana", "Maryland", "Mississippi", "Missouri", "New Jersey", "New York", "North Carolina", "South Carolina", "Tennessee", "Texas", "Virginia", "West Virginia", "Wisconsin"], anomalies: { "Colorado": "POP", "Idaho": "POP", "Kansas": "POP", "Nevada": "POP" }, thirdPartyCandidates: { "POP": "James Weaver" }, note: "Cleveland return" },
+  1896: { winner: "REP", loser: "DEM", winnerStates: ["California", "Connecticut", "Delaware", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "New Hampshire", "New Jersey", "New York", "North Dakota", "Ohio", "Oregon", "Pennsylvania", "Rhode Island", "Vermont", "West Virginia", "Wisconsin"], note: "McKinley vs Bryan" },
+  1900: { winner: "REP", loser: "DEM", winnerStates: ["California", "Connecticut", "Delaware", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Nebraska", "New Hampshire", "New Jersey", "New York", "North Dakota", "Ohio", "Oregon", "Pennsylvania", "Rhode Island", "South Dakota", "Utah", "Vermont", "Washington", "West Virginia", "Wisconsin", "Wyoming"] },
+  1904: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1904 && !["Alabama", "Arkansas", "Florida", "Georgia", "Kentucky", "Louisiana", "Maryland", "Mississippi", "Missouri", "North Carolina", "South Carolina", "Tennessee", "Texas", "Virginia"].includes(n)) },
+  1908: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1908 && !["Alabama", "Arkansas", "Colorado", "Florida", "Georgia", "Kentucky", "Louisiana", "Maryland", "Mississippi", "Missouri", "Nebraska", "Nevada", "North Carolina", "Oklahoma", "South Carolina", "Tennessee", "Texas", "Virginia"].includes(n)) },
+  1912: { winner: "DEM", loser: "PROG", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1912 && !["California", "Michigan", "Minnesota", "Pennsylvania", "South Dakota", "Washington", "Utah", "Vermont"].includes(n)), anomalies: { "California": "PROG", "Michigan": "PROG", "Minnesota": "PROG", "Pennsylvania": "PROG", "South Dakota": "PROG", "Washington": "PROG", "Utah": "REP", "Vermont": "REP" }, thirdPartyCandidates: { "PROG": "Theodore Roosevelt" }, note: "Wilson; TR splits GOP" },
+  1916: { winner: "DEM", loser: "REP", winnerStates: ["Alabama", "Arizona", "Arkansas", "California", "Colorado", "Florida", "Georgia", "Idaho", "Kansas", "Kentucky", "Louisiana", "Maryland", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Mexico", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "South Carolina", "Tennessee", "Texas", "Utah", "Virginia", "Washington", "Wisconsin", "Wyoming"] },
+  1920: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1920 && !["Alabama", "Arkansas", "Florida", "Georgia", "Kentucky", "Louisiana", "Mississippi", "North Carolina", "South Carolina", "Tennessee", "Texas", "Virginia"].includes(n)), note: "Harding landslide" },
+  1924: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1924 && !["Alabama", "Arkansas", "Florida", "Georgia", "Louisiana", "Mississippi", "North Carolina", "Oklahoma", "South Carolina", "Tennessee", "Texas", "Virginia", "Wisconsin"].includes(n)), anomalies: { "Wisconsin": "PROG" }, thirdPartyCandidates: { "PROG": "Robert La Follette" } },
+  1928: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1928 && !["Alabama", "Arkansas", "Georgia", "Louisiana", "Massachusetts", "Mississippi", "Rhode Island", "South Carolina"].includes(n)), note: "Hoover" },
+  1932: { winner: "DEM", loser: "REP", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1932 && !["Connecticut", "Delaware", "Maine", "New Hampshire", "Pennsylvania", "Vermont"].includes(n)), note: "FDR; New Deal begins" },
+  1936: { winner: "DEM", loser: "REP", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1936 && !["Maine", "Vermont"].includes(n)), note: "FDR landslide; 46 of 48 states" },
+  1940: { winner: "DEM", loser: "REP", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1940 && !["Colorado", "Indiana", "Iowa", "Kansas", "Maine", "Michigan", "Nebraska", "North Dakota", "South Dakota", "Vermont"].includes(n)), note: "FDR third term" },
+  1944: { winner: "DEM", loser: "REP", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1944 && !["Colorado", "Indiana", "Iowa", "Kansas", "Maine", "Nebraska", "North Dakota", "Ohio", "South Dakota", "Vermont", "Wisconsin", "Wyoming"].includes(n)), note: "FDR fourth term" },
+  1948: { winner: "DEM", loser: "REP", winnerStates: ["Arizona", "Arkansas", "California", "Colorado", "Florida", "Georgia", "Idaho", "Illinois", "Iowa", "Kentucky", "Massachusetts", "Minnesota", "Missouri", "Montana", "Nevada", "New Mexico", "North Carolina", "Ohio", "Oklahoma", "Rhode Island", "Tennessee", "Texas", "Utah", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"], anomalies: { "Alabama": "DIX", "Louisiana": "DIX", "Mississippi": "DIX", "South Carolina": "DIX" }, thirdPartyCandidates: { "DIX": "Strom Thurmond" }, note: "Truman; Dixiecrat revolt" },
+  1952: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1952 && !["Alabama", "Arkansas", "Georgia", "Kentucky", "Louisiana", "Mississippi", "North Carolina", "South Carolina", "West Virginia"].includes(n)), note: "Eisenhower" },
+  1956: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1956 && !["Alabama", "Arkansas", "Georgia", "Maryland", "Mississippi", "Missouri", "North Carolina", "South Carolina"].includes(n)) },
+  1960: { winner: "DEM", loser: "REP", winnerStates: ["Alabama", "Arkansas", "Connecticut", "Delaware", "Georgia", "Hawaii", "Illinois", "Louisiana", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Missouri", "Nevada", "New Jersey", "New Mexico", "New York", "North Carolina", "Pennsylvania", "Rhode Island", "South Carolina", "Texas", "West Virginia"], note: "JFK" },
+  1964: { winner: "DEM", loser: "REP", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n] || 9999) <= 1964 && !["Alabama", "Arizona", "Georgia", "Louisiana", "Mississippi", "South Carolina"].includes(n)), note: "LBJ landslide" },
+  1968: { winner: "REP", loser: "DEM", winnerStates: ["Alaska", "California", "Colorado", "Delaware", "Florida", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "South Carolina", "South Dakota", "Tennessee", "Utah", "Vermont", "Virginia", "Wisconsin", "Wyoming"], anomalies: { "Alabama": "AI", "Arkansas": "AI", "Georgia": "AI", "Louisiana": "AI", "Mississippi": "AI" }, thirdPartyCandidates: { "AI": "George Wallace" }, note: "Nixon; Wallace 3rd party" },
   1972: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => n !== "Massachusetts"), note: "Nixon landslide; 49 states" },
-  1976: { winner: "DEM", loser: "REP", winnerStates: ["Alabama","Arkansas","Delaware","Florida","Georgia","Hawaii","Kentucky","Louisiana","Maryland","Massachusetts","Minnesota","Mississippi","Missouri","New York","North Carolina","Ohio","Pennsylvania","Rhode Island","South Carolina","Tennessee","Texas","West Virginia","Wisconsin"], note: "Carter" },
-  1980: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => !["Georgia","Hawaii","Maryland","Massachusetts","Minnesota","Rhode Island","West Virginia"].includes(n)), note: "Reagan" },
+  1976: { winner: "DEM", loser: "REP", winnerStates: ["Alabama", "Arkansas", "Delaware", "Florida", "Georgia", "Hawaii", "Kentucky", "Louisiana", "Maryland", "Massachusetts", "Minnesota", "Mississippi", "Missouri", "New York", "North Carolina", "Ohio", "Pennsylvania", "Rhode Island", "South Carolina", "Tennessee", "Texas", "West Virginia", "Wisconsin"], note: "Carter" },
+  1980: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => !["Georgia", "Hawaii", "Maryland", "Massachusetts", "Minnesota", "Rhode Island", "West Virginia"].includes(n)), note: "Reagan" },
   1984: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => n !== "Minnesota"), note: "Reagan landslide; 49 states" },
-  1988: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => !["Hawaii","Iowa","Massachusetts","Minnesota","New York","Oregon","Rhode Island","Washington","West Virginia","Wisconsin"].includes(n)), note: "H.W. Bush" },
-  1992: { winner: "DEM", loser: "REP", winnerStates: ["Arkansas","California","Colorado","Connecticut","Delaware","Georgia","Hawaii","Illinois","Iowa","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Missouri","Montana","Nevada","New Hampshire","New Jersey","New Mexico","New York","Ohio","Oregon","Pennsylvania","Rhode Island","Tennessee","Vermont","Washington","West Virginia","Wisconsin"], note: "Clinton; Perot 3rd party" },
-  1996: { winner: "DEM", loser: "REP", winnerStates: ["Arkansas","California","Connecticut","Delaware","Florida","Hawaii","Illinois","Iowa","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Missouri","Nevada","New Hampshire","New Jersey","New Mexico","New York","Ohio","Oregon","Pennsylvania","Rhode Island","Tennessee","Vermont","Washington","West Virginia","Wisconsin"], note: "Clinton re-election" },
-  2000: { winner: "REP", loser: "DEM", winnerStates: ["Alabama","Alaska","Arizona","Arkansas","Colorado","Florida","Georgia","Idaho","Indiana","Kansas","Kentucky","Louisiana","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","North Carolina","North Dakota","Ohio","Oklahoma","South Carolina","South Dakota","Tennessee","Texas","Utah","Virginia","West Virginia","Wyoming"], note: "Bush; disputed Florida" },
-  2004: { winner: "REP", loser: "DEM", winnerStates: ["Alabama","Alaska","Arizona","Arkansas","Colorado","Florida","Georgia","Idaho","Indiana","Iowa","Kansas","Kentucky","Louisiana","Mississippi","Missouri","Montana","Nebraska","Nevada","New Mexico","North Carolina","North Dakota","Ohio","Oklahoma","South Carolina","South Dakota","Tennessee","Texas","Utah","Virginia","West Virginia","Wyoming"] },
-  2008: { winner: "DEM", loser: "REP", winnerStates: ["California","Colorado","Connecticut","Delaware","Florida","Hawaii","Illinois","Indiana","Iowa","Maine","Maryland","Massachusetts","Michigan","Minnesota","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","Ohio","Oregon","Pennsylvania","Rhode Island","Vermont","Virginia","Washington","Wisconsin"], note: "Obama" },
-  2012: { winner: "DEM", loser: "REP", winnerStates: ["California","Colorado","Connecticut","Delaware","Florida","Hawaii","Illinois","Iowa","Maine","Maryland","Massachusetts","Michigan","Minnesota","Nevada","New Hampshire","New Jersey","New Mexico","New York","Ohio","Oregon","Pennsylvania","Rhode Island","Vermont","Virginia","Washington","Wisconsin"] },
-  2016: { winner: "REP", loser: "DEM", winnerStates: ["Alabama","Alaska","Arizona","Arkansas","Florida","Georgia","Idaho","Indiana","Iowa","Kansas","Kentucky","Louisiana","Michigan","Mississippi","Missouri","Montana","Nebraska","North Carolina","North Dakota","Ohio","Oklahoma","Pennsylvania","South Carolina","South Dakota","Tennessee","Texas","Utah","West Virginia","Wisconsin","Wyoming"], note: "Trump; lost popular vote" },
-  2020: { winner: "DEM", loser: "REP", winnerStates: ["Arizona","California","Colorado","Connecticut","Delaware","Georgia","Hawaii","Illinois","Maine","Maryland","Massachusetts","Michigan","Minnesota","Nevada","New Hampshire","New Jersey","New Mexico","New York","Oregon","Pennsylvania","Rhode Island","Vermont","Virginia","Washington","Wisconsin"], note: "Biden" },
-  2024: { winner: "REP", loser: "DEM", winnerStates: ["Alabama","Alaska","Arizona","Arkansas","Florida","Georgia","Idaho","Indiana","Iowa","Kansas","Kentucky","Louisiana","Michigan","Mississippi","Missouri","Montana","Nebraska","Nevada","North Carolina","North Dakota","Ohio","Oklahoma","Pennsylvania","South Carolina","South Dakota","Tennessee","Texas","Utah","West Virginia","Wisconsin","Wyoming"], note: "Trump return" },
+  1988: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => !["Hawaii", "Iowa", "Massachusetts", "Minnesota", "New York", "Oregon", "Rhode Island", "Washington", "West Virginia", "Wisconsin"].includes(n)), note: "H.W. Bush" },
+  1992: { winner: "DEM", loser: "REP", winnerStates: ["Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Georgia", "Hawaii", "Illinois", "Iowa", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Missouri", "Montana", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "Ohio", "Oregon", "Pennsylvania", "Rhode Island", "Tennessee", "Vermont", "Washington", "West Virginia", "Wisconsin"], note: "Clinton; Perot 3rd party" },
+  1996: { winner: "DEM", loser: "REP", winnerStates: ["Arkansas", "California", "Connecticut", "Delaware", "Florida", "Hawaii", "Illinois", "Iowa", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Missouri", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "Ohio", "Oregon", "Pennsylvania", "Rhode Island", "Tennessee", "Vermont", "Washington", "West Virginia", "Wisconsin"], note: "Clinton re-election" },
+  2000: { winner: "REP", loser: "DEM", winnerStates: ["Alabama", "Alaska", "Arizona", "Arkansas", "Colorado", "Florida", "Georgia", "Idaho", "Indiana", "Kansas", "Kentucky", "Louisiana", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "West Virginia", "Wyoming"], note: "Bush; disputed Florida" },
+  2004: { winner: "REP", loser: "DEM", winnerStates: ["Alabama", "Alaska", "Arizona", "Arkansas", "Colorado", "Florida", "Georgia", "Idaho", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Mexico", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "West Virginia", "Wyoming"] },
+  2008: { winner: "DEM", loser: "REP", winnerStates: ["California", "Colorado", "Connecticut", "Delaware", "Florida", "Hawaii", "Illinois", "Indiana", "Iowa", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "Ohio", "Oregon", "Pennsylvania", "Rhode Island", "Vermont", "Virginia", "Washington", "Wisconsin"], note: "Obama" },
+  2012: { winner: "DEM", loser: "REP", winnerStates: ["California", "Colorado", "Connecticut", "Delaware", "Florida", "Hawaii", "Illinois", "Iowa", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "Ohio", "Oregon", "Pennsylvania", "Rhode Island", "Vermont", "Virginia", "Washington", "Wisconsin"] },
+  2016: { winner: "REP", loser: "DEM", winnerStates: ["Alabama", "Alaska", "Arizona", "Arkansas", "Florida", "Georgia", "Idaho", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Michigan", "Mississippi", "Missouri", "Montana", "Nebraska", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Pennsylvania", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "West Virginia", "Wisconsin", "Wyoming"], note: "Trump; lost popular vote" },
+  2020: { winner: "DEM", loser: "REP", winnerStates: ["Arizona", "California", "Colorado", "Connecticut", "Delaware", "Georgia", "Hawaii", "Illinois", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "Oregon", "Pennsylvania", "Rhode Island", "Vermont", "Virginia", "Washington", "Wisconsin"], note: "Biden" },
+  2024: { winner: "REP", loser: "DEM", winnerStates: ["Alabama", "Alaska", "Arizona", "Arkansas", "Florida", "Georgia", "Idaho", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Michigan", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Pennsylvania", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "West Virginia", "Wisconsin", "Wyoming"], note: "Trump return" },
 };
 
 export const PRESIDENTIAL_DATA: Record<number, { dem: string, rep: string, demV: number, repV: number, totV: number }> = {
@@ -244,18 +244,18 @@ const GOV_OVERRIDES: Record<number, Record<string, string>> = {
 
 // States with split senate delegations (1 DEM + 1 REP or FED + DR)
 const SPLIT_SENATE_BY_YEAR: Record<number, string[]> = {
-  2024: ["Maine","West Virginia","Ohio","Montana","Wisconsin"],
-  2022: ["Ohio","Wisconsin","Maine","Montana","Arizona"],
-  2020: ["Maine","Pennsylvania","West Virginia","Georgia","Montana"],
-  2018: ["Maine","Ohio","Pennsylvania","Wisconsin","West Virginia","Montana"],
-  2016: ["Maine","Wisconsin","Pennsylvania","West Virginia","Colorado","Indiana"],
-  2014: ["Maine","Ohio","Pennsylvania","Wisconsin","West Virginia","Colorado"],
-  2012: ["Maine","Nevada","Ohio","Wisconsin","Pennsylvania","North Dakota"],
-  2010: ["Maine","Ohio","Pennsylvania","Wisconsin","Illinois"],
-  2008: ["Maine","Ohio","Pennsylvania","Nevada","Indiana","Iowa"],
-  2004: ["Maine","Nebraska","Oregon","Arkansas","Colorado"],
-  2002: ["Maine","Nebraska","Oregon","Arkansas","Colorado"],
-  2000: ["Florida","Maine","Virginia","Washington","Nevada","Nebraska"],
+  2024: ["Maine", "West Virginia", "Ohio", "Montana", "Wisconsin"],
+  2022: ["Ohio", "Wisconsin", "Maine", "Montana", "Arizona"],
+  2020: ["Maine", "Pennsylvania", "West Virginia", "Georgia", "Montana"],
+  2018: ["Maine", "Ohio", "Pennsylvania", "Wisconsin", "West Virginia", "Montana"],
+  2016: ["Maine", "Wisconsin", "Pennsylvania", "West Virginia", "Colorado", "Indiana"],
+  2014: ["Maine", "Ohio", "Pennsylvania", "Wisconsin", "West Virginia", "Colorado"],
+  2012: ["Maine", "Nevada", "Ohio", "Wisconsin", "Pennsylvania", "North Dakota"],
+  2010: ["Maine", "Ohio", "Pennsylvania", "Wisconsin", "Illinois"],
+  2008: ["Maine", "Ohio", "Pennsylvania", "Nevada", "Indiana", "Iowa"],
+  2004: ["Maine", "Nebraska", "Oregon", "Arkansas", "Colorado"],
+  2002: ["Maine", "Nebraska", "Oregon", "Arkansas", "Colorado"],
+  2000: ["Florida", "Maine", "Virginia", "Washington", "Nevada", "Nebraska"],
   1998: ["Florida", "Pennsylvania", "Wisconsin", "Maine"],
   1996: ["New York", "Florida", "Pennsylvania", "Wisconsin", "Maine"],
   1994: ["New York", "Illinois", "California", "Wisconsin"],
@@ -392,60 +392,52 @@ const SENATE_OVERRIDES: Record<number, Record<string, string>> = {
 // Sources: Wikipedia "Party divisions of United States Congresses", US Senate/House historical offices
 export type CongressInfo = { p1: string; p2: string; houseShare: number; senateShare: number };
 export const CONGRESS_DATA: Record<number, CongressInfo> = {
-  // 1st-2nd Congress: Pro-Administration vs Anti-Administration
-  1788: { p1: "FED", p2: "DR", houseShare: 0.57, senateShare: 0.69 }, // 37/65 Pro-Admin House, 18/26 Senate
-  1790: { p1: "FED", p2: "DR", houseShare: 0.57, senateShare: 0.53 }, // 39/69 Pro-Admin, 16/30 Sen
-  // 3rd-4th Congress: Federalist vs Democratic-Republican
-  1792: { p1: "DR", p2: "FED", houseShare: 0.51, senateShare: 0.47 }, // 54/105 DR, 14/30 Sen
-  1794: { p1: "DR", p2: "FED", houseShare: 0.51, senateShare: 0.34 }, // 54/105 DR, 11/32 Sen
-  // 5th-6th Congress: Federalist majority
-  1796: { p1: "FED", p2: "DR", houseShare: 0.56, senateShare: 0.63 }, // 59/106, 20/32
-  1798: { p1: "FED", p2: "DR", houseShare: 0.59, senateShare: 0.59 }, // 63/106, 19/32
-  // 7th-12th Congress: DR dominance
-  1800: { p1: "DR", p2: "FED", houseShare: 0.60, senateShare: 0.50 }, // 64/106, 16/32
-  1802: { p1: "DR", p2: "FED", houseShare: 0.72, senateShare: 0.74 }, // 102/141, 25/34
-  1804: { p1: "DR", p2: "FED", houseShare: 0.82, senateShare: 0.79 }, // 116/141, 27/34
-  1806: { p1: "DR", p2: "FED", houseShare: 0.83, senateShare: 0.82 }, // 118/142, 28/34
-  1808: { p1: "DR", p2: "FED", houseShare: 0.66, senateShare: 0.79 }, // 94/142, 27/34
-  1810: { p1: "DR", p2: "FED", houseShare: 0.75, senateShare: 0.76 }, // 107/143, 26/34
-  1812: { p1: "DR", p2: "FED", houseShare: 0.62, senateShare: 0.72 }, // 112/181, 26/36
-  1814: { p1: "DR", p2: "FED", houseShare: 0.64, senateShare: 0.61 }, // 117/183, 22/36
-  // 15th-18th Congress: Era of Good Feelings (DR dominance, FED collapse)
-  1816: { p1: "DR", p2: "FED", houseShare: 0.77, senateShare: 0.73 }, // 141/183, 29/40
-  1818: { p1: "DR", p2: "FED", houseShare: 0.85, senateShare: 0.82 }, // 156/183, 36/44
-  1820: { p1: "DR", p2: "FED", houseShare: 0.86, senateShare: 0.90 }, // 158/183, 43/48
-  1822: { p1: "DR", p2: "FED", houseShare: 0.62, senateShare: 0.90 }, // 131/213, 43/48
-  // 19th-22nd Congress: Jacksonian era (DEM = Jacksonian, NR = Adams/Anti-Jacksonian)
-  1824: { p1: "NR", p2: "DEM", houseShare: 0.52, senateShare: 0.55 }, // 105/202 Adams, 26/47
-  1826: { p1: "DEM", p2: "NR", houseShare: 0.56, senateShare: 0.44 }, // 119/213 Jackson, 21/48
-  1828: { p1: "DEM", p2: "NR", houseShare: 0.65, senateShare: 0.55 }, // 139/213, 26/47
-  1830: { p1: "DEM", p2: "NR", houseShare: 0.66, senateShare: 0.60 }, // 141/213, 29/48
-  // 23rd-33rd Congress: Democrat vs Whig
-  1832: { p1: "DEM", p2: "WHIG", houseShare: 0.61, senateShare: 0.65 }, // 147/240, 31/48
-  1834: { p1: "DEM", p2: "WHIG", houseShare: 0.59, senateShare: 0.67 }, // 145/245, 32/48
-  1836: { p1: "DEM", p2: "WHIG", houseShare: 0.56, senateShare: 0.67 }, // 128/242, 35/52
-  1838: { p1: "DEM", p2: "WHIG", houseShare: 0.49, senateShare: 0.54 }, // 119/242, 28/52
-  1840: { p1: "WHIG", p2: "DEM", houseShare: 0.57, senateShare: 0.56 }, // 142/251, 29/52
-  1842: { p1: "DEM", p2: "WHIG", houseShare: 0.64, senateShare: 0.47 }, // 148/232, 25/53
-  1844: { p1: "DEM", p2: "WHIG", houseShare: 0.63, senateShare: 0.55 }, // 143/226, 31/56
-  1846: { p1: "WHIG", p2: "DEM", houseShare: 0.51, senateShare: 0.37 }, // 115/227, 21/58
-  1848: { p1: "DEM", p2: "WHIG", houseShare: 0.48, senateShare: 0.55 }, // 117/242, 33/60
-  1850: { p1: "DEM", p2: "WHIG", houseShare: 0.57, senateShare: 0.55 }, // 140/246, 34/62
-  1852: { p1: "DEM", p2: "WHIG", houseShare: 0.65, senateShare: 0.61 }, // 159/243, 38/62
-  1854: { p1: "REP", p2: "DEM", houseShare: 0.43, senateShare: 0.53 }, // 100/234 Opposition, 33/62
-  // 35th Congress onward: Democrat vs Republican
-  1856: { p1: "DEM", p2: "REP", houseShare: 0.57, senateShare: 0.61 }, // 133/234, 39/64
-  1858: { p1: "REP", p2: "DEM", houseShare: 0.53, senateShare: 0.38 }, // 113/214, 25/66
-  1860: { p1: "REP", p2: "DEM", houseShare: 0.59, senateShare: 0.57 }, // 108/183, 31/54
-  1862: { p1: "REP", p2: "DEM", houseShare: 0.55, senateShare: 0.65 }, // 102/186, 34/52
-  1864: { p1: "REP", p2: "DEM", houseShare: 0.74, senateShare: 0.67 }, // 143/193, 36/54
-  1866: { p1: "REP", p2: "DEM", houseShare: 0.74, senateShare: 0.78 }, // 143/193, 42/54
-  1868: { p1: "REP", p2: "DEM", houseShare: 0.67, senateShare: 0.85 }, // 149/223, 56/66
-  1870: { p1: "REP", p2: "DEM", houseShare: 0.56, senateShare: 0.77 }, // 134/240, 56/73
-  1872: { p1: "REP", p2: "DEM", houseShare: 0.69, senateShare: 0.74 }, // 194/283, 54/73
-  1874: { p1: "DEM", p2: "REP", houseShare: 0.62, senateShare: 0.60 }, // 181/293, 44/73
-  1876: { p1: "DEM", p2: "REP", houseShare: 0.53, senateShare: 0.52 }, // 156/296, 39/75
-  1878: { p1: "DEM", p2: "REP", houseShare: 0.52, senateShare: 0.53 }, // 151/293, 40/76
+  1788: { p1: "FED", p2: "DR", houseShare: 0.57, senateShare: 0.69 },
+  1790: { p1: "FED", p2: "DR", houseShare: 0.57, senateShare: 0.53 },
+  1792: { p1: "DR", p2: "FED", houseShare: 0.51, senateShare: 0.47 },
+  1794: { p1: "DR", p2: "FED", houseShare: 0.51, senateShare: 0.34 },
+  1796: { p1: "FED", p2: "DR", houseShare: 0.56, senateShare: 0.63 },
+  1798: { p1: "FED", p2: "DR", houseShare: 0.59, senateShare: 0.59 },
+  1800: { p1: "DR", p2: "FED", houseShare: 0.60, senateShare: 0.50 },
+  1802: { p1: "DR", p2: "FED", houseShare: 0.72, senateShare: 0.74 },
+  1804: { p1: "DR", p2: "FED", houseShare: 0.82, senateShare: 0.79 },
+  1806: { p1: "DR", p2: "FED", houseShare: 0.83, senateShare: 0.82 },
+  1808: { p1: "DR", p2: "FED", houseShare: 0.66, senateShare: 0.79 },
+  1810: { p1: "DR", p2: "FED", houseShare: 0.75, senateShare: 0.76 },
+  1812: { p1: "DR", p2: "FED", houseShare: 0.62, senateShare: 0.72 },
+  1814: { p1: "DR", p2: "FED", houseShare: 0.64, senateShare: 0.61 },
+  1816: { p1: "DR", p2: "FED", houseShare: 0.77, senateShare: 0.73 },
+  1818: { p1: "DR", p2: "FED", houseShare: 0.85, senateShare: 0.82 },
+  1820: { p1: "DR", p2: "FED", houseShare: 0.86, senateShare: 0.90 },
+  1822: { p1: "DR", p2: "FED", houseShare: 0.62, senateShare: 0.90 },
+  1824: { p1: "NR", p2: "DEM", houseShare: 0.52, senateShare: 0.55 },
+  1826: { p1: "DEM", p2: "NR", houseShare: 0.56, senateShare: 0.44 },
+  1828: { p1: "DEM", p2: "NR", houseShare: 0.65, senateShare: 0.55 },
+  1830: { p1: "DEM", p2: "NR", houseShare: 0.66, senateShare: 0.60 },
+  1832: { p1: "DEM", p2: "WHIG", houseShare: 0.61, senateShare: 0.65 },
+  1834: { p1: "DEM", p2: "WHIG", houseShare: 0.59, senateShare: 0.67 },
+  1836: { p1: "DEM", p2: "WHIG", houseShare: 0.56, senateShare: 0.67 },
+  1838: { p1: "DEM", p2: "WHIG", houseShare: 0.49, senateShare: 0.54 },
+  1840: { p1: "WHIG", p2: "DEM", houseShare: 0.57, senateShare: 0.56 },
+  1842: { p1: "DEM", p2: "WHIG", houseShare: 0.64, senateShare: 0.47 },
+  1844: { p1: "DEM", p2: "WHIG", houseShare: 0.63, senateShare: 0.55 },
+  1846: { p1: "WHIG", p2: "DEM", houseShare: 0.51, senateShare: 0.37 },
+  1848: { p1: "DEM", p2: "WHIG", houseShare: 0.48, senateShare: 0.55 },
+  1850: { p1: "DEM", p2: "WHIG", houseShare: 0.57, senateShare: 0.55 },
+  1852: { p1: "DEM", p2: "WHIG", houseShare: 0.65, senateShare: 0.61 },
+  1854: { p1: "REP", p2: "DEM", houseShare: 0.43, senateShare: 0.53 },
+  1856: { p1: "DEM", p2: "REP", houseShare: 0.57, senateShare: 0.61 },
+  1858: { p1: "REP", p2: "DEM", houseShare: 0.53, senateShare: 0.38 },
+  1860: { p1: "REP", p2: "DEM", houseShare: 0.59, senateShare: 0.57 },
+  1862: { p1: "REP", p2: "DEM", houseShare: 0.55, senateShare: 0.65 },
+  1864: { p1: "REP", p2: "DEM", houseShare: 0.74, senateShare: 0.67 },
+  1866: { p1: "REP", p2: "DEM", houseShare: 0.74, senateShare: 0.78 },
+  1868: { p1: "REP", p2: "DEM", houseShare: 0.67, senateShare: 0.85 },
+  1870: { p1: "REP", p2: "DEM", houseShare: 0.56, senateShare: 0.77 },
+  1872: { p1: "REP", p2: "DEM", houseShare: 0.69, senateShare: 0.74 },
+  1874: { p1: "DEM", p2: "REP", houseShare: 0.62, senateShare: 0.60 },
+  1876: { p1: "DEM", p2: "REP", houseShare: 0.53, senateShare: 0.52 },
+  1878: { p1: "DEM", p2: "REP", houseShare: 0.52, senateShare: 0.53 },
   1880: { p1: "REP", p2: "DEM", houseShare: 0.45, senateShare: 0.51 },
   1882: { p1: "DEM", p2: "REP", houseShare: 0.61, senateShare: 0.48 },
   1884: { p1: "DEM", p2: "REP", houseShare: 0.56, senateShare: 0.49 },
@@ -698,19 +690,19 @@ export function getFlipData(year: number, stateName: string): FlipInfo {
 }
 
 export const STATE_CENTROIDS: Record<string, [number, number]> = {
-  Alabama:[-86.8,32.8],Alaska:[-153.5,64.2],Arizona:[-111.7,34.3],Arkansas:[-92.4,34.9],
-  California:[-119.7,37.3],Colorado:[-105.5,39.0],Connecticut:[-72.7,41.6],Delaware:[-75.5,39.0],
-  Florida:[-81.7,28.7],Georgia:[-83.4,32.7],Hawaii:[-155.5,19.9],Idaho:[-114.5,44.4],
-  Illinois:[-89.2,40.0],Indiana:[-86.3,39.9],Iowa:[-93.5,42.0],Kansas:[-98.3,38.5],
-  Kentucky:[-85.3,37.8],Louisiana:[-91.9,31.0],Maine:[-69.2,45.4],Maryland:[-76.6,39.0],
-  Massachusetts:[-71.8,42.4],Michigan:[-84.7,44.3],Minnesota:[-94.3,46.3],Mississippi:[-89.7,32.7],
-  Missouri:[-92.5,38.4],Montana:[-109.6,47.0],Nebraska:[-99.8,41.5],Nevada:[-116.6,39.3],
-  "New Hampshire":[-71.6,43.7],"New Jersey":[-74.7,40.1],"New Mexico":[-106.0,34.5],
-  "New York":[-75.5,42.9],"North Carolina":[-79.4,35.5],"North Dakota":[-100.5,47.4],
-  Ohio:[-82.8,40.4],Oklahoma:[-97.5,35.6],Oregon:[-120.6,44.0],Pennsylvania:[-77.6,41.0],
-  "Rhode Island":[-71.5,41.7],"South Carolina":[-80.9,33.9],"South Dakota":[-100.2,44.4],
-  Tennessee:[-86.3,35.8],Texas:[-99.0,31.5],Utah:[-111.7,39.3],Vermont:[-72.6,44.1],
-  Virginia:[-78.9,37.5],Washington:[-120.7,47.4],"West Virginia":[-80.6,38.6],
-  Wisconsin:[-89.8,44.6],Wyoming:[-107.6,43.0]
+  "Alabama": [-86.8, 32.8], "Alaska": [-153.5, 64.2], "Arizona": [-111.7, 34.3], "Arkansas": [-92.4, 34.9],
+  "California": [-119.7, 37.3], "Colorado": [-105.5, 39.0], "Connecticut": [-72.7, 41.6], "Delaware": [-75.5, 39.0],
+  "Florida": [-81.7, 28.7], "Georgia": [-83.4, 32.7], "Hawaii": [-155.5, 19.9], "Idaho": [-114.5, 44.4],
+  "Illinois": [-89.2, 40.0], "Indiana": [-86.3, 39.9], "Iowa": [-93.5, 42.0], "Kansas": [-98.3, 38.5],
+  "Kentucky": [-85.3, 37.8], "Louisiana": [-91.9, 31.0], "Maine": [-69.2, 45.4], "Maryland": [-76.6, 39.0],
+  "Massachusetts": [-71.8, 42.4], "Michigan": [-84.7, 44.3], "Minnesota": [-94.3, 46.3], "Mississippi": [-89.7, 32.7],
+  "Missouri": [-92.5, 38.4], "Montana": [-109.6, 47.0], "Nebraska": [-99.8, 41.5], "Nevada": [-116.6, 39.3],
+  "New Hampshire": [-71.6, 43.7], "New Jersey": [-74.7, 40.1], "New Mexico": [-106.0, 34.5],
+  "New York": [-75.5, 42.9], "North Carolina": [-79.4, 35.5], "North Dakota": [-100.5, 47.4],
+  "Ohio": [-82.8, 40.4], "Oklahoma": [-97.5, 35.6], "Oregon": [-120.6, 44.0], "Pennsylvania": [-77.6, 41.0],
+  "Rhode Island": [-71.5, 41.7], "South Carolina": [-80.9, 33.9], "South Dakota": [-100.2, 44.4],
+  "Tennessee": [-86.3, 35.8], "Texas": [-99.0, 31.5], "Utah": [-111.7, 39.3], "Vermont": [-72.6, 44.1],
+  "Virginia": [-78.9, 37.5], "Washington": [-120.7, 47.4], "West Virginia": [-80.6, 38.6],
+  "Wisconsin": [-89.8, 44.6], "Wyoming": [-107.6, 43.0]
 };
 
