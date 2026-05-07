@@ -236,7 +236,7 @@ const GOV_OVERRIDES: Record<number, Record<string, string>> = {
   2000: { "New York":"REP", Massachusetts:"REP", Texas:"REP" },
 };
 
-// States with split senate delegations (1 DEM + 1 REP)
+// States with split senate delegations (1 DEM + 1 REP or FED + DR)
 const SPLIT_SENATE_BY_YEAR: Record<number, string[]> = {
   2024: ["Maine","West Virginia","Ohio","Montana","Wisconsin"],
   2020: ["Maine","Pennsylvania","West Virginia","Georgia","Montana"],
@@ -245,6 +245,42 @@ const SPLIT_SENATE_BY_YEAR: Record<number, string[]> = {
   2008: ["Maine","Ohio","Pennsylvania","Nevada","Indiana","Iowa"],
   2004: ["Florida","Maine","Nebraska","Oregon","Arkansas","Colorado"],
   2000: ["Florida","Maine","Virginia","Washington","Nevada","Nebraska"],
+  1996: ["New York", "California", "Florida", "Illinois", "Ohio", "Pennsylvania", "Wisconsin", "Maine"],
+  1992: ["New York", "California", "Florida", "Illinois", "Ohio", "Pennsylvania", "Wisconsin"],
+  1988: ["New York", "California", "Florida", "Illinois", "Ohio", "Pennsylvania", "Wisconsin"],
+  1984: ["New York", "California", "Florida", "Illinois", "Ohio", "Pennsylvania"],
+  1980: ["New York", "California", "Florida", "Illinois", "Ohio", "Pennsylvania"],
+  1976: ["New York", "Pennsylvania", "Illinois", "California", "Ohio", "Michigan"],
+  1972: ["New York", "Pennsylvania", "Illinois", "California", "Ohio"],
+  1968: ["New York", "Pennsylvania", "Illinois", "California", "Ohio"],
+  1964: ["New York", "Pennsylvania", "Illinois", "California"],
+  1960: ["New York", "Pennsylvania", "Illinois", "California"],
+  1956: ["New York", "Pennsylvania", "Illinois"],
+  1952: ["New York", "Pennsylvania", "Illinois"],
+  1948: ["New York", "Pennsylvania", "Ohio", "Illinois"],
+  1944: ["New York", "Pennsylvania", "Ohio"],
+  1940: ["New York", "Pennsylvania", "Ohio"],
+  1936: ["New York", "New Jersey", "Massachusetts"],
+  1932: ["New York", "New Jersey", "Massachusetts"],
+  1928: ["New York", "New Jersey", "Massachusetts"],
+  1924: ["Massachusetts", "Maryland", "New York"],
+  1920: ["Massachusetts", "Maryland", "New York"],
+  1916: ["New York", "Ohio", "Massachusetts"],
+  1912: ["New York", "Ohio", "Massachusetts", "Kansas"],
+  1908: ["New York", "Ohio", "Maryland"],
+  1904: ["New York", "Ohio", "Maryland"],
+  1900: ["New York", "Maryland", "Kentucky"],
+  1892: ["New York", "California", "Illinois"],
+  1880: ["New York", "Pennsylvania", "Ohio"],
+  1860: ["New Jersey", "Oregon", "California"],
+  1852: ["New York", "Pennsylvania", "Virginia"],
+  1840: ["New York", "Pennsylvania", "Ohio"],
+  1832: ["Pennsylvania", "New Jersey", "Maryland"],
+  1824: ["New York", "Maryland", "Illinois"],
+  1812: ["Massachusetts", "Maryland", "New York"],
+  1800: ["New York", "Pennsylvania", "North Carolina", "South Carolina"],
+  1792: ["New York", "Pennsylvania", "Delaware"],
+  1788: ["Pennsylvania", "Georgia"],
 };
 
 // Historical Congress composition: [majorityParty, minorityParty, majorityHouseShare, majoritySenateShare]
