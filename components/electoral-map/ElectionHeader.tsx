@@ -33,7 +33,7 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
 
   const parties = Object.entries(tally).sort((a, b) => b[1] - a[1]);
   const total = parties.reduce((s, [, v]) => s + v, 0) || 1;
-  const totalSeats = viewMode === "President" ? 538 : viewMode === "Senate" ? 100 : viewMode === "House" ? 435 : total;
+  const totalSeats = viewMode === "President" ? total : viewMode === "Senate" ? 100 : viewMode === "House" ? 435 : total;
   const demVotes = tally["DEM"] || 0;
   const repVotes = tally["REP"] || 0;
   const otherVotes = Object.entries(tally).filter(([p]) => p !== "DEM" && p !== "REP").reduce((s, [,v]) => s + v, 0);
