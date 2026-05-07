@@ -2,170 +2,128 @@
 import { useState, useCallback, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { ViewMode } from "@/lib/data/electoral-data";
-import { ELECTORAL_HISTORY } from "@/lib/data/electoral-data";
+import { ELECTORAL_HISTORY, PARTY_COLORS } from "@/lib/data/electoral-data";
 import { MapRenderer } from "./MapRenderer";
 import { TimelineScrubber } from "./TimelineScrubber";
 import { ElectoralVoteBar } from "./ElectoralVoteBar";
 import { StateDetailPanel } from "./StateDetailPanel";
 
 const YEARS = ELECTORAL_HISTORY.map((d) => d.year);
-
-const VIEW_MODES: { key: ViewMode; label: string; labelRo: string; desc: string; descRo: string }[] = [
-  { key: "President", label: "President", labelRo: "Președinte", desc: "Electoral College · solid state fills, diagonal hatch = party flip", descRo: "Colegiul Electoral · culori solide, hașură diagonală = schimbare de partid" },
-  { key: "Senate", label: "Senate", labelRo: "Senat", desc: "Upper Chamber · split gradient = divided delegation", descRo: "Camera Superioară · gradient împărțit = delegație divizată" },
-  { key: "House", label: "House", labelRo: "Cameră", desc: "Representatives · 435 dots clustered by state", descRo: "Reprezentanți · 435 de puncte grupate pe stat" },
-  { key: "Governor", label: "Governor", labelRo: "Guvernator", desc: "State Executive · pure solid fill = sitting governor party", descRo: "Executiv de Stat · culoare solidă = partidul guvernatorului" },
+const VIEWS: { key: ViewMode; en: string; ro: string; descEn: string; descRo: string }[] = [
+  { key: "President", en: "President", ro: "Președinte", descEn: "Electoral College · state fills by winning party", descRo: "Colegiul Electoral · state colorate pe partid" },
+  { key: "Senate", en: "Senate", ro: "Senat", descEn: "Upper Chamber · diagonal split = divided delegation", descRo: "Camera Superioară · diagonală = delegație împărțită" },
+  { key: "House", en: "House", ro: "Cameră", descEn: "Representatives · 435 dots in rigid grid", descRo: "Reprezentanți · 435 puncte în grilă rigidă" },
+  { key: "Governor", en: "Governor", ro: "Guvernator", descEn: "State Executive · sitting governor party", descRo: "Executiv de Stat · partidul guvernatorului" },
 ];
 
 export function ElectoralMap({ isRo }: { isRo?: boolean }) {
-  const [currentYear, setCurrentYear] = useState(ELECTORAL_HISTORY[ELECTORAL_HISTORY.length - 1].year);
-  const [viewMode, setViewMode] = useState<ViewMode>("President");
-  const [selectedState, setSelectedState] = useState<string | null>(null);
+  const [year, setYear] = useState(YEARS[YEARS.length - 1]);
+  const [view, setView] = useState<ViewMode>("President");
+  const [sel, setSel] = useState<string | null>(null);
+  const v = VIEWS.find((x) => x.key === view)!;
 
-  const handleYearChange = useCallback((year: number) => setCurrentYear(year), []);
-  const activeViewConfig = VIEW_MODES.find((v) => v.key === viewMode)!;
-
-  // Keyboard navigation
+  // Keyboard
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") {
-        const idx = YEARS.indexOf(currentYear);
-        if (idx > 0) setCurrentYear(YEARS[idx - 1]);
-      } else if (e.key === "ArrowRight") {
-        const idx = YEARS.indexOf(currentYear);
-        if (idx < YEARS.length - 1) setCurrentYear(YEARS[idx + 1]);
-      } else if (e.key >= "1" && e.key <= "4") {
-        setViewMode(VIEW_MODES[parseInt(e.key) - 1].key);
-      } else if (e.key === "Escape") {
-        setSelectedState(null);
-      }
+    const h = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") { const i = YEARS.indexOf(year); if (i > 0) setYear(YEARS[i - 1]); }
+      else if (e.key === "ArrowRight") { const i = YEARS.indexOf(year); if (i < YEARS.length - 1) setYear(YEARS[i + 1]); }
+      else if (e.key >= "1" && e.key <= "4") setView(VIEWS[+e.key - 1].key);
+      else if (e.key === "Escape") setSel(null);
     };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [currentYear]);
+    window.addEventListener("keydown", h);
+    return () => window.removeEventListener("keydown", h);
+  }, [year]);
 
-  // Dynamic stats computed from real data
-  const stats = useMemo(() => {
-    const yd = ELECTORAL_HISTORY.find((d) => d.year === currentYear) || ELECTORAL_HISTORY[0];
-    let demStates = 0, repStates = 0, splitSen = 0, demHouse = 0, repHouse = 0, demGov = 0, repGov = 0;
+  // Dynamic stats + active parties
+  const { stats, activeParties } = useMemo(() => {
+    const yd = ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0];
+    const partySet = new Set<string>();
+    let dS = 0, rS = 0, oS = 0, dH = 0, rH = 0;
     for (const sd of Object.values(yd.states)) {
-      if (sd.president.party === "DEM") demStates++; else repStates++;
-      if (sd.senate.split) splitSen++;
-      demHouse += sd.house.demReps;
-      repHouse += sd.house.repReps;
-      if (sd.governor.party === "DEM") demGov++; else repGov++;
+      partySet.add(sd.president.party);
+      if (sd.president.party === "DEM") dS++; else if (sd.president.party === "REP") rS++; else oS++;
+      dH += sd.house.demReps; rH += sd.house.repReps;
     }
-    return { demStates, repStates, splitSen, demHouse, repHouse, demGov, repGov };
-  }, [currentYear]);
-
-  const dynamicStats = viewMode === "President"
-    ? [{ l: isRo ? "Dem" : "DEM", v: `${stats.demStates}` }, { l: isRo ? "Rep" : "REP", v: `${stats.repStates}` }]
-    : viewMode === "Senate"
-      ? [{ l: isRo ? "Împărțite" : "Split", v: `${stats.splitSen}` }, { l: isRo ? "Solide" : "Solid", v: `${50 - stats.splitSen}` }]
-      : viewMode === "House"
-        ? [{ l: "DEM", v: `${stats.demHouse}` }, { l: "REP", v: `${stats.repHouse}` }]
-        : [{ l: "DEM", v: `${stats.demGov}` }, { l: "REP", v: `${stats.repGov}` }];
+    return {
+      stats: { dS, rS, oS, dH, rH, total: Object.keys(yd.states).length },
+      activeParties: [...partySet].filter(Boolean),
+    };
+  }, [year]);
 
   return (
     <div className="relative w-full">
       {/* Header */}
-      <div className="mb-8 text-center">
-        <motion.p className="mb-2 font-body text-[10px] uppercase tracking-[0.3em] text-[#C9A84C]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
-          {isRo ? "Arhiva Electorală" : "Electoral Archive"}
-        </motion.p>
-        <motion.h2 className="font-display text-3xl font-bold text-[#F5F0E8] md:text-4xl" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+      <div className="mb-6 text-center">
+        <p className="mb-1 font-mono text-[9px] uppercase tracking-[0.3em] text-[#C9A84C]">
+          {isRo ? "Arhiva Electorală · 1789–2024" : "Electoral Archive · 1789–2024"}
+        </p>
+        <h2 className="font-display text-2xl font-bold text-[#F5F0E8] md:text-3xl">
           {isRo ? "Harta Democrației Americane" : "The Map of American Democracy"}
-        </motion.h2>
-        <motion.p className="mt-2 font-body text-sm text-[#8A8780]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
-          {isRo ? "Explorează istoria electorală prin patru perspective constituționale. Folosește ← → sau tastele 1-4." : "Explore electoral history through four constitutional perspectives. Use ← → or keys 1-4."}
-        </motion.p>
+        </h2>
+        <p className="mt-1 font-mono text-[10px] text-[#6B6860]">
+          {isRo ? "← → sau tastele 1-4 · click pe stat pentru detalii" : "← → or keys 1-4 · click state for details"}
+        </p>
       </div>
 
-      {/* View Mode Tabs */}
-      <div className="mb-6 flex flex-wrap items-center justify-center gap-1.5">
-        {VIEW_MODES.map((mode, i) => {
-          const isActive = viewMode === mode.key;
-          return (
-            <button key={mode.key} onClick={() => setViewMode(mode.key)}
-              className={`relative rounded-sm px-3 py-2 font-body text-xs font-semibold uppercase tracking-[0.15em] transition-all duration-300 ${isActive ? "bg-[#C9A84C]/10 text-[#C9A84C]" : "text-[#6B6860] hover:text-[#B8B4AC]"}`}>
-              <span className="mr-1 text-[9px] opacity-40">{i + 1}</span>
-              {isRo ? mode.labelRo : mode.label}
-              {isActive && <motion.div layoutId="viewmode-indicator" className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C9A84C]" transition={{ type: "spring", stiffness: 400, damping: 30 }} />}
-            </button>
-          );
-        })}
+      {/* View tabs */}
+      <div className="mb-4 flex flex-wrap items-center justify-center gap-1">
+        {VIEWS.map((m, i) => (
+          <button key={m.key} onClick={() => setView(m.key)}
+            className={`relative px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all ${view === m.key ? "text-[#C9A84C]" : "text-[#6B6860] hover:text-[#B8B4AC]"}`}>
+            <span className="mr-1 text-[8px] opacity-30">{i + 1}</span>
+            {isRo ? m.ro : m.en}
+            {view === m.key && <motion.div layoutId="vtab" className="absolute bottom-0 left-0 right-0 h-[1px] bg-[#C9A84C]" transition={{ type: "spring", stiffness: 400, damping: 30 }} />}
+          </button>
+        ))}
       </div>
-
-      {/* View Mode Description */}
       <AnimatePresence mode="wait">
-        <motion.p key={viewMode} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.25 }}
-          className="mb-6 text-center font-body text-[11px] uppercase tracking-[0.15em] text-[#6B6860]">
-          {isRo ? activeViewConfig.descRo : activeViewConfig.desc}
+        <motion.p key={view} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+          className="mb-4 text-center font-mono text-[9px] uppercase tracking-widest text-[#6B6860]">
+          {isRo ? v.descRo : v.descEn}
         </motion.p>
       </AnimatePresence>
 
-      {/* Electoral Vote Bar (President only) */}
-      {viewMode === "President" && <ElectoralVoteBar year={currentYear} isRo={isRo} />}
+      {/* EV bar (President only) */}
+      {view === "President" && <ElectoralVoteBar year={year} isRo={isRo} />}
 
-      {/* Map Container */}
-      <div className="relative rounded-sm border border-[rgba(201,168,76,0.08)] bg-[#0A0D14] p-2 md:p-4 overflow-hidden">
-        <div className="pointer-events-none absolute left-2 top-2 h-3 w-3 border-l border-t border-[rgba(201,168,76,0.15)]" />
-        <div className="pointer-events-none absolute right-2 top-2 h-3 w-3 border-r border-t border-[rgba(201,168,76,0.15)]" />
-        <div className="pointer-events-none absolute bottom-2 left-2 h-3 w-3 border-b border-l border-[rgba(201,168,76,0.15)]" />
-        <div className="pointer-events-none absolute bottom-2 right-2 h-3 w-3 border-b border-r border-[rgba(201,168,76,0.15)]" />
-
-        <MapRenderer year={currentYear} viewMode={viewMode} onStateClick={(name) => setSelectedState(name)} />
-
-        {/* State Detail Panel */}
+      {/* Map */}
+      <div className="relative overflow-hidden border border-[rgba(201,168,76,0.06)] bg-[#080B12] p-1.5 md:p-3">
+        <MapRenderer year={year} viewMode={view} onStateClick={(n) => setSel(n)} />
         <AnimatePresence>
-          {selectedState && (
-            <StateDetailPanel stateName={selectedState} year={currentYear} onClose={() => setSelectedState(null)} isRo={isRo} />
-          )}
+          {sel && <StateDetailPanel stateName={sel} year={year} onClose={() => setSel(null)} isRo={isRo} />}
         </AnimatePresence>
 
-        {/* Legend */}
-        <div className="mt-3 flex flex-wrap items-center justify-center gap-3 border-t border-[rgba(201,168,76,0.08)] pt-3 md:gap-4">
-          <div className="flex items-center gap-1.5">
-            <div className="h-2.5 w-2.5 rounded-[1px] bg-[#1E5AA8]" />
-            <span className="font-body text-[9px] text-[#8A8780]">Democrat</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <div className="h-2.5 w-2.5 rounded-[1px] bg-[#B22234]" />
-            <span className="font-body text-[9px] text-[#8A8780]">Republican</span>
-          </div>
-          {viewMode === "Senate" && (
-            <div className="flex items-center gap-1.5">
-              <div className="h-2.5 w-2.5 rounded-[1px]" style={{ background: "linear-gradient(90deg, #1E5AA8 50%, #B22234 50%)" }} />
-              <span className="font-body text-[9px] text-[#8A8780]">{isRo ? "Împărțit" : "Split"}</span>
+        {/* Dynamic legend */}
+        <div className="mt-2 flex flex-wrap items-center justify-center gap-3 border-t border-[rgba(201,168,76,0.06)] pt-2">
+          {activeParties.map((p) => (
+            <div key={p} className="flex items-center gap-1">
+              <div className="h-[6px] w-[6px]" style={{ background: PARTY_COLORS[p] || "#C9A84C" }} />
+              <span className="font-mono text-[8px] uppercase tracking-widest text-[#6B6860]">{p}</span>
             </div>
-          )}
-          {viewMode === "House" && (
-            <div className="flex items-center gap-1.5">
-              <span className="font-body text-[9px] text-[#8A8780]">● = 1 {isRo ? "reprezentant" : "representative"}</span>
-            </div>
-          )}
+          ))}
+          {view === "House" && <span className="font-mono text-[8px] text-[#6B6860]">● = 1 rep</span>}
+          <span className="font-mono text-[8px] text-[#6B6860]">┈ = {isRo ? "teritoriu" : "territory"}</span>
         </div>
       </div>
 
       {/* Timeline */}
-      <div className="mt-5">
-        <TimelineScrubber currentYear={currentYear} onYearChange={handleYearChange} isRo={isRo} />
-      </div>
+      <div className="mt-4"><TimelineScrubber currentYear={year} onYearChange={setYear} isRo={isRo} /></div>
 
-      {/* Dynamic Stats */}
-      <motion.div key={`${currentYear}-${viewMode}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}
-        className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-4">
+      {/* Stats */}
+      <div className="mt-4 grid grid-cols-3 gap-1.5 md:grid-cols-5">
         {[
-          { label: isRo ? "An" : "Year", value: String(currentYear) },
-          { label: isRo ? "Perspectivă" : "View", value: isRo ? activeViewConfig.labelRo : activeViewConfig.label },
-          ...dynamicStats.map((s) => ({ label: s.l, value: s.v })),
-        ].map((stat) => (
-          <div key={stat.label} className="rounded-sm border border-[rgba(201,168,76,0.06)] bg-[#0A0D14] p-2.5 text-center">
-            <p className="font-body text-[8px] uppercase tracking-[0.2em] text-[#6B6860]">{stat.label}</p>
-            <p className="mt-0.5 font-display text-base font-bold text-[#C9A84C]" style={{ fontVariantNumeric: "tabular-nums" }}>{stat.value}</p>
+          { l: isRo ? "An" : "Year", v: String(year) },
+          { l: isRo ? "State" : "States", v: String(stats.total) },
+          { l: activeParties[0] || "W", v: String(stats.dS + stats.oS - stats.rS > 0 ? stats.dS + stats.oS : stats.dS) },
+          { l: activeParties[1] || "L", v: String(stats.rS || stats.oS) },
+          { l: isRo ? "Alegeri" : "Elections", v: String(YEARS.length) },
+        ].map((s) => (
+          <div key={s.l} className="border border-[rgba(201,168,76,0.04)] bg-[#080B12] p-2 text-center">
+            <p className="font-mono text-[7px] uppercase tracking-widest text-[#6B6860]">{s.l}</p>
+            <p className="font-mono text-sm font-bold text-[#C9A84C]" style={{ fontVariantNumeric: "tabular-nums" }}>{s.v}</p>
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
