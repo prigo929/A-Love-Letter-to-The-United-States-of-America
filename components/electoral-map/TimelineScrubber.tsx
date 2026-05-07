@@ -28,6 +28,18 @@ export function TimelineScrubber({
   const trackRef = useRef<SVGSVGElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [hoveredYear, setHoveredYear] = useState<number | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // Autoplay: cycle through years every 2 seconds
+  useEffect(() => {
+    if (!isPlaying) return;
+    const interval = setInterval(() => {
+      const idx = YEARS.indexOf(currentYear);
+      const next = idx < YEARS.length - 1 ? YEARS[idx + 1] : YEARS[0];
+      onYearChange(next);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [isPlaying, currentYear, onYearChange]);
 
   // Snap to the nearest election year
   const snapToYear = useCallback(
@@ -38,17 +50,12 @@ export function TimelineScrubber({
         0,
         Math.min(1, (clientX - rect.left - PADDING_X) / (rect.width - PADDING_X * 2))
       );
-
-      // Find nearest year
       let closest = YEARS[0];
       let minDist = Infinity;
       for (const y of YEARS) {
         const yRatio = (y - MIN_YEAR) / (MAX_YEAR - MIN_YEAR);
         const dist = Math.abs(yRatio - ratio);
-        if (dist < minDist) {
-          minDist = dist;
-          closest = y;
-        }
+        if (dist < minDist) { minDist = dist; closest = y; }
       }
       onYearChange(closest);
     },
@@ -58,6 +65,7 @@ export function TimelineScrubber({
   const handlePointerDown = useCallback(
     (e: React.PointerEvent) => {
       setIsDragging(true);
+      setIsPlaying(false);
       (e.target as Element).setPointerCapture(e.pointerId);
       snapToYear(e.clientX);
     },
@@ -75,17 +83,25 @@ export function TimelineScrubber({
     setIsDragging(false);
   }, []);
 
-  // Position of the playhead (0–1)
   const playheadRatio =
     YEARS.length > 1 ? (currentYear - MIN_YEAR) / (MAX_YEAR - MIN_YEAR) : 0;
 
   return (
     <div className="relative w-full">
-      {/* Current Year Display */}
+      {/* Header with play button */}
       <div className="mb-2 flex items-center justify-between px-1">
-        <span className="font-body text-[10px] uppercase tracking-[0.2em] text-[#6B6860]">
-          {isRo ? "Cronologie Electorală" : "Electoral Timeline"}
-        </span>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setIsPlaying((p) => !p)}
+            className="flex h-6 w-6 items-center justify-center rounded-sm border border-[rgba(201,168,76,0.2)] bg-[rgba(201,168,76,0.06)] text-[#C9A84C] transition-all hover:bg-[rgba(201,168,76,0.15)]"
+            aria-label={isPlaying ? "Pause" : "Play"}
+          >
+            <span className="text-[10px]">{isPlaying ? "⏸" : "▶"}</span>
+          </button>
+          <span className="font-body text-[10px] uppercase tracking-[0.2em] text-[#6B6860]">
+            {isRo ? "Cronologie Electorală" : "Electoral Timeline"}
+          </span>
+        </div>
         <motion.span
           key={currentYear}
           initial={{ opacity: 0, y: -4 }}
