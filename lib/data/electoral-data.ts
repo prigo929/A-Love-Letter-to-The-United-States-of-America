@@ -228,20 +228,30 @@ export const PRESIDENTIAL_DATA: Record<number, { dem: string, rep: string, demV:
 // States with Republican governors despite being D-lean presidentially (or vice versa)
 const GOV_OVERRIDES: Record<number, Record<string, string>> = {
   2024: { Massachusetts:"REP", Vermont:"REP", Virginia:"REP", Kentucky:"DEM", Kansas:"DEM", Louisiana:"REP" },
+  2022: { Kentucky:"DEM", Kansas:"DEM", "North Carolina":"DEM", Vermont:"REP", "New Hampshire":"REP", Nevada:"REP" },
   2020: { Massachusetts:"REP", Maryland:"REP", Vermont:"REP", "New Hampshire":"REP" },
+  2018: { Kentucky:"DEM", Kansas:"DEM", "North Carolina":"DEM", Massachusetts:"REP", Maryland:"REP", Vermont:"REP", "New Hampshire":"REP" },
   2016: { Massachusetts:"REP", Maryland:"REP", Vermont:"REP" },
+  2014: { Massachusetts:"REP", Maryland:"REP", Illinois:"REP", Vermont:"REP", "New Hampshire":"REP" },
   2012: { "New Jersey":"REP", Virginia:"REP", Ohio:"REP", Michigan:"REP", Wisconsin:"REP", Florida:"REP" },
+  2010: { Florida:"REP", Ohio:"REP", Michigan:"REP", Wisconsin:"REP", Pennsylvania:"REP", "New Jersey":"REP" },
   2008: { California:"REP", Florida:"REP", Connecticut:"REP", Vermont:"REP" },
+  2006: { California:"REP", Florida:"REP", Massachusetts:"DEM", New York:"DEM", Ohio:"DEM" },
   2004: { California:"REP", "New York":"REP", Massachusetts:"REP", Connecticut:"REP" },
+  2002: { California:"DEM", Florida:"REP", Texas:"REP", New York:"REP" },
   2000: { "New York":"REP", Massachusetts:"REP", Texas:"REP" },
 };
 
 // States with split senate delegations (1 DEM + 1 REP or FED + DR)
 const SPLIT_SENATE_BY_YEAR: Record<number, string[]> = {
   2024: ["Maine","West Virginia","Ohio","Montana","Wisconsin"],
+  2022: ["Ohio","Wisconsin","Maine","Montana","Arizona"],
   2020: ["Maine","Pennsylvania","West Virginia","Georgia","Montana"],
+  2018: ["Maine","Ohio","Pennsylvania","Wisconsin","West Virginia","Montana"],
   2016: ["Maine","Wisconsin","Pennsylvania","West Virginia","Colorado","Indiana"],
+  2014: ["Maine","Ohio","Pennsylvania","Wisconsin","West Virginia","Colorado"],
   2012: ["Maine","Nevada","Ohio","Wisconsin","Pennsylvania","North Dakota"],
+  2010: ["Maine","Ohio","Pennsylvania","Wisconsin","Illinois"],
   2008: ["Maine","Ohio","Pennsylvania","Nevada","Indiana","Iowa"],
   2004: ["Maine","Nebraska","Oregon","Arkansas","Colorado"],
   2002: ["Maine","Nebraska","Oregon","Arkansas","Colorado"],
@@ -352,6 +362,16 @@ const SPLIT_SENATE_BY_YEAR: Record<number, string[]> = {
   1792: ["New York", "Pennsylvania"],
   1790: ["Pennsylvania"],
   1788: ["Pennsylvania"],
+};
+
+// Senate overrides for midterm flips (State: Party)
+const SENATE_OVERRIDES: Record<number, Record<string, string>> = {
+  2022: { Pennsylvania: "DEM", Georgia: "DEM", Nevada: "DEM", Arizona: "DEM", Wisconsin: "REP", Ohio: "REP" },
+  2018: { Florida: "REP", Indiana: "REP", Missouri: "REP", "North Dakota": "REP", Arizona: "DEM" },
+  2014: { "West Virginia": "REP", "South Dakota": "REP", Montana: "REP", Arkansas: "REP", Colorado: "REP", Iowa: "REP", "North Carolina": "REP" },
+  2010: { Pennsylvania: "REP", Wisconsin: "REP", Illinois: "REP", Ohio: "REP", Florida: "REP" },
+  2006: { Virginia: "DEM", Missouri: "DEM", Ohio: "DEM", Pennsylvania: "DEM", Montana: "DEM" },
+  2002: { Georgia: "REP", Missouri: "REP", Minnesota: "REP" },
 };
 
 // Historical Congress composition: [majorityParty, minorityParty, majorityHouseShare, majoritySenateShare]
@@ -555,7 +575,10 @@ function buildYear(year: number): YearData {
     }
 
     // Senate — use CONGRESS_DATA parties for historical accuracy
-    const senBase = year >= 1856 ? (R_BASE.has(name) ? "REP" : D_BASE.has(name) ? "DEM" : presParty) : (winSet.has(name) ? cd.p1 : cd.p2);
+    let senBase = year >= 1856 ? (R_BASE.has(name) ? "REP" : D_BASE.has(name) ? "DEM" : presParty) : (winSet.has(name) ? cd.p1 : cd.p2);
+    if (SENATE_OVERRIDES[year] && SENATE_OVERRIDES[year][name]) {
+      senBase = SENATE_OVERRIDES[year][name];
+    }
     const isSplit = splits.has(name);
     const senOther = senBase === cd.p1 ? cd.p2 : cd.p1;
 
