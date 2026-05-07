@@ -260,7 +260,7 @@ const GeographicMap = memo(({ year, viewMode, hovered, onGeoEnter, clearHover, o
   onStateClick?: (n: string) => void
 }) => {
   const yd = ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0];
-  const isOffYear = viewMode === "President" && yd.demPopVote === 0;
+  const isOffYear = viewMode === "President" && yd.demPopVote === 0 && !yd.unopposed;
 
   return (
     <motion.div key="geo" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
