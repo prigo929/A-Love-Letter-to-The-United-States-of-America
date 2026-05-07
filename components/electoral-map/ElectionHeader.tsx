@@ -103,7 +103,7 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
         ) : (
           <>
             {/* Left Candidate (Winner if Unopposed) */}
-            <div className={yd.unopposed ? "flex w-full flex-col items-center justify-center" : "flex flex-col items-start"}>
+            <div className="flex flex-col items-start">
               <div className="flex items-center gap-2">
                 <span className="font-display text-2xl font-black text-[#F5F0E8]">{parties[0]?.[1] || 0}</span>
                 <div className="flex flex-col">
