@@ -93,7 +93,7 @@ const NAMES = Object.keys(STATE_ADMISSION);
 type ElectionRecord = { winner: string; loser: string; winnerStates: string[]; demCandidate?: string; repCandidate?: string; anomalies?: Record<string, string>; thirdPartyCandidates?: Record<string, string>; note?: string; unopposed?: boolean };
 
 const ELECTIONS: Record<number, ElectionRecord> = {
-  1789: { winner: "FED", loser: "NONE", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1789), unopposed: true, note: "Washington unopposed" },
+  1788: { winner: "FED", loser: "NONE", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1789), unopposed: true, note: "Washington unopposed" },
   1792: { winner: "FED", loser: "NONE", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1792), unopposed: true, note: "Washington unopposed" },
   1796: { winner: "FED", loser: "DR", winnerStates: ["Connecticut","Delaware","Massachusetts","New Hampshire","New Jersey","New York","Rhode Island","Vermont"], note: "Adams vs Jefferson" },
   1800: { winner: "DR", loser: "FED", winnerStates: ["Georgia","Kentucky","New York","North Carolina","Pennsylvania","South Carolina","Tennessee","Virginia"], note: "Jefferson revolution" },
@@ -221,7 +221,7 @@ export const PRESIDENTIAL_DATA: Record<number, { dem: string, rep: string, demV:
   1800: { dem: "Thomas Jefferson", rep: "John Adams", demV: 41330, repV: 25952, totV: 67282 },
   1796: { dem: "Thomas Jefferson", rep: "John Adams", demV: 31115, repV: 35726, totV: 66841 },
   1792: { dem: "Unopposed", rep: "G. Washington", demV: 0, repV: 28579, totV: 28579 },
-  1789: { dem: "Unopposed", rep: "G. Washington", demV: 0, repV: 43782, totV: 43782 },
+  1788: { dem: "Unopposed", rep: "G. Washington", demV: 0, repV: 43782, totV: 43782 },
 };
 
 // ── Independent Senate/Governor/House data ────────────────────────────────
