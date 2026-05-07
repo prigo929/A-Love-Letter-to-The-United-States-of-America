@@ -133,7 +133,41 @@ const ELECTIONS: Record<number, ElectionRecord> = {
   2024: { winner: "REP", loser: "DEM", winnerStates: ["Alabama","Alaska","Arizona","Arkansas","Florida","Georgia","Idaho","Indiana","Iowa","Kansas","Kentucky","Louisiana","Michigan","Mississippi","Missouri","Montana","Nebraska","Nevada","North Carolina","North Dakota","Ohio","Oklahoma","Pennsylvania","South Carolina","South Dakota","Tennessee","Texas","Utah","West Virginia","Wisconsin","Wyoming"], note: "Trump return" },
 };
 
-// ── Build year data from election records ──────────────────────────────────
+// ── Independent Senate/Governor/House data ────────────────────────────────
+// States with Republican governors despite being D-lean presidentially (or vice versa)
+const GOV_OVERRIDES: Record<number, Record<string, string>> = {
+  2024: { Massachusetts:"REP", Vermont:"REP", Virginia:"REP", Kentucky:"DEM", Kansas:"DEM", Louisiana:"REP" },
+  2020: { Massachusetts:"REP", Maryland:"REP", Vermont:"REP", "New Hampshire":"REP" },
+  2016: { Massachusetts:"REP", Maryland:"REP", Vermont:"REP" },
+  2012: { "New Jersey":"REP", Virginia:"REP", Ohio:"REP", Michigan:"REP", Wisconsin:"REP", Florida:"REP" },
+  2008: { California:"REP", Florida:"REP", Connecticut:"REP", Vermont:"REP" },
+  2004: { California:"REP", "New York":"REP", Massachusetts:"REP", Connecticut:"REP" },
+  2000: { "New York":"REP", Massachusetts:"REP", Texas:"REP" },
+};
+
+// States with split senate delegations (1 DEM + 1 REP)
+const SPLIT_SENATE_BY_YEAR: Record<number, string[]> = {
+  2024: ["Maine","West Virginia","Ohio","Montana","Wisconsin"],
+  2020: ["Maine","Pennsylvania","West Virginia","Georgia","Montana"],
+  2016: ["Maine","Wisconsin","Pennsylvania","West Virginia","Colorado","Indiana"],
+  2012: ["Maine","Nevada","Ohio","Wisconsin","Pennsylvania","North Dakota"],
+  2008: ["Maine","Ohio","Pennsylvania","Nevada","Indiana","Iowa"],
+  2004: ["Florida","Maine","Nebraska","Oregon","Arkansas","Colorado"],
+  2000: ["Florida","Maine","Virginia","Washington","Nevada","Nebraska"],
+};
+
+// National House DEM seat share by year (approximate)
+const NATIONAL_DEM_SHARE: Record<number, number> = {
+  2024: 0.49, 2020: 0.51, 2016: 0.45, 2012: 0.46, 2008: 0.59, 2004: 0.47, 2000: 0.49,
+  1996: 0.47, 1992: 0.60, 1988: 0.60, 1984: 0.58, 1980: 0.56, 1976: 0.67, 1972: 0.56,
+  1968: 0.57, 1964: 0.68, 1960: 0.60, 1956: 0.53, 1952: 0.49, 1948: 0.60, 1944: 0.51,
+  1940: 0.61, 1936: 0.77, 1932: 0.72, 1928: 0.37, 1924: 0.42, 1920: 0.30, 1916: 0.49,
+};
+
+// Lean sets for senate/governor baseline (independent of presidential vote)
+const R_BASE = new Set(["Alabama","Alaska","Arkansas","Idaho","Indiana","Kansas","Kentucky","Louisiana","Mississippi","Missouri","Montana","Nebraska","North Dakota","Oklahoma","South Carolina","South Dakota","Tennessee","Texas","Utah","West Virginia","Wyoming"]);
+const D_BASE = new Set(["California","Connecticut","Delaware","Hawaii","Illinois","Maryland","Massachusetts","New Jersey","New York","Oregon","Rhode Island","Vermont","Washington"]);
+
 function buildYear(year: number): YearData {
   const el = ELECTIONS[year];
   if (!el) return { year, states: {} };
@@ -141,25 +175,44 @@ function buildYear(year: number): YearData {
   const prevEl = prevYear ? ELECTIONS[prevYear] : null;
   const winSet = new Set(el.winnerStates);
   const states: Record<string, StateData> = {};
+  const govOvr = GOV_OVERRIDES[year] || {};
+  const splits = new Set(SPLIT_SENATE_BY_YEAR[year] || []);
+  const demShare = NATIONAL_DEM_SHARE[year] || 0.5;
 
   for (const name of NAMES) {
     const admitted = STATE_ADMISSION[name] || 9999;
     if (admitted > year) continue;
-    const party = winSet.has(name) ? el.winner : el.loser;
+    
+    // Presidential
+    const presParty = winSet.has(name) ? el.winner : el.loser;
     const prevWinSet = prevEl ? new Set(prevEl.winnerStates) : null;
     const prevParty = prevWinSet ? (prevWinSet.has(name) ? prevEl!.winner : prevEl!.loser) : null;
-    const flipped = prevParty !== null && prevParty !== party;
+    const flipped = prevParty !== null && prevParty !== presParty;
 
-    // Approximate house/senate from era
+    // Senate (independent baseline: state lean + split overrides)
+    const senBase = year < 1856 ? presParty : R_BASE.has(name) ? "REP" : D_BASE.has(name) ? "DEM" : presParty;
+    const isSplit = splits.has(name);
+    const senOther = senBase === "DEM" ? "REP" : senBase === "REP" ? "DEM" : "REP";
+
+    // Governor (independent: state lean + overrides)
+    let govParty = year < 1856 ? presParty : R_BASE.has(name) ? "REP" : D_BASE.has(name) ? "DEM" : presParty;
+    if (govOvr[name]) govParty = govOvr[name];
+
+    // House (proportional based on national wave + state lean adjustment)
     const totalH = HOUSE[name] || Math.max(1, Math.floor((EV[name] || 3) - 2));
-    const demRatio = party === "DEM" || party === "DR" ? 0.6 : 0.35;
-    const dH = Math.round(totalH * demRatio);
+    let stateShare = demShare;
+    if (R_BASE.has(name)) stateShare = Math.max(0.1, demShare - 0.2);
+    else if (D_BASE.has(name)) stateShare = Math.min(0.9, demShare + 0.15);
+    // Add per-state variation using name hash
+    const hash = (name.charCodeAt(0) + name.length) % 10;
+    stateShare = Math.max(0, Math.min(1, stateShare + (hash - 5) * 0.02));
+    const dH = Math.round(totalH * stateShare);
 
     states[name] = {
-      president: { party, flipped },
-      senate: { split: false, party1: party, party2: party },
+      president: { party: presParty, flipped },
+      senate: { split: isSplit, party1: senBase, party2: isSplit ? senOther : senBase },
       house: { demReps: dH, repReps: totalH - dH, totalReps: totalH },
-      governor: { party },
+      governor: { party: govParty },
       electoralVotes: EV[name] || 3,
     };
   }
