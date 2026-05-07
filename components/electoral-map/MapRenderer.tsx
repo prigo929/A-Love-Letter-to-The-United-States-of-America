@@ -396,7 +396,7 @@ export function MapRenderer({
                   <line x1="0" y1="0" x2="0" y2="4" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" />
                 </pattern>
               </defs>
-              <g transform="translate(100, 75) scale(0.8)">
+              <g transform="translate(50, 80) scale(0.8)">
               {cartogram.map((cs) => {
                 const dimmed = hovered !== null && hovered !== cs.name;
                 return (
