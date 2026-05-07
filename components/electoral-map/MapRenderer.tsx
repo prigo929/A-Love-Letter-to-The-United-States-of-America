@@ -9,10 +9,71 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 function pc(p: string) { return PARTY_COLORS[p] || "#C9A84C"; }
 
 interface MapGeo { rsmKey: string; properties?: { name?: string }; }
-interface Tip { x: number; y: number; name: string; party: string; detail: string; }
+interface Tip { x: number; y: number; name: string; party: string | string[]; detail: string; }
 
 // ── CARTOGRAM CONSTANTS ───────────────────────────────────────────────────
-const SQ = 10, GAP = 2, CELL = 12;
+const SQ = 10, GAP = 1, CELL = 11;
+
+const STATE_SHAPES: Record<string, string[]> = {
+  "California": [
+    "  ##  ",
+    " ###  ",
+    " #### ",
+    " #### ",
+    "##### ",
+    "##### ",
+    "######",
+    "######",
+    "######",
+    " #####",
+    "  ####",
+    "   ## ",
+  ],
+  "Texas": [
+    "  ####  ",
+    " ###### ",
+    "########",
+    "########",
+    " ###### ",
+    "  ####  ",
+    "   ##   ",
+  ],
+  "Florida": [
+    "###### ",
+    "#######",
+    " ######",
+    "  #####",
+    "   ####",
+  ],
+  "New York": [
+    " ######",
+    "#######",
+    "#######",
+    "   ####",
+    "     ##",
+  ],
+  "Pennsylvania": [
+    "######",
+    "######",
+    " #####",
+  ],
+  "Illinois": [
+    " ####",
+    "#####",
+    "#####",
+    " ### ",
+  ]
+};
+
+function parseShape(shape: string[]): [number, number][] {
+  const coords: [number, number][] = [];
+  for (let r = 0; r < shape.length; r++) {
+    for (let c = 0; c < shape[r].length; c++) {
+      if (shape[r][c] === "#") coords.push([c, r]);
+    }
+  }
+  return coords;
+}
 
 const STATE_COLS: Record<string, number> = {
   California:7,Texas:7,Florida:7,"New York":6,Pennsylvania:5,Illinois:5,Ohio:4,
@@ -56,11 +117,11 @@ const ABBREV: Record<string, string> = {
 
 interface CSquare { x: number; y: number; color: string; state: string; idx: number; hasFlipHash: boolean; }
 interface CLabel { x: number; y: number; text: string; state: string; }
+interface CartoState { name: string; squares: CSquare[]; bbox: { x: number, y: number, w: number, h: number }; label: CLabel; }
 
-function buildCartogram(year: number): { squares: CSquare[]; labels: CLabel[] } {
+function buildCartogram(year: number): CartoState[] {
   const yd = ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0];
-  const squares: CSquare[] = [];
-  const labels: CLabel[] = [];
+  const statesArr: CartoState[] = [];
 
   for (const [name, [ax, ay]] of Object.entries(ANCHORS)) {
     const sd = yd.states[name];
@@ -79,20 +140,49 @@ function buildCartogram(year: number): { squares: CSquare[]; labels: CLabel[] } 
     for (let i = 0; i < flip.houseFlipRep; i++) sqDefs.push({ color: pc("REP"), hasFlipHash: true });
     for (let i = 0; i < sd.house.repReps - flip.houseFlipRep; i++) sqDefs.push({ color: pc("REP"), hasFlipHash: false });
 
+    const squares: CSquare[] = [];
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxSqY = -Infinity;
+    
+    const shapeStrs = STATE_SHAPES[name];
+    let customCoords: [number, number][] | null = null;
+    if (shapeStrs) customCoords = parseShape(shapeStrs);
+
     for (let i = 0; i < total; i++) {
-      const col = i % cols;
-      const row = Math.floor(i / cols);
+      let col = i % cols;
+      let row = Math.floor(i / cols);
+      
+      if (customCoords) {
+        if (i < customCoords.length) {
+          col = customCoords[i][0];
+          row = customCoords[i][1];
+        } else {
+          // Fallback append for extra historical seats beyond modern shape
+          col = (i - customCoords.length) % cols;
+          row = shapeStrs.length + Math.floor((i - customCoords.length) / cols);
+        }
+      }
+
       const x = ax + col * CELL;
       const y = ay + row * CELL;
+      if (x < minX) minX = x;
+      if (y < minY) minY = y;
+      if (x + SQ > maxX) maxX = x + SQ;
+      if (y + SQ > maxSqY) maxSqY = y + SQ;
       if (y + SQ > maxY) maxY = y + SQ;
 
       squares.push({ x, y, color: sqDefs[i].color, state: name, idx: i, hasFlipHash: sqDefs[i].hasFlipHash });
     }
 
-    const blockW = Math.min(total, cols) * CELL - GAP;
-    labels.push({ x: ax + blockW / 2, y: maxY + 12, text: ABBREV[name] || name, state: name });
+    const w = maxX - minX;
+    const h = maxSqY - minY;
+    statesArr.push({
+      name,
+      squares,
+      bbox: { x: minX - 2, y: minY - 2, w: w + 4, h: h + 4 },
+      label: { x: minX + w / 2, y: maxY + 12, text: ABBREV[name] || name, state: name }
+    });
   }
-  return { squares, labels };
+  return statesArr;
 }
 
 // ── MAIN COMPONENT ────────────────────────────────────────────────────────
@@ -113,12 +203,12 @@ export function MapRenderer({
     setHovered(name);
     const admitted = STATE_ADMISSION[name];
     const admitStr = admitted ? ` · Est. ${admitted}` : "";
-    let party = "", detail = "";
+    let party: string | string[] = "", detail = "";
     if (viewMode === "President") {
       party = data.president.party;
       detail = (flip.presFlip ? "⟳ FLIP · " : "") + party + admitStr;
     } else if (viewMode === "Senate") {
-      party = data.senate.party1;
+      party = data.senate.split ? [data.senate.party1, data.senate.party2] : data.senate.party1;
       detail = ((flip.senFlip1 || flip.senFlip2) ? "⟳ FLIP · " : "") + (data.senate.split ? `${data.senate.party1}/${data.senate.party2}` : data.senate.party1) + admitStr;
     } else {
       party = data.governor.party;
@@ -252,36 +342,45 @@ export function MapRenderer({
                 </pattern>
               </defs>
               <g transform="translate(0, -20)">
-              {cartogram.squares.map((sq, i) => {
-                const dimmed = hovered !== null && hovered !== sq.state;
+              {cartogram.map((cs) => {
+                const dimmed = hovered !== null && hovered !== cs.name;
                 return (
-                  <g key={`${sq.state}-${sq.idx}`}>
-                    <motion.rect
-                      x={sq.x} y={sq.y} width={SQ} height={SQ} rx={1}
-                      fill={sq.color}
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: dimmed ? 0.2 : 1 }}
-                      transition={{ scale: { duration: 0.35, delay: Math.min(i * 0.002, 0.7) }, opacity: { duration: 0.12 } }}
-                      style={{ cursor: "pointer", transformOrigin: `${sq.x + SQ / 2}px ${sq.y + SQ / 2}px` }}
-                      onMouseEnter={(e) => onSquareEnter(sq.state, e)}
-                      onMouseLeave={clearHover}
-                      onClick={() => onStateClick?.(sq.state)}
-                    />
-                    {sq.hasFlipHash && (
-                      <rect x={sq.x} y={sq.y} width={SQ} height={SQ} rx={1}
-                        fill="url(#flip-hash-sm)" style={{ pointerEvents: "none" }} />
-                    )}
+                  <g key={`state-${cs.name}`}
+                     onMouseEnter={(e) => onSquareEnter(cs.name, e)}
+                     onMouseLeave={clearHover}
+                     onClick={() => onStateClick?.(cs.name)}
+                     style={{ cursor: "pointer" }}>
+                    
+                    {/* Invisible Hover Hitbox */}
+                    <rect x={cs.bbox.x} y={cs.bbox.y} width={cs.bbox.w} height={cs.bbox.h} fill="transparent" />
+
+                    {cs.squares.map((sq, i) => (
+                      <g key={`sq-${sq.idx}`}>
+                        <motion.rect
+                          x={sq.x} y={sq.y} width={SQ} height={SQ} rx={1}
+                          fill={sq.color}
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: dimmed ? 0.2 : 1 }}
+                          transition={{ scale: { duration: 0.35, delay: Math.min(i * 0.002, 0.7) }, opacity: { duration: 0.12 } }}
+                          style={{ pointerEvents: "none", transformOrigin: `${sq.x + SQ / 2}px ${sq.y + SQ / 2}px` }}
+                        />
+                        {sq.hasFlipHash && (
+                          <rect x={sq.x} y={sq.y} width={SQ} height={SQ} rx={1}
+                            fill="url(#flip-hash-sm)" style={{ pointerEvents: "none", opacity: dimmed ? 0.2 : 1 }} />
+                        )}
+                      </g>
+                    ))}
+                    
+                    {/* Label */}
+                    <text x={cs.label.x} y={cs.label.y} textAnchor="middle"
+                      fill={hovered === cs.name ? "#F5F0E8" : "#666"}
+                      fontSize="9" fontFamily="Inter, system-ui, sans-serif" fontWeight="600"
+                      style={{ transition: "fill 0.15s", pointerEvents: "none", userSelect: "none", opacity: dimmed ? 0.2 : 1 }}>
+                      {cs.label.text}
+                    </text>
                   </g>
                 );
               })}
-              {cartogram.labels.map((lb) => (
-                <text key={`lbl-${lb.state}`} x={lb.x} y={lb.y} textAnchor="middle"
-                  fill={hovered === lb.state ? "#F5F0E8" : "#666"}
-                  fontSize="9" fontFamily="Inter, system-ui, sans-serif" fontWeight="600"
-                  style={{ transition: "fill 0.15s", pointerEvents: "none", userSelect: "none" }}>
-                  {lb.text}
-                </text>
-              ))}
               </g>
             </svg>
           </motion.div>
@@ -297,8 +396,17 @@ export function MapRenderer({
             <p className="mt-0.5 font-mono text-[10px] text-[#8A8780]">{tip.detail}</p>
             {tip.party && (
               <div className="mt-1 flex items-center gap-1.5">
-                <div className="h-[6px] w-[6px]" style={{ background: pc(tip.party) }} />
-                <span className="font-mono text-[8px] uppercase tracking-widest text-[#6B6860]">{tip.party}</span>
+                {Array.isArray(tip.party) ? tip.party.map((p, i) => (
+                  <div key={i} className="flex items-center gap-1">
+                    <div className="h-[6px] w-[6px]" style={{ background: pc(p) }} />
+                    <span className="font-mono text-[8px] uppercase tracking-widest text-[#6B6860]">{p}</span>
+                  </div>
+                )) : (
+                  <div className="flex items-center gap-1">
+                    <div className="h-[6px] w-[6px]" style={{ background: pc(tip.party) }} />
+                    <span className="font-mono text-[8px] uppercase tracking-widest text-[#6B6860]">{tip.party}</span>
+                  </div>
+                )}
               </div>
             )}
           </div>
