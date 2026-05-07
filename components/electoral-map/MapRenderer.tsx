@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback, useMemo } from "react";
+import { memo, useMemo, useCallback, useState, useEffect } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { motion, AnimatePresence } from "framer-motion";
 import type { ViewMode } from "@/lib/data/electoral-data";
@@ -185,15 +185,239 @@ function buildCartogram(year: number): CartoState[] {
   return statesArr;
 }
 
+// ── SUB-COMPONENTS ──────────────────────────────────────────────────────
+
+const HouseStateGroup = memo(({ cs, isHovered, isDimmed, onMouseEnter, onMouseLeave, onClick }: { 
+  cs: any, isHovered: boolean, isDimmed: boolean, 
+  onMouseEnter: (e: React.MouseEvent) => void, 
+  onMouseLeave: () => void, 
+  onClick: () => void 
+}) => {
+  return (
+    <g onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={onClick} style={{ cursor: "pointer" }}>
+      <rect x={cs.bbox.x} y={cs.bbox.y} width={cs.bbox.w} height={cs.bbox.h} fill="transparent" />
+      {cs.squares.map((sq: any) => (
+        <g key={`sq-${sq.idx}`}>
+          <rect x={sq.x} y={sq.y} width={SQ} height={SQ} rx={1} fill={sq.color} 
+            style={{ pointerEvents: "none", opacity: isDimmed ? 0.2 : 1, transition: "opacity 0.12s" }} />
+          {sq.hasFlipHash && (
+            <rect x={sq.x} y={sq.y} width={SQ} height={SQ} rx={1} fill="url(#flip-hash-sm)" 
+              style={{ pointerEvents: "none", opacity: isDimmed ? 0.2 : 1 }} />
+          )}
+        </g>
+      ))}
+      <text x={cs.label.x} y={cs.label.y} textAnchor="middle" 
+        fill={isHovered ? "#F5F0E8" : "#666"} fontSize="9" fontFamily="Inter, sans-serif" fontWeight="600" 
+        style={{ transition: "fill 0.15s", pointerEvents: "none", userSelect: "none", opacity: isDimmed ? 0.2 : 1 }}>
+        {cs.label.text}
+      </text>
+    </g>
+  );
+});
+
 // ── MAIN COMPONENT ────────────────────────────────────────────────────────
 
-export function MapRenderer({
-  year, viewMode, onStateClick,
-}: { year: number; viewMode: ViewMode; onStateClick?: (n: string) => void; }) {
+const HouseCartogram = memo(({ cartogram, hovered, onSquareEnter, clearHover, onStateClick }: {
+  cartogram: any[] | null,
+  hovered: string | null,
+  onSquareEnter: (name: string, e: React.MouseEvent) => void,
+  clearHover: () => void,
+  onStateClick?: (n: string) => void
+}) => {
+  if (!cartogram) return null;
+  return (
+    <motion.div key="carto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
+      <svg viewBox="0 0 1000 600" className="w-full" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <pattern id="flip-hash-sm" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="4" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" />
+          </pattern>
+        </defs>
+        <g transform="translate(50, 80) scale(0.8)">
+          {cartogram.map((cs) => (
+            <HouseStateGroup
+              key={`state-${cs.name}`}
+              cs={cs}
+              isHovered={hovered === cs.name}
+              isDimmed={hovered !== null && hovered !== cs.name}
+              onMouseEnter={(e: React.MouseEvent) => onSquareEnter(cs.name, e)}
+              onMouseLeave={clearHover}
+              onClick={() => onStateClick?.(cs.name)}
+            />
+          ))}
+        </g>
+      </svg>
+    </motion.div>
+  );
+});
+
+const GeographicMap = memo(({ year, viewMode, hovered, onGeoEnter, clearHover, onStateClick }: {
+  year: number,
+  viewMode: ViewMode,
+  hovered: string | null,
+  onGeoEnter: (geo: any, e: React.MouseEvent<SVGPathElement>) => void,
+  clearHover: () => void,
+  onStateClick?: (n: string) => void
+}) => {
+  const yd = ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0];
+  const isOffYear = viewMode === "President" && yd.demPopVote === 0;
+
+  return (
+    <motion.div key="geo" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
+      <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1000 }} style={{ width: "100%", height: "auto" }} width={1000} height={600} viewBox="0 0 1000 600">
+        <defs>
+          <pattern id="split-dr" width="1" height="1" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
+            <polygon points="0,0 1,0 0,1" fill={pc("DEM")} /><polygon points="1,0 1,1 0,1" fill={pc("REP")} />
+          </pattern>
+          <pattern id="split-rd" width="1" height="1" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
+            <polygon points="0,0 1,0 0,1" fill={pc("REP")} /><polygon points="1,0 1,1 0,1" fill={pc("DEM")} />
+          </pattern>
+          <pattern id="flip-hash" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(255,255,255,0.22)" strokeWidth="2.5" />
+          </pattern>
+          <clipPath id="clip-half-1" clipPathUnits="objectBoundingBox">
+            <polygon points="0,0 1,0 0,1" />
+          </clipPath>
+          <clipPath id="clip-half-2" clipPathUnits="objectBoundingBox">
+            <polygon points="1,0 1,1 0,1" />
+          </clipPath>
+        </defs>
+        <Geographies geography={geoUrl}>
+          {({ geographies }: { geographies: MapGeo[] }) => {
+            const elements: React.ReactNode[] = [];
+            geographies.forEach((geo) => {
+              const name = geo.properties?.name ?? "";
+              const data = getStateData(year, name);
+              const flip = getFlipData(year, name);
+              const isTerritory = (STATE_ADMISSION[name] || 1787) > year;
+              const isHov = hovered === name;
+              const isActive = viewMode === "Senate" ? data.senate.active : viewMode === "Governor" ? data.governor.active : true;
+              const dimmed = hovered && !isHov;
+              
+              let targetOpacity = 1;
+              if (dimmed) targetOpacity = 0.25;
+              else if (!isTerritory && !isActive) targetOpacity = 0.2;
+
+              let fill = "#1A1F3A", stroke = "#080B12", sw = 0.5, dash = "";
+              if (isTerritory) { fill = "none"; stroke = "rgba(201,168,76,0.12)"; dash = "2,2"; }
+              else {
+                if (!isActive) { dash = "3,2"; stroke = "rgba(255,255,255,0.1)"; }
+                if (viewMode === "President") {
+                  fill = pc(data.president.party);
+                  if (isOffYear) { targetOpacity = 0.1; dash = "2,2"; }
+                }
+                else if (viewMode === "Senate") fill = data.senate.split ? (data.senate.party1 === "DEM" ? "url(#split-dr)" : "url(#split-rd)") : pc(data.senate.party1);
+                else fill = pc(data.governor.party);
+              }
+
+              let isFlipped = false;
+              if (!isTerritory) {
+                if (viewMode === "President" && flip.presFlip) isFlipped = true;
+                else if (viewMode === "Governor" && flip.govFlip) isFlipped = true;
+              }
+
+              let isVacant1 = false;
+              let isVacant2 = false;
+              let isVacantBoth = false;
+              if (viewMode === "Senate" && !isTerritory) {
+                isVacant1 = data.senate.party1 === "VACANT";
+                isVacant2 = data.senate.party2 === "VACANT";
+                isVacantBoth = isVacant1 && isVacant2;
+              }
+
+              elements.push(
+                <Geography key={geo.rsmKey} geography={geo}
+                  onMouseEnter={(evt: React.MouseEvent<SVGPathElement>) => onGeoEnter(geo, evt)}
+                  onMouseLeave={clearHover} onClick={() => onStateClick?.(name)}
+                  style={{
+                    default: { fill, stroke: isHov ? "#FFF" : (isVacantBoth ? "rgba(255,255,255,0.2)" : stroke), strokeWidth: isHov ? 1.2 : sw, strokeDasharray: isVacantBoth ? "4 4" : dash, outline: "none", opacity: targetOpacity, transition: "opacity 0.2s, fill 0.5s, stroke 0.15s" },
+                    hover: { fill, stroke: "#FFF", strokeWidth: 1.2, strokeDasharray: dash, outline: "none", cursor: "pointer", opacity: 1 },
+                    pressed: { fill, outline: "none" },
+                  }}
+                />
+              );
+
+              if (!isTerritory && viewMode === "Senate" && !isVacantBoth) {
+                if (isVacant1) {
+                  elements.push(
+                    <Geography key={`${geo.rsmKey}-vacant-1`} geography={geo}
+                      style={{
+                        default: { fill: "none", clipPath: "url(#clip-half-1)", stroke: "rgba(255,255,255,0.2)", strokeDasharray: "4 4", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
+                        hover: { fill: "none", clipPath: "url(#clip-half-1)", stroke: "rgba(255,255,255,0.2)", strokeDasharray: "4 4", outline: "none", pointerEvents: "none" as const },
+                        pressed: { fill: "none", clipPath: "url(#clip-half-1)", outline: "none" },
+                      }}
+                      tabIndex={-1}
+                    />
+                  );
+                }
+                if (isVacant2) {
+                  elements.push(
+                    <Geography key={`${geo.rsmKey}-vacant-2`} geography={geo}
+                      style={{
+                        default: { fill: "none", clipPath: "url(#clip-half-2)", stroke: "rgba(255,255,255,0.2)", strokeDasharray: "4 4", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
+                        hover: { fill: "none", clipPath: "url(#clip-half-2)", stroke: "rgba(255,255,255,0.2)", strokeDasharray: "4 4", outline: "none", pointerEvents: "none" as const },
+                        pressed: { fill: "none", clipPath: "url(#clip-half-2)", outline: "none" },
+                      }}
+                      tabIndex={-1}
+                    />
+                  );
+                }
+              }
+
+              if (!isTerritory && viewMode === "Senate") {
+                if (flip.senFlip1) {
+                  elements.push(
+                    <Geography key={`${geo.rsmKey}-flip-1`} geography={geo}
+                      style={{
+                        default: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-1)", stroke: "none", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
+                        hover: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-1)", stroke: "none", outline: "none", pointerEvents: "none" as const },
+                        pressed: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-1)", outline: "none" },
+                      }}
+                      tabIndex={-1}
+                    />
+                  );
+                }
+                if (flip.senFlip2) {
+                  elements.push(
+                    <Geography key={`${geo.rsmKey}-flip-2`} geography={geo}
+                      style={{
+                        default: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-2)", stroke: "none", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
+                        hover: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-2)", stroke: "none", outline: "none", pointerEvents: "none" as const },
+                        pressed: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-2)", outline: "none" },
+                      }}
+                      tabIndex={-1}
+                    />
+                  );
+                }
+              } else if (isFlipped) {
+                elements.push(
+                  <Geography key={`${geo.rsmKey}-flip`} geography={geo}
+                    style={{
+                      default: { fill: "url(#flip-hash)", stroke: "none", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
+                      hover: { fill: "url(#flip-hash)", stroke: "none", outline: "none", pointerEvents: "none" as const },
+                      pressed: { fill: "url(#flip-hash)", outline: "none" },
+                    }}
+                    tabIndex={-1}
+                  />
+                );
+              }
+            });
+            return <>{elements}</>;
+          }}
+        </Geographies>
+      </ComposableMap>
+    </motion.div>
+  );
+});
+
+// ── MAIN COMPONENT ────────────────────────────────────────────────────────
+
+export function MapRenderer({ year, viewMode, onStateClick, isRo }: { year: number; viewMode: ViewMode; onStateClick?: (n: string) => void; isRo?: boolean; }) {
   const [tip, setTip] = useState<Tip | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
   const isHouse = viewMode === "House";
-
+  const yd = useMemo(() => ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0], [year]);
+  const isOffYear = viewMode === "President" && yd.demPopVote === 0;
   const cartogram = useMemo(() => isHouse ? buildCartogram(year) : null, [year, isHouse]);
 
   const onGeoEnter = useCallback((geo: MapGeo, evt: React.MouseEvent<SVGPathElement>) => {
@@ -233,209 +457,24 @@ export function MapRenderer({
 
   return (
     <div className="relative w-full" onMouseMove={(e) => setTip(p => p ? { ...p, x: e.clientX, y: e.clientY } : null)}>
-
-      {/* ── Geographic Map (President / Senate / Governor) ──────────────── */}
-      <AnimatePresence>
-        {!isHouse && (
-          <motion.div key="geo" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-            <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1000 }} style={{ width: "100%", height: "auto" }} width={1000} height={600} viewBox="0 0 1000 600">
-              <defs>
-                {/* Senate diagonal split */}
-                <pattern id="split-dr" width="1" height="1" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
-                  <polygon points="0,0 1,0 0,1" fill={pc("DEM")} /><polygon points="1,0 1,1 0,1" fill={pc("REP")} />
-                </pattern>
-                <pattern id="split-rd" width="1" height="1" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
-                  <polygon points="0,0 1,0 0,1" fill={pc("REP")} /><polygon points="1,0 1,1 0,1" fill={pc("DEM")} />
-                </pattern>
-                <pattern id="flip-hash" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                  <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(255,255,255,0.22)" strokeWidth="2.5" />
-                </pattern>
-                <clipPath id="clip-half-1" clipPathUnits="objectBoundingBox">
-                  <polygon points="0,0 1,0 0,1" />
-                </clipPath>
-                <clipPath id="clip-half-2" clipPathUnits="objectBoundingBox">
-                  <polygon points="1,0 1,1 0,1" />
-                </clipPath>
-              </defs>
-              <Geographies geography={geoUrl}>
-                {({ geographies }: { geographies: MapGeo[] }) => {
-                  const elements: React.ReactNode[] = [];
-                  geographies.forEach((geo) => {
-                    const name = geo.properties?.name ?? "";
-                    const data = getStateData(year, name);
-                    const flip = getFlipData(year, name);
-                    const isTerritory = (STATE_ADMISSION[name] || 1787) > year;
-                    const isHov = hovered === name;
-                    const isActive = viewMode === "Senate" ? data.senate.active : viewMode === "Governor" ? data.governor.active : true;
-                    const dimmed = hovered && !isHov;
-                    
-                    let targetOpacity = 1;
-                    if (dimmed) targetOpacity = 0.25;
-                    else if (!isTerritory && !isActive) targetOpacity = 0.2;
-
-                    let fill = "#1A1F3A", stroke = "#080B12", sw = 0.5, dash = "";
-                    if (isTerritory) { fill = "none"; stroke = "rgba(201,168,76,0.12)"; dash = "2,2"; }
-                    else {
-                      if (!isActive) { dash = "3,2"; stroke = "rgba(255,255,255,0.1)"; }
-                      if (viewMode === "President") fill = pc(data.president.party);
-                      else if (viewMode === "Senate") fill = data.senate.split ? (data.senate.party1 === "DEM" ? "url(#split-dr)" : "url(#split-rd)") : pc(data.senate.party1);
-                      else fill = pc(data.governor.party);
-                    }
-
-                    // Determine if this state is flipped in the current view
-                    let isFlipped = false;
-                    if (!isTerritory) {
-                      if (viewMode === "President" && flip.presFlip) isFlipped = true;
-                      else if (viewMode === "Governor" && flip.govFlip) isFlipped = true;
-                    }
-
-                    let isVacant1 = false;
-                    let isVacant2 = false;
-                    let isVacantBoth = false;
-                    if (viewMode === "Senate" && !isTerritory) {
-                      isVacant1 = data.senate.party1 === "VACANT";
-                      isVacant2 = data.senate.party2 === "VACANT";
-                      isVacantBoth = isVacant1 && isVacant2;
-                    }
-
-                    // Base layer
-                    elements.push(
-                      <Geography key={geo.rsmKey} geography={geo}
-                        onMouseEnter={(evt: React.MouseEvent<SVGPathElement>) => onGeoEnter(geo, evt)}
-                        onMouseLeave={clearHover} onClick={() => onStateClick?.(name)}
-                        style={{
-                          default: { fill, stroke: isHov ? "#FFF" : (isVacantBoth ? "rgba(255,255,255,0.2)" : stroke), strokeWidth: isHov ? 1.2 : sw, strokeDasharray: isVacantBoth ? "4 4" : dash, outline: "none", opacity: targetOpacity, transition: "opacity 0.2s, fill 0.5s, stroke 0.15s" },
-                          hover: { fill, stroke: "#FFF", strokeWidth: 1.2, strokeDasharray: dash, outline: "none", cursor: "pointer", opacity: 1 },
-                          pressed: { fill, outline: "none" },
-                        }}
-                      />
-                    );
-
-                    // Vacant overrides (rendered on top)
-                    if (!isTerritory && viewMode === "Senate" && !isVacantBoth) {
-                      if (isVacant1) {
-                         elements.push(
-                          <Geography key={`${geo.rsmKey}-vacant-1`} geography={geo}
-                            style={{
-                              default: { fill: "none", clipPath: "url(#clip-half-1)", stroke: "rgba(255,255,255,0.2)", strokeDasharray: "4 4", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
-                              hover: { fill: "none", clipPath: "url(#clip-half-1)", stroke: "rgba(255,255,255,0.2)", strokeDasharray: "4 4", outline: "none", pointerEvents: "none" as const },
-                              pressed: { fill: "none", clipPath: "url(#clip-half-1)", outline: "none" },
-                            }}
-                            tabIndex={-1}
-                          />
-                        );
-                      }
-                      if (isVacant2) {
-                         elements.push(
-                          <Geography key={`${geo.rsmKey}-vacant-2`} geography={geo}
-                            style={{
-                              default: { fill: "none", clipPath: "url(#clip-half-2)", stroke: "rgba(255,255,255,0.2)", strokeDasharray: "4 4", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
-                              hover: { fill: "none", clipPath: "url(#clip-half-2)", stroke: "rgba(255,255,255,0.2)", strokeDasharray: "4 4", outline: "none", pointerEvents: "none" as const },
-                              pressed: { fill: "none", clipPath: "url(#clip-half-2)", outline: "none" },
-                            }}
-                            tabIndex={-1}
-                          />
-                        );
-                      }
-                    }
-
-                    // Flip hash overlay (rendered on top)
-                    if (!isTerritory && viewMode === "Senate") {
-                      if (flip.senFlip1) {
-                        elements.push(
-                          <Geography key={`${geo.rsmKey}-flip-1`} geography={geo}
-                            style={{
-                              default: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-1)", stroke: "none", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
-                              hover: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-1)", stroke: "none", outline: "none", pointerEvents: "none" as const },
-                              pressed: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-1)", outline: "none" },
-                            }}
-                            tabIndex={-1}
-                          />
-                        );
-                      }
-                      if (flip.senFlip2) {
-                        elements.push(
-                          <Geography key={`${geo.rsmKey}-flip-2`} geography={geo}
-                            style={{
-                              default: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-2)", stroke: "none", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
-                              hover: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-2)", stroke: "none", outline: "none", pointerEvents: "none" as const },
-                              pressed: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-2)", outline: "none" },
-                            }}
-                            tabIndex={-1}
-                          />
-                        );
-                      }
-                    } else if (isFlipped) {
-                      elements.push(
-                        <Geography key={`${geo.rsmKey}-flip`} geography={geo}
-                          style={{
-                            default: { fill: "url(#flip-hash)", stroke: "none", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
-                            hover: { fill: "url(#flip-hash)", stroke: "none", outline: "none", pointerEvents: "none" as const },
-                            pressed: { fill: "url(#flip-hash)", outline: "none" },
-                          }}
-                          tabIndex={-1}
-                        />
-                      );
-                    }
-                  });
-                  return <>{elements}</>;
-                }}
-              </Geographies>
-            </ComposableMap>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* ── NYT Proportional Square Cartogram (House) ──────────────────── */}
-      <AnimatePresence mode="wait">
-        {isHouse && cartogram && (
-          <motion.div key="carto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
-            <svg viewBox="0 0 1000 600" className="w-full" preserveAspectRatio="xMidYMid meet">
-              <defs>
-                <pattern id="flip-hash-sm" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                  <line x1="0" y1="0" x2="0" y2="4" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" />
-                </pattern>
-              </defs>
-              <g transform="translate(50, 80) scale(0.8)">
-              {cartogram.map((cs) => {
-                const dimmed = hovered !== null && hovered !== cs.name;
-                return (
-                  <g key={`state-${cs.name}`}
-                     onMouseEnter={(e) => onSquareEnter(cs.name, e)}
-                     onMouseLeave={clearHover}
-                     onClick={() => onStateClick?.(cs.name)}
-                     style={{ cursor: "pointer" }}>
-                    
-                    {/* Invisible Hover Hitbox */}
-                    <rect x={cs.bbox.x} y={cs.bbox.y} width={cs.bbox.w} height={cs.bbox.h} fill="transparent" />
-
-                    {cs.squares.map((sq, i) => (
-                      <g key={`sq-${sq.idx}`}>
-                        <rect
-                          x={sq.x} y={sq.y} width={SQ} height={SQ} rx={1}
-                          fill={sq.color}
-                          style={{ pointerEvents: "none", opacity: dimmed ? 0.2 : 1, transition: "opacity 0.12s" }}
-                        />
-                        {sq.hasFlipHash && (
-                          <rect x={sq.x} y={sq.y} width={SQ} height={SQ} rx={1}
-                            fill="url(#flip-hash-sm)" style={{ pointerEvents: "none", opacity: dimmed ? 0.2 : 1 }} />
-                        )}
-                      </g>
-                    ))}
-                    
-                    {/* Label */}
-                    <text x={cs.label.x} y={cs.label.y} textAnchor="middle"
-                      fill={hovered === cs.name ? "#F5F0E8" : "#666"}
-                      fontSize="9" fontFamily="Inter, system-ui, sans-serif" fontWeight="600"
-                      style={{ transition: "fill 0.15s", pointerEvents: "none", userSelect: "none", opacity: dimmed ? 0.2 : 1 }}>
-                      {cs.label.text}
-                    </text>
-                  </g>
-                );
-              })}
-              </g>
-            </svg>
-          </motion.div>
+      <AnimatePresence initial={false}>
+        {!isHouse ? (
+          <GeographicMap
+            year={year}
+            viewMode={viewMode}
+            hovered={hovered}
+            onGeoEnter={onGeoEnter}
+            clearHover={clearHover}
+            onStateClick={onStateClick}
+          />
+        ) : (
+          <HouseCartogram
+            cartogram={cartogram}
+            hovered={hovered}
+            onSquareEnter={onSquareEnter}
+            clearHover={clearHover}
+            onStateClick={onStateClick}
+          />
         )}
       </AnimatePresence>
 
@@ -461,6 +500,16 @@ export function MapRenderer({
                 )}
               </div>
             )}
+          </div>
+        </div>
+      )}
+      {/* Off-Year Overlay */}
+      {isOffYear && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
+          <div className="bg-[#080B12]/60 px-8 py-4 border border-[rgba(201,168,76,0.3)] backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+            <span className="font-mono text-[10px] md:text-[12px] uppercase tracking-[0.6em] text-[#C9A84C] font-black text-center block">
+              {isRo ? "AN INTERMEDIAR: FĂRĂ ALEGERI PREZIDENȚIALE" : "OFF-YEAR: NO PRESIDENTIAL ELECTION"}
+            </span>
           </div>
         </div>
       )}

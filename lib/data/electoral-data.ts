@@ -15,6 +15,7 @@ export interface YearData {
   repPopVote: number;
   totalPopVote: number;
   thirdPartyCandidates?: Record<string, string>;
+  unopposed?: boolean;
 }
 
 // ── Party Color Registry ──────────────────────────────────────────────────
@@ -88,11 +89,11 @@ const NAMES = Object.keys(STATE_ADMISSION);
 // ── Historical Presidential Winners ───────────────────────────────────────
 // Format: { year: { winner_party, states_for_winner[] } }
 // States not listed go to the opponent party. Pre-admission states are excluded.
-type ElectionRecord = { winner: string; loser: string; winnerStates: string[]; demCandidate?: string; repCandidate?: string; anomalies?: Record<string, string>; thirdPartyCandidates?: Record<string, string>; note?: string };
+type ElectionRecord = { winner: string; loser: string; winnerStates: string[]; demCandidate?: string; repCandidate?: string; anomalies?: Record<string, string>; thirdPartyCandidates?: Record<string, string>; note?: string; unopposed?: boolean };
 
 const ELECTIONS: Record<number, ElectionRecord> = {
-  1789: { winner: "FED", loser: "FED", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1789), note: "Washington unopposed" },
-  1792: { winner: "FED", loser: "DR", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1792), note: "Washington unopposed" },
+  1789: { winner: "FED", loser: "NONE", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1789), unopposed: true, note: "Washington unopposed" },
+  1792: { winner: "FED", loser: "NONE", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1792), unopposed: true, note: "Washington unopposed" },
   1796: { winner: "FED", loser: "DR", winnerStates: ["Connecticut","Delaware","Massachusetts","New Hampshire","New Jersey","New York","Rhode Island","Vermont"], note: "Adams vs Jefferson" },
   1800: { winner: "DR", loser: "FED", winnerStates: ["Georgia","Kentucky","New York","North Carolina","Pennsylvania","South Carolina","Tennessee","Virginia"], note: "Jefferson revolution" },
   1804: { winner: "DR", loser: "FED", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1804 && n !== "Connecticut" && n !== "Delaware"), note: "Jefferson landslide" },
@@ -212,8 +213,8 @@ export const PRESIDENTIAL_DATA: Record<number, { dem: string, rep: string, demV:
   1804: { dem: "Thomas Jefferson", rep: "Charles C. Pinckney", demV: 104110, repV: 38919, totV: 143029 },
   1800: { dem: "Thomas Jefferson", rep: "John Adams", demV: 41330, repV: 25952, totV: 67282 },
   1796: { dem: "Thomas Jefferson", rep: "John Adams", demV: 31115, repV: 35726, totV: 66841 },
-  1792: { dem: "George Clinton", rep: "George Washington", demV: 0, repV: 28579, totV: 28579 },
-  1789: { dem: "John Adams", rep: "George Washington", demV: 0, repV: 43782, totV: 43782 },
+  1792: { dem: "Unopposed", rep: "G. Washington", demV: 0, repV: 28579, totV: 28579 },
+  1789: { dem: "Unopposed", rep: "G. Washington", demV: 0, repV: 43782, totV: 43782 },
 };
 
 // ── Independent Senate/Governor/House data ────────────────────────────────
@@ -241,10 +242,15 @@ const SPLIT_SENATE_BY_YEAR: Record<number, string[]> = {
 
 // National House DEM seat share by year (approximate)
 const NATIONAL_DEM_SHARE: Record<number, number> = {
-  2024: 0.49, 2020: 0.51, 2016: 0.45, 2012: 0.46, 2008: 0.59, 2004: 0.47, 2000: 0.49,
-  1996: 0.47, 1992: 0.60, 1988: 0.60, 1984: 0.58, 1980: 0.56, 1976: 0.67, 1972: 0.56,
-  1968: 0.57, 1964: 0.68, 1960: 0.60, 1956: 0.53, 1952: 0.49, 1948: 0.60, 1944: 0.51,
-  1940: 0.61, 1936: 0.77, 1932: 0.72, 1928: 0.37, 1924: 0.42, 1920: 0.30, 1916: 0.49,
+  2024: 0.49, 2022: 0.48, 2020: 0.51, 2018: 0.53, 2016: 0.45, 2014: 0.46, 2012: 0.46, 2010: 0.45, 2008: 0.59, 
+  2006: 0.54, 2004: 0.47, 2002: 0.48, 2000: 0.49, 1998: 0.49, 1996: 0.47, 1994: 0.46, 1992: 0.60, 
+  1990: 0.53, 1988: 0.60, 1986: 0.55, 1984: 0.58, 1982: 0.57, 1980: 0.56, 1978: 0.55, 1976: 0.67, 
+  1974: 0.59, 1972: 0.56, 1970: 0.55, 1968: 0.57, 1966: 0.52, 1964: 0.68, 1962: 0.53, 1960: 0.60,
+  1958: 0.64, 1956: 0.53, 1954: 0.53, 1952: 0.49, 1950: 0.54, 1948: 0.60, 1946: 0.43, 1944: 0.51,
+  1942: 0.51, 1940: 0.61, 1938: 0.60, 1936: 0.77, 1934: 0.74, 1932: 0.72, 1930: 0.50, 1928: 0.37,
+  1926: 0.45, 1924: 0.42, 1922: 0.48, 1920: 0.30, 1918: 0.44, 1916: 0.49, 1914: 0.53, 1912: 0.66, 1910: 0.52,
+  1908: 0.39, 1906: 0.51, 1904: 0.35, 1902: 0.48, 1900: 0.45, 1898: 0.45, 1896: 0.35, 1894: 0.30, 1892: 0.62, 1890: 0.71,
+  1888: 0.48, 1886: 0.53, 1884: 0.56, 1882: 0.61, 1880: 0.45,
 };
 
 // Lean sets for senate/governor baseline (independent of presidential vote)
@@ -266,18 +272,31 @@ const GOV_PRES_YEAR_STATES = new Set([
 ]);
 
 function isGovernorActive(year: number, state: string): boolean {
+  if (state === "New Hampshire" || state === "Vermont") return true;
   if (year < 1920) return (state.charCodeAt(0) + year) % 2 === 0;
-  return GOV_PRES_YEAR_STATES.has(state);
+  const isPresYear = year % 4 === 0;
+  if (isPresYear) return GOV_PRES_YEAR_STATES.has(state);
+  // Midterm years (most governors)
+  return !GOV_PRES_YEAR_STATES.has(state) && (year % 2 === 0) && !["New Jersey", "Virginia"].includes(state);
 }
 
 function buildYear(year: number): YearData {
   const el = ELECTIONS[year];
-  const pData = PRESIDENTIAL_DATA[year] || { dem: "Dem. Candidate", rep: "Rep. Candidate", demV: 45000000, repV: 45500000, totV: 95000000 };
-  const fallback: YearData = { year, states: {}, demCandidate: pData.dem, repCandidate: pData.rep, demPopVote: pData.demV, repPopVote: pData.repV, totalPopVote: pData.totV, thirdPartyCandidates: el?.thirdPartyCandidates };
-  if (!el) return fallback;
-  const prevYear = Object.keys(ELECTIONS).map(Number).sort((a,b)=>a-b).filter(y=>y<year).pop();
-  const prevEl = prevYear ? ELECTIONS[prevYear] : null;
-  const winSet = new Set(el.winnerStates);
+  const pData = PRESIDENTIAL_DATA[year] || { dem: "Off-Year", rep: "Off-Year", demV: 0, repV: 0, totV: 0 };
+  const fallback: YearData = { 
+    year, states: {}, 
+    demCandidate: pData.dem, repCandidate: pData.rep, 
+    demPopVote: pData.demV, repPopVote: pData.repV, totalPopVote: pData.totV, 
+    thirdPartyCandidates: el?.thirdPartyCandidates,
+    unopposed: el?.unopposed 
+  };
+  
+  // Use the most recent presidential election for the baseline Map fill if not an election year
+  const presElectionYears = Object.keys(ELECTIONS).map(Number).sort((a,b)=>a-b);
+  const lastPresYear = presElectionYears.filter(y => y <= year).pop() || 1789;
+  const activeEl = ELECTIONS[lastPresYear];
+  const winSet = new Set(activeEl.winnerStates);
+
   const states: Record<string, StateData> = {};
   const govOvr = GOV_OVERRIDES[year] || {};
   const splits = new Set(SPLIT_SENATE_BY_YEAR[year] || []);
@@ -287,20 +306,15 @@ function buildYear(year: number): YearData {
     const admitted = STATE_ADMISSION[name] || 9999;
     if (admitted > year) continue;
     
-    // Presidential
-    let presParty = winSet.has(name) ? el.winner : el.loser;
+    // Presidential (if not an election year, this party will be used for the "dormant" state)
+    let presParty = winSet.has(name) ? activeEl.winner : activeEl.loser;
     let presCandidate: string | undefined = undefined;
-    if (el.anomalies && el.anomalies[name]) {
-      presParty = el.anomalies[name];
-      if (el.thirdPartyCandidates && el.thirdPartyCandidates[presParty]) {
-        presCandidate = el.thirdPartyCandidates[presParty];
-      }
-    } else {
-      presCandidate = presParty === "DEM" ? el.demCandidate || pData.dem : el.repCandidate || pData.rep;
+    if (activeEl.anomalies && activeEl.anomalies[name]) {
+      presParty = activeEl.anomalies[name];
     }
-    const prevWinSet = prevEl ? new Set(prevEl.winnerStates) : null;
-    const prevParty = prevWinSet ? (prevWinSet.has(name) ? prevEl!.winner : prevEl!.loser) : null;
-    const flipped = prevParty !== null && prevParty !== presParty;
+    // Set candidate to null if not an election year to trigger "OFF-YEAR" UI
+    if (!el) presCandidate = undefined; 
+    else presCandidate = presParty === "DEM" ? activeEl.demCandidate || pData.dem : activeEl.repCandidate || pData.rep;
 
     // Senate (independent baseline: state lean + split overrides)
     const senBase = year < 1856 ? presParty : R_BASE.has(name) ? "REP" : D_BASE.has(name) ? "DEM" : presParty;
@@ -316,13 +330,12 @@ function buildYear(year: number): YearData {
     let stateShare = demShare;
     if (R_BASE.has(name)) stateShare = Math.max(0.1, demShare - 0.2);
     else if (D_BASE.has(name)) stateShare = Math.min(0.9, demShare + 0.15);
-    // Add per-state variation using name hash
     const hash = (name.charCodeAt(0) + name.length) % 10;
     stateShare = Math.max(0, Math.min(1, stateShare + (hash - 5) * 0.02));
     const dH = Math.round(totalH * stateShare);
 
     states[name] = {
-      president: { party: presParty, candidate: presCandidate, flipped },
+      president: { party: presParty, candidate: presCandidate, flipped: false },
       senate: { split: isSplit, party1: senBase, party2: isSplit ? senOther : senBase, active: isSenateActive(year, name) },
       house: { demReps: dH, repReps: totalH - dH, totalReps: totalH },
       governor: { party: govParty, active: isGovernorActive(year, name) },
@@ -340,7 +353,7 @@ function buildYear(year: number): YearData {
   };
 }
 
-export const ELECTORAL_HISTORY: YearData[] = Object.keys(ELECTIONS).map(Number).sort((a,b)=>a-b).map(buildYear);
+export const ELECTORAL_HISTORY: YearData[] = Array.from({ length: (2024 - 1788) / 2 + 1 }, (_, i) => 1788 + i * 2).filter(y => y >= 1788).map(buildYear);
 
 export function getStateData(year: number, stateName: string): StateData {
   let closest = ELECTORAL_HISTORY[0];
