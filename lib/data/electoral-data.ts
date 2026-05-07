@@ -359,7 +359,9 @@ function buildYear(year: number): YearData {
     repCandidate: pData.rep, 
     demPopVote: pData.demV, 
     repPopVote: pData.repV, 
-    totalPopVote: pData.totV
+    totalPopVote: pData.totV,
+    unopposed: el?.unopposed,
+    thirdPartyCandidates: el?.thirdPartyCandidates
   };
 }
 
