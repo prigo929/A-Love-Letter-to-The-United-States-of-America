@@ -38,7 +38,9 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
   const repVotes = tally["REP"] || 0;
   const otherVotes = Object.entries(tally).filter(([p]) => p !== "DEM" && p !== "REP").reduce((s, [,v]) => s + v, 0);
 
-  const thresholdLabel = viewMode === "President" ? "270 TO WIN" : viewMode === "Senate" ? "50 FOR CONTROL" : viewMode === "House" ? "218 TO WIN" : "WINNER";
+  const thresholdLabel = isRo 
+    ? (viewMode === "President" ? "270 PENTRU VICTORIE" : viewMode === "Senate" ? "50 PENTRU CONTROL" : viewMode === "House" ? "218 PENTRU VICTORIE" : "CÂȘTIGĂTOR")
+    : (viewMode === "President" ? "270 TO WIN" : viewMode === "Senate" ? "50 FOR CONTROL" : viewMode === "House" ? "218 TO WIN" : "WINNER");
   
   const topParty = parties[0]?.[0] || "OTHER";
   const secondParty = parties[1]?.[0] || "OTHER";
@@ -74,9 +76,9 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
         }
       }
       const delta = currCount - prevCount;
-      if (delta > 0) netGainStr = `+${delta} net gain`;
-      else if (delta < 0) netGainStr = `${delta} net loss`;
-      else netGainStr = "No net change";
+      if (delta > 0) netGainStr = isRo ? `+${delta} câștig net` : `+${delta} net gain`;
+      else if (delta < 0) netGainStr = isRo ? `${delta} pierdere netă` : `${delta} net loss`;
+      else netGainStr = isRo ? "Fără schimbări nete" : "No net change";
     }
   }
 
@@ -171,22 +173,22 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
       {/* ── BOTTOM DATA BAR ───────────────────────────────────────────────────── */}
       {viewMode === "President" && (
         <div className="mt-1 flex justify-between font-mono text-[9px] text-[#8A8780]">
-          <span>{parties[0]?.[0] === "DEM" ? yd.demPopVote.toLocaleString() : parties[0]?.[0] === "REP" ? yd.repPopVote.toLocaleString() : "---"} votes ({parties[0]?.[0] === "DEM" ? ((yd.demPopVote / yd.totalPopVote) * 100).toFixed(1) : parties[0]?.[0] === "REP" ? ((yd.repPopVote / yd.totalPopVote) * 100).toFixed(1) : "---"}%)</span>
-          <span>{(yd.totalPopVote / 1000000).toFixed(1)}M total votes</span>
-          <span>{parties[1]?.[0] === "DEM" ? yd.demPopVote.toLocaleString() : parties[1]?.[0] === "REP" ? yd.repPopVote.toLocaleString() : "---"} votes ({parties[1]?.[0] === "DEM" ? ((yd.demPopVote / yd.totalPopVote) * 100).toFixed(1) : parties[1]?.[0] === "REP" ? ((yd.repPopVote / yd.totalPopVote) * 100).toFixed(1) : "---"}%)</span>
+          <span>{parties[0]?.[0] === "DEM" ? yd.demPopVote.toLocaleString() : parties[0]?.[0] === "REP" ? yd.repPopVote.toLocaleString() : "---"} {isRo ? "voturi" : "votes"} ({parties[0]?.[0] === "DEM" ? ((yd.demPopVote / yd.totalPopVote) * 100).toFixed(1) : parties[0]?.[0] === "REP" ? ((yd.repPopVote / yd.totalPopVote) * 100).toFixed(1) : "---"}%)</span>
+          <span>{(yd.totalPopVote / 1000000).toFixed(1)}M {isRo ? "voturi în total" : "total votes"}</span>
+          <span>{parties[1]?.[0] === "DEM" ? yd.demPopVote.toLocaleString() : parties[1]?.[0] === "REP" ? yd.repPopVote.toLocaleString() : "---"} {isRo ? "voturi" : "votes"} ({parties[1]?.[0] === "DEM" ? ((yd.demPopVote / yd.totalPopVote) * 100).toFixed(1) : parties[1]?.[0] === "REP" ? ((yd.repPopVote / yd.totalPopVote) * 100).toFixed(1) : "---"}%)</span>
         </div>
       )}
       
       {viewMode === "Senate" && (
         <div className="mt-1 flex justify-between font-mono text-[9px] text-[#8A8780]">
-          <span>{notUpCount} seats not up for election</span>
+          <span>{notUpCount} {isRo ? "locuri nu se aleg acum" : "seats not up for election"}</span>
           <span style={{ color: PARTY_COLORS[topParty] }}>{netGainStr}</span>
         </div>
       )}
 
       {viewMode === "Governor" && (
         <div className="mt-1 flex justify-between font-mono text-[9px] text-[#8A8780]">
-          <span>{notUpCount} governors not up for election</span>
+          <span>{notUpCount} {isRo ? "guvernatori nu se aleg acum" : "governors not up for election"}</span>
           <span style={{ color: PARTY_COLORS[topParty] }}>{netGainStr}</span>
         </div>
       )}
