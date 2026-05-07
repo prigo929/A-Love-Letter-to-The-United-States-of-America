@@ -88,7 +88,7 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
 
       {/* Map */}
       <div className="relative overflow-hidden border border-[rgba(201,168,76,0.06)] bg-[#080B12] p-1.5 md:p-3">
-        <MapRenderer year={year} viewMode={view} onStateClick={(n) => setSel(n)} />
+        <MapRenderer year={year} viewMode={view} onStateClick={(n) => setSel(n)} isRo={isRo} />
         <AnimatePresence>
           {sel && <StateDetailPanel stateName={sel} year={year} onClose={() => setSel(null)} isRo={isRo} />}
         </AnimatePresence>
@@ -107,7 +107,7 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
       </div>
 
       {/* Timeline */}
-      <div className="mt-4"><TimelineScrubber currentYear={year} onYearChange={setYear} isRo={isRo} /></div>
+      <div className="mt-4"><TimelineScrubber currentYear={year} onYearChange={setYear} isRo={isRo} viewMode={view as ViewMode} /></div>
 
       {/* Stats */}
       <div className="mt-4 grid grid-cols-3 gap-1.5 md:grid-cols-5">
