@@ -417,7 +417,7 @@ export function MapRenderer({ year, viewMode, onStateClick, isRo }: { year: numb
   const [hovered, setHovered] = useState<string | null>(null);
   const isHouse = viewMode === "House";
   const yd = useMemo(() => ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0], [year]);
-  const isOffYear = viewMode === "President" && yd.demPopVote === 0;
+  const isOffYear = viewMode === "President" && yd.demPopVote === 0 && !yd.unopposed;
   const cartogram = useMemo(() => isHouse ? buildCartogram(year) : null, [year, isHouse]);
 
   const onGeoEnter = useCallback((geo: MapGeo, evt: React.MouseEvent<SVGPathElement>) => {
