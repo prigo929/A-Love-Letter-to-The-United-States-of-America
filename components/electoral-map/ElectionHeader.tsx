@@ -52,6 +52,14 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
   const topParty = parties[0]?.[0] || "OTHER";
   const secondParty = parties[1]?.[0] || "OTHER";
 
+  const getPopVote = (pCode: string) => {
+    if (viewMode !== "President" || isOffYear) return 0;
+    // Mapping historical slots to data fields
+    if (pCode === "DR" || pCode === "DEM" || pCode === "SDEM" || pCode === "DR-J") return yd.demPopVote;
+    if (pCode === "REP" || pCode === "FED" || pCode === "WHIG" || pCode === "NR" || pCode === "DR-A") return yd.repPopVote;
+    return 0;
+  };
+
   // Render dummy candidates/popular vote for NYT style
   // Since we don't have historical candidate lists wired in, we'll use placeholders styled properly
 
@@ -122,10 +130,9 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
                     ) : PARTY_FULL_NAMES[parties[0]?.[0]] || parties[0]?.[0]}
                     {!isOffYear && parties[0]?.[1] > (parties[1]?.[1] || 0) && <span className="ml-1 text-white">✓</span>}
                   </span>
-                  {viewMode === "President" && !isOffYear && (
+                  {viewMode === "President" && !isOffYear && getPopVote(parties[0]?.[0]) > 0 && (
                     <span className="font-mono text-[9px] text-[#8A8780] opacity-80">
-                      {(parties[0]?.[0] === "DEM" || (year < 1860 && parties[0]?.[0] === "DR")) ? yd.demPopVote.toLocaleString() : 
-                       (parties[0]?.[0] === "REP" || (year < 1860 && parties[0]?.[0] === "FED")) ? yd.repPopVote.toLocaleString() : ""}
+                      {getPopVote(parties[0]?.[0]).toLocaleString()}
                     </span>
                   )}
                   {yd.unopposed && <span className="font-mono text-[8px] text-[#8A8780] uppercase tracking-tighter">{isRo ? "FĂRĂ OPOZIȚIE" : "UNOPPOSED"}</span>}
@@ -147,10 +154,9 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
                         )
                       ) : PARTY_FULL_NAMES[parties[1]?.[0]] || parties[1]?.[0]}
                     </span>
-                    {viewMode === "President" && !isOffYear && (
+                    {viewMode === "President" && !isOffYear && getPopVote(parties[1]?.[0]) > 0 && (
                       <span className="font-mono text-[9px] text-[#8A8780] opacity-80">
-                        {(parties[1]?.[0] === "DEM" || (year < 1860 && parties[1]?.[0] === "DR")) ? yd.demPopVote.toLocaleString() : 
-                         (parties[1]?.[0] === "REP" || (year < 1860 && parties[1]?.[0] === "FED")) ? yd.repPopVote.toLocaleString() : ""}
+                        {getPopVote(parties[1]?.[0]).toLocaleString()}
                       </span>
                     )}
                   </div>
@@ -183,7 +189,7 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
           />
 
           {/* 3rd Party / Other fill (Washington FED/Independent) */}
-          {parties.filter(([p, v]) => p !== "DEM" && p !== "REP" && v > 1).map(([p, v]) => {
+          {parties.filter(([p, v]) => p !== p1 && p !== p2 && v > 1).map(([p, v]) => {
             const w = yd.unopposed ? 100 : (v / totalSeats) * 100;
             return (
               <motion.div key={p}
@@ -207,9 +213,13 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
       {/* ── BOTTOM DATA BAR ───────────────────────────────────────────────────── */}
       {viewMode === "President" && (
         <div className="mt-1 flex justify-between font-mono text-[9px] text-[#8A8780]">
-          <span>{parties[0]?.[0] === "DEM" ? yd.demPopVote.toLocaleString() : parties[0]?.[0] === "REP" ? yd.repPopVote.toLocaleString() : "---"} {isRo ? "voturi" : "votes"} ({parties[0]?.[0] === "DEM" ? ((yd.demPopVote / yd.totalPopVote) * 100).toFixed(1) : parties[0]?.[0] === "REP" ? ((yd.repPopVote / yd.totalPopVote) * 100).toFixed(1) : "---"}%)</span>
+          <span>
+            {getPopVote(p1) > 0 ? `${getPopVote(p1).toLocaleString()} ${isRo ? "voturi" : "votes"} (${((getPopVote(p1) / yd.totalPopVote) * 100).toFixed(1)}%)` : "---"}
+          </span>
           <span>{(yd.totalPopVote / 1000000).toFixed(1)}M {isRo ? "voturi în total" : "total votes"}</span>
-          <span>{parties[1]?.[0] === "DEM" ? yd.demPopVote.toLocaleString() : parties[1]?.[0] === "REP" ? yd.repPopVote.toLocaleString() : "---"} {isRo ? "voturi" : "votes"} ({parties[1]?.[0] === "DEM" ? ((yd.demPopVote / yd.totalPopVote) * 100).toFixed(1) : parties[1]?.[0] === "REP" ? ((yd.repPopVote / yd.totalPopVote) * 100).toFixed(1) : "---"}%)</span>
+          <span>
+            {getPopVote(p2) > 0 ? `${getPopVote(p2).toLocaleString()} ${isRo ? "voturi" : "votes"} (${((getPopVote(p2) / yd.totalPopVote) * 100).toFixed(1)}%)` : "---"}
+          </span>
         </div>
       )}
       
