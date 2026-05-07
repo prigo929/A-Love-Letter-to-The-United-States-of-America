@@ -1,215 +1,137 @@
 "use client";
-// ─── Timeline Scrubber ──────────────────────────────────────────────────────
-// A custom SVG-based timeline at the bottom of the Electoral Archive Map.
-// It renders tick marks for each election year and a draggable playhead.
-// Built as an SVG track (not a generic <input range>) for the Bloomberg/WSJ
-// editorial aesthetic.
-
 import { useRef, useCallback, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ELECTORAL_HISTORY } from "@/lib/data/electoral-data";
+import { ELECTORAL_HISTORY, ERAS } from "@/lib/data/electoral-data";
 
 const YEARS = ELECTORAL_HISTORY.map((d) => d.year);
 const MIN_YEAR = YEARS[0];
 const MAX_YEAR = YEARS[YEARS.length - 1];
+const TRACK_H = 72;
+const PX = 24;
+const TW = 800;
+const INNER = TW - PX * 2;
 
-const TRACK_HEIGHT = 56;
-const PADDING_X = 32;
+function yearToX(y: number) { return PX + ((y - MIN_YEAR) / (MAX_YEAR - MIN_YEAR)) * INNER; }
 
 export function TimelineScrubber({
-  currentYear,
-  onYearChange,
-  isRo,
-}: {
-  currentYear: number;
-  onYearChange: (year: number) => void;
-  isRo?: boolean;
-}) {
-  const trackRef = useRef<SVGSVGElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [hoveredYear, setHoveredYear] = useState<number | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  currentYear, onYearChange, isRo,
+}: { currentYear: number; onYearChange: (y: number) => void; isRo?: boolean; }) {
+  const ref = useRef<SVGSVGElement>(null);
+  const [dragging, setDragging] = useState(false);
+  const [playing, setPlaying] = useState(false);
+  const [hoverY, setHoverY] = useState<number | null>(null);
 
-  // Autoplay: cycle through years every 2 seconds
   useEffect(() => {
-    if (!isPlaying) return;
-    const interval = setInterval(() => {
+    if (!playing) return;
+    const iv = setInterval(() => {
       const idx = YEARS.indexOf(currentYear);
-      const next = idx < YEARS.length - 1 ? YEARS[idx + 1] : YEARS[0];
-      onYearChange(next);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [isPlaying, currentYear, onYearChange]);
+      onYearChange(idx < YEARS.length - 1 ? YEARS[idx + 1] : YEARS[0]);
+    }, 1800);
+    return () => clearInterval(iv);
+  }, [playing, currentYear, onYearChange]);
 
-  // Snap to the nearest election year
-  const snapToYear = useCallback(
-    (clientX: number) => {
-      if (!trackRef.current) return;
-      const rect = trackRef.current.getBoundingClientRect();
-      const ratio = Math.max(
-        0,
-        Math.min(1, (clientX - rect.left - PADDING_X) / (rect.width - PADDING_X * 2))
-      );
-      let closest = YEARS[0];
-      let minDist = Infinity;
-      for (const y of YEARS) {
-        const yRatio = (y - MIN_YEAR) / (MAX_YEAR - MIN_YEAR);
-        const dist = Math.abs(yRatio - ratio);
-        if (dist < minDist) { minDist = dist; closest = y; }
-      }
-      onYearChange(closest);
-    },
-    [onYearChange]
-  );
+  const snap = useCallback((cx: number) => {
+    if (!ref.current) return;
+    const r = ref.current.getBoundingClientRect();
+    const ratio = Math.max(0, Math.min(1, (cx - r.left - (PX * r.width / TW)) / ((INNER * r.width) / TW)));
+    let best = YEARS[0], bestD = Infinity;
+    for (const y of YEARS) {
+      const d = Math.abs((y - MIN_YEAR) / (MAX_YEAR - MIN_YEAR) - ratio);
+      if (d < bestD) { bestD = d; best = y; }
+    }
+    onYearChange(best);
+  }, [onYearChange]);
 
-  const handlePointerDown = useCallback(
-    (e: React.PointerEvent) => {
-      setIsDragging(true);
-      setIsPlaying(false);
-      (e.target as Element).setPointerCapture(e.pointerId);
-      snapToYear(e.clientX);
-    },
-    [snapToYear]
-  );
+  const onDown = useCallback((e: React.PointerEvent) => {
+    setDragging(true); setPlaying(false);
+    (e.target as Element).setPointerCapture(e.pointerId);
+    snap(e.clientX);
+  }, [snap]);
 
-  const handlePointerMove = useCallback(
-    (e: React.PointerEvent) => {
-      if (isDragging) snapToYear(e.clientX);
-    },
-    [isDragging, snapToYear]
-  );
+  // Show labels for every ~20 years on dense timeline, all years if <15 elections
+  const showLabel = (y: number) => {
+    if (YEARS.length <= 15) return true;
+    if (y === currentYear || y === MIN_YEAR || y === MAX_YEAR) return true;
+    return y % 20 === 0 || y === hoverY;
+  };
 
-  const handlePointerUp = useCallback(() => {
-    setIsDragging(false);
-  }, []);
-
-  const playheadRatio =
-    YEARS.length > 1 ? (currentYear - MIN_YEAR) / (MAX_YEAR - MIN_YEAR) : 0;
+  const phX = yearToX(currentYear);
 
   return (
     <div className="relative w-full">
-      {/* Header with play button */}
-      <div className="mb-2 flex items-center justify-between px-1">
+      <div className="mb-1.5 flex items-center justify-between px-0.5">
         <div className="flex items-center gap-2">
-          <button
-            onClick={() => setIsPlaying((p) => !p)}
-            className="flex h-6 w-6 items-center justify-center rounded-sm border border-[rgba(201,168,76,0.2)] bg-[rgba(201,168,76,0.06)] text-[#C9A84C] transition-all hover:bg-[rgba(201,168,76,0.15)]"
-            aria-label={isPlaying ? "Pause" : "Play"}
-          >
-            <span className="text-[10px]">{isPlaying ? "⏸" : "▶"}</span>
+          <button onClick={() => setPlaying(p => !p)}
+            className="flex h-5 w-5 items-center justify-center border border-[rgba(201,168,76,0.2)] bg-[rgba(201,168,76,0.04)] text-[#C9A84C] transition-all hover:bg-[rgba(201,168,76,0.12)]"
+            aria-label={playing ? "Pause" : "Play"}>
+            <span className="text-[8px]">{playing ? "⏸" : "▶"}</span>
           </button>
-          <span className="font-body text-[10px] uppercase tracking-[0.2em] text-[#6B6860]">
-            {isRo ? "Cronologie Electorală" : "Electoral Timeline"}
+          <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#6B6860]">
+            {isRo ? "Cronologie" : "Timeline"} · {YEARS.length} {isRo ? "alegeri" : "elections"}
           </span>
         </div>
-        <motion.span
-          key={currentYear}
-          initial={{ opacity: 0, y: -4 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="font-display text-lg font-bold text-[#C9A84C]"
-          style={{ fontVariantNumeric: "tabular-nums" }}
-        >
+        <motion.span key={currentYear} initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+          className="font-mono text-sm font-bold text-[#C9A84C]" style={{ fontVariantNumeric: "tabular-nums" }}>
           {currentYear}
         </motion.span>
       </div>
 
-      {/* SVG Track */}
-      <svg
-        ref={trackRef}
-        viewBox={`0 0 800 ${TRACK_HEIGHT}`}
+      <svg ref={ref} viewBox={`0 0 ${TW} ${TRACK_H}`}
         className="w-full cursor-pointer select-none"
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onPointerLeave={handlePointerUp}
-        style={{ touchAction: "none" }}
-      >
-        {/* Track Background */}
-        <rect
-          x={PADDING_X}
-          y={TRACK_HEIGHT / 2 - 1}
-          width={800 - PADDING_X * 2}
-          height={2}
-          fill="rgba(201, 168, 76, 0.15)"
-          rx={1}
-        />
+        onPointerDown={onDown}
+        onPointerMove={(e) => { if (dragging) snap(e.clientX); }}
+        onPointerUp={() => setDragging(false)}
+        onPointerLeave={() => setDragging(false)}
+        style={{ touchAction: "none" }}>
 
-        {/* Tick Marks for Each Year */}
-        {YEARS.map((year) => {
-          const ratio = (year - MIN_YEAR) / (MAX_YEAR - MIN_YEAR);
-          const x = PADDING_X + ratio * (800 - PADDING_X * 2);
-          const isActive = year === currentYear;
-          const isHovered = year === hoveredYear;
-
+        {/* Era background bands */}
+        {ERAS.map((era) => {
+          const x1 = yearToX(Math.max(era.start, MIN_YEAR));
+          const x2 = yearToX(Math.min(era.end, MAX_YEAR));
           return (
-            <g
-              key={year}
-              onMouseEnter={() => setHoveredYear(year)}
-              onMouseLeave={() => setHoveredYear(null)}
-            >
-              {/* Tick Line */}
-              <line
-                x1={x}
-                y1={TRACK_HEIGHT / 2 - (isActive ? 14 : 8)}
-                x2={x}
-                y2={TRACK_HEIGHT / 2 + (isActive ? 14 : 8)}
-                stroke={
-                  isActive
-                    ? "#C9A84C"
-                    : isHovered
-                      ? "rgba(201, 168, 76, 0.6)"
-                      : "rgba(201, 168, 76, 0.25)"
-                }
-                strokeWidth={isActive ? 2.5 : 1}
-                style={{ transition: "all 0.2s ease" }}
-              />
-              {/* Year Label */}
-              <text
-                x={x}
-                y={TRACK_HEIGHT / 2 + (isActive ? 26 : 22)}
-                textAnchor="middle"
-                fill={
-                  isActive
-                    ? "#C9A84C"
-                    : isHovered
-                      ? "rgba(201, 168, 76, 0.7)"
-                      : "rgba(201, 168, 76, 0.3)"
-                }
-                fontSize={isActive ? "10" : "8"}
-                fontFamily="'Inter', sans-serif"
-                fontWeight={isActive ? "700" : "500"}
-                style={{ transition: "all 0.2s ease" }}
-              >
-                {year}
+            <g key={era.label}>
+              <rect x={x1} y={4} width={Math.max(0, x2 - x1)} height={TRACK_H - 8} fill={era.color} />
+              <text x={(x1 + x2) / 2} y={12} textAnchor="middle"
+                fill="rgba(201,168,76,0.25)" fontSize="6" fontFamily="'Inter',sans-serif"
+                fontWeight="600" letterSpacing="0.1em">
+                {era.label.toUpperCase()}
               </text>
             </g>
           );
         })}
 
-        {/* Playhead Glow */}
-        {(() => {
-          const x = PADDING_X + playheadRatio * (800 - PADDING_X * 2);
+        {/* Track line */}
+        <line x1={PX} y1={TRACK_H / 2} x2={TW - PX} y2={TRACK_H / 2}
+          stroke="rgba(201,168,76,0.1)" strokeWidth={1} />
+
+        {/* Tick marks */}
+        {YEARS.map((y) => {
+          const x = yearToX(y);
+          const active = y === currentYear;
+          const hov = y === hoverY;
+          const label = showLabel(y);
           return (
-            <>
-              <circle
-                cx={x}
-                cy={TRACK_HEIGHT / 2}
-                r={isDragging ? 7 : 5}
-                fill="#C9A84C"
-                style={{ transition: "r 0.15s ease" }}
-              />
-              <circle
-                cx={x}
-                cy={TRACK_HEIGHT / 2}
-                r={isDragging ? 12 : 9}
-                fill="none"
-                stroke="rgba(201, 168, 76, 0.3)"
-                strokeWidth={1}
-                style={{ transition: "r 0.15s ease" }}
-              />
-            </>
+            <g key={y} onMouseEnter={() => setHoverY(y)} onMouseLeave={() => setHoverY(null)}>
+              <line x1={x} y1={TRACK_H / 2 - (active ? 12 : 5)}
+                x2={x} y2={TRACK_H / 2 + (active ? 12 : 5)}
+                stroke={active ? "#C9A84C" : hov ? "rgba(201,168,76,0.5)" : "rgba(201,168,76,0.15)"}
+                strokeWidth={active ? 2 : 0.5} />
+              {label && (
+                <text x={x} y={TRACK_H / 2 + (active ? 24 : 18)} textAnchor="middle"
+                  fill={active ? "#C9A84C" : hov ? "rgba(201,168,76,0.6)" : "rgba(201,168,76,0.2)"}
+                  fontSize={active ? "8" : "6"} fontFamily="'Inter',monospace"
+                  fontWeight={active ? "700" : "400"}>
+                  {y}
+                </text>
+              )}
+            </g>
           );
-        })()}
+        })}
+
+        {/* Playhead */}
+        <circle cx={phX} cy={TRACK_H / 2} r={dragging ? 5 : 3.5} fill="#C9A84C" />
+        <circle cx={phX} cy={TRACK_H / 2} r={dragging ? 9 : 7}
+          fill="none" stroke="rgba(201,168,76,0.2)" strokeWidth={0.5} />
       </svg>
     </div>
   );
