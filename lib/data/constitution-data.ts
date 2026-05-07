@@ -785,7 +785,7 @@ export const CONSTITUTION_SUB_PAGES = [
   {
     href: "/constitution/democracy-track-record",
     title: "250 Years",
-    description: "59 elections, zero coups — the unbroken record of American democracy",
+    description: "60 elections, zero coups — the unbroken record of American democracy",
     imageSrc: "/images/constitution/us-capitol-presidential-inauguration.jpg",
     imageAlt: "Presidential inauguration at the United States Capitol",
     badge: "Zero Coups",
@@ -809,7 +809,7 @@ export function getConstitutionSubPages(locale: Locale) {
       { ...CONSTITUTION_SUB_PAGES[1], title: "Primul Amendament",          description: "Cea mai largă protecție a libertății de exprimare din lume" },
       { ...CONSTITUTION_SUB_PAGES[2], title: "Laboratoare ale Democrației",description: "50 de state, 50 de experimente de politici publice" },
       { ...CONSTITUTION_SUB_PAGES[3], title: "Separarea Puterilor",        description: "Sistemul care face tirania aproape imposibilă" },
-      { ...CONSTITUTION_SUB_PAGES[4], title: "250 de Ani",                 description: "59 de alegeri, niciun coup — recordul neîntrerupt al democrației americane" },
+      { ...CONSTITUTION_SUB_PAGES[4], title: "250 de Ani",                 description: "60 de alegeri, niciun coup — recordul neîntrerupt al democrației americane" },
       { ...CONSTITUTION_SUB_PAGES[5], title: "Doar în America",            description: "Procurori aleși, jurii mari, inițiative cetățenești — mecanisme democratice unice în lume" },
     ];
   }
@@ -821,7 +821,7 @@ export function getConstitutionMetrics(locale: Locale): ConstitutionMetric[] {
     return [
       { ...CONSTITUTION_METRICS[0], label: "Ani de Guvernare Constituțională Continuă",             sublabel: "Cel mai lung din istoria înregistrată" },
       { ...CONSTITUTION_METRICS[1], label: "Articole în Constituția Originală",                      sublabel: "Eleganță arhitecturală" },
-      { ...CONSTITUTION_METRICS[2], label: "Amendamente Ratificate",                                 sublabel: "În 237 de ani — aproape neschimbată" },
+      { ...CONSTITUTION_METRICS[2], label: "Amendamente Ratificate",                                 sublabel: "În 235 de ani — aproape neschimbată" },
       { ...CONSTITUTION_METRICS[3], label: "Alegeri Prezidențiale",                                  sublabel: "Zero lovituri de stat. Zero suspendări." },
       { ...CONSTITUTION_METRICS[4], label: "Cuvinte care Guvernează o Economie de 31 Trilioane $",   sublabel: "Cea mai scurtă constituție națională majoră" },
     ];

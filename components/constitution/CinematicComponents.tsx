@@ -257,7 +257,7 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
                   href="#track-record"
                   className="inline-flex items-center gap-2 rounded-xl border border-white/12 bg-white/5 px-6 py-3 font-body text-sm font-semibold text-[#F5F0E8] backdrop-blur-sm transition-all hover:bg-white/8"
                 >
-                  {isRo ? "59 Alegeri, Zero Coupuri" : "59 Elections, Zero Coups"}
+                  {isRo ? "60 Alegeri, Zero Coupuri" : "60 Elections, Zero Coups"}
                 </a>
               </div>
             </motion.div>
@@ -468,8 +468,8 @@ export function UnbrokenLine({
           }}
         >
           {isRo
-            ? "59 de ori. Linia nu s-a rupt niciodată."
-            : "59 times. The line never broke."}
+            ? "60 de ori. Linia nu s-a rupt niciodată."
+            : "60 times. The line never broke."}
         </p>
       </motion.div>
     </div>
