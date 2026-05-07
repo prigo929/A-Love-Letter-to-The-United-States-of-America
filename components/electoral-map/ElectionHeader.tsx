@@ -47,18 +47,30 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
   // Since we don't have historical candidate lists wired in, we'll use placeholders styled properly
 
   let netGainStr = "";
-  if (viewMode === "House" || viewMode === "Senate") {
+  if (viewMode === "House" || viewMode === "Senate" || viewMode === "Governor") {
     const currIdx = ELECTORAL_HISTORY.findIndex(h => h.year === year);
     if (currIdx > 0) {
       const prevYd = ELECTORAL_HISTORY[currIdx - 1];
       let prevCount = 0;
-      const currCount = parties[0]?.[1] || 0;
+      let currCount = 0;
+      for (const sd of Object.values(yd.states)) {
+        if (viewMode === "House") currCount += topParty === "DEM" ? sd.house.demReps : sd.house.repReps;
+        else if (viewMode === "Senate") {
+          if (sd.senate.party1 === topParty) currCount++;
+          if (sd.senate.party2 === topParty) currCount++;
+        }
+        else if (viewMode === "Governor") {
+          if (sd.governor.party === topParty) currCount++;
+        }
+      }
       for (const sd of Object.values(prevYd.states)) {
-        if (viewMode === "House") {
-          prevCount += topParty === "DEM" ? sd.house.demReps : sd.house.repReps;
-        } else if (viewMode === "Senate") {
+        if (viewMode === "House") prevCount += topParty === "DEM" ? sd.house.demReps : sd.house.repReps;
+        else if (viewMode === "Senate") {
           if (sd.senate.party1 === topParty) prevCount++;
           if (sd.senate.party2 === topParty) prevCount++;
+        }
+        else if (viewMode === "Governor") {
+          if (sd.governor.party === topParty) prevCount++;
         }
       }
       const delta = currCount - prevCount;
@@ -66,6 +78,13 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
       else if (delta < 0) netGainStr = `${delta} net loss`;
       else netGainStr = "No net change";
     }
+  }
+
+  let notUpCount = 0;
+  if (viewMode === "Senate" || viewMode === "Governor") {
+    const total = viewMode === "Senate" ? 100 : 50;
+    const upCount = Object.values(yd.states).filter(s => viewMode === "Senate" ? s.senate.active : s.governor.active).length;
+    notUpCount = total - upCount;
   }
 
   return (
@@ -160,7 +179,14 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
       
       {viewMode === "Senate" && (
         <div className="mt-1 flex justify-between font-mono text-[9px] text-[#8A8780]">
-          <span>67 seats not up for election</span>
+          <span>{notUpCount} seats not up for election</span>
+          <span style={{ color: PARTY_COLORS[topParty] }}>{netGainStr}</span>
+        </div>
+      )}
+
+      {viewMode === "Governor" && (
+        <div className="mt-1 flex justify-between font-mono text-[9px] text-[#8A8780]">
+          <span>{notUpCount} governors not up for election</span>
           <span style={{ color: PARTY_COLORS[topParty] }}>{netGainStr}</span>
         </div>
       )}
