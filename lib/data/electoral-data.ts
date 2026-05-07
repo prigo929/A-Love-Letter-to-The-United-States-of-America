@@ -237,7 +237,8 @@ export function getStateData(year: number, stateName: string): StateData {
 // Universal flip detection across all 4 views
 export interface FlipInfo {
   presFlip: boolean;
-  senFlip: boolean;       // any change in delegation composition
+  senFlip1: boolean;      // did seat 1 flip?
+  senFlip2: boolean;      // did seat 2 flip?
   govFlip: boolean;
   houseFlipDem: number;   // seats gained by DEM vs previous
   houseFlipRep: number;   // seats gained by REP vs previous
@@ -246,7 +247,7 @@ export interface FlipInfo {
 export function getFlipData(year: number, stateName: string): FlipInfo {
   const years = ELECTORAL_HISTORY.map(y => y.year).sort((a, b) => a - b);
   const idx = years.indexOf(year);
-  const noFlip: FlipInfo = { presFlip: false, senFlip: false, govFlip: false, houseFlipDem: 0, houseFlipRep: 0 };
+  const noFlip: FlipInfo = { presFlip: false, senFlip1: false, senFlip2: false, govFlip: false, houseFlipDem: 0, houseFlipRep: 0 };
   if (idx <= 0) return noFlip;
 
   const cur = getStateData(year, stateName);
@@ -256,17 +257,29 @@ export function getFlipData(year: number, stateName: string): FlipInfo {
   const presFlip = cur.president.party !== prev.president.party;
   const govFlip = cur.governor.party !== prev.governor.party;
 
-  // Senate: compare the pair of parties (order-independent)
-  const curSen = [cur.senate.party1, cur.senate.party2].sort().join(",");
-  const prevSen = [prev.senate.party1, prev.senate.party2].sort().join(",");
-  const senFlip = curSen !== prevSen;
+  // Senate: compare individual seats to find exactly which half flipped
+  const prevSens = [prev.senate.party1, prev.senate.party2];
+  let senFlip1 = false;
+  let senFlip2 = false;
+  
+  const prevAvail = [...prevSens];
+  if (prevAvail.includes(cur.senate.party1)) {
+    prevAvail.splice(prevAvail.indexOf(cur.senate.party1), 1);
+  } else {
+    senFlip1 = true;
+  }
+  if (prevAvail.includes(cur.senate.party2)) {
+    prevAvail.splice(prevAvail.indexOf(cur.senate.party2), 1);
+  } else {
+    senFlip2 = true;
+  }
 
   // House: compare DEM seat counts
   const demDiff = cur.house.demReps - prev.house.demReps;
   const houseFlipDem = Math.max(0, demDiff);
   const houseFlipRep = Math.max(0, -demDiff);
 
-  return { presFlip, senFlip, govFlip, houseFlipDem, houseFlipRep };
+  return { presFlip, senFlip1, senFlip2, govFlip, houseFlipDem, houseFlipRep };
 }
 
 export const STATE_CENTROIDS: Record<string, [number, number]> = {
