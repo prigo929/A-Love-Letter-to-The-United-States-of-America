@@ -2,10 +2,10 @@
 import { useState, useCallback, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { ViewMode } from "@/lib/data/electoral-data";
-import { ELECTORAL_HISTORY, PARTY_COLORS } from "@/lib/data/electoral-data";
+import { ELECTORAL_HISTORY, PARTY_COLORS, PARTY_FULL_NAMES } from "@/lib/data/electoral-data";
 import { MapRenderer } from "./MapRenderer";
 import { TimelineScrubber } from "./TimelineScrubber";
-import { ElectoralVoteBar } from "./ElectoralVoteBar";
+import { ElectionHeader } from "./ElectionHeader";
 import { StateDetailPanel } from "./StateDetailPanel";
 
 const YEARS = ELECTORAL_HISTORY.map((d) => d.year);
@@ -83,8 +83,8 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
         </motion.p>
       </AnimatePresence>
 
-      {/* EV bar (President only) */}
-      {view === "President" && <ElectoralVoteBar year={year} isRo={isRo} />}
+      {/* Header bar (Dynamic for all views) */}
+      <ElectionHeader year={year} viewMode={view as ViewMode} isRo={isRo} />
 
       {/* Map */}
       <div className="relative overflow-hidden border border-[rgba(201,168,76,0.06)] bg-[#080B12] p-1.5 md:p-3">
@@ -98,7 +98,7 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
           {activeParties.map((p) => (
             <div key={p} className="flex items-center gap-1">
               <div className="h-[6px] w-[6px]" style={{ background: PARTY_COLORS[p] || "#C9A84C" }} />
-              <span className="font-mono text-[8px] uppercase tracking-widest text-[#6B6860]">{p}</span>
+              <span className="font-mono text-[9px] uppercase tracking-widest text-[#8A8780]">{PARTY_FULL_NAMES[p] || p}</span>
             </div>
           ))}
           {view === "House" && <span className="font-mono text-[8px] text-[#6B6860]">● = 1 rep</span>}

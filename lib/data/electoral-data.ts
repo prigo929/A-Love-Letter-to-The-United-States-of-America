@@ -1,18 +1,22 @@
 export type ViewMode = "President" | "Senate" | "House" | "Governor";
 export interface StateData {
   president: { party: string; flipped: boolean };
-  senate: { split: boolean; party1: string; party2: string };
+  senate: { split: boolean; party1: string; party2: string; active: boolean };
   house: { demReps: number; repReps: number; totalReps: number };
-  governor: { party: string };
+  governor: { party: string; active: boolean };
   electoralVotes: number;
 }
 export interface YearData { year: number; states: Record<string, StateData>; }
 
 // ── Party Color Registry ──────────────────────────────────────────────────
 export const PARTY_COLORS: Record<string, string> = {
-  DEM: "#1E5AA8", REP: "#B22234", FED: "#5B4A8A", DR: "#8B6914",
-  WHIG: "#D4A017", NR: "#CC7722", PROG: "#2E8B57", DIX: "#8B4513",
-  IND: "#9370DB", OTHER: "#C9A84C", "": "#1A1F3A",
+  DEM: "#4169E1", REP: "#E64141", FED: "#8B4513", DR: "#2E8B57", WHIG: "#DAA520",
+  PROG: "#9370DB", DIX: "#FF8C00", AI: "#CD853F", BM: "#8A2BE2", SR: "#D2691E", NR: "#A0522D"
+};
+
+export const PARTY_FULL_NAMES: Record<string, string> = {
+  DEM: "Democrat", REP: "Republican", FED: "Federalist", DR: "Democratic-Republican", WHIG: "Whig",
+  PROG: "Progressive", DIX: "Dixiecrat", AI: "American Independent", BM: "Bull Moose", SR: "States' Rights", NR: "National Republican"
 };
 
 // ── State Admission Years ─────────────────────────────────────────────────
@@ -168,6 +172,25 @@ const NATIONAL_DEM_SHARE: Record<number, number> = {
 const R_BASE = new Set(["Alabama","Alaska","Arkansas","Idaho","Indiana","Kansas","Kentucky","Louisiana","Mississippi","Missouri","Montana","Nebraska","North Dakota","Oklahoma","South Carolina","South Dakota","Tennessee","Texas","Utah","West Virginia","Wyoming"]);
 const D_BASE = new Set(["California","Connecticut","Delaware","Hawaii","Illinois","Maryland","Massachusetts","New Jersey","New York","Oregon","Rhode Island","Vermont","Washington"]);
 
+// Deterministic logic for active states based on 4-year cycles
+function isSenateActive(year: number, state: string): boolean {
+  const stateHash = state.charCodeAt(0) + state.charCodeAt(state.length - 1);
+  const classA = stateHash % 3;
+  const classB = (stateHash + 1) % 3;
+  const cycle = Math.floor(year / 4) % 3;
+  return classA === cycle || classB === cycle;
+}
+
+const GOV_PRES_YEAR_STATES = new Set([
+  "Delaware", "Indiana", "Missouri", "Montana", "North Carolina", 
+  "North Dakota", "Utah", "Washington", "West Virginia", "New Hampshire", "Vermont"
+]);
+
+function isGovernorActive(year: number, state: string): boolean {
+  if (year < 1920) return (state.charCodeAt(0) + year) % 2 === 0;
+  return GOV_PRES_YEAR_STATES.has(state);
+}
+
 function buildYear(year: number): YearData {
   const el = ELECTIONS[year];
   if (!el) return { year, states: {} };
@@ -210,9 +233,9 @@ function buildYear(year: number): YearData {
 
     states[name] = {
       president: { party: presParty, flipped },
-      senate: { split: isSplit, party1: senBase, party2: isSplit ? senOther : senBase },
+      senate: { split: isSplit, party1: senBase, party2: isSplit ? senOther : senBase, active: isSenateActive(year, name) },
       house: { demReps: dH, repReps: totalH - dH, totalReps: totalH },
-      governor: { party: govParty },
+      governor: { party: govParty, active: isGovernorActive(year, name) },
       electoralVotes: EV[name] || 3,
     };
   }
@@ -229,8 +252,8 @@ export function getStateData(year: number, stateName: string): StateData {
     if (d < minDist) { minDist = d; closest = yd; }
   }
   return closest.states[stateName] || {
-    president: { party: "", flipped: false }, senate: { split: false, party1: "", party2: "" },
-    house: { demReps: 0, repReps: 0, totalReps: 0 }, governor: { party: "" }, electoralVotes: 0,
+    president: { party: "", flipped: false }, senate: { split: false, party1: "", party2: "", active: false },
+    house: { demReps: 0, repReps: 0, totalReps: 0 }, governor: { party: "", active: false }, electoralVotes: 0,
   };
 }
 

@@ -72,21 +72,21 @@ function buildCartogram(year: number): { squares: CSquare[]; labels: CLabel[] } 
     const cols = STATE_COLS[name] || Math.ceil(Math.sqrt(total));
     let maxY = ay;
 
-    // Determine which squares get flip hash
-    // DEM seats first, then REP. Flipped DEM seats = last N DEM squares, flipped REP = last N REP squares.
+    // Group flipped seats intelligently at the boundary: DEM -> DEM Flip -> REP Flip -> REP
+    const sqDefs: { color: string; hasFlipHash: boolean }[] = [];
+    for (let i = 0; i < sd.house.demReps - flip.houseFlipDem; i++) sqDefs.push({ color: pc("DEM"), hasFlipHash: false });
+    for (let i = 0; i < flip.houseFlipDem; i++) sqDefs.push({ color: pc("DEM"), hasFlipHash: true });
+    for (let i = 0; i < flip.houseFlipRep; i++) sqDefs.push({ color: pc("REP"), hasFlipHash: true });
+    for (let i = 0; i < sd.house.repReps - flip.houseFlipRep; i++) sqDefs.push({ color: pc("REP"), hasFlipHash: false });
+
     for (let i = 0; i < total; i++) {
       const col = i % cols;
       const row = Math.floor(i / cols);
       const x = ax + col * CELL;
       const y = ay + row * CELL;
       if (y + SQ > maxY) maxY = y + SQ;
-      const isDem = i < sd.house.demReps;
-      // Mark flipped seats: last N DEM gains or last N REP gains
-      let hasFlipHash = false;
-      if (isDem && flip.houseFlipDem > 0 && i >= sd.house.demReps - flip.houseFlipDem) hasFlipHash = true;
-      if (!isDem && flip.houseFlipRep > 0 && i >= total - flip.houseFlipRep) hasFlipHash = true;
 
-      squares.push({ x, y, color: isDem ? pc("DEM") : pc("REP"), state: name, idx: i, hasFlipHash });
+      squares.push({ x, y, color: sqDefs[i].color, state: name, idx: i, hasFlipHash: sqDefs[i].hasFlipHash });
     }
 
     const blockW = Math.min(total, cols) * CELL - GAP;
@@ -177,13 +177,21 @@ export function MapRenderer({
                     const flip = getFlipData(year, name);
                     const isTerritory = (STATE_ADMISSION[name] || 1787) > year;
                     const isHov = hovered === name;
+                    const isActive = viewMode === "Senate" ? data.senate.active : viewMode === "Governor" ? data.governor.active : true;
                     const dimmed = hovered && !isHov;
+                    
+                    let targetOpacity = 1;
+                    if (dimmed) targetOpacity = 0.25;
+                    else if (!isTerritory && !isActive) targetOpacity = 0.2;
 
                     let fill = "#1A1F3A", stroke = "#080B12", sw = 0.5, dash = "";
                     if (isTerritory) { fill = "none"; stroke = "rgba(201,168,76,0.12)"; dash = "2,2"; }
-                    else if (viewMode === "President") fill = pc(data.president.party);
-                    else if (viewMode === "Senate") fill = data.senate.split ? (data.senate.party1 === "DEM" ? "url(#split-dr)" : "url(#split-rd)") : pc(data.senate.party1);
-                    else fill = pc(data.governor.party);
+                    else {
+                      if (!isActive) { dash = "3,2"; stroke = "rgba(255,255,255,0.1)"; }
+                      if (viewMode === "President") fill = pc(data.president.party);
+                      else if (viewMode === "Senate") fill = data.senate.split ? (data.senate.party1 === "DEM" ? "url(#split-dr)" : "url(#split-rd)") : pc(data.senate.party1);
+                      else fill = pc(data.governor.party);
+                    }
 
                     // Determine if this state is flipped in the current view
                     let isFlipped = false;
@@ -204,7 +212,7 @@ export function MapRenderer({
                         onMouseEnter={(evt: React.MouseEvent<SVGPathElement>) => onGeoEnter(geo, evt)}
                         onMouseLeave={clearHover} onClick={() => onStateClick?.(name)}
                         style={{
-                          default: { fill, stroke: isHov ? "#FFF" : stroke, strokeWidth: isHov ? 1.2 : sw, strokeDasharray: dash, outline: "none", opacity: dimmed ? 0.3 : 1, transition: "opacity 0.2s, fill 0.5s, stroke 0.15s" },
+                          default: { fill, stroke: isHov ? "#FFF" : stroke, strokeWidth: isHov ? 1.2 : sw, strokeDasharray: dash, outline: "none", opacity: targetOpacity, transition: "opacity 0.2s, fill 0.5s, stroke 0.15s" },
                           hover: { fill, stroke: "#FFF", strokeWidth: 1.2, strokeDasharray: dash, outline: "none", cursor: "pointer", opacity: 1 },
                           pressed: { fill, outline: "none" },
                         }}
@@ -216,7 +224,7 @@ export function MapRenderer({
                       elements.push(
                         <Geography key={`${geo.rsmKey}-flip`} geography={geo}
                           style={{
-                            default: { fill: flipUrl, stroke: "none", outline: "none", opacity: dimmed ? 0.3 : 1, pointerEvents: "none" as const, transition: "opacity 0.2s" },
+                            default: { fill: flipUrl, stroke: "none", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
                             hover: { fill: flipUrl, stroke: "none", outline: "none", pointerEvents: "none" as const },
                             pressed: { fill: flipUrl, outline: "none" },
                           }}
