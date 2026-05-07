@@ -389,14 +389,14 @@ export function MapRenderer({
       {/* ── NYT Proportional Square Cartogram (House) ──────────────────── */}
       <AnimatePresence mode="wait">
         {isHouse && cartogram && (
-          <motion.div key="carto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.2 } }} transition={{ duration: 0.4 }}>
+          <motion.div key="carto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
             <svg viewBox="0 0 1000 600" className="w-full" preserveAspectRatio="xMidYMid meet">
               <defs>
                 <pattern id="flip-hash-sm" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
                   <line x1="0" y1="0" x2="0" y2="4" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" />
                 </pattern>
               </defs>
-              <g transform="translate(-100, -25)">
+              <g transform="translate(100, 75) scale(0.8)">
               {cartogram.map((cs) => {
                 const dimmed = hovered !== null && hovered !== cs.name;
                 return (

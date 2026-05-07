@@ -33,15 +33,18 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
 
   const parties = Object.entries(tally).sort((a, b) => b[1] - a[1]);
   const total = parties.reduce((s, [, v]) => s + v, 0) || 1;
-  const winThreshold = viewMode === "President" ? Math.floor(total / 2) + 1 : viewMode === "Senate" ? 50 : viewMode === "House" ? 218 : Math.floor(total / 2) + 1;
-  const thresholdPct = (winThreshold / total) * 100;
+  const totalSeats = viewMode === "President" ? 538 : viewMode === "Senate" ? 100 : viewMode === "House" ? 435 : total;
+  const demVotes = tally["DEM"] || 0;
+  const repVotes = tally["REP"] || 0;
+  const otherVotes = Object.entries(tally).filter(([p]) => p !== "DEM" && p !== "REP").reduce((s, [,v]) => s + v, 0);
 
-  let offset = 0;
+  const thresholdLabel = viewMode === "President" ? "270 TO WIN" : viewMode === "Senate" ? "50 FOR CONTROL" : viewMode === "House" ? "218 TO WIN" : "WINNER";
+  
+  const topParty = parties[0]?.[0] || "OTHER";
+  const secondParty = parties[1]?.[0] || "OTHER";
 
   // Render dummy candidates/popular vote for NYT style
   // Since we don't have historical candidate lists wired in, we'll use placeholders styled properly
-  const topParty = parties[0]?.[0] || "OTHER";
-  const secondParty = parties[1]?.[0] || "OTHER";
 
   let netGainStr = "";
   if (viewMode === "House" || viewMode === "Senate") {
@@ -74,12 +77,12 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
           <div className="flex items-center gap-2">
             <span className="font-display text-2xl font-black text-[#F5F0E8]">{parties[0]?.[1] || 0}</span>
             <div className="flex flex-col">
-              <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: PARTY_COLORS[topParty] }}>
+              <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: PARTY_COLORS[parties[0]?.[0]] }}>
                 {viewMode === "President" ? (
-                  topParty === "DEM" ? yd.demCandidate : 
-                  topParty === "REP" ? yd.repCandidate : 
-                  (yd.thirdPartyCandidates?.[topParty] || PARTY_FULL_NAMES[topParty] || topParty)
-                ) : PARTY_FULL_NAMES[topParty] || topParty}
+                  parties[0]?.[0] === "DEM" ? yd.demCandidate : 
+                  parties[0]?.[0] === "REP" ? yd.repCandidate : 
+                  (yd.thirdPartyCandidates?.[parties[0]?.[0]] || PARTY_FULL_NAMES[parties[0]?.[0]] || parties[0]?.[0])
+                ) : PARTY_FULL_NAMES[parties[0]?.[0]] || parties[0]?.[0]}
                 <span className="ml-1 text-white">✓</span>
               </span>
             </div>
@@ -90,12 +93,12 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
         <div className="flex flex-col items-end">
           <div className="flex items-center gap-2">
             <div className="flex flex-col items-end">
-              <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: PARTY_COLORS[secondParty] }}>
+              <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: PARTY_COLORS[parties[1]?.[0]] }}>
                 {viewMode === "President" ? (
-                  secondParty === "DEM" ? yd.demCandidate : 
-                  secondParty === "REP" ? yd.repCandidate : 
-                  (yd.thirdPartyCandidates?.[secondParty] || PARTY_FULL_NAMES[secondParty] || secondParty)
-                ) : PARTY_FULL_NAMES[secondParty] || secondParty}
+                  parties[1]?.[0] === "DEM" ? yd.demCandidate : 
+                  parties[1]?.[0] === "REP" ? yd.repCandidate : 
+                  (yd.thirdPartyCandidates?.[parties[1]?.[0]] || PARTY_FULL_NAMES[parties[1]?.[0]] || parties[1]?.[0])
+                ) : PARTY_FULL_NAMES[parties[1]?.[0]] || parties[1]?.[0]}
               </span>
             </div>
             <span className="font-display text-2xl font-black text-[#F5F0E8]">{parties[1]?.[1] || 0}</span>
@@ -104,32 +107,39 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
       </div>
 
       {/* ── THE PROGRESS BAR ──────────────────────────────────────────────────── */}
-      <div className="relative h-4 w-full overflow-hidden bg-[#1A1F3A]">
-        {parties.map(([p, v]) => {
-          const w = (v / total) * 100;
-          const left = offset;
-          offset += w;
-          return (
-            <motion.div key={p} className="absolute inset-y-0"
-              animate={{ left: `${left}%`, width: `${w}%` }}
-              transition={{ duration: 0.7, ease: "easeInOut" }}
-              style={{ background: PARTY_COLORS[p] || "#C9A84C" }} />
-          );
-        })}
+      <div className="relative h-4 w-full bg-[#1A1F3A]">
+        {/* Blue Bar (Democrat) */}
+        <motion.div 
+          initial={false}
+          animate={{ width: `${(demVotes / totalSeats) * 100}%` }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
+          className="absolute inset-y-0 left-0 bg-[#4169E1]" 
+        />
+        
+        {/* Red Bar (Republican) */}
+        <motion.div 
+          initial={false}
+          animate={{ width: `${(repVotes / totalSeats) * 100}%` }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
+          className="absolute inset-y-0 right-0 bg-[#E64141]" 
+        />
+
+        {/* 3rd Party / Other fill (Optional: if you want to show them in the gap) */}
+        {/* We'll skip for now to keep it clean as per user request for Red/Blue focus */}
+
         {/* Center Threshold Line */}
-        <div className="absolute inset-y-0 z-10 w-[2px] bg-[#080B12]" style={{ left: `${thresholdPct}%` }} />
-        <div className="absolute -top-[16px] z-10 -translate-x-1/2 whitespace-nowrap bg-[#080B12] px-1 font-mono text-[8px] font-bold text-[#6B6860]"
-          style={{ left: `${thresholdPct}%`, fontVariantNumeric: "tabular-nums" }}>
-          {viewMode === "President" ? `${winThreshold} TO WIN` : viewMode === "Senate" ? "50 FOR CONTROL" : viewMode === "House" ? "218 FOR CONTROL" : winThreshold}
+        <div className="absolute inset-y-0 left-1/2 z-10 w-[1px] -translate-x-1/2 bg-[#F5F0E8]/40" />
+        <div className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 bg-[#080B12] px-2 py-0.5 font-mono text-[8px] font-bold tracking-tighter text-[#F5F0E8] border border-[#F5F0E8]/20">
+          {thresholdLabel}
         </div>
       </div>
 
       {/* ── BOTTOM DATA BAR ───────────────────────────────────────────────────── */}
       {viewMode === "President" && (
         <div className="mt-1 flex justify-between font-mono text-[9px] text-[#8A8780]">
-          <span>{topParty === "DEM" ? yd.demPopVote.toLocaleString() : yd.repPopVote.toLocaleString()} votes ({((topParty === "DEM" ? yd.demPopVote : yd.repPopVote) / yd.totalPopVote * 100).toFixed(1)}%)</span>
+          <span>{parties[0]?.[0] === "DEM" ? yd.demPopVote.toLocaleString() : parties[0]?.[0] === "REP" ? yd.repPopVote.toLocaleString() : "---"} votes ({parties[0]?.[0] === "DEM" ? ((yd.demPopVote / yd.totalPopVote) * 100).toFixed(1) : parties[0]?.[0] === "REP" ? ((yd.repPopVote / yd.totalPopVote) * 100).toFixed(1) : "---"}%)</span>
           <span>{(yd.totalPopVote / 1000000).toFixed(1)}M total votes</span>
-          <span>{secondParty === "DEM" ? yd.demPopVote.toLocaleString() : yd.repPopVote.toLocaleString()} votes ({((secondParty === "DEM" ? yd.demPopVote : yd.repPopVote) / yd.totalPopVote * 100).toFixed(1)}%)</span>
+          <span>{parties[1]?.[0] === "DEM" ? yd.demPopVote.toLocaleString() : parties[1]?.[0] === "REP" ? yd.repPopVote.toLocaleString() : "---"} votes ({parties[1]?.[0] === "DEM" ? ((yd.demPopVote / yd.totalPopVote) * 100).toFixed(1) : parties[1]?.[0] === "REP" ? ((yd.repPopVote / yd.totalPopVote) * 100).toFixed(1) : "---"}%)</span>
         </div>
       )}
       
