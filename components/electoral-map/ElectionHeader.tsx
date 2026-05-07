@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ELECTORAL_HISTORY, PARTY_COLORS, PARTY_FULL_NAMES, ViewMode } from "@/lib/data/electoral-data";
+import { ELECTORAL_HISTORY, PARTY_COLORS, PARTY_FULL_NAMES, CONGRESS_DATA, ViewMode } from "@/lib/data/electoral-data";
 
 export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMode: ViewMode; isRo?: boolean }) {
   const yd = ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0];
@@ -20,11 +20,9 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
       tally[sd.senate.party2] = (tally[sd.senate.party2] || 0) + 1;
       continue;
     } else if (viewMode === "House") {
-      let p1 = "DEM", p2 = "REP";
-      if (year < 1828) { p1 = "DR"; p2 = "FED"; }
-      else if (year < 1856) { p1 = "DEM"; p2 = "WHIG"; }
-      tally[p1] = (tally[p1] || 0) + sd.house.demReps;
-      tally[p2] = (tally[p2] || 0) + sd.house.repReps;
+      const cd = CONGRESS_DATA[year] || { p1: "DEM", p2: "REP", houseShare: 0.5, senateShare: 0.5 };
+      tally[cd.p1] = (tally[cd.p1] || 0) + sd.house.demReps;
+      tally[cd.p2] = (tally[cd.p2] || 0) + sd.house.repReps;
       continue;
     } else if (viewMode === "Governor") {
       p = sd.governor.party;
