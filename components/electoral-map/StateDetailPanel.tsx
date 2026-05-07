@@ -28,7 +28,7 @@ export function StateDetailPanel({
       label: isRo ? "Senat" : "Senate",
       party: data.senate.party1,
       detail: data.senate.split ? `${data.senate.party1} / ${data.senate.party2}` : data.senate.party1,
-      flipped: flip.senFlip,
+      flipped: flip.senFlip1 || flip.senFlip2,
     },
     {
       label: isRo ? "Cameră" : "House",
