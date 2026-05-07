@@ -123,6 +123,10 @@ function buildCartogram(year: number): CartoState[] {
   const yd = ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0];
   const statesArr: CartoState[] = [];
 
+  let p1 = "DEM", p2 = "REP";
+  if (year < 1828) { p1 = "DR"; p2 = "FED"; }
+  else if (year < 1856) { p1 = "DEM"; p2 = "WHIG"; }
+
   for (const [name, [ax, ay]] of Object.entries(ANCHORS)) {
     const sd = yd.states[name];
     if (!sd) continue;
@@ -135,10 +139,10 @@ function buildCartogram(year: number): CartoState[] {
 
     // Group flipped seats intelligently at the boundary: DEM -> DEM Flip -> REP Flip -> REP
     const sqDefs: { color: string; hasFlipHash: boolean }[] = [];
-    for (let i = 0; i < sd.house.demReps - flip.houseFlipDem; i++) sqDefs.push({ color: pc("DEM"), hasFlipHash: false });
-    for (let i = 0; i < flip.houseFlipDem; i++) sqDefs.push({ color: pc("DEM"), hasFlipHash: true });
-    for (let i = 0; i < flip.houseFlipRep; i++) sqDefs.push({ color: pc("REP"), hasFlipHash: true });
-    for (let i = 0; i < sd.house.repReps - flip.houseFlipRep; i++) sqDefs.push({ color: pc("REP"), hasFlipHash: false });
+    for (let i = 0; i < sd.house.demReps - flip.houseFlipDem; i++) sqDefs.push({ color: pc(p1), hasFlipHash: false });
+    for (let i = 0; i < flip.houseFlipDem; i++) sqDefs.push({ color: pc(p1), hasFlipHash: true });
+    for (let i = 0; i < flip.houseFlipRep; i++) sqDefs.push({ color: pc(p2), hasFlipHash: true });
+    for (let i = 0; i < sd.house.repReps - flip.houseFlipRep; i++) sqDefs.push({ color: pc(p2), hasFlipHash: false });
 
     const squares: CSquare[] = [];
     let minX = Infinity, minY = Infinity, maxX = -Infinity, maxSqY = -Infinity;
@@ -260,17 +264,19 @@ const GeographicMap = memo(({ year, viewMode, hovered, onGeoEnter, clearHover, o
   onStateClick?: (n: string) => void
 }) => {
   const yd = ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0];
-  const isOffYear = viewMode === "President" && yd.demPopVote === 0 && !yd.unopposed;
+  let p1 = "DEM", p2 = "REP";
+  if (year < 1828) { p1 = "DR"; p2 = "FED"; }
+  else if (year < 1856) { p1 = "DEM"; p2 = "WHIG"; }
 
   return (
     <motion.div key="geo" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
       <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1000 }} style={{ width: "100%", height: "auto" }} width={1000} height={600} viewBox="0 0 1000 600">
         <defs>
           <pattern id="split-dr" width="1" height="1" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
-            <polygon points="0,0 1,0 0,1" fill={pc("DEM")} /><polygon points="1,0 1,1 0,1" fill={pc("REP")} />
+            <polygon points="0,0 1,0 0,1" fill={pc(p1)} /><polygon points="1,0 1,1 0,1" fill={pc(p2)} />
           </pattern>
           <pattern id="split-rd" width="1" height="1" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
-            <polygon points="0,0 1,0 0,1" fill={pc("REP")} /><polygon points="1,0 1,1 0,1" fill={pc("DEM")} />
+            <polygon points="0,0 1,0 0,1" fill={pc(p2)} /><polygon points="1,0 1,1 0,1" fill={pc(p1)} />
           </pattern>
           <pattern id="flip-hash" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
             <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(255,255,255,0.22)" strokeWidth="2.5" />
@@ -294,6 +300,7 @@ const GeographicMap = memo(({ year, viewMode, hovered, onGeoEnter, clearHover, o
               const isActive = viewMode === "Senate" ? data.senate.active : viewMode === "Governor" ? data.governor.active : true;
               const dimmed = hovered && !isHov;
               
+              const isOffYear = viewMode === "President" && yd.demPopVote === 0 && !yd.unopposed;
               let targetOpacity = 1;
               if (dimmed) targetOpacity = 0.25;
               else if (!isTerritory && !isActive) targetOpacity = 0.2;
