@@ -247,17 +247,137 @@ const SPLIT_SENATE_BY_YEAR: Record<number, string[]> = {
   2000: ["Florida","Maine","Virginia","Washington","Nevada","Nebraska"],
 };
 
-// National House DEM seat share by year (approximate)
-const NATIONAL_DEM_SHARE: Record<number, number> = {
-  2024: 0.49, 2022: 0.48, 2020: 0.51, 2018: 0.53, 2016: 0.45, 2014: 0.46, 2012: 0.46, 2010: 0.45, 2008: 0.59, 
-  2006: 0.54, 2004: 0.47, 2002: 0.48, 2000: 0.49, 1998: 0.49, 1996: 0.47, 1994: 0.46, 1992: 0.60, 
-  1990: 0.53, 1988: 0.60, 1986: 0.55, 1984: 0.58, 1982: 0.57, 1980: 0.56, 1978: 0.55, 1976: 0.67, 
-  1974: 0.59, 1972: 0.56, 1970: 0.55, 1968: 0.57, 1966: 0.52, 1964: 0.68, 1962: 0.53, 1960: 0.60,
-  1958: 0.64, 1956: 0.53, 1954: 0.53, 1952: 0.49, 1950: 0.54, 1948: 0.60, 1946: 0.43, 1944: 0.51,
-  1942: 0.51, 1940: 0.61, 1938: 0.60, 1936: 0.77, 1934: 0.74, 1932: 0.72, 1930: 0.50, 1928: 0.37,
-  1926: 0.45, 1924: 0.42, 1922: 0.48, 1920: 0.30, 1918: 0.44, 1916: 0.49, 1914: 0.53, 1912: 0.66, 1910: 0.52,
-  1908: 0.39, 1906: 0.51, 1904: 0.35, 1902: 0.48, 1900: 0.45, 1898: 0.45, 1896: 0.35, 1894: 0.30, 1892: 0.62, 1890: 0.71,
-  1888: 0.48, 1886: 0.53, 1884: 0.56, 1882: 0.61, 1880: 0.45,
+// Historical Congress composition: [majorityParty, minorityParty, majorityHouseShare, majoritySenateShare]
+// Sources: Wikipedia "Party divisions of United States Congresses", US Senate/House historical offices
+export type CongressInfo = { p1: string; p2: string; houseShare: number; senateShare: number };
+export const CONGRESS_DATA: Record<number, CongressInfo> = {
+  // 1st-2nd Congress: Pro-Administration vs Anti-Administration
+  1788: { p1: "FED", p2: "DR", houseShare: 0.57, senateShare: 0.69 }, // 37/65 Pro-Admin House, 18/26 Senate
+  1790: { p1: "FED", p2: "DR", houseShare: 0.57, senateShare: 0.53 }, // 39/69 Pro-Admin, 16/30 Sen
+  // 3rd-4th Congress: Federalist vs Democratic-Republican
+  1792: { p1: "DR", p2: "FED", houseShare: 0.51, senateShare: 0.47 }, // 54/105 DR, 14/30 Sen
+  1794: { p1: "DR", p2: "FED", houseShare: 0.51, senateShare: 0.34 }, // 54/105 DR, 11/32 Sen
+  // 5th-6th Congress: Federalist majority
+  1796: { p1: "FED", p2: "DR", houseShare: 0.56, senateShare: 0.63 }, // 59/106, 20/32
+  1798: { p1: "FED", p2: "DR", houseShare: 0.59, senateShare: 0.59 }, // 63/106, 19/32
+  // 7th-12th Congress: DR dominance
+  1800: { p1: "DR", p2: "FED", houseShare: 0.60, senateShare: 0.50 }, // 64/106, 16/32
+  1802: { p1: "DR", p2: "FED", houseShare: 0.72, senateShare: 0.74 }, // 102/141, 25/34
+  1804: { p1: "DR", p2: "FED", houseShare: 0.82, senateShare: 0.79 }, // 116/141, 27/34
+  1806: { p1: "DR", p2: "FED", houseShare: 0.83, senateShare: 0.82 }, // 118/142, 28/34
+  1808: { p1: "DR", p2: "FED", houseShare: 0.66, senateShare: 0.79 }, // 94/142, 27/34
+  1810: { p1: "DR", p2: "FED", houseShare: 0.75, senateShare: 0.76 }, // 107/143, 26/34
+  1812: { p1: "DR", p2: "FED", houseShare: 0.62, senateShare: 0.72 }, // 112/181, 26/36
+  1814: { p1: "DR", p2: "FED", houseShare: 0.64, senateShare: 0.61 }, // 117/183, 22/36
+  // 15th-18th Congress: Era of Good Feelings (DR dominance, FED collapse)
+  1816: { p1: "DR", p2: "FED", houseShare: 0.77, senateShare: 0.73 }, // 141/183, 29/40
+  1818: { p1: "DR", p2: "FED", houseShare: 0.85, senateShare: 0.82 }, // 156/183, 36/44
+  1820: { p1: "DR", p2: "FED", houseShare: 0.86, senateShare: 0.90 }, // 158/183, 43/48
+  1822: { p1: "DR", p2: "FED", houseShare: 0.62, senateShare: 0.90 }, // 131/213, 43/48
+  // 19th-22nd Congress: Jacksonian era (DEM = Jacksonian, NR = Adams/Anti-Jacksonian)
+  1824: { p1: "NR", p2: "DEM", houseShare: 0.52, senateShare: 0.55 }, // 105/202 Adams, 26/47
+  1826: { p1: "DEM", p2: "NR", houseShare: 0.56, senateShare: 0.44 }, // 119/213 Jackson, 21/48
+  1828: { p1: "DEM", p2: "NR", houseShare: 0.65, senateShare: 0.55 }, // 139/213, 26/47
+  1830: { p1: "DEM", p2: "NR", houseShare: 0.66, senateShare: 0.60 }, // 141/213, 29/48
+  // 23rd-33rd Congress: Democrat vs Whig
+  1832: { p1: "DEM", p2: "WHIG", houseShare: 0.61, senateShare: 0.65 }, // 147/240, 31/48
+  1834: { p1: "DEM", p2: "WHIG", houseShare: 0.59, senateShare: 0.67 }, // 145/245, 32/48
+  1836: { p1: "DEM", p2: "WHIG", houseShare: 0.56, senateShare: 0.67 }, // 128/242, 35/52
+  1838: { p1: "DEM", p2: "WHIG", houseShare: 0.49, senateShare: 0.54 }, // 119/242, 28/52
+  1840: { p1: "WHIG", p2: "DEM", houseShare: 0.57, senateShare: 0.56 }, // 142/251, 29/52
+  1842: { p1: "DEM", p2: "WHIG", houseShare: 0.64, senateShare: 0.47 }, // 148/232, 25/53
+  1844: { p1: "DEM", p2: "WHIG", houseShare: 0.63, senateShare: 0.55 }, // 143/226, 31/56
+  1846: { p1: "WHIG", p2: "DEM", houseShare: 0.51, senateShare: 0.37 }, // 115/227, 21/58
+  1848: { p1: "DEM", p2: "WHIG", houseShare: 0.48, senateShare: 0.55 }, // 117/242, 33/60
+  1850: { p1: "DEM", p2: "WHIG", houseShare: 0.57, senateShare: 0.55 }, // 140/246, 34/62
+  1852: { p1: "DEM", p2: "WHIG", houseShare: 0.65, senateShare: 0.61 }, // 159/243, 38/62
+  1854: { p1: "REP", p2: "DEM", houseShare: 0.43, senateShare: 0.53 }, // 100/234 Opposition, 33/62
+  // 35th Congress onward: Democrat vs Republican
+  1856: { p1: "DEM", p2: "REP", houseShare: 0.57, senateShare: 0.61 }, // 133/234, 39/64
+  1858: { p1: "REP", p2: "DEM", houseShare: 0.53, senateShare: 0.38 }, // 113/214, 25/66
+  1860: { p1: "REP", p2: "DEM", houseShare: 0.59, senateShare: 0.57 }, // 108/183, 31/54
+  1862: { p1: "REP", p2: "DEM", houseShare: 0.55, senateShare: 0.65 }, // 102/186, 34/52
+  1864: { p1: "REP", p2: "DEM", houseShare: 0.74, senateShare: 0.67 }, // 143/193, 36/54
+  1866: { p1: "REP", p2: "DEM", houseShare: 0.74, senateShare: 0.78 }, // 143/193, 42/54
+  1868: { p1: "REP", p2: "DEM", houseShare: 0.67, senateShare: 0.85 }, // 149/223, 56/66
+  1870: { p1: "REP", p2: "DEM", houseShare: 0.56, senateShare: 0.77 }, // 134/240, 56/73
+  1872: { p1: "REP", p2: "DEM", houseShare: 0.69, senateShare: 0.74 }, // 194/283, 54/73
+  1874: { p1: "DEM", p2: "REP", houseShare: 0.62, senateShare: 0.60 }, // 181/293, 44/73
+  1876: { p1: "DEM", p2: "REP", houseShare: 0.53, senateShare: 0.52 }, // 156/296, 39/75
+  1878: { p1: "DEM", p2: "REP", houseShare: 0.52, senateShare: 0.53 }, // 151/293, 40/76
+  1880: { p1: "REP", p2: "DEM", houseShare: 0.45, senateShare: 0.51 },
+  1882: { p1: "DEM", p2: "REP", houseShare: 0.61, senateShare: 0.48 },
+  1884: { p1: "DEM", p2: "REP", houseShare: 0.56, senateShare: 0.49 },
+  1886: { p1: "DEM", p2: "REP", houseShare: 0.53, senateShare: 0.48 },
+  1888: { p1: "REP", p2: "DEM", houseShare: 0.52, senateShare: 0.55 },
+  1890: { p1: "DEM", p2: "REP", houseShare: 0.71, senateShare: 0.52 },
+  1892: { p1: "DEM", p2: "REP", houseShare: 0.62, senateShare: 0.52 },
+  1894: { p1: "REP", p2: "DEM", houseShare: 0.70, senateShare: 0.52 },
+  1896: { p1: "REP", p2: "DEM", houseShare: 0.65, senateShare: 0.56 },
+  1898: { p1: "REP", p2: "DEM", houseShare: 0.55, senateShare: 0.56 },
+  1900: { p1: "REP", p2: "DEM", houseShare: 0.55, senateShare: 0.60 },
+  1902: { p1: "REP", p2: "DEM", houseShare: 0.52, senateShare: 0.63 },
+  1904: { p1: "REP", p2: "DEM", houseShare: 0.65, senateShare: 0.67 },
+  1906: { p1: "REP", p2: "DEM", houseShare: 0.49, senateShare: 0.64 },
+  1908: { p1: "REP", p2: "DEM", houseShare: 0.61, senateShare: 0.63 },
+  1910: { p1: "DEM", p2: "REP", houseShare: 0.52, senateShare: 0.52 },
+  1912: { p1: "DEM", p2: "REP", houseShare: 0.66, senateShare: 0.56 },
+  1914: { p1: "DEM", p2: "REP", houseShare: 0.53, senateShare: 0.56 },
+  1916: { p1: "DEM", p2: "REP", houseShare: 0.49, senateShare: 0.56 },
+  1918: { p1: "REP", p2: "DEM", houseShare: 0.56, senateShare: 0.51 },
+  1920: { p1: "REP", p2: "DEM", houseShare: 0.70, senateShare: 0.63 },
+  1922: { p1: "REP", p2: "DEM", houseShare: 0.52, senateShare: 0.56 },
+  1924: { p1: "REP", p2: "DEM", houseShare: 0.58, senateShare: 0.58 },
+  1926: { p1: "REP", p2: "DEM", houseShare: 0.55, senateShare: 0.55 },
+  1928: { p1: "REP", p2: "DEM", houseShare: 0.63, senateShare: 0.63 },
+  1930: { p1: "DEM", p2: "REP", houseShare: 0.50, senateShare: 0.50 },
+  1932: { p1: "DEM", p2: "REP", houseShare: 0.72, senateShare: 0.63 },
+  1934: { p1: "DEM", p2: "REP", houseShare: 0.74, senateShare: 0.72 },
+  1936: { p1: "DEM", p2: "REP", houseShare: 0.77, senateShare: 0.79 },
+  1938: { p1: "DEM", p2: "REP", houseShare: 0.60, senateShare: 0.72 },
+  1940: { p1: "DEM", p2: "REP", houseShare: 0.61, senateShare: 0.69 },
+  1942: { p1: "DEM", p2: "REP", houseShare: 0.51, senateShare: 0.63 },
+  1944: { p1: "DEM", p2: "REP", houseShare: 0.56, senateShare: 0.58 },
+  1946: { p1: "REP", p2: "DEM", houseShare: 0.57, senateShare: 0.54 },
+  1948: { p1: "DEM", p2: "REP", houseShare: 0.60, senateShare: 0.56 },
+  1950: { p1: "DEM", p2: "REP", houseShare: 0.54, senateShare: 0.51 },
+  1952: { p1: "REP", p2: "DEM", houseShare: 0.51, senateShare: 0.51 },
+  1954: { p1: "DEM", p2: "REP", houseShare: 0.53, senateShare: 0.51 },
+  1956: { p1: "DEM", p2: "REP", houseShare: 0.53, senateShare: 0.51 },
+  1958: { p1: "DEM", p2: "REP", houseShare: 0.64, senateShare: 0.66 },
+  1960: { p1: "DEM", p2: "REP", houseShare: 0.60, senateShare: 0.65 },
+  1962: { p1: "DEM", p2: "REP", houseShare: 0.59, senateShare: 0.67 },
+  1964: { p1: "DEM", p2: "REP", houseShare: 0.68, senateShare: 0.68 },
+  1966: { p1: "DEM", p2: "REP", houseShare: 0.57, senateShare: 0.64 },
+  1968: { p1: "DEM", p2: "REP", houseShare: 0.56, senateShare: 0.57 },
+  1970: { p1: "DEM", p2: "REP", houseShare: 0.59, senateShare: 0.55 },
+  1972: { p1: "DEM", p2: "REP", houseShare: 0.56, senateShare: 0.57 },
+  1974: { p1: "DEM", p2: "REP", houseShare: 0.67, senateShare: 0.61 },
+  1976: { p1: "DEM", p2: "REP", houseShare: 0.67, senateShare: 0.62 },
+  1978: { p1: "DEM", p2: "REP", houseShare: 0.64, senateShare: 0.59 },
+  1980: { p1: "DEM", p2: "REP", houseShare: 0.56, senateShare: 0.47 },
+  1982: { p1: "DEM", p2: "REP", houseShare: 0.62, senateShare: 0.46 },
+  1984: { p1: "DEM", p2: "REP", houseShare: 0.58, senateShare: 0.47 },
+  1986: { p1: "DEM", p2: "REP", houseShare: 0.59, senateShare: 0.55 },
+  1988: { p1: "DEM", p2: "REP", houseShare: 0.60, senateShare: 0.55 },
+  1990: { p1: "DEM", p2: "REP", houseShare: 0.61, senateShare: 0.57 },
+  1992: { p1: "DEM", p2: "REP", houseShare: 0.59, senateShare: 0.57 },
+  1994: { p1: "REP", p2: "DEM", houseShare: 0.53, senateShare: 0.53 },
+  1996: { p1: "REP", p2: "DEM", houseShare: 0.52, senateShare: 0.55 },
+  1998: { p1: "REP", p2: "DEM", houseShare: 0.51, senateShare: 0.55 },
+  2000: { p1: "REP", p2: "DEM", houseShare: 0.51, senateShare: 0.50 },
+  2002: { p1: "REP", p2: "DEM", houseShare: 0.53, senateShare: 0.51 },
+  2004: { p1: "REP", p2: "DEM", houseShare: 0.53, senateShare: 0.55 },
+  2006: { p1: "DEM", p2: "REP", houseShare: 0.54, senateShare: 0.51 },
+  2008: { p1: "DEM", p2: "REP", houseShare: 0.59, senateShare: 0.59 },
+  2010: { p1: "REP", p2: "DEM", houseShare: 0.56, senateShare: 0.47 },
+  2012: { p1: "REP", p2: "DEM", houseShare: 0.54, senateShare: 0.45 },
+  2014: { p1: "REP", p2: "DEM", houseShare: 0.57, senateShare: 0.54 },
+  2016: { p1: "REP", p2: "DEM", houseShare: 0.55, senateShare: 0.52 },
+  2018: { p1: "DEM", p2: "REP", houseShare: 0.54, senateShare: 0.47 },
+  2020: { p1: "DEM", p2: "REP", houseShare: 0.51, senateShare: 0.50 },
+  2022: { p1: "REP", p2: "DEM", houseShare: 0.51, senateShare: 0.49 },
+  2024: { p1: "REP", p2: "DEM", houseShare: 0.52, senateShare: 0.53 },
 };
 
 // Lean sets for senate/governor baseline (independent of presidential vote)
@@ -307,7 +427,8 @@ function buildYear(year: number): YearData {
   const states: Record<string, StateData> = {};
   const govOvr = GOV_OVERRIDES[year] || {};
   const splits = new Set(SPLIT_SENATE_BY_YEAR[year] || []);
-  const demShare = NATIONAL_DEM_SHARE[year] || 0.5;
+  const cd = CONGRESS_DATA[year] || { p1: "DEM", p2: "REP", houseShare: 0.5, senateShare: 0.5 };
+  const majorityShare = cd.houseShare;
 
   for (const name of NAMES) {
     const admitted = STATE_ADMISSION[name] || 9999;
@@ -326,20 +447,20 @@ function buildYear(year: number): YearData {
       else presCandidate = activeEl.thirdPartyCandidates?.[presParty] || (year < 1860 && (presParty === "DR" || presParty === "FED") ? (presParty === "DR" ? activeEl.demCandidate : activeEl.repCandidate) : PARTY_FULL_NAMES[presParty] || presParty);
     }
 
-    // Senate (independent baseline: state lean + split overrides)
-    const senBase = year < 1856 ? presParty : R_BASE.has(name) ? "REP" : D_BASE.has(name) ? "DEM" : presParty;
+    // Senate — use CONGRESS_DATA parties for historical accuracy
+    const senBase = year >= 1856 ? (R_BASE.has(name) ? "REP" : D_BASE.has(name) ? "DEM" : presParty) : (winSet.has(name) ? cd.p1 : cd.p2);
     const isSplit = splits.has(name);
-    const senOther = senBase === "DEM" ? "REP" : senBase === "REP" ? "DEM" : "REP";
+    const senOther = senBase === cd.p1 ? cd.p2 : cd.p1;
 
-    // Governor (independent: state lean + overrides)
-    let govParty = year < 1856 ? presParty : R_BASE.has(name) ? "REP" : D_BASE.has(name) ? "DEM" : presParty;
+    // Governor — use CONGRESS_DATA parties for historical accuracy
+    let govParty = year >= 1856 ? (R_BASE.has(name) ? "REP" : D_BASE.has(name) ? "DEM" : presParty) : (winSet.has(name) ? cd.p1 : cd.p2);
     if (govOvr[name]) govParty = govOvr[name];
 
     // House (proportional based on national wave + state lean adjustment)
     const totalH = HOUSE[name] || Math.max(1, Math.floor((EV[name] || 3) - 2));
-    let stateShare = demShare;
-    if (R_BASE.has(name)) stateShare = Math.max(0.1, demShare - 0.2);
-    else if (D_BASE.has(name)) stateShare = Math.min(0.9, demShare + 0.15);
+    let stateShare = majorityShare;
+    if (R_BASE.has(name)) stateShare = Math.max(0.1, majorityShare - 0.2);
+    else if (D_BASE.has(name)) stateShare = Math.min(0.9, majorityShare + 0.15);
     const hash = (name.charCodeAt(0) + name.length) % 10;
     stateShare = Math.max(0, Math.min(1, stateShare + (hash - 5) * 0.02));
     const dH = Math.round(totalH * stateShare);

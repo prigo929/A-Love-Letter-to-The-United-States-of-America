@@ -3,7 +3,7 @@ import { memo, useMemo, useCallback, useState, useEffect } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { motion, AnimatePresence } from "framer-motion";
 import type { ViewMode } from "@/lib/data/electoral-data";
-import { getStateData, getFlipData, STATE_ADMISSION, PARTY_COLORS, ELECTORAL_HISTORY, PARTY_FULL_NAMES } from "@/lib/data/electoral-data";
+import { getStateData, getFlipData, STATE_ADMISSION, PARTY_COLORS, ELECTORAL_HISTORY, PARTY_FULL_NAMES, CONGRESS_DATA } from "@/lib/data/electoral-data";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 function pc(p: string) { return PARTY_COLORS[p] || "#C9A84C"; }
@@ -122,10 +122,8 @@ interface CartoState { name: string; squares: CSquare[]; bbox: { x: number, y: n
 function buildCartogram(year: number): CartoState[] {
   const yd = ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0];
   const statesArr: CartoState[] = [];
-
-  let p1 = "DEM", p2 = "REP";
-  if (year < 1828) { p1 = "DR"; p2 = "FED"; }
-  else if (year < 1856) { p1 = "DEM"; p2 = "WHIG"; }
+  const cd = CONGRESS_DATA[year] || { p1: "DEM", p2: "REP" };
+  const p1 = cd.p1, p2 = cd.p2;
 
   for (const [name, [ax, ay]] of Object.entries(ANCHORS)) {
     const sd = yd.states[name];
@@ -264,9 +262,8 @@ const GeographicMap = memo(({ year, viewMode, hovered, onGeoEnter, clearHover, o
   onStateClick?: (n: string) => void
 }) => {
   const yd = ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0];
-  let p1 = "DEM", p2 = "REP";
-  if (year < 1828) { p1 = "DR"; p2 = "FED"; }
-  else if (year < 1856) { p1 = "DEM"; p2 = "WHIG"; }
+  const cd = CONGRESS_DATA[year] || { p1: "DEM", p2: "REP" };
+  const p1 = cd.p1, p2 = cd.p2;
 
   return (
     <motion.div key="geo" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
