@@ -141,7 +141,7 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
         })}
 
         {/* Center Threshold Line */}
-        <div className="absolute inset-y-0 left-1/2 z-10 w-[1px] -translate-x-1/2 bg-[#F5F0E8]/40" />
+        <div className="absolute inset-y-0 left-1/2 z-10 w-[3px] -translate-x-1/2 bg-black" />
         
         {/* Threshold Label (Above the bar) */}
         <div className="absolute left-1/2 -top-[16px] z-20 -translate-x-1/2 whitespace-nowrap bg-[#080B12] px-1 font-mono text-[8px] font-bold tracking-tighter text-[#8A8780]">
