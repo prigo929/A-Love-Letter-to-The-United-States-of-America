@@ -19,7 +19,7 @@ import { PRESIDENTIAL_TRANSFERS } from "@/lib/data/constitution-data";
 export const metadata: Metadata = {
   title: "250-Year Track Record | Constitution | America: The Greatest Nation",
   description:
-    "59 presidential elections. Zero coups. Zero suspensions. The unbroken 237-year record of American constitutional democracy — the longest in recorded history.",
+    "60 presidential elections. Zero coups. Zero suspensions. The unbroken 237-year record of American constitutional democracy — the longest in recorded history.",
   alternates: { canonical: "/constitution/democracy-track-record" },
 };
 
@@ -100,8 +100,8 @@ export default async function DemocracyTrackRecordPage() {
           </h1>
           <p className="max-w-2xl font-body text-lg leading-relaxed text-[#B8B4AC]">
             {isRo
-              ? "59 de alegeri prezidențiale. Zero lovituri de stat. Zero suspendări ale Constituției. Zero monarhi. Zero președinți pe viață. Un record pe care nicio altă națiune de pe Pământ nu îl poate egala."
-              : "59 presidential elections. Zero coups. Zero suspensions of the Constitution. Zero monarchs. Zero presidents-for-life. A record no other nation on Earth comes close to matching."}
+              ? "60 de alegeri prezidențiale. Zero lovituri de stat. Zero suspendări ale Constituției. Zero monarhi. Zero președinți pe viață. Un record pe care nicio altă națiune de pe Pământ nu îl poate egala."
+              : "60 presidential elections. Zero coups. Zero suspensions of the Constitution. Zero monarchs. Zero presidents-for-life. A record no other nation on Earth comes close to matching."}
           </p>
         </div>
       </div>

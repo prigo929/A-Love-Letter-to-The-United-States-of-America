@@ -29,6 +29,7 @@ import { MidnightGallery } from "@/components/constitution/MidnightGallery";
 import { GearDiagram } from "@/components/constitution/GearDiagram";
 import { LuxuryClosing } from "@/components/constitution/LuxuryClosing";
 import { FederalismHook } from "@/components/constitution/FederalismHook";
+import { ElectoralMap } from "@/components/electoral-map/ElectoralMap";
 import {
   ExhibitCase,
   AccessionLabel,
@@ -53,7 +54,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/constitution" },
   openGraph: {
     title: "The Longest Experiment in Democracy",
-    description: "4,543 words that govern a $31 trillion economy. 59 presidential elections. Zero coups.",
+    description: "4,543 words that govern a $31 trillion economy. 60 presidential elections. Zero coups.",
     url: "/constitution",
     images: [{ url: "/images/constitution/bill-of-rights-page-1.jpg", width: 1200, height: 630, alt: "The United States Bill of Rights" }],
   },
@@ -163,8 +164,8 @@ export default async function ConstitutionPage() {
               </p>
               <p className="font-body text-lg leading-relaxed text-[#B8B4AC]">
                 {isRo
-                  ? "237 de ani de democrație constituțională neîntreruptă. 59 de alegeri prezidențiale. Niciun coup. Nicio suspendare. Niciun monarh. Un record pe care nicio altă națiune de pe Pământ nu îl poate egala."
-                  : "237 years of unbroken constitutional democracy. 59 presidential elections. Zero coups. Zero suspensions. Zero monarchs. A record no other nation on Earth comes close to matching."}
+                  ? "237 de ani de democrație constituțională neîntreruptă. 60 de alegeri prezidențiale. Niciun coup. Nicio suspendare. Niciun monarh. Un record pe care nicio altă națiune de pe Pământ nu îl poate egala."
+                  : "237 years of unbroken constitutional democracy. 60 presidential elections. Zero coups. Zero suspensions. Zero monarchs. A record no other nation on Earth comes close to matching."}
               </p>
             </div>
             <ConservationSpotlight>
@@ -446,7 +447,7 @@ export default async function ConstitutionPage() {
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          RIGHTS AT RISK + GLOBAL CONTEXT
+          VII. THE GREAT STABILITY — Electoral Archive Map
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="relative bg-[#080B12]">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
@@ -455,6 +456,40 @@ export default async function ConstitutionPage() {
 
           <Entablature
             chapter="VII"
+            title={isRo ? "Marea Stabilitate" : "The Great Stability"}
+          />
+
+          <Section id="electoral-archive">
+            <NutGraf>
+              {isRo
+                ? "60 de Alegeri. 0 Interuperi."
+                : "60 Elections. 0 Interruptions."}
+            </NutGraf>
+            <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
+              {isRo ? "Arhiva Electorală Interactivă" : "Interactive Electoral Archive"}
+            </h2>
+            <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
+              {isRo
+                ? "Explorează reziliența arhitecturii constituționale a Americii. Scrubbează prin secole de date electorale pentru a vedea cum democrația a funcționat neîncetat, indiferent de războaie, crize sau schimbări tehnologice."
+                : "Explore the resilience of America's constitutional architecture. Scrub through centuries of electoral data to see how democracy has functioned relentlessly, regardless of wars, crises, or technological shifts."}
+            </p>
+            
+            <div className="rounded-2xl border border-[rgba(201,168,76,0.15)] bg-[#0A0E14] p-4 md:p-8 shadow-2xl">
+              <ElectoralMap isRo={isRo} />
+            </div>
+
+            <div className="mt-6 flex justify-end pb-8">
+              <Link href="/constitution/electoral-map" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#C9A84C] hover:text-[#E8C878] transition-colors">
+                {isRo ? "Vezi Arhiva Completă →" : "View Full Archive →"}
+              </Link>
+            </div>
+          </Section>
+
+          {/* ══════════════════════════════════════════════════════════════════════
+              VIII. GLOBAL CONTEXT
+              ══════════════════════════════════════════════════════════════════════ */}
+          <Entablature
+            chapter="VIII"
             title={isRo ? "Context Global" : "Global Context"}
           />
 
@@ -479,9 +514,9 @@ export default async function ConstitutionPage() {
             </div>
           </Section>
 
-          {/* ── VIII. The World Without ───────────────────────────────── */}
+          {/* ── IX. The World Without ───────────────────────────────── */}
           <Entablature
-            chapter="VIII"
+            chapter="IX"
             title={isRo ? "Lumea Fără" : "The World Without"}
           />
 
