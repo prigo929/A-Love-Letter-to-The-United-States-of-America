@@ -17,30 +17,31 @@ export function StateDetailPanel({
     .filter(yd => yd.states[stateName])
     .map(yd => ({ year: yd.year, party: yd.states[stateName]?.president.party || "" }));
 
-  const races: { label: string; party: string; detail: string; flipped: boolean }[] = [
+  const races: { label: string; blocks: { party: string; detail: string; flipped: boolean }[] }[] = [
     {
       label: isRo ? "Președinte" : "President",
-      party: data.president.party,
-      detail: data.president.party,
-      flipped: flip.presFlip,
+      blocks: [{ party: data.president.party, detail: data.president.party, flipped: flip.presFlip }],
     },
     {
       label: isRo ? "Senat" : "Senate",
-      party: data.senate.party1,
-      detail: data.senate.split ? `${data.senate.party1} / ${data.senate.party2}` : data.senate.party1,
-      flipped: flip.senFlip1 || flip.senFlip2,
+      blocks: data.senate.split
+        ? [
+            { party: data.senate.party1, detail: data.senate.party1, flipped: flip.senFlip1 },
+            { party: data.senate.party2, detail: data.senate.party2, flipped: flip.senFlip2 },
+          ]
+        : [{ party: data.senate.party1, detail: data.senate.party1, flipped: flip.senFlip1 || flip.senFlip2 }],
     },
     {
       label: isRo ? "Cameră" : "House",
-      party: data.house.demReps >= data.house.repReps ? "DEM" : "REP",
-      detail: `${data.house.demReps} DEM · ${data.house.repReps} REP`,
-      flipped: flip.houseFlipDem > 0 || flip.houseFlipRep > 0,
+      blocks: [{
+        party: data.house.demReps >= data.house.repReps ? "DEM" : "REP",
+        detail: `${data.house.demReps} DEM · ${data.house.repReps} REP`,
+        flipped: flip.houseFlipDem > 0 || flip.houseFlipRep > 0,
+      }],
     },
     {
       label: isRo ? "Guvernator" : "Governor",
-      party: data.governor.party,
-      detail: data.governor.party,
-      flipped: flip.govFlip,
+      blocks: [{ party: data.governor.party, detail: data.governor.party, flipped: flip.govFlip }],
     },
   ];
 
@@ -83,24 +84,35 @@ export function StateDetailPanel({
           {races.map((r) => (
             <div key={r.label}
               className="relative overflow-hidden border border-[rgba(255,255,255,0.04)] bg-[rgba(255,255,255,0.02)]"
-              style={{ borderLeftWidth: 3, borderLeftColor: pc(r.party) }}
+              style={{ borderLeftWidth: 3, borderLeftColor: pc(r.blocks[0].party) }}
             >
               <div className="px-3 py-2.5">
                 <div className="flex items-center justify-between mb-1">
                   <span className="font-mono text-[8px] uppercase tracking-widest text-[#6B6860]">
                     {r.label}
                   </span>
-                  {r.flipped && (
+                  {r.blocks.length === 1 && r.blocks[0].flipped && (
                     <span className="animate-pulse rounded-sm bg-[#C9A84C]/20 px-1 py-[1px] font-mono text-[7px] font-bold uppercase tracking-widest text-[#C9A84C]">
                       FLIP
                     </span>
                   )}
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <div className="h-2 w-2 rounded-[1px]" style={{ background: pc(r.party) }} />
-                  <span className="font-mono text-[12px] font-bold text-[#F5F0E8]">
-                    {r.detail}
-                  </span>
+                <div className="mt-1 flex flex-col gap-1">
+                  {r.blocks.map((b, i) => (
+                    <div key={i} className="flex items-center justify-between">
+                      <div className="flex items-center gap-1.5">
+                        <div className="h-2 w-2 rounded-[1px]" style={{ background: pc(b.party) }} />
+                        <span className="font-mono text-[12px] font-bold text-[#F5F0E8]">
+                          {b.detail}
+                        </span>
+                      </div>
+                      {r.blocks.length > 1 && b.flipped && (
+                        <span className="animate-pulse rounded-sm bg-[#C9A84C]/20 px-1 py-[1px] font-mono text-[7px] font-bold uppercase tracking-widest text-[#C9A84C]">
+                          FLIP
+                        </span>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
