@@ -48,11 +48,10 @@ export function TimelineScrubber({
     snap(e.clientX);
   }, [snap]);
 
-  // Show labels for every ~20 years on dense timeline, all years if <15 elections
+  // Show labels only for era boundaries, min/max, and current year to prevent overlap
   const showLabel = (y: number) => {
-    if (YEARS.length <= 15) return true;
     if (y === currentYear || y === MIN_YEAR || y === MAX_YEAR) return true;
-    return y % 20 === 0 || y === hoverY;
+    return ERAS.some(era => era.start === y);
   };
 
   const phX = yearToX(currentYear);
@@ -127,24 +126,24 @@ export function TimelineScrubber({
         </svg>
 
         {/* HTML Labels for accurate positioning without SVG scaling overlap */}
-        <div className="absolute top-[52px] left-[3%] right-[3%] h-4 pointer-events-none">
+        <div className="absolute top-[52px] left-0 right-0 h-4 pointer-events-none px-[24px]">
           {YEARS.map((y, idx) => {
             const active = y === currentYear;
             const hov = y === hoverY;
-            if (!showLabel(y)) return null;
+            if (!showLabel(y) && !hov) return null;
             
-            // Prevent collision: hide year if it's too close to currentYear but not active/hover
-            if (!active && !hov && y !== MIN_YEAR && y !== MAX_YEAR && Math.abs(y - currentYear) <= 8) return null;
+            // Prevent collision: hide year if it's too close to currentYear but not active
+            if (!active && y !== MIN_YEAR && y !== MAX_YEAR && Math.abs(y - currentYear) <= 12) return null;
 
             let positionClasses = "-translate-x-1/2";
-            let leftStyle = `${(idx / (YEARS.length - 1)) * 100}%`;
+            let leftStyle = `${((y - MIN_YEAR) / (MAX_YEAR - MIN_YEAR)) * 100}%`;
             
-            if (idx === 0) { positionClasses = ""; leftStyle = "0%"; }
-            else if (idx === YEARS.length - 1) { positionClasses = "-translate-x-full"; leftStyle = "100%"; }
+            if (y === MIN_YEAR) { positionClasses = ""; leftStyle = "0%"; }
+            else if (y === MAX_YEAR) { positionClasses = "-translate-x-full"; leftStyle = "100%"; }
 
             return (
-              <div key={`lbl-${y}`} className={`absolute font-mono tracking-tighter ${positionClasses} ${active ? "text-[10px] font-bold text-[#C9A84C] -translate-y-1" : hov ? "text-[9px] text-[rgba(201,168,76,0.6)]" : "text-[9px] text-[rgba(201,168,76,0.3)]"}`} style={{ left: leftStyle, fontVariantNumeric: "tabular-nums" }}>
-                {y}
+              <div key={`lbl-${y}`} className={`absolute font-mono tracking-tighter whitespace-nowrap ${positionClasses} ${active ? "text-[10px] font-bold text-[#C9A84C] -translate-y-[6px] z-10" : hov ? "text-[9px] text-[rgba(201,168,76,0.6)] z-0" : "text-[9px] text-[rgba(201,168,76,0.3)] z-0"}`} style={{ left: leftStyle, fontVariantNumeric: "tabular-nums" }}>
+                <span className={active ? "bg-[#080B12] px-1 py-0.5 rounded-sm" : ""}>{y}</span>
               </div>
             );
           })}
