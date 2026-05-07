@@ -284,16 +284,9 @@ export function MapRenderer({
 
                     // Determine if this state is flipped in the current view
                     let isFlipped = false;
-                    let flipUrl = "url(#flip-hash)";
-                    let flipClip = "none";
                     if (!isTerritory) {
                       if (viewMode === "President" && flip.presFlip) isFlipped = true;
                       else if (viewMode === "Governor" && flip.govFlip) isFlipped = true;
-                      else if (viewMode === "Senate") {
-                        if (flip.senFlip1 && flip.senFlip2) { isFlipped = true; flipUrl = "url(#flip-hash)"; }
-                        else if (flip.senFlip1) { isFlipped = true; flipUrl = "url(#flip-hash)"; flipClip = "url(#clip-half-1)"; }
-                        else if (flip.senFlip2) { isFlipped = true; flipUrl = "url(#flip-hash)"; flipClip = "url(#clip-half-2)"; }
-                      }
                     }
 
                     // Base layer
@@ -310,13 +303,38 @@ export function MapRenderer({
                     );
 
                     // Flip hash overlay (rendered on top)
-                    if (isFlipped) {
+                    if (!isTerritory && viewMode === "Senate") {
+                      if (flip.senFlip1) {
+                        elements.push(
+                          <Geography key={`${geo.rsmKey}-flip-1`} geography={geo}
+                            style={{
+                              default: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-1)", stroke: "none", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
+                              hover: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-1)", stroke: "none", outline: "none", pointerEvents: "none" as const },
+                              pressed: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-1)", outline: "none" },
+                            }}
+                            tabIndex={-1}
+                          />
+                        );
+                      }
+                      if (flip.senFlip2) {
+                        elements.push(
+                          <Geography key={`${geo.rsmKey}-flip-2`} geography={geo}
+                            style={{
+                              default: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-2)", stroke: "none", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
+                              hover: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-2)", stroke: "none", outline: "none", pointerEvents: "none" as const },
+                              pressed: { fill: "url(#flip-hash)", clipPath: "url(#clip-half-2)", outline: "none" },
+                            }}
+                            tabIndex={-1}
+                          />
+                        );
+                      }
+                    } else if (isFlipped) {
                       elements.push(
                         <Geography key={`${geo.rsmKey}-flip`} geography={geo}
                           style={{
-                            default: { fill: flipUrl, clipPath: flipClip !== "none" ? flipClip : undefined, stroke: "none", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
-                            hover: { fill: flipUrl, clipPath: flipClip !== "none" ? flipClip : undefined, stroke: "none", outline: "none", pointerEvents: "none" as const },
-                            pressed: { fill: flipUrl, clipPath: flipClip !== "none" ? flipClip : undefined, outline: "none" },
+                            default: { fill: "url(#flip-hash)", stroke: "none", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
+                            hover: { fill: "url(#flip-hash)", stroke: "none", outline: "none", pointerEvents: "none" as const },
+                            pressed: { fill: "url(#flip-hash)", outline: "none" },
                           }}
                           tabIndex={-1}
                         />
