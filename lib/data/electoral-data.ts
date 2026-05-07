@@ -234,6 +234,41 @@ export function getStateData(year: number, stateName: string): StateData {
   };
 }
 
+// Universal flip detection across all 4 views
+export interface FlipInfo {
+  presFlip: boolean;
+  senFlip: boolean;       // any change in delegation composition
+  govFlip: boolean;
+  houseFlipDem: number;   // seats gained by DEM vs previous
+  houseFlipRep: number;   // seats gained by REP vs previous
+}
+
+export function getFlipData(year: number, stateName: string): FlipInfo {
+  const years = ELECTORAL_HISTORY.map(y => y.year).sort((a, b) => a - b);
+  const idx = years.indexOf(year);
+  const noFlip: FlipInfo = { presFlip: false, senFlip: false, govFlip: false, houseFlipDem: 0, houseFlipRep: 0 };
+  if (idx <= 0) return noFlip;
+
+  const cur = getStateData(year, stateName);
+  const prev = getStateData(years[idx - 1], stateName);
+  if (!cur.president.party || !prev.president.party) return noFlip;
+
+  const presFlip = cur.president.party !== prev.president.party;
+  const govFlip = cur.governor.party !== prev.governor.party;
+
+  // Senate: compare the pair of parties (order-independent)
+  const curSen = [cur.senate.party1, cur.senate.party2].sort().join(",");
+  const prevSen = [prev.senate.party1, prev.senate.party2].sort().join(",");
+  const senFlip = curSen !== prevSen;
+
+  // House: compare DEM seat counts
+  const demDiff = cur.house.demReps - prev.house.demReps;
+  const houseFlipDem = Math.max(0, demDiff);
+  const houseFlipRep = Math.max(0, -demDiff);
+
+  return { presFlip, senFlip, govFlip, houseFlipDem, houseFlipRep };
+}
+
 export const STATE_CENTROIDS: Record<string, [number, number]> = {
   Alabama:[-86.8,32.8],Alaska:[-153.5,64.2],Arizona:[-111.7,34.3],Arkansas:[-92.4,34.9],
   California:[-119.7,37.3],Colorado:[-105.5,39.0],Connecticut:[-72.7,41.6],Delaware:[-75.5,39.0],
@@ -250,3 +285,4 @@ export const STATE_CENTROIDS: Record<string, [number, number]> = {
   Virginia:[-78.9,37.5],Washington:[-120.7,47.4],"West Virginia":[-80.6,38.6],
   Wisconsin:[-89.8,44.6],Wyoming:[-107.6,43.0]
 };
+
