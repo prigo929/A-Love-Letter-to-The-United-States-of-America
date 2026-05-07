@@ -87,9 +87,12 @@ const HOUSE: Record<string, number> = {
 
 const NAMES = Object.keys(STATE_ADMISSION);
 
-// ── Historical Presidential Winners ───────────────────────────────────────
-// Format: { year: { winner_party, states_for_winner[] } }
-// States not listed go to the opponent party. Pre-admission states are excluded.
+/**
+ * Represents a single Presidential Election cycle.
+ * @field winner The national winning party.
+ * @field winnerStates States that voted for the winner.
+ * @field anomalies Used for non-binary outcomes (split states, faithless electors, or 3rd party wins).
+ */
 type ElectionRecord = { winner: string; loser: string; winnerStates: string[]; demCandidate?: string; repCandidate?: string; anomalies?: Record<string, string>; thirdPartyCandidates?: Record<string, string>; note?: string; unopposed?: boolean };
 
 const ELECTIONS: Record<number, ElectionRecord> = {
@@ -388,8 +391,12 @@ const SENATE_OVERRIDES: Record<number, Record<string, string>> = {
   1938: { "Ohio": "REP", "Pennsylvania": "REP" },
 };
 
-// Historical Congress composition: [majorityParty, minorityParty, majorityHouseShare, majoritySenateShare]
-// Sources: Wikipedia "Party divisions of United States Congresses", US Senate/House historical offices
+/**
+ * Historical Congress composition.
+ * Tracks the majority (p1) and minority (p2) parties, along with their 
+ * respective seat shares used for national wave calculations.
+ * Sources: Wikipedia "Party divisions of United States Congresses", US Senate/House historical offices
+ */
 export type CongressInfo = { p1: string; p2: string; houseShare: number; senateShare: number };
 export const CONGRESS_DATA: Record<number, CongressInfo> = {
   1788: { p1: "FED", p2: "DR", houseShare: 0.57, senateShare: 0.69 },
@@ -517,7 +524,13 @@ export const CONGRESS_DATA: Record<number, CongressInfo> = {
 const R_BASE = new Set(["Alabama","Alaska","Arkansas","Idaho","Indiana","Kansas","Kentucky","Louisiana","Mississippi","Missouri","Montana","Nebraska","North Dakota","Oklahoma","South Carolina","South Dakota","Tennessee","Texas","Utah","West Virginia","Wyoming"]);
 const D_BASE = new Set(["California","Connecticut","Delaware","Hawaii","Illinois","Maryland","Massachusetts","New Jersey","New York","Oregon","Rhode Island","Vermont","Washington"]);
 
-// Deterministic logic for active states based on 4-year cycles
+/**
+ * Deterministic logic for active Senate seats.
+ * US Senate seats are divided into three classes, with one class up for election every 2 years.
+ * Since we don't have a full seat-by-seat database for the 18th/19th century, we use a 
+ * stable hash-based assignment to ensure the same states are "active" in the same cycles
+ * every time the app runs.
+ */
 function isSenateActive(year: number, state: string): boolean {
   const stateHash = state.charCodeAt(0) + state.charCodeAt(state.length - 1);
   const classA = stateHash % 3;
@@ -526,32 +539,39 @@ function isSenateActive(year: number, state: string): boolean {
   return classA === cycle || classB === cycle;
 }
 
+// Governors usually elected in Presidential years (e.g., WA, NC)
 const GOV_PRES_YEAR_STATES = new Set([
   "Delaware", "Indiana", "Missouri", "Montana", "North Carolina", 
   "North Dakota", "Utah", "Washington", "West Virginia", "New Hampshire", "Vermont"
 ]);
 
+/**
+ * Determines if a gubernatorial election is held in a given year.
+ * Most states use 4-year terms synced to Midterms, some to Presidential years,
+ * and a few (NH, VT) have 2-year terms.
+ */
 function isGovernorActive(year: number, state: string): boolean {
-  if (state === "New Hampshire" || state === "Vermont") return true;
-  if (year < 1920) return (state.charCodeAt(0) + year) % 2 === 0;
+  if (state === "New Hampshire" || state === "Vermont") return true; // 2-year terms
+  if (year < 1920) return (state.charCodeAt(0) + year) % 2 === 0; // Historical approximation
   const isPresYear = year % 4 === 0;
   if (isPresYear) return GOV_PRES_YEAR_STATES.has(state);
-  // Midterm years (most governors)
+  // Midterm years (most states)
   return !GOV_PRES_YEAR_STATES.has(state) && (year % 2 === 0) && !["New Jersey", "Virginia"].includes(state);
 }
 
+/**
+ * The core engine of the Electoral Archive. 
+ * Constructs a full 50-state snapshot for any given year by combining:
+ * 1. Presidential election results (or fallbacks to previous cycles)
+ * 2. Congress party divisions (majority/minority shares)
+ * 3. Specific mid-term seat flip overrides
+ * 4. State-level party lean (D_BASE / R_BASE)
+ */
 function buildYear(year: number): YearData {
   const el = ELECTIONS[year];
   const pData = PRESIDENTIAL_DATA[year] || { dem: "Off-Year", rep: "Off-Year", demV: 0, repV: 0, totV: 0 };
-  const fallback: YearData = { 
-    year, states: {}, 
-    demCandidate: pData.dem, repCandidate: pData.rep, 
-    demPopVote: pData.demV, repPopVote: pData.repV, totalPopVote: pData.totV, 
-    thirdPartyCandidates: el?.thirdPartyCandidates,
-    unopposed: el?.unopposed 
-  };
   
-  // Use the most recent presidential election for the baseline Map fill if not an election year
+  // For off-year maps, we maintain the colors of the most recent Presidential election
   const presElectionYears = Object.keys(ELECTIONS).map(Number).sort((a,b)=>a-b);
   const lastPresYear = presElectionYears.filter(y => y <= year).pop() || 1789;
   const activeEl = ELECTIONS[lastPresYear];
@@ -565,40 +585,43 @@ function buildYear(year: number): YearData {
 
   for (const name of NAMES) {
     const admitted = STATE_ADMISSION[name] || 9999;
-    if (admitted > year) continue;
+    if (admitted > year) continue; // State hadn't joined the Union yet
     
-    // Presidential (if not an election year, this party will be used for the "dormant" state)
+    // Presidential: Determine winner party and candidate for this state
     let presParty = winSet.has(name) ? activeEl.winner : activeEl.loser;
     let presCandidate: string | undefined = undefined;
+    
+    // Handle split-ticket states or third-party wins (e.g., Wallace '68, Thurmond '48)
     if (activeEl.anomalies && activeEl.anomalies[name]) {
       presParty = activeEl.anomalies[name];
     }
-    if (!el) presCandidate = undefined; 
+
+    if (!el) presCandidate = undefined; // No candidate name in off-years
     else {
       if (presParty === "DEM") presCandidate = activeEl.demCandidate || pData.dem;
       else if (presParty === "REP") presCandidate = activeEl.repCandidate || pData.rep;
       else presCandidate = activeEl.thirdPartyCandidates?.[presParty] || (year < 1860 && (presParty === "DR" || presParty === "FED") ? (presParty === "DR" ? activeEl.demCandidate : activeEl.repCandidate) : PARTY_FULL_NAMES[presParty] || presParty);
     }
 
-    // Senate — use CONGRESS_DATA parties for historical accuracy
+    // Senate: Use CONGRESS_DATA parties for historical fidelity (e.g. Whig vs Dem)
     let senBase = year >= 1856 ? (R_BASE.has(name) ? "REP" : D_BASE.has(name) ? "DEM" : presParty) : (winSet.has(name) ? cd.p1 : cd.p2);
     if (SENATE_OVERRIDES[year] && SENATE_OVERRIDES[year][name]) {
-      senBase = SENATE_OVERRIDES[year][name];
+      senBase = SENATE_OVERRIDES[year][name]; // Midterm wave seat flips
     }
     const isSplit = splits.has(name);
     const senOther = senBase === cd.p1 ? cd.p2 : cd.p1;
 
-    // Governor — use CONGRESS_DATA parties for historical accuracy
+    // Governor: Mostly tracks presidential lean with overrides for strong opposing-party governors
     let govParty = year >= 1856 ? (R_BASE.has(name) ? "REP" : D_BASE.has(name) ? "DEM" : presParty) : (winSet.has(name) ? cd.p1 : cd.p2);
     if (govOvr[name]) govParty = govOvr[name];
 
-    // House (proportional based on national wave + state lean adjustment)
+    // House: Algorithmic simulation based on national majority share + state lean adjustment
     const totalH = HOUSE[name] || Math.max(1, Math.floor((EV[name] || 3) - 2));
     let stateShare = majorityShare;
-    if (R_BASE.has(name)) stateShare = Math.max(0.1, majorityShare - 0.2);
-    else if (D_BASE.has(name)) stateShare = Math.min(0.9, majorityShare + 0.15);
+    if (R_BASE.has(name)) stateShare = Math.max(0.1, majorityShare - 0.2); // Red state penalty for Dem share
+    else if (D_BASE.has(name)) stateShare = Math.min(0.9, majorityShare + 0.15); // Blue state bonus
     const hash = (name.charCodeAt(0) + name.length) % 10;
-    stateShare = Math.max(0, Math.min(1, stateShare + (hash - 5) * 0.02));
+    stateShare = Math.max(0, Math.min(1, stateShare + (hash - 5) * 0.02)); // Random variance per state
     const dH = Math.round(totalH * stateShare);
 
     states[name] = {
@@ -647,6 +670,10 @@ export interface FlipInfo {
   houseFlipRep: number;   // seats gained by REP vs previous
 }
 
+/**
+ * Universal flip detection for all 4 map views.
+ * Compares current year data against previous biennial cycle to identify shifts.
+ */
 export function getFlipData(year: number, stateName: string): FlipInfo {
   const years = ELECTORAL_HISTORY.map(y => y.year).sort((a, b) => a - b);
   const idx = years.indexOf(year);
@@ -664,7 +691,8 @@ export function getFlipData(year: number, stateName: string): FlipInfo {
   const presFlip = cur.president.party !== prev.president.party;
   const govFlip = cur.governor.party !== prev.governor.party;
 
-  // Senate: compare individual seats to find exactly which half flipped
+  // Senate: compare individual seats to find exactly which half flipped.
+  // This handles complex scenarios where one seat flips while the other remains bipartisan.
   const prevSens = [prev.senate.party1, prev.senate.party2];
   let senFlip1 = false;
   let senFlip2 = false;
