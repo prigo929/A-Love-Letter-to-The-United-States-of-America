@@ -402,7 +402,7 @@ export function getFlipData(year: number, stateName: string): FlipInfo {
   const curAdmitted = (STATE_ADMISSION[stateName] || 1787) <= year;
   const prevAdmitted = (STATE_ADMISSION[stateName] || 1787) <= years[idx - 1];
 
-  if (!curAdmitted || !prevAdmitted || !cur.president.party || !prev.president.party) return noFlip;
+  if (!curAdmitted || !prevAdmitted || !cur.president.party || !prev.president.party || cur.president.party === "NONE" || prev.president.party === "NONE") return noFlip;
 
   const presFlip = cur.president.party !== prev.president.party;
   const govFlip = cur.governor.party !== prev.governor.party;

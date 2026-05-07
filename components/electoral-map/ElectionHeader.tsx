@@ -20,8 +20,11 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
       tally[sd.senate.party2] = (tally[sd.senate.party2] || 0) + 1;
       continue;
     } else if (viewMode === "House") {
-      tally["DEM"] = (tally["DEM"] || 0) + sd.house.demReps;
-      tally["REP"] = (tally["REP"] || 0) + sd.house.repReps;
+      let p1 = "DEM", p2 = "REP";
+      if (year < 1828) { p1 = "DR"; p2 = "FED"; }
+      else if (year < 1856) { p1 = "DEM"; p2 = "WHIG"; }
+      tally[p1] = (tally[p1] || 0) + sd.house.demReps;
+      tally[p2] = (tally[p2] || 0) + sd.house.repReps;
       continue;
     } else if (viewMode === "Governor") {
       p = sd.governor.party;
@@ -36,9 +39,13 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
   const total = Object.values(yd.states).reduce((s, sd) => s + (viewMode === "President" ? sd.electoralVotes : 0), 0) || parties.reduce((s, [, v]) => s + v, 0) || 1;
   const totalSeats = viewMode === "President" ? total : viewMode === "Senate" ? 100 : viewMode === "House" ? 435 : total;
   
-  const demVotes = isOffYear ? 0 : (tally["DEM"] || 0);
-  const repVotes = isOffYear ? 0 : (tally["REP"] || 0);
-  const otherVotes = isOffYear ? 0 : Object.entries(tally).filter(([p]) => p !== "DEM" && p !== "REP").reduce((s, [,v]) => s + v, 0);
+  const mainParties = parties.slice(0, 2);
+  const p1 = mainParties[0]?.[0] || "DEM";
+  const p2 = mainParties[1]?.[0] || "REP";
+  
+  const v1 = isOffYear ? 0 : (tally[p1] || 0);
+  const v2 = isOffYear ? 0 : (tally[p2] || 0);
+  const otherVotes = isOffYear ? 0 : Object.entries(tally).filter(([p]) => p !== p1 && p !== p2).reduce((s, [,v]) => s + v, 0);
 
   const thresholdLabel = isRo 
     ? (viewMode === "President" ? "270 PENTRU VICTORIE" : viewMode === "Senate" ? "50 PENTRU CONTROL" : viewMode === "House" ? "218 PENTRU VICTORIE" : "CÂȘTIGĂTOR")
@@ -159,20 +166,22 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
 
       {/* ── THE PROGRESS BAR ──────────────────────────────────────────────────── */}
       <div className="relative h-4 w-full bg-[#1A1F3A]">
-          {/* Blue Bar (Democrat) */}
+          {/* Primary Party Bar (Left) */}
           <motion.div 
             initial={false}
-            animate={{ width: yd.unopposed ? "0%" : `${(demVotes / totalSeats) * 100}%` }}
+            animate={{ width: yd.unopposed ? "0%" : `${(v1 / totalSeats) * 100}%` }}
             transition={{ duration: 0.7, ease: "easeInOut" }}
-            className="absolute inset-y-0 left-0 bg-[#4169E1]" 
+            className="absolute inset-y-0 left-0"
+            style={{ backgroundColor: PARTY_COLORS[p1] || "#4169E1" }}
           />
           
-          {/* Red Bar (Republican) */}
+          {/* Secondary Party Bar (Right) */}
           <motion.div 
             initial={false}
-            animate={{ width: yd.unopposed ? (parties[0]?.[0] === "REP" ? "100%" : "0%") : `${(repVotes / totalSeats) * 100}%` }}
+            animate={{ width: yd.unopposed ? (parties[0]?.[0] === p2 ? "100%" : "0%") : `${(v2 / totalSeats) * 100}%` }}
             transition={{ duration: 0.7, ease: "easeInOut" }}
-            className="absolute inset-y-0 right-0 bg-[#E64141]" 
+            className="absolute inset-y-0 right-0"
+            style={{ backgroundColor: PARTY_COLORS[p2] || "#E64141" }}
           />
 
           {/* 3rd Party / Other fill (Washington FED/Independent) */}
@@ -181,7 +190,7 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
             return (
               <motion.div key={p}
                 initial={false}
-                animate={{ width: `${w}%`, left: yd.unopposed ? "0%" : `${(demVotes / totalSeats) * 100}%` }}
+                animate={{ width: `${w}%`, left: yd.unopposed ? "0%" : `${(v1 / totalSeats) * 100}%` }}
                 transition={{ duration: 0.7, ease: "easeInOut" }}
                 className="absolute inset-y-0 opacity-80"
                 style={{ background: PARTY_COLORS[p] || "#9932CC" }}
