@@ -240,6 +240,7 @@ export function MapRenderer({
         {isHouse && cartogram && (
           <motion.div key="carto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
             <svg viewBox="0 0 1200 650" className="w-full" preserveAspectRatio="xMidYMid meet">
+              <g transform="translate(0, -20)">
               {/* Squares */}
               {cartogram.squares.map((sq, i) => {
                 const dimmed = hovered !== null && hovered !== sq.state;
@@ -266,6 +267,7 @@ export function MapRenderer({
                   {lb.text}
                 </text>
               ))}
+              </g>
             </svg>
           </motion.div>
         )}
