@@ -45,7 +45,7 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
       dH += sd.house.demReps; rH += sd.house.repReps;
     }
     return {
-      stats: { dS, rS, oS, dH, rH, total: Object.keys(yd.states).length },
+      stats: { dS, rS, oS, dH, rH, total: Object.keys(yd.states).filter(s => s !== "District of Columbia").length },
       activeParties: [...partySet].filter(Boolean),
     };
   }, [year]);
