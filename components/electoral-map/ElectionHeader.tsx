@@ -71,7 +71,7 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
   return (
     <div className="mb-6">
       {/* ── METADATA BAR ──────────────────────────────────────────────────────── */}
-      <div className="mb-2 flex items-end justify-between px-1">
+      <div className="mb-6 flex items-end justify-between px-1">
         {/* Left Candidate */}
         <div className="flex flex-col items-start">
           <div className="flex items-center gap-2">
@@ -124,12 +124,27 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
           className="absolute inset-y-0 right-0 bg-[#E64141]" 
         />
 
-        {/* 3rd Party / Other fill (Optional: if you want to show them in the gap) */}
-        {/* We'll skip for now to keep it clean as per user request for Red/Blue focus */}
+        {/* 3rd Party / Other fill (Only if significant) */}
+        {parties.filter(([p, v]) => p !== "DEM" && p !== "REP" && v > 1).map(([p, v]) => {
+          // This is a simplified positioning: placing them in the gap
+          // In a real battle-for-center, they sit between the two major parties
+          const w = (v / totalSeats) * 100;
+          return (
+            <motion.div key={p}
+              initial={false}
+              animate={{ width: `${w}%`, left: `${(demVotes / totalSeats) * 100}%` }}
+              transition={{ duration: 0.7, ease: "easeInOut" }}
+              className="absolute inset-y-0 opacity-80"
+              style={{ background: PARTY_COLORS[p] || "#9932CC" }}
+            />
+          );
+        })}
 
         {/* Center Threshold Line */}
         <div className="absolute inset-y-0 left-1/2 z-10 w-[1px] -translate-x-1/2 bg-[#F5F0E8]/40" />
-        <div className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 bg-[#080B12] px-2 py-0.5 font-mono text-[8px] font-bold tracking-tighter text-[#F5F0E8] border border-[#F5F0E8]/20">
+        
+        {/* Threshold Label (Above the bar) */}
+        <div className="absolute left-1/2 -top-[16px] z-20 -translate-x-1/2 whitespace-nowrap bg-[#080B12] px-1 font-mono text-[8px] font-bold tracking-tighter text-[#8A8780]">
           {thresholdLabel}
         </div>
       </div>
