@@ -3,7 +3,7 @@ import { useState, useCallback, useMemo } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { motion, AnimatePresence } from "framer-motion";
 import type { ViewMode } from "@/lib/data/electoral-data";
-import { getStateData, getFlipData, STATE_ADMISSION, PARTY_COLORS, ELECTORAL_HISTORY } from "@/lib/data/electoral-data";
+import { getStateData, getFlipData, STATE_ADMISSION, PARTY_COLORS, ELECTORAL_HISTORY, PARTY_FULL_NAMES } from "@/lib/data/electoral-data";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 function pc(p: string) { return PARTY_COLORS[p] || "#C9A84C"; }
@@ -238,7 +238,7 @@ export function MapRenderer({
       <AnimatePresence>
         {!isHouse && (
           <motion.div key="geo" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-            <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1000 }} style={{ width: "100%", height: "auto" }}>
+            <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1000 }} style={{ width: "100%", height: "auto" }} width={1000} height={600} viewBox="0 0 1000 600">
               <defs>
                 {/* Senate diagonal split */}
                 <pattern id="split-dr" width="1" height="1" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
@@ -289,18 +289,55 @@ export function MapRenderer({
                       else if (viewMode === "Governor" && flip.govFlip) isFlipped = true;
                     }
 
+                    let isVacant1 = false;
+                    let isVacant2 = false;
+                    let isVacantBoth = false;
+                    if (viewMode === "Senate" && !isTerritory) {
+                      isVacant1 = data.senate.party1 === "VACANT";
+                      isVacant2 = data.senate.party2 === "VACANT";
+                      isVacantBoth = isVacant1 && isVacant2;
+                    }
+
                     // Base layer
                     elements.push(
                       <Geography key={geo.rsmKey} geography={geo}
                         onMouseEnter={(evt: React.MouseEvent<SVGPathElement>) => onGeoEnter(geo, evt)}
                         onMouseLeave={clearHover} onClick={() => onStateClick?.(name)}
                         style={{
-                          default: { fill, stroke: isHov ? "#FFF" : stroke, strokeWidth: isHov ? 1.2 : sw, strokeDasharray: dash, outline: "none", opacity: targetOpacity, transition: "opacity 0.2s, fill 0.5s, stroke 0.15s" },
+                          default: { fill, stroke: isHov ? "#FFF" : (isVacantBoth ? "rgba(255,255,255,0.2)" : stroke), strokeWidth: isHov ? 1.2 : sw, strokeDasharray: isVacantBoth ? "4 4" : dash, outline: "none", opacity: targetOpacity, transition: "opacity 0.2s, fill 0.5s, stroke 0.15s" },
                           hover: { fill, stroke: "#FFF", strokeWidth: 1.2, strokeDasharray: dash, outline: "none", cursor: "pointer", opacity: 1 },
                           pressed: { fill, outline: "none" },
                         }}
                       />
                     );
+
+                    // Vacant overrides (rendered on top)
+                    if (!isTerritory && viewMode === "Senate" && !isVacantBoth) {
+                      if (isVacant1) {
+                         elements.push(
+                          <Geography key={`${geo.rsmKey}-vacant-1`} geography={geo}
+                            style={{
+                              default: { fill: "none", clipPath: "url(#clip-half-1)", stroke: "rgba(255,255,255,0.2)", strokeDasharray: "4 4", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
+                              hover: { fill: "none", clipPath: "url(#clip-half-1)", stroke: "rgba(255,255,255,0.2)", strokeDasharray: "4 4", outline: "none", pointerEvents: "none" as const },
+                              pressed: { fill: "none", clipPath: "url(#clip-half-1)", outline: "none" },
+                            }}
+                            tabIndex={-1}
+                          />
+                        );
+                      }
+                      if (isVacant2) {
+                         elements.push(
+                          <Geography key={`${geo.rsmKey}-vacant-2`} geography={geo}
+                            style={{
+                              default: { fill: "none", clipPath: "url(#clip-half-2)", stroke: "rgba(255,255,255,0.2)", strokeDasharray: "4 4", outline: "none", opacity: targetOpacity, pointerEvents: "none" as const, transition: "opacity 0.2s" },
+                              hover: { fill: "none", clipPath: "url(#clip-half-2)", stroke: "rgba(255,255,255,0.2)", strokeDasharray: "4 4", outline: "none", pointerEvents: "none" as const },
+                              pressed: { fill: "none", clipPath: "url(#clip-half-2)", outline: "none" },
+                            }}
+                            tabIndex={-1}
+                          />
+                        );
+                      }
+                    }
 
                     // Flip hash overlay (rendered on top)
                     if (!isTerritory && viewMode === "Senate") {
@@ -350,16 +387,16 @@ export function MapRenderer({
       </AnimatePresence>
 
       {/* ── NYT Proportional Square Cartogram (House) ──────────────────── */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isHouse && cartogram && (
-          <motion.div key="carto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
-            <svg viewBox="0 0 1200 650" className="w-full" preserveAspectRatio="xMidYMid meet">
+          <motion.div key="carto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.2 } }} transition={{ duration: 0.4 }}>
+            <svg viewBox="0 0 1000 600" className="w-full" preserveAspectRatio="xMidYMid meet">
               <defs>
                 <pattern id="flip-hash-sm" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
                   <line x1="0" y1="0" x2="0" y2="4" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" />
                 </pattern>
               </defs>
-              <g transform="translate(0, -20)">
+              <g transform="translate(-100, -25)">
               {cartogram.map((cs) => {
                 const dimmed = hovered !== null && hovered !== cs.name;
                 return (
@@ -374,13 +411,10 @@ export function MapRenderer({
 
                     {cs.squares.map((sq, i) => (
                       <g key={`sq-${sq.idx}`}>
-                        <motion.rect
+                        <rect
                           x={sq.x} y={sq.y} width={SQ} height={SQ} rx={1}
                           fill={sq.color}
-                          initial={{ scale: 0, opacity: 0 }}
-                          animate={{ scale: 1, opacity: dimmed ? 0.2 : 1 }}
-                          transition={{ scale: { duration: 0.35, delay: Math.min(i * 0.002, 0.7) }, opacity: { duration: 0.12 } }}
-                          style={{ pointerEvents: "none", transformOrigin: `${sq.x + SQ / 2}px ${sq.y + SQ / 2}px` }}
+                          style={{ pointerEvents: "none", opacity: dimmed ? 0.2 : 1, transition: "opacity 0.12s" }}
                         />
                         {sq.hasFlipHash && (
                           <rect x={sq.x} y={sq.y} width={SQ} height={SQ} rx={1}
@@ -422,7 +456,7 @@ export function MapRenderer({
                 )) : (
                   <div className="flex items-center gap-1">
                     <div className="h-[6px] w-[6px]" style={{ background: pc(tip.party) }} />
-                    <span className="font-mono text-[8px] uppercase tracking-widest text-[#6B6860]">{tip.party}</span>
+                    <span className="font-mono text-[8px] uppercase tracking-widest text-[#6B6860]">{PARTY_FULL_NAMES[tip.party] || tip.party}</span>
                   </div>
                 )}
               </div>

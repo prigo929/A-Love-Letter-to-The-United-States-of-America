@@ -1,6 +1,6 @@
 export type ViewMode = "President" | "Senate" | "House" | "Governor";
 export interface StateData {
-  president: { party: string; flipped: boolean };
+  president: { party: string; candidate?: string; flipped: boolean };
   senate: { split: boolean; party1: string; party2: string; active: boolean };
   house: { demReps: number; repReps: number; totalReps: number };
   governor: { party: string; active: boolean };
@@ -14,17 +14,20 @@ export interface YearData {
   demPopVote: number;
   repPopVote: number;
   totalPopVote: number;
+  thirdPartyCandidates?: Record<string, string>;
 }
 
 // ── Party Color Registry ──────────────────────────────────────────────────
 export const PARTY_COLORS: Record<string, string> = {
   DEM: "#4169E1", REP: "#E64141", FED: "#8B4513", DR: "#2E8B57", WHIG: "#DAA520",
-  PROG: "#9370DB", DIX: "#FF8C00", AI: "#CD853F", BM: "#8A2BE2", SR: "#D2691E", NR: "#A0522D"
+  PROG: "#9370DB", DIX: "#FF8C00", AI: "#CD853F", BM: "#8A2BE2", SR: "#D2691E", NR: "#A0522D",
+  IND: "#9932CC", VACANT: "#1A1A24"
 };
 
 export const PARTY_FULL_NAMES: Record<string, string> = {
   DEM: "Democrat", REP: "Republican", FED: "Federalist", DR: "Democratic-Republican", WHIG: "Whig",
-  PROG: "Progressive", DIX: "Dixiecrat", AI: "American Independent", BM: "Bull Moose", SR: "States' Rights", NR: "National Republican"
+  PROG: "Progressive", DIX: "Dixiecrat", AI: "American Independent", BM: "Bull Moose", SR: "States' Rights", NR: "National Republican",
+  IND: "Independent", VACANT: "Vacant"
 };
 
 // ── State Admission Years ─────────────────────────────────────────────────
@@ -80,7 +83,7 @@ const NAMES = Object.keys(STATE_ADMISSION);
 // ── Historical Presidential Winners ───────────────────────────────────────
 // Format: { year: { winner_party, states_for_winner[] } }
 // States not listed go to the opponent party. Pre-admission states are excluded.
-type ElectionRecord = { winner: string; loser: string; winnerStates: string[]; note?: string };
+type ElectionRecord = { winner: string; loser: string; winnerStates: string[]; demCandidate?: string; repCandidate?: string; anomalies?: Record<string, string>; thirdPartyCandidates?: Record<string, string>; note?: string };
 
 const ELECTIONS: Record<number, ElectionRecord> = {
   1789: { winner: "FED", loser: "FED", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1789), note: "Washington unopposed" },
@@ -128,7 +131,7 @@ const ELECTIONS: Record<number, ElectionRecord> = {
   1956: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1956 && !["Alabama","Arkansas","Georgia","Maryland","Mississippi","Missouri","North Carolina","South Carolina"].includes(n)) },
   1960: { winner: "DEM", loser: "REP", winnerStates: ["Alabama","Arkansas","Connecticut","Delaware","Georgia","Hawaii","Illinois","Louisiana","Maryland","Massachusetts","Michigan","Minnesota","Missouri","Nevada","New Jersey","New Mexico","New York","North Carolina","Pennsylvania","Rhode Island","South Carolina","Texas","West Virginia"], note: "JFK" },
   1964: { winner: "DEM", loser: "REP", winnerStates: NAMES.filter(n => (STATE_ADMISSION[n]||9999) <= 1964 && !["Alabama","Arizona","Georgia","Louisiana","Mississippi","South Carolina"].includes(n)), note: "LBJ landslide" },
-  1968: { winner: "REP", loser: "DEM", winnerStates: ["Alaska","California","Colorado","Delaware","Florida","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","South Carolina","South Dakota","Tennessee","Utah","Vermont","Virginia","Wisconsin","Wyoming"], note: "Nixon; Wallace 3rd party" },
+  1968: { winner: "REP", loser: "DEM", winnerStates: ["Alaska","California","Colorado","Delaware","Florida","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","South Carolina","South Dakota","Tennessee","Utah","Vermont","Virginia","Wisconsin","Wyoming"], anomalies: { "Alabama": "AI", "Arkansas": "AI", "Georgia": "AI", "Louisiana": "AI", "Mississippi": "AI" }, thirdPartyCandidates: { "AI": "George Wallace" }, note: "Nixon; Wallace 3rd party" },
   1972: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => n !== "Massachusetts"), note: "Nixon landslide; 49 states" },
   1976: { winner: "DEM", loser: "REP", winnerStates: ["Alabama","Arkansas","Delaware","Florida","Georgia","Hawaii","Kentucky","Louisiana","Maryland","Massachusetts","Minnesota","Mississippi","Missouri","New York","North Carolina","Ohio","Pennsylvania","Rhode Island","South Carolina","Tennessee","Texas","Virginia","West Virginia","Wisconsin"], note: "Carter" },
   1980: { winner: "REP", loser: "DEM", winnerStates: NAMES.filter(n => !["Georgia","Hawaii","Maryland","Massachusetts","Minnesota","Rhode Island","West Virginia"].includes(n)), note: "Reagan" },
@@ -265,7 +268,7 @@ function isGovernorActive(year: number, state: string): boolean {
 function buildYear(year: number): YearData {
   const el = ELECTIONS[year];
   const pData = PRESIDENTIAL_DATA[year] || { dem: "Dem. Candidate", rep: "Rep. Candidate", demV: 45000000, repV: 45500000, totV: 95000000 };
-  const fallback: YearData = { year, states: {}, demCandidate: pData.dem, repCandidate: pData.rep, demPopVote: pData.demV, repPopVote: pData.repV, totalPopVote: pData.totV };
+  const fallback: YearData = { year, states: {}, demCandidate: pData.dem, repCandidate: pData.rep, demPopVote: pData.demV, repPopVote: pData.repV, totalPopVote: pData.totV, thirdPartyCandidates: el?.thirdPartyCandidates };
   if (!el) return fallback;
   const prevYear = Object.keys(ELECTIONS).map(Number).sort((a,b)=>a-b).filter(y=>y<year).pop();
   const prevEl = prevYear ? ELECTIONS[prevYear] : null;
@@ -280,7 +283,16 @@ function buildYear(year: number): YearData {
     if (admitted > year) continue;
     
     // Presidential
-    const presParty = winSet.has(name) ? el.winner : el.loser;
+    let presParty = winSet.has(name) ? el.winner : el.loser;
+    let presCandidate: string | undefined = undefined;
+    if (el.anomalies && el.anomalies[name]) {
+      presParty = el.anomalies[name];
+      if (el.thirdPartyCandidates && el.thirdPartyCandidates[presParty]) {
+        presCandidate = el.thirdPartyCandidates[presParty];
+      }
+    } else {
+      presCandidate = presParty === "DEM" ? el.demCandidate || pData.dem : el.repCandidate || pData.rep;
+    }
     const prevWinSet = prevEl ? new Set(prevEl.winnerStates) : null;
     const prevParty = prevWinSet ? (prevWinSet.has(name) ? prevEl!.winner : prevEl!.loser) : null;
     const flipped = prevParty !== null && prevParty !== presParty;
@@ -305,7 +317,7 @@ function buildYear(year: number): YearData {
     const dH = Math.round(totalH * stateShare);
 
     states[name] = {
-      president: { party: presParty, flipped },
+      president: { party: presParty, candidate: presCandidate, flipped },
       senate: { split: isSplit, party1: senBase, party2: isSplit ? senOther : senBase, active: isSenateActive(year, name) },
       house: { demReps: dH, repReps: totalH - dH, totalReps: totalH },
       governor: { party: govParty, active: isGovernorActive(year, name) },

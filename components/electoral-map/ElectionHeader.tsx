@@ -75,7 +75,11 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
             <span className="font-display text-2xl font-black text-[#F5F0E8]">{parties[0]?.[1] || 0}</span>
             <div className="flex flex-col">
               <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: PARTY_COLORS[topParty] }}>
-                {viewMode === "President" ? (topParty === "DEM" ? yd.demCandidate : yd.repCandidate) : PARTY_FULL_NAMES[topParty] || topParty}
+                {viewMode === "President" ? (
+                  topParty === "DEM" ? yd.demCandidate : 
+                  topParty === "REP" ? yd.repCandidate : 
+                  (yd.thirdPartyCandidates?.[topParty] || PARTY_FULL_NAMES[topParty] || topParty)
+                ) : PARTY_FULL_NAMES[topParty] || topParty}
                 <span className="ml-1 text-white">✓</span>
               </span>
             </div>
@@ -87,7 +91,11 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
           <div className="flex items-center gap-2">
             <div className="flex flex-col items-end">
               <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: PARTY_COLORS[secondParty] }}>
-                {viewMode === "President" ? (secondParty === "DEM" ? yd.demCandidate : secondParty === "REP" ? yd.repCandidate : PARTY_FULL_NAMES[secondParty] || secondParty) : PARTY_FULL_NAMES[secondParty] || secondParty}
+                {viewMode === "President" ? (
+                  secondParty === "DEM" ? yd.demCandidate : 
+                  secondParty === "REP" ? yd.repCandidate : 
+                  (yd.thirdPartyCandidates?.[secondParty] || PARTY_FULL_NAMES[secondParty] || secondParty)
+                ) : PARTY_FULL_NAMES[secondParty] || secondParty}
               </span>
             </div>
             <span className="font-display text-2xl font-black text-[#F5F0E8]">{parties[1]?.[1] || 0}</span>
