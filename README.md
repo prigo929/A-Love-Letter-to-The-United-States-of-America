@@ -66,6 +66,7 @@ This repo is not a generic marketing site. It is structured like a content platf
   - `/constitution/second-amendment`
   - `/constitution/democracy-track-record`
   - `/constitution/unique-features`
+  - **Electoral Archive Map**: A high-fidelity, historical 50-state interactive map documenting biennial election cycles (1788–2024), including midterm flips and bipartite delegations.
 </details>
 
 <details>
@@ -112,6 +113,8 @@ The culture and quality-of-life pages are currently clean scaffolds with TODO zo
 - economy section with full landing page plus five deep-dive routes
 - nature section with a full landing page, animated visual components, and six deep-dive routes
 - constitution section featuring interactive gear physics, policy sliders, dynamic SVGs, and a 50-state map
+- **Electoral Archive**: A museum-grade historical dataset (1788–2024) featuring presidential, senate, and gubernatorial results with deterministic mid-term seat-flip logic.
+- **Bipartite Delegation Rendering**: Dynamic "diagonal split" map visualization for states with bipartisan Senate representation.
 - local image library with category folders for easier media management
 - Romanian translation mode wired through provider state and cookies
 - custom `STATES` homepage title treatment in `StatesVideoTitle.tsx`
@@ -219,6 +222,7 @@ components/
 
 lib/
   data/                          structured content and stats
+  data/electoral-data.ts         standardized historical election archive (1788-2024)
   site-images.ts                 central image registry
   constants.ts                   nav, homepage hero, shared site constants
   i18n/                          locale config and server locale helpers
@@ -350,6 +354,8 @@ Main content sources:
 - `lib/data/economy-data.ts`
 - `lib/data/nature-data.ts`
 - `lib/data/constitution-data.ts`
+- `lib/data/federalism-data.ts`
+- `lib/data/electoral-data.ts` (The 1788–2024 historical "Source of Truth")
 - `lib/constants.ts`
 
 Use these rules:
@@ -707,6 +713,7 @@ Good next expansions for this repo:
 | Economy | substantial and already production-shaped |
 | Nature | substantial and already production-shaped |
 | Constitution | fully interactive, production-ready, interactive physics and maps |
+| Electoral Archive | 1788–2024 high-fidelity dataset, mid-term flips, bipartite logic |
 | Culture | scaffolded, ready for content |
 | Quality of Life | scaffolded, ready for content |
 | Translation | live for shared UI and major route content |
