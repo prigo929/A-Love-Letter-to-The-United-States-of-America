@@ -26,7 +26,6 @@ import {
   ScrollProgressSidebar,
 } from "@/components/constitution/CinematicComponents";
 import { MidnightGallery } from "@/components/constitution/MidnightGallery";
-import { GearDiagram } from "@/components/constitution/GearDiagram";
 import { LuxuryClosing } from "@/components/constitution/LuxuryClosing";
 import { FederalismHook } from "@/components/constitution/FederalismHook";
 import { ElectoralMap } from "@/components/electoral-map/ElectoralMap";
@@ -281,26 +280,11 @@ export default async function ConstitutionPage() {
                 : "Three branches. Each checking the other two."}
             </NutGraf>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "De Ce Tirania Este Aproape Imposibilă" : "Why Tyranny Is Nearly Impossible"}
+              {isRo ? "Mașinăria în Lumea Reală" : "The Machine in the Real World"}
             </h2>
-            <div className="mb-10">
-              <h3 className="mb-3 font-display text-xl font-semibold text-[#C9A84C]">
-                {isRo ? "Faza 1: Arhitectura Tensiunii" : "Phase 1: The Architecture of Tension"}
-              </h3>
-              <p className="max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-                {isRo ? "Părinții Fondatori au proiectat o mașinărie în care ambiția contracarează ambiția. Nici o singură roată nu se poate roti fără să le forțeze pe celelalte să se miște odată cu ea. Puterile nu sunt doar separate; ele sunt conectate intenționat pentru a crea fricțiune." : "The Founders designed a machine where ambition counteracts ambition. No single wheel can turn without forcing the others to move with it. Powers are not just separated; they are intentionally interlocked to create friction."}
-              </p>
-            </div>
-            <GearDiagram isRo={isRo} />
-            
-            <div className="mt-16 mb-8">
-              <h3 className="mb-3 font-display text-xl font-semibold text-[#C9A84C]">
-                {isRo ? "Faza 2: Mașinăria în Lumea Reală" : "Phase 2: The Machine in the Real World"}
-              </h3>
-              <p className="max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-                {isRo ? "Teoria este un lucru; realitatea este altul. Așa funcționează sistemul când aceste roți se opresc cu adevărat în timpul unei crize naționale." : "Theory is one thing; reality is another. Here is what it actually looks like when those gears grind to a halt during a national crisis."}
-              </p>
-            </div>
+            <p className="mb-10 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
+              {isRo ? "Așa funcționează sistemul de 'Verificări și Echilibre' când țara se confruntă cu o criză națională reală. Fiecare pârghie este proiectată pentru a preveni acumularea unei puteri absolute." : "This is how the system of 'Checks and Balances' actually functions when the nation faces a real-world crisis. Every lever is designed to prevent the accumulation of absolute power."}
+            </p>
             <SeparationDiagram examples={getPowersCheckExamples(isRo)} isRo={isRo} />
             <div className="mt-6 flex justify-end">
               <Link href="/constitution/separation-of-powers" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#C9A84C] hover:text-[#E8C878] transition-colors">
