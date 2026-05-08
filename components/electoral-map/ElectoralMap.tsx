@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback, useEffect, useMemo } from "react";
+import React, { useState, useCallback, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { ViewMode } from "@/lib/data/electoral-data";
 import { ELECTORAL_HISTORY, PARTY_COLORS, PARTY_FULL_NAMES } from "@/lib/data/electoral-data";
@@ -101,7 +101,9 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
               <span className="font-mono text-[9px] uppercase tracking-widest text-[#8A8780]">{PARTY_FULL_NAMES[p] || p}</span>
             </div>
           ))}
-          {view === "House" && <span className="font-mono text-[8px] text-[#6B6860]">● = 1 rep</span>}
+          {view === "House" && (
+            <span className="font-mono text-[8px] text-[#6B6860]">● = 1 rep</span>
+          )}
         </div>
       </div>
 
