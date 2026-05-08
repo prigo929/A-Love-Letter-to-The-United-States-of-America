@@ -114,7 +114,7 @@ export default async function FederalismPage() {
               <div className="p-8">
                 <p className="mb-2 font-body text-xs font-semibold uppercase tracking-[0.2em] text-[#C9A84C]">{isRo ? "Al 10-lea Amendament" : "The 10th Amendment"}</p>
                 <h3 className="mb-4 font-display text-2xl font-semibold text-[#F5F0E8]">{isRo ? "Baza Constituțională a Federalismului" : "The Constitutional Basis of Federalism"}</h3>
-                <blockquote className="border-l-2 border-[#C9A84C]/50 pl-4 mb-4" style={{ fontFamily: "'EB Garamond','Georgia',serif" }}>
+                <blockquote className="border-l-2 border-[#C9A84C]/50 pl-4 mb-4" style={{ fontFamily: "var(--font-serif)" }}>
                   <p className="text-base italic text-[#F5F0E8]/80 leading-relaxed">
                     {isRo ? "\"Puterile nedelegalizate Statelor Unite prin Constituție și nici interzise de aceasta statelor sunt rezervate respectiv statelor sau poporului.\"" : "\"The powers not delegated to the United States by the Constitution, nor prohibited by it to the States, are reserved to the States respectively, or to the people.\""}
                   </p>

@@ -274,7 +274,7 @@ function DossierPanel({
                 <p
                   className="leading-relaxed text-[#F5F0E8]/80"
                   style={{
-                    fontFamily: "'EB Garamond', 'Georgia', serif",
+                    fontFamily: "var(--font-serif)",
                     fontStyle: "italic",
                     fontSize: "clamp(15px, 1.5vw, 18px)",
                   }}
