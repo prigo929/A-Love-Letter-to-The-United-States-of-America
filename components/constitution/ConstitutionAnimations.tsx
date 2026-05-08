@@ -163,7 +163,7 @@ export function ClauseVault({ clauses, isRo }: { clauses: ConstitutionClause[], 
                   onMouseLeave={()=>setHovered(null)}
                   onClick={()=>setActive(active?.id===c.id?null:c)}
                   className="relative w-full rounded-md px-2 py-1 text-left outline-none transition-all duration-300"
-                  style={{ fontFamily:"var(--font-serif)", fontSize:16, fontStyle:"italic", lineHeight:1.7,
+                  style={{ fontFamily:"'EB Garamond', 'Georgia', serif", fontSize:16, fontStyle:"italic", lineHeight:1.7,
                     color:active?.id===c.id?"#7A5A18":hovered===c.id?"#8B6A20":"#2C2416",
                     background:active?.id===c.id?"rgba(201,168,76,.18)":hovered===c.id?"rgba(201,168,76,.12)":"transparent",
                     textShadow:(hovered===c.id||active?.id===c.id)?"0 0 8px rgba(201,168,76,.5),0 0 20px rgba(201,168,76,.3)":"none",
@@ -178,7 +178,7 @@ export function ClauseVault({ clauses, isRo }: { clauses: ConstitutionClause[], 
             ))}
           </div>
           <div className="mt-10 border-t border-[#C9A84C]/25 pt-6 text-center">
-            <p style={{ fontFamily:"var(--font-serif)", fontSize:13, color:"#6B5A2E", fontStyle:"italic" }}>{isRo ? "Făcut în Convenție cu Consimțământul Unanim al Statelor prezente · 17 Septembrie 1787" : "Done in Convention by the Unanimous Consent of the States present · September 17, 1787"}</p>
+            <p style={{ fontFamily:"'EB Garamond', 'Georgia', serif", fontSize:13, color:"#6B5A2E", fontStyle:"italic" }}>{isRo ? "Făcut în Convenție cu Consimțământul Unanim al Statelor prezente · 17 Septembrie 1787" : "Done in Convention by the Unanimous Consent of the States present · September 17, 1787"}</p>
           </div>
         </div>
       </div>
@@ -206,7 +206,7 @@ export function ClauseVault({ clauses, isRo }: { clauses: ConstitutionClause[], 
               <p className="mb-2 font-body text-[10px] font-semibold uppercase tracking-[.25em] text-[#C9A84C]">{active.article}</p>
               <h3 className="mb-3 font-display text-2xl font-semibold text-[#F5F0E8]">{active.name}</h3>
               <blockquote className="mb-5 border-l-2 border-[#C9A84C]/50 pl-4">
-                <p style={{ fontFamily:"var(--font-serif)", fontSize:14, fontStyle:"italic", color:"#B8B4AC", lineHeight:1.7 }}>&ldquo;{active.originalText}&rdquo;</p>
+                <p style={{ fontFamily:"'EB Garamond', 'Georgia', serif", fontSize:14, fontStyle:"italic", color:"#B8B4AC", lineHeight:1.7 }}>&ldquo;{active.originalText}&rdquo;</p>
               </blockquote>
               <div className="mb-5 flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full" style={{ backgroundColor:TENSION_COLORS[active.tension] }}/>
@@ -385,7 +385,7 @@ export function AmendmentAccordion({ amendments, isRo }: { amendments: Amendment
                 <motion.div initial={{height:0,opacity:0}} animate={{height:"auto",opacity:1}} exit={{height:0,opacity:0}} transition={{height:{duration:.4,ease:[.4,0,.2,1]},opacity:{duration:.3,delay:.1}}}>
                   <div className="border-t border-white/5 px-5 pb-5 pt-4 space-y-4">
                     <blockquote className="border-l-2 border-[#C9A84C]/40 pl-3">
-                      <p style={{fontFamily:"var(--font-serif)",fontSize:13,fontStyle:"italic",color:"#B8B4AC",lineHeight:1.7}}>&ldquo;{a.originalText}&rdquo;</p>
+                      <p style={{fontFamily:"'EB Garamond', 'Georgia', serif",fontSize:13,fontStyle:"italic",color:"#B8B4AC",lineHeight:1.7}}>&ldquo;{a.originalText}&rdquo;</p>
                     </blockquote>
                     <div>
                       <p className="mb-2 font-body text-[10px] font-semibold uppercase tracking-[.2em] text-[#6B6860]">{isRo ? "Ce Înseamnă Astăzi" : "What It Means Today"}</p>

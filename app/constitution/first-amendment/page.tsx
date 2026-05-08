@@ -129,7 +129,7 @@ export default async function FirstAmendmentPage() {
               <blockquote
                 className="text-center"
                 style={{
-                  fontFamily: "var(--font-serif)",
+                  fontFamily: "'EB Garamond', 'Georgia', serif",
                   fontSize: "clamp(16px,2.5vw,22px)",
                   fontStyle: "italic",
                   lineHeight: "1.8",
