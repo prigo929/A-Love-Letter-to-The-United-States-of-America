@@ -1,0 +1,49 @@
+# Repomix Ignore File
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Exclude large SVG assets and logos that consume massive amounts of tokens
+ASSETS/SVGs and Logos/**
+**/*.svg
+
+# Exclude standard media types
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.gif
+**/*.webp
+**/*.ico
+**/*.mp4
+**/*.mov
+
+# Exclude system and build files
+.DS_Store
+node_modules/
+.next/
+dist/
+out/
+build/
+.vercel/
+.git/
+*.log
+tsconfig.tsbuildinfo
+
+# 🔒 SECURITY & SECRETS
+.env*
+*.pem
+*.key
+
+# 📦 DEPENDENCY LOCK FILES (Massive noise)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# 📂 STATIC ASSETS (AI can't process these)
+public/**
+assets/**
+
+# 🛠️ TOOLING & IDE
+.vscode/
+.idea/
+.eslintcache
+.prettierrc
+.eslintrc*
