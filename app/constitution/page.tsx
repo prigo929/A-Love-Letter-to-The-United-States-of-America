@@ -38,6 +38,7 @@ import {
   InscriptionText,
   ConservationSpotlight,
   ChapterFooter,
+  AmbientAudio,
 } from "@/components/constitution/ExhibitComponents";
 import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -94,6 +95,9 @@ export default async function ConstitutionPage() {
 
       {/* Persistent running chapter indicator */}
       <ChapterFooter isRo={isRo} />
+
+      {/* Ambient sound design toggle */}
+      <AmbientAudio src="/audio/ambient-exhibit.mp3" />
 
       {/* ══════════════════════════════════════════════════════════════════════
           BLOOMBERG STAT: 4,543 words

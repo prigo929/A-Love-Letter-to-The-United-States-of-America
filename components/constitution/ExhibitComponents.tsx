@@ -8,6 +8,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence, useInView, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { Volume2, VolumeX } from "lucide-react";
 
 // ── ExhibitCase ───────────────────────────────────────────────────────────────
 // Wraps content in a museum-vitrine container with recessed glass illusion.
@@ -754,5 +755,50 @@ export function ChapterFooter({ isRo }: { isRo: boolean }) {
         </motion.div>
       )}
     </AnimatePresence>
+  );
+}
+
+// ── AmbientAudio ──────────────────────────────────────────────────────────────
+// Toggleable background music for the exhibit.
+export function AmbientAudio({ src }: { src: string }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.2; // very quiet, ambient
+      if (isPlaying) {
+        audioRef.current.play().catch(() => setIsPlaying(false));
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  }, [isPlaying]);
+
+  return (
+    <>
+      <audio 
+        ref={audioRef} 
+        src={src} 
+        loop 
+        onEnded={() => {
+          if (audioRef.current && isPlaying) {
+            audioRef.current.currentTime = 0;
+            audioRef.current.play().catch(() => setIsPlaying(false));
+          }
+        }}
+      />
+      <button
+        onClick={() => setIsPlaying(!isPlaying)}
+        className="fixed bottom-6 left-6 z-50 rounded-full border border-[rgba(201,168,76,0.25)] bg-[#080B12] p-3 text-[#C9A84C] shadow-[0_0_20px_rgba(201,168,76,0.1)] backdrop-blur-md transition-all hover:bg-[rgba(201,168,76,0.12)] hover:shadow-[0_0_30px_rgba(201,168,76,0.2)]"
+        aria-label={isPlaying ? "Mute ambient audio" : "Play ambient audio"}
+      >
+        {isPlaying ? (
+          <Volume2 size={20} className="opacity-80" />
+        ) : (
+          <VolumeX size={20} className="opacity-50" />
+        )}
+      </button>
+    </>
   );
 }
