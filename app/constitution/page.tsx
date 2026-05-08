@@ -469,7 +469,7 @@ export default async function ConstitutionPage() {
                 : "Explore the resilience of America's constitutional architecture. Scrub through centuries of electoral data to see how democracy has functioned relentlessly, regardless of wars, crises, or technological shifts."}
             </p>
             
-            <div className="rounded-2xl border border-[rgba(201,168,76,0.15)] bg-[#0A0E14] p-4 md:p-8 shadow-2xl">
+            <div className="relative rounded-2xl border border-[rgba(201,168,76,0.15)] bg-[#0A0E14] p-4 md:p-8 shadow-2xl">
               <ElectoralMap isRo={isRo} />
             </div>
 
