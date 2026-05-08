@@ -10,7 +10,7 @@
 
 import type { Metadata, Viewport } from "next";
 import type { StaticImport } from "next/dist/shared/lib/get-img-props";
-import { Bebas_Neue, Playfair_Display, Inter, EB_Garamond } from "next/font/google";
+import { Bebas_Neue, Playfair_Display, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/layout/Header";
@@ -45,15 +45,6 @@ const inter = Inter({
   display: "swap",
   preload: true,
   weight: ["300", "400", "500", "600", "700"],
-});
-
-const ebGaramond = EB_Garamond({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  display: "swap",
-  preload: true,
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
 });
 
 // Preloading the first hero image and the `STATES` title video helps the hero
@@ -189,7 +180,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bebasNeue.variable} ${playfairDisplay.variable} ${inter.variable} ${ebGaramond.variable} overflow-x-hidden`}
+      className={`${bebasNeue.variable} ${playfairDisplay.variable} ${inter.variable} overflow-x-hidden`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >

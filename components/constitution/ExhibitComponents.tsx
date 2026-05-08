@@ -140,7 +140,7 @@ export function NutGraf({
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={`mb-8 ${className}`}
       style={{
-        fontFamily: "var(--font-serif)",
+        fontFamily: "'EB Garamond', 'Georgia', serif",
         fontSize: "clamp(28px, 4vw, 56px)",
         fontStyle: "italic",
         fontWeight: 400,
@@ -472,7 +472,7 @@ export function ScrollToDissolveEntrance({
         <p
           className="mt-3 select-none"
           style={{
-            fontFamily: "var(--font-serif)",
+            fontFamily: "'EB Garamond', 'Georgia', serif",
             fontSize: "clamp(14px, 2vw, 24px)",
             fontStyle: "italic",
             fontWeight: 400,
@@ -578,7 +578,7 @@ export function WeThePeople({ isRo }: { isRo: boolean }) {
           <p
             className="select-none"
             style={{
-              fontFamily: "var(--font-serif)",
+              fontFamily: "'EB Garamond', 'Georgia', serif",
               fontSize: "clamp(48px, 10vw, 120px)",
               fontStyle: "italic",
               fontWeight: 400,
