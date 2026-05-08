@@ -25,10 +25,13 @@
 This repo is not a generic marketing site. It is structured like a content platform:
 
 - homepage as an end-to-end narrative experience
-- deep section pages with reusable layout and data components
+- **Interactive Electoral Map**: Visual history of every US election from 1788–2024 with state-by-state data
+- **Constitution Exhibit**: High-fidelity narrative engine with Clause Vault, Founder Constellation, and Real-World Checks
 - centralized image management through `IMAGES/` + `lib/site-images.ts`
 - bilingual UI support for English and Romanian
 - data-driven content in `lib/data/*` instead of hardcoded JSX
+- **Core Web Vitals**: Integrated Vercel Analytics for LCP, CLS, and INP performance monitoring
+- **AI-Ready Context**: Optimized `.repomixignore` for high-efficiency LLM context transfers
 - section verticals that now include both economy and nature/geography
 
 ## Quick Snapshot
@@ -133,6 +136,24 @@ The culture and quality-of-life pages are currently clean scaffolds with TODO zo
 | Data / backend | Supabase |
 | Deployment | Vercel |
 | Analytics | Vercel Analytics + Speed Insights |
+## Key Features
+
+### 🗳️ Interactive Electoral History
+A cinematic timeline of American democracy located at `/elections`.
+- **1788–2024 Archive**: Visualizes the growth of the Union and the shift in political landscapes over 250 years.
+- **State-by-State Data**: High-fidelity hover/click interactions revealing electoral counts and historical winners.
+- **Bipartite Logic**: Accurately tracks the evolution of American political parties across different eras.
+
+### 🏛️ The Constitution Exhibit
+A premium digital "museum" experience located at `/constitution`.
+- **Clause Vault**: Interactive exploration of critical constitutional passages like the Commerce and Supremacy clauses.
+- **Founder Constellation**: A relational map showing the connections and contributions of the Founding Fathers.
+- **Real-World Checks**: A historical simulator featuring 9 case studies (Watergate, New Deal, etc.) showing checks and balances in action.
+
+### ⚡ Performance & AI Readiness
+- **Vercel Web Vitals**: Integrated monitoring for LCP, CLS, and INP to ensure a "Bloomberg-grade" smooth experience.
+- **AI-Optimized Context**: Specialized `.repomixignore` rules to allow for high-efficiency code sharing with LLMs.
+
 
 ## Dev Commands
 
@@ -354,6 +375,7 @@ Main content sources:
 - `lib/data/economy-data.ts`
 - `lib/data/nature-data.ts`
 - `lib/data/constitution-data.ts`
+- `lib/data/constitution-data-ro.ts` (Romanian translations for the exhibit)
 - `lib/data/federalism-data.ts`
 - `lib/data/electoral-data.ts` (The 1788–2024 historical "Source of Truth")
 - `lib/constants.ts`
@@ -408,6 +430,8 @@ This project uses a highly customized color palette tailored to a patriotic "Vau
 - **Navy Backgrounds:** Usually defined as `bg-[#080B12]` or `bg-navy-dark`.
 - **Gold Accents:** Usually `text-[#C9A84C]` or `bg-[#C9A84C]`.
 - **Text:** `text-[#F5F0E8]` for primary white text, and `text-[#B8B4AC]` for secondary gray text.
+- **Serif Typography**: We use a custom serif stack (`'EB Garamond', 'Georgia', serif`) for all editorial content to provide a "Premium Museum" feel.
+- **Tabular Numbers**: Always use `font-variant-numeric: tabular-nums` (Tailwind: `tabular-nums`) for dates and stats to prevent layout shifts as numbers change.
 - **To change a color:** Search for these hex codes (e.g., `#C9A84C`) and replace them, but be careful—the site's cinematic feel relies heavily on this specific palette.
 
 ### 6. Where the Data Lives (`lib/data/`)
@@ -600,6 +624,8 @@ This section is for future AI-assisted edits. The goal is to explain how the cod
 - data files exist to keep factual content maintainable and to stop large pages from turning into copy dumps
 - image indirection through `SITE_IMAGES` reduces broken-path bugs and makes media swaps predictable
 - analytics and Speed Insights are mounted once in `app/layout.tsx` so observability stays global and consistent
+- **Vercel Web Vitals**: LCP, CLS, and INP are monitored to ensure the "Premium" feel isn't degraded by layout shifts or slow interaction.
+- **LLM Context Optimization**: The `.repomixignore` file is used to prune thousands of tokens of SVG data and dependency metadata, allowing AI assistants to see the full code logic without hitting token limits.
 
 ### Visual Decisions
 
@@ -691,8 +717,10 @@ If Vercel fails on static image imports:
 - Romanian translation mode wired through real cookie + provider state
 - economy section built as a real editorial/data hybrid, not just cards and charts
 - nature section built with its own charts, animations, and long-form subpages
-- constitution section featuring Bloomberg-grade interactive SVGs, SVG ratchet physics, and a policy sandbox
+- constitution section featuring the **Clause Vault**, **Founder Constellation**, and high-fidelity **Real-World Checks** case studies
+- electoral archive featuring a **1788–2024 Interactive Map** with mid-term flip logic and bipartite historical tracking
 - homepage hero includes a custom video-backed `STATES` title treatment
+- automatic **Repomix integration** for AI-assisted development context
 
 ## Roadmap Energy
 
