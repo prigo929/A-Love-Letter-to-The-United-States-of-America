@@ -16,7 +16,8 @@ import {
   animate,
   AnimatePresence,
 } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useLayoutEffect } from "react";
+import Image from "next/image";
 import type { PresidentialTransfer } from "@/lib/data/constitution-data";
 
 // ─── CountUp (local) ──────────────────────────────────────────────────────────
@@ -159,12 +160,17 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
           className="absolute inset-0 z-0"
           style={{ opacity: parchmentOpacity, scale: bgScale, willChange: "transform, opacity" }}
         >
-          <div
-            className="h-full w-full bg-cover bg-center bg-no-repeat"
+          <Image
+            src="/images/constitution/constitution-page-1.jpg"
+            alt=""
+            fill
+            priority
+            className="object-cover object-top opacity-80"
             style={{
-              backgroundImage: "url('/images/constitution/constitution-page-1.jpg')",
               filter: "sepia(80%) contrast(0.8) brightness(0.6)",
             }}
+            sizes="100vw"
+            quality={90}
           />
         </motion.div>
         <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#080B12]/60 via-[#080B12]/30 to-[#080B12]" />
@@ -183,7 +189,7 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
           <p
             className="select-none"
             style={{
-              fontFamily: "'EB Garamond', 'Georgia', serif",
+              fontFamily: "var(--font-serif)",
               fontSize: "clamp(48px, 10vw, 120px)",
               fontStyle: "italic",
               fontWeight: 400,
@@ -235,7 +241,7 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
             <motion.div style={{ opacity: subtitleOpacity, y: subtitleY, willChange: "transform, opacity" }}>
               <p
                 className="mb-8 max-w-2xl font-body text-lg leading-relaxed text-[#B8B4AC] md:text-xl"
-                style={{ fontFamily: "'EB Garamond','Georgia',serif", fontStyle: "italic" }}
+                style={{ fontFamily: "var(--font-serif)", fontStyle: "italic" }}
               >
                 {isRo
                   ? '"250 de ani de guvernare constituțională neîntreruptă — un record pe care nicio altă națiune de pe Pământ nu îl poate egala."'
@@ -590,7 +596,7 @@ export function CinematicPullQuote({
         <div className="border-l-2 border-[#C9A84C]/40 pl-6 md:pl-10">
           <p
             style={{
-              fontFamily: "'EB Garamond', 'Georgia', serif",
+              fontFamily: "var(--font-serif)",
               fontSize: "clamp(24px, 4vw, 42px)",
               fontStyle: "italic",
               lineHeight: 1.5,
@@ -922,7 +928,7 @@ export function WorldWithout({ isRo }: { isRo: boolean }) {
         <p
           className="mx-auto max-w-2xl"
           style={{
-            fontFamily: "'EB Garamond', 'Georgia', serif",
+            fontFamily: "var(--font-serif)",
             fontSize: "clamp(18px, 2.5vw, 28px)",
             fontStyle: "italic",
             lineHeight: 1.6,

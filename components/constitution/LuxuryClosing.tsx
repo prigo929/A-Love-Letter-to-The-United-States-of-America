@@ -65,7 +65,7 @@ export function LuxuryClosing({ isRo }: { isRo: boolean }) {
           <p
             className="mb-2"
             style={{
-              fontFamily: "'EB Garamond', 'Georgia', serif",
+              fontFamily: "var(--font-serif)",
               fontStyle: "italic",
               fontSize: "clamp(20px, 5vw, 32px)",
               lineHeight: 1.5,
@@ -79,7 +79,7 @@ export function LuxuryClosing({ isRo }: { isRo: boolean }) {
           <p
             className="mb-2"
             style={{
-              fontFamily: "'EB Garamond', 'Georgia', serif",
+              fontFamily: "var(--font-serif)",
               fontStyle: "italic",
               fontSize: "clamp(20px, 5vw, 32px)",
               lineHeight: 1.5,
@@ -92,7 +92,7 @@ export function LuxuryClosing({ isRo }: { isRo: boolean }) {
           </p>
           <p
             style={{
-              fontFamily: "'EB Garamond', 'Georgia', serif",
+              fontFamily: "var(--font-serif)",
               fontStyle: "italic",
               fontSize: "clamp(20px, 5vw, 32px)",
               lineHeight: 1.5,

@@ -156,7 +156,7 @@ export default async function SecondAmendmentPage() {
                 {isRo ? "Textul Original — Amendamentul II, Ratificat 15 Decembrie 1791" : "Original Text — Amendment II, Ratified December 15, 1791"}
               </p>
               <blockquote className="text-center" style={{
-                fontFamily: "'EB Garamond','Georgia',serif",
+                fontFamily: "var(--font-serif)",
                 fontSize: "clamp(16px,2.5vw,22px)",
                 fontStyle: "italic", lineHeight: "1.8", color: "#2C2416",
               }}>
