@@ -102,7 +102,6 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
             </div>
           ))}
           {view === "House" && <span className="font-mono text-[8px] text-[#6B6860]">● = 1 rep</span>}
-          <span className="font-mono text-[8px] text-[#6B6860]">┈ = {isRo ? "teritoriu" : "territory"}</span>
         </div>
       </div>
 
@@ -110,7 +109,7 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
       <div className="mt-4"><TimelineScrubber currentYear={year} onYearChange={setYear} isRo={isRo} viewMode={view as ViewMode} /></div>
 
       {/* Stats */}
-      <div className="mt-4 grid grid-cols-3 gap-1.5 md:grid-cols-5">
+      <div className="mt-4 flex flex-wrap gap-1.5 md:flex-nowrap md:justify-between">
         {[
           { l: isRo ? "An" : "Year", v: String(year) },
           { l: isRo ? "State" : "States", v: String(stats.total) },
@@ -118,7 +117,7 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
           { l: activeParties[1] || "L", v: String(stats.rS || stats.oS) },
           { l: isRo ? "Alegeri" : "Elections", v: String(YEARS.length) },
         ].map((s) => (
-          <div key={s.l} className="border border-[rgba(201,168,76,0.04)] bg-[#080B12] p-2 text-center">
+          <div key={s.l} className="flex-1 border border-[rgba(201,168,76,0.04)] bg-[#080B12] p-2 text-center min-w-[70px]">
             <p className="font-mono text-[7px] uppercase tracking-widest text-[#6B6860]">{s.l}</p>
             <p className="font-mono text-sm font-bold text-[#C9A84C]" style={{ fontVariantNumeric: "tabular-nums" }}>{s.v}</p>
           </div>

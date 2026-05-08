@@ -129,7 +129,7 @@ export function TimelineScrubber({
           fill="none" stroke="rgba(201,168,76,0.2)" strokeWidth={0.5} />
         </svg>
 
-        <div className="absolute top-[52px] left-0 right-0 h-4 pointer-events-none px-[24px]">
+        <div className="absolute top-[75%] left-[3%] right-[3%] h-4 pointer-events-none md:top-[70%]">
           {years.map((y) => {
             const active = y === currentYear;
             const hov = y === hoverY;
