@@ -239,7 +239,6 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
     accentOpacity: PARTICLE_THEMES[0].accentOpacity,
   });
   const targetThemeRef = useRef<ParticleTheme>(PARTICLE_THEMES[0]);
-  const pointerRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
   const viewportSizeRef = useRef({ width: 0, height: 0 });
 
   useEffect(() => {
@@ -286,10 +285,6 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
     if (!ctx) return;
 
     const particles: Particle[] = [];
-    const allowMouseParallax =
-      typeof window.matchMedia !== "function"
-        ? true
-        : window.matchMedia("(pointer: fine)").matches;
 
     const syncParticleDensity = (width: number, height: number) => {
       let particleIndex = 0;
@@ -349,23 +344,6 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
 
     window.addEventListener("resize", resize);
 
-    const handlePointerMove = (event: MouseEvent) => {
-      const x = event.clientX / window.innerWidth - 0.5;
-      const y = event.clientY / window.innerHeight - 0.5;
-      pointerRef.current.targetX = x;
-      pointerRef.current.targetY = y;
-    };
-
-    const handlePointerLeave = () => {
-      pointerRef.current.targetX = 0;
-      pointerRef.current.targetY = 0;
-    };
-
-    if (allowMouseParallax) {
-      window.addEventListener("mousemove", handlePointerMove);
-      window.addEventListener("mouseleave", handlePointerLeave);
-    }
-
     let frame: number;
     let lastTime = performance.now();
 
@@ -375,13 +353,6 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
       const delta = Math.min((time - lastTime) / 16.6667, 2.4);
       lastTime = time;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Smooth the mouse input so the particle field feels cinematic instead
-      // of twitchy.
-      const pointer = pointerRef.current;
-      pointer.x += (pointer.targetX - pointer.x) * 0.05;
-      pointer.y += (pointer.targetY - pointer.y) * 0.05;
-
       const breathe = Math.sin(time * 0.00018);
       const theme = themeRef.current;
       const targetTheme = targetThemeRef.current;
@@ -415,17 +386,13 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
         const swayX = Math.sin(time * 0.00055 + index * 0.23) * particle.driftX;
         const swayY = Math.cos(time * 0.0004 + index * 0.19) * particle.driftY;
         const breatheScale = 1 + breathe * config.breathe;
-        const parallaxX = pointer.x * config.parallax;
-        const parallaxY = pointer.y * config.parallax * 0.7;
 
         particle.x =
           canvas.width / 2 +
-          (particle.baseX + swayX + arc - canvas.width / 2) * breatheScale +
-          parallaxX;
+          (particle.baseX + swayX + arc - canvas.width / 2) * breatheScale;
         particle.y =
           canvas.height / 2 +
-          (particle.baseY + swayY - canvas.height / 2) * breatheScale +
-          parallaxY;
+          (particle.baseY + swayY - canvas.height / 2) * breatheScale;
 
         const twinkle =
           particle.alpha +
@@ -467,10 +434,6 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("resize", resize);
-      if (allowMouseParallax) {
-        window.removeEventListener("mousemove", handlePointerMove);
-        window.removeEventListener("mouseleave", handlePointerLeave);
-      }
     };
   }, []);
 
