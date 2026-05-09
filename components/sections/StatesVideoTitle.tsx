@@ -234,8 +234,7 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
     return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
   }, [metrics, text]);
 
-  // Show the fallback until we know the text metrics and the video is playable.
-  const showFallback = !metrics || !videoReady || videoError;
+  // The video element naturally displays its poster while loading.
   const statesLineStyle = {
     display: "block",
     fontWeight: 900,
@@ -261,6 +260,49 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
       >
         {/* Invisible measuring text. It exists only to give us exact font metrics. */}
         {text}
+      </span>
+
+      {/* Pre-render the video so the browser starts downloading it immediately.
+          It stays hidden until we have the font metrics to generate the SVG mask. */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute block overflow-hidden"
+        style={
+          metrics
+            ? {
+                left: -horizontalBleed,
+                top: -verticalBleed,
+                width: svgWidth,
+                height: svgHeight,
+                WebkitMaskImage: maskSvg,
+                maskImage: maskSvg,
+                WebkitMaskRepeat: "no-repeat",
+                maskRepeat: "no-repeat",
+                WebkitMaskPosition: "center",
+                maskPosition: "center",
+                WebkitMaskSize: "100% 100%",
+                maskSize: "100% 100%",
+              }
+            : { opacity: 0 }
+        }
+      >
+        <video
+          ref={videoRef}
+          className="absolute inset-0 h-full w-full object-cover"
+          src={FLAG_VIDEO_URL}
+          poster="/videos/flag-loop-poster.jpg"
+          autoPlay
+          muted
+          playsInline
+          loop
+          preload="auto"
+          onCanPlay={() => setVideoReady(true)}
+          onLoadedData={() => setVideoReady(true)}
+          onError={() => {
+            console.log("Video Error");
+            setVideoError(true);
+          }}
+        />
       </span>
 
       {metrics ? (
@@ -304,99 +346,6 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
               fill="#ffffff"
               fillOpacity="0.001"
               filter={`url(#${shadowFilterId})`}
-            >
-              {text}
-            </text>
-          </svg>
-
-          {/* Video layer. The video is real, but the SVG mask makes it visible
-              only through the letter shapes. */}
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute block overflow-hidden"
-            style={{
-              opacity: showFallback ? 0 : 1,
-              transition: "opacity 260ms ease",
-              left: -horizontalBleed,
-              top: -verticalBleed,
-              width: svgWidth,
-              height: svgHeight,
-              WebkitMaskImage: maskSvg,
-              maskImage: maskSvg,
-              WebkitMaskRepeat: "no-repeat",
-              maskRepeat: "no-repeat",
-              WebkitMaskPosition: "center",
-              maskPosition: "center",
-              WebkitMaskSize: "100% 100%",
-              maskSize: "100% 100%",
-            }}
-          >
-            <video
-              ref={videoRef}
-              className="absolute inset-0 h-full w-full object-cover"
-              src={FLAG_VIDEO_URL}
-              autoPlay
-              muted
-              playsInline
-              loop
-              preload="auto"
-              onCanPlay={() => setVideoReady(true)}
-              onLoadedData={() => setVideoReady(true)}
-              onError={() => {
-                console.log("Video Error");
-                setVideoError(true);
-              }}
-            />
-          </span>
-
-          {/* Fallback gradient text. This is what we show while the video is not
-              ready, or if the video fails to load. */}
-          <svg
-            aria-hidden="true"
-            className="pointer-events-none absolute block overflow-visible"
-            width={svgWidth}
-            height={svgHeight}
-            viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-            style={{
-              opacity: showFallback ? 1 : 0,
-              transition: "opacity 260ms ease",
-              left: -horizontalBleed,
-              top: -verticalBleed,
-            }}
-          >
-            <defs>
-              <filter
-                id={`${shadowFilterId}-fallback`}
-                x="-30%"
-                y="-40%"
-                width="160%"
-                height="200%"
-                colorInterpolationFilters="sRGB"
-              >
-                <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#000000" floodOpacity="0.38" />
-                <feDropShadow dx="0" dy="6" stdDeviation="7" floodColor="#000000" floodOpacity="0.3" />
-                <feDropShadow dx="0" dy="12" stdDeviation="16" floodColor="#000000" floodOpacity="0.24" />
-              </filter>
-              <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#B31942" />
-                <stop offset="25%" stopColor="#B31942" />
-                <stop offset="45%" stopColor="#FFFFFF" />
-                <stop offset="55%" stopColor="#FFFFFF" />
-                <stop offset="75%" stopColor="#0A3161" />
-                <stop offset="100%" stopColor="#0A3161" />
-              </linearGradient>
-            </defs>
-            <text
-              x="50%"
-              y="50%"
-              textAnchor="middle"
-              dominantBaseline="central"
-              fontFamily={metrics.fontFamily}
-              fontSize={metrics.fontSize}
-              fontWeight={metrics.fontWeight}
-              letterSpacing={`${metrics.letterSpacing}px`}
-              fill={`url(#${gradientId})`}
-              filter={`url(#${shadowFilterId}-fallback)`}
             >
               {text}
             </text>
