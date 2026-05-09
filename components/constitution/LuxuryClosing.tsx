@@ -105,23 +105,7 @@ export function LuxuryClosing({ isRo }: { isRo: boolean }) {
           ★
         </motion.p>
 
-        {/* Action buttons */}
-        <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 1, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-sm px-4 sm:px-6 py-4 sm:py-3 font-body text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#6B6860] transition-all hover:text-[#C9A84C]"
-            style={{
-              border: "1px solid rgba(201,168,76,0.08)",
-            }}
-          >
-            {isRo ? "Înapoi Sus ↑" : "Back to Top ↑"}
-          </button>
-        </motion.div>
+
 
         {/* Bottom cornice */}
         <motion.div
