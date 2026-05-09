@@ -42,10 +42,11 @@ export function ReadingProgressBar() {
   );
 }
 
+
+
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
   const { locale } = useLanguage();
-
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 600);
     onScroll();
