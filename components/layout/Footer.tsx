@@ -18,7 +18,7 @@ export function Footer() {
       ? {
           logoTagline: "Cea Mai Mare Națiune",
           description: `O celebrare cinematografică a Statelor Unite ale Americii — ${yearsOld} ani de libertate, inovație și realizări fără egal.`,
-          est: `Fondată în 1776 · ${yearsOld} Ani de Forță`,
+          est: "Fondată în 1776",
           sections: [
             {
               heading: "Explorează",
@@ -61,7 +61,7 @@ export function Footer() {
       : {
           logoTagline: "The Greatest Nation",
           description: `A cinematic celebration of the United States of America — ${yearsOld} years of freedom, innovation, and unrivaled achievement.`,
-          est: `Est. 1776 · ${yearsOld} Years Strong`,
+          est: "Est. 1776",
           sections: [
             {
               heading: "Explore",
@@ -111,7 +111,7 @@ export function Footer() {
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand column */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 flex flex-col items-center text-center">
             {/* Logo */}
             <Link
               href="/"
@@ -136,7 +136,7 @@ export function Footer() {
               </div>
             </Link>
 
-            <p className="font-body text-white/55 text-sm leading-relaxed max-w-xs mb-6">
+            <p className="font-body text-white/55 text-sm leading-relaxed max-w-xs mb-6 mx-auto">
               {copy.description}
             </p>
 
@@ -158,7 +158,7 @@ export function Footer() {
 
           {/* Nav columns */}
           {copy.sections.map((section) => (
-            <div key={section.heading}>
+            <div key={section.heading} className="flex flex-col items-center text-center">
               <h3 className="font-body text-xs font-semibold text-glory-gold uppercase tracking-widest mb-5">
                 {section.heading}
               </h3>
@@ -188,8 +188,8 @@ export function Footer() {
 
       {/* ── Bottom bar ──────────────────────────────────────────────────────── */}
       <div className="bg-black/30">
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-body text-xs text-white/35 text-center sm:text-left">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col items-center justify-center gap-4 text-center">
+          <p className="font-body text-xs text-white/35">
             {copy.copyright}
           </p>
 
@@ -205,7 +205,7 @@ export function Footer() {
           </p>
 
           {/* Disclaimer */}
-          <p className="font-body text-xs text-white/20 text-center sm:text-right max-w-xs">
+          <p className="font-body text-xs text-white/20 max-w-md">
             {copy.disclaimer}
           </p>
         </div>
