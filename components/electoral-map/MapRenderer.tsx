@@ -266,7 +266,7 @@ const HouseCartogram = memo(({ data, hovered, onSquareEnter, clearHover, onState
   const ty = (VB_H - contentH) / 2 - data.bounds.y * scale;
 
   return (
-    <motion.div key="carto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
+    <>
       <svg viewBox={`0 0 ${VB_W} ${VB_H}`} className="w-full" preserveAspectRatio="xMidYMid meet">
         <defs>
           <pattern id="flip-hash-sm" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
@@ -287,7 +287,7 @@ const HouseCartogram = memo(({ data, hovered, onSquareEnter, clearHover, onState
           ))}
         </g>
       </svg>
-    </motion.div>
+    </>
   );
 });
 
@@ -304,7 +304,7 @@ const GeographicMap = memo(({ year, viewMode, hovered, onGeoEnter, clearHover, o
   const p1 = cd.p1, p2 = cd.p2;
 
   return (
-    <motion.div key="geo" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
+    <>
       <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1180, translate: [480, 310] }} style={{ width: "100%", height: "auto" }} width={1000} height={600} viewBox="0 0 1000 600">
         <defs>
           <pattern id="split-dr" width="1" height="1" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
@@ -449,7 +449,7 @@ const GeographicMap = memo(({ year, viewMode, hovered, onGeoEnter, clearHover, o
           }}
         </Geographies>
       </ComposableMap>
-    </motion.div>
+    </>
   );
 });
 
@@ -500,27 +500,41 @@ export function MapRenderer({ year, viewMode, onStateClick, isRo }: { year: numb
   const clearHover = useCallback(() => { setHovered(null); setTip(null); }, []);
 
   return (
-    <div className="relative w-full" onMouseMove={(e) => setTip(p => p ? { ...p, x: e.clientX, y: e.clientY } : null)}>
-      <AnimatePresence initial={false}>
-        {!isHouse ? (
-          <GeographicMap
-            year={year}
-            viewMode={viewMode}
-            hovered={hovered}
-            onGeoEnter={onGeoEnter}
-            clearHover={clearHover}
-            onStateClick={onStateClick}
-          />
-        ) : (
-          <HouseCartogram
-            data={cartoData}
-            hovered={hovered}
-            onSquareEnter={onSquareEnter}
-            clearHover={clearHover}
-            onStateClick={onStateClick}
-          />
-        )}
-      </AnimatePresence>
+    <div className="relative w-full grid" onMouseMove={(e) => setTip(p => p ? { ...p, x: e.clientX, y: e.clientY } : null)}>
+      {/* 1. Geographic Map (Stacked in grid cell 1x1) */}
+      <motion.div 
+        className="col-start-1 row-start-1 w-full"
+        initial={false}
+        animate={{ opacity: isHouse ? 0 : 1 }}
+        transition={{ duration: 0.4 }}
+        style={{ pointerEvents: isHouse ? "none" : "auto" }}
+      >
+        <GeographicMap
+          year={year}
+          viewMode={viewMode}
+          hovered={hovered}
+          onGeoEnter={onGeoEnter}
+          clearHover={clearHover}
+          onStateClick={onStateClick}
+        />
+      </motion.div>
+
+      {/* 2. House Cartogram (Stacked in grid cell 1x1) */}
+      <motion.div 
+        className="col-start-1 row-start-1 w-full"
+        initial={false}
+        animate={{ opacity: isHouse ? 1 : 0 }}
+        transition={{ duration: 0.4 }}
+        style={{ pointerEvents: isHouse ? "auto" : "none" }}
+      >
+        <HouseCartogram
+          data={cartoData}
+          hovered={hovered}
+          onSquareEnter={onSquareEnter}
+          clearHover={clearHover}
+          onStateClick={onStateClick}
+        />
+      </motion.div>
 
       {/* ── Tooltip ────────────────────────────────────────────────────── */}
       {tip && (
