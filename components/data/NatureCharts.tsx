@@ -1,9 +1,13 @@
 "use client";
 
 // ─── Nature Charts ────────────────────────────────────────────────────────────
-// Three Recharts chart components for the Nature section.
-// All are client components (Recharts requirement).
-// Exports: ParkVisitorsChart, BiodiversityChart, GreatLakesChart
+// Recharts-based visualizations for the Nature & Geography vertical.
+//
+// Key Patterns:
+// - Continental Scale: Uses horizontal and vertical bar charts to compare US 
+//   protected lands and species against global peers.
+// - Highlight Logic: Colors the US-specific data in "Glory Gold" or "Glory Red"
+//   to make the comparison immediate and intuitive.
 
 import {
   BarChart,

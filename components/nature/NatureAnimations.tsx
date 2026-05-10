@@ -1,8 +1,17 @@
 "use client";
 
 // ─── Nature Animation Components ─────────────────────────────────────────────
-// All interactive, animated, client-only elements for the Nature section.
-// SITE_IMAGES is imported here for hero crossfade — local images = best quality.
+// Specialized visual engine for the Nature vertical.
+//
+// Component Philosophy:
+// - Atmospheric Immersion: Every component aims to evoke a "National Geographic"
+//   aesthetic through subtle motion (Ken-Burns, Parallax).
+// - Lightweight Interactions: Uses SVGs and CSS animations (Geyser, Aurora) for 
+//   high visual impact with minimal main-thread performance cost.
+//
+// Beginner guide:
+// - HERO_SLIDES: Edit the array below to change the main nature landing hero images.
+// - CountUp: The core logic for animating statistics on scroll.
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from "framer-motion";

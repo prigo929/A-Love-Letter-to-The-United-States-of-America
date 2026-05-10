@@ -1,7 +1,18 @@
 // ─── Nature & Geography Main Page ────────────────────────────────────────────
-// Phase 4 Enhanced: Cinematic hero crossfade, parallax bands, animated stat
-// wall, Ken-Burns park grid, region cards with micro-animations.
+// This is the "Immersive Multimedia" hub for the American landscape.
+//
+// Pedagogical Strategy:
+// - Atmospheric Immersion: Uses crossfading heroes, parallax dividers, and 
+//   particle effects to create a sense of scale and majesty.
+// - Technical Data: Balances "beauty shots" with hard data (visitor counts,
+//   biodiversity species) to drive the "America is Unique" narrative.
+//
 // Server Component — all interactive parts imported as client leaves.
+//
+// Beginner guide:
+// - To change the stats or text, edit lib/data/nature-data.ts
+// - To change the hero images, update the HERO_SLIDES in components/nature/NatureAnimations.tsx
+// - To rearrange the page, edit the JSX sections below.
 
 import type { Metadata } from "next";
 import Image from "next/image";

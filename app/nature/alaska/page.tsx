@@ -1,11 +1,13 @@
 // ─── Alaska Sub-Page ──────────────────────────────────────────────────────────
-// Hero: local SITE_IMAGES.denaliNationalPark (Mount Denali)
-// Secondary: Unsplash aurora only for AuroraBackground base layer (no local aurora shot)
+// A vertical focusing on extreme scale and the "Last Frontier."
+//
+// Pedagogical Goal:
+// - To visualize Alaska's immense size (2.5x Texas) and its unique status as 
+//   America's greatest wilderness reserve.
+// - To demonstrate the scale of the Hubbard Glacier and Mount Denali.
 //
 // Beginner guide:
 // - Shared Alaska facts come from lib/data/nature-data.ts
-// - The wildlife/extreme-scale arrays here belong only to this page
-// - `AuroraBackground` adds atmosphere, while the actual hero photo is still a normal Next Image
 
 import type { Metadata } from "next";
 import Image from "next/image";
