@@ -2,10 +2,19 @@
 import { motion } from "framer-motion";
 import { ELECTORAL_HISTORY, PARTY_COLORS, PARTY_FULL_NAMES, CONGRESS_DATA, ViewMode } from "@/lib/data/electoral-data";
 
+/**
+ * ElectionHeader: Displays the high-level metrics for a specific election year.
+ * 
+ * Logic:
+ * - It dynamically calculates the national "Tally" (Electoral Votes, Senate seats, etc.)
+ *   based on the active ViewMode.
+ * - It displays the threshold for victory (e.g. 270 for President).
+ * - It renders a progress bar showing the balance of power between major parties.
+ */
 export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMode: ViewMode; isRo?: boolean }) {
   const yd = ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0];
 
-  // Tally by party
+  // National Tally: Logic varies by constitutional office
   const tally: Record<string, number> = {};
   for (const sd of Object.values(yd.states)) {
     let p = "";

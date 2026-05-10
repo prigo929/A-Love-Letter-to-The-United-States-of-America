@@ -1,4 +1,15 @@
+/**
+ * ViewMode defines the four primary analytical layers of the interactive map:
+ * - President: The Electoral College outcome for the executive branch.
+ * - Senate: The composition of the upper chamber (100 seats, staggered cycles).
+ * - House: The composition of the lower chamber (435 seats, population-based).
+ * - Governor: State-level executive leadership across the 50 states.
+ */
 export type ViewMode = "President" | "Senate" | "House" | "Governor";
+
+/**
+ * StateData represents a snapshot of all political levels for a specific state in a specific year.
+ */
 export interface StateData {
   president: { party: string; candidate?: string; flipped: boolean };
   senate: { split: boolean; party1: string; party2: string; active: boolean };
@@ -6,6 +17,10 @@ export interface StateData {
   governor: { party: string; active: boolean };
   electoralVotes: number;
 }
+
+/**
+ * YearData holds the entire national snapshot for a biennial election cycle (every 2 years).
+ */
 export interface YearData {
   year: number;
   states: Record<string, StateData>;
@@ -34,7 +49,11 @@ export const PARTY_FULL_NAMES: Record<string, string> = {
   SDEM: "Southern Democrat", POP: "Populist"
 };
 
-// ── State Admission Years ─────────────────────────────────────────────────
+/**
+ * ── State Admission Years ─────────────────────────────────────────────────
+ * This map determines when a state "appears" on the interactive map.
+ * Territories not yet admitted are rendered as "ghost" or dashed outlines.
+ */
 export const STATE_ADMISSION: Record<string, number> = {
   "Delaware": 1787, "Pennsylvania": 1787, "New Jersey": 1787, "Georgia": 1788, "Connecticut": 1788,
   "Massachusetts": 1788, "Maryland": 1788, "South Carolina": 1788, "New Hampshire": 1788,
@@ -46,7 +65,7 @@ export const STATE_ADMISSION: Record<string, number> = {
   "Nevada": 1864, "Nebraska": 1867, "Colorado": 1876, "North Dakota": 1889, "South Dakota": 1889,
   "Montana": 1889, "Washington": 1889, "Idaho": 1890, "Wyoming": 1890, "Utah": 1896, "Oklahoma": 1907,
   "New Mexico": 1912, "Arizona": 1912, "Alaska": 1959, "Hawaii": 1959,
-  "District of Columbia": 1961,
+  "District of Columbia": 1961, // Ratified by the 23rd Amendment
 };
 
 // ── Electoral Eras (for timeline annotations) ─────────────────────────────
@@ -645,8 +664,17 @@ function buildYear(year: number): YearData {
   };
 }
 
+/**
+ * ── National Data Processing ──────────────────────────────────────────────
+ * Generates the full sequence of electoral history from 1788 to 2024.
+ * This is computed once at runtime to provide a seamless scrubbing experience.
+ */
 export const ELECTORAL_HISTORY: YearData[] = Array.from({ length: (2024 - 1788) / 2 + 1 }, (_, i) => 1788 + i * 2).filter(y => y >= 1788).map(buildYear);
 
+/**
+ * Retrieves the data snapshot for a specific state in a specific year.
+ * If the exact year isn't found (e.g. an odd-numbered year), it pulls the closest biennial data.
+ */
 export function getStateData(year: number, stateName: string): StateData {
   let closest = ELECTORAL_HISTORY[0];
   let minDist = Infinity;

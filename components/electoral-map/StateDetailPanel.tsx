@@ -5,6 +5,15 @@ import { ELECTORAL_HISTORY, getStateData, getFlipData, PARTY_COLORS, STATE_ADMIS
 
 function pc(p: string) { return PARTY_COLORS[p] || "#C9A84C"; }
 
+/**
+ * StateDetailPanel: A deep-dive sidebar for a specific state's historical data.
+ * 
+ * Features:
+ * - Multi-Level Summary: Shows winners for President, Senate, House, and Governor.
+ * - Historical Sparkline: A visual timeline of every presidential election result for 
+ *   this specific state since its admission to the Union.
+ * - Admittance Context: Shows the year the state joined the United States.
+ */
 export function StateDetailPanel({
   stateName, year, onClose, isRo,
 }: { stateName: string; year: number; onClose: () => void; isRo?: boolean }) {
@@ -141,12 +150,13 @@ export function StateDetailPanel({
           </div>
         )}
 
-        {/* ── HISTORY SPARKLINE (CENTERPIECE) ─────────────────────────────── */}
+            {/* ── HISTORY SPARKLINE (CENTERPIECE) ─────────────────────────────── */}
         {history.length > 0 && (
-          <div>
-            <p className="mb-2 font-mono text-[8px] uppercase tracking-widest text-[#6B6860]">
-              {isRo ? "Istorie Prezidențială" : "Presidential History"} · {history[0]?.year}–{history[history.length - 1]?.year}
-            </p>
+/* This sparkline provides a generational view of the state's political shifts. */
+            <div>
+              <p className="mb-2 font-mono text-[8px] uppercase tracking-widest text-[#6B6860]">
+                {isRo ? "Istorie Prezidențială" : "Presidential History"} · {history[0]?.year}–{history[history.length - 1]?.year}
+              </p>
             <div className="relative flex items-end gap-[2px]" style={{ height: 80 }}>
               {history.map((h) => {
                 const isActive = h.year === year;

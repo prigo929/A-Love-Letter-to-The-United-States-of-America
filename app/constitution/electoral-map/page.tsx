@@ -1,7 +1,10 @@
 // ─── Electoral Archive Map Sub-Page ─────────────────────────────────────────
-// Interactive historical map of United States elections.
-// Museum-grade, Bloomberg-terminal aesthetic. Four constitutional views:
-// President, Senate, House, Governor.
+// This page serves as the entry point for the interactive "Electoral Archive".
+//
+// Pedagogical Goal:
+// - To demonstrate how the US Constitution distributes power across different 
+//   electoral layers (Federal, State, Legislative, Executive).
+// - To provide a visual, data-driven narrative of American political history.
 //
 // For Beginners: This page renders an interactive map of the US where you can
 // scrub through election years and see how each state voted across four
@@ -112,7 +115,7 @@ export default async function ElectoralMapPage() {
       {/* ── Main Content ──────────────────────────────────────────────────── */}
       <div className="bg-[#080B12]">
         <div className="mx-auto max-w-screen-xl space-y-16 px-4 py-16 sm:px-6 lg:px-8">
-          {/* The Interactive Map */}
+          {/* The Interactive Map Component (Orchestrator) */}
           <section>
             <ElectoralMap isRo={isRo} />
           </section>
