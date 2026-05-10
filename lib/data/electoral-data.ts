@@ -543,6 +543,24 @@ export const CONGRESS_DATA: Record<number, CongressInfo> = {
 const R_BASE = new Set(["Alabama","Alaska","Arkansas","Idaho","Indiana","Kansas","Kentucky","Louisiana","Mississippi","Missouri","Montana","Nebraska","North Dakota","Oklahoma","South Carolina","South Dakota","Tennessee","Texas","Utah","West Virginia","Wyoming"]);
 const D_BASE = new Set(["California","Connecticut","Delaware","Hawaii","Illinois","Maryland","Massachusetts","New Jersey","New York","Oregon","Rhode Island","Vermont","Washington"]);
 
+const HOUSE_OVR: Record<number, Record<string, { p1: number, p2: number }>> = {
+  2024: {
+    "Alabama": { p1: 5, p2: 2 }, "Alaska": { p1: 1, p2: 0 }, "Arizona": { p1: 6, p2: 3 }, "Arkansas": { p1: 4, p2: 0 },
+    "California": { p1: 9, p2: 43 }, "Colorado": { p1: 4, p2: 4 }, "Connecticut": { p1: 0, p2: 5 }, "Delaware": { p1: 0, p2: 1 },
+    "Florida": { p1: 20, p2: 8 }, "Georgia": { p1: 9, p2: 5 }, "Hawaii": { p1: 0, p2: 2 }, "Idaho": { p1: 2, p2: 0 },
+    "Illinois": { p1: 3, p2: 14 }, "Indiana": { p1: 7, p2: 2 }, "Iowa": { p1: 4, p2: 0 }, "Kansas": { p1: 3, p2: 1 },
+    "Kentucky": { p1: 5, p2: 1 }, "Louisiana": { p1: 4, p2: 2 }, "Maine": { p1: 0, p2: 2 }, "Maryland": { p1: 1, p2: 7 },
+    "Massachusetts": { p1: 0, p2: 9 }, "Michigan": { p1: 7, p2: 6 }, "Minnesota": { p1: 4, p2: 4 }, "Mississippi": { p1: 3, p2: 1 },
+    "Missouri": { p1: 6, p2: 2 }, "Montana": { p1: 2, p2: 0 }, "Nebraska": { p1: 3, p2: 0 }, "Nevada": { p1: 1, p2: 3 },
+    "New Hampshire": { p1: 0, p2: 2 }, "New Jersey": { p1: 3, p2: 9 }, "New Mexico": { p1: 0, p2: 3 }, "New York": { p1: 7, p2: 19 },
+    "North Carolina": { p1: 10, p2: 4 }, "North Dakota": { p1: 1, p2: 0 }, "Ohio": { p1: 10, p2: 5 }, "Oklahoma": { p1: 5, p2: 0 },
+    "Oregon": { p1: 1, p2: 5 }, "Pennsylvania": { p1: 10, p2: 7 }, "Rhode Island": { p1: 0, p2: 2 }, "South Carolina": { p1: 6, p2: 1 },
+    "South Dakota": { p1: 1, p2: 0 }, "Tennessee": { p1: 8, p2: 1 }, "Texas": { p1: 25, p2: 13 }, "Utah": { p1: 4, p2: 0 },
+    "Vermont": { p1: 0, p2: 1 }, "Virginia": { p1: 5, p2: 6 }, "Washington": { p1: 2, p2: 8 }, "West Virginia": { p1: 2, p2: 0 },
+    "Wisconsin": { p1: 6, p2: 2 }, "Wyoming": { p1: 1, p2: 0 }
+  }
+};
+
 /**
  * ── Senate Classes ────────────────────────────────────────────────────────
  * Mandatory constitutional staggered cycles (Article I, Section 3).
@@ -676,7 +694,12 @@ function buildYear(year: number): YearData {
     
     const hash = (name.charCodeAt(0) + name.length) % 10;
     stateShare = Math.max(0, Math.min(1, stateShare + (hash - 5) * 0.02)); // Random variance per state
-    const dH = Math.round(totalH * stateShare);
+    let dH = Math.round(totalH * stateShare);
+
+    // Override with exact historical counts if available
+    if (HOUSE_OVR[year] && HOUSE_OVR[year][name]) {
+      dH = HOUSE_OVR[year][name].p1;
+    }
 
     states[name] = {
       president: { party: presParty, candidate: presCandidate, flipped: false },
