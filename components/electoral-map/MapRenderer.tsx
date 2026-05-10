@@ -72,6 +72,111 @@ const STATE_SHAPES: Record<string, string[]> = {
     "#####",
     "#####",
     " ### ",
+  ],
+  "Ohio": [
+    " ####",
+    "#####",
+    " ####",
+    "  ## ",
+  ],
+  "Georgia": [
+    " ### ",
+    "#### ",
+    "#### ",
+    " ### ",
+  ],
+  "North Carolina": [
+    "  ####",
+    "######",
+    "####  ",
+  ],
+  "Michigan": [
+    " ##   ",
+    "   ## ",
+    "  ####",
+    " #####",
+  ],
+  "New Jersey": [
+    " ##",
+    "###",
+    "###",
+    "## ",
+    "## ",
+  ],
+  "Virginia": [
+    " ####",
+    "#####",
+    "  ## ",
+  ],
+  "Washington": [
+    " ###",
+    "####",
+    "### ",
+  ],
+  "Massachusetts": [
+    " ####",
+    "#####",
+  ],
+  "Indiana": [
+    "###",
+    "###",
+    "###",
+  ],
+  "Tennessee": [
+    "#####",
+    " ####",
+  ],
+  "Missouri": [
+    "###",
+    "###",
+    " ##",
+  ],
+  "Maryland": [
+    " ####",
+    "#### ",
+  ],
+  "Wisconsin": [
+    "###",
+    "###",
+    "## ",
+  ],
+  "Colorado": [
+    "####",
+    "####",
+  ],
+  "Minnesota": [
+    " ##",
+    "###",
+    "###",
+  ],
+  "South Carolina": [
+    " ###",
+    "####",
+  ],
+  "Alabama": [
+    "##",
+    "##",
+    "###",
+  ],
+  "Louisiana": [
+    " ##",
+    "####",
+  ],
+  "Kentucky": [
+    "####",
+    " ## ",
+  ],
+  "Oregon": [
+    "###",
+    "###",
+  ],
+  "Oklahoma": [
+    "###",
+    " ##",
+  ],
+  "Connecticut": [
+    "###",
+    " ##",
   ]
 };
 
@@ -86,10 +191,11 @@ function parseShape(shape: string[]): [number, number][] {
 }
 
 const STATE_COLS: Record<string, number> = {
-  California:7,Texas:7,Florida:7,"New York":6,Pennsylvania:5,Illinois:5,Ohio:4,
-  Georgia:4,"North Carolina":4,Michigan:4,"New Jersey":4,Virginia:4,Washington:4,
-  Massachusetts:3,Tennessee:3,Indiana:3,Arizona:3,Missouri:3,Maryland:3,
-  Wisconsin:3,Colorado:3,Minnesota:3,"South Carolina":3,Alabama:3,
+  California: 6, Texas: 8, Florida: 7, "New York": 7, Pennsylvania: 6, Illinois: 5,
+  Ohio: 5, Georgia: 4, "North Carolina": 6, Michigan: 6, "New Jersey": 3, Virginia: 5,
+  Washington: 4, Massachusetts: 5, Indiana: 3, Tennessee: 5, Missouri: 3, Maryland: 5,
+  Wisconsin: 3, Colorado: 4, Minnesota: 3, "South Carolina": 4, Alabama: 3, Louisiana: 4,
+  Kentucky: 4, Oregon: 3, Oklahoma: 3, Connecticut: 3
 };
 
 const ANCHORS: Record<string, [number, number]> = {
