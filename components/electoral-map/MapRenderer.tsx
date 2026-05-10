@@ -252,13 +252,13 @@ const HouseCartogram = memo(({ cartogram, hovered, onSquareEnter, clearHover, on
   if (!cartogram) return null;
   return (
     <motion.div key="carto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
-      <svg viewBox="0 0 1000 600" className="w-full" preserveAspectRatio="xMidYMid meet">
+      <svg viewBox="0 0 1150 620" className="w-full" preserveAspectRatio="xMidYMid meet">
         <defs>
           <pattern id="flip-hash-sm" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
             <line x1="0" y1="0" x2="0" y2="4" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" />
           </pattern>
         </defs>
-        <g transform="translate(-10, 0) scale(1.05)">
+        <g transform="translate(10, 40) scale(0.92)">
           {cartogram.map((cs) => (
             <HouseStateGroup
               key={`state-${cs.name}`}
