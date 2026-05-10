@@ -132,6 +132,7 @@ interface CartoState { name: string; squares: CSquare[]; bbox: { x: number, y: n
 function buildCartogram(year: number): CartoState[] {
   const yd = ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0];
   const statesArr: CartoState[] = [];
+  let gMinX = Infinity, gMaxX = -Infinity, gMinY = Infinity, gMaxY = -Infinity;
   const cd = CONGRESS_DATA[year] || { p1: "DEM", p2: "REP" };
   const p1 = cd.p1, p2 = cd.p2;
 
@@ -206,8 +207,13 @@ function buildCartogram(year: number): CartoState[] {
       bbox: { x: minX - 2, y: minY - 2, w: w + 4, h: h + 4 },
       label: { x: minX + w / 2, y: maxY + 12, text: ABBREV[name] || name, state: name }
     });
+
+    if (minX < gMinX) gMinX = minX;
+    if (minY < gMinY) gMinY = minY;
+    if (maxX > gMaxX) gMaxX = maxX;
+    if (maxY + 20 > gMaxY) gMaxY = maxY + 20; // +20 for labels
   }
-  return statesArr;
+  return { states: statesArr, bounds: { x: gMinX, y: gMinY, w: gMaxX - gMinX, h: gMaxY - gMinY } };
 }
 
 // ── SUB-COMPONENTS ──────────────────────────────────────────────────────
@@ -242,24 +248,32 @@ const HouseStateGroup = memo(({ cs, isHovered, isDimmed, onMouseEnter, onMouseLe
 
 // ── MAIN COMPONENT ────────────────────────────────────────────────────────
 
-const HouseCartogram = memo(({ cartogram, hovered, onSquareEnter, clearHover, onStateClick }: {
-  cartogram: any[] | null,
+const HouseCartogram = memo(({ data, hovered, onSquareEnter, clearHover, onStateClick }: {
+  data: { states: any[], bounds: { x: number, y: number, w: number, h: number } } | null,
   hovered: string | null,
   onSquareEnter: (name: string, e: React.MouseEvent) => void,
   clearHover: () => void,
   onStateClick?: (n: string) => void
 }) => {
-  if (!cartogram) return null;
+  if (!data) return null;
+  
+  const VB_W = 1150, VB_H = 620;
+  const scale = 0.92;
+  const contentW = data.bounds.w * scale;
+  const contentH = data.bounds.h * scale;
+  const tx = (VB_W - contentW) / 2 - data.bounds.x * scale;
+  const ty = (VB_H - contentH) / 2 - data.bounds.y * scale;
+
   return (
     <motion.div key="carto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
-      <svg viewBox="0 0 1150 620" className="w-full" preserveAspectRatio="xMidYMid meet">
+      <svg viewBox={`0 0 ${VB_W} ${VB_H}`} className="w-full" preserveAspectRatio="xMidYMid meet">
         <defs>
           <pattern id="flip-hash-sm" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
             <line x1="0" y1="0" x2="0" y2="4" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" />
           </pattern>
         </defs>
-        <g transform="translate(10, 40) scale(0.92)">
-          {cartogram.map((cs) => (
+        <g transform={`translate(${tx}, ${ty}) scale(${scale})`}>
+          {data.states.map((cs) => (
             <HouseStateGroup
               key={`state-${cs.name}`}
               cs={cs}
@@ -446,7 +460,7 @@ export function MapRenderer({ year, viewMode, onStateClick, isRo }: { year: numb
   const isHouse = viewMode === "House";
   const yd = useMemo(() => ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0], [year]);
   const isOffYear = viewMode === "President" && yd.demPopVote === 0 && !yd.unopposed;
-  const cartogram = useMemo(() => isHouse ? buildCartogram(year) : null, [year, isHouse]);
+  const cartoData = useMemo(() => isHouse ? buildCartogram(year) : null, [year, isHouse]);
 
   const onGeoEnter = useCallback((geo: MapGeo, evt: React.MouseEvent<SVGPathElement>) => {
     const name = geo.properties?.name ?? "";
@@ -498,7 +512,7 @@ export function MapRenderer({ year, viewMode, onStateClick, isRo }: { year: numb
           />
         ) : (
           <HouseCartogram
-            cartogram={cartogram}
+            data={cartoData}
             hovered={hovered}
             onSquareEnter={onSquareEnter}
             clearHover={clearHover}
