@@ -8,6 +8,16 @@ import { getStateData, getFlipData, STATE_ADMISSION, PARTY_COLORS, ELECTORAL_HIS
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 function pc(p: string) { return PARTY_COLORS[p] || "#C9A84C"; }
 
+/**
+ * MapRenderer: The visual engine of the Electoral Archive.
+ * 
+ * It supports two primary rendering modes:
+ * 1. GeographicMap: A standard Albers USA projection using TopoJSON data.
+ *    - Handles Presidential (State winner), Senate (split/diagonal), and Governor views.
+ * 2. HouseCartogram: A dot-grid representation of the 435 House seats.
+ *    - Uses handcrafted ASCII-like shapes to preserve the "look" of states while 
+ *      displaying a accurate seat counts.
+ */
 interface MapGeo { rsmKey: string; properties?: { name?: string }; }
 interface Tip { x: number; y: number; name: string; party: string | string[]; detail: string; }
 
@@ -278,6 +288,7 @@ const GeographicMap = memo(({ year, viewMode, hovered, onGeoEnter, clearHover, o
           <pattern id="flip-hash" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
             <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(255,255,255,0.22)" strokeWidth="2.5" />
           </pattern>
+          {/* clip-half definitions allow for the diagonal "split" delegation look in the Senate view */}
           <clipPath id="clip-half-1" clipPathUnits="objectBoundingBox">
             <polygon points="0,0 1,0 0,1" />
           </clipPath>

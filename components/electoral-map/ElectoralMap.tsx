@@ -22,12 +22,15 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
   const [sel, setSel] = useState<string | null>(null);
   const v = VIEWS.find((x) => x.key === view)!;
 
-  // Keyboard
+  // Keyboard Navigation: Enables rapid-fire historical analysis
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
+      // Arrow keys for timeline scrubbing
       if (e.key === "ArrowLeft") { const i = YEARS.indexOf(year); if (i > 0) setYear(YEARS[i - 1]); }
       else if (e.key === "ArrowRight") { const i = YEARS.indexOf(year); if (i < YEARS.length - 1) setYear(YEARS[i + 1]); }
+      // Number keys (1-4) for switching view modes (President, Senate, House, Governor)
       else if (e.key >= "1" && e.key <= "4") setView(VIEWS[+e.key - 1].key);
+      // Escape to close state details
       else if (e.key === "Escape") setSel(null);
     };
     window.addEventListener("keydown", h);

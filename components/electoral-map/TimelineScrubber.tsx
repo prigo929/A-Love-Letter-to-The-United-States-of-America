@@ -13,6 +13,15 @@ const INNER = TW - PX * 2;
 
 function yearToX(y: number) { return PX + ((y - MIN_YEAR) / (MAX_YEAR - MIN_YEAR)) * INNER; }
 
+/**
+ * TimelineScrubber: An interactive SVG-based slider for navigating electoral history.
+ * 
+ * Features:
+ * - Dynamic Step Logic: Swaps between biennial (Senate/House) and quadrennial (Presidential) 
+ *   steps based on the current view mode.
+ * - Era Context: Highlights major historical epochs (e.g. Civil War, New Deal) as background regions.
+ * - Playback: Includes a "Museum Tour" mode that automatically steps through the years.
+ */
 export function TimelineScrubber({
   currentYear, onYearChange, isRo, viewMode,
 }: { currentYear: number; onYearChange: (y: number) => void; isRo?: boolean; viewMode?: ViewMode; }) {
@@ -21,6 +30,8 @@ export function TimelineScrubber({
   const [playing, setPlaying] = useState(false);
   const [hoverY, setHoverY] = useState<number | null>(null);
 
+  // Determine the selectable years based on the active ViewMode.
+  // Presidential view filters for quadrennial cycles; others show the full biennial timeline.
   const years = useMemo(() => {
     if (viewMode === "President") return ALL_YEARS.filter(y => y % 4 === 0);
     return ALL_YEARS;
