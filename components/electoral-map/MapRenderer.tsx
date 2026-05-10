@@ -129,7 +129,8 @@ interface CSquare { x: number; y: number; color: string; state: string; idx: num
 interface CLabel { x: number; y: number; text: string; state: string; }
 interface CartoState { name: string; squares: CSquare[]; bbox: { x: number, y: number, w: number, h: number }; label: CLabel; }
 
-function buildCartogram(year: number): CartoState[] {
+interface CartoData { states: CartoState[]; bounds: { x: number; y: number; w: number; h: number; }; }
+function buildCartogram(year: number): CartoData {
   const yd = ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0];
   const statesArr: CartoState[] = [];
   let gMinX = Infinity, gMaxX = -Infinity, gMinY = Infinity, gMaxY = -Infinity;
@@ -249,7 +250,7 @@ const HouseStateGroup = memo(({ cs, isHovered, isDimmed, onMouseEnter, onMouseLe
 // ── MAIN COMPONENT ────────────────────────────────────────────────────────
 
 const HouseCartogram = memo(({ data, hovered, onSquareEnter, clearHover, onStateClick }: {
-  data: { states: any[], bounds: { x: number, y: number, w: number, h: number } } | null,
+  data: CartoData | null,
   hovered: string | null,
   onSquareEnter: (name: string, e: React.MouseEvent) => void,
   clearHover: () => void,
