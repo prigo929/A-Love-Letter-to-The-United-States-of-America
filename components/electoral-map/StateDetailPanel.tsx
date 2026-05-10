@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ELECTORAL_HISTORY, getStateData, getFlipData, PARTY_COLORS, STATE_ADMISSION, PARTY_FULL_NAMES } from "@/lib/data/electoral-data";
+import { ELECTORAL_HISTORY, getStateData, getFlipData, PARTY_COLORS, STATE_ADMISSION, PARTY_FULL_NAMES, CONGRESS_DATA } from "@/lib/data/electoral-data";
 
 function pc(p: string) { return PARTY_COLORS[p] || "#C9A84C"; }
 
@@ -19,6 +19,7 @@ export function StateDetailPanel({
 }: { stateName: string; year: number; onClose: () => void; isRo?: boolean }) {
   const data = getStateData(year, stateName);
   const flip = getFlipData(year, stateName);
+  const cd = CONGRESS_DATA[year] || { p1: "DEM", p2: "REP" };
   const admitted = STATE_ADMISSION[stateName];
   const [sparkTip, setSparkTip] = useState<{ year: number; party: string } | null>(null);
 
@@ -47,8 +48,8 @@ export function StateDetailPanel({
     {
       label: isRo ? "Cameră" : "House",
       blocks: [{
-        party: data.house.demReps >= data.house.repReps ? "DEM" : "REP",
-        detail: `${data.house.demReps} DEM · ${data.house.repReps} REP`,
+        party: data.house.p1Reps >= data.house.p2Reps ? cd.p1 : cd.p2,
+        detail: `${data.house.p1Reps} ${cd.p1} · ${data.house.p2Reps} ${cd.p2}`,
         flipped: flip.houseFlipDem > 0 || flip.houseFlipRep > 0,
       }],
     },
@@ -139,13 +140,13 @@ export function StateDetailPanel({
               {isRo ? "Distribuție Cameră" : "House Breakdown"}
             </p>
             <div className="flex h-3 w-full overflow-hidden rounded-[1px]">
-              <div style={{ width: `${(data.house.demReps / data.house.totalReps) * 100}%`, background: pc("DEM") }} />
-              <div style={{ width: `${(data.house.repReps / data.house.totalReps) * 100}%`, background: pc("REP") }} />
+              <div style={{ width: `${(data.house.p1Reps / data.house.totalReps) * 100}%`, background: pc(cd.p1) }} />
+              <div style={{ width: `${(data.house.p2Reps / data.house.totalReps) * 100}%`, background: pc(cd.p2) }} />
             </div>
             <div className="mt-1 flex justify-between font-mono text-[8px] text-[#6B6860]" style={{ fontVariantNumeric: "tabular-nums" }}>
-              <span>DEM {data.house.demReps}</span>
+              <span>{cd.p1} {data.house.p1Reps}</span>
               <span>{data.house.totalReps} {isRo ? "total" : "total"}</span>
-              <span>REP {data.house.repReps}</span>
+              <span>{cd.p2} {data.house.p2Reps}</span>
             </div>
           </div>
         )}

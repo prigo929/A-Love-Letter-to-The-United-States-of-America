@@ -41,14 +41,14 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
   const { stats, activeParties } = useMemo(() => {
     const yd = ELECTORAL_HISTORY.find((d) => d.year === year) || ELECTORAL_HISTORY[0];
     const partySet = new Set<string>();
-    let dS = 0, rS = 0, oS = 0, dH = 0, rH = 0;
+    let dS = 0, rS = 0, oS = 0, p1H = 0, p2H = 0;
     for (const sd of Object.values(yd.states)) {
       partySet.add(sd.president.party);
       if (sd.president.party === "DEM") dS++; else if (sd.president.party === "REP") rS++; else oS++;
-      dH += sd.house.demReps; rH += sd.house.repReps;
+      p1H += sd.house.p1Reps; p2H += sd.house.p2Reps;
     }
     return {
-      stats: { dS, rS, oS, dH, rH, total: Object.keys(yd.states).filter(s => s !== "District of Columbia").length },
+      stats: { dS, rS, oS, p1H, p2H, total: Object.keys(yd.states).filter(s => s !== "District of Columbia").length },
       activeParties: [...partySet].filter(Boolean),
     };
   }, [year]);

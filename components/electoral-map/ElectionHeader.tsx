@@ -30,8 +30,8 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
       continue;
     } else if (viewMode === "House") {
       const cd = CONGRESS_DATA[year] || { p1: "DEM", p2: "REP", houseShare: 0.5, senateShare: 0.5 };
-      tally[cd.p1] = (tally[cd.p1] || 0) + sd.house.demReps;
-      tally[cd.p2] = (tally[cd.p2] || 0) + sd.house.repReps;
+      tally[cd.p1] = (tally[cd.p1] || 0) + sd.house.p1Reps;
+      tally[cd.p2] = (tally[cd.p2] || 0) + sd.house.p2Reps;
       continue;
     } else if (viewMode === "Governor") {
       p = sd.governor.party;
@@ -77,10 +77,12 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
     const currIdx = ELECTORAL_HISTORY.findIndex(h => h.year === year);
     if (currIdx > 0) {
       const prevYd = ELECTORAL_HISTORY[currIdx - 1];
+      const curCd = CONGRESS_DATA[year] || { p1: "DEM", p2: "REP" };
+      const prevCd = CONGRESS_DATA[prevYd.year] || { p1: "DEM", p2: "REP" };
       let prevCount = 0;
       let currCount = 0;
       for (const sd of Object.values(yd.states)) {
-        if (viewMode === "House") currCount += topParty === "DEM" ? sd.house.demReps : sd.house.repReps;
+        if (viewMode === "House") currCount += topParty === curCd.p1 ? sd.house.p1Reps : sd.house.p2Reps;
         else if (viewMode === "Senate") {
           if (sd.senate.party1 === topParty) currCount++;
           if (sd.senate.party2 === topParty) currCount++;
@@ -90,7 +92,7 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
         }
       }
       for (const sd of Object.values(prevYd.states)) {
-        if (viewMode === "House") prevCount += topParty === "DEM" ? sd.house.demReps : sd.house.repReps;
+        if (viewMode === "House") prevCount += topParty === prevCd.p1 ? sd.house.p1Reps : sd.house.p2Reps;
         else if (viewMode === "Senate") {
           if (sd.senate.party1 === topParty) prevCount++;
           if (sd.senate.party2 === topParty) prevCount++;
