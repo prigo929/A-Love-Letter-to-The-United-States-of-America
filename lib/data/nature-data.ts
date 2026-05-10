@@ -1,10 +1,15 @@
 // ─── Nature Section Data ─────────────────────────────────────────────────────
-// All static data for the Nature section and its sub-pages.
-// Components import from here — never hardcode in JSX.
+// This file serves as the "Ecological Source of Truth" for the platform.
+// It centralizes all natural statistics, park information, and geographic facts.
+//
+// Architectural Principles:
+// - Decoupling: UI components should NEVER hardcode facts. They import from here.
+// - Bilingual Support: Every dataset is wrapped in a getter function (e.g., `getNatureHeroStats`)
+//   to handle the locale-specific data mappings.
 //
 // Beginner guide:
-// - To change nature page stats, edit them here.
-// - To swap images, update the SITE_IMAGES keys below.
+// - To change nature page stats (e.g., number of National Parks), edit them here.
+// - To swap nature-related images, update the SITE_IMAGES keys below.
 // - To change chart data, edit the array exports.
 
 import type { Locale } from "@/lib/i18n/config";

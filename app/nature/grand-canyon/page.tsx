@@ -1,8 +1,13 @@
 // ─── Grand Canyon Sub-Page ────────────────────────────────────────────────────
+// A vertical focusing on geological time and massive scale.
+//
+// Pedagogical Goal:
+// - To use the `CanyonStrataReveal` component to explain 1.8 billion years of 
+//   Earth's history.
+// - To contrast the desert basin's floor with the alpine forests of the rim.
+//
 // Beginner guide:
 // - Shared Grand Canyon facts come from lib/data/nature-data.ts
-// - The geology layers below are page-only because they drive a custom visual
-// - Hero and parallax images are pulled from SITE_IMAGES
 
 import type { Metadata } from "next";
 import Image from "next/image";

@@ -156,6 +156,12 @@ A data-driven deep dive into American economic power located at `/economy`.
 - **Startup Ecosystem Map**: Interactive breakdown of the 435+ House seats (as a cartogram) and individual startup hubs like Silicon Valley and Austin.
 - **Dollar Dominance**: Technical analysis of the world's reserve currency and its "exorbitant privilege."
 
+### 🏞️ The Natural Majesty Vertical
+An immersive multimedia exploration of the American landscape located at `/nature`.
+- **Atmospheric Visuals**: Custom CSS/SVG components for the Aurora Borealis, geyser eruptions, and geological strata.
+- **Continental Comparisons**: Charts comparing US biodiversity and protected lands against global rivals.
+- **Deep-Dive Subpages**: Dedicated verticals for Alaska, Yellowstone, the Grand Canyon, and more, focusing on conservation history and extreme scale.
+
 ### 🏛️ The Constitution & Democracy Exhibit Architecture
 
 The Constitution section is the most technically complex part of the repository, functioning as a high-fidelity "digital museum" rather than a standard web page.
@@ -202,6 +208,25 @@ We use `recharts` for all economic visualizations, following a specific "Narrati
 The section is not a single landing page but a tiered architecture:
 - **Hub Page (`/economy`)**: Uses a **Sticky Table of Contents** for rapid navigation across the five core pillars of the American economy.
 - **Subpages**: Each pillar (GDP, Capital Markets, Startups, Dollar, Trade) has a dedicated deep-dive route. These pages use "Extended Facts"—highly granular data points specific to that topic (e.g., comparing California's GDP to entire nations) that are too detailed for the main hub.
+
+### 🏞️ The Natural Majesty Vertical Architecture
+
+The Nature section is designed as an **Immersive Multimedia Experience**, prioritizing atmosphere and scale.
+
+#### 1. Visual Storytelling Layer (`components/nature/`)
+Unlike other sections, Nature uses specialized interactive components to evoke a sense of place:
+- **Atmospheric Dividers**: Components like `ParallaxImageBand` and `WaveSection` use scroll-linked transforms and morphing SVGs to create a sense of depth between content blocks.
+- **Lightweight Motion**: We use pure CSS/SVG animations for the `AuroraBackground` and `GeyserScene`. This provides a "museum-grade" feel without the performance cost of video or heavy JS libraries.
+- **Ken-Burns Engine**: The `NatureHeroCrossfade` uses a coordinated scale-and-fade animation to turn static images into cinematic sequences.
+
+#### 2. The Ecological Data Layer (`lib/data/nature-data.ts`)
+Geography is treated as a strategic and cultural asset:
+- **Continental Comparison Logic**: Chart components (e.g., `BiodiversityChart`) use the same "Highlight Logic" as the Economy section, coloring the US in **Glory Gold** to emphasize its unique status as the only nation with every major climate zone.
+- **Centralized Facts**: All park established dates, visitor counts, and geological ages are centralized. This ensures that a fact changed in `nature-data.ts` is instantly updated in both the main hub and the subpage infographics.
+
+#### 3. Tiered Editorial Architecture
+- **Hub Page (`/nature`)**: Focuses on the "National Park Idea" and continental scale.
+- **Vertical Subpages**: Each subpage (Alaska, Yellowstone, etc.) uses a custom layout tailored to its theme. For example, the **Grand Canyon** page uses `CanyonStrataReveal` to visualize vertical geological time, while the **Alaska** page uses `SnowParticles` for atmospheric immersion.
 
 ### ⚡ Performance & AI Readiness
 - **Vercel Web Vitals**: Integrated monitoring for LCP, CLS, and INP to ensure a "Bloomberg-grade" smooth experience.

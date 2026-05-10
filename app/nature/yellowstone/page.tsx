@@ -1,11 +1,13 @@
 // ─── Yellowstone Sub-Page ─────────────────────────────────────────────────────
-// Hero: local SITE_IMAGES.yellowstonePrismatic (Grand Prismatic Spring)
-// Secondary: local SITE_IMAGES.yellowstoneNationalPark
+// A vertical focusing on the world's first national park and its volcanic power.
+//
+// Pedagogical Goal:
+// - To highlight the `GeyserScene` and the 10,000 hydrothermal features.
+// - To explain the history of the 1872 Protection Act and the recovery of 
+//   the American Bison.
 //
 // Beginner guide:
 // - Shared Yellowstone facts come from lib/data/nature-data.ts
-// - The arrays in this file are page-only supporting details and comparison cards
-// - If you want to swap the imagery, edit the SITE_IMAGES keys used below
 
 import type { Metadata } from "next";
 import Image from "next/image";
