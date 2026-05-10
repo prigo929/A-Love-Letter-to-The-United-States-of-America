@@ -1,10 +1,12 @@
 // ─── Startups & Venture Capital Sub-Page ─────────────────────────────────────
-// Deep-dive page about US startups, unicorns, and venture capital.
+// A deep-dive into the "Silicon Valley Philosophy" and the funding of the future.
+//
+// Pedagogical Goal:
+// - To demonstrate American dominance in risk capital (47% of global VC).
+// - To showcase the "Unicorn" ecosystem and the history of tech founders.
 //
 // Beginner guide:
 // - Most charts and factual datasets come from lib/data/economy-data.ts
-// - This file mainly controls page layout and page-specific supporting blocks
-// - To change the hero photo, update SITE_IMAGES.siliconValleyOffice below
 
 import type { Metadata } from "next";
 import Image from "next/image";

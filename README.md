@@ -150,6 +150,12 @@ A premium digital "museum" experience located at `/constitution`.
 - **Founder Constellation**: A relational map showing the connections and contributions of the Founding Fathers.
 - **Real-World Checks**: A historical simulator featuring 9 case studies (Watergate, New Deal, etc.) showing checks and balances in action.
 
+### 📈 The Economy & Innovation Vertical
+A data-driven deep dive into American economic power located at `/economy`.
+- **Global Context Charts**: High-fidelity visualizations comparing US GDP, VC, and Dollar reserves against global rivals.
+- **Startup Ecosystem Map**: Interactive breakdown of the 435+ House seats (as a cartogram) and individual startup hubs like Silicon Valley and Austin.
+- **Dollar Dominance**: Technical analysis of the world's reserve currency and its "exorbitant privilege."
+
 ### 🏛️ The Constitution & Democracy Exhibit Architecture
 
 The Constitution section is the most technically complex part of the repository, functioning as a high-fidelity "digital museum" rather than a standard web page.
@@ -176,6 +182,26 @@ The exhibit follows a "Content-as-Logic" philosophy:
 - **GPU-Friendly Textures**: We use static marble overlays with `mix-blend-mode` and GPU-accelerated CSS animations (`ConstitutionAurora`) to create a premium feel without impacting the main thread.
 - **Tabular Numbers**: All historical dates and counts use `tabular-nums` to ensure that "CountUp" animations don't cause jitter in the layout.
 - **SVG Optimization**: Complex diagrams like the "Separation of Powers" are built as responsive SVGs, ensuring they remain "retina-sharp" at any zoom level.
+
+### 📈 The Economy & Innovation Vertical Architecture
+
+The Economy section is designed as a **Data-Driven Narrative Engine**, prioritizing factual accuracy and visual scale.
+
+#### 1. The Centralized Data Layer (`lib/data/economy-data.ts`)
+We treat economic data as the "Financial Source of Truth" for the platform:
+- **Decoupled Facts**: All GDP numbers, S&P 500 trends, and trade stats are stored in immutable constants. This allows the UI to stay clean and focused purely on presentation.
+- **Bilingual Field Parity**: Every data point supports the `text` / `textRo` naming convention, ensuring that complex economic concepts (like "Exorbitant Privilege") are accurately explained in both languages.
+
+#### 2. Visualization Strategy (`components/data/`)
+We use `recharts` for all economic visualizations, following a specific "Narrative Chart" standard:
+- **Highlight Logic**: Components like `GdpBarChart` and `VCBarChart` use a `highlight` property to automatically color the United States in **Glory Gold**, instantly communicating leadership in any global comparison.
+- **Scalable Units**: Chart components are built to be generic; `GdpBarChart` handles both Trillions (GDP) and Thousands (Per Capita) by simply swapping the `valueSuffix` prop.
+- **Historical Context**: The `SP500Chart` uses `ReferenceLine` annotations to anchor data to historical events, turning a simple line chart into a story of American resilience.
+
+#### 3. Deep-Dive Verticality
+The section is not a single landing page but a tiered architecture:
+- **Hub Page (`/economy`)**: Uses a **Sticky Table of Contents** for rapid navigation across the five core pillars of the American economy.
+- **Subpages**: Each pillar (GDP, Capital Markets, Startups, Dollar, Trade) has a dedicated deep-dive route. These pages use "Extended Facts"—highly granular data points specific to that topic (e.g., comparing California's GDP to entire nations) that are too detailed for the main hub.
 
 ### ⚡ Performance & AI Readiness
 - **Vercel Web Vitals**: Integrated monitoring for LCP, CLS, and INP to ensure a "Bloomberg-grade" smooth experience.

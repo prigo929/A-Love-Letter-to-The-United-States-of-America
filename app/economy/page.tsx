@@ -1,13 +1,17 @@
 // ─── Economy Page ─────────────────────────────────────────────────────────────
-// Main landing page for the Economy section.
+// This is the "Data-Driven Narrative" hub for the American economy.
+//
+// Pedagogical Strategy:
+// - Contrast & Scale: Uses charts to show the US relative to the rest of the world.
+// - Vertical Integration: Connects high-level GDP stats to individual startup hubs.
+// - Performance: Uses Server Components to assemble metadata and TOC, while 
+//   offloading charts to client-side Recharts islands.
 //
 // Beginner guide:
 // - To change the numbers used by the charts/cards, edit lib/data/economy-data.ts
 // - To change which sections appear on this page, edit the JSX below.
 // - To change the hero image, update the SITE_IMAGES key used in metadata or the
 //   EconomyHero component further down in this file.
-//
-// Server Component — chart components imported as client leaves.
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -302,7 +306,7 @@ export default async function EconomyPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ── Hero ─────────────────────────────────────────────────────────── */}
+      {/* ── Economy Hero (Visual Hook) ──────────────────────────────────── */}
       <EconomyHero copy={copy} />
 
       {/* ── Desktop layout: sticky TOC sidebar + main content ─────────────── */}
