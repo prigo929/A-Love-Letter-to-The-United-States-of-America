@@ -558,6 +558,22 @@ const HOUSE_OVR: Record<number, Record<string, { p1: number, p2: number }>> = {
     "South Dakota": { p1: 1, p2: 0 }, "Tennessee": { p1: 8, p2: 1 }, "Texas": { p1: 25, p2: 13 }, "Utah": { p1: 4, p2: 0 },
     "Vermont": { p1: 0, p2: 1 }, "Virginia": { p1: 5, p2: 6 }, "Washington": { p1: 2, p2: 8 }, "West Virginia": { p1: 2, p2: 0 },
     "Wisconsin": { p1: 6, p2: 2 }, "Wyoming": { p1: 1, p2: 0 }
+  },
+  2022: {
+    "Texas": { p1: 25, p2: 13 }, "California": { p1: 12, p2: 40 }, "Florida": { p1: 20, p2: 8 }, 
+    "New York": { p1: 11, p2: 15 }, "Pennsylvania": { p1: 8, p2: 9 }, "Illinois": { p1: 3, p2: 14 }
+  },
+  2010: {
+    "Texas": { p1: 23, p2: 9 }, "Florida": { p1: 15, p2: 10 }, "California": { p1: 19, p2: 34 },
+    "New York": { p1: 6, p2: 23 }, "Pennsylvania": { p1: 12, p2: 7 }, "Illinois": { p1: 11, p2: 8 }
+  },
+  2008: {
+    "Texas": { p1: 12, p2: 20 }, "Florida": { p1: 10, p2: 15 }, "California": { p1: 34, p2: 19 },
+    "New York": { p1: 27, p2: 2 }, "Pennsylvania": { p1: 12, p2: 7 }, "Illinois": { p1: 12, p2: 7 }
+  },
+  1994: {
+    "Georgia": { p1: 8, p2: 3 }, "Washington": { p1: 7, p2: 2 }, "Texas": { p1: 11, p2: 19 },
+    "California": { p1: 25, p2: 27 }, "Florida": { p1: 15, p2: 8 }
   }
 };
 
