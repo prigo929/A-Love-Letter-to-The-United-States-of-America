@@ -738,6 +738,44 @@ export const RIGHTS_AT_RISK_STATS = [
   { value: 12,            label: "Countries with a constitution older than 50 years",               color: "red"  as const, source: "Comparative Constitutions Project" },
 ];
 
+// ─── Data Retrieval Functions ────────────────────────────────────────────────
+// These functions are used by the page to get the data it needs.
+// We pass 'isRo' (Is Romanian?) to most of them so they can return translated text.
+
+export function getConstitutionMetrics(locale: string) {
+  // If the language is Romanian ('ro'), we translate the labels.
+  if (locale === "ro") {
+    return [
+      { ...CONSTITUTION_METRICS[0], label: "Ani de guvernare constituțională continuă", sublabel: "Cel mai lung din istoria înregistrată" },
+      { ...CONSTITUTION_METRICS[1], label: "Articole în Constituția originală",          sublabel: "Eleganță arhitecturală" },
+      { ...CONSTITUTION_METRICS[2], label: "Amendamente ratificate",                   sublabel: "În 237 de ani — aproape nemodificată" },
+      { ...CONSTITUTION_METRICS[3], label: "Alegeri prezidențiale",                     sublabel: "Zero lovituri de stat. Zero suspendări." },
+      { ...CONSTITUTION_METRICS[4], label: "Cuvinte ce guvernează o economie de 31 trilioane $", sublabel: "Cea mai scurtă constituție națională majoră" },
+    ];
+  }
+  // Otherwise, return the default (English) data.
+  return CONSTITUTION_METRICS;
+}
+
+export function getFoundingFathers(isRo: boolean) {
+  if (isRo) {
+    // We use the 'map' function to go through every founder and translate their roles and contributions.
+    // The '...' syntax is called the "Spread Operator". It copies all the original data, 
+    // and then we only overwrite the parts we want to change (like the name or role).
+    return FOUNDING_FATHERS.map(f => {
+      switch (f.id) {
+        case "washington": return { ...f, role: "Comandant-Șef · Primul Președinte · Președintele Convenției Constituționale", contributions: ["A prezidat Convenția Constituțională — prezența sa a oferit procesului o legitimitate pe care nimeni altcineva nu o putea oferi", "A cedat puterea voluntar după două mandate — stabilind precedentul care a salvat republica de monarhie"] };
+        case "hamilton":   return { ...f, role: "Autor a 51 de documente Federalist Papers · Primul Secretar al Trezoreriei", contributions: ["A scris 51 din cele 85 de Federalist Papers — cea mai mare apărare a guvernului constituțional scrisă vreodată", "A proiectat Trezoreria SUA, sistemul bancar național și arhitectura financiară a Americii — încă funcționale astăzi"] };
+        case "madison":    return { ...f, role: "Părintele Constituției · Al 4-lea Președinte al SUA", contributions: ["Autorul principal al Planului Virginia — baza pentru structura guvernului nostru", "A redactat Declarația Drepturilor — primele 10 amendamente care ne protejează libertățile"] };
+        case "jefferson":  return { ...f, role: "Autor al Declarației de Independență · Al 3-lea Președinte al SUA", contributions: ["A scris textul care a declarat lumea liberă de tiranie", "A susținut adăugarea unei Declarații a Drepturilor pentru a limita puterea guvernului"] };
+        case "franklin":   return { ...f, role: "Diplomat · Inventator · Semnatar al Constituției și Declarației", contributions: ["Cel mai în vârstă delegat — înțelepciunea sa a ajutat la rezolvarea conflictelor dintre statele mari și mici", "A ajutat la negocierea alianței cu Franța care a făcut victoria în Revoluție posibilă"] };
+        default: return f;
+      }
+    });
+  }
+  return FOUNDING_FATHERS;
+}
+
 export function getRightsAtRiskStats(isRo: boolean) {
   if (isRo) {
     return [
@@ -819,24 +857,7 @@ export function getConstitutionSubPages(locale: Locale) {
   return CONSTITUTION_SUB_PAGES;
 }
 
-export function getConstitutionMetrics(locale: Locale): ConstitutionMetric[] {
-  if (locale === "ro") {
-    return [
-      { ...CONSTITUTION_METRICS[0], label: "Ani de Guvernare Constituțională Continuă",             sublabel: "Cel mai lung din istoria înregistrată" },
-      { ...CONSTITUTION_METRICS[1], label: "Articole în Constituția Originală",                      sublabel: "Eleganță arhitecturală" },
-      { ...CONSTITUTION_METRICS[2], label: "Amendamente Ratificate",                                 sublabel: "În 235 de ani — aproape neschimbată" },
-      { ...CONSTITUTION_METRICS[3], label: "Alegeri Prezidențiale",                                  sublabel: "Zero lovituri de stat. Zero suspendări." },
-      { ...CONSTITUTION_METRICS[4], label: "Cuvinte care Guvernează o Economie de 31 Trilioane $",   sublabel: "Cea mai scurtă constituție națională majoră" },
-    ];
-  }
-  return CONSTITUTION_METRICS;
-}
-
 import { FOUNDING_FATHERS_RO, CONSTITUTION_CLAUSES_RO, BILL_OF_RIGHTS_RO, PRESIDENTIAL_TRANSFERS_RO, POWERS_CHECK_EXAMPLES_RO } from "./constitution-data-ro";
-
-export function getFoundingFathers(isRo: boolean) {
-  return isRo ? FOUNDING_FATHERS_RO : FOUNDING_FATHERS;
-}
 
 export function getConstitutionClauses(isRo: boolean) {
   return isRo ? CONSTITUTION_CLAUSES_RO : CONSTITUTION_CLAUSES;

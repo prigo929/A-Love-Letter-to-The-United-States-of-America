@@ -150,10 +150,67 @@ A premium digital "museum" experience located at `/constitution`.
 - **Founder Constellation**: A relational map showing the connections and contributions of the Founding Fathers.
 - **Real-World Checks**: A historical simulator featuring 9 case studies (Watergate, New Deal, etc.) showing checks and balances in action.
 
+### 🏛️ The Constitution & Democracy Exhibit Architecture
+
+The Constitution section is the most technically complex part of the repository, functioning as a high-fidelity "digital museum" rather than a standard web page.
+
+#### 1. The Narrative Engine
+The landing page (`app/constitution/page.tsx`) uses a **Scroll-Driven Narrative Engine**. 
+- **Cinematic Hero**: Uses Framer Motion's `useScroll` and `useTransform` to transition between three distinct visual phases: "We the People" → Main Headline → Functional Subtitle.
+- **The Unbroken Line**: A vertical timeline where a "golden thread" (SVG line) grows dynamically as the user scrolls, connecting 60 presidential transfers of power. It uses intersection observers to trigger "crisis" animations when historical stress points enter the viewport.
+
+#### 2. Interactive Data Simulations
+We use interactive components to turn dry historical facts into living logic:
+- **Federalism Simulator (`FederalismHook.tsx`)**: Implements a distance-based matching algorithm. It calculates a "Match Score" by comparing user-defined policy sliders (Corporate Tax, Minimum Wage, Regulation) against real-world data from 50 states, instantly identifying the closest geographic match.
+- **Constitution Race (`ConstitutionAnimations.tsx`)**: A time-series simulation that animates the longevity of global constitutions from 1789 to today. It highlights the "Great Stability" of the US document versus the frequent collapses/rewrites in other nations.
+- **Founder Constellation**: A relational graph drawn with SVGs. It maps the intellectual connections between the Founding Fathers, allowing users to explore dossiers based on historical collaboration networks.
+- **Clause Vault**: A "digital parchment" interface that isolates the 4,543 words of the Constitution into interactive blocks, exposing their modern legal impact and historical tension levels.
+
+#### 3. Data-Driven Logic (`lib/data/constitution-data.ts`)
+The exhibit follows a "Content-as-Logic" philosophy:
+- **Centralized Facts**: No historical dates, quotes, or percentages are hardcoded in the UI. They are stored in typed interfaces, allowing the UI to remain a "dumb" visual shell.
+- **Bilingual Parity**: Every data getter (e.g., `getFoundingFathers`) handles the `isRo` flag at the source, ensuring that complex objects (like a founder's 5-point contribution list) remain perfectly translated without bloating the component code.
+- **Simulation Parameters**: Constants for the "Electoral Archive" and "Federalism Simulator" are defined as mathematical objects, allowing for real-time recalculations based on user input.
+
+#### 4. Performance & Visual Standards
+- **GPU-Friendly Textures**: We use static marble overlays with `mix-blend-mode` and GPU-accelerated CSS animations (`ConstitutionAurora`) to create a premium feel without impacting the main thread.
+- **Tabular Numbers**: All historical dates and counts use `tabular-nums` to ensure that "CountUp" animations don't cause jitter in the layout.
+- **SVG Optimization**: Complex diagrams like the "Separation of Powers" are built as responsive SVGs, ensuring they remain "retina-sharp" at any zoom level.
+
 ### ⚡ Performance & AI Readiness
 - **Vercel Web Vitals**: Integrated monitoring for LCP, CLS, and INP to ensure a "Bloomberg-grade" smooth experience.
 - **AI-Optimized Context**: Specialized `.repomixignore` rules to allow for high-efficiency code sharing with LLMs.
 
+---
+
+## 🛠️ Development Guardrails (MANDATORY)
+
+To maintain the cinematic quality and strict type safety of the "Patriotic USA" platform, all developers (human and AI) must follow these rules:
+
+### 1. Framer Motion Easing
+**NEVER** use string-based ease names (e.g., `"easeOut"`, `"easeInOut"`, `"backOut"`).
+- **The Issue**: These strings are not assignable to Framer Motion's strict `Easing` type in this environment and will break the build.
+- **The Requirement**: Always use **Cubic Bezier Arrays** with an `as const` assertion.
+- **Standard Ease-Out**: `ease: [0.16, 1, 0.3, 1] as const` (Premium Cinematic) or `ease: [0.25, 0.1, 0.25, 1] as const` (Standard).
+
+### 2. Bilingual Data Consistency (`lib/data/`)
+The exhibit architecture relies on strict parity between English and Romanian.
+- **Interfaces**: All interfaces in `lib/data` (e.g., `NavyCarrier`, `StatStat`) MUST include both versions of content fields (e.g., `description: string` AND `descriptionRo: string`).
+- **Object Parity**: When defining data objects, **DO NOT** use ternary operators inside the object (e.g., `description: isRo ? "..." : "..."`). Instead, provide both fields explicitly.
+- **Rationale**: This allows the UI components to remain "dumb" and simply choose the field based on the locale, preventing runtime content gaps and property-missing errors.
+
+### 3. Documentation & "Beginner-Friendly" Injection
+When adding pedagogical comments for future maintainers:
+- **No Duplicates**: Ensure you are editing existing functions, not redeclaring them.
+- **"Why over What"**: Comments should explain the *metaphor* (e.g., "This hook acts as a historical witness...") rather than just the syntax.
+- **Export Integrity**: Never remove a function export while adding comments; check the `page.tsx` consumers before deleting anything.
+
+### 4. Layout Symmetry & Visual Premium
+- **Center Everything**: Sidebars and grids must be perfectly balanced.
+- **Color Palettes**: Use the established constants in `index.css`. Avoid raw hex codes like `#ff0000`.
+- **Typography**: Always use `tabular-nums` for count-ups and dates to prevent horizontal jitter.
+
+---
 
 ## Dev Commands
 
@@ -617,6 +674,14 @@ This section is for future AI-assisted edits. The goal is to explain how the cod
 - locale handling should happen near the top of a page or inside localized data getters
 - interactive or animated behavior should live in focused client components, not be spread through server page files
 
+### Common Pitfalls & Anti-Patterns to Avoid
+
+- **Import Style**: Core layout components like `Header`, `Footer`, and `Breadcrumb` MUST use named imports (e.g., `import { Header } from '...'`), not default imports.
+- **Framer Motion Easing**: Never use string values like `"easeOut"` for the `ease` property. This causes TypeScript errors. Always use a cubic-bezier array with `as const`: `ease: [0.25, 0.1, 0.25, 1] as const`.
+- **Recharts Label Props**: Custom label components used in Recharts `Pie` charts receive props that may be `undefined`. Always destructure them as optional and include a null-check guard at the top of the function.
+- **Bilingual Data Integrity**: Every interface in `lib/data` that handles content requires both an English field (e.g., `tagline`) and a Romanian field (e.g., `taglineRo`). Never omit the `Ro` version, even if using a placeholder, to maintain interface compliance.
+- **Prop Naming Consistency**: Always verify the prop names of shared components. For example, `Breadcrumb` expects `items`, not `crumbs`.
+
 ### Architectural Decisions
 
 - Next.js App Router is used so pages can stay server-first while interactive sections remain client islands
@@ -651,11 +716,13 @@ This section is for future AI-assisted edits. The goal is to explain how the cod
 ### Editing Rules For AI
 
 - prefer updating data files before adding more hardcoded strings to JSX
-- preserve bilingual behavior whenever visible copy changes
+- preserve bilingual behavior whenever visible copy changes (always add the `Ro` equivalent)
 - preserve the art-directed visual tone instead of simplifying into generic layouts
 - prefer reusable components over inflating already large page files
 - when touching imagery, update `SITE_IMAGES` rather than scattering raw imports
-- run `npm run type-check` after changes
+- **Always** run `npm run type-check` after making changes to catch import or type mismatches
+- Use named imports for all layout components
+- Use `as const` on motion transition ease arrays to satisfy strict Framer Motion types
 
 ### Where AI Should Start
 
@@ -671,6 +738,29 @@ This section is for future AI-assisted edits. The goal is to explain how the cod
 | Image swaps | `lib/site-images.ts` |
 | Locale logic | `components/providers/LanguageProvider.tsx`, `lib/i18n/server.ts` |
 | Global shell and analytics | `app/layout.tsx` |
+
+## Deep Dive: Constitution & Democracy Exhibit
+
+The Constitution exhibit is the most technically complex section of the platform, designed to feel like a high-end digital museum.
+
+### 1. The Cinematic Exhibit Architecture
+
+We use a "Server-Hub, Client-Interactive" pattern:
+- **Server-Side Hub (`app/constitution/page.tsx`)**: Fetches all bilingual data (metrics, clauses, founders) on the server using `getServerLocale()`. This ensures zero layout shift (CLS) and perfect SEO for both English and Romanian versions.
+- **Client-Interactive Sections**: Complex animations (like the `ClauseVault` or `SeparationDiagram`) are isolated into client components to keep the main page light and performant.
+- **Exhibit Components**: We use a specialized component library in `components/constitution/ExhibitComponents.tsx` (e.g., `ExhibitCase`, `ConservationSpotlight`, `AccessionLabel`) to wrap data in a consistent, premium aesthetic that mimics physical museum labels.
+
+### 2. Interactive Logic & Simulators
+
+- **Policy Laboratory (Federalism)**: Located in `components/constitution/PolicyLaboratory.tsx`. It uses a **multidimensional scoring engine** that calculates the Euclidean distance between user-defined policy levers and the real-world metrics of all 50 states. It provides a "Policy Match" percentage based on fiscal, social, and regulatory alignment.
+- **Equilibrium Diagram (Separation of Powers)**: A visual state machine in `components/constitution/ConstitutionAnimations.tsx`. It maps historical "Checks and Balances" cases to interactive vectors, demonstrating the permanent tension between the Legislative, Executive, and Judicial branches.
+- **Founding Constellation**: An SVG-based interaction that uses coordinate mapping (`cx`, `cy` in `constitution-data.ts`) to visualize the ideological and personal connections between the Founders.
+
+### 3. Visual Excellence & Animation
+
+- **Centralized Motion**: All high-fidelity transitions are orchestrated via `lib/animations.ts`. We avoid inline Framer Motion variants to ensure timing consistency across the exhibit.
+- **Tactile Document Design**: We use `mix-blend-mode: screen` with static marble textures (`marble-texture.webp`) and `InkParticles` to create a "living parchment" feel. This is significantly more performant than using video backgrounds for the same effect.
+- **Bilingual Schema Integrity**: All data in `lib/data/constitution-data.ts` and `lib/data/federalism-data.ts` must follow the strict `text` / `textRo` parity. The exhibit is designed to be fully substantive in both languages.
 
 ## Deployment
 

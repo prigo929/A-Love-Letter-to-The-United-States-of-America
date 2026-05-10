@@ -74,12 +74,16 @@ function Section({ id, eyebrow, children }: { id: string; eyebrow?: string; chil
 }
 
 export default async function ConstitutionPage() {
-  // We check the language (English or Romanian) so we can show the right text.
-  // This is called "Internationalization" or "i18n".
+  // --- TRANSLATION & DATA FETCHING ---
+  // In Next.js App Router, 'async' functions in 'page.tsx' run on the SERVER.
+  // This means the code below executes before the visitor even sees the page.
+  
+  // 1. Get the current language (English or Romanian) from the server-side cookie.
   const locale   = await getServerLocale();
   const isRo     = locale === "ro";
 
-  // We pull in the data (numbers, names, facts) from our database files.
+  // 2. Fetch organized data from our local library (lib/data/constitution-data.ts).
+  // We pass 'locale' so the function knows whether to return English or Romanian text.
   const metrics  = getConstitutionMetrics(locale);
   const subPages = getConstitutionSubPages(locale);
 
@@ -200,7 +204,11 @@ export default async function ConstitutionPage() {
             </ConservationSpotlight>
           </Section>
 
-          {/* ── Clause Vault ──────────────────────────────────────────────────── */}
+          {/* ── Clause Vault ──────────────────────────────────────────────────── 
+              The 'Clause Vault' is an interactive component. 
+              We pass it the 'clauses' data from our library.
+              In React, passing data like this is called 'Props' (short for properties).
+          */}
           <Section id="the-document" eyebrow={isRo ? "Documentul Viu" : "The Living Document"}>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
               {isRo ? "Pasaje ce Au Schimbat Lumea" : "Passages That Changed the World"}
@@ -523,7 +531,11 @@ export default async function ConstitutionPage() {
             source={isRo ? "Federalistul Nr. 51, 1788" : "Federalist No. 51, 1788"}
           />
 
-          {/* ── Deep Dives ─────────────────────────────────────────────────── */}
+          {/* ── Deep Dives ─────────────────────────────────────────────────── 
+              This section uses the 'map' function. 
+              'map' is a JavaScript tool that takes an array of data (like our subPages list)
+              and turns each item into a React component (in this case, a Link card).
+          */}
           <Section id="explore" eyebrow={isRo ? "Explorează mai Adânc" : "Explore Deeper"}>
             <h2 className="mb-8 font-display text-h2 text-[#F5F0E8]">
               {isRo ? "Imersiuni în Profunzime" : "Deep Dives"}
