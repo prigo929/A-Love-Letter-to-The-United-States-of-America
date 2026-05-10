@@ -630,10 +630,21 @@ const GOV_PRES_YEAR_STATES = new Set([
 function isGovernorActive(year: number, state: string): boolean {
   if (state === "New Hampshire" || state === "Vermont") return true; // 2-year terms
   if (year < 1920) return (state.charCodeAt(0) + year) % 2 === 0; // Historical approximation
+  
+  // Historical Cycle Shifts
+  if (state === "Illinois" && year < 1978) return year % 4 === 0;
+
   const isPresYear = year % 4 === 0;
+  
+  // Odd-year states mapped to the following even year for archive visibility:
+  // NJ/VA (2021, 2025) -> Map to Midterms (2022, 2026)
+  if (["New Jersey", "Virginia"].includes(state)) return !isPresYear;
+  // KY/LA/MS (2019, 2023) -> Map to Presidential (2020, 2024)
+  if (["Kentucky", "Louisiana", "Mississippi"].includes(state)) return isPresYear;
+
   if (isPresYear) return GOV_PRES_YEAR_STATES.has(state);
   // Midterm years (most states)
-  return !GOV_PRES_YEAR_STATES.has(state) && (year % 2 === 0) && !["New Jersey", "Virginia", "Kentucky", "Louisiana", "Mississippi"].includes(state);
+  return !GOV_PRES_YEAR_STATES.has(state) && (year % 2 === 0);
 }
 
 /**
