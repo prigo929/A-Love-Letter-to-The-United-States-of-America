@@ -544,18 +544,42 @@ const R_BASE = new Set(["Alabama","Alaska","Arkansas","Idaho","Indiana","Kansas"
 const D_BASE = new Set(["California","Connecticut","Delaware","Hawaii","Illinois","Maryland","Massachusetts","New Jersey","New York","Oregon","Rhode Island","Vermont","Washington"]);
 
 /**
+ * ── Senate Classes ────────────────────────────────────────────────────────
+ * Mandatory constitutional staggered cycles (Article I, Section 3).
+ * Class 1: Next election 2030 (2024, 2018...)
+ * Class 2: Next election 2026 (2020, 2014...)
+ * Class 3: Next election 2028 (2022, 2016...)
+ */
+const SENATE_CLASSES: Record<string, [number, number]> = {
+  "Alabama": [2, 3], "Alaska": [2, 3], "Arizona": [1, 3], "Arkansas": [2, 3], "California": [1, 3],
+  "Colorado": [2, 3], "Connecticut": [1, 3], "Delaware": [1, 2], "Florida": [1, 3], "Georgia": [2, 3],
+  "Hawaii": [1, 3], "Idaho": [2, 3], "Illinois": [2, 3], "Indiana": [1, 3], "Iowa": [2, 3],
+  "Kansas": [2, 3], "Kentucky": [2, 3], "Louisiana": [2, 3], "Maine": [1, 2], "Maryland": [1, 3],
+  "Massachusetts": [1, 2], "Michigan": [1, 2], "Minnesota": [1, 2], "Mississippi": [1, 2], "Missouri": [1, 3],
+  "Montana": [1, 2], "Nebraska": [1, 2], "Nevada": [1, 3], "New Hampshire": [2, 3], "New Jersey": [1, 2],
+  "New Mexico": [1, 2], "New York": [1, 3], "North Carolina": [2, 3], "North Dakota": [1, 3], "Ohio": [1, 3],
+  "Oklahoma": [2, 3], "Oregon": [2, 3], "Pennsylvania": [1, 3], "Rhode Island": [1, 2], "South Carolina": [2, 3],
+  "South Dakota": [2, 3], "Tennessee": [1, 2], "Texas": [1, 2], "Utah": [1, 3], "Vermont": [1, 3],
+  "Virginia": [1, 2], "Washington": [1, 3], "West Virginia": [1, 2], "Wisconsin": [1, 3], "Wyoming": [1, 2],
+};
+
+/**
  * Deterministic logic for active Senate seats.
  * US Senate seats are divided into three classes, with one class up for election every 2 years.
- * Since we don't have a full seat-by-seat database for the 18th/19th century, we use a 
- * stable hash-based assignment to ensure the same states are "active" in the same cycles
- * every time the app runs.
+ * Cycle Mapping:
+ * - 2024 (1012 % 3 = 1) -> Class 1
+ * - 2020 (1010 % 3 = 2) -> Class 2
+ * - 2022 (1011 % 3 = 0) -> Class 3
  */
 function isSenateActive(year: number, state: string): boolean {
-  const stateHash = state.charCodeAt(0) + state.charCodeAt(state.length - 1);
-  const classA = stateHash % 3;
-  const classB = (stateHash + 1) % 3;
-  const cycle = Math.floor(year / 4) % 3;
-  return classA === cycle || classB === cycle;
+  const classes = SENATE_CLASSES[state];
+  if (!classes) return false;
+  
+  const cycle = (year / 2) % 3;
+  // Map cycle 0 to Class 3, cycle 1 to Class 1, cycle 2 to Class 2
+  const activeClass = cycle === 0 ? 3 : cycle;
+  
+  return classes.includes(activeClass);
 }
 
 // Governors usually elected in Presidential years (e.g., WA, NC)
