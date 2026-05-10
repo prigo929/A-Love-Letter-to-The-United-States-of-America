@@ -258,7 +258,7 @@ const HouseCartogram = memo(({ cartogram, hovered, onSquareEnter, clearHover, on
             <line x1="0" y1="0" x2="0" y2="4" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" />
           </pattern>
         </defs>
-        <g transform="translate(50, 80) scale(0.8)">
+        <g transform="translate(-10, 0) scale(1.05)">
           {cartogram.map((cs) => (
             <HouseStateGroup
               key={`state-${cs.name}`}
@@ -290,7 +290,7 @@ const GeographicMap = memo(({ year, viewMode, hovered, onGeoEnter, clearHover, o
 
   return (
     <motion.div key="geo" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
-      <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1000 }} style={{ width: "100%", height: "auto" }} width={1000} height={600} viewBox="0 0 1000 600">
+      <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1180, translate: [480, 310] }} style={{ width: "100%", height: "auto" }} width={1000} height={600} viewBox="0 0 1000 600">
         <defs>
           <pattern id="split-dr" width="1" height="1" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
             <polygon points="0,0 1,0 0,1" fill={pc(p1)} /><polygon points="1,0 1,1 0,1" fill={pc(p2)} />

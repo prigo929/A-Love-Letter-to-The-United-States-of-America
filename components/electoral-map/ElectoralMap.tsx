@@ -89,8 +89,8 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
       {/* Header bar (Dynamic for all views) */}
       <ElectionHeader year={year} viewMode={view as ViewMode} isRo={isRo} />
 
-      {/* Map */}
-      <div className="relative overflow-hidden border border-[rgba(201,168,76,0.06)] bg-[#080B12] p-1.5 md:p-3">
+      {/* Map container - expanded for maximum visibility */}
+      <div className="relative overflow-hidden border border-[rgba(201,168,76,0.06)] bg-[#080B12] p-0">
         <MapRenderer year={year} viewMode={view} onStateClick={(n) => setSel(n)} isRo={isRo} />
         <AnimatePresence>
           {sel && <StateDetailPanel stateName={sel} year={year} onClose={() => setSel(null)} isRo={isRo} />}
