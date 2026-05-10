@@ -80,7 +80,11 @@ export function InkParticles({ count = 120 }: { count?: number }) {
   );
 }
 
-// ── CountUp helper ────────────────────────────────────────────────────────────
+// --- BEGINNER'S CORNER: React Hooks ---
+// 'useRef' is like a sticky note that remembers a specific HTML element.
+// 'useInView' checks if that element is currently visible on the user's screen.
+// 'useMotionValue' is a special number that Framer Motion can animate smoothly.
+// 'useEffect' runs code at a specific time (like when the component first appears).
 
 function CountUp({ to, delay=0 }: { to: number; delay?: number }) {
   const ref  = useRef<HTMLSpanElement>(null);
@@ -88,11 +92,16 @@ function CountUp({ to, delay=0 }: { to: number; delay?: number }) {
   const mv   = useMotionValue(0);
 
   useEffect(() => {
+    // Only start counting if the user can actually see the component.
     if (!inView) return;
+    
     const t = setTimeout(() => {
+      // 'animate' tells the motion value (mv) to go from 0 to the target number (to).
       const ctrl = animate(mv, to, {
-        duration: 2.2, ease: [0.16,1,0.3,1],
+        duration: 2.2, 
+        ease: [0.16,1,0.3,1], // A custom "easing" curve for a smooth stop.
         onUpdate: v => {
+          // As the number changes, we update the text on the screen.
           if (!ref.current) return;
           ref.current.textContent = to >= 1_000_000_000
             ? `${(v / 1_000_000_000).toFixed(1)}B`
@@ -141,6 +150,9 @@ const TENSION_COLORS: Record<string,string> = { settled:"#4ade80", moderate:"#fb
 const TENSION_LABELS: Record<string,string> = { settled:"Settled Law", moderate:"Moderately Contested", contested:"Actively Contested", "highly-contested":"Highly Contested" };
 
 export function ClauseVault({ clauses, isRo }: { clauses: ConstitutionClause[], isRo?: boolean }) {
+  // 'useState' allows the component to "remember" things.
+  // 'active' remembers which clause the user clicked on.
+  // 'hovered' remembers which clause the user's mouse is currently over.
   const [active, setActive]   = useState<ConstitutionClause|null>(null);
   const [hovered, setHovered] = useState<string|null>(null);
 
@@ -270,6 +282,10 @@ export function FounderConstellation({ founders, isRo }: { founders: FoundingFat
   const [active,  setActive]  = useState<FoundingFather|null>(null);
   const [hovered, setHovered] = useState<string|null>(null);
 
+  // --- BEGINNER'S CORNER: useMemo ---
+  // 'useMemo' is like a calculator that remembers its last result.
+  // We use it here to calculate which stars in the map should be "highlighted"
+  // based on who the user is hovering over. It only recalculates if the hover changes.
   const highlightedSet = useMemo(() => {
     const src = hovered ?? active?.id ?? null;
     if (!src) return new Set<string>();
@@ -279,6 +295,11 @@ export function FounderConstellation({ founders, isRo }: { founders: FoundingFat
 
   return (
     <div className="space-y-8">
+      {/* 
+          SVG (Scalable Vector Graphics) is like drawing with math.
+          We use it here to draw the "constellation" map of the founders.
+          Each <circle> is a person, and each <line> is a connection between them.
+      */}
       <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-[#080B12] py-6">
         <svg viewBox="0 0 800 350" className="w-full" role="img" aria-label="Founding Fathers constellation">
           <defs>
@@ -626,11 +647,17 @@ export function FederalismSimulator({ states, isRo }: { states: StatePolicy[], i
   const [regIndex, setRegIndex] = useState(5);
   const [hovered,  setHovered]  = useState<StatePolicy|null>(null);
 
+  // --- THE ALGORITHM ---
+  // This code calculates a "Match Score" for every state based on the user's sliders.
+  // It compares the user's preferred tax rate to the actual tax rate of each state.
   const scored = useMemo(() => states.map(s => {
+    // We calculate the "distance" between the user's choice and the state's reality.
+    // 1.0 means a perfect match; 0.0 means a total mismatch.
     const score = 1 - (Math.abs(s.corporateTax-corpTax)/10 + Math.abs(s.minWage-minWage)/12 + Math.abs(s.regulatoryIndex-regIndex)/9) / 3;
     return { ...s, score };
   }), [states, corpTax, minWage, regIndex]);
 
+  // Find the state with the highest score!
   const best = [...scored].sort((a,b)=>b.score-a.score)[0];
 
   return (

@@ -117,20 +117,30 @@ export function CinematicStat({
 }
 
 // 2. CINEMATIC HERO — The grand introduction of the exhibit.
-// "We the People" is visible on load, then scrolls into the headline phase.
+// This component uses "Scroll-Driven Animations". 
+// As you scroll down the page, different elements fade in and out.
+//
+// For Beginners: 
+// 'useScroll' tracks how far the visitor has scrolled.
+// 'useTransform' maps that scroll position to things like opacity (0 to 1) or movement.
 export function CinematicHero({ isRo }: { isRo: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  // We target the 'containerRef' to know when the user is inside this section.
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  // Phase 1: "We the People" — visible on load, fades as user scrolls
+  // 'scrollYProgress' is a number from 0 to 1.
+  // 0 means you just started the section. 1 means you finished it.
+
+  // Phase 1: "We the People" — visible at the start (0), fades out by the time you're 35% through (0.35).
   const wtpOpacity = useTransform(scrollYProgress, [0, 0.25, 0.35], [1, 1, 0]);
   const wtpScale   = useTransform(scrollYProgress, [0, 0.35], [1, 0.88]);
   const wtpY       = useTransform(scrollYProgress, [0, 0.35], [0, -60]);
 
-  // Phase 2: Main headline — fades in as "We the People" fades out
+  // Phase 2: Main headline — starts invisible (0), fades in at 42% (0.42), stays until 72% (0.72).
   const headlineOpacity = useTransform(scrollYProgress, [0.3, 0.42, 0.72, 0.92], [0, 1, 1, 0]);
   const headlineY       = useTransform(scrollYProgress, [0.3, 0.42, 0.72, 0.92], [60, 0, 0, -20]);
 
@@ -428,6 +438,9 @@ export function UnbrokenLine({
     offset: ["start center", "end center"],
   });
 
+  // This 'useTransform' calculates the height of the golden line.
+  // As the user scrolls from the top (0) to the bottom (1) of this section,
+  // the line grows from 0% height to 100% height.
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
@@ -650,11 +663,16 @@ const CONSTITUTION_ERAS: ConstitutionEra[] = [
 export function ConstitutionRace({ isRo }: { isRo: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const inViewRef = useInView(containerRef, { once: true, margin: "-100px" });
+  
+  // 'currentYear' keeps track of the "race" as it moves from 1789 to today.
   const [currentYear, setCurrentYear] = useState(1789);
   const [isPlaying, setIsPlaying] = useState(false);
+  
+  // 'intervalRef' holds the "timer" that updates the year every few milliseconds.
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const endYear = 2026;
 
+  // Start the race automatically when the user scrolls it into view.
   useEffect(() => {
     if (inViewRef && !isPlaying && currentYear === 1789) {
       setIsPlaying(true);
