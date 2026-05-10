@@ -1,9 +1,14 @@
 // ─── Economy Section Data ─────────────────────────────────────────────────────
-// All static data for the Economy section and its sub-pages.
-// Components import from here — never hardcode in JSX.
+// This file serves as the "Financial Source of Truth" for the entire platform.
+// It centralizes all static statistics, historical trends, and economic facts.
+//
+// Architectural Principles:
+// - Decoupling: UI components should NEVER hardcode numbers. They import from here.
+// - Bilingual Parity: Every data set must support English and Romanian.
+// - Static Performance: All data is exported as immutable constants for zero runtime overhead.
 //
 // Beginner guide:
-// - If you want to change economy page numbers, edit them here.
+// - If you want to change economy page numbers (e.g. 2024 GDP), edit them here.
 // - If you want to swap economy images, use SITE_IMAGES keys here.
 // - If you want to change chart titles/layout, edit the React page/component.
 

@@ -1,8 +1,13 @@
 "use client";
 
 // ─── GDP Bar Chart ────────────────────────────────────────────────────────────
-// Recharts bar chart comparing GDP across major economies.
-// Highlights the US bar in glory-gold. Client component (Recharts requirement).
+// A specialized Recharts bar chart designed for economic comparisons.
+//
+// Features:
+// - Highlight Logic: Automatically colors the "US" bar in gold to drive the 
+//   narrative of American leadership.
+// - Scalable Units: Supports trillions (GDP) or thousands (Per Capita) using `valueSuffix`.
+// - Multilingual Tooltips: Integrates with the site's i18n system.
 //
 // Beginner guide:
 // - This component only draws the chart

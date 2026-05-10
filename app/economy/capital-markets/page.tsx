@@ -1,10 +1,13 @@
 // ─── Capital Markets Sub-Page ─────────────────────────────────────────────────
-// Deep-dive page about US stock exchanges and capital markets.
+// A vertical deep-dive into the NYSE, NASDAQ, and the US bond market.
+//
+// Pedagogical Goal:
+// - To show how the US financial system acts as the "Capital Pump" for global 
+//   innovation.
+// - To explain the "Risk-Free Rate" benchmark of US Treasuries.
 //
 // Beginner guide:
 // - Shared chart data comes from lib/data/economy-data.ts
-// - This file controls page structure and page-specific copy
-// - To change the hero photo, update SITE_IMAGES.economyNYSEUpsideDown below
 
 import type { Metadata } from "next";
 import Image from "next/image";

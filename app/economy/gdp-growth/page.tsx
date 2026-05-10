@@ -1,11 +1,15 @@
 // ─── GDP & Scale Sub-Page ─────────────────────────────────────────────────────
-// Deep-dive page for the economy section.
+// A deep-dive vertical focusing on the magnitude of the US economy.
+//
+// Pedagogical Goal:
+// - To contextualize $28.8 trillion by comparing individual US states to 
+//   entire G7 nations.
+// - To demonstrate the historical resilience of American GDP.
 //
 // Beginner guide:
 // - Most numbers and chart data come from lib/data/economy-data.ts
 // - This file mostly decides page order, headings, and which reusable
 //   components are used
-// - If you want to swap the hero photo, change SITE_IMAGES.economyGrowth below
 
 import type { Metadata } from "next";
 import Image from "next/image";

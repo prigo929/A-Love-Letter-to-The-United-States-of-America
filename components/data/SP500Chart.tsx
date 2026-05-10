@@ -1,9 +1,14 @@
 "use client";
 
 // ─── S&P 500 Historical Line Chart ───────────────────────────────────────────
-// Shows 45 years of S&P 500 performance with Recharts.
-// Annotates key events (dot-com bust, financial crisis, recovery).
-// Client component (Recharts requirement).
+// A narrative area chart visualizing 45 years of American market growth.
+//
+// Features:
+// - Area Fill: Uses a crimson-to-transparent gradient to emphasize the "mass" 
+//   of prosperity.
+// - Historical Anchors: Uses `ReferenceLine` to annotate major crises (Dot-com, GFC),
+//   proving the resilient "Recovery" pattern of the US economy.
+// - Compounding Logic: Displays total and annual return metrics below the chart.
 
 import {
   AreaChart,

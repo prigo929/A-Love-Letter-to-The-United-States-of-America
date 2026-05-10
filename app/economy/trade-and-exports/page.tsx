@@ -1,10 +1,12 @@
 // ─── Trade & Exports Sub-Page ─────────────────────────────────────────────────
-// Deep-dive page about America's export engine and trading relationships.
+// An analysis of the American export machine and its global partners.
+//
+// Pedagogical Goal:
+// - To highlight advanced exports (Aerospace, Tech, Pharma) over raw commodities.
+// - To explain the "Services Surplus" which often offsets the goods deficit.
 //
 // Beginner guide:
 // - Shared overview paragraphs and export-category data come from economy-data.ts
-// - This file controls how those facts are presented on the page
-// - To change the hero photo, update SITE_IMAGES.economyPort below
 
 import Image from "next/image";
 import Link from "next/link";

@@ -1,10 +1,12 @@
 // ─── Dollar Dominance Sub-Page ────────────────────────────────────────────────
-// Deep-dive page about why the US dollar still anchors the global economy.
+// A technical overview of the US dollar as the world's reserve currency.
+//
+// Pedagogical Goal:
+// - To explain the "Exorbitant Privilege" of the dollar.
+// - To show the dollar's share of global reserves vs. rival currencies.
 //
 // Beginner guide:
 // - Shared facts and overview paragraphs come from lib/data/economy-data.ts
-// - This file decides page structure and page-specific content blocks
-// - To change the hero photo, update SITE_IMAGES.economyDollar below
 
 import type { Metadata } from "next";
 import Image from "next/image";
