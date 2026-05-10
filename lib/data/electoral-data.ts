@@ -13,7 +13,7 @@ export type ViewMode = "President" | "Senate" | "House" | "Governor";
 export interface StateData {
   president: { party: string; candidate?: string; flipped: boolean };
   senate: { split: boolean; party1: string; party2: string; active: boolean };
-  house: { demReps: number; repReps: number; totalReps: number };
+  house: { p1Reps: number; p2Reps: number; totalReps: number };
   governor: { party: string; active: boolean };
   electoralVotes: number;
 }
@@ -489,54 +489,54 @@ export const CONGRESS_DATA: Record<number, CongressInfo> = {
   1924: { p1: "REP", p2: "DEM", houseShare: 0.58, senateShare: 0.58 },
   1926: { p1: "REP", p2: "DEM", houseShare: 0.55, senateShare: 0.55 },
   1928: { p1: "REP", p2: "DEM", houseShare: 0.63, senateShare: 0.63 },
-  1930: { p1: "DEM", p2: "REP", houseShare: 0.50, senateShare: 0.50 },
-  1932: { p1: "DEM", p2: "REP", houseShare: 0.72, senateShare: 0.63 },
-  1934: { p1: "DEM", p2: "REP", houseShare: 0.74, senateShare: 0.72 },
-  1936: { p1: "DEM", p2: "REP", houseShare: 0.77, senateShare: 0.79 },
-  1938: { p1: "DEM", p2: "REP", houseShare: 0.60, senateShare: 0.72 },
-  1940: { p1: "DEM", p2: "REP", houseShare: 0.61, senateShare: 0.69 },
-  1942: { p1: "DEM", p2: "REP", houseShare: 0.51, senateShare: 0.63 },
-  1944: { p1: "DEM", p2: "REP", houseShare: 0.56, senateShare: 0.58 },
-  1946: { p1: "REP", p2: "DEM", houseShare: 0.57, senateShare: 0.54 },
-  1948: { p1: "DEM", p2: "REP", houseShare: 0.60, senateShare: 0.56 },
-  1950: { p1: "DEM", p2: "REP", houseShare: 0.54, senateShare: 0.51 },
-  1952: { p1: "REP", p2: "DEM", houseShare: 0.51, senateShare: 0.51 },
-  1954: { p1: "DEM", p2: "REP", houseShare: 0.53, senateShare: 0.51 },
-  1956: { p1: "DEM", p2: "REP", houseShare: 0.53, senateShare: 0.51 },
-  1958: { p1: "DEM", p2: "REP", houseShare: 0.64, senateShare: 0.66 },
-  1960: { p1: "DEM", p2: "REP", houseShare: 0.60, senateShare: 0.65 },
-  1962: { p1: "DEM", p2: "REP", houseShare: 0.59, senateShare: 0.67 },
-  1964: { p1: "DEM", p2: "REP", houseShare: 0.68, senateShare: 0.68 },
-  1966: { p1: "DEM", p2: "REP", houseShare: 0.57, senateShare: 0.64 },
-  1968: { p1: "DEM", p2: "REP", houseShare: 0.56, senateShare: 0.57 },
-  1970: { p1: "DEM", p2: "REP", houseShare: 0.59, senateShare: 0.55 },
-  1972: { p1: "DEM", p2: "REP", houseShare: 0.56, senateShare: 0.57 },
-  1974: { p1: "DEM", p2: "REP", houseShare: 0.67, senateShare: 0.61 },
-  1976: { p1: "DEM", p2: "REP", houseShare: 0.67, senateShare: 0.62 },
-  1978: { p1: "DEM", p2: "REP", houseShare: 0.64, senateShare: 0.59 },
-  1980: { p1: "DEM", p2: "REP", houseShare: 0.56, senateShare: 0.47 },
-  1982: { p1: "DEM", p2: "REP", houseShare: 0.62, senateShare: 0.46 },
-  1984: { p1: "DEM", p2: "REP", houseShare: 0.58, senateShare: 0.47 },
-  1986: { p1: "DEM", p2: "REP", houseShare: 0.59, senateShare: 0.55 },
-  1988: { p1: "DEM", p2: "REP", houseShare: 0.60, senateShare: 0.55 },
-  1990: { p1: "DEM", p2: "REP", houseShare: 0.61, senateShare: 0.57 },
-  1992: { p1: "DEM", p2: "REP", houseShare: 0.59, senateShare: 0.57 },
-  1994: { p1: "REP", p2: "DEM", houseShare: 0.53, senateShare: 0.53 },
-  1996: { p1: "REP", p2: "DEM", houseShare: 0.52, senateShare: 0.55 },
-  1998: { p1: "REP", p2: "DEM", houseShare: 0.51, senateShare: 0.55 },
-  2000: { p1: "REP", p2: "DEM", houseShare: 0.51, senateShare: 0.50 },
-  2002: { p1: "REP", p2: "DEM", houseShare: 0.53, senateShare: 0.51 },
-  2004: { p1: "REP", p2: "DEM", houseShare: 0.53, senateShare: 0.55 },
-  2006: { p1: "DEM", p2: "REP", houseShare: 0.54, senateShare: 0.51 },
-  2008: { p1: "DEM", p2: "REP", houseShare: 0.59, senateShare: 0.59 },
-  2010: { p1: "REP", p2: "DEM", houseShare: 0.56, senateShare: 0.47 },
-  2012: { p1: "REP", p2: "DEM", houseShare: 0.54, senateShare: 0.45 },
-  2014: { p1: "REP", p2: "DEM", houseShare: 0.57, senateShare: 0.54 },
-  2016: { p1: "REP", p2: "DEM", houseShare: 0.55, senateShare: 0.52 },
-  2018: { p1: "DEM", p2: "REP", houseShare: 0.54, senateShare: 0.47 },
-  2020: { p1: "DEM", p2: "REP", houseShare: 0.51, senateShare: 0.50 },
-  2022: { p1: "REP", p2: "DEM", houseShare: 0.51, senateShare: 0.49 },
-  2024: { p1: "REP", p2: "DEM", houseShare: 0.52, senateShare: 0.53 },
+  1930: { p1: "DEM", p2: "REP", houseShare: 0.496, senateShare: 0.50 },
+  1932: { p1: "DEM", p2: "REP", houseShare: 0.720, senateShare: 0.63 },
+  1934: { p1: "DEM", p2: "REP", houseShare: 0.740, senateShare: 0.72 },
+  1936: { p1: "DEM", p2: "REP", houseShare: 0.770, senateShare: 0.79 },
+  1938: { p1: "DEM", p2: "REP", houseShare: 0.600, senateShare: 0.72 },
+  1940: { p1: "DEM", p2: "REP", houseShare: 0.610, senateShare: 0.69 },
+  1942: { p1: "DEM", p2: "REP", houseShare: 0.510, senateShare: 0.63 },
+  1944: { p1: "DEM", p2: "REP", houseShare: 0.560, senateShare: 0.58 },
+  1946: { p1: "REP", p2: "DEM", houseShare: 0.570, senateShare: 0.54 },
+  1948: { p1: "DEM", p2: "REP", houseShare: 0.600, senateShare: 0.56 },
+  1950: { p1: "DEM", p2: "REP", houseShare: 0.540, senateShare: 0.51 },
+  1952: { p1: "REP", p2: "DEM", houseShare: 0.510, senateShare: 0.51 },
+  1954: { p1: "DEM", p2: "REP", houseShare: 0.530, senateShare: 0.51 },
+  1956: { p1: "DEM", p2: "REP", houseShare: 0.530, senateShare: 0.51 },
+  1958: { p1: "DEM", p2: "REP", houseShare: 0.650, senateShare: 0.66 },
+  1960: { p1: "DEM", p2: "REP", houseShare: 0.600, senateShare: 0.65 },
+  1962: { p1: "DEM", p2: "REP", houseShare: 0.590, senateShare: 0.67 },
+  1964: { p1: "DEM", p2: "REP", houseShare: 0.680, senateShare: 0.68 },
+  1966: { p1: "DEM", p2: "REP", houseShare: 0.570, senateShare: 0.64 },
+  1968: { p1: "DEM", p2: "REP", houseShare: 0.560, senateShare: 0.57 },
+  1970: { p1: "DEM", p2: "REP", houseShare: 0.590, senateShare: 0.55 },
+  1972: { p1: "DEM", p2: "REP", houseShare: 0.560, senateShare: 0.57 },
+  1974: { p1: "DEM", p2: "REP", houseShare: 0.670, senateShare: 0.61 },
+  1976: { p1: "DEM", p2: "REP", houseShare: 0.670, senateShare: 0.62 },
+  1978: { p1: "DEM", p2: "REP", houseShare: 0.640, senateShare: 0.59 },
+  1980: { p1: "DEM", p2: "REP", houseShare: 0.556, senateShare: 0.47 },
+  1982: { p1: "DEM", p2: "REP", houseShare: 0.618, senateShare: 0.46 },
+  1984: { p1: "DEM", p2: "REP", houseShare: 0.581, senateShare: 0.47 },
+  1986: { p1: "DEM", p2: "REP", houseShare: 0.593, senateShare: 0.55 },
+  1988: { p1: "DEM", p2: "REP", houseShare: 0.597, senateShare: 0.55 },
+  1990: { p1: "DEM", p2: "REP", houseShare: 0.614, senateShare: 0.57 },
+  1992: { p1: "DEM", p2: "REP", houseShare: 0.593, senateShare: 0.57 },
+  1994: { p1: "REP", p2: "DEM", houseShare: 0.529, senateShare: 0.53 },
+  1996: { p1: "REP", p2: "DEM", houseShare: 0.520, senateShare: 0.55 },
+  1998: { p1: "REP", p2: "DEM", houseShare: 0.513, senateShare: 0.55 },
+  2000: { p1: "REP", p2: "DEM", houseShare: 0.508, senateShare: 0.50 },
+  2002: { p1: "REP", p2: "DEM", houseShare: 0.526, senateShare: 0.51 },
+  2004: { p1: "REP", p2: "DEM", houseShare: 0.533, senateShare: 0.55 },
+  2006: { p1: "DEM", p2: "REP", houseShare: 0.536, senateShare: 0.51 },
+  2008: { p1: "DEM", p2: "REP", houseShare: 0.591, senateShare: 0.59 },
+  2010: { p1: "REP", p2: "DEM", houseShare: 0.556, senateShare: 0.47 },
+  2012: { p1: "REP", p2: "DEM", houseShare: 0.538, senateShare: 0.45 },
+  2014: { p1: "REP", p2: "DEM", houseShare: 0.568, senateShare: 0.54 },
+  2016: { p1: "REP", p2: "DEM", houseShare: 0.554, senateShare: 0.52 },
+  2018: { p1: "DEM", p2: "REP", houseShare: 0.540, senateShare: 0.47 },
+  2020: { p1: "DEM", p2: "REP", houseShare: 0.510, senateShare: 0.50 },
+  2022: { p1: "REP", p2: "DEM", houseShare: 0.510, senateShare: 0.49 },
+  2024: { p1: "REP", p2: "DEM", houseShare: 0.506, senateShare: 0.53 },
 };
 
 // Lean sets for senate/governor baseline (independent of presidential vote)
@@ -659,10 +659,21 @@ function buildYear(year: number): YearData {
     if (govOvr[name]) govParty = govOvr[name];
 
     // House: Algorithmic simulation based on national majority share + state lean adjustment
-    const totalH = HOUSE[name] || Math.max(1, Math.floor((EV[name] || 3) - 2));
+    const totalH = name === "District of Columbia" ? 0 : (HOUSE[name] || Math.max(1, Math.floor((EV[name] || 3) - 2)));
     let stateShare = majorityShare;
-    if (R_BASE.has(name)) stateShare = Math.max(0.1, majorityShare - 0.2); // Red state penalty for Dem share
-    else if (D_BASE.has(name)) stateShare = Math.min(0.9, majorityShare + 0.15); // Blue state bonus
+    
+    // Adjust stateShare based on whether the majority party (p1) aligns with state lean
+    const isP1Republican = cd.p1 === "REP" || cd.p1 === "FED" || cd.p1 === "WHIG" || cd.p1 === "NR";
+    const isP1Democrat = cd.p1 === "DEM" || cd.p1 === "DR" || cd.p1 === "SDEM";
+    
+    if (isP1Republican) {
+      if (R_BASE.has(name)) stateShare = Math.min(0.9, majorityShare + 0.22); // Stronger lean for accurate waves
+      else if (D_BASE.has(name)) stateShare = Math.max(0.05, majorityShare - 0.3); // Deeper blue state penalty for REP majority
+    } else if (isP1Democrat) {
+      if (D_BASE.has(name)) stateShare = Math.min(0.95, majorityShare + 0.22);
+      else if (R_BASE.has(name)) stateShare = Math.max(0.05, majorityShare - 0.3);
+    }
+    
     const hash = (name.charCodeAt(0) + name.length) % 10;
     stateShare = Math.max(0, Math.min(1, stateShare + (hash - 5) * 0.02)); // Random variance per state
     const dH = Math.round(totalH * stateShare);
@@ -670,11 +681,33 @@ function buildYear(year: number): YearData {
     states[name] = {
       president: { party: presParty, candidate: presCandidate, flipped: false },
       senate: { split: isSplit, party1: senBase, party2: isSplit ? senOther : senBase, active: isSenateActive(year, name) },
-      house: { demReps: dH, repReps: totalH - dH, totalReps: totalH },
+      house: { p1Reps: dH, p2Reps: totalH - dH, totalReps: totalH },
       governor: { party: govParty, active: isGovernorActive(year, name) },
       electoralVotes: EV[name] || 3,
     };
   }
+
+  // ── HOUSE NORMALIZATION PASS ──────────────────────────────────────────────
+  const targetP1 = Math.round(435 * cd.houseShare);
+  let currentP1 = Object.values(states).reduce((sum, s) => sum + s.house.p1Reps, 0);
+
+  let safety = 0;
+  while (currentP1 !== targetP1 && safety < 1000) {
+    safety++;
+    const drift = targetP1 - currentP1;
+    const direction = drift > 0 ? 1 : -1;
+    for (const name of NAMES) {
+      if (currentP1 === targetP1) break;
+      const s = states[name];
+      if (!s || name === "District of Columbia" || (s.house.totalReps || 0) === 0) continue;
+      if (direction === 1 && s.house.p2Reps > 0) {
+        s.house.p1Reps++; s.house.p2Reps--; currentP1++;
+      } else if (direction === -1 && s.house.p1Reps > 0) {
+        s.house.p1Reps--; s.house.p2Reps++; currentP1--;
+      }
+    }
+  }
+
   return { 
     year, 
     states,
@@ -708,7 +741,7 @@ export function getStateData(year: number, stateName: string): StateData {
   }
   return closest.states[stateName] || {
     president: { party: "", flipped: false }, senate: { split: false, party1: "", party2: "", active: false },
-    house: { demReps: 0, repReps: 0, totalReps: 0 }, governor: { party: "", active: false }, electoralVotes: 0,
+    house: { p1Reps: 0, p2Reps: 0, totalReps: 0 }, governor: { party: "", active: false }, electoralVotes: 0,
   };
 }
 
@@ -761,8 +794,13 @@ export function getFlipData(year: number, stateName: string): FlipInfo {
     senFlip2 = true;
   }
 
-  // House: compare DEM seat counts
-  const demDiff = cur.house.demReps - prev.house.demReps;
+  // House: compare DEM seat counts consistently, even if p1/p2 swap majority
+  const curP1 = CONGRESS_DATA[year]?.p1;
+  const prevP1 = CONGRESS_DATA[years[idx - 1]]?.p1;
+  const curDem = curP1 === "DEM" || curP1 === "DR" || curP1 === "WHIG" ? cur.house.p1Reps : cur.house.p2Reps;
+  const prevDem = prevP1 === "DEM" || prevP1 === "DR" || prevP1 === "WHIG" ? prev.house.p1Reps : prev.house.p2Reps;
+
+  const demDiff = curDem - prevDem;
   const houseFlipDem = Math.max(0, demDiff);
   const houseFlipRep = Math.max(0, -demDiff);
 

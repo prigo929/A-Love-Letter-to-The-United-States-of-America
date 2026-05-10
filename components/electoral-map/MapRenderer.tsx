@@ -145,12 +145,25 @@ function buildCartogram(year: number): CartoState[] {
     const cols = STATE_COLS[name] || Math.ceil(Math.sqrt(total));
     let maxY = ay;
 
-    // Group flipped seats intelligently at the boundary: DEM -> DEM Flip -> REP Flip -> REP
+    // Fixed Party Order: Ensure "Left/Liberal" parties are always first (top/left) 
+    // to prevent visual switching when the national majority (p1/p2) flips.
+    const isP1First = (p1 === "DEM" || p1 === "DR" || p1 === "WHIG" || p1 === "PROG");
+    const firstParty = isP1First ? p1 : p2;
+    const secondParty = isP1First ? p2 : p1;
+    const firstReps = isP1First ? sd.house.p1Reps : sd.house.p2Reps;
+    const secondReps = isP1First ? sd.house.p2Reps : sd.house.p1Reps;
+    
+    // FirstParty is always "Left/Dem", SecondParty is always "Right/Rep"
+    // So we map houseFlipDem to firstFlip and houseFlipRep to secondFlip
+    const firstFlip = flip.houseFlipDem;
+    const secondFlip = flip.houseFlipRep;
+
     const sqDefs: { color: string; hasFlipHash: boolean }[] = [];
-    for (let i = 0; i < sd.house.demReps - flip.houseFlipDem; i++) sqDefs.push({ color: pc(p1), hasFlipHash: false });
-    for (let i = 0; i < flip.houseFlipDem; i++) sqDefs.push({ color: pc(p1), hasFlipHash: true });
-    for (let i = 0; i < flip.houseFlipRep; i++) sqDefs.push({ color: pc(p2), hasFlipHash: true });
-    for (let i = 0; i < sd.house.repReps - flip.houseFlipRep; i++) sqDefs.push({ color: pc(p2), hasFlipHash: false });
+    // Hunks of first party (Dems) -> Flip Dem -> Flip Rep -> Hunks of second party (Reps)
+    for (let i = 0; i < firstReps - firstFlip; i++) sqDefs.push({ color: pc(firstParty), hasFlipHash: false });
+    for (let i = 0; i < firstFlip; i++) sqDefs.push({ color: pc(firstParty), hasFlipHash: true });
+    for (let i = 0; i < secondFlip; i++) sqDefs.push({ color: pc(secondParty), hasFlipHash: true });
+    for (let i = 0; i < secondReps - secondFlip; i++) sqDefs.push({ color: pc(secondParty), hasFlipHash: false });
 
     const squares: CSquare[] = [];
     let minX = Infinity, minY = Infinity, maxX = -Infinity, maxSqY = -Infinity;
@@ -459,12 +472,13 @@ export function MapRenderer({ year, viewMode, onStateClick, isRo }: { year: numb
   const onSquareEnter = useCallback((name: string, evt: React.MouseEvent) => {
     const data = getStateData(year, name);
     const flip = getFlipData(year, name);
+    const cd = CONGRESS_DATA[year] || { p1: "DEM", p2: "REP" };
     setHovered(name);
-    const flipStr = (flip.houseFlipDem > 0 || flip.houseFlipRep > 0) ? ` · ${flip.houseFlipDem > 0 ? `+${flip.houseFlipDem} DEM` : `+${flip.houseFlipRep} REP`}` : "";
+    const flipStr = (flip.houseFlipDem > 0 || flip.houseFlipRep > 0) ? ` · ${flip.houseFlipDem > 0 ? `+${flip.houseFlipDem} GAIN` : `+${flip.houseFlipRep} GAIN`}` : "";
     setTip({
       x: evt.clientX, y: evt.clientY, name,
-      party: data.house.demReps > data.house.repReps ? "DEM" : "REP",
-      detail: `${name}: ${data.house.demReps} DEM, ${data.house.repReps} REP${flipStr}`,
+      party: data.house.p1Reps > data.house.p2Reps ? cd.p1 : cd.p2,
+      detail: `${name}: ${data.house.p1Reps} ${cd.p1}, ${data.house.p2Reps} ${cd.p2}${flipStr}`,
     });
   }, [year]);
 
