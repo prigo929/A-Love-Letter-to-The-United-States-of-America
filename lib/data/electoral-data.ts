@@ -249,7 +249,7 @@ export const PRESIDENTIAL_DATA: Record<number, { dem: string, rep: string, demV:
 // ── Independent Senate/Governor/House data ────────────────────────────────
 // States with Republican governors despite being D-lean presidentially (or vice versa)
 const GOV_OVERRIDES: Record<number, Record<string, string>> = {
-  2024: { "Massachusetts": "REP", "Vermont": "REP", "Virginia": "REP", "Kentucky": "DEM", "Kansas": "DEM", "Louisiana": "REP" },
+  2024: { "Vermont": "REP", "Virginia": "REP", "Kentucky": "DEM", "Kansas": "DEM", "Louisiana": "REP" },
   2022: { "Kentucky": "DEM", "Kansas": "DEM", "North Carolina": "DEM", "Vermont": "REP", "New Hampshire": "REP", "Nevada": "REP" },
   2020: { "Massachusetts": "REP", "Maryland": "REP", "Vermont": "REP", "New Hampshire": "REP" },
   2018: { "Kentucky": "DEM", "Kansas": "DEM", "North Carolina": "DEM", "Massachusetts": "REP", "Maryland": "REP", "Vermont": "REP", "New Hampshire": "REP" },
@@ -266,7 +266,7 @@ const GOV_OVERRIDES: Record<number, Record<string, string>> = {
 
 // States with split senate delegations (1 DEM + 1 REP or FED + DR)
 const SPLIT_SENATE_BY_YEAR: Record<number, string[]> = {
-  2024: ["Maine", "West Virginia", "Ohio", "Montana", "Wisconsin"],
+  2024: ["Maine", "Wisconsin", "Pennsylvania"],
   2022: ["Ohio", "Wisconsin", "Maine", "Montana", "Arizona"],
   2020: ["Maine", "Pennsylvania", "West Virginia", "Georgia", "Montana"],
   2018: ["Maine", "Ohio", "Pennsylvania", "Wisconsin", "West Virginia", "Montana"],
@@ -633,7 +633,7 @@ function isGovernorActive(year: number, state: string): boolean {
   const isPresYear = year % 4 === 0;
   if (isPresYear) return GOV_PRES_YEAR_STATES.has(state);
   // Midterm years (most states)
-  return !GOV_PRES_YEAR_STATES.has(state) && (year % 2 === 0) && !["New Jersey", "Virginia"].includes(state);
+  return !GOV_PRES_YEAR_STATES.has(state) && (year % 2 === 0) && !["New Jersey", "Virginia", "Kentucky", "Louisiana", "Mississippi"].includes(state);
 }
 
 /**
@@ -724,6 +724,11 @@ function buildYear(year: number): YearData {
       governor: { party: govParty, active: isGovernorActive(year, name) },
       electoralVotes: EV[name] || 3,
     };
+
+    if (name === "District of Columbia") {
+      states[name].senate.active = false;
+      states[name].governor.active = false;
+    }
   }
 
   // ── HOUSE NORMALIZATION PASS ──────────────────────────────────────────────
