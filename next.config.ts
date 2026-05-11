@@ -40,7 +40,7 @@ const nextConfig: NextConfig = {
     // it is slower to encode on first request, which hurts perceived speed.
     formats: ["image/webp"],
     // Allow the quality levels used by next/image in this app
-    qualities: [75, 85, 100],
+    qualities: [75, 85, 90, 100],
     // Cache optimized images aggressively so repeat visits and route
     // transitions do not keep paying the transform cost.
     minimumCacheTTL: 60 * 60 * 24 * 365,
@@ -48,6 +48,13 @@ const nextConfig: NextConfig = {
     // generating unnecessary ultra-large variants for most screens.
     deviceSizes: [640, 750, 828, 1080, 1200, 1536, 1920, 2560],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+
+  // ─── Experimental ───────────────────────────────────────────────
+  experimental: {
+    // The Electoral Archive generates a massive biennial dataset (1788-2024).
+    // The sequential initialization in electoral-data.ts keeps this well under limits.
+    serverSourceMaps: false,
   },
 
   // ─── Turbopack ───────────────────────────────────────────────────

@@ -780,8 +780,37 @@ function buildYear(year: number): YearData {
  * ── National Data Processing ──────────────────────────────────────────────
  * Generates the full sequence of electoral history from 1788 to 2024.
  * This is computed once at runtime to provide a seamless scrubbing experience.
+ *
+ * We build this sequentially to ensure flip-detection logic can access 
+ * previous years without triggering circular lookups or memory leaks.
  */
-export const ELECTORAL_HISTORY: YearData[] = Array.from({ length: (2024 - 1788) / 2 + 1 }, (_, i) => 1788 + i * 2).filter(y => y >= 1788).map(buildYear);
+function generateHistory(): YearData[] {
+  const years = Array.from({ length: (2024 - 1788) / 2 + 1 }, (_, i) => 1788 + i * 2).filter(y => y >= 1788);
+  const history: YearData[] = [];
+  
+  for (let i = 0; i < years.length; i++) {
+    const year = years[i];
+    const prevYearData = i > 0 ? history[i-1] : undefined;
+    const yearData = buildYear(year);
+    
+    // Inject flip detection data by comparing against previous biennial cycle
+    if (prevYearData) {
+      for (const name of Object.keys(yearData.states)) {
+        const cur = yearData.states[name];
+        const prev = prevYearData.states[name];
+        if (prev) {
+          cur.president.flipped = cur.president.party !== prev.president.party;
+        }
+      }
+    }
+    
+    history.push(yearData);
+  }
+  
+  return history;
+}
+
+export const ELECTORAL_HISTORY: YearData[] = generateHistory();
 
 /**
  * Retrieves the data snapshot for a specific state in a specific year.
