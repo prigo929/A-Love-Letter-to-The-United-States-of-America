@@ -138,7 +138,7 @@ export function GdpBarChart({
         </div>
       )}
 
-      <div className="h-80 w-full md:h-95">
+      <div className="h-80 w-full md:h-96">
         {/* ResponsiveContainer makes the chart fill the available width/height. */}
         <ResponsiveContainer width="100%" height="100%" minWidth={0}>
           <BarChart
