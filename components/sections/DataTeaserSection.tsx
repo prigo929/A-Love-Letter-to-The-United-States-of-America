@@ -106,7 +106,7 @@ function ChartCard({
 
       <div className="min-h-[200px] flex-1 px-2 pb-4">
         {/* Recharts handles the responsive sizing inside this container. */}
-        <ResponsiveContainer width="100%" height={200}>
+        <ResponsiveContainer width="100%" height={200} debounce={100}>
           <BarChart
             data={data}
             margin={{ top: 16, right: 16, bottom: 8, left: 8 }}

@@ -99,7 +99,7 @@ export function SP500Chart({ data, title, subtitle, source }: SP500ChartProps) {
       )}
 
       <div className="h-[300px] w-full md:h-[360px]">
-        <ResponsiveContainer width="100%" height="100%" minWidth={0}>
+        <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
           <AreaChart
             data={data}
             margin={{ top: 20, right: 20, left: 10, bottom: 10 }}
