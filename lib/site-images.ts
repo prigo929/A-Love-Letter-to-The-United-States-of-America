@@ -37,7 +37,7 @@ import zionNationalPark from "@/IMAGES/Landscapes/Zion National Park.jpg";
 import greatLakesChicago from "@/IMAGES/Landscapes/the-great-lakes-with-chicago.jpg";
 import globalLeadership from "@/IMAGES/USA from Space/Planet Earth.jpg";
 import homeUsaAtNightFromSpace from "@/IMAGES/USA from Space/USA at night from Space.jpg";
-import homeAirForcePlane from "@/IMAGES/Military/Air Force/us-air-force-f15-eagle.jpg";
+import homeAirForcePlane from "@/IMAGES/Military/Air Force/us-air-force-c17-globemaster-nose.jpg";
 import homeSpacexLaunch from "@/IMAGES/Science/SpaceX launch.jpg";
 import scienceLab from "@/IMAGES/Science/science-lab.jpg";
 import homeSiliconValley from "@/IMAGES/Technology/macro of a silicon wafer.jpg";
