@@ -63,6 +63,15 @@ import c130Takeoff from "@/IMAGES/Military/Air Force/us-air-force-c130-hercules-
 import soldierCloseUp from "@/IMAGES/Military/Army/us-army-soldier-closeup.jpg";
 import soldierSaluting from "@/IMAGES/Military/Army/us-army-soldiers-saluting.jpg";
 
+// New high-fidelity military assets
+import f35Lightning from "@/IMAGES/Military/Air Force/us-air-force-f35-lightning.jpg";
+import geraldFordCarrier from "@/IMAGES/Military/Navy/us-navy-gerald-ford-carrier.jpg";
+import ohioSubmarine from "@/IMAGES/Military/Navy/us-navy-ohio-class-submarine.jpg";
+import minutemanLaunch from "@/IMAGES/Military/Air Force/us-air-force-minuteman-iii-launch.jpg";
+import cyberOps from "@/IMAGES/Military/Air Force/us-air-force-cyber-ops.jpg";
+import marinesAssault from "@/IMAGES/Military/Marines/us-marines-amphibious-assault.jpg";
+import socomOperators from "@/IMAGES/Military/SOCOM/us-army-socom-operators.jpg";
+
 // Export plain `.src` strings so the rest of the app can use them in Next Image
 // components without caring which physical file they came from.
 //
@@ -121,4 +130,11 @@ export const SITE_IMAGES = {
   c130Takeoff: c130Takeoff.src,
   soldierCloseUp: soldierCloseUp.src,
   soldierSaluting: soldierSaluting.src,
+  f35Lightning: f35Lightning.src,
+  geraldFordCarrier: geraldFordCarrier.src,
+  ohioSubmarine: ohioSubmarine.src,
+  minutemanLaunch: minutemanLaunch.src,
+  cyberOps: cyberOps.src,
+  marinesAssault: marinesAssault.src,
+  socomOperators: socomOperators.src,
 } as const;
