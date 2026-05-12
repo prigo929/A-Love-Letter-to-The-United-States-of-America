@@ -43,6 +43,16 @@ import scienceLab from "@/IMAGES/Science/science-lab.jpg";
 import homeSiliconValley from "@/IMAGES/Technology/macro of a silicon wafer.jpg";
 import siliconValleyOffice from "@/IMAGES/Technology/Apple Headquarters.jpg";
 
+// Military replacements
+import armyHero from "@/IMAGES/Military/Army/us soldiers waving the flag of USA.jpg";
+import navyHero from "@/IMAGES/Military/Navy/231103-N-JC256-1451.jpg";
+import airForceHero from "@/IMAGES/Military/Air Force/DesertStormSpace.jpg";
+import b2Hero from "@/IMAGES/Military/Air Force/250911-F-AF000-1100.jpg";
+import b21Raider from "@/IMAGES/Military/Air Force/221128-F-ZZ000-001.jpg";
+import abramsTank from "@/IMAGES/Military/Army/Category Weapon Tags Desert Military Operation Storm Tank.jpg";
+import f22Raptor from "@/IMAGES/Military/Air Force/military-lockheed_martin_f_22_raptor-united_states_air_force-521991.jpeg";
+import autonomousDrone from "@/IMAGES/Military/Air Force/250827-F-AF000-2003.jpg";
+
 // Export plain `.src` strings so the rest of the app can use them in Next Image
 // components without caring which physical file they came from.
 //
@@ -81,4 +91,14 @@ export const SITE_IMAGES = {
   yellowstoneNationalPark: yellowstoneNationalPark.src,
   zionNationalPark: zionNationalPark.src,
   greatLakesChicago: greatLakesChicago.src,
+
+  // Military
+  armyHero: armyHero.src,
+  navyHero: navyHero.src,
+  airForceHero: airForceHero.src,
+  b2Hero: b2Hero.src,
+  b21Raider: b21Raider.src,
+  abramsTank: abramsTank.src,
+  f22Raptor: f22Raptor.src,
+  autonomousDrone: autonomousDrone.src,
 } as const;

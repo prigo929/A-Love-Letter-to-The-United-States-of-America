@@ -444,7 +444,7 @@ export function UnbrokenLine({
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="relative" style={{ position: "relative" }}>
       {/* The unbroken golden line and transfers */}
       <div className="relative">
         <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-[rgba(201,168,76,0.1)]">
