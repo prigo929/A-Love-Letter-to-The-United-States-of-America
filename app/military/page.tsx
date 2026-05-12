@@ -537,10 +537,10 @@ export default async function MilitaryPage() {
               {[
                 { href: "/military/navy",        label: "Navy",       tagline: isRo ? "Dominanță Oceanică" : "Oceanic Dominance",       image: SITE_IMAGES.navyHero, alt: "USS Gerald R. Ford", badge: "11 Carriers"     },
                 { href: "/military/air-force",   label: "Air Force",  tagline: isRo ? "Supremație Aeriană" : "Aerospace Supremacy",     image: SITE_IMAGES.airForceHero, alt: "F-22 Raptor", badge: "5th Gen"          },
-                { href: "/military/space-force", label: "Space Force",tagline: isRo ? "Control Orbital" : "Orbital Control",            image: SITE_IMAGES.greatLakesChicago, alt: "Earth from orbit", badge: "87+ Satellites" },
-                { href: "/military/cyber",       label: "Cyber",      tagline: isRo ? "Câmpul de Luptă Digital" : "Digital Battlefield", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop", alt: "Cyber operations", badge: "133 Teams"     },
-                { href: "/military/marines",     label: "Marines",    tagline: isRo ? "Semper Fidelis" : "Always First",               image: SITE_IMAGES.navyHero, alt: "F-35B Marines", badge: "Expeditionary" },
-                { href: "/military/special-ops", label: "SOCOM",      tagline: isRo ? "Operații Speciale" : "Special Operations",       image: "https://images.unsplash.com/photo-1561486462-89834a03cb72?q=80&w=800&auto=format&fit=crop", alt: "Special operations", badge: "70K+ Operators" },
+                { href: "/military/space-force", label: "Space Force",tagline: isRo ? "Control Orbital" : "Orbital Control",            image: SITE_IMAGES.spaceForceLaunch, alt: "Space Force Launch", badge: "87+ Satellites" },
+                { href: "/military/cyber",       label: "Cyber",      tagline: isRo ? "Câmpul de Luptă Digital" : "Digital Battlefield", image: SITE_IMAGES.autonomousDrone, alt: "Cyber operations", badge: "133 Teams"     },
+                { href: "/military/marines",     label: "Marines",    tagline: isRo ? "Semper Fidelis" : "Always First",               image: SITE_IMAGES.fa18Landing, alt: "F-35B Marines", badge: "Expeditionary" },
+                { href: "/military/special-ops", label: "SOCOM",      tagline: isRo ? "Operații Speciale" : "Special Operations",       image: SITE_IMAGES.soldierCloseUp, alt: "Special operations", badge: "70K+ Operators" },
               ].map(branch => (
                 <Link
                   key={branch.href}
