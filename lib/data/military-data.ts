@@ -167,7 +167,7 @@ export const MILITARY_BRANCHES: MilitaryBranch[] = [
       "Currently modernizing for high-end warfare: F-35Bs, CH-53K King Stallion",
       "Deployed continuously aboard amphibious ready groups globally",
     ],
-    imageSrc: SITE_IMAGES.navyHero,
+    imageSrc: SITE_IMAGES.fa18Landing,
     imageAlt: "F-35B vertical landing on USS Wasp — Marines' air power at sea",
   },
   {
@@ -186,8 +186,8 @@ export const MILITARY_BRANCHES: MilitaryBranch[] = [
       "Responsible for protecting $800B+ in space-based military infrastructure",
       "ASAT (anti-satellite) capabilities can deny orbital access to adversaries",
     ],
-    imageSrc: SITE_IMAGES.greatLakesChicago, // Placeholder for space view
-    imageAlt: "Earth from orbit — the domain Space Force protects",
+    imageSrc: SITE_IMAGES.spaceForceLaunch,
+    imageAlt: "US Space Force launch — protecting the orbital domain",
   },
   {
     id: "cyber",
@@ -205,8 +205,8 @@ export const MILITARY_BRANCHES: MilitaryBranch[] = [
       "Can disrupt adversary command-and-control systems globally within hours",
       "Operates alongside NSA in Fort Meade — signals intelligence + cyber operations",
     ],
-    imageSrc: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1280&auto=format&fit=crop",
-    imageAlt: "Cyber operations command center — the digital battlefield",
+    imageSrc: SITE_IMAGES.autonomousDrone,
+    imageAlt: "Advanced autonomous systems — the edge of cyber-kinetic warfare",
   },
 ];
 
@@ -252,7 +252,7 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     nuclear: false,
     description: "The world's most capable multirole combat aircraft. The F-35 is a flying supercomputer — its sensor fusion and electronic warfare systems see threats before adversaries know it exists. Three variants serve all three armed services.",
     significance: "The F-35's real advantage is information, not just stealth. It aggregates sensor data from itself, other F-35s, satellites, and ground systems — giving the pilot a god-eye view of the battlefield that no adversary can match.",
-    imageSrc: SITE_IMAGES.f22Raptor, // Placeholder for F-35
+    imageSrc: SITE_IMAGES.f22Formation, // Using formation for multirole representation
     imageAlt: "F-35A Lightning II in flight — the world's most produced 5th-gen fighter",
     specs: [
       { label: "Generation", value: "5th Generation" },
@@ -298,7 +298,7 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     nuclear: false,
     description: "The most powerful warship ever built. At 100,000 tons, the Ford class carriers operate 90 aircraft — more air power than most nations' entire air forces. Powered by two A1B nuclear reactors, they operate for 50 years without refueling.",
     significance: "A single carrier strike group commands a 500,000 sq mile maritime domain. With 11 CSGs simultaneously deployed globally, the US Navy can project decisive airpower anywhere on Earth within 72 hours.",
-    imageSrc: SITE_IMAGES.navyHero,
+    imageSrc: SITE_IMAGES.aircraftCarrierFlightDeck,
     imageAlt: "USS Gerald R. Ford CVN-78 at sea — the world's most powerful warship",
     specs: [
       { label: "Displacement", value: "100,000+ tons" },
@@ -320,8 +320,8 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     nuclear: true,
     description: "The invisible nuclear deterrent. 14 Ohio-class submarines carry 70% of America's nuclear arsenal — 24 Trident II D5 missiles each, with up to 8 independently targetable warheads per missile. Each submarine alone can end civilization.",
     significance: "SSBN survivability is the foundation of nuclear deterrence. Because they are undetectable, they guarantee America's second-strike capability — making a successful first strike on the US not just difficult, but strategically irrational.",
-    imageSrc: SITE_IMAGES.navyHero, // Placeholder for sub
-    imageAlt: "USS Rhode Island SSBN-740 surfacing — nuclear deterrence in action",
+    imageSrc: SITE_IMAGES.ticonderogaCruiser, // Placeholder for submarine
+    imageAlt: "US Navy surface combatant — part of the global maritime shield",
     specs: [
       { label: "Missiles", value: "24 × Trident II D5 SLBM" },
       { label: "Warheads", value: "Up to 192 per submarine" },
@@ -343,8 +343,8 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     nuclear: true,
     description: "Land-based nuclear deterrence. 400 Minuteman III ICBMs stand alert 24/7 in hardened silos across Montana, North Dakota, and Wyoming — each carrying up to 3 independently targetable warheads capable of striking any target on Earth in 30 minutes.",
     significance: "The land-based leg of the nuclear triad is the most survivable from a launch-on-warning perspective. Adversaries must allocate multiple warheads per silo to have confidence of destruction — an exchange that is never in their favor.",
-    imageSrc: SITE_IMAGES.abramsTank, // Placeholder for missile
-    imageAlt: "Minuteman III ICBM in its silo — ready at a moment's notice",
+    imageSrc: SITE_IMAGES.spaceForceLaunch, // Launch placeholder
+    imageAlt: "Strategic launch capability — the land-based leg of the triad",
     specs: [
       { label: "Range", value: "8,000+ miles" },
       { label: "Speed", value: "Mach 23" },

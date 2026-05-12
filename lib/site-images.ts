@@ -37,21 +37,31 @@ import zionNationalPark from "@/IMAGES/Landscapes/Zion National Park.jpg";
 import greatLakesChicago from "@/IMAGES/Landscapes/the-great-lakes-with-chicago.jpg";
 import globalLeadership from "@/IMAGES/USA from Space/Planet Earth.jpg";
 import homeUsaAtNightFromSpace from "@/IMAGES/USA from Space/USA at night from Space.jpg";
-import homeAirForcePlane from "@/IMAGES/Military/Air Force/home-air-force-plane.jpg";
+import homeAirForcePlane from "@/IMAGES/Military/Air Force/us-air-force-f15-eagle.jpg";
 import homeSpacexLaunch from "@/IMAGES/Science/SpaceX launch.jpg";
 import scienceLab from "@/IMAGES/Science/science-lab.jpg";
 import homeSiliconValley from "@/IMAGES/Technology/macro of a silicon wafer.jpg";
 import siliconValleyOffice from "@/IMAGES/Technology/Apple Headquarters.jpg";
 
 // Military replacements
-import armyHero from "@/IMAGES/Military/Army/us soldiers waving the flag of USA.jpg";
-import navyHero from "@/IMAGES/Military/Navy/231103-N-JC256-1451.jpg";
-import airForceHero from "@/IMAGES/Military/Air Force/DesertStormSpace.jpg";
-import b2Hero from "@/IMAGES/Military/Air Force/250911-F-AF000-1100.jpg";
-import b21Raider from "@/IMAGES/Military/Air Force/221128-F-ZZ000-001.jpg";
-import abramsTank from "@/IMAGES/Military/Army/Category Weapon Tags Desert Military Operation Storm Tank.jpg";
-import f22Raptor from "@/IMAGES/Military/Air Force/military-lockheed_martin_f_22_raptor-united_states_air_force-521991.jpeg";
-import autonomousDrone from "@/IMAGES/Military/Air Force/250827-F-AF000-2003.jpg";
+import armyHero from "@/IMAGES/Military/Army/us-army-soldiers-flag.jpg";
+import navyHero from "@/IMAGES/Military/Navy/us-navy-dual-carrier-strike-group.jpg";
+import airForceHero from "@/IMAGES/Military/Air Force/us-air-force-desert-storm.jpg";
+import b21Raider from "@/IMAGES/Military/Air Force/us-air-force-b21-raider-flight.jpg";
+import b2Hero from "@/IMAGES/Military/Air Force/us-air-force-b2-spirit-maintenance.jpg";
+import abramsTank from "@/IMAGES/Military/Army/us-army-abrams-tank-desert.jpg";
+import f22Raptor from "@/IMAGES/Military/Air Force/us-air-force-f22-raptor-close.jpg";
+import autonomousDrone from "@/IMAGES/Military/Air Force/us-air-force-yfq42a-drone-runway.jpg";
+import aircraftCarrierFlightDeck from "@/IMAGES/Military/Navy/us-navy-aircraft-carrier-flight-deck.jpg";
+import fa18Landing from "@/IMAGES/Military/Navy/us-navy-fa18f-super-hornet-landing.jpg";
+import ticonderogaCruiser from "@/IMAGES/Military/Navy/us-navy-ticonderoga-cruiser-san-diego.jpg";
+import spaceForceLaunch from "@/IMAGES/Military/Space Force/us-space-force-falcon9-launch.jpg";
+import ac130Ghostrider from "@/IMAGES/Military/Air Force/us-air-force-ac130j-ghostrider-flight.jpg";
+import f22Formation from "@/IMAGES/Military/Air Force/us-air-force-f22-raptor-formation.jpg";
+import airForcePersonnel from "@/IMAGES/Military/Air Force/us-air-force-personnel-c17-globemaster.jpg";
+import c130Takeoff from "@/IMAGES/Military/Air Force/us-air-force-c130-hercules-dirt-takeoff.jpg";
+import soldierCloseUp from "@/IMAGES/Military/Army/us-army-soldier-closeup.jpg";
+import soldierSaluting from "@/IMAGES/Military/Army/us-army-soldiers-saluting.jpg";
 
 // Export plain `.src` strings so the rest of the app can use them in Next Image
 // components without caring which physical file they came from.
@@ -101,4 +111,14 @@ export const SITE_IMAGES = {
   abramsTank: abramsTank.src,
   f22Raptor: f22Raptor.src,
   autonomousDrone: autonomousDrone.src,
+  aircraftCarrierFlightDeck: aircraftCarrierFlightDeck.src,
+  fa18Landing: fa18Landing.src,
+  ticonderogaCruiser: ticonderogaCruiser.src,
+  spaceForceLaunch: spaceForceLaunch.src,
+  ac130Ghostrider: ac130Ghostrider.src,
+  f22Formation: f22Formation.src,
+  airForcePersonnel: airForcePersonnel.src,
+  c130Takeoff: c130Takeoff.src,
+  soldierCloseUp: soldierCloseUp.src,
+  soldierSaluting: soldierSaluting.src,
 } as const;
