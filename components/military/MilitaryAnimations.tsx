@@ -54,14 +54,7 @@ export function HUDGrid({ opacity = 0.06 }: { opacity?: number }) {
         }}
       />
 
-      {/* Scan line */}
-      <div
-        className="absolute left-0 right-0 h-[2px]"
-        style={{
-          background: "linear-gradient(90deg, transparent, rgba(245,158,11,0.15), rgba(245,158,11,0.4), rgba(245,158,11,0.15), transparent)",
-          animation: "scan-line 8s linear infinite",
-        }}
-      />
+
     </div>
   );
 }
@@ -207,10 +200,7 @@ export function HUDCounter({ stat, index = 0 }: { stat: MilitaryStat; index?: nu
         ))}
       </div>
 
-      {/* Classification tag */}
-      <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.3em]" style={{ color: colorMap[color], opacity: 0.6 }}>
-        ◼ CLASSIFIED DATA
-      </p>
+
 
       {/* Number */}
       <p className="mb-1 font-mono leading-none tracking-tighter" style={{ fontSize: "clamp(30px,3.5vw,44px)" }}>
@@ -612,7 +602,7 @@ export function NuclearTriadDiagram({ triad }: { triad: { legs: TriadLeg[]; desc
           {active === null ? (
             <motion.p key="default" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               className="text-center font-mono text-xs text-white/30 tracking-[0.2em]">
-              CLICK A NODE TO ACCESS CLASSIFIED DATA
+              CLICK A NODE FOR DETAILS
             </motion.p>
           ) : (
             <motion.div key={active} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
@@ -747,7 +737,7 @@ export function GlobalCarrierMap({ positions }: { positions: CarrierGroupPositio
           <div className="h-2 w-2 rounded-full bg-[#F59E0B]" style={{ boxShadow: "0 0 6px rgba(245,158,11,0.8)" }} />
           <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/35">Carrier Strike Group</p>
         </div>
-        <p className="font-mono text-[9px] text-white/25">APPROXIMATE POSITIONS · UNCLASSIFIED</p>
+        <p className="font-mono text-[9px] text-white/25">APPROXIMATE GLOBAL POSITIONS</p>
       </div>
     </div>
   );
@@ -794,37 +784,7 @@ export function ParallaxMilitaryHero({
       {/* HUD grid */}
       <HUDGrid opacity={0.05} />
 
-      {/* HUD frame elements */}
-      <div className="pointer-events-none absolute inset-4 z-10 hidden md:block">
-        {/* Corner brackets */}
-        {[
-          "top-0 left-0 border-t-2 border-l-2",
-          "top-0 right-0 border-t-2 border-r-2",
-          "bottom-0 left-0 border-b-2 border-l-2",
-          "bottom-0 right-0 border-b-2 border-r-2",
-        ].map((cls, i) => (
-          <div key={i} className={`absolute ${cls} h-10 w-10 border-[rgba(245,158,11,0.4)]`} />
-        ))}
 
-        {/* Top HUD bar */}
-        <div className="absolute top-0 left-12 right-12 flex items-center justify-between border-t border-[rgba(245,158,11,0.15)] pt-2">
-          <div className="flex items-center gap-4">
-            <span className="font-mono text-[9px] tracking-[0.3em] text-[#F59E0B]/60">● LIVE</span>
-            <span className="font-mono text-[9px] tracking-[0.2em] text-white/25">GLOBAL OPERATIONS CENTER</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <RadarPing size={28} />
-            <span className="font-mono text-[9px] tracking-[0.2em] text-white/25">THREAT LEVEL: ELEVATED</span>
-          </div>
-        </div>
-
-        {/* Side data strips */}
-        <div className="absolute left-0 top-16 space-y-1">
-          {["ALTITUDE: FL450", "HEADING: 270°", "SPEED: M2.1", "STATUS: ARMED"].map((data, i) => (
-            <p key={i} className="font-mono text-[8px] tracking-[0.2em] text-white/20">{data}</p>
-          ))}
-        </div>
-      </div>
 
       {/* Content */}
       <motion.div style={{ opacity }} className="relative z-10 w-full">
@@ -950,11 +910,7 @@ export function BudgetComparisonBar({
 export function MilStyles() {
   return (
     <style dangerouslySetInnerHTML={{ __html: `
-      @keyframes mk-blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.35; }
-      }
-      .mk-blink { animation: mk-blink 3s ease-in-out infinite; }
+
 
       @keyframes mk-ken {
         0% { transform: scale(1); }
