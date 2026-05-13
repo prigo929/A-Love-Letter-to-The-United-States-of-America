@@ -137,4 +137,12 @@ export const SITE_IMAGES = {
   cyberOps: cyberOps.src,
   marinesAssault: marinesAssault.src,
   socomOperators: socomOperators.src,
+
+  // Military Nested (for specific page structures)
+  military: {
+    hero: b2Hero.src,
+    carrier: geraldFordCarrier.src,
+    b2: b2Hero.src,
+    satellite: globalLeadership.src,
+  },
 } as const;

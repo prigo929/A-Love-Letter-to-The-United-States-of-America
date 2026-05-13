@@ -12,7 +12,7 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
-import type { WeaponSystem, MilitaryBranch, DARPAProgram } from "@/lib/data/military-data";
+import type { WeaponSystem, MilitaryBranch, DARPAProgram, MilitaryStat, CarrierGroupPosition } from "@/lib/data/military-data";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 1. HUDGrid — animated scan-line grid overlay
@@ -176,7 +176,9 @@ function MilCountUp({ to, prefix = "", suffix = "", decimals = 0, color }: {
   return <span ref={ref} style={{ color }}>{prefix}0{suffix}</span>;
 }
 
-export function HUDCounter({ value, suffix = "", prefix = "", decimals = 0, label, sublabel, color = "amber", delay = 0 }: HUDCounterProps) {
+export function HUDCounter({ stat, index = 0 }: { stat: MilitaryStat; index?: number }) {
+  const { value, suffix = "", prefix = "", decimals = 0, label, sublabel, color = "amber" } = stat;
+  const delay = index * 0.1;
   const colorMap = { amber: "#F59E0B", blue: "#60A5FA", white: "#F8FAFC" };
   const borderMap = { amber: "rgba(245,158,11,0.25)", blue: "rgba(96,165,250,0.2)", white: "rgba(248,250,252,0.15)" };
   const glowMap = { amber: "rgba(245,158,11,0.08)", blue: "rgba(60,130,246,0.06)", white: "rgba(248,250,252,0.04)" };
@@ -228,7 +230,7 @@ export function HUDCounter({ value, suffix = "", prefix = "", decimals = 0, labe
 // 4. WeaponSystemCard — classified dossier card with hover reveal
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function WeaponSystemCard({ system }: { system: WeaponSystem }) {
+export function WeaponSystemCard({ system, index = 0 }: { system: WeaponSystem; index?: number }) {
   const [expanded, setExpanded] = useState(false);
   const statusColors = {
     operational: { bg: "rgba(34,197,94,0.1)", border: "rgba(34,197,94,0.4)", text: "#22C55E", label: "OPERATIONAL" },
@@ -525,7 +527,8 @@ interface TriadLeg {
   alert: string; advantage: string; color: string;
 }
 
-export function NuclearTriadDiagram({ legs, description }: { legs: TriadLeg[]; description: string }) {
+export function NuclearTriadDiagram({ triad }: { triad: { legs: TriadLeg[]; description: string } }) {
+  const { legs, description } = triad;
   const [active, setActive] = useState<number | null>(null);
 
   return (
@@ -644,8 +647,9 @@ interface CarrierPos {
   status: "deployed" | "transit" | "homeport";
 }
 
-export function GlobalCarrierMap({ carriers }: { carriers: CarrierPos[] }) {
+export function GlobalCarrierMap({ positions }: { positions: CarrierGroupPosition[] }) {
   const [hovered, setHovered] = useState<string | null>(null);
+  const carriers = positions;
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-[#04080F]">
@@ -738,8 +742,16 @@ export function GlobalCarrierMap({ carriers }: { carriers: CarrierPos[] }) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ParallaxMilitaryHero({
-  imageSrc, imageAlt, children
-}: { imageSrc: string; imageAlt: string; children?: React.ReactNode }) {
+  imageSrc, imageAlt, title, subtitle, tagline, stats, children
+}: { 
+  imageSrc: string; 
+  imageAlt: string; 
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  stats?: { value: string; label: string }[];
+  children?: React.ReactNode 
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
@@ -799,7 +811,54 @@ export function ParallaxMilitaryHero({
 
       {/* Content */}
       <motion.div style={{ opacity }} className="relative z-10 w-full">
-        <div className="mx-auto max-w-screen-xl px-4 pb-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-screen-xl px-4 pb-20 sm:px-6 lg:px-8 text-center md:text-left">
+          {tagline && (
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-4 font-mono text-[10px] tracking-[0.4em] text-[#F59E0B]"
+            >
+              ◈ {tagline.toUpperCase()} ◈
+            </motion.p>
+          )}
+          {title && (
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="mb-4 font-hero text-[clamp(48px,10vw,120px)] font-black leading-[0.85] tracking-tight text-white"
+            >
+              {title}
+            </motion.h1>
+          )}
+          {subtitle && (
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mb-10 max-w-2xl font-body text-sm leading-relaxed text-white/50 md:text-lg"
+            >
+              {subtitle}
+            </motion.p>
+          )}
+
+          {stats && (
+            <div className="mb-12 flex flex-wrap justify-center md:justify-start gap-8">
+              {stats.map((s, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 + i * 0.1 }}
+                >
+                  <p className="font-hero text-3xl font-bold text-[#F59E0B]">{s.value}</p>
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-white/40">{s.label}</p>
+                </motion.div>
+              ))}
+            </div>
+          )}
+
           {children}
         </div>
       </motion.div>
@@ -825,7 +884,13 @@ const BUDGET_DATA = [
   { country: "France",        budget: 61,  flag: "🇫🇷", highlight: false },
 ];
 
-export function BudgetComparisonBar({ label = "Defense Budget (USD Billion, 2024)" }: { label?: string }) {
+export function BudgetComparisonBar({ 
+  data = BUDGET_DATA, 
+  label = "Defense Budget (USD Billion, 2024)" 
+}: { 
+  data?: any[]; 
+  label?: string; 
+}) {
   const ref    = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -833,18 +898,19 @@ export function BudgetComparisonBar({ label = "Defense Budget (USD Billion, 2024
     <div ref={ref} className="overflow-hidden rounded-2xl border border-white/8 bg-[#080C14] p-6">
       <p className="mb-6 font-mono text-[9px] uppercase tracking-[0.3em] text-white/35">{label}</p>
       <div className="space-y-3">
-        {BUDGET_DATA.map((row, i) => {
+        {data.map((row, i) => {
+          const isHighlight = row.highlight || row.country.includes("United States");
           const pct = (row.budget / 886) * 100;
           return (
             <div key={row.country}>
               <div className="mb-1.5 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="text-sm">{row.flag}</span>
-                  <span className={`font-mono text-xs ${row.highlight ? "text-[#F59E0B] font-bold" : "text-white/50"}`}>
+                  <span className={`font-mono text-xs ${isHighlight ? "text-[#F59E0B] font-bold" : "text-white/50"}`}>
                     {row.country}
                   </span>
                 </div>
-                <span className={`font-mono text-xs ${row.highlight ? "text-[#F59E0B]" : "text-white/35"}`}>
+                <span className={`font-mono text-xs ${isHighlight ? "text-[#F59E0B]" : "text-white/35"}`}>
                   ${row.budget}B
                 </span>
               </div>
@@ -855,10 +921,10 @@ export function BudgetComparisonBar({ label = "Defense Budget (USD Billion, 2024
                   animate={inView ? { width: `${pct}%` } : { width: 0 }}
                   transition={{ duration: 1.2, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   style={{
-                    background: row.highlight
+                    background: isHighlight
                       ? "linear-gradient(90deg, #92400E, #F59E0B, #FCD34D)"
                       : "rgba(255,255,255,0.15)",
-                    boxShadow: row.highlight ? "0 0 12px rgba(245,158,11,0.4)" : "none",
+                    boxShadow: isHighlight ? "0 0 12px rgba(245,158,11,0.4)" : "none",
                   }}
                 />
               </div>
@@ -867,6 +933,148 @@ export function BudgetComparisonBar({ label = "Defense Budget (USD Billion, 2024
         })}
       </div>
       <p className="mt-4 text-right font-mono text-[8px] text-white/20">Source: SIPRI Military Expenditure Database 2024</p>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 11. MilStyles — Global HUD animations and cinematic utility classes
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function MilStyles() {
+  return (
+    <style dangerouslySetInnerHTML={{ __html: `
+      @keyframes mk-blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.35; }
+      }
+      .mk-blink { animation: mk-blink 3s ease-in-out infinite; }
+
+      @keyframes mk-ken {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.08) translate(-1%, -1%); }
+      }
+      .mk-ken { animation: mk-ken 24s ease-in-out infinite alternate; }
+
+      @keyframes mk-grain-anim {
+        0%, 100% { transform: translate(0, 0); }
+        10% { transform: translate(-1%, -1%); }
+        20% { transform: translate(1%, 1%); }
+        30% { transform: translate(-2%, 0); }
+        40% { transform: translate(2%, 2%); }
+        50% { transform: translate(-1%, 2%); }
+        60% { transform: translate(2%, 1%); }
+        70% { transform: translate(1%, -2%); }
+        80% { transform: translate(-2%, -1%); }
+        90% { transform: translate(1%, 2%); }
+      }
+
+      .mk-grain { position: relative; isolation: isolate; }
+      
+      .md { font-family: var(--font-hero), "Bebas Neue", sans-serif; }
+      .mb { font-family: var(--font-body), "Inter", sans-serif; }
+    `}} />
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 12. HUDCorners — four-point corner framing
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function HUDCorners({ color = "#f59e0b", size = 20, weight = 1.5, offset = 0 }: {
+  color?: string; size?: number; weight?: number; offset?: number;
+}) {
+  return (
+    <div className="pointer-events-none absolute inset-0 z-10" style={{ margin: -offset }}>
+      {["top-0 left-0", "top-0 right-0", "bottom-0 left-0", "bottom-0 right-0"].map((pos, i) => {
+        const isTop = pos.includes("top");
+        const isLeft = pos.includes("left");
+        return (
+          <div 
+            key={i} 
+            className={`absolute ${pos}`} 
+            style={{ 
+              width: size, 
+              height: size,
+              borderTop: isTop ? `${weight}px solid ${color}` : "none",
+              borderBottom: !isTop ? `${weight}px solid ${color}` : "none",
+              borderLeft: isLeft ? `${weight}px solid ${color}` : "none",
+              borderRight: !isLeft ? `${weight}px solid ${color}` : "none",
+              opacity: 0.6
+            }} 
+          />
+        );
+      })}
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 13. GrainOverlay — cinematic texture
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function GrainOverlay({ z = 10, opacity = 0.05 }: { z?: number; opacity?: number }) {
+  return (
+    <div 
+      className="pointer-events-none absolute inset-0 overflow-hidden" 
+      style={{ zIndex: z, opacity }}
+    >
+      <div 
+        className="absolute inset-[-200%]"
+        style={{ 
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          backgroundSize: '128px 128px',
+          animation: 'mk-grain-anim 0.5s steps(1) infinite'
+        }} 
+      />
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 14. ScanLine — horizontal sweep line
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function ScanLine({ color = "rgba(245,158,11,0.15)", dur = 8 }: { color?: string; dur?: number }) {
+  return (
+    <div 
+      className="pointer-events-none absolute left-0 right-0 h-[1.5px] z-30"
+      style={{ 
+        background: `linear-gradient(90deg, transparent, ${color}, transparent)`,
+        animation: `scan-line ${dur}s linear infinite`
+      }}
+    />
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 15. ParticleCanvas — cinematic background particles
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function ParticleCanvas() {
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
+      {[...Array(20)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute h-1 w-1 rounded-full bg-white/20"
+          initial={{ 
+            x: `${Math.random() * 100}%`, 
+            y: `${Math.random() * 100}%`,
+            opacity: Math.random() * 0.5
+          }}
+          animate={{ 
+            y: ["-10%", "110%"],
+            opacity: [0, 0.5, 0]
+          }}
+          transition={{ 
+            duration: 10 + Math.random() * 20, 
+            repeat: Infinity, 
+            delay: Math.random() * 10,
+            ease: "linear"
+          }}
+        />
+      ))}
     </div>
   );
 }
