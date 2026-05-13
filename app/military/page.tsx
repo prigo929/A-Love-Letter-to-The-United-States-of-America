@@ -1,19 +1,44 @@
-// ─── Military Power Main Page ─────────────────────────────────────────────────
-// Phase 5: American Military Supremacy
-// Design: defense-tech × aerospace × HUD × cinematic
-// Palette: matte black · deep navy · graphite · steel blue · amber HUD
+// ─────────────────────────────────────────────────────────────────────────────
+// page.tsx — MILITARY POWER · CINEMATIC OVERHAUL v3
+// "The United States as a planetary command-and-control system."
+//
+// Design language ─────────────────────────────────────────────────────────────
+//   Defense-Tech × Aerospace HUD × Apple Keynote × Top Gun: Maverick
+//
+// Architecture ────────────────────────────────────────────────────────────────
+//   Every section is a full-bleed cinematic panel.
+//   Layers per panel: bg-image → vignette → grid → scan → grain → HUD → text
+//
+// Sections ────────────────────────────────────────────────────────────────────
+//   §0  HERO          — B-2 emerging from darkness, parallax, particle canvas
+//   §1  STAT WALL     — HUD counters across the full viewport
+//   §2  DOMINANCE     — global overview + budget comparison bars
+//   §3  BRANCHES      — cinematic branch selector
+//   §4  CARRIER MAP   — world map with real-time carrier positions + satellite
+//   §5  WEAPONS       — classified dossier cards
+//   §6  NUCLEAR TRIAD — interactive SVG triangle
+//   §7  DARPA         — future systems grid
+//   §8  INDUSTRY      — defense contractor grid
+//   §9  FACTS         — rolling ticker + fact cards
+//   §10 QUOTE         — full-bleed cinematic quote
+//   §11 SUB-PAGE NAV  — chapter navigation
+// ─────────────────────────────────────────────────────────────────────────────
 
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Breadcrumb }  from "@/components/layout/Breadcrumb";
-import { QuoteBlock }  from "@/components/sections/QuoteBlock";
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
 
 import {
+  MilStyles,
   HUDGrid,
   HUDCounter,
+  HUDCorners,
+  GrainOverlay,
+  ScanLine,
   RadarPing,
+  ParticleCanvas,
   WeaponSystemCard,
   BranchSelector,
   DARPAProgramGrid,
@@ -41,91 +66,204 @@ import {
 } from "@/lib/data/military-data";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
-
 export const metadata: Metadata = {
-  title: "Military Power | America: The Greatest Nation",
+  title: "American Military Power | America: The Greatest Nation",
   description:
-    "The United States military: 11 carrier strike groups, 5,550 nuclear warheads, 13,247 aircraft, and a defense budget larger than the next 10 nations combined. The planet's only true global military superpower.",
-  alternates: { canonical: "/military" },
+    "The United States operates the most advanced military-industrial-intelligence system in human history. Explore the forces, technologies, and doctrine that define planetary dominance.",
   openGraph: {
-    title: "American Military Supremacy — The World's Only Superpower",
-    description:
-      "$886 billion defense budget. 11 nuclear carriers. The B-21 Raider. Space Force. Cyber Command. An unmatched global military-industrial system.",
-    url: "/military",
-    images: [
-      {
-        url: SITE_IMAGES.b2Hero,
-        width: 1280,
-        height: 720,
-        alt: "B-2 Spirit stealth bomber",
-      },
-    ],
+    title: "American Military Power",
+    description: "Planetary command-and-control. The full spectrum of American military supremacy.",
+    images: [{ url: SITE_IMAGES.military.hero, width: 1200, height: 630 }],
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "American Military Power — The World's Only Superpower",
-  description:
-    "An interactive deep dive into US military supremacy: budget, branches, weapon systems, nuclear triad, and the next-generation systems that will define warfare in the 21st century.",
-  url: "https://americagreatest.com/military",
-};
+// ─── Constants ────────────────────────────────────────────────────────────────
 
-// ─── Section wrapper ──────────────────────────────────────────────────────────
+const BUDGET_DATA = [
+  { country: "United States", budget: 886, flag: "🇺🇸" },
+  { country: "China",         budget: 296, flag: "🇨🇳" },
+  { country: "Russia",        budget: 109, flag: "🇷🇺" },
+  { country: "India",         budget:  83, flag: "🇮🇳" },
+  { country: "Saudi Arabia",  budget:  75, flag: "🇸🇦" },
+  { country: "UK",            budget:  68, flag: "🇬🇧" },
+  { country: "Germany",       budget:  67, flag: "🇩🇪" },
+];
+
+const HERO_STATS = [
+  { value: "$886B",  label: "Defense Budget" },
+  { value: "11",     label: "Carrier Groups" },
+  { value: "750+",   label: "Global Bases" },
+  { value: "5,500+", label: "Nuclear Warheads" },
+];
+
+const DOMINANCE_METRICS = [
+  { value: "39%",  label: "Share of Global Military Spending",          color: "#f59e0b" as const },
+  { value: "142",  label: "Satellites in Military Orbit",               color: "#60a5fa" as const },
+  { value: "13K+", label: "Military Aircraft — Largest Fleet on Earth", color: "#f59e0b" as const },
+  { value: "480",  label: "Naval Vessels Including 11 Supercarriers",   color: "#60a5fa" as const },
+];
+
+// ─── Section Wrapper ──────────────────────────────────────────────────────────
 
 function Section({
-  id, eyebrow, children, dark = true,
+  children,
+  id,
+  label,
+  amber = false,
+  fullBleed = false,
+  bg = "#070c18",
+  noPad = false,
 }: {
-  id: string; eyebrow?: string; children: React.ReactNode; dark?: boolean;
+  children: React.ReactNode;
+  id?: string;
+  label?: string;
+  amber?: boolean;
+  fullBleed?: boolean;
+  bg?: string;
+  noPad?: boolean;
 }) {
   return (
     <section
       id={id}
-      className="relative scroll-mt-24 py-20"
-      style={{ scrollMarginTop: "6rem" }}
+      style={{
+        position:   "relative",
+        background: bg,
+        overflow:   "hidden",
+      }}
     >
-      {/* Amber top rule */}
-      <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-[rgba(245,158,11,0.2)] to-transparent" />
-      {eyebrow && (
-        <p className="mb-5 font-mono text-[10px] font-semibold uppercase tracking-[0.35em] text-[#F59E0B]/70">
-          ◼ {eyebrow}
-        </p>
+      {/* Amber or steel top rule */}
+      <div style={{
+        height: 1.5,
+        background: amber
+          ? "linear-gradient(90deg,transparent,#f59e0b 30%,#f59e0b 70%,transparent)"
+          : "linear-gradient(90deg,transparent,rgba(96,165,250,.3) 30%,rgba(96,165,250,.3) 70%,transparent)",
+      }}/>
+
+      {/* Section label */}
+      {label && (
+        <div style={{
+          position: "absolute", top: 0, left: 0, right: 0,
+          display: "flex", justifyContent: "center", paddingTop: 22,
+          zIndex: 4,
+        }}>
+          <div
+            className="md"
+            style={{
+              display:       "inline-flex",
+              alignItems:    "center",
+              gap:           10,
+              fontSize:       8,
+              letterSpacing: ".38em",
+              color:         amber ? "rgba(245,158,11,.55)" : "rgba(96,165,250,.45)",
+              textTransform: "uppercase",
+            }}
+          >
+            <div style={{
+              height: 1, width: 40,
+              background: `linear-gradient(90deg,transparent,${amber ? "#f59e0b" : "#60a5fa"})`,
+            }}/>
+            {label}
+            <div style={{
+              height: 1, width: 40,
+              background: `linear-gradient(90deg,${amber ? "#f59e0b" : "#60a5fa"},transparent)`,
+            }}/>
+          </div>
+        </div>
       )}
-      {children}
+
+      {/* Content */}
+      <div style={noPad ? undefined : {
+        maxWidth:  fullBleed ? "none" : 1280,
+        margin:    "0 auto",
+        padding:   fullBleed ? 0 : "80px 24px",
+        paddingTop: label ? (fullBleed ? 0 : 100) : undefined,
+      }}>
+        {children}
+      </div>
     </section>
   );
 }
 
-// ─── Classified label ─────────────────────────────────────────────────────────
+// ─── Classified Badge ─────────────────────────────────────────────────────────
 
-function ClassifiedHeader({ line1, line2 }: { line1: string; line2: string }) {
+function ClassifiedBadge({ text = "CLASSIFIED · EYES ONLY" }: { text?: string }) {
   return (
-    <>
-      <p
-        className="mb-2 font-mono text-[9px] uppercase tracking-[0.35em] text-[#F59E0B]/50"
-        aria-hidden="true"
-      >
-        // CLASSIFIED · TOP SECRET · NOFORN
-      </p>
-      <h2
-        className="font-mono font-black uppercase leading-none tracking-tight text-white"
-        style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)", letterSpacing: "-0.01em" }}
-      >
-        {line1}
-        <br />
-        <span
+    <div
+      className="md mk-blink"
+      style={{
+        display:       "inline-flex",
+        alignItems:    "center",
+        gap:           8,
+        padding:       "5px 14px",
+        border:        "1px solid rgba(245,158,11,.3)",
+        background:    "rgba(245,158,11,.07)",
+        fontSize:       8,
+        letterSpacing: ".3em",
+        color:         "rgba(245,158,11,.8)",
+        textTransform: "uppercase",
+      }}
+    >
+      ◈ {text}
+    </div>
+  );
+}
+
+// ─── Cinematic Section Image ──────────────────────────────────────────────────
+
+function CinematicImage({
+  src,
+  alt,
+  height = 480,
+  children,
+  grade = true,
+}: {
+  src:       string;
+  alt:       string;
+  height?:   number;
+  children?: React.ReactNode;
+  grade?:    boolean;
+}) {
+  return (
+    <div
+      className="mk-grain"
+      style={{
+        position: "relative",
+        height,
+        overflow: "hidden",
+        background: "#040810",
+      }}
+    >
+      <div className="mk-ken" style={{ position: "absolute", inset: "-6%" }}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
           style={{
-            background: "linear-gradient(90deg, #F59E0B, #FCD34D, #F59E0B)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
+            objectFit: "cover",
+            filter:    "brightness(.28) saturate(.45) hue-rotate(200deg)",
           }}
-        >
-          {line2}
-        </span>
-      </h2>
-    </>
+          placeholder="blur"
+          blurDataURL={BLUR_PLACEHOLDER}
+        />
+      </div>
+
+      {grade && (
+        <div style={{
+          position:   "absolute",
+          inset:       0,
+          zIndex:      2,
+          background: "linear-gradient(135deg,rgba(0,0,0,.55) 0%,rgba(7,12,24,.65) 60%,rgba(0,0,0,.8) 100%)",
+        }}/>
+      )}
+
+      <HUDGrid/>
+      <ScanLine/>
+      <GrainOverlay z={30} opacity={.025}/>
+
+      <div style={{ position: "absolute", inset: 0, zIndex: 20 }}>
+        {children}
+      </div>
+    </div>
   );
 }
 
@@ -136,453 +274,977 @@ export default async function MilitaryPage() {
   const isRo   = locale === "ro";
   const stats  = getMilitaryStats(locale);
   const facts  = getMilitaryFacts(locale);
+  const quote  = MILITARY_QUOTES[0];
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    <div
+      className="md"
+      style={{ background: "#070c18", color: "#fff", minHeight: "100vh" }}
+    >
+      <MilStyles/>
+
+      {/* ─── §0  BREADCRUMB ────────────────────────────────────────────────── */}
+      <div style={{
+        position:   "relative",
+        zIndex:      100,
+        borderBottom: "1px solid rgba(255,255,255,.04)",
+        background: "rgba(4,8,16,.95)",
+        backdropFilter: "blur(12px)",
+      }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "12px 24px" }}>
+          <Breadcrumb items={[{ label: isRo ? "Militar" : "Military" }]} />
+        </div>
+      </div>
+
+      {/* ─── §1  HERO — B-2 emerging from darkness ─────────────────────────── */}
+      <ParallaxMilitaryHero
+        imageSrc={SITE_IMAGES.military.hero}
+        imageAlt="B-2 Spirit stealth bomber"
+        title="ABSOLUTE POWER"
+        subtitle="United States Military · Industrial · Intelligence Complex"
+        tagline="First in strength · First in readiness · First in the world"
+        stats={HERO_STATS}
       />
 
-      {/* ── HERO — B-2 Spirit emerging from darkness ───────────────────── */}
-      <ParallaxMilitaryHero
-        imageSrc={SITE_IMAGES.b2Hero}
-        imageAlt="B-2 Spirit stealth bomber — the most advanced aircraft ever built"
+      {/* ─── §2  GLOBAL STAT WALL ──────────────────────────────────────────── */}
+      <Section
+        id="stats"
+        bg="#040810"
+        amber
+        label="VERIFIED METRICS · FY 2024"
+        noPad
       >
-        <Breadcrumb
-          items={[{ label: isRo ? "Putere Militară" : "Military Power" }]}
-          className="mb-10"
-          dark
-        />
-
-        {/* Overture label */}
-        <p className="mb-6 font-mono text-[10px] font-semibold uppercase tracking-[0.4em] text-[#F59E0B]/70">
-          {isRo
-            ? "PUTEREA MILITARĂ AMERICANĂ · SISTEMUL GLOBAL DE COMANDĂ ȘI CONTROL"
-            : "AMERICAN MILITARY POWER · GLOBAL COMMAND AND CONTROL SYSTEM"}
-        </p>
-
-        {/* Headline */}
-        <h1
-          className="mb-6 font-mono font-black uppercase leading-none text-white"
-          style={{ fontSize: "clamp(3.5rem, 9vw, 9rem)", letterSpacing: "-0.02em" }}
+        <div
+          style={{
+            display:             "grid",
+            gridTemplateColumns: "repeat(auto-fill,minmax(210px,1fr))",
+            gap:                  0,
+            borderTop:           "1px solid rgba(255,255,255,.04)",
+          }}
         >
-          {isRo ? "SUPERPUTEREA" : "THE WORLD'S"}
-          <br />
-          <span
+          {stats.map((s, i) => (
+            <div
+              key={s.id}
+              style={{
+                borderRight:  "1px solid rgba(255,255,255,.04)",
+                borderBottom: "1px solid rgba(255,255,255,.04)",
+                padding:      "36px 28px",
+              }}
+            >
+              <HUDCounter stat={s} index={i}/>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* ─── §3  GLOBAL DOMINANCE OVERVIEW ─────────────────────────────────── */}
+      <Section
+        id="dominance"
+        label="GLOBAL DOMINANCE · STRATEGIC OVERVIEW"
+        bg="#060c1a"
+      >
+        {/* Section header */}
+        <div style={{ textAlign: "center", marginBottom: 56 }}>
+          <ClassifiedBadge text="STRATEGIC ASSESSMENT · 2024"/>
+          <h2
+            className="md"
             style={{
-              background: "linear-gradient(90deg, #92400E, #F59E0B, #FCD34D, #F59E0B)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
+              marginTop:     18,
+              fontSize:       "clamp(36px,6vw,72px)",
+              fontWeight:     900,
+              lineHeight:     .92,
+              letterSpacing: "-.02em",
+              color:         "#fff",
             }}
           >
-            {isRo ? "PLANETEI" : "ONLY SUPERPOWER"}
-          </span>
-        </h1>
+            PLANETARY<br/>
+            <span style={{ color: "#f59e0b" }}>COMMAND</span>
+          </h2>
+          <p
+            className="mb"
+            style={{
+              marginTop:  20,
+              maxWidth:   620,
+              margin:     "20px auto 0",
+              fontSize:    15,
+              lineHeight:  1.7,
+              color:      "rgba(255,255,255,.45)",
+            }}
+          >
+            The United States does not simply field a military — it operates a globally
+            interconnected command-and-control system spanning land, sea, air, space, and
+            cyberspace. No nation comes close.
+          </p>
+        </div>
 
-        {/* Sub */}
-        <p className="mb-10 max-w-2xl font-mono text-sm leading-relaxed text-white/45">
-          {isRo
-            ? "$886 miliarde buget · 11 grupuri de atac portavioane · 13.247 aeronave · 5.550 focoase nucleare · 87+ sateliți militari · 750+ baze în 80 de țări"
-            : "$886B budget · 11 carrier strike groups · 13,247 aircraft · 5,550 nuclear warheads · 87+ military satellites · 750+ bases in 80 countries"}
-        </p>
-
-        {/* Quick stats inline */}
-        <div className="flex flex-wrap gap-6">
-          {[
-            { value: "$886B",  label: isRo ? "Buget" : "Budget"   },
-            { value: "11",     label: isRo ? "Portavioane" : "Carriers" },
-            { value: "13,247", label: isRo ? "Aeronave" : "Aircraft"  },
-            { value: "5,550+", label: isRo ? "Focoase Nucleare" : "Nuclear Warheads" },
-          ].map(s => (
-            <div key={s.label} className="border-l-2 border-[#F59E0B]/40 pl-3">
-              <p className="font-mono text-2xl font-bold text-[#F59E0B]">{s.value}</p>
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/35">{s.label}</p>
+        {/* Dominance metric tiles */}
+        <div
+          style={{
+            display:             "grid",
+            gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))",
+            gap:                 20,
+            marginBottom:        48,
+          }}
+        >
+          {DOMINANCE_METRICS.map((m, i) => (
+            <div
+              key={i}
+              style={{
+                position:       "relative",
+                padding:        "28px 24px",
+                background:     "rgba(255,255,255,.02)",
+                border:         "1px solid rgba(255,255,255,.06)",
+                backdropFilter: "blur(8px)",
+                overflow:       "hidden",
+              }}
+            >
+              <HUDCorners color={m.color} size={12} weight={1.2} offset={6}/>
+              <div
+                className="md"
+                style={{ fontSize: "clamp(30px,4vw,48px)", fontWeight: 900, color: m.color, lineHeight: 1 }}
+              >
+                {m.value}
+              </div>
+              <div
+                className="mb"
+                style={{ marginTop: 10, fontSize: 13, lineHeight: 1.5, color: "rgba(255,255,255,.48)" }}
+              >
+                {m.label}
+              </div>
+              <div style={{
+                position:   "absolute",
+                bottom:      0,
+                left:        0,
+                right:       0,
+                height:      2,
+                background: `linear-gradient(90deg,${m.color},transparent)`,
+              }}/>
             </div>
           ))}
         </div>
 
-        {/* Scroll indicator */}
-        <div className="mt-16 flex items-center gap-3">
-          <div className="h-px w-12 bg-[rgba(245,158,11,0.4)]" />
-          <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/25">
-            {isRo ? "Derulează pentru Date Clasificate" : "Scroll for Classified Data"}
+        {/* Budget comparison chart */}
+        <div
+          style={{
+            padding:        "36px",
+            background:     "rgba(255,255,255,.02)",
+            border:         "1px solid rgba(255,255,255,.06)",
+            position:       "relative",
+            overflow:       "hidden",
+          }}
+        >
+          <HUDCorners color="#f59e0b" size={14} weight={1.5} offset={8}/>
+          <GrainOverlay z={20} opacity={.02}/>
+
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 28 }}>
+            <div>
+              <div
+                className="md"
+                style={{ fontSize: 8, letterSpacing: ".3em", color: "rgba(245,158,11,.6)", marginBottom: 6 }}
+              >
+                VERIFIED · SIPRI 2024
+              </div>
+              <h3
+                className="md"
+                style={{ fontSize: 20, fontWeight: 700, color: "#fff", margin: 0 }}
+              >
+                DEFENSE BUDGET COMPARISON
+              </h3>
+            </div>
+            <RadarPing size={60}/>
+          </div>
+
+          <BudgetComparisonBar data={BUDGET_DATA}/>
+
+          <div
+            className="md"
+            style={{ marginTop: 20, fontSize: 8, letterSpacing: ".2em", color: "rgba(255,255,255,.2)" }}
+          >
+            ◈ &nbsp; U.S. OUTSPENDS THE NEXT TEN NATIONS COMBINED
+          </div>
+        </div>
+      </Section>
+
+      {/* ─── §4  MILITARY BRANCHES ──────────────────────────────────────────── */}
+      <Section
+        id="branches"
+        label="THE BRANCHES OF SERVICE"
+        bg="#070c18"
+        amber
+      >
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <h2
+            className="md"
+            style={{
+              fontSize:       "clamp(32px,5vw,60px)",
+              fontWeight:     900,
+              lineHeight:     .95,
+              letterSpacing: "-.015em",
+              color:         "#fff",
+              margin:         0,
+            }}
+          >
+            SIX BRANCHES.<br/>
+            <span style={{ color: "#f59e0b" }}>ONE MISSION.</span>
+          </h2>
+        </div>
+        <BranchSelector branches={MILITARY_BRANCHES}/>
+      </Section>
+
+      {/* ─── §5  CARRIER MAP CINEMATIC INTERLUDE ────────────────────────────── */}
+      <CinematicImage
+        src={SITE_IMAGES.military.carrier}
+        alt="USS Nimitz carrier strike group"
+        height={420}
+      >
+        <div style={{
+          position:        "absolute",
+          inset:            0,
+          display:         "flex",
+          alignItems:      "center",
+          justifyContent:  "center",
+          flexDirection:   "column",
+          textAlign:       "center",
+          padding:         "0 24px",
+        }}>
+          <HUDCorners color="#f59e0b" size={24} weight={2} offset={16}/>
+          <div className="md" style={{ fontSize: 8, letterSpacing: ".4em", color: "rgba(245,158,11,.7)", marginBottom: 18 }}>
+            NAVAL SUPERIORITY · GLOBAL REACH
+          </div>
+          <h2
+            className="md"
+            style={{
+              fontSize:       "clamp(40px,8vw,96px)",
+              fontWeight:     900,
+              lineHeight:     .9,
+              letterSpacing: "-.02em",
+              color:         "#fff",
+              margin:         0,
+            }}
+          >
+            11 CARRIER<br/>STRIKE GROUPS
+          </h2>
+          <div
+            className="md"
+            style={{
+              marginTop:     22,
+              fontSize:       "clamp(9px,1.4vw,12px)",
+              letterSpacing: ".25em",
+              color:         "rgba(255,255,255,.35)",
+              textTransform: "uppercase",
+            }}
+          >
+            Simultaneously deployed across every ocean on earth
+          </div>
+        </div>
+      </CinematicImage>
+
+      {/* ─── §6  GLOBAL CARRIER MAP ─────────────────────────────────────────── */}
+      <Section
+        id="carrier-map"
+        label="CARRIER GROUP DEPLOYMENT · LIVE POSITIONS"
+        bg="#040810"
+      >
+        <GlobalCarrierMap positions={CARRIER_POSITIONS}/>
+      </Section>
+
+      {/* ─── §7  WEAPON SYSTEMS ─────────────────────────────────────────────── */}
+      <Section
+        id="weapons"
+        label="CROWN JEWELS OF AMERICAN POWER"
+        bg="#060c1a"
+        amber
+      >
+        <div style={{ textAlign: "center", marginBottom: 52 }}>
+          <ClassifiedBadge text="WEAPONS SYSTEMS · DOSSIER ACCESS"/>
+          <h2
+            className="md"
+            style={{
+              marginTop:     18,
+              fontSize:       "clamp(32px,5.5vw,66px)",
+              fontWeight:     900,
+              lineHeight:     .92,
+              letterSpacing: "-.02em",
+              color:         "#fff",
+            }}
+          >
+            THE ARSENAL OF<br/>
+            <span style={{ color: "#f59e0b" }}>DEMOCRACY</span>
+          </h2>
+          <p
+            className="mb"
+            style={{
+              marginTop:  18,
+              maxWidth:   560,
+              margin:     "18px auto 0",
+              fontSize:    14,
+              lineHeight:  1.7,
+              color:      "rgba(255,255,255,.42)",
+            }}
+          >
+            From stealth aircraft to hypersonic missiles, the systems that define
+            the technological boundary of what warfare can be.
           </p>
         </div>
-      </ParallaxMilitaryHero>
 
-      {/* ── GLOBAL STAT WALL ──────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#04080F] px-4 py-16 sm:px-6 lg:px-8">
-        <HUDGrid opacity={0.04} />
-        <div className="relative z-10 mx-auto max-w-screen-xl">
-          <p className="mb-8 font-mono text-[9px] uppercase tracking-[0.4em] text-[#F59E0B]/50 text-center">
-            ◼ {isRo ? "DATE CLASIFICATE — NIVEL: SECRET" : "CLASSIFIED DATA — CLEARANCE LEVEL: SECRET"}
-          </p>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((s, i) => (
-              <HUDCounter
-                key={s.id}
-                value={s.value}
-                suffix={s.suffix}
-                prefix={s.prefix}
-                decimals={s.decimals}
-                label={s.label}
-                sublabel={s.sublabel}
-                color={s.color}
-                delay={i * 0.08}
-              />
+        <div
+          style={{
+            display:             "grid",
+            gridTemplateColumns: "repeat(auto-fill,minmax(340px,1fr))",
+            gap:                  24,
+          }}
+        >
+          {WEAPON_SYSTEMS.map((sys, i) => (
+            <WeaponSystemCard key={sys.id} system={sys} index={i}/>
+          ))}
+        </div>
+      </Section>
+
+      {/* ─── §8  B-2 CINEMATIC INTERLUDE ────────────────────────────────────── */}
+      <CinematicImage
+        src={SITE_IMAGES.military.b2}
+        alt="B-2 Spirit stealth bomber over the Pacific"
+        height={520}
+      >
+        <div style={{
+          position:       "absolute",
+          bottom:          60,
+          left:            0,
+          right:           0,
+          display:        "flex",
+          flexDirection:  "column",
+          alignItems:     "center",
+          textAlign:      "center",
+          padding:        "0 24px",
+        }}>
+          <div className="md" style={{ fontSize: 8, letterSpacing: ".4em", color: "rgba(245,158,11,.65)", marginBottom: 14 }}>
+            NORTHROP GRUMMAN B-2 SPIRIT · SINCE 1997
+          </div>
+          <h2
+            className="md"
+            style={{
+              fontSize:       "clamp(36px,7vw,84px)",
+              fontWeight:     900,
+              lineHeight:     .9,
+              letterSpacing: "-.02em",
+              color:         "#fff",
+              margin:         0,
+            }}
+          >
+            BORN FROM<br/>
+            <span style={{ color: "#f59e0b" }}>DARKNESS</span>
+          </h2>
+          <div
+            className="mb"
+            style={{
+              marginTop:   18,
+              maxWidth:    460,
+              fontSize:    13,
+              lineHeight:  1.65,
+              color:      "rgba(255,255,255,.42)",
+            }}
+          >
+            The world's only operational low-observable strategic stealth bomber.
+            Radar cross-section equivalent to a large bird. Range: global.
+          </div>
+
+          {/* Spec strip */}
+          <div style={{
+            marginTop:  28,
+            display:    "flex",
+            gap:         24,
+            flexWrap:   "wrap",
+            justifyContent: "center",
+          }}>
+            {[
+              ["SPEED", "Mach 0.95"],
+              ["RANGE", "6,900+ mi"],
+              ["PAYLOAD", "40,000 lb"],
+              ["FLEET",   "20 aircraft"],
+            ].map(([k, v]) => (
+              <div key={k} style={{ textAlign: "center" }}>
+                <div className="md" style={{ fontSize: 7, letterSpacing: ".22em", color: "rgba(245,158,11,.55)" }}>{k}</div>
+                <div className="md" style={{ fontSize: 13, color: "#f59e0b", fontWeight: 700 }}>{v}</div>
+              </div>
             ))}
           </div>
         </div>
-      </section>
+        <HUDCorners color="#f59e0b" size={22} weight={2} offset={20}/>
+      </CinematicImage>
 
-      {/* ── MAIN CONTENT ──────────────────────────────────────────────────── */}
-      <div className="relative bg-[#04080F]">
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      {/* ─── §9  NUCLEAR TRIAD ──────────────────────────────────────────────── */}
+      <Section
+        id="nuclear"
+        label="NUCLEAR DETERRENCE · THE IRON TRIAD"
+        bg="#040810"
+        amber
+      >
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <ClassifiedBadge text="NUCLEAR COMMAND · TOP SECRET"/>
+          <h2
+            className="md"
+            style={{
+              marginTop:     18,
+              fontSize:       "clamp(32px,5vw,60px)",
+              fontWeight:     900,
+              lineHeight:     .92,
+              letterSpacing: "-.02em",
+              color:         "#fff",
+            }}
+          >
+            THE NUCLEAR<br/>
+            <span style={{ color: "#f59e0b" }}>TRIAD</span>
+          </h2>
+        </div>
 
-          {/* ── GLOBAL DOMINANCE OVERVIEW ─────────────────────────────── */}
-          <Section id="overview" eyebrow={isRo ? "Prezentare Generală" : "Global Dominance"}>
-            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-              <div>
-                <ClassifiedHeader
-                  line1={isRo ? "SISTEMUL DE COMANDĂ" : "THE PLANETARY"}
-                  line2={isRo ? "PLANETAR" : "COMMAND SYSTEM"}
-                />
-                <div className="mt-8 space-y-5">
-                  <p className="font-body text-base leading-relaxed text-white/55">
-                    {isRo
-                      ? "Statele Unite nu operează o armată. Operează un sistem global de comandă și control — sateliți în orbită, portavioane pe fiecare ocean, baze în 80 de țări, forțe speciale pe 100 de teatre, cyber operations pe fiecare rețea adversă și o triadă nucleară care garantează că niciun atac nu poate rămâne fără răspuns."
-                      : "The United States does not operate a military. It operates a global command-and-control system — satellites in orbit, carriers on every ocean, bases in 80 countries, special forces on 100 theaters, cyber operations in every adversary network, and a nuclear triad guaranteeing that no attack goes unanswered."}
-                  </p>
-                  <p className="font-body text-base leading-relaxed text-white/55">
-                    {isRo
-                      ? "Bugetul de apărare de 886 de miliarde de dolari depășește suma celor mai mari zece națiuni militare combinate. Nu este un număr — este o diferență de ordine de mărime în puterea de proiecție, tehnologie și acoperire globală care nu mai există în istoria modernă."
-                      : "The $886 billion defense budget exceeds the combined sum of the next ten military nations. This is not a number — it is an order-of-magnitude difference in projection power, technology, and global reach that has no precedent in modern history."}
-                  </p>
-                </div>
+        <NuclearTriadDiagram triad={NUCLEAR_TRIAD}/>
 
-                {/* Key dominance metrics */}
-                <div className="mt-8 grid grid-cols-2 gap-3">
-                  {[
-                    { n: "#1", l: isRo ? "Putere Aeriană" : "Air Power",         s: isRo ? "Față de orice rival" : "vs any rival" },
-                    { n: "#1", l: isRo ? "Putere Navală" : "Naval Power",         s: isRo ? "Față de orice rival" : "vs any rival" },
-                    { n: "#1", l: isRo ? "Buget Apărare" : "Defense Budget",      s: "Next 10 nations" },
-                    { n: "#1", l: isRo ? "Capabilitate Nucleară" : "Nuclear Capability", s: "Global deterrence" },
-                  ].map(m => (
-                    <div key={m.l} className="rounded-xl border border-[rgba(245,158,11,0.15)] bg-[rgba(245,158,11,0.03)] p-4">
-                      <p className="font-mono text-3xl font-bold text-[#F59E0B]">{m.n}</p>
-                      <p className="font-mono text-xs font-semibold text-white/70">{m.l}</p>
-                      <p className="font-mono text-[9px] text-white/30">{m.s}</p>
-                    </div>
-                  ))}
-                </div>
+        {/* Triad facts strip */}
+        <div
+          style={{
+            marginTop:           28,
+            display:             "grid",
+            gridTemplateColumns: "repeat(3,1fr)",
+            borderTop:           "1px solid rgba(255,255,255,.05)",
+            borderLeft:          "1px solid rgba(255,255,255,.05)",
+          }}
+        >
+          {[
+            { v: "5,550+",   l: "Total Nuclear Warheads",         sub: "Verified stockpile" },
+            { v: "400",      l: "Minuteman III ICBMs on Alert",    sub: "Silo-based, 24/7" },
+            { v: "14",       l: "Ohio-Class SSBNs",                sub: "Trident II D5 equipped" },
+          ].map((item, i) => (
+            <div
+              key={i}
+              style={{
+                padding:      "28px 24px",
+                borderRight:  "1px solid rgba(255,255,255,.05)",
+                borderBottom: "1px solid rgba(255,255,255,.05)",
+                textAlign:    "center",
+              }}
+            >
+              <div className="md" style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 900, color: "#f59e0b", lineHeight: 1 }}>
+                {item.v}
               </div>
-
-              {/* Radar + budget chart */}
-              <div className="space-y-6">
-                <div className="flex items-center justify-center">
-                  <RadarPing size={240} />
-                </div>
-                <BudgetComparisonBar
-                  label={isRo ? "Buget Apărare (Miliarde USD, 2024)" : "Defense Budget (USD Billion, 2024)"}
-                />
+              <div className="md" style={{ marginTop: 8, fontSize: 10, letterSpacing: ".16em", color: "rgba(255,255,255,.65)" }}>
+                {item.l}
               </div>
-            </div>
-          </Section>
-
-          {/* ── MILITARY BRANCHES ─────────────────────────────────────── */}
-          <Section id="branches" eyebrow={isRo ? "Ramurile Militare" : "The Branches"}>
-            <ClassifiedHeader
-              line1={isRo ? "ȘASE RAMURI." : "SIX BRANCHES."}
-              line2={isRo ? "UN SINGUR SCOP." : "ONE PURPOSE."}
-            />
-            <p className="mt-6 mb-10 max-w-2xl font-body text-base leading-relaxed text-white/50">
-              {isRo
-                ? "Armata, Marina, Forța Aeriană, Corpul Marinei, Space Force și Cyber Command — o arhitectură militară integrată pe toate domeniile care nu are egal."
-                : "Army, Navy, Air Force, Marines, Space Force, and Cyber Command — a fully integrated all-domain military architecture with no peer."}
-            </p>
-            <BranchSelector branches={MILITARY_BRANCHES} />
-          </Section>
-
-          {/* ── CARRIER MAP ───────────────────────────────────────────── */}
-          <Section id="global-reach" eyebrow={isRo ? "Acoperire Globală" : "Global Reach"}>
-            <ClassifiedHeader
-              line1={isRo ? "11 GRUPURI DE ATAC." : "11 STRIKE GROUPS."}
-              line2={isRo ? "FIECARE OCEAN." : "EVERY OCEAN."}
-            />
-            <p className="mt-6 mb-8 max-w-2xl font-body text-base leading-relaxed text-white/50">
-              {isRo
-                ? "Grupurile de atac portavioane ale SUA se desfășoară în mod continuu pe întregul glob. Fiecare grup reprezintă mai multă putere aeriană decât forțele aeriene complete ale majorității națiunilor."
-                : "US carrier strike groups deploy continuously across the entire globe. Each group represents more sustained air power than most nations' complete air forces. Hover over each position to identify the vessel."}
-            </p>
-            <GlobalCarrierMap carriers={CARRIER_POSITIONS} />
-
-            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {[
-                { label: isRo ? "Portavioane SUA" : "US Carriers",         value: "11", note: isRo ? "Nucleare, supercarrier" : "Nuclear, supercarrier" },
-                { label: isRo ? "Restul Lumii" : "Rest of World",           value: "2",  note: isRo ? "Capacitate de luptă comparabilă" : "Combat-comparable" },
-                { label: isRo ? "Aeronave per Grup" : "Aircraft per Group", value: "90", note: isRo ? "Forță aeriană completă" : "Full air wing" },
-                { label: isRo ? "Domeniu Maritim" : "Maritime Domain",      value: "500K mi²", note: isRo ? "Per grup de atac" : "Per strike group" },
-              ].map(s => (
-                <div key={s.label} className="rounded-xl border border-white/8 bg-[#080C14] p-4 text-center">
-                  <p className="font-mono text-3xl font-bold text-[#60A5FA]">{s.value}</p>
-                  <p className="font-mono text-xs font-semibold text-white/60">{s.label}</p>
-                  <p className="font-mono text-[9px] text-white/30">{s.note}</p>
-                </div>
-              ))}
-            </div>
-          </Section>
-
-          {/* ── WEAPON SYSTEMS ────────────────────────────────────────── */}
-          <Section id="weapons" eyebrow={isRo ? "Sisteme de Armament" : "Weapon Systems"}>
-            <ClassifiedHeader
-              line1={isRo ? "SISTEME DE" : "CROWN JEWELS OF"}
-              line2={isRo ? "ARMAMENT DE ELITĂ" : "AMERICAN POWER"}
-            />
-            <p className="mt-6 mb-10 max-w-2xl font-body text-base leading-relaxed text-white/50">
-              {isRo
-                ? "Sistemele de armament care mențin superioritatea militară americană — de la bombardierul stealth B-21 la submarinele balistice Ohio-class. Dă click pe orice sistem pentru dosarul complet."
-                : "The weapon systems that sustain American military supremacy — from the B-21 stealth bomber to Ohio-class ballistic missile submarines. Click any system to access the full dossier."}
-            </p>
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {WEAPON_SYSTEMS.map(ws => (
-                <WeaponSystemCard key={ws.id} system={ws} />
-              ))}
-            </div>
-          </Section>
-
-          {/* ── NUCLEAR TRIAD ─────────────────────────────────────────── */}
-          <Section id="nuclear" eyebrow={isRo ? "Triada Nucleară" : "Nuclear Triad"}>
-            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-              <div>
-                <ClassifiedHeader
-                  line1={isRo ? "TRIADA" : "THE NUCLEAR"}
-                  line2={isRo ? "NUCLEARĂ" : "TRIAD"}
-                />
-                <div className="mt-8 space-y-5">
-                  <p className="font-body text-base leading-relaxed text-white/55">
-                    {isRo
-                      ? "Triada nucleară — rachete balistice terestre, submarine balistice și bombardiere — garantează că niciun atac surpriză nu poate elimina simultan toate cele trei componente. Cât timp o componentă supraviețuiește, SUA pot răspunde."
-                      : "The nuclear triad — land-based ICBMs, sea-based submarine missiles, and nuclear bombers — guarantees that no surprise attack can simultaneously destroy all three legs. As long as one leg survives, the US retains the ability to respond."}
-                  </p>
-                  <p className="font-body text-base leading-relaxed text-white/55">
-                    {isRo
-                      ? "Aceasta este logica descurajării: nu trebuie să câștigăm un schimb nuclear — trebuie doar să garantăm că adversarul îl pierde cu certitudine. Capacitatea garantată de a doua lovitură este motivul pentru care războiul nuclear nu a avut loc."
-                      : "This is the logic of deterrence: we don't need to win a nuclear exchange — we only need to guarantee the adversary loses it decisively. Guaranteed second-strike capability is why nuclear war has not occurred."}
-                  </p>
-                </div>
-
-                {/* Triad facts */}
-                <div className="mt-8 space-y-3">
-                  {[
-                    isRo ? "400 ICBM-uri Minuteman III în alertă 24/7 în silozuri întărite" : "400 Minuteman III ICBMs on 24/7 alert in hardened silos",
-                    isRo ? "14 submarine Ohio-class poartă 70% din arsenalul nuclear al SUA" : "14 Ohio-class submarines carry 70% of America's nuclear arsenal at sea",
-                    isRo ? "Bombardierele pot fi rechemate după lansare — singura componentă retractabilă" : "Bombers are recallable after launch — the only retractable leg",
-                    isRo ? "Sistemul GBSD/Sentinel va moderniza componenta terestră până în 2029" : "The GBSD/Sentinel system will modernize the land leg by 2029",
-                  ].map((f, i) => (
-                    <div key={i} className="flex gap-3 rounded-xl border border-white/6 bg-[#080C14] px-4 py-3">
-                      <span className="mt-0.5 shrink-0 text-[#F59E0B]">◼</span>
-                      <p className="font-body text-sm leading-snug text-white/60">{f}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <NuclearTriadDiagram legs={NUCLEAR_TRIAD.legs} description={NUCLEAR_TRIAD.description} />
-            </div>
-          </Section>
-
-          {/* ── DARPA / FUTURE SYSTEMS ────────────────────────────────── */}
-          <Section id="future" eyebrow={isRo ? "Sisteme Viitoare" : "Future Systems"}>
-            {/* B-21 section image */}
-            <div className="relative mb-10 overflow-hidden rounded-2xl">
-              <Image
-                src={SITE_IMAGES.b21Raider}
-                alt="B-21 Raider on its first flight — December 2023"
-                width={1280} height={500}
-                className="h-[300px] w-full object-cover md:h-[380px]"
-                style={{ filter: "brightness(0.5) saturate(0.7) contrast(1.15)" }}
-                placeholder="blur" blurDataURL={BLUR_PLACEHOLDER}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#04080F]/90 via-[#04080F]/40 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#04080F]/80 to-transparent" />
-              <HUDGrid opacity={0.05} />
-              {/* HUD corners */}
-              {["top-4 left-4 border-t border-l", "top-4 right-4 border-t border-r", "bottom-4 left-4 border-b border-l", "bottom-4 right-4 border-b border-r"].map((cls, i) => (
-                <div key={i} className={`absolute ${cls} h-8 w-8 border-[rgba(245,158,11,0.5)] pointer-events-none`} />
-              ))}
-              <div className="absolute left-8 bottom-8">
-                <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#F59E0B]/70 mb-1">ENTERING SERVICE 2023</p>
-                <p className="font-mono text-4xl font-black uppercase text-white">B-21 Raider</p>
-                <p className="font-mono text-sm text-white/45">6th Generation · Ultra-Low Observable · Nuclear Capable</p>
+              <div className="md" style={{ marginTop: 4, fontSize: 8, letterSpacing: ".14em", color: "rgba(255,255,255,.3)" }}>
+                {item.sub}
               </div>
             </div>
+          ))}
+        </div>
+      </Section>
 
-            <ClassifiedHeader
-              line1={isRo ? "SISTEMELE" : "NEXT-GEN"}
-              line2={isRo ? "VIITORULUI" : "SYSTEMS"}
-            />
-            <p className="mt-6 mb-10 max-w-2xl font-body text-base leading-relaxed text-white/50">
-              {isRo
-                ? "DARPA, Comandamentul Cyber și contractorii de apărare americani lucrează la sisteme care vor redefini războiul modern — arme hipersonice, sisteme de luptă autonome, arme cu energie dirijată și operații în domeniul cuantic."
-                : "DARPA, Cyber Command, and American defense contractors are building the systems that will redefine modern warfare — hypersonic weapons, autonomous combat systems, directed energy, and quantum domain operations."}
-            </p>
-            <DARPAProgramGrid programs={DARPA_PROGRAMS} />
-          </Section>
+      {/* ─── §10  DARPA / FUTURE SYSTEMS ────────────────────────────────────── */}
+      <Section
+        id="darpa"
+        label="DARPA · FUTURE CAPABILITIES"
+        bg="#060c1a"
+      >
+        <div style={{ textAlign: "center", marginBottom: 52 }}>
+          <ClassifiedBadge text="FUTURE SYSTEMS · CONCEPT PHASE"/>
+          <h2
+            className="md"
+            style={{
+              marginTop:     18,
+              fontSize:       "clamp(32px,5.5vw,66px)",
+              fontWeight:     900,
+              lineHeight:     .92,
+              letterSpacing: "-.02em",
+              color:         "#fff",
+            }}
+          >
+            THE NEXT<br/>
+            <span style={{ color: "#60a5fa" }}>GENERATION</span>
+          </h2>
+          <p
+            className="mb"
+            style={{
+              marginTop:  18,
+              maxWidth:   560,
+              margin:     "18px auto 0",
+              fontSize:    14,
+              lineHeight:  1.7,
+              color:      "rgba(255,255,255,.42)",
+            }}
+          >
+            DARPA — the Defense Advanced Research Projects Agency — funds technologies
+            a generation ahead of the battlefield. What's in development today
+            is what wins wars in 2040.
+          </p>
+        </div>
 
-          {/* ── DEFENSE INDUSTRIAL BASE ───────────────────────────────── */}
-          <Section id="industry" eyebrow={isRo ? "Baza Industriei de Apărare" : "Defense Industrial Base"}>
-            <ClassifiedHeader
-              line1={isRo ? "COMPLEXUL" : "THE MILITARY-"}
-              line2={isRo ? "MILITAR-INDUSTRIAL" : "INDUSTRIAL COMPLEX"}
-            />
-            <p className="mt-6 mb-8 max-w-2xl font-body text-base leading-relaxed text-white/50">
-              {isRo
-                ? "Sistemul militar-industrial american — contractorii de apărare, laboratoarele naționale și universități de cercetare — este mașinăria de inovație care produce B-21, F-35 și sistemele care vor domina în continuare."
-                : "The American military-industrial system — defense contractors, national laboratories, and research universities — is the innovation machine that produced the B-21, F-35, and the systems that will continue to dominate."}
-            </p>
-            <div className="overflow-hidden rounded-2xl border border-white/8 bg-[#080C14]">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-white/8 bg-[rgba(245,158,11,0.04)]">
-                    {[
-                      isRo ? "Contractor" : "Contractor",
-                      isRo ? "Venituri" : "Revenue",
-                      isRo ? "Specialitate" : "Specialty",
-                      isRo ? "Programe Majore" : "Key Programs",
-                    ].map(h => (
-                      <th key={h} className="px-5 py-4 text-left font-mono text-[9px] font-semibold uppercase tracking-[0.25em] text-[#F59E0B]/50">{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {DEFENSE_CONTRACTORS.map((dc, i) => (
-                    <tr key={i} className="border-b border-white/5 transition-colors hover:bg-white/3">
-                      <td className="px-5 py-4 font-mono text-sm font-bold text-white">{dc.name}</td>
-                      <td className="px-5 py-4 font-mono text-lg font-bold text-[#F59E0B]">{dc.revenue}</td>
-                      <td className="px-5 py-4 font-mono text-xs text-[#60A5FA]">{dc.specialty}</td>
-                      <td className="px-5 py-4">
-                        <div className="flex flex-wrap gap-1.5">
-                          {dc.programs.slice(0, 3).map((p, j) => (
-                            <span key={j} className="rounded border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[9px] text-white/45">{p}</span>
-                          ))}
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </Section>
+        <DARPAProgramGrid programs={DARPA_PROGRAMS}/>
+      </Section>
 
-          {/* ── FACTS / CONTEXT ───────────────────────────────────────── */}
-          <Section id="supremacy" eyebrow={isRo ? "Supremație" : "Supremacy by the Numbers"}>
-            <ClassifiedHeader
-              line1={isRo ? "SUPREMAȚIA" : "THE NUMBERS"}
-              line2={isRo ? "ÎN CIFRE" : "DON'T LIE"}
-            />
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {facts.map(fact => (
+      {/* ─── §11  ORBITAL CINEMATIC INTERLUDE ───────────────────────────────── */}
+      <CinematicImage
+        src={SITE_IMAGES.military.satellite}
+        alt="US military satellite orbital infrastructure"
+        height={460}
+      >
+        <div style={{
+          position:       "absolute",
+          inset:           0,
+          display:        "flex",
+          alignItems:     "center",
+          justifyContent: "center",
+          flexDirection:  "column",
+          textAlign:      "center",
+          padding:        "0 24px",
+        }}>
+          <HUDCorners color="#60a5fa" size={22} weight={2} offset={20}/>
+
+          <div className="md" style={{ fontSize: 8, letterSpacing: ".38em", color: "rgba(96,165,250,.65)", marginBottom: 16 }}>
+            SPACE DOMAIN AWARENESS · REAL-TIME GLOBAL COVERAGE
+          </div>
+          <h2
+            className="md"
+            style={{
+              fontSize:       "clamp(36px,7vw,88px)",
+              fontWeight:     900,
+              lineHeight:     .9,
+              letterSpacing: "-.02em",
+              color:         "#fff",
+              margin:         0,
+            }}
+          >
+            ORBITAL<br/>
+            <span style={{ color: "#60a5fa" }}>DOMINANCE</span>
+          </h2>
+          <div
+            className="mb"
+            style={{
+              marginTop:  18,
+              maxWidth:   460,
+              fontSize:    13,
+              lineHeight:  1.65,
+              color:      "rgba(255,255,255,.42)",
+            }}
+          >
+            142+ military satellites provide GPS precision, real-time ISR, nuclear launch
+            detection, strategic communications, and missile defense integration.
+          </div>
+
+          {/* HUD data elements */}
+          <div style={{ position: "absolute", top: 22, right: 22, textAlign: "right" }}>
+            {["ORBIT: LEO/MEO/GEO", "UPLINK: ENCRYPTED", "COVERAGE: GLOBAL", "STATUS: NOMINAL"].map((t, i) => (
+              <div key={i} className="md" style={{ fontSize: 8, letterSpacing: ".18em", color: "rgba(96,165,250,.4)", marginBottom: 5 }}>
+                {t}
+              </div>
+            ))}
+          </div>
+        </div>
+      </CinematicImage>
+
+      {/* ─── §12  DEFENSE INDUSTRIAL BASE ───────────────────────────────────── */}
+      <Section
+        id="industry"
+        label="DEFENSE INDUSTRIAL BASE"
+        bg="#040810"
+        amber
+      >
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <h2
+            className="md"
+            style={{
+              fontSize:       "clamp(30px,5vw,60px)",
+              fontWeight:     900,
+              lineHeight:     .95,
+              letterSpacing: "-.015em",
+              color:         "#fff",
+              margin:         0,
+            }}
+          >
+            THE PRIME<br/>
+            <span style={{ color: "#f59e0b" }}>CONTRACTORS</span>
+          </h2>
+          <p
+            className="mb"
+            style={{
+              marginTop:  16,
+              maxWidth:   520,
+              margin:     "16px auto 0",
+              fontSize:    14,
+              lineHeight:  1.7,
+              color:      "rgba(255,255,255,.42)",
+            }}
+          >
+            The companies that translate American science into weapons no adversary
+            can counter — and no alliance can field.
+          </p>
+        </div>
+
+        <div
+          style={{
+            display:             "grid",
+            gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))",
+            gap:                  16,
+          }}
+        >
+          {DEFENSE_CONTRACTORS.map((c, i) => (
+            <div
+              key={c.name}
+              style={{
+                position:       "relative",
+                padding:        "24px 22px",
+                background:     "rgba(255,255,255,.02)",
+                border:         "1px solid rgba(255,255,255,.06)",
+                backdropFilter: "blur(8px)",
+                overflow:       "hidden",
+              }}
+            >
+              <HUDCorners color="#f59e0b" size={12} weight={1.2} offset={6}/>
+
+              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 12 }}>
+                <h4
+                  className="md"
+                  style={{ fontSize: 15, fontWeight: 700, color: "#fff", margin: 0 }}
+                >
+                  {c.name}
+                </h4>
                 <div
-                  key={fact.id}
-                  className="group rounded-2xl border border-white/8 bg-[#080C14] p-5 transition-all hover:border-[rgba(245,158,11,0.25)] hover:shadow-[0_0_30px_rgba(245,158,11,0.05)]"
+                  className="md"
+                  style={{
+                    padding:       "4px 10px",
+                    background:    "rgba(245,158,11,.1)",
+                    border:        "1px solid rgba(245,158,11,.25)",
+                    fontSize:       9,
+                    letterSpacing: ".15em",
+                    color:         "#f59e0b",
+                    whiteSpace:    "nowrap",
+                  }}
                 >
-                  <p className="mb-2 font-body text-sm font-semibold leading-snug text-white/80">{fact.fact}</p>
-                  <p className="mb-3 font-body text-xs leading-relaxed text-white/40">{fact.detail}</p>
-                  <div className="flex items-center gap-2 border-t border-white/8 pt-3">
-                    <div className="h-1.5 w-1.5 rounded-full bg-[#F59E0B]" />
-                    <p className="font-mono text-[9px] text-white/25">{fact.source}</p>
-                  </div>
+                  {c.revenue}
                 </div>
-              ))}
-            </div>
-          </Section>
-
-          {/* ── QUOTE ─────────────────────────────────────────────────── */}
-          <section className="py-20">
-            <div className="relative overflow-hidden rounded-2xl border border-[rgba(245,158,11,0.15)] bg-[#080C14] p-8 md:p-12">
-              <HUDGrid opacity={0.03} />
-              <div className="relative z-10 max-w-3xl">
-                <p className="mb-6 font-mono text-[9px] uppercase tracking-[0.35em] text-[#F59E0B]/40">
-                  ◼ {isRo ? "LOGICA DESCURAJĂRII" : "THE LOGIC OF DETERRENCE"}
-                </p>
-                <blockquote
-                  style={{ fontFamily: "'EB Garamond','Georgia',serif" }}
-                >
-                  <p className="text-2xl italic leading-relaxed text-white/80 md:text-3xl">
-                    {isRo
-                      ? "\"Dacă vrei pace, pregătește-te de război.\" Superioritatea militară americană nu este o amenințare pentru pacea mondială — este fundamentul ei."
-                      : "\"Si vis pacem, para bellum.\" American military supremacy is not a threat to world peace — it is the foundation of it. The 80 years of relative global peace since 1945 correlate precisely with the 80 years of American military dominance."}
-                  </p>
-                  <cite className="mt-6 block font-mono text-xs not-italic uppercase tracking-[0.25em] text-[#F59E0B]/60">
-                    — {isRo ? "Vegetius · Principiul Descurajării" : "Vegetius · The Principle of Deterrence"}
-                  </cite>
-                </blockquote>
               </div>
-              {/* Corner HUD */}
-              {["top-4 right-4 border-t border-r", "bottom-4 right-4 border-b border-r"].map((cls, i) => (
-                <div key={i} className={`absolute ${cls} h-8 w-8 border-[rgba(245,158,11,0.3)] pointer-events-none`} />
-              ))}
-            </div>
-          </section>
 
-          {/* ── SUB-PAGE NAV ──────────────────────────────────────────── */}
-          <Section id="branches-explore" eyebrow={isRo ? "Ramuri — Imersiuni în Profunzime" : "Branches — Deep Dives"}>
-            <ClassifiedHeader
-              line1={isRo ? "ACCESAȚI" : "ACCESS"}
-              line2={isRo ? "DOSARELE" : "THE DOSSIERS"}
-            />
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                { href: "/military/navy",        label: "Navy",       tagline: isRo ? "Dominanță Oceanică" : "Oceanic Dominance",       image: SITE_IMAGES.navyHero, alt: "USS Gerald R. Ford", badge: "11 Carriers"     },
-                { href: "/military/air-force",   label: "Air Force",  tagline: isRo ? "Supremație Aeriană" : "Aerospace Supremacy",     image: SITE_IMAGES.airForceHero, alt: "F-22 Raptor", badge: "5th Gen"          },
-                { href: "/military/space-force", label: "Space Force",tagline: isRo ? "Control Orbital" : "Orbital Control",            image: SITE_IMAGES.spaceForceLaunch, alt: "Space Force Launch", badge: "87+ Satellites" },
-                { href: "/military/cyber",       label: "Cyber",      tagline: isRo ? "Câmpul de Luptă Digital" : "Digital Battlefield", image: SITE_IMAGES.cyberOps, alt: "Cyber operations", badge: "133 Teams"     },
-                { href: "/military/marines",     label: "Marines",    tagline: isRo ? "Semper Fidelis" : "Always First",               image: SITE_IMAGES.marinesAssault, alt: "Amphibious Assault", badge: "Expeditionary" },
-                { href: "/military/special-ops", label: "SOCOM",      tagline: isRo ? "Operații Speciale" : "Special Operations",       image: SITE_IMAGES.socomOperators, alt: "Special operations", badge: "70K+ Operators" },
-              ].map(branch => (
-                <Link
-                  key={branch.href}
-                  href={branch.href}
-                  className="group relative overflow-hidden rounded-2xl border border-white/8 bg-[#080C14] transition-all duration-300 hover:border-[rgba(245,158,11,0.35)] hover:shadow-[0_0_40px_rgba(245,158,11,0.06)]"
+              <div
+                className="mb"
+                style={{ marginBottom: 14, fontSize: 11, color: "rgba(96,165,250,.7)", letterSpacing: ".05em" }}
+              >
+                {c.specialty}
+              </div>
+
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                {c.programs.map(prog => (
+                  <div
+                    key={prog}
+                    className="md"
+                    style={{
+                      padding:       "3px 10px",
+                      background:    "rgba(255,255,255,.04)",
+                      border:        "1px solid rgba(255,255,255,.07)",
+                      fontSize:       8,
+                      letterSpacing: ".12em",
+                      color:         "rgba(255,255,255,.4)",
+                    }}
+                  >
+                    {prog}
+                  </div>
+                ))}
+              </div>
+
+              <div style={{
+                position:   "absolute",
+                bottom:      0,
+                left:        0,
+                right:       0,
+                height:      1.5,
+                background: `linear-gradient(90deg,transparent,rgba(245,158,11,${.15 + i * .04}),transparent)`,
+              }}/>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* ─── §13  FACTS GRID ────────────────────────────────────────────────── */}
+      <Section
+        id="facts"
+        label="CONTEXTUAL INTELLIGENCE"
+        bg="#060c1a"
+      >
+        <div style={{ textAlign: "center", marginBottom: 44 }}>
+          <h2
+            className="md"
+            style={{
+              fontSize:       "clamp(28px,4.5vw,54px)",
+              fontWeight:     900,
+              lineHeight:     .95,
+              letterSpacing: "-.015em",
+              color:         "#fff",
+              margin:         0,
+            }}
+          >
+            STRATEGIC<br/>
+            <span style={{ color: "#60a5fa" }}>CONTEXT</span>
+          </h2>
+        </div>
+
+        <div
+          style={{
+            display:             "grid",
+            gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))",
+            gap:                  16,
+          }}
+        >
+          {facts.map((f, i) => (
+            <div
+              key={i}
+              style={{
+                position:   "relative",
+                padding:    "20px 20px 18px",
+                background: "rgba(255,255,255,.02)",
+                border:     "1px solid rgba(255,255,255,.06)",
+                overflow:   "hidden",
+              }}
+            >
+              <HUDCorners color="#60a5fa" size={11} weight={1.2} offset={5}/>
+              <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                <div style={{
+                  flexShrink:  0,
+                  marginTop:    2,
+                  width:        20,
+                  height:       20,
+                  background:  "rgba(96,165,250,.12)",
+                  border:      "1px solid rgba(96,165,250,.25)",
+                  display:     "flex",
+                  alignItems:  "center",
+                  justifyContent: "center",
+                }}>
+                  <div style={{ width: 5, height: 5, background: "#60a5fa", borderRadius: "50%" }}/>
+                </div>
+                <p
+                  className="mb"
+                  style={{ margin: 0, fontSize: 13, lineHeight: 1.65, color: "rgba(255,255,255,.52)" }}
                 >
-                  <div className="relative h-44 overflow-hidden">
-                    <Image
-                      src={branch.image}
-                      alt={branch.alt}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,33vw"
-                      style={{ filter: "brightness(0.45) saturate(0.7) contrast(1.1)" }}
-                      placeholder="blur"
-                      blurDataURL={BLUR_PLACEHOLDER}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#080C14] via-[#080C14]/30 to-transparent" />
-                    {/* HUD corners */}
-                    <div className="absolute top-2 left-2 h-4 w-4 border-t border-l border-[rgba(245,158,11,0.5)]" />
-                    <div className="absolute top-2 right-2 h-4 w-4 border-t border-r border-[rgba(245,158,11,0.5)]" />
-                    {/* Badge */}
-                    <span className="absolute right-3 top-3 rounded border border-[rgba(245,158,11,0.4)] bg-[rgba(4,8,15,0.8)] px-2.5 py-0.5 font-mono text-[9px] text-[#F59E0B] backdrop-blur-sm">
-                      {branch.badge}
-                    </span>
-                  </div>
-                  <div className="p-5">
-                    <p className="mb-0.5 font-mono text-[9px] uppercase tracking-[0.25em] text-[#F59E0B]/60">{branch.tagline}</p>
-                    <h3 className="font-mono text-lg font-bold uppercase tracking-wide text-white transition-colors group-hover:text-[#F59E0B]">
-                      {branch.label}
-                    </h3>
-                    <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F59E0B] opacity-0 transition-opacity group-hover:opacity-100">
-                      ACCESS DOSSIER →
-                    </p>
-                  </div>
-                </Link>
-              ))}
+                  {f.fact}
+                </p>
+              </div>
+              <div style={{
+                position:   "absolute",
+                bottom:      0,
+                left:        0,
+                width:      "40%",
+                height:      1,
+                background: "rgba(96,165,250,.2)",
+              }}/>
             </div>
-          </Section>
+          ))}
+        </div>
+      </Section>
 
+      {/* ─── §14  QUOTE — full-bleed cinematic ──────────────────────────────── */}
+      <div
+        className="mk-grain"
+        style={{
+          position:   "relative",
+          minHeight:   400,
+          display:    "flex",
+          alignItems: "center",
+          overflow:   "hidden",
+          background: "#000",
+        }}
+      >
+        <div style={{
+          position:   "absolute",
+          inset:       0,
+          zIndex:      1,
+          background: "linear-gradient(135deg,#000 0%,rgba(7,12,24,.96) 50%,#000 100%)",
+        }}/>
+        <HUDGrid/>
+        <ScanLine color="rgba(245,158,11,.2)" dur={12}/>
+        <GrainOverlay z={30} opacity={.025}/>
+
+        <div style={{
+          position:       "relative",
+          zIndex:          20,
+          maxWidth:        900,
+          margin:         "0 auto",
+          padding:        "80px 32px",
+          textAlign:      "center",
+        }}>
+          <HUDCorners color="#f59e0b" size={24} weight={2} offset={20}/>
+
+          <div className="md" style={{ fontSize: 8, letterSpacing: ".4em", color: "rgba(245,158,11,.55)", marginBottom: 30 }}>
+            ◈ &nbsp; COMMAND AUTHORITY &nbsp; ◈
+          </div>
+
+          <blockquote
+            className="md"
+            style={{
+              margin:        0,
+              fontSize:      "clamp(20px,3.5vw,40px)",
+              fontWeight:    700,
+              lineHeight:    1.2,
+              letterSpacing: "-.01em",
+              color:         "#fff",
+              fontStyle:     "normal",
+            }}
+          >
+            &ldquo;{quote.quote}&rdquo;
+          </blockquote>
+
+          <div style={{ marginTop: 30, height: 1, width: 80, background: "#f59e0b", margin: "30px auto 0" }}/>
+
+          <div className="md" style={{ marginTop: 20, fontSize: 9, letterSpacing: ".28em", color: "rgba(255,255,255,.38)" }}>
+            — {quote.attribution?.toUpperCase()}
+          </div>
+          {quote.title && (
+            <div className="md" style={{ marginTop: 6, fontSize: 8, letterSpacing: ".2em", color: "rgba(255,255,255,.22)" }}>
+              {quote.title}
+            </div>
+          )}
         </div>
       </div>
-    </>
+
+      {/* ─── §15  CHAPTER NAVIGATION ─────────────────────────────────────────── */}
+      <Section
+        id="explore"
+        label="EXPLORE ALL CHAPTERS"
+        bg="#040810"
+        amber
+      >
+        <div style={{ textAlign: "center", marginBottom: 44 }}>
+          <h2
+            className="md"
+            style={{
+              fontSize:       "clamp(28px,4.5vw,52px)",
+              fontWeight:     900,
+              lineHeight:     .95,
+              letterSpacing: "-.015em",
+              color:         "#fff",
+              margin:         0,
+            }}
+          >
+            EXPLORE THE<br/>
+            <span style={{ color: "#f59e0b" }}>FULL PICTURE</span>
+          </h2>
+          <p
+            className="mb"
+            style={{
+              marginTop:  14,
+              maxWidth:   480,
+              margin:     "14px auto 0",
+              fontSize:    14,
+              lineHeight:  1.7,
+              color:      "rgba(255,255,255,.4)",
+            }}
+          >
+            The military is one dimension of American power. Explore the complete
+            system — economy, science, culture, geography, and more.
+          </p>
+        </div>
+
+        {/* Sub-page nav grid */}
+        <div
+          style={{
+            display:             "grid",
+            gridTemplateColumns: "repeat(auto-fill,minmax(220px,1fr))",
+            gap:                  16,
+          }}
+        >
+          {[
+            { href: "/military/air-force",     label: "Air Force",          icon: "✈", sub: "Air Supremacy"         },
+            { href: "/military/navy",           label: "Navy",               icon: "⚓", sub: "Sea Control"           },
+            { href: "/military/army",           label: "Army",               icon: "🎖", sub: "Land Dominance"        },
+            { href: "/military/space-force",    label: "Space Force",        icon: "🛰", sub: "Orbital Domain"        },
+            { href: "/military/cyber",          label: "Cyber Command",      icon: "⚡", sub: "Digital Warfare"       },
+            { href: "/military/special-ops",    label: "Special Operations", icon: "◈",  sub: "Tier One Forces"       },
+            { href: "/military/nuclear",        label: "Nuclear Arsenal",    icon: "☢", sub: "Strategic Deterrence"  },
+            { href: "/military/ai-autonomous",  label: "AI & Autonomous",    icon: "🤖", sub: "Next-Gen Systems"      },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              style={{ textDecoration: "none" }}
+            >
+              <div
+                style={{
+                  position:       "relative",
+                  padding:        "22px 18px",
+                  background:     "rgba(255,255,255,.02)",
+                  border:         "1px solid rgba(255,255,255,.06)",
+                  cursor:         "pointer",
+                  transition:     "all .25s ease",
+                  overflow:       "hidden",
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.borderColor = "rgba(245,158,11,.3)";
+                  el.style.background  = "rgba(245,158,11,.04)";
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.borderColor = "rgba(255,255,255,.06)";
+                  el.style.background  = "rgba(255,255,255,.02)";
+                }}
+              >
+                <HUDCorners color="#f59e0b" size={10} weight={1} offset={5}/>
+
+                <div style={{ fontSize: 22, marginBottom: 10 }}>{item.icon}</div>
+                <div
+                  className="md"
+                  style={{ fontSize: 11, fontWeight: 700, color: "#fff", letterSpacing: ".1em" }}
+                >
+                  {item.label}
+                </div>
+                <div
+                  className="md"
+                  style={{ marginTop: 4, fontSize: 8, letterSpacing: ".18em", color: "rgba(255,255,255,.35)" }}
+                >
+                  {item.sub}
+                </div>
+
+                <div
+                  className="md"
+                  style={{
+                    position:      "absolute",
+                    bottom:         14,
+                    right:          14,
+                    fontSize:       9,
+                    letterSpacing: ".15em",
+                    color:         "rgba(245,158,11,.55)",
+                  }}
+                >
+                  ENTER →
+                </div>
+
+                <div style={{
+                  position:   "absolute",
+                  bottom:      0,
+                  left:        0,
+                  right:       0,
+                  height:      1.5,
+                  background: "linear-gradient(90deg,transparent,rgba(245,158,11,.25),transparent)",
+                }}/>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Bottom classification strip */}
+        <div style={{
+          marginTop:     56,
+          paddingTop:    24,
+          borderTop:     "1px solid rgba(255,255,255,.04)",
+          display:       "flex",
+          alignItems:    "center",
+          justifyContent:"center",
+          gap:            14,
+        }}>
+          <div style={{ height: 1, width: 60, background: "linear-gradient(90deg,transparent,rgba(245,158,11,.35))" }}/>
+          <span
+            className="md mk-blink"
+            style={{ fontSize: 8, letterSpacing: ".38em", color: "rgba(245,158,11,.38)" }}
+          >
+            ◈ &nbsp; AMERICA: THE GREATEST NATION &nbsp; · &nbsp; ALL RIGHTS RESERVED &nbsp; ◈
+          </span>
+          <div style={{ height: 1, width: 60, background: "linear-gradient(90deg,rgba(245,158,11,.35),transparent)" }}/>
+        </div>
+      </Section>
+    </div>
   );
 }
