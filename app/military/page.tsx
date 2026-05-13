@@ -274,7 +274,7 @@ export default async function MilitaryPage() {
         <div className="relative w-full aspect-video overflow-hidden bg-black">
           <video
             autoPlay loop muted playsInline
-            className="w-full h-full object-cover opacity-60"
+            className="w-full h-full object-cover opacity-70"
             aria-label="Cinematic military supremacy video showcase"
           >
             <source src="/videos/military/supremacy-wave.mp4" type="video/mp4" />
