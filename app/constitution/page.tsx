@@ -66,7 +66,7 @@ export const metadata: Metadata = {
 function Section({ id, eyebrow, children }: { id: string; eyebrow?: string; children: React.ReactNode }) {
   return (
     <section id={id} className="relative mb-8 scroll-mt-24 py-16">
-      <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-[rgba(201,168,76,0.15)] to-transparent" />
+      <div className="absolute top-0 left-0 h-px w-full bg-linear-to-r from-transparent via-[rgba(201,168,76,0.15)] to-transparent" />
       {eyebrow && <p className="mb-4 font-body text-xs font-semibold uppercase tracking-[0.25em] text-[#C9A84C]">{eyebrow}</p>}
       {children}
     </section>
@@ -143,7 +143,7 @@ export default async function ConstitutionPage() {
             mixBlendMode: "screen",
           }}
         />
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           {/* ── I. The Document ─────────────────────────────────────────────── 
               This is the first major chapter of our digital exhibit.
@@ -187,10 +187,10 @@ export default async function ConstitutionPage() {
                     quality={100}
                     style={{ filter: "sepia(15%) contrast(1.05) brightness(0.95)" }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#080B12]/80 via-transparent to-[#080B12]/80" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#080B12] via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-r from-[#080B12]/80 via-transparent to-[#080B12]/80" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#080B12] via-transparent to-transparent" />
                   {/* Top gradient for mobile readability - removed stat overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-[#080B12]/80 via-transparent to-transparent md:hidden" />
+                  <div className="absolute inset-0 bg-linear-to-b from-[#080B12]/80 via-transparent to-transparent md:hidden" />
 
                   <AccessionLabel
                     title={isRo ? "Constituția Statelor Unite, Pagina 1" : "United States Constitution, Page 1"}
@@ -345,7 +345,7 @@ export default async function ConstitutionPage() {
           THE UNBROKEN LINE — Vertical transfer of power timeline
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="relative bg-[#080B12]">
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Entablature
             chapter="VI"
             title={isRo ? "250 de Ani de Dovezi" : "250 Years of Evidence"}
@@ -441,7 +441,7 @@ export default async function ConstitutionPage() {
           VII. THE GREAT STABILITY — Electoral Archive Map
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="relative bg-[#080B12]">
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* ── Breathing section — emotional reset ── */}
           <BreathingSection word={isRo ? "UNIUNE" : "UNION"} />
 
@@ -552,7 +552,7 @@ export default async function ConstitutionPage() {
                       placeholder="blur" blurDataURL={BLUR_PLACEHOLDER}
                       quality={100}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#12181F] via-[#12181F]/30 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-[#12181F] via-[#12181F]/30 to-transparent" />
                     <span className="absolute right-3 top-3 rounded-full border border-[rgba(201,168,76,0.4)] bg-[rgba(201,168,76,0.12)] px-3 py-1 font-body text-xs font-semibold text-[#C9A84C] backdrop-blur-sm">
                       {page.badge}
                     </span>

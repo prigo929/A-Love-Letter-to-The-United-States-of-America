@@ -140,7 +140,7 @@ export default async function NaturePage() {
 
       {/* ── ANIMATED STAT WALL ────────────────────────────────────────────── */}
       <section className="bg-navy-dark px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-screen-xl">
+        <div className="mx-auto max-w-7xl">
           <AnimatedStatWall stats={statWallData} />
         </div>
       </section>
@@ -167,7 +167,7 @@ export default async function NaturePage() {
 
       {/* ── MAIN CONTENT ──────────────────────────────────────────────────── */}
       <div className="bg-navy-dark">
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-[220px_1fr] lg:gap-12 xl:grid-cols-[260px_1fr]">
 
             {/* Sticky TOC */}
@@ -408,7 +408,7 @@ export default async function NaturePage() {
                           placeholder="blur"
                           blurDataURL={BLUR_PLACEHOLDER}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-navy-mid via-navy-mid/30 to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-navy-mid via-navy-mid/30 to-transparent" />
                         <span className="absolute right-3 top-3 rounded-full bg-green-500 px-3 py-1 font-body text-xs font-bold text-navy-dark">
                           {page.badge}
                         </span>

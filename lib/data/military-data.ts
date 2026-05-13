@@ -435,6 +435,19 @@ export const BUDGET_DATA = [
   { country: "Germany",       budget:  67, flag: "🇩🇪" },
 ];
 
+export function getBudgetData(locale: Locale) {
+  if (locale !== "ro") return BUDGET_DATA;
+  return [
+    { country: "Statele Unite", budget: 916, flag: "🇺🇸" },
+    { country: "China",         budget: 336, flag: "🇨🇳" },
+    { country: "Rusia",        budget: 140, flag: "🇷🇺" },
+    { country: "India",         budget:  83, flag: "🇮🇳" },
+    { country: "Arabia Saudită", budget:  75, flag: "🇸🇦" },
+    { country: "Marea Britanie", budget:  73, flag: "🇬🇧" },
+    { country: "Germania",       budget:  67, flag: "🇩🇪" },
+  ];
+}
+
 // ─── Carrier Group Positions (approximate deployment regions) ─────────────────
 
 export const CARRIER_POSITIONS: CarrierGroupPosition[] = [
@@ -536,13 +549,273 @@ export function getMilitaryFacts(locale: Locale) {
 export function getMilitaryStats(locale: Locale): MilitaryStat[] {
   if (locale !== "ro") return MILITARY_STATS;
   return [
-    { ...MILITARY_STATS[0], label: "Buget Apărare",              sublabel: "AF2024 — mai mare decât următoarele 10 națiuni combinate" },
-    { ...MILITARY_STATS[1], label: "Personal Activ",             sublabel: "Plus 800K rezerviști și 700K civili DOD" },
-    { ...MILITARY_STATS[2], label: "Grupuri Atac Portavioane",   sublabel: "Restul lumii are 2 total" },
-    { ...MILITARY_STATS[3], label: "Focoase Nucleare",           sublabel: "Livrate pe uscat, mare și aer — Triada" },
-    { ...MILITARY_STATS[4], label: "Sateliți Militari",          sublabel: "GPS, ISR, comunicații, avertizare timpurie" },
-    { ...MILITARY_STATS[5], label: "Aeronave Militare",          sublabel: "Cea mai mare forță aeriană de pe Pământ — de departe" },
-    { ...MILITARY_STATS[6], label: "Baze în Exterior",           sublabel: "În 80+ de țări de pe toate continentele" },
-    { ...MILITARY_STATS[7], label: "Nave de Război",             sublabel: "Incluzând 68 de submarine" },
+    { ...MILITARY_STATS[0], label: "Buget Apărare",              sublabel: "AF2025 — mai mare decât următoarele 9 națiuni combinate" },
+    { ...MILITARY_STATS[1], label: "Personal Activ",             sublabel: "Plus 765K rezerviști și 700K civili DOD" },
+    { ...MILITARY_STATS[2], label: "Grupuri Atac Portavioane",   sublabel: "11 portavioane cu propulsie nucleară — 100% cotă mondială" },
+    { ...MILITARY_STATS[3], label: "Focoase Nucleare",           sublabel: "Inventar activ și în rezervă — Triada" },
+    { ...MILITARY_STATS[4], label: "Sateliți Militari",          sublabel: "Active orbitale dedicate și clasificate" },
+    { ...MILITARY_STATS[5], label: "Aeronave Militare",          sublabel: "Cea mai mare forță aeriană (Air Force) și a 2-a (Navy)" },
+    { ...MILITARY_STATS[6], label: "Baze în Exterior",           sublabel: "Proiectarea puterii în peste 80 de țări" },
+    { ...MILITARY_STATS[7], label: "Nave de Război",             sublabel: "Incluzând Forța de Luptă și Comandamentul Sealift" },
   ];
+}
+
+export function getLocalizedCarriers(locale: Locale): CarrierGroupPosition[] {
+  if (locale !== "ro") return CARRIER_POSITIONS;
+  return [
+    { ...CARRIER_POSITIONS[0], region: "Rio de Janeiro, Brazilia (Southern Seas 2026)" },
+    { ...CARRIER_POSITIONS[1], region: "Coasta de Est a SUA (Pregătiri post-mentenanță)" },
+    { ...CARRIER_POSITIONS[2], region: "Marea Chinei de Sud / Flota a 7-a" },
+    { ...CARRIER_POSITIONS[3], region: "Pacificul Central (Operațiuni Hawaii)" },
+    { ...CARRIER_POSITIONS[4], region: "Marea Arabiei (Blocada CENTCOM)" },
+    { ...CARRIER_POSITIONS[5], region: "Probe de mare lângă Yokosuka, Japonia" },
+    { ...CARRIER_POSITIONS[6], region: "Stația Navală Norfolk (RCOH)" },
+    { ...CARRIER_POSITIONS[7], region: "Oceanul Indian / Flota a 5-a" },
+    { ...CARRIER_POSITIONS[8], region: "Yokosuka, Japonia (Desfășurat în avans)" },
+    { ...CARRIER_POSITIONS[9], region: "Marea Arabiei (Blocada CENTCOM)" },
+    { ...CARRIER_POSITIONS[10], region: "Atlanticul de Mijloc (Spre Norfolk)" },
+  ];
+}
+
+export function getMilitaryBranches(locale: Locale): MilitaryBranch[] {
+  if (locale !== "ro") return MILITARY_BRANCHES;
+  return [
+    {
+      ...MILITARY_BRANCHES[0],
+      name: "Armata Statelor Unite",
+      tagline: "Aceasta Vom Apăra",
+      description: "Cea mai veche și mai mare ramură, Armata SUA formează coloana vertebrală a puterii de luptă terestră. Cu 58 de echipe de luptă de brigadă și peste 6.000 de tancuri.",
+      keyFacts: [
+        "Forțele Speciale (Beretele Verzi) operează în peste 100 de țări",
+        "Divizia 82 Aeroportată poate fi trimisă global în 18 ore",
+        "Comandamentul Cyber al Armatei desfășoară operațiuni ofensive",
+        "Peste 10.000 de vehicule blindate Stryker, Bradley și M1 Abrams",
+      ],
+    },
+    {
+      ...MILITARY_BRANCHES[1],
+      name: "Marina Statelor Unite",
+      tagline: "Făurită de Mare",
+      description: "Raza de acțiune globală a Americii. Marina SUA operează pe fiecare ocean simultan — proiectând puterea prin 11 grupuri de atac de portavioane și 68 de submarine.",
+      keyFacts: [
+        "11 portavioane cu propulsie nucleară — restul lumii are 2 în total",
+        "Submarinele clasa Ohio transportă 70% din arsenalul nuclear al Americii",
+        "SEAL-urile desfășoară operațiuni clasificate pe fiecare continent",
+        "Fiecare grup de atac reprezintă mai multă putere aeriană decât forțele aeriene ale multor națiuni",
+      ],
+    },
+    {
+      ...MILITARY_BRANCHES[2],
+      name: "Forțele Aeriene ale Statelor Unite",
+      tagline: "Țintește Sus — Zboară, Luptă, Câștigă",
+      description: "Dominanță aeriană globală. USAF operează peste 5.500 de aeronave. De la bombardiere invizibile la vânătoare de ultimă generație.",
+      keyFacts: [
+        "F-22 Raptor: singurul avion de vânătoare de generația a 5-a pentru superioritate aeriană",
+        "B-2 Spirit poate atinge orice țintă de pe Pământ în câteva ore",
+        "USAF operează mai multe aeronave decât toate celelalte țări combinate",
+        "B-21 Raider a intrat în serviciu în 2023 — următoarea generație de invizibilitate",
+      ],
+    },
+    {
+      ...MILITARY_BRANCHES[3],
+      name: "Corpul Infanteriei Marine a SUA",
+      tagline: "Semper Fidelis",
+      description: "Forța de răspuns rapid a Americii. Pușcașii marini mențin echipe integrate de luptă aer-sol capabile să proiecteze puterea în câteva ore.",
+      keyFacts: [
+        "Infanteriștii marini sunt antrenați să opereze simultan pe mare, în aer și pe uscat",
+        "Batalioanele Marine Raider desfășoară operațiuni speciale în întreaga lume",
+        "Modernizare pentru război de înaltă intensitate: F-35B, CH-53K King Stallion",
+        "Desfășurați continuu la bordul grupurilor amfibii gata de luptă",
+      ],
+    },
+    {
+      ...MILITARY_BRANCHES[4],
+      name: "Forța Spațială a Statelor Unite",
+      tagline: "Semper Supra — Întotdeauna Deasupra",
+      description: "Cea mai nouă ramură a Americii, păzind infrastructura orbitală de care depinde tot războiul modern. GPS, ISR, avertizare rachete.",
+      keyFacts: [
+        "Sateliții militari americani permit țintirea GPS de precizie pentru toate ramurile",
+        "Forța Spațială operează sisteme de avertizare a rachetelor în câteva secunde",
+        "Responsabilă pentru protejarea infrastructurii spațiale de peste 800 mld.$",
+        "Capabilitățile ASAT pot nega accesul orbital adversarilor",
+      ],
+    },
+    {
+      ...MILITARY_BRANCHES[5],
+      name: "Comandamentul Cyber al SUA",
+      tagline: "Apără, Descurajează, Domină",
+      description: "Câmpul de luptă invizibil. US Cyber Command desfășoară operațiuni ofensive și defensive în spațiul cibernetic.",
+      keyFacts: [
+        "Stuxnet (2010) a distrus centrifugele nucleare iraniene fără nicio bombă",
+        "133 de echipe de misiune cibernetică acoperind funcții ofensive și defensive",
+        "Poate perturba sistemele de comandă și control ale adversarului global",
+        "Operează alături de NSA la Fort Meade — spionaj electronic + operațiuni cyber",
+      ],
+    },
+  ];
+}
+
+export function getWeaponSystems(locale: Locale): WeaponSystem[] {
+  if (locale !== "ro") return WEAPON_SYSTEMS;
+  return WEAPON_SYSTEMS.map(w => {
+    switch(w.id) {
+      case "b21": return {
+        ...w,
+        category: "Bombardier Invizibil",
+        description: "Cea mai avansată aeronavă construită vreodată. B-21 Raider a intrat în serviciu în 2023 ca singura aeronavă de generația a 6-a din lume.",
+        significance: "Face orice sistem de apărare aeriană existent în lume să fie depășit. B-21 înfrânge sistemele concepute să înfrângă B-2.",
+        specs: [
+          { label: "Clasificare", value: "Generația a 6-a" },
+          { label: "Invizibilitate", value: "Ultra-scăzută" },
+          { label: "Încărcătură", value: "Nucleară + Convențională" },
+          { label: "Contractor", value: "Northrop Grumman" },
+          { label: "Introdus", value: "2023" },
+          { label: "Cost Unitar", value: "$750M+" },
+        ]
+      };
+      case "f35": return {
+        ...w,
+        category: "Vânător Multirol",
+        description: "Cea mai capabilă aeronavă de luptă multirol din lume. F-35 este un supercomputer zburător — fuziunea senzorilor săi vede amenințările înainte ca adversarii să știe că există.",
+        significance: "Avantajul real al F-35 este informația, nu doar invizibilitatea. Acesta agregă date de la senzori proprii, alte F-35, sateliți și sisteme terestre.",
+        specs: [
+          { label: "Generație", value: "Generația a 5-a" },
+          { label: "Variante", value: "A (USAF), B (USMC), C (USN)" },
+          { label: "Viteză", value: "Mach 1.6" },
+          { label: "Radar", value: "AN/APG-81 AESA" },
+          { label: "Suită EW", value: "AN/ASQ-239" },
+          { label: "Parteneri", value: "17 națiuni aliate" },
+        ]
+      };
+      case "f22": return {
+        ...w,
+        category: "Vânător Superioritate Aeriană",
+        description: "Prădătorul suprem al cerului. F-22 Raptor este singurul avion de vânătoare invizibil capabil de supercroazieră operațional din lume.",
+        significance: "Supercroaziera — abilitatea de a depăși Mach 1 fără postcombustie — combinată cu invizibilitatea extremă face ca F-22 să fie aproape imposibil de angajat.",
+        specs: [
+          { label: "Generație", value: "Generația a 5-a" },
+          { label: "Viteză", value: "Mach 2.25 (Mach 1.82 supercroazieră)" },
+          { label: "Plafon de Serviciu", value: "65.000 ft" },
+          { label: "Radar", value: "AN/APG-77 AESA" },
+          { label: "Avionică", value: "Cea mai avansată în producție" },
+          { label: "Status", value: "Producția încheiată în 2011" },
+        ]
+      };
+      case "gerald-ford": return {
+        ...w,
+        category: "Portavion Nuclear",
+        description: "Cea mai puternică navă de război construită vreodată. La 100.000 de tone, portavioanele din clasa Ford operează 90 de aeronave.",
+        significance: "Un singur grup de atac de portavioane comandă un domeniu maritim de 500.000 de mile pătrate. Cu 11 CSG-uri desfășurate simultan, Marina SUA poate proiecta puterea oriunde pe Pământ.",
+        specs: [
+          { label: "Deplasament", value: "100.000+ tone" },
+          { label: "Aeronave", value: "90 (F-35C, F/A-18, E-2D, etc.)" },
+          { label: "Propulsie", value: "2× reactoare nucleare A1B" },
+          { label: "Echipaj", value: "4.539 + 2.500 personal aerian" },
+          { label: "EMALS", value: "Lansare electromagnetică" },
+          { label: "Durata de viață", value: "50 de ani fără realimentare" },
+        ]
+      };
+      case "ohio": return {
+        ...w,
+        category: "Submarin cu Rachete Balistice",
+        description: "Descurajarea nucleară invizibilă. 14 submarine din clasa Ohio transportă 70% din arsenalul nuclear al Americii.",
+        significance: "Supraviețuirea SSBN este fundamentul descurajării nucleare. Deoarece sunt nedetectabile, ele garantează capacitatea de contraatac a Americii.",
+        specs: [
+          { label: "Rachete", value: "24 × Trident II D5 SLBM" },
+          { label: "Focoase", value: "Până la 192 per submarin" },
+          { label: "Rază", value: "7.000+ mile (Trident II)" },
+          { label: "CEP", value: "Acuratețe ~90 metri" },
+          { label: "Adâncime", value: "Clasificată (800+ ft)" },
+          { label: "Autonomie", value: "77 de zile în patrulare" },
+        ]
+      };
+      case "minuteman": return {
+        ...w,
+        category: "Rachetă Balistică Intercontinentală",
+        description: "Descurajarea nucleară bazată pe uscat. 400 de ICBM-uri Minuteman III stau în alertă 24/7 în silozuri întărite.",
+        significance: "Componenta terestră a triadei nucleare este cea mai supraviețuitoare din perspectiva lansării la avertizare.",
+        specs: [
+          { label: "Rază", value: "8.000+ mile" },
+          { label: "Viteză", value: "Mach 23" },
+          { label: "Timp până la Țintă", value: "~30 minute (orice punct de pe Pământ)" },
+          { label: "Focoase", value: "Până la 3 × MIRV-uri W78/W87" },
+          { label: "Alertă", value: "Continuă 24/7" },
+          { label: "Silozuri", value: "Montana, North Dakota, Wyoming" },
+        ]
+      };
+      default: return w;
+    }
+  });
+}
+
+export function getDARPAPrograms(locale: Locale): DARPAProgram[] {
+  if (locale !== "ro") return DARPA_PROGRAMS;
+  return DARPA_PROGRAMS.map(p => {
+    switch(p.id) {
+      case "hypersonic": return {
+        ...p,
+        category: "SISTEME OFENSIVE",
+        description: "HAWC și HACM sunt rachete cu propulsie scramjet care călătoresc cu Mach 5+ — prea repede pentru a fi interceptate.",
+        significance: "Face ca toate sistemele actuale de apărare — Patriot, S-400, THAAD — să fie efectiv depășite."
+      };
+      case "autonomous": return {
+        ...p,
+        category: "AI / ROBOTICĂ",
+        description: "Programul Collaborative Combat Aircraft (CCA) dezvoltă însoțitori AI care zboară alături de piloți umani.",
+        significance: "Un singur pilot de F-35 ar putea comanda peste 4 însoțitori autonomi, multiplicând puterea de luptă de 5 ori."
+      };
+      case "directed-energy": return {
+        ...p,
+        category: "ARME DE GENERAȚIE VIITOARE",
+        description: "Armele cu laser de înaltă energie (HEL) și microunde de înaltă putere (HPM) oferă încărcătoare nelimitate și viteză a luminii.",
+        significance: "Sistemul HELIOS al Marinei poate înfrânge drone și rachete la un cost de 1$ per angajare față de milioane pentru rachete interceptoare."
+      };
+      case "quantum": return {
+        ...p,
+        category: "RĂZBOI INFORMAȚIONAL",
+        description: "Gravimetrele cuantice pot detecta urmele submarinelor de la altitudine orbitală. Computerele cuantice vor sparge standardele actuale de criptare.",
+        significance: "Cine obține primul superioritatea în calculul cuantic poate decripta toate comunicațiile criptate existente — militare, diplomatice, financiare."
+      };
+      case "cyber-offensive": return {
+        ...p,
+        category: "RĂZBOI CIBERNETIC",
+        description: "US Cyber Command menține o prezență persistentă în infrastructura critică a adversarului — rețele electrice, sisteme financiare.",
+        significance: "Capabilitățile actuale sunt cu ordine de mărime mai sofisticate decât Stuxnet (2010)."
+      };
+      case "ai-c2": return {
+        ...p,
+        category: "AI / SISTEME DE DECIZIE",
+        description: "JADO și ABMS folosesc AI pentru a fuziona datele de la toți senzorii, platformele și domeniile.",
+        significance: "Scopul: comprimarea buclei OODA la milisecunde. Până când un adversar a observat și s-a orientat, SUA au acționat deja."
+      };
+      default: return p;
+    }
+  });
+}
+
+export function getNuclearTriad(locale: Locale) {
+  if (locale !== "ro") return NUCLEAR_TRIAD;
+  return {
+    description: "Triada nucleară — ICBM-uri terestre, SLBM-uri marine și arme lansate din aer — garantează că niciun prim atac nu poate distruge simultan toate cele trei componente. Atâta timp cât o componentă supraviețuiește, Statele Unite își păstrează capacitatea de răspuns.",
+    legs: [
+      {
+        ...NUCLEAR_TRIAD.legs[0],
+        name: "Terestru (ICBM)",
+        systems: "400 Minuteman III",
+        advantage: "Timp de răspuns rapid — 30 de minute către orice țintă de pe Pământ",
+      },
+      {
+        ...NUCLEAR_TRIAD.legs[1],
+        name: "Maritim (SSBN)",
+        systems: "14 submarine clasa Ohio",
+        advantage: "Cea mai supraviețuitoare componentă — submarinele sunt nedetectabile",
+      },
+      {
+        ...NUCLEAR_TRIAD.legs[2],
+        name: "Aerian (Bombardiere)",
+        systems: "60 B-52H + 20 B-2 Spirit + B-21 intrând în serviciu",
+        advantage: "Rechemabile — singura componentă care poate fi întoarsă după lansare",
+      },
+    ],
+  };
 }
