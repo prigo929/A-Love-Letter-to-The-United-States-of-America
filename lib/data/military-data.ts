@@ -426,6 +426,16 @@ export const DEFENSE_CONTRACTORS: DefenseContractor[] = [
   { name: "L3Harris",            revenue: "$19.4B",  specialty: "ISR, Communications, EW",    programs: ["AN/PRC-163 Radio", "F-16 AESA radar", "Space-based ISR sensors"] },
 ];
 
+export const BUDGET_DATA = [
+  { country: "United States", budget: 886, flag: "🇺🇸" },
+  { country: "China",         budget: 296, flag: "🇨🇳" },
+  { country: "Russia",        budget: 109, flag: "🇷🇺" },
+  { country: "India",         budget:  83, flag: "🇮🇳" },
+  { country: "Saudi Arabia",  budget:  75, flag: "🇸🇦" },
+  { country: "UK",            budget:  68, flag: "🇬🇧" },
+  { country: "Germany",       budget:  67, flag: "🇩🇪" },
+];
+
 // ─── Carrier Group Positions (approximate deployment regions) ─────────────────
 
 export const CARRIER_POSITIONS: CarrierGroupPosition[] = [

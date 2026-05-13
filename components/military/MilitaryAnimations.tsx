@@ -13,6 +13,7 @@ import {
 import Image from "next/image";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import type { WeaponSystem, MilitaryBranch, DARPAProgram, MilitaryStat, CarrierGroupPosition } from "@/lib/data/military-data";
+import { BUDGET_DATA as SHARED_BUDGET_DATA } from "@/lib/data/military-data";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 1. HUDGrid — animated scan-line grid overlay
@@ -253,8 +254,9 @@ export function WeaponSystemCard({ system, index = 0 }: { system: WeaponSystem; 
           src={system.imageSrc}
           alt={system.imageAlt}
           fill
+          quality={80}
           className="object-cover transition-transform duration-700 group-hover:scale-105"
-          sizes="(max-width:768px) 100vw, 50vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           placeholder="blur"
           blurDataURL={BLUR_PLACEHOLDER}
         />
@@ -435,8 +437,9 @@ export function BranchSelector({ branches }: { branches: MilitaryBranch[] }) {
               src={branch.imageSrc}
               alt={branch.imageAlt}
               fill
+              quality={80}
               className="object-cover transition-transform duration-700"
-              sizes="(max-width:768px) 100vw, 380px"
+              sizes="(max-width:768px) 100vw, 400px"
               placeholder="blur"
               blurDataURL={BLUR_PLACEHOLDER}
             />
@@ -537,7 +540,12 @@ export function NuclearTriadDiagram({ triad }: { triad: { legs: TriadLeg[]; desc
     <div className="overflow-hidden rounded-2xl border border-white/8 bg-[#080C14]">
       {/* SVG triangle */}
       <div className="relative flex items-center justify-center p-8 pb-0">
-        <svg viewBox="0 0 400 280" className="w-full max-w-md" aria-label="Nuclear triad diagram">
+        <svg 
+          viewBox="0 0 400 280" 
+          className="w-full max-w-md" 
+          role="img"
+          aria-label="Interactive diagram of the American nuclear triad: Land, Sea, and Air legs"
+        >
           <defs>
             <filter id="triad-glow">
               <feGaussianBlur stdDeviation="4" result="blur" />
@@ -677,7 +685,13 @@ export function GlobalCarrierMap({ positions }: { positions: CarrierGroupPositio
           }} />
 
           {/* Carrier dots */}
-          <svg viewBox="0 0 100 50" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+          <svg 
+            viewBox="0 0 100 50" 
+            className="absolute inset-0 w-full h-full" 
+            preserveAspectRatio="none"
+            role="img"
+            aria-label="Global map showing approximate positions of U.S. Navy Carrier Strike Groups"
+          >
             {/* Carrier group positions */}
             {carriers.map((c) => (
               <g key={c.id}
@@ -767,6 +781,7 @@ export function ParallaxMilitaryHero({
           src={imageSrc} alt={imageAlt} fill priority
           className="object-cover"
           sizes="100vw"
+          quality={85}
           placeholder="blur" blurDataURL={BLUR_PLACEHOLDER}
           style={{ filter: "brightness(0.45) saturate(0.7) contrast(1.1)" }}
         />
@@ -875,19 +890,8 @@ export function ParallaxMilitaryHero({
 // 10. BudgetComparisonBar — animated defense budget comparison
 // ─────────────────────────────────────────────────────────────────────────────
 
-const BUDGET_DATA = [
-  { country: "United States", budget: 886, flag: "🇺🇸", highlight: true  },
-  { country: "China",         budget: 225, flag: "🇨🇳", highlight: false },
-  { country: "Russia",        budget: 109, flag: "🇷🇺", highlight: false },
-  { country: "India",         budget: 83,  flag: "🇮🇳", highlight: false },
-  { country: "Saudi Arabia",  budget: 75,  flag: "🇸🇦", highlight: false },
-  { country: "United Kingdom",budget: 73,  flag: "🇬🇧", highlight: false },
-  { country: "Germany",       budget: 67,  flag: "🇩🇪", highlight: false },
-  { country: "France",        budget: 61,  flag: "🇫🇷", highlight: false },
-];
-
 export function BudgetComparisonBar({ 
-  data = BUDGET_DATA, 
+  data = SHARED_BUDGET_DATA, 
   label = "Defense Budget (USD Billion, 2024)" 
 }: { 
   data?: any[]; 
