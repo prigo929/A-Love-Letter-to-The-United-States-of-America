@@ -320,7 +320,7 @@ export default async function MilitaryPage() {
         <div
           style={{
             display:             "grid",
-            gridTemplateColumns: "repeat(auto-fill,minmax(210px,1fr))",
+            gridTemplateColumns: "repeat(auto-fill,minmax(250px,1fr))",
             gap:                  0,
             borderTop:           "1px solid rgba(255,255,255,.04)",
           }}
@@ -384,7 +384,7 @@ export default async function MilitaryPage() {
         <div
           style={{
             display:             "grid",
-            gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))",
+            gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))",
             gap:                 20,
             marginBottom:        48,
           }}
