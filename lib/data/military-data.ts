@@ -49,6 +49,12 @@ export interface WeaponSystem {
   imageSrc: string;
   imageAlt: string;
   specs: { label: string; value: string }[];
+  /** Short elevator-pitch line for the collapsed dossier strip */
+  tagline?: string;
+  /** Per-system accent color for visual identity */
+  accentColor?: string;
+  /** Single most impressive stat shown on the collapsed strip */
+  heroStat?: string;
 }
 
 export interface DARPAProgram {
@@ -224,6 +230,9 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     ceiling: "50,000+ ft",
     stealth: true,
     nuclear: true,
+    tagline: "The most advanced aircraft ever built.",
+    accentColor: "#7DD3FC",
+    heroStat: "6TH GEN",
     description: "The most advanced aircraft ever built. The B-21 Raider entered service in 2023 as the world's only 6th-generation aircraft. Designed to penetrate any integrated air defense system on Earth and deliver both conventional and nuclear weapons.",
     significance: "Renders every existing air defense system in the world obsolete. China has been building its IADS specifically to defeat the B-2. The B-21 defeats those systems designed to defeat the B-2.",
     imageSrc: SITE_IMAGES.b21Raider,
@@ -249,6 +258,9 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     ceiling: "50,000 ft",
     stealth: true,
     nuclear: false,
+    tagline: "A flying supercomputer with a god-eye view.",
+    accentColor: "#F5A623",
+    heroStat: "3,300 PLANNED",
     description: "The world's most capable multirole combat aircraft. The F-35 is a flying supercomputer — its sensor fusion and electronic warfare systems see threats before adversaries know it exists. Three variants serve all three armed services.",
     significance: "The F-35's real advantage is information, not just stealth. It aggregates sensor data from itself, other F-35s, satellites, and ground systems — giving the pilot a god-eye view of the battlefield that no adversary can match.",
     imageSrc: SITE_IMAGES.f35Lightning,
@@ -274,6 +286,9 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     ceiling: "65,000 ft",
     stealth: true,
     nuclear: false,
+    tagline: "The apex predator of the sky.",
+    accentColor: "#94A3B8",
+    heroStat: "MACH 2.25",
     description: "The apex predator of the sky. The F-22 Raptor is the world's only operational supercruise-capable stealth air superiority fighter. No adversary aircraft can detect, outrun, or outmaneuver it. China and Russia have spent 20 years trying to build an equivalent.",
     significance: "Supercruise — the ability to exceed Mach 1 without afterburner — combined with extreme stealth makes the F-22 nearly impossible to engage. By the time an adversary's radar resolves a contact, the Raptor has already fired.",
     imageSrc: SITE_IMAGES.f22Raptor,
@@ -295,6 +310,9 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     status: "operational",
     quantity: "2 in service, 4 ordered",
     nuclear: false,
+    tagline: "The most powerful warship ever built.",
+    accentColor: "#3B82F6",
+    heroStat: "100,000 TONS",
     description: "The most powerful warship ever built. At 100,000 tons, the Ford class carriers operate 90 aircraft — more air power than most nations' entire air forces. Powered by two A1B nuclear reactors, they operate for 50 years without refueling.",
     significance: "A single carrier strike group commands a 500,000 sq mile maritime domain. With 11 CSGs simultaneously deployed globally, the US Navy can project decisive airpower anywhere on Earth within 72 hours.",
     imageSrc: SITE_IMAGES.geraldFordCarrier,
@@ -317,6 +335,9 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     quantity: "14 submarines",
     speed: "Classified (25+ kts submerged)",
     nuclear: true,
+    tagline: "The invisible nuclear deterrent.",
+    accentColor: "#6366F1",
+    heroStat: "70% OF ARSENAL",
     description: "The invisible nuclear deterrent. 14 Ohio-class submarines carry 70% of America's nuclear arsenal — 24 Trident II D5 missiles each, with up to 8 independently targetable warheads per missile. Each submarine alone can end civilization.",
     significance: "SSBN survivability is the foundation of nuclear deterrence. Because they are undetectable, they guarantee America's second-strike capability — making a successful first strike on the US not just difficult, but strategically irrational.",
     imageSrc: SITE_IMAGES.ohioSubmarine,
@@ -340,6 +361,9 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     speed: "15,000+ mph (Mach 23)",
     range: "8,000+ miles",
     nuclear: true,
+    tagline: "Any target on Earth in 30 minutes.",
+    accentColor: "#F59E0B",
+    heroStat: "MACH 23",
     description: "Land-based nuclear deterrence. 400 Minuteman III ICBMs stand alert 24/7 in hardened silos across Montana, North Dakota, and Wyoming — each carrying up to 3 independently targetable warheads capable of striking any target on Earth in 30 minutes.",
     significance: "The land-based leg of the nuclear triad is the most survivable from a launch-on-warning perspective. Adversaries must allocate multiple warheads per silo to have confidence of destruction — an exchange that is never in their favor.",
     imageSrc: SITE_IMAGES.minutemanLaunch,
@@ -354,6 +378,7 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     ],
   },
 ];
+
 
 // ─── DARPA Programs ───────────────────────────────────────────────────────────
 
