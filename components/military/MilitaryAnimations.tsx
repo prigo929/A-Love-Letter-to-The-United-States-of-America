@@ -25,12 +25,12 @@ import { SITE_IMAGES } from "@/lib/site-images";
 export function SmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.5,
+      duration: 1.1, // Snappier response
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1.1,
+      wheelMultiplier: 1.0, 
       touchMultiplier: 1.5,
     });
 
@@ -141,11 +141,7 @@ export function MilStyles() {
       .mk-ken { animation: mk-ken 24s ease-in-out infinite alternate; }
 
       .mil-nav-card {
-        transition: all 0.25s ease;
-      }
-      .mil-nav-card:hover {
-        border-color: rgba(255, 255, 255, 0.1) !important;
-        background: rgba(255, 255, 255, 0.05) !important;
+        transition: border-color 0.25s ease, background-color 0.25s ease;
       }
 
       /* Custom scrollbar */
@@ -225,7 +221,7 @@ export function WeaponSystemCard({ system, index = 0 }: { system: WeaponSystem; 
       <motion.div
         layoutId={`card-${system.id}`}
         onClick={() => setIsOpen(true)}
-        className="group relative h-[400px] cursor-pointer overflow-hidden bg-zinc-900 grayscale-[0.5] transition-all duration-700 hover:grayscale-0"
+        className="group relative h-[400px] cursor-pointer overflow-hidden bg-zinc-900 grayscale-[0.5] transition-[filter,background-color] duration-700 hover:grayscale-0"
       >
         <motion.div layoutId={`image-container-${system.id}`} className="absolute inset-0">
           <Image
@@ -344,7 +340,7 @@ export function BranchSelector({ branches }: { branches: MilitaryBranch[] }) {
           <button
             key={b.id}
             onClick={() => setActive(i)}
-            className={`flex shrink-0 items-center gap-2 px-6 py-4 mil-text-metadata transition-all duration-200 ${
+            className={`flex shrink-0 items-center gap-2 px-6 py-4 mil-text-metadata transition-colors duration-200 ${
               i === active
                 ? "border-b border-white text-white bg-white/5"
                 : "text-white/20 hover:text-white/40 border-b border-transparent"
@@ -768,9 +764,10 @@ export function ParallaxMilitaryHero({
   });
 
   // Scroll transforms for the cinematic reveal
-  const opacity = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
-  const blur = useTransform(scrollYProgress, [0, 0.4], [40, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.4], [1.1, 1]);
+  // Lower initial opacity for the "Black-Ops" feel while remaining technically visible for LCP
+  const opacity = useTransform(scrollYProgress, [0, 0.4], [0.35, 0.05]); 
+  const blur = useTransform(scrollYProgress, [0, 0.4], [5, 20]); 
+  const scale = useTransform(scrollYProgress, [0, 0.4], [1, 1.15]);
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
   // Text animations
