@@ -17,7 +17,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop, ReadingProgressBar } from "@/components/layout/PageChrome";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
-import { HERO_IMAGES, SITE } from "@/lib/constants";
+import { SITE } from "@/lib/constants";
 import "@/app/globals.css";
 
 // ─── Font Loading (next/font for performance + no CLS) ────────────────────────
@@ -46,19 +46,6 @@ const inter = Inter({
   preload: true,
   weight: ["300", "400", "500", "600", "700"],
 });
-
-// Preloading the first hero image and the `STATES` title video helps the hero
-// feel present immediately instead of fading in a beat later than the page
-// shell. The browser can start fetching these assets during HTML parsing.
-function getImagePreloadSrc(src: string | StaticImport) {
-  if (typeof src === "string") return src;
-  if ("default" in src) return src.default.src;
-  return src.src;
-}
-
-const HOME_HERO_PRELOAD_SRC = HERO_IMAGES[0]
-  ? getImagePreloadSrc(HERO_IMAGES[0].src)
-  : "";
 const STATES_VIDEO_PRELOAD_SRC = "/videos/flag-loop.mp4";
 
 // ─── Site-wide Metadata ───────────────────────────────────────────────────────
@@ -192,16 +179,7 @@ export default function RootLayout({
         />
         {/* DNS prefetch for CDN-hosted map data */}
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-        {/* Warm up the hero media path immediately so the first slide and the
-            masked `STATES` video are fetched as part of the initial page load. */}
-        {HOME_HERO_PRELOAD_SRC ? (
-          <link
-            rel="preload"
-            as="image"
-            href={HOME_HERO_PRELOAD_SRC}
-            fetchPriority="high"
-          />
-        ) : null}
+        {/* Warm up the hero media path immediately so the masked `STATES` video is fetched as part of the initial page load. */}
         <link
           rel="preload"
           as="video"

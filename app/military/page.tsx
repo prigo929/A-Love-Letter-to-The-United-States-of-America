@@ -60,6 +60,7 @@ import {
   CARRIER_POSITIONS,
   MILITARY_QUOTES,
   DEFENSE_CONTRACTORS,
+  BUDGET_DATA,
   getMilitaryFacts,
   getMilitaryStats,
 } from "@/lib/data/military-data";
@@ -77,16 +78,6 @@ export const metadata: Metadata = {
 };
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-
-const BUDGET_DATA = [
-  { country: "United States", budget: 886, flag: "🇺🇸" },
-  { country: "China",         budget: 296, flag: "🇨🇳" },
-  { country: "Russia",        budget: 109, flag: "🇷🇺" },
-  { country: "India",         budget:  83, flag: "🇮🇳" },
-  { country: "Saudi Arabia",  budget:  75, flag: "🇸🇦" },
-  { country: "UK",            budget:  68, flag: "🇬🇧" },
-  { country: "Germany",       budget:  67, flag: "🇩🇪" },
-];
 
 const HERO_STATS = [
   { 
@@ -261,6 +252,8 @@ function CinematicImage({
           src={src}
           alt={alt}
           fill
+          quality={80}
+          sizes="(max-width: 1024px) 100vw, 1280px"
           style={{
             objectFit: "cover",
             filter:    "brightness(.28) saturate(.45) hue-rotate(200deg)",
@@ -496,6 +489,7 @@ export default async function MilitaryPage() {
             loop
             muted
             playsInline
+            aria-label="Cinematic military supremacy video showcase"
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           >
             <source src="/videos/military/supremacy-wave.mp4" type="video/mp4" />
