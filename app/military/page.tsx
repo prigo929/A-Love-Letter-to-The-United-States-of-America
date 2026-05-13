@@ -185,7 +185,7 @@ function CinematicImage({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="relative overflow-hidden bg-black" style={{ height }}>
+    <div className="relative overflow-hidden bg-black" style={{ minHeight: height }}>
       <Image
         src={src}
         alt={alt}
@@ -386,6 +386,7 @@ export default async function MilitaryPage() {
       <CinematicImage
         src={SITE_IMAGES.military.b2}
         alt="B-2 Spirit stealth bomber over the Pacific"
+        height={800}
       >
         <div className="flex flex-col items-center text-center max-w-4xl px-6">
           <div className="mil-text-label mb-12">{locale === 'ro' ? 'NORTHROP GRUMMAN B-2 SPIRIT · DIN 1997' : 'NORTHROP GRUMMAN B-2 SPIRIT · SINCE 1997'}</div>
