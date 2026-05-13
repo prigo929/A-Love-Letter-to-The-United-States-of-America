@@ -973,6 +973,14 @@ export function MilStyles() {
       
       .md { font-family: var(--font-hero), "Bebas Neue", sans-serif; }
       .mb { font-family: var(--font-body), "Inter", sans-serif; }
+
+      .mil-nav-card {
+        transition: all 0.25s ease;
+      }
+      .mil-nav-card:hover {
+        border-color: rgba(245,158,11, 0.3) !important;
+        background: rgba(245,158,11, 0.04) !important;
+      }
     `}} />
   );
 }

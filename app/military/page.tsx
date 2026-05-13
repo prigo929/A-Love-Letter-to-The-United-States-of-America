@@ -28,7 +28,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Breadcrumb } from "@/components/layout/Breadcrumb";
 
 import {
   MilStyles,
@@ -271,7 +270,6 @@ function CinematicImage({
 
 export default async function MilitaryPage() {
   const locale = await getServerLocale();
-  const isRo   = locale === "ro";
   const stats  = getMilitaryStats(locale);
   const facts  = getMilitaryFacts(locale);
   const quote  = MILITARY_QUOTES[0];
@@ -283,18 +281,6 @@ export default async function MilitaryPage() {
     >
       <MilStyles/>
 
-      {/* ─── §0  BREADCRUMB ────────────────────────────────────────────────── */}
-      <div style={{
-        position:   "relative",
-        zIndex:      100,
-        borderBottom: "1px solid rgba(255,255,255,.04)",
-        background: "rgba(4,8,16,.95)",
-        backdropFilter: "blur(12px)",
-      }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "12px 24px" }}>
-          <Breadcrumb items={[{ label: isRo ? "Militar" : "Military" }]} />
-        </div>
-      </div>
 
       {/* ─── §1  HERO — B-2 emerging from darkness ─────────────────────────── */}
       <ParallaxMilitaryHero
@@ -1162,24 +1148,14 @@ export default async function MilitaryPage() {
               style={{ textDecoration: "none" }}
             >
               <div
+                className="mil-nav-card"
                 style={{
                   position:       "relative",
                   padding:        "22px 18px",
                   background:     "rgba(255,255,255,.02)",
                   border:         "1px solid rgba(255,255,255,.06)",
                   cursor:         "pointer",
-                  transition:     "all .25s ease",
                   overflow:       "hidden",
-                }}
-                onMouseEnter={e => {
-                  const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "rgba(245,158,11,.3)";
-                  el.style.background  = "rgba(245,158,11,.04)";
-                }}
-                onMouseLeave={e => {
-                  const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "rgba(255,255,255,.06)";
-                  el.style.background  = "rgba(255,255,255,.02)";
                 }}
               >
                 <HUDCorners color="#f59e0b" size={10} weight={1} offset={5}/>
