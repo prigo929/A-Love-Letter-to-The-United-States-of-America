@@ -25,7 +25,7 @@ import { SITE_IMAGES } from "@/lib/site-images";
 export function SmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.1, // Snappier response
+      duration: 1.0, // Snappier response
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
@@ -628,7 +628,51 @@ interface CarrierPos {
 
 export function GlobalCarrierMap({ positions }: { positions: CarrierGroupPosition[] }) {
   const [hovered, setHovered] = useState<string | null>(null);
-  const carriers = positions;
+  
+  // Calculate jitter for overlapping carriers to ensure visibility in crowded areas (e.g. Norfolk, San Diego)
+  const localizedCarriers = useMemo(() => {
+    const threshold = 5.0; // Tighter grouping threshold
+    const groups: CarrierGroupPosition[][] = [];
+    
+    // Group carriers that are visually too close to each other
+    positions.forEach(c => {
+      let foundGroup = false;
+      for (const group of groups) {
+        const leader = group[0];
+        const dx = c.cx - leader.cx;
+        const dy = c.cy - leader.cy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist < threshold) {
+          group.push(c);
+          foundGroup = true;
+          break;
+        }
+      }
+      if (!foundGroup) groups.push([c]);
+    });
+
+    // Flatten groups and apply circular offset to those with multiple members
+    return groups.flatMap(group => {
+      if (group.length === 1) return group;
+      
+      // Use the average center of the group for the distribution
+      const avgCx = group.reduce((sum, c) => sum + c.cx, 0) / group.length;
+      const avgCy = group.reduce((sum, c) => sum + c.cy, 0) / group.length;
+      
+      const distRadius = 1.5; // Aggressive "snap" to make them overlap tightly
+      return group.map((c, i) => {
+        const angle = (i / group.length) * Math.PI * 2 - Math.PI / 2;
+        return {
+          ...c,
+          cx: avgCx + Math.cos(angle) * distRadius,
+          cy: avgCy + Math.sin(angle) * distRadius,
+        };
+      });
+    });
+  }, [positions]);
+
+  const carriers = localizedCarriers;
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-[#04080F]">
@@ -728,16 +772,19 @@ export function GlobalCarrierMap({ positions }: { positions: CarrierGroupPositio
       </div>
 
       {/* Legend */}
-      <div className="flex items-center justify-between border-t border-white/8 px-5 py-3">
-        <div className="flex items-center gap-2">
-          <div className="relative h-2 w-3">
-             <svg viewBox="0 0 4 3" className="absolute inset-0 h-full w-full">
-               <path d="M0,0 L3,0 L4,1.5 L4,3 L0,3 Z" fill="#F59E0B" />
-             </svg>
+      <div className="flex items-center justify-between border-t border-white/8 px-6 py-4">
+        <div className="flex items-center gap-4">
+          <div className="relative h-10 w-10">
+             <Image 
+               src={SITE_IMAGES.military.carrierLogo} 
+               alt="Carrier Logo" 
+               fill 
+               className="object-contain scale-[2.4] pointer-events-none"
+             />
           </div>
-          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/35">Carrier Strike Group</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/50">Carrier Strike Group</p>
         </div>
-        <p className="font-mono text-[9px] text-white/25">APPROXIMATE GLOBAL POSITIONS</p>
+        <p className="font-mono text-[9px] text-white/15">APPROXIMATE GLOBAL POSITIONS</p>
       </div>
     </div>
   );
