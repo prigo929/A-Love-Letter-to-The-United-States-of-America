@@ -439,13 +439,17 @@ export const BUDGET_DATA = [
 // ─── Carrier Group Positions (approximate deployment regions) ─────────────────
 
 export const CARRIER_POSITIONS: CarrierGroupPosition[] = [
-  { id: "cvn78", ship: "USS Gerald R. Ford (CVN-78)",   region: "Atlantic / European Theater", cx: 30, cy: 35, status: "deployed" },
-  { id: "cvn77", ship: "USS George H.W. Bush (CVN-77)", region: "Mediterranean Sea",           cx: 38, cy: 33, status: "deployed" },
-  { id: "cvn76", ship: "USS Ronald Reagan (CVN-76)",    region: "Western Pacific / Japan",     cx: 78, cy: 30, status: "deployed" },
-  { id: "cvn73", ship: "USS George Washington (CVN-73)",region: "Indo-Pacific",                cx: 72, cy: 45, status: "deployed" },
-  { id: "cvn71", ship: "USS Theodore Roosevelt (CVN-71)",region: "Persian Gulf / CENTCOM",     cx: 55, cy: 38, status: "deployed" },
-  { id: "cvn69", ship: "USS Dwight D. Eisenhower (CVN-69)", region: "Red Sea / CENTCOM",     cx: 50, cy: 37, status: "deployed" },
-  { id: "cvn75", ship: "USS Harry S. Truman (CVN-75)", region: "5th Fleet Area of Operations", cx: 52, cy: 36, status: "deployed" },
+  { id: "cvn68", ship: "USS Nimitz (CVN-68)",           region: "Rio de Janeiro, Brazil (Southern Seas 2026)", cx: 64.0, cy: 65.0, status: "deployed" },
+  { id: "cvn69", ship: "USS Dwight D. Eisenhower (CVN-69)", region: "US East Coast (Post-Maintenance Workups)", cx: 44.5, cy: 26.7, status: "deployed" },
+  { id: "cvn70", ship: "USS Carl Vinson (CVN-70)",      region: "South China Sea / 7th Fleet",        cx: 160.0, cy: 42.0, status: "deployed" },
+  { id: "cvn71", ship: "USS Theodore Roosevelt (CVN-71)", region: "Central Pacific (Hawaii Ops)",      cx: 12.3, cy: 37.1, status: "deployed" },
+  { id: "cvn72", ship: "USS Abraham Lincoln (CVN-72)",  region: "Arabian Sea (CENTCOM Blockade)",      cx: 130.0, cy: 40.4, status: "deployed" },
+  { id: "cvn73", ship: "USS George Washington (CVN-73)", region: "Sea Trials off Yokosuka, Japan",     cx: 182.0, cy: 32.0, status: "deployed" },
+  { id: "cvn74", ship: "USS John C. Stennis (CVN-74)",  region: "Naval Station Norfolk (RCOH)",        cx: 44.0, cy: 26.7, status: "homeport" },
+  { id: "cvn75", ship: "USS Harry S. Truman (CVN-75)",  region: "Indian Ocean / 5th Fleet",           cx: 125.0, cy: 43.1, status: "deployed" },
+  { id: "cvn76", ship: "USS Ronald Reagan (CVN-76)",     region: "Yokosuka, Japan (Forward Deployed)",  cx: 181.5, cy: 32.0, status: "deployed" },
+  { id: "cvn77", ship: "USS George H.W. Bush (CVN-77)",  region: "Arabian Sea (CENTCOM Blockade)",      cx: 129.0, cy: 39.8, status: "deployed" },
+  { id: "cvn78", ship: "USS Gerald R. Ford (CVN-78)",    region: "Mid-Atlantic (Norfolk Inbound)",      cx: 52.0, cy: 26.7, status: "deployed" },
 ];
 
 // ─── Quotes ───────────────────────────────────────────────────────────────────
