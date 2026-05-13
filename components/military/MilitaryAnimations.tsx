@@ -189,7 +189,7 @@ export function HUDCounter({ stat, index = 0 }: { stat: MilitaryStat; index?: nu
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative overflow-hidden rounded-xl border p-5 backdrop-blur-sm transition-all duration-300"
+      className="group relative flex h-full flex-col overflow-hidden rounded-xl border p-5 backdrop-blur-sm transition-all duration-300"
       style={{
         borderColor: borderMap[color],
         background: `linear-gradient(135deg, rgba(8,12,20,0.9) 0%, rgba(12,18,28,0.95) 100%)`,
@@ -217,8 +217,10 @@ export function HUDCounter({ stat, index = 0 }: { stat: MilitaryStat; index?: nu
       </p>
 
       {/* Label */}
-      <p className="font-body text-xs font-semibold uppercase tracking-[0.2em] text-white/70">{label}</p>
-      <p className="mt-1 font-body text-[10px] text-white/35">{sublabel}</p>
+      <div className="grow">
+        <p className="font-body text-xs font-semibold uppercase tracking-[0.2em] text-white/70">{label}</p>
+        <p className="mt-1 font-body text-[10px] text-white/35">{sublabel}</p>
+      </div>
 
       {/* Bottom data bar */}
       <div className="mt-4 h-px w-full" style={{ background: `linear-gradient(90deg, ${colorMap[color]}, transparent)`, opacity: 0.4 }} />
@@ -242,7 +244,7 @@ export function WeaponSystemCard({ system, index = 0 }: { system: WeaponSystem; 
   return (
     <motion.div
       layout
-      className="group relative overflow-hidden rounded-xl border border-white/8 bg-[#080C14] transition-all duration-300 hover:border-[rgba(245,158,11,0.3)]"
+      className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-white/8 bg-[#080C14] transition-all duration-300 hover:border-[rgba(245,158,11,0.3)]"
       style={{ boxShadow: expanded ? "0 0 40px rgba(245,158,11,0.06)" : "none" }}
     >
       {/* Image */}
@@ -302,8 +304,8 @@ export function WeaponSystemCard({ system, index = 0 }: { system: WeaponSystem; 
       </div>
 
       {/* Content */}
-      <div className="p-5">
-        <p className="mb-3 font-body text-sm leading-relaxed text-white/60">{system.description}</p>
+      <div className="flex grow flex-col p-5">
+        <p className="mb-3 grow font-body text-sm leading-relaxed text-white/60">{system.description}</p>
 
         {/* Quick specs */}
         <div className="mb-4 grid grid-cols-2 gap-2">
@@ -481,7 +483,7 @@ export function DARPAProgramGrid({ programs }: { programs: DARPAProgram[] }) {
               visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
             }}
             whileHover={{ y: -3, transition: { duration: 0.2 } }}
-            className="group relative overflow-hidden rounded-xl border border-white/8 bg-[#080C14] p-5 transition-all hover:border-[rgba(245,158,11,0.25)]"
+            className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-white/8 bg-[#080C14] p-5 transition-all hover:border-[rgba(245,158,11,0.25)]"
           >
             {/* Glow on hover */}
             <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -504,7 +506,7 @@ export function DARPAProgramGrid({ programs }: { programs: DARPAProgram[] }) {
               </div>
             </div>
 
-            <p className="mb-3 font-body text-xs leading-relaxed text-white/55">{program.description}</p>
+            <p className="mb-3 grow font-body text-xs leading-relaxed text-white/55">{program.description}</p>
 
             {/* Significance */}
             <div className="rounded-lg border border-[rgba(245,158,11,0.12)] bg-[rgba(245,158,11,0.03)] px-3 py-2.5">
@@ -771,8 +773,8 @@ export function ParallaxMilitaryHero({
       </motion.div>
 
       {/* Layered overlays */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#04080F] via-[#04080F]/20 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#04080F]/80 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-[#04080F] via-[#04080F]/20 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-r from-[#04080F]/80 via-transparent to-transparent" />
 
       {/* HUD grid */}
       <HUDGrid opacity={0.05} />
@@ -811,7 +813,7 @@ export function ParallaxMilitaryHero({
 
       {/* Content */}
       <motion.div style={{ opacity }} className="relative z-10 w-full">
-        <div className="mx-auto max-w-screen-xl px-4 pb-20 sm:px-6 lg:px-8 text-center md:text-left">
+        <div className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8 text-center md:text-left">
           {tagline && (
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -864,7 +866,7 @@ export function ParallaxMilitaryHero({
       </motion.div>
 
       {/* Bottom amber rule */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(245,158,11,0.5)] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[rgba(245,158,11,0.5)] to-transparent" />
     </div>
   );
 }

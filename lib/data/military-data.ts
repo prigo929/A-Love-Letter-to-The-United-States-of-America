@@ -85,7 +85,7 @@ export const MILITARY_STATS: MilitaryStat[] = [
   { id: "personnel", value: 1.3,  suffix: "M",   decimals: 1, label: "Active Duty Personnel",     sublabel: "Plus 800K reserve and 700K civilian DOD",        color: "white" },
   { id: "carriers",  value: 11,   suffix: "",                 label: "Carrier Strike Groups",      sublabel: "The rest of the world has 2 total",              color: "blue"  },
   { id: "nukes",     value: 5550, suffix: "+",                label: "Nuclear Warheads",            sublabel: "Delivered by land, sea, and air — the Triad",   color: "amber" },
-  { id: "satellites",value: 87,   suffix: "+",                label: "Military Satellites",         sublabel: "GPS, ISR, communications, early warning",       color: "blue"  },
+  { id: "satellites",value: 142,  suffix: "+",                label: "Military Satellites",         sublabel: "GPS, ISR, communications, early warning",       color: "blue"  },
   { id: "aircraft",  value: 13247,suffix: "",                 label: "Military Aircraft",           sublabel: "The largest air force on Earth — by far",       color: "white" },
   { id: "bases",     value: 750,  suffix: "+",                label: "Overseas Bases",              sublabel: "In 80+ countries across all 7 continents",      color: "amber" },
   { id: "ships",     value: 490,  suffix: "+",                label: "Naval Vessels",               sublabel: "Including 68 submarines",                       color: "blue"  },
