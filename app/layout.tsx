@@ -10,7 +10,7 @@
 
 import type { Metadata, Viewport } from "next";
 import type { StaticImport } from "next/dist/shared/lib/get-img-props";
-import { Bebas_Neue, Playfair_Display, Inter } from "next/font/google";
+import { Bebas_Neue, Playfair_Display, Inter, Archivo, Space_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/layout/Header";
@@ -45,6 +45,20 @@ const inter = Inter({
   display: "swap",
   preload: true,
   weight: ["300", "400", "500", "600", "700"],
+});
+
+const archivo = Archivo({
+  subsets: ["latin"],
+  variable: "--font-archivo",
+  display: "swap",
+  preload: true,
+});
+
+const spaceMono = Space_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
 });
 const STATES_VIDEO_PRELOAD_SRC = "/videos/flag-loop.mp4";
 
@@ -165,9 +179,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${bebasNeue.variable} ${playfairDisplay.variable} ${inter.variable} overflow-x-hidden`}
+      <html
+        lang="en"
+        className={`${bebasNeue.variable} ${playfairDisplay.variable} ${inter.variable} ${archivo.variable} ${spaceMono.variable} overflow-x-hidden`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >

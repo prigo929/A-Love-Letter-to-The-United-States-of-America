@@ -104,6 +104,7 @@ export function MilStyles() {
       }
 
       .mil-text-hero {
+        font-family: var(--font-archivo);
         font-size: clamp(60px, 12vw, 180px);
         font-weight: 900;
         line-height: 0.85;
@@ -112,6 +113,7 @@ export function MilStyles() {
       }
 
       .mil-text-label {
+        font-family: var(--font-hero);
         font-size: clamp(8px, 0.8vw, 10px);
         font-weight: 500;
         letter-spacing: 0.4em;
@@ -951,7 +953,7 @@ export function BudgetComparisonBar({
 
   return (
     <div ref={ref} className="overflow-hidden rounded-2xl border border-white/8 bg-[#080C14] p-6">
-      <p className="mb-6 font-mono text-[9px] uppercase tracking-[0.3em] text-white/35">{displayLabel}</p>
+      <p className="mb-6 font-mono text-[9px] uppercase tracking-[0.3em] text-white/35 font-[family-name:var(--font-mono)]">{displayLabel}</p>
       <div className="space-y-3">
         {data.map((row, i) => {
           const isHighlight = row.highlight || row.country.includes("United States") || row.country.includes("Statele Unite");
@@ -961,11 +963,11 @@ export function BudgetComparisonBar({
               <div className="mb-1.5 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="text-sm">{row.flag}</span>
-                  <span className={`mil-text-metadata ${isHighlight ? "text-white font-bold" : "text-white/20"}`}>
+                  <span className={`mil-text-metadata font-[family-name:var(--font-archivo)] tracking-normal text-[11px] ${isHighlight ? "text-white font-bold" : "text-white/40"}`}>
                     {row.country}
                   </span>
                 </div>
-                <span className={`mil-text-metadata ${isHighlight ? "text-white" : "text-white/20"}`}>
+                <span className={`mil-text-metadata font-[family-name:var(--font-mono)] text-[10px] ${isHighlight ? "text-white" : "text-white/30"}`}>
                   ${row.budget}B
                 </span>
               </div>
@@ -986,7 +988,7 @@ export function BudgetComparisonBar({
           );
         })}
       </div>
-      <p className="mt-4 text-right font-mono text-[8px] text-white/20">Source: SIPRI Military Expenditure Database 2024</p>
+      <p className="mt-4 text-right font-mono text-[8px] text-white/20 font-[family-name:var(--font-mono)]">Source: SIPRI Military Expenditure Database 2024</p>
     </div>
   );
 }
