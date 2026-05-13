@@ -14,6 +14,7 @@ import Image from "next/image";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import type { WeaponSystem, MilitaryBranch, DARPAProgram, MilitaryStat, CarrierGroupPosition } from "@/lib/data/military-data";
 import { BUDGET_DATA as SHARED_BUDGET_DATA } from "@/lib/data/military-data";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 1. HUDGrid — animated scan-line grid overlay
@@ -653,15 +654,22 @@ export function GlobalCarrierMap({ positions }: { positions: CarrierGroupPositio
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-[#04080F]">
-      {/* Map background — dark ocean */}
+      {/* Map background — high-fidelity tactical SVG */}
       <div className="relative" style={{ paddingBottom: "50%" }}>
         <div className="absolute inset-0">
-          {/* Simplified world map grid */}
+          <Image
+            src={SITE_IMAGES.military.tacticalMap}
+            alt="Global tactical map"
+            fill
+            className="object-contain opacity-20"
+            style={{ filter: "brightness(0.8) saturate(0.5) invert(1) hue-rotate(180deg)" }}
+          />
+          
+          {/* Simplified world map grid (faded) */}
           <div className="absolute inset-0" style={{
             backgroundImage: `
-              radial-gradient(ellipse 80% 60% at 25% 40%, rgba(30,111,191,0.08) 0%, transparent 60%),
-              radial-gradient(ellipse 60% 50% at 75% 35%, rgba(30,111,191,0.06) 0%, transparent 60%),
-              radial-gradient(ellipse 40% 40% at 55% 65%, rgba(30,111,191,0.05) 0%, transparent 50%)
+              radial-gradient(ellipse 80% 60% at 25% 40%, rgba(30,111,191,0.04) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 50% at 75% 35%, rgba(30,111,191,0.03) 0%, transparent 60%)
             `,
           }} />
 
