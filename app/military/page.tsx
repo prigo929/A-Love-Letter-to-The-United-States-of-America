@@ -387,11 +387,11 @@ export default async function MilitaryPage() {
         src={SITE_IMAGES.military.b2}
         alt="B-2 Spirit stealth bomber over the Pacific"
       >
-        <div className="text-center max-w-4xl px-6">
+        <div className="flex flex-col items-center text-center max-w-4xl px-6">
           <div className="mil-text-label mb-12">{locale === 'ro' ? 'NORTHROP GRUMMAN B-2 SPIRIT · DIN 1997' : 'NORTHROP GRUMMAN B-2 SPIRIT · SINCE 1997'}</div>
-          <h2 className="mil-text-hero">
-            {locale === 'ro' ? 'NĂSCUT DIN' : 'BORN FROM'}<br/>
-            <span className="text-white/20">{locale === 'ro' ? 'ÎNTUNERIC' : 'DARKNESS'}</span>
+          <h2 className="mil-text-hero flex flex-col items-center w-full">
+            <span className="block">{locale === 'ro' ? 'NĂSCUT DIN' : 'BORN FROM'}</span>
+            <span className="block text-white/20">{locale === 'ro' ? 'ÎNTUNERIC' : 'DARKNESS'}</span>
           </h2>
           <p className="mil-text-metadata mt-12 mb-16">
             {locale === 'ro'
