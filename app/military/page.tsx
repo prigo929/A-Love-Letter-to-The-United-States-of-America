@@ -149,10 +149,7 @@ function Section({
       className="relative overflow-hidden"
       style={{ background: bg }}
     >
-      {/* Gradient separator instead of hard line */}
-      <div className="h-px w-full" style={{
-        background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)'
-      }} />
+      {/* Seamless transition */}
 
       {label && (
         <div className="pt-22 pb-12 flex justify-center">
@@ -192,12 +189,12 @@ function CinematicImage({
         src={src}
         alt={alt}
         fill
-        className="object-cover opacity-30 grayscale-[0.7] sepia-[0.1]"
+        className="object-cover opacity-45 grayscale-[0.7] sepia-[0.1]"
         sizes="100vw"
         quality={90}
       />
       {/* Cinematic vignette */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,black_0%,rgba(0,0,0,0)_15%,rgba(0,0,0,0)_85%,black_100%)]" />
       <div className="absolute inset-0" style={{
         background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%)'
       }} />
@@ -307,14 +304,14 @@ export default async function MilitaryPage() {
           <video
             autoPlay loop muted playsInline
             className="w-full h-full object-cover"
-            style={{ filter: 'contrast(1.1) brightness(0.6) saturate(0.8)' }}
+            style={{ filter: 'contrast(1.1) brightness(0.75) saturate(0.8)' }}
             aria-label="Cinematic military supremacy video showcase"
           >
             <source src="/videos/military/supremacy-wave.mp4" type="video/mp4" />
           </video>
           
           {/* Edge vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,black_0%,rgba(0,0,0,0)_15%,rgba(0,0,0,0)_85%,black_100%)]" />
           <div className="absolute inset-0" style={{
             background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.5) 100%)'
           }} />
