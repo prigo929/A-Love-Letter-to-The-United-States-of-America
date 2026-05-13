@@ -655,7 +655,7 @@ export function GlobalCarrierMap({ positions }: { positions: CarrierGroupPositio
   return (
     <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-[#04080F]">
       {/* Map background — high-fidelity tactical SVG */}
-      <div className="relative" style={{ paddingBottom: "50%" }}>
+      <div className="relative" style={{ paddingBottom: "48.25%" }}>
         <div className="absolute inset-0">
           <Image
             src={SITE_IMAGES.military.tacticalMap}
@@ -684,37 +684,47 @@ export function GlobalCarrierMap({ positions }: { positions: CarrierGroupPositio
 
           {/* Carrier dots */}
           <svg 
-            viewBox="0 0 100 50" 
+            viewBox="0 0 201 97" 
             className="absolute inset-0 w-full h-full" 
             preserveAspectRatio="none"
             role="img"
             aria-label="Global map showing approximate positions of U.S. Navy Carrier Strike Groups"
           >
             {/* Carrier group positions */}
-            {carriers.map((c) => (
-              <g key={c.id}
-                onMouseEnter={() => setHovered(c.id)}
-                onMouseLeave={() => setHovered(null)}
-                className="cursor-pointer"
-              >
-                {/* Ping rings */}
-                <circle cx={c.cx} cy={c.cy} r="3" fill="none" stroke="rgba(245,158,11,0.4)"
-                  strokeWidth="0.5"
-                  style={{ animation: `radar-ping 2.5s ease-out ${carriers.indexOf(c) * 0.3}s infinite` }} />
-                {/* Dot */}
-                <circle cx={c.cx} cy={c.cy} r={hovered === c.id ? 1.8 : 1.2}
-                  fill={hovered === c.id ? "#F59E0B" : "#F59E0B"}
-                  opacity={hovered === c.id ? 1 : 0.8}
-                  style={{
-                    filter: `drop-shadow(0 0 ${hovered === c.id ? 4 : 2}px rgba(245,158,11,0.8))`,
-                    transition: "all 0.2s ease",
-                  }}
+             {carriers.map((c) => (
+               <g key={c.id} className="cursor-pointer">
+
+                {/* Precise Shield-shaped hit area (Contracted to 6x8 for tighter feel) */}
+                <path 
+                  d="M -3,-3.5 L 3,-3.5 L 3,0.5 Q 3,3.5 0,4.5 Q -3,3.5 -3,0.5 Z" 
+                  transform={`translate(${c.cx}, ${c.cy})`}
+                  fill="transparent"
+                  className="cursor-pointer"
+                  onMouseEnter={() => setHovered(c.id)}
+                  onMouseLeave={() => setHovered(null)}
                 />
+
+                {/* Carrier Logo Group (Visuals only) */}
+                <g 
+                  transform={`translate(${c.cx}, ${c.cy}) scale(${hovered === c.id ? 1.2 : 1})`} 
+                  opacity={hovered === c.id ? 1 : 0.85}
+                  style={{ transition: "all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)", pointerEvents: "none" }}
+                >
+                   <image 
+                     href={SITE_IMAGES.military.carrierLogo}
+                     x={-5}
+                     y={-5}
+                     width={10}
+                     height={10}
+                     style={{ 
+                       filter: c.status === "homeport" 
+                         ? `drop-shadow(0 0 ${hovered === c.id ? '6px' : '3px'} rgba(96,165,250,0.8))` 
+                         : `drop-shadow(0 0 ${hovered === c.id ? '6px' : '3px'} rgba(245,158,11,0.8))`
+                     }}
+                   />
+                </g>
               </g>
             ))}
-
-            {/* Equator line */}
-            <line x1="0" y1="25" x2="100" y2="25" stroke="rgba(59,130,246,0.1)" strokeWidth="0.3" />
           </svg>
 
           {/* Tooltip */}
@@ -742,7 +752,11 @@ export function GlobalCarrierMap({ positions }: { positions: CarrierGroupPositio
       {/* Legend */}
       <div className="flex items-center justify-between border-t border-white/8 px-5 py-3">
         <div className="flex items-center gap-2">
-          <div className="h-2 w-2 rounded-full bg-[#F59E0B]" style={{ boxShadow: "0 0 6px rgba(245,158,11,0.8)" }} />
+          <div className="relative h-2 w-3">
+             <svg viewBox="0 0 4 3" className="absolute inset-0 h-full w-full">
+               <path d="M0,0 L3,0 L4,1.5 L4,3 L0,3 Z" fill="#F59E0B" />
+             </svg>
+          </div>
           <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/35">Carrier Strike Group</p>
         </div>
         <p className="font-mono text-[9px] text-white/25">APPROXIMATE GLOBAL POSITIONS</p>

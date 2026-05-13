@@ -73,6 +73,8 @@ import marinesAssault from "@/IMAGES/Military/Marines/us-marines-amphibious-assa
 import socomOperators from "@/IMAGES/Military/SOCOM/us-army-socom-operators.jpg";
 import tacticalWorldMap from "@/IMAGES/Military/tactical-world-map.svg";
 
+import carrierStrikeGroupLogo from "@/ASSETS/Military/Carrier Strike Group Logo Dark.png";
+
 // Export plain `.src` strings so the rest of the app can use them in Next Image
 // components without caring which physical file they came from.
 //
@@ -143,6 +145,7 @@ export const SITE_IMAGES = {
   military: {
     hero: b2Hero.src,
     carrier: geraldFordCarrier.src,
+    carrierLogo: carrierStrikeGroupLogo.src,
     b2: b2Hero.src,
     satellite: globalLeadership.src,
     tacticalMap: tacticalWorldMap.src,
