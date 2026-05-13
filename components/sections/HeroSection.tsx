@@ -405,11 +405,12 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
         ctx.save();
         ctx.fillStyle = `rgba(${rgbString}, ${alpha})`;
         ctx.strokeStyle = `rgba(${rgbString}, ${Math.min(alpha + 0.08, 1)})`;
-        ctx.shadowBlur = particle.blur;
-        ctx.shadowColor = `rgba(${rgbString}, ${Math.min(alpha + 0.15, 1)})`;
 
         if (particle.shape === "dot") {
           // Dots are the main soft-glow particles.
+          // Optimization: Removed expensive shadowBlur.
+          // Instead, we can draw a larger faint circle for a cheaper "glow" if needed,
+          // but for 150+ particles, even that adds up.
           ctx.beginPath();
           ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
           ctx.fill();
@@ -515,27 +516,37 @@ export function HeroSection() {
       {/* ── Background Image Carousel ────────────────────────────────────────
           Render all images and fade their opacity to avoid load flickering during transitions. */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
-        {images.map((img, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: index === 0 ? 1 : 0 }}
-            animate={{ opacity: index === currentImage ? 1 : 0 }}
-            transition={{ duration: 2, ease: "easeInOut" }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              fill
-              priority={index === 0}
-              className="object-cover"
-              placeholder="blur"
-              blurDataURL={BLUR_PLACEHOLDER}
-              sizes="100vw"
-              quality={85}
-            />
-          </motion.div>
-        ))}
+        {images.map((img, index) => {
+          // Performance Optimization: Only render the current image and the next/prev
+          // one involved in the transition. This prevents preloading all 5 at once.
+          const isCurrent = index === currentImage;
+          const isPrev = index === (currentImage - 1 + images.length) % images.length;
+          const isNext = index === (currentImage + 1) % images.length;
+
+          if (!isCurrent && !isPrev && !isNext) return null;
+
+          return (
+            <motion.div
+              key={index}
+              initial={{ opacity: index === 0 ? 1 : 0 }}
+              animate={{ opacity: isCurrent ? 1 : 0 }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                priority={index === 0}
+                className="object-cover"
+                placeholder="blur"
+                blurDataURL={BLUR_PLACEHOLDER}
+                sizes="100vw"
+                quality={85}
+              />
+            </motion.div>
+          );
+        })}
       </motion.div>
 
       {/* ── Gradient Overlay ─────────────────────────────────────────────────

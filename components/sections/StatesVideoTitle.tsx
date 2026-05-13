@@ -188,7 +188,28 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
       }
     };
 
-    const intervalId = window.setInterval(syncLoop, 16);
+    let rafId: number | null = null;
+    const loop = () => {
+      syncLoop();
+      rafId = requestAnimationFrame(loop);
+    };
+
+    if (document.visibilityState === "visible") {
+      rafId = requestAnimationFrame(loop);
+    }
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        if (!rafId) rafId = requestAnimationFrame(loop);
+      } else {
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
     video.addEventListener("timeupdate", syncLoop);
     video.addEventListener("ended", handleEnded);
     video.addEventListener("pause", handlePause);
@@ -197,7 +218,8 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
       if (restartTimeoutId !== null) {
         window.clearTimeout(restartTimeoutId);
       }
-      window.clearInterval(intervalId);
+      if (rafId) cancelAnimationFrame(rafId);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       video.removeEventListener("timeupdate", syncLoop);
       video.removeEventListener("ended", handleEnded);
       video.removeEventListener("pause", handlePause);

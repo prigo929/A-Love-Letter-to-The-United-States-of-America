@@ -72,8 +72,8 @@ export function NatureHeroCrossfade({ children }: { children: React.ReactNode })
       ))}
 
       {/* Overlays */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-navy-dark/60 via-transparent to-navy-dark/90" />
-      <div className="absolute inset-0 z-10 bg-gradient-to-r from-navy-dark/70 via-transparent to-transparent" />
+      <div className="absolute inset-0 z-10 bg-linear-to-b from-navy-dark/60 via-transparent to-navy-dark/90" />
+      <div className="absolute inset-0 z-10 bg-linear-to-r from-navy-dark/70 via-transparent to-transparent" />
 
       {/* Slide label */}
       <AnimatePresence mode="wait">
@@ -100,10 +100,10 @@ export function NatureHeroCrossfade({ children }: { children: React.ReactNode })
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 z-10 bg-gradient-to-t from-navy-dark to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 z-10 bg-linear-to-t from-navy-dark to-transparent" />
 
       <div className="relative z-20 flex min-h-screen items-end pb-24 pt-32">
-        <div className="mx-auto max-w-screen-xl w-full px-4 sm:px-6 lg:px-8">{children}</div>
+        <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">{children}</div>
       </div>
     </section>
   );
@@ -222,8 +222,8 @@ export function ParkCinematicGrid({ parks, visitLabel = "Visits/yr", acresLabel 
               sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,33vw"
               placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          <motion.div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/20"
+          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+          <motion.div className="absolute inset-0 bg-linear-to-t from-black/95 via-black/60 to-black/20"
             initial={{ opacity: 0 }} whileHover={{ opacity: 1 }} transition={{ duration: 0.35 }} />
           <span className="absolute right-3 top-3 z-10 rounded-full border border-white/20 bg-black/50 px-2.5 py-1 font-body text-xs text-white/70 backdrop-blur-sm">
             {estLabel} {park.established}

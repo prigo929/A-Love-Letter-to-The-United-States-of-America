@@ -48,7 +48,7 @@ import {
 } from "@/components/military/MilitaryAnimations";
 
 import { getServerLocale } from "@/lib/i18n/server";
-import { BLUR_PLACEHOLDER } from "@/lib/utils";
+import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 import {
@@ -763,6 +763,50 @@ export default async function MilitaryPage() {
         </div>
 
         <DARPAProgramGrid programs={DARPA_PROGRAMS}/>
+      </Section>
+
+      {/* ─── §10.5  SUPREMACY WAVE — MILITARY SHOWCASE ────────────────────────── */}
+      <Section
+        id="supremacy-wave"
+        label="AMERICA SUPREMACY · MILITARY SHOWCASE"
+        bg="#000"
+        fullBleed
+        noPad
+      >
+        <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden" }}>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          >
+            <source src="/videos/military/supremacy-wave.mp4" type="video/mp4" />
+          </video>
+          
+          {/* CRT Scanline effect overlay for immersive military aesthetic */}
+          <div className={cn(
+            "pointer-events-none absolute inset-0 z-20 opacity-15",
+            "bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))]",
+            "bg-size-[100%_4px,3px_100%]"
+          )} />
+          
+          <div style={{
+            position: "absolute",
+            bottom: 40,
+            left: 40,
+            zIndex: 30,
+            borderLeft: "2px solid #f59e0b",
+            paddingLeft: 20
+          }}>
+            <h2 className="md" style={{ fontSize: 32, fontWeight: 900, color: "#fff", margin: 0, letterSpacing: ".1em" }}>
+              ABSOLUTE SUPREMACY
+            </h2>
+            <p className="md" style={{ fontSize: 10, letterSpacing: ".4em", color: "rgba(245,158,11,.8)", marginTop: 6 }}>
+              PLANETARY DOMINANCE · VERIFIED 2024
+            </p>
+          </div>
+        </div>
       </Section>
 
       {/* ─── §11  ORBITAL CINEMATIC INTERLUDE ───────────────────────────────── */}
