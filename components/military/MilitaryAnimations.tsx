@@ -25,7 +25,7 @@ import { SITE_IMAGES } from "@/lib/site-images";
 export function SmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.0, // Snappier response
+      duration: 0.8, // Much snappier and lighter feel
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
@@ -127,9 +127,7 @@ export function MilStyles() {
       }
 
       .mil-glass {
-        background: rgba(10, 10, 10, 0.7);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
+        background: rgba(10, 10, 10, 0.8);
         border: 1px solid rgba(255, 255, 255, 0.05);
       }
 
@@ -827,7 +825,7 @@ export function ParallaxMilitaryHero({
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         {/* Background image with reveal effect */}
         <motion.div 
-          className="absolute inset-0"
+          className="absolute inset-0 will-change-transform"
           style={{ 
             opacity, 
             filter: useTransform(blur, (v) => `blur(${v}px)`),
