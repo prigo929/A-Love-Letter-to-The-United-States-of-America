@@ -28,6 +28,7 @@ import {
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { LazyChart } from "@/components/ui/LazyChart";
 import type { GdpDataPoint } from "@/lib/data/economy-data";
 
 interface GdpBarChartProps {
@@ -138,66 +139,65 @@ export function GdpBarChart({
         </div>
       )}
 
-      <div className="h-80 w-full md:h-96">
-        {/* ResponsiveContainer makes the chart fill the available width/height. */}
-        <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
-          <BarChart
-            data={data}
-            margin={{ top: 30, right: 20, left: 10, bottom: 60 }}
-            barCategoryGap="30%"
-          >
-            <CartesianGrid
-              strokeDasharray="3 3"
-              stroke="rgba(255,255,255,0.07)"
-              vertical={false}
-            />
-            <XAxis
-              dataKey="country"
-              tick={{
-                fill: "rgba(255,255,255,0.55)",
-                fontSize: 11,
-                fontFamily: "var(--font-body)",
-              }}
-              axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
-              tickLine={false}
-              angle={-35}
-              textAnchor="end"
-              interval={0}
-            />
-            <YAxis
-              tick={{
-                fill: "rgba(255,255,255,0.4)",
-                fontSize: 11,
-                fontFamily: "var(--font-body)",
-              }}
-              axisLine={false}
-              tickLine={false}
-              tickFormatter={(v) => `$${v}${valueSuffix}`}
-            />
-            <Tooltip
-              content={
-                <CustomTooltip
-                  valueSuffix={valueSuffix}
-                  valueLabel={localizedValueLabel}
-                />
-              }
-              cursor={{ fill: "rgba(255,255,255,0.04)" }}
-            />
-            {/* `dataKey="gdp"` tells Recharts which property in each data item
-                should be used for the bar heights. */}
-            <Bar dataKey="gdp" radius={[6, 6, 0, 0]} maxBarSize={60}>
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={entry.highlight ? "#FFD700" : "#3C3B6E"}
-                  opacity={entry.highlight ? 1 : 0.75}
-                />
-              ))}
-              <LabelList content={<CustomLabel valueSuffix={valueSuffix} />} />
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
+      <LazyChart height={400}>
+        <div className="h-80 w-full md:h-96">
+          <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
+            <BarChart
+              data={data}
+              margin={{ top: 30, right: 20, left: 10, bottom: 60 }}
+              barCategoryGap="30%"
+            >
+              <CartesianGrid
+                strokeDasharray="3 3"
+                stroke="rgba(255,255,255,0.07)"
+                vertical={false}
+              />
+              <XAxis
+                dataKey="country"
+                tick={{
+                  fill: "rgba(255,255,255,0.55)",
+                  fontSize: 11,
+                  fontFamily: "var(--font-body)",
+                }}
+                axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
+                tickLine={false}
+                angle={-35}
+                textAnchor="end"
+                interval={0}
+              />
+              <YAxis
+                tick={{
+                  fill: "rgba(255,255,255,0.4)",
+                  fontSize: 11,
+                  fontFamily: "var(--font-body)",
+                }}
+                axisLine={false}
+                tickLine={false}
+                tickFormatter={(v) => `$${v}${valueSuffix}`}
+              />
+              <Tooltip
+                content={
+                  <CustomTooltip
+                    valueSuffix={valueSuffix}
+                    valueLabel={localizedValueLabel}
+                  />
+                }
+                cursor={{ fill: "rgba(255,255,255,0.04)" }}
+              />
+              <Bar dataKey="gdp" radius={[6, 6, 0, 0]} maxBarSize={60}>
+                {data.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={entry.highlight ? "#FFD700" : "#3C3B6E"}
+                    opacity={entry.highlight ? 1 : 0.75}
+                  />
+                ))}
+                <LabelList content={<CustomLabel valueSuffix={valueSuffix} />} />
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </LazyChart>
 
       {source && (
         <p className="mt-3 text-right font-body text-xs text-white/30">

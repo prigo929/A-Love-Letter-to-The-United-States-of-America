@@ -20,6 +20,7 @@ import {
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { LazyChart } from "@/components/ui/LazyChart";
 import type {
   DollarReservePoint,
   MarketCapPoint,
@@ -80,70 +81,72 @@ export function DollarReserveChart({
         </h3>
       )}
 
-      <div className="grid gap-8 md:grid-cols-2 md:items-center">
-        {/* Pie */}
-        <div className="h-[260px] w-full">
-          <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
-            <PieChart>
-              <Pie
-                data={data}
-                dataKey="percentage"
-                nameKey="currency"
-                cx="50%"
-                cy="50%"
-                innerRadius={65}
-                outerRadius={105}
-                paddingAngle={2}
-              >
-                {data.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Pie>
-              {/* Center label */}
-              <text
-                x="50%"
-                y="46%"
-                textAnchor="middle"
-                dominantBaseline="middle"
-              >
-                <tspan
-                  x="50%"
-                  dy="0"
-                  fontSize="28"
-                  fontFamily="var(--font-hero)"
-                  fill="#FFD700"
+      <LazyChart height={260}>
+        <div className="grid gap-8 md:grid-cols-2 md:items-center">
+          {/* Pie */}
+          <div className="h-[260px] w-full">
+            <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
+              <PieChart>
+                <Pie
+                  data={data}
+                  dataKey="percentage"
+                  nameKey="currency"
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={65}
+                  outerRadius={105}
+                  paddingAngle={2}
                 >
-                  {usdReserve ? `${usdReserve.percentage.toFixed(1)}%` : "N/A"}
-                </tspan>
-                <tspan
+                  {data.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Pie>
+                {/* Center label */}
+                <text
                   x="50%"
-                  dy="20"
-                  fontSize="11"
-                  fontFamily="var(--font-body)"
-                  fill="rgba(255,255,255,0.5)"
+                  y="46%"
+                  textAnchor="middle"
+                  dominantBaseline="middle"
                 >
-                  USD
-                </tspan>
-              </text>
-              <Tooltip
-                formatter={(value: any, name: any) => [`${value}%`, name]}
-                contentStyle={{
-                  backgroundColor: "#0d1117",
-                  border: "1px solid rgba(255,255,255,0.15)",
-                  borderRadius: "12px",
-                  fontFamily: "var(--font-body)",
-                  color: "#fff",
-                }}
-              />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
+                  <tspan
+                    x="50%"
+                    dy="0"
+                    fontSize="28"
+                    fontFamily="var(--font-hero)"
+                    fill="#FFD700"
+                  >
+                    {usdReserve ? `${usdReserve.percentage.toFixed(1)}%` : "N/A"}
+                  </tspan>
+                  <tspan
+                    x="50%"
+                    dy="20"
+                    fontSize="11"
+                    fontFamily="var(--font-body)"
+                    fill="rgba(255,255,255,0.5)"
+                  >
+                    USD
+                  </tspan>
+                </text>
+                <Tooltip
+                  formatter={(value: any, name: any) => [`${value}%`, name]}
+                  contentStyle={{
+                    backgroundColor: "#0d1117",
+                    border: "1px solid rgba(255,255,255,0.15)",
+                    borderRadius: "12px",
+                    fontFamily: "var(--font-body)",
+                    color: "#fff",
+                  }}
+                />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
 
-        {/* Legend */}
-        <div>
-          <ReserveLegend data={data} />
+          {/* Legend */}
+          <div>
+            <ReserveLegend data={data} />
+          </div>
         </div>
-      </div>
+      </LazyChart>
 
       {source && (
         <p className="mt-4 text-right font-body text-xs text-white/30">
@@ -202,57 +205,59 @@ export function MarketCapChart({ data, title, source }: MarketCapChartProps) {
         </h3>
       )}
 
-      <div className="h-[280px] w-full">
-        <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
-          <BarChart
-            data={data}
-            layout="vertical"
-            margin={{ top: 5, right: 60, left: 10, bottom: 5 }}
-          >
-            <CartesianGrid
-              strokeDasharray="3 3"
-              stroke="rgba(255,255,255,0.06)"
-              horizontal={false}
-            />
-            <XAxis
-              type="number"
-              tick={{
-                fill: "rgba(255,255,255,0.4)",
-                fontSize: 11,
-                fontFamily: "var(--font-body)",
-              }}
-              axisLine={false}
-              tickLine={false}
-              tickFormatter={(v) => `$${v}T`}
-            />
-            <YAxis
-              dataKey="exchange"
-              type="category"
-              tick={{
-                fill: "rgba(255,255,255,0.6)",
-                fontSize: 12,
-                fontFamily: "var(--font-body)",
-              }}
-              axisLine={false}
-              tickLine={false}
-              width={90}
-            />
-            <Tooltip
-              content={<MarketCapTooltip />}
-              cursor={{ fill: "rgba(255,255,255,0.04)" }}
-            />
-            <Bar dataKey="marketCap" radius={[0, 6, 6, 0]} maxBarSize={30}>
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={entry.highlight ? "#FFD700" : "#3C3B6E"}
-                  opacity={entry.highlight ? 1 : 0.72}
-                />
-              ))}
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
+      <LazyChart height={280}>
+        <div className="h-[280px] w-full">
+          <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
+            <BarChart
+              data={data}
+              layout="vertical"
+              margin={{ top: 5, right: 60, left: 10, bottom: 5 }}
+            >
+              <CartesianGrid
+                strokeDasharray="3 3"
+                stroke="rgba(255,255,255,0.06)"
+                horizontal={false}
+              />
+              <XAxis
+                type="number"
+                tick={{
+                  fill: "rgba(255,255,255,0.4)",
+                  fontSize: 11,
+                  fontFamily: "var(--font-body)",
+                }}
+                axisLine={false}
+                tickLine={false}
+                tickFormatter={(v) => `$${v}T`}
+              />
+              <YAxis
+                dataKey="exchange"
+                type="category"
+                tick={{
+                  fill: "rgba(255,255,255,0.6)",
+                  fontSize: 12,
+                  fontFamily: "var(--font-body)",
+                }}
+                axisLine={false}
+                tickLine={false}
+                width={90}
+              />
+              <Tooltip
+                content={<MarketCapTooltip />}
+                cursor={{ fill: "rgba(255,255,255,0.04)" }}
+              />
+              <Bar dataKey="marketCap" radius={[0, 6, 6, 0]} maxBarSize={30}>
+                {data.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={entry.highlight ? "#FFD700" : "#3C3B6E"}
+                    opacity={entry.highlight ? 1 : 0.72}
+                  />
+                ))}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </LazyChart>
 
       {source && (
         <p className="mt-3 text-right font-body text-xs text-white/30">
