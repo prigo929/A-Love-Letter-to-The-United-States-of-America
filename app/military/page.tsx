@@ -198,29 +198,7 @@ function Section({
   );
 }
 
-// ─── Classified Badge ─────────────────────────────────────────────────────────
 
-function ClassifiedBadge({ text = "CLASSIFIED · EYES ONLY" }: { text?: string }) {
-  return (
-    <div
-      className="md mk-blink"
-      style={{
-        display:       "inline-flex",
-        alignItems:    "center",
-        gap:           8,
-        padding:       "5px 14px",
-        border:        "1px solid rgba(245,158,11,.3)",
-        background:    "rgba(245,158,11,.07)",
-        fontSize:       8,
-        letterSpacing: ".3em",
-        color:         "rgba(245,158,11,.8)",
-        textTransform: "uppercase",
-      }}
-    >
-      ◈ {text}
-    </div>
-  );
-}
 
 // ─── Cinematic Section Image ──────────────────────────────────────────────────
 
@@ -273,7 +251,7 @@ function CinematicImage({
       )}
 
       <HUDGrid/>
-      <ScanLine/>
+
       <GrainOverlay z={30} opacity={.025}/>
 
       <div style={{ position: "absolute", inset: 0, zIndex: 20 }}>
@@ -348,7 +326,7 @@ export default async function MilitaryPage() {
       >
         {/* Section header */}
         <div style={{ textAlign: "center", marginBottom: 56 }}>
-          <ClassifiedBadge text="STRATEGIC ASSESSMENT · 2024"/>
+
           <h2
             className="md"
             style={{
@@ -495,6 +473,9 @@ export default async function MilitaryPage() {
             <source src="/videos/military/supremacy-wave.mp4" type="video/mp4" />
           </video>
           
+          {/* Cinematic Vignette/Fade — anchors the video into the dark background */}
+          <div className="pointer-events-none absolute inset-0 z-10 bg-linear-to-t from-[#040810]/80 via-transparent to-transparent" />
+          
           {/* CRT Scanline effect overlay for immersive military aesthetic */}
           <div className={cn(
             "pointer-events-none absolute inset-0 z-20 opacity-15",
@@ -614,7 +595,7 @@ export default async function MilitaryPage() {
         amber
       >
         <div style={{ textAlign: "center", marginBottom: 52 }}>
-          <ClassifiedBadge text="WEAPONS SYSTEMS · DOSSIER ACCESS"/>
+
           <h2
             className="md"
             style={{
@@ -738,7 +719,7 @@ export default async function MilitaryPage() {
         amber
       >
         <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <ClassifiedBadge text="NUCLEAR COMMAND · TOP SECRET"/>
+
           <h2
             className="md"
             style={{
@@ -802,7 +783,7 @@ export default async function MilitaryPage() {
         bg="#060c1a"
       >
         <div style={{ textAlign: "center", marginBottom: 52 }}>
-          <ClassifiedBadge text="FUTURE SYSTEMS · CONCEPT PHASE"/>
+
           <h2
             className="md"
             style={{
@@ -1118,7 +1099,7 @@ export default async function MilitaryPage() {
           background: "linear-gradient(135deg,#000 0%,rgba(7,12,24,.96) 50%,#000 100%)",
         }}/>
         <HUDGrid/>
-        <ScanLine color="rgba(245,158,11,.2)" dur={12}/>
+
         <GrainOverlay z={30} opacity={.025}/>
 
         <div style={{
