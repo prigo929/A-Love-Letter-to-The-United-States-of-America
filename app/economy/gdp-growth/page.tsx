@@ -31,7 +31,7 @@ import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "GDP & Scale | Economy | America: The Greatest Nation",
+  title: "GDP & Scale | Economy",
   description:
     "$28.8 trillion GDP — the United States has been the world's largest economy for over 130 years. A deep dive into American economic scale, resilience, and dominance.",
   alternates: { canonical: "/economy/gdp-growth" },

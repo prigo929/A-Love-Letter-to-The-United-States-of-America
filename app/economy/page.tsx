@@ -71,7 +71,7 @@ import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Economy | America: The Greatest Nation",
+  title: "Economy",
   description:
     "The US economy — $28.8 trillion in GDP, the world's largest stock markets, the global reserve currency, and the innovation capital of Earth. A deep-dive into American economic dominance.",
   alternates: { canonical: "/economy" },

@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   // ── Basic ────────────────────────────────────────────────────────────────
   title: {
-    default: `${SITE.name} | A Celebration of the United States`,
+    default: SITE.name,
     template: `%s | ${SITE.name}`,
   },
   description: SITE.description,

@@ -18,7 +18,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { SITE_IMAGES }      from "@/lib/site-images";
 import { getRockiesFacts }  from "@/lib/data/nature-data";
 
-export const metadata: Metadata = { title: "Rocky Mountains | Nature | America: The Greatest Nation", description: "The Rocky Mountains — 3,000 miles long, 53 peaks over 14,000 feet, and the backbone of North America." };
+export const metadata: Metadata = { title: "Rocky Mountains | Nature", description: "The Rocky Mountains — 3,000 miles long, 53 peaks over 14,000 feet, and the backbone of North America." };
 
 const ROCKIES_PARKS_EN = [
   { name: "Rocky Mountain NP",  state: "CO", highlight: "Most visited Rocky Mountain park — 4.4M visitors, 114 peaks over 11,000 ft, 3,000+ elk" },

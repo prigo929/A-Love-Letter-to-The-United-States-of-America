@@ -16,7 +16,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { POWERS_CHECK_EXAMPLES } from "@/lib/data/constitution-data";
 
 export const metadata: Metadata = {
-  title: "Separation of Powers | Constitution | America: The Greatest Nation",
+  title: "Separation of Powers | Constitution",
   description: "Three branches, each checking the other two. Why tyranny is nearly impossible in America — and the historical proof that the system works.",
 };
 

@@ -15,7 +15,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Second Amendment | Constitution | America: The Greatest Nation",
+  title: "Second Amendment | Constitution",
   description:
     "27 words. The most actively litigated constitutional provision post-2022. A deep dive into Heller, Bruen, and the ongoing legal battle over the right to bear arms.",
   alternates: { canonical: "/constitution/second-amendment" },

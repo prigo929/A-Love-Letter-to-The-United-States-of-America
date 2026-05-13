@@ -22,7 +22,7 @@ import { SITE_IMAGES }         from "@/lib/site-images";
 import { getGrandCanyonFacts } from "@/lib/data/nature-data";
 
 export const metadata: Metadata = {
-  title: "Grand Canyon | Nature | America: The Greatest Nation",
+  title: "Grand Canyon | Nature",
   description: "277 miles long, 18 miles wide, one mile deep — exposing 1.8 billion years of Earth's geological history.",
 };
 

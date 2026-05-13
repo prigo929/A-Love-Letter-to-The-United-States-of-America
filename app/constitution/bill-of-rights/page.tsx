@@ -18,7 +18,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { BILL_OF_RIGHTS }   from "@/lib/data/constitution-data";
 
 export const metadata: Metadata = {
-  title: "Bill of Rights | Constitution | America: The Greatest Nation",
+  title: "Bill of Rights | Constitution",
   description:
     "The first ten amendments to the US Constitution — ratified 1791. Free speech, the right to bear arms, due process, and seven other foundational protections.",
   alternates: { canonical: "/constitution/bill-of-rights" },

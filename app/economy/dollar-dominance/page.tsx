@@ -25,7 +25,7 @@ import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Dollar Dominance | Economy | America: The Greatest Nation",
+  title: "Dollar Dominance | Economy",
   description:
     "The US dollar: 57% of global FX reserves, the Petrodollar system, Bretton Woods to today. The world's reserve currency and its extraordinary advantages for America.",
   alternates: { canonical: "/economy/dollar-dominance" },

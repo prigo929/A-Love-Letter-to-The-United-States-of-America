@@ -129,12 +129,12 @@ export const NAV_SECTIONS = [
     href: "/military",
     description: "The most powerful military in the history of civilization",
     imageSrc: SITE_IMAGES.homeAirForcePlane,
-    badge: "$886B Budget",
+    badge: "$916B Budget",
     items: [
       {
         label: "Overview",
         href: "/military",
-        description: "$886B budget, 1.3M active duty",
+        description: "$916B budget, 1.34M active duty",
       },
       {
         label: "US Navy",
@@ -495,11 +495,11 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
     title: "Armată",
     description:
       "Cea mai puternică forță militară din istoria civilizației",
-    badge: "Buget de 886 Mld. $",
+    badge: "Buget de 916 Mld. $",
     items: {
       "/military": {
         label: "Prezentare Generală",
-        description: "886 Mld. $, 1,3 milioane de militari activi",
+        description: "916 Mld. $, 1,34 milioane de militari activi",
       },
       "/military/navy": {
         label: "Marina SUA",

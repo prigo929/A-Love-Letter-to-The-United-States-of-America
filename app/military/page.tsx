@@ -63,7 +63,7 @@ import {
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
-  title: "American Military Power | America: The Greatest Nation",
+  title: "American Military Power",
   description:
     "The United States operates the most advanced military-industrial-intelligence system in human history. Explore the forces, technologies, and doctrine that define planetary dominance.",
   openGraph: {
