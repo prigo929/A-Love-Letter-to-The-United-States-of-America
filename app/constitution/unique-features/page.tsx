@@ -15,7 +15,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Unique Features | Constitution | America: The Greatest Nation",
+  title: "Unique Features | Constitution",
   description:
     "Elected district attorneys, grand juries, ballot initiatives, recall elections, and town meetings — democratic mechanics found nowhere else on Earth.",
   alternates: { canonical: "/constitution/unique-features" },

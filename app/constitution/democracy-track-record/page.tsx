@@ -17,7 +17,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { PRESIDENTIAL_TRANSFERS } from "@/lib/data/constitution-data";
 
 export const metadata: Metadata = {
-  title: "250-Year Track Record | Constitution | America: The Greatest Nation",
+  title: "250-Year Track Record | Constitution",
   description:
     "60 presidential elections. Zero coups. Zero suspensions. The unbroken 237-year record of American constitutional democracy — the longest in recorded history.",
   alternates: { canonical: "/constitution/democracy-track-record" },

@@ -6,7 +6,7 @@ import { getLocalizedNavSections } from "@/lib/constants";
 import { getServerLocale } from "@/lib/i18n/server";
 
 export const metadata: Metadata = {
-  title: "All Sections | America: The Greatest Nation",
+  title: "All Sections",
   description:
     "Complete sitemap — explore every section celebrating American greatness.",
 };

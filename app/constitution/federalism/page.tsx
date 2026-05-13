@@ -13,7 +13,7 @@ import { getServerLocale }      from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER }     from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Federalism — Policy Laboratory | Constitution | America: The Greatest Nation",
+  title: "Federalism — Policy Laboratory | Constitution",
   description: "50 states, 50 policy laboratories. Design your ideal state and discover which real American state already lives that way. The most dynamic governance system on Earth.",
 };
 

@@ -20,7 +20,7 @@ import { BLUR_PLACEHOLDER }  from "@/lib/utils";
 import { SITE_IMAGES }       from "@/lib/site-images";
 import { TOP_PARKS_VISITORS, FEATURED_PARKS, getNatureOverviewFacts } from "@/lib/data/nature-data";
 
-export const metadata: Metadata = { title: "National Parks | Nature | America: The Greatest Nation", description: "63 national parks, 423 NPS sites, 85 million protected acres. The world's first and greatest national park system." };
+export const metadata: Metadata = { title: "National Parks | Nature", description: "63 national parks, 423 NPS sites, 85 million protected acres. The world's first and greatest national park system." };
 
 const ALL_PARKS = [
   { name: "Great Smoky Mountains", state: "TN/NC",    established: 1934, visitors: 13.3, area: 522  },

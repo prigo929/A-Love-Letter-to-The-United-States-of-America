@@ -15,7 +15,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "First Amendment | Constitution | America: The Greatest Nation",
+  title: "First Amendment | Constitution",
   description:
     "The broadest free speech protection of any democracy in history. Why America protects speech other nations criminalize — and why that matters.",
   alternates: { canonical: "/constitution/first-amendment" },

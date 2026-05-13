@@ -22,7 +22,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Electoral Archive Map | Constitution | America: The Greatest Nation",
+  title: "Electoral Archive Map | Constitution",
   description:
     "An interactive historical archive of United States elections — explore presidential, senate, house, and gubernatorial results across every election year on a museum-grade interactive map.",
 };

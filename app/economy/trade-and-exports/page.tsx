@@ -25,8 +25,8 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 const getPageMetadata = (locale: Locale) => ({
   title:
     locale === "ro"
-      ? "Comerț și Exporturi | Economie | America: The Greatest Nation"
-      : "Trade & Exports | Economy | America: The Greatest Nation",
+      ? "Comerț și Exporturi | Economie"
+      : "Trade & Exports | Economy",
   description:
     locale === "ro"
       ? "America exportă peste 2 trilioane de dolari în bunuri — avioane, semiconductori, dispozitive medicale, petrol și produse agricole — plus trilioane în servicii, software și expertiză financiară."

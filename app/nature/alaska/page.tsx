@@ -28,7 +28,7 @@ import { SITE_IMAGES }      from "@/lib/site-images";
 import { getAlaskaFacts }   from "@/lib/data/nature-data";
 
 export const metadata: Metadata = {
-  title: "Alaska | Nature | America: The Greatest Nation",
+  title: "Alaska | Nature",
   description:
     "Alaska — 663,268 square miles, Denali at 20,310 ft, 100,000 glaciers, 3 million lakes, and the greatest concentration of wilderness remaining on Earth.",
   alternates: { canonical: "/nature/alaska" },

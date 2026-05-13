@@ -27,7 +27,7 @@ import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Capital Markets | Economy | America: The Greatest Nation",
+  title: "Capital Markets | Economy",
   description:
     "NYSE + NASDAQ: $47 trillion in market cap. US Treasuries set the world's risk-free rate. The deepest, most liquid capital markets in human history.",
   alternates: { canonical: "/economy/capital-markets" },

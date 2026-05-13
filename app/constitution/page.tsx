@@ -49,7 +49,7 @@ import {
 } from "@/lib/data/constitution-data";
 
 export const metadata: Metadata = {
-  title: "Constitution & Democracy | America: The Greatest Nation",
+  title: "Constitution & Democracy",
   description: "237 years of unbroken constitutional government — a record no other nation comes close to matching. An interactive deep dive into the most sophisticated legal architecture in human history.",
   alternates: { canonical: "/constitution" },
   openGraph: {

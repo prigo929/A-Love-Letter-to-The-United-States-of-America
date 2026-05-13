@@ -24,7 +24,7 @@ import { GREAT_LAKES_DATA, getGreatLakesFacts } from "@/lib/data/nature-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
-  title: "Great Lakes | Nature | America: The Greatest Nation",
+  title: "Great Lakes | Nature",
   description:
     "The Great Lakes — 21% of Earth's surface freshwater, 10,900 miles of coastline, and the economic engine of the Midwest.",
 };

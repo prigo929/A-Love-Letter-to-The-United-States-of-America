@@ -51,7 +51,7 @@ import {
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Nature & Geography | America: The Greatest Nation",
+  title: "Nature & Geography",
   description:
     "From Arctic Alaska to tropical Hawaii — no nation on Earth possesses such extraordinary diversity of natural wonders. 63 national parks, the Great Lakes, Yellowstone, the Grand Canyon, and more.",
   alternates: { canonical: "/nature" },

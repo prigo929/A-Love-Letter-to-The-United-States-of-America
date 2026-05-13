@@ -28,7 +28,7 @@ import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Startups & Venture Capital | Economy | America: The Greatest Nation",
+  title: "Startups & Venture Capital | Economy",
   description:
     "America attracts 47% of all global venture capital. 659+ unicorn companies. Silicon Valley, the greatest engine of innovation and wealth creation in history.",
   alternates: { canonical: "/economy/startups-venture-capital" },

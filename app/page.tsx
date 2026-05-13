@@ -26,7 +26,7 @@ import { SITE } from "@/lib/constants";
 // ─── Page Metadata ────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: `${SITE.name} | Home`,
+  title: "Home",
   description: SITE.description,
   alternates: { canonical: "/" },
   openGraph: {

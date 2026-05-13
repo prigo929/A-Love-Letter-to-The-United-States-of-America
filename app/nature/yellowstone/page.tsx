@@ -27,7 +27,7 @@ import { SITE_IMAGES }        from "@/lib/site-images";
 import { getYellowstoneFacts } from "@/lib/data/nature-data";
 
 export const metadata: Metadata = {
-  title: "Yellowstone | Nature | America: The Greatest Nation",
+  title: "Yellowstone | Nature",
   description: "Yellowstone — the world's first national park. 10,000 hydrothermal features, 5,000 bison, and a supervolcano.",
 };
 
