@@ -99,7 +99,7 @@ const HERO_STATS = [
 ];
 
 const DOMINANCE_METRICS = [
-  { value: "39%",  label: "Share of Global Military Spending",          color: "#f59e0b" as const },
+  { value: "33%",  label: "Share of Global Military Spending",          color: "#f59e0b" as const },
   { 
     value: `${MILITARY_STATS.find(s => s.id === "satellites")?.value}${MILITARY_STATS.find(s => s.id === "satellites")?.suffix}`,  
     label: "Satellites in Military Orbit",               

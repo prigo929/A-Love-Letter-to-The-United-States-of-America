@@ -81,14 +81,14 @@ export interface CarrierGroupPosition {
 // ─── Global Stats ─────────────────────────────────────────────────────────────
 
 export const MILITARY_STATS: MilitaryStat[] = [
-  { id: "budget",    value: 886,  suffix: "B",   prefix: "$", label: "Defense Budget",            sublabel: "FY2024 — larger than next 10 nations combined", color: "amber" },
-  { id: "personnel", value: 1.3,  suffix: "M",   decimals: 1, label: "Active Duty Personnel",     sublabel: "Plus 800K reserve and 700K civilian DOD",        color: "white" },
-  { id: "carriers",  value: 11,   suffix: "",                 label: "Carrier Strike Groups",      sublabel: "The rest of the world has 2 total",              color: "blue"  },
-  { id: "nukes",     value: 5550, suffix: "+",                label: "Nuclear Warheads",            sublabel: "Delivered by land, sea, and air — the Triad",   color: "amber" },
-  { id: "satellites",value: 142,  suffix: "+",                label: "Military Satellites",         sublabel: "GPS, ISR, communications, early warning",       color: "blue"  },
-  { id: "aircraft",  value: 13247,suffix: "",                 label: "Military Aircraft",           sublabel: "The largest air force on Earth — by far",       color: "white" },
-  { id: "bases",     value: 750,  suffix: "+",                label: "Overseas Bases",              sublabel: "In 80+ countries across all 7 continents",      color: "amber" },
-  { id: "ships",     value: 490,  suffix: "+",                label: "Naval Vessels",               sublabel: "Including 68 submarines",                       color: "blue"  },
+  { id: "budget",    value: 916,  suffix: "B",   prefix: "$", label: "Defense Budget",            sublabel: "FY2025 — larger than next 9 nations combined", color: "amber" },
+  { id: "personnel", value: 1.34, suffix: "M",   decimals: 2, label: "Active Duty Personnel",     sublabel: "Plus 765K reserve and 700K civilian DOD",        color: "white" },
+  { id: "carriers",  value: 11,   suffix: "",                 label: "Carrier Strike Groups",      sublabel: "11 nuclear-powered supercarriers — 100% world share", color: "blue"  },
+  { id: "nukes",     value: 5044, suffix: "",                 label: "Nuclear Warheads",            sublabel: "Active and reserve inventory — the Triad",      color: "amber" },
+  { id: "satellites",value: 500,  suffix: "+",                label: "Military Satellites",         sublabel: "Dedicated and classified orbital assets",       color: "blue"  },
+  { id: "aircraft",  value: 13300,suffix: "+",                label: "Military Aircraft",           sublabel: "World's largest air force (Air Force) and 2nd largest (Navy)", color: "white" },
+  { id: "bases",     value: 750,  suffix: "+",                label: "Overseas Bases",              sublabel: "Projecting power across 80+ countries",         color: "amber" },
+  { id: "ships",     value: 530,  suffix: "+",                label: "Naval Vessels",               sublabel: "Including Battle Force and Sealift Command",    color: "blue"  },
 ];
 
 // ─── Military Branches ────────────────────────────────────────────────────────
@@ -427,12 +427,12 @@ export const DEFENSE_CONTRACTORS: DefenseContractor[] = [
 ];
 
 export const BUDGET_DATA = [
-  { country: "United States", budget: 886, flag: "🇺🇸" },
-  { country: "China",         budget: 296, flag: "🇨🇳" },
-  { country: "Russia",        budget: 109, flag: "🇷🇺" },
+  { country: "United States", budget: 916, flag: "🇺🇸" },
+  { country: "China",         budget: 336, flag: "🇨🇳" },
+  { country: "Russia",        budget: 140, flag: "🇷🇺" },
   { country: "India",         budget:  83, flag: "🇮🇳" },
   { country: "Saudi Arabia",  budget:  75, flag: "🇸🇦" },
-  { country: "UK",            budget:  68, flag: "🇬🇧" },
+  { country: "UK",            budget:  73, flag: "🇬🇧" },
   { country: "Germany",       budget:  67, flag: "🇩🇪" },
 ];
 
