@@ -89,17 +89,41 @@ const BUDGET_DATA = [
 ];
 
 const HERO_STATS = [
-  { value: "$886B",  label: "Defense Budget" },
-  { value: "11",     label: "Carrier Groups" },
-  { value: "750+",   label: "Global Bases" },
-  { value: "5,500+", label: "Nuclear Warheads" },
+  { 
+    value: `${MILITARY_STATS.find(s => s.id === "budget")?.prefix}${MILITARY_STATS.find(s => s.id === "budget")?.value}${MILITARY_STATS.find(s => s.id === "budget")?.suffix}`, 
+    label: "Defense Budget" 
+  },
+  { 
+    value: `${MILITARY_STATS.find(s => s.id === "carriers")?.value}`, 
+    label: "Carrier Groups" 
+  },
+  { 
+    value: `${MILITARY_STATS.find(s => s.id === "bases")?.value}${MILITARY_STATS.find(s => s.id === "bases")?.suffix}`, 
+    label: "Global Bases" 
+  },
+  { 
+    value: `${MILITARY_STATS.find(s => s.id === "nukes")?.value}${MILITARY_STATS.find(s => s.id === "nukes")?.suffix}`, 
+    label: "Nuclear Warheads" 
+  },
 ];
 
 const DOMINANCE_METRICS = [
   { value: "39%",  label: "Share of Global Military Spending",          color: "#f59e0b" as const },
-  { value: "142",  label: "Satellites in Military Orbit",               color: "#60a5fa" as const },
-  { value: "13K+", label: "Military Aircraft — Largest Fleet on Earth", color: "#f59e0b" as const },
-  { value: "480",  label: "Naval Vessels Including 11 Supercarriers",   color: "#60a5fa" as const },
+  { 
+    value: `${MILITARY_STATS.find(s => s.id === "satellites")?.value}${MILITARY_STATS.find(s => s.id === "satellites")?.suffix}`,  
+    label: "Satellites in Military Orbit",               
+    color: "#60a5fa" as const 
+  },
+  { 
+    value: `${Math.round(MILITARY_STATS.find(s => s.id === "aircraft")?.value! / 1000)}K+`, 
+    label: "Military Aircraft — Largest Fleet on Earth", 
+    color: "#f59e0b" as const 
+  },
+  { 
+    value: `${MILITARY_STATS.find(s => s.id === "ships")?.value}${MILITARY_STATS.find(s => s.id === "ships")?.suffix}`,  
+    label: "Naval Vessels Including 11 Supercarriers",   
+    color: "#60a5fa" as const 
+  },
 ];
 
 // ─── Section Wrapper ──────────────────────────────────────────────────────────
@@ -935,6 +959,9 @@ export default async function MilitaryPage() {
                 border:         "1px solid rgba(255,255,255,.06)",
                 backdropFilter: "blur(8px)",
                 overflow:       "hidden",
+                display:        "flex",
+                flexDirection:  "column",
+                height:         "100%",
               }}
             >
               <HUDCorners color="#f59e0b" size={12} weight={1.2} offset={6}/>
@@ -964,7 +991,7 @@ export default async function MilitaryPage() {
 
               <div
                 className="mb"
-                style={{ marginBottom: 14, fontSize: 11, color: "rgba(96,165,250,.7)", letterSpacing: ".05em" }}
+                style={{ marginBottom: 14, fontSize: 11, color: "rgba(96,165,250,.7)", letterSpacing: ".05em", flexGrow: 1 }}
               >
                 {c.specialty}
               </div>
@@ -1040,6 +1067,7 @@ export default async function MilitaryPage() {
                 background: "rgba(255,255,255,.02)",
                 border:     "1px solid rgba(255,255,255,.06)",
                 overflow:   "hidden",
+                height:     "100%",
               }}
             >
               <HUDCorners color="#60a5fa" size={11} weight={1.2} offset={5}/>
@@ -1211,6 +1239,9 @@ export default async function MilitaryPage() {
                   border:         "1px solid rgba(255,255,255,.06)",
                   cursor:         "pointer",
                   overflow:       "hidden",
+                  height:         "100%",
+                  display:        "flex",
+                  flexDirection:  "column",
                 }}
               >
                 <HUDCorners color="#f59e0b" size={10} weight={1} offset={5}/>
@@ -1224,7 +1255,7 @@ export default async function MilitaryPage() {
                 </div>
                 <div
                   className="md"
-                  style={{ marginTop: 4, fontSize: 8, letterSpacing: ".18em", color: "rgba(255,255,255,.35)" }}
+                  style={{ marginTop: 4, fontSize: 8, letterSpacing: ".18em", color: "rgba(255,255,255,.35)", flexGrow: 1 }}
                 >
                   {item.sub}
                 </div>
