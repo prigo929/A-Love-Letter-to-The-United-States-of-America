@@ -23,6 +23,7 @@ import {
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { LazyChart } from "@/components/ui/LazyChart";
 import type { SP500DataPoint } from "@/lib/data/economy-data";
 
 interface SP500ChartProps {
@@ -98,106 +99,108 @@ export function SP500Chart({ data, title, subtitle, source }: SP500ChartProps) {
         </div>
       )}
 
-      <div className="h-[300px] w-full md:h-[360px]">
-        <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
-          <AreaChart
-            data={data}
-            margin={{ top: 20, right: 20, left: 10, bottom: 10 }}
-          >
-            <defs>
-              <linearGradient id="sp500Gradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#B22234" stopOpacity={0.4} />
-                <stop offset="95%" stopColor="#B22234" stopOpacity={0.02} />
-              </linearGradient>
-            </defs>
+      <LazyChart height={360}>
+        <div className="h-[300px] w-full md:h-[360px]">
+          <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
+            <AreaChart
+              data={data}
+              margin={{ top: 20, right: 20, left: 10, bottom: 10 }}
+            >
+              <defs>
+                <linearGradient id="sp500Gradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#B22234" stopOpacity={0.4} />
+                  <stop offset="95%" stopColor="#B22234" stopOpacity={0.02} />
+                </linearGradient>
+              </defs>
 
-            <CartesianGrid
-              strokeDasharray="3 3"
-              stroke="rgba(255,255,255,0.06)"
-              vertical={false}
-            />
-            <XAxis
-              dataKey="year"
-              tick={{
-                fill: "rgba(255,255,255,0.45)",
-                fontSize: 11,
-                fontFamily: "var(--font-body)",
-              }}
-              axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
-              tickLine={false}
-            />
-            <YAxis
-              tick={{
-                fill: "rgba(255,255,255,0.4)",
-                fontSize: 11,
-                fontFamily: "var(--font-body)",
-              }}
-              axisLine={false}
-              tickLine={false}
-              tickFormatter={(v) =>
-                v >= 1000 ? `${(v / 1000).toFixed(1)}k` : v
-              }
-            />
-            <Tooltip
-              content={(props) => {
-                if (!props.active || !props.payload?.length) return null;
-                return (
-                  <div className="rounded-xl border border-white/15 bg-navy-dark/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
-                    <p className="mb-1 font-body text-xs text-white/50">
-                      {copy.yearPrefix} {props.label}
-                    </p>
-                    <p className="font-hero text-2xl text-glory-gold">
-                      {props.payload[0].value?.toLocaleString()}
-                    </p>
-                    <p className="font-body text-xs text-white/50">
-                      {copy.indexLevel}
-                    </p>
-                  </div>
-                );
-              }}
-            />
+              <CartesianGrid
+                strokeDasharray="3 3"
+                stroke="rgba(255,255,255,0.06)"
+                vertical={false}
+              />
+              <XAxis
+                dataKey="year"
+                tick={{
+                  fill: "rgba(255,255,255,0.45)",
+                  fontSize: 11,
+                  fontFamily: "var(--font-body)",
+                }}
+                axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
+                tickLine={false}
+              />
+              <YAxis
+                tick={{
+                  fill: "rgba(255,255,255,0.4)",
+                  fontSize: 11,
+                  fontFamily: "var(--font-body)",
+                }}
+                axisLine={false}
+                tickLine={false}
+                tickFormatter={(v) =>
+                  v >= 1000 ? `${(v / 1000).toFixed(1)}k` : v
+                }
+              />
+              <Tooltip
+                content={(props) => {
+                  if (!props.active || !props.payload?.length) return null;
+                  return (
+                    <div className="rounded-xl border border-white/15 bg-navy-dark/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
+                      <p className="mb-1 font-body text-xs text-white/50">
+                        {copy.yearPrefix} {props.label}
+                      </p>
+                      <p className="font-hero text-2xl text-glory-gold">
+                        {props.payload[0].value?.toLocaleString()}
+                      </p>
+                      <p className="font-body text-xs text-white/50">
+                        {copy.indexLevel}
+                      </p>
+                    </div>
+                  );
+                }}
+              />
 
-            {/* Annotation lines */}
-            <ReferenceLine
-              x={2002}
-              stroke="rgba(255,255,255,0.2)"
-              strokeDasharray="4 4"
-              label={{
-                value: copy.dotCom,
-                fill: "rgba(255,255,255,0.35)",
-                fontSize: 10,
-                fontFamily: "var(--font-body)",
-              }}
-            />
-            <ReferenceLine
-              x={2009}
-              stroke="rgba(255,255,255,0.2)"
-              strokeDasharray="4 4"
-              label={{
-                value: copy.gfc,
-                fill: "rgba(255,255,255,0.35)",
-                fontSize: 10,
-                fontFamily: "var(--font-body)",
-              }}
-            />
+              {/* Annotation lines */}
+              <ReferenceLine
+                x={2002}
+                stroke="rgba(255,255,255,0.2)"
+                strokeDasharray="4 4"
+                label={{
+                  value: copy.dotCom,
+                  fill: "rgba(255,255,255,0.35)",
+                  fontSize: 10,
+                  fontFamily: "var(--font-body)",
+                }}
+              />
+              <ReferenceLine
+                x={2009}
+                stroke="rgba(255,255,255,0.2)"
+                strokeDasharray="4 4"
+                label={{
+                  value: copy.gfc,
+                  fill: "rgba(255,255,255,0.35)",
+                  fontSize: 10,
+                  fontFamily: "var(--font-body)",
+                }}
+              />
 
-            <Area
-              type="monotone"
-              dataKey="value"
-              stroke="#B22234"
-              strokeWidth={2.5}
-              fill="url(#sp500Gradient)"
-              dot={false}
-              activeDot={{
-                r: 5,
-                fill: "#FFD700",
-                stroke: "#fff",
-                strokeWidth: 2,
-              }}
-            />
-          </AreaChart>
-        </ResponsiveContainer>
-      </div>
+              <Area
+                type="monotone"
+                dataKey="value"
+                stroke="#B22234"
+                strokeWidth={2.5}
+                fill="url(#sp500Gradient)"
+                dot={false}
+                activeDot={{
+                  r: 5,
+                  fill: "#FFD700",
+                  stroke: "#fff",
+                  strokeWidth: 2,
+                }}
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
+      </LazyChart>
 
       {/* Return callout */}
       <div className="mt-4 flex flex-wrap gap-4">

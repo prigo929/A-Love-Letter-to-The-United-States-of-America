@@ -311,7 +311,7 @@ export default async function EconomyPage() {
 
       {/* ── Desktop layout: sticky TOC sidebar + main content ─────────────── */}
       <div className="relative bg-navy-dark">
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-[220px_1fr] lg:gap-12 xl:grid-cols-[260px_1fr]">
             {/* Sticky TOC — desktop only */}
             <aside className="hidden lg:block">
@@ -506,8 +506,10 @@ export default async function EconomyPage() {
                     className="h-[300px] w-full object-cover md:h-[400px]"
                     placeholder="blur"
                     blurDataURL={BLUR_PLACEHOLDER}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 1000px"
+                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/80 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-rrom-navy-dark/80 to-transparent" />
                   <div className="absolute bottom-6 left-6">
                     <p className="font-hero text-5xl text-glory-gold">$47T+</p>
                     <p className="font-body text-sm text-white/70">
@@ -738,8 +740,10 @@ export default async function EconomyPage() {
                     className="h-[250px] w-full object-cover md:h-[320px]"
                     placeholder="blur"
                     blurDataURL={BLUR_PLACEHOLDER}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 1000px"
+                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/40 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-navy-dark via-navy-dark/40 to-transparent" />
                   <div className="absolute bottom-6 left-0 right-0 px-6">
                     <p className="font-body text-center text-sm text-white/70">
                       {copy.dollarReserveCaption}
@@ -799,6 +803,8 @@ export default async function EconomyPage() {
                     className="h-[280px] w-full object-cover md:h-[380px]"
                     placeholder="blur"
                     blurDataURL={BLUR_PLACEHOLDER}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 1000px"
+                    loading="lazy"
                   />
                 </div>
 
@@ -872,8 +878,10 @@ export default async function EconomyPage() {
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           placeholder="blur"
                           blurDataURL={BLUR_PLACEHOLDER}
+                          loading="lazy"
+                          quality={75}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-navy-mid via-navy-mid/30 to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-navy-mid via-navy-mid/30 to-transparent" />
 
                         {/* Badge */}
                         <span className="absolute right-3 top-3 rounded-full bg-glory-gold px-3 py-1 font-body text-xs font-bold text-navy-dark">
@@ -928,16 +936,17 @@ function EconomyHero({
         sizes="100vw"
         placeholder="blur"
         blurDataURL={BLUR_PLACEHOLDER}
+        quality={85}
       />
 
       {/* Layered overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-navy-dark via-navy-dark/85 to-navy-dark/50" />
-      <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-r from-navy-dark via-navy-dark/85 to-navy-dark/50" />
+      <div className="absolute inset-0 bg-linear-to-t from-navy-dark via-transparent to-transparent" />
 
       {/* Red/blue stripe accent at bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-glory-gradient" />
 
-      <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="mb-4 font-body text-sm font-semibold uppercase tracking-[0.3em] text-glory-gold">
             {copy.heroEyebrow}

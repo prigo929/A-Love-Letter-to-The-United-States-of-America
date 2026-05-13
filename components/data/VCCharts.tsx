@@ -19,6 +19,7 @@ import {
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { LazyChart } from "@/components/ui/LazyChart";
 import type { VCDataPoint, UnicornDataPoint } from "@/lib/data/economy-data";
 
 // ─── VC Bar Chart ─────────────────────────────────────────────────────────────
@@ -71,73 +72,75 @@ export function VCBarChart({ data, title, source }: VCBarChartProps) {
         </h3>
       )}
 
-      <div className="h-[280px] w-full">
-        <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
-          <BarChart
-            data={data}
-            margin={{ top: 20, right: 20, left: 10, bottom: 60 }}
-            barCategoryGap="35%"
-          >
-            <CartesianGrid
-              strokeDasharray="3 3"
-              stroke="rgba(255,255,255,0.07)"
-              vertical={false}
-            />
-            <XAxis
-              dataKey="country"
-              tick={{
-                fill: "rgba(255,255,255,0.55)",
-                fontSize: 10,
-                fontFamily: "var(--font-body)",
-              }}
-              axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
-              tickLine={false}
-              angle={-35}
-              textAnchor="end"
-              interval={0}
-            />
-            <YAxis
-              tick={{
-                fill: "rgba(255,255,255,0.4)",
-                fontSize: 11,
-                fontFamily: "var(--font-body)",
-              }}
-              axisLine={false}
-              tickLine={false}
-              tickFormatter={(v) => `$${v}B`}
-            />
-            <Tooltip
-              content={(props) => {
-                if (!props.active || !props.payload?.length) return null;
-                const item = props.payload[0];
-                return (
-                  <div className="rounded-xl border border-white/15 bg-navy-dark/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
-                    <p className="mb-1 font-body text-sm font-semibold text-white">
-                      {props.label}
-                    </p>
-                    <p className="font-hero text-2xl text-glory-gold">
-                      ${item.value}B
-                    </p>
-                    <p className="font-body text-xs text-white/50">
-                      {item.payload.percentage}% {ofGlobalLabel}
-                    </p>
-                  </div>
-                );
-              }}
-              cursor={{ fill: "rgba(255,255,255,0.04)" }}
-            />
-            <Bar dataKey="investment" radius={[5, 5, 0, 0]} maxBarSize={55}>
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={entry.highlight ? "#FFD700" : "#3C3B6E"}
-                  opacity={entry.highlight ? 1 : 0.7}
-                />
-              ))}
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
+      <LazyChart height={280}>
+        <div className="h-[280px] w-full">
+          <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
+            <BarChart
+              data={data}
+              margin={{ top: 20, right: 20, left: 10, bottom: 60 }}
+              barCategoryGap="35%"
+            >
+              <CartesianGrid
+                strokeDasharray="3 3"
+                stroke="rgba(255,255,255,0.07)"
+                vertical={false}
+              />
+              <XAxis
+                dataKey="country"
+                tick={{
+                  fill: "rgba(255,255,255,0.55)",
+                  fontSize: 10,
+                  fontFamily: "var(--font-body)",
+                }}
+                axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
+                tickLine={false}
+                angle={-35}
+                textAnchor="end"
+                interval={0}
+              />
+              <YAxis
+                tick={{
+                  fill: "rgba(255,255,255,0.4)",
+                  fontSize: 11,
+                  fontFamily: "var(--font-body)",
+                }}
+                axisLine={false}
+                tickLine={false}
+                tickFormatter={(v) => `$${v}B`}
+              />
+              <Tooltip
+                content={(props) => {
+                  if (!props.active || !props.payload?.length) return null;
+                  const item = props.payload[0];
+                  return (
+                    <div className="rounded-xl border border-white/15 bg-navy-dark/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
+                      <p className="mb-1 font-body text-sm font-semibold text-white">
+                        {props.label}
+                      </p>
+                      <p className="font-hero text-2xl text-glory-gold">
+                        ${item.value}B
+                      </p>
+                      <p className="font-body text-xs text-white/50">
+                        {item.payload.percentage}% {ofGlobalLabel}
+                      </p>
+                    </div>
+                  );
+                }}
+                cursor={{ fill: "rgba(255,255,255,0.04)" }}
+              />
+              <Bar dataKey="investment" radius={[5, 5, 0, 0]} maxBarSize={55}>
+                {data.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={entry.highlight ? "#FFD700" : "#3C3B6E"}
+                    opacity={entry.highlight ? 1 : 0.7}
+                  />
+                ))}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </LazyChart>
 
       {source && (
         <p className="mt-3 text-right font-body text-xs text-white/30">
@@ -253,32 +256,34 @@ export function UnicornPieChart({ data, title, source }: UnicornPieChartProps) {
         </h3>
       )}
 
-      <div className="h-[320px] w-full">
-        <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
-          <PieChart>
-            <Pie
-              data={data}
-              dataKey="unicorns"
-              nameKey="country"
-              cx="50%"
-              cy="50%"
-              innerRadius={68}
-              outerRadius={112}
-              paddingAngle={2}
-              label={false}
-              labelLine={false}
-            >
-              {data.map((_, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={PIE_COLORS[index % PIE_COLORS.length]}
-                />
-              ))}
-            </Pie>
-            <Tooltip content={<UnicornTooltip />} />
-          </PieChart>
-        </ResponsiveContainer>
-      </div>
+      <LazyChart height={320}>
+        <div className="h-[320px] w-full">
+          <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
+            <PieChart>
+              <Pie
+                data={data}
+                dataKey="unicorns"
+                nameKey="country"
+                cx="50%"
+                cy="50%"
+                innerRadius={68}
+                outerRadius={112}
+                paddingAngle={2}
+                label={false}
+                labelLine={false}
+              >
+                {data.map((_, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={PIE_COLORS[index % PIE_COLORS.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip content={<UnicornTooltip />} />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+      </LazyChart>
 
       <UnicornLegend data={data} locale={locale} />
 
