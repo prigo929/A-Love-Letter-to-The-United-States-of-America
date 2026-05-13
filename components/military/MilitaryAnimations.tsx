@@ -213,7 +213,7 @@ export function HUDCounter({ stat, index = 0 }: { stat: MilitaryStat; index?: nu
       </p>
 
       {/* Number */}
-      <p className="mb-1 font-mono leading-none" style={{ fontSize: "clamp(32px,4vw,52px)" }}>
+      <p className="mb-1 font-mono leading-none tracking-tighter" style={{ fontSize: "clamp(30px,3.5vw,44px)" }}>
         <MilCountUp to={value} prefix={prefix} suffix={suffix} decimals={decimals} color={colorMap[color]} />
       </p>
 
