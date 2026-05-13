@@ -552,7 +552,7 @@ export function HeroSection() {
       {/* ── Gradient Overlay ─────────────────────────────────────────────────
           This darkens the photo so white text stays readable on top of it. */}
       <div
-        className="absolute inset-0 z-[1]"
+        className="absolute inset-0 z-1"
         style={{
           background:
             "linear-gradient(135deg, rgba(10,10,30,0.90) 0%, rgba(60,59,110,0.70) 40%, rgba(139,26,38,0.60) 100%)",
@@ -563,7 +563,7 @@ export function HeroSection() {
       {/* Bottom fade into next section
           This softens the transition from the hero into the darker section below. */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-40 z-[2]"
+        className="absolute bottom-0 left-0 right-0 h-40 z-2"
         style={{
           background: "linear-gradient(to bottom, transparent, #0d1117)",
         }}

@@ -45,31 +45,42 @@ export function NatureHeroCrossfade({ children }: { children: React.ReactNode })
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-navy-dark">
-      {HERO_SLIDES.map((slide, i) => (
-        <motion.div
-          key={i}
-          className="absolute inset-0"
-          animate={{ opacity: i === current ? 1 : 0 }}
-          transition={{ duration: 1.8, ease: "easeInOut" }}
-        >
+      {HERO_SLIDES.map((slide, i) => {
+        // Performance optimization: only render current, previous, and next slides
+        // to prevent simultaneous preloading of all high-res background assets.
+        const isPrev = i === (current - 1 + HERO_SLIDES.length) % HERO_SLIDES.length;
+        const isNext = i === (current + 1) % HERO_SLIDES.length;
+        const isActive = i === current;
+        
+        if (!isActive && !isPrev && !isNext) return null;
+
+        return (
           <motion.div
+            key={i}
             className="absolute inset-0"
-            animate={i === current ? { scale: 1.06 } : { scale: 1 }}
-            transition={{ duration: 6, ease: "linear" }}
+            initial={false}
+            animate={{ opacity: isActive ? 1 : 0 }}
+            transition={{ duration: 1.8, ease: "easeInOut" }}
           >
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              priority={i === 0}
-              sizes="100vw"
-              className="object-cover"
-              placeholder="blur"
-              blurDataURL={BLUR_PLACEHOLDER}
-            />
+            <motion.div
+              className="absolute inset-0"
+              animate={isActive ? { scale: 1.06 } : { scale: 1 }}
+              transition={{ duration: 6, ease: "linear" }}
+            >
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                fill
+                priority={i === 0}
+                sizes="100vw"
+                className="object-cover"
+                placeholder="blur"
+                blurDataURL={BLUR_PLACEHOLDER}
+              />
+            </motion.div>
           </motion.div>
-        </motion.div>
-      ))}
+        );
+      })}
 
       {/* Overlays */}
       <div className="absolute inset-0 z-10 bg-linear-to-b from-navy-dark/60 via-transparent to-navy-dark/90" />
