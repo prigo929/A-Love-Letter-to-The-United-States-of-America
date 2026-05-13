@@ -19,14 +19,13 @@ import { BUDGET_DATA as SHARED_BUDGET_DATA } from "@/lib/data/military-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import type { Locale } from "@/lib/i18n/config";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// 1. SmoothScroll — Lenis Integration
-// ─────────────────────────────────────────────────────────────────────────────
+// Shared Lenis instance for scroll locking across components
+let globalLenis: Lenis | null = null;
 
 export function SmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 0.8, // Much snappier and lighter feel
+      duration: 0.8,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
@@ -35,13 +34,18 @@ export function SmoothScroll() {
       touchMultiplier: 1.5,
     });
 
+    globalLenis = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
 
     requestAnimationFrame(raf);
-    return () => lenis.destroy();
+    return () => {
+      lenis.destroy();
+      globalLenis = null;
+    };
   }, []);
 
   return null;
@@ -89,6 +93,19 @@ export function MilStyles() {
   return (
     <style jsx global>{`
       :root {
+        /* ── Surface hierarchy ── */
+        --mil-black: #000000;
+        --mil-void: #050505;
+        --mil-surface: #0a0a0a;
+        --mil-elevated: #111111;
+        --mil-border: rgba(255,255,255,0.06);
+
+        /* ── Accent system — surgical, never decorative ── */
+        --mil-accent: #E8E8E8;
+        --mil-accent-warm: #F5A623;
+        --mil-accent-cold: #7DD3FC;
+
+        /* ── Legacy compat ── */
         --color-black: #000000;
         --color-graphite: #0a0a0a;
         --color-steel: #1a1a1a;
@@ -97,10 +114,21 @@ export function MilStyles() {
       }
 
       body {
-        background-color: var(--color-black);
+        background-color: var(--mil-black);
         color: white;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* ── Typography — Apple Keynote grade ── */
+
+      .mil-text-display {
+        font-family: var(--font-archivo);
+        font-size: clamp(80px, 15vw, 240px);
+        font-weight: 200;
+        line-height: 0.85;
+        letter-spacing: -0.05em;
+        text-transform: uppercase;
       }
 
       .mil-text-hero {
@@ -112,13 +140,38 @@ export function MilStyles() {
         text-transform: uppercase;
       }
 
+      .mil-text-section {
+        font-family: var(--font-archivo);
+        font-size: clamp(48px, 8vw, 120px);
+        font-weight: 900;
+        line-height: 0.9;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+      }
+
+      .mil-text-heading {
+        font-family: var(--font-archivo);
+        font-size: clamp(28px, 4vw, 56px);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+      }
+
+      .mil-text-body {
+        font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+        font-size: clamp(14px, 1.2vw, 18px);
+        line-height: 1.7;
+        color: rgba(255,255,255,0.65);
+      }
+
       .mil-text-label {
         font-family: var(--font-hero);
         font-size: clamp(8px, 0.8vw, 10px);
         font-weight: 500;
         letter-spacing: 0.4em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.4);
+        color: rgba(255, 255, 255, 0.55);
       }
 
       .mil-text-metadata {
@@ -126,39 +179,94 @@ export function MilStyles() {
         font-size: 9px;
         letter-spacing: 0.2em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.3);
+        color: rgba(255, 255, 255, 0.50);
       }
+
+      /* ── Surfaces ── */
 
       .mil-glass {
         background: rgba(10, 10, 10, 0.8);
         border: 1px solid rgba(255, 255, 255, 0.05);
       }
 
-      /* Cinematic Animations */
+      .mil-glass-premium {
+        background: rgba(8, 8, 8, 0.85);
+        backdrop-filter: blur(40px) saturate(1.2);
+        -webkit-backdrop-filter: blur(40px) saturate(1.2);
+        border: 1px solid rgba(255,255,255,0.06);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");
+      }
+
+      .mil-gradient-border {
+        position: relative;
+      }
+      .mil-gradient-border::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02), rgba(255,255,255,0.06));
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+
+      /* ── Backgrounds ── */
+
+      .mil-dot-canvas {
+        background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 24px 24px;
+      }
+
+      .mil-vignette::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.6) 100%);
+        pointer-events: none;
+      }
+
+      .mil-noise {
+        position: relative;
+      }
+      .mil-noise::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* ── Animations ── */
       @keyframes mk-ken {
         0% { transform: scale(1); }
         100% { transform: scale(1.08) translate(-1%, -1%); }
       }
       .mk-ken { animation: mk-ken 24s ease-in-out infinite alternate; }
 
+      @keyframes mil-breathe {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
+      }
+      .mil-breathe { animation: mil-breathe 3s ease-in-out infinite; }
+
+      @keyframes mil-pulse-ring {
+        0% { transform: scale(1); opacity: 0.6; }
+        100% { transform: scale(2.5); opacity: 0; }
+      }
+
       .mil-nav-card {
         transition: border-color 0.25s ease, background-color 0.25s ease;
       }
 
-      /* Custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 4px;
-      }
-      ::-webkit-scrollbar-track {
-        background: var(--color-black);
-      }
-      ::-webkit-scrollbar-thumb {
-        background: var(--color-steel);
-        border-radius: 10px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: var(--color-accent);
-      }
+      /* ── Scrollbar — ultra-minimal ── */
+      ::-webkit-scrollbar { width: 2px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
     `}</style>
   );
 }
@@ -171,7 +279,7 @@ export function GrainOverlay() { return null; }
 export function ScanLine() { return null; }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 3. MinimalistStat — high-contrast numerical display
+// 3. MinimalistStat — ultra-thin numerical display (Tesla spec-page inspired)
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface MinimalistStatProps {
@@ -187,18 +295,22 @@ export function MinimalistStat({ stat, index = 0 }: MinimalistStatProps) {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 60 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 1, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col border-l border-white/5 pl-8 py-4"
+      transition={{ duration: 1.2, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+      className="flex flex-col px-8 py-12"
     >
-      <div className="mil-text-metadata mb-4">{label}</div>
+      <div className="mil-text-metadata mb-6 tracking-[0.3em]">{label}</div>
       <div className="flex items-baseline gap-1">
-        <span className="text-6xl font-bold tracking-tighter">
+        <span className="text-[clamp(48px,7vw,96px)] font-extralight tracking-tighter leading-none">
           <MilCountUp to={value} prefix={prefix} suffix={suffix} decimals={decimals} color="white" />
         </span>
       </div>
-      <div className="mil-text-metadata mt-4 max-w-[180px] leading-relaxed opacity-50">
+      {/* Gradient divider */}
+      <div className="mt-6 mb-4 h-px w-full" style={{
+        background: 'linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.03), transparent)'
+      }} />
+      <div className="mil-text-metadata max-w-[220px] leading-relaxed opacity-50 text-[8px]">
         {sublabel}
       </div>
     </motion.div>
@@ -210,110 +322,145 @@ export function MinimalistStat({ stat, index = 0 }: MinimalistStatProps) {
 export { MinimalistStat as HUDCounter };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4. WeaponSystemCard — classified dossier card with hover reveal
+// 4. WeaponSystemCard — compact grid card with fullscreen dossier overlay
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system: WeaponSystem; index?: number; locale?: Locale }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-5%" });
+
+  useEffect(() => {
+    if (isExpanded) {
+      document.body.style.overflow = 'hidden';
+      globalLenis?.stop();
+    } else {
+      document.body.style.overflow = '';
+      globalLenis?.start();
+    }
+    return () => { 
+      document.body.style.overflow = ''; 
+      globalLenis?.start();
+    };
+  }, [isExpanded]);
 
   return (
     <>
-      {/* Master View (Card) */}
+      {/* Card */}
       <motion.div
-        layoutId={`card-${system.id}`}
-        onClick={() => setIsOpen(true)}
-        className="group relative h-[400px] cursor-pointer overflow-hidden bg-zinc-900 grayscale-[0.5] transition-[filter,background-color] duration-700 hover:grayscale-0"
+        ref={ref}
+        initial={{ opacity: 0, y: 30 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+        onClick={() => setIsExpanded(true)}
+        className="group relative cursor-pointer bg-[#0a0a0a] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-500 overflow-hidden"
       >
-        <motion.div layoutId={`image-container-${system.id}`} className="absolute inset-0">
+        <div className="relative h-[220px] overflow-hidden">
           <Image
             src={system.imageSrc}
             alt={system.imageAlt}
             fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-[1.04]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
-        </motion.div>
-        
-        {/* Scrim */}
-        <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent opacity-60" />
-        
-        <div className="absolute bottom-0 left-0 p-8">
-          <motion.p layoutId={`designation-${system.id}`} className="mil-text-metadata mb-2">{system.designation}</motion.p>
-          <motion.h3 layoutId={`title-${system.id}`} className="text-3xl font-bold tracking-tight">{system.name}</motion.h3>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/30 to-transparent" />
+          <div className="absolute top-4 left-4">
+            <span className="mil-text-metadata text-[7px] tracking-[0.4em] bg-black/50 backdrop-blur-sm px-2 py-1">{system.designation}</span>
+          </div>
+          <div className="absolute bottom-0 left-0 w-full h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            style={{ background: system.accentColor || 'white' }}
+          />
+        </div>
+        <div className="p-6">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="mil-text-metadata text-[7px] tracking-[0.3em]">{system.category}</span>
+            {system.stealth && <span className="mil-text-metadata text-[6px] border border-white/[0.1] px-1.5 py-0.5 text-white/60">STEALTH</span>}
+          </div>
+          <h3 className="text-xl font-black tracking-tighter uppercase leading-tight mb-2">{system.name}</h3>
+          <p className="text-white/50 text-xs leading-relaxed mb-4 line-clamp-2">{system.tagline || system.description.split('.')[0] + '.'}</p>
+          <div className="flex gap-2 mb-4">
+            {system.specs.slice(0, 2).map((spec, i) => (
+              <div key={i} className="border border-white/[0.06] bg-white/[0.02] px-3 py-1.5 flex-1">
+                <div className="mil-text-metadata text-[6px] tracking-[0.2em] opacity-60 mb-0.5">{spec.label}</div>
+                <div className="text-[11px] font-semibold tracking-tight text-white/80">{spec.value}</div>
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center justify-between">
+            {system.heroStat && (
+              <span className="text-lg font-black tracking-tighter" style={{ color: system.accentColor || 'white' }}>{system.heroStat}</span>
+            )}
+            <span className="mil-text-metadata text-[7px] tracking-[0.3em] group-hover:text-white transition-colors">DOSSIER →</span>
+          </div>
         </div>
       </motion.div>
 
-      {/* Detail View (Modal) */}
+      {/* Expanded Dossier Overlay */}
       <AnimatePresence>
-        {isOpen && (
-          <div className="fixed inset-0 z-100 flex items-center justify-center p-4 md:p-12">
-            {/* Backdrop */}
+        {isExpanded && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8" onClick={() => setIsExpanded(false)}>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-              className="absolute inset-0 bg-black/90 backdrop-blur-xl"
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/95 backdrop-blur-2xl"
             />
-
-            {/* Content Container */}
             <motion.div
-              layoutId={`card-${system.id}`}
-              transition={{ type: "spring", stiffness: 30, damping: 20, mass: 3 }}
-              className="relative flex h-full max-h-[900px] w-full max-w-6xl overflow-hidden rounded-sm bg-black border border-white/10"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10 w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-[#0a0a0a] border border-white/[0.06] no-scrollbar"
+              onClick={(e) => e.stopPropagation()}
+              data-lenis-prevent
             >
-              <div className="grid h-full w-full md:grid-cols-2">
-                {/* Visual Side */}
-                <motion.div layoutId={`image-container-${system.id}`} className="relative h-64 md:h-full overflow-hidden bg-zinc-900">
-                  <Image
-                    src={system.imageSrc}
-                    alt={system.imageAlt}
-                    fill
-                    className="object-cover opacity-60"
-                    priority
-                  />
-                  {/* Schematic Overlay (Visual abstraction) */}
-                  <div className="absolute inset-0 opacity-20" style={{
-                    backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
-                    backgroundSize: '20px 20px'
-                  }} />
-                  
-                  <div className="absolute bottom-12 left-12">
-                    <motion.p layoutId={`designation-${system.id}`} className="mil-text-metadata mb-4">{system.designation}</motion.p>
-                    <motion.h3 layoutId={`title-${system.id}`} className="text-6xl font-black tracking-tighter uppercase">{system.name}</motion.h3>
+              <div className="sticky -top-px z-50 flex justify-between items-center px-6 md:px-12 py-4 bg-[#0a0a0a] border-b border-white/[0.06]">
+                <span className="mil-text-metadata tracking-[0.3em]">{locale === 'ro' ? 'DOSAR ACTIV' : 'ASSET DOSSIER'}</span>
+                <button onClick={(e) => { e.stopPropagation(); setIsExpanded(false); }} className="mil-text-metadata hover:text-white transition-colors tracking-[0.2em]">
+                  {locale === 'ro' ? '[ ÎNCHIDE ]' : '[ CLOSE ]'}
+                </button>
+              </div>
+              <div className="relative w-full h-[35vh] md:h-[45vh] overflow-hidden">
+                <Image src={system.imageSrc} alt={system.imageAlt} fill className="object-cover" priority sizes="100vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/30 to-transparent" />
+                <div className="absolute bottom-8 left-6 md:left-12">
+                  <p className="mil-text-metadata mb-3 tracking-[0.3em]">{system.designation}</p>
+                  <h3 className="text-[clamp(28px,4vw,52px)] font-black tracking-tighter uppercase leading-none">{system.name}</h3>
+                </div>
+              </div>
+              <div className="px-6 md:px-12 py-12">
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_1px_1fr] gap-12">
+                  <div>
+                    <p className="text-base text-white/60 leading-relaxed mb-10">{system.description}</p>
+                    <div className="pl-5 border-l-2" style={{ borderColor: system.accentColor || 'rgba(255,255,255,0.15)' }}>
+                      <div className="mil-text-metadata mb-3 tracking-[0.3em]">{locale === 'ro' ? 'SEMNIFICAȚIE STRATEGICĂ' : 'STRATEGIC SIGNIFICANCE'}</div>
+                      <p className="text-sm text-white/55 leading-relaxed">{system.significance}</p>
+                    </div>
                   </div>
-                </motion.div>
-
-                {/* Data Side */}
-                <div className="overflow-y-auto p-8 md:p-16">
-                  <div className="flex justify-between items-start mb-12">
-                    <div className="mil-text-metadata">{locale === 'ro' ? 'CLASIFICAT // DOSAR ACTIV' : 'CLASSIFIED // ASSET DOSSIER'}</div>
-                    <button 
-                      onClick={() => setIsOpen(false)}
-                      className="mil-text-metadata hover:text-white transition-colors"
-                    >
-                      {locale === 'ro' ? '[ ÎNCHIDE_ESC ]' : '[ CLOSE_ESC ]'}
-                    </button>
-                  </div>
-
-                  <p className="text-xl text-white/60 leading-relaxed mb-12">
-                    {system.description}
-                  </p>
-
-                  <div className="grid grid-cols-2 gap-x-12 gap-y-8">
+                  <div className="hidden lg:block bg-white/[0.06]" />
+                  <div>
+                    <div className="mil-text-metadata mb-6 tracking-[0.3em]">{locale === 'ro' ? 'SPECIFICAȚII TEHNICE' : 'TECHNICAL SPECIFICATIONS'}</div>
                     {system.specs.map((spec, i) => (
-                      <div key={i} className="border-t border-white/10 pt-4">
-                        <div className="mil-text-metadata mb-2">{spec.label}</div>
-                        <div className="text-lg font-bold">{spec.value}</div>
+                      <div key={i} className="flex justify-between items-baseline py-3 border-b border-white/[0.06]">
+                        <span className="mil-text-metadata text-[8px] tracking-[0.2em] opacity-60">{spec.label}</span>
+                        <span className="text-sm font-semibold tracking-tight text-white/80">{spec.value}</span>
                       </div>
                     ))}
-                  </div>
-
-                  <div className="mt-16 p-8 bg-white/5 border border-white/5">
-                    <div className="mil-text-metadata mb-4 text-white/80">{locale === 'ro' ? 'SEMNIFICAȚIE STRATEGICĂ' : 'STRATEGIC SIGNIFICANCE'}</div>
-                    <p className="text-sm text-white/40 leading-relaxed italic">
-                      "{system.significance}"
-                    </p>
+                    <div className="mt-10 grid grid-cols-2 gap-3">
+                      {system.speed && (
+                        <div className="bg-white/[0.03] border border-white/[0.06] p-4">
+                          <div className="mil-text-metadata text-[7px] mb-1 opacity-60">SPEED</div>
+                          <div className="text-lg font-bold tracking-tight">{system.speed}</div>
+                        </div>
+                      )}
+                      {system.range && (
+                        <div className="bg-white/[0.03] border border-white/[0.06] p-4">
+                          <div className="mil-text-metadata text-[7px] mb-1 opacity-60">RANGE</div>
+                          <div className="text-lg font-bold tracking-tight">{system.range}</div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -324,9 +471,8 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
     </>
   );
 }
-
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. BranchSelector — cinematic branch switcher
+// 5. BranchSelector — vertical sidebar + fullscreen image (Linear-inspired)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function BranchSelector({ branches, locale = 'en' }: { branches: MilitaryBranch[]; locale?: Locale }) {
@@ -334,158 +480,239 @@ export function BranchSelector({ branches, locale = 'en' }: { branches: Military
   const branch = branches[active];
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-white/8 bg-[#080C14]">
-      {/* Tab row */}
-      <div className="flex overflow-x-auto border-b border-white/8">
+    <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] min-h-[600px] md:min-h-[700px] border border-white/[0.04] bg-[#050505]">
+      {/* Vertical sidebar */}
+      <div className="flex md:flex-col md:h-full border-b md:border-b-0 md:border-r border-white/[0.04] overflow-x-auto md:overflow-visible">
         {branches.map((b, i) => (
           <button
             key={b.id}
             onClick={() => setActive(i)}
-            className={`flex shrink-0 items-center gap-2 px-6 py-4 mil-text-metadata transition-colors duration-200 ${
+            className={cn(
+              "relative flex shrink-0 md:shrink items-center gap-3 px-6 py-4 md:py-5 text-left transition-all duration-300 md:flex-1",
               i === active
-                ? "border-b border-white text-white bg-white/5"
-                : "text-white/20 hover:text-white/40 border-b border-transparent"
-            }`}
+                ? "text-white bg-white/[0.03]"
+                : "text-white/20 hover:text-white/40"
+            )}
           >
-            <span>{b.iconEmoji}</span>
-            <span className="hidden sm:block">{b.shortName}</span>
+            {/* Active indicator bar */}
+            {i === active && (
+              <motion.div
+                layoutId="branch-indicator"
+                className="absolute left-0 top-0 hidden md:block w-[2px] h-full"
+                style={{ background: branch.accentColor }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              />
+            )}
+            <span className="mil-text-metadata text-[9px] tracking-[0.25em]">{b.shortName}</span>
           </button>
         ))}
       </div>
 
-      {/* Content */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={active}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -16 }}
-          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="grid md:grid-cols-[1fr_380px]"
-        >
-          {/* Text */}
-          <div className="p-6 md:p-8">
-            <p className="mb-1 mil-text-metadata">
-              {locale === 'ro' ? 'Fond.' : 'Est.'} {branch.founded} · {branch.personnel}
-            </p>
-            <h3 className="mb-1 text-3xl font-black uppercase tracking-tighter text-white">
-              {branch.name}
-            </h3>
-            <p className="mb-4 mil-text-metadata italic opacity-40">"{branch.tagline}"</p>
-            <p className="mb-6 text-sm leading-relaxed text-white/50">{branch.description}</p>
-
-            {/* Key facts */}
-            <div className="space-y-2">
-              {branch.keyFacts.map((fact, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="flex gap-3 border-l border-white/10 pl-4 py-1"
-                >
-                  <p className="text-xs leading-snug text-white/40">{fact}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Image */}
-          <div className="relative h-64 md:h-auto overflow-hidden">
+      {/* Image + overlay content */}
+      <div className="relative overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="absolute inset-0"
+          >
             <Image
               src={branch.imageSrc}
               alt={branch.imageAlt}
               fill
-              quality={80}
-              className="object-cover transition-transform duration-700"
-              sizes="(max-width:768px) 100vw, 400px"
+              quality={85}
+              className="object-cover"
+              sizes="(max-width:768px) 100vw, 75vw"
               placeholder="blur"
               blurDataURL={BLUR_PLACEHOLDER}
             />
-            <div className="absolute inset-0" style={{
-              background: "linear-gradient(to right, #000000 0%, rgba(0,0,0,0.3) 40%, transparent 100%)",
-            }} />
-            {/* Minimalist corners */}
-            {["top-3 right-3 border-t border-r", "bottom-3 right-3 border-b border-r"].map((pos, i) => (
-              <div key={i} className={`absolute ${pos} h-5 w-5 border-white/20`} />
-            ))}
-          </div>
-        </motion.div>
-      </AnimatePresence>
+            {/* Gradient overlays */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Content overlay */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="relative z-10 flex flex-col justify-end h-full p-8 md:p-12"
+          >
+            <div className="max-w-xl">
+              <p className="mil-text-metadata mb-2 tracking-[0.3em]">
+                {locale === 'ro' ? 'FOND.' : 'EST.'} {branch.founded} · {branch.personnel}
+              </p>
+              <h3 className="text-[clamp(28px,4vw,48px)] font-black uppercase tracking-tighter text-white mb-2 leading-none">
+                {branch.name}
+              </h3>
+              <p className="mil-text-metadata italic opacity-60 mb-6">&ldquo;{branch.tagline}&rdquo;</p>
+              <p className="text-sm leading-relaxed text-white/60 mb-8">{branch.description}</p>
+
+              {/* Key facts */}
+              <div className="space-y-2">
+                {branch.keyFacts.map((fact, i) => (
+                  <motion.div
+                    key={`${active}-${i}`}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: 0.2 + i * 0.08 }}
+                    className="flex gap-3 border-l-[2px] pl-4 py-1"
+                    style={{ borderColor: `${branch.accentColor}40` }}
+                  >
+                    <p className="text-xs leading-snug text-white/55">{fact}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
   );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 6. DARPAProgramGrid — DARPA future systems cards
+// 6. DARPAProgramGrid — DARPA future systems bento grid (Vercel-inspired)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function DARPAProgramGrid({ programs, locale = 'en' }: { programs: DARPAProgram[]; locale?: Locale }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selectedProgram = programs.find(p => p.id === selectedId);
 
+  // Lock body scroll when expanded
+  useEffect(() => {
+    if (selectedId) {
+      document.body.style.overflow = 'hidden';
+      globalLenis?.stop();
+    } else {
+      document.body.style.overflow = '';
+      globalLenis?.start();
+    }
+    return () => { 
+      document.body.style.overflow = ''; 
+      globalLenis?.start();
+    };
+  }, [selectedId]);
+
   return (
     <>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {programs.map((program) => (
-          <motion.div
+      <div className="grid gap-[1px] sm:grid-cols-2 lg:grid-cols-3 bg-white/[0.02]">
+        {programs.map((program, idx) => (
+          <div
             key={program.id}
-            layoutId={`darpa-${program.id}`}
             onClick={() => setSelectedId(program.id)}
-            className="group cursor-pointer border border-white/5 bg-zinc-950 p-8 transition-colors hover:border-white/20"
+            className={cn(
+              "group cursor-pointer bg-[#0a0a0a] p-8 md:p-10 transition-all duration-500",
+              "hover:bg-[#0f0f0f]",
+              "relative mil-gradient-border",
+              idx === 0 && "sm:col-span-2 sm:row-span-2"
+            )}
           >
-            <motion.div layoutId={`icon-${program.id}`} className="text-4xl mb-6">{program.icon}</motion.div>
-            <motion.p layoutId={`category-${program.id}`} className="mil-text-metadata mb-2">{program.category}</motion.p>
-            <motion.h3 layoutId={`name-${program.id}`} className="text-xl font-bold uppercase tracking-tight">{program.name}</motion.h3>
-            <motion.div layoutId={`status-${program.id}`} className="mt-4 flex items-center gap-2">
-              <div className="h-1 w-1 rounded-full bg-white/40" />
-              <span className="mil-text-metadata text-[8px]">{program.status}</span>
-            </motion.div>
-          </motion.div>
+            {/* Featured card gradient bg */}
+            {idx === 0 && (
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                style={{
+                  background: 'radial-gradient(ellipse at 30% 50%, rgba(125,211,252,0.03) 0%, transparent 60%)'
+                }}
+              />
+            )}
+            
+            <div className="relative z-10">
+              {/* Category dot + label */}
+              <div className="flex items-center gap-2 mb-6">
+                <div className="h-1.5 w-1.5 rounded-full" style={{
+                  background: program.status === 'active' ? '#F5A623' : program.status === 'testing' ? '#7DD3FC' : '#555'
+                }} />
+                <span className="mil-text-metadata text-[7px] tracking-[0.3em] opacity-60">{program.category}</span>
+              </div>
+
+              <h3 
+                className={cn(
+                  "font-bold uppercase tracking-tight mb-3",
+                  idx === 0 ? "text-2xl md:text-3xl" : "text-lg"
+                )}
+              >
+                {program.name}
+              </h3>
+
+              {idx === 0 && (
+                <p className="text-sm text-white/55 leading-relaxed max-w-lg mb-6">
+                  {program.description.slice(0, 150)}...
+                </p>
+              )}
+
+              <div className="flex items-center gap-2 mt-auto">
+                <span className="mil-text-metadata text-[8px] tracking-[0.2em] opacity-55">{program.status}</span>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
 
       <AnimatePresence>
         {selectedId && selectedProgram && (
-          <div className="fixed inset-0 z-110 flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
               onClick={() => setSelectedId(null)}
-              className="absolute inset-0 bg-black/80 backdrop-blur-md"
+              className="absolute inset-0 bg-black/90 backdrop-blur-xl"
             />
 
             <motion.div
-              layoutId={`darpa-${selectedId}`}
-              className="relative w-full max-w-2xl border border-white/10 bg-zinc-900 p-12 md:p-16"
+              initial={{ opacity: 0, y: 30, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 15, scale: 0.98 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10 w-full max-w-2xl max-h-[80vh] overflow-y-auto bg-[#0a0a0a] border border-white/[0.08] no-scrollbar"
+              onClick={(e) => e.stopPropagation()}
+              data-lenis-prevent
             >
-              <div className="flex justify-between items-start mb-12">
-                <motion.div layoutId={`icon-${selectedId}`} className="text-6xl">{selectedProgram.icon}</motion.div>
-                <button onClick={() => setSelectedId(null)} className="mil-text-metadata hover:text-white">[ CLOSE ]</button>
+              <div className="sticky -top-px z-50 flex justify-between items-center px-8 md:px-12 py-5 bg-[#0a0a0a] border-b border-white/[0.06]">
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 rounded-full" style={{
+                    background: selectedProgram.status === 'active' ? '#F5A623' : '#7DD3FC'
+                  }} />
+                  <span className="mil-text-metadata text-[8px] tracking-[0.3em]">{selectedProgram.category}</span>
+                </div>
+                <button onClick={() => setSelectedId(null)} className="mil-text-metadata hover:text-white transition-colors tracking-[0.2em]">
+                  {locale === 'ro' ? '[ ÎNCHIDE ]' : '[ CLOSE ]'}
+                </button>
               </div>
 
-              <motion.p layoutId={`category-${selectedId}`} className="mil-text-metadata mb-4 text-white/40">{selectedProgram.category}</motion.p>
-              <motion.h3 layoutId={`name-${selectedId}`} className="text-4xl font-black uppercase tracking-tighter mb-8">{selectedProgram.name}</motion.h3>
+              <div className="p-8 md:p-12">
+                <h3 className="text-4xl font-black uppercase tracking-tighter mb-8">{selectedProgram.name}</h3>
               
               <div className="space-y-8">
                 <p className="text-lg text-white/60 leading-relaxed">
                   {selectedProgram.description}
                 </p>
 
-                <div className="border-t border-white/10 pt-8">
-                  <div className="mil-text-metadata mb-4">{locale === 'ro' ? 'SEMNIFICAȚIE STRATEGICĂ' : 'STRATEGIC SIGNIFICANCE'}</div>
-                  <p className="text-sm text-white/40 leading-relaxed">
+                <div className="pl-6 border-l border-white/[0.08]">
+                  <div className="mil-text-metadata mb-4 tracking-[0.3em] opacity-70">
+                    {locale === 'ro' ? 'SEMNIFICAȚIE STRATEGICĂ' : 'STRATEGIC SIGNIFICANCE'}
+                  </div>
+                  <p className="text-sm text-white/55 leading-relaxed">
                     {selectedProgram.significance}
                   </p>
                 </div>
 
-                <motion.div layoutId={`status-${selectedId}`} className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-white animate-pulse" />
-                  <span className="mil-text-metadata">{selectedProgram.status.toUpperCase()} {locale === 'ro' ? 'FAZA DE DEZVOLTARE' : 'DEVELOPMENT PHASE'}</span>
-                </motion.div>
+                <div className="flex items-center gap-3">
+                  <div className="h-2 w-2 rounded-full bg-white mil-breathe" />
+                  <span className="mil-text-metadata tracking-[0.2em]">{selectedProgram.status.toUpperCase()} {locale === 'ro' ? 'FAZA DE DEZVOLTARE' : 'DEVELOPMENT PHASE'}</span>
+                </div>
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
           </div>
         )}
       </AnimatePresence>
@@ -790,6 +1017,7 @@ export function GlobalCarrierMap({ positions, locale = 'en' }: { positions: Carr
                src={SITE_IMAGES.military.carrierLogo} 
                alt="Carrier Logo" 
                fill 
+               sizes="40px"
                className="object-contain scale-[2.4] pointer-events-none"
              />
           </div>
@@ -806,7 +1034,7 @@ export function GlobalCarrierMap({ positions, locale = 'en' }: { positions: Carr
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 9. ParallaxMilitaryHero — Ken Burns + HUD overlay hero image
+// 9. ParallaxMilitaryHero — 3-stage cinematic reveal (Apple Keynote-grade)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ParallaxMilitaryHero({
@@ -825,29 +1053,34 @@ export function ParallaxMilitaryHero({
     offset: ["start start", "end start"]
   });
 
-  // Scroll transforms for the cinematic reveal
-  // Lower initial opacity for the "Black-Ops" feel while remaining technically visible for LCP
-  const opacity = useTransform(scrollYProgress, [0, 0.4], [0.35, 0.05]); 
-  const blur = useTransform(scrollYProgress, [0, 0.4], [5, 20]); 
-  const scale = useTransform(scrollYProgress, [0, 0.4], [1, 1.15]);
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  // 3-stage scroll reveal:
+  // Stage 1 (0–30vh): Image fades from 0% to 30% opacity
+  // Stage 2 (30–60vh): Text appears, image stabilizes
+  // Stage 3 (60–100vh): Image zooms to 120%, text fades + blurs
+  // Content is sharp and visible at start, then fades/blurs as we scroll away
+  const imageOpacity = useTransform(scrollYProgress, [0, 0.5], [0.35, 0.05]);
+  const imageScale = useTransform(scrollYProgress, [0, 0.5], [1.0, 1.2]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+  const imageBlur = useTransform(scrollYProgress, [0, 0.5], [0, 15]);
 
   // Text animations
   const textOpacity = useTransform(scrollYProgress, [0, 0.2, 0.5], [1, 1, 0]);
-  const textY = useTransform(scrollYProgress, [0, 0.5], [0, -100]);
+  const textY = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
+
+  const words = title?.split(" ") || [];
 
   return (
-    <div ref={ref} className="relative h-[200vh] bg-black">
-      {/* Sticky container for the hero content */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Background image with reveal effect */}
+    <div ref={ref} className="relative h-[180vh] bg-black">
+      {/* Sticky container */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden mil-noise">
+        {/* Background image with 3-stage reveal */}
         <motion.div 
           className="absolute inset-0 will-change-transform"
           style={{ 
-            opacity, 
-            filter: useTransform(blur, (v) => `blur(${v}px)`),
-            scale,
-            y
+            opacity: imageOpacity, 
+            filter: useTransform(imageBlur, (v) => `blur(${v}px)`),
+            scale: imageScale,
+            y: imageY
           }}
         >
           <Image
@@ -855,59 +1088,58 @@ export function ParallaxMilitaryHero({
             alt={imageAlt}
             fill
             priority
-            className="object-cover brightness-50 grayscale-[0.2]"
+            className="object-cover brightness-[0.4] grayscale-[0.3]"
             sizes="100vw"
             quality={90}
           />
-          {/* Subtle gradient overlay */}
-          <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent opacity-80" />
         </motion.div>
+
+        {/* Vignette overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50 pointer-events-none" />
+        <div className="absolute inset-0" style={{
+          background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%)'
+        }} />
 
         {/* Content Overlay */}
         <motion.div 
           className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
           style={{ opacity: textOpacity, y: textY }}
         >
+          {/* Tagline */}
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="mil-text-label mb-6"
+            className="mil-text-label mb-8 tracking-[0.5em]"
           >
             {tagline}
           </motion.p>
           
-          <motion.h1 
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-            className="mil-text-hero"
-          >
-            {title?.split(" ").map((word, i) => (
-              <span key={i} className="block">{word}</span>
+          {/* Staggered word-by-word title */}
+          <h1 className="mil-text-hero overflow-hidden">
+            {words.map((word, i) => (
+              <motion.span 
+                key={i} 
+                className="block"
+              >
+                {word}
+              </motion.span>
             ))}
-          </motion.h1>
+          </h1>
 
+          {/* Subtitle */}
           <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.4 }}
-            transition={{ duration: 2, delay: 1 }}
-            className="mil-text-metadata mt-12 max-w-lg"
+            style={{ opacity: 0.5 }}
+            className="mil-text-metadata mt-16 max-w-md tracking-[0.2em] leading-relaxed"
           >
             {subtitle}
           </motion.p>
 
-          {/* Minimalist Stats Strip */}
+          {/* Stats Strip */}
           {stats && (
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 1.2 }}
-              className="mt-24 flex flex-wrap justify-center gap-x-16 gap-y-8"
+              className="mt-20 flex flex-wrap justify-center gap-x-14 gap-y-6"
             >
               {stats.map((s, i) => (
-                <div key={i} className="text-left">
-                  <div className="mil-text-metadata mb-1">{s.label}</div>
+                <div key={i} className="text-center">
+                  <div className="mil-text-metadata mb-1.5 opacity-60">{s.label}</div>
                   <div className="text-2xl font-bold tracking-tight">{s.value}</div>
                 </div>
               ))}
@@ -915,14 +1147,17 @@ export function ParallaxMilitaryHero({
           )}
         </motion.div>
         
-        {/* Scroll indicator */}
+        {/* Breathing dot scroll indicator */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          transition={{ delay: 2.5, duration: 1 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
         >
-          <div className="h-12 w-px bg-linear-to-b from-white/40 to-transparent" />
+          <span className="mil-text-metadata text-[7px] tracking-[0.5em] opacity-30">SCROLL</span>
+          <div className="relative">
+            <div className="h-2 w-2 rounded-full bg-white/50 mil-breathe" />
+          </div>
         </motion.div>
       </div>
     </div>

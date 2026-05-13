@@ -149,19 +149,21 @@ function Section({
       className="relative overflow-hidden"
       style={{ background: bg }}
     >
-      {/* Subtle separator */}
-      <div className="h-px w-full bg-white/5" />
+      {/* Gradient separator instead of hard line */}
+      <div className="h-px w-full" style={{
+        background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)'
+      }} />
 
       {label && (
-        <div className="pt-24 pb-12 flex justify-center">
-          <div className="mil-text-label">{label}</div>
+        <div className="pt-22 pb-12 flex justify-center">
+          <div className="mil-text-label tracking-[0.5em]">{label}</div>
         </div>
       )}
 
       <div className={cn(
         "mx-auto",
         fullBleed ? "max-w-none" : "max-w-[1440px]",
-        noPad ? "p-0" : "px-6 py-24"
+        noPad ? "p-0" : "px-6 py-32 md:py-48"
       )}>
         {children}
       </div>
@@ -185,17 +187,21 @@ function CinematicImage({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="relative overflow-hidden bg-black" style={{ minHeight: height }}>
+    <div className="relative overflow-hidden bg-black min-h-screen flex items-center justify-center">
       <Image
         src={src}
         alt={alt}
         fill
-        className="object-cover opacity-40 grayscale-[0.5]"
+        className="object-cover opacity-30 grayscale-[0.7] sepia-[0.1]"
         sizes="100vw"
         quality={90}
       />
-      <div className="absolute inset-0 bg-linear-to-b from-black via-transparent to-black" />
-      <div className="relative z-10 flex h-full items-center justify-center">
+      {/* Cinematic vignette */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+      <div className="absolute inset-0" style={{
+        background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%)'
+      }} />
+      <div className="relative z-10 flex h-full items-center justify-center py-32">
         {children}
       </div>
     </div>
@@ -270,8 +276,9 @@ export default async function MilitaryPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-32">
           {dominanceMetrics.map((m, i) => (
             <div key={i} className="flex flex-col">
-              <div className="text-5xl font-black mb-4">{m.value}</div>
-              <div className="mil-text-metadata opacity-40">{m.label}</div>
+              <div className="text-[clamp(40px,6vw,80px)] font-extralight tracking-tighter mb-4 leading-none">{m.value}</div>
+              <div className="h-px w-12 bg-white/10 mb-4" />
+              <div className="mil-text-metadata opacity-55 tracking-[0.2em] text-[8px]">{m.label}</div>
             </div>
           ))}
         </div>
@@ -299,21 +306,30 @@ export default async function MilitaryPage() {
         <div className="relative w-full aspect-video overflow-hidden bg-black">
           <video
             autoPlay loop muted playsInline
-            className="w-full h-full object-cover opacity-70"
+            className="w-full h-full object-cover"
+            style={{ filter: 'contrast(1.1) brightness(0.6) saturate(0.8)' }}
             aria-label="Cinematic military supremacy video showcase"
           >
             <source src="/videos/military/supremacy-wave.mp4" type="video/mp4" />
           </video>
           
-          <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-black" />
+          {/* Edge vignette */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50" />
+          <div className="absolute inset-0" style={{
+            background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.5) 100%)'
+          }} />
           
-          <div className="absolute bottom-24 left-24 z-30 border-l-2 border-white/20 pl-12">
-            <h2 className="text-6xl font-black tracking-tighter uppercase mb-4">
-              {locale === 'ro' ? 'SUPREMAȚIE ABSOLUTĂ' : 'ABSOLUTE SUPREMACY'}
-            </h2>
-            <p className="mil-text-metadata">
-              {locale === 'ro' ? 'DOMINANȚĂ PLANETARĂ · VERIFICAT 2025' : 'PLANETARY DOMINANCE · VERIFIED 2025'}
-            </p>
+          {/* Centered lockup */}
+          <div className="absolute inset-0 flex items-center justify-center z-30">
+            <div className="text-center">
+              <h2 className="mil-text-section mb-4">
+                {locale === 'ro' ? 'SUPREMAȚIE' : 'ABSOLUTE'}<br/>
+                <span className="text-white/20">{locale === 'ro' ? 'ABSOLUTĂ' : 'SUPREMACY'}</span>
+              </h2>
+              <p className="mil-text-metadata tracking-[0.4em] opacity-30">
+                {locale === 'ro' ? 'DOMINANȚĂ PLANETARĂ · VERIFICAT 2025' : 'PLANETARY DOMINANCE · VERIFIED 2025'}
+              </p>
+            </div>
           </div>
         </div>
       </Section>
@@ -361,25 +377,23 @@ export default async function MilitaryPage() {
         id="weapons"
         label={locale === 'ro' ? "BIJUTERIILE COROANEI PUTERII AMERICANE" : "CROWN JEWELS OF AMERICAN POWER"}
       >
-        <div className="text-center mb-32">
+        <div className="text-center mb-24">
           <h2 className="mil-text-hero mb-12">
             {locale === 'ro' ? 'ARSENALUL' : 'THE ARSENAL OF'}<br/>
             <span className="text-white/20">{locale === 'ro' ? 'DEMOCRAȚIEI' : 'DEMOCRACY'}</span>
           </h2>
-          <p className="mil-text-metadata max-w-xl mx-auto leading-relaxed">
+          <p className="mil-text-metadata max-w-xl mx-auto leading-relaxed tracking-[0.2em]">
             {locale === 'ro'
               ? "De la aeronave invizibile la rachete hipersonice, sistemele care definesc granița tehnologică a ceea ce poate fi războiul."
               : "From stealth aircraft to hypersonic missiles, the systems that define the technological boundary of what warfare can be."}
           </p>
         </div>
 
-        <LayoutGroup>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {weaponSystems.map((sys, i) => (
-              <WeaponSystemCard key={sys.id} system={sys} index={i} locale={locale}/>
-            ))}
-          </div>
-        </LayoutGroup>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {weaponSystems.map((sys, i) => (
+            <WeaponSystemCard key={sys.id} system={sys} index={i} locale={locale}/>
+          ))}
+        </div>
       </Section>
 
       {/* ─── §8  B-2 CINEMATIC INTERLUDE ────────────────────────────────────── */}
@@ -408,7 +422,7 @@ export default async function MilitaryPage() {
               [locale === 'ro' ? "FLOTĂ" : "FLEET",   "20 aeronave"],
             ].map(([k, v]) => (
               <div key={k} className="text-center">
-                <div className="mil-text-metadata mb-2 opacity-40">{k}</div>
+                <div className="mil-text-metadata mb-2 opacity-60">{k}</div>
                 <div className="text-2xl font-bold">{v}</div>
               </div>
             ))}
@@ -441,7 +455,7 @@ export default async function MilitaryPage() {
               <div key={i} className="border-l border-white/10 pl-8 py-6">
                 <div className="text-4xl font-black mb-2">{item.v}</div>
                 <div className="mil-text-metadata mb-2">{item.l}</div>
-                <div className="mil-text-metadata text-[8px] opacity-30">{item.sub}</div>
+                <div className="mil-text-metadata text-[8px] opacity-55">{item.sub}</div>
               </div>
             ))}
           </div>
@@ -507,20 +521,22 @@ export default async function MilitaryPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-white/[0.02]">
           {DEFENSE_CONTRACTORS.map((c, i) => (
-            <div key={c.name} className="bg-black p-12 flex flex-col h-full">
-              <div className="flex justify-between items-start mb-8">
-                <h4 className="text-2xl font-bold tracking-tight">{c.name}</h4>
-                <div className="mil-text-metadata text-[8px] bg-white/5 px-3 py-1">{c.revenue}</div>
-              </div>
-              <div className="mil-text-metadata opacity-40 mb-8 grow">{c.specialty}</div>
-              <div className="flex flex-wrap gap-2">
-                {c.programs.map(prog => (
-                  <span key={prog} className="mil-text-metadata text-[8px] border border-white/10 px-2 py-1">
-                    {prog}
-                  </span>
-                ))}
+            <div key={c.name} className="group bg-[#0a0a0a] p-12 flex flex-col h-full relative mil-gradient-border hover:bg-[#0f0f0f] transition-colors duration-500">
+              <div className="relative z-10">
+                <div className="flex justify-between items-start mb-8">
+                  <h4 className="text-2xl font-bold tracking-tight">{c.name}</h4>
+                  <div className="mil-text-metadata text-[8px] bg-white/[0.03] border border-white/[0.06] px-3 py-1.5">{c.revenue}</div>
+                </div>
+                <div className="mil-text-metadata opacity-55 mb-8 grow tracking-[0.2em]">{c.specialty}</div>
+                <div className="flex flex-wrap gap-2">
+                  {c.programs.map(prog => (
+                    <span key={prog} className="mil-text-metadata text-[8px] border border-white/[0.06] px-2 py-1 text-white/60">
+                      {prog}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
@@ -542,7 +558,7 @@ export default async function MilitaryPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
           {facts.map((f, i) => (
             <div key={i} className="bg-black p-12">
-              <div className="mil-text-metadata text-white/20 mb-6">[ FACT_{i+1} ]</div>
+              <div className="mil-text-metadata text-white/40 mb-6">[ FACT_{i+1} ]</div>
               <p className="text-white/60 leading-relaxed">
                 {f.fact}
               </p>
@@ -552,19 +568,20 @@ export default async function MilitaryPage() {
       </Section>
 
       {/* ─── §14  QUOTE — full-bleed cinematic ──────────────────────────────── */}
-      <div className="relative min-h-[60vh] flex items-center justify-center bg-black overflow-hidden py-48">
-        <div className="absolute inset-0 bg-linear-to-b from-black via-zinc-950/20 to-black opacity-60" />
+      {/* ─── §14  QUOTE — full-viewport cinematic ──────────────────────────── */}
+      <div className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
+        <div className="absolute inset-0 mil-dot-canvas opacity-30" />
         
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <div className="mil-text-label mb-16 opacity-30">◈ &nbsp; COMMAND AUTHORITY &nbsp; ◈</div>
-          <blockquote className="text-4xl md:text-7xl font-black tracking-tighter leading-[1.1] italic text-white/90 mb-16">
+          <blockquote className="text-[clamp(28px,5vw,72px)] font-black tracking-tighter leading-[1.1] text-white/90 mb-16">
             &ldquo;{quote.quote}&rdquo;
           </blockquote>
-          <div className="flex flex-col items-center">
-            <div className="h-16 w-px bg-white/10 mb-8" />
-            <cite className="mil-text-metadata not-italic tracking-[0.5em] text-[10px] uppercase text-white/40">
+          <div className="flex items-center justify-center gap-4">
+            <div className="h-px w-12" style={{ background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.2))' }} />
+            <cite className="mil-text-metadata not-italic tracking-[0.4em] text-[9px] uppercase text-white/50">
               {quote.attribution} — {quote.title}
             </cite>
+            <div className="h-px w-12" style={{ background: 'linear-gradient(to left, transparent, rgba(255,255,255,0.2))' }} />
           </div>
         </div>
       </div>
