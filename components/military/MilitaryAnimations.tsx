@@ -17,6 +17,7 @@ import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 import type { WeaponSystem, MilitaryBranch, DARPAProgram, MilitaryStat, CarrierGroupPosition } from "@/lib/data/military-data";
 import { BUDGET_DATA as SHARED_BUDGET_DATA } from "@/lib/data/military-data";
 import { SITE_IMAGES } from "@/lib/site-images";
+import type { Locale } from "@/lib/i18n/config";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 1. SmoothScroll — Lenis Integration
@@ -210,7 +211,7 @@ export { MinimalistStat as HUDCounter };
 // 4. WeaponSystemCard — classified dossier card with hover reveal
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function WeaponSystemCard({ system, index = 0 }: { system: WeaponSystem; index?: number }) {
+export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system: WeaponSystem; index?: number; locale?: Locale }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -284,12 +285,12 @@ export function WeaponSystemCard({ system, index = 0 }: { system: WeaponSystem; 
                 {/* Data Side */}
                 <div className="overflow-y-auto p-8 md:p-16">
                   <div className="flex justify-between items-start mb-12">
-                    <div className="mil-text-metadata">CLASSIFIED // ASSET DOSSIER</div>
+                    <div className="mil-text-metadata">{locale === 'ro' ? 'CLASIFICAT // DOSAR ACTIV' : 'CLASSIFIED // ASSET DOSSIER'}</div>
                     <button 
                       onClick={() => setIsOpen(false)}
                       className="mil-text-metadata hover:text-white transition-colors"
                     >
-                      [ CLOSE_ESC ]
+                      {locale === 'ro' ? '[ ÎNCHIDE_ESC ]' : '[ CLOSE_ESC ]'}
                     </button>
                   </div>
 
@@ -307,7 +308,7 @@ export function WeaponSystemCard({ system, index = 0 }: { system: WeaponSystem; 
                   </div>
 
                   <div className="mt-16 p-8 bg-white/5 border border-white/5">
-                    <div className="mil-text-metadata mb-4 text-white/80">STRATEGIC SIGNIFICANCE</div>
+                    <div className="mil-text-metadata mb-4 text-white/80">{locale === 'ro' ? 'SEMNIFICAȚIE STRATEGICĂ' : 'STRATEGIC SIGNIFICANCE'}</div>
                     <p className="text-sm text-white/40 leading-relaxed italic">
                       "{system.significance}"
                     </p>
@@ -326,7 +327,7 @@ export function WeaponSystemCard({ system, index = 0 }: { system: WeaponSystem; 
 // 5. BranchSelector — cinematic branch switcher
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function BranchSelector({ branches }: { branches: MilitaryBranch[] }) {
+export function BranchSelector({ branches, locale = 'en' }: { branches: MilitaryBranch[]; locale?: Locale }) {
   const [active, setActive] = useState(0);
   const branch = branches[active];
 
@@ -363,7 +364,7 @@ export function BranchSelector({ branches }: { branches: MilitaryBranch[] }) {
           {/* Text */}
           <div className="p-6 md:p-8">
             <p className="mb-1 mil-text-metadata">
-              Est. {branch.founded} · {branch.personnel}
+              {locale === 'ro' ? 'Fond.' : 'Est.'} {branch.founded} · {branch.personnel}
             </p>
             <h3 className="mb-1 text-3xl font-black uppercase tracking-tighter text-white">
               {branch.name}
@@ -417,7 +418,7 @@ export function BranchSelector({ branches }: { branches: MilitaryBranch[] }) {
 // 6. DARPAProgramGrid — DARPA future systems cards
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function DARPAProgramGrid({ programs }: { programs: DARPAProgram[] }) {
+export function DARPAProgramGrid({ programs, locale = 'en' }: { programs: DARPAProgram[]; locale?: Locale }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selectedProgram = programs.find(p => p.id === selectedId);
 
@@ -471,7 +472,7 @@ export function DARPAProgramGrid({ programs }: { programs: DARPAProgram[] }) {
                 </p>
 
                 <div className="border-t border-white/10 pt-8">
-                  <div className="mil-text-metadata mb-4">STRATEGIC SIGNIFICANCE</div>
+                  <div className="mil-text-metadata mb-4">{locale === 'ro' ? 'SEMNIFICAȚIE STRATEGICĂ' : 'STRATEGIC SIGNIFICANCE'}</div>
                   <p className="text-sm text-white/40 leading-relaxed">
                     {selectedProgram.significance}
                   </p>
@@ -479,7 +480,7 @@ export function DARPAProgramGrid({ programs }: { programs: DARPAProgram[] }) {
 
                 <motion.div layoutId={`status-${selectedId}`} className="flex items-center gap-3">
                   <div className="h-2 w-2 rounded-full bg-white animate-pulse" />
-                  <span className="mil-text-metadata">{selectedProgram.status.toUpperCase()} DEVELOPMENT PHASE</span>
+                  <span className="mil-text-metadata">{selectedProgram.status.toUpperCase()} {locale === 'ro' ? 'FAZA DE DEZVOLTARE' : 'DEVELOPMENT PHASE'}</span>
                 </motion.div>
               </div>
             </motion.div>
@@ -499,9 +500,13 @@ interface TriadLeg {
   alert: string; advantage: string; color: string;
 }
 
-export function NuclearTriadDiagram({ triad }: { triad: { legs: TriadLeg[]; description: string } }) {
+export function NuclearTriadDiagram({ triad, locale = 'en' }: { triad: { legs: TriadLeg[]; description: string }; locale?: Locale }) {
   const { legs, description } = triad;
   const [active, setActive] = useState<number | null>(null);
+
+  const labels = locale === 'ro' 
+    ? { AIR: 'AER', LAND: 'TERESTRU', SEA: 'MARITIM', NUCLEAR: 'TRIADA', TRIAD: 'NUCLEARĂ' } 
+    : { AIR: 'AIR', LAND: 'LAND', SEA: 'SEA', NUCLEAR: 'NUCLEAR', TRIAD: 'TRIAD' };
 
   return (
     <div className="overflow-hidden rounded-2xl border border-white/8 bg-[#080C14]">
@@ -538,12 +543,16 @@ export function NuclearTriadDiagram({ triad }: { triad: { legs: TriadLeg[]; desc
           })}
 
           {/* Nodes */}
-          {[{ x: 200, y: 20, label: "AIR", i: 0 }, { x: 40, y: 250, label: "LAND", i: 1 }, { x: 360, y: 250, label: "SEA", i: 2 }].map(node => {
+          {[
+            { x: 200, y: 20, label: labels.AIR, i: 0 }, 
+            { x: 40, y: 250, label: labels.LAND, i: 1 }, 
+            { x: 360, y: 250, label: labels.SEA, i: 2 }
+          ].map(node => {
             const leg = legs[node.i];
             const isActive = active === node.i;
             return (
               <g
-                key={node.label}
+                key={node.i}
                 className="cursor-pointer"
                 onClick={() => setActive(active === node.i ? null : node.i)}
               >
@@ -567,9 +576,9 @@ export function NuclearTriadDiagram({ triad }: { triad: { legs: TriadLeg[]; desc
 
           {/* Center label */}
           <text x="200" y="145" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="9"
-            fontFamily="'Space Mono','Courier',monospace" letterSpacing="0.2em">NUCLEAR</text>
+            fontFamily="'Space Mono','Courier',monospace" letterSpacing="0.2em">{labels.NUCLEAR}</text>
           <text x="200" y="158" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="9"
-            fontFamily="'Space Mono','Courier',monospace" letterSpacing="0.2em">TRIAD</text>
+            fontFamily="'Space Mono','Courier',monospace" letterSpacing="0.2em">{labels.TRIAD}</text>
         </svg>
       </div>
 
@@ -579,7 +588,7 @@ export function NuclearTriadDiagram({ triad }: { triad: { legs: TriadLeg[]; desc
           {active === null ? (
             <motion.p key="default" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               className="text-center font-mono text-xs text-white/30 tracking-[0.2em]">
-              CLICK A NODE FOR DETAILS
+              {locale === 'ro' ? 'APASĂ PE UN NOD PENTRU DETALII' : 'CLICK A NODE FOR DETAILS'}
             </motion.p>
           ) : (
             <motion.div key={active} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
@@ -590,10 +599,10 @@ export function NuclearTriadDiagram({ triad }: { triad: { legs: TriadLeg[]; desc
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { label: "SYSTEMS", value: legs[active].systems },
-                  { label: "WARHEADS", value: legs[active].warheads },
-                  { label: "ALERT STATUS", value: legs[active].alert },
-                  { label: "KEY ADVANTAGE", value: legs[active].advantage },
+                  { label: locale === 'ro' ? 'SISTEME' : 'SYSTEMS', value: legs[active].systems },
+                  { label: locale === 'ro' ? 'FOCOASE' : 'WARHEADS', value: legs[active].warheads },
+                  { label: locale === 'ro' ? 'STATUS ALERTĂ' : 'ALERT STATUS', value: legs[active].alert },
+                  { label: locale === 'ro' ? 'AVANTAJ CHEIE' : 'KEY ADVANTAGE', value: legs[active].advantage },
                 ].map((item, i) => (
                   <div key={i} className="rounded-lg border border-white/6 bg-white/3 p-3">
                     <p className="mb-0.5 font-mono text-[8px] tracking-widest text-white/30">{item.label}</p>
@@ -624,7 +633,7 @@ interface CarrierPos {
   status: "deployed" | "transit" | "homeport";
 }
 
-export function GlobalCarrierMap({ positions }: { positions: CarrierGroupPosition[] }) {
+export function GlobalCarrierMap({ positions, locale = 'en' }: { positions: CarrierGroupPosition[]; locale?: Locale }) {
   const [hovered, setHovered] = useState<string | null>(null);
   
   // Calculate jitter for overlapping carriers to ensure visibility in crowded areas (e.g. Norfolk, San Diego)
@@ -758,7 +767,9 @@ export function GlobalCarrierMap({ positions }: { positions: CarrierGroupPositio
               >
                 {carriers.filter(c => c.id === hovered).map(c => (
                   <div key={c.id}>
-                    <p className="font-mono text-[8px] uppercase tracking-[0.25em] text-[#F59E0B]">CSG POSITION</p>
+                    <p className="font-mono text-[8px] uppercase tracking-[0.25em] text-[#F59E0B]">
+                      {locale === 'ro' ? 'POZIȚIE CSG' : 'CSG POSITION'}
+                    </p>
                     <p className="font-mono text-xs font-bold text-white">{c.ship}</p>
                     <p className="font-mono text-[10px] text-white/50">{c.region}</p>
                   </div>
@@ -780,9 +791,13 @@ export function GlobalCarrierMap({ positions }: { positions: CarrierGroupPositio
                className="object-contain scale-[2.4] pointer-events-none"
              />
           </div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/50">Carrier Strike Group</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/50">
+            {locale === 'ro' ? 'Grup de Atac Portavion' : 'Carrier Strike Group'}
+          </p>
         </div>
-        <p className="font-mono text-[9px] text-white/15">APPROXIMATE GLOBAL POSITIONS</p>
+        <p className="font-mono text-[9px] text-white/15">
+          {locale === 'ro' ? 'POZIȚII GLOBALE APROXIMATIVE' : 'APPROXIMATE GLOBAL POSITIONS'}
+        </p>
       </div>
     </div>
   );
@@ -918,20 +933,28 @@ export function ParallaxMilitaryHero({
 
 export function BudgetComparisonBar({ 
   data = SHARED_BUDGET_DATA, 
-  label = "Defense Budget (USD Billion, 2024)" 
+  label,
+  locale = 'en'
 }: { 
   data?: any[]; 
   label?: string; 
+  locale?: Locale;
 }) {
   const ref    = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
+  const defaultLabel = locale === 'ro' 
+    ? "Bugetul de Apărare (miliarde USD, 2024)" 
+    : "Defense Budget (USD Billion, 2024)";
+
+  const displayLabel = label || defaultLabel;
+
   return (
     <div ref={ref} className="overflow-hidden rounded-2xl border border-white/8 bg-[#080C14] p-6">
-      <p className="mb-6 font-mono text-[9px] uppercase tracking-[0.3em] text-white/35">{label}</p>
+      <p className="mb-6 font-mono text-[9px] uppercase tracking-[0.3em] text-white/35">{displayLabel}</p>
       <div className="space-y-3">
         {data.map((row, i) => {
-          const isHighlight = row.highlight || row.country.includes("United States");
+          const isHighlight = row.highlight || row.country.includes("United States") || row.country.includes("Statele Unite");
           const pct = (row.budget / 886) * 100;
           return (
             <div key={row.country}>
