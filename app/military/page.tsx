@@ -518,18 +518,18 @@ export default async function MilitaryPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-white/[0.02]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-white/2">
           {DEFENSE_CONTRACTORS.map((c, i) => (
             <div key={c.name} className="group bg-[#0a0a0a] p-12 flex flex-col h-full relative mil-gradient-border hover:bg-[#0f0f0f] transition-colors duration-500">
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-8">
                   <h4 className="text-2xl font-bold tracking-tight">{c.name}</h4>
-                  <div className="mil-text-metadata text-[8px] bg-white/[0.03] border border-white/[0.06] px-3 py-1.5">{c.revenue}</div>
+                  <div className="mil-text-metadata text-[8px] bg-white/3 border border-white/6 px-3 py-1.5">{c.revenue}</div>
                 </div>
                 <div className="mil-text-metadata opacity-55 mb-8 grow tracking-[0.2em]">{c.specialty}</div>
                 <div className="flex flex-wrap gap-2">
                   {c.programs.map(prog => (
-                    <span key={prog} className="mil-text-metadata text-[8px] border border-white/[0.06] px-2 py-1 text-white/60">
+                    <span key={prog} className="mil-text-metadata text-[8px] border border-white/6 px-2 py-1 text-white/60">
                       {prog}
                     </span>
                   ))}

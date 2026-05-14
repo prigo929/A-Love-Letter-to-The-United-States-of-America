@@ -58,7 +58,7 @@ function ParkTooltip({
 }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="border border-white/[0.06] bg-[#0a0c0a]/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
+    <div className="border border-white/6 bg-[#0a0c0a]/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
       <p className="mb-1 font-body text-sm font-semibold text-white">{label}</p>
       <p className="font-hero text-2xl" style={{ color: '#C4956A' }}>
         {payload[0].value.toFixed(1)}M
@@ -176,7 +176,7 @@ function BiodiversityTooltip({
   if (!active || !payload?.length) return null;
   const item = payload[0];
   return (
-    <div className="border border-white/[0.06] bg-[#0a0c0a]/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
+    <div className="border border-white/6 bg-[#0a0c0a]/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
       <p className="mb-1 font-body text-sm font-semibold text-white">
         {item.payload.flag} {label}
       </p>

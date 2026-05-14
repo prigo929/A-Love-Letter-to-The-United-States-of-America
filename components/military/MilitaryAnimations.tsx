@@ -353,7 +353,7 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
         onClick={() => setIsExpanded(true)}
-        className="group relative cursor-pointer bg-[#0a0a0a] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-500 overflow-hidden"
+        className="group relative cursor-pointer bg-[#0a0a0a] border border-white/6 hover:border-white/12 transition-all duration-500 overflow-hidden"
       >
         <div className="relative h-[220px] overflow-hidden">
           <Image
@@ -374,13 +374,13 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
         <div className="p-6">
           <div className="flex items-center gap-2 mb-3">
             <span className="mil-text-metadata text-[7px] tracking-[0.3em]">{system.category}</span>
-            {system.stealth && <span className="mil-text-metadata text-[6px] border border-white/[0.1] px-1.5 py-0.5 text-white/60">STEALTH</span>}
+            {system.stealth && <span className="mil-text-metadata text-[6px] border border-white/10 px-1.5 py-0.5 text-white/60">STEALTH</span>}
           </div>
           <h3 className="text-xl font-black tracking-tighter uppercase leading-tight mb-2">{system.name}</h3>
           <p className="text-white/50 text-xs leading-relaxed mb-4 line-clamp-2">{system.tagline || system.description.split('.')[0] + '.'}</p>
           <div className="flex gap-2 mb-4">
             {system.specs.slice(0, 2).map((spec, i) => (
-              <div key={i} className="border border-white/[0.06] bg-white/[0.02] px-3 py-1.5 flex-1">
+              <div key={i} className="border border-white/6 bg-white/2 px-3 py-1.5 flex-1">
                 <div className="mil-text-metadata text-[6px] tracking-[0.2em] opacity-60 mb-0.5">{spec.label}</div>
                 <div className="text-[11px] font-semibold tracking-tight text-white/80">{spec.value}</div>
               </div>
@@ -411,11 +411,11 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10 w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-[#0a0a0a] border border-white/[0.06] no-scrollbar"
+              className="relative z-10 w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-[#0a0a0a] border border-white/6 no-scrollbar"
               onClick={(e) => e.stopPropagation()}
               data-lenis-prevent
             >
-              <div className="sticky -top-px z-50 flex justify-between items-center px-6 md:px-12 py-4 bg-[#0a0a0a] border-b border-white/[0.06]">
+              <div className="sticky -top-px z-50 flex justify-between items-center px-6 md:px-12 py-4 bg-[#0a0a0a] border-b border-white/6">
                 <span className="mil-text-metadata tracking-[0.3em]">{locale === 'ro' ? 'DOSAR ACTIV' : 'ASSET DOSSIER'}</span>
                 <button onClick={(e) => { e.stopPropagation(); setIsExpanded(false); }} className="mil-text-metadata hover:text-white transition-colors tracking-[0.2em]">
                   {locale === 'ro' ? '[ ÎNCHIDE ]' : '[ CLOSE ]'}
@@ -438,24 +438,24 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
                       <p className="text-sm text-white/55 leading-relaxed">{system.significance}</p>
                     </div>
                   </div>
-                  <div className="hidden lg:block bg-white/[0.06]" />
+                  <div className="hidden lg:block bg-white/6" />
                   <div>
                     <div className="mil-text-metadata mb-6 tracking-[0.3em]">{locale === 'ro' ? 'SPECIFICAȚII TEHNICE' : 'TECHNICAL SPECIFICATIONS'}</div>
                     {system.specs.map((spec, i) => (
-                      <div key={i} className="flex justify-between items-baseline py-3 border-b border-white/[0.06]">
+                      <div key={i} className="flex justify-between items-baseline py-3 border-b border-white/6">
                         <span className="mil-text-metadata text-[8px] tracking-[0.2em] opacity-60">{spec.label}</span>
                         <span className="text-sm font-semibold tracking-tight text-white/80">{spec.value}</span>
                       </div>
                     ))}
                     <div className="mt-10 grid grid-cols-2 gap-3">
                       {system.speed && (
-                        <div className="bg-white/[0.03] border border-white/[0.06] p-4">
+                        <div className="bg-white/3 border border-white/6 p-4">
                           <div className="mil-text-metadata text-[7px] mb-1 opacity-60">SPEED</div>
                           <div className="text-lg font-bold tracking-tight">{system.speed}</div>
                         </div>
                       )}
                       {system.range && (
-                        <div className="bg-white/[0.03] border border-white/[0.06] p-4">
+                        <div className="bg-white/3 border border-white/6 p-4">
                           <div className="mil-text-metadata text-[7px] mb-1 opacity-60">RANGE</div>
                           <div className="text-lg font-bold tracking-tight">{system.range}</div>
                         </div>
@@ -480,9 +480,9 @@ export function BranchSelector({ branches, locale = 'en' }: { branches: Military
   const branch = branches[active];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] min-h-[600px] md:min-h-[700px] border border-white/[0.04] bg-[#050505]">
+    <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] min-h-[600px] md:min-h-[700px] border border-white/4 bg-[#050505]">
       {/* Vertical sidebar */}
-      <div className="flex md:flex-col md:h-full border-b md:border-b-0 md:border-r border-white/[0.04] overflow-x-auto md:overflow-visible">
+      <div className="flex md:flex-col md:h-full border-b md:border-b-0 md:border-r border-white/4 overflow-x-auto md:overflow-visible">
         {branches.map((b, i) => (
           <button
             key={b.id}
@@ -490,7 +490,7 @@ export function BranchSelector({ branches, locale = 'en' }: { branches: Military
             className={cn(
               "relative flex shrink-0 md:shrink items-center gap-3 px-6 py-4 md:py-5 text-left transition-all duration-300 md:flex-1",
               i === active
-                ? "text-white bg-white/[0.03]"
+                ? "text-white bg-white/3"
                 : "text-white/20 hover:text-white/40"
             )}
           >
@@ -603,7 +603,7 @@ export function DARPAProgramGrid({ programs, locale = 'en' }: { programs: DARPAP
 
   return (
     <>
-      <div className="grid gap-[1px] sm:grid-cols-2 lg:grid-cols-3 bg-white/[0.02]">
+      <div className="grid gap-[1px] sm:grid-cols-2 lg:grid-cols-3 bg-white/2">
         {programs.map((program, idx) => (
           <div
             key={program.id}
@@ -673,11 +673,11 @@ export function DARPAProgramGrid({ programs, locale = 'en' }: { programs: DARPAP
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 15, scale: 0.98 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10 w-full max-w-2xl max-h-[80vh] overflow-y-auto bg-[#0a0a0a] border border-white/[0.08] no-scrollbar"
+              className="relative z-10 w-full max-w-2xl max-h-[80vh] overflow-y-auto bg-[#0a0a0a] border border-white/8 no-scrollbar"
               onClick={(e) => e.stopPropagation()}
               data-lenis-prevent
             >
-              <div className="sticky -top-px z-50 flex justify-between items-center px-8 md:px-12 py-5 bg-[#0a0a0a] border-b border-white/[0.06]">
+              <div className="sticky -top-px z-50 flex justify-between items-center px-8 md:px-12 py-5 bg-[#0a0a0a] border-b border-white/6">
                 <div className="flex items-center gap-2">
                   <div className="h-2 w-2 rounded-full" style={{
                     background: selectedProgram.status === 'active' ? '#F5A623' : '#7DD3FC'
@@ -697,7 +697,7 @@ export function DARPAProgramGrid({ programs, locale = 'en' }: { programs: DARPAP
                   {selectedProgram.description}
                 </p>
 
-                <div className="pl-6 border-l border-white/[0.08]">
+                <div className="pl-6 border-l border-white/8">
                   <div className="mil-text-metadata mb-4 tracking-[0.3em] opacity-70">
                     {locale === 'ro' ? 'SEMNIFICAȚIE STRATEGICĂ' : 'STRATEGIC SIGNIFICANCE'}
                   </div>

@@ -29,13 +29,13 @@ export default async function AmericanHighSchoolPage() {
       </div>
 
       <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto min-h-[65vh] max-w-screen-xl rounded-3xl border border-dashed border-white/15 bg-white/[0.03] p-8">
+        <div className="mx-auto min-h-[65vh] max-w-screen-xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
           {/* TODO: Drop in existing parallax image of school bus here */}
         </div>
       </section>
 
       <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-dashed border-white/15 bg-white/[0.03] p-8">
+        <div className="mx-auto max-w-4xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
           {/* TODO: Drop in existing pull-quote about Hollywood exporting the teen experience here */}
         </div>
       </section>
@@ -43,12 +43,12 @@ export default async function AmericanHighSchoolPage() {
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-screen-xl">
           <div className="grid auto-rows-[minmax(180px,1fr)] gap-6 md:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/[0.03] p-6">
+            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6">
               {/* TODO: Create 4 empty cards. Drop in existing content for Football, Cafeteria, Prom, and SATs here */}
             </div>
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/[0.03] p-6" />
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/[0.03] p-6" />
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/[0.03] p-6" />
+            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
+            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
+            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
           </div>
         </div>
       </section>

@@ -157,7 +157,7 @@ export function NatureHeroCrossfade({ children }: { children: React.ReactNode })
   }, []);
 
   return (
-    <section className="relative h-screen overflow-hidden bg-[var(--nat-void,#030504)]">
+    <section className="relative h-screen overflow-hidden bg-(--nat-void,#030504)">
       {HERO_SLIDES.map((slide, i) => {
         const isPrev = i === (current - 1 + HERO_SLIDES.length) % HERO_SLIDES.length;
         const isNext = i === (current + 1) % HERO_SLIDES.length;
@@ -431,24 +431,33 @@ export function GeyserScene({ label = "OLD FAITHFUL", sublabel = "Erupts every 4
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 7. CanyonStrataReveal — alternating left/right geological layers
+// 7. CanyonStrataReveal — borderless geological timeline
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function CanyonStrataReveal({ layers }: { layers: { layer: string; age: string; depth: string; color: string }[] }) {
   return (
-    <motion.div className="overflow-hidden rounded-2xl border border-white/10 bg-navy-mid"
+    <motion.div className="border-t border-b border-white/4"
       initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
-      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } } }}
+      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } } }}
     >
       {layers.map((layer, i) => (
         <motion.div key={i}
-          variants={{ hidden: { opacity: 0, x: i % 2 === 0 ? -50 : 50 }, visible: { opacity: 1, x: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } } }}
-          className="flex items-center gap-4 border-b border-white/5 px-5 py-3.5 last:border-0 hover:bg-white/3 transition-colors"
+          variants={{
+            hidden: { opacity: 0, y: 15 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+          }}
+          className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 border-b border-white/4 py-5 last:border-0 hover:bg-white/2 transition-colors px-4"
         >
-          <div className="h-5 w-5 shrink-0 rounded-sm shadow-lg" style={{ backgroundColor: layer.color }} />
-          <div className="w-32 shrink-0"><p className="font-body text-xs text-white/35">{layer.depth}</p></div>
-          <div className="flex-1 min-w-0"><p className="font-body text-sm font-semibold text-white truncate">{layer.layer}</p></div>
-          <p className="font-hero text-base text-glory-gold shrink-0">{layer.age}</p>
+          <div className="flex items-center gap-3 sm:w-1/4 shrink-0">
+            <div className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: layer.color }} />
+            <p className="nat-text-metadata text-white/40">{layer.depth}</p>
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-base font-semibold text-white tracking-wide truncate">{layer.layer}</p>
+          </div>
+          <p className="font-hero text-sm tracking-wider shrink-0" style={{ color: 'var(--nat-accent-earth)' }}>
+            {layer.age}
+          </p>
         </motion.div>
       ))}
     </motion.div>
@@ -554,7 +563,7 @@ export function RegionCardsGrid({ regions }: { regions: RegionCardData[] }) {
       {regions.map((region) => (
         <motion.div key={region.region}
           variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } }}
-          className="bg-[var(--nat-surface)] p-8 md:p-10 transition-colors hover:bg-[var(--nat-elevated)]"
+          className="bg-(--nat-surface) p-8 md:p-10 transition-colors hover:bg-(--nat-elevated)"
         >
           <p className="nat-text-metadata mb-4" style={{ color: 'var(--nat-accent-earth)' }}>{region.region}</p>
           <h3 className="nat-text-heading text-white mb-4" style={{ fontSize: 'clamp(20px, 3vw, 32px)' }}>{region.headline}</h3>
@@ -609,7 +618,7 @@ export function NatureFactModule({ fact, detail, source, color = 'earth' }: {
 
   return (
     <motion.div
-      className="py-8 border-b border-white/[0.04] last:border-0"
+      className="py-8 border-b border-white/4 last:border-0"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
@@ -628,3 +637,60 @@ export function NatureFactModule({ fact, detail, source, color = 'earth' }: {
     </motion.div>
   );
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 14. NatureSubPageHero — single-image cinematic hero for sub-pages
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function NatureSubPageHero({ imageSrc, imageAlt, label, children }: {
+  imageSrc: string; imageAlt: string; label?: string; children: React.ReactNode;
+}) {
+  return (
+    <section className="relative h-screen overflow-hidden bg-(--nat-void,#030504)">
+      <motion.div
+        className="absolute inset-0"
+        initial={{ scale: 1 }}
+        animate={{ scale: 1.05 }}
+        transition={{ duration: 12, ease: "easeOut" }}
+      >
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover brightness-[0.4] saturate-[0.7]"
+          placeholder="blur"
+          blurDataURL={BLUR_PLACEHOLDER}
+        />
+      </motion.div>
+
+      {/* Cinematic vignettes */}
+      <div className="absolute inset-0 z-10 nat-edge-fade" />
+      <div className="absolute inset-0 z-10" style={{
+        background: 'radial-gradient(ellipse at center, transparent 30%, rgba(3,5,4,0.7) 100%)'
+      }} />
+
+      {/* Film grain */}
+      <div className="absolute inset-0 z-10 nat-noise pointer-events-none" />
+
+      {/* Slide metadata label */}
+      {label && (
+        <p className="absolute bottom-8 right-8 z-20 nat-text-metadata">
+          {label}
+        </p>
+      )}
+
+      {/* Breathing scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3">
+        <div className="h-8 w-px bg-white/20 nat-breathe" />
+      </div>
+
+      {/* Content overlay */}
+      <div className="relative z-20 flex h-screen flex-col justify-end pb-24 pt-48">
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">{children}</div>
+      </div>
+    </section>
+  );
+}
+
