@@ -12,10 +12,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Breadcrumb }  from "@/components/layout/Breadcrumb";
-import { FactCard }    from "@/components/sections/FactCard";
-import { QuoteBlock }  from "@/components/sections/QuoteBlock";
-import { CanyonStrataReveal, AnimatedStatWall, ParallaxImageBand, HeroTextReveal } from "@/components/nature/NatureAnimations";
+import {
+  NatStyles,
+  NatureSubPageHero,
+  CanyonStrataReveal,
+  AnimatedStatWall,
+  ParallaxImageBand,
+  HeroTextReveal,
+  NatureQuoteBreak,
+  NatureFactModule,
+} from "@/components/nature/NatureAnimations";
 import { getServerLocale }     from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER }    from "@/lib/utils";
 import { SITE_IMAGES }         from "@/lib/site-images";
@@ -63,115 +69,138 @@ const GC_EXTENDED_RO = [
 ];
 
 export default async function GrandCanyonPage() {
-  // Pick language first, then swap in the right geology labels and supporting
-  // facts for the rest of the page.
   const locale   = await getServerLocale();
   const isRo     = locale === "ro";
   const facts    = getGrandCanyonFacts(locale);
   const layers   = isRo ? GEOLOGY_LAYERS_RO : GEOLOGY_LAYERS_EN;
   const extFacts = isRo ? GC_EXTENDED_RO : GC_EXTENDED_EN;
 
-  // This uniform array shape is what the reusable animated stat wall expects.
   const statWall = [
-    { value: 277,  suffix: " mi",    label: isRo ? "Lungime" : "Length",          sub: isRo ? "De-a lungul râului Colorado" : "Along the Colorado River",    color: "#fb923c" },
-    { value: 18,   suffix: " mi",    label: isRo ? "Lățime Max." : "Max Width",   sub: isRo ? "Margine la margine, la cel mai lat" : "Rim to rim at widest", color: "#FFD700" },
-    { value: 6093, suffix: " ft",    label: isRo ? "Ad. Maximă" : "Max Depth",    sub: isRo ? "Până la râul Colorado" : "To the Colorado River below",       color: "#fb923c" },
-    { value: 1800, suffix: "M yr",   label: isRo ? "Geologie Expusă" : "Geology Exposed", sub: isRo ? "Din istoria Pământului" : "Of Earth's history",      color: "#a78bfa" },
+    { value: 277,  suffix: " mi",    label: isRo ? "Lungime" : "Length",          sub: isRo ? "De-a lungul râului Colorado" : "Along the Colorado River",    color: "#C4956A" },
+    { value: 18,   suffix: " mi",    label: isRo ? "Lățime Max." : "Max Width",   sub: isRo ? "Margine la margine, la cel mai lat" : "Rim to rim at widest", color: "#8B8680" },
+    { value: 6093, suffix: " ft",    label: isRo ? "Ad. Maximă" : "Max Depth",    sub: isRo ? "Până la râul Colorado" : "To the Colorado River below",       color: "#C4956A" },
+    { value: 1800, suffix: "M yr",   label: isRo ? "Geologie Expusă" : "Geology Exposed", sub: isRo ? "Din istoria Pământului" : "Of Earth's history",      color: "#4ade80" },
   ];
+
+  // Map shared facts to the expected color scheme if needed, or default to earth tones
+  const colorMap = { gold: 'earth' as const, red: 'earth' as const, blue: 'glacier' as const, green: 'forest' as const };
 
   return (
     <>
-      <div className="relative bg-navy-dark pt-28 pb-16">
-        <Image src={SITE_IMAGES.homeGrandCanyon}
-          alt={isRo ? "Marele Canion la răsărit de soare — niveluri geologice colorate" : "Grand Canyon at sunrise — layered geological strata"}
-          fill className="object-cover opacity-50" priority sizes="100vw"
-          placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/75 to-navy-dark" />
-        <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <Breadcrumb items={[{ label: isRo ? "Natură" : "Nature", href: "/nature" }, { label: isRo ? "Marele Canion" : "Grand Canyon" }]} className="mb-8" />
-          <HeroTextReveal
-            eyebrow={isRo ? "Marele Canion" : "Grand Canyon"}
-            line1={isRo ? "CEA MAI MARE" : "NATURE'S"}
-            line2={isRo ? "SCULPTURĂ A NATURII" : "GREATEST SCULPTURE"}
-            line2Color="#fb923c"
-            body={isRo
-              ? "277 de mile lungime, 18 mile lățime, un mile adâncime — expunând 1,8 miliarde de ani de geologie. Niciun cuvânt, nicio fotografie nu poate pregăti un vizitator pentru primul contact cu Marele Canion."
-              : "277 miles long, 18 miles wide, one mile deep — exposing 1.8 billion years of Earth's geological history. No words, no photograph can prepare a first-time visitor."}
-          />
-        </div>
-      </div>
+      <NatStyles />
+      
+      {/* ── HERO — single image cinematic entrance ───────────────────────── */}
+      <NatureSubPageHero
+        imageSrc={SITE_IMAGES.homeGrandCanyon}
+        imageAlt={isRo ? "Marele Canion la răsărit de soare" : "Grand Canyon at sunrise"}
+        label={isRo ? "MARELE CANION · ARIZONA" : "GRAND CANYON · ARIZONA"}
+      >
+        <HeroTextReveal
+          eyebrow={isRo ? "Marele Canion" : "Grand Canyon"}
+          line1={isRo ? "CEA MAI MARE" : "NATURE'S"}
+          line2={isRo ? "SCULPTURĂ" : "GREATEST SCULPTURE"}
+          line2Color="var(--nat-accent-earth)"
+          body={isRo
+            ? "277 de mile lungime, 18 mile lățime, un mile adâncime — expunând 1,8 miliarde de ani de geologie. Niciun cuvânt, nicio fotografie nu poate pregăti un vizitator pentru primul contact cu Marele Canion."
+            : "277 miles long, 18 miles wide, one mile deep — exposing 1.8 billion years of Earth's geological history. No words, no photograph can prepare a first-time visitor."}
+        />
+      </NatureSubPageHero>
 
-      <section className="bg-navy-dark px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-screen-xl"><AnimatedStatWall stats={statWall} /></div>
+      {/* ── STAT WALL ─────────────────────────────────────────────────────── */}
+      <section className="bg-[var(--nat-void)] pb-20 pt-12">
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">
+          <AnimatedStatWall stats={statWall} />
+        </div>
       </section>
 
-      <div className="bg-navy-dark">
-        <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 space-y-16">
+      {/* ── CONTENT ───────────────────────────────────────────────────────── */}
+      <div className="bg-[var(--nat-void)] pb-32">
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12 space-y-32">
 
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">{isRo ? "Un Mile prin Timp" : "A Mile Through Time"}</h2>
-            <p className="mb-8 font-body text-lg leading-relaxed text-white/65">
-              {isRo
-                ? "Peretele canionului este un calendar de piatră. Fiecare strat reprezintă un mediu complet diferit — mări tropicale, deșerturi antice, câmpii de inundații — depozitate de-a lungul a sute de milioane de ani."
-                : "The canyon wall is a stone calendar. Each layer represents a completely different ancient environment — tropical seas, ancient deserts, flood plains — deposited over hundreds of millions of years."}
-            </p>
+          {/* Geological layers timeline */}
+          <section className="max-w-5xl mx-auto">
+            <div className="mb-12">
+              <h2 className="nat-text-section text-white mb-6">{isRo ? "Un Mile prin Timp" : "A Mile Through Time"}</h2>
+              <p className="nat-text-body max-w-2xl">
+                {isRo
+                  ? "Peretele canionului este un calendar de piatră. Fiecare strat reprezintă un mediu complet diferit — mări tropicale, deșerturi antice, câmpii de inundații — depozitate de-a lungul a sute de milioane de ani."
+                  : "The canyon wall is a stone calendar. Each layer represents a completely different ancient environment — tropical seas, ancient deserts, flood plains — deposited over hundreds of millions of years."}
+              </p>
+            </div>
             <CanyonStrataReveal layers={layers} />
           </section>
 
+          {/* Full-bleed/borderless image comparison */}
           <section>
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="relative h-[300px] overflow-hidden rounded-2xl">
+              <div className="relative h-[450px] overflow-hidden group">
                 <Image src={SITE_IMAGES.homeGrandCanyon}
-                  alt={isRo ? "Marele Canion — priveliște panoramică la amiază" : "Grand Canyon — panoramic midday view"}
-                  fill className="object-cover object-bottom" sizes="(max-width:768px) 100vw, 50vw"
+                  alt={isRo ? "Marele Canion" : "Grand Canyon"}
+                  fill className="object-cover object-bottom brightness-[0.7] group-hover:scale-105 transition-transform duration-1000" sizes="(max-width:768px) 100vw, 50vw"
                   placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
-                <div className="absolute bottom-4 left-4 rounded-lg border border-white/15 bg-black/60 px-3 py-2 backdrop-blur-sm">
-                  <p className="font-body text-xs text-white/70">{isRo ? "South Rim, Arizona" : "South Rim, Arizona"}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute bottom-8 left-8 z-10">
+                  <p className="nat-text-label">{isRo ? "South Rim, Arizona" : "South Rim, Arizona"}</p>
                 </div>
               </div>
-              <div className="relative h-[300px] overflow-hidden rounded-2xl">
+              <div className="relative h-[450px] overflow-hidden group">
                 <Image src={SITE_IMAGES.zionNationalPark}
-                  alt={isRo ? "Zion National Park — canioane din gresie roșie, nearby" : "Zion National Park — nearby red sandstone canyon"}
-                  fill className="object-cover" sizes="(max-width:768px) 100vw, 50vw"
+                  alt={isRo ? "Zion National Park" : "Zion National Park"}
+                  fill className="object-cover brightness-[0.7] group-hover:scale-105 transition-transform duration-1000" sizes="(max-width:768px) 100vw, 50vw"
                   placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
-                <div className="absolute bottom-4 left-4 rounded-lg border border-white/15 bg-black/60 px-3 py-2 backdrop-blur-sm">
-                  <p className="font-body text-xs text-white/70">{isRo ? "Zion NP — la 160 km nord" : "Zion NP — 100 miles north"}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute bottom-8 left-8 z-10">
+                  <p className="nat-text-label">{isRo ? "Zion NP — la 160 km nord" : "Zion NP — 100 miles north"}</p>
                 </div>
               </div>
             </div>
           </section>
 
+          {/* Parallax Image Band divider */}
           <ParallaxImageBand imageSrc={SITE_IMAGES.homeGrandCanyon}
-            imageAlt={isRo ? "Marele Canion la ora de aur" : "Grand Canyon at golden hour"}
-            height={360} overlayOpacity={0.5}>
-            <div className="text-center px-4">
-              <p className="font-hero text-5xl text-orange-300 md:text-7xl">1.8 {isRo ? "MILIARDE" : "BILLION"}</p>
-              <p className="mt-3 font-body text-xl text-white/80">
+            imageAlt={isRo ? "Marele Canion" : "Grand Canyon"}
+            height={600} overlayOpacity={0.6}>
+            <div className="text-center max-w-4xl mx-auto px-6">
+              <p className="nat-text-display" style={{ color: 'var(--nat-accent-earth)' }}>1.8 {isRo ? "MLD" : "BIL"}</p>
+              <p className="nat-text-heading text-white mt-4">
                 {isRo ? "ani de geologie expusă într-un mile vertical" : "years of geology exposed in one vertical mile"}
               </p>
             </div>
           </ParallaxImageBand>
 
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">{isRo ? "Marele Canion în Detaliu" : "Grand Canyon in Detail"}</h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Facts list as NatureFactModules */}
+          <section className="max-w-4xl mx-auto">
+            <h2 className="nat-text-section text-white mb-16">{isRo ? "În Detaliu" : "In Detail"}</h2>
+            <div>
               {[...facts, ...extFacts].map((fact) => (
-                <FactCard key={fact.id} fact={fact.fact} detail={fact.detail} source={fact.source} color={fact.color} variant="dark" />
+                <NatureFactModule
+                  key={fact.id}
+                  fact={fact.fact}
+                  detail={fact.detail}
+                  source={fact.source}
+                  color={colorMap[fact.color as keyof typeof colorMap] ?? 'earth'}
+                />
               ))}
             </div>
           </section>
 
-          <QuoteBlock
+          {/* Quote Section */}
+          <NatureQuoteBreak
             quote={isRo ? "Nu faceți nimic pentru a-i deteriora grandoarea. Nu-l puteți îmbunătăți. Dar ceea ce puteți face este să-l păstrați pentru copiii voștri, copiii copiilor voștri și pentru toți cei care vin după voi." : "Do nothing to mar its grandeur, sublimity and loveliness. You cannot improve on it. But what you can do is to keep it for your children, your children's children, and for all who come after you."}
             attribution="Theodore Roosevelt"
             title={isRo ? "Al 26-lea Președinte, la Marele Canion, 6 mai 1903" : "26th President, speaking at the Grand Canyon, May 6, 1903"}
-            variant="dark"
           />
 
-          <div className="flex items-center justify-between border-t border-white/10 pt-8">
-            <Link href="/nature/rockies" className="font-body text-sm text-white/50 hover:text-white transition-colors">← {isRo ? "Munții Stâncoși" : "Rocky Mountains"}</Link>
-            <Link href="/nature/yellowstone" className="font-body text-sm font-semibold text-orange-400 hover:text-orange-300 transition-colors">Yellowstone →</Link>
+          {/* Sub-page Navigation Footer */}
+          <div className="flex items-center justify-between border-t border-white/[0.04] pt-12 max-w-5xl mx-auto">
+            <Link href="/nature/rockies" className="nat-text-label text-white/40 hover:text-white transition-colors">
+              ← {isRo ? "Munții Stâncoși" : "Rocky Mountains"}
+            </Link>
+            <Link href="/nature/yellowstone" className="nat-text-label text-white/40 hover:text-white transition-colors" style={{ color: 'var(--nat-accent-earth)' }}>
+              Yellowstone →
+            </Link>
           </div>
+
         </div>
       </div>
     </>

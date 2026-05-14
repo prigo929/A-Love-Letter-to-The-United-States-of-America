@@ -163,7 +163,7 @@ export default async function NationalParksPage() {
                   </thead>
                   <tbody>
                     {ALL_PARKS.map((park, i) => (
-                      <tr key={i} className={`border-b border-white/5 transition-colors hover:bg-white/3 ${i % 2 === 0 ? "" : "bg-white/[0.01]"}`}>
+                      <tr key={i} className={`border-b border-white/5 transition-colors hover:bg-white/3 ${i % 2 === 0 ? "" : "bg-white/1"}`}>
                         <td className="px-5 py-3.5 font-body text-sm text-white/30">{i + 1}</td>
                         <td className="px-5 py-3.5 font-body text-sm font-semibold text-white">{park.name}</td>
                         <td className="px-5 py-3.5 font-body text-sm text-white/50">{park.state}</td>

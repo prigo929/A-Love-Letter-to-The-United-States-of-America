@@ -139,7 +139,7 @@ export default async function NaturePage() {
       </NatureHeroCrossfade>
 
       {/* ── ANIMATED STAT WALL ────────────────────────────────────────────── */}
-      <section className="bg-[var(--nat-void,#030504)] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-(--nat-void,#030504) px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-[1440px]">
           <AnimatedStatWall stats={statWallData} />
         </div>
@@ -163,7 +163,7 @@ export default async function NaturePage() {
       </ParallaxImageBand>
 
       {/* ── OVERVIEW NARRATIVE ──────────────────────────────────────────── */}
-      <section className="bg-[var(--nat-void,#030504)] py-24 md:py-32">
+      <section className="bg-(--nat-void,#030504) py-24 md:py-32">
         <div className="mx-auto max-w-[900px] px-6 md:px-12">
           <p className="nat-text-label mb-8" style={{ color: 'var(--nat-accent-earth)' }}>
             {isRo ? "Prezentare Generală" : "Overview"}
@@ -176,7 +176,7 @@ export default async function NaturePage() {
       </section>
 
       {/* ── FACT MODULES ──────────────────────────────────────────────────── */}
-      <section className="bg-[var(--nat-void,#030504)]">
+      <section className="bg-(--nat-void,#030504)">
         <div className="mx-auto max-w-[900px] px-6 md:px-12 pb-16">
           {facts.slice(0, 3).map((fact, i) => (
             <NatureFactModule
@@ -191,7 +191,7 @@ export default async function NaturePage() {
       </section>
 
       {/* ── NATIONAL PARKS — chart ───────────────────────────────────────── */}
-      <section className="bg-[var(--nat-void,#030504)] py-24 md:py-32">
+      <section className="bg-(--nat-void,#030504) py-24 md:py-32">
         <div className="mx-auto max-w-[1200px] px-6 md:px-12">
           <p className="nat-text-label mb-6" style={{ color: 'var(--nat-accent-forest)' }}>
             {isRo ? "Sistemul Parcurilor Naționale" : "The National Parks System"}
@@ -204,7 +204,7 @@ export default async function NaturePage() {
               ? "Înființat în 1872 cu Yellowstone, Sistemul Național de Parcuri al SUA protejează astăzi 85 de milioane de acri în 63 de parcuri și 423 de situri totale — un model de conservare pe care fiecare altă națiune a încercat să îl imite."
               : "Established in 1872 with Yellowstone, the US National Park System today protects 85 million acres across 63 parks and 423 total sites — a conservation model every other nation has tried to imitate."}
           </p>
-          <div className="bg-[var(--nat-surface)] p-6 md:p-10">
+          <div className="bg-(--nat-surface) p-6 md:p-10">
             <ParkVisitorsChart
               data={TOP_PARKS_VISITORS}
               title={isRo ? "Cele Mai Vizitate Parcuri Naționale (2023)" : "Most Visited National Parks (2023)"}
@@ -216,7 +216,7 @@ export default async function NaturePage() {
       </section>
 
       {/* ── QUOTE BREAK 1 ─────────────────────────────────────────────────── */}
-      <div className="bg-[var(--nat-void,#030504)]">
+      <div className="bg-(--nat-void,#030504)">
         <NatureQuoteBreak
           quote={quotes[0].quote}
           attribution={quotes[0].attribution}
@@ -225,7 +225,7 @@ export default async function NaturePage() {
       </div>
 
       {/* ── CROWN JEWELS — cinematic grid ─────────────────────────────────── */}
-      <section className="bg-[var(--nat-void,#030504)] py-24 md:py-32">
+      <section className="bg-(--nat-void,#030504) py-24 md:py-32">
         <div className="mx-auto max-w-[1440px] px-6 md:px-12">
           <p className="nat-text-label mb-6" style={{ color: 'var(--nat-accent-earth)' }}>
             {isRo ? "Parcuri de Referință" : "Landmark Parks"}
@@ -266,7 +266,7 @@ export default async function NaturePage() {
       </ParallaxImageBand>
 
       {/* ── BIODIVERSITY ──────────────────────────────────────────────────── */}
-      <section className="bg-[var(--nat-void,#030504)] py-24 md:py-32">
+      <section className="bg-(--nat-void,#030504) py-24 md:py-32">
         <div className="mx-auto max-w-[1200px] px-6 md:px-12">
           <p className="nat-text-label mb-6" style={{ color: 'var(--nat-accent-glacier)' }}>
             {isRo ? "Biodiversitate" : "Biodiversity"}
@@ -279,7 +279,7 @@ export default async function NaturePage() {
               ? "Statele Unite sunt una dintre cele mai bogate națiuni temperate din punct de vedere al biodiversității de pe Pământ. Cu 432.000 de specii cunoscute, SUA depășesc cu mult toți omologii lor din lumea dezvoltată."
               : "The United States is one of the most biodiversity-rich temperate nations on Earth. With 432,000 known species, the US dramatically outpaces its developed-world peers."}
           </p>
-          <div className="bg-[var(--nat-surface)] p-6 md:p-10 mb-12">
+          <div className="bg-(--nat-surface) p-6 md:p-10 mb-12">
             <BiodiversityChart
               data={BIODIVERSITY_BY_COUNTRY}
               title={isRo ? "Specii Cunoscute pe Țară (mii)" : "Known Species by Country (thousands)"}
@@ -300,7 +300,7 @@ export default async function NaturePage() {
       </section>
 
       {/* ── QUOTE BREAK 2 ─────────────────────────────────────────────────── */}
-      <div className="bg-[var(--nat-void,#030504)]">
+      <div className="bg-(--nat-void,#030504)">
         <NatureQuoteBreak
           quote={quotes[2].quote}
           attribution={quotes[2].attribution}
@@ -309,7 +309,7 @@ export default async function NaturePage() {
       </div>
 
       {/* ── REGIONAL WONDERS ──────────────────────────────────────────────── */}
-      <section className="bg-[var(--nat-void,#030504)] py-24 md:py-32">
+      <section className="bg-(--nat-void,#030504) py-24 md:py-32">
         <div className="mx-auto max-w-[1440px] px-6 md:px-12">
           <p className="nat-text-label mb-6" style={{ color: 'var(--nat-accent-glacier)' }}>
             {isRo ? "Regiunile Naturale" : "Natural Regions"}
@@ -341,7 +341,7 @@ export default async function NaturePage() {
       </ParallaxImageBand>
 
       {/* ── DEEP DIVES — sub-page navigation ─────────────────────────────── */}
-      <section className="bg-[var(--nat-void,#030504)] py-24 md:py-32">
+      <section className="bg-(--nat-void,#030504) py-24 md:py-32">
         <div className="mx-auto max-w-[1440px] px-6 md:px-12">
           <p className="nat-text-label mb-6" style={{ color: 'var(--nat-accent-earth)' }}>
             {isRo ? "Explorați mai Adânc" : "Explore Deeper"}
@@ -373,7 +373,7 @@ export default async function NaturePage() {
                   {page.badge}
                 </span>
                 <div className="absolute bottom-0 left-0 right-0 z-10 p-6">
-                  <h3 className="nat-text-heading text-white mb-2 transition-colors group-hover:text-[var(--nat-accent-forest)]" style={{ fontSize: 'clamp(18px, 2.5vw, 28px)' }}>
+                  <h3 className="nat-text-heading text-white mb-2 transition-colors group-hover:text-(--nat-accent-forest)" style={{ fontSize: 'clamp(18px, 2.5vw, 28px)' }}>
                     {page.title}
                   </h3>
                   <p className="nat-text-body text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
