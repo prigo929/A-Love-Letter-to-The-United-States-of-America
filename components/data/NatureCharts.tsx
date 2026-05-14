@@ -30,9 +30,9 @@ import type {
 // ─── Shared tooltip style ─────────────────────────────────────────────────────
 
 const tooltipStyle = {
-  backgroundColor: "#0d1117",
-  border: "1px solid rgba(255,255,255,0.15)",
-  borderRadius: "12px",
+  backgroundColor: "#0a0c0a",
+  border: "1px solid rgba(255,255,255,0.06)",
+  borderRadius: "0px",
   fontFamily: "var(--font-body)",
   color: "#fff",
   fontSize: "13px",
@@ -58,12 +58,12 @@ function ParkTooltip({
 }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-xl border border-white/15 bg-navy-dark/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
+    <div className="border border-white/[0.06] bg-[#0a0c0a]/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
       <p className="mb-1 font-body text-sm font-semibold text-white">{label}</p>
-      <p className="font-hero text-2xl text-glory-gold">
+      <p className="font-hero text-2xl" style={{ color: '#C4956A' }}>
         {payload[0].value.toFixed(1)}M
       </p>
-      <p className="font-body text-xs text-white/50">Annual Visitors</p>
+      <p className="font-body text-xs text-white/40">Annual Visitors</p>
     </div>
   );
 }
@@ -138,7 +138,7 @@ export function ParkVisitorsChart({
               {data.map((entry, i) => (
                 <Cell
                   key={`cell-${i}`}
-                  fill={entry.highlight ? "#FFD700" : "#3C3B6E"}
+                  fill={entry.highlight ? "#C4956A" : "#1a1c1a"}
                   opacity={entry.highlight ? 1 : 0.8}
                 />
               ))}
@@ -176,14 +176,14 @@ function BiodiversityTooltip({
   if (!active || !payload?.length) return null;
   const item = payload[0];
   return (
-    <div className="rounded-xl border border-white/15 bg-navy-dark/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
+    <div className="border border-white/[0.06] bg-[#0a0c0a]/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
       <p className="mb-1 font-body text-sm font-semibold text-white">
         {item.payload.flag} {label}
       </p>
-      <p className="font-hero text-2xl text-glory-gold">
+      <p className="font-hero text-2xl" style={{ color: '#4ade80' }}>
         {item.value.toLocaleString()}K
       </p>
-      <p className="font-body text-xs text-white/50">Known species (thousands)</p>
+      <p className="font-body text-xs text-white/40">Known species (thousands)</p>
     </div>
   );
 }
@@ -257,7 +257,7 @@ export function BiodiversityChart({
               {data.map((entry, i) => (
                 <Cell
                   key={`cell-${i}`}
-                  fill={entry.highlight ? "#B22234" : "#3C3B6E"}
+                  fill={entry.highlight ? "#4ade80" : "#1a1c1a"}
                   opacity={entry.highlight ? 1 : 0.72}
                 />
               ))}
