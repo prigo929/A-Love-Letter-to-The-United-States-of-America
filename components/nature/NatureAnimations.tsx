@@ -1,17 +1,15 @@
 "use client";
 
 // ─── Nature Animation Components ─────────────────────────────────────────────
-// Specialized visual engine for the Nature vertical.
+// Spatial Editorial visual engine for the Nature & Geography vertical.
 //
-// Component Philosophy:
-// - Atmospheric Immersion: Every component aims to evoke a "National Geographic"
-//   aesthetic through subtle motion (Ken-Burns, Parallax).
-// - Lightweight Interactions: Uses SVGs and CSS animations (Geyser, Aurora) for 
-//   high visual impact with minimal main-thread performance cost.
-//
-// Beginner guide:
-// - HERO_SLIDES: Edit the array below to change the main nature landing hero images.
-// - CountUp: The core logic for animating statistics on scroll.
+// Design Language: "Spatial Editorial"
+// - Vast negative space, borderless design, environmental integration
+// - Inspired by: Apple environmental showcases, Rivian digital showrooms,
+//   Aman Resorts, high-end interactive spatial documentaries
+// - Typography: extreme scale contrast — massive cinematic headers paired
+//   with tightly tracked minimalist metadata
+// - Motion: natural, physical gravity — fade, blur, scale via useScroll
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from "framer-motion";
@@ -21,6 +19,121 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 // ─────────────────────────────────────────────────────────────────────────────
+// 0. NatStyles — Spatial Editorial Design System
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function NatStyles() {
+  return (
+    <style jsx global>{`
+      :root {
+        /* ── Surface hierarchy ── */
+        --nat-void:     #030504;
+        --nat-surface:  #0a0c0a;
+        --nat-elevated: #121412;
+        --nat-border:   rgba(255,255,255,0.04);
+
+        /* ── Accent system — organic, never synthetic ── */
+        --nat-accent-earth:   #C4956A;
+        --nat-accent-forest:  #4ade80;
+        --nat-accent-glacier: #7DD3FC;
+        --nat-accent-stone:   #8B8680;
+      }
+
+      /* ── Typography — Spatial Editorial grade ── */
+
+      .nat-text-display {
+        font-family: var(--font-archivo);
+        font-size: clamp(80px, 15vw, 240px);
+        font-weight: 200;
+        line-height: 0.85;
+        letter-spacing: -0.05em;
+        text-transform: uppercase;
+      }
+
+      .nat-text-hero {
+        font-family: var(--font-archivo);
+        font-size: clamp(50px, 10vw, 160px);
+        font-weight: 900;
+        line-height: 0.9;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+      }
+
+      .nat-text-section {
+        font-family: var(--font-archivo);
+        font-size: clamp(48px, 8vw, 120px);
+        font-weight: 900;
+        line-height: 0.9;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+      }
+
+      .nat-text-heading {
+        font-family: var(--font-archivo);
+        font-size: clamp(28px, 4vw, 56px);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+      }
+
+      .nat-text-body {
+        font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+        font-size: clamp(14px, 1.2vw, 18px);
+        line-height: 1.7;
+        color: rgba(255,255,255,0.65);
+      }
+
+      .nat-text-label {
+        font-family: var(--font-hero);
+        font-size: clamp(8px, 0.8vw, 10px);
+        font-weight: 500;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.45);
+      }
+
+      .nat-text-metadata {
+        font-family: var(--font-mono);
+        font-size: 9px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.35);
+      }
+
+      /* ── Utilities ── */
+
+      .nat-noise::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .nat-glass {
+        background: rgba(10, 12, 10, 0.6);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255,0.04);
+      }
+
+      .nat-edge-fade {
+        background: linear-gradient(to bottom, #030504 0%, rgba(3,5,4,0) 15%, rgba(3,5,4,0) 85%, #030504 100%);
+      }
+
+      @keyframes nat-breathe {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 1; }
+      }
+      .nat-breathe { animation: nat-breathe 3s ease-in-out infinite; }
+    `}</style>
+  );
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
 // 1. NatureHeroCrossfade — 5-slide crossfade with Ken-Burns zoom + dots
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -28,30 +141,27 @@ import { SITE_IMAGES } from "@/lib/site-images";
 // Denali reflection (no local matching shot) and Yellowstone prismatic (local
 // yellowstonePrismatic is better for this context).
 const HERO_SLIDES = [
-  { src: SITE_IMAGES.homeGrandCanyon,        alt: "Grand Canyon at sunrise",                   label: "Grand Canyon, Arizona"       },
-  { src: SITE_IMAGES.denaliNationalPark,     alt: "Denali, highest peak in North America",     label: "Denali, Alaska"              },
-  { src: SITE_IMAGES.yosemiteNationalPark,   alt: "Yosemite National Park valley",             label: "Yosemite, California"        },
-  { src: SITE_IMAGES.yellowstonePrismatic,   alt: "Grand Prismatic Spring, Yellowstone",       label: "Yellowstone, Wyoming"        },
-  { src: SITE_IMAGES.glacierNationalPark,    alt: "Glacier National Park alpine lakes",        label: "Glacier NP, Montana"         },
+  { src: SITE_IMAGES.homeGrandCanyon,        alt: "Grand Canyon at sunrise",                   label: "GRAND CANYON · ARIZONA"       },
+  { src: SITE_IMAGES.denaliNationalPark,     alt: "Denali, highest peak in North America",     label: "DENALI · ALASKA"              },
+  { src: SITE_IMAGES.yosemiteNationalPark,   alt: "Yosemite National Park valley",             label: "YOSEMITE · CALIFORNIA"        },
+  { src: SITE_IMAGES.yellowstonePrismatic,   alt: "Grand Prismatic Spring, Yellowstone",       label: "YELLOWSTONE · WYOMING"        },
+  { src: SITE_IMAGES.glacierNationalPark,    alt: "Glacier National Park alpine lakes",        label: "GLACIER NP · MONTANA"         },
 ];
 
 export function NatureHeroCrossfade({ children }: { children: React.ReactNode }) {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => setCurrent((c) => (c + 1) % HERO_SLIDES.length), 6000);
+    const id = setInterval(() => setCurrent((c) => (c + 1) % HERO_SLIDES.length), 7000);
     return () => clearInterval(id);
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-navy-dark">
+    <section className="relative h-screen overflow-hidden bg-[var(--nat-void,#030504)]">
       {HERO_SLIDES.map((slide, i) => {
-        // Performance optimization: only render current, previous, and next slides
-        // to prevent simultaneous preloading of all high-res background assets.
         const isPrev = i === (current - 1 + HERO_SLIDES.length) % HERO_SLIDES.length;
         const isNext = i === (current + 1) % HERO_SLIDES.length;
         const isActive = i === current;
-        
         if (!isActive && !isPrev && !isNext) return null;
 
         return (
@@ -60,12 +170,12 @@ export function NatureHeroCrossfade({ children }: { children: React.ReactNode })
             className="absolute inset-0"
             initial={false}
             animate={{ opacity: isActive ? 1 : 0 }}
-            transition={{ duration: 1.8, ease: "easeInOut" }}
+            transition={{ duration: 2.0, ease: "easeInOut" }}
           >
             <motion.div
               className="absolute inset-0"
-              animate={isActive ? { scale: 1.06 } : { scale: 1 }}
-              transition={{ duration: 6, ease: "linear" }}
+              animate={isActive ? { scale: 1.08 } : { scale: 1 }}
+              transition={{ duration: 7, ease: "linear" }}
             >
               <Image
                 src={slide.src}
@@ -73,7 +183,7 @@ export function NatureHeroCrossfade({ children }: { children: React.ReactNode })
                 fill
                 priority={i === 0}
                 sizes="100vw"
-                className="object-cover"
+                className="object-cover brightness-[0.4] saturate-[0.7]"
                 placeholder="blur"
                 blurDataURL={BLUR_PLACEHOLDER}
               />
@@ -82,15 +192,20 @@ export function NatureHeroCrossfade({ children }: { children: React.ReactNode })
         );
       })}
 
-      {/* Overlays */}
-      <div className="absolute inset-0 z-10 bg-linear-to-b from-navy-dark/60 via-transparent to-navy-dark/90" />
-      <div className="absolute inset-0 z-10 bg-linear-to-r from-navy-dark/70 via-transparent to-transparent" />
+      {/* Cinematic vignettes */}
+      <div className="absolute inset-0 z-10 nat-edge-fade" />
+      <div className="absolute inset-0 z-10" style={{
+        background: 'radial-gradient(ellipse at center, transparent 30%, rgba(3,5,4,0.7) 100%)'
+      }} />
 
-      {/* Slide label */}
+      {/* Film grain */}
+      <div className="absolute inset-0 z-10 nat-noise pointer-events-none" />
+
+      {/* Slide metadata label */}
       <AnimatePresence mode="wait">
         <motion.p
           key={current}
-          className="absolute bottom-10 right-8 z-20 font-body text-xs uppercase tracking-[0.3em] text-white/40"
+          className="absolute bottom-8 right-8 z-20 nat-text-metadata"
           initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}
           transition={{ duration: 0.5 }}
         >
@@ -98,30 +213,21 @@ export function NatureHeroCrossfade({ children }: { children: React.ReactNode })
         </motion.p>
       </AnimatePresence>
 
-      {/* Dots */}
-      <div className="absolute bottom-10 left-1/2 z-20 flex -translate-x-1/2 gap-2">
-        {HERO_SLIDES.map((_, i) => (
-          <button key={i} onClick={() => setCurrent(i)} aria-label={`Slide ${i + 1}`}
-            className="h-1.5 overflow-hidden rounded-full transition-all duration-300"
-            style={{ width: i === current ? 28 : 6 }}
-          >
-            <span className="block h-full w-full rounded-full bg-white transition-opacity" style={{ opacity: i === current ? 1 : 0.35 }} />
-          </button>
-        ))}
+      {/* Breathing scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3">
+        <div className="h-8 w-px bg-white/20 nat-breathe" />
       </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 z-10 bg-linear-to-t from-navy-dark to-transparent" />
-
-      <div className="relative z-20 flex min-h-screen items-end pb-24 pt-32">
-        <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">{children}</div>
+      {/* Content overlay */}
+      <div className="relative z-20 flex h-screen flex-col justify-end pb-24 pt-48">
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">{children}</div>
       </div>
     </section>
   );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. ParallaxImageBand — scroll-linked full-width image divider
+// 2. ParallaxImageBand — scroll-linked full-width cinematic divider
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface ParallaxImageBandProps {
@@ -132,7 +238,7 @@ interface ParallaxImageBandProps {
   overlayOpacity?: number;
 }
 
-export function ParallaxImageBand({ imageSrc, imageAlt, children, height = 420, overlayOpacity = 0.55 }: ParallaxImageBandProps) {
+export function ParallaxImageBand({ imageSrc, imageAlt, children, height = 600, overlayOpacity = 0.55 }: ParallaxImageBandProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
@@ -140,16 +246,21 @@ export function ParallaxImageBand({ imageSrc, imageAlt, children, height = 420, 
   return (
     <div ref={ref} className="relative w-full overflow-hidden" style={{ height }}>
       <motion.div className="absolute inset-[-15%]" style={{ y }}>
-        <Image src={imageSrc} alt={imageAlt} fill className="object-cover" sizes="100vw" placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
+        <Image src={imageSrc} alt={imageAlt} fill className="object-cover brightness-[0.35] saturate-[0.6]" sizes="100vw" placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
       </motion.div>
-      <div className="absolute inset-0" style={{ background: `rgba(13,17,23,${overlayOpacity})` }} />
-      {children && <div className="absolute inset-0 z-10 flex items-center justify-center">{children}</div>}
+      {/* Edge fade vignettes */}
+      <div className="absolute inset-0 nat-edge-fade" />
+      <div className="absolute inset-0" style={{
+        background: 'radial-gradient(ellipse at center, transparent 20%, rgba(3,5,4,0.6) 100%)'
+      }} />
+      <div className="absolute inset-0 nat-noise pointer-events-none" />
+      {children && <div className="absolute inset-0 z-10 flex items-center justify-center px-6">{children}</div>}
     </div>
   );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 3. AnimatedStatWall — counting numbers animate on scroll
+// 3. AnimatedStatWall — borderless horizontal stat strip
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface StatWallItem {
@@ -162,7 +273,7 @@ interface StatWallItem {
   color?: string;
 }
 
-function CountUp({ value, prefix = "", suffix = "", decimals = 0, color = "#FFD700" }: {
+function CountUp({ value, prefix = "", suffix = "", decimals = 0, color = "#C4956A" }: {
   value: number; prefix?: string; suffix?: string; decimals?: number; color?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -183,23 +294,26 @@ function CountUp({ value, prefix = "", suffix = "", decimals = 0, color = "#FFD7
 }
 
 export function AnimatedStatWall({ stats }: { stats: StatWallItem[] }) {
-  const cols = stats.length <= 3 ? "sm:grid-cols-3" : stats.length === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-2 lg:grid-cols-3";
   return (
     <motion.div
-      className={`grid gap-px ${cols} bg-white/8 rounded-2xl overflow-hidden`}
+      className="flex flex-col sm:flex-row items-stretch justify-center"
       initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}
-      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
     >
       {stats.map((stat, i) => (
         <motion.div key={i}
           variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } } }}
-          className="flex flex-col items-center justify-center gap-2 p-8 text-center bg-navy-mid"
+          className="flex flex-col items-center justify-center gap-3 py-10 px-8 md:px-12 text-center flex-1"
+          style={{
+            borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
+            borderBottom: 'none',
+          }}
         >
-          <p className="leading-none text-5xl md:text-6xl lg:text-7xl" style={{ color: stat.color ?? "#FFD700" }}>
-            <CountUp value={stat.value} prefix={stat.prefix} suffix={stat.suffix} decimals={stat.decimals} color={stat.color ?? "#FFD700"} />
+          <p className="leading-none text-[clamp(40px,6vw,80px)] font-extralight tracking-tighter" style={{ color: stat.color ?? "#C4956A" }}>
+            <CountUp value={stat.value} prefix={stat.prefix} suffix={stat.suffix} decimals={stat.decimals} color={stat.color ?? "#C4956A"} />
           </p>
-          <p className="font-body text-sm font-semibold uppercase tracking-widest text-white/60">{stat.label}</p>
-          {stat.sub && <p className="font-body text-xs text-white/35">{stat.sub}</p>}
+          <p className="nat-text-label">{stat.label}</p>
+          {stat.sub && <p className="nat-text-metadata">{stat.sub}</p>}
         </motion.div>
       ))}
     </motion.div>
@@ -207,7 +321,7 @@ export function AnimatedStatWall({ stats }: { stats: StatWallItem[] }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4. ParkCinematicGrid — Ken-Burns hover cards
+// 4. ParkCinematicGrid — borderless editorial park showcase
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface ParkData {
@@ -219,36 +333,34 @@ export function ParkCinematicGrid({ parks, visitLabel = "Visits/yr", acresLabel 
   parks: ParkData[]; visitLabel?: string; acresLabel?: string; estLabel?: string;
 }) {
   return (
-    <motion.div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+    <motion.div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3"
       initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}
       variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
     >
       {parks.map((park) => (
         <motion.div key={park.name}
-          variants={{ hidden: { opacity: 0, scale: 0.95, y: 20 }, visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } }}
-          className="group relative h-72 overflow-hidden rounded-2xl"
+          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } }}
+          className="group relative h-80 md:h-96 overflow-hidden"
         >
-          <motion.div className="absolute inset-0" whileHover={{ scale: 1.08 }} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}>
-            <Image src={park.imageSrc} alt={park.imageAlt} fill className="object-cover"
+          <motion.div className="absolute inset-0" whileHover={{ scale: 1.04 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
+            <Image src={park.imageSrc} alt={park.imageAlt} fill className="object-cover brightness-[0.5] saturate-[0.7] transition-all duration-700 group-hover:brightness-[0.6] group-hover:saturate-[0.8]"
               sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,33vw"
               placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
           </motion.div>
-          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-          <motion.div className="absolute inset-0 bg-linear-to-t from-black/95 via-black/60 to-black/20"
-            initial={{ opacity: 0 }} whileHover={{ opacity: 1 }} transition={{ duration: 0.35 }} />
-          <span className="absolute right-3 top-3 z-10 rounded-full border border-white/20 bg-black/50 px-2.5 py-1 font-body text-xs text-white/70 backdrop-blur-sm">
+          <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(3,5,4,0.9)_0%,rgba(3,5,4,0)_50%)]" />
+          <span className="absolute right-4 top-4 z-10 nat-text-metadata">
             {estLabel} {park.established}
           </span>
-          <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
-            <p className="font-body text-xs font-semibold uppercase tracking-widest text-glory-gold">{park.state}</p>
-            <h3 className="mt-1 font-display text-xl font-bold text-white">{park.name}</h3>
-            <motion.div initial={{ opacity: 0, y: 12 }} whileHover={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.05 }} className="mt-2">
-              <p className="font-body text-xs italic leading-relaxed text-white/60">{park.highlight}</p>
-              <div className="mt-3 flex gap-4">
-                <span className="font-body text-xs text-white/50"><span className="font-hero text-sm text-glory-gold">{park.visitors}M</span> {visitLabel}</span>
-                <span className="font-body text-xs text-white/50"><span className="font-hero text-sm text-white">{park.area.toLocaleString()}K</span> {acresLabel}</span>
+          <div className="absolute bottom-0 left-0 right-0 z-10 p-6">
+            <p className="nat-text-metadata mb-2" style={{ color: 'var(--nat-accent-earth)' }}>{park.state}</p>
+            <h3 className="nat-text-heading text-white">{park.name}</h3>
+            <div className="mt-3 overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-500 ease-out">
+              <p className="text-sm leading-relaxed text-white/50 mb-3">{park.highlight}</p>
+              <div className="flex gap-6">
+                <span className="nat-text-metadata"><span className="text-sm text-white/80 mr-1">{park.visitors}M</span> {visitLabel}</span>
+                <span className="nat-text-metadata"><span className="text-sm text-white/80 mr-1">{park.area.toLocaleString()}K</span> {acresLabel}</span>
               </div>
-            </motion.div>
+            </div>
           </div>
         </motion.div>
       ))}
@@ -389,7 +501,7 @@ export function SnowParticles({ count = 30 }: { count?: number }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 10. HeroTextReveal — staggered animated hero title
+// 10. HeroTextReveal — Spatial Editorial hero title
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function HeroTextReveal({ line1, line2, line2Color = "#4ade80", eyebrow, body, children }: {
@@ -401,13 +513,13 @@ export function HeroTextReveal({ line1, line2, line2Color = "#4ade80", eyebrow, 
     >
       {eyebrow && (
         <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-          className="mb-4 font-body text-sm font-semibold uppercase tracking-[0.3em] text-glory-gold">{eyebrow}
+          className="nat-text-label mb-6" style={{ color: 'var(--nat-accent-earth)' }}>{eyebrow}
         </motion.p>
       )}
       <div className="overflow-hidden">
         <motion.h1
-          variants={{ hidden: { opacity: 0, y: 80, skewY: 3 }, visible: { opacity: 1, y: 0, skewY: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } } }}
-          className="font-hero leading-none tracking-wide" style={{ fontSize: "clamp(3.5rem,8vw,7rem)" }}
+          variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } } }}
+          className="nat-text-hero"
         >
           <span className="block text-white">{line1}</span>
           <span className="block" style={{ color: line2Color }}>{line2}</span>
@@ -415,7 +527,7 @@ export function HeroTextReveal({ line1, line2, line2Color = "#4ade80", eyebrow, 
       </div>
       {body && (
         <motion.p variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.1 } } }}
-          className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-white/70 md:text-xl">{body}
+          className="nat-text-body mt-8 max-w-2xl">{body}
         </motion.p>
       )}
       {children && (
@@ -428,37 +540,91 @@ export function HeroTextReveal({ line1, line2, line2Color = "#4ade80", eyebrow, 
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 11. RegionCardsGrid — stagger + hover lift
+// 11. RegionCardsGrid — borderless editorial region modules
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface RegionCardData { region: string; icon: string; headline: string; stat: string; statLabel: string; description: string; }
 
 export function RegionCardsGrid({ regions }: { regions: RegionCardData[] }) {
   return (
-    <motion.div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+    <motion.div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3"
       initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}
       variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
     >
       {regions.map((region) => (
         <motion.div key={region.region}
-          variants={{ hidden: { opacity: 0, y: 30, scale: 0.97 }, visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } }}
-          whileHover={{ y: -4, transition: { duration: 0.2 } }}
-          className="rounded-2xl border border-white/10 bg-navy-mid p-5 transition-shadow hover:border-glory-gold/25 hover:shadow-[0_8px_30px_rgba(255,215,0,0.06)]"
+          variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } }}
+          className="bg-[var(--nat-surface)] p-8 md:p-10 transition-colors hover:bg-[var(--nat-elevated)]"
         >
-          <div className="mb-3 flex items-center gap-3">
-            <span className="text-3xl" role="img" aria-label={region.region}>{region.icon}</span>
-            <div>
-              <p className="font-body text-xs font-semibold uppercase tracking-widest text-glory-gold">{region.region}</p>
-              <p className="font-display text-base font-semibold leading-snug text-white">{region.headline}</p>
-            </div>
+          <p className="nat-text-metadata mb-4" style={{ color: 'var(--nat-accent-earth)' }}>{region.region}</p>
+          <h3 className="nat-text-heading text-white mb-4" style={{ fontSize: 'clamp(20px, 3vw, 32px)' }}>{region.headline}</h3>
+          <div className="mb-6 flex items-baseline gap-3">
+            <span className="text-[clamp(32px,4vw,48px)] font-extralight tracking-tighter" style={{ color: 'var(--nat-accent-earth)' }}>{region.stat}</span>
+            <span className="nat-text-metadata">{region.statLabel}</span>
           </div>
-          <div className="mb-3 flex items-baseline gap-2">
-            <span className="font-hero text-2xl text-glory-gold">{region.stat}</span>
-            <span className="font-body text-xs text-white/45">{region.statLabel}</span>
-          </div>
-          <p className="font-body text-sm leading-relaxed text-white/55">{region.description}</p>
+          <p className="nat-text-body text-sm">{region.description}</p>
         </motion.div>
       ))}
+    </motion.div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 12. NatureQuoteBreak — borderless full-width editorial quote
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function NatureQuoteBreak({ quote, attribution, title }: {
+  quote: string; attribution: string; title?: string;
+}) {
+  return (
+    <motion.div
+      className="py-24 md:py-32 px-6"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 1.2 }}
+    >
+      <div className="mx-auto max-w-4xl text-center">
+        <div className="h-px w-16 bg-white/10 mx-auto mb-12" />
+        <p className="nat-text-section italic leading-tight mb-10" style={{ fontSize: 'clamp(24px, 4vw, 48px)', fontWeight: 400, letterSpacing: '-0.02em' }}>
+          &ldquo;{quote}&rdquo;
+        </p>
+        <p className="nat-text-label" style={{ color: 'var(--nat-accent-earth)' }}>— {attribution}</p>
+        {title && <p className="nat-text-metadata mt-2">{title}</p>}
+        <div className="h-px w-16 bg-white/10 mx-auto mt-12" />
+      </div>
+    </motion.div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 13. NatureFactModule — borderless fact presentation
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function NatureFactModule({ fact, detail, source, color = 'earth' }: {
+  fact: string; detail: string; source: string; color?: 'earth' | 'forest' | 'glacier';
+}) {
+  const accentMap = { earth: 'var(--nat-accent-earth)', forest: 'var(--nat-accent-forest)', glacier: 'var(--nat-accent-glacier)' };
+  const accent = accentMap[color];
+
+  return (
+    <motion.div
+      className="py-8 border-b border-white/[0.04] last:border-0"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <div className="flex flex-col md:flex-row md:items-start gap-6">
+        <div className="md:w-1/3">
+          <div className="h-1 w-8 mb-4" style={{ background: accent }} />
+          <h3 className="text-lg font-semibold text-white leading-snug">{fact}</h3>
+        </div>
+        <div className="md:w-2/3">
+          <p className="nat-text-body mb-4">{detail}</p>
+          <p className="nat-text-metadata">{source}</p>
+        </div>
+      </div>
     </motion.div>
   );
 }
