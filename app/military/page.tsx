@@ -518,7 +518,7 @@ export default async function MilitaryPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-white/2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/2">
           {DEFENSE_CONTRACTORS.map((c, i) => (
             <div key={c.name} className="group bg-[#0a0a0a] p-12 flex flex-col h-full relative mil-gradient-border hover:bg-[#0f0f0f] transition-colors duration-500">
               <div className="relative z-10">

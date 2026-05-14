@@ -367,76 +367,13 @@ export function ParkCinematicGrid({ parks, visitLabel = "Visits/yr", acresLabel 
     </motion.div>
   );
 }
-
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. AuroraBackground — pure CSS animated aurora borealis
-// ─────────────────────────────────────────────────────────────────────────────
-
-export function AuroraBackground({ children }: { children?: React.ReactNode }) {
-  return (
-    <div className="relative overflow-hidden bg-[#020818]">
-      <style>{`
-        @keyframes aurora1 { 0%,100%{transform:translateX(-20%) translateY(0%) skewX(-5deg);opacity:.5} 50%{transform:translateX(10%) translateY(-15%) skewX(5deg);opacity:.8} }
-        @keyframes aurora2 { 0%,100%{transform:translateX(10%) translateY(10%) skewX(8deg);opacity:.4} 50%{transform:translateX(-15%) translateY(-5%) skewX(-3deg);opacity:.7} }
-        @keyframes aurora3 { 0%,100%{transform:translateX(0%) translateY(-10%) skewX(-10deg);opacity:.3} 50%{transform:translateX(20%) translateY(5%) skewX(5deg);opacity:.6} }
-        @keyframes aurora4 { 0%,100%{transform:translateX(-10%) translateY(5%) skewX(3deg);opacity:.35} 50%{transform:translateX(15%) translateY(-8%) skewX(-6deg);opacity:.55} }
-      `}</style>
-      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
-        <div style={{ position:"absolute", top:"15%", left:"-30%", width:"160%", height:"25%", background:"linear-gradient(to bottom,transparent,rgba(0,255,180,0.18) 40%,rgba(0,200,140,0.22) 55%,transparent)", filter:"blur(28px)", animation:"aurora1 12s ease-in-out infinite", borderRadius:"50%" }} />
-        <div style={{ position:"absolute", top:"25%", left:"-20%", width:"140%", height:"20%", background:"linear-gradient(to bottom,transparent,rgba(80,100,255,0.16) 40%,rgba(120,60,220,0.2) 55%,transparent)", filter:"blur(32px)", animation:"aurora2 16s ease-in-out infinite", borderRadius:"50%" }} />
-        <div style={{ position:"absolute", top:"8%",  left:"-10%", width:"120%", height:"18%", background:"linear-gradient(to bottom,transparent,rgba(0,220,255,0.12) 45%,rgba(0,180,230,0.15) 55%,transparent)", filter:"blur(24px)", animation:"aurora3 14s ease-in-out infinite", borderRadius:"50%" }} />
-        <div style={{ position:"absolute", top:"35%", left:"-25%", width:"130%", height:"15%", background:"linear-gradient(to bottom,transparent,rgba(200,60,180,0.09) 45%,rgba(150,30,130,0.12) 55%,transparent)", filter:"blur(36px)", animation:"aurora4 18s ease-in-out infinite", borderRadius:"50%" }} />
-      </div>
-      <div className="relative z-10">{children}</div>
-    </div>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// 6. GeyserScene — SVG animated geyser eruption
-// ─────────────────────────────────────────────────────────────────────────────
-
-export function GeyserScene({ label = "OLD FAITHFUL", sublabel = "Erupts every 44–125 minutes" }: { label?: string; sublabel?: string }) {
-  return (
-    <div className="flex flex-col items-center justify-center select-none">
-      <style>{`
-        @keyframes geyser-cycle { 0%,40%{opacity:0;transform:scaleY(0);transform-origin:bottom center} 50%{opacity:1;transform:scaleY(1);transform-origin:bottom center} 80%{opacity:.6;transform:scaleY(.9);transform-origin:bottom center} 100%{opacity:0;transform:scaleY(.1);transform-origin:bottom center} }
-        @keyframes drift1 { 0%{transform:translate(0,0) scale(1);opacity:.7} 100%{transform:translate(-40px,-120px) scale(2.5);opacity:0} }
-        @keyframes drift2 { 0%{transform:translate(0,0) scale(1);opacity:.6} 100%{transform:translate(35px,-100px) scale(2);opacity:0} }
-        @keyframes drift3 { 0%{transform:translate(0,0) scale(1);opacity:.5} 100%{transform:translate(-15px,-140px) scale(3);opacity:0} }
-        @keyframes pulse-ring { 0%{transform:scale(1);opacity:.5} 100%{transform:scale(2.8);opacity:0} }
-      `}</style>
-      <svg viewBox="0 0 220 260" width="220" height="260" aria-label="Animated geyser" role="img">
-        <ellipse cx="110" cy="245" rx="90" ry="12" fill="#1a1f3a" />
-        <ellipse cx="110" cy="245" rx="70" ry="8" fill="#252b4a" />
-        <path d="M 88 240 L 100 210 L 120 210 L 132 240 Z" fill="#3C3B6E" />
-        <path d="M 96 240 L 105 215 L 115 215 L 124 240 Z" fill="#252b4a" />
-        <ellipse cx="110" cy="210" rx="10" ry="4" fill="#1a1f3a" />
-        <rect x="103" y="60" width="14" height="150" rx="7" fill="url(#wg1)" style={{ animation:"geyser-cycle 4s ease-in-out infinite" }} />
-        <rect x="105" y="40" width="10" height="170" rx="5" fill="url(#wg2)" style={{ animation:"geyser-cycle 4s ease-in-out infinite .3s" }} />
-        <circle cx="110" cy="90" r="14" fill="rgba(200,230,255,.3)" style={{ animation:"drift1 3s ease-out infinite .5s" }} />
-        <circle cx="110" cy="70" r="10" fill="rgba(200,230,255,.25)" style={{ animation:"drift2 3s ease-out infinite 1s" }} />
-        <circle cx="110" cy="50" r="8"  fill="rgba(200,230,255,.2)" style={{ animation:"drift3 3s ease-out infinite 1.5s" }} />
-        <circle cx="110" cy="210" r="12" fill="none" stroke="rgba(150,220,255,.6)" strokeWidth="2" style={{ animation:"pulse-ring 2s ease-out infinite" }} />
-        <circle cx="110" cy="210" r="12" fill="none" stroke="rgba(150,220,255,.4)" strokeWidth="1.5" style={{ animation:"pulse-ring 2s ease-out infinite .6s" }} />
-        <defs>
-          <linearGradient id="wg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="rgba(150,220,255,0)" /><stop offset="30%" stopColor="rgba(150,220,255,.8)" /><stop offset="100%" stopColor="rgba(80,160,255,1)" /></linearGradient>
-          <linearGradient id="wg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="rgba(200,240,255,0)" /><stop offset="40%" stopColor="rgba(200,240,255,.6)" /><stop offset="100%" stopColor="rgba(150,210,255,.8)" /></linearGradient>
-        </defs>
-      </svg>
-      <p className="mt-2 font-hero text-2xl text-blue-300 tracking-widest">{label}</p>
-      <p className="font-body text-xs text-white/40 tracking-wider mt-1">{sublabel}</p>
-    </div>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// 7. CanyonStrataReveal — borderless geological timeline
+// 5. CanyonStrataReveal — borderless geological timeline
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function CanyonStrataReveal({ layers }: { layers: { layer: string; age: string; depth: string; color: string }[] }) {
   return (
-    <motion.div className="border-t border-b border-white/4"
+    <motion.div className="border-t border-b border-white/[0.04]"
       initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}
       variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } } }}
     >
@@ -446,7 +383,7 @@ export function CanyonStrataReveal({ layers }: { layers: { layer: string; age: s
             hidden: { opacity: 0, y: 15 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
           }}
-          className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 border-b border-white/4 py-5 last:border-0 hover:bg-white/2 transition-colors px-4"
+          className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 border-b border-white/[0.04] py-5 last:border-0 hover:bg-white/[0.02] transition-colors px-4"
         >
           <div className="flex items-center gap-3 sm:w-1/4 shrink-0">
             <div className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: layer.color }} />
@@ -464,50 +401,6 @@ export function CanyonStrataReveal({ layers }: { layers: { layer: string; age: s
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// 8. WaveSection — morphing SVG water wave divider
-// ─────────────────────────────────────────────────────────────────────────────
-
-export function WaveSection({ children, color = "#1a3a5c" }: { children?: React.ReactNode; color?: string }) {
-  return (
-    <div className="relative overflow-hidden" style={{ background: color }}>
-      <style>{`
-        @keyframes wv1 { 0%,100%{d:path("M0,60 C180,100 360,20 540,60 C720,100 900,20 1080,60 L1080,120 L0,120 Z")} 50%{d:path("M0,80 C180,40 360,100 540,80 C720,40 900,100 1080,80 L1080,120 L0,120 Z")} }
-        @keyframes wv2 { 0%,100%{d:path("M0,80 C200,40 400,110 600,80 C800,40 1000,110 1080,80 L1080,120 L0,120 Z")} 50%{d:path("M0,60 C200,100 400,50 600,70 C800,100 1000,50 1080,70 L1080,120 L0,120 Z")} }
-        .wv1{animation:wv1 6s ease-in-out infinite} .wv2{animation:wv2 8s ease-in-out infinite 1s}
-      `}</style>
-      <svg viewBox="0 0 1080 120" preserveAspectRatio="none" className="w-full" style={{ height:80, display:"block", marginTop:-1 }}>
-        <path className="wv2" d="M0,80 C200,40 400,110 600,80 C800,40 1000,110 1080,80 L1080,120 L0,120 Z" fill="rgba(255,255,255,0.04)" />
-        <path className="wv1" d="M0,60 C180,100 360,20 540,60 C720,100 900,20 1080,60 L1080,120 L0,120 Z" fill="rgba(255,255,255,0.06)" />
-      </svg>
-      <div className="relative z-10 px-4 py-16 sm:px-6 lg:px-8">{children}</div>
-      <svg viewBox="0 0 1080 120" preserveAspectRatio="none" className="w-full rotate-180" style={{ height:80, display:"block", marginBottom:-1 }}>
-        <path className="wv1" d="M0,60 C180,100 360,20 540,60 C720,100 900,20 1080,60 L1080,120 L0,120 Z" fill="rgba(255,255,255,0.06)" />
-      </svg>
-    </div>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// 9. SnowParticles — CSS floating snowflakes
-// ─────────────────────────────────────────────────────────────────────────────
-
-export function SnowParticles({ count = 30 }: { count?: number }) {
-  const flakes = Array.from({ length: count }, (_, i) => ({
-    id: i, left: `${(i * 37 + 13) % 100}%`, size: 2 + (i % 5),
-    duration: 6 + (i % 8), delay: -(i * 0.7), drift: -15 + (i % 31),
-  }));
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      <style>{`@keyframes snowfall{0%{transform:translateY(-20px) translateX(0px);opacity:0}10%{opacity:1}90%{opacity:.6}100%{transform:translateY(110vh) translateX(var(--drift));opacity:0}}`}</style>
-      {flakes.map((f) => (
-        <div key={f.id} className="absolute rounded-full bg-white/60"
-          style={{ left: f.left, top: 0, width: f.size, height: f.size, "--drift": `${f.drift}px`, animation: `snowfall ${f.duration}s linear ${f.delay}s infinite` } as React.CSSProperties}
-        />
-      ))}
-    </div>
-  );
-}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 10. HeroTextReveal — Spatial Editorial hero title

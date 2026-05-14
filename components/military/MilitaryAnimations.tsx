@@ -363,7 +363,7 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
             className="object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-[1.04]"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/30 to-transparent" />
           <div className="absolute top-4 left-4">
             <span className="mil-text-metadata text-[7px] tracking-[0.4em] bg-black/50 backdrop-blur-sm px-2 py-1">{system.designation}</span>
           </div>
@@ -398,7 +398,7 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
       {/* Expanded Dossier Overlay */}
       <AnimatePresence>
         {isExpanded && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8" onClick={() => setIsExpanded(false)}>
+          <div className="fixed inset-0 z-100 flex items-center justify-center p-4 md:p-8" onClick={() => setIsExpanded(false)}>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -423,7 +423,7 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
               </div>
               <div className="relative w-full h-[35vh] md:h-[45vh] overflow-hidden">
                 <Image src={system.imageSrc} alt={system.imageAlt} fill className="object-cover" priority sizes="100vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/30 to-transparent" />
                 <div className="absolute bottom-8 left-6 md:left-12">
                   <p className="mil-text-metadata mb-3 tracking-[0.3em]">{system.designation}</p>
                   <h3 className="text-[clamp(28px,4vw,52px)] font-black tracking-tighter uppercase leading-none">{system.name}</h3>
@@ -530,8 +530,8 @@ export function BranchSelector({ branches, locale = 'en' }: { branches: Military
               blurDataURL={BLUR_PLACEHOLDER}
             />
             {/* Gradient overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-r from-black/60 via-transparent to-transparent" />
           </motion.div>
         </AnimatePresence>
 
@@ -603,7 +603,7 @@ export function DARPAProgramGrid({ programs, locale = 'en' }: { programs: DARPAP
 
   return (
     <>
-      <div className="grid gap-[1px] sm:grid-cols-2 lg:grid-cols-3 bg-white/2">
+      <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3 bg-white/2">
         {programs.map((program, idx) => (
           <div
             key={program.id}
@@ -1095,7 +1095,7 @@ export function ParallaxMilitaryHero({
         </motion.div>
 
         {/* Vignette overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-black/50 pointer-events-none" />
         <div className="absolute inset-0" style={{
           background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%)'
         }} />
@@ -1188,7 +1188,7 @@ export function BudgetComparisonBar({
 
   return (
     <div ref={ref} className="overflow-hidden rounded-2xl border border-white/8 bg-[#080C14] p-6">
-      <p className="mb-6 font-mono text-[9px] uppercase tracking-[0.3em] text-white/35 font-[family-name:var(--font-mono)]">{displayLabel}</p>
+      <p className="mb-6 font-mono text-[9px] uppercase tracking-[0.3em] text-white/35 font-mono">{displayLabel}</p>
       <div className="space-y-3">
         {data.map((row, i) => {
           const isHighlight = row.highlight || row.country.includes("United States") || row.country.includes("Statele Unite");
@@ -1202,7 +1202,7 @@ export function BudgetComparisonBar({
                     {row.country}
                   </span>
                 </div>
-                <span className={`mil-text-metadata font-[family-name:var(--font-mono)] text-[10px] ${isHighlight ? "text-white" : "text-white/30"}`}>
+                <span className={`mil-text-metadata font-mono text-[10px] ${isHighlight ? "text-white" : "text-white/30"}`}>
                   ${row.budget}B
                 </span>
               </div>
@@ -1223,7 +1223,7 @@ export function BudgetComparisonBar({
           );
         })}
       </div>
-      <p className="mt-4 text-right font-mono text-[8px] text-white/20 font-[family-name:var(--font-mono)]">Source: SIPRI Military Expenditure Database 2024</p>
+      <p className="mt-4 text-right font-mono text-[8px] text-white/20 font-mono">Source: SIPRI Military Expenditure Database 2024</p>
     </div>
   );
 }

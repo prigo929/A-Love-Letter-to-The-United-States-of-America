@@ -9,14 +9,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Breadcrumb } from "@/components/layout/Breadcrumb";
-import { FactCard } from "@/components/sections/FactCard";
-import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import {
-  WaveSection,
+  NatStyles,
+  NatureSubPageHero,
   AnimatedStatWall,
   HeroTextReveal,
+  NatureQuoteBreak,
+  NatureFactModule,
 } from "@/components/nature/NatureAnimations";
+
 import { GreatLakesChart } from "@/components/data/NatureCharts";
 import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -29,7 +30,6 @@ export const metadata: Metadata = {
     "The Great Lakes — 21% of Earth's surface freshwater, 10,900 miles of coastline, and the economic engine of the Midwest.",
 };
 
-// Local image of Great Lakes with Chicago
 const GREAT_LAKES_HERO = SITE_IMAGES.greatLakesChicago;
 
 const LAKES_DETAIL_EN = [
@@ -199,15 +199,12 @@ const GL_EXTENDED_RO = [
 ];
 
 export default async function GreatLakesPage() {
-  // The page chooses language-specific arrays here so the render section below
-  // can stay focused on layout instead of translation branching.
   const locale = await getServerLocale();
   const isRo = locale === "ro";
   const facts = getGreatLakesFacts(locale);
   const lakes = isRo ? LAKES_DETAIL_RO : LAKES_DETAIL_EN;
   const extFacts = isRo ? GL_EXTENDED_RO : GL_EXTENDED_EN;
 
-  // These values drive the animated headline stats section.
   const statWall = [
     {
       value: 21,
@@ -216,7 +213,7 @@ export default async function GreatLakesPage() {
       sub: isRo
         ? "Din toată apa dulce de suprafață"
         : "Of all Earth's surface fresh water",
-      color: "#38bdf8",
+      color: "#60a5fa",
     },
     {
       value: 10900,
@@ -225,7 +222,7 @@ export default async function GreatLakesPage() {
       sub: isRo
         ? "Mai mult decât Atlantic + Golf"
         : "More than Atlantic + Gulf combined",
-      color: "#FFD700",
+      color: "#C4956A",
     },
     {
       value: 94,
@@ -234,7 +231,7 @@ export default async function GreatLakesPage() {
       sub: isRo
         ? "Mai mare decât Regatul Unit"
         : "Larger than the United Kingdom",
-      color: "#38bdf8",
+      color: "#60a5fa",
     },
     {
       value: 107,
@@ -243,89 +240,51 @@ export default async function GreatLakesPage() {
       sub: isRo
         ? "8 state SUA + 2 provincii canadiene"
         : "8 US states + 2 Canadian provinces",
-      color: "#4ade80",
+      color: "#8B8680",
     },
   ];
 
+  const colorMap = { gold: 'earth' as const, red: 'earth' as const, blue: 'glacier' as const, green: 'forest' as const };
+
   return (
     <>
-      <div className="relative bg-navy-dark pt-28 pb-20 overflow-hidden">
-        <Image
-          src={GREAT_LAKES_HERO}
-          alt={
-            isRo ? "Marile Lacuri cu Chicago" : "The Great Lakes with Chicago"
+      <NatStyles />
+
+      {/* ── HERO — single image cinematic entrance ───────────────────────── */}
+      <NatureSubPageHero
+        imageSrc={GREAT_LAKES_HERO}
+        imageAlt={isRo ? "Marile Lacuri cu Chicago" : "The Great Lakes with Chicago"}
+        label={isRo ? "GREAT LAKES · INLAND SEAS" : "GREAT LAKES · INLAND SEAS"}
+      >
+        <HeroTextReveal
+          eyebrow={isRo ? "Marile Lacuri" : "The Great Lakes"}
+          line1={isRo ? "MĂRILE INTERIOARE" : "AMERICA'S"}
+          line2={isRo ? "ALE AMERICII" : "INLAND SEAS"}
+          line2Color="var(--nat-accent-glacier)"
+          body={
+            isRo
+              ? "Cinci lacuri. 21% din toată apa dulce de suprafață a Pământului. 17.560 km de coastă — mai mult decât Atlantic și Golf la un loc. Cel mai mare sistem de apă dulce din lume, în inima Americii."
+              : "Five lakes. 21% of all Earth's surface fresh water. 10,900 miles of coastline — more than the Atlantic and Gulf coasts combined. The largest freshwater system in the world, in the heart of America."
           }
-          fill
-          className="object-cover opacity-50"
-          priority
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL={BLUR_PLACEHOLDER}
         />
+      </NatureSubPageHero>
 
-        {/* 1. Main top-to-bottom dark overlay (Darkened) */}
-        <div className="absolute inset-0 bg-linear-to-b from-navy-dark/90 via-navy-dark/60 to-transparent" />
-
-        {/* 2. The glowing radial gradient */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 80% 60% at 50% 100%,rgba(56,189,248,.12) 0%,transparent 70%)",
-          }}
-        />
-
-        {/* 3. The seamless bottom fade */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-navy-dark via-navy-dark/90 to-transparent pointer-events-none" />
-
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Breadcrumb
-            items={[
-              { label: isRo ? "Natură" : "Nature", href: "/nature" },
-              { label: isRo ? "Marile Lacuri" : "Great Lakes" },
-            ]}
-            className="mb-8"
-          />
-          <HeroTextReveal
-            eyebrow={isRo ? "Marile Lacuri" : "The Great Lakes"}
-            line1={isRo ? "MĂRILE INTERIOARE" : "AMERICA'S"}
-            line2={isRo ? "ALE AMERICII" : "INLAND SEAS"}
-            line2Color="#38bdf8"
-            body={
-              isRo
-                ? "Cinci lacuri. 21% din toată apa dulce de suprafață a Pământului. 17.560 km de coastă — mai mult decât Atlantic și Golf la un loc. Cel mai mare sistem de apă dulce din lume, în inima Americii."
-                : "Five lakes. 21% of all Earth's surface fresh water. 10,900 miles of coastline — more than the Atlantic and Gulf coasts combined. The largest freshwater system in the world, in the heart of America."
-            }
-          >
-            <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-sky-400/25 bg-sky-900/20 px-5 py-2.5 backdrop-blur-sm">
-              <span className="text-xl">💧</span>
-              <span className="font-body text-sm text-sky-300">
-                {isRo
-                  ? "6 cvadriliane de galoane de apă dulce"
-                  : "6 quadrillion gallons of fresh water"}
-              </span>
-            </div>
-          </HeroTextReveal>
-        </div>
-      </div>
-
-      <section className="bg-navy-dark px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+      {/* ── STAT WALL ─────────────────────────────────────────────────────── */}
+      <section className="bg-(--nat-void) pb-20 pt-12">
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">
           <AnimatedStatWall stats={statWall} />
         </div>
       </section>
 
-      <WaveSection color="#050e1a">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="mb-4 font-display text-h2 text-white text-center">
-            {isRo ? "Volumul Lacurilor" : "Lake Volumes"}
-          </h2>
-          <p className="mb-8 font-body text-center text-white/55 max-w-2xl mx-auto">
+      {/* ── WAVE SECTION + CHART (Containerless) ─────────────────────────── */}
+      <section className="bg-(--nat-void)">
+        <div className="mx-auto max-w-5xl py-12">
+          <p className="nat-text-body text-center max-w-2xl mx-auto mb-12">
             {isRo
               ? "Lacul Superior singur conține mai multă apă dulce decât toate celelalte Lacuri Mari la un loc."
               : "Lake Superior alone contains more fresh water than all the other Great Lakes combined."}
           </p>
-          <div className="rounded-2xl border border-sky-500/15 bg-navy-mid/80 p-6 md:p-8 backdrop-blur-sm">
+          <div className="px-4">
             <GreatLakesChart
               data={GREAT_LAKES_DATA}
               title={
@@ -342,123 +301,95 @@ export default async function GreatLakesPage() {
             />
           </div>
         </div>
-      </WaveSection>
+      </section>
 
-      <div className="bg-navy-dark">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 space-y-16">
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+      {/* ── CONTENT ───────────────────────────────────────────────────────── */}
+      <div className="bg-(--nat-void) pb-32">
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12 space-y-32">
+
+          {/* Lakes showcase borderless list */}
+          <section className="max-w-5xl mx-auto">
+            <h2 className="nat-text-section text-white mb-10">
               {isRo ? "Fiecare Lac în Parte" : "Each Lake in Detail"}
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-8 border-t border-white/4 pt-8">
               {lakes.map((lake) => (
-                <div
-                  key={lake.name}
-                  className="overflow-hidden rounded-2xl border border-white/10 bg-navy-mid transition-all hover:border-sky-500/30"
-                >
-                  <div
-                    className="h-1.5 w-full"
-                    style={{ backgroundColor: lake.color }}
-                  />
-                  <div className="flex flex-wrap items-start justify-between gap-4 p-5">
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2.5 mb-1">
-                        <span className="text-xl">{lake.flag}</span>
-                        <h3 className="font-display text-xl font-semibold text-white">
-                          {isRo ? "Lacul" : "Lake"} {lake.name}
-                        </h3>
+                <div key={lake.name} className="border-b border-white/4 pb-8 last:border-0 flex flex-col md:flex-row md:items-start justify-between gap-6">
+                  <div className="flex-1 max-w-xl">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-xl">{lake.flag}</span>
+                      <h3 className="text-xl font-semibold text-white tracking-wide">
+                        {isRo ? "Lacul" : "Lake"} {lake.name}
+                      </h3>
+                    </div>
+                    <p className="nat-text-body">{lake.note}</p>
+                  </div>
+                  <div className="flex gap-6 shrink-0 pt-1 md:pt-0">
+                    {[
+                      { label: isRo ? "Suprafață" : "Area", value: lake.area },
+                      { label: isRo ? "Volum" : "Volume", value: lake.volume },
+                      { label: isRo ? "Ad. Max." : "Max Depth", value: lake.depth },
+                    ].map((s) => (
+                      <div key={s.label}>
+                        <p className="nat-text-hero text-base" style={{ color: 'var(--nat-accent-glacier)' }}>{s.value}</p>
+                        <p className="nat-text-metadata text-white/40 mt-1">{s.label}</p>
                       </div>
-                      <p className="font-body text-sm leading-relaxed text-white/55 max-w-lg">
-                        {lake.note}
-                      </p>
-                    </div>
-                    <div className="flex gap-3 shrink-0">
-                      {[
-                        {
-                          label: isRo ? "Suprafață" : "Area",
-                          value: lake.area,
-                        },
-                        {
-                          label: isRo ? "Volum" : "Volume",
-                          value: lake.volume,
-                        },
-                        {
-                          label: isRo ? "Ad. Max." : "Max Depth",
-                          value: lake.depth,
-                        },
-                      ].map((s) => (
-                        <div
-                          key={s.label}
-                          className="rounded-lg border border-white/8 bg-white/5 px-3 py-2 text-center min-w-20"
-                        >
-                          <p className="font-hero text-base text-sky-300">
-                            {s.value}
-                          </p>
-                          <p className="font-body text-[10px] text-white/40">
-                            {s.label}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
+                    ))}
                   </div>
                 </div>
               ))}
             </div>
           </section>
 
-          <section className="overflow-hidden rounded-2xl border border-sky-500/20 bg-linear-to-br from-navy-mid to-[#050e1a]">
-            <div className="p-8">
-              <p className="mb-2 section-eyebrow">
-                {isRo ? "Securitate Hidrologică" : "Water Security"}
-              </p>
-              <h2 className="mb-4 font-display text-2xl font-bold text-white">
-                {isRo
-                  ? "Cel Mai Valoros Bun Natural al Americii"
-                  : "America's Most Valuable Natural Asset"}
-              </h2>
-              <p className="font-body text-base leading-relaxed text-white/65 mb-5">
-                {isRo
-                  ? "Într-o lume în care apa dulce devine din ce în ce mai rară, Marile Lacuri reprezintă un avantaj strategic fără precedent. 6 cvadriliane de galoane de apă dulce ce alimentează 30 de milioane de americani și susțin o economie regională de 6 trilioane de dolari."
-                  : "In a world where fresh water is increasingly scarce, the Great Lakes represent an unparalleled strategic advantage — 6 quadrillion gallons supplying 30 million Americans and sustaining a $6 trillion regional economy."}
-              </p>
-              <div className="grid grid-cols-2 gap-4 max-w-xs">
-                <div className="rounded-xl border border-sky-500/20 bg-sky-900/20 p-3 text-center">
-                  <p className="font-hero text-2xl text-sky-300">30M</p>
-                  <p className="font-body text-xs text-white/50">
-                    {isRo ? "Americani aprovizionați" : "Americans supplied"}
-                  </p>
-                </div>
-                <div className="rounded-xl border border-sky-500/20 bg-sky-900/20 p-3 text-center">
-                  <p className="font-hero text-2xl text-sky-300">$6T</p>
-                  <p className="font-body text-xs text-white/50">
-                    {isRo
-                      ? "Output economic regional"
-                      : "Regional economic output"}
-                  </p>
-                </div>
+          {/* Water Security containerless block */}
+          <section className="max-w-4xl mx-auto border-t border-b border-white/4 py-16">
+            <p className="nat-text-metadata mb-2 uppercase tracking-widest" style={{ color: 'var(--nat-accent-glacier)' }}>
+              {isRo ? "Securitate Hidrologică" : "Water Security"}
+            </p>
+            <h2 className="nat-text-section text-white mb-6">
+              {isRo
+                ? "Cel Mai Valoros Bun Natural al Americii"
+                : "America's Most Valuable Natural Asset"}
+            </h2>
+            <p className="nat-text-body mb-8">
+              {isRo
+                ? "Într-o lume în care apa dulce devine din ce în ce mai rară, Marile Lacuri reprezintă un avantaj strategic fără precedent. 6 cvadriliane de galoane de apă dulce ce alimentează 30 de milioane de americani și susțin o economie regională de 6 trilioane de dolari."
+                : "In a world where fresh water is increasingly scarce, the Great Lakes represent an unparalleled strategic advantage — 6 quadrillion gallons supplying 30 million Americans and sustaining a $6 trillion regional economy."}
+            </p>
+            <div className="grid grid-cols-2 gap-8 max-w-md pt-4 border-t border-white/4">
+              <div>
+                <p className="nat-text-hero" style={{ color: 'var(--nat-accent-glacier)' }}>30M</p>
+                <p className="nat-text-metadata text-white/40 mt-1">
+                  {isRo ? "Americani aprovizionați" : "Americans supplied"}
+                </p>
+              </div>
+              <div>
+                <p className="nat-text-hero" style={{ color: 'var(--nat-accent-glacier)' }}>$6T</p>
+                <p className="nat-text-metadata text-white/40 mt-1">
+                  {isRo ? "Output economic regional" : "Regional economic output"}
+                </p>
               </div>
             </div>
           </section>
 
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
-              {isRo ? "Marile Lacuri în Cifre" : "Great Lakes by the Numbers"}
-            </h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Facts list as NatureFactModules */}
+          <section className="max-w-4xl mx-auto">
+            <h2 className="nat-text-section text-white mb-16">{isRo ? "În Detaliu" : "In Detail"}</h2>
+            <div>
               {[...facts, ...extFacts].map((fact) => (
-                <FactCard
+                <NatureFactModule
                   key={fact.id}
                   fact={fact.fact}
                   detail={fact.detail}
                   source={fact.source}
-                  color={fact.color}
-                  variant="dark"
+                  color={colorMap[fact.color as keyof typeof colorMap] ?? 'earth'}
                 />
               ))}
             </div>
           </section>
 
-          <QuoteBlock
+          {/* Quote Section */}
+          <NatureQuoteBreak
             quote={
               isRo
                 ? "Marile Lacuri sunt un cadou pe care majoritatea americanilor îl iau de-a gata. O cincime din apa dulce a lumii, în inima celei mai puternice națiuni de pe Pământ."
@@ -470,23 +401,25 @@ export default async function GreatLakesPage() {
                 ? "Autor, On the Brink: The Great Lakes in the 21st Century"
                 : "Author, On the Brink: The Great Lakes in the 21st Century"
             }
-            variant="dark"
           />
 
-          <div className="flex items-center justify-between border-t border-white/10 pt-8">
+          {/* Sub-page Navigation Footer */}
+          <div className="flex items-center justify-between border-t border-white/4 pt-12 max-w-5xl mx-auto">
             <Link
-              href="/nature/yellowstone"
-              className="font-body text-sm text-white/50 hover:text-white transition-colors"
+              href="/nature/rockies"
+              className="nat-text-label text-white/40 hover:text-white transition-colors"
             >
-              ← Yellowstone
+              ← {isRo ? "Munții Stâncoși" : "Rocky Mountains"}
             </Link>
             <Link
-              href="/nature"
-              className="font-body text-sm font-semibold text-sky-400 hover:text-sky-300 transition-colors"
+              href="/nature/national-parks"
+              className="nat-text-label text-white/40 hover:text-white transition-colors"
+              style={{ color: 'var(--nat-accent-glacier)' }}
             >
-              ↑ {isRo ? "Prezentare Generală" : "Nature Overview"}
+              {isRo ? "Parcuri Naționale →" : "National Parks →"}
             </Link>
           </div>
+
         </div>
       </div>
     </>

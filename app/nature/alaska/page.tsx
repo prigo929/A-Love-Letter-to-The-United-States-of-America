@@ -12,16 +12,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Breadcrumb }  from "@/components/layout/Breadcrumb";
-import { FactCard }    from "@/components/sections/FactCard";
-import { StatCard }    from "@/components/sections/StatCard";
-import { QuoteBlock }  from "@/components/sections/QuoteBlock";
 import {
-  AuroraBackground,
+  NatStyles,
+  NatureSubPageHero,
   HeroTextReveal,
   AnimatedStatWall,
   ParallaxImageBand,
+  NatureQuoteBreak,
+  NatureFactModule,
 } from "@/components/nature/NatureAnimations";
+
 import { getServerLocale }  from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { SITE_IMAGES }      from "@/lib/site-images";
@@ -63,201 +63,189 @@ const ALASKA_EXTENDED_FACTS_RO = [
 ];
 
 export default async function AlaskaPage() {
-  // Resolve the locale once, then choose the translated content arrays from it.
   const locale = await getServerLocale();
   const isRo   = locale === "ro";
   const facts  = getAlaskaFacts(locale);
   const extFacts = isRo ? ALASKA_EXTENDED_FACTS_RO : ALASKA_EXTENDED_FACTS_EN;
 
-  // These summary numbers feed the animated stat wall component near the top
-  // of the page.
   const statWall = [
-    { value: 663,   suffix: "K mi²", label: isRo ? "Suprafață Totală" : "Total Area",          sub: isRo ? "De 2,5× mai mare decât Texas" : "2.5× the size of Texas",       color: "#4ade80" },
-    { value: 20310, suffix: " ft",   label: isRo ? "Altitudine Denali" : "Denali Elevation",   sub: isRo ? "Cel mai înalt vârf din America de Nord" : "Highest peak in N. America", color: "#FFD700" },
-    { value: 100,   suffix: "K+",    label: isRo ? "Ghețari" : "Glaciers",                     sub: isRo ? "Mai mult decât restul lumii fără calote" : "More than rest of world outside poles", color: "#93c5fd" },
-    { value: 3,     suffix: "M+",    label: isRo ? "Lacuri" : "Lakes",                         sub: isRo ? "Mai multe decât toate celelalte state" : "More than all other states", color: "#FFD700" },
+    { value: 663,   suffix: "K mi²", label: isRo ? "Suprafață Totală" : "Total Area",          sub: isRo ? "De 2,5× mai mare decât Texas" : "2.5× the size of Texas",       color: "#8B8680" },
+    { value: 20310, suffix: " ft",   label: isRo ? "Altitudine Denali" : "Denali Elevation",   sub: isRo ? "Cel mai înalt vârf din America de Nord" : "Highest peak in N. America", color: "#C4956A" },
+    { value: 100,   suffix: "K+",    label: isRo ? "Ghețari" : "Glaciers",                     sub: isRo ? "Mai mult decât restul lumii fără calote" : "More than rest of world outside poles", color: "#60a5fa" },
+    { value: 3,     suffix: "M+",    label: isRo ? "Lacuri" : "Lakes",                         sub: isRo ? "Mai multe decât toate celelalte state" : "More than all other states", color: "#C4956A" },
   ];
+
+  const colorMap = { gold: 'earth' as const, red: 'earth' as const, blue: 'glacier' as const, green: 'forest' as const };
 
   return (
     <>
-      {/* ── HERO — aurora CSS behind local Denali photo ───────────────────── */}
-      <AuroraBackground>
-        <div className="relative min-h-screen">
-          <Image
-            src={SITE_IMAGES.denaliNationalPark}
-            alt={isRo ? "Muntele Denali — cel mai înalt vârf din America de Nord" : "Mount Denali — highest peak in North America"}
-            fill priority className="object-cover opacity-45"
-            sizes="100vw" placeholder="blur" blurDataURL={BLUR_PLACEHOLDER}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020818]/40 to-[#020818]" />
-          <div className="relative z-10 flex min-h-screen items-end pb-20 pt-32 px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-screen-xl w-full">
-              <Breadcrumb
-                items={[
-                  { label: isRo ? "Natură" : "Nature", href: "/nature" },
-                  { label: "Alaska" },
-                ]}
-                className="mb-8"
-              />
-              <HeroTextReveal
-                eyebrow="Alaska"
-                line1={isRo ? "ULTIMA" : "THE LAST"}
-                line2={isRo ? "FRONTIERĂ" : "FRONTIER"}
-                line2Color="#93c5fd"
-                body={
-                  isRo
-                    ? "663.268 de mile pătrate de sălbăticie arctică, ghețari impunători și animale sălbatice ce nu pot fi văzute nicăieri altundeva pe Pământ. Alaska nu este doar un stat — este o altă lume."
-                    : "663,268 square miles of Arctic wilderness, towering glaciers, and wildlife found nowhere else on Earth. Alaska is not merely a state — it is another world."
-                }
-              >
-                <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-cyan-400/30 bg-cyan-900/20 px-5 py-2.5 backdrop-blur-sm">
-                  <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-400" />
-                  <span className="font-body text-sm text-cyan-300">
-                    {isRo ? "Aurora Boreală vizibilă 200+ nopți/an în Fairbanks" : "Aurora Borealis visible 200+ nights/year in Fairbanks"}
-                  </span>
-                </div>
-              </HeroTextReveal>
-            </div>
-          </div>
-        </div>
-      </AuroraBackground>
+      <NatStyles />
+
+      {/* ── HERO — single image cinematic entrance ───────────────────────── */}
+      <NatureSubPageHero
+        imageSrc={SITE_IMAGES.denaliNationalPark}
+        imageAlt={isRo ? "Muntele Denali" : "Mount Denali"}
+        label={isRo ? "ALASKA · THE LAST FRONTIER" : "ALASKA · THE LAST FRONTIER"}
+      >
+        <HeroTextReveal
+          eyebrow="Alaska"
+          line1={isRo ? "ULTIMA" : "THE LAST"}
+          line2={isRo ? "FRONTIERĂ" : "FRONTIER"}
+          line2Color="var(--nat-accent-glacier)"
+          body={
+            isRo
+              ? "663.268 de mile pătrate de sălbăticie arctică, ghețari impunători și animale sălbatice ce nu pot fi văzute nicăieri altundeva pe Pământ. Alaska nu este doar un stat — este o altă lume."
+              : "663,268 square miles of Arctic wilderness, towering glaciers, and wildlife found nowhere else on Earth. Alaska is not merely a state — it is another world."
+          }
+        />
+      </NatureSubPageHero>
 
       {/* ── STAT WALL ─────────────────────────────────────────────────────── */}
-      <section className="bg-navy-dark px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-screen-xl">
+      <section className="bg-(--nat-void) pb-20 pt-12">
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">
           <AnimatedStatWall stats={statWall} />
         </div>
       </section>
 
       {/* ── CONTENT ───────────────────────────────────────────────────────── */}
-      <div className="bg-navy-dark">
-        <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 space-y-16">
+      <div className="bg-(--nat-void) pb-32">
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12 space-y-32">
 
           {/* Denali feature */}
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
-              {isRo ? "Denali — Cel Mai Înalt Vârf din America de Nord" : "Denali — North America's Highest Peak"}
+          <section className="max-w-6xl mx-auto">
+            <h2 className="nat-text-section text-white mb-12">
+              {isRo ? "Denali — Cel Mai Înalt Vârf" : "Denali — Highest Peak"}
             </h2>
-            <div className="grid gap-8 md:grid-cols-2 md:items-center">
+            <div className="grid gap-12 md:grid-cols-2 md:items-center">
               <div>
-                <p className="mb-5 font-body text-lg leading-relaxed text-white/70">
+                <p className="nat-text-body mb-6">
                   {isRo
                     ? "La 6.194 de metri deasupra nivelului mării, Denali este cel mai înalt vârf din America de Nord. Din câmpiile interioare ale Alaskăi, muntele se ridică cu aproape 5.500 de metri deasupra terenului înconjurător — mai mult decât Everest deasupra platoului tibetan."
                     : "At 20,310 feet above sea level, Denali is the highest peak in North America. From Alaska's interior plains, the mountain rises nearly 18,000 feet above the surrounding terrain — more than Everest above the Tibetan plateau."}
                 </p>
-                <p className="mb-5 font-body text-lg leading-relaxed text-white/70">
+                <p className="nat-text-body">
                   {isRo
                     ? "Parcul Național Denali, la 6 milioane de acri, înconjoară muntele cu o sălbăticie mai mare decât întreg statul New Hampshire. Un singur drum, de 92 de mile, se aventurează în parc — o decizie deliberată de a păstra sălbăticia neîmblânzită."
                     : "Denali National Park, at 6 million acres, surrounds the mountain in a wilderness larger than the entire state of New Hampshire. A single 92-mile road ventures into the park — a deliberate decision to keep the wilderness untamed."}
                 </p>
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-3 gap-6 mt-8 border-t border-white/4 pt-8">
                   {[
                     { value: "20,310 ft", label: isRo ? "Altitudine" : "Elevation"            },
                     { value: "~18,000 ft",label: isRo ? "Ridicare bază-vârf" : "Base-to-Summit Rise" },
                     { value: "6M acres",  label: isRo ? "Parc Național" : "National Park"     },
                   ].map((s) => (
-                    <div key={s.label} className="rounded-xl border border-white/10 bg-navy-mid p-3 text-center">
-                      <p className="font-hero text-xl text-cyan-300">{s.value}</p>
-                      <p className="font-body text-xs text-white/45">{s.label}</p>
+                    <div key={s.label}>
+                      <p className="nat-text-hero" style={{ color: 'var(--nat-accent-glacier)' }}>{s.value}</p>
+                      <p className="nat-text-metadata text-white/40 mt-1">{s.label}</p>
                     </div>
                   ))}
                 </div>
               </div>
-              {/* Local Denali image used as secondary — different crop/framing */}
-              <div className="relative h-[360px] overflow-hidden rounded-2xl">
+              <div className="relative h-[450px] overflow-hidden group">
                 <Image
                   src={SITE_IMAGES.denaliNationalPark}
-                  alt={isRo ? "Muntele Denali reflectat în lacul glaciar" : "Denali reflected in a glacial lake"}
-                  fill className="object-cover object-top"
+                  alt={isRo ? "Muntele Denali" : "Denali"}
+                  fill className="object-cover object-top brightness-[0.7] group-hover:scale-105 transition-transform duration-1000"
                   sizes="(max-width:768px) 100vw, 50vw"
                   placeholder="blur" blurDataURL={BLUR_PLACEHOLDER}
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               </div>
             </div>
           </section>
 
-          {/* Wildlife table */}
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
-              {isRo ? "Fauna Sălbatică din Alaska" : "Alaska's Wildlife"}
-            </h2>
-            <p className="mb-6 font-body text-lg text-white/65 leading-relaxed">
-              {isRo
-                ? "Alaska găzduiește concentrații de animale sălbatice care nu mai există nicăieri altundeva în lumea modernă — o fereastră spre ce arăta America de Nord acum mii de ani."
-                : "Alaska harbors concentrations of wildlife that no longer exist anywhere else in the modern world — a glimpse of what North America looked like thousands of years ago."}
-            </p>
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-navy-mid">
+          {/* Wildlife containerless table */}
+          <section className="max-w-5xl mx-auto">
+            <div className="mb-10">
+              <h2 className="nat-text-section text-white mb-4">
+                {isRo ? "Fauna Sălbatică" : "Alaska's Wildlife"}
+              </h2>
+              <p className="nat-text-body">
+                {isRo
+                  ? "Alaska găzduiește concentrații de animale sălbatice care nu mai există nicăieri altundeva în lumea modernă — o fereastră spre ce arăta America de Nord acum mii de ani."
+                  : "Alaska harbors concentrations of wildlife that no longer exist anywhere else in the modern world — a glimpse of what North America looked like thousands of years ago."}
+              </p>
+            </div>
+            <div className="border-t border-b border-white/4">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-white/10 bg-white/5">
-                    <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">{isRo ? "Animal" : "Animal"}</th>
-                    <th className="px-5 py-4 text-right font-body text-xs font-semibold uppercase tracking-widest text-white/40">{isRo ? "Populație" : "Population"}</th>
-                    <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">{isRo ? "Notă" : "Note"}</th>
+                  <tr className="border-b border-white/4">
+                    <th className="py-4 text-left nat-text-metadata text-white/40 px-4">{isRo ? "Animal" : "Animal"}</th>
+                    <th className="py-4 text-right nat-text-metadata text-white/40 px-4">{isRo ? "Populație" : "Population"}</th>
+                    <th className="py-4 text-left nat-text-metadata text-white/40 pl-8 hidden sm:table-cell">{isRo ? "Notă" : "Note"}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {ALASKA_WILDLIFE.map((item, i) => (
-                    <tr key={i} className="border-b border-white/5 transition-colors hover:bg-white/3">
-                      <td className="px-5 py-3.5 font-body text-sm font-semibold text-white">{item.animal}</td>
-                      <td className="px-5 py-3.5 text-right font-hero text-lg text-cyan-300">{isRo ? item.countRo : item.count}</td>
-                      <td className="px-5 py-3.5 font-body text-sm italic text-white/45">{isRo ? item.noteRo : item.note}</td>
+                    <tr key={i} className="border-b border-white/4 last:border-0 hover:bg-white/[0.02] transition-colors">
+                      <td className="py-5 text-base font-semibold text-white tracking-wide px-4">{item.animal}</td>
+                      <td className="py-5 text-right font-hero text-base px-4" style={{ color: 'var(--nat-accent-glacier)' }}>{isRo ? item.countRo : item.count}</td>
+                      <td className="py-5 nat-text-body italic pl-8 hidden sm:table-cell">{isRo ? item.noteRo : item.note}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-              <p className="px-5 py-3 text-right font-body text-xs text-white/30">
+              <p className="py-3 text-right nat-text-metadata text-white/30 px-4">
                 {isRo ? "Sursă: Alaska Dept. of Fish & Game 2024" : "Source: Alaska Dept. of Fish & Game 2024"}
               </p>
             </div>
           </section>
 
-          {/* Glaciers — parallax with local Denali landscape */}
+          {/* Glaciers parallax divider */}
           <ParallaxImageBand
             imageSrc={SITE_IMAGES.denaliNationalPark}
             imageAlt={isRo ? "Peisaj glaciar alaskan" : "Alaskan glacial landscape"}
-            height={380}
-            overlayOpacity={0.5}
+            height={600}
+            overlayOpacity={0.6}
           >
-            <div className="text-center">
-              <p className="font-hero text-6xl text-cyan-300 md:text-8xl">100,000</p>
-              <p className="mt-3 font-body text-lg text-white/80">
+            <div className="text-center max-w-4xl mx-auto px-6">
+              <p className="nat-text-display" style={{ color: 'var(--nat-accent-glacier)' }}>100,000</p>
+              <p className="nat-text-heading text-white mt-4">
                 {isRo ? "Ghețari acoperind 5% din suprafața Alaskăi" : "Glaciers covering 5% of Alaska's surface"}
               </p>
-              <p className="mt-1 font-body text-sm text-white/45">
-                {isRo ? "Mai multă gheață glaciară decât restul lumii fără calotele polare" : "More glacial ice than the rest of the world outside the polar caps"}
+              <p className="nat-text-body text-white/60 mt-2">
+                {isRo ? "Mai multă gheață glaciară decât restul lumii fără calote" : "More glacial ice than the rest of the world outside the polar caps"}
               </p>
             </div>
           </ParallaxImageBand>
 
-          {/* Facts grid */}
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
-              {isRo ? "Alaska în Cifre" : "Alaska by the Numbers"}
-            </h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {[...facts, ...extFacts].map((fact) => (
-                <FactCard key={fact.id} fact={fact.fact} detail={fact.detail} source={fact.source} color={fact.color} variant="dark" />
-              ))}
-            </div>
-          </section>
+          {/* Facts list as NatureFactModules */}
 
-          <QuoteBlock
+            <section className="max-w-4xl mx-auto py-24 px-6 md:px-12">
+              <h2 className="nat-text-section text-white mb-16">{isRo ? "În Detaliu" : "In Detail"}</h2>
+              <div>
+                {[...facts, ...extFacts].map((fact) => (
+                  <NatureFactModule
+                    key={fact.id}
+                    fact={fact.fact}
+                    detail={fact.detail}
+                    source={fact.source}
+                    color={colorMap[fact.color as keyof typeof colorMap] ?? 'earth'}
+                  />
+                ))}
+              </div>
+            </section>
+
+
+          {/* Quote Section */}
+          <NatureQuoteBreak
             quote={isRo
               ? "Alaska nu este un loc la marginea nicăieri. Alaska este centrul a tot — ultima mare sălbăticie, ultima frontieră a ultimei mari națiuni."
               : "Alaska is not a place on the edge of anywhere. Alaska is the center of everything — the last great wilderness, the last frontier of the last great country."}
             attribution="Joe Vogler"
             title={isRo ? "Pionier alaskan" : "Alaskan Independence Advocate & Frontier Pioneer"}
-            variant="dark"
           />
 
-          <div className="flex items-center justify-between border-t border-white/10 pt-8">
-            <Link href="/nature/national-parks" className="font-body text-sm text-white/50 hover:text-white transition-colors">
+          {/* Sub-page Navigation Footer */}
+          <div className="flex items-center justify-between border-t border-white/4 pt-12 max-w-5xl mx-auto">
+            <Link href="/nature/national-parks" className="nat-text-label text-white/40 hover:text-white transition-colors">
               ← {isRo ? "Parcuri Naționale" : "National Parks"}
             </Link>
-            <Link href="/nature/rockies" className="font-body text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors">
+            <Link href="/nature/rockies" className="nat-text-label text-white/40 hover:text-white transition-colors" style={{ color: 'var(--nat-accent-glacier)' }}>
               {isRo ? "Munții Stâncoși →" : "Rocky Mountains →"}
             </Link>
           </div>
+
         </div>
       </div>
     </>

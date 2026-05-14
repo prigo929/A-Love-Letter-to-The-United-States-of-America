@@ -295,15 +295,15 @@ function LakesTooltip({
   if (!active || !payload?.length) return null;
   const item = payload[0];
   return (
-    <div className="rounded-xl border border-white/15 bg-navy-dark/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
-      <p className="mb-1 font-body text-sm font-semibold text-white">
+    <div className="border border-white/6 bg-(--nat-void,#030504)/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
+      <p className="nat-text-metadata text-white mb-1">
         Lake {label}
       </p>
-      <p className="font-hero text-xl text-glory-gold">
+      <p className="nat-text-hero" style={{ color: 'var(--nat-accent-glacier)' }}>
         {item.value.toLocaleString()} mi³
       </p>
-      <p className="font-body text-xs text-white/50">Volume (cubic miles)</p>
-      <p className="font-body text-xs text-white/40 mt-1">
+      <p className="nat-text-metadata text-white/50 mt-1">Volume (cubic miles)</p>
+      <p className="nat-text-metadata text-white/40 mt-1">
         Area: {item.payload.area.toLocaleString()} mi² · Depth: {item.payload.maxDepth} ft
       </p>
     </div>
@@ -325,14 +325,14 @@ export function GreatLakesChart({
       className="w-full"
     >
       {(title || subtitle) && (
-        <div className="mb-6">
+        <div className="mb-8">
           {title && (
-            <h3 className="font-display text-xl font-semibold text-white md:text-2xl">
+            <h3 className="nat-text-section text-white">
               {title}
             </h3>
           )}
           {subtitle && (
-            <p className="mt-1 font-body text-sm text-white/55">{subtitle}</p>
+            <p className="nat-text-body mt-2">{subtitle}</p>
           )}
         </div>
       )}
