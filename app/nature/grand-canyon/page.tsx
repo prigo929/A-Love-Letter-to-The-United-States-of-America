@@ -15,12 +15,12 @@ import Link from "next/link";
 import {
   NatStyles,
   NatureSubPageHero,
-  CanyonStrataReveal,
   AnimatedStatWall,
   ParallaxImageBand,
   HeroTextReveal,
   NatureQuoteBreak,
   NatureFactModule,
+  CanyonStrataReveal,
 } from "@/components/nature/NatureAnimations";
 import { getServerLocale }     from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER }    from "@/lib/utils";
@@ -107,14 +107,14 @@ export default async function GrandCanyonPage() {
       </NatureSubPageHero>
 
       {/* ── STAT WALL ─────────────────────────────────────────────────────── */}
-      <section className="bg-[var(--nat-void)] pb-20 pt-12">
+      <section className="bg-(--nat-void) pb-20 pt-12">
         <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">
           <AnimatedStatWall stats={statWall} />
         </div>
       </section>
 
       {/* ── CONTENT ───────────────────────────────────────────────────────── */}
-      <div className="bg-[var(--nat-void)] pb-32">
+      <div className="bg-(--nat-void) pb-32">
         <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12 space-y-32">
 
           {/* Geological layers timeline */}
@@ -138,7 +138,7 @@ export default async function GrandCanyonPage() {
                   alt={isRo ? "Marele Canion" : "Grand Canyon"}
                   fill className="object-cover object-bottom brightness-[0.7] group-hover:scale-105 transition-transform duration-1000" sizes="(max-width:768px) 100vw, 50vw"
                   placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
                 <div className="absolute bottom-8 left-8 z-10">
                   <p className="nat-text-label">{isRo ? "South Rim, Arizona" : "South Rim, Arizona"}</p>
                 </div>
@@ -148,7 +148,7 @@ export default async function GrandCanyonPage() {
                   alt={isRo ? "Zion National Park" : "Zion National Park"}
                   fill className="object-cover brightness-[0.7] group-hover:scale-105 transition-transform duration-1000" sizes="(max-width:768px) 100vw, 50vw"
                   placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
                 <div className="absolute bottom-8 left-8 z-10">
                   <p className="nat-text-label">{isRo ? "Zion NP — la 160 km nord" : "Zion NP — 100 miles north"}</p>
                 </div>
@@ -192,7 +192,7 @@ export default async function GrandCanyonPage() {
           />
 
           {/* Sub-page Navigation Footer */}
-          <div className="flex items-center justify-between border-t border-white/[0.04] pt-12 max-w-5xl mx-auto">
+          <div className="flex items-center justify-between border-t border-white/4 pt-12 max-w-5xl mx-auto">
             <Link href="/nature/rockies" className="nat-text-label text-white/40 hover:text-white transition-colors">
               ← {isRo ? "Munții Stâncoși" : "Rocky Mountains"}
             </Link>

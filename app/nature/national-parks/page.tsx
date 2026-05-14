@@ -8,19 +8,26 @@
 // - FEATURED_PARKS is the source for the cinematic park grid below
 
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { Breadcrumb }  from "@/components/layout/Breadcrumb";
-import { FactCard }    from "@/components/sections/FactCard";
-import { QuoteBlock }  from "@/components/sections/QuoteBlock";
-import { ParkCinematicGrid, AnimatedStatWall, ParallaxImageBand, HeroTextReveal } from "@/components/nature/NatureAnimations";
+import {
+  NatStyles,
+  NatureSubPageHero,
+  ParkCinematicGrid,
+  AnimatedStatWall,
+  ParallaxImageBand,
+  HeroTextReveal,
+  NatureQuoteBreak,
+  NatureFactModule,
+} from "@/components/nature/NatureAnimations";
 import { ParkVisitorsChart } from "@/components/data/NatureCharts";
 import { getServerLocale }   from "@/lib/i18n/server";
-import { BLUR_PLACEHOLDER }  from "@/lib/utils";
 import { SITE_IMAGES }       from "@/lib/site-images";
-import { TOP_PARKS_VISITORS, FEATURED_PARKS, getNatureOverviewFacts } from "@/lib/data/nature-data";
+import { TOP_PARKS_VISITORS, FEATURED_PARKS } from "@/lib/data/nature-data";
 
-export const metadata: Metadata = { title: "National Parks | Nature", description: "63 national parks, 423 NPS sites, 85 million protected acres. The world's first and greatest national park system." };
+export const metadata: Metadata = {
+  title: "National Parks | Nature",
+  description: "63 national parks, 423 NPS sites, 85 million protected acres. The world's first and greatest national park system.",
+};
 
 const ALL_PARKS = [
   { name: "Great Smoky Mountains", state: "TN/NC",    established: 1934, visitors: 13.3, area: 522  },
@@ -64,139 +71,161 @@ const PARKS_SYSTEM_FACTS_RO = [
 ];
 
 export default async function NationalParksPage() {
-  // This page is mostly data-driven. Once we know the locale, the rest of the
-  // component becomes a matter of choosing the right arrays and labels.
   const locale       = await getServerLocale();
   const isRo         = locale === "ro";
   const systemFacts  = isRo ? PARKS_SYSTEM_FACTS_RO : PARKS_SYSTEM_FACTS_EN;
 
-  // The stat wall values are kept as data here so the animated component can
-  // stay generic and be reused on other nature pages.
   const statWall = [
     { value: 63,  suffix: "",    label: isRo ? "Parcuri Naționale" : "National Parks",  sub: isRo ? "Și tot mai multe în viitor" : "And counting",                     color: "#4ade80" },
-    { value: 423, suffix: "",    label: isRo ? "Total Situri NPS" : "Total NPS Sites", sub: isRo ? "Inclusiv monumente și maluri" : "Including monuments & seashores", color: "#FFD700" },
-    { value: 85,  suffix: "M",   label: isRo ? "Acri Protejați" : "Acres Protected",   sub: isRo ? "Mai mare decât suprafața multor națiuni" : "More than most nations' landmass", color: "#4ade80" },
-    { value: 325, suffix: "M+",  label: isRo ? "Vizite Anuale" : "Annual Visits",      sub: isRo ? "Mai mult decât populația SUA" : "More than the US population",    color: "#FFD700" },
+    { value: 423, suffix: "",    label: isRo ? "Total Situri NPS" : "Total NPS Sites", sub: isRo ? "Inclusiv monumente și maluri" : "Including monuments & seashores", color: "#C4956A" },
+    { value: 85,  suffix: "M",   label: isRo ? "Acri Protejați" : "Acres Protected",   sub: isRo ? "Mai mare decât suprafața multor națiuni" : "More than most nations' landmass", color: "#60a5fa" },
+    { value: 325, suffix: "M+",  label: isRo ? "Vizite Anuale" : "Annual Visits",      sub: isRo ? "Mai mult decât populația SUA" : "More than the US population",    color: "#8B8680" },
   ];
+
+  const colorMap = { gold: 'earth' as const, red: 'earth' as const, blue: 'glacier' as const, green: 'forest' as const };
 
   return (
     <>
-      <div className="relative bg-navy-dark pt-28 pb-16">
-        <Image src={SITE_IMAGES.yosemiteNationalPark}
-          alt={isRo ? "Parcul Național Yosemite — pereți de granit și văi magnifice" : "Yosemite National Park — granite walls and magnificent valleys"}
-          fill className="object-cover opacity-40" priority sizes="100vw"
-          placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/80 to-navy-dark" />
-        <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <Breadcrumb items={[{ label: isRo ? "Natură" : "Nature", href: "/nature" }, { label: isRo ? "Parcuri Naționale" : "National Parks" }]} className="mb-8" />
-          <HeroTextReveal
-            eyebrow={isRo ? "Sistemul Parcurilor Naționale" : "The National Parks System"}
-            line1={isRo ? "CEA MAI BUNĂ IDEE" : "THE BEST IDEA"}
-            line2={isRo ? "A AMERICII" : "AMERICA EVER HAD"}
-            line2Color="#4ade80"
-            body={isRo
-              ? "Șaizeci și trei de parcuri naționale. Patru sute douăzeci și trei de situri protejate. Optzeci și cinci de milioane de acri — păstrați pentru totdeauna pentru fiecare american."
-              : "Sixty-three national parks. Four hundred twenty-three protected sites. Eighty-five million acres — preserved forever for every American."}
-          />
-        </div>
-      </div>
+      <NatStyles />
 
-      <section className="bg-navy-dark px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-screen-xl"><AnimatedStatWall stats={statWall} /></div>
+      {/* ── HERO — single image cinematic entrance ───────────────────────── */}
+      <NatureSubPageHero
+        imageSrc={SITE_IMAGES.yosemiteNationalPark}
+        imageAlt={isRo ? "Parcul Național Yosemite" : "Yosemite National Park"}
+        label={isRo ? "NATIONAL PARKS SYSTEM · CROWN JEWELS" : "NATIONAL PARKS SYSTEM · CROWN JEWELS"}
+      >
+        <HeroTextReveal
+          eyebrow={isRo ? "Sistemul Parcurilor Naționale" : "The National Parks System"}
+          line1={isRo ? "CEA MAI BUNĂ IDEE" : "THE BEST IDEA"}
+          line2={isRo ? "A AMERICII" : "AMERICA EVER HAD"}
+          line2Color="var(--nat-accent-forest)"
+          body={isRo
+            ? "Șaizeci și trei de parcuri naționale. Patru sute douăzeci și trei de situri protejate. Optzeci și cinci de milioane de acri — păstrați pentru totdeauna pentru fiecare american."
+            : "Sixty-three national parks. Four hundred twenty-three protected sites. Eighty-five million acres — preserved forever for every American."}
+        />
+      </NatureSubPageHero>
+
+      {/* ── STAT WALL ─────────────────────────────────────────────────────── */}
+      <section className="bg-(--nat-void) pb-20 pt-12">
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">
+          <AnimatedStatWall stats={statWall} />
+        </div>
       </section>
 
-      <div className="bg-navy-dark">
-        <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 space-y-16">
+      {/* ── CONTENT ───────────────────────────────────────────────────────── */}
+      <div className="bg-(--nat-void) pb-32">
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12 space-y-32">
 
-          <section>
-            {/* The chart component only needs data + labels; all drawing logic
-                lives inside the reusable chart itself. */}
-            <h2 className="mb-6 font-display text-h2 text-white">{isRo ? "Cele Mai Vizitate Parcuri" : "Most Visited Parks"}</h2>
-            <p className="mb-6 font-body text-lg text-white/65 leading-relaxed">
+          {/* Containerless Park Visitors Chart */}
+          <section className="max-w-5xl mx-auto">
+            <h2 className="nat-text-section text-white mb-4">{isRo ? "Cele Mai Vizitate Parcuri" : "Most Visited Parks"}</h2>
+            <p className="nat-text-body mb-12">
               {isRo
                 ? "Peste 325 de milioane de vizite anuale — mai mult decât întreaga populație a SUA — demonstrează că parcurile naționale sunt cu adevărat moștenirea fiecărui american."
                 : "Over 325 million annual visits — more than the entire US population — prove that national parks are truly every American's inheritance."}
             </p>
-            <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
-              <ParkVisitorsChart data={TOP_PARKS_VISITORS}
+            <div className="px-4">
+              <ParkVisitorsChart
+                data={TOP_PARKS_VISITORS}
                 title={isRo ? "Vizite Anuale (milioane), 2023" : "Annual Visits (millions), 2023"}
-                source="National Park Service 2023" />
+                source="National Park Service 2023"
+              />
             </div>
           </section>
 
-          <section>
-            {/* `FEATURED_PARKS` comes from the shared nature data file, which
-                makes it easier to reuse the same park list elsewhere later. */}
-            <h2 className="mb-6 font-display text-h2 text-white">{isRo ? "Bijuteriile Coroanei" : "Crown Jewels"}</h2>
-            <ParkCinematicGrid parks={FEATURED_PARKS}
+          {/* Crown Jewels Cinematic Grid */}
+          <section className="max-w-6xl mx-auto">
+            <h2 className="nat-text-section text-white mb-10">{isRo ? "Bijuteriile Coroanei" : "Crown Jewels"}</h2>
+            <ParkCinematicGrid
+              parks={FEATURED_PARKS}
               visitLabel={isRo ? "Vizite/an" : "Visits/yr"}
               acresLabel={isRo ? "Acri" : "Acres"}
-              estLabel={isRo ? "Înf." : "Est."} />
+              estLabel={isRo ? "Înf." : "Est."}
+            />
           </section>
 
-          {/* Local Yosemite image for parallax */}
-          <ParallaxImageBand imageSrc={SITE_IMAGES.yosemiteNationalPark}
-            imageAlt={isRo ? "Yosemite — lumina de aur pe pereții de granit" : "Yosemite — golden light on granite walls"}
-            height={380} overlayOpacity={0.42}>
-            <div className="text-center px-4">
-              <p className="font-hero text-5xl text-green-300 md:text-7xl">{isRo ? "Înf. 1872" : "Est. 1872"}</p>
-              <p className="mt-3 font-body text-xl text-white/80">
-                {isRo ? "Primul Sistem de Parcuri Naționale din Lume" : "The World's First National Park System"}
+          {/* Parallax divider */}
+          <ParallaxImageBand
+            imageSrc={SITE_IMAGES.yosemiteNationalPark}
+            imageAlt={isRo ? "Yosemite" : "Yosemite"}
+            height={600}
+            overlayOpacity={0.5}
+          >
+            <div className="text-center max-w-4xl mx-auto px-6">
+              <p className="nat-text-display" style={{ color: 'var(--nat-accent-forest)' }}>{isRo ? "1872" : "1872"}</p>
+              <p className="nat-text-heading text-white mt-4">
+                {isRo ? "Primul Sistem de Parcuri din Lume" : "The World's First National Park System"}
               </p>
             </div>
           </ParallaxImageBand>
 
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">{isRo ? "Top 20 Parcuri Naționale" : "Top 20 National Parks"}</h2>
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-navy-mid">
+          {/* Containerless Table */}
+          <section className="max-w-5xl mx-auto">
+            <h2 className="nat-text-section text-white mb-10">{isRo ? "Top 20 Parcuri Naționale" : "Top 20 National Parks"}</h2>
+            <div className="border-t border-b border-white/4">
               <div className="overflow-x-auto">
                 <table className="w-full min-w-[580px]">
                   <thead>
-                    <tr className="border-b border-white/10 bg-white/5">
-                      <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">#</th>
-                      <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">{isRo ? "Parc" : "Park"}</th>
-                      <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">{isRo ? "Stat" : "State"}</th>
-                      <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">{isRo ? "Înf." : "Est."}</th>
-                      <th className="px-5 py-4 text-right font-body text-xs font-semibold uppercase tracking-widest text-white/40">{isRo ? "Vizite/an" : "Visits/yr"}</th>
-                      <th className="px-5 py-4 text-right font-body text-xs font-semibold uppercase tracking-widest text-white/40">{isRo ? "Acri (K)" : "Acres (K)"}</th>
+                    <tr className="border-b border-white/4">
+                      <th className="py-4 text-left nat-text-metadata text-white/40 px-4">#</th>
+                      <th className="py-4 text-left nat-text-metadata text-white/40 px-4">{isRo ? "Parc" : "Park"}</th>
+                      <th className="py-4 text-left nat-text-metadata text-white/40 px-4">{isRo ? "Stat" : "State"}</th>
+                      <th className="py-4 text-left nat-text-metadata text-white/40 px-4">{isRo ? "Înf." : "Est."}</th>
+                      <th className="py-4 text-right nat-text-metadata text-white/40 px-4">{isRo ? "Vizite/an" : "Visits/yr"}</th>
+                      <th className="py-4 text-right nat-text-metadata text-white/40 px-4">{isRo ? "Acri (K)" : "Acres (K)"}</th>
                     </tr>
                   </thead>
                   <tbody>
                     {ALL_PARKS.map((park, i) => (
-                      <tr key={i} className={`border-b border-white/5 transition-colors hover:bg-white/3 ${i % 2 === 0 ? "" : "bg-white/1"}`}>
-                        <td className="px-5 py-3.5 font-body text-sm text-white/30">{i + 1}</td>
-                        <td className="px-5 py-3.5 font-body text-sm font-semibold text-white">{park.name}</td>
-                        <td className="px-5 py-3.5 font-body text-sm text-white/50">{park.state}</td>
-                        <td className="px-5 py-3.5 font-hero text-base text-green-400">{park.established}</td>
-                        <td className="px-5 py-3.5 text-right font-body text-sm text-white/70">{park.visitors}M</td>
-                        <td className="px-5 py-3.5 text-right font-body text-sm text-white/55">{park.area.toLocaleString()}</td>
+                      <tr key={i} className="border-b border-white/4 last:border-0 hover:bg-white/2 transition-colors">
+                        <td className="py-4 nat-text-metadata text-white/30 px-4">{i + 1}</td>
+                        <td className="py-4 text-base font-semibold text-white tracking-wide px-4">{park.name}</td>
+                        <td className="py-4 nat-text-body text-white/50 px-4">{park.state}</td>
+                        <td className="py-4 font-hero text-base px-4" style={{ color: 'var(--nat-accent-forest)' }}>{park.established}</td>
+                        <td className="py-4 text-right nat-text-body px-4">{park.visitors}M</td>
+                        <td className="py-4 text-right nat-text-body text-white/50 px-4">{park.area.toLocaleString()}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-              <p className="px-5 py-3 text-right font-body text-xs text-white/30">{isRo ? "Sursă: National Park Service 2023" : "Source: National Park Service 2023"}</p>
+              <p className="py-3 text-right nat-text-metadata text-white/30 px-4">{isRo ? "Sursă: National Park Service 2023" : "Source: National Park Service 2023"}</p>
             </div>
           </section>
 
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">{isRo ? "Sistemul în Cifre" : "The System by the Numbers"}</h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Facts list as NatureFactModules */}
+          <section className="max-w-4xl mx-auto">
+            <h2 className="nat-text-section text-white mb-16">{isRo ? "În Detaliu" : "In Detail"}</h2>
+            <div>
               {systemFacts.map((fact) => (
-                <FactCard key={fact.id} fact={fact.fact} detail={fact.detail} source={fact.source} color={fact.color} variant="dark" />
+                <NatureFactModule
+                  key={fact.id}
+                  fact={fact.fact}
+                  detail={fact.detail}
+                  source={fact.source}
+                  color={colorMap[fact.color as keyof typeof colorMap] ?? 'earth'}
+                />
               ))}
             </div>
           </section>
 
-          <QuoteBlock
+          {/* Quote Section */}
+          <NatureQuoteBreak
             quote={isRo ? "Parcurile naționale sunt singurul lucru pe care America l-a făcut bine și pe care restul lumii îl invidiază. Am rezervat ce aveam mai bun și am spus: asta aparține tuturor, pentru totdeauna." : "The national parks are the one thing America has done right that the rest of the world envies. We set aside the best of what we had and said: this belongs to everyone, forever."}
-            attribution="Wallace Stegner" title={isRo ? "Autor & Conservaționist, Universitatea Stanford" : "Author & Conservationist, Stanford University"} variant="dark"
+            attribution="Wallace Stegner"
+            title={isRo ? "Autor & Conservaționist, Universitatea Stanford" : "Author & Conservationist, Stanford University"}
           />
 
-          <div className="flex items-center justify-between border-t border-white/10 pt-8">
-            <Link href="/nature" className="font-body text-sm text-white/50 hover:text-white transition-colors">← {isRo ? "Natură" : "Nature Overview"}</Link>
-            <Link href="/nature/alaska" className="font-body text-sm font-semibold text-green-400 hover:text-green-300 transition-colors">Alaska →</Link>
+          {/* Sub-page Navigation Footer */}
+          <div className="flex items-center justify-between border-t border-white/4 pt-12 max-w-5xl mx-auto">
+            <Link href="/nature" className="nat-text-label text-white/40 hover:text-white transition-colors">
+              ← {isRo ? "Natură" : "Nature Overview"}
+            </Link>
+            <Link href="/nature/alaska" className="nat-text-label text-white/40 hover:text-white transition-colors" style={{ color: 'var(--nat-accent-forest)' }}>
+              Alaska →
+            </Link>
           </div>
+
         </div>
       </div>
     </>

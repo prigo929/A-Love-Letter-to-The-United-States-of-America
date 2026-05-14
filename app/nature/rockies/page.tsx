@@ -9,16 +9,25 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Breadcrumb } from "@/components/layout/Breadcrumb";
-import { FactCard }   from "@/components/sections/FactCard";
-import { QuoteBlock } from "@/components/sections/QuoteBlock";
-import { SnowParticles, AnimatedStatWall, ParallaxImageBand, HeroTextReveal } from "@/components/nature/NatureAnimations";
+import {
+  NatStyles,
+  NatureSubPageHero,
+  AnimatedStatWall,
+  ParallaxImageBand,
+  HeroTextReveal,
+  NatureQuoteBreak,
+  NatureFactModule,
+} from "@/components/nature/NatureAnimations";
+
 import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { SITE_IMAGES }      from "@/lib/site-images";
 import { getRockiesFacts }  from "@/lib/data/nature-data";
 
-export const metadata: Metadata = { title: "Rocky Mountains | Nature", description: "The Rocky Mountains — 3,000 miles long, 53 peaks over 14,000 feet, and the backbone of North America." };
+export const metadata: Metadata = {
+  title: "Rocky Mountains | Nature",
+  description: "The Rocky Mountains — 3,000 miles long, 53 peaks over 14,000 feet, and the backbone of North America.",
+};
 
 const ROCKIES_PARKS_EN = [
   { name: "Rocky Mountain NP",  state: "CO", highlight: "Most visited Rocky Mountain park — 4.4M visitors, 114 peaks over 11,000 ft, 3,000+ elk" },
@@ -51,104 +60,123 @@ const ROCKIES_EXTENDED_RO = [
 ];
 
 export default async function RockiesPage() {
-  // Keep locale selection at the top so every translated dataset is prepared
-  // before the JSX starts.
   const locale   = await getServerLocale();
   const isRo     = locale === "ro";
   const facts    = getRockiesFacts(locale);
   const parks    = isRo ? ROCKIES_PARKS_RO : ROCKIES_PARKS_EN;
   const extFacts = isRo ? ROCKIES_EXTENDED_RO : ROCKIES_EXTENDED_EN;
 
-  // A shared stat object format lets one animated component work across many
-  // different nature subpages.
   const statWall = [
-    { value: 3000, suffix: " mi",   label: isRo ? "Lungime Lanț Muntos" : "Mountain Length",      sub: isRo ? "De la New Mexico până în Canada" : "New Mexico to northern Canada",  color: "#e2e8f0" },
-    { value: 53,   suffix: "",      label: isRo ? "Vârfuri 14.000 ft" : "14,000 ft Peaks",         sub: isRo ? "Doar în Colorado" : "In Colorado alone",                              color: "#FFD700" },
-    { value: 14440,suffix: " ft",   label: isRo ? "Mt. Elbert (ft)" : "Mt. Elbert (ft)",           sub: isRo ? "Cel mai înalt din Munții Stâncoși" : "Highest in the Rockies",        color: "#e2e8f0" },
+    { value: 3000, suffix: " mi",   label: isRo ? "Lungime Lanț Muntos" : "Mountain Length",      sub: isRo ? "De la New Mexico până în Canada" : "New Mexico to northern Canada",  color: "#C4956A" },
+    { value: 53,   suffix: "",      label: isRo ? "Vârfuri 14.000 ft" : "14,000 ft Peaks",         sub: isRo ? "Doar în Colorado" : "In Colorado alone",                              color: "#8B8680" },
+    { value: 14440,suffix: " ft",   label: isRo ? "Mt. Elbert (ft)" : "Mt. Elbert (ft)",           sub: isRo ? "Cel mai înalt din Munții Stâncoși" : "Highest in the Rockies",        color: "#60a5fa" },
     { value: 8,    suffix: "",      label: isRo ? "Parcuri Naționale Majore" : "Major National Parks", sub: isRo ? "Incl. Yellowstone & Grand Teton" : "Incl. Yellowstone & Grand Teton", color: "#4ade80" },
   ];
 
+  const colorMap = { gold: 'earth' as const, red: 'earth' as const, blue: 'glacier' as const, green: 'forest' as const };
+
   return (
     <>
-      <div className="relative bg-[#060e18] pt-28 pb-16 overflow-hidden">
-        <SnowParticles count={40} />
-        <Image src={SITE_IMAGES.glacierNationalPark}
-          alt={isRo ? "Parcul Național Glacier — lacuri alpine și vârfuri zimțate" : "Glacier National Park — alpine lakes and jagged peaks"}
-          fill className="object-cover opacity-40" priority sizes="100vw"
-          placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#060e18]/65 to-[#060e18]" />
-        <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <Breadcrumb items={[{ label: isRo ? "Natură" : "Nature", href: "/nature" }, { label: isRo ? "Munții Stâncoși" : "Rocky Mountains" }]} className="mb-8" />
-          <HeroTextReveal eyebrow={isRo ? "Munții Stâncoși" : "Rocky Mountains"}
-            line1={isRo ? "COLOANA VERTEBRALĂ" : "BACKBONE OF"}
-            line2={isRo ? "A AMERICII DE NORD" : "NORTH AMERICA"}
-            line2Color="#bfdbfe"
-            body={isRo
-              ? "3.000 de mile de piscuri acoperite de zăpadă și văi alpine. 53 de vârfuri în Colorado depășesc 4.267 m — mai mult decât orice țară din afara Himalaiei."
-              : "3,000 miles of snow-capped peaks and alpine valleys. 53 peaks in Colorado alone topping 14,000 feet — more than any country outside the Himalayas."}>
-            <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-blue-300/25 bg-blue-900/20 px-5 py-2.5 backdrop-blur-sm">
-              <span className="text-xl">🏔️</span>
-              <span className="font-body text-sm text-blue-200">
-                {isRo ? "Linia de Separare a Continentelor — coloana vertebrală a Americii de Nord" : "The Continental Divide — backbone of North America"}
-              </span>
-            </div>
-          </HeroTextReveal>
-        </div>
-      </div>
+      <NatStyles />
 
-      <section className="bg-navy-dark px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-screen-xl"><AnimatedStatWall stats={statWall} /></div>
+      {/* ── HERO — single image cinematic entrance ───────────────────────── */}
+      <NatureSubPageHero
+        imageSrc={SITE_IMAGES.glacierNationalPark}
+        imageAlt={isRo ? "Munții Stâncoși" : "Rocky Mountains"}
+        label={isRo ? "ROCKY MOUNTAINS · THE BACKBONE OF AMERICA" : "ROCKY MOUNTAINS · THE BACKBONE OF AMERICA"}
+      >
+
+        <HeroTextReveal
+          eyebrow={isRo ? "Munții Stâncoși" : "The Rocky Mountains"}
+          line1={isRo ? "COLOANA" : "THE AMERICAN"}
+          line2={isRo ? "VERTEBRALĂ" : "BACKBONE"}
+          line2Color="var(--nat-accent-stone)"
+          body={isRo 
+            ? "Întinzându-se pe 3.000 de mile din British Columbia până în New Mexico, Munții Stâncoși definesc peisajul vestic și sunt sursa marilor râuri ale continentului."
+            : "Stretching 3,000 miles from British Columbia to New Mexico, the Rockies define the Western landscape and serve as the headwaters for the continent's great rivers."}
+        />
+      </NatureSubPageHero>
+
+      {/* ── STAT WALL ─────────────────────────────────────────────────────── */}
+      <section className="bg-(--nat-void) pb-20 pt-12">
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">
+          <AnimatedStatWall stats={statWall} />
+        </div>
       </section>
 
-      <div className="bg-navy-dark">
-        <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 space-y-16">
+      {/* ── CONTENT ───────────────────────────────────────────────────────── */}
+      <div className="bg-(--nat-void) pb-32">
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12 space-y-32">
 
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">{isRo ? "Parcuri Naționale în Munții Stâncoși" : "Rocky Mountain National Parks"}</h2>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {/* Parks showcase borderless grid */}
+          <section className="max-w-5xl mx-auto">
+            <h2 className="nat-text-section text-white mb-10">
+              {isRo ? "Parcuri Naționale Majore" : "Major National Parks"}
+            </h2>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 border-t border-white/4 pt-8">
               {parks.map((park) => (
-                <div key={park.name} className="rounded-2xl border border-white/10 bg-navy-mid p-5 transition-all hover:border-blue-300/30">
-                  <p className="mb-1 font-display text-lg font-semibold text-white">{park.name}</p>
-                  <p className="mb-3 font-body text-xs font-semibold uppercase tracking-widest text-blue-300">{park.state}</p>
-                  <p className="font-body text-sm leading-relaxed text-white/55">{park.highlight}</p>
+                <div key={park.name} className="border-b border-white/4 pb-6 last:border-0 group">
+                  <p className="nat-text-metadata text-white/40 mb-1 tracking-widest">{park.state}</p>
+                  <p className="text-lg font-semibold text-white tracking-wide mb-2 group-hover:text-[var(--nat-accent-glacier)] transition-colors">
+                    {park.name}
+                  </p>
+                  <p className="nat-text-body">{park.highlight}</p>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* Local Glacier NP image for parallax */}
-          <ParallaxImageBand imageSrc={SITE_IMAGES.glacierNationalPark}
-            imageAlt={isRo ? "Parcul Național Glacier — peisaj alpin sublim" : "Glacier National Park — sublime alpine landscape"}
-            height={420} overlayOpacity={0.42}>
-            <div className="text-center px-4">
-              <p className="font-hero text-6xl text-white/90 md:text-8xl">3,000+</p>
-              <p className="mt-3 font-body text-xl text-white/80">
+          {/* Parallax divider */}
+          <ParallaxImageBand
+            imageSrc={SITE_IMAGES.glacierNationalPark}
+            imageAlt={isRo ? "Parcul Național Glacier" : "Glacier National Park"}
+            height={600}
+            overlayOpacity={0.5}
+          >
+            <div className="text-center max-w-4xl mx-auto px-6">
+              <p className="nat-text-display" style={{ color: 'var(--nat-accent-earth)' }}>3,000+</p>
+              <p className="nat-text-heading text-white mt-4">
                 {isRo ? "Elani în Parcul Național Rocky Mountain" : "Elk in Rocky Mountain National Park"}
               </p>
-              <p className="mt-2 font-body text-sm text-white/45">
+              <p className="nat-text-body text-white/60 mt-2">
                 {isRo ? "Cel mai spectaculos sunet din natură — elk bugling în septembrie" : "The most spectacular sound in nature — elk bugling in September"}
               </p>
             </div>
           </ParallaxImageBand>
 
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">{isRo ? "De ce Contează Munții Stâncoși" : "Why the Rockies Matter"}</h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Facts list as NatureFactModules */}
+          <section className="max-w-4xl mx-auto">
+            <h2 className="nat-text-section text-white mb-16">{isRo ? "În Detaliu" : "In Detail"}</h2>
+            <div>
               {[...facts, ...extFacts].map((fact) => (
-                <FactCard key={fact.id} fact={fact.fact} detail={fact.detail} source={fact.source} color={fact.color} variant="dark" />
+                <NatureFactModule
+                  key={fact.id}
+                  fact={fact.fact}
+                  detail={fact.detail}
+                  source={fact.source}
+                  color={colorMap[fact.color as keyof typeof colorMap] ?? 'earth'}
+                />
               ))}
             </div>
           </section>
 
-          <QuoteBlock
+          {/* Quote Section */}
+          <NatureQuoteBreak
             quote={isRo ? "Munții Stâncoși nu sunt o trăsătură a acestei țări — ei sunt țara. Stai pe Linia de Separare și ești în centrul a tot." : "The Rocky Mountains are not a feature of this country — they are the country. Stand on the Great Divide and you are standing at the center of everything."}
-            attribution="Wallace Stegner" title={isRo ? "Autor, The Sound of Mountain Water" : "Author, The Sound of Mountain Water"} variant="dark"
+            attribution="Wallace Stegner"
+            title={isRo ? "Autor, The Sound of Mountain Water" : "Author, The Sound of Mountain Water"}
           />
 
-          <div className="flex items-center justify-between border-t border-white/10 pt-8">
-            <Link href="/nature/alaska" className="font-body text-sm text-white/50 hover:text-white transition-colors">← Alaska</Link>
-            <Link href="/nature/grand-canyon" className="font-body text-sm font-semibold text-blue-300 hover:text-blue-200 transition-colors">{isRo ? "Marele Canion →" : "Grand Canyon →"}</Link>
+          {/* Sub-page Navigation Footer */}
+          <div className="flex items-center justify-between border-t border-white/4 pt-12 max-w-5xl mx-auto">
+            <Link href="/nature/alaska" className="nat-text-label text-white/40 hover:text-white transition-colors">
+              ← Alaska
+            </Link>
+            <Link href="/nature/grand-canyon" className="nat-text-label text-white/40 hover:text-white transition-colors" style={{ color: 'var(--nat-accent-glacier)' }}>
+              {isRo ? "Marele Canion →" : "Grand Canyon →"}
+            </Link>
           </div>
+
         </div>
       </div>
     </>

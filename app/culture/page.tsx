@@ -13,7 +13,7 @@ export default async function CulturePage() {
 
   return (
     <main className="min-h-screen bg-navy-dark pt-24 text-white">
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Breadcrumb items={[{ label: breadcrumb }]} className="mb-8" />
       </div>
 
@@ -21,7 +21,7 @@ export default async function CulturePage() {
         id="hero"
         className="scroll-mt-24 border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8"
       >
-        <div className="mx-auto min-h-[60vh] max-w-screen-xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
+        <div className="mx-auto min-h-[60vh] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
           {/* TODO: Drop in existing dark mode gradient and main title here */}
         </div>
       </section>
@@ -39,7 +39,7 @@ export default async function CulturePage() {
         id="nav-grid"
         className="scroll-mt-24 border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8"
       >
-        <div className="mx-auto max-w-screen-xl">
+        <div className="mx-auto max-w-7xl">
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-5">
             <div className="min-h-[180px] rounded-2xl border border-dashed border-white/15 bg-white/3 p-6">
               {/* TODO: Create empty cards. Drop in existing links to Music, Food, Hollywood, High School, Aesthetics here */}
@@ -56,7 +56,7 @@ export default async function CulturePage() {
         id="feature"
         className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8"
       >
-        <div className="mx-auto min-h-[420px] max-w-screen-xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
+        <div className="mx-auto min-h-[420px] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
           {/* TODO: Drop in existing "Melting Pot" WebGL component here */}
         </div>
       </section>

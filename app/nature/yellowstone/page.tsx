@@ -12,15 +12,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Breadcrumb }  from "@/components/layout/Breadcrumb";
-import { FactCard }    from "@/components/sections/FactCard";
-import { QuoteBlock }  from "@/components/sections/QuoteBlock";
 import {
-  GeyserScene,
+  NatStyles,
+  NatureSubPageHero,
   AnimatedStatWall,
   ParallaxImageBand,
   HeroTextReveal,
+  NatureQuoteBreak,
+  NatureFactModule,
 } from "@/components/nature/NatureAnimations";
+
 import { getServerLocale }    from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER }   from "@/lib/utils";
 import { SITE_IMAGES }        from "@/lib/site-images";
@@ -78,95 +79,79 @@ const YS_EXTENDED_FACTS_RO = [
 ];
 
 export default async function YellowstonePage() {
-  // `isRo` is a small helper so the JSX can read cleanly below. Instead of
-  // repeating `locale === "ro"` everywhere, the page chooses once here.
   const locale = await getServerLocale();
   const isRo   = locale === "ro";
   const facts  = getYellowstoneFacts(locale);
-  // These arrays are plain content definitions for the repeated grids/tables
-  // farther down the page.
   const hydrothermal = isRo ? HYDROTHERMAL_FEATURES_RO : HYDROTHERMAL_FEATURES_EN;
   const wildlife     = isRo ? YS_WILDLIFE_RO : YS_WILDLIFE_EN;
   const extFacts     = isRo ? YS_EXTENDED_FACTS_RO : YS_EXTENDED_FACTS_EN;
 
-  // The animated stat wall expects a uniform object shape, so we prepare that
-  // data once here and let the component handle the visuals.
   const statWall = [
-    { value: 1872,  suffix: "",    label: isRo ? "Înființat" : "Established",            sub: isRo ? "Primul parc național din lume" : "World's first national park",          color: "#FFD700" },
-    { value: 10000, suffix: "+",   label: isRo ? "Fenomene Hidrotermale" : "Hydrothermal Features", sub: isRo ? "Mai mult decât restul lumii" : "More than rest of world combined", color: "#fb923c" },
-    { value: 500,   suffix: "+",   label: isRo ? "Gheizeri" : "Geysers",                 sub: isRo ? "Jumătate din toți gheizerii Pământului" : "Half of all geysers on Earth", color: "#93c5fd" },
+    { value: 1872,  suffix: "",    label: isRo ? "Înființat" : "Established",            sub: isRo ? "Primul parc național din lume" : "World's first national park",          color: "#C4956A" },
+    { value: 10000, suffix: "+",   label: isRo ? "Fenomene Hidrotermale" : "Hydrothermal Features", sub: isRo ? "Mai mult decât restul lumii" : "More than rest of world combined", color: "#C4956A" },
+    { value: 500,   suffix: "+",   label: isRo ? "Gheizeri" : "Geysers",                 sub: isRo ? "Jumătate din toți gheizerii Pământului" : "Half of all geysers on Earth", color: "#8B8680" },
     { value: 5000,  suffix: "+",   label: isRo ? "Bizoni Sălbatici" : "Wild Bison",      sub: isRo ? "Cea mai mare turmă liberă din America de Nord" : "Largest free-roaming herd in N. America", color: "#4ade80" },
   ];
 
+  const colorMap = { gold: 'earth' as const, red: 'earth' as const, blue: 'glacier' as const, green: 'forest' as const };
+
   return (
     <>
-      {/* ── HERO — local Grand Prismatic Spring ───────────────────────────── */}
-      <div className="relative bg-navy-dark pt-28 pb-16">
-        <Image
-          src={SITE_IMAGES.yellowstonePrismatic}
-          alt={isRo ? "Marele Izvor Prismatic, Yellowstone — culorile termale vibrante" : "Grand Prismatic Spring, Yellowstone — vibrant thermal colors"}
-          fill className="object-cover opacity-50" priority sizes="100vw"
-          placeholder="blur" blurDataURL={BLUR_PLACEHOLDER}
+      <NatStyles />
+
+      {/* ── HERO — single image cinematic entrance ───────────────────────── */}
+      <NatureSubPageHero
+        imageSrc={SITE_IMAGES.yellowstonePrismatic}
+        imageAlt={isRo ? "Marele Izvor Prismatic, Yellowstone" : "Grand Prismatic Spring, Yellowstone"}
+        label={isRo ? "PARCUL NAȚIONAL YELLOWSTONE · WYOMING" : "YELLOWSTONE NATIONAL PARK · WYOMING"}
+      >
+        <HeroTextReveal
+          eyebrow={isRo ? "Parcul Național Yellowstone" : "Yellowstone National Park"}
+          line1={isRo ? "PRIMUL PARC" : "THE WORLD'S"}
+          line2={isRo ? "DIN LUME" : "FIRST PARK"}
+          line2Color="var(--nat-accent-earth)"
+          body={
+            isRo
+              ? "Primul parc național din lume, înființat în 1872. Peste 10.000 de fenomene hidrotermale — mai mult decât restul lumii la un loc. Cel mai mare turmă de bizon liber din America de Nord. Și un supervolcan dedesubt."
+              : "The world's first national park, established 1872. Over 10,000 hydrothermal features — more than the rest of the world combined. The largest free-roaming bison herd in North America. And a supervolcano beneath it all."
+          }
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/70 to-navy-dark" />
-        <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <Breadcrumb
-            items={[{ label: isRo ? "Natură" : "Nature", href: "/nature" }, { label: "Yellowstone" }]}
-            className="mb-8"
-          />
-          <HeroTextReveal
-            eyebrow={isRo ? "Parcul Național Yellowstone" : "Yellowstone National Park"}
-            line1={isRo ? "PRIMUL PARC" : "THE WORLD'S"}
-            line2={isRo ? "DIN LUME" : "FIRST PARK"}
-            line2Color="#fb923c"
-            body={
-              isRo
-                ? "Primul parc național din lume, înființat în 1872. Peste 10.000 de fenomene hidrotermale — mai mult decât restul lumii la un loc. Cel mai mare turmă de bizon liber din America de Nord. Și un supervolcan dedesubt."
-                : "The world's first national park, established 1872. Over 10,000 hydrothermal features — more than the rest of the world combined. The largest free-roaming bison herd in North America. And a supervolcano beneath it all."
-            }
-          />
-        </div>
-      </div>
+      </NatureSubPageHero>
 
       {/* ── STAT WALL ─────────────────────────────────────────────────────── */}
-      <section className="bg-navy-dark px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-screen-xl">
+      <section className="bg-(--nat-void) pb-20 pt-12">
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">
           <AnimatedStatWall stats={statWall} />
         </div>
       </section>
 
       {/* ── CONTENT ───────────────────────────────────────────────────────── */}
-      <div className="bg-navy-dark">
-        <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 space-y-16">
+      <div className="bg-(--nat-void) pb-32">
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12 space-y-32">
 
           {/* Geyser scene + description */}
-          <section>
-            <h2 className="mb-8 font-display text-h2 text-white">
+          <section className="max-w-6xl mx-auto">
+            <h2 className="nat-text-section text-white mb-12">
               {isRo ? "10.000 de Fenomene Hidrotermale" : "10,000 Hydrothermal Features"}
             </h2>
-            <div className="grid gap-10 md:grid-cols-2 md:items-center">
-              <div className="flex items-center justify-center rounded-2xl border border-orange-500/15 bg-gradient-to-b from-navy-mid to-[#1a0f05] py-10">
-                <GeyserScene
-                  label={isRo ? "OLD FAITHFUL" : "OLD FAITHFUL"}
-                  sublabel={isRo ? "Erupție la fiecare 44–125 minute" : "Erupts every 44–125 minutes"}
-                />
-              </div>
+            <div className="max-w-3xl">
+
               <div>
-                <p className="mb-5 font-body text-lg leading-relaxed text-white/70">
+                <p className="nat-text-body">
                   {isRo
                     ? "Sub Yellowstone se află un rezervor de magmă parțial topit la numai 3–8 km adâncime. Apa de precipitații se infiltrează, se încălzește și revine la suprafață ca un spectacol termic fără egal pe Terra. Yellowstone conține peste 500 de gheizeri — jumătate din totalul mondial."
                     : "Beneath Yellowstone lies a partly molten magma reservoir just 2–5 miles underground. Surface water seeps down, heats up, and returns as the most spectacular thermal display on Earth. Yellowstone contains over 500 geysers — half of the world's total."}
                 </p>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-6 mt-8 border-t border-white/4 pt-8">
                   {[
                     { n: "500+",  l: isRo ? "Gheizeri" : "Geysers"       },
                     { n: "10K+",  l: isRo ? "Total fenomene" : "Total features"   },
                     { n: "370 ft",l: isRo ? "Izv. Prismatic" : "Grand Prismatic" },
                     { n: "~200°F",l: isRo ? "Temp. medie" : "Avg. spring temp"   },
                   ].map((s) => (
-                    <div key={s.l} className="rounded-xl border border-orange-500/15 bg-orange-950/20 p-3 text-center">
-                      <p className="font-hero text-2xl text-orange-400">{s.n}</p>
-                      <p className="font-body text-xs text-white/45">{s.l}</p>
+                    <div key={s.l}>
+                      <p className="nat-text-hero" style={{ color: 'var(--nat-accent-earth)' }}>{s.n}</p>
+                      <p className="nat-text-metadata text-white/40 mt-1">{s.l}</p>
                     </div>
                   ))}
                 </div>
@@ -174,62 +159,62 @@ export default async function YellowstonePage() {
             </div>
           </section>
 
-          {/* Hydrothermal breakdown */}
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
-              {isRo ? "Tipuri de Fenomene Hidrotermale" : "Types of Hydrothermal Features"}
+          {/* Hydrothermal breakdown borderless list */}
+          <section className="max-w-4xl mx-auto">
+            <h2 className="nat-text-section text-white mb-10">
+              {isRo ? "Tipuri de Fenomene" : "Feature Types"}
             </h2>
-            <div className="space-y-3">
+            <div className="space-y-3 border-t border-white/4 pt-4">
               {hydrothermal.map((feature, i) => (
-                <div key={i} className="flex gap-4 rounded-2xl border border-white/8 bg-navy-mid p-4 transition-colors hover:border-orange-500/25">
-                  <div className="shrink-0 rounded-lg bg-orange-500/15 px-3 py-2 text-center min-w-[90px]">
-                    <p className="font-hero text-xl text-orange-400">{feature.count}</p>
-                    <p className="font-body text-[10px] text-white/40 uppercase tracking-wider leading-snug mt-0.5">{feature.type}</p>
+                <div key={i} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 border-b border-white/4 py-5 transition-colors hover:bg-white/[0.02] px-4">
+                  <div className="shrink-0 text-left sm:w-1/4">
+                    <p className="nat-text-hero" style={{ color: 'var(--nat-accent-earth)' }}>{feature.count}</p>
+                    <p className="nat-text-metadata text-white/40 uppercase tracking-wider leading-snug mt-1">{feature.type}</p>
                   </div>
-                  <p className="font-body text-sm leading-relaxed text-white/60 self-center">{feature.note}</p>
+                  <p className="nat-text-body self-center flex-1">{feature.note}</p>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* Parallax — local Yellowstone NP image */}
+          {/* Parallax divider */}
           <ParallaxImageBand
             imageSrc={SITE_IMAGES.yellowstoneNationalPark}
-            imageAlt={isRo ? "Yellowstone — peisajul iconic al parcului" : "Yellowstone National Park — iconic park landscape"}
-            height={400}
-            overlayOpacity={0.45}
+            imageAlt={isRo ? "Yellowstone" : "Yellowstone National Park"}
+            height={600}
+            overlayOpacity={0.5}
           >
-            <div className="text-center px-4">
-              <p className="font-hero text-4xl text-orange-300 md:text-6xl">{isRo ? "Înf. 1872" : "Est. 1872"}</p>
-              <p className="mt-3 font-body text-xl text-white/80">
+            <div className="text-center max-w-4xl mx-auto px-6">
+              <p className="nat-text-display" style={{ color: 'var(--nat-accent-earth)' }}>{isRo ? "1872" : "1872"}</p>
+              <p className="nat-text-heading text-white mt-4">
                 {isRo ? "Primul Parc Național din Lume" : "The World's First National Park"}
               </p>
-              <p className="mt-2 font-body text-sm text-white/45">
-                {isRo ? "O idee americană care a inspirat conservarea globală a naturii" : "An American idea that inspired conservation around the world"}
+              <p className="nat-text-body text-white/60 mt-2">
+                {isRo ? "O idee americană care a inspirat conservarea globală" : "An American idea that inspired conservation around the world"}
               </p>
             </div>
           </ParallaxImageBand>
 
-          {/* Wildlife */}
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
-              {isRo ? "Megafauna din Yellowstone" : "Yellowstone's Megafauna"}
+          {/* Wildlife containerless table */}
+          <section className="max-w-5xl mx-auto">
+            <h2 className="nat-text-section text-white mb-10">
+              {isRo ? "Megafauna" : "Megafauna"}
             </h2>
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-navy-mid">
+            <div className="border-t border-b border-white/4">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-white/10 bg-white/5">
-                    <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">{isRo ? "Animal" : "Animal"}</th>
-                    <th className="px-5 py-4 text-right font-body text-xs font-semibold uppercase tracking-widest text-white/40">{isRo ? "Populație" : "Population"}</th>
-                    <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">{isRo ? "Notă" : "Note"}</th>
+                  <tr className="border-b border-white/4">
+                    <th className="py-4 text-left nat-text-metadata text-white/40 px-4">{isRo ? "Animal" : "Animal"}</th>
+                    <th className="py-4 text-right nat-text-metadata text-white/40 px-4">{isRo ? "Populație" : "Population"}</th>
+                    <th className="py-4 text-left nat-text-metadata text-white/40 pl-8 hidden sm:table-cell">{isRo ? "Notă" : "Note"}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {wildlife.map((item, i) => (
-                    <tr key={i} className="border-b border-white/5 hover:bg-white/3 transition-colors">
-                      <td className="px-5 py-3.5 font-body text-sm font-semibold text-white">{item.animal}</td>
-                      <td className="px-5 py-3.5 text-right font-hero text-base text-orange-400">{item.count}</td>
-                      <td className="px-5 py-3.5 font-body text-sm italic text-white/45">{item.note}</td>
+                    <tr key={i} className="border-b border-white/4 last:border-0 hover:bg-white/2 transition-colors">
+                      <td className="py-5 text-base font-semibold text-white tracking-wide px-4">{item.animal}</td>
+                      <td className="py-5 text-right font-hero text-base px-4" style={{ color: 'var(--nat-accent-earth)' }}>{item.count}</td>
+                      <td className="py-5 nat-text-body italic pl-8 hidden sm:table-cell">{item.note}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -237,31 +222,41 @@ export default async function YellowstonePage() {
             </div>
           </section>
 
-          {/* Facts */}
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
-              {isRo ? "Yellowstone în Cifre" : "Yellowstone by the Numbers"}
-            </h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Facts list as NatureFactModules */}
+          <section className="max-w-4xl mx-auto">
+            <h2 className="nat-text-section text-white mb-16">{isRo ? "În Detaliu" : "In Detail"}</h2>
+            <div>
               {[...facts, ...extFacts].map((fact) => (
-                <FactCard key={fact.id} fact={fact.fact} detail={fact.detail} source={fact.source} color={fact.color} variant="dark" />
+                <NatureFactModule
+                  key={fact.id}
+                  fact={fact.fact}
+                  detail={fact.detail}
+                  source={fact.source}
+                  color={colorMap[fact.color as keyof typeof colorMap] ?? 'earth'}
+                />
               ))}
             </div>
           </section>
 
-          <QuoteBlock
+          {/* Quote Section */}
+          <NatureQuoteBreak
             quote={isRo
               ? "Yellowstone nu este doar un parc național. Este o fereastră spre timpul geologic, un laborator viu al evoluției și dovada că, dacă lași natura în pace, ea se vindecă singură, magnific."
               : "Yellowstone is not just a national park. It is a window into geological time, a living laboratory of evolution, and proof that if you leave nature alone, it heals itself magnificently."}
             attribution="E.O. Wilson"
             title={isRo ? "Biolog, Universitatea Harvard" : "Biologist, Harvard University"}
-            variant="dark"
           />
 
-          <div className="flex items-center justify-between border-t border-white/10 pt-8">
-            <Link href="/nature/grand-canyon" className="font-body text-sm text-white/50 hover:text-white transition-colors">← {isRo ? "Marele Canion" : "Grand Canyon"}</Link>
-            <Link href="/nature/great-lakes" className="font-body text-sm font-semibold text-orange-400 hover:text-orange-300 transition-colors">{isRo ? "Marile Lacuri →" : "Great Lakes →"}</Link>
+          {/* Sub-page Navigation Footer */}
+          <div className="flex items-center justify-between border-t border-white/4 pt-12 max-w-5xl mx-auto">
+            <Link href="/nature/grand-canyon" className="nat-text-label text-white/40 hover:text-white transition-colors">
+              ← {isRo ? "Marele Canion" : "Grand Canyon"}
+            </Link>
+            <Link href="/nature/great-lakes" className="nat-text-label text-white/40 hover:text-white transition-colors" style={{ color: 'var(--nat-accent-earth)' }}>
+              {isRo ? "Marile Lacuri →" : "Great Lakes →"}
+            </Link>
           </div>
+
         </div>
       </div>
     </>
