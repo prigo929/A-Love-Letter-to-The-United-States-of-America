@@ -32,7 +32,7 @@ This repo is not a generic marketing site. It is structured like a content platf
 - data-driven content in `lib/data/*` instead of hardcoded JSX
 - **Core Web Vitals**: Integrated Vercel Analytics for LCP, CLS, and INP performance monitoring
 - **AI-Ready Context**: Optimized `.repomixignore` for high-efficiency LLM context transfers
-- section verticals that now include both economy and nature/geography
+- section verticals that now include economy, nature/geography, and the arsenal of democracy (military)
 
 ## Quick Snapshot
 
@@ -87,12 +87,22 @@ This repo is not a generic marketing site. It is structured like a content platf
 <summary><strong>🌲 Natural Majesty</strong> (Geography Vertical)</summary>
 
 - `/nature` full landing page plus deep dives:
-  - `/nature/alaska`
-  - `/nature/rockies`
-  - `/nature/grand-canyon`
-  - `/nature/yellowstone`
-  - `/nature/great-lakes`
-  - `/nature/national-parks`
+  - `/nature/alaska` (Glacial scale + Arctic geography)
+  - `/nature/rockies` (Mountain scale + biodiversity)
+  - `/nature/grand-canyon` (CanyonStrataReveal geological timeline)
+  - `/nature/yellowstone` (Hydrothermal breakdown + bison recovery)
+  - `/nature/great-lakes` (Freshwater dominance)
+  - `/nature/national-parks` (Cinematic park grid)
+</details>
+
+<details>
+<summary><strong>🎖️ The Arsenal of Democracy</strong> (Military Vertical)</summary>
+
+- `/military` full landing page plus deep dives:
+  - `/military/navy` (Global Carrier Strike Group tracker)
+  - Dossiers for the **B-21 Raider**, **F-35**, and **F-22 Raptor**
+  - Interactive **Nuclear Triad** simulation
+  - **DARPA** innovation timeline
 </details>
 
 <details>
@@ -113,8 +123,9 @@ The culture and quality-of-life pages are currently clean scaffolds with TODO zo
 - reading progress bar and floating back-to-top button
 - data teaser charts with USA-highlighted comparisons
 - map preview, video preview, quote carousel, and gallery preview sections
-- economy section with full landing page plus five deep-dive routes
-- nature section with a full landing page, animated visual components, and six deep-dive routes
+- economy section with full landing page plus five deep-dive routes and 2026 data benchmarks
+- nature section with interactive Aurora, Geyser, and Strata components across six deep-dive routes
+- military section featuring a global carrier tracker, weapons dossiers, and nuclear triad simulation
 - constitution section featuring interactive gear physics, policy sliders, dynamic SVGs, and a 50-state map
 - **Electoral Archive**: A museum-grade historical dataset (1788–2024) featuring presidential, senate, and gubernatorial results with deterministic mid-term seat-flip logic.
 - **Bipartite Delegation Rendering**: Dynamic "diagonal split" map visualization for states with bipartisan Senate representation.
@@ -158,9 +169,16 @@ A data-driven deep dive into American economic power located at `/economy`.
 
 ### 🏞️ The Natural Majesty Vertical
 An immersive multimedia exploration of the American landscape located at `/nature`.
-- **Atmospheric Visuals**: Custom CSS/SVG components for the Aurora Borealis, geyser eruptions, and geological strata.
+- **Atmospheric Visuals**: Custom 'Spatial Editorial' components like `NatureHeroCrossfade`, `ParallaxImageBand`, and `CanyonStrataReveal`.
 - **Continental Comparisons**: Charts comparing US biodiversity and protected lands against global rivals.
 - **Deep-Dive Subpages**: Dedicated verticals for Alaska, Yellowstone, the Grand Canyon, and more, focusing on conservation history and extreme scale.
+
+### 🎖️ The Arsenal of Democracy Vertical
+A technical breakdown of American military supremacy located at `/military`.
+- **Global Reach Tracker**: Interactive map showing the approximate real-time locations of the 11 US Carrier Strike Groups.
+- **The Crown Jewels**: High-fidelity dossiers for the B-21 Raider, F-35 Lightning II, and F-22 Raptor with 6th-gen tech specs.
+- **Nuclear Triad Simulation**: Interactive logic explaining the survival of land, sea, and air deterrents.
+- **Innovation Engine**: Breakdown of DARPA programs and the top 6 defense contractors by revenue.
 
 ### 🏛️ The Constitution & Democracy Exhibit Architecture
 
@@ -215,8 +233,8 @@ The Nature section is designed as an **Immersive Multimedia Experience**, priori
 
 #### 1. Visual Storytelling Layer (`components/nature/`)
 Unlike other sections, Nature uses specialized interactive components to evoke a sense of place:
-- **Atmospheric Dividers**: Components like `ParallaxImageBand` and `WaveSection` use scroll-linked transforms and morphing SVGs to create a sense of depth between content blocks.
-- **Lightweight Motion**: We use pure CSS/SVG animations for the `AuroraBackground` and `GeyserScene`. This provides a "museum-grade" feel without the performance cost of video or heavy JS libraries.
+- **Atmospheric Dividers**: Components like `ParallaxImageBand` use scroll-linked transforms and depth vignettes to create a sense of scale between content blocks.
+- **Lightweight Motion**: We use pure Framer Motion and CSS for the `CanyonStrataReveal` and `AnimatedStatWall`. This provides a "museum-grade" feel without the performance cost of heavy JS libraries.
 - **Ken-Burns Engine**: The `NatureHeroCrossfade` uses a coordinated scale-and-fade animation to turn static images into cinematic sequences.
 
 #### 2. The Ecological Data Layer (`lib/data/nature-data.ts`)
@@ -227,6 +245,25 @@ Geography is treated as a strategic and cultural asset:
 #### 3. Tiered Editorial Architecture
 - **Hub Page (`/nature`)**: Focuses on the "National Park Idea" and continental scale.
 - **Vertical Subpages**: Each subpage (Alaska, Yellowstone, etc.) uses a custom layout tailored to its theme. For example, the **Grand Canyon** page uses `CanyonStrataReveal` to visualize vertical geological time, while the **Alaska** page uses `SnowParticles` for atmospheric immersion.
+
+### 🎖️ The Arsenal of Democracy Vertical Architecture
+
+The Military section is designed as a **Technical Intelligence Briefing**, prioritizing operational data and global reach.
+
+#### 1. The Global Presence Engine (`lib/data/military-data.ts`)
+The US Navy is treated as a structural component of global peace:
+- **Carrier Tracker (`MilitaryAnimations.tsx`)**: An interactive SVG map that visualizes the "11-Carrier Standard." It uses precise coordinate mapping to show carrier positions from the South China Sea to the Mid-Atlantic.
+- **Status Persistence**: Every ship is tracked with a `status` (deployed/transit/homeport), allowing the UI to accurately reflect the 24/7 readiness of the fleet.
+
+#### 2. The Weapons Dossier System
+We treat military hardware as engineering masterpieces:
+- **Specification Parity**: The `WeaponSystem` interface enforces strict data consistency across 5th and 6th generation platforms.
+- **Performance Highlighting**: Unique metrics (e.g., "Mach 23" for Minuteman III, "6th Gen" for B-21) are elevated into "Hero Stats" to communicate qualitative superiority.
+- **The Nuclear Triad Logic**: A dedicated interactive explaining the redundant "land-sea-air" architecture that forms the bedrock of strategic deterrence.
+
+#### 3. Strategic Innovation Layer
+- **DARPA Tracking**: A thematic grid of active and konsep programs (Hypersonics, Directed Energy, AI C2) highlighting the next 20 years of American R&D.
+- **Industrial Base**: Direct comparison of top defense contractors, linking current revenue to the production of critical systems like the Virginia-class submarine and F-35.
 
 ### ⚡ Performance & AI Readiness
 - **Vercel Web Vitals**: Integrated monitoring for LCP, CLS, and INP to ensure a "Bloomberg-grade" smooth experience.
@@ -784,6 +821,7 @@ This section is for future AI-assisted edits. The goal is to explain how the cod
 | `STATES` title effect | `components/sections/StatesVideoTitle.tsx` |
 | Economy content | `lib/data/economy-data.ts` |
 | Nature content | `lib/data/nature-data.ts` |
+| Military content | `lib/data/military-data.ts` |
 | Constitution content | `lib/data/constitution-data.ts`, `lib/data/federalism-data.ts` |
 | Constitution interactions | `components/constitution/*` |
 | Image swaps | `lib/site-images.ts` |
