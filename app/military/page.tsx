@@ -31,7 +31,6 @@ import Link from "next/link";
 
 import {
   MilStyles,
-  SmoothScroll,
   MinimalistStat,
   WeaponSystemCard,
   BranchSelector,
@@ -225,7 +224,7 @@ export default async function MilitaryPage() {
   return (
     <div className="bg-black text-white min-h-screen">
       <MilStyles />
-      <SmoothScroll />
+
 
       {/* ─── §1  HERO — B-2 emerging from darkness ─────────────────────────── */}
       <ParallaxMilitaryHero
