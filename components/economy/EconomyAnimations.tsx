@@ -138,7 +138,7 @@ export function MacroHero({ imageSrc, imageAlt, eyebrow, titleLead, titleAccent,
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
 
   return (
-    <div ref={ref} className="relative min-h-screen w-full overflow-hidden bg-[#030405] pt-48 pb-24">
+    <div ref={ref} className="relative min-h-[100dvh] w-full overflow-hidden bg-[#030405] pt-48 pb-24">
       <motion.div style={{ y, scale, opacity: 0.6 }} className="absolute inset-0">
         <Image
           src={imageSrc}
@@ -158,7 +158,7 @@ export function MacroHero({ imageSrc, imageAlt, eyebrow, titleLead, titleAccent,
 
       <motion.div 
         style={{ opacity }}
-        className="relative z-10 flex min-h-[70vh] flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto w-full"
+        className="relative z-10 flex min-h-[70dvh] flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto w-full"
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 lg:items-start pt-20">
           <div className="lg:col-span-6">

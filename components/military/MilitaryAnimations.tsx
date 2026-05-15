@@ -373,7 +373,7 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10 w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-[#0a0a0a] border border-white/6 no-scrollbar"
+              className="relative z-10 w-full max-w-5xl max-h-[90dvh] overflow-y-auto bg-[#0a0a0a] border border-white/6 no-scrollbar"
               onClick={(e) => e.stopPropagation()}
               data-lenis-prevent
             >
@@ -383,7 +383,7 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
                   {locale === 'ro' ? '[ ÎNCHIDE ]' : '[ CLOSE ]'}
                 </button>
               </div>
-              <div className="relative w-full h-[35vh] md:h-[45vh] overflow-hidden">
+              <div className="relative w-full h-[35dvh] md:h-[45dvh] overflow-hidden">
                 <Image src={system.imageSrc} alt={system.imageAlt} fill className="object-cover" priority sizes="100vw" />
                 <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/30 to-transparent" />
                 <div className="absolute bottom-8 left-6 md:left-12">
@@ -632,7 +632,7 @@ export function DARPAProgramGrid({ programs, locale = 'en' }: { programs: DARPAP
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 15, scale: 0.98 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10 w-full max-w-2xl max-h-[80vh] overflow-y-auto bg-[#0a0a0a] border border-white/8 no-scrollbar"
+              className="relative z-10 w-full max-w-2xl max-h-[80dvh] overflow-y-auto bg-[#0a0a0a] border border-white/8 no-scrollbar"
               onClick={(e) => e.stopPropagation()}
               data-lenis-prevent
             >
@@ -1029,7 +1029,7 @@ export function ParallaxMilitaryHero({
   const words = title?.split(" ") || [];
 
   return (
-    <div ref={ref} className="relative h-[180vh] bg-black">
+    <div ref={ref} className="relative h-[180dvh] bg-black">
       {/* Sticky container */}
       <div className="sticky top-0 h-screen w-full overflow-hidden mil-noise">
         {/* Background image with 3-stage reveal */}
