@@ -46,26 +46,26 @@ const CAPITAL_MARKETS_EXTENDED_FACTS = [
   },
   {
     id: "spy-liquidity",
-    fact: "S&P 500 ETFs trade $50B+ in volume every single trading day",
+    fact: "S&P 500 ETFs trade $60B+ in volume every single trading day",
     detail:
-      "The SPY ETF alone regularly exceeds $50 billion in daily volume — more than the entire annual GDP of many nations, traded in a single day on a single American exchange.",
-    source: "Bloomberg 2024",
+      "The SPY ETF alone regularly exceeds $60 billion in daily volume — more than the entire annual GDP of many nations, traded in a single day on a single American exchange.",
+    source: "Bloomberg 2026",
     color: "red" as const,
   },
   {
     id: "private-equity",
-    fact: "US private equity manages over $12 trillion in assets",
+    fact: "US private equity manages over $14 trillion in assets",
     detail:
       "America's private equity industry — Blackstone, Apollo, KKR, Carlyle — manages more capital than the GDP of China, Japan, and Germany combined in private markets alone.",
-    source: "Preqin 2024",
+    source: "Preqin 2026",
     color: "blue" as const,
   },
   {
     id: "hedge-funds",
     fact: "70% of global hedge fund AUM is managed from the United States",
     detail:
-      "Greenwich, CT and Midtown Manhattan host the world's most sophisticated capital allocators. Ray Dalio's Bridgewater alone manages $150B+ in assets.",
-    source: "Preqin / HFR 2024",
+      "Greenwich, CT and Midtown Manhattan host the world's most sophisticated capital allocators. Ray Dalio's Bridgewater alone manages $160B+ in assets.",
+    source: "Preqin / HFR 2026",
     color: "gold" as const,
   },
   {
@@ -73,15 +73,15 @@ const CAPITAL_MARKETS_EXTENDED_FACTS = [
     fact: "The US IPO market raises more capital than the next 5 exchanges combined",
     detail:
       "Companies from around the world — Alibaba, Arm Holdings, Spotify — choose to list on US exchanges to access American capital depth. There is no rival.",
-    source: "Ernst & Young Global IPO Monitor 2024",
+    source: "Ernst & Young Global IPO Monitor 2026",
     color: "red" as const,
   },
   {
     id: "treasury-market",
     fact: "The US Treasury market is the most liquid financial market in history",
     detail:
-      "$700+ billion in US Treasuries trade hands every single day — more than most countries' annual GDP. This liquidity is the foundation of global financial stability.",
-    source: "Federal Reserve Bank of New York 2024",
+      "$800+ billion in US Treasuries trade hands every single day — more than most countries' annual GDP. This liquidity is the foundation of global financial stability.",
+    source: "Federal Reserve Bank of New York 2026",
     color: "blue" as const,
   },
 ];
@@ -199,12 +199,12 @@ export default async function CapitalMarketsPage() {
           marketCapTitle: "Capitalizarea burselor — SUA vs. lume",
           marketCapBody:
             "Statele Unite găzduiesc cele mai mari două burse de pe Pământ — la o distanță uriașă. NYSE (33,2T $) și NASDAQ (35,8T $) reprezintă împreună mai multă capitalizare decât următoarele cinci burse combinate. Bursele americane nu doar conduc — domină.",
-          marketCapChartTitle: "Capitalizarea burselor globale (2024, trilioane USD)",
+          marketCapChartTitle: "Capitalizarea burselor globale (2026, trilioane USD)",
           benchmarkTitle: "S&P 500 — reperul lumii",
           benchmarkBody:
-            "Niciun indice nu este urmărit mai atent. Niciun indice nu este replicat mai larg. S&P 500 urmărește cele mai mari 500 de companii americane listate public — iar performanța lui este, de facto, fișa de evaluare a prosperității capitaliste globale. Din 1980, a generat randamente totale de peste 3.900%.",
+            "Niciun indice nu este urmărit mai atent. Niciun indice nu este replicat mai larg. S&P 500 urmărește cele mai mari 500 de companii americane listate public — iar performanța lui este, de facto, fișa de evaluare a prosperității capitaliste globale. Din 1980, a generat randamente totale de peste 9.000%.",
           benchmarkChartTitle:
-            "S&P 500 — 45 de ani de performanță a piețelor americane de capital",
+            "S&P 500 — 46 de ani de performanță a piețelor americane de capital",
           exchangesTitle: "Marile burse ale Americii",
           estLabel: "Înființată",
           advantageTitle: "Avantajul piețelor de capital",
@@ -222,12 +222,12 @@ export default async function CapitalMarketsPage() {
           marketCapTitle: "Stock Exchange Market Cap — US vs World",
           marketCapBody:
             "The United States hosts the two largest stock exchanges on Earth — by a staggering margin. The NYSE ($33.2T) and NASDAQ ($35.8T) together represent more market capitalization than the next five exchanges combined. American exchanges don't just lead — they dominate.",
-          marketCapChartTitle: "Global Stock Exchange Market Cap (2024, USD Trillions)",
+          marketCapChartTitle: "Global Stock Exchange Market Cap (2026, USD Trillions)",
           benchmarkTitle: "The S&P 500 — The World's Benchmark",
           benchmarkBody:
-            "No index is watched more closely. No index is replicated more widely. The S&P 500 tracks the 500 largest publicly traded US companies — and its performance is the world's de facto report card on capitalist prosperity. Since 1980, it has delivered total returns exceeding 3,900%.",
+            "No index is watched more closely. No index is replicated more widely. The S&P 500 tracks the 500 largest publicly traded US companies — and its performance is the world's de facto report card on capitalist prosperity. Since 1980, it has delivered total returns exceeding 9,000%.",
           benchmarkChartTitle:
-            "S&P 500 — 45 Years of American Capital Market Performance",
+            "S&P 500 — 46 Years of American Capital Market Performance",
           exchangesTitle: "America's Major Exchanges",
           estLabel: "Est.",
           advantageTitle: "The Capital Markets Advantage",
@@ -272,7 +272,7 @@ export default async function CapitalMarketsPage() {
               <MarketCapChart
                 data={MARKET_CAP_BY_EXCHANGE}
                 title={copy.marketCapChartTitle}
-                source="World Federation of Exchanges 2024"
+                source="World Federation of Exchanges 2026"
               />
             </div>
           </section>

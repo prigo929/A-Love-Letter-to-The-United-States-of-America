@@ -44,15 +44,15 @@ const GDP_EXTENDED_FACTS = [
     fact: "The US has held the #1 GDP rank for 130+ consecutive years",
     detail:
       "Through the Great Depression, two World Wars, the Cold War, the 2008 financial crisis, and a global pandemic — the US economy has never relinquished its crown.",
-    source: "IMF Historical Data",
+    source: "IMF Historical Data 2026",
     color: "gold" as const,
   },
   {
     id: "gdp-california",
     fact: "California alone would be the 4th largest economy on Earth",
     detail:
-      "At approximately $4.25 trillion in state GDP, California has overtaken Japan to become the world's 4th largest economy if it were its own country.",
-    source: "Bureau of Economic Analysis 2025",
+      "At approximately $4.25 trillion in state GDP, California has overtaken Japan, the UK, and India to become the world's 4th largest economy if it were its own country.",
+    source: "Bureau of Economic Analysis 2026",
     color: "red" as const,
   },
   {
@@ -60,7 +60,7 @@ const GDP_EXTENDED_FACTS = [
     fact: "Texas GDP exceeds all of Brazil or Russia",
     detail:
       "The state of Texas, with a GDP of approximately $2.9 trillion, produces more economic output annually than the entire nation of Brazil or the Russian Federation.",
-    source: "BEA & World Bank 2025",
+    source: "BEA & World Bank 2026",
     color: "blue" as const,
   },
   {
@@ -68,23 +68,23 @@ const GDP_EXTENDED_FACTS = [
     fact: "US GDP has grown in 70 of the last 75 years",
     detail:
       "Since 1950, the American economy has experienced growth in 70 out of 75 calendar years — a record of economic resilience unmatched by any major economy.",
-    source: "Bureau of Economic Analysis",
+    source: "Bureau of Economic Analysis 2026",
     color: "gold" as const,
   },
   {
     id: "gdp-consumer",
-    fact: "US consumer spending (~$19T) exceeds China's entire GDP",
+    fact: "US consumer spending (~$21T) exceeds China's entire GDP",
     detail:
-      "American household consumption — driven by high incomes, easy credit access, and a culture of spending — is a $19 trillion engine that pulls the global economy.",
-    source: "BEA 2024",
+      "American household consumption — driven by high incomes, easy credit access, and a culture of innovation — is a $21 trillion engine that pulls the global economy.",
+    source: "BEA 2026",
     color: "red" as const,
   },
   {
     id: "gdp-r-and-d",
-    fact: "The US spends more on R&D than any nation — $800B+ annually",
+    fact: "The US spends more on R&D than any nation — $900B+ annually",
     detail:
-      "American businesses, universities, and government agencies invest over $800 billion per year in research and development — the fuel for the next generation of economic leadership.",
-    source: "NSF National Center for Science & Engineering Statistics 2024",
+      "American businesses, universities, and government agencies invest over $900 billion per year in research and development — the fuel for the next generation of economic leadership.",
+    source: "NSF 2026",
     color: "blue" as const,
   },
 ];
@@ -203,21 +203,21 @@ export default async function GdpGrowthPage() {
             "O domnie de 130 de ani în vârf. Prin fiecare criză, fiecare rival și fiecare predicție a declinului american — economia Statelor Unite nu doar că a rezistat. A dominat.",
           worldTitle: "Statele Unite vs. lumea",
           worldBody:
-            "Economia SUA nu este doar cea mai mare — operează într-o categorie complet diferită. La 32,4 trilioane de dolari, depășește PIB-urile cumulate ale Chinei (18,5T), Germaniei (4,5T) și Japoniei (4,2T). Asta înseamnă că următoarele trei mari economii, adunate, tot nu pot egala producția unei singure națiuni de 335 de milioane de oameni.",
-          worldChartTitle: "PIB pe țări (2024, trilioane USD)",
+            "Economia SUA nu este doar cea mai mare — operează într-o categorie complet diferită. La 32,4 trilioane de dolari, depășește PIB-urile cumulate ale Chinei (20,8T), Germaniei (5,4T) și Japoniei (4,4T). Asta înseamnă că următoarele trei mari economii, adunate, tot nu pot egala producția unei singure națiuni de 335 de milioane de oameni.",
+          worldChartTitle: "PIB pe țări (2026, trilioane USD)",
           worldChartSubtitle:
             "Economia SUA depășește următoarele trei mari economii combinate",
           perCapitaTitle: "Per capita: oameni bogați, țară bogată",
           perCapitaBody:
-            "Ceea ce face performanța SUA cu adevărat extraordinară este că dominația economică americană nu este doar o funcție a populației. Americanul mediu generează 82.700 USD în producție economică anuală — mai mult decât Germania (54.300), Franța (45.000), Japonia (33.800) și incomparabil mai mult decât China (13.100). SUA sunt simultan cea mai mare și una dintre cele mai productive economii de pe Pământ.",
-          perCapitaChartTitle: "PIB pe cap de locuitor după țară (2024, mii USD)",
+            "Ceea ce face performanța SUA cu adevărat extraordinară este că dominația economică americană nu este doar o funcție a populației. Americanul mediu generează 94.400 USD în producție economică anuală — mai mult decât Germania (65.300), Regatul Unit (61.100), Franța (52.100) și incomparabil mai mult decât China (14.900). SUA sunt simultan cea mai mare și una dintre cele mai productive economii de pe Pământ.",
+          perCapitaChartTitle: "PIB pe cap de locuitor după țară (2026, mii USD)",
           perCapitaChartSubtitle:
-            "La 82.700 USD per persoană, americanul mediu produce mai mult decât orice altă mare națiune",
-          perCapitaValueLabel: "PIB pe cap de locuitor (2024, mii USD)",
+            "La 94.400 USD per persoană, americanul mediu produce mai mult decât orice altă mare națiune",
+          perCapitaValueLabel: "PIB pe cap de locuitor (2026, mii USD)",
           prosperityTitle: "Arcul lung al prosperității americane",
           prosperityBody:
             "S&P 500 este cel mai urmărit indice bursier din lume — o fișă de evaluare în timp real a vitalității economice americane. Din 1980, a oferit un randament mediu anual de aproximativ 10,5%, transformând 1.000 USD în peste 40.000 USD. Fiecare prăbușire — dot-com, criza financiară, COVID — a fost urmată de o revenire la noi maxime. Nu este noroc; este rodul unui sistem care alocă în mod constant capitalul către utilizările sale cele mai productive.",
-          prosperityChartTitle: "Indicele S&P 500 — 45 de ani de creștere neîntreruptă pe termen lung",
+          prosperityChartTitle: "Indicele S&P 500 — 46 de ani de creștere neîntreruptă pe termen lung",
           prosperityChartSubtitle:
             "Fiecare scădere a fost temporară; fiecare revenire a fost reală",
           statesTitle: "State americane vs. națiuni",
@@ -228,7 +228,7 @@ export default async function GdpGrowthPage() {
           globalRankLabel: "Rang global",
           comparisonLabel: "Comparație",
           globallyLabel: "la nivel global",
-          statesSource: "Sursă: Bureau of Economic Analysis 2024, World Bank 2024",
+          statesSource: "Sursă: Bureau of Economic Analysis 2026, World Bank 2026",
           numbersTitle: "Cifrele din spatele cifrelor",
           quoteTitle: "Laureat Nobel pentru Economie, University of Chicago",
           backLink: "← Înapoi la prezentarea economiei",
@@ -243,21 +243,21 @@ export default async function GdpGrowthPage() {
             "A 130-year reign at the top. Through every crisis, every challenger, every prediction of American decline — the United States economy has not just endured. It has dominated.",
           worldTitle: "The United States vs. The World",
           worldBody:
-            "The US economy is not just the largest — it operates in a different category entirely. At $32.4 trillion, it exceeds the combined GDPs of China ($18.5T), Germany ($4.5T), and Japan ($4.2T). That means the three next-largest economies, added together, still cannot match the output of a single nation of 335 million people.",
-          worldChartTitle: "GDP by Country (2024, USD Trillions)",
+            "The US economy is not just the largest — it operates in a different category entirely. At $32.4 trillion, it exceeds the combined GDPs of China ($20.8T), Germany ($5.4T), and Japan ($4.4T). That means the three next-largest economies, added together, still cannot match the output of a single nation of 335 million people.",
+          worldChartTitle: "GDP by Country (2026, USD Trillions)",
           worldChartSubtitle:
             "The US economy exceeds the next three largest economies combined",
           perCapitaTitle: "Per Capita: Rich People, Rich Country",
           perCapitaBody:
-            "What makes the US achievement truly extraordinary is that its economic dominance is not simply a function of population size. The average American generates $82,700 in economic output per year — more than Germany ($54,300), France ($45,000), Japan ($33,800), and vastly more than China ($13,100). The US is simultaneously the largest AND one of the most productive economies on Earth.",
-          perCapitaChartTitle: "GDP Per Capita by Country (2024, USD Thousands)",
+            "What makes the US achievement truly extraordinary is that its economic dominance is not simply a function of population size. The average American generates $94,400 in economic output per year — more than Germany ($65,300), the United Kingdom ($61,100), France ($52,100), and vastly more than China ($14,900). The US is simultaneously the largest AND one of the most productive economies on Earth.",
+          perCapitaChartTitle: "GDP Per Capita by Country (2026, USD Thousands)",
           perCapitaChartSubtitle:
-            "At $82,700 per person, the average American produces more than any major nation",
-          perCapitaValueLabel: "GDP per capita (2024, USD Thousands)",
+            "At $94,400 per person, the average American produces more than any major nation",
+          perCapitaValueLabel: "GDP per capita (2026, USD Thousands)",
           prosperityTitle: "The Long Arc of American Prosperity",
           prosperityBody:
             "The S&P 500 is the world's most closely watched equity index — a real-time report card on American economic vitality. Since 1980, it has delivered an average annual return of approximately 10.5%, compounding $1,000 into over $40,000. Every crash — dot-com, financial crisis, COVID — was followed by recovery to new highs. This is not luck; it is the fruit of a system that consistently allocates capital to its most productive uses.",
-          prosperityChartTitle: "S&P 500 Index — 45 Years of Unbroken Long-Term Growth",
+          prosperityChartTitle: "S&P 500 Index — 46 Years of Unbroken Long-Term Growth",
           prosperityChartSubtitle: "Each dip was temporary; each recovery was real",
           statesTitle: "American States vs. Nations",
           statesBody:
@@ -267,7 +267,7 @@ export default async function GdpGrowthPage() {
           globalRankLabel: "Global Rank",
           comparisonLabel: "Comparison",
           globallyLabel: "globally",
-          statesSource: "Source: Bureau of Economic Analysis 2024, World Bank 2024",
+          statesSource: "Source: Bureau of Economic Analysis 2026, World Bank 2026",
           numbersTitle: "The Numbers Behind the Numbers",
           quoteTitle: "Nobel Laureate in Economics, University of Chicago",
           backLink: "← Back to Economy Overview",
@@ -311,7 +311,7 @@ export default async function GdpGrowthPage() {
                 data={GDP_COMPARISON}
                 title={copy.worldChartTitle}
                 subtitle={copy.worldChartSubtitle}
-                source="World Bank 2024"
+                source="World Bank 2026"
               />
             </div>
           </section>
@@ -336,7 +336,7 @@ export default async function GdpGrowthPage() {
                 )}
                 title={copy.perCapitaChartTitle}
                 subtitle={copy.perCapitaChartSubtitle}
-                source="IMF World Economic Outlook 2024"
+                source="IMF World Economic Outlook 2026"
                 valueSuffix="K"
                 valueLabel={copy.perCapitaValueLabel}
               />
@@ -356,7 +356,7 @@ export default async function GdpGrowthPage() {
                 data={SP500_HISTORY}
                 title={copy.prosperityChartTitle}
                 subtitle={copy.prosperityChartSubtitle}
-                source="S&P Global 2024"
+                source="S&P Global 2026"
               />
             </div>
           </section>

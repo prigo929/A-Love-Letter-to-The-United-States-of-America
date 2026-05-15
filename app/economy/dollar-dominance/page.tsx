@@ -223,7 +223,7 @@ export default async function DollarDominancePage() {
           },
           {
             ...DOLLAR_TIMELINE[6],
-            event: "Dolarul încă domnește la 80 de ani",
+            event: "Dolarul încă domnește la 82 de ani",
             description:
               "În ciuda previziunilor repetate despre «de-dolarizare», ponderea dolarului în rezervele globale rămâne peste 57.4%, dominația SWIFT rămâne peste 40% și nu a apărut niciun rival credibil.",
           },
@@ -237,7 +237,7 @@ export default async function DollarDominancePage() {
           heroLead: "MONEDA DE REZERVĂ",
           heroAccent: "A LUMII",
           heroBody:
-            "Dolarul american este sistemul de operare al economiei globale. 57.4% din toate rezervele valutare. Peste 40% din comerțul mondial. Fiecare baril de petrol. O domnie de 80 de ani care nu a fost niciodată amenințată serios.",
+            "Dolarul american este sistemul de operare al economiei globale. 57.4% din toate rezervele valutare. Peste 40% din comerțul mondial. Fiecare baril de petrol. O domnie de 82 de ani care nu a fost niciodată amenințată serios.",
           heroStats: [
             { value: "57.4%", label: "din rezervele FX globale", source: "IMF COFER 2026" },
             { value: "40%+", label: "din tranzacțiile SWIFT", source: "SWIFT 2026" },
@@ -245,9 +245,9 @@ export default async function DollarDominancePage() {
           ],
           overviewTitle: "Privilegiul exorbitant",
           chartTitle: "Rezerve valutare globale pe monedă (2026)",
-          timelineTitle: "80 de ani de supremație a dolarului",
+          timelineTitle: "82 de ani de supremație a dolarului",
           timelineBody:
-            "Dominația dolarului nu a fost accidentală — a fost construită prin politică deliberată, putere militară și forță economică de-a lungul a opt decenii.",
+            "Dominația dolarului nu a fost accidentală — a fost construită prin politică deliberată, putere militară și forță economică de-a lungul a peste opt decenii.",
           detailTitle: "Avantajul dolarului — în detaliu",
           calloutTitle: "Despre «de-dolarizare» — o verificare a realității",
           calloutP1:
@@ -266,7 +266,7 @@ export default async function DollarDominancePage() {
           heroLead: "THE WORLD'S",
           heroAccent: "RESERVE CURRENCY",
           heroBody:
-            "The US dollar is the operating system of the global economy. 57.4% of all foreign exchange reserves. 40%+ of global trade. Every barrel of oil. An 80-year reign that has never been seriously threatened.",
+            "The US dollar is the operating system of the global economy. 57.4% of all foreign exchange reserves. 40%+ of global trade. Every barrel of oil. An 82-year reign that has never been seriously threatened.",
           heroStats: [
             { value: "57.4%", label: "of global FX reserves", source: "IMF COFER 2026" },
             { value: "40%+", label: "of SWIFT transactions", source: "SWIFT 2026" },
@@ -274,7 +274,7 @@ export default async function DollarDominancePage() {
           ],
           overviewTitle: "The Exorbitant Privilege",
           chartTitle: "Global Foreign Exchange Reserves by Currency (2026)",
-          timelineTitle: "80 Years of Dollar Supremacy",
+          timelineTitle: "82 Years of Dollar Supremacy",
           timelineBody:
             "The dollar's dominance was not accidental — it was built through deliberate policy, military power, and economic strength over eight decades.",
           detailTitle: "The Dollar Advantage — In Detail",

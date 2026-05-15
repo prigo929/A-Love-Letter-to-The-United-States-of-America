@@ -111,26 +111,26 @@ function getEconomyPageCopy(locale: Locale) {
     return {
       tocLabel: "Cuprins",
       tocAriaLabel: "Cuprinsul paginii economiei",
-      quickStatLabel: "PIB SUA 2024",
+      quickStatLabel: "PIB SUA 2026",
       quickStatSubLabel: "~25% din PIB-ul mondial",
       breadcrumb: "Economie",
       overviewEyebrow: "Analiză în profunzime",
       overviewTitle: "Scară fără precedent",
       gdpEyebrow: "PIB și Dimensiune",
       gdpTitle: "25% din tot ce există pe Pământ",
-      gdpChartTitle: "PIB: Statele Unite vs economiile majore (2024)",
+      gdpChartTitle: "PIB: Statele Unite vs economiile majore (2026)",
       gdpChartSubtitle:
         "PIB-ul SUA în trilioane USD — mai mare decât următoarele trei economii la un loc",
-      gdpPerCapitaTitle: "PIB pe cap de locuitor: SUA vs G7 și piețe emergente (2024)",
+      gdpPerCapitaTitle: "PIB pe cap de locuitor: SUA vs G7 și piețe emergente (2026)",
       gdpPerCapitaSubtitle:
-        "La 82.700 USD per persoană, americanii produc mai multă bogăție per capita decât orice mare națiune",
-      gdpPerCapitaValueLabel: "PIB pe cap de locuitor (2024, mii USD)",
+        "La 94.400 USD per persoană, americanii produc mai multă bogăție per capita decât orice mare națiune",
+      gdpPerCapitaValueLabel: "PIB pe cap de locuitor (2026, mii USD)",
       fullGdpAnalysis: "Analiza completă a PIB-ului →",
       capitalEyebrow: "Piețe de Capital",
       capitalTitle: "Wall Street pune în mișcare lumea",
       capitalChartTitle: "Indicele S&P 500 — 45 de ani de prosperitate americană",
       capitalChartSubtitle:
-        "Cel mai urmărit indice bursier din lume: 1980 → 2024",
+        "Cel mai urmărit indice bursier din lume: 1980 → 2026",
       marketCapLabel: "Capitalizare combinată NYSE + NASDAQ",
       fullCapitalMarketsAnalysis: "Analiza completă a piețelor de capital →",
       vcEyebrow: "Venture Capital și Startup-uri",
@@ -148,14 +148,14 @@ function getEconomyPageCopy(locale: Locale) {
       fullVcAnalysis: "Analiza completă a startup-urilor și VC →",
       dollarEyebrow: "Dominația Dolarului",
       dollarTitle: "Moneda de rezervă a lumii",
-      dollarChartTitle: "Rezerve valutare globale pe monedă (2024)",
+      dollarChartTitle: "Rezerve valutare globale pe monedă (2026)",
       dollarReserveCaption:
         "Statutul de monedă de rezervă oferă dolarului «privilegiul exorbitant» — SUA își pot finanța deficitele în propria monedă la costuri favorabile la nivel global",
       fullDollarAnalysis: "Analiza completă a dolarului →",
       tradeEyebrow: "Comerț și Exporturi",
       tradeTitle: "America alimentează comerțul global",
       tradeCategoriesTitle:
-        "Principalele categorii de export ale SUA (2024, miliarde USD)",
+        "Principalele categorii de export ale SUA (2026, miliarde USD)",
       tradePercentOfTopCategory: "% din categoria de top",
       fullTradeAnalysis: "Analiza completă a comerțului →",
       subPagesEyebrow: "Explorați Mai Departe",
@@ -169,7 +169,7 @@ function getEconomyPageCopy(locale: Locale) {
       heroStats: [
         { value: "$32.4T", label: "PIB 2026", sub: "IMF Projection" },
         { value: "25%", label: "din PIB-ul mondial", sub: "FMI" },
-        { value: "139", label: "sedii Fortune 500", sub: "Fortune 2024" },
+        { value: "139", label: "sedii Fortune 500", sub: "Fortune 2026" },
       ],
       tocItems: [
         { label: "Prezentare", href: "#overview" },
@@ -196,30 +196,30 @@ function getEconomyPageCopy(locale: Locale) {
   return {
     tocLabel: "Contents",
     tocAriaLabel: "Economy page contents",
-    quickStatLabel: "US GDP 2024",
+    quickStatLabel: "US GDP 2026",
     quickStatSubLabel: "~25% of world GDP",
     breadcrumb: "Economy",
     overviewEyebrow: "Deep Dive",
     overviewTitle: "Unprecedented Scale",
     gdpEyebrow: "GDP & Scale",
     gdpTitle: "25% of Everything on Earth",
-    gdpChartTitle: "GDP: United States vs Major Economies (2024)",
+    gdpChartTitle: "GDP: United States vs Major Economies (2026)",
     gdpChartSubtitle:
       "US GDP in USD Trillions — larger than the next three economies combined",
-    gdpPerCapitaTitle: "GDP Per Capita: USA vs G7 & Emerging Markets (2024)",
+    gdpPerCapitaTitle: "GDP Per Capita: USA vs G7 & Emerging Markets (2026)",
     gdpPerCapitaSubtitle:
-      "At $86,400 per person, Americans produce more wealth per capita than any major nation",
-    gdpPerCapitaValueLabel: "GDP per capita (2024, USD Thousands)",
+      "At $94,400 per person, Americans produce more wealth per capita than any major nation",
+    gdpPerCapitaValueLabel: "GDP per capita (2026, USD Thousands)",
     fullGdpAnalysis: "Full GDP Analysis →",
     capitalEyebrow: "Capital Markets",
     capitalTitle: "Wall Street Powers the World",
     capitalChartTitle: "S&P 500 Index — 45 Years of American Prosperity",
-    capitalChartSubtitle: "The world's most-watched equity index: 1980 → 2024",
+    capitalChartSubtitle: "The world's most-watched equity index: 1980 → 2026",
     marketCapLabel: "Combined NYSE + NASDAQ market cap",
     fullCapitalMarketsAnalysis: "Full Capital Markets Analysis →",
     vcEyebrow: "Venture Capital & Startups",
     vcTitle: "Silicon Valley Is a Planet",
-    vcChartTitle: "Venture Capital Investment by Country (2024)",
+    vcChartTitle: "Venture Capital Investment by Country (2026)",
     startupTimelineTitle: "American Companies That Rewired the World",
     foundedLabel: "Founded",
     companyLabel: "Company",
@@ -232,13 +232,13 @@ function getEconomyPageCopy(locale: Locale) {
     fullVcAnalysis: "Full Startups & VC Analysis →",
     dollarEyebrow: "Dollar Dominance",
     dollarTitle: "The World's Reserve Currency",
-    dollarChartTitle: "Global Foreign Exchange Reserves by Currency (2024)",
+    dollarChartTitle: "Global Foreign Exchange Reserves by Currency (2026)",
     dollarReserveCaption:
       "The dollar's reserve status confers the “exorbitant privilege” — the US can finance its deficits in its own currency at favorable global rates",
     fullDollarAnalysis: "Full Dollar Analysis →",
     tradeEyebrow: "Trade & Exports",
     tradeTitle: "America Powers Global Commerce",
-    tradeCategoriesTitle: "Top US Export Categories (2024, USD Billions)",
+    tradeCategoriesTitle: "Top US Export Categories (2026, USD Billions)",
     tradePercentOfTopCategory: "% of top category",
     fullTradeAnalysis: "Full Trade Analysis →",
     subPagesEyebrow: "Explore Deeper",
@@ -252,7 +252,7 @@ function getEconomyPageCopy(locale: Locale) {
     heroStats: [
       { value: "$32.4T", label: "GDP 2026", sub: "IMF Projection" },
       { value: "25%", label: "of World GDP", sub: "IMF" },
-      { value: "139", label: "Fortune 500 HQs", sub: "Fortune 2024" },
+      { value: "139", label: "Fortune 500 HQs", sub: "Fortune 2026" },
     ],
     tocItems: [
       { label: "Overview", href: "#overview" },
@@ -385,7 +385,7 @@ export default async function EconomyPage() {
                 data={GDP_COMPARISON}
                 title={copy.gdpChartTitle}
                 subtitle={copy.gdpChartSubtitle}
-                source="World Bank 2024"
+                source="World Bank 2026"
               />
             </div>
             <div className="flex flex-col">
@@ -400,7 +400,7 @@ export default async function EconomyPage() {
                 )}
                 title={copy.gdpPerCapitaTitle}
                 subtitle={copy.gdpPerCapitaSubtitle}
-                source="IMF World Economic Outlook 2024"
+                source="IMF World Economic Outlook 2026"
                 valueSuffix="K"
                 valueLabel={copy.gdpPerCapitaValueLabel}
               />
@@ -523,7 +523,7 @@ export default async function EconomyPage() {
             <VCBarChart
               data={VC_BY_COUNTRY}
               title={copy.vcChartTitle}
-              source="NVCA / Pitchbook 2024"
+              source="NVCA / Pitchbook 2026"
             />
           </div>
 
@@ -715,7 +715,7 @@ export default async function EconomyPage() {
                   ))}
                 </div>
                 <p className="mt-8 macro-metadata text-white/30 text-right">
-                  Source: US Census Bureau / BEA 2024
+                  Source: US Census Bureau / BEA 2026
                 </p>
               </div>
               

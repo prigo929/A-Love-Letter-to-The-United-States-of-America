@@ -228,11 +228,11 @@ export default async function StartupsVCPage() {
           heroBody:
             "Niciun colț al Pământului nu a produs mai multe companii transformatoare, mai mulți miliardari sau mai multă tehnologie care schimbă lumea pe kilometru pătrat. Ecosistemul american de startup-uri este o forță a naturii.",
           overviewTitle: "De ce America conduce lumea în capitalul pentru inovație",
-          vcChartTitle: "Investiții venture capital după țară (2023, miliarde USD)",
-          unicornTitle: "Economia unicornilor — 659+ și în creștere",
+          vcChartTitle: "Investiții venture capital după țară (2026, miliarde USD)",
+          unicornTitle: "Economia unicornilor — 1.172 și în creștere",
           unicornBody:
-            "Un «unicorn» — o companie privată evaluată la cel puțin 1 miliard de dolari — era cândva considerat o raritate mitologică. America a construit 659, reprezentând peste 52% din totalul global. Numai în California s-au născut mai mulți unicorni decât în toată Europa la un loc.",
-          unicornChartTitle: "Companii unicorn după țara de origine (2024)",
+            "Un «unicorn» — o companie privată evaluată la cel puțin 1 miliard de dolari — era cândva considerat o raritate mitologică. America a construit 1.172, reprezentând peste 65% din totalul global. Numai în California s-au născut mai mulți unicorni decât în toată Europa la un loc.",
+          unicornChartTitle: "Companii unicorn după țara de origine (2026)",
           rewiredTitle: "Companiile care au rescris civilizația umană",
           rewiredBody:
             "Cele mai importante companii ale erei digitale au fost fondate de americani — sau de imigranți veniți în America. Nu este o coincidență. Combinația dintre talentul de la Stanford și MIT, venture capitalul răbdător, protecția puternică a proprietății intelectuale și o cultură care celebrează ambiția a creat laboratorul perfect pentru inovații care schimbă lumea.",
@@ -263,11 +263,11 @@ export default async function StartupsVCPage() {
           heroBody:
             "No corner of Earth has produced more transformative companies, more billionaires, or more world-changing technology per square mile. America's startup ecosystem is a force of nature.",
           overviewTitle: "Why America Leads the World in Innovation Capital",
-          vcChartTitle: "Venture Capital Investment by Country (2023, USD Billions)",
-          unicornTitle: "The Unicorn Economy — 659+ and Counting",
+          vcChartTitle: "Venture Capital Investment by Country (2026, USD Billions)",
+          unicornTitle: "The Unicorn Economy — 1,172 and Counting",
           unicornBody:
-            'A "unicorn" — a private company valued at $1 billion or more — was once considered a mythological rarity. America has built 659 of them, representing over 52% of the global total. More unicorns have been born in California alone than in all of Europe combined.',
-          unicornChartTitle: "Unicorn Companies by Country of Origin (2024)",
+            'A "unicorn" — a private company valued at $1 billion or more — was once considered a mythological rarity. America has built 1,172 of them, representing over 65% of the global total. More unicorns have been born in California alone than in all of Europe combined.',
+          unicornChartTitle: "Unicorn Companies by Country of Origin (2026)",
           rewiredTitle: "The Companies That Rewired Human Civilization",
           rewiredBody:
             "The most consequential companies of the digital age were founded by Americans — or immigrants who came to America. This is not a coincidence. The combination of Stanford and MIT talent, patient venture capital, strong IP protection, and a culture that celebrates ambition created a perfect laboratory for world-changing innovation.",
@@ -336,7 +336,7 @@ export default async function StartupsVCPage() {
               <VCBarChart
                 data={VC_BY_COUNTRY}
                 title={copy.vcChartTitle}
-                source="NVCA / Pitchbook 2024"
+                source="NVCA / Pitchbook 2026"
               />
             </div>
           </section>
@@ -353,7 +353,7 @@ export default async function StartupsVCPage() {
               <UnicornPieChart
                 data={UNICORNS_BY_COUNTRY}
                 title={copy.unicornChartTitle}
-                source="Pitchbook 2024"
+                source="Pitchbook 2026"
               />
             </div>
           </section>
