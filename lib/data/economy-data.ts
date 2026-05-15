@@ -110,7 +110,7 @@ export interface FoundingTimeline {
 // ─── GDP Comparison Data ──────────────────────────────────────────────────────
 
 export const GDP_COMPARISON: GdpDataPoint[] = [
-  { country: "United States", gdp: 28.8, flag: "🇺🇸", highlight: true },
+  { country: "United States", gdp: 30.6, flag: "🇺🇸", highlight: true },
   { country: "China", gdp: 18.5, flag: "🇨🇳" },
   { country: "Germany", gdp: 4.5, flag: "🇩🇪" },
   { country: "Japan", gdp: 4.2, flag: "🇯🇵" },
@@ -122,8 +122,8 @@ export const GDP_COMPARISON: GdpDataPoint[] = [
 
 export const GDP_PER_CAPITA: GdpPerCapitaPoint[] = [
   // Values here are in thousands of USD per person.
-  // Example: 82.7 means roughly $82,700, not $82.7 trillion.
-  { country: "United States", gdpPerCapita: 82.7, flag: "🇺🇸", highlight: true },
+  // Example: 86.4 means roughly $86,400, not $86.4 trillion.
+  { country: "United States", gdpPerCapita: 86.4, flag: "🇺🇸", highlight: true },
   { country: "Germany", gdpPerCapita: 54.3, flag: "🇩🇪" },
   { country: "United Kingdom", gdpPerCapita: 46.5, flag: "🇬🇧" },
   { country: "France", gdpPerCapita: 45.0, flag: "🇫🇷" },
@@ -154,7 +154,7 @@ export const SP500_HISTORY: SP500DataPoint[] = [
   { year: 2022, value: 3840 },
   { year: 2023, value: 4742 },
   { year: 2024, value: 5460 },
-  { year: 2025, value: 6020 },
+  { year: 2025, value: 6100 },
 ];
 
 // ─── Venture Capital Data ─────────────────────────────────────────────────────
@@ -175,7 +175,7 @@ export const VC_BY_COUNTRY: VCDataPoint[] = [
 ];
 
 export const UNICORNS_BY_COUNTRY: UnicornDataPoint[] = [
-  { country: "United States", unicorns: 819, percentage: 53, highlight: true },
+  { country: "United States", unicorns: 896, percentage: 54, highlight: true },
   { country: "China", unicorns: 168, percentage: 13 },
   { country: "India", unicorns: 70, percentage: 5.5 },
   { country: "United Kingdom", unicorns: 52, percentage: 4 },
@@ -198,8 +198,8 @@ export const DOLLAR_RESERVE_SHARE: DollarReservePoint[] = [
 // ─── Stock Market Cap Data ────────────────────────────────────────────────────
 
 export const MARKET_CAP_BY_EXCHANGE: MarketCapPoint[] = [
-  { exchange: "NYSE", marketCap: 31.5, country: "🇺🇸 USA", highlight: true },
-  { exchange: "NASDAQ", marketCap: 28.5, country: "🇺🇸 USA", highlight: true },
+  { exchange: "NYSE", marketCap: 33.2, country: "🇺🇸 USA", highlight: true },
+  { exchange: "NASDAQ", marketCap: 37.8, country: "🇺🇸 USA", highlight: true },
   { exchange: "Shanghai", marketCap: 7.3, country: "🇨🇳 China" },
   { exchange: "Euronext", marketCap: 6.8, country: "🇪🇺 Europe" },
   { exchange: "Tokyo (JPX)", marketCap: 6.5, country: "🇯🇵 Japan" },
@@ -227,18 +227,18 @@ export const US_EXPORT_CATEGORIES: TradeDataPoint[] = [
 export const ECONOMY_HERO_STATS: EconomyStat[] = [
   {
     id: "gdp",
-    value: 28.8,
+    value: 30.6,
     suffix: "T",
     prefix: "$",
     decimals: 1,
-    label: "GDP (2024)",
+    label: "GDP (2025)",
     description: "Largest economy in human history",
-    source: "World Bank 2024",
+    source: "BEA 2025",
     color: "gold",
   },
   {
     id: "market-cap",
-    value: 69,
+    value: 71,
     suffix: "T",
     prefix: "$",
     label: "US Stock Markets",
@@ -554,12 +554,12 @@ export const STARTUP_TIMELINE: FoundingTimeline[] = [
 
 export const ECONOMY_OVERVIEW_PARAGRAPHS = [
   "The United States economy is the most powerful economic force in the history of human civilization — not by accident, not by geography alone, but by design. A constitutional system that protects private property, enforces contracts, and rewards individual initiative created the conditions for an explosion of wealth, productivity, and innovation unmatched in 5,000 years of recorded economic history.",
-  "At $28.8 trillion in 2024, the US economy is not merely the largest — it is categorically different from every other economy on Earth. It is simultaneously the world's largest consumer market, its most important financial hub, the leading destination for foreign direct investment, the dominant technology innovator, and the issuer of the global reserve currency. No other nation has ever held all five crowns at once.",
+  "At $30.6 trillion in 2025, the US economy is not merely the largest — it is categorically different from every other economy on Earth. It is simultaneously the world's largest consumer market, its most important financial hub, the leading destination for foreign direct investment, the dominant technology innovator, and the issuer of the global reserve currency. No other nation has ever held all five crowns at once.",
   "The numbers are staggering but the story behind them is even more remarkable: a system built on free markets, low barriers to entry, tolerance for creative destruction, and an immigration policy that has attracted the world's most ambitious people for 250 years. The American economy does not succeed despite capitalism — it succeeds because of it.",
 ];
 
 export const GDP_OVERVIEW_PARAGRAPHS = [
-  "Let the scale settle in: the United States economy produces $28.8 trillion in goods and services annually. That is more than the next three largest economies — China ($18.5T), Germany ($4.5T), and Japan ($4.2T) — combined. It represents approximately 25% of all global economic output generated by a country with just 4.2% of the world's population.",
+  "Let the scale settle in: the United States economy produces $30.6 trillion in goods and services annually. That is more than the next three largest economies — China ($18.5T), Germany ($4.5T), and Japan ($4.2T) — combined. It represents approximately 25% of all global economic output generated by a country with just 4.2% of the world's population.",
   "What makes this achievement even more extraordinary is its durability. The United States has been the world's largest economy for over 130 consecutive years — through the Great Depression, two World Wars, the Cold War, the financial crisis of 2008, and the COVID-19 pandemic. No other economy in modern history has demonstrated this combination of scale and resilience.",
 ];
 
@@ -616,11 +616,11 @@ export const ECONOMY_SUB_PAGES = [
     href: "/economy/gdp-growth",
     title: "GDP & Scale",
     description:
-      "The largest economy in human history — $28.8 trillion and counting",
+      "The largest economy in human history — $30.6 trillion and counting",
     imageSrc:
       SITE_IMAGES.economyGrowth,
     imageAlt: "New York City financial district skyline",
-    badge: "$28.8T",
+    badge: "$30.6T",
   },
   {
     href: "/economy/capital-markets",
@@ -667,7 +667,7 @@ export function getEconomyHeroStats(locale: Locale) {
     return [
       {
         ...ECONOMY_HERO_STATS[0],
-        label: "PIB (2024)",
+        label: "PIB (2025)",
         description: "Cea mai mare economie din istoria umană",
       },
       {
