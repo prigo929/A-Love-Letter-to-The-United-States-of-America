@@ -284,7 +284,7 @@ export default async function MilitaryPage() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-16">
             <div>
               <div className="mil-text-metadata mb-4">{locale === 'ro' ? 'VERIFICAT · SIPRI 2025' : 'VERIFIED · SIPRI 2025'}</div>
-              <h3 className="text-4xl font-black tracking-tight font-[family-name:var(--font-archivo)]">{locale === 'ro' ? 'COMPARAȚIE BUGET APĂRARE' : 'DEFENSE BUDGET COMPARISON'}</h3>
+              <h3 className="text-4xl font-black tracking-tight font-(family-name:--font-archivo)">{locale === 'ro' ? 'COMPARAȚIE BUGET APĂRARE' : 'DEFENSE BUDGET COMPARISON'}</h3>
             </div>
             <div className="mil-text-metadata opacity-80">◈ &nbsp; {locale === 'ro' ? 'S.U.A. CHELTUIESC MAI MULT DECÂT URMĂTOARELE ZECE NAȚIUNI COMBINATE' : 'U.S. OUTSPENDS THE NEXT TEN NATIONS COMBINED'}</div>
           </div>

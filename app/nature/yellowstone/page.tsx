@@ -174,7 +174,7 @@ export default async function YellowstonePage() {
             </h2>
             <div className="space-y-3 border-t border-white/4 pt-4">
               {hydrothermal.map((feature, i) => (
-                <div key={i} className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-20 border-b border-white/4 py-10 transition-colors hover:bg-white/[0.02] px-6">
+                <div key={i} className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-20 border-b border-white/4 py-10 transition-colors hover:bg-white/2 px-6">
                   <div className="shrink-0 text-left sm:w-1/3">
                     <div className="text-5xl md:text-6xl font-black tracking-tight text-white uppercase">
                       <CountUp 

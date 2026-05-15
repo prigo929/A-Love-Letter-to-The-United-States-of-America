@@ -173,7 +173,7 @@ export default async function AlaskaPage() {
                 </thead>
                 <tbody>
                   {ALASKA_WILDLIFE.map((item, i) => (
-                    <tr key={i} className="border-b border-white/4 last:border-0 hover:bg-white/[0.02] transition-colors">
+                    <tr key={i} className="border-b border-white/4 last:border-0 hover:bg-white/2 transition-colors">
                       <td className="py-5 text-base font-semibold text-white tracking-wide px-4">{item.animal}</td>
                       <td className="py-6 text-right font-black text-2xl tracking-tight px-4" style={{ color: 'var(--nat-accent-glacier)', fontFamily: 'var(--font-archivo)' }}>
                         <span className="tabular-nums">{isRo ? item.countRo : item.count}</span>
