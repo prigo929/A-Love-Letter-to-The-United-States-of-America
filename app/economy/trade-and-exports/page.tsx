@@ -325,7 +325,7 @@ export default async function TradeAndExportsPage() {
       ? {
           heroAlt: "Port de containere — motorul exporturilor americane",
           heroEyebrow: "Comerț și Exporturi",
-          heroLead: "AMERICA ALIMENTEAZĂ",
+          heroLead: "AMERICA SUSȚINE",
           heroAccent: "COMERȚUL GLOBAL",
           heroBody:
             "Avioane, semiconductori, produse farmaceutice, petrol, produse agricole și trilioane în software și servicii financiare. America nu doar face comerț — furnizează lumii cele mai avansate și valoroase bunuri ale ei.",

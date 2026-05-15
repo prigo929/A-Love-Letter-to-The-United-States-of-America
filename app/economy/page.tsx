@@ -153,7 +153,7 @@ function getEconomyPageCopy(locale: Locale) {
         "Statutul de monedă de rezervă oferă dolarului «privilegiul exorbitant» — SUA își pot finanța deficitele în propria monedă la costuri favorabile la nivel global",
       fullDollarAnalysis: "Analiza completă a dolarului →",
       tradeEyebrow: "Comerț și Exporturi",
-      tradeTitle: "America alimentează comerțul global",
+      tradeTitle: "America susține comerțul global",
       tradeCategoriesTitle:
         "Principalele categorii de export ale SUA (2026, miliarde USD)",
       tradePercentOfTopCategory: "% din categoria de top",
@@ -245,8 +245,8 @@ function getEconomyPageCopy(locale: Locale) {
     subPagesTitle: "Deep Dives",
     exploreCta: "Explore →",
     heroEyebrow: "Economy Section",
-    heroTitleLead: "THE ENGINE",
-    heroTitleAccent: "OF THE WORLD",
+    heroTitleLead: "THE\nENGINE",
+    heroTitleAccent: "OF THE\nWORLD",
     heroDescription:
       "The United States economy is the most powerful economic force in the history of human civilization — $32.4 trillion in annual output, the world's reserve currency, and the innovation capital of Earth.",
     heroStats: [
