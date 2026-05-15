@@ -5,13 +5,12 @@
 // Design language: defense-tech + aerospace + HUD + cinematic.
 // Color palette: matte black, deep navy, graphite, steel blue, amber HUD.
 
-import { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import {
   motion, AnimatePresence, useScroll, useTransform,
   useInView, useMotionValue, animate,
   LayoutGroup
 } from "framer-motion";
-import Lenis from "lenis";
 import Image from "next/image";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 import type { WeaponSystem, MilitaryBranch, DARPAProgram, MilitaryStat, CarrierGroupPosition } from "@/lib/data/military-data";
@@ -19,37 +18,7 @@ import { BUDGET_DATA as SHARED_BUDGET_DATA } from "@/lib/data/military-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import type { Locale } from "@/lib/i18n/config";
 
-// Shared Lenis instance for scroll locking across components
-let globalLenis: Lenis | null = null;
 
-export function SmoothScroll() {
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 0.8,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 1.0, 
-      touchMultiplier: 1.5,
-    });
-
-    globalLenis = lenis;
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-    return () => {
-      lenis.destroy();
-      globalLenis = null;
-    };
-  }, []);
-
-  return null;
-}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 1.5 MilCountUp — High-performance numerical animator
@@ -333,14 +302,11 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
   useEffect(() => {
     if (isExpanded) {
       document.body.style.overflow = 'hidden';
-      globalLenis?.stop();
     } else {
       document.body.style.overflow = '';
-      globalLenis?.start();
     }
     return () => { 
       document.body.style.overflow = ''; 
-      globalLenis?.start();
     };
   }, [isExpanded]);
 
@@ -590,14 +556,11 @@ export function DARPAProgramGrid({ programs, locale = 'en' }: { programs: DARPAP
   useEffect(() => {
     if (selectedId) {
       document.body.style.overflow = 'hidden';
-      globalLenis?.stop();
     } else {
       document.body.style.overflow = '';
-      globalLenis?.start();
     }
     return () => { 
       document.body.style.overflow = ''; 
-      globalLenis?.start();
     };
   }, [selectedId]);
 
