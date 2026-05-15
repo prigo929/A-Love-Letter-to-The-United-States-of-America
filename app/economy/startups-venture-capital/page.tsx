@@ -20,9 +20,16 @@ import {
   VC_BY_COUNTRY,
   UNICORNS_BY_COUNTRY,
   getVcFacts,
-  STARTUP_TIMELINE,
-  STARTUP_ECOSYSTEMS,
+  getStartupTimeline,
+  getStartupEcosystems,
+  getVcExtendedFacts,
+  getTopVcFirms,
   getVcOverviewParagraphs,
+  type EconomyFact,
+  type ExtendedFact,
+  type FoundingTimeline,
+  type StartupEcosystem,
+  type VcFirm,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -34,97 +41,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/economy/startups-venture-capital" },
 };
 
-const VC_EXTENDED_FACTS = [
-  // Extra facts used only on this page.
-  {
-    id: "vc-total",
-    fact: "US startups raised ~$210B in VC in 2025 — 65% of the global total",
-    detail:
-      "With just 4.2% of the world's population, America attracts nearly two-thirds of all venture capital deployed on Earth. No other country has come close in the modern era.",
-    source: "NVCA / Pitchbook 2026",
-    color: "gold" as const,
-  },
-  {
-    id: "vc-stanford",
-    fact: "Stanford alumni have founded companies worth $5 trillion+",
-    detail:
-      "Google (Brin & Page), NVIDIA (Jensen Huang), Netflix (Reed Hastings), Instagram (Mike Krieger), PayPal (Peter Thiel), Yahoo, Cisco, HP, Sun Microsystems — all Stanford.",
-    source: "Stanford University Alumni Relations 2026",
-    color: "red" as const,
-  },
-  {
-    id: "vc-ai",
-    fact: "US AI startups raised $85B in 2025 — 65% of global AI investment",
-    detail:
-      "OpenAI, Anthropic, Cohere, Mistral (partially US-funded), Inflection AI, Scale AI — the AI revolution is being financed almost entirely by American capital and talent.",
-    source: "Pitchbook AI Report 2026",
-    color: "blue" as const,
-  },
-  {
-    id: "vc-second-chance",
-    fact: "America's bankruptcy laws make failure survivable — a key innovation advantage",
-    detail:
-      "Chapter 11 bankruptcy protection allows American entrepreneurs to restructure and try again. This tolerance for failure — unique in the world — is a core driver of American startup culture.",
-    source: "World Bank Doing Business Report",
-    color: "gold" as const,
-  },
-  {
-    id: "vc-immigrants",
-    fact: "55% of billion-dollar US startup founders were immigrants or their children",
-    detail:
-      "Elon Musk (South Africa), Sergey Brin (Russia), Jensen Huang (Taiwan), Pierre Omidyar (France/Iran), Jerry Yang (Taiwan), Andy Grove (Hungary) — America builds greatness from everywhere.",
-    source: "NFAP 2022 / Forbes",
-    color: "red" as const,
-  },
-  {
-    id: "vc-returns",
-    fact: "The top 10 US VC returns have produced over $2 trillion in value from tiny investments",
-    detail:
-      "Sequoia's $60M investment in Google returned $12B. Benchmark's $13M in eBay became $2.5B. American venture capital is the greatest wealth-creation mechanism ever invented.",
-    source: "Forbes / Crunchbase",
-    color: "blue" as const,
-  },
-];
-
-const TOP_VC_FIRMS = [
-  // Local data for the VC firm cards further down the page.
-  {
-    name: "Sequoia Capital",
-    aum: "$85B+",
-    city: "Menlo Park, CA",
-    portfolio: "Apple, Google, WhatsApp, Instagram, Airbnb, Stripe",
-  },
-  {
-    name: "Andreessen Horowitz",
-    aum: "$35B+",
-    city: "San Francisco, CA",
-    portfolio: "Facebook, Twitter, Airbnb, Lyft, GitHub, Coinbase",
-  },
-  {
-    name: "Accel Partners",
-    aum: "$18B+",
-    city: "Palo Alto, CA",
-    portfolio: "Facebook, Dropbox, Slack, Spotify, CrowdStrike",
-  },
-  {
-    name: "Benchmark Capital",
-    aum: "$8B+",
-    city: "San Francisco, CA",
-    portfolio: "eBay, Twitter, Uber, Snapchat, WeWork, Yelp",
-  },
-  {
-    name: "Kleiner Perkins",
-    aum: "$12B+",
-    city: "Menlo Park, CA",
-    portfolio: "Amazon, Google, Genentech, Netscape, Twitter",
-  },
-  {
-    name: "Tiger Global",
-    aum: "$50B+",
-    city: "New York, NY",
-    portfolio: "Facebook (early), Spotify, Stripe, Bytedance, Nubank",
-  },
-];
 
 export default async function StartupsVCPage() {
   // This page follows the same pattern as the other economy pages:
@@ -136,88 +52,20 @@ export default async function StartupsVCPage() {
   const pageLabel = locale === "ro" ? "Startup-uri și VC" : "Startups & VC";
   const sharedFacts = getVcFacts(locale);
   const overviewParagraphs = getVcOverviewParagraphs(locale);
-  // Local facts extend the shared dataset with startup details that are unique
-  // to this page, such as Stanford, AI, and immigration examples.
-  const localFacts =
-    locale === "ro"
-      ? [
-          {
-            ...VC_EXTENDED_FACTS[0],
-            fact: "Startup-urile americane au atras aproximativ 210 mld. $ în 2025 — 65% din totalul global",
-            detail:
-              "Cu doar 4,2% din populația lumii, America atrage aproape două treimi din întreg venture capitalul investit pe Pământ. Nicio altă țară nu s-a apropiat în epoca modernă.",
-          },
-          {
-            ...VC_EXTENDED_FACTS[1],
-            fact: "Absolvenții Stanford au fondat companii evaluate la peste 5 trilioane de dolari",
-            detail:
-              "Google, NVIDIA, Netflix, Instagram, PayPal, Yahoo, Cisco, HP, Sun Microsystems — toate au legături puternice cu Stanford.",
-          },
-          {
-            ...VC_EXTENDED_FACTS[2],
-            fact: "Startup-urile americane de AI au atras 85 mld. $ în 2025 — 65% din investiția globală în AI",
-            detail:
-              "OpenAI, Anthropic, Inflection AI, Scale AI și multe altele — revoluția AI este finanțată în mod covârșitor de capital și talent american.",
-          },
-          {
-            ...VC_EXTENDED_FACTS[3],
-            fact: "Legile americane ale falimentului fac eșecul suportabil — un avantaj-cheie al inovației",
-            detail:
-              "Protecția Chapter 11 le permite antreprenorilor americani să se restructureze și să încerce din nou. Această toleranță față de eșec este un motor central al culturii startup-urilor americane.",
-          },
-          {
-            ...VC_EXTENDED_FACTS[4],
-            fact: "55% dintre fondatorii startup-urilor americane de un miliard de dolari au fost imigranți sau copiii lor",
-            detail:
-              "Elon Musk, Sergey Brin, Jensen Huang, Pierre Omidyar, Jerry Yang, Andy Grove — America construiește măreție din talent venit de pretutindeni.",
-          },
-          {
-            ...VC_EXTENDED_FACTS[5],
-            fact: "Primele 10 randamente VC din SUA au creat peste 2 trilioane de dolari valoare din investiții mici",
-            detail:
-              "Investiția Sequoia de 60M $ în Google a returnat 12B $. Cele 13M $ ale Benchmark în eBay au devenit 2,5B $. VC-ul american este cel mai puternic mecanism de creare de bogăție inventat vreodată.",
-          },
-        ]
-      : VC_EXTENDED_FACTS;
+  const localFacts = getVcExtendedFacts(locale);
+  const vcFirms = getTopVcFirms(locale);
+  const ecosystems = getStartupEcosystems(locale);
+  const timeline = getStartupTimeline(locale);
+
   // We intentionally filter a couple of shared facts here so the "by the
   // numbers" grid does not duplicate ideas already highlighted elsewhere.
   const byTheNumbersFacts = [
     ...sharedFacts.filter(
-      (fact) => fact.id !== "vc-share" && fact.id !== "immigrant-founders",
+      (fact: EconomyFact) => fact.id !== "vc-share" && fact.id !== "immigrant-founders",
     ),
     ...localFacts,
   ];
-  // The remaining arrays below are just content definitions for repeated card
-  // layouts farther down the page.
-  const vcFirms =
-    locale === "ro"
-      ? [
-          { ...TOP_VC_FIRMS[0], city: "Menlo Park, California" },
-          { ...TOP_VC_FIRMS[1], city: "San Francisco, California" },
-          { ...TOP_VC_FIRMS[2], city: "Palo Alto, California" },
-          { ...TOP_VC_FIRMS[3], city: "San Francisco, California" },
-          { ...TOP_VC_FIRMS[4], city: "Menlo Park, California" },
-          { ...TOP_VC_FIRMS[5], city: "New York, New York" },
-        ]
-      : TOP_VC_FIRMS;
-  const ecosystems =
-    locale === "ro"
-      ? STARTUP_ECOSYSTEMS.map((eco) => ({
-          ...eco,
-          nickname:
-            eco.nickname === "The VC Capital of Earth"
-              ? "Capitala VC a Pământului"
-              : eco.nickname === "Finance & Media Hub"
-                ? "Hub financiar și media"
-                : eco.nickname === "Biotech & DeepTech"
-                  ? "Biotech și deep tech"
-                  : eco.nickname === "Cloud & E-Commerce"
-                    ? "Cloud și e-commerce"
-                    : eco.nickname === "Silicon Hills"
-                      ? "Silicon Hills"
-                      : "Poarta către cripto și America Latină",
-        }))
-      : STARTUP_ECOSYSTEMS;
+
   const copy =
     locale === "ro"
       ? {
@@ -320,7 +168,7 @@ export default async function StartupsVCPage() {
             <h2 className="macro-section-title mb-12">
               {copy.overviewTitle}
             </h2>
-            {overviewParagraphs.map((para, i) => (
+            {overviewParagraphs.map((para: string, i: number) => (
               <p
                 key={i}
                 className="macro-body max-w-4xl mb-8"
@@ -367,8 +215,8 @@ export default async function StartupsVCPage() {
               {copy.rewiredBody}
             </p>
             
-            <div className="grid gap-8 mt-16 border-t border-white/5 pt-8">
-              {STARTUP_TIMELINE.map((item, i) => (
+            <div className="grid gap-8 mt-16">
+              {timeline.map((item: FoundingTimeline, i: number) => (
                 <div key={i} className="grid grid-cols-2 md:grid-cols-5 gap-4 border-b border-white/10 pb-8 items-center">
                   <div className="font-macro-display text-3xl text-[#E8B923]">{item.year}</div>
                   <div className="font-macro-display text-2xl text-white">{item.company}</div>
@@ -393,7 +241,7 @@ export default async function StartupsVCPage() {
               {copy.ecosystemsBody}
             </p>
             <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
-              {ecosystems.map((eco) => (
+              {ecosystems.map((eco: StartupEcosystem) => (
                 <div key={eco.city} className="flex flex-col border-t border-white/10 pt-8">
                   <p className="macro-eyebrow mb-6 text-[#E8B923]">
                     {eco.state}
@@ -441,7 +289,7 @@ export default async function StartupsVCPage() {
               {copy.firmsBody}
             </p>
             <div className="grid gap-12 md:grid-cols-2">
-              {vcFirms.map((firm) => (
+              {vcFirms.map((firm: VcFirm) => (
                 <div key={firm.name} className="flex flex-col border-t border-white/10 pt-8">
                   <div className="flex items-start justify-between mb-4">
                     <h3 className="font-macro-display text-4xl text-white">

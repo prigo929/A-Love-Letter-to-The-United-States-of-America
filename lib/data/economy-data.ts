@@ -63,6 +63,21 @@ export interface MarketCapPoint {
   highlight?: boolean;
 }
 
+export interface VcFirm {
+  name: string;
+  aum: string;
+  city: string;
+  portfolio: string;
+}
+
+export interface ExtendedFact {
+  id: string;
+  fact: string;
+  detail: string;
+  source: string;
+  color: "gold" | "red" | "blue";
+}
+
 export interface TradeDataPoint {
   category: string;
   exports: number; // USD Billions
@@ -455,6 +470,96 @@ export const STARTUP_ECOSYSTEMS: StartupEcosystem[] = [
   },
 ];
 
+export const TOP_VC_FIRMS: VcFirm[] = [
+  {
+    name: "Sequoia Capital",
+    aum: "$85B+",
+    city: "Menlo Park, CA",
+    portfolio: "Apple, Google, WhatsApp, Instagram, Airbnb, Stripe",
+  },
+  {
+    name: "Andreessen Horowitz",
+    aum: "$35B+",
+    city: "San Francisco, CA",
+    portfolio: "Facebook, Twitter, Airbnb, Lyft, GitHub, Coinbase",
+  },
+  {
+    name: "Accel Partners",
+    aum: "$18B+",
+    city: "Palo Alto, CA",
+    portfolio: "Facebook, Dropbox, Slack, Spotify, CrowdStrike",
+  },
+  {
+    name: "Benchmark Capital",
+    aum: "$8B+",
+    city: "San Francisco, CA",
+    portfolio: "eBay, Twitter, Uber, Snapchat, WeWork, Yelp",
+  },
+  {
+    name: "Kleiner Perkins",
+    aum: "$12B+",
+    city: "Menlo Park, CA",
+    portfolio: "Amazon, Google, Genentech, Netscape, Twitter",
+  },
+  {
+    name: "Tiger Global",
+    aum: "$50B+",
+    city: "New York, NY",
+    portfolio: "Facebook (early), Spotify, Stripe, Bytedance, Nubank",
+  },
+];
+
+export const VC_EXTENDED_FACTS: ExtendedFact[] = [
+  {
+    id: "vc-total",
+    fact: "US startups raised ~$210B in VC in 2025 — 65% of the global total",
+    detail:
+      "With just 4.2% of the world's population, America attracts nearly two-thirds of all venture capital deployed on Earth. No other country has come close in the modern era.",
+    source: "NVCA / Pitchbook 2026",
+    color: "gold",
+  },
+  {
+    id: "vc-stanford",
+    fact: "Stanford alumni have founded companies worth $5 trillion+",
+    detail:
+      "Google (Brin & Page), NVIDIA (Jensen Huang), Netflix (Reed Hastings), Instagram (Mike Krieger), PayPal (Peter Thiel), Yahoo, Cisco, HP, Sun Microsystems — all Stanford.",
+    source: "Stanford University Alumni Relations 2026",
+    color: "red",
+  },
+  {
+    id: "vc-ai",
+    fact: "US AI startups raised $85B in 2025 — 65% of global AI investment",
+    detail:
+      "OpenAI, Anthropic, Cohere, Mistral (partially US-funded), Inflection AI, Scale AI — the AI revolution is being financed almost entirely by American capital and talent.",
+    source: "Pitchbook AI Report 2026",
+    color: "blue",
+  },
+  {
+    id: "vc-second-chance",
+    fact: "America's bankruptcy laws make failure survivable — a key innovation advantage",
+    detail:
+      "Chapter 11 bankruptcy protection allows American entrepreneurs to restructure and try again. This tolerance for failure — unique in the world — is a core driver of American startup culture.",
+    source: "World Bank Doing Business Report",
+    color: "gold",
+  },
+  {
+    id: "vc-immigrants",
+    fact: "55% of billion-dollar US startup founders were immigrants or their children",
+    detail:
+      "Elon Musk (South Africa), Sergey Brin (Russia), Jensen Huang (Taiwan), Pierre Omidyar (France/Iran), Jerry Yang (Taiwan), Andy Grove (Hungary) — America builds greatness from everywhere.",
+    source: "NFAP 2022 / Forbes",
+    color: "red",
+  },
+  {
+    id: "vc-returns",
+    fact: "The top 10 US VC returns have produced over $2 trillion in value from tiny investments",
+    detail:
+      "Sequoia's $60M investment in Google returned $12B. Benchmark's $13M in eBay became $2.5B. American venture capital is the greatest wealth-creation mechanism ever invented.",
+    source: "Forbes / Crunchbase",
+    color: "blue",
+  },
+];
+
 // ─── Founding Timeline ────────────────────────────────────────────────────────
 
 export const STARTUP_TIMELINE: FoundingTimeline[] = [
@@ -757,15 +862,15 @@ export function getVcFacts(locale: Locale) {
     return [
       {
         ...VC_FACTS[0],
-        fact: "America atrage aproximativ 47% din toate investițiile globale de VC",
+        fact: "America atrage aproximativ 65% din toate investițiile globale de VC",
         detail:
-          "În 2023, startup-urile din SUA au atras aproximativ 170 de miliarde de dolari în venture capital — aproape jumătate din tot VC-ul investit pe Pământ, deși SUA au doar 4% din populația lumii.",
+          "În 2025, startup-urile din SUA au atras aproximativ 210 miliarde de dolari în venture capital — aproape două treimi din tot VC-ul investit pe Pământ, deși SUA au doar 4% din populația lumii.",
       },
       {
         ...VC_FACTS[1],
-        fact: "659+ unicorni americani — peste 52% din totalul global",
+        fact: "1.172 unicorni americani — peste 65% din totalul global",
         detail:
-          'Un "unicorn" este o companie privată evaluată la cel puțin 1 miliard de dolari. America a construit mai multe astfel de companii decât toate celelalte națiuni la un loc.',
+          'Un "unicorn" este o companie privată evaluată la cel puțin 1 miliard de dolari. America a construit mai mulți astfel de companii decât toate celelalte națiuni la un loc.',
       },
       {
         ...VC_FACTS[2],
@@ -844,7 +949,7 @@ export function getVcOverviewParagraphs(locale: Locale) {
   if (locale === "ro") {
     return [
       "Silicon Valley nu este doar un loc — este o filosofie făcută realitate. Ecosistemul de venture capital centrat în zona golfului San Francisco, cu sateliți în New York, Boston, Seattle, Austin și Miami, direcționează mai mult capital răbdător și dispus la risc către inovația aflată la început de drum decât restul lumii la un loc.",
-      "Cifrele sunt uimitoare: startup-urile americane au atras aproximativ 170 de miliarde de dolari în venture capital în 2023 — aproape jumătate din tot VC-ul investit global. Rezultatul? 659 de companii unicorn, adică 52% din întreg ecosistemul global. De la iPhone la Google Search și ChatGPT, instrumentele care definesc civilizația modernă s-au născut aici.",
+      "Cifrele sunt uimitoare: startup-urile americane au atras aproximativ 210 miliarde de dolari în venture capital în 2025 — aproape 65% din tot VC-ul investit global. Rezultatul? 1.172 de companii unicorn, adică 65% din întreg ecosistemul global. De la iPhone la Google Search și ChatGPT, instrumentele care definesc civilizația modernă s-au născut aici.",
     ];
   }
 
@@ -936,4 +1041,112 @@ export function getEconomySubPages(locale: Locale) {
   }
 
   return ECONOMY_SUB_PAGES;
+}
+
+export function getStartupEcosystems(locale: Locale) {
+  if (locale === "ro") {
+    return STARTUP_ECOSYSTEMS.map((eco) => ({
+      ...eco,
+      city: eco.city === "New York City" ? "New York" : eco.city,
+      state: eco.state === "New York" ? "New York" : eco.state,
+      nickname: eco.nickname.includes("Capital of Earth")
+        ? "Capitala VC a Pământului"
+        : eco.nickname.includes("Finance & Media")
+          ? "Hub financiar și media"
+          : eco.nickname.includes("Biotech")
+            ? "Biotech și deep tech"
+            : eco.nickname.includes("Cloud")
+              ? "Cloud și e-commerce"
+              : eco.nickname.includes("Silicon Hills")
+                ? "Silicon Hills"
+                : eco.nickname.includes("Crypto")
+                  ? "Poarta către cripto și America Latină"
+                  : eco.nickname,
+      vcFunding: eco.vcFunding
+        .replace("$", "")
+        .replace("B+", " mld. $ +")
+        .replace("annually", "anual"),
+    }));
+  }
+  return STARTUP_ECOSYSTEMS;
+}
+
+export function getStartupTimeline(locale: Locale) {
+  if (locale === "ro") {
+    return STARTUP_TIMELINE.map((item) => ({
+      ...item,
+      currentValuation: item.currentValuation
+        .replace("T", " trilioane $")
+        .replace("B", " mld. $")
+        .replace("$", ""),
+      industry: item.industry
+        .replace("Software", "Software")
+        .replace("Consumer Tech", "Tehnologie de consum")
+        .replace("AI / Semiconductors", "IA / Semiconductori")
+        .replace("E-Commerce / Cloud", "E-commerce / Cloud")
+        .replace("Search / AI", "Căutare / IA")
+        .replace("Space", "Spațiu")
+        .replace("EVs", "Vehicule electrice")
+        .replace("Social Media", "Social media")
+        .replace("Travel", "Turism")
+        .replace("Mobility", "Mobilitate")
+        .replace("AI", "IA"),
+    }));
+  }
+  return STARTUP_TIMELINE;
+}
+
+export function getTopVcFirms(locale: Locale) {
+  if (locale === "ro") {
+    return TOP_VC_FIRMS.map((firm) => ({
+      ...firm,
+      city: firm.city.replace(", CA", ", California").replace(", NY", ", New York"),
+      aum: firm.aum.replace("$", "").replace("B+", " mld. $ +"),
+    }));
+  }
+  return TOP_VC_FIRMS;
+}
+
+export function getVcExtendedFacts(locale: Locale) {
+  if (locale === "ro") {
+    return [
+      {
+        ...VC_EXTENDED_FACTS[0],
+        fact: "Startup-urile americane au atras aproximativ 210 mld. $ în 2025 — 65% din totalul global",
+        detail:
+          "Cu doar 4,2% din populația lumii, America atrage aproape două treimi din întreg venture capitalul investit pe Pământ. Nicio altă țară nu s-a apropiat în epoca modernă.",
+      },
+      {
+        ...VC_EXTENDED_FACTS[1],
+        fact: "Absolvenții Stanford au fondat companii evaluate la peste 5 trilioane de dolari",
+        detail:
+          "Google, NVIDIA, Netflix, Instagram, PayPal, Yahoo, Cisco, HP, Sun Microsystems — toate au legături puternice cu Stanford.",
+      },
+      {
+        ...VC_EXTENDED_FACTS[2],
+        fact: "Startup-urile americane de AI au atras 85 mld. $ în 2025 — 65% din investiția globală în AI",
+        detail:
+          "OpenAI, Anthropic, Inflection AI, Scale AI și multe altele — revoluția IA este finanțată în mod covârșitor de capital și talent american.",
+      },
+      {
+        ...VC_EXTENDED_FACTS[3],
+        fact: "Legile americane ale falimentului fac eșecul suportabil — un avantaj-cheie al inovației",
+        detail:
+          "Capitolul 11 din legea falimentului permite antreprenorilor americani să se restructureze și să încerce din nou. Această toleranță pentru eșec este un motor de bază al culturii startup.",
+      },
+      {
+        ...VC_EXTENDED_FACTS[4],
+        fact: "55% dintre fondatorii de startup-uri americane de un miliard de dolari au fost imigranți",
+        detail:
+          "Elon Musk, Sergey Brin, Jensen Huang, Pierre Omidyar, Jerry Yang, Andy Grove — America construiește măreție cu talent de pretutindeni.",
+      },
+      {
+        ...VC_EXTENDED_FACTS[5],
+        fact: "Cele mai bune 10 randamente de VC din SUA au produs peste 2 trilioane $ din investiții minuscule",
+        detail:
+          "Investiția de 60 mil. $ a Sequoia în Google a returnat 12 mld. $. Cele 13 mil. $ ale Benchmark în eBay au devenit 2,5 mld. $. Venture capitalul american este cel mai mare mecanism de creare de avere.",
+      },
+    ];
+  }
+  return VC_EXTENDED_FACTS;
 }
