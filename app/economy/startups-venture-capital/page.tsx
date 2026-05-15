@@ -30,7 +30,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Startups & Venture Capital | Economy",
   description:
-    "America attracts 47% of all global venture capital. 659+ unicorn companies. Silicon Valley, the greatest engine of innovation and wealth creation in history.",
+    "America attracts 65% of all global venture capital. 1,172 unicorn companies. Silicon Valley, the greatest engine of innovation and wealth creation in history.",
   alternates: { canonical: "/economy/startups-venture-capital" },
 };
 
@@ -38,26 +38,26 @@ const VC_EXTENDED_FACTS = [
   // Extra facts used only on this page.
   {
     id: "vc-total",
-    fact: "US startups raised ~$170B in VC in 2023 — 47% of the global total",
+    fact: "US startups raised ~$210B in VC in 2025 — 65% of the global total",
     detail:
-      "With just 4.2% of the world's population, America attracts nearly half of all venture capital deployed on Earth. No other country has come close in the modern era.",
-    source: "NVCA / Pitchbook 2024",
+      "With just 4.2% of the world's population, America attracts nearly two-thirds of all venture capital deployed on Earth. No other country has come close in the modern era.",
+    source: "NVCA / Pitchbook 2026",
     color: "gold" as const,
   },
   {
     id: "vc-stanford",
-    fact: "Stanford alumni have founded companies worth $3.5 trillion+",
+    fact: "Stanford alumni have founded companies worth $5 trillion+",
     detail:
       "Google (Brin & Page), NVIDIA (Jensen Huang), Netflix (Reed Hastings), Instagram (Mike Krieger), PayPal (Peter Thiel), Yahoo, Cisco, HP, Sun Microsystems — all Stanford.",
-    source: "Stanford University Alumni Relations 2024",
+    source: "Stanford University Alumni Relations 2026",
     color: "red" as const,
   },
   {
     id: "vc-ai",
-    fact: "US AI startups raised $67B in 2023 — 65% of global AI investment",
+    fact: "US AI startups raised $85B in 2025 — 65% of global AI investment",
     detail:
       "OpenAI, Anthropic, Cohere, Mistral (partially US-funded), Inflection AI, Scale AI — the AI revolution is being financed almost entirely by American capital and talent.",
-    source: "Pitchbook AI Report 2024",
+    source: "Pitchbook AI Report 2026",
     color: "blue" as const,
   },
   {
@@ -143,19 +143,19 @@ export default async function StartupsVCPage() {
       ? [
           {
             ...VC_EXTENDED_FACTS[0],
-            fact: "Startup-urile americane au atras aproximativ 170 mld. $ în 2023 — 47% din totalul global",
+            fact: "Startup-urile americane au atras aproximativ 210 mld. $ în 2025 — 65% din totalul global",
             detail:
-              "Cu doar 4,2% din populația lumii, America atrage aproape jumătate din întreg venture capitalul investit pe Pământ. Nicio altă țară nu s-a apropiat în epoca modernă.",
+              "Cu doar 4,2% din populația lumii, America atrage aproape două treimi din întreg venture capitalul investit pe Pământ. Nicio altă țară nu s-a apropiat în epoca modernă.",
           },
           {
             ...VC_EXTENDED_FACTS[1],
-            fact: "Absolvenții Stanford au fondat companii evaluate la peste 3,5 trilioane de dolari",
+            fact: "Absolvenții Stanford au fondat companii evaluate la peste 5 trilioane de dolari",
             detail:
               "Google, NVIDIA, Netflix, Instagram, PayPal, Yahoo, Cisco, HP, Sun Microsystems — toate au legături puternice cu Stanford.",
           },
           {
             ...VC_EXTENDED_FACTS[2],
-            fact: "Startup-urile americane de AI au atras 67 mld. $ în 2023 — 65% din investiția globală în AI",
+            fact: "Startup-urile americane de AI au atras 85 mld. $ în 2025 — 65% din investiția globală în AI",
             detail:
               "OpenAI, Anthropic, Inflection AI, Scale AI și multe altele — revoluția AI este finanțată în mod covârșitor de capital și talent american.",
           },

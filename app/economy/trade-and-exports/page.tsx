@@ -47,7 +47,7 @@ const TRADE_FACTS = [
     fact: "US merchandise exports exceed $2 trillion annually",
     detail:
       "Aircraft from Boeing, semiconductors from Intel and Qualcomm, medical devices from Medtronic, petrochemical products from ExxonMobil — America exports the most complex and high-value goods on Earth.",
-    source: "US Census Bureau / BEA 2024",
+    source: "US Census Bureau / BEA 2026",
     color: "gold" as const,
   },
   {
@@ -55,7 +55,7 @@ const TRADE_FACTS = [
     fact: "US services exports exceed $1 trillion — the world's largest",
     detail:
       "Financial services from Goldman Sachs and JPMorgan, software from Microsoft and Salesforce, education from Harvard and MIT, entertainment from Hollywood — America's service exports are the envy of the world.",
-    source: "BEA / USTR 2024",
+    source: "BEA / USTR 2026",
     color: "red" as const,
   },
   {
@@ -63,7 +63,7 @@ const TRADE_FACTS = [
     fact: "America dominates aerospace exports — Boeing sells to 150+ countries",
     detail:
       "The aerospace and defense sector alone generates $132B+ in annual exports. Every major airline on Earth flies American-built engines, aircraft, or avionics. There is no peer competitor in commercial aerospace.",
-    source: "Aerospace Industries Association 2024",
+    source: "Aerospace Industries Association 2026",
     color: "blue" as const,
   },
   {
@@ -71,7 +71,7 @@ const TRADE_FACTS = [
     fact: "America feeds the world — $58B+ in annual agricultural exports",
     detail:
       "The US is the world's largest exporter of soybeans, corn, cotton, and almonds, and among the top exporters of wheat, poultry, and pork. American farmers grow food that reaches every corner of the globe.",
-    source: "USDA Foreign Agricultural Service 2024",
+    source: "USDA Foreign Agricultural Service 2026",
     color: "gold" as const,
   },
   {
@@ -79,7 +79,7 @@ const TRADE_FACTS = [
     fact: "American pharmaceutical exports save lives on every continent",
     detail:
       "Pfizer, Merck, Eli Lilly, Johnson & Johnson — US pharmaceutical exports exceed $63 billion annually. COVID mRNA vaccines alone were a $50B+ export event. American biotech is a global public good.",
-    source: "PhRMA / BEA 2024",
+    source: "PhRMA / BEA 2026",
     color: "red" as const,
   },
   {
@@ -87,7 +87,7 @@ const TRADE_FACTS = [
     fact: "US software and intellectual property exports: $200B+ annually",
     detail:
       "Microsoft Windows, Adobe Creative Suite, Salesforce CRM, AWS cloud services, Apple App Store — American software is the invisible infrastructure of the global economy, generating hundreds of billions in annual export value.",
-    source: "BEA Intellectual Property Products 2024",
+    source: "BEA Intellectual Property Products 2026",
     color: "blue" as const,
   },
 ];
@@ -330,11 +330,11 @@ export default async function TradeAndExportsPage() {
           heroBody:
             "Avioane, semiconductori, produse farmaceutice, petrol, produse agricole și trilioane în software și servicii financiare. America nu doar face comerț — furnizează lumii cele mai avansate și valoroase bunuri ale ei.",
           overviewTitle: "Mașina de export a Americii",
-          exportTitle: "Principalele categorii de export ale SUA (2024)",
+          exportTitle: "Principalele categorii de export ale SUA (2026)",
           exportBody:
             "Spre deosebire de țările în curs de dezvoltare care exportă materii prime, Statele Unite exportă cele mai sofisticate produse cu marjă mare din lume — avioane, microcipuri, dispozitive medicale și produse farmaceutice. Sunt produse care cer decenii și miliarde în cercetare și dezvoltare, consolidând poziția Americii în vârful lanțului valoric global.",
           topCategorySuffix: "% din categoria de top",
-          exportSource: "Sursă: US Census Bureau / Bureau of Economic Analysis 2024",
+          exportSource: "Sursă: US Census Bureau / Bureau of Economic Analysis 2026",
           partnersTitle: "Principalii parteneri comerciali ai Americii",
           partnersBody:
             "Comerțul total al SUA (bunuri + servicii) depășește anual 6 trilioane de dolari. Cele mai mari relații comerciale se întind pe tot globul — de la Canada și Mexic în cadrul USMCA până la centrele tehnologice și de producție ale Asiei.",
@@ -364,11 +364,11 @@ export default async function TradeAndExportsPage() {
           heroBody:
             "Aircraft, semiconductors, pharmaceuticals, petroleum, agricultural products, and trillions in software and financial services. America doesn't just trade — it supplies the world with its most advanced and high-value goods.",
           overviewTitle: "America's Export Machine",
-          exportTitle: "Top US Export Categories (2024)",
+          exportTitle: "Top US Export Categories (2026)",
           exportBody:
             "Unlike developing nations that export raw commodities, the United States exports the world's most sophisticated, highest-margin goods — aircraft, microchips, medical devices, and pharmaceuticals. These are products that take decades and billions in R&D to develop, cementing America's position at the top of the global value chain.",
           topCategorySuffix: "% of top category",
-          exportSource: "Source: US Census Bureau / Bureau of Economic Analysis 2024",
+          exportSource: "Source: US Census Bureau / Bureau of Economic Analysis 2026",
           partnersTitle: "America's Top Trading Partners",
           partnersBody:
             "US total trade (goods + services) exceeds $6 trillion annually. The largest trading relationships span the entire globe — from Canada and Mexico under USMCA to Asia's technology and manufacturing hubs.",
