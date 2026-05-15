@@ -386,7 +386,7 @@ export const DOLLAR_FACTS: EconomyFact[] = [
 
 export const STARTUP_ECOSYSTEMS: StartupEcosystem[] = [
   {
-    city: "San Francisco / Silicon Valley",
+    city: "Silicon Valley",
     state: "California",
     nickname: "The VC Capital of Earth",
     unicorns: 200,

@@ -26,10 +26,9 @@ import {
 } from "lucide-react";
 
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
-import { SectionWrapper } from "@/components/sections/SectionWrapper";
-import { StatCard } from "@/components/sections/StatCard";
-import { FactCard } from "@/components/sections/FactCard";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand } from "@/components/economy/EconomyAnimations";
 
 // ── Chart components (client) ────────────────────────────────────────────────
 import { GdpBarChart } from "@/components/data/GdpBarChart";
@@ -115,8 +114,8 @@ function getEconomyPageCopy(locale: Locale) {
       quickStatLabel: "PIB SUA 2024",
       quickStatSubLabel: "~25% din PIB-ul mondial",
       breadcrumb: "Economie",
-      overviewEyebrow: "Faza 3 — Analiză în profunzime",
-      overviewTitle: "Motorul lumii",
+      overviewEyebrow: "Analiză în profunzime",
+      overviewTitle: "Scară fără precedent",
       gdpEyebrow: "PIB și Dimensiune",
       gdpTitle: "25% din tot ce există pe Pământ",
       gdpChartTitle: "PIB: Statele Unite vs economiile majore (2024)",
@@ -159,10 +158,10 @@ function getEconomyPageCopy(locale: Locale) {
         "Principalele categorii de export ale SUA (2024, miliarde USD)",
       tradePercentOfTopCategory: "% din categoria de top",
       fullTradeAnalysis: "Analiza completă a comerțului →",
-      subPagesEyebrow: "Explorează în profunzime",
-      subPagesTitle: "Analize detaliate",
+      subPagesEyebrow: "Explorați Mai Departe",
+      subPagesTitle: "Analize aprofundate",
       exploreCta: "Explorează →",
-      heroEyebrow: "Faza 3 — Secțiunea economie",
+      heroEyebrow: "Secțiunea Economie",
       heroTitleLead: "MOTORUL",
       heroTitleAccent: "LUMII",
       heroDescription:
@@ -200,8 +199,8 @@ function getEconomyPageCopy(locale: Locale) {
     quickStatLabel: "US GDP 2024",
     quickStatSubLabel: "~25% of world GDP",
     breadcrumb: "Economy",
-    overviewEyebrow: "Phase 3 — Deep Dive",
-    overviewTitle: "The Engine of the World",
+    overviewEyebrow: "Deep Dive",
+    overviewTitle: "Unprecedented Scale",
     gdpEyebrow: "GDP & Scale",
     gdpTitle: "25% of Everything on Earth",
     gdpChartTitle: "GDP: United States vs Major Economies (2024)",
@@ -245,7 +244,7 @@ function getEconomyPageCopy(locale: Locale) {
     subPagesEyebrow: "Explore Deeper",
     subPagesTitle: "Deep Dives",
     exploreCta: "Explore →",
-    heroEyebrow: "Phase 3 — Economy Section",
+    heroEyebrow: "Economy Section",
     heroTitleLead: "THE ENGINE",
     heroTitleAccent: "OF THE WORLD",
     heroDescription:
@@ -306,394 +305,297 @@ export default async function EconomyPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ── Economy Hero (Visual Hook) ──────────────────────────────────── */}
-      <EconomyHero copy={copy} />
+      <MacroStyles />
+      <MacroHero 
+        imageSrc={SITE_IMAGES.economyNyseHero}
+        imageAlt="New York Stock Exchange trading floor"
+        eyebrow={copy.heroEyebrow}
+        titleLead={copy.heroTitleLead}
+        titleAccent={copy.heroTitleAccent}
+        description={copy.heroDescription}
+        stats={copy.heroStats}
+      />
 
-      {/* ── Desktop layout: sticky TOC sidebar + main content ─────────────── */}
-      <div className="relative bg-navy-dark">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="lg:grid lg:grid-cols-[220px_1fr] lg:gap-12 xl:grid-cols-[260px_1fr]">
-            {/* Sticky TOC — desktop only */}
-            <aside className="hidden lg:block">
-              <div className="sticky top-24 py-16">
-                {/* These links jump to ids further down this same page. */}
-                <p className="mb-4 font-body text-xs font-semibold uppercase tracking-widest text-glory-gold">
-                  {copy.tocLabel}
+      {/* ── Main Content — Full-width Macro-Editorial Flow ─────────────── */}
+      <main className="relative bg-[#030405] pb-32">
+        {/* Breadcrumb */}
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12 py-12">
+          <Breadcrumb items={[{ label: copy.breadcrumb }]} />
+        </div>
+
+        {/* ── Section 1: Overview ─────────────────────────────────── */}
+        <section id="overview" className="mb-48 mx-auto max-w-[1600px] px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-8">
+              <p className="macro-eyebrow mb-8">{copy.overviewEyebrow}</p>
+              <h2 className="macro-section-title mb-12">
+                {copy.overviewTitle}
+              </h2>
+
+              {economyOverviewParagraphs.map((para, i) => (
+                <p key={i} className="macro-body mb-8 max-w-4xl">
+                  {para}
                 </p>
-                <nav aria-label={copy.tocAriaLabel}>
-                  <ul className="space-y-1">
-                    {copy.tocItems.map((item) => (
-                      <li key={item.href}>
-                        <a
-                          href={item.href}
-                          className="block rounded-lg px-3 py-2 font-body text-sm text-white/50 transition-colors hover:bg-white/5 hover:text-white"
-                        >
-                          {item.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
+              ))}
+            </div>
+          </div>
 
-                {/* Quick stat box */}
-                <div className="mt-10 rounded-2xl border border-glory-gold/20 bg-glory-gold/5 p-4">
-                  <p className="font-hero text-4xl text-glory-gold">$28.8T</p>
-                  <p className="mt-1 font-body text-xs text-white/50">
-                    {copy.quickStatLabel}
-                  </p>
-                  <p className="mt-2 font-body text-xs text-glory-gold">
-                    {copy.quickStatSubLabel}
-                  </p>
-                </div>
-              </div>
-            </aside>
-
-            {/* Main content */}
-            <main className="min-w-0 py-16">
-              {/* Breadcrumb shows where this page sits in the site structure. */}
-              <Breadcrumb items={[{ label: copy.breadcrumb }]} className="mb-8" />
-
-              {/* ── Section 1: Overview ─────────────────────────────────── */}
-              <section id="overview" className="mb-20 scroll-mt-24">
-                <p className="section-eyebrow">{copy.overviewEyebrow}</p>
-                <h1 className="mb-6 font-display text-h1 text-white">
-                  {copy.overviewTitle}
-                </h1>
-
-                {economyOverviewParagraphs.map((para, i) => (
-                  <p
-                    key={i}
-                    className="mb-5 font-body text-lg leading-relaxed text-white/70"
-                  >
-                    {para}
-                  </p>
-                ))}
-
-                {/* Hero stat cards */}
-                <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                  {economyHeroStats.map((stat) => (
-                    <StatCard
-                      key={stat.id}
-                      value={stat.value}
-                      prefix={stat.prefix}
-                      suffix={stat.suffix}
-                      decimals={stat.decimals}
-                      label={stat.label}
-                      description={stat.description}
-                      source={stat.source}
-                      variant={stat.color === "gold" ? "gold" : "dark"}
-                    />
-                  ))}
-                </div>
-              </section>
-
-              {/* ── Section 2: GDP & Scale ──────────────────────────────── */}
-              <section id="gdp" className="mb-20 scroll-mt-24">
-                <div className="mb-8 border-l-4 border-glory-gold pl-5">
-                  <p className="section-eyebrow">{copy.gdpEyebrow}</p>
-                  <h2 className="font-display text-h2 text-white">
-                    {copy.gdpTitle}
-                  </h2>
-                </div>
-
-                {gdpOverviewParagraphs.map((para, i) => (
-                  <p
-                    key={i}
-                    className="mb-5 font-body text-lg leading-relaxed text-white/70"
-                  >
-                    {para}
-                  </p>
-                ))}
-
-                {/* GDP Comparison Chart */}
-                <div className="my-10 rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
-                  <GdpBarChart
-                    data={GDP_COMPARISON}
-                    title={copy.gdpChartTitle}
-                    subtitle={copy.gdpChartSubtitle}
-                    source="World Bank 2024"
+          {/* Hero stat cards - Replaced with MacroStat */}
+          <div className="mt-24 grid gap-16 sm:grid-cols-2 xl:grid-cols-4 border-t border-white/5 pt-16">
+            {economyHeroStats.map((stat) => (
+              <MacroStat
+                key={stat.id}
+                value={
+                  <AnimatedCounter
+                    value={stat.value}
+                    prefix={stat.prefix}
+                    suffix={stat.suffix}
+                    decimals={stat.decimals}
                   />
-                </div>
-
-                {/* GDP Per Capita Chart
-                    The data numbers are stored in thousands, so the chart uses
-                    valueSuffix="K" to display values like 82.7K = $82,700. */}
-                <div className="mb-10 rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
-                  <GdpBarChart
-                    data={GDP_PER_CAPITA.map(
-                      (d): GdpDataPoint => ({
-                        country: d.country,
-                        gdp: d.gdpPerCapita,
-                        flag: d.flag,
-                        highlight: d.highlight,
-                      }),
-                    )}
-                    title={copy.gdpPerCapitaTitle}
-                    subtitle={copy.gdpPerCapitaSubtitle}
-                    source="IMF World Economic Outlook 2024"
-                    valueSuffix="K"
-                    valueLabel={copy.gdpPerCapitaValueLabel}
-                  />
-                </div>
-
-                {/* GDP Fact Cards */}
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {gdpFacts.map((fact) => (
-                    <FactCard
-                      key={fact.id}
-                      fact={fact.fact}
-                      detail={fact.detail}
-                      source={fact.source}
-                      color={fact.color}
-                      variant="dark"
-                    />
-                  ))}
-                </div>
-
-                <div className="mt-8 flex justify-end">
-                  <Link
-                    href="/economy/gdp-growth"
-                    className="inline-flex items-center gap-2 font-body text-sm font-semibold text-glory-gold hover:text-glory-gold-dark transition-colors"
-                  >
-                    {copy.fullGdpAnalysis}
-                  </Link>
-                </div>
-              </section>
-
-              {/* ── Pull Quote 1 ────────────────────────────────────────── */}
-              <QuoteBlock
-                quote={economyQuotes[0].quote}
-                attribution={economyQuotes[0].attribution}
-                title={economyQuotes[0].title}
-                variant="dark"
+                }
+                label={stat.label}
+                source={stat.source}
+                color={stat.color === "gold" ? "#E8B923" : "#F0F2F5"}
               />
+            ))}
+          </div>
+        </section>
 
-              {/* ── Section 3: Capital Markets ──────────────────────────── */}
-              <section id="capital-markets" className="mb-20 scroll-mt-24">
-                <div className="mb-8 border-l-4 border-glory-red pl-5">
-                  <p className="section-eyebrow">{copy.capitalEyebrow}</p>
-                  <h2 className="font-display text-h2 text-white">
-                    {copy.capitalTitle}
-                  </h2>
-                </div>
+        {/* ── Section 2: GDP & Scale ──────────────────────────────── */}
+        <section id="gdp" className="mb-48 mx-auto max-w-[1600px] px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-8">
+              <p className="macro-eyebrow mb-8 text-[#E8B923]">{copy.gdpEyebrow}</p>
+              <h2 className="macro-section-title mb-12">
+                {copy.gdpTitle}
+              </h2>
 
-                {capitalMarketsParagraphs.map((para, i) => (
-                  <p
-                    key={i}
-                    className="mb-5 font-body text-lg leading-relaxed text-white/70"
-                  >
-                    {para}
-                  </p>
+              {gdpOverviewParagraphs.map((para, i) => (
+                <p key={i} className="macro-body mb-8 max-w-4xl">
+                  {para}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          {/* GDP Charts - Borderless */}
+          <div className="my-24 grid grid-cols-1 xl:grid-cols-2 gap-16">
+            <div className="flex flex-col">
+              <GdpBarChart
+                data={GDP_COMPARISON}
+                title={copy.gdpChartTitle}
+                subtitle={copy.gdpChartSubtitle}
+                source="World Bank 2024"
+              />
+            </div>
+            <div className="flex flex-col">
+              <GdpBarChart
+                data={GDP_PER_CAPITA.map(
+                  (d): GdpDataPoint => ({
+                    country: d.country,
+                    gdp: d.gdpPerCapita,
+                    flag: d.flag,
+                    highlight: d.highlight,
+                  }),
+                )}
+                title={copy.gdpPerCapitaTitle}
+                subtitle={copy.gdpPerCapitaSubtitle}
+                source="IMF World Economic Outlook 2024"
+                valueSuffix="K"
+                valueLabel={copy.gdpPerCapitaValueLabel}
+              />
+            </div>
+          </div>
+
+          {/* GDP Facts - Replaced with MacroFact */}
+          <div className="grid gap-16 sm:grid-cols-2 mt-24 border-t border-white/5 pt-16">
+            {gdpFacts.map((fact, i) => (
+              <MacroFact
+                key={fact.id}
+                index={i + 1}
+                fact={fact.fact}
+                detail={fact.detail}
+              />
+            ))}
+          </div>
+
+          <div className="mt-16">
+            <Link
+              href="/economy/gdp-growth"
+              className="inline-flex items-center gap-4 font-macro-mono text-sm uppercase tracking-[0.2em] text-[#E8B923] hover:text-white transition-colors"
+            >
+              {copy.fullGdpAnalysis}
+            </Link>
+          </div>
+        </section>
+
+        {/* ── Pull Quote 1 ────────────────────────────────────────── */}
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12 my-32 border-t border-white/5 pt-32">
+          <QuoteBlock
+            quote={economyQuotes[0].quote}
+            attribution={economyQuotes[0].attribution}
+            title={economyQuotes[0].title}
+            variant="dark"
+          />
+        </div>
+
+        {/* ── Section 3: Capital Markets ──────────────────────────── */}
+        <section id="capital-markets" className="mb-48 mx-auto max-w-[1600px] px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-8">
+              <p className="macro-eyebrow mb-8 text-[#b22234]">{copy.capitalEyebrow}</p>
+              <h2 className="macro-section-title mb-12">
+                {copy.capitalTitle}
+              </h2>
+
+              {capitalMarketsParagraphs.map((para, i) => (
+                <p key={i} className="macro-body mb-8 max-w-4xl">
+                  {para}
+                </p>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Cinematic Infrastructure Band for Capital Markets */}
+        <InfrastructureBand 
+          imageSrc={SITE_IMAGES.economyNYSEUpsideDown} 
+          imageAlt="Stock market trading screens"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="macro-hero-title text-[#E8B923] mb-4">$47T+</p>
+              <p className="macro-metadata text-white/70">
+                {copy.marketCapLabel}
+              </p>
+              <div className="mt-16 grid gap-12">
+                {capitalFacts.map((fact, i) => (
+                  <MacroFact
+                    key={fact.id}
+                    index={i + 1}
+                    fact={fact.fact}
+                    detail={fact.detail}
+                  />
                 ))}
+              </div>
+            </div>
+            
+            {/* S&P 500 Chart - Borderless on top of cinematic blur */}
+            <div className="bg-[#030405]/50 backdrop-blur-md p-8 border border-white/10">
+              <SP500Chart
+                data={SP500_HISTORY}
+                title={copy.capitalChartTitle}
+                subtitle={copy.capitalChartSubtitle}
+                source="S&P Global / Yahoo Finance"
+              />
+            </div>
+          </div>
+        </InfrastructureBand>
 
-                {/* S&P 500 Chart */}
-                <div className="my-10 rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
-                  <SP500Chart
-                    data={SP500_HISTORY}
-                    title={copy.capitalChartTitle}
-                    subtitle={copy.capitalChartSubtitle}
-                    source="S&P Global / Yahoo Finance"
-                  />
-                </div>
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12 mt-16 mb-48">
+          <Link
+            href="/economy/capital-markets"
+            className="inline-flex items-center gap-4 font-macro-mono text-sm uppercase tracking-[0.2em] text-[#b22234] hover:text-white transition-colors"
+          >
+            {copy.fullCapitalMarketsAnalysis}
+          </Link>
+        </div>
 
-                {/* Capital Markets image */}
-                <div className="relative mb-10 overflow-hidden rounded-2xl">
-                  <Image
-                    src={SITE_IMAGES.economyNYSEUpsideDown}
-                    alt="Stock market trading screens — the heartbeat of global capital"
-                    width={1200}
-                    height={500}
-                    className="h-[300px] w-full object-cover md:h-[400px]"
-                    placeholder="blur"
-                    blurDataURL={BLUR_PLACEHOLDER}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 1000px"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-rrom-navy-dark/80 to-transparent" />
-                  <div className="absolute bottom-6 left-6">
-                    <p className="font-hero text-5xl text-glory-gold">$47T+</p>
-                    <p className="font-body text-sm text-white/70">
-                      {copy.marketCapLabel}
-                    </p>
+        {/* ── Section 4: Venture Capital & Startups ──────────────── */}
+        <section id="venture-capital" className="mb-48 mx-auto max-w-[1600px] px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-8">
+              <p className="macro-eyebrow mb-8 text-[#E8B923]">{copy.vcEyebrow}</p>
+              <h2 className="macro-section-title mb-12">
+                {copy.vcTitle}
+              </h2>
+
+              {vcOverviewParagraphs.map((para, i) => (
+                <p key={i} className="macro-body mb-8 max-w-4xl">
+                  {para}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          {/* VC Chart - Borderless */}
+          <div className="my-24">
+            <VCBarChart
+              data={VC_BY_COUNTRY}
+              title={copy.vcChartTitle}
+              source="NVCA / Pitchbook 2024"
+            />
+          </div>
+
+          {/* VC Facts - Replaced with MacroFact */}
+          <div className="grid gap-16 sm:grid-cols-3 mt-24 border-t border-white/5 pt-16">
+            {vcFacts.map((fact, i) => (
+              <MacroFact
+                key={fact.id}
+                index={i + 1}
+                fact={fact.fact}
+                detail={fact.detail}
+              />
+            ))}
+          </div>
+
+          {/* Startup Timeline - Borderless typographic table */}
+          <div className="mt-32">
+            <h3 className="macro-section-title text-[clamp(24px,4vw,60px)] mb-16">
+              {copy.startupTimelineTitle}
+            </h3>
+            <div className="grid gap-8">
+              {STARTUP_TIMELINE.map((item, i) => (
+                <div key={i} className="grid grid-cols-2 md:grid-cols-5 gap-4 border-b border-white/10 pb-8 items-center">
+                  <div className="font-macro-display text-3xl text-[#E8B923]">{item.year}</div>
+                  <div className="font-macro-display text-2xl text-white">{item.company}</div>
+                  <div className="font-macro-body text-white/60">{item.founder}</div>
+                  <div>
+                    <span className="macro-metadata border border-white/20 px-3 py-1 text-white">{item.industry}</span>
                   </div>
+                  <div className="font-macro-mono text-xl text-white text-right">{item.currentValuation}</div>
                 </div>
+              ))}
+            </div>
+          </div>
 
-                {/* Capital Markets Facts */}
-                <div className="grid gap-4 sm:grid-cols-3">
-                  {capitalFacts.map((fact) => (
-                    <FactCard
-                      key={fact.id}
-                      fact={fact.fact}
-                      detail={fact.detail}
-                      source={fact.source}
-                      color={fact.color}
-                      variant="dark"
-                    />
-                  ))}
-                </div>
-
-                <div className="mt-8 flex justify-end">
-                  <Link
-                    href="/economy/capital-markets"
-                    className="inline-flex items-center gap-2 font-body text-sm font-semibold text-glory-gold hover:text-glory-gold-dark transition-colors"
-                  >
-                    {copy.fullCapitalMarketsAnalysis}
-                  </Link>
-                </div>
-              </section>
-
-              {/* ── Section 4: Venture Capital & Startups ──────────────── */}
-              <section id="venture-capital" className="mb-20 scroll-mt-24">
-                <div className="mb-8 border-l-4 border-glory-gold pl-5">
-                  <p className="section-eyebrow">{copy.vcEyebrow}</p>
-                  <h2 className="font-display text-h2 text-white">
-                    {copy.vcTitle}
-                  </h2>
-                </div>
-
-                {vcOverviewParagraphs.map((para, i) => (
-                  <p
-                    key={i}
-                    className="mb-5 font-body text-lg leading-relaxed text-white/70"
-                  >
-                    {para}
-                  </p>
-                ))}
-
-                {/* VC Chart */}
-                <div className="my-10 rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
-                  <VCBarChart
-                    data={VC_BY_COUNTRY}
-                    title={copy.vcChartTitle}
-                    source="NVCA / Pitchbook 2024"
-                  />
-                </div>
-
-                {/* VC Facts */}
-                <div className="mb-10 grid gap-4 sm:grid-cols-3">
-                  {vcFacts.map((fact) => (
-                    <FactCard
-                      key={fact.id}
-                      fact={fact.fact}
-                      detail={fact.detail}
-                      source={fact.source}
-                      color={fact.color}
-                      variant="dark"
-                    />
-                  ))}
-                </div>
-
-                {/* Startup Timeline */}
-                <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
-                  <h3 className="mb-6 font-display text-xl text-white">
-                    {copy.startupTimelineTitle}
-                  </h3>
-                  <div className="overflow-x-auto">
-                    <table className="w-full min-w-[600px]">
-                      <thead>
-                        <tr className="border-b border-white/10">
-                          <th className="pb-3 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                            {copy.foundedLabel}
-                          </th>
-                          <th className="pb-3 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                            {copy.companyLabel}
-                          </th>
-                          <th className="pb-3 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                            {copy.foundersLabel}
-                          </th>
-                          <th className="pb-3 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                            {copy.industryLabel}
-                          </th>
-                          <th className="pb-3 text-right font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                            {copy.valuationLabel}
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {STARTUP_TIMELINE.map((item, i) => (
-                          <tr
-                            key={i}
-                            className="border-b border-white/5 transition-colors hover:bg-white/3"
-                          >
-                            <td className="py-3.5 font-hero text-lg text-glory-gold">
-                              {item.year}
-                            </td>
-                            <td className="py-3.5 font-body text-sm font-semibold text-white">
-                              {item.company}
-                            </td>
-                            <td className="py-3.5 font-body text-sm text-white/55">
-                              {item.founder}
-                            </td>
-                            <td className="py-3.5">
-                              <span className="rounded-full bg-glory-blue/30 px-2.5 py-0.5 font-body text-xs text-white/70">
-                                {item.industry}
-                              </span>
-                            </td>
-                            <td className="py-3.5 text-right font-hero text-base text-glory-gold">
-                              {item.currentValuation}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+          {/* Startup Ecosystems */}
+          <div className="mt-32">
+            <h3 className="macro-section-title text-[clamp(24px,4vw,60px)] mb-16">
+              {copy.startupEcosystemsTitle}
+            </h3>
+            <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+              {STARTUP_ECOSYSTEMS.map((eco) => (
+                <div key={eco.city} className="flex flex-col border-t border-[#E8B923]/30 pt-8">
+                  <p className="macro-eyebrow mb-2">{eco.state}</p>
+                  <h4 className="font-macro-display text-4xl text-white mb-2">{eco.city}</h4>
+                  <p className="font-macro-body text-white/50 mb-8">{eco.nickname}</p>
+                  
+                  <div className="flex gap-8 mb-6">
+                    <div>
+                      <p className="font-macro-display text-4xl text-[#E8B923]">{eco.unicorns}+</p>
+                      <p className="macro-metadata">{copy.unicornsLabel}</p>
+                    </div>
+                    <div>
+                      <p className="font-macro-display text-4xl text-white">{eco.vcFunding}</p>
+                      <p className="macro-metadata">{copy.annualVcLabel}</p>
+                    </div>
                   </div>
+                  <p className="macro-metadata text-white/30">{eco.keyCompanies.join(" · ")}</p>
                 </div>
+              ))}
+            </div>
+          </div>
 
-                {/* Startup Ecosystems */}
-                <div className="mt-10">
-                  <h3 className="mb-6 font-display text-xl text-white">
-                    {copy.startupEcosystemsTitle}
-                  </h3>
-                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {STARTUP_ECOSYSTEMS.map((eco) => (
-                      <div
-                        key={eco.city}
-                        className="rounded-2xl border border-white/10 bg-navy-mid p-5 transition-colors hover:border-glory-gold/30"
-                      >
-                        <p className="mb-1 font-body text-xs font-semibold uppercase tracking-widest text-glory-gold">
-                          {eco.state}
-                        </p>
-                        <h4 className="mb-1 font-display text-lg font-semibold text-white">
-                          {eco.city}
-                        </h4>
-                        <p className="mb-3 font-body text-sm text-white/50">
-                          {eco.nickname}
-                        </p>
-                        <div className="mb-3 flex gap-4 border-t border-white/8 pt-3">
-                          <div>
-                            <p className="font-hero text-2xl text-glory-gold">
-                              {eco.unicorns}+
-                            </p>
-                            <p className="font-body text-xs text-white/40">
-                              {copy.unicornsLabel}
-                            </p>
-                          </div>
-                          <div>
-                            <p className="font-hero text-2xl text-white">
-                              {eco.vcFunding}
-                            </p>
-                            <p className="font-body text-xs text-white/40">
-                              {copy.annualVcLabel}
-                            </p>
-                          </div>
-                        </div>
-                        <p className="font-body text-xs text-white/40">
-                          {eco.keyCompanies.join(" · ")}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mt-8 flex justify-end">
-                  <Link
-                    href="/economy/startups-venture-capital"
-                    className="inline-flex items-center gap-2 font-body text-sm font-semibold text-glory-gold hover:text-glory-gold-dark transition-colors"
-                  >
-                    {copy.fullVcAnalysis}
-                  </Link>
-                </div>
-              </section>
+          <div className="mt-16">
+            <Link
+              href="/economy/startups-venture-capital"
+              className="inline-flex items-center gap-4 font-macro-mono text-sm uppercase tracking-[0.2em] text-[#E8B923] hover:text-white transition-colors"
+            >
+              {copy.fullVcAnalysis}
+            </Link>
+          </div>
+        </section>
 
               {/* ── Pull Quote 2 ────────────────────────────────────────── */}
               <QuoteBlock
@@ -703,127 +605,108 @@ export default async function EconomyPage() {
                 variant="dark"
               />
 
-              {/* ── Section 5: Dollar Dominance ─────────────────────────── */}
-              <section id="dollar" className="mb-20 scroll-mt-24">
-                <div className="mb-8 border-l-4 border-glory-blue-light pl-5">
-                  <p className="section-eyebrow">{copy.dollarEyebrow}</p>
-                  <h2 className="font-display text-h2 text-white">
-                    {copy.dollarTitle}
-                  </h2>
-                </div>
+        {/* ── Section 5: Dollar Dominance ─────────────────────────── */}
+        <section id="dollar" className="mb-48 mx-auto max-w-[1600px] px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-8">
+              <p className="macro-eyebrow mb-8 text-[#3c3b6e]">{copy.dollarEyebrow}</p>
+              <h2 className="macro-section-title mb-12">
+                {copy.dollarTitle}
+              </h2>
 
-                {dollarOverviewParagraphs.map((para, i) => (
-                  <p
-                    key={i}
-                    className="mb-5 font-body text-lg leading-relaxed text-white/70"
-                  >
-                    {para}
-                  </p>
-                ))}
+              {dollarOverviewParagraphs.map((para, i) => (
+                <p key={i} className="macro-body mb-8 max-w-4xl">
+                  {para}
+                </p>
+              ))}
+            </div>
+          </div>
 
-                {/* Dollar Reserve Chart */}
-                <div className="my-10 rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
-                  <DollarReserveChart
-                    data={DOLLAR_RESERVE_SHARE}
-                    title={copy.dollarChartTitle}
-                    source="IMF COFER Q4 2023"
-                  />
-                </div>
+          <div className="my-24 bg-[#030405]/50 backdrop-blur-md p-8 border border-white/10">
+            <DollarReserveChart
+              data={DOLLAR_RESERVE_SHARE}
+              title={copy.dollarChartTitle}
+              source="IMF COFER Q4 2023"
+            />
+          </div>
 
-                {/* Dollar image */}
-                <div className="relative mb-10 overflow-hidden rounded-2xl">
-                  <Image
-                    src={SITE_IMAGES.economyDollar}
-                    alt="US dollar bills — the world's reserve currency"
-                    width={1200}
-                    height={400}
-                    className="h-[250px] w-full object-cover md:h-[320px]"
-                    placeholder="blur"
-                    blurDataURL={BLUR_PLACEHOLDER}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 1000px"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-navy-dark via-navy-dark/40 to-transparent" />
-                  <div className="absolute bottom-6 left-0 right-0 px-6">
-                    <p className="font-body text-center text-sm text-white/70">
-                      {copy.dollarReserveCaption}
-                    </p>
-                  </div>
-                </div>
+          {/* Dollar image - Cinematic */}
+          <div className="relative mb-24 overflow-hidden h-[400px]">
+            <Image
+              src={SITE_IMAGES.economyDollar}
+              alt="US dollar bills — the world's reserve currency"
+              fill
+              className="object-cover macro-edge-fade opacity-70 grayscale-[0.2]"
+              sizes="100vw"
+              placeholder="blur"
+              blurDataURL={BLUR_PLACEHOLDER}
+            />
+            <div className="absolute bottom-6 left-0 right-0 px-6">
+              <p className="macro-metadata text-center text-white/50">
+                {copy.dollarReserveCaption}
+              </p>
+            </div>
+          </div>
 
-                {/* Dollar Facts */}
-                <div className="grid gap-4 sm:grid-cols-3">
-                  {dollarFacts.map((fact) => (
-                    <FactCard
-                      key={fact.id}
-                      fact={fact.fact}
-                      detail={fact.detail}
-                      source={fact.source}
-                      color={fact.color}
-                      variant="dark"
-                    />
-                  ))}
-                </div>
+          <div className="grid gap-16 sm:grid-cols-3 mt-24 border-t border-white/5 pt-16">
+            {dollarFacts.map((fact, i) => (
+              <MacroFact
+                key={fact.id}
+                index={i + 1}
+                fact={fact.fact}
+                detail={fact.detail}
+              />
+            ))}
+          </div>
 
-                <div className="mt-8 flex justify-end">
-                  <Link
-                    href="/economy/dollar-dominance"
-                    className="inline-flex items-center gap-2 font-body text-sm font-semibold text-glory-gold hover:text-glory-gold-dark transition-colors"
-                  >
-                    {copy.fullDollarAnalysis}
-                  </Link>
-                </div>
-              </section>
+          <div className="mt-16">
+            <Link
+              href="/economy/dollar-dominance"
+              className="inline-flex items-center gap-4 font-macro-mono text-sm uppercase tracking-[0.2em] text-[#3c3b6e] hover:text-white transition-colors"
+            >
+              {copy.fullDollarAnalysis}
+            </Link>
+          </div>
+        </section>
 
-              {/* ── Section 6: Trade & Exports ──────────────────────────── */}
-              <section id="trade" className="mb-20 scroll-mt-24">
-                <div className="mb-8 border-l-4 border-glory-red pl-5">
-                  <p className="section-eyebrow">{copy.tradeEyebrow}</p>
-                  <h2 className="font-display text-h2 text-white">
-                    {copy.tradeTitle}
-                  </h2>
-                </div>
+        {/* ── Section 6: Trade & Exports ──────────────────────────── */}
+        <section id="trade" className="mb-48 mx-auto max-w-[1600px] px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-8">
+              <p className="macro-eyebrow mb-8 text-[#b22234]">{copy.tradeEyebrow}</p>
+              <h2 className="macro-section-title mb-12">
+                {copy.tradeTitle}
+              </h2>
 
-                {tradeOverviewParagraphs.map((para, i) => (
-                  <p
-                    key={i}
-                    className="mb-5 font-body text-lg leading-relaxed text-white/70"
-                  >
-                    {para}
-                  </p>
-                ))}
+              {tradeOverviewParagraphs.map((para, i) => (
+                <p key={i} className="macro-body mb-8 max-w-4xl">
+                  {para}
+                </p>
+              ))}
+            </div>
+          </div>
 
-                {/* Trade visual */}
-                <div className="my-10 overflow-hidden rounded-2xl">
-                  <Image
-                    src={SITE_IMAGES.economyPort}
-                    alt="Container port — America's export machine"
-                    width={1200}
-                    height={450}
-                    className="h-[280px] w-full object-cover md:h-[380px]"
-                    placeholder="blur"
-                    blurDataURL={BLUR_PLACEHOLDER}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 1000px"
-                    loading="lazy"
-                  />
-                </div>
-
-                {/* Top export categories */}
-                <h3 className="mb-5 font-display text-xl text-white">
+          <InfrastructureBand 
+            imageSrc={SITE_IMAGES.economyPort} 
+            imageAlt="Container port — America's export machine"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h3 className="font-macro-display text-4xl text-white mb-12">
                   {copy.tradeCategoriesTitle}
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-6">
                   {copy.tradeCategories.map((item) => (
-                    <div key={item.label} className="flex items-center gap-4">
-                      <p className="w-44 shrink-0 font-body text-sm text-white/70 sm:w-52">
+                    <div key={item.label} className="flex items-center gap-6">
+                      <p className="w-48 shrink-0 font-macro-mono text-xs uppercase tracking-widest text-white/70">
                         {item.label}
                       </p>
-                      <div className="relative flex-1 overflow-hidden rounded-full bg-white/8 h-8">
+                      <div className="relative flex-1 bg-white/5 h-12">
                         <div
-                          className="absolute inset-y-0 left-0 flex items-center rounded-full bg-glory-gold/80 px-3"
+                          className="absolute inset-y-0 left-0 bg-[#b22234]/80 flex items-center px-4"
                           style={{ width: `${item.pct}%` }}
                         >
-                          <span className="font-hero text-sm text-navy-dark">
+                          <span className="font-macro-display text-xl text-white">
                             ${item.value}B
                           </span>
                         </div>
@@ -831,84 +714,78 @@ export default async function EconomyPage() {
                     </div>
                   ))}
                 </div>
-
-                <p className="mt-4 text-right font-body text-xs text-white/30">
+                <p className="mt-8 macro-metadata text-white/30 text-right">
                   Source: US Census Bureau / BEA 2024
                 </p>
-
-                <div className="mt-8 flex justify-end">
-                  <Link
-                    href="/economy/trade-and-exports"
-                    className="inline-flex items-center gap-2 font-body text-sm font-semibold text-glory-gold hover:text-glory-gold-dark transition-colors"
-                  >
-                    {copy.fullTradeAnalysis}
-                  </Link>
+              </div>
+              
+              <div className="grid gap-12">
+                <div className="mx-auto px-6">
+                  <QuoteBlock
+                    quote={economyQuotes[2].quote}
+                    attribution={economyQuotes[2].attribution}
+                    title={economyQuotes[2].title}
+                    variant="dark"
+                  />
                 </div>
-              </section>
+              </div>
+            </div>
+          </InfrastructureBand>
 
-              {/* ── Pull Quote 3 ────────────────────────────────────────── */}
-              <QuoteBlock
-                quote={economyQuotes[2].quote}
-                attribution={economyQuotes[2].attribution}
-                title={economyQuotes[2].title}
-                variant="dark"
-              />
-
-              {/* ── Section 7: Sub-Page Navigation ──────────────────────── */}
-              <section id="sub-pages" className="mb-8 scroll-mt-24">
-                <p className="section-eyebrow">{copy.subPagesEyebrow}</p>
-                <h2 className="mb-8 font-display text-h2 text-white">
-                  {copy.subPagesTitle}
-                </h2>
-
-                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {economySubPages.map((page) => (
-                    <Link
-                      key={page.href}
-                      href={page.href}
-                      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-navy-mid transition-all duration-300 hover:border-glory-gold/40 hover:shadow-[0_0_30px_rgba(255,215,0,0.1)]"
-                    >
-                      {/* Image */}
-                      <div className="relative h-44 overflow-hidden">
-                        <Image
-                          src={page.imageSrc}
-                          alt={page.imageAlt}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          placeholder="blur"
-                          blurDataURL={BLUR_PLACEHOLDER}
-                          loading="lazy"
-                          quality={75}
-                        />
-                        <div className="absolute inset-0 bg-linear-to-t from-navy-mid via-navy-mid/30 to-transparent" />
-
-                        {/* Badge */}
-                        <span className="absolute right-3 top-3 rounded-full bg-glory-gold px-3 py-1 font-body text-xs font-bold text-navy-dark">
-                          {page.badge}
-                        </span>
-                      </div>
-
-                      {/* Content */}
-                      <div className="p-5">
-                        <h3 className="mb-1.5 font-display text-lg font-semibold text-white transition-colors group-hover:text-glory-gold">
-                          {page.title}
-                        </h3>
-                        <p className="font-body text-sm leading-relaxed text-white/55">
-                          {page.description}
-                        </p>
-                        <p className="mt-4 font-body text-xs font-semibold text-glory-gold">
-                          {copy.exploreCta}
-                        </p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </section>
-            </main>
+          <div className="mt-16">
+            <Link
+              href="/economy/trade-and-exports"
+              className="inline-flex items-center gap-4 font-macro-mono text-sm uppercase tracking-[0.2em] text-[#b22234] hover:text-white transition-colors"
+            >
+              {copy.fullTradeAnalysis}
+            </Link>
           </div>
-        </div>
-      </div>
+        </section>
+
+        {/* ── Section 7: Sub-Page Navigation ──────────────────────── */}
+        <section id="sub-pages" className="mb-8 mx-auto max-w-[1600px] px-6 md:px-12 border-t border-white/10 pt-32">
+          <p className="macro-eyebrow mb-8 text-[#E8B923]">{copy.subPagesEyebrow}</p>
+          <h2 className="macro-section-title mb-16">
+            {copy.subPagesTitle}
+          </h2>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {economySubPages.map((page) => (
+              <Link
+                key={page.href}
+                href={page.href}
+                className="group flex flex-col border border-white/10 hover:border-[#E8B923]/40 transition-colors bg-white/5"
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src={page.imageSrc}
+                    alt={page.imageAlt}
+                    fill
+                    className="object-cover opacity-60 grayscale-[0.2] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    placeholder="blur"
+                    blurDataURL={BLUR_PLACEHOLDER}
+                  />
+                  <span className="absolute right-4 top-4 bg-[#E8B923] text-[#030405] font-macro-mono text-[10px] uppercase tracking-widest px-3 py-1 font-bold">
+                    {page.badge}
+                  </span>
+                </div>
+                <div className="p-8">
+                  <h3 className="font-macro-display text-3xl font-bold text-white mb-4 group-hover:text-[#E8B923] transition-colors">
+                    {page.title}
+                  </h3>
+                  <p className="font-macro-body text-white/50 text-base mb-8">
+                    {page.description}
+                  </p>
+                  <p className="macro-metadata text-[#E8B923]">
+                    {copy.exploreCta}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </main>
     </>
   );
 }
@@ -916,66 +793,4 @@ export default async function EconomyPage() {
 // ─── Economy Hero ─────────────────────────────────────────────────────────────
 // Extracted as a local server component to keep the page clean.
 
-function EconomyHero({
-  copy,
-}: {
-  copy: ReturnType<typeof getEconomyPageCopy>;
-}) {
-  return (
-    <section
-      className="relative flex min-h-[80vh] items-end bg-navy-dark pb-16 pt-32"
-      aria-label="Economy hero"
-    >
-      {/* Background image */}
-      <Image
-        src={SITE_IMAGES.economyNyseHero}
-        alt="New York Stock Exchange trading floor"
-        fill
-        className="object-cover"
-        priority
-        sizes="100vw"
-        placeholder="blur"
-        blurDataURL={BLUR_PLACEHOLDER}
-        quality={85}
-      />
 
-      {/* Layered overlays */}
-      <div className="absolute inset-0 bg-linear-to-r from-navy-dark via-navy-dark/85 to-navy-dark/50" />
-      <div className="absolute inset-0 bg-linear-to-t from-navy-dark via-transparent to-transparent" />
-
-      {/* Red/blue stripe accent at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-glory-gradient" />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <p className="mb-4 font-body text-sm font-semibold uppercase tracking-[0.3em] text-glory-gold">
-            {copy.heroEyebrow}
-          </p>
-
-          <h1 className="mb-6 font-hero text-6xl leading-none tracking-wide text-white sm:text-7xl md:text-8xl">
-            {copy.heroTitleLead}
-            <br />
-            <span className="text-glory-gold">{copy.heroTitleAccent}</span>
-          </h1>
-
-          <p className="mb-8 font-body text-lg leading-relaxed text-white/70 md:text-xl">
-            {copy.heroDescription}
-          </p>
-
-          {/* Three hero stats */}
-          <div className="flex flex-wrap gap-6">
-            {copy.heroStats.map((stat) => (
-              <div key={stat.value} className="text-center">
-                <p className="font-hero text-4xl text-glory-gold md:text-5xl">
-                  {stat.value}
-                </p>
-                <p className="font-body text-sm text-white/70">{stat.label}</p>
-                <p className="font-body text-xs text-white/35">{stat.sub}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}

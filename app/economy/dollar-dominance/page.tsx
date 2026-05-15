@@ -12,9 +12,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
-import { FactCard } from "@/components/sections/FactCard";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { DollarReserveChart } from "@/components/data/DollarMarketCharts";
+import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
   DOLLAR_RESERVE_SHARE,
@@ -292,80 +292,47 @@ export default async function DollarDominancePage() {
 
   return (
     <>
-      {/* Hero */}
-      <div className="relative bg-navy-dark pt-28 pb-16">
-        <Image
-          src={SITE_IMAGES.economyDollar}
-          alt={copy.heroAlt}
-          fill
-          className="object-cover opacity-25"
-          priority
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL={BLUR_PLACEHOLDER}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/90 to-navy-dark" />
-        <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <MacroStyles />
+      <MacroHero 
+        titleLead={copy.heroLead}
+        titleAccent={copy.heroAccent}
+        eyebrow={copy.heroEyebrow}
+        description={copy.heroBody}
+        imageSrc={SITE_IMAGES.economyDollar}
+        imageAlt={copy.heroAlt}
+        stats={copy.heroStats}
+      />
+
+      {/* Main Content */}
+      <div className="bg-[#030405] relative z-10 pb-32 pt-16">
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12 mb-24">
           <Breadcrumb
             items={[
               { label: breadcrumbEconomy, href: "/economy" },
               { label: pageLabel },
             ]}
-            className="mb-8"
           />
-          <p className="mb-4 section-eyebrow">{copy.heroEyebrow}</p>
-          <h1 className="mb-4 font-hero text-6xl text-white sm:text-7xl">
-            {copy.heroLead}
-            <br />
-            <span className="text-glory-gold">{copy.heroAccent}</span>
-          </h1>
-          <p className="max-w-2xl font-body text-lg text-white/65 leading-relaxed">
-            {copy.heroBody}
-          </p>
-
-          {/* Key dollar stats
-              Short highlights rendered from a small inline array because they
-              are unique to this hero block. */}
-          <div className="mt-8 flex flex-wrap gap-6">
-            {copy.heroStats.map((stat) => (
-              <div
-                key={stat.value}
-                className="rounded-xl border border-glory-gold/20 bg-glory-gold/5 px-5 py-3"
-              >
-                <p className="font-hero text-3xl text-glory-gold">
-                  {stat.value}
-                </p>
-                <p className="font-body text-sm text-white/65">{stat.label}</p>
-                <p className="font-body text-xs text-white/35">{stat.source}</p>
-              </div>
-            ))}
-          </div>
         </div>
-      </div>
 
-      {/* Content */}
-      <div className="bg-navy-dark">
-        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 space-y-16">
-          {/* Overview
-              Long-form paragraphs pulled from the shared economy data file. */}
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12 space-y-48">
+          {/* Overview */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.overviewTitle}
             </h2>
             {overviewParagraphs.map((para, i) => (
               <p
                 key={i}
-                className="mb-5 font-body text-lg leading-relaxed text-white/65"
+                className="macro-body max-w-4xl mb-8"
               >
                 {para}
               </p>
             ))}
           </section>
 
-          {/* Reserve chart
-              Reusable chart component driven by shared reserve-share data. */}
+          {/* Reserve chart */}
           <section>
-            <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
+            <div className="my-24 bg-[#030405]/50 backdrop-blur-md p-8 border border-white/10">
               <DollarReserveChart
                 data={DOLLAR_RESERVE_SHARE}
                 title={copy.chartTitle}
@@ -374,34 +341,27 @@ export default async function DollarDominancePage() {
             </div>
           </section>
 
-          {/* Timeline
-              A visual history section generated from the DOLLAR_TIMELINE array above. */}
+          {/* Timeline */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.timelineTitle}
             </h2>
-            <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
+            <p className="macro-body max-w-4xl mb-16">
               {copy.timelineBody}
             </p>
-            <div className="relative space-y-0">
-              {/* Vertical line */}
-              <div className="absolute left-[52px] top-0 bottom-0 w-px bg-glory-gold/20 hidden sm:block" />
-
+            <div className="mt-24 space-y-0">
               {timeline.map((item, i) => (
-                <div key={i} className="relative flex gap-5 pb-8">
-                  {/* Year bubble */}
-                  <div className="relative z-10 flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border-2 border-glory-gold/40 bg-navy-dark">
-                    <span className="font-hero text-sm text-glory-gold leading-none">
+                <div key={i} className="flex flex-col md:flex-row gap-8 md:gap-16 border-t border-white/10 py-12">
+                  <div className="md:w-1/4 shrink-0">
+                    <span className="font-macro-display text-6xl text-[#E8B923]">
                       {item.year}
                     </span>
                   </div>
-
-                  {/* Content */}
-                  <div className="flex-1 rounded-2xl border border-white/8 bg-navy-mid p-5">
-                    <h3 className="mb-2 font-display text-lg font-semibold text-white">
+                  <div className="md:w-3/4">
+                    <h3 className="font-macro-display text-4xl text-white mb-6">
                       {item.event}
                     </h3>
-                    <p className="font-body text-sm leading-relaxed text-white/55">
+                    <p className="macro-body">
                       {item.description}
                     </p>
                   </div>
@@ -410,65 +370,63 @@ export default async function DollarDominancePage() {
             </div>
           </section>
 
-          {/* Extended facts
-              Combines shared facts from economy-data.ts with page-local facts. */}
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+          {/* Extended facts */}
+          <section className="border-t border-white/5 pt-32">
+            <h2 className="macro-section-title text-[clamp(24px,4vw,60px)] mb-16">
               {copy.detailTitle}
             </h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {[...sharedFacts, ...localFacts].map((fact) => (
-                <FactCard
+            <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
+              {[...sharedFacts, ...localFacts].map((fact, i) => (
+                <MacroFact
                   key={fact.id}
+                  index={i + 1}
                   fact={fact.fact}
                   detail={fact.detail}
-                  source={fact.source}
-                  color={fact.color}
-                  variant="dark"
                 />
               ))}
             </div>
           </section>
 
-          {/* Dedollarization callout
-              A highlighted editorial block rather than a chart or data table. */}
-          <section className="rounded-2xl border border-glory-red/20 bg-glory-red/5 p-6 md:p-8">
-            <h2 className="mb-4 font-display text-xl font-semibold text-white">
+          {/* Dedollarization callout */}
+          <section className="my-32 border-l border-[#b22234] pl-8 md:pl-16">
+            <h2 className="macro-eyebrow text-[#b22234] mb-8">
               {copy.calloutTitle}
             </h2>
-            <p className="mb-4 font-body text-base leading-relaxed text-white/65">
+            <p className="macro-body max-w-4xl mb-8">
               {copy.calloutP1}
             </p>
-            <p className="font-body text-base leading-relaxed text-white/65">
+            <p className="macro-body max-w-4xl mb-8">
               {copy.calloutP2}
             </p>
-            <p className="mt-4 font-body text-sm font-semibold text-glory-gold">
+            <p className="font-macro-display text-3xl text-white mt-12 max-w-4xl">
               {copy.calloutConclusion}
             </p>
           </section>
 
-          <QuoteBlock
-            quote={
-              locale === "ro"
-                ? "Capacitatea Americii de a se împrumuta în propria monedă la cele mai mici costuri din lume nu este noroc — este recompensa pentru că a construit cel mai credibil sistem financiar din istoria omenirii."
-                : "America's ability to borrow in its own currency at the world's lowest rates is not luck — it is the reward for having built the most trustworthy financial system in human history."
-            }
-            attribution="Lawrence Summers"
-            title={copy.quoteTitle}
-            variant="dark"
-          />
+          <div className="border-t border-white/5 pt-32 pb-16">
+            <QuoteBlock
+              quote={
+                locale === "ro"
+                  ? "Capacitatea Americii de a se împrumuta în propria monedă la cele mai mici costuri din lume nu este noroc — este recompensa pentru că a construit cel mai credibil sistem financiar din istoria omenirii."
+                  : "America's ability to borrow in its own currency at the world's lowest rates is not luck — it is the reward for having built the most trustworthy financial system in human history."
+              }
+              attribution="Lawrence Summers"
+              title={copy.quoteTitle}
+              variant="dark"
+            />
+          </div>
 
           {/* Nav */}
-          <div className="flex items-center justify-between border-t border-white/10 pt-8">
+          <div className="flex items-center justify-between border-t border-white/10 pt-16 mt-32">
             <Link
               href="/economy/startups-venture-capital"
-              className="font-body text-sm text-white/50 hover:text-white transition-colors"
+              className="font-macro-mono text-sm uppercase tracking-widest text-white/50 hover:text-white transition-colors"
             >
               {copy.prevLink}
             </Link>
             <Link
               href="/economy/trade-and-exports"
-              className="font-body text-sm font-semibold text-glory-gold hover:text-glory-gold-dark transition-colors"
+              className="font-macro-mono text-sm uppercase tracking-widest text-[#E8B923] hover:text-white transition-colors"
             >
               {copy.nextLink}
             </Link>
