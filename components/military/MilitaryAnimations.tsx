@@ -231,11 +231,7 @@ export function MilStyles() {
         transition: border-color 0.25s ease, background-color 0.25s ease;
       }
 
-      /* ── Scrollbar — ultra-minimal ── */
-      ::-webkit-scrollbar { width: 2px; }
-      ::-webkit-scrollbar-track { background: transparent; }
-      ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
-      ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+
     `}</style>
   );
 }
@@ -1065,32 +1061,48 @@ export function ParallaxMilitaryHero({
 
         {/* Content Overlay */}
         <motion.div 
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.12, delayChildren: 0.2 }
+            }
+          }}
           className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
           style={{ opacity: textOpacity, y: textY }}
         >
           {/* Tagline */}
           <motion.p 
-            className="mil-text-label mb-8 tracking-[0.5em]"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+            }}
+            className="mil-text-label mb-8 tracking-[0.5em] text-white/40"
           >
             {tagline}
           </motion.p>
           
-          {/* Staggered word-by-word title */}
-          <h1 className="mil-text-hero overflow-hidden">
-            {words.map((word, i) => (
-              <motion.span 
-                key={i} 
-                className="block"
-              >
-                {word}
-              </motion.span>
-            ))}
-          </h1>
+          {/* Title - Nature-style reveal */}
+          <div className="overflow-hidden">
+            <motion.h1 
+              variants={{
+                hidden: { opacity: 0, y: 60 },
+                visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } }
+              }}
+              className="mil-text-hero"
+            >
+              {title}
+            </motion.h1>
+          </div>
 
           {/* Subtitle */}
           <motion.p 
-            style={{ opacity: 0.5 }}
-            className="mil-text-metadata mt-16 max-w-md tracking-[0.2em] leading-relaxed"
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 0.5, y: 0, transition: { duration: 0.8 } }
+            }}
+            className="mil-text-metadata mt-12 max-w-lg tracking-[0.3em] leading-relaxed uppercase"
           >
             {subtitle}
           </motion.p>
@@ -1098,12 +1110,16 @@ export function ParallaxMilitaryHero({
           {/* Stats Strip */}
           {stats && (
             <motion.div 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
+              }}
               className="mt-20 flex flex-wrap justify-center gap-x-14 gap-y-6"
             >
               {stats.map((s, i) => (
-                <div key={i} className="text-center">
-                  <div className="mil-text-metadata mb-1.5 opacity-60">{s.label}</div>
-                  <div className="text-2xl font-bold tracking-tight">{s.value}</div>
+                <div key={i} className="text-center group">
+                  <div className="mil-text-metadata mb-2 opacity-30 uppercase tracking-widest text-[9px]">{s.label}</div>
+                  <div className="text-2xl md:text-3xl font-black tracking-tight text-white/90">{s.value}</div>
                 </div>
               ))}
             </motion.div>
