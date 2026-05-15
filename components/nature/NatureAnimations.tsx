@@ -273,7 +273,7 @@ interface StatWallItem {
   color?: string;
 }
 
-function CountUp({ value, prefix = "", suffix = "", decimals = 0, color = "#C4956A" }: {
+export function CountUp({ value, prefix = "", suffix = "", decimals = 0, color = "#C4956A" }: {
   value: number; prefix?: string; suffix?: string; decimals?: number; color?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -309,7 +309,7 @@ export function AnimatedStatWall({ stats }: { stats: StatWallItem[] }) {
             borderBottom: 'none',
           }}
         >
-          <p className="leading-none text-[clamp(40px,6vw,80px)] font-extralight tracking-tighter" style={{ color: stat.color ?? "#C4956A" }}>
+          <p className="leading-none text-[clamp(40px,5vw,72px)] font-black tracking-tight uppercase whitespace-nowrap" style={{ color: stat.color ?? "#C4956A", fontFamily: 'var(--font-archivo)' }}>
             <CountUp value={stat.value} prefix={stat.prefix} suffix={stat.suffix} decimals={stat.decimals} color={stat.color ?? "#C4956A"} />
           </p>
           <p className="nat-text-label">{stat.label}</p>

@@ -20,6 +20,7 @@ import {
   ParallaxImageBand,
   NatureQuoteBreak,
   NatureFactModule,
+  CountUp,
 } from "@/components/nature/NatureAnimations";
 
 import { getServerLocale }  from "@/lib/i18n/server";
@@ -112,44 +113,39 @@ export default async function AlaskaPage() {
         <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12 space-y-32">
 
           {/* Denali feature */}
-          <section className="max-w-6xl mx-auto">
+          <section className="max-w-5xl mx-auto">
             <h2 className="nat-text-section text-white mb-12">
               {isRo ? "Denali — Cel Mai Înalt Vârf" : "Denali — Highest Peak"}
             </h2>
-            <div className="grid gap-12 md:grid-cols-2 md:items-center">
-              <div>
-                <p className="nat-text-body mb-6">
-                  {isRo
-                    ? "La 6.194 de metri deasupra nivelului mării, Denali este cel mai înalt vârf din America de Nord. Din câmpiile interioare ale Alaskăi, muntele se ridică cu aproape 5.500 de metri deasupra terenului înconjurător — mai mult decât Everest deasupra platoului tibetan."
-                    : "At 20,310 feet above sea level, Denali is the highest peak in North America. From Alaska's interior plains, the mountain rises nearly 18,000 feet above the surrounding terrain — more than Everest above the Tibetan plateau."}
-                </p>
-                <p className="nat-text-body">
-                  {isRo
-                    ? "Parcul Național Denali, la 6 milioane de acri, înconjoară muntele cu o sălbăticie mai mare decât întreg statul New Hampshire. Un singur drum, de 92 de mile, se aventurează în parc — o decizie deliberată de a păstra sălbăticia neîmblânzită."
-                    : "Denali National Park, at 6 million acres, surrounds the mountain in a wilderness larger than the entire state of New Hampshire. A single 92-mile road ventures into the park — a deliberate decision to keep the wilderness untamed."}
-                </p>
-                <div className="grid grid-cols-3 gap-6 mt-8 border-t border-white/4 pt-8">
-                  {[
-                    { value: "20,310 ft", label: isRo ? "Altitudine" : "Elevation"            },
-                    { value: "~18,000 ft",label: isRo ? "Ridicare bază-vârf" : "Base-to-Summit Rise" },
-                    { value: "6M acres",  label: isRo ? "Parc Național" : "National Park"     },
-                  ].map((s) => (
-                    <div key={s.label}>
-                      <p className="nat-text-hero" style={{ color: 'var(--nat-accent-glacier)' }}>{s.value}</p>
-                      <p className="nat-text-metadata text-white/40 mt-1">{s.label}</p>
+            <div>
+              <p className="nat-text-body mb-6">
+                {isRo
+                  ? "La 6.194 de metri deasupra nivelului mării, Denali este cel mai înalt vârf din America de Nord. Din câmpiile interioare ale Alaskăi, muntele se ridică cu aproape 5.500 de metri deasupra terenului înconjurător — mai mult decât Everest deasupra platoului tibetan."
+                  : "At 20,310 feet above sea level, Denali is the highest peak in North America. From Alaska's interior plains, the mountain rises nearly 18,000 feet above the surrounding terrain — more than Everest above the Tibetan plateau."}
+              </p>
+              <p className="nat-text-body">
+                {isRo
+                  ? "Parcul Național Denali, la 6 milioane de acri, înconjoară muntele cu o sălbăticie mai mare decât întreg statul New Hampshire. Un singur drum, de 92 de mile, se aventurează în parc — o decizie deliberată de a păstra sălbăticia neîmblânzită."
+                  : "Denali National Park, at 6 million acres, surrounds the mountain in a wilderness larger than the entire state of New Hampshire. A single 92-mile road ventures into the park — a deliberate decision to keep the wilderness untamed."}
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-16 gap-y-12 mt-12 border-t border-white/4 pt-12">
+                {[
+                  { value: "20,310 ft", label: isRo ? "Altitudine" : "Elevation"            },
+                  { value: "~18,000 ft",label: isRo ? "Ridicare" : "Base Rise" },
+                  { value: "6M acres",  label: isRo ? "Parc Național" : "National Park"     },
+                ].map((s) => (
+                  <div key={s.label}>
+                    <div className="text-6xl md:text-7xl font-black tracking-tight text-white uppercase">
+                      <CountUp 
+                        value={parseInt(s.value.replace(/[^0-9]/g, ''))} 
+                        prefix={s.value.startsWith('~') ? '~' : ''}
+                        suffix={s.value.replace(/[0-9~]/g, '')} 
+                        color="var(--nat-accent-glacier)" 
+                      />
                     </div>
-                  ))}
-                </div>
-              </div>
-              <div className="relative h-[450px] overflow-hidden group">
-                <Image
-                  src={SITE_IMAGES.denaliNationalPark}
-                  alt={isRo ? "Muntele Denali" : "Denali"}
-                  fill className="object-cover object-top brightness-[0.7] group-hover:scale-105 transition-transform duration-1000"
-                  sizes="(max-width:768px) 100vw, 50vw"
-                  placeholder="blur" blurDataURL={BLUR_PLACEHOLDER}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                    <p className="nat-text-metadata text-white/40 mt-2">{s.label}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
@@ -179,7 +175,9 @@ export default async function AlaskaPage() {
                   {ALASKA_WILDLIFE.map((item, i) => (
                     <tr key={i} className="border-b border-white/4 last:border-0 hover:bg-white/[0.02] transition-colors">
                       <td className="py-5 text-base font-semibold text-white tracking-wide px-4">{item.animal}</td>
-                      <td className="py-5 text-right font-hero text-base px-4" style={{ color: 'var(--nat-accent-glacier)' }}>{isRo ? item.countRo : item.count}</td>
+                      <td className="py-6 text-right font-black text-2xl tracking-tight px-4" style={{ color: 'var(--nat-accent-glacier)', fontFamily: 'var(--font-archivo)' }}>
+                        <span className="tabular-nums">{isRo ? item.countRo : item.count}</span>
+                      </td>
                       <td className="py-5 nat-text-body italic pl-8 hidden sm:table-cell">{isRo ? item.noteRo : item.note}</td>
                     </tr>
                   ))}
@@ -191,7 +189,10 @@ export default async function AlaskaPage() {
             </div>
           </section>
 
-          {/* Glaciers parallax divider */}
+        </div> {/* End first container */}
+
+        {/* Glaciers parallax divider - FULL WIDTH */}
+        <div className="my-32">
           <ParallaxImageBand
             imageSrc={SITE_IMAGES.denaliNationalPark}
             imageAlt={isRo ? "Peisaj glaciar alaskan" : "Alaskan glacial landscape"}
@@ -208,10 +209,14 @@ export default async function AlaskaPage() {
               </p>
             </div>
           </ParallaxImageBand>
+        </div>
+
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12 space-y-32">
 
           {/* Facts list as NatureFactModules */}
 
-            <section className="max-w-4xl mx-auto py-24 px-6 md:px-12">
+          {/* Facts list as NatureFactModules */}
+          <section className="max-w-5xl mx-auto py-24">
               <h2 className="nat-text-section text-white mb-16">{isRo ? "În Detaliu" : "In Detail"}</h2>
               <div>
                 {[...facts, ...extFacts].map((fact) => (

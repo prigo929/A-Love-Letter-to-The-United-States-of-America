@@ -20,6 +20,7 @@ import {
   HeroTextReveal,
   NatureQuoteBreak,
   NatureFactModule,
+  CountUp,
 } from "@/components/nature/NatureAnimations";
 
 import { getServerLocale }    from "@/lib/i18n/server";
@@ -130,11 +131,11 @@ export default async function YellowstonePage() {
         <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12 space-y-32">
 
           {/* Geyser scene + description */}
-          <section className="max-w-6xl mx-auto">
+          <section className="max-w-5xl mx-auto">
             <h2 className="nat-text-section text-white mb-12">
               {isRo ? "10.000 de Fenomene Hidrotermale" : "10,000 Hydrothermal Features"}
             </h2>
-            <div className="max-w-3xl">
+            <div>
 
               <div>
                 <p className="nat-text-body">
@@ -142,7 +143,7 @@ export default async function YellowstonePage() {
                     ? "Sub Yellowstone se află un rezervor de magmă parțial topit la numai 3–8 km adâncime. Apa de precipitații se infiltrează, se încălzește și revine la suprafață ca un spectacol termic fără egal pe Terra. Yellowstone conține peste 500 de gheizeri — jumătate din totalul mondial."
                     : "Beneath Yellowstone lies a partly molten magma reservoir just 2–5 miles underground. Surface water seeps down, heats up, and returns as the most spectacular thermal display on Earth. Yellowstone contains over 500 geysers — half of the world's total."}
                 </p>
-                <div className="grid grid-cols-2 gap-6 mt-8 border-t border-white/4 pt-8">
+                <div className="grid grid-cols-2 gap-x-20 gap-y-12 mt-12 border-t border-white/4 pt-12">
                   {[
                     { n: "500+",  l: isRo ? "Gheizeri" : "Geysers"       },
                     { n: "10K+",  l: isRo ? "Total fenomene" : "Total features"   },
@@ -150,8 +151,15 @@ export default async function YellowstonePage() {
                     { n: "~200°F",l: isRo ? "Temp. medie" : "Avg. spring temp"   },
                   ].map((s) => (
                     <div key={s.l}>
-                      <p className="nat-text-hero" style={{ color: 'var(--nat-accent-earth)' }}>{s.n}</p>
-                      <p className="nat-text-metadata text-white/40 mt-1">{s.l}</p>
+                      <div className="text-6xl md:text-7xl font-black tracking-tight text-white uppercase">
+                        <CountUp 
+                          value={parseInt(s.n.replace(/[^0-9]/g, ''))} 
+                          prefix={s.n.startsWith('~') ? '~' : ''}
+                          suffix={s.n.replace(/[0-9~]/g, '')} 
+                          color="var(--nat-accent-earth)" 
+                        />
+                      </div>
+                      <p className="nat-text-metadata text-white/40 mt-2">{s.l}</p>
                     </div>
                   ))}
                 </div>
@@ -160,15 +168,22 @@ export default async function YellowstonePage() {
           </section>
 
           {/* Hydrothermal breakdown borderless list */}
-          <section className="max-w-4xl mx-auto">
+          <section className="max-w-5xl mx-auto">
             <h2 className="nat-text-section text-white mb-10">
               {isRo ? "Tipuri de Fenomene" : "Feature Types"}
             </h2>
             <div className="space-y-3 border-t border-white/4 pt-4">
               {hydrothermal.map((feature, i) => (
-                <div key={i} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 border-b border-white/4 py-5 transition-colors hover:bg-white/[0.02] px-4">
-                  <div className="shrink-0 text-left sm:w-1/4">
-                    <p className="nat-text-hero" style={{ color: 'var(--nat-accent-earth)' }}>{feature.count}</p>
+                <div key={i} className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-20 border-b border-white/4 py-10 transition-colors hover:bg-white/[0.02] px-6">
+                  <div className="shrink-0 text-left sm:w-1/3">
+                    <div className="text-5xl md:text-6xl font-black tracking-tight text-white uppercase">
+                      <CountUp 
+                        value={parseInt(feature.count.replace(/[^0-9]/g, ''))} 
+                        prefix={feature.count.startsWith('~') ? '~' : ''}
+                        suffix={feature.count.replace(/[0-9~]/g, '')} 
+                        color="var(--nat-accent-earth)" 
+                      />
+                    </div>
                     <p className="nat-text-metadata text-white/40 uppercase tracking-wider leading-snug mt-1">{feature.type}</p>
                   </div>
                   <p className="nat-text-body self-center flex-1">{feature.note}</p>
@@ -177,7 +192,10 @@ export default async function YellowstonePage() {
             </div>
           </section>
 
-          {/* Parallax divider */}
+        </div> {/* End first container */}
+        
+        {/* Parallax divider - FULL WIDTH */}
+        <div className="my-32">
           <ParallaxImageBand
             imageSrc={SITE_IMAGES.yellowstoneNationalPark}
             imageAlt={isRo ? "Yellowstone" : "Yellowstone National Park"}
@@ -194,7 +212,9 @@ export default async function YellowstonePage() {
               </p>
             </div>
           </ParallaxImageBand>
+        </div>
 
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12 space-y-32">
           {/* Wildlife containerless table */}
           <section className="max-w-5xl mx-auto">
             <h2 className="nat-text-section text-white mb-10">
@@ -213,7 +233,9 @@ export default async function YellowstonePage() {
                   {wildlife.map((item, i) => (
                     <tr key={i} className="border-b border-white/4 last:border-0 hover:bg-white/2 transition-colors">
                       <td className="py-5 text-base font-semibold text-white tracking-wide px-4">{item.animal}</td>
-                      <td className="py-5 text-right font-hero text-base px-4" style={{ color: 'var(--nat-accent-earth)' }}>{item.count}</td>
+                      <td className="py-6 text-right font-black text-2xl tracking-tight px-4" style={{ color: 'var(--nat-accent-earth)', fontFamily: 'var(--font-archivo)' }}>
+                        <span className="tabular-nums">{item.count}</span>
+                      </td>
                       <td className="py-5 nat-text-body italic pl-8 hidden sm:table-cell">{item.note}</td>
                     </tr>
                   ))}
@@ -223,7 +245,7 @@ export default async function YellowstonePage() {
           </section>
 
           {/* Facts list as NatureFactModules */}
-          <section className="max-w-4xl mx-auto">
+          <section className="max-w-5xl mx-auto">
             <h2 className="nat-text-section text-white mb-16">{isRo ? "În Detaliu" : "In Detail"}</h2>
             <div>
               {[...facts, ...extFacts].map((fact) => (

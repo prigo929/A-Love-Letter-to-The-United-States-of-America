@@ -299,7 +299,7 @@ function LakesTooltip({
       <p className="nat-text-metadata text-white mb-1">
         Lake {label}
       </p>
-      <p className="nat-text-hero" style={{ color: 'var(--nat-accent-glacier)' }}>
+      <p className="font-hero text-3xl" style={{ color: 'var(--nat-accent-glacier)' }}>
         {item.value.toLocaleString()} mi³
       </p>
       <p className="nat-text-metadata text-white/50 mt-1">Volume (cubic miles)</p>
@@ -332,7 +332,7 @@ export function GreatLakesChart({
             </h3>
           )}
           {subtitle && (
-            <p className="nat-text-body mt-2">{subtitle}</p>
+            <p className="nat-text-body mt-4">{subtitle}</p>
           )}
         </div>
       )}
