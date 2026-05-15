@@ -111,25 +111,25 @@ export interface FoundingTimeline {
 
 export const GDP_COMPARISON: GdpDataPoint[] = [
   { country: "United States", gdp: 32.4, flag: "🇺🇸", highlight: true },
-  { country: "China", gdp: 18.5, flag: "🇨🇳" },
-  { country: "Germany", gdp: 4.5, flag: "🇩🇪" },
-  { country: "Japan", gdp: 4.2, flag: "🇯🇵" },
-  { country: "India", gdp: 3.9, flag: "🇮🇳" },
-  { country: "United Kingdom", gdp: 3.1, flag: "🇬🇧" },
-  { country: "France", gdp: 3.0, flag: "🇫🇷" },
-  { country: "Brazil", gdp: 2.3, flag: "🇧🇷" },
+  { country: "China", gdp: 20.8, flag: "🇨🇳" },
+  { country: "Germany", gdp: 5.4, flag: "🇩🇪" },
+  { country: "Japan", gdp: 4.4, flag: "🇯🇵" },
+  { country: "United Kingdom", gdp: 4.3, flag: "🇬🇧" },
+  { country: "India", gdp: 4.2, flag: "🇮🇳" },
+  { country: "France", gdp: 3.6, flag: "🇫🇷" },
+  { country: "Brazil", gdp: 2.6, flag: "🇧🇷" },
 ];
 
 export const GDP_PER_CAPITA: GdpPerCapitaPoint[] = [
   // Values here are in thousands of USD per person.
-  // Example: 86.4 means roughly $86,400.
-  { country: "United States", gdpPerCapita: 86.4, flag: "🇺🇸", highlight: true },
-  { country: "Germany", gdpPerCapita: 54.3, flag: "🇩🇪" },
-  { country: "United Kingdom", gdpPerCapita: 46.5, flag: "🇬🇧" },
-  { country: "France", gdpPerCapita: 45.0, flag: "🇫🇷" },
-  { country: "Japan", gdpPerCapita: 33.8, flag: "🇯🇵" },
-  { country: "China", gdpPerCapita: 13.1, flag: "🇨🇳" },
-  { country: "Brazil", gdpPerCapita: 10.7, flag: "🇧🇷" },
+  // Example: 94.4 means roughly $94,400.
+  { country: "United States", gdpPerCapita: 94.4, flag: "🇺🇸", highlight: true },
+  { country: "Germany", gdpPerCapita: 65.3, flag: "🇩🇪" },
+  { country: "United Kingdom", gdpPerCapita: 61.1, flag: "🇬🇧" },
+  { country: "France", gdpPerCapita: 52.1, flag: "🇫🇷" },
+  { country: "Japan", gdpPerCapita: 35.7, flag: "🇯🇵" },
+  { country: "China", gdpPerCapita: 14.9, flag: "🇨🇳" },
+  { country: "Brazil", gdpPerCapita: 12.3, flag: "🇧🇷" },
   { country: "India", gdpPerCapita: 2.8, flag: "🇮🇳" },
 ];
 
@@ -163,16 +163,16 @@ export const SP500_HISTORY: SP500DataPoint[] = [
 export const VC_BY_COUNTRY: VCDataPoint[] = [
   {
     country: "United States",
-    investment: 185,
+    investment: 210,
     percentage: 65,
     highlight: true,
   },
-  { country: "China", investment: 52, percentage: 14 },
-  { country: "United Kingdom", investment: 22, percentage: 6 },
-  { country: "India", investment: 18, percentage: 5 },
-  { country: "Germany", investment: 12, percentage: 3 },
-  { country: "France", investment: 9, percentage: 2.5 },
-  { country: "Rest of World", investment: 81, percentage: 22.5 },
+  { country: "China", investment: 45, percentage: 14 },
+  { country: "United Kingdom", investment: 19, percentage: 6 },
+  { country: "India", investment: 16, percentage: 5 },
+  { country: "Germany", investment: 10, percentage: 3 },
+  { country: "France", investment: 8, percentage: 2.5 },
+  { country: "Rest of World", investment: 15, percentage: 4.5 },
 ];
 
 export const UNICORNS_BY_COUNTRY: UnicornDataPoint[] = [
