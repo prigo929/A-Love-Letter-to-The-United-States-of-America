@@ -15,11 +15,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
-import { FactCard } from "@/components/sections/FactCard";
-import { StatCard } from "@/components/sections/StatCard";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { GdpBarChart } from "@/components/data/GdpBarChart";
 import { SP500Chart } from "@/components/data/SP500Chart";
+import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
   GDP_COMPARISON,
@@ -277,55 +276,37 @@ export default async function GdpGrowthPage() {
 
   return (
     <>
-      {/* Hero
-          A full-width intro block with background image + headline + summary. */}
-      <div className="relative bg-navy-dark pt-28 pb-16">
-        <Image
-          src={SITE_IMAGES.economyGrowth}
-          alt={copy.heroAlt}
-          fill
-          className="object-cover opacity-25"
-          priority
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL={BLUR_PLACEHOLDER}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/90 to-navy-dark" />
-        <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <MacroStyles />
+      <MacroHero 
+        titleLead={copy.heroLead}
+        titleAccent={copy.heroAccent}
+        eyebrow={copy.heroEyebrow}
+        description={copy.heroBody}
+        imageSrc={SITE_IMAGES.economyGrowth}
+        imageAlt={copy.heroAlt}
+      />
+
+      {/* Main Content */}
+      <div className="bg-[#030405] relative z-10 pb-32 pt-16">
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12 mb-24">
           <Breadcrumb
             items={[
               { label: breadcrumbEconomy, href: "/economy" },
               { label: pageLabel },
             ]}
-            className="mb-8"
           />
-          <p className="mb-4 section-eyebrow">{copy.heroEyebrow}</p>
-          <h1 className="mb-4 font-hero text-6xl text-white sm:text-7xl">
-            <span className="text-glory-gold">{copy.heroLead}</span>
-            <br />
-            {copy.heroAccent}
-          </h1>
-          <p className="max-w-2xl font-body text-lg text-white/65 leading-relaxed">
-            {copy.heroBody}
-          </p>
         </div>
-      </div>
 
-      {/* Content
-          The rest of the page is broken into stacked sections so it reads like
-          a long-form article instead of one giant block. */}
-      <div className="bg-navy-dark">
-        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 space-y-16">
-          {/* GDP Comparison
-              Reusable chart component fed by shared data from economy-data.ts */}
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12 space-y-48">
+          {/* GDP Comparison */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.worldTitle}
             </h2>
-            <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
+            <p className="macro-body max-w-4xl mb-16">
               {copy.worldBody}
             </p>
-            <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
+            <div className="my-24">
               <GdpBarChart
                 data={GDP_COMPARISON}
                 title={copy.worldChartTitle}
@@ -335,16 +316,15 @@ export default async function GdpGrowthPage() {
             </div>
           </section>
 
-          {/* GDP Per Capita
-              The numbers are stored in thousands, so 82.7 means $82,700. */}
+          {/* GDP Per Capita */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.perCapitaTitle}
             </h2>
-            <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
+            <p className="macro-body max-w-4xl mb-16">
               {copy.perCapitaBody}
             </p>
-            <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
+            <div className="my-24">
               <GdpBarChart
                 data={GDP_PER_CAPITA.map(
                   (d): GdpDataPoint => ({
@@ -365,13 +345,13 @@ export default async function GdpGrowthPage() {
 
           {/* S&P 500 */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.prosperityTitle}
             </h2>
-            <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
+            <p className="macro-body max-w-4xl mb-16">
               {copy.prosperityBody}
             </p>
-            <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
+            <div className="my-24 bg-[#030405]/50 backdrop-blur-md p-8 border border-white/10">
               <SP500Chart
                 data={SP500_HISTORY}
                 title={copy.prosperityChartTitle}
@@ -381,105 +361,75 @@ export default async function GdpGrowthPage() {
             </div>
           </section>
 
-          {/* State GDPs
-              This one uses a plain HTML table instead of a chart because the
-              comparison is short and easier to scan in rows. */}
+          {/* State GDPs */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.statesTitle}
             </h2>
-            <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
+            <p className="macro-body max-w-4xl mb-16">
               {copy.statesBody}
             </p>
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-navy-mid">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-white/10 bg-white/5">
-                    <th className="px-6 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                      {copy.stateLabel}
-                    </th>
-                    <th className="px-6 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                      {copy.stateGdpLabel}
-                    </th>
-                    <th className="px-6 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                      {copy.globalRankLabel}
-                    </th>
-                    <th className="px-6 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                      {copy.comparisonLabel}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {stateRankings.map((state, i) => (
-                    <tr
-                      key={state.state}
-                      className={`border-b border-white/5 transition-colors hover:bg-white/3 ${i % 2 === 0 ? "" : "bg-white/2"}`}
-                    >
-                      <td className="px-6 py-4 font-body text-sm font-semibold text-white">
-                        {state.state}
-                      </td>
-                      <td className="px-6 py-4 font-hero text-xl text-glory-gold">
-                        {state.gdp}
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className="rounded-full bg-glory-blue/30 px-2.5 py-1 font-body text-sm text-white/70">
-                          #{state.rank} {copy.globallyLabel}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 font-body text-sm text-white/55 italic">
-                        {state.comparison}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <p className="px-6 py-3 text-right font-body text-xs text-white/30">
-                {copy.statesSource}
-              </p>
+            
+            <div className="grid gap-8 mt-16">
+              {stateRankings.map((state, i) => (
+                <div key={state.state} className="grid grid-cols-2 md:grid-cols-4 gap-4 border-b border-white/10 pb-8 items-center">
+                  <div className="font-macro-display text-3xl text-white">{state.state}</div>
+                  <div className="font-macro-display text-3xl text-[#E8B923]">{state.gdp}</div>
+                  <div>
+                    <span className="macro-metadata border border-white/20 px-3 py-1 text-white">
+                      #{state.rank} {copy.globallyLabel}
+                    </span>
+                  </div>
+                  <div className="font-macro-body text-white/55 italic text-right">{state.comparison}</div>
+                </div>
+              ))}
             </div>
+            <p className="mt-8 text-right macro-metadata text-white/30">
+              {copy.statesSource}
+            </p>
           </section>
 
           {/* Extended Facts Grid */}
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+          <section className="border-t border-white/5 pt-32">
+            <h2 className="macro-section-title text-[clamp(24px,4vw,60px)] mb-16">
               {copy.numbersTitle}
             </h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {extendedFacts.map((fact) => (
-                <FactCard
+            <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
+              {extendedFacts.map((fact, i) => (
+                <MacroFact
                   key={fact.id}
+                  index={i + 1}
                   fact={fact.fact}
                   detail={fact.detail}
-                  source={fact.source}
-                  color={fact.color}
-                  variant="dark"
                 />
               ))}
             </div>
           </section>
 
-          <QuoteBlock
-            quote={
-              locale === "ro"
-                ? "Pe termen lung, libertatea economică și libertatea politică merg mână în mână. Piața liberă este singurul sistem care a scos vreodată mase mari de oameni din sărăcie."
-                : "In the long run, economic freedom and political freedom go hand in hand. The free market is the only system that has ever lifted masses of people out of poverty."
-            }
-            attribution="Milton Friedman"
-            title={copy.quoteTitle}
-            variant="dark"
-          />
+          <div className="border-t border-white/5 pt-32 pb-16">
+            <QuoteBlock
+              quote={
+                locale === "ro"
+                  ? "Pe termen lung, libertatea economică și libertatea politică merg mână în mână. Piața liberă este singurul sistem care a scos vreodată mase mari de oameni din sărăcie."
+                  : "In the long run, economic freedom and political freedom go hand in hand. The free market is the only system that has ever lifted masses of people out of poverty."
+              }
+              attribution="Milton Friedman"
+              title={copy.quoteTitle}
+              variant="dark"
+            />
+          </div>
 
           {/* Back nav */}
-          <div className="flex items-center justify-between border-t border-white/10 pt-8">
+          <div className="flex items-center justify-between border-t border-white/10 pt-16 mt-32">
             <Link
               href="/economy"
-              className="font-body text-sm text-white/50 transition-colors hover:text-white"
+              className="font-macro-mono text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white"
             >
               {copy.backLink}
             </Link>
             <Link
               href="/economy/capital-markets"
-              className="font-body text-sm font-semibold text-glory-gold transition-colors hover:text-glory-gold-dark"
+              className="font-macro-mono text-sm uppercase tracking-widest text-[#E8B923] transition-colors hover:text-white"
             >
               {copy.nextLink}
             </Link>

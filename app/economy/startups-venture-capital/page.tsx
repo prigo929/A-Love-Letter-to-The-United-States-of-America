@@ -12,9 +12,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
-import { FactCard } from "@/components/sections/FactCard";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { VCBarChart, UnicornPieChart } from "@/components/data/VCCharts";
+import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
   VC_BY_COUNTRY,
@@ -293,62 +293,46 @@ export default async function StartupsVCPage() {
 
   return (
     <>
-      {/* Hero */}
-      <div className="relative bg-navy-dark pt-28 pb-16">
-        <Image
-          src={SITE_IMAGES.siliconValleyOffice}
-          alt={copy.heroAlt}
-          fill
-          className="object-cover opacity-20"
-          priority
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL={BLUR_PLACEHOLDER}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/90 to-navy-dark" />
-        <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <MacroStyles />
+      <MacroHero 
+        titleLead={copy.heroLead}
+        titleAccent={copy.heroAccent}
+        eyebrow={copy.heroEyebrow}
+        description={copy.heroBody}
+        imageSrc={SITE_IMAGES.siliconValleyOffice}
+        imageAlt={copy.heroAlt}
+      />
+
+      {/* Main Content */}
+      <div className="bg-[#030405] relative z-10 pb-32 pt-16">
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12 mb-24">
           <Breadcrumb
             items={[
               { label: breadcrumbEconomy, href: "/economy" },
               { label: pageLabel },
             ]}
-            className="mb-8"
           />
-          <p className="mb-4 section-eyebrow">{copy.heroEyebrow}</p>
-          <h1 className="mb-4 font-hero text-6xl text-white sm:text-7xl">
-            {copy.heroLead}
-            <br />
-            <span className="text-glory-gold">{copy.heroAccent}</span>
-          </h1>
-          <p className="max-w-2xl font-body text-lg text-white/65 leading-relaxed">
-            {copy.heroBody}
-          </p>
         </div>
-      </div>
 
-      {/* Content */}
-      <div className="bg-navy-dark">
-        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 space-y-16">
-          {/* Overview paras
-              Long-form shared copy pulled from economy-data.ts. */}
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12 space-y-48">
+          {/* Overview */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.overviewTitle}
             </h2>
             {overviewParagraphs.map((para, i) => (
               <p
                 key={i}
-                className="mb-5 font-body text-lg leading-relaxed text-white/65"
+                className="macro-body max-w-4xl mb-8"
               >
                 {para}
               </p>
             ))}
           </section>
 
-          {/* VC Chart
-              Reusable bar chart comparing venture capital by country. */}
+          {/* VC Chart */}
           <section>
-            <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
+            <div className="my-24">
               <VCBarChart
                 data={VC_BY_COUNTRY}
                 title={copy.vcChartTitle}
@@ -357,16 +341,15 @@ export default async function StartupsVCPage() {
             </div>
           </section>
 
-          {/* Unicorn chart
-              Pie chart used here because the goal is share-of-total comparison. */}
+          {/* Unicorn chart */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.unicornTitle}
             </h2>
-            <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
+            <p className="macro-body max-w-4xl mb-16">
               {copy.unicornBody}
             </p>
-            <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
+            <div className="my-24 bg-[#030405]/50 backdrop-blur-md p-8 border border-white/10">
               <UnicornPieChart
                 data={UNICORNS_BY_COUNTRY}
                 title={copy.unicornChartTitle}
@@ -375,118 +358,75 @@ export default async function StartupsVCPage() {
             </div>
           </section>
 
-          {/* Startup Timeline table
-              A table works well here because users may want to scan founders,
-              industries, and valuations row-by-row. */}
+          {/* Startup Timeline table */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.rewiredTitle}
             </h2>
-            <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
+            <p className="macro-body max-w-4xl mb-16">
               {copy.rewiredBody}
             </p>
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-navy-mid">
-              <div className="overflow-x-auto">
-                <table className="w-full min-w-[640px]">
-                  <thead>
-                    <tr className="border-b border-white/10 bg-white/5">
-                      <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        {copy.yearLabel}
-                      </th>
-                      <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        {copy.companyLabel}
-                      </th>
-                      <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        {copy.founderLabel}
-                      </th>
-                      <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        {copy.industryLabel}
-                      </th>
-                      <th className="px-5 py-4 text-right font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        {copy.valueLabel}
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {STARTUP_TIMELINE.map((item, i) => (
-                      <tr
-                        key={i}
-                        className="border-b border-white/5 transition-colors hover:bg-white/3"
-                      >
-                        <td className="px-5 py-4 font-hero text-xl text-glory-gold">
-                          {item.year}
-                        </td>
-                        <td className="px-5 py-4 font-body text-sm font-semibold text-white">
-                          {item.company}
-                        </td>
-                        <td className="px-5 py-4 font-body text-sm text-white/55">
-                          {item.founder}
-                        </td>
-                        <td className="px-5 py-4">
-                          <span className="rounded-full bg-glory-blue/30 px-2.5 py-0.5 font-body text-xs text-white/65">
-                            {item.industry}
-                          </span>
-                        </td>
-                        <td className="px-5 py-4 text-right font-hero text-lg text-glory-gold">
-                          {item.currentValuation}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+            
+            <div className="grid gap-8 mt-16 border-t border-white/5 pt-8">
+              {STARTUP_TIMELINE.map((item, i) => (
+                <div key={i} className="grid grid-cols-2 md:grid-cols-5 gap-4 border-b border-white/10 pb-8 items-center">
+                  <div className="font-macro-display text-3xl text-[#E8B923]">{item.year}</div>
+                  <div className="font-macro-display text-2xl text-white">{item.company}</div>
+                  <div className="font-macro-body text-white/55">{item.founder}</div>
+                  <div>
+                    <span className="macro-metadata border border-white/20 px-3 py-1 text-white">
+                      {item.industry}
+                    </span>
+                  </div>
+                  <div className="font-macro-display text-2xl text-[#E8B923] text-right">{item.currentValuation}</div>
+                </div>
+              ))}
             </div>
           </section>
 
-          {/* Startup Ecosystems
-              Generated from the STARTUP_ECOSYSTEMS array in economy-data.ts. */}
+          {/* Startup Ecosystems */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.ecosystemsTitle}
             </h2>
-            <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
+            <p className="macro-body max-w-4xl mb-16">
               {copy.ecosystemsBody}
             </p>
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
               {ecosystems.map((eco) => (
-                <div
-                  key={eco.city}
-                  className="overflow-hidden rounded-2xl border border-white/10 bg-navy-mid transition-all hover:border-glory-gold/30 hover:shadow-[0_0_25px_rgba(255,215,0,0.08)]"
-                >
-                  <div className="border-b border-white/8 bg-white/3 px-5 py-3">
-                    <p className="font-body text-xs font-semibold uppercase tracking-widest text-glory-gold">
-                      {eco.state}
-                    </p>
-                  </div>
-                  <div className="p-5">
-                    <h3 className="mb-0.5 font-display text-lg font-semibold text-white">
-                      {eco.city}
-                    </h3>
-                    <p className="mb-4 font-body text-sm italic text-white/45">
-                      &ldquo;{eco.nickname}&rdquo;
-                    </p>
-                    <div className="mb-4 grid grid-cols-2 gap-3">
-                      <div className="rounded-lg bg-white/5 p-3 text-center">
-                        <p className="font-hero text-2xl text-glory-gold">
-                          {eco.unicorns}+
-                        </p>
-                        <p className="font-body text-xs text-white/40">
-                          {copy.unicornsLabel}
-                        </p>
-                      </div>
-                      <div className="rounded-lg bg-white/5 p-3 text-center">
-                        <p className="font-hero text-lg text-white">
-                          {eco.vcFunding}
-                        </p>
-                        <p className="font-body text-xs text-white/40">
-                          {copy.annualVcLabel}
-                        </p>
-                      </div>
+                <div key={eco.city} className="flex flex-col border-t border-white/10 pt-8">
+                  <p className="macro-eyebrow mb-6 text-[#E8B923]">
+                    {eco.state}
+                  </p>
+                  <h3 className="font-macro-display text-4xl text-white mb-2">
+                    {eco.city}
+                  </h3>
+                  <p className="font-macro-body text-white/45 italic mb-8">
+                    &ldquo;{eco.nickname}&rdquo;
+                  </p>
+                  
+                  <div className="grid grid-cols-2 gap-8 mb-8 border-t border-white/10 pt-8">
+                    <div>
+                      <p className="font-macro-display text-4xl text-[#E8B923]">
+                        {eco.unicorns}+
+                      </p>
+                      <p className="macro-metadata mt-2">
+                        {copy.unicornsLabel}
+                      </p>
                     </div>
-                    <p className="font-body text-xs leading-relaxed text-white/40">
-                      {eco.keyCompanies.join(" · ")}
-                    </p>
+                    <div>
+                      <p className="font-macro-display text-3xl text-white mt-1">
+                        {eco.vcFunding}
+                      </p>
+                      <p className="macro-metadata mt-3">
+                        {copy.annualVcLabel}
+                      </p>
+                    </div>
                   </div>
+                  
+                  <p className="macro-metadata text-white/40 leading-relaxed mt-auto border-t border-white/10 pt-8">
+                    {eco.keyCompanies.join(" · ")}
+                  </p>
                 </div>
               ))}
             </div>
@@ -494,31 +434,28 @@ export default async function StartupsVCPage() {
 
           {/* Top VC Firms */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.firmsTitle}
             </h2>
-            <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
+            <p className="macro-body max-w-4xl mb-16">
               {copy.firmsBody}
             </p>
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-12 md:grid-cols-2">
               {vcFirms.map((firm) => (
-                <div
-                  key={firm.name}
-                  className="rounded-2xl border border-white/10 bg-navy-mid p-5 transition-colors hover:border-glory-gold/25"
-                >
-                  <div className="mb-2 flex items-start justify-between">
-                    <h3 className="font-display text-lg font-semibold text-white">
+                <div key={firm.name} className="flex flex-col border-t border-white/10 pt-8">
+                  <div className="flex items-start justify-between mb-4">
+                    <h3 className="font-macro-display text-4xl text-white">
                       {firm.name}
                     </h3>
-                    <span className="font-hero text-xl text-glory-gold">
+                    <span className="font-macro-display text-3xl text-[#E8B923]">
                       {firm.aum}
                     </span>
                   </div>
-                  <p className="mb-2 font-body text-xs text-white/40">
+                  <p className="macro-metadata text-white/40 mb-8">
                     {firm.city}
                   </p>
-                  <p className="font-body text-xs leading-relaxed text-white/50">
-                    <span className="text-white/35">{copy.portfolioLabel} </span>
+                  <p className="font-macro-body text-white/60 leading-relaxed">
+                    <span className="text-white/30 uppercase text-xs tracking-widest font-mono mr-2">{copy.portfolioLabel}</span>
                     {firm.portfolio}
                   </p>
                 </div>
@@ -527,46 +464,46 @@ export default async function StartupsVCPage() {
           </section>
 
           {/* Facts grid */}
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+          <section className="border-t border-white/5 pt-32">
+            <h2 className="macro-section-title text-[clamp(24px,4vw,60px)] mb-16">
               {copy.numbersTitle}
             </h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {byTheNumbersFacts.map((fact) => (
-                <FactCard
+            <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
+              {byTheNumbersFacts.map((fact, i) => (
+                <MacroFact
                   key={fact.id}
+                  index={i + 1}
                   fact={fact.fact}
                   detail={fact.detail}
-                  source={fact.source}
-                  color={fact.color}
-                  variant="dark"
                 />
               ))}
             </div>
           </section>
 
-          <QuoteBlock
-            quote={
-              locale === "ro"
-                ? "Ecosistemul startup-urilor este cel mai puternic mecanism de creare de bogăție și rezolvare de probleme inventat vreodată. America l-a construit, iar America continuă să îl îmbunătățească."
-                : "The startup ecosystem is the most powerful wealth-creation and problem-solving machine ever invented. America built it, and America keeps improving it."
-            }
-            attribution="Marc Andreessen"
-            title={copy.quoteTitle}
-            variant="dark"
-          />
+          <div className="border-t border-white/5 pt-32 pb-16">
+            <QuoteBlock
+              quote={
+                locale === "ro"
+                  ? "Ecosistemul startup-urilor este cel mai puternic mecanism de creare de bogăție și rezolvare de probleme inventat vreodată. America l-a construit, iar America continuă să îl îmbunătățească."
+                  : "The startup ecosystem is the most powerful wealth-creation and problem-solving machine ever invented. America built it, and America keeps improving it."
+              }
+              attribution="Marc Andreessen"
+              title={copy.quoteTitle}
+              variant="dark"
+            />
+          </div>
 
           {/* Nav */}
-          <div className="flex items-center justify-between border-t border-white/10 pt-8">
+          <div className="flex items-center justify-between border-t border-white/10 pt-16 mt-32">
             <Link
               href="/economy/capital-markets"
-              className="font-body text-sm text-white/50 hover:text-white transition-colors"
+              className="font-macro-mono text-sm uppercase tracking-widest text-white/50 hover:text-white transition-colors"
             >
               {copy.prevLink}
             </Link>
             <Link
               href="/economy/dollar-dominance"
-              className="font-body text-sm font-semibold text-glory-gold hover:text-glory-gold-dark transition-colors"
+              className="font-macro-mono text-sm uppercase tracking-widest text-[#E8B923] hover:text-white transition-colors"
             >
               {copy.nextLink}
             </Link>

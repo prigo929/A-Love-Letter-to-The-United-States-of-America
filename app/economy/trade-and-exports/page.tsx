@@ -11,10 +11,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
-import { FactCard } from "@/components/sections/FactCard";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import type { Locale } from "@/lib/i18n/config";
 import { getServerLocale } from "@/lib/i18n/server";
+import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand } from "@/components/economy/EconomyAnimations";
 import {
   getTradeOverviewParagraphs,
   US_EXPORT_CATEGORIES,
@@ -396,126 +396,90 @@ export default async function TradeAndExportsPage() {
 
   return (
     <>
-      {/* Hero */}
-      <div className="relative bg-navy-dark pt-28 pb-16">
-        <Image
-          src={SITE_IMAGES.economyPort}
-          alt={copy.heroAlt}
-          fill
-          className="object-cover opacity-20"
-          priority
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL={BLUR_PLACEHOLDER}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/90 to-navy-dark" />
-        <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <MacroStyles />
+      <MacroHero 
+        titleLead={copy.heroLead}
+        titleAccent={copy.heroAccent}
+        eyebrow={copy.heroEyebrow}
+        description={copy.heroBody}
+        imageSrc={SITE_IMAGES.economyPort}
+        imageAlt={copy.heroAlt}
+      />
+
+      {/* Main Content */}
+      <div className="bg-[#030405] relative z-10 pb-32 pt-16">
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12 mb-24">
           <Breadcrumb
             items={[
               { label: breadcrumbEconomy, href: "/economy" },
               { label: pageLabel },
             ]}
-            className="mb-8"
           />
-          <p className="mb-4 section-eyebrow">{copy.heroEyebrow}</p>
-          <h1 className="mb-4 font-hero text-6xl text-white sm:text-7xl">
-            {copy.heroLead}
-            <br />
-            <span className="text-glory-gold">{copy.heroAccent}</span>
-          </h1>
-          <p className="max-w-2xl font-body text-lg text-white/65 leading-relaxed">
-            {copy.heroBody}
-          </p>
         </div>
-      </div>
 
-      {/* Content */}
-      <div className="bg-navy-dark">
-        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 space-y-16">
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12 space-y-48">
           {/* Overview */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.overviewTitle}
             </h2>
             {overviewParagraphs.map((para, i) => (
               <p
                 key={i}
-                className="mb-5 font-body text-lg leading-relaxed text-white/65"
+                className="macro-body max-w-4xl mb-8"
               >
                 {para}
               </p>
             ))}
           </section>
 
-          {/* Export categories chart
-              This page uses hand-built progress bars instead of Recharts so the
-              layout feels more editorial and less dashboard-like. */}
+          {/* Export categories chart */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.exportTitle}
             </h2>
-            <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
+            <p className="macro-body max-w-4xl mb-16">
               {copy.exportBody}
             </p>
 
-            <div className="space-y-4 rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
-              {exportCategories.map((cat) => {
-                const pct = Math.round((cat.exports / maxExport) * 100);
-                return (
-                  <div key={cat.category} className="group">
-                    <div className="mb-1.5 flex items-center justify-between">
-                      <span className="font-body text-sm text-white/80">
-                        {cat.category}
-                      </span>
-                      <span className="font-hero text-lg text-glory-gold">
-                        ${cat.exports}B
-                      </span>
-                    </div>
-                    <div className="h-7 w-full overflow-hidden rounded-full bg-white/8">
-                      <div
-                        className="flex h-full items-center rounded-full bg-gradient-to-r from-glory-red to-glory-gold px-3 transition-all duration-700"
-                        // Dynamic inline width is used here because the bar
-                        // length depends on the data value for each category.
-                        style={{ width: `${pct}%` }}
-                      >
-                        <span className="font-body text-xs font-semibold text-navy-dark opacity-0 group-hover:opacity-100 transition-opacity">
-                          {pct}{copy.topCategorySuffix}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-              <p className="pt-2 text-right font-body text-xs text-white/30">
-                {copy.exportSource}
-              </p>
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 mt-24">
+              {exportCategories.map((cat) => (
+                <div key={cat.category} className="flex flex-col border-t border-white/10 pt-8">
+                  <h3 className="font-macro-display text-2xl text-white mb-4">{cat.category}</h3>
+                  <p className="font-macro-display text-5xl text-[#E8B923] mt-auto">
+                    ${cat.exports}B
+                  </p>
+                </div>
+              ))}
+              <div className="col-span-full pt-8 border-t border-white/5">
+                <p className="text-right macro-metadata text-white/30">
+                  {copy.exportSource}
+                </p>
+              </div>
             </div>
           </section>
 
           {/* Trade partners */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.partnersTitle}
             </h2>
-            <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
+            <p className="macro-body max-w-4xl mb-16">
               {copy.partnersBody}
             </p>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-4">
               {tradePartners.map((partner) => (
-                <div
-                  key={partner.country}
-                  className="rounded-2xl border border-white/10 bg-navy-mid p-4 transition-colors hover:border-glory-gold/25"
-                >
-                  <div className="mb-2 flex items-center gap-2">
-                    <span className="text-2xl">{partner.flag}</span>
-                    <span className="font-body text-sm font-semibold text-white">
+                <div key={partner.country} className="flex flex-col border-t border-[#E8B923]/30 pt-8">
+                  <div className="mb-4 flex items-center gap-4">
+                    <span className="text-4xl">{partner.flag}</span>
+                    <span className="font-macro-display text-3xl text-white">
                       {partner.country}
                     </span>
                   </div>
-                  <p className="font-hero text-2xl text-glory-gold">
+                  <p className="font-macro-display text-5xl text-[#E8B923] mb-4">
                     {partner.trade}
                   </p>
-                  <p className="mt-1 font-body text-xs text-white/40">
+                  <p className="macro-metadata text-white/40 border-t border-white/10 pt-4 mt-auto">
                     {partner.direction}
                   </p>
                 </div>
@@ -525,129 +489,76 @@ export default async function TradeAndExportsPage() {
 
           {/* Top export companies */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.championsTitle}
             </h2>
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-navy-mid">
-              <div className="overflow-x-auto">
-                <table className="w-full min-w-[580px]">
-                  <thead>
-                    <tr className="border-b border-white/10 bg-white/5">
-                      <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        {copy.companyLabel}
-                      </th>
-                      <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        {copy.sectorLabel}
-                      </th>
-                      <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        {copy.hqLabel}
-                      </th>
-                      <th className="px-5 py-4 text-left font-body text-xs font-semibold uppercase tracking-widest text-white/40">
-                        {copy.roleLabel}
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {topExportCompanies.map((company, i) => (
-                      <tr
-                        key={i}
-                        className="border-b border-white/5 transition-colors hover:bg-white/3"
-                      >
-                        <td className="px-5 py-4 font-body text-sm font-semibold text-white">
-                          {company.company}
-                        </td>
-                        <td className="px-5 py-4">
-                          <span className="rounded-full bg-glory-blue/30 px-2.5 py-0.5 font-body text-xs text-white/65">
-                            {company.sector}
-                          </span>
-                        </td>
-                        <td className="px-5 py-4 font-body text-sm text-white/45">
-                          {company.hq}
-                        </td>
-                        <td className="px-5 py-4 font-body text-sm text-white/55">
-                          {company.note}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+            <div className="grid gap-8 border-t border-white/5 pt-8">
+              {topExportCompanies.map((company, i) => (
+                <div key={i} className="grid grid-cols-1 md:grid-cols-4 gap-6 border-b border-white/10 pb-8 items-center">
+                  <div className="font-macro-display text-3xl text-white">{company.company}</div>
+                  <div>
+                    <span className="macro-metadata border border-white/20 px-3 py-1 text-white">
+                      {company.sector}
+                    </span>
+                  </div>
+                  <div className="font-macro-body text-white/45">{company.hq}</div>
+                  <div className="font-macro-body text-white/60">{company.note}</div>
+                </div>
+              ))}
             </div>
           </section>
 
           {/* Facts */}
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+          <section className="border-t border-white/5 pt-32">
+            <h2 className="macro-section-title text-[clamp(24px,4vw,60px)] mb-16">
               {copy.numbersTitle}
             </h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {tradeFacts.map((fact) => (
-                <FactCard
+            <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
+              {tradeFacts.map((fact, i) => (
+                <MacroFact
                   key={fact.id}
+                  index={i + 1}
                   fact={fact.fact}
                   detail={fact.detail}
-                  source={fact.source}
-                  color={fact.color}
-                  variant="dark"
                 />
               ))}
             </div>
           </section>
 
           {/* Services exports callout */}
-          <section className="overflow-hidden rounded-2xl border border-glory-gold/20 bg-glory-gold/5">
-            <div className="grid md:grid-cols-2">
-              <div className="p-8">
-                <p className="mb-2 section-eyebrow">
-                  {copy.servicesEyebrow}
-                </p>
-                <h2 className="mb-4 font-display text-2xl font-bold text-white">
-                  {copy.servicesTitle}
-                </h2>
-                <p className="font-body text-base leading-relaxed text-white/65">
-                  {copy.servicesP1}
-                </p>
-                <p className="mt-4 font-body text-sm leading-relaxed text-white/55">
-                  {copy.servicesP2}
-                </p>
-              </div>
-              <div className="relative hidden md:block">
-                <Image
-                  src={SITE_IMAGES.economyTradeSkyline}
-                  alt={copy.servicesImageAlt}
-                  fill
-                  className="object-cover opacity-50"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  placeholder="blur"
-                  blurDataURL={BLUR_PLACEHOLDER}
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-glory-gold/5 to-transparent" />
-              </div>
-            </div>
-          </section>
+          <InfrastructureBand
+            imageSrc={SITE_IMAGES.economyTradeSkyline}
+            imageAlt={copy.servicesImageAlt}
+          >
+            <h2 className="macro-section-title mb-6">{copy.servicesTitle}</h2>
+            <p className="macro-body max-w-4xl">{copy.servicesP1}</p>
+            <p className="macro-body max-w-4xl mt-4">{copy.servicesP2}</p>
+          </InfrastructureBand>
 
-          <QuoteBlock
-            quote={
-              locale === "ro"
-                ? "Comerțul este slujitorul libertății. O țară care își poate vinde cele mai bune bunuri și idei în lume își va păstra mereu avantajul competitiv."
-                : "Trade is the handmaiden of freedom. A country that can sell its best goods and ideas to the world will always maintain its competitive edge."
-            }
-            attribution="Ronald Reagan"
-            title={copy.quoteTitle}
-            variant="dark"
-          />
+          <div className="border-t border-white/5 pt-32 pb-16">
+            <QuoteBlock
+              quote={
+                locale === "ro"
+                  ? "Comerțul este slujitorul libertății. O țară care își poate vinde cele mai bune bunuri și idei în lume își va păstra mereu avantajul competitiv."
+                  : "Trade is the handmaiden of freedom. A country that can sell its best goods and ideas to the world will always maintain its competitive edge."
+              }
+              attribution="Ronald Reagan"
+              title={copy.quoteTitle}
+              variant="dark"
+            />
+          </div>
 
           {/* Nav */}
-          <div className="flex items-center justify-between border-t border-white/10 pt-8">
+          <div className="flex items-center justify-between border-t border-white/10 pt-16 mt-32">
             <Link
               href="/economy/dollar-dominance"
-              className="font-body text-sm text-white/50 hover:text-white transition-colors"
+              className="font-macro-mono text-sm uppercase tracking-widest text-white/50 hover:text-white transition-colors"
             >
               {copy.prevLink}
             </Link>
             <Link
               href="/economy"
-              className="font-body text-sm font-semibold text-glory-gold hover:text-glory-gold-dark transition-colors"
+              className="font-macro-mono text-sm uppercase tracking-widest text-[#E8B923] hover:text-white transition-colors"
             >
               {copy.nextLink}
             </Link>

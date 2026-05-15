@@ -13,10 +13,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
-import { FactCard } from "@/components/sections/FactCard";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { SP500Chart } from "@/components/data/SP500Chart";
 import { MarketCapChart } from "@/components/data/DollarMarketCharts";
+import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
   SP500_HISTORY,
@@ -238,52 +238,37 @@ export default async function CapitalMarketsPage() {
 
   return (
     <>
-      {/* Hero */}
-      <div className="relative bg-navy-dark pt-28 pb-16">
-        <Image
-          src={SITE_IMAGES.economyNYSEUpsideDown}
-          alt={copy.heroAlt}
-          fill
-          className="object-cover opacity-20"
-          priority
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL={BLUR_PLACEHOLDER}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/90 to-navy-dark" />
-        <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <MacroStyles />
+      <MacroHero 
+        titleLead={copy.heroLead}
+        titleAccent={copy.heroAccent}
+        eyebrow={copy.heroEyebrow}
+        description={copy.heroBody}
+        imageSrc={SITE_IMAGES.economyNYSEUpsideDown}
+        imageAlt={copy.heroAlt}
+      />
+
+      {/* Main Content */}
+      <div className="bg-[#030405] relative z-10 pb-32 pt-16">
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12 mb-24">
           <Breadcrumb
             items={[
               { label: breadcrumbEconomy, href: "/economy" },
               { label: pageLabel },
             ]}
-            className="mb-8"
           />
-          <p className="mb-4 section-eyebrow">{copy.heroEyebrow}</p>
-          <h1 className="mb-4 font-hero text-6xl text-white sm:text-7xl">
-            {copy.heroLead}
-            <br />
-            <span className="text-glory-gold">{copy.heroAccent}</span>
-          </h1>
-          <p className="max-w-2xl font-body text-lg text-white/65 leading-relaxed">
-            {copy.heroBody}
-          </p>
         </div>
-      </div>
 
-      {/* Content */}
-      <div className="bg-navy-dark">
-        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 space-y-16">
-          {/* Market cap comparison
-              Uses a reusable chart component instead of custom SVG code in this file. */}
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12 space-y-48">
+          {/* Market cap comparison */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.marketCapTitle}
             </h2>
-            <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
+            <p className="macro-body max-w-4xl mb-16">
               {copy.marketCapBody}
             </p>
-            <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
+            <div className="my-24">
               <MarketCapChart
                 data={MARKET_CAP_BY_EXCHANGE}
                 title={copy.marketCapChartTitle}
@@ -294,13 +279,13 @@ export default async function CapitalMarketsPage() {
 
           {/* S&P 500 */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-12">
               {copy.benchmarkTitle}
             </h2>
-            <p className="mb-8 font-body text-lg text-white/65 leading-relaxed">
+            <p className="macro-body max-w-4xl mb-16">
               {copy.benchmarkBody}
             </p>
-            <div className="rounded-2xl border border-white/10 bg-navy-mid p-6 md:p-8">
+            <div className="my-24 bg-[#030405]/50 backdrop-blur-md p-8 border border-white/10">
               <SP500Chart
                 data={SP500_HISTORY}
                 title={copy.benchmarkChartTitle}
@@ -309,33 +294,29 @@ export default async function CapitalMarketsPage() {
             </div>
           </section>
 
-          {/* Major exchanges
-              Generated from the MAJOR_US_EXCHANGES array above. */}
+          {/* Major exchanges */}
           <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+            <h2 className="macro-section-title mb-16">
               {copy.exchangesTitle}
             </h2>
-            <div className="grid gap-5 md:grid-cols-3">
+            <div className="grid gap-16 md:grid-cols-3">
               {exchanges.map((exchange) => (
-                <div
-                  key={exchange.name}
-                  className="rounded-2xl border border-white/10 bg-navy-mid p-6 transition-colors hover:border-glory-gold/30"
-                >
-                  <div className="mb-4 flex items-start justify-between">
-                    <h3 className="font-hero text-3xl text-glory-gold">
+                <div key={exchange.name} className="flex flex-col border-t border-[#E8B923]/30 pt-8">
+                  <div className="mb-8">
+                    <h3 className="font-macro-display text-5xl text-white mb-2">
                       {exchange.name}
                     </h3>
-                    <span className="rounded-full bg-white/8 px-2.5 py-1 font-body text-xs text-white/50">
+                    <span className="macro-metadata text-[#E8B923]">
                       {copy.estLabel} {exchange.founded}
                     </span>
                   </div>
-                  <p className="mb-2 font-hero text-xl text-white">
+                  <p className="font-macro-display text-4xl text-[#E8B923] mb-6">
                     {exchange.marketCap}
                   </p>
-                  <p className="mb-4 font-body text-sm leading-relaxed text-white/55">
+                  <p className="font-macro-body text-white/60 mb-8 leading-relaxed">
                     {exchange.description}
                   </p>
-                  <p className="border-t border-white/8 pt-3 font-body text-xs text-white/35">
+                  <p className="macro-metadata text-white/30 border-t border-white/10 pt-4 mt-auto">
                     {exchange.famous}
                   </p>
                 </div>
@@ -344,46 +325,46 @@ export default async function CapitalMarketsPage() {
           </section>
 
           {/* Extended facts */}
-          <section>
-            <h2 className="mb-6 font-display text-h2 text-white">
+          <section className="border-t border-white/5 pt-32">
+            <h2 className="macro-section-title text-[clamp(24px,4vw,60px)] mb-16">
               {copy.advantageTitle}
             </h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {[...sharedFacts, ...localFacts].map((fact) => (
-                <FactCard
+            <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
+              {[...sharedFacts, ...localFacts].map((fact, i) => (
+                <MacroFact
                   key={fact.id}
+                  index={i + 1}
                   fact={fact.fact}
                   detail={fact.detail}
-                  source={fact.source}
-                  color={fact.color}
-                  variant="dark"
                 />
               ))}
             </div>
           </section>
 
-          <QuoteBlock
-            quote={
-              locale === "ro"
-                ? "Bursa este un mecanism prin care averea este transferată de la cei nerăbdători la cei răbdători. Investitorii americani care au rămas răbdători prin fiecare criză au devenit cei mai bogați oameni din istorie."
-                : "The stock market is a mechanism for transferring wealth from the impatient to the patient. American investors who stayed patient through every crisis became the wealthiest people in history."
-            }
-            attribution="Warren Buffett"
-            title={copy.quoteTitle}
-            variant="dark"
-          />
+          <div className="border-t border-white/5 pt-32 pb-16">
+            <QuoteBlock
+              quote={
+                locale === "ro"
+                  ? "Bursa este un mecanism prin care averea este transferată de la cei nerăbdători la cei răbdători. Investitorii americani care au rămas răbdători prin fiecare criză au devenit cei mai bogați oameni din istorie."
+                  : "The stock market is a mechanism for transferring wealth from the impatient to the patient. American investors who stayed patient through every crisis became the wealthiest people in history."
+              }
+              attribution="Warren Buffett"
+              title={copy.quoteTitle}
+              variant="dark"
+            />
+          </div>
 
           {/* Back nav */}
-          <div className="flex items-center justify-between border-t border-white/10 pt-8">
+          <div className="flex items-center justify-between border-t border-white/10 pt-16 mt-32">
             <Link
               href="/economy/gdp-growth"
-              className="font-body text-sm text-white/50 transition-colors hover:text-white"
+              className="font-macro-mono text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white"
             >
               {copy.prevLink}
             </Link>
             <Link
               href="/economy/startups-venture-capital"
-              className="font-body text-sm font-semibold text-glory-gold transition-colors hover:text-glory-gold-dark"
+              className="font-macro-mono text-sm uppercase tracking-widest text-[#E8B923] transition-colors hover:text-white"
             >
               {copy.nextLink}
             </Link>
