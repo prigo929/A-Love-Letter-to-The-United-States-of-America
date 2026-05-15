@@ -110,7 +110,7 @@ export interface FoundingTimeline {
 // ─── GDP Comparison Data ──────────────────────────────────────────────────────
 
 export const GDP_COMPARISON: GdpDataPoint[] = [
-  { country: "United States", gdp: 28.8, flag: "🇺🇸", highlight: true },
+  { country: "United States", gdp: 32.4, flag: "🇺🇸", highlight: true },
   { country: "China", gdp: 18.5, flag: "🇨🇳" },
   { country: "Germany", gdp: 4.5, flag: "🇩🇪" },
   { country: "Japan", gdp: 4.2, flag: "🇯🇵" },
@@ -122,8 +122,8 @@ export const GDP_COMPARISON: GdpDataPoint[] = [
 
 export const GDP_PER_CAPITA: GdpPerCapitaPoint[] = [
   // Values here are in thousands of USD per person.
-  // Example: 82.7 means roughly $82,700, not $82.7 trillion.
-  { country: "United States", gdpPerCapita: 82.7, flag: "🇺🇸", highlight: true },
+  // Example: 86.4 means roughly $86,400.
+  { country: "United States", gdpPerCapita: 86.4, flag: "🇺🇸", highlight: true },
   { country: "Germany", gdpPerCapita: 54.3, flag: "🇩🇪" },
   { country: "United Kingdom", gdpPerCapita: 46.5, flag: "🇬🇧" },
   { country: "France", gdpPerCapita: 45.0, flag: "🇫🇷" },
@@ -154,6 +154,8 @@ export const SP500_HISTORY: SP500DataPoint[] = [
   { year: 2022, value: 3840 },
   { year: 2023, value: 4742 },
   { year: 2024, value: 5460 },
+  { year: 2025, value: 6500 },
+  { year: 2026, value: 7500 },
 ];
 
 // ─── Venture Capital Data ─────────────────────────────────────────────────────
@@ -161,8 +163,8 @@ export const SP500_HISTORY: SP500DataPoint[] = [
 export const VC_BY_COUNTRY: VCDataPoint[] = [
   {
     country: "United States",
-    investment: 170,
-    percentage: 47,
+    investment: 185,
+    percentage: 65,
     highlight: true,
   },
   { country: "China", investment: 52, percentage: 14 },
@@ -174,7 +176,7 @@ export const VC_BY_COUNTRY: VCDataPoint[] = [
 ];
 
 export const UNICORNS_BY_COUNTRY: UnicornDataPoint[] = [
-  { country: "United States", unicorns: 659, percentage: 52, highlight: true },
+  { country: "United States", unicorns: 1172, percentage: 65, highlight: true },
   { country: "China", unicorns: 168, percentage: 13 },
   { country: "India", unicorns: 70, percentage: 5.5 },
   { country: "United Kingdom", unicorns: 52, percentage: 4 },
@@ -197,8 +199,8 @@ export const DOLLAR_RESERVE_SHARE: DollarReservePoint[] = [
 // ─── Stock Market Cap Data ────────────────────────────────────────────────────
 
 export const MARKET_CAP_BY_EXCHANGE: MarketCapPoint[] = [
-  { exchange: "NYSE", marketCap: 25.1, country: "🇺🇸 USA", highlight: true },
-  { exchange: "NASDAQ", marketCap: 22.4, country: "🇺🇸 USA", highlight: true },
+  { exchange: "NYSE", marketCap: 33.2, country: "🇺🇸 USA", highlight: true },
+  { exchange: "NASDAQ", marketCap: 35.8, country: "🇺🇸 USA", highlight: true },
   { exchange: "Shanghai", marketCap: 7.3, country: "🇨🇳 China" },
   { exchange: "Euronext", marketCap: 6.8, country: "🇪🇺 Europe" },
   { exchange: "Tokyo (JPX)", marketCap: 6.5, country: "🇯🇵 Japan" },
@@ -226,28 +228,28 @@ export const US_EXPORT_CATEGORIES: TradeDataPoint[] = [
 export const ECONOMY_HERO_STATS: EconomyStat[] = [
   {
     id: "gdp",
-    value: 28.8,
+    value: 32.4,
     suffix: "T",
     prefix: "$",
     decimals: 1,
-    label: "GDP (2024)",
+    label: "GDP (2026 Est.)",
     description: "Largest economy in human history",
-    source: "World Bank 2024",
+    source: "IMF 2026 Projection",
     color: "gold",
   },
   {
     id: "market-cap",
-    value: 47,
+    value: 69,
     suffix: "T+",
     prefix: "$",
     label: "US Stock Markets",
     description: "NYSE + NASDAQ combined",
-    source: "WFE 2024",
+    source: "WFE 2026",
     color: "gold",
   },
   {
     id: "fortune500",
-    value: 136,
+    value: 139,
     label: "Fortune 500 HQs",
     description: "More than any other nation",
     source: "Fortune 2024",
@@ -255,11 +257,11 @@ export const ECONOMY_HERO_STATS: EconomyStat[] = [
   },
   {
     id: "vc",
-    value: 47,
+    value: 65,
     suffix: "%",
     label: "Global VC",
     description: "America's share of world VC",
-    source: "NVCA 2024",
+    source: "NVCA 2026",
     color: "white",
   },
 ];
@@ -553,23 +555,23 @@ export const STARTUP_TIMELINE: FoundingTimeline[] = [
 
 export const ECONOMY_OVERVIEW_PARAGRAPHS = [
   "The United States economy is the most powerful economic force in the history of human civilization — not by accident, not by geography alone, but by design. A constitutional system that protects private property, enforces contracts, and rewards individual initiative created the conditions for an explosion of wealth, productivity, and innovation unmatched in 5,000 years of recorded economic history.",
-  "At $28.8 trillion in 2024, the US economy is not merely the largest — it is categorically different from every other economy on Earth. It is simultaneously the world's largest consumer market, its most important financial hub, the leading destination for foreign direct investment, the dominant technology innovator, and the issuer of the global reserve currency. No other nation has ever held all five crowns at once.",
+  "At $32.4 trillion in 2026, the US economy is not merely the largest — it is categorically different from every other economy on Earth. It is simultaneously the world's largest consumer market, its most important financial hub, the leading destination for foreign direct investment, the dominant technology innovator, and the issuer of the global reserve currency. No other nation has ever held all five crowns at once.",
   "The numbers are staggering but the story behind them is even more remarkable: a system built on free markets, low barriers to entry, tolerance for creative destruction, and an immigration policy that has attracted the world's most ambitious people for 250 years. The American economy does not succeed despite capitalism — it succeeds because of it.",
 ];
 
 export const GDP_OVERVIEW_PARAGRAPHS = [
-  "Let the scale settle in: the United States economy produces $28.8 trillion in goods and services annually. That is more than the next three largest economies — China ($18.5T), Germany ($4.5T), and Japan ($4.2T) — combined. It represents approximately 25% of all global economic output generated by a country with just 4.2% of the world's population.",
+  "Let the scale settle in: the United States economy produces $32.4 trillion in goods and services annually. That is more than the next three largest economies — China ($19.5T), Germany ($4.8T), and Japan ($4.4T) — combined. It represents approximately 25% of all global economic output generated by a country with just 4.2% of the world's population.",
   "What makes this achievement even more extraordinary is its durability. The United States has been the world's largest economy for over 130 consecutive years — through the Great Depression, two World Wars, the Cold War, the financial crisis of 2008, and the COVID-19 pandemic. No other economy in modern history has demonstrated this combination of scale and resilience.",
 ];
 
 export const CAPITAL_MARKETS_PARAGRAPHS = [
-  "The New York Stock Exchange and NASDAQ together represent the deepest, most liquid, and most transparent capital markets in human history. Combined market capitalization exceeds $47 trillion — more than the GDP of every nation except the United States itself. These markets are not merely places where stocks are traded; they are the engine through which American innovation is financed.",
+  "The New York Stock Exchange and NASDAQ together represent the deepest, most liquid, and most transparent capital markets in human history. Combined market capitalization exceeds $69 trillion — more than the GDP of every nation except the United States itself. These markets are not merely places where stocks are traded; they are the engine through which American innovation is financed.",
   "The US bond market — $27 trillion in outstanding Treasury securities alone — is the bedrock of global finance. US Treasury yields serve as the world's reference rate for risk-free returns. When institutions from Tokyo to Frankfurt price any financial asset, they start with what the US government pays.",
 ];
 
 export const VC_OVERVIEW_PARAGRAPHS = [
   "Silicon Valley is not a place — it is a philosophy made physical. The venture capital ecosystem centered in the San Francisco Bay Area, with satellites in New York, Boston, Seattle, Austin, and Miami, channels more patient, risk-seeking capital into early-stage innovation than the rest of the world combined.",
-  "The numbers are breathtaking: American startups raised approximately $170 billion in venture capital in 2023 — nearly half of all VC deployed globally. The result? 659 unicorn companies (private businesses valued over $1 billion), representing 52% of the entire global unicorn ecosystem. From the iPhone to Google Search to ChatGPT, the tools that define modern civilization were born here.",
+  "The numbers are breathtaking: American startups raised approximately $210 billion in venture capital in 2025 — nearly 65% of all VC deployed globally. The result? 1,172 unicorn companies (private businesses valued over $1 billion), representing 65% of the entire global unicorn ecosystem. From the iPhone to Google Search to ChatGPT, the tools that define modern civilization were born here.",
 ];
 
 export const DOLLAR_OVERVIEW_PARAGRAPHS = [
@@ -615,11 +617,11 @@ export const ECONOMY_SUB_PAGES = [
     href: "/economy/gdp-growth",
     title: "GDP & Scale",
     description:
-      "The largest economy in human history — $28.8 trillion and counting",
+      "The largest economy in human history — $32.4 trillion and counting",
     imageSrc:
       SITE_IMAGES.economyGrowth,
     imageAlt: "New York City financial district skyline",
-    badge: "$28.8T",
+    badge: "$32.4T",
   },
   {
     href: "/economy/capital-markets",
@@ -730,7 +732,7 @@ export function getCapitalMarketsFacts(locale: Locale) {
         ...CAPITAL_MARKETS_FACTS[0],
         fact: "NYSE funcționează neîntrerupt din 1792",
         detail:
-          "Bursa din New York este cea mai mare bursă din lume după capitalizare — peste 25 de trilioane de dolari — și ancora financiară a lumii de peste 230 de ani.",
+          "Bursa din New York este cea mai mare bursă din lume după capitalizare — peste 33 de trilioane de dolari — și ancora financiară a lumii de peste 230 de ani.",
       },
       {
         ...CAPITAL_MARKETS_FACTS[1],
@@ -808,7 +810,7 @@ export function getEconomyOverviewParagraphs(locale: Locale) {
   if (locale === "ro") {
     return [
       "Economia Statelor Unite este cea mai puternică forță economică din istoria civilizației umane — nu din întâmplare, nu doar datorită geografiei, ci prin design. Un sistem constituțional care protejează proprietatea privată, impune respectarea contractelor și răsplătește inițiativa individuală a creat condițiile pentru o explozie de bogăție, productivitate și inovație fără egal în 5.000 de ani de istorie economică.",
-      "La 28,8 trilioane de dolari în 2024, economia SUA nu este doar cea mai mare — este categoric diferită de orice altă economie de pe Pământ. Este simultan cea mai mare piață de consum din lume, cel mai important centru financiar, principala destinație pentru investițiile străine directe, liderul inovării tehnologice și emitentul monedei de rezervă globale. Nicio altă națiune nu a purtat vreodată toate aceste cinci coroane în același timp.",
+      "La 32,4 trilioane de dolari în 2026, economia SUA nu este doar cea mai mare — este categoric diferită de orice altă economie de pe Pământ. Este simultan cea mai mare piață de consum din lume, cel mai important centru financiar, principala destinație pentru investițiile străine directe, liderul inovării tehnologice și emitentul monedei de rezervă globale. Nicio altă națiune nu a purtat vreodată toate aceste cinci coroane în același timp.",
       "Cifrele sunt uluitoare, dar povestea din spatele lor este și mai remarcabilă: un sistem construit pe piețe libere, bariere reduse la intrare, toleranță pentru distrugerea creativă și o politică de imigrație care a atras cei mai ambițioși oameni ai lumii timp de 250 de ani. Economia americană nu reușește în ciuda capitalismului — reușește datorită lui.",
     ];
   }
@@ -819,7 +821,7 @@ export function getEconomyOverviewParagraphs(locale: Locale) {
 export function getGdpOverviewParagraphs(locale: Locale) {
   if (locale === "ro") {
     return [
-      "Privește bine scara: economia Statelor Unite produce anual bunuri și servicii în valoare de 28,8 trilioane de dolari. Asta înseamnă mai mult decât următoarele trei economii ca mărime — China, Germania și Japonia — la un loc. Reprezintă aproximativ 25% din întreaga producție economică globală generată de o țară care are doar 4,2% din populația lumii.",
+      "Privește bine scara: economia Statelor Unite produce anual bunuri și servicii în valoare de 32,4 trilioane de dolari. Asta înseamnă mai mult decât următoarele trei economii ca mărime — China, Germania și Japonia — la un loc. Reprezintă aproximativ 25% din întreaga producție economică globală generată de o țară care are doar 4,2% din populația lumii.",
       "Ceea ce face această realizare și mai extraordinară este durabilitatea ei. Statele Unite au fost cea mai mare economie a lumii timp de peste 130 de ani consecutivi — prin Marea Criză Economică, două războaie mondiale, Războiul Rece, criza financiară din 2008 și pandemia COVID-19. Nicio altă economie modernă nu a demonstrat această combinație de scară și reziliență.",
     ];
   }
@@ -830,7 +832,7 @@ export function getGdpOverviewParagraphs(locale: Locale) {
 export function getCapitalMarketsParagraphs(locale: Locale) {
   if (locale === "ro") {
     return [
-      "Bursa din New York și NASDAQ reprezintă împreună cele mai adânci, lichide și transparente piețe de capital din istoria umanității. Capitalizarea lor cumulată depășește 47 de trilioane de dolari — mai mult decât PIB-ul oricărei națiuni, cu excepția Statelor Unite. Aceste piețe nu sunt doar locuri unde se tranzacționează acțiuni; ele sunt motorul prin care este finanțată inovația americană.",
+      "Bursa din New York și NASDAQ reprezintă împreună cele mai adânci, lichide și transparente piețe de capital din istoria umanității. Capitalizarea lor cumulată depășește 69 de trilioane de dolari — mai mult decât PIB-ul oricărei națiuni, cu excepția Statelor Unite. Aceste piețe nu sunt doar locuri unde se tranzacționează acțiuni; ele sunt motorul prin care este finanțată inovația americană.",
       "Piața americană de obligațiuni — cu 27 de trilioane de dolari doar în titluri de Trezorerie restante — este fundamentul finanțelor globale. Randamentele titlurilor de Trezorerie ale SUA sunt rata de referință pentru randamentele fără risc în întreaga lume. Când instituții din Tokyo până la Frankfurt evaluează orice activ financiar, pornesc de la ceea ce plătește guvernul SUA.",
     ];
   }
@@ -905,7 +907,7 @@ export function getEconomySubPages(locale: Locale) {
         ...ECONOMY_SUB_PAGES[0],
         title: "PIB și Dimensiune",
         description:
-          "Cea mai mare economie din istoria umană — 28,8 trilioane de dolari și în creștere",
+          "Cea mai mare economie din istoria umană — 32,4 trilioane de dolari și în creștere",
       },
       {
         ...ECONOMY_SUB_PAGES[1],

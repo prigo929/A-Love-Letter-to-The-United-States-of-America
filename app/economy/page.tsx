@@ -165,11 +165,11 @@ function getEconomyPageCopy(locale: Locale) {
       heroTitleLead: "MOTORUL",
       heroTitleAccent: "LUMII",
       heroDescription:
-        "Economia Statelor Unite este cea mai puternică forță economică din istoria civilizației umane — 28,8 trilioane de dolari producție anuală, moneda de rezervă a lumii și capitala globală a inovației.",
+        "Economia Statelor Unite este cea mai puternică forță economică din istoria civilizației umane — 32,4 trilioane de dolari producție anuală, moneda de rezervă a lumii și capitala globală a inovației.",
       heroStats: [
-        { value: "$28.8T", label: "PIB 2024", sub: "Banca Mondială" },
+        { value: "$32.4T", label: "PIB 2026", sub: "IMF Projection" },
         { value: "25%", label: "din PIB-ul mondial", sub: "FMI" },
-        { value: "136", label: "sedii Fortune 500", sub: "Fortune 2024" },
+        { value: "139", label: "sedii Fortune 500", sub: "Fortune 2024" },
       ],
       tocItems: [
         { label: "Prezentare", href: "#overview" },
@@ -208,7 +208,7 @@ function getEconomyPageCopy(locale: Locale) {
       "US GDP in USD Trillions — larger than the next three economies combined",
     gdpPerCapitaTitle: "GDP Per Capita: USA vs G7 & Emerging Markets (2024)",
     gdpPerCapitaSubtitle:
-      "At $82,700 per person, Americans produce more wealth per capita than any major nation",
+      "At $86,400 per person, Americans produce more wealth per capita than any major nation",
     gdpPerCapitaValueLabel: "GDP per capita (2024, USD Thousands)",
     fullGdpAnalysis: "Full GDP Analysis →",
     capitalEyebrow: "Capital Markets",
@@ -219,7 +219,7 @@ function getEconomyPageCopy(locale: Locale) {
     fullCapitalMarketsAnalysis: "Full Capital Markets Analysis →",
     vcEyebrow: "Venture Capital & Startups",
     vcTitle: "Silicon Valley Is a Planet",
-    vcChartTitle: "Venture Capital Investment by Country (2023)",
+    vcChartTitle: "Venture Capital Investment by Country (2024)",
     startupTimelineTitle: "American Companies That Rewired the World",
     foundedLabel: "Founded",
     companyLabel: "Company",
@@ -248,11 +248,11 @@ function getEconomyPageCopy(locale: Locale) {
     heroTitleLead: "THE ENGINE",
     heroTitleAccent: "OF THE WORLD",
     heroDescription:
-      "The United States economy is the most powerful economic force in the history of human civilization — $28.8 trillion in annual output, the world's reserve currency, and the innovation capital of Earth.",
+      "The United States economy is the most powerful economic force in the history of human civilization — $32.4 trillion in annual output, the world's reserve currency, and the innovation capital of Earth.",
     heroStats: [
-      { value: "$28.8T", label: "GDP 2024", sub: "World Bank" },
+      { value: "$32.4T", label: "GDP 2026", sub: "IMF Projection" },
       { value: "25%", label: "of World GDP", sub: "IMF" },
-      { value: "136", label: "Fortune 500 HQs", sub: "Fortune 2024" },
+      { value: "139", label: "Fortune 500 HQs", sub: "Fortune 2024" },
     ],
     tocItems: [
       { label: "Overview", href: "#overview" },
