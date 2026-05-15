@@ -161,7 +161,7 @@ export function MacroHero({ imageSrc, imageAlt, eyebrow, titleLead, titleAccent,
         className="relative z-10 flex min-h-[70dvh] flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto w-full"
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 lg:items-start pt-20">
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-8">
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -177,8 +177,16 @@ export function MacroHero({ imageSrc, imageAlt, eyebrow, titleLead, titleAccent,
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
               className="macro-hero-title drop-shadow-2xl"
             >
-              <span className="block text-white">{titleLead}</span>
-              <span className="block text-[#E8B923]">{titleAccent}</span>
+              <span className="block text-white">
+                {titleLead.split('\n').map((line, i) => (
+                  <span key={i} className="block">{line}</span>
+                ))}
+              </span>
+              <span className="block text-[#E8B923]">
+                {titleAccent.split('\n').map((line, i) => (
+                  <span key={i} className="block">{line}</span>
+                ))}
+              </span>
             </motion.h1>
           </div>
           <div className="lg:col-span-4 lg:col-start-9 pb-4">

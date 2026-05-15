@@ -223,8 +223,8 @@ export default async function StartupsVCPage() {
       ? {
           heroAlt: "Birou modern de startup — cultura inovației din Silicon Valley",
           heroEyebrow: "Venture Capital și Startup-uri",
-          heroLead: "SILICON VALLEY",
-          heroAccent: "ESTE O PLANETĂ",
+          heroLead: "SILICON\nVALLEY",
+          heroAccent: "ESTE O\nPLANETĂ",
           heroBody:
             "Niciun colț al Pământului nu a produs mai multe companii transformatoare, mai mulți miliardari sau mai multă tehnologie care schimbă lumea pe kilometru pătrat. Ecosistemul american de startup-uri este o forță a naturii.",
           overviewTitle: "De ce America conduce lumea în capitalul pentru inovație",
@@ -258,8 +258,8 @@ export default async function StartupsVCPage() {
       : {
           heroAlt: "Modern startup office — Silicon Valley innovation culture",
           heroEyebrow: "Venture Capital & Startups",
-          heroLead: "SILICON VALLEY",
-          heroAccent: "IS A PLANET",
+          heroLead: "SILICON\nVALLEY",
+          heroAccent: "IS A\nPLANET",
           heroBody:
             "No corner of Earth has produced more transformative companies, more billionaires, or more world-changing technology per square mile. America's startup ecosystem is a force of nature.",
           overviewTitle: "Why America Leads the World in Innovation Capital",

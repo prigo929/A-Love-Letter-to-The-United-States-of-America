@@ -193,7 +193,7 @@ export default async function CapitalMarketsPage() {
           heroAlt: "Ecrane de tranzacționare bursieră",
           heroEyebrow: "Piețe de Capital",
           heroLead: "WALL STREET",
-          heroAccent: "ALIMENTEAZĂ LUMEA",
+          heroAccent: "SUSȚINE LUMEA",
           heroBody:
             "NYSE + NASDAQ: 69 de trilioane de dolari capitalizare combinată. Titlurile de Trezorerie americane ca reper global pentru rata fără risc. Cele mai adânci, transparente și lichide piețe de capital din istoria umană.",
           marketCapTitle: "Capitalizarea burselor — SUA vs. lume",

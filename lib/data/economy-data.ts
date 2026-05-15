@@ -930,7 +930,7 @@ export function getEconomySubPages(locale: Locale) {
         ...ECONOMY_SUB_PAGES[4],
         title: "Comerț și Exporturi",
         description:
-          "America alimentează comerțul global — de la avioane la software",
+          "America susține comerțul global — de la avioane la software",
       },
     ];
   }
