@@ -117,7 +117,7 @@ export default async function RockiesPage() {
               {parks.map((park) => (
                 <div key={park.name} className="border-b border-white/4 pb-6 last:border-0 group">
                   <p className="nat-text-metadata text-white/40 mb-1 tracking-widest">{park.state}</p>
-                  <p className="text-lg font-semibold text-white tracking-wide mb-2 group-hover:text-[var(--nat-accent-glacier)] transition-colors">
+                  <p className="text-lg font-semibold text-white tracking-wide mb-2 group-hover:text-(--nat-accent-glacier) transition-colors">
                     {park.name}
                   </p>
                   <p className="nat-text-body">{park.highlight}</p>

@@ -138,7 +138,7 @@ export function MacroHero({ imageSrc, imageAlt, eyebrow, titleLead, titleAccent,
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
 
   return (
-    <div ref={ref} className="relative min-h-[100vh] w-full overflow-hidden bg-[#030405] pt-48 pb-24">
+    <div ref={ref} className="relative min-h-screen w-full overflow-hidden bg-[#030405] pt-48 pb-24">
       <motion.div style={{ y, scale, opacity: 0.6 }} className="absolute inset-0">
         <Image
           src={imageSrc}
@@ -285,7 +285,7 @@ export function InfrastructureBand({ imageSrc, imageAlt, children }: { imageSrc:
 
   return (
     <div ref={ref} className="relative w-full my-32 overflow-hidden bg-[#030405]">
-      <motion.div style={{ y }} className="absolute inset-0 h-[130%] -top-[15%]">
+      <motion.div style={{ y }} className="absolute inset-0 h-[130%] top-[-15%]">
         <Image
           src={imageSrc}
           alt={imageAlt}

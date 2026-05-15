@@ -525,7 +525,7 @@ export function BranchSelector({ branches, locale = 'en' }: { branches: Military
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: 0.2 + i * 0.08 }}
-                    className="flex gap-3 border-l-[2px] pl-4 py-1"
+                    className="flex gap-3 border-l-2 pl-4 py-1"
                     style={{ borderColor: `${branch.accentColor}40` }}
                   >
                     <p className="text-xs leading-snug text-white/55">{fact}</p>
@@ -617,7 +617,7 @@ export function DARPAProgramGrid({ programs, locale = 'en' }: { programs: DARPAP
 
       <AnimatePresence>
         {selectedId && selectedProgram && (
-          <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-110 flex items-center justify-center p-4">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -1167,7 +1167,7 @@ export function BudgetComparisonBar({
 
   return (
     <div ref={ref} className="overflow-hidden rounded-2xl border border-white/8 bg-[#080C14] p-6">
-      <p className="mb-6 font-mono text-[9px] uppercase tracking-[0.3em] text-white/35 font-mono">{displayLabel}</p>
+      <p className="mb-6 font-mono text-[9px] uppercase tracking-[0.3em] text-white/35">{displayLabel}</p>
       <div className="space-y-3">
         {data.map((row, i) => {
           const isHighlight = row.highlight || row.country.includes("United States") || row.country.includes("Statele Unite");
@@ -1177,7 +1177,7 @@ export function BudgetComparisonBar({
               <div className="mb-1.5 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="text-sm">{row.flag}</span>
-                  <span className={`mil-text-metadata font-[family-name:var(--font-archivo)] tracking-normal text-[11px] ${isHighlight ? "text-white font-bold" : "text-white/40"}`}>
+                  <span className={`mil-text-metadata font-(family-name:--font-archivo) tracking-normal text-[11px] ${isHighlight ? "text-white font-bold" : "text-white/40"}`}>
                     {row.country}
                   </span>
                 </div>
@@ -1202,7 +1202,7 @@ export function BudgetComparisonBar({
           );
         })}
       </div>
-      <p className="mt-4 text-right font-mono text-[8px] text-white/20 font-mono">Source: SIPRI Military Expenditure Database 2024</p>
+      <p className="mt-4 text-right font-mono text-[8px] text-white/20">Source: SIPRI Military Expenditure Database 2024</p>
     </div>
   );
 }
