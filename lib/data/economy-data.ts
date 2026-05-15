@@ -154,6 +154,7 @@ export const SP500_HISTORY: SP500DataPoint[] = [
   { year: 2022, value: 3840 },
   { year: 2023, value: 4742 },
   { year: 2024, value: 5460 },
+  { year: 2025, value: 6020 },
 ];
 
 // ─── Venture Capital Data ─────────────────────────────────────────────────────
@@ -161,8 +162,8 @@ export const SP500_HISTORY: SP500DataPoint[] = [
 export const VC_BY_COUNTRY: VCDataPoint[] = [
   {
     country: "United States",
-    investment: 170,
-    percentage: 47,
+    investment: 210,
+    percentage: 50,
     highlight: true,
   },
   { country: "China", investment: 52, percentage: 14 },
@@ -174,7 +175,7 @@ export const VC_BY_COUNTRY: VCDataPoint[] = [
 ];
 
 export const UNICORNS_BY_COUNTRY: UnicornDataPoint[] = [
-  { country: "United States", unicorns: 659, percentage: 52, highlight: true },
+  { country: "United States", unicorns: 819, percentage: 53, highlight: true },
   { country: "China", unicorns: 168, percentage: 13 },
   { country: "India", unicorns: 70, percentage: 5.5 },
   { country: "United Kingdom", unicorns: 52, percentage: 4 },
@@ -186,7 +187,7 @@ export const UNICORNS_BY_COUNTRY: UnicornDataPoint[] = [
 // ─── Dollar Reserve Data (IMF COFER 2024) ─────────────────────────────────────
 
 export const DOLLAR_RESERVE_SHARE: DollarReservePoint[] = [
-  { currency: "US Dollar (USD)", percentage: 57.4, color: "#B22234" },
+  { currency: "US Dollar (USD)", percentage: 57.8, color: "#B22234" },
   { currency: "Euro (EUR)", percentage: 20.0, color: "#3C3B6E" },
   { currency: "Japanese Yen", percentage: 5.8, color: "#4B5563" },
   { currency: "British Pound", percentage: 4.8, color: "#6B7280" },
@@ -197,8 +198,8 @@ export const DOLLAR_RESERVE_SHARE: DollarReservePoint[] = [
 // ─── Stock Market Cap Data ────────────────────────────────────────────────────
 
 export const MARKET_CAP_BY_EXCHANGE: MarketCapPoint[] = [
-  { exchange: "NYSE", marketCap: 25.1, country: "🇺🇸 USA", highlight: true },
-  { exchange: "NASDAQ", marketCap: 22.4, country: "🇺🇸 USA", highlight: true },
+  { exchange: "NYSE", marketCap: 31.5, country: "🇺🇸 USA", highlight: true },
+  { exchange: "NASDAQ", marketCap: 28.5, country: "🇺🇸 USA", highlight: true },
   { exchange: "Shanghai", marketCap: 7.3, country: "🇨🇳 China" },
   { exchange: "Euronext", marketCap: 6.8, country: "🇪🇺 Europe" },
   { exchange: "Tokyo (JPX)", marketCap: 6.5, country: "🇯🇵 Japan" },
@@ -237,25 +238,25 @@ export const ECONOMY_HERO_STATS: EconomyStat[] = [
   },
   {
     id: "market-cap",
-    value: 47,
-    suffix: "T+",
+    value: 69,
+    suffix: "T",
     prefix: "$",
     label: "US Stock Markets",
     description: "NYSE + NASDAQ combined",
-    source: "WFE 2024",
+    source: "WFE 2025",
     color: "gold",
   },
   {
     id: "fortune500",
-    value: 136,
-    label: "Fortune 500 HQs",
-    description: "More than any other nation",
+    value: 139,
+    label: "Fortune Global 500",
+    description: "U.S. reclaimed #1 spot",
     source: "Fortune 2024",
     color: "white",
   },
   {
     id: "vc",
-    value: 47,
+    value: 50,
     suffix: "%",
     label: "Global VC",
     description: "America's share of world VC",
