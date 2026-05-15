@@ -67,10 +67,10 @@ export function MacroStyles() {
 
       .macro-stat-value {
         font-family: var(--font-macro-display);
-        font-size: clamp(48px, 8vw, 120px);
+        font-size: clamp(40px, 6vw, 90px);
         font-weight: 900;
-        line-height: 0.85;
-        letter-spacing: -0.05em;
+        line-height: 0.9;
+        letter-spacing: -0.04em;
         color: var(--macro-accent);
       }
 
