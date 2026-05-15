@@ -239,8 +239,8 @@ export const NATURE_SUB_PAGES: NatureSubPage[] = [
     href: "/nature/yellowstone",
     title: "Yellowstone",
     description: "World's first national park — 10,000 hydrothermal features, 5,000 bison",
-    imageSrc: SITE_IMAGES.yellowstonePrismatic,
-    imageAlt: "Yellowstone Grand Prismatic Spring",
+    imageSrc: SITE_IMAGES.yellowstoneNationalPark,
+    imageAlt: "Yellowstone National Park landscape",
     badge: "Est. 1872",
   },
   {

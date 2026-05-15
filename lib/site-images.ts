@@ -93,7 +93,7 @@ export const SITE_IMAGES = {
   homeUsaAtNightFromSpace: homeUsaAtNightFromSpace.src,
   constitutionDocument: constitutionDocument.src,
   grandTeton: grandTeton.src,
-  yellowstonePrismatic: yellowstonePrismatic.src,
+  yellowstonePrismatic: yellowstoneNationalPark.src,
   chicagoSkyline: chicagoSkyline.src,
   harvardCampus: harvardCampus.src,
   siliconValleyOffice: siliconValleyOffice.src,

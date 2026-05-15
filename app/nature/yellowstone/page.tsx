@@ -102,8 +102,8 @@ export default async function YellowstonePage() {
 
       {/* ── HERO — single image cinematic entrance ───────────────────────── */}
       <NatureSubPageHero
-        imageSrc={SITE_IMAGES.yellowstonePrismatic}
-        imageAlt={isRo ? "Marele Izvor Prismatic, Yellowstone" : "Grand Prismatic Spring, Yellowstone"}
+        imageSrc={SITE_IMAGES.yellowstoneNationalPark}
+        imageAlt={isRo ? "Parcul Național Yellowstone" : "Yellowstone National Park"}
         label={isRo ? "PARCUL NAȚIONAL YELLOWSTONE · WYOMING" : "YELLOWSTONE NATIONAL PARK · WYOMING"}
       >
         <HeroTextReveal
