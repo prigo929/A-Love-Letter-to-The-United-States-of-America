@@ -29,7 +29,7 @@ export default async function AmericanHighSchoolPage() {
       </div>
 
       <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto min-h-[65vh] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
+        <div className="mx-auto min-h-[65dvh] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
           {/* TODO: Drop in existing parallax image of school bus here */}
         </div>
       </section>

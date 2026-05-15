@@ -27,7 +27,7 @@ export default async function QualityOfLifePage() {
 
       <section
         id="hero"
-        className="min-h-[70vh] scroll-mt-24 border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8"
+        className="min-h-[70dvh] scroll-mt-24 border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-center rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
           {/* TODO: Drop in existing background video and H1 title here */}

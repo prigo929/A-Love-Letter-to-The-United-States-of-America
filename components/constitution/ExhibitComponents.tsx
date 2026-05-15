@@ -310,7 +310,7 @@ export function BreathingSection({
   return (
     <div
       ref={ref}
-      className="relative flex min-h-[70vh] items-center justify-center overflow-hidden"
+      className="relative flex min-h-[70dvh] items-center justify-center overflow-hidden"
     >
       {/* Marble texture ambient */}
       <div
@@ -557,7 +557,7 @@ export function WeThePeople({ isRo }: { isRo: boolean }) {
     <section
       ref={containerRef}
       className="relative bg-[#080B12]"
-      style={{ height: "120vh" }}
+      style={{ height: "120dvh" }}
     >
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
         {/* Subtle marble ambient */}

@@ -41,12 +41,14 @@
     font-family: "Inter", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
   }
 
   body {
     @apply bg-navy-dark text-white;
-    overflow-x: clip;
+    width: 100%;
+    overflow-x: hidden;
   }
 
   /* Headings use Playfair Display */
@@ -59,6 +61,8 @@
     font-family: "Playfair Display", Georgia, serif;
     font-weight: 700;
     line-height: 1.15;
+    max-width: 100%;
+    overflow-wrap: break-word;
   }
 
   /* Focus ring — gold for the patriotic theme */
@@ -313,10 +317,10 @@
 @layer utilities {
   /* Viewport units that account for mobile browser chrome */
   .min-h-screen-safe {
-    min-height: 100svh;
+    min-height: 100dvh;
   }
   .h-screen-safe {
-    height: 100svh;
+    height: 100dvh;
   }
 
   /* Text balance for headings */

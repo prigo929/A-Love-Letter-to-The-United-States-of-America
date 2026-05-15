@@ -72,7 +72,7 @@ export function CinematicStat({
   return (
     <div
       ref={ref}
-      className="relative flex min-h-[70vh] items-center justify-center overflow-hidden"
+      className="relative flex min-h-[70dvh] items-center justify-center overflow-hidden"
       style={{ position: "relative" }}
     >
       {/* Background glow */}
@@ -162,7 +162,7 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
     <section
       ref={containerRef}
       className="relative bg-[#080B12]"
-      style={{ height: "200vh", position: "relative" }}
+      style={{ height: "200dvh", position: "relative" }}
     >
       <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden">
         {/* Parchment watermark */}

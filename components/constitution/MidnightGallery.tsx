@@ -171,7 +171,7 @@ function DossierPanel({
 
       {/* Dossier card */}
       <motion.div
-        className="relative z-10 mx-4 max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-sm"
+        className="relative z-10 mx-4 max-h-[90dvh] w-full max-w-4xl overflow-y-auto rounded-sm"
         style={{
           background: "linear-gradient(168deg, rgba(12,16,24,0.98) 0%, rgba(8,11,18,1) 100%)",
           border: "1px solid rgba(201,168,76,0.12)",

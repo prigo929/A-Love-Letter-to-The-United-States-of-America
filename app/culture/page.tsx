@@ -21,7 +21,7 @@ export default async function CulturePage() {
         id="hero"
         className="scroll-mt-24 border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8"
       >
-        <div className="mx-auto min-h-[60vh] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
+        <div className="mx-auto min-h-[60dvh] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
           {/* TODO: Drop in existing dark mode gradient and main title here */}
         </div>
       </section>

@@ -22,7 +22,7 @@ export function ParallaxSection({
   overlay = "from-navy-dark/80 via-navy-dark/50 to-transparent",
   children,
   className,
-  minHeight = "min-h-[60vh]",
+  minHeight = "min-h-[60dvh]",
 }: ParallaxSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
 
