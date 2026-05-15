@@ -341,7 +341,7 @@ export default async function EconomyPage() {
           </div>
 
           {/* Hero stat cards - Replaced with MacroStat */}
-          <div className="mt-24 grid gap-16 sm:grid-cols-2 xl:grid-cols-4 border-t border-white/5 pt-16">
+          <div className="mt-24 grid gap-x-12 gap-y-16 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-white/5 pt-16">
             {economyHeroStats.map((stat) => (
               <MacroStat
                 key={stat.id}
