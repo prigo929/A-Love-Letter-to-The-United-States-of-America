@@ -2,7 +2,7 @@
 // A deep-dive vertical focusing on the magnitude of the US economy.
 //
 // Pedagogical Goal:
-// - To contextualize $28.8 trillion by comparing individual US states to 
+// - To contextualize $32.4 trillion by comparing individual US states to 
 //   entire G7 nations.
 // - To demonstrate the historical resilience of American GDP.
 //
@@ -32,7 +32,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "GDP & Scale | Economy",
   description:
-    "$28.8 trillion GDP — the United States has been the world's largest economy for over 130 years. A deep dive into American economic scale, resilience, and dominance.",
+    "$32.4 trillion GDP — the United States has been the world's largest economy for over 130 years. A deep dive into American economic scale, resilience, and dominance.",
   alternates: { canonical: "/economy/gdp-growth" },
 };
 
@@ -49,18 +49,18 @@ const GDP_EXTENDED_FACTS = [
   },
   {
     id: "gdp-california",
-    fact: "California alone would be the 5th largest economy on Earth",
+    fact: "California alone would be the 4th largest economy on Earth",
     detail:
-      "At approximately $3.9 trillion in state GDP, California outperforms the United Kingdom, France, and India. A single American state.",
-    source: "Bureau of Economic Analysis 2024",
+      "At approximately $4.25 trillion in state GDP, California has overtaken Japan to become the world's 4th largest economy if it were its own country.",
+    source: "Bureau of Economic Analysis 2025",
     color: "red" as const,
   },
   {
     id: "gdp-texas",
-    fact: "Texas GDP exceeds all of Russia's",
+    fact: "Texas GDP exceeds all of Brazil or Russia",
     detail:
-      "The state of Texas, with a GDP of approximately $2.4 trillion, produces more economic output annually than the entire Russian Federation.",
-    source: "BEA & World Bank 2024",
+      "The state of Texas, with a GDP of approximately $2.9 trillion, produces more economic output annually than the entire nation of Brazil or the Russian Federation.",
+    source: "BEA & World Bank 2025",
     color: "blue" as const,
   },
   {
@@ -92,21 +92,21 @@ const GDP_EXTENDED_FACTS = [
 const STATE_GDP_RANKINGS = [
   {
     state: "California",
-    gdp: "$3.9T",
-    rank: 5,
-    comparison: "Larger than the UK",
+    gdp: "$4.25T",
+    rank: 4,
+    comparison: "Larger than Japan",
   },
-  { state: "Texas", gdp: "$2.4T", rank: 10, comparison: "Larger than Russia" },
+  { state: "Texas", gdp: "$2.9T", rank: 8, comparison: "Larger than Brazil" },
   {
     state: "New York",
-    gdp: "$2.1T",
-    rank: 11,
-    comparison: "Larger than South Korea",
+    gdp: "$2.5T",
+    rank: 10,
+    comparison: "Larger than Canada",
   },
   {
     state: "Florida",
-    gdp: "$1.4T",
-    rank: 16,
+    gdp: "$1.6T",
+    rank: 15,
     comparison: "Larger than Mexico",
   },
   {
@@ -148,15 +148,15 @@ export default async function GdpGrowthPage() {
           },
           {
             ...GDP_EXTENDED_FACTS[1],
-            fact: "Doar California ar fi a 5-a economie ca mărime de pe Pământ",
+            fact: "Doar California ar fi a 4-a economie ca mărime de pe Pământ",
             detail:
-              "Cu aproximativ 3,9 trilioane de dolari PIB la nivel de stat, California depășește Regatul Unit, Franța și India. Un singur stat american.",
+              "Cu aproximativ 4,25 trilioane de dolari PIB la nivel de stat, California a depășit Japonia, Regatul Unit și India. Un singur stat american.",
           },
           {
             ...GDP_EXTENDED_FACTS[2],
-            fact: "PIB-ul Texasului îl depășește pe cel al întregii Rusii",
+            fact: "PIB-ul Texasului depășește economia Braziliei sau a Rusiei",
             detail:
-              "Statul Texas, cu un PIB de aproximativ 2,4 trilioane de dolari, produce anual mai multă activitate economică decât întreaga Federație Rusă.",
+              "Statul Texas, cu un PIB de aproximativ 2,9 trilioane de dolari, produce anual mai multă activitate economică decât Brazilia sau întreaga Federație Rusă.",
           },
           {
             ...GDP_EXTENDED_FACTS[3],
@@ -197,13 +197,13 @@ export default async function GdpGrowthPage() {
       ? {
           heroAlt: "Districtul financiar din New York",
           heroEyebrow: "PIB și Dimensiune",
-          heroLead: "$28.8 TRILIOANE",
+          heroLead: "$32.4 TRILIOANE",
           heroAccent: "ȘI ÎN CREȘTERE",
           heroBody:
             "O domnie de 130 de ani în vârf. Prin fiecare criză, fiecare rival și fiecare predicție a declinului american — economia Statelor Unite nu doar că a rezistat. A dominat.",
           worldTitle: "Statele Unite vs. lumea",
           worldBody:
-            "Economia SUA nu este doar cea mai mare — operează într-o categorie complet diferită. La 28,8 trilioane de dolari, depășește PIB-urile cumulate ale Chinei (18,5T), Germaniei (4,5T) și Japoniei (4,2T). Asta înseamnă că următoarele trei mari economii, adunate, tot nu pot egala producția unei singure națiuni de 335 de milioane de oameni.",
+            "Economia SUA nu este doar cea mai mare — operează într-o categorie complet diferită. La 32,4 trilioane de dolari, depășește PIB-urile cumulate ale Chinei (18,5T), Germaniei (4,5T) și Japoniei (4,2T). Asta înseamnă că următoarele trei mari economii, adunate, tot nu pot egala producția unei singure națiuni de 335 de milioane de oameni.",
           worldChartTitle: "PIB pe țări (2024, trilioane USD)",
           worldChartSubtitle:
             "Economia SUA depășește următoarele trei mari economii combinate",
@@ -237,13 +237,13 @@ export default async function GdpGrowthPage() {
       : {
           heroAlt: "New York City financial district",
           heroEyebrow: "GDP & Scale",
-          heroLead: "$28.8 TRILLION",
+          heroLead: "$32.4 TRILLION",
           heroAccent: "AND COUNTING",
           heroBody:
             "A 130-year reign at the top. Through every crisis, every challenger, every prediction of American decline — the United States economy has not just endured. It has dominated.",
           worldTitle: "The United States vs. The World",
           worldBody:
-            "The US economy is not just the largest — it operates in a different category entirely. At $28.8 trillion, it exceeds the combined GDPs of China ($18.5T), Germany ($4.5T), and Japan ($4.2T). That means the three next-largest economies, added together, still cannot match the output of a single nation of 335 million people.",
+            "The US economy is not just the largest — it operates in a different category entirely. At $32.4 trillion, it exceeds the combined GDPs of China ($18.5T), Germany ($4.5T), and Japan ($4.2T). That means the three next-largest economies, added together, still cannot match the output of a single nation of 335 million people.",
           worldChartTitle: "GDP by Country (2024, USD Trillions)",
           worldChartSubtitle:
             "The US economy exceeds the next three largest economies combined",
@@ -395,7 +395,7 @@ export default async function GdpGrowthPage() {
               {copy.numbersTitle}
             </h2>
             <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
-              {extendedFacts.map((fact, i) => (
+              {extendedFacts.map((fact: any, i: number) => (
                 <MacroFact
                   key={fact.id}
                   index={i + 1}

@@ -29,7 +29,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Capital Markets | Economy",
   description:
-    "NYSE + NASDAQ: $47 trillion in market cap. US Treasuries set the world's risk-free rate. The deepest, most liquid capital markets in human history.",
+    "NYSE + NASDAQ: $69 trillion in market cap. US Treasuries set the world's risk-free rate. The deepest, most liquid capital markets in human history.",
   alternates: { canonical: "/economy/capital-markets" },
 };
 
@@ -91,7 +91,7 @@ const MAJOR_US_EXCHANGES = [
   {
     name: "NYSE",
     founded: 1792,
-    marketCap: "$25.1 Trillion",
+    marketCap: "$33.2 Trillion",
     description:
       "The world's largest stock exchange by market cap — home to the world's most iconic corporations, from JPMorgan Chase to Berkshire Hathaway.",
     famous: "JPMorgan Chase, Berkshire Hathaway, ExxonMobil, J&J, Visa",
@@ -99,7 +99,7 @@ const MAJOR_US_EXCHANGES = [
   {
     name: "NASDAQ",
     founded: 1971,
-    marketCap: "$22.4 Trillion",
+    marketCap: "$35.8 Trillion",
     description:
       "The technology exchange — where Apple, Microsoft, NVIDIA, Alphabet, Amazon, and Meta are listed. NASDAQ is synonymous with American technological dominance.",
     famous: "Apple, Microsoft, NVIDIA, Alphabet, Amazon, Meta, Tesla",
@@ -195,10 +195,10 @@ export default async function CapitalMarketsPage() {
           heroLead: "WALL STREET",
           heroAccent: "ALIMENTEAZĂ LUMEA",
           heroBody:
-            "NYSE + NASDAQ: 47 de trilioane de dolari capitalizare combinată. Titlurile de Trezorerie americane ca reper global pentru rata fără risc. Cele mai adânci, transparente și lichide piețe de capital din istoria umană.",
+            "NYSE + NASDAQ: 69 de trilioane de dolari capitalizare combinată. Titlurile de Trezorerie americane ca reper global pentru rata fără risc. Cele mai adânci, transparente și lichide piețe de capital din istoria umană.",
           marketCapTitle: "Capitalizarea burselor — SUA vs. lume",
           marketCapBody:
-            "Statele Unite găzduiesc cele mai mari două burse de pe Pământ — la o distanță uriașă. NYSE (25,1T $) și NASDAQ (22,4T $) reprezintă împreună mai multă capitalizare decât următoarele cinci burse combinate. Bursele americane nu doar conduc — domină.",
+            "Statele Unite găzduiesc cele mai mari două burse de pe Pământ — la o distanță uriașă. NYSE (33,2T $) și NASDAQ (35,8T $) reprezintă împreună mai multă capitalizare decât următoarele cinci burse combinate. Bursele americane nu doar conduc — domină.",
           marketCapChartTitle: "Capitalizarea burselor globale (2024, trilioane USD)",
           benchmarkTitle: "S&P 500 — reperul lumii",
           benchmarkBody:
@@ -218,10 +218,10 @@ export default async function CapitalMarketsPage() {
           heroLead: "WALL STREET",
           heroAccent: "POWERS THE WORLD",
           heroBody:
-            "NYSE + NASDAQ: $47 trillion in combined market capitalization. The US Treasury as the world's risk-free benchmark. The deepest, most transparent, most liquid capital markets in human history.",
+            "NYSE + NASDAQ: $69 trillion in combined market capitalization. The US Treasury as the world's risk-free benchmark. The deepest, most transparent, most liquid capital markets in human history.",
           marketCapTitle: "Stock Exchange Market Cap — US vs World",
           marketCapBody:
-            "The United States hosts the two largest stock exchanges on Earth — by a staggering margin. The NYSE ($25.1T) and NASDAQ ($22.4T) together represent more market capitalization than the next five exchanges combined. American exchanges don't just lead — they dominate.",
+            "The United States hosts the two largest stock exchanges on Earth — by a staggering margin. The NYSE ($33.2T) and NASDAQ ($35.8T) together represent more market capitalization than the next five exchanges combined. American exchanges don't just lead — they dominate.",
           marketCapChartTitle: "Global Stock Exchange Market Cap (2024, USD Trillions)",
           benchmarkTitle: "The S&P 500 — The World's Benchmark",
           benchmarkBody:

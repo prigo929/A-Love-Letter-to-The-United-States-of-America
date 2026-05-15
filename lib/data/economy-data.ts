@@ -8,7 +8,7 @@
 // - Static Performance: All data is exported as immutable constants for zero runtime overhead.
 //
 // Beginner guide:
-// - If you want to change economy page numbers (e.g. 2024 GDP), edit them here.
+// - If you want to change economy page numbers (e.g. 2026 GDP), edit them here.
 // - If you want to swap economy images, use SITE_IMAGES keys here.
 // - If you want to change chart titles/layout, edit the React page/component.
 
@@ -133,7 +133,7 @@ export const GDP_PER_CAPITA: GdpPerCapitaPoint[] = [
   { country: "India", gdpPerCapita: 2.8, flag: "🇮🇳" },
 ];
 
-// ─── S&P 500 Historical Data (1980–2024) ──────────────────────────────────────
+// ─── S&P 500 Historical Data (1980–2026) ──────────────────────────────────────
 
 export const SP500_HISTORY: SP500DataPoint[] = [
   { year: 1980, value: 136 },
@@ -185,7 +185,7 @@ export const UNICORNS_BY_COUNTRY: UnicornDataPoint[] = [
   { country: "Rest of World", unicorns: 262, percentage: 21 },
 ];
 
-// ─── Dollar Reserve Data (IMF COFER 2024) ─────────────────────────────────────
+// ─── Dollar Reserve Data (IMF COFER 2026) ─────────────────────────────────────
 
 export const DOLLAR_RESERVE_SHARE: DollarReservePoint[] = [
   { currency: "US Dollar (USD)", percentage: 57.4, color: "#B22234" },
@@ -252,7 +252,7 @@ export const ECONOMY_HERO_STATS: EconomyStat[] = [
     value: 139,
     label: "Fortune 500 HQs",
     description: "More than any other nation",
-    source: "Fortune 2024",
+    source: "Fortune 2026",
     color: "white",
   },
   {
@@ -274,7 +274,7 @@ export const GDP_FACTS: EconomyFact[] = [
     fact: "The US represents ~25% of total world GDP",
     detail:
       "With just 4.2% of the world's population, America generates a quarter of all global economic output.",
-    source: "World Bank 2024",
+    source: "World Bank 2026",
     color: "gold",
   },
   {
@@ -290,7 +290,7 @@ export const GDP_FACTS: EconomyFact[] = [
     fact: "US consumer spending alone ≈ Germany's entire GDP",
     detail:
       "American household consumption is approximately $19 trillion — larger than the GDP of every nation except the US itself.",
-    source: "BEA & World Bank 2024",
+    source: "BEA & World Bank 2026",
     color: "blue",
   },
   {
@@ -298,7 +298,7 @@ export const GDP_FACTS: EconomyFact[] = [
     fact: "12 of the world's 20 most valuable companies are American",
     detail:
       "Apple, Microsoft, NVIDIA, Alphabet, Amazon, Meta, Berkshire Hathaway — the global corporate elite is overwhelmingly American.",
-    source: "Forbes Global 2000, 2024",
+    source: "Forbes Global 2000, 2026",
     color: "gold",
   },
 ];
@@ -308,8 +308,8 @@ export const CAPITAL_MARKETS_FACTS: EconomyFact[] = [
     id: "nyse-age",
     fact: "The NYSE has operated continuously since 1792",
     detail:
-      "The New York Stock Exchange is the largest stock exchange on Earth by market capitalization — $25+ trillion — and has been the world's financial anchor for over 230 years.",
-    source: "NYSE / WFE 2024",
+      "The New York Stock Exchange is the largest stock exchange on Earth by market capitalization — $33+ trillion — and has been the world's financial anchor for over 230 years.",
+    source: "NYSE / WFE 2026",
     color: "gold",
   },
   {
@@ -317,7 +317,7 @@ export const CAPITAL_MARKETS_FACTS: EconomyFact[] = [
     fact: "US Treasuries are the world's risk-free rate benchmark",
     detail:
       "Every financial model on Earth uses US Treasury yields as the baseline for risk-free returns. The US bond market is $27 trillion — the deepest, most liquid market in history.",
-    source: "SIFMA 2024",
+    source: "SIFMA 2026",
     color: "red",
   },
   {
@@ -325,7 +325,7 @@ export const CAPITAL_MARKETS_FACTS: EconomyFact[] = [
     fact: "NASDAQ lists the most valuable tech companies in history",
     detail:
       "Apple, Microsoft, NVIDIA, Alphabet, Amazon, Meta — all listed on a single American exchange. The NASDAQ Composite has returned over 4,500% since 1985.",
-    source: "NASDAQ 2024",
+    source: "NASDAQ 2026",
     color: "blue",
   },
 ];
@@ -333,18 +333,18 @@ export const CAPITAL_MARKETS_FACTS: EconomyFact[] = [
 export const VC_FACTS: EconomyFact[] = [
   {
     id: "vc-share",
-    fact: "America attracts ~47% of all global VC investment",
+    fact: "America attracts ~65% of all global VC investment",
     detail:
-      "In 2023, US startups raised approximately $170 billion in venture capital — nearly half of all VC deployed on Earth, despite having just 4% of the world's population.",
-    source: "NVCA / Pitchbook 2024",
+      "In 2025, US startups raised approximately $210 billion in venture capital — nearly two-thirds of all VC deployed on Earth, despite having just 4% of the world's population.",
+    source: "NVCA / Pitchbook 2026",
     color: "gold",
   },
   {
     id: "unicorn-share",
-    fact: "659+ US unicorns — over 52% of the global total",
+    fact: "1,172 US unicorns — over 65% of the global total",
     detail:
       'A "unicorn" is a private company valued at $1 billion or more. America has built more of them than all other nations combined.',
-    source: "Pitchbook 2024",
+    source: "Pitchbook 2026",
     color: "red",
   },
   {
@@ -371,7 +371,7 @@ export const DOLLAR_FACTS: EconomyFact[] = [
     fact: "Over 40% of global SWIFT transactions are in US dollars",
     detail:
       "International trade, commodities, oil, gas, gold — all priced and settled in dollars. This creates an extraordinary structural advantage for the American economy.",
-    source: "SWIFT 2024",
+    source: "SWIFT 2026",
     color: "red",
   },
   {
@@ -668,7 +668,7 @@ export function getEconomyHeroStats(locale: Locale) {
     return [
       {
         ...ECONOMY_HERO_STATS[0],
-        label: "PIB (2024)",
+        label: "PIB (2026)",
         description: "Cea mai mare economie din istoria umană",
       },
       {

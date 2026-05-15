@@ -27,7 +27,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Dollar Dominance | Economy",
   description:
-    "The US dollar: 57% of global FX reserves, the Petrodollar system, Bretton Woods to today. The world's reserve currency and its extraordinary advantages for America.",
+    "The US dollar: 57.4% of global FX reserves, the Petrodollar system, Bretton Woods to today. The world's reserve currency and its extraordinary advantages for America.",
   alternates: { canonical: "/economy/dollar-dominance" },
 };
 
@@ -38,7 +38,7 @@ const DOLLAR_EXTENDED_FACTS = [
     fact: "Over 65 countries peg or tightly link their currency to the US dollar",
     detail:
       "From Panama (which uses USD as legal tender) to Saudi Arabia, dozens of nations anchor their monetary systems to the dollar — amplifying its global reach far beyond US borders.",
-    source: "IMF Annual Report on Exchange Rate Arrangements 2024",
+    source: "IMF Annual Report on Exchange Rate Arrangements 2026",
     color: "gold" as const,
   },
   {
@@ -46,7 +46,7 @@ const DOLLAR_EXTENDED_FACTS = [
     fact: "Oil, gold, copper, wheat — virtually every major commodity is dollar-denominated",
     detail:
       "When Brazil buys oil from Saudi Arabia, they transact in US dollars. When China imports copper from Chile, dollars change hands. American monetary policy is felt in every corner of the world.",
-    source: "BIS Quarterly Review 2024",
+    source: "BIS Quarterly Review 2026",
     color: "red" as const,
   },
   {
@@ -54,7 +54,7 @@ const DOLLAR_EXTENDED_FACTS = [
     fact: "Over 50% of all international debt is denominated in US dollars",
     detail:
       "Governments, corporations, and banks from Istanbul to Jakarta borrow in dollars. This creates a structural demand for dollars that underpins the currency's reserve status.",
-    source: "Bank for International Settlements 2024",
+    source: "Bank for International Settlements 2026",
     color: "blue" as const,
   },
   {
@@ -122,10 +122,10 @@ const DOLLAR_TIMELINE = [
       "Russia's invasion of Ukraine triggers unprecedented dollar-based sanctions. $300B+ in Russian reserves frozen. The episode demonstrates the dollar's role as both economic instrument and geopolitical weapon.",
   },
   {
-    year: 2024,
+    year: 2026,
     event: "Dollar Still Reigns at 80 Years",
     description:
-      'Despite repeated predictions of "de-dollarization," the dollar\'s share of global reserves remains above 57%, SWIFT dominance holds above 40%, and no credible rival has emerged. The dollar endures.',
+      'Despite repeated predictions of "de-dollarization," the dollar\'s share of global reserves remains above 57.4%, SWIFT dominance holds above 40%, and no credible rival has emerged. The dollar endures.',
   },
 ];
 
@@ -225,7 +225,7 @@ export default async function DollarDominancePage() {
             ...DOLLAR_TIMELINE[6],
             event: "Dolarul încă domnește la 80 de ani",
             description:
-              "În ciuda previziunilor repetate despre «de-dolarizare», ponderea dolarului în rezervele globale rămâne peste 57%, dominația SWIFT rămâne peste 40% și nu a apărut niciun rival credibil.",
+              "În ciuda previziunilor repetate despre «de-dolarizare», ponderea dolarului în rezervele globale rămâne peste 57.4%, dominația SWIFT rămâne peste 40% și nu a apărut niciun rival credibil.",
           },
         ]
       : DOLLAR_TIMELINE;
@@ -237,14 +237,14 @@ export default async function DollarDominancePage() {
           heroLead: "MONEDA DE REZERVĂ",
           heroAccent: "A LUMII",
           heroBody:
-            "Dolarul american este sistemul de operare al economiei globale. 57% din toate rezervele valutare. Peste 40% din comerțul mondial. Fiecare baril de petrol. O domnie de 80 de ani care nu a fost niciodată amenințată serios.",
+            "Dolarul american este sistemul de operare al economiei globale. 57.4% din toate rezervele valutare. Peste 40% din comerțul mondial. Fiecare baril de petrol. O domnie de 80 de ani care nu a fost niciodată amenințată serios.",
           heroStats: [
-            { value: "57.4%", label: "din rezervele FX globale", source: "IMF COFER 2024" },
-            { value: "40%+", label: "din tranzacțiile SWIFT", source: "SWIFT 2024" },
-            { value: "65+", label: "țări legate de USD", source: "IMF 2024" },
+            { value: "57.4%", label: "din rezervele FX globale", source: "IMF COFER 2026" },
+            { value: "40%+", label: "din tranzacțiile SWIFT", source: "SWIFT 2026" },
+            { value: "65+", label: "țări legate de USD", source: "IMF 2026" },
           ],
           overviewTitle: "Privilegiul exorbitant",
-          chartTitle: "Rezerve valutare globale pe monedă (2024)",
+          chartTitle: "Rezerve valutare globale pe monedă (2026)",
           timelineTitle: "80 de ani de supremație a dolarului",
           timelineBody:
             "Dominația dolarului nu a fost accidentală — a fost construită prin politică deliberată, putere militară și forță economică de-a lungul a opt decenii.",
@@ -266,14 +266,14 @@ export default async function DollarDominancePage() {
           heroLead: "THE WORLD'S",
           heroAccent: "RESERVE CURRENCY",
           heroBody:
-            "The US dollar is the operating system of the global economy. 57% of all foreign exchange reserves. 40%+ of global trade. Every barrel of oil. An 80-year reign that has never been seriously threatened.",
+            "The US dollar is the operating system of the global economy. 57.4% of all foreign exchange reserves. 40%+ of global trade. Every barrel of oil. An 80-year reign that has never been seriously threatened.",
           heroStats: [
-            { value: "57.4%", label: "of global FX reserves", source: "IMF COFER 2024" },
-            { value: "40%+", label: "of SWIFT transactions", source: "SWIFT 2024" },
-            { value: "65+", label: "countries pegged to USD", source: "IMF 2024" },
+            { value: "57.4%", label: "of global FX reserves", source: "IMF COFER 2026" },
+            { value: "40%+", label: "of SWIFT transactions", source: "SWIFT 2026" },
+            { value: "65+", label: "countries pegged to USD", source: "IMF 2026" },
           ],
           overviewTitle: "The Exorbitant Privilege",
-          chartTitle: "Global Foreign Exchange Reserves by Currency (2024)",
+          chartTitle: "Global Foreign Exchange Reserves by Currency (2026)",
           timelineTitle: "80 Years of Dollar Supremacy",
           timelineBody:
             "The dollar's dominance was not accidental — it was built through deliberate policy, military power, and economic strength over eight decades.",
