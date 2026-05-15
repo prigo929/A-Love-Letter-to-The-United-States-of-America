@@ -79,20 +79,26 @@
     color: inherit;
   }
 
-  /* Scrollbar styling — chrome/safari */
+  /* Scrollbar styling — ultra-minimal editorial grade */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 2px;
+    height: 2px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-navy-dark);
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-navy-light);
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 215, 0, 0.4);
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Support for Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
   }
 
   /* Images */
