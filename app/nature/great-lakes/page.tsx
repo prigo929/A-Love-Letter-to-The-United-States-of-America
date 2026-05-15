@@ -289,8 +289,8 @@ export default async function GreatLakesPage() {
               data={GREAT_LAKES_DATA}
               title={
                 isRo
-                  ? "Volumul Marilor Lacuri (mile cubice)"
-                  : "Great Lakes Volume (cubic miles)"
+                  ? "Volumul Marilor Lacuri"
+                  : "Great Lakes Volume"
               }
               subtitle={
                 isRo
@@ -324,15 +324,15 @@ export default async function GreatLakesPage() {
                     </div>
                     <p className="nat-text-body">{lake.note}</p>
                   </div>
-                  <div className="flex gap-6 shrink-0 pt-1 md:pt-0">
+                  <div className="grid grid-cols-3 gap-10 shrink-0 md:w-[400px] mt-1">
                     {[
                       { label: isRo ? "Suprafață" : "Area", value: lake.area },
                       { label: isRo ? "Volum" : "Volume", value: lake.volume },
                       { label: isRo ? "Ad. Max." : "Max Depth", value: lake.depth },
                     ].map((s) => (
-                      <div key={s.label}>
-                        <p className="nat-text-hero text-base" style={{ color: 'var(--nat-accent-glacier)' }}>{s.value}</p>
-                        <p className="nat-text-metadata text-white/40 mt-1">{s.label}</p>
+                      <div key={s.label} className="text-right sm:text-left">
+                        <p className="font-hero text-2xl md:text-3xl whitespace-nowrap" style={{ color: 'var(--nat-accent-glacier)' }}>{s.value}</p>
+                        <p className="nat-text-metadata text-white/40 mt-1 uppercase tracking-tighter">{s.label}</p>
                       </div>
                     ))}
                   </div>
@@ -342,7 +342,7 @@ export default async function GreatLakesPage() {
           </section>
 
           {/* Water Security containerless block */}
-          <section className="max-w-4xl mx-auto border-t border-b border-white/4 py-16">
+          <section className="max-w-5xl mx-auto border-t border-b border-white/4 py-16">
             <p className="nat-text-metadata mb-2 uppercase tracking-widest" style={{ color: 'var(--nat-accent-glacier)' }}>
               {isRo ? "Securitate Hidrologică" : "Water Security"}
             </p>
@@ -356,16 +356,16 @@ export default async function GreatLakesPage() {
                 ? "Într-o lume în care apa dulce devine din ce în ce mai rară, Marile Lacuri reprezintă un avantaj strategic fără precedent. 6 cvadriliane de galoane de apă dulce ce alimentează 30 de milioane de americani și susțin o economie regională de 6 trilioane de dolari."
                 : "In a world where fresh water is increasingly scarce, the Great Lakes represent an unparalleled strategic advantage — 6 quadrillion gallons supplying 30 million Americans and sustaining a $6 trillion regional economy."}
             </p>
-            <div className="grid grid-cols-2 gap-8 max-w-md pt-4 border-t border-white/4">
+            <div className="grid grid-cols-2 gap-12 pt-8 border-t border-white/4">
               <div>
-                <p className="nat-text-hero" style={{ color: 'var(--nat-accent-glacier)' }}>30M</p>
-                <p className="nat-text-metadata text-white/40 mt-1">
+                <p className="text-5xl md:text-6xl font-black tracking-tight uppercase" style={{ color: 'var(--nat-accent-glacier)', fontFamily: 'var(--font-archivo)' }}>30M</p>
+                <p className="nat-text-metadata text-white/40 mt-2 uppercase tracking-wider">
                   {isRo ? "Americani aprovizionați" : "Americans supplied"}
                 </p>
               </div>
               <div>
-                <p className="nat-text-hero" style={{ color: 'var(--nat-accent-glacier)' }}>$6T</p>
-                <p className="nat-text-metadata text-white/40 mt-1">
+                <p className="text-5xl md:text-6xl font-black tracking-tight uppercase" style={{ color: 'var(--nat-accent-glacier)', fontFamily: 'var(--font-archivo)' }}>$6T</p>
+                <p className="nat-text-metadata text-white/40 mt-2 uppercase tracking-wider">
                   {isRo ? "Output economic regional" : "Regional economic output"}
                 </p>
               </div>
@@ -373,7 +373,7 @@ export default async function GreatLakesPage() {
           </section>
 
           {/* Facts list as NatureFactModules */}
-          <section className="max-w-4xl mx-auto">
+          <section className="max-w-5xl mx-auto">
             <h2 className="nat-text-section text-white mb-16">{isRo ? "În Detaliu" : "In Detail"}</h2>
             <div>
               {[...facts, ...extFacts].map((fact) => (

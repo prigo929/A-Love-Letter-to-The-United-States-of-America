@@ -144,7 +144,10 @@ export default async function NationalParksPage() {
             />
           </section>
 
-          {/* Parallax divider */}
+        </div> {/* End first container */}
+
+        {/* Parallax divider - FULL WIDTH */}
+        <div className="my-32">
           <ParallaxImageBand
             imageSrc={SITE_IMAGES.yosemiteNationalPark}
             imageAlt={isRo ? "Yosemite" : "Yosemite"}
@@ -158,6 +161,9 @@ export default async function NationalParksPage() {
               </p>
             </div>
           </ParallaxImageBand>
+        </div>
+
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12 space-y-32">
 
           {/* Containerless Table */}
           <section className="max-w-5xl mx-auto">
@@ -194,7 +200,7 @@ export default async function NationalParksPage() {
           </section>
 
           {/* Facts list as NatureFactModules */}
-          <section className="max-w-4xl mx-auto">
+          <section className="max-w-5xl mx-auto">
             <h2 className="nat-text-section text-white mb-16">{isRo ? "În Detaliu" : "In Detail"}</h2>
             <div>
               {systemFacts.map((fact) => (
