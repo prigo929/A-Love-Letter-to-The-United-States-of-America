@@ -42,17 +42,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    -webkit-text-size-adjust: 100%;
-    width: 100%;
-    overflow-x: hidden;
   }
 
   body {
     @apply bg-navy-dark text-white;
-    width: 100%;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
+    overflow-x: clip;
   }
 
   /* Headings use Playfair Display */
@@ -313,23 +307,16 @@
            font-body font-semibold px-4 py-2 rounded-b-lg
            focus:top-0 transition-all duration-150;
   }
-
-  /* ── Hero typography fixes for Safari overflow ────────────────────────── */
-  h1, .hero-text {
-    max-width: 100%;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
 }
 
 /* ─── Utility Layer ─────────────────────────────────────────────────────── */
 @layer utilities {
   /* Viewport units that account for mobile browser chrome */
   .min-h-screen-safe {
-    min-height: 100dvh;
+    min-height: 100svh;
   }
   .h-screen-safe {
-    height: 100dvh;
+    height: 100svh;
   }
 
   /* Text balance for headings */
