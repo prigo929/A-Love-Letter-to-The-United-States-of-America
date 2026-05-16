@@ -3,100 +3,13 @@
 <h1>🦅 THE UNITED STATES OF AMERICA 🦅</h1>
 <h3>🌟 A Cinematic, Data-Backed Love Letter to the Republic 🌟</h3>
 
-<svg viewBox="0 0 760 400" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="max-width: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;">
-<rect y="0" width="760" height="30.77" fill="#B22234" />
-<rect y="30.77" width="760" height="30.77" fill="#FFFFFF" />
-<rect y="61.54" width="760" height="30.77" fill="#B22234" />
-<rect y="92.31" width="760" height="30.77" fill="#FFFFFF" />
-<rect y="123.08" width="760" height="30.77" fill="#B22234" />
-<rect y="153.85" width="760" height="30.77" fill="#FFFFFF" />
-<rect y="184.62" width="760" height="30.77" fill="#B22234" />
-<rect y="215.38" width="760" height="30.77" fill="#FFFFFF" />
-<rect y="246.15" width="760" height="30.77" fill="#B22234" />
-<rect y="276.92" width="760" height="30.77" fill="#FFFFFF" />
-<rect y="307.69" width="760" height="30.77" fill="#B22234" />
-<rect y="338.46" width="760" height="30.77" fill="#FFFFFF" />
-<rect y="369.23" width="760" height="30.77" fill="#B22234" />
-<rect width="304" height="215.38" fill="#3C3B6E" />
-<defs>
-<g id="star">
-<polygon points="0,-7 2.06,-2.06 7.41,-2.06 3.09,1.06 4.71,6.06 0,3.09 -4.71,6.06 -3.09,1.06 -7.41,-2.06 -2.06,-2.06" fill="#FFFFFF" />
-</g>
-</defs>
-<g transform="translate(0, 21.54)">
-<use href="#star" x="25.33" />
-<use href="#star" x="76.00" />
-<use href="#star" x="126.67" />
-<use href="#star" x="177.33" />
-<use href="#star" x="228.00" />
-<use href="#star" x="278.67" />
-</g>
-<g transform="translate(0, 43.08)">
-<use href="#star" x="50.67" />
-<use href="#star" x="101.33" />
-<use href="#star" x="152.00" />
-<use href="#star" x="202.67" />
-<use href="#star" x="253.33" />
-</g>
-<g transform="translate(0, 64.62)">
-<use href="#star" x="25.33" />
-<use href="#star" x="76.00" />
-<use href="#star" x="126.67" />
-<use href="#star" x="177.33" />
-<use href="#star" x="228.00" />
-<use href="#star" x="278.67" />
-</g>
-<g transform="translate(0, 86.15)">
-<use href="#star" x="50.67" />
-<use href="#star" x="101.33" />
-<use href="#star" x="152.00" />
-<use href="#star" x="202.67" />
-<use href="#star" x="253.33" />
-</g>
-<g transform="translate(0, 107.69)">
-<use href="#star" x="25.33" />
-<use href="#star" x="76.00" />
-<use href="#star" x="126.67" />
-<use href="#star" x="177.33" />
-<use href="#star" x="228.00" />
-<use href="#star" x="278.67" />
-</g>
-<g transform="translate(0, 129.23)">
-<use href="#star" x="50.67" />
-<use href="#star" x="101.33" />
-<use href="#star" x="152.00" />
-<use href="#star" x="202.67" />
-<use href="#star" x="253.33" />
-</g>
-<g transform="translate(0, 150.77)">
-<use href="#star" x="25.33" />
-<use href="#star" x="76.00" />
-<use href="#star" x="126.67" />
-<use href="#star" x="177.33" />
-<use href="#star" x="228.00" />
-<use href="#star" x="278.67" />
-</g>
-<g transform="translate(0, 172.31)">
-<use href="#star" x="50.67" />
-<use href="#star" x="101.33" />
-<use href="#star" x="152.00" />
-<use href="#star" x="202.67" />
-<use href="#star" x="253.33" />
-</g>
-<g transform="translate(0, 193.85)">
-<use href="#star" x="25.33" />
-<use href="#star" x="76.00" />
-<use href="#star" x="126.67" />
-<use href="#star" x="177.33" />
-<use href="#star" x="228.00" />
-<use href="#star" x="278.67" />
-</g>
-</svg>
+<img src="IMAGES/US Flags/Flag_of_the_United_States.svg" width="600" alt="Flag of the United States" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 
 <p><em>“One nation under God, indivisible, with liberty and justice for all.”</em></p>
 
 </div>
 
+<div align="center">
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-111111?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-1E5AA8?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
