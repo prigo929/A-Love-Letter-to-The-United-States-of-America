@@ -22,7 +22,7 @@ import {
 import { ParkVisitorsChart } from "@/components/data/NatureCharts";
 import { getServerLocale }   from "@/lib/i18n/server";
 import { SITE_IMAGES }       from "@/lib/site-images";
-import { TOP_PARKS_VISITORS, FEATURED_PARKS } from "@/lib/data/nature-data";
+import { getTopParksVisitors, getFeaturedParks } from "@/lib/data/nature-data";
 
 export const metadata: Metadata = {
   title: "National Parks | Nature",
@@ -74,6 +74,19 @@ export default async function NationalParksPage() {
   const locale       = await getServerLocale();
   const isRo         = locale === "ro";
   const systemFacts  = isRo ? PARKS_SYSTEM_FACTS_RO : PARKS_SYSTEM_FACTS_EN;
+  const topParksVisitors = getTopParksVisitors(locale);
+  const featuredParks = getFeaturedParks(locale);
+
+  const parks = ALL_PARKS.map(p => ({
+    ...p,
+    name: isRo ? p.name.replace("Great Smoky Mountains", "Munții Great Smoky")
+                     .replace("Grand Canyon", "Marele Canion")
+                     .replace("Rocky Mountain", "Munții Stâncoși")
+                     .replace("New River Gorge", "Cheile New River")
+                     .replace("Hot Springs", "Izvoarele Termale")
+                     .replace("Everglades", "Everglades (Zona mlaştinoasă)")
+               : p.name
+  }));
 
   const statWall = [
     { value: 63,  suffix: "",    label: isRo ? "Parcuri Naționale" : "National Parks",  sub: isRo ? "Și tot mai multe în viitor" : "And counting",                     color: "#4ade80" },
@@ -126,7 +139,7 @@ export default async function NationalParksPage() {
             </p>
             <div className="px-4">
               <ParkVisitorsChart
-                data={TOP_PARKS_VISITORS}
+                data={topParksVisitors}
                 title={isRo ? "Vizite Anuale (milioane), 2023" : "Annual Visits (millions), 2023"}
                 source="National Park Service 2023"
               />
@@ -137,7 +150,7 @@ export default async function NationalParksPage() {
           <section className="max-w-6xl mx-auto">
             <h2 className="nat-text-section text-white mb-10">{isRo ? "Bijuteriile Coroanei" : "Crown Jewels"}</h2>
             <ParkCinematicGrid
-              parks={FEATURED_PARKS}
+              parks={featuredParks}
               visitLabel={isRo ? "Vizite/an" : "Visits/yr"}
               acresLabel={isRo ? "Acri" : "Acres"}
               estLabel={isRo ? "Înf." : "Est."}
@@ -182,7 +195,7 @@ export default async function NationalParksPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {ALL_PARKS.map((park, i) => (
+                    {parks.map((park, i) => (
                       <tr key={i} className="border-b border-white/4 last:border-0 hover:bg-white/2 transition-colors">
                         <td className="py-4 nat-text-metadata text-white/30 px-4">{i + 1}</td>
                         <td className="py-4 text-base font-semibold text-white tracking-wide px-4">{park.name}</td>

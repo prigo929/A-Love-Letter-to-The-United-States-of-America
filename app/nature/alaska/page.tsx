@@ -36,13 +36,13 @@ export const metadata: Metadata = {
 };
 
 const ALASKA_WILDLIFE = [
-  { animal: "Brown / Grizzly Bears",  count: "30,000+",     countRo: "30.000+",     note: "70% of all US brown bears",           noteRo: "70% din toți urșii bruni americani" },
-  { animal: "Caribou",               count: "750,000+",    countRo: "750.000+",    note: "Several major herds crossing the state", noteRo: "Mai multe cirezi mari traversând statul" },
-  { animal: "Moose",                 count: "175,000+",    countRo: "175.000+",    note: "Largest moose population in the US",   noteRo: "Cea mai mare populație de elan din SUA" },
-  { animal: "Black Bears",           count: "100,000+",    countRo: "100.000+",    note: "Distributed throughout forested areas", noteRo: "Răspândiți în zonele împădurite" },
-  { animal: "Wolves",                count: "7,000–11,000",countRo: "7.000–11.000",note: "Largest wolf population in the US",   noteRo: "Cea mai mare populație de lupi din SUA" },
-  { animal: "Bald Eagles",           count: "30,000+",     countRo: "30.000+",     note: "Half of all bald eagles in the US",   noteRo: "Jumătate din toți vulturii cheliți americani" },
-  { animal: "Nesting Seabirds",      count: "50M+",        countRo: "50 milioane+",note: "One of the greatest seabird rookeries", noteRo: "Una dintre cele mai mari colonii de păsări marine" },
+  { animal: "Brown / Grizzly Bears", animalRo: "Urși Bruni / Grizzly", count: "30,000+",     countRo: "30.000+",     note: "70% of all US brown bears",           noteRo: "70% din toți urșii bruni americani" },
+  { animal: "Caribou",               animalRo: "Caribu",               count: "750,000+",    countRo: "750.000+",    note: "Several major herds crossing the state", noteRo: "Mai multe cirezi mari traversând statul" },
+  { animal: "Moose",                 animalRo: "Elan",                 count: "175,000+",    countRo: "175.000+",    note: "Largest moose population in the US",   noteRo: "Cea mai mare populație de elan din SUA" },
+  { animal: "Black Bears",           animalRo: "Urși Negri",           count: "100,000+",    countRo: "100.000+",    note: "Distributed throughout forested areas", noteRo: "Răspândiți în zonele împădurite" },
+  { animal: "Wolves",                animalRo: "Lupi",                 count: "7,000–11,000",countRo: "7.000–11.000",note: "Largest wolf population in the US",   noteRo: "Cea mai mare populație de lupi din SUA" },
+  { animal: "Bald Eagles",           animalRo: "Vulturi Cheli",        count: "30,000+",     countRo: "30.000+",     note: "Half of all bald eagles in the US",   noteRo: "Jumătate din toți vulturii cheliți americani" },
+  { animal: "Nesting Seabirds",      animalRo: "Păsări Marine",        count: "50M+",        countRo: "50 milioane+",note: "One of the greatest seabird rookeries", noteRo: "Una dintre cele mai mari colonii de păsări marine" },
 ];
 
 const ALASKA_EXTENDED_FACTS_EN = [
@@ -174,7 +174,7 @@ export default async function AlaskaPage() {
                 <tbody>
                   {ALASKA_WILDLIFE.map((item, i) => (
                     <tr key={i} className="border-b border-white/4 last:border-0 hover:bg-white/2 transition-colors">
-                      <td className="py-5 text-base font-semibold text-white tracking-wide px-4">{item.animal}</td>
+                      <td className="py-5 text-base font-semibold text-white tracking-wide px-4">{isRo ? item.animalRo : item.animal}</td>
                       <td className="py-6 text-right font-black text-2xl tracking-tight px-4" style={{ color: 'var(--nat-accent-glacier)', fontFamily: 'var(--font-archivo)' }}>
                         <span className="tabular-nums">{isRo ? item.countRo : item.count}</span>
                       </td>

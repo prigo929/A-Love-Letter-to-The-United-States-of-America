@@ -118,6 +118,33 @@ export const BIODIVERSITY_BY_COUNTRY: BiodiversityData[] = [
   { country: "France",         species: 94,  flag: "🇫🇷" },
 ];
 
+export function getBiodiversityByCountry(locale: Locale): BiodiversityData[] {
+  if (locale === "ro") {
+    return BIODIVERSITY_BY_COUNTRY.map((d) => ({
+      ...d,
+      country: d.country === "United States" ? "Statele Unite" 
+             : d.country === "Brazil" ? "Brazilia"
+             : d.country === "Germany" ? "Germania"
+             : d.country === "France" ? "Franța"
+             : d.country,
+    }));
+  }
+  return BIODIVERSITY_BY_COUNTRY;
+}
+
+export function getTopParksVisitors(locale: Locale): ParkVisitorData[] {
+  if (locale === "ro") {
+    return TOP_PARKS_VISITORS.map((d) => ({
+      ...d,
+      park: d.park === "Great Smoky Mtns" ? "Munții Great Smoky"
+          : d.park === "Grand Canyon" ? "Marele Canion"
+          : d.park === "Rocky Mountain" ? "Munții Stâncoși"
+          : d.park,
+    }));
+  }
+  return TOP_PARKS_VISITORS;
+}
+
 export const GREAT_LAKES_DATA: GreatLakeData[] = [
   { lake: "Superior", volume: 2900, area: 31700, maxDepth: 1332, color: "#B22234" },
   { lake: "Michigan",  volume: 1180, area: 22400, maxDepth: 925,  color: "#3C3B6E" },
@@ -128,7 +155,7 @@ export const GREAT_LAKES_DATA: GreatLakeData[] = [
 
 // ─── Featured Parks — uses local SITE_IMAGES ──────────────────────────────────
 
-export const FEATURED_PARKS: NationalPark[] = [
+export const FEATURED_PARKS_EN: NationalPark[] = [
   {
     name: "Yellowstone",
     state: "WY / MT / ID",
@@ -190,6 +217,42 @@ export const FEATURED_PARKS: NationalPark[] = [
     imageAlt: "Zion National Park — red sandstone canyon walls",
   },
 ];
+
+export const FEATURED_PARKS_RO: NationalPark[] = [
+  {
+    ...FEATURED_PARKS_EN[0],
+    highlight: "Primul parc național din lume — 10.000 de fenomene hidrotermale",
+  },
+  {
+    ...FEATURED_PARKS_EN[1],
+    state: "Arizona",
+    highlight: "446 km lungime, 1,6 km adâncime — 6 milioane de ani de geologie expusă",
+  },
+  {
+    ...FEATURED_PARKS_EN[2],
+    state: "California",
+    highlight: "El Capitan, Half Dome și cea mai înaltă cascadă din America de Nord",
+  },
+  {
+    ...FEATURED_PARKS_EN[3],
+    state: "Alaska",
+    highlight: "6.190 m — cel mai înalt vârf din America de Nord, parc de dimensiunea statului New Hampshire",
+  },
+  {
+    ...FEATURED_PARKS_EN[4],
+    state: "Montana",
+    highlight: "Going-to-the-Sun Road prin 1.100 km de sălbăticie alpină pristină",
+  },
+  {
+    ...FEATURED_PARKS_EN[5],
+    state: "Utah",
+    highlight: "Stânci impunătoare de gresie Navajo — experiența iconică a canionului american",
+  },
+];
+
+export function getFeaturedParks(locale: Locale): NationalPark[] {
+  return locale === "ro" ? FEATURED_PARKS_RO : FEATURED_PARKS_EN;
+}
 
 // ─── Hero Stats ───────────────────────────────────────────────────────────────
 
@@ -278,7 +341,7 @@ export const NATURE_QUOTES: NatureQuote[] = [
 
 // ─── Region Cards ─────────────────────────────────────────────────────────────
 
-export const NATURE_REGIONS: RegionCard[] = [
+export const NATURE_REGIONS_EN: RegionCard[] = [
   { region: "Pacific Coast", icon: "🌊", headline: "Highway 1 & the Tallest Trees on Earth", stat: "379 ft", statLabel: "Tallest Coastal Redwood", description: "California's Highway 1 winds past Big Sur's dramatic cliffs. Olympic National Park holds the wettest temperate rainforest in the lower 48. Redwood National Park protects trees over 2,000 years old." },
   { region: "Desert Southwest", icon: "🏜️", headline: "Arches, Canyons & Ancient Landscapes", stat: "2,000+", statLabel: "Natural Arches in Utah", description: "Arches, Bryce Canyon, Monument Valley, the Sonoran Desert — the American Southwest is a landscape of alien beauty. Arches National Park contains more natural stone arches than anywhere on Earth." },
   { region: "Appalachian Mountains", icon: "🍂", headline: "Oldest Mountains, Most Biodiverse Forests", stat: "2,190 mi", statLabel: "Appalachian Trail Length", description: "The Appalachians pre-date the Rockies by 200 million years. Great Smoky Mountains is America's most-visited national park, famous for the most diverse temperate deciduous forest on Earth." },
@@ -286,6 +349,61 @@ export const NATURE_REGIONS: RegionCard[] = [
   { region: "Pacific Islands & Hawaii", icon: "🌺", headline: "Volcanoes, Coral Reefs & Unique Biodiversity", stat: "90%", statLabel: "Hawaiian Species Found Nowhere Else", description: "Hawaii Volcanoes National Park sits atop Kilauea, one of the world's most active volcanoes. Hawaii is one of the most biodiverse island chains on Earth." },
   { region: "Everglades & Subtropical Florida", icon: "🐊", headline: "The Only Subtropical Wilderness in North America", stat: "1.5M", statLabel: "Acres in Everglades NP", description: "The Everglades — the 'River of Grass' — is the only place on Earth where alligators and American crocodiles coexist. Home to the Florida panther, manatee, and over 350 bird species." },
 ];
+
+export const NATURE_REGIONS_RO: RegionCard[] = [
+  {
+    region: "Coasta Pacificului",
+    icon: "🌊",
+    headline: "Highway 1 și cei mai înalți arbori de pe Pământ",
+    stat: "115 m",
+    statLabel: "Cel mai înalt Sequoia de coastă",
+    description: "Autostrada 1 din California șerpuiește pe lângă stâncile dramatice din Big Sur. Parcul Național Olympic deține cea mai umedă pădure temperată din SUA continentală. Parcul Național Redwood protejează arbori de peste 2.000 de ani."
+  },
+  {
+    region: "Sud-vestul Deșertic",
+    icon: "🏜️",
+    headline: "Arcuri, Canioane și Peisaje Antice",
+    stat: "2.000+",
+    statLabel: "Arcuri naturale în Utah",
+    description: "Arches, Bryce Canyon, Monument Valley, Deșertul Sonoran — sud-vestul american este un peisaj de o frumusețe extraterestră. Parcul Național Arches conține mai multe arcuri naturale de piatră decât oriunde altundeva pe Pământ."
+  },
+  {
+    region: "Munții Appalachi",
+    icon: "🍂",
+    headline: "Cei mai vechi munți, cele mai biodiverse păduri",
+    stat: "3.524 km",
+    statLabel: "Lungimea traseului Appalachian",
+    description: "Appalachii preced Munții Stâncoși cu 200 de milioane de ani. Great Smoky Mountains este cel mai vizitat parc național al Americii, renumit pentru cea mai diversă pădure temperată de foioase de pe Pământ."
+  },
+  {
+    region: "Marile Câmpii",
+    icon: "🌾",
+    headline: "Coșul de pâine al lumii",
+    stat: "3,3M km²",
+    statLabel: "Suprafața Marilor Câmpii",
+    description: "Marile Câmpii americane produc mai multă hrană decât orice masă de pământ echivalentă. Solul bogat și adânc — construit în 10.000 de ani de prerie — hrănește un miliard de oameni la nivel mondial."
+  },
+  {
+    region: "Insulele din Pacific și Hawaii",
+    icon: "🌺",
+    headline: "Vulcani, recife de corali și biodiversitate unică",
+    stat: "90%",
+    statLabel: "Specii hawaiiene găsite doar aici",
+    description: "Parcul Național Volcanoes din Hawaii se află deasupra Kilauea, unul dintre cei mai activi vulcani din lume. Hawaii este unul dintre cele mai biodiverse lanțuri insulare de pe Pământ."
+  },
+  {
+    region: "Everglades și Florida Subtropicală",
+    icon: "🐊",
+    headline: "Singura sălbăticie subtropicală din America de Nord",
+    stat: "6.000 km²",
+    statLabel: "Acri în Parcul Național Everglades",
+    description: "Everglades — 'Râul de Iarbă' — este singurul loc de pe Pământ unde aligatorii și crocodilii americani coexistă. Găzduiește pantera de Florida, lamantinul și peste 350 de specii de păsări."
+  }
+];
+
+export function getNatureRegions(locale: Locale): RegionCard[] {
+  return locale === "ro" ? NATURE_REGIONS_RO : NATURE_REGIONS_EN;
+}
 
 // ─── English Fact Arrays ──────────────────────────────────────────────────────
 

@@ -36,15 +36,15 @@ import { SITE_IMAGES }     from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 import {
-  TOP_PARKS_VISITORS,
-  BIODIVERSITY_BY_COUNTRY,
-  FEATURED_PARKS,
-  NATURE_REGIONS,
   getNatureHeroStats,
   getNatureOverviewParagraphs,
   getNatureOverviewFacts,
   getNatureSubPages,
   getNatureQuotes,
+  getNatureRegions,
+  getFeaturedParks,
+  getTopParksVisitors,
+  getBiodiversityByCountry,
 } from "@/lib/data/nature-data";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
@@ -88,6 +88,10 @@ export default async function NaturePage() {
   const facts      = getNatureOverviewFacts(locale);
   const subPages   = getNatureSubPages(locale);
   const quotes     = getNatureQuotes(locale);
+  const regions    = getNatureRegions(locale);
+  const featuredParks = getFeaturedParks(locale);
+  const topParksVisitors = getTopParksVisitors(locale);
+  const biodiversityData = getBiodiversityByCountry(locale);
 
   // `AnimatedStatWall` expects a very specific visual data shape, so we map the
   // shared content data into the format that component needs.
@@ -206,7 +210,7 @@ export default async function NaturePage() {
           </p>
           <div className="bg-(--nat-surface) p-6 md:p-10">
             <ParkVisitorsChart
-              data={TOP_PARKS_VISITORS}
+              data={topParksVisitors}
               title={isRo ? "Cele Mai Vizitate Parcuri Naționale (2023)" : "Most Visited National Parks (2023)"}
               subtitle={isRo ? "Vizite anuale în milioane" : "Annual visits in millions"}
               source="National Park Service 2023"
@@ -234,7 +238,7 @@ export default async function NaturePage() {
             {isRo ? "Bijuteriile Coroanei" : "Crown Jewels of the Republic"}
           </h2>
           <ParkCinematicGrid
-            parks={FEATURED_PARKS}
+            parks={featuredParks}
             visitLabel={isRo ? "Vizite/an" : "Visits/yr"}
             acresLabel={isRo ? "Acri" : "Acres"}
             estLabel={isRo ? "Înf." : "Est."}
@@ -281,7 +285,7 @@ export default async function NaturePage() {
           </p>
           <div className="bg-(--nat-surface) p-6 md:p-10 mb-12">
             <BiodiversityChart
-              data={BIODIVERSITY_BY_COUNTRY}
+              data={biodiversityData}
               title={isRo ? "Specii Cunoscute pe Țară (mii)" : "Known Species by Country (thousands)"}
               subtitle={isRo ? "SUA depășesc dramatic toată Europa" : "The US dramatically outpaces all of Europe"}
               source="IUCN Red List / World Resources Institute 2024"
@@ -322,7 +326,7 @@ export default async function NaturePage() {
               ? "Cele cincizeci de state cuprind nu doar o națiune, ci o întreagă lume de peisaje."
               : "The fifty states encompass not just a nation, but an entire world of landscapes."}
           </p>
-          <RegionCardsGrid regions={NATURE_REGIONS} />
+          <RegionCardsGrid regions={regions} />
         </div>
       </section>
 
