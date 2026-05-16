@@ -65,6 +65,8 @@ import {
   getNuclearTriad,
   getLocalizedCarriers,
   getBudgetData,
+  getDefenseContractors,
+  getMilitaryQuotes,
 } from "@/lib/data/military-data";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
@@ -82,45 +84,46 @@ export const metadata: Metadata = {
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const getHeroStats = (locale: Locale) => {
-  const stats = locale === 'ro' ? getMilitaryStats('ro') : MILITARY_STATS;
+  const stats = getMilitaryStats(locale);
   return [
     { 
-      value: `${stats.find(s => s.id === "budget")?.prefix}${stats.find(s => s.id === "budget")?.value}${stats.find(s => s.id === "budget")?.suffix}`, 
-      label: locale === 'ro' ? "Buget Apărare" : "Defense Budget" 
+      value: `${stats.find(s => s.id === "budget")?.prefix || ''}${stats.find(s => s.id === "budget")?.value || ''}${stats.find(s => s.id === "budget")?.suffix || ''}`, 
+      label: stats.find(s => s.id === "budget")?.label || ""
     },
     { 
-      value: `${stats.find(s => s.id === "carriers")?.value}`, 
-      label: locale === 'ro' ? "Grupuri Portavion" : "Carrier Groups" 
+      value: `${stats.find(s => s.id === "carriers")?.value || ''}`, 
+      label: stats.find(s => s.id === "carriers")?.label || ""
     },
     { 
-      value: `${stats.find(s => s.id === "bases")?.value}${stats.find(s => s.id === "bases")?.suffix}`, 
-      label: locale === 'ro' ? "Baze Globale" : "Global Bases" 
+      value: `${stats.find(s => s.id === "bases")?.value || ''}${stats.find(s => s.id === "bases")?.suffix || ''}`, 
+      label: stats.find(s => s.id === "bases")?.label || ""
     },
     { 
-      value: `${stats.find(s => s.id === "nukes")?.value}${stats.find(s => s.id === "nukes")?.suffix}`, 
-      label: locale === 'ro' ? "Focoase Nucleare" : "Nuclear Warheads" 
+      value: `${stats.find(s => s.id === "nukes")?.value || ''}${stats.find(s => s.id === "nukes")?.suffix || ''}`, 
+      label: stats.find(s => s.id === "nukes")?.label || ""
     },
   ];
 };
 
 const getDominanceMetrics = (locale: Locale) => {
-  const stats = locale === 'ro' ? getMilitaryStats('ro') : MILITARY_STATS;
+  const stats = getMilitaryStats(locale);
+  const isRo = locale === 'ro';
   return [
     { 
       value: "33%",  
-      label: locale === 'ro' ? "Cotă din Cheltuielile Militare Globale" : "Share of Global Military Spending" 
+      label: isRo ? "Cotă din Cheltuielile Militare Globale" : "Share of Global Military Spending" 
     },
     { 
-      value: `${stats.find(s => s.id === "satellites")?.value}${stats.find(s => s.id === "satellites")?.suffix}`,  
-      label: locale === 'ro' ? "Sateliți în Orbită Militară" : "Satellites in Military Orbit" 
+      value: `${stats.find(s => s.id === "satellites")?.value || ''}${stats.find(s => s.id === "satellites")?.suffix || ''}`,  
+      label: stats.find(s => s.id === "satellites")?.label || ""
     },
     { 
-      value: `${Math.round(stats.find(s => s.id === "aircraft")?.value! / 1000)}K+`, 
-      label: locale === 'ro' ? "Aeronave Militare — Cea Mai Mare Flotă" : "Military Aircraft — Largest Fleet on Earth"
+      value: `${Math.round((stats.find(s => s.id === "aircraft")?.value || 0) / 1000)}K+`, 
+      label: isRo ? "Aeronave Militare — Cea Mai Mare Flotă" : "Military Aircraft — Largest Fleet on Earth"
     },
     { 
-      value: `${stats.find(s => s.id === "ships")?.value}${stats.find(s => s.id === "ships")?.suffix}`,  
-      label: locale === 'ro' ? "Nave de Război, inclusiv 11 Super-portavioane" : "Naval Vessels Including 11 Supercarriers"
+      value: `${stats.find(s => s.id === "ships")?.value || ''}${stats.find(s => s.id === "ships")?.suffix || ''}`,  
+      label: stats.find(s => s.id === "ships")?.label || ""
     },
   ];
 };
@@ -208,6 +211,7 @@ function CinematicImage({
 
 export default async function MilitaryPage() {
   const locale = await getServerLocale();
+  const isRo   = locale === "ro";
   const stats = getMilitaryStats(locale);
   const facts = getMilitaryFacts(locale);
   const branches = getMilitaryBranches(locale);
@@ -216,7 +220,9 @@ export default async function MilitaryPage() {
   const nuclearTriad = getNuclearTriad(locale);
   const carriers = getLocalizedCarriers(locale);
   const budgetData = getBudgetData(locale);
-  const quote = MILITARY_QUOTES[0];
+  const contractors = getDefenseContractors(locale);
+  const quotes = getMilitaryQuotes(locale);
+  const quote = quotes[0];
 
   const heroStats = getHeroStats(locale);
   const dominanceMetrics = getDominanceMetrics(locale);
@@ -412,10 +418,10 @@ export default async function MilitaryPage() {
 
           <div className="flex flex-wrap justify-center gap-x-24 gap-y-12">
             {[
-              [locale === 'ro' ? "VITEZĂ" : "SPEED", "Mach 0.95"],
-              [locale === 'ro' ? "RAZĂ" : "RANGE", "6,900+ mi"],
-              [locale === 'ro' ? "SARCINĂ" : "PAYLOAD", "40,000 lb"],
-              [locale === 'ro' ? "FLOTĂ" : "FLEET",   "20 aeronave"],
+              [isRo ? "VITEZĂ" : "SPEED", "Mach 0.95"],
+              [isRo ? "RAZĂ" : "RANGE", isRo ? "11.100+ km" : "6,900+ mi"],
+              [isRo ? "SARCINĂ" : "PAYLOAD", isRo ? "18.100+ kg" : "40,000 lb"],
+              [isRo ? "FLOTĂ" : "FLEET",   isRo ? "20 aeronave" : "20 aircraft"],
             ].map(([k, v]) => (
               <div key={k} className="text-center">
                 <div className="mil-text-metadata mb-2 opacity-60">{k}</div>
@@ -443,13 +449,29 @@ export default async function MilitaryPage() {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {[
-              { v: "5,000+",   l: locale === 'ro' ? "Total Focoase Nucleare" : "Total Nuclear Warheads",         sub: locale === 'ro' ? "Inventar verificat" : "Verified stockpile" },
-              { v: "400",      l: locale === 'ro' ? "ICBM-uri Minuteman III în Alertă" : "Minuteman III ICBMs on Alert",    sub: locale === 'ro' ? "În silozuri, 24/7" : "Silo-based, 24/7" },
-              { v: "14",       l: locale === 'ro' ? "Submarine Clasa Ohio" : "Ohio-Class SSBNs",                sub: locale === 'ro' ? "Echipate cu Trident II D5" : "Trident II D5 equipped" },
-              { v: "60+",      l: locale === 'ro' ? "Bombardiere Strategice" : "Strategic Bombers",               sub: locale === 'ro' ? "Flota B-52H și B-2A" : "B-52H and B-2A fleet" },
+              { 
+                v: isRo ? "GARANTAT" : "GUARANTEED",   
+                l: isRo ? "Capabilitate Contraatac" : "Second-Strike Capability", 
+                sub: isRo ? "Garantează distrugerea reciprocă" : "Ensures mutual destruction" 
+              },
+              { 
+                v: isRo ? "EFICIENT" : "EFFICIENT",      
+                l: isRo ? "Cost Siloz Terestru" : "Land-Based Silo Cost",    
+                sub: isRo ? "Cea mai ieftină componentă de menținut" : "Most cost-effective leg to maintain" 
+              },
+              { 
+                v: isRo ? "RECHEMABIL" : "RECALLABLE",       
+                l: isRo ? "Controlul Bombardierelor" : "Bomber Fleet Control",                
+                sub: isRo ? "Singura componentă care poate fi oprită" : "Only leg that can be called back" 
+              },
+              { 
+                v: isRo ? "SENTINEL" : "SENTINEL",      
+                l: isRo ? "Modernizare ICBM" : "ICBM Modernization",               
+                sub: isRo ? "Înlocuirea flotei Minuteman III" : "Replacing the Minuteman III fleet" 
+              },
             ].map((item, i) => (
               <div key={i} className="border-l border-white/10 pl-8 py-6">
-                <div className="text-4xl font-black mb-2">{item.v}</div>
+                <div className="text-2xl font-black mb-2">{item.v}</div>
                 <div className="mil-text-metadata mb-2">{item.l}</div>
                 <div className="mil-text-metadata text-[8px] opacity-55">{item.sub}</div>
               </div>
@@ -518,7 +540,7 @@ export default async function MilitaryPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/2">
-          {DEFENSE_CONTRACTORS.map((c, i) => (
+          {contractors.map((c, i) => (
             <div key={c.name} className="group bg-[#0a0a0a] p-12 flex flex-col h-full relative mil-gradient-border hover:bg-[#0f0f0f] transition-colors duration-500">
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-8">
@@ -572,12 +594,19 @@ export default async function MilitaryPage() {
           <blockquote className="text-[clamp(28px,5vw,72px)] font-black tracking-tighter leading-[1.1] text-white/90 mb-16">
             &ldquo;{quote.quote}&rdquo;
           </blockquote>
-          <div className="flex items-center justify-center gap-4">
-            <div className="h-px w-12" style={{ background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.2))' }} />
-            <cite className="mil-text-metadata not-italic tracking-[0.4em] text-[9px] uppercase text-white/50">
-              {quote.attribution} — {quote.title}
-            </cite>
-            <div className="h-px w-12" style={{ background: 'linear-gradient(to left, transparent, rgba(255,255,255,0.2))' }} />
+          <div className="flex flex-col items-center justify-center gap-6">
+            <div className="flex items-center justify-center gap-4">
+              <div className="h-px w-12" style={{ background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.2))' }} />
+              <cite className="mil-text-metadata not-italic tracking-[0.4em] text-[9px] uppercase text-white/50">
+                {quote.attribution} — {quote.title}
+              </cite>
+              <div className="h-px w-12" style={{ background: 'linear-gradient(to left, transparent, rgba(255,255,255,0.2))' }} />
+            </div>
+            {quote.note && (
+              <p className="mil-text-metadata max-w-xl mx-auto opacity-30 text-[10px] leading-relaxed italic">
+                {quote.note}
+              </p>
+            )}
           </div>
         </div>
       </div>

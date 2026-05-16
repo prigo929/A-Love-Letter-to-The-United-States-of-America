@@ -450,6 +450,20 @@ export const DEFENSE_CONTRACTORS: DefenseContractor[] = [
   { name: "L3Harris",            revenue: "$19.4B",  specialty: "ISR, Communications, EW",    programs: ["AN/PRC-163 Radio", "F-16 AESA radar", "Space-based ISR sensors"] },
 ];
 
+export function getDefenseContractors(locale: Locale): DefenseContractor[] {
+  if (locale !== "ro") return DEFENSE_CONTRACTORS;
+  return DEFENSE_CONTRACTORS.map(c => ({
+    ...c,
+    specialty: c.name === "Lockheed Martin" ? "Avioane de vânătoare, Rachete, Spațiu"
+             : c.name === "RTX (Raytheon)" ? "Rachete, Apărare aeriană, EW"
+             : c.name === "Northrop Grumman" ? "Invizibilitate, Spațiu, Electronică"
+             : c.name === "Boeing Defense" ? "Aeronave cu aripi rotative, Naval, Spațiu"
+             : c.name === "General Dynamics" ? "Luptă la sol, Construcții navale"
+             : c.name === "L3Harris" ? "ISR, Comunicații, EW"
+             : c.specialty
+  }));
+}
+
 export const BUDGET_DATA = [
   { country: "United States", budget: 916, flag: "🇺🇸" },
   { country: "China",         budget: 336, flag: "🇨🇳" },
@@ -513,6 +527,34 @@ export const MILITARY_QUOTES = [
   },
 ];
 
+export function getMilitaryQuotes(locale: Locale) {
+  if (locale !== "ro") return MILITARY_QUOTES;
+  return [
+    {
+      ...MILITARY_QUOTES[0],
+      quote: "Arta supremă a războiului este de a învinge inamicul fără luptă.",
+      title: "Arta Războiului",
+      note: "Principiul care ghidează descurajarea americană: scopul nu este niciodată să lupți — ci să faci lupta împotriva Americii atât de costisitoare încât adversarii să nu o înceapă niciodată.",
+    },
+    {
+      ...MILITARY_QUOTES[1],
+      quote: "Dacă vrei pace, pregătește-te de război.",
+      title: "Teoretician Militar Roman",
+      note: "Si vis pacem, para bellum — logica descurajării în patru cuvinte. Superioritatea militară americană a prevenit mai multe războaie decât a purtat.",
+    },
+    {
+      ...MILITARY_QUOTES[2],
+      quote: "Pacea nu este absența conflictului, ci abilitatea de a gestiona conflictul prin mijloace pașnice. Forța americană este fundamentul acelei păci.",
+      attribution: "Ronald Reagan", title: "Al 40-lea Președinte al Statelor Unite",
+    },
+    {
+      ...MILITARY_QUOTES[3],
+      quote: "Nicio viață, libertate sau proprietate nu este în siguranță când legislativul este în sesiune — dar nicio viață, libertate sau proprietate a unui american nu este în siguranță când armata Americii nu este supremă.",
+      title: "Principiul Descurajării Strategice",
+    },
+  ];
+}
+
 // ─── Nuclear Triad ────────────────────────────────────────────────────────────
 
 export const NUCLEAR_TRIAD = {
@@ -548,21 +590,21 @@ export const NUCLEAR_TRIAD = {
 // ─── Facts ────────────────────────────────────────────────────────────────────
 
 export const MILITARY_FACTS_EN = [
-  { id: "stealth-lead", fact: "The US is the only nation on Earth with three operational stealth types", detail: "With the F-22 Raptor, F-35 Lightning II, and the B-2/B-21 stealth bombers, America maintains a generation-length lead in low-observable technology. No other adversary has successfully fielded a single stealth platform that matches American radar-evading capabilities.", source: "IISS Military Balance 2024", color: "gold" as const },
+  { id: "mil-medicine",  fact: "Combat medicine breakthroughs save 25,000+ civilian lives annually", detail: "From advanced tourniquets to freeze-dried plasma, the US military's trauma research (pioneered in Iraq/Afghanistan) has been adopted by civilian EMS globally, drastically increasing survival rates for car accidents and mass-casualty events.", source: "Journal of Trauma and Acute Care Surgery", color: "gold" as const },
   { id: "global-logistics", fact: "American logistics can deploy a combat brigade anywhere on Earth in 18 hours", detail: "The Air Mobility Command's fleet of C-17s and C-5s, supported by a global network of 750+ bases, provides a logistical reach that is physically impossible for any other military. America doesn't just have the most power; it has the most mobile power.", source: "TRANSCOM 2024", color: "blue" as const },
-  { id: "satellite-network", fact: "The US operates more military satellites than all other nations combined", detail: "From GPS guidance to instant global communications, the US Space Force manages a constellation of 500+ dedicated military assets. This 'orbital high ground' allows American forces to see, communicate, and strike with precision that remains unmatched.", source: "UCS Satellite Database 2024", color: "gold" as const },
-  { id: "nuclear-deterrence",fact:"America's nuclear triad guarantees no adversary can launch a first strike and survive the response",       detail: "With 400 ICBMs in hardened silos, 14 nuclear submarines at sea, and nuclear bombers on standby, no adversary can simultaneously destroy all three legs. Guaranteed second-strike capability is why nuclear war has not occurred.", source: "Hans Kristensen / Federation of American Scientists 2024", color: "blue" as const },
-  { id: "space-dependency", fact: "Modern American warfare is impossible without Space Force — every precision weapon depends on satellites", detail: "GPS guidance for bombs and missiles. ISR satellites locating targets. Satellite communications coordinating forces across continents. Space Force protects the infrastructure without which F-35s become expensive aluminum tubes.", source: "Congressional Research Service 2024", color: "gold" as const },
+  { id: "gps-utility",   fact: "GPS is a $1 trillion global utility provided free by the US military", detail: "Operated by the Space Force, the Global Positioning System is the clock for the world's financial markets and the map for every smartphone. The US provides this critical infrastructure to the entire world at zero cost to users.", source: "NIST / Department of Commerce 2024", color: "gold" as const },
   { id: "rd-dominance",     fact: "US defense R&D spending exceeds the total defense budgets of most nations",                               detail: "The US spends $140+ billion annually on defense R&D — more than the total military budgets of Italy, Spain, Australia, or Canada. This investment compound over 80 years is why the B-21 and F-35 have no peer.", source: "Office of the Under Secretary of Defense (Comptroller) 2024", color: "blue" as const },
+  { id: "satellite-network", fact: "The US operates more military satellites than all other nations combined", detail: "From GPS guidance to instant global communications, the US Space Force manages a constellation of 500+ dedicated military assets. This 'orbital high ground' allows American forces to see, communicate, and strike with precision that remains unmatched.", source: "UCS Satellite Database 2024", color: "gold" as const },
+  { id: "space-dependency", fact: "Modern American warfare is impossible without Space Force — every precision weapon depends on satellites", detail: "GPS guidance for bombs and missiles. ISR satellites locating targets. Satellite communications coordinating forces across continents. Space Force protects the infrastructure without which F-35s become expensive aluminum tubes.", source: "Congressional Research Service 2024", color: "blue" as const },
 ];
 
 export const MILITARY_FACTS_RO = [
-  { id: "stealth-lead", fact: "SUA sunt singura națiune cu trei tipuri de aeronave invizibile operaționale", detail: "Cu F-22 Raptor, F-35 Lightning II și bombardierele B-2/B-21, America menține un avantaj de o generație în tehnologia stealth. Niciun adversar nu a reușit să pună în serviciu o platformă care să egaleze capabilitățile americane.", source: "IISS Military Balance 2024", color: "gold" as const },
+  { id: "mil-medicine",  fact: "Descoperirile în medicina de luptă salvează peste 25.000 de vieți civile anual", detail: "De la garouri avansate la plasmă liofilizată, cercetările de traumă ale armatei americane au fost adoptate global de serviciile de urgență civile, crescând drastic ratele de supraviețuire în accidente rutiere.", source: "Journal of Trauma and Acute Care Surgery", color: "gold" as const },
   { id: "global-logistics", fact: "Logistica americană poate trimite o brigadă de luptă oriunde pe Pământ în 18 ore", detail: "Flota de C-17 și C-5 a Air Mobility Command, susținută de o rețea globală de peste 750 de baze, oferă o rază de acțiune logistică imposibilă pentru orice altă armată. America are cea mai mobilă putere din lume.", source: "TRANSCOM 2024", color: "blue" as const },
-  { id: "satellite-network", fact: "SUA operează mai mulți sateliți militari decât toate celelalte națiuni la un loc", detail: "De la ghidarea GPS la comunicații globale instantanee, Space Force gestionează o constelație de peste 500 de active militare dedicate. Acest avantaj orbital permite forțelor americane să lovească cu o precizie inegalabilă.", source: "UCS Satellite Database 2024", color: "gold" as const },
-  { id: "nuclear-deterrence",fact:"Triada nucleară americană garantează că niciun adversar nu poate lansa un prim atac și supraviețui răspunsului", detail: "Cu 400 de ICBM-uri în silozuri întărite, 14 submarine nucleare pe mare și bombardiere nucleare în stare de alertă, niciun adversar nu poate distruge simultan toate cele trei componente.", source: "Hans Kristensen / Federation of American Scientists 2024", color: "blue" as const },
-  { id: "space-dependency", fact: "Războiul american modern este imposibil fără Space Force — fiecare armă de precizie depinde de sateliți",   detail: "Ghidare GPS pentru bombe și rachete. Sateliți ISR care localizează ținte. Comunicații prin satelit care coordonează forțele de pe continente. Space Force protejează infrastructura fără de care F-35-urile devin tuburi de aluminiu scumpe.", source: "Congressional Research Service 2024", color: "gold" as const },
+  { id: "gps-utility",   fact: "GPS este o utilitate globală de 1 trilion $ oferită gratuit de armata SUA", detail: "Operat de Space Force, Sistemul de Poziționare Globală este ceasul pentru piețele financiare mondiale și harta pentru fiecare smartphone. SUA oferă această infrastructură întregii lumi fără costuri.", source: "NIST / Department of Commerce 2024", color: "gold" as const },
   { id: "rd-dominance",     fact: "Cheltuielile de C&D pentru apărare ale SUA depășesc bugetele totale de apărare ale majorității națiunilor",  detail: "SUA cheltuiesc 140+ miliarde de dolari anual pe C&D pentru apărare — mai mult decât bugetele militare totale ale Italiei, Spaniei, Australiei sau Canadei. Aceasta este investiția care a produs B-21 și F-35.", source: "Office of the Under Secretary of Defense (Comptroller) 2024", color: "blue" as const },
+  { id: "satellite-network", fact: "SUA operează mai mulți sateliți militari decât toate celelalte națiuni la un loc", detail: "De la ghidarea GPS la comunicații globale instantanee, Space Force gestionează o constelație de peste 500 de active militare dedicate. Acest avantaj orbital permite forțelor americane să lovească cu o precizie inegalabilă.", source: "UCS Satellite Database 2024", color: "gold" as const },
+  { id: "space-dependency", fact: "Războiul american modern este imposibil fără Space Force — fiecare armă de precizie depinde de sateliți",   detail: "Ghidare GPS pentru bombe și rachete. Sateliți ISR care localizează ținte. Comunicații prin satelit care coordonează forțele de pe continente. Space Force protejează infrastructura fără de care F-35-urile devin tuburi de aluminiu scump.", source: "Congressional Research Service 2024", color: "blue" as const },
 ];
 
 // ─── i18n helpers ─────────────────────────────────────────────────────────────
