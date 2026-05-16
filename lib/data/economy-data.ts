@@ -254,7 +254,7 @@ export const ECONOMY_HERO_STATS: EconomyStat[] = [
   },
   {
     id: "market-cap",
-    value: 69,
+    value: 69.0,
     suffix: "T+",
     prefix: "$",
     label: "US Stock Markets",
@@ -263,11 +263,12 @@ export const ECONOMY_HERO_STATS: EconomyStat[] = [
     color: "gold",
   },
   {
-    id: "fortune500",
-    value: 139,
-    label: "Fortune 500 HQs",
-    description: "More than any other nation",
-    source: "Fortune 2026",
+    id: "reserves",
+    value: 57.4,
+    suffix: "%",
+    label: "Global Reserves",
+    description: "Share of world FX reserves in USD",
+    source: "IMF 2026",
     color: "white",
   },
   {
@@ -285,11 +286,11 @@ export const ECONOMY_HERO_STATS: EconomyStat[] = [
 
 export const GDP_FACTS: EconomyFact[] = [
   {
-    id: "gdp-share",
-    fact: "The US represents ~25% of total world GDP",
+    id: "gdp-california",
+    fact: "California alone would be the 4th largest economy on Earth",
     detail:
-      "With just 4.2% of the world's population, America generates a quarter of all global economic output.",
-    source: "World Bank 2026",
+      "At $4.25 trillion, California has overtaken Japan, Germany, and India. A single US state produces more than almost every nation.",
+    source: "BEA 2026",
     color: "gold",
   },
   {
@@ -347,11 +348,11 @@ export const CAPITAL_MARKETS_FACTS: EconomyFact[] = [
 
 export const VC_FACTS: EconomyFact[] = [
   {
-    id: "vc-share",
-    fact: "America attracts ~65% of all global VC investment",
+    id: "vc-ai",
+    fact: "US AI startups raised $85B in 2025 — 65% of global AI investment",
     detail:
-      "In 2025, US startups raised approximately $210 billion in venture capital — nearly two-thirds of all VC deployed on Earth, despite having just 4% of the world's population.",
-    source: "NVCA / Pitchbook 2026",
+      "OpenAI, Anthropic, and Scale AI — the AI revolution is being financed almost entirely by American capital and talent.",
+    source: "Pitchbook 2026",
     color: "gold",
   },
   {
@@ -511,11 +512,11 @@ export const TOP_VC_FIRMS: VcFirm[] = [
 
 export const VC_EXTENDED_FACTS: ExtendedFact[] = [
   {
-    id: "vc-total",
-    fact: "US startups raised ~$210B in VC in 2025 — 65% of the global total",
+    id: "vc-patents",
+    fact: "The US grants over 350,000 patents annually — #1 in IP value",
     detail:
-      "With just 4.2% of the world's population, America attracts nearly two-thirds of all venture capital deployed on Earth. No other country has come close in the modern era.",
-    source: "NVCA / Pitchbook 2026",
+      "American innovation is protected by the world's most robust intellectual property system, ensuring that inventors can monetize their breakthroughs globally.",
+    source: "USPTO 2026",
     color: "gold",
   },
   {
@@ -527,7 +528,7 @@ export const VC_EXTENDED_FACTS: ExtendedFact[] = [
     color: "red",
   },
   {
-    id: "vc-ai",
+    id: "vc-ai-extended",
     fact: "US AI startups raised $85B in 2025 — 65% of global AI investment",
     detail:
       "OpenAI, Anthropic, Cohere, Mistral (partially US-funded), Inflection AI, Scale AI — the AI revolution is being financed almost entirely by American capital and talent.",
@@ -543,11 +544,11 @@ export const VC_EXTENDED_FACTS: ExtendedFact[] = [
     color: "gold",
   },
   {
-    id: "vc-immigrants",
-    fact: "55% of billion-dollar US startup founders were immigrants or their children",
+    id: "vc-corporate-rd",
+    fact: "US tech companies invest $250B+ in R&D every year",
     detail:
-      "Elon Musk (South Africa), Sergey Brin (Russia), Jensen Huang (Taiwan), Pierre Omidyar (France/Iran), Jerry Yang (Taiwan), Andy Grove (Hungary) — America builds greatness from everywhere.",
-    source: "NFAP 2022 / Forbes",
+      "Amazon, Alphabet, Meta, and Microsoft alone outspend entire nations on research and development, fueling the next wave of global innovation.",
+    source: "Strategy& / Bloomberg 2026",
     color: "red",
   },
   {
@@ -783,8 +784,8 @@ export function getEconomyHeroStats(locale: Locale) {
       },
       {
         ...ECONOMY_HERO_STATS[2],
-        label: "Sedii Fortune 500",
-        description: "Mai multe decât orice altă națiune",
+        label: "Rezerve Globale",
+        description: "Ponderea rezervelor valutare mondiale în USD",
       },
       {
         ...ECONOMY_HERO_STATS[3],
@@ -802,9 +803,9 @@ export function getGdpFacts(locale: Locale) {
     return [
       {
         ...GDP_FACTS[0],
-        fact: "SUA reprezintă aproximativ 25% din PIB-ul mondial total",
+        fact: "California ar fi, singură, a 4-a economie de pe Pământ",
         detail:
-          "Cu doar 4,2% din populația lumii, America generează un sfert din întreaga producție economică globală.",
+          "La 4,25 trilioane de dolari, California a depășit Japonia, Germania și India. Un singur stat american produce mai mult decât aproape orice națiune.",
       },
       {
         ...GDP_FACTS[1],
@@ -862,9 +863,9 @@ export function getVcFacts(locale: Locale) {
     return [
       {
         ...VC_FACTS[0],
-        fact: "America atrage aproximativ 65% din toate investițiile globale de VC",
+        fact: "Startup-urile americane de AI au atras 85 mld. $ în 2025 — 65% din totalul global",
         detail:
-          "În 2025, startup-urile din SUA au atras aproximativ 210 miliarde de dolari în venture capital — aproape două treimi din tot VC-ul investit pe Pământ, deși SUA au doar 4% din populația lumii.",
+          "OpenAI, Anthropic și Scale AI — revoluția inteligenței artificiale este finanțată aproape în totalitate de capitalul și talentul american.",
       },
       {
         ...VC_FACTS[1],
@@ -1112,9 +1113,9 @@ export function getVcExtendedFacts(locale: Locale) {
     return [
       {
         ...VC_EXTENDED_FACTS[0],
-        fact: "Startup-urile americane au atras aproximativ 210 mld. $ în 2025 — 65% din totalul global",
+        fact: "SUA acordă peste 350.000 de brevete anual — locul #1 în valoarea proprietății intelectuale",
         detail:
-          "Cu doar 4,2% din populația lumii, America atrage aproape două treimi din întreg venture capitalul investit pe Pământ. Nicio altă țară nu s-a apropiat în epoca modernă.",
+          "Inovația americană este protejată de cel mai robust sistem de proprietate intelectuală din lume, asigurând că inventatorii își pot monetiza descoperirile la nivel global.",
       },
       {
         ...VC_EXTENDED_FACTS[1],
@@ -1136,9 +1137,9 @@ export function getVcExtendedFacts(locale: Locale) {
       },
       {
         ...VC_EXTENDED_FACTS[4],
-        fact: "55% dintre fondatorii de startup-uri americane de un miliard de dolari au fost imigranți",
+        fact: "Companiile tech din SUA investesc peste 250 mld. $ în R&D în fiecare an",
         detail:
-          "Elon Musk, Sergey Brin, Jensen Huang, Pierre Omidyar, Jerry Yang, Andy Grove — America construiește măreție cu talent de pretutindeni.",
+          "Amazon, Alphabet, Meta și Microsoft cheltuiesc împreună mai mult pe cercetare și dezvoltare decât națiuni întregi, alimentând următorul val de inovație globală.",
       },
       {
         ...VC_EXTENDED_FACTS[5],

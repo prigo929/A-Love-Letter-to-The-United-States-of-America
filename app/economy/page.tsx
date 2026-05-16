@@ -167,9 +167,9 @@ function getEconomyPageCopy(locale: Locale) {
       heroDescription:
         "Economia Statelor Unite este cea mai puternică forță economică din istoria civilizației umane — 32,4 trilioane de dolari producție anuală, moneda de rezervă a lumii și capitala globală a inovației.",
       heroStats: [
-        { value: "$32.4T", label: "PIB 2026", sub: "IMF Projection" },
-        { value: "25%", label: "din PIB-ul mondial", sub: "FMI" },
-        { value: "139", label: "sedii Fortune 500", sub: "Fortune 2026" },
+        { value: "$32.4T", label: "PIB 2026", sub: "Proiecție FMI" },
+        { value: "$69T+", label: "Piețe Bursiere", sub: "NYSE + NASDAQ" },
+        { value: "1.172", label: "Companii Unicorn", sub: "65% din totalul global" },
       ],
       tocItems: [
         { label: "Prezentare", href: "#overview" },
@@ -250,9 +250,9 @@ function getEconomyPageCopy(locale: Locale) {
     heroDescription:
       "The United States economy is the most powerful economic force in the history of human civilization — $32.4 trillion in annual output, the world's reserve currency, and the innovation capital of Earth.",
     heroStats: [
-      { value: "$32.4T", label: "GDP 2026", sub: "IMF Projection" },
-      { value: "25%", label: "of World GDP", sub: "IMF" },
-      { value: "139", label: "Fortune 500 HQs", sub: "Fortune 2026" },
+      { value: "$32.4T", label: "2026 GDP", sub: "IMF Projection" },
+      { value: "$69T+", label: "Stock Markets", sub: "NYSE + NASDAQ" },
+      { value: "1,172", label: "Unicorn Companies", sub: "65% of Global Total" },
     ],
     tocItems: [
       { label: "Overview", href: "#overview" },
@@ -268,7 +268,7 @@ function getEconomyPageCopy(locale: Locale) {
       { label: "Petroleum Products", value: 119, pct: 90 },
       { label: "Semiconductors", value: 87, pct: 66 },
       { label: "Medical Devices", value: 74, pct: 56 },
-      { label: "Automobiles", value: 65, pct: 49 },
+      { label: "Automobile", value: 65, pct: 49 },
       { label: "Pharmaceuticals", value: 63, pct: 48 },
       { label: "Agricultural Products", value: 58, pct: 44 },
       { label: "Industrial Machinery", value: 52, pct: 39 },
@@ -464,7 +464,7 @@ export default async function EconomyPage() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="macro-hero-title text-[#E8B923] mb-4">$47T+</p>
+              <p className="macro-hero-title text-[#E8B923] mb-4">$69T+</p>
               <p className="macro-metadata text-white/70">
                 {copy.marketCapLabel}
               </p>

@@ -40,19 +40,19 @@ const GDP_EXTENDED_FACTS = [
   // This page has a few extra facts stored locally because they are specific to
   // this subpage and not reused elsewhere.
   {
-    id: "gdp-streak",
-    fact: "The US has held the #1 GDP rank for 130+ consecutive years",
+    id: "gdp-services",
+    fact: "80% of US GDP is driven by the services sector",
     detail:
-      "Through the Great Depression, two World Wars, the Cold War, the 2008 financial crisis, and a global pandemic — the US economy has never relinquished its crown.",
-    source: "IMF Historical Data 2026",
+      "Finance, healthcare, education, and technology — America has successfully transitioned to a high-value service economy that is the envy of the industrialized world.",
+    source: "CIAA 2026",
     color: "gold" as const,
   },
   {
-    id: "gdp-california",
-    fact: "California alone would be the 4th largest economy on Earth",
+    id: "gdp-energy",
+    fact: "The US is the world's largest producer of oil and natural gas",
     detail:
-      "At approximately $4.25 trillion in state GDP, California has overtaken Japan, the UK, and India to become the world's 4th largest economy if it were its own country.",
-    source: "Bureau of Economic Analysis 2026",
+      "America produces more energy than any nation on Earth, providing a massive structural advantage in industrial costs and national security.",
+    source: "EIA 2026",
     color: "red" as const,
   },
   {
@@ -142,15 +142,15 @@ export default async function GdpGrowthPage() {
       ? [
           {
             ...GDP_EXTENDED_FACTS[0],
-            fact: "SUA ocupă locul #1 la PIB de peste 130 de ani consecutivi",
+            fact: "80% din PIB-ul SUA este generat de sectorul serviciilor",
             detail:
-              "Prin Marea Criză Economică, două războaie mondiale, Războiul Rece, criza financiară din 2008 și o pandemie globală — economia SUA nu și-a cedat niciodată coroana.",
+              "Finanțele, sănătatea, educația și tehnologia — America a trecut cu succes la o economie de servicii cu valoare adăugată mare, invidiată de lumea industrializată.",
           },
           {
             ...GDP_EXTENDED_FACTS[1],
-            fact: "Doar California ar fi a 4-a economie ca mărime de pe Pământ",
+            fact: "SUA sunt cel mai mare producător de petrol și gaze naturale din lume",
             detail:
-              "Cu aproximativ 4,25 trilioane de dolari PIB la nivel de stat, California a depășit Japonia, Regatul Unit și India. Un singur stat american.",
+              "America produce mai multă energie decât orice altă națiune de pe Pământ, oferind un avantaj structural masiv în costurile industriale și securitatea națională.",
           },
           {
             ...GDP_EXTENDED_FACTS[2],

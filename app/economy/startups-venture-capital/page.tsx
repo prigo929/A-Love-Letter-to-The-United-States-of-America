@@ -61,7 +61,7 @@ export default async function StartupsVCPage() {
   // numbers" grid does not duplicate ideas already highlighted elsewhere.
   const byTheNumbersFacts = [
     ...sharedFacts.filter(
-      (fact: EconomyFact) => fact.id !== "vc-share" && fact.id !== "immigrant-founders",
+      (fact: EconomyFact) => fact.id !== "vc-ai" && fact.id !== "immigrant-founders",
     ),
     ...localFacts,
   ];

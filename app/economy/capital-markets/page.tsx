@@ -37,11 +37,11 @@ const CAPITAL_MARKETS_EXTENDED_FACTS = [
   // Page-specific supporting facts. Shared facts stay in economy-data.ts;
   // local facts that belong only to this page can live here.
   {
-    id: "nyse-history",
-    fact: "The NYSE has operated continuously under the buttonwood tree agreement since 1792",
+    id: "asset-management",
+    fact: "US asset managers control over $25 trillion in global wealth",
     detail:
-      "Founded under a buttonwood tree on Wall Street, the NYSE is older than most nations on Earth and has been the center of global finance for over 230 years.",
-    source: "NYSE Historical Records",
+      "BlackRock, Vanguard, and State Street manage more assets than the entire GDP of China. This 'Big Three' provides the backbone of global institutional investment.",
+    source: "Investment Company Institute 2026",
     color: "gold" as const,
   },
   {
@@ -77,11 +77,11 @@ const CAPITAL_MARKETS_EXTENDED_FACTS = [
     color: "red" as const,
   },
   {
-    id: "treasury-market",
-    fact: "The US Treasury market is the most liquid financial market in history",
+    id: "options-market",
+    fact: "The US options market is larger than all other global markets combined",
     detail:
-      "$800+ billion in US Treasuries trade hands every single day — more than most countries' annual GDP. This liquidity is the foundation of global financial stability.",
-    source: "Federal Reserve Bank of New York 2026",
+      "American derivatives exchanges trade over 40 million contracts per day, providing the world's most sophisticated mechanism for hedging and price discovery.",
+    source: "Options Clearing Corporation 2026",
     color: "blue" as const,
   },
 ];
@@ -129,9 +129,9 @@ export default async function CapitalMarketsPage() {
       ? [
           {
             ...CAPITAL_MARKETS_EXTENDED_FACTS[0],
-            fact: "NYSE funcționează neîntrerupt din 1792, încă de la acordul Buttonwood",
+            fact: "Administratorii de active din SUA controlează peste 25 de trilioane de dolari",
             detail:
-              "Fondată sub un platan pe Wall Street, NYSE este mai veche decât majoritatea națiunilor de pe Pământ și centrul finanțelor globale de peste 230 de ani.",
+              "BlackRock, Vanguard și State Street gestionează mai multe active decât întregul PIB al Chinei. Acești «Giganți» reprezintă coloana vertebrală a investițiilor instituționale globale.",
           },
           {
             ...CAPITAL_MARKETS_EXTENDED_FACTS[1],
@@ -159,9 +159,9 @@ export default async function CapitalMarketsPage() {
           },
           {
             ...CAPITAL_MARKETS_EXTENDED_FACTS[5],
-            fact: "Piața americană a titlurilor de Trezorerie este cea mai lichidă piață financiară din istorie",
+            fact: "Piața opțiunilor din SUA este mai mare decât toate celelalte piețe globale la un loc",
             detail:
-              "Peste 700 de miliarde de dolari în titluri de Trezorerie SUA se tranzacționează în fiecare zi — mai mult decât PIB-ul anual al majorității țărilor. Această lichiditate este fundația stabilității financiare globale.",
+              "Bursele americane de derivate tranzacționează peste 40 de milioane de contracte pe zi, oferind cel mai sofisticat mecanism din lume pentru acoperirea riscurilor și descoperirea prețurilor.",
           },
         ]
       : CAPITAL_MARKETS_EXTENDED_FACTS;
