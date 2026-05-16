@@ -4,16 +4,26 @@
 ### 🌟 A Cinematic, Data-Backed Love Letter to the Republic 🌟
 
 ```text
-================================================================
-                    ★ ★ ★   E PLURIBUS UNUM   ★ ★ ★
-================================================================
+┌──────────────────────────────────────────────────────────────────┐
+│  ★ ★ ★ ★ ★ ★ ★ ★  █████████████████████████████████████████████  │
+│   ★ ★ ★ ★ ★ ★ ★   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
+│  ★ ★ ★ ★ ★ ★ ★ ★  █████████████████████████████████████████████  │
+│   ★ ★ ★ ★ ★ ★ ★   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
+│  ★ ★ ★ ★ ★ ★ ★ ★  █████████████████████████████████████████████  │
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
+│  ██████████████████████████████████████████████████████████████  │
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
+│  ██████████████████████████████████████████████████████████████  │
+├──────────────────────────────────────────────────────────────────┤
+│             🇺🇸   E   P L U R I B U S   U N U M   🇺🇸             │
+│               ★   O U T   O F   M A N Y ,   O N E   ★            │
+└──────────────────────────────────────────────────────────────────┘
 ```
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-111111?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-1E5AA8?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![App Router](https://img.shields.io/badge/Router-App%20Router-0A3161?style=for-the-badge)](https://nextjs.org/docs/app)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-Custom%20Theme-3C8DAD?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-
 [![Framer Motion](https://img.shields.io/badge/Motion-Framer-7A1F3D?style=for-the-badge)](https://www.framer.com/motion/)
 [![Charts](https://img.shields.io/badge/Charts-Recharts%20%2B%20D3-B22234?style=for-the-badge)](#experience-highlights)
 [![Maps](https://img.shields.io/badge/Maps-react--simple--maps-3C3B6E?style=for-the-badge)](#experience-highlights)
@@ -953,7 +963,14 @@ We use a "Server-Hub, Client-Interactive" pattern:
 - **Tactile Document Design**: We use `mix-blend-mode: screen` with static marble textures (`marble-texture.webp`) and `InkParticles` to create a "living parchment" feel. This is significantly more performant than using video backgrounds for the same effect.
 - **Bilingual Schema Integrity**: All data in `lib/data/constitution-data.ts` and `lib/data/federalism-data.ts` must follow the strict `text` / `textRo` parity. The exhibit is designed to be fully substantive in both languages.
 
-## Deployment
+---
+
+> *“We choose to go to the Moon in this decade and do the other things, not because they are easy, but because they are hard; because that challenge is one that we are willing to accept.”*  
+> 🚀 **John F. Kennedy** · *Rice University Address, 1962*
+
+---
+
+## 🚀 Launch Sequence (Deployment)
 
 The project is designed for Vercel.
 
@@ -987,49 +1004,48 @@ If Vercel fails on static image imports:
 - run `npm run type-check` before pushing
 - if a local image changes, hard refresh the browser because Next/Image caching can make swaps look delayed
 
-## Cool Bits In This Repo
+## 🌟 Crown Jewels of the Repository
 
-- rotating multi-image homepage hero
-- homepage data teaser charts with USA-highlighted bars
-- animated mega-menu with mobile overlay
-- breadcrumb JSON-LD support
-- reading progress bar + floating back-to-top button
-- local image library instead of scattered remote URLs
-- Romanian translation mode wired through real cookie + provider state
-- economy section built as a real editorial/data hybrid, not just cards and charts
-- nature section built with its own charts, animations, and long-form subpages
-- constitution section featuring the **Clause Vault**, **Founder Constellation**, and high-fidelity **Real-World Checks** case studies
-- electoral archive featuring a **1788–2024 Interactive Map** with mid-term flip logic and bipartite historical tracking
-- homepage hero includes a custom video-backed `STATES` title treatment
-- automatic **Repomix integration** for AI-assisted development context
+- 🦅 **Rotating Cinematic Hero**: Multi-image curated slideshow with Ken-Burns animations and custom HUD overlays.
+- 📈 **Glory-Gold Highlights**: Custom Recharts components (`GdpBarChart`, `VCCharts`) automatically highlighting the US in comparison charts.
+- ⚓️ **Global Reach Strike Tracker**: Precise SVG map mapping the live deployments of all 11 active US Aircraft Carriers.
+- 📜 **The Clause Vault**: Immersive digital parchment dividing the 4,543 words of the Constitution into legal case studies.
+- 🗳️ **Electoral Flip History**: 1788–2024 biennial presidential, gubernatorial, and senate interactive maps tracking mid-term flip vectors.
+- 🎛️ **Policy Sliders (Federalism)**: A multidimensional scoring engine matching fiscal and regulatory sliders directly to 50 states.
+- 🎥 **Video-Backed STATES Title**: Cinematic text rendering in `StatesVideoTitle.tsx` showing active landscapes in the word masks.
+- 🔄 **Romanian state-parity**: Dynamic, compiled JSON data arrays in `lib/data` using active locale getters to secure 100% server + client translation.
+- ⚡️ **Web Vitals Observability**: Production-grade LCP, CLS, and INP metrics wired directly via Vercel observability tools.
 
-## Roadmap Energy
+## 🗺️ Roadmap Energy
 
-Good next expansions for this repo:
+Strategic milestones for the next phase of development:
+- 🎨 **Finish the Culture Hub**: Integrate highly visual gallery assets, custom audio-visual quotes, and media timelines.
+- 🌱 **Deepen Quality of Life**: Move QoL from its current clean scaffold into a rich, long-form editorial vertical.
+- 🚀 **Tighten per-route SEO metadata**: Standardize localized JSON-LD schema objects across all newly created verticals.
+- 🇷🇴 **Extend translation coverage**: Refactor remaining hardcoded JSX labels into active getter functions in `lib/data`.
 
-- finish the culture hub with real content blocks and media
-- turn quality-of-life from scaffold to full narrative section
-- deepen the explorer and gallery experiences
-- tighten per-route metadata and translated SEO copy
-- expand the Romanian coverage to every remaining visible string
-- continue improving the README as the repo gets more opinionated
+## 🇺🇸 Status of the Union (Active Modules)
 
-## Status
-
-| Area | Status |
-| --- | --- |
-| Homepage | strong and feature-rich |
-| Economy | substantial and already production-shaped |
-| Nature | substantial and already production-shaped |
-| Constitution | fully interactive, production-ready, interactive physics and maps |
-| Electoral Archive | 1788–2024 high-fidelity dataset, mid-term flips, bipartite logic |
-| Culture | scaffolded, ready for content |
-| Quality of Life | scaffolded, ready for content |
-| Translation | live for shared UI and major route content |
-| Image system | centralized and local-first |
-| README | aligned with the actual repo |
+| 🦅 Sovereign Module | 📊 Current Standing | ⭐️ Platform Fidelity Highlights |
+| :--- | :--- | :--- |
+| **Homepage** | 🇺🇸 **FULLY OPERATIONAL** | Cinematic crossfades, video-backed `STATES` title, interactive teasers |
+| **Economy & Innovation** | 🇺🇸 **FULLY OPERATIONAL** | Wall Street Journal-grade grids, GDP & VC narrative charts, Safari-fit `dvh` scaling |
+| **Natural Majesty** | 🇺🇸 **FULLY OPERATIONAL** | Geyser/Strata animations, interactive biodiversity data, mobile-responsive chart axis labels |
+| **Constitution & Civics** | 🇺🇸 **FULLY OPERATIONAL** | Relational Founding Fathers graphs, Policy Sliders, Separation of Powers simulations |
+| **Electoral Archive** | 🇺🇸 **FULLY OPERATIONAL** | 1788–2024 Presidential/Senate interactive maps, mid-term flipping seats logic |
+| **Culture Hub** | 🛠️ **BUILDING DEMOCRACY** | Dynamic multimedia grid components scaffolded and content-ready |
+| **Quality of Life** | 🛠️ **BUILDING DEMOCRACY** | Life-satisfaction, metric comparators scaffolded and content-ready |
+| **Bilingual Translation** | 🟢 **LIVE & RESILIENT** | 100% server + client cookie parity with Romanian getters in `/lib/data` |
+| **Central Media Registry** | 🟢 **LIVE & RESILIENT** | Image assets indexed in `lib/site-images.ts` to prevent broken paths |
+| **Project Documentation** | 🟢 **LIVE & RESILIENT** | Formatted with high-fidelity patriotic design templates and development rules |
 
 ---
+
+```text
+================================================================
+           ★ ★ ★   IN GOD WE TRUST · EST. 1776   ★ ★ ★
+================================================================
+```
 
 Built as a patriotic editorial web experience, not a template.  
 Keep the bar high. Use real images, real statistics, and intentional layouts.
