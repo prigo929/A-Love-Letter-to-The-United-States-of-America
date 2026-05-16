@@ -58,27 +58,42 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
 
 <p align="center">
   <img src="IMAGES/USA from Space/USA at night from Space.jpg" width="600" alt="The Shining City on a Hill: USA at night from Space" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
-  <sub style="color: #94a3b8; font-style: italic; display: block; text-align: center; margin-top: -10px; margin-bottom: 25px;">"The Shining City on a Hill" — The continental United States illuminated at night from low Earth orbit, symbolizing prosperity, energy, and human scale.</sub>
+  <span style="display: block; max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase;">★ "The Shining City on a Hill" ★</strong>
+    The continental United States illuminated at night from low Earth orbit, representing the immense scale of American prosperity, energy grids, and human achievement.
+  </span>
 </p>
 
 <p align="center">
   <img src="IMAGES/Cities/Golden Gate Bridge.jpg" width="600" alt="Golden Gate Bridge: Pacific Gateway" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
-  <sub style="color: #94a3b8; font-style: italic; display: block; text-align: center; margin-top: -10px; margin-bottom: 25px;">"Gateway to the Pacific" — The majestic span of the Golden Gate Bridge in San Francisco, California, an enduring symbol of American engineering and infrastructural ambition.</sub>
+  <span style="display: block; max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase;">★ "Gateway to the Pacific" ★</strong>
+    The majestic orange span of the Golden Gate Bridge in San Francisco, California—a legendary engineering masterpiece demonstrating the ambition and connectivity of American infrastructure.
+  </span>
 </p>
 
 <p align="center">
   <img src="IMAGES/Technology/Apple Headquarters.jpg" width="600" alt="Silicon Valley Innovation Hub: Apple Park" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
-  <sub style="color: #94a3b8; font-style: italic; display: block; text-align: center; margin-top: -10px; margin-bottom: 25px;">"The Spaceship Campus" — Apple Park in Cupertino, California, representing absolute global leadership in technological innovation, industrial design, and venture capital concentration.</sub>
+  <span style="display: block; max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase;">★ "The Spaceship Campus" ★</strong>
+    Apple Park in Cupertino, California—the architectural pinnacle of Silicon Valley, representing the global leadership of American industrial design, computing technology, and venture capital.
+  </span>
 </p>
 
 <p align="center">
   <img src="IMAGES/Cities/New York Skyline at sunset.jpg" width="600" alt="Capital of Capital: Manhattan NYC at Sunset" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
-  <sub style="color: #94a3b8; font-style: italic; display: block; text-align: center; margin-top: -10px; margin-bottom: 25px;">"The Capital of Capital" — The legendary Manhattan skyline glowing at sunset, representing the unparalleled liquidity and dynamic output of American capital markets.</sub>
+  <span style="display: block; max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase;">★ "The Capital of Capital" ★</strong>
+    The iconic skyline of Manhattan glowing at sunset, representing the unmatched liquidity, trade velocity, and absolute depth of the United States capital markets.
+  </span>
 </p>
 
 <p align="center">
   <img src="IMAGES/Infrastructure/I-110 and I-115 Interchange Los Angeles.jpg" width="600" alt="Arteries of Commerce: Los Angeles Highway Interchange" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
-  <sub style="color: #94a3b8; font-style: italic; display: block; text-align: center; margin-top: -10px; margin-bottom: 25px;">"The Arteries of Commerce" — The spectacular, multi-level concrete columns of the Los Angeles Highway Interchange, illustrating the immense logistical throughput of American interstate commerce.</sub>
+  <span style="display: block; max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase;">★ "The Arteries of Commerce" ★</strong>
+    The multi-level freeway interchanges of Los Angeles, California, illustrating the immense logistical throughput and robust dynamic distribution network of American interstate trade.
+  </span>
 </p>
 
 ---
