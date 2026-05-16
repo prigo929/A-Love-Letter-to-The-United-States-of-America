@@ -3,6 +3,12 @@
 
 # Exclude large SVG assets and logos that consume massive amounts of tokens
 ASSETS/SVGs and Logos/**
+web/ASSETS/**
+web/IMAGES/**
+web/MUSIC/**
+web/SOUND EFFECTS/**
+web/VIDEOS/**
+web/public/**
 **/*.svg
 
 # Exclude standard media types
@@ -18,14 +24,18 @@ ASSETS/SVGs and Logos/**
 # Exclude system and build files
 .DS_Store
 node_modules/
+web/node_modules/
 .next/
+web/.next/
 dist/
 out/
 build/
 .vercel/
+web/.vercel/
 .git/
 *.log
 tsconfig.tsbuildinfo
+web/tsconfig.tsbuildinfo
 
 # 🔒 SECURITY & SECRETS
 .env*
