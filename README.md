@@ -864,6 +864,224 @@ Start with:
 - `components/sections/HeroSection.tsx`
 - `public/videos/flag-loop.mp4`
 
+## 📐 Code Organization & Engineering Methodology
+
+To ensure that the patriotic visual identity is maintained alongside high performance and flawless internationalization, the project follows a disciplined sequence of steps and strict structural standards during development:
+
+### 1. Sequential Development Workflow
+We write code in a highly deliberate, bottom-up sequence:
+1. **Planning & Theme Hardening**: Before any new component is created, we audit our HSL variables and Tailwind configuration to ensure all additions align with our established aesthetic rules.
+2. **Centralized Immutable Data Model**: We decoupled copy and metrics from our templates. All text blocks, quotes, and visual configurations are defined as strongly-typed contracts inside `lib/data/` or constant registries.
+3. **Foundation Components**: Layouts, wrappers, and core visual structures (headers, card shells, typography) are built next, using strict responsive breakpoints.
+4. **Interactive Subsystem Islands**: Animated controls, simulators, and active graphics (such as Recharts graphs or SVG maps) are built as clean, highly focused Client components, keeping them separate from the main page file.
+5. **Observability & Sanity Verification**: Every change is finalized by running automated type check validations (`npm run type-check`) and verifying that Vercel Web Vitals metrics (LCP, CLS) remain fully green.
+
+### 2. Styling System & Tailwind Guardrails
+We treat our styling system as an art-directed editorial identity. Arbitrary utility overrides are strictly prohibited. Instead, the project enforces:
+- **HSL Theme Variable Monolith**: Sitewide colors are mapped to CSS custom properties inside `app/globals.css` and bound to Tailwind’s theme object inside `tailwind.config.js` (e.g. `glory-gold`, `glory-red`, `glory-blue`, and deep navy backgrounds).
+- **Glassmorphic Standardization**: Card layers and dashboard grids must standardise on our glassmorphic parameters: `bg-white/4`, `border-white/10`, and `backdrop-blur-md` to ensure design consistency.
+- **Editorial Contrast Constraints**: Standard secondary labels must utilize bold text properties with minimum size guidelines (eyebrows at `18px/900` weight, captions at `14px/800` weight) to guarantee absolute contrast against deep background gradients.
+
+### 3. Strict Coding Conventions
+- **No Default Imports for Shells**: Reusable layout structures (such as `Header`, `Footer`, and `Breadcrumb`) MUST use named imports. This protects the project from implicit export mismatches.
+- **Framer Motion Precision**: Cubic-bezier transitions must be typed with strict array configurations utilizing the `as const` cast (`ease: [0.25, 0.1, 0.25, 1] as const`) to bypass strict framer compiler errors.
+- **Bilingual Interface Completeness**: Adding copy without its corresponding Romanian translation (`titleRo`, `descriptionRo`) is a build violation. Data schemas automatically type-guard this requirement at compile time.
+
+---
+
+## 💻 Core Engineering & Code Choices
+
+The repository implements strict, clean pair-programming patterns to achieve maximum visual fidelity, total internationalization coverage, and zero performance regression. Below are the core architectural patterns and code choices standardized across the platform:
+
+### 1. Registry-First Media Management (`lib/site-images.ts`)
+To shield the codebase from broken asset paths and case sensitivity discrepancies on Linux-based production servers (such as Vercel CI), we map all local media to an immutable, strongly-typed registry object:
+
+```typescript
+// lib/site-images.ts
+export const SITE_IMAGES = {
+  landscapes: {
+    glacier: "/IMAGES/Landscapes/Glacier National Park.jpg",
+    yosemite: "/IMAGES/Landscapes/Yosemite National Park.jpg",
+    grandCanyon: "/IMAGES/Landscapes/Grand Canyon National Park.jpg",
+  },
+  buildings: {
+    capitol: "/IMAGES/US Buildings/US Capitol.jpg",
+    capitolInauguration: "/IMAGES/US Buildings/US Capitol Presidential Inauguration.jpg",
+  },
+  constitution: {
+    declaration: "/IMAGES/Constitution/usa-independence-day-composition-with-declaration.jpg",
+    billOfRights: "/IMAGES/Constitution/National Archives Bill of Rights.jpg",
+  }
+} as const;
+
+export type SiteImageKey = typeof SITE_IMAGES;
+```
+
+### 2. The Dynamic "Glory Gold" Conditional Chart Renderer
+Instead of using complex tertiary pollution or multiple duplicate charts for comparisons, we use clean custom cell mapping to instantly color-highlight the United States in our primary brand HSL variables while keeping rivals desaturated:
+
+```tsx
+// Example pattern from components/data/GdpBarChart.tsx
+import { BarChart, Bar, Cell, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+
+interface DataPoint {
+  country: string;
+  value: number;
+}
+
+export const GdpBarChart = ({ data }: { data: DataPoint[] }) => {
+  return (
+    <ResponsiveContainer width="100%" height={400}>
+      <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 45 }}>
+        <XAxis 
+          dataKey="country" 
+          tick={{ fill: "#94a3b8", fontSize: 12 }} 
+          angle={-35} 
+          textAnchor="end" 
+        />
+        <YAxis tick={{ fill: "#94a3b8", fontSize: 12 }} />
+        <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+          {data.map((entry, index) => {
+            const isUS = entry.country === "United States" || entry.country === "USA";
+            return (
+              <Cell 
+                key={`cell-${index}`} 
+                fill={isUS ? "hsl(var(--glory-gold))" : "rgba(148, 163, 184, 0.2)"} 
+                stroke={isUS ? "hsl(var(--glory-gold))" : "rgba(148, 163, 184, 0.4)"}
+                strokeWidth={isUS ? 2 : 1}
+              />
+            );
+          })}
+        </Bar>
+      </BarChart>
+    </ResponsiveContainer>
+  );
+};
+```
+
+### 3. Type-Safe Bilingual Data Mappings
+Every content vertical supports bi-directional localization parity (English & Romanian). Content is modeled as structured data contracts, allowing clean client/server rendering separation:
+
+```typescript
+// lib/i18n/utils.ts
+export interface LocalizedString {
+  en: string;
+  ro: string;
+}
+
+export function getLocalizedContent(
+  content: LocalizedString,
+  currentLocale: "en" | "ro"
+): string {
+  return currentLocale === "ro" ? content.ro : content.en;
+}
+
+// Immutable vertical data contracts (e.g., lib/data/economy-data.ts)
+export interface EconomyFact {
+  id: string;
+  title: string;
+  titleRo: string;
+  description: string;
+  descriptionRo: string;
+  metric: string;
+}
+```
+
+### 4. Mathematical Vector Jittering for Geographic Clusters (`MilitaryAnimations.tsx`)
+When visualizing the real-time positions of the 11 active US Carrier Strike Groups on our tactical SVG world map, multiple aircraft carriers are frequently docked at identical major homeports (such as Norfolk or San Diego). Drawing them at their exact lat/long coordinates would cause them to overlap, making individual markers invisible and unclickable.
+
+To solve this, we implement a custom, distance-based clustering algorithm using trigonometry to dynamically distribute overlapping carriers in a perfect circular orbit around their homeport center:
+
+```typescript
+// From components/military/MilitaryAnimations.tsx
+export function useCarrierJitter(positions: CarrierGroupPosition[]) {
+  return useMemo(() => {
+    const threshold = 5.0; // Geographic proximity threshold
+    const groups: CarrierGroupPosition[][] = [];
+    
+    // 1. Group carriers that are visually in close proximity
+    positions.forEach(c => {
+      let foundGroup = false;
+      for (const group of groups) {
+        const leader = group[0];
+        const dx = c.cx - leader.cx;
+        const dy = c.cy - leader.cy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist < threshold) {
+          group.push(c);
+          foundGroup = true;
+          break;
+        }
+      }
+      if (!foundGroup) groups.push([c]);
+    });
+
+    // 2. Map groups, applying a circular offset to clustered items
+    return groups.flatMap(group => {
+      if (group.length === 1) return group;
+      
+      // Calculate the average geographic center of the cluster
+      const avgCx = group.reduce((sum, c) => sum + c.cx, 0) / group.length;
+      const avgCy = group.reduce((sum, c) => sum + c.cy, 0) / group.length;
+      
+      const distRadius = 1.5; // Orbit offset radius
+      return group.map((c, i) => {
+        const angle = (i / group.length) * Math.PI * 2 - Math.PI / 2;
+        return {
+          ...c,
+          cx: avgCx + Math.cos(angle) * distRadius,
+          cy: avgCy + Math.sin(angle) * distRadius,
+        };
+      });
+    });
+  }, [positions]);
+}
+```
+
+### 5. Multidimensional Euclidean Distance Scoring (`FederalismHook.tsx`)
+In our Federalism civics laboratory (`/constitution/federalism`), users adjust 4 high-impact policy sliders (Income Tax, Corporate Tax, Gun Rights, and Regulatory Burden) to find their perfect geographic match among the 50 states. 
+
+To power the interactive US map, we implement a **multidimensional scoring engine** using Normalized Euclidean Distance. This normalizes different data scales (such as percentages vs. 1–10 qualitative indices) to a unified `[0, 1]` distance, averages the deviations, and inverts the score to return an instant "Policy Match" percentage:
+
+```typescript
+// From components/constitution/FederalismHook.tsx
+interface StatePolicyExtended {
+  id: string;
+  name: string;
+  incomeTax: number;      // scale 0% - 14%
+  corporateTax: number;   // scale 0% - 12%
+  gunRights: number;      // scale 1 - 10
+  regulatoryIndex: number; // scale 1 - 10
+  gdpGrowth5yr: number;
+  netMigration: number;
+  medianIncome: number;
+  unemploymentRate: number;
+}
+
+function scoreState(
+  state: StatePolicyExtended,
+  incomeTax: number,
+  corpTax: number,
+  gunRights: number,
+  regulation: number,
+): number {
+  // 1. Normalize each policy dimension to a relative [0-1] distance
+  const d1 = Math.abs(state.incomeTax - incomeTax) / 14;       // max income tax ~14%
+  const d2 = Math.abs(state.corporateTax - corpTax) / 12;      // max corp tax ~12%
+  const d3 = Math.abs(state.gunRights - gunRights) / 9;        // scale 1-10 (range of 9)
+  const d4 = Math.abs(state.regulatoryIndex - regulation) / 9; // scale 1-10 (range of 9)
+  
+  // 2. Average the dimensional distances
+  const averageDistance = (d1 + d2 + d3 + d4) / 4;
+  
+  // 3. Invert to return a [0, 1] matching score (where 1.0 is a 100% perfect match)
+  return Math.max(0, 1 - averageDistance);
+}
+```
+
+---
+
 ## Design Notes
 
 The visual language of the repo is built around:
