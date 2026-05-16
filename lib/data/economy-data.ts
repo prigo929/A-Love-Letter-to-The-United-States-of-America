@@ -528,11 +528,11 @@ export const VC_EXTENDED_FACTS: ExtendedFact[] = [
     color: "red",
   },
   {
-    id: "vc-ai-extended",
-    fact: "US AI startups raised $85B in 2025 — 65% of global AI investment",
+    id: "vc-quantum",
+    fact: "The US leads in Quantum Computing with 60% of all global venture capital",
     detail:
-      "OpenAI, Anthropic, Cohere, Mistral (partially US-funded), Inflection AI, Scale AI — the AI revolution is being financed almost entirely by American capital and talent.",
-    source: "Pitchbook AI Report 2026",
+      "From Google's 'Sycamore' to IBM's 'Condor' and startups like Quantinuum and IonQ, the United States is the primary financier of the quantum revolution, ensuring American leadership in the next era of computation.",
+    source: "Boston Consulting Group 2024",
     color: "blue",
   },
   {
@@ -863,7 +863,7 @@ export function getVcFacts(locale: Locale) {
     return [
       {
         ...VC_FACTS[0],
-        fact: "Startup-urile americane de AI au atras 85 mld. $ în 2025 — 65% din totalul global",
+        fact: "Startup-urile americane de AI au strâns 85 mld. $ în 2025 — 65% din investițiile globale",
         detail:
           "OpenAI, Anthropic și Scale AI — revoluția inteligenței artificiale este finanțată aproape în totalitate de capitalul și talentul american.",
       },
@@ -1124,10 +1124,12 @@ export function getVcExtendedFacts(locale: Locale) {
           "Google, NVIDIA, Netflix, Instagram, PayPal, Yahoo, Cisco, HP, Sun Microsystems — toate au legături puternice cu Stanford.",
       },
       {
-        ...VC_EXTENDED_FACTS[2],
-        fact: "Startup-urile americane de AI au atras 85 mld. $ în 2025 — 65% din investiția globală în AI",
+        id: "vc-quantum",
+        fact: "SUA conduc în calculul cuantic cu 60% din tot capitalul de risc global",
         detail:
-          "OpenAI, Anthropic, Inflection AI, Scale AI și multe altele — revoluția IA este finanțată în mod covârșitor de capital și talent american.",
+          "De la 'Sycamore' al Google la 'Condor' al IBM și startup-uri precum Quantinuum și IonQ, Statele Unite sunt principalul finanțator al revoluției cuantice, asigurând leadership-ul american în următoarea eră a calculului.",
+        source: "Boston Consulting Group 2024",
+        color: "blue",
       },
       {
         ...VC_EXTENDED_FACTS[3],
