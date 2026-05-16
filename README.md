@@ -132,6 +132,9 @@ The culture and quality-of-life pages are currently clean scaffolds with TODO zo
 - local image library with category folders for easier media management
 - Romanian translation mode wired through provider state and cookies
 - custom `STATES` homepage title treatment in `StatesVideoTitle.tsx`
+- **Typographic Legibility & Contrast Hardening**: Comprehensive audit and overhaul of all secondary text, metadata labels, and strategic captions across Nature, Economy, and Military pages to guarantee extreme readability (minimum 14px–16px bold scales) against high-contrast backgrounds.
+- **Responsive Chart Polish**: Clean axis grid tick sizing (12px–14px), angled horizontal axis labels, and custom chart gutters/margins across all key metrics to fully support mobile device viewports.
+- **Mobile Header Alignment**: Standardized block span structural wrapping on all large section titles to prevent awkward 3-row page splits or broken words on small screens.
 
 ## Stack
 
@@ -227,6 +230,13 @@ The section is not a single landing page but a tiered architecture:
 - **Hub Page (`/economy`)**: Uses a **Sticky Table of Contents** for rapid navigation across the five core pillars of the American economy.
 - **Subpages**: Each pillar (GDP, Capital Markets, Startups, Dollar, Trade) has a dedicated deep-dive route. These pages use "Extended Facts"—highly granular data points specific to that topic (e.g., comparing California's GDP to entire nations) that are too detailed for the main hub.
 
+#### 4. "Macro-Capital Editorial" Aesthetic Overhaul
+The Economy pages received a comprehensive visual redesign to feel like a premium, Wall Street Journal-grade editorial publication:
+- **Hardened Typography**: Heavy serif titles (e.g., E.B. Garamond / Archivo) paired with bold, highly legible metadata and eyebrow labels (`.macro-eyebrow` at 18px/900 weight, `.macro-metadata` at 16px/900 weight) to eliminate thin, low-contrast, or hard-to-read text.
+- **Glassmorphic Data Grids**: Sleek dark slate grid cards with subtle border treatments (`border-white/10`, `bg-white/4`), massive numeric counters, and a clean, high-contrast, professional palette.
+- **Premium Narrative Charts**: Overhauled Recharts elements (`GdpBarChart`, `VCCharts`, `SP500Chart`) to maximize visibility on mobile viewports. Hardened all axis tick labels (12px–14px) and added angled axis labels to avoid truncation and overlapping.
+- **Vercel Web Vitals & Safari Stability**: Enforced explicit vertical bounds and dynamic height safety (`dvh` units) to completely resolve layout shifts and overflow issues during viewport transitions.
+
 ### 🏞️ The Natural Majesty Vertical Architecture
 
 The Nature section is designed as an **Immersive Multimedia Experience**, prioritizing atmosphere and scale.
@@ -246,6 +256,12 @@ Geography is treated as a strategic and cultural asset:
 - **Hub Page (`/nature`)**: Focuses on the "National Park Idea" and continental scale.
 - **Vertical Subpages**: Each subpage (Alaska, Yellowstone, etc.) uses a custom layout tailored to its theme. For example, the **Grand Canyon** page uses `CanyonStrataReveal` to visualize vertical geological time, while the **Alaska** page uses `SnowParticles` for atmospheric immersion.
 
+#### 4. "Spatial Editorial" Aesthetic Overhaul
+The Nature showcase has been modernized into a premium, interactive digital museum vertical:
+- **Atmospheric Visual Contrast**: Replaced low-opacity and thin captions with bold typographic anchors (`.nat-text-label` at 16px/900 weight, `.nat-text-metadata` at 14px/800 weight) that float with peak legibility against dynamic, dark cinematic backdrops.
+- **Immersive Geological Layers**: Polished geological reveal sliders (like `CanyonStrataReveal`), hydro-thermal visualizers, and Bison recovery timelines to feature clean, high-contrast content cards, elegant borders, and responsive Ken-Burns engines.
+- **Mobile-First Chart Gutters**: Adjusted all ecological comparison charts to feature large, highly readable labels and angled tick marks. Expanded chart container gutters to guarantee that labels never get clipped on mobile viewports.
+
 ### 🎖️ The Arsenal of Democracy Vertical Architecture
 
 The Military section is designed as a **Technical Intelligence Briefing**, prioritizing operational data and global reach.
@@ -264,6 +280,12 @@ We treat military hardware as engineering masterpieces:
 #### 3. Strategic Innovation Layer
 - **DARPA Tracking**: A thematic grid of active and konsep programs (Hypersonics, Directed Energy, AI C2) highlighting the next 20 years of American R&D.
 - **Industrial Base**: Direct comparison of top defense contractors, linking current revenue to the production of critical systems like the Virginia-class submarine and F-35.
+
+#### 4. "Minimalist Black-Ops" Aesthetic Overhaul
+The Military dashboard has been rebuilt to resemble a high-contrast tactical intelligence briefing:
+- **Tactical Typographic Hardening**: Eliminated all "skinny" and hard-to-read elements. Boosted `.mil-text-label` (16px/900 weight), `.mil-text-metadata` (14px/800 weight), and increased general body text opacity to **80%** against solid black.
+- **Cinematic Wrapping Safeguards**: Restructured massive section titles (e.g., *"ORBITAL DOMINANCE"*, *"THE PRIME CONTRACTORS"*, *"PLANETARY COMMAND"*) into block-level, `whitespace-nowrap` spans coupled with dynamic font-size clamps (`clamp(38px, 12vw, 180px)`). This guarantees exactly a **2-row layout** that automatically centers and fits perfectly on both desktop and mobile screens.
+- **High-Contrast Tactical Visuals**: Redesigned tooltips, legends, and country compare bars in the **Defense Budget Comparison** chart, replacing previous low-visibility metrics with sharp, bold labels that remain beautifully readable under any vignette overlay.
 
 ### ⚡ Performance & AI Readiness
 - **Vercel Web Vitals**: Integrated monitoring for LCP, CLS, and INP to ensure a "Bloomberg-grade" smooth experience.
@@ -297,6 +319,26 @@ When adding pedagogical comments for future maintainers:
 - **Center Everything**: Sidebars and grids must be perfectly balanced.
 - **Color Palettes**: Use the established constants in `index.css`. Avoid raw hex codes like `#ff0000`.
 - **Typography**: Always use `tabular-nums` for count-ups and dates to prevent horizontal jitter.
+
+### 5. Typographic Legibility & Contrast Hardening (MANDATORY)
+To guarantee a high-authority, museum-grade editorial presence against rich, dark, and cinematic backgrounds, strict typographic scales must be enforced across all verticals (Nature, Economy, Military):
+- **No Skinny Text**: Avoid small, low-contrast, fluid font-size formulas like `clamp()` that shrink text under `14px` on mobile viewports.
+- **Metadata Baselines**: Metadata tags, categories, and sublabels must be at least **14px** with a minimum font weight of **800 (Extra-Bold)** or **900 (Black)**.
+- **Structural Labels & Eyebrows**: Main headers, sub-section labels, and narrative taglines must be at least **16px** with a **900 (Black)** weight, using high-contrast color values (opacity at least 70%–85% or solid `#FFF`).
+- **High Visibility**: Never use thin weights (`font-light` or `font-normal`) or low opacity values (`opacity-30` or below) on secondary details (like source attributions or chart subtext) which are easily drowned out on high-density displays.
+
+### 6. Responsive Data Visualizations & Charts
+When building or modifying charts (`components/data/`), they must remain fully readable and responsive on small screens:
+- **Axis Ticks**: Tick label sizes on all charts must be set between **12px** and **14px** with high-contrast opacities to ensure readability.
+- **Angled Labels**: Always angle long X-axis label strings (e.g., `-30` or `-45` degrees) on mobile screens to prevent text overlap.
+- **Margins & Gutters**: Reserve plenty of padding (adjust the `margin` prop on `<ResponsiveContainer>` or `<BarChart>`) to avoid text truncation and label clipping.
+- **Highlighting**: Always color the United States bar/value in **Glory Gold** (`#F59E0B` or similar theme accent) to emphasize leadership visually.
+
+### 7. Mobile Header Alignment & Wrapping Safeguards
+To prevent long cinematic titles (such as "ORBITAL DOMINANCE", "THE PRIME CONTRACTORS", or "THE ARSENAL OF DEMOCRACY") from breaking awkwardly into 3 rows or splitting words across lines on narrow mobile viewports, follow this standard pattern:
+- **Wrap in Block Spans**: Divide multi-row headings into separate `span` elements, each utilizing the `block` and `whitespace-nowrap` classes.
+- **Enforce Flex-Centering**: Always apply `flex flex-col items-center w-full text-center` directly to the `h2` or `h1` element itself to guarantee perfect centering on all browsers.
+- **Responsive Clamp Limits**: Keep the minimum clamp bounds of the header font scale flexible (e.g., `clamp(38px, 12vw, 180px)`) so the text automatically shrinks to fit the container width.
 
 ---
 
@@ -649,6 +691,34 @@ If you add a new route and want it translated:
 - server routes use cookie-based locale reads
 - shared datasets can expose localized getters
 - Romanian is treated as a first-class display mode, not a mock toggle
+
+### 1. Data-Driven Localized Getters Pattern
+To maintain absolute clean separation of concerns and avoid bloated component code filled with bilingual conditional logic, we use **Localized Getter Functions** in our data layer (`lib/data/`):
+- **Unifying Shared Attributes**: Non-translatable data fields—such as identifiers (`id`), raw numbers, source attributions, specific colors, and image references (`SITE_IMAGES`)—are declared once in a shared list of constants.
+- **Dynamic Localization Mapper**: Getter functions accept the user's active `locale: Locale` and return maps of objects where content strings (such as names, taglines, specs, or descriptions) are dynamically swapped with their localized variants when `locale === "ro"` is matched.
+- **Example Pattern**:
+  ```ts
+  export function getDARPAPrograms(locale: Locale): DARPAProgram[] {
+    if (locale !== "ro") return DARPA_PROGRAMS;
+    return DARPA_PROGRAMS.map(p => {
+      switch(p.id) {
+        case "hypersonic": return {
+          ...p,
+          category: "SISTEME OFENSIVE",
+          description: "HAWC și HACM sunt rachete cu propulsie scramjet..."
+        };
+        // other cases...
+        default: return p;
+      }
+    });
+  }
+  ```
+- **Usage in Pages**:
+  In a page, call `getServerLocale()` (or `useLanguage()` in client components) and pass the active locale directly to the data getter to retrieve fully localized, type-safe data arrays:
+  ```tsx
+  const locale = await getServerLocale();
+  const programs = getDARPAPrograms(locale);
+  ```
 
 ## Reusable Components Worth Knowing
 
