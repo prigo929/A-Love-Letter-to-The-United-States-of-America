@@ -1,21 +1,34 @@
 <div align="center">
-  <h1>🇺🇸 America: The Greatest Nation</h1>
-  <p><em>A cinematic, data-backed Next.js platform celebrating the United States.</em></p>
 
-[![Next.js 16](https://img.shields.io/badge/Next.js-16-111111?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![App Router](https://img.shields.io/badge/Router-App%20Router-0A3161?style=flat-square)](https://nextjs.org/docs/app)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-1E5AA8?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind](https://img.shields.io/badge/Tailwind-Custom%20Theme-3C8DAD?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Framer Motion](https://img.shields.io/badge/Motion-Framer-7A1F3D?style=flat-square)](https://www.framer.com/motion/)
-[![Charts](https://img.shields.io/badge/Charts-Recharts%20%2B%20D3-B22234?style=flat-square)](#experience-highlights)
-[![Maps](https://img.shields.io/badge/Maps-react--simple--maps-3C3B6E?style=flat-square)](#experience-highlights)
-[![Images](https://img.shields.io/badge/Images-Local%20Registry-7A5C00?style=flat-square)](#image-workflow)
-[![Languages](https://img.shields.io/badge/Languages-English%20%7C%20Rom%C3%A2n%C4%83-8C1C2B?style=flat-square)](#translation-system)
-[![Backend](https://img.shields.io/badge/Backend-Supabase-1C8C5E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.com/)
-[![Deploy](https://img.shields.io/badge/Deploy-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com/)
-[![Status](https://img.shields.io/badge/Status-Active%20Build-D4AF37?style=flat-square&labelColor=0d1117)](#status)
+# 🦅 THE UNITED STATES OF AMERICA 🦅
+### 🌟 A Cinematic, Data-Backed Love Letter to the Republic 🌟
+
+```text
+================================================================
+                    ★ ★ ★   E PLURIBUS UNUM   ★ ★ ★
+================================================================
+```
+
+[![Next.js 16](https://img.shields.io/badge/Next.js-16-111111?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-1E5AA8?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![App Router](https://img.shields.io/badge/Router-App%20Router-0A3161?style=for-the-badge)](https://nextjs.org/docs/app)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-Custom%20Theme-3C8DAD?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+
+[![Framer Motion](https://img.shields.io/badge/Motion-Framer-7A1F3D?style=for-the-badge)](https://www.framer.com/motion/)
+[![Charts](https://img.shields.io/badge/Charts-Recharts%20%2B%20D3-B22234?style=for-the-badge)](#experience-highlights)
+[![Maps](https://img.shields.io/badge/Maps-react--simple--maps-3C3B6E?style=for-the-badge)](#experience-highlights)
+[![Languages](https://img.shields.io/badge/Languages-English%20%7C%20Rom%C3%A2n%C4%83-8C1C2B?style=for-the-badge)](#translation-system)
 
 </div>
+
+---
+
+> ⭐️ **THE SOVEREIGN VALUES OF THE REPUBLIC** ⭐️
+> 
+> | 🔴 **VALOR & STRENGTH** (Red) | ⚪️ **PURITY & INNOCENCE** (White) | 🔵 **VIGILANCE & JUSTICE** (Blue) |
+> | :--- | :--- | :--- |
+> | **Economy & Innovation**<br>The greatest engine of prosperity in human history. | **Natural Geography**<br>From sea to shining sea — every major climate zone on Earth. | **The Constitution**<br>The oldest written sovereign document still in active authority. |
+> | **Military Triad**<br>A global shield for democracy and strategic stability. | **National Parks System**<br>85 million acres protected — "America's best idea." | **Democratic Order**<br>Continuous transfers of power through 60 presidential cycles. |
 
 ---
 
@@ -342,7 +355,12 @@ To prevent long cinematic titles (such as "ORBITAL DOMINANCE", "THE PRIME CONTRA
 
 ---
 
-## Dev Commands
+> *“Let us raise a standard to which the wise and honest can repair; the event is in the hand of God.”*  
+> 🦅 **George Washington** · *Constitutional Convention, 1787*
+
+---
+
+## 🛠️ Dev Commands
 
 ### Fast Start
 
@@ -389,7 +407,14 @@ SUPABASE_SERVICE_ROLE_KEY=
 
 The service role key is server-only. Do not expose it to the browser.
 
-## Database Setup
+---
+
+> *“I know no safe depository of the ultimate powers of the society but the people themselves.”*  
+> 🏛️ **Thomas Jefferson** · *Letter to William Charles Jarvis, 1820*
+
+---
+
+## 🗄️ Database Setup
 
 This repo uses Supabase for newsletter signup storage.
 
@@ -898,7 +923,14 @@ This section is for future AI-assisted edits. The goal is to explain how the cod
 | Locale logic | `components/providers/LanguageProvider.tsx`, `lib/i18n/server.ts` |
 | Global shell and analytics | `app/layout.tsx` |
 
-## Deep Dive: Constitution & Democracy Exhibit
+---
+
+> *“We the people are the rightful masters of both Congress and the courts, not to overthrow the Constitution but to overthrow the men who pervert the Constitution.”*  
+> 📜 **Abraham Lincoln** · *Speech at Cincinnati, Ohio, 1859*
+
+---
+
+## 📜 Deep Dive: Constitution & Democracy Exhibit
 
 The Constitution exhibit is the most technically complex section of the platform, designed to feel like a high-end digital museum.
 
