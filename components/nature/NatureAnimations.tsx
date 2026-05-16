@@ -80,25 +80,28 @@ export function NatStyles() {
       .nat-text-body {
         font-family: var(--font-body, 'Inter', system-ui, sans-serif);
         font-size: clamp(14px, 1.2vw, 18px);
-        line-height: 1.7;
+        line-height: 1.8;
+        letter-spacing: 0.02em;
+        word-spacing: 0.04em;
         color: rgba(255,255,255,0.65);
       }
 
       .nat-text-label {
         font-family: var(--font-hero);
-        font-size: clamp(8px, 0.8vw, 10px);
-        font-weight: 500;
-        letter-spacing: 0.4em;
+        font-size: 16px;
+        font-weight: 900;
+        letter-spacing: 0.15em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.45);
+        color: rgba(255, 255, 255, 0.85);
       }
 
       .nat-text-metadata {
         font-family: var(--font-mono);
-        font-size: 9px;
-        letter-spacing: 0.2em;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.35);
+        color: rgba(255, 255, 255, 0.6);
       }
 
       /* ── Utilities ── */
@@ -480,7 +483,7 @@ export function NatureQuoteBreak({ quote, attribution, title }: {
 }) {
   return (
     <motion.div
-      className="py-24 md:py-32 px-6"
+      className="py-32 md:py-48 px-6"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -488,7 +491,7 @@ export function NatureQuoteBreak({ quote, attribution, title }: {
     >
       <div className="mx-auto max-w-4xl text-center">
         <div className="h-px w-16 bg-white/10 mx-auto mb-12" />
-        <p className="nat-text-section italic leading-tight mb-10" style={{ fontSize: 'clamp(24px, 4vw, 48px)', fontWeight: 400, letterSpacing: '-0.02em' }}>
+        <p className="nat-text-section italic leading-[1.8] mb-20" style={{ fontSize: 'clamp(24px, 4vw, 48px)', fontWeight: 400, letterSpacing: '0.04em', wordSpacing: '0.1em' }}>
           &ldquo;{quote}&rdquo;
         </p>
         <p className="nat-text-label" style={{ color: 'var(--nat-accent-earth)' }}>— {attribution}</p>

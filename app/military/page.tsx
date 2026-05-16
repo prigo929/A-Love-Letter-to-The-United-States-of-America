@@ -280,7 +280,7 @@ export default async function MilitaryPage() {
             <div key={i} className="flex flex-col">
               <div className="text-[clamp(40px,6vw,80px)] font-extralight tracking-tighter mb-4 leading-none">{m.value}</div>
               <div className="h-px w-12 bg-white/10 mb-4" />
-              <div className="mil-text-metadata opacity-55 tracking-[0.2em] text-[8px]">{m.label}</div>
+              <div className="mil-text-metadata font-bold tracking-[0.2em] text-[11px] text-white/70">{m.label}</div>
             </div>
           ))}
         </div>
@@ -292,7 +292,7 @@ export default async function MilitaryPage() {
               <div className="mil-text-metadata mb-4">{locale === 'ro' ? 'VERIFICAT · SIPRI 2025' : 'VERIFIED · SIPRI 2025'}</div>
               <h3 className="text-4xl font-black tracking-tight font-(family-name:--font-archivo)">{locale === 'ro' ? 'COMPARAȚIE BUGET APĂRARE' : 'DEFENSE BUDGET COMPARISON'}</h3>
             </div>
-            <div className="mil-text-metadata opacity-80">◈ &nbsp; {locale === 'ro' ? 'S.U.A. CHELTUIESC MAI MULT DECÂT URMĂTOARELE ZECE NAȚIUNI COMBINATE' : 'U.S. OUTSPENDS THE NEXT TEN NATIONS COMBINED'}</div>
+            <div className="mil-text-metadata font-bold text-sm text-white/70">◈ &nbsp; {locale === 'ro' ? 'S.U.A. CHELTUIESC MAI MULT DECÂT URMĂTOARELE ZECE NAȚIUNI COMBINATE' : 'U.S. OUTSPENDS THE NEXT TEN NATIONS COMBINED'}</div>
           </div>
           <BudgetComparisonBar data={budgetData} locale={locale}/>
         </div>
@@ -328,7 +328,7 @@ export default async function MilitaryPage() {
                 {locale === 'ro' ? 'SUPREMAȚIE' : 'ABSOLUTE'}<br/>
                 <span className="text-white/20">{locale === 'ro' ? 'ABSOLUTĂ' : 'SUPREMACY'}</span>
               </h2>
-              <p className="mil-text-metadata tracking-[0.4em] opacity-30">
+              <p className="mil-text-metadata tracking-[0.4em] font-bold text-[11px] text-white/50">
                 {locale === 'ro' ? 'DOMINANȚĂ PLANETARĂ · VERIFICAT 2025' : 'PLANETARY DOMINANCE · VERIFIED 2025'}
               </p>
             </div>
@@ -360,7 +360,7 @@ export default async function MilitaryPage() {
           <h2 className="mil-text-hero">
             11 {locale === 'ro' ? 'GRUPURI DE' : 'CARRIER'}<br/>{locale === 'ro' ? 'ATAC' : 'STRIKE GROUPS'}
           </h2>
-          <div className="mil-text-metadata mt-12">
+          <div className="mil-text-metadata mt-12 font-bold text-sm text-white/70">
             {locale === 'ro' ? 'Desfășurate simultan pe fiecare ocean de pe Pământ' : 'Simultaneously deployed across every ocean on earth'}
           </div>
         </div>
@@ -472,8 +472,8 @@ export default async function MilitaryPage() {
             ].map((item, i) => (
               <div key={i} className="border-l border-white/10 pl-8 py-6">
                 <div className="text-2xl font-black mb-2">{item.v}</div>
-                <div className="mil-text-metadata mb-2">{item.l}</div>
-                <div className="mil-text-metadata text-[8px] opacity-55">{item.sub}</div>
+                <div className="mil-text-metadata mb-2 font-bold">{item.l}</div>
+                <div className="mil-text-metadata text-[11px] font-bold text-white/40">{item.sub}</div>
               </div>
             ))}
           </div>
@@ -514,7 +514,7 @@ export default async function MilitaryPage() {
             {locale === 'ro' ? 'DOMINANȚĂ' : 'ORBITAL'}<br/>
             <span className="text-white/20">{locale === 'ro' ? 'ORBITALĂ' : 'DOMINANCE'}</span>
           </h2>
-          <p className="mil-text-metadata mt-12">
+          <p className="mil-text-metadata mt-12 font-bold text-sm text-white/70">
             {locale === 'ro'
               ? "Peste 142 de sateliți militari oferă precizie GPS, ISR în timp real și integrarea apărării antirachetă. Acoperire globală: 100%."
               : "142+ military satellites provide GPS precision, real-time ISR, and missile defense integration. Global coverage: 100%."}
@@ -545,12 +545,12 @@ export default async function MilitaryPage() {
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-8">
                   <h4 className="text-2xl font-bold tracking-tight">{c.name}</h4>
-                  <div className="mil-text-metadata text-[8px] bg-white/3 border border-white/6 px-3 py-1.5">{c.revenue}</div>
+                  <div className="mil-text-metadata text-[11px] font-black bg-white/5 border border-white/10 px-3 py-1.5 text-white/80">{c.revenue}</div>
                 </div>
                 <div className="mil-text-metadata opacity-55 mb-8 grow tracking-[0.2em]">{c.specialty}</div>
                 <div className="flex flex-wrap gap-2">
                   {c.programs.map(prog => (
-                    <span key={prog} className="mil-text-metadata text-[8px] border border-white/6 px-2 py-1 text-white/60">
+                    <span key={prog} className="mil-text-metadata text-[10px] font-bold border border-white/10 px-2 py-1 text-white/70">
                       {prog}
                     </span>
                   ))}
@@ -576,7 +576,7 @@ export default async function MilitaryPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
           {facts.map((f, i) => (
             <div key={i} className="bg-black p-12">
-              <div className="mil-text-metadata text-white/40 mb-6">[ FACT_{i+1} ]</div>
+              <div className="mil-text-metadata text-white/60 font-black mb-6">[ FACT_{i+1} ]</div>
               <p className="text-white/60 leading-relaxed">
                 {f.fact}
               </p>
@@ -591,13 +591,13 @@ export default async function MilitaryPage() {
         <div className="absolute inset-0 mil-dot-canvas opacity-30" />
         
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <blockquote className="text-[clamp(28px,5vw,72px)] font-black tracking-tighter leading-[1.1] text-white/90 mb-16">
+          <blockquote className="text-[clamp(28px,5vw,72px)] font-black tracking-wider leading-[1.7] text-white/90 mb-24" style={{ wordSpacing: '0.08em' }}>
             &ldquo;{quote.quote}&rdquo;
           </blockquote>
           <div className="flex flex-col items-center justify-center gap-6">
             <div className="flex items-center justify-center gap-4">
               <div className="h-px w-12" style={{ background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.2))' }} />
-              <cite className="mil-text-metadata not-italic tracking-[0.4em] text-[9px] uppercase text-white/50">
+              <cite className="mil-text-metadata not-italic tracking-[0.4em] text-[11px] font-black uppercase text-white/70">
                 {quote.attribution} — {quote.title}
               </cite>
               <div className="h-px w-12" style={{ background: 'linear-gradient(to left, transparent, rgba(255,255,255,0.2))' }} />
@@ -629,7 +629,7 @@ export default async function MilitaryPage() {
               className="mil-glass p-8 group hover:bg-white/5 transition-colors"
             >
               <div className="text-xl font-bold uppercase mb-2 group-hover:translate-x-1 transition-transform">{item.label}</div>
-              <div className="mil-text-metadata text-[8px] opacity-30 tracking-widest uppercase">{item.sub}</div>
+              <div className="mil-text-metadata text-[11px] font-bold text-white/40 tracking-widest uppercase">{item.sub}</div>
             </Link>
           ))}
         </div>
@@ -637,7 +637,7 @@ export default async function MilitaryPage() {
         {/* Bottom classification strip */}
         <div className="mt-48 pt-12 border-t border-white/5 flex items-center justify-center gap-8">
           <div className="h-px w-24 bg-linear-to-r from-transparent to-white/10" />
-          <span className="mil-text-metadata text-[8px] opacity-20 tracking-[0.5em] uppercase">
+          <span className="mil-text-metadata text-[11px] font-black text-white/40 tracking-[0.5em] uppercase">
             {locale === 'ro' 
               ? "America: Cea Mai Mare Națiune · Comandă Planetară"
               : "America: The Greatest Nation · Planetary Command"}

@@ -156,7 +156,7 @@ export default async function NaturePage() {
         height={500}
       >
         <div className="mx-auto max-w-3xl text-center">
-          <p className="nat-text-section italic leading-tight mb-6" style={{ fontSize: 'clamp(20px, 3.5vw, 40px)', fontWeight: 400, letterSpacing: '-0.02em' }}>
+          <p className="nat-text-section italic leading-[1.8] mb-14" style={{ fontSize: 'clamp(20px, 3.5vw, 40px)', fontWeight: 400, letterSpacing: '0.04em', wordSpacing: '0.1em' }}>
             &ldquo;{isRo
               ? "Nu faceți nimic pentru a-l deteriora. Nu-l puteți îmbunătăți. Singurul lucru pe care îl puteți face este să-l lăsați în seama celor ce vin după voi."
               : "Do nothing to mar its grandeur. You cannot improve on it. Keep it for your children and your children's children."
@@ -262,7 +262,7 @@ export default async function NaturePage() {
         height={500}
       >
         <div className="mx-auto max-w-3xl text-center">
-          <p className="nat-text-section italic leading-tight mb-6" style={{ fontSize: 'clamp(20px, 3.5vw, 40px)', fontWeight: 400, letterSpacing: '-0.02em' }}>
+          <p className="nat-text-section italic leading-[1.8] mb-14" style={{ fontSize: 'clamp(20px, 3.5vw, 40px)', fontWeight: 400, letterSpacing: '0.04em', wordSpacing: '0.1em' }}>
             &ldquo;{quotes[1].quote}&rdquo;
           </p>
           <p className="nat-text-label" style={{ color: 'var(--nat-accent-earth)' }}>— {quotes[1].attribution}</p>
@@ -337,7 +337,7 @@ export default async function NaturePage() {
         height={400}
       >
         <div className="mx-auto max-w-3xl text-center">
-          <p className="nat-text-section italic leading-tight" style={{ fontSize: 'clamp(18px, 3vw, 36px)', fontWeight: 400, letterSpacing: '-0.02em' }}>
+          <p className="nat-text-section italic leading-[1.8]" style={{ fontSize: 'clamp(18px, 3vw, 36px)', fontWeight: 400, letterSpacing: '0.04em', wordSpacing: '0.1em' }}>
             &ldquo;{isRo ? "Cel mai frumos dar pe care orice țară l-ar putea oferi" : "The best idea America ever had"}&rdquo;
           </p>
           <p className="nat-text-label mt-6" style={{ color: 'var(--nat-accent-earth)' }}>— Ken Burns</p>

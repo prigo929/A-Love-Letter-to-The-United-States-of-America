@@ -91,7 +91,8 @@ function CustomLabel(props: {
       y={y - 8}
       fill="#FFD700"
       textAnchor="middle"
-      fontSize={11}
+      fontSize={12}
+      fontWeight={700}
       fontFamily="var(--font-hero)"
       letterSpacing="0.05em"
     >
@@ -155,21 +156,24 @@ export function GdpBarChart({
               <XAxis
                 dataKey="country"
                 tick={{
-                  fill: "rgba(255,255,255,0.55)",
-                  fontSize: 11,
+                  fill: "rgba(255,255,255,0.7)",
+                  fontSize: 13,
                   fontFamily: "var(--font-body)",
+                  fontWeight: 500,
                 }}
                 axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
                 tickLine={false}
                 angle={-35}
                 textAnchor="end"
                 interval={0}
+                height={80}
               />
               <YAxis
                 tick={{
-                  fill: "rgba(255,255,255,0.4)",
-                  fontSize: 11,
+                  fill: "rgba(255,255,255,0.5)",
+                  fontSize: 13,
                   fontFamily: "var(--font-body)",
+                  fontWeight: 500,
                 }}
                 axisLine={false}
                 tickLine={false}

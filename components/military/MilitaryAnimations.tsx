@@ -130,25 +130,28 @@ export function MilStyles() {
       .mil-text-body {
         font-family: var(--font-body, 'Inter', system-ui, sans-serif);
         font-size: clamp(14px, 1.2vw, 18px);
-        line-height: 1.7;
-        color: rgba(255,255,255,0.65);
+        line-height: 1.8;
+        letter-spacing: 0.02em;
+        word-spacing: 0.04em;
+        color: rgba(255,255,255,0.8);
       }
 
       .mil-text-label {
         font-family: var(--font-hero);
-        font-size: clamp(8px, 0.8vw, 10px);
-        font-weight: 500;
-        letter-spacing: 0.4em;
+        font-size: 16px;
+        font-weight: 900;
+        letter-spacing: 0.35em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.55);
+        color: rgba(255, 255, 255, 0.9);
       }
 
       .mil-text-metadata {
         font-family: var(--font-mono);
-        font-size: 9px;
-        letter-spacing: 0.2em;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.15em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.50);
+        color: rgba(255, 255, 255, 0.85);
       }
 
       /* ── Surfaces ── */
@@ -265,7 +268,7 @@ export function MinimalistStat({ stat, index = 0 }: MinimalistStatProps) {
       transition={{ duration: 1.2, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
       className="flex flex-col px-8 py-12"
     >
-      <div className="mil-text-metadata mb-6 tracking-[0.3em]">{label}</div>
+      <div className="mil-text-metadata mb-6 tracking-[0.3em] font-black text-white">{label}</div>
       <div className="flex items-baseline gap-1">
         <span className="text-[clamp(48px,7vw,96px)] font-extralight tracking-tighter leading-none">
           <MilCountUp to={value} prefix={prefix} suffix={suffix} decimals={decimals} color="white" />
@@ -273,9 +276,9 @@ export function MinimalistStat({ stat, index = 0 }: MinimalistStatProps) {
       </div>
       {/* Gradient divider */}
       <div className="mt-6 mb-4 h-px w-full" style={{
-        background: 'linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.03), transparent)'
+        background: 'linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0.05), transparent)'
       }} />
-      <div className="mil-text-metadata max-w-[220px] leading-relaxed opacity-50 text-[8px]">
+      <div className="mil-text-metadata max-w-[240px] leading-relaxed opacity-60 text-[11px] font-medium tracking-wide">
         {sublabel}
       </div>
     </motion.div>
@@ -335,16 +338,16 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
         </div>
         <div className="p-6">
           <div className="flex items-center gap-2 mb-3">
-            <span className="mil-text-metadata text-[7px] tracking-[0.3em]">{system.category}</span>
-            {system.stealth && <span className="mil-text-metadata text-[6px] border border-white/10 px-1.5 py-0.5 text-white/60">STEALTH</span>}
+            <span className="mil-text-metadata text-[10px] tracking-[0.3em] font-black">{system.category}</span>
+            {system.stealth && <span className="mil-text-metadata text-[9px] border border-white/10 px-1.5 py-0.5 text-white/80 font-bold">STEALTH</span>}
           </div>
           <h3 className="text-xl font-black tracking-tighter uppercase leading-tight mb-2">{system.name}</h3>
-          <p className="text-white/50 text-xs leading-relaxed mb-4 line-clamp-2">{system.tagline || system.description.split('.')[0] + '.'}</p>
+          <p className="text-white/60 text-xs leading-relaxed mb-4 line-clamp-2">{system.tagline || system.description.split('.')[0] + '.'}</p>
           <div className="flex gap-2 mb-4">
             {system.specs.slice(0, 2).map((spec, i) => (
-              <div key={i} className="border border-white/6 bg-white/2 px-3 py-1.5 flex-1">
-                <div className="mil-text-metadata text-[6px] tracking-[0.2em] opacity-60 mb-0.5">{spec.label}</div>
-                <div className="text-[11px] font-semibold tracking-tight text-white/80">{spec.value}</div>
+              <div key={i} className="border border-white/10 bg-white/4 px-3 py-1.5 flex-1">
+                <div className="mil-text-metadata text-[9px] tracking-[0.2em] opacity-80 mb-0.5 font-bold">{spec.label}</div>
+                <div className="text-[12px] font-black tracking-tight text-white/90">{spec.value}</div>
               </div>
             ))}
           </div>
@@ -352,7 +355,7 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
             {system.heroStat && (
               <span className="text-lg font-black tracking-tighter" style={{ color: system.accentColor || 'white' }}>{system.heroStat}</span>
             )}
-            <span className="mil-text-metadata text-[7px] tracking-[0.3em] group-hover:text-white transition-colors">DOSSIER →</span>
+            <span className="mil-text-metadata text-[10px] tracking-[0.3em] font-black group-hover:text-white transition-colors">DOSSIER →</span>
           </div>
         </div>
       </motion.div>
@@ -589,7 +592,7 @@ export function DARPAProgramGrid({ programs, locale = 'en' }: { programs: DARPAP
                 <div className="h-1.5 w-1.5 rounded-full" style={{
                   background: program.status === 'active' ? '#F5A623' : program.status === 'testing' ? '#7DD3FC' : '#555'
                 }} />
-                <span className="mil-text-metadata text-[7px] tracking-[0.3em] opacity-60">{program.category}</span>
+                <span className="mil-text-metadata text-[10px] tracking-[0.3em] opacity-80 font-bold">{program.category}</span>
               </div>
 
               <h3 
@@ -955,11 +958,11 @@ export function GlobalCarrierMap({ positions, locale = 'en' }: { positions: Carr
               >
                 {carriers.filter(c => c.id === hovered).map(c => (
                   <div key={c.id}>
-                    <p className="font-mono text-[8px] uppercase tracking-[0.25em] text-[#F59E0B]">
+                    <p className="font-mono text-[10px] font-black uppercase tracking-[0.25em] text-[#F59E0B] mb-1">
                       {locale === 'ro' ? 'POZIȚIE CSG' : 'CSG POSITION'}
                     </p>
-                    <p className="font-mono text-xs font-bold text-white">{c.ship}</p>
-                    <p className="font-mono text-[10px] text-white/50">{c.region}</p>
+                    <p className="font-mono text-sm font-black text-white">{c.ship}</p>
+                    <p className="font-mono text-[11px] font-bold text-white/60">{c.region}</p>
                   </div>
                 ))}
               </motion.div>
@@ -980,11 +983,11 @@ export function GlobalCarrierMap({ positions, locale = 'en' }: { positions: Carr
                className="object-contain scale-[2.4] pointer-events-none"
              />
           </div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/50">
+          <p className="font-mono text-[12px] font-black uppercase tracking-[0.3em] text-white/70">
             {locale === 'ro' ? 'Grup de Atac Portavion' : 'Carrier Strike Group'}
           </p>
         </div>
-        <p className="font-mono text-[9px] text-white/15">
+        <p className="font-mono text-[11px] font-bold text-white/30 uppercase tracking-widest">
           {locale === 'ro' ? 'POZIȚII GLOBALE APROXIMATIVE' : 'APPROXIMATE GLOBAL POSITIONS'}
         </p>
       </div>
@@ -1078,7 +1081,7 @@ export function ParallaxMilitaryHero({
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
             }}
-            className="mil-text-label mb-8 tracking-[0.5em] text-white/40"
+            className="mil-text-label mb-8 tracking-[0.5em]"
           >
             {tagline}
           </motion.p>
@@ -1100,9 +1103,9 @@ export function ParallaxMilitaryHero({
           <motion.p 
             variants={{
               hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 0.5, y: 0, transition: { duration: 0.8 } }
+              visible: { opacity: 0.85, y: 0, transition: { duration: 0.8 } }
             }}
-            className="mil-text-metadata mt-12 max-w-lg tracking-[0.3em] leading-relaxed uppercase"
+            className="mil-text-metadata mt-12 max-w-2xl font-bold tracking-[0.3em] leading-relaxed uppercase"
           >
             {subtitle}
           </motion.p>
@@ -1118,7 +1121,7 @@ export function ParallaxMilitaryHero({
             >
               {stats.map((s, i) => (
                 <div key={i} className="text-center group">
-                  <div className="mil-text-metadata mb-2 opacity-30 uppercase tracking-widest text-[9px]">{s.label}</div>
+                  <div className="mil-text-metadata mb-2 font-black uppercase tracking-widest text-[11px] text-white/50">{s.label}</div>
                   <div className="text-2xl md:text-3xl font-black tracking-tight text-white/90">{s.value}</div>
                 </div>
               ))}
@@ -1167,21 +1170,21 @@ export function BudgetComparisonBar({
 
   return (
     <div ref={ref} className="overflow-hidden rounded-2xl border border-white/8 bg-[#080C14] p-6">
-      <p className="mb-6 font-mono text-[9px] uppercase tracking-[0.3em] text-white/35">{displayLabel}</p>
-      <div className="space-y-3">
+      <p className="mb-6 font-mono text-[12px] font-bold uppercase tracking-[0.3em] text-white/60">{displayLabel}</p>
+      <div className="space-y-4">
         {data.map((row, i) => {
           const isHighlight = row.highlight || row.country.includes("United States") || row.country.includes("Statele Unite");
           const pct = (row.budget / 886) * 100;
           return (
             <div key={row.country}>
-              <div className="mb-1.5 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm">{row.flag}</span>
-                  <span className={`mil-text-metadata font-(family-name:--font-archivo) tracking-normal text-[11px] ${isHighlight ? "text-white font-bold" : "text-white/40"}`}>
+              <div className="mb-2 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="text-base">{row.flag}</span>
+                  <span className={`mil-text-metadata font-(family-name:--font-archivo) tracking-normal text-[14px] ${isHighlight ? "text-white font-black" : "text-white/60"}`}>
                     {row.country}
                   </span>
                 </div>
-                <span className={`mil-text-metadata font-mono text-[10px] ${isHighlight ? "text-white" : "text-white/30"}`}>
+                <span className={`mil-text-metadata font-mono text-[13px] ${isHighlight ? "text-white font-bold" : "text-white/40"}`}>
                   ${row.budget}B
                 </span>
               </div>
@@ -1202,7 +1205,7 @@ export function BudgetComparisonBar({
           );
         })}
       </div>
-      <p className="mt-4 text-right font-mono text-[8px] text-white/20">Source: SIPRI Military Expenditure Database 2024</p>
+      <p className="mt-5 text-right font-mono text-[10px] text-white/40 uppercase tracking-widest">Source: SIPRI Military Expenditure Database 2024</p>
     </div>
   );
 }

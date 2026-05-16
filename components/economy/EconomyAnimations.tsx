@@ -60,8 +60,9 @@ export function MacroStyles() {
         font-family: var(--font-macro-body);
         font-size: clamp(16px, 1.5vw, 24px);
         font-weight: 300;
-        line-height: 1.6;
-        letter-spacing: -0.01em;
+        line-height: 1.8;
+        letter-spacing: 0.02em;
+        word-spacing: 0.05em;
         color: rgba(255, 255, 255, 0.7);
       }
 
@@ -76,18 +77,18 @@ export function MacroStyles() {
 
       .macro-metadata {
         font-family: var(--font-macro-mono);
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.25em;
+        font-size: 16px;
+        font-weight: 900;
+        letter-spacing: 0.2em;
         text-transform: uppercase;
         color: var(--macro-muted);
       }
 
       .macro-eyebrow {
         font-family: var(--font-macro-mono);
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.3em;
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: 0.2em;
         text-transform: uppercase;
         color: var(--macro-accent);
       }

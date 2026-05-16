@@ -110,9 +110,10 @@ export function ParkVisitorsChart({
             <XAxis
               type="number"
               tick={{
-                fill: "rgba(255,255,255,0.4)",
-                fontSize: 11,
+                fill: "rgba(255,255,255,0.7)",
+                fontSize: 14,
                 fontFamily: "var(--font-body)",
+                fontWeight: 600,
               }}
               axisLine={false}
               tickLine={false}
@@ -122,19 +123,20 @@ export function ParkVisitorsChart({
               dataKey="park"
               type="category"
               tick={{
-                fill: "rgba(255,255,255,0.65)",
-                fontSize: 11,
+                fill: "rgba(255,255,255,0.9)",
+                fontSize: 14,
                 fontFamily: "var(--font-body)",
+                fontWeight: 700,
               }}
               axisLine={false}
               tickLine={false}
-              width={150}
+              width={110}
             />
             <Tooltip
               content={<ParkTooltip />}
               cursor={{ fill: "rgba(255,255,255,0.04)" }}
             />
-            <Bar dataKey="visitors" radius={[0, 6, 6, 0]} maxBarSize={28}>
+            <Bar dataKey="visitors" radius={[0, 6, 6, 0]} maxBarSize={35}>
               {data.map((entry, i) => (
                 <Cell
                   key={`cell-${i}`}
@@ -229,20 +231,22 @@ export function BiodiversityChart({
             <XAxis
               dataKey="country"
               tick={{
-                fill: "rgba(255,255,255,0.55)",
-                fontSize: 11,
+                fill: "rgba(255,255,255,0.8)",
+                fontSize: 13,
                 fontFamily: "var(--font-body)",
+                fontWeight: 600,
               }}
               axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
               tickLine={false}
               angle={-35}
               textAnchor="end"
               interval={0}
+              height={80}
             />
             <YAxis
               tick={{
-                fill: "rgba(255,255,255,0.4)",
-                fontSize: 11,
+                fill: "rgba(255,255,255,0.6)",
+                fontSize: 13,
                 fontFamily: "var(--font-body)",
               }}
               axisLine={false}
@@ -253,7 +257,7 @@ export function BiodiversityChart({
               content={<BiodiversityTooltip />}
               cursor={{ fill: "rgba(255,255,255,0.04)" }}
             />
-            <Bar dataKey="species" radius={[6, 6, 0, 0]} maxBarSize={55}>
+            <Bar dataKey="species" radius={[6, 6, 0, 0]} maxBarSize={65}>
               {data.map((entry, i) => (
                 <Cell
                   key={`cell-${i}`}
@@ -336,7 +340,7 @@ export function GreatLakesChart({
           )}
         </div>
       )}
-      <div className="h-[260px] w-full">
+      <div className="h-[320px] w-full">
         <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
           <BarChart
             data={data}
@@ -351,17 +355,18 @@ export function GreatLakesChart({
             <XAxis
               dataKey="lake"
               tick={{
-                fill: "rgba(255,255,255,0.6)",
-                fontSize: 12,
+                fill: "rgba(255,255,255,0.9)",
+                fontSize: 14,
                 fontFamily: "var(--font-body)",
+                fontWeight: 700,
               }}
               axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
               tickLine={false}
             />
             <YAxis
               tick={{
-                fill: "rgba(255,255,255,0.4)",
-                fontSize: 11,
+                fill: "rgba(255,255,255,0.6)",
+                fontSize: 13,
                 fontFamily: "var(--font-body)",
               }}
               axisLine={false}
@@ -372,7 +377,7 @@ export function GreatLakesChart({
               content={<LakesTooltip />}
               cursor={{ fill: "rgba(255,255,255,0.04)" }}
             />
-            <Bar dataKey="volume" radius={[6, 6, 0, 0]} maxBarSize={60}>
+            <Bar dataKey="volume" radius={[6, 6, 0, 0]} maxBarSize={70}>
               {data.map((entry, i) => (
                 <Cell key={`cell-${i}`} fill={entry.color} opacity={0.9} />
               ))}

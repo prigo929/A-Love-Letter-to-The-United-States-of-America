@@ -74,10 +74,11 @@ export function QuoteBlock({
       {/* Quote text */}
       <p
         className={cn(
-          "font-display italic leading-relaxed mb-8 relative z-10",
+          "font-display italic leading-[1.8] mb-8 relative z-10",
           sizeStyles[size],
           isDark ? "text-white" : "text-navy-dark",
         )}
+        style={{ letterSpacing: '0.04em', wordSpacing: '0.1em' }}
       >
         "{quote}"
       </p>

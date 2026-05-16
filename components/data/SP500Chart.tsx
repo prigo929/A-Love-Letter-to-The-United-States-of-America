@@ -121,18 +121,20 @@ export function SP500Chart({ data, title, subtitle, source }: SP500ChartProps) {
               <XAxis
                 dataKey="year"
                 tick={{
-                  fill: "rgba(255,255,255,0.45)",
-                  fontSize: 11,
+                  fill: "rgba(255,255,255,0.7)",
+                  fontSize: 12,
                   fontFamily: "var(--font-body)",
+                  fontWeight: 500,
                 }}
                 axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
                 tickLine={false}
               />
               <YAxis
                 tick={{
-                  fill: "rgba(255,255,255,0.4)",
-                  fontSize: 11,
+                  fill: "rgba(255,255,255,0.5)",
+                  fontSize: 12,
                   fontFamily: "var(--font-body)",
+                  fontWeight: 500,
                 }}
                 axisLine={false}
                 tickLine={false}
@@ -166,8 +168,9 @@ export function SP500Chart({ data, title, subtitle, source }: SP500ChartProps) {
                 strokeDasharray="4 4"
                 label={{
                   value: copy.dotCom,
-                  fill: "rgba(255,255,255,0.35)",
-                  fontSize: 10,
+                  fill: "rgba(255,255,255,0.6)",
+                  fontSize: 11,
+                  fontWeight: 600,
                   fontFamily: "var(--font-body)",
                 }}
               />
@@ -177,8 +180,9 @@ export function SP500Chart({ data, title, subtitle, source }: SP500ChartProps) {
                 strokeDasharray="4 4"
                 label={{
                   value: copy.gfc,
-                  fill: "rgba(255,255,255,0.35)",
-                  fontSize: 10,
+                  fill: "rgba(255,255,255,0.6)",
+                  fontSize: 11,
+                  fontWeight: 600,
                   fontFamily: "var(--font-body)",
                 }}
               />
