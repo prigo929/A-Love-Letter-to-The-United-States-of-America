@@ -263,9 +263,9 @@ export default async function MilitaryPage() {
         label={locale === 'ro' ? "DOMINANȚĂ GLOBALĂ · PRIVIRE STRATEGICĂ" : "GLOBAL DOMINANCE · STRATEGIC OVERVIEW"}
       >
         <div className="text-center mb-32">
-          <h2 className="mil-text-hero mb-12">
-            {locale === 'ro' ? 'COMANDĂ' : 'PLANETARY'}<br/>
-            <span className="text-white/20">{locale === 'ro' ? 'PLANETARĂ' : 'COMMAND'}</span>
+          <h2 className="mil-text-hero mb-12 flex flex-col items-center w-full text-center">
+            <span className="block whitespace-nowrap">{locale === 'ro' ? 'COMANDĂ' : 'PLANETARY'}</span>
+            <span className="block whitespace-nowrap text-white/20">{locale === 'ro' ? 'PLANETARĂ' : 'COMMAND'}</span>
           </h2>
           <p className="mil-text-metadata max-w-2xl mx-auto leading-relaxed">
             {locale === 'ro' 
@@ -325,8 +325,8 @@ export default async function MilitaryPage() {
           <div className="absolute inset-0 flex items-center justify-center z-30">
             <div className="text-center">
               <h2 className="mil-text-section mb-4">
-                {locale === 'ro' ? 'SUPREMAȚIE' : 'ABSOLUTE'}<br/>
-                <span className="text-white/20">{locale === 'ro' ? 'ABSOLUTĂ' : 'SUPREMACY'}</span>
+                <span className="block whitespace-nowrap">{locale === 'ro' ? 'SUPREMAȚIE' : 'ABSOLUTE'}</span>
+                <span className="block whitespace-nowrap text-white/20">{locale === 'ro' ? 'ABSOLUTĂ' : 'SUPREMACY'}</span>
               </h2>
               <p className="mil-text-metadata tracking-[0.4em] font-bold text-[11px] text-white/50">
                 {locale === 'ro' ? 'DOMINANȚĂ PLANETARĂ · VERIFICAT 2025' : 'PLANETARY DOMINANCE · VERIFIED 2025'}
@@ -357,8 +357,9 @@ export default async function MilitaryPage() {
       >
         <div className="text-center">
           <div className="mil-text-label mb-12">{locale === 'ro' ? 'SUPERIORITATE NAVALĂ · RAZĂ GLOBALĂ' : 'NAVAL SUPERIORITY · GLOBAL REACH'}</div>
-          <h2 className="mil-text-hero">
-            11 {locale === 'ro' ? 'GRUPURI DE' : 'CARRIER'}<br/>{locale === 'ro' ? 'ATAC' : 'STRIKE GROUPS'}
+          <h2 className="mil-text-hero flex flex-col items-center w-full text-center">
+            <span className="block whitespace-nowrap">11 {locale === 'ro' ? 'GRUPURI DE' : 'CARRIER'}</span>
+            <span className="block whitespace-nowrap text-white/20">{locale === 'ro' ? 'ATAC' : 'STRIKE GROUPS'}</span>
           </h2>
           <div className="mil-text-metadata mt-12 font-bold text-sm text-white/70">
             {locale === 'ro' ? 'Desfășurate simultan pe fiecare ocean de pe Pământ' : 'Simultaneously deployed across every ocean on earth'}
@@ -380,9 +381,9 @@ export default async function MilitaryPage() {
         label={locale === 'ro' ? "BIJUTERIILE COROANEI PUTERII AMERICANE" : "CROWN JEWELS OF AMERICAN POWER"}
       >
         <div className="text-center mb-24">
-          <h2 className="mil-text-hero mb-12">
-            {locale === 'ro' ? 'ARSENALUL' : 'THE ARSENAL OF'}<br/>
-            <span className="text-white/20">{locale === 'ro' ? 'DEMOCRAȚIEI' : 'DEMOCRACY'}</span>
+          <h2 className="mil-text-hero mb-12 flex flex-col items-center w-full text-center">
+            <span className="block whitespace-nowrap">{locale === 'ro' ? 'ARSENALUL' : 'THE ARSENAL OF'}</span>
+            <span className="block whitespace-nowrap text-white/20">{locale === 'ro' ? 'DEMOCRAȚIEI' : 'DEMOCRACY'}</span>
           </h2>
           <p className="mil-text-metadata max-w-xl mx-auto leading-relaxed tracking-[0.2em]">
             {locale === 'ro'
@@ -486,9 +487,9 @@ export default async function MilitaryPage() {
         label={locale === 'ro' ? "DARPA · CAPABILITĂȚI VIITOARE" : "DARPA · FUTURE CAPABILITIES"}
       >
         <div className="text-center mb-32">
-          <h2 className="mil-text-hero mb-12">
-            {locale === 'ro' ? 'GENERAȚIA' : 'THE NEXT'}<br/>
-            <span className="text-white/20">{locale === 'ro' ? 'URMĂTOARE' : 'GENERATION'}</span>
+          <h2 className="mil-text-hero mb-12 flex flex-col items-center w-full text-center">
+            <span className="block whitespace-nowrap">{locale === 'ro' ? 'GENERAȚIA' : 'THE NEXT'}</span>
+            <span className="block whitespace-nowrap text-white/20">{locale === 'ro' ? 'URMĂTOARE' : 'GENERATION'}</span>
           </h2>
           <p className="mil-text-metadata max-w-xl mx-auto leading-relaxed">
             {locale === 'ro'
@@ -510,9 +511,9 @@ export default async function MilitaryPage() {
       >
         <div className="text-center max-w-4xl px-6">
           <div className="mil-text-label mb-12">{locale === 'ro' ? 'CONȘTIENTIZAREA DOMENIULUI SPAȚIAL · RAZĂ GLOBALĂ' : 'SPACE DOMAIN AWARENESS · GLOBAL REACH'}</div>
-          <h2 className="mil-text-hero">
-            {locale === 'ro' ? 'DOMINANȚĂ' : 'ORBITAL'}<br/>
-            <span className="text-white/20">{locale === 'ro' ? 'ORBITALĂ' : 'DOMINANCE'}</span>
+          <h2 className="mil-text-hero flex flex-col items-center w-full text-center">
+            <span className="block whitespace-nowrap">{locale === 'ro' ? 'DOMINANȚĂ' : 'ORBITAL'}</span>
+            <span className="block whitespace-nowrap text-white/20">{locale === 'ro' ? 'ORBITALĂ' : 'DOMINANCE'}</span>
           </h2>
           <p className="mil-text-metadata mt-12 font-bold text-sm text-white/70">
             {locale === 'ro'
@@ -528,9 +529,9 @@ export default async function MilitaryPage() {
         label={locale === 'ro' ? "BAZA INDUSTRIALĂ DE APĂRARE" : "DEFENSE INDUSTRIAL BASE"}
       >
         <div className="text-center mb-32">
-          <h2 className="mil-text-hero mb-12">
-            {locale === 'ro' ? 'CONTRACTORII' : 'THE PRIME'}<br/>
-            <span className="text-white/20">{locale === 'ro' ? 'PRINCIPALI' : 'CONTRACTORS'}</span>
+          <h2 className="mil-text-hero mb-12 flex flex-col items-center w-full text-center">
+            <span className="block whitespace-nowrap">{locale === 'ro' ? 'CONTRACTORII' : 'THE PRIME'}</span>
+            <span className="block whitespace-nowrap text-white/20">{locale === 'ro' ? 'PRINCIPALI' : 'CONTRACTORS'}</span>
           </h2>
           <p className="mil-text-metadata max-w-xl mx-auto leading-relaxed">
             {locale === 'ro'
@@ -567,9 +568,9 @@ export default async function MilitaryPage() {
         label={locale === 'ro' ? "INTELIGENȚĂ CONTEXTUALĂ" : "CONTEXTUAL INTELLIGENCE"}
       >
         <div className="text-center mb-32">
-          <h2 className="mil-text-hero mb-12">
-            {locale === 'ro' ? 'CONTEXT' : 'STRATEGIC'}<br/>
-            <span className="text-white/20">{locale === 'ro' ? 'STRATEGIC' : 'CONTEXT'}</span>
+          <h2 className="mil-text-hero mb-12 flex flex-col items-center w-full text-center">
+            <span className="block whitespace-nowrap">{locale === 'ro' ? 'CONTEXT' : 'STRATEGIC'}</span>
+            <span className="block whitespace-nowrap text-white/20">{locale === 'ro' ? 'STRATEGIC' : 'CONTEXT'}</span>
           </h2>
         </div>
 

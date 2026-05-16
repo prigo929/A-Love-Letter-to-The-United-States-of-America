@@ -102,7 +102,7 @@ export function MilStyles() {
 
       .mil-text-hero {
         font-family: var(--font-archivo);
-        font-size: clamp(60px, 12vw, 180px);
+        font-size: clamp(38px, 12vw, 180px);
         font-weight: 900;
         line-height: 0.85;
         letter-spacing: -0.04em;
