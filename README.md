@@ -976,6 +976,10 @@ This section is for future AI-assisted edits. The goal is to explain how the cod
 
 The Constitution exhibit is the most technically complex section of the platform, designed to feel like a high-end digital museum.
 
+<p align="center">
+  <img src="IMAGES/Constitution/National Archives Bill of Rights.jpg" width="600" alt="National Archives Bill of Rights" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
 ### 1. The Cinematic Exhibit Architecture
 
 We use a "Server-Hub, Client-Interactive" pattern:
@@ -994,6 +998,46 @@ We use a "Server-Hub, Client-Interactive" pattern:
 - **Centralized Motion**: All high-fidelity transitions are orchestrated via `lib/animations.ts`. We avoid inline Framer Motion variants to ensure timing consistency across the exhibit.
 - **Tactile Document Design**: We use `mix-blend-mode: screen` with static marble textures (`marble-texture.webp`) and `InkParticles` to create a "living parchment" feel. This is significantly more performant than using video backgrounds for the same effect.
 - **Bilingual Schema Integrity**: All data in `lib/data/constitution-data.ts` and `lib/data/federalism-data.ts` must follow the strict `text` / `textRo` parity. The exhibit is designed to be fully substantive in both languages.
+
+---
+
+## 📈 Deep Dive: Economy & Capital Narrative Engine
+
+The Economy vertical functions as a high-fidelity data visualizer, translating complex macroeconomic indicators into compelling, editorial-grade stories.
+
+<p align="center">
+  <img src="IMAGES/Economy/100 dollar bill.jpg" width="600" alt="Exorbitant Privilege 100 Dollar Bill" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
+### 1. Hardened Responsive Charting
+We developed custom configurations on top of the Recharts library to handle dense historical data without mobile degradation:
+- **Angle-Optimized Labels**: Rotated X-axis indicators (e.g., `-35 degrees`) and shifted text anchors to guarantee readability on compact viewports.
+- **High-Contrast USA Highlights**: Leveraged a conditional renderer that checks if a data item represents the United States, automatically applying our primary `Glory Gold` HSL color fill while keeping comparison countries in subtle, desaturated slate tones.
+- **Explicit Safety Gutters**: Configured custom margin objects on the `ResponsiveContainer` wrapper to prevent label clipping along chart edges.
+
+### 2. Live Telemetry Simulators
+- **Dynamic Debt Ticker**: An active timer in `/economy/debt` utilizing high-frequency interval counts to project real-time shifts in the national budget based on official annual deficit models.
+- **Startup Seat Cartogram**: Built a specialized geographic model representing the 435 seats of the US House of Representatives, styled as a modular grid where states glow based on active venture capital activity.
+
+---
+
+## 🌲 Deep Dive: Natural Majesty & Continental Scale
+
+The Nature vertical is designed for absolute atmospheric immersion, letting developers and users explore the vast scale of the American wilderness.
+
+<p align="center">
+  <img src="IMAGES/Landscapes/Glacier National Park.jpg" width="600" alt="Glacier National Park Natural Majesty" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
+### 1. Spatial Editorial Animations
+- **Canyon Strata Reveal**: An interactive scroll component that uses Framer Motion's `useScroll` hook to translate layered vector svgs representing the geological strata of the Grand Canyon, exposing different factual eras as the user descends.
+- **Geyser Eruption Interval**: A client-side state machine displaying a real-time countdown to the next geyser eruption, utilizing dynamic particle canvases to simulate hot-water eruptions upon countdown completion.
+- **Aurora Ambient Lights**: Utilizes absolute-positioned CSS radial-gradients with slow GPU-friendly keyframe animations to create the green shimmering curtains of the Northern Lights behind your Alaska fact sheets.
+
+### 2. High-Contrast Legibility Standards
+We implemented strict typographic rules sitewide to safeguard readability:
+- **Earthy Grids & Spotlights**: Enforced high-contrast background spots (with an absolute minimum of `70%–85%` contrast values) to keep all labels, quotes, and metadata extremely legible over our dynamic natural backgrounds.
+- **Typographic Scale Guards**: Replaced fluid, low-contrast text scales with hard labels (minimum `14px` at `800` weight for secondary labels, and `16px` at `900` weight for headings).
 
 ---
 
