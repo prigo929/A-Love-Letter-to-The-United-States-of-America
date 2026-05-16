@@ -1117,11 +1117,26 @@ Strategic milestones for the next phase of development:
 
 ---
 
-```text
-================================================================
-           ★ ★ ★   IN GOD WE TRUST · EST. 1776   ★ ★ ★
-================================================================
-```
+<div align="center">
+<svg viewBox="0 0 800 100" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background: transparent; max-width: 600px; display: block; margin: 30px auto;">
+<defs>
+<linearGradient id="gold-bottom" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="#9A7B3E" />
+<stop offset="25%" stop-color="#DFBA73" />
+<stop offset="50%" stop-color="#FDF0A6" />
+<stop offset="75%" stop-color="#E1BC75" />
+<stop offset="100%" stop-color="#9C7D3F" />
+</linearGradient>
+</defs>
+<line x1="10" y1="50" x2="200" y2="50" stroke="url(#gold-bottom)" stroke-width="2" />
+<circle cx="215" cy="50" r="4" fill="url(#gold-bottom)" />
+<polygon points="230,46 232,51 237,51 233,54 235,59 230,56 225,59 227,54 223,51 228,51" fill="url(#gold-bottom)" />
+<text x="400" y="58" font-family="'Cinzel', 'Georgia', 'Times New Roman', serif" font-size="22" font-weight="900" fill="url(#gold-bottom)" text-anchor="middle" letter-spacing="4">IN GOD WE TRUST · EST. 1776</text>
+<polygon points="570,46 572,51 577,51 573,54 575,59 570,56 565,59 567,54 563,51 568,51" fill="url(#gold-bottom)" />
+<circle cx="585" cy="50" r="4" fill="url(#gold-bottom)" />
+<line x1="600" y1="50" x2="790" y2="50" stroke="url(#gold-bottom)" stroke-width="2" />
+</svg>
+</div>
 
 Built as a patriotic editorial web experience, not a template.  
 Keep the bar high. Use real images, real statistics, and intentional layouts.
