@@ -4,7 +4,7 @@
 <h3>🌟 A Cinematic, Data-Backed Love Letter to the Republic 🌟</h3>
 
 
-<img src="IMAGES/US Flags/Flag_of_the_United_States.svg" width="600" alt="Flag of the United States" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+<img src="web/IMAGES/US Flags/Flag_of_the_United_States.svg" width="600" alt="Flag of the United States" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 
 <p><em>“One nation under God, indivisible, with liberty and justice for all.”</em></p>
 
@@ -45,7 +45,7 @@ This repo is not a generic marketing site. It is structured like a content platf
 - homepage as an end-to-end narrative experience
 - **Interactive Electoral Map**: Visual history of every US election from 1788–2024 with state-by-state data
 - **Constitution Exhibit**: High-fidelity narrative engine with Clause Vault, Founder Constellation, and Real-World Checks
-- centralized image management through `IMAGES/` + `lib/site-images.ts`
+- centralized image management through `web/IMAGES/` + `web/lib/site-images.ts`
 - bilingual UI support for English and Romanian
 - data-driven content in `lib/data/*` instead of hardcoded JSX
 - **Core Web Vitals**: Integrated Vercel Analytics for LCP, CLS, and INP performance monitoring
@@ -57,7 +57,7 @@ This repo is not a generic marketing site. It is structured like a content platf
 A curated showcase of cinematic, ultra-high-resolution local assets from our central registry, illustrating the continental scale, infrastructure marvels, and scientific authority of the United States:
 
 <p align="center">
-  <img src="IMAGES/USA from Space/USA at night from Space.jpg" width="600" alt="The Shining City on a Hill: USA at night from Space" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/USA from Space/USA at night from Space.jpg" width="600" alt="The Shining City on a Hill: USA at night from Space" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
   <span style="display: block; max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
     <strong style="color: #C5A059; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase;">★ "The Shining City on a Hill" ★</strong>
     The continental United States illuminated at night from low Earth orbit, representing the immense scale of American prosperity, energy grids, and human achievement.
@@ -65,7 +65,7 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
 </p>
 
 <p align="center">
-  <img src="IMAGES/Cities/Golden Gate Bridge.jpg" width="600" alt="Golden Gate Bridge: Pacific Gateway" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Cities/Golden Gate Bridge.jpg" width="600" alt="Golden Gate Bridge: Pacific Gateway" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
   <span style="display: block; max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
     <strong style="color: #C5A059; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase;">★ "Gateway to the Pacific" ★</strong>
     The majestic orange span of the Golden Gate Bridge in San Francisco, California—a legendary engineering masterpiece demonstrating the ambition and connectivity of American infrastructure.
@@ -73,7 +73,7 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
 </p>
 
 <p align="center">
-  <img src="IMAGES/Technology/Apple Headquarters.jpg" width="600" alt="Silicon Valley Innovation Hub: Apple Park" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Technology/Apple Headquarters.jpg" width="600" alt="Silicon Valley Innovation Hub: Apple Park" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
   <span style="display: block; max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
     <strong style="color: #C5A059; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase;">★ "The Spaceship Campus" ★</strong>
     Apple Park in Cupertino, California—the architectural pinnacle of Silicon Valley, representing the global leadership of American industrial design, computing technology, and venture capital.
@@ -81,7 +81,7 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
 </p>
 
 <p align="center">
-  <img src="IMAGES/Cities/New York Skyline at sunset.jpg" width="600" alt="Capital of Capital: Manhattan NYC at Sunset" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Cities/New York Skyline at sunset.jpg" width="600" alt="Capital of Capital: Manhattan NYC at Sunset" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
   <span style="display: block; max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
     <strong style="color: #C5A059; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase;">★ "The Capital of Capital" ★</strong>
     The iconic skyline of Manhattan glowing at sunset, representing the unmatched liquidity, trade velocity, and absolute depth of the United States capital markets.
@@ -89,7 +89,7 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
 </p>
 
 <p align="center">
-  <img src="IMAGES/Infrastructure/I-110 and I-115 Interchange Los Angeles.jpg" width="600" alt="Arteries of Commerce: Los Angeles Highway Interchange" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Infrastructure/I-110 and I-115 Interchange Los Angeles.jpg" width="600" alt="Arteries of Commerce: Los Angeles Highway Interchange" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
   <span style="display: block; max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
     <strong style="color: #C5A059; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase;">★ "The Arteries of Commerce" ★</strong>
     The multi-level freeway interchanges of Los Angeles, California, illustrating the immense logistical throughput and robust dynamic distribution network of American interstate trade.
@@ -232,7 +232,7 @@ Our stack is carefully selected to support ultra-high-fidelity interactive civic
 A cinematic timeline of American democracy located at `/elections`.
 
 <p align="center">
-  <img src="IMAGES/US Buildings/US Capitol Presidential Inauguration.jpg" width="600" alt="US Capitol Presidential Inauguration" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/US Buildings/US Capitol Presidential Inauguration.jpg" width="600" alt="US Capitol Presidential Inauguration" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 - **1788–2024 Archive**: Visualizes the growth of the Union and the shift in political landscapes over 250 years.
@@ -243,7 +243,7 @@ A cinematic timeline of American democracy located at `/elections`.
 A premium digital "museum" experience located at `/constitution`.
 
 <p align="center">
-  <img src="IMAGES/Constitution/usa-independence-day-composition-with-declaration.jpg" width="600" alt="Declaration of Independence" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Constitution/usa-independence-day-composition-with-declaration.jpg" width="600" alt="Declaration of Independence" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 - **Clause Vault**: Interactive exploration of critical constitutional passages like the Commerce and Supremacy clauses.
@@ -254,7 +254,7 @@ A premium digital "museum" experience located at `/constitution`.
 A data-driven deep dive into American economic power located at `/economy`.
 
 <p align="center">
-  <img src="IMAGES/Economy/New York Stock Exchange.jpg" width="600" alt="New York Stock Exchange" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Economy/New York Stock Exchange.jpg" width="600" alt="New York Stock Exchange" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 - **Global Context Charts**: High-fidelity visualizations comparing US GDP, VC, and Dollar reserves against global rivals.
@@ -265,7 +265,7 @@ A data-driven deep dive into American economic power located at `/economy`.
 An immersive multimedia exploration of the American landscape located at `/nature`.
 
 <p align="center">
-  <img src="IMAGES/Landscapes/Yosemite National Park.jpg" width="600" alt="Yosemite National Park Natural Majesty" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Landscapes/Yosemite National Park.jpg" width="600" alt="Yosemite National Park Natural Majesty" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 - **Atmospheric Visuals**: Custom 'Spatial Editorial' components like `NatureHeroCrossfade`, `ParallaxImageBand`, and `CanyonStrataReveal`.
@@ -276,7 +276,7 @@ An immersive multimedia exploration of the American landscape located at `/natur
 A technical breakdown of American military supremacy located at `/military`.
 
 <p align="center">
-  <img src="IMAGES/Military/Navy/us-navy-gerald-ford-carrier.jpg" width="600" alt="USS Gerald R. Ford Aircraft Carrier Strike Group" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Military/Navy/us-navy-gerald-ford-carrier.jpg" width="600" alt="USS Gerald R. Ford Aircraft Carrier Strike Group" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 - **Global Reach Tracker**: Interactive map showing the approximate real-time locations of the 11 US Carrier Strike Groups.
@@ -551,7 +551,7 @@ lib/
   animations.ts                  motion variants
   utils.ts                       helpers
 
-IMAGES/
+web/IMAGES/
   categorized local image library used by the site
 ```
 
@@ -561,7 +561,7 @@ If you are new to the repo, this is the shortest useful mental model:
 
 ```mermaid
 graph LR
-    A[🖼️ IMAGES/] --> B[📜 lib/site-images.ts]
+    A[🖼️ web/IMAGES/] --> B[📜 web/lib/site-images.ts]
     B --> C[📊 lib/data/*]
     B --> D[⚙️ lib/constants.ts]
     C --> E[🧱 Components]
@@ -578,9 +578,9 @@ graph LR
 
 That flow is the backbone of the project:
 
-- media lives in `IMAGES/`
-- image keys are centralized in `SITE_IMAGES`
-- content and statistics live in `lib/data/*`
+- media lives in `web/IMAGES/`
+- image keys are centralized in `web/lib/site-images.ts`
+- content and statistics live in `web/lib/data/*`
 - components render the content
 - pages assemble the full experience
 
@@ -638,8 +638,8 @@ Do not scatter raw image paths across the app unless there is a good reason.
 
 Use this flow:
 
-1. add the file somewhere in `IMAGES/`
-2. import it in `lib/site-images.ts`
+1. add the file somewhere in `web/IMAGES/`
+2. import it in `web/lib/site-images.ts`
 3. expose it as a stable `SITE_IMAGES.someKey`
 4. consume that key from data files or components
 
@@ -653,8 +653,8 @@ Use this flow:
 
 If you want to change a homepage hero image:
 
-1. add the new file to `IMAGES/`
-2. import it in `lib/site-images.ts`
+1. add the new file to `web/IMAGES/`
+2. import it in `web/lib/site-images.ts`
 3. replace the hero key in `lib/constants.ts`
 
 ### Why This Is Better Than Raw URLs Everywhere
@@ -755,8 +755,8 @@ Next.js uses "file-based routing", which makes adding pages incredibly easy.
 
 ### 8. How to Change or Add Images
 This project strictly organizes images so we don't have broken links scattered across hundreds of files.
-1. Place your new image in the `IMAGES/` folder (e.g., `IMAGES/history/founding-fathers.jpg`).
-2. Open `lib/site-images.ts` and import it at the top:
+1. Place your new image in the `web/IMAGES/` folder (e.g., `web/IMAGES/history/founding-fathers.jpg`).
+2. Open `web/lib/site-images.ts` and import it at the top:
    ```ts
    import foundingFathers from "@/IMAGES/history/founding-fathers.jpg";
    ```
@@ -1241,7 +1241,7 @@ This section is for future AI-assisted edits. The goal is to explain how the cod
 The Constitution exhibit is the most technically complex section of the platform, designed to feel like a high-end digital museum.
 
 <p align="center">
-  <img src="IMAGES/Constitution/National Archives Bill of Rights.jpg" width="600" alt="National Archives Bill of Rights" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Constitution/National Archives Bill of Rights.jpg" width="600" alt="National Archives Bill of Rights" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 ### 1. The Cinematic Exhibit Architecture
@@ -1270,7 +1270,7 @@ We use a "Server-Hub, Client-Interactive" pattern:
 The Economy vertical functions as a high-fidelity data visualizer, translating complex macroeconomic indicators into compelling, editorial-grade stories.
 
 <p align="center">
-  <img src="IMAGES/Economy/100 dollar bill.jpg" width="600" alt="Exorbitant Privilege 100 Dollar Bill" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Economy/100 dollar bill.jpg" width="600" alt="Exorbitant Privilege 100 Dollar Bill" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 ### 1. Hardened Responsive Charting
@@ -1290,7 +1290,7 @@ We developed custom configurations on top of the Recharts library to handle dens
 The Nature vertical is designed for absolute atmospheric immersion, letting developers and users explore the vast scale of the American wilderness.
 
 <p align="center">
-  <img src="IMAGES/Landscapes/Glacier National Park.jpg" width="600" alt="Glacier National Park Natural Majesty" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Landscapes/Glacier National Park.jpg" width="600" alt="Glacier National Park Natural Majesty" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 ### 1. Spatial Editorial Animations

@@ -1,0 +1,390 @@
+/* ─── Global CSS ──────────────────────────────────────────────────────────────
+   Import order: Google Fonts → Tailwind directives → Base resets → Utilities
+   ──────────────────────────────────────────────────────────────────────────── */
+
+/* Google Fonts — preloaded in layout.tsx via next/font for performance */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* Tailwind v4 import */
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+/* ─── Base Layer ─────────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    /* CSS custom properties — mirrors tailwind.config colors for use in
+       inline styles and non-Tailwind contexts */
+    --color-glory-red: #b22234;
+    --color-glory-red-dark: #8b1a26;
+    --color-glory-blue: #3c3b6e;
+    --color-glory-blue-dark: #2a2950;
+    --color-glory-gold: #ffd700;
+    --color-glory-gold-dark: #cc9900;
+    --color-navy-dark: #0d1117;
+    --color-navy-mid: #1a1f3a;
+    --color-navy-light: #252b4a;
+    --color-parchment: #f5f0e8;
+
+    /* Scroll behavior */
+    scroll-behavior: smooth;
+  }
+
+  /* Box sizing reset */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* Base typography */
+  html {
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-navy-dark text-white;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Headings use Playfair Display */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 700;
+    line-height: 1.15;
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  /* Focus ring — gold for the patriotic theme */
+  :focus-visible {
+    outline: 2px solid var(--color-glory-gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Remove focus outline for mouse users */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: rgba(255, 215, 0, 0.3);
+    color: inherit;
+  }
+
+  /* Scrollbar styling — ultra-minimal editorial grade */
+  ::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Support for Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  }
+
+  /* Images */
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Reduced motion — respect user preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ─── Component Layer ───────────────────────────────────────────────────── */
+@layer components {
+  /* ── Typography helpers ──────────────────────────────────────────────── */
+  .font-display {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+  .font-hero {
+    font-family: "Bebas Neue", Impact, sans-serif;
+  }
+  .font-body {
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  /* ── Section heading pattern ─────────────────────────────────────────── */
+  .section-eyebrow {
+    @apply font-body text-xs font-semibold uppercase tracking-[0.3em] text-glory-gold
+           flex items-center gap-3 mb-3;
+  }
+  .section-eyebrow::before,
+  .section-eyebrow::after {
+    content: "★";
+    font-size: 8px;
+  }
+
+  /* ── Gradient text ───────────────────────────────────────────────────── */
+  .text-gradient-gold {
+    background: linear-gradient(
+      135deg,
+      var(--color-glory-gold) 0%,
+      var(--color-glory-gold-dark) 50%,
+      var(--color-glory-gold) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200%;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .text-gradient-glory {
+    background: linear-gradient(
+      135deg,
+      var(--color-glory-red) 0%,
+      var(--color-glory-gold) 50%,
+      var(--color-glory-blue) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-overlay-gradient {
+    background: linear-gradient(
+      135deg,
+      rgba(10, 10, 30, 0.9) 0%,
+      rgba(60, 59, 110, 0.7) 40%,
+      rgba(139, 26, 38, 0.6) 100%
+    );
+  }
+
+  .hero-bottom-fade {
+    background: linear-gradient(to bottom, transparent, var(--color-navy-dark));
+  }
+
+  .hero-title-shell {
+    font-size: clamp(56px, 11vw, 148px);
+    letter-spacing: 0.02em;
+    font-family: "Archivo Black", system-ui, sans-serif;
+    text-transform: uppercase;
+  }
+
+  .hero-title-top,
+  .hero-title-bottom {
+    display: block;
+    color: #fff;
+    text-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.6),
+      0 12px 40px rgba(0, 0, 0, 0.8);
+  }
+
+  .hero-title-middle {
+    display: block;
+    line-height: 1.1;
+    margin: 0.05em 0;
+    font-weight: 900;
+    background: linear-gradient(
+      90deg,
+      #b31942 0%,
+      #b31942 25%,
+      #ffffff 45%,
+      #ffffff 55%,
+      #0a3161 75%,
+      #0a3161 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.7));
+  }
+
+  .hero-star-small {
+    @apply h-3 w-3 opacity-60;
+  }
+
+  .hero-star-large {
+    @apply h-5 w-5 opacity-100;
+  }
+
+  .bg-opening-noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  }
+
+  .bg-star-pattern-grid {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpolygon points='20,2 24,14 38,14 27,22 31,36 20,28 9,36 13,22 2,14 16,14' fill='rgba(255,215,0,0.06)'/%3E%3C/svg%3E");
+    background-size: 80px 80px;
+  }
+
+  .bg-star-pattern-quote {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cpolygon points='30,3 36,21 57,21 40,33 46,54 30,42 14,54 20,33 3,21 24,21' fill='rgba(255,215,0,0.2)'/%3E%3C/svg%3E");
+    background-size: 120px 120px;
+  }
+
+  .bg-star-pattern-sm {
+    background-image: var(--tw-bg-star-pattern);
+    background-size: 40px 40px;
+  }
+
+  .bg-map-preview-grid {
+    background-image:
+      linear-gradient(rgba(255, 215, 0, 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 215, 0, 0.15) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .light-surface-copy {
+    @apply text-navy-mid/70;
+  }
+
+  .light-surface-copy-soft {
+    @apply text-navy-mid/55;
+  }
+
+  .light-surface-field {
+    @apply bg-white border-parchment-dark text-navy-dark placeholder:text-navy-mid/40 focus:border-glory-gold;
+  }
+
+  .light-surface-icon {
+    @apply text-navy-mid/45;
+  }
+
+  .card-hover-shadow {
+    box-shadow: 0 16px 48px rgba(13, 17, 23, 0.14);
+  }
+
+  /* ── Glass morphism ──────────────────────────────────────────────────── */
+  .glass {
+    @apply bg-white/10 backdrop-blur-glass border border-white/20;
+  }
+  .glass-dark {
+    @apply bg-black/20 backdrop-blur-glass border border-white/10;
+  }
+
+  /* ── Divider with stars ──────────────────────────────────────────────── */
+  .star-divider {
+    @apply flex items-center gap-4 my-8;
+  }
+  .star-divider::before,
+  .star-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    @apply bg-glory-gold/30;
+  }
+
+  /* ── Progress bar (reading indicator) ───────────────────────────────── */
+  .reading-progress {
+    @apply fixed top-0 left-0 h-0.5 bg-glory-gold z-100;
+    transform-origin: left;
+  }
+
+  /* ── Skip to content (accessibility) ────────────────────────────────── */
+  .skip-to-content {
+    @apply absolute -top-full left-4 z-100 bg-glory-gold text-navy-dark
+           font-body font-semibold px-4 py-2 rounded-b-lg
+           focus:top-0 transition-all duration-150;
+  }
+}
+
+/* ─── Utility Layer ─────────────────────────────────────────────────────── */
+@layer utilities {
+  /* Viewport units that account for mobile browser chrome */
+  .min-h-screen-safe {
+    min-height: 100dvh;
+  }
+  .h-screen-safe {
+    height: 100dvh;
+  }
+
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Clip text for gradient */
+  .clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* No scrollbar (for carousels) */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Perspective for 3D hover effects */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .gallery-masonry-rows {
+    grid-auto-rows: minmax(140px, auto);
+  }
+
+  /* Shimmer animation for loading states */
+  .shimmer-bg {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.12) 50%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s linear infinite;
+  }
+
+  .motion-delay-0 {
+    transition-delay: 0ms;
+  }
+
+  .motion-delay-40 {
+    transition-delay: 40ms;
+  }
+
+  .motion-delay-80 {
+    transition-delay: 80ms;
+  }
+
+  .motion-delay-120 {
+    transition-delay: 120ms;
+  }
+
+  .motion-delay-160 {
+    transition-delay: 160ms;
+  }
+}

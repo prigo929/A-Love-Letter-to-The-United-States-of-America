@@ -1,3 +1,10 @@
+# Nested Web Workspace
+web/node_modules/
+web/.next/
+web/.env.local
+web/tsconfig.tsbuildinfo
+web/next-env.d.ts
+
 # Dependencies
 node_modules/
 .pnp
