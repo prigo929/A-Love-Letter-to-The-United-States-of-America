@@ -52,18 +52,29 @@ This repo is not a generic marketing site. It is structured like a content platf
 - **AI-Ready Context**: Optimized `.repomixignore` for high-efficiency LLM context transfers
 - section verticals that now include economy, nature/geography, and the arsenal of democracy (military)
 
-## Quick Snapshot
+## 🦅 Quick Snapshot (Core Architecture)
 
-| Area | What makes this repo interesting |
-| --- | --- |
-| Visual style | cinematic hero, editorial sections, patriotic palette, strong imagery |
-| Content model | facts and media are centralized instead of being scattered in JSX |
-| Images | local asset library in `IMAGES/` managed through one registry |
-| Internationalization | English + Romanian UI with client + server locale handling |
-| Storytelling | homepage is structured like a sequence, not a landing-page template |
-| Deep dives | economy and nature already work as real content verticals |
+| 🏛️ Core Platform Dimension | 🌟 Engineering Paradigm | 📈 Production Fidelity & Performance |
+| :--- | :--- | :--- |
+| 🎨 **Visual Style & Identity** | Cinematic Hero Carousel, Dynamic Framer Particle Canvases, Modern HSL CSS Variables | Wall Street Journal-grade typography, zero layout shifts (`CLS`), Safari-hardened viewport scaling |
+| 📊 **Centralized Content Model** | 100% strict data-first architecture with mock specifications in `/lib/data/` | Dumb rendering components which cleanly select localized properties without ternary pollution |
+| 📂 **Registry-First Media** | Monolith image registry controlled inside `lib/site-images.ts` using local path mappings | Absolute protection against broken URLs, local image preloading, and dynamic SVG compression |
+| 🌐 **Bi-directional Locale Parity** | Pure English-Romanian interface compliance with dedicated locale cookies | High-speed server-side pre-rendering coupled with state-persistent language provider islands |
+| 🗺️ **Democratic Storytelling** | Continuous, narrative scroll layouts separating content into historical chapters | Interactive 50-state historical electoral trackers dating back to the first 1788 delegation |
+| 🎖️ **Editorial Verticals** | Bespoke vertical frameworks (Economy, Nature, Military) with domain-specific components | Custom interactive engines (Policy Match Laboratory, Carrier Strike coordinate trackers, Strata revealing) |
+
+## 🏛️ Cinematic Visual Style & Verticals Matrix
+
+The website is styled like an art-directed editorial manuscript, with three distinct cinematic environments designed for immersive historical and data storytelling:
+
+| 🏷️ Editorial Vertical | 🎨 Visual Tone & Aesthetic | ⚡ Active Interactive Engines | 🔗 Production Routes |
+| :--- | :--- | :--- | :--- |
+| **📈 Economy & Capital** | **"Macro-Capital Editorial"**<br>• Clean grid alignments<br>• Wall Street Journal-grade typography<br>• High-contrast monetary scales | • **GDP & Venture Capital Charts**: Gold-highlighted Recharts comparisons.<br>• **National Debt Ticker**: Live real-time projection.<br>• **Innovation Index**: Global patent comparative metric. | • `/economy`<br>• `/economy/gdp`<br>• `/economy/debt`<br>• `/economy/innovation`<br>• `/economy/opportunity`<br>• `/economy/real-estate` |
+| **🌲 Natural Majesty** | **"Spatial Editorial"**<br>• Earthy obsidian backdrops<br>• Emerald green accents<br>• Generous typographic quote spacing | • **Geyser Eruption Simulator**: Real-time interval tracker.<br>• **Biodiversity Strata**: Interactive layered mountain mapping.<br>• **NPS Mobile Charts**: Angle-rotated responsive label charts. | • `/nature`<br>• `/nature/national-parks`<br>• `/nature/biodiversity`<br>• `/nature/climate`<br>• `/nature/geography`<br>• `/nature/resources` |
+| **🎖️ Arsenal of Democracy** | **"Minimalist Black-Ops"**<br>• Stark monochromatic headers<br>• Amber alert accents<br>• Military CRT scanline effects | • **Aircraft Strike Group Tracker**: Precise SVG map mapping live carrier coordinates.<br>• **Nuclear Triad Simulation**: Interactive silo, sub, and bomber parity engine.<br>• **DARPA Timeline**: Dynamic historical innovation milestone cards. | • `/military`<br>• `/military/navy`<br>• `/military/triad`<br>• `/military/darpa`<br>• `/military/weapons` |
 
 ## 🗺️ What Is Built
+
 
 <details>
 <summary><strong>🏠 Core Pages</strong></summary>
@@ -154,20 +165,21 @@ The culture and quality-of-life pages are currently clean scaffolds with TODO zo
 - **Responsive Chart Polish**: Clean axis grid tick sizing (12px–14px), angled horizontal axis labels, and custom chart gutters/margins across all key metrics to fully support mobile device viewports.
 - **Mobile Header Alignment**: Standardized block span structural wrapping on all large section titles to prevent awkward 3-row page splits or broken words on small screens.
 
-## Stack
+## 🛠️ The Sovereignty Tech Stack
 
-| Layer | Tech |
-| --- | --- |
-| Framework | Next.js 16 App Router |
-| React | React 18 |
-| Styling | Tailwind CSS |
-| Motion | Framer Motion |
-| Charts | Recharts + D3 |
-| Maps | react-simple-maps |
-| Forms | React Hook Form + Zod |
-| Data / backend | Supabase |
-| Deployment | Vercel |
-| Analytics | Vercel Analytics + Speed Insights |
+Our stack is carefully selected to support ultra-high-fidelity interactive civics, heavy data visualizations, and fluid animated transitions:
+
+| 📦 Core Layer | ⚡ Selected Technology | 🎯 Specific Strategic Use-Case in Repo |
+| :--- | :--- | :--- |
+| **Framework** | **Next.js 16 (App Router)** | Hybrid Server/Client rendering, server-pre-rendered locale contexts, and SEO-optimized routes. |
+| **Runtime** | **React 18** | High-performance state persistence for bilingual selectors and policy scoring engines. |
+| **Styling** | **Vanilla CSS & Tailwind** | Custom HSL-based thematic color variables (`glory-gold`, `glory-red`), CRT scanlines, and editorial grid structures. |
+| **Animations** | **Framer Motion** | Cinematic Ken-Burns slides, page-entry fade-ups, and interactive Separation of Powers states. |
+| **Charts** | **Recharts & D3** | Custom responsive data visualizations with gold-highlighted comparison scales. |
+| **Mapping** | **react-simple-maps & SVG** | Custom 50-state historical electoral archive maps and live Carrier Strike Group coordinate trackers. |
+| **Database** | **Supabase** | Cloud-native relational store for live public feedback, telemetry, and civic interactions. |
+| **Analytics** | **Vercel Web Vitals** | Production-grade monitoring for Largest Contentful Paint (`LCP`) and Cumulative Layout Shift (`CLS`). |
+
 ## Key Features
 
 ### 🗳️ Interactive Electoral History
