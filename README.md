@@ -184,30 +184,55 @@ Our stack is carefully selected to support ultra-high-fidelity interactive civic
 
 ### 🗳️ Interactive Electoral History
 A cinematic timeline of American democracy located at `/elections`.
+
+<p align="center">
+  <img src="IMAGES/US Buildings/US Capitol Presidential Inauguration.jpg" width="600" alt="US Capitol Presidential Inauguration" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
 - **1788–2024 Archive**: Visualizes the growth of the Union and the shift in political landscapes over 250 years.
 - **State-by-State Data**: High-fidelity hover/click interactions revealing electoral counts and historical winners.
 - **Bipartite Logic**: Accurately tracks the evolution of American political parties across different eras.
 
 ### 🏛️ The Constitution Exhibit
 A premium digital "museum" experience located at `/constitution`.
+
+<p align="center">
+  <img src="IMAGES/Constitution/usa-independence-day-composition-with-declaration.jpg" width="600" alt="Declaration of Independence" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
 - **Clause Vault**: Interactive exploration of critical constitutional passages like the Commerce and Supremacy clauses.
 - **Founder Constellation**: A relational map showing the connections and contributions of the Founding Fathers.
 - **Real-World Checks**: A historical simulator featuring 9 case studies (Watergate, New Deal, etc.) showing checks and balances in action.
 
 ### 📈 The Economy & Innovation Vertical
 A data-driven deep dive into American economic power located at `/economy`.
+
+<p align="center">
+  <img src="IMAGES/Economy/New York Stock Exchange.jpg" width="600" alt="New York Stock Exchange" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
 - **Global Context Charts**: High-fidelity visualizations comparing US GDP, VC, and Dollar reserves against global rivals.
 - **Startup Ecosystem Map**: Interactive breakdown of the 435+ House seats (as a cartogram) and individual startup hubs like Silicon Valley and Austin.
 - **Dollar Dominance**: Technical analysis of the world's reserve currency and its "exorbitant privilege."
 
 ### 🏞️ The Natural Majesty Vertical
 An immersive multimedia exploration of the American landscape located at `/nature`.
+
+<p align="center">
+  <img src="IMAGES/Landscapes/Yosemite National Park.jpg" width="600" alt="Yosemite National Park Natural Majesty" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
 - **Atmospheric Visuals**: Custom 'Spatial Editorial' components like `NatureHeroCrossfade`, `ParallaxImageBand`, and `CanyonStrataReveal`.
 - **Continental Comparisons**: Charts comparing US biodiversity and protected lands against global rivals.
 - **Deep-Dive Subpages**: Dedicated verticals for Alaska, Yellowstone, the Grand Canyon, and more, focusing on conservation history and extreme scale.
 
 ### 🎖️ The Arsenal of Democracy Vertical
 A technical breakdown of American military supremacy located at `/military`.
+
+<p align="center">
+  <img src="IMAGES/Military/Navy/us-navy-gerald-ford-carrier.jpg" width="600" alt="USS Gerald R. Ford Aircraft Carrier Strike Group" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
 - **Global Reach Tracker**: Interactive map showing the approximate real-time locations of the 11 US Carrier Strike Groups.
 - **The Crown Jewels**: High-fidelity dossiers for the B-21 Raider, F-35 Lightning II, and F-22 Raptor with 6th-gen tech specs.
 - **Nuclear Triad Simulation**: Interactive logic explaining the survival of land, sea, and air deterrents.
