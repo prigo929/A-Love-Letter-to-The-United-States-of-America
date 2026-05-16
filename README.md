@@ -3,11 +3,13 @@
 <h1>🦅 THE UNITED STATES OF AMERICA 🦅</h1>
 <h3>🌟 A Cinematic, Data-Backed Love Letter to the Republic 🌟</h3>
 
+
 <img src="IMAGES/US Flags/Flag_of_the_United_States.svg" width="600" alt="Flag of the United States" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 
 <p><em>“One nation under God, indivisible, with liberty and justice for all.”</em></p>
 
 </div>
+
 
 <div align="center">
 
