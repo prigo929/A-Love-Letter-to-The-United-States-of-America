@@ -3,68 +3,106 @@
 # 🦅 THE UNITED STATES OF AMERICA 🦅
 ### 🌟 A Cinematic, Data-Backed Love Letter to the Republic 🌟
 
-<div align="center">
-  <svg viewBox="0 0 800 240" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background: transparent; max-width: 800px; display: block; margin: 20px auto;">
+  <!-- Majestic Vector American Flag -->
+  <svg viewBox="0 0 760 400" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="max-width: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;">
+    <!-- 13 Stripes -->
+    <rect y="0" width="760" height="30.77" fill="#B22234" />
+    <rect y="30.77" width="760" height="30.77" fill="#FFFFFF" />
+    <rect y="61.54" width="760" height="30.77" fill="#B22234" />
+    <rect y="92.31" width="760" height="30.77" fill="#FFFFFF" />
+    <rect y="123.08" width="760" height="30.77" fill="#B22234" />
+    <rect y="153.85" width="760" height="30.77" fill="#FFFFFF" />
+    <rect y="184.62" width="760" height="30.77" fill="#B22234" />
+    <rect y="215.38" width="760" height="30.77" fill="#FFFFFF" />
+    <rect y="246.15" width="760" height="30.77" fill="#B22234" />
+    <rect y="276.92" width="760" height="30.77" fill="#FFFFFF" />
+    <rect y="307.69" width="760" height="30.77" fill="#B22234" />
+    <rect y="338.46" width="760" height="30.77" fill="#FFFFFF" />
+    <rect y="369.23" width="760" height="30.77" fill="#B22234" />
+
+    <!-- Canton (Union) -->
+    <rect width="304" height="215.38" fill="#3C3B6E" />
+
+    <!-- 50 Stars -->
     <defs>
-      <!-- Metallic Gold Gradient -->
-      <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#9A7B3E" />
-        <stop offset="20%" stop-color="#DFBA73" />
-        <stop offset="40%" stop-color="#FDF0A6" />
-        <stop offset="60%" stop-color="#E1BC75" />
-        <stop offset="80%" stop-color="#9C7D3F" />
-        <stop offset="100%" stop-color="#5E481D" />
-      </linearGradient>
-      <!-- Deep Cinematic Navy Gradient -->
-      <linearGradient id="shield-blue" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="#070C1E" />
-        <stop offset="100%" stop-color="#0E1731" />
-      </linearGradient>
-      <!-- Drop Shadow Filter -->
-      <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-        <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.6"/>
-      </filter>
+      <g id="star">
+        <polygon points="0,-7 2.06,-2.06 7.41,-2.06 3.09,1.06 4.71,6.06 0,3.09 -4.71,6.06 -3.09,1.06 -7.41,-2.06 -2.06,-2.06" fill="#FFFFFF" />
+      </g>
     </defs>
-
-    <!-- Main Shield Outer Border (Double Line) -->
-    <rect x="5" y="5" width="790" height="230" rx="16" fill="url(#shield-blue)" stroke="url(#gold)" stroke-width="4" filter="url(#shadow)" />
-    <rect x="12" y="12" width="776" height="216" rx="10" fill="none" stroke="url(#gold)" stroke-width="1.5" opacity="0.6" />
-
-    <!-- Arched Stars of the Union (13 Colonies) -->
-    <!-- Positioned precisely along a majestic top curve -->
-    <g fill="url(#gold)" filter="url(#shadow)">
-      <polygon points="130,70 133,76 140,76 135,80 137,87 130,83 123,87 125,80 120,76 127,76" />
-      <polygon points="175,60 178,66 185,66 180,70 182,77 175,73 168,77 170,70 165,66 172,66" />
-      <polygon points="225,52 228,58 235,58 230,62 232,69 225,65 218,69 220,62 215,58 222,58" />
-      <polygon points="275,46 278,52 285,52 280,56 282,63 275,59 268,63 270,56 265,52 272,52" />
-      <polygon points="325,42 328,48 335,48 330,52 332,59 325,55 318,59 320,52 315,48 322,48" />
-      <!-- Arch Center Star (Prominent) -->
-      <polygon points="400,28 405,37 415,37 407,43 410,53 400,47 390,53 393,43 385,37 395,37" />
-      <polygon points="475,42 478,48 485,48 480,52 482,59 475,55 468,59 470,52 465,48 472,48" />
-      <polygon points="525,46 528,52 535,52 530,56 532,63 525,59 518,63 520,56 515,52 522,52" />
-      <polygon points="575,52 578,58 585,58 580,62 582,69 575,65 568,69 570,62 565,58 572,58" />
-      <polygon points="625,60 628,66 635,66 630,70 632,77 625,73 618,77 620,70 615,66 622,66" />
-      <polygon points="670,70 673,76 680,76 675,80 677,87 670,83 663,87 665,80 660,76 667,76" />
+    
+    <!-- 9 Rows of Stars -->
+    <g transform="translate(0, 21.54)">
+      <use href="#star" x="25.33" />
+      <use href="#star" x="76.00" />
+      <use href="#star" x="126.67" />
+      <use href="#star" x="177.33" />
+      <use href="#star" x="228.00" />
+      <use href="#star" x="278.67" />
     </g>
-
-    <!-- Side Wing Decorators (Double Gold Bars) -->
-    <line x1="50" y1="120" x2="200" y2="120" stroke="url(#gold)" stroke-width="3" />
-    <line x1="50" y1="126" x2="200" y2="126" stroke="url(#gold)" stroke-width="1" opacity="0.6" />
-    <line x1="600" y1="120" x2="750" y2="120" stroke="url(#gold)" stroke-width="3" />
-    <line x1="600" y1="126" x2="750" y2="126" stroke="url(#gold)" stroke-width="1" opacity="0.6" />
-
-    <!-- Core Typography -->
-    <!-- E PLURIBUS UNUM (Arched Serif, Metallic Gold, Drop-Shadowed) -->
-    <text x="400" y="132" font-family="'Cinzel', 'Georgia', 'Times New Roman', serif" font-size="44" font-weight="900" fill="url(#gold)" text-anchor="middle" letter-spacing="14" filter="url(#shadow)">E PLURIBUS UNUM</text>
-
-    <!-- OUT OF MANY, ONE (Clean Sans, Brilliant White, High Tracking) -->
-    <text x="400" y="172" font-family="'Montserrat', 'Helvetica', 'Arial', sans-serif" font-size="16" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="8" opacity="0.9" filter="url(#shadow)">OUT OF MANY, ONE</text>
-
-    <!-- Small Star under-decorator -->
-    <g fill="url(#gold)" transform="translate(400, 192) scale(0.6)">
-      <polygon points="0,-12 3,-3 12,-3 5,2 7,11 0,6 -7,11 -5,2 -12,-3 -3,-3" />
+    <g transform="translate(0, 43.08)">
+      <use href="#star" x="50.67" />
+      <use href="#star" x="101.33" />
+      <use href="#star" x="152.00" />
+      <use href="#star" x="202.67" />
+      <use href="#star" x="253.33" />
+    </g>
+    <g transform="translate(0, 64.62)">
+      <use href="#star" x="25.33" />
+      <use href="#star" x="76.00" />
+      <use href="#star" x="126.67" />
+      <use href="#star" x="177.33" />
+      <use href="#star" x="228.00" />
+      <use href="#star" x="278.67" />
+    </g>
+    <g transform="translate(0, 86.15)">
+      <use href="#star" x="50.67" />
+      <use href="#star" x="101.33" />
+      <use href="#star" x="152.00" />
+      <use href="#star" x="202.67" />
+      <use href="#star" x="253.33" />
+    </g>
+    <g transform="translate(0, 107.69)">
+      <use href="#star" x="25.33" />
+      <use href="#star" x="76.00" />
+      <use href="#star" x="126.67" />
+      <use href="#star" x="177.33" />
+      <use href="#star" x="228.00" />
+      <use href="#star" x="278.67" />
+    </g>
+    <g transform="translate(0, 129.23)">
+      <use href="#star" x="50.67" />
+      <use href="#star" x="101.33" />
+      <use href="#star" x="152.00" />
+      <use href="#star" x="202.67" />
+      <use href="#star" x="253.33" />
+    </g>
+    <g transform="translate(0, 150.77)">
+      <use href="#star" x="25.33" />
+      <use href="#star" x="76.00" />
+      <use href="#star" x="126.67" />
+      <use href="#star" x="177.33" />
+      <use href="#star" x="228.00" />
+      <use href="#star" x="278.67" />
+    </g>
+    <g transform="translate(0, 172.31)">
+      <use href="#star" x="50.67" />
+      <use href="#star" x="101.33" />
+      <use href="#star" x="152.00" />
+      <use href="#star" x="202.67" />
+      <use href="#star" x="253.33" />
+    </g>
+    <g transform="translate(0, 193.85)">
+      <use href="#star" x="25.33" />
+      <use href="#star" x="76.00" />
+      <use href="#star" x="126.67" />
+      <use href="#star" x="177.33" />
+      <use href="#star" x="228.00" />
+      <use href="#star" x="278.67" />
     </g>
   </svg>
+
+  <p><em>“One nation under God, indivisible, with liberty and justice for all.”</em></p>
+
 </div>
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-111111?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
