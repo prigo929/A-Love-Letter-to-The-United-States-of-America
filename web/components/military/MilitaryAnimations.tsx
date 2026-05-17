@@ -12,6 +12,7 @@ import {
   LayoutGroup
 } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 import type { WeaponSystem, MilitaryBranch, DARPAProgram, MilitaryStat, CarrierGroupPosition } from "@/lib/data/military-data";
 import { BUDGET_DATA as SHARED_BUDGET_DATA } from "@/lib/data/military-data";
@@ -519,6 +520,15 @@ export function BranchSelector({ branches, locale = 'en' }: { branches: Military
               </h3>
               <p className="mil-text-metadata italic opacity-60 mb-6">&ldquo;{branch.tagline}&rdquo;</p>
               <p className="text-sm leading-relaxed text-white/60 mb-8">{branch.description}</p>
+
+              {branch.href && (
+                <Link
+                  href={branch.href}
+                  className="mb-8 inline-flex h-11 items-center justify-center border border-white/15 bg-white px-5 text-xs font-bold uppercase text-black transition-colors hover:bg-white/85"
+                >
+                  {locale === "ro" ? "Exploreaza ramura" : `Explore ${branch.shortName}`}
+                </Link>
+              )}
 
               {/* Key facts */}
               <div className="space-y-2">

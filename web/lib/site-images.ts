@@ -55,6 +55,7 @@ import autonomousDrone from "@/IMAGES/Military/Air Force/us-air-force-yfq42a-dro
 import aircraftCarrierFlightDeck from "@/IMAGES/Military/Navy/us-navy-aircraft-carrier-flight-deck.jpg";
 import fa18Landing from "@/IMAGES/Military/Navy/us-navy-fa18f-super-hornet-landing.jpg";
 import ticonderogaCruiser from "@/IMAGES/Military/Navy/us-navy-ticonderoga-cruiser-san-diego.jpg";
+import carrierStrikeGroupFormation from "@/IMAGES/Military/Navy/us-navy-carrier-strike-group-formation.jpg";
 import spaceForceLaunch from "@/IMAGES/Military/Space Force/us-space-force-falcon9-launch.jpg";
 import ac130Ghostrider from "@/IMAGES/Military/Air Force/us-air-force-ac130j-ghostrider-flight.jpg";
 import f22Formation from "@/IMAGES/Military/Air Force/us-air-force-f22-raptor-formation.jpg";
@@ -149,5 +150,15 @@ export const SITE_IMAGES = {
     b2: b2Hero.src,
     satellite: globalLeadership.src,
     tacticalMap: tacticalWorldMap.src,
+  },
+  navy: {
+    hero: geraldFordCarrier.src,
+    flightDeck: aircraftCarrierFlightDeck.src,
+    geraldFord: geraldFordCarrier.src,
+    destroyer: ticonderogaCruiser.src,
+    fa18Landing: fa18Landing.src,
+    ohioSubmarine: ohioSubmarine.src,
+    dualCarrier: navyHero.src,
+    carrierFormation: carrierStrikeGroupFormation.src,
   },
 } as const;

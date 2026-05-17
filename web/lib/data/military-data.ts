@@ -27,6 +27,7 @@ export interface MilitaryBranch {
   description: string;
   accentColor: string;
   iconEmoji: string;
+  href?: string;
   keyFacts: string[];
   imageSrc: string;
   imageAlt: string;
@@ -127,6 +128,7 @@ export const MILITARY_BRANCHES: MilitaryBranch[] = [
     tagline: "Forged by the Sea",
     accentColor: "#1E6FBF",
     iconEmoji: "⚓",
+    href: "/military/navy",
     description: "America's global reach. The US Navy operates on every ocean simultaneously — projecting power from 11 carrier strike groups, 68 submarines, and 290+ surface combatants. The Navy ensures freedom of navigation for the global economy.",
     keyFacts: [
       "11 nuclear-powered aircraft carriers — the rest of the world has 2 total",
