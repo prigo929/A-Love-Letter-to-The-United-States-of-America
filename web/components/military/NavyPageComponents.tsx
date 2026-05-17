@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import {
   Anchor,
   ArrowUpRight,
@@ -22,6 +23,7 @@ import type {
   NavyFutureProgram,
   NavyMetric,
   NavyPlatform,
+  NavyTheater,
   NavyVisualPanel,
 } from "@/lib/data/navy-data";
 
@@ -77,7 +79,59 @@ export function NavyStyles() {
       .navy-cinematic-line {
         background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.38), transparent);
       }
+
+      .navy-metal {
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 28%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.018));
+      }
+
+      .navy-depth-ring {
+        background:
+          radial-gradient(circle at 50% 50%, transparent 0 38%, rgba(142, 220, 255, 0.18) 39%, transparent 40%),
+          radial-gradient(circle at 50% 50%, transparent 0 58%, rgba(255, 255, 255, 0.12) 59%, transparent 60%);
+      }
+
+      .navy-flow-mask {
+        mask-image: linear-gradient(90deg, transparent, black 16%, black 84%, transparent);
+      }
+
+      @keyframes navy-drift {
+        0% { transform: translate3d(-1.5%, -1%, 0) scale(1); }
+        100% { transform: translate3d(1.5%, 1%, 0) scale(1.04); }
+      }
+
+      .navy-drift {
+        animation: navy-drift 16s ease-in-out infinite alternate;
+      }
+
+      @keyframes navy-sheen {
+        0% { transform: translateX(-130%); opacity: 0; }
+        20% { opacity: 0.55; }
+        100% { transform: translateX(130%); opacity: 0; }
+      }
+
+      .navy-sheen::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(105deg, transparent 36%, rgba(255, 255, 255, 0.16), transparent 64%);
+        animation: navy-sheen 6.5s ease-in-out infinite;
+      }
     `}</style>
+  );
+}
+
+export function NavyPageProgress() {
+  const { scrollYProgress } = useScroll();
+
+  return (
+    <div className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-px bg-white/8">
+      <motion.div
+        className="h-full origin-left bg-[linear-gradient(90deg,#8edcff,#ffffff,#f2d48a)]"
+        style={{ scaleX: scrollYProgress }}
+      />
+    </div>
   );
 }
 
@@ -90,11 +144,13 @@ export function NavyHero({
 }) {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 0.22], [0, 120]);
+  const titleY = useTransform(scrollYProgress, [0, 0.18], [0, -42]);
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.45]);
+  const scale = useTransform(scrollYProgress, [0, 0.22], [1.04, 1.13]);
 
   return (
     <section className="relative min-h-[100svh] overflow-hidden bg-[#030507]">
-      <motion.div style={{ y, opacity }} className="absolute inset-0">
+      <motion.div style={{ y, opacity, scale }} className="absolute inset-0">
         <Image
           src={imageSrc}
           alt="U.S. Navy aircraft carrier in cinematic light"
@@ -110,12 +166,15 @@ export function NavyHero({
       <div className="absolute inset-0 bg-[linear-gradient(90deg,#030507_0%,rgba(3,5,7,0.8)_24%,rgba(3,5,7,0.18)_62%,#030507_100%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,#030507_0%,rgba(3,5,7,0)_18%,rgba(3,5,7,0.08)_64%,#030507_100%)]" />
       <div className="absolute inset-x-0 bottom-0 h-56 bg-[linear-gradient(180deg,transparent,#030507)]" />
+      <div className="navy-drift absolute -left-20 top-20 h-[42rem] w-[42rem] rounded-full bg-[radial-gradient(circle,rgba(142,220,255,0.18),transparent_62%)] blur-3xl" />
+      <div className="navy-drift absolute -right-24 bottom-10 h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,rgba(242,212,138,0.11),transparent_64%)] blur-3xl" />
       <div className="navy-grid-plane absolute inset-0 opacity-45" />
       <div className="navy-noise absolute inset-0" />
 
       <div className="relative z-10 flex min-h-[100svh] items-end">
         <div className="mx-auto grid w-full max-w-[1520px] gap-10 px-5 pb-8 pt-32 sm:px-8 md:grid-cols-[1fr_420px] md:items-end md:pb-12 lg:px-12">
           <motion.div
+            style={{ y: titleY }}
             initial="hidden"
             animate="visible"
             transition={{ staggerChildren: 0.08 }}
@@ -142,13 +201,23 @@ export function NavyHero({
               and deterrence grid. It turns oceans into maneuver space and keeps national
               power present without waiting for permission to use a runway.
             </motion.p>
+            <motion.div variants={fadeUp} className="mt-10 flex flex-wrap items-center gap-3">
+              {["carrier aviation", "undersea deterrence", "integrated fires"].map((item) => (
+                <span
+                  key={item}
+                  className="border border-white/12 bg-white/[0.035] px-4 py-2 text-xs font-bold uppercase text-white/66 backdrop-blur-xl"
+                >
+                  {item}
+                </span>
+              ))}
+            </motion.div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: 28 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="grid grid-cols-2 border border-white/10 bg-black/38 backdrop-blur-xl"
+            className="navy-sheen relative grid grid-cols-2 overflow-hidden border border-white/10 bg-black/38 backdrop-blur-xl"
           >
             {metrics.map((metric) => (
               <div key={metric.label} className="min-h-36 border-b border-r border-white/10 p-5 last:border-r-0">
@@ -237,9 +306,155 @@ export function NavyCapabilityGrid({ capabilities }: { capabilities: NavyCapabil
   );
 }
 
-export function NavyPlatformShowcase({ platforms }: { platforms: NavyPlatform[] }) {
+export function NavyOperationalConsole({ theaters }: { theaters: NavyTheater[] }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = theaters[activeIndex];
+
   return (
-    <section className="bg-[#05080b] px-5 py-24 sm:px-8 md:py-32 lg:px-12">
+    <section className="relative overflow-hidden bg-[#030507] px-5 py-24 sm:px-8 md:py-32 lg:px-12">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(142,220,255,0.16),transparent_32%),radial-gradient(circle_at_82%_72%,rgba(242,212,138,0.1),transparent_34%)]" />
+      <div className="absolute inset-0 navy-grid-plane opacity-22" />
+
+      <div className="relative mx-auto max-w-[1520px]">
+        <SectionTitle
+          eyebrow="Interactive theater model"
+          title="The ocean as an operating system"
+          body="Select a theater. The interface reframes the same Navy as presence, deterrence, logistics, aviation, and command infrastructure tuned to a different strategic environment."
+        />
+
+        <div className="mt-14 grid min-h-[760px] overflow-hidden border border-white/10 bg-[#05080b] lg:grid-cols-[360px_1fr_420px]">
+          <div className="z-10 flex flex-col border-b border-white/10 bg-black/30 p-4 backdrop-blur-xl lg:border-b-0 lg:border-r">
+            {theaters.map((theater, index) => {
+              const selected = active.id === theater.id;
+              return (
+                <button
+                  key={theater.id}
+                  type="button"
+                  onClick={() => setActiveIndex(index)}
+                  className={cn(
+                    "group relative min-h-32 overflow-hidden border border-transparent p-5 text-left transition-colors duration-300",
+                    selected ? "bg-white/[0.075] text-white" : "text-white/42 hover:bg-white/[0.035] hover:text-white/76"
+                  )}
+                >
+                  {selected && (
+                    <motion.div
+                      layoutId="navy-theater-active"
+                      className="absolute inset-0 border border-white/14"
+                      transition={{ type: "spring", stiffness: 320, damping: 34 }}
+                    />
+                  )}
+                  <div className="relative z-10">
+                    <div className="navy-font-mono text-xs uppercase">{theater.region}</div>
+                    <div className="navy-font-display mt-3 text-3xl font-black uppercase leading-none">{theater.name}</div>
+                    <div className="mt-5 h-px w-full bg-white/10">
+                      <div
+                        className={cn("h-px transition-all duration-500", selected ? "w-full" : "w-10 group-hover:w-1/2")}
+                        style={{ backgroundColor: theater.accent }}
+                      />
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="relative min-h-[520px] overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.id}
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.99 }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={active.imageSrc}
+                  alt={active.imageAlt}
+                  fill
+                  quality={90}
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 52vw"
+                  placeholder="blur"
+                  blurDataURL={BLUR_PLACEHOLDER}
+                />
+              </motion.div>
+            </AnimatePresence>
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,5,7,0.1),#030507_94%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,#030507_0%,transparent_28%,transparent_70%,#030507_100%)]" />
+            <div className="absolute inset-0 navy-depth-ring opacity-40" />
+            <FleetMesh accent={active.accent} />
+
+            <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-9">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active.id}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.45 }}
+                  className="max-w-2xl"
+                >
+                  <div className="navy-font-mono text-xs font-bold uppercase text-white/52">{active.signal}</div>
+                  <h3 className="navy-font-display mt-4 text-5xl font-black uppercase leading-none md:text-7xl">
+                    {active.headline}
+                  </h3>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          <div className="z-10 flex flex-col border-t border-white/10 bg-black/36 p-6 backdrop-blur-xl lg:border-l lg:border-t-0">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.id}
+                initial={{ opacity: 0, x: 22 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -12 }}
+                transition={{ duration: 0.45 }}
+                className="flex h-full flex-col"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <span className="navy-font-mono text-xs uppercase text-white/46">Theater profile</span>
+                  <span className="h-2 w-2" style={{ backgroundColor: active.accent }} />
+                </div>
+                <p className="mt-10 text-base leading-8 text-white/66">{active.description}</p>
+                <div className="mt-10 grid gap-px bg-white/10">
+                  {active.metrics.map((metric) => (
+                    <div key={metric.label} className="grid grid-cols-[1fr_auto] items-center gap-5 bg-[#05080b] p-4">
+                      <span className="text-xs font-bold uppercase text-white/42">{metric.label}</span>
+                      <span className="navy-font-display text-xl font-black uppercase text-white">{metric.value}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-auto pt-12">
+                  <div className="navy-flow-mask grid grid-cols-6 gap-2">
+                    {Array.from({ length: 18 }).map((_, index) => (
+                      <motion.span
+                        key={index}
+                        className="h-1 bg-white/16"
+                        animate={{ opacity: [0.18, 0.78, 0.18] }}
+                        transition={{ duration: 1.8, repeat: Infinity, delay: index * 0.055 }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function NavyPlatformShowcase({ platforms }: { platforms: NavyPlatform[] }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = platforms[activeIndex];
+
+  return (
+    <section className="relative overflow-hidden bg-[#05080b] px-5 py-24 sm:px-8 md:py-32 lg:px-12">
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,#030507,transparent_20%,transparent_80%,#030507)]" />
       <div className="mx-auto max-w-[1520px]">
         <SectionTitle
           eyebrow="Platform stack"
@@ -247,52 +462,120 @@ export function NavyPlatformShowcase({ platforms }: { platforms: NavyPlatform[] 
           body="Each platform is designed as part of a larger kill web: sensors, launchers, communications, logistics, aviation, cyber, and allied command structures."
         />
 
-        <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-2">
-          {platforms.map((platform, index) => (
-            <motion.article
-              key={platform.name}
-              initial={{ opacity: 0, y: 26 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.55, delay: index * 0.05 }}
-              className="grid min-h-[560px] overflow-hidden border border-white/10 bg-[#030507] md:grid-cols-[46%_1fr]"
-            >
-              <div className="relative min-h-[260px] md:min-h-full">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.65 }}
+          className="relative mt-14 grid min-h-[760px] overflow-hidden border border-white/10 bg-[#030507] lg:grid-cols-[1fr_440px]"
+        >
+          <div className="relative min-h-[520px] overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.name}
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.99 }}
+                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-0"
+              >
                 <Image
-                  src={platform.imageSrc}
-                  alt={platform.imageAlt}
+                  src={active.imageSrc}
+                  alt={active.imageAlt}
                   fill
                   quality={90}
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 46vw"
+                  sizes="(max-width: 1024px) 100vw, 68vw"
                   placeholder="blur"
                   blurDataURL={BLUR_PLACEHOLDER}
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(3,5,7,0.78))]" />
-              </div>
-              <div className="flex flex-col p-7 md:p-9">
-                <div className="flex items-center justify-between gap-4">
-                  <span className="navy-font-mono text-xs uppercase text-white/48">{platform.className}</span>
-                  <span className="border border-white/10 px-3 py-1 text-xs font-bold uppercase text-white/56">
-                    {platform.role}
-                  </span>
-                </div>
-                <h3 className="navy-font-display mt-8 text-4xl font-black uppercase leading-none">
-                  {platform.name}
-                </h3>
-                <p className="mt-7 text-sm leading-7 text-white/58">{platform.capability}</p>
-                <div className="mt-auto grid grid-cols-2 gap-px bg-white/10 pt-10">
-                  {platform.specs.map((spec) => (
+              </motion.div>
+            </AnimatePresence>
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,#030507_0%,rgba(3,5,7,0.18)_46%,#030507_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_46%,#030507_100%)]" />
+            <div className="absolute left-8 top-8 z-10 hidden max-w-sm border border-white/10 bg-black/30 p-5 backdrop-blur-xl md:block">
+              <div className="navy-font-mono text-xs uppercase text-white/42">Active platform</div>
+              <div className="navy-font-display mt-3 text-4xl font-black uppercase leading-none">{active.name}</div>
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-9 lg:max-w-3xl">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active.name}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <div className="navy-font-mono text-xs font-bold uppercase text-white/52">{active.className}</div>
+                  <h3 className="navy-font-display mt-4 text-5xl font-black uppercase leading-none md:text-7xl">
+                    {active.role}
+                  </h3>
+                  <p className="mt-7 max-w-2xl text-base leading-8 text-white/64">{active.capability}</p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          <div className="flex flex-col border-t border-white/10 bg-black/38 p-5 backdrop-blur-xl lg:border-l lg:border-t-0">
+            <div className="grid gap-2">
+              {platforms.map((platform, index) => {
+                const selected = index === activeIndex;
+                return (
+                  <button
+                    key={platform.name}
+                    type="button"
+                    onClick={() => setActiveIndex(index)}
+                    className={cn(
+                      "relative overflow-hidden border border-white/8 p-4 text-left transition-colors duration-300",
+                      selected ? "bg-white/[0.085] text-white" : "bg-white/[0.018] text-white/42 hover:bg-white/[0.04] hover:text-white/76"
+                    )}
+                  >
+                    {selected && (
+                      <motion.div
+                        layoutId="navy-platform-active"
+                        className="absolute inset-y-0 left-0 w-1 bg-white"
+                        transition={{ type: "spring", stiffness: 330, damping: 35 }}
+                      />
+                    )}
+                    <div className="pl-3">
+                      <div className="navy-font-display text-2xl font-black uppercase leading-none">{platform.name}</div>
+                      <div className="mt-2 text-xs font-bold uppercase">{platform.className}</div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="mt-auto pt-8">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active.name}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.35 }}
+                  className="grid grid-cols-2 gap-px bg-white/10"
+                >
+                  {active.specs.map((spec) => (
                     <div key={spec.label} className="bg-[#05080b] p-4">
                       <div className="text-xs uppercase text-white/38">{spec.label}</div>
                       <div className="mt-2 text-sm font-bold text-white">{spec.value}</div>
                     </div>
                   ))}
-                </div>
+                </motion.div>
+              </AnimatePresence>
+              <div className="mt-6 h-px bg-white/10">
+                <motion.div
+                  key={activeIndex}
+                  className="h-px bg-[linear-gradient(90deg,#8edcff,#ffffff)]"
+                  initial={{ width: "0%" }}
+                  animate={{ width: `${((activeIndex + 1) / platforms.length) * 100}%` }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                />
               </div>
-            </motion.article>
-          ))}
-        </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -353,18 +636,29 @@ export function NavyCommandStack({ layers }: { layers: NavyCommandLayer[] }) {
 }
 
 export function NavyFullscreenPanel({ panel, reverse = false }: { panel: NavyVisualPanel; reverse?: boolean }) {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], [-80, 80]);
+  const textY = useTransform(scrollYProgress, [0, 0.5, 1], [48, 0, -48]);
+  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.08, 1.02, 1.08]);
+
   return (
-    <section className="relative min-h-[100svh] overflow-hidden bg-[#030507]">
-      <Image
-        src={panel.imageSrc}
-        alt={panel.imageAlt}
-        fill
-        quality={90}
-        className="object-cover"
-        sizes="100vw"
-        placeholder="blur"
-        blurDataURL={BLUR_PLACEHOLDER}
-      />
+    <section ref={ref} className="relative min-h-[100svh] overflow-hidden bg-[#030507]">
+      <motion.div className="absolute inset-0" style={{ y: imageY, scale: imageScale }}>
+        <Image
+          src={panel.imageSrc}
+          alt={panel.imageAlt}
+          fill
+          quality={90}
+          className="object-cover"
+          sizes="100vw"
+          placeholder="blur"
+          blurDataURL={BLUR_PLACEHOLDER}
+        />
+      </motion.div>
       <div
         className={cn(
           "absolute inset-0",
@@ -374,10 +668,14 @@ export function NavyFullscreenPanel({ panel, reverse = false }: { panel: NavyVis
         )}
       />
       <div className="absolute inset-x-0 bottom-0 h-52 bg-[linear-gradient(180deg,transparent,#030507)]" />
+      <div className="absolute inset-x-8 top-8 h-px bg-white/10" />
+      <div className="absolute inset-y-8 left-8 w-px bg-white/10" />
+      <div className="absolute inset-y-8 right-8 hidden w-px bg-white/10 md:block" />
       <div className="relative z-10 flex min-h-[100svh] items-center px-5 py-24 sm:px-8 lg:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          style={{ y: textY }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.7 }}
           className={cn("max-w-2xl", reverse && "ml-auto")}
@@ -458,6 +756,73 @@ export function NavyClosing() {
         </div>
       </div>
     </section>
+  );
+}
+
+function FleetMesh({ accent }: { accent: string }) {
+  const nodes = [
+    { x: 18, y: 62, label: "SSN" },
+    { x: 34, y: 34, label: "CVN" },
+    { x: 52, y: 54, label: "DDG" },
+    { x: 66, y: 28, label: "E-2D" },
+    { x: 82, y: 66, label: "F-35C" },
+  ];
+
+  return (
+    <svg
+      className="absolute inset-0 z-[5] h-full w-full opacity-80"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient id="fleet-mesh-line" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stopColor={accent} stopOpacity="0.08" />
+          <stop offset="50%" stopColor="#ffffff" stopOpacity="0.38" />
+          <stop offset="100%" stopColor={accent} stopOpacity="0.08" />
+        </linearGradient>
+      </defs>
+      {[
+        "M18 62 C32 42 40 38 52 54 S70 44 82 66",
+        "M34 34 C46 26 54 26 66 28",
+        "M18 62 C28 70 42 72 52 54",
+        "M66 28 C74 38 78 50 82 66",
+      ].map((d, index) => (
+        <motion.path
+          key={d}
+          d={d}
+          fill="none"
+          stroke="url(#fleet-mesh-line)"
+          strokeWidth="0.18"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 1 }}
+          transition={{ duration: 1.1, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+        />
+      ))}
+      {nodes.map((node, index) => (
+        <g key={node.label}>
+          <motion.circle
+            cx={node.x}
+            cy={node.y}
+            r="0.8"
+            fill={accent}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.35, delay: 0.35 + index * 0.08 }}
+            vectorEffect="non-scaling-stroke"
+          />
+          <text
+            x={node.x + 1.7}
+            y={node.y - 1.4}
+            fill="rgba(255,255,255,0.48)"
+            fontSize="2.1"
+            fontFamily="monospace"
+          >
+            {node.label}
+          </text>
+        </g>
+      ))}
+    </svg>
   );
 }
 

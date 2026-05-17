@@ -7,6 +7,8 @@ import {
   NavyFutureStack,
   NavyHero,
   NavyMetricStrip,
+  NavyOperationalConsole,
+  NavyPageProgress,
   NavyPlatformShowcase,
   NavyStyles,
 } from "@/components/military/NavyPageComponents";
@@ -16,6 +18,7 @@ import {
   NAVY_FUTURE_PROGRAMS,
   NAVY_METRICS,
   NAVY_PLATFORMS,
+  NAVY_THEATERS,
   NAVY_VISUAL_PANELS,
 } from "@/lib/data/navy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -36,9 +39,11 @@ export default function NavyPage() {
   return (
     <div className="navy-page min-h-screen overflow-hidden bg-[#030507] text-white">
       <NavyStyles />
+      <NavyPageProgress />
       <NavyHero metrics={NAVY_METRICS} imageSrc={SITE_IMAGES.navy.hero} />
       <NavyMetricStrip metrics={NAVY_METRICS} />
       <NavyCapabilityGrid capabilities={NAVY_CAPABILITIES} />
+      <NavyOperationalConsole theaters={NAVY_THEATERS} />
       <NavyFullscreenPanel panel={NAVY_VISUAL_PANELS[0]} />
       <NavyPlatformShowcase platforms={NAVY_PLATFORMS} />
       <NavyCommandStack layers={NAVY_COMMAND_LAYERS} />

@@ -47,6 +47,19 @@ export interface NavyVisualPanel {
   imageAlt: string;
 }
 
+export interface NavyTheater {
+  id: string;
+  name: string;
+  region: string;
+  headline: string;
+  description: string;
+  signal: string;
+  imageSrc: string;
+  imageAlt: string;
+  accent: string;
+  metrics: { label: string; value: string }[];
+}
+
 export const NAVY_METRICS: NavyMetric[] = [
   {
     value: "11",
@@ -192,6 +205,77 @@ export const NAVY_COMMAND_LAYERS: NavyCommandLayer[] = [
       "A carrier strike group can defend itself, open airspace, strike inland, protect allies, and shape a crisis without needing a foreign runway.",
     nodes: ["air wing", "VLS", "undersea strike", "expeditionary force"],
     accent: "#ff7a7a",
+  },
+];
+
+export const NAVY_THEATERS: NavyTheater[] = [
+  {
+    id: "indo-pacific",
+    name: "Indo-Pacific",
+    region: "Seventh Fleet",
+    headline: "The decisive maritime theater",
+    description:
+      "Carrier aviation, submarines, destroyers, Marines, space cueing, and allied bases combine into a layered maritime architecture across the world's largest ocean.",
+    signal: "Forward presence at scale",
+    imageSrc: SITE_IMAGES.navy.carrierFormation,
+    imageAlt: "U.S. Navy carrier strike group operating in formation",
+    accent: "#8edcff",
+    metrics: [
+      { label: "Fleet posture", value: "forward" },
+      { label: "Primary domain", value: "sea-air" },
+      { label: "Allied mesh", value: "high" },
+    ],
+  },
+  {
+    id: "atlantic",
+    name: "Atlantic",
+    region: "Second Fleet",
+    headline: "Undersea lanes and reinforcement routes",
+    description:
+      "The Atlantic is the reinforcement bridge for NATO, the undersea contest for submarines, and the logistics route that keeps European deterrence credible.",
+    signal: "Convoy logic, modernized",
+    imageSrc: SITE_IMAGES.navy.geraldFord,
+    imageAlt: "U.S. Navy aircraft carrier underway in open ocean",
+    accent: "#70e0bf",
+    metrics: [
+      { label: "Mission shape", value: "deterrence" },
+      { label: "Tempo", value: "persistent" },
+      { label: "Undersea value", value: "critical" },
+    ],
+  },
+  {
+    id: "mediterranean",
+    name: "Mediterranean",
+    region: "Sixth Fleet",
+    headline: "Crisis response without a runway",
+    description:
+      "A compact sea gives the Navy immediate political presence, missile defense, strike options, evacuation capacity, and allied integration from Europe to the Middle East.",
+    signal: "Fast theater access",
+    imageSrc: SITE_IMAGES.navy.dualCarrier,
+    imageAlt: "Two U.S. Navy carrier strike groups operating together",
+    accent: "#f2d48a",
+    metrics: [
+      { label: "Response", value: "rapid" },
+      { label: "Coverage", value: "dense" },
+      { label: "Diplomatic signal", value: "visible" },
+    ],
+  },
+  {
+    id: "deck",
+    name: "Flight Deck",
+    region: "Carrier Air Wing",
+    headline: "Aerospace operations at industrial tempo",
+    description:
+      "The flight deck is choreography under pressure: launch, recovery, weapons movement, maintenance, fuel, command discipline, and precision timing.",
+    signal: "Sortie generation",
+    imageSrc: SITE_IMAGES.navy.flightDeck,
+    imageAlt: "U.S. Navy carrier flight deck operations",
+    accent: "#ff7a7a",
+    metrics: [
+      { label: "Cycle", value: "minutes" },
+      { label: "System type", value: "human-machine" },
+      { label: "Pressure", value: "extreme" },
+    ],
   },
 ];
 
