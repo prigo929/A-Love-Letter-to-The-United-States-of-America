@@ -349,8 +349,9 @@ export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabiliti
       <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
       <div className="relative mx-auto max-w-[1520px]">
         <SectionTitle
-          eyebrow={locale === "ro" ? "Arhitectura capabilităților" : "Capability architecture"}
-          title={locale === "ro" ? "Construit ca un sistem integrat" : "Built as a technological system"}
+          label={locale === "ro" ? "ARHITECTURA CAPABILITĂȚILOR" : "CAPABILITY ARCHITECTURE"}
+          titlePart1={locale === "ro" ? "SISTEM" : "INTEGRATED"}
+          titlePart2={locale === "ro" ? "INTEGRAT" : "SYSTEMS"}
           body={locale === "ro" 
             ? "Forța Marinei derivă din interoperabilitatea totală a navelor, aeronavelor, submarinelor, senzorilor orbitali și echipajelor înalt calificate." 
             : "The Navy's power comes from the integration of ships, aircraft, submarines, satellites, software, industrial depth, and crews trained to operate under extreme tempo."}
@@ -416,8 +417,9 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
 
       <div className="relative mx-auto max-w-[1520px]">
         <SectionTitle
-          eyebrow={locale === "ro" ? "Model interactiv de teatru" : "Interactive theater model"}
-          title={locale === "ro" ? "Oceanul ca sistem de operare" : "The ocean as an operating system"}
+          label={locale === "ro" ? "TEATRU INTERACTIV" : "INTERACTIVE THEATER"}
+          titlePart1={locale === "ro" ? "SISTEM" : "OCEANIC"}
+          titlePart2={locale === "ro" ? "OCEANIC" : "OPERATIONS"}
           body={locale === "ro"
             ? "Selectați un teatru. Interfața configurează forțele navale ca prezență militară, rețea logistică, scut antirachetă și aviație adaptată fiecărui mediu strategic."
             : "Select a theater. The interface reframes the same Navy as presence, deterrence, logistics, aviation, and command infrastructure tuned to a different strategic environment."}
@@ -583,8 +585,9 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
       <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
       <div className="mx-auto max-w-[1520px]">
         <SectionTitle
-          eyebrow={locale === "ro" ? "Grupul de platforme" : "Platform stack"}
-          title={locale === "ro" ? "Nave mari, submarine silențioase" : "Capital ships, quiet machines"}
+          label={locale === "ro" ? "PLATFORME ACTIVE" : "ACTIVE PLATFORMS"}
+          titlePart1={locale === "ro" ? "NAVE" : "CAPITAL"}
+          titlePart2={locale === "ro" ? "MARI" : "SHIPS"}
           body={locale === "ro"
             ? "Fiecare platformă navală este optimizată ca nod activ în rețeaua globală de luptă: coordonare prin satelit, senzori radar performanți și logistica flotei."
             : "Each platform is designed as part of a larger kill web: sensors, launchers, communications, logistics, aviation, cyber, and allied command structures."}
@@ -837,8 +840,9 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
       <div className="relative mx-auto grid max-w-[1520px] gap-14 lg:grid-cols-[0.72fr_1fr] lg:items-start">
         <div className="lg:sticky lg:top-28">
           <SectionTitle
-            eyebrow={locale === "ro" ? "Comandă și control" : "Command and control"}
-            title={locale === "ro" ? "Decizii rapide la scară oceanică" : "Decision speed at oceanic scale"}
+            label={locale === "ro" ? "COMANDĂ ȘI CONTROL" : "COMMAND AND CONTROL"}
+            titlePart1={locale === "ro" ? "VITEZĂ" : "DECISION"}
+            titlePart2={locale === "ro" ? "DECIZIONALĂ" : "SPEED"}
             body={locale === "ro"
               ? "Flota este concepută pentru a detecta prima, a decide mai rapid și a crea efecte multi-domeniu sincronizate."
               : "The fleet is designed to sense first, decide faster, and create effects from multiple domains at once. The beautiful part is the integration, not a single weapon."}
@@ -961,8 +965,9 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
       <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
       <div className="mx-auto max-w-[1520px]">
         <SectionTitle
-          eyebrow={locale === "ro" ? "Viitoarea flotă" : "Next fleet"}
-          title={locale === "ro" ? "Autonomie, stealth, ritm industrial" : "Autonomy, software, stealth"}
+          label={locale === "ro" ? "VIITOAREA FLOTĂ" : "NEXT FLEET"}
+          titlePart1={locale === "ro" ? "STEALTH" : "STEALTH &"}
+          titlePart2={locale === "ro" ? "AUTONOMIE" : "AUTONOMY"}
           body={locale === "ro"
             ? "Marina viitorului se concentrează pe o structură distribuită: platforme autonome, senzori software și capacități de penetrare stealth."
             : "The future Navy is less about one bigger ship and more about a distributed fleet: crewed and uncrewed systems, longer-range aviation, software-defined sensors, and resilient production."}
@@ -1105,26 +1110,26 @@ function FleetMesh({ accent }: { accent: string }) {
 }
 
 function SectionTitle({
-  eyebrow,
-  title,
+  label,
+  titlePart1,
+  titlePart2,
   body,
 }: {
-  eyebrow: string;
-  title: string;
+  label: string;
+  titlePart1: string;
+  titlePart2: string;
   body: string;
 }) {
   return (
-    <div className="max-w-4xl mb-12">
-      <div className="mb-4 flex items-center gap-3">
-        <span className="inline-block h-1.5 w-1.5 bg-[#8edcff] animate-pulse" />
-        <span className="navy-font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.3em] text-[#8edcff]/85">
-          {eyebrow}
-        </span>
+    <div className="text-center mb-20 max-w-4xl mx-auto flex flex-col items-center">
+      <div className="mil-text-label mb-10 tracking-[0.5em] text-[#8edcff]/85 text-xs sm:text-sm font-bold uppercase">
+        [ {label} ]
       </div>
-      <h2 className="navy-font-display text-4xl font-black uppercase leading-[0.9] tracking-[-0.03em] md:text-6xl lg:text-7xl text-white">
-        {title}
+      <h2 className="mil-text-hero mb-6 flex flex-col items-center w-full text-center">
+        <span className="block whitespace-nowrap leading-[0.85] text-4xl sm:text-6xl lg:text-7xl font-black uppercase text-white">{titlePart1}</span>
+        <span className="block whitespace-nowrap text-white/20 leading-[0.85] text-4xl sm:text-6xl lg:text-7xl font-black uppercase">{titlePart2}</span>
       </h2>
-      <p className="mt-5 max-w-2xl text-xs sm:text-sm leading-relaxed text-white/60 tracking-wide">
+      <p className="mt-4 max-w-2xl text-center text-xs sm:text-sm leading-relaxed text-white/60 tracking-wide">
         {body}
       </p>
     </div>
