@@ -38,6 +38,10 @@ export interface NavyFutureProgram {
   title: string;
   description: string;
   status: string;
+  imageSrc: string;
+  imageAlt: string;
+  capability: string;
+  specs: { label: string; value: string }[];
 }
 
 export interface NavyVisualPanel {
@@ -205,6 +209,51 @@ export const NAVY_PLATFORMS: NavyPlatform[] = [
       { label: "Tempo", value: "Cyclic ops" },
     ],
   },
+  {
+    name: "F-35C Lightning II",
+    className: "Carrier stealth fighter",
+    role: "5th-Gen multirole stealth",
+    imageSrc: SITE_IMAGES.navy.fa18Landing,
+    imageAlt: "F-35C Lightning II stealth fighter launching from carrier",
+    capability:
+      "The world's only carrier-capable 5th-generation stealth fighter, designed to slip undetected past hostile air defenses, gather intelligence, and coordinate fires via link networks.",
+    specs: [
+      { label: "Propulsion", value: "F135 Turbofan" },
+      { label: "Stealth", value: "LO profile" },
+      { label: "Speed", value: "Mach 1.6" },
+      { label: "Radar", value: "AESA APG-81" },
+    ],
+  },
+  {
+    name: "Virginia-class SSN",
+    className: "Fast attack submarine",
+    role: "Undersea search & strike",
+    imageSrc: SITE_IMAGES.navy.ohioSubmarine,
+    imageAlt: "Virginia-class fast attack submarine underway",
+    capability:
+      "The backbone of modern undersea warfare, designed to hunt hostile submarines, launch Tomahawk cruise missiles, deploy Special Forces, and conduct intelligence gathering in contested littoral waters.",
+    specs: [
+      { label: "Propulsion", value: "Nuclear" },
+      { label: "Armament", value: "Tomahawk VLS" },
+      { label: "Crew", value: "135" },
+      { label: "Stealth", value: "Anechoic coat" },
+    ],
+  },
+  {
+    name: "USS Zumwalt (DDG-1000)",
+    className: "Stealth guided-missile destroyer",
+    role: "Littoral stealth & land strike",
+    imageSrc: SITE_IMAGES.navy.destroyer,
+    imageAlt: "USS Zumwalt stealth destroyer at sea",
+    capability:
+      "A multi-mission stealth destroyer designed with a radically minimized radar profile and an integrated electric power system to operate in littoral regions and project land-attack fires.",
+    specs: [
+      { label: "Propulsion", value: "IPS Electric" },
+      { label: "Hull Design", value: "Tumblehome wave-piercing" },
+      { label: "Weapons", value: "80x Mk 57 VLS" },
+      { label: "Crew", value: "140" },
+    ],
+  },
 ];
 
 export const NAVY_COMMAND_LAYERS: NavyCommandLayer[] = [
@@ -312,6 +361,16 @@ export const NAVY_FUTURE_PROGRAMS: NavyFutureProgram[] = [
     description:
       "Extends the reach of the carrier air wing and moves unmanned aviation directly into cyclic deck operations.",
     status: "fleet integration",
+    imageSrc: SITE_IMAGES.navy.flightDeck,
+    imageAlt: "MQ-25 Stingray autonomous unmanned refueling tanker",
+    capability:
+      "The MQ-25 Stingray is the U.S. Navy's first operational carrier-based unmanned aerial system (UAS). It is designed to provide robust aerial refueling capabilities, effectively doubling the combat strike range of the carrier air wing's F/A-18 Super Hornets and F-35C fighters.",
+    specs: [
+      { label: "Deployment", value: "2026 (Planned)" },
+      { label: "Manufacturer", value: "Boeing" },
+      { label: "Capacity", value: "15,000 lbs fuel" },
+      { label: "Combat Range", value: "500+ nm" },
+    ],
   },
   {
     label: "Columbia",
@@ -319,6 +378,16 @@ export const NAVY_FUTURE_PROGRAMS: NavyFutureProgram[] = [
     description:
       "The Ohio replacement program is built to preserve the most survivable nuclear deterrent leg into the 2080s.",
     status: "construction",
+    imageSrc: SITE_IMAGES.navy.ohioSubmarine,
+    imageAlt: "Columbia-class nuclear submarine construction schematic",
+    capability:
+      "The Columbia-class submarine is the Navy's top priority program, replacing the aging Ohio-class ballistic missile submarines. It features a life-of-ship nuclear reactor core that will not require refueling during its 42-year service life, maximizing operational availability.",
+    specs: [
+      { label: "Lead Ship", value: "USS District of Columbia" },
+      { label: "Reactor Core", value: "Life-of-ship (42 years)" },
+      { label: "Armament", value: "16x Trident II D5 LE" },
+      { label: "First Patrol", value: "2031 (Planned)" },
+    ],
   },
   {
     label: "SPY-6",
@@ -326,6 +395,16 @@ export const NAVY_FUTURE_PROGRAMS: NavyFutureProgram[] = [
     description:
       "A scalable radar family for air and missile defense, designed around sensitivity, software growth, and fleet commonality.",
     status: "fielding",
+    imageSrc: SITE_IMAGES.navy.destroyer,
+    imageAlt: "SPY-6 Air and Missile Defense Radar installation on destroyer",
+    capability:
+      "The AN/SPY-6(V)1 Air and Missile Defense Radar provides the Navy with unprecedented sensitivity and coverage. It allows simultaneous tracking of ballistic missiles, cruise missiles, and enemy aircraft with high clutter rejection.",
+    specs: [
+      { label: "Radar Type", value: "Active Electronically Scanned (AESA)" },
+      { label: "Bands Used", value: "S-band and X-band" },
+      { label: "Sensitivity", value: "30x higher than SPY-1D" },
+      { label: "Primary Platform", value: "Arleigh Burke Flight III" },
+    ],
   },
   {
     label: "OUSV",
@@ -333,6 +412,16 @@ export const NAVY_FUTURE_PROGRAMS: NavyFutureProgram[] = [
     description:
       "Prototype vessels test autonomy, payload modularity, distributed sensing, and the tactics needed for mixed human-machine fleets.",
     status: "experimentation",
+    imageSrc: SITE_IMAGES.navy.carrierFormation,
+    imageAlt: "Overlord Unmanned Surface Vessel executing autonomous maneuvers",
+    capability:
+      "Unmanned surface vessels represent the transition to a hybrid crewed-uncrewed fleet. Prototype vessels are proving the ability to navigate autonomously for thousands of miles, carrying modular sensors, electronic warfare suites, and rocket launch cells.",
+    specs: [
+      { label: "Navigation Mode", value: "Fully Autonomous" },
+      { label: "Weapon System", value: "Modular containerized VLS" },
+      { label: "Endurance", value: "Weeks of continuous ops" },
+      { label: "Strategic Role", value: "Distributed Sensing/Decoy" },
+    ],
   },
 ];
 
@@ -518,6 +607,51 @@ export function getNavyPlatforms(locale: Locale): NavyPlatform[] {
         { label: "Ritm", value: "Operațiuni ciclice" },
       ],
     },
+    {
+      name: "F-35C Lightning II",
+      className: "Avion de vânătoare stealth ambarcat",
+      role: "Stealth multirol de gen. 5",
+      imageSrc: SITE_IMAGES.navy.fa18Landing,
+      imageAlt: "Avion stealth F-35C Lightning II decolând de pe portavion pe mare",
+      capability:
+        "Singurul avion de vânătoare stealth de generația a 5-a din lume capabil de pe portavion, conceput să pătrundă nedetectat prin apărările aeriene inamice, să colecteze date și să coordoneze atacurile.",
+      specs: [
+        { label: "Propulsie", value: "F135 Turbofan" },
+        { label: "Profil", value: "Stealth avansat (LO)" },
+        { label: "Viteză", value: "Mach 1.6" },
+        { label: "Radar", value: "AESA APG-81" },
+      ],
+    },
+    {
+      name: "Virginia-class SSN",
+      className: "Submarin de atac rapid",
+      role: "Căutare și atac submarin",
+      imageSrc: SITE_IMAGES.navy.ohioSubmarine,
+      imageAlt: "Submarin de atac rapid din clasa Virginia în ape litorale",
+      capability:
+        "Coloana vertebrală a războiului subacvatic modern, concepută pentru a văna submarine inamice, lansa rachete de croazieră Tomahawk, desfășura forțe speciale Navy SEAL și realiza culegere de informații.",
+      specs: [
+        { label: "Propulsie", value: "Nucleară" },
+        { label: "Arme", value: "VLS Tomahawk și torpile Mk 48" },
+        { label: "Echipaj", value: "135" },
+        { label: "Stealth", value: "Înveliș anecoic" },
+      ],
+    },
+    {
+      name: "USS Zumwalt (DDG-1000)",
+      className: "Distrugător stealth cu rachete ghidate",
+      role: "Atac terestru stealth",
+      imageSrc: SITE_IMAGES.navy.destroyer,
+      imageAlt: "Distrugătorul stealth USS Zumwalt în marș pe ocean",
+      capability:
+        "Un distrugător stealth multi-misiune, conceput cu o semnătură radar redusă radical și un sistem de alimentare electric integrat pentru a opera în zone litorale contestate.",
+      specs: [
+        { label: "Propulsie", value: "Electrică IPS" },
+        { label: "Design Cocă", value: "Tumblehome wave-piercing" },
+        { label: "Arme", value: "80x celule Mk 57 VLS" },
+        { label: "Echipaj", value: "140" },
+      ],
+    },
   ];
 }
 
@@ -634,6 +768,16 @@ export function getNavyFuturePrograms(locale: Locale): NavyFutureProgram[] {
       description:
         "Extinde raza de acțiune a grupului aerian de portavion și introduce aviația fără pilot direct în operațiunile ciclice de pe punte.",
       status: "integrare în flotă",
+      imageSrc: SITE_IMAGES.navy.flightDeck,
+      imageAlt: "Cisternă de realimentare autonomă fără pilot MQ-25 Stingray",
+      capability:
+        "MQ-25 Stingray este primul sistem aerian fără pilot (UAS) operațional de pe portavioanele Marinei SUA. Este proiectat pentru a oferi capacități robuste de realimentare în aer, dublând practic raza de atac a avioanelor de luptă F/A-18 și F-35C.",
+      specs: [
+        { label: "Desfășurare", value: "2026 (Planificat)" },
+        { label: "Producător", value: "Boeing" },
+        { label: "Capacitate", value: "6.800 kg combustibil" },
+        { label: "Rază Combat", value: "920+ km" },
+      ],
     },
     {
       label: "Columbia",
@@ -641,6 +785,16 @@ export function getNavyFuturePrograms(locale: Locale): NavyFutureProgram[] {
       description:
         "Programul de înlocuire a clasei Ohio este construit pentru a păstra cea mai stabilă componentă a descurajării nucleare până în anii 2080.",
       status: "construcție",
+      imageSrc: SITE_IMAGES.navy.ohioSubmarine,
+      imageAlt: "Schemă de construcție a submarinului nuclear clasa Columbia",
+      capability:
+        "Submarinul din clasa Columbia este programul de prioritate absolută al Marinei, înlocuind submarinele cu rachete balistice din clasa Ohio. Acesta dispune de un miez de reactor nuclear activ pe toată durata de viață a navei (42 de ani) care nu va necesita reîncărcare.",
+      specs: [
+        { label: "Prima Navă", value: "USS District of Columbia" },
+        { label: "Reactor Core", value: "Pe viața navei (42 ani)" },
+        { label: "Armament", value: "16x Trident II D5 LE" },
+        { label: "Patrulare", value: "2031 (Planificat)" },
+      ],
     },
     {
       label: "SPY-6",
@@ -648,6 +802,16 @@ export function getNavyFuturePrograms(locale: Locale): NavyFutureProgram[] {
       description:
         "O familie de radare scalabile pentru apărarea aeriană și antirachetă, concepută în jurul sensibilității, dezvoltării software și comunității flotei.",
       status: "instalare",
+      imageSrc: SITE_IMAGES.navy.destroyer,
+      imageAlt: "Instalarea radarului de apărare aeriană și antirachetă SPY-6 pe distrugător",
+      capability:
+        "Radarul de apărare aeriană și antirachetă AN/SPY-6(V)1 oferă Marinei o sensibilitate și o acoperire fără precedent. Permite urmărirea simultană a rachetelor balistice, a rachetelor de croazieră și a aeronavelor inamice.",
+      specs: [
+        { label: "Tip Radar", value: "AESA activ electronic" },
+        { label: "Benzi Utilizate", value: "Banda S și banda X" },
+        { label: "Sensibilitate", value: "De 30 de ori mai mare decât SPY-1D" },
+        { label: "Platformă", value: "Arleigh Burke Flight III" },
+      ],
     },
     {
       label: "OUSV",
@@ -655,6 +819,16 @@ export function getNavyFuturePrograms(locale: Locale): NavyFutureProgram[] {
       description:
         "Navele prototip testează autonomia, modularitatea încărcăturii utile, detecția distribuită și tacticile necesare pentru flotele mixte om-mașină.",
       status: "experimentare",
+      imageSrc: SITE_IMAGES.navy.carrierFormation,
+      imageAlt: "Navă de suprafață fără echipaj Overlord executând manevre autonome",
+      capability:
+        "Navele de suprafață fără echipaj reprezintă tranziția către o flotă hibridă cu și fără echipaj. Vehiculele prototip demonstrează capacitatea de a naviga autonom pe mii de mile, transportând senzori modulari și celule de lansare.",
+      specs: [
+        { label: "Mod Navigație", value: "Complet Autonom" },
+        { label: "Sistem Arme", value: "Celule VLS modulare" },
+        { label: "Autonomie", value: "Săptămâni de operare continuă" },
+        { label: "Rol Strategic", value: "Detecție distribuită / Momeală" },
+      ],
     },
   ];
 }

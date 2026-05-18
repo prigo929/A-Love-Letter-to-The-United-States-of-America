@@ -969,6 +969,19 @@ export function NavyFullscreenPanel({ panel, reverse = false, locale = "en" }: {
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFutureProgram[]; locale?: Locale }) {
+  const [activeProgram, setActiveProgram] = useState<NavyFutureProgram | null>(null);
+
+  useEffect(() => {
+    if (activeProgram !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activeProgram]);
+
   return (
     <section className="relative overflow-hidden bg-[#020202] px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-t border-white/5">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(0,42,102,0.12),transparent_50%)] pointer-events-none" />
@@ -991,26 +1004,135 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: index * 0.06 }}
-              className="min-h-[360px] bg-black p-8 border border-white/5 flex flex-col justify-between"
+              onClick={() => setActiveProgram(program)}
+              className="group cursor-pointer min-h-[360px] bg-black p-8 border border-white/5 flex flex-col justify-between hover:border-white/15 transition-all duration-300"
             >
               <div>
                 <div className="mb-6 flex flex-col items-start gap-3">
                   <span className="border border-[#001a33] bg-[#001a33]/40 px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-[#8edcff]/90">
                     {program.status}
                   </span>
-                  <span className="navy-font-display text-3xl sm:text-4xl font-black text-white/10 block leading-none" title={program.label}>
+                  <span className="navy-font-display text-3xl sm:text-4xl font-black text-white/10 block leading-none transition-colors group-hover:text-white/20" title={program.label}>
                     {program.label}
                   </span>
                 </div>
-                <h3 className="navy-font-display mt-8 text-lg sm:text-xl font-black uppercase leading-tight text-white/80">
+                <h3 className="navy-font-display mt-8 text-lg sm:text-xl font-black uppercase leading-tight text-white/80 group-hover:text-white transition-colors">
                   {program.title}
                 </h3>
-                <p className="mt-4 text-xs leading-relaxed text-white/40">{program.description}</p>
+                <p className="mt-4 text-xs leading-relaxed text-white/40 group-hover:text-white/50 transition-colors">{program.description}</p>
+              </div>
+              <div className="mt-8 flex items-center justify-between">
+                <span className="navy-font-mono text-[9px] font-bold uppercase tracking-widest text-[#8edcff]/60 group-hover:text-[#8edcff] transition-colors">
+                  {locale === "ro" ? "DOSAR TEHNIC →" : "PROGRAM DOSSIER →"}
+                </span>
               </div>
             </motion.article>
           ))}
         </div>
       </div>
+
+      {/* Program Detailed Dossier Modal Overlay */}
+      <AnimatePresence>
+        {activeProgram !== null && (
+          <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 md:p-8" onClick={() => setActiveProgram(null)}>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/98 backdrop-blur-2xl"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="navy-glass-premium relative z-10 w-full max-w-4xl max-h-[90dvh] overflow-y-auto no-scrollbar border border-white/10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Overlay sticky header */}
+              <div className="sticky top-0 z-50 flex justify-between items-center px-6 md:px-10 py-5 bg-[#000308]/95 backdrop-blur-md border-b border-white/5">
+                <span className="navy-font-mono text-[10px] tracking-[0.3em] text-[#8edcff] uppercase">
+                  {locale === "ro" ? "VIITORUL GEOMETRIEI FLOTEI" : "FLEET CAPITAL PROGRAM"}
+                </span>
+                <button
+                  onClick={() => setActiveProgram(null)}
+                  className="navy-font-mono text-[10px] hover:text-white transition-colors tracking-[0.2em] text-white/40"
+                >
+                  {locale === "ro" ? "[ ÎNCHIDE ]" : "[ CLOSE ]"}
+                </button>
+              </div>
+
+              {/* Header Visual Banner */}
+              <div className="relative w-full h-[30dvh] md:h-[40dvh] overflow-hidden">
+                <Image src={activeProgram.imageSrc} alt={activeProgram.imageAlt} fill className="object-cover grayscale-[0.2]" priority sizes="100vw" />
+                <div className="absolute inset-0 bg-linear-to-t from-black via-black/45 to-transparent" />
+                <div className="absolute bottom-8 left-6 md:left-10">
+                  <p className="navy-font-mono text-[9px] mb-3 tracking-[0.25em] text-[#8edcff] uppercase">{activeProgram.status}</p>
+                  <h3 className="navy-font-display text-3xl md:text-5xl font-black tracking-tighter uppercase text-white leading-none">
+                    {activeProgram.title}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Content Panel */}
+              <div className="px-6 md:px-10 py-12">
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_1px_1.2fr] gap-12">
+                  <div>
+                    <div className="navy-font-mono text-[10px] mb-4 tracking-[0.2em] text-white/40">
+                      {locale === "ro" ? "DIRECȚIA CAPABILITĂȚII" : "CAPABILITY DIRECTION"}
+                    </div>
+                    <p className="text-xs sm:text-sm leading-relaxed text-white/60 mb-8">{activeProgram.capability}</p>
+                    
+                    {/* Visual signature band */}
+                    <div className="pl-5 border-l-2 border-[#001A33] bg-[#001a33]/15 py-4 pr-4">
+                      <div className="navy-font-mono text-[9px] mb-2 tracking-[0.2em] text-[#8edcff]">
+                        {locale === "ro" ? "PROIECTARE TACTICĂ" : "TACTICAL PROJECTION"}
+                      </div>
+                      <p className="text-[11px] leading-relaxed text-white/40">
+                        {locale === "ro" 
+                          ? "Această componentă redefineste logistica, detecția și dominația spațiului de luptă maritim într-un mod descentralizat și rezistent."
+                          : "This program redefines marine logistics, distributed detection, and tactical maritime command under a highly survivable, modular model."}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="hidden lg:block w-px bg-white/5" />
+
+                  {/* Right side specs */}
+                  <div className="space-y-8">
+                    <div>
+                      <div className="navy-font-mono text-[10px] mb-4 tracking-[0.2em] text-white/40">
+                        {locale === "ro" ? "SPECIFICAȚII PROGRAM" : "PROGRAM SPECIFICATIONS"}
+                      </div>
+                      <div className="grid grid-cols-2 gap-4">
+                        {activeProgram.specs.map((spec) => (
+                          <div key={spec.label} className="navy-panel-tactical p-4 border border-white/5 rounded bg-black/40">
+                            <div className="text-[9px] uppercase tracking-widest text-white/30">{spec.label}</div>
+                            <div className="mt-2 text-xs font-bold text-white/90">{spec.value}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="border-t border-white/5 pt-6">
+                      <div className="navy-font-mono text-[9px] mb-2 tracking-[0.2em] text-white/30">
+                        STATUS: <span className="text-[#8edcff] font-bold">{activeProgram.status.toUpperCase()}</span>
+                      </div>
+                      <p className="text-[11px] leading-relaxed text-white/40">
+                        {locale === "ro"
+                          ? "Programul se încadrează în agenda pe termen lung a Departamentului Apărării pentru susținerea superiorității în teatru."
+                          : "Approved under the Department of the Navy's strategic fleet framework for long-term multi-domain operational supremacy."}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
