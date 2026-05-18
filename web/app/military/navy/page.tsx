@@ -72,9 +72,9 @@ export default async function NavyPage() {
       <ParallaxMilitaryHero
         imageSrc={SITE_IMAGES.navy.hero}
         imageAlt="U.S. Navy aircraft carrier in cinematic light"
-        title={locale === "ro" ? "PUTERE ABSOLUTĂ" : "ABSOLUTE POWER"}
-        subtitle={locale === "ro" ? "Complexul Militar · Industrial · de Intelligence al Statelor Unite (Navy)" : "United States Military · Industrial · Intelligence Complex (Navy)"}
-        tagline={locale === "ro" ? "PRIMA ÎN FORȚĂ · PRIMA ÎN PREGĂTIRE · PRIMA ÎN LUME" : "FIRST IN STRENGTH · FIRST IN READINESS · FIRST IN THE WORLD"}
+        title={locale === "ro" ? "DOMINAȚIE MARITIMĂ" : "MARITIME DOMINANCE"}
+        subtitle={locale === "ro" ? "MARINA STATELOR UNITE · DOMINAȚIE MARITIMĂ GLOBALĂ ȘI PROIECTARE DE FORȚĂ" : "UNITED STATES NAVY · GLOBAL MARITIME DOMINANCE & PROJECTED POWER"}
+        tagline={locale === "ro" ? "POZIȚIONAT ÎNAINTE · SEMPER FORTIS · PREGĂTIT DE LUPTĂ" : "FORWARD DEPLOYED · SEMPER FORTIS · READY ON ARRIVAL"}
         stats={heroStats}
       />
       <NavyMetricStrip metrics={secondaryMetrics} locale={locale} />
