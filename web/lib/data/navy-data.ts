@@ -86,6 +86,29 @@ export const NAVY_METRICS: NavyMetric[] = [
   },
 ];
 
+export const NAVY_SECONDARY_METRICS: NavyMetric[] = [
+  {
+    value: "340,000+",
+    label: "Active Sailors",
+    detail: "The exceptional human crew operating the global maritime technological grid.",
+  },
+  {
+    value: "70+",
+    label: "Active Submarines",
+    detail: "Attack submarines from Virginia and Seawolf classes maintaining complete undersea dominance.",
+  },
+  {
+    value: "100+",
+    label: "Aegis Combat Ships",
+    detail: "Destroyers and cruisers carrying advanced detection radars and VLS strike cells.",
+  },
+  {
+    value: "3,700+",
+    label: "Naval Aircraft",
+    detail: "The carrier-capable aircraft fleet ready to project power globally at cyclic operational tempo.",
+  },
+];
+
 export const NAVY_CAPABILITIES: NavyCapability[] = [
   {
     kicker: "Blue-water reach",
@@ -319,24 +342,24 @@ export const NAVY_VISUAL_PANELS: NavyVisualPanel[] = [
     title: "A moving aerospace production line",
     description:
       "Launch, recover, arm, fuel, repair, and launch again. The deck turns naval power into a repeatable industrial rhythm at sea.",
-    imageSrc: SITE_IMAGES.navy.flightDeck,
-    imageAlt: "U.S. Navy aircraft carrier flight deck operations",
+    imageSrc: SITE_IMAGES.navy.fa18Landing,
+    imageAlt: "F/A-18F Super Hornet landing on a carrier deck",
   },
   {
     eyebrow: "Distributed sea control",
     title: "The fleet is a network, not a formation",
     description:
       "Destroyers, cruisers, submarines, aircraft, satellites, Marines, and logistics vessels operate as one adaptive machine.",
-    imageSrc: SITE_IMAGES.navy.carrierFormation,
-    imageAlt: "U.S. Navy carrier strike group formation at sea",
+    imageSrc: SITE_IMAGES.navy.destroyer,
+    imageAlt: "U.S. Navy guided-missile surface combatant at sea",
   },
   {
-    eyebrow: "Capital ship energy",
-    title: "American mass, precision, and presence",
+    eyebrow: "Strategic deterrence",
+    title: "Undersea silence, global leverage",
     description:
-      "The carrier is not just a ship. It is a diplomatic signal, a strategic option, and a technologically dense expression of national will.",
-    imageSrc: SITE_IMAGES.navy.dualCarrier,
-    imageAlt: "Two U.S. Navy carrier strike groups operating together",
+      "Sailing unseen beneath the waves, ballistic and guided-missile submarines maintain continuous strategic readiness, representing the most survivable leg of nuclear deterrence.",
+    imageSrc: SITE_IMAGES.navy.ohioSubmarine,
+    imageAlt: "U.S. Navy strategic ballistic submarine underway",
   },
 ];
 
@@ -364,6 +387,32 @@ export function getNavyMetrics(locale: Locale): NavyMetric[] {
       value: "5th",
       label: "Generația Aeriană",
       detail: "F-35C, E-2D, EA-18G, Super Hornet și MQ-25 creează un ecosistem aerian de portavion bogat în senzori.",
+    },
+  ];
+}
+
+export function getNavySecondaryMetrics(locale: Locale): NavyMetric[] {
+  if (locale !== "ro") return NAVY_SECONDARY_METRICS;
+  return [
+    {
+      value: "340.000+",
+      label: "Marinari Activi",
+      detail: "Echipajul uman excepțional ce operează grila tehnologică maritimă globală.",
+    },
+    {
+      value: "70+",
+      label: "Submarine Active",
+      detail: "Submarine de atac din clasele Virginia și Seawolf ce mențin dominația subacvatică totală.",
+    },
+    {
+      value: "100+",
+      label: "Nave Aegis",
+      detail: "Distrugătoare și crucișătoare dotate cu radare avansate de detectare și celule de lansare VLS.",
+    },
+    {
+      value: "3.700+",
+      label: "Aeronave Navale",
+      detail: "Flota aeriană navală ambarcată, capabilă să proiecteze forță la nivel global.",
     },
   ];
 }
@@ -618,24 +667,24 @@ export function getNavyVisualPanels(locale: Locale): NavyVisualPanel[] {
       title: "O linie de producție aerospațială în mișcare",
       description:
         "Lansează, recuperează, înarmează, alimentează, repară și lansează din nou. Puntea transformă puterea navală într-un ritm industrial repetabil pe mare.",
-      imageSrc: SITE_IMAGES.navy.flightDeck,
-      imageAlt: "Operațiuni pe puntea de zbor a portavionului american",
+      imageSrc: SITE_IMAGES.navy.fa18Landing,
+      imageAlt: "Avion de luptă F/A-18F aterizând pe portavion",
     },
     {
       eyebrow: "Control maritim distribuit",
       title: "Flota este o rețea, nu o formație",
       description:
         "Distrugătoarele, crucișătoarele, submarinele, aeronavele, sateliții, infanteriștii marini și navele logistice operează ca o singură mașină adaptivă.",
-      imageSrc: SITE_IMAGES.navy.carrierFormation,
-      imageAlt: "Grup de atac de portavioane american navigând în Ocean",
+      imageSrc: SITE_IMAGES.navy.destroyer,
+      imageAlt: "Navă de suprafață militară americană Aegis pe mare",
     },
     {
-      eyebrow: "Energia navelor mari",
-      title: "Masă, precizie și prezență americană",
+      eyebrow: "Descurajare strategică",
+      title: "Tăcere subacvatică, pârghie globală",
       description:
-        "Portavionul nu este doar o navă. Este un semnal diplomatic, o opțiune strategică și o expresie densă din punct de vedere tehnologic a voinței naționale.",
-      imageSrc: SITE_IMAGES.navy.dualCarrier,
-      imageAlt: "Două superportavioane americane navigând în paralel",
+        "Navigând nevăzute sub valuri, submarinele cu rachete balistice și ghidate mențin o stare continuă de pregătire strategică, reprezentând cea mai supraviețuitoare componentă a descurajării nucleare.",
+      imageSrc: SITE_IMAGES.navy.ohioSubmarine,
+      imageAlt: "Submarin strategic american cu propulsie nucleară",
     },
   ];
 }

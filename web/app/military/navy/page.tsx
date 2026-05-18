@@ -15,6 +15,7 @@ import {
 } from "@/components/military/NavyPageComponents";
 import {
   getNavyMetrics,
+  getNavySecondaryMetrics,
   getNavyCapabilities,
   getNavyPlatforms,
   getNavyCommandLayers,
@@ -40,6 +41,7 @@ export default async function NavyPage() {
   const locale = await getServerLocale();
 
   const metrics = getNavyMetrics(locale);
+  const secondaryMetrics = getNavySecondaryMetrics(locale);
   const capabilities = getNavyCapabilities(locale);
   const theaters = getNavyTheaters(locale);
   const platforms = getNavyPlatforms(locale);
@@ -52,7 +54,7 @@ export default async function NavyPage() {
       <NavyStyles />
       <NavyPageProgress />
       <NavyHero metrics={metrics} imageSrc={SITE_IMAGES.navy.hero} locale={locale} />
-      <NavyMetricStrip metrics={metrics} locale={locale} />
+      <NavyMetricStrip metrics={secondaryMetrics} locale={locale} />
       <NavyCapabilityGrid capabilities={capabilities} locale={locale} />
       <NavyOperationalConsole theaters={theaters} locale={locale} />
       <NavyFullscreenPanel panel={visualPanels[0]} locale={locale} />
