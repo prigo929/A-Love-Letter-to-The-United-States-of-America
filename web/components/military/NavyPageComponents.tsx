@@ -158,12 +158,12 @@ export function NavyPageProgress() {
 // ─────────────────────────────────────────────────────────────────────────────
 
 function NavyCountUp({ value, color = "white" }: { value: string; color?: string }) {
-  const numericMatch = value.match(/^([\d.]+)(.*)$/);
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
   const [displayVal, setDisplayVal] = useState("0");
 
   useEffect(() => {
+    const numericMatch = value.match(/^([\d.]+)(.*)$/);
     if (!numericMatch) {
       setDisplayVal(value);
       return;
@@ -181,7 +181,7 @@ function NavyCountUp({ value, color = "white" }: { value: string; color?: string
       });
       return () => controls.stop();
     }
-  }, [inView, value, numericMatch]);
+  }, [inView, value]);
 
   return <span ref={ref} style={{ color }}>{displayVal}</span>;
 }
