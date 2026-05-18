@@ -325,7 +325,7 @@ export function NavyMetricStrip({ metrics, locale = "en" }: { metrics: NavyMetri
           <div key={metric.label} className="flex flex-col px-8 py-12 border-r border-b border-white/5 last:border-r-0">
             <div className="mil-text-metadata mb-6 tracking-[0.3em] font-black text-white">{metric.label}</div>
             <div className="flex items-baseline gap-1">
-              <span className="text-[clamp(48px,7vw,96px)] font-extralight tracking-tighter leading-none text-white">
+              <span className="text-[clamp(32px,3.8vw,56px)] sm:text-[clamp(36px,3.8vw,60px)] lg:text-[clamp(40px,3.8vw,64px)] font-extralight tracking-tighter leading-none text-white">
                 <NavyCountUp value={metric.value} />
               </span>
             </div>
