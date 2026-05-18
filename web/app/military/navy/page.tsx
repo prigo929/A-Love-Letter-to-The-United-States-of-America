@@ -6,7 +6,6 @@ import {
   NavyCommandStack,
   NavyFullscreenPanel,
   NavyFutureStack,
-  NavyHero,
   NavyMetricStrip,
   NavyOperationalConsole,
   NavyPageProgress,
@@ -14,7 +13,10 @@ import {
   NavyStyles,
 } from "@/components/military/NavyPageComponents";
 import {
-  getNavyMetrics,
+  ParallaxMilitaryHero,
+  MilStyles,
+} from "@/components/military/MilitaryAnimations";
+import {
   getNavySecondaryMetrics,
   getNavyCapabilities,
   getNavyPlatforms,
@@ -40,7 +42,6 @@ export const metadata: Metadata = {
 export default async function NavyPage() {
   const locale = await getServerLocale();
 
-  const metrics = getNavyMetrics(locale);
   const secondaryMetrics = getNavySecondaryMetrics(locale);
   const capabilities = getNavyCapabilities(locale);
   const theaters = getNavyTheaters(locale);
@@ -49,11 +50,33 @@ export default async function NavyPage() {
   const programs = getNavyFuturePrograms(locale);
   const visualPanels = getNavyVisualPanels(locale);
 
+  const heroStats = locale === "ro"
+    ? [
+        { value: "11", label: "PORTAVIOANE NUCLEARE" },
+        { value: "14", label: "SSBN-URI STRATEGICE" },
+        { value: "290+", label: "NAVE DE LUPTĂ ACTIVE" },
+        { value: "3.700+", label: "AERONAVE DE FLOTĂ" }
+      ]
+    : [
+        { value: "11", label: "NUCLEAR CARRIERS" },
+        { value: "14", label: "STRATEGIC SSBNS" },
+        { value: "290+", label: "BATTLE FORCE SHIPS" },
+        { value: "3,700+", label: "FLEET AIRCRAFT" }
+      ];
+
   return (
     <div className="navy-page min-h-screen overflow-hidden bg-black text-white">
+      <MilStyles />
       <NavyStyles />
       <NavyPageProgress />
-      <NavyHero metrics={metrics} imageSrc={SITE_IMAGES.navy.hero} locale={locale} />
+      <ParallaxMilitaryHero
+        imageSrc={SITE_IMAGES.navy.hero}
+        imageAlt="U.S. Navy aircraft carrier in cinematic light"
+        title={locale === "ro" ? "PUTERE ABSOLUTĂ" : "ABSOLUTE POWER"}
+        subtitle={locale === "ro" ? "Complexul Militar · Industrial · de Intelligence al Statelor Unite (Navy)" : "United States Military · Industrial · Intelligence Complex (Navy)"}
+        tagline={locale === "ro" ? "PRIMA ÎN FORȚĂ · PRIMA ÎN PREGĂTIRE · PRIMA ÎN LUME" : "FIRST IN STRENGTH · FIRST IN READINESS · FIRST IN THE WORLD"}
+        stats={heroStats}
+      />
       <NavyMetricStrip metrics={secondaryMetrics} locale={locale} />
       <NavyCapabilityGrid capabilities={capabilities} locale={locale} />
       <NavyOperationalConsole theaters={theaters} locale={locale} />
