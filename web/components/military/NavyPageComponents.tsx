@@ -58,12 +58,14 @@ export function NavyStyles() {
 
       .navy-font-display {
         font-family: var(--font-archivo), Inter, system-ui, sans-serif;
-        letter-spacing: 0;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
       }
 
       .navy-font-mono {
         font-family: var(--font-mono), "SFMono-Regular", Consolas, monospace;
-        letter-spacing: 0;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
       }
 
       .navy-grid-plane {
@@ -341,8 +343,10 @@ export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabiliti
   const icons = [Ship, Waves, Shield, Cpu];
 
   return (
-    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12">
-      <div className="absolute inset-0 navy-grid-plane opacity-25" />
+    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(0,42,102,0.15),transparent_45%)] pointer-events-none" />
+      <div className="absolute inset-0 navy-grid-plane opacity-20 pointer-events-none" />
+      <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
       <div className="relative mx-auto max-w-[1520px]">
         <SectionTitle
           eyebrow={locale === "ro" ? "Arhitectura capabilităților" : "Capability architecture"}
@@ -405,9 +409,10 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
   const active = theaters[activeIndex];
 
   return (
-    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12">
+    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(0,42,102,0.18),transparent_32%),radial-gradient(circle_at_82%_72%,rgba(0,26,51,0.15),transparent_34%)]" />
-      <div className="absolute inset-0 navy-grid-plane opacity-20" />
+      <div className="absolute inset-0 navy-grid-plane opacity-20 pointer-events-none" />
+      <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
 
       <div className="relative mx-auto max-w-[1520px]">
         <SectionTitle
@@ -571,8 +576,11 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
   }, [isDossierOpen]);
 
   return (
-    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12">
+    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
       <div className="absolute inset-0 bg-[linear-gradient(180deg,#000000,transparent_20%,transparent_80%,#000000)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(0,42,102,0.15),transparent_55%)] animate-pulse" style={{ animationDuration: '6s' }} />
+      <div className="absolute inset-0 navy-grid-plane opacity-15 pointer-events-none" />
+      <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
       <div className="mx-auto max-w-[1520px]">
         <SectionTitle
           eyebrow={locale === "ro" ? "Grupul de platforme" : "Platform stack"}
@@ -822,8 +830,10 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
 
 export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyCommandLayer[]; locale?: Locale }) {
   return (
-    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12">
+    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(0,42,102,0.15),transparent_32%),radial-gradient(circle_at_80%_70%,rgba(0,26,51,0.12),transparent_30%)]" />
+      <div className="absolute inset-0 navy-grid-plane opacity-15 pointer-events-none" />
+      <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
       <div className="relative mx-auto grid max-w-[1520px] gap-14 lg:grid-cols-[0.72fr_1fr] lg:items-start">
         <div className="lg:sticky lg:top-28">
           <SectionTitle
@@ -945,7 +955,10 @@ export function NavyFullscreenPanel({ panel, reverse = false, locale = "en" }: {
 
 export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFutureProgram[]; locale?: Locale }) {
   return (
-    <section className="bg-[#020202] px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-t border-white/5">
+    <section className="relative overflow-hidden bg-[#020202] px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-t border-white/5">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(0,42,102,0.12),transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 navy-grid-plane opacity-15 pointer-events-none" />
+      <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
       <div className="mx-auto max-w-[1520px]">
         <SectionTitle
           eyebrow={locale === "ro" ? "Viitoarea flotă" : "Next fleet"}
@@ -993,7 +1006,9 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
 export function NavyClosing({ locale = "en" }: { locale?: Locale }) {
   return (
     <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-t border-white/5">
-      <div className="absolute inset-0 navy-grid-plane opacity-25" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,42,102,0.18),transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 navy-grid-plane opacity-25 pointer-events-none" />
+      <div className="navy-noise absolute inset-0 opacity-35 pointer-events-none" />
       <div className="relative mx-auto max-w-[1160px] text-center">
         <Anchor className="mx-auto mb-8 text-[#8edcff]/50 animate-pulse" size={32} strokeWidth={1.2} />
         <h2 className="navy-font-display text-4xl font-black uppercase leading-[0.95] md:text-7xl text-white">
@@ -1099,15 +1114,19 @@ function SectionTitle({
   body: string;
 }) {
   return (
-    <div className="max-w-4xl">
-      <div className="mb-5 flex items-center gap-4">
-        <span className="h-px w-12 bg-white/20" />
-        <span className="navy-font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">{eyebrow}</span>
+    <div className="max-w-4xl mb-12">
+      <div className="mb-4 flex items-center gap-3">
+        <span className="inline-block h-1.5 w-1.5 bg-[#8edcff] animate-pulse" />
+        <span className="navy-font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.3em] text-[#8edcff]/85">
+          {eyebrow}
+        </span>
       </div>
-      <h2 className="navy-font-display text-4xl font-black uppercase leading-[0.95] md:text-6xl text-white">
+      <h2 className="navy-font-display text-4xl font-black uppercase leading-[0.9] tracking-[-0.03em] md:text-6xl lg:text-7xl text-white">
         {title}
       </h2>
-      <p className="mt-6 max-w-2xl text-xs leading-relaxed text-white/40">{body}</p>
+      <p className="mt-5 max-w-2xl text-xs sm:text-sm leading-relaxed text-white/60 tracking-wide">
+        {body}
+      </p>
     </div>
   );
 }
