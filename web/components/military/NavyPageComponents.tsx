@@ -8,12 +8,14 @@ import {
   Anchor,
   ArrowUpRight,
   Cpu,
+  Crosshair,
   Gauge,
   Network,
   Plane,
   Satellite,
   Shield,
   Ship,
+  Target,
   Waves,
 } from "lucide-react";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
@@ -26,7 +28,9 @@ import type {
   NavyPlatform,
   NavyTheater,
   NavyVisualPanel,
+  NavyWeaponSystem,
 } from "@/lib/data/navy-data";
+import { getNavyWeapons } from "@/lib/data/navy-data";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -1113,6 +1117,203 @@ function FleetMesh({ accent }: { accent: string }) {
         </g>
       ))}
     </svg>
+  );
+}
+
+export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
+  const weapons = getNavyWeapons(locale);
+  const [activeTab, setActiveTab] = useState(0);
+  const weapon = weapons[activeTab];
+
+  return (
+    <section className="relative overflow-hidden bg-black py-24 sm:py-32 border-t border-white/5">
+      {/* Background aesthetics */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,26,51,0.2)_0%,transparent_70%)]" />
+      <div className="navy-grid-plane absolute inset-0 opacity-15" />
+      <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+        <SectionTitle
+          label={locale === "ro" ? "ARMAMENT TACTIC" : "TACTICAL ARMAMENT"}
+          titlePart1={locale === "ro" ? "SISTEME DE" : "INTEGRATED WEAPON"}
+          titlePart2={locale === "ro" ? "FOC PRECIZ" : "DELIVERY CONSOLE"}
+          body={locale === "ro"
+            ? "Arhitectura de atac și apărare a flotei, de la rachete hipersonice la sisteme autonome de interceptare, fuzionată într-o rețea de foc letală."
+            : "The fleet's offensive and defensive strike grid, ranging from long-range precision cruise missiles to autonomous point defense gatling systems."}
+        />
+
+        {/* Weapons console frame */}
+        <div className="navy-glass-premium overflow-hidden rounded-lg border border-white/10 bg-black/60">
+          
+          {/* Header tabs */}
+          <div className="flex flex-wrap border-b border-white/10 bg-black/80">
+            {weapons.map((w, idx) => (
+              <button
+                key={w.id}
+                onClick={() => setActiveTab(idx)}
+                className={cn(
+                  "relative flex-1 min-w-[140px] px-6 py-5 text-center transition-all duration-300 font-mono text-[10px] tracking-[0.2em] uppercase border-r border-white/5 last:border-r-0",
+                  idx === activeTab
+                    ? "text-white bg-white/5 font-bold"
+                    : "text-white/40 hover:text-white/70 hover:bg-white/2"
+                )}
+              >
+                {/* Active glow accent */}
+                {idx === activeTab && (
+                  <motion.div
+                    layoutId="active-weapon-indicator"
+                    className="absolute bottom-0 left-0 h-[2px] w-full bg-[#8edcff]"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
+                {w.designation.split(" ")[0]}
+              </button>
+            ))}
+          </div>
+
+          {/* Console main body */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 sm:p-10">
+            
+            {/* Left Column: Spec Panel (7 cols) */}
+            <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
+              
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="h-2 w-2 rounded-full bg-[#8edcff] animate-pulse" />
+                  <span className="font-mono text-[10px] tracking-[0.3em] text-[#8edcff]/80 uppercase">
+                    [ {weapon.category} ]
+                  </span>
+                </div>
+                <h3 className="navy-font-display text-2xl sm:text-4xl font-black tracking-tight text-white leading-none">
+                  {weapon.name}
+                </h3>
+                <p className="text-xs sm:text-sm text-white/40 font-mono tracking-wider">
+                  SYSTEM DESIGNATION: {weapon.designation}
+                </p>
+                <p className="text-sm leading-relaxed text-white/70 max-w-2xl pt-2">
+                  {weapon.description}
+                </p>
+              </div>
+
+              {/* Specs Grid */}
+              <div className="grid grid-cols-2 gap-4">
+                {weapon.specs.map((s) => (
+                  <div
+                    key={s.label}
+                    className="navy-panel-tactical p-4 border border-white/5 rounded bg-black/40 flex flex-col space-y-1"
+                  >
+                    <span className="font-mono text-[9px] tracking-wider text-white/30 uppercase">
+                      {s.label}
+                    </span>
+                    <span className="text-xs sm:text-sm font-semibold text-white tracking-wide">
+                      {s.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Status and telemetry bars */}
+              <div className="space-y-4 pt-4 border-t border-white/5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  
+                  {/* Accuracy telemetry */}
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-[10px] font-mono tracking-widest text-white/50">
+                      <span>SYSTEM ACCURACY</span>
+                      <span className="text-[#8edcff] font-bold">{weapon.accuracy}%</span>
+                    </div>
+                    <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden relative">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${weapon.accuracy}%` }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="h-full bg-gradient-to-r from-[#0052a3] to-[#8edcff] rounded-full"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Combat sorties / Operations telemetry */}
+                  <div className="flex flex-col justify-end">
+                    <div className="text-[9px] font-mono tracking-widest text-white/30 uppercase">
+                      TELEMETRY STATUS
+                    </div>
+                    <div className="text-xs font-mono tracking-wider text-[#70e0bf] font-bold uppercase mt-1">
+                      {weapon.operations}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            {/* Right Column: Visual Telemetry/Radar Screen (5 cols) */}
+            <div className="lg:col-span-5 flex items-center justify-center">
+              <div className="relative w-full aspect-square max-w-[340px] rounded-full border border-white/10 bg-[#00060d]/80 overflow-hidden flex items-center justify-center p-8 box-shadow-[inset_0_0_24px_rgba(0,132,255,0.06)]">
+                
+                {/* Radar grid aesthetics */}
+                <div className="absolute inset-0 rounded-full border border-white/5 m-4" />
+                <div className="absolute inset-0 rounded-full border border-white/5 m-12" />
+                <div className="absolute inset-0 rounded-full border border-[#8edcff]/10 m-24" />
+                
+                {/* Crosshairs */}
+                <div className="absolute top-0 bottom-0 left-1/2 w-px bg-white/5 -translate-x-1/2" />
+                <div className="absolute left-0 right-0 top-1/2 h-px bg-white/5 -translate-y-1/2" />
+
+                {/* Sonar sweep animation */}
+                <div className="absolute inset-0 rounded-full bg-[conic-gradient(from_0deg,rgba(0,132,255,0.15)_0deg,transparent_90deg)] animate-[spin_5s_linear_infinite] pointer-events-none" />
+
+                {/* Glowing target dots */}
+                <motion.div
+                  animate={{
+                    opacity: [0.2, 1, 0.2],
+                    scale: [0.8, 1.2, 0.8]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute top-1/4 left-1/3 h-2 w-2 rounded-full bg-[#70e0bf]"
+                  style={{ boxShadow: "0 0 10px #70e0bf" }}
+                />
+                <motion.div
+                  animate={{
+                    opacity: [0.1, 0.8, 0.1],
+                    scale: [0.7, 1.1, 0.7]
+                  }}
+                  transition={{ duration: 2.5, repeat: Infinity, delay: 0.5, ease: "easeInOut" }}
+                  className="absolute bottom-1/3 right-1/4 h-1.5 w-1.5 rounded-full bg-[#ff6b6b]"
+                  style={{ boxShadow: "0 0 8px #ff6b6b" }}
+                />
+                <motion.div
+                  animate={{
+                    opacity: [0.3, 0.9, 0.3],
+                    scale: [0.9, 1.3, 0.9]
+                  }}
+                  transition={{ duration: 1.8, repeat: Infinity, delay: 1, ease: "easeInOut" }}
+                  className="absolute top-1/2 right-1/3 h-2 w-2 rounded-full bg-[#f2d48a]"
+                  style={{ boxShadow: "0 0 10px #f2d48a" }}
+                />
+
+                {/* Radar Sweep HUD labels */}
+                <div className="relative z-10 text-center flex flex-col items-center space-y-3 p-4">
+                  <div className="rounded border border-[#8edcff]/20 bg-black/80 px-3 py-1 font-mono text-[9px] tracking-[0.2em] text-[#8edcff] uppercase">
+                    SYS-LOCK COMPLETED
+                  </div>
+                  <div className="font-mono text-[8px] tracking-widest text-white/40 text-center max-w-[200px] leading-relaxed uppercase break-all">
+                    {weapon.tacticalOverlay}
+                  </div>
+                </div>
+
+                {/* Tech overlay border markings */}
+                <div className="absolute top-4 left-4 font-mono text-[8px] text-white/20">SYS.290_VLS</div>
+                <div className="absolute bottom-4 right-4 font-mono text-[8px] text-[#8edcff]/30">RADAR // ACTIVE</div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
   );
 }
 

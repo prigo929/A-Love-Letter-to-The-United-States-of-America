@@ -688,3 +688,152 @@ export function getNavyVisualPanels(locale: Locale): NavyVisualPanel[] {
     },
   ];
 }
+
+export interface NavyWeaponSystem {
+  id: string;
+  name: string;
+  designation: string;
+  category: string;
+  specs: { label: string; value: string }[];
+  description: string;
+  accuracy: number;
+  operations: string;
+  tacticalOverlay: string;
+}
+
+export const NAVY_WEAPONS: NavyWeaponSystem[] = [
+  {
+    id: "tomahawk",
+    name: "Tomahawk Land Attack Missile",
+    designation: "UGM-109 / BGM-109",
+    category: "Deep Strike",
+    specs: [
+      { label: "Range", value: "1,000+ miles" },
+      { label: "Velocity", value: "Mach 0.74" },
+      { label: "Guidance", value: "GPS / TERCOM / DSMAC" },
+      { label: "Payload", value: "1,000 lbs HE" },
+    ],
+    description: "The Navy's premier long-range precision strike weapon, launched from vertical launch systems (VLS) on destroyers, cruisers, and submarines to strike high-value land targets with extreme accuracy.",
+    accuracy: 98,
+    operations: "2,000+ combat launches",
+    tacticalOverlay: "SAT-LINK ACTIVE // TERCOM ALTITUDE MATCH // DSMAC SCENE MATCHED",
+  },
+  {
+    id: "sm6",
+    name: "Standard Missile 6",
+    designation: "RIM-174 ERAM",
+    category: "Fleet Air Defense",
+    specs: [
+      { label: "Range", value: "150+ miles" },
+      { label: "Velocity", value: "Mach 3.5+" },
+      { label: "Guidance", value: "Active Radar Homing" },
+      { label: "Ceiling", value: "110,000 ft" },
+    ],
+    description: "Provides multi-mission capability for air defense, ballistic missile defense, and anti-surface warfare. Fuses threat tracking data from off-board sensors (like F-35 or E-2D) via cooperative engagement.",
+    accuracy: 95,
+    operations: "Active fielding scale",
+    tacticalOverlay: "AEGIS NETWORK // CEC COORDINATION ACTIVE // HYPERSONIC TRACK LOCK",
+  },
+  {
+    id: "mk48",
+    name: "Mk 48 ADCAP Torpedo",
+    designation: "Mark 48 Mod 7",
+    category: "Undersea Warfare",
+    specs: [
+      { label: "Range", value: "50+ miles" },
+      { label: "Velocity", value: "55+ knots" },
+      { label: "Guidance", value: "Acoustic Sonar / Wire-guided" },
+      { label: "Depth", value: "800+ ft" },
+    ],
+    description: "The primary weapon of fast-attack and ballistic missile submarines, designed to hunt and destroy ultra-quiet submarines and heavily armored surface vessels in deep ocean or littoral zones.",
+    accuracy: 96,
+    operations: "Undersea silent readiness",
+    tacticalOverlay: "ACTIVE ACC-PING ACTIVE // AN/BSY-1 COMMAND LINK // SONAR RAY LOCK",
+  },
+  {
+    id: "phalanx",
+    name: "Phalanx CIWS",
+    designation: "Mk 15 CIWS",
+    category: "Point Defense",
+    specs: [
+      { label: "Rate of Fire", value: "4,500 rounds/min" },
+      { label: "Caliber", value: "20mm M61A1 Vulcan" },
+      { label: "Guidance", value: "Ku-band Search & Track" },
+      { label: "Range", value: "1.5 miles" },
+    ],
+    description: "The ultimate layer of defense for surface ships against anti-ship missiles and close-in threats. Automatically detects, tracks, and destroys incoming threats using a rapid-fire rotary cannon.",
+    accuracy: 99,
+    operations: "Autonomous point defense",
+    tacticalOverlay: "AUTO-DEFENSE ACTIVE // Ku-BAND SWEEP ACTIVE // RADAR MATCH COMPLETE",
+  },
+];
+
+export function getNavyWeapons(locale: Locale): NavyWeaponSystem[] {
+  if (locale !== "ro") return NAVY_WEAPONS;
+  return [
+    {
+      id: "tomahawk",
+      name: "Rachetă de Atac Terestru Tomahawk",
+      designation: "UGM-109 / BGM-109",
+      category: "Atac la Distanță",
+      specs: [
+        { label: "Rază", value: "1.600+ km" },
+        { label: "Viteză", value: "Mach 0.74" },
+        { label: "Ghidare", value: "GPS / TERCOM / DSMAC" },
+        { label: "Explozibil", value: "450 kg" },
+      ],
+      description: "Principala armă de atac de precizie la distanță a Marinei, lansată de pe distrugătoare, crucișătoare și submarine pentru a lovi ținte terestre de mare valoare cu o acuratețe extremă.",
+      accuracy: 98,
+      operations: "2.000+ lansări de luptă",
+      tacticalOverlay: "CONEXIUNE SAT-LINK ACTIVĂ // POTRIVIRE ALTITUDINE TERCOM // POTRIVIRE SCENĂ DSMAC",
+    },
+    {
+      id: "sm6",
+      name: "Rachetă Standard 6",
+      designation: "RIM-174 ERAM",
+      category: "Apărare Aeriană a Flotei",
+      specs: [
+        { label: "Rază", value: "240+ km" },
+        { label: "Viteză", value: "Mach 3.5+" },
+        { label: "Ghidare", value: "Autoghidare Radar Activă" },
+        { label: "Plafon", value: "33.000 m" },
+      ],
+      description: "Oferă capacități multi-misiune pentru apărare aeriană, apărare împotriva rachetelor balistice și atac de suprafață. Fuzionează datele de la senzori externi (cum ar fi F-35 sau E-2D) prin rețea.",
+      accuracy: 95,
+      operations: "Ritm activ de desfășurare",
+      tacticalOverlay: "REȚEA AEGIS // COORDONARE CEC ACTIVĂ // BLOCARE TRACK HIPERSONIC",
+    },
+    {
+      id: "mk48",
+      name: "Torpilă Mk 48 ADCAP",
+      designation: "Mark 48 Mod 7",
+      category: "Luptă Subacvatică",
+      specs: [
+        { label: "Rază", value: "80+ km" },
+        { label: "Viteză", value: "100+ km/h" },
+        { label: "Ghidare", value: "Sonar Acustic / Ghidare prin Cablu" },
+        { label: "Adâncime", value: "250+ m" },
+      ],
+      description: "Arma principală a submarinelor de atac și cu rachete balistice, concepută pentru a vâna și distruge submarine extrem de silențioase și nave de suprafață blindate.",
+      accuracy: 96,
+      operations: "Pregătire subacvatică silențioasă",
+      tacticalOverlay: "PING ACUSTIC ACTIV // CONEXIUNE COMANDĂ AN/BSY-1 // BLOCARE FAZĂ SONAR",
+    },
+    {
+      id: "phalanx",
+      name: "Sistem de Apărare Phalanx CIWS",
+      designation: "Mk 15 CIWS",
+      category: "Apărare Terminală",
+      specs: [
+        { label: "Ritm Foc", value: "4.500 lovituri/min" },
+        { label: "Calibru", value: "20mm M61A1 Vulcan" },
+        { label: "Ghidare", value: "Căutare & Urmărire Banda Ku" },
+        { label: "Rază", value: "2.4 km" },
+      ],
+      description: "Ultimul strat de apărare al navelor de suprafață împotriva rachetelor antinavă și a amenințărilor din apropiere. Detectează, urmărește și distruge automat țintele folosind un tun rotativ rapid.",
+      accuracy: 99,
+      operations: "Apărare terminală autonomă",
+      tacticalOverlay: "AUTO-APĂRARE ACTIVĂ // INSPECȚIE BANDA Ku ACTIVĂ // POTRIVIRE RADAR REUȘITĂ",
+    },
+  ];
+}
