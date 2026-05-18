@@ -905,6 +905,98 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
   const activeLogs = getLogs(activeIdx);
   const activeColor = layers[activeIdx]?.accent || "#8edcff";
 
+  // Typing simulator state for the monospaced terminal logs
+  const [visibleLines, setVisibleLines] = useState<string[]>([]);
+  const [typingIdx, setTypingIdx] = useState(0);
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+  const [timestamps, setTimestamps] = useState<string[]>([]);
+
+  useEffect(() => {
+    // Generate simulated high-precision timestamps
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    const s = String(now.getSeconds()).padStart(2, '0');
+    
+    const times = [
+      `[${h}:${now.getMinutes()}:${now.getSeconds()}.024]`,
+      `[${h}:${now.getMinutes()}:${now.getSeconds()}.108]`,
+      `[${h}:${now.getMinutes()}:${now.getSeconds()}.254]`,
+      `[${h}:${now.getMinutes()}:${now.getSeconds()}.392]`,
+    ];
+    setTimestamps(times);
+    
+    // Clear and reset typing simulation
+    setVisibleLines([]);
+    setTypingIdx(0);
+    setIsTypingComplete(false);
+  }, [activeIdx]);
+
+  useEffect(() => {
+    if (typingIdx < activeLogs.length) {
+      const timeout = setTimeout(() => {
+        setVisibleLines((prev) => [...prev, activeLogs[typingIdx]]);
+        setTypingIdx((prev) => prev + 1);
+      }, 150);
+      return () => clearTimeout(timeout);
+    } else {
+      setIsTypingComplete(true);
+    }
+  }, [typingIdx, activeLogs]);
+
+  // Command shell prompt
+  const getPromptHeader = () => {
+    switch (activeIdx) {
+      case 0:
+        return "C2-DECK:~# exec_isr_scan --level-5";
+      case 1:
+        return "C2-DECK:~# sysctl --init aegis_combat_core";
+      case 2:
+        return "C2-DECK:~# authorize_strike --vector-vls";
+      default:
+        return "C2-DECK:~# sh";
+    }
+  };
+
+  // Helper to format/parse status tags and color them
+  const renderColoredLog = (log: string) => {
+    if (log.includes(":")) {
+      const [label, val] = log.split(":");
+      
+      // Check if value contains active keywords to highlight
+      const highlights = ["ACTIVĂ", "ONLINE", "CONECTATĂ", "OK", "ONLINE & tracking", "ENGAGED", "SYNCHRONIZED", "CONFIRMED", "ACTIVE"];
+      const warningHighlights = ["LOCK", "LOCKED", "STRIKE ACTIVE", "KINETIC ENGAGEMENT"];
+      
+      let matchedColor = activeColor;
+      let matchedFontWeight = "font-bold";
+      
+      const containsHighlight = highlights.some(h => val.includes(h));
+      const containsWarning = warningHighlights.some(w => val.includes(w));
+      
+      if (containsHighlight) {
+        matchedColor = "#34d399"; // Bright emerald green
+      } else if (containsWarning) {
+        matchedColor = "#f87171"; // Bright red
+      }
+      
+      return (
+        <span className="flex flex-wrap gap-1 items-center">
+          <span className="text-white/40 uppercase">{label}:</span>
+          <span
+            className={matchedFontWeight}
+            style={{
+              color: matchedColor,
+              textShadow: containsHighlight || containsWarning ? `0 0 8px ${matchedColor}40` : "none"
+            }}
+          >
+            {val}
+          </span>
+        </span>
+      );
+    }
+    return <span className="flex-1">{log}</span>;
+  };
+
   // Icons corresponding to layers
   const icons = [Satellite, Network, Crosshair];
 
@@ -1228,21 +1320,39 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
               </div>
 
               {/* Live console logging logs feed */}
-              <div className="mt-5 border border-white/5 bg-black/90 p-4 rounded no-scrollbar h-[115px] overflow-y-auto">
-                <div className="space-y-1.5">
-                  {activeLogs.map((log, lidx) => (
+              <div className="mt-5 border border-white/5 bg-black/95 p-4 rounded no-scrollbar h-[135px] overflow-y-auto navy-font-mono text-[9px] tracking-wider leading-relaxed">
+                <div className="text-[#8edcff]/40 font-bold mb-2 flex items-center gap-1.5">
+                  <span>{getPromptHeader()}</span>
+                  {!isTypingComplete && (
+                    <span className="animate-pulse h-2.5 w-1.5 bg-[#8edcff]" style={{ backgroundColor: activeColor }} />
+                  )}
+                </div>
+                
+                <div className="space-y-1">
+                  {visibleLines.map((log, lidx) => (
                     <motion.div
                       key={log}
-                      initial={{ opacity: 0, x: -10 }}
+                      initial={{ opacity: 0, x: -6 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.35, delay: lidx * 0.08 }}
-                      className="navy-font-mono text-[9px] tracking-wider text-[#8edcff]/80 flex items-start gap-2"
+                      transition={{ duration: 0.2 }}
+                      className="text-white/85 flex items-start"
                     >
-                      <span className="text-[#8edcff]/40">➔</span>
-                      <span>{log}</span>
+                      <span className="text-white/20 mr-2 shrink-0">{timestamps[lidx]}</span>
+                      {renderColoredLog(log)}
                     </motion.div>
                   ))}
                 </div>
+
+                {isTypingComplete && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-[#8edcff]/40 font-bold mt-2 flex items-center gap-1.5"
+                  >
+                    <span>C2-DECK:~#</span>
+                    <span className="animate-pulse h-2.5 w-1.5 bg-[#8edcff]" style={{ backgroundColor: activeColor }} />
+                  </motion.div>
+                )}
               </div>
 
               {/* Progress telemetry meters */}
