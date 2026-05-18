@@ -843,58 +843,392 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyCommandLayer[]; locale?: Locale }) {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  // Custom localized logs
+  const getLogs = (idx: number) => {
+    if (locale === "ro") {
+      switch (idx) {
+        case 0:
+          return [
+            "STATUS: SCANARE PERSISTENTĂ ISR SPAȚIU-AER ACTIVĂ",
+            "REȚEA: SAT-LINK MILITARĂ CRIPTATĂ (SECURE LEVEL 5)",
+            "LĂȚIME BANDĂ: 1.8 GBPS ÎN TIMP REAL DIRECT DIN TEATRU",
+            "SATELLITE CUEING: DETECȚIE TACTICĂ FLUX CONTINUU"
+          ];
+        case 1:
+          return [
+            "STATUS: COMANDĂ INTEGRATĂ AEGIS BASELINE 10 CONECTATĂ",
+            "REȚEA-COOP: CEC ACTIVAT (8 NODURI FLOTĂ CONECTATE)",
+            "CONEXIUNE LINK 16: STABILĂ // INTEGRITATE DATE 99.99%",
+            "DECISION GRID: FUZIUNE VECTORIALĂ DETECȚIE-CONTROL"
+          ];
+        case 2:
+          return [
+            "STATUS: AUTORIZARE ENGAGEMENT JOINT FIRES CONFIRMATĂ",
+            "ARSENAL TACTIC: CELULE Mk 41 VLS / TORPILE Mk 48 PREGĂTITE",
+            "GHIDARE ACTIVER-VECTOR: LOCK PE COORDONATE ACTIVE",
+            "PROIECȚIE DE FORȚĂ: GRUP AERIAN PORTAVION DEPLOYAT"
+          ];
+        default:
+          return [];
+      }
+    } else {
+      switch (idx) {
+        case 0:
+          return [
+            "STATUS: PERSISTENT ACTIVE SPACE-AIR ISR SCAN",
+            "UP-LINK: SECURE MILITARY SATELLITE NETWORK (LEVEL 5)",
+            "BANDWIDTH: 1.8 GBPS REAL-TIME STREAMING FROM ORBIT",
+            "SATELLITE CUEING: PERSISTENT THREAT TRACK DETECTED"
+          ];
+        case 1:
+          return [
+            "STATUS: AEGIS BASELINE 10 DECISION CORE ENGAGED",
+            "COOP-NET: CEC DEPLOYED (8 FLEET NODES SYNCHRONIZED)",
+            "LINK 15/16 STABILITY: 99.999% TACTICAL INTEGRITY",
+            "DECISION GRID: FUSING HIGH-SPEED TELEMETRY VOLLEYS"
+          ];
+        case 2:
+          return [
+            "STATUS: JOINT FIRES KINETIC ENGAGEMENT AUTHORIZED",
+            "READY ARSENAL: Mk 41 VLS CELLS / Mk 48 TUBES CHARGED",
+            "ACTIVE GUIDANCE: TERMINAL TARGET ACQUISITION LOCKED",
+            "POWER PROJECTION: CARRIER AIR WING STRIKE ACTIVE"
+          ];
+        default:
+          return [];
+      }
+    }
+  };
+
+  const activeLogs = getLogs(activeIdx);
+  const activeColor = layers[activeIdx]?.accent || "#8edcff";
+
+  // Icons corresponding to layers
+  const icons = [Satellite, Network, Crosshair];
+
   return (
     <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(0,42,102,0.15),transparent_32%),radial-gradient(circle_at_80%_70%,rgba(0,26,51,0.12),transparent_30%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(0,42,102,0.18),transparent_50%),radial-gradient(circle_at_70%_70%,rgba(0,26,51,0.12),transparent_40%)]" />
       <div className="absolute inset-0 navy-grid-plane opacity-15 pointer-events-none" />
-      <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
-      <div className="relative mx-auto grid max-w-[1520px] gap-14 lg:grid-cols-[0.72fr_1fr] lg:items-start">
-        <div className="lg:sticky lg:top-28">
-          <SectionTitle
-            label={locale === "ro" ? "COMANDĂ ȘI CONTROL" : "COMMAND AND CONTROL"}
-            titlePart1={locale === "ro" ? "VITEZĂ" : "DECISION"}
-            titlePart2={locale === "ro" ? "DECIZIONALĂ" : "SPEED"}
-            body={locale === "ro"
-              ? "Flota este concepută pentru a detecta prima, a decide mai rapid și a crea efecte multi-domeniu sincronizate."
-              : "The fleet is designed to sense first, decide faster, and create effects from multiple domains at once. The beautiful part is the integration, not a single weapon."}
-          />
-          <div className="mt-10 flex flex-wrap gap-3">
-            {[Satellite, Network, Gauge, Plane].map((Icon, index) => (
-              <div key={index} className="flex h-12 w-12 items-center justify-center border border-white/5 bg-[#000a14] text-white/50">
-                <Icon size={18} strokeWidth={1.5} />
-              </div>
-            ))}
+      <div className="navy-noise absolute inset-0 opacity-35 pointer-events-none" />
+      
+      <div className="relative mx-auto max-w-[1520px]">
+        {/* Dynamic section title with C2 design label */}
+        <div className="mb-16">
+          <div className="navy-font-mono text-[10px] tracking-[0.3em] text-[#8edcff]/70 uppercase mb-3">
+            {locale === "ro" ? "[ SISTEM DE COMANDĂ ȘI CONTROL C2 ]" : "[ COMMAND & CONTROL ARCHITECTURE ]"}
           </div>
+          <h2 className="navy-font-display text-4xl font-black uppercase leading-[0.95] md:text-7xl text-white">
+            {locale === "ro" ? "VITEZĂ DECIZIONALĂ" : "DECISION SPEED"}
+          </h2>
+          <p className="mt-6 max-w-3xl text-xs leading-relaxed text-white/50">
+            {locale === "ro"
+              ? "Flota este concepută pentru a detecta prima, a decide mai rapid și a lansa atacuri multi-domeniu sincronizate. Secretul constă în integrarea de rețea, nu într-o armă singulară."
+              : "The fleet is designed to sense first, decide faster, and create effects from multiple domains at once. The real power is the cooperative network integration, not a single weapon."}
+          </p>
         </div>
 
-        <div className="space-y-4">
-          {layers.map((layer, index) => (
-            <motion.article
-              key={layer.title}
-              initial={{ opacity: 0, x: 28 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.55, delay: index * 0.08 }}
-              className="navy-panel-tactical p-7 backdrop-blur-xl md:p-9 border border-white/5"
-            >
-              <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
-                <div>
-                  <div className="navy-font-mono text-[9px] uppercase tracking-widest text-white/30">Layer 0{index + 1}</div>
-                  <h3 className="navy-font-display mt-3 text-2xl font-black uppercase leading-none text-white">{layer.title}</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 lg:items-start mt-12">
+          {/* Left Column: Cyber-Tactical C2 Command HUD */}
+          <div className="lg:sticky lg:top-28 space-y-6">
+            <div className="navy-glass-premium border border-white/10 bg-[#020202] p-6 rounded-lg relative overflow-hidden">
+              {/* Radar glowing sweep overlay */}
+              <div className="absolute top-4 right-4 flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
+                <span className="navy-font-mono text-[9px] text-emerald-400 font-bold uppercase tracking-widest">
+                  {locale === "ro" ? "DECK CONECTAT" : "C2 DECK SECURE"}
+                </span>
+              </div>
+
+              <div className="navy-font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 mb-6">
+                {locale === "ro" ? "VIZUALIZARE REȚEA DE LUPTĂ" : "TACTICAL DATA LINK MESH"}
+              </div>
+
+              {/* HUD Screen Graphic visualizer */}
+              <div className="h-[220px] w-full border border-white/5 bg-black/60 relative overflow-hidden rounded flex items-center justify-center">
+                {/* Background radar grid pattern */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:16px_16px]" />
+                
+                {/* 1. Sensing Layer Graphic */}
+                {activeIdx === 0 && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <svg className="w-full h-full p-4" viewBox="0 0 100 100">
+                      {/* Satellite */}
+                      <motion.g
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <circle cx="50" cy="20" r="4" fill="#8edcff" className="animate-pulse" />
+                        <line x1="45" y1="20" x2="55" y2="20" stroke="#8edcff" strokeWidth="1.5" />
+                        <line x1="40" y1="20" x2="43" y2="20" stroke="#8edcff" strokeWidth="1" />
+                        <line x1="57" y1="20" x2="60" y2="20" stroke="#8edcff" strokeWidth="1" />
+                      </motion.g>
+
+                      {/* Scanning Cone */}
+                      <polygon
+                        points="50,20 15,90 85,90"
+                        fill="url(#sensing-cone-gradient)"
+                        opacity="0.25"
+                      />
+
+                      {/* Ships / Target nodes */}
+                      <circle cx="25" cy="80" r="3" fill="#ffffff" opacity="0.8" />
+                      <text x="21" y="90" fill="#ffffff" opacity="0.4" fontSize="5" className="navy-font-mono">CVN</text>
+                      <circle cx="75" cy="80" r="3" fill="#ffffff" opacity="0.8" />
+                      <text x="71" y="90" fill="#ffffff" opacity="0.4" fontSize="5" className="navy-font-mono">DDG</text>
+
+                      {/* Radiating scanner waves */}
+                      <circle cx="50" cy="20" r="20" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.3" className="animate-ping" style={{ animationDuration: '3s' }} />
+                      <circle cx="50" cy="20" r="40" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.2" className="animate-ping" style={{ animationDuration: '4.5s' }} />
+
+                      <defs>
+                        <linearGradient id="sensing-cone-gradient" x1="0" x2="0" y1="0" y2="1">
+                          <stop offset="0%" stopColor="#8edcff" stopOpacity="0.4" />
+                          <stop offset="100%" stopColor="#8edcff" stopOpacity="0" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </div>
+                )}
+
+                {/* 2. Decision Layer Graphic */}
+                {activeIdx === 1 && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <svg className="w-full h-full p-4" viewBox="0 0 100 100">
+                      {/* Aegis Radar concentric circles */}
+                      <circle cx="50" cy="50" r="10" stroke="#f2d48a" strokeWidth="0.5" fill="none" opacity="0.2" />
+                      <circle cx="50" cy="50" r="25" stroke="#f2d48a" strokeWidth="0.5" fill="none" opacity="0.15" />
+                      <circle cx="50" cy="50" r="40" stroke="#f2d48a" strokeWidth="0.5" fill="none" opacity="0.1" />
+
+                      {/* Sweeper sweep */}
+                      <motion.line
+                        x1="50"
+                        y1="50"
+                        x2="85"
+                        y2="15"
+                        stroke="#f2d48a"
+                        strokeWidth="1"
+                        opacity="0.8"
+                        animate={{ rotate: 360 }}
+                        transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+                        style={{ transformOrigin: "50px 50px" }}
+                      />
+
+                      {/* Connected Mesh nodes */}
+                      <g fill="#f2d48a">
+                        <circle cx="50" cy="50" r="5" className="animate-pulse" />
+                        <circle cx="25" cy="35" r="3" />
+                        <line x1="50" y1="50" x2="25" y2="35" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.6" />
+                        
+                        <circle cx="75" cy="40" r="3" />
+                        <line x1="50" y1="50" x2="75" y2="40" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.6" />
+                        
+                        <circle cx="60" cy="75" r="3" />
+                        <line x1="50" y1="50" x2="60" y2="75" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.6" />
+
+                        <circle cx="35" cy="70" r="3" />
+                        <line x1="50" y1="50" x2="35" y2="70" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.6" />
+                      </g>
+
+                      {/* Text indicator */}
+                      <text x="40" y="42" fill="#f2d48a" fontSize="4" fontWeight="bold" className="navy-font-mono animate-pulse">CDC FUSE</text>
+                    </svg>
+                  </div>
+                )}
+
+                {/* 3. Effect Layer Graphic */}
+                {activeIdx === 2 && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <svg className="w-full h-full p-4" viewBox="0 0 100 100">
+                      {/* Crosshair guidelines */}
+                      <line x1="10" y1="50" x2="90" y2="50" stroke="#ff7a7a" strokeWidth="0.5" strokeDasharray="4,4" opacity="0.3" />
+                      <line x1="50" y1="10" x2="50" y2="90" stroke="#ff7a7a" strokeWidth="0.5" strokeDasharray="4,4" opacity="0.3" />
+                      <circle cx="50" cy="50" r="30" stroke="#ff7a7a" strokeWidth="0.5" fill="none" opacity="0.3" />
+                      <circle cx="50" cy="50" r="3" fill="#ff7a7a" />
+
+                      {/* Lock-on target blips */}
+                      <motion.g
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.1 }}
+                      >
+                        <circle cx="68" cy="30" r="4" fill="none" stroke="#ff7a7a" strokeWidth="1.2" className="animate-ping" style={{ animationDuration: '1.5s' }} />
+                        <polygon points="68,26 68,34" stroke="#ff7a7a" strokeWidth="0.8" />
+                        <polygon points="64,30 72,30" stroke="#ff7a7a" strokeWidth="0.8" />
+                        <text x="74" y="32" fill="#ff7a7a" fontSize="4.5" className="navy-font-mono font-black">LOCK [TR-01]</text>
+                      </motion.g>
+
+                      <motion.g
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                      >
+                        <circle cx="30" cy="65" r="4" fill="none" stroke="#ff7a7a" strokeWidth="1.2" className="animate-ping" style={{ animationDuration: '2s' }} />
+                        <polygon points="30,61 30,69" stroke="#ff7a7a" strokeWidth="0.8" />
+                        <polygon points="26,65 34,65" stroke="#ff7a7a" strokeWidth="0.8" />
+                        <text x="36" y="67" fill="#ff7a7a" fontSize="4.5" className="navy-font-mono font-black">LOCK [TR-02]</text>
+                      </motion.g>
+
+                      {/* Launch vector trajectory line */}
+                      <motion.path
+                        d="M 15 90 Q 30 45 68 30"
+                        fill="none"
+                        stroke="#ff7a7a"
+                        strokeWidth="1.5"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
+                      />
+                    </svg>
+                  </div>
+                )}
+              </div>
+
+              {/* Live console logging logs feed */}
+              <div className="mt-5 border border-white/5 bg-black/90 p-4 rounded no-scrollbar h-[115px] overflow-y-auto">
+                <div className="space-y-1.5">
+                  {activeLogs.map((log, lidx) => (
+                    <motion.div
+                      key={log}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.35, delay: lidx * 0.08 }}
+                      className="navy-font-mono text-[9px] tracking-wider text-[#8edcff]/80 flex items-start gap-2"
+                    >
+                      <span className="text-[#8edcff]/40">➔</span>
+                      <span>{log}</span>
+                    </motion.div>
+                  ))}
                 </div>
-                <div className="h-1 w-24 rounded-full" style={{ backgroundColor: layer.accent }} />
               </div>
-              <p className="mt-5 text-[10px] font-bold uppercase tracking-wider text-white/50">{layer.subtitle}</p>
-              <p className="mt-5 text-xs leading-relaxed text-white/40">{layer.description}</p>
-              <div className="mt-8 flex flex-wrap gap-2">
-                {layer.nodes.map((node) => (
-                  <span key={node} className="border border-white/5 bg-black px-3 py-1.5 text-[10px] font-semibold uppercase text-white/40 tracking-wider">
-                    {node}
-                  </span>
-                ))}
+
+              {/* Progress telemetry meters */}
+              <div className="mt-6 space-y-4 border-t border-white/5 pt-5">
+                <div>
+                  <div className="flex justify-between items-center text-[9px] uppercase tracking-wider text-white/40 mb-1.5">
+                    <span>{locale === "ro" ? "INTEGRITATE DATE REȚEA" : "DATA INTEGRITY CORE"}</span>
+                    <span className="navy-font-mono font-bold text-white/80">
+                      {activeIdx === 0 ? "98%" : activeIdx === 1 ? "99.9%" : "95.4%"}
+                    </span>
+                  </div>
+                  <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full rounded-full"
+                      style={{ backgroundColor: activeColor }}
+                      initial={{ width: "0%" }}
+                      animate={{ width: activeIdx === 0 ? "98%" : activeIdx === 1 ? "99.9%" : "95.4%" }}
+                      transition={{ duration: 0.45, ease: "easeOut" }}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between items-center text-[9px] uppercase tracking-wider text-white/40 mb-1.5">
+                    <span>{locale === "ro" ? "LATENȚĂ COOPERATIVĂ" : "NETWORK LATENCY INDEX"}</span>
+                    <span className="navy-font-mono font-bold text-white/80">
+                      {activeIdx === 0 ? "14 ms" : activeIdx === 1 ? "4 ms" : "12 ms"}
+                    </span>
+                  </div>
+                  <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full rounded-full"
+                      style={{ backgroundColor: activeColor }}
+                      initial={{ width: "0%" }}
+                      animate={{ width: activeIdx === 0 ? "80%" : activeIdx === 1 ? "96%" : "85%" }}
+                      transition={{ duration: 0.45, ease: "easeOut" }}
+                    />
+                  </div>
+                </div>
               </div>
-            </motion.article>
-          ))}
+            </div>
+          </div>
+
+          {/* Right Column: Interactive Layers Selector Tiles */}
+          <div className="space-y-4">
+            {layers.map((layer, index) => {
+              const selected = index === activeIdx;
+              const LayerIcon = icons[index] ?? Network;
+
+              return (
+                <button
+                  key={layer.title}
+                  type="button"
+                  onClick={() => setActiveIdx(index)}
+                  className={cn(
+                    "w-full text-left p-6 md:p-8 transition-all duration-300 relative border flex flex-col justify-between overflow-hidden",
+                    selected
+                      ? "bg-white/[0.04] border-white/10"
+                      : "bg-[#020202] border-white/5 hover:border-white/10 hover:bg-white/[0.01]"
+                  )}
+                >
+                  {/* Sliding spring indicator border on the left */}
+                  {selected && (
+                    <motion.div
+                      layoutId="c2-active-border"
+                      className="absolute inset-y-0 left-0 w-[3px]"
+                      style={{ backgroundColor: layer.accent }}
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                    />
+                  )}
+
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        <span className="navy-font-mono text-[9px] tracking-widest text-white/30 uppercase">
+                          LAYER 0{index + 1}
+                        </span>
+                        {selected && (
+                          <span className="navy-font-mono text-[8px] bg-[#001a33]/60 text-[#8edcff] px-2 py-0.5 border border-[#8edcff]/10 uppercase font-black tracking-widest">
+                            {locale === "ro" ? "TELEMETRIE ACTIVĂ" : "LIVE FEED"}
+                          </span>
+                        )}
+                      </div>
+                      <div
+                        className="h-9 w-9 rounded border border-white/5 bg-black flex items-center justify-center"
+                        style={{ color: selected ? layer.accent : "rgba(255,255,255,0.3)" }}
+                      >
+                        <LayerIcon size={16} strokeWidth={1.5} />
+                      </div>
+                    </div>
+
+                    <h3 className="navy-font-display text-2xl font-black uppercase leading-none text-white/90">
+                      {layer.title}
+                    </h3>
+                    
+                    <p className="mt-4 text-[10px] font-bold uppercase tracking-wider text-white/50 leading-relaxed">
+                      {layer.subtitle}
+                    </p>
+                    
+                    <p className="mt-3 text-xs leading-relaxed text-white/40">
+                      {layer.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 pt-5 border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
+                    <div className="flex flex-wrap gap-1.5">
+                      {layer.nodes.map((node) => (
+                        <span
+                          key={node}
+                          className="border border-white/5 bg-black/40 px-2 py-1 text-[8px] sm:text-[9px] font-bold uppercase text-white/40 tracking-wider rounded"
+                        >
+                          {node}
+                        </span>
+                      ))}
+                    </div>
+
+                    {!selected && (
+                      <span className="navy-font-mono text-[8px] tracking-[0.25em] text-[#8edcff]/40 uppercase hover:text-[#8edcff]/80 transition-colors">
+                        {locale === "ro" ? "[ SELECTEAZĂ C2 ]" : "[ ACTIVATE C2 ]"}
+                      </span>
+                    )}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
