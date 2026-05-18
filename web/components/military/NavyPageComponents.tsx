@@ -962,18 +962,18 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: index * 0.06 }}
-              className="relative min-h-[360px] bg-black p-8 border border-white/5 flex flex-col justify-between"
+              className="min-h-[360px] bg-black p-8 border border-white/5 flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-start justify-between gap-4">
-                  <span className="navy-font-display text-3xl sm:text-4xl font-black text-white/10 truncate pr-20" title={program.label}>
-                    {program.label}
-                  </span>
-                  <span className="absolute top-8 right-8 border border-white/10 px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-white/40 shrink-0 bg-black">
+                <div className="mb-6 flex flex-col items-start gap-3">
+                  <span className="border border-[#001a33] bg-[#001a33]/40 px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-[#8edcff]/90">
                     {program.status}
                   </span>
+                  <span className="navy-font-display text-3xl sm:text-4xl font-black text-white/10 block leading-none" title={program.label}>
+                    {program.label}
+                  </span>
                 </div>
-                <h3 className="navy-font-display mt-10 text-lg sm:text-xl font-black uppercase leading-tight text-white/80">
+                <h3 className="navy-font-display mt-8 text-lg sm:text-xl font-black uppercase leading-tight text-white/80">
                   {program.title}
                 </h3>
                 <p className="mt-4 text-xs leading-relaxed text-white/40">{program.description}</p>
