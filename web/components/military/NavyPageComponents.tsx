@@ -954,35 +954,89 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                 {/* 1. Sensing Layer Graphic */}
                 {activeIdx === 0 && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <svg className="w-full h-full p-4" viewBox="0 0 100 100">
-                      {/* Satellite */}
+                    <svg className="w-full h-full p-2" viewBox="0 0 100 100">
+                      {/* Orbital grid lines */}
+                      <path d="M 10 20 Q 50 -5 90 20" stroke="#8edcff" strokeWidth="0.3" strokeDasharray="3,3" fill="none" opacity="0.3" />
+                      
+                      {/* Detailed Space Satellite */}
                       <motion.g
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
+                        initial={{ opacity: 0, x: -10, y: -10 }}
+                        animate={{ opacity: 1, x: 0, y: 0 }}
+                        transition={{ duration: 0.6 }}
                       >
-                        <circle cx="50" cy="20" r="4" fill="#8edcff" className="animate-pulse" />
-                        <line x1="45" y1="20" x2="55" y2="20" stroke="#8edcff" strokeWidth="1.5" />
-                        <line x1="40" y1="20" x2="43" y2="20" stroke="#8edcff" strokeWidth="1" />
-                        <line x1="57" y1="20" x2="60" y2="20" stroke="#8edcff" strokeWidth="1" />
+                        {/* Connection line */}
+                        <line x1="30" y1="16" x2="50" y2="40" stroke="#8edcff" strokeWidth="0.4" strokeDasharray="2,2" opacity="0.4" />
+                        
+                        {/* Satellite dish assembly */}
+                        <circle cx="30" cy="16" r="3.5" fill="#001A33" stroke="#8edcff" strokeWidth="0.8" />
+                        <circle cx="30" cy="16" r="1.2" fill="#8edcff" className="animate-pulse" />
+                        
+                        {/* Dual Solar Panels */}
+                        <rect x="18" y="14" width="7" height="3" fill="#003366" stroke="#8edcff" strokeWidth="0.4" />
+                        <rect x="35" y="14" width="7" height="3" fill="#003366" stroke="#8edcff" strokeWidth="0.4" />
+                        <line x1="25" y1="15.5" x2="35" y2="15.5" stroke="#8edcff" strokeWidth="0.5" />
+                        <text x="30" y="8" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">USA-MIL-SAT</text>
                       </motion.g>
 
-                      {/* Scanning Cone */}
-                      <polygon
-                        points="50,20 15,90 85,90"
-                        fill="url(#sensing-cone-gradient)"
-                        opacity="0.25"
-                      />
+                      {/* E-2D Hawkeye Airborne Early Warning Plane */}
+                      <motion.g
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.15 }}
+                      >
+                        {/* Plane silhouette */}
+                        <polygon points="50,34 52,38 56,38 50,44 44,38 48,38" fill="#8edcff" opacity="0.9" />
+                        <line x1="38" y1="38" x2="62" y2="38" stroke="#8edcff" strokeWidth="1.2" />
+                        
+                        {/* Rotating Rotodome Radar Disk */}
+                        <ellipse cx="50" cy="33" rx="7" ry="1.5" fill="#001A33" stroke="#8edcff" strokeWidth="0.75" />
+                        <line x1="50" y1="33" x2="50" y2="35.5" stroke="#8edcff" strokeWidth="0.6" />
+                        
+                        {/* Glowing radar rings radiating from E-2D */}
+                        <circle cx="50" cy="33" r="10" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.35" className="animate-ping" style={{ animationDuration: '2.5s' }} />
+                        <text x="50" y="49" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">E-2D HAWKEYE</text>
+                      </motion.g>
 
-                      {/* Ships / Target nodes */}
-                      <circle cx="25" cy="80" r="3" fill="#ffffff" opacity="0.8" />
-                      <text x="21" y="90" fill="#ffffff" opacity="0.4" fontSize="5" className="navy-font-mono">CVN</text>
-                      <circle cx="75" cy="80" r="3" fill="#ffffff" opacity="0.8" />
-                      <text x="71" y="90" fill="#ffffff" opacity="0.4" fontSize="5" className="navy-font-mono">DDG</text>
+                      {/* Undersea Submarine (Bottom Left) */}
+                      <motion.g
+                        initial={{ opacity: 0, x: -15 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                      >
+                        {/* Submarine Silhouette */}
+                        <rect x="14" y="78" width="15" height="3" rx="1.5" fill="#8edcff" opacity="0.85" />
+                        <rect x="21" y="74" width="3" height="4" fill="#8edcff" opacity="0.85" />
+                        <line x1="22.5" y1="74" x2="22.5" y2="71" stroke="#8edcff" strokeWidth="0.5" /> {/* Periscope */}
+                        
+                        {/* Pulsating Sonar sound waves */}
+                        <path d="M 8 75 A 8 8 0 0 0 8 84" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.5" className="animate-pulse" />
+                        <path d="M 6 72 A 12 12 0 0 0 6 87" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.3" className="animate-pulse" />
+                        
+                        <text x="21.5" y="87" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">VIRGINIA-SSN</text>
+                      </motion.g>
 
-                      {/* Radiating scanner waves */}
-                      <circle cx="50" cy="20" r="20" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.3" className="animate-ping" style={{ animationDuration: '3s' }} />
-                      <circle cx="50" cy="20" r="40" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.2" className="animate-ping" style={{ animationDuration: '4.5s' }} />
+                      {/* Surface Arleigh Burke Destroyer (Bottom Right) */}
+                      <motion.g
+                        initial={{ opacity: 0, x: 15 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                      >
+                        {/* Destroyer Silhouette */}
+                        <polygon points="68,79 84,79 87,74 65,74" fill="#8edcff" opacity="0.85" />
+                        <rect x="70" y="69" width="7" height="5" fill="#8edcff" opacity="0.85" />
+                        <line x1="77" y1="74" x2="81" y2="69" stroke="#8edcff" strokeWidth="0.8" /> {/* Gun mount */}
+                        
+                        <text x="76" y="87" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">DDG-FLIGHT III</text>
+                      </motion.g>
+
+                      {/* Integrated Net Link Lines */}
+                      <line x1="30" y1="16" x2="50" y2="33" stroke="#8edcff" strokeWidth="0.5" strokeDasharray="2,2" opacity="0.5" />
+                      <line x1="50" y1="38" x2="21.5" y2="74" stroke="#8edcff" strokeWidth="0.5" strokeDasharray="2,2" opacity="0.5" />
+                      <line x1="50" y1="38" x2="76" y2="74" stroke="#8edcff" strokeWidth="0.5" strokeDasharray="2,2" opacity="0.5" />
+                      <line x1="21.5" y1="78" x2="68" y2="76" stroke="#8edcff" strokeWidth="0.4" strokeDasharray="3,3" opacity="0.4" /> {/* Undersea acoustic line */}
+
+                      {/* Animated scanning cone */}
+                      <polygon points="50,33 15,74 85,74" fill="url(#sensing-cone-gradient)" opacity="0.12" />
 
                       <defs>
                         <linearGradient id="sensing-cone-gradient" x1="0" x2="0" y1="0" y2="1">
@@ -997,44 +1051,80 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                 {/* 2. Decision Layer Graphic */}
                 {activeIdx === 1 && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <svg className="w-full h-full p-4" viewBox="0 0 100 100">
-                      {/* Aegis Radar concentric circles */}
-                      <circle cx="50" cy="50" r="10" stroke="#f2d48a" strokeWidth="0.5" fill="none" opacity="0.2" />
-                      <circle cx="50" cy="50" r="25" stroke="#f2d48a" strokeWidth="0.5" fill="none" opacity="0.15" />
-                      <circle cx="50" cy="50" r="40" stroke="#f2d48a" strokeWidth="0.5" fill="none" opacity="0.1" />
+                    <svg className="w-full h-full p-2" viewBox="0 0 100 100">
+                      {/* Aegis Radar concentric scope compass rings */}
+                      <circle cx="50" cy="50" r="12" stroke="#f2d48a" strokeWidth="0.5" fill="none" opacity="0.2" />
+                      <circle cx="50" cy="50" r="28" stroke="#f2d48a" strokeWidth="0.5" fill="none" opacity="0.15" />
+                      <circle cx="50" cy="50" r="44" stroke="#f2d48a" strokeWidth="0.75" fill="none" opacity="0.3" />
 
-                      {/* Sweeper sweep */}
+                      {/* Compass Heading Labels */}
+                      <text x="50" y="10" fill="#f2d48a" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">N 000</text>
+                      <text x="92" y="51" fill="#f2d48a" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">E 090</text>
+                      <text x="50" y="93" fill="#f2d48a" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">S 180</text>
+                      <text x="8" y="51" fill="#f2d48a" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">W 270</text>
+
+                      {/* Aegis continuous rotative sweeper line */}
                       <motion.line
                         x1="50"
                         y1="50"
-                        x2="85"
-                        y2="15"
+                        x2="88"
+                        y2="28"
                         stroke="#f2d48a"
-                        strokeWidth="1"
-                        opacity="0.8"
+                        strokeWidth="1.2"
+                        opacity="0.75"
                         animate={{ rotate: 360 }}
-                        transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+                        transition={{ repeat: Infinity, duration: 4.5, ease: "linear" }}
                         style={{ transformOrigin: "50px 50px" }}
                       />
 
-                      {/* Connected Mesh nodes */}
+                      {/* Connected Tactical Mesh Nodes */}
                       <g fill="#f2d48a">
-                        <circle cx="50" cy="50" r="5" className="animate-pulse" />
-                        <circle cx="25" cy="35" r="3" />
-                        <line x1="50" y1="50" x2="25" y2="35" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.6" />
+                        {/* Central Decision Hub Core */}
+                        <circle cx="50" cy="50" r="4.5" className="animate-pulse" />
                         
-                        <circle cx="75" cy="40" r="3" />
-                        <line x1="50" y1="50" x2="75" y2="40" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.6" />
-                        
-                        <circle cx="60" cy="75" r="3" />
-                        <line x1="50" y1="50" x2="60" y2="75" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.6" />
+                        {/* Node 1: TRK-882 */}
+                        <circle cx="28" cy="32" r="2.5" />
+                        <line x1="50" y1="50" x2="28" y2="32" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
+                        <text x="24" y="27" fill="#f2d48a" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-882</text>
+                        <text x="24" y="30.5" fill="#f2d48a" fontSize="2" className="navy-font-mono" opacity="0.5">AZ:284 RNG:120</text>
 
-                        <circle cx="35" cy="70" r="3" />
-                        <line x1="50" y1="50" x2="35" y2="70" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.6" />
+                        {/* Node 2: TRK-491 */}
+                        <circle cx="72" cy="38" r="2.5" />
+                        <line x1="50" y1="50" x2="72" y2="38" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
+                        <text x="75" y="34" fill="#f2d48a" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-491</text>
+                        <text x="75" y="37.5" fill="#f2d48a" fontSize="2" className="navy-font-mono" opacity="0.5">AZ:084 RNG:402</text>
+
+                        {/* Node 3: TRK-504 */}
+                        <circle cx="64" cy="70" r="2.5" />
+                        <line x1="50" y1="50" x2="64" y2="70" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
+                        <text x="67" y="75" fill="#f2d48a" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-504</text>
+
+                        {/* Node 4: TRK-119 */}
+                        <circle cx="34" cy="68" r="2.5" />
+                        <line x1="50" y1="50" x2="34" y2="68" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
+                        <text x="22" y="74" fill="#f2d48a" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-119</text>
                       </g>
 
-                      {/* Text indicator */}
-                      <text x="40" y="42" fill="#f2d48a" fontSize="4" fontWeight="bold" className="navy-font-mono animate-pulse">CDC FUSE</text>
+                      {/* Moving Data Packets (Neon Dots flowing along links) */}
+                      <motion.circle
+                        cx="28" cy="32" r="1.5" fill="#ffffff"
+                        animate={{ cx: [28, 50], cy: [32, 50] }}
+                        transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                      />
+                      <motion.circle
+                        cx="72" cy="38" r="1.5" fill="#ffffff"
+                        animate={{ cx: [72, 50], cy: [38, 50] }}
+                        transition={{ repeat: Infinity, duration: 2.5, ease: "linear" }}
+                      />
+                      <motion.circle
+                        cx="34" cy="68" r="1.5" fill="#ffffff"
+                        animate={{ cx: [34, 50], cy: [68, 50] }}
+                        transition={{ repeat: Infinity, duration: 1.8, ease: "linear" }}
+                      />
+
+                      {/* Interactive text badge */}
+                      <rect x="36" y="44" width="28" height="6" fill="#001A33" stroke="#f2d48a" strokeWidth="0.5" rx="1" />
+                      <text x="50" y="48.5" fill="#f2d48a" fontSize="2.8" textAnchor="middle" fontWeight="bold" className="navy-font-mono animate-pulse">AEGIS LINK</text>
                     </svg>
                   </div>
                 )}
@@ -1042,46 +1132,96 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                 {/* 3. Effect Layer Graphic */}
                 {activeIdx === 2 && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <svg className="w-full h-full p-4" viewBox="0 0 100 100">
-                      {/* Crosshair guidelines */}
-                      <line x1="10" y1="50" x2="90" y2="50" stroke="#ff7a7a" strokeWidth="0.5" strokeDasharray="4,4" opacity="0.3" />
-                      <line x1="50" y1="10" x2="50" y2="90" stroke="#ff7a7a" strokeWidth="0.5" strokeDasharray="4,4" opacity="0.3" />
-                      <circle cx="50" cy="50" r="30" stroke="#ff7a7a" strokeWidth="0.5" fill="none" opacity="0.3" />
-                      <circle cx="50" cy="50" r="3" fill="#ff7a7a" />
+                    <svg className="w-full h-full p-2" viewBox="0 0 100 100">
+                      {/* Crosshair target scope lines */}
+                      <line x1="8" y1="50" x2="92" y2="50" stroke="#ff7a7a" strokeWidth="0.4" strokeDasharray="3,3" opacity="0.4" />
+                      <line x1="50" y1="8" x2="50" y2="92" stroke="#ff7a7a" strokeWidth="0.4" strokeDasharray="3,3" opacity="0.4" />
+                      <circle cx="50" cy="50" r="38" stroke="#ff7a7a" strokeWidth="0.5" fill="none" opacity="0.2" />
+                      <circle cx="50" cy="50" r="22" stroke="#ff7a7a" strokeWidth="0.6" fill="none" opacity="0.35" />
+                      <circle cx="50" cy="50" r="2.5" fill="#ff7a7a" />
 
-                      {/* Lock-on target blips */}
+                      {/* Live System Status Waveform (Top Right) */}
+                      <path d="M 68 18 L 71 23 L 74 12 L 77 28 L 80 10 L 83 22 L 86 18 L 89 20" fill="none" stroke="#ff7a7a" strokeWidth="0.8" opacity="0.6" className="animate-pulse" />
+                      <text x="68" y="9.5" fill="#ff7a7a" fontSize="3" className="navy-font-mono font-black" opacity="0.8">WARHEAD CHARGED</text>
+
+                      {/* Detailed Surface Destroyer Firing VLS (Bottom Left) */}
+                      <motion.g
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        {/* Deck silhouette */}
+                        <polygon points="5,88 24,88 28,82 1,82" fill="#ff7a7a" opacity="0.65" />
+                        <rect x="11" y="82" width="6" height="1" fill="#ffffff" />
+                        
+                        {/* Rising hypersonic interceptor missile */}
+                        <line x1="14" y1="82" x2="14" y2="70" stroke="#ffffff" strokeWidth="1.2" />
+                        <polygon points="14,66 12.5,70 15.5,70" fill="#ffffff" />
+                        
+                        {/* Glowing orange exhaust plume trail */}
+                        <polygon points="12,82 16,82 14,88" fill="url(#fire-plume-gradient)" opacity="0.8" />
+                        
+                        <text x="14" y="94" fill="#ff7a7a" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">VLS Mk 41</text>
+                      </motion.g>
+
+                      {/* Lock-on target 1 tracking coordinates brackets */}
                       <motion.g
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.1 }}
                       >
-                        <circle cx="68" cy="30" r="4" fill="none" stroke="#ff7a7a" strokeWidth="1.2" className="animate-ping" style={{ animationDuration: '1.5s' }} />
-                        <polygon points="68,26 68,34" stroke="#ff7a7a" strokeWidth="0.8" />
-                        <polygon points="64,30 72,30" stroke="#ff7a7a" strokeWidth="0.8" />
-                        <text x="74" y="32" fill="#ff7a7a" fontSize="4.5" className="navy-font-mono font-black">LOCK [TR-01]</text>
+                        {/* Pulsing ring target lock */}
+                        <circle cx="68" cy="30" r="4.5" fill="none" stroke="#ff7a7a" strokeWidth="1.2" className="animate-ping" style={{ animationDuration: '1.5s' }} />
+                        <circle cx="68" cy="30" r="1.5" fill="#ff7a7a" />
+                        
+                        {/* Closing targeting brackets [  ] */}
+                        <path d="M 62 25 L 64 25 L 64 27" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
+                        <path d="M 74 25 L 72 25 L 72 27" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
+                        <path d="M 62 35 L 64 35 L 64 33" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
+                        <path d="M 74 35 L 72 35 L 72 33" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
+                        
+                        <text x="68" y="40.5" fill="#ff7a7a" fontSize="2.8" textAnchor="middle" className="navy-font-mono font-black">LOCK [TR-01]</text>
+                        <text x="68" y="44" fill="#ff7a7a" fontSize="2.2" textAnchor="middle" className="navy-font-mono" opacity="0.5">AZ:084 EL:15</text>
                       </motion.g>
 
+                      {/* Lock-on target 2 tracking coordinates brackets */}
                       <motion.g
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3 }}
+                        transition={{ delay: 0.35 }}
                       >
-                        <circle cx="30" cy="65" r="4" fill="none" stroke="#ff7a7a" strokeWidth="1.2" className="animate-ping" style={{ animationDuration: '2s' }} />
-                        <polygon points="30,61 30,69" stroke="#ff7a7a" strokeWidth="0.8" />
-                        <polygon points="26,65 34,65" stroke="#ff7a7a" strokeWidth="0.8" />
-                        <text x="36" y="67" fill="#ff7a7a" fontSize="4.5" className="navy-font-mono font-black">LOCK [TR-02]</text>
+                        {/* Pulsing ring target lock */}
+                        <circle cx="34" cy="62" r="4.5" fill="none" stroke="#ff7a7a" strokeWidth="1.2" className="animate-ping" style={{ animationDuration: '2s' }} />
+                        <circle cx="34" cy="62" r="1.5" fill="#ff7a7a" />
+                        
+                        {/* Targeting brackets [  ] */}
+                        <path d="M 28 57 L 30 57 L 30 59" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
+                        <path d="M 40 57 L 38 57 L 38 59" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
+                        <path d="M 28 67 L 30 67 L 30 65" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
+                        <path d="M 40 67 L 38 67 L 38 65" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
+                        
+                        <text x="34" y="72.5" fill="#ff7a7a" fontSize="2.8" textAnchor="middle" className="navy-font-mono font-black">LOCK [TR-02]</text>
+                        <text x="34" y="76" fill="#ff7a7a" fontSize="2.2" textAnchor="middle" className="navy-font-mono" opacity="0.5">AZ:284 EL:08</text>
                       </motion.g>
 
-                      {/* Launch vector trajectory line */}
+                      {/* Launch flight vector trajectory curve */}
                       <motion.path
-                        d="M 15 90 Q 30 45 68 30"
+                        d="M 14 74 Q 35 40 68 30"
                         fill="none"
                         stroke="#ff7a7a"
                         strokeWidth="1.5"
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: 1 }}
-                        transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
+                        transition={{ duration: 1.6, repeat: Infinity, repeatDelay: 1 }}
                       />
+
+                      <defs>
+                        <linearGradient id="fire-plume-gradient" x1="0" x2="0" y1="0" y2="1">
+                          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
+                          <stop offset="50%" stopColor="#ff7a7a" stopOpacity="0.7" />
+                          <stop offset="100%" stopColor="#ff7a7a" stopOpacity="0" />
+                        </linearGradient>
+                      </defs>
                     </svg>
                   </div>
                 )}
