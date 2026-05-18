@@ -319,15 +319,22 @@ export function NavyHero({
 
 export function NavyMetricStrip({ metrics, locale = "en" }: { metrics: NavyMetric[]; locale?: Locale }) {
   return (
-    <section className="border-y border-white/5 bg-[#020202]">
+    <section className="border-y border-white/5 bg-black">
       <div className="mx-auto grid max-w-[1520px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {metrics.map((metric) => (
-          <div key={metric.label} className="min-h-52 border-b border-r border-white/5 p-8 lg:border-b-0 last:border-r-0">
-            <div className="navy-font-display text-5xl font-extralight text-white">
-              <NavyCountUp value={metric.value} />
+          <div key={metric.label} className="flex flex-col px-8 py-12 border-r border-b border-white/5 last:border-r-0">
+            <div className="mil-text-metadata mb-6 tracking-[0.3em] font-black text-white">{metric.label}</div>
+            <div className="flex items-baseline gap-1">
+              <span className="text-[clamp(48px,7vw,96px)] font-extralight tracking-tighter leading-none text-white">
+                <NavyCountUp value={metric.value} />
+              </span>
             </div>
-            <div className="mt-5 text-xs font-bold uppercase tracking-widest text-white/70">{metric.label}</div>
-            <p className="mt-5 max-w-xs text-xs leading-relaxed text-white/40">{metric.detail}</p>
+            <div className="mt-6 mb-4 h-px w-full" style={{
+              background: 'linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0.05), transparent)'
+            }} />
+            <div className="mil-text-metadata max-w-[280px] leading-relaxed opacity-60 text-[11px] font-medium tracking-wide text-white/70">
+              {metric.detail}
+            </div>
           </div>
         ))}
       </div>
