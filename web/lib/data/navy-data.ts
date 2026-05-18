@@ -1,4 +1,5 @@
 import { SITE_IMAGES } from "@/lib/site-images";
+import type { Locale } from "@/lib/i18n/config";
 
 export interface NavyMetric {
   value: string;
@@ -59,6 +60,8 @@ export interface NavyTheater {
   accent: string;
   metrics: { label: string; value: string }[];
 }
+
+// ─── English Raw Constants ───────────────────────────────────────────────────
 
 export const NAVY_METRICS: NavyMetric[] = [
   {
@@ -336,3 +339,303 @@ export const NAVY_VISUAL_PANELS: NavyVisualPanel[] = [
     imageAlt: "Two U.S. Navy carrier strike groups operating together",
   },
 ];
+
+// ─── Localized Getters ────────────────────────────────────────────────────────
+
+export function getNavyMetrics(locale: Locale): NavyMetric[] {
+  if (locale !== "ro") return NAVY_METRICS;
+  return [
+    {
+      value: "11",
+      label: "Portavioane Nucleare",
+      detail: "Singura națiune care operează o flotă de superportavioane cu propulsie nucleară la această scară.",
+    },
+    {
+      value: "14",
+      label: "Submarine SSBN",
+      detail: "Submarinele din clasa Ohio cu rachete balistice formează componenta maritimă a descurajării nucleare.",
+    },
+    {
+      value: "290+",
+      label: "Nave de Luptă",
+      detail: "O flotă globală construită în jurul portavioanelor, submarinelor, distrugătoarelor, navelor amfibii și logisticii.",
+    },
+    {
+      value: "5th",
+      label: "Generația Aeriană",
+      detail: "F-35C, E-2D, EA-18G, Super Hornet și MQ-25 creează un ecosistem aerian de portavion bogat în senzori.",
+    },
+  ];
+}
+
+export function getNavyCapabilities(locale: Locale): NavyCapability[] {
+  if (locale !== "ro") return NAVY_CAPABILITIES;
+  return [
+    {
+      kicker: "Rază în ape deschise",
+      title: "Grupuri de Atac",
+      description:
+        "Un grup de atac de portavioane este o bază aeriană mobilă, baterie de rachete, rețea de senzori, nod de comandă și prezență americană suverană.",
+      stat: "70+ aeronave",
+      accent: "#d7f2ff",
+    },
+    {
+      kicker: "Descurajare silențioasă",
+      title: "Dominanță Subacvatică",
+      description:
+        "Submarinele de atac vânează, cartografiază, monitorizează și colectează informații. Submarinele cu rachete balistice rămân ascunse pentru a garanta capacitatea de contraatac.",
+      stat: "patrulă 24/7",
+      accent: "#70e0bf",
+    },
+    {
+      kicker: "Control integrat al focului",
+      title: "Sistemul de Luptă Aegis",
+      description:
+        "Aegis fuzionează senzorii navei, armele, software-ul de comandă și angajamentul cooperativ într-o arhitectură de apărare aeriană și antirachetă la nivelul întregii flote.",
+      stat: "100+ ținte",
+      accent: "#f2d48a",
+    },
+    {
+      kicker: "Avantaj autonom",
+      title: "Echipe Oameni-Mașini",
+      description:
+        "Sistemele autonome de suprafață, aeriene și subacvatice extind capacitatea de detectare, țintire, momeală, logistică și atac în spațiul de luptă maritim.",
+      stat: "distribuit",
+      accent: "#ff7a7a",
+    },
+  ];
+}
+
+export function getNavyPlatforms(locale: Locale): NavyPlatform[] {
+  if (locale !== "ro") return NAVY_PLATFORMS;
+  return [
+    {
+      name: "USS Gerald R. Ford",
+      className: "Clasa Ford CVN",
+      role: "Portavion de generație următoare",
+      imageSrc: SITE_IMAGES.navy.geraldFord,
+      imageAlt: "Portavionul USS Gerald R. Ford pe mare",
+      capability:
+        "Lansare electromagnetică a aeronavelor, dispozitive avansate de reținere la aterizare, mișcare reproiectată a armelor și o arhitectură superioară de generare a sortilor.",
+      specs: [
+        { label: "Propulsie", value: "Nucleară" },
+        { label: "Grup Aerian", value: "70+ aeronave" },
+        { label: "Echipaj", value: "4.500+" },
+        { label: "Domeniu", value: "Comandă aer-mare" },
+      ],
+    },
+    {
+      name: "Ohio-class SSBN",
+      className: "Submarin cu rachete balistice",
+      role: "Descurajare strategică",
+      imageSrc: SITE_IMAGES.navy.ohioSubmarine,
+      imageAlt: "Submarin din clasa Ohio la suprafață",
+      capability:
+        "Cea mai silențioasă și mai supraviețuitoare componentă a triadei nucleare, concepută să dispară în ocean și să rămână decisivă din punct de vedere politic.",
+      specs: [
+        { label: "Flotă", value: "14 submarine" },
+        { label: "Armament", value: "Trident II D5" },
+        { label: "Patrulă", value: "Nedetectat" },
+        { label: "Misiune", value: "Contraatac strategic" },
+      ],
+    },
+    {
+      name: "Arleigh Burke Flight III",
+      className: "Distrugător cu rachete ghidate",
+      role: "Apărare aeriană și antirachetă",
+      imageSrc: SITE_IMAGES.navy.destroyer,
+      imageAlt: "Distrugător american clasa Arleigh Burke pe mare",
+      capability:
+        "Coloana vertebrală a luptei de suprafață: celule de lansare verticală, apărare împotriva rachetelor balistice, război antisubmarin, atac și misiuni de escortă.",
+      specs: [
+        { label: "Luptă", value: "Aegis" },
+        { label: "Radar", value: "SPY-6" },
+        { label: "Arme", value: "Mk 41 VLS" },
+        { label: "Rol", value: "Scutul flotei" },
+      ],
+    },
+    {
+      name: "F/A-18F Super Hornet",
+      className: "Avion de vânătoare ambarcat",
+      role: "Aviație navală",
+      imageSrc: SITE_IMAGES.navy.fa18Landing,
+      imageAlt: "Avion F/A-18F Super Hornet aterizând pe portavion",
+      capability:
+        "Un avion de luptă naval dovedit în luptă, construit pentru lansare de pe portavion, atac de precizie, apărare a flotei și operațiuni de mare intensitate pe mare.",
+      specs: [
+        { label: "Lansare", value: "Catapultă" },
+        { label: "Aterizare", value: "Cârlig de arestare" },
+        { label: "Misiune", value: "Atac/apărare flotă" },
+        { label: "Ritm", value: "Operațiuni ciclice" },
+      ],
+    },
+  ];
+}
+
+export function getNavyCommandLayers(locale: Locale): NavyCommandLayer[] {
+  if (locale !== "ro") return NAVY_COMMAND_LAYERS;
+  return [
+    {
+      title: "Stratul de Detecție",
+      subtitle: "Sateliți, E-2D, P-8A, submarine, distrugătoare, senzori pasivi",
+      description:
+        "Flota câștigă în primul rând prin vizibilitate. Fiecare platformă este un senzor, fiecare senzor contribuie la o imagine maritimă mai largă, iar fiecare imagine comprimă timpul de decizie.",
+      nodes: ["ISR", "antene acustice", "avertizare timpurie", "ghidare spațială"],
+      accent: "#d7f2ff",
+    },
+    {
+      title: "Stratul de Decizie",
+      subtitle: "Centre de luptă, Aegis, CEC, Link 16, rețele de comandă comune",
+      description:
+        "Avantajul Marinei nu constă doar în oțel. Este capacitatea de a converti informațiile distribuite în acțiune coordonată mai rapid decât poate un adversar să izoleze o singură navă.",
+      nodes: ["Aegis", "CEC", "focuri comune", "comandă misiune"],
+      accent: "#f2d48a",
+    },
+    {
+      title: "Stratul de Efect",
+      subtitle: "Aviație de portavion, Tomahawk, rachete din seria SM, torpile, infanterie marină, cyber",
+      description:
+        "Un grup de atac de portavioane se poate apăra singur, poate deschide spațiul aerian, poate lovi în interiorul uscatului, poate proteja aliații și poate gestiona o criză fără a avea nevoie de o pistă străină.",
+      nodes: ["grup aerian", "sisteme VLS", "atac subacvatic", "forță amfibie"],
+      accent: "#ff7a7a",
+    },
+  ];
+}
+
+export function getNavyTheaters(locale: Locale): NavyTheater[] {
+  if (locale !== "ro") return NAVY_THEATERS;
+  return [
+    {
+      id: "indo-pacific",
+      name: "Indo-Pacific",
+      region: "Flota a Șaptea",
+      headline: "Teatrul maritim decisiv",
+      description:
+        "Aviația de portavion, submarinele, distrugătoarele, infanteriștii marini, ghidarea spațială și bazele aliate se combină într-o arhitectură maritimă stratificată pe cel mai mare ocean al lumii.",
+      signal: "Prezență avansată la scară",
+      imageSrc: SITE_IMAGES.navy.carrierFormation,
+      imageAlt: "Grup de atac de portavioane american în formație",
+      accent: "#8edcff",
+      metrics: [
+        { label: "Poziție flotă", value: "avansată" },
+        { label: "Domeniu primar", value: "aer-mare" },
+        { label: "Integrare aliați", value: "ridicată" },
+      ],
+    },
+    {
+      id: "atlantic",
+      name: "Atlantic",
+      region: "Flota a Doua",
+      headline: "Căi subacvatice și rute de întărire",
+      description:
+        "Atlanticul este podul de întărire pentru NATO, competiția subacvatică pentru submarine și ruta logistică ce menține credibilă descurajarea europeană.",
+      signal: "Logica convoaielor, modernizată",
+      imageSrc: SITE_IMAGES.navy.geraldFord,
+      imageAlt: "Portavionul USS Gerald R. Ford în Oceanul Atlantic",
+      accent: "#70e0bf",
+      metrics: [
+        { label: "Tip misiune", value: "descurajare" },
+        { label: "Ritm", value: "persistent" },
+        { label: "Valoare subacvatică", value: "critică" },
+      ],
+    },
+    {
+      id: "mediterranean",
+      name: "Mediterană",
+      region: "Flota a Șasea",
+      headline: "Răspuns la criză fără pistă de aterizare",
+      description:
+        "O mare compactă oferă Marinei prezență politică imediată, apărare antirachetă, opțiuni de atac, capacitate de evacuare și integrare aliată din Europa până în Orientul Mijlociu.",
+      signal: "Acces rapid în teatru",
+      imageSrc: SITE_IMAGES.navy.dualCarrier,
+      imageAlt: "Două grupuri de atac de portavioane operând împreună în Mediterană",
+      accent: "#f2d48a",
+      metrics: [
+        { label: "Răspuns", value: "rapid" },
+        { label: "Acoperire", value: "densă" },
+        { label: "Semnal diplomatic", value: "vizibil" },
+      ],
+    },
+    {
+      id: "deck",
+      name: "Puntea de Zbor",
+      region: "Grupul Aerian de Portavion",
+      headline: "Operațiuni aerospațiale în ritm industrial",
+      description:
+        "Puntea de zbor este coregrafie sub presiune: lansare, recuperare, mișcarea armelor, întreținere, combustibil, disciplină de comandă și sincronizare de precizie.",
+      signal: "Generare de sortii",
+      imageSrc: SITE_IMAGES.navy.flightDeck,
+      imageAlt: "Activitate intensă pe puntea de zbor a unui portavion",
+      accent: "#ff7a7a",
+      metrics: [
+        { label: "Ciclu", value: "minute" },
+        { label: "Tip sistem", value: "om-mașină" },
+        { label: "Presiune", value: "extremă" },
+      ],
+    },
+  ];
+}
+
+export function getNavyFuturePrograms(locale: Locale): NavyFutureProgram[] {
+  if (locale !== "ro") return NAVY_FUTURE_PROGRAMS;
+  return [
+    {
+      label: "MQ-25",
+      title: "Alimentare autonomă pe portavion",
+      description:
+        "Extinde raza de acțiune a grupului aerian de portavion și introduce aviația fără pilot direct în operațiunile ciclice de pe punte.",
+      status: "integrare în flotă",
+    },
+    {
+      label: "Columbia",
+      title: "Următorul submarin strategic",
+      description:
+        "Programul de înlocuire a clasei Ohio este construit pentru a păstra cea mai stabilă componentă a descurajării nucleare până în anii 2080.",
+      status: "construcție",
+    },
+    {
+      label: "SPY-6",
+      title: "Arhitectură radar digitală",
+      description:
+        "O familie de radare scalabile pentru apărarea aeriană și antirachetă, concepută în jurul sensibilității, dezvoltării software și comunității flotei.",
+      status: "instalare",
+    },
+    {
+      label: "OUSV",
+      title: "Nave de suprafață fără echipaj",
+      description:
+        "Navele prototip testează autonomia, modularitatea încărcăturii utile, detecția distribuită și tacticile necesare pentru flotele mixte om-mașină.",
+      status: "experimentare",
+    },
+  ];
+}
+
+export function getNavyVisualPanels(locale: Locale): NavyVisualPanel[] {
+  if (locale !== "ro") return NAVY_VISUAL_PANELS;
+  return [
+    {
+      eyebrow: "Puntea de zbor ca fabrică",
+      title: "O linie de producție aerospațială în mișcare",
+      description:
+        "Lansează, recuperează, înarmează, alimentează, repară și lansează din nou. Puntea transformă puterea navală într-un ritm industrial repetabil pe mare.",
+      imageSrc: SITE_IMAGES.navy.flightDeck,
+      imageAlt: "Operațiuni pe puntea de zbor a portavionului american",
+    },
+    {
+      eyebrow: "Control maritim distribuit",
+      title: "Flota este o rețea, nu o formație",
+      description:
+        "Distrugătoarele, crucișătoarele, submarinele, aeronavele, sateliții, infanteriștii marini și navele logistice operează ca o singură mașină adaptivă.",
+      imageSrc: SITE_IMAGES.navy.carrierFormation,
+      imageAlt: "Grup de atac de portavioane american navigând în Ocean",
+    },
+    {
+      eyebrow: "Energia navelor mari",
+      title: "Masă, precizie și prezență americană",
+      description:
+        "Portavionul nu este doar o navă. Este un semnal diplomatic, o opțiune strategică și o expresie densă din punct de vedere tehnologic a voinței naționale.",
+      imageSrc: SITE_IMAGES.navy.dualCarrier,
+      imageAlt: "Două superportavioane americane navigând în paralel",
+    },
+  ];
+}

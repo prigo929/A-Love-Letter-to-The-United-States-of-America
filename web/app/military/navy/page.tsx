@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getServerLocale } from "@/lib/i18n/server";
 import {
   NavyCapabilityGrid,
   NavyClosing,
@@ -13,13 +14,13 @@ import {
   NavyStyles,
 } from "@/components/military/NavyPageComponents";
 import {
-  NAVY_CAPABILITIES,
-  NAVY_COMMAND_LAYERS,
-  NAVY_FUTURE_PROGRAMS,
-  NAVY_METRICS,
-  NAVY_PLATFORMS,
-  NAVY_THEATERS,
-  NAVY_VISUAL_PANELS,
+  getNavyMetrics,
+  getNavyCapabilities,
+  getNavyPlatforms,
+  getNavyCommandLayers,
+  getNavyTheaters,
+  getNavyFuturePrograms,
+  getNavyVisualPanels,
 } from "@/lib/data/navy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 
@@ -35,22 +36,32 @@ export const metadata: Metadata = {
   },
 };
 
-export default function NavyPage() {
+export default async function NavyPage() {
+  const locale = await getServerLocale();
+
+  const metrics = getNavyMetrics(locale);
+  const capabilities = getNavyCapabilities(locale);
+  const theaters = getNavyTheaters(locale);
+  const platforms = getNavyPlatforms(locale);
+  const layers = getNavyCommandLayers(locale);
+  const programs = getNavyFuturePrograms(locale);
+  const visualPanels = getNavyVisualPanels(locale);
+
   return (
-    <div className="navy-page min-h-screen overflow-hidden bg-[#030507] text-white">
+    <div className="navy-page min-h-screen overflow-hidden bg-black text-white">
       <NavyStyles />
       <NavyPageProgress />
-      <NavyHero metrics={NAVY_METRICS} imageSrc={SITE_IMAGES.navy.hero} />
-      <NavyMetricStrip metrics={NAVY_METRICS} />
-      <NavyCapabilityGrid capabilities={NAVY_CAPABILITIES} />
-      <NavyOperationalConsole theaters={NAVY_THEATERS} />
-      <NavyFullscreenPanel panel={NAVY_VISUAL_PANELS[0]} />
-      <NavyPlatformShowcase platforms={NAVY_PLATFORMS} />
-      <NavyCommandStack layers={NAVY_COMMAND_LAYERS} />
-      <NavyFullscreenPanel panel={NAVY_VISUAL_PANELS[1]} reverse />
-      <NavyFutureStack programs={NAVY_FUTURE_PROGRAMS} />
-      <NavyFullscreenPanel panel={NAVY_VISUAL_PANELS[2]} />
-      <NavyClosing />
+      <NavyHero metrics={metrics} imageSrc={SITE_IMAGES.navy.hero} locale={locale} />
+      <NavyMetricStrip metrics={metrics} locale={locale} />
+      <NavyCapabilityGrid capabilities={capabilities} locale={locale} />
+      <NavyOperationalConsole theaters={theaters} locale={locale} />
+      <NavyFullscreenPanel panel={visualPanels[0]} locale={locale} />
+      <NavyPlatformShowcase platforms={platforms} locale={locale} />
+      <NavyCommandStack layers={layers} locale={locale} />
+      <NavyFullscreenPanel panel={visualPanels[1]} reverse locale={locale} />
+      <NavyFutureStack programs={programs} locale={locale} />
+      <NavyFullscreenPanel panel={visualPanels[2]} locale={locale} />
+      <NavyClosing locale={locale} />
     </div>
   );
 }
