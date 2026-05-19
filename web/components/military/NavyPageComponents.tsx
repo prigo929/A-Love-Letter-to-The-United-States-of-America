@@ -1979,207 +1979,6 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
   const [activeTab, setActiveTab] = useState(0);
   const weapon = weapons[activeTab];
 
-  // Component parts datasets computed based on active weapon
-  const weaponParts = {
-    tomahawk: [
-      {
-        id: "guidance",
-        name: locale === "ro" ? "SISTEM DE GHIDARE (TERCOM/DSMAC)" : "GUIDANCE SYSTEM (TERCOM/DSMAC)",
-        desc: locale === "ro"
-          ? "Utilizează potrivirea conturului terenului și corelarea scenelor digitale pentru a naviga autonom la altitudini extrem de joase, ocolind radarele inamice."
-          : "Uses Terrain Contour Matching & Digital Scene Matching Area Correlation to navigate autonomously at ultra-low altitudes, bypassing adversary radar screens.",
-        x: 77, y: 50
-      },
-      {
-        id: "warhead",
-        name: locale === "ro" ? "FOCUȘOR EXPLOZIBIL DE 450 KG" : "1,000 LB BLAST WARHEAD",
-        desc: locale === "ro"
-          ? "Încărcătură militară unitară de mare putere explozivă proiectată pentru penetrarea buncărelor și distrugerea centrelor de comandă și control."
-          : "High-explosive unitary blast/fragmentation warhead designed to destroy deeply fortified command networks and high-value target grids.",
-        x: 60, y: 50
-      },
-      {
-        id: "engine",
-        name: locale === "ro" ? "TURBOVENTILATOR WILLIAMS F107" : "WILLIAMS F107 TURBOFAN",
-        desc: locale === "ro"
-          ? "Un motor turboventilator ultra-compact ce asigură o viteză constantă de croazieră de Mach 0.74 cu o eficiență excepțională a combustibilului."
-          : "An ultra-compact turbofan engine generating sustained cruise speeds of Mach 0.74 with extreme fuel economy and minimal thermal footprint.",
-        x: 36, y: 50
-      },
-      {
-        id: "booster",
-        name: locale === "ro" ? "BOOSTER CU COMBUSTIBIL SOLID" : "SOLID ROCKET BOOSTER",
-        desc: locale === "ro"
-          ? "Asigură impulsul cinetic inițial pentru lansarea verticală din celulele de lansare (VLS) ale distrugătoarelor sau din tuburile submarine."
-          : "Provides the high-thrust kinetic impulse to launch the missile vertically out of destroyer VLS canisters or submarine launch tubes.",
-        x: 18, y: 50
-      }
-    ],
-    sm6: [
-      {
-        id: "radar",
-        name: locale === "ro" ? "SENZOR RADAR ACTIV INFRAROȘU" : "ACTIVE RADAR SEEKER",
-        desc: locale === "ro"
-          ? "Fuzionează un senzor radar activ cu un receptor semi-activ pentru a urmări ținte de mare viteză mult dincolo de linia orizontului."
-          : "Fuses an active radar seeker with a semi-active receiver to track and lock onto high-speed threats far beyond the radar horizon.",
-        x: 50, y: 18
-      },
-      {
-        id: "warhead",
-        name: locale === "ro" ? "ÎNCĂRCĂTURĂ DE APĂRARE" : "BLAST-FRAGMENTATION CORE",
-        desc: locale === "ro"
-          ? "Focos direcționat prin fragmentare cinematică, proiectat să neutralizeze rachetele balistice sau de croazieră inamice prin impact direct."
-          : "Kinetic-fragmentation defensive warhead designed to completely vaporize incoming supersonic aircraft or ballistic threats.",
-        x: 50, y: 35
-      },
-      {
-        id: "wings",
-        name: locale === "ro" ? "ARPIOARE DE CONTROL AL ZBORULUI" : "FLIGHT CONTROL SURFACES",
-        desc: locale === "ro"
-          ? "Aripioare pliabile aerodinamice ce oferă o agilitate extremă în faza terminală de interceptare, suportând forțe G ridicate."
-          : "Heavy-load folding fins and dynamic tail control grids that stabilize the missile and support extreme, high-G terminal intercept maneuvers.",
-        x: 60, y: 49
-      },
-      {
-        id: "booster",
-        name: locale === "ro" ? "BOOSTER INTEGRAT MK 72" : "MK 72 SOLID BOOSTER",
-        desc: locale === "ro"
-          ? "Primul etaj de propulsie ce oferă o accelerație verticală instantanee, propulsând racheta la viteze supersonice depășind Mach 3.5."
-          : "First-stage solid rocket booster providing instant vertical lift-off thrust, accelerating the weapon past Mach 3.5 within seconds.",
-        x: 50, y: 81
-      }
-    ],
-    mk48: [
-      {
-        id: "sonar",
-        name: locale === "ro" ? "DOM SONAR ACUSTIC COGNITIV" : "ACOUSTIC SONAR DOME",
-        desc: locale === "ro"
-          ? "Sistem avansat de ghidare acustică activă/pasivă care scanează mediul marin și filtrează contramăsurile și momelile inamice."
-          : "Advanced active/passive acoustic sonar array that scans the water column, digitally filtering out acoustic decoys and ocean noise.",
-        x: 12, y: 50
-      },
-      {
-        id: "warhead",
-        name: locale === "ro" ? "ÎNCĂRCĂTURĂ EXPLOZIVĂ DIRECTATĂ" : "HE DIRECTED BLAST CORPS",
-        desc: locale === "ro"
-          ? "Detonează la adâncime de precizie chiar sub chila navelor inamice, utilizând efectul de vid pentru a rupe structura navei."
-          : "Concentrated high-explosive warhead designed to detonate directly underneath an enemy hull, using air-vacuum force to snap the ship's spine.",
-        x: 32, y: 50
-      },
-      {
-        id: "fuel",
-        name: locale === "ro" ? "PROCTOR PROPELANT OTTO FUEL II" : "OTTO FUEL II PROPULSION",
-        desc: locale === "ro"
-          ? "Combustibil lichid monocomponent ce arde anaerob (fără oxigen extern) alimentând turbina cu gaz cu zgomot minim."
-          : "Single-component liquid fuel that ignites anaerobically to drive engine pistons at high pressure without requiring atmospheric oxygen.",
-        x: 52, y: 50
-      },
-      {
-        id: "propeller",
-        name: locale === "ro" ? "PROPULSOR SILENȚIOS CARE NU CAVITEAZĂ" : "SILENT COUNTER-ROTATING PROP",
-        desc: locale === "ro"
-          ? "Elice contrarotative de mare randament, închise într-un inel de ghidaj pentru a preveni cavitația și a asigura o vânătoare silențioasă."
-          : "High-torque contrarotating blades enclosed within a silent wake duct to suppress cavitation and ensure absolute acoustic stealth.",
-        x: 77, y: 50
-      }
-    ],
-    phalanx: [
-      {
-        id: "track",
-        name: locale === "ro" ? "RADAR DE URMOIRE BANDA Ku" : "Ku-BAND TRACKING RADAR",
-        desc: locale === "ro"
-          ? "Radar autonom cu undă continuă ce urmărește simultan ținta și proiectilele proprii de 20mm pentru a corecta traiectoria în mod închis."
-          : "Closed-loop radar dome tracking both the target and the outgoing bullet stream, micro-adjusting barrel aim 100 times per second.",
-        x: 58, y: 26
-      },
-      {
-        id: "search",
-        name: locale === "ro" ? "RADAR DE CĂUTARE OMNIDIRECȚIONAL" : "Ku-BAND SEARCH RADAR",
-        desc: locale === "ro"
-          ? "Scanează orizontul în mod continuu pentru a identifica rachete antinavă ultra-rapide și prioritizează amenințările cele mai critice."
-          : "Wide-aspect search radar that scans the horizon autonomously, prioritizing incoming threats based on velocity and trajectory.",
-        x: 41, y: 31
-      },
-      {
-        id: "gun",
-        name: locale === "ro" ? "TUN ROTATIV M61A1 DE 20MM" : "20MM M61A1 ROTARY CANNON",
-        desc: locale === "ro"
-          ? "Gatling cu 6 țevi ce trage proiectile din wolfram dur la o cadență letală de 4.500 de lovituri pe minut."
-          : "6-barrel rotary gatling gun firing sub-caliber armor-piercing tungsten penetrator rounds at a devastating rate of 4,500 rounds/minute.",
-        x: 24, y: 46
-      },
-      {
-        id: "drum",
-        name: locale === "ro" ? "TAMBUR DE ALIMENTARE CU 1.550 LOVITURI" : "1,550-ROUND AMMUNITION FEED",
-        desc: locale === "ro"
-          ? "Magazie de stocare pneumatică elicoidală, concepută pentru a evita blocajele și a alimenta tunul fără nicio întrerupere sub foc inamic."
-          : "Pneumatic helix feed drum housing the heavy ammunition rounds, ensuring linkless, jam-free loading under sustained thermal stress.",
-        x: 50, y: 72
-      }
-    ]
-  };
-
-  const activeWeaponParts = weaponParts[weapon.id as keyof typeof weaponParts] || [];
-  const [activePartId, setActivePartId] = useState(activeWeaponParts[0]?.id || "guidance");
-  const selectedPart = activeWeaponParts.find(p => p.id === activePartId) || activeWeaponParts[0];
-
-  // Telemetry simulation states
-  const [simState, setSimState] = useState<"idle" | "initiating" | "flight" | "engaged" | "impact">("idle");
-  const [simLogs, setSimLogs] = useState<string[]>([]);
-  const [calibrationSig, setCalibrationSig] = useState("0x4A7E8D");
-  const [isCalibrating, setIsCalibrating] = useState(false);
-
-  // Sync active component when changing tabs
-  const handleTabChange = (idx: number) => {
-    setActiveTab(idx);
-    const newWeaponId = weapons[idx].id;
-    const parts = weaponParts[newWeaponId as keyof typeof weaponParts] || [];
-    setActivePartId(parts[0]?.id || "guidance");
-    setSimState("idle");
-    setSimLogs([]);
-  };
-
-  // Launch simulation routine
-  const triggerSimulation = () => {
-    if (simState !== "idle") return;
-    
-    const steps = [
-      { state: "initiating" as const, delay: 0, msg: locale === "ro" ? ">> INIȚIALIZARE CONEXIUNE REȚEA FOC LINK-16..." : ">> INITIALIZING LINK-16 SECURE FIRE CONTROL NET..." },
-      { state: "initiating" as const, delay: 600, msg: locale === "ro" ? ">> DIAGNOSTIC VECTOR: ALINIAMENT GPS/INS VALID" : ">> VECTOR DIAGNOSTIC: GPS/INS ALIGNMENT OK" },
-      { state: "flight" as const, delay: 1200, msg: weapon.id === "phalanx" 
-        ? (locale === "ro" ? ">> INTRĂ ÎN FUNCȚIUNE: URMARIRE AUTOMATĂ ACTIVE" : ">> ENTRANCE ENGAGED: RADAR SEARCH TRACKING ACTIVE")
-        : (locale === "ro" ? ">> BOOSTER ACTIVAT // IMPULS DE LANSARE VLS DEBITAT" : ">> BOOSTER STAGE ACTIVE // VLS CANISTER EXPELLED") },
-      { state: "engaged" as const, delay: 2000, msg: locale === "ro" ? `>> GLIDE STATUS: OK // BLOCARE SENSOR: ${weapon.tacticalOverlay.split(" // ")[0]}` : `>> GLIDE STATUS: OK // SEEKER STATE: ${weapon.tacticalOverlay.split(" // ")[0]}` },
-      { state: "impact" as const, delay: 2800, msg: weapon.id === "phalanx" 
-        ? (locale === "ro" ? ">> EXECUTAT: FAZĂ INTERCEPTARE FINALIZATĂ // INTEGRITATE STRAT: OK" : ">> EXECUTED: CLOSE-IN THREAT TERMINATED // DECK SHIELD OK")
-        : (locale === "ro" ? ">> IMPACT CONFIRMAT // TELEMETRIE TACTICĂ REUȘITĂ" : ">> KINETIC IMPACT CONFIRMED // MISSION TASKING FULFILLED") },
-      { state: "idle" as const, delay: 3800, msg: locale === "ro" ? ">> DECK CONTROL: REVENIRE LA SILENȚIOS" : ">> DECK CONTROL: STANDBY MOD ACTIVE" }
-    ];
-
-    setSimLogs([]);
-    steps.forEach((step) => {
-      setTimeout(() => {
-        setSimState(step.state);
-        setSimLogs(prev => [...prev, step.msg]);
-      }, step.delay);
-    });
-  };
-
-  // Calibrate targeting array checksum signature
-  const triggerCalibration = () => {
-    setIsCalibrating(true);
-    setCalibrationSig("SWEEP...");
-    setTimeout(() => {
-      const hex = "0x" + Math.floor(Math.random() * 16777215).toString(16).toUpperCase().padStart(6, "0");
-      setCalibrationSig(hex);
-      setIsCalibrating(false);
-      setSimLogs(prev => [...prev, locale === "ro" 
-        ? `>> DISPOZITIV CALIBRAT // NOUĂ SEMNĂTURĂ REȚEA: ${hex}`
-        : `>> NODE ARRAY RE-CALIBRATED // VALIDATION SIGNATURE: ${hex}`
-      ]);
-    }, 1000);
-  };
-
   return (
     <section className="relative overflow-hidden bg-black py-24 sm:py-32 border-t border-white/5">
       {/* Background aesthetics */}
@@ -2205,7 +2004,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
             {weapons.map((w, idx) => (
               <button
                 key={w.id}
-                onClick={() => handleTabChange(idx)}
+                onClick={() => setActiveTab(idx)}
                 className={cn(
                   "relative flex-1 min-w-[170px] px-6 py-5 text-left transition-all duration-300 font-mono border-r border-white/5 last:border-r-0 group overflow-hidden",
                   idx === activeTab
@@ -2268,7 +2067,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
 
               {/* Specs Grid with high-fidelity glowing panels */}
               <div className="grid grid-cols-2 gap-4">
-                {weapon.specs.map((s, idx) => (
+                {weapon.specs.map((s) => (
                   <div
                     key={s.label}
                     className="relative overflow-hidden navy-panel-tactical p-4 border border-white/5 rounded bg-black/40 flex flex-col space-y-1 group hover:border-[#8edcff]/20 transition-all duration-300"
@@ -2317,31 +2116,31 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                 </div>
               </div>
 
-              {/* Digital Micro-Terminal Log (Scrolling Typewriter Console Feed) */}
-              <div className="border border-white/5 rounded bg-black/90 p-4 font-mono text-[9.5px] leading-relaxed text-emerald-400 shadow-inner h-[90px] overflow-y-auto custom-scrollbar flex flex-col space-y-1">
-                <div className="text-emerald-500/50 text-[8px] uppercase tracking-wider mb-1 flex items-center justify-between border-b border-white/5 pb-1">
-                  <span>LOG CONSOLE // STABLE STATUS</span>
-                  <span className="animate-pulse">ONLINE</span>
+              {/* Tactical Deployment Profile Block */}
+              <div className="border border-white/10 rounded bg-[#000813]/60 p-5 font-mono text-[10px] leading-relaxed text-white/60 space-y-2">
+                <div className="text-[#8edcff] text-[9.5px] uppercase tracking-widest font-black border-b border-white/10 pb-1 mb-2">
+                  TACTICAL DEPLOYMENT PROFILE
                 </div>
-                {simLogs.length === 0 ? (
-                  <span className="text-emerald-400/40">
-                    {locale === "ro" 
-                      ? ">> SISTEM IN STANDBY. INIȚIAȚI LANSAREA SIMULATĂ PENTRU ANALIZĂ..." 
-                      : ">> WEAPON GRID IDLE. INITIATE SIMULATION COMMAND TO STREAM CONSOLE..."}
-                  </span>
-                ) : (
-                  simLogs.map((log, idx) => (
-                    <div key={idx} className="animate-fadeIn">{log}</div>
-                  ))
-                )}
+                <div className="flex justify-between border-b border-white/5 pb-1">
+                  <span className="text-white/40">INTEGRATION STATE:</span>
+                  <span className="text-white font-semibold">SECURE // LINK-16 JOINT NETWORK</span>
+                </div>
+                <div className="flex justify-between border-b border-white/5 pb-1">
+                  <span className="text-white/40">DEPLOYMENT STATUS:</span>
+                  <span className="text-[#70e0bf] font-semibold">OPERATIONAL Readiness OK</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-white/40">TARGET SYSTEM MATCH:</span>
+                  <span className="text-white font-semibold">{weapon.tacticalOverlay}</span>
+                </div>
               </div>
 
             </div>
 
             {/* Right Column: Visual Telemetry & SVGs (5 cols) */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-between gap-6">
+            <div className="lg:col-span-5 flex flex-col items-center justify-center">
               
-              {/* Overhauled Weapon Blueprint Interactive Area */}
+              {/* Overhauled Weapon Blueprint Static Frame */}
               <div className="relative w-full aspect-square max-w-[340px] rounded-lg border border-white/10 bg-[#000813]/90 overflow-hidden flex items-center justify-center p-4">
                 
                 {/* Compass Bezel grid background aesthetics */}
@@ -2350,11 +2149,8 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                 <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-white/5 pointer-events-none" />
                 <div className="absolute top-0 bottom-0 left-1/2 w-[1px] bg-white/5 pointer-events-none" />
 
-                {/* Radar scanner sweep (if simulator is active or idle) */}
-                <div className={cn(
-                  "absolute inset-0 bg-[conic-gradient(from_0deg,rgba(0,142,255,0.08)_0deg,transparent_90deg)] pointer-events-none",
-                  simState !== "idle" ? "animate-[spin_2.5s_linear_infinite]" : "animate-[spin_6s_linear_infinite]"
-                )} />
+                {/* Radar scanner sweep */}
+                <div className="absolute inset-0 bg-[conic-gradient(from_0deg,rgba(0,142,255,0.06)_0deg,transparent_90deg)] pointer-events-none animate-[spin_10s_linear_infinite]" />
 
                 {/* SVG Blueprint Render Container */}
                 <div className="relative z-10 w-full h-full flex items-center justify-center">
@@ -2362,36 +2158,11 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                     {/* Tomahawk blueprint drawing */}
                     {weapon.id === "tomahawk" && (
                       <g className="transition-all duration-300">
-                        {/* Thrust plumes under simulation */}
-                        {simState === "flight" && (
-                          <polygon points="5,50 14,46 14,54" fill="url(#sim-thrust-plume)" opacity="0.8" />
-                        )}
                         {/* Launcher vector paths */}
-                        <rect 
-                          x="18" y="46" width="56" height="8" rx="1.5" 
-                          fill="none" 
-                          stroke={activePartId === "engine" || activePartId === "warhead" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth={activePartId === "engine" || activePartId === "warhead" ? "1.8" : "1.2"} 
-                          className={cn("transition-all", activePartId === "warhead" && "stroke-glow-pulse")} 
-                        />
-                        <path 
-                          d="M 74 46 Q 84 50 74 54 Z" 
-                          fill="none" 
-                          stroke={activePartId === "guidance" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth={activePartId === "guidance" ? "1.8" : "1.2"} 
-                        />
-                        <path 
-                          d="M 35 46 L 22 28 M 35 54 L 22 72" 
-                          stroke="#8edcff" 
-                          strokeWidth="1.2" 
-                          strokeLinecap="round" 
-                          opacity="0.85"
-                        />
-                        <path 
-                          d="M 22 46 L 14 36 M 22 54 L 14 64" 
-                          stroke={activePartId === "booster" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth={activePartId === "booster" ? "1.8" : "1.2"} 
-                        />
+                        <rect x="18" y="46" width="56" height="8" rx="1.5" fill="none" stroke="#8edcff" strokeWidth="1.2" />
+                        <path d="M 74 46 Q 84 50 74 54 Z" fill="none" stroke="#8edcff" strokeWidth="1.2" />
+                        <path d="M 35 46 L 22 28 M 35 54 L 22 72" stroke="#8edcff" strokeWidth="1.2" strokeLinecap="round" opacity="0.85" />
+                        <path d="M 22 46 L 14 36 M 22 54 L 14 64" stroke="#8edcff" strokeWidth="1.2" />
                         <path d="M 48 54 L 54 60 L 66 54" fill="none" stroke="#8edcff" strokeWidth="1" />
                       </g>
                     )}
@@ -2399,73 +2170,21 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                     {/* Standard Missile 6 blueprint drawing */}
                     {weapon.id === "sm6" && (
                       <g className="transition-all duration-300">
-                        {/* Propulsion fire during flight stage */}
-                        {simState === "flight" && (
-                          <polygon points="50,96 44,87 56,87" fill="url(#sim-thrust-plume)" opacity="0.8" />
-                        )}
-                        <rect 
-                          x="46" y="24" width="8" height="50" rx="1" 
-                          fill="none" 
-                          stroke={activePartId === "warhead" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth={activePartId === "warhead" ? "1.8" : "1.2"} 
-                        />
-                        <path 
-                          d="M 46 24 Q 50 12 54 24 Z" 
-                          fill="none" 
-                          stroke={activePartId === "radar" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth={activePartId === "radar" ? "1.8" : "1.2"} 
-                        />
-                        <path 
-                          d="M 46 44 L 34 48 M 54 44 L 66 48" 
-                          stroke={activePartId === "wings" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth={activePartId === "wings" ? "1.8" : "1.2"} 
-                        />
-                        <path 
-                          d="M 46 66 L 36 70 M 54 66 L 64 70" 
-                          stroke={activePartId === "wings" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth={activePartId === "wings" ? "1.8" : "1.2"} 
-                        />
-                        <rect 
-                          x="44" y="74" width="12" height="13" 
-                          fill="none" 
-                          stroke={activePartId === "booster" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth={activePartId === "booster" ? "1.8" : "1.2"} 
-                        />
+                        <rect x="46" y="24" width="8" height="50" rx="1" fill="none" stroke="#8edcff" strokeWidth="1.2" />
+                        <path d="M 46 24 Q 50 12 54 24 Z" fill="none" stroke="#8edcff" strokeWidth="1.2" />
+                        <path d="M 46 44 L 34 48 M 54 44 L 66 48" stroke="#8edcff" strokeWidth="1.2" />
+                        <path d="M 46 66 L 36 70 M 54 66 L 64 70" stroke="#8edcff" strokeWidth="1.2" />
+                        <rect x="44" y="74" width="12" height="13" fill="none" stroke="#8edcff" strokeWidth="1.2" />
                       </g>
                     )}
 
                     {/* Mk 48 Torpedo blueprint drawing */}
                     {weapon.id === "mk48" && (
                       <g className="transition-all duration-300">
-                        {simState === "flight" && (
-                          <g>
-                            <circle cx="83" cy="50" r="3" fill="#70e0bf" opacity="0.4" className="animate-ping" />
-                            <circle cx="88" cy="50" r="1.5" fill="#70e0bf" opacity="0.6" />
-                          </g>
-                        )}
-                        <rect 
-                          x="16" y="46" width="56" height="8" rx="3.5" 
-                          fill="none" 
-                          stroke={activePartId === "warhead" || activePartId === "fuel" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth={activePartId === "warhead" || activePartId === "fuel" ? "1.8" : "1.2"} 
-                        />
-                        <path 
-                          d="M 16 46 Q 8 50 16 54 Z" 
-                          fill="none" 
-                          stroke={activePartId === "sonar" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth={activePartId === "sonar" ? "1.8" : "1.2"} 
-                        />
-                        <path 
-                          d="M 72 48 L 78 44 M 72 52 L 78 56 M 72 50 L 80 50" 
-                          stroke={activePartId === "propeller" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth={activePartId === "propeller" ? "1.8" : "1.2"} 
-                        />
-                        <rect 
-                          x="68" y="44" width="4" height="12" rx="0.5" 
-                          fill="none" 
-                          stroke={activePartId === "propeller" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth="1" 
-                        />
+                        <rect x="16" y="46" width="56" height="8" rx="3.5" fill="none" stroke="#8edcff" strokeWidth="1.2" />
+                        <path d="M 16 46 Q 8 50 16 54 Z" fill="none" stroke="#8edcff" strokeWidth="1.2" />
+                        <path d="M 72 48 L 78 44 M 72 52 L 78 56 M 72 50 L 80 50" stroke="#8edcff" strokeWidth="1.2" />
+                        <rect x="68" y="44" width="4" height="12" rx="0.5" fill="none" stroke="#8edcff" strokeWidth="1" />
                         <path d="M 64 46 L 59 41 M 64 54 L 59 59" stroke="#8edcff" strokeWidth="1" />
                       </g>
                     )}
@@ -2473,79 +2192,15 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                     {/* Phalanx CIWS blueprint drawing */}
                     {weapon.id === "phalanx" && (
                       <g className="transition-all duration-300">
-                        {simState === "flight" && (
-                          <line x1="16" y1="46" x2="2" y2="46" stroke="#ff6b6b" strokeWidth="1.5" strokeDasharray="3,3" className="animate-pulse" />
-                        )}
                         <path d="M 28 78 L 72 78 L 65 62 L 35 62 Z" fill="none" stroke="#8edcff" strokeWidth="1.2" />
-                        <circle 
-                          cx="50" cy="46" r="15" 
-                          fill="none" 
-                          stroke="#8edcff" 
-                          strokeWidth="1.2" 
-                        />
-                        <rect 
-                          x="36" y="25" width="9" height="13" rx="4.5" 
-                          fill="none" 
-                          stroke={activePartId === "search" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth={activePartId === "search" ? "1.8" : "1.2"} 
-                        />
-                        <rect 
-                          x="52" y="21" width="11" height="8" rx="0.5" 
-                          fill="none" 
-                          stroke={activePartId === "track" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth={activePartId === "track" ? "1.8" : "1.2"} 
-                        />
-                        <line 
-                          x1="38" y1="46" x2="16" y2="46" 
-                          stroke={activePartId === "gun" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth={activePartId === "gun" ? "2.5" : "1.8"} 
-                        />
+                        <circle cx="50" cy="46" r="15" fill="none" stroke="#8edcff" strokeWidth="1.2" />
+                        <rect x="36" y="25" width="9" height="13" rx="4.5" fill="none" stroke="#8edcff" strokeWidth="1.2" />
+                        <rect x="52" y="21" width="11" height="8" rx="0.5" fill="none" stroke="#8edcff" strokeWidth="1.2" />
+                        <line x1="38" y1="46" x2="16" y2="46" stroke="#8edcff" strokeWidth="1.8" />
                         <line x1="38" y1="46" x2="48" y2="46" stroke="#8edcff" strokeWidth="1" />
-                        <rect 
-                          x="43" y="64" width="14" height="11" rx="0.5" 
-                          fill="none" 
-                          stroke={activePartId === "drum" ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth={activePartId === "drum" ? "1.8" : "1.2"} 
-                        />
+                        <rect x="43" y="64" width="14" height="11" rx="0.5" fill="none" stroke="#8edcff" strokeWidth="1.2" />
                       </g>
                     )}
-
-                    {/* Interactive Clickable Sensor Dots */}
-                    {activeWeaponParts.map((part) => (
-                      <g 
-                        key={part.id} 
-                        className="cursor-pointer group/dot"
-                        onClick={() => {
-                          setActivePartId(part.id);
-                          setSimLogs(prev => [...prev, locale === "ro"
-                            ? `>> INTEROGARE REȚEA // SPEC COMPONENTĂ: [${part.name}] // INTERFAȚĂ ACTIVĂ`
-                            : `>> QUERY NODE LAYER // PART IDENTIFIED: [${part.name}] // SYSTEM RETRIEVED`
-                          ]);
-                        }}
-                      >
-                        <circle 
-                          cx={part.x} cy={part.y} r="3" 
-                          fill={part.id === activePartId ? "#70e0bf" : "#8edcff"} 
-                          className={cn(part.id === activePartId ? "animate-pulse" : "group-hover/dot:fill-[#70e0bf]")} 
-                        />
-                        <circle 
-                          cx={part.x} cy={part.y} r="6" 
-                          fill="none" 
-                          stroke={part.id === activePartId ? "#70e0bf" : "#8edcff"} 
-                          strokeWidth="0.5" 
-                          className="animate-ping"
-                          style={{ animationDuration: '3s' }}
-                        />
-                      </g>
-                    ))}
-
-                    <defs>
-                      <linearGradient id="sim-thrust-plume" x1="0" x2="1" y1="0" y2="0">
-                        <stop offset="0%" stopColor="#ff7a7a" stopOpacity="0" />
-                        <stop offset="50%" stopColor="#ff7a7a" stopOpacity="0.75" />
-                        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.9" />
-                      </linearGradient>
-                    </defs>
                   </svg>
                 </div>
 
@@ -2554,49 +2209,8 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                   BLUEPRINT // 0x{weapon.id.toUpperCase()}
                 </div>
                 <div className="absolute bottom-4 right-4 font-mono text-[8.5px] text-[#8edcff]/40 uppercase tracking-widest">
-                  STATUS: {simState.toUpperCase()}
+                  STATUS: SECURED
                 </div>
-              </div>
-
-              {/* Interactive Component Spotlight Detail Card */}
-              <div className="w-full relative overflow-hidden rounded border border-[#8edcff]/10 bg-[#001428]/40 p-4 flex flex-col space-y-2 group transition-all duration-300">
-                <div className="absolute top-0 right-0 h-1 w-8 bg-gradient-to-r from-transparent to-[#70e0bf]/50" />
-                <div className="flex items-center gap-2">
-                  <div className="h-1.5 w-1.5 rounded-full bg-[#70e0bf] animate-pulse" />
-                  <span className="font-mono text-[9px] tracking-widest text-[#70e0bf]/90 uppercase font-black">
-                    EXPLORING NODE COMPONENT:
-                  </span>
-                </div>
-                <h4 className="font-mono text-xs font-bold text-white uppercase leading-tight">
-                  {selectedPart?.name}
-                </h4>
-                <p className="text-[11px] leading-relaxed text-white/60 font-sans tracking-wide">
-                  {selectedPart?.desc}
-                </p>
-              </div>
-
-              {/* Futuristic Subcommand deck */}
-              <div className="grid grid-cols-2 gap-4 w-full">
-                <button
-                  onClick={triggerSimulation}
-                  disabled={simState !== "idle"}
-                  className={cn(
-                    "w-full px-4 py-3 rounded border font-mono text-[10px] tracking-widest uppercase transition-all duration-300",
-                    simState !== "idle"
-                      ? "border-white/5 bg-white/2 text-white/20 cursor-not-allowed"
-                      : "border-[#ff6b6b]/40 bg-[#ff6b6b]/5 text-[#ff6b6b] hover:bg-[#ff6b6b]/15 hover:border-[#ff6b6b]"
-                  )}
-                >
-                  {simState !== "idle" ? "SIM STATE: ACTIVE" : "SIMULATE ENGAGEMENT"}
-                </button>
-
-                <button
-                  onClick={triggerCalibration}
-                  disabled={isCalibrating}
-                  className="w-full px-4 py-3 rounded border border-[#8edcff]/30 bg-[#8edcff]/5 font-mono text-[10px] tracking-widest text-[#8edcff] uppercase hover:bg-[#8edcff]/15 hover:border-[#8edcff] transition-all duration-300"
-                >
-                  CALIBRATE: {calibrationSig}
-                </button>
               </div>
 
             </div>
