@@ -111,25 +111,31 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
 
 ## 🏛️ Cinematic Visual Style & Verticals Matrix
 
-The website is styled like an art-directed editorial manuscript, with three distinct cinematic environments designed for immersive historical and data storytelling:
+The website is styled like an art-directed editorial manuscript, with distinct cinematic environments designed for immersive historical, data, and vertical-specific storytelling:
 
 | 🏷️ Editorial Vertical | 🎨 Visual Tone & Aesthetic | ⚡ Active Interactive Engines | 🔗 Production Routes |
 | :--- | :--- | :--- | :--- |
-| **📈 Economy & Capital** | **"Macro-Capital Editorial"**<br>• Clean grid alignments<br>• Wall Street Journal-grade typography<br>• High-contrast monetary scales | • **GDP & Venture Capital Charts**: Gold-highlighted Recharts comparisons.<br>• **National Debt Ticker**: Live real-time projection.<br>• **Innovation Index**: Global patent comparative metric. | • `/economy`<br>• `/economy/gdp`<br>• `/economy/debt`<br>• `/economy/innovation`<br>• `/economy/opportunity`<br>• `/economy/real-estate` |
-| **🌲 Natural Majesty** | **"Spatial Editorial"**<br>• Earthy obsidian backdrops<br>• Emerald green accents<br>• Generous typographic quote spacing | • **Geyser Eruption Simulator**: Real-time interval tracker.<br>• **Biodiversity Strata**: Interactive layered mountain mapping.<br>• **NPS Mobile Charts**: Angle-rotated responsive label charts. | • `/nature`<br>• `/nature/national-parks`<br>• `/nature/biodiversity`<br>• `/nature/climate`<br>• `/nature/geography`<br>• `/nature/resources` |
-| **🎖️ Arsenal of Democracy** | **"Minimalist Black-Ops"**<br>• Stark monochromatic headers<br>• Amber alert accents<br>• Military CRT scanline effects | • **Aircraft Strike Group Tracker**: Precise SVG map mapping live carrier coordinates.<br>• **Nuclear Triad Simulation**: Interactive silo, sub, and bomber parity engine.<br>• **DARPA Timeline**: Dynamic historical innovation milestone cards. | • `/military`<br>• `/military/navy`<br>• `/military/triad`<br>• `/military/darpa`<br>• `/military/weapons` |
+| **📈 Economy & Capital** | **"Macro-Capital Editorial"**<br>• Clean grid alignments<br>• Wall Street Journal-grade typography<br>• High-contrast monetary scales | • **GDP & Venture Capital Charts**: Gold-highlighted Recharts comparisons.<br>• **National Debt Ticker**: Live real-time projection.<br>• **Innovation Index**: Global patent comparative metric. | • `/economy`<br>• `/economy/gdp-growth`<br>• `/economy/capital-markets`<br>• `/economy/startups-venture-capital`<br>• `/economy/dollar-dominance`<br>• `/economy/trade-and-exports` |
+| **🌲 Natural Majesty** | **"Spatial Editorial"**<br>• Earthy obsidian backdrops<br>• Emerald green accents<br>• Generous typographic quote spacing | • **Geyser Eruption Simulator**: Real-time interval tracker.<br>• **Biodiversity Strata**: Interactive layered mountain mapping.<br>• **NPS Mobile Charts**: Angle-rotated responsive label charts. | • `/nature`<br>• `/nature/national-parks`<br>• `/nature/alaska`<br>• `/nature/rockies`<br>• `/nature/grand-canyon`<br>• `/nature/yellowstone`<br>• `/nature/great-lakes` |
+| **🎖️ Arsenal of Democracy** | **"Minimalist Black-Ops"**<br>• Stark monochromatic headers<br>• Amber alert accents<br>• Military CRT scanline effects | • **Aircraft Strike Group Tracker**: Precise SVG map mapping live carrier coordinates.<br>• **Nuclear Triad Simulation**: Interactive silo, sub, and bomber parity engine.<br>• **DARPA Timeline**: Dynamic historical innovation milestone cards. | • `/military`<br>• `/military/navy`<br>• `/military/air-force`<br>• `/military/space-force`<br>• `/military/global-bases`<br>• `/military/intelligence` |
+| **💡 Innovation & Tech** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Tech Grid Hooks**: Custom cards ready for Internet, AI, Space, and Computing drops. | • `/innovation`<br>• `/innovation/internet-history`<br>• `/innovation/ai-and-tech`<br>• `/innovation/smartphones`<br>• `/innovation/cloud-computing`<br>• `/innovation/space-technology`<br>• `/innovation/gaming` |
+| **🔬 Science & Inventions** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Invention Timeline Hooks**: Sections ready for Pre-1890, World War, and Biotech breakthroughs. | • `/science`<br>• `/science/inventions-pre-1890`<br>• `/science/inventions-1890-1945`<br>• `/science/inventions-post-1991`<br>• `/science/medicine-and-biotech` |
+| **🎓 Higher Education** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Academic Campus Hooks**: Zones ready for Ivy League, STEM, and Public Research showcases. | • `/universities`<br>• `/universities/ivy-league`<br>• `/universities/stem-powerhouses`<br>• `/universities/business-schools`<br>• `/universities/public-research-universities` |
+| **🌎 Global Leadership** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Planetary Influence Hooks**: Zones ready for NATO, Reserve Currency, and Soft Power visualizers. | • `/global-leadership`<br>• `/global-leadership/nato`<br>• `/global-leadership/dollar-as-reserve`<br>• `/global-leadership/soft-power`<br>• `/global-leadership/un` |
+| **🎭 Culture & Life** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Anthology & Life Hooks**: Anthropology school/aesthetic cards ready for content drops. | • `/culture`<br>• `/culture/the-american-high-school`<br>• `/culture/american-aesthetics`<br>• `/quality-of-life` |
+| **🌱 Abundance & People** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Demographic & Resource Hooks**: Melding pot and energy production visual spots. | • `/natural-resources`<br>• `/immigration-demographics` |
+| **🎮 Interactive Features** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Civic Tools Navigation**: Connects map explorer, quiz, and timeline hubs. | • `/interactive`<br>• `/timeline`<br>• `/explorer` |
 
 ## 🗺️ What Is Built
-
 
 <details>
 <summary><strong>🏠 Core Pages</strong></summary>
 
 - `/` home page with hero, statement, stats, section grid, Why America blocks, map preview, video preview, data teaser charts, quote carousel, gallery preview, newsletter
-- `/gallery`
-- `/data`
-- `/timeline`
-- `/explorer`
+- `/gallery` (Media gallery coming-soon landing page)
+- `/data` (Fact card database + FAQ accordion page)
+- `/timeline` (USA roadmap timeline page)
+- `/explorer` (Interactive 50-state map regional fact selector)
 - `/sitemap`
 </details>
 
@@ -144,18 +150,18 @@ The website is styled like an art-directed editorial manuscript, with three dist
   - `/constitution/second-amendment`
   - `/constitution/democracy-track-record`
   - `/constitution/unique-features`
-  - **Electoral Archive Map**: A high-fidelity, historical 50-state interactive map documenting biennial election cycles (1788–2024), including midterm flips and bipartite delegations.
+  - **Electoral Archive Map**: A high-fidelity, historical 50-state interactive map documenting biennial election cycles (1788–2024), including midterm flips and bipartisan delegations.
 </details>
 
 <details>
 <summary><strong>📈 The Economy</strong> (Data-Driven Vertical)</summary>
 
 - `/economy` full landing page plus deep dives:
-  - `/economy/gdp-growth`
-  - `/economy/capital-markets`
-  - `/economy/startups-venture-capital`
-  - `/economy/dollar-dominance`
-  - `/economy/trade-and-exports`
+  - `/economy/gdp-growth` (GDP & economic scale)
+  - `/economy/capital-markets` (Stock exchange & market depth)
+  - `/economy/startups-venture-capital` (Silicon Valley & startup density)
+  - `/economy/dollar-dominance` (Reserve currency status)
+  - `/economy/trade-and-exports` (Logistical exports)
 </details>
 
 <details>
@@ -185,37 +191,67 @@ The website is styled like an art-directed editorial manuscript, with three dist
 </details>
 
 <details>
-<summary><strong>🎭 Culture, Life & Scaffolding</strong> (Scaffolded)</summary>
+<summary><strong>💡 Innovation & Technology</strong> (Scaffolded)</summary>
 
-- `/culture`
-  - `/culture/the-american-high-school`
-  - `/culture/american-aesthetics`
-- `/quality-of-life`
-- `/innovation` (Innovation & Technology)
-  - `/innovation/internet-history`
-  - `/innovation/ai-and-tech`
-  - `/innovation/smartphones`
-  - `/innovation/cloud-computing`
-  - `/innovation/space-technology`
-  - `/innovation/gaming`
-- `/science` (Science & Inventions)
-  - `/science/inventions-pre-1890`
-  - `/science/inventions-1890-1945`
-  - `/science/inventions-post-1991`
-  - `/science/medicine-and-biotech`
-- `/universities` (Universities)
-  - `/universities/ivy-league`
-  - `/universities/stem-powerhouses`
-  - `/universities/business-schools`
-  - `/universities/public-research-universities`
-- `/natural-resources`
-- `/immigration-demographics`
-- `/global-leadership` (Global Leadership)
-  - `/global-leadership/nato`
-  - `/global-leadership/dollar-as-reserve`
-  - `/global-leadership/soft-power`
-  - `/global-leadership/un`
-- `/interactive` (Interactive features hub linking to quiz, timeline, map explorer)
+- `/innovation` parent page plus subpage scaffolds:
+  - `/innovation/internet-history` (The Internet history)
+  - `/innovation/ai-and-tech` (AI & computing power)
+  - `/innovation/smartphones` (Smartphones revolution)
+  - `/innovation/cloud-computing` (Cloud scaling)
+  - `/innovation/space-technology` (Commercial space tech)
+  - `/innovation/gaming` (Video game industry)
+</details>
+
+<details>
+<summary><strong>🔬 Science & Inventions</strong> (Scaffolded)</summary>
+
+- `/science` parent page plus subpage scaffolds:
+  - `/science/inventions-pre-1890` (Early inventions)
+  - `/science/inventions-1890-1945` (Industrial inventions)
+  - `/science/inventions-post-1991` (Post-War breakthroughs)
+  - `/science/medicine-and-biotech` (Medical biotechnology)
+</details>
+
+<details>
+<summary><strong>🎓 Higher Education</strong> (Scaffolded)</summary>
+
+- `/universities` parent page plus subpage scaffolds:
+  - `/universities/ivy-league` (Ivy League)
+  - `/universities/stem-powerhouses` (STEM Powerhouses)
+  - `/universities/business-schools` (Business Schools)
+  - `/universities/public-research-universities` (Public Research)
+</details>
+
+<details>
+<summary><strong>🌎 Global Leadership</strong> (Scaffolded)</summary>
+
+- `/global-leadership` parent page plus subpage scaffolds:
+  - `/global-leadership/nato` (NATO Alliance)
+  - `/global-leadership/dollar-as-reserve` (Reserve Currency role)
+  - `/global-leadership/soft-power` (Soft Power export)
+  - `/global-leadership/un` (International Institutions)
+</details>
+
+<details>
+<summary><strong>🎭 Culture & Quality of Life</strong> (Scaffolded)</summary>
+
+- `/culture` parent page plus subpage scaffolds:
+  - `/culture/the-american-high-school` (The American High School)
+  - `/culture/american-aesthetics` (American Aesthetics)
+- `/quality-of-life` (Quality of Life)
+</details>
+
+<details>
+<summary><strong>🌱 Natural Resources & Demographics</strong> (Scaffolded)</summary>
+
+- `/natural-resources` (Natural Resources page scaffold)
+- `/immigration-demographics` (Immigration & Demographics page scaffold)
+</details>
+
+<details>
+<summary><strong>🎮 Interactive Features</strong> (Scaffolded)</summary>
+
+- `/interactive` (Interactive Features hub page linking to Quiz, Timeline, Map Explorer)
 </details>
 
 The culture, quality-of-life, innovation, science, universities, natural-resources, immigration-demographics, global-leadership, interactive, and military subpages are currently clean scaffolds with TODO zones, ready for content drops.
