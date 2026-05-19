@@ -225,6 +225,11 @@ export const NAV_SECTIONS = [
         description: "A visual gallery of recurring American interiors",
       },
       {
+        label: "American Sports",
+        href: "/culture/american-sports",
+        description: "NFL, NBA, MLB, and the soft-power of sports",
+      },
+      {
         label: "Soft Power Thesis",
         href: "/culture#intro",
         description: "The core argument for America's cultural reach",
@@ -679,6 +684,10 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "/culture/american-aesthetics": {
         label: "Estetica Americană",
         description: "O galerie vizuală a interioarelor americane",
+      },
+      "/culture/american-sports": {
+        label: "Sportul American",
+        description: "NFL, NBA, MLB și soft power-ul sportului",
       },
       "/culture#intro": {
         label: "Teza Soft Power",
