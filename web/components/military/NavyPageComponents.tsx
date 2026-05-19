@@ -911,32 +911,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
   const [isTypingComplete, setIsTypingComplete] = useState(false);
   const [timestamps, setTimestamps] = useState<string[]>([]);
 
-  // Interactive C2 Deck Premium States
-  const [audioStream, setAudioStream] = useState(true);
-  const [isCalibrating, setIsCalibrating] = useState(false);
-  const [meshHash, setMeshHash] = useState("0x3F8E9B");
 
-  useEffect(() => {
-    // Generate new random hex hash for decryption simulation on layer index change
-    const chars = "0123456789ABCDEF";
-    let hash = "0x";
-    for (let i = 0; i < 6; i++) {
-      hash += chars[Math.floor(Math.random() * 16)];
-    }
-    setMeshHash(hash);
-  }, [activeIdx]);
-
-  const handleScanTrigger = () => {
-    setIsCalibrating(true);
-    // Reset typing logs
-    setVisibleLines([]);
-    setTypingIdx(0);
-    setIsTypingComplete(false);
-    
-    setTimeout(() => {
-      setIsCalibrating(false);
-    }, 1200);
-  };
 
   useEffect(() => {
     // Generate simulated high-precision timestamps
@@ -1054,91 +1029,35 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
           <div className="lg:sticky lg:top-28 space-y-6">
             <div className="navy-glass-premium border border-white/10 bg-[#020202] p-6 rounded-lg relative overflow-hidden">
               {/* Radar glowing sweep overlay */}
-              <div className="absolute top-4 right-4 flex items-center gap-3 md:gap-4">
-                {/* Acoustic Sonar Audio Stream Equalizer */}
-                <button
-                  type="button"
-                  onClick={() => setAudioStream(!audioStream)}
-                  className="flex items-center gap-1.5 border border-white/5 bg-black/40 hover:bg-black/80 px-2 py-0.5 rounded transition-colors text-white/40 hover:text-white/80"
-                  title="Simulate Acoustic Audio Telemetry Feed"
+              <div className="absolute top-4 right-4 flex items-center gap-2">
+                <span
+                  className="h-2 w-2 rounded-full animate-ping"
+                  style={{
+                    backgroundColor: activeIdx === 0 ? "#34d399" : activeIdx === 1 ? "#fbbf24" : "#f87171"
+                  }}
+                />
+                <span
+                  className="navy-font-mono text-[9px] font-bold uppercase tracking-widest"
+                  style={{
+                    color: activeIdx === 0 ? "#34d399" : activeIdx === 1 ? "#fbbf24" : "#f87171"
+                  }}
                 >
-                  <span className="navy-font-mono text-[7.5px] uppercase tracking-wider">SONAR</span>
-                  <div className="flex items-end gap-[1.5px] h-2.5 w-3.5 mb-[1.5px]">
-                    <motion.div className="w-[1.5px] bg-emerald-400" style={{ backgroundColor: activeColor }} animate={{ height: audioStream ? [3, 9, 3] : 3 }} transition={{ repeat: Infinity, duration: 0.6 }} />
-                    <motion.div className="w-[1.5px] bg-emerald-400" style={{ backgroundColor: activeColor }} animate={{ height: audioStream ? [7, 2, 7] : 2 }} transition={{ repeat: Infinity, duration: 0.8 }} />
-                    <motion.div className="w-[1.5px] bg-emerald-400" style={{ backgroundColor: activeColor }} animate={{ height: audioStream ? [4, 10, 4] : 4 }} transition={{ repeat: Infinity, duration: 0.5 }} />
-                  </div>
-                </button>
-
-                <div className="flex items-center gap-1.5">
-                  <span
-                    className="h-2 w-2 rounded-full animate-ping"
-                    style={{
-                      backgroundColor: activeIdx === 0 ? "#34d399" : activeIdx === 1 ? "#fbbf24" : "#f87171"
-                    }}
-                  />
-                  <span
-                    className="navy-font-mono text-[9px] font-bold uppercase tracking-widest"
-                    style={{
-                      color: activeIdx === 0 ? "#34d399" : activeIdx === 1 ? "#fbbf24" : "#f87171"
-                    }}
-                  >
-                    {activeIdx === 0
-                      ? (locale === "ro" ? "ISR CONECTAT" : "SENSING ACTIVE")
-                      : activeIdx === 1
-                      ? (locale === "ro" ? "CORE AEGIS ONLINE" : "AEGIS MERGE OK")
-                      : (locale === "ro" ? "LOCK FOC-ARMAMENT" : "FIRE CONTROL SECURE")}
-                  </span>
-                </div>
+                  {activeIdx === 0
+                    ? (locale === "ro" ? "ISR CONECTAT" : "SENSING ACTIVE")
+                    : activeIdx === 1
+                    ? (locale === "ro" ? "CORE AEGIS ONLINE" : "AEGIS MERGE OK")
+                    : (locale === "ro" ? "LOCK FOC-ARMAMENT" : "FIRE CONTROL SECURE")}
+                </span>
               </div>
 
-              <div className="flex items-center gap-2.5 navy-font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 mb-6">
-                <span>{locale === "ro" ? "VIZUALIZARE REȚEA DE LUPTĂ" : "TACTICAL DATA LINK MESH"}</span>
-                <span className="text-white/25">//</span>
-                <span className="text-[#8edcff]/50 font-bold" style={{ color: activeColor }}>
-                  {locale === "ro" ? `HASH REȚEA: ${meshHash}` : `MESH HASH: ${meshHash}`}
-                </span>
+              <div className="navy-font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 mb-6">
+                {locale === "ro" ? "VIZUALIZARE REȚEA DE LUPTĂ" : "TACTICAL DATA LINK MESH"}
               </div>
 
               {/* HUD Screen Graphic visualizer */}
               <div className="h-[220px] w-full border border-white/5 bg-black/60 relative overflow-hidden rounded flex items-center justify-center">
                 {/* Background radar grid pattern */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:16px_16px]" />
-                
-                {/* Calibration Loading Sequence Screen */}
-                {isCalibrating && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="absolute inset-0 bg-black/90 z-20 flex flex-col items-center justify-center text-center p-4 gap-4"
-                  >
-                    <div className="relative h-12 w-12 flex items-center justify-center">
-                      {/* Rotating compass outer shell */}
-                      <motion.div
-                        className="absolute inset-0 border border-dashed rounded-full"
-                        style={{ borderColor: activeColor }}
-                        animate={{ rotate: 360 }}
-                        transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                      />
-                      <motion.div
-                        className="absolute inset-2 border border-dotted rounded-full"
-                        style={{ borderColor: activeColor }}
-                        animate={{ rotate: -360 }}
-                        transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
-                      />
-                      <span className="text-[10px] font-black animate-pulse" style={{ color: activeColor }}>C2</span>
-                    </div>
-                    <div className="space-y-1">
-                      <div className="navy-font-mono text-[9px] font-bold uppercase tracking-wider" style={{ color: activeColor }}>
-                        {locale === "ro" ? "CALIBRARE NODURI REȚEA TACTICĂ..." : "CALIBRATING TACTICAL DATA NODES..."}
-                      </div>
-                      <div className="navy-font-mono text-[7px] text-white/30 uppercase tracking-widest">
-                        SECURE IP COMPRESSION: OK // PORT 884 ACTIVE
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
                 
                 {/* 1. Sensing Layer Graphic */}
                 {activeIdx === 0 && (
@@ -1602,69 +1521,40 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
 
               {/* Progress telemetry meters */}
               <div className="mt-6 space-y-4 border-t border-white/5 pt-5">
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                  <div className="flex-1 space-y-4">
-                    <div>
-                      <div className="flex justify-between items-center text-[9px] uppercase tracking-wider text-white/40 mb-1.5">
-                        <span>{locale === "ro" ? "INTEGRITATE DATE REȚEA" : "DATA INTEGRITY CORE"}</span>
-                        <span className="navy-font-mono font-bold text-white/80">
-                          {isCalibrating ? "..." : (activeIdx === 0 ? "98%" : activeIdx === 1 ? "99.9%" : "95.4%")}
-                        </span>
-                      </div>
-                      <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                        <motion.div
-                          className="h-full rounded-full"
-                          style={{ backgroundColor: activeColor }}
-                          initial={{ width: "0%" }}
-                          animate={{ width: isCalibrating ? "15%" : (activeIdx === 0 ? "98%" : activeIdx === 1 ? "99.9%" : "95.4%") }}
-                          transition={{ duration: 0.45, ease: "easeOut" }}
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="flex justify-between items-center text-[9px] uppercase tracking-wider text-white/40 mb-1.5">
-                        <span>{locale === "ro" ? "LATENȚĂ COOPERATIVĂ" : "NETWORK LATENCY INDEX"}</span>
-                        <span className="navy-font-mono font-bold text-white/80">
-                          {isCalibrating ? "..." : (activeIdx === 0 ? "14 ms" : activeIdx === 1 ? "4 ms" : "12 ms")}
-                        </span>
-                      </div>
-                      <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                        <motion.div
-                          className="h-full rounded-full"
-                          style={{ backgroundColor: activeColor }}
-                          initial={{ width: "0%" }}
-                          animate={{ width: isCalibrating ? "5%" : (activeIdx === 0 ? "80%" : activeIdx === 1 ? "96%" : "85%") }}
-                          transition={{ duration: 0.45, ease: "easeOut" }}
-                        />
-                      </div>
-                    </div>
+                <div>
+                  <div className="flex justify-between items-center text-[9px] uppercase tracking-wider text-white/40 mb-1.5">
+                    <span>{locale === "ro" ? "INTEGRITATE DATE REȚEA" : "DATA INTEGRITY CORE"}</span>
+                    <span className="navy-font-mono font-bold text-white/80">
+                      {activeIdx === 0 ? "98%" : activeIdx === 1 ? "99.9%" : "95.4%"}
+                    </span>
                   </div>
+                  <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full rounded-full"
+                      style={{ backgroundColor: activeColor }}
+                      initial={{ width: "0%" }}
+                      animate={{ width: activeIdx === 0 ? "98%" : activeIdx === 1 ? "99.9%" : "95.4%" }}
+                      transition={{ duration: 0.45, ease: "easeOut" }}
+                    />
+                  </div>
+                </div>
 
-                  {/* Deploy Active Scan / Trigger Calibration button */}
-                  <button
-                    type="button"
-                    onClick={handleScanTrigger}
-                    disabled={isCalibrating}
-                    className="h-[52px] px-4 border border-white/10 hover:border-white/20 bg-black/60 hover:bg-black/90 active:bg-white/[0.02] text-white/60 hover:text-white transition-all flex flex-col items-center justify-center gap-1.5 shrink-0 rounded min-w-[120px]"
-                    style={{
-                      boxShadow: `inset 0 1px 0 rgba(255,255,255,0.05), 0 0 12px ${activeColor}05`,
-                    }}
-                  >
-                    <span className="navy-font-mono text-[8px] font-black uppercase tracking-wider">
-                      {isCalibrating ? (locale === "ro" ? "SCANARE..." : "SCANNING...") : (locale === "ro" ? "CALIBRARE DISPOZITIV" : "RUN ACTIVE SCAN")}
+                <div>
+                  <div className="flex justify-between items-center text-[9px] uppercase tracking-wider text-white/40 mb-1.5">
+                    <span>{locale === "ro" ? "LATENȚĂ COOPERATIVĂ" : "NETWORK LATENCY INDEX"}</span>
+                    <span className="navy-font-mono font-bold text-white/80">
+                      {activeIdx === 0 ? "14 ms" : activeIdx === 1 ? "4 ms" : "12 ms"}
                     </span>
-                    <span className="h-[2px] w-8 bg-white/10 rounded-full overflow-hidden relative">
-                      {isCalibrating && (
-                        <motion.span
-                          className="absolute inset-y-0 left-0 w-4 bg-white rounded-full"
-                          style={{ backgroundColor: activeColor }}
-                          animate={{ left: ["-100%", "100%"] }}
-                          transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut" }}
-                        />
-                      )}
-                    </span>
-                  </button>
+                  </div>
+                  <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full rounded-full"
+                      style={{ backgroundColor: activeColor }}
+                      initial={{ width: "0%" }}
+                      animate={{ width: activeIdx === 0 ? "80%" : activeIdx === 1 ? "96%" : "85%" }}
+                      transition={{ duration: 0.45, ease: "easeOut" }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
