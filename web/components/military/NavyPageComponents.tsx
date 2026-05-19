@@ -609,43 +609,53 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.65 }}
-          className="relative mt-14 grid min-h-[760px] overflow-hidden border border-white/5 bg-[#020202] lg:grid-cols-[1fr_440px]"
+          className="relative mt-14 grid min-h-[760px] overflow-hidden border border-white/10 bg-[#020202] rounded-lg shadow-2xl shadow-blue-900/5 lg:grid-cols-[1fr_440px]"
         >
           {/* Main Visual Display */}
-          <div className="relative min-h-[520px] overflow-hidden">
+          <div className="relative min-h-[520px] overflow-hidden bg-[#00050d] p-4 flex items-center justify-center">
+            
+            {/* High-tech tech corner brackets */}
+            <div className="absolute top-2 left-2 right-2 bottom-2 rounded border border-white/5 pointer-events-none z-20" />
+            <div className="absolute top-4 left-4 h-5 w-5 border-t border-l border-[#8edcff]/30 pointer-events-none z-20" />
+            <div className="absolute top-4 right-4 h-5 w-5 border-t border-r border-[#8edcff]/30 pointer-events-none z-20" />
+            <div className="absolute bottom-4 left-4 h-5 w-5 border-b border-l border-[#8edcff]/30 pointer-events-none z-20" />
+            <div className="absolute bottom-4 right-4 h-5 w-5 border-b border-r border-[#8edcff]/30 pointer-events-none z-20" />
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={active.name}
-                initial={{ opacity: 0, scale: 1.03 }}
+                initial={{ opacity: 0, scale: 1.01 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.99 }}
-                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0"
+                exit={{ opacity: 0, scale: 0.995 }}
+                transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                className="relative w-full h-full min-h-[460px] rounded overflow-hidden"
               >
                 <Image
                   src={active.imageSrc}
                   alt={active.imageAlt}
                   fill
-                  quality={90}
-                  className="object-cover grayscale-[0.2]"
+                  quality={95}
+                  className="object-contain opacity-95 group-hover:opacity-100 transition-opacity duration-300"
                   sizes="(max-width: 1024px) 100vw, 68vw"
                   placeholder="blur"
                   blurDataURL={BLUR_PLACEHOLDER}
                 />
               </motion.div>
             </AnimatePresence>
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,#000000_0%,rgba(0,0,0,0.18)_46%,#000000_100%)]" />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_46%,#000000_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,#000000_0%,transparent_30%,transparent_70%,#000000_100%)] pointer-events-none z-10" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_60%,#000000_100%)] pointer-events-none z-10" />
             
             {/* Active label badge */}
-            <div className="absolute left-8 top-8 z-10 hidden max-w-sm border border-white/5 bg-black/40 p-5 backdrop-blur-xl md:block">
+            <div className="absolute left-8 top-8 z-20 hidden max-w-sm border border-white/10 bg-black/60 p-5 backdrop-blur-xl md:block rounded">
               <div className="navy-font-mono text-[9px] uppercase tracking-widest text-white/40">
                 {locale === "ro" ? "Platformă activă" : "Active platform"}
               </div>
-              <div className="navy-font-display mt-3 text-3xl font-black uppercase leading-none text-white">{active.name}</div>
+              <div className="navy-font-display mt-3 text-2xl sm:text-3xl font-black uppercase leading-snug text-white" style={{ wordSpacing: "0.22em", letterSpacing: "0.05em" }}>
+                {active.name}
+              </div>
             </div>
 
-            <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-9 lg:max-w-3xl">
+            <div className="absolute bottom-0 left-0 right-0 z-20 p-6 md:p-9 lg:max-w-3xl">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active.name}
@@ -654,16 +664,16 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <div className="navy-font-mono text-[10px] font-bold uppercase tracking-widest text-white/50">{active.className}</div>
-                  <h3 className="navy-font-display mt-4 text-4xl font-black uppercase leading-none md:text-6xl text-white">
+                  <div className="navy-font-mono text-[10px] font-bold uppercase tracking-widest text-[#8edcff]/80">{active.className}</div>
+                  <h3 className="navy-font-display mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-tight text-white" style={{ wordSpacing: "0.22em", letterSpacing: "0.05em" }}>
                     {active.role}
                   </h3>
-                  <p className="mt-7 max-w-2xl text-xs leading-relaxed text-white/50">{active.capability}</p>
+                  <p className="mt-7 max-w-2xl text-xs leading-relaxed text-white/60">{active.capability}</p>
                   
                   {/* Premium dossier trigger button */}
                   <button
                     onClick={() => setIsDossierOpen(true)}
-                    className="mt-8 flex h-11 items-center justify-center border border-white/10 bg-white/5 hover:bg-white/10 px-5 text-xs font-bold uppercase text-white tracking-[0.2em] backdrop-blur-md transition-all"
+                    className="mt-8 flex h-11 items-center justify-center border border-white/10 bg-white/5 hover:bg-white/10 px-5 text-xs font-bold uppercase text-white tracking-[0.2em] backdrop-blur-md transition-all rounded"
                   >
                     {locale === "ro" ? "VEZI DOSARUL TEHNIC →" : "VIEW TECH DOSSIER →"}
                   </button>
@@ -673,7 +683,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
           </div>
 
           {/* Right Selector Column */}
-          <div className="flex flex-col border-t border-white/5 bg-black/40 p-6 backdrop-blur-xl lg:border-l lg:border-t-0">
+          <div className="flex flex-col border-t border-white/10 bg-black/85 p-6 backdrop-blur-xl lg:border-l lg:border-white/10 lg:border-t-0">
             <div className="grid gap-2">
               {platforms.map((platform, index) => {
                 const selected = index === activeIndex;
@@ -683,8 +693,8 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                     type="button"
                     onClick={() => setActiveIndex(index)}
                     className={cn(
-                      "relative overflow-hidden border border-white/5 p-4 text-left transition-colors duration-300",
-                      selected ? "bg-white/[0.04] text-white" : "bg-white/[0.008] text-white/40 hover:bg-white/[0.02] hover:text-white/70"
+                      "relative overflow-hidden border border-white/5 p-4 text-left transition-colors duration-300 rounded",
+                      selected ? "bg-white/[0.04] text-white border-white/15" : "bg-white/[0.008] text-white/40 hover:bg-white/[0.02] hover:text-white/70"
                     )}
                   >
                     {selected && (
@@ -695,8 +705,12 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                       />
                     )}
                     <div className="pl-3">
-                      <div className="navy-font-display text-xl font-black uppercase leading-none">{platform.name}</div>
-                      <div className="mt-2 text-[10px] font-bold uppercase tracking-wider text-white/30">{platform.className}</div>
+                      <div className="navy-font-display text-lg sm:text-xl font-extrabold uppercase leading-snug" style={{ wordSpacing: "0.22em", letterSpacing: "0.05em" }}>
+                        {platform.name}
+                      </div>
+                      <div className="mt-2 text-[9px] font-bold uppercase tracking-wider text-[#8edcff]/50">
+                        {platform.className}
+                      </div>
                     </div>
                   </button>
                 );
@@ -714,7 +728,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                   className="grid grid-cols-2 gap-px bg-white/5"
                 >
                   {active.specs.map((spec) => (
-                    <div key={spec.label} className="bg-black p-4 border border-white/5">
+                    <div key={spec.label} className="bg-black p-4 border border-white/5 rounded-sm">
                       <div className="text-[9px] uppercase tracking-widest text-white/30">{spec.label}</div>
                       <div className="mt-2 text-xs font-bold text-white/80">{spec.value}</div>
                     </div>
@@ -768,12 +782,12 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
               </div>
 
               {/* Parallax Hero Image Block */}
-              <div className="relative w-full h-[35dvh] md:h-[45dvh] overflow-hidden">
-                <Image src={active.imageSrc} alt={active.imageAlt} fill className="object-cover" priority sizes="100vw" />
+              <div className="relative w-full h-[35dvh] md:h-[45dvh] overflow-hidden bg-[#00050d]">
+                <Image src={active.imageSrc} alt={active.imageAlt} fill className="object-contain bg-[#00050d]" priority sizes="100vw" />
                 <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute bottom-8 left-6 md:left-10">
                   <p className="navy-font-mono text-[9px] mb-3 tracking-[0.25em] text-[#8edcff] uppercase">{active.className}</p>
-                  <h3 className="navy-font-display text-3xl md:text-5xl font-black tracking-tighter uppercase text-white leading-none">
+                  <h3 className="navy-font-display text-2xl sm:text-4xl md:text-5xl font-black uppercase text-white leading-snug" style={{ wordSpacing: "0.22em", letterSpacing: "0.05em" }}>
                     {active.name}
                   </h3>
                 </div>

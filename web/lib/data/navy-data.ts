@@ -213,7 +213,7 @@ export const NAVY_PLATFORMS: NavyPlatform[] = [
     name: "F-35C Lightning II",
     className: "Carrier stealth fighter",
     role: "5th-Gen multirole stealth",
-    imageSrc: SITE_IMAGES.navy.fa18Landing,
+    imageSrc: SITE_IMAGES.f35Lightning,
     imageAlt: "F-35C Lightning II stealth fighter launching from carrier",
     capability:
       "The world's only carrier-capable 5th-generation stealth fighter, designed to slip undetected past hostile air defenses, gather intelligence, and coordinate fires via link networks.",
