@@ -1241,14 +1241,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         style={{ transformOrigin: "50px 50px" }}
                       />
  
-                      {/* Fused Threat CPU Histogram in corner */}
-                      <g opacity="0.6">
-                        <text x="6" y="16" fill="#f2d48a" fontSize="2" className="navy-font-mono font-black" opacity="0.5">CPU THREAT FUSION</text>
-                        <motion.rect x="6" y="19" width="2" height="1" fill="#f2d48a" animate={{ height: [1, 5, 2, 6, 1] }} transition={{ repeat: Infinity, duration: 1.5 }} />
-                        <motion.rect x="10" y="19" width="2" height="3" fill="#f2d48a" animate={{ height: [3, 1, 6, 2, 3] }} transition={{ repeat: Infinity, duration: 2 }} />
-                        <motion.rect x="14" y="19" width="2" height="5" fill="#f2d48a" animate={{ height: [5, 7, 2, 4, 5] }} transition={{ repeat: Infinity, duration: 1.2 }} />
-                        <motion.rect x="18" y="19" width="2" height="2" fill="#f2d48a" animate={{ height: [2, 6, 4, 1, 2] }} transition={{ repeat: Infinity, duration: 1.8 }} />
-                      </g>
+
  
                       {/* Connected Tactical Mesh Nodes */}
                       <g fill="#f2d48a">
