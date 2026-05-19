@@ -2193,6 +2193,12 @@ function SectionTitle({
 
 export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
   const isRo = locale === "ro";
+  const [filterUrl, setFilterUrl] = useState("url(#tactical-cam-distortion)");
+
+  useEffect(() => {
+    // Avoid Next.js/React Router URL fragment resolution bugs on deep routes by specifying absolute pathname references
+    setFilterUrl(`url(${window.location.pathname}#tactical-cam-distortion)`);
+  }, []);
 
   return (
     <section
@@ -2201,8 +2207,14 @@ export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
     >
       {/* Invisible SVG tactical filter definition */}
       <svg
-        className="absolute pointer-events-none opacity-0"
-        style={{ width: "1px", height: "1px", left: "-9999px", top: "-9999px" }}
+        className="absolute pointer-events-none"
+        style={{
+          width: "1px",
+          height: "1px",
+          position: "absolute",
+          clipPath: "inset(50%)",
+          overflow: "hidden",
+        }}
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -2260,7 +2272,7 @@ export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
         <div
           className="w-full h-full"
           style={{
-            filter: "url(#tactical-cam-distortion)",
+            filter: filterUrl,
             willChange: "transform, filter",
             transform: "translate3d(0, 0, 0)",
           }}
