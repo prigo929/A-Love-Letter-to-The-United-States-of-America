@@ -2154,7 +2154,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                 {/* Real Image component */}
                 <div className="relative z-10 w-full h-full">
                   <Image
-                    src={`/images/military/navy/${weapon.id}.png`}
+                    src={`/images/military/navy/${weapon.id}.jpg`}
                     alt={weapon.name}
                     fill
                     className="object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
