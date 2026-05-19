@@ -290,7 +290,7 @@ export default async function MilitaryPage() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-16">
             <div>
               <div className="mil-text-metadata mb-4">{locale === 'ro' ? 'VERIFICAT · SIPRI 2025' : 'VERIFIED · SIPRI 2025'}</div>
-              <h3 className="text-4xl font-black tracking-tight font-(family-name:--font-archivo)">{locale === 'ro' ? 'COMPARAȚIE BUGET APĂRARE' : 'DEFENSE BUDGET COMPARISON'}</h3>
+              <h3 className="text-4xl font-black tracking-normal font-(family-name:--font-archivo)" style={{ wordSpacing: '0.12em' }}>{locale === 'ro' ? 'COMPARAȚIE BUGET APĂRARE' : 'DEFENSE BUDGET COMPARISON'}</h3>
             </div>
             <div className="mil-text-metadata font-bold text-sm text-white/70">◈ &nbsp; {locale === 'ro' ? 'S.U.A. CHELTUIESC MAI MULT DECÂT URMĂTOARELE ZECE NAȚIUNI COMBINATE' : 'U.S. OUTSPENDS THE NEXT TEN NATIONS COMBINED'}</div>
           </div>
@@ -382,8 +382,8 @@ export default async function MilitaryPage() {
       >
         <div className="text-center mb-24">
           <h2 className="mil-text-hero mb-12 flex flex-col items-center w-full text-center">
-            <span className="block whitespace-nowrap">{locale === 'ro' ? 'ARSENALUL' : 'THE ARSENAL OF'}</span>
-            <span className="block whitespace-nowrap text-white/20">{locale === 'ro' ? 'DEMOCRAȚIEI' : 'DEMOCRACY'}</span>
+            <span className="block whitespace-nowrap">{locale === 'ro' ? 'ARSENALUL' : 'THE ARSENAL'}</span>
+            <span className="block whitespace-nowrap text-white/20">{locale === 'ro' ? 'DEMOCRAȚIEI' : 'OF DEMOCRACY'}</span>
           </h2>
           <p className="mil-text-metadata max-w-xl mx-auto leading-relaxed tracking-[0.2em]">
             {locale === 'ro'
