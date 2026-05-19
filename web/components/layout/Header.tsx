@@ -34,6 +34,7 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
+  const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
   const pathname = usePathname();
   const menuTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const languageMenuRef = useRef<HTMLDivElement>(null);
@@ -87,6 +88,7 @@ export function Header() {
   useEffect(() => {
     setMobileOpen(false);
     setLanguageMenuOpen(false);
+    setExpandedMobileSection(null);
   }, [pathname]);
 
   // ── Lock body scroll when mobile menu is open ──────────────────────────────
@@ -426,46 +428,85 @@ export function Header() {
 
               {/* Nav links */}
               <nav className="px-4 py-4" aria-label={copy.mobileNavLabel}>
-                {navSections.slice(0, 10).map((section) => (
-                  <div key={section.title} className="mb-1">
-                    <Link
-                      href={section.href}
-                      className={cn(
-                        "flex items-center justify-between w-full px-4 py-3 rounded-xl",
-                        "font-body font-semibold text-base transition-colors duration-150",
-                        pathname.startsWith(section.href)
-                          ? "bg-glory-gold/15 text-glory-gold"
-                          : "text-white/80 hover:bg-white/10 hover:text-white",
-                      )}
-                    >
-                      {section.title}
-                      {"badge" in section && (
-                        <span className="text-xs font-body text-glory-gold/70 font-normal">
-                          {section.badge}
-                        </span>
-                      )}
-                    </Link>
-                  </div>
-                ))}
+                {navSections.map((section) => {
+                  const isExpanded = expandedMobileSection === section.title;
+                  return (
+                    <div key={section.title} className="mb-2">
+                      {/* Section row with split link/accordion trigger */}
+                      <div className="flex items-center justify-between w-full rounded-xl bg-white/5 overflow-hidden">
+                        <Link
+                          href={section.href}
+                          className={cn(
+                            "flex-1 px-4 py-3 text-left font-body font-semibold text-base transition-colors duration-150",
+                            pathname.startsWith(section.href)
+                              ? "text-glory-gold"
+                              : "text-white/80 hover:text-white",
+                          )}
+                        >
+                          {section.title}
+                        </Link>
+                        {section.items && section.items.length > 0 && (
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setExpandedMobileSection(
+                                isExpanded ? null : section.title
+                              )
+                            }
+                            className={cn(
+                              "px-4 py-3 border-l border-white/10 text-white/50 hover:text-white transition-colors duration-150",
+                              isExpanded && "text-glory-gold"
+                            )}
+                            aria-expanded={isExpanded}
+                            aria-label={`Toggle ${section.title} subpages`}
+                          >
+                            <ChevronDown
+                              className={cn(
+                                "w-4 h-4 transition-transform duration-200",
+                                isExpanded && "rotate-180"
+                              )}
+                            />
+                          </button>
+                        )}
+                      </div>
+
+                      {/* Expandable sub-items */}
+                      <AnimatePresence initial={false}>
+                        {isExpanded && section.items && section.items.length > 0 && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2, ease: "easeInOut" }}
+                            className="overflow-hidden bg-white/3 rounded-b-xl border border-t-0 border-white/10 mx-1 px-2 py-1.5 space-y-1"
+                          >
+                            {section.items.map((item) => (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className={cn(
+                                  "block px-3 py-2 rounded-lg font-body text-sm font-medium transition-colors",
+                                  pathname === item.href
+                                    ? "bg-glory-gold/10 text-glory-gold"
+                                    : "text-white/70 hover:text-white hover:bg-white/5"
+                                )}
+                              >
+                                {item.label}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
 
                 <div className="mt-4 pt-4 border-t border-white/10 space-y-3">
                   <Link
-                    href="/data"
+                    href="/sitemap"
                     className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
                   >
-                    {locale === "ro" ? "Date și Studii" : "Data & Studies"}
-                  </Link>
-                  <Link
-                    href="/gallery"
-                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
-                  >
-                    {copy.galleryLink}
-                  </Link>
-                  <Link
-                    href="/history"
-                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
-                  >
-                    {copy.historyLink}
+                    {copy.viewAllCta}
                   </Link>
                 </div>
 
