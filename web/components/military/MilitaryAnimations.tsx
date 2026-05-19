@@ -703,122 +703,67 @@ interface TriadLeg {
 
 export function NuclearTriadDiagram({ triad, locale = 'en' }: { triad: { legs: TriadLeg[]; description: string }; locale?: Locale }) {
   const { legs, description } = triad;
-  const [active, setActive] = useState<number | null>(null);
-
-  const labels = locale === 'ro' 
-    ? { AIR: 'AER', LAND: 'TERESTRU', SEA: 'MARITIM', NUCLEAR: 'TRIADA', TRIAD: 'NUCLEARĂ' } 
-    : { AIR: 'AIR', LAND: 'LAND', SEA: 'SEA', NUCLEAR: 'NUCLEAR', TRIAD: 'TRIAD' };
+  const isRo = locale === 'ro';
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-white/8 bg-[#080C14]">
-      {/* SVG triangle */}
-      <div className="relative flex items-center justify-center p-8 pb-0">
-        <svg 
-          viewBox="0 0 400 280" 
-          className="w-full max-w-md" 
-          role="img"
-          aria-label="Interactive diagram of the American nuclear triad: Land, Sea, and Air legs"
-        >
-          <defs>
-            <filter id="triad-glow">
-              <feGaussianBlur stdDeviation="4" result="blur" />
-              <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-            </filter>
-          </defs>
-
-          {/* Triangle lines */}
-          {legs.map((leg, i) => {
-            const positions = [{ x: 200, y: 20 }, { x: 40, y: 250 }, { x: 360, y: 250 }];
-            const next = positions[(i + 1) % 3];
-            const curr = positions[i];
-            const isActive = active === i || active === (i + 1) % 3;
-            return (
-              <line
-                key={i}
-                x1={curr.x} y1={curr.y} x2={next.x} y2={next.y}
-                stroke={isActive ? leg.color : "rgba(255,255,255,0.1)"}
-                strokeWidth={isActive ? 2 : 1}
-                style={{ transition: "all 0.3s ease" }}
-              />
-            );
-          })}
-
-          {/* Nodes */}
-          {[
-            { x: 200, y: 20, label: labels.AIR, i: 0 }, 
-            { x: 40, y: 250, label: labels.LAND, i: 1 }, 
-            { x: 360, y: 250, label: labels.SEA, i: 2 }
-          ].map(node => {
-            const leg = legs[node.i];
-            const isActive = active === node.i;
-            return (
-              <g
-                key={node.i}
-                className="cursor-pointer"
-                onClick={() => setActive(active === node.i ? null : node.i)}
-              >
-                <circle
-                  cx={node.x} cy={node.y} r={isActive ? 28 : 20}
-                  fill={`${leg.color}15`}
-                  stroke={leg.color}
-                  strokeWidth={isActive ? 2 : 1}
-                  filter={isActive ? "url(#triad-glow)" : undefined}
-                  style={{ transition: "all 0.3s ease" }}
-                />
-                <text x={node.x} y={node.y + 4} textAnchor="middle"
-                  fill={isActive ? leg.color : "rgba(255,255,255,0.6)"}
-                  fontSize="9" fontFamily="'Space Mono','Courier',monospace" fontWeight="600"
-                  letterSpacing="0.15em" style={{ transition: "all 0.3s ease" }}>
-                  {node.label}
-                </text>
-              </g>
-            );
-          })}
-
-          {/* Center label */}
-          <text x="200" y="145" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="9"
-            fontFamily="'Space Mono','Courier',monospace" letterSpacing="0.2em">{labels.NUCLEAR}</text>
-          <text x="200" y="158" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="9"
-            fontFamily="'Space Mono','Courier',monospace" letterSpacing="0.2em">{labels.TRIAD}</text>
-        </svg>
-      </div>
-
-      {/* Detail panel */}
-      <div className="p-6">
-        <AnimatePresence mode="wait">
-          {active === null ? (
-            <motion.p key="default" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="text-center font-mono text-xs text-white/30 tracking-[0.2em]">
-              {locale === 'ro' ? 'APASĂ PE UN NOD PENTRU DETALII' : 'CLICK A NODE FOR DETAILS'}
-            </motion.p>
-          ) : (
-            <motion.div key={active} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}>
-              <div className="mb-3 flex items-center gap-3">
-                <div className="h-2 w-2 rounded-full animate-pulse" style={{ backgroundColor: legs[active].color }} />
-                <h4 className="font-mono text-sm font-bold uppercase tracking-[0.2em] text-white">{legs[active].name}</h4>
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { label: locale === 'ro' ? 'SISTEME' : 'SYSTEMS', value: legs[active].systems },
-                  { label: locale === 'ro' ? 'FOCOASE' : 'WARHEADS', value: legs[active].warheads },
-                  { label: locale === 'ro' ? 'STATUS ALERTĂ' : 'ALERT STATUS', value: legs[active].alert },
-                  { label: locale === 'ro' ? 'AVANTAJ CHEIE' : 'KEY ADVANTAGE', value: legs[active].advantage },
-                ].map((item, i) => (
-                  <div key={i} className="rounded-lg border border-white/6 bg-white/3 p-3">
-                    <p className="mb-0.5 font-mono text-[8px] tracking-widest text-white/30">{item.label}</p>
-                    <p className="font-mono text-[10px] leading-snug" style={{ color: legs[active].color }}>{item.value}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Description */}
-        <p className="mt-4 border-t border-white/8 pt-4 font-body text-xs leading-relaxed text-white/40">
+    <div className="space-y-6 w-full">
+      {/* Strategic Thesis Panel */}
+      <div className="mil-glass-premium p-6 md:p-8 relative border-l border-white/20">
+        <div className="mil-text-metadata text-[9px] tracking-[0.3em] text-white/40 mb-3 uppercase">
+          {isRo ? "DOCTRINĂ DE DESCURAJARE STRATEGICĂ" : "STRATEGIC DETERRENCE DOCTRINE"}
+        </div>
+        <p className="font-body text-xs md:text-sm leading-relaxed text-white/70">
           {description}
         </p>
+      </div>
+
+      {/* Triad Legs List */}
+      <div className="space-y-4">
+        {legs.map((leg, idx) => (
+          <div 
+            key={idx} 
+            className="bg-[#050505] border border-white/5 p-6 hover:border-white/10 transition-colors duration-350"
+          >
+            {/* Header row */}
+            <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/5">
+              <div className="flex items-center gap-3">
+                <span className="w-1 h-5 block" style={{ backgroundColor: leg.color }} />
+                <h4 className="text-md font-bold uppercase tracking-tight text-white">{leg.name}</h4>
+              </div>
+              <span className="mil-text-metadata text-[8px] tracking-[0.2em] opacity-40">
+                {idx === 0 ? (isRo ? "TERESTRU" : "TERRESTRIAL") : idx === 1 ? (isRo ? "MARITIM" : "MARITIME") : (isRo ? "AERIAN" : "AEROSPACE")}
+              </span>
+            </div>
+
+            {/* Technical Parameters Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div>
+                <p className="mil-text-metadata text-[8px] tracking-widest text-white/30 mb-0.5">
+                  {isRo ? "SISTEME" : "SYSTEMS"}
+                </p>
+                <p className="font-mono text-[11px] font-semibold text-white/80 leading-tight">{leg.systems}</p>
+              </div>
+              <div>
+                <p className="mil-text-metadata text-[8px] tracking-widest text-white/30 mb-0.5">
+                  {isRo ? "FOCOASE" : "WARHEADS"}
+                </p>
+                <p className="font-mono text-[11px] font-semibold text-white/80 leading-tight">{leg.warheads}</p>
+              </div>
+              <div>
+                <p className="mil-text-metadata text-[8px] tracking-widest text-white/30 mb-0.5">
+                  {isRo ? "ALERTĂ" : "ALERT STATUS"}
+                </p>
+                <p className="font-mono text-[11px] font-semibold text-white/80 leading-tight">{leg.alert}</p>
+              </div>
+              <div className="col-span-2 md:col-span-1">
+                <p className="mil-text-metadata text-[8px] tracking-widest text-white/30 mb-0.5">
+                  {isRo ? "AVANTAJ CHEIE" : "KEY ADVANTAGE"}
+                </p>
+                <p className="font-body text-[11px] leading-snug text-white/70">{leg.advantage}</p>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
