@@ -2137,79 +2137,38 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
 
             </div>
 
-            {/* Right Column: Visual Telemetry & SVGs (5 cols) */}
+            {/* Right Column: High-Fidelity Weapon Image (5 cols) */}
             <div className="lg:col-span-5 flex flex-col items-center justify-center">
               
-              {/* Overhauled Weapon Blueprint Static Frame */}
-              <div className="relative w-full aspect-square max-w-[340px] rounded-lg border border-white/10 bg-[#000813]/90 overflow-hidden flex items-center justify-center p-4">
+              {/* High-Fidelity Tactical Weapon Frame */}
+              <div className="relative w-full aspect-square max-w-[340px] rounded-lg border border-white/10 bg-[#000813]/90 overflow-hidden flex items-center justify-center p-0 group">
                 
-                {/* Compass Bezel grid background aesthetics */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,140,255,0.06)_0%,transparent_75%)]" />
-                <div className="absolute top-2 left-2 right-2 bottom-2 rounded border border-white/5 pointer-events-none" />
-                <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-white/5 pointer-events-none" />
-                <div className="absolute top-0 bottom-0 left-1/2 w-[1px] bg-white/5 pointer-events-none" />
+                {/* Cyber corner brackets accent */}
+                <div className="absolute top-2 left-2 right-2 bottom-2 rounded border border-white/5 pointer-events-none z-20" />
+                <div className="absolute top-0 bottom-0 left-1/2 w-[1px] bg-white/5 pointer-events-none z-20" />
+                <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-white/5 pointer-events-none z-20" />
 
-                {/* Radar scanner sweep */}
-                <div className="absolute inset-0 bg-[conic-gradient(from_0deg,rgba(0,142,255,0.06)_0deg,transparent_90deg)] pointer-events-none animate-[spin_10s_linear_infinite]" />
+                {/* Radar scanner sweep overlay */}
+                <div className="absolute inset-0 bg-[conic-gradient(from_0deg,rgba(0,142,255,0.04)_0deg,transparent_90deg)] pointer-events-none animate-[spin_10s_linear_infinite] z-20" />
 
-                {/* SVG Blueprint Render Container */}
-                <div className="relative z-10 w-full h-full flex items-center justify-center">
-                  <svg className="w-full h-full p-2" viewBox="0 0 100 100">
-                    {/* Tomahawk blueprint drawing */}
-                    {weapon.id === "tomahawk" && (
-                      <g className="transition-all duration-300">
-                        {/* Launcher vector paths */}
-                        <rect x="18" y="46" width="56" height="8" rx="1.5" fill="none" stroke="#8edcff" strokeWidth="1.2" />
-                        <path d="M 74 46 Q 84 50 74 54 Z" fill="none" stroke="#8edcff" strokeWidth="1.2" />
-                        <path d="M 35 46 L 22 28 M 35 54 L 22 72" stroke="#8edcff" strokeWidth="1.2" strokeLinecap="round" opacity="0.85" />
-                        <path d="M 22 46 L 14 36 M 22 54 L 14 64" stroke="#8edcff" strokeWidth="1.2" />
-                        <path d="M 48 54 L 54 60 L 66 54" fill="none" stroke="#8edcff" strokeWidth="1" />
-                      </g>
-                    )}
-
-                    {/* Standard Missile 6 blueprint drawing */}
-                    {weapon.id === "sm6" && (
-                      <g className="transition-all duration-300">
-                        <rect x="46" y="24" width="8" height="50" rx="1" fill="none" stroke="#8edcff" strokeWidth="1.2" />
-                        <path d="M 46 24 Q 50 12 54 24 Z" fill="none" stroke="#8edcff" strokeWidth="1.2" />
-                        <path d="M 46 44 L 34 48 M 54 44 L 66 48" stroke="#8edcff" strokeWidth="1.2" />
-                        <path d="M 46 66 L 36 70 M 54 66 L 64 70" stroke="#8edcff" strokeWidth="1.2" />
-                        <rect x="44" y="74" width="12" height="13" fill="none" stroke="#8edcff" strokeWidth="1.2" />
-                      </g>
-                    )}
-
-                    {/* Mk 48 Torpedo blueprint drawing */}
-                    {weapon.id === "mk48" && (
-                      <g className="transition-all duration-300">
-                        <rect x="16" y="46" width="56" height="8" rx="3.5" fill="none" stroke="#8edcff" strokeWidth="1.2" />
-                        <path d="M 16 46 Q 8 50 16 54 Z" fill="none" stroke="#8edcff" strokeWidth="1.2" />
-                        <path d="M 72 48 L 78 44 M 72 52 L 78 56 M 72 50 L 80 50" stroke="#8edcff" strokeWidth="1.2" />
-                        <rect x="68" y="44" width="4" height="12" rx="0.5" fill="none" stroke="#8edcff" strokeWidth="1" />
-                        <path d="M 64 46 L 59 41 M 64 54 L 59 59" stroke="#8edcff" strokeWidth="1" />
-                      </g>
-                    )}
-
-                    {/* Phalanx CIWS blueprint drawing */}
-                    {weapon.id === "phalanx" && (
-                      <g className="transition-all duration-300">
-                        <path d="M 28 78 L 72 78 L 65 62 L 35 62 Z" fill="none" stroke="#8edcff" strokeWidth="1.2" />
-                        <circle cx="50" cy="46" r="15" fill="none" stroke="#8edcff" strokeWidth="1.2" />
-                        <rect x="36" y="25" width="9" height="13" rx="4.5" fill="none" stroke="#8edcff" strokeWidth="1.2" />
-                        <rect x="52" y="21" width="11" height="8" rx="0.5" fill="none" stroke="#8edcff" strokeWidth="1.2" />
-                        <line x1="38" y1="46" x2="16" y2="46" stroke="#8edcff" strokeWidth="1.8" />
-                        <line x1="38" y1="46" x2="48" y2="46" stroke="#8edcff" strokeWidth="1" />
-                        <rect x="43" y="64" width="14" height="11" rx="0.5" fill="none" stroke="#8edcff" strokeWidth="1.2" />
-                      </g>
-                    )}
-                  </svg>
+                {/* Real Image component */}
+                <div className="relative z-10 w-full h-full">
+                  <Image
+                    src={`/images/military/navy/${weapon.id}.png`}
+                    alt={weapon.name}
+                    fill
+                    className="object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none z-10" />
                 </div>
 
                 {/* Radar and Telemetry tags */}
-                <div className="absolute top-4 left-4 font-mono text-[8.5px] text-white/20 uppercase tracking-widest">
-                  BLUEPRINT // 0x{weapon.id.toUpperCase()}
+                <div className="absolute top-4 left-4 font-mono text-[8.5px] text-white/80 bg-black/60 px-2 py-0.5 rounded uppercase tracking-widest z-30 border border-white/5">
+                  VISUAL FEED // {weapon.id.toUpperCase()}
                 </div>
-                <div className="absolute bottom-4 right-4 font-mono text-[8.5px] text-[#8edcff]/40 uppercase tracking-widest">
-                  STATUS: SECURED
+                <div className="absolute bottom-4 right-4 font-mono text-[8.5px] text-[#8edcff]/90 bg-black/60 px-2 py-0.5 rounded uppercase tracking-widest z-30 border border-[#8edcff]/15">
+                  FEED: LIVE
                 </div>
               </div>
 
