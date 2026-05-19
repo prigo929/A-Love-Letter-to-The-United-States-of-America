@@ -125,7 +125,8 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 | **🌎 Global Leadership** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Planetary Influence Hooks**: Zones ready for NATO, Reserve Currency, and Soft Power visualizers. | • `/global-leadership`<br>• `/global-leadership/nato`<br>• `/global-leadership/dollar-as-reserve`<br>• `/global-leadership/soft-power`<br>• `/global-leadership/un` |
 | **🎭 Culture & Life** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Anthology & Life Hooks**: Anthropology school/aesthetic cards ready for content drops. | • `/culture`<br>• `/culture/the-american-high-school`<br>• `/culture/american-aesthetics`<br>• `/quality-of-life` |
 | **🌱 Abundance & People** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Demographic & Resource Hooks**: Melding pot and energy production visual spots. | • `/natural-resources`<br>• `/immigration-demographics` |
-| **🎮 Interactive Features** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Civic Tools Navigation**: Connects map explorer and quiz hubs. | • `/interactive`<br>• `/explorer` |
+| **📊 Data & Media** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Empirical Analytics & Media**: Fact sheets, image/video galleries, and 50-state regional mapping. | • `/data`<br>• `/gallery`<br>• `/explorer` |
+| **🎮 Interactive Features** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Civic Tools Navigation**: Connects interactive components. | • `/interactive` |
 
 ## 🗺️ What Is Built
 
@@ -133,10 +134,7 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 <summary><strong>🏠 Core Pages</strong></summary>
 
 - `/` home page with hero, statement, stats, section grid, Why America blocks, map preview, video preview, data teaser charts, quote carousel, gallery preview, newsletter
-- `/gallery` (Media gallery coming-soon landing page)
-- `/data` (Fact card database + FAQ accordion page)
-- `/explorer` (Interactive 50-state map regional fact selector)
-- `/sitemap`
+- `/sitemap` (All Sections sitemap page)
 </details>
 
 <details>
@@ -270,12 +268,20 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 </details>
 
 <details>
-<summary><strong>🎮 Interactive Features</strong> (Scaffolded)</summary>
+<summary><strong>📊 Data & Media</strong> (Scaffolded)</summary>
 
-- `/interactive` (Interactive Features hub page linking to Quiz, Map Explorer)
+- `/data` (Data & Studies fact sheet database)
+- `/gallery` (Photo Gallery page)
+- `/explorer` (Interactive 50-state regional facts map explorer)
 </details>
 
-The culture, quality-of-life, innovation, science, universities, natural-resources, immigration-demographics, global-leadership, interactive, history, and military subpages are currently clean scaffolds with TODO zones, ready for content drops.
+<details>
+<summary><strong>🎮 Interactive Features</strong> (Scaffolded)</summary>
+
+- `/interactive` (Interactive Features hub page linking to Quiz)
+</details>
+
+The culture, quality-of-life, innovation, science, universities, natural-resources, immigration-demographics, global-leadership, interactive, history, data, and military subpages are currently clean scaffolds with TODO zones, ready for content drops.
 
 ## Experience Highlights
 
