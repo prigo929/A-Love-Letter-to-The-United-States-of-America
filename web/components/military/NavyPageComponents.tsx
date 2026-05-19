@@ -2045,14 +2045,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                 {/* Cyber corner brackets accent */}
                 <div className="absolute -top-4 -left-4 h-6 w-6 border-t-2 border-l-2 border-[#8edcff]/20 pointer-events-none" />
                 
-                <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-[#8edcff] animate-pulse" />
-                  <span className="font-mono text-[9px] tracking-[0.3em] text-[#8edcff] font-bold uppercase">
-                    [ {weapon.category} ]
-                  </span>
-                </div>
-                
-                <h3 className="navy-font-display text-2xl sm:text-4.5xl font-black tracking-tight text-white leading-none uppercase">
+                <h3 className="navy-font-display text-2xl sm:text-4.5xl font-black tracking-wide text-white leading-snug uppercase pt-1">
                   {weapon.name}
                 </h3>
                 
@@ -2141,15 +2134,10 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
             <div className="lg:col-span-5 flex flex-col items-center justify-center">
               
               {/* High-Fidelity Tactical Weapon Frame */}
-              <div className="relative w-full aspect-square max-w-[340px] rounded-lg border border-white/10 bg-[#000813]/90 overflow-hidden flex items-center justify-center p-0 group">
+              <div className="relative w-full aspect-square max-w-[340px] rounded-lg border border-white/10 bg-[#000813]/40 overflow-hidden flex items-center justify-center p-2 group">
                 
                 {/* Cyber corner brackets accent */}
                 <div className="absolute top-2 left-2 right-2 bottom-2 rounded border border-white/5 pointer-events-none z-20" />
-                <div className="absolute top-0 bottom-0 left-1/2 w-[1px] bg-white/5 pointer-events-none z-20" />
-                <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-white/5 pointer-events-none z-20" />
-
-                {/* Radar scanner sweep overlay */}
-                <div className="absolute inset-0 bg-[conic-gradient(from_0deg,rgba(0,142,255,0.04)_0deg,transparent_90deg)] pointer-events-none animate-[spin_10s_linear_infinite] z-20" />
 
                 {/* Real Image component */}
                 <div className="relative z-10 w-full h-full">
@@ -2157,18 +2145,9 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                     src={`/images/military/navy/${weapon.id}.jpg`}
                     alt={weapon.name}
                     fill
-                    className="object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                    className="object-contain opacity-95 group-hover:opacity-100 transition-opacity duration-500"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none z-10" />
-                </div>
-
-                {/* Radar and Telemetry tags */}
-                <div className="absolute top-4 left-4 font-mono text-[8.5px] text-white/80 bg-black/60 px-2 py-0.5 rounded uppercase tracking-widest z-30 border border-white/5">
-                  VISUAL FEED // {weapon.id.toUpperCase()}
-                </div>
-                <div className="absolute bottom-4 right-4 font-mono text-[8.5px] text-[#8edcff]/90 bg-black/60 px-2 py-0.5 rounded uppercase tracking-widest z-30 border border-[#8edcff]/15">
-                  FEED: LIVE
                 </div>
               </div>
 
