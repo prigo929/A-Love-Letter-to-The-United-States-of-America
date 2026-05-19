@@ -12,6 +12,7 @@ import {
   NavyPlatformShowcase,
   NavyStyles,
   NavyWeaponsConsole,
+  NavyFlyNavyVideo,
 } from "@/components/military/NavyPageComponents";
 import {
   ParallaxMilitaryHero,
@@ -83,6 +84,7 @@ export default async function NavyPage() {
       <NavyOperationalConsole theaters={theaters} locale={locale} />
       <NavyFullscreenPanel panel={visualPanels[0]} locale={locale} />
       <NavyPlatformShowcase platforms={platforms} locale={locale} />
+      <NavyFlyNavyVideo locale={locale} />
       <NavyWeaponsConsole locale={locale} />
       <NavyCommandStack layers={layers} locale={locale} />
       <NavyFullscreenPanel panel={visualPanels[1]} reverse locale={locale} />

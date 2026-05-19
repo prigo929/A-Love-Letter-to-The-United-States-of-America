@@ -2186,3 +2186,75 @@ function SectionTitle({
     </div>
   );
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 12. NavyFlyNavyVideo — Full-Bleed Naval Aviation Video Segment
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
+  const isRo = locale === "ro";
+
+  return (
+    <section
+      id="fly-navy-video"
+      className="relative w-full overflow-hidden bg-black border-y border-white/5"
+    >
+      <div className="pt-20 pb-10 flex justify-center">
+        <div className="mil-text-label tracking-[0.5em] text-[#8edcff]/85 text-xs sm:text-sm font-bold uppercase">
+          [ {isRo ? "FORȚA AERONAVALĂ · AVIAȚIA DE ELITĂ" : "FLY NAVY · BATTLE-TEMPERED AVIATION"} ]
+        </div>
+      </div>
+
+      <div className="relative w-full aspect-video overflow-hidden bg-black max-w-[1440px] mx-auto px-6 pb-24 md:pb-36">
+        <div className="relative w-full h-full min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px] xl:min-h-[800px] overflow-hidden rounded-lg border border-white/10 shadow-2xl">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+            style={{ filter: "contrast(1.08) brightness(0.78) saturate(0.85)" }}
+            aria-label="Cinematic naval aviation supremacy showcase video"
+          >
+            <source src="/videos/military/fly-navy.mp4" type="video/mp4" />
+          </video>
+
+          {/* Edge vignette and HUD look and feel */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,black_0%,rgba(0,0,0,0)_15%,rgba(0,0,0,0)_85%,black_100%)] pointer-events-none z-10" />
+          <div
+            className="absolute inset-0 pointer-events-none z-10"
+            style={{
+              background: "radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.55) 100%)",
+            }}
+          />
+
+          {/* Subtly animated corner tech brackets */}
+          <div className="absolute top-4 left-4 h-6 w-6 border-t-2 border-l-2 border-[#8edcff]/40 pointer-events-none z-20" />
+          <div className="absolute top-4 right-4 h-6 w-6 border-t-2 border-r-2 border-[#8edcff]/40 pointer-events-none z-20" />
+          <div className="absolute bottom-4 left-4 h-6 w-6 border-b-2 border-l-2 border-[#8edcff]/40 pointer-events-none z-20" />
+          <div className="absolute bottom-4 right-4 h-6 w-6 border-b-2 border-r-2 border-[#8edcff]/40 pointer-events-none z-20" />
+
+          {/* Centered maverick-themed text lockup */}
+          <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
+            <div className="text-center px-4">
+              <h2 className="navy-font-display text-4xl sm:text-6xl md:text-7xl font-black uppercase text-center mb-6 leading-none select-none tracking-tight">
+                <span className="block text-white" style={{ wordSpacing: "0.15em", letterSpacing: "0.02em" }}>
+                  {isRo ? "AVIAȚIA" : "FLY"}
+                </span>
+                <span className="block text-white/20" style={{ wordSpacing: "0.15em", letterSpacing: "0.02em" }}>
+                  {isRo ? "MARINĂ" : "NAVY"}
+                </span>
+              </h2>
+              <p
+                className="navy-font-mono text-[9px] sm:text-[11px] tracking-[0.4em] font-bold text-white/50 uppercase select-none"
+                style={{ wordSpacing: "0.2em" }}
+              >
+                {isRo ? "DOMINAȚIE AERONAVALĂ PLANETARĂ · VERIFICAT" : "PLANETARY CARRIER AVIATION · SEMPER FORTIS"}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
