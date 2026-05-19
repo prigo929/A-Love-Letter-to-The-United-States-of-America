@@ -60,6 +60,31 @@ export default async function CulturePage() {
           {/* TODO: Drop in existing "Melting Pot" WebGL component here */}
         </div>
       </section>
+
+      {/* Interactive Chat CTA */}
+      <section className="pb-24 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl rounded-3xl border border-glory-gold/20 bg-glory-gold/5 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 backdrop-blur-sm">
+          <div>
+            <span className="font-hero text-xs uppercase tracking-[0.2em] text-[#E8B923] mb-2 block">
+              {locale === "ro" ? "Ai întrebări despre Cultura Americană?" : "Have questions about American Culture?"}
+            </span>
+            <h3 className="font-hero text-2xl md:text-3xl font-bold text-white">
+              {locale === "ro" ? "Oracolul Ask America" : "The Ask America Oracle"}
+            </h3>
+            <p className="font-body text-white/50 text-sm mt-2 max-w-2xl">
+              {locale === "ro"
+                ? "Discută cu AI despre exporturile culturale americane, Hollywood, estetică urbană, sistemul școlar și cultura sportivă."
+                : "Discuss with AI about American cultural exports, Hollywood, urban aesthetics, high school systems, and sports culture."}
+            </p>
+          </div>
+          <a
+            href="/interactive"
+            className="shrink-0 inline-flex items-center gap-3 px-6 py-3.5 bg-glory-gold hover:bg-glory-gold-light text-navy-dark font-body font-semibold text-sm transition-colors rounded-xl shadow-lg"
+          >
+            {locale === "ro" ? "Întreabă America →" : "Ask America →"}
+          </a>
+        </div>
+      </section>
     </main>
   );
 }

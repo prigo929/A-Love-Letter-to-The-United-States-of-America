@@ -635,6 +635,29 @@ export default async function MilitaryPage() {
           ))}
         </div>
 
+        {/* Interactive Chat CTA */}
+        <div className="mt-16 border border-glory-gold/20 bg-glory-gold/5 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 backdrop-blur-sm">
+          <div>
+            <span className="mil-text-metadata text-xs uppercase tracking-[0.2em] text-[#E8B923] mb-2 block">
+              {locale === "ro" ? "Ai întrebări despre forța militară a SUA?" : "Have questions about U.S. Military strength?"}
+            </span>
+            <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white font-(family-name:--font-archivo)">
+              {locale === "ro" ? "Oracolul Ask America" : "The Ask America Oracle"}
+            </h3>
+            <p className="mil-text-metadata text-white/50 text-sm mt-2 max-w-2xl">
+              {locale === "ro"
+                ? "Discută cu AI despre alianța NATO, cele 11 grupuri de atac cu portavion, bugetul de apărare sau programele viitoare DARPA."
+                : "Discuss with AI about the NATO alliance, the 11 carrier strike groups, defense budgets, or future DARPA programs."}
+            </p>
+          </div>
+          <Link
+            href="/interactive"
+            className="shrink-0 inline-flex items-center gap-3 px-6 py-3.5 bg-glory-gold hover:bg-glory-gold-light text-black font-body font-semibold text-sm transition-colors rounded-none shadow-lg"
+          >
+            {locale === "ro" ? "ÎNTREABĂ AMERICA →" : "ASK AMERICA →"}
+          </Link>
+        </div>
+
         {/* Bottom classification strip */}
         <div className="mt-48 pt-12 border-t border-white/5 flex items-center justify-center gap-8">
           <div className="h-px w-24 bg-linear-to-r from-transparent to-white/10" />

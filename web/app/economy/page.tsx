@@ -785,6 +785,31 @@ export default async function EconomyPage() {
             ))}
           </div>
         </section>
+
+        {/* Interactive Chat CTA */}
+        <section className="mt-32 mx-auto max-w-[1600px] px-6 md:px-12">
+          <div className="rounded-3xl border border-glory-gold/20 bg-glory-gold/5 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 backdrop-blur-sm">
+            <div>
+              <span className="font-macro-mono text-xs uppercase tracking-[0.2em] text-[#E8B923] mb-2 block">
+                {locale === "ro" ? "Ai întrebări despre Economia SUA?" : "Have questions about the U.S. Economy?"}
+              </span>
+              <h3 className="font-macro-display text-2xl md:text-3xl font-bold text-white">
+                {locale === "ro" ? "Oracolul Ask America" : "The Ask America Oracle"}
+              </h3>
+              <p className="font-macro-body text-white/50 text-sm mt-2 max-w-2xl">
+                {locale === "ro"
+                  ? "Explorează detalii personalizate despre piețele de capital, PIB, dominația dolarului sau inovația tehnologică printr-o sesiune de chat ghidată de AI."
+                  : "Explore custom insights about capital markets, GDP, dollar dominance, or technological innovation through our interactive, guided AI chat session."}
+              </p>
+            </div>
+            <Link
+              href="/interactive"
+              className="shrink-0 inline-flex items-center gap-3 px-6 py-3.5 bg-glory-gold hover:bg-glory-gold-light text-navy-dark font-body font-semibold text-sm transition-colors rounded-xl shadow-lg"
+            >
+              {locale === "ro" ? "Întreabă America →" : "Ask America →"}
+            </Link>
+          </div>
+        </section>
       </main>
     </>
   );
