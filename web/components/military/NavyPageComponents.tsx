@@ -1341,7 +1341,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         <line x1="8" y1="20" x2="6" y2="16" stroke="#ff7a7a" strokeWidth="0.8" />
                         <line x1="8" y1="24" x2="6" y2="28" stroke="#ff7a7a" strokeWidth="0.8" />
                         
-                        <text x="14" y="14" fill="#ff7a7a" fontSize="3" className="navy-font-mono font-black" opacity="0.8">F-35C STRIKE</text>
+                        <text x="8" y="12" fill="#ff7a7a" fontSize="3" className="navy-font-mono font-black" opacity="0.8">F-35C STRIKE</text>
                         
                         {/* Guided weapon launch drop trail to TR-02 */}
                         <motion.circle
@@ -1351,12 +1351,12 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         />
                       </motion.g>
  
-                      {/* Terminal Flight Calculations Readout Block */}
+                      {/* Terminal Flight Calculations Readout Block (Top Right) */}
                       <g opacity="0.85" className="navy-font-mono" fill="#ff7a7a">
-                        <text x="94" y="14" fontSize="2.8" textAnchor="end" fontWeight="bold">HYPERSONIC INTERCEPT</text>
+                        <text x="94" y="12" fontSize="2.8" textAnchor="end" fontWeight="bold">HYPERSONIC INTERCEPT</text>
                         
                         <motion.text
-                          x="94" y="19" fontSize="2.2" textAnchor="end"
+                          x="94" y="16.5" fontSize="2.2" textAnchor="end"
                           animate={{ opacity: [1, 0.4, 1] }}
                           transition={{ repeat: Infinity, duration: 0.8 }}
                         >
@@ -1364,19 +1364,21 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         </motion.text>
                         
                         <motion.text
-                          x="94" y="23" fontSize="2.2" textAnchor="end"
+                          x="94" y="21" fontSize="2.2" textAnchor="end"
                           animate={{ opacity: [1, 0.5, 1] }}
                           transition={{ repeat: Infinity, duration: 1.2 }}
                         >
                           TTG-01: 14.82 SEC
                         </motion.text>
  
-                        <text x="94" y="27" fontSize="2" textAnchor="end" opacity="0.5">SYS STATUS: ENGAGED</text>
+                        <text x="94" y="25" fontSize="2" textAnchor="end" opacity="0.5">SYS STATUS: ENGAGED</text>
                       </g>
  
-                      {/* Live System Status Waveform (Center Right) */}
-                      <path d="M 68 38 L 71 43 L 74 32 L 77 48 L 80 30 L 83 42 L 86 38 L 89 40" fill="none" stroke="#ff7a7a" strokeWidth="0.8" opacity="0.6" className="animate-pulse" />
-                      <text x="68" y="29.5" fill="#ff7a7a" fontSize="3" className="navy-font-mono font-black" opacity="0.8">WARHEAD CHARGED</text>
+                      {/* Live System Status Waveform (Upper Center - Isolated) */}
+                      <g>
+                        <path d="M 38 22 L 41 24 L 44 20 L 47 25 L 50 18 L 53 23 L 56 21 L 59 24 L 62 22" fill="none" stroke="#ff7a7a" strokeWidth="0.8" opacity="0.6" className="animate-pulse" />
+                        <text x="50" y="14" fill="#ff7a7a" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">WARHEAD CHARGED</text>
+                      </g>
  
                       {/* Detailed Surface Destroyer Firing VLS (Bottom Left) */}
                       <motion.g
@@ -1405,10 +1407,10 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         transition={{ delay: 0.4 }}
                       >
                         {/* Underwater sub hull */}
-                        <rect x="75" y="85" width="18" height="3" rx="1" fill="#ff7a7a" opacity="0.5" />
+                        <rect x="74" y="86" width="20" height="3.5" rx="1" fill="#ff7a7a" opacity="0.5" />
                         {/* Tomahawk missile launched underwater, traveling up to Node 1 */}
                         <motion.path
-                          d="M 80 85 Q 88 55 68 30"
+                          d="M 78 86 Q 84 62 62 46"
                           fill="none"
                           stroke="#ffffff"
                           strokeWidth="0.8"
@@ -1417,30 +1419,30 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                           animate={{ pathLength: 1 }}
                           transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 0.5 }}
                         />
-                        <text x="84" y="93" fill="#ff7a7a" fontSize="2.5" textAnchor="middle" className="navy-font-mono" opacity="0.6">TOMAHAWK UGM</text>
+                        <text x="84" y="94" fill="#ff7a7a" fontSize="2.5" textAnchor="middle" className="navy-font-mono" opacity="0.6">TOMAHAWK UGM</text>
                       </motion.g>
  
-                      {/* Lock-on target 1 tracking coordinates brackets */}
+                      {/* Lock-on target 1 tracking coordinates brackets (Center Right - Moved Down to Avoid Readout) */}
                       <motion.g
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.1 }}
                       >
                         {/* Pulsing ring target lock */}
-                        <circle cx="68" cy="30" r="4.5" fill="none" stroke="#ff7a7a" strokeWidth="1.2" className="animate-ping" style={{ animationDuration: '1.5s' }} />
-                        <circle cx="68" cy="30" r="1.5" fill="#ff7a7a" />
+                        <circle cx="62" cy="46" r="4.5" fill="none" stroke="#ff7a7a" strokeWidth="1.2" className="animate-ping" style={{ animationDuration: '1.5s' }} />
+                        <circle cx="62" cy="46" r="1.5" fill="#ff7a7a" />
                         
                         {/* Closing targeting brackets [  ] */}
-                        <path d="M 62 25 L 64 25 L 64 27" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
-                        <path d="M 74 25 L 72 25 L 72 27" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
-                        <path d="M 62 35 L 64 35 L 64 33" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
-                        <path d="M 74 35 L 72 35 L 72 33" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
+                        <path d="M 56 41 L 58 41 L 58 43" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
+                        <path d="M 68 41 L 66 41 L 66 43" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
+                        <path d="M 56 51 L 58 51 L 58 49" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
+                        <path d="M 68 51 L 66 51 L 66 49" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
                         
-                        <text x="68" y="44" fill="#ff7a7a" fontSize="2.8" textAnchor="middle" className="navy-font-mono font-black">LOCK [TR-01]</text>
-                        <text x="68" y="47.5" fill="#ff7a7a" fontSize="2.2" textAnchor="middle" className="navy-font-mono" opacity="0.5">AZ:084 EL:15</text>
+                        <text x="62" y="58" fill="#ff7a7a" fontSize="2.8" textAnchor="middle" className="navy-font-mono font-black">LOCK [TR-01]</text>
+                        <text x="62" y="61.5" fill="#ff7a7a" fontSize="2.2" textAnchor="middle" className="navy-font-mono" opacity="0.5">AZ:084 EL:15</text>
                       </motion.g>
  
-                      {/* Lock-on target 2 tracking coordinates brackets */}
+                      {/* Lock-on target 2 tracking coordinates brackets (Center Left) */}
                       <motion.g
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -1456,13 +1458,13 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         <path d="M 28 67 L 30 67 L 30 65" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
                         <path d="M 40 67 L 38 67 L 38 65" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
                         
-                        <text x="34" y="72.5" fill="#ff7a7a" fontSize="2.8" textAnchor="middle" className="navy-font-mono font-black">LOCK [TR-02]</text>
-                        <text x="34" y="76" fill="#ff7a7a" fontSize="2.2" textAnchor="middle" className="navy-font-mono" opacity="0.5">AZ:284 EL:08</text>
+                        <text x="34" y="74" fill="#ff7a7a" fontSize="2.8" textAnchor="middle" className="navy-font-mono font-black">LOCK [TR-02]</text>
+                        <text x="34" y="77.5" fill="#ff7a7a" fontSize="2.2" textAnchor="middle" className="navy-font-mono" opacity="0.5">AZ:284 EL:08</text>
                       </motion.g>
  
                       {/* Launch flight vector trajectory curve */}
                       <motion.path
-                        d="M 14 74 Q 35 40 68 30"
+                        d="M 14 74 Q 32 48 62 46"
                         fill="none"
                         stroke="#ff7a7a"
                         strokeWidth="1.5"
