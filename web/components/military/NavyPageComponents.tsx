@@ -2199,32 +2199,6 @@ export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
       id="fly-navy-video"
       className="relative overflow-hidden bg-black"
     >
-      {/* Invisible SVG tactical filter definition with non-zero dimensions to trigger browser layout */}
-      <svg className="absolute w-px h-px opacity-0 overflow-hidden pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <filter id="tactical-cam-distortion" x="-20%" y="-20%" width="140%" height="140%">
-            {/* Chromatic aberration channel separation (Red & Blue channels heavily offset) */}
-            <feOffset in="SourceGraphic" dx="-18" dy="0" result="red-shift" />
-            <feColorMatrix in="red-shift" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="red" />
-            
-            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="green" />
-            
-            <feOffset in="SourceGraphic" dx="18" dy="0" result="blue-shift" />
-            <feColorMatrix in="blue-shift" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="blue" />
-            
-            <feBlend mode="screen" in="red" in2="green" result="rg" />
-            <feBlend mode="screen" in="rg" in2="blue" result="aberration" />
-            
-            {/* Sensor Noise generation */}
-            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="raw-noise" />
-            <feColorMatrix in="raw-noise" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.12 0" result="soft-noise" />
-            
-            {/* Blend noise onto the aberrated graphic */}
-            <feBlend mode="overlay" in="aberration" in2="soft-noise" />
-          </filter>
-        </defs>
-      </svg>
-
       <div className="pt-22 pb-12 flex justify-center">
         <div className="mil-text-label tracking-[0.5em]">{isRo ? "FORȚA AERONAVALĂ · SHOWCASE" : "NAVAL AVIATION · SHOWCASE"}</div>
       </div>
@@ -2232,27 +2206,21 @@ export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
       <div className="relative w-full aspect-video overflow-hidden bg-black">
         <video
           autoPlay loop muted playsInline
-          className="w-full h-full object-cover scale-[1.05]"
-          style={{ filter: "url(#tactical-cam-distortion) contrast(1.1) brightness(0.75) saturate(0.8)" }}
+          className="w-full h-full object-cover"
+          style={{ filter: "contrast(1.1) brightness(0.75) saturate(0.8)" }}
           aria-label="Cinematic naval aviation supremacy showcase video"
         >
           <source src="/videos/military/fly-navy.mp4" type="video/mp4" />
         </video>
 
-        {/* Edge smearing / Radial Blur (CSS backdrop-filter + radial masking) */}
-        <div className="absolute inset-0 pointer-events-none z-20 backdrop-blur-[4px]" style={{
-          WebkitMaskImage: "radial-gradient(circle, transparent 45%, black 100%)",
-          maskImage: "radial-gradient(circle, transparent 45%, black 100%)",
-        }} />
-
         {/* Edge vignette */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,black_0%,rgba(0,0,0,0)_15%,rgba(0,0,0,0)_85%,black_100%)] pointer-events-none z-10" />
-        <div className="absolute inset-0 pointer-events-none z-10" style={{
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,black_0%,rgba(0,0,0,0)_15%,rgba(0,0,0,0)_85%,black_100%)]" />
+        <div className="absolute inset-0" style={{
           background: "radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.5) 100%)"
         }} />
 
         {/* Centered lockup */}
-        <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
+        <div className="absolute inset-0 flex items-center justify-center z-30">
           <div className="text-center">
             <h2 className="mil-text-section mb-4">
               <span className="block whitespace-nowrap">{isRo ? "AVIAȚIE" : "FLY"}</span>
