@@ -1354,24 +1354,6 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                       {/* Terminal Flight Calculations Readout Block (Top Right) */}
                       <g opacity="0.85" className="navy-font-mono" fill="#ff7a7a">
                         <text x="94" y="14" fontSize="2.8" textAnchor="end" fontWeight="bold">HYPERSONIC INTERCEPT</text>
-                        
-                        <motion.text
-                          x="94" y="19.5" fontSize="2.2" textAnchor="end"
-                          animate={{ opacity: [1, 0.4, 1] }}
-                          transition={{ repeat: Infinity, duration: 0.8 }}
-                        >
-                          VELOCITY: MACH 8.42
-                        </motion.text>
-                        
-                        <motion.text
-                          x="94" y="23.5" fontSize="2.2" textAnchor="end"
-                          animate={{ opacity: [1, 0.5, 1] }}
-                          transition={{ repeat: Infinity, duration: 1.2 }}
-                        >
-                          TTG-01: 14.82 SEC
-                        </motion.text>
- 
-                        <text x="94" y="27.5" fontSize="2" textAnchor="end" opacity="0.5">SYS STATUS: ENGAGED</text>
                       </g>
  
                       {/* Detailed Surface Destroyer Firing VLS (Bottom Left) */}
