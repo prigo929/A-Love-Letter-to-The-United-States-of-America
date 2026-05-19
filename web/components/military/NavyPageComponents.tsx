@@ -2199,17 +2199,17 @@ export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
       id="fly-navy-video"
       className="relative overflow-hidden bg-black"
     >
-      {/* Invisible SVG tactical filter definition */}
-      <svg className="absolute w-0 h-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+      {/* Invisible SVG tactical filter definition with non-zero dimensions to trigger browser layout */}
+      <svg className="absolute w-px h-px opacity-0 overflow-hidden pointer-events-none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <filter id="tactical-cam-distortion">
-            {/* Chromatic aberration channel separation (Red & Blue channels offset) */}
-            <feOffset in="SourceGraphic" dx="-5" dy="0" result="red-shift" />
+          <filter id="tactical-cam-distortion" x="-20%" y="-20%" width="140%" height="140%">
+            {/* Chromatic aberration channel separation (Red & Blue channels heavily offset) */}
+            <feOffset in="SourceGraphic" dx="-18" dy="0" result="red-shift" />
             <feColorMatrix in="red-shift" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="red" />
             
             <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="green" />
             
-            <feOffset in="SourceGraphic" dx="5" dy="0" result="blue-shift" />
+            <feOffset in="SourceGraphic" dx="18" dy="0" result="blue-shift" />
             <feColorMatrix in="blue-shift" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="blue" />
             
             <feBlend mode="screen" in="red" in2="green" result="rg" />
