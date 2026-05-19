@@ -612,38 +612,30 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
           className="relative mt-14 grid min-h-[760px] overflow-hidden border border-white/10 bg-[#020202] rounded-lg shadow-2xl shadow-blue-900/5 lg:grid-cols-[1fr_440px]"
         >
           {/* Main Visual Display */}
-          <div className="relative min-h-[520px] overflow-hidden bg-[#00050d] p-4 flex items-center justify-center">
-            
-            {/* High-tech tech corner brackets */}
-            <div className="absolute top-2 left-2 right-2 bottom-2 rounded border border-white/5 pointer-events-none z-20" />
-            <div className="absolute top-4 left-4 h-5 w-5 border-t border-l border-[#8edcff]/30 pointer-events-none z-20" />
-            <div className="absolute top-4 right-4 h-5 w-5 border-t border-r border-[#8edcff]/30 pointer-events-none z-20" />
-            <div className="absolute bottom-4 left-4 h-5 w-5 border-b border-l border-[#8edcff]/30 pointer-events-none z-20" />
-            <div className="absolute bottom-4 right-4 h-5 w-5 border-b border-r border-[#8edcff]/30 pointer-events-none z-20" />
-
+          <div className="relative min-h-[520px] overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active.name}
-                initial={{ opacity: 0, scale: 1.01 }}
+                initial={{ opacity: 0, scale: 1.03 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.995 }}
-                transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                className="relative w-full h-full min-h-[460px] rounded overflow-hidden"
+                exit={{ opacity: 0, scale: 0.99 }}
+                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-0"
               >
                 <Image
                   src={active.imageSrc}
                   alt={active.imageAlt}
                   fill
-                  quality={95}
-                  className="object-contain opacity-95 group-hover:opacity-100 transition-opacity duration-300"
+                  quality={90}
+                  className="object-cover grayscale-[0.2]"
                   sizes="(max-width: 1024px) 100vw, 68vw"
                   placeholder="blur"
                   blurDataURL={BLUR_PLACEHOLDER}
                 />
               </motion.div>
             </AnimatePresence>
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,#000000_0%,transparent_30%,transparent_70%,#000000_100%)] pointer-events-none z-10" />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_60%,#000000_100%)] pointer-events-none z-10" />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,#000000_0%,rgba(0,0,0,0.18)_46%,#000000_100%)] pointer-events-none z-10" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_46%,#000000_100%)] pointer-events-none z-10" />
             
             {/* Active label badge */}
             <div className="absolute left-8 top-8 z-20 hidden max-w-sm border border-white/10 bg-black/60 p-5 backdrop-blur-xl md:block rounded">
@@ -782,8 +774,8 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
               </div>
 
               {/* Parallax Hero Image Block */}
-              <div className="relative w-full h-[35dvh] md:h-[45dvh] overflow-hidden bg-[#00050d]">
-                <Image src={active.imageSrc} alt={active.imageAlt} fill className="object-contain bg-[#00050d]" priority sizes="100vw" />
+              <div className="relative w-full h-[35dvh] md:h-[45dvh] overflow-hidden">
+                <Image src={active.imageSrc} alt={active.imageAlt} fill className="object-cover" priority sizes="100vw" />
                 <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute bottom-8 left-6 md:left-10">
                   <p className="navy-font-mono text-[9px] mb-3 tracking-[0.25em] text-[#8edcff] uppercase">{active.className}</p>
