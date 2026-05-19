@@ -2193,6 +2193,27 @@ function SectionTitle({
 
 export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
   const isRo = locale === "ro";
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Set initial start time
+    video.currentTime = 4;
+
+    const handleTimeUpdate = () => {
+      // Loop reset or manual seeks backward
+      if (video.currentTime < 4) {
+        video.currentTime = 4;
+      }
+    };
+
+    video.addEventListener("timeupdate", handleTimeUpdate);
+    return () => {
+      video.removeEventListener("timeupdate", handleTimeUpdate);
+    };
+  }, []);
 
   return (
     <section
@@ -2205,12 +2226,13 @@ export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
 
       <div className="relative w-full aspect-video overflow-hidden bg-black">
         <video
+          ref={videoRef}
           autoPlay loop muted playsInline
           className="w-full h-full object-cover"
           style={{ filter: "contrast(1.1) brightness(0.75) saturate(0.8)" }}
           aria-label="Cinematic naval aviation supremacy showcase video"
         >
-          <source src="/videos/military/fly-navy.mp4" type="video/mp4" />
+          <source src="/videos/military/fly-navy.mp4#t=4" type="video/mp4" />
         </video>
 
         {/* Edge vignette */}
