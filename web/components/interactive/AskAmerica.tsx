@@ -155,10 +155,15 @@ export function AskAmerica({ locale }: AskAmericaProps) {
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
 
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const feedRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (feedRef.current) {
+      feedRef.current.scrollTo({
+        top: feedRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
   };
 
   useEffect(() => {
@@ -274,7 +279,7 @@ export function AskAmerica({ locale }: AskAmericaProps) {
       </div>
 
       {/* Messages Feed */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-black">
+      <div ref={feedRef} className="flex-1 overflow-y-auto p-6 space-y-6 bg-black">
         {messages.map((msg) => (
           <div
             key={msg.id}
@@ -337,8 +342,6 @@ export function AskAmerica({ locale }: AskAmericaProps) {
             </div>
           </div>
         )}
-
-        <div ref={messagesEndRef} />
       </div>
 
       {/* Suggested Questions Grid */}
