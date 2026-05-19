@@ -2045,7 +2045,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                 {/* Cyber corner brackets accent */}
                 <div className="absolute -top-4 -left-4 h-6 w-6 border-t-2 border-l-2 border-[#8edcff]/20 pointer-events-none" />
                 
-                <h3 className="navy-font-display text-2xl sm:text-4.5xl font-black tracking-wide text-white leading-snug uppercase pt-1">
+                <h3 className="navy-font-display text-2xl sm:text-4.5xl font-black text-white leading-snug uppercase pt-1" style={{ wordSpacing: "0.25em", letterSpacing: "0.06em" }}>
                   {weapon.name}
                 </h3>
                 
