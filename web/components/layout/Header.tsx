@@ -428,46 +428,82 @@ export function Header() {
 
               {/* Nav links */}
               <nav className="px-4 py-4" aria-label={copy.mobileNavLabel}>
-                {navSections.map((section) => {
+                {navSections.map((section, idx) => {
                   const isExpanded = expandedMobileSection === section.title;
+                  const isParentActive = pathname.startsWith(section.href);
                   return (
-                    <div key={section.title} className="mb-2">
+                    <div
+                      key={section.title}
+                      className={cn(
+                        "mb-3 rounded-2xl border transition-all duration-300 overflow-hidden bg-navy-mid/45",
+                        isExpanded
+                          ? "border-glory-gold/30 bg-navy-mid/85 shadow-[0_4px_20px_rgba(255,215,0,0.06)]"
+                          : isParentActive
+                          ? "border-glory-gold/20 bg-navy-mid/60"
+                          : "border-white/5 hover:border-white/10"
+                      )}
+                    >
                       {/* Section row with split link/accordion trigger */}
-                      <div className="flex items-center justify-between w-full rounded-xl bg-white/5 overflow-hidden">
+                      <div className="flex items-center justify-between w-full">
                         <Link
                           href={section.href}
-                          className={cn(
-                            "flex-1 px-4 py-3 text-left font-body font-semibold text-base transition-colors duration-150",
-                            pathname.startsWith(section.href)
-                              ? "text-glory-gold"
-                              : "text-white/80 hover:text-white",
-                          )}
+                          className="flex-1 flex items-center gap-3 px-4 py-4 text-left font-display font-medium text-sm tracking-wide transition-colors"
                         >
-                          {section.title}
-                        </Link>
-                        {section.items && section.items.length > 0 && (
-                          <button
-                            type="button"
-                            onClick={() =>
-                              setExpandedMobileSection(
-                                isExpanded ? null : section.title
-                              )
-                            }
+                          {/* Sequential index number */}
+                          <span
                             className={cn(
-                              "px-4 py-3 border-l border-white/10 text-white/50 hover:text-white transition-colors duration-150",
-                              isExpanded && "text-glory-gold"
+                              "font-hero text-xs tracking-wider",
+                              isExpanded || isParentActive
+                                ? "text-glory-gold"
+                                : "text-white/30"
                             )}
-                            aria-expanded={isExpanded}
-                            aria-label={`Toggle ${section.title} subpages`}
                           >
-                            <ChevronDown
+                            {(idx + 1).toString().padStart(2, "0")}
+                          </span>
+                          <span
+                            className={cn(
+                              "transition-colors",
+                              isExpanded || isParentActive
+                                ? "text-glory-gold font-semibold"
+                                : "text-white/90 hover:text-white"
+                            )}
+                          >
+                            {section.title}
+                          </span>
+                        </Link>
+
+                        <div className="flex items-center gap-2 pr-3">
+                          {/* Badge */}
+                          {"badge" in section && (
+                            <span className="text-[10px] font-body text-glory-gold bg-glory-gold/10 border border-glory-gold/20 font-semibold px-2 py-0.5 rounded-full select-none">
+                              {section.badge}
+                            </span>
+                          )}
+
+                          {section.items && section.items.length > 0 && (
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setExpandedMobileSection(
+                                  isExpanded ? null : section.title
+                                )
+                              }
                               className={cn(
-                                "w-4 h-4 transition-transform duration-200",
-                                isExpanded && "rotate-180"
+                                "p-2 rounded-lg text-white/40 hover:text-white hover:bg-white/5 transition-all duration-200",
+                                isExpanded && "text-glory-gold bg-glory-gold/5"
                               )}
-                            />
-                          </button>
-                        )}
+                              aria-expanded={isExpanded}
+                              aria-label={`Toggle ${section.title} subpages`}
+                            >
+                              <ChevronDown
+                                className={cn(
+                                  "w-4 h-4 transition-transform duration-300",
+                                  isExpanded && "rotate-180"
+                                )}
+                              />
+                            </button>
+                          )}
+                        </div>
                       </div>
 
                       {/* Expandable sub-items */}
@@ -477,23 +513,42 @@ export function Header() {
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.2, ease: "easeInOut" }}
-                            className="overflow-hidden bg-white/3 rounded-b-xl border border-t-0 border-white/10 mx-1 px-2 py-1.5 space-y-1"
+                            transition={{ duration: 0.25, ease: "easeInOut" }}
+                            className="border-t border-white/5 bg-black/20"
                           >
-                            {section.items.map((item) => (
-                              <Link
-                                key={item.href}
-                                href={item.href}
-                                className={cn(
-                                  "block px-3 py-2 rounded-lg font-body text-sm font-medium transition-colors",
-                                  pathname === item.href
-                                    ? "bg-glory-gold/10 text-glory-gold"
-                                    : "text-white/70 hover:text-white hover:bg-white/5"
-                                )}
-                              >
-                                {item.label}
-                              </Link>
-                            ))}
+                            <div className="pl-6 pr-4 py-3 space-y-1.5 border-l border-glory-gold/30 ml-4 my-2">
+                              {section.items.map((item) => {
+                                const isChildActive = pathname === item.href;
+                                return (
+                                  <Link
+                                    key={item.href}
+                                    href={item.href}
+                                    className={cn(
+                                      "flex flex-col px-3 py-2 rounded-xl transition-all duration-150",
+                                      isChildActive
+                                        ? "bg-glory-gold/10 border border-glory-gold/25 text-glory-gold shadow-[0_2px_10px_rgba(255,215,0,0.04)]"
+                                        : "text-white/60 hover:text-white hover:bg-white/5 border border-transparent"
+                                    )}
+                                  >
+                                    <span className="font-body text-sm font-semibold">
+                                      {item.label}
+                                    </span>
+                                    {item.description && (
+                                      <span
+                                        className={cn(
+                                          "font-body text-[11px] mt-0.5 line-clamp-1",
+                                          isChildActive
+                                            ? "text-glory-gold/60"
+                                            : "text-white/35"
+                                        )}
+                                      >
+                                        {item.description}
+                                      </span>
+                                    )}
+                                  </Link>
+                                );
+                              })}
+                            </div>
                           </motion.div>
                         )}
                       </AnimatePresence>
