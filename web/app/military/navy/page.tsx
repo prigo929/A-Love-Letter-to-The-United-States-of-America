@@ -81,10 +81,10 @@ export default async function NavyPage() {
       />
       <NavyMetricStrip metrics={secondaryMetrics} locale={locale} />
       <NavyCapabilityGrid capabilities={capabilities} locale={locale} />
+      <NavyFlyNavyVideo locale={locale} />
       <NavyOperationalConsole theaters={theaters} locale={locale} />
       <NavyFullscreenPanel panel={visualPanels[0]} locale={locale} />
       <NavyPlatformShowcase platforms={platforms} locale={locale} />
-      <NavyFlyNavyVideo locale={locale} />
       <NavyWeaponsConsole locale={locale} />
       <NavyCommandStack layers={layers} locale={locale} />
       <NavyFullscreenPanel panel={visualPanels[1]} reverse locale={locale} />
