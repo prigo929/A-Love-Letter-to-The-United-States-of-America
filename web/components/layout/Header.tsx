@@ -475,7 +475,7 @@ export function Header() {
                         <div className="flex items-center gap-2 pr-3">
                           {/* Badge */}
                           {"badge" in section && (
-                            <span className="text-[10px] font-body text-glory-gold bg-glory-gold/10 border border-glory-gold/20 font-semibold px-2 py-0.5 rounded-full select-none">
+                            <span className="text-[10px] font-body text-glory-gold bg-glory-gold/10 border border-glory-gold/20 font-semibold px-2 py-0.5 rounded-full select-none flex-shrink-0 whitespace-nowrap leading-none">
                               {section.badge}
                             </span>
                           )}
@@ -514,32 +514,45 @@ export function Header() {
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.25, ease: "easeInOut" }}
-                            className="border-t border-white/5 bg-black/20"
+                            className="border-t border-white/5 bg-black/20 relative"
                           >
-                            <div className="pl-6 pr-4 py-3 space-y-1.5 border-l border-glory-gold/30 ml-4 my-2">
+                            {/* Vertical spine line */}
+                            <div className="absolute left-[23px] top-0 bottom-6 w-[1px] bg-glory-gold/25" />
+
+                            <div className="py-2.5 space-y-1">
                               {section.items.map((item) => {
                                 const isChildActive = pathname === item.href;
                                 return (
                                   <Link
                                     key={item.href}
                                     href={item.href}
-                                    className={cn(
-                                      "flex flex-col px-3 py-2 rounded-xl transition-all duration-150",
-                                      isChildActive
-                                        ? "bg-glory-gold/10 border border-glory-gold/25 text-glory-gold shadow-[0_2px_10px_rgba(255,215,0,0.04)]"
-                                        : "text-white/60 hover:text-white hover:bg-white/5 border border-transparent"
-                                    )}
+                                    className="group relative flex flex-col pl-10 pr-4 py-2 transition-all duration-150"
                                   >
-                                    <span className="font-body text-sm font-semibold">
+                                    {/* Horizontal branch node */}
+                                    <div
+                                      className={cn(
+                                        "absolute left-[23px] w-3 h-[1px] transition-colors duration-200 top-[18px]",
+                                        isChildActive ? "bg-glory-gold" : "bg-white/20 group-hover:bg-white/40"
+                                      )}
+                                    />
+
+                                    <span
+                                      className={cn(
+                                        "font-body text-sm font-semibold transition-all duration-200 group-hover:translate-x-1",
+                                        isChildActive
+                                          ? "text-glory-gold"
+                                          : "text-white/70 group-hover:text-white"
+                                      )}
+                                    >
                                       {item.label}
                                     </span>
                                     {item.description && (
                                       <span
                                         className={cn(
-                                          "font-body text-[11px] mt-0.5 line-clamp-1",
+                                          "font-body text-[11px] mt-0.5 line-clamp-1 transition-all duration-200 group-hover:translate-x-1",
                                           isChildActive
                                             ? "text-glory-gold/60"
-                                            : "text-white/35"
+                                            : "text-white/35 group-hover:text-white/50"
                                         )}
                                       >
                                         {item.description}
