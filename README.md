@@ -175,21 +175,50 @@ The website is styled like an art-directed editorial manuscript, with three dist
 
 - `/military` full landing page plus deep dives:
   - `/military/navy` (Global Carrier Strike Group tracker)
+  - `/military/air-force` (US Air Force scaffold)
+  - `/military/space-force` (US Space Force scaffold)
+  - `/military/global-bases` (Global Bases scaffold)
+  - `/military/intelligence` (Intelligence scaffold)
   - Dossiers for the **B-21 Raider**, **F-35**, and **F-22 Raptor**
   - Interactive **Nuclear Triad** simulation
   - **DARPA** innovation timeline
 </details>
 
 <details>
-<summary><strong>🎭 Culture & Life</strong> (Scaffolded)</summary>
+<summary><strong>🎭 Culture, Life & Scaffolding</strong> (Scaffolded)</summary>
 
 - `/culture`
   - `/culture/the-american-high-school`
   - `/culture/american-aesthetics`
 - `/quality-of-life`
+- `/innovation` (Innovation & Technology)
+  - `/innovation/internet-history`
+  - `/innovation/ai-and-tech`
+  - `/innovation/smartphones`
+  - `/innovation/cloud-computing`
+  - `/innovation/space-technology`
+  - `/innovation/gaming`
+- `/science` (Science & Inventions)
+  - `/science/inventions-pre-1890`
+  - `/science/inventions-1890-1945`
+  - `/science/inventions-post-1991`
+  - `/science/medicine-and-biotech`
+- `/universities` (Universities)
+  - `/universities/ivy-league`
+  - `/universities/stem-powerhouses`
+  - `/universities/business-schools`
+  - `/universities/public-research-universities`
+- `/natural-resources`
+- `/immigration-demographics`
+- `/global-leadership` (Global Leadership)
+  - `/global-leadership/nato`
+  - `/global-leadership/dollar-as-reserve`
+  - `/global-leadership/soft-power`
+  - `/global-leadership/un`
+- `/interactive` (Interactive features hub linking to quiz, timeline, map explorer)
 </details>
 
-The culture and quality-of-life pages are currently clean scaffolds with TODO zones, ready for content drops.
+The culture, quality-of-life, innovation, science, universities, natural-resources, immigration-demographics, global-leadership, interactive, and military subpages are currently clean scaffolds with TODO zones, ready for content drops.
 
 ## Experience Highlights
 
