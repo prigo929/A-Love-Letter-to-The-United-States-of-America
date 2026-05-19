@@ -391,6 +391,114 @@ export const NAV_SECTIONS = [
       },
     ],
   },
+  {
+    title: "History",
+    href: "/history",
+    description: "From founding principles to modern times — the history of liberty",
+    imageSrc: SITE_IMAGES.homeDeclarationIndependence,
+    badge: "1776 - Present",
+    items: [
+      {
+        label: "Founding Principles",
+        href: "/history/founding-principles",
+        description: "Natural rights and constitutional republic",
+      },
+      {
+        label: "American Exceptionalism",
+        href: "/history/american-exceptionalism",
+        description: "Liberty-first political culture",
+      },
+      {
+        label: "Frontier & Expansion",
+        href: "/history/frontier-and-expansion",
+        description: "Westward expansion and individual pioneers",
+      },
+      {
+        label: "Union & Liberty",
+        href: "/history/union-and-liberty",
+        description: "Lincoln, abolition, and preservation of the Union",
+      },
+      {
+        label: "Industrial Rise",
+        href: "/history/industrial-rise",
+        description: "Rise of American capitalism and entrepreneurship",
+      },
+      {
+        label: "Arsenal of Democracy",
+        href: "/history/arsenal-of-democracy",
+        description: "WWII mobilization and industrial supremacy",
+      },
+      {
+        label: "Cold War",
+        href: "/history/cold-war-and-anti-communism",
+        description: "Containment and collapse of the USSR",
+      },
+      {
+        label: "The American Dream",
+        href: "/history/the-american-dream",
+        description: "Postwar prosperity, suburbs, and mobility",
+      },
+      {
+        label: "Reagan Revolution",
+        href: "/history/the-reagan-revolution",
+        description: "Conservative revival and patriotism",
+      },
+      {
+        label: "Faith & Family",
+        href: "/history/faith-family-and-community",
+        description: "Churches, civic associations, and moral culture",
+      },
+      {
+        label: "Free Markets",
+        href: "/history/free-markets-and-prosperity",
+        description: "Capitalism vs socialism and prosperity",
+      },
+      {
+        label: "Border Sovereignty",
+        href: "/history/border-sovereignty-and-national-identity",
+        description: "Immigration, assimilation, and border policy",
+      },
+      {
+        label: "Constitutional Battles",
+        href: "/history/constitutional-battles",
+        description: "Originalism, states' rights, and free speech",
+      },
+      {
+        label: "Post-9/11 America",
+        href: "/history/post-9-11-america",
+        description: "War on terror and security state",
+      },
+      {
+        label: "The Populist Era",
+        href: "/history/the-populist-era",
+        description: "MAGA, Tea Party, and globalization backlash",
+      },
+    ],
+  },
+  {
+    title: "Data & Media",
+    href: "/data",
+    description: "Empirical facts, media, interactive maps, and indices of success",
+    imageSrc: SITE_IMAGES.homeUsaAtNightFromSpace,
+    badge: "Facts & Stats",
+    items: [
+      {
+        label: "Data & Studies",
+        href: "/data",
+        description: "Fact card database and FAQ archive",
+      },
+      {
+        label: "Photo Gallery",
+        href: "/gallery",
+        description: "Bespoke high-fidelity visual gallery",
+      },
+      {
+        label: "Map Explorer",
+        href: "/explorer",
+        description: "Interactive 50-state regional facts",
+      },
+    ],
+  },
 ] as const;
 
 // These images rotate in the full-screen homepage hero.
@@ -705,6 +813,92 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "/global-leadership/un": {
         label: "ONU și Instituțiile",
         description: "Fondatorul ordinii postbelice",
+      },
+    },
+  },
+  "/history": {
+    title: "Istorie",
+    description: "De la principiile fondatoare la timpurile moderne — istoria libertății",
+    badge: "1776 - Prezent",
+    items: {
+      "/history/founding-principles": {
+        label: "Principii Fondatoare",
+        description: "Drepturile naturale și republica constituțională",
+      },
+      "/history/american-exceptionalism": {
+        label: "Excepționalism American",
+        description: "Cultura politică axată pe libertate",
+      },
+      "/history/frontier-and-expansion": {
+        label: "Frontiera și Expansiunea",
+        description: "Expansiunea spre vest și pionierii individuali",
+      },
+      "/history/union-and-liberty": {
+        label: "Uniune și Libertate",
+        description: "Lincoln, abolirea sclaviei și păstrarea Uniunii",
+      },
+      "/history/industrial-rise": {
+        label: "Ascensiunea Industrială",
+        description: "Dezvoltarea capitalismului american și a antreprenoriatului",
+      },
+      "/history/arsenal-of-democracy": {
+        label: "Arsenalul Democrației",
+        description: "Mobilizarea în al Doilea Război Mondial și supremația industrială",
+      },
+      "/history/cold-war-and-anti-communism": {
+        label: "Războiul Rece",
+        description: "Politica de îndiguire și prăbușirea URSS",
+      },
+      "/history/the-american-dream": {
+        label: "Visul American",
+        description: "Prosperitatea postbelică, suburbiile și mobilitatea socială",
+      },
+      "/history/the-reagan-revolution": {
+        label: "Revoluția Reagan",
+        description: "Revigorarea conservatoare și patriotismul",
+      },
+      "/history/faith-family-and-community": {
+        label: "Credință și Familie",
+        description: "Bisericile, asociațiile civice și cultura morală",
+      },
+      "/history/free-markets-and-prosperity": {
+        label: "Piețe Libere",
+        description: "Capitalism versus socialism și prosperitate",
+      },
+      "/history/border-sovereignty-and-national-identity": {
+        label: "Suveranitatea Frontierelor",
+        description: "Imigrația, asimilarea și politica de frontieră",
+      },
+      "/history/constitutional-battles": {
+        label: "Bătălii Constituționale",
+        description: "Originalismul, drepturile statelor și libertatea de exprimare",
+      },
+      "/history/post-9-11-america": {
+        label: "America Post-9/11",
+        description: "Războiul împotriva terorismului și statul de securitate națională",
+      },
+      "/history/the-populist-era": {
+        label: "Era Populistă",
+        description: "Mişcarea MAGA, Tea Party și reacția împotriva globalizării",
+      },
+    },
+  },
+  "/data": {
+    title: "Date și Media",
+    description: "Fapte empirice, media, hărți interactive și indici ai succesului",
+    badge: "Fapte și Statistici",
+    items: {
+      "/data": {
+        label: "Date și Studii",
+        description: "Baza de date cu fișe de fapte și FAQ",
+      },
+      "/gallery": {
+        label: "Galerie Foto",
+        description: "Galerie vizuală de înaltă fidelitate",
+      },
+      "/explorer": {
+        label: "Explorator de Hartă",
+        description: "Informații regionale interactive despre cele 50 de state",
       },
     },
   },

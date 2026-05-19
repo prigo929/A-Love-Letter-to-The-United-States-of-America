@@ -426,7 +426,7 @@ export function Header() {
 
               {/* Nav links */}
               <nav className="px-4 py-4" aria-label={copy.mobileNavLabel}>
-                {navSections.map((section) => (
+                {navSections.slice(0, 10).map((section) => (
                   <div key={section.title} className="mb-1">
                     <Link
                       href={section.href}
