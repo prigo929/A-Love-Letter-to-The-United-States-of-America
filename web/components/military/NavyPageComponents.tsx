@@ -2193,12 +2193,6 @@ function SectionTitle({
 
 export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
   const isRo = locale === "ro";
-  const [filterUrl, setFilterUrl] = useState("url(#tactical-cam-distortion)");
-
-  useEffect(() => {
-    // Avoid Next.js/React Router URL fragment resolution bugs on deep routes by specifying absolute pathname references
-    setFilterUrl(`url(${window.location.pathname}#tactical-cam-distortion)`);
-  }, []);
 
   return (
     <section
@@ -2206,58 +2200,26 @@ export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
       className="relative overflow-hidden bg-black"
     >
       {/* Invisible SVG tactical filter definition */}
-      <svg
-        className="absolute pointer-events-none"
-        style={{
-          width: "1px",
-          height: "1px",
-          position: "absolute",
-          clipPath: "inset(50%)",
-          overflow: "hidden",
-        }}
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg className="absolute w-0 h-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <filter
-            id="tactical-cam-distortion"
-            x="-10%"
-            y="-10%"
-            width="120%"
-            height="120%"
-            colorInterpolationFilters="sRGB"
-          >
-            {/* 1. Extract pure color channels from SourceGraphic */}
-            <feColorMatrix in="SourceGraphic" type="matrix" 
-              values="1 0 0 0 0  
-                      0 0 0 0 0  
-                      0 0 0 0 0  
-                      0 0 0 1 0" result="red-channel" />
+          <filter id="tactical-cam-distortion">
+            {/* Chromatic aberration channel separation (Red & Blue channels offset) */}
+            <feOffset in="SourceGraphic" dx="-5" dy="0" result="red-shift" />
+            <feColorMatrix in="red-shift" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="red" />
             
-            <feColorMatrix in="SourceGraphic" type="matrix" 
-              values="0 0 0 0 0  
-                      0 1 0 0 0  
-                      0 0 0 0 0  
-                      0 0 0 1 0" result="green-channel" />
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="green" />
             
-            <feColorMatrix in="SourceGraphic" type="matrix" 
-              values="0 0 0 0 0  
-                      0 0 0 0 0  
-                      0 0 1 0 0  
-                      0 0 0 1 0" result="blue-channel" />
+            <feOffset in="SourceGraphic" dx="5" dy="0" result="blue-shift" />
+            <feColorMatrix in="blue-shift" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="blue" />
             
-            {/* 2. Heavy chromatic separation offsets (15px horizontal shift) */}
-            <feOffset in="red-channel" dx="-15" dy="-2" result="red-shifted" />
-            <feOffset in="blue-channel" dx="15" dy="2" result="blue-shifted" />
+            <feBlend mode="screen" in="red" in2="green" result="rg" />
+            <feBlend mode="screen" in="rg" in2="blue" result="aberration" />
             
-            {/* 3. Reblend shifted channels with green channel */}
-            <feBlend mode="screen" in="red-shifted" in2="green-channel" result="rg-blend" />
-            <feBlend mode="screen" in="rg-blend" in2="blue-shifted" result="aberration" />
-            
-            {/* 4. Sensor Noise generation (Static film grain) */}
+            {/* Sensor Noise generation */}
             <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="raw-noise" />
             <feColorMatrix in="raw-noise" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.12 0" result="soft-noise" />
             
-            {/* 5. Blend low-light sensor noise onto the aberrated feed */}
+            {/* Blend noise onto the aberrated graphic */}
             <feBlend mode="overlay" in="aberration" in2="soft-noise" />
           </filter>
         </defs>
@@ -2268,24 +2230,14 @@ export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
       </div>
 
       <div className="relative w-full aspect-video overflow-hidden bg-black">
-        {/* Hardware-accelerated container wrapper to force WebKit/Blink SVG filter rendering */}
-        <div
-          className="w-full h-full"
-          style={{
-            filter: filterUrl,
-            willChange: "transform, filter",
-            transform: "translate3d(0, 0, 0)",
-          }}
+        <video
+          autoPlay loop muted playsInline
+          className="w-full h-full object-cover scale-[1.05]"
+          style={{ filter: "url(#tactical-cam-distortion) contrast(1.1) brightness(0.75) saturate(0.8)" }}
+          aria-label="Cinematic naval aviation supremacy showcase video"
         >
-          <video
-            autoPlay loop muted playsInline
-            className="w-full h-full object-cover scale-[1.05]"
-            style={{ filter: "contrast(1.1) brightness(0.75) saturate(0.8)" }}
-            aria-label="Cinematic naval aviation supremacy showcase video"
-          >
-            <source src="/videos/military/fly-navy.mp4" type="video/mp4" />
-          </video>
-        </div>
+          <source src="/videos/military/fly-navy.mp4" type="video/mp4" />
+        </video>
 
         {/* Edge smearing / Radial Blur (CSS backdrop-filter + radial masking) */}
         <div className="absolute inset-0 pointer-events-none z-20 backdrop-blur-[4px]" style={{
