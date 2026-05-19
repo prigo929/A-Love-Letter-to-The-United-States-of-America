@@ -54,7 +54,7 @@ export function Header() {
           mobileMenuLabel: "Meniu de navigare",
           mobileNavLabel: "Navigare mobilă",
           galleryLink: "Galerie",
-          timelineLink: "Cronologie",
+          historyLink: "Istorie",
           exploreNation: "Explorează Națiunea",
           languageHeading: "Limbă",
           viewAllPrefix: "Vezi Toată Secțiunea",
@@ -70,7 +70,7 @@ export function Header() {
           mobileMenuLabel: "Navigation menu",
           mobileNavLabel: "Mobile navigation",
           galleryLink: "Gallery",
-          timelineLink: "Timeline",
+          historyLink: "History",
           exploreNation: "Explore the Nation",
           languageHeading: "Language",
           viewAllPrefix: "View All",
@@ -462,10 +462,10 @@ export function Header() {
                     {copy.galleryLink}
                   </Link>
                   <Link
-                    href="/timeline"
+                    href="/history"
                     className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
                   >
-                    {copy.timelineLink}
+                    {copy.historyLink}
                   </Link>
                 </div>
 

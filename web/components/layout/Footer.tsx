@@ -45,7 +45,7 @@ export function Footer() {
               links: [
                 { label: "Date și Studii", href: "/data" },
                 { label: "Galerie Foto", href: "/gallery" },
-                { label: "Cronologie", href: "/timeline" },
+                { label: "Istorie", href: "/history" },
                 { label: "Explorator de Hartă", href: "/explorer" },
                 { label: "Toate Secțiunile", href: "/sitemap" },
               ],
@@ -88,7 +88,7 @@ export function Footer() {
               links: [
                 { label: "Data & Studies", href: "/data" },
                 { label: "Photo Gallery", href: "/gallery" },
-                { label: "Timeline", href: "/timeline" },
+                { label: "History", href: "/history" },
                 { label: "Map Explorer", href: "/explorer" },
                 { label: "All Sections", href: "/sitemap" },
               ],
