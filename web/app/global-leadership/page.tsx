@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
+import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 
 export const metadata: Metadata = {
   title: "Global Leadership",
@@ -53,12 +54,18 @@ export default async function GlobalLeadershipPage() {
 
       <section
         id="feature"
-        className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8"
+        className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8 pb-12"
       >
         <div className="mx-auto min-h-[420px] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
           {/* TODO: Drop in alliances map or global reserve charts component here */}
         </div>
       </section>
+
+      <AskAmericaCTA
+        locale={locale}
+        descriptionEn="Ask the AI Oracle about NATO military guarantees, the U.S. dollar as reserve asset, American soft power export, or multilateral institutions."
+        descriptionRo="Întreabă Oracolul AI despre garanțiile militare NATO, dolarul american ca activ de rezervă, exportul de soft power sau instituțiile multilaterale."
+      />
     </main>
   );
 }

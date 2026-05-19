@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
+import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 
 export const metadata: Metadata = {
   title: "Natural Resources",
@@ -53,12 +54,18 @@ export default async function NaturalResourcesPage() {
 
       <section
         id="feature"
-        className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8"
+        className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8 pb-12"
       >
         <div className="mx-auto min-h-[420px] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
           {/* TODO: Drop in resources production chart or interactive map component here */}
         </div>
       </section>
+
+      <AskAmericaCTA
+        locale={locale}
+        descriptionEn="Ask the AI Oracle about American shale oil abundance, agricultural yields, clean water infrastructure, or rare earth mineral reserves."
+        descriptionRo="Întreabă Oracolul AI despre abundența petrolului de șist american, producțiile agricole, infrastructura de apă curată sau rezervele de minerale rare."
+      />
     </main>
   );
 }

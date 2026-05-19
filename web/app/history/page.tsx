@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
+import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 
 export const metadata: Metadata = {
   title: "History",
@@ -51,12 +52,18 @@ export default async function HistoryPage() {
 
       <section
         id="feature"
-        className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8"
+        className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8 pb-12"
       >
         <div className="mx-auto min-h-[420px] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
           {/* TODO: Drop in interactive history timeline or visualization here */}
         </div>
       </section>
+
+      <AskAmericaCTA
+        locale={locale}
+        descriptionEn="Ask the AI Oracle about founding principles, American exceptionalism, the Civil War, the Cold War, or the Reagan era."
+        descriptionRo="Întreabă Oracolul AI despre principiile fondatoare, excepționalismul american, Războiul Civil, Războiul Rece sau era Reagan."
+      />
     </main>
   );
 }

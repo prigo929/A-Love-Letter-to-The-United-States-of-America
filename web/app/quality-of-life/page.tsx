@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
+import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 
 export const metadata: Metadata = {
   title: "Quality of Life",
@@ -64,12 +65,18 @@ export default async function QualityOfLifePage() {
 
       <section
         id="comparison"
-        className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8"
+        className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8 pb-12"
       >
         <div className="mx-auto max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
           {/* TODO: Drop in existing D3.js comparison chart component here */}
         </div>
       </section>
+
+      <AskAmericaCTA
+        locale={locale}
+        descriptionEn="Ask the AI Oracle about purchasing power parity, average home sizing, car ownership statistics, or the democratization of luxury."
+        descriptionRo="Întreabă Oracolul AI despre paritatea puterii de cumpărare, dimensiunea medie a locuințelor, statistici privind proprietatea auto sau democratizarea luxului."
+      />
     </main>
   );
 }

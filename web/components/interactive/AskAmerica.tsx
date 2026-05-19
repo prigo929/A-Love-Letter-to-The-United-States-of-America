@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Send, Bot, User, Sparkles, RotateCcw, HelpCircle, ChevronRight } from "lucide-react";
+import { Send, Sparkles, RotateCcw, HelpCircle, ChevronRight, MessageSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Message {
@@ -19,7 +19,6 @@ interface AskAmericaProps {
   locale: string;
 }
 
-// Pre-defined knowledge base
 interface KnowledgeItem {
   keywords: string[];
   responseEn: string;
@@ -34,8 +33,8 @@ interface KnowledgeItem {
 const KNOWLEDGE_BASE: KnowledgeItem[] = [
   {
     keywords: ["constitution", "founding", "government", "liberty", "rights", "federalist", "revolu", "constitu"],
-    responseEn: "America's founding was built on the core principle of a constitutional republic with strictly limited government power. The Federalist Papers outlined a system of checks and balances where division of powers prevents tyranny, while the Bill of Rights safeguards individual liberty as inherent, natural rights.",
-    responseRo: "Fondarea Americii s-a bazat pe principiul unei republici constituționale cu o guvernare strict limitată. Scrierile Federalist Papers au detaliat un sistem de control și echilibru în care separarea puterilor previne tirania, iar Carta Drepturilor protejează libertatea individuală ca drepturi naturale.",
+    responseEn: "America's founding was built on the core principle of a constitutional republic with limited government power. The Federalist Papers outlined a system of checks and balances where division of powers prevents tyranny, while the Bill of Rights safeguards individual liberty as inherent, natural rights.",
+    responseRo: "Fondarea Americii s-a bazat pe principiul unei republici constituționale cu o guvernare limitată. Scrierile Federalist Papers au detaliat un sistem de control și echilibru în care separarea puterilor previne tirania, iar Carta Drepturilor protejează libertatea individuală ca drepturi naturale.",
     cta: {
       labelEn: "Explore Constitution & Founding →",
       labelRo: "Explorează Constituția și Fondarea →",
@@ -132,8 +131,8 @@ export function AskAmerica({ locale }: AskAmericaProps) {
   const isRo = locale === "ro";
 
   const welcomeText = isRo
-    ? "Bun venit la Oracolul Ask America. Sunt preîncărcat cu date, statistici și teze din toate cele 12 verticale ale proiectului american. Pune-mi orice întrebare despre economie, istorie, constituție, inovație sau cultura sportivă."
-    : "Welcome to the Ask America Oracle. I am preloaded with data, metrics, and arguments from all 12 verticals of the American project. Ask me anything about our economy, history, constitution, innovation, or sports culture.";
+    ? "Bun venit la Oracolul Ask America. Sunt preîncărcat cu date, statistici și teze din toate cele 12 verticale ale proiectului american. Pune-mi orice întrebare."
+    : "Welcome to the Ask America Oracle. I am preloaded with data, metrics, and arguments from all 12 verticals of the American project. Ask me anything.";
 
   const inputPlaceholder = isRo
     ? "Întreabă Oracolul despre America..."
@@ -141,11 +140,10 @@ export function AskAmerica({ locale }: AskAmericaProps) {
 
   const suggestionTitle = isRo ? "Întrebări Sugerate" : "Suggested Questions";
   const analyzingText = isRo ? "Oracolul analizează..." : "Oracle analyzing...";
-  const statusOnlineText = isRo ? "ORACOL ONLINE" : "ORACLE ONLINE";
 
   const fallbackResponse = isRo
-    ? "Sunt Oracolul Ask America. Pot analiza economia (PIB-ul de 28.8T$), principiile constituționale (Federalist Papers), tehnologia (Silicon Valley, AI), armata (NATO), sportul (NFL, NBA) și conservarea naturii. Introduceți cuvinte cheie precum 'economie', 'constituție', 'sport' sau 'inovație' pentru o analiză detaliată."
-    : "I am the Ask America Oracle. I can analyze the economy ($28.8T GDP), constitutional principles (Federalist Papers), tech (Silicon Valley, AI), military (NATO), sports exports (NFL, NBA), and conservation history. Try entering keywords like 'economy', 'constitution', 'sports', or 'innovation' for a detailed deep-dive.";
+    ? "Sunt Oracolul Ask America. Pot analiza economia (PIB-ul de 28.8T$), principiile constituționale (Federalist Papers), tehnologia (Silicon Valley, AI), armata (NATO), sportul (NFL, NBA) și conservarea naturii. Încercați cuvinte cheie."
+    : "I am the Ask America Oracle. I can analyze the economy ($28.8T GDP), constitutional principles (Federalist Papers), tech (Silicon Valley, AI), military (NATO), sports exports (NFL, NBA), and conservation history. Try keywords.";
 
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -167,7 +165,6 @@ export function AskAmerica({ locale }: AskAmericaProps) {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  // Keyword matching search
   const findResponse = (text: string): { response: string; cta?: { label: string; href: string } } => {
     const cleanText = text.toLowerCase();
 
@@ -189,7 +186,6 @@ export function AskAmerica({ locale }: AskAmericaProps) {
   const handleSend = async (question: string) => {
     if (!question.trim()) return;
 
-    // Add user message
     const userMsgId = Date.now().toString();
     const newMessages = [
       ...messages,
@@ -203,14 +199,11 @@ export function AskAmerica({ locale }: AskAmericaProps) {
     setInputValue("");
     setIsTyping(true);
 
-    // Simulate think duration
-    await new Promise((resolve) => setTimeout(resolve, 900));
+    await new Promise((resolve) => setTimeout(resolve, 800));
 
     const { response, cta } = findResponse(question);
-
     setIsTyping(false);
 
-    // Add streaming empty message
     const oracleMsgId = (Date.now() + 1).toString();
     setMessages((prev) => [
       ...prev,
@@ -222,21 +215,19 @@ export function AskAmerica({ locale }: AskAmericaProps) {
       },
     ]);
 
-    // Stream text character-by-character
     let currentText = "";
     let i = 0;
     const interval = setInterval(() => {
       if (i < response.length) {
-        currentText += response[i];
+        currentText += response.slice(i, i + 2);
         setMessages((prev) =>
           prev.map((msg) =>
             msg.id === oracleMsgId ? { ...msg, text: currentText } : msg
           )
         );
-        i += 2; // Stream 2 chars at a time for fast feels
+        i += 2;
       } else {
         clearInterval(interval);
-        // Complete streaming state and attach CTA
         setMessages((prev) =>
           prev.map((msg) =>
             msg.id === oracleMsgId
@@ -245,7 +236,7 @@ export function AskAmerica({ locale }: AskAmericaProps) {
           )
         );
       }
-    }, 15);
+    }, 12);
   };
 
   const handleReset = () => {
@@ -261,78 +252,69 @@ export function AskAmerica({ locale }: AskAmericaProps) {
   const suggestions = isRo ? SUGGESTED_QUESTIONS_RO : SUGGESTED_QUESTIONS_EN;
 
   return (
-    <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-navy-mid/60 backdrop-blur-md overflow-hidden shadow-2xl flex flex-col min-h-[600px] max-h-[75vh]">
-      {/* Chat Header */}
-      <div className="px-6 py-4 bg-navy-dark/80 border-b border-white/10 flex items-center justify-between">
+    <div className="mx-auto max-w-4xl bg-black border border-zinc-800 rounded-xl overflow-hidden shadow-2xl flex flex-col min-h-[600px] max-h-[75vh] text-zinc-100 font-sans">
+      
+      {/* Vercel-style Clean Header */}
+      <div className="px-6 py-4 bg-zinc-950 border-b border-zinc-800 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-xl bg-glory-gold/10 border border-glory-gold/20 text-glory-gold">
-            <Bot className="w-5 h-5" />
-          </div>
+          <div className="w-2.5 h-2.5 rounded-full bg-zinc-400" />
           <div>
-            <h2 className="font-hero text-sm tracking-widest text-white uppercase">
-              ASK AMERICA
+            <h2 className="text-xs font-semibold tracking-wider text-zinc-300 uppercase font-mono">
+              Ask America Oracle
             </h2>
-            <div className="flex items-center gap-1.5 mt-0.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-[10px] font-body text-emerald-400 font-bold uppercase tracking-wider">
-                {statusOnlineText}
-              </span>
-            </div>
           </div>
         </div>
         <button
           onClick={handleReset}
-          className="p-2 rounded-lg text-white/40 hover:text-white hover:bg-white/5 transition-all duration-200"
-          title="Reset chat"
+          className="p-1.5 rounded-md text-zinc-500 hover:text-zinc-300 hover:bg-zinc-900 transition-colors"
+          title="Reset session"
         >
-          <RotateCcw className="w-4 h-4" />
+          <RotateCcw className="w-3.5 h-3.5" />
         </button>
       </div>
 
       {/* Messages Feed */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-6">
+      <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-black">
         {messages.map((msg) => (
           <div
             key={msg.id}
             className={cn(
-              "flex gap-4 max-w-[85%] transition-all duration-300",
+              "flex gap-4 max-w-[85%] transition-all",
               msg.sender === "user" ? "ml-auto flex-row-reverse" : "mr-auto"
             )}
           >
-            {/* Avatar */}
-            <div
-              className={cn(
-                "w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-xs",
-                msg.sender === "user"
-                  ? "bg-glory-gold/20 text-glory-gold border border-glory-gold/30"
-                  : "bg-navy-dark text-white/80 border border-white/10"
-              )}
-            >
-              {msg.sender === "user" ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+            {/* Minimal Avatar */}
+            <div className={cn(
+              "w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0 text-xs border font-mono transition-colors",
+              msg.sender === "user"
+                ? "bg-zinc-900 border-zinc-700 text-zinc-300"
+                : "bg-white border-zinc-800 text-black font-extrabold"
+            )}>
+              {msg.sender === "user" ? "U" : "▲"}
             </div>
 
             {/* Bubble */}
             <div className="space-y-3">
               <div
                 className={cn(
-                  "rounded-2xl px-4 py-3 text-sm font-body leading-relaxed border shadow-sm",
+                  "rounded-lg px-4 py-3 text-sm leading-relaxed border transition-colors",
                   msg.sender === "user"
-                    ? "bg-glory-gold/10 border-glory-gold/20 text-white"
-                    : "bg-navy-dark/40 border-white/5 text-white/90"
+                    ? "bg-zinc-900 border-zinc-800 text-zinc-100"
+                    : "bg-zinc-950 border-zinc-900 text-zinc-300"
                 )}
               >
                 {msg.text}
                 {msg.isStreaming && (
-                  <span className="inline-block w-1.5 h-3.5 bg-glory-gold/80 ml-1 animate-pulse" />
+                  <span className="inline-block w-1.5 h-3.5 bg-zinc-100 ml-1 animate-pulse" />
                 )}
               </div>
 
-              {/* Call to Action Link */}
+              {/* Minimalist CTA Link */}
               {msg.cta && (
-                <div className="animate-fade-in pl-1">
+                <div className="animate-fade-in pl-0.5">
                   <a
                     href={msg.cta.href}
-                    className="inline-flex items-center gap-1.5 text-xs font-body font-semibold text-glory-gold hover:text-white transition-colors duration-150 group"
+                    className="inline-flex items-center gap-1 text-xs font-medium text-white hover:text-zinc-300 transition-colors group"
                   >
                     {msg.cta.label}
                     <ChevronRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" />
@@ -346,11 +328,11 @@ export function AskAmerica({ locale }: AskAmericaProps) {
         {/* Typing indicator */}
         {isTyping && (
           <div className="flex gap-4 max-w-[80%] mr-auto items-center">
-            <div className="w-8 h-8 rounded-full bg-navy-dark text-white/80 border border-white/10 flex items-center justify-center flex-shrink-0">
-              <Bot className="w-4 h-4" />
+            <div className="w-7 h-7 rounded-md bg-white border border-zinc-800 text-black flex items-center justify-center flex-shrink-0 font-mono text-xs font-extrabold">
+              ▲
             </div>
-            <div className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-navy-dark/40 border border-white/5 text-xs font-body text-white/40">
-              <Sparkles className="w-3.5 h-3.5 text-glory-gold animate-spin" />
+            <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-900 text-xs text-zinc-500">
+              <Sparkles className="w-3.5 h-3.5 text-zinc-400 animate-spin" />
               <span>{analyzingText}</span>
             </div>
           </div>
@@ -361,9 +343,9 @@ export function AskAmerica({ locale }: AskAmericaProps) {
 
       {/* Suggested Questions Grid */}
       {messages.length === 1 && !isTyping && (
-        <div className="px-6 py-4 bg-navy-dark/30 border-t border-white/5">
-          <p className="text-[10px] font-body text-glory-gold font-bold uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
-            <HelpCircle className="w-3.5 h-3.5" />
+        <div className="px-6 py-4 bg-zinc-950/80 border-t border-zinc-800">
+          <p className="text-[10px] font-semibold text-zinc-500 uppercase tracking-widest mb-3 flex items-center gap-1.5 font-mono">
+            <MessageSquare className="w-3.5 h-3.5" />
             {suggestionTitle}
           </p>
           <div className="grid gap-2 sm:grid-cols-2">
@@ -371,7 +353,7 @@ export function AskAmerica({ locale }: AskAmericaProps) {
               <button
                 key={q}
                 onClick={() => handleSend(q)}
-                className="text-left px-3 py-2 rounded-xl text-xs font-body font-medium bg-navy-dark/50 hover:bg-glory-gold/10 border border-white/5 hover:border-glory-gold/25 text-white/70 hover:text-white transition-all duration-150"
+                className="text-left px-3 py-2 text-xs rounded-md bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-zinc-400 hover:text-zinc-100 transition-colors font-medium"
               >
                 {q}
               </button>
@@ -380,13 +362,13 @@ export function AskAmerica({ locale }: AskAmericaProps) {
         </div>
       )}
 
-      {/* Input Row */}
+      {/* Input Form */}
       <form
         onSubmit={(e) => {
           e.preventDefault();
           handleSend(inputValue);
         }}
-        className="p-4 bg-navy-dark/60 border-t border-white/10 flex gap-2"
+        className="p-4 bg-zinc-950 border-t border-zinc-800 flex gap-2"
       >
         <input
           type="text"
@@ -394,12 +376,12 @@ export function AskAmerica({ locale }: AskAmericaProps) {
           onChange={(e) => setInputValue(e.target.value)}
           placeholder={inputPlaceholder}
           disabled={isTyping}
-          className="flex-1 rounded-xl bg-navy-dark/80 border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:ring-1 focus:ring-glory-gold/50 focus:border-glory-gold/50 disabled:opacity-50"
+          className="flex-1 rounded-md bg-black border border-zinc-800 px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-zinc-700 disabled:opacity-50"
         />
         <button
           type="submit"
           disabled={!inputValue.trim() || isTyping}
-          className="p-3 rounded-xl bg-glory-gold hover:bg-glory-gold-light text-navy-dark font-semibold disabled:opacity-50 transition-colors flex items-center justify-center"
+          className="px-4 py-2 rounded-md bg-white hover:bg-zinc-200 text-black font-semibold disabled:opacity-50 transition-colors flex items-center justify-center"
         >
           <Send className="w-4 h-4" />
         </button>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
+import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 
 export const metadata: Metadata = {
   title: "Immigration & Demographics",
@@ -53,12 +54,18 @@ export default async function ImmigrationDemographicsPage() {
 
       <section
         id="feature"
-        className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8"
+        className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8 pb-12"
       >
         <div className="mx-auto min-h-[420px] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
           {/* TODO: Drop in demographic charts or melting pot visualization component here */}
         </div>
       </section>
+
+      <AskAmericaCTA
+        locale={locale}
+        descriptionEn="Ask the AI Oracle about melting pot culture, immigration patterns, regional demographic shifts, or global talent attraction."
+        descriptionRo="Întreabă Oracolul AI despre cultura melting pot, modelele de imigrare, schimbările demografice regionale sau atragerea talentelor globale."
+      />
     </main>
   );
 }

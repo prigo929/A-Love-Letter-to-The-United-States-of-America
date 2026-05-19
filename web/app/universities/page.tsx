@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
+import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 
 export const metadata: Metadata = {
   title: "Universities",
@@ -53,12 +54,18 @@ export default async function UniversitiesPage() {
 
       <section
         id="feature"
-        className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8"
+        className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8 pb-12"
       >
         <div className="mx-auto min-h-[420px] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
           {/* TODO: Drop in campus comparison component or interactive research stats map here */}
         </div>
       </section>
+
+      <AskAmericaCTA
+        locale={locale}
+        descriptionEn="Ask the AI Oracle about Ivy League endowments, STEM powerhouse institutions, research funding, or public university systems."
+        descriptionRo="Întreabă Oracolul AI despre fondurile universităților Ivy League, instituțiile STEM de top, finanțarea cercetării sau sistemele universitare publice."
+      />
     </main>
   );
 }

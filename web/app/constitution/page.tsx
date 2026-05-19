@@ -42,6 +42,7 @@ import {
 } from "@/components/constitution/ExhibitComponents";
 import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
+import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import {
   getConstitutionSubPages, getConstitutionMetrics, getRightsAtRiskStats,
   getFoundingFathers, getConstitutionClauses, getBillOfRights,
@@ -570,6 +571,14 @@ export default async function ConstitutionPage() {
           </Section>
 
         </div>
+      </div>
+
+      <div className="relative bg-[#080B12] pt-12 pb-8">
+        <AskAmericaCTA
+          locale={locale}
+          descriptionEn="Ask the AI Oracle about constitutional republic principles, the checks and balances framework, the Bill of Rights, or historical elections."
+          descriptionRo="Întreabă Oracolul AI despre principiile republicii constituționale, cadrul sistemelor de control, Carta Drepturilor sau alegerile istorice."
+        />
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════════

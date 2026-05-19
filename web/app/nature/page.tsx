@@ -389,6 +389,31 @@ export default async function NaturePage() {
           </div>
         </div>
       </section>
+
+      {/* Ask America AI Oracle CTA */}
+      <section className="bg-(--nat-void,#030504) pb-32 px-6 md:px-12">
+        <div className="mx-auto max-w-[1200px] border border-zinc-800 bg-zinc-950 p-8 md:p-12 rounded-xl flex flex-col md:flex-row items-center justify-between gap-8">
+          <div>
+            <span className="text-[10px] font-semibold text-zinc-500 uppercase tracking-widest font-mono mb-2 block">
+              AI Oracle
+            </span>
+            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight font-sans">
+              {isRo ? "Oracolul Ask America" : "The Ask America Oracle"}
+            </h3>
+            <p className="text-zinc-400 text-sm mt-2 max-w-2xl font-sans">
+              {isRo
+                ? "Pune întrebări despre sistemele de conservare a parcurilor naționale ale Americii, biodiversitatea locală sau rezervațiile protejate din Alaska."
+                : "Ask questions about America's national park conservation systems, local biodiversity, or protected wilderness reserves in Alaska."}
+            </p>
+          </div>
+          <Link
+            href="/interactive"
+            className="shrink-0 inline-flex items-center gap-2 px-5 py-3 bg-white hover:bg-zinc-200 text-black font-semibold text-sm transition-colors rounded-md"
+          >
+            {isRo ? "Întreabă America →" : "Ask America →"}
+          </Link>
+        </div>
+      </section>
     </>
   );
 }

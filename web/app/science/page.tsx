@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
+import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 
 export const metadata: Metadata = {
   title: "Science & Inventions",
@@ -53,12 +54,18 @@ export default async function SciencePage() {
 
       <section
         id="feature"
-        className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8"
+        className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8 pb-12"
       >
         <div className="mx-auto min-h-[420px] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
           {/* TODO: Drop in science timeline or interactive charts component here */}
         </div>
       </section>
+
+      <AskAmericaCTA
+        locale={locale}
+        descriptionEn="Ask the AI Oracle about historic scientific breakthroughs, transistors, biotechnology developments, or American Nobel prize counts."
+        descriptionRo="Întreabă Oracolul AI despre descoperirile științifice istorice, tranzistori, dezvoltarea biotehnologiei sau numărul de premii Nobel din SUA."
+      />
     </main>
   );
 }
