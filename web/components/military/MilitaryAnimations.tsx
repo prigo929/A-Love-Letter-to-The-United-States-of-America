@@ -1112,53 +1112,189 @@ export function BudgetComparisonBar({
   label?: string; 
   locale?: Locale;
 }) {
-  const ref    = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const defaultLabel = locale === 'ro' 
+  const isRo = locale === 'ro';
+
+  const defaultLabel = isRo 
     ? "Bugetul de Apărare (miliarde USD, 2024)" 
     : "Defense Budget (USD Billion, 2024)";
-
+  
   const displayLabel = label || defaultLabel;
 
+  // Next 10 nations combined calculation
+  const usBudget = 916;
+  const nextTenBudget = 893;
+  const nextTenPCT = (nextTenBudget / usBudget) * 100;
+
   return (
-    <div ref={ref} className="overflow-hidden rounded-2xl border border-white/8 bg-[#080C14] p-6">
-      <p className="mb-6 font-mono text-[12px] font-bold uppercase tracking-[0.3em] text-white/60">{displayLabel}</p>
-      <div className="space-y-4">
-        {data.map((row, i) => {
-          const isHighlight = row.highlight || row.country.includes("United States") || row.country.includes("Statele Unite");
-          const pct = (row.budget / 886) * 100;
-          return (
-            <div key={row.country}>
-              <div className="mb-2 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <span className="text-base">{row.flag}</span>
-                  <span className={`mil-text-metadata font-(family-name:--font-archivo) tracking-normal text-[14px] ${isHighlight ? "text-white font-black" : "text-white/60"}`}>
-                    {row.country}
-                  </span>
-                </div>
-                <span className={`mil-text-metadata font-mono text-[13px] ${isHighlight ? "text-white font-bold" : "text-white/40"}`}>
-                  ${row.budget}B
+    <div ref={ref} className="overflow-hidden rounded-2xl border border-white/5 bg-[#030303] p-8 md:p-12">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-16 items-start">
+        {/* Left Panel: The US Dominance Stack */}
+        <div className="space-y-8">
+          <div>
+            <span className="font-mono text-[9px] tracking-[0.3em] text-white/40 uppercase block mb-2">
+              {isRo ? "VERIFICAT · SIPRI 2025" : "VERIFIED · SIPRI 2025"}
+            </span>
+            <h4 className="text-2xl font-black tracking-tight text-white mb-3">
+              {isRo ? "COMPARAȚIE BUGET APĂRARE" : "DEFENSE BUDGET COMPARISON"}
+            </h4>
+            <div className="text-[10px] font-mono font-bold text-white/60 mb-4 tracking-wide uppercase flex items-center gap-1.5">
+              <span>◈</span>
+              <span>{isRo ? "S.U.A. CHELTUIESC MAI MULT DECÂT URMĂTOARELE ZECE NAȚIUNI COMBINATE" : "U.S. OUTSPENDS THE NEXT TEN NATIONS COMBINED"}</span>
+            </div>
+            <p className="text-xs leading-relaxed text-white/40 max-w-lg mt-3">
+              {isRo
+                ? "Statele Unite investesc în securitate mai mult decât următoarele zece puteri militare globale la un loc. Această superioritate bugetară susține o infrastructură operațională globală de neegalat."
+                : "The United States defense investment outpaces the combined spending of the next ten global military powers. This massive resource scale funds unparalleled worldwide force projection."}
+            </p>
+          </div>
+
+          {/* Big Stat display */}
+          <div className="bg-white/[0.02] border border-white/5 p-6 rounded-lg space-y-6">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+              <div>
+                <span className="text-[10px] font-mono tracking-widest text-white/40 block uppercase">
+                  {isRo ? "BUGET SUA 2024" : "U.S. BUDGET FY2024"}
+                </span>
+                <span className="text-4xl font-extrabold tracking-tighter text-white block mt-1">
+                  $916B
                 </span>
               </div>
-              <div className="h-1.5 overflow-hidden rounded-full bg-white/5">
-                <motion.div
-                  className="h-full rounded-full"
-                  initial={{ width: 0 }}
-                  animate={inView ? { width: `${pct}%` } : { width: 0 }}
-                  transition={{ duration: 1.2, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  style={{
-                    background: isHighlight
-                      ? "white"
-                      : "rgba(255,255,255,0.1)",
-                  }}
-                />
+              <div className="hidden md:block h-8 w-px bg-white/10" />
+              <div>
+                <span className="text-[10px] font-mono tracking-widest text-white/40 block uppercase">
+                  {isRo ? "URMĂTOARELE 10 COMBINATE" : "NEXT 10 NATIONS COMBINED"}
+                </span>
+                <span className="text-4xl font-extrabold tracking-tighter text-white/60 block mt-1">
+                  $893B
+                </span>
               </div>
             </div>
-          );
-        })}
+
+            {/* Visual comparative bars */}
+            <div className="space-y-4 pt-2 border-t border-white/5">
+              {/* United States Bar */}
+              <div>
+                <div className="flex justify-between items-center text-[10px] font-mono mb-1.5">
+                  <span className="font-bold text-white tracking-wider flex items-center gap-1.5">
+                    🇺🇸 {isRo ? "STATELE UNITE" : "UNITED STATES"}
+                  </span>
+                  <span className="text-white font-bold">$916B</span>
+                </div>
+                <div className="h-2.5 rounded bg-white/5 overflow-hidden">
+                  <motion.div
+                    className="h-full rounded bg-white"
+                    initial={{ width: 0 }}
+                    animate={inView ? { width: "100%" } : { width: 0 }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                    style={{
+                      boxShadow: "0 0 10px rgba(255,255,255,0.15)"
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Combined Next 10 Bar */}
+              <div>
+                <div className="flex justify-between items-center text-[10px] font-mono mb-1.5">
+                  <span className="text-white/50 tracking-wider">
+                    {isRo ? "URMĂTOARELE 10 NAȚIUNI COMBINATE" : "NEXT 10 NATIONS COMBINED"}
+                  </span>
+                  <span className="text-white/50">$893B</span>
+                </div>
+                <div className="h-2.5 rounded bg-white/5 overflow-hidden">
+                  <motion.div
+                    className="h-full rounded bg-white/30"
+                    initial={{ width: 0 }}
+                    animate={inView ? { width: `${nextTenPCT}%` } : { width: 0 }}
+                    transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="text-[8px] font-mono text-white/30 leading-relaxed pt-1">
+              * {isRo
+                ? "Următoarele 10 națiuni includ: China, Rusia, India, Arabia Saudită, Marea Britanie, Germania, Franța, Japonia, Coreea de Sud și Ucraina."
+                : "Next 10 nations include: China, Russia, India, Saudi Arabia, United Kingdom, Germany, France, Japan, South Korea, and Ukraine."}
+            </div>
+          </div>
+        </div>
+
+        {/* Right Panel: Individual Budget Breakdown */}
+        <div className="space-y-6">
+          <p className="font-mono text-[9px] tracking-[0.3em] text-white/40 uppercase block mb-1">
+            {isRo ? "IERARHIA GLOBALĂ A CHELTUIELILOR" : "GLOBAL SPENDING BREAKDOWN"}
+          </p>
+
+          <div className="space-y-4">
+            {data.map((row, i) => {
+              const isUS = row.country.includes("United States") || row.country.includes("Statele Unite");
+              const pct = (row.budget / usBudget) * 100;
+              const isHovered = hoveredIndex === i;
+
+              return (
+                <div 
+                  key={row.country}
+                  onMouseEnter={() => setHoveredIndex(i)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  className="group relative transition-all duration-200"
+                >
+                  <div className="mb-1.5 flex items-center justify-between">
+                    <div className="flex items-center gap-2.5">
+                      <span className="text-sm">{row.flag}</span>
+                      <span className={cn(
+                        "font-mono text-[11px] uppercase tracking-wide transition-colors",
+                        isUS 
+                          ? "text-white font-bold" 
+                          : isHovered ? "text-white" : "text-white/50"
+                      )}>
+                        {row.country}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 font-mono text-[11px]">
+                      {isHovered && !isUS && (
+                        <span className="text-[9px] text-white/30 mr-1.5">
+                          ({pct.toFixed(1)}% {isRo ? "din SUA" : "of U.S."})
+                        </span>
+                      )}
+                      <span className={cn(
+                        "transition-colors",
+                        isUS 
+                          ? "text-white font-bold" 
+                          : isHovered ? "text-white" : "text-white/40"
+                      )}>
+                        ${row.budget}B
+                      </span>
+                    </div>
+                  </div>
+                  <div className="h-1 rounded-full bg-white/5 overflow-hidden">
+                    <motion.div
+                      className={cn(
+                        "h-full rounded-full transition-all duration-200",
+                        isUS 
+                          ? "bg-white" 
+                          : isHovered ? "bg-white/40" : "bg-white/15"
+                      )}
+                      initial={{ width: 0 }}
+                      animate={inView ? { width: `${pct}%` } : { width: 0 }}
+                      transition={{ duration: 1.2, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="pt-4 border-t border-white/5 flex justify-between items-center font-mono text-[8px] text-white/30 uppercase tracking-widest">
+            <span>VERIFIED · SIPRI 2025</span>
+            <span>SOURCE: SIPRI EXPENDITURES DATABASE</span>
+          </div>
+        </div>
       </div>
-      <p className="mt-5 text-right font-mono text-[10px] text-white/40 uppercase tracking-widest">Source: SIPRI Military Expenditure Database 2024</p>
     </div>
   );
 }

@@ -295,14 +295,7 @@ export default async function MilitaryPage() {
         </div>
 
         {/* Budget comparison chart */}
-        <div className="mil-glass p-12 md:p-24">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-16">
-            <div>
-              <div className="mil-text-metadata mb-4">{locale === 'ro' ? 'VERIFICAT · SIPRI 2025' : 'VERIFIED · SIPRI 2025'}</div>
-              <h3 className="text-4xl font-black tracking-normal font-(family-name:--font-archivo)" style={{ wordSpacing: '0.12em' }}>{locale === 'ro' ? 'COMPARAȚIE BUGET APĂRARE' : 'DEFENSE BUDGET COMPARISON'}</h3>
-            </div>
-            <div className="mil-text-metadata font-bold text-sm text-white/70">◈ &nbsp; {locale === 'ro' ? 'S.U.A. CHELTUIESC MAI MULT DECÂT URMĂTOARELE ZECE NAȚIUNI COMBINATE' : 'U.S. OUTSPENDS THE NEXT TEN NATIONS COMBINED'}</div>
-          </div>
+        <div className="mt-12">
           <BudgetComparisonBar data={budgetData} locale={locale}/>
         </div>
       </Section>
