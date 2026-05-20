@@ -4,12 +4,15 @@ import {
   NavyCapabilityGrid,
   NavyClosing,
   NavyCommandStack,
+  NavyFleetComparisonSection,
   NavyFullscreenPanel,
   NavyFutureStack,
+  NavyHeritageTimeline,
   NavyMetricStrip,
   NavyOperationalConsole,
   NavyPageProgress,
   NavyPlatformShowcase,
+  NavySpecWarSection,
   NavyStyles,
   NavyWeaponsConsole,
   NavyFlyNavyVideo,
@@ -26,6 +29,9 @@ import {
   getNavyTheaters,
   getNavyFuturePrograms,
   getNavyVisualPanels,
+  getNavyFleetComparison,
+  getNavyHeritageTimeline,
+  getNavySpecWarUnits,
 } from "@/lib/data/navy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 
@@ -51,6 +57,9 @@ export default async function NavyPage() {
   const layers = getNavyCommandLayers(locale);
   const programs = getNavyFuturePrograms(locale);
   const visualPanels = getNavyVisualPanels(locale);
+  const fleetComparison = getNavyFleetComparison(locale);
+  const heritageTimeline = getNavyHeritageTimeline(locale);
+  const specWarUnits = getNavySpecWarUnits(locale);
 
   const heroStats = locale === "ro"
     ? [
@@ -80,6 +89,7 @@ export default async function NavyPage() {
         stats={heroStats}
       />
       <NavyMetricStrip metrics={secondaryMetrics} locale={locale} />
+      <NavyFleetComparisonSection data={fleetComparison} locale={locale} />
       <NavyCapabilityGrid capabilities={capabilities} locale={locale} />
       <NavyFlyNavyVideo locale={locale} />
       <NavyOperationalConsole theaters={theaters} locale={locale} />
@@ -87,8 +97,10 @@ export default async function NavyPage() {
       <NavyPlatformShowcase platforms={platforms} locale={locale} />
       <NavyWeaponsConsole locale={locale} />
       <NavyCommandStack layers={layers} locale={locale} />
+      <NavyHeritageTimeline events={heritageTimeline} locale={locale} />
       <NavyFullscreenPanel panel={visualPanels[1]} reverse locale={locale} />
       <NavyFutureStack programs={programs} locale={locale} />
+      <NavySpecWarSection units={specWarUnits} locale={locale} />
       <NavyFullscreenPanel panel={visualPanels[2]} locale={locale} />
       <NavyClosing locale={locale} />
     </div>

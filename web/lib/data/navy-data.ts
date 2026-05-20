@@ -1011,3 +1011,222 @@ export function getNavyWeapons(locale: Locale): NavyWeaponSystem[] {
     },
   ];
 }
+
+// ─── Fleet Size Comparison ────────────────────────────────────────────────────
+
+export interface NavyFleetComparison {
+  country: string;
+  flag: string;
+  carriers: number;
+  submarines: number;
+  totalShips: number;
+  tonnage: string;
+  highlight?: boolean;
+}
+
+export const NAVY_FLEET_COMPARISON: NavyFleetComparison[] = [
+  { country: "United States", flag: "🇺🇸", carriers: 11, submarines: 72, totalShips: 296, tonnage: "4.6M", highlight: true },
+  { country: "China",         flag: "🇨🇳", carriers: 3,  submarines: 61, totalShips: 370, tonnage: "2.0M" },
+  { country: "Russia",        flag: "🇷🇺", carriers: 1,  submarines: 58, totalShips: 192, tonnage: "0.9M" },
+  { country: "United Kingdom",flag: "🇬🇧", carriers: 2,  submarines: 11, totalShips: 75,  tonnage: "0.4M" },
+  { country: "Japan",         flag: "🇯🇵", carriers: 0,  submarines: 22, totalShips: 114, tonnage: "0.5M" },
+  { country: "India",         flag: "🇮🇳", carriers: 2,  submarines: 17, totalShips: 130, tonnage: "0.4M" },
+  { country: "France",        flag: "🇫🇷", carriers: 1,  submarines: 10, totalShips: 80,  tonnage: "0.3M" },
+];
+
+export function getNavyFleetComparison(locale: Locale): NavyFleetComparison[] {
+  if (locale !== "ro") return NAVY_FLEET_COMPARISON;
+  return [
+    { country: "Statele Unite",  flag: "🇺🇸", carriers: 11, submarines: 72, totalShips: 296, tonnage: "4.6M", highlight: true },
+    { country: "China",          flag: "🇨🇳", carriers: 3,  submarines: 61, totalShips: 370, tonnage: "2.0M" },
+    { country: "Rusia",          flag: "🇷🇺", carriers: 1,  submarines: 58, totalShips: 192, tonnage: "0.9M" },
+    { country: "Marea Britanie", flag: "🇬🇧", carriers: 2,  submarines: 11, totalShips: 75,  tonnage: "0.4M" },
+    { country: "Japonia",        flag: "🇯🇵", carriers: 0,  submarines: 22, totalShips: 114, tonnage: "0.5M" },
+    { country: "India",          flag: "🇮🇳", carriers: 2,  submarines: 17, totalShips: 130, tonnage: "0.4M" },
+    { country: "Franța",         flag: "🇫🇷", carriers: 1,  submarines: 10, totalShips: 80,  tonnage: "0.3M" },
+  ];
+}
+
+// ─── Naval Heritage Timeline ──────────────────────────────────────────────────
+
+export interface NavyHeritageEvent {
+  year: string;
+  title: string;
+  description: string;
+  significance: string;
+}
+
+export const NAVY_HERITAGE_TIMELINE: NavyHeritageEvent[] = [
+  {
+    year: "1775",
+    title: "Continental Navy Founded",
+    description: "The Continental Congress establishes a naval force to intercept British supply ships during the American Revolution, planting the seed for permanent sea power.",
+    significance: "Origin of American naval identity",
+  },
+  {
+    year: "1812",
+    title: "\"Old Ironsides\" & Blue-Water Credibility",
+    description: "USS Constitution defeats HMS Guerriere, proving the young republic could challenge the Royal Navy and projecting American sovereignty across oceans.",
+    significance: "First proof of naval competence",
+  },
+  {
+    year: "1907",
+    title: "Great White Fleet Circumnavigation",
+    description: "President Roosevelt sends 16 battleships around the world in 14 months, announcing America as a global naval power and establishing forward-deployment doctrine.",
+    significance: "Birth of global naval presence",
+  },
+  {
+    year: "1942",
+    title: "Midway: Carriers Replace Battleships",
+    description: "Four Japanese carriers sunk in a single engagement. The Battle of Midway proved that carrier aviation, not gun-line battleships, would dominate modern naval warfare.",
+    significance: "The carrier era begins",
+  },
+  {
+    year: "1962",
+    title: "Cuban Missile Crisis Naval Blockade",
+    description: "The Navy's quarantine line around Cuba demonstrated that sea control could resolve nuclear brinkmanship without firing a shot. Deterrence through presence.",
+    significance: "Sea power as diplomatic leverage",
+  },
+  {
+    year: "1991",
+    title: "Tomahawk Debut in Desert Storm",
+    description: "288 Tomahawk cruise missiles launched from ships and submarines in the opening hours of Desert Storm, introducing precision stand-off strike from the sea.",
+    significance: "Precision strike revolution",
+  },
+  {
+    year: "2001–Now",
+    title: "Persistent Global Presence",
+    description: "Carrier strike groups deploy continuously across the Indo-Pacific, Mediterranean, and Arabian Sea. The Navy is the first responder to every global crisis.",
+    significance: "Permanent forward deployment",
+  },
+];
+
+export function getNavyHeritageTimeline(locale: Locale): NavyHeritageEvent[] {
+  if (locale !== "ro") return NAVY_HERITAGE_TIMELINE;
+  return [
+    {
+      year: "1775",
+      title: "Înființarea Marinei Continentale",
+      description: "Congresul Continental stabilește o forță navală pentru interceptarea navelor britanice de aprovizionare, plantând sămânța puterii maritime permanente.",
+      significance: "Originea identității navale americane",
+    },
+    {
+      year: "1812",
+      title: "\"Old Ironsides\" și Credibilitatea Maritimă",
+      description: "USS Constitution învinge HMS Guerriere, dovedind că tânăra republică poate contesta Marina Regală și proiectând suveranitatea americană peste oceane.",
+      significance: "Prima dovadă de competență navală",
+    },
+    {
+      year: "1907",
+      title: "Circumnavigarea Flotei Albe",
+      description: "Președintele Roosevelt trimite 16 cuirasate în jurul lumii în 14 luni, anunțând America ca putere navală globală și stabilind doctrina desfășurării avansate.",
+      significance: "Nașterea prezenței navale globale",
+    },
+    {
+      year: "1942",
+      title: "Midway: Portavioanele Înlocuiesc Cuirasatele",
+      description: "Patru portavioane japoneze scufundate într-o singură bătălie. Midway a dovedit că aviația de portavion, nu cuirasatele, va domina războiul naval modern.",
+      significance: "Începutul erei portavioanelor",
+    },
+    {
+      year: "1962",
+      title: "Blocada Navală din Criza Rachetelor Cubaneze",
+      description: "Linia de carantină a Marinei în jurul Cubei a demonstrat că controlul mării poate rezolva o confruntare nucleară fără a trage un foc de armă.",
+      significance: "Puterea navală ca pârghie diplomatică",
+    },
+    {
+      year: "1991",
+      title: "Debutul Tomahawk în Furtuna Deșertului",
+      description: "288 de rachete de croazieră Tomahawk lansate de pe nave și submarine în primele ore ale operațiunii, introducând atacul de precizie de la distanță de pe mare.",
+      significance: "Revoluția atacului de precizie",
+    },
+    {
+      year: "2001–Azi",
+      title: "Prezență Globală Permanentă",
+      description: "Grupurile de atac de portavioane se desfășoară continuu în Indo-Pacific, Mediterana și Marea Arabiei. Marina este primul răspuns la fiecare criză globală.",
+      significance: "Desfășurare avansată permanentă",
+    },
+  ];
+}
+
+// ─── Navy Special Warfare ─────────────────────────────────────────────────────
+
+export interface NavySpecWarUnit {
+  id: string;
+  name: string;
+  fullName: string;
+  role: string;
+  description: string;
+  stats: { label: string; value: string }[];
+  missions: string[];
+  accent: string;
+}
+
+export const NAVY_SPECWAR_UNITS: NavySpecWarUnit[] = [
+  {
+    id: "seal-teams",
+    name: "Navy SEALs",
+    fullName: "Sea, Air, and Land Teams",
+    role: "Maritime special operations",
+    description: "The Navy's elite special operations force, trained to operate in any environment from deep ocean to landlocked mountains. SEAL teams conduct direct action, special reconnaissance, counter-terrorism, and unconventional warfare missions worldwide.",
+    stats: [
+      { label: "Active Teams", value: "8 + DEVGRU" },
+      { label: "BUD/S Duration", value: "6 months" },
+      { label: "Selection Rate", value: "~25%" },
+      { label: "Deployment", value: "Global" },
+    ],
+    missions: ["Direct Action", "Special Reconnaissance", "Counter-Terrorism", "Unconventional Warfare"],
+    accent: "#8edcff",
+  },
+  {
+    id: "swcc",
+    name: "SWCC",
+    fullName: "Special Warfare Combatant-craft Crewmen",
+    role: "High-speed maritime insertion & extraction",
+    description: "SWCC operators are the boat crews that deliver SEAL teams to their objectives. They operate specialized high-speed craft in hostile waters, providing fire support, infiltration, and rapid extraction under combat conditions.",
+    stats: [
+      { label: "Craft Types", value: "SOC-R, MKVI, CCM" },
+      { label: "Training", value: "37 weeks" },
+      { label: "Speed", value: "40+ knots" },
+      { label: "Mission", value: "Insertion/Extraction" },
+    ],
+    missions: ["Coastal Patrol", "Riverine Operations", "Personnel Recovery", "Combat Support"],
+    accent: "#70e0bf",
+  },
+];
+
+export function getNavySpecWarUnits(locale: Locale): NavySpecWarUnit[] {
+  if (locale !== "ro") return NAVY_SPECWAR_UNITS;
+  return [
+    {
+      id: "seal-teams",
+      name: "Navy SEALs",
+      fullName: "Echipe de Mare, Aer și Uscat",
+      role: "Operațiuni speciale maritime",
+      description: "Forța de operațiuni speciale de elită a Marinei, antrenată să opereze în orice mediu, de la oceanul profund la munți izolați. Echipele SEAL execută acțiune directă, recunoaștere specială, contraterorism și război neconvențional la nivel mondial.",
+      stats: [
+        { label: "Echipe Active", value: "8 + DEVGRU" },
+        { label: "Durată BUD/S", value: "6 luni" },
+        { label: "Rată Selecție", value: "~25%" },
+        { label: "Desfășurare", value: "Globală" },
+      ],
+      missions: ["Acțiune Directă", "Recunoaștere Specială", "Contraterorism", "Război Neconvențional"],
+      accent: "#8edcff",
+    },
+    {
+      id: "swcc",
+      name: "SWCC",
+      fullName: "Echipaje de Nave Speciale de Luptă",
+      role: "Inserție și extracție maritimă de mare viteză",
+      description: "Operatorii SWCC sunt echipajele de barcă care livrează echipele SEAL la obiectivele lor. Operează nave speciale de mare viteză în ape ostile, oferind sprijin de foc, infiltrare și extracție rapidă în condiții de luptă.",
+      stats: [
+        { label: "Tipuri Nave", value: "SOC-R, MKVI, CCM" },
+        { label: "Antrenament", value: "37 săptămâni" },
+        { label: "Viteză", value: "74+ km/h" },
+        { label: "Misiune", value: "Inserție/Extracție" },
+      ],
+      missions: ["Patrulare Costieră", "Operațiuni Fluviale", "Recuperare Personal", "Sprijin de Luptă"],
+      accent: "#70e0bf",
+    },
+  ];
+}

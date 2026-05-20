@@ -23,9 +23,12 @@ import type { Locale } from "@/lib/i18n/config";
 import type {
   NavyCapability,
   NavyCommandLayer,
+  NavyFleetComparison,
   NavyFutureProgram,
+  NavyHeritageEvent,
   NavyMetric,
   NavyPlatform,
+  NavySpecWarUnit,
   NavyTheater,
   NavyVisualPanel,
   NavyWeaponSystem,
@@ -2253,6 +2256,407 @@ export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
             </p>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 13. NavyFleetComparisonSection — Fleet Size Dashboard
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function NavyFleetComparisonSection({
+  data,
+  locale = "en",
+}: {
+  data: NavyFleetComparison[];
+  locale?: Locale;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [activeMetric, setActiveMetric] = useState<"carriers" | "submarines" | "tonnage">("carriers");
+  const isRo = locale === "ro";
+
+  const usData = data.find((d) => d.highlight) ?? data[0];
+  const maxCarriers = usData.carriers;
+  const maxSubs = usData.submarines;
+
+  const metricOptions: { key: "carriers" | "submarines" | "tonnage"; label: string }[] = [
+    { key: "carriers", label: isRo ? "PORTAVIOANE" : "CARRIERS" },
+    { key: "submarines", label: isRo ? "SUBMARINE" : "SUBMARINES" },
+    { key: "tonnage", label: isRo ? "TONAJ" : "TONNAGE" },
+  ];
+
+  function getBarValue(row: NavyFleetComparison): number {
+    if (activeMetric === "carriers") return row.carriers;
+    if (activeMetric === "submarines") return row.submarines;
+    return parseFloat(row.tonnage);
+  }
+
+  function getMaxValue(): number {
+    if (activeMetric === "carriers") return maxCarriers;
+    if (activeMetric === "submarines") return maxSubs;
+    return parseFloat(usData.tonnage);
+  }
+
+  function getDisplayValue(row: NavyFleetComparison): string {
+    if (activeMetric === "carriers") return String(row.carriers);
+    if (activeMetric === "submarines") return String(row.submarines);
+    return row.tonnage + " tons";
+  }
+
+  return (
+    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_-10%,rgba(0,42,102,0.12),transparent_45%)] pointer-events-none" />
+      <div className="absolute inset-0 navy-grid-plane opacity-15 pointer-events-none" />
+      <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
+
+      <div ref={ref} className="relative mx-auto max-w-[1520px]">
+        <SectionTitle
+          label={isRo ? "SCARĂ GLOBALĂ" : "GLOBAL SCALE"}
+          titlePart1={isRo ? "DOMINAȚIE" : "MARITIME"}
+          titlePart2={isRo ? "MARITIMĂ" : "DOMINANCE"}
+          body={isRo
+            ? "Marina SUA nu este doar cea mai mare din lume — este mai mare decât următoarele treisprezece marine combinate ca tonaj total. Nicio altă națiune nu operează mai mult de trei portavioane."
+            : "The U.S. Navy isn't just the world's largest — it displaces more tonnage than the next thirteen navies combined. No other nation operates more than three aircraft carriers."}
+        />
+
+        {/* Metric selector tabs */}
+        <div className="flex justify-center gap-2 mb-12">
+          {metricOptions.map((opt) => (
+            <button
+              key={opt.key}
+              type="button"
+              onClick={() => setActiveMetric(opt.key)}
+              className={cn(
+                "px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] border transition-all duration-200",
+                activeMetric === opt.key
+                  ? "bg-white/[0.06] border-white/15 text-white"
+                  : "bg-transparent border-white/5 text-white/30 hover:text-white/60 hover:border-white/10"
+              )}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Comparison grid */}
+        <div className="overflow-hidden rounded-lg border border-white/5 bg-[#020202]">
+          <div className="p-6 md:p-10 space-y-5">
+            {data.map((row, i) => {
+              const val = getBarValue(row);
+              const max = getMaxValue();
+              const pct = max > 0 ? (val / max) * 100 : 0;
+
+              return (
+                <div key={row.country}>
+                  <div className="mb-2 flex items-center justify-between">
+                    <div className="flex items-center gap-2.5">
+                      <span className="text-sm">{row.flag}</span>
+                      <span className={cn(
+                        "font-mono text-[11px] uppercase tracking-wide",
+                        row.highlight ? "text-white font-bold" : "text-white/50"
+                      )}>
+                        {row.country}
+                      </span>
+                    </div>
+                    <span className={cn(
+                      "font-mono text-[12px]",
+                      row.highlight ? "text-white font-bold" : "text-white/40"
+                    )}>
+                      {getDisplayValue(row)}
+                    </span>
+                  </div>
+                  <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
+                    <motion.div
+                      className={cn(
+                        "h-full rounded-full",
+                        row.highlight ? "bg-white" : "bg-white/15"
+                      )}
+                      initial={{ width: 0 }}
+                      animate={inView ? { width: `${pct}%` } : { width: 0 }}
+                      transition={{ duration: 1.2, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                      style={row.highlight ? { boxShadow: "0 0 8px rgba(255,255,255,0.12)" } : undefined}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Footer stats strip */}
+          <div className="grid grid-cols-3 border-t border-white/5">
+            <div className="p-5 border-r border-white/5 text-center">
+              <div className="text-[9px] font-mono uppercase tracking-widest text-white/30 mb-1">{isRo ? "PORTAVIOANE NUCLEARE" : "NUCLEAR CARRIERS"}</div>
+              <div className="text-xl font-black text-white">11</div>
+            </div>
+            <div className="p-5 border-r border-white/5 text-center">
+              <div className="text-[9px] font-mono uppercase tracking-widest text-white/30 mb-1">{isRo ? "SUBMARINE ACTIVE" : "ACTIVE SUBMARINES"}</div>
+              <div className="text-xl font-black text-white">72</div>
+            </div>
+            <div className="p-5 text-center">
+              <div className="text-[9px] font-mono uppercase tracking-widest text-white/30 mb-1">{isRo ? "TONAJ TOTAL FLOTĂ" : "TOTAL FLEET TONNAGE"}</div>
+              <div className="text-xl font-black text-white">4.6M</div>
+            </div>
+          </div>
+        </div>
+
+        <p className="mt-4 text-center font-mono text-[8px] text-white/25 uppercase tracking-widest">
+          {isRo ? "Surse: IISS Military Balance 2024, Naval Vessel Register" : "Sources: IISS Military Balance 2024, Naval Vessel Register"}
+        </p>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 14. NavyHeritageTimeline — Vertical History Timeline
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function NavyHeritageTimeline({
+  events,
+  locale = "en",
+}: {
+  events: NavyHeritageEvent[];
+  locale?: Locale;
+}) {
+  const isRo = locale === "ro";
+
+  return (
+    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(0,42,102,0.10),transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 navy-grid-plane opacity-10 pointer-events-none" />
+      <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
+
+      <div className="relative mx-auto max-w-[1520px]">
+        <SectionTitle
+          label={isRo ? "MOȘTENIRE NAVALĂ" : "NAVAL HERITAGE"}
+          titlePart1={isRo ? "248 DE ANI" : "248 YEARS"}
+          titlePart2={isRo ? "DE PUTERE MARITIMĂ" : "OF SEA POWER"}
+          body={isRo
+            ? "De la Revoluție la dominația globală a portavioanelor, Marina SUA și-a definit epoca prin inovație, curaj și prezență permanentă pe toate oceanele lumii."
+            : "From the Revolution to global carrier dominance, the U.S. Navy has defined each era through innovation, courage, and permanent presence across every ocean on Earth."}
+        />
+
+        {/* Timeline */}
+        <div className="relative max-w-4xl mx-auto">
+          {/* Central spine */}
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-white/8 md:-translate-x-px" />
+
+          <div className="space-y-0">
+            {events.map((event, i) => {
+              const isLeft = i % 2 === 0;
+
+              return (
+                <motion.div
+                  key={event.year}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: i * 0.05 }}
+                  className={cn(
+                    "relative grid gap-8 py-8",
+                    "md:grid-cols-[1fr_auto_1fr]",
+                    "grid-cols-[auto_1fr]"
+                  )}
+                >
+                  {/* Left content (desktop) */}
+                  <div className={cn(
+                    "hidden md:flex flex-col",
+                    isLeft ? "items-end text-right" : "items-end text-right opacity-0"
+                  )}>
+                    {isLeft && (
+                      <div className="navy-panel-tactical p-6 max-w-sm">
+                        <div className="text-[9px] font-mono uppercase tracking-widest text-[#8edcff]/70 mb-3">{event.significance}</div>
+                        <h4 className="navy-font-display text-lg font-black uppercase text-white leading-tight mb-3">{event.title}</h4>
+                        <p className="text-[11px] leading-relaxed text-white/50">{event.description}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Center node */}
+                  <div className="flex flex-col items-center z-10">
+                    <div className="flex h-12 w-12 items-center justify-center border border-white/10 bg-black text-white">
+                      <span className="font-mono text-[10px] font-bold tracking-wider">{event.year}</span>
+                    </div>
+                  </div>
+
+                  {/* Right content (desktop) / Main content (mobile) */}
+                  <div className={cn(
+                    "flex flex-col",
+                    !isLeft ? "items-start text-left" : "md:opacity-0 md:pointer-events-none items-start text-left"
+                  )}>
+                    {/* Always show on mobile */}
+                    <div className="navy-panel-tactical p-6 max-w-sm md:hidden">
+                      <div className="text-[9px] font-mono uppercase tracking-widest text-[#8edcff]/70 mb-3">{event.significance}</div>
+                      <h4 className="navy-font-display text-lg font-black uppercase text-white leading-tight mb-3">{event.title}</h4>
+                      <p className="text-[11px] leading-relaxed text-white/50">{event.description}</p>
+                    </div>
+                    {/* Show on desktop for right-side items */}
+                    {!isLeft && (
+                      <div className="navy-panel-tactical p-6 max-w-sm hidden md:block">
+                        <div className="text-[9px] font-mono uppercase tracking-widest text-[#8edcff]/70 mb-3">{event.significance}</div>
+                        <h4 className="navy-font-display text-lg font-black uppercase text-white leading-tight mb-3">{event.title}</h4>
+                        <p className="text-[11px] leading-relaxed text-white/50">{event.description}</p>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 15. NavySpecWarSection — Navy SEALs & SWCC Dossier
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function NavySpecWarSection({
+  units,
+  locale = "en",
+}: {
+  units: NavySpecWarUnit[];
+  locale?: Locale;
+}) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = units[activeIndex];
+  const isRo = locale === "ro";
+
+  return (
+    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(0,42,102,0.12),transparent_40%)] pointer-events-none" />
+      <div className="absolute inset-0 navy-grid-plane opacity-15 pointer-events-none" />
+      <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
+
+      <div className="relative mx-auto max-w-[1520px]">
+        <SectionTitle
+          label={isRo ? "OPERAȚIUNI SPECIALE NAVALE" : "NAVAL SPECIAL WARFARE"}
+          titlePart1={isRo ? "VÂRFUL" : "TIP OF"}
+          titlePart2={isRo ? "SULIȚEI" : "THE SPEAR"}
+          body={isRo
+            ? "Comandamentul Operațiunilor Speciale Navale pregătește și desfășoară forțe de operațiuni speciale maritime pentru a conduce acțiunea directă, recunoașterea specială și războiul neconvențional în medii maritime, litorale și terestre."
+            : "Naval Special Warfare Command trains and deploys maritime special operations forces to conduct direct action, special reconnaissance, and unconventional warfare across maritime, littoral, and land environments."}
+        />
+
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.65 }}
+          className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-0 overflow-hidden rounded-lg border border-white/5 bg-[#020202]"
+        >
+          {/* Left: Unit selector */}
+          <div className="flex flex-row lg:flex-col border-b lg:border-b-0 lg:border-r border-white/5 bg-black/40">
+            {units.map((unit, index) => {
+              const selected = index === activeIndex;
+              return (
+                <button
+                  key={unit.id}
+                  type="button"
+                  onClick={() => setActiveIndex(index)}
+                  className={cn(
+                    "relative flex-1 lg:flex-auto min-h-24 lg:min-h-40 overflow-hidden border-r lg:border-r-0 lg:border-b border-white/5 last:border-r-0 last:border-b-0 p-6 text-left transition-all duration-300",
+                    selected ? "bg-white/[0.04] text-white" : "text-white/35 hover:bg-white/[0.015] hover:text-white/60"
+                  )}
+                >
+                  {selected && (
+                    <motion.div
+                      layoutId="navy-specwar-active"
+                      className="absolute inset-y-0 left-0 w-[2px] bg-[#8edcff] hidden lg:block"
+                      transition={{ type: "spring", stiffness: 330, damping: 35 }}
+                    />
+                    )}
+                  <div className="relative z-10">
+                    <div className="navy-font-mono text-[9px] uppercase tracking-[0.2em] mb-2" style={{ color: unit.accent + "80" }}>{unit.role}</div>
+                    <div className="navy-font-display text-xl lg:text-2xl font-black uppercase leading-tight">{unit.name}</div>
+                    <div className="hidden lg:block mt-2 text-[10px] text-white/40">{unit.fullName}</div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Right: Active unit details */}
+          <div className="p-8 md:p-10">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.id}
+                initial={{ opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -12 }}
+                transition={{ duration: 0.4 }}
+                className="space-y-8"
+              >
+                {/* Header */}
+                <div>
+                  <div className="navy-font-mono text-[9px] uppercase tracking-[0.25em] mb-3" style={{ color: active.accent }}>{active.fullName}</div>
+                  <h3 className="navy-font-display text-3xl md:text-4xl font-black uppercase text-white leading-tight">{active.name}</h3>
+                </div>
+
+                {/* Description */}
+                <p className="text-xs leading-relaxed text-white/60 max-w-2xl">{active.description}</p>
+
+                {/* Stats grid */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5">
+                  {active.stats.map((stat) => (
+                    <div key={stat.label} className="bg-[#020202] p-4">
+                      <div className="text-[9px] uppercase tracking-widest text-white/30 mb-2">{stat.label}</div>
+                      <div className="text-sm font-bold text-white">{stat.value}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Mission profile tags */}
+                <div>
+                  <div className="text-[9px] font-mono uppercase tracking-widest text-white/30 mb-3">
+                    {isRo ? "PROFILURI DE MISIUNE" : "MISSION PROFILES"}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {active.missions.map((mission) => (
+                      <span
+                        key={mission}
+                        className="border border-white/8 bg-white/[0.02] px-3.5 py-1.5 text-[10px] font-bold uppercase text-white/50 tracking-wider"
+                      >
+                        {mission}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Selection rate visual (only for SEALs) */}
+                {active.id === "seal-teams" && (
+                  <div className="navy-panel-tactical p-5 mt-4">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-[9px] font-mono uppercase tracking-widest text-white/40">
+                        {isRo ? "RATA DE SELECȚIE BUD/S" : "BUD/S SELECTION RATE"}
+                      </span>
+                      <span className="text-sm font-bold text-white">~25%</span>
+                    </div>
+                    <div className="h-2 rounded-full bg-white/5 overflow-hidden">
+                      <motion.div
+                        className="h-full rounded-full"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "25%" }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                        style={{ background: active.accent, boxShadow: `0 0 8px ${active.accent}40` }}
+                      />
+                    </div>
+                    <p className="mt-3 text-[10px] text-white/35 leading-relaxed">
+                      {isRo
+                        ? "Din fiecare clasă BUD/S, aproximativ 75% din candidați renunță sau sunt eliminați. Cei care rămân devin unii dintre cei mai capabili operatori militari din lume."
+                        : "Of every BUD/S class, approximately 75% of candidates drop on request or are eliminated. Those who remain become some of the most capable military operators on Earth."}
+                    </p>
+                  </div>
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
