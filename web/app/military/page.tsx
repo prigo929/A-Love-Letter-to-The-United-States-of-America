@@ -39,6 +39,9 @@ import {
   GlobalCarrierMap,
   ParallaxMilitaryHero,
   BudgetComparisonBar,
+  AlliancesShowcase,
+  SOCOMGrid,
+  IntelligenceNetworkMap,
 } from "@/components/military/MilitaryAnimations";
 import { LayoutGroup } from "framer-motion";
 
@@ -67,6 +70,9 @@ import {
   getBudgetData,
   getDefenseContractors,
   getMilitaryQuotes,
+  getSOCOMUnits,
+  getIntelligenceAgencies,
+  getAlliancesData,
 } from "@/lib/data/military-data";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
@@ -222,6 +228,9 @@ export default async function MilitaryPage() {
   const budgetData = getBudgetData(locale);
   const contractors = getDefenseContractors(locale);
   const quotes = getMilitaryQuotes(locale);
+  const alliances = getAlliancesData(locale);
+  const socomUnits = getSOCOMUnits(locale);
+  const intelligenceAgencies = getIntelligenceAgencies(locale);
   const quote = quotes[0];
 
   const heroStats = getHeroStats(locale);
@@ -297,6 +306,25 @@ export default async function MilitaryPage() {
           <BudgetComparisonBar data={budgetData} locale={locale}/>
         </div>
       </Section>
+
+      {/* ─── §3.2  GLOBAL ALLIANCES — NATO & AUKUS ─────────────────────────── */}
+      <Section
+        id="alliances"
+        label={locale === 'ro' ? "ALIANȚE GLOBALE · MULTIPLICATORI DE FORȚĂ" : "GLOBAL ALLIANCES · FORCE MULTIPLIERS"}
+      >
+        <div className="text-center mb-24">
+          <h2 className="text-7xl font-black tracking-tighter uppercase mb-8">
+            {locale === 'ro' ? 'ALIANȚE STRATEGICE.' : 'STRATEGIC ALLIANCES.'}<br/>
+            <span className="text-white/20">{locale === 'ro' ? 'SECURITATE COLECTIVĂ.' : 'COLLECTIVE SECURITY.'}</span>
+          </h2>
+          <p className="mil-text-metadata max-w-2xl mx-auto leading-relaxed text-center">
+            {locale === 'ro' 
+              ? "Puterea americană este multiplicată prin coaliții globale integrate. Prin NATO și parteneriate tehnologice de ultimă oră precum AUKUS, democrațiile lumii asigură descurajarea colectivă."
+              : "American power is force-multiplied through integrated global coalitions. Through NATO and cutting-edge tech partnerships like AUKUS, the world's democracies secure collective deterrence."}
+          </p>
+        </div>
+        <AlliancesShowcase alliances={alliances} locale={locale} />
+      </Section>
       
       {/* ─── §3.5  SUPREMACY WAVE — MILITARY SHOWCASE ────────────────────────── */}
       <Section
@@ -348,6 +376,25 @@ export default async function MilitaryPage() {
           </h2>
         </div>
         <BranchSelector branches={branches} locale={locale}/>
+      </Section>
+
+      {/* ─── §4.2  SPECIAL OPERATIONS COMMAND (SOCOM) ───────────────────────── */}
+      <Section
+        id="socom"
+        label={locale === 'ro' ? "COMANDAMENTUL PENTRU OPERAȚIUNI SPECIALE (SOCOM)" : "SPECIAL OPERATIONS COMMAND (SOCOM)"}
+      >
+        <div className="text-center mb-24">
+          <h2 className="mil-text-hero mb-12 flex flex-col items-center w-full text-center">
+            <span className="block whitespace-nowrap">{locale === 'ro' ? 'VÂRFUL' : 'THE TIP OF'}</span>
+            <span className="block whitespace-nowrap text-white/20">{locale === 'ro' ? 'SĂGEȚII' : 'THE SPEAR'}</span>
+          </h2>
+          <p className="mil-text-metadata max-w-xl mx-auto leading-relaxed tracking-[0.2em] text-center">
+            {locale === 'ro'
+              ? "Forțele de elită pregătite pentru război neconvențional, misiuni secrete de contraterorism și recunoaștere specială în medii ostile."
+              : "Elite forces trained for unconventional warfare, clandestine counter-terrorism, and special reconnaissance in hostile environments."}
+          </p>
+        </div>
+        <SOCOMGrid units={socomUnits} locale={locale} />
       </Section>
 
       {/* ─── §5  CARRIER MAP CINEMATIC INTERLUDE ────────────────────────────── */}
@@ -479,6 +526,25 @@ export default async function MilitaryPage() {
             ))}
           </div>
         </div>
+      </Section>
+
+      {/* ─── §9.5  THE INTELLIGENCE NETWORK ─────────────────────────────────── */}
+      <Section
+        id="intelligence"
+        label={locale === 'ro' ? "REȚEAUA DE INTELIGENȚĂ · SENZORII PLANETARI" : "THE INTELLIGENCE NETWORK · PLANETARY SENSORS"}
+      >
+        <div className="text-center mb-24">
+          <h2 className="text-7xl font-black tracking-tighter uppercase mb-8">
+            {locale === 'ro' ? 'OCHII ȘI URECHILE' : 'THE EYES AND EARS'}<br/>
+            <span className="text-white/20">{locale === 'ro' ? 'IMPERIULUI INFORMAȚIONAL' : 'OF THE COMMAND STRUCTURE'}</span>
+          </h2>
+          <p className="mil-text-metadata max-w-2xl mx-auto leading-relaxed text-center">
+            {locale === 'ro'
+              ? "Baza decizională a comenzii planetare este alimentată de 18 agenții de informații. De la interceptări de semnale prin satelit la agenți infiltrați pe teren."
+              : "The decision-making basis of planetary command is fed by 18 intelligence agencies. From orbital signal intercepts to clandestine field assets."}
+          </p>
+        </div>
+        <IntelligenceNetworkMap agencies={intelligenceAgencies} locale={locale} />
       </Section>
 
       {/* ─── §10  DARPA / FUTURE SYSTEMS ────────────────────────────────────── */}

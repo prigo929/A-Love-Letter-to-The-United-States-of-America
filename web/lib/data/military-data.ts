@@ -84,6 +84,41 @@ export interface CarrierGroupPosition {
   status: "deployed" | "transit" | "homeport";
 }
 
+export interface SOCOMUnit {
+  id: string;
+  name: string;
+  shortName: string;
+  role: string;
+  tagline: string;
+  accentColor: string;
+  description: string;
+  keyFacts: string[];
+}
+
+export interface IntelligenceAgency {
+  id: string;
+  name: string;
+  shortName: string;
+  specialty: string;
+  role: string;
+  accentColor: string;
+  description: string;
+  stats: { label: string; value: string }[];
+}
+
+export interface AllianceData {
+  id: string;
+  name: string;
+  shortName: string;
+  members: number;
+  founded: number;
+  role: string;
+  accentColor: string;
+  description: string;
+  capabilities: string[];
+  metrics: { label: string; value: string }[];
+}
+
 // ─── Global Stats ─────────────────────────────────────────────────────────────
 
 export const MILITARY_STATS: MilitaryStat[] = [
@@ -377,6 +412,88 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
       { label: "Warheads", value: "Up to 3 × W78/W87 MIRVs" },
       { label: "Alert", value: "24/7 continuous" },
       { label: "Silos", value: "Montana, North Dakota, Wyoming" },
+    ],
+  },
+  {
+    id: "virginia",
+    name: "Virginia Class",
+    designation: "SSN-774+",
+    category: "Fast Attack Submarine",
+    status: "operational",
+    quantity: "22 in service (40+ planned)",
+    speed: "Classified (25+ kts submerged)",
+    range: "Unlimited (nuclear powered)",
+    ceiling: "Classified (800+ ft depth)",
+    stealth: true,
+    nuclear: false,
+    tagline: "The silent shadow of the deep.",
+    accentColor: "#10B981",
+    heroStat: "25+ KNOTS",
+    description: "The primary undersea superiority platform of the US Navy. Designed for stealth, intelligence gathering, and precision land-attack using Tomahawk cruise missiles, the Virginia class represents unmatched acoustic quietness.",
+    significance: "Undersea warfare remains the one domain where the U.S. maintains a massive, uncontested qualitative lead over peer adversaries. These submarines can linger undetected in hostile coastal waters indefinitely.",
+    imageSrc: SITE_IMAGES.ohioSubmarine,
+    imageAlt: "Virginia-class attack submarine underway in the Pacific",
+    specs: [
+      { label: "Propulsion", value: "S9G nuclear reactor" },
+      { label: "Armament", value: "Tomahawk VLS, Mk 48 Torpedoes" },
+      { label: "Displacement", value: "7,900 tons" },
+      { label: "Contractor", value: "General Dynamics Electric Boat / HII" },
+      { label: "Depth", value: "Classified (800+ ft)" },
+      { label: "Acoustics", value: "Anechoic coating & quiet drive" },
+    ],
+  },
+  {
+    id: "aegis",
+    name: "Aegis Combat System",
+    designation: "BMD 6.0+",
+    category: "Missile Defense",
+    status: "operational",
+    quantity: "100+ ships equipped",
+    speed: "Mach 15+ (SM-3 interceptors)",
+    range: "1,500+ miles intercept range",
+    stealth: false,
+    nuclear: false,
+    tagline: "The world's premier naval defense shield.",
+    accentColor: "#3B82F6",
+    heroStat: "100+ SHIPS",
+    description: "An integrated naval weapons system combining advanced SPY radars, command computers, and Standard Missiles (SM-3/SM-6) to track and destroy ballistic and hypersonic missiles in the exoatmosphere.",
+    significance: "Formulates the core shield of the carrier strike groups and allied nations against saturating missile strikes, extending defensive coverage into outer space.",
+    imageSrc: SITE_IMAGES.ticonderogaCruiser,
+    imageAlt: "USS John Finn firing a Standard Missile SM-3 from Aegis launcher",
+    specs: [
+      { label: "Radar Type", value: "AN/SPY-1 / SPY-6 AESA" },
+      { label: "Interceptors", value: "SM-3, SM-6, ESSM" },
+      { label: "Targeting", value: "Multi-mission tracking (100+ targets)" },
+      { label: "Integration", value: "Cooperative Engagement Capability" },
+      { label: "Allies", value: "Japan, Australia, South Korea, Spain" },
+      { label: "Bases", value: "Aegis Ashore (Romania, Poland)" },
+    ],
+  },
+  {
+    id: "mq25",
+    name: "MQ-25 Stingray",
+    designation: "MQ-25A",
+    category: "Autonomous Carrier UAV",
+    status: "development",
+    quantity: "Testing (76 planned)",
+    speed: "High subsonic",
+    range: "500+ mi (combat radius extension)",
+    stealth: true,
+    nuclear: false,
+    tagline: "Unmanned aerial refueling for the future fleet.",
+    accentColor: "#F59E0B",
+    heroStat: "UNMANNED",
+    description: "The world's first operational carrier-based unmanned aircraft, designed to provide aerial refueling for F-35C and F/A-18 strike fighters, drastically extending their operational range and survivability.",
+    significance: "Solves the 'carrier standoff' dilemma by allowing aircraft carriers to stay outside the range of adversary land-based anti-ship missiles while still launching fighter strikes.",
+    imageSrc: SITE_IMAGES.autonomousDrone,
+    imageAlt: "MQ-25 Stingray unmanned tanker refuels a Navy fighter",
+    specs: [
+      { label: "Role", value: "Aerial Refueling & ISR" },
+      { label: "Contractor", value: "Boeing" },
+      { label: "First Flight", value: "2019" },
+      { label: "Fuel Payload", value: "15,000 lbs" },
+      { label: "Control", value: "Semi-autonomous / carrier integrated" },
+      { label: "Status", value: "Initial Operating Capability (IOC) 2026" },
     ],
   },
 ];
@@ -812,6 +929,48 @@ export function getWeaponSystems(locale: Locale): WeaponSystem[] {
           { label: "Silozuri", value: "Montana, North Dakota, Wyoming" },
         ]
       };
+      case "virginia": return {
+        ...w,
+        category: "Submarin de Atac Rapid",
+        description: "Principala platformă de superioritate subacvatică a Marinei SUA. Proiectat pentru invizibilitate, colectare de informații și atacuri de precizie la sol cu rachete Tomahawk.",
+        significance: "Războiul subacvatic rămâne singurul domeniu în care SUA mențin un avantaj calitativ masiv și necontestat în fața adversarilor.",
+        specs: [
+          { label: "Propulsie", value: "Reactor nuclear S9G" },
+          { label: "Armament", value: "Tomahawk VLS, Torpile Mk 48" },
+          { label: "Deplasament", value: "7.900 tone" },
+          { label: "Contractor", value: "General Dynamics Electric Boat / HII" },
+          { label: "Adâncime", value: "Clasificată (800+ ft)" },
+          { label: "Acustică", value: "Înveliș anecoic și propulsie silențioasă" },
+        ]
+      };
+      case "aegis": return {
+        ...w,
+        category: "Apărare Antirachetă",
+        description: "Un sistem integrat de arme navale care combină radare SPY avansate, computere de comandă și rachete Standard (SM-3/SM-6) pentru a urmări și distruge rachete balistice și hipersonice.",
+        significance: "Formează scutul principal al grupurilor de atac de portavioane și al națiunilor aliate împotriva atacurilor cu rachete, extinzând acoperirea defensivă în spațiu.",
+        specs: [
+          { label: "Tip Radar", value: "AN/SPY-1 / SPY-6 AESA" },
+          { label: "Interceptoare", value: "SM-3, SM-6, ESSM" },
+          { label: "Țintire", value: "Urmărire multi-misiune (100+ ținte)" },
+          { label: "Integrare", value: "Capabilitate de Angajare Cooperativă" },
+          { label: "Aliați", value: "Japonia, Australia, Coreea de Sud, Spania" },
+          { label: "Baze", value: "Aegis Ashore (România, Polonia)" },
+        ]
+      };
+      case "mq25": return {
+        ...w,
+        category: "UAV Autonom de Portavion",
+        description: "Prima aeronavă fără pilot de pe un portavion operațională din lume, proiectată să ofere realimentare în aer pentru avioanele de luptă F-35C și F/A-18, extinzându-le raza și supraviețuirea.",
+        significance: "Rezolvă dilema distanțării portavioanelor, permițându-le să rămână în afara razei rachetelor anti-navă inamice lansate de pe uscat, în timp ce lansează lovituri aeriene.",
+        specs: [
+          { label: "Rol", value: "Realimentare în aer și ISR" },
+          { label: "Contractor", value: "Boeing" },
+          { label: "Primul Zbor", value: "2019" },
+          { label: "Capacitate Combustibil", value: "15.000 lbs" },
+          { label: "Control", value: "Semi-autonom / integrat pe portavion" },
+          { label: "Status", value: "Capabilitate Operațională Inițială (IOC) 2026" },
+        ]
+      };
       default: return w;
     }
   });
@@ -887,4 +1046,339 @@ export function getNuclearTriad(locale: Locale) {
       },
     ],
   };
+}
+
+// ─── Special Operations Units ──────────────────────────────────────────────────
+
+export const SOCOM_UNITS: SOCOMUnit[] = [
+  {
+    id: "greenberets",
+    name: "Special Forces (Green Berets)",
+    shortName: "Army SF",
+    role: "Unconventional Warfare",
+    tagline: "De Oppresso Liber — To Free the Oppressed",
+    accentColor: "#10B981",
+    description: "Highly specialized army teams trained for guerrilla warfare, foreign internal defense, and counter-insurgency. They typically operate in small, 12-man teams (ODAs) to train and fight alongside allied local forces.",
+    keyFacts: [
+      "Specialize in language and cultural immersion",
+      "Deploy to 100+ countries annually",
+      "Backbone of foreign military training and assistance"
+    ]
+  },
+  {
+    id: "seals",
+    name: "Navy SEALs",
+    shortName: "Navy SEALs",
+    role: "Direct Action & Reconnaissance",
+    tagline: "The Only Easy Day Was Yesterday",
+    accentColor: "#3B82F6",
+    description: "The Navy's sea, air, and land special warfare teams. Trained for high-risk operations including hostage rescue, counter-terrorism, clandestine insertions, and maritime interdiction.",
+    keyFacts: [
+      "Operate in extreme aquatic, polar, and desert environments",
+      "Includes the ultra-elite DEVGRU (SEAL Team Six)",
+      "Masters of clandestine maritime infiltration via mini-subs"
+    ]
+  },
+  {
+    id: "delta",
+    name: "1st SFOD-D (Delta Force)",
+    shortName: "Delta Force",
+    role: "Hostage Rescue & Counter-Terrorism",
+    tagline: "Sine Pari — Without Equal",
+    accentColor: "#EF4444",
+    description: "The Army's premier Tier 1 special missions unit. Delta Force operates in absolute secrecy, executing national-security level counter-terrorism, high-value target capture, and hostage rescue operations.",
+    keyFacts: [
+      "Directly answerable to the Joint Special Operations Command (JSOC)",
+      "Recruits primarily from Special Forces and the 75th Ranger Regiment",
+      "Equipped with classified weaponry and custom-built tactical gear"
+    ]
+  },
+  {
+    id: "raiders",
+    name: "Marine Raiders",
+    shortName: "MARSOC",
+    role: "Special Reconnaissance",
+    tagline: "Spiritus Invictus — Unconquerable Spirit",
+    accentColor: "#B91C1C",
+    description: "Marine Corps Forces Special Operations Command. Specialized in amphibious special reconnaissance, direct action, and training foreign military partners in contested littoral zones.",
+    keyFacts: [
+      "Direct descendants of the legendary WWII Marine Raiders",
+      "Highly integrated amphibious operations capabilities",
+      "Specialists in coastal and riverine tactical insertions"
+    ]
+  }
+];
+
+export function getSOCOMUnits(locale: Locale): SOCOMUnit[] {
+  if (locale !== "ro") return SOCOM_UNITS;
+  return SOCOM_UNITS.map(u => {
+    switch (u.id) {
+      case "greenberets":
+        return {
+          ...u,
+          name: "Forțele Speciale (Beretele Verzi)",
+          role: "Război Neconvențional",
+          tagline: "De Oppresso Liber — Pentru eliberarea celor oprimați",
+          description: "Echipe ale armatei extrem de specializate, antrenate pentru război de gherilă, apărare internă străină și contrainsurgență. Operează de obicei în echipe mici de 12 oameni (ODA) pentru a antrena și lupta alături de forțele locale aliate.",
+          keyFacts: [
+            "Specializate în imersiune lingvistică și culturală",
+            "Trimiși în peste 100 de țări anual",
+            "Coloana vertebrală a instruirii și asistenței militare străine"
+          ]
+        };
+      case "seals":
+        return {
+          ...u,
+          name: "Navy SEALs",
+          role: "Acțiuni Directe și Recunoaștere",
+          tagline: "Singura zi ușoară a fost ieri",
+          description: "Echipele de război special pe mare, în aer și pe uscat ale Marinei. Antrenate pentru operațiuni cu grad ridicat de risc, inclusiv salvarea de ostatici, combaterea terorismului, infiltrații clandestine și interdicții maritime.",
+          keyFacts: [
+            "Operează în medii acvatice, polare și de deșert extreme",
+            "Include unitatea de elită DEVGRU (SEAL Team Six)",
+            "Maeștri ai infiltrării maritime clandestine prin mini-submarine"
+          ]
+        };
+      case "delta":
+        return {
+          ...u,
+          name: "Forța Delta (Delta Force)",
+          role: "Salvare de Ostatici și Contra-Terorism",
+          tagline: "Sine Pari — Fără Egal",
+          description: "Principala unitate de misiuni speciale de Nivel 1 (Tier 1) a Armatei. Delta Force operează în secret absolut, executând contra-terorism la nivel de securitate națională, capturarea de ținte de mare valoare și operațiuni de salvare a ostaticilor.",
+          keyFacts: [
+            "Răspunde direct în fața Comandamentului Comun pentru Operațiuni Speciale (JSOC)",
+            "Recrutează în principal din Forțele Speciale și Regimentul 75 Rangers",
+            "Echipată cu armament clasificat și echipamente tactice personalizate"
+          ]
+        };
+      case "raiders":
+        return {
+          ...u,
+          name: "Pușcașii Marini Raiders",
+          role: "Recunoaștere Specială",
+          tagline: "Spiritus Invictus — Spirit de Neînvins",
+          description: "Comandamentul de Operațiuni Speciale al Corpului de Pușcași Marini. Specializat în recunoaștere specială amfibie, acțiuni directe și instruirea partenerilor militari străini în zone litorale contestate.",
+          keyFacts: [
+            "Descendenți direcți ai legendarilor Marine Raiders din al Doilea Război Mondial",
+            "Capabilități integrate de operațiuni amfibii",
+            "Specialiști în infiltrații tactice de coastă și riverane"
+          ]
+        };
+      default:
+        return u;
+    }
+  });
+}
+
+// ─── Intelligence Agencies ─────────────────────────────────────────────────────
+
+export const INTELLIGENCE_AGENCIES: IntelligenceAgency[] = [
+  {
+    id: "cia",
+    name: "Central Intelligence Agency",
+    shortName: "CIA",
+    specialty: "HUMINT (Human Intelligence)",
+    role: "Covert Action & Global Espionage",
+    accentColor: "#F59E0B",
+    description: "The primary agency for collecting foreign human intelligence (HUMINT) and conducting covert paramilitary operations at the direction of the President.",
+    stats: [
+      { label: "Focus", value: "Foreign Intel Only" },
+      { label: "Method", value: "Clandestine Networks" },
+      { label: "Command", value: "Director of National Intel" }
+    ]
+  },
+  {
+    id: "nsa",
+    name: "National Security Agency",
+    shortName: "NSA",
+    specialty: "SIGINT (Signals Intelligence)",
+    role: "Global Cryptology & Cybersecurity",
+    accentColor: "#10B981",
+    description: "The world's leading cryptologic and signals intelligence organization, monitoring, collecting, and decoding global communication data to protect U.S. and allied interests.",
+    stats: [
+      { label: "Focus", value: "Signals & Cryptology" },
+      { label: "Supercomputers", value: "Fort Meade Cryptology" },
+      { label: "Joint Command", value: "Co-located with Cyber Command" }
+    ]
+  },
+  {
+    id: "dia",
+    name: "Defense Intelligence Agency",
+    shortName: "DIA",
+    specialty: "Military Intelligence",
+    role: "Foreign Military Assessment",
+    accentColor: "#3B82F6",
+    description: "Fuses military intelligence from all branches to assess foreign military capabilities, doctrines, and logistics, directly supporting JCS combat commanders.",
+    stats: [
+      { label: "Focus", value: "Foreign Armies" },
+      { label: "Deployment", value: "Integrated with Combatants" },
+      { label: "Nerve Center", value: "Pentagon Integrated" }
+    ]
+  },
+  {
+    id: "nro",
+    name: "National Reconnaissance Office",
+    shortName: "NRO",
+    specialty: "IMINT / Satellite Recon",
+    role: "Space-Based Surveillance",
+    accentColor: "#6366F1",
+    description: "Designs, builds, and operates America's classified spy satellite fleet, providing high-resolution imagery and electronic eavesdropping from orbit.",
+    stats: [
+      { label: "Focus", value: "Orbital Reconnaissance" },
+      { label: "Assets", value: "Classified spy satellites" },
+      { label: "Data Flow", value: "Feeds CIA, DIA, and NSA" }
+    ]
+  }
+];
+
+export function getIntelligenceAgencies(locale: Locale): IntelligenceAgency[] {
+  if (locale !== "ro") return INTELLIGENCE_AGENCIES;
+  return INTELLIGENCE_AGENCIES.map(a => {
+    switch (a.id) {
+      case "cia":
+        return {
+          ...a,
+          name: "Agenția Centrală de Informații",
+          specialty: "HUMINT (Informații Umane)",
+          role: "Acțiuni Coverte și Espionaj Global",
+          description: "Agenția principală pentru colectarea de informații umane externe (HUMINT) și desfășurarea de operațiuni paramilitare secrete la directiva Președintelui.",
+          stats: [
+            { label: "Focus", value: "Doar informații externe" },
+            { label: "Metodă", value: "Rețele clandestine" },
+            { label: "Comandă", value: "Directorul National Intel" }
+          ]
+        };
+      case "nsa":
+        return {
+          ...a,
+          name: "Agenția de Securitate Națională",
+          specialty: "SIGINT (Informații din Semnale)",
+          role: "Criptologie Globală și Securitate Cibernetică",
+          description: "Cea mai mare organizație de criptologie și informații din semnale din lume, monitorizând, colectând și decodificând date de comunicații globale pentru a proteja interesele SUA și ale aliaților.",
+          stats: [
+            { label: "Focus", value: "Semnale și Criptologie" },
+            { label: "Supercomputere", value: "Criptologia Fort Meade" },
+            { label: "Comandă Comună", value: "Co-locat cu Cyber Command" }
+          ]
+        };
+      case "dia":
+        return {
+          ...a,
+          name: "Agenția de Informații a Apărării",
+          specialty: "Informații Militare",
+          role: "Evaluarea Armatelor Străine",
+          description: "Fuzionează informațiile militare din toate ramurile pentru a evalua capabilitățile, doctrinele și logistica armatelor străine, sprijinind direct comandanții militari.",
+          stats: [
+            { label: "Focus", value: "Armate Străine" },
+            { label: "Desfășurare", value: "Integrat cu Forțele" },
+            { label: "Centru", value: "Integrat în Pentagon" }
+          ]
+        };
+      case "nro":
+        return {
+          ...a,
+          name: "Biroul Național de Recunoaștere",
+          specialty: "IMINT / Recunoaștere prin Satelit",
+          role: "Supraveghere bazată pe Spațiu",
+          description: "Proiectează, construiește și operează flota de sateliți spion clasificați ai Americii, oferind imagini de înaltă rezoluție și interceptări electronice de pe orbită.",
+          stats: [
+            { label: "Focus", value: "Recunoaștere Orbitală" },
+            { label: "Active", value: "Sateliți spion clasificați" },
+            { label: "Flux de date", value: "Alimentează CIA, DIA și NSA" }
+          ]
+        };
+      default:
+        return a;
+    }
+  });
+}
+
+// ─── Global Alliances ──────────────────────────────────────────────────────────
+
+export const ALLIANCES_DATA: AllianceData[] = [
+  {
+    id: "nato",
+    name: "North Atlantic Treaty Organization",
+    shortName: "NATO",
+    members: 32,
+    founded: 1949,
+    role: "Collective Euro-Atlantic Defense",
+    accentColor: "#3B82F6",
+    description: "The most successful military alliance in human history. Under Article 5, an attack on one is an attack on all. NATO provides the ironclad security umbrella that deters aggression across the European continent.",
+    capabilities: [
+      "Combined active forces of 3.4 million personnel",
+      "Shared command-and-control and airspace defense systems",
+      "Nuclear sharing programs (Belgium, Germany, Italy, Netherlands, Turkey)"
+    ],
+    metrics: [
+      { label: "Allied GDP Share", value: "50% of Global GDP" },
+      { label: "Total Budget", value: "$1.3 Trillion combined" },
+      { label: "Air Patrols", value: "24/7 Baltic & Black Sea" }
+    ]
+  },
+  {
+    id: "aukus",
+    name: "AUKUS Alliance",
+    shortName: "AUKUS",
+    members: 3,
+    founded: 2021,
+    role: "Indo-Pacific Technology Coalition",
+    accentColor: "#0D9488",
+    description: "A trilateral security partnership between Australia, the United Kingdom, and the United States, focused on delivering conventionally armed, nuclear-powered submarines to Australia and co-developing advanced quantum, AI, and hypersonic technologies.",
+    capabilities: [
+      "Trilateral undersea warfare integration",
+      "Shared quantum computing and cryptography R&D",
+      "Hypersonic weapon and counter-hypersonic development"
+    ],
+    metrics: [
+      { label: "Focus", value: "Indo-Pacific Deterrence" },
+      { label: "SSN Deliveries", value: "Virginia-class to Australia" },
+      { label: "Pillar II Focus", value: "AI & Quantum Superiority" }
+    ]
+  }
+];
+
+export function getAlliancesData(locale: Locale): AllianceData[] {
+  if (locale !== "ro") return ALLIANCES_DATA;
+  return ALLIANCES_DATA.map(a => {
+    switch (a.id) {
+      case "nato":
+        return {
+          ...a,
+          name: "Organizația Tratatului Atlanticului de Nord",
+          role: "Apărare Colectivă Euro-Atlantică",
+          description: "Cea mai de succes alianță militară din istoria omenirii. Conform Articolului 5, un atac împotriva unuia este un atac împotriva tuturor. NATO oferă umbrela de securitate de fier care descurajează agresiunea pe continentul european.",
+          capabilities: [
+            "Forțe active combinate de 3,4 milioane de oameni",
+            "Sisteme comune de comandă-control și apărare a spațiului aerian",
+            "Programe de partajare nucleară (Belgia, Germania, Italia, Olanda, Turcia)"
+          ],
+          metrics: [
+            { label: "Cotă PIB Aliat", value: "50% din PIB-ul Global" },
+            { label: "Buget Total", value: "1.3 Trilioane $ combinat" },
+            { label: "Patrule Aeriene", value: "24/7 Marea Baltică și Neagră" }
+          ]
+        };
+      case "aukus":
+        return {
+          ...a,
+          name: "Alianța AUKUS",
+          role: "Coaliție Tehnologică Indo-Pacifică",
+          description: "Un parteneriat de securitate trilateral între Australia, Marea Britanie și Statele Unite, axat pe furnizarea de submarine cu propulsie nucleară și armament convențional către Australia și dezvoltarea comună de tehnologii avansate de cuantică, AI și hipersonice.",
+          capabilities: [
+            "Integrare trilaterală a războiului submarin",
+            "Cercetare comună în calcul cuantic și criptografie",
+            "Dezvoltare de arme hipersonice și contra-hipersonice"
+          ],
+          metrics: [
+            { label: "Focus", value: "Descurajare Indo-Pacifică" },
+            { label: "Livrări SSN", value: "Clasa Virginia către Australia" },
+            { label: "Focus Pilonul II", value: "Superioritate AI și Cuantică" }
+          ]
+        };
+      default:
+        return a;
+    }
+  });
 }

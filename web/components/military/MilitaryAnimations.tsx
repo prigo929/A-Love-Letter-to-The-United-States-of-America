@@ -14,7 +14,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
-import type { WeaponSystem, MilitaryBranch, DARPAProgram, MilitaryStat, CarrierGroupPosition } from "@/lib/data/military-data";
+import type { WeaponSystem, MilitaryBranch, DARPAProgram, MilitaryStat, CarrierGroupPosition, SOCOMUnit, IntelligenceAgency, AllianceData } from "@/lib/data/military-data";
 import { BUDGET_DATA as SHARED_BUDGET_DATA } from "@/lib/data/military-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import type { Locale } from "@/lib/i18n/config";
@@ -1195,6 +1195,303 @@ export function ParticleCanvas() {
           }}
         />
       ))}
+    </div>
+  );
+}
+
+// ─── Global Alliances Showcase Component ──────────────────────────────────────
+
+export function AlliancesShowcase({ alliances, locale = "en" }: { alliances: AllianceData[]; locale?: Locale }) {
+  const isRo = locale === "ro";
+  
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
+      {alliances.map((alliance, index) => (
+        <motion.div
+          key={alliance.id}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 1, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="mil-glass p-8 md:p-12 relative flex flex-col h-full overflow-hidden"
+        >
+          {/* Subtle background glow */}
+          <div 
+            className="absolute -top-12 -right-12 w-48 h-48 rounded-full blur-3xl opacity-15 pointer-events-none" 
+            style={{ backgroundColor: alliance.accentColor }} 
+          />
+
+          <div className="relative z-10 flex flex-col h-full">
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                <span className="mil-text-metadata text-[10px] tracking-[0.3em] font-black" style={{ color: alliance.accentColor }}>
+                  {isRo ? "ALIANȚĂ STRATEGICĂ" : "STRATEGIC ALLIANCE"}
+                </span>
+                <h3 className="text-3xl font-black tracking-tighter uppercase mt-2">{alliance.name}</h3>
+              </div>
+              <span className="text-4xl font-extrabold opacity-15 font-mono">{alliance.shortName}</span>
+            </div>
+
+            <div className="h-px w-full bg-white/5 mb-6" />
+
+            <p className="text-sm text-white/70 leading-relaxed mb-8">{alliance.description}</p>
+
+            <div className="grid grid-cols-3 gap-3 mb-8">
+              {alliance.metrics.map((metric, idx) => (
+                <div key={idx} className="bg-white/3 border border-white/5 p-4 flex flex-col justify-between">
+                  <span className="mil-text-metadata text-[8px] tracking-[0.2em] opacity-40 mb-1">{metric.label}</span>
+                  <span className="text-xs md:text-sm font-bold tracking-tight text-white/90">{metric.value}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-auto space-y-3">
+              <h4 className="mil-text-metadata text-[10px] tracking-[0.2em] font-black opacity-80">
+                {isRo ? "CAPABILITĂȚI INTEGRATE" : "INTEGRATED CAPABILITIES"}
+              </h4>
+              <div className="space-y-2">
+                {alliance.capabilities.map((cap, idx) => (
+                  <div key={idx} className="flex gap-3 border-l pl-4 py-1" style={{ borderColor: alliance.accentColor + "40" }}>
+                    <p className="text-xs text-white/55 leading-relaxed">{cap}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+// ─── Special Operations Grid Component ────────────────────────────────────────
+
+export function SOCOMGrid({ units, locale = "en" }: { units: SOCOMUnit[]; locale?: Locale }) {
+  const isRo = locale === "ro";
+  
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+      {units.map((unit, index) => (
+        <motion.div
+          key={unit.id}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-5%" }}
+          transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="group relative bg-[#050505] border border-white/5 hover:border-white/10 p-8 md:p-10 transition-colors duration-500 overflow-hidden"
+        >
+          {/* Accent-colored corner indicator */}
+          <div 
+            className="absolute top-0 right-0 w-16 h-16 pointer-events-none opacity-20"
+            style={{
+              background: `linear-gradient(225deg, ${unit.accentColor} 0%, transparent 60%)`
+            }}
+          />
+
+          <div>
+            <div className="flex justify-between items-baseline mb-4">
+              <span className="mil-text-metadata text-[10px] tracking-[0.25em] font-black" style={{ color: unit.accentColor }}>
+                {unit.role}
+              </span>
+              <span className="mil-text-metadata text-[9px] opacity-40 font-mono">[{unit.shortName}]</span>
+            </div>
+
+            <h3 className="text-2xl font-black uppercase tracking-tight text-white mb-2 group-hover:text-white/90 transition-colors">
+              {unit.name}
+            </h3>
+
+            <p className="mil-text-metadata text-xs opacity-60 italic tracking-wide mb-6">
+              &ldquo;{unit.tagline}&rdquo;
+            </p>
+
+            <p className="text-sm leading-relaxed text-white/60 mb-8">
+              {unit.description}
+            </p>
+
+            <div className="space-y-3 border-t border-white/5 pt-6">
+              <h4 className="mil-text-metadata text-[10px] tracking-[0.2em] font-black opacity-80">
+                {isRo ? "PROFIL OPERAȚIONAL" : "OPERATIONAL PROFILE"}
+              </h4>
+              <ul className="space-y-2">
+                {unit.keyFacts.map((fact, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: unit.accentColor }} />
+                    <span className="text-xs text-white/50 leading-normal">{fact}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+// ─── Intelligence Network Map Component ───────────────────────────────────────
+
+export function IntelligenceNetworkMap({ agencies, locale = "en" }: { agencies: IntelligenceAgency[]; locale?: Locale }) {
+  const [active, setActive] = useState("cia");
+  const current = agencies.find(a => a.id === active) || agencies[0];
+  const isRo = locale === "ro";
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12 w-full items-stretch">
+      {/* Interactive Map Visual Area */}
+      <div className="relative min-h-[400px] md:min-h-[480px] bg-[#050505] border border-white/5 flex flex-col justify-between p-8 overflow-hidden">
+        {/* Dot canvas bg */}
+        <div className="absolute inset-0 mil-dot-canvas opacity-20 pointer-events-none" />
+
+        {/* HUD borders */}
+        <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/10" />
+        <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/10" />
+        <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-white/10" />
+        <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/10" />
+
+        {/* Top Header metadata */}
+        <div className="relative z-10 flex justify-between items-center text-[10px] mil-text-metadata opacity-40">
+          <span>STATUS: SECURE // PERSISTENT FEED</span>
+          <span>ORBITAL_LATENCY: 0.08ms</span>
+        </div>
+
+        {/* The Connection Lines SVG */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none">
+          <defs>
+            <linearGradient id="line-glow" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="rgba(255,255,255,0.02)" />
+              <stop offset="50%" stopColor="rgba(255,255,255,0.12)" />
+              <stop offset="100%" stopColor="rgba(255,255,255,0.02)" />
+            </linearGradient>
+          </defs>
+          {/* Lines connecting outer nodes to Central Node (cx: 50%, cy: 75%) */}
+          <line x1="15%" y1="30%" x2="50%" y2="75%" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" />
+          <line x1="38%" y1="25%" x2="50%" y2="75%" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" />
+          <line x1="62%" y1="25%" x2="50%" y2="75%" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" />
+          <line x1="85%" y1="30%" x2="50%" y2="75%" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" />
+
+          {/* Animated pulses along lines */}
+          <circle cx="50%" cy="75%" r="3" fill="#ffffff" className="animate-ping" style={{ animationDuration: "3s" }} />
+        </svg>
+
+        {/* Nodes Placement */}
+        <div className="relative z-10 w-full grow flex items-center justify-center min-h-[300px]">
+          {/* CIA */}
+          <button 
+            onClick={() => setActive("cia")}
+            className="absolute focus:outline-none"
+            style={{ left: "15%", top: "30%", transform: "translate(-50%, -50%)" }}
+          >
+            <div className={cn(
+              "px-4 py-2 border transition-all duration-300 flex flex-col items-center",
+              active === "cia" ? "bg-white text-black border-white" : "bg-black text-white/50 border-white/10 hover:border-white/30"
+            )}>
+              <span className="font-mono text-xs font-bold">CIA</span>
+              <span className="text-[7px] tracking-widest font-mono opacity-60">HUMINT</span>
+            </div>
+          </button>
+
+          {/* NSA */}
+          <button 
+            onClick={() => setActive("nsa")}
+            className="absolute focus:outline-none"
+            style={{ left: "38%", top: "25%", transform: "translate(-50%, -50%)" }}
+          >
+            <div className={cn(
+              "px-4 py-2 border transition-all duration-300 flex flex-col items-center",
+              active === "nsa" ? "bg-white text-black border-white" : "bg-black text-white/50 border-white/10 hover:border-white/30"
+            )}>
+              <span className="font-mono text-xs font-bold">NSA</span>
+              <span className="text-[7px] tracking-widest font-mono opacity-60">SIGINT</span>
+            </div>
+          </button>
+
+          {/* DIA */}
+          <button 
+            onClick={() => setActive("dia")}
+            className="absolute focus:outline-none"
+            style={{ left: "62%", top: "25%", transform: "translate(-50%, -50%)" }}
+          >
+            <div className={cn(
+              "px-4 py-2 border transition-all duration-300 flex flex-col items-center",
+              active === "dia" ? "bg-white text-black border-white" : "bg-black text-white/50 border-white/10 hover:border-white/30"
+            )}>
+              <span className="font-mono text-xs font-bold">DIA</span>
+              <span className="text-[7px] tracking-widest font-mono opacity-60">MILITARY</span>
+            </div>
+          </button>
+
+          {/* NRO */}
+          <button 
+            onClick={() => setActive("nro")}
+            className="absolute focus:outline-none"
+            style={{ left: "85%", top: "30%", transform: "translate(-50%, -50%)" }}
+          >
+            <div className={cn(
+              "px-4 py-2 border transition-all duration-300 flex flex-col items-center",
+              active === "nro" ? "bg-white text-black border-white" : "bg-black text-white/50 border-white/10 hover:border-white/30"
+            )}>
+              <span className="font-mono text-xs font-bold">NRO</span>
+              <span className="text-[7px] tracking-widest font-mono opacity-60">IMINT</span>
+            </div>
+          </button>
+
+          {/* Central Command Hub Node */}
+          <div 
+            className="absolute flex flex-col items-center justify-center p-5 border border-dashed border-white/20 bg-black"
+            style={{ left: "50%", top: "75%", transform: "translate(-50%, -50%)" }}
+          >
+            <div className="h-2 w-2 rounded-full bg-white mb-2 animate-pulse" />
+            <span className="font-mono text-[10px] font-black tracking-[0.25em] text-white">COMMAND HUB</span>
+            <span className="text-[7px] font-mono opacity-40 uppercase tracking-widest">{isRo ? "Integrare Date" : "Data Integration"}</span>
+          </div>
+        </div>
+
+        {/* Bottom classification banner */}
+        <div className="relative z-10 flex justify-between items-center text-[8px] mil-text-metadata opacity-20">
+          <span>CLASSIFICATION: SECRET // NOFORN</span>
+          <span>PLANETARY_CMD_v3.2</span>
+        </div>
+      </div>
+
+      {/* Details Panel */}
+      <div className="mil-glass p-8 md:p-10 flex flex-col justify-between">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="flex flex-col h-full justify-between"
+          >
+            <div>
+              <div className="flex items-center gap-2.5 mb-4">
+                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: current.accentColor }} />
+                <span className="mil-text-metadata text-[10px] tracking-[0.3em] font-black">{current.specialty}</span>
+              </div>
+
+              <h3 className="text-3xl font-black tracking-tighter uppercase mb-2">{current.name}</h3>
+              <p className="mil-text-metadata text-xs font-bold opacity-60 tracking-wider mb-6">{current.role}</p>
+
+              <p className="text-sm leading-relaxed text-white/60 mb-8">{current.description}</p>
+            </div>
+
+            <div className="space-y-4 border-t border-white/5 pt-6">
+              <h4 className="mil-text-metadata text-[9px] tracking-[0.25em] opacity-40 font-black">
+                {isRo ? "METRICI SPECIFICE" : "KEY FOCUS AREAS"}
+              </h4>
+              <div className="grid grid-cols-1 gap-3">
+                {current.stats.map((s, idx) => (
+                  <div key={idx} className="flex justify-between items-center py-2 border-b border-white/5">
+                    <span className="mil-text-metadata text-[8px] tracking-widest text-white/30">{s.label}</span>
+                    <span className="text-xs font-semibold text-white/80">{s.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
   );
 }
