@@ -235,7 +235,48 @@ export function MilStyles() {
         transition: border-color 0.25s ease, background-color 0.25s ease;
       }
 
+      /* ── Overhaul Animations ── */
+      @keyframes mil-radar-sweep {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .mil-radar-sweep {
+        animation: mil-radar-sweep 12s linear infinite;
+      }
 
+      @keyframes mil-scanline {
+        0% { top: 0%; }
+        50% { top: 100%; }
+        100% { top: 0%; }
+      }
+      .mil-scanline {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15) 50%, transparent);
+        animation: mil-scanline 6s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      @keyframes mil-dash-flow {
+        to {
+          stroke-dashoffset: -20;
+        }
+      }
+      .mil-signal-flow {
+        stroke-dasharray: 5 5;
+        animation: mil-dash-flow 1.2s linear infinite;
+      }
+
+      @keyframes mil-matrix-fade {
+        0%, 100% { opacity: 0.15; }
+        50% { opacity: 0.4; }
+      }
+      .mil-matrix-cell {
+        animation: mil-matrix-fade 2s ease-in-out infinite;
+      }
     `}</style>
   );
 }
@@ -1332,129 +1373,297 @@ export function SOCOMGrid({ units, locale = "en" }: { units: SOCOMUnit[]; locale
 
 export function IntelligenceNetworkMap({ agencies, locale = "en" }: { agencies: IntelligenceAgency[]; locale?: Locale }) {
   const [active, setActive] = useState("cia");
+  const [mode, setMode] = useState<"ALL" | "SIGINT" | "HUMINT" | "MILITARY">("ALL");
   const current = agencies.find(a => a.id === active) || agencies[0];
   const isRo = locale === "ro";
+
+  // Decrypt/scramble text effect on name change
+  const [displayText, setDisplayText] = useState(current.name);
+  useEffect(() => {
+    let iteration = 0;
+    const target = current.name;
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
+    const interval = setInterval(() => {
+      setDisplayText(prev => 
+        target.split("").map((char, index) => {
+          if (index < iteration) return target[index];
+          if (char === " ") return " ";
+          return chars[Math.floor(Math.random() * chars.length)];
+        }).join("")
+      );
+      iteration += 1/3;
+      if (iteration >= target.length) {
+        clearInterval(interval);
+        setDisplayText(target);
+      }
+    }, 25);
+    return () => clearInterval(interval);
+  }, [current.name]);
+
+  // Telemetry logs feed
+  const [logs, setLogs] = useState<string[]>([
+    "SYS_INIT // SECURE_SOCKETS_ESTABLISHED",
+    "SIG_RECV // SAT_LINK_NRO_SYNCED",
+    "DATA_FLOW // PARSING_GEOINT_OVERLAYS"
+  ]);
+
+  useEffect(() => {
+    const rawLogs = [
+      "NSA_SIGINT // STREAM_OK // PORT_2245",
+      "NRO_GEO_ORBIT // APOGEE_SYNCED // 120W",
+      "CIA_HUMINT // EXT_ASSET_STATUS_OK",
+      "DIA_MIL_INT // DATA_BATCH_VERIFIED",
+      "CRITICAL // SECURE_SOCKETS_SECURE",
+      "TELEMETRY // LATENCY_FACTOR_0.02ms",
+      "CYBER_COMMAND // BLOCKING_ATTEMPTS",
+      "ISR_GRID // REFRESHING_TARGET_COMPLEX"
+    ];
+    const timer = setInterval(() => {
+      setLogs(prev => {
+        const nextLog = rawLogs[Math.floor(Math.random() * rawLogs.length)];
+        return [...prev.slice(1), nextLog];
+      });
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Filter coordinates and properties based on active mode
+  const modeAgencies = {
+    ALL: ["cia", "nsa", "dia", "nro"],
+    SIGINT: ["nsa", "nro"],
+    HUMINT: ["cia"],
+    MILITARY: ["dia"]
+  };
+
+  const isHighlighted = (id: string) => {
+    return modeAgencies[mode].includes(id);
+  };
+
+  // Node position coordinates
+  const nodePositions = {
+    cia: { cx: "15%", cy: "30%" },
+    nsa: { cx: "38%", cy: "25%" },
+    dia: { cx: "62%", cy: "25%" },
+    nro: { cx: "85%", cy: "30%" }
+  };
+
+  const activeCoord = nodePositions[active as keyof typeof nodePositions] || nodePositions.cia;
+
+  // Custom status metrics for visual realism
+  const systemStatuses = {
+    cia: [
+      { label: "FEED_INTEGRITY", value: "98.4%" },
+      { label: "ORBITAL_COVERAGE", value: "72.1% (LOW_ALT)" },
+      { label: "DATA_CRYPT_MODE", value: "AES-256-GCM" }
+    ],
+    nsa: [
+      { label: "FEED_INTEGRITY", value: "99.98%" },
+      { label: "ORBITAL_COVERAGE", value: "100.0% (HIGH_ALT)" },
+      { label: "DATA_CRYPT_MODE", value: "POST_QUANTUM_CRY" }
+    ],
+    dia: [
+      { label: "FEED_INTEGRITY", value: "99.1%" },
+      { label: "ORBITAL_COVERAGE", value: "85.6% (TACTICAL)" },
+      { label: "DATA_CRYPT_MODE", value: "FIPS-140-3" }
+    ],
+    nro: [
+      { label: "FEED_INTEGRITY", value: "100.0%" },
+      { label: "ORBITAL_COVERAGE", value: "100.0% (CONSTELLATION)" },
+      { label: "DATA_CRYPT_MODE", value: "HARDWARE_ENCRYPT" }
+    ]
+  };
+
+  const activeStatus = systemStatuses[active as keyof typeof systemStatuses] || systemStatuses.cia;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12 w-full items-stretch">
       {/* Interactive Map Visual Area */}
-      <div className="relative min-h-[400px] md:min-h-[480px] bg-[#050505] border border-white/5 flex flex-col justify-between p-8 overflow-hidden">
+      <div className="relative min-h-[440px] md:min-h-[520px] bg-[#050505] border border-white/5 flex flex-col justify-between p-8 overflow-hidden">
+        {/* Coordinate tactical grid background overlay */}
+        <div className="absolute inset-0 grid grid-cols-6 grid-rows-6 opacity-[0.03] pointer-events-none border border-white/5">
+          {[...Array(36)].map((_, i) => (
+            <div key={i} className="border-r border-b border-white/20 flex items-start p-1">
+              <span className="font-mono text-[6px]">{(i * 12.4).toFixed(1)}°N</span>
+            </div>
+          ))}
+        </div>
+        
+        {/* Concentric Radar sweep HUD circles */}
+        <div className="absolute inset-0 pointer-events-none opacity-20 flex items-center justify-center">
+          <svg className="w-full h-full absolute inset-0">
+            <circle cx="50%" cy="75%" r="15%" stroke="rgba(255,255,255,0.06)" fill="none" strokeWidth="1" />
+            <circle cx="50%" cy="75%" r="30%" stroke="rgba(255,255,255,0.04)" fill="none" strokeWidth="1" strokeDasharray="3 6" />
+            <circle cx="50%" cy="75%" r="45%" stroke="rgba(255,255,255,0.02)" fill="none" strokeWidth="1" />
+          </svg>
+        </div>
+
         {/* Dot canvas bg */}
-        <div className="absolute inset-0 mil-dot-canvas opacity-20 pointer-events-none" />
+        <div className="absolute inset-0 mil-dot-canvas opacity-10 pointer-events-none" />
 
         {/* HUD borders */}
-        <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/10" />
-        <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/10" />
-        <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-white/10" />
-        <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/10" />
+        <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/15" />
+        <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/15" />
+        <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-white/15" />
+        <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/15" />
 
         {/* Top Header metadata */}
-        <div className="relative z-10 flex justify-between items-center text-[10px] mil-text-metadata opacity-40">
-          <span>STATUS: SECURE // PERSISTENT FEED</span>
-          <span>ORBITAL_LATENCY: 0.08ms</span>
+        <div className="relative z-10 flex flex-wrap justify-between items-center text-[9px] mil-text-metadata opacity-40 gap-4">
+          <span>STATUS: ACTIVE FEED // SECURE_TUNNEL_TCP_78</span>
+          <span>LATENCY: 0.08ms // SENSORS_ONLINE</span>
+        </div>
+
+        {/* Tactical Mode Filters */}
+        <div className="relative z-20 flex justify-center gap-2 mt-4">
+          {(["ALL", "SIGINT", "HUMINT", "MILITARY"] as const).map((m) => (
+            <button
+              key={m}
+              onClick={() => {
+                setMode(m);
+                // Auto-select a node that matches the current filter mode if active doesn't match
+                const allowed = modeAgencies[m];
+                if (!allowed.includes(active)) {
+                  setActive(allowed[0]);
+                }
+              }}
+              className={cn(
+                "px-3 py-1 font-mono text-[9px] font-bold border transition-all duration-300",
+                mode === m
+                  ? "bg-white text-black border-white"
+                  : "bg-black text-white/40 border-white/10 hover:text-white/70 hover:border-white/30"
+              )}
+            >
+              {m}
+            </button>
+          ))}
         </div>
 
         {/* The Connection Lines SVG */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none">
-          <defs>
-            <linearGradient id="line-glow" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="rgba(255,255,255,0.02)" />
-              <stop offset="50%" stopColor="rgba(255,255,255,0.12)" />
-              <stop offset="100%" stopColor="rgba(255,255,255,0.02)" />
-            </linearGradient>
-          </defs>
-          {/* Lines connecting outer nodes to Central Node (cx: 50%, cy: 75%) */}
-          <line x1="15%" y1="30%" x2="50%" y2="75%" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" />
-          <line x1="38%" y1="25%" x2="50%" y2="75%" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" />
-          <line x1="62%" y1="25%" x2="50%" y2="75%" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" />
-          <line x1="85%" y1="30%" x2="50%" y2="75%" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" />
+          {/* Radar rotating arm sweep line */}
+          <line
+            x1="50%"
+            y1="75%"
+            x2="50%"
+            y2="10%"
+            stroke="rgba(255,255,255,0.06)"
+            strokeWidth="1.5"
+            className="mil-radar-sweep"
+            style={{ transformOrigin: "50% 75%" }}
+          />
 
-          {/* Animated pulses along lines */}
-          <circle cx="50%" cy="75%" r="3" fill="#ffffff" className="animate-ping" style={{ animationDuration: "3s" }} />
+          {/* Connection lines from nodes to Central Command Hub (cx: 50%, cy: 75%) */}
+          {Object.entries(nodePositions).map(([id, pos]) => {
+            const highlighted = isHighlighted(id);
+            const activePath = active === id;
+            return (
+              <line
+                key={id}
+                x1={pos.cx}
+                y1={pos.cy}
+                x2="50%"
+                y2="75%"
+                stroke={activePath ? "rgba(255,255,255,0.25)" : highlighted ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.02)"}
+                strokeWidth={activePath ? "2" : "1"}
+                className={cn(highlighted && "mil-signal-flow")}
+                style={{ transition: "stroke 0.3s ease, stroke-width 0.3s ease" }}
+              />
+            );
+          })}
+
+          {/* Glowing Animated Packet pulse along active path */}
+          <motion.circle
+            key={active}
+            cx={activeCoord.cx}
+            cy={activeCoord.cy}
+            r="3.5"
+            fill="#ffffff"
+            style={{ filter: "drop-shadow(0 0 5px rgba(255,255,255,0.8))" }}
+            animate={{
+              cx: [activeCoord.cx, "50%"],
+              cy: [activeCoord.cy, "75%"]
+            }}
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
         </svg>
 
         {/* Nodes Placement */}
         <div className="relative z-10 w-full grow flex items-center justify-center min-h-[300px]">
-          {/* CIA */}
-          <button 
-            onClick={() => setActive("cia")}
-            className="absolute focus:outline-none"
-            style={{ left: "15%", top: "30%", transform: "translate(-50%, -50%)" }}
-          >
-            <div className={cn(
-              "px-4 py-2 border transition-all duration-300 flex flex-col items-center",
-              active === "cia" ? "bg-white text-black border-white" : "bg-black text-white/50 border-white/10 hover:border-white/30"
-            )}>
-              <span className="font-mono text-xs font-bold">CIA</span>
-              <span className="text-[7px] tracking-widest font-mono opacity-60">HUMINT</span>
-            </div>
-          </button>
+          {agencies.map((agency) => {
+            const pos = nodePositions[agency.id as keyof typeof nodePositions] || nodePositions.cia;
+            const highlighted = isHighlighted(agency.id);
+            const activeNode = active === agency.id;
 
-          {/* NSA */}
-          <button 
-            onClick={() => setActive("nsa")}
-            className="absolute focus:outline-none"
-            style={{ left: "38%", top: "25%", transform: "translate(-50%, -50%)" }}
-          >
-            <div className={cn(
-              "px-4 py-2 border transition-all duration-300 flex flex-col items-center",
-              active === "nsa" ? "bg-white text-black border-white" : "bg-black text-white/50 border-white/10 hover:border-white/30"
-            )}>
-              <span className="font-mono text-xs font-bold">NSA</span>
-              <span className="text-[7px] tracking-widest font-mono opacity-60">SIGINT</span>
-            </div>
-          </button>
+            return (
+              <div
+                key={agency.id}
+                className="absolute"
+                style={{ left: pos.cx, top: pos.cy, transform: "translate(-50%, -50%)" }}
+              >
+                {/* HUD crop targets around active node */}
+                {activeNode && (
+                  <div className="absolute -inset-3.5 pointer-events-none z-0">
+                    <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-white animate-pulse" />
+                    <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-white animate-pulse" />
+                    <div className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-white animate-pulse" />
+                    <div className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-white animate-pulse" />
+                  </div>
+                )}
 
-          {/* DIA */}
-          <button 
-            onClick={() => setActive("dia")}
-            className="absolute focus:outline-none"
-            style={{ left: "62%", top: "25%", transform: "translate(-50%, -50%)" }}
-          >
-            <div className={cn(
-              "px-4 py-2 border transition-all duration-300 flex flex-col items-center",
-              active === "dia" ? "bg-white text-black border-white" : "bg-black text-white/50 border-white/10 hover:border-white/30"
-            )}>
-              <span className="font-mono text-xs font-bold">DIA</span>
-              <span className="text-[7px] tracking-widest font-mono opacity-60">MILITARY</span>
-            </div>
-          </button>
-
-          {/* NRO */}
-          <button 
-            onClick={() => setActive("nro")}
-            className="absolute focus:outline-none"
-            style={{ left: "85%", top: "30%", transform: "translate(-50%, -50%)" }}
-          >
-            <div className={cn(
-              "px-4 py-2 border transition-all duration-300 flex flex-col items-center",
-              active === "nro" ? "bg-white text-black border-white" : "bg-black text-white/50 border-white/10 hover:border-white/30"
-            )}>
-              <span className="font-mono text-xs font-bold">NRO</span>
-              <span className="text-[7px] tracking-widest font-mono opacity-60">IMINT</span>
-            </div>
-          </button>
+                <button
+                  onClick={() => setActive(agency.id)}
+                  disabled={!highlighted}
+                  className={cn(
+                    "relative focus:outline-none transition-all duration-500 z-10",
+                    !highlighted && "opacity-20 cursor-not-allowed pointer-events-none"
+                  )}
+                >
+                  <div className={cn(
+                    "px-4 py-2 border transition-all duration-300 flex flex-col items-center",
+                    activeNode 
+                      ? "bg-white text-black border-white shadow-xl shadow-white/5" 
+                      : "bg-black text-white/50 border-white/10 hover:border-white/30 hover:text-white"
+                  )}>
+                    <span className="font-mono text-[11px] font-black tracking-wide">{agency.id.toUpperCase()}</span>
+                    <span className="text-[7px] tracking-widest font-mono opacity-50 uppercase">{agency.specialty.split(" ")[0]}</span>
+                  </div>
+                </button>
+              </div>
+            );
+          })}
 
           {/* Central Command Hub Node */}
-          <div 
-            className="absolute flex flex-col items-center justify-center p-5 border border-dashed border-white/20 bg-black"
+          <div
+            className="absolute flex flex-col items-center justify-center p-5 border border-dashed border-white/20 bg-black z-20"
             style={{ left: "50%", top: "75%", transform: "translate(-50%, -50%)" }}
           >
-            <div className="h-2 w-2 rounded-full bg-white mb-2 animate-pulse" />
+            <div className="h-2 w-2 rounded-full bg-white mb-2 animate-ping" />
             <span className="font-mono text-[10px] font-black tracking-[0.25em] text-white">COMMAND HUB</span>
             <span className="text-[7px] font-mono opacity-40 uppercase tracking-widest">{isRo ? "Integrare Date" : "Data Integration"}</span>
           </div>
         </div>
 
-        {/* Bottom classification banner */}
-        <div className="relative z-10 flex justify-between items-center text-[8px] mil-text-metadata opacity-20">
-          <span>CLASSIFICATION: SECRET // NOFORN</span>
-          <span>PLANETARY_CMD_v3.2</span>
+        {/* Rolling status logs marquee bar */}
+        <div className="relative z-10 flex justify-between items-center text-[8px] font-mono text-white/30 border-t border-white/5 pt-4">
+          <div className="flex gap-4 overflow-hidden w-full select-none">
+            {logs.map((log, index) => (
+              <span key={index} className="whitespace-nowrap font-mono tracking-wider opacity-60">
+                ◈ {log}
+              </span>
+            ))}
+          </div>
+          <span className="text-white/20 pl-4 shrink-0 font-bold">SECURE_CHANNEL</span>
         </div>
       </div>
 
       {/* Details Panel */}
-      <div className="mil-glass p-8 md:p-10 flex flex-col justify-between">
+      <div className="mil-glass p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
+        {/* CRT Scan line visual effect */}
+        <div className="mil-scanline" />
+
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
@@ -1462,21 +1671,39 @@ export function IntelligenceNetworkMap({ agencies, locale = "en" }: { agencies: 
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
-            className="flex flex-col h-full justify-between"
+            className="flex flex-col h-full justify-between z-10"
           >
             <div>
               <div className="flex items-center gap-2.5 mb-4">
-                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: current.accentColor }} />
+                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: current.accentColor }} />
                 <span className="mil-text-metadata text-[10px] tracking-[0.3em] font-black">{current.specialty}</span>
               </div>
 
-              <h3 className="text-3xl font-black tracking-tighter uppercase mb-2">{current.name}</h3>
+              {/* Decrypted Header Title */}
+              <h3 className="text-3xl font-black tracking-tighter uppercase mb-2 font-mono h-[36px] overflow-hidden">
+                {displayText}
+              </h3>
               <p className="mil-text-metadata text-xs font-bold opacity-60 tracking-wider mb-6">{current.role}</p>
 
               <p className="text-sm leading-relaxed text-white/60 mb-8">{current.description}</p>
             </div>
 
+            {/* Diagnostic system parameters */}
             <div className="space-y-4 border-t border-white/5 pt-6">
+              <h4 className="mil-text-metadata text-[9px] tracking-[0.25em] opacity-40 font-black">
+                {isRo ? "DIAGNOSTIC SISTEM" : "SYSTEM DIAGNOSTICS"}
+              </h4>
+              <div className="grid grid-cols-1 gap-2.5">
+                {activeStatus.map((s, idx) => (
+                  <div key={idx} className="flex justify-between items-center py-1.5 border-b border-white/5 font-mono text-[10px]">
+                    <span className="text-white/40">{s.label}</span>
+                    <span className="font-bold text-white/80">{s.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-4 border-t border-white/5 pt-6 mt-6">
               <h4 className="mil-text-metadata text-[9px] tracking-[0.25em] opacity-40 font-black">
                 {isRo ? "METRICI SPECIFICE" : "KEY FOCUS AREAS"}
               </h4>
