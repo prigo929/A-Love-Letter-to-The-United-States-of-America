@@ -103,19 +103,19 @@ export function MilStyles() {
 
       .mil-text-hero {
         font-family: var(--font-archivo);
-        font-size: clamp(38px, 12vw, 180px);
+        font-size: clamp(32px, 8.5vw, 140px);
         font-weight: 900;
-        line-height: 0.85;
-        letter-spacing: -0.04em;
+        line-height: 1.0;
+        letter-spacing: -0.02em;
         text-transform: uppercase;
       }
 
       .mil-text-section {
         font-family: var(--font-archivo);
-        font-size: clamp(48px, 8vw, 120px);
+        font-size: clamp(40px, 7vw, 100px);
         font-weight: 900;
-        line-height: 0.9;
-        letter-spacing: -0.03em;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
         text-transform: uppercase;
       }
 
