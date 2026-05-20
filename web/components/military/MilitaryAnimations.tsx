@@ -1488,6 +1488,14 @@ export function IntelligenceNetworkMap({ agencies, locale = "en" }: { agencies: 
                   </div>
                 ))}
               </div>
+              <div className="pt-4">
+                <Link
+                  href="/military/intelligence"
+                  className="w-full inline-flex h-11 items-center justify-center border border-white/15 bg-white px-5 text-xs font-bold uppercase text-black transition-colors hover:bg-white/85"
+                >
+                  {isRo ? "EXPLOREAZĂ REȚEAUA DE INTELIGENȚĂ →" : "EXPLORE INTELLIGENCE NETWORK →"}
+                </Link>
+              </div>
             </div>
           </motion.div>
         </AnimatePresence>

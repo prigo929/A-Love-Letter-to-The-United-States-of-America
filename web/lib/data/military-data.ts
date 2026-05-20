@@ -183,6 +183,7 @@ export const MILITARY_BRANCHES: MilitaryBranch[] = [
     tagline: "Aim High — Fly, Fight, Win",
     accentColor: "#4B89DC",
     iconEmoji: "✈️",
+    href: "/military/air-force",
     description: "Global air dominance. The USAF operates 5,500+ aircraft — more than any other nation's entire air force. From stealth bombers to next-generation fighters, it maintains continuous combat-ready superiority in the air.",
     keyFacts: [
       "F-22 Raptor: the only true 5th-generation air superiority fighter in service",
@@ -221,6 +222,7 @@ export const MILITARY_BRANCHES: MilitaryBranch[] = [
     tagline: "Semper Supra — Always Above",
     accentColor: "#3DDBD9",
     iconEmoji: "🛰️",
+    href: "/military/space-force",
     description: "America's newest and fastest-growing branch, guarding the orbital infrastructure on which all modern warfare depends. GPS, ISR, missile warning, satellite communications — Space Force defends the systems that make American military supremacy possible.",
     keyFacts: [
       "US military satellites enable precision GPS targeting for all branches",

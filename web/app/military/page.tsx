@@ -324,6 +324,14 @@ export default async function MilitaryPage() {
           </p>
         </div>
         <AlliancesShowcase alliances={alliances} locale={locale} />
+        <div className="mt-12 flex justify-center">
+          <Link
+            href="/global-leadership/nato"
+            className="inline-flex h-11 items-center justify-center border border-white/15 bg-white px-5 text-xs font-bold uppercase text-black transition-colors hover:bg-white/85"
+          >
+            {locale === 'ro' ? "EXPLOREAZĂ DIPLOMAȚIA NATO →" : "EXPLORE NATO DIPLOMACY →"}
+          </Link>
+        </div>
       </Section>
       
       {/* ─── §3.5  SUPREMACY WAVE — MILITARY SHOWCASE ────────────────────────── */}
@@ -420,6 +428,14 @@ export default async function MilitaryPage() {
         label={locale === 'ro' ? "DESFĂȘURAREA GRUPURILOR DE PORTAVIOANE · POZIȚII LIVE" : "CARRIER GROUP DEPLOYMENT · LIVE POSITIONS"}
       >
         <GlobalCarrierMap positions={carriers} locale={locale}/>
+        <div className="mt-12 flex justify-center">
+          <Link
+            href="/military/global-bases"
+            className="inline-flex h-11 items-center justify-center border border-white/15 bg-white px-5 text-xs font-bold uppercase text-black transition-colors hover:bg-white/85"
+          >
+            {locale === 'ro' ? "EXPLOREAZĂ BAZELE GLOBALE & LOGISTICA →" : "EXPLORE GLOBAL BASES & LOGISTICS →"}
+          </Link>
+        </div>
       </Section>
 
       {/* ─── §7  WEAPON SYSTEMS ─────────────────────────────────────────────── */}
