@@ -1135,17 +1135,17 @@ export function BudgetComparisonBar({
         {/* Left Panel: The US Dominance Stack */}
         <div className="space-y-8">
           <div>
-            <span className="font-mono text-[9px] tracking-[0.3em] text-white/40 uppercase block mb-2">
+            <span className="font-mono text-[10px] tracking-[0.3em] text-white/60 uppercase block mb-2">
               {isRo ? "VERIFICAT · SIPRI 2025" : "VERIFIED · SIPRI 2025"}
             </span>
             <h4 className="text-2xl font-black tracking-tight text-white mb-3">
               {isRo ? "COMPARAȚIE BUGET APĂRARE" : "DEFENSE BUDGET COMPARISON"}
             </h4>
-            <div className="text-[10px] font-mono font-bold text-white/60 mb-4 tracking-wide uppercase flex items-center gap-1.5">
+            <div className="text-[11px] font-mono font-bold text-white/80 mb-4 tracking-wide uppercase flex items-center gap-1.5">
               <span>◈</span>
               <span>{isRo ? "S.U.A. CHELTUIESC MAI MULT DECÂT URMĂTOARELE ZECE NAȚIUNI COMBINATE" : "U.S. OUTSPENDS THE NEXT TEN NATIONS COMBINED"}</span>
             </div>
-            <p className="text-xs leading-relaxed text-white/40 max-w-lg mt-3">
+            <p className="text-[13px] leading-relaxed text-white/65 max-w-lg mt-3">
               {isRo
                 ? "Statele Unite investesc în securitate mai mult decât următoarele zece puteri militare globale la un loc. Această superioritate bugetară susține o infrastructură operațională globală de neegalat."
                 : "The United States defense investment outpaces the combined spending of the next ten global military powers. This massive resource scale funds unparalleled worldwide force projection."}
