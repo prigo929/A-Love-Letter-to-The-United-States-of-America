@@ -1881,11 +1881,41 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyClosing({ locale = "en" }: { locale?: Locale }) {
+  const isRo = locale === "ro";
+
+  const branches = [
+    {
+      href: "/military/air-force",
+      label: isRo ? "Forțele Aeriene" : "Air Force",
+      desc: isRo ? "Supremație aeriană și rază globală" : "Air supremacy and global strike capability",
+      icon: Plane,
+    },
+    {
+      href: "/military/space-force",
+      label: isRo ? "Forțele Spațiale" : "Space Force",
+      desc: isRo ? "Apărare orbitală și constelații" : "Orbital defense and satellite constellations",
+      icon: Satellite,
+    },
+    {
+      href: "/military/global-bases",
+      label: isRo ? "Baze Globale" : "Global Bases",
+      desc: isRo ? "Infrastructură și logistică avansată" : "Global footprint and logistics network",
+      icon: Network,
+    },
+    {
+      href: "/military/intelligence",
+      label: isRo ? "Informații Militare" : "Intelligence",
+      desc: isRo ? "SIGINT, HUMINT și securitate cibernetică" : "SIGINT, HUMINT, and cyber capabilities",
+      icon: Shield,
+    },
+  ];
+
   return (
     <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-t border-white/5">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,42,102,0.18),transparent_70%)] pointer-events-none" />
       <div className="absolute inset-0 navy-grid-plane opacity-25 pointer-events-none" />
       <div className="navy-noise absolute inset-0 opacity-35 pointer-events-none" />
+      
       <div className="relative mx-auto max-w-[1160px] text-center">
         <Anchor className="mx-auto mb-8 text-[#8edcff]/50 animate-pulse" size={32} strokeWidth={1.2} />
         <h2 className="navy-font-display text-4xl font-black uppercase leading-[0.95] md:text-7xl text-white">
@@ -1896,6 +1926,8 @@ export function NavyClosing({ locale = "en" }: { locale?: Locale }) {
             ? "Un grup de atac de portavioane nu întreabă unde este criza strategică. Mută pista, centrul de comandă securizat, scutul antirachetă și prezența americană direct în teatru."
             : "A Navy carrier group does not ask where the crisis is. It moves the runway, the command center, the missile shield, the logistics train, and the national signal into the theater."}
         </p>
+
+        {/* Primary CTA */}
         <div className="mt-12 flex justify-center">
           <Link
             href="/military"
@@ -1904,6 +1936,38 @@ export function NavyClosing({ locale = "en" }: { locale?: Locale }) {
             {locale === "ro" ? "Prezentare militară" : "Military overview"}
             <ArrowUpRight size={15} strokeWidth={2} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
+        </div>
+
+        {/* Cross-links grid */}
+        <div className="mt-20 border-t border-white/5 pt-16">
+          <div className="text-[10px] font-mono uppercase tracking-[0.25em] text-white/35 mb-8">
+            {locale === "ro" ? "Explorați alte ramuri militare" : "Explore other military dimensions"}
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
+            {branches.map((b) => {
+              const Icon = b.icon;
+              return (
+                <Link
+                  key={b.href}
+                  href={b.href}
+                  className="group relative block border border-white/5 bg-[#020202] p-5 hover:bg-[#000a14] hover:border-white/10 transition-all duration-300"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="flex h-8 w-8 items-center justify-center border border-white/8 bg-black text-[#8edcff]/70 group-hover:text-white transition-colors">
+                      <Icon size={14} strokeWidth={1.5} />
+                    </div>
+                    <span className="navy-font-display text-sm font-bold uppercase text-white group-hover:text-[#8edcff] transition-colors">
+                      {b.label}
+                    </span>
+                  </div>
+                  <p className="text-[10px] leading-relaxed text-white/40 group-hover:text-white/60 transition-colors">
+                    {b.desc}
+                  </p>
+                  <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-[#8edcff]/50 transition-all duration-500 group-hover:w-full" />
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
@@ -2472,6 +2536,18 @@ export function NavyHeritageTimeline({
                   )}>
                     {isLeft && (
                       <div className="navy-panel-tactical p-6 max-w-sm">
+                        <div className="relative w-full aspect-[16/10] mb-4 overflow-hidden border border-white/5 bg-neutral-900">
+                          <Image
+                            src={event.imageSrc}
+                            alt={event.title}
+                            fill
+                            sizes="384px"
+                            className="object-cover transition-transform duration-500 hover:scale-105"
+                            placeholder="blur"
+                            blurDataURL={BLUR_PLACEHOLDER}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                        </div>
                         <div className="text-[9px] font-mono uppercase tracking-widest text-[#8edcff]/70 mb-3">{event.significance}</div>
                         <h4 className="navy-font-display text-lg font-black uppercase text-white leading-tight mb-3">{event.title}</h4>
                         <p className="text-[11px] leading-relaxed text-white/50">{event.description}</p>
@@ -2493,6 +2569,18 @@ export function NavyHeritageTimeline({
                   )}>
                     {/* Always show on mobile */}
                     <div className="navy-panel-tactical p-6 max-w-sm md:hidden">
+                      <div className="relative w-full aspect-[16/10] mb-4 overflow-hidden border border-white/5 bg-neutral-900">
+                        <Image
+                          src={event.imageSrc}
+                          alt={event.title}
+                          fill
+                          sizes="100vw"
+                          className="object-cover transition-transform duration-500 hover:scale-105"
+                          placeholder="blur"
+                          blurDataURL={BLUR_PLACEHOLDER}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      </div>
                       <div className="text-[9px] font-mono uppercase tracking-widest text-[#8edcff]/70 mb-3">{event.significance}</div>
                       <h4 className="navy-font-display text-lg font-black uppercase text-white leading-tight mb-3">{event.title}</h4>
                       <p className="text-[11px] leading-relaxed text-white/50">{event.description}</p>
@@ -2500,6 +2588,18 @@ export function NavyHeritageTimeline({
                     {/* Show on desktop for right-side items */}
                     {!isLeft && (
                       <div className="navy-panel-tactical p-6 max-w-sm hidden md:block">
+                        <div className="relative w-full aspect-[16/10] mb-4 overflow-hidden border border-white/5 bg-neutral-900">
+                          <Image
+                            src={event.imageSrc}
+                            alt={event.title}
+                            fill
+                            sizes="384px"
+                            className="object-cover transition-transform duration-500 hover:scale-105"
+                            placeholder="blur"
+                            blurDataURL={BLUR_PLACEHOLDER}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                        </div>
                         <div className="text-[9px] font-mono uppercase tracking-widest text-[#8edcff]/70 mb-3">{event.significance}</div>
                         <h4 className="navy-font-display text-lg font-black uppercase text-white leading-tight mb-3">{event.title}</h4>
                         <p className="text-[11px] leading-relaxed text-white/50">{event.description}</p>
