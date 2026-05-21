@@ -10,6 +10,8 @@ import {
   Cpu,
   Crosshair,
   Gauge,
+  Heart,
+  MapPin,
   Network,
   Plane,
   Satellite,
@@ -21,11 +23,14 @@ import {
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 import type { Locale } from "@/lib/i18n/config";
 import type {
+  NavyAirWingSquadron,
+  NavyBase,
   NavyCapability,
   NavyCommandLayer,
   NavyFleetComparison,
   NavyFutureProgram,
   NavyHeritageEvent,
+  NavyHumanitarianMission,
   NavyMetric,
   NavyPlatform,
   NavySpecWarUnit,
@@ -2657,6 +2662,300 @@ export function NavySpecWarSection({
             </AnimatePresence>
           </div>
         </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 16. NavyAirWingComposition — Carrier Air Wing Squadron Roster
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function NavyAirWingComposition({
+  squadrons,
+  locale = "en",
+}: {
+  squadrons: NavyAirWingSquadron[];
+  locale?: Locale;
+}) {
+  const isRo = locale === "ro";
+  const totalAircraft = squadrons.reduce((sum, s) => sum + s.count, 0);
+
+  return (
+    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_-10%,rgba(0,42,102,0.12),transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 navy-grid-plane opacity-15 pointer-events-none" />
+      <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
+
+      <div className="relative mx-auto max-w-[1520px]">
+        <SectionTitle
+          label={isRo ? "GRUPUL AERIAN DE PORTAVION" : "CARRIER AIR WING"}
+          titlePart1={isRo ? "ESCADRILE" : "SQUADRON"}
+          titlePart2={isRo ? "AERIENE" : "ROSTER"}
+          body={isRo
+            ? "Un grup aerian de portavion combină avioane de vânătoare, războiul electronic, alertă timpurie, elicoptere ASW, logistică și platforme autonome într-un singur ecosistem aerospațial integrat."
+            : "A carrier air wing combines strike fighters, electronic warfare, airborne early warning, ASW helicopters, fleet logistics, and autonomous platforms into a single integrated aerospace ecosystem."}
+        />
+
+        {/* Total aircraft callout */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          className="flex justify-center mb-12"
+        >
+          <div className="navy-panel-tactical px-8 py-4 flex items-center gap-6">
+            <div className="text-center">
+              <div className="text-[9px] font-mono uppercase tracking-widest text-white/30 mb-1">{isRo ? "TOTAL AERONAVE / CVW" : "TOTAL AIRCRAFT / CVW"}</div>
+              <div className="text-3xl font-black text-white">{totalAircraft}</div>
+            </div>
+            <div className="w-px h-10 bg-white/10" />
+            <div className="text-center">
+              <div className="text-[9px] font-mono uppercase tracking-widest text-white/30 mb-1">{isRo ? "TIPURI ESCADRILE" : "SQUADRON TYPES"}</div>
+              <div className="text-3xl font-black text-white">{squadrons.length}</div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Squadron grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-px bg-white/5">
+          {squadrons.map((sq, i) => (
+            <motion.div
+              key={sq.aircraft}
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.04 }}
+              className="group relative bg-[#020202] p-6 transition-colors duration-300 hover:bg-[#000a14]"
+            >
+              {/* Accent top bar */}
+              <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: sq.accent, opacity: 0.4 }} />
+
+              <div className="flex items-center justify-between mb-4">
+                <span className="navy-font-mono text-[9px] uppercase tracking-widest" style={{ color: sq.accent + "90" }}>{sq.designation}</span>
+                <span className="navy-font-display text-2xl font-black text-white">×{sq.count}</span>
+              </div>
+
+              <div className="text-[10px] font-bold uppercase tracking-wider text-white/40 mb-2">{sq.type}</div>
+              <h4 className="navy-font-display text-base font-extrabold uppercase text-white leading-tight mb-4" style={{ letterSpacing: "0.03em" }}>
+                {sq.aircraft}
+              </h4>
+
+              <p className="text-[10px] leading-relaxed text-white/45">{sq.role}</p>
+
+              <div className="mt-5 h-px w-full bg-white/5">
+                <div
+                  className="h-px w-8 transition-all duration-500 group-hover:w-full"
+                  style={{ backgroundColor: sq.accent }}
+                />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 17. NavyBasesSection — Forward Deployed Naval Installations
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function NavyBasesSection({
+  bases,
+  locale = "en",
+}: {
+  bases: NavyBase[];
+  locale?: Locale;
+}) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = bases[activeIndex];
+  const isRo = locale === "ro";
+
+  return (
+    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_60%,rgba(0,42,102,0.12),transparent_45%)] pointer-events-none" />
+      <div className="absolute inset-0 navy-grid-plane opacity-12 pointer-events-none" />
+      <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
+
+      <div className="relative mx-auto max-w-[1520px]">
+        <SectionTitle
+          label={isRo ? "INFRASTRUCTURĂ GLOBALĂ" : "GLOBAL INFRASTRUCTURE"}
+          titlePart1={isRo ? "BAZE" : "FORWARD"}
+          titlePart2={isRo ? "AVANSATE" : "STATIONS"}
+          body={isRo
+            ? "Portavioanele și submarinele nu operează din vid. Puterea navală necesită o rețea de baze, dane, depozite de armament și instalații de mentenanță distribuite strategic pe glob."
+            : "Carriers and submarines don't operate from a vacuum. Sea power requires a global network of bases, piers, magazines, and maintenance facilities positioned to sustain persistent forward presence."}
+        />
+
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.65 }}
+          className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-0 overflow-hidden rounded-lg border border-white/5 bg-[#020202]"
+        >
+          {/* Left: Active base details */}
+          <div className="p-8 md:p-10 flex flex-col">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.name}
+                initial={{ opacity: 0, x: -16 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 12 }}
+                transition={{ duration: 0.4 }}
+                className="flex-1 flex flex-col"
+              >
+                {/* Header */}
+                <div className="flex items-start gap-4 mb-6">
+                  <div
+                    className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/8 bg-black"
+                    style={{ color: active.accent }}
+                  >
+                    <MapPin size={16} strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <div className="navy-font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 mb-1">{active.region}</div>
+                    <h3 className="navy-font-display text-2xl md:text-3xl font-black uppercase text-white leading-tight">{active.name}</h3>
+                  </div>
+                </div>
+
+                <div className="navy-font-mono text-[10px] uppercase tracking-widest mb-4" style={{ color: active.accent + "90" }}>
+                  {active.location} · {active.role}
+                </div>
+
+                <p className="text-xs leading-relaxed text-white/55 max-w-2xl mb-8">{active.description}</p>
+
+                {/* Stats grid */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 mt-auto">
+                  {active.stats.map((stat) => (
+                    <div key={stat.label} className="bg-[#020202] p-4">
+                      <div className="text-[9px] uppercase tracking-widest text-white/30 mb-2">{stat.label}</div>
+                      <div className="text-sm font-bold text-white">{stat.value}</div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Right: Base selector */}
+          <div className="flex flex-col border-t lg:border-t-0 lg:border-l border-white/5 bg-black/40">
+            {bases.map((base, index) => {
+              const selected = index === activeIndex;
+              return (
+                <button
+                  key={base.name}
+                  type="button"
+                  onClick={() => setActiveIndex(index)}
+                  className={cn(
+                    "relative overflow-hidden border-b border-white/5 last:border-b-0 p-5 text-left transition-all duration-300",
+                    selected ? "bg-white/[0.04] text-white" : "text-white/35 hover:bg-white/[0.015] hover:text-white/60"
+                  )}
+                >
+                  {selected && (
+                    <motion.div
+                      layoutId="navy-base-active"
+                      className="absolute inset-y-0 left-0 w-[2px]"
+                      style={{ backgroundColor: base.accent }}
+                      transition={{ type: "spring", stiffness: 330, damping: 35 }}
+                    />
+                  )}
+                  <div className="pl-3">
+                    <div className="flex items-center gap-2">
+                      <MapPin size={11} strokeWidth={1.5} style={{ color: base.accent + "70" }} />
+                      <span className="navy-font-mono text-[8px] uppercase tracking-widest text-white/30">{base.region}</span>
+                    </div>
+                    <div className="navy-font-display text-sm sm:text-base font-extrabold uppercase leading-snug mt-1.5" style={{ letterSpacing: "0.04em" }}>
+                      {base.name}
+                    </div>
+                    <div className="mt-1 text-[9px] text-white/30">{base.location}</div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 18. NavyHumanitarianSection — Disaster Relief & Soft Power
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function NavyHumanitarianSection({
+  missions,
+  locale = "en",
+}: {
+  missions: NavyHumanitarianMission[];
+  locale?: Locale;
+}) {
+  const isRo = locale === "ro";
+
+  return (
+    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(0,42,102,0.10),transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 navy-grid-plane opacity-10 pointer-events-none" />
+      <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
+
+      <div className="relative mx-auto max-w-[1520px]">
+        <SectionTitle
+          label={isRo ? "OPERAȚIUNI UMANITARE" : "HUMANITARIAN OPERATIONS"}
+          titlePart1={isRo ? "PUTERE" : "FORCE"}
+          titlePart2={isRo ? "PENTRU BINE" : "FOR GOOD"}
+          body={isRo
+            ? "Când dezastrul lovește, Marina este adesea primul răspuns. Navele spital, grupurile amfibii și batalionele Seabee livrează ajutor la scară pe care nicio organizație civilă nu o poate egala."
+            : "When disaster strikes, the Navy is often the first response. Hospital ships, amphibious groups, and Seabee construction battalions deliver aid at a scale no civilian organization can match."}
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5">
+          {missions.map((mission, i) => (
+            <motion.div
+              key={mission.name}
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              className="group bg-[#020202] p-8 transition-colors duration-300 hover:bg-[#000a14]"
+            >
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-3">
+                  <div
+                    className="flex h-9 w-9 items-center justify-center border border-white/8 bg-black"
+                    style={{ color: mission.accent }}
+                  >
+                    <Heart size={14} strokeWidth={1.5} />
+                  </div>
+                  <span className="navy-font-mono text-[9px] uppercase tracking-widest text-white/30">{mission.year}</span>
+                </div>
+              </div>
+
+              <h4 className="navy-font-display text-xl font-black uppercase text-white leading-tight mb-4">{mission.name}</h4>
+              <p className="text-[11px] leading-relaxed text-white/50 mb-6">{mission.description}</p>
+
+              {/* Impact & Asset */}
+              <div className="grid grid-cols-1 gap-3 mt-auto">
+                <div className="navy-panel-tactical p-3 flex items-center gap-3">
+                  <span className="text-[9px] font-mono uppercase tracking-widest text-white/30 shrink-0">{isRo ? "IMPACT" : "IMPACT"}</span>
+                  <span className="text-[11px] font-bold text-white">{mission.impact}</span>
+                </div>
+                <div className="navy-panel-tactical p-3 flex items-center gap-3">
+                  <span className="text-[9px] font-mono uppercase tracking-widest text-white/30 shrink-0">{isRo ? "RESURSE" : "ASSETS"}</span>
+                  <span className="text-[10px] text-white/50 font-mono">{mission.asset}</span>
+                </div>
+              </div>
+
+              <div className="mt-6 h-px w-full bg-white/5">
+                <div
+                  className="h-px w-10 transition-all duration-500 group-hover:w-full"
+                  style={{ backgroundColor: mission.accent }}
+                />
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

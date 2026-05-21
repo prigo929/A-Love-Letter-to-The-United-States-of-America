@@ -1230,3 +1230,312 @@ export function getNavySpecWarUnits(locale: Locale): NavySpecWarUnit[] {
     },
   ];
 }
+
+// ─── Carrier Air Wing Composition ─────────────────────────────────────────────
+
+export interface NavyAirWingSquadron {
+  type: string;
+  aircraft: string;
+  designation: string;
+  count: number;
+  role: string;
+  accent: string;
+}
+
+export const NAVY_AIR_WING: NavyAirWingSquadron[] = [
+  { type: "Strike Fighter", aircraft: "F/A-18E/F Super Hornet", designation: "VFA", count: 44, role: "Multirole air superiority, precision strike, fleet defense", accent: "#8edcff" },
+  { type: "Stealth Strike", aircraft: "F-35C Lightning II", designation: "VFA", count: 10, role: "5th-gen stealth penetration, sensor fusion, electronic attack", accent: "#d7f2ff" },
+  { type: "Electronic Warfare", aircraft: "EA-18G Growler", designation: "VAQ", count: 5, role: "Airborne electronic attack, radar jamming, SIGINT", accent: "#f2d48a" },
+  { type: "Airborne Early Warning", aircraft: "E-2D Advanced Hawkeye", designation: "VAW", count: 4, role: "Battle management, long-range surveillance, datalink coordination", accent: "#70e0bf" },
+  { type: "Helicopter ASW", aircraft: "MH-60R Seahawk", designation: "HSM", count: 11, role: "Anti-submarine warfare, surface search, torpedo attack", accent: "#ff7a7a" },
+  { type: "Helicopter Utility", aircraft: "MH-60S Knighthawk", designation: "HSC", count: 8, role: "Vertical replenishment, SAR, MEDEVAC, mine countermeasures", accent: "#c4b5fd" },
+  { type: "Fleet Logistics", aircraft: "CMV-22B Osprey", designation: "VRM", count: 3, role: "Carrier onboard delivery, high-speed resupply, passenger transport", accent: "#fbbf24" },
+  { type: "Unmanned Tanker", aircraft: "MQ-25A Stingray", designation: "VUQ", count: 4, role: "Autonomous aerial refueling, ISR extension, strike range doubling", accent: "#34d399" },
+];
+
+export function getNavyAirWing(locale: Locale): NavyAirWingSquadron[] {
+  if (locale !== "ro") return NAVY_AIR_WING;
+  return [
+    { type: "Avion de Vânătoare", aircraft: "F/A-18E/F Super Hornet", designation: "VFA", count: 44, role: "Superioritate aeriană multirol, atac de precizie, apărarea flotei", accent: "#8edcff" },
+    { type: "Atac Stealth", aircraft: "F-35C Lightning II", designation: "VFA", count: 10, role: "Penetrare stealth gen. 5, fuziune senzori, atac electronic", accent: "#d7f2ff" },
+    { type: "Război Electronic", aircraft: "EA-18G Growler", designation: "VAQ", count: 5, role: "Atac electronic aeropurtat, bruiaj radar, SIGINT", accent: "#f2d48a" },
+    { type: "Alertă Timpurie", aircraft: "E-2D Advanced Hawkeye", designation: "VAW", count: 4, role: "Gestionare luptă, supraveghere la distanță, coordonare datalink", accent: "#70e0bf" },
+    { type: "Elicopter ASW", aircraft: "MH-60R Seahawk", designation: "HSM", count: 11, role: "Luptă antisubmarin, căutare de suprafață, atac cu torpile", accent: "#ff7a7a" },
+    { type: "Elicopter Utilitar", aircraft: "MH-60S Knighthawk", designation: "HSC", count: 8, role: "Reaprovizionare verticală, SAR, MEDEVAC, contramăsuri mine", accent: "#c4b5fd" },
+    { type: "Logistică Flotă", aircraft: "CMV-22B Osprey", designation: "VRM", count: 3, role: "Livrare la bord, reaprovizionare rapidă, transport persoane", accent: "#fbbf24" },
+    { type: "Cisternă Autonomă", aircraft: "MQ-25A Stingray", designation: "VUQ", count: 4, role: "Realimentare autonomă, extensie ISR, dublarea razei de atac", accent: "#34d399" },
+  ];
+}
+
+// ─── Naval Bases & Forward Stations ───────────────────────────────────────────
+
+export interface NavyBase {
+  name: string;
+  location: string;
+  region: string;
+  role: string;
+  description: string;
+  stats: { label: string; value: string }[];
+  accent: string;
+}
+
+export const NAVY_BASES: NavyBase[] = [
+  {
+    name: "Naval Station Norfolk",
+    location: "Virginia, USA",
+    region: "Atlantic",
+    role: "World's largest naval station",
+    description: "Home to the Atlantic Fleet, Norfolk hosts more than 75 ships and 134 aircraft. It is the operational hub for carrier strike groups deploying to the Mediterranean, Middle East, and Arctic.",
+    stats: [
+      { label: "Ships", value: "75+" },
+      { label: "Personnel", value: "82,000" },
+      { label: "Piers", value: "14" },
+      { label: "Fleet", value: "2nd / Atlantic" },
+    ],
+    accent: "#8edcff",
+  },
+  {
+    name: "Naval Base San Diego",
+    location: "California, USA",
+    region: "Pacific",
+    role: "Principal Pacific Fleet homeport",
+    description: "San Diego is the principal homeport for the Pacific Fleet surface force. It supports carrier strike groups, amphibious ready groups, and independent deployers across the Pacific and Indian Oceans.",
+    stats: [
+      { label: "Ships", value: "60+" },
+      { label: "Personnel", value: "36,000" },
+      { label: "Mission", value: "Pacific deterrence" },
+      { label: "Fleet", value: "3rd / Pacific" },
+    ],
+    accent: "#70e0bf",
+  },
+  {
+    name: "Joint Base Pearl Harbor–Hickam",
+    location: "Hawaii, USA",
+    region: "Indo-Pacific",
+    role: "Indo-Pacific Command anchor",
+    description: "Pearl Harbor is the headquarters of the U.S. Pacific Fleet and the geographic center of the Indo-Pacific strategy. It hosts the submarine force and surface combatants that maintain presence from Guam to the Indian Ocean.",
+    stats: [
+      { label: "HQ", value: "PACFLT" },
+      { label: "Submarines", value: "18+" },
+      { label: "History", value: "Since 1899" },
+      { label: "Significance", value: "Strategic anchor" },
+    ],
+    accent: "#f2d48a",
+  },
+  {
+    name: "Fleet Activities Yokosuka",
+    location: "Yokosuka, Japan",
+    region: "Western Pacific",
+    role: "Only forward-deployed carrier base",
+    description: "The only U.S. naval base that permanently homeports an aircraft carrier overseas. Yokosuka is the forward edge of American sea power in the Western Pacific, hosting the USS Ronald Reagan and a destroyer squadron.",
+    stats: [
+      { label: "Carrier", value: "USS Ronald Reagan" },
+      { label: "Ships", value: "14" },
+      { label: "Status", value: "Forward deployed" },
+      { label: "Theater", value: "7th Fleet" },
+    ],
+    accent: "#ff7a7a",
+  },
+  {
+    name: "NSA Bahrain",
+    location: "Manama, Bahrain",
+    region: "Arabian Gulf",
+    role: "5th Fleet / CENTCOM naval HQ",
+    description: "The headquarters of the 5th Fleet and the operational center for all naval activity in the Arabian Gulf, Red Sea, and Northwestern Indian Ocean. It coordinates convoy defense, mine countermeasures, and maritime security operations.",
+    stats: [
+      { label: "HQ", value: "5th Fleet" },
+      { label: "Mission", value: "Maritime security" },
+      { label: "AOR", value: "2.5M sq miles" },
+      { label: "Partners", value: "CMF coalition" },
+    ],
+    accent: "#c4b5fd",
+  },
+  {
+    name: "Naval Station Rota",
+    location: "Rota, Spain",
+    region: "Mediterranean",
+    role: "BMD forward-deployed destroyers",
+    description: "Rota hosts four Aegis destroyers assigned to NATO's ballistic missile defense mission, providing a persistent shield over Southern Europe while enabling rapid Mediterranean and Atlantic deployment.",
+    stats: [
+      { label: "Destroyers", value: "4 Aegis DDGs" },
+      { label: "Mission", value: "Ballistic missile defense" },
+      { label: "Alliance", value: "NATO" },
+      { label: "Theater", value: "6th Fleet" },
+    ],
+    accent: "#34d399",
+  },
+];
+
+export function getNavyBases(locale: Locale): NavyBase[] {
+  if (locale !== "ro") return NAVY_BASES;
+  return [
+    {
+      name: "Stația Navală Norfolk",
+      location: "Virginia, SUA",
+      region: "Atlantic",
+      role: "Cea mai mare stație navală din lume",
+      description: "Gazdă a Flotei Atlanticului, Norfolk adăpostește peste 75 de nave și 134 de aeronave. Este centrul operațional pentru grupurile de atac care se desfășoară în Mediterana, Orientul Mijlociu și Arctic.",
+      stats: [
+        { label: "Nave", value: "75+" },
+        { label: "Personal", value: "82.000" },
+        { label: "Dane", value: "14" },
+        { label: "Flotă", value: "A 2-a / Atlantic" },
+      ],
+      accent: "#8edcff",
+    },
+    {
+      name: "Baza Navală San Diego",
+      location: "California, SUA",
+      region: "Pacific",
+      role: "Port principal Flota Pacificului",
+      description: "San Diego este portul principal pentru forțele de suprafață ale Flotei Pacificului. Susține grupuri de atac de portavioane și grupuri amfibii în Pacific și Oceanul Indian.",
+      stats: [
+        { label: "Nave", value: "60+" },
+        { label: "Personal", value: "36.000" },
+        { label: "Misiune", value: "Descurajare Pacific" },
+        { label: "Flotă", value: "A 3-a / Pacific" },
+      ],
+      accent: "#70e0bf",
+    },
+    {
+      name: "Baza Comună Pearl Harbor–Hickam",
+      location: "Hawaii, SUA",
+      region: "Indo-Pacific",
+      role: "Ancoră Indo-Pacific",
+      description: "Pearl Harbor este cartierul general al Flotei Pacificului și centrul geografic al strategiei Indo-Pacific. Găzduiește forța de submarine și navele de suprafață ce mențin prezența din Guam până în Oceanul Indian.",
+      stats: [
+        { label: "Comandament", value: "PACFLT" },
+        { label: "Submarine", value: "18+" },
+        { label: "Istorie", value: "Din 1899" },
+        { label: "Semnificație", value: "Ancoră strategică" },
+      ],
+      accent: "#f2d48a",
+    },
+    {
+      name: "Facilități Flotă Yokosuka",
+      location: "Yokosuka, Japonia",
+      region: "Pacificul de Vest",
+      role: "Singura bază de portavioane avansată",
+      description: "Singura bază navală americană care găzduiește permanent un portavioane în afara teritoriului. Yokosuka este muchia avansată a puterii maritime americane în Pacificul de Vest.",
+      stats: [
+        { label: "Portavion", value: "USS Ronald Reagan" },
+        { label: "Nave", value: "14" },
+        { label: "Status", value: "Desfășurat avansat" },
+        { label: "Teatru", value: "Flota a 7-a" },
+      ],
+      accent: "#ff7a7a",
+    },
+    {
+      name: "NSA Bahrain",
+      location: "Manama, Bahrain",
+      region: "Golful Arab",
+      role: "Flota a 5-a / Comandament naval CENTCOM",
+      description: "Cartierul general al Flotei a 5-a și centrul operațional pentru toată activitatea navală din Golful Arab, Marea Roșie și nord-vestul Oceanului Indian.",
+      stats: [
+        { label: "Comandament", value: "Flota a 5-a" },
+        { label: "Misiune", value: "Securitate maritimă" },
+        { label: "Zonă", value: "6.5M km²" },
+        { label: "Parteneri", value: "Coaliția CMF" },
+      ],
+      accent: "#c4b5fd",
+    },
+    {
+      name: "Stația Navală Rota",
+      location: "Rota, Spania",
+      region: "Mediterana",
+      role: "Distrugătoare BMD avansate",
+      description: "Rota găzduiește patru distrugătoare Aegis alocate misiunii NATO de apărare împotriva rachetelor balistice, oferind un scut persistent asupra Europei de Sud.",
+      stats: [
+        { label: "Distrugătoare", value: "4 DDG Aegis" },
+        { label: "Misiune", value: "Apărare antirachetă" },
+        { label: "Alianță", value: "NATO" },
+        { label: "Teatru", value: "Flota a 6-a" },
+      ],
+      accent: "#34d399",
+    },
+  ];
+}
+
+// ─── Humanitarian & Disaster Relief ───────────────────────────────────────────
+
+export interface NavyHumanitarianMission {
+  name: string;
+  year: string;
+  description: string;
+  impact: string;
+  asset: string;
+  accent: string;
+}
+
+export const NAVY_HUMANITARIAN_MISSIONS: NavyHumanitarianMission[] = [
+  {
+    name: "Operation Unified Assistance",
+    year: "2004–05",
+    description: "After the Indian Ocean tsunami killed 230,000 people, the Navy deployed the USS Abraham Lincoln carrier strike group, helicopter squadrons, and Seabee construction battalions within 72 hours to deliver aid across Indonesia, Sri Lanka, and Thailand.",
+    impact: "2.2M+ lbs of supplies delivered",
+    asset: "Carrier Strike Group + Hospital Ships",
+    accent: "#8edcff",
+  },
+  {
+    name: "USNS Mercy & Comfort Deployments",
+    year: "Ongoing",
+    description: "The Navy operates two 1,000-bed hospital ships — USNS Mercy (Pacific) and USNS Comfort (Atlantic). They deploy for humanitarian missions, providing surgeries, dental care, and medical training across developing nations.",
+    impact: "500,000+ patients treated",
+    asset: "USNS Mercy (T-AH-19) · USNS Comfort (T-AH-20)",
+    accent: "#70e0bf",
+  },
+  {
+    name: "Pacific Partnership",
+    year: "Annual since 2006",
+    description: "The largest annual multinational humanitarian mission in the Indo-Pacific. Navy ships, medical teams, engineers, and allied partners provide healthcare, infrastructure improvements, and disaster preparedness training across Pacific Island nations.",
+    impact: "400,000+ people assisted",
+    asset: "Multinational coalition fleet",
+    accent: "#f2d48a",
+  },
+  {
+    name: "Hurricane Relief Operations",
+    year: "2017 (Irma/Maria)",
+    description: "After Hurricanes Irma and Maria devastated Puerto Rico and the U.S. Virgin Islands, the Navy deployed the USS Kearsarge amphibious group, USNS Comfort, and Seabee battalions to restore power, deliver water, and rebuild infrastructure.",
+    impact: "4.3M meals + 4.8M liters water",
+    asset: "Amphibious Ready Group + USNS Comfort",
+    accent: "#ff7a7a",
+  },
+];
+
+export function getNavyHumanitarianMissions(locale: Locale): NavyHumanitarianMission[] {
+  if (locale !== "ro") return NAVY_HUMANITARIAN_MISSIONS;
+  return [
+    {
+      name: "Operațiunea Asistență Unificată",
+      year: "2004–05",
+      description: "După ce tsunamiul din Oceanul Indian a ucis 230.000 de oameni, Marina a desfășurat grupul de atac al USS Abraham Lincoln, escadrile de elicoptere și batalionele Seabee în 72 de ore pentru a livra ajutoare în Indonezia, Sri Lanka și Thailanda.",
+      impact: "Peste 1.000 tone de provizii livrate",
+      asset: "Grup de Atac Portavion + Nave Spital",
+      accent: "#8edcff",
+    },
+    {
+      name: "Desfășurările USNS Mercy și Comfort",
+      year: "În desfășurare",
+      description: "Marina operează două nave spital cu 1.000 de paturi — USNS Mercy (Pacific) și USNS Comfort (Atlantic). Se desfășoară în misiuni umanitare, oferind intervenții chirurgicale, asistență dentară și instruire medicală.",
+      impact: "Peste 500.000 pacienți tratați",
+      asset: "USNS Mercy (T-AH-19) · USNS Comfort (T-AH-20)",
+      accent: "#70e0bf",
+    },
+    {
+      name: "Parteneriatul Pacific",
+      year: "Anual din 2006",
+      description: "Cea mai mare misiune umanitară multinațională anuală din Indo-Pacific. Nave, echipe medicale, ingineri și parteneri aliați oferă asistență medicală, îmbunătățiri de infrastructură și instruire pentru pregătirea dezastrelor.",
+      impact: "Peste 400.000 persoane asistate",
+      asset: "Coaliție navală multinațională",
+      accent: "#f2d48a",
+    },
+    {
+      name: "Operațiuni de Ajutor în Uragan",
+      year: "2017 (Irma/Maria)",
+      description: "După ce Uraganele Irma și Maria au devastat Puerto Rico și Insulele Virgine, Marina a desfășurat grupul amfibiu USS Kearsarge, USNS Comfort și batalionele Seabee pentru a restaura energia, livra apă și reconstrui infrastructura.",
+      impact: "4,3M mese + 4,8M litri apă",
+      asset: "Grup Amfibiu + USNS Comfort",
+      accent: "#ff7a7a",
+    },
+  ];
+}

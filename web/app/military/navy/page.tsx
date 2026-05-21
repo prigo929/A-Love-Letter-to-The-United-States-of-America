@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
+  NavyAirWingComposition,
+  NavyBasesSection,
   NavyCapabilityGrid,
   NavyClosing,
   NavyCommandStack,
@@ -8,6 +10,7 @@ import {
   NavyFullscreenPanel,
   NavyFutureStack,
   NavyHeritageTimeline,
+  NavyHumanitarianSection,
   NavyMetricStrip,
   NavyOperationalConsole,
   NavyPageProgress,
@@ -32,6 +35,9 @@ import {
   getNavyFleetComparison,
   getNavyHeritageTimeline,
   getNavySpecWarUnits,
+  getNavyAirWing,
+  getNavyBases,
+  getNavyHumanitarianMissions,
 } from "@/lib/data/navy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 
@@ -60,6 +66,9 @@ export default async function NavyPage() {
   const fleetComparison = getNavyFleetComparison(locale);
   const heritageTimeline = getNavyHeritageTimeline(locale);
   const specWarUnits = getNavySpecWarUnits(locale);
+  const airWing = getNavyAirWing(locale);
+  const bases = getNavyBases(locale);
+  const humanitarianMissions = getNavyHumanitarianMissions(locale);
 
   const heroStats = locale === "ro"
     ? [
@@ -92,7 +101,9 @@ export default async function NavyPage() {
       <NavyFleetComparisonSection data={fleetComparison} locale={locale} />
       <NavyCapabilityGrid capabilities={capabilities} locale={locale} />
       <NavyFlyNavyVideo locale={locale} />
+      <NavyAirWingComposition squadrons={airWing} locale={locale} />
       <NavyOperationalConsole theaters={theaters} locale={locale} />
+      <NavyBasesSection bases={bases} locale={locale} />
       <NavyFullscreenPanel panel={visualPanels[0]} locale={locale} />
       <NavyPlatformShowcase platforms={platforms} locale={locale} />
       <NavyWeaponsConsole locale={locale} />
@@ -101,6 +112,7 @@ export default async function NavyPage() {
       <NavyFullscreenPanel panel={visualPanels[1]} reverse locale={locale} />
       <NavyFutureStack programs={programs} locale={locale} />
       <NavySpecWarSection units={specWarUnits} locale={locale} />
+      <NavyHumanitarianSection missions={humanitarianMissions} locale={locale} />
       <NavyFullscreenPanel panel={visualPanels[2]} locale={locale} />
       <NavyClosing locale={locale} />
     </div>
