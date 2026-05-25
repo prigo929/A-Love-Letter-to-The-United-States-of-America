@@ -35,6 +35,18 @@ const nextConfig: NextConfig = {
         hostname: "upload.wikimedia.org",
         pathname: "/wikipedia/**",
       },
+      {
+        // DVIDS — Defense Visual Information Distribution Service
+        protocol: "https",
+        hostname: "media.defense.gov",
+        pathname: "/**",
+      },
+      {
+        // Pixabay CDN
+        protocol: "https",
+        hostname: "cdn.pixabay.com",
+        pathname: "/**",
+      },
     ],
     // Prefer WebP for faster real-world first loads. AVIF can be smaller, but
     // it is slower to encode on first request, which hurts perceived speed.

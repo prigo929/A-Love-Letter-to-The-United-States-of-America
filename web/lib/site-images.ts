@@ -161,4 +161,18 @@ export const SITE_IMAGES = {
     dualCarrier: navyHero.src,
     carrierFormation: carrierStrikeGroupFormation.src,
   },
+  airForce: {
+    hero: airForceHero.src,
+    f22: f22Raptor.src,
+    f22Formation: f22Formation.src,
+    f35: f35Lightning.src,
+    b2: b2Hero.src,
+    b21: b21Raider.src,
+    c130: c130Takeoff.src,
+    ac130: ac130Ghostrider.src,
+    personnel: airForcePersonnel.src,
+    drone: autonomousDrone.src,
+    minuteman: minutemanLaunch.src,
+    cyber: cyberOps.src,
+  },
 } as const;
