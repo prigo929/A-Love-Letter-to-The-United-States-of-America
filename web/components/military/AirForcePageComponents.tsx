@@ -112,7 +112,7 @@ export function AirForcePageProgress() {
 // Helpers
 // ─────────────────────────────────────────────────────────────────────────────
 
-function AFCountUp({ value, color = "white" }: { value: string; color?: string }) {
+function AFCountUp({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
   const [displayVal, setDisplayVal] = useState("0");
@@ -141,7 +141,7 @@ function AFCountUp({ value, color = "white" }: { value: string; color?: string }
     }
   }, [inView, value]);
 
-  return <span ref={ref} style={{ color }}>{displayVal}</span>;
+  return <span ref={ref} className="text-white">{displayVal}</span>;
 }
 
 function AFSectionTitle({
@@ -353,21 +353,24 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
                             className="absolute inset-y-0 left-0 flex rounded-full overflow-hidden"
                           >
                             {/* Segment 1: U.S. Air Force */}
-                            <div
-                              style={{ width: `${((tab === "total" ? 5217 : tab === "fighters" ? 1900 : 140) / val) * 100}%` }}
+                            <motion.div
+                              animate={{ width: `${((tab === "total" ? 5217 : tab === "fighters" ? 1900 : 140) / val) * 100}%` }}
+                              transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
                               className="h-full bg-gradient-to-r from-[#d4a44a] to-[#d4a44a]/85"
                             />
                             {/* Segment 2: U.S. Army (Only for total) */}
                             {tab === "total" && (
-                              <div
-                                style={{ width: `${(4400 / val) * 100}%` }}
+                              <motion.div
+                                animate={{ width: `${(4400 / val) * 100}%` }}
+                                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
                                 className="h-full bg-gradient-to-r from-white/40 to-white/25 border-l border-black/40"
                               />
                             )}
                             {/* Segment 3: U.S. Navy & Marines (Total and fighters) */}
                             {(tab === "total" || tab === "fighters") && (
-                              <div
-                                style={{ width: `${((tab === "total" ? 3600 : 1150) / val) * 100}%` }}
+                              <motion.div
+                                animate={{ width: `${((tab === "total" ? 3600 : 1150) / val) * 100}%` }}
+                                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
                                 className="h-full bg-gradient-to-r from-white/20 to-white/10 border-l border-black/40"
                               />
                             )}
@@ -509,7 +512,14 @@ export function AirForceCapabilityGrid({ capabilities, locale = "en" }: { capabi
             >
               {/* Top accent dot */}
               <div className="flex items-center gap-3 mb-6">
-                <div className="h-2 w-2 rounded-full opacity-60" style={{ backgroundColor: cap.accent }} />
+                <div className={cn(
+                  "h-2 w-2 rounded-full opacity-60",
+                  cap.accent === "#7dd3fc" ? "bg-sky-300" :
+                  cap.accent === "#f5a623" ? "bg-amber-500" :
+                  cap.accent === "#a78bfa" ? "bg-violet-400" :
+                  cap.accent === "#34d399" ? "bg-emerald-400" :
+                  "bg-red-400"
+                )} />
                 <span className="af-font-mono text-[9px] tracking-[0.2em] text-white/30">{cap.kicker}</span>
               </div>
 
@@ -527,7 +537,14 @@ export function AirForceCapabilityGrid({ capabilities, locale = "en" }: { capabi
               </p>
 
               <div className="mt-auto">
-                <span className="af-font-mono text-[9px] tracking-[0.15em]" style={{ color: cap.accent, opacity: 0.7 }}>
+                <span className={cn(
+                  "af-font-mono text-[9px] tracking-[0.15em] opacity-70",
+                  cap.accent === "#7dd3fc" ? "text-sky-300" :
+                  cap.accent === "#f5a623" ? "text-amber-500" :
+                  cap.accent === "#a78bfa" ? "text-violet-400" :
+                  cap.accent === "#34d399" ? "text-emerald-400" :
+                  "text-red-400"
+                )}>
                   {cap.stat}
                 </span>
               </div>
