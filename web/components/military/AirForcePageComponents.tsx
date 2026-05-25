@@ -345,36 +345,33 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
                       
                       <div className="flex-1 relative h-5 bg-white/[0.03] rounded-full overflow-hidden">
                         {isUS ? (
-                          <div className="absolute inset-0 flex rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${pct}%` }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+                            className="absolute inset-y-0 left-0 flex rounded-full overflow-hidden"
+                          >
                             {/* Segment 1: U.S. Air Force */}
-                            <motion.div
-                              initial={{ width: 0 }}
-                              whileInView={{ width: `${((tab === "total" ? 5217 : tab === "fighters" ? 1900 : 140) / val) * 100}%` }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                            <div
+                              style={{ width: `${((tab === "total" ? 5217 : tab === "fighters" ? 1900 : 140) / val) * 100}%` }}
                               className="h-full bg-gradient-to-r from-[#d4a44a] to-[#d4a44a]/85"
                             />
                             {/* Segment 2: U.S. Army (Only for total) */}
                             {tab === "total" && (
-                              <motion.div
-                                initial={{ width: 0 }}
-                                whileInView={{ width: `${(4400 / val) * 100}%` }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                              <div
+                                style={{ width: `${(4400 / val) * 100}%` }}
                                 className="h-full bg-gradient-to-r from-white/40 to-white/25 border-l border-black/40"
                               />
                             )}
                             {/* Segment 3: U.S. Navy & Marines (Total and fighters) */}
                             {(tab === "total" || tab === "fighters") && (
-                              <motion.div
-                                initial={{ width: 0 }}
-                                whileInView={{ width: `${((tab === "total" ? 3600 : 1150) / val) * 100}%` }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                              <div
+                                style={{ width: `${((tab === "total" ? 3600 : 1150) / val) * 100}%` }}
                                 className="h-full bg-gradient-to-r from-white/20 to-white/10 border-l border-black/40"
                               />
                             )}
-                          </div>
+                          </motion.div>
                         ) : (
                           <motion.div
                             initial={{ width: 0 }}
