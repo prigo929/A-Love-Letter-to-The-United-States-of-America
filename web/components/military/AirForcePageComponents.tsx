@@ -432,6 +432,35 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
               })}
             </motion.div>
           </AnimatePresence>
+
+          {/* Intelligence Brief footnote for Bombers */}
+          {tab === "bombers" && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-8 border-l border-zinc-600/60 pl-5 py-1 text-left"
+            >
+              <h4 className="af-font-mono text-[9px] font-bold tracking-[0.25em] text-[#d4a44a] uppercase mb-2">
+                {isRo ? "RAPORT ANALITIC: REALITATEA DESCURAJĂRII STRATEGICE" : "INTELLIGENCE BRIEF: THE REALITY OF STRATEGIC DETERRENCE"}
+              </h4>
+              <p className="text-[11px] leading-[1.8] text-zinc-400 max-w-3xl">
+                {isRo ? (
+                  <>
+                    Volumul brut este o metrică a trecutului. În timp ce adversarii apropiați își umflă numărul flotei cu avioane clasice non-stealth produse în masă (cum ar fi cele din era sovietică Tu-95 sau chinezești H-6), flota de bombardiere americană optimizează pentru supraviețuire, viteză și letalitate de penetrare.
+                    <br /><br />
+                    Numărul de 140 din SUA este o forță extrem de specializată care combină capacitatea masivă de încărcare a B-52 Stratofortress, capacitatea de lovire supersonică a B-1B Lancer, penetrarea greu de detectat a B-2 Spirit și viitorul B-21 Raider de generația a 6-a. În spațiul aerian contestat modern, un singur B-21 nedetectat sau un payload B-1B desfășurat rapid este exponențial mai devastator decât o duzină de bombardiere clasice vizibile.
+                  </>
+                ) : (
+                  <>
+                    Raw volume is a metric of the past. While near-peer adversaries inflate their fleet numbers with mass-produced, non-stealth legacy airframes (such as the Soviet-era Tu-95 or the Chinese H-6), the American bomber fleet optimizes for survivability, speed, and penetrating lethality.
+                    <br /><br />
+                    The U.S. 140 count is a highly specialized force combining the massive payload capacity of the B-52 Stratofortress, the supersonic strike capability of the B-1B Lancer, the low-observable penetration of the B-2 Spirit, and the incoming 6th-generation B-21 Raider. In modern contested airspace, a single undetected B-21 or a rapidly deployed B-1B payload is exponentially more devastating than a dozen visible legacy bombers.
+                  </>
+                )}
+              </p>
+            </motion.div>
+          )}
         </div>
 
         <div className="mt-12 text-center af-font-mono text-[9px] tracking-[0.25em] text-white/20">
