@@ -331,36 +331,105 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
                 const pct = maxVal > 0 ? (val / maxVal) * 100 : 0;
                 const isUS = d.highlight;
                 return (
-                  <div key={d.country} className={cn(
-                    "flex items-center gap-5 py-4 px-5 transition-colors duration-300 rounded-sm",
-                    isUS ? "bg-white/[0.04]" : "hover:bg-white/[0.02]"
-                  )}>
-                    <div className="flex items-center gap-3 w-36 shrink-0">
-                      <span className="text-lg">{d.flag}</span>
-                      <span className={cn("af-font-mono text-[10px] tracking-[0.08em]", isUS ? "text-white" : "text-white/40")}>
-                        {d.country}
-                      </span>
-                    </div>
-                    <div className="flex-1 relative h-5 bg-white/[0.03] rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${pct}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-                        className={cn(
-                          "absolute inset-y-0 left-0 rounded-full",
-                          isUS
-                            ? "bg-gradient-to-r from-white/70 to-white/20"
-                            : "bg-gradient-to-r from-white/12 to-white/[0.04]"
-                        )}
-                      />
-                    </div>
+                  <div key={d.country} className="group/row">
                     <div className={cn(
-                      "af-font-display text-base font-black w-16 text-right tabular-nums",
-                      isUS ? "text-white" : "text-white/35"
+                      "flex items-center gap-5 py-4 px-5 transition-colors duration-300 rounded-sm",
+                      isUS ? "bg-white/[0.04]" : "hover:bg-white/[0.02]"
                     )}>
-                      {val.toLocaleString()}
+                      <div className="flex items-center gap-3 w-36 shrink-0">
+                        <span className="text-lg">{d.flag}</span>
+                        <span className={cn("af-font-mono text-[10px] tracking-[0.08em]", isUS ? "text-white" : "text-white/40")}>
+                          {d.country}
+                        </span>
+                      </div>
+                      
+                      <div className="flex-1 relative h-5 bg-white/[0.03] rounded-full overflow-hidden">
+                        {isUS ? (
+                          <div className="absolute inset-0 flex rounded-full overflow-hidden">
+                            {/* Segment 1: U.S. Air Force */}
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${((tab === "total" ? 5217 : tab === "fighters" ? 1900 : 140) / val) * 100}%` }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                              className="h-full bg-gradient-to-r from-[#d4a44a] to-[#d4a44a]/85"
+                            />
+                            {/* Segment 2: U.S. Army (Only for total) */}
+                            {tab === "total" && (
+                              <motion.div
+                                initial={{ width: 0 }}
+                                whileInView={{ width: `${(4400 / val) * 100}%` }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                                className="h-full bg-gradient-to-r from-white/40 to-white/25 border-l border-black/40"
+                              />
+                            )}
+                            {/* Segment 3: U.S. Navy & Marines (Total and fighters) */}
+                            {(tab === "total" || tab === "fighters") && (
+                              <motion.div
+                                initial={{ width: 0 }}
+                                whileInView={{ width: `${((tab === "total" ? 3600 : 1150) / val) * 100}%` }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                                className="h-full bg-gradient-to-r from-white/20 to-white/10 border-l border-black/40"
+                              />
+                            )}
+                          </div>
+                        ) : (
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${pct}%` }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+                            className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-white/12 to-white/[0.04]"
+                          />
+                        )}
+                      </div>
+                      
+                      <div className={cn(
+                        "af-font-display text-base font-black w-16 text-right tabular-nums",
+                        isUS ? "text-[#d4a44a]" : "text-white/35"
+                      )}>
+                        {val.toLocaleString()}
+                      </div>
                     </div>
+                    
+                    {isUS && (
+                      <div className="flex flex-wrap gap-x-6 gap-y-2 mt-1 mb-4 pl-5 md:pl-[164px] pr-20 text-[9px] tracking-wider af-font-mono text-white/40">
+                        {tab === "total" ? (
+                          <>
+                            <span className="flex items-center gap-1.5">
+                              <span className="h-1.5 w-1.5 rounded-full bg-[#d4a44a]" />
+                              {isRo ? "U.S. Air Force: 5.217" : "U.S. Air Force: 5,217"}
+                            </span>
+                            <span className="flex items-center gap-1.5">
+                              <span className="h-1.5 w-1.5 rounded-full bg-white/40" />
+                              {isRo ? "U.S. Army: 4.400" : "U.S. Army: 4,400"}
+                            </span>
+                            <span className="flex items-center gap-1.5">
+                              <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+                              {isRo ? "U.S. Navy & Marines: 3.600" : "U.S. Navy & Marines: 3,600"}
+                            </span>
+                          </>
+                        ) : tab === "fighters" ? (
+                          <>
+                            <span className="flex items-center gap-1.5">
+                              <span className="h-1.5 w-1.5 rounded-full bg-[#d4a44a]" />
+                              {isRo ? "U.S. Air Force: 1.900" : "U.S. Air Force: 1,900"}
+                            </span>
+                            <span className="flex items-center gap-1.5">
+                              <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+                              {isRo ? "U.S. Navy & Marines: 1.150" : "U.S. Navy & Marines: 1,150"}
+                            </span>
+                          </>
+                        ) : (
+                          <span className="flex items-center gap-1.5">
+                            <span className="h-1.5 w-1.5 rounded-full bg-[#d4a44a]" />
+                            {isRo ? "U.S. Air Force: 140 (Toate bombardierele strategice din SUA)" : "U.S. Air Force: 140 (All U.S. Strategic Bombers)"}
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </div>
                 );
               })}

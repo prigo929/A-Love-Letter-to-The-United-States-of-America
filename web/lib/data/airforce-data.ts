@@ -412,7 +412,7 @@ export const AF_HERITAGE_TIMELINE: AirForceHeritageEvent[] = [
 ];
 
 export const AF_FLEET_COMPARISON: AirForceFleetComparison[] = [
-  { country: "United States", flag: "🇺🇸", fighters: 2717, bombers: 140, tankers: 479, totalAircraft: 5217, highlight: true },
+  { country: "United States", flag: "🇺🇸", fighters: 3050, bombers: 140, tankers: 625, totalAircraft: 13217, highlight: true },
   { country: "China",         flag: "🇨🇳", fighters: 1200, bombers: 176, tankers: 15,  totalAircraft: 3285 },
   { country: "Russia",        flag: "🇷🇺", fighters: 772,  bombers: 162, tankers: 19,  totalAircraft: 3829 },
   { country: "India",         flag: "🇮🇳", fighters: 572,  bombers: 0,   tankers: 6,   totalAircraft: 2182 },
@@ -698,7 +698,7 @@ export function getAirForceHeritageTimeline(locale: Locale): AirForceHeritageEve
 export function getAirForceFleetComparison(locale: Locale): AirForceFleetComparison[] {
   if (locale !== "ro") return AF_FLEET_COMPARISON;
   return [
-    { country: "Statele Unite", flag: "🇺🇸", fighters: 2717, bombers: 140, tankers: 479, totalAircraft: 5217, highlight: true },
+    { country: "Statele Unite", flag: "🇺🇸", fighters: 3050, bombers: 140, tankers: 625, totalAircraft: 13217, highlight: true },
     { country: "China",         flag: "🇨🇳", fighters: 1200, bombers: 176, tankers: 15,  totalAircraft: 3285 },
     { country: "Rusia",         flag: "🇷🇺", fighters: 772,  bombers: 162, tankers: 19,  totalAircraft: 3829 },
     { country: "India",         flag: "🇮🇳", fighters: 572,  bombers: 0,   tankers: 6,   totalAircraft: 2182 },
