@@ -721,18 +721,20 @@ export function AirForceHeritageTimeline({ events, locale = "en" }: { events: Ai
                   <div className="af-font-mono text-[11px] tracking-[0.2em] text-[#d4a44a]/60 mb-3">{event.year}</div>
 
                   {/* Image */}
-                  <div className="relative aspect-[16/9] w-full overflow-hidden mb-5 rounded-sm">
-                    <Image
-                      src={event.imageSrc}
-                      alt={event.title}
-                      fill
-                      className="object-cover brightness-[0.45] saturate-[0.7] hover:brightness-[0.6] hover:saturate-[0.9] transition-all duration-700"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      placeholder="blur"
-                      blurDataURL={BLUR_PLACEHOLDER}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
-                  </div>
+                  {event.imageSrc && (
+                    <div className="relative aspect-[16/9] w-full overflow-hidden mb-5 rounded-sm">
+                      <Image
+                        src={event.imageSrc}
+                        alt={event.title}
+                        fill
+                        className="object-cover brightness-[0.45] saturate-[0.7] hover:brightness-[0.6] hover:saturate-[0.9] transition-all duration-700"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        placeholder="blur"
+                        blurDataURL={BLUR_PLACEHOLDER}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+                    </div>
+                  )}
 
                   <h3 className="af-font-display text-lg sm:text-xl font-black text-white mb-3 leading-[0.95]">{event.title}</h3>
                   <p className="text-[12px] leading-[1.8] text-white/40 mb-4">{event.description}</p>
