@@ -7,17 +7,11 @@ import { AnimatePresence, motion, useScroll, useTransform, useInView, animate } 
 import {
   Anchor,
   ArrowUpRight,
-  Crosshair,
-  Gauge,
   MapPin,
   Network,
   Plane,
-  Radar,
-  Rocket,
   Satellite,
   Shield,
-  Target,
-  Zap,
 } from "lucide-react";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 import type { Locale } from "@/lib/i18n/config";
@@ -33,12 +27,12 @@ import type {
 } from "@/lib/data/airforce-data";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 32 },
   visible: { opacity: 1, y: 0 },
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1. AirForceStyles — Aerospace-Grade HUD Design System
+// 1. AirForceStyles
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function AirForceStyles() {
@@ -46,36 +40,31 @@ export function AirForceStyles() {
     <style jsx global>{`
       .af-page {
         --af-black: #000000;
-        --af-void: #020304;
-        --af-surface: #060a0f;
-        --af-steel: #8b9bb4;
-        --af-amber: #f5a623;
-        --af-sky: #7dd3fc;
-        --af-panel: rgba(6, 10, 15, 0.9);
-        --af-border: rgba(255, 255, 255, 0.05);
-        --af-border-glow: rgba(125, 211, 252, 0.12);
+        --af-void: #050608;
+        --af-surface: #0a0c10;
+        --af-elevated: #12151b;
+        --af-amber: #d4a44a;
+        --af-sky: #7aaed4;
+        --af-border: rgba(255, 255, 255, 0.06);
         background: var(--af-black);
         color: white;
       }
 
       .af-font-display {
         font-family: var(--font-archivo), Inter, system-ui, sans-serif;
-        letter-spacing: -0.03em;
+        letter-spacing: -0.035em;
         text-transform: uppercase;
       }
 
       .af-font-mono {
         font-family: var(--font-mono), "SFMono-Regular", Consolas, monospace;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
       }
 
-      .af-grid-plane {
-        background-image:
-          radial-gradient(rgba(125, 211, 252, 0.05) 1px, transparent 1px),
-          radial-gradient(rgba(245, 166, 35, 0.03) 1px, transparent 1px);
-        background-size: 32px 32px;
-        mask-image: radial-gradient(ellipse at 50% 45%, black 0%, transparent 80%);
+      .af-dot-grid {
+        background-image: radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px);
+        background-size: 28px 28px;
       }
 
       .af-noise::after {
@@ -83,52 +72,21 @@ export function AirForceStyles() {
         position: absolute;
         inset: 0;
         pointer-events: none;
-        opacity: 0.10;
-        mix-blend-mode: screen;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E");
+        opacity: 0.06;
+        mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
       }
 
-      .af-glass-premium {
-        background: rgba(3, 6, 10, 0.88);
-        backdrop-filter: blur(32px) saturate(1.15);
-        -webkit-backdrop-filter: blur(32px) saturate(1.15);
-        border: 1px solid var(--af-border-glow);
-        box-shadow: 
-          inset 0 0 20px rgba(6, 10, 15, 0.8),
-          0 10px 40px rgba(0, 0, 0, 0.9);
-      }
-
-      .af-panel-tactical {
-        background: rgba(4, 8, 14, 0.92);
+      .af-glass {
+        background: rgba(8, 10, 14, 0.82);
+        backdrop-filter: blur(40px) saturate(1.2);
+        -webkit-backdrop-filter: blur(40px) saturate(1.2);
         border: 1px solid rgba(255, 255, 255, 0.06);
-        box-shadow: inset 0 0 14px rgba(6, 10, 15, 0.5);
       }
 
-      .af-hud-line {
-        background: linear-gradient(90deg, transparent, rgba(245, 166, 35, 0.25), transparent);
-      }
-
-      @keyframes af-drift {
-        0% { transform: translate3d(-0.5%, -0.3%, 0) scale(1); }
-        100% { transform: translate3d(0.5%, 0.3%, 0) scale(1.02); }
-      }
-
-      .af-drift {
-        animation: af-drift 18s ease-in-out infinite alternate;
-      }
-
-      @keyframes af-sheen {
-        0% { transform: translateX(-130%); opacity: 0; }
-        20% { opacity: 0.35; }
-        100% { transform: translateX(130%); opacity: 0; }
-      }
-
-      .af-sheen::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(105deg, transparent 36%, rgba(125, 211, 252, 0.08), transparent 64%);
-        animation: af-sheen 9s ease-in-out infinite;
+      .af-panel {
+        background: var(--af-surface);
+        border: 1px solid rgba(255, 255, 255, 0.05);
       }
     `}</style>
   );
@@ -141,9 +99,9 @@ export function AirForceStyles() {
 export function AirForcePageProgress() {
   const { scrollYProgress } = useScroll();
   return (
-    <div className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-px bg-white/4">
+    <div className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-[2px] bg-white/[0.03]">
       <motion.div
-        className="h-full origin-left bg-[linear-gradient(90deg,#1a1a2e,#f5a623,#ffffff)]"
+        className="h-full origin-left bg-gradient-to-r from-[#d4a44a] via-white/90 to-white"
         style={{ scaleX: scrollYProgress }}
       />
     </div>
@@ -151,7 +109,7 @@ export function AirForcePageProgress() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2.5 CountUp helper
+// Helpers
 // ─────────────────────────────────────────────────────────────────────────────
 
 function AFCountUp({ value, color = "white" }: { value: string; color?: string }) {
@@ -170,7 +128,7 @@ function AFCountUp({ value, color = "white" }: { value: string; color?: string }
 
     if (inView) {
       const controls = animate(0, num, {
-        duration: 1.8,
+        duration: 2,
         ease: [0.16, 1, 0.3, 1],
         onUpdate: (latest) => {
           const formatted = num >= 1000
@@ -186,27 +144,90 @@ function AFCountUp({ value, color = "white" }: { value: string; color?: string }
   return <span ref={ref} style={{ color }}>{displayVal}</span>;
 }
 
+function AFSectionTitle({
+  label, title, subtitle, body, align = "center",
+}: {
+  label: string; title: string; subtitle?: string; body: string; align?: "center" | "left";
+}) {
+  const isCenter = align === "center";
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-60px" }}
+      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+      className={cn("mb-24 max-w-5xl", isCenter ? "mx-auto text-center" : "text-left")}
+    >
+      <motion.div
+        variants={fadeUp}
+        transition={{ duration: 0.6 }}
+        className="af-font-mono mb-6 tracking-[0.3em] text-[10px] text-[#d4a44a]/70"
+      >
+        {label}
+      </motion.div>
+      <motion.h2
+        variants={fadeUp}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="af-font-display text-[clamp(36px,7vw,88px)] font-black leading-[0.88] text-white"
+      >
+        {title}
+      </motion.h2>
+      {subtitle && (
+        <motion.div
+          variants={fadeUp}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="af-font-display text-[clamp(36px,7vw,88px)] font-black leading-[0.88] text-white/15 mt-1"
+        >
+          {subtitle}
+        </motion.div>
+      )}
+      <motion.p
+        variants={fadeUp}
+        transition={{ duration: 0.6 }}
+        className={cn(
+          "mt-8 text-sm leading-[1.9] text-white/50 tracking-wide",
+          isCenter ? "max-w-2xl mx-auto" : "max-w-xl"
+        )}
+      >
+        {body}
+      </motion.p>
+    </motion.div>
+  );
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
-// 2.6 SectionTitle helper
+// Full-bleed image divider
 // ─────────────────────────────────────────────────────────────────────────────
 
-function AFSectionTitle({
-  label, titlePart1, titlePart2, body,
+export function AirForceFullBleed({
+  imageSrc, imageAlt, caption,
 }: {
-  label: string; titlePart1: string; titlePart2: string; body: string;
+  imageSrc: string; imageAlt: string; caption?: string;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+
   return (
-    <div className="text-center mb-20 max-w-4xl mx-auto flex flex-col items-center">
-      <div className="af-font-mono mb-10 tracking-[0.25em] text-[#f5a623]/80 text-[10px] sm:text-xs font-bold uppercase">
-        [ {label} ]
-      </div>
-      <h2 className="mb-6 flex flex-col items-center w-full text-center">
-        <span className="af-font-display block whitespace-nowrap leading-[0.85] text-4xl sm:text-6xl lg:text-7xl font-black uppercase text-white">{titlePart1}</span>
-        <span className="af-font-display block whitespace-nowrap text-white/20 leading-[0.85] text-4xl sm:text-6xl lg:text-7xl font-black uppercase">{titlePart2}</span>
-      </h2>
-      <p className="mt-4 max-w-2xl text-center text-xs sm:text-sm leading-relaxed text-white/55 tracking-wide">
-        {body}
-      </p>
+    <div ref={ref} className="relative h-[55vh] min-h-[400px] overflow-hidden">
+      <motion.div className="absolute inset-0 -inset-y-[12%]" style={{ y }}>
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          quality={90}
+          className="object-cover brightness-[0.3] saturate-[0.8]"
+          sizes="100vw"
+          placeholder="blur"
+          blurDataURL={BLUR_PLACEHOLDER}
+        />
+      </motion.div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 pointer-events-none" />
+      {caption && (
+        <div className="absolute bottom-8 left-0 right-0 text-center">
+          <span className="af-font-mono text-[10px] tracking-[0.3em] text-white/30">{caption}</span>
+        </div>
+      )}
     </div>
   );
 }
@@ -217,27 +238,24 @@ function AFSectionTitle({
 
 export function AirForceMetricStrip({ metrics, locale = "en" }: { metrics: AirForceMetric[]; locale?: Locale }) {
   return (
-    <section className="relative overflow-hidden bg-black border-b border-white/5">
-      <div className="absolute inset-0 af-grid-plane opacity-15 pointer-events-none" />
-      <div className="af-noise absolute inset-0 opacity-25 pointer-events-none" />
-      <div className="relative mx-auto max-w-[1520px] px-5 py-12 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
-          {metrics.map((m) => (
+    <section className="relative bg-[#050608] border-y border-white/[0.04]">
+      <div className="mx-auto max-w-[1400px] px-6 py-16 sm:px-10 lg:px-16">
+        <div className="grid grid-cols-2 gap-px sm:grid-cols-3 lg:grid-cols-6 bg-white/[0.04] border border-white/[0.04]">
+          {metrics.map((m, i) => (
             <motion.div
               key={m.label}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, margin: "-30px" }}
               variants={fadeUp}
-              transition={{ duration: 0.6 }}
-              className="group relative overflow-hidden border border-white/5 bg-[#020304] p-5 hover:border-white/10 transition-colors duration-300"
+              transition={{ duration: 0.6, delay: i * 0.06 }}
+              className="group relative bg-[#050608] p-6 lg:p-7"
             >
-              <div className="af-font-display text-3xl font-black text-white leading-none mb-2">
+              <div className="af-font-display text-[clamp(28px,3.5vw,42px)] font-black text-white leading-none mb-3 tracking-tight">
                 <AFCountUp value={m.value} />
               </div>
-              <div className="af-font-mono text-[9px] tracking-[0.2em] text-white/45 mb-3">{m.label}</div>
-              <div className="text-[10px] leading-relaxed text-white/35 group-hover:text-white/50 transition-colors">{m.detail}</div>
-              <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-[#f5a623]/50 transition-all duration-500 group-hover:w-full" />
+              <div className="af-font-mono text-[8px] tracking-[0.2em] text-white/35 mb-4 leading-relaxed">{m.label}</div>
+              <div className="text-[11px] leading-[1.7] text-white/25 group-hover:text-white/40 transition-colors duration-500">{m.detail}</div>
             </motion.div>
           ))}
         </div>
@@ -265,31 +283,31 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
   ];
 
   return (
-    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(125,211,252,0.08),transparent_40%)] pointer-events-none" />
-      <div className="af-noise absolute inset-0 opacity-25 pointer-events-none" />
+    <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
+      <div className="absolute inset-0 af-dot-grid opacity-40 pointer-events-none" />
+      <div className="af-noise absolute inset-0 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-[1520px]">
+      <div className="relative mx-auto max-w-[1400px]">
         <AFSectionTitle
-          label={isRo ? "COMPARAȚIE GLOBALĂ" : "GLOBAL COMPARISON"}
-          titlePart1={isRo ? "FLOTĂ" : "FLEET"}
-          titlePart2={isRo ? "AERIANĂ" : "STRENGTH"}
+          label={isRo ? "Comparație globală" : "Global comparison"}
+          title={isRo ? "Putere aeriană" : "Fleet strength"}
+          subtitle={isRo ? "fără precedent" : "unmatched"}
           body={isRo
             ? "Forțele Aeriene ale SUA operează cea mai mare și avansată flotă aeriană militară din lume — mai mare decât următoarele cinci forțe aeriene combinate."
             : "The United States Air Force operates the largest and most advanced military air fleet in the world — larger than the next five air forces combined."}
         />
 
         {/* Tabs */}
-        <div className="flex justify-center gap-2 mb-12">
+        <div className="flex justify-center gap-1.5 mb-14">
           {tabs.map((t) => (
             <button
               key={t.key}
               onClick={() => setTab(t.key)}
               className={cn(
-                "af-font-mono px-5 py-2.5 text-[10px] tracking-[0.15em] border transition-all duration-300",
+                "af-font-mono px-6 py-3 text-[10px] tracking-[0.15em] transition-all duration-300 rounded-sm",
                 tab === t.key
-                  ? "border-[#f5a623]/40 bg-[#f5a623]/8 text-white"
-                  : "border-white/5 text-white/35 hover:text-white/60 hover:border-white/10"
+                  ? "bg-white text-black"
+                  : "text-white/30 hover:text-white/60 hover:bg-white/[0.04]"
               )}
             >
               {t.label}
@@ -298,15 +316,15 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
         </div>
 
         {/* Comparison bars */}
-        <div className="space-y-3 max-w-4xl mx-auto">
+        <div className="space-y-2 max-w-4xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
               key={tab}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
+              exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="space-y-3"
+              className="space-y-2"
             >
               {data.map((d) => {
                 const val = tab === "fighters" ? d.fighters : tab === "bombers" ? d.bombers : d.totalAircraft;
@@ -314,32 +332,32 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
                 const isUS = d.highlight;
                 return (
                   <div key={d.country} className={cn(
-                    "group relative flex items-center gap-4 border p-4 transition-colors duration-300",
-                    isUS ? "border-[#f5a623]/20 bg-[#f5a623]/[0.04]" : "border-white/5 bg-[#020304] hover:border-white/8"
+                    "flex items-center gap-5 py-4 px-5 transition-colors duration-300 rounded-sm",
+                    isUS ? "bg-white/[0.04]" : "hover:bg-white/[0.02]"
                   )}>
-                    <div className="flex items-center gap-3 w-40 shrink-0">
-                      <span className="text-xl">{d.flag}</span>
-                      <span className={cn("af-font-mono text-[10px] tracking-[0.1em]", isUS ? "text-white" : "text-white/50")}>
+                    <div className="flex items-center gap-3 w-36 shrink-0">
+                      <span className="text-lg">{d.flag}</span>
+                      <span className={cn("af-font-mono text-[10px] tracking-[0.08em]", isUS ? "text-white" : "text-white/40")}>
                         {d.country}
                       </span>
                     </div>
-                    <div className="flex-1 relative h-6 bg-white/[0.03] overflow-hidden">
+                    <div className="flex-1 relative h-5 bg-white/[0.03] rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${pct}%` }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
                         className={cn(
-                          "absolute inset-y-0 left-0",
+                          "absolute inset-y-0 left-0 rounded-full",
                           isUS
-                            ? "bg-gradient-to-r from-[#f5a623]/60 to-[#f5a623]/20"
-                            : "bg-gradient-to-r from-white/15 to-white/5"
+                            ? "bg-gradient-to-r from-white/70 to-white/20"
+                            : "bg-gradient-to-r from-white/12 to-white/[0.04]"
                         )}
                       />
                     </div>
                     <div className={cn(
-                      "af-font-display text-lg font-black w-20 text-right",
-                      isUS ? "text-[#f5a623]" : "text-white/50"
+                      "af-font-display text-base font-black w-16 text-right tabular-nums",
+                      isUS ? "text-white" : "text-white/35"
                     )}>
                       {val.toLocaleString()}
                     </div>
@@ -350,9 +368,8 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
           </AnimatePresence>
         </div>
 
-        {/* Source */}
-        <div className="mt-10 text-center af-font-mono text-[9px] tracking-[0.2em] text-white/25">
-          {isRo ? "SURSA: FLIGHT INTERNATIONAL · GLOBAL COMBAT AIRCRAFT AUDIT 2024" : "SOURCE: FLIGHT INTERNATIONAL · GLOBAL COMBAT AIRCRAFT AUDIT 2024"}
+        <div className="mt-12 text-center af-font-mono text-[9px] tracking-[0.25em] text-white/20">
+          {isRo ? "Sursa: Flight International · Global Combat Aircraft Audit 2024" : "Source: Flight International · Global Combat Aircraft Audit 2024"}
         </div>
       </div>
     </section>
@@ -367,21 +384,20 @@ export function AirForceCapabilityGrid({ capabilities, locale = "en" }: { capabi
   const isRo = locale === "ro";
 
   return (
-    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(245,166,35,0.06),transparent_40%)] pointer-events-none" />
-      <div className="af-noise absolute inset-0 opacity-25 pointer-events-none" />
+    <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
+      <div className="af-noise absolute inset-0 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-[1520px]">
+      <div className="relative mx-auto max-w-[1400px]">
         <AFSectionTitle
-          label={isRo ? "CAPACITĂȚI DE BAZĂ" : "CORE CAPABILITIES"}
-          titlePart1={isRo ? "DOMENIILE" : "DOMAINS"}
-          titlePart2={isRo ? "PUTERII" : "OF POWER"}
+          label={isRo ? "Capacități de bază" : "Core capabilities"}
+          title={isRo ? "Domeniile" : "Domains"}
+          subtitle={isRo ? "supremației" : "of supremacy"}
           body={isRo
             ? "Cinci funcții de misiune distincte care definesc supremația aeriană a Americii — fiecare un pilon al descurajării și proiectării de forță."
             : "Five distinct mission functions that define American air supremacy — each a pillar of deterrence and force projection."}
         />
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
           {capabilities.map((cap, i) => (
             <motion.div
               key={cap.title}
@@ -389,32 +405,34 @@ export function AirForceCapabilityGrid({ capabilities, locale = "en" }: { capabi
               whileInView="visible"
               viewport={{ once: true, margin: "-40px" }}
               variants={fadeUp}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
+              transition={{ duration: 0.7, delay: i * 0.07 }}
               className={cn(
-                "group relative overflow-hidden border border-white/5 bg-[#020304] p-7 hover:border-white/10 transition-all duration-300",
+                "group relative overflow-hidden af-panel p-8 sm:p-10 transition-all duration-500 hover:border-white/10 flex flex-col",
                 i === 0 && "lg:col-span-2 lg:row-span-2",
-                i === 0 ? "min-h-[320px]" : "min-h-[220px]"
+                i === 0 ? "min-h-[380px]" : "min-h-[260px]"
               )}
             >
-              {/* Accent line */}
-              <div className="absolute top-0 left-0 w-full h-[2px]">
-                <div
-                  className="h-full w-0 group-hover:w-full transition-all duration-700"
-                  style={{ backgroundColor: cap.accent }}
-                />
+              {/* Top accent dot */}
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-2 w-2 rounded-full opacity-60" style={{ backgroundColor: cap.accent }} />
+                <span className="af-font-mono text-[9px] tracking-[0.2em] text-white/30">{cap.kicker}</span>
               </div>
 
-              <div className="af-font-mono text-[9px] tracking-[0.2em] text-white/35 mb-4">{cap.kicker}</div>
-              <h3 className="af-font-display text-2xl sm:text-3xl font-black text-white mb-4 leading-[0.95]">
+              <h3 className={cn(
+                "af-font-display font-black text-white mb-5 leading-[0.92]",
+                i === 0 ? "text-3xl sm:text-5xl" : "text-2xl sm:text-3xl"
+              )}>
                 {cap.title}
               </h3>
-              <p className="text-xs leading-relaxed text-white/45 group-hover:text-white/60 transition-colors mb-6">
+              <p className={cn(
+                "leading-[1.8] text-white/40 group-hover:text-white/55 transition-colors duration-500 mb-8",
+                i === 0 ? "text-sm max-w-lg" : "text-xs"
+              )}>
                 {cap.description}
               </p>
 
-              <div className="mt-auto flex items-center gap-2">
-                <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: cap.accent }} />
-                <span className="af-font-mono text-[9px] tracking-[0.15em]" style={{ color: cap.accent }}>
+              <div className="mt-auto">
+                <span className="af-font-mono text-[9px] tracking-[0.15em]" style={{ color: cap.accent, opacity: 0.7 }}>
                   {cap.stat}
                 </span>
               </div>
@@ -436,53 +454,47 @@ export function AirForceOperationalConsole({ theaters, locale = "en" }: { theate
   const isRo = locale === "ro";
 
   return (
-    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(125,211,252,0.10),transparent_32%),radial-gradient(circle_at_82%_72%,rgba(6,10,15,0.15),transparent_34%)]" />
-      <div className="absolute inset-0 af-grid-plane opacity-18 pointer-events-none" />
-      <div className="af-noise absolute inset-0 opacity-25 pointer-events-none" />
+    <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
+      <div className="af-noise absolute inset-0 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-[1520px]">
+      <div className="relative mx-auto max-w-[1400px]">
         <AFSectionTitle
-          label={isRo ? "TEATRU INTERACTIV" : "INTERACTIVE THEATER"}
-          titlePart1={isRo ? "COMANDAMENTE" : "GLOBAL"}
-          titlePart2={isRo ? "GLOBALE" : "COMMANDS"}
+          label={isRo ? "Teatre de operațiuni" : "Theaters of operation"}
+          title={isRo ? "Comandamente" : "Global"}
+          subtitle={isRo ? "globale" : "commands"}
           body={isRo
-            ? "Selectați un teatru. Interfața configurează forțele aeriene ca prezență, descurajare, logistică și infrastructură de comandă adaptată fiecărui mediu strategic."
-            : "Select a theater. The interface reframes the same Air Force as presence, deterrence, logistics, and command infrastructure tuned to a different strategic environment."}
+            ? "Selectați un teatru. Forțele Aeriene se configurează ca prezență, descurajare și infrastructură de comandă adaptată fiecărui mediu strategic."
+            : "Select a theater. The Air Force reconfigures as presence, deterrence, and command infrastructure tuned to each strategic environment."}
         />
 
-        <div className="mt-14 grid min-h-[760px] overflow-hidden border border-white/5 bg-[#020304] lg:grid-cols-[340px_1fr_400px]">
-          {/* Left panel — theater selector */}
-          <div className="z-10 flex flex-col border-b border-white/5 bg-black/40 p-4 backdrop-blur-xl lg:border-b-0 lg:border-r">
+        <div className="grid overflow-hidden border border-white/[0.04] bg-[#050608] lg:grid-cols-[320px_1fr_380px] min-h-[680px]">
+          {/* Left — theater list */}
+          <div className="flex flex-col border-b lg:border-b-0 lg:border-r border-white/[0.04] bg-black/30">
             {theaters.map((theater, index) => {
-              const selected = active.id === theater.id;
+              const selected = activeIndex === index;
               return (
                 <button
                   key={theater.id}
                   type="button"
                   onClick={() => setActiveIndex(index)}
                   className={cn(
-                    "group relative min-h-28 overflow-hidden border border-transparent p-5 text-left transition-colors duration-300 mb-2 last:mb-0",
-                    selected ? "bg-white/[0.04] text-white" : "text-white/40 hover:bg-white/[0.015] hover:text-white/70"
+                    "relative flex-1 text-left px-7 py-6 transition-colors duration-300 border-b border-white/[0.03] last:border-b-0",
+                    selected ? "bg-white/[0.04]" : "hover:bg-white/[0.02]"
                   )}
                 >
                   {selected && (
                     <motion.div
-                      layoutId="af-theater-active"
-                      className="absolute inset-0 border border-white/10"
-                      style={{ boxShadow: "inset 0 0 12px rgba(125, 211, 252, 0.06)" }}
-                      transition={{ type: "spring", stiffness: 320, damping: 34 }}
+                      layoutId="af-theater-indicator"
+                      className="absolute left-0 top-0 bottom-0 w-[2px] bg-white/60"
+                      transition={{ type: "spring", stiffness: 400, damping: 40 }}
                     />
                   )}
-                  <div className="relative z-10">
-                    <div className="af-font-mono text-[9px] uppercase tracking-[0.2em]">{theater.region}</div>
-                    <div className="af-font-display mt-2 text-xl font-black uppercase leading-none">{theater.name}</div>
-                    <div className="mt-4 h-px w-full bg-white/5">
-                      <div
-                        className={cn("h-px transition-all duration-500", selected ? "w-full" : "w-10 group-hover:w-1/2")}
-                        style={{ backgroundColor: theater.accent }}
-                      />
-                    </div>
+                  <div className="af-font-mono text-[8px] tracking-[0.2em] text-white/25 mb-2">{theater.region}</div>
+                  <div className={cn(
+                    "af-font-display text-lg font-black leading-none transition-colors",
+                    selected ? "text-white" : "text-white/35"
+                  )}>
+                    {theater.name}
                   </div>
                 </button>
               );
@@ -490,14 +502,14 @@ export function AirForceOperationalConsole({ theaters, locale = "en" }: { theate
           </div>
 
           {/* Center — image */}
-          <div className="relative min-h-[480px] overflow-hidden">
+          <div className="relative min-h-[400px] overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active.id}
-                initial={{ opacity: 0, scale: 1.04 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.99 }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-0"
               >
                 <Image
@@ -505,7 +517,7 @@ export function AirForceOperationalConsole({ theaters, locale = "en" }: { theate
                   alt={active.imageAlt}
                   fill
                   quality={90}
-                  className="object-cover brightness-[0.35] grayscale-[0.2]"
+                  className="object-cover brightness-[0.28] saturate-[0.7]"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   placeholder="blur"
                   blurDataURL={BLUR_PLACEHOLDER}
@@ -513,44 +525,44 @@ export function AirForceOperationalConsole({ theaters, locale = "en" }: { theate
               </motion.div>
             </AnimatePresence>
 
-            {/* HUD overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#020304] via-transparent to-[#020304]/40 pointer-events-none" />
-            <div className="absolute bottom-6 left-6 right-6 z-10">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050608] via-transparent to-[#050608]/50 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#050608]/30 to-transparent pointer-events-none" />
+            <div className="absolute bottom-8 left-8 right-8 z-10">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={active.id + "-label"}
-                  initial={{ opacity: 0, y: 16 }}
+                  key={active.id + "-caption"}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
+                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div className="af-font-mono text-[9px] tracking-[0.2em] text-[#f5a623]/70 mb-2">{active.signal}</div>
-                  <div className="af-font-display text-3xl font-black text-white leading-[0.9] mb-3">{active.headline}</div>
+                  <div className="af-font-mono text-[9px] tracking-[0.2em] text-white/30 mb-3">{active.signal}</div>
+                  <div className="af-font-display text-2xl sm:text-3xl font-black text-white leading-[0.9]">{active.headline}</div>
                 </motion.div>
               </AnimatePresence>
             </div>
           </div>
 
-          {/* Right — detail panel */}
-          <div className="z-10 flex flex-col border-t border-white/5 bg-[#020304]/80 p-6 backdrop-blur-xl lg:border-t-0 lg:border-l">
+          {/* Right — details */}
+          <div className="flex flex-col border-t lg:border-t-0 lg:border-l border-white/[0.04] bg-[#050608] p-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active.id + "-detail"}
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: 16 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -10 }}
+                exit={{ opacity: 0, x: -8 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="flex flex-col h-full"
               >
-                <div className="af-font-mono text-[9px] tracking-[0.2em] text-white/35 mb-4">{active.region}</div>
-                <h3 className="af-font-display text-2xl font-black text-white mb-4 leading-[0.95]">{active.name}</h3>
-                <p className="text-xs leading-relaxed text-white/45 mb-8">{active.description}</p>
+                <div className="af-font-mono text-[8px] tracking-[0.2em] text-white/25 mb-2">{active.region}</div>
+                <h3 className="af-font-display text-xl font-black text-white mb-5 leading-[0.92]">{active.name}</h3>
+                <p className="text-[13px] leading-[1.85] text-white/40 mb-10">{active.description}</p>
 
-                <div className="mt-auto space-y-3">
+                <div className="mt-auto space-y-4">
                   {active.metrics.map((m) => (
-                    <div key={m.label} className="flex items-center justify-between border-b border-white/5 pb-2">
-                      <span className="af-font-mono text-[9px] tracking-[0.15em] text-white/40">{m.label}</span>
-                      <span className="af-font-mono text-[10px] tracking-[0.1em] text-white/70">{m.value}</span>
+                    <div key={m.label} className="flex items-center justify-between">
+                      <span className="af-font-mono text-[9px] tracking-[0.12em] text-white/30">{m.label}</span>
+                      <span className="af-font-mono text-[10px] tracking-[0.08em] text-white/65">{m.value}</span>
                     </div>
                   ))}
                 </div>
@@ -573,31 +585,30 @@ export function AirForcePlatformShowcase({ platforms, locale = "en" }: { platfor
   const isRo = locale === "ro";
 
   return (
-    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_80%,rgba(245,166,35,0.06),transparent_50%)] pointer-events-none" />
-      <div className="af-noise absolute inset-0 opacity-25 pointer-events-none" />
+    <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
+      <div className="af-noise absolute inset-0 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-[1520px]">
+      <div className="relative mx-auto max-w-[1400px]">
         <AFSectionTitle
-          label={isRo ? "PLATFORME DE LUPTĂ" : "COMBAT PLATFORMS"}
-          titlePart1={isRo ? "ARSENAL" : "WEAPONS"}
-          titlePart2={isRo ? "AERIAN" : "PLATFORMS"}
+          label={isRo ? "Platforme de luptă" : "Combat platforms"}
+          title={isRo ? "Arsenal" : "Weapons"}
+          subtitle={isRo ? "aerian" : "platforms"}
           body={isRo
             ? "De la superioritate aeriană la lovitură globală, mobilitate rapidă și război autonom — fiecare platformă reprezintă un pilon al puterii aeriene americane."
             : "From air superiority to global strike, rapid mobility, and autonomous warfare — each platform represents a pillar of American airpower."}
         />
 
-        {/* Platform selector tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        {/* Platform tabs */}
+        <div className="flex flex-wrap justify-center gap-1.5 mb-14">
           {platforms.map((p, i) => (
             <button
               key={p.name}
               onClick={() => setActiveIndex(i)}
               className={cn(
-                "af-font-mono px-4 py-2 text-[9px] tracking-[0.12em] border transition-all duration-300",
+                "af-font-mono px-4 py-2.5 text-[9px] tracking-[0.1em] transition-all duration-300 rounded-sm",
                 activeIndex === i
-                  ? "border-[#7dd3fc]/30 bg-[#7dd3fc]/8 text-white"
-                  : "border-white/5 text-white/30 hover:text-white/60 hover:border-white/10"
+                  ? "bg-white text-black"
+                  : "text-white/25 hover:text-white/55 hover:bg-white/[0.04]"
               )}
             >
               {p.name}
@@ -605,45 +616,46 @@ export function AirForcePlatformShowcase({ platforms, locale = "en" }: { platfor
           ))}
         </div>
 
-        {/* Active platform display */}
+        {/* Active platform */}
         <AnimatePresence mode="wait">
           <motion.div
             key={active.name}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
+            exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="grid gap-0 border border-white/5 bg-[#020304] lg:grid-cols-[1fr_480px]"
+            className="grid border border-white/[0.04] bg-[#050608] lg:grid-cols-[1fr_420px]"
           >
             {/* Image */}
-            <div className="relative min-h-[400px] lg:min-h-[520px] overflow-hidden">
+            <div className="relative min-h-[420px] lg:min-h-[560px] overflow-hidden">
               <Image
                 src={active.imageSrc}
                 alt={active.imageAlt}
                 fill
                 quality={90}
-                className="object-cover brightness-[0.4] grayscale-[0.15]"
+                className="object-cover brightness-[0.35] saturate-[0.8]"
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 placeholder="blur"
                 blurDataURL={BLUR_PLACEHOLDER}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#020304]/80 pointer-events-none" />
-              <div className="absolute bottom-8 left-8 z-10">
-                <div className="af-font-mono text-[9px] tracking-[0.2em] text-[#f5a623]/70 mb-2">{active.designation}</div>
-                <div className="af-font-display text-5xl sm:text-6xl font-black text-white leading-[0.85]">{active.name}</div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050608] via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050608]/50 pointer-events-none" />
+              <div className="absolute bottom-10 left-10 z-10">
+                <div className="af-font-mono text-[9px] tracking-[0.2em] text-white/30 mb-3">{active.designation}</div>
+                <div className="af-font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[0.85]">{active.name}</div>
               </div>
             </div>
 
             {/* Detail panel */}
-            <div className="flex flex-col p-8 lg:p-10 border-t lg:border-t-0 lg:border-l border-white/5">
-              <div className="af-font-mono text-[9px] tracking-[0.2em] text-[#7dd3fc]/60 mb-3">{active.capability}</div>
-              <p className="text-sm leading-relaxed text-white/55 mb-8">{active.role}</p>
+            <div className="flex flex-col p-9 lg:p-11 border-t lg:border-t-0 lg:border-l border-white/[0.04]">
+              <div className="af-font-mono text-[9px] tracking-[0.2em] text-[#7aaed4]/50 mb-4">{active.capability}</div>
+              <p className="text-[13px] leading-[1.85] text-white/45 mb-10">{active.role}</p>
 
-              <div className="grid grid-cols-2 gap-4 mt-auto">
+              <div className="grid grid-cols-2 gap-3 mt-auto">
                 {active.specs.map((s) => (
-                  <div key={s.label} className="border border-white/5 bg-white/[0.02] p-4">
-                    <div className="af-font-mono text-[8px] tracking-[0.2em] text-white/35 mb-1">{s.label}</div>
-                    <div className="af-font-display text-lg font-black text-white">{s.value}</div>
+                  <div key={s.label} className="af-panel p-5">
+                    <div className="af-font-mono text-[8px] tracking-[0.2em] text-white/25 mb-2">{s.label}</div>
+                    <div className="af-font-display text-lg font-black text-white leading-none">{s.value}</div>
                   </div>
                 ))}
               </div>
@@ -663,24 +675,22 @@ export function AirForceHeritageTimeline({ events, locale = "en" }: { events: Ai
   const isRo = locale === "ro";
 
   return (
-    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(245,166,35,0.06),transparent_50%)] pointer-events-none" />
-      <div className="af-noise absolute inset-0 opacity-25 pointer-events-none" />
+    <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
+      <div className="af-noise absolute inset-0 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-[1280px]">
+      <div className="relative mx-auto max-w-[1200px]">
         <AFSectionTitle
-          label={isRo ? "MOȘTENIRE" : "HERITAGE"}
-          titlePart1={isRo ? "ISTORIA" : "HISTORY"}
-          titlePart2={isRo ? "ZBORULUI" : "OF FLIGHT"}
+          label={isRo ? "Moștenire" : "Heritage"}
+          title={isRo ? "Istoria" : "History"}
+          subtitle={isRo ? "zborului" : "of flight"}
           body={isRo
             ? "De la Kitty Hawk la bombardierul stealth B-21 Raider — un secol de dominanță aeriană americană neîntreruptă."
             : "From Kitty Hawk to the B-21 Raider stealth bomber — a century of unbroken American air dominance."}
         />
 
-        {/* Timeline spine */}
         <div className="relative">
-          {/* Central vertical line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/8 hidden md:block" />
+          {/* Vertical spine */}
+          <div className="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-px bg-white/[0.06]" />
 
           {events.map((event, i) => {
             const isLeft = i % 2 === 0;
@@ -689,49 +699,48 @@ export function AirForceHeritageTimeline({ events, locale = "en" }: { events: Ai
                 key={event.year}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: true, margin: "-80px" }}
                 variants={fadeUp}
-                transition={{ duration: 0.7, delay: i * 0.06 }}
+                transition={{ duration: 0.8, delay: i * 0.05 }}
                 className={cn(
-                  "relative mb-12 last:mb-0 md:grid md:grid-cols-2 md:gap-12",
-                  isLeft ? "" : "md:direction-rtl"
+                  "relative mb-16 last:mb-0 pl-14 md:pl-0",
+                  "md:grid md:grid-cols-2 md:gap-16"
                 )}
               >
-                {/* Year node on spine */}
-                <div className="absolute left-1/2 top-4 -translate-x-1/2 z-10 hidden md:flex flex-col items-center">
-                  <div className="h-3 w-3 rounded-full bg-[#f5a623] shadow-[0_0_12px_rgba(245,166,35,0.3)]" />
+                {/* Year dot */}
+                <div className="absolute left-6 md:left-1/2 top-2 -translate-x-1/2 z-10">
+                  <div className="h-3 w-3 rounded-full bg-[#d4a44a]/80 ring-4 ring-black" />
                 </div>
 
-                {/* Content card */}
+                {/* Card — placed on correct side */}
                 <div className={cn(
-                  "af-panel-tactical p-6 md:direction-ltr",
-                  isLeft ? "md:col-start-1 md:pr-16" : "md:col-start-2 md:pl-16"
+                  "md:col-span-1",
+                  isLeft ? "md:col-start-1 md:pr-8" : "md:col-start-2 md:pl-8"
                 )}>
-                  <div className="af-font-mono text-[10px] tracking-[0.2em] text-[#f5a623]/70 mb-2">{event.year}</div>
-                  <h3 className="af-font-display text-xl font-black text-white mb-3 leading-[0.95]">{event.title}</h3>
-                  <p className="text-xs leading-relaxed text-white/45 mb-4">{event.description}</p>
+                  {/* Year badge */}
+                  <div className="af-font-mono text-[11px] tracking-[0.2em] text-[#d4a44a]/60 mb-3">{event.year}</div>
 
                   {/* Image */}
-                  <div className="relative aspect-[16/9] w-full overflow-hidden border border-white/5 mb-4">
+                  <div className="relative aspect-[16/9] w-full overflow-hidden mb-5 rounded-sm">
                     <Image
                       src={event.imageSrc}
                       alt={event.title}
                       fill
-                      className="object-cover brightness-[0.5] grayscale-[0.2] hover:brightness-[0.65] hover:scale-[1.02] transition-all duration-700"
+                      className="object-cover brightness-[0.45] saturate-[0.7] hover:brightness-[0.6] hover:saturate-[0.9] transition-all duration-700"
                       sizes="(max-width: 768px) 100vw, 50vw"
                       placeholder="blur"
                       blurDataURL={BLUR_PLACEHOLDER}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#020304]/60 to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
                   </div>
 
-                  <div className="flex items-center gap-2">
-                    <div className="h-1 w-1 rounded-full bg-[#f5a623]/50" />
-                    <span className="af-font-mono text-[8px] tracking-[0.15em] text-white/35">{event.significance}</span>
-                  </div>
+                  <h3 className="af-font-display text-lg sm:text-xl font-black text-white mb-3 leading-[0.95]">{event.title}</h3>
+                  <p className="text-[12px] leading-[1.8] text-white/40 mb-4">{event.description}</p>
+
+                  <span className="af-font-mono text-[8px] tracking-[0.15em] text-white/25">{event.significance}</span>
                 </div>
 
-                {/* Empty opposite column for spacing */}
+                {/* Empty col */}
                 <div className={cn("hidden md:block", isLeft ? "md:col-start-2" : "md:col-start-1")} />
               </motion.div>
             );
@@ -752,47 +761,42 @@ export function AirForceBasesSection({ bases, locale = "en" }: { bases: AirForce
   const isRo = locale === "ro";
 
   return (
-    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 af-grid-plane opacity-15 pointer-events-none" />
-      <div className="af-noise absolute inset-0 opacity-25 pointer-events-none" />
+    <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
+      <div className="absolute inset-0 af-dot-grid opacity-30 pointer-events-none" />
+      <div className="af-noise absolute inset-0 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-[1520px]">
+      <div className="relative mx-auto max-w-[1400px]">
         <AFSectionTitle
-          label={isRo ? "BAZE & INSTALAȚII" : "BASES & INSTALLATIONS"}
-          titlePart1={isRo ? "INFRASTRUCTURĂ" : "GLOBAL"}
-          titlePart2={isRo ? "GLOBALĂ" : "FOOTPRINT"}
+          label={isRo ? "Baze & instalații" : "Bases & installations"}
+          title={isRo ? "Infrastructură" : "Global"}
+          subtitle={isRo ? "globală" : "footprint"}
           body={isRo
             ? "De la deșertul Nevada la Europa de Vest și Pacificul de Vest — bazele aeriene americane formează o rețea globală de putere aeriană permanentă."
-            : "From the Nevada desert to Western Europe and the Western Pacific — American air bases form a permanent global network of airpower readiness."}
+            : "From the Nevada desert to Western Europe and the Western Pacific — American air bases form a permanent global airpower network."}
         />
 
-        <div className="grid gap-4 lg:grid-cols-[1fr_480px]">
+        <div className="grid gap-4 lg:grid-cols-[1fr_460px]">
           {/* Base grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
             {bases.map((base, i) => (
               <button
                 key={base.name}
                 onClick={() => setActiveIndex(i)}
                 className={cn(
-                  "group relative text-left border p-5 transition-all duration-300",
+                  "group relative text-left p-6 transition-all duration-300 rounded-sm",
                   activeIndex === i
-                    ? "border-white/10 bg-white/[0.04]"
-                    : "border-white/5 bg-[#020304] hover:border-white/8"
+                    ? "bg-white/[0.05] ring-1 ring-white/10"
+                    : "hover:bg-white/[0.02]"
                 )}
               >
-                {activeIndex === i && (
-                  <motion.div
-                    layoutId="af-base-active"
-                    className="absolute inset-0 border"
-                    style={{ borderColor: `${base.accent}30` }}
-                    transition={{ type: "spring", stiffness: 320, damping: 34 }}
-                  />
-                )}
-                <div className="relative z-10">
-                  <MapPin size={12} className="text-white/30 mb-2" strokeWidth={1.5} />
-                  <div className="af-font-display text-sm font-black text-white leading-none mb-1">{base.name}</div>
-                  <div className="af-font-mono text-[8px] tracking-[0.15em] text-white/35">{base.location}</div>
+                <MapPin size={11} className={cn("mb-3 transition-colors", activeIndex === i ? "text-white/50" : "text-white/20")} strokeWidth={1.5} />
+                <div className={cn(
+                  "af-font-display text-sm font-black leading-none mb-1.5 transition-colors",
+                  activeIndex === i ? "text-white" : "text-white/40"
+                )}>
+                  {base.name}
                 </div>
+                <div className="af-font-mono text-[8px] tracking-[0.12em] text-white/25">{base.location}</div>
               </button>
             ))}
           </div>
@@ -801,24 +805,22 @@ export function AirForceBasesSection({ bases, locale = "en" }: { bases: AirForce
           <AnimatePresence mode="wait">
             <motion.div
               key={active.name}
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 16 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -10 }}
+              exit={{ opacity: 0, x: -8 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="border border-white/5 bg-[#020304] p-8"
+              className="af-panel p-9 rounded-sm"
             >
-              <div className="af-font-mono text-[9px] tracking-[0.2em] mb-2" style={{ color: `${active.accent}90` }}>
-                {active.role}
-              </div>
-              <h3 className="af-font-display text-3xl font-black text-white mb-2 leading-[0.95]">{active.name}</h3>
-              <div className="af-font-mono text-[9px] tracking-[0.15em] text-white/35 mb-6">{active.location}</div>
-              <p className="text-xs leading-relaxed text-white/45 mb-8">{active.description}</p>
+              <div className="af-font-mono text-[9px] tracking-[0.2em] text-white/25 mb-2">{active.role}</div>
+              <h3 className="af-font-display text-2xl sm:text-3xl font-black text-white mb-2 leading-[0.92]">{active.name}</h3>
+              <div className="af-font-mono text-[8px] tracking-[0.15em] text-white/25 mb-7">{active.location}</div>
+              <p className="text-[13px] leading-[1.85] text-white/40 mb-10">{active.description}</p>
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {active.stats.map((s) => (
-                  <div key={s.label} className="flex items-center justify-between border-b border-white/5 pb-2">
-                    <span className="af-font-mono text-[9px] tracking-[0.15em] text-white/40">{s.label}</span>
-                    <span className="af-font-mono text-[10px] tracking-[0.1em] text-white/70">{s.value}</span>
+                  <div key={s.label} className="flex items-center justify-between">
+                    <span className="af-font-mono text-[9px] tracking-[0.12em] text-white/30">{s.label}</span>
+                    <span className="af-font-mono text-[10px] tracking-[0.08em] text-white/60">{s.value}</span>
                   </div>
                 ))}
               </div>
@@ -840,30 +842,29 @@ export function AirForceFutureStack({ programs, locale = "en" }: { programs: Air
   const isRo = locale === "ro";
 
   return (
-    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(125,211,252,0.06),transparent_45%)] pointer-events-none" />
-      <div className="af-noise absolute inset-0 opacity-25 pointer-events-none" />
+    <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
+      <div className="af-noise absolute inset-0 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-[1520px]">
+      <div className="relative mx-auto max-w-[1400px]">
         <AFSectionTitle
-          label={isRo ? "PROGRAME VIITOARE" : "FUTURE PROGRAMS"}
-          titlePart1={isRo ? "GENERAȚIA" : "NEXT"}
-          titlePart2={isRo ? "URMĂTOARE" : "GENERATION"}
+          label={isRo ? "Programe viitoare" : "Future programs"}
+          title={isRo ? "Generația" : "Next"}
+          subtitle={isRo ? "următoare" : "generation"}
           body={isRo
             ? "De la NGAD și CCA la arme hipersonice și modernizarea nucleară — programele care vor defini puterea aeriană americană în deceniile următoare."
-            : "From NGAD and CCA to hypersonic weapons and nuclear modernization — the programs that will define American airpower for decades to come."}
+            : "From NGAD and CCA to hypersonic weapons and nuclear modernization — the programs defining American airpower for decades to come."}
         />
 
-        <div className="grid gap-0 border border-white/5 bg-[#020304] lg:grid-cols-[1fr_440px]">
-          {/* Image */}
-          <div className="relative min-h-[400px] overflow-hidden">
+        <div className="grid border border-white/[0.04] bg-[#050608] lg:grid-cols-[1fr_420px]">
+          {/* Image side */}
+          <div className="relative min-h-[380px] overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active.label}
-                initial={{ opacity: 0, scale: 1.03 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.6 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.7 }}
                 className="absolute inset-0"
               >
                 <Image
@@ -871,26 +872,26 @@ export function AirForceFutureStack({ programs, locale = "en" }: { programs: Air
                   alt={active.imageAlt}
                   fill
                   quality={90}
-                  className="object-cover brightness-[0.3] grayscale-[0.3]"
+                  className="object-cover brightness-[0.25] saturate-[0.6]"
                   sizes="(max-width: 1024px) 100vw, 60vw"
                   placeholder="blur"
                   blurDataURL={BLUR_PLACEHOLDER}
                 />
               </motion.div>
             </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#020304]/60 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#050608]/50 pointer-events-none" />
 
-            {/* Program selector */}
-            <div className="absolute bottom-0 left-0 right-0 z-10 flex border-t border-white/5">
+            {/* Program tabs at bottom */}
+            <div className="absolute bottom-0 left-0 right-0 z-10 flex">
               {programs.map((p, i) => (
                 <button
                   key={p.label}
                   onClick={() => setActiveIndex(i)}
                   className={cn(
-                    "flex-1 py-4 text-center af-font-mono text-[10px] tracking-[0.15em] transition-all duration-300 border-r border-white/5 last:border-r-0",
+                    "flex-1 py-4 text-center af-font-mono text-[10px] tracking-[0.12em] transition-all duration-300 border-t border-r border-white/[0.04] last:border-r-0",
                     activeIndex === i
-                      ? "bg-[#f5a623]/10 text-[#f5a623]"
-                      : "bg-black/60 text-white/30 hover:text-white/60"
+                      ? "bg-white/[0.08] text-white"
+                      : "bg-black/60 text-white/25 hover:text-white/50"
                   )}
                 >
                   {p.label}
@@ -899,26 +900,28 @@ export function AirForceFutureStack({ programs, locale = "en" }: { programs: Air
             </div>
           </div>
 
-          {/* Detail panel */}
+          {/* Detail */}
           <AnimatePresence mode="wait">
             <motion.div
               key={active.label + "-detail"}
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 16 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -10 }}
+              exit={{ opacity: 0, x: -8 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col p-8 border-t lg:border-t-0 lg:border-l border-white/5"
+              className="flex flex-col p-9 border-t lg:border-t-0 lg:border-l border-white/[0.04]"
             >
-              <div className="af-font-mono text-[9px] tracking-[0.2em] text-[#f5a623]/60 mb-1">{active.status}</div>
-              <div className="af-font-mono text-[10px] tracking-[0.15em] text-white/35 mb-4">{active.capability}</div>
-              <h3 className="af-font-display text-2xl font-black text-white mb-4 leading-[0.95]">{active.title}</h3>
-              <p className="text-xs leading-relaxed text-white/45 mb-8">{active.description}</p>
+              <div className="flex items-center gap-3 mb-5">
+                <span className="af-font-mono text-[9px] tracking-[0.15em] text-[#d4a44a]/50">{active.status}</span>
+              </div>
+              <h3 className="af-font-display text-xl sm:text-2xl font-black text-white mb-5 leading-[0.92]">{active.title}</h3>
+              <div className="af-font-mono text-[9px] tracking-[0.15em] text-[#7aaed4]/40 mb-4">{active.capability}</div>
+              <p className="text-[13px] leading-[1.85] text-white/40 mb-10">{active.description}</p>
 
-              <div className="grid grid-cols-2 gap-3 mt-auto">
+              <div className="grid grid-cols-2 gap-2.5 mt-auto">
                 {active.specs.map((s) => (
-                  <div key={s.label} className="border border-white/5 bg-white/[0.02] p-3">
-                    <div className="af-font-mono text-[8px] tracking-[0.2em] text-white/35 mb-1">{s.label}</div>
-                    <div className="af-font-display text-sm font-black text-white">{s.value}</div>
+                  <div key={s.label} className="af-panel p-4">
+                    <div className="af-font-mono text-[7px] tracking-[0.2em] text-white/25 mb-1.5">{s.label}</div>
+                    <div className="af-font-display text-sm font-black text-white leading-none">{s.value}</div>
                   </div>
                 ))}
               </div>
@@ -953,71 +956,88 @@ export function AirForceClosing({ locale = "en" }: { locale?: Locale }) {
     {
       href: "/military/global-bases",
       label: isRo ? "Baze Globale" : "Global Bases",
-      desc: isRo ? "Infrastructură militară și logistică avansată" : "Global footprint and logistics network",
+      desc: isRo ? "Infrastructură militară și logistică" : "Global footprint and logistics network",
       icon: Network,
     },
     {
       href: "/military/intelligence",
-      label: isRo ? "Informații Militare" : "Intelligence",
+      label: isRo ? "Informații" : "Intelligence",
       desc: isRo ? "SIGINT, HUMINT și securitate cibernetică" : "SIGINT, HUMINT, and cyber capabilities",
       icon: Shield,
     },
   ];
 
   return (
-    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-t border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,166,35,0.10),transparent_70%)] pointer-events-none" />
-      <div className="absolute inset-0 af-grid-plane opacity-20 pointer-events-none" />
-      <div className="af-noise absolute inset-0 opacity-30 pointer-events-none" />
+    <section className="relative overflow-hidden bg-black px-6 py-32 sm:px-10 md:py-40 lg:px-16">
+      <div className="absolute inset-0 af-dot-grid opacity-25 pointer-events-none" />
+      <div className="af-noise absolute inset-0 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-[1160px] text-center">
-        <Plane className="mx-auto mb-8 text-[#f5a623]/50 animate-pulse" size={32} strokeWidth={1.2} />
-        <h2 className="af-font-display text-4xl font-black uppercase leading-[0.95] md:text-7xl text-white">
-          {isRo ? "Supremație aeriană fără egal." : "Air supremacy without equal."}
-        </h2>
-        <p className="mx-auto mt-9 max-w-3xl text-xs leading-relaxed text-white/50 md:text-sm">
-          {isRo
-            ? "Când o criză apare oriunde pe Pământ, primul lucru pe care îl aud națiunile este motoarele avioanelor americane. Forțele Aeriene sunt umbrela sub care operează toate celelalte forțe."
-            : "When a crisis erupts anywhere on Earth, the first thing nations hear is the sound of American jet engines. The Air Force is the umbrella under which every other force operates."}
-        </p>
+      <div className="relative mx-auto max-w-[1000px] text-center">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
+        >
+          <motion.h2
+            variants={fadeUp}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="af-font-display text-[clamp(32px,8vw,96px)] font-black leading-[0.88] text-white"
+          >
+            {isRo ? "Supremație aeriană" : "Air supremacy"}
+          </motion.h2>
+          <motion.div
+            variants={fadeUp}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="af-font-display text-[clamp(32px,8vw,96px)] font-black leading-[0.88] text-white/12 mt-1"
+          >
+            {isRo ? "fără egal." : "without equal."}
+          </motion.div>
+          <motion.p
+            variants={fadeUp}
+            transition={{ duration: 0.7 }}
+            className="mx-auto mt-10 max-w-2xl text-sm leading-[1.9] text-white/40"
+          >
+            {isRo
+              ? "Când o criză apare oriunde pe Pământ, primul lucru pe care îl aud națiunile este motoarele avioanelor americane. Forțele Aeriene sunt umbrela sub care operează toate celelalte forțe."
+              : "When a crisis erupts anywhere on Earth, the first thing nations hear is the sound of American jet engines. The Air Force is the umbrella under which every other force operates."}
+          </motion.p>
+        </motion.div>
 
-        {/* Primary CTA */}
-        <div className="mt-12 flex justify-center">
+        {/* CTA */}
+        <div className="mt-14 flex justify-center">
           <Link
             href="/military"
-            className="group inline-flex h-12 items-center gap-3 border border-white/10 bg-white px-6 text-xs font-bold uppercase text-black transition-colors hover:bg-white/85"
+            className="group inline-flex h-12 items-center gap-3 bg-white px-7 text-[11px] font-bold uppercase tracking-[0.1em] text-black transition-opacity hover:opacity-85 rounded-sm"
           >
             {isRo ? "Prezentare militară" : "Military overview"}
-            <ArrowUpRight size={15} strokeWidth={2} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            <ArrowUpRight size={14} strokeWidth={2.5} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
         </div>
 
-        {/* Cross-links grid */}
-        <div className="mt-20 border-t border-white/5 pt-16">
-          <div className="text-[10px] font-mono uppercase tracking-[0.25em] text-white/35 mb-8">
+        {/* Cross-links */}
+        <div className="mt-24 pt-16 border-t border-white/[0.04]">
+          <div className="af-font-mono text-[9px] tracking-[0.3em] text-white/20 mb-10">
             {isRo ? "Explorați alte dimensiuni militare" : "Explore other military dimensions"}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-left">
             {branches.map((b) => {
               const Icon = b.icon;
               return (
                 <Link
                   key={b.href}
                   href={b.href}
-                  className="group relative block border border-white/5 bg-[#020304] p-5 hover:bg-[#060a0f] hover:border-white/10 transition-all duration-300"
+                  className="group af-panel p-6 hover:bg-white/[0.03] transition-colors duration-400 rounded-sm"
                 >
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="flex h-8 w-8 items-center justify-center border border-white/8 bg-black text-[#f5a623]/70 group-hover:text-white transition-colors">
-                      <Icon size={14} strokeWidth={1.5} />
-                    </div>
-                    <span className="af-font-display text-sm font-bold uppercase text-white group-hover:text-[#f5a623] transition-colors">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Icon size={14} strokeWidth={1.5} className="text-white/20 group-hover:text-white/50 transition-colors" />
+                    <span className="af-font-display text-sm font-bold text-white/60 group-hover:text-white transition-colors">
                       {b.label}
                     </span>
                   </div>
-                  <p className="text-[10px] leading-relaxed text-white/40 group-hover:text-white/60 transition-colors">
+                  <p className="text-[11px] leading-[1.7] text-white/25 group-hover:text-white/40 transition-colors">
                     {b.desc}
                   </p>
-                  <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-[#f5a623]/50 transition-all duration-500 group-hover:w-full" />
                 </Link>
               );
             })}

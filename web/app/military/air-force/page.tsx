@@ -5,6 +5,7 @@ import {
   AirForceCapabilityGrid,
   AirForceClosing,
   AirForceFleetComparisonSection,
+  AirForceFullBleed,
   AirForceFutureStack,
   AirForceHeritageTimeline,
   AirForceMetricStrip,
@@ -72,6 +73,7 @@ export default async function AirForcePage() {
       <MilStyles />
       <AirForceStyles />
       <AirForcePageProgress />
+
       <ParallaxMilitaryHero
         imageSrc={SITE_IMAGES.airForce.hero}
         imageAlt="U.S. Air Force jets in cinematic light"
@@ -80,12 +82,34 @@ export default async function AirForcePage() {
         tagline={locale === "ro" ? "ÎNTOTDEAUNA DEASUPRA · AIM HIGH · FLY-FIGHT-WIN" : "ALWAYS ABOVE · AIM HIGH · FLY-FIGHT-WIN"}
         stats={heroStats}
       />
+
       <AirForceMetricStrip metrics={metrics} locale={locale} />
       <AirForceFleetComparisonSection data={fleetComparison} locale={locale} />
+
+      <AirForceFullBleed
+        imageSrc={SITE_IMAGES.airForce.f22Formation}
+        imageAlt="F-22 Raptors in formation flight"
+        caption={locale === "ro" ? "F-22 RAPTOR · SUPERIORITATE AERIANĂ ABSOLUTĂ" : "F-22 RAPTOR · ABSOLUTE AIR SUPERIORITY"}
+      />
+
       <AirForceCapabilityGrid capabilities={capabilities} locale={locale} />
       <AirForceOperationalConsole theaters={theaters} locale={locale} />
+
+      <AirForceFullBleed
+        imageSrc={SITE_IMAGES.airForce.b21}
+        imageAlt="B-21 Raider stealth bomber"
+        caption={locale === "ro" ? "B-21 RAIDER · CEL MAI AVANSAT BOMBARDIER STEALTH DIN LUME" : "B-21 RAIDER · THE WORLD'S MOST ADVANCED STEALTH BOMBER"}
+      />
+
       <AirForcePlatformShowcase platforms={platforms} locale={locale} />
       <AirForceHeritageTimeline events={heritageTimeline} locale={locale} />
+
+      <AirForceFullBleed
+        imageSrc={SITE_IMAGES.airForce.c130}
+        imageAlt="C-130 Hercules dirt takeoff"
+        caption={locale === "ro" ? "C-130 HERCULES · MOBILITATE GLOBALĂ RAPIDĂ" : "C-130 HERCULES · RAPID GLOBAL MOBILITY"}
+      />
+
       <AirForceBasesSection bases={bases} locale={locale} />
       <AirForceFutureStack programs={futurePrograms} locale={locale} />
       <AirForceClosing locale={locale} />
