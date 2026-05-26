@@ -75,7 +75,7 @@ export default async function SpaceForcePage() {
       <SpaceForceStyles />
 
       <VideoMilitaryHero
-        videoSrc="/videos/military/supremacy-wave.mp4"
+        videoSrc="/videos/military/us-space-force-americas-invisible-front.mp4"
         posterSrc={SITE_IMAGES.spaceForce.launch}
         title={isRo ? "MEREU DEASUPRA" : "ALWAYS ABOVE"}
         subtitle={isRo ? "UNITED STATES SPACE FORCE · SECURITATE ORBITALĂ ȘI AVANTAJ SPAȚIAL" : "UNITED STATES SPACE FORCE · ORBITAL SECURITY & SPACE ADVANTAGE"}
