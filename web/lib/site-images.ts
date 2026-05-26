@@ -74,6 +74,13 @@ import marinesAssault from "@/IMAGES/Military/Marines/us-marines-amphibious-assa
 import socomOperators from "@/IMAGES/Military/SOCOM/us-army-socom-operators.jpg";
 import tacticalWorldMap from "@/IMAGES/Military/tactical-world-map.svg";
 
+// Air Force Timeline Images
+import wrightBrothersFirstFlight from "@/IMAGES/Military/Air Force/Wright Brothers First Flight at Kitty Hawk.jpg";
+import bellX1Flight from "@/IMAGES/Military/Air Force/Bell X-1 in flight.jpg";
+import f86vsMig15Combat from "@/IMAGES/Military/Air Force/F-86 vs MiG 15.jpg";
+import b52StratofortressWing from "@/IMAGES/Military/Air Force/B-52_Stratofortress_assigned_to_the_307th_Bomb_Wing.jpg";
+import f117StealthBaghdad from "@/IMAGES/Military/Air Force/F-117 Nighthawk strikes Baghdad.jpg";
+
 import carrierStrikeGroupLogo from "@/ASSETS/Military/Carrier Strike Group Logo Dark.png";
 
 // Export plain `.src` strings so the rest of the app can use them in Next Image
@@ -174,5 +181,10 @@ export const SITE_IMAGES = {
     drone: autonomousDrone.src,
     minuteman: minutemanLaunch.src,
     cyber: cyberOps.src,
+    wrightBrothers: wrightBrothersFirstFlight.src,
+    bellX1: bellX1Flight.src,
+    f86vsMig15: f86vsMig15Combat.src,
+    b52: b52StratofortressWing.src,
+    f117: f117StealthBaghdad.src,
   },
 } as const;
