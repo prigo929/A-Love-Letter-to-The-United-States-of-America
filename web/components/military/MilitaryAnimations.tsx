@@ -953,10 +953,11 @@ export function GlobalCarrierMap({ positions, locale = 'en' }: { positions: Carr
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ParallaxMilitaryHero({
-  imageSrc, imageAlt, title, subtitle, tagline, stats
+  imageSrc, imageAlt, videoSrc, title, subtitle, tagline, stats
 }: { 
   imageSrc: string; 
   imageAlt: string; 
+  videoSrc?: string;
   title?: string;
   subtitle?: string;
   tagline?: string;
@@ -982,13 +983,11 @@ export function ParallaxMilitaryHero({
   const textOpacity = useTransform(scrollYProgress, [0, 0.2, 0.5], [1, 1, 0]);
   const textY = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
 
-  const words = title?.split(" ") || [];
-
   return (
     <div ref={ref} className="relative h-[180dvh] bg-black">
       {/* Sticky container */}
       <div className="sticky top-0 h-screen w-full overflow-hidden mil-noise">
-        {/* Background image with 3-stage reveal */}
+        {/* Background media with 3-stage reveal */}
         <motion.div 
           className="absolute inset-0 will-change-transform"
           style={{ 
@@ -998,15 +997,27 @@ export function ParallaxMilitaryHero({
             y: imageY
           }}
         >
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            fill
-            priority
-            className="object-cover brightness-[0.4] grayscale-[0.3]"
-            sizes="100vw"
-            quality={90}
-          />
+          {videoSrc ? (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 h-full w-full object-cover"
+            >
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          ) : (
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              priority
+              className="object-cover brightness-[0.4] grayscale-[0.3]"
+              sizes="100vw"
+              quality={90}
+            />
+          )}
         </motion.div>
 
         {/* Vignette overlay */}
@@ -1093,6 +1104,120 @@ export function ParallaxMilitaryHero({
           <div className="relative">
             <div className="h-2 w-2 rounded-full bg-white/50 mil-breathe" />
           </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// VideoMilitaryHero — cinematic looping video hero (B-2 Spirit / Air Force)
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function VideoMilitaryHero({
+  videoSrc, posterSrc, title, subtitle, tagline, stats
+}: {
+  videoSrc: string;
+  posterSrc?: string;
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  stats?: { value: string; label: string }[];
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  const videoOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const videoScale  = useTransform(scrollYProgress, [0, 0.55], [1.0, 1.18]);
+  const videoY      = useTransform(scrollYProgress, [0, 1],    ["0%", "22%"]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.2, 0.5], [1, 1, 0]);
+  const textY       = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
+
+  return (
+    <div ref={ref} className="relative h-[180dvh] bg-black">
+      <div className="sticky top-0 h-screen w-full overflow-hidden mil-noise">
+        {/* ── Looping video layer ── */}
+        <motion.div
+          className="absolute inset-0 will-change-transform"
+          style={{ opacity: videoOpacity, scale: videoScale, y: videoY }}
+        >
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster={posterSrc}
+            className="absolute inset-0 h-full w-full object-cover brightness-[0.38] saturate-[0.75]"
+          >
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+        </motion.div>
+
+        {/* ── Cinematic vignette ── */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/55 pointer-events-none" />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.75) 100%)" }}
+        />
+
+        {/* ── Content ── */}
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12, delayChildren: 0.3 } } }}
+          className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
+          style={{ opacity: textOpacity, y: textY }}
+        >
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
+            className="mil-text-label mb-8 tracking-[0.5em]"
+          >
+            {tagline}
+          </motion.p>
+
+          <div className="overflow-hidden">
+            <motion.h1
+              variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } } }}
+              className="mil-text-hero"
+            >
+              {title}
+            </motion.h1>
+          </div>
+
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 0.85, y: 0, transition: { duration: 0.8 } } }}
+            className="mil-text-metadata mt-12 max-w-2xl font-bold tracking-[0.3em] leading-relaxed uppercase"
+          >
+            {subtitle}
+          </motion.p>
+
+          {stats && (
+            <motion.div
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7 } } }}
+              className="mt-20 flex flex-wrap justify-center gap-x-14 gap-y-6"
+            >
+              {stats.map((s, i) => (
+                <div key={i} className="text-center">
+                  <div className="mil-text-metadata mb-2 font-black uppercase tracking-widest text-[11px] text-white/50">{s.label}</div>
+                  <div className="text-2xl md:text-3xl font-black tracking-tight text-white/90">{s.value}</div>
+                </div>
+              ))}
+            </motion.div>
+          )}
+        </motion.div>
+
+        {/* ── Scroll indicator ── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.5, duration: 1 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+        >
+          <span className="mil-text-metadata text-[7px] tracking-[0.5em] opacity-30">SCROLL</span>
+          <div className="h-2 w-2 rounded-full bg-white/50 mil-breathe" />
         </motion.div>
       </div>
     </div>

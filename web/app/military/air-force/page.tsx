@@ -13,9 +13,10 @@ import {
   AirForcePageProgress,
   AirForcePlatformShowcase,
   AirForceStyles,
+  AFSectionDivider,
 } from "@/components/military/AirForcePageComponents";
 import {
-  ParallaxMilitaryHero,
+  VideoMilitaryHero,
   MilStyles,
 } from "@/components/military/MilitaryAnimations";
 import {
@@ -68,49 +69,70 @@ export default async function AirForcePage() {
         { value: "329K", label: "ACTIVE AIRMEN" },
       ];
 
+  const isRo = locale === "ro";
+
   return (
     <div className="af-page min-h-screen overflow-hidden bg-black text-white">
       <MilStyles />
       <AirForceStyles />
       <AirForcePageProgress />
 
-      <ParallaxMilitaryHero
-        imageSrc={SITE_IMAGES.airForce.hero}
-        imageAlt="U.S. Air Force jets in cinematic light"
-        title={locale === "ro" ? "SUPREMAȚIE AERIANĂ" : "AIR SUPREMACY"}
-        subtitle={locale === "ro" ? "FORȚELE AERIENE ALE STATELOR UNITE · DOMINANȚĂ AERIANĂ GLOBALĂ ȘI LOVITURĂ DE PRECIZIE" : "UNITED STATES AIR FORCE · GLOBAL AIR DOMINANCE & PRECISION STRIKE"}
-        tagline={locale === "ro" ? "ÎNTOTDEAUNA DEASUPRA · AIM HIGH · FLY-FIGHT-WIN" : "ALWAYS ABOVE · AIM HIGH · FLY-FIGHT-WIN"}
+      {/* 1. VIDEO HERO — B-2 Spirit cinematic flyover */}
+      <VideoMilitaryHero
+        videoSrc="/IMAGES/Military/Air Force/b-2-spirit-stealth-bomber-hero-video.mp4"
+        posterSrc={SITE_IMAGES.airForce.b2}
+        title={isRo ? "SUPREMAȚIE AERIANĂ" : "AIR SUPREMACY"}
+        subtitle={isRo ? "FORȚELE AERIENE ALE STATELOR UNITE · DOMINANȚĂ AERIANĂ GLOBALĂ ȘI LOVITURĂ DE PRECIZIE" : "UNITED STATES AIR FORCE · GLOBAL AIR DOMINANCE & PRECISION STRIKE"}
+        tagline={isRo ? "ÎNTOTDEAUNA DEASUPRA · AIM HIGH · FLY-FIGHT-WIN" : "ALWAYS ABOVE · AIM HIGH · FLY-FIGHT-WIN"}
         stats={heroStats}
       />
 
       <AirForceMetricStrip metrics={metrics} locale={locale} />
+
+      <AFSectionDivider />
+
       <AirForceFleetComparisonSection data={fleetComparison} locale={locale} />
 
+      {/* PULL-QUOTE #1 — Air Superiority */}
       <AirForceFullBleed
         imageSrc={SITE_IMAGES.airForce.f22Formation}
         imageAlt="F-22 Raptors in formation flight"
-        caption={locale === "ro" ? "F-22 RAPTOR · SUPERIORITATE AERIANĂ ABSOLUTĂ" : "F-22 RAPTOR · ABSOLUTE AIR SUPERIORITY"}
+        caption={isRo ? "F-22 RAPTOR · SUPERIORITATE AERIANĂ ABSOLUTĂ" : "F-22 RAPTOR · ABSOLUTE AIR SUPERIORITY"}
+        pullQuote={isRo ? "NICIUN ADVERSAR NU A OBȚINUT PARITATE AERIANĂ DIN 1953." : "NO ADVERSARY HAS ACHIEVED AIR PARITY SINCE 1953."}
       />
 
       <AirForceCapabilityGrid capabilities={capabilities} locale={locale} />
+
+      <AFSectionDivider />
+
       <AirForceOperationalConsole theaters={theaters} locale={locale} />
 
+      {/* PULL-QUOTE #2 — Global Strike */}
       <AirForceFullBleed
         imageSrc={SITE_IMAGES.airForce.b21}
         imageAlt="B-21 Raider stealth bomber"
-        caption={locale === "ro" ? "B-21 RAIDER · CEL MAI AVANSAT BOMBARDIER STEALTH DIN LUME" : "B-21 RAIDER · THE WORLD'S MOST ADVANCED STEALTH BOMBER"}
+        caption={isRo ? "B-21 RAIDER · CEL MAI AVANSAT BOMBARDIER STEALTH DIN LUME" : "B-21 RAIDER · THE WORLD'S MOST ADVANCED STEALTH BOMBER"}
+        pullQuote={isRo ? "ORICE ȚINTĂ. ORICE MOMENT. FĂRĂ DETECTARE." : "ANY TARGET. ANY TIME. UNDETECTED."}
       />
 
       <AirForcePlatformShowcase platforms={platforms} locale={locale} />
+
+      <AFSectionDivider />
+
       <AirForceHeritageTimeline events={heritageTimeline} locale={locale} />
 
+      {/* PULL-QUOTE #3 — Rapid Mobility */}
       <AirForceFullBleed
         imageSrc={SITE_IMAGES.airForce.c130}
         imageAlt="C-130 Hercules dirt takeoff"
-        caption={locale === "ro" ? "C-130 HERCULES · MOBILITATE GLOBALĂ RAPIDĂ" : "C-130 HERCULES · RAPID GLOBAL MOBILITY"}
+        caption={isRo ? "C-130 HERCULES · MOBILITATE GLOBALĂ RAPIDĂ" : "C-130 HERCULES · RAPID GLOBAL MOBILITY"}
+        pullQuote={isRo ? "ORIUNDE PE PĂMÂNT, ÎN 48 DE ORE." : "ANYWHERE ON EARTH. WITHIN 48 HOURS."}
       />
 
       <AirForceBasesSection bases={bases} locale={locale} />
+
+      <AFSectionDivider />
+
       <AirForceFutureStack programs={futurePrograms} locale={locale} />
       <AirForceClosing locale={locale} />
     </div>

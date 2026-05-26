@@ -25,10 +25,20 @@ import type {
   AirForcePlatform,
   AirForceTheater,
 } from "@/lib/data/airforce-data";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
   visible: { opacity: 1, y: 0 },
+};
+
+// Map capability accent → background image for Enhancement 5
+const CAPABILITY_BG_MAP: Record<string, string> = {
+  "#7dd3fc": SITE_IMAGES.airForce.f22,
+  "#f5a623": SITE_IMAGES.airForce.b2,
+  "#a78bfa": SITE_IMAGES.airForce.c17,
+  "#34d399": SITE_IMAGES.airForce.drone,
+  "#ff6b6b": SITE_IMAGES.airForce.minuteman,
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -93,16 +103,53 @@ export function AirForceStyles() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. AirForcePageProgress
+// 2. AirForcePageProgress — with section markers (Enhancement 10)
 // ─────────────────────────────────────────────────────────────────────────────
+
+const SECTION_MARKERS = [0.1, 0.24, 0.38, 0.53, 0.67, 0.82, 0.95];
 
 export function AirForcePageProgress() {
   const { scrollYProgress } = useScroll();
+  const [pct, setPct] = useState(0);
+
+  useEffect(() => {
+    return scrollYProgress.on("change", (v) => setPct(v));
+  }, [scrollYProgress]);
+
   return (
     <div className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-[2px] bg-white/[0.03]">
       <motion.div
         className="h-full origin-left bg-gradient-to-r from-[#d4a44a] via-white/90 to-white"
         style={{ scaleX: scrollYProgress }}
+      />
+      {SECTION_MARKERS.map((pos) => (
+        <div
+          key={pos}
+          className="absolute top-1/2 -translate-y-1/2 h-[5px] w-[5px] rounded-full -translate-x-1/2"
+          style={{
+            left: `${pos * 100}%`,
+            background: pct >= pos ? "rgba(212,164,74,0.9)" : "rgba(255,255,255,0.12)",
+            transition: "background 0.4s ease",
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// AFSectionDivider — animated horizontal rule (Enhancement 7)
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function AFSectionDivider() {
+  return (
+    <div className="relative flex justify-center items-center py-6 px-6">
+      <motion.div
+        initial={{ scaleX: 0, opacity: 0 }}
+        whileInView={{ scaleX: 1, opacity: 1 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+        className="h-px w-full max-w-[480px] origin-center bg-gradient-to-r from-transparent via-white/20 to-transparent"
       />
     </div>
   );
@@ -200,32 +247,62 @@ function AFSectionTitle({
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function AirForceFullBleed({
-  imageSrc, imageAlt, caption,
+  imageSrc, imageAlt, caption, pullQuote,
 }: {
-  imageSrc: string; imageAlt: string; caption?: string;
+  imageSrc: string; imageAlt: string; caption?: string; pullQuote?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
 
   return (
-    <div ref={ref} className="relative h-[55vh] min-h-[400px] overflow-hidden">
+    <div ref={ref} className="relative h-[62vh] min-h-[440px] overflow-hidden">
       <motion.div className="absolute inset-0 -inset-y-[12%]" style={{ y }}>
         <Image
           src={imageSrc}
           alt={imageAlt}
           fill
           quality={90}
-          className="object-cover brightness-[0.3] saturate-[0.8]"
+          className="object-cover brightness-[0.28] saturate-[0.75]"
           sizes="100vw"
           placeholder="blur"
           blurDataURL={BLUR_PLACEHOLDER}
         />
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/60 pointer-events-none" />
+
+      {/* Enhancement 2: Pull-quote cinematic overlay */}
+      {pullQuote && (
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
+        >
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-6 h-px w-14 origin-center bg-[#d4a44a]/50"
+          />
+          <p className="af-font-display text-[clamp(20px,4vw,54px)] font-black text-white leading-[1.05] max-w-4xl tracking-tight">
+            {pullQuote}
+          </p>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-6 h-px w-14 origin-center bg-[#d4a44a]/50"
+          />
+        </motion.div>
+      )}
+
       {caption && (
-        <div className="absolute bottom-8 left-0 right-0 text-center">
-          <span className="af-font-mono text-[10px] tracking-[0.3em] text-white/30">{caption}</span>
+        <div className="absolute bottom-7 left-0 right-0 text-center">
+          <span className="af-font-mono text-[9px] tracking-[0.3em] text-white/25">{caption}</span>
         </div>
       )}
     </div>
@@ -386,12 +463,14 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
                         )}
                       </div>
                       
-                      <div className={cn(
-                        "af-font-display text-base font-black w-16 text-right tabular-nums",
-                        isUS ? "text-[#d4a44a]" : "text-white/35"
-                      )}>
-                        {val.toLocaleString()}
-                      </div>
+                      {/* Enhancement 8: hover number ticker */}
+                      <AFTickerNumber
+                        value={val}
+                        className={cn(
+                          "af-font-display text-base font-black w-16 text-right tabular-nums select-none",
+                          isUS ? "text-[#d4a44a]" : "text-white/35"
+                        )}
+                      />
                     </div>
                     
                     {isUS && (
@@ -500,7 +579,8 @@ export function AirForceCapabilityGrid({ capabilities, locale = "en" }: { capabi
           {capabilities.map((cap, i) => {
             const isHovered = hoveredIdx === i;
             const isAnyHovered = hoveredIdx !== null;
-            
+            const bgImage = CAPABILITY_BG_MAP[cap.accent];
+
             return (
               <motion.div
                 key={cap.title}
@@ -517,6 +597,15 @@ export function AirForceCapabilityGrid({ capabilities, locale = "en" }: { capabi
                   isAnyHovered ? "lg:flex-[0.6] opacity-35 bg-black/40 border-white/[0.02]" : "lg:flex-1 bg-white/[0.02] border-white/[0.04]"
                 )}
               >
+                {/* Enhancement 5: Subtle background image on hover */}
+                {bgImage && (
+                  <div
+                    className="absolute inset-0 pointer-events-none transition-opacity duration-1000"
+                    style={{ opacity: isHovered ? 0.1 : 0.04 }}
+                  >
+                    <Image src={bgImage} alt="" fill className="object-cover saturate-[0.4]" sizes="20vw" />
+                  </div>
+                )}
                 {/* Background Accent Glow */}
                 <div 
                   className={cn(
@@ -688,7 +777,7 @@ export function AirForceOperationalConsole({ theaters, locale = "en" }: { theate
             </div>
           </div>
 
-          {/* Right — details */}
+          {/* Right — details + Enhancement 6: pulsing signal indicator */}
           <div className="flex flex-col border-t lg:border-t-0 lg:border-l border-white/[0.04] bg-[#050608] p-8">
             <AnimatePresence mode="wait">
               <motion.div
@@ -701,7 +790,20 @@ export function AirForceOperationalConsole({ theaters, locale = "en" }: { theate
               >
                 <div className="af-font-mono text-[8px] tracking-[0.2em] text-white/25 mb-2">{active.region}</div>
                 <h3 className="af-font-display text-xl font-black text-white mb-5 leading-[0.92]">{active.name}</h3>
-                <p className="text-[13px] leading-[1.85] text-white/40 mb-10">{active.description}</p>
+                <p className="text-[13px] leading-[1.85] text-white/40 mb-8">{active.description}</p>
+
+                {/* Enhancement 6: Animated pulsing signal indicator */}
+                <div className="mb-8 flex items-center gap-3">
+                  <motion.div
+                    animate={{ opacity: [1, 0.25, 1] }}
+                    transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                    className="h-1.5 w-1.5 rounded-full flex-shrink-0"
+                    style={{ background: active.accent }}
+                  />
+                  <span className="af-font-mono text-[9px] tracking-[0.18em] text-white/30">
+                    {active.signal.toUpperCase()} · ACTIVE
+                  </span>
+                </div>
 
                 <div className="mt-auto space-y-4">
                   {active.metrics.map((m) => (
@@ -723,6 +825,29 @@ export function AirForceOperationalConsole({ theaters, locale = "en" }: { theate
 // ─────────────────────────────────────────────────────────────────────────────
 // 7. AirForcePlatformShowcase
 // ─────────────────────────────────────────────────────────────────────────────
+
+// Enhancement 8: hover-animated number ticker
+function AFTickerNumber({ value, className }: { value: number; className?: string }) {
+  const [display, setDisplay] = useState(value);
+  const animating = useRef(false);
+
+  const handleEnter = () => {
+    if (animating.current) return;
+    animating.current = true;
+    const end = value;
+    const duration = 420;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / duration, 1);
+      setDisplay(Math.round(end * t));
+      if (t < 1) requestAnimationFrame(tick);
+      else { animating.current = false; setDisplay(end); }
+    };
+    requestAnimationFrame(tick);
+  };
+
+  return <span className={className} onMouseEnter={handleEnter}>{display.toLocaleString()}</span>;
+}
 
 export function AirForcePlatformShowcase({ platforms, locale = "en" }: { platforms: AirForcePlatform[]; locale?: Locale }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -771,18 +896,26 @@ export function AirForcePlatformShowcase({ platforms, locale = "en" }: { platfor
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="grid border border-white/[0.04] bg-[#050608] lg:grid-cols-[1fr_420px]"
           >
-            {/* Image */}
+            {/* Enhancement 3: Brighter image + slow ken-burns drift */}
             <div className="relative min-h-[420px] lg:min-h-[560px] overflow-hidden">
-              <Image
-                src={active.imageSrc}
-                alt={active.imageAlt}
-                fill
-                quality={90}
-                className="object-cover brightness-[0.35] saturate-[0.8]"
-                sizes="(max-width: 1024px) 100vw, 60vw"
-                placeholder="blur"
-                blurDataURL={BLUR_PLACEHOLDER}
-              />
+              <motion.div
+                key={active.name + "-img"}
+                initial={{ scale: 1 }}
+                animate={{ scale: 1.05 }}
+                transition={{ duration: 20, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={active.imageSrc}
+                  alt={active.imageAlt}
+                  fill
+                  quality={90}
+                  className="object-cover brightness-[0.55] saturate-[0.85] transition-[filter] duration-700 hover:brightness-[0.72] hover:saturate-[1.0]"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  placeholder="blur"
+                  blurDataURL={BLUR_PLACEHOLDER}
+                />
+              </motion.div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#050608] via-transparent to-transparent pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050608]/50 pointer-events-none" />
               <div className="absolute bottom-10 left-10 z-10">
@@ -818,6 +951,10 @@ export function AirForcePlatformShowcase({ platforms, locale = "en" }: { platfor
 
 export function AirForceHeritageTimeline({ events, locale = "en" }: { events: AirForceHeritageEvent[]; locale?: Locale }) {
   const isRo = locale === "ro";
+  // Enhancement 4: Landmark indices get larger aspect ratio
+  const LANDMARK = new Set([0, 4]);
+  // Enhancement 4: Vintage years get sepia treatment
+  const VINTAGE   = new Set(["1903", "1947", "1950", "1960"]);
 
   return (
     <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
@@ -838,7 +975,9 @@ export function AirForceHeritageTimeline({ events, locale = "en" }: { events: Ai
           <div className="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-px bg-white/[0.06]" />
 
           {events.map((event, i) => {
-            const isLeft = i % 2 === 0;
+            const isLeft    = i % 2 === 0;
+            const isLandmark = LANDMARK.has(i);
+            const isVintage  = VINTAGE.has(event.year);
             return (
               <motion.div
                 key={event.year}
@@ -854,7 +993,10 @@ export function AirForceHeritageTimeline({ events, locale = "en" }: { events: Ai
               >
                 {/* Year dot */}
                 <div className="absolute left-6 md:left-1/2 top-2 -translate-x-1/2 z-10">
-                  <div className="h-3 w-3 rounded-full bg-[#d4a44a]/80 ring-4 ring-black" />
+                  <div className={cn(
+                    "rounded-full ring-4 ring-black",
+                    isLandmark ? "h-4 w-4 bg-[#d4a44a]" : "h-3 w-3 bg-[#d4a44a]/80"
+                  )} />
                 </div>
 
                 {/* Card — placed on correct side */}
@@ -865,14 +1007,22 @@ export function AirForceHeritageTimeline({ events, locale = "en" }: { events: Ai
                   {/* Year badge */}
                   <div className="af-font-mono text-[11px] tracking-[0.2em] text-[#d4a44a]/60 mb-3">{event.year}</div>
 
-                  {/* Image */}
+                  {/* Enhancement 4: Alternating aspect + sepia */}
                   {event.imageSrc && (
-                    <div className="relative aspect-[16/9] w-full overflow-hidden mb-5 rounded-sm">
+                    <div className={cn(
+                      "relative w-full overflow-hidden mb-5 rounded-sm",
+                      isLandmark ? "aspect-[4/3]" : "aspect-[16/9]"
+                    )}>
                       <Image
                         src={event.imageSrc}
                         alt={event.title}
                         fill
-                        className="object-cover brightness-[0.45] saturate-[0.7] hover:brightness-[0.6] hover:saturate-[0.9] transition-all duration-700"
+                        className={cn(
+                          "object-cover transition-all duration-700 hover:brightness-[0.65] hover:saturate-[0.95]",
+                          isVintage
+                            ? "brightness-[0.5] saturate-[0.45] sepia-[0.3]"
+                            : "brightness-[0.5] saturate-[0.75]"
+                        )}
                         sizes="(max-width: 768px) 100vw, 50vw"
                         placeholder="blur"
                         blurDataURL={BLUR_PLACEHOLDER}
@@ -930,11 +1080,14 @@ export function AirForceBasesSection({ bases, locale = "en" }: { bases: AirForce
                 key={base.name}
                 onClick={() => setActiveIndex(i)}
                 className={cn(
-                  "group relative text-left p-6 transition-all duration-300 rounded-sm",
+                  "group relative text-left p-6 transition-all duration-500 rounded-sm overflow-hidden",
                   activeIndex === i
-                    ? "bg-white/[0.05] ring-1 ring-white/10"
+                    ? "bg-white/[0.05]"
                     : "hover:bg-white/[0.02]"
                 )}
+                style={activeIndex === i ? {
+                  boxShadow: `0 0 0 1px ${base.accent}35, inset 0 0 30px ${base.accent}08`,
+                } : {}}
               >
                 <MapPin size={11} className={cn("mb-3 transition-colors", activeIndex === i ? "text-white/50" : "text-white/20")} strokeWidth={1.5} />
                 <div className={cn(
@@ -944,11 +1097,20 @@ export function AirForceBasesSection({ bases, locale = "en" }: { bases: AirForce
                   {base.name}
                 </div>
                 <div className="af-font-mono text-[8px] tracking-[0.12em] text-white/25">{base.location}</div>
+                {/* Enhancement 9: accent-colored left bar */}
+                {activeIndex === i && (
+                  <motion.div
+                    layoutId="base-accent-bar"
+                    className="absolute left-0 top-0 bottom-0 w-[2px] rounded-l-sm"
+                    style={{ background: base.accent }}
+                    transition={{ type: "spring", stiffness: 450, damping: 40 }}
+                  />
+                )}
               </button>
             ))}
           </div>
 
-          {/* Detail panel */}
+          {/* Detail panel — Enhancement 9: accent-tinted border */}
           <AnimatePresence mode="wait">
             <motion.div
               key={active.name}
@@ -957,6 +1119,7 @@ export function AirForceBasesSection({ bases, locale = "en" }: { bases: AirForce
               exit={{ opacity: 0, x: -8 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="af-panel p-9 rounded-sm"
+              style={{ borderColor: `${active.accent}28`, boxShadow: `0 0 48px ${active.accent}0a` }}
             >
               <div className="af-font-mono text-[9px] tracking-[0.2em] text-white/25 mb-2">{active.role}</div>
               <h3 className="af-font-display text-2xl sm:text-3xl font-black text-white mb-2 leading-[0.92]">{active.name}</h3>
