@@ -20,8 +20,8 @@ export function StatBar() {
             id: "gdp",
             prefix: "#",
             value: 1,
-            suffix: " Economie",
-            label: "PIB de 32,4 trilioane $",
+            label: "Economie",
+            description: "PIB de 32,4 trilioane $",
             color: "gold" as const,
           },
           {
@@ -114,7 +114,7 @@ export function StatBar() {
 
               {/* Description */}
               {"description" in stat && stat.description && (
-                <p className="font-body text-xs text-white/40 mt-1 hidden md:block">
+                <p className="font-body text-xs text-white/40 mt-1">
                   {stat.description}
                 </p>
               )}
