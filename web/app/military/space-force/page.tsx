@@ -1,53 +1,133 @@
 import type { Metadata } from "next";
-import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
+import {
+  SFSectionDivider,
+  SpaceForceBasesSection,
+  SpaceForceCapabilityGrid,
+  SpaceForceClosing,
+  SpaceForceFleetComparisonSection,
+  SpaceForceFullBleed,
+  SpaceForceFutureStack,
+  SpaceForceHeritageTimeline,
+  SpaceForceMetricStrip,
+  SpaceForceOperationalConsole,
+  SpaceForcePlatformShowcase,
+  SpaceForceStyles,
+} from "@/components/military/SpaceForcePageComponents";
+import {
+  MilStyles,
+  VideoMilitaryHero,
+} from "@/components/military/MilitaryAnimations";
+import {
+  getSpaceForceBases,
+  getSpaceForceCapabilities,
+  getSpaceForceFleetComparison,
+  getSpaceForceFuturePrograms,
+  getSpaceForceMetrics,
+  getSpaceForceOperations,
+  getSpaceForceSystems,
+  getSpaceForceTimeline,
+} from "@/lib/data/spaceforce-data";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
-  title: "US Space Force | Military",
-  description: "An empty layout scaffold for the US Space Force page.",
+  title: "United States Space Force",
+  description:
+    "A cinematic exploration of the United States Space Force: GPS, missile warning, protected satellite communications, space domain awareness, orbital defense, and resilient next-generation constellations.",
+  openGraph: {
+    title: "United States Space Force",
+    description:
+      "America's orbital service: GPS, missile warning, protected SATCOM, space domain awareness, launch, and resilient space architecture.",
+    images: [{ url: SITE_IMAGES.spaceForce.launch, width: 1200, height: 630 }],
+  },
 };
 
 export default async function SpaceForcePage() {
   const locale = await getServerLocale();
-  const breadcrumbParent = locale === "ro" ? "Armată" : "Military";
-  const breadcrumbPage = locale === "ro" ? "Forța Spațială" : "US Space Force";
+  const isRo = locale === "ro";
+
+  const metrics = getSpaceForceMetrics(locale);
+  const capabilities = getSpaceForceCapabilities(locale);
+  const systems = getSpaceForceSystems(locale);
+  const operations = getSpaceForceOperations(locale);
+  const timeline = getSpaceForceTimeline(locale);
+  const comparison = getSpaceForceFleetComparison(locale);
+  const futurePrograms = getSpaceForceFuturePrograms(locale);
+  const bases = getSpaceForceBases(locale);
+
+  const heroStats = isRo
+    ? [
+        { value: "2019", label: "ÎNFIINȚATĂ" },
+        { value: "31+", label: "SATELIȚI GPS" },
+        { value: "24/7", label: "AVERTIZARE RACHETE" },
+        { value: "14K+", label: "GUARDIENI & CIVILI" },
+      ]
+    : [
+        { value: "2019", label: "ESTABLISHED" },
+        { value: "31+", label: "GPS SATELLITES" },
+        { value: "24/7", label: "MISSILE WARNING" },
+        { value: "14K+", label: "GUARDIANS & CIVILIANS" },
+      ];
 
   return (
-    <main className="min-h-screen bg-navy-dark pt-24 text-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Breadcrumb
-          items={[
-            { label: breadcrumbParent, href: "/military" },
-            { label: breadcrumbPage },
-          ]}
-          className="mb-8"
-        />
-      </div>
+    <div className="sf-page min-h-screen overflow-hidden bg-black text-white">
+      <MilStyles />
+      <SpaceForceStyles />
 
-      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto min-h-[65dvh] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
-          {/* TODO: Drop in space force hero asset or animation here */}
-        </div>
-      </section>
+      <VideoMilitaryHero
+        videoSrc="/videos/military/supremacy-wave.mp4"
+        posterSrc={SITE_IMAGES.spaceForce.launch}
+        title={isRo ? "MEREU DEASUPRA" : "ALWAYS ABOVE"}
+        subtitle={isRo ? "UNITED STATES SPACE FORCE · SECURITATE ORBITALĂ ȘI AVANTAJ SPAȚIAL" : "UNITED STATES SPACE FORCE · ORBITAL SECURITY & SPACE ADVANTAGE"}
+        tagline={isRo ? "SEMPER SUPRA · GPS · AVERTIZARE · SATCOM · ORBITĂ" : "SEMPER SUPRA · GPS · WARNING · SATCOM · ORBIT"}
+        stats={heroStats}
+      />
 
-      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
-          {/* TODO: Drop in thesis statement on space security and satellite navigation here */}
-        </div>
-      </section>
+      <SpaceForceMetricStrip metrics={metrics} locale={locale} />
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid auto-rows-[minmax(180px,1fr)] gap-6 md:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6">
-              {/* TODO: Create empty cards. Drop in content for satellites, launch systems, tracking, and space defense here */}
-            </div>
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-          </div>
-        </div>
-      </section>
-    </main>
+      <SFSectionDivider />
+
+      <SpaceForceFleetComparisonSection data={comparison} locale={locale} />
+
+      <SpaceForceFullBleed
+        imageSrc={SITE_IMAGES.spaceForce.earthNight}
+        imageAlt="United States at night from space"
+        caption={isRo ? "GPS · TIMPUL PRECIS CARE ȚINE LUMEA ÎN MIȘCARE" : "GPS · THE PRECISE CLOCK THAT KEEPS THE WORLD MOVING"}
+        pullQuote={isRo ? "FIECARE COORDONATĂ. FIECARE CEAS. FIECARE FORȚĂ CONECTATĂ." : "EVERY COORDINATE. EVERY CLOCK. EVERY FORCE CONNECTED."}
+      />
+
+      <SpaceForceCapabilityGrid capabilities={capabilities} locale={locale} />
+
+      <SFSectionDivider />
+
+      <SpaceForceOperationalConsole theaters={operations} locale={locale} />
+
+      <SpaceForceFullBleed
+        imageSrc={SITE_IMAGES.spaceForce.launch}
+        imageAlt="Space launch supporting national security missions"
+        caption={isRo ? "LANSARE DE SECURITATE NAȚIONALĂ · ACCES ASIGURAT LA ORBITĂ" : "NATIONAL SECURITY LAUNCH · ASSURED ACCESS TO ORBIT"}
+        pullQuote={isRo ? "FĂRĂ ORBITĂ, RĂZBOIUL MODERN ORBEȘTE." : "WITHOUT ORBIT, MODERN WARFARE GOES BLIND."}
+      />
+
+      <SpaceForcePlatformShowcase platforms={systems} locale={locale} />
+
+      <SFSectionDivider />
+
+      <SpaceForceHeritageTimeline events={timeline} locale={locale} />
+
+      <SpaceForceFullBleed
+        imageSrc={SITE_IMAGES.spaceForce.earth}
+        imageAlt="Planet Earth viewed from space"
+        caption={isRo ? "DOMENIUL SPAȚIAL · INFRASTRUCTURA INVIZIBILĂ A PUTERII MODERNE" : "SPACE DOMAIN · THE INVISIBLE INFRASTRUCTURE OF MODERN POWER"}
+        pullQuote={isRo ? "PUTEREA ÎNTRUNITĂ ÎNCEPE CU SEMNALUL DE DEASUPRA." : "JOINT POWER BEGINS WITH THE SIGNAL ABOVE."}
+      />
+
+      <SpaceForceBasesSection bases={bases} locale={locale} />
+
+      <SFSectionDivider />
+
+      <SpaceForceFutureStack programs={futurePrograms} locale={locale} />
+      <SpaceForceClosing locale={locale} />
+    </div>
   );
 }

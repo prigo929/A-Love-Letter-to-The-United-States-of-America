@@ -204,4 +204,10 @@ export const SITE_IMAGES = {
     kc135: kc135Stratotanker.src,
     kc46: kc46Pegasus.src,
   },
+  spaceForce: {
+    launch: spaceForceLaunch.src,
+    earth: globalLeadership.src,
+    earthNight: homeUsaAtNightFromSpace.src,
+    spacex: homeSpacexLaunch.src,
+  },
 } as const;
