@@ -271,7 +271,6 @@ export function AirForceFullBleed({
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/60 pointer-events-none" />
 
-      {/* Enhancement 2: Pull-quote cinematic overlay */}
       {pullQuote && (
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -315,24 +314,38 @@ export function AirForceFullBleed({
 
 export function AirForceMetricStrip({ metrics, locale = "en" }: { metrics: AirForceMetric[]; locale?: Locale }) {
   return (
-    <section className="relative bg-[#050608] border-y border-white/[0.04]">
-      <div className="mx-auto max-w-[1400px] px-6 py-16 sm:px-10 lg:px-16">
-        <div className="grid grid-cols-2 gap-px sm:grid-cols-3 lg:grid-cols-6 bg-white/[0.04] border border-white/[0.04]">
+    <section className="relative bg-[#050608] border-y border-white/[0.04] overflow-hidden">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-x divide-y divide-white/[0.04]">
           {metrics.map((m, i) => (
             <motion.div
               key={m.label}
-              initial="hidden"
-              whileInView="visible"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
-              variants={fadeUp}
-              transition={{ duration: 0.6, delay: i * 0.06 }}
-              className="group relative bg-[#050608] p-6 lg:p-7"
+              transition={{ duration: 0.9, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative flex flex-col px-7 py-10 lg:px-8 lg:py-12 bg-[#050608] hover:bg-white/[0.015] transition-colors duration-500"
             >
-              <div className="af-font-display text-[clamp(28px,3.5vw,42px)] font-black text-white leading-none mb-3 tracking-tight">
+              {/* Category label — top, mono caps */}
+              <div className="af-font-mono text-[8px] tracking-[0.28em] text-white/30 mb-5 font-bold uppercase leading-relaxed">
+                {m.label}
+              </div>
+
+              {/* Large value */}
+              <div className="af-font-display text-[clamp(32px,4vw,52px)] font-black text-white leading-none tracking-tight mb-0">
                 <AFCountUp value={m.value} />
               </div>
-              <div className="af-font-mono text-[8px] tracking-[0.2em] text-white/35 mb-4 leading-relaxed">{m.label}</div>
-              <div className="text-[11px] leading-[1.7] text-white/25 group-hover:text-white/40 transition-colors duration-500">{m.detail}</div>
+
+              {/* Gradient rule */}
+              <div
+                className="mt-5 mb-4 h-px w-full"
+                style={{ background: "linear-gradient(to right, rgba(212,164,74,0.4), rgba(255,255,255,0.04), transparent)" }}
+              />
+
+              {/* Detail text — bottom */}
+              <div className="text-[10px] leading-[1.75] text-white/30 group-hover:text-white/45 transition-colors duration-500 af-font-mono tracking-wide uppercase">
+                {m.detail}
+              </div>
             </motion.div>
           ))}
         </div>
@@ -790,20 +803,7 @@ export function AirForceOperationalConsole({ theaters, locale = "en" }: { theate
               >
                 <div className="af-font-mono text-[8px] tracking-[0.2em] text-white/25 mb-2">{active.region}</div>
                 <h3 className="af-font-display text-xl font-black text-white mb-5 leading-[0.92]">{active.name}</h3>
-                <p className="text-[13px] leading-[1.85] text-white/40 mb-8">{active.description}</p>
-
-                {/* Enhancement 6: Animated pulsing signal indicator */}
-                <div className="mb-8 flex items-center gap-3">
-                  <motion.div
-                    animate={{ opacity: [1, 0.25, 1] }}
-                    transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-                    className="h-1.5 w-1.5 rounded-full flex-shrink-0"
-                    style={{ background: active.accent }}
-                  />
-                  <span className="af-font-mono text-[9px] tracking-[0.18em] text-white/30">
-                    {active.signal.toUpperCase()} · ACTIVE
-                  </span>
-                </div>
+                <p className="text-[13px] leading-[1.85] text-white/40 mb-10">{active.description}</p>
 
                 <div className="mt-auto space-y-4">
                   {active.metrics.map((m) => (

@@ -77,7 +77,7 @@ export default async function AirForcePage() {
 
       {/* 1. VIDEO HERO — B-2 Spirit cinematic flyover */}
       <VideoMilitaryHero
-        videoSrc="/IMAGES/Military/Air Force/b-2-spirit-stealth-bomber-hero-video.mp4"
+        videoSrc="/videos/military/b2-spirit-hero.mp4"
         posterSrc={SITE_IMAGES.airForce.b2}
         title={isRo ? "SUPREMAȚIE AERIANĂ" : "AIR SUPREMACY"}
         subtitle={isRo ? "FORȚELE AERIENE ALE STATELOR UNITE · DOMINANȚĂ AERIANĂ GLOBALĂ ȘI LOVITURĂ DE PRECIZIE" : "UNITED STATES AIR FORCE · GLOBAL AIR DOMINANCE & PRECISION STRIKE"}
