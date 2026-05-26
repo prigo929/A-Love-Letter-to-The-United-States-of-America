@@ -10,7 +10,6 @@ import {
   AirForceHeritageTimeline,
   AirForceMetricStrip,
   AirForceOperationalConsole,
-  AirForcePageProgress,
   AirForcePlatformShowcase,
   AirForceStyles,
   AFSectionDivider,
@@ -75,7 +74,6 @@ export default async function AirForcePage() {
     <div className="af-page min-h-screen overflow-hidden bg-black text-white">
       <MilStyles />
       <AirForceStyles />
-      <AirForcePageProgress />
 
       {/* 1. VIDEO HERO — B-2 Spirit cinematic flyover */}
       <VideoMilitaryHero
