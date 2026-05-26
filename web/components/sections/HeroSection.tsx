@@ -24,7 +24,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { ChevronDown, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { StatesVideoTitle } from "@/components/sections/StatesVideoTitle";
 import {
@@ -483,7 +483,6 @@ export function HeroSection() {
   const { scrollY } = useScroll();
   const textY = useTransform(scrollY, [0, 600], [0, -120]);
   const bgY = useTransform(scrollY, [0, 600], [0, 160]);
-  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   // Image carousel — cycle every 6 seconds
   useEffect(() => {
@@ -686,27 +685,6 @@ export function HeroSection() {
           </motion.div>
         </motion.div>
       </motion.div>
-
-      {/* ── Scroll Indicator ───────────────────────────────────────────────── */}
-      <div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
-        aria-hidden="true"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.5, duration: 0.8 }}
-          style={{ opacity }}
-          className="flex flex-col items-center gap-2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ChevronDown className="w-5 h-5 text-glory-gold" />
-          </motion.div>
-        </motion.div>
-      </div>
     </div>
   );
 }

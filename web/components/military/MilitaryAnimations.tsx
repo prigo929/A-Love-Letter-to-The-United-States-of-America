@@ -1092,19 +1092,6 @@ export function ParallaxMilitaryHero({
             </motion.div>
           )}
         </motion.div>
-        
-        {/* Breathing dot scroll indicator */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.5, duration: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
-        >
-          <span className="mil-text-metadata text-[7px] tracking-[0.5em] opacity-30">SCROLL</span>
-          <div className="relative">
-            <div className="h-2 w-2 rounded-full bg-white/50 mil-breathe" />
-          </div>
-        </motion.div>
       </div>
     </div>
   );
@@ -1150,7 +1137,7 @@ export function VideoMilitaryHero({
             muted
             playsInline
             poster={posterSrc}
-            className="absolute inset-0 h-full w-full object-cover brightness-[0.38] saturate-[0.75]"
+            className="absolute inset-0 h-full w-full object-[center_40%] object-cover brightness-[0.38] saturate-[0.75] scale-[1.15] md:scale-100 md:object-cover"
           >
             <source src={videoSrc} type="video/mp4" />
           </video>
@@ -1207,17 +1194,6 @@ export function VideoMilitaryHero({
               ))}
             </motion.div>
           )}
-        </motion.div>
-
-        {/* ── Scroll indicator ── */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.5, duration: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
-        >
-          <span className="mil-text-metadata text-[7px] tracking-[0.5em] opacity-30">SCROLL</span>
-          <div className="h-2 w-2 rounded-full bg-white/50 mil-breathe" />
         </motion.div>
       </div>
     </div>
