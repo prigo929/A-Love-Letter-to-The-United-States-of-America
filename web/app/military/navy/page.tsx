@@ -13,7 +13,6 @@ import {
   NavyHumanitarianSection,
   NavyMetricStrip,
   NavyOperationalConsole,
-  NavyPageProgress,
   NavyPlatformShowcase,
   NavySpecWarSection,
   NavyStyles,
@@ -88,7 +87,6 @@ export default async function NavyPage() {
     <div className="navy-page min-h-screen overflow-hidden bg-black text-white">
       <MilStyles />
       <NavyStyles />
-      <NavyPageProgress />
       <ParallaxMilitaryHero
         imageSrc={SITE_IMAGES.navy.hero}
         imageAlt="U.S. Navy aircraft carrier in cinematic light"

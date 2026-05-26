@@ -314,39 +314,41 @@ export function AirForceFullBleed({
 
 export function AirForceMetricStrip({ metrics, locale = "en" }: { metrics: AirForceMetric[]; locale?: Locale }) {
   return (
-    <section className="relative bg-[#050608] border-y border-white/[0.04] overflow-hidden">
-      <div className="mx-auto max-w-[1400px]">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-x divide-y divide-white/[0.04]">
+    <section className="relative overflow-hidden" style={{ background: "#000000" }}>
+      <div className="mx-auto max-w-[1440px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-t border-white/5">
           {metrics.map((m, i) => (
-            <motion.div
-              key={m.label}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.9, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative flex flex-col px-7 py-10 lg:px-8 lg:py-12 bg-[#050608] hover:bg-white/[0.015] transition-colors duration-500"
-            >
-              {/* Category label — top, mono caps */}
-              <div className="af-font-mono text-[8px] tracking-[0.28em] text-white/30 mb-5 font-bold uppercase leading-relaxed">
-                {m.label}
-              </div>
+            <div key={m.label} className="border-r border-b border-white/5">
+              <motion.div
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 1.2, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col px-8 py-12"
+              >
+                {/* Label — top */}
+                <div className="mil-text-metadata mb-6 tracking-[0.3em] font-black text-white">
+                  {m.label}
+                </div>
 
-              {/* Large value */}
-              <div className="af-font-display text-[clamp(32px,4vw,52px)] font-black text-white leading-none tracking-tight mb-0">
-                <AFCountUp value={m.value} />
-              </div>
+                {/* Large number */}
+                <div className="flex items-baseline gap-1">
+                  <span className="text-[clamp(48px,7vw,96px)] font-extralight tracking-tighter leading-none">
+                    <AFCountUp value={m.value} />
+                  </span>
+                </div>
 
-              {/* Gradient rule */}
-              <div
-                className="mt-5 mb-4 h-px w-full"
-                style={{ background: "linear-gradient(to right, rgba(212,164,74,0.4), rgba(255,255,255,0.04), transparent)" }}
-              />
+                {/* Gradient divider */}
+                <div className="mt-6 mb-4 h-px w-full" style={{
+                  background: "linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0.05), transparent)"
+                }} />
 
-              {/* Detail text — bottom */}
-              <div className="text-[10px] leading-[1.75] text-white/30 group-hover:text-white/45 transition-colors duration-500 af-font-mono tracking-wide uppercase">
-                {m.detail}
-              </div>
-            </motion.div>
+                {/* Sublabel */}
+                <div className="mil-text-metadata max-w-[240px] leading-relaxed opacity-60 text-[11px] font-medium tracking-wide">
+                  {m.detail}
+                </div>
+              </motion.div>
+            </div>
           ))}
         </div>
       </div>
