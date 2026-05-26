@@ -27,17 +27,17 @@ export const KEY_STATS = [
     prefix: "#",
     value: 1,
     suffix: " Economy",
-    label: "$28.8 Trillion GDP",
-    source: "World Bank 2024",
+    label: "$32.4 Trillion GDP",
+    source: "IMF 2026",
     color: "gold" as const,
   },
   {
     id: "population",
-    value: 335,
+    value: 342,
     suffix: "M+",
     label: "Americans",
-    description: "335 million stories",
-    source: "US Census Bureau",
+    description: "342 million stories",
+    source: "US Census Bureau 2026",
     color: "white" as const,
   },
   {
@@ -59,11 +59,11 @@ export const KEY_STATS = [
   },
   {
     id: "nobel-prizes",
-    value: 400,
+    value: 425,
     suffix: "+",
     label: "Nobel Prizes",
     description: "More than any nation",
-    source: "Nobel Foundation",
+    source: "Nobel Foundation 2025",
     color: "white" as const,
   },
   {
@@ -71,24 +71,24 @@ export const KEY_STATS = [
     prefix: "#",
     value: 1,
     label: "Military Power",
-    description: "$886B defense budget",
-    source: "SIPRI 2024",
+    description: "$954B defense budget",
+    source: "SIPRI 2025",
     color: "gold" as const,
   },
 ] as const;
 
 export const HOME_COPY = {
   sectionGridSummary:
-    "From its $28.8 trillion economy to 63 national parks. From the Constitution to the semiconductor. Every chapter of America's extraordinary story.",
+    "From its $32.4 trillion economy to 63 national parks. From the Constitution to the semiconductor. Every chapter of America's extraordinary story.",
   statSources:
-    "Sources: World Bank, SIPRI, NPS, Nobel Foundation, DoD — 2024 data",
+    "Sources: IMF, SIPRI, NPS, Nobel Foundation, DoD — 2025/2026 data",
 } as const;
 
 // Placeholder copy for the economy landing summary used on the homepage.
 export const ECONOMY_PAGE_COPY = {
-  heroValue: "$28.8T",
+  heroValue: "$32.4T",
   description:
-    "The United States economy — $28.8 trillion, the largest in human history.",
+    "The United States economy — $32.4 trillion, the largest in human history.",
   body: "Phase 3 — Economy section — coming soon. Full charts, data, and analysis of America's unrivaled economic dominance.",
 } as const;
 
@@ -153,8 +153,8 @@ export const WHY_AMERICA_BLOCKS: ContentBlockItem[] = [
       },
       {
         id: "tech-2",
-        fact: "400+ Nobel Prizes — more than any nation",
-        source: "Nobel Foundation",
+        fact: "425+ Nobel Prizes — more than any nation",
+        source: "Nobel Foundation 2025",
         color: "red",
       },
       {
@@ -202,7 +202,7 @@ export const WHY_AMERICA_BLOCKS: ContentBlockItem[] = [
     subheading:
       "The Most Powerful Military in the History of Human Civilization",
     paragraphs: [
-      "The United States maintains 11 aircraft carrier strike groups — the rest of the world combined has roughly four. Its defense budget of $886 billion exceeds the next ten nations' budgets combined. It operates bases in more than 80 countries, maintains a nuclear triad, and fields the most technologically advanced military force in history.",
+      "The United States maintains 11 aircraft carrier strike groups — the rest of the world combined has roughly four. Its defense budget of $954 billion exceeds the next ten nations' budgets combined. It operates bases in more than 80 countries, maintains a nuclear triad, and fields the most technologically advanced military force in history.",
       "But American military power is not merely about hardware. It is about what that power has preserved: the post-1945 rules-based international order, the freedom of navigation that enables global trade, and the security umbrella under which democracies across Europe, Asia, and the Pacific have flourished for eight decades.",
     ],
     imageSrc: SITE_IMAGES.homeAirForcePlane,
@@ -218,8 +218,8 @@ export const WHY_AMERICA_BLOCKS: ContentBlockItem[] = [
       },
       {
         id: "mil-2",
-        fact: "$886 billion defense budget",
-        source: "SIPRI 2024",
+        fact: "$954 billion defense budget",
+        source: "SIPRI 2025",
         color: "red",
       },
       {
@@ -271,27 +271,27 @@ export const VIDEO_PREVIEWS = [
 // These three datasets power the mini charts in DataTeaserSection.
 // The chart component reads `country` and `value` from each item.
 export const GDP_COMPARISON_DATA = [
-  { country: "USA", value: 28.8, isUSA: true },
-  { country: "China", value: 17.7, isUSA: false },
-  { country: "Germany", value: 4.5, isUSA: false },
-  { country: "Japan", value: 4.2, isUSA: false },
-  { country: "India", value: 3.7, isUSA: false },
-  { country: "UK", value: 3.1, isUSA: false },
-  { country: "France", value: 3.0, isUSA: false },
+  { country: "USA", value: 32.4, isUSA: true },
+  { country: "China", value: 20.8, isUSA: false },
+  { country: "Germany", value: 5.4, isUSA: false },
+  { country: "Japan", value: 4.4, isUSA: false },
+  { country: "UK", value: 4.3, isUSA: false },
+  { country: "India", value: 4.2, isUSA: false },
+  { country: "France", value: 3.6, isUSA: false },
 ] as const;
 
 export const MILITARY_SPENDING_DATA = [
-  { country: "USA", value: 886, isUSA: true },
-  { country: "China", value: 296, isUSA: false },
-  { country: "Russia", value: 109, isUSA: false },
-  { country: "India", value: 84, isUSA: false },
-  { country: "UK", value: 75, isUSA: false },
-  { country: "Germany", value: 66, isUSA: false },
-  { country: "France", value: 61, isUSA: false },
+  { country: "USA", value: 954, isUSA: true },
+  { country: "China", value: 336, isUSA: false },
+  { country: "Russia", value: 190, isUSA: false },
+  { country: "Germany", value: 114, isUSA: false },
+  { country: "India", value: 92, isUSA: false },
+  { country: "UK", value: 89, isUSA: false },
+  { country: "France", value: 68, isUSA: false },
 ] as const;
 
 export const NOBEL_PRIZES_DATA = [
-  { country: "USA", value: 411, isUSA: true },
+  { country: "USA", value: 425, isUSA: true },
   { country: "UK", value: 137, isUSA: false },
   { country: "Germany", value: 114, isUSA: false },
   { country: "France", value: 73, isUSA: false },

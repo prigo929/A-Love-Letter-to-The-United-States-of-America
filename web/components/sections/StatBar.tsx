@@ -21,15 +21,15 @@ export function StatBar() {
             prefix: "#",
             value: 1,
             suffix: " Economie",
-            label: "PIB de 28,8 trilioane $",
+            label: "PIB de 32,4 trilioane $",
             color: "gold" as const,
           },
           {
             id: "population",
-            value: 335,
+            value: 342,
             suffix: "M+",
             label: "Americani",
-            description: "335 de milioane de povești",
+            description: "342 de milioane de povești",
             color: "white" as const,
           },
           {
@@ -49,7 +49,7 @@ export function StatBar() {
           },
           {
             id: "nobel-prizes",
-            value: 400,
+            value: 425,
             suffix: "+",
             label: "Premii Nobel",
             description: "Mai multe decât orice altă națiune",
@@ -60,14 +60,14 @@ export function StatBar() {
             prefix: "#",
             value: 1,
             label: "Putere Militară",
-            description: "Buget de apărare de 886 Mld. $",
+            description: "Buget de apărare de 954 Mld. $",
             color: "gold" as const,
           },
         ]
       : KEY_STATS;
   const statSources =
     locale === "ro"
-      ? "Surse: Banca Mondială, SIPRI, NPS, Fundația Nobel, DoD — date din 2024"
+      ? "Surse: FMI, SIPRI, NPS, Fundația Nobel, DoD — date din 2025/2026"
       : HOME_COPY.statSources;
 
   return (

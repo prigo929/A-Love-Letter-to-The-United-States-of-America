@@ -122,13 +122,13 @@ export interface AllianceData {
 // ─── Global Stats ─────────────────────────────────────────────────────────────
 
 export const MILITARY_STATS: MilitaryStat[] = [
-  { id: "budget",    value: 916,  suffix: "B",   prefix: "$", label: "Defense Budget",            sublabel: "FY2025 — larger than next 9 nations combined" },
+  { id: "budget",    value: 954,  suffix: "B",   prefix: "$", label: "Defense Budget",            sublabel: "FY2026 — larger than next 9 nations combined" },
   { id: "personnel", value: 1.34, suffix: "M",   decimals: 2, label: "Active Duty Personnel",     sublabel: "Plus 765K reserve and 700K civilian DOD" },
   { id: "carriers",  value: 11,   suffix: "",                 label: "Carrier Strike Groups",      sublabel: "11 nuclear-powered supercarriers — 100% world share"  },
   { id: "nukes",     value: 5044, suffix: "",                 label: "Nuclear Warheads",            sublabel: "Active and reserve inventory — the Triad" },
   { id: "satellites",value: 500,  suffix: "+",                label: "Military Satellites",         sublabel: "Dedicated and classified orbital assets"       },
   { id: "aircraft",  value: 13300,suffix: "+",                label: "Military Aircraft",           sublabel: "World's largest air force (Air Force) and 2nd largest (Navy)" },
-  { id: "bases",     value: 750,  suffix: "+",                label: "Overseas Bases",              sublabel: "Projecting power across 80+ countries"         },
+  { id: "bases",     value: 800,  suffix: "+",                label: "Overseas Bases",              sublabel: "Projecting power across 80+ countries"         },
   { id: "ships",     value: 530,  suffix: "+",                label: "Naval Vessels",               sublabel: "Including Battle Force and Sealift Command"    },
 ];
 
@@ -586,25 +586,25 @@ export function getDefenseContractors(locale: Locale): DefenseContractor[] {
 }
 
 export const BUDGET_DATA = [
-  { country: "United States", budget: 916, flag: "🇺🇸" },
+  { country: "United States", budget: 954, flag: "🇺🇸" },
   { country: "China",         budget: 336, flag: "🇨🇳" },
-  { country: "Russia",        budget: 140, flag: "🇷🇺" },
-  { country: "India",         budget:  83, flag: "🇮🇳" },
-  { country: "Saudi Arabia",  budget:  75, flag: "🇸🇦" },
-  { country: "UK",            budget:  73, flag: "🇬🇧" },
-  { country: "Germany",       budget:  67, flag: "🇩🇪" },
+  { country: "Russia",        budget: 190, flag: "🇷🇺" },
+  { country: "Germany",       budget: 114, flag: "🇩🇪" },
+  { country: "India",         budget:  92, flag: "🇮🇳" },
+  { country: "UK",            budget:  89, flag: "🇬🇧" },
+  { country: "Saudi Arabia",  budget:  83, flag: "🇸🇦" },
 ];
 
 export function getBudgetData(locale: Locale) {
   if (locale !== "ro") return BUDGET_DATA;
   return [
-    { country: "Statele Unite", budget: 916, flag: "🇺🇸" },
+    { country: "Statele Unite", budget: 954, flag: "🇺🇸" },
     { country: "China",         budget: 336, flag: "🇨🇳" },
-    { country: "Rusia",        budget: 140, flag: "🇷🇺" },
-    { country: "India",         budget:  83, flag: "🇮🇳" },
-    { country: "Arabia Saudită", budget:  75, flag: "🇸🇦" },
-    { country: "Marea Britanie", budget:  73, flag: "🇬🇧" },
-    { country: "Germania",       budget:  67, flag: "🇩🇪" },
+    { country: "Rusia",        budget: 190, flag: "🇷🇺" },
+    { country: "Germania",       budget: 114, flag: "🇩🇪" },
+    { country: "India",         budget:  92, flag: "🇮🇳" },
+    { country: "Marea Britanie", budget:  89, flag: "🇬🇧" },
+    { country: "Arabia Saudită", budget:  83, flag: "🇸🇦" },
   ];
 }
 
@@ -737,7 +737,7 @@ export function getMilitaryFacts(locale: Locale) {
 export function getMilitaryStats(locale: Locale): MilitaryStat[] {
   if (locale !== "ro") return MILITARY_STATS;
   return [
-    { ...MILITARY_STATS[0], label: "Buget Apărare",              sublabel: "AF2025 — mai mare decât următoarele 9 națiuni combinate" },
+    { ...MILITARY_STATS[0], label: "Buget Apărare",              sublabel: "AF2026 — mai mare decât următoarele 9 națiuni combinate" },
     { ...MILITARY_STATS[1], label: "Personal Activ",             sublabel: "Plus 765K rezerviști și 700K civili DOD" },
     { ...MILITARY_STATS[2], label: "Grupuri Atac Portavioane",   sublabel: "11 portavioane cu propulsie nucleară — 100% cotă mondială" },
     { ...MILITARY_STATS[3], label: "Focoase Nucleare",           sublabel: "Inventar activ și în rezervă — Triada" },

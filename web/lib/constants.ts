@@ -54,9 +54,9 @@ export const NAV_SECTIONS = [
   {
     title: "Economy",
     href: "/economy",
-    description: "The engine of the world — $28.8T GDP and counting",
+    description: "The engine of the world — $32.4T GDP and counting",
     imageSrc: SITE_IMAGES.economyNYSEUpsideDown,
-    badge: "$28.8T GDP",
+    badge: "$32.4T GDP",
     items: [
       {
         label: "GDP & Scale",
@@ -129,12 +129,12 @@ export const NAV_SECTIONS = [
     href: "/military",
     description: "The most powerful military in the history of civilization",
     imageSrc: SITE_IMAGES.homeAirForcePlane,
-    badge: "$916B Budget",
+    badge: "$954B Budget",
     items: [
       {
         label: "Overview",
         href: "/military",
-        description: "$916B budget, 1.34M active duty",
+        description: "$954B budget, 1.34M active duty",
       },
       {
         label: "US Navy",
@@ -548,8 +548,8 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
 > = {
   "/economy": {
     title: "Economie",
-    description: "Motorul lumii — PIB de 28,8 trilioane de dolari și în creștere",
-    badge: "$28,8T PIB",
+    description: "Motorul lumii — PIB de 32,4 trilioane de dolari și în creștere",
+    badge: "$32,4T PIB",
     items: {
       "/economy/gdp-growth": {
         label: "PIB și Dimensiune",
@@ -608,11 +608,11 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
     title: "Armată",
     description:
       "Cea mai puternică forță militară din istoria civilizației",
-    badge: "Buget de 916 Mld. $",
+    badge: "Buget de 954 Mld. $",
     items: {
       "/military": {
         label: "Prezentare Generală",
-        description: "916 Mld. $, 1,34 milioane de militari activi",
+        description: "954 Mld. $, 1,34 milioane de militari activi",
       },
       "/military/navy": {
         label: "Marina SUA",

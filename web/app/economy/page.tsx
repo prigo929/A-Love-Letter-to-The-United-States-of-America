@@ -72,12 +72,12 @@ import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Economy",
   description:
-    "The US economy — $28.8 trillion in GDP, the world's largest stock markets, the global reserve currency, and the innovation capital of Earth. A deep-dive into American economic dominance.",
+    "The US economy — $32.4 trillion in GDP, the world's largest stock markets, the global reserve currency, and the innovation capital of Earth. A deep-dive into American economic dominance.",
   alternates: { canonical: "/economy" },
   openGraph: {
     title: "The Engine of the World — US Economy",
     description:
-      "America's economic dominance explained: $28.8T GDP, 47% of global VC, world reserve currency, and 659+ unicorn companies.",
+      "America's economic dominance explained: $32.4T GDP, 47% of global VC, world reserve currency, and 659+ unicorn companies.",
     url: "/economy",
     images: [
       {

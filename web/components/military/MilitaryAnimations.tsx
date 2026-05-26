@@ -1119,14 +1119,14 @@ export function BudgetComparisonBar({
   const isRo = locale === 'ro';
 
   const defaultLabel = isRo 
-    ? "Bugetul de Apărare (miliarde USD, 2024)" 
-    : "Defense Budget (USD Billion, 2024)";
+    ? "Bugetul de Apărare (miliarde USD, 2025)" 
+    : "Defense Budget (USD Billion, 2025)";
   
   const displayLabel = label || defaultLabel;
 
   // Next 10 nations combined calculation
-  const usBudget = 916;
-  const nextTenBudget = 893;
+  const usBudget = 954;
+  const nextTenBudget = 925;
   const nextTenPCT = (nextTenBudget / usBudget) * 100;
 
   return (
@@ -1157,10 +1157,10 @@ export function BudgetComparisonBar({
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
               <div>
                 <span className="text-[10px] font-mono tracking-widest text-white/40 block uppercase">
-                  {isRo ? "BUGET SUA 2024" : "U.S. BUDGET FY2024"}
+                  {isRo ? "BUGET SUA 2025" : "U.S. BUDGET FY2025"}
                 </span>
                 <span className="text-4xl font-extrabold tracking-tighter text-white block mt-1">
-                  $916B
+                  $954B
                 </span>
               </div>
               <div className="hidden md:block h-8 w-px bg-white/10" />
@@ -1169,7 +1169,7 @@ export function BudgetComparisonBar({
                   {isRo ? "URMĂTOARELE 10 COMBINATE" : "NEXT 10 NATIONS COMBINED"}
                 </span>
                 <span className="text-4xl font-extrabold tracking-tighter text-white/60 block mt-1">
-                  $893B
+                  $925B
                 </span>
               </div>
             </div>
@@ -1182,7 +1182,7 @@ export function BudgetComparisonBar({
                   <span className="font-bold text-white tracking-wider flex items-center gap-1.5">
                     🇺🇸 {isRo ? "STATELE UNITE" : "UNITED STATES"}
                   </span>
-                  <span className="text-white font-bold">$916B</span>
+                  <span className="text-white font-bold">$954B</span>
                 </div>
                 <div className="h-2.5 rounded bg-white/5 overflow-hidden">
                   <motion.div
@@ -1203,7 +1203,7 @@ export function BudgetComparisonBar({
                   <span className="text-white/50 tracking-wider">
                     {isRo ? "URMĂTOARELE 10 NAȚIUNI COMBINATE" : "NEXT 10 NATIONS COMBINED"}
                   </span>
-                  <span className="text-white/50">$893B</span>
+                  <span className="text-white/50">$925B</span>
                 </div>
                 <div className="h-2.5 rounded bg-white/5 overflow-hidden">
                   <motion.div

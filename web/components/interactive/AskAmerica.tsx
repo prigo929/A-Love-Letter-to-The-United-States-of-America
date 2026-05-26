@@ -43,8 +43,8 @@ const KNOWLEDGE_BASE: KnowledgeItem[] = [
   },
   {
     keywords: ["economy", "dollar", "gdp", "capital", "markets", "wall street", "finance", "trade", "economie", "moneda"],
-    responseEn: "The U.S. economy is the world's largest, currently valued at $28.8 Trillion. Capital markets (NYSE and NASDAQ) represent the most liquid and deep investment pools globally. The U.S. dollar operates as the primary global reserve currency, backing over 60% of central bank reserves and securing international trade networks.",
-    responseRo: "Economia SUA este cea mai mare din lume, evaluată în prezent la 28,8 trilioane de dolari. Piețele de capital (NYSE și NASDAQ) reprezintă cele mai lichide bazine de investiții la nivel global, iar dolarul american este principala monedă de rezervă, acoperind peste 60% din rezervele băncilor centrale.",
+    responseEn: "The U.S. economy is the world's largest, currently valued at $32.4 Trillion. Capital markets (NYSE and NASDAQ) represent the most liquid and deep investment pools globally. The U.S. dollar operates as the primary global reserve currency, backing over 60% of central bank reserves and securing international trade networks.",
+    responseRo: "Economia SUA este cea mai mare din lume, evaluată în prezent la 32,4 trilioane de dolari. Piețele de capital (NYSE și NASDAQ) reprezintă cele mai lichide bazine de investiții la nivel global, iar dolarul american este principala monedă de rezervă, acoperind peste 60% din rezervele băncilor centrale.",
     cta: {
       labelEn: "Explore U.S. Capital & GDP →",
       labelRo: "Explorează Capitalul și PIB-ul SUA →",
@@ -73,8 +73,8 @@ const KNOWLEDGE_BASE: KnowledgeItem[] = [
   },
   {
     keywords: ["military", "navy", "force", "nato", "army", "defense", "bases", "armat", "baze"],
-    responseEn: "The U.S. Armed Forces are the most capable military force in human history, backed by a $916 Billion defense budget. Global stability is sustained through 11 nuclear-powered aircraft carrier strike groups, over 800 overseas bases, and the NATO alliance, where the U.S. acts as the core security guarantor.",
-    responseRo: "Forțele Armate ale SUA sunt cea mai capabilă forță militară din istoria omenirii, susținută de un buget de apărare de 916 miliarde de dolari. Stabilitatea globală este menținută prin 11 grupuri de atac cu portavion nuclear, peste 800 de baze externe și alianța NATO.",
+    responseEn: "The U.S. Armed Forces are the most capable military force in human history, backed by a $954 Billion defense budget. Global stability is sustained through 11 nuclear-powered aircraft carrier strike groups, over 800 overseas bases, and the NATO alliance, where the U.S. acts as the core security guarantor.",
+    responseRo: "Forțele Armate ale SUA sunt cea mai capabilă forță militară din istoria omenirii, susținută de un buget de apărare de 954 miliarde de dolari. Stabilitatea globală este menținută prin 11 grupuri de atac cu portavion nuclear, peste 800 de baze externe și alianța NATO.",
     cta: {
       labelEn: "Explore Military & Air Power →",
       labelRo: "Explorează Armata și Forțele Aeriene →",
@@ -142,8 +142,8 @@ export function AskAmerica({ locale }: AskAmericaProps) {
   const analyzingText = isRo ? "Oracolul analizează..." : "Oracle analyzing...";
 
   const fallbackResponse = isRo
-    ? "Sunt Oracolul Ask America. Pot analiza economia (PIB-ul de 28.8T$), principiile constituționale (Federalist Papers), tehnologia (Silicon Valley, AI), armata (NATO), sportul (NFL, NBA) și conservarea naturii. Încercați cuvinte cheie."
-    : "I am the Ask America Oracle. I can analyze the economy ($28.8T GDP), constitutional principles (Federalist Papers), tech (Silicon Valley, AI), military (NATO), sports exports (NFL, NBA), and conservation history. Try keywords.";
+    ? "Sunt Oracolul Ask America. Pot analiza economia (PIB-ul de 32.4T$), principiile constituționale (Federalist Papers), tehnologia (Silicon Valley, AI), armata (NATO), sportul (NFL, NBA) și conservarea naturii. Încercați cuvinte cheie."
+    : "I am the Ask America Oracle. I can analyze the economy ($32.4T GDP), constitutional principles (Federalist Papers), tech (Silicon Valley, AI), military (NATO), sports exports (NFL, NBA), and conservation history. Try keywords.";
 
   const [messages, setMessages] = useState<Message[]>([
     {

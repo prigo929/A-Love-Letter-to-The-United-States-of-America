@@ -144,7 +144,7 @@ export function WhyAmericaSection() {
             subheading:
               "Cea mai puternică forță militară din istoria civilizației umane",
             paragraphs: [
-              "Statele Unite mențin 11 grupuri de atac cu portavion — restul lumii la un loc are aproximativ patru. Bugetul lor de apărare, de 886 de miliarde de dolari, îl depășește pe cel al următoarelor zece națiuni la un loc. America operează baze în peste 80 de țări, menține o triadă nucleară și dispune de cea mai avansată forță militară din istorie.",
+              "Statele Unite mențin 11 grupuri de atac cu portavion — restul lumii la un loc are aproximativ patru. Bugetul lor de apărare, de 954 de miliarde de dolari, îl depășește pe cel al următoarelor zece națiuni la un loc. America operează baze în peste 80 de țări, menține o triadă nucleară și dispune de cea mai avansată forță militară din istorie.",
               "Dar puterea militară americană nu se rezumă la echipamente. Ea a protejat ordinea internațională bazată pe reguli după 1945, libertatea de navigație care face posibil comerțul global și umbrela de securitate sub care democrațiile din Europa, Asia și Pacific au prosperat timp de opt decenii.",
             ],
             imageAlt:
@@ -158,8 +158,8 @@ export function WhyAmericaSection() {
               },
               {
                 id: "mil-2",
-                fact: "Buget de apărare de 886 de miliarde de dolari",
-                source: "SIPRI 2024",
+                fact: "Buget de apărare de 954 de miliarde de dolari",
+                source: "SIPRI 2025",
                 color: "red",
               },
               {
