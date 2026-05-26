@@ -189,8 +189,8 @@ export const AF_PLATFORMS: AirForcePlatform[] = [
     name: "F-16 Fighting Falcon",
     designation: "Multirole Fighter",
     role: "The most numerous and common multirole fighter in the Air Force, highly agile and combat-proven in both air-to-air and air-to-ground missions.",
-    imageSrc: SITE_IMAGES.airForce.f22Formation,
-    imageAlt: "F-16 Flying Falcon multirole fighter",
+    imageSrc: SITE_IMAGES.airForce.f16,
+    imageAlt: "F-16 Fighting Falcon multirole fighter in flight",
     capability: "Agile multirole combat",
     specs: [
       { label: "Speed", value: "Mach 2.0" },
@@ -203,7 +203,7 @@ export const AF_PLATFORMS: AirForcePlatform[] = [
     name: "F-15EX Eagle II",
     designation: "Heavyweight Tactical Fighter",
     role: "A heavily updated, \"heavyweight missile truck\" designed to carry hypersonic weapons and massive payloads alongside the F-35.",
-    imageSrc: SITE_IMAGES.airForce.f22Formation,
+    imageSrc: SITE_IMAGES.airForce.f15ex,
     imageAlt: "F-15EX Eagle II tactical fighter",
     capability: "Heavy payload tactical strike",
     specs: [
@@ -232,7 +232,7 @@ export const AF_PLATFORMS: AirForcePlatform[] = [
     designation: "Stealth Strategic Bomber",
     role: "A highly specialized, stealth flying-wing bomber capable of penetrating deeply defended enemy airspace to deliver conventional and nuclear payloads.",
     imageSrc: SITE_IMAGES.airForce.b2,
-    imageAlt: "B-2 Spirit stealth bomber in maintenance hangar",
+    imageAlt: "B-2 Spirit stealth bomber in flight",
     capability: "Penetrating stealth strike",
     specs: [
       { label: "Range", value: "6,000 nmi" },
@@ -245,8 +245,8 @@ export const AF_PLATFORMS: AirForcePlatform[] = [
     name: "B-1B Lancer",
     designation: "Supersonic Strategic Bomber",
     role: "A supersonic heavy bomber that provides long-range conventional strike capabilities and massive payload capacity.",
-    imageSrc: SITE_IMAGES.airForce.b21,
-    imageAlt: "B-1B Lancer supersonic heavy bomber",
+    imageSrc: SITE_IMAGES.airForce.b1b,
+    imageAlt: "B-1B Lancer supersonic heavy bomber in flight",
     capability: "Supersonic conventional strike",
     specs: [
       { label: "Speed", value: "Mach 1.25" },
@@ -259,8 +259,8 @@ export const AF_PLATFORMS: AirForcePlatform[] = [
     name: "Boeing C-17 Globemaster III",
     designation: "Strategic Airlifter",
     role: "The primary strategic and tactical airlifter. It routinely delivers troops, equipment, and medical aid to forward operating bases globally.",
-    imageSrc: SITE_IMAGES.airForce.personnel,
-    imageAlt: "C-17 Globemaster III with Air Force personnel",
+    imageSrc: SITE_IMAGES.airForce.c17,
+    imageAlt: "C-17 Globemaster III strategic airlifter",
     capability: "Rapid global mobility",
     specs: [
       { label: "Payload", value: "170,900 lb" },
@@ -274,7 +274,7 @@ export const AF_PLATFORMS: AirForcePlatform[] = [
     designation: "Tactical Transport Aircraft",
     role: "The premier tactical transport aircraft, used for dropping paratroopers, carrying supplies to austere runways, and performing special operations and refueling tasks.",
     imageSrc: SITE_IMAGES.airForce.c130,
-    imageAlt: "C-130 Hercules tactical transport aircraft takeoff",
+    imageAlt: "C-130 Hercules tactical transport aircraft",
     capability: "Austere theater transport",
     specs: [
       { label: "Payload", value: "42,000 lb" },
@@ -287,7 +287,7 @@ export const AF_PLATFORMS: AirForcePlatform[] = [
     name: "Boeing KC-135 Stratotanker",
     designation: "Aerial Refueling Tanker",
     role: "The backbone of global reach. By providing mid-air refueling, this decades-old workhorse extends the range and loiter time of almost all USAF combat aircraft.",
-    imageSrc: SITE_IMAGES.airForce.f22Formation,
+    imageSrc: SITE_IMAGES.airForce.kc135,
     imageAlt: "KC-135 Stratotanker aerial refueling",
     capability: "Global reach multiplication",
     specs: [
@@ -301,8 +301,8 @@ export const AF_PLATFORMS: AirForcePlatform[] = [
     name: "Boeing KC-46 Pegasus",
     designation: "Next-Gen Refueling Tanker",
     role: "The next-generation aerial refueling tanker slowly replacing older tankers like the KC-135.",
-    imageSrc: SITE_IMAGES.airForce.f22Formation,
-    imageAlt: "Boeing KC-46 Pegasus in formation",
+    imageSrc: SITE_IMAGES.airForce.kc46,
+    imageAlt: "Boeing KC-46 Pegasus in flight",
     capability: "Force multiplication",
     specs: [
       { label: "Fuel", value: "212,000 lb" },

@@ -48,7 +48,7 @@ import armyHero from "@/IMAGES/Military/Army/us-army-soldiers-flag.jpg";
 import navyHero from "@/IMAGES/Military/Navy/us-navy-dual-carrier-strike-group.jpg";
 import airForceHero from "@/IMAGES/Military/Air Force/us-air-force-desert-storm.jpg";
 import b21Raider from "@/IMAGES/Military/Air Force/us-air-force-b21-raider-flight.jpg";
-import b2Hero from "@/IMAGES/Military/Air Force/us-air-force-b2-spirit-maintenance.jpg";
+import b2Hero from "@/IMAGES/Military/Air Force/B-2 Spirit Bomber.jpg";
 import abramsTank from "@/IMAGES/Military/Army/us-army-abrams-tank-desert.jpg";
 import f22Raptor from "@/IMAGES/Military/Air Force/us-air-force-f22-raptor-close.jpg";
 import autonomousDrone from "@/IMAGES/Military/Air Force/us-air-force-yfq42a-drone-runway.jpg";
@@ -80,6 +80,17 @@ import bellX1Flight from "@/IMAGES/Military/Air Force/Bell X-1 in flight.jpg";
 import f86vsMig15Combat from "@/IMAGES/Military/Air Force/F-86 vs MiG 15.jpg";
 import b52StratofortressWing from "@/IMAGES/Military/Air Force/B-52_Stratofortress_assigned_to_the_307th_Bomb_Wing.jpg";
 import f117StealthBaghdad from "@/IMAGES/Military/Air Force/F-117 Nighthawk strikes Baghdad.jpg";
+
+// New user-added aircraft images
+import f16FightingFalcon from "@/IMAGES/Military/Air Force/F-16 Fighting Falcon.jpg";
+import f15exEagleII from "@/IMAGES/Military/Air Force/F-15EX Eagle II.jpg";
+import b2SpiritBomber from "@/IMAGES/Military/Air Force/B-2 Spirit Bomber.jpg";
+import b1bLancerFlying from "@/IMAGES/Military/Air Force/B-1B Lancer Flying.jpg";
+import c17Globemaster from "@/IMAGES/Military/Air Force/Boeing C-17 Globemaster III_aircraft_over_over_the_Blue_Ridge_Mountains_2005.jpg";
+import c130Hercules from "@/IMAGES/Military/Air Force/Lockheed Martin C-130 Hercules.jpg";
+import kc135Stratotanker from "@/IMAGES/Military/Air Force/KC-135R Stratotanker refuels an F-15C Eagle.jpg";
+import kc46Pegasus from "@/IMAGES/Military/Air Force/KC-46 Pegasus.jpg";
+import usAirForceB21 from "@/IMAGES/Military/Air Force/US Air Force B-21.jpg";
 
 import carrierStrikeGroupLogo from "@/ASSETS/Military/Carrier Strike Group Logo Dark.png";
 
@@ -173,9 +184,13 @@ export const SITE_IMAGES = {
     f22: f22Raptor.src,
     f22Formation: f22Formation.src,
     f35: f35Lightning.src,
-    b2: b2Hero.src,
-    b21: b21Raider.src,
-    c130: c130Takeoff.src,
+    f16: f16FightingFalcon.src,
+    f15ex: f15exEagleII.src,
+    b2: b2SpiritBomber.src,
+    b21: usAirForceB21.src,
+    b1b: b1bLancerFlying.src,
+    c17: c17Globemaster.src,
+    c130: c130Hercules.src,
     ac130: ac130Ghostrider.src,
     personnel: airForcePersonnel.src,
     drone: autonomousDrone.src,
@@ -186,5 +201,7 @@ export const SITE_IMAGES = {
     f86vsMig15: f86vsMig15Combat.src,
     b52: b52StratofortressWing.src,
     f117: f117StealthBaghdad.src,
+    kc135: kc135Stratotanker.src,
+    kc46: kc46Pegasus.src,
   },
 } as const;
