@@ -480,6 +480,7 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
 
 export function AirForceCapabilityGrid({ capabilities, locale = "en" }: { capabilities: AirForceCapability[]; locale?: Locale }) {
   const isRo = locale === "ro";
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
     <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
@@ -495,61 +496,93 @@ export function AirForceCapabilityGrid({ capabilities, locale = "en" }: { capabi
             : "Five distinct mission functions that define American air supremacy — each a pillar of deterrence and force projection."}
         />
 
-        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-          {capabilities.map((cap, i) => (
-            <motion.div
-              key={cap.title}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-40px" }}
-              variants={fadeUp}
-              transition={{ duration: 0.7, delay: i * 0.07 }}
-              className={cn(
-                "group relative overflow-hidden af-panel p-8 sm:p-10 transition-all duration-500 hover:border-white/10 flex flex-col",
-                i === 0 && "lg:col-span-2 lg:row-span-2",
-                i === 0 ? "min-h-[380px]" : "min-h-[260px]"
-              )}
-            >
-              {/* Top accent dot */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className={cn(
-                  "h-2 w-2 rounded-full opacity-60",
-                  cap.accent === "#7dd3fc" ? "bg-sky-300" :
-                  cap.accent === "#f5a623" ? "bg-amber-500" :
-                  cap.accent === "#a78bfa" ? "bg-violet-400" :
-                  cap.accent === "#34d399" ? "bg-emerald-400" :
-                  "bg-red-400"
-                )} />
-                <span className="af-font-mono text-[9px] tracking-[0.2em] text-white/30">{cap.kicker}</span>
-              </div>
+        <div className="flex flex-col lg:flex-row gap-3 mt-16 lg:h-[480px]">
+          {capabilities.map((cap, i) => {
+            const isHovered = hoveredIdx === i;
+            const isAnyHovered = hoveredIdx !== null;
+            
+            return (
+              <motion.div
+                key={cap.title}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-40px" }}
+                variants={fadeUp}
+                transition={{ duration: 0.7, delay: i * 0.05 }}
+                onMouseEnter={() => setHoveredIdx(i)}
+                onMouseLeave={() => setHoveredIdx(null)}
+                className={cn(
+                  "group relative overflow-hidden af-panel p-6 sm:p-8 flex flex-col justify-between transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer select-none min-h-[220px] lg:min-h-0",
+                  isHovered ? "lg:flex-[3.2] bg-white/[0.04] border-white/10" : 
+                  isAnyHovered ? "lg:flex-[0.6] opacity-35 bg-black/40 border-white/[0.02]" : "lg:flex-1 bg-white/[0.02] border-white/[0.04]"
+                )}
+              >
+                {/* Background Accent Glow */}
+                <div 
+                  className={cn(
+                    "absolute top-0 right-0 h-40 w-40 rounded-full blur-[80px] pointer-events-none transition-opacity duration-1000 opacity-0 group-hover:opacity-10",
+                    cap.accent === "#7dd3fc" ? "bg-sky-300" :
+                    cap.accent === "#f5a623" ? "bg-amber-500" :
+                    cap.accent === "#a78bfa" ? "bg-violet-400" :
+                    cap.accent === "#34d399" ? "bg-emerald-400" :
+                    "bg-red-400"
+                  )}
+                />
 
-              <h3 className={cn(
-                "af-font-display font-black text-white mb-5 leading-[0.92]",
-                i === 0 ? "text-3xl sm:text-5xl" : "text-2xl sm:text-3xl"
-              )}>
-                {cap.title}
-              </h3>
-              <p className={cn(
-                "leading-[1.8] text-white/40 group-hover:text-white/55 transition-colors duration-500 mb-8",
-                i === 0 ? "text-sm max-w-lg" : "text-xs"
-              )}>
-                {cap.description}
-              </p>
+                {/* Header: Dot + Kicker */}
+                <div className="flex items-center gap-3 mb-6 lg:mb-0 shrink-0">
+                  <div className={cn(
+                    "h-1.5 w-1.5 rounded-full transition-all duration-500",
+                    isHovered ? "opacity-100 scale-125" : "opacity-40",
+                    cap.accent === "#7dd3fc" ? "bg-sky-300" :
+                    cap.accent === "#f5a623" ? "bg-amber-500" :
+                    cap.accent === "#a78bfa" ? "bg-violet-400" :
+                    cap.accent === "#34d399" ? "bg-emerald-400" :
+                    "bg-red-400"
+                  )} />
+                  <span className="af-font-mono text-[9px] tracking-[0.2em] text-white/30 transition-colors duration-500 group-hover:text-white/50">
+                    {cap.kicker}
+                  </span>
+                </div>
 
-              <div className="mt-auto">
-                <span className={cn(
-                  "af-font-mono text-[9px] tracking-[0.15em] opacity-70",
-                  cap.accent === "#7dd3fc" ? "text-sky-300" :
-                  cap.accent === "#f5a623" ? "text-amber-500" :
-                  cap.accent === "#a78bfa" ? "text-violet-400" :
-                  cap.accent === "#34d399" ? "text-emerald-400" :
-                  "text-red-400"
-                )}>
-                  {cap.stat}
-                </span>
-              </div>
-            </motion.div>
-          ))}
+                {/* Middle Content */}
+                <div className="flex-1 flex flex-col justify-center my-4 lg:my-0">
+                  <h3 className={cn(
+                    "af-font-display font-black text-white leading-[0.92] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                    isHovered ? "text-2xl sm:text-3xl mb-4" : "text-xl sm:text-2xl lg:text-xl xl:text-2xl",
+                    !isHovered && isAnyHovered ? "lg:opacity-60" : ""
+                  )}>
+                    {cap.title}
+                  </h3>
+                  
+                  {/* Description (collapsible on desktop, static on mobile) */}
+                  <div className={cn(
+                    "transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden",
+                    isHovered ? "opacity-100 max-h-[300px] mb-2" : "lg:opacity-0 lg:max-h-0"
+                  )}>
+                    <p className="leading-[1.8] text-[12px] text-white/40 max-w-md">
+                      {cap.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Footer: Bottom Stat */}
+                <div className="shrink-0 mt-2 lg:mt-0">
+                  <span className={cn(
+                    "af-font-mono text-[9px] tracking-[0.15em] transition-all duration-500",
+                    isHovered ? "opacity-90" : "opacity-40",
+                    cap.accent === "#7dd3fc" ? "text-sky-300" :
+                    cap.accent === "#f5a623" ? "text-amber-500" :
+                    cap.accent === "#a78bfa" ? "text-violet-400" :
+                    cap.accent === "#34d399" ? "text-emerald-400" :
+                    "text-red-400"
+                  )}>
+                    {cap.stat}
+                  </span>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
