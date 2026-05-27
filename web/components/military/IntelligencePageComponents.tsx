@@ -488,14 +488,6 @@ export function IntelligenceOperationsConsole({ nodes, locale = "en" }: { nodes:
   const active = nodes[activeIndex];
   const isRo = locale === "ro";
 
-  const coordinates = [
-    "23.7997° S / 133.7372° E",
-    "53.9978° N / 1.6901° W",
-    "39.7016° N / 104.7517° W",
-    "39.1104° N / 76.7358° W",
-    "38.9519° N / 77.1598° W",
-  ];
-
   return (
     <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
       <div className="relative mx-auto max-w-[1400px]">
@@ -520,7 +512,7 @@ export function IntelligenceOperationsConsole({ nodes, locale = "en" }: { nodes:
                   type="button"
                   onClick={() => setActiveIndex(i)}
                   className={cn(
-                    "relative text-left px-8 py-6 transition-all duration-300 border-b border-white/5 last:border-b-0 flex flex-col justify-center",
+                    "relative text-left px-8 py-8 transition-all duration-300 border-b border-white/5 last:border-b-0 flex flex-col justify-center min-h-[110px]",
                     selected ? "bg-white/[0.03]" : "hover:bg-white/[0.01]"
                   )}
                 >
@@ -531,14 +523,13 @@ export function IntelligenceOperationsConsole({ nodes, locale = "en" }: { nodes:
                       transition={{ type: "spring", stiffness: 350, damping: 30 }}
                     />
                   )}
-                  <span className="intel-font-mono text-[8px] tracking-[0.15em] text-white/20 mb-1">{node.location}</span>
+                  <span className="intel-font-mono text-[10px] tracking-[0.2em] text-[#d4a44a]/80 mb-2 font-semibold uppercase">{node.location}</span>
                   <span className={cn(
-                    "intel-font-display text-sm font-bold tracking-tight transition-colors",
+                    "intel-font-display text-lg sm:text-xl font-bold tracking-tight transition-colors leading-tight",
                     selected ? "text-white" : "text-white/40"
                   )}>
                     {node.name}
                   </span>
-                  <span className="intel-font-mono text-[7px] text-[#d4a44a]/50 mt-1">{coordinates[i]}</span>
                 </button>
               );
             })}
@@ -548,29 +539,12 @@ export function IntelligenceOperationsConsole({ nodes, locale = "en" }: { nodes:
           <div className="relative p-8 sm:p-12 lg:p-16 flex flex-col justify-between overflow-hidden bg-[#07080a] min-h-[450px]">
             {/* Ambient tactical coordinates pattern overlay in the background */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(212,164,74,0.02),transparent_60%)] pointer-events-none" />
-            <div className="absolute inset-0 opacity-[0.015] pointer-events-none select-none intel-font-mono text-[8px] leading-relaxed p-4" style={{
-              backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)`,
-              backgroundSize: '40px 40px'
-            }}>
-              <div className="absolute right-4 top-4">LAT: 38.9519° N / LON: 77.1598° W</div>
-              <div className="absolute left-4 bottom-4">UPGRADE: GEN-IV CRYPTOLOGIC DECK</div>
-              <div className="absolute right-4 bottom-4">COORD GRID: OP-LEVEL 01</div>
-            </div>
 
             <div className="relative z-10 w-full flex flex-col justify-between h-full gap-8">
-              {/* Header section with pulsating status dot */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="flex items-center gap-2">
-                  <MapPin size={12} className="text-[#d4a44a]" />
-                  <span className="intel-font-mono text-[10px] tracking-[0.15em] text-white/50">{active.location}</span>
-                </div>
-                <div className="flex items-center gap-2 self-start sm:self-center border border-[#d4a44a]/15 bg-[#d4a44a]/5 px-3 py-1 rounded-sm">
-                  <span className="relative flex h-1.5 w-1.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4a44a] opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#d4a44a]"></span>
-                  </span>
-                  <span className="intel-font-mono text-[7px] tracking-[0.2em] text-[#d4a44a] font-bold">DOWNLINK ACTIVE // ENCRYPTED</span>
-                </div>
+              {/* Header section with Location label */}
+              <div className="flex items-center gap-2">
+                <MapPin size={12} className="text-white/30" />
+                <span className="intel-font-mono text-[10px] tracking-[0.15em] text-white/50 uppercase">{active.location}</span>
               </div>
 
               {/* Central installation title and info */}
