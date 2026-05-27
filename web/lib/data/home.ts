@@ -305,6 +305,7 @@ export const NOBEL_PRIZES_DATA = [
 // Important:
 // - `src` decides which image file is shown
 // - `caption` is the short label users see
+// - `description` is the longer text shown in the lightbox
 // - `category` powers the small category pills
 // - `span` changes the card shape in the layout
 //
@@ -315,14 +316,18 @@ export const GALLERY_PREVIEW_IMAGES = [
     src: SITE_IMAGES.homeUsaAtNightFromSpace,
     alt: "The United States at night seen from orbit, with major population centers glowing across the continent",
     caption: "The United States at Night, from Space",
+    description:
+      "The United States at night seen from orbit, with major population centers glowing across the continent and revealing the scale of the country's cities, infrastructure, and connected regions.",
     category: "Global Scale",
     span: "wide",
   },
   {
     id: "chicago-downtown",
     src: SITE_IMAGES.homeChicagoDowntownPortrait,
-    alt: "Chicago downtown towers rising above the city in a vertical skyline portrait",
+    alt: "Elevated dusk view of the Chicago River running through downtown Chicago",
     caption: "Downtown Chicago, Illinois",
+    description:
+      "This is an elevated, dusk view of the Chicago River flowing through the downtown architectural canyon. The perspective looks down the river corridor from behind a stone balustrade, showing multiple bascule bridges spanning the water. Key elements include the illuminated multi-level Wacker Drive on the left and the distinctive, cylindrical Marina City towers on the right, with city lights beginning to reflect on the water as evening sets in.",
     category: "Cities",
     span: "tall",
   },
@@ -331,38 +336,48 @@ export const GALLERY_PREVIEW_IMAGES = [
     src: SITE_IMAGES.grandTeton,
     alt: "A road cutting through Yosemite National Park beneath towering granite and pine forest",
     caption: "Yosemite National Park, California",
+    description:
+      "A road cutting through Yosemite National Park beneath towering granite formations and pine forest, placing the viewer inside one of America's most recognizable protected landscapes.",
     category: "Nature",
     span: "wide",
   },
   {
     id: "golden-gate",
     src: SITE_IMAGES.chicagoSkyline,
-    alt: "Golden Gate Bridge cutting through fog and Pacific light above San Francisco Bay",
+    alt: "Golden Gate Bridge spanning San Francisco Bay in warm daylight",
     caption: "Golden Gate Bridge, San Francisco",
+    description:
+      "This is an elevated, golden-hour view of the Golden Gate Bridge spanning the San Francisco Bay, looking southward from Marin County. The iconic suspension structure, defined by its massive International Orange towers and sweeping main cables, dominates the foreground and leads the eye diagonally across the strait. The San Francisco city skyline is faintly visible on the distant left horizon, while the coastline of the Presidio anchors the far end of the span. The scene is bathed in warm, low-angle sunlight against a clear gradient sky, with a faint crescent moon high above the primary tower and a single white sailboat navigating the dark blue water in the lower right.",
     category: "Cities",
     span: "wide",
   },
   {
     id: "statue-of-liberty",
     src: SITE_IMAGES.cultureFlagCrowd,
-    alt: "The Statue of Liberty standing over New York Harbor as a symbol of American identity and aspiration",
+    alt: "Statue of Liberty viewed in clear daylight against a bright blue sky",
     caption: "Statue of Liberty, New York Harbor",
+    description:
+      "This is a clear, daylight view of the Statue of Liberty set against a bright blue sky with scattered clouds. The colossal neoclassical copper sculpture, distinguished by its bright verdigris patina, is captured wearing her iconic seven-spiked crown. She holds a gold-tinted torch aloft in her right hand and a tabula ansata tablet close to her body in her left. The figure is anchored atop the upper tier of its massive masonry pedestal, showing classical architectural detailing and the structural columns of the observation deck.",
     category: "Culture",
     span: "normal",
   },
   {
     id: "columbia",
     src: SITE_IMAGES.harvardCampus,
-    alt: "Columbia University campus framed by classical architecture and urban density",
+    alt: "Low Memorial Library on the Columbia University campus in New York City",
     caption: "Columbia University, New York",
+    description:
+      'This is an eye-level, daytime view of Low Memorial Library on the Columbia University campus in New York City. The prominent Neoclassical building is anchored by a central stone dome and an expansive, multi-tiered stone staircase leading to the entrance. The focal point is a massive classical portico supported by ten tall Ionic columns. The entablature clearly reads "THE LIBRARY OF COLUMBIA UNIVERSITY" below a larger historical inscription detailing its founding as King\'s College. The active plaza features classic green globe lampposts, scattered pedestrians, and parked micromobility transit near a manicured lawn and black bollards.',
     category: "Universities",
     span: "normal",
   },
   {
     id: "suburb-house",
     src: SITE_IMAGES.qualityOfLifeHouse,
-    alt: "A spacious American suburban home with front lawn and wide residential street",
+    alt: "Traditional American coastal-style suburban home with a broad green lawn",
     caption: "American Suburbia",
+    description:
+      "This is an exterior view of a traditional American coastal-style suburban home. The facade uses weathered cedar shake siding paired with a dark asphalt shingle roof. A prominent, elevated wraparound front porch features white structural columns, balustrades, and decorative lattice skirting. The roofline includes two symmetrical gabled dormers with dark window shutters, flanking a central arched eyebrow dormer. The property is situated on a broad, heavily manicured green lawn with mature landscaping under clear daylight.",
     category: "Quality of Life",
     span: "wide",
   },
@@ -371,6 +386,8 @@ export const GALLERY_PREVIEW_IMAGES = [
     src: SITE_IMAGES.homeSpacexLaunch,
     alt: "A SpaceX rocket lifting off in a plume of fire and smoke against the sky",
     caption: "SpaceX Launch, Florida",
+    description:
+      "A SpaceX rocket lifting off in a plume of fire and smoke, showing the scale, power, and technological ambition of modern American launch infrastructure.",
     category: "Innovation",
     span: "normal",
   },

@@ -25,6 +25,7 @@ type GalleryImage = {
   src: string;
   alt: string;
   caption: string;
+  description: string;
   category: string;
   span: "tall" | "wide" | "normal";
 };
@@ -82,14 +83,16 @@ function Lightbox({
             />
           </div>
 
-          <div className="flex items-center gap-4 border-t border-white/10 bg-navy-dark px-6 py-4">
-            <div className="flex-1">
+          <div className="flex max-h-[40vh] flex-col gap-4 overflow-y-auto border-t border-white/10 bg-navy-dark px-6 py-4 md:flex-row md:items-start">
+            <div className="min-w-0 flex-1">
               <p className="font-body text-sm font-semibold text-white">
                 {image.caption}
               </p>
-              <p className="font-body text-xs text-white/50">{image.alt}</p>
+              <p className="mt-2 font-body text-xs leading-relaxed text-white/58">
+                {image.description}
+              </p>
             </div>
-            <span className="rounded-full border border-glory-gold/25 bg-glory-gold/10 px-3 py-1 font-body text-xs font-semibold uppercase tracking-wider text-glory-gold">
+            <span className="w-fit shrink-0 rounded-full border border-glory-gold/25 bg-glory-gold/10 px-3 py-1 font-body text-xs font-semibold uppercase tracking-wider text-glory-gold">
               {image.category}
             </span>
           </div>
