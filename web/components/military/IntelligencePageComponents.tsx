@@ -152,24 +152,24 @@ function IntelSectionTitle({
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
       variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
-      className={cn("mb-20 max-w-5xl", isCenter ? "mx-auto text-center" : "text-left")}
+      className={cn("mb-24 max-w-5xl", isCenter ? "mx-auto text-center" : "text-left")}
     >
       <motion.div
         variants={fadeUp}
-        className="mil-text-label mb-6 text-[#d4a44a] tracking-[0.35em]"
+        className="intel-font-mono mb-6 tracking-[0.3em] text-[10px] text-[#d4a44a]/70"
       >
         {label}
       </motion.div>
       <motion.h2
         variants={fadeUp}
-        className="mil-text-hero font-extrabold tracking-tight text-white mb-2 leading-none"
+        className="intel-font-display text-[clamp(36px,7vw,88px)] font-black leading-[0.88] uppercase text-white"
       >
         {title}
       </motion.h2>
       {subtitle && (
         <motion.div
           variants={fadeUp}
-          className="mil-text-hero font-extrabold tracking-tight text-white/20 mt-1 leading-none"
+          className="intel-font-display text-[clamp(36px,7vw,88px)] font-black leading-[0.88] uppercase text-white/15 mt-1"
         >
           {subtitle}
         </motion.div>
@@ -177,7 +177,7 @@ function IntelSectionTitle({
       <motion.p
         variants={fadeUp}
         className={cn(
-          "mil-text-body mt-6",
+          "mt-8 text-sm leading-[1.9] text-white/50 tracking-wide",
           isCenter ? "max-w-2xl mx-auto" : "max-w-xl"
         )}
       >
@@ -423,8 +423,8 @@ export function IntelligenceCapabilityGrid({ capabilities, locale = "en" }: { ca
   const isRo = locale === "ro";
 
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-32 md:py-48">
-      <div className="relative mx-auto max-w-[1440px]">
+    <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
+      <div className="relative mx-auto max-w-[1400px]">
         <IntelSectionTitle
           label={isRo ? "Capabilități tactice" : "Tactical Disciplines"}
           title={isRo ? "Domenii de" : "Intelligence"}
@@ -487,8 +487,8 @@ export function IntelligenceOperationsConsole({ nodes, locale = "en" }: { nodes:
   const isRo = locale === "ro";
 
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-32 md:py-48">
-      <div className="relative mx-auto max-w-[1440px]">
+    <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
+      <div className="relative mx-auto max-w-[1400px]">
         <IntelSectionTitle
           label={isRo ? "Infrastructură globală" : "Global Installations"}
           title={isRo ? "Noduri de" : "Interception"}
@@ -545,8 +545,8 @@ export function IntelligenceHeritageTimeline({ events, locale = "en" }: { events
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-32 md:py-48">
-      <div className="relative mx-auto max-w-[1440px] px-6 lg:px-16">
+    <section className="relative overflow-hidden bg-black py-28 md:py-36">
+      <div className="relative mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-16">
         <IntelSectionTitle
           label={isRo ? "Puncte de cotitură" : "Heritage"}
           title={isRo ? "Istoric & Moștenire" : "Intelligence"}
@@ -764,8 +764,8 @@ export function IntelligenceClosing({ locale = "en" }: { locale?: Locale }) {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-32 md:py-48 border-t border-white/5">
-      <div className="relative mx-auto max-w-[1440px] text-center">
+    <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16 border-t border-white/5">
+      <div className="relative mx-auto max-w-[1400px] text-center">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -774,19 +774,19 @@ export function IntelligenceClosing({ locale = "en" }: { locale?: Locale }) {
         >
           <motion.h2
             variants={fadeUp}
-            className="mil-text-hero font-extrabold tracking-tight text-white mb-2 leading-none"
+            className="intel-font-display text-[clamp(36px,7vw,88px)] font-black leading-[0.88] uppercase text-white mb-2"
           >
             {isRo ? "Informația este" : "Information is"}
           </motion.h2>
           <motion.div
             variants={fadeUp}
-            className="mil-text-hero font-extrabold tracking-tight text-white/20 mt-1 leading-none"
+            className="intel-font-display text-[clamp(36px,7vw,88px)] font-black leading-[0.88] uppercase text-white/15 mt-1"
           >
             {isRo ? "descurajarea supremă." : "the ultimate deterrent."}
           </motion.div>
           <motion.p
             variants={fadeUp}
-            className="mil-text-body mx-auto mt-8 max-w-2xl text-white/40"
+            className="mx-auto mt-8 max-w-2xl text-sm leading-[1.9] text-white/50 tracking-wide"
           >
             {isRo
               ? "Succesul oricărei operațiuni militare începe cu un semnal interceptat, o sursă verificată sau o coordonată de satelit. Rețeaua de informații a SUA este scutul nevăzut sub care se desfășoară apărarea globală."
