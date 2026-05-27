@@ -78,7 +78,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const [sortBy, setSortBy] = useState<"name" | "gdp" | "population" | "statehood">("name");
   const [heatmapMode, setHeatmapMode] = useState<"none" | "gdp" | "population" | "statehood">("none");
 
-  const statesArray = useMemo(() => Object.values(EXPLORER_STATES), []);
+  const statesArray = useMemo(() => Object.values(EXPLORER_STATES).filter((s) => s.abbrev !== "DC"), []);
 
   // Filter and Sort states
   const filteredStates = useMemo(() => {
@@ -126,15 +126,23 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
     const abbrev = FIPS_TO_ABBREV[fips] ?? "";
     const state = EXPLORER_STATES[abbrev];
 
-    if (!state) {
+    if (!state || abbrev === "DC") {
       return {
         fill: COLORS.navyDark,
-        stroke: COLORS.navyLight,
+        stroke: "rgba(255, 255, 255, 0.05)",
         strokeWidth: 0.5,
         outline: "none",
       };
     }
 
+    const matchesRegion = selectedRegion === "All" || state.region === selectedRegion;
+    const stateName = state.name[locale];
+    const matchesSearch =
+      stateName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      state.abbrev.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      state.capital[locale].toLowerCase().includes(searchQuery.toLowerCase());
+
+    const isMatch = matchesRegion && matchesSearch;
     const isSelected = selectedStateAbbrev === abbrev;
     const isHovered = hoveredStateAbbrev === abbrev;
 
@@ -142,11 +150,14 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
     let defaultFill: string = COLORS.navyLight;
     
     if (heatmapMode === "none") {
-      // Color code by standard Glory Blue (homepage default)
-      defaultFill = COLORS.gloryBlue;
+      // Color code by standard Glory Blue / regions
+      if (state.region === "Northeast") defaultFill = "rgba(85, 84, 160, 0.45)"; // Glory Blue Light
+      else if (state.region === "South") defaultFill = "rgba(178, 34, 52, 0.45)";    // Glory Red
+      else if (state.region === "Midwest") defaultFill = "rgba(16, 185, 129, 0.45)"; // Green-ish
+      else if (state.region === "West") defaultFill = "rgba(255, 215, 0, 0.35)";    // Glory Gold
     } else if (heatmapMode === "gdp") {
       const ratio = state.gdp / maxValues.maxGdp;
-      defaultFill = `rgba(212, 175, 55, ${Math.max(0.12, ratio)})`;
+      defaultFill = `rgba(255, 215, 0, ${Math.max(0.12, ratio)})`;
     } else if (heatmapMode === "population") {
       const ratio = state.population / maxValues.maxPop;
       defaultFill = `rgba(14, 165, 233, ${Math.max(0.12, ratio)})`;
@@ -155,22 +166,25 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
       defaultFill = `rgba(239, 68, 68, ${Math.max(0.12, ratio)})`;
     }
 
+    // Dim non-matching states when filtering is active
+    if (!isMatch) {
+      defaultFill = "rgba(26, 31, 58, 0.25)";
+    }
+
     // Border stroke styling
-    let strokeColor: string = COLORS.navyMid;
+    let strokeColor: string = isMatch ? COLORS.navyMid : "rgba(255, 255, 255, 0.05)";
     let strokeWidth = 0.5;
 
     if (isSelected) {
-      strokeColor = COLORS.navyDark;
-      strokeWidth = 1.2;
-    } else if (isHovered) {
+      strokeColor = COLORS.gloryGold;
+      strokeWidth = 2.0;
+    } else if (isHovered && isMatch) {
       strokeColor = COLORS.navyDark;
       strokeWidth = 1.0;
     }
 
     return {
-      fill: isSelected
-        ? COLORS.gloryGold
-        : isHovered
+      fill: isHovered && isMatch
         ? COLORS.gloryBlueLight
         : defaultFill,
       stroke: strokeColor,
@@ -178,7 +192,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
       outline: "none",
       transition: "fill 0.15s ease, stroke 0.15s ease",
     };
-  }, [selectedStateAbbrev, hoveredStateAbbrev, heatmapMode, maxValues]);
+  }, [selectedStateAbbrev, hoveredStateAbbrev, heatmapMode, maxValues, selectedRegion, searchQuery, locale]);
+
 
   return (
     <div className="relative min-h-screen bg-navy-mid text-white">
@@ -193,7 +208,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         aria-hidden="true" 
       />
 
-      <div className="relative z-10 mx-auto max-w-screen-xl px-4 pt-12 pb-20 sm:px-6 lg:px-8 font-body">
+      <div className="relative z-10 mx-auto max-w-screen-xl px-4 pt-28 pb-20 sm:px-6 lg:px-8 font-body">
         
         {/* ── CENTERED HEADER (HOMEPAGE DESIGN) ── */}
         <header className="mb-14 text-center animate-fade-in">
@@ -214,7 +229,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           {/* Centered Controls Toolbar */}
           <div className="grid grid-cols-1 gap-4 rounded-2xl border border-white/10 bg-navy-dark/60 p-4 backdrop-blur-md md:grid-cols-12 max-w-screen-xl mx-auto">
             {/* Search */}
-            <div className="relative md:col-span-4">
+            <div className="relative md:col-span-5">
               <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-white/40" />
               <input
                 type="text"
@@ -226,7 +241,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
             </div>
 
             {/* Region Filter */}
-            <div className="flex items-center gap-1 overflow-x-auto pb-1 md:col-span-5 md:pb-0 justify-start">
+            <div className="flex items-center gap-1 overflow-x-auto pb-1 md:col-span-7 md:pb-0 justify-start md:justify-end">
               <ListFilter className="h-4 w-4 text-white/40 shrink-0 mr-1.5" />
               {[
                 { id: "All", label: translations.allRegions },
@@ -247,21 +262,6 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   {reg.label}
                 </button>
               ))}
-            </div>
-
-            {/* Sort selector */}
-            <div className="flex items-center gap-2 md:col-span-3">
-              <span className="text-xs text-white/40 whitespace-nowrap font-body">{translations.sortBy}:</span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
-                className="w-full rounded-lg border border-white/10 bg-navy-dark/40 py-1.5 px-3 text-xs text-white focus:border-glory-gold focus:outline-none font-body transition-colors"
-              >
-                <option value="name">{locale === "ro" ? "Nume" : "Name"}</option>
-                <option value="gdp">{translations.gdp}</option>
-                <option value="population">{translations.population}</option>
-                <option value="statehood">{translations.statehood}</option>
-              </select>
             </div>
           </div>
 
@@ -319,17 +319,21 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         <Geography
                           key={geo.rsmKey}
                           geography={geo}
-                          onMouseEnter={() => setHoveredStateAbbrev(abbrev)}
+                          onMouseEnter={() => {
+                            if (abbrev !== "DC") {
+                              setHoveredStateAbbrev(abbrev);
+                            }
+                          }}
                           onMouseLeave={() => setHoveredStateAbbrev(null)}
                           onClick={() => {
-                            if (abbrev) {
+                            if (abbrev && abbrev !== "DC") {
                               setSelectedStateAbbrev(abbrev);
                             }
                           }}
                           style={{
                             default: getGeographyStyle(geo),
                             hover: {
-                              cursor: "pointer",
+                              cursor: abbrev === "DC" ? "default" : "pointer",
                               outline: "none",
                             },
                             pressed: {
@@ -495,44 +499,67 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
           {/* ── RESPONSIVE STATES DIRECTORY (GRID LIST AT THE BOTTOM) ── */}
           <div className="max-w-screen-xl mx-auto pt-6 border-t border-white/5">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
               <h3 className="font-body text-xs font-bold tracking-widest text-white/40 uppercase">
                 {translations.detailsTitle} ({filteredStates.length})
               </h3>
+              
+              {/* Sort selector next to Header */}
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-white/40 whitespace-nowrap font-body">{translations.sortBy}:</span>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as any)}
+                  className="rounded-lg border border-white/10 bg-navy-dark/40 py-1.5 px-3 text-xs text-white focus:border-glory-gold focus:outline-none font-body transition-colors"
+                >
+                  <option value="name">{locale === "ro" ? "Nume" : "Name"}</option>
+                  <option value="gdp">{translations.gdp}</option>
+                  <option value="population">{translations.population}</option>
+                  <option value="statehood">{translations.statehood}</option>
+                </select>
+              </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
-              {filteredStates.map((state) => {
-                const isSelected = selectedStateAbbrev === state.abbrev;
-                return (
-                  <div
-                    key={state.abbrev}
-                    onClick={() => setSelectedStateAbbrev(state.abbrev)}
-                    className={`relative cursor-pointer rounded-2xl border p-4 transition-all ${
-                      isSelected
-                        ? "bg-glory-gold/10 border-glory-gold shadow-[0_0_15px_rgba(255,215,0,0.05)]"
-                        : "bg-navy-dark/60 border-white/10 hover:border-white/20"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="font-hero text-sm text-glory-gold">{state.abbrev}</span>
-                      <span className="font-body text-[10px] text-white/40 font-semibold">{state.region}</span>
+            <div className="relative">
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 max-h-[250px] overflow-y-auto pr-2 custom-scrollbar pb-10">
+                {filteredStates.map((state) => {
+                  const isSelected = selectedStateAbbrev === state.abbrev;
+                  return (
+                    <div
+                      key={state.abbrev}
+                      onClick={() => setSelectedStateAbbrev(state.abbrev)}
+                      className={`relative cursor-pointer rounded-2xl border p-4 transition-all ${
+                        isSelected
+                          ? "bg-glory-gold/10 border-glory-gold shadow-[0_0_15px_rgba(255,215,0,0.05)]"
+                          : "bg-navy-dark/60 border-white/10 hover:border-white/20"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-hero text-sm text-glory-gold">{state.abbrev}</span>
+                        <span className="font-body text-[10px] text-white/40 font-semibold">{state.region}</span>
+                      </div>
+                      <h4 className="font-body text-sm font-bold text-white truncate">
+                        {state.name[locale]}
+                      </h4>
+                      <p className="text-[10px] text-white/50 font-medium truncate font-body mt-0.5">
+                        {state.capital[locale]}
+                      </p>
                     </div>
-                    <h4 className="font-body text-sm font-bold text-white truncate">
-                      {state.name[locale]}
-                    </h4>
-                    <p className="text-[10px] text-white/50 font-medium truncate font-body mt-0.5">
-                      {state.capital[locale]}
-                    </p>
-                  </div>
-                );
-              })}
+                  );
+                })}
 
-              {filteredStates.length === 0 && (
-                <div className="col-span-full py-12 text-center text-sm text-white/30 font-body">
-                  {translations.noResults}
-                </div>
-              )}
+                {filteredStates.length === 0 && (
+                  <div className="col-span-full py-12 text-center text-sm text-white/30 font-body">
+                    {translations.noResults}
+                  </div>
+                )}
+              </div>
+              
+              {/* Smooth Fading Bottom Edge Overlay */}
+              <div 
+                className="pointer-events-none absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-navy-mid to-transparent z-10"
+                aria-hidden="true"
+              />
             </div>
           </div>
 
