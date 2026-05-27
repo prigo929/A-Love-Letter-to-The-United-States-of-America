@@ -79,9 +79,9 @@ export interface SpaceForceBase {
 
 export const SF_METRICS: SpaceForceMetric[] = [
   {
-    value: "908",
-    label: "X-37B Spaceplane Record",
-    detail: "The autonomous orbital test vehicle conducts classified research, recently spending 908 consecutive days in space.",
+    value: "70+",
+    label: "Annual Space Launches",
+    detail: "Space Launch Deltas manage the Eastern and Western ranges, supporting over 70 national security and commercial launches per year.",
   },
   {
     value: "26K+",
@@ -227,6 +227,21 @@ export const SF_SYSTEMS: SpaceForcePlatform[] = [
       { label: "Payloads", value: "Military / intel" },
       { label: "Range", value: "Cape / Vandenberg" },
       { label: "Cadence", value: "Regular" },
+    ],
+  },
+  {
+    name: "X-37B Spaceplane",
+    designation: "Orbital Test Vehicle (OTV)",
+    role:
+      "An experimental, unmanned spaceplane designed to test reusable space technologies, conduct classified long-duration orbital research, and safely return payloads to Earth.",
+    imageSrc: SITE_IMAGES.spaceForce.spacex,
+    imageAlt: "X-37B autonomous spaceplane orbital mission",
+    capability: "Classified long-endurance orbital operations",
+    specs: [
+      { label: "Designation", value: "OTV-6 / OTV-7" },
+      { label: "Record Flight", value: "908 days" },
+      { label: "Guidance", value: "Autonomous" },
+      { label: "Landing", value: "Runway glide" },
     ],
   },
 ];
@@ -525,7 +540,7 @@ export const SF_BASES: SpaceForceBase[] = [
 export function getSpaceForceMetrics(locale: Locale): SpaceForceMetric[] {
   if (locale !== "ro") return SF_METRICS;
   return [
-    { value: "908", label: "Record Navetă X-37B", detail: "Vehiculul autonom de testare orbitală efectuează cercetări clasificate, petrecând recent 908 zile consecutive în spațiu." },
+    { value: "70+", label: "Lansări Spațiale Anuale", detail: "Space Launch Deltas gestionează poligoanele din Est și Vest, susținând peste 70 de lansări de securitate națională și comerciale pe an." },
     { value: "26K+", label: "Supraveghere Spațială", detail: "Utilizarea radarului 'Space Fence' din Insulele Marshall pentru a urmări resturi spațiale de dimensiunea unei bile." },
     { value: "27", label: "Lansare Tactică (Ore)", detail: "Misiunea Victus Nox a pregătit, încapsulat și lansat un satelit în doar 27 de ore de la primirea ordinului." },
     { value: "<1ns", label: "Precizie Timp GPS III", detail: "Semnale de timp precise la nivel de sub o nanosecundă, sincronizând bursele globale și rețelele energetice." },
@@ -554,6 +569,7 @@ export function getSpaceForceSystems(locale: Locale): SpaceForcePlatform[] {
       "Protected SATCOM": { designation: "Comunicații Strategice", role: "Comunicații militare întărite leagă comandanții și forțele în medii contestate, inclusiv comandă și control strategic.", capability: "Comunicații globale reziliente" },
       "Space Domain Sensors": { designation: "Conștientizare Orbitală", role: "Radare, telescoape și sisteme de date mențin custodia obiectelor pe orbită și urmăresc mișcarea adversarilor.", capability: "Urmărire și custodie orbitală" },
       "National Security Launch": { designation: "Acces Asigurat la Spațiu", role: "Parteneriatele de lansare plasează payload-uri critice pe orbită și reîmprospătează constelațiile.", capability: "Acces orbital asigurat" },
+      "X-37B Spaceplane": { designation: "Vehicul de Testare Orbitală (OTV)", role: "Un avion spațial experimental, fără echipaj, proiectat să testeze tehnologii spațiale reutilizabile, să efectueze cercetări orbitale clasificate de lungă durată și să returneze în siguranță încărcăturile pe Pământ.", capability: "Misiuni orbitale clasificate de lungă durată" },
     };
     const ro = roMap[system.name];
     return ro ? { ...system, ...ro } : system;

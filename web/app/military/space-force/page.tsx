@@ -57,13 +57,13 @@ export default async function SpaceForcePage() {
 
   const heroStats = isRo
     ? [
-        { value: "908z", label: "MISIUNE X-37B" },
+        { value: "2019", label: "SERVICIU FONDAT" },
         { value: "26K+", label: "OBIECTE URMĂRITE" },
         { value: "27o", label: "LANSARE TACTICĂ" },
         { value: "<1ns", label: "PRECIZIE TIMP" },
       ]
     : [
-        { value: "908d", label: "X-37B ORBIT" },
+        { value: "2019", label: "SERVICE FOUNDED" },
         { value: "26K+", label: "TRACKED OBJECTS" },
         { value: "27h", label: "TACTICAL LAUNCH" },
         { value: "<1ns", label: "TIME PRECISION" },
