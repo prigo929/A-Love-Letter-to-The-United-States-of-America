@@ -52,13 +52,15 @@ function FeaturedFrame({
   index: number;
   onSelect: (image: GalleryImage) => void;
 }) {
+  const isPrimary = index === 0;
+
   return (
     <button
       type="button"
       onClick={() => onSelect(image)}
       className={cn(
-        "group relative block h-[280px] overflow-hidden rounded-lg border border-white/10 bg-white/5 text-left shadow-2xl md:h-full",
-        index === 0
+        "group relative block h-[320px] overflow-hidden rounded-lg border border-white/10 bg-white/5 text-left shadow-2xl md:h-full",
+        isPrimary
           ? "md:col-span-2 md:row-span-2"
           : "md:min-h-0",
       )}
@@ -67,28 +69,38 @@ function FeaturedFrame({
         src={image.src}
         alt={image.alt}
         fill
-        className="object-cover transition duration-700 group-hover:scale-105 group-hover:saturate-125"
+        className="object-cover transition duration-700 group-hover:scale-[1.03] group-hover:saturate-125"
         sizes={
-          index === 0
+          isPrimary
             ? "(max-width: 768px) 100vw, 58vw"
             : "(max-width: 768px) 100vw, 28vw"
         }
         placeholder="blur"
         blurDataURL={BLUR_PLACEHOLDER}
-        priority={index === 0}
+        priority={isPrimary}
       />
       <div
-        className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"
+        className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/18 to-transparent"
         aria-hidden="true"
       />
-      <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-        <p className="mb-2 w-fit rounded-full border border-white/15 bg-black/30 px-3 py-1 font-body text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70 backdrop-blur">
+      <div className={cn("absolute inset-x-0 bottom-0", isPrimary ? "p-5 md:p-7" : "p-4")}>
+        <p className="mb-2 w-fit max-w-full truncate rounded-full border border-white/15 bg-black/35 px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 backdrop-blur">
           {image.tone}
         </p>
-        <h2 className="font-display text-2xl leading-tight text-white md:text-4xl">
+        <h2
+          className={cn(
+            "font-display leading-tight text-white",
+            isPrimary ? "text-2xl md:text-4xl" : "text-xl md:text-2xl",
+          )}
+        >
           {image.caption}
         </h2>
-        <p className="mt-2 line-clamp-2 max-w-2xl font-body text-sm leading-relaxed text-white/65">
+        <p
+          className={cn(
+            "mt-2 max-w-2xl font-body leading-relaxed text-white/65",
+            isPrimary ? "line-clamp-2 text-sm" : "line-clamp-2 text-xs",
+          )}
+        >
           {image.description}
         </p>
       </div>
@@ -105,10 +117,10 @@ function GalleryTile({
 }) {
   const aspect =
     image.orientation === "portrait"
-      ? "aspect-[4/5]"
+      ? "aspect-[2/3]"
       : image.orientation === "square"
         ? "aspect-square"
-        : "aspect-[16/11]";
+        : "aspect-[16/10]";
 
   return (
     <motion.button
@@ -122,7 +134,7 @@ function GalleryTile({
           src={image.src}
           alt={image.alt}
           fill
-          className="object-cover transition duration-700 group-hover:scale-105 group-hover:brightness-110"
+          className="object-cover transition duration-700 group-hover:scale-[1.025] group-hover:brightness-110"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           placeholder="blur"
           blurDataURL={BLUR_PLACEHOLDER}
@@ -137,7 +149,7 @@ function GalleryTile({
               ? `${image.category} / ${image.subcategory}`
               : image.category}
           </p>
-          <h3 className="font-display text-xl leading-tight text-white">
+          <h3 className="line-clamp-2 font-display text-lg leading-tight text-white md:text-xl">
             {image.caption}
           </h3>
           <p className="mt-1 flex items-center gap-1.5 font-body text-xs text-white/55">
@@ -234,6 +246,24 @@ function ImageDialog({
   );
 }
 
+const ORIENTATION_GROUPS = [
+  { key: "landscape", label: "Landscape Frames" },
+  { key: "portrait", label: "Portrait Frames" },
+  { key: "square", label: "Square Frames" },
+] as const;
+
+function getGridClass(orientation: GalleryImage["orientation"]) {
+  if (orientation === "portrait") {
+    return "grid-cols-2 md:grid-cols-3 xl:grid-cols-5";
+  }
+
+  if (orientation === "square") {
+    return "grid-cols-2 md:grid-cols-3 xl:grid-cols-4";
+  }
+
+  return "grid-cols-1 md:grid-cols-2 xl:grid-cols-3";
+}
+
 export function GalleryExperience({
   images,
   categories,
@@ -249,6 +279,15 @@ export function GalleryExperience({
         ? images
         : images.filter((image) => image.category === activeCategory),
     [activeCategory, images],
+  );
+
+  const groupedImages = useMemo(
+    () =>
+      ORIENTATION_GROUPS.map((group) => ({
+        ...group,
+        images: filteredImages.filter((image) => image.orientation === group.key),
+      })).filter((group) => group.images.length > 0),
+    [filteredImages],
   );
 
   const featuredImages = images.filter((image) => image.featured).slice(0, 3);
@@ -329,7 +368,7 @@ export function GalleryExperience({
               </div>
             </div>
 
-            <div className="grid gap-3 md:h-[620px] md:grid-cols-4 md:grid-rows-2">
+            <div className="grid gap-3 md:h-[700px] md:grid-cols-4 md:grid-rows-2">
               {featuredImages.map((image, index) => (
                 <FeaturedFrame
                   key={image.id}
@@ -364,20 +403,37 @@ export function GalleryExperience({
       </section>
 
       <section className="px-4 py-14 sm:px-6 lg:px-8">
-        <motion.div
-          layout
-          className="mx-auto grid max-w-screen-xl gap-4 sm:grid-cols-2 xl:grid-cols-4"
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredImages.map((image) => (
-              <GalleryTile
-                key={image.id}
-                image={image}
-                onSelect={setSelectedImage}
-              />
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        <div className="mx-auto max-w-screen-xl space-y-14">
+          {groupedImages.map((group) => (
+            <section key={group.key} aria-labelledby={`${group.key}-heading`}>
+              <div className="mb-5 flex items-end justify-between gap-4 border-b border-white/10 pb-3">
+                <h2
+                  id={`${group.key}-heading`}
+                  className="font-body text-xs font-semibold uppercase tracking-[0.24em] text-white/50"
+                >
+                  {group.label}
+                </h2>
+                <p className="font-mono text-xs text-white/35">
+                  {group.images.length.toString().padStart(2, "0")}
+                </p>
+              </div>
+              <motion.div
+                layout
+                className={cn("grid gap-4", getGridClass(group.key))}
+              >
+                <AnimatePresence mode="popLayout">
+                  {group.images.map((image) => (
+                    <GalleryTile
+                      key={image.id}
+                      image={image}
+                      onSelect={setSelectedImage}
+                    />
+                  ))}
+                </AnimatePresence>
+              </motion.div>
+            </section>
+          ))}
+        </div>
       </section>
 
       {selectedImage && (
