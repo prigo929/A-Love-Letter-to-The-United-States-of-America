@@ -184,12 +184,9 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
   return (
     <div className="relative min-h-screen bg-[#030712] text-white">
-      {/* ── Background Grid and Glows ── */}
+      {/* Background Grid and Glows */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-950/15 via-[#030712]/50 to-[#030712] z-0" />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,_transparent_1px),_linear-gradient(90deg,_rgba(255,255,255,0.01)_1px,_transparent_1px)] bg-[size:48px_48px] opacity-15 z-0" />
-      
-      {/* Cinematic Top Accent line */}
-      <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#d4af37]/60 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-4 py-20 sm:px-6 lg:px-8 font-body">
         
