@@ -484,7 +484,17 @@ export function IntelligenceCapabilityGrid({ capabilities, locale = "en" }: { ca
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function IntelligenceOperationsConsole({ nodes, locale = "en" }: { nodes: IntelligenceNode[]; locale?: Locale }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = nodes[activeIndex];
   const isRo = locale === "ro";
+
+  const coordinates = [
+    "23.7997° S / 133.7372° E",
+    "53.9978° N / 1.6901° W",
+    "39.7016° N / 104.7517° W",
+    "39.1104° N / 76.7358° W",
+    "38.9519° N / 77.1598° W",
+  ];
 
   return (
     <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
@@ -498,38 +508,114 @@ export function IntelligenceOperationsConsole({ nodes, locale = "en" }: { nodes:
             : "Strategic ground stations and cryptologic hubs placed globally to feed continuous signal data into national servers."}
         />
 
-        {/* Sequential mapping flow instead of tabs */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-16">
-          {nodes.map((node, index) => (
-            <motion.div
-              key={node.name}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-40px" }}
-              variants={fadeUp}
-              transition={{ duration: 0.8, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="intel-panel p-8 flex flex-col justify-between min-h-[300px] rounded-sm border-l-2 border-white/10 hover:border-l-[#d4a44a] transition-all duration-300"
-            >
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <MapPin size={11} className="text-white/30" />
-                  <span className="intel-font-mono text-[8px] tracking-[0.15em] text-white/30">{node.location}</span>
+        {/* Tactical Console Container */}
+        <div className="grid overflow-hidden border border-white/5 bg-[#050505] lg:grid-cols-[350px_1fr] min-h-[500px] mt-16 rounded-sm shadow-2xl">
+          {/* Left panel selectors */}
+          <div className="flex flex-col border-b lg:border-b-0 lg:border-r border-white/5 bg-white/[0.01]">
+            {nodes.map((node, i) => {
+              const selected = activeIndex === i;
+              return (
+                <button
+                  key={node.name}
+                  type="button"
+                  onClick={() => setActiveIndex(i)}
+                  className={cn(
+                    "relative text-left px-8 py-6 transition-all duration-300 border-b border-white/5 last:border-b-0 flex flex-col justify-center",
+                    selected ? "bg-white/[0.03]" : "hover:bg-white/[0.01]"
+                  )}
+                >
+                  {selected && (
+                    <motion.div
+                      layoutId="intel-node-indicator"
+                      className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#d4a44a]"
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                    />
+                  )}
+                  <span className="intel-font-mono text-[8px] tracking-[0.15em] text-white/20 mb-1">{node.location}</span>
+                  <span className={cn(
+                    "intel-font-display text-sm font-bold tracking-tight transition-colors",
+                    selected ? "text-white" : "text-white/40"
+                  )}>
+                    {node.name}
+                  </span>
+                  <span className="intel-font-mono text-[7px] text-[#d4a44a]/50 mt-1">{coordinates[i]}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Right panel Briefing details */}
+          <div className="relative p-8 sm:p-12 lg:p-16 flex flex-col justify-between overflow-hidden bg-[#07080a] min-h-[450px]">
+            {/* Ambient tactical coordinates pattern overlay in the background */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(212,164,74,0.02),transparent_60%)] pointer-events-none" />
+            <div className="absolute inset-0 opacity-[0.015] pointer-events-none select-none intel-font-mono text-[8px] leading-relaxed p-4" style={{
+              backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)`,
+              backgroundSize: '40px 40px'
+            }}>
+              <div className="absolute right-4 top-4">LAT: 38.9519° N / LON: 77.1598° W</div>
+              <div className="absolute left-4 bottom-4">UPGRADE: GEN-IV CRYPTOLOGIC DECK</div>
+              <div className="absolute right-4 bottom-4">COORD GRID: OP-LEVEL 01</div>
+            </div>
+
+            <div className="relative z-10 w-full flex flex-col justify-between h-full gap-8">
+              {/* Header section with pulsating status dot */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <MapPin size={12} className="text-[#d4a44a]" />
+                  <span className="intel-font-mono text-[10px] tracking-[0.15em] text-white/50">{active.location}</span>
                 </div>
-                <h3 className="intel-font-display text-lg font-bold tracking-tight text-white mb-2">{node.name}</h3>
-                <div className="intel-font-mono text-[7px] tracking-[0.2em] mb-5 uppercase text-[#d4a44a]/80 font-semibold">{node.role}</div>
-                <p className="text-[12px] leading-[1.7] text-white/40 tracking-wide font-normal">{node.description}</p>
+                <div className="flex items-center gap-2 self-start sm:self-center border border-[#d4a44a]/15 bg-[#d4a44a]/5 px-3 py-1 rounded-sm">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4a44a] opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#d4a44a]"></span>
+                  </span>
+                  <span className="intel-font-mono text-[7px] tracking-[0.2em] text-[#d4a44a] font-bold">DOWNLINK ACTIVE // ENCRYPTED</span>
+                </div>
               </div>
 
-              <div className="flex flex-col gap-2 pt-6 border-t border-white/[0.04] mt-6">
-                {node.stats.map((s) => (
-                  <div key={s.label} className="flex justify-between items-center text-[10px]">
-                    <span className="intel-font-mono text-white/25">{s.label}</span>
-                    <span className="text-white/60 font-medium">{s.value}</span>
+              {/* Central installation title and info */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active.name}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <h3 className="intel-font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white mb-2 leading-none">
+                    {active.name}
+                  </h3>
+                  <div className="intel-font-mono text-[10px] tracking-[0.25em] text-[#d4a44a] mb-6 uppercase font-semibold">
+                    {active.role}
                   </div>
-                ))}
+                  <p className="text-sm leading-[1.8] text-white/40 tracking-wide font-normal max-w-2xl">
+                    {active.description}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Lower parameters grid formatted in beautiful vertical rows */}
+              <div className="pt-8 border-t border-white/5 mt-4">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={active.name + "-stats"}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="grid grid-cols-1 sm:grid-cols-3 gap-6"
+                  >
+                    {active.stats.map((s) => (
+                      <div key={s.label} className="flex flex-col border-b border-white/5 sm:border-b-0 pb-4 sm:pb-0">
+                        <span className="intel-font-mono text-[8px] tracking-[0.15em] text-white/30 mb-2">{s.label}</span>
+                        <span className="text-xs font-semibold text-white/80 tracking-wide">{s.value}</span>
+                      </div>
+                    ))}
+                  </motion.div>
+                </AnimatePresence>
               </div>
-            </motion.div>
-          ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
