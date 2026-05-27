@@ -123,7 +123,7 @@ function GalleryCard({
     <motion.div
       variants={scaleUp}
       className={cn(
-        "group relative cursor-pointer overflow-hidden rounded-xl",
+        "group relative h-full cursor-pointer overflow-hidden rounded-xl",
         className,
       )}
       onClick={onClick}
@@ -134,7 +134,7 @@ function GalleryCard({
     >
       <div
         className={cn(
-          "relative w-full overflow-hidden",
+          "relative h-full w-full overflow-hidden bg-navy-dark",
           frameClassName ?? aspectClass,
         )}
       >
@@ -155,19 +155,19 @@ function GalleryCard({
           <ZoomIn className="h-4 w-4 text-white" aria-hidden="true" />
         </div>
 
-        <div className="absolute left-3 top-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <span className="rounded-full border border-glory-gold/30 bg-navy-dark/80 px-2.5 py-1 font-body text-xs font-semibold uppercase tracking-wider text-glory-gold backdrop-blur-sm">
+        <div className="absolute left-3 top-3 max-w-[calc(100%-4rem)] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <span className="block truncate rounded-full border border-glory-gold/30 bg-navy-dark/80 px-2.5 py-1 font-body text-xs font-semibold uppercase tracking-wider text-glory-gold backdrop-blur-sm">
             {image.category}
           </span>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 translate-y-2 p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-          <p className="flex items-center gap-1.5 font-body text-sm font-semibold leading-tight text-white">
+          <p className="flex min-w-0 items-start gap-1.5 font-body text-sm font-semibold leading-tight text-white">
             <MapPin
-              className="h-3 w-3 shrink-0 text-glory-gold"
+              className="mt-0.5 h-3 w-3 shrink-0 text-glory-gold"
               aria-hidden="true"
             />
-            {image.caption}
+            <span className="line-clamp-2 min-w-0">{image.caption}</span>
           </p>
         </div>
       </div>
@@ -190,8 +190,8 @@ export function GalleryPreviewSection() {
           },
           {
             ...GALLERY_PREVIEW_IMAGES[1],
-            alt: "One World Trade Center dominând Lower Manhattan într-un portret urban vertical",
-            caption: "Lower Manhattan, New York City",
+            alt: "Turnurile din centrul orașului Chicago ridicându-se într-un portret vertical al skyline-ului",
+            caption: "Centrul orașului Chicago, Illinois",
             category: "Orașe",
           },
           {
@@ -270,7 +270,7 @@ export function GalleryPreviewSection() {
   const categories = [...new Set(images.map((image) => image.category))];
   const [
     usaFromSpace,
-    manhattan,
+    chicagoDowntown,
     yosemiteRoad,
     goldenGate,
     statueOfLiberty,
@@ -378,11 +378,11 @@ export function GalleryPreviewSection() {
         >
           <div className="grid gap-4 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-stretch">
             <GalleryCard
-              image={manhattan}
-              onClick={() => setLightboxImage(manhattan)}
+              image={chicagoDowntown}
+              onClick={() => setLightboxImage(chicagoDowntown)}
               priority
               className="border border-white/10 bg-white/5 shadow-2xl"
-              frameClassName="h-full min-h-[480px] lg:min-h-[640px]"
+              frameClassName="aspect-[3/4] min-h-[440px] sm:min-h-[520px] lg:aspect-auto lg:min-h-[640px]"
             />
 
             <div className="grid gap-4">
@@ -391,7 +391,7 @@ export function GalleryPreviewSection() {
                 onClick={() => setLightboxImage(usaFromSpace)}
                 priority
                 className="border border-white/10 bg-white/5 shadow-2xl"
-                frameClassName="min-h-[280px] md:min-h-[360px]"
+                frameClassName="aspect-[16/9] min-h-[240px] md:min-h-[320px]"
               />
 
               <div className="grid gap-4 sm:grid-cols-2">
@@ -399,13 +399,13 @@ export function GalleryPreviewSection() {
                   image={yosemiteRoad}
                   onClick={() => setLightboxImage(yosemiteRoad)}
                   className="border border-white/10"
-                  frameClassName="min-h-[220px]"
+                  frameClassName="aspect-[4/3] min-h-[220px]"
                 />
                 <GalleryCard
                   image={goldenGate}
                   onClick={() => setLightboxImage(goldenGate)}
                   className="border border-white/10"
-                  frameClassName="min-h-[220px]"
+                  frameClassName="aspect-[4/3] min-h-[220px]"
                 />
               </div>
             </div>
@@ -416,25 +416,25 @@ export function GalleryPreviewSection() {
               image={statueOfLiberty}
               onClick={() => setLightboxImage(statueOfLiberty)}
               className="border border-white/10"
-              frameClassName="min-h-[240px]"
+              frameClassName="aspect-[4/3] min-h-[220px]"
             />
             <GalleryCard
               image={columbia}
               onClick={() => setLightboxImage(columbia)}
               className="border border-white/10"
-              frameClassName="min-h-[240px]"
+              frameClassName="aspect-[4/3] min-h-[220px]"
             />
             <GalleryCard
               image={suburbHouse}
               onClick={() => setLightboxImage(suburbHouse)}
               className="border border-white/10"
-              frameClassName="min-h-[240px]"
+              frameClassName="aspect-[4/3] min-h-[220px]"
             />
             <GalleryCard
               image={spacexLaunch}
               onClick={() => setLightboxImage(spacexLaunch)}
               className="border border-white/10"
-              frameClassName="min-h-[240px]"
+              frameClassName="aspect-[4/3] min-h-[220px]"
             />
           </div>
         </motion.div>

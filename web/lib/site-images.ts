@@ -13,6 +13,7 @@
 // both where the image is used (home page) and what it shows (Grand Canyon).
 
 import chicagoSkyline from "@/IMAGES/Cities/Golden Gate Bridge.jpg";
+import homeChicagoDowntownPortrait from "@/IMAGES/Cities/Chicago Downtown portrait.jpg";
 import homeNycSunset from "@/IMAGES/Cities/New York Skyline at sunset.jpg";
 import homeNycSkyline from "@/IMAGES/Cities/Manhattan One World Trade Center Close-up.jpg";
 import homeDeclarationIndependence from "@/IMAGES/Constitution/usa-independence-day-concept-with-declaration-independence.jpg";
@@ -104,6 +105,7 @@ export const SITE_IMAGES = {
   homeDeclarationIndependence: homeDeclarationIndependence.src,
   homeGrandCanyon: homeGrandCanyon.src,
   homeGoldenGateBridge: chicagoSkyline.src,
+  homeChicagoDowntownPortrait: homeChicagoDowntownPortrait.src,
   homeNycSunset: homeNycSunset.src,
   homeNycSkyline: homeNycSkyline.src,
   homeAirForcePlane: homeAirForcePlane.src,
