@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getServerLocale } from "@/lib/i18n/server";
-import { Breadcrumb } from "@/components/layout/Breadcrumb";
+
 import {
   IntelligenceStyles,
   IntelligencePageProgress,
@@ -49,8 +49,6 @@ export default async function IntelligencePage() {
   const heritage = getIntelligenceHeritage(locale);
   const futurePrograms = getIntelligenceFuturePrograms(locale);
 
-  const breadcrumbParent = isRo ? "Armată" : "Military";
-  const breadcrumbPage = isRo ? "Informații" : "Intelligence";
 
   const heroStats = isRo
     ? [
@@ -83,17 +81,6 @@ export default async function IntelligencePage() {
         stats={heroStats}
       />
 
-      {/* Breadcrumb Section overlayed below the hero scroll zone */}
-      <div className="relative z-20 bg-black pt-12 pb-6 px-6 sm:px-10 lg:px-16">
-        <div className="mx-auto max-w-7xl">
-          <Breadcrumb
-            items={[
-              { label: breadcrumbParent, href: "/military" },
-              { label: breadcrumbPage },
-            ]}
-          />
-        </div>
-      </div>
 
       {/* Metric Counters */}
       <IntelligenceMetricStrip metrics={metrics} />
