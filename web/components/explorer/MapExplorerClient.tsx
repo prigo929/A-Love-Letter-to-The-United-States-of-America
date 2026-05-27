@@ -36,6 +36,7 @@ const FIPS_TO_ABBREV: Record<string, string> = {
 interface MapExplorerClientProps {
   locale: "en" | "ro";
   translations: {
+    eyebrow: string;
     title: string;
     subtitle: string;
     searchPlaceholder: string;
@@ -190,352 +191,346 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
       {/* Cinematic Top Accent line */}
       <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#d4af37]/60 to-transparent" />
 
-      <div className="relative z-10 mx-auto max-w-screen-2xl px-4 py-20 sm:px-6 lg:px-8 font-body">
+      <div className="relative z-10 mx-auto max-w-screen-xl px-4 py-20 sm:px-6 lg:px-8 font-body">
         
-        {/* ── PAGE HEADER ── */}
-        <header className="mb-10 flex flex-col justify-between gap-6 border-b border-white/5 pb-8 md:flex-row md:items-end">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <Compass className="h-4 w-4 text-[#d4af37] animate-pulse" />
-              <span className="font-body text-xs font-bold tracking-widest text-[#d4af37] uppercase">
-                Interactive State Directory
-              </span>
-            </div>
-            <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-              {translations.title}
-            </h1>
-            <p className="mt-2 max-w-2xl font-body text-base text-white/60">
-              {translations.subtitle}
-            </p>
-          </div>
-
-          {/* Quick Stats Counters */}
-          <div className="grid grid-cols-3 gap-6 border-l border-white/10 pl-6">
-            <div>
-              <div className="font-body text-2xl font-bold text-[#d4af37]">50 + DC</div>
-              <div className="text-[10px] font-body font-semibold uppercase tracking-wider text-white/40">Regions</div>
-            </div>
-            <div>
-              <div className="font-body text-2xl font-bold text-blue-400">$32.4T</div>
-              <div className="text-[10px] font-body font-semibold uppercase tracking-wider text-white/40">Total GDP</div>
-            </div>
-            <div>
-              <div className="font-body text-2xl font-bold text-emerald-400">342M+</div>
-              <div className="text-[10px] font-body font-semibold uppercase tracking-wider text-white/40">Population</div>
-            </div>
-          </div>
+        {/* ── CENTERED HEADER (HOMEPAGE DESIGN) ── */}
+        <header className="mb-14 text-center">
+          <p className="section-eyebrow justify-center">
+            {translations.eyebrow}
+          </p>
+          <h1 className="mb-4 font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl text-balance">
+            {translations.title}
+          </h1>
+          <p className="mx-auto max-w-2xl font-body text-lg text-white/55 leading-relaxed">
+            {translations.subtitle}
+          </p>
         </header>
 
-        {/* ── DUAL COLUMN INTERFACE ── */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+        {/* ── INTERFACE CONTENT CONTAINER ── */}
+        <div className="space-y-10">
           
-          {/* LEFT COLUMN: Map Area and HUD controls (8 Cols) */}
-          <div className="space-y-6 lg:col-span-8">
-            
-            {/* Filter and Search Bar */}
-            <div className="grid grid-cols-1 gap-4 rounded-2xl border border-white/10 bg-slate-950/60 p-4 backdrop-blur-md md:grid-cols-12">
-              {/* Search */}
-              <div className="relative md:col-span-4">
-                <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-white/40" />
-                <input
-                  type="text"
-                  placeholder={translations.searchPlaceholder}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full rounded-lg border border-white/10 bg-slate-900/50 py-2 pl-9 pr-4 text-sm text-white placeholder-white/30 focus:border-[#d4af37] focus:outline-none focus:ring-1 focus:ring-[#d4af37] font-body"
-                />
-              </div>
+          {/* Centered Controls Toolbar */}
+          <div className="grid grid-cols-1 gap-4 rounded-2xl border border-white/10 bg-slate-950/60 p-4 backdrop-blur-md md:grid-cols-12 max-w-screen-xl mx-auto">
+            {/* Search */}
+            <div className="relative md:col-span-4">
+              <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-white/40" />
+              <input
+                type="text"
+                placeholder={translations.searchPlaceholder}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full rounded-lg border border-white/10 bg-slate-900/50 py-2 pl-9 pr-4 text-sm text-white placeholder-white/30 focus:border-[#d4af37] focus:outline-none focus:ring-1 focus:ring-[#d4af37] font-body"
+              />
+            </div>
 
-              {/* Region Filter */}
-              <div className="flex items-center gap-1 overflow-x-auto pb-1 md:col-span-5 md:pb-0">
-                <ListFilter className="h-4 w-4 text-white/40 shrink-0 mr-1.5" />
+            {/* Region Filter */}
+            <div className="flex items-center gap-1 overflow-x-auto pb-1 md:col-span-5 md:pb-0 justify-start">
+              <ListFilter className="h-4 w-4 text-white/40 shrink-0 mr-1.5" />
+              {[
+                { id: "All", label: translations.allRegions },
+                { id: "Northeast", label: translations.northeast },
+                { id: "South", label: translations.south },
+                { id: "Midwest", label: translations.midwest },
+                { id: "West", label: translations.west }
+              ].map((reg) => (
+                <button
+                  key={reg.id}
+                  onClick={() => setSelectedRegion(reg.id)}
+                  className={`rounded-md px-2.5 py-1 text-xs font-semibold tracking-wide transition-all font-body shrink-0 ${
+                    selectedRegion === reg.id
+                      ? "bg-[#d4af37]/20 border border-[#d4af37]/50 text-[#d4af37]"
+                      : "border border-transparent text-white/60 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  {reg.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Sort selector */}
+            <div className="flex items-center gap-2 md:col-span-3">
+              <span className="text-xs text-white/40 whitespace-nowrap font-body">{translations.sortBy}:</span>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as any)}
+                className="w-full rounded-lg border border-white/10 bg-slate-900/50 py-1.5 px-3 text-xs text-white focus:border-[#d4af37] focus:outline-none font-body"
+              >
+                <option value="name">{locale === "ro" ? "Nume" : "Name"}</option>
+                <option value="gdp">{translations.gdp}</option>
+                <option value="population">{translations.population}</option>
+                <option value="statehood">{translations.statehood}</option>
+              </select>
+            </div>
+          </div>
+
+          {/* CENTERED MAP CONTAINER (HOMEPAGE DESIGN) */}
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-navy-dark/60 backdrop-blur-sm shadow-2xl max-w-screen-xl mx-auto">
+            {/* Map Grid Pattern Overlay */}
+            <div 
+              className="bg-map-preview-grid absolute inset-0 pointer-events-none opacity-10" 
+              aria-hidden="true"
+            />
+            
+            {/* Heatmap overlay controller */}
+            <div className="absolute top-4 left-4 z-20 flex flex-col gap-2 rounded-xl border border-white/5 bg-slate-950/80 p-3 backdrop-blur-md">
+              <span className="font-body text-[10px] tracking-wider text-white/50 uppercase flex items-center gap-1.5">
+                <Layers className="h-3 w-3 text-[#d4af37]" />
+                {translations.heatmapMode}
+              </span>
+              <div className="flex flex-wrap gap-1.5 mt-1 max-w-[200px] sm:max-w-none">
                 {[
-                  { id: "All", label: translations.allRegions },
-                  { id: "Northeast", label: translations.northeast },
-                  { id: "South", label: translations.south },
-                  { id: "Midwest", label: translations.midwest },
-                  { id: "West", label: translations.west }
-                ].map((reg) => (
+                  { id: "none", label: translations.defaultColor },
+                  { id: "gdp", label: translations.gdpHeat },
+                  { id: "population", label: translations.popHeat },
+                  { id: "statehood", label: translations.statehoodHeat },
+                ].map((mode) => (
                   <button
-                    key={reg.id}
-                    onClick={() => setSelectedRegion(reg.id)}
-                    className={`rounded-md px-2.5 py-1 text-xs font-semibold tracking-wide transition-all font-body ${
-                      selectedRegion === reg.id
-                        ? "bg-[#d4af37]/20 border border-[#d4af37]/50 text-[#d4af37]"
-                        : "border border-transparent text-white/60 hover:text-white hover:bg-white/5"
+                    key={mode.id}
+                    onClick={() => setHeatmapMode(mode.id as any)}
+                    className={`rounded px-2.5 py-0.5 text-[10px] font-body font-semibold tracking-wide transition-all ${
+                      heatmapMode === mode.id
+                        ? "bg-[#d4af37] text-black font-bold"
+                        : "bg-white/5 text-white/60 hover:text-white hover:bg-white/10"
                     }`}
                   >
-                    {reg.label}
+                    {mode.label}
                   </button>
                 ))}
               </div>
-
-              {/* Sort selector */}
-              <div className="flex items-center gap-2 md:col-span-3">
-                <span className="text-xs text-white/40 whitespace-nowrap font-body">{translations.sortBy}:</span>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as any)}
-                  className="w-full rounded-lg border border-white/10 bg-slate-900/50 py-1.5 px-3 text-xs text-white focus:border-[#d4af37] focus:outline-none font-body"
-                >
-                  <option value="name">{locale === "ro" ? "Nume" : "Name"}</option>
-                  <option value="gdp">{translations.gdp}</option>
-                  <option value="population">{translations.population}</option>
-                  <option value="statehood">{translations.statehood}</option>
-                </select>
-              </div>
             </div>
 
-            {/* INTERACTIVE MAP CONTAINER */}
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/40 p-2 backdrop-blur-md shadow-2xl">
-              
-              {/* Heatmap overlay controller */}
-              <div className="absolute top-4 left-4 z-20 flex flex-col gap-2 rounded-xl border border-white/5 bg-slate-950/80 p-3 backdrop-blur-md">
-                <span className="font-body text-[10px] tracking-wider text-white/50 uppercase flex items-center gap-1.5">
-                  <Layers className="h-3 w-3 text-[#d4af37]" />
-                  {translations.heatmapMode}
+            {/* Map Canvas */}
+            <div className="h-[280px] w-full sm:h-[450px] md:h-[550px] lg:h-[620px] px-2 py-4">
+              <ComposableMap
+                projection="geoAlbersUsa"
+                projectionConfig={{ scale: 960 }}
+                style={{ width: "100%", height: "100%" }}
+              >
+                <Geographies geography={GEO_URL}>
+                  {({ geographies }: { geographies: any[] }) =>
+                    geographies.map((geo) => {
+                      const fips = geo.id?.toString().padStart(2, "0") ?? "";
+                      const abbrev = FIPS_TO_ABBREV[fips] ?? "";
+                      
+                      return (
+                        <Geography
+                          key={geo.rsmKey}
+                          geography={geo}
+                          onMouseEnter={() => setHoveredStateAbbrev(abbrev)}
+                          onMouseLeave={() => setHoveredStateAbbrev(null)}
+                          onClick={() => {
+                            if (abbrev) {
+                              setSelectedStateAbbrev(abbrev);
+                            }
+                          }}
+                          style={{
+                            default: getGeographyStyle(geo),
+                            hover: {
+                              cursor: "pointer",
+                              outline: "none",
+                            },
+                            pressed: {
+                              outline: "none",
+                            },
+                          }}
+                        />
+                      );
+                    })
+                  }
+                </Geographies>
+              </ComposableMap>
+            </div>
+
+            {/* Bottom Legend styling matching homepage */}
+            <div className="flex items-center justify-center gap-6 border-t border-white/10 px-6 py-4 bg-black/10">
+              <div className="flex items-center gap-2">
+                <div className="h-3 w-3 rounded-sm bg-glory-blue/60 border border-white/10" />
+                <span className="font-body text-xs text-white/50">
+                  U.S. Regions
                 </span>
-                <div className="flex flex-wrap gap-1.5 mt-1 max-w-[220px] md:max-w-none">
-                  {[
-                    { id: "none", label: translations.defaultColor },
-                    { id: "gdp", label: translations.gdpHeat },
-                    { id: "population", label: translations.popHeat },
-                    { id: "statehood", label: translations.statehoodHeat },
-                  ].map((mode) => (
-                    <button
-                      key={mode.id}
-                      onClick={() => setHeatmapMode(mode.id as any)}
-                      className={`rounded px-2.5 py-0.5 text-[10px] font-body font-semibold tracking-wide transition-all ${
-                        heatmapMode === mode.id
-                          ? "bg-[#d4af37] text-black font-bold"
-                          : "bg-white/5 text-white/60 hover:text-white hover:bg-white/10"
-                      }`}
-                    >
-                      {mode.label}
-                    </button>
-                  ))}
-                </div>
               </div>
-
-              {/* Geo-Atlas Map */}
-              <div className="h-[320px] w-full sm:h-[450px] md:h-[500px]">
-                <ComposableMap
-                  projection="geoAlbersUsa"
-                  projectionConfig={{ scale: 1000 }}
-                  style={{ width: "100%", height: "100%" }}
-                >
-                  <Geographies geography={GEO_URL}>
-                    {({ geographies }: { geographies: any[] }) =>
-                      geographies.map((geo) => {
-                        const fips = geo.id?.toString().padStart(2, "0") ?? "";
-                        const abbrev = FIPS_TO_ABBREV[fips] ?? "";
-                        
-                        return (
-                          <Geography
-                            key={geo.rsmKey}
-                            geography={geo}
-                            onMouseEnter={() => setHoveredStateAbbrev(abbrev)}
-                            onMouseLeave={() => setHoveredStateAbbrev(null)}
-                            onClick={() => {
-                              if (abbrev) {
-                                  setSelectedStateAbbrev(abbrev);
-                              }
-                            }}
-                            style={{
-                              default: getGeographyStyle(geo),
-                              hover: {
-                                cursor: "pointer",
-                                outline: "none",
-                              },
-                              pressed: {
-                                outline: "none",
-                              },
-                            }}
-                          />
-                        );
-                      })
-                    }
-                  </Geographies>
-                </ComposableMap>
+              <div className="flex items-center gap-2">
+                <div className="h-3 w-3 rounded-sm bg-[#d4af37]" />
+                <span className="font-body text-xs text-white/50">
+                  Selected State
+                </span>
               </div>
             </div>
-
-            {/* List directories of states */}
-            <div>
-              <div className="flex items-center justify-between mb-4 border-b border-white/5 pb-2">
-                <h3 className="font-body text-xs font-bold tracking-wider text-white/40 uppercase">
-                  {translations.detailsTitle} ({filteredStates.length})
-                </h3>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 max-h-[220px] overflow-y-auto pr-2 custom-scrollbar">
-                {filteredStates.map((state) => {
-                  const isSelected = selectedStateAbbrev === state.abbrev;
-                  return (
-                    <div
-                      key={state.abbrev}
-                      onClick={() => setSelectedStateAbbrev(state.abbrev)}
-                      className={`relative cursor-pointer rounded-xl border p-3 transition-all ${
-                        isSelected
-                          ? "bg-[#d4af37]/10 border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.05)]"
-                          : "bg-slate-950/60 border-white/5 hover:border-white/15"
-                      }`}
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="font-body text-xs text-white/40 font-bold">{state.abbrev}</span>
-                      </div>
-                      <h4 className="mt-1 font-body text-sm font-bold text-white truncate">
-                        {state.name[locale]}
-                      </h4>
-                      <p className="text-[10px] text-white/50 font-semibold truncate font-body">
-                        {state.capital[locale]}
-                      </p>
-                    </div>
-                  );
-                })}
-
-                {filteredStates.length === 0 && (
-                  <div className="col-span-full py-8 text-center text-sm text-white/30 font-body">
-                    {translations.noResults}
-                  </div>
-                )}
-              </div>
-            </div>
-
           </div>
 
-          {/* RIGHT COLUMN: Bento-style detail dashboard (4 Cols) */}
-          <div className="space-y-6 lg:col-span-4">
-            
+          {/* ── FULL-WIDTH SELECTED STATE DETAILS PANEL (BENTO LAYOUT) ── */}
+          <div className="max-w-screen-xl mx-auto">
             <AnimatePresence mode="wait">
               <motion.div
                 key={selectedState.abbrev}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.25 }}
-                className="rounded-3xl border border-white/10 bg-slate-950/75 p-6 backdrop-blur-md shadow-2xl space-y-6"
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="rounded-3xl border border-white/10 bg-slate-950/70 p-6 md:p-8 backdrop-blur-md shadow-2xl"
               >
-                {/* Visual Header */}
-                <div className="relative overflow-hidden rounded-xl border border-white/5 bg-gradient-to-br from-slate-900 to-slate-950 p-4">
-                  <div className="absolute top-0 right-0 h-16 w-16 bg-gradient-to-bl from-white/5 to-transparent opacity-50" />
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
                   
-                  {/* Region Pill */}
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-body text-[9px] font-bold tracking-wider text-[#d4af37] border border-[#d4af37]/30 rounded px-1.5 py-0.5 bg-[#d4af37]/5 uppercase">
-                      Region: {selectedState.region}
-                    </span>
-                    <span className="font-body text-[9px] font-bold text-white/40 uppercase">
-                      FIPS CODE: {selectedState.fips}
-                    </span>
+                  {/* Part 1: Identity Card (4 Cols) */}
+                  <div className="md:col-span-4 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/5 pb-6 md:pb-0 md:pr-8">
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <span className="font-body text-[10px] font-bold tracking-widest text-[#d4af37] border border-[#d4af37]/35 rounded px-2 py-0.5 bg-[#d4af37]/5 uppercase">
+                          Region: {selectedState.region}
+                        </span>
+                        <span className="font-body text-[9px] font-bold text-white/40 uppercase">
+                          FIPS: {selectedState.fips}
+                        </span>
+                      </div>
+                      
+                      <div>
+                        <h2 className="font-display text-4xl font-extrabold text-white tracking-tight flex items-baseline gap-2.5">
+                          {selectedState.name[locale]}
+                          <span className="font-body text-lg font-bold text-[#d4af37]/90">({selectedState.abbrev})</span>
+                        </h2>
+                        <p className="mt-1.5 font-body text-sm italic text-[#d4af37]/80">
+                          “{selectedState.nickname[locale]}”
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="mt-8 pt-4 border-t border-white/5 space-y-2">
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="text-white/40 font-bold uppercase">{translations.capital}:</span>
+                        <span className="font-semibold text-white">{selectedState.capital[locale]}</span>
+                      </div>
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="text-white/40 font-bold uppercase">{translations.statehoodOrderLabel}:</span>
+                        <span className="font-semibold text-white">#{selectedState.statehoodOrder} / 50</span>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Title & Nickname */}
-                  <div>
-                    <h2 className="font-body text-3xl font-extrabold text-white tracking-tight flex items-baseline gap-2">
-                      {selectedState.name[locale]}
-                      <span className="font-body text-sm font-bold text-[#d4af37]/80">({selectedState.abbrev})</span>
-                    </h2>
-                    <p className="mt-1 font-body text-xs italic text-[#d4af37]/85">
-                      “{selectedState.nickname[locale]}”
-                    </p>
+                  {/* Part 2: Metrics Bento Grid (4 Cols) */}
+                  <div className="md:col-span-4 flex flex-col justify-center gap-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      {/* GDP */}
+                      <div className="rounded-2xl border border-white/5 bg-white/5 p-4 space-y-1.5 hover:border-white/10 transition-colors">
+                        <div className="flex items-center gap-1.5 text-white/40">
+                          <TrendingUp className="h-3.5 w-3.5 text-[#d4af37]" />
+                          <span className="font-body text-[9px] uppercase tracking-wider font-bold">{translations.gdp}</span>
+                        </div>
+                        <div className="font-body text-2xl font-extrabold text-white">
+                          ${selectedState.gdp}B
+                        </div>
+                        <div className="text-[9px] text-white/40 font-semibold uppercase">
+                          Rank #{selectedState.gdp > 1000 ? "Top 5" : selectedState.gdp > 500 ? "Top 15" : "Mid Tier"}
+                        </div>
+                      </div>
+
+                      {/* Population */}
+                      <div className="rounded-2xl border border-white/5 bg-white/5 p-4 space-y-1.5 hover:border-white/10 transition-colors">
+                        <div className="flex items-center gap-1.5 text-white/40">
+                          <Users className="h-3.5 w-3.5 text-blue-400" />
+                          <span className="font-body text-[9px] uppercase tracking-wider font-bold">{translations.population}</span>
+                        </div>
+                        <div className="font-body text-2xl font-extrabold text-white">
+                          {selectedState.population}M
+                        </div>
+                        <div className="text-[9px] text-white/40 font-semibold uppercase">
+                          Share: {Math.round((selectedState.population / 342) * 1000) / 10}%
+                        </div>
+                      </div>
+
+                      {/* Statehood */}
+                      <div className="rounded-2xl border border-white/5 bg-white/5 p-4 space-y-1.5 hover:border-white/10 transition-colors">
+                        <div className="flex items-center gap-1.5 text-white/40">
+                          <Compass className="h-3.5 w-3.5 text-yellow-400" />
+                          <span className="font-body text-[9px] uppercase tracking-wider font-bold">{translations.statehood}</span>
+                        </div>
+                        <div className="font-body text-2xl font-extrabold text-white">
+                          {selectedState.statehoodYear}
+                        </div>
+                        <div className="text-[9px] text-white/40 font-semibold uppercase">
+                          Order: #{selectedState.statehoodOrder}
+                        </div>
+                      </div>
+
+                      {/* Area */}
+                      <div className="rounded-2xl border border-white/5 bg-white/5 p-4 space-y-1.5 hover:border-white/10 transition-colors">
+                        <div className="flex items-center gap-1.5 text-white/40">
+                          <Maximize2 className="h-3.5 w-3.5 text-emerald-400" />
+                          <span className="font-body text-[9px] uppercase tracking-wider font-bold">{translations.area}</span>
+                        </div>
+                        <div className="font-body text-base font-extrabold text-white truncate">
+                          {selectedState.area.toLocaleString()} sq mi
+                        </div>
+                        <div className="text-[9px] text-white/40 font-semibold uppercase">
+                          {selectedState.area > 100000 ? "Giant" : selectedState.area > 40000 ? "Medium" : "Compact"}
+                        </div>
+                      </div>
+                    </div>
                   </div>
+
+                  {/* Part 3: Chronicle Narrative (4 Cols) */}
+                  <div className="md:col-span-4 flex flex-col justify-between border-t md:border-t-0 md:border-l border-white/5 pt-6 md:pt-0 md:pl-8">
+                    <div className="space-y-4">
+                      <span className="font-body text-[10px] uppercase tracking-wider text-[#d4af37] font-bold flex items-center gap-1.5">
+                        <MapPin className="h-3.5 w-3.5 text-[#d4af37]" />
+                        REGIONAL CHRONICLE
+                      </span>
+                      <p className="font-body text-sm leading-relaxed text-white/80">
+                        {selectedState.story[locale]}
+                      </p>
+                    </div>
+
+                    <div className="mt-6 pt-4 border-t border-white/5">
+                      <span className="text-[10px] text-white/40 font-bold uppercase block mb-1">{translations.industry}</span>
+                      <span className="text-xs font-semibold text-[#d4af37] leading-relaxed block">{selectedState.industry[locale]}</span>
+                    </div>
+                  </div>
+
                 </div>
-
-                {/* Main Stats Grid */}
-                <div className="grid grid-cols-2 gap-4">
-                  {/* GDP Card */}
-                  <div className="rounded-xl border border-white/5 bg-white/5 p-3.5 space-y-1">
-                    <div className="flex items-center gap-1.5 text-white/40">
-                      <TrendingUp className="h-3.5 w-3.5 text-[#d4af37]" />
-                      <span className="font-body text-[10px] uppercase tracking-wider font-bold">{translations.gdp}</span>
-                    </div>
-                    <div className="font-body text-2xl font-extrabold text-white">
-                      ${selectedState.gdp}B
-                    </div>
-                    <div className="text-[9px] text-white/40 font-body font-semibold">
-                      Rank #{selectedState.gdp > 1000 ? "Top 5" : selectedState.gdp > 500 ? "Top 15" : "Mid Tier"}
-                    </div>
-                  </div>
-
-                  {/* Population Card */}
-                  <div className="rounded-xl border border-white/5 bg-white/5 p-3.5 space-y-1">
-                    <div className="flex items-center gap-1.5 text-white/40">
-                      <Users className="h-3.5 w-3.5 text-blue-400" />
-                      <span className="font-body text-[10px] uppercase tracking-wider font-bold">{translations.population}</span>
-                    </div>
-                    <div className="font-body text-2xl font-extrabold text-white">
-                      {selectedState.population}M
-                    </div>
-                    <div className="text-[9px] text-white/40 font-body font-semibold">
-                      US Share: {Math.round((selectedState.population / 342) * 1000) / 10}%
-                    </div>
-                  </div>
-
-                  {/* Statehood Year */}
-                  <div className="rounded-xl border border-white/5 bg-white/5 p-3.5 space-y-1">
-                    <div className="flex items-center gap-1.5 text-white/40">
-                      <Compass className="h-3.5 w-3.5 text-yellow-400" />
-                      <span className="font-body text-[10px] uppercase tracking-wider font-bold">{translations.statehood}</span>
-                    </div>
-                    <div className="font-body text-2xl font-extrabold text-white">
-                      {selectedState.statehoodYear}
-                    </div>
-                    <div className="text-[9px] text-white/40 font-body font-semibold">
-                      Order: #{selectedState.statehoodOrder}
-                    </div>
-                  </div>
-
-                  {/* Area Card */}
-                  <div className="rounded-xl border border-white/5 bg-white/5 p-3.5 space-y-1">
-                    <div className="flex items-center gap-1.5 text-white/40">
-                      <Maximize2 className="h-3.5 w-3.5 text-emerald-400" />
-                      <span className="font-body text-[10px] uppercase tracking-wider font-bold">{translations.area}</span>
-                    </div>
-                    <div className="font-body text-lg font-extrabold text-white truncate">
-                      {selectedState.area.toLocaleString()} sq mi
-                    </div>
-                    <div className="text-[9px] text-white/40 font-body font-semibold">
-                      {selectedState.area > 100000 ? "Giant" : selectedState.area > 40000 ? "Medium" : "Compact"}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Core Specs List */}
-                <div className="rounded-xl border border-white/5 bg-slate-900/30 p-4 space-y-3.5">
-                  {/* Capital */}
-                  <div className="flex justify-between items-start border-b border-white/5 pb-2">
-                    <span className="text-xs text-white/40 font-body uppercase font-bold">{translations.capital}:</span>
-                    <span className="text-sm font-semibold text-white text-right font-body">{selectedState.capital[locale]}</span>
-                  </div>
-
-                  {/* Main Sector */}
-                  <div className="flex justify-between items-start border-b border-white/5 pb-2">
-                    <span className="text-xs text-white/40 font-body uppercase font-bold">{translations.industry}:</span>
-                    <span className="text-sm font-semibold text-[#d4af37] text-right max-w-[200px] truncate-2-lines font-body">{selectedState.industry[locale]}</span>
-                  </div>
-
-                  {/* FIPS */}
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-white/40 font-body uppercase font-bold">{translations.statehoodOrderLabel}:</span>
-                    <span className="font-body text-xs text-white font-bold">#{selectedState.statehoodOrder} / 50</span>
-                  </div>
-                </div>
-
-                {/* Narrative story */}
-                <div className="border-t border-white/5 pt-4 space-y-2">
-                  <span className="font-body text-[10px] uppercase tracking-wider text-[#d4af37] font-bold flex items-center gap-1.5">
-                    <MapPin className="h-3.5 w-3.5 text-[#d4af37]" />
-                    REGIONAL CHRONICLE
-                  </span>
-                  <p className="font-body text-sm leading-relaxed text-white/80">
-                    {selectedState.story[locale]}
-                  </p>
-                </div>
-
               </motion.div>
             </AnimatePresence>
+          </div>
 
+          {/* ── RESPONSIVE STATES DIRECTORY (GRID LIST AT THE BOTTOM) ── */}
+          <div className="max-w-screen-xl mx-auto pt-6 border-t border-white/5">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="font-body text-sm font-bold tracking-wider text-white/40 uppercase">
+                {translations.detailsTitle} ({filteredStates.length})
+              </h3>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+              {filteredStates.map((state) => {
+                const isSelected = selectedStateAbbrev === state.abbrev;
+                return (
+                  <div
+                    key={state.abbrev}
+                    onClick={() => setSelectedStateAbbrev(state.abbrev)}
+                    className={`relative cursor-pointer rounded-2xl border p-4 transition-all ${
+                      isSelected
+                        ? "bg-[#d4af37]/10 border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.05)]"
+                        : "bg-slate-950/60 border-white/5 hover:border-white/15"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-body text-xs text-[#d4af37]/80 font-bold">{state.abbrev}</span>
+                      <span className="text-[10px] text-white/40 font-semibold">{state.region}</span>
+                    </div>
+                    <h4 className="font-body text-sm font-bold text-white truncate">
+                      {state.name[locale]}
+                    </h4>
+                    <p className="text-[10px] text-white/50 font-medium truncate font-body mt-0.5">
+                      {state.capital[locale]}
+                    </p>
+                  </div>
+                );
+              })}
+
+              {filteredStates.length === 0 && (
+                <div className="col-span-full py-12 text-center text-sm text-white/30 font-body">
+                  {translations.noResults}
+                </div>
+              )}
+            </div>
           </div>
 
         </div>

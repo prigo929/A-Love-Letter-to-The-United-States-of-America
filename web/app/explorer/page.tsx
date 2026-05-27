@@ -13,10 +13,11 @@ export default async function ExplorerPage() {
   
   // Localized translations dictionary
   const translations = {
-    title: locale === "ro" ? "Explorator de Hartă" : "U.S. Map Explorer",
+    eyebrow: locale === "ro" ? "De la un Ocean la Altul" : "From Sea to Shining Sea",
+    title: locale === "ro" ? "Explorează America" : "Explore America",
     subtitle: locale === "ro" 
-      ? "O explorare tactică interactivă, stat cu stat, a economiei, demografiei și istoriei din spatele fiecărei piese a uniunii." 
-      : "An interactive tactical exploration, state-by-state, of the economy, demographics, and history behind each piece of the Union.",
+      ? "Apasă pe orice stat pentru a descoperi ce îl face excepțional. Fiecare stat are o poveste." 
+      : "Click any state to discover what makes it exceptional. Every state is a story.",
     searchPlaceholder: locale === "ro" ? "Caută după nume sau capitală..." : "Search by name or capital...",
     filterRegion: locale === "ro" ? "Filtrează Regiunea" : "Filter Region",
     sortBy: locale === "ro" ? "Ordonează după" : "Sort By",
