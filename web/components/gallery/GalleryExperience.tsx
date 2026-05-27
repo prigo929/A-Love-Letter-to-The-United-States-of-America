@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import type { StaticImageData } from "next/image";
 import {
   Camera,
   ChevronRight,
@@ -30,7 +31,11 @@ type GalleryCopy = {
 
 type GalleryExperienceProps = {
   images: GalleryImage[];
-  categories: GalleryCategory[];
+  categories: readonly GalleryCategory[];
+  heroImage: {
+    path: string;
+    src: StaticImageData;
+  };
   copy: GalleryCopy;
 };
 
@@ -52,10 +57,10 @@ function FeaturedFrame({
       type="button"
       onClick={() => onSelect(image)}
       className={cn(
-        "group relative min-h-[260px] overflow-hidden rounded-lg border border-white/10 bg-white/5 text-left shadow-2xl",
+        "group relative block h-[280px] overflow-hidden rounded-lg border border-white/10 bg-white/5 text-left shadow-2xl md:h-full",
         index === 0
-          ? "md:col-span-2 md:row-span-2 md:min-h-[560px]"
-          : "md:min-h-[272px]",
+          ? "md:col-span-2 md:row-span-2"
+          : "md:min-h-0",
       )}
     >
       <Image
@@ -127,8 +132,10 @@ function GalleryTile({
           aria-hidden="true"
         />
         <div className="absolute bottom-0 left-0 right-0 p-4">
-          <p className="mb-2 w-fit rounded-full bg-white/10 px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-white/75 backdrop-blur">
-            {image.category}
+          <p className="mb-2 w-fit max-w-full truncate rounded-full bg-white/10 px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-white/75 backdrop-blur">
+            {image.subcategory
+              ? `${image.category} / ${image.subcategory}`
+              : image.category}
           </p>
           <h3 className="font-display text-xl leading-tight text-white">
             {image.caption}
@@ -180,7 +187,7 @@ function ImageDialog({
           <X className="h-5 w-5" aria-hidden="true" />
         </button>
 
-        <div className="relative min-h-[50vh] bg-black lg:min-h-0">
+        <div className="relative h-[58vh] bg-black lg:h-full">
           <Image
             src={image.src}
             alt={image.alt}
@@ -230,6 +237,7 @@ function ImageDialog({
 export function GalleryExperience({
   images,
   categories,
+  heroImage,
   copy,
 }: GalleryExperienceProps) {
   const [activeCategory, setActiveCategory] = useState<GalleryCategory>("All");
@@ -247,25 +255,28 @@ export function GalleryExperience({
 
   return (
     <main className="min-h-screen bg-[#05070d] text-white">
-      <section className="relative overflow-hidden px-4 pb-14 pt-24 sm:px-6 lg:px-8">
+      <section className="relative min-h-[92svh] overflow-hidden px-4 pb-14 pt-24 sm:px-6 lg:px-8">
         <div className="absolute inset-0" aria-hidden="true">
           <Image
-            src={featuredImages[0]?.src ?? images[0].src}
-            alt=""
+            src={heroImage.src}
+            alt="Chicago skyline and street grid at sunset"
             fill
-            className="object-cover opacity-28 blur-sm saturate-125"
+            className="object-cover saturate-125"
             sizes="100vw"
             placeholder="blur"
             blurDataURL={BLUR_PLACEHOLDER}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#05070d]/65 via-[#05070d]/92 to-[#05070d]" />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/30 to-black" />
+          <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-black via-black/75 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-[#05070d] via-[#05070d]/85 to-transparent" />
         </div>
 
-        <div className="relative mx-auto max-w-screen-xl">
+        <div className="relative mx-auto flex min-h-[calc(92svh-9.5rem)] max-w-screen-xl flex-col justify-end">
           <nav
             aria-label="Breadcrumb"
-            className="mb-8 flex flex-wrap items-center gap-1.5 font-body text-sm text-white/50"
+            className="mb-8 flex flex-wrap items-center gap-1.5 font-body text-sm text-white/60"
           >
             <Link
               href="/"
@@ -318,7 +329,7 @@ export function GalleryExperience({
               </div>
             </div>
 
-            <div className="grid gap-3 md:grid-cols-4 md:grid-rows-2">
+            <div className="grid gap-3 md:h-[620px] md:grid-cols-4 md:grid-rows-2">
               {featuredImages.map((image, index) => (
                 <FeaturedFrame
                   key={image.id}
@@ -355,7 +366,7 @@ export function GalleryExperience({
       <section className="px-4 py-14 sm:px-6 lg:px-8">
         <motion.div
           layout
-          className="mx-auto grid max-w-screen-xl gap-4 sm:grid-cols-2 xl:grid-cols-3"
+          className="mx-auto grid max-w-screen-xl gap-4 sm:grid-cols-2 xl:grid-cols-4"
         >
           <AnimatePresence mode="popLayout">
             {filteredImages.map((image) => (

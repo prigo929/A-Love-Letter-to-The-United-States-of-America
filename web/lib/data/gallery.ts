@@ -1,185 +1,176 @@
-import { GALLERY_PREVIEW_IMAGES } from "@/lib/data/home";
-import { SITE_IMAGES } from "@/lib/site-images";
+import type { StaticImageData } from "next/image";
+import { GALLERY_ASSETS } from "@/lib/data/gallery-assets";
 
-export type GalleryCategory =
-  | "All"
-  | "Cities"
-  | "Landscapes"
-  | "Symbols"
-  | "Institutions"
-  | "Innovation"
-  | "Military"
-  | "Economy";
+export const GALLERY_CATEGORIES = [
+  "All",
+  "Cities",
+  "Constitution",
+  "Culture",
+  "Economy",
+  "Education",
+  "Housing",
+  "Infrastructure",
+  "Landscapes",
+  "Leadership",
+  "Military",
+  "Science",
+  "Technology",
+  "US Buildings",
+  "US Flags",
+  "USA from Space",
+] as const;
+
+export type GalleryCategory = (typeof GALLERY_CATEGORIES)[number];
 
 export type GalleryImage = {
   id: string;
-  src: string;
+  path: string;
+  src: StaticImageData;
   alt: string;
   caption: string;
   description: string;
   category: Exclude<GalleryCategory, "All">;
+  subcategory?: string;
   location: string;
   tone: string;
   orientation: "portrait" | "landscape" | "square";
   featured?: boolean;
 };
 
-const previewImages = GALLERY_PREVIEW_IMAGES.map((image) => ({
-  ...image,
-  category:
-    image.category === "Global Scale"
-      ? "Innovation"
-      : image.category === "Nature"
-        ? "Landscapes"
-        : image.category === "Culture"
-          ? "Symbols"
-          : image.category === "Universities"
-            ? "Institutions"
-            : image.category === "Quality of Life"
-              ? "Symbols"
-              : image.category,
-  location: image.caption,
-  tone: image.span === "tall" ? "Vertical study" : "Wide frame",
-  orientation: image.span === "tall" ? "portrait" : "landscape",
-})) satisfies GalleryImage[];
+type GalleryOverride = Partial<
+  Pick<
+    GalleryImage,
+    "alt" | "caption" | "description" | "location" | "tone" | "featured"
+  >
+>;
 
-export const GALLERY_IMAGES: GalleryImage[] = [
-  { ...previewImages[1], featured: true, tone: "Dusk city canyon" },
-  { ...previewImages[3], featured: true, tone: "Golden hour span" },
-  { ...previewImages[0], featured: true, tone: "Continental scale" },
-  previewImages[4],
-  previewImages[5],
-  previewImages[6],
-  previewImages[7],
-  {
-    id: "grand-canyon",
-    src: SITE_IMAGES.homeGrandCanyon,
-    alt: "Grand Canyon cliffs and layered red rock formations under open sky",
-    caption: "Grand Canyon National Park",
+const GALLERY_HERO_PATH = "Cities/Chicago Skyline and Grid at Sunset.jpg";
+
+const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
+  "Cities/Chicago Downtown portrait.jpg": {
+    alt: "Elevated dusk view of the Chicago River running through downtown Chicago",
+    caption: "Downtown Chicago, Illinois",
     description:
-      "A sweeping view of Grand Canyon National Park, where layered red rock walls and immense desert scale create one of the clearest visual signatures of the American West.",
-    category: "Landscapes",
-    location: "Arizona",
-    tone: "Desert scale",
-    orientation: "landscape",
+      "This is an elevated, dusk view of the Chicago River flowing through the downtown architectural canyon. The perspective looks down the river corridor from behind a stone balustrade, showing multiple bascule bridges spanning the water. Key elements include the illuminated multi-level Wacker Drive on the left and the distinctive, cylindrical Marina City towers on the right, with city lights beginning to reflect on the water as evening sets in.",
+    location: "Chicago, Illinois",
+    tone: "Dusk city canyon",
+    featured: true,
   },
-  {
-    id: "mount-denali",
-    src: SITE_IMAGES.denaliNationalPark,
-    alt: "Mount Denali rising above alpine wilderness",
-    caption: "Denali National Park",
+  "Cities/Golden Gate Bridge.jpg": {
+    alt: "Golden Gate Bridge spanning San Francisco Bay in warm daylight",
+    caption: "Golden Gate Bridge, San Francisco",
     description:
-      "A high-latitude wilderness view centered on Denali, with alpine terrain and open distance emphasizing the scale of Alaska's protected landscapes.",
-    category: "Landscapes",
-    location: "Alaska",
-    tone: "Northern wilderness",
-    orientation: "landscape",
+      "This is an elevated, golden-hour view of the Golden Gate Bridge spanning the San Francisco Bay, looking southward from Marin County. The iconic suspension structure, defined by its massive International Orange towers and sweeping main cables, dominates the foreground and leads the eye diagonally across the strait. The San Francisco city skyline is faintly visible on the distant left horizon, while the coastline of the Presidio anchors the far end of the span. The scene is bathed in warm, low-angle sunlight against a clear gradient sky, with a faint crescent moon high above the primary tower and a single white sailboat navigating the dark blue water in the lower right.",
+    location: "San Francisco, California",
+    tone: "Golden hour span",
+    featured: true,
   },
-  {
-    id: "yellowstone",
-    src: SITE_IMAGES.yellowstoneNationalPark,
-    alt: "Yellowstone National Park geothermal landscape in daylight",
-    caption: "Yellowstone National Park",
+  "USA from Space/USA at night from Space.jpg": {
+    alt: "The United States at night seen from orbit, with major population centers glowing across the continent",
+    caption: "The United States at Night, from Space",
     description:
-      "A daylight view of Yellowstone's geothermal terrain, connecting the gallery to the first national park and to the American idea of preserving landscapes at continental scale.",
-    category: "Landscapes",
-    location: "Wyoming, Montana, Idaho",
-    tone: "Geothermal color",
-    orientation: "landscape",
+      "The United States at night seen from orbit, with major population centers glowing across the continent and revealing the scale of the country's cities, infrastructure, and connected regions.",
+    location: "Low Earth Orbit",
+    tone: "Continental scale",
+    featured: true,
   },
-  {
-    id: "zion",
-    src: SITE_IMAGES.zionNationalPark,
-    alt: "Zion National Park canyon walls and desert vegetation",
-    caption: "Zion National Park",
+  "Culture/Statue Of Liberty.jpg": {
+    alt: "Statue of Liberty viewed in clear daylight against a bright blue sky",
+    caption: "Statue of Liberty, New York Harbor",
     description:
-      "A canyon view from Zion National Park, where sheer sandstone walls, desert vegetation, and warm light define a more intimate version of western monumentality.",
-    category: "Landscapes",
-    location: "Utah",
-    tone: "Canyon light",
-    orientation: "portrait",
+      "This is a clear, daylight view of the Statue of Liberty set against a bright blue sky with scattered clouds. The colossal neoclassical copper sculpture, distinguished by its bright verdigris patina, is captured wearing her iconic seven-spiked crown. She holds a gold-tinted torch aloft in her right hand and a tabula ansata tablet close to her body in her left. The figure is anchored atop the upper tier of its massive masonry pedestal, showing classical architectural detailing and the structural columns of the observation deck.",
+    location: "New York Harbor",
+    tone: "National symbol",
   },
-  {
-    id: "nyc-sunset",
-    src: SITE_IMAGES.homeNycSunset,
-    alt: "New York City skyline at sunset",
-    caption: "New York Skyline at Sunset",
+  "Education/Columbia University.jpg": {
+    alt: "Low Memorial Library on the Columbia University campus in New York City",
+    caption: "Columbia University, New York",
     description:
-      "A sunset view of New York City, using dense vertical architecture and warm evening light to frame the city as an economic, cultural, and architectural symbol.",
-    category: "Cities",
-    location: "New York",
-    tone: "Urban glow",
-    orientation: "landscape",
+      'This is an eye-level, daytime view of Low Memorial Library on the Columbia University campus in New York City. The prominent Neoclassical building is anchored by a central stone dome and an expansive, multi-tiered stone staircase leading to the entrance. The focal point is a massive classical portico supported by ten tall Ionic columns. The entablature clearly reads "THE LIBRARY OF COLUMBIA UNIVERSITY" below a larger historical inscription detailing its founding as King\'s College. The active plaza features classic green globe lampposts, scattered pedestrians, and parked micromobility transit near a manicured lawn and black bollards.',
+    location: "New York City",
+    tone: "Campus classicism",
   },
-  {
-    id: "silicon-valley",
-    src: SITE_IMAGES.siliconValleyOffice,
-    alt: "Apple Park campus architecture in Silicon Valley",
-    caption: "Silicon Valley Campus",
+  "Housing/USA Suburb house.jpg": {
+    alt: "Traditional American coastal-style suburban home with a broad green lawn",
+    caption: "American Suburbia",
     description:
-      "A clean architectural view of a major Silicon Valley campus, representing the American technology ecosystem through scale, precision, and controlled modern design.",
-    category: "Innovation",
+      "This is an exterior view of a traditional American coastal-style suburban home. The facade uses weathered cedar shake siding paired with a dark asphalt shingle roof. A prominent, elevated wraparound front porch features white structural columns, balustrades, and decorative lattice skirting. The roofline includes two symmetrical gabled dormers with dark window shutters, flanking a central arched eyebrow dormer. The property is situated on a broad, heavily manicured green lawn with mature landscaping under clear daylight.",
+    location: "American suburb",
+    tone: "Coastal suburbia",
+  },
+  "Science/SpaceX launch.jpg": {
+    alt: "A SpaceX rocket lifting off in a plume of fire and smoke against the sky",
+    caption: "SpaceX Launch, Florida",
+    description:
+      "A SpaceX rocket lifting off in a plume of fire and smoke, showing the scale, power, and technological ambition of modern American launch infrastructure.",
+    location: "Florida",
+    tone: "Launch power",
+  },
+  "Landscapes/Yosemite National Park Road.jpg": {
+    alt: "A road cutting through Yosemite National Park beneath towering granite and pine forest",
+    caption: "Yosemite National Park, California",
+    description:
+      "A road cutting through Yosemite National Park beneath towering granite formations and pine forest, placing the viewer inside one of America's most recognizable protected landscapes.",
     location: "California",
-    tone: "Precision modernism",
-    orientation: "landscape",
+    tone: "National park road",
   },
-  {
-    id: "science-lab",
-    src: SITE_IMAGES.scienceLab,
-    alt: "Modern scientific laboratory equipment and researchers",
-    caption: "American Research Lab",
-    description:
-      "A laboratory scene focused on scientific infrastructure, connecting the gallery to medicine, biotechnology, university research, and the country's broader innovation system.",
-    category: "Innovation",
-    location: "United States",
-    tone: "Research light",
-    orientation: "landscape",
-  },
-  {
-    id: "nyse",
-    src: SITE_IMAGES.economyNyseHero,
-    alt: "New York Stock Exchange exterior in Lower Manhattan",
-    caption: "New York Stock Exchange",
-    description:
-      "An exterior view of the New York Stock Exchange, used here as a visual anchor for American capital markets and the country's role in global finance.",
-    category: "Economy",
-    location: "New York",
-    tone: "Market institution",
-    orientation: "landscape",
-  },
-  {
-    id: "air-force-c17",
-    src: SITE_IMAGES.homeAirForcePlane,
-    alt: "United States Air Force C-17 aircraft nose and fuselage",
-    caption: "U.S. Air Force C-17",
-    description:
-      "A close view of a U.S. Air Force C-17, emphasizing heavy airlift, logistics, and the industrial scale behind American military reach.",
-    category: "Military",
-    location: "United States Air Force",
-    tone: "Air power",
-    orientation: "landscape",
-  },
-  {
-    id: "carrier-flight-deck",
-    src: SITE_IMAGES.navy.flightDeck,
-    alt: "U.S. Navy aircraft carrier flight deck at sea",
-    caption: "Carrier Flight Deck",
-    description:
-      "A U.S. Navy carrier flight deck at sea, showing the moving runway that underpins American naval aviation and forward presence.",
-    category: "Military",
-    location: "U.S. Navy",
-    tone: "Sea control",
-    orientation: "landscape",
-  },
-];
+};
 
-export const GALLERY_CATEGORIES: GalleryCategory[] = [
-  "All",
-  "Cities",
-  "Landscapes",
-  "Symbols",
-  "Institutions",
-  "Innovation",
-  "Military",
-  "Economy",
-];
+function toTitle(value: string) {
+  return value
+    .replace(/\.[^.]+$/, "")
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function toId(path: string) {
+  return path
+    .replace(/\.[^.]+$/, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function getOrientation(src: StaticImageData): GalleryImage["orientation"] {
+  if (src.width === src.height) return "square";
+  return src.width < src.height ? "portrait" : "landscape";
+}
+
+function getCategory(path: string): Exclude<GalleryCategory, "All"> {
+  const category = path.split("/")[0] as Exclude<GalleryCategory, "All">;
+  return category;
+}
+
+function getSubcategory(path: string) {
+  const parts = path.split("/");
+  return parts.length > 2 ? parts[1] : undefined;
+}
+
+export const GALLERY_HERO_IMAGE =
+  GALLERY_ASSETS.find((asset) => asset.path === GALLERY_HERO_PATH) ??
+  GALLERY_ASSETS[0];
+
+export const GALLERY_IMAGES: GalleryImage[] = GALLERY_ASSETS.map((asset) => {
+  const category = getCategory(asset.path);
+  const subcategory = getSubcategory(asset.path);
+  const fileName = asset.path.split("/").at(-1) ?? asset.path;
+  const caption = toTitle(fileName);
+  const override = CURATED_IMAGE_OVERRIDES[asset.path] ?? {};
+
+  return {
+    id: toId(asset.path),
+    path: asset.path,
+    src: asset.src,
+    alt: `A gallery image from ${category}: ${caption}`,
+    caption,
+    description: `A gallery image from ${category}: ${caption}.`,
+    category,
+    subcategory,
+    location: subcategory ?? category,
+    tone: subcategory ?? category,
+    orientation: getOrientation(asset.src),
+    ...override,
+  };
+});

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { GalleryExperience } from "@/components/gallery/GalleryExperience";
-import { GALLERY_CATEGORIES, GALLERY_IMAGES } from "@/lib/data/gallery";
+import {
+  GALLERY_CATEGORIES,
+  GALLERY_HERO_IMAGE,
+  GALLERY_IMAGES,
+} from "@/lib/data/gallery";
 import { getServerLocale } from "@/lib/i18n/server";
 
 export const metadata: Metadata = {
@@ -44,6 +48,7 @@ export default async function GalleryPage() {
     <GalleryExperience
       images={GALLERY_IMAGES}
       categories={GALLERY_CATEGORIES}
+      heroImage={GALLERY_HERO_IMAGE}
       copy={copy}
     />
   );
