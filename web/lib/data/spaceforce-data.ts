@@ -159,8 +159,8 @@ export const SF_SYSTEMS: SpaceForcePlatform[] = [
     designation: "Positioning, Navigation & Timing",
     role:
       "A medium-Earth-orbit constellation that gives U.S. forces precision navigation, weapon guidance, encrypted military signals, and the timing layer behind global infrastructure.",
-    imageSrc: SITE_IMAGES.spaceForce.earthNight,
-    imageAlt: "United States at night from space",
+    imageSrc: SITE_IMAGES.spaceForce.gpsOrbit,
+    imageAlt: "GPS III satellite in orbit",
     capability: "Precision timing and navigation",
     specs: [
       { label: "Orbit", value: "MEO" },
@@ -174,8 +174,8 @@ export const SF_SYSTEMS: SpaceForcePlatform[] = [
     designation: "OPIR / Ground Radar",
     role:
       "Space and ground sensors detect launches, track trajectories, and provide warning for North America, allies, deployed forces, and strategic deterrence forces.",
-    imageSrc: SITE_IMAGES.spaceForce.launch,
-    imageAlt: "Rocket launch supporting space operations",
+    imageSrc: SITE_IMAGES.spaceForce.missileWarning,
+    imageAlt: "Infrared early warning satellite",
     capability: "Launch detection and warning",
     specs: [
       { label: "Posture", value: "24/7" },
@@ -189,8 +189,8 @@ export const SF_SYSTEMS: SpaceForcePlatform[] = [
     designation: "Strategic Communications",
     role:
       "Hardened military communications link commanders and forces in contested environments, including strategic command and control and theater operations.",
-    imageSrc: SITE_IMAGES.spaceForce.earth,
-    imageAlt: "Planet Earth from space",
+    imageSrc: SITE_IMAGES.spaceForce.protectedSatcom,
+    imageAlt: "Secure military communications satellite",
     capability: "Resilient global communications",
     specs: [
       { label: "Mission", value: "MILSATCOM" },
@@ -204,8 +204,8 @@ export const SF_SYSTEMS: SpaceForcePlatform[] = [
     designation: "Orbital Awareness",
     role:
       "Radars, telescopes, and data systems maintain custody of objects in orbit, watch adversary movement, and warn operators about collisions or hostile activity.",
-    imageSrc: SITE_IMAGES.spaceForce.spacex,
-    imageAlt: "Launch vehicle ascending into space",
+    imageSrc: SITE_IMAGES.spaceForce.spaceDomainRadar,
+    imageAlt: "Space Fence phased array radar",
     capability: "Orbital tracking and custody",
     specs: [
       { label: "Domain", value: "LEO-GEO" },
@@ -219,8 +219,8 @@ export const SF_SYSTEMS: SpaceForcePlatform[] = [
     designation: "Assured Access to Space",
     role:
       "Launch partnerships place critical payloads into orbit, refresh constellations, and make the industrial base a central part of American spacepower.",
-    imageSrc: SITE_IMAGES.spaceForce.launch,
-    imageAlt: "Falcon 9 launch for national security space missions",
+    imageSrc: SITE_IMAGES.spaceForce.nationalSecurityLaunch,
+    imageAlt: "Heavy-lift rocket launching at night",
     capability: "Assured orbital access",
     specs: [
       { label: "Mission", value: "NSSL" },
@@ -255,8 +255,8 @@ export const SF_OPERATIONS: SpaceForceTheater[] = [
     description:
       "Space Operations Command presents combat-ready space forces to U.S. Space Command and the joint force, turning satellites, sensors, and networks into operational effects.",
     signal: "Combat-ready space forces",
-    imageSrc: SITE_IMAGES.spaceForce.earthNight,
-    imageAlt: "Night lights across the United States from space",
+    imageSrc: SITE_IMAGES.spaceForce.spoc,
+    imageAlt: "Space Operations Command Center",
     accent: "#3ddbd9",
     metrics: [
       { label: "Focus", value: "Operations" },
@@ -272,8 +272,8 @@ export const SF_OPERATIONS: SpaceForceTheater[] = [
     description:
       "Space Systems Command develops, acquires, launches, and sustains space capabilities, from satellites and ground systems to launch services and resilient architectures.",
     signal: "Build, launch, sustain",
-    imageSrc: SITE_IMAGES.spaceForce.launch,
-    imageAlt: "Launch vehicle rising into the sky",
+    imageSrc: SITE_IMAGES.spaceForce.ssc,
+    imageAlt: "Space Systems Command clean room",
     accent: "#b9c7d9",
     metrics: [
       { label: "Focus", value: "Acquisition" },
@@ -289,8 +289,8 @@ export const SF_OPERATIONS: SpaceForceTheater[] = [
     description:
       "Space Training and Readiness Command develops doctrine, education, exercises, and test culture for a service designed to operate through interference and attack.",
     signal: "Doctrine and readiness",
-    imageSrc: SITE_IMAGES.spaceForce.spacex,
-    imageAlt: "Rocket launching into a blue sky",
+    imageSrc: SITE_IMAGES.spaceForce.starcom,
+    imageAlt: "STARCOM space combat simulator",
     accent: "#8b5cf6",
     metrics: [
       { label: "Focus", value: "Training" },
@@ -306,8 +306,8 @@ export const SF_OPERATIONS: SpaceForceTheater[] = [
     description:
       "Space Force components connect orbital capabilities to combatant commands, giving commanders access to warning, navigation, communications, ISR, and space control expertise.",
     signal: "Integrated with combatant commands",
-    imageSrc: SITE_IMAGES.spaceForce.earth,
-    imageAlt: "Earth viewed from orbit",
+    imageSrc: SITE_IMAGES.spaceForce.jointComponents,
+    imageAlt: "Joint Components global tactical map",
     accent: "#34d399",
     metrics: [
       { label: "Support", value: "COCOMs" },
