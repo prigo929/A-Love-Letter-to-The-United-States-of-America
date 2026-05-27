@@ -171,17 +171,11 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
       defaultFill = "rgba(26, 31, 58, 0.25)";
     }
 
-    // Border stroke styling
-    let strokeColor: string = isMatch ? COLORS.navyMid : "rgba(255, 255, 255, 0.05)";
-    let strokeWidth = 0.5;
-
-    if (isSelected) {
-      strokeColor = COLORS.gloryGold;
-      strokeWidth = 2.0;
-    } else if (isHovered && isMatch) {
-      strokeColor = COLORS.navyDark;
-      strokeWidth = 1.0;
-    }
+    // Border stroke styling - default thin border for base geometries.
+    // The thick selection/hover borders are rendered as crisp overlays on top
+    // to prevent clipping from neighboring state SVG paths.
+    const strokeColor: string = isMatch ? COLORS.navyMid : "rgba(255, 255, 255, 0.05)";
+    const strokeWidth = 0.5;
 
     return {
       fill: isHovered && isMatch
@@ -310,8 +304,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 style={{ width: "100%", height: "100%" }}
               >
                 <Geographies geography={GEO_URL}>
-                  {({ geographies }: { geographies: any[] }) =>
-                    geographies.map((geo) => {
+                  {({ geographies }: { geographies: any[] }) => {
+                    const baseGeographies = geographies.map((geo) => {
                       const fips = geo.id?.toString().padStart(2, "0") ?? "";
                       const abbrev = FIPS_TO_ABBREV[fips] ?? "";
                       
@@ -342,8 +336,65 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           }}
                         />
                       );
-                    })
-                  }
+                    });
+
+                    // Build overlays for selected and hovered states so they render on top of neighbors
+                    const selectedGeo = geographies.find((geo) => {
+                      const fips = geo.id?.toString().padStart(2, "0") ?? "";
+                      return FIPS_TO_ABBREV[fips] === selectedStateAbbrev;
+                    });
+
+                    const hoveredGeo = hoveredStateAbbrev
+                      ? geographies.find((geo) => {
+                          const fips = geo.id?.toString().padStart(2, "0") ?? "";
+                          return FIPS_TO_ABBREV[fips] === hoveredStateAbbrev;
+                        })
+                      : null;
+
+                    return (
+                      <>
+                        {baseGeographies}
+                        
+                        {/* Selected State highlight overlay (Gold, 2.0 stroke) */}
+                        {selectedGeo && (
+                          <Geography
+                            key={`${selectedGeo.rsmKey}-selected-overlay`}
+                            geography={selectedGeo}
+                            style={{
+                              default: {
+                                fill: "none",
+                                stroke: COLORS.gloryGold,
+                                strokeWidth: 2.0,
+                                outline: "none",
+                                pointerEvents: "none",
+                              },
+                              hover: { outline: "none" },
+                              pressed: { outline: "none" },
+                            }}
+                          />
+                        )}
+
+                        {/* Hovered State highlight overlay (White, 1.2 stroke) */}
+                        {hoveredGeo && (
+                          <Geography
+                            key={`${hoveredGeo.rsmKey}-hover-overlay`}
+                            geography={hoveredGeo}
+                            style={{
+                              default: {
+                                fill: "none",
+                                stroke: "#FFFFFF",
+                                strokeWidth: 1.2,
+                                outline: "none",
+                                pointerEvents: "none",
+                              },
+                              hover: { outline: "none" },
+                              pressed: { outline: "none" },
+                            }}
+                          />
+                        )}
+                      </>
+                    );
+                  }}
                 </Geographies>
               </ComposableMap>
             </div>
