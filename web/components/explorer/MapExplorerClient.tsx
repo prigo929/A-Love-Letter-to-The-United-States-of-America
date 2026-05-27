@@ -6,7 +6,6 @@ import {
   ComposableMap,
   Geographies,
   Geography,
-  ZoomableGroup,
 } from "react-simple-maps";
 import {
   Search,
@@ -17,8 +16,6 @@ import {
   MapPin,
   ListFilter,
   Maximize2,
-  Plus,
-  Minus,
 } from "lucide-react";
 import { EXPLORER_STATES, StateData } from "@/lib/data/explorer-data";
 
@@ -35,11 +32,6 @@ const FIPS_TO_ABBREV: Record<string, string> = {
   "47": "TN", "48": "TX", "49": "UT", "50": "VT", "51": "VA", "53": "WA",
   "54": "WV", "55": "WI", "56": "WY",
 };
-
-interface MapPosition {
-  coordinates: [number, number];
-  zoom: number;
-}
 
 interface MapExplorerClientProps {
   locale: "en" | "ro";
@@ -76,17 +68,13 @@ interface MapExplorerClientProps {
 }
 
 export function MapExplorerClient({ locale, translations }: MapExplorerClientProps) {
-  // Navigation & interaction states
+  // Interaction states
   const [selectedStateAbbrev, setSelectedStateAbbrev] = useState<string>("TX");
   const [hoveredStateAbbrev, setHoveredStateAbbrev] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedRegion, setSelectedRegion] = useState<string>("All");
   const [sortBy, setSortBy] = useState<"name" | "gdp" | "population" | "statehood">("name");
   const [heatmapMode, setHeatmapMode] = useState<"none" | "gdp" | "population" | "statehood">("none");
-  const [mapPosition, setMapPosition] = useState<MapPosition>({
-    coordinates: [-96, 37.8],
-    zoom: 1,
-  });
 
   const statesArray = useMemo(() => Object.values(EXPLORER_STATES), []);
 
@@ -130,24 +118,6 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
     return { maxGdp, maxPop, maxOrder };
   }, [statesArray]);
 
-  // Zoom handlers
-  const handleZoomIn = () => {
-    setMapPosition((prev) => ({ ...prev, zoom: Math.min(prev.zoom + 0.5, 4) }));
-  };
-
-  const handleZoomOut = () => {
-    setMapPosition((prev) => ({ ...prev, zoom: Math.max(prev.zoom - 0.8, 0.8) }));
-  };
-
-  const handleResetZoom = () => {
-    setMapPosition({ coordinates: [-96, 37.8], zoom: 1 });
-  };
-
-  // Drag end callback
-  const handleMoveEnd = (position: { coordinates: [number, number]; zoom: number }) => {
-    setMapPosition(position);
-  };
-
   // Get state styling based on heatmap modes
   const getGeographyStyle = useCallback((geo: any) => {
     const fips = geo.id?.toString().padStart(2, "0") ?? "";
@@ -177,14 +147,11 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
       else if (state.region === "West") defaultFill = "rgba(245, 158, 11, 0.25)";
     } else if (heatmapMode === "gdp") {
       const ratio = state.gdp / maxValues.maxGdp;
-      // Interpolate from deep blue to bright gold/yellow
       defaultFill = `rgba(212, 175, 55, ${Math.max(0.12, ratio)})`;
     } else if (heatmapMode === "population") {
       const ratio = state.population / maxValues.maxPop;
-      // Interpolate from deep blue to bright teal
       defaultFill = `rgba(14, 165, 233, ${Math.max(0.12, ratio)})`;
     } else if (heatmapMode === "statehood") {
-      // 1 (oldest) to 50 (newest). Let's invert so oldest states are brighter red/gold
       const ratio = (51 - state.statehoodOrder) / 50;
       defaultFill = `rgba(239, 68, 68, ${Math.max(0.12, ratio)})`;
     }
@@ -194,10 +161,10 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
     let strokeWidth = 0.5;
 
     if (isSelected) {
-      strokeColor = "#d4af37"; // gold outline
+      strokeColor = "#d4af37";
       strokeWidth = 1.8;
     } else if (isHovered) {
-      strokeColor = "#ffffff"; // white outline
+      strokeColor = "#ffffff";
       strokeWidth = 1.2;
     }
 
@@ -213,11 +180,6 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
       transition: "fill 0.2s ease, stroke 0.2s ease",
     };
   }, [selectedStateAbbrev, hoveredStateAbbrev, heatmapMode, maxValues]);
-
-  // Translate State Name Helper
-  const getStateName = (abbrev: string) => {
-    return EXPLORER_STATES[abbrev]?.name[locale] || abbrev;
-  };
 
   return (
     <div className="relative min-h-screen bg-[#030712] text-white">
@@ -247,19 +209,19 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
             </p>
           </div>
 
-          {/* Quick HUD Counters */}
+          {/* Quick Stats Counters */}
           <div className="grid grid-cols-3 gap-6 border-l border-white/10 pl-6">
             <div>
               <div className="font-display text-2xl font-bold text-[#d4af37]">50 + DC</div>
-              <div className="text-[10px] font-sans font-semibold uppercase tracking-wider text-white/40">Regions</div>
+              <div className="text-[10px] font-display font-semibold uppercase tracking-wider text-white/40">Regions</div>
             </div>
             <div>
               <div className="font-display text-2xl font-bold text-blue-400">$32.4T</div>
-              <div className="text-[10px] font-sans font-semibold uppercase tracking-wider text-white/40">Total GDP</div>
+              <div className="text-[10px] font-display font-semibold uppercase tracking-wider text-white/40">Total GDP</div>
             </div>
             <div>
               <div className="font-display text-2xl font-bold text-emerald-400">342M+</div>
-              <div className="text-[10px] font-sans font-semibold uppercase tracking-wider text-white/40">Population</div>
+              <div className="text-[10px] font-display font-semibold uppercase tracking-wider text-white/40">Population</div>
             </div>
           </div>
         </header>
@@ -280,7 +242,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   placeholder={translations.searchPlaceholder}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full rounded-lg border border-white/10 bg-slate-900/50 py-2 pl-9 pr-4 text-sm text-white placeholder-white/30 focus:border-[#d4af37] focus:outline-none focus:ring-1 focus:ring-[#d4af37]"
+                  className="w-full rounded-lg border border-white/10 bg-slate-900/50 py-2 pl-9 pr-4 text-sm text-white placeholder-white/30 focus:border-[#d4af37] focus:outline-none focus:ring-1 focus:ring-[#d4af37] font-body"
                 />
               </div>
 
@@ -297,7 +259,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <button
                     key={reg.id}
                     onClick={() => setSelectedRegion(reg.id)}
-                    className={`rounded-md px-2.5 py-1 text-xs font-semibold tracking-wide transition-all ${
+                    className={`rounded-md px-2.5 py-1 text-xs font-semibold tracking-wide transition-all font-body ${
                       selectedRegion === reg.id
                         ? "bg-[#d4af37]/20 border border-[#d4af37]/50 text-[#d4af37]"
                         : "border border-transparent text-white/60 hover:text-white hover:bg-white/5"
@@ -310,11 +272,11 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
               {/* Sort selector */}
               <div className="flex items-center gap-2 md:col-span-3">
-                <span className="text-xs text-white/40 whitespace-nowrap">{translations.sortBy}:</span>
+                <span className="text-xs text-white/40 whitespace-nowrap font-body">{translations.sortBy}:</span>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="w-full rounded-lg border border-white/10 bg-slate-900/50 py-1.5 px-3 text-xs text-white focus:border-[#d4af37] focus:outline-none font-sans"
+                  className="w-full rounded-lg border border-white/10 bg-slate-900/50 py-1.5 px-3 text-xs text-white focus:border-[#d4af37] focus:outline-none font-body"
                 >
                   <option value="name">{locale === "ro" ? "Nume" : "Name"}</option>
                   <option value="gdp">{translations.gdp}</option>
@@ -343,7 +305,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     <button
                       key={mode.id}
                       onClick={() => setHeatmapMode(mode.id as any)}
-                      className={`rounded px-2.5 py-0.5 text-[10px] font-sans font-medium tracking-wide transition-all ${
+                      className={`rounded px-2.5 py-0.5 text-[10px] font-body font-semibold tracking-wide transition-all ${
                         heatmapMode === mode.id
                           ? "bg-[#d4af37] text-black font-bold"
                           : "bg-white/5 text-white/60 hover:text-white hover:bg-white/10"
@@ -355,31 +317,6 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 </div>
               </div>
 
-              {/* Map Zoom Controls */}
-              <div className="absolute bottom-4 right-4 z-20 flex items-center gap-1.5 rounded-xl border border-white/5 bg-slate-950/80 p-2 backdrop-blur-md">
-                <button
-                  onClick={handleZoomOut}
-                  className="rounded bg-white/5 p-1 text-white hover:bg-white/10 transition-colors"
-                  aria-label="Zoom out"
-                >
-                  <Minus className="h-4 w-4" />
-                </button>
-                <span className="font-sans text-xs text-white/50 px-1 font-semibold">{Math.round(mapPosition.zoom * 100)}%</span>
-                <button
-                  onClick={handleZoomIn}
-                  className="rounded bg-white/5 p-1 text-white hover:bg-white/10 transition-colors"
-                  aria-label="Zoom in"
-                >
-                  <Plus className="h-4 w-4" />
-                </button>
-                <button
-                  onClick={handleResetZoom}
-                  className="ml-2 rounded border border-white/10 bg-white/5 px-2 py-1 font-sans text-[9px] font-bold text-white hover:bg-white/10 transition-colors"
-                >
-                  Reset
-                </button>
-              </div>
-
               {/* Geo-Atlas Map */}
               <div className="h-[320px] w-full sm:h-[450px] md:h-[500px]">
                 <ComposableMap
@@ -387,45 +324,38 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   projectionConfig={{ scale: 1000 }}
                   style={{ width: "100%", height: "100%" }}
                 >
-                  <ZoomableGroup
-                    zoom={mapPosition.zoom}
-                    center={mapPosition.coordinates}
-                    onMoveEnd={handleMoveEnd}
-                    disableDoubleClickZooming={true}
-                  >
-                    <Geographies geography={GEO_URL}>
-                      {({ geographies }: { geographies: any[] }) =>
-                        geographies.map((geo) => {
-                          const fips = geo.id?.toString().padStart(2, "0") ?? "";
-                          const abbrev = FIPS_TO_ABBREV[fips] ?? "";
-                          
-                          return (
-                            <Geography
-                              key={geo.rsmKey}
-                              geography={geo}
-                              onMouseEnter={() => setHoveredStateAbbrev(abbrev)}
-                              onMouseLeave={() => setHoveredStateAbbrev(null)}
-                              onClick={() => {
-                                if (abbrev) {
-                                  setSelectedStateAbbrev(abbrev);
-                                }
-                              }}
-                              style={{
-                                default: getGeographyStyle(geo),
-                                hover: {
-                                  cursor: "pointer",
-                                  outline: "none",
-                                },
-                                pressed: {
-                                  outline: "none",
-                                },
-                              }}
-                            />
-                          );
-                        })
-                      }
-                    </Geographies>
-                  </ZoomableGroup>
+                  <Geographies geography={GEO_URL}>
+                    {({ geographies }: { geographies: any[] }) =>
+                      geographies.map((geo) => {
+                        const fips = geo.id?.toString().padStart(2, "0") ?? "";
+                        const abbrev = FIPS_TO_ABBREV[fips] ?? "";
+                        
+                        return (
+                          <Geography
+                            key={geo.rsmKey}
+                            geography={geo}
+                            onMouseEnter={() => setHoveredStateAbbrev(abbrev)}
+                            onMouseLeave={() => setHoveredStateAbbrev(null)}
+                            onClick={() => {
+                              if (abbrev) {
+                                setSelectedStateAbbrev(abbrev);
+                              }
+                            }}
+                            style={{
+                              default: getGeographyStyle(geo),
+                              hover: {
+                                cursor: "pointer",
+                                outline: "none",
+                              },
+                              pressed: {
+                                outline: "none",
+                              },
+                            }}
+                          />
+                        );
+                      })
+                    }
+                  </Geographies>
                 </ComposableMap>
               </div>
             </div>
@@ -452,12 +382,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       }`}
                     >
                       <div className="flex items-center justify-between">
-                        <span className="font-sans text-xs text-white/40 font-semibold">{state.abbrev}</span>
+                        <span className="font-body text-xs text-white/40 font-bold">{state.abbrev}</span>
                       </div>
                       <h4 className="mt-1 font-display text-sm font-bold text-white truncate">
                         {state.name[locale]}
                       </h4>
-                      <p className="text-[10px] text-white/50 font-medium truncate">
+                      <p className="text-[10px] text-white/50 font-semibold truncate font-body">
                         {state.capital[locale]}
                       </p>
                     </div>
@@ -465,7 +395,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 })}
 
                 {filteredStates.length === 0 && (
-                  <div className="col-span-full py-8 text-center text-sm text-white/30 font-sans">
+                  <div className="col-span-full py-8 text-center text-sm text-white/30 font-body">
                     {translations.noResults}
                   </div>
                 )}
@@ -490,12 +420,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 <div className="relative overflow-hidden rounded-xl border border-white/5 bg-gradient-to-br from-slate-900 to-slate-950 p-4">
                   <div className="absolute top-0 right-0 h-16 w-16 bg-gradient-to-bl from-white/5 to-transparent opacity-50" />
                   
-                  {/* Category / Region Pill */}
+                  {/* Region Pill */}
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-display text-[9px] font-bold tracking-wider text-[#d4af37] border border-[#d4af37]/30 rounded px-1.5 py-0.5 bg-[#d4af37]/5 uppercase">
                       Region: {selectedState.region}
                     </span>
-                    <span className="font-sans text-[9px] font-bold text-white/40 uppercase">
+                    <span className="font-display text-[9px] font-bold text-white/40 uppercase">
                       FIPS CODE: {selectedState.fips}
                     </span>
                   </div>
@@ -504,7 +434,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <div>
                     <h2 className="font-display text-3xl font-extrabold text-white tracking-tight flex items-baseline gap-2">
                       {selectedState.name[locale]}
-                      <span className="font-sans text-sm font-semibold text-[#d4af37]/80">({selectedState.abbrev})</span>
+                      <span className="font-display text-sm font-bold text-[#d4af37]/80">({selectedState.abbrev})</span>
                     </h2>
                     <p className="mt-1 font-body text-xs italic text-[#d4af37]/85">
                       “{selectedState.nickname[locale]}”
@@ -518,12 +448,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <div className="rounded-xl border border-white/5 bg-white/5 p-3.5 space-y-1">
                     <div className="flex items-center gap-1.5 text-white/40">
                       <TrendingUp className="h-3.5 w-3.5 text-[#d4af37]" />
-                      <span className="font-display text-[10px] uppercase tracking-wider font-semibold">{translations.gdp}</span>
+                      <span className="font-display text-[10px] uppercase tracking-wider font-bold">{translations.gdp}</span>
                     </div>
                     <div className="font-display text-2xl font-extrabold text-white">
                       ${selectedState.gdp}B
                     </div>
-                    <div className="text-[9px] text-white/40 font-sans font-medium">
+                    <div className="text-[9px] text-white/40 font-body font-semibold">
                       Rank #{selectedState.gdp > 1000 ? "Top 5" : selectedState.gdp > 500 ? "Top 15" : "Mid Tier"}
                     </div>
                   </div>
@@ -532,12 +462,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <div className="rounded-xl border border-white/5 bg-white/5 p-3.5 space-y-1">
                     <div className="flex items-center gap-1.5 text-white/40">
                       <Users className="h-3.5 w-3.5 text-blue-400" />
-                      <span className="font-display text-[10px] uppercase tracking-wider font-semibold">{translations.population}</span>
+                      <span className="font-display text-[10px] uppercase tracking-wider font-bold">{translations.population}</span>
                     </div>
                     <div className="font-display text-2xl font-extrabold text-white">
                       {selectedState.population}M
                     </div>
-                    <div className="text-[9px] text-white/40 font-sans font-medium">
+                    <div className="text-[9px] text-white/40 font-body font-semibold">
                       US Share: {Math.round((selectedState.population / 342) * 1000) / 10}%
                     </div>
                   </div>
@@ -546,12 +476,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <div className="rounded-xl border border-white/5 bg-white/5 p-3.5 space-y-1">
                     <div className="flex items-center gap-1.5 text-white/40">
                       <Compass className="h-3.5 w-3.5 text-yellow-400" />
-                      <span className="font-display text-[10px] uppercase tracking-wider font-semibold">{translations.statehood}</span>
+                      <span className="font-display text-[10px] uppercase tracking-wider font-bold">{translations.statehood}</span>
                     </div>
                     <div className="font-display text-2xl font-extrabold text-white">
                       {selectedState.statehoodYear}
                     </div>
-                    <div className="text-[9px] text-white/40 font-sans font-medium">
+                    <div className="text-[9px] text-white/40 font-body font-semibold">
                       Order: #{selectedState.statehoodOrder}
                     </div>
                   </div>
@@ -560,12 +490,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <div className="rounded-xl border border-white/5 bg-white/5 p-3.5 space-y-1">
                     <div className="flex items-center gap-1.5 text-white/40">
                       <Maximize2 className="h-3.5 w-3.5 text-emerald-400" />
-                      <span className="font-display text-[10px] uppercase tracking-wider font-semibold">{translations.area}</span>
+                      <span className="font-display text-[10px] uppercase tracking-wider font-bold">{translations.area}</span>
                     </div>
                     <div className="font-display text-lg font-extrabold text-white truncate">
                       {selectedState.area.toLocaleString()} sq mi
                     </div>
-                    <div className="text-[9px] text-white/40 font-sans font-medium">
+                    <div className="text-[9px] text-white/40 font-body font-semibold">
                       {selectedState.area > 100000 ? "Giant" : selectedState.area > 40000 ? "Medium" : "Compact"}
                     </div>
                   </div>
@@ -575,26 +505,26 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 <div className="rounded-xl border border-white/5 bg-slate-900/30 p-4 space-y-3.5">
                   {/* Capital */}
                   <div className="flex justify-between items-start border-b border-white/5 pb-2">
-                    <span className="text-xs text-white/40 font-sans uppercase font-semibold">{translations.capital}:</span>
-                    <span className="text-sm font-semibold text-white text-right">{selectedState.capital[locale]}</span>
+                    <span className="text-xs text-white/40 font-body uppercase font-bold">{translations.capital}:</span>
+                    <span className="text-sm font-semibold text-white text-right font-display">{selectedState.capital[locale]}</span>
                   </div>
 
                   {/* Main Sector */}
                   <div className="flex justify-between items-start border-b border-white/5 pb-2">
-                    <span className="text-xs text-white/40 font-sans uppercase font-semibold">{translations.industry}:</span>
-                    <span className="text-sm font-semibold text-[#d4af37] text-right max-w-[200px] truncate-2-lines">{selectedState.industry[locale]}</span>
+                    <span className="text-xs text-white/40 font-body uppercase font-bold">{translations.industry}:</span>
+                    <span className="text-sm font-semibold text-[#d4af37] text-right max-w-[200px] truncate-2-lines font-display">{selectedState.industry[locale]}</span>
                   </div>
 
                   {/* FIPS */}
                   <div className="flex justify-between items-center">
-                    <span className="text-xs text-white/40 font-sans uppercase font-semibold">{translations.statehoodOrderLabel}:</span>
-                    <span className="font-sans text-xs text-white font-semibold">#{selectedState.statehoodOrder} / 50</span>
+                    <span className="text-xs text-white/40 font-body uppercase font-bold">{translations.statehoodOrderLabel}:</span>
+                    <span className="font-display text-xs text-white font-bold">#{selectedState.statehoodOrder} / 50</span>
                   </div>
                 </div>
 
                 {/* Narrative story */}
                 <div className="border-t border-white/5 pt-4 space-y-2">
-                  <span className="font-display text-[10px] uppercase tracking-wider text-[#d4af37] font-semibold flex items-center gap-1.5">
+                  <span className="font-display text-[10px] uppercase tracking-wider text-[#d4af37] font-bold flex items-center gap-1.5">
                     <MapPin className="h-3.5 w-3.5 text-[#d4af37]" />
                     REGIONAL CHRONICLE
                   </span>
