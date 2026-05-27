@@ -249,10 +249,10 @@ export function IntelligenceMetricStrip({ metrics }: { metrics: IntelligenceMetr
   return (
     <section className="relative bg-black border-t border-b border-white/5 overflow-hidden">
       <div className="mx-auto max-w-[1440px]">
-        {/* 6-Column High Contrast Grid matching main page MinimalistStat wall */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+        {/* 2-row High Contrast Grid (3 columns on desktop, 2 on tablet, 1 on mobile) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {metrics.map((m, i) => (
-            <div key={m.label} className="border-r border-b border-white/5">
+            <div key={m.label} className="border-r border-b border-white/5 last:border-r-0 lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(n+4)]:border-b-0 sm:[&:nth-child(2n)]:border-r-0">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
