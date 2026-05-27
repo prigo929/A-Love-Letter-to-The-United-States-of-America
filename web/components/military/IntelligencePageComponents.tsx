@@ -62,7 +62,7 @@ export function IntelligenceStyles() {
 
       .intel-panel {
         background: var(--intel-surface);
-        border: 1px solid rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.05);
       }
     `}</style>
   );
@@ -156,20 +156,20 @@ function IntelSectionTitle({
     >
       <motion.div
         variants={fadeUp}
-        className="intel-font-mono mb-4 tracking-[0.3em] text-[9px] text-[#d4a44a]"
+        className="mil-text-label mb-6 text-[#d4a44a] tracking-[0.35em]"
       >
         {label}
       </motion.div>
       <motion.h2
         variants={fadeUp}
-        className="intel-font-display text-[clamp(28px,5vw,72px)] font-bold tracking-tight leading-[0.95] text-white"
+        className="mil-text-hero font-extrabold tracking-tight text-white mb-2 leading-none"
       >
         {title}
       </motion.h2>
       {subtitle && (
         <motion.div
           variants={fadeUp}
-          className="intel-font-display text-[clamp(28px,5vw,72px)] font-bold tracking-tight leading-[0.95] text-white/10 mt-1"
+          className="mil-text-hero font-extrabold tracking-tight text-white/20 mt-1 leading-none"
         >
           {subtitle}
         </motion.div>
@@ -177,7 +177,7 @@ function IntelSectionTitle({
       <motion.p
         variants={fadeUp}
         className={cn(
-          "mt-6 text-sm leading-[1.8] text-white/40 tracking-wide font-normal",
+          "mil-text-body mt-6",
           isCenter ? "max-w-2xl mx-auto" : "max-w-xl"
         )}
       >
@@ -247,12 +247,12 @@ export function IntelligenceFullBleed({
 
 export function IntelligenceMetricStrip({ metrics }: { metrics: IntelligenceMetric[] }) {
   return (
-    <section className="relative bg-black border-t border-b border-white/[0.04] overflow-hidden">
+    <section className="relative bg-black border-t border-b border-white/5 overflow-hidden">
       <div className="mx-auto max-w-[1440px]">
-        {/* 2x3 or 3x2 High Contrast Grid representing Tesla-spec page */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {/* 6-Column High Contrast Grid matching main page MinimalistStat wall */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {metrics.map((m, i) => (
-            <div key={m.label} className="border-r border-b border-white/[0.04] last:border-r-0 lg:[&:nth-child(3n)]:border-r-0">
+            <div key={m.label} className="border-r border-b border-white/5">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -261,7 +261,7 @@ export function IntelligenceMetricStrip({ metrics }: { metrics: IntelligenceMetr
                 className="flex flex-col px-8 py-12"
               >
                 {/* Uppercase White wide-tracking label matching main page MinimalistStat */}
-                <div className="intel-font-mono text-[10px] tracking-[0.3em] font-black text-white mb-6">
+                <div className="mil-text-metadata mb-6 tracking-[0.3em] font-black text-white">
                   {m.label}
                 </div>
 
@@ -278,7 +278,7 @@ export function IntelligenceMetricStrip({ metrics }: { metrics: IntelligenceMetr
                 }} />
 
                 {/* Muted sublabel detailing stat context */}
-                <div className="intel-font-display max-w-[260px] leading-relaxed opacity-60 text-[11px] font-medium tracking-wide text-white/60">
+                <div className="mil-text-metadata max-w-[240px] leading-relaxed opacity-60 text-[11px] font-medium tracking-wide">
                   {m.detail}
                 </div>
               </motion.div>
@@ -300,8 +300,8 @@ export function IntelligenceAgencyShowcase({ agencies, locale = "en" }: { agenci
   const isRo = locale === "ro";
 
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-24 sm:px-10 md:py-32 lg:px-16">
-      <div className="relative mx-auto max-w-[1400px]">
+    <section className="relative overflow-hidden bg-black px-6 py-32 md:py-48">
+      <div className="relative mx-auto max-w-[1440px]">
         <IntelSectionTitle
           label={isRo ? "Comunitatea de informații" : "Intelligence Community"}
           title={isRo ? "Cele Cinci Mari" : "The Big Five"}
@@ -311,9 +311,9 @@ export function IntelligenceAgencyShowcase({ agencies, locale = "en" }: { agenci
             : "An in-depth look at the pillar agencies that anchor the gathering, analysis, and execution of American national intelligence."}
         />
 
-        <div className="grid overflow-hidden border border-white/[0.04] bg-[#030406] lg:grid-cols-[320px_1fr] min-h-[580px] rounded-sm shadow-2xl">
+        <div className="grid overflow-hidden border border-white/5 bg-[#050505] lg:grid-cols-[320px_1fr] min-h-[580px] rounded-sm shadow-2xl">
           {/* Left: Interactive list representing a dossier directory */}
-          <div className="flex flex-col border-b lg:border-b-0 lg:border-r border-white/[0.04] bg-white/[0.01]">
+          <div className="flex flex-col border-b lg:border-b-0 lg:border-r border-white/5 bg-white/[0.01]">
             {agencies.map((agency, index) => {
               const selected = activeIndex === index;
               return (
@@ -322,7 +322,7 @@ export function IntelligenceAgencyShowcase({ agencies, locale = "en" }: { agenci
                   type="button"
                   onClick={() => setActiveIndex(index)}
                   className={cn(
-                    "relative flex flex-col justify-center text-left px-8 py-8 transition-colors duration-400 border-b border-white/[0.03] last:border-b-0",
+                    "relative flex flex-col justify-center text-left px-8 py-8 transition-colors duration-400 border-b border-white/5 last:border-b-0",
                     selected ? "bg-white/[0.03]" : "hover:bg-white/[0.01]"
                   )}
                 >
@@ -423,8 +423,8 @@ export function IntelligenceCapabilityGrid({ capabilities, locale = "en" }: { ca
   const isRo = locale === "ro";
 
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-24 sm:px-10 md:py-32 lg:px-16">
-      <div className="relative mx-auto max-w-[1200px]">
+    <section className="relative overflow-hidden bg-black px-6 py-32 md:py-48">
+      <div className="relative mx-auto max-w-[1440px]">
         <IntelSectionTitle
           label={isRo ? "Capabilități tactice" : "Tactical Disciplines"}
           title={isRo ? "Domenii de" : "Intelligence"}
@@ -487,8 +487,8 @@ export function IntelligenceOperationsConsole({ nodes, locale = "en" }: { nodes:
   const isRo = locale === "ro";
 
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-24 sm:px-10 md:py-32 lg:px-16">
-      <div className="relative mx-auto max-w-[1400px]">
+    <section className="relative overflow-hidden bg-black px-6 py-32 md:py-48">
+      <div className="relative mx-auto max-w-[1440px]">
         <IntelSectionTitle
           label={isRo ? "Infrastructură globală" : "Global Installations"}
           title={isRo ? "Noduri de" : "Interception"}
@@ -545,8 +545,8 @@ export function IntelligenceHeritageTimeline({ events, locale = "en" }: { events
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="relative overflow-hidden bg-black py-24 md:py-32">
-      <div className="relative mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-16">
+    <section className="relative overflow-hidden bg-black px-6 py-32 md:py-48">
+      <div className="relative mx-auto max-w-[1440px] px-6 lg:px-16">
         <IntelSectionTitle
           label={isRo ? "Puncte de cotitură" : "Heritage"}
           title={isRo ? "Istoric & Moștenire" : "Intelligence"}
@@ -625,8 +625,8 @@ export function IntelligenceFutureStack({ programs, locale = "en" }: { programs:
   const isRo = locale === "ro";
 
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-24 sm:px-10 md:py-32 lg:px-16">
-      <div className="relative mx-auto max-w-[1400px]">
+    <section className="relative overflow-hidden bg-black px-6 py-32 md:py-48">
+      <div className="relative mx-auto max-w-[1440px]">
         <IntelSectionTitle
           label={isRo ? "Capabilități de viitor" : "Next Gen Projects"}
           title={isRo ? "Programe" : "The Future"}
@@ -637,9 +637,9 @@ export function IntelligenceFutureStack({ programs, locale = "en" }: { programs:
         />
 
         {/* 2-Column Split Briefing slide deck */}
-        <div className="grid overflow-hidden border border-white/[0.04] bg-[#030406] lg:grid-cols-[300px_1fr] min-h-[500px] mt-16 rounded-sm shadow-2xl">
+        <div className="grid overflow-hidden border border-white/5 bg-[#050505] lg:grid-cols-[300px_1fr] min-h-[500px] mt-16 rounded-sm shadow-2xl">
           {/* Left panel selectors */}
-          <div className="flex flex-col border-b lg:border-b-0 lg:border-r border-white/[0.04] bg-white/[0.01]">
+          <div className="flex flex-col border-b lg:border-b-0 lg:border-r border-white/5 bg-white/[0.01]">
             {programs.map((p, i) => {
               const selected = activeIndex === i;
               return (
@@ -764,8 +764,8 @@ export function IntelligenceClosing({ locale = "en" }: { locale?: Locale }) {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16 border-t border-white/[0.04]">
-      <div className="relative mx-auto max-w-[1000px] text-center">
+    <section className="relative overflow-hidden bg-black px-6 py-32 md:py-48 border-t border-white/5">
+      <div className="relative mx-auto max-w-[1440px] text-center">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -774,19 +774,19 @@ export function IntelligenceClosing({ locale = "en" }: { locale?: Locale }) {
         >
           <motion.h2
             variants={fadeUp}
-            className="intel-font-display text-[clamp(28px,6vw,72px)] font-bold tracking-tight leading-[0.95] text-white"
+            className="mil-text-hero font-extrabold tracking-tight text-white mb-2 leading-none"
           >
             {isRo ? "Informația este" : "Information is"}
           </motion.h2>
           <motion.div
             variants={fadeUp}
-            className="intel-font-display text-[clamp(28px,6vw,72px)] font-bold tracking-tight leading-[0.95] text-white/10 mt-1"
+            className="mil-text-hero font-extrabold tracking-tight text-white/20 mt-1 leading-none"
           >
             {isRo ? "descurajarea supremă." : "the ultimate deterrent."}
           </motion.div>
           <motion.p
             variants={fadeUp}
-            className="mx-auto mt-8 max-w-2xl text-xs leading-[1.8] text-white/40 tracking-wide font-normal"
+            className="mil-text-body mx-auto mt-8 max-w-2xl text-white/40"
           >
             {isRo
               ? "Succesul oricărei operațiuni militare începe cu un semnal interceptat, o sursă verificată sau o coordonată de satelit. Rețeaua de informații a SUA este scutul nevăzut sub care se desfășoară apărarea globală."
@@ -806,8 +806,8 @@ export function IntelligenceClosing({ locale = "en" }: { locale?: Locale }) {
         </div>
 
         {/* Dynamic Nav Cross-links */}
-        <div className="mt-20 pt-16 border-t border-white/[0.04]">
-          <div className="intel-font-mono text-[9px] tracking-[0.25em] text-white/20 mb-8">
+        <div className="mt-20 pt-16 border-t border-white/5">
+          <div className="mil-text-metadata text-[11px] tracking-[0.25em] text-white/20 mb-8">
             {isRo ? "Explorați alte dimensiuni militare" : "Explore other military dimensions"}
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-left">
