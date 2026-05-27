@@ -79,34 +79,34 @@ export interface SpaceForceBase {
 
 export const SF_METRICS: SpaceForceMetric[] = [
   {
-    value: "2019",
-    label: "Service Founding",
-    detail: "Established on December 20, 2019, representing the first new military service created since 1947.",
+    value: "908",
+    label: "X-37B Spaceplane Record",
+    detail: "The autonomous orbital test vehicle conducts classified research, recently spending 908 consecutive days in space.",
   },
   {
-    value: "14K+",
-    label: "Guardian Strength",
-    detail: "An elite, highly specialized force of space operators, intelligence officers, engineers, and cyber defenders.",
+    value: "26K+",
+    label: "Orbital Space Watch",
+    detail: "Using systems like the 'Space Fence' radar in the Marshall Islands to track debris as small as a marble.",
   },
   {
-    value: "31+",
-    label: "GPS Satellites",
-    detail: "Operating the global positioning, navigation, and timing constellation that synchronizes modern civilization.",
+    value: "27",
+    label: "Tactical Launch (Hours)",
+    detail: "The Victus Nox mission prepared, encapsulated, and launched a satellite in just 27 hours from receiving the order.",
   },
   {
-    value: "24/7",
-    label: "Missile Warning",
-    detail: "Constant strategic watch tracking ballistic and hypersonic launches to safeguard the homeland and allies.",
+    value: "<1ns",
+    label: "GPS III Timing Accuracy",
+    detail: "Timing signals accurate to within under one nanosecond, synchronizing global stock markets and energy grids.",
   },
   {
-    value: "6",
-    label: "Mission Deltas",
-    detail: "Operational combat commands managing orbital warfare, space domain awareness, communications, and electronic defense.",
+    value: "22,300",
+    label: "Deep Space Patrol (Miles)",
+    detail: "GSSAP satellites operate 22,300 miles above Earth, providing close-up inspections of strategic geosynchronous assets.",
   },
   {
-    value: "Global",
-    label: "Joint Reach",
-    detail: "Integrating space effects directly into every combatant theater, ship, aircraft, and joint force globally.",
+    value: "14K",
+    label: "Agile Service Force",
+    detail: "America's smallest military branch, engineered as a lean, software-driven force where every operator has high leverage.",
   },
 ];
 
@@ -525,12 +525,12 @@ export const SF_BASES: SpaceForceBase[] = [
 export function getSpaceForceMetrics(locale: Locale): SpaceForceMetric[] {
   if (locale !== "ro") return SF_METRICS;
   return [
-    { value: "2019", label: "Înființare Serviciu", detail: "Creat pe 20 decembrie 2019, reprezentând primul nou serviciu militar înființat din 1947." },
-    { value: "14K+", label: "Forță Guardieni", detail: "O forță de elită înalt specializată în operațiuni spațiale, inteligență militară, inginerie și apărare cibernetică." },
-    { value: "31+", label: "Sateliți GPS", detail: "Operarea constelației globale de navigație și sincronizare temporală care susține civilizația modernă." },
-    { value: "24/7", label: "Avertizare Rachete", detail: "Supraveghere strategică continuă pentru urmărirea lansărilor balistice și hipersonice pentru apărarea aliaților." },
-    { value: "6", label: "Deltas Misiune", detail: "Comandamente de luptă operaționale care gestionează războiul orbital, comunicațiile și apărarea electronică." },
-    { value: "Global", label: "Rază Întrunită", detail: "Integrarea efectelor spațiale direct în fiecare teatru combatant, navă, aeronavă și forță comună la nivel mondial." },
+    { value: "908", label: "Record Navetă X-37B", detail: "Vehiculul autonom de testare orbitală efectuează cercetări clasificate, petrecând recent 908 zile consecutive în spațiu." },
+    { value: "26K+", label: "Supraveghere Spațială", detail: "Utilizarea radarului 'Space Fence' din Insulele Marshall pentru a urmări resturi spațiale de dimensiunea unei bile." },
+    { value: "27", label: "Lansare Tactică (Ore)", detail: "Misiunea Victus Nox a pregătit, încapsulat și lansat un satelit în doar 27 de ore de la primirea ordinului." },
+    { value: "<1ns", label: "Precizie Timp GPS III", detail: "Semnale de timp precise la nivel de sub o nanosecundă, sincronizând bursele globale și rețelele energetice." },
+    { value: "22.300", label: "Patrulă Spațială (Mile)", detail: "Sateliții GSSAP operează la 22.300 de mile deasupra Pământului, inspectând activele geostaționare strategice." },
+    { value: "14K", label: "Forță de Serviciu Agilă", detail: "Cea mai mică ramură militară a Americii, concepută ca o forță agilă, unde fiecare operator are un impact uriaș." },
   ];
 }
 
