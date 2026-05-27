@@ -80,33 +80,33 @@ export interface SpaceForceBase {
 export const SF_METRICS: SpaceForceMetric[] = [
   {
     value: "2019",
-    label: "Independent Service",
-    detail: "Established on December 20, 2019 as the newest branch of the U.S. Armed Forces.",
+    label: "Service Founding",
+    detail: "Established on December 20, 2019, representing the first new military service created since 1947.",
   },
   {
     value: "14K+",
-    label: "Guardians & Civilians",
-    detail: "A compact force built around orbital operations, acquisition, intelligence, and cyber expertise.",
+    label: "Guardian Strength",
+    detail: "An elite, highly specialized force of space operators, intelligence officers, engineers, and cyber defenders.",
   },
   {
     value: "31+",
     label: "GPS Satellites",
-    detail: "The operational constellation that underwrites positioning, navigation, and timing worldwide.",
+    detail: "Operating the global positioning, navigation, and timing constellation that synchronizes modern civilization.",
   },
   {
     value: "24/7",
     label: "Missile Warning",
-    detail: "Persistent launch detection and warning support for homeland defense and joint forces.",
+    detail: "Constant strategic watch tracking ballistic and hypersonic launches to safeguard the homeland and allies.",
   },
   {
     value: "6",
     label: "Mission Deltas",
-    detail: "Operational formations focused on warning, PNT, communications, cyber, ISR, and orbital warfare.",
+    detail: "Operational combat commands managing orbital warfare, space domain awareness, communications, and electronic defense.",
   },
   {
     value: "Global",
     label: "Joint Reach",
-    detail: "Space effects delivered to combatant commands, ships, aircraft, ground units, and allies.",
+    detail: "Integrating space effects directly into every combatant theater, ship, aircraft, and joint force globally.",
   },
 ];
 
@@ -525,12 +525,12 @@ export const SF_BASES: SpaceForceBase[] = [
 export function getSpaceForceMetrics(locale: Locale): SpaceForceMetric[] {
   if (locale !== "ro") return SF_METRICS;
   return [
-    { value: "2019", label: "Serviciu Independent", detail: "Înființat pe 20 decembrie 2019 ca cea mai nouă ramură a Forțelor Armate ale SUA." },
-    { value: "14K+", label: "Guardieni & Civili", detail: "O forță compactă construită în jurul operațiunilor orbitale, achiziției, informațiilor și cyber." },
-    { value: "31+", label: "Sateliți GPS", detail: "Constelația operațională care susține poziționarea, navigația și sincronizarea la nivel global." },
-    { value: "24/7", label: "Avertizare Rachete", detail: "Detectare și avertizare persistentă pentru apărarea patriei și forțele întrunite." },
-    { value: "6", label: "Mission Deltas", detail: "Formațiuni axate pe avertizare, PNT, comunicații, cyber, ISR și război orbital." },
-    { value: "Global", label: "Rază Întrunită", detail: "Efecte spațiale livrate comandamentelor combatante, navelor, aeronavelor, trupelor și aliaților." },
+    { value: "2019", label: "Înființare Serviciu", detail: "Creat pe 20 decembrie 2019, reprezentând primul nou serviciu militar înființat din 1947." },
+    { value: "14K+", label: "Forță Guardieni", detail: "O forță de elită înalt specializată în operațiuni spațiale, inteligență militară, inginerie și apărare cibernetică." },
+    { value: "31+", label: "Sateliți GPS", detail: "Operarea constelației globale de navigație și sincronizare temporală care susține civilizația modernă." },
+    { value: "24/7", label: "Avertizare Rachete", detail: "Supraveghere strategică continuă pentru urmărirea lansărilor balistice și hipersonice pentru apărarea aliaților." },
+    { value: "6", label: "Deltas Misiune", detail: "Comandamente de luptă operaționale care gestionează războiul orbital, comunicațiile și apărarea electronică." },
+    { value: "Global", label: "Rază Întrunită", detail: "Integrarea efectelor spațiale direct în fiecare teatru combatant, navă, aeronavă și forță comună la nivel mondial." },
   ];
 }
 

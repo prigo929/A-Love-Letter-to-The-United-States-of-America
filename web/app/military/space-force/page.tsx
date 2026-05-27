@@ -57,16 +57,16 @@ export default async function SpaceForcePage() {
 
   const heroStats = isRo
     ? [
-        { value: "2019", label: "ÎNFIINȚATĂ" },
+        { value: "2019", label: "SERVICIU FONDAT" },
         { value: "31+", label: "SATELIȚI GPS" },
-        { value: "24/7", label: "AVERTIZARE RACHETE" },
-        { value: "14K+", label: "GUARDIENI & CIVILI" },
+        { value: "24/7", label: "AVERTIZARE LANSARE" },
+        { value: "14K+", label: "GUARDIANI ACTIVI" },
       ]
     : [
-        { value: "2019", label: "ESTABLISHED" },
-        { value: "31+", label: "GPS SATELLITES" },
-        { value: "24/7", label: "MISSILE WARNING" },
-        { value: "14K+", label: "GUARDIANS & CIVILIANS" },
+        { value: "2019", label: "SERVICE FOUNDED" },
+        { value: "31+", label: "GPS ORBITERS" },
+        { value: "24/7", label: "LAUNCH WARNING" },
+        { value: "14K+", label: "ACTIVE GUARDIANS" },
       ];
 
   return (

@@ -177,7 +177,8 @@ function SFCountUp({ value }: { value: string }) {
         duration: 2,
         ease: [0.16, 1, 0.3, 1],
         onUpdate: (latest) => {
-          const formatted = num >= 1000
+          const isYear = num >= 1000 && num < 2100 && suffix === "";
+          const formatted = (num >= 1000 && !isYear)
             ? Math.round(latest).toLocaleString("en-US")
             : latest.toFixed(0);
           setDisplayVal(formatted + suffix);
