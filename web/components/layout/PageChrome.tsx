@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronUp } from "lucide-react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
@@ -9,6 +10,7 @@ import { cn } from "@/lib/utils";
 export function ReadingProgressBar() {
   const [progress, setProgress] = useState(0);
   const { locale } = useLanguage();
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => {
@@ -22,6 +24,13 @@ export function ReadingProgressBar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const shouldHide =
+    pathname === "/explorer" ||
+    pathname === "/gallery" ||
+    pathname.startsWith("/military");
+
+  if (shouldHide) return null;
 
   return (
     <div

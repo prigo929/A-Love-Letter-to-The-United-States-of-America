@@ -46,9 +46,5 @@ export default async function ExplorerPage() {
     detailsTitle: locale === "ro" ? "State Găsite" : "States Directory",
   };
 
-  return (
-    <div className="pt-2">
-      <MapExplorerClient locale={locale} translations={translations} />
-    </div>
-  );
+  return <MapExplorerClient locale={locale} translations={translations} />;
 }

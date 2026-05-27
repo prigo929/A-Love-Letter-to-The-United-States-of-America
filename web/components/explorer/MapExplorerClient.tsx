@@ -18,6 +18,7 @@ import {
   Maximize2,
 } from "lucide-react";
 import { EXPLORER_STATES, StateData } from "@/lib/data/explorer-data";
+import { COLORS } from "@/lib/constants";
 
 const GEO_URL = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
@@ -127,8 +128,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
     if (!state) {
       return {
-        fill: "#0b1329",
-        stroke: "#1e293b",
+        fill: COLORS.navyDark,
+        stroke: COLORS.navyLight,
         strokeWidth: 0.5,
         outline: "none",
       };
@@ -138,14 +139,11 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
     const isHovered = hoveredStateAbbrev === abbrev;
 
     // Define colors depending on mode
-    let defaultFill = "#1e293b";
+    let defaultFill: string = COLORS.navyLight;
     
     if (heatmapMode === "none") {
-      // Color code by region
-      if (state.region === "Northeast") defaultFill = "rgba(59, 130, 246, 0.25)";
-      else if (state.region === "South") defaultFill = "rgba(239, 68, 68, 0.25)";
-      else if (state.region === "Midwest") defaultFill = "rgba(16, 185, 129, 0.25)";
-      else if (state.region === "West") defaultFill = "rgba(245, 158, 11, 0.25)";
+      // Color code by standard Glory Blue (homepage default)
+      defaultFill = COLORS.gloryBlue;
     } else if (heatmapMode === "gdp") {
       const ratio = state.gdp / maxValues.maxGdp;
       defaultFill = `rgba(212, 175, 55, ${Math.max(0.12, ratio)})`;
@@ -158,40 +156,47 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
     }
 
     // Border stroke styling
-    let strokeColor = "#0f172a";
+    let strokeColor: string = COLORS.navyMid;
     let strokeWidth = 0.5;
 
     if (isSelected) {
-      strokeColor = "#d4af37";
-      strokeWidth = 1.8;
-    } else if (isHovered) {
-      strokeColor = "#ffffff";
+      strokeColor = COLORS.navyDark;
       strokeWidth = 1.2;
+    } else if (isHovered) {
+      strokeColor = COLORS.navyDark;
+      strokeWidth = 1.0;
     }
 
     return {
       fill: isSelected
-        ? "#d4af37"
+        ? COLORS.gloryGold
         : isHovered
-        ? "rgba(255, 255, 255, 0.45)"
+        ? COLORS.gloryBlueLight
         : defaultFill,
       stroke: strokeColor,
       strokeWidth: strokeWidth,
       outline: "none",
-      transition: "fill 0.2s ease, stroke 0.2s ease",
+      transition: "fill 0.15s ease, stroke 0.15s ease",
     };
   }, [selectedStateAbbrev, hoveredStateAbbrev, heatmapMode, maxValues]);
 
   return (
-    <div className="relative min-h-screen bg-[#030712] text-white">
+    <div className="relative min-h-screen bg-navy-mid text-white">
       {/* Background Grid and Glows */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-950/15 via-[#030712]/50 to-[#030712] z-0" />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,_transparent_1px),_linear-gradient(90deg,_rgba(255,255,255,0.01)_1px,_transparent_1px)] bg-[size:48px_48px] opacity-15 z-0" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-950/15 via-navy-mid/50 to-navy-mid z-0" />
+      <div 
+        className="bg-map-preview-grid absolute inset-0 pointer-events-none opacity-10 z-0" 
+        aria-hidden="true" 
+      />
+      <div 
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-glory-gold/[0.03] to-transparent z-0" 
+        aria-hidden="true" 
+      />
 
-      <div className="relative z-10 mx-auto max-w-screen-xl px-4 py-20 sm:px-6 lg:px-8 font-body">
+      <div className="relative z-10 mx-auto max-w-screen-xl px-4 pt-12 pb-20 sm:px-6 lg:px-8 font-body">
         
         {/* ── CENTERED HEADER (HOMEPAGE DESIGN) ── */}
-        <header className="mb-14 text-center">
+        <header className="mb-14 text-center animate-fade-in">
           <p className="section-eyebrow justify-center">
             {translations.eyebrow}
           </p>
@@ -207,7 +212,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         <div className="space-y-10">
           
           {/* Centered Controls Toolbar */}
-          <div className="grid grid-cols-1 gap-4 rounded-2xl border border-white/10 bg-slate-950/60 p-4 backdrop-blur-md md:grid-cols-12 max-w-screen-xl mx-auto">
+          <div className="grid grid-cols-1 gap-4 rounded-2xl border border-white/10 bg-navy-dark/60 p-4 backdrop-blur-md md:grid-cols-12 max-w-screen-xl mx-auto">
             {/* Search */}
             <div className="relative md:col-span-4">
               <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-white/40" />
@@ -216,7 +221,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 placeholder={translations.searchPlaceholder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-lg border border-white/10 bg-slate-900/50 py-2 pl-9 pr-4 text-sm text-white placeholder-white/30 focus:border-[#d4af37] focus:outline-none focus:ring-1 focus:ring-[#d4af37] font-body"
+                className="w-full rounded-lg border border-white/10 bg-navy-dark/40 py-2 pl-9 pr-4 text-sm text-white placeholder-white/30 focus:border-glory-gold focus:outline-none focus:ring-1 focus:ring-glory-gold font-body transition-colors"
               />
             </div>
 
@@ -235,7 +240,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   onClick={() => setSelectedRegion(reg.id)}
                   className={`rounded-md px-2.5 py-1 text-xs font-semibold tracking-wide transition-all font-body shrink-0 ${
                     selectedRegion === reg.id
-                      ? "bg-[#d4af37]/20 border border-[#d4af37]/50 text-[#d4af37]"
+                      ? "bg-glory-gold/20 border border-glory-gold/50 text-glory-gold"
                       : "border border-transparent text-white/60 hover:text-white hover:bg-white/5"
                   }`}
                 >
@@ -250,7 +255,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="w-full rounded-lg border border-white/10 bg-slate-900/50 py-1.5 px-3 text-xs text-white focus:border-[#d4af37] focus:outline-none font-body"
+                className="w-full rounded-lg border border-white/10 bg-navy-dark/40 py-1.5 px-3 text-xs text-white focus:border-glory-gold focus:outline-none font-body transition-colors"
               >
                 <option value="name">{locale === "ro" ? "Nume" : "Name"}</option>
                 <option value="gdp">{translations.gdp}</option>
@@ -259,6 +264,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               </select>
             </div>
           </div>
+
 
           {/* CENTERED MAP CONTAINER (HOMEPAGE DESIGN) */}
           <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-navy-dark/60 backdrop-blur-sm shadow-2xl max-w-screen-xl mx-auto">
@@ -269,9 +275,9 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
             />
             
             {/* Heatmap overlay controller */}
-            <div className="absolute top-4 left-4 z-20 flex flex-col gap-2 rounded-xl border border-white/5 bg-slate-950/80 p-3 backdrop-blur-md">
+            <div className="absolute top-4 left-4 z-20 flex flex-col gap-2 rounded-xl border border-white/10 bg-navy-dark/80 p-3 backdrop-blur-md">
               <span className="font-body text-[10px] tracking-wider text-white/50 uppercase flex items-center gap-1.5">
-                <Layers className="h-3 w-3 text-[#d4af37]" />
+                <Layers className="h-3 w-3 text-glory-gold" />
                 {translations.heatmapMode}
               </span>
               <div className="flex flex-wrap gap-1.5 mt-1 max-w-[200px] sm:max-w-none">
@@ -286,7 +292,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     onClick={() => setHeatmapMode(mode.id as any)}
                     className={`rounded px-2.5 py-0.5 text-[10px] font-body font-semibold tracking-wide transition-all ${
                       heatmapMode === mode.id
-                        ? "bg-[#d4af37] text-black font-bold"
+                        ? "bg-glory-gold text-navy-dark font-bold"
                         : "bg-white/5 text-white/60 hover:text-white hover:bg-white/10"
                     }`}
                   >
@@ -341,13 +347,13 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
             {/* Bottom Legend styling matching homepage */}
             <div className="flex items-center justify-center gap-6 border-t border-white/10 px-6 py-4 bg-black/10">
               <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-sm bg-glory-blue/60 border border-white/10" />
+                <div className="h-3 w-3 rounded-sm bg-glory-blue border border-white/10" />
                 <span className="font-body text-xs text-white/50">
-                  U.S. Regions
+                  U.S. States
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-sm bg-[#d4af37]" />
+                <div className="h-3 w-3 rounded-sm bg-glory-gold" />
                 <span className="font-body text-xs text-white/50">
                   Selected State
                 </span>
@@ -364,7 +370,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="rounded-3xl border border-white/10 bg-slate-950/70 p-6 md:p-8 backdrop-blur-md shadow-2xl"
+                className="rounded-3xl border border-white/10 bg-navy-dark/70 p-6 md:p-8 backdrop-blur-md shadow-2xl"
               >
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
                   
@@ -372,33 +378,33 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <div className="md:col-span-4 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/5 pb-6 md:pb-0 md:pr-8">
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
-                        <span className="font-body text-[10px] font-bold tracking-widest text-[#d4af37] border border-[#d4af37]/35 rounded px-2 py-0.5 bg-[#d4af37]/5 uppercase">
-                          Region: {selectedState.region}
+                        <span className="font-body text-[10px] font-bold tracking-widest text-glory-gold border border-glory-gold/30 rounded px-2 py-0.5 bg-glory-gold/5 uppercase">
+                          {locale === "ro" ? "REGIUNE" : "REGION"}: {selectedState.region}
                         </span>
-                        <span className="font-body text-[9px] font-bold text-white/40 uppercase">
-                          FIPS: {selectedState.fips}
+                        <span className="font-body text-[9px] font-bold text-white/40 uppercase tracking-wider">
+                          {locale === "ro" ? "COD FIPS" : "FIPS CODE"}: {selectedState.fips}
                         </span>
                       </div>
                       
                       <div>
                         <h2 className="font-display text-4xl font-extrabold text-white tracking-tight flex items-baseline gap-2.5">
                           {selectedState.name[locale]}
-                          <span className="font-body text-lg font-bold text-[#d4af37]/90">({selectedState.abbrev})</span>
+                          <span className="font-hero text-2xl text-glory-gold">({selectedState.abbrev})</span>
                         </h2>
-                        <p className="mt-1.5 font-body text-sm italic text-[#d4af37]/80">
+                        <p className="mt-1.5 font-display text-sm italic text-glory-gold/90">
                           “{selectedState.nickname[locale]}”
                         </p>
                       </div>
                     </div>
 
-                    <div className="mt-8 pt-4 border-t border-white/5 space-y-2">
+                    <div className="mt-8 pt-4 border-t border-white/5 space-y-2.5">
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-white/40 font-bold uppercase">{translations.capital}:</span>
-                        <span className="font-semibold text-white">{selectedState.capital[locale]}</span>
+                        <span className="font-body text-[10px] font-bold text-white/40 uppercase tracking-wider">{translations.capital}:</span>
+                        <span className="font-body font-semibold text-white">{selectedState.capital[locale]}</span>
                       </div>
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-white/40 font-bold uppercase">{translations.statehoodOrderLabel}:</span>
-                        <span className="font-semibold text-white">#{selectedState.statehoodOrder} / 50</span>
+                        <span className="font-body text-[10px] font-bold text-white/40 uppercase tracking-wider">{translations.statehoodOrderLabel}:</span>
+                        <span className="font-hero text-lg text-glory-gold">#{selectedState.statehoodOrder} <span className="font-body text-[10px] text-white/40">/ 50</span></span>
                       </div>
                     </div>
                   </div>
@@ -407,57 +413,57 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <div className="md:col-span-4 flex flex-col justify-center gap-4">
                     <div className="grid grid-cols-2 gap-4">
                       {/* GDP */}
-                      <div className="rounded-2xl border border-white/5 bg-white/5 p-4 space-y-1.5 hover:border-white/10 transition-colors">
+                      <div className="rounded-2xl border border-white/5 bg-white/5 p-4 space-y-1 hover:border-white/10 transition-colors">
                         <div className="flex items-center gap-1.5 text-white/40">
-                          <TrendingUp className="h-3.5 w-3.5 text-[#d4af37]" />
-                          <span className="font-body text-[9px] uppercase tracking-wider font-bold">{translations.gdp}</span>
+                          <TrendingUp className="h-3.5 w-3.5 text-glory-gold" />
+                          <span className="font-body text-[10px] uppercase tracking-wider font-bold">{translations.gdp}</span>
                         </div>
-                        <div className="font-body text-2xl font-extrabold text-white">
+                        <div className="font-hero text-3xl text-white mt-1">
                           ${selectedState.gdp}B
                         </div>
-                        <div className="text-[9px] text-white/40 font-semibold uppercase">
+                        <div className="text-[10px] text-white/40 font-semibold uppercase tracking-wider mt-1">
                           Rank #{selectedState.gdp > 1000 ? "Top 5" : selectedState.gdp > 500 ? "Top 15" : "Mid Tier"}
                         </div>
                       </div>
 
                       {/* Population */}
-                      <div className="rounded-2xl border border-white/5 bg-white/5 p-4 space-y-1.5 hover:border-white/10 transition-colors">
+                      <div className="rounded-2xl border border-white/5 bg-white/5 p-4 space-y-1 hover:border-white/10 transition-colors">
                         <div className="flex items-center gap-1.5 text-white/40">
                           <Users className="h-3.5 w-3.5 text-blue-400" />
-                          <span className="font-body text-[9px] uppercase tracking-wider font-bold">{translations.population}</span>
+                          <span className="font-body text-[10px] uppercase tracking-wider font-bold">{translations.population}</span>
                         </div>
-                        <div className="font-body text-2xl font-extrabold text-white">
+                        <div className="font-hero text-3xl text-white mt-1">
                           {selectedState.population}M
                         </div>
-                        <div className="text-[9px] text-white/40 font-semibold uppercase">
+                        <div className="text-[10px] text-white/40 font-semibold uppercase tracking-wider mt-1">
                           Share: {Math.round((selectedState.population / 342) * 1000) / 10}%
                         </div>
                       </div>
 
                       {/* Statehood */}
-                      <div className="rounded-2xl border border-white/5 bg-white/5 p-4 space-y-1.5 hover:border-white/10 transition-colors">
+                      <div className="rounded-2xl border border-white/5 bg-white/5 p-4 space-y-1 hover:border-white/10 transition-colors">
                         <div className="flex items-center gap-1.5 text-white/40">
                           <Compass className="h-3.5 w-3.5 text-yellow-400" />
-                          <span className="font-body text-[9px] uppercase tracking-wider font-bold">{translations.statehood}</span>
+                          <span className="font-body text-[10px] uppercase tracking-wider font-bold">{translations.statehood}</span>
                         </div>
-                        <div className="font-body text-2xl font-extrabold text-white">
+                        <div className="font-hero text-3xl text-white mt-1">
                           {selectedState.statehoodYear}
                         </div>
-                        <div className="text-[9px] text-white/40 font-semibold uppercase">
+                        <div className="text-[10px] text-white/40 font-semibold uppercase tracking-wider mt-1">
                           Order: #{selectedState.statehoodOrder}
                         </div>
                       </div>
 
                       {/* Area */}
-                      <div className="rounded-2xl border border-white/5 bg-white/5 p-4 space-y-1.5 hover:border-white/10 transition-colors">
+                      <div className="rounded-2xl border border-white/5 bg-white/5 p-4 space-y-1 hover:border-white/10 transition-colors">
                         <div className="flex items-center gap-1.5 text-white/40">
                           <Maximize2 className="h-3.5 w-3.5 text-emerald-400" />
-                          <span className="font-body text-[9px] uppercase tracking-wider font-bold">{translations.area}</span>
+                          <span className="font-body text-[10px] uppercase tracking-wider font-bold">{translations.area}</span>
                         </div>
-                        <div className="font-body text-base font-extrabold text-white truncate">
+                        <div className="font-hero text-2xl text-white truncate mt-1">
                           {selectedState.area.toLocaleString()} sq mi
                         </div>
-                        <div className="text-[9px] text-white/40 font-semibold uppercase">
+                        <div className="text-[10px] text-white/40 font-semibold uppercase tracking-wider mt-1">
                           {selectedState.area > 100000 ? "Giant" : selectedState.area > 40000 ? "Medium" : "Compact"}
                         </div>
                       </div>
@@ -467,8 +473,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   {/* Part 3: Chronicle Narrative (4 Cols) */}
                   <div className="md:col-span-4 flex flex-col justify-between border-t md:border-t-0 md:border-l border-white/5 pt-6 md:pt-0 md:pl-8">
                     <div className="space-y-4">
-                      <span className="font-body text-[10px] uppercase tracking-wider text-[#d4af37] font-bold flex items-center gap-1.5">
-                        <MapPin className="h-3.5 w-3.5 text-[#d4af37]" />
+                      <span className="font-body text-[10px] uppercase tracking-wider text-glory-gold font-bold flex items-center gap-1.5">
+                        <MapPin className="h-3.5 w-3.5 text-glory-gold" />
                         REGIONAL CHRONICLE
                       </span>
                       <p className="font-body text-sm leading-relaxed text-white/80">
@@ -477,8 +483,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     </div>
 
                     <div className="mt-6 pt-4 border-t border-white/5">
-                      <span className="text-[10px] text-white/40 font-bold uppercase block mb-1">{translations.industry}</span>
-                      <span className="text-xs font-semibold text-[#d4af37] leading-relaxed block">{selectedState.industry[locale]}</span>
+                      <span className="font-body text-[10px] text-white/40 font-bold uppercase tracking-wider block mb-1">{translations.industry}</span>
+                      <span className="font-body text-xs font-semibold text-glory-gold leading-relaxed block">{selectedState.industry[locale]}</span>
                     </div>
                   </div>
 
@@ -490,7 +496,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           {/* ── RESPONSIVE STATES DIRECTORY (GRID LIST AT THE BOTTOM) ── */}
           <div className="max-w-screen-xl mx-auto pt-6 border-t border-white/5">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="font-body text-sm font-bold tracking-wider text-white/40 uppercase">
+              <h3 className="font-body text-xs font-bold tracking-widest text-white/40 uppercase">
                 {translations.detailsTitle} ({filteredStates.length})
               </h3>
             </div>
@@ -504,13 +510,13 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     onClick={() => setSelectedStateAbbrev(state.abbrev)}
                     className={`relative cursor-pointer rounded-2xl border p-4 transition-all ${
                       isSelected
-                        ? "bg-[#d4af37]/10 border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.05)]"
-                        : "bg-slate-950/60 border-white/5 hover:border-white/15"
+                        ? "bg-glory-gold/10 border-glory-gold shadow-[0_0_15px_rgba(255,215,0,0.05)]"
+                        : "bg-navy-dark/60 border-white/10 hover:border-white/20"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className="font-body text-xs text-[#d4af37]/80 font-bold">{state.abbrev}</span>
-                      <span className="text-[10px] text-white/40 font-semibold">{state.region}</span>
+                      <span className="font-hero text-sm text-glory-gold">{state.abbrev}</span>
+                      <span className="font-body text-[10px] text-white/40 font-semibold">{state.region}</span>
                     </div>
                     <h4 className="font-body text-sm font-bold text-white truncate">
                       {state.name[locale]}
