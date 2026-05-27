@@ -61,32 +61,32 @@ export interface IntelligenceFutureProgram {
 export const INTEL_METRICS: IntelligenceMetric[] = [
   {
     value: "$100B+",
-    label: "Annual Budget",
+    label: "ANNUAL BUDGET",
     detail: "Estimated annual budget of the National Intelligence Program and Military Intelligence Program.",
   },
   {
     value: "18",
-    label: "Active Agencies",
+    label: "ACTIVE AGENCIES",
     detail: "Separate intelligence organizations operating under the Director of National Intelligence.",
   },
   {
     value: "50+",
-    label: "Spy Satellites",
+    label: "SPY SATELLITES",
     detail: "Classified orbital reconnaissance, signals intelligence, and imagery assets.",
   },
   {
     value: "100K+",
-    label: "Active Personnel",
+    label: "ACTIVE PERSONNEL",
     detail: "Cryptanalysts, field officers, linguists, and cyber warfare specialists globally.",
   },
   {
     value: "Exabytes",
-    label: "Data Collected Daily",
+    label: "DATA COLLECTED DAILY",
     detail: "Massive global signals and telemetry processed daily by automated sorting systems.",
   },
   {
     value: "24/7/365",
-    label: "Threat Monitoring",
+    label: "THREAT MONITORING",
     detail: "Real-time threat monitoring and strategic warning for national command authorities.",
   },
 ];
@@ -378,12 +378,12 @@ export const INTEL_FUTURE: IntelligenceFutureProgram[] = [
 export function getIntelligenceMetrics(locale: Locale): IntelligenceMetric[] {
   if (locale !== "ro") return INTEL_METRICS;
   return [
-    { value: "$100B+", label: "Buget Anual", detail: "Bugetul estimat cumulativ al Programului Național de Informații și al Programului de Informații Militare." },
-    { value: "18", label: "Agenții Active", detail: "Organizații distincte de securitate și informații care operează sub egida Comunității Naționale." },
-    { value: "50+", label: "Sateliți Spion", detail: "Active orbitale clasificate de recunoaștere, analiză a semnalelor și supraveghere." },
-    { value: "100K+", label: "Personal Activ", detail: "Criptologi, analiști, ofițeri operativi și specialiști cibernetici la nivel mondial." },
-    { value: "Exabytes", label: "Date Colectate Zilnic", detail: "Fluxuri globale masive de semnale interceptate și procesate prin sisteme inteligente." },
-    { value: "24/7/365", label: "Supraveghere Continuă", detail: "Monitorizare constantă a amenințărilor strategice pentru factorii decizionali ai SUA." },
+    { value: "$100B+", label: "BUGET ANUAL", detail: "Bugetul estimat cumulativ al Programului Național de Informații și al Programului de Informații Militare." },
+    { value: "18", label: "AGENȚII ACTIVE", detail: "Organizații distincte de securitate și informații care operează sub egida Comunității Naționale." },
+    { value: "50+", label: "SATELIȚI SPION", detail: "Active orbitale clasificate de recunoaștere, analiză a semnalelor și supraveghere." },
+    { value: "100K+", label: "PERSONAL ACTIV", detail: "Criptologi, analiști, ofițeri operativi și specialiști cibernetici la nivel mondial." },
+    { value: "Exabytes", label: "DATE COLECTATE ZILNIC", detail: "Fluxuri globale masive de semnale interceptate și procesate prin sisteme inteligente." },
+    { value: "24/7/365", label: "MONITORIZARE AMENINȚĂRI", detail: "Monitorizare constantă a amenințărilor strategice pentru factorii decizionali ai SUA." },
   ];
 }
 

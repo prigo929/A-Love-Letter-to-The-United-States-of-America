@@ -6,14 +6,9 @@ import { useRef, useState, useEffect } from "react";
 import { AnimatePresence, motion, useScroll, useTransform, useInView, animate } from "framer-motion";
 import {
   ArrowUpRight,
-  Compass,
-  Cpu,
-  Eye,
+  ChevronRight,
   Globe,
   MapPin,
-  Network,
-  Satellite,
-  Shield,
 } from "lucide-react";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 import type { Locale } from "@/lib/i18n/config";
@@ -25,7 +20,6 @@ import type {
   IntelligenceHeritageEvent,
   IntelligenceFutureProgram,
 } from "@/lib/data/intelligence-data";
-import { SITE_IMAGES } from "@/lib/site-images";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -33,7 +27,7 @@ const fadeUp = {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1. IntelligenceStyles
+// 1. IntelligenceStyles — Clean, elegant typography and layouts
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function IntelligenceStyles() {
@@ -43,8 +37,6 @@ export function IntelligenceStyles() {
         --intel-black: #000000;
         --intel-void: #030406;
         --intel-surface: #090b0e;
-        --intel-elevated: #11141a;
-        --intel-gold: #d4a44a;
         --intel-border: rgba(255, 255, 255, 0.05);
         background: var(--intel-black);
         color: white;
@@ -77,7 +69,7 @@ export function IntelligenceStyles() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. IntelligencePageProgress — simple clean gold scroll progress
+// 2. IntelligencePageProgress — Minimal scroll progress
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function IntelligencePageProgress() {
@@ -94,25 +86,25 @@ export function IntelligencePageProgress() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// IntelligenceSectionDivider — simple fade line divider
+// IntelligenceSectionDivider
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function IntelligenceSectionDivider() {
   return (
-    <div className="relative flex justify-center items-center py-8">
+    <div className="relative flex justify-center items-center py-6">
       <motion.div
         initial={{ scaleX: 0, opacity: 0 }}
         whileInView={{ scaleX: 1, opacity: 1 }}
         viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="h-px w-full max-w-[360px] origin-center bg-gradient-to-r from-transparent via-white/10 to-transparent"
+        transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+        className="h-px w-full max-w-[280px] origin-center bg-gradient-to-r from-transparent via-white/10 to-transparent"
       />
     </div>
   );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Helpers
+// Count Up Counter
 // ─────────────────────────────────────────────────────────────────────────────
 
 function IntelCountUp({ value }: { value: string }) {
@@ -132,7 +124,7 @@ function IntelCountUp({ value }: { value: string }) {
 
     if (inView) {
       const controls = animate(0, num, {
-        duration: 2.2,
+        duration: 2.0,
         ease: [0.16, 1, 0.3, 1],
         onUpdate: (latest) => {
           const formatted = num >= 1000
@@ -145,7 +137,7 @@ function IntelCountUp({ value }: { value: string }) {
     }
   }, [inView, value]);
 
-  return <span ref={ref} className="text-white font-light">{displayVal}</span>;
+  return <span ref={ref} className="text-white font-extralight">{displayVal}</span>;
 }
 
 function IntelSectionTitle({
@@ -164,20 +156,20 @@ function IntelSectionTitle({
     >
       <motion.div
         variants={fadeUp}
-        className="intel-font-mono mb-5 tracking-[0.25em] text-[10px] text-[#d4a44a]"
+        className="intel-font-mono mb-4 tracking-[0.3em] text-[9px] text-[#d4a44a]"
       >
         {label}
       </motion.div>
       <motion.h2
         variants={fadeUp}
-        className="intel-font-display text-[clamp(32px,6vw,80px)] font-bold tracking-tight leading-[0.95] text-white"
+        className="intel-font-display text-[clamp(28px,5vw,72px)] font-bold tracking-tight leading-[0.95] text-white"
       >
         {title}
       </motion.h2>
       {subtitle && (
         <motion.div
           variants={fadeUp}
-          className="intel-font-display text-[clamp(32px,6vw,80px)] font-bold tracking-tight leading-[0.95] text-white/10 mt-1"
+          className="intel-font-display text-[clamp(28px,5vw,72px)] font-bold tracking-tight leading-[0.95] text-white/10 mt-1"
         >
           {subtitle}
         </motion.div>
@@ -185,7 +177,7 @@ function IntelSectionTitle({
       <motion.p
         variants={fadeUp}
         className={cn(
-          "mt-6 text-sm leading-[1.8] text-white/40 font-normal tracking-wide",
+          "mt-6 text-sm leading-[1.8] text-white/40 tracking-wide font-normal",
           isCenter ? "max-w-2xl mx-auto" : "max-w-xl"
         )}
       >
@@ -209,7 +201,7 @@ export function IntelligenceFullBleed({
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
 
   return (
-    <div ref={ref} className="relative h-[65vh] min-h-[460px] overflow-hidden bg-black">
+    <div ref={ref} className="relative h-[55vh] min-h-[380px] overflow-hidden bg-black">
       <motion.div className="absolute inset-0 -inset-y-[15%]" style={{ y }}>
         <Image
           src={imageSrc}
@@ -222,7 +214,7 @@ export function IntelligenceFullBleed({
           blurDataURL={BLUR_PLACEHOLDER}
         />
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black pointer-events-none" />
 
       {pullQuote && (
         <motion.div
@@ -233,7 +225,7 @@ export function IntelligenceFullBleed({
           className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
         >
           <div className="mb-5 h-[2px] w-12 bg-[#d4a44a]/40" />
-          <p className="intel-font-display text-[clamp(18px,3.5vw,48px)] font-light text-white/95 leading-[1.1] max-w-4xl tracking-tight">
+          <p className="intel-font-display text-[clamp(18px,3.5vw,40px)] font-light text-white/90 leading-[1.1] max-w-4xl tracking-tight">
             {pullQuote}
           </p>
           <div className="mt-5 h-[2px] w-12 bg-[#d4a44a]/40" />
@@ -250,33 +242,45 @@ export function IntelligenceFullBleed({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 3. IntelligenceMetricStrip
+// 3. IntelligenceMetricStrip — Exact MinimalistStat replica grid
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function IntelligenceMetricStrip({ metrics }: { metrics: IntelligenceMetric[] }) {
   return (
     <section className="relative bg-black border-t border-b border-white/[0.04] overflow-hidden">
       <div className="mx-auto max-w-[1440px]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        {/* 2x3 or 3x2 High Contrast Grid representing Tesla-spec page */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {metrics.map((m, i) => (
             <div key={m.label} className="border-r border-b border-white/[0.04] last:border-r-0 lg:[&:nth-child(3n)]:border-r-0">
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-5%" }}
-                transition={{ duration: 0.9, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col px-10 py-14"
+                transition={{ duration: 1.0, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col px-8 py-12"
               >
-                <div className="intel-font-mono mb-5 tracking-[0.2em] text-[10px] text-[#d4a44a]/80">
+                {/* Uppercase White wide-tracking label matching main page MinimalistStat */}
+                <div className="intel-font-mono text-[10px] tracking-[0.3em] font-black text-white mb-6">
                   {m.label}
                 </div>
-                <div className="text-[clamp(44px,6vw,80px)] font-light leading-none tracking-tight text-white mb-6">
-                  <IntelCountUp value={m.value} />
+
+                {/* Thin, giant count-up number matching MinimalistStat */}
+                <div className="flex items-baseline gap-1">
+                  <span className="text-[clamp(48px,7vw,96px)] font-extralight tracking-tighter leading-none">
+                    <IntelCountUp value={m.value} />
+                  </span>
                 </div>
-                <div className="h-px w-full bg-gradient-to-r from-white/10 via-white/5 to-transparent mb-5" />
-                <p className="text-white/40 text-[11px] leading-relaxed tracking-wide font-normal max-w-[280px]">
+
+                {/* Linear-gradient line divider under the numbers */}
+                <div className="mt-6 mb-4 h-px w-full" style={{
+                  background: 'linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0.05), transparent)'
+                }} />
+
+                {/* Muted sublabel detailing stat context */}
+                <div className="intel-font-display max-w-[260px] leading-relaxed opacity-60 text-[11px] font-medium tracking-wide text-white/60">
                   {m.detail}
-                </p>
+                </div>
               </motion.div>
             </div>
           ))}
@@ -287,7 +291,7 @@ export function IntelligenceMetricStrip({ metrics }: { metrics: IntelligenceMetr
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4. IntelligenceAgencyShowcase — clean cinematic agency dossier
+// 4. IntelligenceAgencyShowcase — Split Editorial Layout (Highly Unique)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function IntelligenceAgencyShowcase({ agencies, locale = "en" }: { agencies: IntelligenceAgency[]; locale?: Locale }) {
@@ -307,8 +311,8 @@ export function IntelligenceAgencyShowcase({ agencies, locale = "en" }: { agenci
             : "An in-depth look at the pillar agencies that anchor the gathering, analysis, and execution of American national intelligence."}
         />
 
-        <div className="grid overflow-hidden border border-white/[0.04] bg-[#030406] lg:grid-cols-[280px_1fr] min-h-[600px] rounded-sm shadow-2xl">
-          {/* Left Agency List */}
+        <div className="grid overflow-hidden border border-white/[0.04] bg-[#030406] lg:grid-cols-[320px_1fr] min-h-[580px] rounded-sm shadow-2xl">
+          {/* Left: Interactive list representing a dossier directory */}
           <div className="flex flex-col border-b lg:border-b-0 lg:border-r border-white/[0.04] bg-white/[0.01]">
             {agencies.map((agency, index) => {
               const selected = activeIndex === index;
@@ -336,68 +340,63 @@ export function IntelligenceAgencyShowcase({ agencies, locale = "en" }: { agenci
                   )}>
                     {agency.shortName}
                   </div>
-                  <div className="text-[10px] text-white/20 mt-1 truncate max-w-[200px]">{agency.role}</div>
+                  <div className="text-[10px] text-white/20 mt-1 truncate max-w-[220px]">{agency.role}</div>
                 </button>
               );
             })}
           </div>
 
-          {/* Right Dossier Panel */}
-          <div className="grid lg:grid-cols-2 min-h-[500px]">
-            {/* Details Panel */}
-            <div className="flex flex-col p-10 lg:p-14 justify-between border-b lg:border-b-0 lg:border-r border-white/[0.04]">
+          {/* Right: Immersive content card, using full background photography with overlay */}
+          <div className="relative min-h-[500px] flex flex-col justify-end p-8 sm:p-12 lg:p-16 overflow-hidden">
+            {/* Background Image with Ken-Burns style slow transition */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.id + "-bg"}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={active.imageSrc}
+                  alt={active.name}
+                  fill
+                  className="object-cover brightness-[0.16] saturate-[0.6] scale-105"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  placeholder="blur"
+                  blurDataURL={BLUR_PLACEHOLDER}
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Heavy gradient vignette overlay */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.95)_0%,rgba(0,0,0,0.4)_50%,rgba(0,0,0,0.8)_100%)] pointer-events-none" />
+
+            <div className="relative z-10">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={active.id + "-info"}
-                  initial={{ opacity: 0, y: 12 }}
+                  key={active.id + "-details"}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
+                  exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex flex-col h-full justify-between"
                 >
-                  <div>
-                    <div className="intel-font-mono text-[9px] tracking-[0.2em] text-[#d4a44a] mb-3">{active.specialty}</div>
-                    <h3 className="intel-font-display text-3xl font-bold tracking-tight text-white mb-3 leading-tight">{active.name}</h3>
-                    <div className="text-[12px] text-white/45 italic mb-8 font-light">{active.role}</div>
-                    <p className="text-[13px] leading-[1.8] text-white/40 tracking-wide font-normal mb-8 max-w-md">{active.description}</p>
-                  </div>
+                  <div className="intel-font-mono text-[9px] tracking-[0.25em] text-[#d4a44a] mb-4">{active.specialty}</div>
+                  <h3 className="intel-font-display text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4 leading-tight max-w-2xl">{active.name}</h3>
+                  <div className="text-sm text-white/50 italic mb-8 font-light max-w-xl">{active.role}</div>
+                  <p className="text-sm leading-[1.8] text-white/40 tracking-wide font-normal max-w-xl mb-12">{active.description}</p>
 
-                  <div className="space-y-4 pt-6 border-t border-white/[0.04]">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-white/10 max-w-3xl">
                     {active.stats.map((s) => (
-                      <div key={s.label} className="flex items-center justify-between text-xs">
-                        <span className="intel-font-mono text-[9px] tracking-[0.1em] text-white/35">{s.label}</span>
-                        <span className="text-white/70 font-medium tracking-wide">{s.value}</span>
+                      <div key={s.label} className="flex flex-col">
+                        <span className="intel-font-mono text-[8px] tracking-[0.15em] text-white/30 mb-1.5">{s.label}</span>
+                        <span className="text-xs font-semibold text-white/85 tracking-wide">{s.value}</span>
                       </div>
                     ))}
                   </div>
                 </motion.div>
               </AnimatePresence>
-            </div>
-
-            {/* Visual Photography Side (No AI, real photographic asset) */}
-            <div className="relative min-h-[300px] lg:min-h-0 bg-black overflow-hidden">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={active.id + "-img"}
-                  initial={{ opacity: 0, scale: 1.02 }}
-                  animate={{ opacity: 1, scale: 1.05 }}
-                  exit={{ opacity: 0, scale: 1.0 }}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={active.imageSrc}
-                    alt={active.name}
-                    fill
-                    className="object-cover brightness-[0.25] saturate-[0.55]"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    placeholder="blur"
-                    blurDataURL={BLUR_PLACEHOLDER}
-                  />
-                </motion.div>
-              </AnimatePresence>
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent pointer-events-none hidden lg:block" />
             </div>
           </div>
         </div>
@@ -407,16 +406,15 @@ export function IntelligenceAgencyShowcase({ agencies, locale = "en" }: { agenci
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. IntelligenceCapabilityGrid — clean expanding capability cards
+// 5. IntelligenceCapabilityGrid — Alternating Full-Width Rows (Highly Unique)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function IntelligenceCapabilityGrid({ capabilities, locale = "en" }: { capabilities: IntelligenceCapability[]; locale?: Locale }) {
   const isRo = locale === "ro";
-  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
     <section className="relative overflow-hidden bg-black px-6 py-24 sm:px-10 md:py-32 lg:px-16">
-      <div className="relative mx-auto max-w-[1400px]">
+      <div className="relative mx-auto max-w-[1200px]">
         <IntelSectionTitle
           label={isRo ? "Capabilități tactice" : "Tactical Disciplines"}
           title={isRo ? "Domenii de" : "Intelligence"}
@@ -426,89 +424,45 @@ export function IntelligenceCapabilityGrid({ capabilities, locale = "en" }: { ca
             : "The five distinct modes of intelligence operations that feed critical decisions at every level of national command."}
         />
 
-        <div className="flex flex-col lg:flex-row gap-4 mt-16 lg:h-[450px]">
+        {/* Large, high-end alternating vertical content layout instead of simple cards */}
+        <div className="mt-20 space-y-16 lg:space-y-24">
           {capabilities.map((cap, i) => {
-            const isHovered = hoveredIdx === i;
-            const isAnyHovered = hoveredIdx !== null;
-
+            const isEven = i % 2 === 0;
             return (
               <motion.div
                 key={cap.title}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-40px" }}
+                viewport={{ once: true, margin: "-60px" }}
                 variants={fadeUp}
-                transition={{ duration: 0.6, delay: i * 0.06 }}
-                onMouseEnter={() => setHoveredIdx(i)}
-                onMouseLeave={() => setHoveredIdx(null)}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className={cn(
-                  "group relative overflow-hidden intel-panel p-8 flex flex-col justify-between transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer select-none min-h-[200px] lg:min-h-0 rounded-sm",
-                  isHovered ? "lg:flex-[3.5] bg-white/[0.04] border-white/10" : 
-                  isAnyHovered ? "lg:flex-[0.6] opacity-30 bg-black/50 border-white/[0.02]" : "lg:flex-1 bg-white/[0.015] border-white/[0.03]"
+                  "flex flex-col lg:flex-row items-start lg:items-center justify-between pb-12 border-b border-white/[0.04] last:border-b-0 gap-8 lg:gap-16",
+                  isEven ? "" : "lg:flex-row-reverse"
                 )}
               >
-                {/* Clean background subtle glow */}
-                <div 
-                  className={cn(
-                    "absolute top-0 right-0 h-40 w-40 rounded-full blur-[90px] pointer-events-none transition-opacity duration-1000 opacity-0 group-hover:opacity-10",
-                    cap.accent === "#38bdf8" ? "bg-sky-500" :
-                    cap.accent === "#f5a623" ? "bg-amber-500" :
-                    cap.accent === "#10b981" ? "bg-emerald-500" :
-                    cap.accent === "#a78bfa" ? "bg-violet-500" :
-                    "bg-red-500"
-                  )}
-                />
-
-                {/* Dot and kicker */}
-                <div className="flex items-center gap-3 shrink-0 mb-6 lg:mb-0">
-                  <div className={cn(
-                    "h-1.5 w-1.5 rounded-full transition-all duration-500",
-                    isHovered ? "opacity-100 scale-125" : "opacity-40",
-                    cap.accent === "#38bdf8" ? "bg-sky-400" :
-                    cap.accent === "#f5a623" ? "bg-amber-400" :
-                    cap.accent === "#10b981" ? "bg-emerald-400" :
-                    cap.accent === "#a78bfa" ? "bg-violet-400" :
-                    "bg-red-400"
-                  )} />
-                  <span className="intel-font-mono text-[9px] tracking-[0.15em] text-white/30">
-                    {cap.kicker}
-                  </span>
+                {/* Large horizontal index number */}
+                <div className="intel-font-display text-7xl sm:text-8xl font-black text-white/5 tracking-tighter select-none lg:w-44 shrink-0">
+                  {cap.kicker.split(" ")[0]}
                 </div>
 
-                {/* Title & Desc */}
-                <div className="flex-1 flex flex-col justify-center my-4 lg:my-0">
-                  <h3 className={cn(
-                    "intel-font-display font-semibold text-white leading-[0.95] tracking-tight transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
-                    isHovered ? "text-2xl sm:text-3xl mb-4" : "text-xl sm:text-2xl lg:text-lg xl:text-xl",
-                    !isHovered && isAnyHovered ? "lg:opacity-50" : ""
-                  )}>
-                    {cap.title}
-                  </h3>
-                  
-                  <div className={cn(
-                    "transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden",
-                    isHovered ? "opacity-100 max-h-[220px]" : "lg:opacity-0 lg:max-h-0"
-                  )}>
-                    <p className="leading-[1.7] text-[12px] text-white/40 tracking-wide font-normal max-w-md">
-                      {cap.description}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Accent stat tag */}
-                <div className="shrink-0 mt-4 lg:mt-0">
-                  <span className={cn(
-                    "intel-font-mono text-[9px] tracking-[0.12em] transition-all duration-500",
-                    isHovered ? "opacity-95" : "opacity-35",
-                    cap.accent === "#38bdf8" ? "text-sky-300" :
-                    cap.accent === "#f5a623" ? "text-amber-300" :
-                    cap.accent === "#10b981" ? "text-emerald-300" :
-                    cap.accent === "#a78bfa" ? "text-violet-300" :
-                    "text-red-300"
-                  )}>
+                {/* Capability Content */}
+                <div className="flex-1 max-w-xl">
+                  <span className="intel-font-mono text-[9px] tracking-[0.2em] text-[#d4a44a] mb-3 block">{cap.kicker}</span>
+                  <h3 className="intel-font-display text-2xl sm:text-3xl font-bold tracking-tight text-white mb-4 leading-tight">{cap.title}</h3>
+                  <p className="text-[13px] leading-[1.85] text-white/40 tracking-wide font-normal mb-6">
+                    {cap.description}
+                  </p>
+                  <span className="intel-font-mono text-[9px] tracking-[0.12em] text-white/30 border border-white/10 px-3 py-1 rounded-full bg-white/[0.01]">
                     {cap.stat}
                   </span>
                 </div>
+
+                {/* Accent glow helper */}
+                <div className="hidden lg:block h-12 w-12 rounded-full blur-2xl shrink-0" style={{
+                  background: cap.accent,
+                  opacity: 0.15
+                }} />
               </motion.div>
             );
           })}
@@ -519,12 +473,10 @@ export function IntelligenceCapabilityGrid({ capabilities, locale = "en" }: { ca
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 6. IntelligenceOperationsConsole — Global Nodes Selector
+// 6. IntelligenceOperationsConsole — Installation Map List Flow
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function IntelligenceOperationsConsole({ nodes, locale = "en" }: { nodes: IntelligenceNode[]; locale?: Locale }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const active = nodes[activeIndex];
   const isRo = locale === "ro";
 
   return (
@@ -539,73 +491,39 @@ export function IntelligenceOperationsConsole({ nodes, locale = "en" }: { nodes:
             : "Strategic ground stations and cryptologic hubs placed globally to feed continuous signal data into national servers."}
         />
 
-        <div className="grid overflow-hidden border border-white/[0.04] bg-[#030406] lg:grid-cols-[300px_1fr] min-h-[500px] rounded-sm">
-          {/* Left node list */}
-          <div className="flex flex-col border-b lg:border-b-0 lg:border-r border-white/[0.04] bg-white/[0.01]">
-            {nodes.map((node, index) => {
-              const selected = activeIndex === index;
-              return (
-                <button
-                  key={node.name}
-                  type="button"
-                  onClick={() => setActiveIndex(index)}
-                  className={cn(
-                    "relative flex flex-col justify-center text-left px-8 py-7 transition-colors duration-300 border-b border-white/[0.03] last:border-b-0",
-                    selected ? "bg-white/[0.03]" : "hover:bg-white/[0.01]"
-                  )}
-                >
-                  {selected && (
-                    <motion.div
-                      layoutId="intel-node-indicator"
-                      className="absolute left-0 top-0 bottom-0 w-[2.5px]"
-                      style={{ background: node.accent }}
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    />
-                  )}
-                  <div className="intel-font-mono text-[8px] tracking-[0.15em] text-white/30 mb-2">{node.location}</div>
-                  <div className={cn(
-                    "intel-font-display text-sm font-semibold tracking-tight transition-colors",
-                    selected ? "text-white" : "text-white/40"
-                  )}>
-                    {node.name}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Right node details */}
-          <div className="flex flex-col p-10 lg:p-14 justify-between bg-black/20">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active.name}
-                initial={{ opacity: 0, x: 12 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -8 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col h-full justify-between"
-              >
-                <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <MapPin size={11} className="text-white/40" strokeWidth={1.5} />
-                    <span className="intel-font-mono text-[9px] tracking-[0.15em] text-white/30">{active.location}</span>
-                  </div>
-                  <h3 className="intel-font-display text-2xl font-bold tracking-tight text-white mb-2 leading-none">{active.name}</h3>
-                  <div className="intel-font-mono text-[8px] tracking-[0.2em] mb-8" style={{ color: active.accent }}>{active.role}</div>
-                  <p className="text-[13px] leading-[1.8] text-white/40 tracking-wide font-normal max-w-2xl mb-8">{active.description}</p>
+        {/* Sequential mapping flow instead of tabs */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-16">
+          {nodes.map((node, index) => (
+            <motion.div
+              key={node.name}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={fadeUp}
+              transition={{ duration: 0.8, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="intel-panel p-8 flex flex-col justify-between min-h-[300px] rounded-sm hover:border-white/10 transition-colors duration-300"
+              style={{ borderLeft: `2.5px solid ${node.accent}` }}
+            >
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <MapPin size={11} className="text-white/30" />
+                  <span className="intel-font-mono text-[8px] tracking-[0.15em] text-white/30">{node.location}</span>
                 </div>
+                <h3 className="intel-font-display text-lg font-bold tracking-tight text-white mb-2">{node.name}</h3>
+                <div className="intel-font-mono text-[7px] tracking-[0.2em] mb-5 uppercase opacity-60" style={{ color: node.accent }}>{node.role}</div>
+                <p className="text-[12px] leading-[1.7] text-white/40 tracking-wide font-normal">{node.description}</p>
+              </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-white/[0.04]">
-                  {active.stats.map((s) => (
-                    <div key={s.label} className="intel-panel p-5 rounded-sm">
-                      <div className="intel-font-mono text-[8px] tracking-[0.15em] text-white/35 mb-2">{s.label}</div>
-                      <div className="intel-font-display text-sm font-semibold text-white leading-none">{s.value}</div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+              <div className="flex flex-col gap-2 pt-6 border-t border-white/[0.04] mt-6">
+                {node.stats.map((s) => (
+                  <div key={s.label} className="flex justify-between items-center text-[10px]">
+                    <span className="intel-font-mono text-white/25">{s.label}</span>
+                    <span className="text-white/60 font-medium">{s.value}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -613,15 +531,16 @@ export function IntelligenceOperationsConsole({ nodes, locale = "en" }: { nodes:
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 7. IntelligenceHeritageTimeline — clean high-contrast historical events
+// 7. IntelligenceHeritageTimeline — Horizontal Drag/Scroll Reel (Highly Unique)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function IntelligenceHeritageTimeline({ events, locale = "en" }: { events: IntelligenceHeritageEvent[]; locale?: Locale }) {
   const isRo = locale === "ro";
+  const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-24 sm:px-10 md:py-32 lg:px-16">
-      <div className="relative mx-auto max-w-[1200px]">
+    <section className="relative overflow-hidden bg-black py-24 md:py-32">
+      <div className="relative mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-16">
         <IntelSectionTitle
           label={isRo ? "Puncte de cotitură" : "Heritage"}
           title={isRo ? "Istoric & Moștenire" : "Intelligence"}
@@ -630,63 +549,60 @@ export function IntelligenceHeritageTimeline({ events, locale = "en" }: { events
             ? "Evoluția programelor și colectării de informații, de la înființarea serviciilor în 1947 până la capabilitățile cibernetice moderne."
             : "The milestones and pivotal events that shaped the capabilities and legal frameworks of the U.S. intelligence community."}
         />
+      </div>
 
-        <div className="relative mt-20">
-          {/* Vertical timeline line */}
-          <div className="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-px bg-white/[0.06]" />
+      {/* Horizontal scrolling timeline filmstrip */}
+      <div className="relative mt-16 overflow-hidden">
+        {/* Shadow overlays for smooth edge fading */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
 
-          {events.map((event, i) => {
-            const isLeft = i % 2 === 0;
-            return (
-              <motion.div
-                key={event.year}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-60px" }}
-                variants={fadeUp}
-                transition={{ duration: 0.8, delay: i * 0.05 }}
-                className={cn(
-                  "relative mb-20 last:mb-0 pl-14 md:pl-0",
-                  "md:grid md:grid-cols-2 md:gap-16"
+        {/* Scroll Container */}
+        <div
+          ref={containerRef}
+          className="flex overflow-x-auto gap-6 px-12 md:px-24 pb-12 snap-x snap-mandatory scrollbar-none select-none"
+          style={{ scrollbarWidth: "none" }}
+        >
+          {events.map((event, i) => (
+            <motion.div
+              key={event.year}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.8, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="w-[320px] sm:w-[380px] shrink-0 snap-center intel-panel p-6 sm:p-8 flex flex-col justify-between min-h-[460px] rounded-sm hover:border-white/10 transition-colors duration-300"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="intel-font-mono text-xl font-bold text-[#d4a44a] tracking-wider">{event.year}</span>
+                  <span className="intel-font-mono text-[7px] tracking-[0.15em] text-white/20">[ DOSSIER_{i+1} ]</span>
+                </div>
+
+                {event.imageSrc && (
+                  <div className="relative w-full aspect-[16/10] overflow-hidden mb-6 rounded-sm bg-black/40">
+                    <Image
+                      src={event.imageSrc}
+                      alt={event.title}
+                      fill
+                      className="object-cover brightness-[0.25] saturate-[0.6] hover:brightness-[0.4] transition-all duration-500"
+                      sizes="(max-width: 768px) 100vw, 380px"
+                      placeholder="blur"
+                      blurDataURL={BLUR_PLACEHOLDER}
+                    />
+                  </div>
                 )}
-              >
-                {/* Gold timeline node dot */}
-                <div className="absolute left-6 md:left-1/2 top-2 -translate-x-1/2 z-10">
-                  <div className="rounded-full ring-[3px] ring-black h-3.5 w-3.5 bg-[#d4a44a]" />
-                </div>
 
-                {/* Content card */}
-                <div className={cn(
-                  "md:col-span-1",
-                  isLeft ? "md:col-start-1 md:pr-6" : "md:col-start-2 md:pl-6"
-                )}>
-                  <div className="intel-font-mono text-xs font-semibold text-[#d4a44a] mb-2">{event.year}</div>
+                <h3 className="intel-font-display text-lg font-bold tracking-tight text-white mb-2 leading-snug">{event.title}</h3>
+                <p className="text-[12px] leading-[1.7] text-white/40 tracking-wide font-normal mb-4">{event.description}</p>
+              </div>
 
-                  {event.imageSrc && (
-                    <div className="relative w-full aspect-[16/9] overflow-hidden mb-5 rounded-sm bg-[#050608]">
-                      <Image
-                        src={event.imageSrc}
-                        alt={event.title}
-                        fill
-                        className="object-cover brightness-[0.25] saturate-[0.6] transition-all duration-700 hover:brightness-[0.4] hover:scale-102"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        placeholder="blur"
-                        blurDataURL={BLUR_PLACEHOLDER}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
-                    </div>
-                  )}
-
-                  <h3 className="intel-font-display text-lg font-bold tracking-tight text-white mb-2 leading-snug">{event.title}</h3>
-                  <p className="text-[12px] leading-[1.7] text-white/40 tracking-wide font-normal mb-3 max-w-xl">{event.description}</p>
-                  <span className="intel-font-mono text-[8px] tracking-[0.1em] text-white/25">{event.significance}</span>
-                </div>
-
-                {/* Empty column for balancing */}
-                <div className={cn("hidden md:block", isLeft ? "md:col-start-2" : "md:col-start-1")} />
-              </motion.div>
-            );
-          })}
+              <div className="pt-4 border-t border-white/[0.04] mt-4">
+                <span className="intel-font-mono text-[8px] tracking-[0.1em] text-white/25 leading-normal block">
+                  {event.significance}
+                </span>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -694,12 +610,10 @@ export function IntelligenceHeritageTimeline({ events, locale = "en" }: { events
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 8. IntelligenceFutureStack — Clean Programs Tab Selector
+// 8. IntelligenceFutureStack — Technical Blueprint Grid (Highly Unique)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function IntelligenceFutureStack({ programs, locale = "en" }: { programs: IntelligenceFutureProgram[]; locale?: Locale }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const active = programs[activeIndex];
   const isRo = locale === "ro";
 
   return (
@@ -714,69 +628,38 @@ export function IntelligenceFutureStack({ programs, locale = "en" }: { programs:
             : "The critical technological systems under development that will define cryptanalysis and global sensor networks."}
         />
 
-        <div className="grid overflow-hidden border border-white/[0.04] bg-[#030406] lg:grid-cols-[1fr_380px] rounded-sm">
-          {/* Detail Side */}
-          <div className="flex flex-col p-10 lg:p-14 justify-between border-b lg:border-b-0 lg:border-r border-white/[0.04] bg-white/[0.01]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active.label}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col h-full justify-between"
-              >
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="intel-font-mono text-[9px] tracking-[0.15em] text-[#d4a44a]">{active.status}</span>
+        {/* Blueprint-style 2x2 grids showing specs directly without click tabs */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-16">
+          {programs.map((program, index) => (
+            <motion.div
+              key={program.label}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={fadeUp}
+              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="intel-panel p-8 sm:p-10 flex flex-col justify-between min-h-[380px] rounded-sm hover:border-white/10 transition-all duration-300"
+            >
+              <div>
+                <div className="flex justify-between items-start mb-4">
+                  <span className="intel-font-mono text-[8px] tracking-[0.15em] text-[#d4a44a] border border-[#d4a44a]/20 px-2 py-0.5 rounded-sm bg-[#d4a44a]/5">{program.status}</span>
+                  <span className="intel-font-mono text-[8px] text-white/20 tracking-wider">PROJECT CODE: {program.label.toUpperCase()}</span>
+                </div>
+                <h3 className="intel-font-display text-xl sm:text-2xl font-bold tracking-tight text-white mb-2 leading-tight">{program.title}</h3>
+                <div className="intel-font-mono text-[9px] tracking-[0.12em] text-[#38bdf8] mb-6">{program.capability}</div>
+                <p className="text-[13px] leading-[1.8] text-white/40 tracking-wide font-normal mb-8 max-w-xl">{program.description}</p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 pt-6 border-t border-white/[0.04]">
+                {program.specs.map((s) => (
+                  <div key={s.label} className="bg-white/[0.01] border border-white/[0.03] p-4 rounded-sm flex flex-col justify-center">
+                    <div className="intel-font-mono text-[7px] tracking-[0.15em] text-white/30 mb-1">{s.label}</div>
+                    <div className="intel-font-display text-xs font-semibold text-white/80">{s.value}</div>
                   </div>
-                  <h3 className="intel-font-display text-2xl font-bold tracking-tight text-white mb-4 leading-tight">{active.title}</h3>
-                  <div className="intel-font-mono text-[9px] tracking-[0.12em] text-[#38bdf8] mb-6">{active.capability}</div>
-                  <p className="text-[13px] leading-[1.8] text-white/40 tracking-wide font-normal max-w-2xl mb-10">{active.description}</p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3 mt-auto">
-                  {active.specs.map((s) => (
-                    <div key={s.label} className="intel-panel p-4 rounded-sm">
-                      <div className="intel-font-mono text-[7px] tracking-[0.15em] text-white/30 mb-1.5">{s.label}</div>
-                      <div className="intel-font-display text-sm font-semibold text-white leading-none">{s.value}</div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* List Program Selector Side */}
-          <div className="flex flex-col bg-black/40">
-            {programs.map((p, i) => (
-              <button
-                key={p.label}
-                onClick={() => setActiveIndex(i)}
-                className={cn(
-                  "relative text-left px-8 py-8 transition-colors duration-300 border-b border-white/[0.04] last:border-b-0",
-                  activeIndex === i
-                    ? "bg-white/[0.03]"
-                    : "hover:bg-white/[0.01]"
-                )}
-              >
-                {activeIndex === i && (
-                  <motion.div
-                    layoutId="intel-program-indicator"
-                    className="absolute left-0 top-0 bottom-0 w-[2.5px] bg-[#d4a44a]"
-                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                  />
-                )}
-                <div className="intel-font-mono text-[8px] tracking-[0.15em] text-white/30 mb-2">{p.status}</div>
-                <div className={cn(
-                  "intel-font-display text-md font-semibold tracking-tight transition-colors",
-                  activeIndex === i ? "text-white" : "text-white/45"
-                )}>
-                  {p.title}
-                </div>
-              </button>
-            ))}
-          </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
