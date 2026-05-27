@@ -99,7 +99,7 @@ export const INTEL_AGENCIES: IntelligenceAgency[] = [
     specialty: "HUMINT (Human Intelligence)",
     role: "Clandestine Operations",
     description: "The primary agency for collecting foreign human intelligence (HUMINT) and conducting covert operations worldwide at the President's direction.",
-    imageSrc: SITE_IMAGES.military.tacticalMap,
+    imageSrc: SITE_IMAGES.intelligence.cia,
     stats: [
       { label: "Founded", value: "1947" },
       { label: "Headquarters", value: "Langley, Virginia" },
@@ -113,7 +113,7 @@ export const INTEL_AGENCIES: IntelligenceAgency[] = [
     specialty: "SIGINT (Signals Intelligence)",
     role: "Global Cryptology & Cyber Ops",
     description: "The world's largest cryptologic and signals intelligence organization, monitoring, intercepting, and decodifying global communications for defense.",
-    imageSrc: SITE_IMAGES.cyberOps,
+    imageSrc: SITE_IMAGES.intelligence.nsa,
     stats: [
       { label: "Founded", value: "1952" },
       { label: "Headquarters", value: "Fort Meade, Maryland" },
@@ -127,7 +127,7 @@ export const INTEL_AGENCIES: IntelligenceAgency[] = [
     specialty: "IMINT (Satellite Reconnaissance)",
     role: "Space-Based Surveillance",
     description: "Designs, builds, launches, and operates the nation's fleet of classified spy satellites, feeding real-time imagery to other intelligence assets.",
-    imageSrc: SITE_IMAGES.spaceForce.gpsEarth,
+    imageSrc: SITE_IMAGES.intelligence.nro,
     stats: [
       { label: "Founded", value: "1961" },
       { label: "Headquarters", value: "Chantilly, Virginia" },
@@ -141,7 +141,7 @@ export const INTEL_AGENCIES: IntelligenceAgency[] = [
     specialty: "GEOINT (Geospatial Intelligence)",
     role: "Imagery and Mapping Analysis",
     description: "Analyzes imagery and geospatial data to construct detailed maps and intelligence charts, enabling precise navigation and targeting.",
-    imageSrc: SITE_IMAGES.homeUsaAtNightFromSpace,
+    imageSrc: SITE_IMAGES.intelligence.nga,
     stats: [
       { label: "Founded", value: "1996" },
       { label: "Headquarters", value: "Springfield, Virginia" },
@@ -155,7 +155,7 @@ export const INTEL_AGENCIES: IntelligenceAgency[] = [
     specialty: "MASINT & Military Intelligence",
     role: "Foreign Military Assessment",
     description: "Fuses military intelligence from all branches to assess foreign military capabilities, doctrines, and logistics for combat commanders.",
-    imageSrc: SITE_IMAGES.soldierSaluting,
+    imageSrc: SITE_IMAGES.intelligence.dia,
     stats: [
       { label: "Founded", value: "1961" },
       { label: "Headquarters", value: "Pentagon (DIA HQ)" },

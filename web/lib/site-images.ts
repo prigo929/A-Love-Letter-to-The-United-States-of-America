@@ -97,6 +97,13 @@ import kc135Stratotanker from "@/IMAGES/Military/Air Force/KC-135R Stratotanker 
 import kc46Pegasus from "@/IMAGES/Military/Air Force/KC-46 Pegasus.jpg";
 import usAirForceB21 from "@/IMAGES/Military/Air Force/US Air Force B-21.jpg";
 
+// Intelligence Seals
+import ciaSeal from "@/IMAGES/Military/Intelligence/Seal_of_the_Central_Intelligence_Agency.svg";
+import nsaSeal from "@/IMAGES/Military/Intelligence/Seal_of_the_U.S._National_Security_Agency.svg";
+import nroSeal from "@/IMAGES/Military/Intelligence/NRO.svg";
+import ngaSeal from "@/IMAGES/Military/Intelligence/US-NationalGeospatialIntelligenceAgency-2008Seal.svg";
+import diaSeal from "@/IMAGES/Military/Intelligence/Seal_of_the_U.S._Defense_Intelligence_Agency.svg";
+
 import carrierStrikeGroupLogo from "@/ASSETS/Military/Carrier Strike Group Logo Dark.png";
 
 // Export plain `.src` strings so the rest of the app can use them in Next Image
@@ -229,5 +236,12 @@ export const SITE_IMAGES = {
     protectedSatcom: "/images/military/spaceforce/protected_satcom_orbit.png",
     spaceDomainRadar: "/images/military/spaceforce/space_domain_radar.png",
     nationalSecurityLaunch: "/images/military/spaceforce/national_security_launch.png",
+  },
+  intelligence: {
+    cia: ciaSeal.src,
+    nsa: nsaSeal.src,
+    nro: nroSeal.src,
+    nga: ngaSeal.src,
+    dia: diaSeal.src,
   },
 } as const;

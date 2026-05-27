@@ -346,57 +346,67 @@ export function IntelligenceAgencyShowcase({ agencies, locale = "en" }: { agenci
             })}
           </div>
 
-          {/* Right: Immersive content card, using full background photography with overlay */}
-          <div className="relative min-h-[500px] flex flex-col justify-end p-8 sm:p-12 lg:p-16 overflow-hidden">
-            {/* Background Image with Ken-Burns style slow transition */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active.id + "-bg"}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.8 }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={active.imageSrc}
-                  alt={active.name}
-                  fill
-                  className="object-cover brightness-[0.16] saturate-[0.6] scale-105"
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                  placeholder="blur"
-                  blurDataURL={BLUR_PLACEHOLDER}
-                />
-              </motion.div>
-            </AnimatePresence>
+          {/* Right: Immersive content card with interactive agency seal */}
+          <div className="relative min-h-[550px] flex flex-col justify-center p-8 sm:p-12 lg:p-16 overflow-hidden bg-[#050608]">
+            {/* Elegant dark radial gold glow in the background */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_50%,rgba(212,164,74,0.03),transparent_50%)] pointer-events-none" />
 
-            {/* Heavy gradient vignette overlay */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.95)_0%,rgba(0,0,0,0.4)_50%,rgba(0,0,0,0.8)_100%)] pointer-events-none" />
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 items-center w-full my-auto">
+              {/* Left Column: Details */}
+              <div className="flex flex-col justify-center">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={active.id + "-details"}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <div className="intel-font-mono text-[9px] tracking-[0.25em] text-[#d4a44a] mb-4">{active.specialty}</div>
+                    <h3 className="intel-font-display text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4 leading-tight max-w-2xl">{active.name}</h3>
+                    <div className="text-sm text-white/50 italic mb-8 font-light max-w-xl">{active.role}</div>
+                    <p className="text-sm leading-[1.8] text-white/40 tracking-wide font-normal max-w-xl mb-12">{active.description}</p>
 
-            <div className="relative z-10">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={active.id + "-details"}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <div className="intel-font-mono text-[9px] tracking-[0.25em] text-[#d4a44a] mb-4">{active.specialty}</div>
-                  <h3 className="intel-font-display text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4 leading-tight max-w-2xl">{active.name}</h3>
-                  <div className="text-sm text-white/50 italic mb-8 font-light max-w-xl">{active.role}</div>
-                  <p className="text-sm leading-[1.8] text-white/40 tracking-wide font-normal max-w-xl mb-12">{active.description}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-white/10 max-w-3xl">
+                      {active.stats.map((s) => (
+                        <div key={s.label} className="flex flex-col">
+                          <span className="intel-font-mono text-[8px] tracking-[0.15em] text-white/30 mb-1.5">{s.label}</span>
+                          <span className="text-xs font-semibold text-white/85 tracking-wide">{s.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-white/10 max-w-3xl">
-                    {active.stats.map((s) => (
-                      <div key={s.label} className="flex flex-col">
-                        <span className="intel-font-mono text-[8px] tracking-[0.15em] text-white/30 mb-1.5">{s.label}</span>
-                        <span className="text-xs font-semibold text-white/85 tracking-wide">{s.value}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+              {/* Right Column: Seal Display */}
+              <div className="flex items-center justify-center lg:justify-end lg:pr-4">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={active.id + "-seal"}
+                    initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
+                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, rotate: 5 }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative flex items-center justify-center"
+                  >
+                    {/* Outer glowing ring */}
+                    <div className="absolute inset-0 rounded-full border border-[#d4a44a]/10 bg-[#d4a44a]/[0.01] blur-[1px] scale-110 pointer-events-none" />
+                    <div className="absolute inset-0 rounded-full border border-white/5 pointer-events-none" />
+                    
+                    <div className="relative w-44 h-44 sm:w-56 sm:h-56 lg:w-64 lg:h-64 p-6 bg-black/40 rounded-full backdrop-blur-sm flex items-center justify-center">
+                      <Image
+                        src={active.imageSrc}
+                        alt={`${active.name} Seal`}
+                        width={256}
+                        height={256}
+                        className="object-contain w-full h-full filter drop-shadow-[0_0_15px_rgba(212,164,74,0.05)]"
+                        priority
+                      />
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
           </div>
         </div>
