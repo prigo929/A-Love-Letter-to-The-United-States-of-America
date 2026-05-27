@@ -76,6 +76,63 @@ const QUOTES = [
   },
 ];
 
+type Quote = (typeof QUOTES)[number];
+
+function QuoteContent({
+  quote,
+  className = "",
+}: {
+  quote: Quote;
+  className?: string;
+}) {
+  return (
+    <div className={`text-center px-10 md:px-14 lg:px-16 w-full ${className}`}>
+      {/* Quote mark */}
+      <div
+        className="font-hero text-[120px] text-glory-gold/20 leading-none -mb-8 select-none"
+        aria-hidden="true"
+      >
+        "
+      </div>
+
+      {/* Gold line */}
+      <div
+        className="w-16 h-0.5 bg-glory-gold mx-auto mb-6"
+        aria-hidden="true"
+      />
+
+      <blockquote>
+        <p className="font-display text-2xl md:text-3xl lg:text-4xl text-white italic leading-relaxed mb-6">
+          "{quote.quote}"
+        </p>
+        <footer className="flex flex-col items-center gap-1">
+          <div className="flex gap-1 mb-2" aria-hidden="true">
+            {[...Array(5)].map((_, i) => (
+              <Star
+                key={i}
+                className="w-3 h-3 fill-glory-gold text-glory-gold"
+              />
+            ))}
+          </div>
+          <cite className="not-italic font-body font-semibold text-white text-lg">
+            — {quote.attribution}
+            {quote.year && (
+              <span className="text-white/50 font-normal text-base ml-2">
+                ({quote.year})
+              </span>
+            )}
+          </cite>
+          {quote.role && (
+            <span className="font-body text-sm text-white/60 max-w-md text-center">
+              {quote.role}
+            </span>
+          )}
+        </footer>
+      </blockquote>
+    </div>
+  );
+}
+
 export function QuoteCarousel() {
   const { locale } = useLanguage();
   const [current, setCurrent] = useState(0);
@@ -183,7 +240,7 @@ export function QuoteCarousel() {
 
   return (
     <section
-      className="bg-glory-blue relative overflow-hidden py-24 md:py-36"
+      className="bg-glory-blue relative overflow-hidden py-20 md:py-32"
       aria-labelledby="quotes-heading"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -194,14 +251,14 @@ export function QuoteCarousel() {
         aria-hidden="true"
       />
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-8">
         {/* Eyebrow */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
           <p className="section-eyebrow justify-center text-glory-gold/80">
             {copy.eyebrow}
@@ -212,60 +269,34 @@ export function QuoteCarousel() {
         </motion.div>
 
         {/* Quote display */}
-        <div className="relative min-h-[280px] flex items-center">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={quote.id}
-              variants={quoteEnter}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="text-center px-12 md:px-20 w-full"
-            >
-              {/* Quote mark */}
-              <div
-                className="font-hero text-[120px] text-glory-gold/20 leading-none -mb-8 select-none"
-                aria-hidden="true"
-              >
-                "
-              </div>
-
-              {/* Gold line */}
-              <div
-                className="w-16 h-0.5 bg-glory-gold mx-auto mb-8"
-                aria-hidden="true"
+        <div className="relative">
+          <div
+            className="invisible grid items-center"
+            aria-hidden="true"
+          >
+            {quotes.map((q) => (
+              <QuoteContent
+                key={q.id}
+                quote={q}
+                className="col-start-1 row-start-1"
               />
+            ))}
+          </div>
 
-              <blockquote>
-                <p className="font-display text-2xl md:text-3xl lg:text-4xl text-white italic leading-relaxed mb-8">
-                  "{quote.quote}"
-                </p>
-                <footer className="flex flex-col items-center gap-1">
-                  <div className="flex gap-1 mb-2" aria-hidden="true">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-3 h-3 fill-glory-gold text-glory-gold"
-                      />
-                    ))}
-                  </div>
-                  <cite className="not-italic font-body font-semibold text-white text-lg">
-                    — {quote.attribution}
-                    {quote.year && (
-                      <span className="text-white/50 font-normal text-base ml-2">
-                        ({quote.year})
-                      </span>
-                    )}
-                  </cite>
-                  {quote.role && (
-                    <span className="font-body text-sm text-white/60 max-w-md text-center">
-                      {quote.role}
-                    </span>
-                  )}
-                </footer>
-              </blockquote>
-            </motion.div>
-          </AnimatePresence>
+          <div className="absolute inset-0 flex items-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={quote.id}
+                variants={quoteEnter}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="w-full"
+              >
+                <QuoteContent quote={quote} />
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
           {/* Prev / Next */}
           <button
@@ -286,7 +317,7 @@ export function QuoteCarousel() {
 
         {/* Dot indicators */}
         <div
-          className="flex justify-center gap-2 mt-10"
+          className="flex justify-center gap-2 mt-8"
           role="tablist"
           aria-label={copy.navigation}
         >
