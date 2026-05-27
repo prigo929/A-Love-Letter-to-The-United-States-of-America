@@ -29,11 +29,6 @@ export default async function ExplorerPage() {
     nickname: locale === "ro" ? "Pseudonim" : "Nickname",
     industry: locale === "ro" ? "Sector Principal" : "Key Sector",
     story: locale === "ro" ? "Cronică Regională" : "Regional Chronicle",
-    compareTitle: locale === "ro" ? "Comparație State" : "State Comparison HUD",
-    compareDesc: locale === "ro" 
-      ? "Comparație tactică detaliată între resursele economice, demografice și dimensiunea a două state selectate." 
-      : "Detailed tactical comparison of economic resources, demographics, and spatial dimensions between two selected states.",
-    comparisonHud: locale === "ro" ? "HUD Comparație" : "Comparison HUD",
     allRegions: locale === "ro" ? "Toate" : "All",
     west: locale === "ro" ? "Vest" : "West",
     south: locale === "ro" ? "Sud" : "South",
@@ -46,9 +41,6 @@ export default async function ExplorerPage() {
     rankLabel: locale === "ro" ? "Rang" : "Rank",
     noResults: locale === "ro" ? "Nu s-au găsit state pentru selecția făcută." : "No states matching current filter criteria.",
     selectedState: locale === "ro" ? "Stat Selectat" : "Selected State",
-    compareStats: locale === "ro" ? "Statistici Comparație" : "Compare Stats",
-    clearCompare: locale === "ro" ? "Resetează" : "Clear Compare",
-    vs: "VS",
     statehoodOrderLabel: locale === "ro" ? "Ordine Aderare" : "Statehood Entry",
     detailsTitle: locale === "ro" ? "State Găsite" : "States Directory",
   };
