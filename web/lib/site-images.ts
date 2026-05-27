@@ -57,6 +57,11 @@ import fa18Landing from "@/IMAGES/Military/Navy/us-navy-fa18f-super-hornet-landi
 import ticonderogaCruiser from "@/IMAGES/Military/Navy/us-navy-ticonderoga-cruiser-san-diego.jpg";
 import carrierStrikeGroupFormation from "@/IMAGES/Military/Navy/us-navy-carrier-strike-group-formation.jpg";
 import spaceForceLaunch from "@/IMAGES/Military/Space Force/us-space-force-falcon9-launch.jpg";
+import spaceForceSputnik from "@/IMAGES/Military/Space Force/Sputnik.jpg";
+import spaceForceAfscLogo from "@/IMAGES/Military/Space Force/Air Force Space Command Logo.jpg";
+import spaceForceGpsEarth from "@/IMAGES/Military/Space Force/GPS - Earth and Sattelite.jpg";
+import spaceForceLaunchPoster from "@/IMAGES/Military/Space Force/US Space Force Launch poster.jpg";
+import spaceForceGuardiansPoster from "@/IMAGES/Military/Space Force/US Space Force Guardians poster.jpg";
 import ac130Ghostrider from "@/IMAGES/Military/Air Force/us-air-force-ac130j-ghostrider-flight.jpg";
 import f22Formation from "@/IMAGES/Military/Air Force/us-air-force-f22-raptor-formation.jpg";
 import airForcePersonnel from "@/IMAGES/Military/Air Force/us-air-force-personnel-c17-globemaster.jpg";
@@ -210,5 +215,10 @@ export const SITE_IMAGES = {
     earth: globalLeadership.src,
     earthNight: homeUsaAtNightFromSpace.src,
     spacex: homeSpacexLaunch.src,
+    sputnik: spaceForceSputnik.src,
+    afscLogo: spaceForceAfscLogo.src,
+    gpsEarth: spaceForceGpsEarth.src,
+    launchPoster: spaceForceLaunchPoster.src,
+    guardiansPoster: spaceForceGuardiansPoster.src,
   },
 } as const;

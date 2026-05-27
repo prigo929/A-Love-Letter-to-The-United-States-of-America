@@ -307,7 +307,7 @@ export const SF_TIMELINE: SpaceForceHeritageEvent[] = [
     description:
       "The launch of Sputnik makes orbit a national-security priority and starts the race to build military warning, communications, weather, and navigation systems in space.",
     significance: "Strategic space age begins",
-    imageSrc: SITE_IMAGES.spaceForce.earth,
+    imageSrc: SITE_IMAGES.spaceForce.sputnik,
   },
   {
     year: "1982",
@@ -315,7 +315,7 @@ export const SF_TIMELINE: SpaceForceHeritageEvent[] = [
     description:
       "Air Force Space Command is established to organize military space operations decades before the Space Force becomes an independent service.",
     significance: "Dedicated space command culture",
-    imageSrc: SITE_IMAGES.spaceForce.earthNight,
+    imageSrc: SITE_IMAGES.spaceForce.afscLogo,
   },
   {
     year: "1995",
@@ -323,7 +323,7 @@ export const SF_TIMELINE: SpaceForceHeritageEvent[] = [
     description:
       "GPS matures into a global utility and military advantage, transforming precision strike, timing, navigation, logistics, and civilian infrastructure.",
     significance: "PNT becomes foundational",
-    imageSrc: SITE_IMAGES.spaceForce.earthNight,
+    imageSrc: SITE_IMAGES.spaceForce.gpsEarth,
   },
   {
     year: "2019",
@@ -331,7 +331,7 @@ export const SF_TIMELINE: SpaceForceHeritageEvent[] = [
     description:
       "The Space Force is created on December 20, 2019, separating military space responsibilities into a new branch focused on orbital security.",
     significance: "First new U.S. service since 1947",
-    imageSrc: SITE_IMAGES.spaceForce.launch,
+    imageSrc: SITE_IMAGES.spaceForce.launchPoster,
   },
   {
     year: "2020",
@@ -339,7 +339,7 @@ export const SF_TIMELINE: SpaceForceHeritageEvent[] = [
     description:
       "Space Force personnel become Guardians, marking a distinct service identity built around space operations, acquisition, intelligence, and cyber defense.",
     significance: "Guardian identity",
-    imageSrc: SITE_IMAGES.spaceForce.spacex,
+    imageSrc: SITE_IMAGES.spaceForce.guardiansPoster,
   },
   {
     year: "2024",
