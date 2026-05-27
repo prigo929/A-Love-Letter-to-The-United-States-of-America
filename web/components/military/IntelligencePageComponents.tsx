@@ -458,11 +458,8 @@ export function IntelligenceCapabilityGrid({ capabilities, locale = "en" }: { ca
                   </span>
                 </div>
 
-                {/* Accent glow helper */}
-                <div className="hidden lg:block h-12 w-12 rounded-full blur-2xl shrink-0" style={{
-                  background: cap.accent,
-                  opacity: 0.15
-                }} />
+                {/* Sleek inline indicator */}
+                <div className="hidden lg:block h-px w-8 bg-white/10 shrink-0" />
               </motion.div>
             );
           })}
@@ -501,8 +498,7 @@ export function IntelligenceOperationsConsole({ nodes, locale = "en" }: { nodes:
               viewport={{ once: true, margin: "-40px" }}
               variants={fadeUp}
               transition={{ duration: 0.8, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="intel-panel p-8 flex flex-col justify-between min-h-[300px] rounded-sm hover:border-white/10 transition-colors duration-300"
-              style={{ borderLeft: `2.5px solid ${node.accent}` }}
+              className="intel-panel p-8 flex flex-col justify-between min-h-[300px] rounded-sm border-l-2 border-white/10 hover:border-l-[#d4a44a] transition-all duration-300"
             >
               <div>
                 <div className="flex items-center gap-2 mb-3">
@@ -510,7 +506,7 @@ export function IntelligenceOperationsConsole({ nodes, locale = "en" }: { nodes:
                   <span className="intel-font-mono text-[8px] tracking-[0.15em] text-white/30">{node.location}</span>
                 </div>
                 <h3 className="intel-font-display text-lg font-bold tracking-tight text-white mb-2">{node.name}</h3>
-                <div className="intel-font-mono text-[7px] tracking-[0.2em] mb-5 uppercase opacity-60" style={{ color: node.accent }}>{node.role}</div>
+                <div className="intel-font-mono text-[7px] tracking-[0.2em] mb-5 uppercase text-[#d4a44a]/80 font-semibold">{node.role}</div>
                 <p className="text-[12px] leading-[1.7] text-white/40 tracking-wide font-normal">{node.description}</p>
               </div>
 
@@ -614,6 +610,8 @@ export function IntelligenceHeritageTimeline({ events, locale = "en" }: { events
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function IntelligenceFutureStack({ programs, locale = "en" }: { programs: IntelligenceFutureProgram[]; locale?: Locale }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = programs[activeIndex];
   const isRo = locale === "ro";
 
   return (
@@ -628,38 +626,97 @@ export function IntelligenceFutureStack({ programs, locale = "en" }: { programs:
             : "The critical technological systems under development that will define cryptanalysis and global sensor networks."}
         />
 
-        {/* Blueprint-style 2x2 grids showing specs directly without click tabs */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-16">
-          {programs.map((program, index) => (
-            <motion.div
-              key={program.label}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-40px" }}
-              variants={fadeUp}
-              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="intel-panel p-8 sm:p-10 flex flex-col justify-between min-h-[380px] rounded-sm hover:border-white/10 transition-all duration-300"
-            >
-              <div>
-                <div className="flex justify-between items-start mb-4">
-                  <span className="intel-font-mono text-[8px] tracking-[0.15em] text-[#d4a44a] border border-[#d4a44a]/20 px-2 py-0.5 rounded-sm bg-[#d4a44a]/5">{program.status}</span>
-                  <span className="intel-font-mono text-[8px] text-white/20 tracking-wider">PROJECT CODE: {program.label.toUpperCase()}</span>
-                </div>
-                <h3 className="intel-font-display text-xl sm:text-2xl font-bold tracking-tight text-white mb-2 leading-tight">{program.title}</h3>
-                <div className="intel-font-mono text-[9px] tracking-[0.12em] text-[#38bdf8] mb-6">{program.capability}</div>
-                <p className="text-[13px] leading-[1.8] text-white/40 tracking-wide font-normal mb-8 max-w-xl">{program.description}</p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 pt-6 border-t border-white/[0.04]">
-                {program.specs.map((s) => (
-                  <div key={s.label} className="bg-white/[0.01] border border-white/[0.03] p-4 rounded-sm flex flex-col justify-center">
-                    <div className="intel-font-mono text-[7px] tracking-[0.15em] text-white/30 mb-1">{s.label}</div>
-                    <div className="intel-font-display text-xs font-semibold text-white/80">{s.value}</div>
+        {/* 2-Column Split Briefing slide deck */}
+        <div className="grid overflow-hidden border border-white/[0.04] bg-[#030406] lg:grid-cols-[300px_1fr] min-h-[500px] mt-16 rounded-sm shadow-2xl">
+          {/* Left panel selectors */}
+          <div className="flex flex-col border-b lg:border-b-0 lg:border-r border-white/[0.04] bg-white/[0.01]">
+            {programs.map((p, i) => {
+              const selected = activeIndex === i;
+              return (
+                <button
+                  key={p.label}
+                  onClick={() => setActiveIndex(i)}
+                  className={cn(
+                    "relative text-left px-8 py-8 transition-all duration-300 border-b border-white/[0.03] last:border-b-0 flex flex-col justify-center",
+                    selected ? "bg-white/[0.03]" : "hover:bg-white/[0.01]"
+                  )}
+                >
+                  {selected && (
+                    <motion.div
+                      layoutId="intel-program-indicator"
+                      className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#d4a44a]"
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                    />
+                  )}
+                  <div className="intel-font-mono text-[8px] tracking-[0.15em] text-white/30 mb-2">{p.status}</div>
+                  <div className={cn(
+                    "intel-font-display text-md font-semibold tracking-tight transition-colors",
+                    selected ? "text-white" : "text-white/45"
+                  )}>
+                    {p.title}
                   </div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Right panel presentation dossier */}
+          <div className="relative flex flex-col justify-end p-8 sm:p-12 lg:p-16 overflow-hidden min-h-[500px]">
+            {/* Background image related to the active program */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.label + "-bg"}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={active.imageSrc}
+                  alt={active.title}
+                  fill
+                  className="object-cover brightness-[0.13] saturate-[0.4] scale-102"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  placeholder="blur"
+                  blurDataURL={BLUR_PLACEHOLDER}
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Vignette Overlay */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.95)_0%,rgba(0,0,0,0.5)_50%,rgba(0,0,0,0.8)_100%)] pointer-events-none" />
+
+            <div className="relative z-10 w-full">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active.label + "-details"}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="flex flex-wrap justify-between items-center gap-2 mb-4">
+                    <span className="intel-font-mono text-[8px] tracking-[0.15em] text-[#d4a44a]">{active.status}</span>
+                    <span className="intel-font-mono text-[8px] text-white/20 tracking-wider">CODE: {active.label.toUpperCase()}</span>
+                  </div>
+                  <h3 className="intel-font-display text-2xl sm:text-3xl font-bold tracking-tight text-white mb-3 leading-tight">{active.title}</h3>
+                  <div className="intel-font-mono text-[9px] tracking-[0.12em] text-white/40 mb-6">{active.capability}</div>
+                  <p className="text-[13px] leading-[1.85] text-white/40 tracking-wide font-normal max-w-2xl mb-10">{active.description}</p>
+
+                  {/* Sleek Technical specs list */}
+                  <div className="border-t border-white/10 divide-y divide-white/[0.04] max-w-3xl">
+                    {active.specs.map((s) => (
+                      <div key={s.label} className="grid grid-cols-1 sm:grid-cols-[200px_1fr] py-3.5 items-center">
+                        <span className="intel-font-mono text-[8px] tracking-[0.15em] text-[#d4a44a]">{s.label}</span>
+                        <span className="intel-font-display text-[13px] text-white/70 font-normal mt-1 sm:mt-0">{s.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
         </div>
       </div>
     </section>
