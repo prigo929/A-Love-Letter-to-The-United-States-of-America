@@ -54,6 +54,23 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
       "This is an elevated, dusk view of the Chicago River flowing through the downtown architectural canyon. The perspective looks down the river corridor from behind a stone balustrade, showing multiple bascule bridges spanning the water. Key elements include the illuminated multi-level Wacker Drive on the left and the distinctive, cylindrical Marina City towers on the right, with city lights beginning to reflect on the water as evening sets in.",
     location: "Chicago, Illinois",
     tone: "Dusk city canyon",
+  },
+  "Cities/Seattle Skyline Day.jpg": {
+    alt: "Daytime view of the Seattle skyline under clear light",
+    caption: "Seattle Skyline Day",
+    description:
+      "A clean daytime view of the Seattle skyline, with the city profile presented as a crisp Pacific Northwest urban frame.",
+    location: "Seattle, Washington",
+    tone: "Northwest skyline",
+    featured: true,
+  },
+  "Cities/Dallas with the interstate and downtown.jpg": {
+    alt: "Dallas skyline and interstate infrastructure leading into downtown",
+    caption: "Dallas with the Interstate and Downtown",
+    description:
+      "A city-scale view of Dallas where freeway infrastructure leads the eye into the downtown skyline, tying urban growth to movement and metropolitan scale.",
+    location: "Dallas, Texas",
+    tone: "Interstate skyline",
     featured: true,
   },
   "Cities/Golden Gate Bridge.jpg": {
@@ -63,7 +80,6 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
       "This is an elevated, golden-hour view of the Golden Gate Bridge spanning the San Francisco Bay, looking southward from Marin County. The iconic suspension structure, defined by its massive International Orange towers and sweeping main cables, dominates the foreground and leads the eye diagonally across the strait. The San Francisco city skyline is faintly visible on the distant left horizon, while the coastline of the Presidio anchors the far end of the span. The scene is bathed in warm, low-angle sunlight against a clear gradient sky, with a faint crescent moon high above the primary tower and a single white sailboat navigating the dark blue water in the lower right.",
     location: "San Francisco, California",
     tone: "Golden hour span",
-    featured: true,
   },
   "USA from Space/USA at night from Space.jpg": {
     alt: "The United States at night seen from orbit, with major population centers glowing across the continent",
@@ -72,7 +88,6 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
       "The United States at night seen from orbit, with major population centers glowing across the continent and revealing the scale of the country's cities, infrastructure, and connected regions.",
     location: "Low Earth Orbit",
     tone: "Continental scale",
-    featured: true,
   },
   "Culture/Statue Of Liberty.jpg": {
     alt: "Statue of Liberty viewed in clear daylight against a bright blue sky",
@@ -126,11 +141,13 @@ function toTitle(value: string) {
 }
 
 function toId(path: string) {
-  return path
+  const slug = path
     .replace(/\.[^.]+$/, "")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
+
+  return slug || `gallery-${encodeURIComponent(path)}`;
 }
 
 function getOrientation(src: StaticImageData): GalleryImage["orientation"] {

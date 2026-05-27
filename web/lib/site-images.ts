@@ -33,7 +33,6 @@ import grandTeton from "@/IMAGES/Landscapes/Yosemite National Park Road.jpg";
 import homeGrandCanyon from "@/IMAGES/Landscapes/Grand Canyon National Park.jpg";
 import yosemiteNationalPark from "@/IMAGES/Landscapes/Yosemite National Park.jpg";
 import yellowstoneNationalPark from "@/IMAGES/Landscapes/Yellowstone National Park.jpg";
-import yellowstonePrismatic from "@/IMAGES/Landscapes/yellowstone-grand-prismatic-spring-sunset.jpg";
 import zionNationalPark from "@/IMAGES/Landscapes/Zion National Park.jpg";
 import greatLakesChicago from "@/IMAGES/Landscapes/the-great-lakes-with-chicago.jpg";
 import globalLeadership from "@/IMAGES/USA from Space/Planet Earth.jpg";

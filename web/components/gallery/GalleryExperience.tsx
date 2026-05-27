@@ -174,6 +174,7 @@ function ImageDialog({
   return (
     <AnimatePresence>
       <motion.div
+        key="gallery-dialog-backdrop"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -181,6 +182,7 @@ function ImageDialog({
         onClick={onClose}
       />
       <motion.div
+        key="gallery-dialog-panel"
         initial={{ opacity: 0, y: 20, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.98 }}
@@ -371,7 +373,7 @@ export function GalleryExperience({
             <div className="grid gap-3 md:h-[700px] md:grid-cols-4 md:grid-rows-2">
               {featuredImages.map((image, index) => (
                 <FeaturedFrame
-                  key={image.id}
+                  key={image.path}
                   image={image}
                   index={index}
                   onSelect={setSelectedImage}
@@ -424,7 +426,7 @@ export function GalleryExperience({
                 <AnimatePresence mode="popLayout">
                   {group.images.map((image) => (
                     <GalleryTile
-                      key={image.id}
+                      key={image.path}
                       image={image}
                       onSelect={setSelectedImage}
                     />
