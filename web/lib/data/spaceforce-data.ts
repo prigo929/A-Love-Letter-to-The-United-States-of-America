@@ -44,6 +44,8 @@ export interface SpaceForceHeritageEvent {
   description: string;
   significance: string;
   imageSrc: string;
+  aspectClass?: string;
+  imageFit?: "cover" | "contain";
 }
 
 export interface SpaceForceFleetComparison {
@@ -308,6 +310,8 @@ export const SF_TIMELINE: SpaceForceHeritageEvent[] = [
       "The launch of Sputnik makes orbit a national-security priority and starts the race to build military warning, communications, weather, and navigation systems in space.",
     significance: "Strategic space age begins",
     imageSrc: SITE_IMAGES.spaceForce.sputnik,
+    aspectClass: "aspect-[4/3]",
+    imageFit: "cover",
   },
   {
     year: "1982",
@@ -316,6 +320,8 @@ export const SF_TIMELINE: SpaceForceHeritageEvent[] = [
       "Air Force Space Command is established to organize military space operations decades before the Space Force becomes an independent service.",
     significance: "Dedicated space command culture",
     imageSrc: SITE_IMAGES.spaceForce.afscLogo,
+    aspectClass: "aspect-square",
+    imageFit: "contain",
   },
   {
     year: "1995",
@@ -324,6 +330,8 @@ export const SF_TIMELINE: SpaceForceHeritageEvent[] = [
       "GPS matures into a global utility and military advantage, transforming precision strike, timing, navigation, logistics, and civilian infrastructure.",
     significance: "PNT becomes foundational",
     imageSrc: SITE_IMAGES.spaceForce.gpsEarth,
+    aspectClass: "aspect-square",
+    imageFit: "cover",
   },
   {
     year: "2019",
@@ -332,6 +340,8 @@ export const SF_TIMELINE: SpaceForceHeritageEvent[] = [
       "The Space Force is created on December 20, 2019, separating military space responsibilities into a new branch focused on orbital security.",
     significance: "First new U.S. service since 1947",
     imageSrc: SITE_IMAGES.spaceForce.launchPoster,
+    aspectClass: "aspect-[3/4]",
+    imageFit: "cover",
   },
   {
     year: "2020",
@@ -340,6 +350,8 @@ export const SF_TIMELINE: SpaceForceHeritageEvent[] = [
       "Space Force personnel become Guardians, marking a distinct service identity built around space operations, acquisition, intelligence, and cyber defense.",
     significance: "Guardian identity",
     imageSrc: SITE_IMAGES.spaceForce.guardiansPoster,
+    aspectClass: "aspect-[16/9]",
+    imageFit: "cover",
   },
   {
     year: "2024",
@@ -348,6 +360,8 @@ export const SF_TIMELINE: SpaceForceHeritageEvent[] = [
       "The service accelerates resilient architectures, proliferated constellations, cyber defense, and operational integration as orbit becomes more congested and contested.",
     significance: "Resilience becomes doctrine",
     imageSrc: SITE_IMAGES.spaceForce.earth,
+    aspectClass: "aspect-[16/9]",
+    imageFit: "cover",
   },
 ];
 

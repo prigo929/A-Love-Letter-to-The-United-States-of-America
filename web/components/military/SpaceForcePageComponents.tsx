@@ -997,15 +997,16 @@ export function SpaceForceHeritageTimeline({ events, locale = "en" }: { events: 
                   {/* Enhancement 4: Alternating aspect + sepia */}
                   {event.imageSrc && (
                     <div className={cn(
-                      "relative w-full overflow-hidden mb-5 rounded-sm",
-                      isLandmark ? "aspect-[4/3]" : "aspect-[16/9]"
+                      "relative w-full overflow-hidden mb-5 rounded-sm border border-white/5 bg-[#050608]/60",
+                      event.aspectClass || (isLandmark ? "aspect-[4/3]" : "aspect-[16/9]")
                     )}>
                       <Image
                         src={event.imageSrc}
                         alt={event.title}
                         fill
                         className={cn(
-                          "object-cover transition-all duration-700 hover:brightness-[0.65] hover:saturate-[0.95]",
+                          event.imageFit === "contain" ? "object-contain px-4 py-2" : "object-cover",
+                          "transition-all duration-700 hover:brightness-[0.65] hover:saturate-[0.95]",
                           isVintage
                             ? "brightness-[0.5] saturate-[0.45] sepia-[0.3]"
                             : "brightness-[0.5] saturate-[0.75]"
@@ -1014,7 +1015,9 @@ export function SpaceForceHeritageTimeline({ events, locale = "en" }: { events: 
                         placeholder="blur"
                         blurDataURL={BLUR_PLACEHOLDER}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+                      {event.imageFit !== "contain" && (
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+                      )}
                     </div>
                   )}
 
