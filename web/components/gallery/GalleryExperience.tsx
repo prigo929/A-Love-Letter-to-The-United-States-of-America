@@ -5,14 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import type { StaticImageData } from "next/image";
-import {
-  Camera,
-  ChevronRight,
-  Grid3X3,
-  Home,
-  MapPin,
-  X,
-} from "lucide-react";
+import { Camera, ChevronRight, Grid3X3, Home, MapPin, X } from "lucide-react";
 import type { GalleryCategory, GalleryImage } from "@/lib/data/gallery";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 
@@ -45,62 +38,39 @@ function categoryLabel(category: GalleryCategory, allLabel: string) {
 
 function FeaturedFrame({
   image,
-  index,
   onSelect,
 }: {
   image: GalleryImage;
-  index: number;
   onSelect: (image: GalleryImage) => void;
 }) {
-  const isPrimary = index === 0;
-
   return (
     <button
       type="button"
       onClick={() => onSelect(image)}
-      className={cn(
-        "group relative block h-[320px] overflow-hidden rounded-lg border border-white/10 bg-white/5 text-left shadow-2xl md:h-full",
-        isPrimary
-          ? "md:col-span-2 md:row-span-2"
-          : "md:min-h-0",
-      )}
+      className="group relative block h-[320px] overflow-hidden rounded-lg border border-white/10 bg-white/5 text-left shadow-2xl md:h-full"
     >
       <Image
         src={image.src}
         alt={image.alt}
         fill
         className="object-cover transition duration-700 group-hover:scale-[1.03] group-hover:saturate-125"
-        sizes={
-          isPrimary
-            ? "(max-width: 768px) 100vw, 58vw"
-            : "(max-width: 768px) 100vw, 28vw"
-        }
+        sizes="(max-width: 768px) 100vw, 48vw"
         placeholder="blur"
         blurDataURL={BLUR_PLACEHOLDER}
-        priority={isPrimary}
+        priority
       />
       <div
         className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/18 to-transparent"
         aria-hidden="true"
       />
-      <div className={cn("absolute inset-x-0 bottom-0", isPrimary ? "p-5 md:p-7" : "p-4")}>
+      <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
         <p className="mb-2 w-fit max-w-full truncate rounded-full border border-white/15 bg-black/35 px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 backdrop-blur">
           {image.tone}
         </p>
-        <h2
-          className={cn(
-            "font-display leading-tight text-white",
-            isPrimary ? "text-2xl md:text-4xl" : "text-xl md:text-2xl",
-          )}
-        >
+        <h2 className="font-display text-2xl leading-tight text-white md:text-4xl">
           {image.caption}
         </h2>
-        <p
-          className={cn(
-            "mt-2 max-w-2xl font-body leading-relaxed text-white/65",
-            isPrimary ? "line-clamp-2 text-sm" : "line-clamp-2 text-xs",
-          )}
-        >
+        <p className="mt-2 max-w-2xl font-body leading-relaxed text-white/65 line-clamp-2 text-sm">
           {image.description}
         </p>
       </div>
@@ -287,7 +257,9 @@ export function GalleryExperience({
     () =>
       ORIENTATION_GROUPS.map((group) => ({
         ...group,
-        images: filteredImages.filter((image) => image.orientation === group.key),
+        images: filteredImages.filter(
+          (image) => image.orientation === group.key,
+        ),
       })).filter((group) => group.images.length > 0),
     [filteredImages],
   );
@@ -370,12 +342,11 @@ export function GalleryExperience({
               </div>
             </div>
 
-            <div className="grid gap-3 md:h-[700px] md:grid-cols-4 md:grid-rows-2">
-              {featuredImages.map((image, index) => (
+            <div className="grid gap-3 md:h-[700px] md:grid-cols-2">
+              {featuredImages.map((image) => (
                 <FeaturedFrame
                   key={image.path}
                   image={image}
-                  index={index}
                   onSelect={setSelectedImage}
                 />
               ))}
