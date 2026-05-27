@@ -76,6 +76,7 @@ export default async function IntelligencePage() {
       <ParallaxMilitaryHero
         imageSrc={SITE_IMAGES.cyberOps}
         imageAlt="U.S. Cyber Command operations room"
+        videoSrc="/videos/military/cia-edit.mp4"
         title={isRo ? "DOMINANȚĂ INVIZIBILĂ" : "INVISIBLE DOMINANCE"}
         subtitle={isRo ? "SISTEMUL DE INFORMAȚII ȘI SECURITATE CIBERNETICĂ AL STATELOR UNITE" : "UNITED STATES INTELLIGENCE & CYBER SECURITY COMPLEX"}
         tagline={isRo ? "HUMINT · SIGINT · GEOINT · RAZBOI CIBERNETIC" : "HUMINT · SIGINT · GEOINT · CYBER WARFARE"}
