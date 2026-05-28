@@ -23,8 +23,8 @@ const INTEL = {
   black: "#000000",
   surface: "#050505",
   paper: "#E8E2D5",
-  paperDim: "rgba(232, 226, 213, 0.40)",
-  paperFaint: "rgba(232, 226, 213, 0.15)",
+  paperDim: "rgba(232, 226, 213, 0.50)",
+  paperFaint: "rgba(232, 226, 213, 0.20)",
   green: "#1C3A1C",
   greenText: "#2A4A2A",
   greenBright: "#3A5A3A",
@@ -57,9 +57,9 @@ export function IntelClassifiedStyles() {
       /* Bureaucratic voice — monospace, all-caps, wide tracking */
       .intel-bureaucratic {
         font-family: var(--font-mono), "SFMono-Regular", Consolas, monospace;
-        letter-spacing: 0.2em;
+        letter-spacing: 0.15em;
         text-transform: uppercase;
-        font-size: 10px;
+        font-size: clamp(12px, 1vw, 14px);
         line-height: 1.6;
         color: var(--intel-green-text);
       }
@@ -73,12 +73,12 @@ export function IntelClassifiedStyles() {
         color: var(--intel-paper);
       }
 
-      /* Document body text */
+      /* Document body text — scaled up to match military pages */
       .intel-body {
-        font-family: var(--font-mono), monospace;
-        font-size: 12px;
-        line-height: 2.0;
-        letter-spacing: 0.04em;
+        font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+        font-size: clamp(14px, 1.2vw, 17px);
+        line-height: 1.9;
+        letter-spacing: 0.02em;
         color: var(--intel-paper-dim);
       }
 
@@ -87,8 +87,8 @@ export function IntelClassifiedStyles() {
         background: var(--intel-redact);
         color: transparent;
         user-select: none;
-        padding: 0 2px;
-        margin: 0 1px;
+        padding: 1px 4px;
+        margin: 0 2px;
         display: inline;
       }
 
@@ -104,75 +104,15 @@ export function IntelClassifiedStyles() {
       .intel-classified * {
         --mil-accent: ${INTEL.greenText};
       }
-
-      /* Scrollbar styling for the classified page */
-      .intel-classified::-webkit-scrollbar {
-        width: 4px;
-      }
-      .intel-classified::-webkit-scrollbar-track {
-        background: ${INTEL.black};
-      }
-      .intel-classified::-webkit-scrollbar-thumb {
-        background: ${INTEL.green};
-        border-radius: 0;
-      }
     `}</style>
   );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. ClassificationHeader — Fixed TOP SECRET bar
+// 2. EntrySequence — Typing animation
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function ClassificationHeader() {
-  const closingRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll();
-  const [closingInView, setClosingInView] = useState(false);
-
-  // Track when the closing section enters viewport
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = scrolled / docHeight;
-      // Start fading at 85% scroll, fully gone at 100%
-      setClosingInView(progress > 0.85);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const opacity = useTransform(scrollYProgress, [0.85, 1.0], [1, 0]);
-
-  return (
-    <motion.div
-      style={{ opacity }}
-      className="fixed top-0 inset-x-0 z-[90] flex items-center justify-center h-8 border-b"
-      data-classification-header
-    >
-      <div
-        className="absolute inset-0"
-        style={{ background: INTEL.surface, borderBottomColor: INTEL.border }}
-      />
-      <span
-        className="intel-bureaucratic relative z-10"
-        style={{
-          fontSize: "9px",
-          letterSpacing: "0.35em",
-          color: INTEL.greenText,
-        }}
-      >
-        TOP SECRET // SI // TK // NOFORN // ORCON
-      </span>
-    </motion.div>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// 3. EntrySequence — Typing animation
-// ─────────────────────────────────────────────────────────────────────────────
-
-export function EntrySequence({ onComplete }: { onComplete?: () => void }) {
+export function EntrySequence() {
   const [phase, setPhase] = useState(0);
   const [text, setText] = useState("");
   const [complete, setComplete] = useState(false);
@@ -204,20 +144,17 @@ export function EntrySequence({ onComplete }: { onComplete?: () => void }) {
 
     let cancelled = false;
     const run = async () => {
-      // Phase 0: ACCESSING ARCHIVE...
       setPhase(0);
       await typeText(lines[0], 50);
       if (cancelled) return;
       await new Promise((r) => setTimeout(r, 800));
 
-      // Phase 1: CLEARANCE VERIFIED
       setPhase(1);
       setText("");
       await typeText(lines[1], 45);
       if (cancelled) return;
       await new Promise((r) => setTimeout(r, 600));
 
-      // Phase 2: PROCEED
       setPhase(2);
       setText("");
       await typeText(lines[2], 70);
@@ -225,7 +162,6 @@ export function EntrySequence({ onComplete }: { onComplete?: () => void }) {
       await new Promise((r) => setTimeout(r, 400));
 
       setComplete(true);
-      onComplete?.();
     };
 
     run();
@@ -239,10 +175,10 @@ export function EntrySequence({ onComplete }: { onComplete?: () => void }) {
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
         transition={{ duration: 1.5, delay: 0.2 }}
-        className="flex items-center justify-center py-24"
+        className="flex items-center justify-center py-20"
         style={{ background: INTEL.black }}
       >
-        <span className="intel-bureaucratic" style={{ color: INTEL.greenText, fontSize: "11px" }}>
+        <span className="intel-bureaucratic" style={{ color: INTEL.greenText, fontSize: "13px" }}>
           PROCEED
         </span>
       </motion.div>
@@ -252,7 +188,7 @@ export function EntrySequence({ onComplete }: { onComplete?: () => void }) {
   return (
     <div
       ref={ref}
-      className="flex items-center justify-center py-32"
+      className="flex items-center justify-center py-28"
       style={{ background: INTEL.black }}
     >
       <div className="text-center">
@@ -260,12 +196,12 @@ export function EntrySequence({ onComplete }: { onComplete?: () => void }) {
           className="intel-bureaucratic"
           style={{
             color: INTEL.greenText,
-            fontSize: "11px",
-            letterSpacing: "0.3em",
+            fontSize: "14px",
+            letterSpacing: "0.25em",
           }}
         >
           {text}
-          <span className="animate-pulse">▌</span>
+          <span className="animate-pulse">{"\u258C"}</span>
         </span>
       </div>
     </div>
@@ -273,7 +209,7 @@ export function EntrySequence({ onComplete }: { onComplete?: () => void }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4. SingleStatistic — One massive number
+// 3. SingleStatistic — One massive number
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function SingleStatistic({ locale = "en" }: { locale?: Locale }) {
@@ -291,14 +227,13 @@ export function SingleStatistic({ locale = "en" }: { locale?: Locale }) {
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 2.0, ease: "easeOut" }}
-        className="text-center max-w-3xl"
+        className="text-center max-w-4xl"
       >
-        {/* The number — massive, editorial */}
         <div
           className="intel-editorial"
           style={{
-            fontSize: "clamp(60px, 12vw, 140px)",
-            lineHeight: 1,
+            fontSize: "clamp(72px, 14vw, 180px)",
+            lineHeight: 0.9,
             fontWeight: 400,
             fontStyle: "italic",
             color: INTEL.paper,
@@ -308,15 +243,14 @@ export function SingleStatistic({ locale = "en" }: { locale?: Locale }) {
           1,271,000
         </div>
 
-        {/* The description — tiny bureaucratic */}
-        <div className="mt-8">
+        <div className="mt-10">
           <span
             className="intel-bureaucratic"
             style={{
-              fontSize: "10px",
-              letterSpacing: "0.25em",
+              fontSize: "clamp(12px, 1vw, 15px)",
+              letterSpacing: "0.2em",
               color: INTEL.paperDim,
-              lineHeight: 2.2,
+              lineHeight: 2,
             }}
           >
             {isRo
@@ -330,10 +264,10 @@ export function SingleStatistic({ locale = "en" }: { locale?: Locale }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. AgencyDossier — Vertical scrolling chapters
+// 4. AgencyDossier — Vertical scrolling chapters
 // ─────────────────────────────────────────────────────────────────────────────
 
-function AgencyChapter({ agency, index, isLast }: { agency: IntelligenceAgency; index: number; isLast: boolean }) {
+function AgencyChapter({ agency, isLast }: { agency: IntelligenceAgency; isLast: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -347,12 +281,12 @@ function AgencyChapter({ agency, index, isLast }: { agency: IntelligenceAgency; 
       <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-8 lg:gap-16 items-start">
         {/* Seal — desaturated */}
         <div className="flex justify-center lg:justify-start pt-2">
-          <div className="relative w-32 h-32 lg:w-40 lg:h-40">
+          <div className="relative w-36 h-36 lg:w-44 lg:h-44">
             <Image
               src={agency.imageSrc}
               alt={`${agency.name} Seal`}
-              width={160}
-              height={160}
+              width={176}
+              height={176}
               className="object-contain w-full h-full"
               style={{
                 filter: "grayscale(70%) brightness(0.7) contrast(1.1)",
@@ -364,40 +298,40 @@ function AgencyChapter({ agency, index, isLast }: { agency: IntelligenceAgency; 
 
         {/* Content */}
         <div className="flex flex-col">
-          {/* Agency header — bureaucratic */}
           <div
-            className="intel-bureaucratic mb-4"
-            style={{ fontSize: "10px", color: INTEL.greenText, letterSpacing: "0.25em" }}
+            className="intel-bureaucratic mb-5"
+            style={{ fontSize: "clamp(11px, 0.9vw, 14px)", color: INTEL.greenText, letterSpacing: "0.2em" }}
           >
-            {agency.name.toUpperCase()} // EST. {agency.stats.find((s) => s.label === "Founded" || s.label === "Fondată")?.value || "CLASSIFIED"}
+            {agency.name.toUpperCase()} // EST. {agency.stats.find((s) => s.label === "Founded" || s.label === "Fondat\u0103")?.value || "CLASSIFIED"}
           </div>
 
-          {/* Role — editorial */}
           <div
             className="intel-editorial mb-6"
-            style={{ fontSize: "clamp(20px, 3vw, 32px)", lineHeight: 1.3 }}
+            style={{ fontSize: "clamp(24px, 3.5vw, 42px)", lineHeight: 1.2 }}
           >
             {agency.role}
           </div>
 
-          {/* Body text */}
           <p className="intel-body max-w-2xl mb-8">
             {agency.description}
           </p>
 
-          {/* Stats row */}
-          <div className="flex flex-wrap gap-x-12 gap-y-4">
+          <div className="flex flex-wrap gap-x-14 gap-y-5">
             {agency.stats.map((s) => (
               <div key={s.label} className="flex flex-col">
                 <span
-                  className="intel-bureaucratic mb-1"
-                  style={{ fontSize: "8px", letterSpacing: "0.2em", color: INTEL.greenText }}
+                  className="intel-bureaucratic mb-1.5"
+                  style={{ fontSize: "clamp(10px, 0.8vw, 12px)", letterSpacing: "0.18em", color: INTEL.greenText }}
                 >
                   {s.label.toUpperCase()}
                 </span>
                 <span
-                  className="intel-bureaucratic"
-                  style={{ fontSize: "10px", color: INTEL.paper, letterSpacing: "0.08em" }}
+                  style={{
+                    fontFamily: "var(--font-mono), monospace",
+                    fontSize: "clamp(13px, 1vw, 16px)",
+                    color: INTEL.paper,
+                    letterSpacing: "0.04em",
+                  }}
                 >
                   {s.value}
                 </span>
@@ -407,7 +341,6 @@ function AgencyChapter({ agency, index, isLast }: { agency: IntelligenceAgency; 
         </div>
       </div>
 
-      {/* Separator */}
       {!isLast && (
         <div className="intel-separator my-20 lg:my-28" style={{ background: INTEL.green, opacity: 0.2 }} />
       )}
@@ -420,32 +353,29 @@ export function AgencyDossier({ agencies, locale = "en" }: { agencies: Intellige
 
   return (
     <section className="relative px-6 sm:px-10 lg:px-16 py-28 md:py-40" style={{ background: INTEL.black }}>
-      <div className="mx-auto max-w-[1100px]">
-        {/* Section header */}
-        <div className="mb-28 lg:mb-36">
+      <div className="mx-auto max-w-[1200px]">
+        <div className="mb-24 lg:mb-32">
           <div
             className="intel-bureaucratic mb-8"
-            style={{ fontSize: "9px", letterSpacing: "0.35em", color: INTEL.greenText }}
+            style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: INTEL.greenText }}
           >
-            {isRo ? "DOSARE AGENȚII // NIVEL 5 ACCES" : "AGENCY DOSSIERS // LEVEL 5 ACCESS"}
+            {isRo ? "DOSARE AGEN\u021AII" : "AGENCY DOSSIERS"}
           </div>
           <div
             className="intel-editorial"
-            style={{ fontSize: "clamp(24px, 4vw, 44px)", lineHeight: 1.25 }}
+            style={{ fontSize: "clamp(28px, 5vw, 56px)", lineHeight: 1.2 }}
           >
             {isRo
-              ? "Cele cinci agenții care ancorează sistemul de informații al Statelor Unite."
+              ? "Cele cinci agen\u021Bii care ancoreaz\u0103 sistemul de informa\u021Bii al Statelor Unite."
               : "The five agencies that anchor the intelligence apparatus of the United States."}
           </div>
         </div>
 
-        {/* Agency chapters — static, no interactivity */}
         <div className="space-y-0">
           {agencies.map((agency, i) => (
             <AgencyChapter
               key={agency.id}
               agency={agency}
-              index={i}
               isLast={i === agencies.length - 1}
             />
           ))}
@@ -456,14 +386,14 @@ export function AgencyDossier({ agencies, locale = "en" }: { agencies: Intellige
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 6. DeclassifiedDocument — Intelligence disciplines with redaction bars
+// 5. IntelligenceDisciplines — Clean section (no fake document wrapper)
 // ─────────────────────────────────────────────────────────────────────────────
 
 function RedactedText({ children }: { children: React.ReactNode }) {
   return <span className="intel-redacted">{children}</span>;
 }
 
-export function DeclassifiedDocument({ capabilities, locale = "en" }: { capabilities: IntelligenceCapability[]; locale?: Locale }) {
+export function IntelligenceDisciplines({ capabilities, locale = "en" }: { capabilities: IntelligenceCapability[]; locale?: Locale }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const isRo = locale === "ro";
@@ -478,117 +408,299 @@ export function DeclassifiedDocument({ capabilities, locale = "en" }: { capabili
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="mx-auto max-w-[900px]"
+        className="mx-auto max-w-[1200px]"
       >
-        {/* Document header */}
-        <div
-          className="p-6 sm:p-10 mb-2"
-          style={{ background: INTEL.surface, border: `1px solid ${INTEL.border}` }}
-        >
-          <div className="flex flex-wrap justify-between items-start gap-4 mb-8">
-            <div className="intel-bureaucratic" style={{ fontSize: "9px", color: INTEL.greenText }}>
-              {isRo ? "DOCUMENT DECLASIFICAT" : "DECLASSIFIED DOCUMENT"}
-            </div>
-            <div className="intel-bureaucratic" style={{ fontSize: "8px", color: INTEL.paperFaint }}>
-              REF: IC-2024-DISCIPLINES-001
-            </div>
-          </div>
-
+        {/* Section header */}
+        <div className="mb-24 lg:mb-32">
           <div
-            className="intel-bureaucratic mb-2"
-            style={{ fontSize: "8px", letterSpacing: "0.3em", color: INTEL.greenText }}
+            className="intel-bureaucratic mb-8"
+            style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: INTEL.greenText }}
           >
-            {isRo ? "SUBIECT: DISCIPLINE DE COLECTARE INFORMAȚII" : "SUBJECT: INTELLIGENCE COLLECTION DISCIPLINES"}
+            {isRo ? "DISCIPLINE DE COLECTARE" : "COLLECTION DISCIPLINES"}
           </div>
-          <div className="intel-bureaucratic" style={{ fontSize: "8px", color: INTEL.paperFaint }}>
-            {isRo ? "DATA: DECLASIFICAT PRIN REVIZUIRE AUTOMATIZATĂ" : "DATE: DECLASSIFIED UNDER AUTOMATED REVIEW"}
+          <div
+            className="intel-editorial"
+            style={{ fontSize: "clamp(28px, 5vw, 56px)", lineHeight: 1.2 }}
+          >
+            {isRo
+              ? "Cele cinci moduri fundamentale prin care informa\u021Biile sunt ob\u021Binute."
+              : "The five fundamental modes through which intelligence is gathered."}
           </div>
         </div>
 
-        {/* Document body — disciplines */}
-        <div
-          className="p-6 sm:p-10"
-          style={{ background: INTEL.surface, border: `1px solid ${INTEL.border}` }}
-        >
+        {/* Disciplines — clean alternating layout */}
+        <div className="space-y-0">
           {capabilities.map((cap, i) => (
-            <div key={cap.title} className={cn("pb-10", i < capabilities.length - 1 && "mb-10 border-b")} style={{ borderColor: INTEL.border }}>
-              {/* Discipline designator */}
+            <motion.div
+              key={cap.title}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 1.2, delay: i * 0.1, ease: "easeOut" }}
+            >
               <div
-                className="intel-bureaucratic mb-4"
-                style={{ fontSize: "9px", letterSpacing: "0.25em", color: INTEL.greenText }}
+                className="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-4 md:gap-12 py-12 items-baseline"
+                style={{ borderBottom: `1px solid ${INTEL.border}` }}
               >
-                {cap.kicker}
+                {/* Kicker */}
+                <div
+                  className="intel-bureaucratic"
+                  style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.15em", color: INTEL.greenText }}
+                >
+                  {cap.kicker}
+                </div>
+
+                {/* Content */}
+                <div>
+                  <h3
+                    className="intel-editorial mb-4"
+                    style={{ fontSize: "clamp(22px, 3vw, 36px)", lineHeight: 1.2 }}
+                  >
+                    {cap.title}
+                  </h3>
+
+                  <p className="intel-body max-w-2xl mb-5">
+                    {i === 0 && (
+                      <>
+                        {cap.description.split(".")[0]}.{" "}
+                        <RedactedText>CLASSIFIED INTERCEPT METHODOLOGY</RedactedText>{" "}
+                        {cap.description.split(".").slice(1).join(".")}
+                      </>
+                    )}
+                    {i === 1 && (
+                      <>
+                        {cap.description.split(".")[0]}.{" "}
+                        <RedactedText>OPERATIONAL ASSET IDENTITIES WITHHELD</RedactedText>{" "}
+                        {cap.description.split(".").slice(1).join(".")}
+                      </>
+                    )}
+                    {i === 2 && (
+                      <>
+                        {cap.description.split(".")[0]}.{" "}
+                        {cap.description.split(".").slice(1, 2).join(".")}.{" "}
+                        <RedactedText>RESOLUTION PARAMETERS CLASSIFIED</RedactedText>
+                      </>
+                    )}
+                    {i === 3 && (
+                      <>
+                        <RedactedText>SPECIFIC TARGET INFRASTRUCTURE</RedactedText>{" "}
+                        {cap.description}
+                      </>
+                    )}
+                    {i >= 4 && (
+                      <>
+                        {cap.description.split(".")[0]}.{" "}
+                        <RedactedText>SENSOR ARRAY SPECIFICATIONS</RedactedText>{" "}
+                        {cap.description.split(".").slice(1).join(".")}
+                      </>
+                    )}
+                  </p>
+                </div>
               </div>
-
-              {/* Title */}
-              <h3
-                className="intel-editorial mb-4"
-                style={{
-                  fontSize: "clamp(18px, 2.5vw, 26px)",
-                  fontStyle: "italic",
-                  lineHeight: 1.3,
-                }}
-              >
-                {cap.title}
-              </h3>
-
-              {/* Body with strategic redactions */}
-              <p className="intel-body mb-4">
-                {i === 0 && (
-                  <>
-                    {cap.description.split(".")[0]}.{" "}
-                    <RedactedText>CLASSIFIED INTERCEPT METHODOLOGY</RedactedText>{" "}
-                    {cap.description.split(".").slice(1).join(".")}
-                  </>
-                )}
-                {i === 1 && (
-                  <>
-                    {cap.description.split(".")[0]}.{" "}
-                    <RedactedText>OPERATIONAL ASSET IDENTITIES WITHHELD</RedactedText>{" "}
-                    {cap.description.split(".").slice(1).join(".")}
-                  </>
-                )}
-                {i === 2 && (
-                  <>
-                    {cap.description.split(".")[0]}.{" "}
-                    {cap.description.split(".").slice(1, 2).join(".")}.{" "}
-                    <RedactedText>RESOLUTION PARAMETERS CLASSIFIED</RedactedText>
-                  </>
-                )}
-                {i === 3 && (
-                  <>
-                    <RedactedText>SPECIFIC TARGET INFRASTRUCTURE</RedactedText>{" "}
-                    {cap.description}
-                  </>
-                )}
-                {i >= 4 && (
-                  <>
-                    {cap.description.split(".")[0]}.{" "}
-                    <RedactedText>SENSOR ARRAY SPECIFICATIONS</RedactedText>{" "}
-                    {cap.description.split(".").slice(1).join(".")}
-                  </>
-                )}
-              </p>
-
-              {/* Classification tag */}
-              <div className="intel-bureaucratic" style={{ fontSize: "8px", color: INTEL.paperFaint }}>
-                {cap.stat.toUpperCase()} — {isRo ? "CAPACITATE VERIFICATĂ" : "CAPABILITY VERIFIED"}
-              </div>
-            </div>
+            </motion.div>
           ))}
         </div>
+      </motion.div>
+    </section>
+  );
+}
 
-        {/* Document footer */}
-        <div
-          className="p-4 sm:p-6 mt-2 flex justify-between items-center"
-          style={{ background: INTEL.surface, border: `1px solid ${INTEL.border}` }}
-        >
-          <span className="intel-bureaucratic" style={{ fontSize: "8px", color: INTEL.paperFaint }}>
-            END OF DOCUMENT
-          </span>
-          <span className="intel-bureaucratic" style={{ fontSize: "8px", color: INTEL.greenText }}>
-            PAGE 1 OF 1
-          </span>
+// ─────────────────────────────────────────────────────────────────────────────
+// 6. DeclassifiedOperations — Case files of real operations
+// ─────────────────────────────────────────────────────────────────────────────
+
+interface CaseFile {
+  codename: string;
+  year: string;
+  theater: string;
+  objective: string;
+  outcome: string;
+  summary: string;
+  redactedDetail: string;
+}
+
+const CASE_FILES_EN: CaseFile[] = [
+  {
+    codename: "OPERATION AJAX",
+    year: "1953",
+    theater: "IRAN",
+    objective: "Overthrow of Prime Minister Mohammad Mosaddegh and restoration of Shah Mohammad Reza Pahlavi to consolidated power.",
+    outcome: "Successful. Shah restored. Western petroleum access secured for 25 years.",
+    summary: "A joint CIA-MI6 covert operation that destabilized the Iranian government through coordinated propaganda, bribery of military officers, and orchestrated street protests. The operation set the template for Cold War regime change.",
+    redactedDetail: "COORDINATING OFFICER AND LOCAL ASSET NETWORK",
+  },
+  {
+    codename: "OPERATION PBSUCCESS",
+    year: "1954",
+    theater: "GUATEMALA",
+    objective: "Removal of President Jacobo \u00C1rbenz and installation of a military government aligned with U.S. interests.",
+    outcome: "Successful. \u00C1rbenz resigned. Colonel Carlos Castillo Armas installed.",
+    summary: "The CIA armed, trained, and directed a force of Guatemalan exiles to invade from Honduras. A psychological warfare campaign, including fake radio broadcasts, caused military defections and government collapse.",
+    redactedDetail: "EXILE FORCE STAGING LOCATIONS AND FUNDING CHANNELS",
+  },
+  {
+    codename: "OPERATION OLYMPIC GAMES",
+    year: "2007\u20132010",
+    theater: "IRAN",
+    objective: "Degradation of Iranian uranium enrichment capability at the Natanz nuclear facility through cyber means.",
+    outcome: "Successful. Approximately 1,000 IR-1 centrifuges destroyed. Program delayed by an estimated 2 years.",
+    summary: "A joint NSA-Unit 8200 cyber weapon, later known publicly as Stuxnet, was introduced into air-gapped Iranian industrial control systems. The malware caused centrifuges to spin at destructive frequencies while reporting normal operations to monitoring systems.",
+    redactedDetail: "DELIVERY VECTOR AND INITIAL ACCESS METHODOLOGY",
+  },
+  {
+    codename: "OPERATION NEPTUNE SPEAR",
+    year: "2011",
+    theater: "ABBOTTABAD, PAKISTAN",
+    objective: "Capture or kill of Osama bin Laden, leader of al-Qaeda, responsible for the September 11 attacks.",
+    outcome: "Target killed. Intelligence materials recovered. No U.S. casualties.",
+    summary: "A decade of intelligence fusion \u2014 SIGINT intercepts, HUMINT courier tracking, GEOINT compound modeling, and MASINT sensor data \u2014 converged to identify a fortified compound. SEAL Team Six executed a helicopter-borne raid under presidential authorization.",
+    redactedDetail: "PAKISTANI LIAISON STATUS AND ADVANCE NOTIFICATION PROTOCOLS",
+  },
+];
+
+const CASE_FILES_RO: CaseFile[] = [
+  {
+    codename: "OPERA\u021AIUNEA AJAX",
+    year: "1953",
+    theater: "IRAN",
+    objective: "R\u0103sturnarea premierului Mohammad Mosaddegh \u0219i restaurarea \u0218ahului Mohammad Reza Pahlavi.",
+    outcome: "Succes. \u0218ahul restaurat. Accesul occidental la petrol asigurat pentru 25 de ani.",
+    summary: "O opera\u021Biune comun\u0103 CIA-MI6 care a destabilizat guvernul iranian prin propagand\u0103 coordonat\u0103, mituirea ofi\u021Berilor militari \u0219i proteste de strad\u0103 orchestrate.",
+    redactedDetail: "OFI\u021AER COORDONATOR \u0218I RE\u021AEA DE ACTIVE LOCALE",
+  },
+  {
+    codename: "OPERA\u021AIUNEA PBSUCCESS",
+    year: "1954",
+    theater: "GUATEMALA",
+    objective: "\u00CEnl\u0103turarea pre\u0219edintelui Jacobo \u00C1rbenz \u0219i instalarea unui guvern militar aliniat intereselor SUA.",
+    outcome: "Succes. \u00C1rbenz a demisionat. Colonelul Carlos Castillo Armas instalat.",
+    summary: "CIA a \u00EEnarmat \u0219i antrenat o for\u021B\u0103 de exila\u021Bi guatemalezi pentru invazia din Honduras. O campanie de r\u0103zboi psihologic a cauzat defec\u021Biuni militare \u0219i pr\u0103bu\u0219irea guvernului.",
+    redactedDetail: "LOCA\u021AII DE ORGANIZARE \u0218I CANALE DE FINAN\u021AARE",
+  },
+  {
+    codename: "OPERA\u021AIUNEA OLYMPIC GAMES",
+    year: "2007\u20132010",
+    theater: "IRAN",
+    objective: "Degradarea capacit\u0103\u021Bii de \u00EEmbog\u0103\u021Bire a uraniului la facilitatea nuclear\u0103 Natanz prin mijloace cibernetice.",
+    outcome: "Succes. Aproximativ 1.000 de centrifuge IR-1 distruse. Programul \u00EEnt\u00E2rziat cu circa 2 ani.",
+    summary: "O arm\u0103 cibernetic\u0103 comun\u0103 NSA-Unit 8200, cunoscut\u0103 public ulterior ca Stuxnet, a fost introdus\u0103 \u00EEn sistemele industriale iraniene izolate de re\u021Bea.",
+    redactedDetail: "VECTOR DE LIVRARE \u0218I METODOLOGIA ACCESULUI INI\u021AIAL",
+  },
+  {
+    codename: "OPERA\u021AIUNEA NEPTUNE SPEAR",
+    year: "2011",
+    theater: "ABBOTTABAD, PAKISTAN",
+    objective: "Capturarea sau uciderea lui Osama bin Laden, liderul al-Qaeda, responsabil pentru atacurile din 11 septembrie.",
+    outcome: "\u021Ainta eliminat\u0103. Materiale de informare recuperate. Zero victime americane.",
+    summary: "Un deceniu de fuziune a informa\u021Biilor \u2014 intercept\u0103ri SIGINT, urm\u0103rire HUMINT, modelare GEOINT \u0219i date MASINT \u2014 a convergit pentru a identifica un complex fortificat. SEAL Team Six a executat un raid cu elicoptere.",
+    redactedDetail: "STATUTUL LEG\u0102TURII CU PAKISTANUL \u0218I PROTOCOALELE DE NOTIFICARE",
+  },
+];
+
+export function DeclassifiedOperations({ locale = "en" }: { locale?: Locale }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const isRo = locale === "ro";
+  const cases = isRo ? CASE_FILES_RO : CASE_FILES_EN;
+
+  return (
+    <section
+      ref={ref}
+      className="relative px-6 sm:px-10 lg:px-16 py-28 md:py-40"
+      style={{ background: INTEL.black }}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="mx-auto max-w-[1200px]"
+      >
+        {/* Section header */}
+        <div className="mb-24 lg:mb-32">
+          <div
+            className="intel-bureaucratic mb-8"
+            style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: INTEL.greenText }}
+          >
+            {isRo ? "OPERA\u021AIUNI DECLASIFICATE" : "DECLASSIFIED OPERATIONS"}
+          </div>
+          <div
+            className="intel-editorial"
+            style={{ fontSize: "clamp(28px, 5vw, 56px)", lineHeight: 1.2 }}
+          >
+            {isRo
+              ? "Opera\u021Biuni reale care citesc ca fic\u021Biune."
+              : "Real operations that read like fiction."}
+          </div>
+        </div>
+
+        {/* Case files */}
+        <div className="space-y-12 lg:space-y-16">
+          {cases.map((file, i) => (
+            <motion.div
+              key={file.codename}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 1.2, delay: i * 0.15, ease: "easeOut" }}
+            >
+              <div
+                className="p-8 sm:p-10 lg:p-12"
+                style={{ background: INTEL.surface, border: `1px solid ${INTEL.border}` }}
+              >
+                {/* Case header row */}
+                <div className="flex flex-wrap items-baseline justify-between gap-4 mb-8">
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-mono), monospace",
+                      fontSize: "clamp(18px, 2.5vw, 28px)",
+                      fontWeight: 700,
+                      letterSpacing: "0.08em",
+                      color: INTEL.paper,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {file.codename}
+                  </h3>
+                  <span
+                    className="intel-bureaucratic"
+                    style={{ fontSize: "clamp(12px, 1vw, 15px)", color: INTEL.greenText }}
+                  >
+                    {file.year}
+                  </span>
+                </div>
+
+                {/* Field rows */}
+                <div className="space-y-5 mb-8" style={{ borderTop: `1px solid ${INTEL.border}`, paddingTop: "20px" }}>
+                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-4 items-baseline">
+                    <span className="intel-bureaucratic" style={{ fontSize: "clamp(10px, 0.8vw, 13px)", color: INTEL.greenText }}>
+                      {isRo ? "TEATRU" : "THEATER"}
+                    </span>
+                    <span className="intel-body" style={{ color: INTEL.paper }}>{file.theater}</span>
+                  </div>
+                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-4 items-baseline">
+                    <span className="intel-bureaucratic" style={{ fontSize: "clamp(10px, 0.8vw, 13px)", color: INTEL.greenText }}>
+                      {isRo ? "OBIECTIV" : "OBJECTIVE"}
+                    </span>
+                    <span className="intel-body">{file.objective}</span>
+                  </div>
+                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-4 items-baseline">
+                    <span className="intel-bureaucratic" style={{ fontSize: "clamp(10px, 0.8vw, 13px)", color: INTEL.greenText }}>
+                      {isRo ? "REZULTAT" : "OUTCOME"}
+                    </span>
+                    <span className="intel-body" style={{ color: INTEL.paper }}>{file.outcome}</span>
+                  </div>
+                </div>
+
+                {/* Summary */}
+                <p className="intel-body max-w-3xl mb-6">{file.summary}</p>
+
+                {/* Redacted detail */}
+                <div className="flex items-center gap-3">
+                  <span className="intel-redacted" style={{ fontSize: "clamp(12px, 1vw, 15px)", padding: "2px 6px" }}>
+                    {file.redactedDetail}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
     </section>
@@ -614,69 +726,65 @@ export function InstallationsList({ nodes, locale = "en" }: { nodes: Intelligenc
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="mx-auto max-w-[1100px]"
+        className="mx-auto max-w-[1200px]"
       >
-        {/* Section header */}
         <div className="mb-20 lg:mb-28">
           <div
             className="intel-bureaucratic mb-8"
-            style={{ fontSize: "9px", letterSpacing: "0.35em", color: INTEL.greenText }}
+            style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: INTEL.greenText }}
           >
-            {isRo ? "INSTALAȚII GLOBALE // CLASIFICAT" : "GLOBAL INSTALLATIONS // CLASSIFIED"}
+            {isRo ? "INSTALA\u021AII GLOBALE" : "GLOBAL INSTALLATIONS"}
           </div>
           <div
             className="intel-editorial"
-            style={{ fontSize: "clamp(22px, 3.5vw, 38px)", lineHeight: 1.3 }}
+            style={{ fontSize: "clamp(28px, 5vw, 56px)", lineHeight: 1.2 }}
           >
             {isRo
-              ? "Stații de interceptare și noduri criptologice poziționate strategic pe tot globul."
+              ? "Sta\u021Bii de interceptare \u0219i noduri criptologice pozi\u021Bionate strategic pe tot globul."
               : "Interception stations and cryptologic hubs positioned strategically across the globe."}
           </div>
         </div>
 
-        {/* Quiet vertical list */}
         <div className="space-y-0">
           {nodes.map((node, i) => (
             <motion.div
               key={node.name}
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 1.2, delay: i * 0.15, ease: "easeOut" }}
+              transition={{ duration: 1.2, delay: i * 0.12, ease: "easeOut" }}
             >
               <div
-                className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-3 md:gap-10 py-10 items-baseline"
+                className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-3 md:gap-12 py-12 items-baseline"
                 style={{ borderBottom: `1px solid ${INTEL.border}` }}
               >
-                {/* Location */}
                 <div
                   className="intel-bureaucratic"
-                  style={{ fontSize: "9px", letterSpacing: "0.2em", color: INTEL.greenText }}
+                  style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.15em", color: INTEL.greenText }}
                 >
                   {node.location.toUpperCase()}
                 </div>
 
-                {/* Details */}
                 <div>
                   <h3
                     style={{
                       fontFamily: "var(--font-mono), monospace",
-                      fontSize: "clamp(16px, 2vw, 22px)",
+                      fontSize: "clamp(18px, 2.5vw, 28px)",
                       fontWeight: 400,
                       letterSpacing: "0.02em",
                       color: INTEL.paper,
-                      marginBottom: "6px",
+                      marginBottom: "8px",
                       textTransform: "uppercase",
                     }}
                   >
                     {node.name}
                   </h3>
                   <div
-                    className="intel-bureaucratic mb-3"
-                    style={{ fontSize: "9px", color: INTEL.greenText, letterSpacing: "0.15em" }}
+                    className="intel-bureaucratic mb-4"
+                    style={{ fontSize: "clamp(11px, 0.9vw, 13px)", color: INTEL.greenText, letterSpacing: "0.12em" }}
                   >
                     {node.role.toUpperCase()}
                   </div>
-                  <p className="intel-body max-w-2xl" style={{ fontSize: "11px" }}>
+                  <p className="intel-body max-w-2xl">
                     {node.description}
                   </p>
                 </div>
@@ -698,16 +806,14 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const isRo = locale === "ro";
 
-  // Pentagon points (centered at 250,220, radius ~160)
   const points = [
-    { x: 250, y: 60, label: "USA" },          // top
-    { x: 402, y: 176, label: "UK" },           // top-right
-    { x: 344, y: 370, label: "AUS" },          // bottom-right
-    { x: 156, y: 370, label: isRo ? "CAN" : "CAN" },  // bottom-left
-    { x: 98, y: 176, label: "NZL" },           // top-left
+    { x: 250, y: 60, label: "USA" },
+    { x: 402, y: 176, label: "UK" },
+    { x: 344, y: 370, label: "AUS" },
+    { x: 156, y: 370, label: "CAN" },
+    { x: 98, y: 176, label: "NZL" },
   ];
 
-  // All connecting lines (every pair)
   const lines: [number, number][] = [];
   for (let i = 0; i < 5; i++) {
     for (let j = i + 1; j < 5; j++) {
@@ -721,29 +827,26 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
       className="relative px-6 sm:px-10 lg:px-16 py-28 md:py-40"
       style={{ background: INTEL.black }}
     >
-      <div className="mx-auto max-w-[1100px]">
-        {/* Section header */}
+      <div className="mx-auto max-w-[1200px]">
         <div className="mb-16 lg:mb-24 text-center">
           <div
             className="intel-bureaucratic mb-8"
-            style={{ fontSize: "9px", letterSpacing: "0.35em", color: INTEL.greenText }}
+            style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: INTEL.greenText }}
           >
-            {isRo ? "ALIANȚĂ DE INFORMAȚII // TRATATUL UKUSA" : "INTELLIGENCE ALLIANCE // UKUSA TREATY"}
+            {isRo ? "ALIAN\u021A\u0102 DE INFORMA\u021AII" : "INTELLIGENCE ALLIANCE"}
           </div>
           <div
             className="intel-editorial mx-auto"
-            style={{ fontSize: "clamp(22px, 3.5vw, 38px)", lineHeight: 1.3, maxWidth: "600px" }}
+            style={{ fontSize: "clamp(28px, 5vw, 56px)", lineHeight: 1.2, maxWidth: "700px" }}
           >
             {isRo
-              ? "Cei cinci ochi care văd totul."
+              ? "Cei cinci ochi care v\u0103d totul."
               : "The five eyes that see everything."}
           </div>
         </div>
 
-        {/* SVG Diagram */}
         <div className="flex justify-center">
-          <svg viewBox="0 0 500 440" className="w-full max-w-[460px] h-auto">
-            {/* Connecting lines — animated stroke-dashoffset */}
+          <svg viewBox="0 0 500 440" className="w-full max-w-[500px] h-auto">
             {lines.map(([a, b], i) => {
               const p1 = points[a];
               const p2 = points[b];
@@ -767,20 +870,15 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
               );
             })}
 
-            {/* Node points and labels */}
             {points.map((p, i) => (
               <g key={p.label}>
-                {/* Point dot */}
                 <circle
                   cx={p.x}
                   cy={p.y}
                   r={inView ? 4 : 0}
                   fill={INTEL.greenText}
-                  style={{
-                    transition: `r 0.8s ease-out ${0.5 + i * 0.2}s`,
-                  }}
+                  style={{ transition: `r 0.8s ease-out ${0.5 + i * 0.2}s` }}
                 />
-                {/* Outer ring */}
                 <circle
                   cx={p.x}
                   cy={p.y}
@@ -789,17 +887,14 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
                   stroke={INTEL.green}
                   strokeWidth="1"
                   strokeOpacity={0.3}
-                  style={{
-                    transition: `r 0.8s ease-out ${0.5 + i * 0.2}s`,
-                  }}
+                  style={{ transition: `r 0.8s ease-out ${0.5 + i * 0.2}s` }}
                 />
-                {/* Label */}
                 <text
                   x={p.x}
-                  y={p.y + (i === 0 ? -22 : i <= 2 ? 30 : 30)}
+                  y={p.y + (i === 0 ? -22 : 30)}
                   textAnchor="middle"
                   fill={INTEL.greenText}
-                  fontSize="10"
+                  fontSize="12"
                   fontFamily="var(--font-mono), monospace"
                   letterSpacing="0.2em"
                   opacity={inView ? 1 : 0}
@@ -815,12 +910,11 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
           </svg>
         </div>
 
-        {/* Brief paragraph about the alliance */}
-        <div className="mt-16 text-center max-w-2xl mx-auto">
-          <p className="intel-body" style={{ fontSize: "11px", lineHeight: 2.2 }}>
+        <div className="mt-16 text-center max-w-3xl mx-auto">
+          <p className="intel-body" style={{ lineHeight: 2 }}>
             {isRo
-              ? "Alianța Five Eyes — compusă din Statele Unite, Regatul Unit, Australia, Canada și Noua Zeelandă — constituie cel mai extins și profund parteneriat de schimb de informații din istorie. Originile sale datează din Al Doilea Război Mondial, iar structura sa actuală rămâne în mare parte clasificată."
-              : "The Five Eyes alliance — comprising the United States, United Kingdom, Australia, Canada, and New Zealand — constitutes the most extensive and deeply integrated intelligence-sharing partnership in history. Its origins trace to World War II, and its current operational structure remains largely classified."}
+              ? "Alian\u021Ba Five Eyes \u2014 compus\u0103 din Statele Unite, Regatul Unit, Australia, Canada \u0219i Noua Zeeland\u0103 \u2014 constituie cel mai extins parteneriat de schimb de informa\u021Bii din istorie. Originile sale dateaz\u0103 din Al Doilea R\u0103zboi Mondial, iar structura sa actual\u0103 r\u0103m\u00E2ne \u00EEn mare parte clasificat\u0103."
+              : "The Five Eyes alliance \u2014 comprising the United States, United Kingdom, Australia, Canada, and New Zealand \u2014 constitutes the most extensive and deeply integrated intelligence-sharing partnership in history. Its origins trace to World War II, and its current operational structure remains largely classified."}
           </p>
         </div>
       </div>
@@ -847,68 +941,64 @@ export function HeritageList({ events, locale = "en" }: { events: IntelligenceHe
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="mx-auto max-w-[1100px]"
+        className="mx-auto max-w-[1200px]"
       >
-        {/* Section header */}
         <div className="mb-20 lg:mb-28">
           <div
             className="intel-bureaucratic mb-8"
-            style={{ fontSize: "9px", letterSpacing: "0.35em", color: INTEL.greenText }}
+            style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: INTEL.greenText }}
           >
-            {isRo ? "CRONOLOGIE // MOMENTE DEFINITORII" : "CHRONOLOGY // DEFINING MOMENTS"}
+            {isRo ? "CRONOLOGIE" : "CHRONOLOGY"}
           </div>
           <div
             className="intel-editorial"
-            style={{ fontSize: "clamp(22px, 3.5vw, 38px)", lineHeight: 1.3 }}
+            style={{ fontSize: "clamp(28px, 5vw, 56px)", lineHeight: 1.2 }}
           >
             {isRo
-              ? "Momentele care au modelat comunitea de informații."
+              ? "Momentele care au modelat comunitatea de informa\u021Bii."
               : "The moments that shaped the intelligence community."}
           </div>
         </div>
 
-        {/* Vertical date list — no images, no cards */}
         <div className="space-y-0">
           {events.map((event, i) => (
             <motion.div
               key={event.year}
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 1.0, delay: i * 0.12, ease: "easeOut" }}
+              transition={{ duration: 1.0, delay: i * 0.1, ease: "easeOut" }}
             >
               <div
-                className="grid grid-cols-[80px_1fr] sm:grid-cols-[120px_1fr] gap-6 sm:gap-10 py-8 items-baseline"
+                className="grid grid-cols-[80px_1fr] sm:grid-cols-[140px_1fr] gap-6 sm:gap-12 py-10 items-baseline"
                 style={{ borderBottom: `1px solid ${INTEL.border}` }}
               >
-                {/* Year */}
                 <div
                   className="intel-bureaucratic"
                   style={{
-                    fontSize: "13px",
+                    fontSize: "clamp(15px, 1.5vw, 20px)",
                     fontWeight: 700,
-                    letterSpacing: "0.15em",
+                    letterSpacing: "0.1em",
                     color: INTEL.greenText,
                   }}
                 >
                   {event.year}
                 </div>
 
-                {/* Event */}
                 <div>
                   <h3
                     style={{
                       fontFamily: "var(--font-mono), monospace",
-                      fontSize: "clamp(13px, 1.5vw, 16px)",
+                      fontSize: "clamp(16px, 2vw, 22px)",
                       fontWeight: 400,
-                      letterSpacing: "0.05em",
+                      letterSpacing: "0.04em",
                       color: INTEL.paper,
                       textTransform: "uppercase",
-                      marginBottom: "6px",
+                      marginBottom: "8px",
                     }}
                   >
                     {event.title}
                   </h3>
-                  <p className="intel-body max-w-xl" style={{ fontSize: "11px" }}>
+                  <p className="intel-body max-w-2xl">
                     {event.description}
                   </p>
                 </div>
@@ -922,10 +1012,156 @@ export function HeritageList({ events, locale = "en" }: { events: IntelligenceHe
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 10. ClassifiedPrograms — Future programs with [REDACTED] markers
+// 10. IntelligenceFailures — Gravitas section
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function ClassifiedPrograms({ programs, locale = "en" }: { programs: IntelligenceFutureProgram[]; locale?: Locale }) {
+interface IntelFailure {
+  year: string;
+  title: string;
+  description: string;
+  cost: string;
+}
+
+const FAILURES_EN: IntelFailure[] = [
+  {
+    year: "1941",
+    title: "Pearl Harbor",
+    description: "Despite intercepted Japanese diplomatic communications and multiple warning indicators, intelligence agencies failed to synthesize fragmentary data into a coherent warning. The attack killed 2,403 Americans and drew the United States into World War II.",
+    cost: "2,403 killed. Pacific Fleet crippled.",
+  },
+  {
+    year: "1961",
+    title: "Bay of Pigs",
+    description: "CIA-planned invasion of Cuba by 1,400 Cuban exiles collapsed within 72 hours. Intelligence assessments overestimated popular support for an uprising, underestimated Castro's military readiness, and failed to maintain operational security.",
+    cost: "114 killed. 1,189 captured.",
+  },
+  {
+    year: "2001",
+    title: "September 11",
+    description: "Seventeen agencies held fragments of the threat picture \u2014 flight school surveillance, intercepted communications, watch-list matches \u2014 but institutional barriers prevented the assembly of a complete warning. The failure led directly to the creation of the Director of National Intelligence and the restructuring of the entire community.",
+    cost: "2,977 killed. Intelligence community restructured.",
+  },
+];
+
+const FAILURES_RO: IntelFailure[] = [
+  {
+    year: "1941",
+    title: "Pearl Harbor",
+    description: "\u00CEn ciuda intercept\u0103rii comunica\u021Biilor diplomatice japoneze \u0219i a multiplelor indicii de avertizare, agen\u021Biile de informa\u021Bii nu au reu\u0219it s\u0103 sintetizeze datele fragmentare \u00EEntr-un avertisment coerent. Atacul a ucis 2.403 de americani.",
+    cost: "2.403 uci\u0219i. Flota Pacificului distrus\u0103.",
+  },
+  {
+    year: "1961",
+    title: "Golful Porcilor",
+    description: "Invazia Cubei planificat\u0103 de CIA cu 1.400 de exila\u021Bi cubanezi s-a pr\u0103bu\u0219it \u00EEn 72 de ore. Evalu\u0103rile de informa\u021Bii au supraestimat sprijinul popular \u0219i au subestimat preg\u0103tirea militar\u0103 a lui Castro.",
+    cost: "114 uci\u0219i. 1.189 captura\u021Bi.",
+  },
+  {
+    year: "2001",
+    title: "11 Septembrie",
+    description: "\u0218aptesprezece agen\u021Bii de\u021Bineau fragmente ale imaginii amenin\u021B\u0103rii \u2014 supraveghere \u0219coli de zbor, comunica\u021Bii interceptate, potriviri pe liste de urm\u0103rire \u2014 dar barierele institu\u021Bionale au \u00EEmpiedicat asamblarea unui avertisment complet.",
+    cost: "2.977 uci\u0219i. Comunitatea de informa\u021Bii restructurat\u0103.",
+  },
+];
+
+export function IntelligenceFailures({ locale = "en" }: { locale?: Locale }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const isRo = locale === "ro";
+  const failures = isRo ? FAILURES_RO : FAILURES_EN;
+
+  return (
+    <section
+      ref={ref}
+      className="relative px-6 sm:px-10 lg:px-16 py-28 md:py-40"
+      style={{ background: INTEL.black }}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="mx-auto max-w-[1200px]"
+      >
+        {/* Editorial intro — the rare Playfair moment */}
+        <div className="mb-24 lg:mb-32">
+          <div
+            className="intel-editorial"
+            style={{ fontSize: "clamp(28px, 5vw, 56px)", lineHeight: 1.2 }}
+          >
+            {isRo
+              ? "Costul a ceea ce a fost ratat."
+              : "The cost of what was missed."}
+          </div>
+          <p className="intel-body mt-8 max-w-3xl">
+            {isRo
+              ? "Un serviciu de informa\u021Bii care \u00EE\u0219i celebreaz\u0103 doar succesele este un serviciu care nu a \u00EEnv\u0103\u021Bat nimic. Aceste momente definesc comunitatea la fel de mult ca victoriile ei."
+              : "An intelligence community that only celebrates its successes is one that has learned nothing. These moments define the community as much as its victories."}
+          </p>
+        </div>
+
+        {/* Failure entries */}
+        <div className="space-y-0">
+          {failures.map((failure, i) => (
+            <motion.div
+              key={failure.year}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 1.2, delay: i * 0.15, ease: "easeOut" }}
+            >
+              <div
+                className="grid grid-cols-[80px_1fr] sm:grid-cols-[140px_1fr] gap-6 sm:gap-12 py-12 items-baseline"
+                style={{ borderBottom: `1px solid ${INTEL.border}` }}
+              >
+                <div
+                  className="intel-bureaucratic"
+                  style={{
+                    fontSize: "clamp(15px, 1.5vw, 20px)",
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                    color: INTEL.greenText,
+                  }}
+                >
+                  {failure.year}
+                </div>
+
+                <div>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-mono), monospace",
+                      fontSize: "clamp(18px, 2.5vw, 28px)",
+                      fontWeight: 400,
+                      letterSpacing: "0.04em",
+                      color: INTEL.paper,
+                      textTransform: "uppercase",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    {failure.title}
+                  </h3>
+                  <p className="intel-body max-w-2xl mb-6">
+                    {failure.description}
+                  </p>
+                  <div
+                    className="intel-bureaucratic"
+                    style={{ fontSize: "clamp(11px, 0.9vw, 13px)", color: INTEL.paperDim, letterSpacing: "0.12em" }}
+                  >
+                    {failure.cost}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 11. FuturePrograms — Clean layout (no fake classified markers)
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function FuturePrograms({ programs, locale = "en" }: { programs: IntelligenceFutureProgram[]; locale?: Locale }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const isRo = locale === "ro";
@@ -940,108 +1176,82 @@ export function ClassifiedPrograms({ programs, locale = "en" }: { programs: Inte
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="mx-auto max-w-[900px]"
+        className="mx-auto max-w-[1200px]"
       >
         {/* Section header */}
-        <div className="mb-20 lg:mb-28">
+        <div className="mb-24 lg:mb-32">
           <div
             className="intel-bureaucratic mb-8"
-            style={{ fontSize: "9px", letterSpacing: "0.35em", color: INTEL.greenText }}
+            style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: INTEL.greenText }}
           >
-            {isRo ? "PROGRAME CLASIFICATE // ACCES RESTRICȚIONAT" : "CLASSIFIED PROGRAMS // RESTRICTED ACCESS"}
+            {isRo ? "PROGRAME \u00CEN DEZVOLTARE" : "PROGRAMS IN DEVELOPMENT"}
           </div>
           <div
             className="intel-editorial"
-            style={{ fontSize: "clamp(22px, 3.5vw, 38px)", lineHeight: 1.3 }}
+            style={{ fontSize: "clamp(28px, 5vw, 56px)", lineHeight: 1.2 }}
           >
             {isRo
-              ? "Inițiative tehnologice care vor defini deceniul următor."
-              : "Technological initiatives that will define the next decade."}
+              ? "Ini\u021Biativele tehnologice care vor defini deceniul urm\u0103tor."
+              : "The technological initiatives that will define the next decade."}
           </div>
         </div>
 
-        {/* Programs — document-style layout */}
-        <div
-          className="p-6 sm:p-10"
-          style={{ background: INTEL.surface, border: `1px solid ${INTEL.border}` }}
-        >
+        {/* Programs */}
+        <div className="space-y-0">
           {programs.map((program, i) => (
-            <div
+            <motion.div
               key={program.label}
-              className={cn("pb-10", i < programs.length - 1 && "mb-10 border-b")}
-              style={{ borderColor: INTEL.border }}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 1.2, delay: i * 0.1, ease: "easeOut" }}
             >
-              {/* Status marker */}
-              <div className="flex flex-wrap items-center gap-4 mb-4">
-                <span
-                  className="intel-bureaucratic"
-                  style={{ fontSize: "9px", color: INTEL.greenText, letterSpacing: "0.25em" }}
-                >
-                  {program.label.toUpperCase()}
-                </span>
-                <span
-                  className="intel-bureaucratic px-2 py-0.5"
-                  style={{
-                    fontSize: "8px",
-                    color: INTEL.paper,
-                    letterSpacing: "0.15em",
-                    background: INTEL.redact,
-                    border: `1px solid ${INTEL.border}`,
-                  }}
-                >
-                  [{program.status.toUpperCase()}]
-                </span>
-              </div>
-
-              {/* Title — editorial */}
-              <h3
-                className="intel-editorial mb-4"
-                style={{ fontSize: "clamp(18px, 2.5vw, 24px)", lineHeight: 1.3 }}
+              <div
+                className="py-12"
+                style={{ borderBottom: `1px solid ${INTEL.border}` }}
               >
-                {program.title}
-              </h3>
-
-              {/* Description */}
-              <p className="intel-body mb-6 max-w-2xl">{program.description}</p>
-
-              {/* Specs — clean monospace rows */}
-              <div style={{ borderTop: `1px solid ${INTEL.border}` }}>
-                {program.specs.map((spec) => (
-                  <div
-                    key={spec.label}
-                    className="grid grid-cols-[140px_1fr] sm:grid-cols-[180px_1fr] py-2.5 items-baseline"
-                    style={{ borderBottom: `1px solid ${INTEL.border}` }}
+                {/* Header */}
+                <div className="flex flex-wrap items-baseline gap-6 mb-4">
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-mono), monospace",
+                      fontSize: "clamp(18px, 2.5vw, 28px)",
+                      fontWeight: 400,
+                      letterSpacing: "0.04em",
+                      color: INTEL.paper,
+                      textTransform: "uppercase",
+                    }}
                   >
-                    <span
-                      className="intel-bureaucratic"
-                      style={{ fontSize: "8px", color: INTEL.greenText, letterSpacing: "0.15em" }}
-                    >
-                      {spec.label.toUpperCase()}
-                    </span>
-                    <span
-                      className="intel-body"
-                      style={{ fontSize: "11px", color: INTEL.paperDim }}
-                    >
-                      {spec.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+                    {program.title}
+                  </h3>
+                  <span
+                    className="intel-bureaucratic"
+                    style={{ fontSize: "clamp(10px, 0.8vw, 13px)", color: INTEL.greenText }}
+                  >
+                    {program.status}
+                  </span>
+                </div>
 
-        {/* Document footer */}
-        <div
-          className="p-4 sm:p-6 mt-2 flex justify-between items-center"
-          style={{ background: INTEL.surface, border: `1px solid ${INTEL.border}` }}
-        >
-          <span className="intel-bureaucratic" style={{ fontSize: "8px", color: INTEL.paperFaint }}>
-            {isRo ? "SFÂRȘIT REGISTRU" : "END OF REGISTRY"}
-          </span>
-          <span className="intel-bureaucratic" style={{ fontSize: "8px", color: INTEL.greenText }}>
-            [CLASSIFIED]
-          </span>
+                <p className="intel-body max-w-3xl mb-8">{program.description}</p>
+
+                {/* Specs grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {program.specs.map((spec) => (
+                    <div key={spec.label} className="flex flex-col">
+                      <span
+                        className="intel-bureaucratic mb-2"
+                        style={{ fontSize: "clamp(10px, 0.8vw, 12px)", color: INTEL.greenText, letterSpacing: "0.15em" }}
+                      >
+                        {spec.label.toUpperCase()}
+                      </span>
+                      <span className="intel-body" style={{ fontSize: "clamp(13px, 1vw, 15px)", color: INTEL.paper }}>
+                        {spec.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
     </section>
@@ -1049,7 +1259,97 @@ export function ClassifiedPrograms({ programs, locale = "en" }: { programs: Inte
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 11. ClosingQuote — Playfair italic, centered
+// 12. TheVault — CIA Reading Room reference
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function TheVault({ locale = "en" }: { locale?: Locale }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const isRo = locale === "ro";
+
+  return (
+    <section
+      ref={ref}
+      className="relative px-6 sm:px-10 lg:px-16 py-28 md:py-40"
+      style={{ background: INTEL.black }}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 2.0, ease: "easeOut" }}
+        className="mx-auto max-w-[1000px] text-center"
+      >
+        <div
+          className="intel-bureaucratic mb-8"
+          style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: INTEL.greenText }}
+        >
+          {isRo ? "CAMERA DE LECTUR\u0102 ELECTRONIC\u0102" : "ELECTRONIC READING ROOM"}
+        </div>
+
+        <div
+          className="intel-editorial mb-10"
+          style={{ fontSize: "clamp(28px, 5vw, 50px)", lineHeight: 1.2 }}
+        >
+          {isRo ? "Seiful" : "The Vault"}
+        </div>
+
+        <p className="intel-body mx-auto max-w-2xl mb-12" style={{ lineHeight: 2 }}>
+          {isRo
+            ? "Camera de Lectur\u0103 Electronic\u0103 FOIA a CIA con\u021Bine peste 12 milioane de pagini de documente declasificate, accesibile public. Subiectele acoper\u0103 \u0219ase decenii de opera\u021Biuni, de la evaluarea amenin\u021B\u0103rilor din R\u0103zboiul Rece p\u00E2n\u0103 la activit\u0103\u021Bi de contrainforma\u021Bii, experimentele MK-ULTRA \u0219i planificarea R\u0103zboiului din Vietnam."
+            : "The CIA\u2019s FOIA Electronic Reading Room contains over 12 million pages of declassified documents, accessible to the public. Subjects span six decades of operations, from Cold War threat assessments and counterintelligence activities to the MK-ULTRA experiments and Vietnam War planning."}
+        </p>
+
+        {/* Key stats */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-14 max-w-2xl mx-auto">
+          <div className="flex flex-col items-center">
+            <span
+              className="intel-editorial"
+              style={{ fontSize: "clamp(32px, 5vw, 48px)", lineHeight: 1 }}
+            >
+              12M+
+            </span>
+            <span className="intel-bureaucratic mt-3" style={{ fontSize: "clamp(10px, 0.8vw, 12px)", color: INTEL.paperDim }}>
+              {isRo ? "PAGINI" : "PAGES"}
+            </span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span
+              className="intel-editorial"
+              style={{ fontSize: "clamp(32px, 5vw, 48px)", lineHeight: 1 }}
+            >
+              930K+
+            </span>
+            <span className="intel-bureaucratic mt-3" style={{ fontSize: "clamp(10px, 0.8vw, 12px)", color: INTEL.paperDim }}>
+              {isRo ? "DOCUMENTE" : "DOCUMENTS"}
+            </span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span
+              className="intel-editorial"
+              style={{ fontSize: "clamp(32px, 5vw, 48px)", lineHeight: 1 }}
+            >
+              60+
+            </span>
+            <span className="intel-bureaucratic mt-3" style={{ fontSize: "clamp(10px, 0.8vw, 12px)", color: INTEL.paperDim }}>
+              {isRo ? "ANI DE ARHIV\u0102" : "YEARS OF ARCHIVES"}
+            </span>
+          </div>
+        </div>
+
+        <div className="intel-separator mb-10 mx-auto max-w-[200px]" style={{ background: INTEL.green, opacity: 0.2 }} />
+
+        <div className="intel-bureaucratic" style={{ fontSize: "clamp(10px, 0.8vw, 12px)", color: INTEL.paperFaint, letterSpacing: "0.15em" }}>
+          {isRo
+            ? "SURSA: CIA.GOV/READINGROOM \u2014 ACCESIBIL PUBLIC PRIN FOIA"
+            : "SOURCE: CIA.GOV/READINGROOM \u2014 PUBLICLY ACCESSIBLE UNDER FOIA"}
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 13. ClosingQuote — Playfair italic, centered
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ClosingQuote({ locale = "en" }: { locale?: Locale }) {
@@ -1058,22 +1358,10 @@ export function ClosingQuote({ locale = "en" }: { locale?: Locale }) {
   const isRo = locale === "ro";
 
   const branches = [
-    {
-      href: "/military/navy",
-      label: isRo ? "Marina" : "Navy",
-    },
-    {
-      href: "/military/space-force",
-      label: isRo ? "Forțele Spațiale" : "Space Force",
-    },
-    {
-      href: "/military/air-force",
-      label: isRo ? "Forțele Aeriene" : "Air Force",
-    },
-    {
-      href: "/military/global-bases",
-      label: isRo ? "Baze Globale" : "Global Bases",
-    },
+    { href: "/military/navy", label: isRo ? "Marina" : "Navy" },
+    { href: "/military/space-force", label: isRo ? "For\u021Bele Spa\u021Biale" : "Space Force" },
+    { href: "/military/air-force", label: isRo ? "For\u021Bele Aeriene" : "Air Force" },
+    { href: "/military/global-bases", label: isRo ? "Baze Globale" : "Global Bases" },
   ];
 
   return (
@@ -1081,20 +1369,18 @@ export function ClosingQuote({ locale = "en" }: { locale?: Locale }) {
       ref={ref}
       className="relative px-6 sm:px-10 lg:px-16 py-40 md:py-56"
       style={{ background: INTEL.black }}
-      data-closing-section
     >
       <motion.div
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 2.5, ease: "easeOut" }}
-        className="mx-auto max-w-[800px] text-center"
+        className="mx-auto max-w-[900px] text-center"
       >
-        {/* The quote */}
         <div
           className="intel-editorial mb-12"
           style={{
-            fontSize: "clamp(22px, 4vw, 40px)",
-            lineHeight: 1.35,
+            fontSize: "clamp(26px, 4.5vw, 48px)",
+            lineHeight: 1.3,
             fontStyle: "italic",
           }}
         >
@@ -1103,66 +1389,55 @@ export function ClosingQuote({ locale = "en" }: { locale?: Locale }) {
             : "\u201CThe most important thing I learned is that you cannot win a war without intelligence.\u201D"}
         </div>
 
-        {/* Attribution */}
         <div
           className="intel-bureaucratic mb-32"
-          style={{ fontSize: "9px", color: INTEL.paperFaint, letterSpacing: "0.2em" }}
+          style={{ fontSize: "clamp(11px, 0.9vw, 14px)", color: INTEL.paperFaint, letterSpacing: "0.2em" }}
         >
-          — DWIGHT D. EISENHOWER
+          {"\u2014"} DWIGHT D. EISENHOWER
         </div>
 
-        {/* Separator */}
         <div className="intel-separator mb-16" style={{ background: INTEL.green, opacity: 0.15 }} />
 
-        {/* CTA */}
         <div className="mb-16">
           <Link
             href="/military"
-            className="group inline-flex h-10 items-center gap-3 px-6 text-[10px] font-semibold uppercase tracking-[0.15em] transition-opacity hover:opacity-70"
+            className="group inline-flex h-11 items-center gap-3 px-7 transition-opacity hover:opacity-70"
             style={{
               fontFamily: "var(--font-mono), monospace",
+              fontSize: "clamp(11px, 0.9vw, 13px)",
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
               color: INTEL.paper,
               border: `1px solid ${INTEL.border}`,
               background: INTEL.surface,
             }}
           >
-            {isRo ? "Prezentare Militară" : "Military Overview"}
-            <ArrowUpRight size={12} strokeWidth={2} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            {isRo ? "Prezentare Militar\u0103" : "Military Overview"}
+            <ArrowUpRight size={14} strokeWidth={2} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
         </div>
 
-        {/* Navigation cross-links */}
         <div
           className="intel-bureaucratic mb-8"
-          style={{ fontSize: "8px", letterSpacing: "0.25em", color: INTEL.paperFaint }}
+          style={{ fontSize: "clamp(10px, 0.8vw, 12px)", letterSpacing: "0.2em", color: INTEL.paperFaint }}
         >
           {isRo ? "ALTE DIMENSIUNI MILITARE" : "OTHER MILITARY DIMENSIONS"}
         </div>
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-8">
           {branches.map((b) => (
             <Link
               key={b.href}
               href={b.href}
               className="intel-bureaucratic transition-colors hover:opacity-60"
               style={{
-                fontSize: "9px",
-                letterSpacing: "0.15em",
+                fontSize: "clamp(11px, 0.9vw, 14px)",
+                letterSpacing: "0.12em",
                 color: INTEL.paperDim,
               }}
             >
               {b.label.toUpperCase()}
             </Link>
           ))}
-        </div>
-
-        {/* Final classification marking */}
-        <div className="mt-24">
-          <span
-            className="intel-bureaucratic"
-            style={{ fontSize: "8px", letterSpacing: "0.3em", color: INTEL.greenText, opacity: 0.4 }}
-          >
-            // END OF FILE //
-          </span>
         </div>
       </motion.div>
     </section>

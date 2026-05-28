@@ -3,15 +3,17 @@ import { getServerLocale } from "@/lib/i18n/server";
 
 import {
   IntelClassifiedStyles,
-  ClassificationHeader,
   EntrySequence,
   SingleStatistic,
   AgencyDossier,
-  DeclassifiedDocument,
+  IntelligenceDisciplines,
+  DeclassifiedOperations,
   InstallationsList,
   FiveEyesGeometry,
   HeritageList,
-  ClassifiedPrograms,
+  IntelligenceFailures,
+  FuturePrograms,
+  TheVault,
   ClosingQuote,
 } from "@/components/military/IntelligencePageComponents";
 import {
@@ -65,7 +67,6 @@ export default async function IntelligencePage() {
     <div className="intel-classified min-h-screen overflow-hidden" style={{ background: "#000000", color: "#E8E2D5" }}>
       <MilStyles />
       <IntelClassifiedStyles />
-      <ClassificationHeader />
 
       {/* Hero Section — retains the CIA video */}
       <ParallaxMilitaryHero
@@ -87,8 +88,11 @@ export default async function IntelligencePage() {
       {/* Agency dossier chapters */}
       <AgencyDossier agencies={agencies} locale={locale} />
 
-      {/* Declassified document — intelligence disciplines with redaction bars */}
-      <DeclassifiedDocument capabilities={capabilities} locale={locale} />
+      {/* Intelligence disciplines — clean layout with redaction bars */}
+      <IntelligenceDisciplines capabilities={capabilities} locale={locale} />
+
+      {/* Declassified operations — case files */}
+      <DeclassifiedOperations locale={locale} />
 
       {/* Installation list — quiet vertical stack */}
       <InstallationsList nodes={nodes} locale={locale} />
@@ -99,8 +103,14 @@ export default async function IntelligencePage() {
       {/* Heritage — minimal date list */}
       <HeritageList events={heritage} locale={locale} />
 
-      {/* Classified future programs */}
-      <ClassifiedPrograms programs={futurePrograms} locale={locale} />
+      {/* Intelligence failures — gravitas section */}
+      <IntelligenceFailures locale={locale} />
+
+      {/* Future programs — clean layout */}
+      <FuturePrograms programs={futurePrograms} locale={locale} />
+
+      {/* The Vault — CIA Reading Room */}
+      <TheVault locale={locale} />
 
       {/* Closing quote and navigation */}
       <ClosingQuote locale={locale} />
