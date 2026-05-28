@@ -1177,13 +1177,13 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const isRo = locale === "ro";
 
-  // Pentagon points (centered at 250,220, radius ~160)
+  // Points layout: USA at the center, other 4 on edges (symmetrical square centered at 250,220)
   const points = [
-    { x: 250, y: 60, label: "USA" },          // top
-    { x: 402, y: 176, label: "UK" },           // top-right
-    { x: 344, y: 370, label: "AUS" },          // bottom-right
-    { x: 156, y: 370, label: "CAN" },          // bottom-left
-    { x: 98, y: 176, label: "NZL" },           // top-left
+    { x: 250, y: 220, label: "USA" },          // center
+    { x: 130, y: 100, label: "UK" },           // top-left
+    { x: 370, y: 100, label: "AUS" },          // top-right
+    { x: 370, y: 340, label: "NZL" },          // bottom-right
+    { x: 130, y: 340, label: "CAN" },          // bottom-left
   ];
 
   // All connecting lines (every pair)
@@ -1275,7 +1275,7 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
                 {/* Label */}
                 <text
                   x={p.x}
-                  y={p.y + (i === 0 ? -22 : i <= 2 ? 30 : 30)}
+                  y={p.y + (p.label === "USA" ? -20 : p.y < 220 ? -20 : 30)}
                   textAnchor="middle"
                   fill={INTEL.greenText}
                   fontSize="10"
