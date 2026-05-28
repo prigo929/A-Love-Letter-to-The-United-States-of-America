@@ -30,6 +30,23 @@ import type {
 
 const WORLD_GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
+const MARKER_OFFSETS: Record<string, { x: number; y: number }> = {
+  "ramstein-air-base": { x: -7, y: -6 },
+  "spangdahlem-air-base": { x: 8, y: 5 },
+  "raf-lakenheath": { x: -8, y: 5 },
+  "aviano-air-base": { x: 8, y: -7 },
+  "naval-station-rota": { x: -5, y: 8 },
+  "al-udeid-air-base": { x: -7, y: -5 },
+  "al-dhafra-air-base": { x: 8, y: 3 },
+  "naval-support-activity-bahrain": { x: 7, y: -7 },
+  "ali-al-salem-air-base": { x: -8, y: 7 },
+  "yokosuka-naval-base": { x: 7, y: -5 },
+  "kadena-air-base": { x: -7, y: 7 },
+  "camp-humphreys": { x: -6, y: -6 },
+  "clear-space-force-station": { x: -7, y: 6 },
+  "eielson-air-force-base": { x: 8, y: -5 },
+};
+
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0 },
@@ -258,7 +275,7 @@ export function GlobalCommandMap({
             : "Select a theater to review the strategic purpose. Select a white node for the base dossier."}
         />
 
-        <div className="grid min-h-[720px] overflow-hidden bg-zinc-950 lg:grid-cols-[1fr_420px]">
+        <div className="grid min-h-[720px] overflow-hidden bg-zinc-950 lg:h-[780px] lg:grid-cols-[1fr_420px]">
           <div className="relative bg-black">
             <div className="absolute left-4 top-4 z-10 flex max-w-[calc(100%-2rem)] flex-wrap gap-2">
               {regions.map((region) => (
@@ -277,7 +294,7 @@ export function GlobalCommandMap({
               ))}
             </div>
 
-            <div className="h-full min-h-[560px] pt-20">
+            <div className="h-[620px] pt-20 lg:h-full">
               {isMapMounted ? (
                 <ComposableMap
                   projection="geoMercator"
@@ -314,7 +331,10 @@ export function GlobalCommandMap({
                   </Geographies>
 
                   {bases.map((base) => {
+                    const isActiveRegion = base.Region === activeRegionId;
                     const isSelected = selectedBase?.ID === base.ID;
+                    const offset = MARKER_OFFSETS[base.ID] ?? { x: 0, y: 0 };
+                    const hasOffset = offset.x !== 0 || offset.y !== 0;
                     return (
                       <Marker key={base.ID} coordinates={parseCoordinates(base.Coordinates)}>
                         <g
@@ -330,19 +350,33 @@ export function GlobalCommandMap({
                           }}
                           className="cursor-pointer"
                         >
-                          <circle
-                            r={9}
-                            fill="transparent"
-                            stroke="transparent"
-                            strokeWidth={0}
-                            className="cursor-pointer"
-                          />
-                          <circle
-                            r={isSelected ? 4 : 3}
-                            fill="#fafafa"
-                            opacity={1}
-                            pointerEvents="none"
-                          />
+                          {hasOffset && (
+                            <line
+                              x1={0}
+                              y1={0}
+                              x2={offset.x}
+                              y2={offset.y}
+                              stroke="#71717a"
+                              strokeWidth={0.45}
+                              opacity={isActiveRegion ? 0.65 : 0.22}
+                              pointerEvents="none"
+                            />
+                          )}
+                          <g transform={`translate(${offset.x} ${offset.y})`}>
+                            <circle
+                              r={10}
+                              fill="transparent"
+                              stroke="transparent"
+                              strokeWidth={0}
+                              className="cursor-pointer"
+                            />
+                            <circle
+                              r={isSelected ? 4 : isActiveRegion ? 3 : 2.2}
+                              fill="#fafafa"
+                              opacity={isActiveRegion ? 1 : 0.42}
+                              pointerEvents="none"
+                            />
+                          </g>
                         </g>
                       </Marker>
                     );
@@ -356,7 +390,7 @@ export function GlobalCommandMap({
             </div>
           </div>
 
-          <aside className="border-t border-zinc-800/40 bg-zinc-950 p-7 lg:border-l lg:border-t-0 lg:p-9">
+          <aside className="border-t border-zinc-800/40 bg-zinc-950 p-7 lg:overflow-y-auto lg:border-l lg:border-t-0 lg:p-9">
             <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-zinc-500">Theater Brief</div>
             <h3 className="mt-4 text-4xl font-black uppercase leading-none tracking-tight text-white">{activeRegion.label}</h3>
             <p className="mt-6 text-sm leading-7 text-zinc-400">{activeRegion.purpose}</p>
@@ -387,7 +421,7 @@ export function GlobalCommandMap({
 
               <div className="border-t border-zinc-900 pt-6">
                 <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-600">Mapped Nodes</div>
-                <div className="mt-3 space-y-2">
+                <div className="mt-3 max-h-72 space-y-2 overflow-y-auto pr-1 lg:max-h-none">
                   {activeRegionBases.map((base) => (
                     <button
                       key={base.ID}
