@@ -56,6 +56,12 @@ import aircraftCarrierFlightDeck from "@/IMAGES/Military/Navy/us-navy-aircraft-c
 import fa18Landing from "@/IMAGES/Military/Navy/us-navy-fa18f-super-hornet-landing.jpg";
 import ticonderogaCruiser from "@/IMAGES/Military/Navy/us-navy-ticonderoga-cruiser-san-diego.jpg";
 import carrierStrikeGroupFormation from "@/IMAGES/Military/Navy/us-navy-carrier-strike-group-formation.jpg";
+import navyHeritageColumbus from "@/IMAGES/Military/Navy/ContinentalNavyShipColumbus.jpg";
+import navyHeritageConstitution from "@/IMAGES/Military/Navy/USS_Constitution_fires_a_17-gun_salute.jpg";
+import navyHeritageGreatWhiteFleet from "@/IMAGES/Military/Navy/Great_White_Fleet_return2.jpg";
+import navyHeritageMidway from "@/IMAGES/Military/Navy/Battle_of_Midway,_June_1942_(23902373581).jpg";
+import navyHeritageCubanMissileCrisis from "@/IMAGES/Military/Navy/P-3A_VP-44_over_USS_Barry_(DD-933)_and_Metallurg_Anosov_during_Cuban_Missile_Crisis_1962.jpg";
+import navyHeritageTomahawk from "@/IMAGES/Military/Navy/Missouri.missile02.jpg";
 import spaceForceLaunch from "@/IMAGES/Military/Space Force/us-space-force-falcon9-launch.jpg";
 import spaceForceSputnik from "@/IMAGES/Military/Space Force/Sputnik.jpg";
 import spaceForceAfscLogo from "@/IMAGES/Military/Space Force/Air Force Space Command Logo.jpg";
@@ -191,6 +197,12 @@ export const SITE_IMAGES = {
     ohioSubmarine: ohioSubmarine.src,
     dualCarrier: navyHero.src,
     carrierFormation: carrierStrikeGroupFormation.src,
+    heritageColumbus: navyHeritageColumbus.src,
+    heritageConstitution: navyHeritageConstitution.src,
+    heritageGreatWhiteFleet: navyHeritageGreatWhiteFleet.src,
+    heritageMidway: navyHeritageMidway.src,
+    heritageCubanMissileCrisis: navyHeritageCubanMissileCrisis.src,
+    heritageTomahawk: navyHeritageTomahawk.src,
   },
   airForce: {
     hero: airForceHero.src,

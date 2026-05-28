@@ -1000,6 +1000,8 @@ export function ParallaxMilitaryHero({
         >
           {videoSrc ? (
             <video
+              autoPlay
+              loop
               muted
               playsInline
               preload="metadata"
@@ -1132,6 +1134,8 @@ export function VideoMilitaryHero({
           style={{ opacity: videoOpacity, scale: videoScale, y: videoY }}
         >
           <video
+            autoPlay
+            loop
             muted
             playsInline
             preload="metadata"
