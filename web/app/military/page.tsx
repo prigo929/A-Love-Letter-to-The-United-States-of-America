@@ -300,32 +300,7 @@ export default async function MilitaryPage() {
         </div>
       </Section>
 
-      {/* ─── §3.2  GLOBAL ALLIANCES — NATO & AUKUS ─────────────────────────── */}
-      <Section
-        id="alliances"
-        label={locale === 'ro' ? "ALIANȚE GLOBALE · MULTIPLICATORI DE FORȚĂ" : "GLOBAL ALLIANCES · FORCE MULTIPLIERS"}
-      >
-        <div className="text-center mb-24">
-          <h2 className="text-7xl font-black tracking-tighter uppercase mb-8">
-            {locale === 'ro' ? 'ALIANȚE STRATEGICE.' : 'STRATEGIC ALLIANCES.'}<br/>
-            <span className="text-white/20">{locale === 'ro' ? 'SECURITATE COLECTIVĂ.' : 'COLLECTIVE SECURITY.'}</span>
-          </h2>
-          <p className="mil-text-metadata max-w-2xl mx-auto leading-relaxed text-center">
-            {locale === 'ro' 
-              ? "Puterea americană este multiplicată prin coaliții globale integrate. Prin NATO și parteneriate tehnologice de ultimă oră precum AUKUS, democrațiile lumii asigură descurajarea colectivă."
-              : "American power is force-multiplied through integrated global coalitions. Through NATO and cutting-edge tech partnerships like AUKUS, the world's democracies secure collective deterrence."}
-          </p>
-        </div>
-        <AlliancesShowcase alliances={alliances} locale={locale} />
-        <div className="mt-12 flex justify-center">
-          <Link
-            href="/global-leadership/nato"
-            className="inline-flex h-11 items-center justify-center border border-white/15 bg-white px-5 text-xs font-bold uppercase text-black transition-colors hover:bg-white/85"
-          >
-            {locale === 'ro' ? "EXPLOREAZĂ DIPLOMAȚIA NATO →" : "EXPLORE NATO DIPLOMACY →"}
-          </Link>
-        </div>
-      </Section>
+
       
       {/* ─── §3.5  SUPREMACY WAVE — MILITARY SHOWCASE ────────────────────────── */}
       <Section
@@ -658,6 +633,33 @@ export default async function MilitaryPage() {
               </p>
             </div>
           ))}
+        </div>
+      </Section>
+
+      {/* ─── §3.2  GLOBAL ALLIANCES — NATO & AUKUS ─────────────────────────── */}
+      <Section
+        id="alliances"
+        label={locale === 'ro' ? "ALIANȚE GLOBALE · MULTIPLICATORI DE FORȚĂ" : "GLOBAL ALLIANCES · FORCE MULTIPLIERS"}
+      >
+        <div className="text-center mb-24">
+          <h2 className="text-7xl font-black tracking-tighter uppercase mb-8">
+            {locale === 'ro' ? 'ALIANȚE STRATEGICE.' : 'STRATEGIC ALLIANCES.'}<br/>
+            <span className="text-white/20">{locale === 'ro' ? 'SECURITATE COLECTIVĂ.' : 'COLLECTIVE SECURITY.'}</span>
+          </h2>
+          <p className="mil-text-metadata max-w-2xl mx-auto leading-relaxed text-center">
+            {locale === 'ro' 
+              ? "Puterea americană este multiplicată prin coaliții globale integrate. Prin NATO și parteneriate tehnologice de ultimă oră precum AUKUS, democrațiile lumii asigură descurajarea colectivă."
+              : "American power is force-multiplied through integrated global coalitions. Through NATO and cutting-edge tech partnerships like AUKUS, the world's democracies secure collective deterrence."}
+          </p>
+        </div>
+        <AlliancesShowcase alliances={alliances} locale={locale} />
+        <div className="mt-12 flex justify-center">
+          <Link
+            href="/global-leadership/nato"
+            className="inline-flex h-11 items-center justify-center border border-white/15 bg-white px-5 text-xs font-bold uppercase text-black transition-colors hover:bg-white/85"
+          >
+            {locale === 'ro' ? "EXPLOREAZĂ DIPLOMAȚIA NATO →" : "EXPLORE NATO DIPLOMACY →"}
+          </Link>
         </div>
       </Section>
 
