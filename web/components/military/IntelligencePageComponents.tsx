@@ -2,18 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState, useEffect } from "react";
-import { AnimatePresence, motion, useScroll, useTransform, useInView, animate } from "framer-motion";
-import {
-  ArrowUpRight,
-  ChevronRight,
-  Globe,
-  MapPin,
-} from "lucide-react";
-import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
+import { useRef, useState, useEffect, useCallback } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 import type { Locale } from "@/lib/i18n/config";
 import type {
-  IntelligenceMetric,
   IntelligenceAgency,
   IntelligenceCapability,
   IntelligenceNode,
@@ -21,268 +15,439 @@ import type {
   IntelligenceFutureProgram,
 } from "@/lib/data/intelligence-data";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 },
-};
-
 // ─────────────────────────────────────────────────────────────────────────────
-// 1. IntelligenceStyles — Clean, elegant typography and layouts
+// DESIGN TOKENS — The classified archive palette
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function IntelligenceStyles() {
+const INTEL = {
+  black: "#000000",
+  surface: "#050505",
+  paper: "#E8E2D5",
+  paperDim: "rgba(232, 226, 213, 0.40)",
+  paperFaint: "rgba(232, 226, 213, 0.15)",
+  green: "#1C3A1C",
+  greenText: "#2A4A2A",
+  greenBright: "#3A5A3A",
+  redact: "#0A0A0A",
+  border: "rgba(232, 226, 213, 0.06)",
+} as const;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 1. IntelClassifiedStyles — Global CSS injection
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function IntelClassifiedStyles() {
   return (
     <style jsx global>{`
-      .intel-page {
-        --intel-black: #000000;
-        --intel-void: #030406;
-        --intel-surface: #090b0e;
-        --intel-border: rgba(255, 255, 255, 0.05);
+      .intel-classified {
+        --intel-black: ${INTEL.black};
+        --intel-surface: ${INTEL.surface};
+        --intel-paper: ${INTEL.paper};
+        --intel-paper-dim: ${INTEL.paperDim};
+        --intel-paper-faint: ${INTEL.paperFaint};
+        --intel-green: ${INTEL.green};
+        --intel-green-text: ${INTEL.greenText};
+        --intel-redact: ${INTEL.redact};
+        --intel-border: ${INTEL.border};
+
         background: var(--intel-black);
-        color: white;
+        color: var(--intel-paper);
       }
 
-      .intel-font-display {
-        font-family: var(--font-archivo), Inter, system-ui, sans-serif;
-        letter-spacing: -0.02em;
-      }
-
-      .intel-font-mono {
+      /* Bureaucratic voice — monospace, all-caps, wide tracking */
+      .intel-bureaucratic {
         font-family: var(--font-mono), "SFMono-Regular", Consolas, monospace;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.2em;
         text-transform: uppercase;
+        font-size: 10px;
+        line-height: 1.6;
+        color: var(--intel-green-text);
       }
 
-      .intel-glass {
-        background: rgba(3, 4, 6, 0.85);
-        backdrop-filter: blur(20px) saturate(1.1);
-        -webkit-backdrop-filter: blur(20px) saturate(1.1);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+      /* Editorial voice — Playfair Display italic, for human weight */
+      .intel-editorial {
+        font-family: var(--font-display), "Playfair Display", Georgia, serif;
+        font-style: italic;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        color: var(--intel-paper);
       }
 
-      .intel-panel {
-        background: var(--intel-surface);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+      /* Document body text */
+      .intel-body {
+        font-family: var(--font-mono), monospace;
+        font-size: 12px;
+        line-height: 2.0;
+        letter-spacing: 0.04em;
+        color: var(--intel-paper-dim);
+      }
+
+      /* Redaction bar */
+      .intel-redacted {
+        background: var(--intel-redact);
+        color: transparent;
+        user-select: none;
+        padding: 0 2px;
+        margin: 0 1px;
+        display: inline;
+      }
+
+      /* Separator */
+      .intel-separator {
+        height: 1px;
+        background: var(--intel-green);
+        opacity: 0.3;
+        width: 100%;
+      }
+
+      /* Prevent inherited gold/crimson from leaking */
+      .intel-classified * {
+        --mil-accent: ${INTEL.greenText};
+      }
+
+      /* Scrollbar styling for the classified page */
+      .intel-classified::-webkit-scrollbar {
+        width: 4px;
+      }
+      .intel-classified::-webkit-scrollbar-track {
+        background: ${INTEL.black};
+      }
+      .intel-classified::-webkit-scrollbar-thumb {
+        background: ${INTEL.green};
+        border-radius: 0;
       }
     `}</style>
   );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. IntelligencePageProgress — Minimal scroll progress
+// 2. ClassificationHeader — Fixed TOP SECRET bar
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function IntelligencePageProgress() {
+export function ClassificationHeader() {
+  const closingRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
+  const [closingInView, setClosingInView] = useState(false);
 
-  return (
-    <div className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-[3px] bg-white/[0.02]">
-      <motion.div
-        className="h-full origin-left bg-[#d4a44a]"
-        style={{ scaleX: scrollYProgress }}
-      />
-    </div>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// IntelligenceSectionDivider
-// ─────────────────────────────────────────────────────────────────────────────
-
-export function IntelligenceSectionDivider() {
-  return (
-    <div className="relative flex justify-center items-center py-6">
-      <motion.div
-        initial={{ scaleX: 0, opacity: 0 }}
-        whileInView={{ scaleX: 1, opacity: 1 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-        className="h-px w-full max-w-[280px] origin-center bg-gradient-to-r from-transparent via-white/10 to-transparent"
-      />
-    </div>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Count Up Counter
-// ─────────────────────────────────────────────────────────────────────────────
-
-function IntelCountUp({ value }: { value: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
-  const [displayVal, setDisplayVal] = useState("0");
-
+  // Track when the closing section enters viewport
   useEffect(() => {
-    const cleanValue = value.replace(/,/g, "");
-    const numericMatch = cleanValue.match(/^([\d.]+)(.*)$/);
-    if (!numericMatch) {
-      setDisplayVal(value);
-      return;
-    }
-    const num = parseFloat(numericMatch[1]);
-    const suffix = numericMatch[2] || "";
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrolled / docHeight;
+      // Start fading at 85% scroll, fully gone at 100%
+      setClosingInView(progress > 0.85);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    if (inView) {
-      const controls = animate(0, num, {
-        duration: 2.0,
-        ease: [0.16, 1, 0.3, 1],
-        onUpdate: (latest) => {
-          const formatted = num >= 1000
-            ? Math.round(latest).toLocaleString("en-US")
-            : latest.toFixed(0);
-          setDisplayVal(formatted + suffix);
-        },
-      });
-      return () => controls.stop();
-    }
-  }, [inView, value]);
+  const opacity = useTransform(scrollYProgress, [0.85, 1.0], [1, 0]);
 
-  return <span ref={ref} className="text-white font-extralight">{displayVal}</span>;
-}
-
-function IntelSectionTitle({
-  label, title, subtitle, body, align = "center",
-}: {
-  label: string; title: string; subtitle?: string; body: string; align?: "center" | "left";
-}) {
-  const isCenter = align === "center";
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
-      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
-      className={cn("mb-24 max-w-5xl", isCenter ? "mx-auto text-center" : "text-left")}
+      style={{ opacity }}
+      className="fixed top-0 inset-x-0 z-[90] flex items-center justify-center h-8 border-b"
+      data-classification-header
     >
-      <motion.div
-        variants={fadeUp}
-        className="intel-font-mono mb-6 tracking-[0.3em] text-[10px] text-[#d4a44a]/70"
+      <div
+        className="absolute inset-0"
+        style={{ background: INTEL.surface, borderBottomColor: INTEL.border }}
+      />
+      <span
+        className="intel-bureaucratic relative z-10"
+        style={{
+          fontSize: "9px",
+          letterSpacing: "0.35em",
+          color: INTEL.greenText,
+        }}
       >
-        {label}
-      </motion.div>
-      <motion.h2
-        variants={fadeUp}
-        className="intel-font-display text-[clamp(36px,7vw,88px)] font-black leading-[0.88] uppercase text-white"
-      >
-        {title}
-      </motion.h2>
-      {subtitle && (
-        <motion.div
-          variants={fadeUp}
-          className="intel-font-display text-[clamp(36px,7vw,88px)] font-black leading-[0.88] uppercase text-white/15 mt-1"
-        >
-          {subtitle}
-        </motion.div>
-      )}
-      <motion.p
-        variants={fadeUp}
-        className={cn(
-          "mt-8 text-sm leading-[1.9] text-white/50 tracking-wide",
-          isCenter ? "max-w-2xl mx-auto" : "max-w-xl"
-        )}
-      >
-        {body}
-      </motion.p>
+        TOP SECRET // SI // TK // NOFORN // ORCON
+      </span>
     </motion.div>
   );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// IntelligenceFullBleed — clean cinematic parallax with gradients
+// 3. EntrySequence — Typing animation
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function IntelligenceFullBleed({
-  imageSrc, imageAlt, caption, pullQuote,
-}: {
-  imageSrc: string; imageAlt: string; caption?: string; pullQuote?: string;
-}) {
+export function EntrySequence({ onComplete }: { onComplete?: () => void }) {
+  const [phase, setPhase] = useState(0);
+  const [text, setText] = useState("");
+  const [complete, setComplete] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const inView = useInView(ref, { once: true });
+
+  const lines = [
+    "ACCESSING ARCHIVE...",
+    "CLEARANCE VERIFIED",
+    "PROCEED",
+  ];
+
+  const typeText = useCallback((lineText: string, charDelay: number): Promise<void> => {
+    return new Promise((resolve) => {
+      let i = 0;
+      const interval = setInterval(() => {
+        i++;
+        setText(lineText.slice(0, i));
+        if (i >= lineText.length) {
+          clearInterval(interval);
+          resolve();
+        }
+      }, charDelay);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!inView || complete) return;
+
+    let cancelled = false;
+    const run = async () => {
+      // Phase 0: ACCESSING ARCHIVE...
+      setPhase(0);
+      await typeText(lines[0], 50);
+      if (cancelled) return;
+      await new Promise((r) => setTimeout(r, 800));
+
+      // Phase 1: CLEARANCE VERIFIED
+      setPhase(1);
+      setText("");
+      await typeText(lines[1], 45);
+      if (cancelled) return;
+      await new Promise((r) => setTimeout(r, 600));
+
+      // Phase 2: PROCEED
+      setPhase(2);
+      setText("");
+      await typeText(lines[2], 70);
+      if (cancelled) return;
+      await new Promise((r) => setTimeout(r, 400));
+
+      setComplete(true);
+      onComplete?.();
+    };
+
+    run();
+    return () => { cancelled = true; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView]);
+
+  if (complete) {
+    return (
+      <motion.div
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 0 }}
+        transition={{ duration: 1.5, delay: 0.2 }}
+        className="flex items-center justify-center py-24"
+        style={{ background: INTEL.black }}
+      >
+        <span className="intel-bureaucratic" style={{ color: INTEL.greenText, fontSize: "11px" }}>
+          PROCEED
+        </span>
+      </motion.div>
+    );
+  }
 
   return (
-    <div ref={ref} className="relative h-[55vh] min-h-[380px] overflow-hidden bg-black">
-      <motion.div className="absolute inset-0 -inset-y-[15%]" style={{ y }}>
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          quality={90}
-          className="object-cover brightness-[0.22] saturate-[0.6]"
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL={BLUR_PLACEHOLDER}
-        />
-      </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black pointer-events-none" />
-
-      {pullQuote && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
+    <div
+      ref={ref}
+      className="flex items-center justify-center py-32"
+      style={{ background: INTEL.black }}
+    >
+      <div className="text-center">
+        <span
+          className="intel-bureaucratic"
+          style={{
+            color: INTEL.greenText,
+            fontSize: "11px",
+            letterSpacing: "0.3em",
+          }}
         >
-          <div className="mb-5 h-[2px] w-12 bg-[#d4a44a]/40" />
-          <p className="intel-font-display text-[clamp(18px,3.5vw,40px)] font-light text-white/90 leading-[1.1] max-w-4xl tracking-tight">
-            {pullQuote}
-          </p>
-          <div className="mt-5 h-[2px] w-12 bg-[#d4a44a]/40" />
-        </motion.div>
-      )}
-
-      {caption && (
-        <div className="absolute bottom-6 left-0 right-0 text-center">
-          <span className="intel-font-mono text-[9px] tracking-[0.2em] text-white/20">{caption}</span>
-        </div>
-      )}
+          {text}
+          <span className="animate-pulse">▌</span>
+        </span>
+      </div>
     </div>
   );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 3. IntelligenceMetricStrip — Exact MinimalistStat replica grid
+// 4. SingleStatistic — One massive number
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function IntelligenceMetricStrip({ metrics }: { metrics: IntelligenceMetric[] }) {
+export function SingleStatistic({ locale = "en" }: { locale?: Locale }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const isRo = locale === "ro";
+
   return (
-    <section className="relative bg-black border-t border-b border-white/5 overflow-hidden">
-      <div className="mx-auto max-w-[1440px]">
-        {/* 2-row High Contrast Grid (3 columns on desktop, 2 on tablet, 1 on mobile) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {metrics.map((m, i) => (
-            <div key={m.label} className="border-r border-b border-white/5 last:border-r-0 lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(n+4)]:border-b-0 sm:[&:nth-child(2n)]:border-r-0">
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-5%" }}
-                transition={{ duration: 1.0, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col px-8 py-12"
-              >
-                {/* Uppercase White wide-tracking label matching main page MinimalistStat */}
-                <div className="mil-text-metadata mb-6 tracking-[0.3em] font-black text-white">
-                  {m.label}
-                </div>
+    <section
+      ref={ref}
+      className="relative flex flex-col items-center justify-center px-6 py-40 md:py-56"
+      style={{ background: INTEL.black }}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 2.0, ease: "easeOut" }}
+        className="text-center max-w-3xl"
+      >
+        {/* The number — massive, editorial */}
+        <div
+          className="intel-editorial"
+          style={{
+            fontSize: "clamp(60px, 12vw, 140px)",
+            lineHeight: 1,
+            fontWeight: 400,
+            fontStyle: "italic",
+            color: INTEL.paper,
+            letterSpacing: "-0.03em",
+          }}
+        >
+          1,271,000
+        </div>
 
-                {/* Thin, giant count-up number matching MinimalistStat */}
-                <div className="flex items-baseline gap-1">
-                  <span className="text-[clamp(48px,7vw,96px)] font-extralight tracking-tighter leading-none">
-                    <IntelCountUp value={m.value} />
-                  </span>
-                </div>
+        {/* The description — tiny bureaucratic */}
+        <div className="mt-8">
+          <span
+            className="intel-bureaucratic"
+            style={{
+              fontSize: "10px",
+              letterSpacing: "0.25em",
+              color: INTEL.paperDim,
+              lineHeight: 2.2,
+            }}
+          >
+            {isRo
+              ? "PAGINI DE DOCUMENTE DECLASIFICATE PUBLICATE DE CIA DIN 1995"
+              : "PAGES OF DECLASSIFIED DOCUMENTS RELEASED BY THE CIA SINCE 1995"}
+          </span>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
 
-                {/* Linear-gradient line divider under the numbers */}
-                <div className="mt-6 mb-4 h-px w-full" style={{
-                  background: 'linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0.05), transparent)'
-                }} />
+// ─────────────────────────────────────────────────────────────────────────────
+// 5. AgencyDossier — Vertical scrolling chapters
+// ─────────────────────────────────────────────────────────────────────────────
 
-                {/* Muted sublabel detailing stat context */}
-                <div className="mil-text-metadata max-w-[240px] leading-relaxed opacity-60 text-[11px] font-medium tracking-wide">
-                  {m.detail}
-                </div>
-              </motion.div>
-            </div>
+function AgencyChapter({ agency, index, isLast }: { agency: IntelligenceAgency; index: number; isLast: boolean }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0 }}
+      animate={inView ? { opacity: 1 } : {}}
+      transition={{ duration: 1.5, ease: "easeOut" }}
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-8 lg:gap-16 items-start">
+        {/* Seal — desaturated */}
+        <div className="flex justify-center lg:justify-start pt-2">
+          <div className="relative w-32 h-32 lg:w-40 lg:h-40">
+            <Image
+              src={agency.imageSrc}
+              alt={`${agency.name} Seal`}
+              width={160}
+              height={160}
+              className="object-contain w-full h-full"
+              style={{
+                filter: "grayscale(70%) brightness(0.7) contrast(1.1)",
+                opacity: 0.6,
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="flex flex-col">
+          {/* Agency header — bureaucratic */}
+          <div
+            className="intel-bureaucratic mb-4"
+            style={{ fontSize: "10px", color: INTEL.greenText, letterSpacing: "0.25em" }}
+          >
+            {agency.name.toUpperCase()} // EST. {agency.stats.find((s) => s.label === "Founded" || s.label === "Fondată")?.value || "CLASSIFIED"}
+          </div>
+
+          {/* Role — editorial */}
+          <div
+            className="intel-editorial mb-6"
+            style={{ fontSize: "clamp(20px, 3vw, 32px)", lineHeight: 1.3 }}
+          >
+            {agency.role}
+          </div>
+
+          {/* Body text */}
+          <p className="intel-body max-w-2xl mb-8">
+            {agency.description}
+          </p>
+
+          {/* Stats row */}
+          <div className="flex flex-wrap gap-x-12 gap-y-4">
+            {agency.stats.map((s) => (
+              <div key={s.label} className="flex flex-col">
+                <span
+                  className="intel-bureaucratic mb-1"
+                  style={{ fontSize: "8px", letterSpacing: "0.2em", color: INTEL.greenText }}
+                >
+                  {s.label.toUpperCase()}
+                </span>
+                <span
+                  className="intel-bureaucratic"
+                  style={{ fontSize: "10px", color: INTEL.paper, letterSpacing: "0.08em" }}
+                >
+                  {s.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Separator */}
+      {!isLast && (
+        <div className="intel-separator my-20 lg:my-28" style={{ background: INTEL.green, opacity: 0.2 }} />
+      )}
+    </motion.div>
+  );
+}
+
+export function AgencyDossier({ agencies, locale = "en" }: { agencies: IntelligenceAgency[]; locale?: Locale }) {
+  const isRo = locale === "ro";
+
+  return (
+    <section className="relative px-6 sm:px-10 lg:px-16 py-28 md:py-40" style={{ background: INTEL.black }}>
+      <div className="mx-auto max-w-[1100px]">
+        {/* Section header */}
+        <div className="mb-28 lg:mb-36">
+          <div
+            className="intel-bureaucratic mb-8"
+            style={{ fontSize: "9px", letterSpacing: "0.35em", color: INTEL.greenText }}
+          >
+            {isRo ? "DOSARE AGENȚII // NIVEL 5 ACCES" : "AGENCY DOSSIERS // LEVEL 5 ACCESS"}
+          </div>
+          <div
+            className="intel-editorial"
+            style={{ fontSize: "clamp(24px, 4vw, 44px)", lineHeight: 1.25 }}
+          >
+            {isRo
+              ? "Cele cinci agenții care ancorează sistemul de informații al Statelor Unite."
+              : "The five agencies that anchor the intelligence apparatus of the United States."}
+          </div>
+        </div>
+
+        {/* Agency chapters — static, no interactivity */}
+        <div className="space-y-0">
+          {agencies.map((agency, i) => (
+            <AgencyChapter
+              key={agency.id}
+              agency={agency}
+              index={i}
+              isLast={i === agencies.length - 1}
+            />
           ))}
         </div>
       </div>
@@ -291,502 +456,372 @@ export function IntelligenceMetricStrip({ metrics }: { metrics: IntelligenceMetr
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4. IntelligenceAgencyShowcase — Split Editorial Layout (Highly Unique)
+// 6. DeclassifiedDocument — Intelligence disciplines with redaction bars
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function IntelligenceAgencyShowcase({ agencies, locale = "en" }: { agencies: IntelligenceAgency[]; locale?: Locale }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const active = agencies[activeIndex];
-  const isRo = locale === "ro";
-
-  return (
-    <section className="relative overflow-hidden bg-black px-6 py-32 md:py-48">
-      <div className="relative mx-auto max-w-[1440px]">
-        <IntelSectionTitle
-          label={isRo ? "Comunitatea de informații" : "Intelligence Community"}
-          title={isRo ? "Cele Cinci Mari" : "The Big Five"}
-          subtitle={isRo ? "piloni ai rețelei" : "agencies"}
-          body={isRo
-            ? "O privire detaliată asupra agențiilor pilon care ancorează colectarea, decriptarea și protecția datelor strategice ale Americii."
-            : "An in-depth look at the pillar agencies that anchor the gathering, analysis, and execution of American national intelligence."}
-        />
-
-        <div className="grid overflow-hidden border border-white/5 bg-[#050505] lg:grid-cols-[320px_1fr] min-h-[580px] rounded-sm shadow-2xl">
-          {/* Left: Interactive list representing a dossier directory */}
-          <div className="flex flex-col border-b lg:border-b-0 lg:border-r border-white/5 bg-white/[0.01]">
-            {agencies.map((agency, index) => {
-              const selected = activeIndex === index;
-              return (
-                <button
-                  key={agency.id}
-                  type="button"
-                  onClick={() => setActiveIndex(index)}
-                  className={cn(
-                    "relative flex flex-col justify-center text-left px-8 py-8 transition-colors duration-400 border-b border-white/5 last:border-b-0",
-                    selected ? "bg-white/[0.03]" : "hover:bg-white/[0.01]"
-                  )}
-                >
-                  {selected && (
-                    <motion.div
-                      layoutId="intel-agency-indicator"
-                      className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#d4a44a]"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    />
-                  )}
-                  <div className="intel-font-mono text-[8px] tracking-[0.15em] text-white/30 mb-2">{agency.specialty.split(" ")[0]}</div>
-                  <div className={cn(
-                    "intel-font-display text-lg font-semibold tracking-tight transition-colors",
-                    selected ? "text-white" : "text-white/40"
-                  )}>
-                    {agency.shortName}
-                  </div>
-                  <div className="text-[10px] text-white/20 mt-1 truncate max-w-[220px]">{agency.role}</div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Right: Immersive content card with interactive agency seal */}
-          <div className="relative min-h-[550px] flex flex-col justify-center p-8 sm:p-12 lg:p-16 overflow-hidden bg-[#050608]">
-            {/* Elegant dark radial gold glow in the background */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_50%,rgba(212,164,74,0.03),transparent_50%)] pointer-events-none" />
-
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 items-center w-full my-auto">
-              {/* Left Column: Details */}
-              <div className="flex flex-col justify-center">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={active.id + "-details"}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <div className="intel-font-mono text-[9px] tracking-[0.25em] text-[#d4a44a] mb-4">{active.specialty}</div>
-                    <h3 className="intel-font-display text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4 leading-tight max-w-2xl">{active.name}</h3>
-                    <div className="text-sm text-white/50 italic mb-8 font-light max-w-xl">{active.role}</div>
-                    <p className="text-sm leading-[1.8] text-white/40 tracking-wide font-normal max-w-xl mb-12">{active.description}</p>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-white/10 max-w-3xl">
-                      {active.stats.map((s) => (
-                        <div key={s.label} className="flex flex-col">
-                          <span className="intel-font-mono text-[8px] tracking-[0.15em] text-white/30 mb-1.5">{s.label}</span>
-                          <span className="text-xs font-semibold text-white/85 tracking-wide">{s.value}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              {/* Right Column: Seal Display */}
-              <div className="flex items-center justify-center lg:justify-end lg:pr-4">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={active.id + "-seal"}
-                    initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
-                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                    exit={{ opacity: 0, scale: 0.9, rotate: 5 }}
-                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative flex items-center justify-center"
-                  >
-                    {/* Outer glowing ring */}
-                    <div className="absolute inset-0 rounded-full border border-[#d4a44a]/10 bg-[#d4a44a]/[0.01] blur-[1px] scale-110 pointer-events-none" />
-                    <div className="absolute inset-0 rounded-full border border-white/5 pointer-events-none" />
-                    
-                    <div className="relative w-44 h-44 sm:w-56 sm:h-56 lg:w-64 lg:h-64 p-6 bg-black/40 rounded-full backdrop-blur-sm flex items-center justify-center">
-                      <Image
-                        src={active.imageSrc}
-                        alt={`${active.name} Seal`}
-                        width={256}
-                        height={256}
-                        className="object-contain w-full h-full filter drop-shadow-[0_0_15px_rgba(212,164,74,0.05)]"
-                        priority
-                      />
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+function RedactedText({ children }: { children: React.ReactNode }) {
+  return <span className="intel-redacted">{children}</span>;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// 5. IntelligenceCapabilityGrid — Alternating Full-Width Rows (Highly Unique)
-// ─────────────────────────────────────────────────────────────────────────────
-
-export function IntelligenceCapabilityGrid({ capabilities, locale = "en" }: { capabilities: IntelligenceCapability[]; locale?: Locale }) {
+export function DeclassifiedDocument({ capabilities, locale = "en" }: { capabilities: IntelligenceCapability[]; locale?: Locale }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
   const isRo = locale === "ro";
 
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
-      <div className="relative mx-auto max-w-[1400px]">
-        <IntelSectionTitle
-          label={isRo ? "Capabilități tactice" : "Tactical Disciplines"}
-          title={isRo ? "Domenii de" : "Intelligence"}
-          subtitle={isRo ? "colectare" : "disciplines"}
-          body={isRo
-            ? "Cele cinci modalități fundamentale prin care informațiile sunt obținute, analizate și transformate în planuri strategice."
-            : "The five distinct modes of intelligence operations that feed critical decisions at every level of national command."}
-        />
-
-        {/* Large, high-end alternating vertical content layout instead of simple cards */}
-        <div className="mt-20 space-y-16 lg:space-y-24">
-          {capabilities.map((cap, i) => {
-            const isEven = i % 2 === 0;
-            return (
-              <motion.div
-                key={cap.title}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-60px" }}
-                variants={fadeUp}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className={cn(
-                  "flex flex-col lg:flex-row items-start lg:items-center justify-between pb-12 border-b border-white/[0.04] last:border-b-0 gap-8 lg:gap-16",
-                  isEven ? "" : "lg:flex-row-reverse"
-                )}
-              >
-                {/* Large horizontal index number */}
-                <div className="intel-font-display text-7xl sm:text-8xl font-black text-white/5 tracking-tighter select-none lg:w-44 shrink-0">
-                  {cap.kicker.split(" ")[0]}
-                </div>
-
-                {/* Capability Content */}
-                <div className="flex-1 max-w-xl">
-                  <span className="intel-font-mono text-[9px] tracking-[0.2em] text-[#d4a44a] mb-3 block">{cap.kicker}</span>
-                  <h3 className="intel-font-display text-2xl sm:text-3xl font-bold tracking-tight text-white mb-4 leading-tight">{cap.title}</h3>
-                  <p className="text-[13px] leading-[1.85] text-white/40 tracking-wide font-normal mb-6">
-                    {cap.description}
-                  </p>
-                  <span className="intel-font-mono text-[9px] tracking-[0.12em] text-white/30 border border-white/10 px-3 py-1 rounded-full bg-white/[0.01]">
-                    {cap.stat}
-                  </span>
-                </div>
-
-                {/* Sleek inline indicator */}
-                <div className="hidden lg:block h-px w-8 bg-white/10 shrink-0" />
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// 6. IntelligenceOperationsConsole — Installation Map List Flow
-// ─────────────────────────────────────────────────────────────────────────────
-
-export function IntelligenceOperationsConsole({ nodes, locale = "en" }: { nodes: IntelligenceNode[]; locale?: Locale }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const active = nodes[activeIndex];
-  const isRo = locale === "ro";
-
-  return (
-    <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
-      <div className="relative mx-auto max-w-[1400px]">
-        <IntelSectionTitle
-          label={isRo ? "Infrastructură globală" : "Global Installations"}
-          title={isRo ? "Noduri de" : "Interception"}
-          subtitle={isRo ? "interceptare" : "installations"}
-          body={isRo
-            ? "Instalații de colectare a semnalelor amplasate strategic pentru supravegherea continuă a emisferelor planetei."
-            : "Strategic ground stations and cryptologic hubs placed globally to feed continuous signal data into national servers."}
-        />
-
-        {/* Tactical Console Container */}
-        <div className="grid overflow-hidden border border-white/5 bg-[#050505] lg:grid-cols-[350px_1fr] min-h-[500px] mt-16 rounded-sm shadow-2xl">
-          {/* Left panel selectors */}
-          <div className="flex flex-col border-b lg:border-b-0 lg:border-r border-white/5 bg-white/[0.01]">
-            {nodes.map((node, i) => {
-              const selected = activeIndex === i;
-              return (
-                <button
-                  key={node.name}
-                  type="button"
-                  onClick={() => setActiveIndex(i)}
-                  className={cn(
-                    "relative text-left px-8 py-8 transition-all duration-300 border-b border-white/5 last:border-b-0 flex flex-col justify-center min-h-[110px]",
-                    selected ? "bg-white/[0.03]" : "hover:bg-white/[0.01]"
-                  )}
-                >
-                  {selected && (
-                    <motion.div
-                      layoutId="intel-node-indicator"
-                      className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#d4a44a]"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    />
-                  )}
-                  <span className="intel-font-mono text-[10px] tracking-[0.2em] text-[#d4a44a]/80 mb-2 font-semibold uppercase">{node.location}</span>
-                  <span className={cn(
-                    "intel-font-display text-lg sm:text-xl font-bold tracking-tight transition-colors leading-tight",
-                    selected ? "text-white" : "text-white/40"
-                  )}>
-                    {node.name}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Right panel Briefing details */}
-          <div className="relative p-8 sm:p-12 lg:p-16 flex flex-col justify-between overflow-hidden bg-[#07080a] min-h-[450px]">
-            {/* Ambient tactical coordinates pattern overlay in the background */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(212,164,74,0.02),transparent_60%)] pointer-events-none" />
-
-            <div className="relative z-10 w-full flex flex-col justify-between h-full gap-8">
-              {/* Header section with Location label */}
-              <div className="flex items-center gap-2">
-                <MapPin size={12} className="text-white/30" />
-                <span className="intel-font-mono text-[10px] tracking-[0.15em] text-white/50 uppercase">{active.location}</span>
-              </div>
-
-              {/* Central installation title and info */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={active.name}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <h3 className="intel-font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white mb-2 leading-none">
-                    {active.name}
-                  </h3>
-                  <div className="intel-font-mono text-[10px] tracking-[0.25em] text-[#d4a44a] mb-6 uppercase font-semibold">
-                    {active.role}
-                  </div>
-                  <p className="text-sm leading-[1.8] text-white/40 tracking-wide font-normal max-w-2xl">
-                    {active.description}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Lower parameters grid formatted in beautiful vertical rows */}
-              <div className="pt-8 border-t border-white/5 mt-4">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={active.name + "-stats"}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="grid grid-cols-1 sm:grid-cols-3 gap-6"
-                  >
-                    {active.stats.map((s) => (
-                      <div key={s.label} className="flex flex-col border-b border-white/5 sm:border-b-0 pb-4 sm:pb-0">
-                        <span className="intel-font-mono text-[8px] tracking-[0.15em] text-white/30 mb-2">{s.label}</span>
-                        <span className="text-xs font-semibold text-white/80 tracking-wide">{s.value}</span>
-                      </div>
-                    ))}
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// 7. IntelligenceHeritageTimeline — Horizontal Drag/Scroll Reel (Highly Unique)
-// ─────────────────────────────────────────────────────────────────────────────
-
-export function IntelligenceHeritageTimeline({ events, locale = "en" }: { events: IntelligenceHeritageEvent[]; locale?: Locale }) {
-  const isRo = locale === "ro";
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <section className="relative overflow-hidden bg-black py-28 md:py-36">
-      <div className="relative mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-16">
-        <IntelSectionTitle
-          label={isRo ? "Puncte de cotitură" : "Heritage"}
-          title={isRo ? "Istoric & Moștenire" : "Intelligence"}
-          subtitle={isRo ? "pe teren" : "heritage"}
-          body={isRo
-            ? "Evoluția programelor și colectării de informații, de la înființarea serviciilor în 1947 până la capabilitățile cibernetice moderne."
-            : "The milestones and pivotal events that shaped the capabilities and legal frameworks of the U.S. intelligence community."}
-        />
-      </div>
-
-      {/* Horizontal scrolling timeline filmstrip */}
-      <div className="relative mt-16 overflow-hidden">
-        {/* Shadow overlays for smooth edge fading */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
-
-        {/* Scroll Container */}
+    <section
+      ref={ref}
+      className="relative px-6 sm:px-10 lg:px-16 py-28 md:py-40"
+      style={{ background: INTEL.black }}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="mx-auto max-w-[900px]"
+      >
+        {/* Document header */}
         <div
-          ref={containerRef}
-          className="flex overflow-x-auto gap-6 px-12 md:px-24 pb-12 snap-x snap-mandatory scrollbar-none select-none"
-          style={{ scrollbarWidth: "none" }}
+          className="p-6 sm:p-10 mb-2"
+          style={{ background: INTEL.surface, border: `1px solid ${INTEL.border}` }}
         >
-          {events.map((event, i) => (
-            <motion.div
-              key={event.year}
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.8, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="w-[320px] sm:w-[380px] shrink-0 snap-center intel-panel p-6 sm:p-8 flex flex-col justify-between min-h-[460px] rounded-sm hover:border-white/10 transition-colors duration-300"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="intel-font-mono text-xl font-bold text-[#d4a44a] tracking-wider">{event.year}</span>
-                  <span className="intel-font-mono text-[7px] tracking-[0.15em] text-white/20">[ DOSSIER_{i+1} ]</span>
-                </div>
+          <div className="flex flex-wrap justify-between items-start gap-4 mb-8">
+            <div className="intel-bureaucratic" style={{ fontSize: "9px", color: INTEL.greenText }}>
+              {isRo ? "DOCUMENT DECLASIFICAT" : "DECLASSIFIED DOCUMENT"}
+            </div>
+            <div className="intel-bureaucratic" style={{ fontSize: "8px", color: INTEL.paperFaint }}>
+              REF: IC-2024-DISCIPLINES-001
+            </div>
+          </div>
 
-                {event.imageSrc && (
-                  <div className="relative w-full aspect-[16/10] overflow-hidden mb-6 rounded-sm bg-black/40">
-                    <Image
-                      src={event.imageSrc}
-                      alt={event.title}
-                      fill
-                      className="object-cover brightness-[0.25] saturate-[0.6] hover:brightness-[0.4] transition-all duration-500"
-                      sizes="(max-width: 768px) 100vw, 380px"
-                      placeholder="blur"
-                      blurDataURL={BLUR_PLACEHOLDER}
-                    />
-                  </div>
-                )}
+          <div
+            className="intel-bureaucratic mb-2"
+            style={{ fontSize: "8px", letterSpacing: "0.3em", color: INTEL.greenText }}
+          >
+            {isRo ? "SUBIECT: DISCIPLINE DE COLECTARE INFORMAȚII" : "SUBJECT: INTELLIGENCE COLLECTION DISCIPLINES"}
+          </div>
+          <div className="intel-bureaucratic" style={{ fontSize: "8px", color: INTEL.paperFaint }}>
+            {isRo ? "DATA: DECLASIFICAT PRIN REVIZUIRE AUTOMATIZATĂ" : "DATE: DECLASSIFIED UNDER AUTOMATED REVIEW"}
+          </div>
+        </div>
 
-                <h3 className="intel-font-display text-lg font-bold tracking-tight text-white mb-2 leading-snug">{event.title}</h3>
-                <p className="text-[12px] leading-[1.7] text-white/40 tracking-wide font-normal mb-4">{event.description}</p>
+        {/* Document body — disciplines */}
+        <div
+          className="p-6 sm:p-10"
+          style={{ background: INTEL.surface, border: `1px solid ${INTEL.border}` }}
+        >
+          {capabilities.map((cap, i) => (
+            <div key={cap.title} className={cn("pb-10", i < capabilities.length - 1 && "mb-10 border-b")} style={{ borderColor: INTEL.border }}>
+              {/* Discipline designator */}
+              <div
+                className="intel-bureaucratic mb-4"
+                style={{ fontSize: "9px", letterSpacing: "0.25em", color: INTEL.greenText }}
+              >
+                {cap.kicker}
               </div>
 
-              <div className="pt-4 border-t border-white/[0.04] mt-4">
-                <span className="intel-font-mono text-[8px] tracking-[0.1em] text-white/25 leading-normal block">
-                  {event.significance}
-                </span>
+              {/* Title */}
+              <h3
+                className="intel-editorial mb-4"
+                style={{
+                  fontSize: "clamp(18px, 2.5vw, 26px)",
+                  fontStyle: "italic",
+                  lineHeight: 1.3,
+                }}
+              >
+                {cap.title}
+              </h3>
+
+              {/* Body with strategic redactions */}
+              <p className="intel-body mb-4">
+                {i === 0 && (
+                  <>
+                    {cap.description.split(".")[0]}.{" "}
+                    <RedactedText>CLASSIFIED INTERCEPT METHODOLOGY</RedactedText>{" "}
+                    {cap.description.split(".").slice(1).join(".")}
+                  </>
+                )}
+                {i === 1 && (
+                  <>
+                    {cap.description.split(".")[0]}.{" "}
+                    <RedactedText>OPERATIONAL ASSET IDENTITIES WITHHELD</RedactedText>{" "}
+                    {cap.description.split(".").slice(1).join(".")}
+                  </>
+                )}
+                {i === 2 && (
+                  <>
+                    {cap.description.split(".")[0]}.{" "}
+                    {cap.description.split(".").slice(1, 2).join(".")}.{" "}
+                    <RedactedText>RESOLUTION PARAMETERS CLASSIFIED</RedactedText>
+                  </>
+                )}
+                {i === 3 && (
+                  <>
+                    <RedactedText>SPECIFIC TARGET INFRASTRUCTURE</RedactedText>{" "}
+                    {cap.description}
+                  </>
+                )}
+                {i >= 4 && (
+                  <>
+                    {cap.description.split(".")[0]}.{" "}
+                    <RedactedText>SENSOR ARRAY SPECIFICATIONS</RedactedText>{" "}
+                    {cap.description.split(".").slice(1).join(".")}
+                  </>
+                )}
+              </p>
+
+              {/* Classification tag */}
+              <div className="intel-bureaucratic" style={{ fontSize: "8px", color: INTEL.paperFaint }}>
+                {cap.stat.toUpperCase()} — {isRo ? "CAPACITATE VERIFICATĂ" : "CAPABILITY VERIFIED"}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Document footer */}
+        <div
+          className="p-4 sm:p-6 mt-2 flex justify-between items-center"
+          style={{ background: INTEL.surface, border: `1px solid ${INTEL.border}` }}
+        >
+          <span className="intel-bureaucratic" style={{ fontSize: "8px", color: INTEL.paperFaint }}>
+            END OF DOCUMENT
+          </span>
+          <span className="intel-bureaucratic" style={{ fontSize: "8px", color: INTEL.greenText }}>
+            PAGE 1 OF 1
+          </span>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 7. InstallationsList — Quiet vertical list
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function InstallationsList({ nodes, locale = "en" }: { nodes: IntelligenceNode[]; locale?: Locale }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const isRo = locale === "ro";
+
+  return (
+    <section
+      ref={ref}
+      className="relative px-6 sm:px-10 lg:px-16 py-28 md:py-40"
+      style={{ background: INTEL.black }}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="mx-auto max-w-[1100px]"
+      >
+        {/* Section header */}
+        <div className="mb-20 lg:mb-28">
+          <div
+            className="intel-bureaucratic mb-8"
+            style={{ fontSize: "9px", letterSpacing: "0.35em", color: INTEL.greenText }}
+          >
+            {isRo ? "INSTALAȚII GLOBALE // CLASIFICAT" : "GLOBAL INSTALLATIONS // CLASSIFIED"}
+          </div>
+          <div
+            className="intel-editorial"
+            style={{ fontSize: "clamp(22px, 3.5vw, 38px)", lineHeight: 1.3 }}
+          >
+            {isRo
+              ? "Stații de interceptare și noduri criptologice poziționate strategic pe tot globul."
+              : "Interception stations and cryptologic hubs positioned strategically across the globe."}
+          </div>
+        </div>
+
+        {/* Quiet vertical list */}
+        <div className="space-y-0">
+          {nodes.map((node, i) => (
+            <motion.div
+              key={node.name}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 1.2, delay: i * 0.15, ease: "easeOut" }}
+            >
+              <div
+                className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-3 md:gap-10 py-10 items-baseline"
+                style={{ borderBottom: `1px solid ${INTEL.border}` }}
+              >
+                {/* Location */}
+                <div
+                  className="intel-bureaucratic"
+                  style={{ fontSize: "9px", letterSpacing: "0.2em", color: INTEL.greenText }}
+                >
+                  {node.location.toUpperCase()}
+                </div>
+
+                {/* Details */}
+                <div>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-mono), monospace",
+                      fontSize: "clamp(16px, 2vw, 22px)",
+                      fontWeight: 400,
+                      letterSpacing: "0.02em",
+                      color: INTEL.paper,
+                      marginBottom: "6px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {node.name}
+                  </h3>
+                  <div
+                    className="intel-bureaucratic mb-3"
+                    style={{ fontSize: "9px", color: INTEL.greenText, letterSpacing: "0.15em" }}
+                  >
+                    {node.role.toUpperCase()}
+                  </div>
+                  <p className="intel-body max-w-2xl" style={{ fontSize: "11px" }}>
+                    {node.description}
+                  </p>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 8. IntelligenceFutureStack — Technical Blueprint Grid (Highly Unique)
+// 8. FiveEyesGeometry — SVG pentagon with animated connecting lines
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function IntelligenceFutureStack({ programs, locale = "en" }: { programs: IntelligenceFutureProgram[]; locale?: Locale }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const active = programs[activeIndex];
+export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
   const isRo = locale === "ro";
 
-  return (
-    <section className="relative overflow-hidden bg-black px-6 py-32 md:py-48">
-      <div className="relative mx-auto max-w-[1440px]">
-        <IntelSectionTitle
-          label={isRo ? "Capabilități de viitor" : "Next Gen Projects"}
-          title={isRo ? "Programe" : "The Future"}
-          subtitle={isRo ? "clasificate" : "stack"}
-          body={isRo
-            ? "Inițiativele tehnologice care vor asigura prelucrarea și criptarea avansată în următoarele decenii."
-            : "The critical technological systems under development that will define cryptanalysis and global sensor networks."}
-        />
+  // Pentagon points (centered at 250,220, radius ~160)
+  const points = [
+    { x: 250, y: 60, label: "USA" },          // top
+    { x: 402, y: 176, label: "UK" },           // top-right
+    { x: 344, y: 370, label: "AUS" },          // bottom-right
+    { x: 156, y: 370, label: isRo ? "CAN" : "CAN" },  // bottom-left
+    { x: 98, y: 176, label: "NZL" },           // top-left
+  ];
 
-        {/* 2-Column Split Briefing slide deck */}
-        <div className="grid overflow-hidden border border-white/5 bg-[#050505] lg:grid-cols-[300px_1fr] min-h-[500px] mt-16 rounded-sm shadow-2xl">
-          {/* Left panel selectors */}
-          <div className="flex flex-col border-b lg:border-b-0 lg:border-r border-white/5 bg-white/[0.01]">
-            {programs.map((p, i) => {
-              const selected = activeIndex === i;
+  // All connecting lines (every pair)
+  const lines: [number, number][] = [];
+  for (let i = 0; i < 5; i++) {
+    for (let j = i + 1; j < 5; j++) {
+      lines.push([i, j]);
+    }
+  }
+
+  return (
+    <section
+      ref={ref}
+      className="relative px-6 sm:px-10 lg:px-16 py-28 md:py-40"
+      style={{ background: INTEL.black }}
+    >
+      <div className="mx-auto max-w-[1100px]">
+        {/* Section header */}
+        <div className="mb-16 lg:mb-24 text-center">
+          <div
+            className="intel-bureaucratic mb-8"
+            style={{ fontSize: "9px", letterSpacing: "0.35em", color: INTEL.greenText }}
+          >
+            {isRo ? "ALIANȚĂ DE INFORMAȚII // TRATATUL UKUSA" : "INTELLIGENCE ALLIANCE // UKUSA TREATY"}
+          </div>
+          <div
+            className="intel-editorial mx-auto"
+            style={{ fontSize: "clamp(22px, 3.5vw, 38px)", lineHeight: 1.3, maxWidth: "600px" }}
+          >
+            {isRo
+              ? "Cei cinci ochi care văd totul."
+              : "The five eyes that see everything."}
+          </div>
+        </div>
+
+        {/* SVG Diagram */}
+        <div className="flex justify-center">
+          <svg viewBox="0 0 500 440" className="w-full max-w-[460px] h-auto">
+            {/* Connecting lines — animated stroke-dashoffset */}
+            {lines.map(([a, b], i) => {
+              const p1 = points[a];
+              const p2 = points[b];
+              const length = Math.sqrt((p2.x - p1.x) ** 2 + (p2.y - p1.y) ** 2);
               return (
-                <button
-                  key={p.label}
-                  onClick={() => setActiveIndex(i)}
-                  className={cn(
-                    "relative text-left px-8 py-8 transition-all duration-300 border-b border-white/[0.03] last:border-b-0 flex flex-col justify-center",
-                    selected ? "bg-white/[0.03]" : "hover:bg-white/[0.01]"
-                  )}
-                >
-                  {selected && (
-                    <motion.div
-                      layoutId="intel-program-indicator"
-                      className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#d4a44a]"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    />
-                  )}
-                  <div className="intel-font-mono text-[8px] tracking-[0.15em] text-white/30 mb-2">{p.status}</div>
-                  <div className={cn(
-                    "intel-font-display text-md font-semibold tracking-tight transition-colors",
-                    selected ? "text-white" : "text-white/45"
-                  )}>
-                    {p.title}
-                  </div>
-                </button>
+                <line
+                  key={`${a}-${b}`}
+                  x1={p1.x}
+                  y1={p1.y}
+                  x2={p2.x}
+                  y2={p2.y}
+                  stroke={INTEL.green}
+                  strokeWidth="1"
+                  strokeOpacity={0.4}
+                  strokeDasharray={length}
+                  strokeDashoffset={inView ? 0 : length}
+                  style={{
+                    transition: `stroke-dashoffset ${1.5 + i * 0.15}s ease-out ${0.3 + i * 0.1}s`,
+                  }}
+                />
               );
             })}
-          </div>
 
-          {/* Right panel presentation dossier */}
-          <div className="relative flex flex-col justify-end p-8 sm:p-12 lg:p-16 overflow-hidden min-h-[500px]">
-            {/* Background image related to the active program */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active.label + "-bg"}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.8 }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={active.imageSrc}
-                  alt={active.title}
-                  fill
-                  className="object-cover brightness-[0.13] saturate-[0.4] scale-102"
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                  placeholder="blur"
-                  blurDataURL={BLUR_PLACEHOLDER}
+            {/* Node points and labels */}
+            {points.map((p, i) => (
+              <g key={p.label}>
+                {/* Point dot */}
+                <circle
+                  cx={p.x}
+                  cy={p.y}
+                  r={inView ? 4 : 0}
+                  fill={INTEL.greenText}
+                  style={{
+                    transition: `r 0.8s ease-out ${0.5 + i * 0.2}s`,
+                  }}
                 />
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Vignette Overlay */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.95)_0%,rgba(0,0,0,0.5)_50%,rgba(0,0,0,0.8)_100%)] pointer-events-none" />
-
-            <div className="relative z-10 w-full">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={active.label + "-details"}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                {/* Outer ring */}
+                <circle
+                  cx={p.x}
+                  cy={p.y}
+                  r={inView ? 10 : 0}
+                  fill="none"
+                  stroke={INTEL.green}
+                  strokeWidth="1"
+                  strokeOpacity={0.3}
+                  style={{
+                    transition: `r 0.8s ease-out ${0.5 + i * 0.2}s`,
+                  }}
+                />
+                {/* Label */}
+                <text
+                  x={p.x}
+                  y={p.y + (i === 0 ? -22 : i <= 2 ? 30 : 30)}
+                  textAnchor="middle"
+                  fill={INTEL.greenText}
+                  fontSize="10"
+                  fontFamily="var(--font-mono), monospace"
+                  letterSpacing="0.2em"
+                  opacity={inView ? 1 : 0}
+                  style={{
+                    transition: `opacity 1s ease-out ${1 + i * 0.15}s`,
+                    textTransform: "uppercase",
+                  }}
                 >
-                  <div className="flex flex-wrap justify-between items-center gap-2 mb-4">
-                    <span className="intel-font-mono text-[8px] tracking-[0.15em] text-[#d4a44a]">{active.status}</span>
-                    <span className="intel-font-mono text-[8px] text-white/20 tracking-wider">CODE: {active.label.toUpperCase()}</span>
-                  </div>
-                  <h3 className="intel-font-display text-2xl sm:text-3xl font-bold tracking-tight text-white mb-3 leading-tight">{active.title}</h3>
-                  <div className="intel-font-mono text-[9px] tracking-[0.12em] text-white/40 mb-6">{active.capability}</div>
-                  <p className="text-[13px] leading-[1.85] text-white/40 tracking-wide font-normal max-w-2xl mb-10">{active.description}</p>
+                  {p.label}
+                </text>
+              </g>
+            ))}
+          </svg>
+        </div>
 
-                  {/* Sleek Technical specs list */}
-                  <div className="border-t border-white/10 divide-y divide-white/[0.04] max-w-3xl">
-                    {active.specs.map((s) => (
-                      <div key={s.label} className="grid grid-cols-1 sm:grid-cols-[200px_1fr] py-3.5 items-center">
-                        <span className="intel-font-mono text-[8px] tracking-[0.15em] text-[#d4a44a]">{s.label}</span>
-                        <span className="intel-font-display text-[13px] text-white/70 font-normal mt-1 sm:mt-0">{s.value}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
+        {/* Brief paragraph about the alliance */}
+        <div className="mt-16 text-center max-w-2xl mx-auto">
+          <p className="intel-body" style={{ fontSize: "11px", lineHeight: 2.2 }}>
+            {isRo
+              ? "Alianța Five Eyes — compusă din Statele Unite, Regatul Unit, Australia, Canada și Noua Zeelandă — constituie cel mai extins și profund parteneriat de schimb de informații din istorie. Originile sale datează din Al Doilea Război Mondial, iar structura sa actuală rămâne în mare parte clasificată."
+              : "The Five Eyes alliance — comprising the United States, United Kingdom, Australia, Canada, and New Zealand — constitutes the most extensive and deeply integrated intelligence-sharing partnership in history. Its origins trace to World War II, and its current operational structure remains largely classified."}
+          </p>
         </div>
       </div>
     </section>
@@ -794,102 +829,342 @@ export function IntelligenceFutureStack({ programs, locale = "en" }: { programs:
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 9. IntelligenceClosing
+// 9. HeritageList — Minimal vertical date list
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function IntelligenceClosing({ locale = "en" }: { locale?: Locale }) {
+export function HeritageList({ events, locale = "en" }: { events: IntelligenceHeritageEvent[]; locale?: Locale }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const isRo = locale === "ro";
+
+  return (
+    <section
+      ref={ref}
+      className="relative px-6 sm:px-10 lg:px-16 py-28 md:py-40"
+      style={{ background: INTEL.black }}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="mx-auto max-w-[1100px]"
+      >
+        {/* Section header */}
+        <div className="mb-20 lg:mb-28">
+          <div
+            className="intel-bureaucratic mb-8"
+            style={{ fontSize: "9px", letterSpacing: "0.35em", color: INTEL.greenText }}
+          >
+            {isRo ? "CRONOLOGIE // MOMENTE DEFINITORII" : "CHRONOLOGY // DEFINING MOMENTS"}
+          </div>
+          <div
+            className="intel-editorial"
+            style={{ fontSize: "clamp(22px, 3.5vw, 38px)", lineHeight: 1.3 }}
+          >
+            {isRo
+              ? "Momentele care au modelat comunitea de informații."
+              : "The moments that shaped the intelligence community."}
+          </div>
+        </div>
+
+        {/* Vertical date list — no images, no cards */}
+        <div className="space-y-0">
+          {events.map((event, i) => (
+            <motion.div
+              key={event.year}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 1.0, delay: i * 0.12, ease: "easeOut" }}
+            >
+              <div
+                className="grid grid-cols-[80px_1fr] sm:grid-cols-[120px_1fr] gap-6 sm:gap-10 py-8 items-baseline"
+                style={{ borderBottom: `1px solid ${INTEL.border}` }}
+              >
+                {/* Year */}
+                <div
+                  className="intel-bureaucratic"
+                  style={{
+                    fontSize: "13px",
+                    fontWeight: 700,
+                    letterSpacing: "0.15em",
+                    color: INTEL.greenText,
+                  }}
+                >
+                  {event.year}
+                </div>
+
+                {/* Event */}
+                <div>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-mono), monospace",
+                      fontSize: "clamp(13px, 1.5vw, 16px)",
+                      fontWeight: 400,
+                      letterSpacing: "0.05em",
+                      color: INTEL.paper,
+                      textTransform: "uppercase",
+                      marginBottom: "6px",
+                    }}
+                  >
+                    {event.title}
+                  </h3>
+                  <p className="intel-body max-w-xl" style={{ fontSize: "11px" }}>
+                    {event.description}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 10. ClassifiedPrograms — Future programs with [REDACTED] markers
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function ClassifiedPrograms({ programs, locale = "en" }: { programs: IntelligenceFutureProgram[]; locale?: Locale }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const isRo = locale === "ro";
+
+  return (
+    <section
+      ref={ref}
+      className="relative px-6 sm:px-10 lg:px-16 py-28 md:py-40"
+      style={{ background: INTEL.black }}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="mx-auto max-w-[900px]"
+      >
+        {/* Section header */}
+        <div className="mb-20 lg:mb-28">
+          <div
+            className="intel-bureaucratic mb-8"
+            style={{ fontSize: "9px", letterSpacing: "0.35em", color: INTEL.greenText }}
+          >
+            {isRo ? "PROGRAME CLASIFICATE // ACCES RESTRICȚIONAT" : "CLASSIFIED PROGRAMS // RESTRICTED ACCESS"}
+          </div>
+          <div
+            className="intel-editorial"
+            style={{ fontSize: "clamp(22px, 3.5vw, 38px)", lineHeight: 1.3 }}
+          >
+            {isRo
+              ? "Inițiative tehnologice care vor defini deceniul următor."
+              : "Technological initiatives that will define the next decade."}
+          </div>
+        </div>
+
+        {/* Programs — document-style layout */}
+        <div
+          className="p-6 sm:p-10"
+          style={{ background: INTEL.surface, border: `1px solid ${INTEL.border}` }}
+        >
+          {programs.map((program, i) => (
+            <div
+              key={program.label}
+              className={cn("pb-10", i < programs.length - 1 && "mb-10 border-b")}
+              style={{ borderColor: INTEL.border }}
+            >
+              {/* Status marker */}
+              <div className="flex flex-wrap items-center gap-4 mb-4">
+                <span
+                  className="intel-bureaucratic"
+                  style={{ fontSize: "9px", color: INTEL.greenText, letterSpacing: "0.25em" }}
+                >
+                  {program.label.toUpperCase()}
+                </span>
+                <span
+                  className="intel-bureaucratic px-2 py-0.5"
+                  style={{
+                    fontSize: "8px",
+                    color: INTEL.paper,
+                    letterSpacing: "0.15em",
+                    background: INTEL.redact,
+                    border: `1px solid ${INTEL.border}`,
+                  }}
+                >
+                  [{program.status.toUpperCase()}]
+                </span>
+              </div>
+
+              {/* Title — editorial */}
+              <h3
+                className="intel-editorial mb-4"
+                style={{ fontSize: "clamp(18px, 2.5vw, 24px)", lineHeight: 1.3 }}
+              >
+                {program.title}
+              </h3>
+
+              {/* Description */}
+              <p className="intel-body mb-6 max-w-2xl">{program.description}</p>
+
+              {/* Specs — clean monospace rows */}
+              <div style={{ borderTop: `1px solid ${INTEL.border}` }}>
+                {program.specs.map((spec) => (
+                  <div
+                    key={spec.label}
+                    className="grid grid-cols-[140px_1fr] sm:grid-cols-[180px_1fr] py-2.5 items-baseline"
+                    style={{ borderBottom: `1px solid ${INTEL.border}` }}
+                  >
+                    <span
+                      className="intel-bureaucratic"
+                      style={{ fontSize: "8px", color: INTEL.greenText, letterSpacing: "0.15em" }}
+                    >
+                      {spec.label.toUpperCase()}
+                    </span>
+                    <span
+                      className="intel-body"
+                      style={{ fontSize: "11px", color: INTEL.paperDim }}
+                    >
+                      {spec.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Document footer */}
+        <div
+          className="p-4 sm:p-6 mt-2 flex justify-between items-center"
+          style={{ background: INTEL.surface, border: `1px solid ${INTEL.border}` }}
+        >
+          <span className="intel-bureaucratic" style={{ fontSize: "8px", color: INTEL.paperFaint }}>
+            {isRo ? "SFÂRȘIT REGISTRU" : "END OF REGISTRY"}
+          </span>
+          <span className="intel-bureaucratic" style={{ fontSize: "8px", color: INTEL.greenText }}>
+            [CLASSIFIED]
+          </span>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 11. ClosingQuote — Playfair italic, centered
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function ClosingQuote({ locale = "en" }: { locale?: Locale }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
   const isRo = locale === "ro";
 
   const branches = [
     {
       href: "/military/navy",
       label: isRo ? "Marina" : "Navy",
-      desc: isRo ? "Dominanță maritimă și proiectare de forță navală" : "Maritime dominance and carrier strike groups",
     },
     {
       href: "/military/space-force",
       label: isRo ? "Forțele Spațiale" : "Space Force",
-      desc: isRo ? "Apărare orbitală și constelații de sateliți" : "Orbital defense and satellite constellations",
-    },
-    {
-      href: "/military/global-bases",
-      label: isRo ? "Baze Globale" : "Global Bases",
-      desc: isRo ? "Infrastructură militară și logistică" : "Global footprint and logistics network",
     },
     {
       href: "/military/air-force",
       label: isRo ? "Forțele Aeriene" : "Air Force",
-      desc: isRo ? "Superioritate aeriană și atac strategic" : "Air superiority and strategic global strike",
+    },
+    {
+      href: "/military/global-bases",
+      label: isRo ? "Baze Globale" : "Global Bases",
     },
   ];
 
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16 border-t border-white/5">
-      <div className="relative mx-auto max-w-[1400px] text-center">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+    <section
+      ref={ref}
+      className="relative px-6 sm:px-10 lg:px-16 py-40 md:py-56"
+      style={{ background: INTEL.black }}
+      data-closing-section
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 2.5, ease: "easeOut" }}
+        className="mx-auto max-w-[800px] text-center"
+      >
+        {/* The quote */}
+        <div
+          className="intel-editorial mb-12"
+          style={{
+            fontSize: "clamp(22px, 4vw, 40px)",
+            lineHeight: 1.35,
+            fontStyle: "italic",
+          }}
         >
-          <motion.h2
-            variants={fadeUp}
-            className="intel-font-display text-[clamp(36px,7vw,88px)] font-black leading-[0.88] uppercase text-white mb-2"
-          >
-            {isRo ? "Informația este" : "Information is"}
-          </motion.h2>
-          <motion.div
-            variants={fadeUp}
-            className="intel-font-display text-[clamp(36px,7vw,88px)] font-black leading-[0.88] uppercase text-white/15 mt-1"
-          >
-            {isRo ? "descurajarea supremă." : "the ultimate deterrent."}
-          </motion.div>
-          <motion.p
-            variants={fadeUp}
-            className="mx-auto mt-8 max-w-2xl text-sm leading-[1.9] text-white/50 tracking-wide"
-          >
-            {isRo
-              ? "Succesul oricărei operațiuni militare începe cu un semnal interceptat, o sursă verificată sau o coordonată de satelit. Rețeaua de informații a SUA este scutul nevăzut sub care se desfășoară apărarea globală."
-              : "The success of any joint operation rests on an intercepted signal, a verified source, or a precise coordinate. The U.S. intelligence community forms the ultimate invisible shield of global deterrence."}
-          </motion.p>
-        </motion.div>
+          {isRo
+            ? "\u201ECel mai important lucru pe care l-am \u00EEnv\u0103\u021Bat este c\u0103 nu po\u021Bi c\u00E2\u0219tiga un r\u0103zboi f\u0103r\u0103 informa\u021Bii.\u201D"
+            : "\u201CThe most important thing I learned is that you cannot win a war without intelligence.\u201D"}
+        </div>
 
-        {/* CTA Button */}
-        <div className="mt-12 flex justify-center">
+        {/* Attribution */}
+        <div
+          className="intel-bureaucratic mb-32"
+          style={{ fontSize: "9px", color: INTEL.paperFaint, letterSpacing: "0.2em" }}
+        >
+          — DWIGHT D. EISENHOWER
+        </div>
+
+        {/* Separator */}
+        <div className="intel-separator mb-16" style={{ background: INTEL.green, opacity: 0.15 }} />
+
+        {/* CTA */}
+        <div className="mb-16">
           <Link
             href="/military"
-            className="group inline-flex h-11 items-center gap-3 bg-white px-6 text-[10px] font-semibold uppercase tracking-[0.1em] text-black transition-opacity hover:opacity-85 rounded-sm shadow-md"
+            className="group inline-flex h-10 items-center gap-3 px-6 text-[10px] font-semibold uppercase tracking-[0.15em] transition-opacity hover:opacity-70"
+            style={{
+              fontFamily: "var(--font-mono), monospace",
+              color: INTEL.paper,
+              border: `1px solid ${INTEL.border}`,
+              background: INTEL.surface,
+            }}
           >
-            {isRo ? "Prezentare militară" : "Military overview"}
-            <ArrowUpRight size={13} strokeWidth={2.5} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            {isRo ? "Prezentare Militară" : "Military Overview"}
+            <ArrowUpRight size={12} strokeWidth={2} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
         </div>
 
-        {/* Dynamic Nav Cross-links */}
-        <div className="mt-20 pt-16 border-t border-white/5">
-          <div className="mil-text-metadata text-[11px] tracking-[0.25em] text-white/20 mb-8">
-            {isRo ? "Explorați alte dimensiuni militare" : "Explore other military dimensions"}
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-left">
-            {branches.map((b) => (
-              <Link
-                key={b.href}
-                href={b.href}
-                className="group intel-panel p-6 hover:bg-white/[0.02] transition-all duration-300 rounded-sm"
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="intel-font-display text-sm font-semibold text-white/50 group-hover:text-white transition-colors">
-                    {b.label}
-                  </span>
-                </div>
-                <p className="text-[11px] leading-[1.6] text-white/25 group-hover:text-white/45 transition-colors font-normal">
-                  {b.desc}
-                </p>
-              </Link>
-            ))}
-          </div>
+        {/* Navigation cross-links */}
+        <div
+          className="intel-bureaucratic mb-8"
+          style={{ fontSize: "8px", letterSpacing: "0.25em", color: INTEL.paperFaint }}
+        >
+          {isRo ? "ALTE DIMENSIUNI MILITARE" : "OTHER MILITARY DIMENSIONS"}
         </div>
-      </div>
+        <div className="flex flex-wrap justify-center gap-6">
+          {branches.map((b) => (
+            <Link
+              key={b.href}
+              href={b.href}
+              className="intel-bureaucratic transition-colors hover:opacity-60"
+              style={{
+                fontSize: "9px",
+                letterSpacing: "0.15em",
+                color: INTEL.paperDim,
+              }}
+            >
+              {b.label.toUpperCase()}
+            </Link>
+          ))}
+        </div>
+
+        {/* Final classification marking */}
+        <div className="mt-24">
+          <span
+            className="intel-bureaucratic"
+            style={{ fontSize: "8px", letterSpacing: "0.3em", color: INTEL.greenText, opacity: 0.4 }}
+          >
+            // END OF FILE //
+          </span>
+        </div>
+      </motion.div>
     </section>
   );
 }

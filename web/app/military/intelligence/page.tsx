@@ -2,24 +2,23 @@ import type { Metadata } from "next";
 import { getServerLocale } from "@/lib/i18n/server";
 
 import {
-  IntelligenceStyles,
-  IntelligencePageProgress,
-  IntelligenceSectionDivider,
-  IntelligenceFullBleed,
-  IntelligenceMetricStrip,
-  IntelligenceAgencyShowcase,
-  IntelligenceCapabilityGrid,
-  IntelligenceOperationsConsole,
-  IntelligenceHeritageTimeline,
-  IntelligenceFutureStack,
-  IntelligenceClosing,
+  IntelClassifiedStyles,
+  ClassificationHeader,
+  EntrySequence,
+  SingleStatistic,
+  AgencyDossier,
+  DeclassifiedDocument,
+  InstallationsList,
+  FiveEyesGeometry,
+  HeritageList,
+  ClassifiedPrograms,
+  ClosingQuote,
 } from "@/components/military/IntelligencePageComponents";
 import {
   MilStyles,
   ParallaxMilitaryHero,
 } from "@/components/military/MilitaryAnimations";
 import {
-  getIntelligenceMetrics,
   getIntelligenceAgencies,
   getIntelligenceCapabilities,
   getIntelligenceNodes,
@@ -42,13 +41,11 @@ export default async function IntelligencePage() {
   const locale = await getServerLocale();
   const isRo = locale === "ro";
 
-  const metrics = getIntelligenceMetrics(locale);
   const agencies = getIntelligenceAgencies(locale);
   const capabilities = getIntelligenceCapabilities(locale);
   const nodes = getIntelligenceNodes(locale);
   const heritage = getIntelligenceHeritage(locale);
   const futurePrograms = getIntelligenceFuturePrograms(locale);
-
 
   const heroStats = isRo
     ? [
@@ -65,12 +62,12 @@ export default async function IntelligencePage() {
       ];
 
   return (
-    <div className="intel-page min-h-screen overflow-hidden bg-black text-white">
+    <div className="intel-classified min-h-screen overflow-hidden" style={{ background: "#000000", color: "#E8E2D5" }}>
       <MilStyles />
-      <IntelligenceStyles />
-      <IntelligencePageProgress />
+      <IntelClassifiedStyles />
+      <ClassificationHeader />
 
-      {/* Hero Section */}
+      {/* Hero Section — retains the CIA video */}
       <ParallaxMilitaryHero
         imageSrc={SITE_IMAGES.cyberOps}
         imageAlt="U.S. Cyber Command operations room"
@@ -81,49 +78,32 @@ export default async function IntelligencePage() {
         stats={heroStats}
       />
 
+      {/* Entry sequence — typing animation */}
+      <EntrySequence />
 
-      {/* Metric Counters */}
-      <IntelligenceMetricStrip metrics={metrics} />
+      {/* The single statistic */}
+      <SingleStatistic locale={locale} />
 
-      <IntelligenceSectionDivider />
+      {/* Agency dossier chapters */}
+      <AgencyDossier agencies={agencies} locale={locale} />
 
-      {/* Dossier Directory (The Big Five) */}
-      <IntelligenceAgencyShowcase agencies={agencies} locale={locale} />
+      {/* Declassified document — intelligence disciplines with redaction bars */}
+      <DeclassifiedDocument capabilities={capabilities} locale={locale} />
 
-      {/* Full-bleed Parallax Spacer 1 */}
-      <IntelligenceFullBleed
-        imageSrc={SITE_IMAGES.homeUsaAtNightFromSpace}
-        imageAlt="USA at night from Space"
-        caption={isRo ? "CONȘTIENTIZARE GLOBALĂ A SITUAȚIEI · DETECTARE ORBITALĂ" : "GLOBAL SITUATIONAL AWARENESS · ORBITAL DETECTION"}
-        pullQuote={isRo ? "NIMIC NU RĂMÂNE NEVĂZUT. NIMIC NU RĂMÂNE NEASCULTAT." : "NOTHING UNSEEN. NOTHING UNHEARD."}
-      />
+      {/* Installation list — quiet vertical stack */}
+      <InstallationsList nodes={nodes} locale={locale} />
 
-      {/* Core Collection Capabilities */}
-      <IntelligenceCapabilityGrid capabilities={capabilities} locale={locale} />
+      {/* Five Eyes geometry — SVG pentagon */}
+      <FiveEyesGeometry locale={locale} />
 
-      <IntelligenceSectionDivider />
+      {/* Heritage — minimal date list */}
+      <HeritageList events={heritage} locale={locale} />
 
-      {/* Operational Listening Posts Nodes Selector */}
-      <IntelligenceOperationsConsole nodes={nodes} locale={locale} />
+      {/* Classified future programs */}
+      <ClassifiedPrograms programs={futurePrograms} locale={locale} />
 
-      {/* Full-bleed Parallax Spacer 2 */}
-      <IntelligenceFullBleed
-        imageSrc={SITE_IMAGES.military.tacticalMap}
-        imageAlt="Global Command Map"
-        caption={isRo ? "DECIZII STRATEGICE DE MARE PRECIZIE · SPRIJIN DE COMANDĂ" : "HIGH-PRECISION STRATEGIC DECISIONS · COMMAND SUPPORT"}
-        pullQuote={isRo ? "INFORMAȚIA ESTE DIFERENȚA DINTRE DECIZIE ȘI DEZASTRU." : "INTELLIGENCE IS THE DIFFERENCE BETWEEN DECISION AND DISASTER."}
-      />
-
-      {/* History Timeline */}
-      <IntelligenceHeritageTimeline events={heritage} locale={locale} />
-
-      <IntelligenceSectionDivider />
-
-      {/* Classified Next-Gen Tech Stack */}
-      <IntelligenceFutureStack programs={futurePrograms} locale={locale} />
-
-      {/* Cross-linking footer navigation */}
-      <IntelligenceClosing locale={locale} />
+      {/* Closing quote and navigation */}
+      <ClosingQuote locale={locale} />
     </div>
   );
 }
