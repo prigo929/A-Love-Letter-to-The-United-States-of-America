@@ -6,7 +6,6 @@ import {
   SingleStatistic,
   AgencyDossier,
   IntelligenceDisciplines,
-  DeclassifiedOperations,
   InstallationsList,
   FiveEyesGeometry,
   HeritageList,
@@ -89,9 +88,6 @@ export default async function IntelligencePage() {
 
       {/* Intelligence disciplines — clean layout with redaction bars */}
       <IntelligenceDisciplines capabilities={capabilities} locale={locale} />
-
-      {/* Declassified operations — case files */}
-      <DeclassifiedOperations locale={locale} />
 
       {/* Installation list — quiet vertical stack */}
       <InstallationsList nodes={nodes} locale={locale} />
