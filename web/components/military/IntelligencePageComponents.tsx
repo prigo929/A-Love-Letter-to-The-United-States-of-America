@@ -1924,9 +1924,9 @@ function parseRedactions(text: string, isDeclassified: boolean) {
         <span
           key={index}
           className={cn(
-            "transition-all duration-700 ease-in-out font-mono font-bold mx-0.5 px-0.5 rounded-sm select-text",
+            "transition-all duration-700 ease-in-out font-mono font-bold mx-0.5 px-1.5 rounded-sm",
             isDeclassified
-              ? "bg-[#1C3A1C]/25 text-[#E8E2D5] border border-[#3A5A3A]/40"
+              ? "bg-[#1C3A1C]/15 text-[#113f11] border border-[#3A5A3A]/30 select-text"
               : "bg-black text-transparent select-none border border-transparent pointer-events-none"
           )}
         >
@@ -2081,10 +2081,10 @@ export function TheVault({ locale = "en" }: { locale?: Locale }) {
             </div>
           </div>
 
-          {/* Right Panel: Document Viewer */}
-          <div className="p-6 sm:p-10 flex flex-col justify-between bg-[#030303] min-h-[450px]">
-            {/* Document Header Controls */}
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-rgba(232, 226, 213, 0.08) pb-5 mb-6">
+          {/* Right Panel: Document Viewer Desk Area */}
+          <div className="flex flex-col bg-[#050505] min-h-[550px]">
+            {/* Terminal Controls Header */}
+            <div className="p-4 sm:px-6 bg-[#090909] border-b border-rgba(232, 226, 213, 0.08) flex flex-wrap items-center justify-between gap-4">
               <div>
                 <span className="font-mono text-[10px] text-emerald-500 font-bold tracking-widest border border-emerald-500/30 px-2 py-0.5 rounded-sm bg-[#1C3A1C]/10 inline-block uppercase">
                   {activeDoc.classification}
@@ -2115,28 +2115,58 @@ export function TheVault({ locale = "en" }: { locale?: Locale }) {
               </button>
             </div>
 
-            {/* Document Sheet (Typewriter styling) */}
-            <div className="flex-1 font-mono text-left max-w-3xl">
-              {/* Bureaucratic Memo Info */}
-              <div className="text-[11px] text-[#2A4A2A] space-y-1 pb-6 border-b border-rgba(232, 226, 213, 0.04) mb-6 uppercase tracking-wide">
-                <div>TO: {activeDoc.to}</div>
-                <div>FROM: {activeDoc.from}</div>
-                <div>DATE: {activeDoc.date}</div>
-                <div>SUBJECT: {activeDoc.subject}</div>
-              </div>
+            {/* Desk Surface with the Paper Memo Document */}
+            <div className="flex-1 p-6 sm:p-10 bg-[#070707] flex items-center justify-center relative overflow-hidden">
+              {/* Lamp Light Overlay */}
+              <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(232,226,213,0.03)_0%,transparent_80%)]" />
 
-              {/* Document Text */}
-              <div className="text-sm text-[#E8E2D5]/90 leading-relaxed whitespace-pre-line select-text">
-                {parseRedactions(activeDoc.content, isDeclassified)}
+              {/* Document Stack Container */}
+              <div className="relative w-full max-w-2xl mx-auto my-4 z-10">
+                {/* Visual stacked sheet layers */}
+                <div className="absolute -inset-1.5 bg-[#DFDAD1] border border-[#C2BCB2] translate-x-2 translate-y-2 rounded-sm opacity-90 shadow-md" />
+                <div className="absolute -inset-0.5 bg-[#EAE5DC] border border-[#CDC7BB] translate-x-0.5 translate-y-0.5 rounded-sm opacity-95 shadow-sm" />
+
+                {/* Main Paper Sheet */}
+                <div className="relative bg-[#FAF8F4] border border-[#DCD6CA] text-[#1E1D1B] p-8 sm:p-12 min-h-[460px] shadow-2xl flex flex-col justify-between rounded-sm">
+
+                  {/* Distressed Stamp Overlays */}
+                  <div className="absolute top-8 right-8 pointer-events-none select-none z-20 opacity-85">
+                    {isDeclassified ? (
+                      <div className="border-2 border-dashed border-red-600/80 text-red-600/80 text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-sm transform rotate-6 tracking-widest font-mono">
+                        {isRo ? "DECLASIFICAT // E.O. 13526" : "DECLASSIFIED // E.O. 13526"}
+                      </div>
+                    ) : (
+                      <div className="border-2 border-solid border-red-800/80 text-red-800/80 text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-sm transform -rotate-3 tracking-widest font-mono">
+                        {isRo ? "SECRET // STRICT SECRET" : "SECRET // EYES ONLY"}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Memo Content */}
+                  <div className="flex-1 font-mono text-left">
+                    {/* Typewriter Memo Header */}
+                    <div className="text-[11px] text-[#554C3E] space-y-1 pb-4 border-b border-[#EBE6DC] mb-6 uppercase tracking-wide">
+                      <div>TO: {activeDoc.to}</div>
+                      <div>FROM: {activeDoc.from}</div>
+                      <div>DATE: {activeDoc.date}</div>
+                      <div>SUBJECT: {activeDoc.subject}</div>
+                    </div>
+
+                    {/* Memo Body */}
+                    <div className="text-xs sm:text-sm text-[#2A2927] leading-relaxed whitespace-pre-line select-text font-mono">
+                      {parseRedactions(activeDoc.content, isDeclassified)}
+                    </div>
+                  </div>
+
+                  {/* Memo Footer */}
+                  <div className="border-t border-[#EBE6DC] pt-4 mt-8 flex flex-wrap justify-between items-center text-[9px] font-mono text-[#7D7465]">
+                    <div>FOIA CASE NO: 2026-F-0809 // RETRO-DECONV</div>
+                    <div>{isRo ? "SURSA: ARHIVA CIA" : "SOURCE: CIA READING ROOM"}</div>
+                  </div>
+
+                </div>
               </div>
             </div>
-
-            {/* Document Footer */}
-            <div className="border-t border-rgba(232, 226, 213, 0.05) pt-5 mt-8 flex flex-wrap justify-between items-center text-[10px] font-mono text-rgba(232, 226, 213, 0.25)">
-              <div>FOIA CASE NO: 2026-F-0809 // RECORDS RETRO-DECONV</div>
-              <div>{isRo ? "SURSA: CIA READING ROOM SIM" : "SOURCE: CIA READING ROOM SIM"}</div>
-            </div>
-
           </div>
         </div>
       </motion.div>
