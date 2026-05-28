@@ -18,7 +18,6 @@ import {
   NavyStyles,
   NavyWeaponsConsole,
   NavyFlyNavyVideo,
-  NavyPageProgress,
   NavySectionDivider,
 } from "@/components/military/NavyPageComponents";
 import {
@@ -89,7 +88,6 @@ export default async function NavyPage() {
     <div className="navy-page min-h-screen overflow-hidden bg-black text-white">
       <MilStyles />
       <NavyStyles />
-      <NavyPageProgress />
       
       <ParallaxMilitaryHero
         imageSrc={SITE_IMAGES.navy.hero}

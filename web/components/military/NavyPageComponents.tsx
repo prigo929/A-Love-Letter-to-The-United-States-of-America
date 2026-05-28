@@ -58,14 +58,9 @@ export function NavyStyles() {
         --navy-void: #050608;
         --navy-surface: #0a0c10;
         --navy-elevated: #12151b;
-        --navy-accent-dark: #001A33; /* Strong Navy */
-        --navy-panel: rgba(10, 12, 16, 0.85);
+        --navy-panel: rgba(8, 10, 14, 0.82);
         --navy-border: rgba(255, 255, 255, 0.06);
-        --navy-border-glow: rgba(0, 132, 255, 0.08);
         --navy-blue: #8edcff;
-        --navy-sea: #70e0bf;
-        --navy-warm: #f2d48a;
-        --navy-red: #ff6b6b;
         background: var(--navy-black);
         color: white;
       }
@@ -83,11 +78,8 @@ export function NavyStyles() {
       }
 
       .navy-grid-plane {
-        background-image:
-          radial-gradient(rgba(0, 132, 255, 0.06) 1px, transparent 1px),
-          radial-gradient(rgba(242, 212, 138, 0.03) 1px, transparent 1px);
+        background-image: radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px);
         background-size: 28px 28px;
-        mask-image: radial-gradient(ellipse at 50% 45%, black 0%, transparent 80%);
       }
 
       .navy-noise::after {
@@ -95,9 +87,9 @@ export function NavyStyles() {
         position: absolute;
         inset: 0;
         pointer-events: none;
-        opacity: 0.12;
-        mix-blend-mode: screen;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E");
+        opacity: 0.06;
+        mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
       }
 
       .navy-cinematic-line {
@@ -105,19 +97,15 @@ export function NavyStyles() {
       }
 
       .navy-glass-premium {
-        background: rgba(8, 10, 14, 0.85);
-        backdrop-filter: blur(30px) saturate(1.1);
-        -webkit-backdrop-filter: blur(30px) saturate(1.1);
-        border: 1px solid var(--navy-border-glow);
-        box-shadow: 
-          inset 0 0 24px rgba(0, 26, 51, 0.7),
-          0 12px 48px rgba(0, 0, 0, 0.9);
+        background: rgba(8, 10, 14, 0.82);
+        backdrop-filter: blur(40px) saturate(1.2);
+        -webkit-backdrop-filter: blur(40px) saturate(1.2);
+        border: 1px solid rgba(255, 255, 255, 0.06);
       }
 
       .navy-panel-tactical {
         background: var(--navy-surface);
         border: 1px solid rgba(255, 255, 255, 0.05);
-        box-shadow: inset 0 0 16px rgba(0, 26, 51, 0.4);
       }
 
       .navy-depth-ring {
@@ -153,38 +141,6 @@ export function NavyStyles() {
         animation: navy-sheen 8s ease-in-out infinite;
       }
     `}</style>
-  );
-}
-
-export function NavyPageProgress() {
-  const { scrollYProgress } = useScroll();
-  const [pct, setPct] = useState(0);
-
-  useEffect(() => {
-    return scrollYProgress.on("change", (v) => setPct(v));
-  }, [scrollYProgress]);
-
-  const SECTION_MARKERS = [0.08, 0.18, 0.28, 0.38, 0.48, 0.58, 0.68, 0.78, 0.88, 0.96];
-
-  return (
-    <div className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-[2px] bg-white/[0.03]">
-      <motion.div
-        className="h-full origin-left bg-gradient-to-r from-[#001A33] via-[#8edcff] to-white"
-        style={{ scaleX: scrollYProgress }}
-      />
-      {SECTION_MARKERS.map((pos) => (
-        <div
-          key={pos}
-          className="absolute top-1/2 -translate-y-1/2 h-[5px] w-[5px] rounded-full -translate-x-1/2"
-          style={{
-            left: `${pos * 100}%`,
-            background: pct >= pos ? "rgba(142, 220, 255, 0.9)" : "rgba(255, 255, 255, 0.12)",
-            boxShadow: pct >= pos ? "0 0 6px rgba(142, 220, 255, 0.8)" : "none",
-            transition: "background 0.4s ease, box-shadow 0.4s ease",
-          }}
-        />
-      ))}
-    </div>
   );
 }
 
@@ -398,13 +354,12 @@ export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabiliti
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const icons = [Ship, Waves, Shield, Cpu];
 
-  // Map capability accent color to a background image preview
-  const CAPABILITY_BG_MAP: Record<string, string> = {
-    "#d7f2ff": SITE_IMAGES.navy.geraldFord,
-    "#70e0bf": SITE_IMAGES.navy.ohioSubmarine,
-    "#f2d48a": SITE_IMAGES.navy.destroyer,
-    "#ff7a7a": SITE_IMAGES.navy.flightDeck,
-  };
+  const capabilityBgImages = [
+    SITE_IMAGES.navy.geraldFord,
+    SITE_IMAGES.navy.ohioSubmarine,
+    SITE_IMAGES.navy.destroyer,
+    SITE_IMAGES.navy.flightDeck,
+  ];
 
   return (
     <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16 border-b border-white/5">
@@ -425,7 +380,7 @@ export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabiliti
           {capabilities.map((cap, i) => {
             const isHovered = hoveredIdx === i;
             const isAnyHovered = hoveredIdx !== null;
-            const bgImage = CAPABILITY_BG_MAP[cap.accent];
+            const bgImage = capabilityBgImages[i];
             const Icon = icons[i] ?? Ship;
 
             return (
@@ -454,23 +409,11 @@ export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabiliti
                   </div>
                 )}
 
-                {/* Background Accent Glow */}
-                <div 
-                  className={cn(
-                    "absolute top-0 right-0 h-40 w-40 rounded-full blur-[80px] pointer-events-none transition-opacity duration-1000 opacity-0 group-hover:opacity-10",
-                    cap.accent === "#d7f2ff" ? "bg-sky-300" :
-                    cap.accent === "#70e0bf" ? "bg-emerald-400" :
-                    cap.accent === "#f2d48a" ? "bg-amber-400" :
-                    "bg-red-400"
-                  )}
-                />
+                <div className="absolute top-0 right-0 h-40 w-40 rounded-full bg-[#8edcff] blur-[80px] pointer-events-none transition-opacity duration-1000 opacity-0 group-hover:opacity-[0.06]" />
 
                 {/* Header: Icon + Stat */}
                 <div className="flex items-center justify-between mb-6 lg:mb-0 shrink-0">
-                  <div
-                    className="flex h-11 w-11 items-center justify-center border border-white/8 bg-black transition-colors duration-500 group-hover:border-white/20"
-                    style={{ color: cap.accent }}
-                  >
+                  <div className="flex h-11 w-11 items-center justify-center border border-white/8 bg-black text-[#8edcff] transition-colors duration-500 group-hover:border-[#8edcff]/25">
                     <Icon size={18} strokeWidth={1.5} />
                   </div>
                   <span className="navy-font-mono text-[9px] uppercase tracking-wider text-white/30 transition-colors duration-500 group-hover:text-white/50">
@@ -505,10 +448,7 @@ export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabiliti
                 {/* Footer Line indicator */}
                 <div className="shrink-0 mt-2 lg:mt-0">
                   <div className="h-px w-full bg-white/5">
-                    <div
-                      className="h-px w-12 transition-all duration-500 group-hover:w-full"
-                      style={{ backgroundColor: cap.accent }}
-                    />
+                    <div className="h-px w-12 bg-[#8edcff] transition-all duration-500 group-hover:w-full" />
                   </div>
                 </div>
               </motion.div>
@@ -573,7 +513,7 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
                     <div className="mt-5 h-px w-full bg-white/5">
                       <div
                         className={cn("h-px transition-all duration-500", selected ? "w-full" : "w-10 group-hover:w-1/2")}
-                        style={{ backgroundColor: theater.accent }}
+                        style={{ backgroundColor: "#8edcff" }}
                       />
                     </div>
                   </div>
@@ -608,7 +548,7 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.1),#000000_94%)]" />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,#000000_0%,transparent_28%,transparent_70%,#000000_100%)]" />
             <div className="absolute inset-0 navy-depth-ring opacity-35" />
-            <FleetMesh accent={active.accent} />
+            <FleetMesh accent="#8edcff" />
 
             <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-9">
               <AnimatePresence mode="wait">
@@ -645,8 +585,8 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
                     {locale === "ro" ? "Profilul teatrului" : "Theater profile"}
                   </span>
                   <div className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: active.accent }} />
-                    <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: active.accent }} />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8edcff] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#8edcff]" />
                   </div>
                 </div>
                 <h3 className="navy-font-display text-xl font-black text-white mb-4 leading-[0.92]">{active.name}</h3>
@@ -724,7 +664,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.65 }}
-          className="relative mt-14 grid min-h-[760px] overflow-hidden border border-white/10 bg-[#020202] rounded-lg shadow-2xl shadow-blue-900/5 lg:grid-cols-[1fr_440px]"
+          className="relative mt-14 grid min-h-[760px] overflow-hidden border border-white/10 bg-[#020202] rounded-lg shadow-2xl lg:grid-cols-[1fr_440px]"
         >
           {/* Main Visual Display */}
           <div className="relative min-h-[520px] overflow-hidden">
@@ -845,7 +785,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
               <div className="mt-6 h-px bg-white/5">
                 <motion.div
                   key={activeIndex}
-                  className="h-px bg-[linear-gradient(90deg,#001A33,#8edcff,#ffffff)]"
+                  className="h-px bg-[linear-gradient(90deg,rgba(255,255,255,0.08),#8edcff,#ffffff)]"
                   initial={{ width: "0%" }}
                   animate={{ width: `${((activeIndex + 1) / platforms.length) * 100}%` }}
                   transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
@@ -910,7 +850,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                     <p className="text-xs leading-relaxed text-white/60 mb-8">{active.capability}</p>
                     
                     {/* Dark Navy visual signature band */}
-                    <div className="pl-5 border-l-2 border-[#001A33] bg-[#001a33]/10 py-4 pr-4">
+                    <div className="pl-5 border-l-2 border-[#8edcff]/25 bg-white/[0.025] py-4 pr-4">
                       <div className="navy-font-mono text-[9px] mb-2 tracking-[0.2em] text-[#8edcff]">
                         {locale === "ro" ? "SIGNATURĂ STRATEGICĂ" : "STRATEGIC SIGNATURE"}
                       </div>
@@ -945,7 +885,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                       </div>
                       <div className="bg-[#000a14] border border-white/5 p-4">
                         <div className="navy-font-mono text-[8px] text-white/30 tracking-wider">STATUS</div>
-                        <div className="text-xs font-bold text-[#70e0bf] mt-1">{locale === "ro" ? "ACTIV / OPERAȚIONAL" : "DEPLOYED / ACT"}</div>
+                        <div className="text-xs font-bold text-[#8edcff] mt-1">{locale === "ro" ? "ACTIV / OPERAȚIONAL" : "DEPLOYED / ACT"}</div>
                       </div>
                     </div>
                   </div>
@@ -1024,7 +964,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
   };
 
   const activeLogs = getLogs(activeIdx);
-  const activeColor = layers[activeIdx]?.accent || "#8edcff";
+  const activeColor = "#8edcff";
 
   // Typing simulator state for the monospaced terminal logs
   const [visibleLines, setVisibleLines] = useState<string[]>([]);
@@ -1090,17 +1030,10 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
       const highlights = ["ACTIVĂ", "ONLINE", "CONECTATĂ", "OK", "ONLINE & tracking", "ENGAGED", "SYNCHRONIZED", "CONFIRMED", "ACTIVE"];
       const warningHighlights = ["LOCK", "LOCKED", "STRIKE ACTIVE", "KINETIC ENGAGEMENT"];
       
-      let matchedColor = activeColor;
-      let matchedFontWeight = "font-bold";
+      const matchedFontWeight = "font-bold";
       
       const containsHighlight = highlights.some(h => val.includes(h));
       const containsWarning = warningHighlights.some(w => val.includes(w));
-      
-      if (containsHighlight) {
-        matchedColor = "#34d399"; // Bright emerald green
-      } else if (containsWarning) {
-        matchedColor = "#f87171"; // Bright red
-      }
       
       return (
         <span className="flex flex-wrap gap-1 items-center">
@@ -1108,8 +1041,8 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
           <span
             className={matchedFontWeight}
             style={{
-              color: matchedColor,
-              textShadow: containsHighlight || containsWarning ? `0 0 8px ${matchedColor}40` : "none"
+              color: activeColor,
+              textShadow: containsHighlight || containsWarning ? `0 0 8px ${activeColor}40` : "none"
             }}
           >
             {val}
@@ -1146,18 +1079,8 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
             <div className="navy-glass-premium border border-white/10 bg-[#020202] p-6 rounded-lg relative overflow-hidden">
               {/* Radar glowing sweep overlay */}
               <div className="absolute top-4 right-4 flex items-center gap-2">
-                <span
-                  className="h-2 w-2 rounded-full animate-ping"
-                  style={{
-                    backgroundColor: activeIdx === 0 ? "#34d399" : activeIdx === 1 ? "#fbbf24" : "#f87171"
-                  }}
-                />
-                <span
-                  className="navy-font-mono text-[9px] font-bold uppercase tracking-widest"
-                  style={{
-                    color: activeIdx === 0 ? "#34d399" : activeIdx === 1 ? "#fbbf24" : "#f87171"
-                  }}
-                >
+                <span className="h-2 w-2 rounded-full animate-ping bg-[#8edcff]" />
+                <span className="navy-font-mono text-[9px] font-bold uppercase tracking-widest text-[#8edcff]">
                   {activeIdx === 0
                     ? (locale === "ro" ? "ISR CONECTAT" : "SENSING ACTIVE")
                     : activeIdx === 1
@@ -1201,12 +1124,12 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         <line x1="30" y1="16" x2="50" y2="40" stroke="#8edcff" strokeWidth="0.4" strokeDasharray="2,2" opacity="0.4" />
                         
                         {/* Satellite dish assembly */}
-                        <circle cx="30" cy="16" r="3.5" fill="#001A33" stroke="#8edcff" strokeWidth="0.8" />
+                        <circle cx="30" cy="16" r="3.5" fill="#0a0c10" stroke="#8edcff" strokeWidth="0.8" />
                         <circle cx="30" cy="16" r="1.2" fill="#8edcff" className="animate-pulse" />
                         
                         {/* Dual Solar Panels */}
-                        <rect x="18" y="14" width="7" height="3" fill="#003366" stroke="#8edcff" strokeWidth="0.4" />
-                        <rect x="35" y="14" width="7" height="3" fill="#003366" stroke="#8edcff" strokeWidth="0.4" />
+                        <rect x="18" y="14" width="7" height="3" fill="#1e293b" stroke="#8edcff" strokeWidth="0.4" />
+                        <rect x="35" y="14" width="7" height="3" fill="#1e293b" stroke="#8edcff" strokeWidth="0.4" />
                         <line x1="25" y1="15.5" x2="35" y2="15.5" stroke="#8edcff" strokeWidth="0.5" />
                         <text x="30" y="8" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">USA-MIL-SAT</text>
                       </motion.g>
@@ -1222,7 +1145,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         <line x1="38" y1="38" x2="62" y2="38" stroke="#8edcff" strokeWidth="1.2" />
                         
                         {/* Rotating Rotodome Radar Disk */}
-                        <ellipse cx="50" cy="33" rx="7" ry="1.5" fill="#001A33" stroke="#8edcff" strokeWidth="0.75" />
+                        <ellipse cx="50" cy="33" rx="7" ry="1.5" fill="#0a0c10" stroke="#8edcff" strokeWidth="0.75" />
                         <line x1="50" y1="33" x2="50" y2="35.5" stroke="#8edcff" strokeWidth="0.6" />
                         
                         {/* Dual Concentric Glowing Radar rings radiating from E-2D */}
@@ -1312,21 +1235,21 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                     </svg>
                   </div>
                 )}
-
+ 
                 {/* 2. Decision Layer Graphic */}
                 {activeIdx === 1 && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <svg className="w-full h-full p-2" viewBox="0 0 100 100">
                       {/* Aegis Radar concentric scope compass rings */}
-                      <circle cx="50" cy="50" r="12" stroke="#f2d48a" strokeWidth="0.5" fill="none" opacity="0.2" />
-                      <circle cx="50" cy="50" r="28" stroke="#f2d48a" strokeWidth="0.5" fill="none" opacity="0.15" />
-                      <circle cx="50" cy="50" r="44" stroke="#f2d48a" strokeWidth="0.75" fill="none" opacity="0.3" />
+                      <circle cx="50" cy="50" r="12" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.2" />
+                      <circle cx="50" cy="50" r="28" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.15" />
+                      <circle cx="50" cy="50" r="44" stroke="#8edcff" strokeWidth="0.75" fill="none" opacity="0.3" />
  
                       {/* Compass Heading Labels */}
-                      <text x="50" y="10" fill="#f2d48a" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">N 000</text>
-                      <text x="92" y="51" fill="#f2d48a" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">E 090</text>
-                      <text x="50" y="93" fill="#f2d48a" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">S 180</text>
-                      <text x="8" y="51" fill="#f2d48a" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">W 270</text>
+                      <text x="50" y="10" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">N 000</text>
+                      <text x="92" y="51" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">E 090</text>
+                      <text x="50" y="93" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">S 180</text>
+                      <text x="8" y="51" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">W 270</text>
  
                       {/* Rotating Radar Segment Sweep Shadow */}
                       <motion.path
@@ -1343,7 +1266,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         y1="50"
                         x2="88"
                         y2="28"
-                        stroke="#f2d48a"
+                        stroke="#8edcff"
                         strokeWidth="1.2"
                         opacity="0.75"
                         animate={{ rotate: 360 }}
@@ -1351,38 +1274,36 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         style={{ transformOrigin: "50px 50px" }}
                       />
  
-
- 
                       {/* Connected Tactical Mesh Nodes */}
-                      <g fill="#f2d48a">
+                      <g fill="#8edcff">
                         {/* Central Decision Hub Core */}
                         <circle cx="50" cy="50" r="4.5" className="animate-pulse" />
                         
                         {/* Node 1: TRK-882 */}
                         <circle cx="28" cy="32" r="2.5" />
-                        <line x1="50" y1="50" x2="28" y2="32" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
-                        <text x="24" y="27" fill="#f2d48a" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-882</text>
-                        <text x="24" y="30.5" fill="#f2d48a" fontSize="2" className="navy-font-mono" opacity="0.5">AZ:284 RNG:120</text>
+                        <line x1="50" y1="50" x2="28" y2="32" stroke="#8edcff" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
+                        <text x="24" y="27" fill="#8edcff" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-882</text>
+                        <text x="24" y="30.5" fill="#8edcff" fontSize="2" className="navy-font-mono" opacity="0.5">AZ:284 RNG:120</text>
  
                         {/* Node 2: TRK-491 */}
                         <circle cx="72" cy="38" r="2.5" />
-                        <line x1="50" y1="50" x2="72" y2="38" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
-                        <text x="75" y="34" fill="#f2d48a" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-491</text>
-                        <text x="75" y="37.5" fill="#f2d48a" fontSize="2" className="navy-font-mono" opacity="0.5">AZ:084 RNG:402</text>
+                        <line x1="50" y1="50" x2="72" y2="38" stroke="#8edcff" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
+                        <text x="75" y="34" fill="#8edcff" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-491</text>
+                        <text x="75" y="37.5" fill="#8edcff" fontSize="2" className="navy-font-mono" opacity="0.5">AZ:084 RNG:402</text>
  
                         {/* Node 3: TRK-504 */}
                         <circle cx="64" cy="70" r="2.5" />
-                        <line x1="50" y1="50" x2="64" y2="70" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
-                        <text x="67" y="75" fill="#f2d48a" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-504</text>
+                        <line x1="50" y1="50" x2="64" y2="70" stroke="#8edcff" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
+                        <text x="67" y="75" fill="#8edcff" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-504</text>
  
                         {/* Node 4: TRK-119 */}
                         <circle cx="34" cy="68" r="2.5" />
-                        <line x1="50" y1="50" x2="34" y2="68" stroke="#f2d48a" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
-                        <text x="22" y="74" fill="#f2d48a" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-119</text>
+                        <line x1="50" y1="50" x2="34" y2="68" stroke="#8edcff" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
+                        <text x="22" y="74" fill="#8edcff" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-119</text>
                       </g>
  
                       {/* Active target coordinate tracking brackets */}
-                      <g stroke="#f2d48a" strokeWidth="0.4" fill="none" opacity="0.6">
+                      <g stroke="#8edcff" strokeWidth="0.4" fill="none" opacity="0.6">
                         {/* Node 1 Brackets */}
                         <path d="M 24 29 L 24 27 L 26 27" />
                         <path d="M 32 29 L 32 27 L 30 27" />
@@ -1414,13 +1335,13 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                       />
  
                       {/* Interactive text badge */}
-                      <rect x="36" y="44" width="28" height="6" fill="#001A33" stroke="#f2d48a" strokeWidth="0.5" rx="1" />
-                      <text x="50" y="48.5" fill="#f2d48a" fontSize="2.8" textAnchor="middle" fontWeight="bold" className="navy-font-mono animate-pulse">AEGIS LINK</text>
+                      <rect x="36" y="44" width="28" height="6" fill="#0a0c10" stroke="#8edcff" strokeWidth="0.5" rx="1" />
+                      <text x="50" y="48.5" fill="#8edcff" fontSize="2.8" textAnchor="middle" fontWeight="bold" className="navy-font-mono animate-pulse">AEGIS LINK</text>
  
                       <defs>
                         <linearGradient id="radar-sweep-gradient" x1="0" x2="1" y1="0" y2="1">
-                          <stop offset="0%" stopColor="#f2d48a" stopOpacity="0.25" />
-                          <stop offset="100%" stopColor="#f2d48a" stopOpacity="0" />
+                          <stop offset="0%" stopColor="#8edcff" stopOpacity="0.25" />
+                          <stop offset="100%" stopColor="#8edcff" stopOpacity="0" />
                         </linearGradient>
                       </defs>
                     </svg>
@@ -1432,11 +1353,11 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <svg className="w-full h-full p-2" viewBox="0 0 100 100">
                       {/* Crosshair target scope lines */}
-                      <line x1="8" y1="50" x2="92" y2="50" stroke="#ff7a7a" strokeWidth="0.4" strokeDasharray="3,3" opacity="0.4" />
-                      <line x1="50" y1="8" x2="50" y2="92" stroke="#ff7a7a" strokeWidth="0.4" strokeDasharray="3,3" opacity="0.4" />
-                      <circle cx="50" cy="50" r="38" stroke="#ff7a7a" strokeWidth="0.5" fill="none" opacity="0.2" />
-                      <circle cx="50" cy="50" r="22" stroke="#ff7a7a" strokeWidth="0.6" fill="none" opacity="0.35" />
-                      <circle cx="50" cy="50" r="2.5" fill="#ff7a7a" />
+                      <line x1="8" y1="50" x2="92" y2="50" stroke="#8edcff" strokeWidth="0.4" strokeDasharray="3,3" opacity="0.4" />
+                      <line x1="50" y1="8" x2="50" y2="92" stroke="#8edcff" strokeWidth="0.4" strokeDasharray="3,3" opacity="0.4" />
+                      <circle cx="50" cy="50" r="38" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.2" />
+                      <circle cx="50" cy="50" r="22" stroke="#8edcff" strokeWidth="0.6" fill="none" opacity="0.35" />
+                      <circle cx="50" cy="50" r="2.5" fill="#8edcff" />
  
                       {/* Twin-tail F-35C aerospace stealth fighter silhouette (Middle Left) */}
                       <motion.g
@@ -1445,12 +1366,12 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         transition={{ duration: 0.5, delay: 0.2 }}
                       >
                         {/* F-35C Body & Wings (y: 32-38) */}
-                        <polygon points="12,32 20,36 18,38 10,38 8,34" fill="#ff7a7a" opacity="0.8" />
+                        <polygon points="12,32 20,36 18,38 10,38 8,34" fill="#8edcff" opacity="0.8" />
                         {/* Stabilizer tails */}
-                        <line x1="8" y1="34" x2="6" y2="30" stroke="#ff7a7a" strokeWidth="0.8" />
-                        <line x1="8" y1="38" x2="6" y2="42" stroke="#ff7a7a" strokeWidth="0.8" />
+                        <line x1="8" y1="34" x2="6" y2="30" stroke="#8edcff" strokeWidth="0.8" />
+                        <line x1="8" y1="38" x2="6" y2="42" stroke="#8edcff" strokeWidth="0.8" />
                         
-                        <text x="8" y="26" fill="#ff7a7a" fontSize="3" className="navy-font-mono font-black" opacity="0.8">F-35C STRIKE</text>
+                        <text x="8" y="26" fill="#8edcff" fontSize="3" className="navy-font-mono font-black" opacity="0.8">F-35C STRIKE</text>
                         
                         {/* Guided weapon launch drop trail to TR-02 */}
                         <motion.circle
@@ -1461,7 +1382,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                       </motion.g>
  
                       {/* Terminal Flight Calculations Readout Block (Top Right) */}
-                      <g opacity="0.85" className="navy-font-mono" fill="#ff7a7a">
+                      <g opacity="0.85" className="navy-font-mono" fill="#8edcff">
                         <text x="94" y="14" fontSize="2.8" textAnchor="end" fontWeight="bold">HYPERSONIC INTERCEPT</text>
                       </g>
  
@@ -1472,7 +1393,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         transition={{ duration: 0.5 }}
                       >
                         {/* Deck silhouette */}
-                        <polygon points="5,88 24,88 28,82 1,82" fill="#ff7a7a" opacity="0.65" />
+                        <polygon points="5,88 24,88 28,82 1,82" fill="#8edcff" opacity="0.65" />
                         <rect x="11" y="82" width="6" height="1" fill="#ffffff" />
                         
                         {/* Rising hypersonic interceptor missile */}
@@ -1482,7 +1403,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         {/* Glowing orange exhaust plume trail */}
                         <polygon points="12,82 16,82 14,88" fill="url(#fire-plume-gradient)" opacity="0.8" />
                         
-                        <text x="14" y="94" fill="#ff7a7a" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">VLS Mk 41</text>
+                        <text x="14" y="94" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">VLS Mk 41</text>
                       </motion.g>
  
                       {/* Underwater Virginia-SSN launching a Tomahawk (Bottom Right) */}
@@ -1492,7 +1413,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         transition={{ delay: 0.4 }}
                       >
                         {/* Underwater sub hull */}
-                        <rect x="74" y="86" width="20" height="3.5" rx="1" fill="#ff7a7a" opacity="0.5" />
+                        <rect x="74" y="86" width="20" height="3.5" rx="1" fill="#8edcff" opacity="0.5" />
                         {/* Tomahawk missile launched underwater, traveling up to Node 1 */}
                         <motion.path
                           d="M 78 86 Q 84 62 68 42"
@@ -1504,13 +1425,13 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                           animate={{ pathLength: 1 }}
                           transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 0.5 }}
                         />
-                        <text x="84" y="94" fill="#ff7a7a" fontSize="2.5" textAnchor="middle" className="navy-font-mono" opacity="0.6">TOMAHAWK UGM</text>
+                        <text x="84" y="94" fill="#8edcff" fontSize="2.5" textAnchor="middle" className="navy-font-mono" opacity="0.6">TOMAHAWK UGM</text>
                       </motion.g>
  
                       {/* Live System Status Waveform & Warhead Status (Bottom Center - Isolated) */}
                       <g>
-                        <path d="M 38 86 L 41 88 L 44 84 L 47 89 L 50 82 L 53 87 L 56 85 L 59 88 L 62 86" fill="none" stroke="#ff7a7a" strokeWidth="0.8" opacity="0.6" className="animate-pulse" />
-                        <text x="50" y="94" fill="#ff7a7a" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">WARHEAD CHARGED</text>
+                        <path d="M 38 86 L 41 88 L 44 84 L 47 89 L 50 82 L 53 87 L 56 85 L 59 88 L 62 86" fill="none" stroke="#8edcff" strokeWidth="0.8" opacity="0.6" className="animate-pulse" />
+                        <text x="50" y="94" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">WARHEAD CHARGED</text>
                       </g>
  
                       {/* Lock-on target 1 tracking coordinates brackets (Center Right - Moved Down to Avoid Readout) */}
@@ -1520,17 +1441,17 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         transition={{ delay: 0.1 }}
                       >
                         {/* Pulsing ring target lock */}
-                        <circle cx="68" cy="42" r="4.5" fill="none" stroke="#ff7a7a" strokeWidth="1.2" className="animate-ping" style={{ animationDuration: '1.5s' }} />
-                        <circle cx="68" cy="42" r="1.5" fill="#ff7a7a" />
+                        <circle cx="68" cy="42" r="4.5" fill="none" stroke="#8edcff" strokeWidth="1.2" className="animate-ping" style={{ animationDuration: '1.5s' }} />
+                        <circle cx="68" cy="42" r="1.5" fill="#8edcff" />
                         
                         {/* Closing targeting brackets [  ] */}
-                        <path d="M 62 37 L 64 37 L 64 39" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
-                        <path d="M 74 37 L 72 37 L 72 39" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
-                        <path d="M 62 47 L 64 47 L 64 45" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
-                        <path d="M 74 47 L 72 47 L 72 45" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
+                        <path d="M 62 37 L 64 37 L 64 39" stroke="#8edcff" strokeWidth="0.8" fill="none" />
+                        <path d="M 74 37 L 72 37 L 72 39" stroke="#8edcff" strokeWidth="0.8" fill="none" />
+                        <path d="M 62 47 L 64 47 L 64 45" stroke="#8edcff" strokeWidth="0.8" fill="none" />
+                        <path d="M 74 47 L 72 47 L 72 45" stroke="#8edcff" strokeWidth="0.8" fill="none" />
                         
-                        <text x="68" y="54" fill="#ff7a7a" fontSize="2.8" textAnchor="middle" className="navy-font-mono font-black">LOCK [TR-01]</text>
-                        <text x="68" y="57.5" fill="#ff7a7a" fontSize="2.2" textAnchor="middle" className="navy-font-mono" opacity="0.5">AZ:084 EL:15</text>
+                        <text x="68" y="54" fill="#8edcff" fontSize="2.8" textAnchor="middle" className="navy-font-mono font-black">LOCK [TR-01]</text>
+                        <text x="68" y="57.5" fill="#8edcff" fontSize="2.2" textAnchor="middle" className="navy-font-mono" opacity="0.5">AZ:084 EL:15</text>
                       </motion.g>
  
                       {/* Lock-on target 2 tracking coordinates brackets (Center Left) */}
@@ -1540,24 +1461,24 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                         transition={{ delay: 0.35 }}
                       >
                         {/* Pulsing ring target lock */}
-                        <circle cx="34" cy="62" r="4.5" fill="none" stroke="#ff7a7a" strokeWidth="1.2" className="animate-ping" style={{ animationDuration: '2s' }} />
-                        <circle cx="34" cy="62" r="1.5" fill="#ff7a7a" />
+                        <circle cx="34" cy="62" r="4.5" fill="none" stroke="#8edcff" strokeWidth="1.2" className="animate-ping" style={{ animationDuration: '2s' }} />
+                        <circle cx="34" cy="62" r="1.5" fill="#8edcff" />
                         
                         {/* Targeting brackets [  ] */}
-                        <path d="M 28 57 L 30 57 L 30 59" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
-                        <path d="M 40 57 L 38 57 L 38 59" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
-                        <path d="M 28 67 L 30 67 L 30 65" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
-                        <path d="M 40 67 L 38 67 L 38 65" stroke="#ff7a7a" strokeWidth="0.8" fill="none" />
+                        <path d="M 28 57 L 30 57 L 30 59" stroke="#8edcff" strokeWidth="0.8" fill="none" />
+                        <path d="M 40 57 L 38 57 L 38 59" stroke="#8edcff" strokeWidth="0.8" fill="none" />
+                        <path d="M 28 67 L 30 67 L 30 65" stroke="#8edcff" strokeWidth="0.8" fill="none" />
+                        <path d="M 40 67 L 38 67 L 38 65" stroke="#8edcff" strokeWidth="0.8" fill="none" />
                         
-                        <text x="34" y="74" fill="#ff7a7a" fontSize="2.8" textAnchor="middle" className="navy-font-mono font-black">LOCK [TR-02]</text>
-                        <text x="34" y="77.5" fill="#ff7a7a" fontSize="2.2" textAnchor="middle" className="navy-font-mono" opacity="0.5">AZ:284 EL:08</text>
+                        <text x="34" y="74" fill="#8edcff" fontSize="2.8" textAnchor="middle" className="navy-font-mono font-black">LOCK [TR-02]</text>
+                        <text x="34" y="77.5" fill="#8edcff" fontSize="2.2" textAnchor="middle" className="navy-font-mono" opacity="0.5">AZ:284 EL:08</text>
                       </motion.g>
  
                       {/* Launch flight vector trajectory curve */}
                       <motion.path
                         d="M 14 74 Q 35 44 68 42"
                         fill="none"
-                        stroke="#ff7a7a"
+                        stroke="#8edcff"
                         strokeWidth="1.5"
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: 1 }}
@@ -1567,8 +1488,8 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                       <defs>
                         <linearGradient id="fire-plume-gradient" x1="0" x2="0" y1="0" y2="1">
                           <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
-                          <stop offset="50%" stopColor="#ff7a7a" stopOpacity="0.7" />
-                          <stop offset="100%" stopColor="#ff7a7a" stopOpacity="0" />
+                          <stop offset="50%" stopColor="#8edcff" stopOpacity="0.7" />
+                          <stop offset="100%" stopColor="#8edcff" stopOpacity="0" />
                         </linearGradient>
                       </defs>
                     </svg>
@@ -1676,7 +1597,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                     <motion.div
                       layoutId="c2-active-border"
                       className="absolute inset-y-0 left-0 w-[3px]"
-                      style={{ backgroundColor: layer.accent }}
+                      style={{ backgroundColor: activeColor }}
                       transition={{ type: "spring", stiffness: 350, damping: 30 }}
                     />
                   )}
@@ -1688,14 +1609,14 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                           LAYER 0{index + 1}
                         </span>
                         {selected && (
-                          <span className="navy-font-mono text-[8px] bg-[#001a33]/60 text-[#8edcff] px-2 py-0.5 border border-[#8edcff]/10 uppercase font-black tracking-widest">
+                          <span className="navy-font-mono text-[8px] bg-white/[0.035] text-[#8edcff] px-2 py-0.5 border border-[#8edcff]/10 uppercase font-black tracking-widest">
                             {locale === "ro" ? "TELEMETRIE ACTIVĂ" : "LIVE FEED"}
                           </span>
                         )}
                       </div>
                       <div
                         className="h-9 w-9 rounded border border-white/5 bg-black flex items-center justify-center"
-                        style={{ color: selected ? layer.accent : "rgba(255,255,255,0.3)" }}
+                        style={{ color: selected ? activeColor : "rgba(255,255,255,0.3)" }}
                       >
                         <LayerIcon size={16} strokeWidth={1.5} />
                       </div>
@@ -1850,7 +1771,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
             >
               <div>
                 <div className="mb-6 flex flex-col items-start gap-3">
-                  <span className="border border-[#001a33] bg-[#001a33]/40 px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-[#8edcff]/90">
+                  <span className="border border-[#8edcff]/15 bg-white/[0.03] px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-[#8edcff]/90">
                     {program.status}
                   </span>
                   <span className="navy-font-display text-3xl sm:text-4xl font-black text-white/10 block leading-none transition-colors group-hover:text-white/20" title={program.label}>
@@ -1926,7 +1847,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
                     <p className="text-xs sm:text-sm leading-relaxed text-white/60 mb-8">{activeProgram.capability}</p>
                     
                     {/* Visual signature band */}
-                    <div className="pl-5 border-l-2 border-[#001A33] bg-[#001a33]/15 py-4 pr-4">
+                    <div className="pl-5 border-l-2 border-[#8edcff]/25 bg-white/[0.025] py-4 pr-4">
                       <div className="navy-font-mono text-[9px] mb-2 tracking-[0.2em] text-[#8edcff]">
                         {locale === "ro" ? "PROIECTARE TACTICĂ" : "TACTICAL PROJECTION"}
                       </div>
@@ -2133,7 +2054,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
   return (
     <section className="relative overflow-hidden bg-black py-24 sm:py-32 border-t border-white/5">
       {/* Background aesthetics */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,26,51,0.2)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_0%,transparent_70%)] pointer-events-none" />
       <div className="navy-grid-plane absolute inset-0 opacity-15" />
       <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
 
@@ -2148,7 +2069,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
         />
 
         {/* Weapons console frame */}
-        <div className="navy-glass-premium overflow-hidden rounded-lg border border-white/10 bg-black/60 shadow-2xl shadow-blue-900/10">
+        <div className="navy-glass-premium overflow-hidden rounded-lg border border-white/10 bg-black/60 shadow-2xl">
           
           {/* Header tabs */}
           <div className="flex flex-wrap border-b border-white/10 bg-black/85">
@@ -2200,7 +2121,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                   {weapon.name}
                 </h3>
                 
-                <div className="inline-block border border-[#8edcff]/10 rounded bg-[#001020]/40 px-3 py-1 text-[10px] tracking-widest text-[#8edcff]/80 font-mono">
+                <div className="inline-block border border-[#8edcff]/10 rounded bg-[#0a0c10]/40 px-3 py-1 text-[10px] tracking-widest text-[#8edcff]/80 font-mono">
                   SYSTEM DESIGNATION: {weapon.designation}
                 </div>
                 
@@ -2242,7 +2163,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                         initial={{ width: 0 }}
                         animate={{ width: `${weapon.accuracy}%` }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="h-full bg-gradient-to-r from-[#0052a3] to-[#8edcff] rounded-full"
+                        className="h-full bg-[#8edcff] rounded-full"
                       />
                     </div>
                   </div>
@@ -2252,7 +2173,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                     <div className="text-[9px] font-mono tracking-widest text-white/30 uppercase">
                       TELEMETRY STATUS
                     </div>
-                    <div className="text-xs font-mono tracking-wider text-[#70e0bf] font-bold uppercase mt-1">
+                    <div className="text-xs font-mono tracking-wider text-[#8edcff] font-bold uppercase mt-1">
                       {weapon.operations}
                     </div>
                   </div>
@@ -2261,7 +2182,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
               </div>
 
               {/* Tactical Deployment Profile Block */}
-              <div className="border border-white/10 rounded bg-[#000813]/60 p-5 font-mono text-[10px] leading-relaxed text-white/60 space-y-2">
+              <div className="border border-white/10 rounded bg-[#0a0c10]/60 p-5 font-mono text-[10px] leading-relaxed text-white/60 space-y-2">
                 <div className="text-[#8edcff] text-[9.5px] uppercase tracking-widest font-black border-b border-white/10 pb-1 mb-2">
                   TACTICAL DEPLOYMENT PROFILE
                 </div>
@@ -2271,7 +2192,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                 </div>
                 <div className="flex justify-between border-b border-white/5 pb-1">
                   <span className="text-white/40">DEPLOYMENT STATUS:</span>
-                  <span className="text-[#70e0bf] font-semibold">OPERATIONAL Readiness OK</span>
+                  <span className="text-[#8edcff] font-semibold">OPERATIONAL Readiness OK</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-white/40">TARGET SYSTEM MATCH:</span>
@@ -2285,7 +2206,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
             <div className="lg:col-span-5 flex flex-col items-center justify-center">
               
               {/* High-Fidelity Tactical Weapon Frame */}
-              <div className="relative w-full aspect-square max-w-[340px] rounded-lg border border-white/10 bg-[#000813]/40 overflow-hidden flex items-center justify-center p-2 group">
+              <div className="relative w-full aspect-square max-w-[340px] rounded-lg border border-white/10 bg-black/40 overflow-hidden flex items-center justify-center p-2 group">
                 
                 {/* Cyber corner brackets accent */}
                 <div className="absolute top-2 left-2 right-2 bottom-2 rounded border border-white/5 pointer-events-none z-20" />
@@ -2788,7 +2709,7 @@ export function NavySpecWarSection({
                     />
                     )}
                   <div className="relative z-10">
-                    <div className="navy-font-mono text-[9px] uppercase tracking-[0.2em] mb-2" style={{ color: unit.accent + "80" }}>{unit.role}</div>
+                    <div className="navy-font-mono text-[9px] uppercase tracking-[0.2em] mb-2 text-[#8edcff]/70">{unit.role}</div>
                     <div className="navy-font-display text-xl lg:text-2xl font-black uppercase leading-tight">{unit.name}</div>
                     <div className="hidden lg:block mt-2 text-[10px] text-white/40">{unit.fullName}</div>
                   </div>
@@ -2810,7 +2731,7 @@ export function NavySpecWarSection({
               >
                 {/* Header */}
                 <div>
-                  <div className="navy-font-mono text-[9px] uppercase tracking-[0.25em] mb-3" style={{ color: active.accent }}>{active.fullName}</div>
+                  <div className="navy-font-mono text-[9px] uppercase tracking-[0.25em] mb-3 text-[#8edcff]">{active.fullName}</div>
                   <h3 className="navy-font-display text-3xl md:text-4xl font-black uppercase text-white leading-tight">{active.name}</h3>
                 </div>
 
@@ -2860,7 +2781,7 @@ export function NavySpecWarSection({
                         whileInView={{ width: "25%" }}
                         viewport={{ once: true }}
                         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                        style={{ background: active.accent, boxShadow: `0 0 8px ${active.accent}40` }}
+                        style={{ background: "#8edcff", boxShadow: "0 0 8px rgba(142,220,255,0.18)" }}
                       />
                     </div>
                     <p className="mt-3 text-[10px] text-white/35 leading-relaxed">
@@ -2941,10 +2862,10 @@ export function NavyAirWingComposition({
               className="group relative bg-[#020202] p-6 transition-colors duration-300 hover:bg-[#000a14]"
             >
               {/* Accent top bar */}
-              <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: sq.accent, opacity: 0.4 }} />
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#8edcff]/40" />
 
               <div className="flex items-center justify-between mb-4">
-                <span className="navy-font-mono text-[9px] uppercase tracking-widest" style={{ color: sq.accent + "90" }}>{sq.designation}</span>
+                <span className="navy-font-mono text-[9px] uppercase tracking-widest text-[#8edcff]/80">{sq.designation}</span>
                 <span className="navy-font-display text-2xl font-black text-white">×{sq.count}</span>
               </div>
 
@@ -2958,7 +2879,7 @@ export function NavyAirWingComposition({
               <div className="mt-5 h-px w-full bg-white/5">
                 <div
                   className="h-px w-8 transition-all duration-500 group-hover:w-full"
-                  style={{ backgroundColor: sq.accent }}
+                  style={{ backgroundColor: "#8edcff" }}
                 />
               </div>
             </motion.div>
@@ -3022,7 +2943,7 @@ export function NavyBasesSection({
                 <div className="flex items-start gap-4 mb-6">
                   <div
                     className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/8 bg-black"
-                    style={{ color: active.accent }}
+                    style={{ color: "#8edcff" }}
                   >
                     <MapPin size={16} strokeWidth={1.5} />
                   </div>
@@ -3032,7 +2953,7 @@ export function NavyBasesSection({
                   </div>
                 </div>
 
-                <div className="navy-font-mono text-[10px] uppercase tracking-widest mb-4" style={{ color: active.accent + "90" }}>
+                <div className="navy-font-mono text-[10px] uppercase tracking-widest mb-4 text-[#8edcff]/80">
                   {active.location} · {active.role}
                 </div>
 
@@ -3069,13 +2990,13 @@ export function NavyBasesSection({
                     <motion.div
                       layoutId="navy-base-active"
                       className="absolute inset-y-0 left-0 w-[2px]"
-                      style={{ backgroundColor: base.accent }}
+                      style={{ backgroundColor: "#8edcff" }}
                       transition={{ type: "spring", stiffness: 330, damping: 35 }}
                     />
                   )}
                   <div className="pl-3">
                     <div className="flex items-center gap-2">
-                      <MapPin size={11} strokeWidth={1.5} style={{ color: base.accent + "70" }} />
+                      <MapPin size={11} strokeWidth={1.5} className="text-[#8edcff]/60" />
                       <span className="navy-font-mono text-[8px] uppercase tracking-widest text-white/30">{base.region}</span>
                     </div>
                     <div className="navy-font-display text-sm sm:text-base font-extrabold uppercase leading-snug mt-1.5" style={{ letterSpacing: "0.04em" }}>
@@ -3136,7 +3057,7 @@ export function NavyHumanitarianSection({
                 <div className="flex items-center gap-3">
                   <div
                     className="flex h-9 w-9 items-center justify-center border border-white/8 bg-black"
-                    style={{ color: mission.accent }}
+                    style={{ color: "#8edcff" }}
                   >
                     <Heart size={14} strokeWidth={1.5} />
                   </div>
@@ -3162,7 +3083,7 @@ export function NavyHumanitarianSection({
               <div className="mt-6 h-px w-full bg-white/5">
                 <div
                   className="h-px w-10 transition-all duration-500 group-hover:w-full"
-                  style={{ backgroundColor: mission.accent }}
+                  style={{ backgroundColor: "#8edcff" }}
                 />
               </div>
             </motion.div>
