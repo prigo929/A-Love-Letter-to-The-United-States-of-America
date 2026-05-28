@@ -509,14 +509,23 @@ export function BaseDossierSection({
               key={base.ID}
               type="button"
               onClick={() => setSelectedBase(base)}
-              className="grid w-full gap-4 border-b border-zinc-900 py-8 text-left transition-colors last:border-b-0 hover:bg-zinc-950 md:grid-cols-[220px_1fr_auto]"
+              className="group grid w-full gap-6 border-b border-zinc-900 py-8 text-left transition-colors last:border-b-0 hover:bg-zinc-950/40 md:grid-cols-[160px_220px_1fr_auto] md:items-center"
             >
               <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">{base.Country}</div>
+              <div className="relative aspect-[16/9] w-full max-w-[280px] overflow-hidden border border-zinc-800 bg-zinc-950 transition-colors duration-300 group-hover:border-zinc-700 md:w-[220px]">
+                <Image
+                  src={base["Image URL"]}
+                  alt={base.Name}
+                  fill
+                  className="object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                  sizes="(max-width: 768px) 280px, 220px"
+                />
+              </div>
               <div>
                 <h3 className="text-2xl font-black uppercase tracking-tight text-white">{base.Name}</h3>
                 <p className="mt-3 max-w-2xl text-sm leading-7 text-zinc-400">{base["Strategic Rationale"]}</p>
               </div>
-              <div className="self-start bg-zinc-900 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-300">
+              <div className="self-start bg-zinc-900 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-300 transition-colors group-hover:bg-zinc-800 group-hover:text-white md:self-auto">
                 Open Dossier
               </div>
             </button>
