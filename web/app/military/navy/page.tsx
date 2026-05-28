@@ -18,6 +18,8 @@ import {
   NavyStyles,
   NavyWeaponsConsole,
   NavyFlyNavyVideo,
+  NavyPageProgress,
+  NavySectionDivider,
 } from "@/components/military/NavyPageComponents";
 import {
   ParallaxMilitaryHero,
@@ -87,31 +89,67 @@ export default async function NavyPage() {
     <div className="navy-page min-h-screen overflow-hidden bg-black text-white">
       <MilStyles />
       <NavyStyles />
+      <NavyPageProgress />
+      
       <ParallaxMilitaryHero
         imageSrc={SITE_IMAGES.navy.hero}
         imageAlt="U.S. Navy aircraft carrier in cinematic light"
+        videoSrc="/videos/military/fly-navy.mp4"
         title={locale === "ro" ? "DOMINAȚIE MARITIMĂ" : "MARITIME DOMINANCE"}
         subtitle={locale === "ro" ? "MARINA STATELOR UNITE · DOMINAȚIE MARITIMĂ GLOBALĂ ȘI PROIECTARE DE FORȚĂ" : "UNITED STATES NAVY · GLOBAL MARITIME DOMINANCE & PROJECTED POWER"}
         tagline={locale === "ro" ? "POZIȚIONAT ÎNAINTE · SEMPER FORTIS · PREGĂTIT DE LUPTĂ" : "FORWARD DEPLOYED · SEMPER FORTIS · READY ON ARRIVAL"}
         stats={heroStats}
+        heightClass="h-[135dvh]"
       />
+      
       <NavyMetricStrip metrics={secondaryMetrics} locale={locale} />
+      
+      <NavySectionDivider />
+      
       <NavyFleetComparisonSection data={fleetComparison} locale={locale} />
+      
+      <NavySectionDivider />
+      
       <NavyCapabilityGrid capabilities={capabilities} locale={locale} />
+      
       <NavyFlyNavyVideo locale={locale} />
+      
       <NavyAirWingComposition squadrons={airWing} locale={locale} />
+      
+      <NavySectionDivider />
+      
       <NavyOperationalConsole theaters={theaters} locale={locale} />
+      
       <NavyBasesSection bases={bases} locale={locale} />
+      
       <NavyFullscreenPanel panel={visualPanels[0]} locale={locale} />
+      
+      <NavySectionDivider />
+      
       <NavyPlatformShowcase platforms={platforms} locale={locale} />
+      
       <NavyWeaponsConsole locale={locale} />
+      
       <NavyCommandStack layers={layers} locale={locale} />
+      
+      <NavySectionDivider />
+      
       <NavyHeritageTimeline events={heritageTimeline} locale={locale} />
+      
       <NavyFullscreenPanel panel={visualPanels[1]} reverse locale={locale} />
+      
+      <NavySectionDivider />
+      
       <NavyFutureStack programs={programs} locale={locale} />
+      
       <NavySpecWarSection units={specWarUnits} locale={locale} />
+      
+      <NavySectionDivider />
+      
       <NavyHumanitarianSection missions={humanitarianMissions} locale={locale} />
+      
       <NavyFullscreenPanel panel={visualPanels[2]} locale={locale} />
+      
       <NavyClosing locale={locale} />
     </div>
   );

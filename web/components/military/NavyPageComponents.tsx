@@ -39,6 +39,7 @@ import type {
   NavyWeaponSystem,
 } from "@/lib/data/navy-data";
 import { getNavyWeapons } from "@/lib/data/navy-data";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -54,12 +55,13 @@ export function NavyStyles() {
     <style jsx global>{`
       .navy-page {
         --navy-black: #000000;
-        --navy-void: #020202;
-        --navy-surface: #00060d;
+        --navy-void: #050608;
+        --navy-surface: #0a0c10;
+        --navy-elevated: #12151b;
         --navy-accent-dark: #001A33; /* Strong Navy */
-        --navy-panel: rgba(0, 26, 51, 0.45);
-        --navy-border: rgba(255, 255, 255, 0.05);
-        --navy-border-glow: rgba(0, 132, 255, 0.12);
+        --navy-panel: rgba(10, 12, 16, 0.85);
+        --navy-border: rgba(255, 255, 255, 0.06);
+        --navy-border-glow: rgba(0, 132, 255, 0.08);
         --navy-blue: #8edcff;
         --navy-sea: #70e0bf;
         --navy-warm: #f2d48a;
@@ -70,13 +72,13 @@ export function NavyStyles() {
 
       .navy-font-display {
         font-family: var(--font-archivo), Inter, system-ui, sans-serif;
-        letter-spacing: -0.03em;
+        letter-spacing: -0.035em;
         text-transform: uppercase;
       }
 
       .navy-font-mono {
         font-family: var(--font-mono), "SFMono-Regular", Consolas, monospace;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
       }
 
@@ -103,7 +105,7 @@ export function NavyStyles() {
       }
 
       .navy-glass-premium {
-        background: rgba(0, 3, 8, 0.85);
+        background: rgba(8, 10, 14, 0.85);
         backdrop-filter: blur(30px) saturate(1.1);
         -webkit-backdrop-filter: blur(30px) saturate(1.1);
         border: 1px solid var(--navy-border-glow);
@@ -113,8 +115,8 @@ export function NavyStyles() {
       }
 
       .navy-panel-tactical {
-        background: rgba(0, 6, 13, 0.9);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: var(--navy-surface);
+        border: 1px solid rgba(255, 255, 255, 0.05);
         box-shadow: inset 0 0 16px rgba(0, 26, 51, 0.4);
       }
 
@@ -156,12 +158,45 @@ export function NavyStyles() {
 
 export function NavyPageProgress() {
   const { scrollYProgress } = useScroll();
+  const [pct, setPct] = useState(0);
+
+  useEffect(() => {
+    return scrollYProgress.on("change", (v) => setPct(v));
+  }, [scrollYProgress]);
+
+  const SECTION_MARKERS = [0.08, 0.18, 0.28, 0.38, 0.48, 0.58, 0.68, 0.78, 0.88, 0.96];
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-px bg-white/4">
+    <div className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-[2px] bg-white/[0.03]">
       <motion.div
-        className="h-full origin-left bg-[linear-gradient(90deg,#001A33,#8edcff,#ffffff)]"
+        className="h-full origin-left bg-gradient-to-r from-[#001A33] via-[#8edcff] to-white"
         style={{ scaleX: scrollYProgress }}
+      />
+      {SECTION_MARKERS.map((pos) => (
+        <div
+          key={pos}
+          className="absolute top-1/2 -translate-y-1/2 h-[5px] w-[5px] rounded-full -translate-x-1/2"
+          style={{
+            left: `${pos * 100}%`,
+            background: pct >= pos ? "rgba(142, 220, 255, 0.9)" : "rgba(255, 255, 255, 0.12)",
+            boxShadow: pct >= pos ? "0 0 6px rgba(142, 220, 255, 0.8)" : "none",
+            transition: "background 0.4s ease, box-shadow 0.4s ease",
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+export function NavySectionDivider() {
+  return (
+    <div className="relative flex justify-center items-center py-6 px-6">
+      <motion.div
+        initial={{ scaleX: 0, opacity: 0 }}
+        whileInView={{ scaleX: 1, opacity: 1 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+        className="h-px w-full max-w-[480px] origin-center bg-gradient-to-r from-transparent via-[#8edcff]/20 to-transparent"
       />
     </div>
   );
@@ -359,59 +394,124 @@ export function NavyMetricStrip({ metrics, locale = "en" }: { metrics: NavyMetri
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabilities: NavyCapability[]; locale?: Locale }) {
+  const isRo = locale === "ro";
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const icons = [Ship, Waves, Shield, Cpu];
 
+  // Map capability accent color to a background image preview
+  const CAPABILITY_BG_MAP: Record<string, string> = {
+    "#d7f2ff": SITE_IMAGES.navy.geraldFord,
+    "#70e0bf": SITE_IMAGES.navy.ohioSubmarine,
+    "#f2d48a": SITE_IMAGES.navy.destroyer,
+    "#ff7a7a": SITE_IMAGES.navy.flightDeck,
+  };
+
   return (
-    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
+    <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16 border-b border-white/5">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(0,42,102,0.15),transparent_45%)] pointer-events-none" />
       <div className="absolute inset-0 navy-grid-plane opacity-20 pointer-events-none" />
       <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
-      <div className="relative mx-auto max-w-[1520px]">
+      <div className="relative mx-auto max-w-[1400px]">
         <SectionTitle
-          label={locale === "ro" ? "ARHITECTURA CAPABILITĂȚILOR" : "CAPABILITY ARCHITECTURE"}
-          titlePart1={locale === "ro" ? "SISTEM" : "INTEGRATED"}
-          titlePart2={locale === "ro" ? "INTEGRAT" : "SYSTEMS"}
-          body={locale === "ro" 
-            ? "Forța Marinei derivă din interoperabilitatea totală a navelor, aeronavelor, submarinelor, senzorilor orbitali și echipajelor înalt calificate." 
+          label={isRo ? "ARHITECTURA CAPABILITĂȚILOR" : "CAPABILITY ARCHITECTURE"}
+          titlePart1={isRo ? "SISTEME" : "INTEGRATED"}
+          titlePart2={isRo ? "INTEGRATE" : "SYSTEMS"}
+          body={isRo 
+            ? "Forța Marinei derivă din interoperabilitatea totală a navelor, aeronavelor, submarinelor, senzorilor orbitali și echipajelor." 
             : "The Navy's power comes from the integration of ships, aircraft, submarines, satellites, software, industrial depth, and crews trained to operate under extreme tempo."}
         />
-        <div className="mt-14 grid grid-cols-1 gap-px bg-white/5 md:grid-cols-2 xl:grid-cols-4">
-          {capabilities.map((capability, index) => {
-            const Icon = icons[index] ?? Ship;
+        
+        <div className="flex flex-col lg:flex-row gap-3 mt-16 lg:h-[480px]">
+          {capabilities.map((cap, i) => {
+            const isHovered = hoveredIdx === i;
+            const isAnyHovered = hoveredIdx !== null;
+            const bgImage = CAPABILITY_BG_MAP[cap.accent];
+            const Icon = icons[i] ?? Ship;
+
             return (
-              <motion.article
-                key={capability.title}
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.55, delay: index * 0.06 }}
-                className="group navy-panel-tactical min-h-[420px] p-8 transition-all duration-300 hover:bg-[#000a14]"
+              <motion.div
+                key={cap.title}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-40px" }}
+                variants={fadeUp}
+                transition={{ duration: 0.7, delay: i * 0.05 }}
+                onMouseEnter={() => setHoveredIdx(i)}
+                onMouseLeave={() => setHoveredIdx(null)}
+                className={cn(
+                  "group relative overflow-hidden navy-panel-tactical p-6 sm:p-8 flex flex-col justify-between transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer select-none min-h-[220px] lg:min-h-0",
+                  isHovered ? "lg:flex-[3.2] bg-white/[0.04] border-white/10" : 
+                  isAnyHovered ? "lg:flex-[0.6] opacity-35 bg-black/40 border-white/[0.02]" : "lg:flex-1 bg-white/[0.02] border-white/[0.04]"
+                )}
               >
-                <div className="flex h-full flex-col">
-                  <div className="flex items-center justify-between">
-                    <div
-                      className="flex h-11 w-11 items-center justify-center border border-white/8 bg-black"
-                      style={{ color: capability.accent }}
-                    >
-                      <Icon size={18} strokeWidth={1.5} />
-                    </div>
-                    <span className="navy-font-mono text-xs uppercase tracking-wider text-white/30">{capability.stat}</span>
+                {/* Background image preview on hover */}
+                {bgImage && (
+                  <div
+                    className="absolute inset-0 pointer-events-none transition-opacity duration-1000"
+                    style={{ opacity: isHovered ? 0.12 : 0.04 }}
+                  >
+                    <Image src={bgImage} alt="" fill className="object-cover saturate-[0.4]" sizes="20vw" />
                   </div>
-                  <div className="mt-10 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">{capability.kicker}</div>
-                  <h3 className="navy-font-display mt-4 text-2xl font-black uppercase leading-none text-white/90">
-                    {capability.title}
+                )}
+
+                {/* Background Accent Glow */}
+                <div 
+                  className={cn(
+                    "absolute top-0 right-0 h-40 w-40 rounded-full blur-[80px] pointer-events-none transition-opacity duration-1000 opacity-0 group-hover:opacity-10",
+                    cap.accent === "#d7f2ff" ? "bg-sky-300" :
+                    cap.accent === "#70e0bf" ? "bg-emerald-400" :
+                    cap.accent === "#f2d48a" ? "bg-amber-400" :
+                    "bg-red-400"
+                  )}
+                />
+
+                {/* Header: Icon + Stat */}
+                <div className="flex items-center justify-between mb-6 lg:mb-0 shrink-0">
+                  <div
+                    className="flex h-11 w-11 items-center justify-center border border-white/8 bg-black transition-colors duration-500 group-hover:border-white/20"
+                    style={{ color: cap.accent }}
+                  >
+                    <Icon size={18} strokeWidth={1.5} />
+                  </div>
+                  <span className="navy-font-mono text-[9px] uppercase tracking-wider text-white/30 transition-colors duration-500 group-hover:text-white/50">
+                    {cap.stat}
+                  </span>
+                </div>
+
+                {/* Middle Content */}
+                <div className="flex-1 flex flex-col justify-center my-4 lg:my-0">
+                  <span className="navy-font-mono text-[9px] tracking-[0.2em] text-white/30 transition-colors duration-500 group-hover:text-white/50 mb-2 block">
+                    {cap.kicker}
+                  </span>
+                  <h3 className={cn(
+                    "navy-font-display font-black text-white leading-[0.92] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                    isHovered ? "text-2xl sm:text-3xl mb-4" : "text-xl sm:text-2xl lg:text-xl xl:text-2xl",
+                    !isHovered && isAnyHovered ? "lg:opacity-60" : ""
+                  )}>
+                    {cap.title}
                   </h3>
-                  <p className="mt-6 text-xs leading-relaxed text-white/50">{capability.description}</p>
-                  <div className="mt-auto pt-10">
-                    <div className="h-px w-full bg-white/5">
-                      <div
-                        className="h-px w-12 transition-all duration-500 group-hover:w-full"
-                        style={{ backgroundColor: capability.accent }}
-                      />
-                    </div>
+                  
+                  {/* Description (collapsible on desktop, static on mobile) */}
+                  <div className={cn(
+                    "transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden",
+                    isHovered ? "opacity-100 max-h-[300px] mb-2" : "lg:opacity-0 lg:max-h-0"
+                  )}>
+                    <p className="leading-[1.8] text-[12px] text-white/40 max-w-md">
+                      {cap.description}
+                    </p>
                   </div>
                 </div>
-              </motion.article>
+
+                {/* Footer Line indicator */}
+                <div className="shrink-0 mt-2 lg:mt-0">
+                  <div className="h-px w-full bg-white/5">
+                    <div
+                      className="h-px w-12 transition-all duration-500 group-hover:w-full"
+                      style={{ backgroundColor: cap.accent }}
+                    />
+                  </div>
+                </div>
+              </motion.div>
             );
           })}
         </div>
@@ -540,22 +640,26 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
                 transition={{ duration: 0.45 }}
                 className="flex h-full flex-col"
               >
-                <div className="flex items-center justify-between gap-4">
-                  <span className="navy-font-mono text-[10px] uppercase tracking-widest text-white/40">
+                <div className="flex items-center justify-between gap-4 mb-5">
+                  <span className="navy-font-mono text-[8px] tracking-[0.2em] text-white/25 uppercase">
                     {locale === "ro" ? "Profilul teatrului" : "Theater profile"}
                   </span>
-                  <span className="h-2 w-2 rounded-full" style={{ backgroundColor: active.accent }} />
+                  <div className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: active.accent }} />
+                    <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: active.accent }} />
+                  </div>
                 </div>
-                <p className="mt-8 text-xs leading-relaxed text-white/60">{active.description}</p>
-                <div className="mt-8 grid gap-px bg-white/5">
+                <h3 className="navy-font-display text-xl font-black text-white mb-4 leading-[0.92]">{active.name}</h3>
+                <p className="text-[13px] leading-[1.85] text-white/40 mb-8">{active.description}</p>
+                <div className="mt-auto space-y-4">
                   {active.metrics.map((metric) => (
-                    <div key={metric.label} className="grid grid-cols-[1fr_auto] items-center gap-5 bg-[#020202] p-4 border border-white/5">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-white/40">{metric.label}</span>
-                      <span className="navy-font-display text-sm font-black uppercase text-white">{metric.value}</span>
+                    <div key={metric.label} className="flex items-center justify-between border-b border-white/[0.03] pb-3 last:border-0 last:pb-0">
+                      <span className="navy-font-mono text-[9px] tracking-[0.12em] text-white/30">{metric.label}</span>
+                      <span className="navy-font-mono text-[10px] tracking-[0.08em] text-white/65">{metric.value}</span>
                     </div>
                   ))}
                 </div>
-                <div className="mt-auto pt-10">
+                <div className="mt-8 pt-6 border-t border-white/[0.04]">
                   <div className="navy-flow-mask grid grid-cols-6 gap-2">
                     {Array.from({ length: 18 }).map((_, index) => (
                       <motion.span
@@ -588,11 +692,14 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
   useEffect(() => {
     if (isDossierOpen) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     }
     return () => {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [isDossierOpen]);
 
@@ -1023,20 +1130,15 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
       <div className="navy-noise absolute inset-0 opacity-35 pointer-events-none" />
       
       <div className="relative mx-auto max-w-[1520px]">
-        {/* Dynamic section title with C2 design label */}
-        <div className="mb-16">
-          <div className="navy-font-mono text-[10px] tracking-[0.3em] text-[#8edcff]/70 uppercase mb-3">
-            {locale === "ro" ? "[ SISTEM DE COMANDĂ ȘI CONTROL C2 ]" : "[ COMMAND & CONTROL ARCHITECTURE ]"}
-          </div>
-          <h2 className="navy-font-display text-4xl font-black uppercase leading-[0.95] md:text-7xl text-white">
-            {locale === "ro" ? "VITEZĂ DECIZIONALĂ" : "DECISION SPEED"}
-          </h2>
-          <p className="mt-6 max-w-3xl text-xs leading-relaxed text-white/50">
-            {locale === "ro"
-              ? "Flota este concepută pentru a detecta prima, a decide mai rapid și a lansa atacuri multi-domeniu sincronizate. Secretul constă în integrarea de rețea, nu într-o armă singulară."
-              : "The fleet is designed to sense first, decide faster, and create effects from multiple domains at once. The real power is the cooperative network integration, not a single weapon."}
-          </p>
-        </div>
+        <SectionTitle
+          label={locale === "ro" ? "SISTEM DE COMANDĂ ȘI CONTROL C2" : "COMMAND & CONTROL ARCHITECTURE"}
+          titlePart1={locale === "ro" ? "VITEZĂ DECIZIONALĂ" : "DECISION SPEED"}
+          titlePart2={locale === "ro" ? "REȚEA DE LUPTĂ INTEGRATĂ" : "INTEGRATED KILL WEB"}
+          body={locale === "ro"
+            ? "Flota este concepută pentru a detecta prima, a decide mai rapid și a lansa atacuri multi-domeniu sincronizate. Secretul constă în integrarea de rețea, nu într-o armă singulară."
+            : "The fleet is designed to sense first, decide faster, and create effects from multiple domains at once. The real power is the cooperative network integration, not a single weapon."}
+          align="left"
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 lg:items-start mt-12">
           {/* Left Column: Cyber-Tactical C2 Command HUD */}
@@ -2237,25 +2339,57 @@ function SectionTitle({
   titlePart1,
   titlePart2,
   body,
+  align = "center",
 }: {
   label: string;
   titlePart1: string;
-  titlePart2: string;
+  titlePart2?: string;
   body: string;
+  align?: "center" | "left";
 }) {
+  const isCenter = align === "center";
   return (
-    <div className="text-center mb-20 max-w-4xl mx-auto flex flex-col items-center">
-      <div className="mil-text-label mb-10 tracking-[0.5em] text-[#8edcff]/85 text-xs sm:text-sm font-bold uppercase">
-        [ {label} ]
-      </div>
-      <h2 className="mil-text-hero mb-6 flex flex-col items-center w-full text-center">
-        <span className="block whitespace-nowrap leading-[0.85] text-4xl sm:text-6xl lg:text-7xl font-black uppercase text-white">{titlePart1}</span>
-        <span className="block whitespace-nowrap text-white/20 leading-[0.85] text-4xl sm:text-6xl lg:text-7xl font-black uppercase">{titlePart2}</span>
-      </h2>
-      <p className="mt-4 max-w-2xl text-center text-xs sm:text-sm leading-relaxed text-white/60 tracking-wide">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-60px" }}
+      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+      className={cn("mb-20 max-w-5xl", isCenter ? "mx-auto text-center" : "text-left")}
+    >
+      <motion.div
+        variants={fadeUp}
+        transition={{ duration: 0.6 }}
+        className="navy-font-mono mb-6 tracking-[0.3em] text-[10px] text-[#8edcff]/80"
+      >
+        {label}
+      </motion.div>
+      <motion.h2
+        variants={fadeUp}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="navy-font-display text-[clamp(36px,7vw,88px)] font-black leading-[0.88] text-white"
+      >
+        {titlePart1}
+      </motion.h2>
+      {titlePart2 && (
+        <motion.div
+          variants={fadeUp}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="navy-font-display text-[clamp(36px,7vw,88px)] font-black leading-[0.88] text-white/15 mt-1"
+        >
+          {titlePart2}
+        </motion.div>
+      )}
+      <motion.p
+        variants={fadeUp}
+        transition={{ duration: 0.6 }}
+        className={cn(
+          "mt-8 text-sm leading-[1.9] text-white/50 tracking-wide",
+          isCenter ? "max-w-2xl mx-auto" : "max-w-xl"
+        )}
+      >
         {body}
-      </p>
-    </div>
+      </motion.p>
+    </motion.div>
   );
 }
 
