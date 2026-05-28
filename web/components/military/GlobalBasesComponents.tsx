@@ -96,13 +96,13 @@ export function GlobalBasesHero({
 
   return (
     <section className="relative min-h-[100svh] overflow-hidden bg-black">
-      <Image
-        src={SITE_IMAGES.homeUsaAtNightFromSpace}
-        alt="Earth at night showing North America and global operating depth"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover opacity-45 grayscale"
+      <video
+        src="/videos/earth-pixels-from-space.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover opacity-55"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/60" />
       <div
