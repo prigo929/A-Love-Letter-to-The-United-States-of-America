@@ -28,7 +28,7 @@ import asset024 from "@/IMAGES/Constitution/the-new-york-public-library-L3D6oyQO
 import asset025 from "@/IMAGES/Constitution/usa-independence-day-composition-with-declaration.jpg";
 import asset026 from "@/IMAGES/Constitution/usa-independence-day-concept-with-declaration-independence.jpg";
 import asset027 from "@/IMAGES/Constitution/virginia-commonwealth-university-libraries-A4GofghogeQ-unsplash.jpg";
-import asset028 from "@/IMAGES/Culture/American Burger.jpg";
+import asset028 from "@/IMAGES/Culture/Food/American Burger.jpg";
 import asset029 from "@/IMAGES/Culture/Cinderella Castle at Disney World Orlando.jpg";
 import asset030 from "@/IMAGES/Culture/Police K9 on top of Police Car.jpg";
 import asset031 from "@/IMAGES/Culture/Statue Of Liberty.jpg";
