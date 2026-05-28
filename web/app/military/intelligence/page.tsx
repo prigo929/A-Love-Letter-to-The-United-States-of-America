@@ -89,6 +89,9 @@ export default async function IntelligencePage() {
       {/* Intelligence disciplines — clean layout with redaction bars */}
       <IntelligenceDisciplines capabilities={capabilities} locale={locale} />
 
+      {/* The Vault — CIA Reading Room */}
+      <TheVault locale={locale} />
+
       {/* Installation list — quiet vertical stack */}
       <InstallationsList nodes={nodes} locale={locale} />
 
@@ -103,9 +106,6 @@ export default async function IntelligencePage() {
 
       {/* Future programs — clean layout */}
       <FuturePrograms programs={futurePrograms} locale={locale} />
-
-      {/* The Vault — CIA Reading Room */}
-      <TheVault locale={locale} />
 
       {/* Closing quote and navigation */}
       <ClosingQuote locale={locale} />
