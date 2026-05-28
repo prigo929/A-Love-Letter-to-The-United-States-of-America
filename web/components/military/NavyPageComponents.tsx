@@ -322,24 +322,43 @@ export function NavyHero({
 
 export function NavyMetricStrip({ metrics, locale = "en" }: { metrics: NavyMetric[]; locale?: Locale }) {
   return (
-    <section className="border-y border-white/5 bg-black">
-      <div className="mx-auto grid max-w-[1520px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        {metrics.map((metric) => (
-          <div key={metric.label} className="flex flex-col px-8 py-12 border-r border-b border-white/5 last:border-r-0">
-            <div className="mil-text-metadata mb-6 tracking-[0.3em] font-black text-white">{metric.label}</div>
-            <div className="flex items-baseline gap-1">
-              <span className="text-[clamp(32px,3.8vw,56px)] sm:text-[clamp(36px,3.8vw,60px)] lg:text-[clamp(40px,3.8vw,64px)] font-extralight tracking-tighter leading-none text-white">
-                <NavyCountUp value={metric.value} />
-              </span>
+    <section className="relative overflow-hidden bg-black">
+      <div className="mx-auto max-w-[1440px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-t border-white/5">
+          {metrics.map((metric, i) => (
+            <div key={metric.label} className="border-r border-b border-white/5">
+              <motion.div
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 1.2, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col px-8 py-12"
+              >
+                {/* Label — top */}
+                <div className="mil-text-metadata mb-6 tracking-[0.3em] font-black text-white">
+                  {metric.label}
+                </div>
+
+                {/* Large number */}
+                <div className="flex items-baseline gap-1">
+                  <span className="text-[clamp(48px,7vw,96px)] font-extralight tracking-tighter leading-none text-white">
+                    <NavyCountUp value={metric.value} />
+                  </span>
+                </div>
+
+                {/* Gradient divider */}
+                <div className="mt-6 mb-4 h-px w-full" style={{
+                  background: "linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0.05), transparent)"
+                }} />
+
+                {/* Sublabel */}
+                <div className="mil-text-metadata max-w-[280px] leading-relaxed opacity-60 text-[11px] font-medium tracking-wide text-white/70">
+                  {metric.detail}
+                </div>
+              </motion.div>
             </div>
-            <div className="mt-6 mb-4 h-px w-full" style={{
-              background: 'linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0.05), transparent)'
-            }} />
-            <div className="mil-text-metadata max-w-[280px] leading-relaxed opacity-60 text-[11px] font-medium tracking-wide text-white/70">
-              {metric.detail}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -548,7 +567,6 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.1),#000000_94%)]" />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,#000000_0%,transparent_28%,transparent_70%,#000000_100%)]" />
             <div className="absolute inset-0 navy-depth-ring opacity-35" />
-            <FleetMesh accent="#8edcff" />
 
             <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-9">
               <AnimatePresence mode="wait">
@@ -1978,73 +1996,6 @@ export function NavyClosing({ locale = "en" }: { locale?: Locale }) {
 // ─────────────────────────────────────────────────────────────────────────────
 // 11. Sub-components (Radar mesh, section headers)
 // ─────────────────────────────────────────────────────────────────────────────
-
-function FleetMesh({ accent }: { accent: string }) {
-  const nodes = [
-    { x: 18, y: 62, label: "SSN" },
-    { x: 34, y: 34, label: "CVN" },
-    { x: 52, y: 54, label: "DDG" },
-    { x: 66, y: 28, label: "E-2D" },
-    { x: 82, y: 66, label: "F-35C" },
-  ];
-
-  return (
-    <svg
-      className="absolute inset-0 z-[5] h-full w-full opacity-80"
-      viewBox="0 0 100 100"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-    >
-      <defs>
-        <linearGradient id="fleet-mesh-line" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stopColor={accent} stopOpacity="0.08" />
-          <stop offset="50%" stopColor="#ffffff" stopOpacity="0.38" />
-          <stop offset="100%" stopColor={accent} stopOpacity="0.08" />
-        </linearGradient>
-      </defs>
-      {[
-        "M18 62 C32 42 40 38 52 54 S70 44 82 66",
-        "M34 34 C46 26 54 26 66 28",
-        "M18 62 C28 70 42 72 52 54",
-        "M66 28 C74 38 78 50 82 66",
-      ].map((d, index) => (
-        <motion.path
-          key={d}
-          d={d}
-          fill="none"
-          stroke="url(#fleet-mesh-line)"
-          strokeWidth="0.18"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 1 }}
-          transition={{ duration: 1.1, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-        />
-      ))}
-      {nodes.map((node, index) => (
-        <g key={node.label}>
-          <motion.circle
-            cx={node.x}
-            cy={node.y}
-            r="0.8"
-            fill={accent}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.35, delay: 0.35 + index * 0.08 }}
-            vectorEffect="non-scaling-stroke"
-          />
-          <text
-            x={node.x + 1.7}
-            y={node.y - 1.4}
-            fill="rgba(255,255,255,0.4)"
-            fontSize="1.9"
-            fontFamily="monospace"
-          >
-            {node.label}
-          </text>
-        </g>
-      ))}
-    </svg>
-  );
-}
 
 export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
   const weapons = getNavyWeapons(locale);

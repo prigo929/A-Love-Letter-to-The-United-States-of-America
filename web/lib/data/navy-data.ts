@@ -111,6 +111,16 @@ export const NAVY_SECONDARY_METRICS: NavyMetric[] = [
     label: "Naval Aircraft",
     detail: "The carrier-capable aircraft fleet ready to project power globally at cyclic operational tempo.",
   },
+  {
+    value: "11",
+    label: "Nuclear Carriers",
+    detail: "The only nation operating nuclear-powered supercarriers at this global scale.",
+  },
+  {
+    value: "290+",
+    label: "Battle Force Ships",
+    detail: "A global battle force built for power projection, sea control, and forward deterrence.",
+  },
 ];
 
 export const NAVY_CAPABILITIES: NavyCapability[] = [
@@ -519,6 +529,16 @@ export function getNavySecondaryMetrics(locale: Locale): NavyMetric[] {
       value: "3.700+",
       label: "Aeronave Navale",
       detail: "Flota aeriană navală ambarcată, capabilă să proiecteze forță la nivel global.",
+    },
+    {
+      value: "11",
+      label: "Portavioane Nucleare",
+      detail: "Singura națiune ce operează o flotă de superportavioane nucleare la scară globală.",
+    },
+    {
+      value: "290+",
+      label: "Nave active de luptă",
+      detail: "O forță de luptă globală construită pentru control maritim și descurajare avansată.",
     },
   ];
 }
