@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
+import { GlobalBasesClosing } from "@/components/military/GlobalBasesComponents";
 
 export const metadata: Metadata = {
   title: "Global Bases | Military",
@@ -48,6 +49,8 @@ export default async function GlobalBasesPage() {
           </div>
         </div>
       </section>
+
+      <GlobalBasesClosing locale={locale} />
     </main>
   );
 }

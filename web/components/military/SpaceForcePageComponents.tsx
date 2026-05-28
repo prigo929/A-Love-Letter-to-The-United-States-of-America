@@ -1245,26 +1245,18 @@ export function SpaceForceClosing({ locale = "en" }: { locale?: Locale }) {
     {
       href: "/military/navy",
       label: isRo ? "Marina" : "Navy",
-      desc: isRo ? "Dominanță maritimă și proiectare de forță navală" : "Maritime dominance and carrier strike groups",
-      icon: Anchor,
     },
     {
-      href: "/military/space-force",
-      label: isRo ? "Forțele Spațiale" : "Space Force",
-      desc: isRo ? "Apărare orbitală și constelații de sateliți" : "Orbital defense and satellite constellations",
-      icon: Satellite,
+      href: "/military/air-force",
+      label: isRo ? "Forțele Aeriene" : "Air Force",
     },
     {
       href: "/military/global-bases",
       label: isRo ? "Baze Globale" : "Global Bases",
-      desc: isRo ? "Infrastructură militară și logistică" : "Global footprint and logistics network",
-      icon: Network,
     },
     {
       href: "/military/intelligence",
       label: isRo ? "Informații" : "Intelligence",
-      desc: isRo ? "SIGINT, HUMINT și securitate cibernetică" : "SIGINT, HUMINT, and cyber capabilities",
-      icon: Shield,
     },
   ];
 
@@ -1318,30 +1310,19 @@ export function SpaceForceClosing({ locale = "en" }: { locale?: Locale }) {
 
         {/* Cross-links */}
         <div className="mt-24 pt-16 border-t border-white/[0.04]">
-          <div className="sf-font-mono text-[9px] tracking-[0.3em] text-white/20 mb-10">
-            {isRo ? "Explorați alte dimensiuni militare" : "Explore other military dimensions"}
+          <div className="sf-font-mono text-[10px] uppercase tracking-[0.25em] text-white/35 mb-8">
+            {isRo ? "ALTE DIMENSIUNI MILITARE" : "OTHER MILITARY DIMENSIONS"}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-left">
-            {branches.map((b) => {
-              const Icon = b.icon;
-              return (
-                <Link
-                  key={b.href}
-                  href={b.href}
-                  className="group sf-panel p-6 hover:bg-white/[0.03] transition-colors duration-400 rounded-sm"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <Icon size={14} strokeWidth={1.5} className="text-white/20 group-hover:text-white/50 transition-colors" />
-                    <span className="sf-font-display text-sm font-bold text-white/60 group-hover:text-white transition-colors">
-                      {b.label}
-                    </span>
-                  </div>
-                  <p className="text-[11px] leading-[1.7] text-white/25 group-hover:text-white/40 transition-colors">
-                    {b.desc}
-                  </p>
-                </Link>
-              );
-            })}
+          <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+            {branches.map((b) => (
+              <Link
+                key={b.href}
+                href={b.href}
+                className="sf-font-mono text-xs uppercase tracking-[0.15em] text-white/50 transition-colors hover:text-[#3ddbd9]"
+              >
+                {b.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

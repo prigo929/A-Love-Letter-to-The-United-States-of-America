@@ -1989,26 +1989,18 @@ export function NavyClosing({ locale = "en" }: { locale?: Locale }) {
     {
       href: "/military/air-force",
       label: isRo ? "Forțele Aeriene" : "Air Force",
-      desc: isRo ? "Supremație aeriană și rază globală" : "Air supremacy and global strike capability",
-      icon: Plane,
     },
     {
       href: "/military/space-force",
       label: isRo ? "Forțele Spațiale" : "Space Force",
-      desc: isRo ? "Apărare orbitală și constelații" : "Orbital defense and satellite constellations",
-      icon: Satellite,
     },
     {
       href: "/military/global-bases",
       label: isRo ? "Baze Globale" : "Global Bases",
-      desc: isRo ? "Infrastructură și logistică avansată" : "Global footprint and logistics network",
-      icon: Network,
     },
     {
       href: "/military/intelligence",
-      label: isRo ? "Informații Militare" : "Intelligence",
-      desc: isRo ? "SIGINT, HUMINT și securitate cibernetică" : "SIGINT, HUMINT, and cyber capabilities",
-      icon: Shield,
+      label: isRo ? "Informații" : "Intelligence",
     },
   ];
 
@@ -2040,35 +2032,21 @@ export function NavyClosing({ locale = "en" }: { locale?: Locale }) {
           </Link>
         </div>
 
-        {/* Cross-links grid */}
+        {/* Cross-links */}
         <div className="mt-20 border-t border-white/5 pt-16">
           <div className="text-[10px] font-mono uppercase tracking-[0.25em] text-white/35 mb-8">
-            {locale === "ro" ? "Explorați alte ramuri militare" : "Explore other military dimensions"}
+            {locale === "ro" ? "ALTE DIMENSIUNI MILITARE" : "OTHER MILITARY DIMENSIONS"}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
-            {branches.map((b) => {
-              const Icon = b.icon;
-              return (
-                <Link
-                  key={b.href}
-                  href={b.href}
-                  className="group relative block border border-white/5 bg-[#020202] p-5 hover:bg-[#000a14] hover:border-white/10 transition-all duration-300"
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="flex h-8 w-8 items-center justify-center border border-white/8 bg-black text-[#8edcff]/70 group-hover:text-white transition-colors">
-                      <Icon size={14} strokeWidth={1.5} />
-                    </div>
-                    <span className="navy-font-display text-sm font-bold uppercase text-white group-hover:text-[#8edcff] transition-colors">
-                      {b.label}
-                    </span>
-                  </div>
-                  <p className="text-[10px] leading-relaxed text-white/40 group-hover:text-white/60 transition-colors">
-                    {b.desc}
-                  </p>
-                  <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-[#8edcff]/50 transition-all duration-500 group-hover:w-full" />
-                </Link>
-              );
-            })}
+          <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+            {branches.map((b) => (
+              <Link
+                key={b.href}
+                href={b.href}
+                className="font-mono text-xs uppercase tracking-[0.15em] text-white/50 transition-colors hover:text-[#8edcff]"
+              >
+                {b.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
