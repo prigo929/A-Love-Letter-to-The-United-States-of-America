@@ -1163,7 +1163,7 @@ export function VideoMilitaryHero({
             muted
             playsInline
             preload="auto"
-            className="absolute inset-0 h-full w-full object-[center_40%] object-cover brightness-[0.38] saturate-[0.75] scale-[1.15] md:scale-100 md:object-cover"
+            className="absolute inset-0 h-full w-full object-[center_40%] object-cover brightness-[0.48] saturate-[0.75] scale-[1.15] md:scale-100 md:object-cover"
           >
             <source src={videoSrc} type="video/mp4" />
           </video>
