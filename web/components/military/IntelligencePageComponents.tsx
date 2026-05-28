@@ -1205,13 +1205,13 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
         <div className="mb-16 lg:mb-24 text-center">
           <div
             className="intel-bureaucratic mb-8"
-            style={{ fontSize: "9px", letterSpacing: "0.35em", color: INTEL.greenText }}
+            style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: INTEL.greenText }}
           >
             {isRo ? "ALIANȚĂ DE INFORMAȚII // TRATATUL UKUSA" : "INTELLIGENCE ALLIANCE // UKUSA TREATY"}
           </div>
           <div
             className="intel-editorial mx-auto"
-            style={{ fontSize: "clamp(22px, 3.5vw, 38px)", lineHeight: 1.3, maxWidth: "600px" }}
+            style={{ fontSize: "clamp(28px, 5vw, 56px)", lineHeight: 1.2, maxWidth: "700px" }}
           >
             {isRo
               ? "Cei cinci ochi care văd totul."
@@ -1295,8 +1295,8 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
         </div>
 
         {/* Brief paragraph about the alliance */}
-        <div className="mt-16 text-center max-w-2xl mx-auto">
-          <p className="intel-body" style={{ fontSize: "11px", lineHeight: 2.2 }}>
+        <div className="mt-16 text-center max-w-3xl mx-auto">
+          <p className="intel-body" style={{ lineHeight: 2 }}>
             {isRo
               ? "Alianța Five Eyes — compusă din Statele Unite, Regatul Unit, Australia, Canada și Noua Zeelandă — constituie cel mai extins și profund parteneriat de schimb de informații din istorie. Originile sale datează din Al Doilea Război Mondial, iar structura sa actuală rămâne în mare parte clasificată."
               : "The Five Eyes alliance — comprising the United States, United Kingdom, Australia, Canada, and New Zealand — constitutes the most extensive and deeply integrated intelligence-sharing partnership in history. Its origins trace to World War II, and its current operational structure remains largely classified."}
