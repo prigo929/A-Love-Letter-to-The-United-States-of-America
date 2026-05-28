@@ -87,6 +87,12 @@ import socomOperators from "@/IMAGES/Military/SOCOM/us-army-socom-operators.jpg"
 import tacticalWorldMap from "@/IMAGES/Military/tactical-world-map.svg";
 import coastGuardHero from "@/IMAGES/Military/Coast Guard/US Coast Guard.jpg";
 
+// New user-added high-fidelity Navy images
+import fa18SuperHornet from "@/IMAGES/Military/Navy/FA-18 Super Hornet.jpg";
+import arleighBurkeJackHLucas from "@/IMAGES/Military/Navy/arleigh_burke_flight_iii_uss_jack_h_lucas.jpeg";
+import ohioKentuckySubmarine from "@/IMAGES/Military/Navy/hio_class_ssbn_uss_kentucky.jpg";
+import geraldFordCvn from "@/IMAGES/Military/Navy/uss_gerald_r_ford_ford_class_cvn.jpg";
+
 // Air Force Timeline Images
 import wrightBrothersFirstFlight from "@/IMAGES/Military/Air Force/Wright Brothers First Flight at Kitty Hawk.jpg";
 import bellX1Flight from "@/IMAGES/Military/Air Force/Bell X-1 in flight.jpg";
@@ -164,8 +170,8 @@ export const SITE_IMAGES = {
   f22Raptor: f22Raptor.src,
   autonomousDrone: autonomousDrone.src,
   aircraftCarrierFlightDeck: aircraftCarrierFlightDeck.src,
-  fa18Landing: fa18Landing.src,
-  ticonderogaCruiser: ticonderogaCruiser.src,
+  fa18Landing: fa18SuperHornet.src,
+  ticonderogaCruiser: arleighBurkeJackHLucas.src,
   spaceForceLaunch: spaceForceLaunch.src,
   ac130Ghostrider: ac130Ghostrider.src,
   f22Formation: f22Formation.src,
@@ -174,8 +180,8 @@ export const SITE_IMAGES = {
   soldierCloseUp: soldierCloseUp.src,
   soldierSaluting: soldierSaluting.src,
   f35Lightning: f35Lightning.src,
-  geraldFordCarrier: geraldFordCarrier.src,
-  ohioSubmarine: ohioSubmarine.src,
+  geraldFordCarrier: geraldFordCvn.src,
+  ohioSubmarine: ohioKentuckySubmarine.src,
   minutemanLaunch: minutemanLaunch.src,
   cyberOps: cyberOps.src,
   marinesAssault: marinesAssault.src,
@@ -185,19 +191,19 @@ export const SITE_IMAGES = {
   // Military Nested (for specific page structures)
   military: {
     hero: b2Hero.src,
-    carrier: geraldFordCarrier.src,
+    carrier: geraldFordCvn.src,
     carrierLogo: carrierStrikeGroupLogo.src,
     b2: b2Hero.src,
     satellite: globalLeadership.src,
     tacticalMap: tacticalWorldMap.src,
   },
   navy: {
-    hero: geraldFordCarrier.src,
+    hero: geraldFordCvn.src,
     flightDeck: aircraftCarrierFlightDeck.src,
-    geraldFord: geraldFordCarrier.src,
-    destroyer: ticonderogaCruiser.src,
-    fa18Landing: fa18Landing.src,
-    ohioSubmarine: ohioSubmarine.src,
+    geraldFord: geraldFordCvn.src,
+    destroyer: arleighBurkeJackHLucas.src,
+    fa18Landing: fa18SuperHornet.src,
+    ohioSubmarine: ohioKentuckySubmarine.src,
     dualCarrier: navyHero.src,
     carrierFormation: carrierStrikeGroupFormation.src,
     heritageColumbus: navyHeritageColumbus.src,

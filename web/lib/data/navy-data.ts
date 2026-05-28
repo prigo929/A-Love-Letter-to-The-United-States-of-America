@@ -179,7 +179,7 @@ export const NAVY_PLATFORMS: NavyPlatform[] = [
     className: "Fleet ballistic missile submarine",
     role: "Strategic deterrence",
     imageSrc: SITE_IMAGES.navy.ohioSubmarine,
-    imageAlt: "Ohio-class ballistic missile submarine at sea",
+    imageAlt: "USS Kentucky Ohio-class ballistic missile submarine at sea",
     capability:
       "The quietest and most survivable part of the nuclear triad, designed to disappear into the ocean and remain politically decisive.",
     specs: [
@@ -194,7 +194,7 @@ export const NAVY_PLATFORMS: NavyPlatform[] = [
     className: "Guided-missile destroyer",
     role: "Air and missile defense",
     imageSrc: SITE_IMAGES.navy.destroyer,
-    imageAlt: "U.S. Navy guided-missile cruiser in San Diego",
+    imageAlt: "USS Jack H. Lucas Flight III guided-missile destroyer underway at sea",
     capability:
       "The backbone of surface combat: vertical launch cells, ballistic missile defense, anti-submarine warfare, strike, and escort missions.",
     specs: [
@@ -209,7 +209,7 @@ export const NAVY_PLATFORMS: NavyPlatform[] = [
     className: "Carrier strike fighter",
     role: "Naval aviation",
     imageSrc: SITE_IMAGES.navy.fa18Landing,
-    imageAlt: "F/A-18F Super Hornet landing on an aircraft carrier",
+    imageAlt: "F/A-18F Super Hornet flight demonstration",
     capability:
       "A combat-proven naval fighter built for carrier launch, precision strike, fleet defense, and high-tempo operations at sea.",
     specs: [
