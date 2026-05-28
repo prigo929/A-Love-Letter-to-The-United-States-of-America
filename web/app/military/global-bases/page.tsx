@@ -1,55 +1,51 @@
 import type { Metadata } from "next";
-import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
-import { GlobalBasesClosing } from "@/components/military/GlobalBasesComponents";
+import { MilStyles } from "@/components/military/MilitaryAnimations";
+import {
+  AllianceArchitectureSection,
+  BaseDossierSection,
+  GlobalBasesClosing,
+  GlobalBasesHero,
+  GlobalCommandMap,
+  LogisticsBackboneSection,
+  RegionalTheaterGrid,
+  StrategicThesis,
+} from "@/components/military/GlobalBasesComponents";
+import {
+  allianceArchitecture,
+  globalBaseStats,
+  logisticsBackbone,
+  regionBriefs,
+  strategicBases,
+  theaterCards,
+} from "@/lib/data/global-bases-data";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Global Bases | Military",
-  description: "An empty layout scaffold for the Global Bases page.",
+  description:
+    "A strategic briefing on the United States global base network: forward posture, logistics, alliances, TRANSCOM, and rapid-response power projection.",
+  openGraph: {
+    title: "Global Bases | Military",
+    description:
+      "The U.S. global base network as a logistics, deterrence, and alliance architecture.",
+    images: [{ url: SITE_IMAGES.homeUsaAtNightFromSpace, width: 1200, height: 630 }],
+  },
 };
 
 export default async function GlobalBasesPage() {
   const locale = await getServerLocale();
-  const breadcrumbParent = locale === "ro" ? "Armată" : "Military";
-  const breadcrumbPage = locale === "ro" ? "Baze Globale" : "Global Bases";
 
   return (
-    <main className="min-h-screen bg-navy-dark pt-24 text-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Breadcrumb
-          items={[
-            { label: breadcrumbParent, href: "/military" },
-            { label: breadcrumbPage },
-          ]}
-          className="mb-8"
-        />
-      </div>
-
-      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto min-h-[65dvh] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
-          {/* TODO: Drop in global bases map/visual asset here */}
-        </div>
-      </section>
-
-      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
-          {/* TODO: Drop in thesis statement on global footprint and alliance commitments here */}
-        </div>
-      </section>
-
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid auto-rows-[minmax(180px,1fr)] gap-6 md:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6">
-              {/* TODO: Create empty cards. Drop in content for Europe, Indo-Pacific, Middle East, and Logistics here */}
-            </div>
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-          </div>
-        </div>
-      </section>
-
+    <main className="min-h-screen overflow-hidden bg-black text-white">
+      <MilStyles />
+      <GlobalBasesHero stats={globalBaseStats} locale={locale} />
+      <StrategicThesis locale={locale} />
+      <GlobalCommandMap bases={strategicBases} regions={regionBriefs} locale={locale} />
+      <RegionalTheaterGrid theaters={theaterCards} locale={locale} />
+      <BaseDossierSection bases={strategicBases} locale={locale} />
+      <LogisticsBackboneSection nodes={logisticsBackbone} locale={locale} />
+      <AllianceArchitectureSection alliances={allianceArchitecture} locale={locale} />
       <GlobalBasesClosing locale={locale} />
     </main>
   );

@@ -1252,8 +1252,8 @@ function parseRedactions(text: string, isDeclassified: boolean) {
           className={cn(
             "transition-all duration-700 ease-in-out font-mono font-bold mx-0.5 px-1.5 rounded-sm",
             isDeclassified
-              ? "bg-[#1C3A1C]/15 text-[#113f11] border border-[#3A5A3A]/30 select-text"
-              : "bg-black text-transparent select-none border border-transparent pointer-events-none"
+              ? "bg-zinc-200 text-zinc-950 select-text"
+              : "bg-zinc-950 text-transparent select-none pointer-events-none"
           )}
         >
           {innerText}
@@ -1337,7 +1337,7 @@ export function TheVault({ locale = "en" }: { locale?: Locale }) {
         <div className="mb-20 lg:mb-28 text-left">
           <div
             className="intel-bureaucratic mb-8"
-            style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: INTEL.greenText }}
+            style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: "#a1a1aa" }}
           >
             {isRo ? "CAMERA DE LECTURĂ ELECTRONICĂ" : "ELECTRONIC READING ROOM"}
           </div>
@@ -1349,19 +1349,19 @@ export function TheVault({ locale = "en" }: { locale?: Locale }) {
           </div>
           <p className="intel-body mt-6 max-w-3xl leading-relaxed">
             {isRo
-              ? "Explorați o selecție simulată de documente CIA declasificate prin proceduri FOIA. Utilizați sistemul de criptanaliză pentru a îndepărta marcajele de securitate din text."
-              : "Explore a curated simulation of declassified CIA records released under the Freedom of Information Act. Use the decryption interface to scrub security redactions."}
+              ? "Explorați o selecție simulată de documente CIA declasificate prin proceduri FOIA. Utilizați controlul de declasificare pentru a examina marcajele de securitate din text."
+              : "Explore a curated simulation of declassified CIA records released under the Freedom of Information Act. Use the declassification control to review security redactions in the record."}
           </p>
         </div>
 
         {/* Vault Explorer Workspace */}
-        <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 border border-rgba(232, 226, 213, 0.08) bg-[#020202] rounded-sm overflow-hidden min-h-[1020px] text-left">
+        <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-0 bg-black overflow-hidden min-h-[1020px] text-left">
           
           {/* Left Panel: Folders & Document Listing */}
-          <div className="border-r border-rgba(232, 226, 213, 0.08) flex flex-col bg-[#040404]">
+          <div className="border-r border-zinc-800/40 flex flex-col bg-black">
             {/* Folders List */}
-            <div className="p-4 border-b border-rgba(232, 226, 213, 0.08) space-y-2">
-              <span className="intel-bureaucratic text-[9px] text-emerald-800/60 block mb-2 tracking-widest">
+            <div className="p-4 border-b border-zinc-900 space-y-2">
+              <span className="intel-bureaucratic text-[9px] text-zinc-500 block mb-2 tracking-widest">
                 {isRo ? "CATEGORII ARHIVĂ" : "ARCHIVE CATEGORIES"}
               </span>
               <div className="flex flex-wrap lg:flex-col gap-1">
@@ -1372,11 +1372,11 @@ export function TheVault({ locale = "en" }: { locale?: Locale }) {
                     className={cn(
                       "w-full text-left font-mono text-[11px] px-3 py-2 transition-colors rounded-sm tracking-wider uppercase",
                       activeFolderId === folder.id
-                        ? "bg-[#1C3A1C]/20 text-[#E8E2D5] border border-[#3A5A3A]/40 font-bold"
-                        : "text-rgba(232, 226, 213, 0.4) hover:text-[#E8E2D5] hover:bg-[#070707]"
+                        ? "bg-zinc-900 text-white font-semibold"
+                        : "text-zinc-500 hover:text-zinc-200 hover:bg-zinc-950"
                     )}
                   >
-                    📂 {folder.name}
+                    {folder.name}
                   </button>
                 ))}
               </div>
@@ -1384,7 +1384,7 @@ export function TheVault({ locale = "en" }: { locale?: Locale }) {
 
             {/* Documents in Active Folder */}
             <div className="p-4 flex-1 space-y-2 overflow-y-auto">
-              <span className="intel-bureaucratic text-[9px] text-emerald-800/60 block mb-2 tracking-widest">
+              <span className="intel-bureaucratic text-[9px] text-zinc-500 block mb-2 tracking-widest">
                 {isRo ? "DOSARE DISPONIBILE" : "AVAILABLE DOCUMENTS"}
               </span>
               <div className="space-y-1">
@@ -1393,14 +1393,14 @@ export function TheVault({ locale = "en" }: { locale?: Locale }) {
                     key={doc.id}
                     onClick={() => handleDocChange(doc.id)}
                     className={cn(
-                      "w-full text-left font-mono text-xs px-3 py-2.5 transition-colors rounded-sm flex flex-col border",
+                      "w-full text-left font-mono text-xs px-3 py-2.5 transition-colors rounded-sm flex flex-col",
                       activeDocId === doc.id
-                        ? "border-emerald-800/40 bg-[#070707] text-[#E8E2D5]"
-                        : "border-transparent text-rgba(232, 226, 213, 0.5) hover:bg-[#070707]/50"
+                        ? "bg-zinc-900 text-white"
+                        : "text-zinc-500 hover:bg-zinc-950 hover:text-zinc-300"
                     )}
                   >
                     <span className="font-semibold truncate">{doc.title}</span>
-                    <span className="text-[9px] text-emerald-800/60 mt-1">{doc.refNo}</span>
+                    <span className="text-[9px] text-zinc-500 mt-1">{doc.refNo}</span>
                   </button>
                 ))}
               </div>
@@ -1408,14 +1408,14 @@ export function TheVault({ locale = "en" }: { locale?: Locale }) {
           </div>
 
           {/* Right Panel: Document Viewer Desk Area */}
-          <div className="flex flex-col bg-[#050505] min-h-[1020px]">
-            {/* Terminal Controls Header */}
-            <div className="p-4 sm:px-6 bg-[#090909] border-b border-rgba(232, 226, 213, 0.08) flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-col bg-black min-h-[1020px]">
+            {/* Document Controls Header */}
+            <div className="p-4 sm:px-6 bg-black border-b border-zinc-900 flex flex-wrap items-center justify-between gap-4">
               <div>
-                <span className="font-mono text-[10px] text-emerald-500 font-bold tracking-widest border border-emerald-500/30 px-2 py-0.5 rounded-sm bg-[#1C3A1C]/10 inline-block uppercase">
+                <span className="font-mono text-[10px] text-zinc-100 font-semibold tracking-widest px-0 py-0.5 inline-block uppercase">
                   {activeDoc.classification}
                 </span>
-                <span className="font-mono text-[9px] text-rgba(232, 226, 213, 0.3) ml-3 tracking-wider">
+                <span className="font-mono text-[9px] text-zinc-500 ml-3 tracking-wider">
                   {activeDoc.refNo}
                 </span>
               </div>
@@ -1425,38 +1425,34 @@ export function TheVault({ locale = "en" }: { locale?: Locale }) {
                 onClick={triggerDeclassification}
                 disabled={isDecrypting}
                 className={cn(
-                  "font-mono text-[11px] px-4 py-2 border transition-colors rounded-sm uppercase tracking-wider",
+                  "font-mono text-[11px] px-4 py-2 border border-zinc-800 bg-zinc-900 text-zinc-300 transition-colors rounded-sm uppercase tracking-wider hover:bg-zinc-800 hover:text-white disabled:cursor-wait disabled:opacity-70",
                   isDeclassified
-                    ? "bg-[#2d1212]/30 text-red-400 border-red-950/40 hover:bg-[#2d1212]/50"
-                    : "bg-[#1C3A1C]/30 text-emerald-400 border-emerald-950/40 hover:bg-[#1C3A1C]/50"
+                    ? "text-zinc-100"
+                    : "text-zinc-300"
                 )}
               >
                 {isDecrypting ? (
-                  <span>{isRo ? "DECRIPTARE INIȚIATĂ..." : "DECRYPTING LOG..."} [{Math.min(decryptProgress, 100)}%]</span>
+                  <span>{isRo ? "PROCESARE CERERE" : "PROCESSING REQUEST"} [{Math.min(decryptProgress, 100)}%]</span>
                 ) : isDeclassified ? (
-                  <span>🔒 {isRo ? "RE-CLASIFICĂ DOSARUL" : "RE-CLASSIFY RECORD"}</span>
+                  <span>{isRo ? "RE-CLASIFICĂ DOSARUL" : "RE-CLASSIFY RECORD"}</span>
                 ) : (
-                  <span>🔓 {isRo ? "SOLICITĂ DECLASIFICAREA" : "REQUEST DECLASSIFICATION"}</span>
+                  <span>{isRo ? "SOLICITĂ DECLASIFICAREA" : "REQUEST DECLASSIFICATION"}</span>
                 )}
               </button>
             </div>
 
             {/* Desk Surface with the Paper Memo Document */}
-            <div className="flex-1 p-6 sm:p-10 bg-[#070707] flex items-center justify-center relative overflow-hidden">
+            <div className="flex-1 p-6 sm:p-10 bg-black flex items-center justify-center relative overflow-hidden">
               {/* Lamp Light Overlay */}
-              <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(232,226,213,0.03)_0%,transparent_80%)]" />
+              <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.025)_0%,transparent_76%)]" />
 
               {/* Document Stack Container */}
               <div className="relative w-full max-w-2xl mx-auto my-4 z-10">
-                {/* Visual stacked sheet layers */}
-                <div className="absolute -inset-1.5 bg-[#DFDAD1] border border-[#C2BCB2] translate-x-2 translate-y-2 rounded-sm opacity-90 shadow-md" />
-                <div className="absolute -inset-0.5 bg-[#EAE5DC] border border-[#CDC7BB] translate-x-0.5 translate-y-0.5 rounded-sm opacity-95 shadow-sm" />
-
                 {/* Main Paper Sheet */}
-                <div className="relative bg-[#FAF8F4] border border-[#DCD6CA] text-[#1E1D1B] p-8 sm:p-12 min-h-[920px] shadow-2xl flex flex-col justify-between rounded-sm">
+                <div className="relative bg-[#f7f5f0] text-[#1E1D1B] p-8 sm:p-12 min-h-[920px] shadow-2xl shadow-black/40 flex flex-col justify-between rounded-sm">
 
                   {/* Distressed Stamp Overlays */}
-                  <div className="absolute top-8 right-8 pointer-events-none select-none z-20 opacity-85">
+                  <div className="absolute top-8 right-8 pointer-events-none select-none z-20 opacity-70">
                     {isDeclassified ? (
                       <div className="border-2 border-dashed border-red-600/80 text-red-600/80 text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-sm transform rotate-6 tracking-widest font-mono">
                         {isRo ? "DECLASIFICAT // E.O. 13526" : "DECLASSIFIED // E.O. 13526"}

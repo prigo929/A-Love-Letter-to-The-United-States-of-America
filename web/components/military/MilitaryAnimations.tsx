@@ -1000,10 +1000,9 @@ export function ParallaxMilitaryHero({
         >
           {videoSrc ? (
             <video
-              autoPlay
-              loop
               muted
               playsInline
+              preload="metadata"
               className="absolute inset-0 h-full w-full object-cover"
             >
               <source src={videoSrc} type="video/mp4" />
@@ -1103,7 +1102,7 @@ export function ParallaxMilitaryHero({
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function VideoMilitaryHero({
-  videoSrc, posterSrc, title, subtitle, tagline, stats
+  videoSrc, title, subtitle, tagline, stats
 }: {
   videoSrc: string;
   posterSrc?: string;
@@ -1133,11 +1132,9 @@ export function VideoMilitaryHero({
           style={{ opacity: videoOpacity, scale: videoScale, y: videoY }}
         >
           <video
-            autoPlay
-            loop
             muted
             playsInline
-            poster={posterSrc}
+            preload="metadata"
             className="absolute inset-0 h-full w-full object-[center_40%] object-cover brightness-[0.38] saturate-[0.75] scale-[1.15] md:scale-100 md:object-cover"
           >
             <source src={videoSrc} type="video/mp4" />
