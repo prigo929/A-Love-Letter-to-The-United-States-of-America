@@ -953,7 +953,7 @@ export function GlobalCarrierMap({ positions, locale = 'en' }: { positions: Carr
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ParallaxMilitaryHero({
-  imageSrc, imageAlt, videoSrc, title, subtitle, tagline, stats
+  imageSrc, imageAlt, videoSrc, title, subtitle, tagline, stats, heightClass = "h-[180dvh]"
 }: { 
   imageSrc: string; 
   imageAlt: string; 
@@ -962,6 +962,7 @@ export function ParallaxMilitaryHero({
   subtitle?: string;
   tagline?: string;
   stats?: { value: string; label: string }[];
+  heightClass?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -984,7 +985,7 @@ export function ParallaxMilitaryHero({
   const textY = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
 
   return (
-    <div ref={ref} className="relative h-[180dvh] bg-black">
+    <div ref={ref} className={cn("relative bg-black", heightClass)}>
       {/* Sticky container */}
       <div className="sticky top-0 h-screen w-full overflow-hidden mil-noise">
         {/* Background media with 3-stage reveal */}

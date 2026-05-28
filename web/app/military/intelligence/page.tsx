@@ -76,6 +76,7 @@ export default async function IntelligencePage() {
         subtitle={isRo ? "SISTEMUL DE INFORMAȚII ȘI SECURITATE CIBERNETICĂ AL STATELOR UNITE" : "UNITED STATES INTELLIGENCE & CYBER SECURITY COMPLEX"}
         tagline={isRo ? "HUMINT · SIGINT · GEOINT · RAZBOI CIBERNETIC" : "HUMINT · SIGINT · GEOINT · CYBER WARFARE"}
         stats={heroStats}
+        heightClass="h-[135dvh]"
       />
 
 

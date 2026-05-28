@@ -126,7 +126,7 @@ export function SingleStatistic({ locale = "en" }: { locale?: Locale }) {
   return (
     <section
       ref={ref}
-      className="relative flex flex-col items-center justify-center px-6 py-40 md:py-56"
+      className="relative flex flex-col items-center justify-center px-6 pt-16 pb-60 md:pt-20 md:pb-80"
       style={{ background: INTEL.black }}
     >
       <motion.div
