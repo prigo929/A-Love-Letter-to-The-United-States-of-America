@@ -3,7 +3,6 @@ import { getServerLocale } from "@/lib/i18n/server";
 
 import {
   IntelClassifiedStyles,
-  EntrySequence,
   SingleStatistic,
   AgencyDossier,
   IntelligenceDisciplines,
@@ -79,8 +78,7 @@ export default async function IntelligencePage() {
         stats={heroStats}
       />
 
-      {/* Entry sequence — typing animation */}
-      <EntrySequence />
+
 
       {/* The single statistic */}
       <SingleStatistic locale={locale} />
