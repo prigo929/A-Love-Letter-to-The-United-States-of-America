@@ -89,7 +89,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     location: "Low Earth Orbit",
     tone: "Continental scale",
   },
-  "Culture/Statue Of Liberty.jpg": {
+  "Culture/Iconic Things/Statue Of Liberty.jpg": {
     alt: "Statue of Liberty viewed in clear daylight against a bright blue sky",
     caption: "Statue of Liberty, New York Harbor",
     description:

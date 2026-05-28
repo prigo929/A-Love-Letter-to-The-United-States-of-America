@@ -18,7 +18,7 @@ import homeNycSunset from "@/IMAGES/Cities/New York Skyline at sunset.jpg";
 import homeNycSkyline from "@/IMAGES/Cities/Manhattan One World Trade Center Close-up.jpg";
 import homeDeclarationIndependence from "@/IMAGES/Constitution/usa-independence-day-concept-with-declaration-independence.jpg";
 import constitutionDocument from "@/IMAGES/Constitution/We The People Wooden Background.jpg";
-import cultureFlagCrowd from "@/IMAGES/Culture/Statue Of Liberty.jpg";
+import cultureFlagCrowd from "@/IMAGES/Culture/Iconic Things/Statue Of Liberty.jpg";
 import harvardCampus from "@/IMAGES/Education/Columbia University.jpg";
 import economyDollar from "@/IMAGES/Economy/100 dollar bill.jpg";
 import economyGrowth from "@/IMAGES/Economy/economy-growth.jpg";
@@ -136,11 +136,11 @@ import cultureFlosV8 from "@/IMAGES/Culture/Iconic Things/Flos-V8-Cafe-Neon-Sign
 import cultureClassicCar from "@/IMAGES/Culture/Iconic Things/Shiny-Black-Classic-Car-Reflecting-Pink-Neon-Signs-At-Mels-Drive-In.jpg";
 import cultureTimesSquare from "@/IMAGES/Culture/Just America/Times-Square-NYC-Rainy-Night-With-Yellow-Taxis-And-American-Flag-Billboard.jpg";
 import cultureMcDonalds from "@/IMAGES/Culture/Just America/McDonald's Restaurant in Bethlehem, Georgia.jpg";
-import cultureDisneyWorld from "@/IMAGES/Culture/Cinderella Castle at Disney World Orlando.jpg";
+import cultureDisneyWorld from "@/IMAGES/Culture/Iconic Things/Cinderella Castle at Disney World Orlando.jpg";
 import cultureNflStadium from "@/IMAGES/Culture/Sports/Stadiums/Wide-Angle-Night-View-Of-Giant-American-Flag-On-Field-At-MetLife-Stadium.jpg";
 import cultureBaseballPark from "@/IMAGES/Culture/Sports/Stadiums/Scenic-Daytime-View-Of-PNC-Park-Baseball-Stadium-And-Pittsburgh-Skyline.jpg";
 import cultureCowboysStadium from "@/IMAGES/Culture/Sports/Stadiums/Wide-Interior-View-Of-Packed-ATT-Stadium-During-Dallas-Cowboys-Football-Game.jpg";
-import cultureStatueOfLiberty from "@/IMAGES/Culture/Statue Of Liberty.jpg";
+import cultureStatueOfLiberty from "@/IMAGES/Culture/Iconic Things/Statue Of Liberty.jpg";
 
 // Global Bases
 import baseRamstein from "@/IMAGES/Military/Global Bases/ramstein_air_base.jpg";

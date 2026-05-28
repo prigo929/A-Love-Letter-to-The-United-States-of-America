@@ -29,9 +29,9 @@ import asset025 from "@/IMAGES/Constitution/usa-independence-day-composition-wit
 import asset026 from "@/IMAGES/Constitution/usa-independence-day-concept-with-declaration-independence.jpg";
 import asset027 from "@/IMAGES/Constitution/virginia-commonwealth-university-libraries-A4GofghogeQ-unsplash.jpg";
 import asset028 from "@/IMAGES/Culture/Food/American Burger.jpg";
-import asset029 from "@/IMAGES/Culture/Cinderella Castle at Disney World Orlando.jpg";
-import asset030 from "@/IMAGES/Culture/Police K9 on top of Police Car.jpg";
-import asset031 from "@/IMAGES/Culture/Statue Of Liberty.jpg";
+import asset029 from "@/IMAGES/Culture/Iconic Things/Cinderella Castle at Disney World Orlando.jpg";
+import asset030 from "@/IMAGES/Culture/Just America/Police K9 on top of Police Car.jpg";
+import asset031 from "@/IMAGES/Culture/Iconic Things/Statue Of Liberty.jpg";
 import asset032 from "@/IMAGES/Economy/100 dollar bill.jpg";
 import asset033 from "@/IMAGES/Economy/New York Stock Exchange.jpg";
 import asset034 from "@/IMAGES/Economy/adam-nir-wTO6MWpMrJk-unsplash.jpg";
@@ -245,10 +245,10 @@ export const GALLERY_ASSETS = [
   { path: "Constitution/usa-independence-day-composition-with-declaration.jpg", src: asset025 },
   { path: "Constitution/usa-independence-day-concept-with-declaration-independence.jpg", src: asset026 },
   { path: "Constitution/virginia-commonwealth-university-libraries-A4GofghogeQ-unsplash.jpg", src: asset027 },
-  { path: "Culture/American Burger.jpg", src: asset028 },
-  { path: "Culture/Cinderella Castle at Disney World Orlando.jpg", src: asset029 },
-  { path: "Culture/Police K9 on top of Police Car.jpg", src: asset030 },
-  { path: "Culture/Statue Of Liberty.jpg", src: asset031 },
+  { path: "Culture/Food/American Burger.jpg", src: asset028 },
+  { path: "Culture/Iconic Things/Cinderella Castle at Disney World Orlando.jpg", src: asset029 },
+  { path: "Culture/Just America/Police K9 on top of Police Car.jpg", src: asset030 },
+  { path: "Culture/Iconic Things/Statue Of Liberty.jpg", src: asset031 },
   { path: "Economy/100 dollar bill.jpg", src: asset032 },
   { path: "Economy/New York Stock Exchange.jpg", src: asset033 },
   { path: "Economy/adam-nir-wTO6MWpMrJk-unsplash.jpg", src: asset034 },
