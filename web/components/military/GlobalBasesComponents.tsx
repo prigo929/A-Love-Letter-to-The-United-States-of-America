@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { KeyboardEvent, ReactNode } from "react";
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 import {
@@ -233,6 +233,7 @@ export function GlobalCommandMap({
   locale?: Locale;
 }) {
   const isRo = locale === "ro";
+  const [isMapMounted, setIsMapMounted] = useState(false);
   const [activeRegionId, setActiveRegionId] = useState<GlobalBaseRegion>("Europe");
   const [selectedBase, setSelectedBase] = useState<StrategicBase | null>(null);
 
@@ -241,6 +242,10 @@ export function GlobalCommandMap({
     () => bases.filter((base) => base.Region === activeRegionId),
     [activeRegionId, bases]
   );
+
+  useEffect(() => {
+    setIsMapMounted(true);
+  }, []);
 
   return (
     <section className="bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
@@ -273,68 +278,74 @@ export function GlobalCommandMap({
             </div>
 
             <div className="h-full min-h-[560px] pt-20">
-              <ComposableMap
-                projection="geoMercator"
-                projectionConfig={{ scale: 112, center: [12, 24] }}
-                style={{ width: "100%", height: "100%" }}
-              >
-                <Geographies geography={WORLD_GEO_URL}>
-                  {({ geographies }: { geographies: any[] }) =>
-                    geographies.map((geo) => (
-                      <Geography
-                        key={geo.rsmKey}
-                        geography={geo}
-                        style={{
-                          default: {
-                            fill: "#18181b",
-                            stroke: "#27272a",
-                            strokeWidth: 0.34,
-                            outline: "none",
-                          },
-                          hover: {
-                            fill: "#202024",
-                            stroke: "#3f3f46",
-                            strokeWidth: 0.34,
-                            outline: "none",
-                          },
-                          pressed: {
-                            fill: "#18181b",
-                            outline: "none",
-                          },
-                        }}
-                      />
-                    ))
-                  }
-                </Geographies>
-
-                {bases.map((base) => {
-                  const isActiveRegion = base.Region === activeRegionId;
-                  const isSelected = selectedBase?.ID === base.ID;
-                  return (
-                    <Marker key={base.ID} coordinates={parseCoordinates(base.Coordinates)}>
-                      <g
-                        role="button"
-                        tabIndex={0}
-                        aria-label={base.Name}
-                        onClick={() => setSelectedBase(base)}
-                        onKeyDown={(event: KeyboardEvent<SVGGElement>) => {
-                          if (event.key === "Enter" || event.key === " ") {
-                            event.preventDefault();
-                            setSelectedBase(base);
-                          }
-                        }}
-                        className="cursor-pointer"
-                      >
-                        <circle
-                          r={isSelected ? 4 : isActiveRegion ? 3 : 2.2}
-                          fill="#fafafa"
-                          opacity={isActiveRegion ? 1 : 0.42}
+              {isMapMounted ? (
+                <ComposableMap
+                  projection="geoMercator"
+                  projectionConfig={{ scale: 112, center: [12, 24] }}
+                  style={{ width: "100%", height: "100%" }}
+                >
+                  <Geographies geography={WORLD_GEO_URL}>
+                    {({ geographies }: { geographies: any[] }) =>
+                      geographies.map((geo) => (
+                        <Geography
+                          key={geo.rsmKey}
+                          geography={geo}
+                          style={{
+                            default: {
+                              fill: "#18181b",
+                              stroke: "#27272a",
+                              strokeWidth: 0.34,
+                              outline: "none",
+                            },
+                            hover: {
+                              fill: "#202024",
+                              stroke: "#3f3f46",
+                              strokeWidth: 0.34,
+                              outline: "none",
+                            },
+                            pressed: {
+                              fill: "#18181b",
+                              outline: "none",
+                            },
+                          }}
                         />
-                      </g>
-                    </Marker>
-                  );
-                })}
-              </ComposableMap>
+                      ))
+                    }
+                  </Geographies>
+
+                  {bases.map((base) => {
+                    const isActiveRegion = base.Region === activeRegionId;
+                    const isSelected = selectedBase?.ID === base.ID;
+                    return (
+                      <Marker key={base.ID} coordinates={parseCoordinates(base.Coordinates)}>
+                        <g
+                          role="button"
+                          tabIndex={0}
+                          aria-label={base.Name}
+                          onClick={() => setSelectedBase(base)}
+                          onKeyDown={(event: KeyboardEvent<SVGGElement>) => {
+                            if (event.key === "Enter" || event.key === " ") {
+                              event.preventDefault();
+                              setSelectedBase(base);
+                            }
+                          }}
+                          className="cursor-pointer"
+                        >
+                          <circle
+                            r={isSelected ? 4 : isActiveRegion ? 3 : 2.2}
+                            fill="#fafafa"
+                            opacity={isActiveRegion ? 1 : 0.42}
+                          />
+                        </g>
+                      </Marker>
+                    );
+                  })}
+                </ComposableMap>
+              ) : (
+                <div className="flex h-full min-h-[560px] items-center justify-center bg-black">
+                  <div className="h-px w-40 bg-zinc-900" />
+                </div>
+              )}
             </div>
           </div>
 
