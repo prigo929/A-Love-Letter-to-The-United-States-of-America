@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/lib/i18n/config";
 import type {
@@ -516,6 +516,11 @@ interface CaseFile {
   outcome: string;
   summary: string;
   redactedDetail: string;
+  agency: string;
+  longSummary: string;
+  timeline: { date: string; event: string }[];
+  keyFigures: string[];
+  fieldIntercept: string;
 }
 
 const CASE_FILES_EN: CaseFile[] = [
@@ -527,24 +532,123 @@ const CASE_FILES_EN: CaseFile[] = [
     outcome: "Successful. Shah restored. Western petroleum access secured for 25 years.",
     summary: "A joint CIA-MI6 covert operation that destabilized the Iranian government through coordinated propaganda, bribery of military officers, and orchestrated street protests. The operation set the template for Cold War regime change.",
     redactedDetail: "COORDINATING OFFICER AND LOCAL ASSET NETWORK",
+    agency: "CIA / SIS (MI6)",
+    longSummary: "Initiated in response to Iran's nationalization of British oil holdings, the operation weaponized psychological warfare, paid street agitation, and military co-optation. It established a precedent for clandestine Cold War regime change, illustrating the efficacy of combining covert propaganda with local military collaboration.",
+    timeline: [
+      { date: "April 1953", event: "CIA approves budget of $1,000,000 for covert destabilization operations in Tehran." },
+      { date: "August 15, 1953", event: "Initial coup attempt fails. PM Mosaddegh orders arrests of conspirators; the Shah flees to Baghdad." },
+      { date: "August 19, 1953", event: "Pro-Shah military units led by General Zahedi capture key communication sites and government offices. Mosaddegh arrested." }
+    ],
+    keyFigures: ["Kermit Roosevelt Jr. (CIA Station Chief)", "General Fazlollah Zahedi", "Donald Wilber"],
+    fieldIntercept: "CABLE-TEHRAN-190853-SECRET: ROADBLOCKS ESTABLISHED AT KEY INTERSECTIONS. [redact]STATION CHIEF ROOSEVELT[/redact] REPORTS SUCCESSFUL PAYMENTS TRANSFERRED TO LOCAL ASSETS. MILITARY COMPLIANCE ASSURED."
   },
   {
     codename: "OPERATION PBSUCCESS",
     year: "1954",
     theater: "GUATEMALA",
-    objective: "Removal of President Jacobo \u00C1rbenz and installation of a military government aligned with U.S. interests.",
-    outcome: "Successful. \u00C1rbenz resigned. Colonel Carlos Castillo Armas installed.",
+    objective: "Removal of President Jacobo Árbenz and installation of a military government aligned with U.S. interests.",
+    outcome: "Successful. Árbenz resigned. Colonel Carlos Castillo Armas installed.",
     summary: "The CIA armed, trained, and directed a force of Guatemalan exiles to invade from Honduras. A psychological warfare campaign, including fake radio broadcasts, caused military defections and government collapse.",
     redactedDetail: "EXILE FORCE STAGING LOCATIONS AND FUNDING CHANNELS",
+    agency: "CIA",
+    longSummary: "Fearing land reforms that threatened U.S. commercial interests (specifically the United Fruit Company) and potential Communist influence, the CIA armed, trained, and funded a rebel army of exiles and conducted an extensive psychological warfare campaign.",
+    timeline: [
+      { date: "June 18, 1954", event: "Castillo Armas crosses border from Honduras with 480 trained fighters." },
+      { date: "June 25, 1954", event: "Aerial bombing of Guatemala City military bases causes widespread panic." },
+      { date: "June 27, 1954", event: "President Árbenz resigns under pressure from his military commanders." }
+    ],
+    keyFigures: ["Allen Dulles (DCI)", "Carlos Castillo Armas", "Frank Wisner"],
+    fieldIntercept: "MEMO-CIA-DIRECTOR-1954: VOICE OF LIBERATION BROADCASTING STATIONS SUCCESSFULLY CONVINCED COMMANDERS OF FORCE STRENGTH MULTIPLIERS. [redact]EXILE FORCES ENROUTE TO TEGUCIGALPA[/redact]."
+  },
+  {
+    codename: "OPERATION GOLD",
+    year: "1953–1956",
+    theater: "BERLIN",
+    objective: "Tap subterranean Soviet army telephone lines in Berlin via a joint CIA-MI6 tunnel.",
+    outcome: "Successful collection. Tunnel compromised by double agent.",
+    summary: "Also known as Operation PBJOINTLY, a 450-meter tunnel was bored to intercept landline communications of the Soviet military headquarters. Though compromised from the start by a double agent, it yielded vast quantities of recording tapes.",
+    redactedDetail: "DOUBLE AGENT IDENTIFICATION AND ESCAPE PROTOCOLS",
+    agency: "CIA / SIS (MI6)",
+    longSummary: "A highly classified joint operation that dug a tunnel under the Soviet sector of Berlin to tap telephone lines. Though compromised from the start by George Blake, a double agent within British intelligence, the operation tapped lines for 11 months, yielding 368,000 conversations.",
+    timeline: [
+      { date: "Dec 1953", event: "Construction of undercover warehouse in West Berlin begins." },
+      { date: "Feb 1955", event: "Tunnel excavation reaches the Soviet telephone cable junction." },
+      { date: "April 21, 1956", event: "Soviet technicians 'discover' the tunnel during heavy rainfall repairs." }
+    ],
+    keyFigures: ["William King Harvey (CIA)", "George Blake (KGB Mole)", "Allen Dulles"],
+    fieldIntercept: "TRANSCRIPT-BERLIN-TAP-04: SIGNALS RECORDING CONTINUOUS. [redact]GEORGE BLAKE ACCESSED CHANNELS[/redact] PRIOR TO THE EXCAVATION. COMMUNICATIONS TRAFFIC HEAVILY MONITORED BY KGB."
+  },
+  {
+    codename: "PROJECT MK-ULTRA",
+    year: "1953–1973",
+    theater: "NORTH AMERICA",
+    objective: "Develop chemical, biological, and psychological agents for mind control and interrogation.",
+    outcome: "Project terminated. Congressional hearings exposed extensive human experimentation.",
+    summary: "Authorized by CIA Director Allen Dulles, the project conducted human experimentation using LSD, sensory deprivation, hypnosis, and electroshock therapy on unwitting citizens, patients, and prisoners.",
+    redactedDetail: "PARTICIPATING RESEARCH FACILITIES AND CLINICAL METADATA",
+    agency: "CIA / Technical Services Staff",
+    longSummary: "A clandestine program of experiments on human subjects to develop chemical and biological agents for mind control, interrogation, and behavioral modification. The program operated across 80 institutions, including universities and hospitals.",
+    timeline: [
+      { date: "April 13, 1953", event: "DCI Dulles signs approval for chemical agent research under TSS." },
+      { date: "Nov 1953", event: "Biologist Frank Olson dies under mysterious circumstances after ingestion of LSD." },
+      { date: "1973", event: "DCI Richard Helms orders all project records destroyed, limiting subsequent congressional investigations." }
+    ],
+    keyFigures: ["Sidney Gottlieb (Chief Chemist)", "Allen Dulles", "Dr. Ewen Cameron"],
+    fieldIntercept: "LOG-TSS-SUBPROJECT-3: SUBJECT RESPONDED TO DRUG ADMINISTRATION WITH SEVERE DISORIENTATION. [redact]ALLAN MEMORIAL HOSPITAL[/redact] RECORDINGS FILED UNDER HIGHLY RESTRICTED VAULT SECTOR."
+  },
+  {
+    codename: "OPERATION CHAOS",
+    year: "1967–1973",
+    theater: "UNITED STATES",
+    objective: "Espionage campaign targeting domestic anti-war activists and civil rights movements inside the US.",
+    outcome: "Program exposed by journalism; outlawed by subsequent charter reforms.",
+    summary: "Operating outside the CIA's legal charter, Project CHAOS compiled files on thousands of American citizens, trying to find foreign ties to domestic anti-war student movements.",
+    redactedDetail: "DOMESTIC WATCHLISTS AND SPY CHANNELS",
+    agency: "CIA / Domestic Operations",
+    longSummary: "Operating outside the CIA's legal charter, Project CHAOS compiled files on thousands of American citizens, trying to find foreign ties to domestic anti-war student movements and civil rights organizations, including the Black Panther Party.",
+    timeline: [
+      { date: "August 1967", event: "DCI Richard Helms establishes Special Operations Group to run domestic surveillance." },
+      { date: "1969", event: "Scope expanded to target the Black Panther Party and student leadership." },
+      { date: "1974", event: "Program exposed by journalist Seymour Hersh in the New York Times, sparking the Rockefeller Commission." }
+    ],
+    keyFigures: ["Richard Helms", "James Jesus Angleton", "Seymour Hersh"],
+    fieldIntercept: "WATCHLIST-DOMESTIC-09: SUBJECT IDENTIFIED AT CIVIL RALLIES. [redact]FBI CONTACT LINK ESTABLISHED[/redact]. TELECOMMUNICATIONS GATHERED THROUGH DOMESTIC MICROWAVE RELAY STATIONS."
+  },
+  {
+    codename: "OPERATION CYCLONE",
+    year: "1979–1989",
+    theater: "AFGHANISTAN",
+    objective: "Arm and finance the Afghan mujahideen during the Soviet-Afghan War.",
+    outcome: "Soviet military forces withdrew. Major geopolitical shifts in Central Asia.",
+    summary: "One of the longest and most expensive covert operations in history, sending billions of dollars in military hardware (including Stinger anti-aircraft missiles) to Afghan guerillas to bleed Soviet military forces.",
+    redactedDetail: "LOGISTICAL NETWORK AND STINGER DELIVERY PATHS",
+    agency: "CIA / ISI (Pakistan) / SIS",
+    longSummary: "One of the longest and most expensive covert operations in history, sending billions of dollars in military hardware (including Stinger anti-aircraft missiles) to Afghan guerillas to bleed Soviet military forces. Fanned out through complex supply lines in Pakistan.",
+    timeline: [
+      { date: "July 3, 1979", event: "President Carter signs presidential finding authorizing non-lethal aid to Afghan rebels." },
+      { date: "1986", event: "Delivery of Stinger shoulder-fired missiles begins, turning the air-war against Soviet helicopters." },
+      { date: "Feb 1989", event: "Last Soviet military units withdraw from Afghanistan." }
+    ],
+    keyFigures: ["Charlie Wilson (US Representative)", "Gust Avrakotos (CIA)", "William Casey"],
+    fieldIntercept: "SUPPLY-LINE-PESHAWAR-04: CONVOY SHIPPED 200 UNITS G-TYPE RADAR-SEEKING INFRARED HARDWARE. [redact]GENERAL HAQ COORDINATOR[/redact] CONFIRMED RECEIPT BY TACTICAL FORCES."
   },
   {
     codename: "OPERATION OLYMPIC GAMES",
-    year: "2007\u20132010",
+    year: "2007–2010",
     theater: "IRAN",
     objective: "Degradation of Iranian uranium enrichment capability at the Natanz nuclear facility through cyber means.",
     outcome: "Successful. Approximately 1,000 IR-1 centrifuges destroyed. Program delayed by an estimated 2 years.",
     summary: "A joint NSA-Unit 8200 cyber weapon, later known publicly as Stuxnet, was introduced into air-gapped Iranian industrial control systems. The malware caused centrifuges to spin at destructive frequencies while reporting normal operations to monitoring systems.",
     redactedDetail: "DELIVERY VECTOR AND INITIAL ACCESS METHODOLOGY",
+    agency: "NSA / CIA / Unit 8200",
+    longSummary: "A highly classified cyber warfare campaign to disrupt Iran's nuclear centrifuges using industrial malware. Conceived under President Bush and continued under President Obama, this program launched the 'Stuxnet' worm to damage Siemens industrial controllers.",
+    timeline: [
+      { date: "2006", event: "NSA identifies vulnerabilities in Siemens industrial control hardware." },
+      { date: "June 2009", event: "Early Stuxnet versions deployed via localized USB infection." },
+      { date: "June 2010", event: "Cyber weapon escapes control, spreading to commercial networks worldwide." }
+    ],
+    keyFigures: ["Keith Alexander (DIRNSA)", "Barack Obama", "Michael Hayden"],
+    fieldIntercept: "MALWARE-DUMP-NATANZ: CENTRIFUGE RPM MANIPULATION TRIGGERED. [redact]ISOLATED PLC SUITE COMPROMISED[/redact]. CONTROL ROOM MONITOR FEED REMAINS WITHIN OPERATIONAL LIMITS."
   },
   {
     codename: "OPERATION NEPTUNE SPEAR",
@@ -552,55 +656,222 @@ const CASE_FILES_EN: CaseFile[] = [
     theater: "ABBOTTABAD, PAKISTAN",
     objective: "Capture or kill of Osama bin Laden, leader of al-Qaeda, responsible for the September 11 attacks.",
     outcome: "Target killed. Intelligence materials recovered. No U.S. casualties.",
-    summary: "A decade of intelligence fusion \u2014 SIGINT intercepts, HUMINT courier tracking, GEOINT compound modeling, and MASINT sensor data \u2014 converged to identify a fortified compound. SEAL Team Six executed a helicopter-borne raid under presidential authorization.",
+    summary: "A decade of intelligence fusion — SIGINT intercepts, HUMINT courier tracking, GEOINT compound modeling, and MASINT sensor data — converged to identify a fortified compound. SEAL Team Six executed a helicopter-borne raid under presidential authorization.",
     redactedDetail: "PAKISTANI LIAISON STATUS AND ADVANCE NOTIFICATION PROTOCOLS",
-  },
+    agency: "CIA / JSOC",
+    longSummary: "A targeted military raid in Abbottabad, Pakistan, that resulted in the death of Osama bin Laden. It converged a decade of intelligence collection — including courier surveillance, geospatial compound mockups, and signals tracking.",
+    timeline: [
+      { date: "August 2010", event: "CIA identifies compound in Abbottabad suspected of housing bin Laden." },
+      { date: "April 29, 2011", event: "President Obama signs execution order for military raid." },
+      { date: "May 2, 2011", event: "Helicopter assault launched from Jalalabad, Afghanistan. Compound cleared." }
+    ],
+    keyFigures: ["Leon Panetta (CIA Director)", "Admiral William McRaven", "Barack Obama"],
+    fieldIntercept: "SATELLITE-FEED-LIVE: CHOPPER DOWNLINK CONFIRMED. TARGET ASSIMILATED. [redact]BODY RECOVERED FOR GENETIC CORRELATION[/redact]. EXTRACTION PROGRESSING."
+  }
 ];
 
 const CASE_FILES_RO: CaseFile[] = [
   {
-    codename: "OPERA\u021AIUNEA AJAX",
+    codename: "OPERAȚIUNEA AJAX",
     year: "1953",
     theater: "IRAN",
-    objective: "R\u0103sturnarea premierului Mohammad Mosaddegh \u0219i restaurarea \u0218ahului Mohammad Reza Pahlavi.",
-    outcome: "Succes. \u0218ahul restaurat. Accesul occidental la petrol asigurat pentru 25 de ani.",
-    summary: "O opera\u021Biune comun\u0103 CIA-MI6 care a destabilizat guvernul iranian prin propagand\u0103 coordonat\u0103, mituirea ofi\u021Berilor militari \u0219i proteste de strad\u0103 orchestrate.",
-    redactedDetail: "OFI\u021AER COORDONATOR \u0218I RE\u021AEA DE ACTIVE LOCALE",
+    objective: "Răsturnarea premierului Mohammad Mosaddegh și restaurarea Șahului Mohammad Reza Pahlavi.",
+    outcome: "Succes. Șahul restaurat. Accesul occidental la petrol asigurat pentru 25 de ani.",
+    summary: "O operațiune comună CIA-MI6 care a destabilizat guvernul iranian prin propagandă coordonată, mituirea ofițerilor militari și proteste de stradă orchestrate.",
+    redactedDetail: "OFIȚER COORDONATOR ȘI REȚEA DE ACTIVE LOCALE",
+    agency: "CIA / SIS (MI6)",
+    longSummary: "Inițiată ca răspuns la naționalizarea petrolului de către prim-ministrul Mosaddegh, operațiunea a folosit războiul psihologic și revoltele stradale pentru a schimba regimul. A creat un precedent pentru acțiunile subacoperire din Războiul Rece.",
+    timeline: [
+      { date: "Aprilie 1953", event: "CIA aprobă bugetul de destabilizare pentru Teheran." },
+      { date: "15 August 1953", event: "Prima tentativă eșuează; Mosaddegh preia controlul, Șahul fuge din țară." },
+      { date: "19 August 1953", event: "Unitățile pro-Șah conduse de generalul Zahedi capturează posturile cheie. Mosaddegh este arestat." }
+    ],
+    keyFigures: ["Kermit Roosevelt Jr.", "General Fazlollah Zahedi", "Donald Wilber"],
+    fieldIntercept: "CAB-TEHERAN-190853-SECRET: BLOCAJE LA INTERSECȚII. [redact]ȘEFUL STAȚIEI ROOSEVELT[/redact] RAPORTEAZĂ TRASFERURI FINANCIARE REUȘITE CĂTRE ACTIVELE LOCALE."
   },
   {
-    codename: "OPERA\u021AIUNEA PBSUCCESS",
+    codename: "OPERAȚIUNEA PBSUCCESS",
     year: "1954",
     theater: "GUATEMALA",
-    objective: "\u00CEnl\u0103turarea pre\u0219edintelui Jacobo \u00C1rbenz \u0219i instalarea unui guvern militar aliniat intereselor SUA.",
-    outcome: "Succes. \u00C1rbenz a demisionat. Colonelul Carlos Castillo Armas instalat.",
-    summary: "CIA a \u00EEnarmat \u0219i antrenat o for\u021B\u0103 de exila\u021Bi guatemalezi pentru invazia din Honduras. O campanie de r\u0103zboi psihologic a cauzat defec\u021Biuni militare \u0219i pr\u0103bu\u0219irea guvernului.",
-    redactedDetail: "LOCA\u021AII DE ORGANIZARE \u0218I CANALE DE FINAN\u021AARE",
+    objective: "Înlăturarea președintelui Jacobo Árbenz și instalarea unui guvern militar aliniat intereselor SUA.",
+    outcome: "Succes. Árbenz a demisionat. Colonelul Carlos Castillo Armas instalat.",
+    summary: "CIA a înarmat și antrenat o forță de exilați guatemalezi pentru invazia din Honduras. O campanie de război psihologic a cauzat defecțiuni militare și prăbușirea guvernului.",
+    redactedDetail: "LOCAȚII DE ORGANIZARE ȘI CANALE DE FINANȚARE",
+    agency: "CIA",
+    longSummary: "De teama reformelor agrare care amenințau compania United Fruit, CIA a antrenat o forță rebelă de exilați în Honduras, provocând capitularea armatei guatemaleze prin tactici de dezinformare la radio.",
+    timeline: [
+      { date: "18 Iunie 1954", event: "Castillo Armas trece granița cu 480 de luptători." },
+      { date: "25 Iunie 1954", event: "Bombardarea depozitelor militare din capitală generează panică." },
+      { date: "27 Iunie 1954", event: "Președintele Árbenz demisionează sub presiunea comandanților." }
+    ],
+    keyFigures: ["Allen Dulles", "Carlos Castillo Armas", "Frank Wisner"],
+    fieldIntercept: "MEMO-CIA-1954: STAȚIILE RADIO VOCEA ELIBERĂRII AU PROPAGAT EFICIENT ZVONURILE DE FORȚĂ MULTIPLĂ. [redact]TRUPE DE EXILAȚI ÎN DEPLASARE[/redact]."
   },
   {
-    codename: "OPERA\u021AIUNEA OLYMPIC GAMES",
-    year: "2007\u20132010",
+    codename: "OPERAȚIUNEA GOLD",
+    year: "1953–1956",
+    theater: "BERLIN",
+    objective: "Interceptarea cablurilor de telecomunicații ale Armatei Roșii printr-un tunel CIA-MI6.",
+    outcome: "Succes parțial în colectare. Tunel deconectat după demascarea de către un agent dublu.",
+    summary: "Cunoscută și sub numele de PBJOINTLY, această lucrare inginerească de 450 de metri a interceptat milioane de apeluri telefonice. Deși a fost trădată de agentul dublu George Blake încă din prima zi, a furnizat cantități uriașe de date.",
+    redactedDetail: "OFIȚER COORDONATOR ȘI REȚEA DE ACTIVE LOCALE",
+    agency: "CIA / SIS (MI6)",
+    longSummary: "Un tunel săpat pe sub sectorul sovietic din Berlin pentru interceptarea cablurilor de telecomunicații ale Armatei Roșii. Deși a fost trădată de agentul dublu George Blake încă din prima zi, a furnizat cantități uriașe de date din interiorul comandamentului sovietic.",
+    timeline: [
+      { date: "Decembrie 1953", event: "Începe construcția depozitului acoperire în Berlinul de Vest." },
+      { date: "Februarie 1955", event: "Tunelul atinge nodul de cabluri sovietice." },
+      { date: "21 Aprilie 1956", event: "Tehnicienii sovietici descoperă infiltrarea în timpul unor reparații la sol." }
+    ],
+    keyFigures: ["William King Harvey", "George Blake", "Allen Dulles"],
+    fieldIntercept: "TRANSCRIPT-BERLIN-04: ÎNREGISTRARE CONTINUĂ PE CANALELE 12-48. [redact]GEORGE BLAKE A ACCESAT CANALELE[/redact] INAINTE DE EXCAVARE. SOVIETICII AU DEȚINUT CONTROLUL INFORMAȚIEI."
+  },
+  {
+    codename: "PROIECTUL MK-ULTRA",
+    year: "1953–1973",
+    theater: "SUA / CANADA",
+    objective: "Dezvoltarea de substanțe chimice destinate controlului mental și interogării.",
+    outcome: "Program sistat. Audierile Congresului au expus experimente abuzive pe subiecți umani.",
+    summary: "Autorizat de directorul Allen Dulles, proiectul a realizat teste ilegale pe cetățeni, pacienți și prizonieri fără consimțământul lor, utilizând LSD, hipnoză și șocuri electrice pentru a slăbi capacitățile cognitive.",
+    redactedDetail: "INSTITUȚII PARTICIPANTE ȘI SPECIFICAȚIILE SUBSTANȚELOR",
+    agency: "CIA / TSS",
+    longSummary: "Program secret de experimente pe subiecți umani pentru dezvoltarea de substanțe chimice destinate controlului mental. Autorizat de directorul Allen Dulles, proiectul a realizat teste abuzive fără consimțământ.",
+    timeline: [
+      { date: "13 Aprilie 1953", event: "Directorul Dulles aprobă oficial cercetarea privind agenții chimici." },
+      { date: "Noiembrie 1953", event: "Biologul Frank Olson moare în condiții suspecte după ingerarea de LSD." },
+      { date: "1973", event: "Directorul Richard Helms ordonă distrugerea tuturor dosarelor proiectului." }
+    ],
+    keyFigures: ["Sidney Gottlieb", "Allen Dulles", "Dr. Ewen Cameron"],
+    fieldIntercept: "JURNAL-TSS-3: SUBIECTUL A REAGAT LA ADMINISTRAREA SUBSTANȚEI CU DEZORIENTARE SEVERĂ. [redact]SPITALUL ALLAN MEMORIAL[/redact] EXPERIMENTE STOCATE ÎN SECTORUL RESTRÂNS."
+  },
+  {
+    codename: "OPERAȚIUNEA CHAOS",
+    year: "1967–1973",
+    theater: "STATELE UNITE",
+    objective: "Campanie secretă de spionaj intern care a vizat activiștii împotriva războiului din Vietnam.",
+    outcome: "Demascată public; a dus la investigații guvernamentale și reforme de securitate.",
+    summary: "Încălcând statutul legal care îi interzice activitățile pe teritoriu național, CIA a creat dosare pentru mii de americani în încercarea de a demonstra influențe străine în mișcările studențești.",
+    redactedDetail: "REȚELE DE SUPRAVEGHERE DOMESTICĂ ȘI LISTE CHEIE",
+    agency: "CIA",
+    longSummary: "O campanie secretă de spionaj intern care a vizat activiștii împotriva războiului din Vietnam și mișcările pentru drepturi civile. Încălcând statutul legal, CIA a creat dosare pentru mii de cetățeni.",
+    timeline: [
+      { date: "August 1967", event: "Richard Helms înființează Grupul de Operațiuni Speciale pentru supraveghere domestică." },
+      { date: "1969", event: "Extinderea monitorizării asupra Partidului Black Panther și a liderilor studențești." },
+      { date: "1974", event: "Jurnalistul Seymour Hersh dezvăluie programul în New York Times, declanșând Comisia Rockefeller." }
+    ],
+    keyFigures: ["Richard Helms", "James Jesus Angleton", "Seymour Hersh"],
+    fieldIntercept: "LISTĂ-SURVEGHERE-09: SUBIECTUL IDENTIFICAT LA PROTEST. [redact]FBI A FUSIONAT SURSELE[/redact]. INTERCEPTĂRI AUDIO EFECTUATE FĂRĂ MANDAT."
+  },
+  {
+    codename: "OPERAȚIUNEA CYCLONE",
+    year: "1979–1989",
+    theater: "AFGHANISTAN",
+    objective: "Finanțarea și înarmarea mujahedinilor afgani pentru a contracara invazia sovietică.",
+    outcome: "Trupele sovietice s-au retras. Schimbări majore de securitate în regiune.",
+    summary: "Una dintre cele mai lungi și costisitoare operațiuni secrete din istoria CIA, pompând miliarde de dolari în armament (inclusiv lansatoare de rachete Stinger) pentru a epuiza resursele militare ale URSS.",
+    redactedDetail: "RUTE DE APROVIZIONARE ȘI TIPURI DE ARMAMENT",
+    agency: "CIA / ISI / SIS",
+    longSummary: "Finanțarea și înarmarea mujahedinilor afgani pentru a contracara invazia militară sovietică în Afganistan. Una dintre cele mai lungi și costisitoare operațiuni secrete din istoria CIA.",
+    timeline: [
+      { date: "3 Iulie 1979", event: "Președintele Carter semnează decretul pentru asistență non-letală." },
+      { date: "1986", event: "Începe livrarea rachetelor Stinger, neutralizând elicopterele sovietice." },
+      { date: "Februarie 1989", event: "Ultimele trupe sovietice se retrag complet din Afganistan." }
+    ],
+    keyFigures: ["Charlie Wilson", "Gust Avrakotos", "William Casey"],
+    fieldIntercept: "LINIE-APROVIZIONARE-04: CONVOIUL A EXPEDIAT 200 DE RACHETE INFRAROȘU. [redact]COORDONATOR GENERALUL HAQ[/redact] CONFIRMAT PRELUAREA."
+  },
+  {
+    codename: "OPERAȚIUNEA OLYMPIC GAMES",
+    year: "2007–2010",
     theater: "IRAN",
-    objective: "Degradarea capacit\u0103\u021Bii de \u00EEmbog\u0103\u021Bire a uraniului la facilitatea nuclear\u0103 Natanz prin mijloace cibernetice.",
-    outcome: "Succes. Aproximativ 1.000 de centrifuge IR-1 distruse. Programul \u00EEnt\u00E2rziat cu circa 2 ani.",
-    summary: "O arm\u0103 cibernetic\u0103 comun\u0103 NSA-Unit 8200, cunoscut\u0103 public ulterior ca Stuxnet, a fost introdus\u0103 \u00EEn sistemele industriale iraniene izolate de re\u021Bea.",
-    redactedDetail: "VECTOR DE LIVRARE \u0218I METODOLOGIA ACCESULUI INI\u021AIAL",
+    objective: "Sabotarea centrifugelor nucleare iraniene de la Natanz prin atacuri cibernetice.",
+    outcome: "Succes. Aproximativ 1.000 de centrifuge IR-1 distruse. Programul întârziat cu circa 2 ani.",
+    summary: "O armă cibernetică comună NSA-Unit 8200, cunoscută public ulterior ca Stuxnet, a fost introdusă în sistemele industriale iraniene izolate de rețea.",
+    redactedDetail: "VECTOR DE LIVRARE ȘI METODOLOGIA ACCESULUI INIȚIAL",
+    agency: "NSA / CIA / Unitatea 8200",
+    longSummary: "Atac cibernetic clasificat destinat sabotării centrifugelor nucleare iraniene de la Natanz prin utilizarea malware-ului industrial Stuxnet. A demonstrat posibilitatea distrugerii fizice prin cod software.",
+    timeline: [
+      { date: "2006", event: "NSA identifică vulnerabilități în controlerele industriale Siemens." },
+      { date: "Iunie 2009", event: "Versiuni timpurii ale Stuxnet sunt răspândite prin memorii USB infectate." },
+      { date: "Iunie 2010", event: "Viermele scapă de sub control și se răspândește global." }
+    ],
+    keyFigures: ["Keith Alexander", "Barack Obama", "Michael Hayden"],
+    fieldIntercept: "COD-MALWARE-NATANZ: DETECTATĂ FLUCTUAȚIE MASIVĂ DE RPM. [redact]CONTROLER PLC INFECTAT[/redact]. PARAMETRII RAPORTAȚI AFECTEAZĂ DOAR SENSORII DE VITEZĂ."
   },
   {
-    codename: "OPERA\u021AIUNEA NEPTUNE SPEAR",
+    codename: "OPERAȚIUNEA NEPTUNE SPEAR",
     year: "2011",
     theater: "ABBOTTABAD, PAKISTAN",
-    objective: "Capturarea sau uciderea lui Osama bin Laden, liderul al-Qaeda, responsabil pentru atacurile din 11 septembrie.",
-    outcome: "\u021Ainta eliminat\u0103. Materiale de informare recuperate. Zero victime americane.",
-    summary: "Un deceniu de fuziune a informa\u021Biilor \u2014 intercept\u0103ri SIGINT, urm\u0103rire HUMINT, modelare GEOINT \u0219i date MASINT \u2014 a convergit pentru a identifica un complex fortificat. SEAL Team Six a executat un raid cu elicoptere.",
-    redactedDetail: "STATUTUL LEG\u0102TURII CU PAKISTANUL \u0218I PROTOCOALELE DE NOTIFICARE",
-  },
+    objective: "Capturarea sau uciderea lui Osama bin Laden, leaderul al-Qaeda, responsabil pentru atacurile din 11 septembrie.",
+    outcome: "Ținta eliminată. Materiale de informare recuperate. Zero victime americane.",
+    summary: "Un deceniu de fuziune a informațiilor — interceptări SIGINT, urmărire HUMINT, modelare GEOINT și date MASINT — a convergit pentru a identifica un complex fortificat. SEAL Team Six a executat un raid cu elicoptere.",
+    redactedDetail: "STATUTUL LEGĂTURII CU PAKISTANUL ȘI PROTOCOALELE DE NOTIFICARE",
+    agency: "CIA / JSOC",
+    longSummary: "Asaltul militar de precizie desfășurat în Abbottabad, Pakistan, care a dus la eliminarea lui Osama bin Laden. Succesul s-a datorat corelării datelor SIGINT, HUMINT și a modelelor geospațiale 3D.",
+    timeline: [
+      { date: "August 2010", event: "CIA identifică complexul din Abbottabad suspectat că îl adăpostește pe bin Laden." },
+      { date: "29 Aprilie 2011", event: "Președintele Obama ordonă declanșarea asaltului tactic." },
+      { date: "2 Mai 2011", event: "Elicopterele pătrund în spațiul aerian pakistanez. Misiunea se finalizează." }
+    ],
+    keyFigures: ["Leon Panetta", "Admiral William McRaven", "Barack Obama"],
+    fieldIntercept: "MONITOR-SATELIT-LIVE: ELICOPTERE STEALTH INTRATE PE RADAR. [redact]IDENTIFICARE ADN CONFIRMATĂ[/redact]. PUNCT EXTRACTAT. FĂRĂ REPLICĂ DIN PARTEA APĂRĂRII LOCAL."
+  }
 ];
+
+function RedactedSpan({ text }: { text: string }) {
+  const [revealed, setRevealed] = useState(false);
+  return (
+    <span
+      onClick={(e) => {
+        e.stopPropagation();
+        setRevealed(!revealed);
+      }}
+      onMouseEnter={() => setRevealed(true)}
+      onMouseLeave={() => setRevealed(false)}
+      className={cn(
+        "cursor-help transition-all duration-500 font-semibold font-mono mx-0.5 px-0.5 rounded-sm",
+        revealed
+          ? "bg-[#1C3A1C]/25 text-[#E8E2D5] border border-[#3A5A3A]/40"
+          : "bg-black text-transparent select-none border border-transparent"
+      )}
+      title="Hover to declassify"
+    >
+      {text}
+    </span>
+  );
+}
+
+function parseTelexRedactions(text: string) {
+  const parts = text.split(/(\[redact\].*?\[\/redact\])/g);
+  return parts.map((part, index) => {
+    if (part.startsWith("[redact]") && part.endsWith("[/redact]")) {
+      const innerText = part.slice(8, -9);
+      return <RedactedSpan key={index} text={innerText} />;
+    }
+    return part;
+  });
+}
 
 export function DeclassifiedOperations({ locale = "en" }: { locale?: Locale }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const isRo = locale === "ro";
   const cases = isRo ? CASE_FILES_RO : CASE_FILES_EN;
+
+  const [selectedCase, setSelectedCase] = useState<CaseFile | null>(null);
+
+  useEffect(() => {
+    if (selectedCase) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [selectedCase]);
 
   return (
     <section
@@ -620,82 +891,68 @@ export function DeclassifiedOperations({ locale = "en" }: { locale?: Locale }) {
             className="intel-bureaucratic mb-8"
             style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: INTEL.greenText }}
           >
-            {isRo ? "OPERA\u021AIUNI DECLASIFICATE" : "DECLASSIFIED OPERATIONS"}
+            {isRo ? "OPERAȚIUNI DECLASIFICATE" : "DECLASSIFIED OPERATIONS"}
           </div>
           <div
             className="intel-editorial"
             style={{ fontSize: "clamp(28px, 5vw, 56px)", lineHeight: 1.2 }}
           >
             {isRo
-              ? "Opera\u021Biuni reale care citesc ca fic\u021Biune."
-              : "Real operations that read like fiction."}
+              ? "Dosare istorice declasificate în mod oficial."
+              : "Historical operations released to the public archive."}
           </div>
         </div>
 
         {/* Case files */}
-        <div className="space-y-12 lg:space-y-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {cases.map((file, i) => (
             <motion.div
               key={file.codename}
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 1.2, delay: i * 0.15, ease: "easeOut" }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 1.0, delay: i * 0.1, ease: "easeOut" }}
             >
               <div
-                className="p-8 sm:p-10 lg:p-12"
+                onClick={() => setSelectedCase(file)}
+                className="group cursor-pointer p-8 sm:p-10 h-full flex flex-col justify-between transition-all duration-300 hover:border-emerald-800/40 hover:bg-[#070707]"
                 style={{ background: INTEL.surface, border: `1px solid ${INTEL.border}` }}
               >
-                {/* Case header row */}
-                <div className="flex flex-wrap items-baseline justify-between gap-4 mb-8">
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-mono), monospace",
-                      fontSize: "clamp(18px, 2.5vw, 28px)",
-                      fontWeight: 700,
-                      letterSpacing: "0.08em",
-                      color: INTEL.paper,
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {file.codename}
-                  </h3>
-                  <span
-                    className="intel-bureaucratic"
-                    style={{ fontSize: "clamp(12px, 1vw, 15px)", color: INTEL.greenText }}
-                  >
-                    {file.year}
+                <div>
+                  {/* Case header row */}
+                  <div className="flex flex-wrap items-baseline justify-between gap-4 mb-6">
+                    <h3
+                      className="group-hover:text-emerald-500 transition-colors"
+                      style={{
+                        fontFamily: "var(--font-mono), monospace",
+                        fontSize: "clamp(16px, 2vw, 22px)",
+                        fontWeight: 700,
+                        letterSpacing: "0.08em",
+                        color: INTEL.paper,
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {file.codename}
+                    </h3>
+                    <span
+                      className="intel-bureaucratic"
+                      style={{ fontSize: "clamp(11px, 0.9vw, 13px)", color: INTEL.greenText }}
+                    >
+                      {file.year}
+                    </span>
+                  </div>
+
+                  {/* Summary */}
+                  <p className="intel-body text-sm max-w-2xl mb-8 leading-relaxed">
+                    {file.summary}
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between border-t border-rgba(232, 226, 213, 0.05) pt-4">
+                  <span className="intel-bureaucratic text-[10px] text-emerald-800/70">
+                    {file.agency}
                   </span>
-                </div>
-
-                {/* Field rows */}
-                <div className="space-y-5 mb-8" style={{ borderTop: `1px solid ${INTEL.border}`, paddingTop: "20px" }}>
-                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-4 items-baseline">
-                    <span className="intel-bureaucratic" style={{ fontSize: "clamp(10px, 0.8vw, 13px)", color: INTEL.greenText }}>
-                      {isRo ? "TEATRU" : "THEATER"}
-                    </span>
-                    <span className="intel-body" style={{ color: INTEL.paper }}>{file.theater}</span>
-                  </div>
-                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-4 items-baseline">
-                    <span className="intel-bureaucratic" style={{ fontSize: "clamp(10px, 0.8vw, 13px)", color: INTEL.greenText }}>
-                      {isRo ? "OBIECTIV" : "OBJECTIVE"}
-                    </span>
-                    <span className="intel-body">{file.objective}</span>
-                  </div>
-                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-4 items-baseline">
-                    <span className="intel-bureaucratic" style={{ fontSize: "clamp(10px, 0.8vw, 13px)", color: INTEL.greenText }}>
-                      {isRo ? "REZULTAT" : "OUTCOME"}
-                    </span>
-                    <span className="intel-body" style={{ color: INTEL.paper }}>{file.outcome}</span>
-                  </div>
-                </div>
-
-                {/* Summary */}
-                <p className="intel-body max-w-3xl mb-6">{file.summary}</p>
-
-                {/* Redacted detail */}
-                <div className="flex items-center gap-3">
-                  <span className="intel-redacted" style={{ fontSize: "clamp(12px, 1vw, 15px)", padding: "2px 6px" }}>
-                    {file.redactedDetail}
+                  <span className="intel-bureaucratic text-[10px] group-hover:text-[#E8E2D5] transition-colors">
+                    {isRo ? "[ DOSAR COMPLET ] →" : "[ EXPLORE DOSSIER ] →"}
                   </span>
                 </div>
               </div>
@@ -703,11 +960,133 @@ export function DeclassifiedOperations({ locale = "en" }: { locale?: Locale }) {
           ))}
         </div>
       </motion.div>
+
+      {/* Clandestine Dossier Modal */}
+      {selectedCase && (
+        <div
+          onClick={() => setSelectedCase(null)}
+          className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 text-left"
+        >
+          <div
+            className="border border-rgba(232, 226, 213, 0.12) bg-[#020202] max-w-4xl w-full rounded-sm text-[#E8E2D5] flex flex-col relative max-h-[90vh] overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Icon "X" */}
+            <button
+              onClick={() => setSelectedCase(null)}
+              className="absolute top-4 right-4 text-[#E8E2D5]/40 hover:text-[#E8E2D5] hover:bg-[#070707] border border-transparent hover:border-rgba(232, 226, 213, 0.1) transition-colors p-2 rounded-sm z-50"
+              aria-label={isRo ? "Închide dosarul" : "Close dossier"}
+            >
+              <X size={18} />
+            </button>
+
+            {/* Scrollable Content Wrapper */}
+            <div className="overflow-y-auto p-6 sm:p-10 w-full">
+              {/* Modal Header */}
+              <div className="flex justify-between items-start border-b border-rgba(232, 226, 213, 0.08) pb-6 mb-6 pr-8">
+                <div>
+                  <div className="intel-bureaucratic text-[10px] text-emerald-800/70 tracking-widest mb-1.5">
+                    {isRo ? "DOSAR DECLASIFICAT // E.O. 12958 SEC. 3.3" : "DECLASSIFIED RECORD // E.O. 12958 SEC. 3.3"}
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-mono uppercase tracking-wider text-[#E8E2D5]">
+                    {selectedCase.codename}
+                  </h2>
+                </div>
+                <button
+                  onClick={() => setSelectedCase(null)}
+                  className="intel-bureaucratic hover:text-emerald-500 transition-colors text-[11px] p-2 border border-rgba(232, 226, 213, 0.1) bg-[#070707] rounded-sm hidden sm:block mr-4"
+                >
+                  {isRo ? "[ ÎNCHIDE DOSARUL ]" : "[ CLOSE DOSSIER ]"}
+                </button>
+              </div>
+
+            {/* Content Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-8">
+              {/* Metadata Column */}
+              <div className="space-y-6 border-r border-rgba(232, 226, 213, 0.05) pr-6 font-mono text-xs">
+                <div>
+                  <div className="text-[10px] text-emerald-800 tracking-wider mb-1 uppercase">{isRo ? "Teatru" : "Theater"}</div>
+                  <div className="text-[#E8E2D5]">{selectedCase.theater}</div>
+                </div>
+                <div>
+                  <div className="text-[10px] text-emerald-800 tracking-wider mb-1 uppercase">{isRo ? "Perioadă" : "Year"}</div>
+                  <div className="text-[#E8E2D5]">{selectedCase.year}</div>
+                </div>
+                <div>
+                  <div className="text-[10px] text-emerald-800 tracking-wider mb-1 uppercase">{isRo ? "Agenții Coordonatoare" : "Agencies"}</div>
+                  <div className="text-[#E8E2D5]">{selectedCase.agency}</div>
+                </div>
+                <div>
+                  <div className="text-[10px] text-emerald-800 tracking-wider mb-1 uppercase">Clearance</div>
+                  <div className="inline-block px-2 py-0.5 text-[10px] border border-emerald-800/40 text-emerald-500 font-bold uppercase rounded-sm">
+                    {isRo ? "Declasificat" : "Declassified"}
+                  </div>
+                </div>
+              </div>
+
+              {/* Dossier Details Column */}
+              <div className="space-y-6">
+                <div>
+                  <h4 className="intel-bureaucratic text-[10px] text-emerald-800 tracking-wider mb-2 uppercase">
+                    {isRo ? "1. Rezumat Executiv" : "1. Executive Summary"}
+                  </h4>
+                  <p className="intel-body text-sm leading-relaxed" style={{ color: "#D1CBBF" }}>
+                    {selectedCase.longSummary}
+                  </p>
+                </div>
+
+                <div className="border-t border-rgba(232, 226, 213, 0.05) pt-6">
+                  <h4 className="intel-bureaucratic text-[10px] text-emerald-800 tracking-wider mb-4 uppercase">
+                    {isRo ? "2. Cronologia Evenimentelor" : "2. Timeline of Target Actions"}
+                  </h4>
+                  <div className="space-y-4">
+                    {selectedCase.timeline.map((item, idx) => (
+                      <div key={idx} className="flex gap-4 items-start">
+                        <span className="font-mono text-xs font-bold text-[#E8E2D5] bg-[#1C3A1C]/30 border border-[#3A5A3A]/40 px-2 py-0.5 shrink-0 rounded-sm">
+                          {item.date}
+                        </span>
+                        <p className="intel-body text-sm leading-relaxed" style={{ color: "#C4BEB3" }}>
+                          {item.event}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="border-t border-rgba(232, 226, 213, 0.05) pt-6">
+                  <h4 className="intel-bureaucratic text-[10px] text-emerald-800 tracking-wider mb-2 uppercase">
+                    {isRo ? "3. Figuri Cheie" : "3. Key Personnel"}
+                  </h4>
+                  <p className="intel-body text-sm leading-relaxed font-mono text-[#D1CBBF]">
+                    {selectedCase.keyFigures.join(" // ")}
+                  </p>
+                </div>
+
+                <div className="border-t border-rgba(232, 226, 213, 0.05) pt-6">
+                  <h4 className="intel-bureaucratic text-[10px] text-emerald-800 tracking-wider mb-3 uppercase">
+                    {isRo ? "4. Interceptări & Comunicații Clandestine" : "4. Clandestine Communications Intercept"}
+                  </h4>
+                  <div className="bg-[#030303] border border-rgba(232, 226, 213, 0.08) p-5 font-mono text-xs text-[#E8E2D5]/80 rounded-sm leading-relaxed whitespace-pre-wrap select-text">
+                    <span className="block text-[9px] text-[#2A4A2A] mb-2 uppercase tracking-widest border-b border-rgba(232, 226, 213, 0.05) pb-1">
+                      Raw Telex Output // System: SIG-INT-D
+                    </span>
+                    {parseTelexRedactions(selectedCase.fieldIntercept)}
+                  </div>
+                  <div className="text-[10px] font-mono text-rgba(232, 226, 213, 0.3) mt-2 italic">
+                    {isRo ? "* Notă: Puneți cursorul peste blocurile negre din interceptare pentru a le declasifica în timp real." : "* Note: Hover/click on black redaction bars to temporarily reveal classified wiretap content."}
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+
 // 7. InstallationsList — Quiet vertical list
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -798,7 +1177,7 @@ export function InstallationsList({ nodes, locale = "en" }: { nodes: Intelligenc
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 8. FiveEyesGeometry — SVG pentagon with animated connecting lines
+// 8. FiveEyesGeometry — Symmetrical network map representation (no pentagram)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
@@ -806,20 +1185,13 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const isRo = locale === "ro";
 
-  const points = [
-    { x: 250, y: 60, label: "USA" },
-    { x: 402, y: 176, label: "UK" },
-    { x: 344, y: 370, label: "AUS" },
-    { x: 156, y: 370, label: "CAN" },
-    { x: 98, y: 176, label: "NZL" },
+  const nodes = [
+    { x: 250, y: 200, label: "USA", agency: "NSA", region: "NORTH AMERICA", coords: "39.1104° N / 76.7358° W" },
+    { x: 80, y: 100, label: "CAN", agency: "CSE", region: "NORTH AMERICA", coords: "45.4215° N / 75.6972° W" },
+    { x: 80, y: 300, label: "UK", agency: "GCHQ", region: "EUROPE", coords: "51.8979° N / 2.0833° W" },
+    { x: 420, y: 100, label: "AUS", agency: "ASD", region: "ASIA-PACIFIC", coords: "35.2809° S / 149.1300° E" },
+    { x: 420, y: 300, label: "NZL", agency: "GCSB", region: "ASIA-PACIFIC", coords: "41.2865° S / 174.7762° E" },
   ];
-
-  const lines: [number, number][] = [];
-  for (let i = 0; i < 5; i++) {
-    for (let j = i + 1; j < 5; j++) {
-      lines.push([i, j]);
-    }
-  }
 
   return (
     <section
@@ -833,88 +1205,149 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
             className="intel-bureaucratic mb-8"
             style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: INTEL.greenText }}
           >
-            {isRo ? "ALIAN\u021A\u0102 DE INFORMA\u021AII" : "INTELLIGENCE ALLIANCE"}
+            {isRo ? "ALIANȚĂ DE INFORMAȚII" : "INTELLIGENCE ALLIANCE"}
           </div>
           <div
             className="intel-editorial mx-auto"
             style={{ fontSize: "clamp(28px, 5vw, 56px)", lineHeight: 1.2, maxWidth: "700px" }}
           >
             {isRo
-              ? "Cei cinci ochi care v\u0103d totul."
-              : "The five eyes that see everything."}
+              ? "Structura de cooperare globală."
+              : "The architecture of global cooperation."}
           </div>
         </div>
 
-        <div className="flex justify-center">
-          <svg viewBox="0 0 500 440" className="w-full max-w-[500px] h-auto">
-            {lines.map(([a, b], i) => {
-              const p1 = points[a];
-              const p2 = points[b];
-              const length = Math.sqrt((p2.x - p1.x) ** 2 + (p2.y - p1.y) ** 2);
-              return (
-                <line
-                  key={`${a}-${b}`}
-                  x1={p1.x}
-                  y1={p1.y}
-                  x2={p2.x}
-                  y2={p2.y}
-                  stroke={INTEL.green}
-                  strokeWidth="1"
-                  strokeOpacity={0.4}
-                  strokeDasharray={length}
-                  strokeDashoffset={inView ? 0 : length}
-                  style={{
-                    transition: `stroke-dashoffset ${1.5 + i * 0.15}s ease-out ${0.3 + i * 0.1}s`,
-                  }}
-                />
-              );
-            })}
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 justify-center">
+          {/* Schematic SVG */}
+          <div className="relative w-full max-w-[500px] border border-rgba(232, 226, 213, 0.05) p-6 bg-[#030303] rounded-sm shrink-0">
+            <div className="absolute top-3 left-3 text-[9px] font-mono text-emerald-800/60 uppercase tracking-widest">
+              Topological Link Array // System: FVEY
+            </div>
+            <svg viewBox="0 0 500 400" className="w-full h-auto">
+              {/* Background grid */}
+              <defs>
+                <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(232, 226, 213, 0.02)" strokeWidth="1" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#grid)" />
 
-            {points.map((p, i) => (
-              <g key={p.label}>
-                <circle
-                  cx={p.x}
-                  cy={p.y}
-                  r={inView ? 4 : 0}
-                  fill={INTEL.greenText}
-                  style={{ transition: `r 0.8s ease-out ${0.5 + i * 0.2}s` }}
-                />
-                <circle
-                  cx={p.x}
-                  cy={p.y}
-                  r={inView ? 10 : 0}
-                  fill="none"
+              {/* Faint technical axes */}
+              <line x1="250" y1="20" x2="250" y2="380" stroke="rgba(232, 226, 213, 0.03)" strokeWidth="1" strokeDasharray="4 4" />
+              <line x1="20" y1="200" x2="480" y2="200" stroke="rgba(232, 226, 213, 0.03)" strokeWidth="1" strokeDasharray="4 4" />
+
+              {/* Concentric grid frames */}
+              <circle cx="250" cy="200" r="100" fill="none" stroke="rgba(232, 226, 213, 0.02)" strokeWidth="1" />
+              <circle cx="250" cy="200" r="180" fill="none" stroke="rgba(232, 226, 213, 0.01)" strokeWidth="1" />
+
+              {/* Links from center (USA) to spokes */}
+              {nodes.slice(1).map((node, i) => (
+                <line
+                  key={node.label}
+                  x1="250"
+                  y1="200"
+                  x2={node.x}
+                  y2={node.y}
                   stroke={INTEL.green}
                   strokeWidth="1"
-                  strokeOpacity={0.3}
-                  style={{ transition: `r 0.8s ease-out ${0.5 + i * 0.2}s` }}
+                  strokeOpacity={inView ? 0.35 : 0}
+                  className="transition-all duration-1000"
+                  style={{ transitionDelay: `${0.3 + i * 0.15}s` }}
                 />
-                <text
-                  x={p.x}
-                  y={p.y + (i === 0 ? -22 : 30)}
-                  textAnchor="middle"
-                  fill={INTEL.greenText}
-                  fontSize="12"
-                  fontFamily="var(--font-mono), monospace"
-                  letterSpacing="0.2em"
-                  opacity={inView ? 1 : 0}
-                  style={{
-                    transition: `opacity 1s ease-out ${1 + i * 0.15}s`,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {p.label}
-                </text>
-              </g>
-            ))}
-          </svg>
+              ))}
+
+              {/* Outer perimeter bounds — faint, logical loop */}
+              <path
+                d="M 80,100 L 420,100 L 420,300 L 80,300 Z"
+                fill="none"
+                stroke="rgba(28, 58, 28, 0.15)"
+                strokeWidth="1"
+                strokeDasharray="5 5"
+              />
+
+              {/* Node points and markers */}
+              {nodes.map((node, i) => (
+                <g key={node.label} className="cursor-default">
+                  {/* Outer circle halo */}
+                  <circle
+                    cx={node.x}
+                    cy={node.y}
+                    r={node.label === "USA" ? 8 : 6}
+                    fill="none"
+                    stroke={INTEL.greenText}
+                    strokeWidth="1"
+                    strokeOpacity={0.6}
+                  />
+                  {/* Solid center dot */}
+                  <circle
+                    cx={node.x}
+                    cy={node.y}
+                    r="2.5"
+                    fill={INTEL.paper}
+                  />
+                  {/* Technical Text layout */}
+                  <text
+                    x={node.x}
+                    y={node.y + (node.y > 200 ? 22 : -14)}
+                    textAnchor="middle"
+                    fill={INTEL.paper}
+                    fontSize="11"
+                    fontFamily="var(--font-mono), monospace"
+                    fontWeight="bold"
+                    letterSpacing="0.1em"
+                  >
+                    {node.label}
+                  </text>
+                  <text
+                    x={node.x}
+                    y={node.y + (node.y > 200 ? 34 : -2)}
+                    textAnchor="middle"
+                    fill={INTEL.greenText}
+                    fontSize="9"
+                    fontFamily="var(--font-mono), monospace"
+                    letterSpacing="0.05em"
+                  >
+                    {node.agency}
+                  </text>
+                </g>
+              ))}
+            </svg>
+          </div>
+
+          {/* Details list */}
+          <div className="flex-1 max-w-[550px] space-y-6 text-left">
+            <div className="border-l-2 border-[#1C3A1C] pl-4">
+              <span className="intel-bureaucratic block text-[11px] text-[#2A4A2A] mb-1">
+                {isRo ? "CORELARE DATE" : "DATA CORRELATION"}
+              </span>
+              <p className="intel-body text-sm leading-relaxed" style={{ fontSize: "14px", lineHeight: "1.7" }}>
+                {isRo
+                  ? "Sistemul funcționează ca un canal integrat de schimb de date, permițând agențiilor partenere să acceseze baze de date comune fără întrerupere, conform directivelor stabilite în cadrul Tratatului UKUSA."
+                  : "The system functions as an integrated pipeline of raw intercept sharing, allowing partner agencies to query shared databases seamlessly under the established mandates of the UKUSA Treaty."}
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-4">
+              {nodes.map((node) => (
+                <div key={node.label} className="p-3 border border-rgba(232, 226, 213, 0.04) bg-[#020202]">
+                  <div className="flex justify-between items-baseline mb-1">
+                    <span className="font-mono text-xs font-semibold text-[#E8E2D5]">{node.label}</span>
+                    <span className="font-mono text-[9px] text-[#2A4A2A]">{node.agency}</span>
+                  </div>
+                  <div className="font-mono text-[9px] text-rgba(232, 226, 213, 0.3)" style={{ letterSpacing: "0.02em" }}>
+                    {node.coords}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="mt-16 text-center max-w-3xl mx-auto">
+        <div className="mt-16 text-center max-w-3xl mx-auto border-t border-rgba(232, 226, 213, 0.05) pt-12">
           <p className="intel-body" style={{ lineHeight: 2 }}>
             {isRo
-              ? "Alian\u021Ba Five Eyes \u2014 compus\u0103 din Statele Unite, Regatul Unit, Australia, Canada \u0219i Noua Zeeland\u0103 \u2014 constituie cel mai extins parteneriat de schimb de informa\u021Bii din istorie. Originile sale dateaz\u0103 din Al Doilea R\u0103zboi Mondial, iar structura sa actual\u0103 r\u0103m\u00E2ne \u00EEn mare parte clasificat\u0103."
-              : "The Five Eyes alliance \u2014 comprising the United States, United Kingdom, Australia, Canada, and New Zealand \u2014 constitutes the most extensive and deeply integrated intelligence-sharing partnership in history. Its origins trace to World War II, and its current operational structure remains largely classified."}
+              ? "Alianța Five Eyes — compusă din Statele Unite, Regatul Unit, Australia, Canada și Noua Zeelandă — constituie cel mai extins parteneriat de schimb de informații din istorie. Originile sale datează din Al Doilea Război Mondial, iar structura sa actuală rămâne în mare parte clasificată."
+              : "The Five Eyes alliance — comprising the United States, United Kingdom, Australia, Canada, and New Zealand — constitutes the most extensive and deeply integrated intelligence-sharing partnership in history. Its origins trace to World War II, and its current operational structure remains largely classified."}
           </p>
         </div>
       </div>
@@ -922,7 +1355,7 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+
 // 9. HeritageList — Minimal vertical date list
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -1259,13 +1692,336 @@ export function FuturePrograms({ programs, locale = "en" }: { programs: Intellig
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 12. TheVault — CIA Reading Room reference
+// 12. TheVault — CIA Reading Room Interactive Explorer
 // ─────────────────────────────────────────────────────────────────────────────
+
+interface VaultDoc {
+  id: string;
+  refNo: string;
+  date: string;
+  title: string;
+  classification: string;
+  to: string;
+  from: string;
+  subject: string;
+  content: string;
+}
+
+interface VaultFolder {
+  id: string;
+  name: string;
+  documents: VaultDoc[];
+}
+
+const VAULT_DATA_EN: VaultFolder[] = [
+  {
+    id: "cold-war",
+    name: "COLD WAR DOSSIERS",
+    documents: [
+      {
+        id: "cuba-u2",
+        refNo: "CIA-NID-1962-10-22",
+        date: "22 OCTOBER 1962",
+        title: "U-2 PHOTOGRAPHIC RECONNAISSANCE OF SAN CRISTOBAL",
+        classification: "TOP SECRET // EYES ONLY",
+        to: "THE PRESIDENT OF THE UNITED STATES",
+        from: "DIRECTOR OF CENTRAL INTELLIGENCE",
+        subject: "CONFIRMED DEPLOYMENT OF SOVIET MRBMs IN CUBA",
+        content: "Photographic reconnaissance flights executed on 14 October have confirmed the installation of [redact]SS-4 Sandal medium-range ballistic missiles[/redact] near San Cristobal, Cuba. Analysts at the National Photographic Interpretation Center (NPIC) have identified [redact]six launch pads[/redact] capable of striking major urban areas of the eastern United States within [redact]18 minutes[/redact] of command authorization. Strategic bombers at Soviet staging airbases remain in alert state [redact]DEFCON-2 equivalent[/redact]."
+      },
+      {
+        id: "berlin-tunnel",
+        refNo: "CIA-SOG-1956-04-22",
+        date: "22 APRIL 1956",
+        title: "OPERATION PBJOINTLY: SOVIET INTERCEPT SUSPENSION",
+        classification: "SECRET // NOFORN",
+        to: "CHIEF, FOREIGN INTELLIGENCE STATIONS",
+        from: "BERLIN OPERATIONS STATION COMMANDER",
+        subject: "COMPROMISE AND RECOVERY ACTION AT SECTION 4",
+        content: "At approximately 0210 hours, Soviet army engineers penetrated the subterranean conduit located in the [redact]Soviet sector of Berlin[/redact]. Operation PBJOINTLY has been compromised. Post-incident analysis suggests that the [redact]KGB had advance warning[/redact] of the excavation since late 1954, likely through a high-level mole inside [redact]SIS (MI6)[/redact], code-named [redact]George Blake[/redact]. All signals recording operations at the site are ceased immediately."
+      }
+    ]
+  },
+  {
+    id: "clandestine-sci",
+    name: "CLANDESTINE SCIENCE",
+    documents: [
+      {
+        id: "mkultra-68",
+        refNo: "CIA-TSS-MKULTRA-68",
+        date: "14 JUNE 1957",
+        title: "SUBPROJECT 68: PSYCHOACTIVE DRUG EVALUATION",
+        classification: "SECRET // DECLASSIFIED A1",
+        to: "CHIEF, TECHNICAL SERVICES STAFF",
+        from: "DIRECTOR, RESEARCH SUBPROJECT 68",
+        subject: "TREATMENT PATTERNS AT THE ALLAN MEMORIAL INSTITUTE",
+        content: "Subproject 68 experiments continue to assess the disruption of cognitive patterns via administration of [redact]high-dose LSD-25[/redact] combined with prolonged [redact]sensory deprivation[/redact]. Subjects are placed in induced sleep states for periods up to [redact]35 days[/redact] while listening to tape loops repeating verbal anchors. Preliminary outcomes indicate [redact]severe retrograde amnesia[/redact] in 85% of subjects, with complete personality de-patterning achieved."
+      },
+      {
+        id: "stargate-81",
+        refNo: "DIA-DIA-SG-81",
+        date: "18 SEPTEMBER 1981",
+        title: "PROJECT STAR GATE: ESPIONAGE APPLICATIONS",
+        classification: "SECRET // EYES ONLY // NOFORN",
+        to: "COMMANDER, INSCOM",
+        from: "PROJECT COORDINATOR, PSYCHOENERGETICS DIVISION",
+        subject: "REMOTE VIEWING MISSION REPORT - USSR SUBMARINE BASE",
+        content: "The viewer was targeted against the classified submarine building at [redact]Severodvinsk, USSR[/redact]. The viewer described a massive new class of submarine under construction, characterized by [redact]double hull titanium alloy[/redact] and carrying [redact]20 ballistic missile launch tubes[/redact]. Intelligence correlation confirms the presence of the [redact]Typhoon-class SSBN[/redact], matching the layout produced by the viewer during the session."
+      }
+    ]
+  },
+  {
+    id: "anomalous-uap",
+    name: "ANOMALOUS PHENOMENA",
+    documents: [
+      {
+        id: "bluebook-52",
+        refNo: "USAF-BB-1952-07-19",
+        date: "19 JULY 1952",
+        title: "PROJECT BLUE BOOK: INCIDENT REPORT WASHINGTON DC",
+        classification: "RESTRICTED // ARCHIVE",
+        to: "COMMANDING GENERAL, AIR DEFENSE COMMAND",
+        from: "CHIEF, PROJECT BLUE BOOK INVESTIGATION",
+        subject: "UNIDENTIFIED RADAR INSIGHTS OVER CAPITAL AIRSPACE",
+        content: "At 2340 hours, radar operators at Washington National Airport detected [redact]seven slow-moving objects[/redact] traveling at speeds ranging from 100 to [redact]7,000 miles per hour[/redact]. Commercial pilots reported visual observations of [redact]glowing orange lights[/redact] maneuvering in ways that violate known aerodynamic physics. Interceptor aircraft scrambles were initiated; however, the objects [redact]vanished instantly[/redact] upon aircraft approach, only to return when aircraft departed."
+      },
+      {
+        id: "roswell-47",
+        refNo: "RAAF-INT-1947-07-08",
+        date: "08 JULY 1947",
+        title: "RECOVERY REPORT: DEBRIS FIELD ANOMALY",
+        classification: "TOP SECRET // EYES ONLY",
+        to: "COMMANDING GENERAL, EIGHTH AIR FORCE",
+        from: "INTELLIGENCE OFFICER, 509TH BOMB GROUP",
+        subject: "ACQUISITION OF CLASSIFIED WEATHER CONSTALLATION PARTS",
+        content: "Debris recovered from the Foster Ranch near Corona, New Mexico consists of metallic foil, wooden struts, and highly anomalous structural tape containing [redact]pictographic writing symbols[/redact]. Materials have been identified as part of the highly classified project [redact]Project Mogul balloon array[/redact], designed to detect Soviet nuclear atmospheric tests. Public media release has been altered to state the recovery of a [redact]standard weather balloon[/redact] to maintain intelligence operational security."
+      }
+    ]
+  },
+  {
+    id: "surveillance-sig",
+    name: "SURVEILLANCE SYSTEMS",
+    documents: [
+      {
+        id: "echelon-72",
+        refNo: "NSA-ECH-1972-11-03",
+        date: "03 NOVEMBER 1972",
+        title: "PROJECT ECHELON: AUTOMATED TELEGRAPH DECRYPTION",
+        classification: "SECRET // UMBRA",
+        to: "CHIEF, SIGNALS INTELLIGENCE DIRECTORATE",
+        from: "PROGRAM MANAGER, ECHELON NETWORK",
+        subject: "INTEGRATION OF DICTIONARY SEARCH WORDS AT STATION B",
+        content: "The automated signals interception system at [redact]Menwith Hill Station[/redact] is now processing all trans-atlantic satellite communications. The search matrix utilizes a [redact]dictionary keyword database[/redact] to flag telegraph and telex transmissions containing target terms. Intercepted traffic is automatically routed to [redact]NSA HQ Fort Meade[/redact] for final cryptanalytic decoding. Daily throughput has exceeded [redact]two million messages[/redact]."
+      },
+      {
+        id: "minaret-69",
+        refNo: "NSA-MIN-1969-08-15",
+        date: "15 AUGUST 1969",
+        title: "PROJECT MINARET: ANTI-WAR LIST FUSION",
+        classification: "TOP SECRET // CODEWORD",
+        to: "DIRECTOR, NATIONAL SECURITY AGENCY",
+        from: "SPECIAL OPERATIONS BRANCH CHIEF",
+        subject: "WATCHLIST COMPILATION FOR DOMESTIC ACTIVISTS",
+        content: "Pursuant to inter-agency request, the SIGINT watchlist has been updated to include [redact]1,600 prominent American citizens[/redact] involved in civil rights and anti-Vietnam war movements. Intercepted international telephone calls and cables of targets including [redact]Martin Luther King Jr. and Jane Fonda[/redact] are being distributed to [redact]the FBI and CIA[/redact] under the code name Project MINARET. No judicial warrants have been obtained for these intercepts."
+      }
+    ]
+  }
+];
+
+const VAULT_DATA_RO: VaultFolder[] = [
+  {
+    id: "cold-war",
+    name: "DOSARE RĂZBOI RECE",
+    documents: [
+      {
+        id: "cuba-u2",
+        refNo: "CIA-NID-1962-10-22",
+        date: "22 OCTOMBRIE 1962",
+        title: "RECUNOAȘTERE FOTOGRAFICĂ U-2 ÎN SAN CRISTOBAL",
+        classification: "TOP SECRET // EYES ONLY",
+        to: "PREȘEDINTELE STATELOR UNITE",
+        from: "DIRECTORUL AGENȚIEI CENTRALE DE INFORMAȚII",
+        subject: "DEPLASARE CONFIRMATĂ A RACHETELOR SOVIETICE ÎN CUBA",
+        content: "Zborurile de recunoaștere din 14 octombrie au confirmat instalarea de [redact]rachete balistice cu rază medie SS-4 Sandal[/redact] lângă San Cristobal, Cuba. Analiștii au identificat [redact]șase rampe de lansare[/redact] capabile să lovească zonele urbane din estul SUA în [redact]18 minute[/redact] de la ordin. Bombardierele strategice din bazele sovietice rămân în stare de alertă [redact]echivalentă DEFCON-2[/redact]."
+      },
+      {
+        id: "berlin-tunnel",
+        refNo: "CIA-SOG-1956-04-22",
+        date: "22 APRILIE 1956",
+        title: "OPERAȚIUNEA PBJOINTLY: SUSPENDAREA INTERCEPTĂRILOR",
+        classification: "SECRET // NOFORN",
+        to: "ȘEFUL STAȚIILOR DE INFORMAȚII EXTERNE",
+        from: "COMANDANTUL STAȚIEI DE OPERAȚIUNI BERLIN",
+        subject: "COMPROMITERE ȘI ACȚIUNE DE RECUPERARE LA SECȚIUNEA 4",
+        content: "La aproximativ ora 0210, inginerii armatei sovietice au pătruns în conducta subterană situată în [redact]sectorul sovietic din Berlin[/redact]. Operațiunea PBJOINTLY a fost compromisă. Analiza sugerează că [redact]KGB-ul a avut informații prealabile[/redact] încă din 1954, cel mai probabil printr-o cârtiță în [redact]SIS (MI6)[/redact], cu numele de cod [redact]George Blake[/redact]. Toate interceptările au fost oprite."
+      }
+    ]
+  },
+  {
+    id: "clandestine-sci",
+    name: "ȘTIINȚĂ CLANDESTINĂ",
+    documents: [
+      {
+        id: "mkultra-68",
+        refNo: "CIA-TSS-MKULTRA-68",
+        date: "14 IUNIE 1957",
+        title: "SUBPROIECTUL 68: EVALUAREA SUBSTANȚELOR PSIHOACTIVE",
+        classification: "SECRET // DECLASIFICAT A1",
+        to: "ȘEFUL PERSONALULUI DE SERVICII TEHNICE",
+        from: "DIRECTORUL SUBPROIECTULUI DE CERCETARE 68",
+        subject: "MODELE DE TRATAMENT LA INSTITUTUL ALLAN MEMORIAL",
+        content: "Experimentele subproiectului 68 continuă evaluarea perturbării cognitive prin administrarea de [redact]doze mari de LSD-25[/redact] combinată cu [redact]deprivarea senzorială[/redact] prelungită. Subiecții sunt plasați în somn indus timp de până la [redact]35 de zile[/redact] ascultând benzi audio repetitive. Rezultatele indică [redact]amnezie retrogradă severă[/redact] la 85% din cazuri."
+      },
+      {
+        id: "stargate-81",
+        refNo: "DIA-DIA-SG-81",
+        date: "18 SEPTEMBRIE 1981",
+        title: "PROIECTUL STAR GATE: APLICAȚII DE ESPIONAJ",
+        classification: "SECRET // EYES ONLY // NOFORN",
+        to: "COMANDANTUL INSCOM",
+        from: "COORDONATOR PROIECT, DIVIZIA PSIHOENERGETICĂ",
+        subject: "RAPORT DE MISIUNE - BAZA SUBMARINE URSS",
+        content: "Subiectul a vizat clădirea clasificată de submarine din [redact]Severodvinsk, URSS[/redact]. Acesta a descris un nou submarin masiv în construcție, caracterizat prin [redact]carcasă dublă din aliaj de titan[/redact] și dotat cu [redact]20 de tuburi de lansare rachete[/redact]. Datele confirmă prezența clasei [redact]Typhoon SSBN[/redact], corespunzând schiței realizate în sesiune."
+      }
+    ]
+  },
+  {
+    id: "anomalous-uap",
+    name: "FENOMENE ANOMALE",
+    documents: [
+      {
+        id: "bluebook-52",
+        refNo: "USAF-BB-1952-07-19",
+        date: "19 IULIE 1952",
+        title: "PROIECTUL BLUE BOOK: INCIDENTUL WASHINGTON DC",
+        classification: "RESTRICTIONAT // ARHIVĂ",
+        to: "GENERAL COMANDANT, COMANDAMENTUL DE APĂRARE AERIANĂ",
+        from: "ȘEFUL INVESTIGAȚIEI PROIECTULUI BLUE BOOK",
+        subject: "OBSERVAȚII RADAR NEIDENTIFICATE ÎN SPATIUL AERIAN REZIDENȚIAL",
+        content: "La ora 2340, operatorii radar de la Aeroportul Național Washington au detectat [redact]șapte obiecte cu mișcare lentă[/redact] deplasându-se cu viteze de la 100 la [redact]7.000 de mile pe oră[/redact]. Piloții au raportat [redact]lumini portocalii strălucitoare[/redact] cu manevre ce încalcă legile fizicii. Avioanele de vânătoare au fost trimise; totuși, obiectele [redact]au dispărut instantaneu[/redact] la apropierea lor."
+      },
+      {
+        id: "roswell-47",
+        refNo: "RAAF-INT-1947-07-08",
+        date: "08 IULIE 1947",
+        title: "RAPORT DE RECUPERARE: ANOMALIE DEBRIS",
+        classification: "TOP SECRET // EYES ONLY",
+        to: "GENERALUL COMANDANT, FLOTA A OPTA AERIANĂ",
+        from: "OFIȚER DE INFORMAȚII, GRUPUL 509 BOMBARDIERE",
+        subject: "ACHIZIȚIE PIESE CLASIFICATE CONSTELLAȚIE METEO",
+        content: "Resturile recuperate de la Foster Ranch de lângă Corona, New Mexico constau în folie metalică și bandă structurală anomală conținând [redact]simboluri pictografice[/redact]. Materialele au fost identificate ca parte a proiectului clasificat [redact]Project Mogul (balon aerostatic)[/redact] pentru detectarea testelor nucleare sovietice. Comunicatul de presă a fost modificat indicând un [redact]balon meteo standard[/redact]."
+      }
+    ]
+  },
+  {
+    id: "surveillance-sig",
+    name: "INFORMAȚII DIN SEMNALE",
+    documents: [
+      {
+        id: "echelon-72",
+        refNo: "NSA-ECH-1972-11-03",
+        date: "03 NOIEMBRIE 1972",
+        title: "PROIECTUL ECHELON: DECRIPTARE TELEGRAFICĂ AUTOMATĂ",
+        classification: "SECRET // UMBRA",
+        to: "ȘEFUL DIRECȚIEI DE INFORMAȚII DIN SEMNALE",
+        from: "MANAGER PROGRAM, REȚEAUA ECHELON",
+        subject: "INTEGRAREA CUVINTELOR CHEIE LA STAȚIA B",
+        content: "Sistemul automat de interceptare a semnalelor de la [redact]Menwith Hill Station[/redact] procesează acum toate comunicațiile prin satelit. Matricea de căutare utilizează o [redact]bază de date cu cuvinte cheie[/redact] pentru a semnala mesajele relevante. Traficul este direcționat automat la [redact]NSA HQ Fort Meade[/redact] pentru decodarea finală. Volumul depășește [redact]două milioane de mesaje zilnic[/redact]."
+      },
+      {
+        id: "minaret-69",
+        refNo: "NSA-MIN-1969-08-15",
+        date: "15 AUGUST 1969",
+        title: "PROIECTUL MINARET: INFORMAȚII INTERNE",
+        classification: "TOP SECRET // CODEWORD",
+        to: "DIRECTORUL AGENȚIEI DE SECURITATE NAȚIONALĂ",
+        from: "ȘEF OPERAȚIUNI SPECIALE",
+        subject: "COMPILARE LISTĂ PENTRU ACTIVIȘTII INTERNI",
+        content: "Conform solicitării inter-agenții, lista SIGINT a fost actualizată pentru a include [redact]1.600 de cetățeni americani de seamă[/redact] implicați în mișcările anti-război. Convorbirile și telegramele interceptate ale unor ținte ca [redact]Martin Luther King Jr. și Jane Fonda[/redact] are being distributed to [redact]the FBI and CIA[/redact] under the code name Project MINARET. No judicial warrants have been obtained for these intercepts."
+      }
+    ]
+  }
+];
+
+function parseRedactions(text: string, isDeclassified: boolean) {
+  const parts = text.split(/(\[redact\].*?\[\/redact\])/g);
+  return parts.map((part, index) => {
+    if (part.startsWith("[redact]") && part.endsWith("[/redact]")) {
+      const innerText = part.slice(8, -9);
+      return (
+        <span
+          key={index}
+          className={cn(
+            "transition-all duration-700 ease-in-out font-mono font-bold mx-0.5 px-0.5 rounded-sm select-text",
+            isDeclassified
+              ? "bg-[#1C3A1C]/25 text-[#E8E2D5] border border-[#3A5A3A]/40"
+              : "bg-black text-transparent select-none border border-transparent pointer-events-none"
+          )}
+        >
+          {innerText}
+        </span>
+      );
+    }
+    return part;
+  });
+}
 
 export function TheVault({ locale = "en" }: { locale?: Locale }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const isRo = locale === "ro";
+
+  const folders = isRo ? VAULT_DATA_RO : VAULT_DATA_EN;
+
+  const [activeFolderId, setActiveFolderId] = useState("cold-war");
+  const [activeDocId, setActiveDocId] = useState("cuba-u2");
+  const [isDeclassified, setIsDeclassified] = useState(false);
+  const [isDecrypting, setIsDecrypting] = useState(false);
+  const [decryptProgress, setDecryptProgress] = useState(0);
+
+  const activeFolder = folders.find((f) => f.id === activeFolderId) || folders[0];
+  const activeDoc = activeFolder.documents.find((d) => d.id === activeDocId) || activeFolder.documents[0];
+
+  const handleFolderChange = (id: string) => {
+    setActiveFolderId(id);
+    const nextFolder = folders.find((f) => f.id === id);
+    if (nextFolder && nextFolder.documents.length > 0) {
+      setActiveDocId(nextFolder.documents[0].id);
+    }
+    setIsDeclassified(false);
+    setIsDecrypting(false);
+    setDecryptProgress(0);
+  };
+
+  const handleDocChange = (id: string) => {
+    setActiveDocId(id);
+    setIsDeclassified(false);
+    setIsDecrypting(false);
+    setDecryptProgress(0);
+  };
+
+  const triggerDeclassification = () => {
+    if (isDeclassified) {
+      setIsDeclassified(false);
+      setDecryptProgress(0);
+      return;
+    }
+
+    setIsDecrypting(true);
+    setDecryptProgress(10);
+
+    const interval = setInterval(() => {
+      setDecryptProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setIsDecrypting(false);
+          setIsDeclassified(true);
+          return 100;
+        }
+        return prev + 15;
+      });
+    }, 150);
+  };
 
   return (
     <section
@@ -1276,79 +2032,147 @@ export function TheVault({ locale = "en" }: { locale?: Locale }) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
-        transition={{ duration: 2.0, ease: "easeOut" }}
-        className="mx-auto max-w-[1000px] text-center"
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="mx-auto max-w-[1200px]"
       >
-        <div
-          className="intel-bureaucratic mb-8"
-          style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: INTEL.greenText }}
-        >
-          {isRo ? "CAMERA DE LECTUR\u0102 ELECTRONIC\u0102" : "ELECTRONIC READING ROOM"}
+        {/* Section Header */}
+        <div className="mb-20 lg:mb-28 text-left">
+          <div
+            className="intel-bureaucratic mb-8"
+            style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: INTEL.greenText }}
+          >
+            {isRo ? "CAMERA DE LECTURĂ ELECTRONICĂ" : "ELECTRONIC READING ROOM"}
+          </div>
+          <div
+            className="intel-editorial"
+            style={{ fontSize: "clamp(28px, 5vw, 56px)", lineHeight: 1.2 }}
+          >
+            {isRo ? "Arhiva Documentelor Clasificate" : "The Vault"}
+          </div>
+          <p className="intel-body mt-6 max-w-3xl leading-relaxed">
+            {isRo
+              ? "Explorați o selecție simulată de documente CIA declasificate prin proceduri FOIA. Utilizați sistemul de criptanaliză pentru a îndepărta marcajele de securitate din text."
+              : "Explore a curated simulation of declassified CIA records released under the Freedom of Information Act. Use the decryption interface to scrub security redactions."}
+          </p>
         </div>
 
-        <div
-          className="intel-editorial mb-10"
-          style={{ fontSize: "clamp(28px, 5vw, 50px)", lineHeight: 1.2 }}
-        >
-          {isRo ? "Seiful" : "The Vault"}
-        </div>
+        {/* Vault Explorer Workspace */}
+        <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 border border-rgba(232, 226, 213, 0.08) bg-[#020202] rounded-sm overflow-hidden min-h-[550px] text-left">
+          
+          {/* Left Panel: Folders & Document Listing */}
+          <div className="border-r border-rgba(232, 226, 213, 0.08) flex flex-col bg-[#040404]">
+            {/* Folders List */}
+            <div className="p-4 border-b border-rgba(232, 226, 213, 0.08) space-y-2">
+              <span className="intel-bureaucratic text-[9px] text-emerald-800/60 block mb-2 tracking-widest">
+                {isRo ? "CATEGORII ARHIVĂ" : "ARCHIVE CATEGORIES"}
+              </span>
+              <div className="flex flex-wrap lg:flex-col gap-1">
+                {folders.map((folder) => (
+                  <button
+                    key={folder.id}
+                    onClick={() => handleFolderChange(folder.id)}
+                    className={cn(
+                      "w-full text-left font-mono text-[11px] px-3 py-2 transition-colors rounded-sm tracking-wider uppercase",
+                      activeFolderId === folder.id
+                        ? "bg-[#1C3A1C]/20 text-[#E8E2D5] border border-[#3A5A3A]/40 font-bold"
+                        : "text-rgba(232, 226, 213, 0.4) hover:text-[#E8E2D5] hover:bg-[#070707]"
+                    )}
+                  >
+                    📂 {folder.name}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-        <p className="intel-body mx-auto max-w-2xl mb-12" style={{ lineHeight: 2 }}>
-          {isRo
-            ? "Camera de Lectur\u0103 Electronic\u0103 FOIA a CIA con\u021Bine peste 12 milioane de pagini de documente declasificate, accesibile public. Subiectele acoper\u0103 \u0219ase decenii de opera\u021Biuni, de la evaluarea amenin\u021B\u0103rilor din R\u0103zboiul Rece p\u00E2n\u0103 la activit\u0103\u021Bi de contrainforma\u021Bii, experimentele MK-ULTRA \u0219i planificarea R\u0103zboiului din Vietnam."
-            : "The CIA\u2019s FOIA Electronic Reading Room contains over 12 million pages of declassified documents, accessible to the public. Subjects span six decades of operations, from Cold War threat assessments and counterintelligence activities to the MK-ULTRA experiments and Vietnam War planning."}
-        </p>
-
-        {/* Key stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-14 max-w-2xl mx-auto">
-          <div className="flex flex-col items-center">
-            <span
-              className="intel-editorial"
-              style={{ fontSize: "clamp(32px, 5vw, 48px)", lineHeight: 1 }}
-            >
-              12M+
-            </span>
-            <span className="intel-bureaucratic mt-3" style={{ fontSize: "clamp(10px, 0.8vw, 12px)", color: INTEL.paperDim }}>
-              {isRo ? "PAGINI" : "PAGES"}
-            </span>
+            {/* Documents in Active Folder */}
+            <div className="p-4 flex-1 space-y-2 overflow-y-auto">
+              <span className="intel-bureaucratic text-[9px] text-emerald-800/60 block mb-2 tracking-widest">
+                {isRo ? "DOSARE DISPONIBILE" : "AVAILABLE DOCUMENTS"}
+              </span>
+              <div className="space-y-1">
+                {activeFolder.documents.map((doc) => (
+                  <button
+                    key={doc.id}
+                    onClick={() => handleDocChange(doc.id)}
+                    className={cn(
+                      "w-full text-left font-mono text-xs px-3 py-2.5 transition-colors rounded-sm flex flex-col border",
+                      activeDocId === doc.id
+                        ? "border-emerald-800/40 bg-[#070707] text-[#E8E2D5]"
+                        : "border-transparent text-rgba(232, 226, 213, 0.5) hover:bg-[#070707]/50"
+                    )}
+                  >
+                    <span className="font-semibold truncate">{doc.title}</span>
+                    <span className="text-[9px] text-emerald-800/60 mt-1">{doc.refNo}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="flex flex-col items-center">
-            <span
-              className="intel-editorial"
-              style={{ fontSize: "clamp(32px, 5vw, 48px)", lineHeight: 1 }}
-            >
-              930K+
-            </span>
-            <span className="intel-bureaucratic mt-3" style={{ fontSize: "clamp(10px, 0.8vw, 12px)", color: INTEL.paperDim }}>
-              {isRo ? "DOCUMENTE" : "DOCUMENTS"}
-            </span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span
-              className="intel-editorial"
-              style={{ fontSize: "clamp(32px, 5vw, 48px)", lineHeight: 1 }}
-            >
-              60+
-            </span>
-            <span className="intel-bureaucratic mt-3" style={{ fontSize: "clamp(10px, 0.8vw, 12px)", color: INTEL.paperDim }}>
-              {isRo ? "ANI DE ARHIV\u0102" : "YEARS OF ARCHIVES"}
-            </span>
-          </div>
-        </div>
 
-        <div className="intel-separator mb-10 mx-auto max-w-[200px]" style={{ background: INTEL.green, opacity: 0.2 }} />
+          {/* Right Panel: Document Viewer */}
+          <div className="p-6 sm:p-10 flex flex-col justify-between bg-[#030303] min-h-[450px]">
+            {/* Document Header Controls */}
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-rgba(232, 226, 213, 0.08) pb-5 mb-6">
+              <div>
+                <span className="font-mono text-[10px] text-emerald-500 font-bold tracking-widest border border-emerald-500/30 px-2 py-0.5 rounded-sm bg-[#1C3A1C]/10 inline-block uppercase">
+                  {activeDoc.classification}
+                </span>
+                <span className="font-mono text-[9px] text-rgba(232, 226, 213, 0.3) ml-3 tracking-wider">
+                  {activeDoc.refNo}
+                </span>
+              </div>
 
-        <div className="intel-bureaucratic" style={{ fontSize: "clamp(10px, 0.8vw, 12px)", color: INTEL.paperFaint, letterSpacing: "0.15em" }}>
-          {isRo
-            ? "SURSA: CIA.GOV/READINGROOM \u2014 ACCESIBIL PUBLIC PRIN FOIA"
-            : "SOURCE: CIA.GOV/READINGROOM \u2014 PUBLICLY ACCESSIBLE UNDER FOIA"}
+              {/* Decrypt Trigger Button */}
+              <button
+                onClick={triggerDeclassification}
+                disabled={isDecrypting}
+                className={cn(
+                  "font-mono text-[11px] px-4 py-2 border transition-colors rounded-sm uppercase tracking-wider",
+                  isDeclassified
+                    ? "bg-[#2d1212]/30 text-red-400 border-red-950/40 hover:bg-[#2d1212]/50"
+                    : "bg-[#1C3A1C]/30 text-emerald-400 border-emerald-950/40 hover:bg-[#1C3A1C]/50"
+                )}
+              >
+                {isDecrypting ? (
+                  <span>{isRo ? "DECRIPTARE INIȚIATĂ..." : "DECRYPTING LOG..."} [{Math.min(decryptProgress, 100)}%]</span>
+                ) : isDeclassified ? (
+                  <span>🔒 {isRo ? "RE-CLASIFICĂ DOSARUL" : "RE-CLASSIFY RECORD"}</span>
+                ) : (
+                  <span>🔓 {isRo ? "SOLICITĂ DECLASIFICAREA" : "REQUEST DECLASSIFICATION"}</span>
+                )}
+              </button>
+            </div>
+
+            {/* Document Sheet (Typewriter styling) */}
+            <div className="flex-1 font-mono text-left max-w-3xl">
+              {/* Bureaucratic Memo Info */}
+              <div className="text-[11px] text-[#2A4A2A] space-y-1 pb-6 border-b border-rgba(232, 226, 213, 0.04) mb-6 uppercase tracking-wide">
+                <div>TO: {activeDoc.to}</div>
+                <div>FROM: {activeDoc.from}</div>
+                <div>DATE: {activeDoc.date}</div>
+                <div>SUBJECT: {activeDoc.subject}</div>
+              </div>
+
+              {/* Document Text */}
+              <div className="text-sm text-[#E8E2D5]/90 leading-relaxed whitespace-pre-line select-text">
+                {parseRedactions(activeDoc.content, isDeclassified)}
+              </div>
+            </div>
+
+            {/* Document Footer */}
+            <div className="border-t border-rgba(232, 226, 213, 0.05) pt-5 mt-8 flex flex-wrap justify-between items-center text-[10px] font-mono text-rgba(232, 226, 213, 0.25)">
+              <div>FOIA CASE NO: 2026-F-0809 // RECORDS RETRO-DECONV</div>
+              <div>{isRo ? "SURSA: CIA READING ROOM SIM" : "SOURCE: CIA READING ROOM SIM"}</div>
+            </div>
+
+          </div>
         </div>
       </motion.div>
     </section>
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+
 // 13. ClosingQuote — Playfair italic, centered
 // ─────────────────────────────────────────────────────────────────────────────
 
