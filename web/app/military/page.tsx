@@ -37,7 +37,7 @@ import {
   DARPAProgramGrid,
   NuclearTriadDiagram,
   GlobalCarrierMap,
-  ParallaxMilitaryHero,
+  VideoMilitaryHero,
   BudgetComparisonBar,
   AlliancesShowcase,
   SOCOMGrid,
@@ -241,10 +241,10 @@ export default async function MilitaryPage() {
       <MilStyles />
 
 
-      {/* ─── §1  HERO — B-2 emerging from darkness ─────────────────────────── */}
-      <ParallaxMilitaryHero
-        imageSrc={SITE_IMAGES.military.hero}
-        imageAlt="B-2 Spirit stealth bomber"
+      {/* ─── §1  HERO — looping video showcase ─────────────────────────── */}
+      <VideoMilitaryHero
+        videoSrc="/videos/military/supremacy-wave.mp4"
+        posterSrc={SITE_IMAGES.military.hero}
         title={locale === 'ro' ? "PUTERE ABSOLUTĂ" : "ABSOLUTE POWER"}
         subtitle={locale === 'ro' ? "Complexul Militar · Industrial · de Intelligence al Statelor Unite" : "United States Military · Industrial · Intelligence Complex"}
         tagline={locale === 'ro' ? "Prima în forță · Prima în pregătire · Prima în lume" : "First in strength · First in readiness · First in the world"}
