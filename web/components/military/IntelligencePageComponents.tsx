@@ -983,21 +983,13 @@ export function DeclassifiedOperations({ locale = "en" }: { locale?: Locale }) {
             {/* Scrollable Content Wrapper */}
             <div className="overflow-y-auto p-6 sm:p-10 w-full">
               {/* Modal Header */}
-              <div className="flex justify-between items-start border-b border-rgba(232, 226, 213, 0.08) pb-6 mb-6 pr-8">
-                <div>
-                  <div className="intel-bureaucratic text-[10px] text-emerald-800/70 tracking-widest mb-1.5">
-                    {isRo ? "DOSAR DECLASIFICAT // E.O. 12958 SEC. 3.3" : "DECLASSIFIED RECORD // E.O. 12958 SEC. 3.3"}
-                  </div>
-                  <h2 className="text-2xl sm:text-3xl font-mono uppercase tracking-wider text-[#E8E2D5]">
-                    {selectedCase.codename}
-                  </h2>
+              <div className="border-b border-rgba(232, 226, 213, 0.08) pb-6 mb-6 pr-8">
+                <div className="intel-bureaucratic text-[10px] text-emerald-800/70 tracking-widest mb-1.5">
+                  {isRo ? "DOSAR DECLASIFICAT // E.O. 12958 SEC. 3.3" : "DECLASSIFIED RECORD // E.O. 12958 SEC. 3.3"}
                 </div>
-                <button
-                  onClick={() => setSelectedCase(null)}
-                  className="intel-bureaucratic hover:text-emerald-500 transition-colors text-[11px] p-2 border border-rgba(232, 226, 213, 0.1) bg-[#070707] rounded-sm hidden sm:block mr-4"
-                >
-                  {isRo ? "[ ÎNCHIDE DOSARUL ]" : "[ CLOSE DOSSIER ]"}
-                </button>
+                <h2 className="text-2xl sm:text-3xl font-mono uppercase tracking-wider text-[#E8E2D5]">
+                  {selectedCase.codename}
+                </h2>
               </div>
 
             {/* Content Layout */}
