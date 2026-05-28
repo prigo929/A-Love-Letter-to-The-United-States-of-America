@@ -314,7 +314,6 @@ export function GlobalCommandMap({
                   </Geographies>
 
                   {bases.map((base) => {
-                    const isActiveRegion = base.Region === activeRegionId;
                     const isSelected = selectedBase?.ID === base.ID;
                     return (
                       <Marker key={base.ID} coordinates={parseCoordinates(base.Coordinates)}>
@@ -332,9 +331,17 @@ export function GlobalCommandMap({
                           className="cursor-pointer"
                         >
                           <circle
-                            r={isSelected ? 4 : isActiveRegion ? 3 : 2.2}
+                            r={9}
+                            fill="transparent"
+                            stroke="transparent"
+                            strokeWidth={0}
+                            className="cursor-pointer"
+                          />
+                          <circle
+                            r={isSelected ? 4 : 3}
                             fill="#fafafa"
-                            opacity={isActiveRegion ? 1 : 0.42}
+                            opacity={1}
+                            pointerEvents="none"
                           />
                         </g>
                       </Marker>
