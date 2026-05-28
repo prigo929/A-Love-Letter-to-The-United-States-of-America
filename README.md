@@ -117,7 +117,7 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 | :--- | :--- | :--- | :--- |
 | **📈 Economy & Capital** | **"Macro-Capital Editorial"**<br>• Clean grid alignments<br>• Wall Street Journal-grade typography<br>• High-contrast monetary scales | • **GDP & Venture Capital Charts**: Gold-highlighted Recharts comparisons.<br>• **National Debt Ticker**: Live real-time projection.<br>• **Innovation Index**: Global patent comparative metric. | • `/economy`<br>• `/economy/gdp-growth`<br>• `/economy/capital-markets`<br>• `/economy/startups-venture-capital`<br>• `/economy/dollar-dominance`<br>• `/economy/trade-and-exports` |
 | **🌲 Natural Majesty** | **"Spatial Editorial"**<br>• Earthy obsidian backdrops<br>• Emerald green accents<br>• Generous typographic quote spacing | • **Geyser Eruption Simulator**: Real-time interval tracker.<br>• **Biodiversity Strata**: Interactive layered mountain mapping.<br>• **NPS Mobile Charts**: Angle-rotated responsive label charts. | • `/nature`<br>• `/nature/national-parks`<br>• `/nature/alaska`<br>• `/nature/rockies`<br>• `/nature/grand-canyon`<br>• `/nature/yellowstone`<br>• `/nature/great-lakes` |
-| **🎖️ Arsenal of Democracy** | **"Minimalist Black-Ops"**<br>• Stark monochromatic headers<br>• Amber alert accents<br>• Military CRT scanline effects | • **Aircraft Strike Group Tracker**: Precise SVG map mapping live carrier coordinates.<br>• **Nuclear Triad Simulation**: Interactive silo, sub, and bomber parity engine.<br>• **DARPA Timeline**: Dynamic historical innovation milestone cards. | • `/military`<br>• `/military/navy`<br>• `/military/air-force`<br>• `/military/space-force`<br>• `/military/global-bases`<br>• `/military/intelligence` |
+| **🎖️ Arsenal of Democracy** | **"Minimalist Black-Ops"**<br>• Stark monochromatic headers<br>• Zinc/black palette with thin border accents<br>• Cinematic looping video heroes<br>• "Classified dossier" modal drawers | • **Global Carrier Map**: Live SVG tracker for all 11 carrier strike groups.<br>• **Nuclear Triad Simulation**: Interactive silo, sub, and bomber parity engine.<br>• **DARPA Future Systems Grid**: Active classified program cards.<br>• **Base Dossier Drawer**: Per-installation intelligence briefs with image previews.<br>• **Heritage Timeline**: Branch-by-branch milestone narratives (Navy, Air Force, Space Force).<br>• **Platform Showcases**: Spec-sheet modals for every major weapons platform.<br>• **Five Eyes Geometry**: Alliance node network visual (Intelligence page). | • `/military`<br>• `/military/navy`<br>• `/military/air-force`<br>• `/military/space-force`<br>• `/military/global-bases`<br>• `/military/intelligence` |
 | **📜 American History** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Historical Chapter Hooks**: 15 distinct cards ready for content drops detailing America's narrative. | • `/history`<br>• `/history/founding-principles`<br>• `/history/american-exceptionalism`<br>• `/history/frontier-and-expansion`<br>• `/history/union-and-liberty`<br>• `/history/industrial-rise`<br>• `/history/arsenal-of-democracy`<br>• `/history/cold-war-and-anti-communism`<br>• `/history/the-american-dream`<br>• `/history/the-reagan-revolution`<br>• `/history/faith-family-and-community`<br>• `/history/free-markets-and-prosperity`<br>• `/history/border-sovereignty-and-national-identity`<br>• `/history/constitutional-battles`<br>• `/history/post-9-11-america`<br>• `/history/the-populist-era` |
 | **💡 Innovation & Tech** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Tech Grid Hooks**: Custom cards ready for Internet, AI, Space, and Computing drops. | • `/innovation`<br>• `/innovation/internet-history`<br>• `/innovation/ai-and-tech`<br>• `/innovation/smartphones`<br>• `/innovation/cloud-computing`<br>• `/innovation/space-technology`<br>• `/innovation/gaming` |
 | **🔬 Science & Inventions** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Invention Timeline Hooks**: Sections ready for Pre-1890, World War, and Biotech breakthroughs. | • `/science`<br>• `/science/inventions-pre-1890`<br>• `/science/inventions-1890-1945`<br>• `/science/inventions-post-1991`<br>• `/science/medicine-and-biotech` |
@@ -125,7 +125,7 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 | **🌎 Global Leadership** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Planetary Influence Hooks**: Zones ready for NATO, Reserve Currency, and Soft Power visualizers. | • `/global-leadership`<br>• `/global-leadership/nato`<br>• `/global-leadership/dollar-as-reserve`<br>• `/global-leadership/soft-power`<br>• `/global-leadership/un` |
 | **🎭 Culture & Life** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Anthology & Life Hooks**: Anthropology school/aesthetic cards ready for content drops. | • `/culture`<br>• `/culture/the-american-high-school`<br>• `/culture/american-aesthetics`<br>• `/culture/american-sports`<br>• `/quality-of-life` |
 | **🌱 Abundance & People** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Demographic & Resource Hooks**: Melding pot and energy production visual spots. | • `/natural-resources`<br>• `/immigration-demographics` |
-| **📊 Data & Media** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Empirical Analytics & Media**: Fact sheets, image/video galleries, and 50-state regional mapping. | • `/data`<br>• `/gallery`<br>• `/explorer` |
+| **📊 Data & Media** | **"Editorial Dark"**<br>• Full-bleed masonry / mosaic gallery<br>• Category filter strip with animated transitions<br>• Tactical SVG map with heatmap overlays | • **Cinematic Photo Gallery** (`/gallery`): 210-image masonry archive spanning all site verticals, with category tabs, lightbox zoom, and full bilingual copy.<br>• **U.S. Map Explorer** (`/explorer`): Interactive 50-state SVG map with GDP/population/statehood heatmaps, per-state data panels, search, regional filters, and per-state regional chronicle copy.<br>• **Data Fact Sheet** (`/data`): Curated empirical reference database. | • `/data`<br>• `/gallery`<br>• `/explorer` |
 | **🎮 Interactive Features** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Civic Tools Navigation**: Connects interactive components. | • `/interactive` |
 
 ## 🗺️ What Is Built
@@ -196,17 +196,81 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 </details>
 
 <details>
-<summary><strong>🎖️ The Arsenal of Democracy</strong> (Military Vertical)</summary>
+<summary><strong>🎖️ The Arsenal of Democracy</strong> (Military Vertical — Fully Operational)</summary>
 
-- `/military` full landing page plus deep dives:
-  - `/military/navy` (Global Carrier Strike Group tracker)
-  - `/military/air-force` (US Air Force scaffold)
-  - `/military/space-force` (US Space Force scaffold)
-  - `/military/global-bases` (Global Bases scaffold)
-  - `/military/intelligence` (Intelligence scaffold)
-  - Dossiers for the **B-21 Raider**, **F-35**, and **F-22 Raptor**
-  - Interactive **Nuclear Triad** simulation
-  - **DARPA** innovation timeline
+- `/military` — Cinematic main hub featuring:
+  - **§0 Hero**: Looping `supremacy-wave.mp4` video hero (B-2 emerging from darkness)
+  - **§1 Stat Wall**: HUD counter strip across full viewport
+  - **§2 Global Dominance**: Defense budget comparison bars, dominance metrics
+  - **§3 Branch Selector**: Animated branch cards — Army, Navy, Air Force, Space Force, Marines, Coast Guard
+  - **§4 Carrier Map**: World SVG map with real-time carrier positions + SOCOM overlay
+  - **§5 Weapons Dossiers**: Classified cards for B-21 Raider, F-35, F-22, Ohio-class, and more
+  - **§6 Nuclear Triad**: Interactive SVG triangle simulation (land / sea / air legs)
+  - **§7 DARPA Grid**: Future systems cards (Hypersonics, Directed Energy, AI C2, Autonomous Systems)
+  - **§8 Defense Contractors**: Top-6 industrial base grid by revenue
+  - **§9 Facts Ticker**: Rolling military facts strip + fact cards
+  - **§10 Global Alliances**: Alliance network showcase
+  - **§11 Sub-Page Navigation**: Chapter nav to all six military deep dives
+
+- `/military/navy` — Full editorial deep dive:
+  - Parallax carrier hero with `us-navy-dual-carrier-strike-group` hero image
+  - **Metric Strip**: 6 key fleet stats (Battle Force Ships, Nuclear Carriers, etc.)
+  - **Capabilities Grid**: Sea Control, Carrier Aviation, Undersea Dominance, Missile Defense, Amphibious, Humanitarian
+  - **Platform Showcase**: Interactive spec-sheet modals for USS Gerald R. Ford (CVN-78), USS Jack H. Lucas (DDG-125), USS Kentucky (SSBN-737), F/A-18F Super Hornet, and more
+  - **Fleet Comparison**: US Navy vs. next six global navies
+  - **Weapons Console**: Tomahawk, SM-6, MK-48 ADCAP tactical systems
+  - **Operational Console**: Theater deployments across Indo-Pacific, Mediterranean, Gulf, Atlantic
+  - **Air Wing Composition**: Carrier air group breakdown by platform type
+  - **Special Warfare Section**: NSW / SEAL Team capabilities
+  - **Bases Section**: Major homeports and forward bases
+  - **Heritage Timeline**: Continental Navy (1775) → Midway → Cuban Missile Crisis → Tomahawk combat debut → Lincoln battlegroup (2003)
+  - **Future Stack**: Constellation-class, Columbia-class, CVN-80, autonomous surface/undersea vehicles
+  - **Humanitarian Missions**: HADR operations history
+  - **"Fly Navy" cinematic video panel**: Looping `fly-navy.mp4` with sound toggle
+
+- `/military/air-force` — Full editorial deep dive:
+  - Looping `b2-spirit-hero.mp4` video hero
+  - **Metric Strip**: 5,217 aircraft, 400 ICBMs on alert, 64 bases
+  - **Capabilities Grid**: Air Superiority, Global Strike, Rapid Mobility, Nuclear Deterrence, ISR, Cyber
+  - **Platform Showcase**: F-22, F-35, B-2, B-21 Raider, B-1B, C-17, C-130, KC-135, KC-46, AC-130J, Autonomous Drones
+  - **Fleet Comparison**: USAF vs. top global air powers
+  - **Operational Console**: Theater air operations (Pacific, European, CENTCOM, Global Strike)
+  - **Heritage Timeline**: Wright Brothers → Bell X-1 → F-86/MiG-15 → B-52 → F-117 stealth → B-2 Global Power → F-22 → B-21
+  - **Future Stack**: NGAD 6th-gen, CCA Collaborative Combat Aircraft, B-21 expansion
+  - **Bases Section**: Major installations with images
+
+- `/military/space-force` — Full editorial deep dive:
+  - Looping `us-space-force-americas-invisible-front.mp4` video hero
+  - **Metric Strip**: Founded 2019, 100+ satellites, 8,600 Guardians
+  - **Capabilities Grid**: GPS, Missile Warning, Protected SATCOM, Space Domain Awareness, Launch, Cyber Defense
+  - **Platform Showcase**: GPS III, SBIRS/Next-Gen OPIR, AEHF, WGS, GEO/LEO orbital constellations
+  - **Fleet Comparison**: US Space Force vs. China / Russia orbital inventories
+  - **Operational Console**: SPOC, SSC, STARCOM, Space Delta commands
+  - **Heritage Timeline**: Sputnik response → GPS Block I → GPS modernization → Space Force founding (2019)
+  - **Future Stack**: Next-Gen OPIR, Resilient PNT, Commercial Integration, Space Maneuver Vehicle
+  - **Bases Section**: Vandenberg, Schriever, Buckley, Peterson, Cape Canaveral
+
+- `/military/global-bases` — Full editorial intelligence brief:
+  - **Looping video hero** (`earth-pixels-from-space.mp4`) — "PLANETARY FOOTPRINT"
+  - **Strategic Thesis**: Data-driven rationale for the global base network
+  - **Interactive World Map**: SVG `react-simple-maps` globe with all 23 active base markers + hover labels
+  - **Regional Theater Grid**: Europe, Indo-Pacific, Middle East, Americas with high-fidelity theater images
+  - **Base Dossier Section**: Rows for the 7 most strategically critical installations, each showing a grayscale→color image thumbnail, country, name, rationale, and "Open Dossier" button
+  - **Base Detail Drawer**: Slide-in intelligence brief panel per base: image, coordinates, primary branch, operational focus, critical infrastructure tags, and strategic rationale
+  - **Logistics Backbone Section**: TRANSCOM, airlift corridors, sealift nodes, prepositioned stock
+  - **Alliance Architecture Section**: NATO, INDOPACOM, CENTCOM alliance node network
+  - All 23 bases have high-fidelity local images registered in `SITE_IMAGES.globalBases`
+
+- `/military/intelligence` — Full editorial deep dive:
+  - Parallax hero with classified aesthetic
+  - **Agency Dossiers**: CIA, NSA, NRO, NGA, DIA — with official seals, missions, and capabilities
+  - **Intelligence Disciplines**: SIGINT, HUMINT, GEOINT, MASINT, OSINT panels
+  - **Installations List**: Key SCIF and collection nodes worldwide
+  - **Five Eyes Geometry**: Alliance network visual showing FVEY partner relationships
+  - **Heritage List**: Historical milestones from OSS founding to Cyber Command
+  - **Intelligence Failures**: Analytical case studies (Pearl Harbor, 9/11, WMD assessment)
+  - **Future Programs**: AI-enabled analysis, satellite proliferation, autonomous collection
+  - **"The Vault"**: Closing cinematic call-to-action panel
 </details>
 
 <details>
@@ -269,11 +333,24 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 </details>
 
 <details>
-<summary><strong>📊 Data & Media</strong> (Scaffolded)</summary>
+<summary><strong>📊 Data & Media</strong> (Fully Operational)</summary>
 
-- `/data` (Data & Studies fact sheet database)
-- `/gallery` (Photo Gallery page)
-- `/explorer` (Interactive 50-state regional facts map explorer)
+- `/data` — Curated empirical reference database
+- `/gallery` — **Cinematic Visual Archive** (Fully Operational):
+  - 210-image masonry gallery spanning all site verticals: Landscapes, Cities, Military, Space Force, Navy, Air Force, Global Bases, Coast Guard, and more
+  - Category filter strip (All / Landscapes / Cities / Military / Space / Economy / Science / Culture)
+  - Masonry / mosaic responsive layout with Framer Motion animated transitions
+  - Full-screen lightbox with image title, location, and tone metadata
+  - Bilingual: "America Through the Lens" / "America Prin Obiectiv"
+  - Hero image: USA at night from space
+- `/explorer` — **U.S. Interactive Map Explorer** (Fully Operational):
+  - Interactive SVG 50-state map (via `react-simple-maps`)
+  - Per-state heatmap overlays: GDP intensity, Population density, and Statehood chronology
+  - Regional filters: All / West / South / Midwest / Northeast
+  - Sortable state directory: by statehood, population, GDP, land area
+  - Clickable state detail panel: GDP, population, capital, key industry sector, and regional chronicle
+  - Real-time search by state name or capital
+  - Fully bilingual ("Explore America" / "Explorează America")
 </details>
 
 <details>
@@ -282,7 +359,7 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 - `/interactive` (Interactive Features hub page linking to Quiz)
 </details>
 
-The culture, quality-of-life, innovation, science, universities, natural-resources, immigration-demographics, global-leadership, interactive, history, data, and military subpages are currently clean scaffolds with TODO zones, ready for content drops.
+The **gallery**, **explorer**, **military** (main + all 6 sub-pages) are now **fully operational** cinematic editorial pages. The culture, quality-of-life, innovation, science, universities, natural-resources, immigration-demographics, global-leadership, interactive, and history subpages are currently clean scaffolds with TODO zones, ready for content drops.
 
 ## Experience Highlights
 
@@ -366,16 +443,22 @@ An immersive multimedia exploration of the American landscape located at `/natur
 - **Deep-Dive Subpages**: Dedicated verticals for Alaska, Yellowstone, the Grand Canyon, and more, focusing on conservation history and extreme scale.
 
 ### 🎖️ The Arsenal of Democracy Vertical
-A technical breakdown of American military supremacy located at `/military`.
+A fully built, 6-page technical intelligence platform covering every branch and global posture of American military power.
 
 <p align="center">
   <img src="web/IMAGES/Military/Navy/us-navy-gerald-ford-carrier.jpg" width="600" alt="USS Gerald R. Ford Aircraft Carrier Strike Group" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
-- **Global Reach Tracker**: Interactive map showing the approximate real-time locations of the 11 US Carrier Strike Groups.
-- **The Crown Jewels**: High-fidelity dossiers for the B-21 Raider, F-35 Lightning II, and F-22 Raptor with 6th-gen tech specs.
-- **Nuclear Triad Simulation**: Interactive logic explaining the survival of land, sea, and air deterrents.
-- **Innovation Engine**: Breakdown of DARPA programs and the top 6 defense contractors by revenue.
+- **Cinematic Video Heroes**: Every subpage opens with a looping, full-bleed cinematic video (`b2-spirit-hero.mp4`, `fly-navy.mp4`, `supremacy-wave.mp4`, `us-space-force-americas-invisible-front.mp4`, `earth-pixels-from-space.mp4`).
+- **Global Reach Tracker**: Interactive SVG world map showing real-time positions of all 11 US Carrier Strike Groups with mathematical jitter-clustering for overlapping homeports.
+- **Platform Dossiers**: Spec-sheet modals for every major platform — F-22, F-35, B-2, B-21, C-17, USS Gerald R. Ford, USS Jack H. Lucas, USS Kentucky, and more.
+- **Nuclear Triad Simulation**: Interactive SVG triangle explaining the three-legged deterrence architecture.
+- **Heritage Timelines**: Full branch-by-branch milestone narratives from Continental Navy (1775) through GPS Block I to the B-21 Raider.
+- **DARPA Innovation Engine**: Future systems grid — Hypersonics, Directed Energy, AI C2, Autonomous Systems.
+- **Global Bases Network**: 23-installation intelligence brief with world map, regional theater grid, dossier drawers with high-fidelity base images, logistics backbone, and alliance architecture.
+- **Intelligence Community**: CIA, NSA, NRO, NGA, DIA agency dossiers, Five Eyes geometry, and classified program showcase.
+- **Fleet Comparisons**: Branch-by-branch comparisons against Chinese, Russian, and NATO peer competitors.
+- **Top-6 Defense Contractors**: Industrial base grid by revenue.
 
 ### 🏛️ The Constitution & Democracy Exhibit Architecture
 
@@ -458,28 +541,35 @@ The Nature showcase has been modernized into a premium, interactive digital muse
 
 ### 🎖️ The Arsenal of Democracy Vertical Architecture
 
-The Military section is designed as a **Technical Intelligence Briefing**, prioritizing operational data and global reach.
+The Military section is a **fully built, 6-page technical intelligence platform** designed as a cinematic defense-tech briefing.
 
-#### 1. The Global Presence Engine (`lib/data/military-data.ts`)
-The US Navy is treated as a structural component of global peace:
-- **Carrier Tracker (`MilitaryAnimations.tsx`)**: An interactive SVG map that visualizes the "11-Carrier Standard." It uses precise coordinate mapping to show carrier positions from the South China Sea to the Mid-Atlantic.
-- **Status Persistence**: Every ship is tracked with a `status` (deployed/transit/homeport), allowing the UI to accurately reflect the 24/7 readiness of the fleet.
+#### 1. The Global Presence Engine (`lib/data/military-data.ts`, `lib/data/global-bases-data.ts`)
+- **Carrier Tracker (`MilitaryAnimations.tsx`)**: Interactive SVG world map with all 11 carrier positions. Uses mathematical jitter-clustering (circular orbit algorithm) to prevent overlapping homeport markers.
+- **Global Bases Map (`GlobalBasesComponents.tsx`)**: `react-simple-maps` SVG globe with 23 marker pins. Clicking any pin opens a per-base intelligence dossier drawer with image, coordinates, branch, operational focus, infrastructure tags, and strategic rationale.
+- **All 23 bases** have high-fidelity local images registered in `SITE_IMAGES.globalBases`.
 
-#### 2. The Weapons Dossier System
-We treat military hardware as engineering masterpieces:
+#### 2. Branch Deep-Dive Pages
+Each subpage is a full editorial vertical, not a scaffold:
+- **Navy (`/military/navy`)**: Platforms (Ford, Jack H. Lucas, Kentucky, F/A-18F), fleet comparison, Aegis weapons console, operational theaters, special warfare, heritage timeline (1775→2003), future stack (Constellation-class, Columbia-class), and the 125MB cinematic "Fly Navy" video panel.
+- **Air Force (`/military/air-force`)**: 11 platform dossiers (F-22, F-35, B-2, B-21, B-1B, C-17, C-130, KC-135, KC-46, AC-130J, autonomous drones), 8-event heritage timeline (Wright Brothers→B-21), NGAD future stack, fleet comparison.
+- **Space Force (`/military/space-force`)**: Satellite platform showcase (GPS III, SBIRS, AEHF, WGS), operational console (SPOC/SSC/STARCOM/Space Deltas), heritage timeline (Sputnik→2019 founding), future stack (Next-Gen OPIR, Resilient PNT, Commercial Integration).
+- **Intelligence (`/military/intelligence`)**: Five agency dossiers (CIA/NSA/NRO/NGA/DIA) with official seals, Five Eyes geometry SVG, intelligence discipline panels (SIGINT/HUMINT/GEOINT), heritage list, intelligence failures case studies.
+
+#### 3. The Weapons Dossier System
 - **Specification Parity**: The `WeaponSystem` interface enforces strict data consistency across 5th and 6th generation platforms.
-- **Performance Highlighting**: Unique metrics (e.g., "Mach 23" for Minuteman III, "6th Gen" for B-21) are elevated into "Hero Stats" to communicate qualitative superiority.
-- **The Nuclear Triad Logic**: A dedicated interactive explaining the redundant "land-sea-air" architecture that forms the bedrock of strategic deterrence.
+- **Performance Highlighting**: Unique metrics (e.g., "Mach 23" for Minuteman III, "6th Gen" for B-21) elevated into "Hero Stats."
+- **Nuclear Triad Logic**: Interactive SVG triangle explaining the three-legged deterrence architecture.
 
-#### 3. Strategic Innovation Layer
-- **DARPA Tracking**: A thematic grid of active and konsep programs (Hypersonics, Directed Energy, AI C2) highlighting the next 20 years of American R&D.
-- **Industrial Base**: Direct comparison of top defense contractors, linking current revenue to the production of critical systems like the Virginia-class submarine and F-35.
+#### 4. Strategic Innovation Layer
+- **DARPA Grid**: Active programs — Hypersonics, Directed Energy, AI C2, Collaborative Combat Aircraft.
+- **Industrial Base**: Top-6 defense contractors by revenue with system linkage (Virginia-class, F-35, B-21).
 
-#### 4. "Minimalist Black-Ops" Aesthetic Overhaul
-The Military dashboard has been rebuilt to resemble a high-contrast tactical intelligence briefing:
-- **Tactical Typographic Hardening**: Eliminated all "skinny" and hard-to-read elements. Boosted `.mil-text-label` (16px/900 weight), `.mil-text-metadata` (14px/800 weight), and increased general body text opacity to **80%** against solid black.
-- **Cinematic Wrapping Safeguards**: Restructured massive section titles (e.g., *"ORBITAL DOMINANCE"*, *"THE PRIME CONTRACTORS"*, *"PLANETARY COMMAND"*) into block-level, `whitespace-nowrap` spans coupled with dynamic font-size clamps (`clamp(38px, 12vw, 180px)`). This guarantees exactly a **2-row layout** that automatically centers and fits perfectly on both desktop and mobile screens.
-- **High-Contrast Tactical Visuals**: Redesigned tooltips, legends, and country compare bars in the **Defense Budget Comparison** chart, replacing previous low-visibility metrics with sharp, bold labels that remain beautifully readable under any vignette overlay.
+#### 5. "Minimalist Black-Ops" Aesthetic
+- Cinematic looping video heroes on every subpage with GPU-layered vignette gradients.
+- Zinc/black palette with thin `border-zinc-800/900` accents — no heavy color fills.
+- Grayscale→color hover transitions on image thumbnails (`group-hover:grayscale-0 group-hover:scale-105`).
+- Per-section branded `<Style>` injections (`NavyStyles`, `AirForceStyles`, `SpaceForceStyles`, `IntelClassifiedStyles`) for brand-accurate CSS custom properties.
+- `font-mono` kickers at `tracking-[0.28em]` for tactical readability.
 
 ### ⚡ Performance & AI Readiness
 - **Vercel Web Vitals**: Integrated monitoring for LCP, CLS, and INP to ensure a "Bloomberg-grade" smooth experience.
@@ -1315,7 +1405,16 @@ This section is for future AI-assisted edits. The goal is to explain how the cod
 | `STATES` title effect | `components/sections/StatesVideoTitle.tsx` |
 | Economy content | `lib/data/economy-data.ts` |
 | Nature content | `lib/data/nature-data.ts` |
-| Military content | `lib/data/military-data.ts` |
+| Military main page content | `lib/data/military-data.ts` |
+| Navy page content | `lib/data/navy-data.ts` + `components/military/NavyPageComponents.tsx` |
+| Air Force page content | `lib/data/airforce-data.ts` + `components/military/AirForcePageComponents.tsx` |
+| Space Force page content | `lib/data/spaceforce-data.ts` + `components/military/SpaceForcePageComponents.tsx` |
+| Global Bases content | `lib/data/global-bases-data.ts` + `components/military/GlobalBasesComponents.tsx` |
+| Intelligence page content | `lib/data/intelligence-data.ts` + `components/military/IntelligencePageComponents.tsx` |
+| Base images (global bases) | `SITE_IMAGES.globalBases` in `lib/site-images.ts` |
+| Gallery images & categories | `lib/data/gallery.ts` + `lib/data/gallery-assets.ts` |
+| Gallery layout & lightbox | `components/gallery/GalleryExperience.tsx` |
+| Explorer map & state data | `components/explorer/MapExplorerClient.tsx` |
 | Constitution content | `lib/data/constitution-data.ts`, `lib/data/federalism-data.ts` |
 | Constitution interactions | `components/constitution/*` |
 | Image swaps | `lib/site-images.ts` |
@@ -1441,11 +1540,15 @@ If Vercel fails on static image imports:
 
 - 🦅 **Rotating Cinematic Hero**: Multi-image curated slideshow with Ken-Burns animations and custom HUD overlays.
 - 📈 **Glory-Gold Highlights**: Custom Recharts components (`GdpBarChart`, `VCCharts`) automatically highlighting the US in comparison charts.
-- ⚓️ **Global Reach Strike Tracker**: Precise SVG map mapping the live deployments of all 11 active US Aircraft Carriers.
+- ⚓️ **Global Reach Strike Tracker**: Precise SVG map mapping the live deployments of all 11 active US Aircraft Carriers with mathematical jitter-clustering.
 - 📜 **The Clause Vault**: Immersive digital parchment dividing the 4,543 words of the Constitution into legal case studies.
 - 🗳️ **Electoral Flip History**: 1788–2024 biennial presidential, gubernatorial, and senate interactive maps tracking mid-term flip vectors.
 - 🎛️ **Policy Sliders (Federalism)**: A multidimensional scoring engine matching fiscal and regulatory sliders directly to 50 states.
 - 🎥 **Video-Backed STATES Title**: Cinematic text rendering in `StatesVideoTitle.tsx` showing active landscapes in the word masks.
+- 🌍 **Planetary Footprint (Global Bases)**: 23-installation intelligence brief with looping Earth-pixels video hero, SVG world map, high-fidelity base images, dossier drawers, logistics backbone, and alliance architecture.
+- 🖼️ **Cinematic Gallery Archive**: 210-image masonry gallery with category filtering, Framer Motion transitions, and full-screen lightbox — spanning all site verticals.
+- 🗺️ **U.S. Map Explorer**: Interactive 50-state SVG map with GDP/population/statehood heatmaps, per-state panels, search, regional filters, and state chronicles.
+- 🛡️ **Intelligence Community Exhibit**: CIA/NSA/NRO/NGA/DIA agency dossiers, Five Eyes geometry, discipline panels, and classified program showcase.
 - 🔄 **Romanian state-parity**: Dynamic, compiled JSON data arrays in `lib/data` using active locale getters to secure 100% server + client translation.
 - ⚡️ **Web Vitals Observability**: Production-grade LCP, CLS, and INP metrics wired directly via Vercel observability tools.
 
@@ -1466,10 +1569,18 @@ Strategic milestones for the next phase of development:
 | **Natural Majesty** | 🇺🇸 **FULLY OPERATIONAL** | Geyser/Strata animations, interactive biodiversity data, mobile-responsive chart axis labels |
 | **Constitution & Civics** | 🇺🇸 **FULLY OPERATIONAL** | Relational Founding Fathers graphs, Policy Sliders, Separation of Powers simulations |
 | **Electoral Archive** | 🇺🇸 **FULLY OPERATIONAL** | 1788–2024 Presidential/Senate interactive maps, mid-term flipping seats logic |
+| **Military — Main** | 🇺🇸 **FULLY OPERATIONAL** | Cinematic video hero, 11-carrier SVG map, nuclear triad simulation, DARPA grid, branch selector, global alliances |
+| **Military — Navy** | 🇺🇸 **FULLY OPERATIONAL** | Gerald Ford / Jack H. Lucas / Kentucky platforms, heritage timeline, Fly Navy video, fleet comparison, future stack |
+| **Military — Air Force** | 🇺🇸 **FULLY OPERATIONAL** | 11 platform dossiers, 8-event heritage timeline, NGAD future stack, bases section with images |
+| **Military — Space Force** | 🇺🇸 **FULLY OPERATIONAL** | GPS/SBIRS/AEHF platforms, SPOC/SSC/STARCOM consoles, orbital fleet comparison, future constellation stack |
+| **Military — Global Bases** | 🇺🇸 **FULLY OPERATIONAL** | Earth-pixels video hero, 23-base world map, dossier drawers with high-fidelity images, logistics & alliance sections |
+| **Military — Intelligence** | 🇺🇸 **FULLY OPERATIONAL** | CIA/NSA/NRO/NGA/DIA dossiers, Five Eyes geometry, intelligence disciplines, failures case studies |
+| **Gallery** | 🇺🇸 **FULLY OPERATIONAL** | 210-image masonry archive, category filters, lightbox, bilingual copy |
+| **U.S. Map Explorer** | 🇺🇸 **FULLY OPERATIONAL** | 50-state SVG map, GDP/population/statehood heatmaps, per-state panels, search & filter |
 | **Culture Hub** | 🛠️ **BUILDING DEMOCRACY** | Dynamic multimedia grid components scaffolded and content-ready |
 | **Quality of Life** | 🛠️ **BUILDING DEMOCRACY** | Life-satisfaction, metric comparators scaffolded and content-ready |
 | **Bilingual Translation** | 🟢 **LIVE & RESILIENT** | 100% server + client cookie parity with Romanian getters in `/lib/data` |
-| **Central Media Registry** | 🟢 **LIVE & RESILIENT** | Image assets indexed in `lib/site-images.ts` to prevent broken paths |
+| **Central Media Registry** | 🟢 **LIVE & RESILIENT** | 210+ image assets indexed in `lib/site-images.ts`, 23 base images in `SITE_IMAGES.globalBases` |
 | **Project Documentation** | 🟢 **LIVE & RESILIENT** | Formatted with high-fidelity patriotic design templates and development rules |
 
 ---
