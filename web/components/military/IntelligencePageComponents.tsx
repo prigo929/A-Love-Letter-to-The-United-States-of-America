@@ -1182,13 +1182,13 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const isRo = locale === "ro";
 
-  // Points layout: USA at the center, other 4 on edges (expanded symmetrical square centered at 250,220)
+  // Points layout: USA at the center, other 4 on edges (maximally expanded symmetrical layout centered at 250,220)
   const points = [
     { x: 250, y: 220, label: "USA" },          // center
-    { x: 90, y: 70, label: "UK" },             // top-left
-    { x: 410, y: 70, label: "AUS" },           // top-right
-    { x: 410, y: 370, label: "NZL" },          // bottom-right
-    { x: 90, y: 370, label: "CAN" },           // bottom-left
+    { x: 60, y: 50, label: "UK" },             // top-left
+    { x: 440, y: 50, label: "AUS" },           // top-right
+    { x: 440, y: 390, label: "NZL" },          // bottom-right
+    { x: 60, y: 390, label: "CAN" },           // bottom-left
   ];
 
   // All connecting lines (every pair)
@@ -1234,7 +1234,7 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
 
         {/* SVG Diagram */}
         <div className="flex justify-center">
-          <svg viewBox="0 0 500 440" className="w-full max-w-[460px] h-auto">
+          <svg viewBox="0 0 500 440" className="w-full max-w-[540px] h-auto">
             {/* Connecting lines — animated stroke-dashoffset */}
             {lines.map(([a, b], i) => {
               const p1 = points[a];
@@ -1273,10 +1273,10 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
                 >
                   {/* Faint background container to hold the flag */}
                   <rect
-                    x={p.x - 23}
-                    y={p.y - 14}
-                    width={46}
-                    height={28}
+                    x={p.x - 34}
+                    y={p.y - 21}
+                    width={68}
+                    height={42}
                     fill="#050505"
                     stroke={INTEL.green}
                     strokeWidth="1"
@@ -1284,10 +1284,10 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
                   />
                   <image
                     href={flagMap[p.label]}
-                    x={p.x - 22}
-                    y={p.y - 13}
-                    width={44}
-                    height={26}
+                    x={p.x - 33}
+                    y={p.y - 20}
+                    width={66}
+                    height={40}
                     preserveAspectRatio="none"
                   />
                 </g>
@@ -1295,7 +1295,7 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
                 {/* Label */}
                 <text
                   x={p.x}
-                  y={p.y + (p.label === "USA" ? -24 : p.y < 220 ? -24 : 34)}
+                  y={p.y + (p.label === "USA" ? -32 : p.y < 220 ? -32 : 44)}
                   textAnchor="middle"
                   fill={INTEL.greenText}
                   fontSize="10"
