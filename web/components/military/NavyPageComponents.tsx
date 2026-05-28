@@ -2306,6 +2306,10 @@ export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
 
     // Set initial start time
     video.currentTime = 4;
+    video.muted = true;
+    video.play().catch((err) => {
+      console.warn("Autoplay block in NavyFlyNavyVideo:", err);
+    });
 
     const handleTimeUpdate = () => {
       // Loop reset or manual seeks backward

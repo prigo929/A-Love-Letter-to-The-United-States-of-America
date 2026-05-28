@@ -62,6 +62,7 @@ import navyHeritageGreatWhiteFleet from "@/IMAGES/Military/Navy/Great_White_Flee
 import navyHeritageMidway from "@/IMAGES/Military/Navy/Battle_of_Midway,_June_1942_(23902373581).jpg";
 import navyHeritageCubanMissileCrisis from "@/IMAGES/Military/Navy/P-3A_VP-44_over_USS_Barry_(DD-933)_and_Metallurg_Anosov_during_Cuban_Missile_Crisis_1962.jpg";
 import navyHeritageTomahawk from "@/IMAGES/Military/Navy/Missouri.missile02.jpg";
+import navyHeritageLincoln from "@/IMAGES/Military/Navy/Abraham-Lincoln-battlegroup.jpg";
 import spaceForceLaunch from "@/IMAGES/Military/Space Force/us-space-force-falcon9-launch.jpg";
 import spaceForceSputnik from "@/IMAGES/Military/Space Force/Sputnik.jpg";
 import spaceForceAfscLogo from "@/IMAGES/Military/Space Force/Air Force Space Command Logo.jpg";
@@ -203,6 +204,7 @@ export const SITE_IMAGES = {
     heritageMidway: navyHeritageMidway.src,
     heritageCubanMissileCrisis: navyHeritageCubanMissileCrisis.src,
     heritageTomahawk: navyHeritageTomahawk.src,
+    heritageLincoln: navyHeritageLincoln.src,
   },
   airForce: {
     hero: airForceHero.src,

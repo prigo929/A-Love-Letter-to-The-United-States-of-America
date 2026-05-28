@@ -965,10 +965,21 @@ export function ParallaxMilitaryHero({
   heightClass?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"]
   });
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+      video.play().catch((err) => {
+        console.warn("Autoplay block in ParallaxMilitaryHero:", err);
+      });
+    }
+  }, [videoSrc]);
 
   // 3-stage scroll reveal:
   // Stage 1 (0–30vh): Image fades from 0% to 30% opacity
@@ -1000,11 +1011,12 @@ export function ParallaxMilitaryHero({
         >
           {videoSrc ? (
             <video
+              ref={videoRef}
               autoPlay
               loop
               muted
               playsInline
-              preload="metadata"
+              preload="auto"
               className="absolute inset-0 h-full w-full object-cover"
             >
               <source src={videoSrc} type="video/mp4" />
@@ -1114,10 +1126,21 @@ export function VideoMilitaryHero({
   stats?: { value: string; label: string }[];
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+      video.play().catch((err) => {
+        console.warn("Autoplay block in VideoMilitaryHero:", err);
+      });
+    }
+  }, [videoSrc]);
 
   const videoOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
   const videoScale  = useTransform(scrollYProgress, [0, 0.55], [1.0, 1.18]);
@@ -1134,11 +1157,12 @@ export function VideoMilitaryHero({
           style={{ opacity: videoOpacity, scale: videoScale, y: videoY }}
         >
           <video
+            ref={videoRef}
             autoPlay
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="auto"
             className="absolute inset-0 h-full w-full object-[center_40%] object-cover brightness-[0.38] saturate-[0.75] scale-[1.15] md:scale-100 md:object-cover"
           >
             <source src={videoSrc} type="video/mp4" />

@@ -1139,7 +1139,7 @@ export const NAVY_HERITAGE_TIMELINE: NavyHeritageEvent[] = [
     title: "Persistent Global Presence",
     description: "Carrier strike groups deploy continuously across the Indo-Pacific, Mediterranean, and Arabian Sea. The Navy is the first responder to every global crisis.",
     significance: "Permanent forward deployment",
-    imageSrc: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80",
+    imageSrc: SITE_IMAGES.navy.heritageLincoln,
   },
 ];
 
@@ -1193,7 +1193,7 @@ export function getNavyHeritageTimeline(locale: Locale): NavyHeritageEvent[] {
       title: "Prezență Globală Permanentă",
       description: "Grupurile de atac de portavioane se desfășoară continuu în Indo-Pacific, Mediterana și Marea Arabiei. Marina este primul răspuns la fiecare criză globală.",
       significance: "Desfășurare avansată permanentă",
-      imageSrc: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80",
+      imageSrc: SITE_IMAGES.navy.heritageLincoln,
     },
   ];
 }
