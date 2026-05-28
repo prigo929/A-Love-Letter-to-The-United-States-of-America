@@ -1182,13 +1182,13 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const isRo = locale === "ro";
 
-  // Points layout: USA at the center, other 4 on edges (symmetrical square centered at 250,220)
+  // Points layout: USA at the center, other 4 on edges (expanded symmetrical square centered at 250,220)
   const points = [
     { x: 250, y: 220, label: "USA" },          // center
-    { x: 130, y: 100, label: "UK" },           // top-left
-    { x: 370, y: 100, label: "AUS" },          // top-right
-    { x: 370, y: 340, label: "NZL" },          // bottom-right
-    { x: 130, y: 340, label: "CAN" },          // bottom-left
+    { x: 90, y: 70, label: "UK" },             // top-left
+    { x: 410, y: 70, label: "AUS" },           // top-right
+    { x: 410, y: 370, label: "NZL" },          // bottom-right
+    { x: 90, y: 370, label: "CAN" },           // bottom-left
   ];
 
   // All connecting lines (every pair)
@@ -1273,10 +1273,10 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
                 >
                   {/* Faint background container to hold the flag */}
                   <rect
-                    x={p.x - 16}
-                    y={p.y - 10}
-                    width={32}
-                    height={20}
+                    x={p.x - 23}
+                    y={p.y - 14}
+                    width={46}
+                    height={28}
                     fill="#050505"
                     stroke={INTEL.green}
                     strokeWidth="1"
@@ -1284,10 +1284,10 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
                   />
                   <image
                     href={flagMap[p.label]}
-                    x={p.x - 15}
-                    y={p.y - 9}
-                    width={30}
-                    height={18}
+                    x={p.x - 22}
+                    y={p.y - 13}
+                    width={44}
+                    height={26}
                     preserveAspectRatio="none"
                   />
                 </g>
@@ -1295,7 +1295,7 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
                 {/* Label */}
                 <text
                   x={p.x}
-                  y={p.y + (p.label === "USA" ? -18 : p.y < 220 ? -18 : 28)}
+                  y={p.y + (p.label === "USA" ? -24 : p.y < 220 ? -24 : 34)}
                   textAnchor="middle"
                   fill={INTEL.greenText}
                   fontSize="10"
