@@ -85,6 +85,7 @@ import cyberOps from "@/IMAGES/Military/Air Force/us-air-force-cyber-ops.jpg";
 import marinesAssault from "@/IMAGES/Military/Marines/us-marines-amphibious-assault.jpg";
 import socomOperators from "@/IMAGES/Military/SOCOM/us-army-socom-operators.jpg";
 import tacticalWorldMap from "@/IMAGES/Military/tactical-world-map.svg";
+import coastGuardHero from "@/IMAGES/Military/Coast Guard/US Coast Guard.jpg";
 
 // Air Force Timeline Images
 import wrightBrothersFirstFlight from "@/IMAGES/Military/Air Force/Wright Brothers First Flight at Kitty Hawk.jpg";
@@ -179,6 +180,7 @@ export const SITE_IMAGES = {
   cyberOps: cyberOps.src,
   marinesAssault: marinesAssault.src,
   socomOperators: socomOperators.src,
+  coastGuardHero: coastGuardHero.src,
 
   // Military Nested (for specific page structures)
   military: {
