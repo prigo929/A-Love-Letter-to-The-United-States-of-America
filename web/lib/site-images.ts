@@ -120,6 +120,31 @@ import diaSeal from "@/IMAGES/Military/Intelligence/Seal_of_the_U.S._Defense_Int
 
 import carrierStrikeGroupLogo from "@/ASSETS/Military/Carrier Strike Group Logo Dark.png";
 
+// Global Bases
+import baseRamstein from "@/IMAGES/Military/Global Bases/ramstein_air_base.jpg";
+import baseYokosuka from "@/IMAGES/Military/Global Bases/western_pacific_fleet_activities_yokosuka.jpg";
+import baseCampHumphreys from "@/IMAGES/Military/Global Bases/Camp Humphreys Base.jpg";
+import baseDiegoGarcia from "@/IMAGES/Military/Global Bases/Diego Garcia Base.jpeg";
+import baseAlUdeid from "@/IMAGES/Military/Global Bases/Al_Udeid_Air_Base.jpg";
+import baseRota from "@/IMAGES/Military/Global Bases/mediterranean_naval_station_rota.jpg";
+import baseAndersen from "@/IMAGES/Military/Global Bases/Andersen Air Force Base.jpg";
+import basePituffik from "@/IMAGES/Military/Global Bases/Thule : Pituffik Space Base.jpg";
+import baseLemonnier from "@/IMAGES/Military/Global Bases/Camp Lemonnier.jpg";
+import baseNorfolk from "@/IMAGES/Military/Global Bases/atlantic_naval_station_norfolk.jpg";
+import baseLakenheath from "@/IMAGES/Military/Global Bases/raf_lakenheath.jpeg";
+import baseAviano from "@/IMAGES/Military/Global Bases/aviano_air_base.jpg";
+import baseSpangdahlem from "@/IMAGES/Military/Global Bases/spangdahlem_air_base.jpg";
+import baseBahrain from "@/IMAGES/Military/Global Bases/arabian_gulf_nsa_bahrain.jpg";
+import baseAlDhafra from "@/IMAGES/Military/Global Bases/Al Dhafra Air Base.jpeg";
+import baseAliAlSalem from "@/IMAGES/Military/Global Bases/Ali Al Salem Air Base.jpg";
+import baseSigonella from "@/IMAGES/Military/Global Bases/Naval Air Station Sigonella.jpg";
+import baseManta from "@/IMAGES/Military/Global Bases/Eloy Alfaro Air Base Manta, Ecuador Base.jpg";
+import baseGuantanamo from "@/IMAGES/Military/Global Bases/Naval Station Guantanamo Bay.jpg";
+import baseEielson from "@/IMAGES/Military/Global Bases/Eielson Air Force Base.jpg";
+import baseClear from "@/IMAGES/Military/Global Bases/Clear Space Force Station.jpg";
+import baseFortLiberty from "@/IMAGES/Military/Global Bases/Fort_Bragg : Liberty.jpg";
+import baseKadena from "@/IMAGES/Military/Global Bases/Kadena_Air_Base_Aerial_photograph_1977.jpg";
+
 // Export plain `.src` strings so the rest of the app can use them in Next Image
 // components without caring which physical file they came from.
 //
@@ -265,5 +290,30 @@ export const SITE_IMAGES = {
     nro: nroSeal.src,
     nga: ngaSeal.src,
     dia: diaSeal.src,
+  },
+  globalBases: {
+    ramstein: baseRamstein.src,
+    yokosuka: baseYokosuka.src,
+    campHumphreys: baseCampHumphreys.src,
+    diegoGarcia: baseDiegoGarcia.src,
+    alUdeid: baseAlUdeid.src,
+    rota: baseRota.src,
+    andersen: baseAndersen.src,
+    pituffik: basePituffik.src,
+    lemonnier: baseLemonnier.src,
+    norfolk: baseNorfolk.src,
+    lakenheath: baseLakenheath.src,
+    aviano: baseAviano.src,
+    spangdahlem: baseSpangdahlem.src,
+    bahrain: baseBahrain.src,
+    alDhafra: baseAlDhafra.src,
+    aliAlSalem: baseAliAlSalem.src,
+    sigonella: baseSigonella.src,
+    manta: baseManta.src,
+    guantanamo: baseGuantanamo.src,
+    eielson: baseEielson.src,
+    clear: baseClear.src,
+    fortLiberty: baseFortLiberty.src,
+    kadena: baseKadena.src,
   },
 } as const;

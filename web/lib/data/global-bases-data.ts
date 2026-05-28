@@ -67,7 +67,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "European air mobility, NATO command integration, medical evacuation, and theater communications.",
     "Critical Infrastructure": ["Airlift hub", "NATO command links", "Aeromedical evacuation", "Theater C2"],
     "Strategic Rationale": "The primary air logistics gateway into Europe, linking U.S. strategic airlift with NATO deterrence and rapid reinforcement routes from the Atlantic into the eastern flank.",
-    "Image URL": SITE_IMAGES.airForce.c17,
+    "Image URL": SITE_IMAGES.globalBases.ramstein,
   },
   {
     ID: "yokosuka-naval-base",
@@ -79,7 +79,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Forward-deployed carrier operations, fleet repair, missile-defense presence, and Indo-Pacific maritime command.",
     "Critical Infrastructure": ["Carrier berth", "Ship repair", "Fleet command", "Aegis integration"],
     "Strategic Rationale": "The forward naval anchor for Seventh Fleet, placing carrier strike power inside the first island chain without waiting for trans-Pacific deployment timelines.",
-    "Image URL": SITE_IMAGES.navy.carrierFormation,
+    "Image URL": SITE_IMAGES.globalBases.yokosuka,
   },
   {
     ID: "camp-humphreys",
@@ -91,7 +91,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Peninsula deterrence, combined U.S.-ROK command support, armored force reception, and theater sustainment.",
     "Critical Infrastructure": ["Army garrison", "Airfield", "Sustainment hub", "Combined command support"],
     "Strategic Rationale": "Primary deterrent against North Korean aggression and a critical logistical anchor for moving combat power onto the peninsula under compressed warning timelines.",
-    "Image URL": SITE_IMAGES.abramsTank,
+    "Image URL": SITE_IMAGES.globalBases.campHumphreys,
   },
   {
     ID: "diego-garcia",
@@ -103,7 +103,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Indian Ocean logistics, bomber access, maritime prepositioning, and long-range sustainment.",
     "Critical Infrastructure": ["Deep-water lagoon", "Runway", "Prepositioned stocks", "Fuel storage"],
     "Strategic Rationale": "A remote unsinkable logistics node positioned between Africa, the Middle East, and Asia, enabling U.S. forces to sustain operations far from continental bases.",
-    "Image URL": SITE_IMAGES.globalLeadership,
+    "Image URL": SITE_IMAGES.globalBases.diegoGarcia,
   },
   {
     ID: "al-udeid-air-base",
@@ -115,7 +115,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "CENTCOM air operations, tanker support, ISR tasking, and regional command-and-control.",
     "Critical Infrastructure": ["Combined Air Operations Center", "Long runway", "Tanker ramp", "ISR support"],
     "Strategic Rationale": "The central air command platform for Middle East operations, turning regional basing access into continuous surveillance, strike coordination, and tanker-backed reach.",
-    "Image URL": SITE_IMAGES.airForce.kc46,
+    "Image URL": SITE_IMAGES.globalBases.alUdeid,
   },
   {
     ID: "naval-station-rota",
@@ -127,7 +127,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Mediterranean access, ballistic missile defense patrols, Atlantic logistics, and naval forward presence.",
     "Critical Infrastructure": ["Destroyer homeport", "Port access", "Airfield", "Ammunition support"],
     "Strategic Rationale": "A hinge point between the Atlantic, Mediterranean, and North Africa that keeps naval missile-defense assets forward without cycling every hull from the U.S. East Coast.",
-    "Image URL": SITE_IMAGES.navy.destroyer,
+    "Image URL": SITE_IMAGES.globalBases.rota,
   },
   {
     ID: "andersen-air-force-base",
@@ -139,7 +139,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Bomber rotations, tanker staging, Pacific airpower dispersal, and long-range strike access.",
     "Critical Infrastructure": ["Strategic runway", "Fuel storage", "Bomber ramp", "Munitions area"],
     "Strategic Rationale": "A sovereign U.S. launch point west of Hawaii, giving Pacific airpower depth, dispersal, and heavy strike capacity inside the theater.",
-    "Image URL": SITE_IMAGES.airForce.b2,
+    "Image URL": SITE_IMAGES.globalBases.andersen,
   },
   {
     ID: "thule-pituffik-space-base",
@@ -151,7 +151,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Missile warning, polar tracking, space surveillance, and Arctic strategic awareness.",
     "Critical Infrastructure": ["Early warning radar", "Space tracking", "Polar access", "Hardened communications"],
     "Strategic Rationale": "A High North sensor and communications outpost watching polar approaches where missile trajectories, satellites, and great-power competition converge.",
-    "Image URL": SITE_IMAGES.spaceForce.earth,
+    "Image URL": SITE_IMAGES.globalBases.pituffik,
   },
   {
     ID: "camp-lemonnier",
@@ -163,7 +163,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Horn of Africa counterterrorism, Red Sea access, maritime security, and expeditionary staging.",
     "Critical Infrastructure": ["Expeditionary airfield", "ISR support", "Port proximity", "Joint task force facilities"],
     "Strategic Rationale": "The forward operating anchor for East Africa and Red Sea contingencies, positioned beside one of the world's most important maritime chokepoints.",
-    "Image URL": SITE_IMAGES.socomOperators,
+    "Image URL": SITE_IMAGES.globalBases.lemonnier,
   },
   {
     ID: "norfolk-naval-station",
@@ -175,7 +175,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Atlantic fleet generation, carrier strike group deployment, maintenance, and surge capacity.",
     "Critical Infrastructure": ["Carrier piers", "Shipyards", "Fleet logistics", "Atlantic command links"],
     "Strategic Rationale": "The force-generation engine for Atlantic naval power, where carrier strike groups, amphibious forces, and sustainment pipelines are assembled before global deployment.",
-    "Image URL": SITE_IMAGES.navy.geraldFord,
+    "Image URL": SITE_IMAGES.globalBases.norfolk,
   },
   {
     ID: "raf-lakenheath",
@@ -187,7 +187,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Forward fifth-generation fighter presence, NATO quick reaction options, and northern European air defense integration.",
     "Critical Infrastructure": ["F-35 squadrons", "Hardened shelters", "NATO air links", "Weapons storage support"],
     "Strategic Rationale": "A forward combat-air node that keeps U.S. tactical aviation tied directly into NATO's northern air-defense architecture and Russian approach monitoring.",
-    "Image URL": SITE_IMAGES.airForce.f35,
+    "Image URL": SITE_IMAGES.globalBases.lakenheath,
   },
   {
     ID: "aviano-air-base",
@@ -199,7 +199,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Southern European fighter operations, Balkan access, Mediterranean air tasking, and NATO contingency response.",
     "Critical Infrastructure": ["Fighter wing", "NATO staging", "Munitions support", "Expeditionary ramp"],
     "Strategic Rationale": "A southern NATO launch platform positioned to cover the Balkans, Black Sea approaches, North Africa, and the central Mediterranean without waiting on transatlantic force flow.",
-    "Image URL": SITE_IMAGES.airForce.f16,
+    "Image URL": SITE_IMAGES.globalBases.aviano,
   },
   {
     ID: "spangdahlem-air-base",
@@ -211,7 +211,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Fighter operations, European theater support, deployable airpower packages, and NATO reinforcement.",
     "Critical Infrastructure": ["Fighter ramp", "Maintenance complex", "Munitions support", "Deployment processing"],
     "Strategic Rationale": "A combat-air reinforcement node inside Germany that gives EUCOM flexible fighter capacity beyond the main Ramstein mobility hub.",
-    "Image URL": SITE_IMAGES.airForce.f16,
+    "Image URL": SITE_IMAGES.globalBases.spangdahlem,
   },
   {
     ID: "naval-support-activity-bahrain",
@@ -223,7 +223,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Fifth Fleet command, Gulf maritime security, mine countermeasures, and regional naval coordination.",
     "Critical Infrastructure": ["Fifth Fleet HQ", "Pier access", "Maritime C2", "Mine warfare support"],
     "Strategic Rationale": "The command anchor for U.S. naval presence in the Gulf, positioned to monitor oil routes, Iranian naval activity, and chokepoint risk near the Strait of Hormuz.",
-    "Image URL": SITE_IMAGES.navy.destroyer,
+    "Image URL": SITE_IMAGES.globalBases.bahrain,
   },
   {
     ID: "al-dhafra-air-base",
@@ -235,7 +235,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "ISR, tanker support, air superiority rotations, and Gulf air defense coordination.",
     "Critical Infrastructure": ["ISR ramp", "Tanker operations", "Air-defense links", "Long runway"],
     "Strategic Rationale": "A high-value air operations platform that gives CENTCOM surveillance and airpower depth across the Gulf while reducing reliance on a single regional hub.",
-    "Image URL": SITE_IMAGES.airForce.kc135,
+    "Image URL": SITE_IMAGES.globalBases.alDhafra,
   },
   {
     ID: "ali-al-salem-air-base",
@@ -247,11 +247,11 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Theater gateway operations, airlift staging, personnel movement, and northern Gulf contingency access.",
     "Critical Infrastructure": ["Airlift ramp", "Passenger terminal", "Expeditionary support", "Cargo handling"],
     "Strategic Rationale": "A movement and staging node that turns Kuwait into a northern Gulf logistics gateway for personnel, equipment, and rapid theater access.",
-    "Image URL": SITE_IMAGES.airForce.c17,
+    "Image URL": SITE_IMAGES.globalBases.aliAlSalem,
   },
   {
     ID: "sigonella-naval-air-station",
-    Name: "Naval Air Station Sigonella",
+    Name: "Naval Station Air Sigonella",
     Country: "Italy",
     Region: "Africa",
     Coordinates: "37.4017, 14.9224",
@@ -259,7 +259,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Mediterranean ISR, Africa support, unmanned aircraft operations, and logistics bridging.",
     "Critical Infrastructure": ["ISR runway", "UAS operations", "Cargo handling", "Mediterranean staging"],
     "Strategic Rationale": "A central Mediterranean platform that connects European infrastructure to Africa missions and maritime surveillance across the southern flank.",
-    "Image URL": SITE_IMAGES.airForce.drone,
+    "Image URL": SITE_IMAGES.globalBases.sigonella,
   },
   {
     ID: "manta-forward-location",
@@ -271,7 +271,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Maritime domain awareness, counter-trafficking patrol support, and eastern Pacific monitoring.",
     "Critical Infrastructure": ["Patrol aircraft access", "Maritime surveillance", "Regional liaison", "Runway access"],
     "Strategic Rationale": "A Pacific-facing access point for monitoring maritime corridors where narcotics trafficking, illegal fishing, and regional instability intersect.",
-    "Image URL": SITE_IMAGES.airForce.drone,
+    "Image URL": SITE_IMAGES.globalBases.manta,
   },
   {
     ID: "guantanamo-bay",
@@ -283,7 +283,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Caribbean maritime access, contingency support, migrant operations capacity, and regional staging.",
     "Critical Infrastructure": ["Deep-water bay", "Airfield", "Port services", "Regional staging"],
     "Strategic Rationale": "A persistent Caribbean foothold that gives the United States maritime and air access near the Windward Passage without depending on crisis-time permissions.",
-    "Image URL": SITE_IMAGES.navy.destroyer,
+    "Image URL": SITE_IMAGES.globalBases.guantanamo,
   },
   {
     ID: "eielson-air-force-base",
@@ -295,7 +295,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Arctic fighter operations, Pacific airpower depth, high-end training, and polar response.",
     "Critical Infrastructure": ["F-35 squadrons", "Arctic runway", "Red Flag Alaska", "Cold-weather sustainment"],
     "Strategic Rationale": "A northern combat-air base that links Arctic access with Pacific deterrence, allowing U.S. fighters to operate from a high-latitude position inside sovereign territory.",
-    "Image URL": SITE_IMAGES.airForce.f35,
+    "Image URL": SITE_IMAGES.globalBases.eielson,
   },
   {
     ID: "clear-space-force-station",
@@ -307,7 +307,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Missile warning, space surveillance, polar tracking, and homeland aerospace defense.",
     "Critical Infrastructure": ["Long-range radar", "Missile warning", "Space tracking", "NORAD integration"],
     "Strategic Rationale": "A polar sensor node that buys decision time against missile threats and tracks orbital activity across northern approach corridors.",
-    "Image URL": SITE_IMAGES.spaceForce.earth,
+    "Image URL": SITE_IMAGES.globalBases.clear,
   },
   {
     ID: "fort-liberty",
@@ -319,7 +319,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Airborne force generation, special operations support, contingency headquarters, and rapid deployment packaging.",
     "Critical Infrastructure": ["Airborne units", "SOCOM support", "Deployment processing", "Joint training"],
     "Strategic Rationale": "A force-generation base built to move high-readiness airborne and special operations formations into crisis theaters faster than heavy force packages can assemble.",
-    "Image URL": SITE_IMAGES.socomOperators,
+    "Image URL": SITE_IMAGES.globalBases.fortLiberty,
   },
   {
     ID: "kadena-air-base",
@@ -331,7 +331,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Air superiority, ISR, tanker support, and first-island-chain response from Okinawa.",
     "Critical Infrastructure": ["Fighter ramp", "ISR support", "Tanker operations", "Hardened shelters"],
     "Strategic Rationale": "A front-line air hub in Okinawa that keeps U.S. airpower positioned near Taiwan, the East China Sea, and the Philippine Sea.",
-    "Image URL": SITE_IMAGES.airForce.f15ex,
+    "Image URL": SITE_IMAGES.globalBases.kadena,
   },
   {
     ID: "marine-corps-base-darwin",
@@ -403,19 +403,19 @@ export const theaterCards: TheaterCard[] = [
     title: "Europe",
     designation: "NATO Shield",
     description: "A mature basing network built for reinforcement, deterrence, medical evacuation, and multinational command integration.",
-    imageUrl: SITE_IMAGES.airForce.c17,
+    imageUrl: SITE_IMAGES.globalBases.ramstein,
   },
   {
     title: "Indo-Pacific",
     designation: "Deterrence Arc",
     description: "Forward naval and air nodes positioned to reduce response time across the Pacific's extreme distance problem.",
-    imageUrl: SITE_IMAGES.navy.carrierFormation,
+    imageUrl: SITE_IMAGES.globalBases.yokosuka,
   },
   {
     title: "Middle East",
     designation: "Forward Response",
     description: "Air command, tanker, ISR, and maritime access points that convert regional volatility into manageable operating geometry.",
-    imageUrl: SITE_IMAGES.airForce.kc135,
+    imageUrl: SITE_IMAGES.globalBases.alUdeid,
   },
   {
     title: "Global Logistics",
