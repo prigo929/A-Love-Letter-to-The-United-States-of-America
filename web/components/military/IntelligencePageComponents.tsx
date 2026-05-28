@@ -6,6 +6,11 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { ArrowUpRight, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import flagAus from "@/ASSETS/Flags/Flag_of_Australia.svg";
+import flagCan from "@/ASSETS/Flags/Flag_of_Canada.svg";
+import flagNzl from "@/ASSETS/Flags/Flag_of_New_Zealand.svg";
+import flagUk from "@/ASSETS/Flags/Flag_of_the_United_Kingdom.svg";
+import flagUsa from "@/ASSETS/Flags/Flag_of_the_United_States.svg";
 import type { Locale } from "@/lib/i18n/config";
 import type {
   IntelligenceAgency,
@@ -1194,6 +1199,14 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
     }
   }
 
+  const flagMap: Record<string, string> = {
+    USA: flagUsa.src,
+    UK: flagUk.src,
+    AUS: flagAus.src,
+    NZL: flagNzl.src,
+    CAN: flagCan.src,
+  };
+
   return (
     <section
       ref={ref}
@@ -1249,33 +1262,40 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
             {/* Node points and labels */}
             {points.map((p, i) => (
               <g key={p.label}>
-                {/* Point dot */}
-                <circle
-                  cx={p.x}
-                  cy={p.y}
-                  r={inView ? 4 : 0}
-                  fill={INTEL.greenText}
+                {/* Flag Image with custom transition */}
+                <g
                   style={{
-                    transition: `r 0.8s ease-out ${0.5 + i * 0.2}s`,
+                    opacity: inView ? 1 : 0,
+                    transform: inView ? "scale(1)" : "scale(0)",
+                    transformOrigin: `${p.x}px ${p.y}px`,
+                    transition: `opacity 0.8s ease-out ${0.5 + i * 0.2}s, transform 0.8s ease-out ${0.5 + i * 0.2}s`,
                   }}
-                />
-                {/* Outer ring */}
-                <circle
-                  cx={p.x}
-                  cy={p.y}
-                  r={inView ? 10 : 0}
-                  fill="none"
-                  stroke={INTEL.green}
-                  strokeWidth="1"
-                  strokeOpacity={0.3}
-                  style={{
-                    transition: `r 0.8s ease-out ${0.5 + i * 0.2}s`,
-                  }}
-                />
+                >
+                  {/* Faint background container to hold the flag */}
+                  <rect
+                    x={p.x - 16}
+                    y={p.y - 10}
+                    width={32}
+                    height={20}
+                    fill="#050505"
+                    stroke={INTEL.green}
+                    strokeWidth="1"
+                    rx="1"
+                  />
+                  <image
+                    href={flagMap[p.label]}
+                    x={p.x - 15}
+                    y={p.y - 9}
+                    width={30}
+                    height={18}
+                    preserveAspectRatio="none"
+                  />
+                </g>
+
                 {/* Label */}
                 <text
                   x={p.x}
-                  y={p.y + (p.label === "USA" ? -20 : p.y < 220 ? -20 : 30)}
+                  y={p.y + (p.label === "USA" ? -18 : p.y < 220 ? -18 : 28)}
                   textAnchor="middle"
                   fill={INTEL.greenText}
                   fontSize="10"
