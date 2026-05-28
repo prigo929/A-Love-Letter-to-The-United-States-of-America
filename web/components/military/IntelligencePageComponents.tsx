@@ -1177,13 +1177,22 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const isRo = locale === "ro";
 
-  const nodes = [
-    { x: 250, y: 200, label: "USA", agency: "NSA", region: "NORTH AMERICA", coords: "39.1104° N / 76.7358° W" },
-    { x: 80, y: 100, label: "CAN", agency: "CSE", region: "NORTH AMERICA", coords: "45.4215° N / 75.6972° W" },
-    { x: 80, y: 300, label: "UK", agency: "GCHQ", region: "EUROPE", coords: "51.8979° N / 2.0833° W" },
-    { x: 420, y: 100, label: "AUS", agency: "ASD", region: "ASIA-PACIFIC", coords: "35.2809° S / 149.1300° E" },
-    { x: 420, y: 300, label: "NZL", agency: "GCSB", region: "ASIA-PACIFIC", coords: "41.2865° S / 174.7762° E" },
+  // Pentagon points (centered at 250,220, radius ~160)
+  const points = [
+    { x: 250, y: 60, label: "USA" },          // top
+    { x: 402, y: 176, label: "UK" },           // top-right
+    { x: 344, y: 370, label: "AUS" },          // bottom-right
+    { x: 156, y: 370, label: "CAN" },          // bottom-left
+    { x: 98, y: 176, label: "NZL" },           // top-left
   ];
+
+  // All connecting lines (every pair)
+  const lines: [number, number][] = [];
+  for (let i = 0; i < 5; i++) {
+    for (let j = i + 1; j < 5; j++) {
+      lines.push([i, j]);
+    }
+  }
 
   return (
     <section
@@ -1191,154 +1200,105 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
       className="relative px-6 sm:px-10 lg:px-16 py-28 md:py-40"
       style={{ background: INTEL.black }}
     >
-      <div className="mx-auto max-w-[1200px]">
+      <div className="mx-auto max-w-[1100px]">
+        {/* Section header */}
         <div className="mb-16 lg:mb-24 text-center">
           <div
             className="intel-bureaucratic mb-8"
-            style={{ fontSize: "clamp(11px, 0.9vw, 14px)", letterSpacing: "0.25em", color: INTEL.greenText }}
+            style={{ fontSize: "9px", letterSpacing: "0.35em", color: INTEL.greenText }}
           >
-            {isRo ? "ALIANȚĂ DE INFORMAȚII" : "INTELLIGENCE ALLIANCE"}
+            {isRo ? "ALIANȚĂ DE INFORMAȚII // TRATATUL UKUSA" : "INTELLIGENCE ALLIANCE // UKUSA TREATY"}
           </div>
           <div
             className="intel-editorial mx-auto"
-            style={{ fontSize: "clamp(28px, 5vw, 56px)", lineHeight: 1.2, maxWidth: "700px" }}
+            style={{ fontSize: "clamp(22px, 3.5vw, 38px)", lineHeight: 1.3, maxWidth: "600px" }}
           >
             {isRo
-              ? "Structura de cooperare globală."
-              : "The architecture of global cooperation."}
+              ? "Cei cinci ochi care văd totul."
+              : "The five eyes that see everything."}
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 justify-center">
-          {/* Schematic SVG */}
-          <div className="relative w-full max-w-[500px] border border-rgba(232, 226, 213, 0.05) p-6 bg-[#030303] rounded-sm shrink-0">
-            <div className="absolute top-3 left-3 text-[9px] font-mono text-emerald-800/60 uppercase tracking-widest">
-              Topological Link Array // System: FVEY
-            </div>
-            <svg viewBox="0 0 500 400" className="w-full h-auto">
-              {/* Background grid */}
-              <defs>
-                <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(232, 226, 213, 0.02)" strokeWidth="1" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" />
-
-              {/* Faint technical axes */}
-              <line x1="250" y1="20" x2="250" y2="380" stroke="rgba(232, 226, 213, 0.03)" strokeWidth="1" strokeDasharray="4 4" />
-              <line x1="20" y1="200" x2="480" y2="200" stroke="rgba(232, 226, 213, 0.03)" strokeWidth="1" strokeDasharray="4 4" />
-
-              {/* Concentric grid frames */}
-              <circle cx="250" cy="200" r="100" fill="none" stroke="rgba(232, 226, 213, 0.02)" strokeWidth="1" />
-              <circle cx="250" cy="200" r="180" fill="none" stroke="rgba(232, 226, 213, 0.01)" strokeWidth="1" />
-
-              {/* Links from center (USA) to spokes */}
-              {nodes.slice(1).map((node, i) => (
+        {/* SVG Diagram */}
+        <div className="flex justify-center">
+          <svg viewBox="0 0 500 440" className="w-full max-w-[460px] h-auto">
+            {/* Connecting lines — animated stroke-dashoffset */}
+            {lines.map(([a, b], i) => {
+              const p1 = points[a];
+              const p2 = points[b];
+              const length = Math.sqrt((p2.x - p1.x) ** 2 + (p2.y - p1.y) ** 2);
+              return (
                 <line
-                  key={node.label}
-                  x1="250"
-                  y1="200"
-                  x2={node.x}
-                  y2={node.y}
+                  key={`${a}-${b}`}
+                  x1={p1.x}
+                  y1={p1.y}
+                  x2={p2.x}
+                  y2={p2.y}
                   stroke={INTEL.green}
                   strokeWidth="1"
-                  strokeOpacity={inView ? 0.35 : 0}
-                  className="transition-all duration-1000"
-                  style={{ transitionDelay: `${0.3 + i * 0.15}s` }}
+                  strokeOpacity={0.4}
+                  strokeDasharray={length}
+                  strokeDashoffset={inView ? 0 : length}
+                  style={{
+                    transition: `stroke-dashoffset ${1.5 + i * 0.15}s ease-out ${0.3 + i * 0.1}s`,
+                  }}
                 />
-              ))}
+              );
+            })}
 
-              {/* Outer perimeter bounds — faint, logical loop */}
-              <path
-                d="M 80,100 L 420,100 L 420,300 L 80,300 Z"
-                fill="none"
-                stroke="rgba(28, 58, 28, 0.15)"
-                strokeWidth="1"
-                strokeDasharray="5 5"
-              />
-
-              {/* Node points and markers */}
-              {nodes.map((node, i) => (
-                <g key={node.label} className="cursor-default">
-                  {/* Outer circle halo */}
-                  <circle
-                    cx={node.x}
-                    cy={node.y}
-                    r={node.label === "USA" ? 8 : 6}
-                    fill="none"
-                    stroke={INTEL.greenText}
-                    strokeWidth="1"
-                    strokeOpacity={0.6}
-                  />
-                  {/* Solid center dot */}
-                  <circle
-                    cx={node.x}
-                    cy={node.y}
-                    r="2.5"
-                    fill={INTEL.paper}
-                  />
-                  {/* Technical Text layout */}
-                  <text
-                    x={node.x}
-                    y={node.y + (node.y > 200 ? 22 : -14)}
-                    textAnchor="middle"
-                    fill={INTEL.paper}
-                    fontSize="11"
-                    fontFamily="var(--font-mono), monospace"
-                    fontWeight="bold"
-                    letterSpacing="0.1em"
-                  >
-                    {node.label}
-                  </text>
-                  <text
-                    x={node.x}
-                    y={node.y + (node.y > 200 ? 34 : -2)}
-                    textAnchor="middle"
-                    fill={INTEL.greenText}
-                    fontSize="9"
-                    fontFamily="var(--font-mono), monospace"
-                    letterSpacing="0.05em"
-                  >
-                    {node.agency}
-                  </text>
-                </g>
-              ))}
-            </svg>
-          </div>
-
-          {/* Details list */}
-          <div className="flex-1 max-w-[550px] space-y-6 text-left">
-            <div className="border-l-2 border-[#1C3A1C] pl-4">
-              <span className="intel-bureaucratic block text-[11px] text-[#2A4A2A] mb-1">
-                {isRo ? "CORELARE DATE" : "DATA CORRELATION"}
-              </span>
-              <p className="intel-body text-sm leading-relaxed" style={{ fontSize: "14px", lineHeight: "1.7" }}>
-                {isRo
-                  ? "Sistemul funcționează ca un canal integrat de schimb de date, permițând agențiilor partenere să acceseze baze de date comune fără întrerupere, conform directivelor stabilite în cadrul Tratatului UKUSA."
-                  : "The system functions as an integrated pipeline of raw intercept sharing, allowing partner agencies to query shared databases seamlessly under the established mandates of the UKUSA Treaty."}
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4">
-              {nodes.map((node) => (
-                <div key={node.label} className="p-3 border border-rgba(232, 226, 213, 0.04) bg-[#020202]">
-                  <div className="flex justify-between items-baseline mb-1">
-                    <span className="font-mono text-xs font-semibold text-[#E8E2D5]">{node.label}</span>
-                    <span className="font-mono text-[9px] text-[#2A4A2A]">{node.agency}</span>
-                  </div>
-                  <div className="font-mono text-[9px] text-rgba(232, 226, 213, 0.3)" style={{ letterSpacing: "0.02em" }}>
-                    {node.coords}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+            {/* Node points and labels */}
+            {points.map((p, i) => (
+              <g key={p.label}>
+                {/* Point dot */}
+                <circle
+                  cx={p.x}
+                  cy={p.y}
+                  r={inView ? 4 : 0}
+                  fill={INTEL.greenText}
+                  style={{
+                    transition: `r 0.8s ease-out ${0.5 + i * 0.2}s`,
+                  }}
+                />
+                {/* Outer ring */}
+                <circle
+                  cx={p.x}
+                  cy={p.y}
+                  r={inView ? 10 : 0}
+                  fill="none"
+                  stroke={INTEL.green}
+                  strokeWidth="1"
+                  strokeOpacity={0.3}
+                  style={{
+                    transition: `r 0.8s ease-out ${0.5 + i * 0.2}s`,
+                  }}
+                />
+                {/* Label */}
+                <text
+                  x={p.x}
+                  y={p.y + (i === 0 ? -22 : i <= 2 ? 30 : 30)}
+                  textAnchor="middle"
+                  fill={INTEL.greenText}
+                  fontSize="10"
+                  fontFamily="var(--font-mono), monospace"
+                  letterSpacing="0.2em"
+                  opacity={inView ? 1 : 0}
+                  style={{
+                    transition: `opacity 1s ease-out ${1 + i * 0.15}s`,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {p.label}
+                </text>
+              </g>
+            ))}
+          </svg>
         </div>
 
-        <div className="mt-16 text-center max-w-3xl mx-auto border-t border-rgba(232, 226, 213, 0.05) pt-12">
-          <p className="intel-body" style={{ lineHeight: 2 }}>
+        {/* Brief paragraph about the alliance */}
+        <div className="mt-16 text-center max-w-2xl mx-auto">
+          <p className="intel-body" style={{ fontSize: "11px", lineHeight: 2.2 }}>
             {isRo
-              ? "Alianța Five Eyes — compusă din Statele Unite, Regatul Unit, Australia, Canada și Noua Zeelandă — constituie cel mai extins parteneriat de schimb de informații din istorie. Originile sale datează din Al Doilea Război Mondial, iar structura sa actuală rămâne în mare parte clasificată."
+              ? "Alianța Five Eyes — compusă din Statele Unite, Regatul Unit, Australia, Canada și Noua Zeelandă — constituie cel mai extins și profund parteneriat de schimb de informații din istorie. Originile sale datează din Al Doilea Război Mondial, iar structura sa actuală rămâne în mare parte clasificată."
               : "The Five Eyes alliance — comprising the United States, United Kingdom, Australia, Canada, and New Zealand — constitutes the most extensive and deeply integrated intelligence-sharing partnership in history. Its origins trace to World War II, and its current operational structure remains largely classified."}
           </p>
         </div>
