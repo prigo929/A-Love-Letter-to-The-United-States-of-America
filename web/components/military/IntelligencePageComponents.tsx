@@ -1699,7 +1699,7 @@ const VAULT_DATA_EN: VaultFolder[] = [
         to: "THE PRESIDENT OF THE UNITED STATES",
         from: "DIRECTOR OF CENTRAL INTELLIGENCE",
         subject: "CONFIRMED DEPLOYMENT OF SOVIET MRBMs IN CUBA",
-        content: "Photographic reconnaissance flights executed on 14 October have confirmed the installation of [redact]SS-4 Sandal medium-range ballistic missiles[/redact] near San Cristobal, Cuba. Analysts at the National Photographic Interpretation Center (NPIC) have identified [redact]six launch pads[/redact] capable of striking major urban areas of the eastern United States within [redact]18 minutes[/redact] of command authorization. Strategic bombers at Soviet staging airbases remain in alert state [redact]DEFCON-2 equivalent[/redact]."
+        content: "Photographic reconnaissance flights executed on 14 October have confirmed the installation of [redact]SS-4 Sandal medium-range ballistic missiles[/redact] near San Cristobal, Cuba. Analysts at the National Photographic Interpretation Center (NPIC) have identified [redact]six launch pads[/redact] capable of striking major urban areas of the eastern United States within [redact]18 minutes[/redact] of command authorization. Strategic bombers at Soviet staging airbases remain in alert state [redact]DEFCON-2 equivalent[/redact].\n\nAdditionally, ground telemetry indicates the arrival of [redact]42 Il-28 nuclear-capable bombers[/redact] and Soviet troop contingents at [redact]San Julian airbase[/redact]. Reconnaissance photos reveal security perimeters manned by Soviet combat units, indicating operational control resides with [redact]General Issa Pliyev[/redact]. EXCOMM advises immediate blockade action."
       },
       {
         id: "berlin-tunnel",
@@ -1710,7 +1710,7 @@ const VAULT_DATA_EN: VaultFolder[] = [
         to: "CHIEF, FOREIGN INTELLIGENCE STATIONS",
         from: "BERLIN OPERATIONS STATION COMMANDER",
         subject: "COMPROMISE AND RECOVERY ACTION AT SECTION 4",
-        content: "At approximately 0210 hours, Soviet army engineers penetrated the subterranean conduit located in the [redact]Soviet sector of Berlin[/redact]. Operation PBJOINTLY has been compromised. Post-incident analysis suggests that the [redact]KGB had advance warning[/redact] of the excavation since late 1954, likely through a high-level mole inside [redact]SIS (MI6)[/redact], code-named [redact]George Blake[/redact]. All signals recording operations at the site are ceased immediately."
+        content: "At approximately 0210 hours, Soviet army engineers penetrated the subterranean conduit located in the [redact]Soviet sector of Berlin[/redact]. Operation PBJOINTLY has been compromised. Post-incident analysis suggests that the [redact]KGB had advance warning[/redact] of the excavation since late 1954, likely through a high-level mole inside [redact]SIS (MI6)[/redact], code-named [redact]George Blake[/redact]. All signals recording operations at the site are ceased immediately.\n\nEmergency destruction of all [redact]Ampex magnetic recording tapes[/redact] and cryptographic terminal equipment at the West Berlin terminal has been completed. Preliminary debriefings indicate that over [redact]443,000 intercepted conversations[/redact] were gathered before breach. Safe evacuation of [redact]two high-level Eastern informants[/redact] is under coordination."
       }
     ]
   },
@@ -1727,7 +1727,7 @@ const VAULT_DATA_EN: VaultFolder[] = [
         to: "CHIEF, TECHNICAL SERVICES STAFF",
         from: "DIRECTOR, RESEARCH SUBPROJECT 68",
         subject: "TREATMENT PATTERNS AT THE ALLAN MEMORIAL INSTITUTE",
-        content: "Subproject 68 experiments continue to assess the disruption of cognitive patterns via administration of [redact]high-dose LSD-25[/redact] combined with prolonged [redact]sensory deprivation[/redact]. Subjects are placed in induced sleep states for periods up to [redact]35 days[/redact] while listening to tape loops repeating verbal anchors. Preliminary outcomes indicate [redact]severe retrograde amnesia[/redact] in 85% of subjects, with complete personality de-patterning achieved."
+        content: "Subproject 68 experiments continue to assess the disruption of cognitive patterns via administration of [redact]high-dose LSD-25[/redact] combined with prolonged [redact]sensory deprivation[/redact]. Subjects are placed in induced sleep states for periods up to [redact]35 days[/redact] while listening to tape loops repeating verbal anchors. Preliminary outcomes indicate [redact]severe retrograde amnesia[/redact] in 85% of subjects, with complete personality de-patterning achieved.\n\nFurther phases will evaluate the application of [redact]electroconvulsive shock therapy[/redact] at voltages [redact]30-40% above normal clinical thresholds[/redact] to accelerate memory erasure. Funding has been routed through the [redact]Geschickter Fund for Medical Research[/redact] to mask agency sponsorship. Next progress report scheduled for [redact]September 1957[/redact]."
       },
       {
         id: "stargate-81",
@@ -1738,7 +1738,7 @@ const VAULT_DATA_EN: VaultFolder[] = [
         to: "COMMANDER, INSCOM",
         from: "PROJECT COORDINATOR, PSYCHOENERGETICS DIVISION",
         subject: "REMOTE VIEWING MISSION REPORT - USSR SUBMARINE BASE",
-        content: "The viewer was targeted against the classified submarine building at [redact]Severodvinsk, USSR[/redact]. The viewer described a massive new class of submarine under construction, characterized by [redact]double hull titanium alloy[/redact] and carrying [redact]20 ballistic missile launch tubes[/redact]. Intelligence correlation confirms the presence of the [redact]Typhoon-class SSBN[/redact], matching the layout produced by the viewer during the session."
+        content: "The viewer was targeted against the classified submarine building at [redact]Severodvinsk, USSR[/redact]. The viewer described a massive new class of submarine under construction, characterized by [redact]double hull titanium alloy[/redact] and carrying [redact]20 ballistic missile launch tubes[/redact]. Intelligence correlation confirms the presence of the [redact]Typhoon-class SSBN[/redact], matching the layout produced by the viewer during the session.\n\nSubsequent session coordinate matches at the [redact]Semipalatinsk test site[/redact] yielded highly accurate descriptions of a [redact]vertical underground shaft installation[/redact] and nuclear canister deployment. Project management recommends continued operational usage for [redact]denied areas[/redact] where satellite passes are blocked by weather or countermeasures."
       }
     ]
   },
@@ -1755,7 +1755,7 @@ const VAULT_DATA_EN: VaultFolder[] = [
         to: "COMMANDING GENERAL, AIR DEFENSE COMMAND",
         from: "CHIEF, PROJECT BLUE BOOK INVESTIGATION",
         subject: "UNIDENTIFIED RADAR INSIGHTS OVER CAPITAL AIRSPACE",
-        content: "At 2340 hours, radar operators at Washington National Airport detected [redact]seven slow-moving objects[/redact] traveling at speeds ranging from 100 to [redact]7,000 miles per hour[/redact]. Commercial pilots reported visual observations of [redact]glowing orange lights[/redact] maneuvering in ways that violate known aerodynamic physics. Interceptor aircraft scrambles were initiated; however, the objects [redact]vanished instantly[/redact] upon aircraft approach, only to return when aircraft departed."
+        content: "At 2340 hours, radar operators at Washington National Airport detected [redact]seven slow-moving objects[/redact] traveling at speeds ranging from 100 to [redact]7,000 miles per hour[/redact]. Commercial pilots reported visual observations of [redact]glowing orange lights[/redact] maneuvering in ways that violate known aerodynamic physics. Interceptor aircraft scrambles were initiated; however, the objects [redact]vanished instantly[/redact] upon aircraft approach, only to return when aircraft departed.\n\nF-94 interceptors reported severe electromagnetic interference causing [redact]temporary radio blackout[/redact] and navigation instruments disruption. Air Intelligence concludes that temperature inversion layer reflections cannot account for [redact]simultaneous visual and radar correlation[/redact]. Highly secret briefing presented to the [redact]National Security Council[/redact] under strict wraps."
       },
       {
         id: "roswell-47",
@@ -1766,7 +1766,7 @@ const VAULT_DATA_EN: VaultFolder[] = [
         to: "COMMANDING GENERAL, EIGHTH AIR FORCE",
         from: "INTELLIGENCE OFFICER, 509TH BOMB GROUP",
         subject: "ACQUISITION OF CLASSIFIED WEATHER CONSTALLATION PARTS",
-        content: "Debris recovered from the Foster Ranch near Corona, New Mexico consists of metallic foil, wooden struts, and highly anomalous structural tape containing [redact]pictographic writing symbols[/redact]. Materials have been identified as part of the highly classified project [redact]Project Mogul balloon array[/redact], designed to detect Soviet nuclear atmospheric tests. Public media release has been altered to state the recovery of a [redact]standard weather balloon[/redact] to maintain intelligence operational security."
+        content: "Debris recovered from the Foster Ranch near Corona, New Mexico consists of metallic foil, wooden struts, and highly anomalous structural tape containing [redact]pictographic writing symbols[/redact]. Materials have been identified as part of the highly classified project [redact]Project Mogul balloon array[/redact], designed to detect Soviet nuclear atmospheric tests. Public media release has been altered to state the recovery of a [redact]standard weather balloon[/redact] to maintain intelligence operational security.\n\nAll recovered biological samples and structural remnants have been transported to [redact]Wright Field, Ohio[/redact] under armed escort. Initial structural analysis of the lightweight alloy shows it resists temperature up to [redact]3,000 degrees Fahrenheit[/redact] and does not bend under hydraulic press. Further analysis is restricted to [redact]Foreign Technology Division[/redact] personnel."
       }
     ]
   },
@@ -1783,7 +1783,7 @@ const VAULT_DATA_EN: VaultFolder[] = [
         to: "CHIEF, SIGNALS INTELLIGENCE DIRECTORATE",
         from: "PROGRAM MANAGER, ECHELON NETWORK",
         subject: "INTEGRATION OF DICTIONARY SEARCH WORDS AT STATION B",
-        content: "The automated signals interception system at [redact]Menwith Hill Station[/redact] is now processing all trans-atlantic satellite communications. The search matrix utilizes a [redact]dictionary keyword database[/redact] to flag telegraph and telex transmissions containing target terms. Intercepted traffic is automatically routed to [redact]NSA HQ Fort Meade[/redact] for final cryptanalytic decoding. Daily throughput has exceeded [redact]two million messages[/redact]."
+        content: "The automated signals interception system at [redact]Menwith Hill Station[/redact] is now processing all trans-atlantic satellite communications. The search matrix utilizes a [redact]dictionary keyword database[/redact] to flag telegraph and telex transmissions containing target terms. Intercepted traffic is automatically routed to [redact]NSA HQ Fort Meade[/redact] for final cryptanalytic decoding. Daily throughput has exceeded [redact]two million messages[/redact].\n\nUnder FVEY integration, GCHQ and CSE have completed the implementation of [redact]Project Project P-415[/redact] software modules on their respective high-speed systems. This allows real-time automated routing of intercepts to [redact]COUNCIL OF FIVE[/redact] databases without manual operator intervention. System stability stands at [redact]99.8% operational availability[/redact]."
       },
       {
         id: "minaret-69",
@@ -1794,7 +1794,7 @@ const VAULT_DATA_EN: VaultFolder[] = [
         to: "DIRECTOR, NATIONAL SECURITY AGENCY",
         from: "SPECIAL OPERATIONS BRANCH CHIEF",
         subject: "WATCHLIST COMPILATION FOR DOMESTIC ACTIVISTS",
-        content: "Pursuant to inter-agency request, the SIGINT watchlist has been updated to include [redact]1,600 prominent American citizens[/redact] involved in civil rights and anti-Vietnam war movements. Intercepted international telephone calls and cables of targets including [redact]Martin Luther King Jr. and Jane Fonda[/redact] are being distributed to [redact]the FBI and CIA[/redact] under the code name Project MINARET. No judicial warrants have been obtained for these intercepts."
+        content: "Pursuant to inter-agency request, the SIGINT watchlist has been updated to include [redact]1,600 prominent American citizens[/redact] involved in civil rights and anti-Vietnam war movements. Intercepted international telephone calls and cables of targets including [redact]Martin Luther King Jr. and Jane Fonda[/redact] are being distributed to [redact]the FBI and CIA[/redact] under the code name Project MINARET. No judicial warrants have been obtained for these intercepts.\n\nTarget profiles are generated automatically based on [redact]link-analysis pattern matching[/redact] from the telegraph traffic. Transcripts are delivered via secure physical courier to [redact]Counterintelligence Staff at Langley[/redact] and Special Operations Division of FBI. Warning: this activity must not be disclosed in any [redact]civilian court proceedings[/redact] due to constitutional liability."
       }
     ]
   }
@@ -1814,7 +1814,7 @@ const VAULT_DATA_RO: VaultFolder[] = [
         to: "PREȘEDINTELE STATELOR UNITE",
         from: "DIRECTORUL AGENȚIEI CENTRALE DE INFORMAȚII",
         subject: "DEPLASARE CONFIRMATĂ A RACHETELOR SOVIETICE ÎN CUBA",
-        content: "Zborurile de recunoaștere din 14 octombrie au confirmat instalarea de [redact]rachete balistice cu rază medie SS-4 Sandal[/redact] lângă San Cristobal, Cuba. Analiștii au identificat [redact]șase rampe de lansare[/redact] capabile să lovească zonele urbane din estul SUA în [redact]18 minute[/redact] de la ordin. Bombardierele strategice din bazele sovietice rămân în stare de alertă [redact]echivalentă DEFCON-2[/redact]."
+        content: "Zborurile de recunoaștere din 14 octombrie au confirmat instalarea de [redact]rachete balistice cu rază medie SS-4 Sandal[/redact] lângă San Cristobal, Cuba. Analiștii au identificat [redact]șase rampe de lansare[/redact] capabile să lovească zonele urbane din estul SUA în [redact]18 minute[/redact] de la ordin. Bombardierele strategice din bazele sovietice rămân în stare de alertă [redact]echivalentă DEFCON-2[/redact].\n\nÎn plus, telemetria la sol indică sosirea a [redact]42 de bombardiere Il-28 capabile nuclear[/redact] și a contingentelor sovietice la baza aeriană [redact]San Julian[/redact]. Fotografiile relevă perimetre păzite de unități de luptă sovietice sub conducerea directă a [redact]Generalului Issa Pliyev[/redact]. EXCOMM recomandă instituirea blocadei maritime."
       },
       {
         id: "berlin-tunnel",
@@ -1825,7 +1825,7 @@ const VAULT_DATA_RO: VaultFolder[] = [
         to: "ȘEFUL STAȚIILOR DE INFORMAȚII EXTERNE",
         from: "COMANDANTUL STAȚIEI DE OPERAȚIUNI BERLIN",
         subject: "COMPROMITERE ȘI ACȚIUNE DE RECUPERARE LA SECȚIUNEA 4",
-        content: "La aproximativ ora 0210, inginerii armatei sovietice au pătruns în conducta subterană situată în [redact]sectorul sovietic din Berlin[/redact]. Operațiunea PBJOINTLY a fost compromisă. Analiza sugerează că [redact]KGB-ul a avut informații prealabile[/redact] încă din 1954, cel mai probabil printr-o cârtiță în [redact]SIS (MI6)[/redact], cu numele de cod [redact]George Blake[/redact]. Toate interceptările au fost oprite."
+        content: "La aproximativ ora 0210, inginerii armatei sovietice au pătruns în conducta subterană situată în [redact]sectorul sovietic din Berlin[/redact]. Operațiunea PBJOINTLY a fost compromisă. Analiza sugerează că [redact]KGB-ul a avut informații prealabile[/redact] încă din 1954, cel mai probabil printr-o cârtiță în [redact]SIS (MI6)[/redact], cu numele de cod [redact]George Blake[/redact]. Toate interceptările au fost oprite.\n\nDistrugerea de urgență a tuturor [redact]benzilor de înregistrare magnetică Ampex[/redact] și a echipamentelor criptografice din terminalul Berlinul de Vest a fost finalizată. Datele indică peste [redact]443.000 de conversații interceptate[/redact] înainte de pătrundere. Evacuarea în siguranță a [redact]doi informatori din est[/redact] este în curs de desfășurare."
       }
     ]
   },
@@ -1842,7 +1842,7 @@ const VAULT_DATA_RO: VaultFolder[] = [
         to: "ȘEFUL PERSONALULUI DE SERVICII TEHNICE",
         from: "DIRECTORUL SUBPROIECTULUI DE CERCETARE 68",
         subject: "MODELE DE TRATAMENT LA INSTITUTUL ALLAN MEMORIAL",
-        content: "Experimentele subproiectului 68 continuă evaluarea perturbării cognitive prin administrarea de [redact]doze mari de LSD-25[/redact] combinată cu [redact]deprivarea senzorială[/redact] prelungită. Subiecții sunt plasați în somn indus timp de până la [redact]35 de zile[/redact] ascultând benzi audio repetitive. Rezultatele indică [redact]amnezie retrogradă severă[/redact] la 85% din cazuri."
+        content: "Experimentele subproiectului 68 continuă evaluarea perturbării cognitive prin administrarea de [redact]doze mari de LSD-25[/redact] combinată cu [redact]deprivarea senzorială[/redact] prelungită. Subiecții sunt plasați în somn indus timp de până la [redact]35 de zile[/redact] ascultând benzi audio repetitive. Rezultatele indică [redact]amnezie retrogradă severă[/redact] la 85% din cazuri.\n\nFazele următoare vor evalua aplicarea [redact]terapiei prin electroșocuri[/redact] la tensiuni cu [redact]30-40% peste pragul clinic normal[/redact] pentru a accelera ștergerea memoriei. Fondurile au fost direcționate prin [redact]Fondul Geschickter de Cercetări Medicale[/redact] pentru a masca implicarea Agenției."
       },
       {
         id: "stargate-81",
@@ -1853,7 +1853,7 @@ const VAULT_DATA_RO: VaultFolder[] = [
         to: "COMANDANTUL INSCOM",
         from: "COORDONATOR PROIECT, DIVIZIA PSIHOENERGETICĂ",
         subject: "RAPORT DE MISIUNE - BAZA SUBMARINE URSS",
-        content: "Subiectul a vizat clădirea clasificată de submarine din [redact]Severodvinsk, URSS[/redact]. Acesta a descris un nou submarin masiv în construcție, caracterizat prin [redact]carcasă dublă din aliaj de titan[/redact] și dotat cu [redact]20 de tuburi de lansare rachete[/redact]. Datele confirmă prezența clasei [redact]Typhoon SSBN[/redact], corespunzând schiței realizate în sesiune."
+        content: "Subiectul a vizat clădirea clasificată de submarine din [redact]Severodvinsk, URSS[/redact]. Acesta a descris un nou submarin masiv în construcție, caracterizat prin [redact]carcasă dublă din aliaj de titan[/redact] și dotat cu [redact]20 de tuburi de lansare rachete[/redact]. Datele confirmă prezența clasei [redact]Typhoon SSBN[/redact], corespunzând schiței realizate în sesiune.\n\nSesiunile ulterioare axate pe coordonatele de la [redact]poligonul Semipalatinsk[/redact] au oferit descrieri precise ale unui [redact]puț vertical subteran[/redact] și ale desfășurării de focoase. Conducerea proiectului recomandă utilizarea în continuare pentru [redact]zone interzise[/redact] în care sateliții sunt blocați de nori sau bruiaj."
       }
     ]
   },
@@ -1870,7 +1870,7 @@ const VAULT_DATA_RO: VaultFolder[] = [
         to: "GENERAL COMANDANT, COMANDAMENTUL DE APĂRARE AERIANĂ",
         from: "ȘEFUL INVESTIGAȚIEI PROIECTULUI BLUE BOOK",
         subject: "OBSERVAȚII RADAR NEIDENTIFICATE ÎN SPATIUL AERIAN REZIDENȚIAL",
-        content: "La ora 2340, operatorii radar de la Aeroportul Național Washington au detectat [redact]șapte obiecte cu mișcare lentă[/redact] deplasându-se cu viteze de la 100 la [redact]7.000 de mile pe oră[/redact]. Piloții au raportat [redact]lumini portocalii strălucitoare[/redact] cu manevre ce încalcă legile fizicii. Avioanele de vânătoare au fost trimise; totuși, obiectele [redact]au dispărut instantaneu[/redact] la apropierea lor."
+        content: "La ora 2340, operatorii radar de la Aeroportul Național Washington au detectat [redact]șapte obiecte cu mișcare lentă[/redact] deplasându-se cu viteze de la 100 la [redact]7.000 de mile pe oră[/redact]. Piloții au raportat [redact]lumini portocalii strălucitoare[/redact] cu manevre ce încalcă legile fizicii. Avioanele de vânătoare au fost trimise; totuși, obiectele [redact]au dispărut instantaneu[/redact] la apropierea lor.\n\nInterceptoarele F-94 au raportat interferențe electromagnetice severe ce au cauzat [redact]blocarea radio temporară[/redact] și defectarea instrumentelor. Serviciile de Informații concluzionează că inversiunile termice nu pot explica [redact]corelația vizuală și radar simultană[/redact]. Raport prezentat la [redact]Consiliul de Securitate Națională[/redact]."
       },
       {
         id: "roswell-47",
@@ -1881,7 +1881,7 @@ const VAULT_DATA_RO: VaultFolder[] = [
         to: "GENERALUL COMANDANT, FLOTA A OPTA AERIANĂ",
         from: "OFIȚER DE INFORMAȚII, GRUPUL 509 BOMBARDIERE",
         subject: "ACHIZIȚIE PIESE CLASIFICATE CONSTELLAȚIE METEO",
-        content: "Resturile recuperate de la Foster Ranch de lângă Corona, New Mexico constau în folie metalică și bandă structurală anomală conținând [redact]simboluri pictografice[/redact]. Materialele au fost identificate ca parte a proiectului clasificat [redact]Project Mogul (balon aerostatic)[/redact] pentru detectarea testelor nucleare sovietice. Comunicatul de presă a fost modificat indicând un [redact]balon meteo standard[/redact]."
+        content: "Resturile recuperate de la Foster Ranch de lângă Corona, New Mexico constau în folie metalică și bandă structurală anomală conținând [redact]simboluri pictografice[/redact]. Materialele au fost identificate ca parte a proiectului clasificat [redact]Project Mogul (balon aerostatic)[/redact] pentru detectarea testelor nucleare sovietice. Comunicatul de presă a fost modificat indicând un [redact]balon meteo standard[/redact].\n\nToate probele biologice și rămășițele structurale recuperate au fost transportate la [redact]Wright Field, Ohio[/redact] sub escortă înarmată. Analiza structurală inițială a aliajului indică rezistență termică de până la [redact]3.000 grade Fahrenheit[/redact] și flexibilitate nulă sub presă. Accesul este restricționat la [redact]Divizia de Tehnologii Străine[/redact]."
       }
     ]
   },
@@ -1898,7 +1898,7 @@ const VAULT_DATA_RO: VaultFolder[] = [
         to: "ȘEFUL DIRECȚIEI DE INFORMAȚII DIN SEMNALE",
         from: "MANAGER PROGRAM, REȚEAUA ECHELON",
         subject: "INTEGRAREA CUVINTELOR CHEIE LA STAȚIA B",
-        content: "Sistemul automat de interceptare a semnalelor de la [redact]Menwith Hill Station[/redact] procesează acum toate comunicațiile prin satelit. Matricea de căutare utilizează o [redact]bază de date cu cuvinte cheie[/redact] pentru a semnala mesajele relevante. Traficul este direcționat automat la [redact]NSA HQ Fort Meade[/redact] pentru decodarea finală. Volumul depășește [redact]două milioane de mesaje zilnic[/redact]."
+        content: "Sistemul automat de interceptare a semnalelor de la [redact]Menwith Hill Station[/redact] procesează acum toate comunicațiile prin satelit. Matricea de căutare utilizează o [redact]bază de date cu cuvinte cheie[/redact] pentru a semnala mesajele relevante. Traficul este direcționat automat la [redact]NSA HQ Fort Meade[/redact] pentru decodarea finală. Volumul depășește [redact]două milioane de mesaje zilnic[/redact].\n\nSub integrarea FVEY, GCHQ și CSE au finalizat implementarea modulelor software [redact]Proiectul P-415[/redact] pe sistemele lor. Acest lucru permite partajarea automată în timp real a interceptărilor către bazele de date [redact]CONSILIULUI CELOR CINCI[/redact] fără operator. Stabilitatea sistemului este de [redact]99.8% disponibilitate[/redact]."
       },
       {
         id: "minaret-69",
@@ -1909,7 +1909,7 @@ const VAULT_DATA_RO: VaultFolder[] = [
         to: "DIRECTORUL AGENȚIEI DE SECURITATE NAȚIONALĂ",
         from: "ȘEF OPERAȚIUNI SPECIALE",
         subject: "COMPILARE LISTĂ PENTRU ACTIVIȘTII INTERNI",
-        content: "Conform solicitării inter-agenții, lista SIGINT a fost actualizată pentru a include [redact]1.600 de cetățeni americani de seamă[/redact] implicați în mișcările anti-război. Convorbirile și telegramele interceptate ale unor ținte ca [redact]Martin Luther King Jr. și Jane Fonda[/redact] are being distributed to [redact]the FBI and CIA[/redact] under the code name Project MINARET. No judicial warrants have been obtained for these intercepts."
+        content: "Conform solicitării inter-agenții, lista SIGINT a fost actualizată pentru a include [redact]1.600 de cetățeni americani de seamă[/redact] implicați în mișcările anti-război. Convorbirile și telegramele interceptate ale unor ținte ca [redact]Martin Luther King Jr. și Jane Fonda[/redact] are being distributed to [redact]the FBI and CIA[/redact] under the code name Project MINARET. No judicial warrants have been obtained for these intercepts.\n\nProfilele țintelor sunt generate automat pe baza [redact]analizei de legătură link-analysis[/redact] din traficul telegrafic. Transcrierile sunt livrate prin curier fizic securizat către [redact]Contra-informații Langley[/redact] și FBI. AVERTISMENT: această activitate nu trebuie divulgată în nicio [redact]procedură judiciară civilă[/redact] din cauza răspunderii constituționale."
       }
     ]
   }
@@ -2029,7 +2029,7 @@ export function TheVault({ locale = "en" }: { locale?: Locale }) {
         </div>
 
         {/* Vault Explorer Workspace */}
-        <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 border border-rgba(232, 226, 213, 0.08) bg-[#020202] rounded-sm overflow-hidden min-h-[550px] text-left">
+        <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 border border-rgba(232, 226, 213, 0.08) bg-[#020202] rounded-sm overflow-hidden min-h-[820px] text-left">
           
           {/* Left Panel: Folders & Document Listing */}
           <div className="border-r border-rgba(232, 226, 213, 0.08) flex flex-col bg-[#040404]">
@@ -2082,7 +2082,7 @@ export function TheVault({ locale = "en" }: { locale?: Locale }) {
           </div>
 
           {/* Right Panel: Document Viewer Desk Area */}
-          <div className="flex flex-col bg-[#050505] min-h-[550px]">
+          <div className="flex flex-col bg-[#050505] min-h-[820px]">
             {/* Terminal Controls Header */}
             <div className="p-4 sm:px-6 bg-[#090909] border-b border-rgba(232, 226, 213, 0.08) flex flex-wrap items-center justify-between gap-4">
               <div>
@@ -2127,7 +2127,7 @@ export function TheVault({ locale = "en" }: { locale?: Locale }) {
                 <div className="absolute -inset-0.5 bg-[#EAE5DC] border border-[#CDC7BB] translate-x-0.5 translate-y-0.5 rounded-sm opacity-95 shadow-sm" />
 
                 {/* Main Paper Sheet */}
-                <div className="relative bg-[#FAF8F4] border border-[#DCD6CA] text-[#1E1D1B] p-8 sm:p-12 min-h-[460px] shadow-2xl flex flex-col justify-between rounded-sm">
+                <div className="relative bg-[#FAF8F4] border border-[#DCD6CA] text-[#1E1D1B] p-8 sm:p-12 min-h-[720px] shadow-2xl flex flex-col justify-between rounded-sm">
 
                   {/* Distressed Stamp Overlays */}
                   <div className="absolute top-8 right-8 pointer-events-none select-none z-20 opacity-85">
