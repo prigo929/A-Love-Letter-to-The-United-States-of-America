@@ -302,43 +302,7 @@ export default async function MilitaryPage() {
 
 
       
-      {/* ─── §3.5  SUPREMACY WAVE — MILITARY SHOWCASE ────────────────────────── */}
-      <Section
-        id="supremacy-wave"
-        label={locale === 'ro' ? "SUPREMAȚIA AMERICII · SHOWCASE MILITAR" : "AMERICA SUPREMACY · MILITARY SHOWCASE"}
-        fullBleed
-        noPad
-      >
-        <div className="relative w-full aspect-video overflow-hidden bg-black">
-          <video
-            autoPlay loop muted playsInline
-            className="w-full h-full object-cover"
-            style={{ filter: 'contrast(1.1) brightness(0.75) saturate(0.8)' }}
-            aria-label="Cinematic military supremacy video showcase"
-          >
-            <source src="/videos/military/supremacy-wave.mp4" type="video/mp4" />
-          </video>
-          
-          {/* Edge vignette */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,black_0%,rgba(0,0,0,0)_15%,rgba(0,0,0,0)_85%,black_100%)]" />
-          <div className="absolute inset-0" style={{
-            background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.5) 100%)'
-          }} />
-          
-          {/* Centered lockup */}
-          <div className="absolute inset-0 flex items-center justify-center z-30">
-            <div className="text-center">
-              <h2 className="mil-text-section mb-4">
-                <span className="block whitespace-nowrap">{locale === 'ro' ? 'SUPREMAȚIE' : 'ABSOLUTE'}</span>
-                <span className="block whitespace-nowrap text-white/20">{locale === 'ro' ? 'ABSOLUTĂ' : 'SUPREMACY'}</span>
-              </h2>
-              <p className="mil-text-metadata tracking-[0.4em] font-bold text-[11px] text-white/50">
-                {locale === 'ro' ? 'DOMINANȚĂ PLANETARĂ · VERIFICAT 2025' : 'PLANETARY DOMINANCE · VERIFIED 2025'}
-              </p>
-            </div>
-          </div>
-        </div>
-      </Section>
+
 
       {/* ─── §4  MILITARY BRANCHES ──────────────────────────────────────────── */}
       <Section
