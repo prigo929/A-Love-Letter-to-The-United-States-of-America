@@ -341,7 +341,7 @@ interface CulturePillarsStripProps {
 
 export function CulturePillarsStrip({ pillars }: CulturePillarsStripProps) {
   return (
-    <section id="culture-pillars" className="culture-bg border-t border-white/5 py-24 md:py-32">
+    <section id="culture-pillars" className="culture-bg py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         {/* Section title & Header */}
         <div className="mb-16 text-left">
@@ -832,7 +832,7 @@ export function CultureParallaxDivider({
 
 export function CultureLoopingVideoSection() {
   return (
-    <section className="relative w-full h-[40vh] overflow-hidden border-y border-white/5 bg-black">
+    <section className="relative w-full h-[40vh] overflow-hidden bg-black">
       <video
         autoPlay
         loop
@@ -851,7 +851,7 @@ export function CultureLoopingVideoSection() {
 
 export function CultureBrandLogosMarquee() {
   return (
-    <section className="culture-bg pt-8 md:pt-12 pb-16 md:pb-24 border-y border-white/5 overflow-hidden flex flex-col gap-24 md:gap-32">
+    <section className="culture-bg pt-8 md:pt-12 pb-16 md:pb-24 overflow-hidden flex flex-col gap-24 md:gap-32">
       {/* Row 1 (Scrolling Left) */}
       <div className="relative w-full overflow-hidden">
         <div className="flex w-max animate-marquee-left whitespace-nowrap">
@@ -1229,7 +1229,7 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
     : "A curated archive of landmark cultural exports that defined global creative expression.";
 
   return (
-    <section className="culture-bg py-20 md:py-28 border-t border-white/5">
+    <section className="culture-bg py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center">
         {/* Title Block */}
         <motion.div
@@ -1433,7 +1433,7 @@ export function CultureLivingMediaWall() {
   if (images.length === 0) return null;
 
   return (
-    <section className="relative w-full h-screen bg-black overflow-hidden border-y border-white/5 select-none flex items-center justify-center">
+    <section className="relative w-full h-screen bg-black overflow-hidden select-none flex items-center justify-center">
       {/* Full-Viewport Shifting Grid */}
       <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-2 p-2 w-full h-full">
         {Array.from({ length: totalSlots }).map((_, idx) => {
