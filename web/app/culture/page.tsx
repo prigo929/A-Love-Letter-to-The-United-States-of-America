@@ -123,8 +123,8 @@ export default async function CulturePage() {
       {/* §3 — Thesis Block */}
       <CultureThesisBlock thesis={thesis} />
 
-      {/* Parallax Divider 1 — Chicago Theatre Marquee */}
-      <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.chicagoTheatre} alt="Chicago Theatre Marquee at Night" />
+      {/* Parallax Divider 1 — Times Square Iconic */}
+      <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.timesSquareIconic} alt="Times Square Iconic" />
 
       {/* §4 — Soft Power Pillars */}
       <CulturePillarsStrip pillars={pillars} />

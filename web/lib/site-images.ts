@@ -134,6 +134,7 @@ import cultureRoute66 from "@/IMAGES/Culture/Iconic Things/Route-66-Shield-Paint
 import cultureMelsDriveIn from "@/IMAGES/Culture/Iconic Things/Vintage-Classic-Cars-Parked-Outside-Mels-Drive-In-Retro-Diner-At-Night.jpg";
 import cultureFlosV8 from "@/IMAGES/Culture/Iconic Things/Flos-V8-Cafe-Neon-Sign-At-Dusk-In-Cars-Land-Disney-California-Adventure.jpg";
 import cultureClassicCar from "@/IMAGES/Culture/Iconic Things/Shiny-Black-Classic-Car-Reflecting-Pink-Neon-Signs-At-Mels-Drive-In.jpg";
+import cultureTimesSquareIconic from "@/IMAGES/Culture/Iconic Things/Times Square.jpg";
 import cultureTimesSquare from "@/IMAGES/Culture/Just America/Times-Square-NYC-Rainy-Night-With-Yellow-Taxis-And-American-Flag-Billboard.jpg";
 import cultureMcDonalds from "@/IMAGES/Culture/Just America/McDonald's Restaurant in Bethlehem, Georgia.jpg";
 import cultureDisneyWorld from "@/IMAGES/Culture/Iconic Things/Cinderella Castle at Disney World Orlando.jpg";
@@ -408,5 +409,6 @@ export const SITE_IMAGES = {
     vaultFortune1931: vaultFortune1931.src,
     vaultLifeMarilyn: vaultLifeMarilyn.src,
     vaultLifeDisney: vaultLifeDisney.src,
+    timesSquareIconic: cultureTimesSquareIconic.src,
   },
 } as const;

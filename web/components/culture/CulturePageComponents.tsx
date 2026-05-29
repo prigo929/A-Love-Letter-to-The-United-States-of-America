@@ -781,7 +781,7 @@ export function CultureLoopingVideoSection() {
 
 export function CultureBrandLogosMarquee() {
   return (
-    <section className="culture-bg py-16 md:py-24 border-y border-white/5 overflow-hidden flex flex-col gap-8">
+    <section className="culture-bg py-16 md:py-24 border-y border-white/5 overflow-hidden flex flex-col gap-24 md:gap-32">
       {/* Row 1 (Scrolling Left) */}
       <div className="relative w-full overflow-hidden">
         <div className="flex w-max animate-marquee-left whitespace-nowrap">
@@ -795,7 +795,10 @@ export function CultureBrandLogosMarquee() {
                 <img
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
-                  className="h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none"
+                  className={cn(
+                    "h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
+                    logo.invert && "invert brightness-200"
+                  )}
                   loading="lazy"
                 />
               </div>
@@ -811,7 +814,10 @@ export function CultureBrandLogosMarquee() {
                 <img
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
-                  className="h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none"
+                  className={cn(
+                    "h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
+                    logo.invert && "invert brightness-200"
+                  )}
                   loading="lazy"
                 />
               </div>
@@ -833,7 +839,10 @@ export function CultureBrandLogosMarquee() {
                 <img
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
-                  className="h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none"
+                  className={cn(
+                    "h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
+                    logo.invert && "invert brightness-200"
+                  )}
                   loading="lazy"
                 />
               </div>
@@ -849,7 +858,10 @@ export function CultureBrandLogosMarquee() {
                 <img
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
-                  className="h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none"
+                  className={cn(
+                    "h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
+                    logo.invert && "invert brightness-200"
+                  )}
                   loading="lazy"
                 />
               </div>
@@ -981,7 +993,7 @@ export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimeline
 
       <div
         ref={containerRef}
-        className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none px-6 sm:px-8 md:px-16 lg:px-24 pb-6"
+        className="flex gap-6 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-none px-6 sm:px-8 md:px-16 lg:px-24 pb-6"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {decades.map((dec, idx) => {
