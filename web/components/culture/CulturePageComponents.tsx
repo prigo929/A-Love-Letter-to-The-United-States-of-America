@@ -443,7 +443,7 @@ export function CultureBentoGrid({ subpages, sectionTitle }: CultureBentoGridPro
   const music = subpages.find((s) => s.id === "music")!;
 
   return (
-    <section id="culture-grid" className="culture-bg py-16 md:py-24">
+    <section id="culture-grid" className="culture-bg pt-16 md:pt-24 pb-8 md:pb-12">
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         {/* Section title */}
         <motion.div
@@ -836,7 +836,7 @@ export function CultureParallaxDivider({
 
 export function CultureLoopingVideoSection() {
   return (
-    <section className="relative w-full h-[70vh] overflow-hidden border-y border-white/5 bg-black">
+    <section className="relative w-full h-[40vh] overflow-hidden border-y border-white/5 bg-black">
       <video
         autoPlay
         loop
@@ -855,7 +855,7 @@ export function CultureLoopingVideoSection() {
 
 export function CultureBrandLogosMarquee() {
   return (
-    <section className="culture-bg py-16 md:py-24 border-y border-white/5 overflow-hidden flex flex-col gap-24 md:gap-32">
+    <section className="culture-bg pt-8 md:pt-12 pb-16 md:pb-24 border-y border-white/5 overflow-hidden flex flex-col gap-24 md:gap-32">
       {/* Row 1 (Scrolling Left) */}
       <div className="relative w-full overflow-hidden">
         <div className="flex w-max animate-marquee-left whitespace-nowrap">
