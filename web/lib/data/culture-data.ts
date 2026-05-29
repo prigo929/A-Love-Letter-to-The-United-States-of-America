@@ -417,3 +417,95 @@ export const FILMSTRIP_IMAGE_KEYS = [
   "timesSquare",
   "route66",
 ] as const;
+
+// ─── Cultural Timeline Decades ──────────────────────────────────────────────
+
+export interface CultureDecade {
+  year: string;
+  title: string;
+  sentence: string;
+  imageKey: string;
+}
+
+const DECADES_EN: CultureDecade[] = [
+  { year: "1920s", title: "Jazz Age", sentence: "African-American musicians in New Orleans invented the first truly American art form and broadcast it worldwide.", imageKey: "jazzClub" },
+  { year: "1950s", title: "Hollywood Golden Age", sentence: "The studio system turned Los Angeles into the dream factory for the entire planet.", imageKey: "hollywoodSign" },
+  { year: "1960s", title: "Rock & Counterculture", sentence: "American youth culture rewrote the rules — denim, rock, and rebellion became the global uniform.", imageKey: "concertCrowd" },
+  { year: "1970s", title: "Fast Food Empire", sentence: "McDonald's crossed 3,000 locations. The franchise model proved culture could be industrialized.", imageKey: "burger" },
+  { year: "1990s", title: "The Internet Age", sentence: "Silicon Valley connected the world — and set English as the operating language of the digital era.", imageKey: "timesSquare" },
+  { year: "2000s", title: "Social Media & Streaming", sentence: "Facebook, YouTube, Netflix — America built the platforms that deliver culture to 5 billion screens.", imageKey: "disneyWorld" },
+  { year: "2020s", title: "AI & The Next Frontier", sentence: "American labs lead the race for artificial general intelligence — the next operating system for civilization.", imageKey: "route66" },
+];
+
+const DECADES_RO: CultureDecade[] = [
+  { year: "1920", title: "Epoca Jazz-ului", sentence: "Muzicienii afro-americani din New Orleans au inventat prima formă de artă cu adevărat americană și au difuzat-o mondial.", imageKey: "jazzClub" },
+  { year: "1950", title: "Epoca de Aur a Hollywood-ului", sentence: "Sistemul studiourilor a transformat Los Angeles în fabrica de vise pentru întreaga planetă.", imageKey: "hollywoodSign" },
+  { year: "1960", title: "Rock & Contracultură", sentence: "Cultura tinerilor americani a rescris regulile — denim-ul, rock-ul și rebeliunea au devenit uniforma globală.", imageKey: "concertCrowd" },
+  { year: "1970", title: "Imperiul Fast Food", sentence: "McDonald's a depășit 3.000 de locații. Modelul de franciză a demonstrat că cultura poate fi industrializată.", imageKey: "burger" },
+  { year: "1990", title: "Era Internetului", sentence: "Silicon Valley a conectat lumea — și a stabilit engleza ca limbă de operare a erei digitale.", imageKey: "timesSquare" },
+  { year: "2000", title: "Social Media & Streaming", sentence: "Facebook, YouTube, Netflix — America a construit platformele care livrează cultură la 5 miliarde de ecrane.", imageKey: "disneyWorld" },
+  { year: "2020", title: "AI & Frontiera Următoare", sentence: "Laboratoarele americane conduc cursa pentru inteligență artificială generală — următorul sistem de operare al civilizației.", imageKey: "route66" },
+];
+
+export function getCultureDecades(locale: Locale): CultureDecade[] {
+  return locale === "ro" ? DECADES_RO : DECADES_EN;
+}
+
+// ─── Brand Logos (SVG paths relative to /ASSETS/Companies/) ─────────────────
+
+export const BRAND_LOGOS_ROW_1 = [
+  { name: "Apple", file: "Apple_Logo white.svg" },
+  { name: "Nike", file: "Logo_NIKE.svg" },
+  { name: "Google", file: "Google_Logo_0.svg" },
+  { name: "Coca-Cola", file: "Coca-Cola_Logo_0.svg" },
+  { name: "McDonald's", file: "McDonald's_Symbol_0.svg" },
+  { name: "Netflix", file: "Netflix_Logo_0.svg" },
+  { name: "Disney", file: "Disney_iddEtLt1OH_0.svg" },
+  { name: "Amazon", file: "Amazon_Logo_0.svg" },
+  { name: "Meta", file: "Meta_idlf4cVSsS_0.svg" },
+  { name: "Levi's", file: "Levi's_logo.svg" },
+  { name: "Starbucks", file: "Starbucks_Corporation_Logo_2011.svg" },
+  { name: "Visa", file: "Visa_Inc._logo_(2021–present).svg" },
+  { name: "JPMorgan", file: "Logo_of_JPMorganChase_2024.svg" },
+  { name: "Mastercard", file: "Mastercard-logo.svg" },
+];
+
+export const BRAND_LOGOS_ROW_2 = [
+  { name: "Microsoft", file: "Microsoft_Logo_0.svg" },
+  { name: "Tesla", file: "tesla.svg" },
+  { name: "Uber", file: "Uber_logo_2018.svg" },
+  { name: "Walmart", file: "Walmart_logo_(2008).svg" },
+  { name: "Target", file: "Target_logo.svg" },
+  { name: "Instagram", file: "Instagram_Logo_0.svg" },
+  { name: "YouTube", file: "YouTube_full-color_icon_(2017).svg" },
+  { name: "Airbnb", file: "Airbnb_Logo_Bélo.svg" },
+  { name: "SpaceX", file: "spacex.svg" },
+  { name: "NVIDIA", file: "nvidia.svg" },
+  { name: "Adobe", file: "adobe.svg" },
+  { name: "Warner Bros.", file: "Warner_Bros-_Logo_0.svg" },
+  { name: "Converse", file: "Converse_logo.svg" },
+  { name: "Ralph Lauren", file: "Ralph_Lauren_id4gNvWZ8Z_0.svg" },
+];
+
+// ─── Soft Power Budget Comparison ───────────────────────────────────────────
+
+export interface SoftPowerBudgetLine {
+  label: string;
+  value: string;
+}
+
+const BUDGET_EN: SoftPowerBudgetLine[] = [
+  { label: "France Ministry of Culture", value: "€4B" },
+  { label: "British Council", value: "£900M" },
+  { label: "American private cultural exports", value: "$900B" },
+];
+
+const BUDGET_RO: SoftPowerBudgetLine[] = [
+  { label: "Ministerul Culturii din Franța", value: "€4Mld" },
+  { label: "British Council", value: "£900M" },
+  { label: "Exporturi culturale private americane", value: "$900Mld" },
+];
+
+export function getSoftPowerBudget(locale: Locale): SoftPowerBudgetLine[] {
+  return locale === "ro" ? BUDGET_RO : BUDGET_EN;
+}

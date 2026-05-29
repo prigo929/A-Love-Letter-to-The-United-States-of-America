@@ -27,6 +27,8 @@ import {
   getCultureArguments,
   getCultureQuotes,
   CULTURE_RADAR_DATA,
+  getCultureDecades,
+  getSoftPowerBudget,
 } from "@/lib/data/culture-data";
 
 import {
@@ -39,6 +41,12 @@ import {
   CultureFreeMarketStrip,
   CultureRadarTeaser,
   CultureQuoteCarousel,
+  CultureParallaxDivider,
+  CultureLoopingVideoSection,
+  CultureBrandLogosMarquee,
+  CultureViewportQuote,
+  CultureTimelineScroll,
+  CultureSoftPowerBudget,
 } from "@/components/culture/CulturePageComponents";
 
 import { NewsletterSection } from "@/components/sections/NewsletterSection";
@@ -70,6 +78,8 @@ export default async function CulturePage() {
   const subpages = getCultureSubpages(locale);
   const arguments_ = getCultureArguments(locale);
   const quotes = getCultureQuotes(locale);
+  const decades = getCultureDecades(locale);
+  const budget = getSoftPowerBudget(locale);
 
   // Localized copy
   const hero = {
@@ -85,10 +95,13 @@ export default async function CulturePage() {
 
   const gridTitle = isRo ? "Verticale Culturale" : "Cultural Verticals";
   const argumentTitle = isRo ? "Argumentul Pieței Libere" : "The Free Market Argument";
+  const timelineTitle = isRo ? "Decenii de Influență" : "Decades of Influence";
   const radarHeadline = isRo
     ? "Pe fiecare dimensiune a influenței culturale, o singură națiune conduce."
     : "Across every dimension of cultural influence, one nation leads.";
   const radarCta = isRo ? "Explorează analiza completă" : "Explore the full analysis";
+
+  const bonoQuote = quotes.find((q) => q.author === "Bono") || quotes[1];
 
   return (
     <main className="min-h-screen">
@@ -108,14 +121,29 @@ export default async function CulturePage() {
       {/* §3 — Thesis Block */}
       <CultureThesisBlock thesis={thesis} />
 
+      {/* Parallax Divider 1 — Chicago Theatre Marquee */}
+      <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.chicagoTheatre} alt="Chicago Theatre Marquee at Night" />
+
       {/* §4 — Soft Power Pillars */}
       <CulturePillarsStrip pillars={pillars} />
 
       {/* §5 — Editorial Bento Grid */}
       <CultureBentoGrid subpages={subpages} sectionTitle={gridTitle} />
 
+      {/* Looping Video Section — Times Square Aerial */}
+      <CultureLoopingVideoSection />
+
       {/* §6 — Free Market Argument (Cream Section) */}
       <CultureFreeMarketStrip arguments_={arguments_} sectionTitle={argumentTitle} />
+
+      {/* Soft Power Budget Scale Comparison (Cream Section) */}
+      <CultureSoftPowerBudget budgetLines={budget} />
+
+      {/* Cultural Timeline Scroll Area */}
+      <CultureTimelineScroll decades={decades} sectionTitle={timelineTitle} />
+
+      {/* Full Viewport Quote Moment (Bono: "America is an idea...") */}
+      <CultureViewportQuote quote={bonoQuote} bgImageSrc={SITE_IMAGES.culture.route66} />
 
       {/* §7 — Radar Chart Teaser */}
       <CultureRadarTeaser
@@ -124,6 +152,12 @@ export default async function CulturePage() {
         ctaLabel={radarCta}
         ctaHref="#"
       />
+
+      {/* American Brand Logos Continuous Marquee */}
+      <CultureBrandLogosMarquee />
+
+      {/* Parallax Divider 2 — NFL/Cowboys Stadium */}
+      <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.nflStadium} alt="American Football Stadium Lights" />
 
       {/* §8 — Quote Carousel */}
       <CultureQuoteCarousel quotes={quotes} />

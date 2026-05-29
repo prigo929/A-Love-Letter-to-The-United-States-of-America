@@ -19,6 +19,10 @@ import {
 } from "recharts";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 import { SITE_IMAGES } from "@/lib/site-images";
+import {
+  BRAND_LOGOS_ROW_1,
+  BRAND_LOGOS_ROW_2,
+} from "@/lib/data/culture-data";
 import type {
   CultureStat,
   CultureThesis,
@@ -27,6 +31,8 @@ import type {
   CultureArgument,
   CultureQuote,
   CultureRadarPoint,
+  CultureDecade,
+  SoftPowerBudgetLine,
 } from "@/lib/data/culture-data";
 
 // ─── Culture Palette Injection ───────────────────────────────────────────────
@@ -39,6 +45,25 @@ export function CultureStyles() {
       .culture-cream-bg { background-color: #F5EDD8; }
       .culture-red { color: #E8391B; }
       .font-editorial { font-family: 'EB Garamond', 'Playfair Display', Georgia, serif; }
+
+      @keyframes marquee-left {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+      }
+      @keyframes marquee-right {
+        0% { transform: translate3d(-50%, 0, 0); }
+        100% { transform: translate3d(0, 0, 0); }
+      }
+      .animate-marquee-left {
+        animation: marquee-left 45s linear infinite;
+      }
+      .animate-marquee-right {
+        animation: marquee-right 45s linear infinite;
+      }
+      .animate-marquee-left:hover,
+      .animate-marquee-right:hover {
+        animation-play-state: paused;
+      }
     `}</style>
   );
 }
@@ -687,6 +712,338 @@ export function CultureQuoteCarousel({ quotes }: CultureQuoteCarouselProps) {
             />
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── §10 — Parallax Divider Band ─────────────────────────────────────────────
+
+interface CultureParallaxDividerProps {
+  imageSrc: string;
+  alt?: string;
+  heightClassName?: string;
+}
+
+export function CultureParallaxDivider({
+  imageSrc,
+  alt = "American culture scene",
+  heightClassName = "h-[50vh]",
+}: CultureParallaxDividerProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+
+  return (
+    <div
+      ref={containerRef}
+      className={cn("relative overflow-hidden w-full border-y border-white/5", heightClassName)}
+    >
+      <motion.div style={{ y }} className="absolute inset-0 w-full h-[130%] -top-[15%]">
+        <Image
+          src={imageSrc}
+          alt={alt}
+          fill
+          sizes="100vw"
+          className="object-cover brightness-[0.65] contrast-[1.05]"
+          priority={false}
+        />
+      </motion.div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0C0907]/60 via-transparent to-[#0C0907]/60 pointer-events-none" />
+    </div>
+  );
+}
+
+// ─── §11 — Looping Video Section ─────────────────────────────────────────────
+
+export function CultureLoopingVideoSection() {
+  return (
+    <section className="relative w-full h-[70vh] overflow-hidden border-y border-white/5 bg-black">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="w-full h-full object-cover pointer-events-none brightness-[0.8]"
+      >
+        <source src="/videos/Times Square Aerial.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+  );
+}
+
+// ─── §12 — Brand Logos Marquee ───────────────────────────────────────────────
+
+export function CultureBrandLogosMarquee() {
+  return (
+    <section className="culture-bg py-16 md:py-24 border-y border-white/5 overflow-hidden flex flex-col gap-8">
+      {/* Row 1 (Scrolling Left) */}
+      <div className="relative w-full overflow-hidden">
+        <div className="flex gap-16 w-max animate-marquee-left whitespace-nowrap">
+          {[...BRAND_LOGOS_ROW_1, ...BRAND_LOGOS_ROW_1].map((logo, idx) => (
+            <div
+              key={`${logo.name}-row1-${idx}`}
+              className="inline-flex items-center justify-center w-28 md:w-36 h-12 md:h-16"
+            >
+              <img
+                src={`/assets/companies/${logo.file}`}
+                alt={logo.name}
+                className="h-8 md:h-12 w-auto object-contain brightness-0 invert opacity-30 hover:opacity-85 transition-opacity duration-300 pointer-events-none select-none"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Row 2 (Scrolling Right) */}
+      <div className="relative w-full overflow-hidden">
+        <div className="flex gap-16 w-max animate-marquee-right whitespace-nowrap">
+          {[...BRAND_LOGOS_ROW_2, ...BRAND_LOGOS_ROW_2].map((logo, idx) => (
+            <div
+              key={`${logo.name}-row2-${idx}`}
+              className="inline-flex items-center justify-center w-28 md:w-36 h-12 md:h-16"
+            >
+              <img
+                src={`/assets/companies/${logo.file}`}
+                alt={logo.name}
+                className="h-8 md:h-12 w-auto object-contain brightness-0 invert opacity-30 hover:opacity-85 transition-opacity duration-300 pointer-events-none select-none"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── §13 — Viewport Quote Moment ─────────────────────────────────────────────
+
+interface CultureViewportQuoteProps {
+  quote: CultureQuote;
+  bgImageSrc: string;
+}
+
+export function CultureViewportQuote({ quote, bgImageSrc }: CultureViewportQuoteProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"],
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1.0]);
+  const opacity = useTransform(scrollYProgress, [0.1, 0.7, 1.0], [0.3, 0.8, 1.0]);
+
+  return (
+    <section
+      ref={containerRef}
+      className="relative w-full h-screen overflow-hidden flex items-center justify-center text-center px-6 sm:px-12 bg-black"
+    >
+      {/* Background Image */}
+      <motion.div style={{ scale }} className="absolute inset-0 w-full h-full pointer-events-none">
+        <Image
+          src={bgImageSrc}
+          alt="Bono quote background"
+          fill
+          sizes="100vw"
+          className="object-cover brightness-[0.2] contrast-[1.1]"
+          priority={false}
+        />
+      </motion.div>
+
+      {/* Aesthetic Overlay Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0C0907] via-transparent to-[#0C0907] pointer-events-none" />
+
+      {/* Content Panel */}
+      <motion.div
+        style={{ opacity }}
+        className="relative z-10 max-w-5xl mx-auto flex flex-col items-center justify-center"
+      >
+        <span className="font-body text-glory-gold/80 text-xs sm:text-sm uppercase tracking-[0.25em] font-semibold mb-6 sm:mb-8 block">
+          THE AMERICAN ESSENCE
+        </span>
+
+        <h2 className="font-editorial italic text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.1] tracking-tight mb-8 sm:mb-12">
+          &ldquo;{quote.text}&rdquo;
+        </h2>
+
+        <div className="w-16 h-0.5 bg-glory-gold/60 mb-6 sm:mb-8" />
+
+        <footer>
+          <cite className="not-italic font-body text-glory-gold text-sm sm:text-base font-semibold uppercase tracking-[0.15em] block mb-2">
+            — {quote.author}
+          </cite>
+          <span className="font-body text-[#F5EDD8]/50 text-xs sm:text-sm">
+            {quote.role}
+          </span>
+        </footer>
+      </motion.div>
+    </section>
+  );
+}
+
+// ─── §14 — Timeline Horizontal Scroll ────────────────────────────────────────
+
+interface CultureTimelineScrollProps {
+  decades: CultureDecade[];
+  sectionTitle: string;
+}
+
+export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimelineScrollProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({ left: -400, behavior: "smooth" });
+    }
+  };
+
+  const scrollRight = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({ left: 400, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section className="culture-bg py-20 md:py-28 border-y border-white/5 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 mb-12 flex justify-between items-end">
+        <div>
+          <span className="font-body text-glory-gold text-xs font-semibold uppercase tracking-[0.2em] block mb-2">
+            CHRONOLOGY OF INFLUENCE
+          </span>
+          <h2 className="font-editorial text-3xl sm:text-4xl md:text-5xl text-[#F5EDD8]">
+            {sectionTitle}
+          </h2>
+        </div>
+
+        <div className="flex gap-2">
+          <button
+            onClick={scrollLeft}
+            className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-[#F5EDD8] hover:border-glory-gold hover:text-glory-gold transition-colors text-lg"
+            aria-label="Scroll Left"
+          >
+            ←
+          </button>
+          <button
+            onClick={scrollRight}
+            className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-[#F5EDD8] hover:border-glory-gold hover:text-glory-gold transition-colors text-lg"
+            aria-label="Scroll Right"
+          >
+            →
+          </button>
+        </div>
+      </div>
+
+      <div
+        ref={containerRef}
+        className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none px-6 sm:px-8 md:px-16 lg:px-24 pb-6"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        {decades.map((dec, idx) => {
+          const imgKey = dec.imageKey as keyof typeof SITE_IMAGES.culture;
+          const imageSrc = SITE_IMAGES.culture[imgKey] || SITE_IMAGES.culture.statueOfLiberty;
+
+          return (
+            <motion.div
+              key={dec.year}
+              className="flex-shrink-0 w-[80vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] snap-start bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden group hover:border-glory-gold/40 transition-all duration-500 flex flex-col justify-between"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+            >
+              <div className="p-6 md:p-8 flex flex-col gap-2">
+                <span className="font-body text-7xl md:text-8xl font-black text-white/5 group-hover:text-glory-gold/10 transition-colors duration-500 leading-none">
+                  {dec.year}
+                </span>
+                <h3 className="font-editorial italic text-xl md:text-2xl text-glory-gold group-hover:text-white transition-colors duration-300">
+                  {dec.title}
+                </h3>
+              </div>
+
+              <div className="relative h-48 sm:h-56 md:h-64 w-full overflow-hidden">
+                <Image
+                  src={imageSrc}
+                  alt={dec.title}
+                  fill
+                  sizes="(max-width: 768px) 80vw, 30vw"
+                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0C0907] via-transparent to-transparent opacity-80" />
+              </div>
+
+              <div className="p-6 md:p-8 border-t border-white/5 bg-black/20">
+                <p className="font-body text-[#F5EDD8]/70 text-sm sm:text-base leading-relaxed">
+                  {dec.sentence}
+                </p>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+// ─── §15 — Soft Power Budget ────────────────────────────────────────────────
+
+interface CultureSoftPowerBudgetProps {
+  budgetLines: SoftPowerBudgetLine[];
+}
+
+export function CultureSoftPowerBudget({ budgetLines }: CultureSoftPowerBudgetProps) {
+  return (
+    <section className="culture-cream-bg py-24 md:py-32 border-y border-black/5 text-[#0C0907]">
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center flex flex-col gap-16 md:gap-24">
+        {budgetLines.map((line, idx) => {
+          const isUsa = line.label.includes("American") || line.label.includes("private") || line.label.includes("SUA") || line.label.includes("private");
+          const isRo = line.label.includes("Franța") || line.label.includes("SUA");
+
+          let fullDigits = line.value;
+          if (line.value.includes("B") || line.value.includes("Mld")) {
+            fullDigits = line.value.includes("$")
+              ? (isRo ? "$900.000.000.000" : "$900,000,000,000")
+              : (isRo ? "€4.000.000.000" : "€4,000,000,000");
+          } else if (line.value.includes("M")) {
+            fullDigits = isRo ? "£900.000.000" : "£900,000,000";
+          }
+
+          return (
+            <motion.div
+              key={line.label}
+              className="flex flex-col items-center justify-center"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: idx * 0.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <span
+                className={cn(
+                  "font-editorial leading-none tracking-tighter mb-4 block",
+                  isUsa
+                    ? "text-6xl sm:text-8xl md:text-9xl font-black text-[#E8391B]"
+                    : "text-4xl sm:text-6xl md:text-7xl font-semibold opacity-60"
+                )}
+              >
+                {fullDigits}
+              </span>
+
+              <span className="font-body text-[10px] sm:text-xs tracking-[0.2em] uppercase font-bold opacity-60 max-w-md block">
+                {line.label}
+              </span>
+
+              {idx < budgetLines.length - 1 && (
+                <div className="w-8 h-px bg-black/10 mt-16 md:mt-24" />
+              )}
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
