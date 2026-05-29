@@ -126,6 +126,9 @@ export default async function CulturePage() {
       {/* Parallax Divider 1 — Times Square Iconic */}
       <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.timesSquareIconic} alt="Times Square Iconic" />
 
+      {/* American Brand Logos Continuous Marquee */}
+      <CultureBrandLogosMarquee />
+
       {/* §4 — Soft Power Pillars */}
       <CulturePillarsStrip pillars={pillars} />
 
@@ -134,9 +137,6 @@ export default async function CulturePage() {
 
       {/* Looping Video Section — Times Square Aerial */}
       <CultureLoopingVideoSection />
-
-      {/* American Brand Logos Continuous Marquee */}
-      <CultureBrandLogosMarquee />
 
       {/* §6 — Free Market Argument (Cream Section) */}
       <CultureFreeMarketStrip arguments_={arguments_} sectionTitle={argumentTitle} />
