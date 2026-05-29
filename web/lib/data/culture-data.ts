@@ -470,7 +470,7 @@ export const BRAND_LOGOS_ROW_1 = [
   { name: "Ford", file: "Ford-Motor-Company-Logo.png" },
   { name: "GE Aerospace", file: "ge-aerospace.svg", invert: true },
   { name: "American Express", file: "American_Express_logo_(2018).svg" },
-  { name: "Delta Air Lines", file: "delta-air-lines.svg" },
+  { name: "Delta Air Lines", file: "delta-air-lines.svg", invert: true },
   { name: "FedEx", file: "FedEx_Express.svg" },
   { name: "Epic Games", file: "Epic_Games_logo.svg", invert: true },
   { name: "Paramount", file: "Paramount_idOwWCnILA_0.svg", invert: true },
@@ -485,7 +485,7 @@ export const BRAND_LOGOS_ROW_2 = [
   { name: "Target", file: "Target_logo.svg" },
   { name: "Instagram", file: "Instagram_Logo_0.svg", invert: true },
   { name: "YouTube", file: "YouTube_full-color_icon_(2017).svg" },
-  { name: "Airbnb", file: "airbnb.svg" },
+  { name: "Airbnb", file: "airbnb.svg", invert: true },
   { name: "SpaceX", file: "spacex.svg", invert: true },
   { name: "NVIDIA", file: "nvidia.svg", invert: true },
   { name: "Adobe", file: "adobe.svg", invert: true },
@@ -494,7 +494,7 @@ export const BRAND_LOGOS_ROW_2 = [
   { name: "Ralph Lauren", file: "Ralph_Lauren_id4gNvWZ8Z_0.svg", invert: true },
   { name: "Palantir", file: "palantir.svg", invert: true },
   { name: "Anduril", file: "anduril.svg", invert: true },
-  { name: "IBM", file: "ibm.svg" },
+  { name: "IBM", file: "ibm.svg", invert: true },
   { name: "Boeing", file: "Boeing_full_logo.svg" },
   { name: "Chevron", file: "chevron.svg" },
   { name: "PepsiCo", file: "PepsiCo_logo.svg" },
@@ -503,6 +503,7 @@ export const BRAND_LOGOS_ROW_2 = [
   { name: "Rockstar Games", file: "Rockstar_Games_Logo.svg" },
   { name: "Reddit", file: "Reddit_Logo_Icon.svg" },
   { name: "X", file: "X_logo_2023.svg", invert: true },
+  { name: "Oculus", file: "Symbol.png", invert: true },
 ];
 
 // ─── Soft Power Budget Comparison ───────────────────────────────────────────
