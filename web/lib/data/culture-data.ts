@@ -464,6 +464,17 @@ export const BRAND_LOGOS_ROW_1 = [
   { name: "Visa", file: "Visa_Inc._logo_(2021–present).svg" },
   { name: "JPMorgan", file: "Logo_of_JPMorganChase_2024.svg", invert: true },
   { name: "Mastercard", file: "Mastercard-logo.svg" },
+  { name: "OpenAI", file: "openai.svg", invert: true },
+  { name: "Stripe", file: "Stripe_Logo,_revised_2016.svg", invert: true },
+  { name: "Intel", file: "intel.svg" },
+  { name: "Ford", file: "Ford-Motor-Company-Logo.png" },
+  { name: "GE Aerospace", file: "ge-aerospace.svg", invert: true },
+  { name: "American Express", file: "American_Express_logo_(2018).svg" },
+  { name: "Delta Air Lines", file: "delta-air-lines.svg" },
+  { name: "FedEx", file: "FedEx_Express.svg" },
+  { name: "Epic Games", file: "Epic_Games_logo.svg", invert: true },
+  { name: "Paramount", file: "Paramount_idOwWCnILA_0.svg", invert: true },
+  { name: "Snapchat", file: "Snapchat_logo.svg" },
 ];
 
 export const BRAND_LOGOS_ROW_2 = [
@@ -474,13 +485,24 @@ export const BRAND_LOGOS_ROW_2 = [
   { name: "Target", file: "Target_logo.svg" },
   { name: "Instagram", file: "Instagram_Logo_0.svg", invert: true },
   { name: "YouTube", file: "YouTube_full-color_icon_(2017).svg" },
-  { name: "Airbnb", file: "Airbnb_Logo_Bélo.svg" },
+  { name: "Airbnb", file: "airbnb.svg" },
   { name: "SpaceX", file: "spacex.svg", invert: true },
   { name: "NVIDIA", file: "nvidia.svg", invert: true },
   { name: "Adobe", file: "adobe.svg", invert: true },
   { name: "Warner Bros.", file: "Warner_Bros-_Logo_0.svg", invert: true },
   { name: "Converse", file: "Converse_logo.svg", invert: true },
   { name: "Ralph Lauren", file: "Ralph_Lauren_id4gNvWZ8Z_0.svg", invert: true },
+  { name: "Palantir", file: "palantir.svg", invert: true },
+  { name: "Anduril", file: "anduril.svg", invert: true },
+  { name: "IBM", file: "ibm.svg" },
+  { name: "Boeing", file: "Boeing_full_logo.svg" },
+  { name: "Chevron", file: "chevron.svg" },
+  { name: "PepsiCo", file: "PepsiCo_logo.svg" },
+  { name: "Oracle", file: "oracle.svg" },
+  { name: "eBay", file: "ebay.svg" },
+  { name: "Rockstar Games", file: "Rockstar_Games_Logo.svg" },
+  { name: "Reddit", file: "Reddit_Logo_Icon.svg" },
+  { name: "X", file: "X_logo_2023.svg", invert: true },
 ];
 
 // ─── Soft Power Budget Comparison ───────────────────────────────────────────

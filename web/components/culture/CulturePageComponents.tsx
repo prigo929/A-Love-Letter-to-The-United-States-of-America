@@ -61,6 +61,23 @@ export function CultureStyles() {
       .animate-marquee-right {
         animation: marquee-right 45s linear infinite;
       }
+
+      @keyframes ken-burns {
+        0% { transform: scale(1.0); }
+        100% { transform: scale(1.12); }
+      }
+      .animate-ken-burns {
+        animation: ken-burns 90s linear forwards;
+        will-change: transform;
+      }
+
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translate3d(0, 20px, 0); }
+        to { opacity: 1; transform: translate3d(0, 0, 0); }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
     `}</style>
   );
 }
@@ -359,19 +376,14 @@ export function CulturePillarsStrip({ pillars }: CulturePillarsStripProps) {
             const scheme = PILLAR_GLOW_SCHEMES[i % PILLAR_GLOW_SCHEMES.length];
 
             return (
-              <motion.div
+              <div
                 key={i}
                 className={cn(
-                  "relative overflow-hidden rounded-2xl border border-white/[0.04] bg-white/[0.01] p-6 md:p-8 flex flex-col justify-between group shadow-2xl transition-all duration-500 hover:-translate-y-1.5 hover:bg-white/[0.02] min-h-[220px]",
+                  "relative overflow-hidden rounded-2xl border border-white/[0.04] bg-white/[0.01] p-6 md:p-8 flex flex-col justify-between group shadow-2xl transition-all duration-500 hover:-translate-y-1.5 hover:bg-white/[0.02] min-h-[220px] opacity-0 animate-fade-in-up",
                   scheme.border
                 )}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{
-                  duration: 0.6,
-                  delay: i * 0.08,
-                  ease: [0.16, 1, 0.3, 1] as const,
+                style={{
+                  animationDelay: `${i * 80}ms`,
                 }}
               >
                 {/* Glowing pools at top right */}
@@ -399,7 +411,7 @@ export function CulturePillarsStrip({ pillars }: CulturePillarsStripProps) {
 
                 {/* Expanding bottom accent line */}
                 <div className={cn("absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] transition-all duration-500 group-hover:w-full", scheme.lineBg)} />
-              </motion.div>
+              </div>
             );
           })}
         </div>
@@ -1335,55 +1347,95 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
 
 // ─── §17 — Living Media Wall ─────────────────────────────────────────────────
 
+const MOBILE_SPANS = [
+  "col-span-2 row-span-2",
+  "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-2 row-span-1",
+  "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-1 row-span-2",
+  "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-2 row-span-1",
+  "col-span-1 row-span-2",
+  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1"
+];
+
+const TABLET_SPANS = [
+  "col-span-2 row-span-2",
+  "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-2 row-span-1",
+  "col-span-1 row-span-2",
+  "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-2 row-span-2",
+  "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-2 row-span-1",
+  "col-span-1 row-span-2",
+  "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-2 row-span-1",
+  "col-span-1 row-span-2",
+  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1"
+];
+
+const DESKTOP_SPANS = [
+  "col-span-2 row-span-2",
+  "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-2 row-span-1",
+  "col-span-2 row-span-2",
+  "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-1 row-span-2",
+  "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-2 row-span-1",
+  "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-2 row-span-2",
+  "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-1 row-span-2",
+  "col-span-2 row-span-1",
+  "col-span-1 row-span-2",
+  "col-span-2 row-span-1",
+  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
+  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1"
+];
+
 interface ShiftingGridCellProps {
-  initialSrc: string;
-  triggerChange: boolean;
-  getNewImage: () => string;
+  src: string;
+  isColor: boolean;
 }
 
-export function ShiftingGridCell({ initialSrc, triggerChange, getNewImage }: ShiftingGridCellProps) {
-  const [src, setSrc] = useState(initialSrc);
-  const [isColor, setIsColor] = useState(false);
-  const [key, setKey] = useState(0);
-
-  // Initialize random color/grayscale state
-  useEffect(() => {
-    setIsColor(Math.random() < 0.12);
-  }, []);
-
-  // Update when parent requests a change
-  useEffect(() => {
-    if (triggerChange) {
-      const timeout = setTimeout(() => {
-        const nextSrc = getNewImage();
-        setSrc(nextSrc);
-        setIsColor(Math.random() < 0.12);
-        setKey((prev) => prev + 1);
-      }, Math.random() * 500); // stagger changes organically
-      return () => clearTimeout(timeout);
-    }
-  }, [triggerChange, getNewImage]);
-
+export function ShiftingGridCell({ src, isColor }: ShiftingGridCellProps) {
   return (
     <div className="relative w-full h-full overflow-hidden bg-black/60 rounded border border-white/[0.03]">
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         <motion.div
-          key={key}
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: isColor ? 0.95 : 0.35, scale: 1.0 }}
-          exit={{ opacity: 0, scale: 1.04 }}
-          transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
-          className="absolute inset-0 w-full h-full"
+          key={src}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isColor ? 0.9 : 0.45 }}
+          exit={{ 
+            opacity: 0, 
+            transition: { duration: 2.0, ease: "easeInOut" } 
+          }}
+          transition={{
+            opacity: { duration: 2.0, ease: "easeInOut" },
+          }}
+          className="absolute inset-0 w-full h-full animate-ken-burns"
         >
           <img
             src={src}
             alt="Cultural artifact"
             className={cn(
-              "w-full h-full object-cover transition-all duration-1000",
-              isColor ? "grayscale-0 contrast-110" : "grayscale opacity-50 contrast-95 brightness-[0.75]"
+              "w-full h-full object-cover",
+              isColor ? "" : "grayscale"
             )}
             loading="lazy"
           />
+          {/* Dimming layer instead of heavy GPU filter */}
+          {!isColor && (
+            <div className="absolute inset-0 bg-black/35 pointer-events-none" />
+          )}
         </motion.div>
       </AnimatePresence>
     </div>
@@ -1391,20 +1443,37 @@ export function ShiftingGridCell({ initialSrc, triggerChange, getNewImage }: Shi
 }
 
 export function CultureLivingMediaWall() {
-  const totalSlots = 40;
-  
-  const [images, setImages] = useState<string[]>([]);
-  const [changeTrigger, setChangeTrigger] = useState<{ index: number; key: number } | null>(null);
+  const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
+  const [visibleImages, setVisibleImages] = useState<string[]>([]);
+  const [colorStates, setColorStates] = useState<boolean[]>([]);
   
   const unusedRef = useRef<string[]>([]);
   const usedRef = useRef<string[]>([]);
 
+  // Detect screen size on client
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setScreenSize('mobile');
+      } else if (window.innerWidth < 1024) {
+        setScreenSize('tablet');
+      } else {
+        setScreenSize('desktop');
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Initialize pool on mount
   useEffect(() => {
     const shuffled = [...CULTURE_MEDIA_WALL_IMAGES].sort(() => Math.random() - 0.5);
-    const initial = shuffled.slice(0, totalSlots);
-    const unused = shuffled.slice(totalSlots);
+    const initial = shuffled.slice(0, 40); // Max size of our layout spans (39)
+    const unused = shuffled.slice(40);
     
-    setImages(initial);
+    setVisibleImages(initial);
+    setColorStates(Array.from({ length: 40 }, () => Math.random() < 0.12));
     unusedRef.current = unused;
     usedRef.current = initial;
   }, []);
@@ -1419,44 +1488,62 @@ export function CultureLivingMediaWall() {
     return newImg;
   }, []);
 
+  // Shifting interval
   useEffect(() => {
-    if (images.length === 0) return;
+    if (visibleImages.length === 0) return;
 
     const interval = setInterval(() => {
-      const randIndex = Math.floor(Math.random() * totalSlots);
-      setChangeTrigger({ index: randIndex, key: Date.now() });
-    }, 1800); // Shifting slowly: one item changes every 1.8 seconds
+      const spansCount = screenSize === 'mobile' ? 25 : screenSize === 'tablet' ? 30 : 39;
+      const randIndex = Math.floor(Math.random() * spansCount);
+      const nextImg = getNewImage();
+
+      setVisibleImages((prev) => {
+        const next = [...prev];
+        next[randIndex] = nextImg;
+        return next;
+      });
+
+      setColorStates((prev) => {
+        const next = [...prev];
+        next[randIndex] = Math.random() < 0.12;
+        return next;
+      });
+    }, 1800);
 
     return () => clearInterval(interval);
-  }, [images]);
+  }, [visibleImages, screenSize, getNewImage]);
 
-  if (images.length === 0) return null;
+  if (visibleImages.length === 0) return null;
+
+  const spans = screenSize === 'mobile' ? MOBILE_SPANS :
+                screenSize === 'tablet' ? TABLET_SPANS :
+                                          DESKTOP_SPANS;
 
   return (
     <section className="relative w-full h-screen bg-black overflow-hidden select-none flex items-center justify-center">
       {/* Full-Viewport Shifting Grid */}
-      <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-2 p-2 w-full h-full">
-        {Array.from({ length: totalSlots }).map((_, idx) => {
-          const isExcessOnMobile = idx >= 20;
-          const isExcessOnTablet = idx >= 30;
-
-          return (
-            <div
-              key={idx}
-              className={cn(
-                "w-full h-full relative aspect-[3/4] sm:aspect-auto",
-                isExcessOnMobile ? "hidden sm:block" : "block",
-                isExcessOnTablet ? "sm:hidden lg:block" : "block"
-              )}
-            >
-              <ShiftingGridCell
-                initialSrc={images[idx]}
-                triggerChange={changeTrigger?.index === idx}
-                getNewImage={getNewImage}
-              />
-            </div>
-          );
-        })}
+      <div
+        className="grid gap-2 p-2 w-full h-full grid-flow-dense"
+        style={{
+          gridTemplateColumns: screenSize === 'mobile' ? 'repeat(4, minmax(0, 1fr))' :
+                               screenSize === 'tablet' ? 'repeat(6, minmax(0, 1fr))' :
+                                                         'repeat(8, minmax(0, 1fr))',
+          gridTemplateRows: screenSize === 'mobile' ? 'repeat(8, minmax(0, 1fr))' :
+                            screenSize === 'tablet' ? 'repeat(7, minmax(0, 1fr))' :
+                                                      'repeat(7, minmax(0, 1fr))'
+        }}
+      >
+        {spans.map((spanClass, idx) => (
+          <div
+            key={idx}
+            className={cn("w-full h-full relative", spanClass)}
+          >
+            <ShiftingGridCell
+              src={visibleImages[idx]}
+              isColor={colorStates[idx]}
+            />
+          </div>
+        ))}
       </div>
 
       {/* Ambient Dark Overlay to make the grid feel cohesive */}
@@ -1466,4 +1553,5 @@ export function CultureLivingMediaWall() {
     </section>
   );
 }
+
 
