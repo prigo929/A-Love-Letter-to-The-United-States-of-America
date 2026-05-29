@@ -784,39 +784,77 @@ export function CultureBrandLogosMarquee() {
     <section className="culture-bg py-16 md:py-24 border-y border-white/5 overflow-hidden flex flex-col gap-8">
       {/* Row 1 (Scrolling Left) */}
       <div className="relative w-full overflow-hidden">
-        <div className="flex gap-16 w-max animate-marquee-left whitespace-nowrap">
-          {[...BRAND_LOGOS_ROW_1, ...BRAND_LOGOS_ROW_1].map((logo, idx) => (
-            <div
-              key={`${logo.name}-row1-${idx}`}
-              className="inline-flex items-center justify-center w-28 md:w-36 h-12 md:h-16"
-            >
-              <img
-                src={`/assets/companies/${logo.file}`}
-                alt={logo.name}
-                className="h-8 md:h-12 w-auto object-contain brightness-0 invert opacity-30 hover:opacity-85 transition-opacity duration-300 pointer-events-none select-none"
-                loading="lazy"
-              />
-            </div>
-          ))}
+        <div className="flex w-max animate-marquee-left whitespace-nowrap">
+          {/* Track 1 */}
+          <div className="flex items-center gap-16 pr-16">
+            {BRAND_LOGOS_ROW_1.map((logo) => (
+              <div
+                key={`${logo.name}-row1-track1`}
+                className="inline-flex items-center justify-center w-28 md:w-36 h-12 md:h-16"
+              >
+                <img
+                  src={`/assets/companies/${logo.file}`}
+                  alt={logo.name}
+                  className="h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+          {/* Track 2 */}
+          <div className="flex items-center gap-16 pr-16" aria-hidden="true">
+            {BRAND_LOGOS_ROW_1.map((logo) => (
+              <div
+                key={`${logo.name}-row1-track2`}
+                className="inline-flex items-center justify-center w-28 md:w-36 h-12 md:h-16"
+              >
+                <img
+                  src={`/assets/companies/${logo.file}`}
+                  alt={logo.name}
+                  className="h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Row 2 (Scrolling Right) */}
       <div className="relative w-full overflow-hidden">
-        <div className="flex gap-16 w-max animate-marquee-right whitespace-nowrap">
-          {[...BRAND_LOGOS_ROW_2, ...BRAND_LOGOS_ROW_2].map((logo, idx) => (
-            <div
-              key={`${logo.name}-row2-${idx}`}
-              className="inline-flex items-center justify-center w-28 md:w-36 h-12 md:h-16"
-            >
-              <img
-                src={`/assets/companies/${logo.file}`}
-                alt={logo.name}
-                className="h-8 md:h-12 w-auto object-contain brightness-0 invert opacity-30 hover:opacity-85 transition-opacity duration-300 pointer-events-none select-none"
-                loading="lazy"
-              />
-            </div>
-          ))}
+        <div className="flex w-max animate-marquee-right whitespace-nowrap">
+          {/* Track 1 */}
+          <div className="flex items-center gap-16 pr-16">
+            {BRAND_LOGOS_ROW_2.map((logo) => (
+              <div
+                key={`${logo.name}-row2-track1`}
+                className="inline-flex items-center justify-center w-28 md:w-36 h-12 md:h-16"
+              >
+                <img
+                  src={`/assets/companies/${logo.file}`}
+                  alt={logo.name}
+                  className="h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+          {/* Track 2 */}
+          <div className="flex items-center gap-16 pr-16" aria-hidden="true">
+            {BRAND_LOGOS_ROW_2.map((logo) => (
+              <div
+                key={`${logo.name}-row2-track2`}
+                className="inline-flex items-center justify-center w-28 md:w-36 h-12 md:h-16"
+              >
+                <img
+                  src={`/assets/companies/${logo.file}`}
+                  alt={logo.name}
+                  className="h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -1175,7 +1213,7 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
 
                 return (
                   <motion.div
-                    key={`${activeTab}-${item.title}`}
+                    key={`${activeTab}-${item.imageKey}`}
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: idx * 0.05 }}

@@ -135,6 +135,9 @@ export default async function CulturePage() {
       {/* Looping Video Section — Times Square Aerial */}
       <CultureLoopingVideoSection />
 
+      {/* American Brand Logos Continuous Marquee */}
+      <CultureBrandLogosMarquee />
+
       {/* §6 — Free Market Argument (Cream Section) */}
       <CultureFreeMarketStrip arguments_={arguments_} sectionTitle={argumentTitle} />
 
@@ -157,9 +160,6 @@ export default async function CulturePage() {
         ctaLabel={radarCta}
         ctaHref="#"
       />
-
-      {/* American Brand Logos Continuous Marquee */}
-      <CultureBrandLogosMarquee />
 
       {/* Parallax Divider 2 — NFL/Cowboys Stadium */}
       <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.nflStadium} alt="American Football Stadium Lights" />
