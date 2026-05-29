@@ -48,6 +48,7 @@ import {
   CultureTimelineScroll,
   CultureSoftPowerBudget,
   CultureArchiveVault,
+  CultureLivingMediaWall,
 } from "@/components/culture/CulturePageComponents";
 
 import { NewsletterSection } from "@/components/sections/NewsletterSection";
@@ -145,6 +146,9 @@ export default async function CulturePage() {
 
       {/* Full Viewport Quote Moment (Bono: "America is an idea...") */}
       <CultureViewportQuote quote={bonoQuote} bgImageSrc={SITE_IMAGES.culture.route66} />
+
+      {/* Living Media Wall Grid (40 Shifting Cultural Artifacts) */}
+      <CultureLivingMediaWall />
 
       {/* §7 — Radar Chart Teaser */}
       <CultureRadarTeaser

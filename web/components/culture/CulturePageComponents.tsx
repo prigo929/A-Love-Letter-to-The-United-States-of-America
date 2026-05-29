@@ -22,6 +22,7 @@ import { SITE_IMAGES } from "@/lib/site-images";
 import {
   BRAND_LOGOS_ROW_1,
   BRAND_LOGOS_ROW_2,
+  CULTURE_MEDIA_WALL_IMAGES,
 } from "@/lib/data/culture-data";
 import type {
   CultureStat,
@@ -1212,6 +1213,140 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
           </AnimatePresence>
         </div>
       </div>
+    </section>
+  );
+}
+
+// ─── §17 — Living Media Wall ─────────────────────────────────────────────────
+
+interface ShiftingGridCellProps {
+  initialSrc: string;
+  triggerChange: boolean;
+  getNewImage: () => string;
+}
+
+export function ShiftingGridCell({ initialSrc, triggerChange, getNewImage }: ShiftingGridCellProps) {
+  const [src, setSrc] = useState(initialSrc);
+  const [isColor, setIsColor] = useState(false);
+  const [key, setKey] = useState(0);
+
+  // Initialize random color/grayscale state
+  useEffect(() => {
+    setIsColor(Math.random() < 0.12);
+  }, []);
+
+  // Update when parent requests a change
+  useEffect(() => {
+    if (triggerChange) {
+      const timeout = setTimeout(() => {
+        const nextSrc = getNewImage();
+        setSrc(nextSrc);
+        setIsColor(Math.random() < 0.12);
+        setKey((prev) => prev + 1);
+      }, Math.random() * 500); // stagger changes organically
+      return () => clearTimeout(timeout);
+    }
+  }, [triggerChange, getNewImage]);
+
+  return (
+    <div className="relative w-full h-full overflow-hidden bg-black/60 rounded border border-white/[0.03]">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={key}
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: isColor ? 0.95 : 0.35, scale: 1.0 }}
+          exit={{ opacity: 0, scale: 1.04 }}
+          transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
+          className="absolute inset-0 w-full h-full"
+        >
+          <img
+            src={src}
+            alt="Cultural artifact"
+            className={cn(
+              "w-full h-full object-cover transition-all duration-1000",
+              isColor ? "grayscale-0 contrast-110" : "grayscale opacity-50 contrast-95 brightness-[0.75]"
+            )}
+            loading="lazy"
+          />
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
+
+export function CultureLivingMediaWall() {
+  const totalSlots = 40;
+  
+  const [images, setImages] = useState<string[]>([]);
+  const [changeTrigger, setChangeTrigger] = useState<{ index: number; key: number } | null>(null);
+  
+  const unusedRef = useRef<string[]>([]);
+  const usedRef = useRef<string[]>([]);
+
+  useEffect(() => {
+    const shuffled = [...CULTURE_MEDIA_WALL_IMAGES].sort(() => Math.random() - 0.5);
+    const initial = shuffled.slice(0, totalSlots);
+    const unused = shuffled.slice(totalSlots);
+    
+    setImages(initial);
+    unusedRef.current = unused;
+    usedRef.current = initial;
+  }, []);
+
+  const getNewImage = useCallback(() => {
+    if (unusedRef.current.length === 0) {
+      unusedRef.current = [...usedRef.current].sort(() => Math.random() - 0.5);
+      usedRef.current = [];
+    }
+    const newImg = unusedRef.current.pop()!;
+    usedRef.current.push(newImg);
+    return newImg;
+  }, []);
+
+  useEffect(() => {
+    if (images.length === 0) return;
+
+    const interval = setInterval(() => {
+      const randIndex = Math.floor(Math.random() * totalSlots);
+      setChangeTrigger({ index: randIndex, key: Date.now() });
+    }, 1800); // Shifting slowly: one item changes every 1.8 seconds
+
+    return () => clearInterval(interval);
+  }, [images]);
+
+  if (images.length === 0) return null;
+
+  return (
+    <section className="relative w-full h-screen bg-black overflow-hidden border-y border-white/5 select-none flex items-center justify-center">
+      {/* Full-Viewport Shifting Grid */}
+      <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-2 p-2 w-full h-full">
+        {Array.from({ length: totalSlots }).map((_, idx) => {
+          const isExcessOnMobile = idx >= 20;
+          const isExcessOnTablet = idx >= 30;
+
+          return (
+            <div
+              key={idx}
+              className={cn(
+                "w-full h-full relative aspect-[3/4] sm:aspect-auto",
+                isExcessOnMobile ? "hidden sm:block" : "block",
+                isExcessOnTablet ? "sm:hidden lg:block" : "block"
+              )}
+            >
+              <ShiftingGridCell
+                initialSrc={images[idx]}
+                triggerChange={changeTrigger?.index === idx}
+                getNewImage={getNewImage}
+              />
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Ambient Dark Overlay to make the grid feel cohesive */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none opacity-80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black pointer-events-none opacity-80" />
+      <div className="absolute inset-0 bg-black/20 pointer-events-none" />
     </section>
   );
 }
