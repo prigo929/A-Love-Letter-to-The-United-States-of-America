@@ -62,15 +62,6 @@ export function CultureStyles() {
         animation: marquee-right 45s linear infinite;
       }
 
-      @keyframes ken-burns {
-        0% { transform: scale(1.0); }
-        100% { transform: scale(1.12); }
-      }
-      .animate-ken-burns {
-        animation: ken-burns 90s linear forwards;
-        will-change: transform;
-      }
-
       @keyframes fadeInUp {
         from { opacity: 0; transform: translate3d(0, 20px, 0); }
         to { opacity: 1; transform: translate3d(0, 0, 0); }
@@ -1350,11 +1341,11 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
 const MOBILE_SPANS = [
   "col-span-2 row-span-2",
   "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-2 row-span-1",
+  "col-span-1 row-span-2",
   "col-span-1 row-span-1", "col-span-1 row-span-1",
   "col-span-1 row-span-2",
   "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-2 row-span-1",
+  "col-span-1 row-span-2",
   "col-span-1 row-span-2",
   "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
   "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
@@ -1364,15 +1355,15 @@ const MOBILE_SPANS = [
 const TABLET_SPANS = [
   "col-span-2 row-span-2",
   "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-2 row-span-1",
+  "col-span-1 row-span-2",
   "col-span-1 row-span-2",
   "col-span-1 row-span-1", "col-span-1 row-span-1",
   "col-span-2 row-span-2",
   "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-2 row-span-1",
+  "col-span-1 row-span-2",
   "col-span-1 row-span-2",
   "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-2 row-span-1",
+  "col-span-1 row-span-2",
   "col-span-1 row-span-2",
   "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
   "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
@@ -1382,19 +1373,19 @@ const TABLET_SPANS = [
 const DESKTOP_SPANS = [
   "col-span-2 row-span-2",
   "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-2 row-span-1",
+  "col-span-1 row-span-2",
   "col-span-2 row-span-2",
   "col-span-1 row-span-1", "col-span-1 row-span-1",
   "col-span-1 row-span-2",
   "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-2 row-span-1",
+  "col-span-1 row-span-2",
   "col-span-1 row-span-1", "col-span-1 row-span-1",
   "col-span-2 row-span-2",
   "col-span-1 row-span-1", "col-span-1 row-span-1",
   "col-span-1 row-span-2",
-  "col-span-2 row-span-1",
   "col-span-1 row-span-2",
-  "col-span-2 row-span-1",
+  "col-span-1 row-span-2",
+  "col-span-1 row-span-2",
   "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
   "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
   "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
@@ -1421,7 +1412,7 @@ export function ShiftingGridCell({ src, isColor }: ShiftingGridCellProps) {
           transition={{
             opacity: { duration: 2.0, ease: "easeInOut" },
           }}
-          className="absolute inset-0 w-full h-full animate-ken-burns"
+          className="absolute inset-0 w-full h-full"
         >
           <img
             src={src}
