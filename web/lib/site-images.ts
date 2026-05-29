@@ -142,6 +142,13 @@ import cultureBaseballPark from "@/IMAGES/Culture/Sports/Stadiums/Scenic-Daytime
 import cultureCowboysStadium from "@/IMAGES/Culture/Sports/Stadiums/Wide-Interior-View-Of-Packed-ATT-Stadium-During-Dallas-Cowboys-Football-Game.jpg";
 import cultureStatueOfLiberty from "@/IMAGES/Culture/Iconic Things/Statue Of Liberty.jpg";
 
+// Culture Eras
+import era1920s from "@/IMAGES/Culture/Eras/1920s Jazz CarterAndKingJazzingOrchestra.jpg";
+import era1950s from "@/IMAGES/Culture/Eras/1950s Hollywood.jpg";
+import era1970s from "@/IMAGES/Culture/Eras/1970s fast food restaurant - McDonald's.jpeg";
+import era1990s from "@/IMAGES/Culture/Eras/1990s internet Gore-Clinton-Computer.jpg";
+import era2020s from "@/IMAGES/Culture/Eras/AI 2020s apps.jpg";
+
 // Global Bases
 import baseRamstein from "@/IMAGES/Military/Global Bases/ramstein_air_base.jpg";
 import baseYokosuka from "@/IMAGES/Military/Global Bases/western_pacific_fleet_activities_yokosuka.jpg";
@@ -359,5 +366,10 @@ export const SITE_IMAGES = {
     baseballPark: cultureBaseballPark.src,
     cowboysStadium: cultureCowboysStadium.src,
     statueOfLiberty: cultureStatueOfLiberty.src,
+    era1920s: era1920s.src,
+    era1950s: era1950s.src,
+    era1970s: era1970s.src,
+    era1990s: era1990s.src,
+    era2020s: era2020s.src,
   },
 } as const;

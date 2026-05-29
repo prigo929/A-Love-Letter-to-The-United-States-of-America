@@ -869,7 +869,7 @@ export function CultureViewportQuote({ quote, bgImageSrc }: CultureViewportQuote
           THE AMERICAN ESSENCE
         </span>
 
-        <h2 className="font-editorial italic text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.1] tracking-tight mb-8 sm:mb-12">
+        <h2 className="font-editorial italic text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-relaxed tracking-wide mb-8 sm:mb-12 max-w-4xl mx-auto px-4">
           &ldquo;{quote.text}&rdquo;
         </h2>
 

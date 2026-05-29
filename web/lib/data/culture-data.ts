@@ -428,23 +428,19 @@ export interface CultureDecade {
 }
 
 const DECADES_EN: CultureDecade[] = [
-  { year: "1920s", title: "Jazz Age", sentence: "African-American musicians in New Orleans invented the first truly American art form and broadcast it worldwide.", imageKey: "jazzClub" },
-  { year: "1950s", title: "Hollywood Golden Age", sentence: "The studio system turned Los Angeles into the dream factory for the entire planet.", imageKey: "hollywoodSign" },
-  { year: "1960s", title: "Rock & Counterculture", sentence: "American youth culture rewrote the rules — denim, rock, and rebellion became the global uniform.", imageKey: "concertCrowd" },
-  { year: "1970s", title: "Fast Food Empire", sentence: "McDonald's crossed 3,000 locations. The franchise model proved culture could be industrialized.", imageKey: "burger" },
-  { year: "1990s", title: "The Internet Age", sentence: "Silicon Valley connected the world — and set English as the operating language of the digital era.", imageKey: "timesSquare" },
-  { year: "2000s", title: "Social Media & Streaming", sentence: "Facebook, YouTube, Netflix — America built the platforms that deliver culture to 5 billion screens.", imageKey: "disneyWorld" },
-  { year: "2020s", title: "AI & The Next Frontier", sentence: "American labs lead the race for artificial general intelligence — the next operating system for civilization.", imageKey: "route66" },
+  { year: "1920s", title: "Jazz Age", sentence: "African-American musicians in New Orleans invented the first truly American art form and broadcast it worldwide.", imageKey: "era1920s" },
+  { year: "1950s", title: "Hollywood Golden Age", sentence: "The studio system turned Los Angeles into the dream factory for the entire planet.", imageKey: "era1950s" },
+  { year: "1970s", title: "Fast Food Empire", sentence: "McDonald's proved culture could be industrialized via the franchise model, spreading globally.", imageKey: "era1970s" },
+  { year: "1990s", title: "The Internet Age", sentence: "Silicon Valley connected the world — and set English as the operating language of the digital era.", imageKey: "era1990s" },
+  { year: "2020s", title: "AI & The Next Frontier", sentence: "American labs lead the race for artificial general intelligence — the next operating system for civilization.", imageKey: "era2020s" },
 ];
 
 const DECADES_RO: CultureDecade[] = [
-  { year: "1920", title: "Epoca Jazz-ului", sentence: "Muzicienii afro-americani din New Orleans au inventat prima formă de artă cu adevărat americană și au difuzat-o mondial.", imageKey: "jazzClub" },
-  { year: "1950", title: "Epoca de Aur a Hollywood-ului", sentence: "Sistemul studiourilor a transformat Los Angeles în fabrica de vise pentru întreaga planetă.", imageKey: "hollywoodSign" },
-  { year: "1960", title: "Rock & Contracultură", sentence: "Cultura tinerilor americani a rescris regulile — denim-ul, rock-ul și rebeliunea au devenit uniforma globală.", imageKey: "concertCrowd" },
-  { year: "1970", title: "Imperiul Fast Food", sentence: "McDonald's a depășit 3.000 de locații. Modelul de franciză a demonstrat că cultura poate fi industrializată.", imageKey: "burger" },
-  { year: "1990", title: "Era Internetului", sentence: "Silicon Valley a conectat lumea — și a stabilit engleza ca limbă de operare a erei digitale.", imageKey: "timesSquare" },
-  { year: "2000", title: "Social Media & Streaming", sentence: "Facebook, YouTube, Netflix — America a construit platformele care livrează cultură la 5 miliarde de ecrane.", imageKey: "disneyWorld" },
-  { year: "2020", title: "AI & Frontiera Următoare", sentence: "Laboratoarele americane conduc cursa pentru inteligență artificială generală — următorul sistem de operare al civilizației.", imageKey: "route66" },
+  { year: "1920", title: "Epoca Jazz-ului", sentence: "Muzicienii afro-americani din New Orleans au inventat prima formă de artă cu adevărat americană și au difuzat-o mondial.", imageKey: "era1920s" },
+  { year: "1950", title: "Epoca de Aur a Hollywood-ului", sentence: "Sistemul studiourilor a transformat Los Angeles în fabrica de vise pentru întreaga planetă.", imageKey: "era1950s" },
+  { year: "1970", title: "Imperiul Fast Food", sentence: "McDonald's a demonstrat că cultura poate fi industrializată prin modelul de franciză, răspândindu-se global.", imageKey: "era1970s" },
+  { year: "1990", title: "Era Internetului", sentence: "Silicon Valley a conectat lumea — și a stabilit engleza ca limbă de operare a erei digitale.", imageKey: "era1990s" },
+  { year: "2020", title: "AI & Frontiera Următoare", sentence: "Laboratoarele americane conduc cursa pentru inteligență artificială generală — următorul sistem de operare al civilizației.", imageKey: "era2020s" },
 ];
 
 export function getCultureDecades(locale: Locale): CultureDecade[] {
