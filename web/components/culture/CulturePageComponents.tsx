@@ -296,42 +296,116 @@ export function CultureThesisBlock({ thesis }: CultureThesisBlockProps) {
 
 // ─── §4 — Soft Power Pillars ─────────────────────────────────────────────────
 
+const PILLAR_GLOW_SCHEMES = [
+  { // Film & TV
+    color: "from-red-500/15 to-transparent",
+    border: "hover:border-red-500/30",
+    lineBg: "bg-red-500/50"
+  },
+  { // Sports
+    color: "from-emerald-500/15 to-transparent",
+    border: "hover:border-emerald-500/30",
+    lineBg: "bg-emerald-500/50"
+  },
+  { // Food & Drinks
+    color: "from-amber-500/15 to-transparent",
+    border: "hover:border-amber-500/30",
+    lineBg: "bg-amber-500/50"
+  },
+  { // Music
+    color: "from-purple-500/15 to-transparent",
+    border: "hover:border-purple-500/30",
+    lineBg: "bg-purple-500/50"
+  },
+  { // Fashion
+    color: "from-pink-500/15 to-transparent",
+    border: "hover:border-pink-500/30",
+    lineBg: "bg-pink-500/50"
+  },
+  { // English
+    color: "from-blue-500/15 to-transparent",
+    border: "hover:border-blue-500/30",
+    lineBg: "bg-blue-500/50"
+  },
+  { // Brands
+    color: "from-yellow-500/15 to-transparent",
+    border: "hover:border-yellow-500/30",
+    lineBg: "bg-glory-gold/50"
+  },
+  { // Entertainment
+    color: "from-indigo-500/15 to-transparent",
+    border: "hover:border-indigo-500/30",
+    lineBg: "bg-indigo-500/50"
+  }
+];
+
 interface CulturePillarsStripProps {
   pillars: CulturePillar[];
 }
 
 export function CulturePillarsStrip({ pillars }: CulturePillarsStripProps) {
   return (
-    <section id="culture-pillars" className="culture-bg border-t border-white/5 py-16 md:py-20">
+    <section id="culture-pillars" className="culture-bg border-t border-white/5 py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6 lg:gap-4">
-          {pillars.map((pillar, i) => (
-            <motion.div
-              key={i}
-              className="text-center border-b-2 border-glory-gold/30 pb-5"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{
-                duration: 0.5,
-                delay: i * 0.06,
-                ease: [0.25, 0.1, 0.25, 1] as const,
-              }}
-            >
-              <span className="text-2xl mb-2 block" aria-hidden="true">
-                {pillar.emoji}
-              </span>
-              <p className="font-hero text-glory-gold text-xs uppercase tracking-[0.15em] mb-2">
-                {pillar.domain}
-              </p>
-              <p className="font-hero text-[#F5EDD8] text-2xl lg:text-3xl mb-1 tabular-nums">
-                {pillar.stat}
-              </p>
-              <p className="font-body text-[#F5EDD8]/40 text-[10px] uppercase tracking-wider leading-tight">
-                {pillar.statLabel}
-              </p>
-            </motion.div>
-          ))}
+        {/* Section title & Header */}
+        <div className="mb-16 text-left">
+          <span className="font-body text-glory-gold text-xs font-semibold uppercase tracking-[0.2em] block mb-3">
+            THE SOFT POWER ARSENAL
+          </span>
+          <h2 className="font-editorial text-3xl sm:text-4xl md:text-5xl text-[#F5EDD8] leading-tight">
+            Dimensions of Global Influence
+          </h2>
+        </div>
+
+        {/* Cinematic Bento-style pillars grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {pillars.map((pillar, i) => {
+            const scheme = PILLAR_GLOW_SCHEMES[i % PILLAR_GLOW_SCHEMES.length];
+
+            return (
+              <motion.div
+                key={i}
+                className={cn(
+                  "relative overflow-hidden rounded-2xl border border-white/[0.04] bg-white/[0.01] p-6 md:p-8 flex flex-col justify-between group shadow-2xl transition-all duration-500 hover:-translate-y-1.5 hover:bg-white/[0.02] min-h-[220px]",
+                  scheme.border
+                )}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{
+                  duration: 0.6,
+                  delay: i * 0.08,
+                  ease: [0.16, 1, 0.3, 1] as const,
+                }}
+              >
+                {/* Glowing pools at top right */}
+                <div className={cn("absolute -right-16 -top-16 w-36 h-36 rounded-full bg-gradient-to-br filter blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none", scheme.color)} />
+                
+                {/* Top Row: Domain name + Emoji Container */}
+                <div className="flex items-center justify-between w-full mb-8 relative z-10">
+                  <span className="font-body text-[10px] sm:text-xs tracking-[0.25em] text-[#F5EDD8]/40 group-hover:text-[#F5EDD8]/80 transition-colors duration-300 font-bold uppercase">
+                    {pillar.domain}
+                  </span>
+                  <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-sm group-hover:scale-110 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300 select-none">
+                    {pillar.emoji}
+                  </div>
+                </div>
+
+                {/* Bottom content: Huge metric + Label */}
+                <div className="flex flex-col items-start mt-auto relative z-10">
+                  <span className="font-editorial italic text-4xl sm:text-5xl text-[#F5EDD8] group-hover:text-white transition-colors duration-300 tracking-tight leading-none">
+                    {pillar.stat}
+                  </span>
+                  <span className="font-body text-xs text-[#F5EDD8]/40 group-hover:text-[#F5EDD8]/70 transition-colors duration-300 font-medium leading-relaxed mt-3">
+                    {pillar.statLabel}
+                  </span>
+                </div>
+
+                {/* Expanding bottom accent line */}
+                <div className={cn("absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] transition-all duration-500 group-hover:w-full", scheme.lineBg)} />
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
