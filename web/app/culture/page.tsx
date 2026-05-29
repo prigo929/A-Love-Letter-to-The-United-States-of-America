@@ -47,6 +47,7 @@ import {
   CultureViewportQuote,
   CultureTimelineScroll,
   CultureSoftPowerBudget,
+  CultureArchiveVault,
 } from "@/components/culture/CulturePageComponents";
 
 import { NewsletterSection } from "@/components/sections/NewsletterSection";
@@ -158,6 +159,9 @@ export default async function CulturePage() {
 
       {/* Parallax Divider 2 — NFL/Cowboys Stadium */}
       <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.nflStadium} alt="American Football Stadium Lights" />
+
+      {/* Interactive Archive Vault Showcase */}
+      <CultureArchiveVault isRo={isRo} />
 
       {/* §8 — Quote Carousel */}
       <CultureQuoteCarousel quotes={quotes} />

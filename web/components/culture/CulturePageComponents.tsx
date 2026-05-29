@@ -1048,3 +1048,171 @@ export function CultureSoftPowerBudget({ budgetLines }: CultureSoftPowerBudgetPr
     </section>
   );
 }
+
+// ─── §16 — Culture Archive Vault ─────────────────────────────────────────────
+
+interface ArchiveItem {
+  title: string;
+  subtitle: string;
+  year: string;
+  imageKey: keyof typeof SITE_IMAGES.culture;
+}
+
+const CINEMA_ITEMS: ArchiveItem[] = [
+  { title: "The Godfather", subtitle: "Dir. Francis Ford Coppola", year: "1972", imageKey: "vaultGodfather" },
+  { title: "Jaws", subtitle: "Dir. Steven Spielberg", year: "1975", imageKey: "vaultJaws" },
+  { title: "Star Wars", subtitle: "Dir. George Lucas", year: "1977", imageKey: "vaultStarWars" },
+  { title: "Jurassic Park", subtitle: "Dir. Steven Spielberg", year: "1993", imageKey: "vaultJurassicPark" },
+  { title: "Pulp Fiction", subtitle: "Dir. Quentin Tarantino", year: "1994", imageKey: "vaultPulpFiction" },
+  { title: "Interstellar", subtitle: "Dir. Christopher Nolan", year: "2014", imageKey: "vaultInterstellar" },
+];
+
+const MUSIC_ITEMS: ArchiveItem[] = [
+  { title: "Kind of Blue", subtitle: "Miles Davis", year: "1959", imageKey: "vaultMilesDavis" },
+  { title: "Pet Sounds", subtitle: "The Beach Boys", year: "1966", imageKey: "vaultBeachBoys" },
+  { title: "At Folsom Prison", subtitle: "Johnny Cash", year: "1968", imageKey: "vaultJohnnyCash" },
+  { title: "Thriller", subtitle: "Michael Jackson", year: "1982", imageKey: "vaultMichaelJackson" },
+  { title: "Nevermind", subtitle: "Nirvana", year: "1991", imageKey: "vaultNirvana" },
+];
+
+const EDITORIAL_ITEMS: ArchiveItem[] = [
+  { title: "Fortune Cover", subtitle: "Aviation as Seen by Monkeys", year: "1931", imageKey: "vaultFortune1931" },
+  { title: "LIFE Magazine", subtitle: "Marilyn Monroe Feature", year: "1953", imageKey: "vaultLifeMarilyn" },
+  { title: "LIFE Magazine", subtitle: "Disney World Grand Opening", year: "1971", imageKey: "vaultLifeDisney" },
+  { title: "TIME Magazine", subtitle: "September 11 Remembrance", year: "2001", imageKey: "vaultTime911" },
+];
+
+interface CultureArchiveVaultProps {
+  isRo: boolean;
+}
+
+export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
+  const [activeTab, setActiveTab] = useState<"cinema" | "music" | "editorial">("cinema");
+
+  const tabs = [
+    { id: "cinema", label: isRo ? "Cinema" : "Cinema" },
+    { id: "music", label: isRo ? "Muzică" : "Music" },
+    { id: "editorial", label: isRo ? "Publicații" : "Editorial" },
+  ] as const;
+
+  const getItems = () => {
+    switch (activeTab) {
+      case "cinema":
+        return CINEMA_ITEMS;
+      case "music":
+        return MUSIC_ITEMS;
+      case "editorial":
+        return EDITORIAL_ITEMS;
+    }
+  };
+
+  const title = isRo ? "ARHIVA CULTURALĂ" : "THE ARCHIVE VAULT";
+  const subtitle = isRo
+    ? "O selecție de exporturi culturale de referință care au modelat imaginația globală."
+    : "A curated archive of landmark cultural exports that defined global creative expression.";
+
+  return (
+    <section className="culture-bg py-20 md:py-28 border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center">
+        {/* Title Block */}
+        <motion.div
+          className="max-w-3xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <span className="font-body text-glory-gold text-xs font-semibold uppercase tracking-[0.25em] block mb-3">
+            VAULT OF INFLUENCE
+          </span>
+          <h2 className="font-editorial text-3xl sm:text-4xl md:text-5xl text-[#F5EDD8] mb-4">
+            {title}
+          </h2>
+          <p className="font-body text-sm sm:text-base text-[#F5EDD8]/60 leading-relaxed font-light font-body">
+            {subtitle}
+          </p>
+        </motion.div>
+
+        {/* Tabs Controller */}
+        <div className="flex justify-center border-b border-white/10 mb-12 max-w-md mx-auto">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={cn(
+                "relative py-3 px-6 font-body text-xs uppercase tracking-widest font-semibold transition-colors duration-300",
+                activeTab === tab.id
+                  ? "text-glory-gold"
+                  : "text-[#F5EDD8]/45 hover:text-[#F5EDD8]/80"
+              )}
+            >
+              {tab.label}
+              {activeTab === tab.id && (
+                <motion.div
+                  layoutId="activeTabUnderline"
+                  className="absolute bottom-0 left-0 right-0 h-[2px] bg-glory-gold"
+                  transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                />
+              )}
+            </button>
+          ))}
+        </div>
+
+        {/* Items Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 justify-center max-w-6xl mx-auto">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="col-span-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"
+            >
+              {getItems().map((item, idx) => {
+                const imageSrc = SITE_IMAGES.culture[item.imageKey] || SITE_IMAGES.culture.statueOfLiberty;
+
+                return (
+                  <motion.div
+                    key={`${activeTab}-${item.title}`}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                    className="group flex flex-col items-center text-center cursor-pointer"
+                  >
+                    {/* Poster/Cover Frame */}
+                    <div className="relative aspect-[2/3] w-full overflow-hidden rounded-lg bg-black/40 border border-white/5 shadow-2xl transition-all duration-500 group-hover:border-glory-gold/40 group-hover:shadow-[0_20px_50px_rgba(212,175,55,0.08)] mb-4">
+                      <Image
+                        src={imageSrc}
+                        alt={item.title}
+                        fill
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        className="object-cover grayscale transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:grayscale-0 group-hover:scale-105"
+                        priority={false}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
+                      
+                      {/* Visual Year Tag */}
+                      <span className="absolute top-3 right-3 bg-black/70 border border-white/10 text-glory-gold font-body text-[9px] tracking-widest font-black py-1 px-2 rounded uppercase pointer-events-none">
+                        {item.year}
+                      </span>
+                    </div>
+
+                    {/* Descriptions */}
+                    <h3 className="font-editorial italic text-base sm:text-lg text-[#F5EDD8] group-hover:text-glory-gold transition-colors duration-300 mb-1 line-clamp-1">
+                      {item.title}
+                    </h3>
+                    <span className="font-body text-[10px] sm:text-xs text-[#F5EDD8]/45 line-clamp-1 uppercase tracking-widest font-medium">
+                      {item.subtitle}
+                    </span>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    </section>
+  );
+}
+

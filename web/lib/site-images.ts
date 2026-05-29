@@ -149,6 +149,28 @@ import era1970s from "@/IMAGES/Culture/Eras/1970s fast food restaurant - McDonal
 import era1990s from "@/IMAGES/Culture/Eras/1990s internet Gore-Clinton-Computer.jpg";
 import era2020s from "@/IMAGES/Culture/Eras/AI 2020s apps.jpg";
 
+// Culture Archive Vault
+// Movie Posters
+import vaultGodfather from "@/IMAGES/Culture/Movie Posters/The Godfather 1972 classic puppet strings poster.jpg";
+import vaultStarWars from "@/IMAGES/Culture/Movie Posters/Star Wars Episode IV A New Hope original 1977 poster.jpg";
+import vaultJaws from "@/IMAGES/Culture/Movie Posters/Jaws 1975 minimalist shark composition poster.jpg";
+import vaultPulpFiction from "@/IMAGES/Culture/Movie Posters/Pulp Fiction 1994 vintage editorial style poster.jpg";
+import vaultJurassicPark from "@/IMAGES/Culture/Movie Posters/Jurassic Park 1993 iconic T-Rex silhouette poster.jpg";
+import vaultInterstellar from "@/IMAGES/Culture/Movie Posters/Interstellar 2014 cinematic IMAX ice planet poster.jpg";
+
+// Album Covers
+import vaultMilesDavis from "@/IMAGES/Culture/Album Covers/Miles Davis Kind of Blue high contrast jazz vinyl cover.jpg";
+import vaultMichaelJackson from "@/IMAGES/Culture/Album Covers/Michael Jackson Thriller 1982 classic pop album cover.jpg";
+import vaultNirvana from "@/IMAGES/Culture/Album Covers/Nirvana Nevermind 1991 standard vinyl cover.jpg";
+import vaultJohnnyCash from "@/IMAGES/Culture/Album Covers/Johnny Cash At Folsom Prison legendary portrait cover.jpg";
+import vaultBeachBoys from "@/IMAGES/Culture/Album Covers/The Beach Boys Pet Sounds 1966 mono album cover.jpg";
+
+// Magazine Covers
+import vaultTime911 from "@/IMAGES/Culture/Magazines/TIME/Time Magazine Cover on 9 : 11.jpg";
+import vaultFortune1931 from "@/IMAGES/Culture/Magazines/“Aviation as Seen by Monkeys,” Fortune, January 1931 Cover.jpg";
+import vaultLifeMarilyn from "@/IMAGES/Culture/Magazines/marilyn-monroe-the-iconic-life-cover-from-may-25-1953.jpg";
+import vaultLifeDisney from "@/IMAGES/Culture/Magazines/disney-world-the-iconic-life-cover-from-october-15-1971.jpg";
+
 // Global Bases
 import baseRamstein from "@/IMAGES/Military/Global Bases/ramstein_air_base.jpg";
 import baseYokosuka from "@/IMAGES/Military/Global Bases/western_pacific_fleet_activities_yokosuka.jpg";
@@ -371,5 +393,20 @@ export const SITE_IMAGES = {
     era1970s: era1970s.src,
     era1990s: era1990s.src,
     era2020s: era2020s.src,
+    vaultGodfather: vaultGodfather.src,
+    vaultStarWars: vaultStarWars.src,
+    vaultJaws: vaultJaws.src,
+    vaultPulpFiction: vaultPulpFiction.src,
+    vaultJurassicPark: vaultJurassicPark.src,
+    vaultInterstellar: vaultInterstellar.src,
+    vaultMilesDavis: vaultMilesDavis.src,
+    vaultMichaelJackson: vaultMichaelJackson.src,
+    vaultNirvana: vaultNirvana.src,
+    vaultJohnnyCash: vaultJohnnyCash.src,
+    vaultBeachBoys: vaultBeachBoys.src,
+    vaultTime911: vaultTime911.src,
+    vaultFortune1931: vaultFortune1931.src,
+    vaultLifeMarilyn: vaultLifeMarilyn.src,
+    vaultLifeDisney: vaultLifeDisney.src,
   },
 } as const;
