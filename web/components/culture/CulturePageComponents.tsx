@@ -61,10 +61,6 @@ export function CultureStyles() {
       .animate-marquee-right {
         animation: marquee-right 45s linear infinite;
       }
-      .animate-marquee-left:hover,
-      .animate-marquee-right:hover {
-        animation-play-state: paused;
-      }
     `}</style>
   );
 }
@@ -815,7 +811,7 @@ export function CultureParallaxDivider({
   return (
     <div
       ref={containerRef}
-      className={cn("relative overflow-hidden w-full border-y border-white/5", heightClassName)}
+      className={cn("relative overflow-hidden w-full", heightClassName)}
     >
       <motion.div style={{ y }} className="absolute inset-0 w-full h-[130%] -top-[15%]">
         <Image
@@ -827,7 +823,7 @@ export function CultureParallaxDivider({
           priority={false}
         />
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0C0907]/60 via-transparent to-[#0C0907]/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0C0907] via-transparent to-[#0C0907] pointer-events-none" />
     </div>
   );
 }
@@ -870,7 +866,7 @@ export function CultureBrandLogosMarquee() {
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
                   className={cn(
-                    "h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
+                    "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
                     logo.invert && "invert brightness-200"
                   )}
                   loading="lazy"
@@ -889,7 +885,7 @@ export function CultureBrandLogosMarquee() {
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
                   className={cn(
-                    "h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
+                    "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
                     logo.invert && "invert brightness-200"
                   )}
                   loading="lazy"
@@ -914,7 +910,7 @@ export function CultureBrandLogosMarquee() {
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
                   className={cn(
-                    "h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
+                    "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
                     logo.invert && "invert brightness-200"
                   )}
                   loading="lazy"
@@ -933,7 +929,7 @@ export function CultureBrandLogosMarquee() {
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
                   className={cn(
-                    "h-8 md:h-12 w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
+                    "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
                     logo.invert && "invert brightness-200"
                   )}
                   loading="lazy"
@@ -1075,13 +1071,9 @@ export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimeline
           const imageSrc = SITE_IMAGES.culture[imgKey] || SITE_IMAGES.culture.statueOfLiberty;
 
           return (
-            <motion.div
+            <div
               key={dec.year}
               className="flex-shrink-0 w-[80vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] snap-start bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden group hover:border-glory-gold/40 transition-all duration-500 flex flex-col justify-between"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
             >
               <div className="p-6 md:p-8 flex flex-col gap-2">
                 <span className="font-body text-7xl md:text-8xl font-black text-white/5 group-hover:text-glory-gold/10 transition-colors duration-500 leading-none">
@@ -1108,7 +1100,7 @@ export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimeline
                   {dec.sentence}
                 </p>
               </div>
-            </motion.div>
+            </div>
           );
         })}
       </div>
