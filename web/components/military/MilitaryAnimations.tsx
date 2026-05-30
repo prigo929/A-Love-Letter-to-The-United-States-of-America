@@ -1041,71 +1041,71 @@ export function ParallaxMilitaryHero({
         }} />
 
         {/* Content Overlay */}
-        <motion.div 
-          initial="hidden"
-          animate="visible"
+      <motion.div 
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {},
+          visible: {
+            transition: { staggerChildren: 0.12, delayChildren: 0.2 }
+          }
+        }}
+        className="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-20 pb-12 text-center md:pt-0 md:pb-0"
+        style={{ opacity: textOpacity, y: textY }}
+      >
+        {/* Tagline */}
+        <motion.p 
           variants={{
-            hidden: {},
-            visible: {
-              transition: { staggerChildren: 0.12, delayChildren: 0.2 }
-            }
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
           }}
-          className="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-28 pb-16 text-center md:pt-0 md:pb-0"
-          style={{ opacity: textOpacity, y: textY }}
+          className="mil-text-label mb-4 md:mb-8 tracking-[0.2em] md:tracking-[0.5em]"
         >
-          {/* Tagline */}
-          <motion.p 
+          {tagline}
+        </motion.p>
+        
+        {/* Title - Nature-style reveal */}
+        <div className="overflow-hidden py-2">
+          <motion.h1 
+            variants={{
+              hidden: { opacity: 0, y: 60 },
+              visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } }
+            }}
+            className="mil-text-hero"
+          >
+            {title}
+          </motion.h1>
+        </div>
+
+        {/* Subtitle */}
+        <motion.p 
+          variants={{
+            hidden: { opacity: 0, y: 30 },
+            visible: { opacity: 0.85, y: 0, transition: { duration: 0.8 } }
+          }}
+          className="mil-text-metadata mt-6 md:mt-12 max-w-2xl font-bold tracking-[0.3em] leading-relaxed uppercase"
+        >
+          {subtitle}
+        </motion.p>
+
+        {/* Stats Strip */}
+        {stats && (
+          <motion.div 
             variants={{
               hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+              visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
             }}
-            className="mil-text-label mb-8 tracking-[0.2em] md:tracking-[0.5em]"
+            className="mt-10 md:mt-20 flex flex-wrap justify-center gap-x-14 gap-y-6"
           >
-            {tagline}
-          </motion.p>
-          
-          {/* Title - Nature-style reveal */}
-          <div className="overflow-hidden">
-            <motion.h1 
-              variants={{
-                hidden: { opacity: 0, y: 60 },
-                visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } }
-              }}
-              className="mil-text-hero"
-            >
-              {title}
-            </motion.h1>
-          </div>
-
-          {/* Subtitle */}
-          <motion.p 
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 0.85, y: 0, transition: { duration: 0.8 } }
-            }}
-            className="mil-text-metadata mt-12 max-w-2xl font-bold tracking-[0.3em] leading-relaxed uppercase"
-          >
-            {subtitle}
-          </motion.p>
-
-          {/* Stats Strip */}
-          {stats && (
-            <motion.div 
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
-              }}
-              className="mt-20 flex flex-wrap justify-center gap-x-14 gap-y-6"
-            >
-              {stats.map((s, i) => (
-                <div key={i} className="text-center group">
-                  <div className="mil-text-metadata mb-2 font-black uppercase tracking-widest text-[11px] text-white/50">{s.label}</div>
-                  <div className="text-2xl md:text-3xl font-black tracking-tight text-white/90">{s.value}</div>
-                </div>
-              ))}
-            </motion.div>
-          )}
-        </motion.div>
+            {stats.map((s, i) => (
+              <div key={i} className="text-center group">
+                <div className="mil-text-metadata mb-2 font-black uppercase tracking-widest text-[11px] text-white/50">{s.label}</div>
+                <div className="text-2xl md:text-3xl font-black tracking-tight text-white/90">{s.value}</div>
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </motion.div>
       </div>
     </div>
   );
@@ -1181,17 +1181,17 @@ export function VideoMilitaryHero({
           initial="hidden"
           animate="visible"
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12, delayChildren: 0.3 } } }}
-          className="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-28 pb-16 text-center md:pt-0 md:pb-0"
+          className="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-20 pb-12 text-center md:pt-0 md:pb-0"
           style={{ opacity: textOpacity, y: textY }}
         >
           <motion.p
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-            className="mil-text-label mb-8 tracking-[0.2em] md:tracking-[0.5em]"
+            className="mil-text-label mb-4 md:mb-8 tracking-[0.2em] md:tracking-[0.5em]"
           >
             {tagline}
           </motion.p>
 
-          <div className="overflow-hidden">
+          <div className="overflow-hidden py-2">
             <motion.h1
               variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } } }}
               className="mil-text-hero"
@@ -1202,7 +1202,7 @@ export function VideoMilitaryHero({
 
           <motion.p
             variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 0.85, y: 0, transition: { duration: 0.8 } } }}
-            className="mil-text-metadata mt-12 max-w-2xl font-bold tracking-[0.3em] leading-relaxed uppercase"
+            className="mil-text-metadata mt-6 md:mt-12 max-w-2xl font-bold tracking-[0.3em] leading-relaxed uppercase"
           >
             {subtitle}
           </motion.p>
@@ -1210,7 +1210,7 @@ export function VideoMilitaryHero({
           {stats && (
             <motion.div
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7 } } }}
-              className="mt-20 flex flex-wrap justify-center gap-x-14 gap-y-6"
+              className="mt-10 md:mt-20 flex flex-wrap justify-center gap-x-14 gap-y-6"
             >
               {stats.map((s, i) => (
                 <div key={i} className="text-center">

@@ -222,7 +222,7 @@ export function NatureHeroCrossfade({ children }: { children: React.ReactNode })
       </div>
 
       {/* Content overlay */}
-      <div className="relative z-20 flex h-screen flex-col justify-end pb-16 pt-28 md:pb-24 md:pt-48">
+      <div className="relative z-20 flex h-screen flex-col justify-end pb-12 pt-20 md:pb-24 md:pt-48">
         <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">{children}</div>
       </div>
     </section>
@@ -418,10 +418,10 @@ export function HeroTextReveal({ line1, line2, line2Color = "#4ade80", eyebrow, 
     >
       {eyebrow && (
         <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-          className="nat-text-label mb-6" style={{ color: 'var(--nat-accent-earth)' }}>{eyebrow}
+          className="nat-text-label mb-3 md:mb-6" style={{ color: 'var(--nat-accent-earth)' }}>{eyebrow}
         </motion.p>
       )}
-      <div className="overflow-hidden">
+      <div className="overflow-hidden py-2">
         <motion.h1
           variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } } }}
           className="nat-text-hero"
@@ -432,7 +432,7 @@ export function HeroTextReveal({ line1, line2, line2Color = "#4ade80", eyebrow, 
       </div>
       {body && (
         <motion.p variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.1 } } }}
-          className="nat-text-body mt-8 max-w-2xl">{body}
+          className="nat-text-body mt-4 md:mt-8 max-w-2xl">{body}
         </motion.p>
       )}
       {children && (
@@ -583,7 +583,7 @@ export function NatureSubPageHero({ imageSrc, imageAlt, label, children }: {
       </div>
 
       {/* Content overlay */}
-      <div className="relative z-20 flex h-screen flex-col justify-end pb-16 pt-28 md:pb-24 md:pt-48">
+      <div className="relative z-20 flex h-screen flex-col justify-end pb-12 pt-20 md:pb-24 md:pt-48">
         <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">{children}</div>
       </div>
     </section>

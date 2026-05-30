@@ -111,22 +111,22 @@ export function GlobalBasesHero({
       />
       <div className="absolute inset-x-0 bottom-0 h-64 bg-[linear-gradient(180deg,transparent,#000)]" />
 
-      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-6 pt-28 pb-16 text-center md:py-24">
+      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-6 pt-20 pb-12 text-center md:py-24">
         <div className="font-mono text-[10px] font-bold uppercase tracking-[0.5em] text-zinc-400">
           {isRo ? "REȚEA GLOBALĂ DE BAZE A STATELOR UNITE" : "UNITED STATES GLOBAL BASE NETWORK"}
         </div>
 
-        <h1 className="mt-8 text-[clamp(52px,10vw,150px)] font-black uppercase leading-[0.86] tracking-tight text-white">
+        <h1 className="mt-4 md:mt-8 text-[clamp(52px,10vw,150px)] font-black uppercase leading-[0.86] tracking-tight text-white">
           {isRo ? "Amprentă planetară" : "Planetary Footprint"}
         </h1>
 
-        <p className="mt-12 max-w-2xl font-mono text-[10px] font-bold uppercase leading-relaxed tracking-[0.28em] text-zinc-300">
+        <p className="mt-6 md:mt-12 max-w-2xl font-mono text-[10px] font-bold uppercase leading-relaxed tracking-[0.28em] text-zinc-300">
           {isRo
             ? "O arhitectură de acces, logistică și alianțe care transformă distanța globală într-un avantaj operațional."
             : "An architecture of access, logistics, and alliances that turns global distance into an operational advantage."}
         </p>
 
-        <div className="mt-20 flex flex-wrap justify-center gap-x-14 gap-y-6">
+        <div className="mt-10 md:mt-20 flex flex-wrap justify-center gap-x-14 gap-y-6">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="mb-2 font-mono text-[11px] font-black uppercase tracking-widest text-white/50">{stat.label}</div>
