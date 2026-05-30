@@ -237,8 +237,8 @@ export function VideoCultureHero({
   const textY       = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
 
   return (
-    <div ref={containerRef} className="relative h-[180dvh] bg-black">
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+    <div ref={containerRef} className="relative h-[180dvh] culture-bg">
+      <div className="sticky top-0 h-screen w-full overflow-hidden culture-bg">
         {/* Looping video layer */}
         <motion.div
           className="absolute inset-0 will-change-transform"
