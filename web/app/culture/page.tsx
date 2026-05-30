@@ -139,11 +139,17 @@ export default async function CulturePage() {
       {/* Looping Video Section — Times Square Aerial */}
       <CultureLoopingVideoSection />
 
+      {/* Transition: Dark to Cream */}
+      <div className="h-24 w-full gradient-dark-to-cream" />
+
       {/* §6 — Free Market Argument (Cream Section) */}
       <CultureFreeMarketStrip arguments_={arguments_} sectionTitle={argumentTitle} />
 
       {/* Soft Power Budget Scale Comparison (Cream Section) */}
       <CultureSoftPowerBudget budgetLines={budget} />
+
+      {/* Transition: Cream to Dark */}
+      <div className="h-24 w-full gradient-cream-to-dark" />
 
       {/* Cultural Timeline Scroll Area */}
       <CultureTimelineScroll decades={decades} sectionTitle={timelineTitle} />

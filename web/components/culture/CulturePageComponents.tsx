@@ -42,11 +42,76 @@ export function CultureStyles() {
   return (
     <style jsx global>{`
       @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
+
+      /* ── Core Palette ───────────────────────────────────────────── */
       .culture-bg { background-color: #0C0907; }
       .culture-cream-bg { background-color: #F5EDD8; }
       .culture-red { color: #E8391B; }
       .font-editorial { font-family: 'EB Garamond', 'Playfair Display', Georgia, serif; }
 
+      /* ── Typography Utilities ────────────────────────────────────── */
+      .culture-text-hero {
+        font-family: 'Bebas Neue', Impact, sans-serif;
+        font-size: clamp(56px, 9vw, 130px);
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        line-height: 0.92;
+        text-transform: uppercase;
+      }
+      .culture-text-label {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: rgba(245, 237, 216, 0.45);
+      }
+      .culture-text-metadata {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: rgba(245, 237, 216, 0.55);
+      }
+
+      /* ── Dot Grid Canvas ────────────────────────────────────────── */
+      .culture-dot-canvas {
+        background-image: radial-gradient(rgba(255,215,0,0.06) 1px, transparent 1px);
+        background-size: 24px 24px;
+      }
+
+      /* ── Glassmorphism ──────────────────────────────────────────── */
+      .culture-glass {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.06);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      /* ── Gradient Border ────────────────────────────────────────── */
+      .culture-gradient-border {
+        position: relative;
+      }
+      .culture-gradient-border::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(135deg, rgba(255,215,0,0) 0%, rgba(255,215,0,0.12) 50%, rgba(255,215,0,0) 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        pointer-events: none;
+      }
+      .culture-gradient-border:hover::before {
+        opacity: 1;
+      }
+
+      /* ── Marquee Animations ─────────────────────────────────────── */
       @keyframes marquee-left {
         0% { transform: translate3d(0, 0, 0); }
         100% { transform: translate3d(-50%, 0, 0); }
@@ -56,18 +121,56 @@ export function CultureStyles() {
         100% { transform: translate3d(0, 0, 0); }
       }
       .animate-marquee-left {
-        animation: marquee-left 45s linear infinite;
+        animation: marquee-left 50s linear infinite;
       }
       .animate-marquee-right {
-        animation: marquee-right 45s linear infinite;
+        animation: marquee-right 50s linear infinite;
       }
 
+      /* ── Entry Animations ───────────────────────────────────────── */
       @keyframes fadeInUp {
-        from { opacity: 0; transform: translate3d(0, 20px, 0); }
+        from { opacity: 0; transform: translate3d(0, 24px, 0); }
         to { opacity: 1; transform: translate3d(0, 0, 0); }
       }
       .animate-fade-in-up {
         animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      /* ── Gold Shimmer Accent ────────────────────────────────────── */
+      @keyframes goldShimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+      }
+      .culture-gold-shimmer {
+        background: linear-gradient(90deg, transparent 0%, rgba(255,215,0,0.08) 50%, transparent 100%);
+        background-size: 200% 100%;
+        animation: goldShimmer 6s ease-in-out infinite;
+      }
+
+      /* ── Film Grain Scanline ────────────────────────────────────── */
+      .culture-scanline {
+        background: repeating-linear-gradient(
+          to bottom,
+          transparent,
+          transparent 2px,
+          rgba(0,0,0,0.03) 2px,
+          rgba(0,0,0,0.03) 4px
+        );
+        pointer-events: none;
+      }
+
+      /* ── Section Transition Fade ────────────────────────────────── */
+      .culture-section-fade-top {
+        background: linear-gradient(to bottom, #0C0907 0%, transparent 100%);
+      }
+      .culture-section-fade-bottom {
+        background: linear-gradient(to top, #0C0907 0%, transparent 100%);
+      }
+      .gradient-dark-to-cream {
+        background: linear-gradient(to bottom, #0C0907 0%, #F5EDD8 100%);
+      }
+      .gradient-cream-to-dark {
+        background: linear-gradient(to bottom, #F5EDD8 0%, #0C0907 100%);
       }
     `}</style>
   );
@@ -122,13 +225,20 @@ export function CultureFilmstripHero({
       id="culture-hero"
       className="relative min-h-[100dvh] w-full overflow-hidden culture-bg"
     >
-      {/* Filmstrip mosaic grid */}
+      {/* Filmstrip mosaic grid — staggered entrance */}
       <div className="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-0">
         {FILMSTRIP_IMAGES.map((img, i) => (
           <motion.div
             key={i}
             className="relative overflow-hidden"
             style={{ y: yOffsets[i] }}
+            initial={{ opacity: 0, scale: 1.15 }}
+            animate={{ opacity: 1, scale: 1.1 }}
+            transition={{
+              duration: 1.4,
+              delay: 0.1 + i * 0.12,
+              ease: [0.16, 1, 0.3, 1] as const,
+            }}
           >
             <Image
               src={img.src}
@@ -144,48 +254,68 @@ export function CultureFilmstripHero({
         ))}
       </div>
 
-      {/* Dark gradient overlay — bottom 60% */}
+      {/* Deep cinematic gradient overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(12,9,7,0.1) 0%, rgba(12,9,7,0.3) 30%, rgba(12,9,7,0.85) 60%, rgba(12,9,7,0.98) 80%, #0C0907 100%)",
+            "linear-gradient(to bottom, rgba(12,9,7,0.15) 0%, rgba(12,9,7,0.25) 20%, rgba(12,9,7,0.7) 50%, rgba(12,9,7,0.95) 75%, #0C0907 100%)",
+        }}
+      />
+
+      {/* Radial vignette for cinematic depth */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at center, transparent 30%, rgba(12,9,7,0.6) 100%)",
         }}
       />
 
       {/* Film grain texture overlay */}
-      <div className="absolute inset-0 bg-opening-noise opacity-30 pointer-events-none" />
+      <div className="absolute inset-0 bg-opening-noise opacity-25 pointer-events-none" />
+
+      {/* Dot-grid texture overlay */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-40 pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-end min-h-[100dvh] px-6 sm:px-8 lg:px-16 pb-16 md:pb-24">
+      <div className="relative z-10 flex flex-col justify-end min-h-[100dvh] px-6 sm:px-8 lg:px-16 pb-20 md:pb-32">
         {/* Eyebrow */}
         <motion.p
-          className="font-body text-[11px] sm:text-xs uppercase tracking-[0.3em] text-glory-gold mb-5 font-semibold"
+          className="culture-text-label text-glory-gold/80 mb-6"
+          style={{ letterSpacing: "0.35em" }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] as const }}
+          transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] as const }}
         >
           {eyebrow}
         </motion.p>
 
-        {/* Main Title */}
+        {/* Main Title — monumental */}
         <motion.h1
-          className="font-hero text-white leading-[0.9] mb-6"
-          style={{ fontSize: "clamp(48px, 10vw, 140px)", letterSpacing: "0.02em" }}
-          initial={{ opacity: 0, y: 40 }}
+          className="culture-text-hero text-white mb-8"
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] as const }}
+          transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
         >
           <span className="block">{titleLine1}</span>
-          <span className="block text-glory-gold">{titleLine2}</span>
+          <span className="block text-white/20">{titleLine2}</span>
         </motion.h1>
+
+        {/* Gold accent divider */}
+        <motion.div
+          className="w-20 h-px bg-gradient-to-r from-glory-gold to-glory-gold/0 mb-8"
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ scaleX: 1, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.2, ease: [0.25, 0.1, 0.25, 1] as const }}
+          style={{ transformOrigin: "left" }}
+        />
 
         {/* Deck */}
         <motion.p
-          className="font-editorial text-[#F5EDD8]/80 italic text-lg sm:text-xl lg:text-2xl max-w-3xl leading-relaxed"
+          className="font-editorial text-[#F5EDD8]/70 italic text-lg sm:text-xl lg:text-2xl max-w-3xl leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
+          transition={{ duration: 0.8, delay: 1.1, ease: [0.25, 0.1, 0.25, 1] as const }}
         >
           {deck}
         </motion.p>
@@ -322,26 +452,29 @@ interface CultureNumbersStripProps {
 
 export function CultureNumbersStrip({ stats }: CultureNumbersStripProps) {
   return (
-    <section id="culture-stats" className="culture-bg py-16 md:py-20">
-      <div className="mx-auto max-w-7xl px-6 sm:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-4">
+    <section id="culture-stats" className="culture-bg border-t border-white/5">
+      <div className="mx-auto max-w-[1440px]">
+        <div className="grid grid-cols-2 md:grid-cols-5 border-b border-white/5">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
-              className="text-center"
+              className="relative border-r border-white/5 last:border-r-0 p-8 md:p-12 flex flex-col group"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{
                 duration: 0.6,
-                delay: i * 0.1,
+                delay: i * 0.08,
                 ease: [0.25, 0.1, 0.25, 1] as const,
               }}
             >
-              <p className="font-hero text-glory-gold text-3xl sm:text-4xl md:text-5xl mb-2 tabular-nums">
+              {/* Hover gold accent top line */}
+              <div className="absolute top-0 left-0 w-0 h-px bg-glory-gold/60 group-hover:w-full transition-all duration-700" />
+              <p className="text-[clamp(28px,4vw,52px)] font-extralight tracking-tighter text-white mb-4 leading-none tabular-nums">
                 {stat.value}
               </p>
-              <p className="font-body text-[#F5EDD8]/60 text-xs sm:text-sm uppercase tracking-wider font-medium">
+              <div className="h-px w-8 bg-white/10 mb-4" />
+              <p className="culture-text-label text-[10px] leading-relaxed">
                 {stat.label}
               </p>
             </motion.div>
@@ -360,11 +493,14 @@ interface CultureThesisBlockProps {
 
 export function CultureThesisBlock({ thesis }: CultureThesisBlockProps) {
   return (
-    <section id="culture-thesis" className="culture-bg py-20 md:py-32">
-      <div className="mx-auto max-w-[700px] px-6 sm:px-8">
+    <section id="culture-thesis" className="relative culture-bg py-28 md:py-40 overflow-hidden">
+      {/* Dot-grid background texture */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-30 pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-[760px] px-6 sm:px-8">
         {/* Pull Quote */}
         <motion.blockquote
-          className="relative text-center mb-12"
+          className="relative text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
@@ -372,26 +508,35 @@ export function CultureThesisBlock({ thesis }: CultureThesisBlockProps) {
         >
           {/* Decorative opening quote */}
           <span
-            className="block font-editorial text-glory-gold/20 text-[120px] leading-none select-none -mb-12"
+            className="block font-editorial text-glory-gold/15 text-[140px] leading-none select-none -mb-14"
             aria-hidden="true"
           >
             &ldquo;
           </span>
 
-          {/* Gold bar */}
+          {/* Gold rule above */}
           <motion.div
-            className="w-16 h-0.5 bg-glory-gold mx-auto mb-8"
+            className="w-20 h-px bg-gradient-to-r from-transparent via-glory-gold to-transparent mx-auto mb-10"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const, delay: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const, delay: 0.2 }}
           />
 
-          <p className="font-editorial italic text-[#F5EDD8] text-2xl sm:text-3xl lg:text-4xl leading-[1.5] mb-6">
+          <p className="font-editorial italic text-[#F5EDD8] text-2xl sm:text-3xl lg:text-[2.6rem] leading-[1.5] mb-8">
             &ldquo;{thesis.pullQuote}&rdquo;
           </p>
 
-          <cite className="not-italic font-body text-glory-gold text-sm uppercase tracking-[0.2em] font-semibold">
+          {/* Gold rule below */}
+          <motion.div
+            className="w-12 h-px bg-glory-gold/40 mx-auto mb-6"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const, delay: 0.3 }}
+          />
+
+          <cite className="not-italic culture-text-metadata text-glory-gold/80 tracking-[0.25em] text-[11px]">
             — {thesis.attribution}
           </cite>
         </motion.blockquote>
@@ -400,7 +545,7 @@ export function CultureThesisBlock({ thesis }: CultureThesisBlockProps) {
         {thesis.paragraphs.map((p, i) => (
           <motion.p
             key={i}
-            className="font-editorial text-[#F5EDD8]/70 text-lg leading-[1.8] mb-6 last:mb-0"
+            className="font-editorial text-[#F5EDD8]/65 text-lg sm:text-xl leading-[1.85] mb-8 last:mb-0"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
@@ -469,20 +614,24 @@ interface CulturePillarsStripProps {
 
 export function CulturePillarsStrip({ pillars }: CulturePillarsStripProps) {
   return (
-    <section id="culture-pillars" className="culture-bg py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6 sm:px-8">
-        {/* Section title & Header */}
-        <div className="mb-16 text-left">
-          <span className="font-body text-glory-gold text-xs font-semibold uppercase tracking-[0.2em] block mb-3">
+    <section id="culture-pillars" className="relative culture-bg py-32 md:py-48 overflow-hidden">
+      {/* Dot-grid background */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-20 pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
+        {/* Section header — monumental typography */}
+        <div className="mb-24 text-center">
+          <span className="culture-text-label text-glory-gold/70 block mb-6" style={{ letterSpacing: "0.5em" }}>
             THE SOFT POWER ARSENAL
           </span>
-          <h2 className="font-editorial text-3xl sm:text-4xl md:text-5xl text-[#F5EDD8] leading-tight">
-            Dimensions of Global Influence
+          <h2 className="culture-text-hero text-white">
+            <span className="block">DIMENSIONS OF</span>
+            <span className="block text-white/20">GLOBAL INFLUENCE</span>
           </h2>
         </div>
 
         {/* Cinematic Bento-style pillars grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {pillars.map((pillar, i) => {
             const scheme = PILLAR_GLOW_SCHEMES[i % PILLAR_GLOW_SCHEMES.length];
 
@@ -490,19 +639,22 @@ export function CulturePillarsStrip({ pillars }: CulturePillarsStripProps) {
               <div
                 key={i}
                 className={cn(
-                  "relative overflow-hidden rounded-2xl border border-white/[0.04] bg-white/[0.01] p-6 md:p-8 flex flex-col justify-between group shadow-2xl transition-all duration-500 hover:-translate-y-1.5 hover:bg-white/[0.02] min-h-[220px] opacity-0 animate-fade-in-up",
+                  "relative overflow-hidden rounded-xl border border-white/[0.05] bg-white/[0.015] p-6 md:p-8 flex flex-col justify-between group transition-all duration-500 hover:-translate-y-1 hover:bg-white/[0.03] min-h-[240px] opacity-0 animate-fade-in-up culture-gradient-border",
                   scheme.border
                 )}
                 style={{
                   animationDelay: `${i * 80}ms`,
                 }}
               >
+                {/* Dot-grid texture inside card */}
+                <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none rounded-xl" />
+
                 {/* Glowing pools at top right */}
-                <div className={cn("absolute -right-16 -top-16 w-36 h-36 rounded-full bg-gradient-to-br filter blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none", scheme.color)} />
+                <div className={cn("absolute -right-16 -top-16 w-36 h-36 rounded-full bg-gradient-to-br filter blur-3xl opacity-0 group-hover:opacity-80 transition-opacity duration-700 pointer-events-none", scheme.color)} />
                 
                 {/* Top Row: Domain name + Emoji Container */}
                 <div className="flex items-center justify-between w-full mb-8 relative z-10">
-                  <span className="font-body text-[10px] sm:text-xs tracking-[0.25em] text-[#F5EDD8]/40 group-hover:text-[#F5EDD8]/80 transition-colors duration-300 font-bold uppercase">
+                  <span className="culture-text-label text-[10px] group-hover:text-[#F5EDD8]/70 transition-colors duration-300">
                     {pillar.domain}
                   </span>
                   <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-sm group-hover:scale-110 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300 select-none">
@@ -512,10 +664,11 @@ export function CulturePillarsStrip({ pillars }: CulturePillarsStripProps) {
 
                 {/* Bottom content: Huge metric + Label */}
                 <div className="flex flex-col items-start mt-auto relative z-10">
-                  <span className="font-editorial italic text-4xl sm:text-5xl text-[#F5EDD8] group-hover:text-white transition-colors duration-300 tracking-tight leading-none">
+                  <span className="text-[clamp(32px,4vw,48px)] font-extralight tracking-tighter text-[#F5EDD8] group-hover:text-white transition-colors duration-300 leading-none">
                     {pillar.stat}
                   </span>
-                  <span className="font-body text-xs text-[#F5EDD8]/40 group-hover:text-[#F5EDD8]/70 transition-colors duration-300 font-medium leading-relaxed mt-3">
+                  <div className="h-px w-8 bg-white/10 mt-3 mb-2 group-hover:w-12 group-hover:bg-glory-gold/30 transition-all duration-500" />
+                  <span className="culture-text-label text-[10px] group-hover:text-[#F5EDD8]/60 transition-colors duration-300 leading-relaxed">
                     {pillar.statLabel}
                   </span>
                 </div>
@@ -635,28 +788,39 @@ function BentoCard({ card, isAlt }: { card: CultureSubpage; isAlt?: boolean }) {
         src={imgSrc}
         alt={card.title}
         fill
-        className="object-cover transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
+        className="object-cover transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] grayscale group-hover:grayscale-0 group-hover:scale-105"
         sizes="(max-width: 768px) 280px, 40vw"
         placeholder="blur"
         blurDataURL={BLUR_PLACEHOLDER}
       />
 
-      {/* Vignette */}
+      {/* Deep vignette */}
       <div
-        className="absolute inset-0 transition-opacity duration-500"
+        className="absolute inset-0 transition-opacity duration-700"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(12,9,7,0.15) 0%, rgba(12,9,7,0.55) 50%, rgba(12,9,7,0.92) 100%)",
+            "linear-gradient(to bottom, rgba(12,9,7,0.1) 0%, rgba(12,9,7,0.45) 40%, rgba(12,9,7,0.92) 100%)",
+        }}
+      />
+
+      {/* Inner shadow for depth */}
+      <div className="absolute inset-0 rounded-xl shadow-[inset_0_0_60px_rgba(0,0,0,0.4)] pointer-events-none" />
+
+      {/* Light sweep shine on hover */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+        style={{
+          background: "linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.04) 50%, transparent 70%)",
         }}
       />
 
       {/* Hover gold border */}
-      <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-glory-gold/50 transition-colors duration-500 pointer-events-none" />
+      <div className="absolute inset-0 rounded-xl border border-transparent group-hover:border-glory-gold/40 transition-colors duration-500 pointer-events-none" />
 
       {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-between p-5 sm:p-6 z-10">
         {/* Top — category label */}
-        <p className="font-hero text-glory-gold text-[10px] sm:text-[11px] uppercase tracking-[0.2em]">
+        <p className="culture-text-label text-glory-gold/80 text-[10px]" style={{ letterSpacing: "0.3em" }}>
           {isAlt ? card.category.replace("Food", "Kitchen") : card.category}
         </p>
 
@@ -666,10 +830,10 @@ function BentoCard({ card, isAlt }: { card: CultureSubpage; isAlt?: boolean }) {
             {isAlt ? "The American Kitchen" : card.title}
           </h3>
           <div className="flex items-baseline gap-2">
-            <span className="font-hero text-glory-gold text-lg tabular-nums">
+            <span className="text-lg font-extralight tracking-tight text-white tabular-nums">
               {card.stat}
             </span>
-            <span className="font-body text-[#F5EDD8]/50 text-[10px] uppercase tracking-wider">
+            <span className="culture-text-label text-[9px] text-[#F5EDD8]/40">
               {card.statLabel}
             </span>
           </div>
@@ -693,11 +857,16 @@ interface CultureFreeMarketStripProps {
 
 export function CultureFreeMarketStrip({ arguments_, sectionTitle }: CultureFreeMarketStripProps) {
   return (
-    <section id="culture-argument" className="culture-cream-bg py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-6 sm:px-8">
+    <section id="culture-argument" className="relative culture-cream-bg py-28 md:py-40 overflow-hidden">
+      {/* Parchment texture overlay */}
+      <div className="absolute inset-0 bg-parchment-texture pointer-events-none" />
+      {/* Gold gradient top border */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/30 to-transparent" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
         {/* Section label */}
         <motion.p
-          className="font-hero text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/40 mb-10 font-semibold text-center"
+          className="font-body text-[11px] uppercase tracking-[0.4em] text-[#0C0907]/35 mb-16 font-bold text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -706,10 +875,11 @@ export function CultureFreeMarketStrip({ arguments_, sectionTitle }: CultureFree
           {sectionTitle}
         </motion.p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10">
           {arguments_.map((arg, i) => (
             <motion.div
               key={i}
+              className="border-l-2 border-[#C9A84C]/25 pl-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
@@ -719,13 +889,10 @@ export function CultureFreeMarketStrip({ arguments_, sectionTitle }: CultureFree
                 ease: [0.25, 0.1, 0.25, 1] as const,
               }}
             >
-              {/* Gold accent line */}
-              <div className="w-10 h-0.5 bg-[#C9A84C] mb-5" />
-
-              <h3 className="font-hero text-[#0C0907] text-lg uppercase tracking-wider mb-3">
+              <h3 className="font-body text-[#0C0907] text-xs font-bold uppercase tracking-[0.2em] mb-4">
                 {arg.title}
               </h3>
-              <p className="font-editorial text-[#0C0907]/70 text-base leading-[1.7]">
+              <p className="font-editorial text-[#0C0907]/65 text-base leading-[1.75]">
                 {arg.body}
               </p>
             </motion.div>
@@ -747,10 +914,13 @@ interface CultureRadarTeaserProps {
 
 export function CultureRadarTeaser({ data, headline, ctaLabel, ctaHref }: CultureRadarTeaserProps) {
   return (
-    <section id="culture-radar" className="culture-bg py-16 md:py-24 border-t border-white/5">
-      <div className="mx-auto max-w-4xl px-6 sm:px-8">
+    <section id="culture-radar" className="relative culture-bg py-24 md:py-32 border-t border-white/5 overflow-hidden">
+      {/* Dot-grid background */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-20 pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-4xl px-6 sm:px-8">
         <motion.h2
-          className="font-editorial italic text-[#F5EDD8] text-2xl sm:text-3xl text-center mb-12 leading-relaxed"
+          className="font-editorial italic text-[#F5EDD8] text-2xl sm:text-3xl text-center mb-16 leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -768,7 +938,7 @@ export function CultureRadarTeaser({ data, headline, ctaLabel, ctaHref }: Cultur
         >
           <ResponsiveContainer width="100%" height={420}>
             <RadarChart data={data} cx="50%" cy="50%" outerRadius="70%">
-              <PolarGrid stroke="rgba(255,255,255,0.08)" />
+              <PolarGrid stroke="rgba(255,255,255,0.06)" />
               <PolarAngleAxis
                 dataKey="domain"
                 tick={{ fill: "#F5EDD8", fontSize: 11, fontFamily: "Inter" }}
@@ -785,36 +955,37 @@ export function CultureRadarTeaser({ data, headline, ctaLabel, ctaHref }: Cultur
                 dataKey="USA"
                 stroke="#FFD700"
                 fill="#FFD700"
-                fillOpacity={0.25}
-                strokeWidth={2}
+                fillOpacity={0.2}
+                strokeWidth={2.5}
               />
               <Radar
                 name="UK"
                 dataKey="UK"
-                stroke="rgba(148,163,184,0.5)"
-                fill="rgba(148,163,184,0.08)"
+                stroke="rgba(148,163,184,0.4)"
+                fill="rgba(148,163,184,0.06)"
                 strokeWidth={1}
               />
               <Radar
                 name="France"
                 dataKey="France"
-                stroke="rgba(148,163,184,0.4)"
-                fill="rgba(148,163,184,0.05)"
+                stroke="rgba(148,163,184,0.35)"
+                fill="rgba(148,163,184,0.04)"
                 strokeWidth={1}
               />
               <Radar
                 name="Japan"
                 dataKey="Japan"
-                stroke="rgba(148,163,184,0.35)"
-                fill="rgba(148,163,184,0.04)"
+                stroke="rgba(148,163,184,0.3)"
+                fill="rgba(148,163,184,0.03)"
                 strokeWidth={1}
               />
               <Legend
                 wrapperStyle={{
-                  paddingTop: "20px",
-                  fontSize: "12px",
+                  paddingTop: "24px",
+                  fontSize: "11px",
                   fontFamily: "Inter",
                   color: "#F5EDD8",
+                  letterSpacing: "0.05em",
                 }}
               />
             </RadarChart>
@@ -822,7 +993,7 @@ export function CultureRadarTeaser({ data, headline, ctaLabel, ctaHref }: Cultur
         </motion.div>
 
         <motion.div
-          className="text-center mt-8"
+          className="text-center mt-10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -830,7 +1001,7 @@ export function CultureRadarTeaser({ data, headline, ctaLabel, ctaHref }: Cultur
         >
           <Link
             href={ctaHref}
-            className="font-body text-glory-gold hover:text-glory-gold/80 text-sm font-semibold tracking-wider uppercase transition-colors"
+            className="culture-text-metadata text-glory-gold/80 hover:text-glory-gold text-[11px] tracking-[0.2em] transition-colors"
           >
             {ctaLabel} →
           </Link>
@@ -859,9 +1030,12 @@ export function CultureQuoteCarousel({ quotes }: CultureQuoteCarouselProps) {
   }, [advance]);
 
   return (
-    <section id="culture-quotes" className="culture-bg py-20 md:py-28 border-t border-white/5">
-      <div className="mx-auto max-w-3xl px-6 sm:px-8 text-center">
-        <div className="relative min-h-[260px] flex items-center justify-center">
+    <section id="culture-quotes" className="relative culture-bg py-28 md:py-36 border-t border-white/5 overflow-hidden">
+      {/* Dot-grid background */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-3xl px-6 sm:px-8 text-center">
+        <div className="relative min-h-[300px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.blockquote
               key={active}
@@ -871,18 +1045,26 @@ export function CultureQuoteCarousel({ quotes }: CultureQuoteCarouselProps) {
               transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const }}
               className="absolute inset-0 flex flex-col items-center justify-center"
             >
-              {/* Gold bar */}
-              <div className="w-12 h-0.5 bg-glory-gold mb-8" />
+              {/* Decorative quotation mark */}
+              <span
+                className="font-editorial text-glory-gold/10 text-[80px] leading-none select-none -mb-6"
+                aria-hidden="true"
+              >
+                &ldquo;
+              </span>
+
+              {/* Gold gradient bar */}
+              <div className="w-16 h-px bg-gradient-to-r from-transparent via-glory-gold to-transparent mb-8" />
 
               <p className="font-editorial italic text-[#F5EDD8] text-xl sm:text-2xl lg:text-3xl leading-[1.6] mb-8 max-w-2xl">
                 &ldquo;{quotes[active].text}&rdquo;
               </p>
 
               <footer>
-                <cite className="not-italic font-body text-glory-gold text-sm font-semibold uppercase tracking-[0.15em] block mb-1">
+                <cite className="not-italic culture-text-metadata text-glory-gold/80 tracking-[0.2em] text-[11px] block mb-1">
                   — {quotes[active].author}
                 </cite>
-                <span className="font-body text-[#F5EDD8]/40 text-xs">
+                <span className="culture-text-label text-[10px] text-[#F5EDD8]/35">
                   {quotes[active].role}
                 </span>
               </footer>
@@ -890,18 +1072,18 @@ export function CultureQuoteCarousel({ quotes }: CultureQuoteCarouselProps) {
           </AnimatePresence>
         </div>
 
-        {/* Dot indicators */}
-        <div className="flex items-center justify-center gap-2 mt-8">
+        {/* Dot indicators with smoother active state */}
+        <div className="flex items-center justify-center gap-2.5 mt-10">
           {quotes.map((_, i) => (
             <button
               key={i}
               onClick={() => setActive(i)}
               aria-label={`Quote ${i + 1}`}
               className={cn(
-                "w-2 h-2 rounded-full transition-all duration-300",
+                "h-1.5 rounded-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
                 i === active
-                  ? "bg-glory-gold w-6"
-                  : "bg-white/20 hover:bg-white/40",
+                  ? "bg-glory-gold w-8"
+                  : "bg-white/15 hover:bg-white/30 w-1.5",
               )}
             />
           ))}
@@ -1083,8 +1265,8 @@ export function CultureViewportQuote({ quote, bgImageSrc }: CultureViewportQuote
     offset: ["start end", "end end"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1.0]);
-  const opacity = useTransform(scrollYProgress, [0.1, 0.7, 1.0], [0.3, 0.8, 1.0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.08, 1.0]);
+  const opacity = useTransform(scrollYProgress, [0.1, 0.6, 1.0], [0.2, 0.85, 1.0]);
 
   return (
     <section
@@ -1095,38 +1277,47 @@ export function CultureViewportQuote({ quote, bgImageSrc }: CultureViewportQuote
       <motion.div style={{ scale }} className="absolute inset-0 w-full h-full pointer-events-none">
         <Image
           src={bgImageSrc}
-          alt="Bono quote background"
+          alt="Quote background"
           fill
           sizes="100vw"
-          className="object-cover brightness-[0.2] contrast-[1.1]"
+          className="object-cover brightness-[0.18] contrast-[1.1]"
           priority={false}
         />
       </motion.div>
 
-      {/* Aesthetic Overlay Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+      {/* Dot-grid texture */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-30 pointer-events-none" />
+
+      {/* Film-grain noise */}
+      <div className="absolute inset-0 bg-opening-noise opacity-20 pointer-events-none" />
+
+      {/* Cinematic vignette */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0C0907] via-transparent to-[#0C0907] pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%)" }}
+      />
 
       {/* Content Panel */}
       <motion.div
         style={{ opacity }}
         className="relative z-10 max-w-5xl mx-auto flex flex-col items-center justify-center"
       >
-        <span className="font-body text-glory-gold/80 text-xs sm:text-sm uppercase tracking-[0.25em] font-semibold mb-6 sm:mb-8 block">
+        <span className="culture-text-label text-glory-gold/70 mb-8 sm:mb-10 block" style={{ letterSpacing: "0.4em" }}>
           THE AMERICAN ESSENCE
         </span>
 
-        <h2 className="font-editorial italic text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-relaxed tracking-wide mb-8 sm:mb-12 max-w-4xl mx-auto px-4">
+        <h2 className="font-editorial italic text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-relaxed tracking-wide mb-10 sm:mb-14 max-w-4xl mx-auto px-4">
           &ldquo;{quote.text}&rdquo;
         </h2>
 
-        <div className="w-16 h-0.5 bg-glory-gold/60 mb-6 sm:mb-8" />
+        <div className="w-20 h-px bg-gradient-to-r from-transparent via-glory-gold/60 to-transparent mb-8" />
 
         <footer>
-          <cite className="not-italic font-body text-glory-gold text-sm sm:text-base font-semibold uppercase tracking-[0.15em] block mb-2">
+          <cite className="not-italic culture-text-metadata text-glory-gold/90 tracking-[0.2em] text-[11px] block mb-2">
             — {quote.author}
           </cite>
-          <span className="font-body text-[#F5EDD8]/50 text-xs sm:text-sm">
+          <span className="culture-text-label text-[10px] text-[#F5EDD8]/40">
             {quote.role}
           </span>
         </footer>
@@ -1158,28 +1349,31 @@ export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimeline
   };
 
   return (
-    <section className="culture-bg py-20 md:py-28 border-y border-white/5 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 mb-12 flex justify-between items-end">
+    <section className="relative culture-bg py-28 md:py-36 border-y border-white/5 overflow-hidden">
+      {/* Dot-grid background */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 mb-16 flex justify-between items-end">
         <div>
-          <span className="font-body text-glory-gold text-xs font-semibold uppercase tracking-[0.2em] block mb-2">
+          <span className="culture-text-label text-glory-gold/70 block mb-4" style={{ letterSpacing: "0.4em" }}>
             CHRONOLOGY OF INFLUENCE
           </span>
-          <h2 className="font-editorial text-3xl sm:text-4xl md:text-5xl text-[#F5EDD8]">
-            {sectionTitle}
+          <h2 className="culture-text-hero text-white" style={{ fontSize: "clamp(40px, 7vw, 90px)" }}>
+            <span className="block">{sectionTitle}</span>
           </h2>
         </div>
 
         <div className="flex gap-2">
           <button
             onClick={scrollLeft}
-            className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-[#F5EDD8] hover:border-glory-gold hover:text-glory-gold transition-colors text-lg"
+            className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center text-[#F5EDD8]/60 hover:border-glory-gold/50 hover:text-glory-gold transition-all duration-300 text-sm"
             aria-label="Scroll Left"
           >
             ←
           </button>
           <button
             onClick={scrollRight}
-            className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-[#F5EDD8] hover:border-glory-gold hover:text-glory-gold transition-colors text-lg"
+            className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center text-[#F5EDD8]/60 hover:border-glory-gold/50 hover:text-glory-gold transition-all duration-300 text-sm"
             aria-label="Scroll Right"
           >
             →
@@ -1189,7 +1383,7 @@ export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimeline
 
       <div
         ref={containerRef}
-        className="flex gap-6 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-none px-6 sm:px-8 md:px-16 lg:px-24 pb-6"
+        className="relative z-10 flex gap-5 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-none px-6 sm:px-8 md:px-16 lg:px-24 pb-6"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {decades.map((dec, idx) => {
@@ -1199,13 +1393,13 @@ export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimeline
           return (
             <div
               key={dec.year}
-              className="flex-shrink-0 w-[80vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] snap-start bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden group hover:border-glory-gold/40 transition-all duration-500 flex flex-col justify-between"
+              className="flex-shrink-0 w-[80vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] snap-start bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden group hover:border-glory-gold/30 transition-all duration-500 flex flex-col justify-between culture-gradient-border"
             >
               <div className="p-6 md:p-8 flex flex-col gap-2">
-                <span className="font-body text-7xl md:text-8xl font-black text-white/5 group-hover:text-glory-gold/10 transition-colors duration-500 leading-none">
+                <span className="font-body text-7xl md:text-8xl font-black text-white/[0.03] group-hover:text-glory-gold/8 transition-colors duration-500 leading-none">
                   {dec.year}
                 </span>
-                <h3 className="font-editorial italic text-xl md:text-2xl text-glory-gold group-hover:text-white transition-colors duration-300">
+                <h3 className="font-editorial italic text-xl md:text-2xl text-[#F5EDD8]/80 group-hover:text-white transition-colors duration-300">
                   {dec.title}
                 </h3>
               </div>
@@ -1216,13 +1410,13 @@ export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimeline
                   alt={dec.title}
                   fill
                   sizes="(max-width: 768px) 80vw, 30vw"
-                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0C0907] via-transparent to-transparent opacity-80" />
               </div>
 
-              <div className="p-6 md:p-8 border-t border-white/5 bg-black/20">
-                <p className="font-body text-[#F5EDD8]/70 text-sm sm:text-base leading-relaxed">
+              <div className="p-6 md:p-8 border-t border-white/5 bg-black/30">
+                <p className="font-body text-[#F5EDD8]/60 text-sm leading-relaxed">
                   {dec.sentence}
                 </p>
               </div>
@@ -1355,8 +1549,11 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
     : "A curated archive of landmark cultural exports that defined global creative expression.";
 
   return (
-    <section className="culture-bg py-20 md:py-28">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center">
+    <section className="relative culture-bg py-28 md:py-36 overflow-hidden">
+      {/* Dot-grid background */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 text-center">
         {/* Title Block */}
         <motion.div
           className="max-w-3xl mx-auto mb-16"
@@ -1637,7 +1834,7 @@ export function CultureLivingMediaWall() {
     <section className="relative w-full h-screen bg-black overflow-hidden select-none flex items-center justify-center">
       {/* Full-Viewport Shifting Grid */}
       <div
-        className="grid gap-2 p-2 w-full h-full grid-flow-dense"
+        className="grid gap-1.5 p-1.5 w-full h-full grid-flow-dense"
         style={{
           gridTemplateColumns: screenSize === 'mobile' ? 'repeat(4, minmax(0, 1fr))' :
                                screenSize === 'tablet' ? 'repeat(6, minmax(0, 1fr))' :
@@ -1663,7 +1860,21 @@ export function CultureLivingMediaWall() {
       {/* Ambient Dark Overlay to make the grid feel cohesive */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none opacity-80" />
       <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black pointer-events-none opacity-80" />
-      <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+      <div className="absolute inset-0 bg-black/25 pointer-events-none" />
+
+      {/* Centered floating typography overlay */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+        <div className="text-center">
+          <p className="culture-text-label text-white/15 mb-4" style={{ letterSpacing: "0.6em", fontSize: "10px" }}>CULTURAL ARTIFACTS</p>
+          <h2 className="font-hero text-white/[0.06] leading-none" style={{ fontSize: "clamp(60px, 12vw, 180px)", letterSpacing: "0.06em" }}>THE ARCHIVE</h2>
+        </div>
+      </div>
+
+      {/* Gold radial glow in center */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at center, rgba(255,215,0,0.03) 0%, transparent 50%)" }}
+      />
     </section>
   );
 }
