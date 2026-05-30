@@ -111,7 +111,7 @@ export function GlobalBasesHero({
       />
       <div className="absolute inset-x-0 bottom-0 h-64 bg-[linear-gradient(180deg,transparent,#000)]" />
 
-      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-6 py-24 text-center">
+      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-6 pt-28 pb-16 text-center md:py-24">
         <div className="font-mono text-[10px] font-bold uppercase tracking-[0.5em] text-zinc-400">
           {isRo ? "REȚEA GLOBALĂ DE BAZE A STATELOR UNITE" : "UNITED STATES GLOBAL BASE NETWORK"}
         </div>

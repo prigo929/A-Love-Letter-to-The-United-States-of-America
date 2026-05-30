@@ -139,9 +139,9 @@ export function MilStyles() {
 
       .mil-text-label {
         font-family: var(--font-hero);
-        font-size: 16px;
+        font-size: clamp(12px, 2.5vw, 16px);
         font-weight: 900;
-        letter-spacing: 0.35em;
+        letter-spacing: clamp(0.15em, 1.5vw, 0.35em);
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.9);
       }
@@ -1050,7 +1050,7 @@ export function ParallaxMilitaryHero({
               transition: { staggerChildren: 0.12, delayChildren: 0.2 }
             }
           }}
-          className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
+          className="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-28 pb-16 text-center md:pt-0 md:pb-0"
           style={{ opacity: textOpacity, y: textY }}
         >
           {/* Tagline */}
@@ -1059,7 +1059,7 @@ export function ParallaxMilitaryHero({
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
             }}
-            className="mil-text-label mb-8 tracking-[0.5em]"
+            className="mil-text-label mb-8 tracking-[0.2em] md:tracking-[0.5em]"
           >
             {tagline}
           </motion.p>
@@ -1181,12 +1181,12 @@ export function VideoMilitaryHero({
           initial="hidden"
           animate="visible"
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12, delayChildren: 0.3 } } }}
-          className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
+          className="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-28 pb-16 text-center md:pt-0 md:pb-0"
           style={{ opacity: textOpacity, y: textY }}
         >
           <motion.p
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-            className="mil-text-label mb-8 tracking-[0.5em]"
+            className="mil-text-label mb-8 tracking-[0.2em] md:tracking-[0.5em]"
           >
             {tagline}
           </motion.p>

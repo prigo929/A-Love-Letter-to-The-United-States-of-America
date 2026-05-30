@@ -88,9 +88,9 @@ export function NatStyles() {
 
       .nat-text-label {
         font-family: var(--font-hero);
-        font-size: 16px;
+        font-size: clamp(12px, 2.5vw, 16px);
         font-weight: 900;
-        letter-spacing: 0.15em;
+        letter-spacing: clamp(0.1em, 1.2vw, 0.15em);
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.85);
       }
@@ -222,7 +222,7 @@ export function NatureHeroCrossfade({ children }: { children: React.ReactNode })
       </div>
 
       {/* Content overlay */}
-      <div className="relative z-20 flex h-screen flex-col justify-end pb-24 pt-48">
+      <div className="relative z-20 flex h-screen flex-col justify-end pb-16 pt-28 md:pb-24 md:pt-48">
         <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">{children}</div>
       </div>
     </section>
@@ -583,7 +583,7 @@ export function NatureSubPageHero({ imageSrc, imageAlt, label, children }: {
       </div>
 
       {/* Content overlay */}
-      <div className="relative z-20 flex h-screen flex-col justify-end pb-24 pt-48">
+      <div className="relative z-20 flex h-screen flex-col justify-end pb-16 pt-28 md:pb-24 md:pt-48">
         <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">{children}</div>
       </div>
     </section>
