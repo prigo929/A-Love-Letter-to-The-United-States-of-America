@@ -194,6 +194,126 @@ export function CultureFilmstripHero({
   );
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// 1.2 VideoCultureHero — cinematic looping video hero (Times Square)
+// ─────────────────────────────────────────────────────────────────────────────
+
+export interface VideoCultureHeroProps {
+  videoSrc: string;
+  eyebrow: string;
+  titleLine1: string;
+  titleLine2: string;
+  deck: string;
+}
+
+export function VideoCultureHero({
+  videoSrc,
+  eyebrow,
+  titleLine1,
+  titleLine2,
+  deck,
+}: VideoCultureHeroProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+      video.play().catch((err) => {
+        console.warn("Autoplay block in VideoCultureHero:", err);
+      });
+    }
+  }, [videoSrc]);
+
+  const videoOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const videoScale  = useTransform(scrollYProgress, [0, 0.55], [1.0, 1.18]);
+  const videoY      = useTransform(scrollYProgress, [0, 1],    ["0%", "22%"]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.2, 0.5], [1, 1, 0]);
+  const textY       = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
+
+  return (
+    <div ref={containerRef} className="relative h-[180dvh] bg-black">
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
+        {/* Looping video layer */}
+        <motion.div
+          className="absolute inset-0 will-change-transform"
+          style={{ opacity: videoOpacity, scale: videoScale, y: videoY }}
+        >
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="absolute inset-0 h-full w-full object-cover brightness-[0.4] saturate-[0.8]"
+          >
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+        </motion.div>
+
+        {/* Dark gradient overlay — bottom 60% and top vignette */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(12,9,7,0.1) 0%, rgba(12,9,7,0.3) 30%, rgba(12,9,7,0.85) 60%, rgba(12,9,7,0.98) 80%, #0C0907 100%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse at center, transparent 30%, rgba(12,9,7,0.7) 100%)" }}
+        />
+
+        {/* Film grain texture overlay */}
+        <div className="absolute inset-0 bg-opening-noise opacity-30 pointer-events-none" />
+
+        {/* Content */}
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12, delayChildren: 0.3 } } }}
+          className="relative z-10 flex h-full flex-col justify-end px-6 sm:px-8 lg:px-16 pb-12 pt-20"
+          style={{ opacity: textOpacity, y: textY }}
+        >
+          {/* Eyebrow */}
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } }}
+            className="font-body text-[11px] sm:text-xs uppercase tracking-[0.3em] text-glory-gold mb-4 md:mb-5 font-semibold"
+          >
+            {eyebrow}
+          </motion.p>
+
+          {/* Main Title */}
+          <div className="overflow-hidden py-2">
+            <motion.h1
+              variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } } }}
+              className="font-hero text-white leading-[0.9] mb-4 md:mb-6"
+              style={{ fontSize: "clamp(48px, 10vw, 140px)", letterSpacing: "0.02em" }}
+            >
+              <span className="block">{titleLine1}</span>
+              <span className="block text-glory-gold">{titleLine2}</span>
+            </motion.h1>
+          </div>
+
+          {/* Deck */}
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } }}
+            className="font-editorial text-[#F5EDD8]/80 italic text-lg sm:text-xl lg:text-2xl max-w-3xl leading-relaxed"
+          >
+            {deck}
+          </motion.p>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
 // ─── §2 — Numbers Strip ──────────────────────────────────────────────────────
 
 interface CultureNumbersStripProps {
@@ -843,7 +963,7 @@ export function CultureLoopingVideoSection() {
         playsInline
         className="w-full h-full object-cover pointer-events-none brightness-[0.8]"
       >
-        <source src="/videos/Times Square Aerial.mp4" type="video/mp4" />
+        <source src="/videos/times-square-aerial.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </section>

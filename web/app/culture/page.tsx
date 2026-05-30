@@ -33,7 +33,7 @@ import {
 
 import {
   CultureStyles,
-  CultureFilmstripHero,
+  VideoCultureHero,
   CultureNumbersStrip,
   CultureThesisBlock,
   CulturePillarsStrip,
@@ -109,8 +109,9 @@ export default async function CulturePage() {
     <main className="min-h-screen">
       <CultureStyles />
 
-      {/* §1 — Filmstrip Hero */}
-      <CultureFilmstripHero
+      {/* §1 — Video Culture Hero */}
+      <VideoCultureHero
+        videoSrc="/videos/times-square-aerial.mp4"
         eyebrow={hero.eyebrow}
         titleLine1={hero.titleLine1}
         titleLine2={hero.titleLine2}
