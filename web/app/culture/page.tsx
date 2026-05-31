@@ -29,6 +29,8 @@ import {
   CULTURE_RADAR_DATA,
   getCultureDecades,
   getSoftPowerBudget,
+  getCultureMusicGenres,
+  getCultureCulinaryPillars,
 } from "@/lib/data/culture-data";
 
 import {
@@ -48,6 +50,8 @@ import {
   CultureSoftPowerBudget,
   CultureArchiveVault,
   CultureLivingMediaWall,
+  CultureMusicSection,
+  CultureCulinarySection,
 } from "@/components/culture/CulturePageComponents";
 
 import { NewsletterSection } from "@/components/sections/NewsletterSection";
@@ -81,6 +85,8 @@ export default async function CulturePage() {
   const quotes = getCultureQuotes(locale);
   const decades = getCultureDecades(locale);
   const budget = getSoftPowerBudget(locale);
+  const musicGenres = getCultureMusicGenres(locale);
+  const culinaryPillars = getCultureCulinaryPillars(locale);
 
   // Localized copy
   const hero = {
@@ -101,6 +107,8 @@ export default async function CulturePage() {
     ? "Pe fiecare dimensiune a influenței culturale, o singură națiune conduce."
     : "Across every dimension of cultural influence, one nation leads.";
   const radarCta = isRo ? "Explorează analiza completă" : "Explore the full analysis";
+  const musicTitle = isRo ? "Muzica de Export: Rădăcini Regionale" : "The Sound of Export: Regional Roots";
+  const culinaryTitle = isRo ? "Estetica Gustului Democrat: Diners, Smoke & Systems" : "The Democratic Palate: Diners, Smoke & Systems";
 
   const bonoQuote = quotes.find((q) => q.author === "Bono") || quotes[1];
 
@@ -144,6 +152,9 @@ export default async function CulturePage() {
       {/* Soft Power Budget Scale Comparison (Cream Section) */}
       <CultureSoftPowerBudget budgetLines={budget} />
 
+      {/* §18 — Culinary Pillars Section (Cream Section) */}
+      <CultureCulinarySection pillars={culinaryPillars} sectionTitle={culinaryTitle} isRo={isRo} />
+
       {/* Transition: Cream to Dark */}
       <div className="h-24 w-full gradient-cream-to-dark" />
 
@@ -155,6 +166,9 @@ export default async function CulturePage() {
 
       {/* Living Media Wall Grid (40 Shifting Cultural Artifacts) */}
       <CultureLivingMediaWall />
+
+      {/* §17 — Music Origins Section */}
+      <CultureMusicSection genres={musicGenres} sectionTitle={musicTitle} isRo={isRo} />
 
       {/* §7 — Radar Chart Teaser */}
       <CultureRadarTeaser

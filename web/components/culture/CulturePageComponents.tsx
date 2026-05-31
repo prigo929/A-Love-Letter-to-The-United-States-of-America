@@ -34,6 +34,8 @@ import type {
   CultureRadarPoint,
   CultureDecade,
   SoftPowerBudgetLine,
+  CultureMusicGenre,
+  CultureCulinaryPillar,
 } from "@/lib/data/culture-data";
 
 // ─── Culture Palette Injection ───────────────────────────────────────────────
@@ -920,10 +922,17 @@ function BentoCard({ card, isAlt }: { card: CultureSubpage; isAlt?: boolean }) {
         </p>
 
         {/* Bottom — title + stat */}
-        <div>
+        <div className="flex flex-col justify-end">
           <h3 className="font-hero text-white text-xl sm:text-2xl lg:text-3xl leading-tight mb-2">
             {isAlt ? "The American Kitchen" : card.title}
           </h3>
+          
+          {card.description && (
+            <p className="font-editorial text-[#F5EDD8]/70 text-xs sm:text-sm leading-relaxed mb-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 max-h-0 group-hover:max-h-20 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden">
+              {isAlt ? "From diners and Southern BBQ to global fast food, American culinary exports represent optimized consistency and convenience." : card.description}
+            </p>
+          )}
+
           <div className="flex items-baseline gap-2">
             <span className="text-lg font-extralight tracking-tight text-white tabular-nums">
               {card.stat}
@@ -2008,6 +2017,209 @@ export function CultureLivingMediaWall() {
         className="absolute inset-0 pointer-events-none"
         style={{ background: "radial-gradient(ellipse at center, rgba(255,215,0,0.03) 0%, transparent 50%)" }}
       />
+    </section>
+  );
+}
+
+// ─── §17 — Music Origins Section ─────────────────────────────────────────────
+
+interface CultureMusicSectionProps {
+  genres: CultureMusicGenre[];
+  sectionTitle: string;
+  isRo: boolean;
+}
+
+export function CultureMusicSection({ genres, sectionTitle, isRo }: CultureMusicSectionProps) {
+  const musicImages: Record<string, string> = {
+    jazzClub: SITE_IMAGES.culture.jazzClub,
+    music: SITE_IMAGES.culture.guitarNeon,
+    concertCrowd: SITE_IMAGES.culture.concertCrowd,
+    overview: SITE_IMAGES.culture.timesSquareIconic,
+  };
+
+  return (
+    <section id="culture-music" className="relative culture-bg py-28 md:py-36 overflow-hidden border-t border-white/5">
+      <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-20">
+          <motion.p
+            className="culture-text-label text-glory-gold"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 0.6, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {isRo ? "RĂDĂCINI REGIONALE · IMPACT PLANETAR" : "REGIONAL ROOTS · PLANETARY IMPACT"}
+          </motion.p>
+          <motion.h2
+            className="culture-text-hero text-white mt-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            {sectionTitle}
+          </motion.h2>
+          <div className="w-24 h-px bg-gradient-to-r from-transparent via-glory-gold to-transparent mx-auto mt-6" />
+        </div>
+
+        {/* Music Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {genres.map((g, i) => {
+            const imgSrc = musicImages[g.imageKey] || SITE_IMAGES.culture.jazzClub;
+            return (
+              <motion.div
+                key={g.genre}
+                className="group relative h-[420px] rounded-xl overflow-hidden culture-gradient-border border border-white/5 flex flex-col justify-end p-6"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+              >
+                {/* Background Image */}
+                <Image
+                  src={imgSrc}
+                  alt={g.genre}
+                  fill
+                  className="object-cover transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] grayscale group-hover:grayscale-0 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                  placeholder="blur"
+                  blurDataURL={BLUR_PLACEHOLDER}
+                />
+
+                {/* Vignette Overlay */}
+                <div
+                  className="absolute inset-0 transition-opacity duration-700"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom, rgba(12,9,7,0.1) 0%, rgba(12,9,7,0.5) 45%, rgba(12,9,7,0.95) 100%)",
+                  }}
+                />
+
+                {/* Light sweep sweep on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: "linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.03) 50%, transparent 70%)" }} />
+
+                {/* Card Content */}
+                <div className="relative z-10 flex flex-col h-full justify-between">
+                  <div className="flex justify-between items-start">
+                    <p className="culture-text-label text-[9px] text-glory-gold/80" style={{ letterSpacing: "0.25em" }}>
+                      {g.city}
+                    </p>
+                    {/* Tiny decorative vinyl disc */}
+                    <div className="w-5 h-5 rounded-full border border-white/20 bg-black flex items-center justify-center animate-spin" style={{ animationDuration: "6s", animationPlayState: "paused" }}>
+                      <div className="w-1.5 h-1.5 rounded-full bg-glory-gold/60" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="font-hero text-2xl lg:text-3xl text-white tracking-wide mb-3">
+                      {g.genre}
+                    </h3>
+                    <p className="font-editorial text-xs sm:text-[13px] text-[#F5EDD8]/70 leading-relaxed">
+                      {g.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── §18 — Culinary Pillars Section ──────────────────────────────────────────
+
+interface CultureCulinarySectionProps {
+  pillars: CultureCulinaryPillar[];
+  sectionTitle: string;
+  isRo: boolean;
+}
+
+export function CultureCulinarySection({ pillars, sectionTitle, isRo }: CultureCulinarySectionProps) {
+  const culinaryImages: Record<string, string> = {
+    diner: SITE_IMAGES.culture.melsDriveIn,
+    burger: SITE_IMAGES.culture.burger,
+    food: SITE_IMAGES.culture.mcDonalds,
+  };
+
+  return (
+    <section id="culture-culinary" className="relative culture-cream-bg py-28 md:py-36 overflow-hidden border-t border-black/5 text-[#0C0907]">
+      <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-20">
+          <motion.p
+            className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 0.6, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {isRo ? "SISTEME DE ALIMENTAȚIE · ARTA COMUNITĂȚII" : "FOOD SYSTEMS · ART OF COMMUNITY"}
+          </motion.p>
+          <motion.h2
+            className="culture-text-hero text-[#0C0907] mt-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            {sectionTitle}
+          </motion.h2>
+          <div className="w-24 h-px bg-[#0C0907]/10 mx-auto mt-6" />
+        </div>
+
+        {/* Culinary Pillars Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
+          {pillars.map((p, i) => {
+            const imgSrc = culinaryImages[p.imageKey] || SITE_IMAGES.culture.burger;
+            return (
+              <motion.div
+                key={p.title}
+                className="group flex flex-col bg-white/40 backdrop-blur-md rounded-2xl p-5 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.02)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.06)] transition-all duration-500 hover:-translate-y-1.5"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+              >
+                {/* Image Box */}
+                <div className="relative h-[220px] rounded-xl overflow-hidden mb-6 shadow-inner border border-[#0C0907]/5">
+                  <Image
+                    src={imgSrc}
+                    alt={p.title}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 30vw"
+                    placeholder="blur"
+                    blurDataURL={BLUR_PLACEHOLDER}
+                  />
+                  <div className="absolute inset-0 bg-[#0C0907]/5 group-hover:bg-[#0C0907]/0 transition-colors duration-500" />
+                </div>
+
+                {/* Subtitle / Eyebrow */}
+                <p className="culture-text-label text-[10px] text-glory-gold tracking-[0.25em] mb-2 font-bold">
+                  {p.subtitle}
+                </p>
+
+                {/* Title */}
+                <h3 className="font-editorial text-2xl font-semibold mb-4 text-[#0C0907]">
+                  {p.title}
+                </h3>
+
+                {/* Body Paragraph */}
+                <p className="font-editorial text-sm text-[#0C0907]/70 leading-relaxed">
+                  {parseTextWithHighlights(p.body)}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }

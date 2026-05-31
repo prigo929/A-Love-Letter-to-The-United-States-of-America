@@ -31,6 +31,7 @@ export interface CultureSubpage {
   href: string;
   /** "large" | "medium" | "small" — controls bento sizing */
   size: "large" | "medium" | "small";
+  description: string;
 }
 
 export interface CultureArgument {
@@ -146,6 +147,7 @@ const SUBPAGES_EN: CultureSubpage[] = [
     imageKey: "overview",
     href: "#",
     size: "large",
+    description: "How the global export of movies, food, fashion, and technology turned the American lifestyle into the default interface for modern civilization.",
   },
   {
     id: "film",
@@ -156,6 +158,7 @@ const SUBPAGES_EN: CultureSubpage[] = [
     imageKey: "film",
     href: "#",
     size: "small",
+    description: "Hollywood didn't just capture attention — it exported the visual syntax of human dreaming, shaping international narratives and values.",
   },
   {
     id: "sports",
@@ -166,6 +169,7 @@ const SUBPAGES_EN: CultureSubpage[] = [
     imageKey: "sports",
     href: "/culture/american-sports",
     size: "small",
+    description: "From NFL stadium lights to the NBA's global broadcast, American athletics are engineered for high-energy spectacle and massive fandom.",
   },
   {
     id: "entertainment",
@@ -176,6 +180,7 @@ const SUBPAGES_EN: CultureSubpage[] = [
     imageKey: "entertainment",
     href: "#",
     size: "medium",
+    description: "Netflix, Disney, and YouTube dictate global screen time, creating a planetary attention loop built on consumer demand.",
   },
   {
     id: "brands",
@@ -186,6 +191,7 @@ const SUBPAGES_EN: CultureSubpage[] = [
     imageKey: "brands",
     href: "#",
     size: "medium",
+    description: "Levi's, Coca-Cola, and Apple are more than corporate marks — they represent structural systems of utility, comfort, and status.",
   },
   {
     id: "food",
@@ -196,6 +202,7 @@ const SUBPAGES_EN: CultureSubpage[] = [
     imageKey: "food",
     href: "#",
     size: "medium",
+    description: "The modern franchise model is a food assembly system built on absolute consistency, replicated on every continent.",
   },
   {
     id: "fashion",
@@ -206,6 +213,7 @@ const SUBPAGES_EN: CultureSubpage[] = [
     imageKey: "fashion",
     href: "/culture/american-aesthetics",
     size: "small",
+    description: "Blue jeans, sneakers, and streetwear didn't originate from high-fashion salons; they are the mass-market uniform of global youth culture.",
   },
   {
     id: "music",
@@ -216,6 +224,7 @@ const SUBPAGES_EN: CultureSubpage[] = [
     imageKey: "music",
     href: "#",
     size: "large",
+    description: "Jazz, Blues, Rock, and Hip Hop were competed into existence by private musicians, forming the soundscape of planetary consciousness.",
   },
 ];
 
@@ -229,6 +238,7 @@ const SUBPAGES_RO: CultureSubpage[] = [
     imageKey: "overview",
     href: "#",
     size: "large",
+    description: "Cum exportul global de filme, mâncare, modă și tehnologie a transformat stilul de viață american în interfața implicită a civilizației moderne.",
   },
   {
     id: "film",
@@ -239,6 +249,7 @@ const SUBPAGES_RO: CultureSubpage[] = [
     imageKey: "film",
     href: "#",
     size: "small",
+    description: "Hollywood-ul nu a captat doar atenția — a exportat sintaxa vizuală a viselor umane, modelând narațiunile și valorile internaționale.",
   },
   {
     id: "sports",
@@ -249,6 +260,7 @@ const SUBPAGES_RO: CultureSubpage[] = [
     imageKey: "sports",
     href: "/culture/american-sports",
     size: "small",
+    description: "De la luminile stadioanelor NFL la transmisiunile globale NBA, sportul american este proiectat ca un spectacol de înaltă energie.",
   },
   {
     id: "entertainment",
@@ -259,6 +271,7 @@ const SUBPAGES_RO: CultureSubpage[] = [
     imageKey: "entertainment",
     href: "#",
     size: "medium",
+    description: "Netflix, Disney și YouTube dictează timpul de ecran global, creând o buclă planetară de atenție bazată pe cererea consumatorilor.",
   },
   {
     id: "brands",
@@ -269,6 +282,7 @@ const SUBPAGES_RO: CultureSubpage[] = [
     imageKey: "brands",
     href: "#",
     size: "medium",
+    description: "Levi's, Coca-Cola și Apple sunt mai mult decât mărci comerciale — ele reprezintă sisteme structurale de utilitate, confort și statut.",
   },
   {
     id: "food",
@@ -279,6 +293,7 @@ const SUBPAGES_RO: CultureSubpage[] = [
     imageKey: "food",
     href: "#",
     size: "medium",
+    description: "Modelul modern de franciză este un sistem de asamblare a alimentelor construit pe o consistență absolută, replicat pe fiecare continent.",
   },
   {
     id: "fashion",
@@ -289,6 +304,7 @@ const SUBPAGES_RO: CultureSubpage[] = [
     imageKey: "fashion",
     href: "/culture/american-aesthetics",
     size: "small",
+    description: "Blugii albaștri, sneakerșii și streetwear-ul nu provin din saloanele de modă înaltă; ei sunt uniforma pieței de masă a tineretului global.",
   },
   {
     id: "music",
@@ -299,6 +315,7 @@ const SUBPAGES_RO: CultureSubpage[] = [
     imageKey: "music",
     href: "#",
     size: "large",
+    description: "Jazz-ul, Blues-ul, Rock-ul și Hip Hop-ul au fost create prin competiție de muzicieni privați, formând coloana sonoră a lumii.",
   },
 ];
 
@@ -629,3 +646,129 @@ export const CULTURE_MEDIA_WALL_IMAGES = [
   "/images/culture/Food/American Burger.jpg",
   "/images/culture/Brand Ads/1971 Coca Cola Coke Vintage Print Ad Bottle Glass in Snow Ice Cold.jpg",
 ];
+
+export const BRAND_AD_LOGOS = [
+  { name: "Coca-Cola Ad", file: "1971 Coca Cola Coke Vintage Print Ad Bottle Glass in Snow Ice Cold.jpg" },
+];
+
+// ─── Music Genres regional origins data ──────────────────────────────────────
+
+export interface CultureMusicGenre {
+  city: string;
+  genre: string;
+  description: string;
+  imageKey: string;
+}
+
+const MUSIC_GENRES_EN: CultureMusicGenre[] = [
+  {
+    city: "New Orleans, LA",
+    genre: "Jazz",
+    description: "Born from the fusion of African rhythms and European brass in Congo Square, jazz is the original syncopated soundscape of human freedom.",
+    imageKey: "jazzClub",
+  },
+  {
+    city: "Mississippi Delta",
+    genre: "The Blues",
+    description: "The raw emotional bedrock of modern pop, rock, and soul — expressing sorrow, struggle, and survival through acoustic guitar and voice.",
+    imageKey: "music",
+  },
+  {
+    city: "Memphis & Nashville, TN",
+    genre: "Rock & Country",
+    description: "Where gospel, folk, and rhythm-and-blues collided to spawn Rock & Roll, and where songwriting was refined into a planetary industry.",
+    imageKey: "concertCrowd",
+  },
+  {
+    city: "Bronx, New York",
+    genre: "Hip Hop",
+    description: "Turntables and street block parties in the 1970s transformed spoken word, rhythm, and beat-making into the dominant youth language of the planet.",
+    imageKey: "overview",
+  },
+];
+
+const MUSIC_GENRES_RO: CultureMusicGenre[] = [
+  {
+    city: "New Orleans, LA",
+    genre: "Jazz",
+    description: "Născut din fuziunea ritmurilor africane și a instrumentelor de suflat din alamă europene în Congo Square, jazz-ul este coloana sonoră a libertății.",
+    imageKey: "jazzClub",
+  },
+  {
+    city: "Delta Mississippi",
+    genre: "Blues-ul",
+    description: "Fundația emoțională brută a muzicii pop, rock și soul moderne — exprimând tristețea, lupta și supraviețuirea prin chitară acustică și voce.",
+    imageKey: "music",
+  },
+  {
+    city: "Memphis & Nashville, TN",
+    genre: "Rock & Country",
+    description: "Locul unde gospelul, folclorul și rhythm-and-blues-ul s-au ciocnit pentru a da naștere Rock & Roll-ului, și unde compoziția a devenit o industrie.",
+    imageKey: "concertCrowd",
+  },
+  {
+    city: "Bronx, New York",
+    genre: "Hip Hop",
+    description: "Platanele și petrecerile de cartier din anii '70 au transformat cuvintele rostite, ritmul și beat-making-ul în limbajul dominant al tinerilor de pe planetă.",
+    imageKey: "overview",
+  },
+];
+
+export function getCultureMusicGenres(locale: Locale): CultureMusicGenre[] {
+  return locale === "ro" ? MUSIC_GENRES_RO : MUSIC_GENRES_EN;
+}
+
+// ─── Culinary culture pillars data ──────────────────────────────────────────
+
+export interface CultureCulinaryPillar {
+  title: string;
+  subtitle: string;
+  body: string;
+  imageKey: string;
+}
+
+const CULINARY_PILLARS_EN: CultureCulinaryPillar[] = [
+  {
+    title: "The American Diner",
+    subtitle: "Aesthetics of Comfort",
+    body: "The neon-lit diner with its endless coffee and retro booths is the spatial layout of democratic dining. Open to everyone, serving breakfast at midnight, it represents a casual, shared public comfort.",
+    imageKey: "diner",
+  },
+  {
+    title: "Southern BBQ",
+    subtitle: "The Craft of Slow Smoke",
+    body: "A slow-cooked fire tradition born of regional identity, wood smoke, and community gatherings. From Texas brisket to Carolina pulled pork, BBQ is a pure craft of patience and flavor.",
+    imageKey: "burger",
+  },
+  {
+    title: "The Global Franchise",
+    subtitle: "Exporting Operational Systems",
+    body: "McDonald's, Starbucks, and Coca-Cola didn't just export menu items — they exported a perfect, predictable system of operation. A franchise in Tokyo delivers the exact same experience as one in Chicago.",
+    imageKey: "food",
+  },
+];
+
+const CULINARY_PILLARS_RO: CultureCulinaryPillar[] = [
+  {
+    title: "Diner-ul American",
+    subtitle: "Estetica Confortului",
+    body: "Diner-ul luminat de neon, cu cafeaua sa nesfârșită și separeurile retro, este designul spațial al mesei democratice. Deschis oricui, servind micul dejun la miezul nopții, reprezintă un confort public împărtășit.",
+    imageKey: "diner",
+  },
+  {
+    title: "Southern BBQ",
+    subtitle: "Arta Fumului Lent",
+    body: "O tradiție a focului lent, născută din identitatea regională, fumul de lemn și adunările comunității. De la brisket-ul din Texas la pulled pork-ul din Carolina, BBQ-ul este o artă a răbdării și a savorii.",
+    imageKey: "burger",
+  },
+  {
+    title: "Franciza Globală",
+    subtitle: "Exportul de Sisteme de Servicii",
+    body: "McDonald's, Starbucks și Coca-Cola nu au exportat doar meniuri — au exportat un sistem perfect și previzibil de funcționare. O franciză din Tokyo oferă exact aceeași experiență ca una din Chicago.",
+    imageKey: "food",
+  },
+];
+
+export function getCultureCulinaryPillars(locale: Locale): CultureCulinaryPillar[] {
+  return locale === "ro" ? CULINARY_PILLARS_RO : CULINARY_PILLARS_EN;
+}
