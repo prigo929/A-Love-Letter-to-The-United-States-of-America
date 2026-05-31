@@ -42,7 +42,6 @@ import {
   CultureRadarTeaser,
   CultureQuoteCarousel,
   CultureParallaxDivider,
-  CultureLoopingVideoSection,
   CultureBrandLogosMarquee,
   CultureViewportQuote,
   CultureTimelineScroll,
@@ -135,9 +134,6 @@ export default async function CulturePage() {
 
       {/* §5 — Editorial Bento Grid */}
       <CultureBentoGrid subpages={subpages} sectionTitle={gridTitle} />
-
-      {/* Looping Video Section — Times Square Aerial */}
-      <CultureLoopingVideoSection />
 
       {/* Transition: Dark to Cream */}
       <div className="h-24 w-full gradient-dark-to-cream" />

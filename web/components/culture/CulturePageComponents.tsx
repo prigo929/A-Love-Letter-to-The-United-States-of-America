@@ -1133,27 +1133,6 @@ export function CultureParallaxDivider({
   );
 }
 
-// ─── §11 — Looping Video Section ─────────────────────────────────────────────
-
-export function CultureLoopingVideoSection() {
-  return (
-    <section className="relative w-full h-[40vh] overflow-hidden culture-bg">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="w-full h-full object-cover pointer-events-none brightness-[0.5] saturate-[0.8]"
-      >
-        <source src="/videos/times-square-aerial.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      {/* Seamless fading overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0C0907] via-transparent to-[#0C0907] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(12,9,7,0.7)_100%)] pointer-events-none" />
-    </section>
-  );
-}
 
 // ─── §12 — Brand Logos Marquee ───────────────────────────────────────────────
 
