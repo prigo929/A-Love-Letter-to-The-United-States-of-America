@@ -2141,7 +2141,7 @@ interface CultureCulinarySectionProps {
 
 export function CultureCulinarySection({ pillars, sectionTitle, isRo }: CultureCulinarySectionProps) {
   const culinaryImages: Record<string, string> = {
-    diner: SITE_IMAGES.culture.melsDriveIn,
+    diner: SITE_IMAGES.culture.flosV8,
     burger: SITE_IMAGES.culture.burger,
     food: SITE_IMAGES.culture.mcDonalds,
   };
