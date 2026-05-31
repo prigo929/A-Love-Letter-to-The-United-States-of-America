@@ -452,7 +452,7 @@ interface CultureNumbersStripProps {
 
 export function CultureNumbersStrip({ stats }: CultureNumbersStripProps) {
   return (
-    <section id="culture-stats" className="culture-bg border-t border-white/5">
+    <section id="culture-stats" className="culture-bg">
       <div className="mx-auto max-w-[1440px]">
         <div className="grid grid-cols-2 md:grid-cols-5 border-b border-white/5">
           {stats.map((stat, i) => (
@@ -860,8 +860,6 @@ export function CultureFreeMarketStrip({ arguments_, sectionTitle }: CultureFree
     <section id="culture-argument" className="relative culture-cream-bg py-28 md:py-40 overflow-hidden">
       {/* Parchment texture overlay */}
       <div className="absolute inset-0 bg-parchment-texture pointer-events-none" />
-      {/* Gold gradient top border */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/30 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
         {/* Section label */}
@@ -914,7 +912,7 @@ interface CultureRadarTeaserProps {
 
 export function CultureRadarTeaser({ data, headline, ctaLabel, ctaHref }: CultureRadarTeaserProps) {
   return (
-    <section id="culture-radar" className="relative culture-bg py-24 md:py-32 border-t border-white/5 overflow-hidden">
+    <section id="culture-radar" className="relative culture-bg py-24 md:py-32 overflow-hidden">
       {/* Dot-grid background */}
       <div className="absolute inset-0 culture-dot-canvas opacity-20 pointer-events-none" />
 
@@ -1030,7 +1028,7 @@ export function CultureQuoteCarousel({ quotes }: CultureQuoteCarouselProps) {
   }, [advance]);
 
   return (
-    <section id="culture-quotes" className="relative culture-bg py-28 md:py-36 border-t border-white/5 overflow-hidden">
+    <section id="culture-quotes" className="relative culture-bg py-28 md:py-36 overflow-hidden">
       {/* Dot-grid background */}
       <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none" />
 
@@ -1328,7 +1326,7 @@ export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimeline
   };
 
   return (
-    <section className="relative culture-bg py-28 md:py-36 border-y border-white/5 overflow-hidden">
+    <section className="relative culture-bg py-28 md:py-36 overflow-hidden">
       {/* Dot-grid background */}
       <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none" />
 
@@ -1415,7 +1413,7 @@ interface CultureSoftPowerBudgetProps {
 
 export function CultureSoftPowerBudget({ budgetLines }: CultureSoftPowerBudgetProps) {
   return (
-    <section className="culture-cream-bg py-24 md:py-32 border-y border-black/5 text-[#0C0907]">
+    <section className="culture-cream-bg py-24 md:py-32 text-[#0C0907]">
       <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center flex flex-col gap-16 md:gap-24">
         {budgetLines.map((line, idx) => {
           const isUsa = line.label.includes("American") || line.label.includes("private") || line.label.includes("SUA") || line.label.includes("private");
