@@ -84,11 +84,11 @@ export interface CultureThesis {
 
 const THESIS_EN: CultureThesis = {
   pullQuote:
-    "The genius of America is that it turned culture into a market — and then gave that market to the world.",
+    "The [hl]genius of America[/hl] is that it turned culture into a market — and then gave that market to the world.",
   attribution: "Editorial Voice",
   paragraphs: [
-    "Hollywood, Nike, McDonald's, Jazz, and the iPhone weren't planned by a ministry of culture. They were competed into existence by private actors in open markets — studios bidding for audiences, brands racing for shelf space, musicians chasing the crowd. The entire cultural arsenal of the United States is a byproduct of capitalism, not a policy outcome.",
-    "This is what makes American soft power structurally different from every other nation's. France has a Ministry of Culture. China has a propaganda department. America has a consumer market of 330 million people whose preferences, broadcast at planetary scale through English and the internet, set the default template for how the world eats, dresses, watches, listens, and dreams.",
+    "Hollywood, Nike, McDonald's, Jazz, and the iPhone weren't planned by a ministry of culture. They were competed into existence by [hl]private actors in open markets[/hl] — studios bidding for audiences, brands racing for shelf space, musicians chasing the crowd. The entire cultural arsenal of the United States is a [hl]byproduct of capitalism, not a policy outcome[/hl].",
+    "This is what makes American soft power [hl]structurally different[/hl] from every other nation's. France has a Ministry of Culture. China has a propaganda department. America has a consumer market of 330 million people whose preferences, broadcast at planetary scale through English and the internet, [hl]set the default template[/hl] for how the world eats, dresses, watches, listens, and dreams.",
   ],
 };
 
@@ -97,8 +97,8 @@ const THESIS_RO: CultureThesis = {
     "Geniul Americii este că a transformat cultura într-o piață — și apoi a dat acea piață întregii lumi.",
   attribution: "Voce Editorială",
   paragraphs: [
-    "Hollywood, Nike, McDonald's, Jazz-ul și iPhone-ul nu au fost planificate de un minister al culturii. Au fost create prin competiție de actori privați pe piețe deschise — studiouri care licitau pentru audiențe, branduri care se întreceau pentru rafturile magazinelor, muzicieni care urmăreau publicul. Întregul arsenal cultural al Statelor Unite este un produs secundar al capitalismului, nu un rezultat de politică publică.",
-    "Asta face puterea soft americană structural diferită de cea a oricărei alte națiuni. Franța are un Minister al Culturii. China are un departament de propagandă. America are o piață de consumatori de 330 de milioane de oameni ale căror preferințe, difuzate la scară planetară prin engleză și internet, stabilesc șablonul implicit pentru cum mănâncă, se îmbracă, privește, ascultă și visează lumea.",
+    "Hollywood, Nike, McDonald's, Jazz-ul și iPhone-ul nu au fost planificate de un minister al culturii. Au fost create prin competiție de [hl]actori privați pe piețe deschise[/hl] — studiouri care licitau pentru audiențe, branduri care se întreceau pentru rafturile magazinelor, muzicieni care urmăreau publicul. Întregul arsenal cultural al Statelor Unite este un [hl]produs secundar al capitalismului, nu un rezultat de politică publică[/hl].",
+    "Asta face puterea soft americană [hl]structural diferită[/hl] de cea a oricărei alte națiuni. Franța are un Minister al Culturii. China are un departament de propagandă. America are o piață de consumatori de 330 de milioane de oameni ale căror preferințe, difuzate la scară planetară prin engleză și internet, [hl]stabilesc șablonul implicit[/hl] pentru cum mănâncă, se îmbracă, privește, ascultă și visează lumea.",
   ],
 };
 
@@ -311,38 +311,38 @@ export function getCultureSubpages(locale: Locale): CultureSubpage[] {
 const ARGUMENTS_EN: CultureArgument[] = [
   {
     title: "Private Innovation",
-    body: "No Ministry of Culture planned Hollywood. It grew from competition between private studios fighting for audiences, talent, and distribution — each failure funding the next breakthrough.",
+    body: "No Ministry of Culture planned Hollywood. It grew from [hl]competition between private studios[/hl] fighting for audiences, talent, and distribution — each failure funding the next breakthrough.",
   },
   {
     title: "Democratic Access",
-    body: "Denim, fast food, and rock music weren't elite products. They were built for mass markets. American culture is structurally populist — designed to scale, not to exclude.",
+    body: "Denim, fast food, and rock music weren't elite products. They were [hl]built for mass markets[/hl]. American culture is structurally populist — designed to scale, not to exclude.",
   },
   {
     title: "Market Scalability",
-    body: "The franchise model — McDonald's, Starbucks, Subway — is an American invention. Culture industrialized. One recipe, ten thousand kitchens, every continent.",
+    body: "The franchise model — McDonald's, Starbucks, Subway — is an American invention. [hl]Culture industrialized[/hl]. One recipe, ten thousand kitchens, every continent.",
   },
   {
     title: "Network Effects",
-    body: "English, the internet, and American brands reinforce each other. Each makes the others more valuable. This self-amplifying loop is the structural engine of soft power.",
+    body: "English, the internet, and American brands reinforce each other. Each makes the others more valuable. This [hl]self-amplifying loop[/hl] is the structural engine of soft power.",
   },
 ];
 
 const ARGUMENTS_RO: CultureArgument[] = [
   {
     title: "Inovație Privată",
-    body: "Niciun Minister al Culturii nu a planificat Hollywood-ul. A crescut din competiția dintre studiouri private care luptau pentru audiențe, talent și distribuție — fiecare eșec finanțând următoarea descoperire.",
+    body: "Niciun Minister al Culturii nu a planificat Hollywood-ul. A crescut din [hl]competiția dintre studiouri private[/hl] care luptau pentru audiențe, talent și distribuție — fiecare eșec finanțând următoarea descoperire.",
   },
   {
     title: "Acces Democratic",
-    body: "Denim-ul, fast food-ul și rock-ul nu erau produse de elită. Au fost construite pentru piețe de masă. Cultura americană este structural populistă — proiectată să se scaleze, nu să excludă.",
+    body: "Denim-ul, fast food-ul și rock-ul nu erau produse de elită. Au fost [hl]construite pentru piețe de masă[/hl]. Cultura americană este structural populistă — proiectată să se scaleze, nu să excludă.",
   },
   {
     title: "Scalabilitate de Piață",
-    body: "Modelul de franciză — McDonald's, Starbucks, Subway — este o invenție americană. Cultura industrializată. O rețetă, zece mii de bucătării, fiecare continent.",
+    body: "Modelul de franciză — McDonald's, Starbucks, Subway — este o invenție americană. [hl]Cultura industrializată[/hl]. O rețetă, zece mii de bucătării, fiecare continent.",
   },
   {
     title: "Efecte de Rețea",
-    body: "Engleza, internetul și brandurile americane se întăresc reciproc. Fiecare îl face pe celălalt mai valoros. Această buclă auto-amplificatoare este motorul structural al puterii soft.",
+    body: "Engleza, internetul și brandurile americane se întăresc reciproc. Fiecare îl face pe celălalt mai valoros. Această [hl]buclă auto-amplificatoare[/hl] este motorul structural al puterii soft.",
   },
 ];
 

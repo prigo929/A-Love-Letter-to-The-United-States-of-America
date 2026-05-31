@@ -4,7 +4,7 @@
 // "Life Magazine meets The Atlantic" — the warmest vertical on the site.
 // ─────────────────────────────────────────────────────────────────────────────
 
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence, useInView, useMotionValue, animate } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState, useEffect, useCallback } from "react";
@@ -173,6 +173,149 @@ export function CultureStyles() {
         background: linear-gradient(to bottom, #F5EDD8 0%, #0C0907 100%);
       }
     `}</style>
+  );
+}
+
+// ─── Vox Aesthetic Utilities ──────────────────────────────────────────────────
+
+export function TextHighlight({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="relative inline-block px-1">
+      <motion.span
+        className="absolute bottom-[2px] left-0 right-0 h-[38%] bg-glory-gold/25 -z-10 origin-left"
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.8, delay: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+      />
+      <span className="relative z-10">{children}</span>
+    </span>
+  );
+}
+
+export function AnimatedNumber({ value }: { value: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-85px" });
+
+  let prefix = "";
+  let num = 0;
+  let suffix = "";
+  let decimals = 0;
+
+  // 1. Check for "X of Y" or "X din Y"
+  const ofMatch = value.match(/^(\d+)(\s+(?:of|din)\s+\d+)$/i);
+  if (ofMatch) {
+    num = parseFloat(ofMatch[1]);
+    suffix = ofMatch[2];
+  } else {
+    // 2. Normalize Romanian decimal separator
+    const cleanVal = value.replace(",", ".");
+    const genericMatch = cleanVal.match(/^([$€]?)([\d.]+)(%?[\s\w+]*)$/);
+    if (genericMatch) {
+      prefix = genericMatch[1];
+      num = parseFloat(genericMatch[2]);
+      suffix = genericMatch[3];
+      if (genericMatch[2].includes(".")) {
+        decimals = genericMatch[2].split(".")[1].length;
+      }
+    } else {
+      return <span>{value}</span>;
+    }
+  }
+
+  const motionValue = useMotionValue(0);
+
+  useEffect(() => {
+    if (inView) {
+      const controls = animate(motionValue, num, {
+        duration: 2.0,
+        ease: [0.25, 0.1, 0.25, 1],
+      });
+      return () => controls.stop();
+    }
+  }, [inView, num, motionValue]);
+
+  const displayValue = useTransform(motionValue, (latest) => {
+    let formattedNum = latest.toFixed(decimals);
+    if (value.includes(",")) {
+      formattedNum = formattedNum.replace(".", ",");
+    }
+    return `${prefix}${formattedNum}${suffix}`;
+  });
+
+  const spanRef = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    return displayValue.on("change", (latest) => {
+      if (spanRef.current) {
+        spanRef.current.textContent = latest;
+      }
+    });
+  }, [displayValue]);
+
+  return (
+    <span ref={ref} className="inline-block">
+      <span ref={spanRef}>{prefix}0{suffix}</span>
+    </span>
+  );
+}
+
+export function parseTextWithHighlights(text: string) {
+  const parts = text.split(/(\[hl\].*?\[\/hl\])/g);
+  return parts.map((part, idx) => {
+    if (part.startsWith("[hl]") && part.endsWith("[/hl]")) {
+      const cleanText = part.slice(4, -5);
+      return <TextHighlight key={idx}>{cleanText}</TextHighlight>;
+    }
+    return part;
+  });
+}
+
+export function CultureWipeTransition({ direction = "to-cream" }: { direction: "to-cream" | "to-dark" }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const isToCream = direction === "to-cream";
+  const fromBg = isToCream ? "bg-[#0C0907]" : "bg-[#F5EDD8]";
+  const toBg = isToCream ? "bg-[#F5EDD8]" : "bg-[#0C0907]";
+
+  // Diagonal wipe using clip-path polygon
+  const clipPath = useTransform(
+    scrollYProgress,
+    [0.15, 0.75],
+    [
+      "polygon(0 0, 0% 0, 0% 100%, 0% 100%)",
+      "polygon(0 0, 110% 0, 100% 100%, 0% 100%)",
+    ]
+  );
+
+  return (
+    <div
+      ref={containerRef}
+      className={`relative h-[55vh] w-full overflow-hidden ${fromBg}`}
+    >
+      <motion.div
+        style={{ clipPath }}
+        className={`absolute inset-0 w-full h-full ${toBg} flex items-center justify-center`}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-center px-6"
+        >
+          <p className={`culture-text-label tracking-[0.3em] text-[10px] sm:text-xs mb-4 ${isToCream ? "text-[#0C0907]/45" : "text-[#F5EDD8]/45"}`}>
+            {isToCream ? "CHAPTER II" : "CHAPTER III"}
+          </p>
+          <h3 className={`font-editorial italic text-3xl sm:text-5xl lg:text-6xl ${isToCream ? "text-[#0C0907]" : "text-[#F5EDD8]"}`}>
+            {isToCream ? "The Engine of Free Enterprise" : "Decades of Global Broadcast"}
+          </h3>
+        </motion.div>
+      </motion.div>
+    </div>
   );
 }
 
@@ -471,7 +614,7 @@ export function CultureNumbersStrip({ stats }: CultureNumbersStripProps) {
               {/* Hover gold accent top line */}
               <div className="absolute top-0 left-0 w-0 h-px bg-glory-gold/60 group-hover:w-full transition-all duration-700" />
               <p className="text-[clamp(28px,4vw,52px)] font-extralight tracking-tighter text-white mb-4 leading-none tabular-nums">
-                {stat.value}
+                <AnimatedNumber value={stat.value} />
               </p>
               <div className="h-px w-8 bg-white/10 mb-4" />
               <p className="culture-text-label text-[10px] leading-relaxed">
@@ -492,72 +635,105 @@ interface CultureThesisBlockProps {
 }
 
 export function CultureThesisBlock({ thesis }: CultureThesisBlockProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  const opacity1 = useTransform(scrollYProgress, [0, 0.25, 0.33], [1, 1, 0]);
+  const y1 = useTransform(scrollYProgress, [0, 0.25, 0.33], [0, 0, -40]);
+
+  const opacity2 = useTransform(scrollYProgress, [0.3, 0.38, 0.58, 0.66], [0, 1, 1, 0]);
+  const y2 = useTransform(scrollYProgress, [0.3, 0.38, 0.58, 0.66], [40, 0, 0, -40]);
+
+  const opacity3 = useTransform(scrollYProgress, [0.63, 0.71, 0.95, 1.0], [0, 1, 1, 1]);
+  const y3 = useTransform(scrollYProgress, [0.63, 0.71], [40, 0]);
+
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    return scrollYProgress.on("change", (latest) => {
+      if (latest < 0.31) {
+        setActiveSlide(0);
+      } else if (latest < 0.64) {
+        setActiveSlide(1);
+      } else {
+        setActiveSlide(2);
+      }
+    });
+  }, [scrollYProgress]);
+
   return (
-    <section id="culture-thesis" className="relative culture-bg py-28 md:py-40 overflow-hidden">
-      {/* Dot-grid background texture */}
-      <div className="absolute inset-0 culture-dot-canvas opacity-30 pointer-events-none" />
+    <section ref={containerRef} id="culture-thesis" className="relative h-[280vh] culture-bg">
+      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+        {/* Dot-grid background texture */}
+        <div className="absolute inset-0 culture-dot-canvas opacity-35 pointer-events-none" />
 
-      <div className="relative z-10 mx-auto max-w-[760px] px-6 sm:px-8">
-        {/* Pull Quote */}
-        <motion.blockquote
-          className="relative text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
-        >
-          {/* Decorative opening quote */}
-          <span
-            className="block font-editorial text-glory-gold/15 text-[140px] leading-none select-none -mb-14"
-            aria-hidden="true"
-          >
-            &ldquo;
-          </span>
+        {/* Narrative side-ticks indicator (Vox-style) */}
+        <div className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 flex flex-col gap-6 z-20">
+          {[0, 1, 2].map((idx) => (
+            <div key={idx} className="flex items-center gap-3 group" style={{ cursor: "pointer" }}>
+              <span className={`text-[10px] font-bold tracking-[0.2em] transition-all duration-300 ${activeSlide === idx ? "text-glory-gold" : "text-white/20"}`}>
+                {`0${idx + 1}`}
+              </span>
+              <div className={`h-px transition-all duration-300 ${activeSlide === idx ? "w-6 bg-glory-gold" : "w-2 bg-white/20"}`} />
+            </div>
+          ))}
+        </div>
 
-          {/* Gold rule above */}
+        {/* Slides Content */}
+        <div className="relative z-10 mx-auto max-w-[800px] px-8 sm:px-12 w-full h-full flex items-center justify-center">
+          {/* Slide 1: Pull Quote */}
           <motion.div
-            className="w-20 h-px bg-gradient-to-r from-transparent via-glory-gold to-transparent mx-auto mb-10"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const, delay: 0.2 }}
-          />
-
-          <p className="font-editorial italic text-[#F5EDD8] text-2xl sm:text-3xl lg:text-[2.6rem] leading-[1.5] mb-8">
-            &ldquo;{thesis.pullQuote}&rdquo;
-          </p>
-
-          {/* Gold rule below */}
-          <motion.div
-            className="w-12 h-px bg-glory-gold/40 mx-auto mb-6"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const, delay: 0.3 }}
-          />
-
-          <cite className="not-italic culture-text-metadata text-glory-gold/80 tracking-[0.25em] text-[11px]">
-            — {thesis.attribution}
-          </cite>
-        </motion.blockquote>
-
-        {/* Editorial paragraphs */}
-        {thesis.paragraphs.map((p, i) => (
-          <motion.p
-            key={i}
-            className="font-editorial text-[#F5EDD8]/65 text-lg sm:text-xl leading-[1.85] mb-8 last:mb-0"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{
-              duration: 0.6,
-              delay: 0.2 + i * 0.15,
-              ease: [0.25, 0.1, 0.25, 1] as const,
-            }}
+            style={{ opacity: opacity1, y: y1, pointerEvents: activeSlide === 0 ? "auto" : "none" }}
+            className="absolute w-full px-8 text-center"
           >
-            {p}
-          </motion.p>
-        ))}
+            <blockquote className="relative">
+              {/* Decorative opening quote */}
+              <span
+                className="block font-editorial text-glory-gold/15 text-[140px] leading-none select-none -mb-14"
+                aria-hidden="true"
+              >
+                &ldquo;
+              </span>
+
+              {/* Gold rule above */}
+              <div className="w-20 h-px bg-gradient-to-r from-transparent via-glory-gold to-transparent mx-auto mb-10" />
+
+              <p className="font-editorial italic text-[#F5EDD8] text-2xl sm:text-4xl lg:text-[2.8rem] leading-[1.45] mb-8">
+                &ldquo;{parseTextWithHighlights(thesis.pullQuote)}&rdquo;
+              </p>
+
+              {/* Gold rule below */}
+              <div className="w-12 h-px bg-glory-gold/40 mx-auto mb-6" />
+
+              <cite className="not-italic culture-text-metadata text-glory-gold/80 tracking-[0.25em] text-[11px]">
+                — {thesis.attribution}
+              </cite>
+            </blockquote>
+          </motion.div>
+
+          {/* Slide 2: Paragraph 1 */}
+          <motion.div
+            style={{ opacity: opacity2, y: y2, pointerEvents: activeSlide === 1 ? "auto" : "none" }}
+            className="absolute w-full px-8 text-center"
+          >
+            <p className="font-editorial text-[#F5EDD8]/80 text-xl sm:text-2xl lg:text-3xl leading-[1.8] max-w-[720px] mx-auto">
+              {parseTextWithHighlights(thesis.paragraphs[0])}
+            </p>
+          </motion.div>
+
+          {/* Slide 3: Paragraph 2 */}
+          <motion.div
+            style={{ opacity: opacity3, y: y3, pointerEvents: activeSlide === 2 ? "auto" : "none" }}
+            className="absolute w-full px-8 text-center"
+          >
+            <p className="font-editorial text-[#F5EDD8]/80 text-xl sm:text-2xl lg:text-3xl leading-[1.8] max-w-[720px] mx-auto">
+              {parseTextWithHighlights(thesis.paragraphs[1])}
+            </p>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -891,7 +1067,7 @@ export function CultureFreeMarketStrip({ arguments_, sectionTitle }: CultureFree
                 {arg.title}
               </h3>
               <p className="font-editorial text-[#0C0907]/65 text-base leading-[1.75]">
-                {arg.body}
+                {parseTextWithHighlights(arg.body)}
               </p>
             </motion.div>
           ))}
@@ -911,6 +1087,26 @@ interface CultureRadarTeaserProps {
 }
 
 export function CultureRadarTeaser({ data, headline, ctaLabel, ctaHref }: CultureRadarTeaserProps) {
+  const chartRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(chartRef, { once: true, margin: "-100px" });
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setHasAnimated(true);
+    }
+  }, [inView]);
+
+  const animatedData = hasAnimated
+    ? data
+    : data.map((d) => ({
+        ...d,
+        USA: 0,
+        UK: 0,
+        France: 0,
+        Japan: 0,
+      }));
+
   return (
     <section id="culture-radar" className="relative culture-bg py-24 md:py-32 overflow-hidden">
       {/* Dot-grid background */}
@@ -928,6 +1124,7 @@ export function CultureRadarTeaser({ data, headline, ctaLabel, ctaHref }: Cultur
         </motion.h2>
 
         <motion.div
+          ref={chartRef}
           className="w-full"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -935,7 +1132,7 @@ export function CultureRadarTeaser({ data, headline, ctaLabel, ctaHref }: Cultur
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
         >
           <ResponsiveContainer width="100%" height={420}>
-            <RadarChart data={data} cx="50%" cy="50%" outerRadius="70%">
+            <RadarChart data={animatedData} cx="50%" cy="50%" outerRadius="70%">
               <PolarGrid stroke="rgba(255,255,255,0.06)" />
               <PolarAngleAxis
                 dataKey="domain"
@@ -955,6 +1152,8 @@ export function CultureRadarTeaser({ data, headline, ctaLabel, ctaHref }: Cultur
                 fill="#FFD700"
                 fillOpacity={0.2}
                 strokeWidth={2.5}
+                isAnimationActive={true}
+                animationDuration={1500}
               />
               <Radar
                 name="UK"
@@ -962,6 +1161,8 @@ export function CultureRadarTeaser({ data, headline, ctaLabel, ctaHref }: Cultur
                 stroke="rgba(148,163,184,0.4)"
                 fill="rgba(148,163,184,0.06)"
                 strokeWidth={1}
+                isAnimationActive={true}
+                animationDuration={1500}
               />
               <Radar
                 name="France"
@@ -969,6 +1170,8 @@ export function CultureRadarTeaser({ data, headline, ctaLabel, ctaHref }: Cultur
                 stroke="rgba(148,163,184,0.35)"
                 fill="rgba(148,163,184,0.04)"
                 strokeWidth={1}
+                isAnimationActive={true}
+                animationDuration={1500}
               />
               <Radar
                 name="Japan"
@@ -976,6 +1179,8 @@ export function CultureRadarTeaser({ data, headline, ctaLabel, ctaHref }: Cultur
                 stroke="rgba(148,163,184,0.3)"
                 fill="rgba(148,163,184,0.03)"
                 strokeWidth={1}
+                isAnimationActive={true}
+                animationDuration={1500}
               />
               <Legend
                 wrapperStyle={{
@@ -1418,6 +1623,8 @@ export function CultureSoftPowerBudget({ budgetLines }: CultureSoftPowerBudgetPr
         {budgetLines.map((line, idx) => {
           const isUsa = line.label.includes("American") || line.label.includes("private") || line.label.includes("SUA") || line.label.includes("private");
           const isRo = line.label.includes("Franța") || line.label.includes("SUA");
+          const isFrance = line.label.includes("France") || line.label.includes("Franța");
+          const isUk = line.label.includes("British") || line.label.includes("Council");
 
           let fullDigits = line.value;
           if (line.value.includes("B") || line.value.includes("Mld")) {
@@ -1428,10 +1635,13 @@ export function CultureSoftPowerBudget({ budgetLines }: CultureSoftPowerBudgetPr
             fullDigits = isRo ? "£900.000.000" : "£900,000,000";
           }
 
+          // Relative target width
+          const barWidth = isUsa ? "100%" : isFrance ? "2.5%" : "1%";
+
           return (
             <motion.div
               key={line.label}
-              className="flex flex-col items-center justify-center"
+              className="flex flex-col items-center justify-center w-full"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -1448,9 +1658,36 @@ export function CultureSoftPowerBudget({ budgetLines }: CultureSoftPowerBudgetPr
                 {fullDigits}
               </span>
 
-              <span className="font-body text-[10px] sm:text-xs tracking-[0.2em] uppercase font-bold opacity-60 max-w-md block">
+              <span className="font-body text-[10px] sm:text-xs tracking-[0.2em] uppercase font-bold opacity-60 max-w-md block mb-4">
                 {line.label}
               </span>
+
+              {/* Visual relative bar */}
+              <div className="w-full max-w-[280px] sm:max-w-md h-2 bg-black/5 rounded-full overflow-hidden relative border border-black/5 mb-2">
+                <motion.div
+                  className={cn(
+                    "h-full rounded-full",
+                    isUsa ? "bg-[#E8391B]" : "bg-black/35"
+                  )}
+                  initial={{ width: 0 }}
+                  whileInView={{ width: barWidth }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, delay: idx * 0.2 + 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                />
+              </div>
+
+              {/* Multiplier tags to show scale context */}
+              {isUsa && (
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 0.75, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: idx * 0.2 + 0.8 }}
+                  className="text-[9px] sm:text-[10px] font-body tracking-[0.1em] uppercase font-bold text-[#E8391B] bg-[#E8391B]/10 px-2.5 py-0.5 rounded-full mt-2"
+                >
+                  {isRo ? "225× mai mare decât bugetul Franței" : "225× larger than France's budget"}
+                </motion.span>
+              )}
 
               {idx < budgetLines.length - 1 && (
                 <div className="w-8 h-px bg-black/10 mt-16 md:mt-24" />
