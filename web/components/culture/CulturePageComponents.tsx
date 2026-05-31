@@ -7,7 +7,7 @@
 import { motion, useScroll, useTransform, AnimatePresence, useInView, useMotionValue, animate } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback, memo } from "react";
 import {
   Radar,
   RadarChart,
@@ -1665,6 +1665,49 @@ interface CultureArchiveVaultProps {
   isRo: boolean;
 }
 
+export const VaultCard = memo(function VaultCard({ item, idx }: { item: ArchiveItem; idx: number }) {
+  const imageSrc = SITE_IMAGES.culture[item.imageKey] || SITE_IMAGES.culture.statueOfLiberty;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: idx * 0.05 }}
+      className="group flex flex-col items-center text-center cursor-pointer"
+    >
+      {/* Poster/Cover Frame */}
+      <div 
+        className="relative aspect-[2/3] w-full overflow-hidden rounded-lg bg-black/40 border border-white/5 shadow-2xl transition-all duration-500 group-hover:border-glory-gold/40 group-hover:shadow-[0_20px_50px_rgba(212,175,55,0.08)] mb-4"
+        style={{ transform: "translate3d(0, 0, 0)" }}
+      >
+        <Image
+          src={imageSrc}
+          alt={item.title}
+          fill
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          className="object-cover grayscale transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:grayscale-0 group-hover:scale-105"
+          style={{ willChange: "transform, filter", transform: "translateZ(0)" }}
+          priority={false}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
+        
+        {/* Visual Year Tag */}
+        <span className="absolute top-3 right-3 bg-black/70 border border-white/10 text-glory-gold font-body text-[9px] tracking-widest font-black py-1 px-2 rounded uppercase pointer-events-none">
+          {item.year}
+        </span>
+      </div>
+
+      {/* Descriptions */}
+      <h3 className="font-editorial italic text-base sm:text-lg text-[#F5EDD8] group-hover:text-glory-gold transition-colors duration-300 mb-1 line-clamp-1">
+        {item.title}
+      </h3>
+      <span className="font-body text-[10px] sm:text-xs text-[#F5EDD8]/45 line-clamp-1 uppercase tracking-widest font-medium">
+        {item.subtitle}
+      </span>
+    </motion.div>
+  );
+});
+
 export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
   const [activeTab, setActiveTab] = useState<"cinema" | "music" | "editorial">("cinema");
 
@@ -1751,45 +1794,13 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
               transition={{ duration: 0.3 }}
               className="col-span-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"
             >
-              {getItems().map((item, idx) => {
-                const imageSrc = SITE_IMAGES.culture[item.imageKey] || SITE_IMAGES.culture.statueOfLiberty;
-
-                return (
-                  <motion.div
-                    key={`${activeTab}-${item.imageKey}`}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: idx * 0.05 }}
-                    className="group flex flex-col items-center text-center cursor-pointer"
-                  >
-                    {/* Poster/Cover Frame */}
-                    <div className="relative aspect-[2/3] w-full overflow-hidden rounded-lg bg-black/40 border border-white/5 shadow-2xl transition-all duration-500 group-hover:border-glory-gold/40 group-hover:shadow-[0_20px_50px_rgba(212,175,55,0.08)] mb-4">
-                      <Image
-                        src={imageSrc}
-                        alt={item.title}
-                        fill
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                        className="object-cover grayscale transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:grayscale-0 group-hover:scale-105"
-                        priority={false}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
-                      
-                      {/* Visual Year Tag */}
-                      <span className="absolute top-3 right-3 bg-black/70 border border-white/10 text-glory-gold font-body text-[9px] tracking-widest font-black py-1 px-2 rounded uppercase pointer-events-none">
-                        {item.year}
-                      </span>
-                    </div>
-
-                    {/* Descriptions */}
-                    <h3 className="font-editorial italic text-base sm:text-lg text-[#F5EDD8] group-hover:text-glory-gold transition-colors duration-300 mb-1 line-clamp-1">
-                      {item.title}
-                    </h3>
-                    <span className="font-body text-[10px] sm:text-xs text-[#F5EDD8]/45 line-clamp-1 uppercase tracking-widest font-medium">
-                      {item.subtitle}
-                    </span>
-                  </motion.div>
-                );
-              })}
+              {getItems().map((item, idx) => (
+                <VaultCard
+                  key={`${activeTab}-${item.imageKey}`}
+                  item={item}
+                  idx={idx}
+                />
+              ))}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -1859,7 +1870,7 @@ interface ShiftingGridCellProps {
   isColor: boolean;
 }
 
-export function ShiftingGridCell({ src, isColor }: ShiftingGridCellProps) {
+export const ShiftingGridCell = memo(function ShiftingGridCell({ src, isColor }: ShiftingGridCellProps) {
   return (
     <div className="relative w-full h-full overflow-hidden bg-black/60 rounded border border-white/[0.03]">
       <AnimatePresence>
@@ -1869,12 +1880,13 @@ export function ShiftingGridCell({ src, isColor }: ShiftingGridCellProps) {
           animate={{ opacity: isColor ? 0.9 : 0.45 }}
           exit={{ 
             opacity: 0, 
-            transition: { duration: 2.0, ease: "easeInOut" } 
+            transition: { duration: 0.8, ease: "easeInOut" } 
           }}
           transition={{
-            opacity: { duration: 2.0, ease: "easeInOut" },
+            opacity: { duration: 0.8, ease: "easeInOut" },
           }}
           className="absolute inset-0 w-full h-full"
+          style={{ willChange: "opacity", transform: "translateZ(0)" }}
         >
           <img
             src={src}
@@ -1893,7 +1905,7 @@ export function ShiftingGridCell({ src, isColor }: ShiftingGridCellProps) {
       </AnimatePresence>
     </div>
   );
-}
+});
 
 export function CultureLivingMediaWall() {
   const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
@@ -1902,6 +1914,8 @@ export function CultureLivingMediaWall() {
   
   const unusedRef = useRef<string[]>([]);
   const usedRef = useRef<string[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { margin: "200px" });
 
   // Detect screen size on client
   useEffect(() => {
@@ -1941,9 +1955,11 @@ export function CultureLivingMediaWall() {
     return newImg;
   }, []);
 
+  const hasImages = visibleImages.length > 0;
+
   // Shifting interval
   useEffect(() => {
-    if (visibleImages.length === 0) return;
+    if (!hasImages || !isInView) return;
 
     const interval = setInterval(() => {
       const spansCount = screenSize === 'mobile' ? 25 : screenSize === 'tablet' ? 30 : 39;
@@ -1964,59 +1980,61 @@ export function CultureLivingMediaWall() {
     }, 1800);
 
     return () => clearInterval(interval);
-  }, [visibleImages, screenSize, getNewImage]);
-
-  if (visibleImages.length === 0) return null;
+  }, [hasImages, screenSize, getNewImage, isInView]);
 
   const spans = screenSize === 'mobile' ? MOBILE_SPANS :
                 screenSize === 'tablet' ? TABLET_SPANS :
                                           DESKTOP_SPANS;
 
   return (
-    <section className="relative w-full h-screen bg-black overflow-hidden select-none flex items-center justify-center">
-      {/* Full-Viewport Shifting Grid */}
-      <div
-        className="grid gap-1.5 p-1.5 w-full h-full grid-flow-dense"
-        style={{
-          gridTemplateColumns: screenSize === 'mobile' ? 'repeat(4, minmax(0, 1fr))' :
-                               screenSize === 'tablet' ? 'repeat(6, minmax(0, 1fr))' :
-                                                         'repeat(8, minmax(0, 1fr))',
-          gridTemplateRows: screenSize === 'mobile' ? 'repeat(8, minmax(0, 1fr))' :
-                            screenSize === 'tablet' ? 'repeat(7, minmax(0, 1fr))' :
-                                                      'repeat(7, minmax(0, 1fr))'
-        }}
-      >
-        {spans.map((spanClass, idx) => (
+    <section ref={sectionRef} className="relative w-full h-screen bg-black overflow-hidden select-none flex items-center justify-center">
+      {visibleImages.length > 0 && (
+        <>
+          {/* Full-Viewport Shifting Grid */}
           <div
-            key={idx}
-            className={cn("w-full h-full relative", spanClass)}
+            className="grid gap-1.5 p-1.5 w-full h-full grid-flow-dense"
+            style={{
+              gridTemplateColumns: screenSize === 'mobile' ? 'repeat(4, minmax(0, 1fr))' :
+                                   screenSize === 'tablet' ? 'repeat(6, minmax(0, 1fr))' :
+                                                             'repeat(8, minmax(0, 1fr))',
+              gridTemplateRows: screenSize === 'mobile' ? 'repeat(8, minmax(0, 1fr))' :
+                                screenSize === 'tablet' ? 'repeat(7, minmax(0, 1fr))' :
+                                                          'repeat(7, minmax(0, 1fr))'
+            }}
           >
-            <ShiftingGridCell
-              src={visibleImages[idx]}
-              isColor={colorStates[idx]}
-            />
+            {spans.map((spanClass, idx) => (
+              <div
+                key={idx}
+                className={cn("w-full h-full relative", spanClass)}
+              >
+                <ShiftingGridCell
+                  src={visibleImages[idx]}
+                  isColor={colorStates[idx]}
+                />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      {/* Ambient Dark Overlay to make the grid feel cohesive */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none opacity-80" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black pointer-events-none opacity-80" />
-      <div className="absolute inset-0 bg-black/25 pointer-events-none" />
+          {/* Ambient Dark Overlay to make the grid feel cohesive */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black pointer-events-none opacity-80" />
+          <div className="absolute inset-0 bg-black/25 pointer-events-none" />
 
-      {/* Centered floating typography overlay */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-        <div className="text-center">
-          <p className="culture-text-label text-white/15 mb-4" style={{ letterSpacing: "0.6em", fontSize: "10px" }}>CULTURAL ARTIFACTS</p>
-          <h2 className="font-hero text-white/[0.06] leading-none" style={{ fontSize: "clamp(60px, 12vw, 180px)", letterSpacing: "0.06em" }}>THE ARCHIVE</h2>
-        </div>
-      </div>
+          {/* Centered floating typography overlay */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+            <div className="text-center">
+              <p className="culture-text-label text-white/15 mb-4" style={{ letterSpacing: "0.6em", fontSize: "10px" }}>CULTURAL ARTIFACTS</p>
+              <h2 className="font-hero text-white/[0.06] leading-none" style={{ fontSize: "clamp(60px, 12vw, 180px)", letterSpacing: "0.06em" }}>THE ARCHIVE</h2>
+            </div>
+          </div>
 
-      {/* Gold radial glow in center */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at center, rgba(255,215,0,0.03) 0%, transparent 50%)" }}
-      />
+          {/* Gold radial glow in center */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: "radial-gradient(ellipse at center, rgba(255,215,0,0.03) 0%, transparent 50%)" }}
+          />
+        </>
+      )}
     </section>
   );
 }
