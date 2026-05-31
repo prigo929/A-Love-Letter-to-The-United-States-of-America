@@ -270,54 +270,6 @@ export function parseTextWithHighlights(text: string) {
   });
 }
 
-export function CultureWipeTransition({ direction = "to-cream" }: { direction: "to-cream" | "to-dark" }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const isToCream = direction === "to-cream";
-  const fromBg = isToCream ? "bg-[#0C0907]" : "bg-[#F5EDD8]";
-  const toBg = isToCream ? "bg-[#F5EDD8]" : "bg-[#0C0907]";
-
-  // Diagonal wipe using clip-path polygon
-  const clipPath = useTransform(
-    scrollYProgress,
-    [0.15, 0.75],
-    [
-      "polygon(0 0, 0% 0, 0% 100%, 0% 100%)",
-      "polygon(0 0, 110% 0, 100% 100%, 0% 100%)",
-    ]
-  );
-
-  return (
-    <div
-      ref={containerRef}
-      className={`relative h-[55vh] w-full overflow-hidden ${fromBg}`}
-    >
-      <motion.div
-        style={{ clipPath }}
-        className={`absolute inset-0 w-full h-full ${toBg} flex items-center justify-center`}
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-center px-6"
-        >
-          <p className={`culture-text-label tracking-[0.3em] text-[10px] sm:text-xs mb-4 ${isToCream ? "text-[#0C0907]/45" : "text-[#F5EDD8]/45"}`}>
-            {isToCream ? "CHAPTER II" : "CHAPTER III"}
-          </p>
-          <h3 className={`font-editorial italic text-3xl sm:text-5xl lg:text-6xl ${isToCream ? "text-[#0C0907]" : "text-[#F5EDD8]"}`}>
-            {isToCream ? "The Engine of Free Enterprise" : "Decades of Global Broadcast"}
-          </h3>
-        </motion.div>
-      </motion.div>
-    </div>
-  );
-}
 
 // ─── §1 — Filmstrip Mosaic Hero ──────────────────────────────────────────────
 
@@ -635,104 +587,71 @@ interface CultureThesisBlockProps {
 }
 
 export function CultureThesisBlock({ thesis }: CultureThesisBlockProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  const opacity1 = useTransform(scrollYProgress, [0, 0.25, 0.33], [1, 1, 0]);
-  const y1 = useTransform(scrollYProgress, [0, 0.25, 0.33], [0, 0, -40]);
-
-  const opacity2 = useTransform(scrollYProgress, [0.3, 0.38, 0.58, 0.66], [0, 1, 1, 0]);
-  const y2 = useTransform(scrollYProgress, [0.3, 0.38, 0.58, 0.66], [40, 0, 0, -40]);
-
-  const opacity3 = useTransform(scrollYProgress, [0.63, 0.71, 0.95, 1.0], [0, 1, 1, 1]);
-  const y3 = useTransform(scrollYProgress, [0.63, 0.71], [40, 0]);
-
-  const [activeSlide, setActiveSlide] = useState(0);
-
-  useEffect(() => {
-    return scrollYProgress.on("change", (latest) => {
-      if (latest < 0.31) {
-        setActiveSlide(0);
-      } else if (latest < 0.64) {
-        setActiveSlide(1);
-      } else {
-        setActiveSlide(2);
-      }
-    });
-  }, [scrollYProgress]);
-
   return (
-    <section ref={containerRef} id="culture-thesis" className="relative h-[280vh] culture-bg">
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-        {/* Dot-grid background texture */}
-        <div className="absolute inset-0 culture-dot-canvas opacity-35 pointer-events-none" />
+    <section id="culture-thesis" className="relative culture-bg py-24 md:py-36 overflow-hidden">
+      {/* Dot-grid background texture */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-25 pointer-events-none" />
 
-        {/* Narrative side-ticks indicator (Vox-style) */}
-        <div className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 flex flex-col gap-6 z-20">
-          {[0, 1, 2].map((idx) => (
-            <div key={idx} className="flex items-center gap-3 group" style={{ cursor: "pointer" }}>
-              <span className={`text-[10px] font-bold tracking-[0.2em] transition-all duration-300 ${activeSlide === idx ? "text-glory-gold" : "text-white/20"}`}>
-                {`0${idx + 1}`}
-              </span>
-              <div className={`h-px transition-all duration-300 ${activeSlide === idx ? "w-6 bg-glory-gold" : "w-2 bg-white/20"}`} />
-            </div>
-          ))}
-        </div>
-
-        {/* Slides Content */}
-        <div className="relative z-10 mx-auto max-w-[800px] px-8 sm:px-12 w-full h-full flex items-center justify-center">
-          {/* Slide 1: Pull Quote */}
-          <motion.div
-            style={{ opacity: opacity1, y: y1, pointerEvents: activeSlide === 0 ? "auto" : "none" }}
-            className="absolute w-full px-8 text-center"
+      <div className="relative z-10 mx-auto max-w-[800px] px-6 sm:px-8 flex flex-col items-center">
+        {/* Pull Quote */}
+        <motion.blockquote
+          className="relative text-center mb-24 w-full"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
+        >
+          {/* Decorative opening quote */}
+          <span
+            className="block font-editorial text-glory-gold/15 text-[140px] leading-none select-none -mb-14"
+            aria-hidden="true"
           >
-            <blockquote className="relative">
-              {/* Decorative opening quote */}
-              <span
-                className="block font-editorial text-glory-gold/15 text-[140px] leading-none select-none -mb-14"
-                aria-hidden="true"
-              >
-                &ldquo;
+            &ldquo;
+          </span>
+
+          {/* Gold rule above */}
+          <div className="w-20 h-px bg-gradient-to-r from-transparent via-glory-gold to-transparent mx-auto mb-10" />
+
+          <p className="font-editorial italic text-[#F5EDD8] text-2xl sm:text-3xl lg:text-[2.6rem] leading-[1.5] mb-8">
+            &ldquo;{parseTextWithHighlights(thesis.pullQuote)}&rdquo;
+          </p>
+
+          {/* Gold rule below */}
+          <div className="w-12 h-px bg-glory-gold/40 mx-auto mb-6" />
+
+          <cite className="not-italic culture-text-metadata text-glory-gold/80 tracking-[0.25em] text-[11px]">
+            — {thesis.attribution}
+          </cite>
+        </motion.blockquote>
+
+        {/* Narrative Flow: Connecting gold line */}
+        <div className="w-px h-16 bg-gradient-to-b from-glory-gold/30 to-transparent mb-16" />
+
+        {/* Editorial paragraphs in a staggered vertical flow */}
+        <div className="w-full flex flex-col gap-20">
+          {thesis.paragraphs.map((p, i) => (
+            <motion.div
+              key={i}
+              className="relative pl-12 md:pl-16 border-l border-white/5 hover:border-glory-gold/30 transition-colors duration-500"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0.1, 0.25, 1] as const,
+                delay: i * 0.1,
+              }}
+            >
+              {/* Large floating serif number */}
+              <span className="absolute left-0 top-0 font-editorial italic text-glory-gold/20 text-3xl md:text-4xl select-none leading-none -translate-x-1/2 bg-[#0C0907] py-1">
+                0{i + 1}
               </span>
 
-              {/* Gold rule above */}
-              <div className="w-20 h-px bg-gradient-to-r from-transparent via-glory-gold to-transparent mx-auto mb-10" />
-
-              <p className="font-editorial italic text-[#F5EDD8] text-2xl sm:text-4xl lg:text-[2.8rem] leading-[1.45] mb-8">
-                &ldquo;{parseTextWithHighlights(thesis.pullQuote)}&rdquo;
+              <p className="font-editorial text-[#F5EDD8]/75 text-lg sm:text-xl md:text-2xl leading-[1.8] max-w-[680px]">
+                {parseTextWithHighlights(p)}
               </p>
-
-              {/* Gold rule below */}
-              <div className="w-12 h-px bg-glory-gold/40 mx-auto mb-6" />
-
-              <cite className="not-italic culture-text-metadata text-glory-gold/80 tracking-[0.25em] text-[11px]">
-                — {thesis.attribution}
-              </cite>
-            </blockquote>
-          </motion.div>
-
-          {/* Slide 2: Paragraph 1 */}
-          <motion.div
-            style={{ opacity: opacity2, y: y2, pointerEvents: activeSlide === 1 ? "auto" : "none" }}
-            className="absolute w-full px-8 text-center"
-          >
-            <p className="font-editorial text-[#F5EDD8]/80 text-xl sm:text-2xl lg:text-3xl leading-[1.8] max-w-[720px] mx-auto">
-              {parseTextWithHighlights(thesis.paragraphs[0])}
-            </p>
-          </motion.div>
-
-          {/* Slide 3: Paragraph 2 */}
-          <motion.div
-            style={{ opacity: opacity3, y: y3, pointerEvents: activeSlide === 2 ? "auto" : "none" }}
-            className="absolute w-full px-8 text-center"
-          >
-            <p className="font-editorial text-[#F5EDD8]/80 text-xl sm:text-2xl lg:text-3xl leading-[1.8] max-w-[720px] mx-auto">
-              {parseTextWithHighlights(thesis.paragraphs[1])}
-            </p>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

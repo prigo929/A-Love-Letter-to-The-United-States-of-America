@@ -48,7 +48,6 @@ import {
   CultureSoftPowerBudget,
   CultureArchiveVault,
   CultureLivingMediaWall,
-  CultureWipeTransition,
 } from "@/components/culture/CulturePageComponents";
 
 import { NewsletterSection } from "@/components/sections/NewsletterSection";
@@ -137,7 +136,7 @@ export default async function CulturePage() {
       <CultureBentoGrid subpages={subpages} sectionTitle={gridTitle} />
 
       {/* Transition: Dark to Cream */}
-      <CultureWipeTransition direction="to-cream" />
+      <div className="h-24 w-full gradient-dark-to-cream" />
 
       {/* §6 — Free Market Argument (Cream Section) */}
       <CultureFreeMarketStrip arguments_={arguments_} sectionTitle={argumentTitle} />
@@ -146,7 +145,7 @@ export default async function CulturePage() {
       <CultureSoftPowerBudget budgetLines={budget} />
 
       {/* Transition: Cream to Dark */}
-      <CultureWipeTransition direction="to-dark" />
+      <div className="h-24 w-full gradient-cream-to-dark" />
 
       {/* Cultural Timeline Scroll Area */}
       <CultureTimelineScroll decades={decades} sectionTitle={timelineTitle} />
