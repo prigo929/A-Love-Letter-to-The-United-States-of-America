@@ -1858,17 +1858,62 @@ const INITIAL_COLOR_STATES = [
 ];
 
 export function CultureLivingMediaWall() {
+  const [visibleImages, setVisibleImages] = useState<string[]>(CULTURE_MEDIA_WALL_IMAGES.slice(0, 16));
   const [colorStates, setColorStates] = useState<boolean[]>(INITIAL_COLOR_STATES);
+  
+  const unusedRef = useRef<string[]>([]);
+  const usedRef = useRef<string[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { margin: "600px" });
 
-  const STATIC_GRID_IMAGES = CULTURE_MEDIA_WALL_IMAGES.slice(0, 16);
+  // Sync ref to track latest color states without interval re-creation
+  const colorStatesRef = useRef<boolean[]>(INITIAL_COLOR_STATES);
+  useEffect(() => {
+    colorStatesRef.current = colorStates;
+  }, [colorStates]);
+
+  // Initialize pool on mount
+  useEffect(() => {
+    const initial = CULTURE_MEDIA_WALL_IMAGES.slice(0, 16);
+    const unused = CULTURE_MEDIA_WALL_IMAGES.slice(16).sort(() => Math.random() - 0.5);
+    
+    unusedRef.current = unused;
+    usedRef.current = initial;
+  }, []);
+
+  const getNewImage = useCallback(() => {
+    if (unusedRef.current.length === 0) {
+      unusedRef.current = [...usedRef.current].sort(() => Math.random() - 0.5);
+      usedRef.current = [];
+    }
+    const newImg = unusedRef.current.pop()!;
+    usedRef.current.push(newImg);
+    return newImg;
+  }, []);
 
   // Shifting interval
   useEffect(() => {
     if (!isInView) return;
 
     const interval = setInterval(() => {
+      // Find indices that are currently false (not highlighted/dimmed)
+      // to swap images, keeping the transition completely masked.
+      const inactiveIndices: number[] = [];
+      colorStatesRef.current.forEach((col, i) => {
+        if (!col) inactiveIndices.push(i);
+      });
+
+      if (inactiveIndices.length > 0) {
+        const swapIndex = inactiveIndices[Math.floor(Math.random() * inactiveIndices.length)];
+        const nextImg = getNewImage();
+
+        setVisibleImages((prev) => {
+          const next = [...prev];
+          next[swapIndex] = nextImg;
+          return next;
+        });
+      }
+
       // Shift color states: select 4 random cells to highlight
       setColorStates(() => {
         const nextColors = Array(16).fill(false);
@@ -1882,10 +1927,10 @@ export function CultureLivingMediaWall() {
         }
         return nextColors;
       });
-    }, 3000); // 3 seconds interval for a calmer feel
+    }, 4000); // 4 seconds interval for a premium feel
 
     return () => clearInterval(interval);
-  }, [isInView]);
+  }, [isInView, getNewImage]);
 
   return (
     <section ref={sectionRef} className="relative culture-bg py-24 md:py-32 overflow-hidden border-t border-white/5">
@@ -1905,7 +1950,7 @@ export function CultureLivingMediaWall() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
-          {STATIC_GRID_IMAGES.map((src, idx) => (
+          {visibleImages.map((src, idx) => (
             <div
               key={idx}
               className="relative aspect-square w-full overflow-hidden rounded bg-black/40 border border-white/5"
