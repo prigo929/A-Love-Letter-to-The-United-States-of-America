@@ -1445,6 +1445,9 @@ interface CultureTimelineScrollProps {
 
 export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimelineScrollProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedTitle, setSelectedTitle] = useState<string>("");
+  const [selectedSubtitle, setSelectedSubtitle] = useState<string>("");
 
   const scrollLeft = () => {
     if (containerRef.current) {
@@ -1503,7 +1506,12 @@ export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimeline
           return (
             <div
               key={dec.year}
-              className="flex-shrink-0 w-[80vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] snap-start bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden group hover:border-glory-gold/30 transition-all duration-500 flex flex-col justify-between culture-gradient-border"
+              onClick={() => {
+                setSelectedImage(imageSrc);
+                setSelectedTitle(`${dec.year} — ${dec.title}`);
+                setSelectedSubtitle(dec.sentence);
+              }}
+              className="flex-shrink-0 w-[80vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] snap-start bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden group hover:border-glory-gold/30 transition-all duration-500 flex flex-col justify-between culture-gradient-border cursor-pointer"
             >
               <div className="p-6 md:p-8 flex flex-col gap-2">
                 <span className="font-body text-7xl md:text-8xl font-black text-white/[0.03] group-hover:text-glory-gold/8 transition-colors duration-500 leading-none">
@@ -1523,6 +1531,12 @@ export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimeline
                   className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0C0907] via-transparent to-transparent opacity-80" />
+                {/* Magnifier overlay */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-5 h-5 text-[#F5EDD8]/90">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" />
+                  </svg>
+                </div>
               </div>
 
               <div className="p-6 md:p-8 border-t border-white/5 bg-black/30">
@@ -1534,6 +1548,13 @@ export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimeline
           );
         })}
       </div>
+
+      <ImageLightboxModal
+        src={selectedImage}
+        title={selectedTitle}
+        subtitle={selectedSubtitle}
+        onClose={() => setSelectedImage(null)}
+      />
     </section>
   );
 }
@@ -1665,11 +1686,85 @@ interface CultureArchiveVaultProps {
   isRo: boolean;
 }
 
-export const VaultCard = memo(function VaultCard({ item, idx }: { item: ArchiveItem; idx: number }) {
+interface ImageLightboxModalProps {
+  src: string | null;
+  title?: string;
+  subtitle?: string;
+  onClose: () => void;
+}
+
+export function ImageLightboxModal({ src, title, subtitle, onClose }: ImageLightboxModalProps) {
+  useEffect(() => {
+    if (src) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [src]);
+
+  return (
+    <AnimatePresence>
+      {src && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out"
+        >
+          {/* Close button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
+            className="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 border border-white/10 text-white transition-all duration-300 focus:outline-none z-10"
+            aria-label="Close lightbox"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            transition={{ type: "spring", damping: 25, stiffness: 220 }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-5xl max-h-[85vh] flex flex-col items-center bg-zinc-950 border border-white/10 rounded-xl overflow-hidden shadow-2xl p-2 cursor-default"
+          >
+            <div className="relative w-full overflow-hidden rounded-lg" style={{ height: "min(65vh, 600px)", aspectRatio: "3/2" }}>
+              <Image
+                src={src}
+                alt={title || "Lightbox view"}
+                fill
+                className="object-contain"
+                sizes="(max-width: 1280px) 90vw, 1200px"
+                priority
+              />
+            </div>
+            
+            {(title || subtitle) && (
+              <div className="w-full text-center py-4 px-6 mt-1 border-t border-white/5">
+                {title && <h4 className="font-editorial text-lg text-[#F5EDD8] mb-1">{title}</h4>}
+                {subtitle && <p className="font-body text-xs tracking-widest text-[#F5EDD8]/45 uppercase">{subtitle}</p>}
+              </div>
+            )}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+export const VaultCard = memo(function VaultCard({ item, idx, onClick }: { item: ArchiveItem; idx: number; onClick?: () => void }) {
   const imageSrc = SITE_IMAGES.culture[item.imageKey] || SITE_IMAGES.culture.statueOfLiberty;
 
   return (
     <motion.div
+      onClick={onClick}
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: idx * 0.05 }}
@@ -1710,6 +1805,9 @@ export const VaultCard = memo(function VaultCard({ item, idx }: { item: ArchiveI
 
 export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
   const [activeTab, setActiveTab] = useState<"cinema" | "music" | "editorial">("cinema");
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedTitle, setSelectedTitle] = useState<string>("");
+  const [selectedSubtitle, setSelectedSubtitle] = useState<string>("");
 
   const tabs = [
     { id: "cinema", label: isRo ? "Cinema" : "Cinema" },
@@ -1794,17 +1892,32 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
               transition={{ duration: 0.3 }}
               className="col-span-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"
             >
-              {getItems().map((item, idx) => (
-                <VaultCard
-                  key={`${activeTab}-${item.imageKey}`}
-                  item={item}
-                  idx={idx}
-                />
-              ))}
+              {getItems().map((item, idx) => {
+                const imageSrc = SITE_IMAGES.culture[item.imageKey] || SITE_IMAGES.culture.statueOfLiberty;
+                return (
+                  <VaultCard
+                    key={`${activeTab}-${item.imageKey}`}
+                    item={item}
+                    idx={idx}
+                    onClick={() => {
+                      setSelectedImage(imageSrc);
+                      setSelectedTitle(item.title);
+                      setSelectedSubtitle(`${item.subtitle} (${item.year})`);
+                    }}
+                  />
+                );
+              })}
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
+
+      <ImageLightboxModal
+        src={selectedImage}
+        title={selectedTitle}
+        subtitle={selectedSubtitle}
+        onClose={() => setSelectedImage(null)}
+      />
     </section>
   );
 }
@@ -1814,11 +1927,15 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
 interface ShiftingGridCellProps {
   src: string;
   isColor: boolean;
+  onClick?: () => void;
 }
 
-export const ShiftingGridCell = memo(function ShiftingGridCell({ src, isColor }: ShiftingGridCellProps) {
+export const ShiftingGridCell = memo(function ShiftingGridCell({ src, isColor, onClick }: ShiftingGridCellProps) {
   return (
-    <div className="relative w-full h-full overflow-hidden bg-black/60 rounded border border-white/[0.03]">
+    <div 
+      onClick={onClick}
+      className="relative w-full h-full overflow-hidden bg-black/60 rounded border border-white/[0.03] cursor-pointer group/cell"
+    >
       <motion.div
         animate={{ opacity: isColor ? 0.95 : 0.45 }}
         transition={{ duration: 1.0, ease: "easeInOut" }}
@@ -1831,7 +1948,7 @@ export const ShiftingGridCell = memo(function ShiftingGridCell({ src, isColor }:
           fill
           sizes="(max-width: 768px) 50vw, 25vw"
           className={cn(
-            "object-cover transition-all duration-1000 ease-in-out",
+            "object-cover transition-all duration-1000 ease-in-out group-hover/cell:scale-105",
             isColor ? "grayscale-0 scale-[1.03]" : "grayscale scale-100"
           )}
           style={{ willChange: "transform, filter", transform: "translateZ(0)" }}
@@ -1846,6 +1963,13 @@ export const ShiftingGridCell = memo(function ShiftingGridCell({ src, isColor }:
           )} 
         />
       </motion.div>
+
+      {/* Magnifier icon on hover */}
+      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/cell:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-5 h-5 text-white/90">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" />
+        </svg>
+      </div>
     </div>
   );
 });
@@ -1857,9 +1981,14 @@ const INITIAL_COLOR_STATES = [
   false, false, false, true
 ];
 
-export function CultureLivingMediaWall() {
+interface CultureLivingMediaWallProps {
+  isRo?: boolean;
+}
+
+export function CultureLivingMediaWall({ isRo = false }: CultureLivingMediaWallProps) {
   const [visibleImages, setVisibleImages] = useState<string[]>(CULTURE_MEDIA_WALL_IMAGES.slice(0, 16));
   const [colorStates, setColorStates] = useState<boolean[]>(INITIAL_COLOR_STATES);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
   const unusedRef = useRef<string[]>([]);
   const usedRef = useRef<string[]>([]);
@@ -1932,6 +2061,9 @@ export function CultureLivingMediaWall() {
     return () => clearInterval(interval);
   }, [isInView, getNewImage]);
 
+  const modalTitle = isRo ? "Artefact Arhivă Culturală" : "Cultural Archive Artifact";
+  const modalSubtitle = isRo ? "O selecție de elemente reprezentative ale culturii americane" : "A landmark artifact of American cultural influence";
+
   return (
     <section ref={sectionRef} className="relative culture-bg py-24 md:py-32 overflow-hidden border-t border-white/5">
       {/* Dot-grid background */}
@@ -1958,6 +2090,7 @@ export function CultureLivingMediaWall() {
               <ShiftingGridCell
                 src={src}
                 isColor={colorStates[idx]}
+                onClick={() => setSelectedImage(src)}
               />
             </div>
           ))}
@@ -1968,6 +2101,13 @@ export function CultureLivingMediaWall() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: "radial-gradient(ellipse at center, rgba(255,215,0,0.02) 0%, transparent 60%)" }}
+      />
+
+      <ImageLightboxModal
+        src={selectedImage}
+        title={modalTitle}
+        subtitle={modalSubtitle}
+        onClose={() => setSelectedImage(null)}
       />
     </section>
   );
@@ -1982,6 +2122,10 @@ interface CultureMusicSectionProps {
 }
 
 export function CultureMusicSection({ genres, sectionTitle, isRo }: CultureMusicSectionProps) {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedTitle, setSelectedTitle] = useState<string>("");
+  const [selectedSubtitle, setSelectedSubtitle] = useState<string>("");
+
   const musicImages: Record<string, string> = {
     jazzClub: SITE_IMAGES.culture.jazzClub,
     music: SITE_IMAGES.culture.guitarNeon,
@@ -2024,7 +2168,12 @@ export function CultureMusicSection({ genres, sectionTitle, isRo }: CultureMusic
             return (
               <motion.div
                 key={g.genre}
-                className="group relative h-[420px] rounded-xl overflow-hidden culture-gradient-border border border-white/5 flex flex-col justify-end p-6"
+                onClick={() => {
+                  setSelectedImage(imgSrc);
+                  setSelectedTitle(g.genre);
+                  setSelectedSubtitle(`${g.city} — ${g.description}`);
+                }}
+                className="group relative h-[420px] rounded-xl overflow-hidden culture-gradient-border border border-white/5 flex flex-col justify-end p-6 cursor-pointer"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -2059,9 +2208,16 @@ export function CultureMusicSection({ genres, sectionTitle, isRo }: CultureMusic
                     <p className="culture-text-label text-[9px] text-glory-gold/80" style={{ letterSpacing: "0.25em" }}>
                       {g.city}
                     </p>
-                    {/* Tiny decorative vinyl disc */}
-                    <div className="w-5 h-5 rounded-full border border-white/20 bg-black flex items-center justify-center animate-spin" style={{ animationDuration: "6s", animationPlayState: "paused" }}>
-                      <div className="w-1.5 h-1.5 rounded-full bg-glory-gold/60" />
+                    {/* Tiny decorative disc / Magnifier icon on hover */}
+                    <div className="relative w-5 h-5">
+                      <div className="absolute inset-0 rounded-full border border-white/20 bg-black flex items-center justify-center animate-spin group-hover:opacity-0 transition-opacity duration-300" style={{ animationDuration: "6s", animationPlayState: "paused" }}>
+                        <div className="w-1.5 h-1.5 rounded-full bg-glory-gold/60" />
+                      </div>
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white/90">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-4 h-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" />
+                        </svg>
+                      </div>
                     </div>
                   </div>
 
@@ -2079,6 +2235,13 @@ export function CultureMusicSection({ genres, sectionTitle, isRo }: CultureMusic
           })}
         </div>
       </div>
+
+      <ImageLightboxModal
+        src={selectedImage}
+        title={selectedTitle}
+        subtitle={selectedSubtitle}
+        onClose={() => setSelectedImage(null)}
+      />
     </section>
   );
 }
@@ -2092,6 +2255,10 @@ interface CultureCulinarySectionProps {
 }
 
 export function CultureCulinarySection({ pillars, sectionTitle, isRo }: CultureCulinarySectionProps) {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedTitle, setSelectedTitle] = useState<string>("");
+  const [selectedSubtitle, setSelectedSubtitle] = useState<string>("");
+
   const culinaryImages: Record<string, string> = {
     diner: SITE_IMAGES.culture.flosV8,
     burger: SITE_IMAGES.culture.burger,
@@ -2133,7 +2300,12 @@ export function CultureCulinarySection({ pillars, sectionTitle, isRo }: CultureC
             return (
               <motion.div
                 key={p.title}
-                className="group flex flex-col bg-white/40 backdrop-blur-md rounded-2xl p-5 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.02)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.06)] transition-all duration-500 hover:-translate-y-1.5"
+                onClick={() => {
+                  setSelectedImage(imgSrc);
+                  setSelectedTitle(p.title);
+                  setSelectedSubtitle(p.subtitle);
+                }}
+                className="group flex flex-col bg-white/40 backdrop-blur-md rounded-2xl p-5 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.02)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.06)] transition-all duration-500 hover:-translate-y-1.5 cursor-pointer"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -2151,6 +2323,12 @@ export function CultureCulinarySection({ pillars, sectionTitle, isRo }: CultureC
                     blurDataURL={BLUR_PLACEHOLDER}
                   />
                   <div className="absolute inset-0 bg-[#0C0907]/5 group-hover:bg-[#0C0907]/0 transition-colors duration-500" />
+                  {/* Magnifier icon on hover */}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-6 h-6 text-white/90">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" />
+                    </svg>
+                  </div>
                 </div>
 
                 {/* Subtitle / Eyebrow */}
@@ -2172,6 +2350,13 @@ export function CultureCulinarySection({ pillars, sectionTitle, isRo }: CultureC
           })}
         </div>
       </div>
+
+      <ImageLightboxModal
+        src={selectedImage}
+        title={selectedTitle}
+        subtitle={selectedSubtitle}
+        onClose={() => setSelectedImage(null)}
+      />
     </section>
   );
 }

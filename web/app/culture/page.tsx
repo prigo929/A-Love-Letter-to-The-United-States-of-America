@@ -165,7 +165,7 @@ export default async function CulturePage() {
       <CultureViewportQuote quote={bonoQuote} bgImageSrc={SITE_IMAGES.culture.route66} />
 
       {/* Living Media Wall Grid (40 Shifting Cultural Artifacts) */}
-      <CultureLivingMediaWall />
+      <CultureLivingMediaWall isRo={isRo} />
 
       {/* §17 — Music Origins Section */}
       <CultureMusicSection genres={musicGenres} sectionTitle={musicTitle} isRo={isRo} />
