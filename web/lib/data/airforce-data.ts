@@ -663,54 +663,120 @@ export function getAirForceCapabilities(locale: Locale): AirForceCapability[] {
 export function getAirForcePlatforms(locale: Locale): AirForcePlatform[] {
   if (locale !== "ro") return AF_PLATFORMS;
   return AF_PLATFORMS.map((p) => {
-    const roMap: Record<string, { role: string; capability: string }> = {
+    const roMap: Record<string, { role: string; capability: string; specs: { label: string; value: string }[] }> = {
       "Lockheed Martin F-22 Raptor": {
         role: "Fără egal în lupta aer-aer, acest avion de dominanță aeriană combină tehnologia stealth, super-manevrabilitatea și avionica avansată pentru a asigura controlul cerului.",
         capability: "Superioritate aeriană stealth",
+        specs: [
+          { label: "Viteză", value: "Mach 2.25" },
+          { label: "Rază", value: "2.960 km" },
+          { label: "Plafon", value: "19.800 m" },
+          { label: "Arme", value: "AIM-120 / AIM-9X" },
+        ],
       },
       "Lockheed Martin F-35A Lightning II": {
         role: "Cel mai important avion de luptă multirol de generația a cincea. Proiectat pentru stealth, atac electronic și colectare de informații, este piatra de temelie a puterii tactice aeriene moderne.",
         capability: "Lovitură cu fuziune senzorială",
+        specs: [
+          { label: "Viteză", value: "Mach 1.6" },
+          { label: "Rază", value: "2.220 km" },
+          { label: "Sarcină Utilă", value: "8.200 kg" },
+          { label: "Senzori", value: "AN/APG-81 AESA" },
+        ],
       },
       "F-16 Fighting Falcon": {
         role: "Cel mai numeros și comun avion de luptă multirol din cadrul Forțelor Aeriene, extrem de agil și testat în luptă în misiuni aer-aer și aer-sol.",
         capability: "Luptă multirol agilă",
+        specs: [
+          { label: "Viteză", value: "Mach 2.0" },
+          { label: "Rază", value: "3.200 km" },
+          { label: "Sarcină Utilă", value: "5.400 kg" },
+          { label: "Flotă", value: "800+ active" },
+        ],
       },
       "F-15EX Eagle II": {
         role: "Un avion de luptă tactic de mare tonaj, puternic modernizat și proiectat ca un 'camion greu de rachete' pentru a transporta arme hipersonice și încărcături masive alături de F-35.",
         capability: "Lovitură tactică grea",
+        specs: [
+          { label: "Viteză", value: "Mach 2.5" },
+          { label: "Rază", value: "4.800 km" },
+          { label: "Sarcină Utilă", value: "13.400 kg" },
+          { label: "Puncte Prindere", value: "23 stații de arme" },
+        ],
       },
       "B-52 Stratofortress": {
         role: "Probabil cea mai longevivă aeronavă din flotă, acest bombardier greu cu rază lungă de acțiune este în serviciu de decenii și rămâne coloana vertebrală a capacităților de lovitură cu încărcătură grea și atac la distanță ale SUA.",
         capability: "Lovitură grea la distanță",
+        specs: [
+          { label: "Rază", value: "14.100 km" },
+          { label: "Sarcină Utilă", value: "31.500 kg" },
+          { label: "Motoare", value: "8 Pratt & Whitney" },
+          { label: "Status", value: "Activ până în anii 2050" },
+        ],
       },
       "Northrop Grumman B-2 Spirit": {
         role: "Un bombardier stealth extrem de specializat, cu aripă zburătoare, capabil să penetreze adânc în spațiul aerian inamic apărat pentru a lansa încărcături convenționale și nucleare.",
         capability: "Lovitură stealth de penetrare",
+        specs: [
+          { label: "Rază", value: "11.100 km" },
+          { label: "Sarcină Utilă", value: "18.000 kg" },
+          { label: "Amprentă Radar", value: "Aproape zero" },
+          { label: "Echipaj", value: "2 piloți" },
+        ],
       },
       "B-1B Lancer": {
         role: "Un bombardier supersonic greu care oferă capacități de lovitură convențională cu rază lungă de acțiune și o capacitate masivă de încărcătură utilă.",
         capability: "Lovitură convențională supersonică",
+        specs: [
+          { label: "Viteză", value: "Mach 1.25" },
+          { label: "Sarcină Utilă", value: "34.000 kg" },
+          { label: "Rază", value: "11.900 km" },
+          { label: "Status", value: "Doar convențional" },
+        ],
       },
       "Boeing C-17 Globemaster III": {
         role: "Principalul transportor aerian strategic și tactic. Acesta livrează în mod regulat trupe, echipamente și ajutor medical către bazele de operare avansate la nivel global.",
         capability: "Mobilitate globală rapidă",
+        specs: [
+          { label: "Sarcină Utilă", value: "77.500 kg" },
+          { label: "Rază", value: "4.400 km" },
+          { label: "Pistă Necesară", value: "1.070 m" },
+          { label: "Flotă", value: "222 aeronave" },
+        ],
       },
       "Lockheed Martin C-130 Hercules": {
         role: "Cea mai importantă aeronavă de transport tactic, utilizată pentru parașutarea trupelor, transportul de provizii pe piste austere și executarea de misiuni speciale și realimentare.",
         capability: "Transport în teatre austere",
+        specs: [
+          { label: "Sarcină Utilă", value: "19.000 kg" },
+          { label: "Rază", value: "3.800 km" },
+          { label: "Operațiuni", value: "Desant aerian / Ops Speciale" },
+          { label: "Flotă", value: "300+ active" },
+        ],
       },
       "Boeing KC-135 Stratotanker": {
         role: "Coloana vertebrală a razei globale de acțiune. Prin asigurarea realimentării în aer, acest avion de transport veteran extinde raza de acțiune și timpul de zbor pentru aproape toate aeronavele de luptă ale USAF.",
         capability: "Multiplicarea razei globale",
+        specs: [
+          { label: "Capacitate Combustibil", value: "90.700 kg" },
+          { label: "Sistem Transfer", value: "Tijă / Sondă" },
+          { label: "Flotă", value: "390+ active" },
+          { label: "Status", value: "Operațional" },
+        ],
       },
       "Boeing KC-46 Pegasus": {
         role: "Avionul de realimentare aeriană de nouă generație care înlocuiește treptat cisternele mai vechi precum KC-135.",
         capability: "Multiplicare de forțe next-gen",
+        specs: [
+          { label: "Combustibil", value: "96.000 kg" },
+          { label: "Tijă realimentare", value: "Fly-by-wire" },
+          { label: "Sondă de aripă", value: "Nacule aripă" },
+          { label: "Flotă", value: "68 livrate" },
+        ],
       },
     };
     const ro = roMap[p.name];
-    return ro ? { ...p, role: ro.role, capability: ro.capability } : p;
+    return ro ? { ...p, role: ro.role, capability: ro.capability, specs: ro.specs } : p;
   });
 }
 
@@ -724,6 +790,11 @@ export function getAirForceTheaters(locale: Locale): AirForceTheater[] {
       headline: "Provocarea de ritm și proiectarea puterii",
       description: "Forțele Aeriene ale Pacificului operează cea mai mare componentă aeriană de teatru, menținând descurajarea cu rotații persistente de avioane de generația a 5-a și desfășurări de bombardiere.",
       signal: "Operațiuni distribuite",
+      metrics: [
+        { label: "Avioane forward", value: "300+" },
+        { label: "Rotații BTF", value: "Continuu" },
+        { label: "Amenințare principală", value: "R.P. Chineză" },
+      ],
     },
     {
       ...AF_THEATERS[1],
@@ -732,6 +803,11 @@ export function getAirForceTheaters(locale: Locale): AirForceTheater[] {
       headline: "Coloana vertebrală NATO și flancul estic",
       description: "Forțele Aeriene SUA din Europa ancorează arhitectura de apărare aeriană NATO cu escadrile F-35A și avioane de interceptare rotaționale.",
       signal: "Interoperabilitate aliată",
+      metrics: [
+        { label: "Integrare NATO", value: "Profundă" },
+        { label: "Rotații EFP", value: "Active" },
+        { label: "Poliție aeriană", value: "24/7" },
+      ],
     },
     {
       ...AF_THEATERS[2],
@@ -740,6 +816,11 @@ export function getAirForceTheaters(locale: Locale): AirForceTheater[] {
       headline: "Persistență în deșert și supraveghere",
       description: "De la Baza Aeriană Al Udeid la operațiunile din Irak, Siria și Afganistan, AFCENT a generat mai multe sortii de luptă decât orice altă componentă din 2001.",
       signal: "Persistență în luptă",
+      metrics: [
+        { label: "Sortii din 2001", value: "1 mil.+" },
+        { label: "Orbite ISR", value: "Continuu" },
+        { label: "Suport realimentare", value: "24/7" },
+      ],
     },
     {
       ...AF_THEATERS[3],
@@ -748,6 +829,11 @@ export function getAirForceTheaters(locale: Locale): AirForceTheater[] {
       headline: "Avertizare aerospațială și apărare continentală",
       description: "NORAD menține supravegherea aerospațială continuă cu radare terestre, AWACS și site-uri de alertă interceptor. F-22 și F-16 stau în alertă 24/7.",
       signal: "Apărarea patriei",
+      metrics: [
+        { label: "Stare de alertă", value: "24/7/365" },
+        { label: "Acoperire radar", value: "Continentală" },
+        { label: "Timp de interceptare", value: "Minute" },
+      ],
     },
     {
       ...AF_THEATERS[4],
@@ -756,6 +842,11 @@ export function getAirForceTheaters(locale: Locale): AirForceTheater[] {
       headline: "Contraterorism cu amprentă ușoară",
       description: "Forțele Aeriene Africa sprijină contraterorismul și antrenamentul națiunilor partenere cu orbite ISR MQ-9 Reaper și mobilitate C-130.",
       signal: "CT & capacitate parteneră",
+      metrics: [
+        { label: "Acoperire ISR", value: "Sahel / Cornul Africii" },
+        { label: "Națiuni partenere", value: "20+" },
+        { label: "Prezență", value: "Distribuită" },
+      ],
     },
   ];
 }
@@ -789,29 +880,117 @@ export function getAirForceFleetComparison(locale: Locale): AirForceFleetCompari
 export function getAirForceFuturePrograms(locale: Locale): AirForceFutureProgram[] {
   if (locale !== "ro") return AF_FUTURE_PROGRAMS;
   return AF_FUTURE_PROGRAMS.map((p) => {
-    const roMap: Record<string, { title: string; description: string; capability: string }> = {
-      "NGAD": { title: "Dominanță Aeriană de Nouă Generație", description: "Un sistem de sisteme de superioritate aeriană de generația a șasea combinând un avion pilotat cu drone CCA autonome, stealth avansat și AI.", capability: "Supremație de generația a 6-a" },
-      "CCA": { title: "Aeronave de Luptă Colaborative", description: "Drone autonome wingman care zboară alături de avioanele pilotate, efectuând ISR, război electronic și misiuni de lovitură.", capability: "Multiplicare autonomă a forțelor" },
-      "ARRW": { title: "Armă de Răspuns Rapid Lansată din Aer", description: "Armă hipersonică boost-glide capabilă să lovească ținte la viteze peste Mach 5 în medii A2/AD contestate.", capability: "Lovitură hipersonică" },
-      "LGM-35A Sentinel": { title: "ICBM de Nouă Generație", description: "Sentinel va înlocui Minuteman III ca descurajator nuclear terestru al Americii.", capability: "Modernizare nucleară" },
+    const roMap: Record<string, { title: string; description: string; capability: string; specs: { label: string; value: string }[] }> = {
+      "NGAD": {
+        title: "Dominanță Aeriană de Nouă Generație",
+        description: "Un sistem de sisteme de superioritate aeriană de generația a șasea combinând un avion pilotat cu drone CCA autonome, stealth avansat și AI.",
+        capability: "Supremație de generația a 6-a",
+        specs: [
+          { label: "Generație", value: "A 6-a" },
+          { label: "Integrare AI", value: "Completă" },
+          { label: "Cuplare CCA", value: "Da" },
+          { label: "Țintă IOC", value: "Anii 2030" },
+        ],
+      },
+      "CCA": {
+        title: "Aeronave de Luptă Colaborative",
+        description: "Drone autonome wingman care zboară alături de avioanele pilotate, efectuând ISR, război electronic și misiuni de lovitură.",
+        capability: "Multiplicare autonomă a forțelor",
+        specs: [
+          { label: "Autonomie", value: "Ghidată de AI" },
+          { label: "Cost", value: "Fracțiune din F-35" },
+          { label: "Incremente", value: "3 planificate" },
+          { label: "Furnizori", value: "5 în competiție" },
+        ],
+      },
+      "ARRW": {
+        title: "Armă de Răspuns Rapid Lansată din Aer",
+        description: "Armă hipersonică boost-glide capabilă să lovească ținte la viteze peste Mach 5 în medii A2/AD contestate.",
+        capability: "Lovitură hipersonică",
+        specs: [
+          { label: "Viteză", value: "Mach 5+" },
+          { label: "Tip", value: "Boost-glide" },
+          { label: "Platformă Purtătoare", value: "B-52 / B-1" },
+          { label: "Penetrare Apărare", value: "Extremă" },
+        ],
+      },
+      "LGM-35A Sentinel": {
+        title: "ICBM de Nouă Generație",
+        description: "Sentinel va înlocui Minuteman III ca descurajator nuclear terestru al Americii.",
+        capability: "Modernizare nucleară",
+        specs: [
+          { label: "Înlocuiește", value: "Minuteman III" },
+          { label: "Silozuri", value: "400+" },
+          { label: "Rază", value: "Clasă ICBM" },
+          { label: "Țintă IOC", value: "2029" },
+        ],
+      },
     };
     const ro = roMap[p.label];
-    return ro ? { ...p, title: ro.title, description: ro.description, capability: ro.capability } : p;
+    return ro ? { ...p, title: ro.title, description: ro.description, capability: ro.capability, specs: ro.specs } : p;
   });
 }
 
 export function getAirForceBases(locale: Locale): AirForceBase[] {
   if (locale !== "ro") return AF_BASES;
   return AF_BASES.map((b) => {
-    const roMap: Record<string, { role: string; description: string }> = {
-      "Nellis AFB": { role: "Antrenament de Luptă Avansat", description: "Gazda Red Flag, cel mai exigent exercițiu de luptă din lume. Poligonul Nevada se întinde pe peste 12.000 mi²." },
-      "Eglin AFB": { role: "Dezvoltare și Testare Armament", description: "Cea mai mare bază aeriană ca suprafață. Gazda Centrului de Armament USAF unde fiecare bombă și rachetă este testată." },
-      "Ramstein AB": { role: "Cartierul General USAFE", description: "Centrul nervos al puterii aeriene americane în Europa. Gazda USAFE-AFAFRICA și hub logistic principal NATO." },
-      "Andersen AFB": { role: "Proiectare de Putere în Pacific", description: "Hub de bombardiere strategice și cisterne în Pacificul de Vest. Rotații continue BTF pentru descurajarea Indo-Pacific." },
-      "Al Udeid AB": { role: "Operațiuni Aeriene CENTCOM", description: "Centrul Combinat de Operațiuni Aeriene (CAOC) comandă toate operațiunile aeriene ale coaliției din Orientul Mijlociu." },
-      "Langley AFB": { role: "Cartierul General ACC / Escadrilă F-22", description: "Gazda Comandamentului de Luptă Aerian și a escadrilei premiere F-22 Raptor. Centrul intelectual al puterii aeriene." },
+    const roMap: Record<string, { role: string; description: string; stats: { label: string; value: string }[] }> = {
+      "Nellis AFB": {
+        role: "Antrenament de Luptă Avansat",
+        description: "Gazda Red Flag, cel mai exigent exercițiu de luptă din lume. Poligonul Nevada se întinde pe peste 12.000 mi².",
+        stats: [
+          { label: "Suprafață", value: "31.000 km²" },
+          { label: "Misiune", value: "Red Flag / WIC" },
+          { label: "Unități", value: "Aripa 57" },
+        ],
+      },
+      "Eglin AFB": {
+        role: "Dezvoltare și Testare Armament",
+        description: "Cea mai mare bază aeriană ca suprafață. Gazda Centrului de Armament USAF unde fiecare bombă și rachetă este testată.",
+        stats: [
+          { label: "Suprafață", value: "1.870 km²" },
+          { label: "Misiune", value: "T&E / Antrenament F-35" },
+          { label: "Unități", value: "TW 96 / FW 33" },
+        ],
+      },
+      "Ramstein AB": {
+        role: "Cartierul General USAFE",
+        description: "Centrul nervos al puterii aeriene americane în Europa. Gazda USAFE-AFAFRICA și hub logistic principal NATO.",
+        stats: [
+          { label: "Rol", value: "HQ USAFE" },
+          { label: "Logistică", value: "Hub principal" },
+          { label: "NATO", value: "CAOC-5" },
+        ],
+      },
+      "Andersen AFB": {
+        role: "Proiectare de Putere în Pacific",
+        description: "Hub de bombardiere strategice și cisterne în Pacificul de Vest. Rotații continue BTF pentru descurajarea Indo-Pacific.",
+        stats: [
+          { label: "BTF", value: "Continuu" },
+          { label: "Avioane Cisternă", value: "Desfășurat avansat" },
+          { label: "Teatru", value: "INDOPACOM" },
+        ],
+      },
+      "Al Udeid AB": {
+        role: "Operațiuni Aeriene CENTCOM",
+        description: "Centrul Combinat de Operațiuni Aeriene (CAOC) comandă toate operațiunile aeriene ale coaliției din Orientul Mijlociu.",
+        stats: [
+          { label: "CAOC", value: "Combinat" },
+          { label: "Sortii", value: "100+/zi" },
+          { label: "Coaliție", value: "Multinațională" },
+        ],
+      },
+      "Langley AFB": {
+        role: "Cartierul General ACC / Escadrilă F-22",
+        description: "Gazda Comandamentului de Luptă Aerian și a escadrilei premiere F-22 Raptor. Centrul intelectual al puterii aeriene.",
+        stats: [
+          { label: "Comandament", value: "HQ ACC" },
+          { label: "Aeronave", value: "F-22 Raptor" },
+          { label: "Unitate", value: "FW 1" },
+        ],
+      },
     };
     const ro = roMap[b.name];
-    return ro ? { ...b, role: ro.role, description: ro.description } : b;
+    return ro ? { ...b, role: ro.role, description: ro.description, stats: ro.stats } : b;
   });
 }
