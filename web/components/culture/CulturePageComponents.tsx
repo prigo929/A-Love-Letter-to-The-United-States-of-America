@@ -1278,7 +1278,7 @@ export function CultureBrandLogosMarquee() {
             {BRAND_LOGOS_ROW_1.map((logo) => (
               <div
                 key={`${logo.name}-row1-track1`}
-                className="inline-flex items-center justify-center w-28 md:w-36 h-12 md:h-16"
+                className="inline-flex items-center justify-center h-12 md:h-16 px-6 md:px-10 flex-shrink-0"
               >
                 <img
                   src={`/assets/companies/${logo.file}`}
@@ -1297,7 +1297,7 @@ export function CultureBrandLogosMarquee() {
             {BRAND_LOGOS_ROW_1.map((logo) => (
               <div
                 key={`${logo.name}-row1-track2`}
-                className="inline-flex items-center justify-center w-28 md:w-36 h-12 md:h-16"
+                className="inline-flex items-center justify-center h-12 md:h-16 px-6 md:px-10 flex-shrink-0"
               >
                 <img
                   src={`/assets/companies/${logo.file}`}
@@ -1322,7 +1322,7 @@ export function CultureBrandLogosMarquee() {
             {BRAND_LOGOS_ROW_2.map((logo) => (
               <div
                 key={`${logo.name}-row2-track1`}
-                className="inline-flex items-center justify-center w-28 md:w-36 h-12 md:h-16"
+                className="inline-flex items-center justify-center h-12 md:h-16 px-6 md:px-10 flex-shrink-0"
               >
                 <img
                   src={`/assets/companies/${logo.file}`}
@@ -1341,7 +1341,7 @@ export function CultureBrandLogosMarquee() {
             {BRAND_LOGOS_ROW_2.map((logo) => (
               <div
                 key={`${logo.name}-row2-track2`}
-                className="inline-flex items-center justify-center w-28 md:w-36 h-12 md:h-16"
+                className="inline-flex items-center justify-center h-12 md:h-16 px-6 md:px-10 flex-shrink-0"
               >
                 <img
                   src={`/assets/companies/${logo.file}`}
