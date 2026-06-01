@@ -32,10 +32,18 @@ interface MilCountUpProps {
   suffix?: string;
   decimals?: number;
   color?: string;
+  locale?: Locale;
 }
 
-export function MilCountUp({ to, duration = 2, prefix = "", suffix = "", decimals = 0, color = "white" }: MilCountUpProps) {
-  const [displayValue, setDisplayValue] = useState(prefix + (0).toFixed(decimals) + suffix);
+export function MilCountUp({ to, duration = 2, prefix = "", suffix = "", decimals = 0, color = "white", locale = "en" }: MilCountUpProps) {
+  const formatNum = (val: number) => {
+    return val.toLocaleString(locale === 'ro' ? 'ro-RO' : 'en-US', {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals,
+    });
+  };
+
+  const [displayValue, setDisplayValue] = useState(prefix + formatNum(0) + suffix);
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
 
@@ -45,12 +53,12 @@ export function MilCountUp({ to, duration = 2, prefix = "", suffix = "", decimal
         duration,
         ease: [0.16, 1, 0.3, 1],
         onUpdate: (latest) => {
-          setDisplayValue(prefix + latest.toFixed(decimals) + suffix);
+          setDisplayValue(prefix + formatNum(latest) + suffix);
         },
       });
       return () => controls.stop();
     }
-  }, [inView, to, duration, prefix, suffix, decimals]);
+  }, [inView, to, duration, prefix, suffix, decimals, locale]);
 
   return <span ref={ref} style={{ color }}>{displayValue}</span>;
 }
@@ -252,9 +260,10 @@ export function ScanLine() { return null; }
 interface MinimalistStatProps {
   stat: MilitaryStat;
   index?: number;
+  locale?: Locale;
 }
 
-export function MinimalistStat({ stat, index = 0 }: MinimalistStatProps) {
+export function MinimalistStat({ stat, index = 0, locale = "en" }: MinimalistStatProps) {
   const { value, suffix = "", prefix = "", decimals = 0, label, sublabel } = stat;
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-10%" });
@@ -270,7 +279,7 @@ export function MinimalistStat({ stat, index = 0 }: MinimalistStatProps) {
       <div className="mil-text-metadata mb-6 tracking-[0.3em] font-black text-white">{label}</div>
       <div className="flex items-baseline gap-1">
         <span className="text-[clamp(48px,7vw,96px)] font-extralight tracking-tighter leading-none">
-          <MilCountUp to={value} prefix={prefix} suffix={suffix} decimals={decimals} color="white" />
+          <MilCountUp to={value} prefix={prefix} suffix={suffix} decimals={decimals} color="white" locale={locale} />
         </span>
       </div>
       {/* Gradient divider */}
@@ -414,13 +423,13 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
                     <div className="mt-10 grid grid-cols-2 gap-3">
                       {system.speed && (
                         <div className="bg-white/3 border border-white/6 p-4">
-                          <div className="mil-text-metadata text-[7px] mb-1 opacity-60">SPEED</div>
+                          <div className="mil-text-metadata text-[7px] mb-1 opacity-60">{locale === 'ro' ? 'VITEZĂ' : 'SPEED'}</div>
                           <div className="text-lg font-bold tracking-tight">{system.speed}</div>
                         </div>
                       )}
                       {system.range && (
                         <div className="bg-white/3 border border-white/6 p-4">
-                          <div className="mil-text-metadata text-[7px] mb-1 opacity-60">RANGE</div>
+                          <div className="mil-text-metadata text-[7px] mb-1 opacity-60">{locale === 'ro' ? 'RAZĂ' : 'RANGE'}</div>
                           <div className="text-lg font-bold tracking-tight">{system.range}</div>
                         </div>
                       )}
@@ -1287,7 +1296,7 @@ export function BudgetComparisonBar({
                   {isRo ? "BUGET SUA 2025" : "U.S. BUDGET FY2025"}
                 </span>
                 <span className="text-4xl font-extrabold tracking-tighter text-white block mt-1">
-                  $954B
+                  {isRo ? "954 mld. $" : "$954B"}
                 </span>
               </div>
               <div className="hidden md:block h-8 w-px bg-white/10" />
@@ -1296,7 +1305,7 @@ export function BudgetComparisonBar({
                   {isRo ? "URMĂTOARELE 10 COMBINATE" : "NEXT 10 NATIONS COMBINED"}
                 </span>
                 <span className="text-4xl font-extrabold tracking-tighter text-white/60 block mt-1">
-                  $925B
+                  {isRo ? "925 mld. $" : "$925B"}
                 </span>
               </div>
             </div>
@@ -1309,7 +1318,7 @@ export function BudgetComparisonBar({
                   <span className="font-bold text-white tracking-wider flex items-center gap-1.5">
                     🇺🇸 {isRo ? "STATELE UNITE" : "UNITED STATES"}
                   </span>
-                  <span className="text-white font-bold">$954B</span>
+                  <span className="text-white font-bold">{isRo ? "954 mld. $" : "$954B"}</span>
                 </div>
                 <div className="h-2.5 rounded bg-white/5 overflow-hidden">
                   <motion.div
@@ -1330,7 +1339,7 @@ export function BudgetComparisonBar({
                   <span className="text-white/50 tracking-wider">
                     {isRo ? "URMĂTOARELE 10 NAȚIUNI COMBINATE" : "NEXT 10 NATIONS COMBINED"}
                   </span>
-                  <span className="text-white/50">$925B</span>
+                  <span className="text-white/50">{isRo ? "925 mld. $" : "$925B"}</span>
                 </div>
                 <div className="h-2.5 rounded bg-white/5 overflow-hidden">
                   <motion.div
@@ -1385,7 +1394,7 @@ export function BudgetComparisonBar({
                     <div className="flex items-center gap-2 font-mono text-[11px]">
                       {isHovered && !isUS && (
                         <span className="text-[9px] text-white/30 mr-1.5">
-                          ({pct.toFixed(1)}% {isRo ? "din SUA" : "of U.S."})
+                          ({isRo ? pct.toFixed(1).replace('.', ',') : pct.toFixed(1)}% {isRo ? "din SUA" : "of U.S."})
                         </span>
                       )}
                       <span className={cn(
@@ -1394,7 +1403,7 @@ export function BudgetComparisonBar({
                           ? "text-white font-bold" 
                           : isHovered ? "text-white" : "text-white/40"
                       )}>
-                        ${row.budget}B
+                        {isRo ? `${row.budget} mld. $` : `$${row.budget}B`}
                       </span>
                     </div>
                   </div>

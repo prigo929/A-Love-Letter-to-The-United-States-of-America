@@ -91,22 +91,34 @@ export const metadata: Metadata = {
 
 const getHeroStats = (locale: Locale) => {
   const stats = getMilitaryStats(locale);
+  const budgetStat = stats.find(s => s.id === "budget");
+  const basesStat = stats.find(s => s.id === "bases");
+  const nukesStat = stats.find(s => s.id === "nukes");
+  const carriersStat = stats.find(s => s.id === "carriers");
+  const isRo = locale === 'ro';
+
   return [
     { 
-      value: `${stats.find(s => s.id === "budget")?.prefix || ''}${stats.find(s => s.id === "budget")?.value || ''}${stats.find(s => s.id === "budget")?.suffix || ''}`, 
-      label: stats.find(s => s.id === "budget")?.label || ""
+      value: budgetStat
+        ? (isRo 
+            ? `${budgetStat.value} mld. $` 
+            : `$${budgetStat.value}B`)
+        : "", 
+      label: budgetStat?.label || ""
     },
     { 
-      value: `${stats.find(s => s.id === "carriers")?.value || ''}`, 
-      label: stats.find(s => s.id === "carriers")?.label || ""
+      value: carriersStat ? `${carriersStat.value}` : "", 
+      label: carriersStat?.label || ""
     },
     { 
-      value: `${stats.find(s => s.id === "bases")?.value || ''}${stats.find(s => s.id === "bases")?.suffix || ''}`, 
-      label: stats.find(s => s.id === "bases")?.label || ""
+      value: basesStat ? `${basesStat.value}${basesStat.suffix || ''}` : "", 
+      label: basesStat?.label || ""
     },
     { 
-      value: `${stats.find(s => s.id === "nukes")?.value || ''}${stats.find(s => s.id === "nukes")?.suffix || ''}`, 
-      label: stats.find(s => s.id === "nukes")?.label || ""
+      value: nukesStat 
+        ? `${nukesStat.value.toLocaleString(isRo ? 'ro-RO' : 'en-US')}${nukesStat.suffix || ''}` 
+        : "", 
+      label: nukesStat?.label || ""
     },
   ];
 };
@@ -260,7 +272,7 @@ export default async function MilitaryPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-white/5">
           {stats.map((s, i) => (
             <div key={s.id} className="border-r border-b border-white/5">
-              <MinimalistStat stat={s} index={i}/>
+              <MinimalistStat stat={s} index={i} locale={locale} />
             </div>
           ))}
         </div>

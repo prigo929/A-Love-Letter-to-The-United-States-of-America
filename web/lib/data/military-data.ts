@@ -850,6 +850,10 @@ export function getWeaponSystems(locale: Locale): WeaponSystem[] {
       case "b21": return {
         ...w,
         category: "Bombardier Invizibil",
+        tagline: "Cea mai avansată aeronavă construită vreodată.",
+        quantity: "Producție (100+ planificate)",
+        speed: "Subsonic înalt (Mach 0,9+)",
+        range: "Intercontinental (clasificat)",
         description: "Cea mai avansată aeronavă construită vreodată. B-21 Raider a intrat în serviciu în 2023 ca singura aeronavă de generația a 6-a din lume.",
         significance: "Face orice sistem de apărare aeriană existent în lume să fie depășit. B-21 înfrânge sistemele concepute să înfrângă B-2.",
         specs: [
@@ -858,19 +862,23 @@ export function getWeaponSystems(locale: Locale): WeaponSystem[] {
           { label: "Încărcătură", value: "Nucleară + Convențională" },
           { label: "Contractor", value: "Northrop Grumman" },
           { label: "Introdus", value: "2023" },
-          { label: "Cost Unitar", value: "$750M+" },
+          { label: "Cost Unitar", value: "750+ mil. $" },
         ]
       };
       case "f35": return {
         ...w,
         category: "Vânător Multirol",
+        tagline: "Un supercomputer zburător cu o perspectivă divină.",
+        quantity: "900+ livrate (3.300 planificate)",
+        speed: "Mach 1,6",
+        range: "2.220 km (rază de luptă)",
         description: "Cea mai capabilă aeronavă de luptă multirol din lume. F-35 este un supercomputer zburător — fuziunea senzorilor săi vede amenințările înainte ca adversarii să știe că există.",
         significance: "Avantajul real al F-35 este informația, nu doar invizibilitatea. Acesta agregă date de la senzori proprii, alte F-35, sateliți și sisteme terestre.",
         specs: [
           { label: "Generație", value: "Generația a 5-a" },
           { label: "Variante", value: "A (USAF), B (USMC), C (USN)" },
-          { label: "Viteză", value: "Mach 1.6" },
-          { label: "Radar", value: "AN/APG-81 AESA" },
+          { label: "Viteză", value: "Mach 1,6" },
+          { label: "Radar", value: "AESA AN/APG-81" },
           { label: "Suită EW", value: "AN/ASQ-239" },
           { label: "Parteneri", value: "17 națiuni aliate" },
         ]
@@ -878,26 +886,33 @@ export function getWeaponSystems(locale: Locale): WeaponSystem[] {
       case "f22": return {
         ...w,
         category: "Vânător Superioritate Aeriană",
+        tagline: "Prădătorul suprem al cerului.",
+        quantity: "186 de aeronave",
+        speed: "Mach 2,25 (supercroazieră: Mach 1,82)",
+        range: "2.570 km (cu 2 rezervoare ext.)",
         description: "Prădătorul suprem al cerului. F-22 Raptor este singurul avion de vânătoare invizibil capabil de supercroazieră operațional din lume.",
         significance: "Supercroaziera — abilitatea de a depăși Mach 1 fără postcombustie — combinată cu invizibilitatea extremă face ca F-22 să fie aproape imposibil de angajat.",
         specs: [
           { label: "Generație", value: "Generația a 5-a" },
-          { label: "Viteză", value: "Mach 2.25 (Mach 1.82 supercroazieră)" },
-          { label: "Plafon de Serviciu", value: "65.000 ft" },
-          { label: "Radar", value: "AN/APG-77 AESA" },
+          { label: "Viteză", value: "Mach 2,25 (Mach 1,82 supercroazieră)" },
+          { label: "Plafon de Serviciu", value: "19.800+ m (65.000 ft)" },
+          { label: "Radar", value: "AESA AN/APG-77" },
           { label: "Avionică", value: "Cea mai avansată în producție" },
-          { label: "Status", value: "Producția încheiată în 2011" },
+          { label: "Status", value: "Producție încheiată în 2011" },
         ]
       };
       case "gerald-ford": return {
         ...w,
         category: "Portavion Nuclear",
+        tagline: "Cea mai puternică navă de război construită vreodată.",
+        quantity: "2 în serviciu, 4 comandate",
+        heroStat: "100.000 TONE",
         description: "Cea mai puternică navă de război construită vreodată. La 100.000 de tone, portavioanele din clasa Ford operează 90 de aeronave.",
-        significance: "Un singur grup de atac de portavioane comandă un domeniu maritim de 500.000 de mile pătrate. Cu 11 CSG-uri desfășurate simultan, Marina SUA poate proiecta puterea oriunde pe Pământ.",
+        significance: "Un singur grup de atac de portavioane comandă un domeniu maritim de 500.000 de mile pătrate. Con 11 CSG-uri desfășurate simultan, Marina SUA poate proiecta puterea oriunde pe Pământ.",
         specs: [
           { label: "Deplasament", value: "100.000+ tone" },
-          { label: "Aeronave", value: "90 (F-35C, F/A-18, E-2D, etc.)" },
-          { label: "Propulsie", value: "2× reactoare nucleare A1B" },
+          { label: "Aeronave", value: "90 (F-35C, F/A-18, E-2D etc.)" },
+          { label: "Propulsie", value: "2 × reactoare nucleare A1B" },
           { label: "Echipaj", value: "4.539 + 2.500 personal aerian" },
           { label: "EMALS", value: "Lansare electromagnetică" },
           { label: "Durata de viață", value: "50 de ani fără realimentare" },
@@ -906,24 +921,33 @@ export function getWeaponSystems(locale: Locale): WeaponSystem[] {
       case "ohio": return {
         ...w,
         category: "Submarin cu Rachete Balistice",
+        tagline: "Descurajarea nucleară invizibilă.",
+        quantity: "14 submarine",
+        heroStat: "70% DIN ARSENAL",
+        speed: "Clasificată (25+ noduri sub apă)",
+        range: "Nelimitată (propulsie nucleară)",
         description: "Descurajarea nucleară invizibilă. 14 submarine din clasa Ohio transportă 70% din arsenalul nuclear al Americii.",
         significance: "Supraviețuirea SSBN este fundamentul descurajării nucleare. Deoarece sunt nedetectabile, ele garantează capacitatea de contraatac a Americii.",
         specs: [
-          { label: "Rachete", value: "24 × Trident II D5 SLBM" },
+          { label: "Rachete", value: "24 × SLBM Trident II D5" },
           { label: "Focoase", value: "Până la 192 per submarin" },
-          { label: "Rază", value: "7.000+ mile (Trident II)" },
+          { label: "Rază", value: "11.200+ km (Trident II)" },
           { label: "CEP", value: "Acuratețe ~90 metri" },
-          { label: "Adâncime", value: "Clasificată (800+ ft)" },
+          { label: "Adâncime", value: "Clasificată (240+ m)" },
           { label: "Autonomie", value: "77 de zile în patrulare" },
         ]
       };
       case "minuteman": return {
         ...w,
         category: "Rachetă Balistică Intercontinentală",
+        tagline: "Orice țintă de pe Pământ în 30 de minute.",
+        quantity: "400 desfășurate",
+        speed: "24.000+ km/h (Mach 23)",
+        range: "12.800+ km",
         description: "Descurajarea nucleară bazată pe uscat. 400 de ICBM-uri Minuteman III stau în alertă 24/7 în silozuri întărite.",
         significance: "Componenta terestră a triadei nucleare este cea mai supraviețuitoare din perspectiva lansării la avertizare.",
         specs: [
-          { label: "Rază", value: "8.000+ mile" },
+          { label: "Rază", value: "12.800+ km" },
           { label: "Viteză", value: "Mach 23" },
           { label: "Timp până la Țintă", value: "~30 minute (orice punct de pe Pământ)" },
           { label: "Focoase", value: "Până la 3 × MIRV-uri W78/W87" },
@@ -934,6 +958,11 @@ export function getWeaponSystems(locale: Locale): WeaponSystem[] {
       case "virginia": return {
         ...w,
         category: "Submarin de Atac Rapid",
+        tagline: "Umbra tăcută a adâncurilor.",
+        quantity: "22 în serviciu (40+ planificate)",
+        heroStat: "25+ NODURI",
+        speed: "Clasificată (25+ noduri sub apă)",
+        range: "Nelimitată (propulsie nucleară)",
         description: "Principala platformă de superioritate subacvatică a Marinei SUA. Proiectat pentru invizibilitate, colectare de informații și atacuri de precizie la sol cu rachete Tomahawk.",
         significance: "Războiul subacvatic rămâne singurul domeniu în care SUA mențin un avantaj calitativ masiv și necontestat în fața adversarilor.",
         specs: [
@@ -941,17 +970,22 @@ export function getWeaponSystems(locale: Locale): WeaponSystem[] {
           { label: "Armament", value: "Tomahawk VLS, Torpile Mk 48" },
           { label: "Deplasament", value: "7.900 tone" },
           { label: "Contractor", value: "General Dynamics Electric Boat / HII" },
-          { label: "Adâncime", value: "Clasificată (800+ ft)" },
+          { label: "Adâncime", value: "Clasificată (240+ m)" },
           { label: "Acustică", value: "Înveliș anecoic și propulsie silențioasă" },
         ]
       };
       case "aegis": return {
         ...w,
         category: "Apărare Antirachetă",
+        tagline: "Cel mai avansat scut de apărare navală din lume.",
+        quantity: "100+ nave echipate",
+        heroStat: "100+ NAVE",
+        speed: "Mach 15+ (interceptoare SM-3)",
+        range: "2.400+ km rază de interceptare",
         description: "Un sistem integrat de arme navale care combină radare SPY avansate, computere de comandă și rachete Standard (SM-3/SM-6) pentru a urmări și distruge rachete balistice și hipersonice.",
         significance: "Formează scutul principal al grupurilor de atac de portavioane și al națiunilor aliate împotriva atacurilor cu rachete, extinzând acoperirea defensivă în spațiu.",
         specs: [
-          { label: "Tip Radar", value: "AN/SPY-1 / SPY-6 AESA" },
+          { label: "Tip Radar", value: "AESA AN/SPY-1 / SPY-6" },
           { label: "Interceptoare", value: "SM-3, SM-6, ESSM" },
           { label: "Țintire", value: "Urmărire multi-misiune (100+ ținte)" },
           { label: "Integrare", value: "Capabilitate de Angajare Cooperativă" },
@@ -962,13 +996,18 @@ export function getWeaponSystems(locale: Locale): WeaponSystem[] {
       case "mq25": return {
         ...w,
         category: "UAV Autonom de Portavion",
+        tagline: "Realimentare în aer autonomă pentru flota viitorului.",
+        quantity: "În teste (76 planificate)",
+        heroStat: "AUTONOM",
+        speed: "Subsonic înalt",
+        range: "800+ km (extensie rază de luptă)",
         description: "Prima aeronavă fără pilot de pe un portavion operațională din lume, proiectată să ofere realimentare în aer pentru avioanele de luptă F-35C și F/A-18, extinzându-le raza și supraviețuirea.",
         significance: "Rezolvă dilema distanțării portavioanelor, permițându-le să rămână în afara razei rachetelor anti-navă inamice lansate de pe uscat, în timp ce lansează lovituri aeriene.",
         specs: [
           { label: "Rol", value: "Realimentare în aer și ISR" },
           { label: "Contractor", value: "Boeing" },
           { label: "Primul Zbor", value: "2019" },
-          { label: "Capacitate Combustibil", value: "15.000 lbs" },
+          { label: "Capacitate Combustibil", value: "6.800+ kg (15.000 lbs)" },
           { label: "Control", value: "Semi-autonom / integrat pe portavion" },
           { label: "Status", value: "Capabilitate Operațională Inițială (IOC) 2026" },
         ]
