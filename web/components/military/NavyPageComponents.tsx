@@ -162,31 +162,34 @@ export function NavySectionDivider() {
 // 1.5 NavyCountUp — High-Performance Numerical Counter
 // ─────────────────────────────────────────────────────────────────────────────
 
-function NavyCountUp({ value, color = "white" }: { value: string; color?: string }) {
+function NavyCountUp({ value, color = "white", locale = "en" }: { value: string; color?: string; locale?: Locale }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
   const [displayVal, setDisplayVal] = useState("0");
 
   useEffect(() => {
-    const numericMatch = value.match(/^([\d.]+)(.*)$/);
-    if (!numericMatch) {
+    const cleanValue = value.trim();
+    const match = cleanValue.match(/^([\d,.]+)(.*)$/);
+    if (!match) {
       setDisplayVal(value);
       return;
     }
-    const num = parseFloat(numericMatch[1]);
-    const suffix = numericMatch[2] || "";
+    const numericStr = match[1].replace(/[,.]/g, '');
+    const num = parseInt(numericStr, 10);
+    const suffix = match[2] || "";
     
     if (inView) {
       const controls = animate(0, num, {
         duration: 1.8,
         ease: [0.16, 1, 0.3, 1],
         onUpdate: (latest) => {
-          setDisplayVal(latest.toFixed(0) + suffix);
+          const formatted = Math.round(latest).toLocaleString(locale === "ro" ? "ro-RO" : "en-US");
+          setDisplayVal(formatted + suffix);
         },
       });
       return () => controls.stop();
     }
-  }, [inView, value]);
+  }, [inView, value, locale]);
 
   return <span ref={ref} style={{ color }}>{displayVal}</span>;
 }
@@ -303,7 +306,7 @@ export function NavyHero({
             {metrics.map((metric) => (
               <div key={metric.label} className="min-h-36 border-b border-r border-white/5 p-6 last:border-r-0 last:border-b-0 odd:border-r">
                 <div className="navy-font-display text-4xl font-black text-white">
-                  <NavyCountUp value={metric.value} />
+                  <NavyCountUp value={metric.value} locale={locale} />
                 </div>
                 <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.15em] text-white/60">{metric.label}</div>
                 <p className="mt-4 text-[11px] leading-relaxed text-white/40">{metric.detail}</p>
@@ -342,7 +345,7 @@ export function NavyMetricStrip({ metrics, locale = "en" }: { metrics: NavyMetri
                 {/* Large number */}
                 <div className="flex items-baseline gap-1">
                   <span className="text-[clamp(48px,7vw,96px)] font-extralight tracking-tighter leading-none text-white">
-                    <NavyCountUp value={metric.value} />
+                    <NavyCountUp value={metric.value} locale={locale} />
                   </span>
                 </div>
 
@@ -2073,7 +2076,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                 </h3>
                 
                 <div className="inline-block border border-[#8edcff]/10 rounded bg-[#0a0c10]/40 px-3 py-1 text-[10px] tracking-widest text-[#8edcff]/80 font-mono">
-                  SYSTEM DESIGNATION: {weapon.designation}
+                  {locale === "ro" ? "DESEMNARE SISTEM" : "SYSTEM DESIGNATION"}: {weapon.designation}
                 </div>
                 
                 <p className="text-sm leading-relaxed text-white/70 max-w-2xl pt-2">
@@ -2106,7 +2109,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                   {/* Accuracy telemetry */}
                   <div className="space-y-2">
                     <div className="flex justify-between text-[10px] font-mono tracking-widest text-white/50">
-                      <span>SYSTEM ACCURACY</span>
+                      <span>{locale === "ro" ? "ACURATEȚE SISTEM" : "SYSTEM ACCURACY"}</span>
                       <span className="text-[#8edcff] font-bold">{weapon.accuracy}%</span>
                     </div>
                     <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden relative">
@@ -2122,7 +2125,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                   {/* Operations telemetry */}
                   <div className="flex flex-col justify-end">
                     <div className="text-[9px] font-mono tracking-widest text-white/30 uppercase">
-                      TELEMETRY STATUS
+                      {locale === "ro" ? "STATUS TELEMETRIE" : "TELEMETRY STATUS"}
                     </div>
                     <div className="text-xs font-mono tracking-wider text-[#8edcff] font-bold uppercase mt-1">
                       {weapon.operations}
@@ -2135,18 +2138,18 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
               {/* Tactical Deployment Profile Block */}
               <div className="border border-white/10 rounded bg-[#0a0c10]/60 p-5 font-mono text-[10px] leading-relaxed text-white/60 space-y-2">
                 <div className="text-[#8edcff] text-[9.5px] uppercase tracking-widest font-black border-b border-white/10 pb-1 mb-2">
-                  TACTICAL DEPLOYMENT PROFILE
+                  {locale === "ro" ? "PROFIL DE DESFĂȘURARE TACTICĂ" : "TACTICAL DEPLOYMENT PROFILE"}
                 </div>
                 <div className="flex justify-between border-b border-white/5 pb-1">
-                  <span className="text-white/40">INTEGRATION STATE:</span>
-                  <span className="text-white font-semibold">SECURE // LINK-16 JOINT NETWORK</span>
+                  <span className="text-white/40">{locale === "ro" ? "STARE INTEGRARE:" : "INTEGRATION STATE:"}</span>
+                  <span className="text-white font-semibold">{locale === "ro" ? "SECURIZAT // REȚEA COMUNĂ LINK-16" : "SECURE // LINK-16 JOINT NETWORK"}</span>
                 </div>
                 <div className="flex justify-between border-b border-white/5 pb-1">
-                  <span className="text-white/40">DEPLOYMENT STATUS:</span>
-                  <span className="text-[#8edcff] font-semibold">OPERATIONAL Readiness OK</span>
+                  <span className="text-white/40">{locale === "ro" ? "STATUS DESFĂȘURARE:" : "DEPLOYMENT STATUS:"}</span>
+                  <span className="text-[#8edcff] font-semibold">{locale === "ro" ? "PREGĂTIRE OPERAȚIONALĂ OK" : "OPERATIONAL Readiness OK"}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-white/40">TARGET SYSTEM MATCH:</span>
+                  <span className="text-white/40">{locale === "ro" ? "POTRIVIRE SISTEM ȚINTĂ:" : "TARGET SYSTEM MATCH:"}</span>
                   <span className="text-white font-semibold">{weapon.tacticalOverlay}</span>
                 </div>
               </div>
@@ -2347,19 +2350,19 @@ export function NavyFleetComparisonSection({
   function getBarValue(row: NavyFleetComparison): number {
     if (activeMetric === "carriers") return row.carriers;
     if (activeMetric === "submarines") return row.submarines;
-    return parseFloat(row.tonnage);
+    return parseFloat(row.tonnage.replace(',', '.'));
   }
 
   function getMaxValue(): number {
     if (activeMetric === "carriers") return maxCarriers;
     if (activeMetric === "submarines") return maxSubs;
-    return parseFloat(usData.tonnage);
+    return parseFloat(usData.tonnage.replace(',', '.'));
   }
 
   function getDisplayValue(row: NavyFleetComparison): string {
     if (activeMetric === "carriers") return String(row.carriers);
     if (activeMetric === "submarines") return String(row.submarines);
-    return row.tonnage + " tons";
+    return row.tonnage + (isRo ? " tone" : " tons");
   }
 
   return (
@@ -2453,7 +2456,7 @@ export function NavyFleetComparisonSection({
             </div>
             <div className="p-5 text-center">
               <div className="text-[9px] font-mono uppercase tracking-widest text-white/30 mb-1">{isRo ? "TONAJ TOTAL FLOTĂ" : "TOTAL FLEET TONNAGE"}</div>
-              <div className="text-xl font-black text-white">4.6M</div>
+              <div className="text-xl font-black text-white">{isRo ? "4,6 mil." : "4.6M"}</div>
             </div>
           </div>
         </div>

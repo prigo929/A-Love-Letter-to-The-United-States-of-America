@@ -500,8 +500,8 @@ export function getNavyMetrics(locale: Locale): NavyMetric[] {
       detail: "O flotă globală construită în jurul portavioanelor, submarinelor, distrugătoarelor, navelor amfibii și logisticii.",
     },
     {
-      value: "5th",
-      label: "Generația Aeriană",
+      value: "A 5-a",
+      label: "Generație Aeriană",
       detail: "F-35C, E-2D, EA-18G, Super Hornet și MQ-25 creează un ecosistem aerian de portavion bogat în senzori.",
     },
   ];
@@ -1091,13 +1091,13 @@ export const NAVY_FLEET_COMPARISON: NavyFleetComparison[] = [
 export function getNavyFleetComparison(locale: Locale): NavyFleetComparison[] {
   if (locale !== "ro") return NAVY_FLEET_COMPARISON;
   return [
-    { country: "Statele Unite",  flag: "🇺🇸", carriers: 11, submarines: 72, totalShips: 296, tonnage: "4.6M", highlight: true },
-    { country: "China",          flag: "🇨🇳", carriers: 3,  submarines: 61, totalShips: 370, tonnage: "2.0M" },
-    { country: "Rusia",          flag: "🇷🇺", carriers: 1,  submarines: 58, totalShips: 192, tonnage: "0.9M" },
-    { country: "Marea Britanie", flag: "🇬🇧", carriers: 2,  submarines: 11, totalShips: 75,  tonnage: "0.4M" },
-    { country: "Japonia",        flag: "🇯🇵", carriers: 0,  submarines: 22, totalShips: 114, tonnage: "0.5M" },
-    { country: "India",          flag: "🇮🇳", carriers: 2,  submarines: 17, totalShips: 130, tonnage: "0.4M" },
-    { country: "Franța",         flag: "🇫🇷", carriers: 1,  submarines: 10, totalShips: 80,  tonnage: "0.3M" },
+    { country: "Statele Unite",  flag: "🇺🇸", carriers: 11, submarines: 72, totalShips: 296, tonnage: "4,6 mil.", highlight: true },
+    { country: "China",          flag: "🇨🇳", carriers: 3,  submarines: 61, totalShips: 370, tonnage: "2,0 mil." },
+    { country: "Rusia",          flag: "🇷🇺", carriers: 1,  submarines: 58, totalShips: 192, tonnage: "0,9 mil." },
+    { country: "Marea Britanie", flag: "🇬🇧", carriers: 2,  submarines: 11, totalShips: 75,  tonnage: "0,4 mil." },
+    { country: "Japonia",        flag: "🇯🇵", carriers: 0,  submarines: 22, totalShips: 114, tonnage: "0,5 mil." },
+    { country: "India",          flag: "🇮🇳", carriers: 2,  submarines: 17, totalShips: 130, tonnage: "0,4 mil." },
+    { country: "Franța",         flag: "🇫🇷", carriers: 1,  submarines: 10, totalShips: 80,  tonnage: "0,3 mil." },
   ];
 }
 
@@ -1503,7 +1503,7 @@ export function getNavyBases(locale: Locale): NavyBase[] {
       stats: [
         { label: "Comandament", value: "Flota a 5-a" },
         { label: "Misiune", value: "Securitate maritimă" },
-        { label: "Zonă", value: "6.5M km²" },
+        { label: "Zonă", value: "6,5 mil. km²" },
         { label: "Parteneri", value: "Coaliția CMF" },
       ],
       accent: "#c4b5fd",
@@ -1602,7 +1602,7 @@ export function getNavyHumanitarianMissions(locale: Locale): NavyHumanitarianMis
       name: "Operațiuni de Ajutor în Uragan",
       year: "2017 (Irma/Maria)",
       description: "După ce Uraganele Irma și Maria au devastat Puerto Rico și Insulele Virgine, Marina a desfășurat grupul amfibiu USS Kearsarge, USNS Comfort și batalionele Seabee pentru a restaura energia, livra apă și reconstrui infrastructura.",
-      impact: "4,3M mese + 4,8M litri apă",
+      impact: "4,3 mil. mese + 4,8 mil. litri apă",
       asset: "Grup Amfibiu + USNS Comfort",
       accent: "#ff7a7a",
     },
