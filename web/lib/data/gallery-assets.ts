@@ -327,6 +327,11 @@ import asset323 from "@/IMAGES/US Flags/michael-schofield-Cqncpa8nRRw-unsplash.j
 import asset324 from "@/IMAGES/US Flags/nelson-ndongala-gDRHfyeOq58-unsplash.jpg";
 import asset325 from "@/IMAGES/USA from Space/Planet Earth.jpg";
 import asset326 from "@/IMAGES/USA from Space/USA at night from Space.jpg";
+import asset327 from "@/IMAGES/Culture/Brand Ads/1982 General Foods International Coffees advertisement.jpg";
+import asset328 from "@/IMAGES/Culture/Brand Ads/1987 Uniden cordless phone advertisement.jpg";
+import asset329 from "@/IMAGES/Culture/Brand Ads/Coca-Cola (1989) You Can't beat the feeling.jpg";
+import asset330 from "@/IMAGES/Culture/Brand Ads/Coca-Cola is it, 1988.jpg";
+import asset331 from "@/IMAGES/Culture/Brand Ads/Tiffany & Co_ Archival Ad 1967.jpg";
 
 export type GalleryAssetRecord = {
   path: string;
@@ -661,4 +666,9 @@ export const GALLERY_ASSETS = [
   { path: "US Flags/nelson-ndongala-gDRHfyeOq58-unsplash.jpg", src: asset324 },
   { path: "USA from Space/Planet Earth.jpg", src: asset325 },
   { path: "USA from Space/USA at night from Space.jpg", src: asset326 },
+  { path: "Culture/Brand Ads/1982 General Foods International Coffees advertisement.jpg", src: asset327 },
+  { path: "Culture/Brand Ads/1987 Uniden cordless phone advertisement.jpg", src: asset328 },
+  { path: "Culture/Brand Ads/Coca-Cola (1989) You Can't beat the feeling.jpg", src: asset329 },
+  { path: "Culture/Brand Ads/Coca-Cola is it, 1988.jpg", src: asset330 },
+  { path: "Culture/Brand Ads/Tiffany & Co_ Archival Ad 1967.jpg", src: asset331 },
 ] as const satisfies readonly GalleryAssetRecord[];

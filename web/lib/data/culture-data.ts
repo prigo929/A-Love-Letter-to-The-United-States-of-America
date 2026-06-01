@@ -645,10 +645,25 @@ export const CULTURE_MEDIA_WALL_IMAGES = [
   "/images/culture/Food/Burger and Fries close up.jpg",
   "/images/culture/Food/American Burger.jpg",
   "/images/culture/Brand Ads/1971 Coca Cola Coke Vintage Print Ad Bottle Glass in Snow Ice Cold.jpg",
+  "/images/culture/Brand Ads/1982 General Foods International Coffees advertisement.jpg",
+  "/images/culture/Brand Ads/1987 Uniden cordless phone advertisement.jpg",
+  "/images/culture/Brand Ads/Coca-Cola (1989) You Can't beat the feeling.jpg",
+  "/images/culture/Brand Ads/Coca-Cola is it, 1988.jpg",
+  "/images/culture/Brand Ads/Tiffany & Co_ Archival Ad 1967.jpg",
+  "/images/culture/School/Towns_County_High_School,_Middle_School,_and_Elementary_School_share_a_campus_in_Hiawassee,_Georgia.jpg",
+  "/images/culture/School/High-School-Hallway_from_Amazing_World_of_Gumball.jpg",
+  "/images/culture/School/Edison_High_School_of_Technology_entrance.jpg",
+  "/images/culture/School/A_classroom_in_a_modern_public_high_school_in_the_United_States_–_Hayesville_High_School_in_Clay_County,_North_Carolina.jpg",
+  "/images/culture/School/A_hallway_in_a_modern_public_high_school_in_the_United_States_–_Hayesville_High_School_in_Clay_County,_North_Carolina.jpg",
 ];
 
 export const BRAND_AD_LOGOS = [
   { name: "Coca-Cola Ad", file: "1971 Coca Cola Coke Vintage Print Ad Bottle Glass in Snow Ice Cold.jpg" },
+  { name: "General Foods Ad 1982", file: "1982 General Foods International Coffees advertisement.jpg" },
+  { name: "Uniden Ad 1987", file: "1987 Uniden cordless phone advertisement.jpg" },
+  { name: "Coca-Cola Ad 1989", file: "Coca-Cola (1989) You Can't beat the feeling.jpg" },
+  { name: "Coca-Cola Ad 1988", file: "Coca-Cola is it, 1988.jpg" },
+  { name: "Tiffany & Co Ad 1967", file: "Tiffany & Co_ Archival Ad 1967.jpg" },
 ];
 
 // ─── Music Genres regional origins data ──────────────────────────────────────
