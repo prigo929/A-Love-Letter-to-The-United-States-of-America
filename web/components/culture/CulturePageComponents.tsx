@@ -1819,99 +1819,54 @@ interface ShiftingGridCellProps {
 export const ShiftingGridCell = memo(function ShiftingGridCell({ src, isColor }: ShiftingGridCellProps) {
   return (
     <div className="relative w-full h-full overflow-hidden bg-black/60 rounded border border-white/[0.03]">
-      <AnimatePresence>
-        <motion.div
-          key={src}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isColor ? 0.9 : 0.45 }}
-          exit={{ 
-            opacity: 0, 
-            transition: { duration: 0.8, ease: "easeInOut" } 
-          }}
-          transition={{
-            opacity: { duration: 0.8, ease: "easeInOut" },
-          }}
-          className="absolute inset-0 w-full h-full"
-          style={{ willChange: "opacity", transform: "translateZ(0)" }}
-        >
-          <img
-            src={src}
-            alt="Cultural artifact"
-            className={cn(
-              "w-full h-full object-cover",
-              isColor ? "" : "grayscale"
-            )}
-            loading="lazy"
-          />
-          {/* Dimming layer instead of heavy GPU filter */}
-          {!isColor && (
-            <div className="absolute inset-0 bg-black/35 pointer-events-none" />
+      <motion.div
+        animate={{ opacity: isColor ? 0.95 : 0.45 }}
+        transition={{ duration: 1.0, ease: "easeInOut" }}
+        className="absolute inset-0 w-full h-full"
+        style={{ willChange: "opacity", transform: "translateZ(0)" }}
+      >
+        <img
+          src={src}
+          alt="Cultural artifact"
+          className={cn(
+            "w-full h-full object-cover transition-all duration-1000 ease-in-out",
+            isColor ? "grayscale-0 scale-[1.03]" : "grayscale scale-100"
           )}
-        </motion.div>
-      </AnimatePresence>
+          style={{ willChange: "transform, filter", transform: "translateZ(0)" }}
+          decoding="async"
+          loading="lazy"
+        />
+        {/* Dimming layer instead of heavy GPU filter */}
+        <div 
+          className={cn(
+            "absolute inset-0 bg-black/30 pointer-events-none transition-opacity duration-1000",
+            isColor ? "opacity-0" : "opacity-100"
+          )} 
+        />
+      </motion.div>
     </div>
   );
 });
 
+const INITIAL_COLOR_STATES = [
+  true, false, false, false,
+  false, true, false, false,
+  false, false, true, false,
+  false, false, false, true
+];
+
 export function CultureLivingMediaWall() {
-  const [visibleImages, setVisibleImages] = useState<string[]>([]);
-  const [colorStates, setColorStates] = useState<boolean[]>([]);
-  
-  const unusedRef = useRef<string[]>([]);
-  const usedRef = useRef<string[]>([]);
+  const [colorStates, setColorStates] = useState<boolean[]>(INITIAL_COLOR_STATES);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { margin: "200px" });
 
-  // Initialize pool on mount
-  useEffect(() => {
-    const shuffled = [...CULTURE_MEDIA_WALL_IMAGES].sort(() => Math.random() - 0.5);
-    const initial = shuffled.slice(0, 16);
-    const unused = shuffled.slice(16);
-    
-    // Choose 4 random indices to be colored initially
-    const initialColors = Array(16).fill(false);
-    const colorIndices: number[] = [];
-    while (colorIndices.length < 4) {
-      const idx = Math.floor(Math.random() * 16);
-      if (!colorIndices.includes(idx)) {
-        colorIndices.push(idx);
-        initialColors[idx] = true;
-      }
-    }
-
-    setVisibleImages(initial);
-    setColorStates(initialColors);
-    unusedRef.current = unused;
-    usedRef.current = initial;
-  }, []);
-
-  const getNewImage = useCallback(() => {
-    if (unusedRef.current.length === 0) {
-      unusedRef.current = [...usedRef.current].sort(() => Math.random() - 0.5);
-      usedRef.current = [];
-    }
-    const newImg = unusedRef.current.pop()!;
-    usedRef.current.push(newImg);
-    return newImg;
-  }, []);
-
-  const hasImages = visibleImages.length > 0;
+  const STATIC_GRID_IMAGES = CULTURE_MEDIA_WALL_IMAGES.slice(0, 16);
 
   // Shifting interval
   useEffect(() => {
-    if (!hasImages || !isInView) return;
+    if (!isInView) return;
 
     const interval = setInterval(() => {
-      // Pick 1 random cell to swap image
-      const randIndex = Math.floor(Math.random() * 16);
-      const nextImg = getNewImage();
-
-      setVisibleImages((prev) => {
-        const next = [...prev];
-        next[randIndex] = nextImg;
-        return next;
-      });
-
       // Shift color states: select 4 random cells to highlight
       setColorStates(() => {
         const nextColors = Array(16).fill(false);
@@ -1928,7 +1883,7 @@ export function CultureLivingMediaWall() {
     }, 3000); // 3 seconds interval for a calmer feel
 
     return () => clearInterval(interval);
-  }, [hasImages, getNewImage, isInView]);
+  }, [isInView]);
 
   return (
     <section ref={sectionRef} className="relative culture-bg py-24 md:py-32 overflow-hidden border-t border-white/5">
@@ -1947,21 +1902,19 @@ export function CultureLivingMediaWall() {
           </h2>
         </div>
 
-        {hasImages && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
-            {visibleImages.map((src, idx) => (
-              <div
-                key={idx}
-                className="relative aspect-square w-full overflow-hidden rounded bg-black/40 border border-white/5"
-              >
-                <ShiftingGridCell
-                  src={src}
-                  isColor={colorStates[idx]}
-                />
-              </div>
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
+          {STATIC_GRID_IMAGES.map((src, idx) => (
+            <div
+              key={idx}
+              className="relative aspect-square w-full overflow-hidden rounded bg-black/40 border border-white/5"
+            >
+              <ShiftingGridCell
+                src={src}
+                isColor={colorStates[idx]}
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Gold radial glow in center */}
