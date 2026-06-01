@@ -1811,60 +1811,6 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
 
 // ─── §17 — Living Media Wall ─────────────────────────────────────────────────
 
-const MOBILE_SPANS = [
-  "col-span-2 row-span-2",
-  "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1"
-];
-
-const TABLET_SPANS = [
-  "col-span-2 row-span-2",
-  "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-2 row-span-2",
-  "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1"
-];
-
-const DESKTOP_SPANS = [
-  "col-span-2 row-span-2",
-  "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-2",
-  "col-span-2 row-span-2",
-  "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-2 row-span-2",
-  "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1",
-  "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1", "col-span-1 row-span-1"
-];
-
 interface ShiftingGridCellProps {
   src: string;
   isColor: boolean;
@@ -1908,7 +1854,6 @@ export const ShiftingGridCell = memo(function ShiftingGridCell({ src, isColor }:
 });
 
 export function CultureLivingMediaWall() {
-  const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
   const [visibleImages, setVisibleImages] = useState<string[]>([]);
   const [colorStates, setColorStates] = useState<boolean[]>([]);
   
@@ -1917,30 +1862,25 @@ export function CultureLivingMediaWall() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { margin: "200px" });
 
-  // Detect screen size on client
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 640) {
-        setScreenSize('mobile');
-      } else if (window.innerWidth < 1024) {
-        setScreenSize('tablet');
-      } else {
-        setScreenSize('desktop');
-      }
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   // Initialize pool on mount
   useEffect(() => {
     const shuffled = [...CULTURE_MEDIA_WALL_IMAGES].sort(() => Math.random() - 0.5);
-    const initial = shuffled.slice(0, 40); // Max size of our layout spans (39)
-    const unused = shuffled.slice(40);
+    const initial = shuffled.slice(0, 12);
+    const unused = shuffled.slice(12);
     
+    // Choose 3 random indices to be colored initially
+    const initialColors = Array(12).fill(false);
+    const colorIndices: number[] = [];
+    while (colorIndices.length < 3) {
+      const idx = Math.floor(Math.random() * 12);
+      if (!colorIndices.includes(idx)) {
+        colorIndices.push(idx);
+        initialColors[idx] = true;
+      }
+    }
+
     setVisibleImages(initial);
-    setColorStates(Array.from({ length: 40 }, () => Math.random() < 0.12));
+    setColorStates(initialColors);
     unusedRef.current = unused;
     usedRef.current = initial;
   }, []);
@@ -1962,8 +1902,8 @@ export function CultureLivingMediaWall() {
     if (!hasImages || !isInView) return;
 
     const interval = setInterval(() => {
-      const spansCount = screenSize === 'mobile' ? 25 : screenSize === 'tablet' ? 30 : 39;
-      const randIndex = Math.floor(Math.random() * spansCount);
+      // Pick 1 random cell to swap image
+      const randIndex = Math.floor(Math.random() * 12);
       const nextImg = getNewImage();
 
       setVisibleImages((prev) => {
@@ -1972,69 +1912,63 @@ export function CultureLivingMediaWall() {
         return next;
       });
 
-      setColorStates((prev) => {
-        const next = [...prev];
-        next[randIndex] = Math.random() < 0.12;
-        return next;
+      // Shift color states: select 3 random cells to highlight
+      setColorStates(() => {
+        const nextColors = Array(12).fill(false);
+        const colorIndices: number[] = [];
+        while (colorIndices.length < 3) {
+          const idx = Math.floor(Math.random() * 12);
+          if (!colorIndices.includes(idx)) {
+            colorIndices.push(idx);
+            nextColors[idx] = true;
+          }
+        }
+        return nextColors;
       });
-    }, 1800);
+    }, 3000); // 3 seconds interval for a calmer feel
 
     return () => clearInterval(interval);
-  }, [hasImages, screenSize, getNewImage, isInView]);
-
-  const spans = screenSize === 'mobile' ? MOBILE_SPANS :
-                screenSize === 'tablet' ? TABLET_SPANS :
-                                          DESKTOP_SPANS;
+  }, [hasImages, getNewImage, isInView]);
 
   return (
-    <section ref={sectionRef} className="relative w-full h-screen bg-black overflow-hidden select-none flex items-center justify-center">
-      {visibleImages.length > 0 && (
-        <>
-          {/* Full-Viewport Shifting Grid */}
-          <div
-            className="grid gap-1.5 p-1.5 w-full h-full grid-flow-dense"
-            style={{
-              gridTemplateColumns: screenSize === 'mobile' ? 'repeat(4, minmax(0, 1fr))' :
-                                   screenSize === 'tablet' ? 'repeat(6, minmax(0, 1fr))' :
-                                                             'repeat(8, minmax(0, 1fr))',
-              gridTemplateRows: screenSize === 'mobile' ? 'repeat(8, minmax(0, 1fr))' :
-                                screenSize === 'tablet' ? 'repeat(7, minmax(0, 1fr))' :
-                                                          'repeat(7, minmax(0, 1fr))'
-            }}
-          >
-            {spans.map((spanClass, idx) => (
+    <section ref={sectionRef} className="relative culture-bg py-24 md:py-32 overflow-hidden border-t border-white/5">
+      {/* Dot-grid background */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8">
+        
+        {/* Title Block */}
+        <div className="text-center mb-16">
+          <p className="culture-text-label text-glory-gold mb-3" style={{ letterSpacing: "0.25em" }}>
+            CULTURAL ARTIFACTS
+          </p>
+          <h2 className="font-editorial text-3xl sm:text-4xl md:text-5xl text-[#F5EDD8]">
+            THE ARCHIVE
+          </h2>
+        </div>
+
+        {hasImages && (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+            {visibleImages.map((src, idx) => (
               <div
                 key={idx}
-                className={cn("w-full h-full relative", spanClass)}
+                className="relative aspect-square w-full overflow-hidden rounded bg-black/40 border border-white/5"
               >
                 <ShiftingGridCell
-                  src={visibleImages[idx]}
+                  src={src}
                   isColor={colorStates[idx]}
                 />
               </div>
             ))}
           </div>
+        )}
+      </div>
 
-          {/* Ambient Dark Overlay to make the grid feel cohesive */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none opacity-80" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black pointer-events-none opacity-80" />
-          <div className="absolute inset-0 bg-black/25 pointer-events-none" />
-
-          {/* Centered floating typography overlay */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-            <div className="text-center">
-              <p className="culture-text-label text-white/15 mb-4" style={{ letterSpacing: "0.6em", fontSize: "10px" }}>CULTURAL ARTIFACTS</p>
-              <h2 className="font-hero text-white/[0.06] leading-none" style={{ fontSize: "clamp(60px, 12vw, 180px)", letterSpacing: "0.06em" }}>THE ARCHIVE</h2>
-            </div>
-          </div>
-
-          {/* Gold radial glow in center */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: "radial-gradient(ellipse at center, rgba(255,215,0,0.03) 0%, transparent 50%)" }}
-          />
-        </>
-      )}
+      {/* Gold radial glow in center */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at center, rgba(255,215,0,0.02) 0%, transparent 60%)" }}
+      />
     </section>
   );
 }
