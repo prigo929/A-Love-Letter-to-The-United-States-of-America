@@ -477,7 +477,7 @@ export function VideoCultureHero({
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             className="absolute inset-0 h-full w-full object-cover brightness-[0.4] saturate-[0.8]"
           >
             <source src={videoSrc} type="video/mp4" />
@@ -1825,16 +1825,18 @@ export const ShiftingGridCell = memo(function ShiftingGridCell({ src, isColor }:
         className="absolute inset-0 w-full h-full"
         style={{ willChange: "opacity", transform: "translateZ(0)" }}
       >
-        <img
+        <Image
           src={src}
           alt="Cultural artifact"
+          fill
+          sizes="(max-width: 768px) 50vw, 25vw"
           className={cn(
-            "w-full h-full object-cover transition-all duration-1000 ease-in-out",
+            "object-cover transition-all duration-1000 ease-in-out",
             isColor ? "grayscale-0 scale-[1.03]" : "grayscale scale-100"
           )}
           style={{ willChange: "transform, filter", transform: "translateZ(0)" }}
           decoding="async"
-          loading="eager"
+          loading="lazy"
         />
         {/* Dimming layer instead of heavy GPU filter */}
         <div 
