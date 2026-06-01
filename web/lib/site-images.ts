@@ -172,6 +172,14 @@ import vaultFortune1931 from "@/IMAGES/Culture/Magazines/“Aviation as Seen by 
 import vaultLifeMarilyn from "@/IMAGES/Culture/Magazines/marilyn-monroe-the-iconic-life-cover-from-may-25-1953.jpg";
 import vaultLifeDisney from "@/IMAGES/Culture/Magazines/disney-world-the-iconic-life-cover-from-october-15-1971.jpg";
 
+// Brand Ads
+import vaultCocaCola1971 from "@/IMAGES/Culture/Brand Ads/1971 Coca Cola Coke Vintage Print Ad Bottle Glass in Snow Ice Cold.jpg";
+import vaultGeneralFoods1982 from "@/IMAGES/Culture/Brand Ads/1982 General Foods International Coffees advertisement.jpg";
+import vaultUniden1987 from "@/IMAGES/Culture/Brand Ads/1987 Uniden cordless phone advertisement.jpg";
+import vaultCocaCola1989 from "@/IMAGES/Culture/Brand Ads/Coca-Cola (1989) You Can't beat the feeling.jpg";
+import vaultCocaCola1988 from "@/IMAGES/Culture/Brand Ads/Coca-Cola is it, 1988.jpg";
+import vaultTiffany1967 from "@/IMAGES/Culture/Brand Ads/Tiffany & Co_ Archival Ad 1967.jpg";
+
 // Global Bases
 import baseRamstein from "@/IMAGES/Military/Global Bases/ramstein_air_base.jpg";
 import baseYokosuka from "@/IMAGES/Military/Global Bases/western_pacific_fleet_activities_yokosuka.jpg";
@@ -410,5 +418,11 @@ export const SITE_IMAGES = {
     vaultLifeMarilyn: vaultLifeMarilyn.src,
     vaultLifeDisney: vaultLifeDisney.src,
     timesSquareIconic: cultureTimesSquareIconic.src,
+    vaultCocaCola1971: vaultCocaCola1971.src,
+    vaultGeneralFoods1982: vaultGeneralFoods1982.src,
+    vaultUniden1987: vaultUniden1987.src,
+    vaultCocaCola1989: vaultCocaCola1989.src,
+    vaultCocaCola1988: vaultCocaCola1988.src,
+    vaultTiffany1967: vaultTiffany1967.src,
   },
 } as const;

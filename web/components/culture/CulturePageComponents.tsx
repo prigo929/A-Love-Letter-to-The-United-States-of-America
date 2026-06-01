@@ -1682,6 +1682,15 @@ const EDITORIAL_ITEMS: ArchiveItem[] = [
   { title: "TIME Magazine", subtitle: "September 11 Remembrance", year: "2001", imageKey: "vaultTime911" },
 ];
 
+const ADS_ITEMS: ArchiveItem[] = [
+  { title: "Coca-Cola Ad", subtitle: "Vintage Print Ad", year: "1971", imageKey: "vaultCocaCola1971" },
+  { title: "General Foods", subtitle: "International Coffees Ad", year: "1982", imageKey: "vaultGeneralFoods1982" },
+  { title: "Uniden Ad", subtitle: "Cordless Phone Ad", year: "1987", imageKey: "vaultUniden1987" },
+  { title: "Coca-Cola is it", subtitle: "Classic Slogan Ad", year: "1988", imageKey: "vaultCocaCola1988" },
+  { title: "Coca-Cola Ad", subtitle: "You Can't Beat the Feeling", year: "1989", imageKey: "vaultCocaCola1989" },
+  { title: "Tiffany & Co.", subtitle: "Archival Ad", year: "1967", imageKey: "vaultTiffany1967" },
+];
+
 interface CultureArchiveVaultProps {
   isRo: boolean;
 }
@@ -1804,7 +1813,7 @@ export const VaultCard = memo(function VaultCard({ item, idx, onClick }: { item:
 });
 
 export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
-  const [activeTab, setActiveTab] = useState<"cinema" | "music" | "editorial">("cinema");
+  const [activeTab, setActiveTab] = useState<"cinema" | "music" | "editorial" | "ads">("cinema");
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedTitle, setSelectedTitle] = useState<string>("");
   const [selectedSubtitle, setSelectedSubtitle] = useState<string>("");
@@ -1813,6 +1822,7 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
     { id: "cinema", label: isRo ? "Cinema" : "Cinema" },
     { id: "music", label: isRo ? "Muzică" : "Music" },
     { id: "editorial", label: isRo ? "Publicații" : "Editorial" },
+    { id: "ads", label: isRo ? "Reclame" : "Ads" },
   ] as const;
 
   const getItems = () => {
@@ -1823,6 +1833,8 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
         return MUSIC_ITEMS;
       case "editorial":
         return EDITORIAL_ITEMS;
+      case "ads":
+        return ADS_ITEMS;
     }
   };
 
@@ -1857,7 +1869,7 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
         </motion.div>
 
         {/* Tabs Controller */}
-        <div className="flex justify-center border-b border-white/10 mb-12 max-w-md mx-auto">
+        <div className="flex justify-center border-b border-white/10 mb-12 max-w-lg mx-auto">
           {tabs.map((tab) => (
             <button
               key={tab.id}
