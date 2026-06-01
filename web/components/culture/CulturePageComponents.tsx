@@ -1865,14 +1865,14 @@ export function CultureLivingMediaWall() {
   // Initialize pool on mount
   useEffect(() => {
     const shuffled = [...CULTURE_MEDIA_WALL_IMAGES].sort(() => Math.random() - 0.5);
-    const initial = shuffled.slice(0, 12);
-    const unused = shuffled.slice(12);
+    const initial = shuffled.slice(0, 16);
+    const unused = shuffled.slice(16);
     
-    // Choose 3 random indices to be colored initially
-    const initialColors = Array(12).fill(false);
+    // Choose 4 random indices to be colored initially
+    const initialColors = Array(16).fill(false);
     const colorIndices: number[] = [];
-    while (colorIndices.length < 3) {
-      const idx = Math.floor(Math.random() * 12);
+    while (colorIndices.length < 4) {
+      const idx = Math.floor(Math.random() * 16);
       if (!colorIndices.includes(idx)) {
         colorIndices.push(idx);
         initialColors[idx] = true;
@@ -1903,7 +1903,7 @@ export function CultureLivingMediaWall() {
 
     const interval = setInterval(() => {
       // Pick 1 random cell to swap image
-      const randIndex = Math.floor(Math.random() * 12);
+      const randIndex = Math.floor(Math.random() * 16);
       const nextImg = getNewImage();
 
       setVisibleImages((prev) => {
@@ -1912,12 +1912,12 @@ export function CultureLivingMediaWall() {
         return next;
       });
 
-      // Shift color states: select 3 random cells to highlight
+      // Shift color states: select 4 random cells to highlight
       setColorStates(() => {
-        const nextColors = Array(12).fill(false);
+        const nextColors = Array(16).fill(false);
         const colorIndices: number[] = [];
-        while (colorIndices.length < 3) {
-          const idx = Math.floor(Math.random() * 12);
+        while (colorIndices.length < 4) {
+          const idx = Math.floor(Math.random() * 16);
           if (!colorIndices.includes(idx)) {
             colorIndices.push(idx);
             nextColors[idx] = true;
@@ -1948,7 +1948,7 @@ export function CultureLivingMediaWall() {
         </div>
 
         {hasImages && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
             {visibleImages.map((src, idx) => (
               <div
                 key={idx}
