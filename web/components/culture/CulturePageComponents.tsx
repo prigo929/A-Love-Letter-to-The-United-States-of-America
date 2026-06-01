@@ -1834,7 +1834,7 @@ export const ShiftingGridCell = memo(function ShiftingGridCell({ src, isColor }:
           )}
           style={{ willChange: "transform, filter", transform: "translateZ(0)" }}
           decoding="async"
-          loading="lazy"
+          loading="eager"
         />
         {/* Dimming layer instead of heavy GPU filter */}
         <div 
@@ -1858,7 +1858,7 @@ const INITIAL_COLOR_STATES = [
 export function CultureLivingMediaWall() {
   const [colorStates, setColorStates] = useState<boolean[]>(INITIAL_COLOR_STATES);
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { margin: "200px" });
+  const isInView = useInView(sectionRef, { margin: "600px" });
 
   const STATIC_GRID_IMAGES = CULTURE_MEDIA_WALL_IMAGES.slice(0, 16);
 
