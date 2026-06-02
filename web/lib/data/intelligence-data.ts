@@ -378,7 +378,7 @@ export const INTEL_FUTURE: IntelligenceFutureProgram[] = [
 export function getIntelligenceMetrics(locale: Locale): IntelligenceMetric[] {
   if (locale !== "ro") return INTEL_METRICS;
   return [
-    { value: "$100B+", label: "BUGET ANUAL", detail: "Bugetul estimat cumulativ al Programului Național de Informații și al Programului de Informații Militare." },
+    { value: "100+ mld. $", label: "BUGET ANUAL", detail: "Bugetul estimat cumulativ al Programului Național de Informații și al Programului de Informații Militare." },
     { value: "18", label: "AGENȚII ACTIVE", detail: "Organizații distincte de securitate și informații care operează sub egida Comunității Naționale." },
     { value: "50+", label: "SATELIȚI SPION", detail: "Active orbitale clasificate de recunoaștere, analiză a semnalelor și supraveghere." },
     { value: "100K+", label: "PERSONAL ACTIV", detail: "Criptologi, analiști, ofițeri operativi și specialiști cibernetici la nivel mondial." },

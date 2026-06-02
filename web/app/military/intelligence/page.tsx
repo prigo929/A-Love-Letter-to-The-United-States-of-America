@@ -49,7 +49,7 @@ export default async function IntelligencePage() {
 
   const heroStats = isRo
     ? [
-        { value: "$100B+", label: "BUGET ANUAL" },
+        { value: "100+ mld. $", label: "BUGET ANUAL" },
         { value: "18", label: "AGENȚII INTRUNITE" },
         { value: "50+", label: "ACTIVE ORBITALE" },
         { value: "24/7", label: "MONITORIZARE" },
