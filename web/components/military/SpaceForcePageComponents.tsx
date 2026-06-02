@@ -158,13 +158,14 @@ export function SFSectionDivider() {
 // Helpers
 // ─────────────────────────────────────────────────────────────────────────────
 
-function SFCountUp({ value }: { value: string }) {
+function SFCountUp({ value, locale = "en" }: { value: string; locale?: Locale }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
   const [displayVal, setDisplayVal] = useState("0");
 
   useEffect(() => {
-    const numericMatch = value.replace(/,/g, "").match(/^([\d.]+)(.*)$/);
+    const cleanValue = value.replace(/,/g, "").replace(/\./g, ""); // strip all thousands separators
+    const numericMatch = cleanValue.match(/^([\d.]+)(.*)$/);
     if (!numericMatch) {
       setDisplayVal(value);
       return;
@@ -179,14 +180,14 @@ function SFCountUp({ value }: { value: string }) {
         onUpdate: (latest) => {
           const isYear = num >= 1000 && num < 2100 && suffix === "";
           const formatted = (num >= 1000 && !isYear)
-            ? Math.round(latest).toLocaleString("en-US")
+            ? Math.round(latest).toLocaleString(locale === "ro" ? "ro-RO" : "en-US")
             : latest.toFixed(0);
           setDisplayVal(formatted + suffix);
         },
       });
       return () => controls.stop();
     }
-  }, [inView, value]);
+  }, [inView, value, locale]);
 
   return <span ref={ref} className="text-white">{displayVal}</span>;
 }
@@ -334,7 +335,7 @@ export function SpaceForceMetricStrip({ metrics, locale = "en" }: { metrics: Spa
                 {/* Large number */}
                 <div className="flex items-baseline gap-1">
                   <span className="text-[clamp(48px,7vw,96px)] font-extralight tracking-tighter leading-none">
-                    <SFCountUp value={m.value} />
+                    <SFCountUp value={m.value} locale={locale} />
                   </span>
                 </div>
 
@@ -478,6 +479,7 @@ export function SpaceForceFleetComparisonSection({ data, locale = "en" }: { data
                       {/* Enhancement 8: hover number ticker */}
                       <SFTickerNumber
                         value={val}
+                        locale={locale}
                         className={cn(
                           "sf-font-display text-base font-black w-16 text-right tabular-nums select-none",
                           isUS ? "text-[#3ddbd9]" : "text-white/35"
@@ -815,7 +817,7 @@ export function SpaceForceOperationalConsole({ theaters, locale = "en" }: { thea
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Enhancement 8: hover-animated number ticker
-function SFTickerNumber({ value, className }: { value: number; className?: string }) {
+function SFTickerNumber({ value, className, locale = "en" }: { value: number; className?: string; locale?: Locale }) {
   const [display, setDisplay] = useState(value);
   const animating = useRef(false);
 
@@ -834,7 +836,7 @@ function SFTickerNumber({ value, className }: { value: number; className?: strin
     requestAnimationFrame(tick);
   };
 
-  return <span className={className} onMouseEnter={handleEnter}>{display.toLocaleString()}</span>;
+  return <span className={className} onMouseEnter={handleEnter}>{display.toLocaleString(locale === "ro" ? "ro-RO" : "en-US")}</span>;
 }
 
 export function SpaceForcePlatformShowcase({ platforms, locale = "en" }: { platforms: SpaceForcePlatform[]; locale?: Locale }) {

@@ -544,7 +544,7 @@ export function getSpaceForceMetrics(locale: Locale): SpaceForceMetric[] {
     { value: "26K+", label: "Supraveghere Spațială", detail: "Utilizarea radarului 'Space Fence' din Insulele Marshall pentru a urmări resturi spațiale de dimensiunea unei bile." },
     { value: "27", label: "Lansare Tactică (Ore)", detail: "Misiunea Victus Nox a pregătit, încapsulat și lansat un satelit în doar 27 de ore de la primirea ordinului." },
     { value: "<1ns", label: "Precizie Timp GPS III", detail: "Semnale de timp precise la nivel de sub o nanosecundă, sincronizând bursele globale și rețelele energetice." },
-    { value: "22.300", label: "Patrulă Spațială (Mile)", detail: "Sateliții GSSAP operează la 22.300 de mile deasupra Pământului, inspectând activele geostaționare strategice." },
+    { value: "36.000", label: "Patrulă Spațială (km)", detail: "Sateliții GSSAP operează la 36.000 km deasupra Pământului, inspectând activele geostaționare strategice." },
     { value: "14K", label: "Forță de Serviciu Agilă", detail: "Cea mai mică ramură militară a Americii, concepută ca o forță agilă, unde fiecare operator are un impact uriaș." },
   ];
 }
@@ -563,13 +563,73 @@ export function getSpaceForceCapabilities(locale: Locale): SpaceForceCapability[
 export function getSpaceForceSystems(locale: Locale): SpaceForcePlatform[] {
   if (locale !== "ro") return SF_SYSTEMS;
   return SF_SYSTEMS.map((system) => {
-    const roMap: Record<string, { designation: string; role: string; capability: string }> = {
-      "GPS Constellation": { designation: "Poziționare, Navigație & Sincronizare", role: "O constelație pe orbită medie care oferă forțelor SUA navigație precisă, ghidarea armelor, semnale militare criptate și stratul de timp al infrastructurii globale.", capability: "Timp și navigație de precizie" },
-      "Missile Warning Network": { designation: "OPIR / Radar Terestru", role: "Senzori spațiali și tereștri detectează lansări, urmăresc traiectorii și oferă avertizare pentru America de Nord, aliați și forțe desfășurate.", capability: "Detectare și avertizare lansări" },
-      "Protected SATCOM": { designation: "Comunicații Strategice", role: "Comunicații militare întărite leagă comandanții și forțele în medii contestate, inclusiv comandă și control strategic.", capability: "Comunicații globale reziliente" },
-      "Space Domain Sensors": { designation: "Conștientizare Orbitală", role: "Radare, telescoape și sisteme de date mențin custodia obiectelor pe orbită și urmăresc mișcarea adversarilor.", capability: "Urmărire și custodie orbitală" },
-      "National Security Launch": { designation: "Acces Asigurat la Spațiu", role: "Parteneriatele de lansare plasează payload-uri critice pe orbită și reîmprospătează constelațiile.", capability: "Acces orbital asigurat" },
-      "X-37B Spaceplane": { designation: "Vehicul de Testare Orbitală (OTV)", role: "Un avion spațial experimental, fără echipaj, proiectat să testeze tehnologii spațiale reutilizabile, să efectueze cercetări orbitale clasificate de lungă durată și să returneze în siguranță încărcăturile pe Pământ.", capability: "Misiuni orbitale clasificate de lungă durată" },
+    const roMap: Record<string, { designation: string; role: string; capability: string; specs: { label: string; value: string }[] }> = {
+      "GPS Constellation": {
+        designation: "Poziționare, Navigație & Sincronizare",
+        role: "O constelație pe orbită medie care oferă forțelor SUA navigație precisă, ghidarea armelor, semnale militare criptate și stratul de timp al infrastructurii globale.",
+        capability: "Timp și navigație de precizie",
+        specs: [
+          { label: "Orbită", value: "MEO" },
+          { label: "Misiune", value: "PNT" },
+          { label: "Acoperire", value: "Globală" },
+          { label: "Semnal", value: "Civil + militar" },
+        ],
+      },
+      "Missile Warning Network": {
+        designation: "OPIR / Radar Terestru",
+        role: "Senzori spațiali și tereștri detectează lansări, urmăresc traiectorii și oferă avertizare pentru America de Nord, aliați și forțe desfășurate.",
+        capability: "Detectare și avertizare lansări",
+        specs: [
+          { label: "Postură", value: "24/7" },
+          { label: "Senzori", value: "Spațiu + sol" },
+          { label: "Rezultat", value: "Date de avertizare" },
+          { label: "Utilizatori", value: "Forța întrunită" },
+        ],
+      },
+      "Protected SATCOM": {
+        designation: "Comunicații Strategice",
+        role: "Comunicații militare întărite leagă comandanții și forțele în medii contestate, inclusiv comandă și control strategic.",
+        capability: "Comunicații globale reziliente",
+        specs: [
+          { label: "Misiune", value: "MILSATCOM" },
+          { label: "Utilizatori", value: "Întrunit / aliat" },
+          { label: "Prioritate", value: "C2 asigurat" },
+          { label: "Acoperire", value: "Globală" },
+        ],
+      },
+      "Space Domain Sensors": {
+        designation: "Conștientizare Orbitală",
+        role: "Radare, telescoape și sisteme de date mențin custodia obiectelor pe orbită și urmăresc mișcarea adversarilor.",
+        capability: "Urmărire și custodie orbitală",
+        specs: [
+          { label: "Domeniu", value: "LEO-GEO" },
+          { label: "Misiune", value: "Urmărire / ID" },
+          { label: "Frecvență", value: "Persistentă" },
+          { label: "Efect", value: "SDA" },
+        ],
+      },
+      "National Security Launch": {
+        designation: "Acces Asigurat la Spațiu",
+        role: "Parteneriatele de lansare plasează payload-uri critice pe orbită și reîmprospătează constelațiile.",
+        capability: "Acces orbital asigurat",
+        specs: [
+          { label: "Misiune", value: "NSSL" },
+          { label: "Încărcături", value: "Militare / intel" },
+          { label: "Poligon", value: "Cape / Vandenberg" },
+          { label: "Frecvență", value: "Regulată" },
+        ],
+      },
+      "X-37B Spaceplane": {
+        designation: "Vehicul de Testare Orbitală (OTV)",
+        role: "Un avion spațial experimental, fără echipaj, proiectat să testeze tehnologii spațiale reutilizabile, să efectueze cercetări orbitale clasificate de lungă durată și să returneze în siguranță încărcăturile pe Pământ.",
+        capability: "Misiuni orbitale clasificate de lungă durată",
+        specs: [
+          { label: "Desemnare", value: "OTV-6 / OTV-7" },
+          { label: "Zbor record", value: "908 zile" },
+          { label: "Ghidaj", value: "Autonom" },
+          { label: "Aterizare", value: "Planare pe pistă" },
+        ],
+      },
     };
     const ro = roMap[system.name];
     return ro ? { ...system, ...ro } : system;
@@ -579,10 +639,52 @@ export function getSpaceForceSystems(locale: Locale): SpaceForcePlatform[] {
 export function getSpaceForceOperations(locale: Locale): SpaceForceTheater[] {
   if (locale !== "ro") return SF_OPERATIONS;
   return [
-    { ...SF_OPERATIONS[0], headline: "Lupta operațională pe orbită", description: "Space Operations Command prezintă forțe spațiale pregătite de luptă către U.S. Space Command și forța întrunită.", signal: "Forțe spațiale pregătite" },
-    { ...SF_OPERATIONS[1], headline: "Achiziție la viteza orbitei", description: "Space Systems Command dezvoltă, achiziționează, lansează și susține capabilități spațiale.", signal: "Construiește, lansează, susține" },
-    { ...SF_OPERATIONS[2], name: "STARCOM", headline: "Guardieni antrenați pentru spațiu contestat", description: "STARCOM dezvoltă doctrină, educație, exerciții și cultură de testare pentru operațiuni prin interferență și atac.", signal: "Doctrină și readiness" },
-    { ...SF_OPERATIONS[3], name: "Componente Întrunite", headline: "Efecte spațiale pentru fiecare teatru", description: "Componentele Space Force conectează capabilitățile orbitale la comandamentele combatante.", signal: "Integrat cu comandamentele combatante" },
+    {
+      ...SF_OPERATIONS[0],
+      headline: "Lupta operațională pe orbită",
+      description: "Space Operations Command prezintă forțe spațiale pregătite de luptă către U.S. Space Command și forța întrunită.",
+      signal: "Forțe spațiale pregătite",
+      metrics: [
+        { label: "Obiectiv", value: "Operațiuni" },
+        { label: "Domeniu", value: "Spațiu" },
+        { label: "Utilizatori", value: "Forța întrunită" },
+      ],
+    },
+    {
+      ...SF_OPERATIONS[1],
+      headline: "Achiziție la viteza orbitei",
+      description: "Space Systems Command dezvoltă, achiziționează, lansează și susține capabilități spațiale.",
+      signal: "Construiește, lansează, susține",
+      metrics: [
+        { label: "Obiectiv", value: "Achiziții" },
+        { label: "Portofoliu", value: "Sateliți / lansări" },
+        { label: "Bază", value: "Los Angeles" },
+      ],
+    },
+    {
+      ...SF_OPERATIONS[2],
+      name: "STARCOM",
+      headline: "Guardieni antrenați pentru spațiu contestat",
+      description: "STARCOM dezvoltă doctrină, educație, exerciții și cultură de testare pentru operațiuni prin interferență și atac.",
+      signal: "Doctrină și pregătire",
+      metrics: [
+        { label: "Obiectiv", value: "Instruire" },
+        { label: "Rezultat", value: "Echipaje pregătite" },
+        { label: "Cultură", value: "Testare / învățare" },
+      ],
+    },
+    {
+      ...SF_OPERATIONS[3],
+      name: "Componente Întrunite",
+      headline: "Efecte spațiale pentru fiecare teatru",
+      description: "Componentele Space Force conectează capabilitățile orbitale la comandamentele combatante.",
+      signal: "Integrat cu comandamentele combatante",
+      metrics: [
+        { label: "Suport", value: "Comandamente combatante" },
+        { label: "Efecte", value: "PNT / SATCOM / avertizare" },
+        { label: "Acoperire", value: "Globală" },
+      ],
+    },
   ];
 }
 
@@ -613,11 +715,55 @@ export function getSpaceForceFleetComparison(locale: Locale): SpaceForceFleetCom
 export function getSpaceForceFuturePrograms(locale: Locale): SpaceForceFutureProgram[] {
   if (locale !== "ro") return SF_FUTURE_PROGRAMS;
   return SF_FUTURE_PROGRAMS.map((program) => {
-    const roMap: Record<string, { title: string; description: string; capability: string; status: string }> = {
-      "GPS IIIF": { title: "GPS de Nouă Generație", description: "Sateliții GPS modernizați îmbunătățesc precizia, reziliența, puterea semnalului și capacitatea anti-jam.", capability: "PNT rezilient", status: "Modernizare" },
-      "Next-Gen OPIR": { title: "Avertizare Rachete Next-Gen", description: "Sistemele infraroșu persistente de nouă generație detectează și urmăresc amenințări avansate.", capability: "Avertizare avansată", status: "În dezvoltare" },
-      "Resilient SATCOM": { title: "Arhitectură de Comunicații Protejate", description: "Stiva viitoare combină sateliți militari protejați, capacitate comercială și segmente terestre întărite cyber.", capability: "Comandă și control asigurate", status: "Tranziție arhitecturală" },
-      "Proliferated LEO": { title: "Straturi Orbitale Reziliente", description: "Constelațiile distribuite fac capabilitățile spațiale mai greu de perturbat și mai rapid de reîmprospătat.", capability: "Reziliență distribuită", status: "Scalare" },
+    const roMap: Record<string, { title: string; description: string; capability: string; status: string; specs: { label: string; value: string }[] }> = {
+      "GPS IIIF": {
+        title: "GPS de Nouă Generație",
+        description: "Sateliții GPS modernizați îmbunătățesc precizia, reziliența, puterea semnalului și capacitatea anti-jam.",
+        capability: "PNT rezilient",
+        status: "Modernizare",
+        specs: [
+          { label: "Misiune", value: "PNT" },
+          { label: "Semnal", value: "Modernizat" },
+          { label: "Utilizatori", value: "Global" },
+          { label: "Prioritate", value: "Reziliență" },
+        ],
+      },
+      "Next-Gen OPIR": {
+        title: "Avertizare Rachete Next-Gen",
+        description: "Sistemele infraroșu persistente de nouă generație detectează și urmăresc amenințări avansate.",
+        capability: "Avertizare avansată",
+        status: "În dezvoltare",
+        specs: [
+          { label: "Misiune", value: "OPIR" },
+          { label: "Amenințare", value: "Rachete" },
+          { label: "Frecvență", value: "Persistentă" },
+          { label: "Efect", value: "Avertizare" },
+        ],
+      },
+      "Resilient SATCOM": {
+        title: "Arhitectură de Comunicații Protejate",
+        description: "Stiva viitoare combină sateliți militari protejați, capacitate comercială și segmente terestre întărite cyber.",
+        capability: "Comandă și control asigurate",
+        status: "Tranziție arhitecturală",
+        specs: [
+          { label: "Misiune", value: "SATCOM" },
+          { label: "Configurație", value: "Hibridă" },
+          { label: "Utilizatori", value: "Forța întrunită" },
+          { label: "Prioritate", value: "C2 asigurat" },
+        ],
+      },
+      "Proliferated LEO": {
+        title: "Straturi Orbitale Reziliente",
+        description: "Constelațiile distribuite fac capabilitățile spațiale mai greu de perturbat și mai rapid de reîmprospătat.",
+        capability: "Reziliență distribuită",
+        status: "Scalare",
+        specs: [
+          { label: "Orbită", value: "LEO" },
+          { label: "Model", value: "Distribuit" },
+          { label: "Scop", value: "Reziliență" },
+          { label: "Actualizare", value: "Rapidă" },
+        ],
+      },
     };
     const ro = roMap[program.label];
     return ro ? { ...program, ...ro } : program;
@@ -627,13 +773,61 @@ export function getSpaceForceFuturePrograms(locale: Locale): SpaceForceFuturePro
 export function getSpaceForceBases(locale: Locale): SpaceForceBase[] {
   if (locale !== "ro") return SF_BASES;
   return SF_BASES.map((base) => {
-    const roMap: Record<string, { role: string; description: string }> = {
-      "Peterson SFB": { role: "Cartier Operațional", description: "Un nod central pentru operațiunile Space Force în Colorado Springs." },
-      "Schriever SFB": { role: "Operațiuni Satelit", description: "Gazdă pentru misiuni critice de comandă și control satelitar, inclusiv GPS." },
-      "Buckley SFB": { role: "Avertizare Rachete", description: "Instalație-cheie pentru avertizare rachete și misiuni infraroșu spațiale." },
-      "Vandenberg SFB": { role: "Lansare & Testare", description: "Poligonul de lansare și testare de pe Coasta de Vest pentru orbite polare și lansări de securitate națională." },
-      "Patrick SFB": { role: "Eastern Range", description: "Sprijină operațiunile de lansare și range legate de Cape Canaveral." },
-      "Los Angeles AFB": { role: "Achiziție Sisteme", description: "Gazda Space Systems Command, unde sunt gestionate programele de sateliți, lansare și sisteme la sol." },
+    const roMap: Record<string, { role: string; description: string; stats: { label: string; value: string }[] }> = {
+      "Peterson SFB": {
+        role: "Cartier Operațional",
+        description: "Un nod central pentru operațiunile Space Force în Colorado Springs.",
+        stats: [
+          { label: "Regiune", value: "Front Range" },
+          { label: "Misiune", value: "Operațiuni" },
+          { label: "Domeniu", value: "C2 Spațial" },
+        ],
+      },
+      "Schriever SFB": {
+        role: "Operațiuni Satelit",
+        description: "Gazdă pentru misiuni critice de comandă și control satelitar, inclusiv GPS.",
+        stats: [
+          { label: "Misiune", value: "C2 Satelitar" },
+          { label: "Obiectiv", value: "PNT / ops" },
+          { label: "Postură", value: "24/7" },
+        ],
+      },
+      "Buckley SFB": {
+        role: "Avertizare Rachete",
+        description: "Instalație-cheie pentru avertizare rachete și misiuni infraroșu spațiale.",
+        stats: [
+          { label: "Misiune", value: "Avertizare" },
+          { label: "Senzori", value: "Infraroșu" },
+          { label: "Frecvență", value: "Continuă" },
+        ],
+      },
+      "Vandenberg SFB": {
+        role: "Lansare & Testare",
+        description: "Poligonul de lansare și testare de pe Coasta de Vest pentru orbite polare și lansări de securitate națională.",
+        stats: [
+          { label: "Rol", value: "Poligon lansare" },
+          { label: "Orbită", value: "Polară" },
+          { label: "Coastă", value: "Pacifică" },
+        ],
+      },
+      "Patrick SFB": {
+        role: "Eastern Range",
+        description: "Sprijină operațiunile de lansare și range legate de Cape Canaveral.",
+        stats: [
+          { label: "Rol", value: "Eastern Range" },
+          { label: "Poartă", value: "Cape" },
+          { label: "Misiune", value: "Suport lansare" },
+        ],
+      },
+      "Los Angeles AFB": {
+        role: "Achiziție Sisteme",
+        description: "Gazda Space Systems Command, unde sunt gestionate programele de sateliți, lansare și sisteme la sol.",
+        stats: [
+          { label: "Comandament", value: "SSC" },
+          { label: "Obiectiv", value: "Achiziții" },
+          { label: "Portofoliu", value: "Sisteme spațiale" },
+        ],
+      },
     };
     const ro = roMap[base.name];
     return ro ? { ...base, ...ro } : base;
