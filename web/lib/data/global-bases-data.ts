@@ -1,4 +1,5 @@
 import { SITE_IMAGES } from "@/lib/site-images";
+import type { Locale } from "@/lib/i18n/config";
 
 export type GlobalBaseRegion =
   | "Europe"
@@ -475,3 +476,319 @@ export const allianceArchitecture: AllianceNode[] = [
     description: "Gulf access supports air operations, maritime security, and crisis response near energy corridors that still shape global economic stability.",
   },
 ];
+
+export function getGlobalBaseStats(locale: Locale) {
+  if (locale !== "ro") return globalBaseStats;
+  return [
+    { value: "750+", label: "Situri" },
+    { value: "80+", label: "Țări" },
+    { value: "11", label: "Comandamente combatante" },
+    { value: "24/7", label: "Acoperire" },
+  ];
+}
+
+export function getStrategicBases(locale: Locale): StrategicBase[] {
+  if (locale !== "ro") return strategicBases;
+  return strategicBases.map((b) => {
+    const roMap: Record<string, { Name?: string; Country: string; "Primary Branch": string; "Operational Focus": string; "Critical Infrastructure": string[]; "Strategic Rationale": string }> = {
+      "ramstein-air-base": {
+        Country: "Germania",
+        "Primary Branch": "U.S. Air Force",
+        "Operational Focus": "Mobilitate aeriană europeană, integrarea comandamentului NATO, evacuare medicală și comunicații de teatru.",
+        "Critical Infrastructure": ["Hub transport aerian", "Legături comandă NATO", "Evacuare aeromedicală", "C2 teatru"],
+        "Strategic Rationale": "Principala poartă logistică aeriană în Europa, legând transportul aerian strategic al SUA cu descurajarea NATO și rutele de întărire rapidă de la Atlantic spre flancul estic.",
+      },
+      "yokosuka-naval-base": {
+        Country: "Japonia",
+        "Primary Branch": "U.S. Navy",
+        "Operational Focus": "Operațiuni cu portavioane desfășurate avansat, reparații de nave, prezență pentru apărare antirachetă și comandă maritimă în Indo-Pacific.",
+        "Critical Infrastructure": ["Doc portavion", "Reparații nave", "Comandă flotă", "Integrare Aegis"],
+        "Strategic Rationale": "Ancora navală avansată pentru Flota a Șaptea, plasând puterea de lovire a portavioanelor în interiorul primului lanț de insule fără a aștepta termenele de desfășurare transpacifice.",
+      },
+      "camp-humphreys": {
+        Country: "Coreea de Sud",
+        "Primary Branch": "U.S. Army",
+        "Operational Focus": "Descurajare în peninsulă, sprijin pentru comandamentul întrunit SUA-ROK, primirea forțelor blindate și susținere în teatru.",
+        "Critical Infrastructure": ["Garnizoană militară", "Aerodrom", "Hub susținere", "Sprijin comandă întrunită"],
+        "Strategic Rationale": "Principalul factor de descurajare împotriva agresiunii nord-coreene și o ancoră logistică critică pentru mutarea puterii de luptă în peninsulă în condiții de avertizare extrem de reduse.",
+      },
+      "diego-garcia": {
+        Country: "Teritoriul Britanic din Oceanul Indian",
+        "Primary Branch": "Marina SUA / Facilitate întrunită",
+        "Operational Focus": "Logistică în Oceanul Indian, acces bombardiere, prepoziționare maritimă și susținere pe rază lungă.",
+        "Critical Infrastructure": ["Lagună de adâncime", "Pistă de aterizare", "Stocuri prepoziționate", "Depozit combustibil"],
+        "Strategic Rationale": "Un nod logistic izolat, imposibil de scufundat, poziționat între Africa, Orientul Mijlociu și Asia, permițând forțelor SUA să susțină operațiuni departe de bazele continentale.",
+      },
+      "al-udeid-air-base": {
+        Country: "Qatar",
+        "Primary Branch": "U.S. Air Force",
+        "Operational Focus": "Operațiuni aeriene CENTCOM, suport avioane cisternă, misiuni ISR și comandă și control regional.",
+        "Critical Infrastructure": ["Centrul Combinat de Operațiuni Aeriene", "Pistă lungă", "Rampă alimentare", "Suport ISR"],
+        "Strategic Rationale": "Platforma centrală de comandă aeriană pentru operațiunile din Orientul Mijlociu, transformând accesul la bazele regionale în supraveghere continuă, coordonarea loviturilor și rază de acțiune susținută de avioanele cisternă.",
+      },
+      "naval-station-rota": {
+        Country: "Spania",
+        "Primary Branch": "U.S. Navy",
+        "Operational Focus": "Acces la Marea Mediterană, patrule de apărare împotriva rachetelor balistice, logistică în Atlantic și prezență navală avansată.",
+        "Critical Infrastructure": ["Port de bază distrugătoare", "Acces portuar", "Aerodrom", "Suport muniții"],
+        "Strategic Rationale": "Un punct de sprijin între Atlantic, Mediterană și Africa de Nord care menține activele de apărare antirachetă navală avansate fără a fi nevoie de rotirea fiecărei nave de pe Coasta de Est a SUA.",
+      },
+      "andersen-air-force-base": {
+        Country: "Guam",
+        "Primary Branch": "U.S. Air Force",
+        "Operational Focus": "Rotații de bombardiere, staționare avioane cisternă, dispersarea puterii aeriene în Pacific și acces la lovituri cu rază lungă.",
+        "Critical Infrastructure": ["Pistă strategică", "Depozitare combustibil", "Rampă bombardiere", "Zonă de muniții"],
+        "Strategic Rationale": "Un punct de lansare suveran al SUA la vest de Hawaii, oferind dispersie, profunzime și capacitate de atac greu forțelor aeriene din Pacific.",
+      },
+      "thule-pituffik-space-base": {
+        Name: "Baza Spațială Pituffik",
+        Country: "Groenlanda",
+        "Primary Branch": "U.S. Space Force",
+        "Operational Focus": "Avertizare timpurie rachete, urmărire polară, supraveghere spațială și conștientizare strategică în Arctica.",
+        "Critical Infrastructure": ["Radar avertizare timpurie", "Urmărire spațială", "Acces polar", "Comunicații securizate"],
+        "Strategic Rationale": "Un avanpost de senzori și comunicații watchers în High North, monitorizând abordările polare unde se intersectează traiectoriile rachetelor, sateliții și competiția marilor puteri.",
+      },
+      "camp-lemonnier": {
+        Country: "Djibouti",
+        "Primary Branch": "Bază expediționară întrunită",
+        "Operational Focus": "Contraterorism în Cornul Africii, acces la Marea Roșie, securitate maritimă și sprijin expediționar.",
+        "Critical Infrastructure": ["Aerodrom expediționar", "Suport ISR", "Proximitate portuară", "Facilități forță întrunită"],
+        "Strategic Rationale": "Ancora operațională avansată pentru situații neprevăzute în Africa de Est și Marea Roșie, poziționată lângă unul dintre cele mai importante puncte de tranzit maritim din lume.",
+      },
+      "norfolk-naval-station": {
+        Country: "Statele Unite",
+        "Primary Branch": "U.S. Navy",
+        "Operational Focus": "Generarea flotei din Atlantic, desfășurarea grupurilor de luptă ale portavioanelor, întreținere și capacitate de vârf.",
+        "Critical Infrastructure": ["Docuri portavioane", "Șantiere navale", "Logistică flotă", "Legături comandă Atlantic"],
+        "Strategic Rationale": "Motorul de generare a forței pentru puterea navală din Atlantic, unde sunt asamblate grupurile de luptă ale portavioanelor, forțele amfibii și conductele de susținere înainte de desfășurarea globală.",
+      },
+      "raf-lakenheath": {
+        Country: "Marea Britanie",
+        "Primary Branch": "U.S. Air Force",
+        "Operational Focus": "Prezență avansată a avioanelor de luptă de generația a cincea, opțiuni de reacție rapidă NATO și integrarea apărării aeriene din Europa de Nord.",
+        "Critical Infrastructure": ["Escadrile F-35", "Adăposturi ranforsate", "Legături aeriene NATO", "Suport depozitare arme"],
+        "Strategic Rationale": "Un nod aerian de luptă avansat care menține aviația tactică a SUA fiind conectată direct la arhitectura de apărare aeriană nordică a NATO și la monitorizarea flancului nordic.",
+      },
+      "aviano-air-base": {
+        Country: "Italia",
+        "Primary Branch": "U.S. Air Force",
+        "Operational Focus": "Operațiuni cu avioane de luptă în Europa de Sud, acces în Balcani, sarcini aeriene în Mediterană și răspuns la situații de urgență NATO.",
+        "Critical Infrastructure": ["Aripă avioane luptă", "Pregătire NATO", "Suport muniție", "Rampă expediționară"],
+        "Strategic Rationale": "O platformă de lansare NATO sudică poziționată pentru a acoperi Balcanii, Marea Neagră, Africa de Nord și Marea Mediterană centrală.",
+      },
+      "spangdahlem-air-base": {
+        Country: "Germania",
+        "Primary Branch": "U.S. Air Force",
+        "Operational Focus": "Operațiuni cu avioane de luptă, sprijin în teatrul european, pachete de forțe aeriene deployable și întărire NATO.",
+        "Critical Infrastructure": ["Rampă avioane luptă", "Complex întreținere", "Suport muniție", "Procesare desfășurare"],
+        "Strategic Rationale": "Un nod de întărire aeriană de luptă în Germania care oferă EUCOM capacitate flexibilă de avioane de luptă dincolo de hub-ul principal de mobilitate Ramstein.",
+      },
+      "naval-support-activity-bahrain": {
+        Country: "Bahrain",
+        "Primary Branch": "U.S. Navy",
+        "Operational Focus": "Comandamentul Flotei a Cincea, securitatea maritimă în Golf, măsuri împotriva minelor și coordonare navală regională.",
+        "Critical Infrastructure": ["HQ Flota a 5-a", "Acces la chei", "C2 maritim", "Suport război mine"],
+        "Strategic Rationale": "Ancora de comandă pentru prezența navală a SUA în Golf, poziționată pentru a monitoriza rutele petroliere, activitatea navală iraniană și riscul din Strâmtoarea Hormuz.",
+      },
+      "al-dhafra-air-base": {
+        Country: "Emiratele Arabe Unite",
+        "Primary Branch": "U.S. Air Force",
+        "Operational Focus": "Misiuni ISR, suport avioane cisternă, rotații de superioritate aeriană și coordonarea apărării aeriene în Golf.",
+        "Critical Infrastructure": ["Rampă ISR", "Operațiuni alimentare", "Legături apărare aeriană", "Pistă lungă"],
+        "Strategic Rationale": "A treia platformă valoroasă de operațiuni aeriene care oferă CENTCOM supraveghere și adâncime a puterii aeriene în Golf, reducând dependența de un singur hub regional.",
+      },
+      "ali-al-salem-air-base": {
+        Country: "Kuwait",
+        "Primary Branch": "U.S. Air Force",
+        "Operational Focus": "Operațiuni poartă de teatru, pregătire transport aerian, mișcare de personal și acces la situații de urgență în nordul Golfului.",
+        "Critical Infrastructure": ["Rampă transport aerian", "Terminal pasageri", "Sprijin expediționar", "Manipulare mărfuri"],
+        "Strategic Rationale": "Un nod de mișcare și tranzit care transformă Kuweitul într-o poartă logistică din nordul Golfului pentru personal, echipamente și acces rapid în teatru.",
+      },
+      "sigonella-naval-air-station": {
+        Country: "Italia",
+        "Primary Branch": "U.S. Navy",
+        "Operational Focus": "Misiuni ISR în Mediterană, sprijin pentru Africa, operațiuni cu drone și legături logistice.",
+        "Critical Infrastructure": ["Pistă ISR", "Operațiuni UAS", "Manipulare marfă", "Pregătire mediteraneană"],
+        "Strategic Rationale": "O platformă din centrul Mediteranei care conectează infrastructura europeană cu misiunile din Africa și supravegherea maritimă pe flancul sudic.",
+      },
+      "manta-forward-location": {
+        Country: "Ecuador",
+        "Primary Branch": "Suport întrunit / mobilitate aeriană",
+        "Operational Focus": "Conștientizarea domeniului maritim, sprijin pentru patrulele de combatere a traficului și monitorizarea Pacificului de Est.",
+        "Critical Infrastructure": ["Acces aeronave patrol", "Supraveghere maritimă", "Legătură regională", "Acces la pistă"],
+        "Strategic Rationale": "Un punct de acces orientat spre Pacific pentru monitorizarea coridoarelor maritime unde se intersectează traficul de stupefiante, pescuitul ilegal și instabilitatea regională.",
+      },
+      "guantanamo-bay": {
+        Country: "Cuba",
+        "Primary Branch": "U.S. Navy",
+        "Operational Focus": "Acces maritim în Caraibe, sprijin pentru situații de urgență, operațiuni cu migranți și pregătire regională.",
+        "Critical Infrastructure": ["Golf de adâncime", "Aerodrom", "Servicii portuare", "Staging regional"],
+        "Strategic Rationale": "O prezență persistentă în Caraibe care oferă Statelor Unite acces maritim și aerian lângă Windward Passage fără a depinde de permisiunile din timp de criză.",
+      },
+      "eielson-air-force-base": {
+        Country: "Statele Unite",
+        "Primary Branch": "U.S. Air Force",
+        "Operational Focus": "Operațiuni cu avioane de luptă în Arctica, profunzime a puterii aeriene în Pacific, antrenament avansat și răspuns polar.",
+        "Critical Infrastructure": ["Escadrile F-35", "Pistă arctică", "Red Flag Alaska", "Susținere în condiții de frig"],
+        "Strategic Rationale": "O bază aeriană de luptă nordică care leagă accesul în Arctica cu descurajarea în Pacific, permițând avioanelor de luptă ale SUA să opereze dintr-o poziție de latitudine mare.",
+      },
+      "clear-space-force-station": {
+        Country: "Statele Unite",
+        "Primary Branch": "U.S. Space Force",
+        "Operational Focus": "Avertizare timpurie rachete, supraveghere spațială, urmărire polară și apărare aerospațială a patriei.",
+        "Critical Infrastructure": ["Radar cu rază lungă", "Avertizare rachete", "Urmărire spațială", "Integrare NORAD"],
+        "Strategic Rationale": "Un nod polar de senzori care oferă timp de decizie împotriva amenințărilor cu rachete și urmărește activitatea orbitală pe coridoarele de abordare nordice.",
+      },
+      "fort-liberty": {
+        Country: "Statele Unite",
+        "Primary Branch": "U.S. Army",
+        "Operational Focus": "Generarea forțelor aeropurtate, sprijin pentru operațiunile speciale, cartier general de urgență și pachete de desfășurare rapidă.",
+        "Critical Infrastructure": ["Unități aeropurtate", "Suport SOCOM", "Procesare desfășurare", "Instruire întrunită"],
+        "Strategic Rationale": "O bază de generare a forțelor concepută pentru a deplasa formațiuni aeropurtate și de operațiuni speciale cu pregătire ridicată în teatrele de criză mai rapid decât se pot asambla unitățile grele.",
+      },
+      "kadena-air-base": {
+        Country: "Japonia",
+        "Primary Branch": "U.S. Air Force",
+        "Operational Focus": "Superioritate aeriană, ISR, sprijin avioane cisternă și răspuns în primul lanț de insule din Okinawa.",
+        "Critical Infrastructure": ["Rampă avioane luptă", "Suport ISR", "Operațiuni avioane cisternă", "Adăposturi ranforsate"],
+        "Strategic Rationale": "Un nod aerian de primă linie în Okinawa care menține puterea aeriană a SUA poziționată aproape de Taiwan, Marea Chinei de Est și Marea Filipinelor.",
+      },
+      "marine-corps-base-darwin": {
+        Country: "Australia",
+        "Primary Branch": "Corpul Infanteriei Marine a SUA",
+        "Operational Focus": "Instruire distribuită, acces în nordul Australiei, logistică expediționară și dispersare în Indo-Pacific.",
+        "Critical Infrastructure": ["Poligoane antrenament", "Pregătire expediționară", "Acces portuar", "Acces aerodrom"],
+        "Strategic Rationale": "Un punct de acces în sudul Indo-Pacificului care extinde opțiunile de dispersie și oferă forțelor SUA profunzime operațională dincolo de al doilea lanț de insule.",
+      },
+    };
+    const ro = roMap[b.ID];
+    return ro ? { ...b, ...ro } : b;
+  });
+}
+
+export function getRegionBriefs(locale: Locale): RegionBrief[] {
+  if (locale !== "ro") return regionBriefs;
+  return regionBriefs.map((r) => {
+    const roMap: Record<string, { label: string; purpose: string; strategicRole: string }> = {
+      "Europe": {
+        label: "Europa / Scutul NATO",
+        purpose: "Întărirea flancului estic al NATO, susținerea transportului aerian transatlantic și menținerea structurilor de comandă integrate înainte de criză.",
+        strategicRole: "Transformă Atlanticul într-un coridor de întărire, nu într-o barieră.",
+      },
+      "Indo-Pacific": {
+        label: "Indo-Pacific / Arcul de descurajare",
+        purpose: "Menținerea pozițiilor maritime și aeriene avansate de-a lungul primului și celui de-al doilea lanț de insule, păstrând în același timp profunzimea suverană a SUA în Guam.",
+        strategicRole: "Comprimă timpul de răspuns pe distanțele vaste ale Pacificului.",
+      },
+      "Middle East": {
+        label: "Orientul Mijlociu / Răspuns rapid",
+        purpose: "Menținerea comenzii aeriene, a suportului pentru avioanele cisternă, a colectării ISR și a accesului pentru răspuns în caz de criză.",
+        strategicRole: "Împiedică transformarea situațiilor de urgență regionale în probleme de mobilizare transoceanică.",
+      },
+      "Americas": {
+        label: "Americile / Generare forțe",
+        purpose: "Generarea, repararea, instruirea și desfășurarea pachetelor de forțe grele care se deplasează de la rețeaua continentale la teatrele globale.",
+        strategicRole: "Baza industrială și logistică din patrie care face credibilă prezența din străinătate.",
+      },
+      "Africa": {
+        label: "Africa / Acces la puncte de tranzit",
+        purpose: "Sprijinirea operațiunilor expediționare, a securității în Marea Roșie și a răspunsului la criză în Africa de Est lângă Bab el-Mandeb.",
+        strategicRole: "Plasează capacitatea de răspuns a SUA lângă un punct de tranzit maritim crucial care leagă Europa, Asia și Golful.",
+      },
+      "Arctic / High North": {
+        label: "Arctica / High North",
+        purpose: "Monitorizarea traiectoriilor de rachete polare, a traficului de sateliți și a abordărilor arctice în curs de dezvoltare.",
+        strategicRole: "Extinde timpul de avertizare pe cele mai scurte rute aerospațiale dintre marile puteri.",
+      },
+    };
+    const ro = roMap[r.id];
+    return ro ? { ...r, ...ro } : r;
+  });
+}
+
+export function getTheaterCards(locale: Locale): TheaterCard[] {
+  if (locale !== "ro") return theaterCards;
+  return [
+    {
+      title: "Europa",
+      designation: "Scutul NATO",
+      description: "O rețea matură de baze construită pentru întărire, descurajare, evacuare medicală și integrare multinațională.",
+      imageUrl: SITE_IMAGES.globalBases.ramstein,
+    },
+    {
+      title: "Indo-Pacific",
+      designation: "Arcul de descurajare",
+      description: "Noduri maritime și aeriene avansate poziționate pentru a reduce timpul de răspuns pe distanțele extreme ale Pacificului.",
+      imageUrl: SITE_IMAGES.globalBases.yokosuka,
+    },
+    {
+      title: "Orientul Mijlociu",
+      designation: "Răspuns rapid",
+      description: "Puncte de comandă aeriană, avioane cisternă, ISR și acces maritim care convertesc volatilitatea regională într-o geometrie stabilă.",
+      imageUrl: SITE_IMAGES.globalBases.alUdeid,
+    },
+    {
+      title: "Transport aerian + maritim",
+      designation: "Transport aerian + maritim",
+      description: "Porturile, rampele, stocurile și sistemele de comandă care deplasează forțe grele peste oceane mai rapid decât rivalii.",
+      imageUrl: SITE_IMAGES.economyPort,
+    },
+  ];
+}
+
+export function getLogisticsBackbone(locale: Locale): LogisticsNode[] {
+  if (locale !== "ro") return logisticsBackbone;
+  return [
+    {
+      label: "01 / MISIUNE",
+      title: "TRANSCOM primește misiunea",
+      description: "O cerință de criză devine o problemă de transport: personalul, blindatele, combustibilul, capacitatea medicală, munițiile și susținerea sunt ordonate în mișcare.",
+    },
+    {
+      label: "02 / AER",
+      title: "Transportul aerian strategic deschide coridorul",
+      description: "Rutele C-17 și C-5 deplasează echipe de comandă, module de spitale, echipamente de apărare aeriană și piese urgente înainte de sosirea navelor.",
+    },
+    {
+      label: "03 / MARE",
+      title: "Transportul maritim mută greutatea",
+      description: "Stocurile prepoziționate, navele roll-on/roll-off și echipele de control portuar deplasează masa de blindate care nu poate fi transportată doar cu avioane.",
+    },
+    {
+      label: "04 / SUSȚINERE",
+      title: "Rețeaua de baze o menține activă",
+      description: "Nodurile de combustibil, reparații, servicii medicale, comunicații și muniții convertesc sosirea într-o putere de luptă continuă.",
+    },
+  ];
+}
+
+export function getAllianceArchitecture(locale: Locale): AllianceNode[] {
+  if (locale !== "ro") return allianceArchitecture;
+  return [
+    {
+      partner: "NATO",
+      posture: "Întărire integrată",
+      description: "Bazele europene sunt angajamente politice materializate: aerodromuri, porturi și structuri de comandă care dovedesc că Articolul 5 poate fi susținut rapid.",
+    },
+    {
+      partner: "Japonia",
+      posture: "Profunzime maritimă avansată",
+      description: "Baza SUA-Japonia menține Flota a Șaptea și puterea aeriană din Pacific în teatrul de operațiuni, schimbând calculul timpului pentru orice agresor.",
+    },
+    {
+      partner: "Coreea de Sud",
+      posture: "Descurajare în peninsulă",
+      description: "Infrastructura comună SUA-ROK menține descurajarea imediată, vizibilă și logistic executabilă pe cea mai militarizată frontieră din lume.",
+    },
+    {
+      partner: "Australia",
+      posture: "Acces sudic și reziliență",
+      description: "Accesul australian extinde opțiunile de dispersie, profunzimea antrenamentelor, cooperarea submarină și susținerea pe rază lungă.",
+    },
+    {
+      partner: "Partenerii din Golf",
+      posture: "Comandă aeriană și securitate energetică",
+      description: "Accesul din Golf sprijină operațiunile aeriene, securitatea maritimă și răspunsul la criză lângă coridoarele energetice globale.",
+    },
+  ];
+}

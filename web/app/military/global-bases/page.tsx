@@ -12,12 +12,12 @@ import {
   StrategicThesis,
 } from "@/components/military/GlobalBasesComponents";
 import {
-  allianceArchitecture,
-  globalBaseStats,
-  logisticsBackbone,
-  regionBriefs,
-  strategicBases,
-  theaterCards,
+  getAllianceArchitecture,
+  getGlobalBaseStats,
+  getLogisticsBackbone,
+  getRegionBriefs,
+  getStrategicBases,
+  getTheaterCards,
 } from "@/lib/data/global-bases-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 
@@ -36,16 +36,23 @@ export const metadata: Metadata = {
 export default async function GlobalBasesPage() {
   const locale = await getServerLocale();
 
+  const stats = getGlobalBaseStats(locale);
+  const bases = getStrategicBases(locale);
+  const regions = getRegionBriefs(locale);
+  const theaters = getTheaterCards(locale);
+  const nodes = getLogisticsBackbone(locale);
+  const alliances = getAllianceArchitecture(locale);
+
   return (
     <main className="min-h-screen overflow-hidden bg-black text-white">
       <MilStyles />
-      <GlobalBasesHero stats={globalBaseStats} locale={locale} />
+      <GlobalBasesHero stats={stats} locale={locale} />
       <StrategicThesis locale={locale} />
-      <GlobalCommandMap bases={strategicBases} regions={regionBriefs} locale={locale} />
-      <RegionalTheaterGrid theaters={theaterCards} locale={locale} />
-      <BaseDossierSection bases={strategicBases} locale={locale} />
-      <LogisticsBackboneSection nodes={logisticsBackbone} locale={locale} />
-      <AllianceArchitectureSection alliances={allianceArchitecture} locale={locale} />
+      <GlobalCommandMap bases={bases} regions={regions} locale={locale} />
+      <RegionalTheaterGrid theaters={theaters} locale={locale} />
+      <BaseDossierSection bases={bases} locale={locale} />
+      <LogisticsBackboneSection nodes={nodes} locale={locale} />
+      <AllianceArchitectureSection alliances={alliances} locale={locale} />
       <GlobalBasesClosing locale={locale} />
     </main>
   );

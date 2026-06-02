@@ -159,10 +159,14 @@ export function StrategicThesis({ locale = "en" }: { locale?: Locale }) {
 function BaseDetailDrawer({
   base,
   onClose,
+  locale = "en",
 }: {
   base: StrategicBase | null;
   onClose: () => void;
+  locale?: Locale;
 }) {
+  const isRo = locale === "ro";
+
   return (
     <AnimatePresence>
       {base && (
@@ -196,7 +200,15 @@ function BaseDetailDrawer({
             </div>
 
             <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-zinc-500">
-              {base.Country} / {base.Region}
+              {base.Country} / {isRo ? (
+                base.Region === "Europe" ? "Europa" :
+                base.Region === "Indo-Pacific" ? "Indo-Pacific" :
+                base.Region === "Middle East" ? "Orientul Mijlociu" :
+                base.Region === "Americas" ? "Americile" :
+                base.Region === "Africa" ? "Africa" :
+                base.Region === "Arctic / High North" ? "Arctica / High North" :
+                base.Region
+              ) : base.Region}
             </div>
             <h3 className="mt-4 text-[clamp(36px,5vw,64px)] font-black uppercase leading-[0.9] tracking-tight">
               {base.Name}
@@ -204,22 +216,30 @@ function BaseDetailDrawer({
 
             <div className="mt-8 grid gap-4 border-y border-zinc-900 py-6 sm:grid-cols-2">
               <div>
-                <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-600">Coordinates</div>
+                <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-600">
+                  {isRo ? "Coordonate" : "Coordinates"}
+                </div>
                 <div className="mt-2 font-mono text-xs text-zinc-300">{base.Coordinates}</div>
               </div>
               <div>
-                <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-600">Primary Branch</div>
+                <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-600">
+                  {isRo ? "Ramură principală" : "Primary Branch"}
+                </div>
                 <div className="mt-2 font-mono text-xs text-zinc-300">{base["Primary Branch"]}</div>
               </div>
             </div>
 
             <div className="mt-8">
-              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Operational Focus</div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                {isRo ? "Obiectiv operațional" : "Operational Focus"}
+              </div>
               <p className="mt-3 text-sm leading-7 text-zinc-300">{base["Operational Focus"]}</p>
             </div>
 
             <div className="mt-8">
-              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Critical Infrastructure</div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                {isRo ? "Infrastructură critică" : "Critical Infrastructure"}
+              </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 {base["Critical Infrastructure"].map((item) => (
                   <span key={item} className="bg-zinc-800 px-2 py-1 text-xs text-zinc-300">
@@ -230,7 +250,9 @@ function BaseDetailDrawer({
             </div>
 
             <div className="mt-8">
-              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Strategic Rationale</div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                {isRo ? "Raționament strategic" : "Strategic Rationale"}
+              </div>
               <p className="mt-3 text-sm leading-7 text-zinc-300">{base["Strategic Rationale"]}</p>
             </div>
           </motion.aside>
@@ -289,7 +311,15 @@ export function GlobalCommandMap({
                       : "bg-zinc-950 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-400 transition-colors hover:bg-zinc-900 hover:text-white"
                   }
                 >
-                  {region.id}
+                  {isRo ? (
+                    region.id === "Europe" ? "Europa" :
+                    region.id === "Indo-Pacific" ? "Indo-Pacific" :
+                    region.id === "Middle East" ? "Orientul Mijlociu" :
+                    region.id === "Americas" ? "Americile" :
+                    region.id === "Africa" ? "Africa" :
+                    region.id === "Arctic / High North" ? "Arctica / High North" :
+                    region.id
+                  ) : region.id}
                 </button>
               ))}
             </div>
@@ -391,13 +421,17 @@ export function GlobalCommandMap({
           </div>
 
           <aside className="border-t border-zinc-800/40 bg-zinc-950 p-7 lg:overflow-y-auto lg:border-l lg:border-t-0 lg:p-9">
-            <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-zinc-500">Theater Brief</div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-zinc-500">
+              {isRo ? "Briefing teatru" : "Theater Brief"}
+            </div>
             <h3 className="mt-4 text-4xl font-black uppercase leading-none tracking-tight text-white">{activeRegion.label}</h3>
             <p className="mt-6 text-sm leading-7 text-zinc-400">{activeRegion.purpose}</p>
 
             <div className="mt-8 space-y-6">
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-600">Major Installations</div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-600">
+                  {isRo ? "Instalații majore" : "Major Installations"}
+                </div>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {activeRegion.majorInstallations.map((item) => (
                     <span key={item} className="bg-zinc-900 px-2 py-1 text-xs text-zinc-300">
@@ -408,19 +442,25 @@ export function GlobalCommandMap({
               </div>
 
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-600">Supported Commands</div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-600">
+                  {isRo ? "Comandamente sprijinite" : "Supported Commands"}
+                </div>
                 <div className="mt-3 font-mono text-xs uppercase tracking-[0.16em] text-zinc-300">
                   {activeRegion.supportedCommands.join(" / ")}
                 </div>
               </div>
 
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-600">Strategic Role</div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-600">
+                  {isRo ? "Rol strategic" : "Strategic Role"}
+                </div>
                 <p className="mt-3 text-sm leading-7 text-zinc-400">{activeRegion.strategicRole}</p>
               </div>
 
               <div className="border-t border-zinc-900 pt-6">
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-600">Mapped Nodes</div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-600">
+                  {isRo ? "Noduri mapate" : "Mapped Nodes"}
+                </div>
                 <div className="mt-3 max-h-72 space-y-2 overflow-y-auto pr-1 lg:max-h-none">
                   {activeRegionBases.map((base) => (
                     <button
@@ -439,7 +479,7 @@ export function GlobalCommandMap({
         </div>
       </div>
 
-      <BaseDetailDrawer base={selectedBase} onClose={() => setSelectedBase(null)} />
+      <BaseDetailDrawer base={selectedBase} onClose={() => setSelectedBase(null)} locale={locale} />
     </section>
   );
 }
@@ -526,14 +566,14 @@ export function BaseDossierSection({
                 <p className="mt-3 max-w-2xl text-sm leading-7 text-zinc-400">{base["Strategic Rationale"]}</p>
               </div>
               <div className="self-start bg-zinc-900 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-300 transition-colors group-hover:bg-zinc-800 group-hover:text-white md:self-auto">
-                Open Dossier
+                {isRo ? "Deschide dosar" : "Open Dossier"}
               </div>
             </button>
           ))}
         </div>
       </div>
 
-      <BaseDetailDrawer base={selectedBase} onClose={() => setSelectedBase(null)} />
+      <BaseDetailDrawer base={selectedBase} onClose={() => setSelectedBase(null)} locale={locale} />
     </section>
   );
 }
@@ -574,10 +614,10 @@ export function LogisticsBackboneSection({
 
         <div className="mt-10 grid gap-px bg-zinc-900 md:grid-cols-4">
           {[
-            { icon: Plane, label: "Airlift corridors" },
-            { icon: Ship, label: "Sealift nodes" },
-            { icon: Package, label: "Prepositioned stock" },
-            { icon: Building2, label: "Fuel / repair / medical / comms" },
+            { icon: Plane, label: isRo ? "Cordoane aeriene" : "Airlift corridors" },
+            { icon: Ship, label: isRo ? "Noduri maritime" : "Sealift nodes" },
+            { icon: Package, label: isRo ? "Stocuri prepoziționate" : "Prepositioned stock" },
+            { icon: Building2, label: isRo ? "Combustibil / reparații / medical / comunicații" : "Fuel / repair / medical / comms" },
           ].map((item) => (
             <div key={item.label} className="flex items-center gap-4 bg-black p-5">
               <item.icon className="text-zinc-400" size={18} strokeWidth={1.5} />
