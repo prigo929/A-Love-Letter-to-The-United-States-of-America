@@ -25,6 +25,9 @@
     --color-navy-light: #252b4a;
     --color-parchment: #f5f0e8;
 
+    /* Global emoji font fallback stack */
+    --font-emoji: "Apple Color Emoji", "Twemoji Country Flags", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Android Emoji", "EmojiSymbols";
+
     /* Scroll behavior */
     scroll-behavior: smooth;
   }
@@ -38,7 +41,7 @@
 
   /* Base typography */
   html {
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: "Inter", system-ui, sans-serif, var(--font-emoji);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
@@ -58,7 +61,7 @@
   h4,
   h5,
   h6 {
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Playfair Display", Georgia, serif, var(--font-emoji);
     font-weight: 700;
     line-height: 1.15;
     max-width: 100%;
@@ -129,16 +132,16 @@
 @layer components {
   /* ── Typography helpers ──────────────────────────────────────────────── */
   .font-display {
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Playfair Display", Georgia, serif, var(--font-emoji);
   }
   .font-hero {
-    font-family: "Bebas Neue", Impact, sans-serif;
+    font-family: "Bebas Neue", Impact, sans-serif, var(--font-emoji);
   }
   .font-body {
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: "Inter", system-ui, sans-serif, var(--font-emoji);
   }
   .font-signature {
-    font-family: var(--font-signature), cursive;
+    font-family: var(--font-signature), cursive, var(--font-emoji);
   }
 
   /* ── Section heading pattern ─────────────────────────────────────────── */
@@ -195,7 +198,7 @@
   .hero-title-shell {
     font-size: clamp(56px, 11vw, 148px);
     letter-spacing: 0.02em;
-    font-family: "Archivo Black", system-ui, sans-serif;
+    font-family: "Archivo Black", system-ui, sans-serif, var(--font-emoji);
     text-transform: uppercase;
   }
 

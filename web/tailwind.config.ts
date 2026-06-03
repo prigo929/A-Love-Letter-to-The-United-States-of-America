@@ -28,12 +28,12 @@ const config: Config = {
       // ─── Typography ───────────────────────────────────────────────
       fontFamily: {
         // Headings — editorial, editorial gravitas
-        display: ['"Playfair Display"', "Georgia", "serif"],
+        display: ['"Playfair Display"', "Georgia", "serif", "var(--font-emoji)"],
         // Large hero numbers & display text
-        hero: ['"Bebas Neue"', "Impact", "sans-serif"],
+        hero: ['"Bebas Neue"', "Impact", "sans-serif", "var(--font-emoji)"],
         // Body copy — clean & readable
-        body: ['"Inter"', "system-ui", "sans-serif"],
-        signature: ["var(--font-signature)", "cursive"],
+        body: ['"Inter"', "system-ui", "sans-serif", "var(--font-emoji)"],
+        signature: ["var(--font-signature)", "cursive", "var(--font-emoji)"],
       },
 
       fontSize: {
