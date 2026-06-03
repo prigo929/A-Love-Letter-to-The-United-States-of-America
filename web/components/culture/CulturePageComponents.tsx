@@ -42,6 +42,7 @@ import type {
   CultureIconsSectionData,
   CultureHollywoodData,
   CultureManifestoData,
+  CultureEnglishLanguageData,
 } from "@/lib/data/culture-data";
 
 
@@ -3196,6 +3197,103 @@ export function CultureManifestoSection({ data, isRo = false }: CultureManifesto
             );
           })}
         </motion.div>
+      </div>
+    </section>
+  );
+}
+
+interface CultureEnglishLanguageProps {
+  data: CultureEnglishLanguageData;
+  isRo?: boolean;
+}
+
+export function CultureEnglishLanguage({ data, isRo = false }: CultureEnglishLanguageProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  return (
+    <section
+      ref={containerRef}
+      id="culture-english-language"
+      className="relative culture-cream-bg py-28 md:py-36 overflow-hidden border-b border-black/[0.04]"
+    >
+      {/* Background canvas pattern with very light opacity */}
+      <div 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+        style={{
+          backgroundImage: "radial-gradient(rgba(0,0,0,0.85) 1px, transparent 1px)",
+          backgroundSize: "24px 24px"
+        }}
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Editorial Headings and Copy */}
+          <motion.div
+            className="lg:col-span-6"
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="culture-text-label text-[#E8391B] block mb-4 tracking-[0.3em] font-bold">
+              {data.eyebrow}
+            </span>
+            <h2 className="font-editorial text-4xl sm:text-5xl lg:text-5xl xl:text-6xl text-[#0C0907] font-bold leading-tight mb-6">
+              {data.headline}
+            </h2>
+            <div className="w-16 h-0.5 bg-[#E8391B]/40 mb-8" />
+            
+            <div className="space-y-6">
+              {data.paragraphs.map((p, index) => (
+                <p 
+                  key={index}
+                  className="font-body text-[#0C0907]/75 text-sm sm:text-base leading-relaxed font-light"
+                >
+                  {p}
+                </p>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right Column: Interactive Domain Progress Bars */}
+          <motion.div
+            className="lg:col-span-6"
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="bg-[#FAF6EC] border border-[#0C0907]/5 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6 sm:space-y-7">
+              {data.domains.map((dom) => (
+                <div key={dom.name} className="space-y-2 group">
+                  <div className="flex items-end justify-between">
+                    <span className="font-editorial text-lg sm:text-xl text-[#0C0907] font-medium group-hover:text-[#E8391B] transition-colors duration-300">
+                      {dom.name}
+                    </span>
+                    <span className="font-editorial text-lg sm:text-xl text-[#0C0907] font-bold tabular-nums">
+                      {dom.percentage}%
+                    </span>
+                  </div>
+
+                  {/* Progress bar container */}
+                  <div className="h-2 w-full bg-[#E5DEC9] rounded-full overflow-hidden relative">
+                    <motion.div
+                      className="absolute top-0 left-0 h-full bg-[#E8391B]"
+                      initial={{ width: "0%" }}
+                      animate={isInView ? { width: `${dom.percentage}%` } : { width: "0%" }}
+                      transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    />
+                  </div>
+
+                  <p className="font-body text-[#0C0907]/60 text-xs font-light tracking-wide leading-relaxed">
+                    {dom.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

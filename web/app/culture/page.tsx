@@ -37,6 +37,7 @@ import {
   getCultureIcons,
   getCultureHollywood,
   getCultureManifesto,
+  getCultureEnglishLanguage,
 } from "@/lib/data/culture-data";
 
 
@@ -68,6 +69,7 @@ import {
   CultureIconsSection,
   CultureHollywoodEditorial,
   CultureManifestoSection,
+  CultureEnglishLanguage,
 } from "@/components/culture/CulturePageComponents";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
@@ -107,6 +109,7 @@ export default async function CulturePage() {
   const culturalIcons = getCultureIcons(locale);
   const hollywoodData = getCultureHollywood(locale);
   const manifestoData = getCultureManifesto(locale);
+  const englishLanguageData = getCultureEnglishLanguage(locale);
 
 
 
@@ -180,6 +183,9 @@ export default async function CulturePage() {
 
       {/* §18 — Culinary Pillars Section (Cream Section) */}
       <CultureCulinarySection pillars={culinaryPillars} sectionTitle={culinaryTitle} isRo={isRo} />
+
+      {/* The English Language Editorial Section (Cream Section) */}
+      <CultureEnglishLanguage data={englishLanguageData} isRo={isRo} />
 
       {/* Transition: Cream to Dark */}
       <div className="h-24 w-full gradient-cream-to-dark" />

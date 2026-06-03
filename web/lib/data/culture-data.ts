@@ -1256,6 +1256,58 @@ export function getCultureManifesto(locale: Locale): CultureManifestoData {
   return locale === "ro" ? MANIFESTO_RO : MANIFESTO_EN;
 }
 
+export interface CultureEnglishDomain {
+  name: string;
+  percentage: number;
+  description: string;
+}
+
+export interface CultureEnglishLanguageData {
+  eyebrow: string;
+  headline: string;
+  paragraphs: string[];
+  domains: CultureEnglishDomain[];
+}
+
+const ENGLISH_LANGUAGE_EN: CultureEnglishLanguageData = {
+  eyebrow: "THE GLOBAL STANDARD · LINGUA FRANCA",
+  headline: "THE INVISIBLE EXPORT: AMERICA'S LINGUISTIC GRAVITY",
+  paragraphs: [
+    "America's most powerful export operates without government promotion, budget, or ministerial distribution. The English language has become the universal operating system of modern civilization, serving as the compounding, gravity-well medium for every prestigious domain of human activity simultaneously.",
+    "In science, it is the currency of discovery; over 90% of peer-reviewed research papers are indexed in English, ensuring that a scientist in Munich communicates with a researcher in Mumbai through a single vocabulary. In the skies, the International Civil Aviation Organization mandates English for all air traffic control. In commerce and global finance, it is the bedrock of international contracts, transactions, and trade negotiations. It serves as the universal connector of a globalized world.",
+    "Perhaps nowhere is this more visible than in code. Every programmer in São Paulo, Seoul, or Stockholm writes in English syntax—typing `if`, `while`, `function`, and `return`. America exported both the software and the language of logic itself. This standard functions as a massive efficiency engine: a voluntary global agreement that allows human collaboration to scale infinitely."
+  ],
+  domains: [
+    { name: "Software & Coding", percentage: 100, description: "Every major programming language uses English keywords." },
+    { name: "Scientific Research", percentage: 90, description: "Linguistic share of indexed peer-reviewed papers." },
+    { name: "Aviation & Space", percentage: 100, description: "Mandatory standard for global air traffic control." },
+    { name: "International Finance", percentage: 85, description: "Bedrock language of cross-border financial transactions." },
+    { name: "Pop Music & Streaming", percentage: 70, description: "Representation on global chart-topping tracks." }
+  ]
+};
+
+const ENGLISH_LANGUAGE_RO: CultureEnglishLanguageData = {
+  eyebrow: "STANDARDIZAREA GLOBALĂ · LINGUA FRANCA",
+  headline: "EXPORTUL INVIZIBIL: GRAVITAȚIA LINGVISTICĂ A AMERICII",
+  paragraphs: [
+    "Cel mai puternic export al Americii funcționează fără promovare guvernamentală, bugete sau distribuție ministerială. Limba engleză a devenit sistemul universal de operare al civilizației moderne, servind ca mediu de convergență gravitațională pentru fiecare domeniu prestigios al activității umane.",
+    "În știință, engleza reprezintă moneda descoperirii; peste 90% din lucrările de cercetare evaluate de colegi sunt indexate în engleză, asigurând că un om de știință din München comunică cu un cercetător din Mumbai printr-un vocabular comun. În aer, Organizația Aviației Civile Internaționale mandatează engleza pentru controlul traficului aerian. În comerț și finanțe, constituie fundamentul contractelor internaționale, al tranzacțiilor și al negocierilor transfrontaliere.",
+    "Cel mai elocvent exemplu este codul sursă. Fiecare programator din São Paulo, Seul sau Stockholm scrie în sintaxă engleză—tastând `if`, `while`, `function` și `return`. America a exportat deopotrivă software-ul și limbajul logicii în sine. Acest standard funcționează ca un motor masiv de eficiență: un acord global voluntar care permite colaborării umane să se dezvolte la scară mondială."
+  ],
+  domains: [
+    { name: "Programare și Sintaxă", percentage: 100, description: "Fiecare limbaj major utilizează cuvinte-cheie în engleză." },
+    { name: "Cercetare Științifică", percentage: 90, description: "Ponderea lingvistică în revistele academice indexate." },
+    { name: "Aviație și Spațiu", percentage: 100, description: "Standard obligatoriu în controlul traficului aerian." },
+    { name: "Finanțe Internaționale", percentage: 85, description: "Limba de bază a tranzacțiilor transfrontaliere." },
+    { name: "Muzică Pop și Streaming", percentage: 70, description: "Prezență în topurile muzicale globale." }
+  ]
+};
+
+export function getCultureEnglishLanguage(locale: Locale): CultureEnglishLanguageData {
+  return locale === "ro" ? ENGLISH_LANGUAGE_RO : ENGLISH_LANGUAGE_EN;
+}
+
+
 
 
 
