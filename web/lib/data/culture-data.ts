@@ -886,3 +886,31 @@ export function getCultureOriginations(locale: Locale): CultureOriginationItem[]
   return locale === "ro" ? ORIGINATIONS_RO : ORIGINATIONS_EN;
 }
 
+// ─── Editorial Imperialism data ──────────────────────────────────────────────
+
+export interface CultureEditorialImperialismData {
+  eyebrow: string;
+  headline: string;
+  statement: string;
+  body: string;
+}
+
+const EDITORIAL_IMPERIALISM_EN: CultureEditorialImperialismData = {
+  eyebrow: "COUNTER-PROGRAMMING · THE IMPERIALISM CRITIQUE",
+  headline: "THE VOLUNTARY DEFAULT",
+  statement: "Voluntary exchange is not coercion.",
+  body: "Critics frequently describe the spread of American culture as a kind of 'cultural imperialism' or 'soft conquest'—a soft-power hegemony that homogenizes the globe. But this critique makes a fundamental category error: it confuses voluntary choice with coercion. Nobody is being coerced. A billion people freely choose to stream American movies, buy American brands, wear blue jeans, and learn American English. When the French government bans English words from official documents and it makes exactly zero difference to what French teenagers actually say and listen to—that's not imperialism, that's demand. American culture is the world's default because it is competed into existence to serve human desires, not state agendas.",
+};
+
+const EDITORIAL_IMPERIALISM_RO: CultureEditorialImperialismData = {
+  eyebrow: "CONTRA-PROGRAMARE · CRITICA IMPERIALISMULUI",
+  headline: "OPȚIUNEA VOLUNTARĂ IMPLICITĂ",
+  statement: "Schimbul voluntar nu înseamnă constrângere.",
+  body: "Criticii descriu adesea răspândirea culturii americane ca pe un tip de 'imperialism cultural' sau 'cucerire soft'—o hegemonie care omogenizează globul. Însă această critică face o eroare fundamentală: confundă alegerea voluntară cu constrângerea. Nimeni nu este forțat. Un miliard de oameni aleg liber să vizioneze filme americane, să cumpere branduri americane, să poarte blugi și să învețe engleza americană. Când guvernul francez interzice cuvintele englezești din documentele oficiale, acest lucru are exact zero impact asupra limbajului pe care adolescenții francezi îl folosesc în dormitoarele lor. Acesta nu este imperialism; este cerere. Cultura americană este opțiunea voluntară implicită a lumii deoarece a fost creată prin competiție pentru a servi dorințele umane, nu agendele de stat.",
+};
+
+export function getCultureEditorialImperialism(locale: Locale): CultureEditorialImperialismData {
+  return locale === "ro" ? EDITORIAL_IMPERIALISM_RO : EDITORIAL_IMPERIALISM_EN;
+}
+
+

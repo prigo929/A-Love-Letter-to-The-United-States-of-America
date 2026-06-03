@@ -37,7 +37,9 @@ import type {
   CultureMusicGenre,
   CultureCulinaryPillar,
   CultureOriginationItem,
+  CultureEditorialImperialismData,
 } from "@/lib/data/culture-data";
+
 
 // ─── Culture Palette Injection ───────────────────────────────────────────────
 
@@ -2444,5 +2446,112 @@ export function CultureOriginationStrip({ originations, isRo }: CultureOriginati
     </section>
   );
 }
+
+// ─── §3.5 — Editorial Imperialism (Counter-Programming) ─────────────────────
+
+interface CultureEditorialImperialismProps {
+  data: CultureEditorialImperialismData;
+  isRo?: boolean;
+}
+
+export function CultureEditorialImperialism({ data, isRo = false }: CultureEditorialImperialismProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  return (
+    <section
+      ref={containerRef}
+      id="culture-imperialism"
+      className="relative culture-bg py-28 md:py-36 overflow-hidden border-b border-white/5"
+    >
+      {/* Golden-hued background grid Canvas */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-20 pointer-events-none" />
+
+      {/* Subtle gold radial glow in background */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at 30% 50%, rgba(212,175,55,0.03) 0%, transparent 60%)",
+        }}
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Callout Quote Card */}
+          <motion.div
+            className="lg:col-span-5"
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <motion.div
+              whileHover="hover"
+              className="relative p-8 sm:p-10 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-glory-gold/30 transition-colors duration-500 overflow-hidden group cursor-default"
+            >
+              {/* Shimmer overlay gradient */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" 
+                style={{
+                  background: "radial-gradient(circle at center, rgba(212,175,55,0.08) 0%, transparent 70%)"
+                }}
+              />
+              
+              {/* Border shimmer effect */}
+              <div className="absolute top-0 left-0 w-0 h-[2px] bg-gradient-to-r from-transparent via-glory-gold to-transparent group-hover:w-full transition-all duration-700 ease-out" />
+              
+              {/* Decorative Quote Mark */}
+              <span className="font-editorial text-glory-gold/10 text-[100px] leading-none absolute -top-4 -left-2 select-none pointer-events-none">
+                &ldquo;
+              </span>
+
+              <motion.p
+                variants={{
+                  hover: { color: "#FFD700", textShadow: "0 0 15px rgba(255,215,0,0.15)" }
+                }}
+                transition={{ duration: 0.4 }}
+                className="font-editorial italic text-2xl sm:text-3xl lg:text-4xl text-[#F5EDD8] leading-[1.35] relative z-10"
+              >
+                {data.statement}
+              </motion.p>
+
+              {/* Little author/source credit in quote box */}
+              <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between relative z-10">
+                <span className="culture-text-label text-[9px] text-glory-gold/80 tracking-[0.2em]">
+                  {isRo ? "PERSPECTIVĂ EDITORIALĂ" : "EDITORIAL PERSPECTIVE"}
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-glory-gold/40 group-hover:bg-glory-gold transition-colors duration-500" />
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column: Narrative content */}
+          <motion.div
+            className="lg:col-span-7"
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="culture-text-label text-glory-gold block mb-4 tracking-[0.3em] font-bold">
+              {data.eyebrow}
+            </span>
+            
+            <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl text-white font-bold leading-tight mb-8">
+              {data.headline}
+            </h2>
+
+            <div className="w-16 h-0.5 bg-glory-gold/40 mb-8" />
+
+            <p className="font-body text-[#F5EDD8]/75 text-sm sm:text-base leading-relaxed font-light">
+              {data.body}
+            </p>
+          </motion.div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 

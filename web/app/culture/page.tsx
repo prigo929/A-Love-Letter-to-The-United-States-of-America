@@ -32,7 +32,9 @@ import {
   getCultureMusicGenres,
   getCultureCulinaryPillars,
   getCultureOriginations,
+  getCultureEditorialImperialism,
 } from "@/lib/data/culture-data";
+
 
 import {
   CultureStyles,
@@ -54,7 +56,9 @@ import {
   CultureMusicSection,
   CultureCulinarySection,
   CultureOriginationStrip,
+  CultureEditorialImperialism,
 } from "@/components/culture/CulturePageComponents";
+
 
 import { NewsletterSection } from "@/components/sections/NewsletterSection";
 
@@ -90,6 +94,8 @@ export default async function CulturePage() {
   const musicGenres = getCultureMusicGenres(locale);
   const culinaryPillars = getCultureCulinaryPillars(locale);
   const originations = getCultureOriginations(locale);
+  const editorialImperialism = getCultureEditorialImperialism(locale);
+
 
   // Localized copy
   const hero = {
@@ -164,8 +170,12 @@ export default async function CulturePage() {
       {/* Transition: Cream to Dark */}
       <div className="h-24 w-full gradient-cream-to-dark" />
 
+      {/* Editorial Counter-Programming: Imperialism Critique */}
+      <CultureEditorialImperialism data={editorialImperialism} isRo={isRo} />
+
       {/* Cultural Timeline Scroll Area */}
       <CultureTimelineScroll decades={decades} sectionTitle={timelineTitle} />
+
 
       {/* Full Viewport Quote Moment (Bono: "America is an idea...") */}
       <CultureViewportQuote quote={bonoQuote} bgImageSrc={SITE_IMAGES.culture.route66} />
