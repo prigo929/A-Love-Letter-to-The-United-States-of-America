@@ -36,6 +36,7 @@ import type {
   SoftPowerBudgetLine,
   CultureMusicGenre,
   CultureCulinaryPillar,
+  CultureOriginationItem,
 } from "@/lib/data/culture-data";
 
 // ─── Culture Palette Injection ───────────────────────────────────────────────
@@ -2369,6 +2370,77 @@ export function CultureCulinarySection({ pillars, sectionTitle, isRo }: CultureC
         subtitle={selectedSubtitle}
         onClose={() => setSelectedImage(null)}
       />
+    </section>
+  );
+}
+
+// ─── §2.5 — Culture Origination Strip ────────────────────────────────────────
+
+interface CultureOriginationStripProps {
+  originations: CultureOriginationItem[];
+  isRo: boolean;
+}
+
+export function CultureOriginationStrip({ originations, isRo }: CultureOriginationStripProps) {
+  return (
+    <section id="culture-origination" className="culture-bg border-b border-white/5 relative overflow-hidden">
+      {/* Subtle grid pattern background */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-10 pointer-events-none" />
+
+      <div className="mx-auto max-w-[1440px] relative z-10">
+        {/* Eyebrow Label */}
+        <div className="px-8 pt-8 md:pt-10 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-glory-gold animate-pulse" />
+            <p className="culture-text-label text-[10px] tracking-[0.35em] text-glory-gold/90 font-bold uppercase">
+              {isRo ? "INVENTAREA FORMELOR CULTURALE" : "INVENTING THE CULTURAL FORMS"}
+            </p>
+          </div>
+          <span className="font-editorial italic text-xs text-[#F5EDD8]/30">
+            {isRo ? "Made in America, Sold to the World" : "Made in America, Sold to the World"}
+          </span>
+        </div>
+
+        {/* 8-Item Tight Grid Layout */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 divide-x divide-y sm:divide-y-0 divide-white/5 border-t border-white/5 mt-6">
+          {originations.map((orig, i) => (
+            <motion.div
+              key={orig.innovation}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{
+                duration: 0.5,
+                delay: i * 0.05,
+                ease: [0.25, 0.1, 0.25, 1] as const,
+              }}
+              className="relative p-6 md:p-8 flex flex-col justify-between group min-h-[170px] overflow-hidden cursor-default"
+            >
+              {/* Dynamic top gold border transition */}
+              <div className="absolute top-0 left-0 w-0 h-[2px] bg-glory-gold group-hover:w-full transition-all duration-500 ease-out" />
+              
+              {/* Radial glow background on hover */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.06)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+              {/* Decade label */}
+              <span className="font-editorial italic text-glory-gold/40 group-hover:text-glory-gold/80 transition-colors duration-300 text-sm leading-none mb-3">
+                {orig.decade}
+              </span>
+
+              <div className="flex flex-col mt-auto">
+                {/* Innovation Title */}
+                <h4 className="font-editorial text-lg sm:text-xl text-[#F5EDD8] group-hover:text-white transition-colors duration-300 mb-2 leading-tight">
+                  {orig.innovation}
+                </h4>
+                {/* Small Description */}
+                <p className="font-body text-[11px] text-[#F5EDD8]/45 group-hover:text-[#F5EDD8]/70 transition-colors duration-300 leading-relaxed font-medium">
+                  {orig.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

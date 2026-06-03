@@ -31,6 +31,7 @@ import {
   getSoftPowerBudget,
   getCultureMusicGenres,
   getCultureCulinaryPillars,
+  getCultureOriginations,
 } from "@/lib/data/culture-data";
 
 import {
@@ -52,6 +53,7 @@ import {
   CultureLivingMediaWall,
   CultureMusicSection,
   CultureCulinarySection,
+  CultureOriginationStrip,
 } from "@/components/culture/CulturePageComponents";
 
 import { NewsletterSection } from "@/components/sections/NewsletterSection";
@@ -87,6 +89,7 @@ export default async function CulturePage() {
   const budget = getSoftPowerBudget(locale);
   const musicGenres = getCultureMusicGenres(locale);
   const culinaryPillars = getCultureCulinaryPillars(locale);
+  const originations = getCultureOriginations(locale);
 
   // Localized copy
   const hero = {
@@ -127,6 +130,9 @@ export default async function CulturePage() {
 
       {/* §2 — Numbers Strip */}
       <CultureNumbersStrip stats={stats} />
+
+      {/* §2.5 — Origination Strip */}
+      <CultureOriginationStrip originations={originations} isRo={isRo} />
 
       {/* §3 — Thesis Block */}
       <CultureThesisBlock thesis={thesis} />

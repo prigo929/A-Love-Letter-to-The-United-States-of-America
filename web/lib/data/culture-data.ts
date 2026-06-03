@@ -787,3 +787,102 @@ const CULINARY_PILLARS_RO: CultureCulinaryPillar[] = [
 export function getCultureCulinaryPillars(locale: Locale): CultureCulinaryPillar[] {
   return locale === "ro" ? CULINARY_PILLARS_RO : CULINARY_PILLARS_EN;
 }
+
+// ─── Origination Strip data ──────────────────────────────────────────────────
+
+export interface CultureOriginationItem {
+  innovation: string;
+  decade: string;
+  description: string;
+}
+
+const ORIGINATIONS_EN: CultureOriginationItem[] = [
+  {
+    innovation: "Jazz",
+    decade: "1910s",
+    description: "The syncopated soundscape of human freedom.",
+  },
+  {
+    innovation: "The Blues",
+    decade: "1900s",
+    description: "The raw emotional bedrock of modern music.",
+  },
+  {
+    innovation: "Rock 'n' Roll",
+    decade: "1950s",
+    description: "Electrified youth rebellion broadcast worldwide.",
+  },
+  {
+    innovation: "Hip-Hop",
+    decade: "1970s",
+    description: "Street-block beats that became global culture.",
+  },
+  {
+    innovation: "Feature Film",
+    decade: "1910s",
+    description: "Hollywood's standard for cinematic storytelling.",
+  },
+  {
+    innovation: "Franchise Model",
+    decade: "1950s",
+    description: "Exporting consistency and operational systems.",
+  },
+  {
+    innovation: "Venture Startup",
+    decade: "1970s",
+    description: "Funding disruptive ideas with high-risk capital.",
+  },
+  {
+    innovation: "Smartphone UX",
+    decade: "2000s",
+    description: "The multi-touch interface for human connection.",
+  },
+];
+
+const ORIGINATIONS_RO: CultureOriginationItem[] = [
+  {
+    innovation: "Jazz",
+    decade: "Anii 1910",
+    description: "Coloana sonoră sincopată a libertății umane.",
+  },
+  {
+    innovation: "Blues-ul",
+    decade: "Anii 1900",
+    description: "Fundația emoțională brută a muzicii moderne.",
+  },
+  {
+    innovation: "Rock 'n' Roll",
+    decade: "Anii 1950",
+    description: "Rebeliunea electrificată a tineretului, difuzată global.",
+  },
+  {
+    innovation: "Hip-Hop",
+    decade: "Anii 1970",
+    description: "Ritmurile de cartier devenite cultură globală.",
+  },
+  {
+    innovation: "Film de lungmetraj",
+    decade: "Anii 1910",
+    description: "Standardul Hollywood pentru narațiunea cinematografică.",
+  },
+  {
+    innovation: "Modelul de franciză",
+    decade: "Anii 1950",
+    description: "Exportul consistenței și sistemelor operaționale.",
+  },
+  {
+    innovation: "Startup-ul cu capital de risc",
+    decade: "Anii 1970",
+    description: "Finanțarea ideilor disruptive cu capital de risc.",
+  },
+  {
+    innovation: "Paradigma UX Smartphone",
+    decade: "Anii 2000",
+    description: "Interfața multi-touch pentru conexiunea umană.",
+  },
+];
+
+export function getCultureOriginations(locale: Locale): CultureOriginationItem[] {
+  return locale === "ro" ? ORIGINATIONS_RO : ORIGINATIONS_EN;
+}
+
