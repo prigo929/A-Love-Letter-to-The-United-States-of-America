@@ -1022,6 +1022,7 @@ export interface CultureIconItem {
   description: string;
   imageKey: string;
   contribution: string;
+  achievement: string;
 }
 
 export interface CultureIconsSectionData {
@@ -1042,6 +1043,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       description: "Pioneered animated cinema and built the modern global franchise model of childhood imagination.",
       imageKey: "waltDisney",
       contribution: "Animated Cinema & Global Franchising",
+      achievement: "Holds the record for most Academy Awards won in history (26).",
     },
     {
       name: "Louis Armstrong",
@@ -1049,6 +1051,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       description: "The foundational virtuoso of jazz who projected American musical freedom to the global stage.",
       imageKey: "louisArmstrong",
       contribution: "Jazz Virtuosity & Improvised Solos",
+      achievement: "6-decade chart presence; first jazz artist featured on the cover of Time Magazine.",
     },
     {
       name: "Elvis Presley",
@@ -1056,6 +1059,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       description: "The undisputed King of Rock 'n' Roll who catalyzed youth culture and modernized musical performance.",
       imageKey: "elvisPresley",
       contribution: "Rock 'n' Roll & Trans-Genre Chart Domination",
+      achievement: "Over 1 billion records sold worldwide; the best-selling solo artist of all time.",
     },
     {
       name: "Marilyn Monroe",
@@ -1063,6 +1067,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       description: "The ultimate Hollywood icon whose star power and image defined 20th-century pop culture glamour.",
       imageKey: "marilynMonroe",
       contribution: "Hollywood Stardom & Photogenic Iconography",
+      achievement: "Her films grossed over $200 million by the time of her death in 1962.",
     },
     {
       name: "Mark Twain",
@@ -1070,6 +1075,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       description: "The great American humorist who captured the democratic, energetic voice of a growing nation.",
       imageKey: "markTwain",
       contribution: "Vernacular Literature & Democratic Realism",
+      achievement: "Universally recognized as the 'father of American literature'; translated into 120+ languages.",
     },
     {
       name: "Muhammad Ali",
@@ -1077,6 +1083,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       description: "The champion athlete and cultural force whose principles and charisma transcended sports globally.",
       imageKey: "muhammadAli",
       contribution: "Heavyweight Boxing & Athlete Activism",
+      achievement: "The only three-time lineal heavyweight champion; over 1 billion viewers watched the 1974 'Rumble in the Jungle'.",
     },
     {
       name: "Michael Jackson",
@@ -1084,6 +1091,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       description: "The King of Pop whose music videos, dance, and scale revolutionized global entertainment.",
       imageKey: "michaelJackson",
       contribution: "Pop Performance & Cinematic Music Videos",
+      achievement: "'Thriller' remains the best-selling music album of all time (70M+ copies).",
     },
     {
       name: "Michael Jordan",
@@ -1091,6 +1099,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       description: "The basketball legend who transformed sports into a global marketing and endorsement powerhouse.",
       imageKey: "michaelJordan",
       contribution: "Athletic Brand Endorsements & Sneaker Culture",
+      achievement: "Transformed the Nike Jordan Brand into a global powerhouse generating $6.6B+ annually.",
     },
     {
       name: "Martin Luther King Jr.",
@@ -1098,6 +1107,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       description: "The moral voice of civil rights whose vision of liberty reshaped the nation's democratic conscience.",
       imageKey: "martinLutherKing",
       contribution: "Civil Rights Rhetoric & Moral Mobilization",
+      achievement: "Led the 1963 March on Washington (250,000+ marchers); youngest Nobel Peace Prize laureate in 1964.",
     },
     {
       name: "Arnold Schwarzenegger",
@@ -1105,6 +1115,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       description: "The immigrant bodybuilder who conquered Hollywood and became the ultimate global action archetype.",
       imageKey: "arnoldSchwarzenegger",
       contribution: "Transnational Action Cinema & Fitness Industry",
+      achievement: "His films grossed over $4 billion globally; served as California's first immigrant governor in 150 years.",
     },
   ],
 };
@@ -1120,6 +1131,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       description: "A fost pionierul cinematografiei de animație și a construit modelul global de franciză al imaginației infantile.",
       imageKey: "waltDisney",
       contribution: "Cinematografie de Animație & Franciză Globală",
+      achievement: "Deține recordul istoric pentru cele mai multe premii Oscar câștigate (26).",
     },
     {
       name: "Louis Armstrong",
@@ -1127,6 +1139,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       description: "Virtuozul fondator al jazzului care a proiectat libertatea muzicală americană pe scena globală.",
       imageKey: "louisArmstrong",
       contribution: "Virtuozitate în Jazz & Improvizație",
+      achievement: "Carieră de peste 6 decenii; primul artist de jazz pe coperta revistei Time.",
     },
     {
       name: "Elvis Presley",
@@ -1134,6 +1147,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       description: "Regele incontestabil al Rock 'n' Roll-ului care a catalizat cultura tineretului și a modernizat spectacolul muzical.",
       imageKey: "elvisPresley",
       contribution: "Rock 'n' Roll & Dominarea Topurilor Trans-Gen",
+      achievement: "Peste 1 miliard de discuri vândute; cel mai bine vândut artist solo din istorie.",
     },
     {
       name: "Marilyn Monroe",
@@ -1141,6 +1155,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       description: "Cea mai mare pictogramă de la Hollywood a cărei imagine a definit farmecul culturii pop din secolul XX.",
       imageKey: "marilynMonroe",
       contribution: "Star de Hollywood & Iconografie Fotogenică",
+      achievement: "Filmele sale au încasat peste 200 de milioane de dolari până în anul 1962.",
     },
     {
       name: "Mark Twain",
@@ -1148,6 +1163,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       description: "Marele umorist american care a surprins vocea democratică și plină de energie a unei națiuni în creștere.",
       imageKey: "markTwain",
       contribution: "Literatură Vernaculară & Realism Democratic",
+      achievement: "Recunoscut la nivel mondial drept 'părintele literaturii americane'; tradus în peste 120 de limbi.",
     },
     {
       name: "Muhammad Ali",
@@ -1155,6 +1171,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       description: "Campionul atlet și forța culturală ale cărui principii și carismă au transcens sportul la nivel global.",
       imageKey: "muhammadAli",
       contribution: "Box la Categoria Grea & Activism Sportiv",
+      achievement: "Singurul triplu campion liniar de categorie grea; peste 1 miliard de telespectatori la 'Rumble in the Jungle'.",
     },
     {
       name: "Michael Jackson",
@@ -1162,6 +1179,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       description: "Regele Pop a cărui muzică, dans și amploare au revoluționat divertismentul global.",
       imageKey: "michaelJackson",
       contribution: "Performanță Pop & Videoclipuri Muzicale Cinematografice",
+      achievement: "'Thriller' rămâne cel mai bine vândut album din toate timpurile (peste 70 mil. copii).",
     },
     {
       name: "Michael Jordan",
@@ -1169,6 +1187,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       description: "Legenda baschetului care a transformat sportul într-o forță globală de marketing și publicitate.",
       imageKey: "michaelJordan",
       contribution: "Branding Sportiv & Cultura Sneakerșilor",
+      achievement: "A dezvoltat brandul Nike Jordan într-o forță globală ce generează peste 6.6 miliarde de dolari anual.",
     },
     {
       name: "Martin Luther King Jr.",
@@ -1176,6 +1195,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       description: "Vocea morală a drepturilor civile a cărei viziune despre libertate a remodelat conștiința democratică.",
       imageKey: "martinLutherKing",
       contribution: "Retorică pentru Drepturi Civile & Mobilizare Morală",
+      achievement: "A condus Marșul asupra Washingtonului (peste 250.000 de participanți); cel mai tânăr laureat al Premiului Nobel pentru Pace în 1964.",
     },
     {
       name: "Arnold Schwarzenegger",
@@ -1183,6 +1203,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       description: "Culturistul imigrant care a cucerit Hollywood-ul și a devenit arhetipul suprem al filmelor de acțiune globale.",
       imageKey: "arnoldSchwarzenegger",
       contribution: "Cinematografie de Acțiune Transnațională & Industria Fitnessului",
+      achievement: "Filmele sale au încasat peste 4 miliarde de dolari; a fost primul guvernator imigrant al Californiei în 150 de ani.",
     },
   ],
 };
