@@ -35,7 +35,9 @@ import {
   getCultureEditorialImperialism,
   getCultureDigitalPipes,
   getCultureIcons,
+  getCultureHollywood,
 } from "@/lib/data/culture-data";
+
 
 
 
@@ -63,6 +65,7 @@ import {
   CultureEditorialImperialism,
   CultureDigitalPipes,
   CultureIconsSection,
+  CultureHollywoodEditorial,
 } from "@/components/culture/CulturePageComponents";
 
 
@@ -105,6 +108,7 @@ export default async function CulturePage() {
   const editorialImperialism = getCultureEditorialImperialism(locale);
   const digitalPipes = getCultureDigitalPipes(locale);
   const culturalIcons = getCultureIcons(locale);
+  const hollywoodData = getCultureHollywood(locale);
 
 
 
@@ -211,6 +215,9 @@ export default async function CulturePage() {
         ctaLabel={radarCta}
         ctaHref="#"
       />
+
+      {/* Hollywood — The Dream Factory Editorial */}
+      <CultureHollywoodEditorial data={hollywoodData} isRo={isRo} />
 
       {/* Parallax Divider 2 — NFL/Cowboys Stadium */}
       <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.nflStadium} alt="American Football Stadium Lights" />

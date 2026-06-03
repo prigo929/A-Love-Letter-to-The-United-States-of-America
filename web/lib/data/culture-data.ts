@@ -1170,6 +1170,51 @@ export function getCultureIcons(locale: Locale): CultureIconsSectionData {
   return locale === "ro" ? CULTURE_ICONS_RO : CULTURE_ICONS_EN;
 }
 
+// ─── Hollywood Dream Factory data ───────────────────────────────────────────
+
+export interface CultureHollywoodStat {
+  value: string;
+  label: string;
+}
+
+export interface CultureHollywoodData {
+  eyebrow: string;
+  headline: string;
+  pullQuote: string;
+  body: string;
+  stats: CultureHollywoodStat[];
+  ctaText: string;
+}
+
+const HOLLYWOOD_EN: CultureHollywoodData = {
+  eyebrow: "THE DREAM FACTORY · HOLLYWOOD",
+  headline: "THE UNIVERSAL LANGUAGE OF IMAGINATION",
+  pullQuote: "Hollywood didn't just export movies; it exported the subconscious desires of the world, turning local American dreams into a planetary vocabulary.",
+  body: "Cinema is America's ultimate soft power engine. Long before they ever encounter an American in person, teenagers from Bucharest to Bangalore grow up dreaming of the palm trees of Los Angeles, the skylines of New York, and the highways of the American West. This planetary draw isn't a state project—it is a market-driven force. US films routinely capture over 70% of global box office revenues, and the Academy Awards are broadcast to a global audience of over 200 countries. By building the definitive narrative grammar of the feature film, Hollywood created a global mirror: a universal language of hope, struggle, and heroism that the world freely chose to adopt.",
+  stats: [
+    { value: "73.5%", label: "Global Box Office Revenue Share" },
+    { value: "200+", label: "Countries Broadcasting the Oscars" },
+  ],
+  ctaText: "Explore the Archive Vault",
+};
+
+const HOLLYWOOD_RO: CultureHollywoodData = {
+  eyebrow: "FABRICA DE VISURI · HOLLYWOOD",
+  headline: "LIMBAJUL UNIVERSAL AL IMAGINAȚIEI",
+  pullQuote: "Hollywood-ul nu a exportat doar filme; a exportat dorințele subconștiente ale lumii, transformând visurile locale americane într-un vocabular planetar.",
+  body: "Cinematografia este motorul suprem de putere soft al Americii. Mult înainte de a întâlni vreodată un american în persoană, adolescenții de la București la Bangalore cresc visând la palmierii din Los Angeles, zgârie-norii din New York și autostrăzile vestului american. Această atracție planetară nu este un proiect de stat, ci o forță condusă de piață. Filmele americane captează în mod regulat peste 70% din veniturile globale din box office, iar Premiile Oscar sunt difuzate în peste 200 de țări. Prin crearea gramaticii narative definitorii a filmului de lungmetraj, Hollywood-ul a creat o oglindă globală: un limbaj universal al speranței, luptei și eroismului pe care lumea a ales liber să-l adopte.",
+  stats: [
+    { value: "73,5%", label: "Cota din Veniturile Box Office Global" },
+    { value: "200+", label: "Țări care Difuzează Premiile Oscar" },
+  ],
+  ctaText: "Explorează Arhiva Culturală",
+};
+
+export function getCultureHollywood(locale: Locale): CultureHollywoodData {
+  return locale === "ro" ? HOLLYWOOD_RO : HOLLYWOOD_EN;
+}
+
+
 
 
 

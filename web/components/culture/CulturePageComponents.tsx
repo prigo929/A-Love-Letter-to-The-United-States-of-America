@@ -40,7 +40,9 @@ import type {
   CultureEditorialImperialismData,
   CultureDigitalPipesData,
   CultureIconsSectionData,
+  CultureHollywoodData,
 } from "@/lib/data/culture-data";
+
 
 
 
@@ -1852,7 +1854,7 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
     : "A curated archive of landmark cultural exports that defined global creative expression.";
 
   return (
-    <section className="relative culture-bg py-28 md:py-36 overflow-hidden">
+    <section id="culture-archive-vault" className="relative culture-bg py-28 md:py-36 overflow-hidden">
       {/* Dot-grid background */}
       <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none" />
 
@@ -2913,6 +2915,141 @@ export function CultureIconsSection({ data, isRo = false }: CultureIconsSectionP
     </section>
   );
 }
+
+// ─── §3.10 — Hollywood: The Dream Factory ───────────────────────────────────
+
+interface CultureHollywoodEditorialProps {
+  data: CultureHollywoodData;
+  isRo?: boolean;
+}
+
+export function CultureHollywoodEditorial({ data, isRo = false }: CultureHollywoodEditorialProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  return (
+    <section
+      ref={containerRef}
+      id="culture-hollywood"
+      className="relative culture-bg py-28 md:py-36 overflow-hidden border-b border-white/5"
+    >
+      {/* Background dot grid */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none" />
+
+      {/* Subtle gold radial background glow on left */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at 25% 50%, rgba(212,175,55,0.02) 0%, transparent 60%)",
+        }}
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Bold Pull Quote Card */}
+          <motion.div
+            className="lg:col-span-5"
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <motion.div
+              whileHover="hover"
+              className="relative p-8 sm:p-10 rounded-2xl bg-white/[0.01] border border-white/[0.05] hover:border-glory-gold/30 transition-colors duration-500 overflow-hidden group cursor-default"
+            >
+              {/* Gold radial shimmer overlay */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" 
+                style={{
+                  background: "radial-gradient(circle at center, rgba(212,175,55,0.06) 0%, transparent 70%)"
+                }}
+              />
+              
+              {/* Shimmer top border line */}
+              <div className="absolute top-0 left-0 w-0 h-[2px] bg-gradient-to-r from-transparent via-glory-gold to-transparent group-hover:w-full transition-all duration-700 ease-out" />
+              
+              {/* Decorative Quote Mark */}
+              <span className="font-editorial text-glory-gold/10 text-[100px] leading-none absolute -top-4 -left-2 select-none pointer-events-none">
+                &ldquo;
+              </span>
+
+              <motion.p
+                variants={{
+                  hover: { color: "#FFD700", textShadow: "0 0 15px rgba(255,215,0,0.12)" }
+                }}
+                transition={{ duration: 0.4 }}
+                className="font-editorial italic text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#F5EDD8] leading-snug relative z-10"
+              >
+                {data.pullQuote}
+              </motion.p>
+
+              {/* Source label */}
+              <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between relative z-10">
+                <span className="culture-text-label text-[9px] text-[#F5EDD8]/45 tracking-[0.2em] uppercase font-bold">
+                  {isRo ? "Ecranul Global" : "The Global Screen"}
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-glory-gold/30 group-hover:bg-glory-gold transition-colors duration-500" />
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column: Editorial Copy, Stats, and Callout Link */}
+          <motion.div
+            className="lg:col-span-7"
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="culture-text-label text-glory-gold block mb-4 tracking-[0.3em] font-bold">
+              {data.eyebrow}
+            </span>
+            <h2 className="font-editorial text-4xl sm:text-5xl lg:text-5xl xl:text-6xl text-white font-bold leading-tight mb-6">
+              {data.headline}
+            </h2>
+            <div className="w-16 h-0.5 bg-glory-gold/40 mb-6" />
+            <p className="font-body text-[#F5EDD8]/70 text-sm sm:text-base leading-relaxed font-light mb-8">
+              {data.body}
+            </p>
+
+            {/* Sub-stats block */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+              {data.stats.map((s, idx) => (
+                <div 
+                  key={s.label}
+                  className="border border-white/[0.04] bg-white/[0.01] rounded-xl p-5 flex flex-col items-center text-center hover:border-glory-gold/20 transition-all duration-300 group/stat cursor-default"
+                >
+                  <span className="text-3.5xl sm:text-4xl font-extralight text-white group-hover/stat:text-glory-gold transition-colors duration-300 leading-none tabular-nums">
+                    <AnimatedNumber value={s.value} />
+                  </span>
+                  <span className="culture-text-label text-[9px] text-[#F5EDD8]/45 mt-3 tracking-wider leading-relaxed uppercase">
+                    {s.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Button Link scrolling down to the Archive Vault */}
+            <div className="flex justify-start">
+              <a 
+                href="#culture-archive-vault"
+                className="inline-flex items-center gap-3 bg-white/5 border border-white/10 hover:border-glory-gold/40 hover:bg-white/[0.08] text-white hover:text-glory-gold font-body text-xs uppercase tracking-widest px-8 py-4 rounded-full transition-all duration-300 group/cta shadow-lg"
+              >
+                <span>{data.ctaText}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.0} stroke="currentColor" className="w-3.5 h-3.5 transform group-hover/cta:translate-y-0.5 transition-transform duration-300">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </a>
+            </div>
+
+          </motion.div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 
 
