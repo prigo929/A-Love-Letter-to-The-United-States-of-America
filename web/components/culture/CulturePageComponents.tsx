@@ -183,10 +183,30 @@ export function CultureStyles() {
         background: linear-gradient(to top, #0C0907 0%, transparent 100%);
       }
       .gradient-dark-to-cream {
-        background: linear-gradient(to bottom, #0C0907 0%, #F5EDD8 100%);
+        background: linear-gradient(
+          to bottom,
+          #0C0907 0%,
+          #221C18 8%,
+          #4D443B 22%,
+          #827666 40%,
+          #B5A995 62%,
+          #DCD2BF 82%,
+          #FAF3E2 93%,
+          #F5EDD8 100%
+        );
       }
       .gradient-cream-to-dark {
-        background: linear-gradient(to bottom, #F5EDD8 0%, #0C0907 100%);
+        background: linear-gradient(
+          to bottom,
+          #F5EDD8 0%,
+          #FAF3E2 7%,
+          #DCD2BF 18%,
+          #B5A995 38%,
+          #827666 60%,
+          #4D443B 78%,
+          #221C18 92%,
+          #0C0907 100%
+        );
       }
     `}</style>
   );
@@ -3217,7 +3237,7 @@ export function CultureEnglishLanguage({ data, isRo = false }: CultureEnglishLan
     <section
       ref={containerRef}
       id="culture-english-language"
-      className="relative culture-cream-bg py-28 md:py-36 overflow-hidden border-b border-black/[0.04]"
+      className="relative culture-cream-bg py-28 md:py-36 overflow-hidden"
     >
       {/* Background canvas pattern with very light opacity */}
       <div 
