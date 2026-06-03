@@ -41,6 +41,7 @@ import type {
   CultureDigitalPipesData,
   CultureIconsSectionData,
   CultureHollywoodData,
+  CultureManifestoData,
 } from "@/lib/data/culture-data";
 
 
@@ -3045,6 +3046,156 @@ export function CultureHollywoodEditorial({ data, isRo = false }: CultureHollywo
           </motion.div>
 
         </div>
+      </div>
+    </section>
+  );
+}
+
+interface CultureManifestoSectionProps {
+  data: CultureManifestoData;
+  isRo?: boolean;
+}
+
+export function CultureManifestoSection({ data, isRo = false }: CultureManifestoSectionProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  return (
+    <section
+      ref={containerRef}
+      id="culture-manifesto"
+      className="relative culture-bg py-32 md:py-40 overflow-hidden border-t border-white/5"
+    >
+      {/* Background Canvas & Radial Glow */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-20 pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at center, rgba(212,175,55,0.03) 0%, transparent 60%)",
+        }}
+      />
+
+      <div className="relative z-10 mx-auto max-w-5xl px-6 sm:px-8 text-center">
+        {/* Eyebrow */}
+        <motion.span
+          initial={{ opacity: 0, y: 15 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="culture-text-label text-glory-gold block mb-6 tracking-[0.4em] font-bold"
+        >
+          {data.eyebrow}
+        </motion.span>
+
+        {/* Statement */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="font-editorial italic text-3xl sm:text-4xl md:text-5xl lg:text-5xl text-[#F5EDD8] leading-tight max-w-4xl mx-auto mb-8 cursor-default hover:text-glory-gold transition-colors duration-500"
+        >
+          &ldquo;{data.statement}&rdquo;
+        </motion.h2>
+
+        {/* Gold separator */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={isInView ? { scaleX: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="w-24 h-0.5 bg-glory-gold/40 mx-auto mb-8 origin-center"
+        />
+
+        {/* Body Paragraph */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="font-body text-[#F5EDD8]/75 text-sm sm:text-base md:text-lg leading-relaxed font-light max-w-3xl mx-auto mb-16"
+        >
+          {data.body}
+        </motion.p>
+
+        {/* Verticals Navigation Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-6"
+        >
+          {data.verticals.map((vert) => {
+            // Custom SVGs representing the icon logic
+            let iconSvg;
+            if (vert.href.includes("constitution")) {
+              // Scale / Balance icon
+              iconSvg = (
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17M12 3L7 8h10L12 3zM19 17h2M3 17h2M5 17c0-2.21 3.134-4 7-4s7 1.79 7 4M5 17h14" />
+                </svg>
+              );
+            } else if (vert.href.includes("economy")) {
+              // Trending Up / Chart icon
+              iconSvg = (
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+                </svg>
+              );
+            } else {
+              // Shield / Military icon
+              iconSvg = (
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                </svg>
+              );
+            }
+
+            return (
+              <Link
+                key={vert.href}
+                href={vert.href}
+                className="group relative p-6 sm:p-8 rounded-2xl bg-white/[0.01] border border-white/[0.04] hover:border-glory-gold/30 transition-all duration-500 flex flex-col items-center justify-between text-center overflow-hidden cursor-pointer"
+              >
+                {/* Subtle top gold border slide on hover */}
+                <div className="absolute top-0 left-0 w-0 h-[2px] bg-gradient-to-r from-transparent via-glory-gold to-transparent group-hover:w-full transition-all duration-700 ease-out" />
+                
+                {/* Hover background radial gold glow */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                  style={{
+                    background: "radial-gradient(circle at center, rgba(212,175,55,0.05) 0%, transparent 70%)"
+                  }}
+                />
+
+                {/* Icon Wrapper */}
+                <div className="w-12 h-12 rounded-full bg-white/[0.02] border border-white/[0.06] group-hover:border-glory-gold/30 flex items-center justify-center text-glory-gold/70 group-hover:text-glory-gold group-hover:scale-110 transition-all duration-500 mb-6">
+                  {iconSvg}
+                </div>
+
+                <div className="flex-1 flex flex-col justify-center">
+                  <h3 className="font-editorial text-xl sm:text-2xl text-white font-medium mb-2 group-hover:text-glory-gold transition-colors duration-300">
+                    {vert.title}
+                  </h3>
+                  <p className="font-body text-[#F5EDD8]/40 text-xs sm:text-sm tracking-wide leading-relaxed font-light">
+                    {vert.subtitle}
+                  </p>
+                </div>
+
+                {/* Small link arrow indicator */}
+                <div className="mt-6 flex items-center gap-1.5 text-glory-gold/40 group-hover:text-glory-gold transition-colors duration-300 text-[10px] uppercase tracking-widest font-bold font-body">
+                  <span>{isRo ? "Explorează" : "Explore"}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform duration-300"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </div>
+              </Link>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );

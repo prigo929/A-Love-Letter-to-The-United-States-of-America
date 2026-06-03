@@ -1214,6 +1214,49 @@ export function getCultureHollywood(locale: Locale): CultureHollywoodData {
   return locale === "ro" ? HOLLYWOOD_RO : HOLLYWOOD_EN;
 }
 
+export interface CultureManifestoVertical {
+  title: string;
+  subtitle: string;
+  href: string;
+}
+
+export interface CultureManifestoData {
+  eyebrow: string;
+  statement: string;
+  body: string;
+  ctaLabel: string;
+  verticals: CultureManifestoVertical[];
+}
+
+const MANIFESTO_EN: CultureManifestoData = {
+  eyebrow: "THE AMERICAN MANIFESTO",
+  statement: "This isn't accidental. It's the consequence of a very specific idea about what happens when you leave human ambition free.",
+  body: "America's global cultural footprint is not the output of a state planning committee or an imperial mandate. It is the downstream result of a single, revolutionary context: a system that secures individual liberty, protects private enterprise, and trusts voluntary exchange. When you leave the human imagination free from state coercion, people create forms that the rest of the world freely chooses to listen to, watch, stream, and adopt. The ultimate soft power is the power of free choices.",
+  ctaLabel: "Continue the Journey",
+  verticals: [
+    { title: "Constitution", subtitle: "The Bedrock of Liberty", href: "/constitution" },
+    { title: "Economy", subtitle: "The Engine of Enterprise", href: "/economy" },
+    { title: "Military", subtitle: "The Shield of Democracy", href: "/military" },
+  ],
+};
+
+const MANIFESTO_RO: CultureManifestoData = {
+  eyebrow: "MANIFESTUL AMERICAN",
+  statement: "Acest lucru nu este accidental. Consecința unei idei foarte specifice despre ceea ce se întâmplă atunci când lași ambiția umană liberă.",
+  body: "Amprenta culturală globală a Americii nu este rezultatul unui comitet de planificare de stat sau al unui mandat imperial. Este rezultatul direct al unui singur context revoluționar: un sistem care garantează libertatea individuală, protejează inițiativa privată și are încredere în schimbul voluntar. Atunci când lași imaginația umană liberă de constrângerea statului, oamenii creează formate pe care restul lumii alege în mod liber să le asculte, să le privească, să le acceseze și să le adopte. Puterea soft supremă este puterea alegerilor libere.",
+  ctaLabel: "Continuă călătoria",
+  verticals: [
+    { title: "Constituție", subtitle: "Fundamentul Libertății", href: "/constitution" },
+    { title: "Economie", subtitle: "Motorul Inițiativei", href: "/economy" },
+    { title: "Armată", subtitle: "Scutul Democrației", href: "/military" },
+  ],
+};
+
+export function getCultureManifesto(locale: Locale): CultureManifestoData {
+  return locale === "ro" ? MANIFESTO_RO : MANIFESTO_EN;
+}
+
+
 
 
 

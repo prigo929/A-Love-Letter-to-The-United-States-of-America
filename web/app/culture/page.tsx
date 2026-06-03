@@ -36,6 +36,7 @@ import {
   getCultureDigitalPipes,
   getCultureIcons,
   getCultureHollywood,
+  getCultureManifesto,
 } from "@/lib/data/culture-data";
 
 
@@ -66,12 +67,8 @@ import {
   CultureDigitalPipes,
   CultureIconsSection,
   CultureHollywoodEditorial,
+  CultureManifestoSection,
 } from "@/components/culture/CulturePageComponents";
-
-
-
-
-import { NewsletterSection } from "@/components/sections/NewsletterSection";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
@@ -109,6 +106,7 @@ export default async function CulturePage() {
   const digitalPipes = getCultureDigitalPipes(locale);
   const culturalIcons = getCultureIcons(locale);
   const hollywoodData = getCultureHollywood(locale);
+  const manifestoData = getCultureManifesto(locale);
 
 
 
@@ -228,10 +226,8 @@ export default async function CulturePage() {
       {/* §8 — Quote Carousel */}
       <CultureQuoteCarousel quotes={quotes} />
 
-      {/* §9 — Newsletter */}
-      <div className="culture-bg">
-        <NewsletterSection />
-      </div>
+      {/* Closing Manifesto exit section */}
+      <CultureManifestoSection data={manifestoData} isRo={isRo} />
     </main>
   );
 }
