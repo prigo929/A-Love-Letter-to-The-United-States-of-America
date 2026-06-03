@@ -136,9 +136,11 @@ export function CultureStyles() {
       }
       .animate-marquee-left {
         animation: marquee-left 50s linear infinite;
+        will-change: transform;
       }
       .animate-marquee-right {
         animation: marquee-right 50s linear infinite;
+        will-change: transform;
       }
 
       /* ── Entry Animations ───────────────────────────────────────── */
@@ -1286,7 +1288,7 @@ export function CultureBrandLogosMarquee() {
       <div className="relative w-full overflow-hidden">
         <div className="flex w-max animate-marquee-left whitespace-nowrap">
           {/* Track 1 */}
-          <div className="flex items-center gap-16 pr-16">
+          <div className="flex items-center gap-16 pr-16 flex-shrink-0">
             {BRAND_LOGOS_ROW_1.map((logo) => (
               <div
                 key={`${logo.name}-row1-track1`}
@@ -1299,13 +1301,13 @@ export function CultureBrandLogosMarquee() {
                     "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
                     logo.invert && "invert brightness-200"
                   )}
-                  loading="lazy"
+                  loading="eager"
                 />
               </div>
             ))}
           </div>
           {/* Track 2 */}
-          <div className="flex items-center gap-16 pr-16" aria-hidden="true">
+          <div className="flex items-center gap-16 pr-16 flex-shrink-0" aria-hidden="true">
             {BRAND_LOGOS_ROW_1.map((logo) => (
               <div
                 key={`${logo.name}-row1-track2`}
@@ -1318,7 +1320,7 @@ export function CultureBrandLogosMarquee() {
                     "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
                     logo.invert && "invert brightness-200"
                   )}
-                  loading="lazy"
+                  loading="eager"
                 />
               </div>
             ))}
@@ -1330,7 +1332,7 @@ export function CultureBrandLogosMarquee() {
       <div className="relative w-full overflow-hidden">
         <div className="flex w-max animate-marquee-right whitespace-nowrap">
           {/* Track 1 */}
-          <div className="flex items-center gap-16 pr-16">
+          <div className="flex items-center gap-16 pr-16 flex-shrink-0">
             {BRAND_LOGOS_ROW_2.map((logo) => (
               <div
                 key={`${logo.name}-row2-track1`}
@@ -1343,13 +1345,13 @@ export function CultureBrandLogosMarquee() {
                     "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
                     logo.invert && "invert brightness-200"
                   )}
-                  loading="lazy"
+                  loading="eager"
                 />
               </div>
             ))}
           </div>
           {/* Track 2 */}
-          <div className="flex items-center gap-16 pr-16" aria-hidden="true">
+          <div className="flex items-center gap-16 pr-16 flex-shrink-0" aria-hidden="true">
             {BRAND_LOGOS_ROW_2.map((logo) => (
               <div
                 key={`${logo.name}-row2-track2`}
@@ -1362,7 +1364,7 @@ export function CultureBrandLogosMarquee() {
                     "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
                     logo.invert && "invert brightness-200"
                   )}
-                  loading="lazy"
+                  loading="eager"
                 />
               </div>
             ))}
