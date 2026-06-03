@@ -1021,6 +1021,7 @@ export interface CultureIconItem {
   years: string;
   description: string;
   imageKey: string;
+  contribution: string;
 }
 
 export interface CultureIconsSectionData {
@@ -1040,60 +1041,70 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       years: "1901 – 1966",
       description: "Pioneered animated cinema and built the modern global franchise model of childhood imagination.",
       imageKey: "waltDisney",
+      contribution: "Animated Cinema & Global Franchising",
     },
     {
       name: "Louis Armstrong",
       years: "1901 – 1971",
       description: "The foundational virtuoso of jazz who projected American musical freedom to the global stage.",
       imageKey: "louisArmstrong",
+      contribution: "Jazz Virtuosity & Improvised Solos",
     },
     {
       name: "Elvis Presley",
       years: "1935 – 1977",
       description: "The undisputed King of Rock 'n' Roll who catalyzed youth culture and modernized musical performance.",
       imageKey: "elvisPresley",
+      contribution: "Rock 'n' Roll & Trans-Genre Chart Domination",
     },
     {
       name: "Marilyn Monroe",
       years: "1926 – 1962",
       description: "The ultimate Hollywood icon whose star power and image defined 20th-century pop culture glamour.",
       imageKey: "marilynMonroe",
+      contribution: "Hollywood Stardom & Photogenic Iconography",
     },
     {
       name: "Mark Twain",
       years: "1835 – 1910",
       description: "The great American humorist who captured the democratic, energetic voice of a growing nation.",
       imageKey: "markTwain",
+      contribution: "Vernacular Literature & Democratic Realism",
     },
     {
       name: "Muhammad Ali",
       years: "1942 – 2016",
       description: "The champion athlete and cultural force whose principles and charisma transcended sports globally.",
       imageKey: "muhammadAli",
+      contribution: "Heavyweight Boxing & Athlete Activism",
     },
     {
       name: "Michael Jackson",
       years: "1958 – 2009",
       description: "The King of Pop whose music videos, dance, and scale revolutionized global entertainment.",
       imageKey: "michaelJackson",
+      contribution: "Pop Performance & Cinematic Music Videos",
     },
     {
       name: "Michael Jordan",
       years: "born 1963",
       description: "The basketball legend who transformed sports into a global marketing and endorsement powerhouse.",
       imageKey: "michaelJordan",
+      contribution: "Athletic Brand Endorsements & Sneaker Culture",
     },
     {
       name: "Martin Luther King Jr.",
       years: "1929 – 1968",
       description: "The moral voice of civil rights whose vision of liberty reshaped the nation's democratic conscience.",
       imageKey: "martinLutherKing",
+      contribution: "Civil Rights Rhetoric & Moral Mobilization",
     },
     {
       name: "Arnold Schwarzenegger",
       years: "born 1947",
       description: "The immigrant bodybuilder who conquered Hollywood and became the ultimate global action archetype.",
       imageKey: "arnoldSchwarzenegger",
+      contribution: "Transnational Action Cinema & Fitness Industry",
     },
   ],
 };
@@ -1108,60 +1119,70 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       years: "1901 – 1966",
       description: "A fost pionierul cinematografiei de animație și a construit modelul global de franciză al imaginației infantile.",
       imageKey: "waltDisney",
+      contribution: "Cinematografie de Animație & Franciză Globală",
     },
     {
       name: "Louis Armstrong",
       years: "1901 – 1971",
       description: "Virtuozul fondator al jazzului care a proiectat libertatea muzicală americană pe scena globală.",
       imageKey: "louisArmstrong",
+      contribution: "Virtuozitate în Jazz & Improvizație",
     },
     {
       name: "Elvis Presley",
       years: "1935 – 1977",
       description: "Regele incontestabil al Rock 'n' Roll-ului care a catalizat cultura tineretului și a modernizat spectacolul muzical.",
       imageKey: "elvisPresley",
+      contribution: "Rock 'n' Roll & Dominarea Topurilor Trans-Gen",
     },
     {
       name: "Marilyn Monroe",
       years: "1926 – 1962",
       description: "Cea mai mare pictogramă de la Hollywood a cărei imagine a definit farmecul culturii pop din secolul XX.",
       imageKey: "marilynMonroe",
+      contribution: "Star de Hollywood & Iconografie Fotogenică",
     },
     {
       name: "Mark Twain",
       years: "1835 – 1910",
       description: "Marele umorist american care a surprins vocea democratică și plină de energie a unei națiuni în creștere.",
       imageKey: "markTwain",
+      contribution: "Literatură Vernaculară & Realism Democratic",
     },
     {
       name: "Muhammad Ali",
       years: "1942 – 2016",
       description: "Campionul atlet și forța culturală ale cărui principii și carismă au transcens sportul la nivel global.",
       imageKey: "muhammadAli",
+      contribution: "Box la Categoria Grea & Activism Sportiv",
     },
     {
       name: "Michael Jackson",
       years: "1958 – 2009",
       description: "Regele Pop a cărui muzică, dans și amploare au revoluționat divertismentul global.",
       imageKey: "michaelJackson",
+      contribution: "Performanță Pop & Videoclipuri Muzicale Cinematografice",
     },
     {
       name: "Michael Jordan",
       years: "născut 1963",
       description: "Legenda baschetului care a transformat sportul într-o forță globală de marketing și publicitate.",
       imageKey: "michaelJordan",
+      contribution: "Branding Sportiv & Cultura Sneakerșilor",
     },
     {
       name: "Martin Luther King Jr.",
       years: "1929 – 1968",
       description: "Vocea morală a drepturilor civile a cărei viziune despre libertate a remodelat conștiința democratică.",
       imageKey: "martinLutherKing",
+      contribution: "Retorică pentru Drepturi Civile & Mobilizare Morală",
     },
     {
       name: "Arnold Schwarzenegger",
       years: "născut 1947",
       description: "Culturistul imigrant care a cucerit Hollywood-ul și a devenit arhetipul suprem al filmelor de acțiune globale.",
       imageKey: "arnoldSchwarzenegger",
+      contribution: "Cinematografie de Acțiune Transnațională & Industria Fitnessului",
     },
   ],
 };

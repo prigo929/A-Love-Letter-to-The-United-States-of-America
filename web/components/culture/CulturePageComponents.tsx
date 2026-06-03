@@ -1713,10 +1713,11 @@ interface ImageLightboxModalProps {
   src: string | null;
   title?: string;
   subtitle?: string;
+  contribution?: string;
   onClose: () => void;
 }
 
-export function ImageLightboxModal({ src, title, subtitle, onClose }: ImageLightboxModalProps) {
+export function ImageLightboxModal({ src, title, subtitle, contribution, onClose }: ImageLightboxModalProps) {
   useEffect(() => {
     if (src) {
       document.body.style.overflow = "hidden";
@@ -1769,9 +1770,14 @@ export function ImageLightboxModal({ src, title, subtitle, onClose }: ImageLight
               />
             </div>
             
-            {(title || subtitle) && (
-              <div className="w-full text-center py-4 px-6 mt-1 border-t border-white/5">
-                {title && <h4 className="font-editorial text-lg text-[#F5EDD8] mb-1">{title}</h4>}
+            {(title || subtitle || contribution) && (
+              <div className="w-full text-center py-4 px-6 mt-1 border-t border-white/5 flex flex-col items-center">
+                {title && <h4 className="font-editorial text-lg text-[#F5EDD8] mb-0.5">{title}</h4>}
+                {contribution && (
+                  <p className="font-body text-[10px] tracking-widest text-glory-gold uppercase font-semibold mb-1.5">
+                    {contribution}
+                  </p>
+                )}
                 {subtitle && <p className="font-body text-xs tracking-widest text-[#F5EDD8]/45 uppercase">{subtitle}</p>}
               </div>
             )}
@@ -2791,6 +2797,7 @@ export function CultureIconsSection({ data, isRo = false }: CultureIconsSectionP
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedTitle, setSelectedTitle] = useState<string>("");
   const [selectedSubtitle, setSelectedSubtitle] = useState<string>("");
+  const [selectedContribution, setSelectedContribution] = useState<string>("");
 
   return (
     <section id="culture-icons" className="relative culture-bg py-28 md:py-36 overflow-hidden border-b border-white/5">
@@ -2852,6 +2859,7 @@ export function CultureIconsSection({ data, isRo = false }: CultureIconsSectionP
                   setSelectedImage(imageSrc);
                   setSelectedTitle(icon.name);
                   setSelectedSubtitle(`${icon.years} — ${icon.description}`);
+                  setSelectedContribution(icon.contribution);
                 }}
                 className="group relative aspect-[3/4.5] rounded-xl overflow-hidden culture-gradient-border border border-white/5 flex flex-col justify-end p-5 cursor-pointer"
                 initial={{ opacity: 0, y: 30 }}
@@ -2914,6 +2922,7 @@ export function CultureIconsSection({ data, isRo = false }: CultureIconsSectionP
         src={selectedImage}
         title={selectedTitle}
         subtitle={selectedSubtitle}
+        contribution={selectedContribution}
         onClose={() => setSelectedImage(null)}
       />
     </section>
