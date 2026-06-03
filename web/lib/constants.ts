@@ -211,33 +211,48 @@ export const NAV_SECTIONS = [
     items: [
       {
         label: "Overview",
-        href: "/culture",
+        href: "/culture/overview",
         description: "The culture hub and soft power thesis",
       },
       {
-        label: "The American High School",
-        href: "/culture/the-american-high-school",
-        description: "An anthropological look at the teen experience",
+        label: "Film & Storytelling",
+        href: "/culture/film-and-storytelling",
+        description: "Hollywood and the syntax of human dreaming",
       },
       {
-        label: "American Aesthetics",
-        href: "/culture/american-aesthetics",
-        description: "A visual gallery of recurring American interiors",
-      },
-      {
-        label: "American Sports",
-        href: "/culture/american-sports",
+        label: "Sports",
+        href: "/culture/sports",
         description: "NFL, NBA, MLB, and the soft-power of sports",
       },
       {
-        label: "Soft Power Thesis",
-        href: "/culture#intro",
-        description: "The core argument for America's cultural reach",
+        label: "Entertainment",
+        href: "/culture/entertainment",
+        description: "Netflix, Disney, and the global attention machine",
       },
       {
-        label: "Melting Pot",
-        href: "/culture#feature",
-        description: "Placeholder for the future WebGL culture feature",
+        label: "Companies & Brands",
+        href: "/culture/companies-brands",
+        description: "Levi's, Coca-Cola, Apple, and the Logo Empire",
+      },
+      {
+        label: "Food & Drinks",
+        href: "/culture/food-and-drinks",
+        description: "Diners, fast food, and the democratic palate",
+      },
+      {
+        label: "Music Genres",
+        href: "/culture/music-genres",
+        description: "Jazz, Blues, Rock, and Hip Hop origins",
+      },
+      {
+        label: "Fashion",
+        href: "/culture/fashion",
+        description: "Blue jeans, sneakers, and streetwear rebellion",
+      },
+      {
+        label: "English Language",
+        href: "/culture/english-language",
+        description: "The lingua franca of science, aviation, and code",
       },
     ],
   },
@@ -678,29 +693,41 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "America nu a construit doar o națiune — a construit cultura globală",
     badge: "Cultură Globală",
     items: {
-      "/culture": {
+      "/culture/overview": {
         label: "Prezentare Generală",
         description: "Hubul cultural și teza despre soft power",
       },
-      "/culture/the-american-high-school": {
-        label: "Liceul American",
-        description: "O privire antropologică asupra experienței adolescentine",
+      "/culture/film-and-storytelling": {
+        label: "Film și Narativă",
+        description: "Hollywood și sintaxa viselor umane",
       },
-      "/culture/american-aesthetics": {
-        label: "Estetica Americană",
-        description: "O galerie vizuală a interioarelor americane",
-      },
-      "/culture/american-sports": {
-        label: "Sportul American",
+      "/culture/sports": {
+        label: "Sport",
         description: "NFL, NBA, MLB și soft power-ul sportului",
       },
-      "/culture#intro": {
-        label: "Teza Soft Power",
-        description: "Argumentul central pentru influența culturală americană",
+      "/culture/entertainment": {
+        label: "Divertisment",
+        description: "Netflix, Disney și mașina globală de atenție",
       },
-      "/culture#feature": {
-        label: "Melting Pot",
-        description: "Loc rezervat pentru viitorul element WebGL cultural",
+      "/culture/companies-brands": {
+        label: "Companii și Branduri",
+        description: "Levi's, Coca-Cola, Apple și imperiul logo-urilor",
+      },
+      "/culture/food-and-drinks": {
+        label: "Mâncare și Băuturi",
+        description: "Diner-ul, fast-food-ul și gustul democratizat",
+      },
+      "/culture/music-genres": {
+        label: "Genuri Muzicale",
+        description: "Originile Jazz-ului, Blues-ului, Rock-ului și Hip Hop-ului",
+      },
+      "/culture/fashion": {
+        label: "Modă",
+        description: "Blugii, sneakerșii și rebeliunea streetwear",
+      },
+      "/culture/english-language": {
+        label: "Limba Engleză",
+        description: "Lingua franca a științei, aviației și codului",
       },
     },
   },

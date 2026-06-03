@@ -58,7 +58,7 @@ const KNOWLEDGE_BASE: KnowledgeItem[] = [
     cta: {
       labelEn: "Explore American Sports & Soft Power →",
       labelRo: "Explorează Sportul American și Soft Power →",
-      href: "/culture/american-sports",
+      href: "/culture/sports",
     },
   },
   {
