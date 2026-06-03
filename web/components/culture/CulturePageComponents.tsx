@@ -1715,10 +1715,11 @@ interface ImageLightboxModalProps {
   subtitle?: string;
   contribution?: string;
   achievement?: string;
+  quote?: string;
   onClose: () => void;
 }
 
-export function ImageLightboxModal({ src, title, subtitle, contribution, achievement, onClose }: ImageLightboxModalProps) {
+export function ImageLightboxModal({ src, title, subtitle, contribution, achievement, quote, onClose }: ImageLightboxModalProps) {
   useEffect(() => {
     if (src) {
       document.body.style.overflow = "hidden";
@@ -1771,7 +1772,7 @@ export function ImageLightboxModal({ src, title, subtitle, contribution, achieve
               />
             </div>
             
-            {(title || subtitle || contribution || achievement) && (
+            {(title || subtitle || contribution || achievement || quote) && (
               <div className="w-full text-center py-4 px-6 mt-1 border-t border-white/5 flex flex-col items-center gap-1">
                 {title && <h4 className="font-editorial text-lg text-[#F5EDD8] mb-0.5">{title}</h4>}
                 {contribution && (
@@ -1780,11 +1781,16 @@ export function ImageLightboxModal({ src, title, subtitle, contribution, achieve
                   </p>
                 )}
                 {achievement && (
-                  <p className="font-body text-[11px] text-[#F5EDD8]/80 max-w-xl italic mt-0.5 mb-1.5">
+                  <p className="font-body text-[11px] text-[#F5EDD8]/80 max-w-xl italic mt-0.5 mb-1">
                     ★ {achievement}
                   </p>
                 )}
-                {subtitle && <p className="font-body text-xs tracking-widest text-[#F5EDD8]/45 uppercase">{subtitle}</p>}
+                {quote && (
+                  <blockquote className="font-editorial italic text-xs text-[#F5EDD8]/60 border-l border-glory-gold/40 pl-3 max-w-md text-left py-1 my-1">
+                    &ldquo;{quote}&rdquo;
+                  </blockquote>
+                )}
+                {subtitle && <p className="font-body text-xs tracking-widest text-[#F5EDD8]/45 uppercase mt-1">{subtitle}</p>}
               </div>
             )}
           </motion.div>
@@ -2805,6 +2811,7 @@ export function CultureIconsSection({ data, isRo = false }: CultureIconsSectionP
   const [selectedSubtitle, setSelectedSubtitle] = useState<string>("");
   const [selectedContribution, setSelectedContribution] = useState<string>("");
   const [selectedAchievement, setSelectedAchievement] = useState<string>("");
+  const [selectedQuote, setSelectedQuote] = useState<string>("");
 
   return (
     <section id="culture-icons" className="relative culture-bg py-28 md:py-36 overflow-hidden border-b border-white/5">
@@ -2868,6 +2875,7 @@ export function CultureIconsSection({ data, isRo = false }: CultureIconsSectionP
                   setSelectedSubtitle(`${icon.years} — ${icon.description}`);
                   setSelectedContribution(icon.contribution);
                   setSelectedAchievement(icon.achievement);
+                  setSelectedQuote(icon.quote);
                 }}
                 className="group relative aspect-[3/4.5] rounded-xl overflow-hidden culture-gradient-border border border-white/5 flex flex-col justify-end p-5 cursor-pointer"
                 initial={{ opacity: 0, y: 30 }}
@@ -2932,6 +2940,7 @@ export function CultureIconsSection({ data, isRo = false }: CultureIconsSectionP
         subtitle={selectedSubtitle}
         contribution={selectedContribution}
         achievement={selectedAchievement}
+        quote={selectedQuote}
         onClose={() => setSelectedImage(null)}
       />
     </section>

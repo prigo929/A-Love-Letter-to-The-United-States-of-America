@@ -1023,6 +1023,7 @@ export interface CultureIconItem {
   imageKey: string;
   contribution: string;
   achievement: string;
+  quote: string;
 }
 
 export interface CultureIconsSectionData {
@@ -1044,6 +1045,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       imageKey: "waltDisney",
       contribution: "Animated Cinema & Global Franchising",
       achievement: "Holds the record for most Academy Awards won in history (26).",
+      quote: "If you can dream it, you can do it.",
     },
     {
       name: "Louis Armstrong",
@@ -1052,6 +1054,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       imageKey: "louisArmstrong",
       contribution: "Jazz Virtuosity & Improvised Solos",
       achievement: "6-decade chart presence; first jazz artist featured on the cover of Time Magazine.",
+      quote: "What we play is life.",
     },
     {
       name: "Elvis Presley",
@@ -1060,6 +1063,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       imageKey: "elvisPresley",
       contribution: "Rock 'n' Roll & Trans-Genre Chart Domination",
       achievement: "Over 1 billion records sold worldwide; the best-selling solo artist of all time.",
+      quote: "Values are like fingerprints. Nobody's are the same, but you leave them on everything you do.",
     },
     {
       name: "Marilyn Monroe",
@@ -1068,6 +1072,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       imageKey: "marilynMonroe",
       contribution: "Hollywood Stardom & Photogenic Iconography",
       achievement: "Her films grossed over $200 million by the time of her death in 1962.",
+      quote: "Imperfection is beauty, madness is genius, and it's better to be absolutely ridiculous than absolutely boring.",
     },
     {
       name: "Mark Twain",
@@ -1076,6 +1081,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       imageKey: "markTwain",
       contribution: "Vernacular Literature & Democratic Realism",
       achievement: "Universally recognized as the 'father of American literature'; translated into 120+ languages.",
+      quote: "The secret of getting ahead is getting started.",
     },
     {
       name: "Muhammad Ali",
@@ -1084,6 +1090,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       imageKey: "muhammadAli",
       contribution: "Heavyweight Boxing & Athlete Activism",
       achievement: "The only three-time lineal heavyweight champion; over 1 billion viewers watched the 1974 'Rumble in the Jungle'.",
+      quote: "He who is not courageous enough to take risks will accomplish nothing in life.",
     },
     {
       name: "Michael Jackson",
@@ -1092,6 +1099,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       imageKey: "michaelJackson",
       contribution: "Pop Performance & Cinematic Music Videos",
       achievement: "'Thriller' remains the best-selling music album of all time (70M+ copies).",
+      quote: "In a world filled with hate, we must still dare to hope.",
     },
     {
       name: "Michael Jordan",
@@ -1100,6 +1108,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       imageKey: "michaelJordan",
       contribution: "Athletic Brand Endorsements & Sneaker Culture",
       achievement: "Transformed the Nike Jordan Brand into a global powerhouse generating $6.6B+ annually.",
+      quote: "I've failed over and over again in my life. And that is why I succeed.",
     },
     {
       name: "Martin Luther King Jr.",
@@ -1108,6 +1117,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       imageKey: "martinLutherKing",
       contribution: "Civil Rights Rhetoric & Moral Mobilization",
       achievement: "Led the 1963 March on Washington (250,000+ marchers); youngest Nobel Peace Prize laureate in 1964.",
+      quote: "Darkness cannot drive out darkness; only light can do that. Hate cannot drive out hate; only love can do that.",
     },
     {
       name: "Arnold Schwarzenegger",
@@ -1116,6 +1126,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
       imageKey: "arnoldSchwarzenegger",
       contribution: "Transnational Action Cinema & Fitness Industry",
       achievement: "His films grossed over $4 billion globally; served as California's first immigrant governor in 150 years.",
+      quote: "Strength does not come from winning. Your struggles develop your strengths.",
     },
   ],
 };
@@ -1132,6 +1143,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       imageKey: "waltDisney",
       contribution: "Cinematografie de Animație & Franciză Globală",
       achievement: "Deține recordul istoric pentru cele mai multe premii Oscar câștigate (26).",
+      quote: "Dacă poți visa la ceva, poți și realiza.",
     },
     {
       name: "Louis Armstrong",
@@ -1140,6 +1152,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       imageKey: "louisArmstrong",
       contribution: "Virtuozitate în Jazz & Improvizație",
       achievement: "Carieră de peste 6 decenii; primul artist de jazz pe coperta revistei Time.",
+      quote: "Ceea ce cântăm este viața însăși.",
     },
     {
       name: "Elvis Presley",
@@ -1148,6 +1161,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       imageKey: "elvisPresley",
       contribution: "Rock 'n' Roll & Dominarea Topurilor Trans-Gen",
       achievement: "Peste 1 miliard de discuri vândute; cel mai bine vândut artist solo din istorie.",
+      quote: "Valorile sunt ca amprentele. Nimeni nu are aceleași amprente, dar le lași pe tot ceea ce faci.",
     },
     {
       name: "Marilyn Monroe",
@@ -1156,6 +1170,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       imageKey: "marilynMonroe",
       contribution: "Star de Hollywood & Iconografie Fotogenică",
       achievement: "Filmele sale au încasat peste 200 de milioane de dolari până în anul 1962.",
+      quote: "Imperfecțiunea este frumusețe, nebunia este geniu și este mai bine să fii absolut ridicol decât absolut plictisitor.",
     },
     {
       name: "Mark Twain",
@@ -1164,6 +1179,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       imageKey: "markTwain",
       contribution: "Literatură Vernaculară & Realism Democratic",
       achievement: "Recunoscut la nivel mondial drept 'părintele literaturii americane'; tradus în peste 120 de limbi.",
+      quote: "Secretul succesului este să începi.",
     },
     {
       name: "Muhammad Ali",
@@ -1172,6 +1188,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       imageKey: "muhammadAli",
       contribution: "Box la Categoria Grea & Activism Sportiv",
       achievement: "Singurul triplu campion liniar de categorie grea; peste 1 miliard de telespectatori la 'Rumble in the Jungle'.",
+      quote: "Cel care nu este destul de curajos să își asume riscuri nu va realiza nimic în viață.",
     },
     {
       name: "Michael Jackson",
@@ -1180,6 +1197,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       imageKey: "michaelJackson",
       contribution: "Performanță Pop & Videoclipuri Muzicale Cinematografice",
       achievement: "'Thriller' rămâne cel mai bine vândut album din toate timpurile (peste 70 mil. copii).",
+      quote: "Într-o lume plină de ură, trebuie totuși să îndrăznim să sperăm.",
     },
     {
       name: "Michael Jordan",
@@ -1188,6 +1206,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       imageKey: "michaelJordan",
       contribution: "Branding Sportiv & Cultura Sneakerșilor",
       achievement: "A dezvoltat brandul Nike Jordan într-o forță globală ce generează peste 6.6 miliarde de dolari anual.",
+      quote: "Am eșuat de nenumărate ori în viață. Și de aceea am succes.",
     },
     {
       name: "Martin Luther King Jr.",
@@ -1196,6 +1215,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       imageKey: "martinLutherKing",
       contribution: "Retorică pentru Drepturi Civile & Mobilizare Morală",
       achievement: "A condus Marșul asupra Washingtonului (peste 250.000 de participanți); cel mai tânăr laureat al Premiului Nobel pentru Pace în 1964.",
+      quote: "Întunericul nu poate alunga întunericul; doar lumina o poate face. Ura nu poate alunga ura; doar iubirea o poate face.",
     },
     {
       name: "Arnold Schwarzenegger",
@@ -1204,6 +1224,7 @@ const CULTURE_ICONS_RO: CultureIconsSectionData = {
       imageKey: "arnoldSchwarzenegger",
       contribution: "Cinematografie de Acțiune Transnațională & Industria Fitnessului",
       achievement: "Filmele sale au încasat peste 4 miliarde de dolari; a fost primul guvernator imigrant al Californiei în 150 de ani.",
+      quote: "Forța nu vine din câștig. Luptele tale îți dezvoltă forțele.",
     },
   ],
 };
