@@ -27,7 +27,7 @@
     "lucide-react": "1.14.0",
     "next": "16.2.6",
     "react": "19.2.6",
-    "react-dom": "19.2.6",
+    "react-dom": "19.2.7",
     "react-hook-form": "^7.72.1",
     "react-simple-maps": "^3.0.0",
     "react-youtube": "^10.1.0",
