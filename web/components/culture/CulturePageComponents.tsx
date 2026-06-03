@@ -1759,38 +1759,72 @@ export function ImageLightboxModal({ src, title, subtitle, contribution, achieve
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 220 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-5xl max-h-[85vh] flex flex-col items-center bg-zinc-950 border border-white/10 rounded-xl overflow-hidden shadow-2xl p-2 cursor-default"
+            className="relative max-w-3xl w-full max-h-[90vh] flex flex-col items-center bg-zinc-950 border border-white/10 rounded-xl overflow-y-auto scrollbar-thin shadow-2xl p-4 cursor-default"
           >
-            <div className="relative w-full overflow-hidden rounded-lg" style={{ height: "min(65vh, 600px)", aspectRatio: "3/2" }}>
+            <div className="relative w-full overflow-hidden rounded-lg bg-black/40 flex-shrink-0" style={{ height: "min(50vh, 450px)", aspectRatio: "3/2" }}>
               <Image
                 src={src}
                 alt={title || "Lightbox view"}
                 fill
                 className="object-contain"
-                sizes="(max-width: 1280px) 90vw, 1200px"
+                sizes="(max-width: 1024px) 100vw, 800px"
                 priority
               />
             </div>
             
             {(title || subtitle || contribution || achievement || quote) && (
-              <div className="w-full text-center py-4 px-6 mt-1 border-t border-white/5 flex flex-col items-center gap-1">
-                {title && <h4 className="font-editorial text-lg text-[#F5EDD8] mb-0.5">{title}</h4>}
-                {contribution && (
-                  <p className="font-body text-[10px] tracking-widest text-glory-gold uppercase font-semibold">
-                    {contribution}
+              <div className="w-full text-center py-6 px-4 sm:px-8 mt-2 border-t border-white/5 flex flex-col items-center">
+                {title && (
+                  <h4 className="font-editorial text-2xl sm:text-3xl text-[#F5EDD8] font-bold tracking-wide mb-1">
+                    {title}
+                  </h4>
+                )}
+
+                {subtitle && (
+                  <p className="font-editorial text-sm sm:text-base text-[#F5EDD8]/75 max-w-3xl leading-relaxed my-2">
+                    {subtitle}
                   </p>
                 )}
-                {achievement && (
-                  <p className="font-body text-[11px] text-[#F5EDD8]/80 max-w-xl italic mt-0.5 mb-1">
-                    ★ {achievement}
-                  </p>
+
+                {/* Grid for Contribution & Achievement if present */}
+                {(contribution || achievement) && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl mt-4">
+                    {contribution && (
+                      <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/[0.02] border border-white/5 shadow-inner">
+                        <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-glory-gold font-bold mb-1.5">
+                          Soft-Power Contribution
+                        </span>
+                        <span className="text-xs sm:text-sm font-body text-[#F5EDD8] font-medium leading-snug">
+                          {contribution}
+                        </span>
+                      </div>
+                    )}
+                    {achievement && (
+                      <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/[0.02] border border-white/5 shadow-inner">
+                        <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-glory-gold font-bold mb-1.5">
+                          Legacy Achievement
+                        </span>
+                        <span className="text-xs sm:text-sm font-body text-[#F5EDD8] font-medium leading-snug italic flex items-center gap-1 justify-center">
+                          ★ {achievement}
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 )}
+
+                {/* Stylized Quote Section if present */}
                 {quote && (
-                  <blockquote className="font-editorial italic text-xs text-[#F5EDD8]/60 border-l border-glory-gold/40 pl-3 max-w-md text-left py-1 my-1">
-                    &ldquo;{quote}&rdquo;
-                  </blockquote>
+                  <div className="w-full max-w-2xl mt-6 pt-5 border-t border-white/5 flex flex-col items-center">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-glory-gold/50 font-bold mb-3">
+                      Defining Quote
+                    </span>
+                    <blockquote className="font-editorial italic text-base sm:text-lg text-[#F5EDD8]/90 leading-relaxed relative px-8 text-center max-w-xl">
+                      <span className="absolute left-1 top-[-8px] text-4xl text-glory-gold/30 font-serif leading-none">&ldquo;</span>
+                      {quote}
+                      <span className="absolute right-1 bottom-[-16px] text-4xl text-glory-gold/30 font-serif leading-none">&rdquo;</span>
+                    </blockquote>
+                  </div>
                 )}
-                {subtitle && <p className="font-body text-xs tracking-widest text-[#F5EDD8]/45 uppercase mt-1">{subtitle}</p>}
               </div>
             )}
           </motion.div>
