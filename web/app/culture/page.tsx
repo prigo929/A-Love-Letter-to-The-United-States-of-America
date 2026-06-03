@@ -52,7 +52,7 @@ import {
   CulturePillarsStrip,
   CultureBentoGrid,
   CultureFreeMarketStrip,
-  CultureRadarTeaser,
+  CultureAsymmetryMatrix,
   CultureQuoteCarousel,
   CultureParallaxDivider,
   CultureBrandLogosMarquee,
@@ -60,7 +60,6 @@ import {
   CultureTimelineScroll,
   CultureSoftPowerBudget,
   CultureArchiveVault,
-  CultureLivingMediaWall,
   CultureMusicSection,
   CultureCulinarySection,
   CultureOriginationStrip,
@@ -132,7 +131,6 @@ export default async function CulturePage() {
   const radarHeadline = isRo
     ? "Pe fiecare dimensiune a influenței culturale, o singură națiune conduce."
     : "Across every dimension of cultural influence, one nation leads.";
-  const radarCta = isRo ? "Explorează analiza completă" : "Explore the full analysis";
   const musicTitle = isRo ? "Muzica de Export: Rădăcini Regionale" : "The Sound of Export: Regional Roots";
   const culinaryTitle = isRo ? "Estetica Gustului Democrat: Diners, Smoke & Systems" : "The Democratic Palate: Diners, Smoke & Systems";
 
@@ -151,10 +149,13 @@ export default async function CulturePage() {
         deck={hero.deck}
       />
 
-      {/* §2 — Numbers Strip */}
+      {/* §2 — Subpage Navigation (Magazine Table of Contents) */}
+      <CultureBentoGrid subpages={subpages} sectionTitle={gridTitle} />
+
+      {/* §3 — Numbers Strip */}
       <CultureNumbersStrip stats={stats} isRo={isRo} />
 
-      {/* §3 — Thesis Block */}
+      {/* §4 — Thesis Block */}
       <CultureThesisBlock thesis={thesis} />
 
       {/* Parallax Divider 1 — Times Square Iconic */}
@@ -163,76 +164,67 @@ export default async function CulturePage() {
       {/* American Brand Logos Continuous Marquee */}
       <CultureBrandLogosMarquee />
 
-      {/* §4 — Soft Power Pillars */}
+      {/* §5 — Soft Power Pillars */}
       <CulturePillarsStrip pillars={pillars} />
 
-      {/* §5 — Editorial Bento Grid */}
-      <CultureBentoGrid subpages={subpages} sectionTitle={gridTitle} />
-
-      {/* §2.5 — Origination Strip */}
+      {/* §6 — Origination Strip */}
       <CultureOriginationStrip originations={originations} isRo={isRo} />
 
       {/* Transition: Dark to Cream */}
       <div className="h-12 w-full gradient-dark-to-cream" />
 
-      {/* §6 — Free Market Argument (Cream Section) */}
+      {/* §7 — Free Market Argument (Cream Section) */}
       <CultureFreeMarketStrip arguments_={arguments_} sectionTitle={argumentTitle} />
 
-      {/* Soft Power Budget Scale Comparison (Cream Section) */}
+      {/* §8 — Soft Power Budget Scale Comparison (Cream Section) */}
       <CultureSoftPowerBudget budgetLines={budget} />
 
-      {/* §18 — Culinary Pillars Section (Cream Section) */}
+      {/* §9 — Culinary Pillars Section (Cream Section) */}
       <CultureCulinarySection pillars={culinaryPillars} sectionTitle={culinaryTitle} isRo={isRo} />
 
-      {/* The English Language Editorial Section (Cream Section) */}
+      {/* §10 — The English Language Editorial Section (Cream Section) */}
       <CultureEnglishLanguage data={englishLanguageData} isRo={isRo} />
 
       {/* Transition: Cream to Dark */}
       <div className="h-12 w-full gradient-cream-to-dark" />
 
-      {/* Editorial Counter-Programming: Imperialism Critique */}
+      {/* §11 — Editorial Counter-Programming: Imperialism Critique */}
       <CultureEditorialImperialism data={editorialImperialism} isRo={isRo} />
 
-      {/* Cultural Timeline Scroll Area */}
+      {/* §12 — Cultural Timeline Scroll Area */}
       <CultureTimelineScroll decades={decades} sectionTitle={timelineTitle} />
 
-
-      {/* Full Viewport Quote Moment (Bono: "America is an idea...") */}
+      {/* §13 — Full Viewport Quote Moment (Bono: "America is an idea...") */}
       <CultureViewportQuote quote={bonoQuote} bgImageSrc={SITE_IMAGES.culture.route66} />
 
-      {/* Living Media Wall Grid (40 Shifting Cultural Artifacts) */}
-      <CultureLivingMediaWall isRo={isRo} />
-
-      {/* Digital America: Pipes of Global Culture */}
+      {/* §14 — Digital America: Pipes of Global Culture */}
       <CultureDigitalPipes data={digitalPipes} isRo={isRo} />
 
-      {/* §17 — Music Origins Section */}
+      {/* §15 — Music Origins Section */}
       <CultureMusicSection genres={musicGenres} sectionTitle={musicTitle} isRo={isRo} />
 
-      {/* Cultural Icons — The Faces of America */}
+      {/* §16 — Cultural Icons — The Faces of America */}
       <CultureIconsSection data={culturalIcons} isRo={isRo} />
 
-      {/* §7 — Radar Chart Teaser */}
-      <CultureRadarTeaser
+      {/* §17 — Asymmetry of Influence Matrix */}
+      <CultureAsymmetryMatrix
         data={CULTURE_RADAR_DATA}
         headline={radarHeadline}
-        ctaLabel={radarCta}
-        ctaHref="#"
       />
 
-      {/* Hollywood — The Dream Factory Editorial */}
+      {/* §18 — Hollywood — The Dream Factory Editorial */}
       <CultureHollywoodEditorial data={hollywoodData} isRo={isRo} />
 
       {/* Parallax Divider 2 — NFL/Cowboys Stadium */}
       <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.nflStadium} alt="American Football Stadium Lights" />
 
-      {/* Interactive Archive Vault Showcase */}
+      {/* §19 — Interactive Archive Vault Showcase */}
       <CultureArchiveVault isRo={isRo} />
 
-      {/* §8 — Quote Carousel */}
+      {/* §20 — Quote Carousel */}
       <CultureQuoteCarousel quotes={quotes} />
 
-      {/* Closing Manifesto exit section */}
+      {/* §21 — Closing Manifesto exit section */}
       <CultureManifestoSection data={manifestoData} isRo={isRo} />
     </main>
   );

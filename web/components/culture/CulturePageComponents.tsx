@@ -836,10 +836,10 @@ export function CulturePillarsStrip({ pillars }: CulturePillarsStripProps) {
   );
 }
 
-// ─── §5 — Editorial Bento Grid ───────────────────────────────────────────────
+// ─── §5 — Magazine Table of Contents (Option A: Hero + Grid) ─────────────────
 
 /** Map subpage IDs to actual images */
-const BENTO_IMAGES: Record<string, string> = {
+const TOC_IMAGES: Record<string, string> = {
   overview: SITE_IMAGES.culture.timesSquare,
   film: SITE_IMAGES.culture.hollywoodSign,
   sports: SITE_IMAGES.culture.nflStadium,
@@ -848,6 +848,7 @@ const BENTO_IMAGES: Record<string, string> = {
   food: SITE_IMAGES.culture.mcdMenu,
   fashion: SITE_IMAGES.culture.fashionJeansSneakers,
   music: SITE_IMAGES.culture.jazzClub,
+  english: SITE_IMAGES.culture.timesSquareIconic,
 };
 
 interface CultureBentoGridProps {
@@ -856,70 +857,68 @@ interface CultureBentoGridProps {
 }
 
 export function CultureBentoGrid({ subpages, sectionTitle }: CultureBentoGridProps) {
-  // Split into rows: Row1 = overview(L) + film(S) + sports(S), Row2 = entertainment(M) + brands(M) + food(M), Row3 = fashion(S) + music(L) — but we keep it flexible via IDs
-  const overview = subpages.find((s) => s.id === "overview")!;
-  const film = subpages.find((s) => s.id === "film")!;
-  const sports = subpages.find((s) => s.id === "sports")!;
-  const entertainment = subpages.find((s) => s.id === "entertainment")!;
-  const brands = subpages.find((s) => s.id === "brands")!;
-  const food = subpages.find((s) => s.id === "food")!;
-  const fashion = subpages.find((s) => s.id === "fashion")!;
-  const music = subpages.find((s) => s.id === "music")!;
+  const overview = subpages.find((s) => s.id === "overview");
+  const rest = subpages.filter((s) => s.id !== "overview");
 
   return (
-    <section id="culture-grid" className="culture-bg pt-16 md:pt-24 pb-8 md:pb-12">
+    <section id="culture-grid" className="culture-bg pt-20 md:pt-32 pb-12 md:pb-20">
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
-        {/* Section title */}
+        {/* Section Header — Magazine editorial */}
         <motion.div
-          className="mb-10"
+          className="mb-14 md:mb-20 text-center flex flex-col items-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
         >
-          <p className="font-body text-[11px] uppercase tracking-[0.3em] text-glory-gold mb-3 font-semibold">
+          <span className="culture-text-label text-glory-gold/70 block mb-6" style={{ letterSpacing: "0.5em" }}>
             ★ {sectionTitle} ★
-          </p>
+          </span>
+          <h2 className="font-hero text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.92] tracking-wide uppercase">
+            <span className="block">INSIDE</span>
+            <span className="block text-white/20">THIS ISSUE</span>
+          </h2>
+          <div className="w-20 h-px bg-gradient-to-r from-transparent via-glory-gold/40 to-transparent mt-8" />
         </motion.div>
 
-        {/* Desktop bento — hidden on mobile */}
-        <div className="hidden md:grid gap-4">
-          {/* Row 1: Large (60%) + Two stacked (40%) */}
-          <div className="grid grid-cols-5 gap-4" style={{ minHeight: "420px" }}>
-            <div className="col-span-3">
-              <BentoCard card={overview} />
-            </div>
-            <div className="col-span-2 grid grid-rows-2 gap-4">
-              <BentoCard card={film} />
-              <BentoCard card={sports} />
-            </div>
-          </div>
+        {/* Hero Card — Full-width Overview */}
+        {overview && (
+          <motion.div
+            className="mb-4"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
+          >
+            <TOCHeroCard card={overview} index={0} />
+          </motion.div>
+        )}
 
-          {/* Row 2: Three equal */}
-          <div className="grid grid-cols-3 gap-4" style={{ minHeight: "320px" }}>
-            <BentoCard card={entertainment} />
-            <BentoCard card={brands} />
-            <BentoCard card={food} />
-          </div>
-
-          {/* Row 3: Two stacked (40%) + Large (60%) */}
-          <div className="grid grid-cols-5 gap-4" style={{ minHeight: "420px" }}>
-            <div className="col-span-2 grid grid-rows-2 gap-4">
-              <BentoCard card={fashion} />
-              <BentoCard card={food} isAlt />
-            </div>
-            <div className="col-span-3">
-              <BentoCard card={music} />
-            </div>
-          </div>
+        {/* 2×4 Grid — remaining 8 verticals */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {rest.map((card, i) => (
+            <motion.div
+              key={card.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{
+                duration: 0.6,
+                delay: i * 0.06,
+                ease: [0.25, 0.1, 0.25, 1] as const,
+              }}
+            >
+              <TOCGridCard card={card} index={i + 1} />
+            </motion.div>
+          ))}
         </div>
 
-        {/* Mobile carousel — swipe left/right */}
-        <div className="md:hidden overflow-x-auto no-scrollbar -mx-6 px-6">
+        {/* Mobile — horizontal snap scroll */}
+        <div className="md:hidden overflow-x-auto no-scrollbar -mx-6 px-6 snap-x snap-mandatory">
           <div className="flex gap-4" style={{ width: "max-content" }}>
-            {subpages.map((card) => (
-              <div key={card.id} className="w-[280px] h-[360px] shrink-0">
-                <BentoCard card={card} />
+            {rest.map((card, i) => (
+              <div key={card.id} className="w-[280px] shrink-0 snap-center">
+                <TOCGridCard card={card} index={i + 1} />
               </div>
             ))}
           </div>
@@ -929,82 +928,167 @@ export function CultureBentoGrid({ subpages, sectionTitle }: CultureBentoGridPro
   );
 }
 
-function BentoCard({ card, isAlt }: { card: CultureSubpage; isAlt?: boolean }) {
-  const imgSrc = isAlt ? SITE_IMAGES.culture.cokeGlass : (BENTO_IMAGES[card.id] || SITE_IMAGES.culture.timesSquare);
-  const isExternal = card.href !== "#";
+/** Full-width hero card for the Overview vertical */
+function TOCHeroCard({ card, index }: { card: CultureSubpage; index: number }) {
+  const imgSrc = TOC_IMAGES[card.id] || SITE_IMAGES.culture.timesSquare;
+  const num = String(index + 1).padStart(2, "0");
 
-  const inner = (
-    <div className="group relative w-full h-full overflow-hidden rounded-xl cursor-pointer">
-      {/* Background image */}
-      <Image
-        src={imgSrc}
-        alt={card.title}
-        fill
-        className="object-cover transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] grayscale group-hover:grayscale-0 group-hover:scale-105"
-        sizes="(max-width: 768px) 280px, 40vw"
-        placeholder="blur"
-        blurDataURL={BLUR_PLACEHOLDER}
-      />
+  return (
+    <Link href={card.href} className="block w-full">
+      <div className="group relative w-full h-[380px] sm:h-[460px] md:h-[520px] overflow-hidden rounded-2xl cursor-pointer">
+        {/* Background image — full color */}
+        <Image
+          src={imgSrc}
+          alt={card.title}
+          fill
+          className="object-cover transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+          sizes="100vw"
+          priority
+          placeholder="blur"
+          blurDataURL={BLUR_PLACEHOLDER}
+        />
 
-      {/* Deep vignette */}
-      <div
-        className="absolute inset-0 transition-opacity duration-700"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(12,9,7,0.1) 0%, rgba(12,9,7,0.45) 40%, rgba(12,9,7,0.92) 100%)",
-        }}
-      />
+        {/* Cinematic overlay */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(12,9,7,0.92) 0%, rgba(12,9,7,0.6) 40%, rgba(12,9,7,0.15) 100%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(12,9,7,0.8) 0%, transparent 40%)",
+          }}
+        />
 
-      {/* Inner shadow for depth */}
-      <div className="absolute inset-0 rounded-xl shadow-[inset_0_0_60px_rgba(0,0,0,0.4)] pointer-events-none" />
+        {/* Inner shadow */}
+        <div className="absolute inset-0 rounded-2xl shadow-[inset_0_0_80px_rgba(0,0,0,0.3)] pointer-events-none" />
 
-      {/* Light sweep shine on hover */}
-      <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-        style={{
-          background: "linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.04) 50%, transparent 70%)",
-        }}
-      />
+        {/* Hover border */}
+        <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-glory-gold/30 transition-colors duration-500 pointer-events-none" />
 
-      {/* Hover gold border */}
-      <div className="absolute inset-0 rounded-xl border border-transparent group-hover:border-glory-gold/40 transition-colors duration-500 pointer-events-none" />
+        {/* Content — left-aligned editorial */}
+        <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-10 md:p-14 z-10">
+          {/* Large serif issue number */}
+          <span className="font-editorial italic text-glory-gold/30 text-[120px] sm:text-[160px] md:text-[200px] leading-none absolute top-4 left-8 sm:left-10 md:left-14 select-none pointer-events-none">
+            {num}
+          </span>
 
-      {/* Content */}
-      <div className="absolute inset-0 flex flex-col justify-between p-5 sm:p-6 z-10">
-        {/* Top — category label */}
-        <p className="culture-text-label text-glory-gold/80 text-[10px]" style={{ letterSpacing: "0.3em" }}>
-          {isAlt ? card.category.replace("Food", "Kitchen") : card.category}
-        </p>
+          <p className="culture-text-label text-glory-gold/80 text-[10px] mb-4" style={{ letterSpacing: "0.35em" }}>
+            {card.category}
+          </p>
 
-        {/* Bottom — title + stat */}
-        <div className="flex flex-col justify-end">
-          <h3 className="font-hero text-white text-xl sm:text-2xl lg:text-3xl leading-tight mb-2">
-            {isAlt ? "The American Kitchen" : card.title}
+          <h3 className="font-hero text-white text-4xl sm:text-5xl md:text-6xl leading-[0.92] tracking-wide uppercase mb-4">
+            {card.title}
           </h3>
-          
+
           {card.description && (
-            <p className="font-editorial text-[#F5EDD8]/70 text-xs sm:text-sm leading-relaxed mb-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 max-h-0 group-hover:max-h-20 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden">
-              {isAlt ? "From diners and Southern BBQ to global fast food, American culinary exports represent optimized consistency and convenience." : card.description}
+            <p className="font-editorial text-[#F5EDD8]/70 text-base sm:text-lg leading-relaxed max-w-2xl mb-5">
+              {card.description}
             </p>
           )}
 
-          <div className="flex items-baseline gap-2">
-            <span className="text-lg font-extralight tracking-tight text-white tabular-nums">
-              {card.stat}
-            </span>
-            <span className="culture-text-label text-[9px] text-[#F5EDD8]/40">
-              {card.statLabel}
+          <div className="flex items-center gap-6">
+            <div className="flex items-baseline gap-2">
+              <span className="text-2xl sm:text-3xl font-extralight tracking-tight text-white tabular-nums">
+                {card.stat}
+              </span>
+              <span className="culture-text-label text-[10px] text-[#F5EDD8]/50">
+                {card.statLabel}
+              </span>
+            </div>
+            <div className="h-4 w-px bg-white/15" />
+            <span className="culture-text-label text-glory-gold/60 text-[10px] group-hover:text-glory-gold transition-colors duration-300">
+              EXPLORE →
             </span>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
+}
 
-  if (isExternal) {
-    return <Link href={card.href} className="block w-full h-full">{inner}</Link>;
-  }
-  return <div className="w-full h-full">{inner}</div>;
+/** Individual grid card for a culture subpage */
+function TOCGridCard({ card, index }: { card: CultureSubpage; index: number }) {
+  const imgSrc = TOC_IMAGES[card.id] || SITE_IMAGES.culture.timesSquare;
+  const num = String(index + 1).padStart(2, "0");
+
+  return (
+    <Link href={card.href} className="block w-full h-full">
+      <div className="group relative w-full h-[340px] sm:h-[380px] overflow-hidden rounded-xl cursor-pointer">
+        {/* Background image — full color, no greyscale */}
+        <Image
+          src={imgSrc}
+          alt={card.title}
+          fill
+          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+          sizes="(max-width: 768px) 280px, (max-width: 1024px) 50vw, 25vw"
+          placeholder="blur"
+          blurDataURL={BLUR_PLACEHOLDER}
+        />
+
+        {/* Gradient overlay */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(12,9,7,0.05) 0%, rgba(12,9,7,0.35) 40%, rgba(12,9,7,0.92) 85%, rgba(12,9,7,0.98) 100%)",
+          }}
+        />
+
+        {/* Inner shadow */}
+        <div className="absolute inset-0 rounded-xl shadow-[inset_0_0_50px_rgba(0,0,0,0.35)] pointer-events-none" />
+
+        {/* Hover border */}
+        <div className="absolute inset-0 rounded-xl border border-white/[0.04] group-hover:border-glory-gold/30 transition-colors duration-500 pointer-events-none" />
+
+        {/* Light sweep on hover */}
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+          style={{
+            background: "linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%)",
+          }}
+        />
+
+        {/* Content */}
+        <div className="absolute inset-0 flex flex-col justify-between p-5 sm:p-6 z-10">
+          {/* Top — number + category */}
+          <div className="flex items-start justify-between">
+            <span className="font-editorial italic text-glory-gold/25 text-5xl sm:text-6xl leading-none select-none">
+              {num}
+            </span>
+            <span className="culture-text-label text-glory-gold/60 text-[9px] mt-2" style={{ letterSpacing: "0.25em" }}>
+              {card.category.split("·")[0].trim()}
+            </span>
+          </div>
+
+          {/* Bottom — title + stat + arrow */}
+          <div className="flex flex-col">
+            <h3 className="font-hero text-white text-xl sm:text-2xl leading-tight tracking-wide uppercase mb-2">
+              {card.title}
+            </h3>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-baseline gap-2">
+                <span className="text-lg font-extralight tracking-tight text-white/90 tabular-nums">
+                  {card.stat}
+                </span>
+                <span className="culture-text-label text-[9px] text-[#F5EDD8]/40">
+                  {card.statLabel}
+                </span>
+              </div>
+              <span className="text-glory-gold/40 group-hover:text-glory-gold group-hover:translate-x-1 transition-all duration-300 text-sm">
+                →
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
 }
 
 // ─── §6 — Free Market Argument Strip (Cream Section) ─────────────────────────
@@ -1060,141 +1144,140 @@ export function CultureFreeMarketStrip({ arguments_, sectionTitle }: CultureFree
   );
 }
 
-// ─── §7 — Radar Chart Teaser ─────────────────────────────────────────────────
+// ─── §7 — Asymmetry of Influence Matrix (Horizontal Bar Small Multiples) ────
 
-interface CultureRadarTeaserProps {
+const COUNTRY_COLORS: Record<string, { bar: string; label: string }> = {
+  USA: { bar: "#D4AF37", label: "text-glory-gold" },
+  UK: { bar: "rgba(148,163,184,0.50)", label: "text-[#94A3B8]/70" },
+  France: { bar: "rgba(148,163,184,0.35)", label: "text-[#94A3B8]/55" },
+  Japan: { bar: "rgba(148,163,184,0.25)", label: "text-[#94A3B8]/45" },
+};
+
+const COUNTRY_ORDER = ["USA", "UK", "France", "Japan"] as const;
+
+interface CultureAsymmetryMatrixProps {
   data: CultureRadarPoint[];
   headline: string;
-  ctaLabel: string;
-  ctaHref: string;
 }
 
-export function CultureRadarTeaser({ data, headline, ctaLabel, ctaHref }: CultureRadarTeaserProps) {
-  const chartRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(chartRef, { once: true, margin: "-100px" });
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  useEffect(() => {
-    if (inView) {
-      setHasAnimated(true);
-    }
-  }, [inView]);
-
-  const animatedData = hasAnimated
-    ? data
-    : data.map((d) => ({
-        ...d,
-        USA: 0,
-        UK: 0,
-        France: 0,
-        Japan: 0,
-      }));
+export function CultureAsymmetryMatrix({ data, headline }: CultureAsymmetryMatrixProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(containerRef, { once: true, margin: "-60px" });
 
   return (
-    <section id="culture-radar" className="relative culture-bg py-24 md:py-32 overflow-hidden">
+    <section id="culture-asymmetry" className="relative culture-bg py-28 md:py-40 overflow-hidden">
       {/* Dot-grid background */}
       <div className="absolute inset-0 culture-dot-canvas opacity-20 pointer-events-none" />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-6 sm:px-8">
-        <motion.h2
-          className="font-editorial italic text-[#F5EDD8] text-2xl sm:text-3xl text-center mb-16 leading-relaxed"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const }}
-        >
-          {headline}
-        </motion.h2>
-
-        <motion.div
-          ref={chartRef}
-          className="w-full"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
-        >
-          <ResponsiveContainer width="100%" height={420}>
-            <RadarChart data={animatedData} cx="50%" cy="50%" outerRadius="70%">
-              <PolarGrid stroke="rgba(255,255,255,0.06)" />
-              <PolarAngleAxis
-                dataKey="domain"
-                tick={{ fill: "#F5EDD8", fontSize: 11, fontFamily: "Inter" }}
-                tickLine={false}
-              />
-              <PolarRadiusAxis
-                angle={90}
-                domain={[0, 100]}
-                tick={false}
-                axisLine={false}
-              />
-              <Radar
-                name="USA"
-                dataKey="USA"
-                stroke="#FFD700"
-                fill="#FFD700"
-                fillOpacity={0.2}
-                strokeWidth={2.5}
-                isAnimationActive={true}
-                animationDuration={1500}
-              />
-              <Radar
-                name="UK"
-                dataKey="UK"
-                stroke="rgba(148,163,184,0.4)"
-                fill="rgba(148,163,184,0.06)"
-                strokeWidth={1}
-                isAnimationActive={true}
-                animationDuration={1500}
-              />
-              <Radar
-                name="France"
-                dataKey="France"
-                stroke="rgba(148,163,184,0.35)"
-                fill="rgba(148,163,184,0.04)"
-                strokeWidth={1}
-                isAnimationActive={true}
-                animationDuration={1500}
-              />
-              <Radar
-                name="Japan"
-                dataKey="Japan"
-                stroke="rgba(148,163,184,0.3)"
-                fill="rgba(148,163,184,0.03)"
-                strokeWidth={1}
-                isAnimationActive={true}
-                animationDuration={1500}
-              />
-              <Legend
-                wrapperStyle={{
-                  paddingTop: "24px",
-                  fontSize: "11px",
-                  fontFamily: "Inter",
-                  color: "#F5EDD8",
-                  letterSpacing: "0.05em",
-                }}
-              />
-            </RadarChart>
-          </ResponsiveContainer>
-        </motion.div>
-
-        <motion.div
-          className="text-center mt-10"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] as const }}
-        >
-          <Link
-            href={ctaHref}
-            className="culture-text-metadata text-glory-gold/80 hover:text-glory-gold text-[11px] tracking-[0.2em] transition-colors"
+      <div ref={containerRef} className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-20 md:mb-28">
+          <motion.span
+            className="culture-text-label text-glory-gold/70 block mb-6"
+            style={{ letterSpacing: "0.5em" }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 0.7, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            {ctaLabel} →
-          </Link>
-        </motion.div>
+            THE ASYMMETRY OF INFLUENCE
+          </motion.span>
+          <motion.h2
+            className="font-editorial italic text-[#F5EDD8] text-2xl sm:text-3xl lg:text-4xl text-center leading-relaxed max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
+          >
+            {headline}
+          </motion.h2>
+          <div className="w-20 h-px bg-gradient-to-r from-transparent via-glory-gold/40 to-transparent mt-8 mx-auto" />
+        </div>
+
+        {/* Country Legend */}
+        <div className="flex items-center justify-center gap-6 sm:gap-10 mb-12">
+          {COUNTRY_ORDER.map((country) => (
+            <div key={country} className="flex items-center gap-2">
+              <div
+                className="w-3 h-3 rounded-sm"
+                style={{ backgroundColor: COUNTRY_COLORS[country].bar }}
+              />
+              <span className={cn("font-body text-[11px] tracking-[0.1em] uppercase font-semibold", COUNTRY_COLORS[country].label)}>
+                {country}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Small Multiples Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5">
+          {data.map((domain, domainIdx) => (
+            <motion.div
+              key={domain.domain}
+              className="relative overflow-hidden rounded-xl bg-white/[0.015] border border-white/[0.05] p-5 sm:p-6 hover:border-glory-gold/20 hover:bg-white/[0.025] transition-all duration-500 group"
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{
+                duration: 0.6,
+                delay: domainIdx * 0.06,
+                ease: [0.25, 0.1, 0.25, 1] as const,
+              }}
+            >
+              {/* Domain title */}
+              <h3 className="font-body text-[11px] uppercase tracking-[0.2em] text-[#F5EDD8]/60 font-bold mb-5">
+                {domain.domain}
+              </h3>
+
+              {/* Horizontal bars for each country */}
+              <div className="flex flex-col gap-3">
+                {COUNTRY_ORDER.map((country) => {
+                  const value = domain[country] as number;
+                  return (
+                    <div key={country} className="flex items-center gap-3">
+                      <span className={cn("font-body text-[10px] tracking-[0.05em] uppercase font-semibold w-10 shrink-0", COUNTRY_COLORS[country].label)}>
+                        {country === "USA" ? "US" : country === "France" ? "FR" : country === "Japan" ? "JP" : "UK"}
+                      </span>
+                      <div className="flex-1 h-[10px] bg-white/[0.04] rounded-full overflow-hidden relative">
+                        <motion.div
+                          className="h-full rounded-full"
+                          style={{ backgroundColor: COUNTRY_COLORS[country].bar }}
+                          initial={{ width: 0 }}
+                          animate={inView ? { width: `${value}%` } : { width: 0 }}
+                          transition={{
+                            duration: 1.2,
+                            delay: domainIdx * 0.08 + 0.1,
+                            ease: [0.25, 0.1, 0.25, 1],
+                          }}
+                        />
+                      </div>
+                      <span className="font-body text-[10px] tabular-nums text-[#F5EDD8]/40 w-7 text-right shrink-0">
+                        {value}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* USA dominance indicator */}
+              {domain.USA >= 90 && (
+                <div className="mt-4 pt-3 border-t border-white/[0.04]">
+                  <span className="font-body text-[9px] tracking-[0.15em] uppercase text-glory-gold/50 font-semibold">
+                    US DOMINANCE: {domain.USA}%
+                  </span>
+                </div>
+              )}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
+}
+
+// Keep the old export name as an alias for backward compatibility
+export function CultureRadarTeaser({ data, headline }: { data: CultureRadarPoint[]; headline: string; ctaLabel?: string; ctaHref?: string }) {
+  return <CultureAsymmetryMatrix data={data} headline={headline} />;
 }
 
 // ─── §8 — Quote Carousel ────────────────────────────────────────────────────
@@ -1621,84 +1704,116 @@ interface CultureSoftPowerBudgetProps {
 }
 
 export function CultureSoftPowerBudget({ budgetLines }: CultureSoftPowerBudgetProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(containerRef, { once: true, margin: "-60px" });
+
+  // Parse budget data
+  const items = budgetLines.map((line) => {
+    const isUsa = line.label.includes("American") || line.label.includes("private") || line.label.includes("SUA") || line.label.includes("private");
+    const isRo = line.label.includes("Franța") || line.label.includes("SUA");
+    const isFrance = line.label.includes("France") || line.label.includes("Franța");
+
+    let fullDigits = line.value;
+    if (line.value.includes("B") || line.value.includes("Mld")) {
+      fullDigits = line.value.includes("$")
+        ? (isRo ? "$900.000.000.000" : "$900,000,000,000")
+        : (isRo ? "€4.000.000.000" : "€4,000,000,000");
+    } else if (line.value.includes("M")) {
+      fullDigits = isRo ? "£900.000.000" : "£900,000,000";
+    }
+
+    const barWidth = isUsa ? 100 : isFrance ? 0.44 : 0.1;
+    const flag = isUsa ? "🇺🇸" : isFrance ? "🇫🇷" : "🇬🇧";
+
+    return { ...line, fullDigits, barWidth, isUsa, isFrance, isRo, flag };
+  });
+
+  // Reorder: small budgets first, then USA for dramatic reveal
+  const sorted = [...items].sort((a, b) => a.barWidth - b.barWidth);
+
   return (
-    <section className="culture-cream-bg py-24 md:py-32 text-[#0C0907]">
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center flex flex-col gap-16 md:gap-24">
-        {budgetLines.map((line, idx) => {
-          const isUsa = line.label.includes("American") || line.label.includes("private") || line.label.includes("SUA") || line.label.includes("private");
-          const isRo = line.label.includes("Franța") || line.label.includes("SUA");
-          const isFrance = line.label.includes("France") || line.label.includes("Franța");
-          const isUk = line.label.includes("British") || line.label.includes("Council");
+    <section className="culture-cream-bg py-28 md:py-40 text-[#0C0907]">
+      <div ref={containerRef} className="max-w-4xl mx-auto px-6 sm:px-8">
+        {/* Section Header */}
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <span className="font-body text-[11px] uppercase tracking-[0.4em] text-[#0C0907]/35 block mb-5 font-bold">
+            {sorted[0].isRo ? "BUGETUL PUTERII SOFT" : "THE SOFT POWER BUDGET"}
+          </span>
+          <h2 className="font-editorial italic text-[#0C0907] text-3xl sm:text-4xl leading-relaxed">
+            {sorted[0].isRo ? "Puterea privată versus statul" : "Private power versus the state"}
+          </h2>
+          <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/40 to-transparent mt-6 mx-auto" />
+        </motion.div>
 
-          let fullDigits = line.value;
-          if (line.value.includes("B") || line.value.includes("Mld")) {
-            fullDigits = line.value.includes("$")
-              ? (isRo ? "$900.000.000.000" : "$900,000,000,000")
-              : (isRo ? "€4.000.000.000" : "€4,000,000,000");
-          } else if (line.value.includes("M")) {
-            fullDigits = isRo ? "£900.000.000" : "£900,000,000";
-          }
-
-          // Relative target width
-          const barWidth = isUsa ? "100%" : isFrance ? "2.5%" : "1%";
-
-          return (
+        {/* Stacked horizontal comparison bars */}
+        <div className="flex flex-col gap-8">
+          {sorted.map((item, idx) => (
             <motion.div
-              key={line.label}
-              className="flex flex-col items-center justify-center w-full"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              key={item.label}
+              className="flex flex-col"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: idx * 0.2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.7, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span
-                className={cn(
-                  "font-editorial leading-none tracking-tighter mb-4 block",
-                  isUsa
-                    ? "text-6xl sm:text-8xl md:text-9xl font-black text-[#E8391B]"
-                    : "text-4xl sm:text-6xl md:text-7xl font-semibold opacity-60"
-                )}
-              >
-                {fullDigits}
-              </span>
+              {/* Label row */}
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl select-none">{item.flag}</span>
+                  <span className="font-body text-[11px] sm:text-xs tracking-[0.15em] uppercase font-bold text-[#0C0907]/60">
+                    {item.label}
+                  </span>
+                </div>
+                <span
+                  className={cn(
+                    "font-editorial font-bold tracking-tight tabular-nums",
+                    item.isUsa
+                      ? "text-3xl sm:text-4xl md:text-5xl text-[#E8391B]"
+                      : "text-2xl sm:text-3xl text-[#0C0907]/50"
+                  )}
+                >
+                  {item.fullDigits}
+                </span>
+              </div>
 
-              <span className="font-body text-[10px] sm:text-xs tracking-[0.2em] uppercase font-bold opacity-60 max-w-md block mb-4">
-                {line.label}
-              </span>
-
-              {/* Visual relative bar */}
-              <div className="w-full max-w-[280px] sm:max-w-md h-2 bg-black/5 rounded-full overflow-hidden relative border border-black/5 mb-2">
+              {/* Bar */}
+              <div className="w-full h-3 bg-black/[0.04] rounded-full overflow-hidden relative">
                 <motion.div
                   className={cn(
                     "h-full rounded-full",
-                    isUsa ? "bg-[#E8391B]" : "bg-black/35"
+                    item.isUsa ? "bg-[#E8391B]" : "bg-[#0C0907]/20"
                   )}
                   initial={{ width: 0 }}
-                  whileInView={{ width: barWidth }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.5, delay: idx * 0.2 + 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                  animate={inView ? { width: `${Math.max(item.barWidth, 0.5)}%` } : { width: 0 }}
+                  transition={{ duration: 1.6, delay: idx * 0.2 + 0.2, ease: [0.25, 0.1, 0.25, 1] }}
                 />
               </div>
 
-              {/* Multiplier tags to show scale context */}
-              {isUsa && (
-                <motion.span
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 0.75, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.2 + 0.8 }}
-                  className="text-[9px] sm:text-[10px] font-body tracking-[0.1em] uppercase font-bold text-[#E8391B] bg-[#E8391B]/10 px-2.5 py-0.5 rounded-full mt-2"
+              {/* Scale context tag for USA */}
+              {item.isUsa && (
+                <motion.div
+                  className="mt-3 flex items-center gap-3"
+                  initial={{ opacity: 0 }}
+                  animate={inView ? { opacity: 1 } : { opacity: 0 }}
+                  transition={{ duration: 0.6, delay: idx * 0.2 + 1.2 }}
                 >
-                  {isRo ? "225× mai mare decât bugetul Franței" : "225× larger than France's budget"}
-                </motion.span>
-              )}
-
-              {idx < budgetLines.length - 1 && (
-                <div className="w-8 h-px bg-black/10 mt-16 md:mt-24" />
+                  <span className="text-[10px] font-body tracking-[0.12em] uppercase font-bold text-[#E8391B] bg-[#E8391B]/10 px-3 py-1 rounded-full">
+                    {item.isRo ? "225× mai mare decât bugetul Franței" : "225× larger than France's budget"}
+                  </span>
+                  <span className="text-[10px] font-body tracking-[0.12em] uppercase font-bold text-[#0C0907]/30">
+                    {item.isRo ? "Zero finanțare guvernamentală" : "Zero government funding"}
+                  </span>
+                </motion.div>
               )}
             </motion.div>
-          );
-        })}
+          ))}
+        </div>
       </div>
     </section>
   );

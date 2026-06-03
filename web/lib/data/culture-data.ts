@@ -226,6 +226,17 @@ const SUBPAGES_EN: CultureSubpage[] = [
     size: "large",
     description: "Jazz, Blues, Rock, and Hip Hop were competed into existence by private musicians, forming the soundscape of planetary consciousness.",
   },
+  {
+    id: "english",
+    category: "Language · Communication",
+    title: "The Global Tongue",
+    stat: "1.5B",
+    statLabel: "English speakers worldwide",
+    imageKey: "english",
+    href: "/culture/english-language",
+    size: "small",
+    description: "The lingua franca of commerce, science, aviation, and the internet — American English is the operating language of the modern world.",
+  },
 ];
 
 const SUBPAGES_RO: CultureSubpage[] = [
@@ -316,6 +327,17 @@ const SUBPAGES_RO: CultureSubpage[] = [
     href: "/culture/music-genres",
     size: "large",
     description: "Jazz-ul, Blues-ul, Rock-ul și Hip Hop-ul au fost create prin competiție de muzicieni privați, formând coloana sonoră a lumii.",
+  },
+  {
+    id: "english",
+    category: "Limbă · Comunicare",
+    title: "Limba Globală",
+    stat: "1,5Mld",
+    statLabel: "Vorbitori de engleză în lume",
+    imageKey: "english",
+    href: "/culture/english-language",
+    size: "small",
+    description: "Limba franca a comerțului, științei, aviației și internetului — engleza americană este limba de operare a lumii moderne.",
   },
 ];
 
