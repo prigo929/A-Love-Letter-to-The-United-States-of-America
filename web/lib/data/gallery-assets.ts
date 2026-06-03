@@ -407,6 +407,8 @@ import asset403 from "@/IMAGES/Military/Space Force/spoc_command_center.png";
 import asset404 from "@/IMAGES/Military/Space Force/ssc_clean_room.png";
 import asset405 from "@/IMAGES/Military/Space Force/starcom_simulator.png";
 import asset406 from "@/IMAGES/US Buildings/us-supreme-court-building.jpg";
+import asset407 from "@/IMAGES/Culture/Iconic Things/American Bald Eagle with USA Flag detailed illustration.jpg";
+import asset408 from "@/IMAGES/Culture/Iconic Things/Welcome to Las Vegas Sign logo.jpg";
 
 export type GalleryAssetRecord = {
   path: string;
@@ -821,4 +823,6 @@ export const GALLERY_ASSETS = [
   { path: "Military/Space Force/ssc_clean_room.png", src: asset404 },
   { path: "Military/Space Force/starcom_simulator.png", src: asset405 },
   { path: "US Buildings/us-supreme-court-building.jpg", src: asset406 },
+  { path: "Culture/Iconic Things/American Bald Eagle with USA Flag detailed illustration.jpg", src: asset407 },
+  { path: "Culture/Iconic Things/Welcome to Las Vegas Sign logo.jpg", src: asset408 },
 ] as const satisfies readonly GalleryAssetRecord[];
