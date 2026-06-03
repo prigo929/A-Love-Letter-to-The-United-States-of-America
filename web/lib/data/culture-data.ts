@@ -899,14 +899,14 @@ const EDITORIAL_IMPERIALISM_EN: CultureEditorialImperialismData = {
   eyebrow: "COUNTER-PROGRAMMING · THE IMPERIALISM CRITIQUE",
   headline: "THE VOLUNTARY DEFAULT",
   statement: "Voluntary exchange is not coercion.",
-  body: "Critics frequently describe the spread of American culture as a kind of 'cultural imperialism' or 'soft conquest'—a soft-power hegemony that homogenizes the globe. But this critique makes a fundamental category error: it confuses voluntary choice with coercion. Nobody is being coerced. A billion people freely choose to stream American movies, buy American brands, wear blue jeans, and learn American English. When the French government bans English words from official documents and it makes exactly zero difference to what French teenagers actually say and listen to—that's not imperialism, that's demand. American culture is the world's default because it is competed into existence to serve human desires, not state agendas.",
+  body: "Critics frequently describe the spread of American culture as a kind of 'cultural imperialism' or 'soft conquest'—a soft-power hegemony that homogenizes the globe. But this critique makes a fundamental category error: it confuses voluntary choice with coercion. A billion people freely choose to stream American movies, buy American brands, wear blue jeans, and learn American English. When the French government bans English words from official documents with zero effect on what French teenagers actually say and listen to, it reveals the power of pure demand over political mandates. American culture remains the world's default because it is competed into existence to serve human desires, operating independently of state agendas.",
 };
 
 const EDITORIAL_IMPERIALISM_RO: CultureEditorialImperialismData = {
   eyebrow: "CONTRA-PROGRAMARE · CRITICA IMPERIALISMULUI",
   headline: "OPȚIUNEA VOLUNTARĂ IMPLICITĂ",
   statement: "Schimbul voluntar nu înseamnă constrângere.",
-  body: "Criticii descriu adesea răspândirea culturii americane ca pe un tip de 'imperialism cultural' sau 'cucerire soft'—o hegemonie care omogenizează globul. Însă această critică face o eroare fundamentală: confundă alegerea voluntară cu constrângerea. Nimeni nu este forțat. Un miliard de oameni aleg liber să vizioneze filme americane, să cumpere branduri americane, să poarte blugi și să învețe engleza americană. Când guvernul francez interzice cuvintele englezești din documentele oficiale, acest lucru are exact zero impact asupra limbajului pe care adolescenții francezi îl folosesc în dormitoarele lor. Acesta nu este imperialism; este cerere. Cultura americană este opțiunea voluntară implicită a lumii deoarece a fost creată prin competiție pentru a servi dorințele umane, nu agendele de stat.",
+  body: "Criticii descriu adesea răspândirea culturii americane ca pe un tip de 'imperialism cultural' sau 'cucerire soft'—o hegemonie care omogenizează globul. Însă această critică face o eroare fundamentală: confundă alegerea voluntară cu constrângerea. Un miliard de oameni aleg liber să vizioneze filme americane, să cumpere branduri americane, să poarte blugi și să învețe engleza americană. Când guvernul francez interzice cuvintele englezești din documentele oficiale, iar acest lucru are exact zero impact asupra limbajului pe care adolescenții francezi îl folosesc în viața de zi cu zi, se evidențiază puterea cererii libere în fața directivelor politice. Cultura americană este opțiunea voluntară implicită a lumii deoarece a fost creată prin competiție pentru a servi dorințele umane, dincolo de agendele de stat.",
 };
 
 export function getCultureEditorialImperialism(locale: Locale): CultureEditorialImperialismData {
@@ -1189,8 +1189,8 @@ export interface CultureHollywoodData {
 const HOLLYWOOD_EN: CultureHollywoodData = {
   eyebrow: "THE DREAM FACTORY · HOLLYWOOD",
   headline: "THE UNIVERSAL LANGUAGE OF IMAGINATION",
-  pullQuote: "Hollywood didn't just export movies; it exported the subconscious desires of the world, turning local American dreams into a planetary vocabulary.",
-  body: "Cinema is America's ultimate soft power engine. Long before they ever encounter an American in person, teenagers from Bucharest to Bangalore grow up dreaming of the palm trees of Los Angeles, the skylines of New York, and the highways of the American West. This planetary draw isn't a state project—it is a market-driven force. US films routinely capture over 70% of global box office revenues, and the Academy Awards are broadcast to a global audience of over 200 countries. By building the definitive narrative grammar of the feature film, Hollywood created a global mirror: a universal language of hope, struggle, and heroism that the world freely chose to adopt.",
+  pullQuote: "Hollywood exported the subconscious desires of the world, turning local American dreams into a planetary vocabulary.",
+  body: "Cinema is America's ultimate soft power engine. Long before they ever encounter an American in person, teenagers from Bucharest to Bangalore grow up dreaming of the palm trees of Los Angeles, the skylines of New York, and the highways of the American West. This planetary draw operates as a market-driven force, independent of state projects. US films routinely capture over 70% of global box office revenues, and the Academy Awards are broadcast to a global audience of over 200 countries. By building the definitive narrative grammar of the feature film, Hollywood created a global mirror: a universal language of hope, struggle, and heroism that the world freely chose to adopt.",
   stats: [
     { value: "73.5%", label: "Global Box Office Revenue Share" },
     { value: "200+", label: "Countries Broadcasting the Oscars" },
@@ -1201,8 +1201,8 @@ const HOLLYWOOD_EN: CultureHollywoodData = {
 const HOLLYWOOD_RO: CultureHollywoodData = {
   eyebrow: "FABRICA DE VISURI · HOLLYWOOD",
   headline: "LIMBAJUL UNIVERSAL AL IMAGINAȚIEI",
-  pullQuote: "Hollywood-ul nu a exportat doar filme; a exportat dorințele subconștiente ale lumii, transformând visurile locale americane într-un vocabular planetar.",
-  body: "Cinematografia este motorul suprem de putere soft al Americii. Mult înainte de a întâlni vreodată un american în persoană, adolescenții de la București la Bangalore cresc visând la palmierii din Los Angeles, zgârie-norii din New York și autostrăzile vestului american. Această atracție planetară nu este un proiect de stat, ci o forță condusă de piață. Filmele americane captează în mod regulat peste 70% din veniturile globale din box office, iar Premiile Oscar sunt difuzate în peste 200 de țări. Prin crearea gramaticii narative definitorii a filmului de lungmetraj, Hollywood-ul a creat o oglindă globală: un limbaj universal al speranței, luptei și eroismului pe care lumea a ales liber să-l adopte.",
+  pullQuote: "Hollywood-ul a exportat dorințele subconștiente ale lumii, transformând visurile locale americane într-un vocabular planetar.",
+  body: "Cinematografia este motorul suprem de putere soft al Americii. Mult înainte de a întâlni vreodată un american în persoană, adolescenții de la București la Bangalore cresc visând la palmierii din Los Angeles, zgârie-norii din New York și autostrăzile vestului american. Această atracție planetară funcționează ca o forță condusă de piață, complet independentă de proiectele guvernamentale. Filmele americane captează în mod regulat peste 70% din veniturile globale din box office, iar Premiile Oscar sunt difuzate în peste 200 de țări. Prin crearea gramaticii narative definitorii a filmului de lungmetraj, Hollywood-ul a creat o oglindă globală: un limbaj universal al speranței, luptei și eroismului pe care lumea a ales liber să-l adopte.",
   stats: [
     { value: "73,5%", label: "Cota din Veniturile Box Office Global" },
     { value: "200+", label: "Țări care Difuzează Premiile Oscar" },
@@ -1231,7 +1231,7 @@ export interface CultureManifestoData {
 const MANIFESTO_EN: CultureManifestoData = {
   eyebrow: "THE AMERICAN MANIFESTO",
   statement: "This isn't accidental. It's the consequence of a very specific idea about what happens when you leave human ambition free.",
-  body: "America's global cultural footprint is not the output of a state planning committee or an imperial mandate. It is the downstream result of a single, revolutionary context: a system that secures individual liberty, protects private enterprise, and trusts voluntary exchange. When you leave the human imagination free from state coercion, people create forms that the rest of the world freely chooses to listen to, watch, stream, and adopt. The ultimate soft power is the power of free choices.",
+  body: "America's global cultural footprint represents the downstream consequence of a single, revolutionary context: a system that secures individual liberty, protects private enterprise, and trusts voluntary exchange. When you leave the human imagination free from state coercion, people create forms that the rest of the world freely chooses to listen to, watch, stream, and adopt. The ultimate soft power is the power of free choices.",
   ctaLabel: "Continue the Journey",
   verticals: [
     { title: "Constitution", subtitle: "The Bedrock of Liberty", href: "/constitution" },
@@ -1243,7 +1243,7 @@ const MANIFESTO_EN: CultureManifestoData = {
 const MANIFESTO_RO: CultureManifestoData = {
   eyebrow: "MANIFESTUL AMERICAN",
   statement: "Acest lucru nu este accidental. Consecința unei idei foarte specifice despre ceea ce se întâmplă atunci când lași ambiția umană liberă.",
-  body: "Amprenta culturală globală a Americii nu este rezultatul unui comitet de planificare de stat sau al unui mandat imperial. Este rezultatul direct al unui singur context revoluționar: un sistem care garantează libertatea individuală, protejează inițiativa privată și are încredere în schimbul voluntar. Atunci când lași imaginația umană liberă de constrângerea statului, oamenii creează formate pe care restul lumii alege în mod liber să le asculte, să le privească, să le acceseze și să le adopte. Puterea soft supremă este puterea alegerilor libere.",
+  body: "Amprenta culturală globală a Americii reprezintă consecința directă a unui singur context revoluționar: un sistem care garantează libertatea individuală, protejează inițiativa privată și are încredere în schimbul voluntar. Atunci când lași imaginația umană liberă de constrângerea statului, oamenii creează formate pe care restul lumii alege în mod liber să le asculte, să le privească, să le acceseze și să le adopte. Puterea soft supremă este puterea alegerilor libere.",
   ctaLabel: "Continuă călătoria",
   verticals: [
     { title: "Constituție", subtitle: "Fundamentul Libertății", href: "/constitution" },
