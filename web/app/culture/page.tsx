@@ -46,6 +46,7 @@ import {
 
 import {
   CultureStyles,
+  CultureInPageNav,
   VideoCultureHero,
   CultureNumbersStrip,
   CultureThesisBlock,
@@ -137,10 +138,30 @@ export default async function CulturePage() {
   const culinaryTitle = isRo ? "Estetica Gustului Democrat: Diners, Smoke & Systems" : "The Democratic Palate: Diners, Smoke & Systems";
 
   const bonoQuote = quotes.find((q) => q.author === "Bono") || quotes[1];
+  const sectionNavItems = [
+    { id: "culture-hero", label: isRo ? "Intro" : "Opening" },
+    { id: "culture-stats", label: isRo ? "Numere" : "Numbers" },
+    { id: "culture-thesis", label: isRo ? "Teză" : "Thesis" },
+    { id: "culture-brands", label: isRo ? "Branduri" : "Brands" },
+    { id: "culture-pillars", label: isRo ? "Piloni" : "Pillars" },
+    { id: "culture-grid", label: isRo ? "Verticale" : "Verticals" },
+    { id: "culture-argument", label: isRo ? "Piață" : "Market" },
+    { id: "culture-culinary", label: isRo ? "Gust" : "Food" },
+    { id: "culture-english-language", label: isRo ? "Engleză" : "English" },
+    { id: "culture-imperialism", label: isRo ? "Critică" : "Critique" },
+    { id: "culture-timeline", label: isRo ? "Cronologie" : "Timeline" },
+    { id: "culture-media-wall", label: isRo ? "Arhivă" : "Archive" },
+    { id: "culture-digital-pipes", label: isRo ? "Digital" : "Digital" },
+    { id: "culture-music", label: isRo ? "Muzică" : "Music" },
+    { id: "culture-icons", label: isRo ? "Iconuri" : "Icons" },
+    { id: "culture-hollywood", label: isRo ? "Hollywood" : "Hollywood" },
+    { id: "culture-manifesto", label: isRo ? "Final" : "Finale" },
+  ];
 
   return (
     <main className="min-h-screen">
       <CultureStyles />
+      <CultureInPageNav items={sectionNavItems} />
 
       {/* §1 — Video Culture Hero */}
       <VideoCultureHero

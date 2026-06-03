@@ -45,6 +45,90 @@ import type {
   CultureEnglishLanguageData,
 } from "@/lib/data/culture-data";
 
+interface CultureNavItem {
+  id: string;
+  label: string;
+}
+
+interface CultureInPageNavProps {
+  items: CultureNavItem[];
+  title?: string;
+}
+
+export function CultureInPageNav({ items, title = "Article sections" }: CultureInPageNavProps) {
+  const [activeId, setActiveId] = useState(items[0]?.id ?? "");
+
+  useEffect(() => {
+    const sectionElements = items
+      .map((item) => document.getElementById(item.id))
+      .filter((section): section is HTMLElement => Boolean(section));
+
+    if (!sectionElements.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visibleEntries[0]?.target.id) {
+          setActiveId(visibleEntries[0].target.id);
+        }
+      },
+      {
+        rootMargin: "-24% 0px -58% 0px",
+        threshold: [0.08, 0.2, 0.4, 0.6],
+      },
+    );
+
+    sectionElements.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [items]);
+
+  if (!items.length) return null;
+
+  return (
+    <nav
+      aria-label={title}
+      className="fixed left-4 top-1/2 z-40 hidden -translate-y-1/2 lg:block xl:left-7"
+    >
+      <div className="flex flex-col items-start gap-2 rounded-full border border-white/10 bg-[#0C0907]/55 px-2 py-3 shadow-2xl shadow-black/30 backdrop-blur-md">
+        {items.map((item) => {
+          const isActive = activeId === item.id;
+
+          return (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              aria-label={item.label}
+              aria-current={isActive ? "location" : undefined}
+              title={item.label}
+              className="group flex min-h-7 items-center gap-2 outline-none"
+            >
+              <span
+                className={cn(
+                  "block rounded-full border transition-all duration-300",
+                  isActive
+                    ? "h-3 w-3 border-glory-gold bg-glory-gold shadow-[0_0_18px_rgba(255,215,0,0.45)]"
+                    : "h-2 w-2 border-white/25 bg-white/10 group-hover:border-glory-gold/70 group-hover:bg-glory-gold/50",
+                )}
+              />
+              <span
+                className={cn(
+                  "pointer-events-none max-w-0 overflow-hidden whitespace-nowrap font-body text-[10px] font-bold uppercase tracking-[0.22em] opacity-0 transition-all duration-300 group-hover:max-w-[180px] group-hover:opacity-100 group-focus-visible:max-w-[180px] group-focus-visible:opacity-100",
+                  isActive ? "text-glory-gold" : "text-[#F5EDD8]/65",
+                )}
+              >
+                {item.label}
+              </span>
+            </a>
+          );
+        })}
+      </div>
+    </nav>
+  );
+}
+
 
 
 
@@ -187,6 +271,32 @@ export function CultureStyles() {
       }
       .gradient-cream-to-dark {
         background: linear-gradient(to bottom, #F5EDD8, #0C0907);
+      }
+
+      #culture-hero,
+      #culture-stats,
+      #culture-origination,
+      #culture-thesis,
+      #culture-brands,
+      #culture-pillars,
+      #culture-grid,
+      #culture-argument,
+      #culture-budget,
+      #culture-culinary,
+      #culture-english-language,
+      #culture-imperialism,
+      #culture-timeline,
+      #culture-viewport-quote,
+      #culture-media-wall,
+      #culture-digital-pipes,
+      #culture-music,
+      #culture-icons,
+      #culture-radar,
+      #culture-hollywood,
+      #culture-archive-vault,
+      #culture-quotes,
+      #culture-manifesto {
+        scroll-margin-top: 88px;
       }
     `}</style>
   );
@@ -478,7 +588,7 @@ export function VideoCultureHero({
   const textY       = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
 
   return (
-    <div ref={containerRef} className="relative h-[180dvh] culture-bg">
+    <section id="culture-hero" ref={containerRef} className="relative h-[180dvh] culture-bg">
       <div className="sticky top-0 h-screen w-full overflow-hidden culture-bg">
         {/* Looping video layer */}
         <motion.div
@@ -551,7 +661,7 @@ export function VideoCultureHero({
           </motion.p>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -1283,7 +1393,7 @@ export function CultureParallaxDivider({
 
 export function CultureBrandLogosMarquee() {
   return (
-    <section className="culture-bg pt-8 md:pt-12 pb-16 md:pb-24 overflow-hidden flex flex-col gap-24 md:gap-32">
+    <section id="culture-brands" className="culture-bg pt-8 md:pt-12 pb-16 md:pb-24 overflow-hidden flex flex-col gap-24 md:gap-32">
       {/* Row 1 (Scrolling Left) */}
       <div className="relative w-full overflow-hidden">
         <div className="flex w-max animate-marquee-left whitespace-nowrap">
@@ -1395,6 +1505,7 @@ export function CultureViewportQuote({ quote, bgImageSrc }: CultureViewportQuote
   return (
     <section
       ref={containerRef}
+      id="culture-viewport-quote"
       className="relative w-full h-screen overflow-hidden flex items-center justify-center text-center px-6 sm:px-12 bg-black"
     >
       {/* Background Image */}
@@ -1476,7 +1587,7 @@ export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimeline
   };
 
   return (
-    <section className="relative culture-bg py-28 md:py-36 overflow-hidden">
+    <section id="culture-timeline" className="relative culture-bg py-28 md:py-36 overflow-hidden">
       {/* Dot-grid background */}
       <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none" />
 
@@ -1581,7 +1692,7 @@ interface CultureSoftPowerBudgetProps {
 
 export function CultureSoftPowerBudget({ budgetLines }: CultureSoftPowerBudgetProps) {
   return (
-    <section className="culture-cream-bg py-24 md:py-32 text-[#0C0907]">
+    <section id="culture-budget" className="culture-cream-bg py-24 md:py-32 text-[#0C0907]">
       <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center flex flex-col gap-16 md:gap-24">
         {budgetLines.map((line, idx) => {
           const isUsa = line.label.includes("American") || line.label.includes("private") || line.label.includes("SUA") || line.label.includes("private");
@@ -2091,7 +2202,7 @@ export function CultureLivingMediaWall({ isRo = false }: CultureLivingMediaWallP
   const modalSubtitle = isRo ? "O selecție de elemente reprezentative ale culturii americane" : "A landmark artifact of American cultural influence";
 
   return (
-    <section ref={sectionRef} className="relative culture-bg py-24 md:py-32 overflow-hidden border-t border-white/5">
+    <section id="culture-media-wall" ref={sectionRef} className="relative culture-bg py-24 md:py-32 overflow-hidden border-t border-white/5">
       {/* Dot-grid background */}
       <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none" />
 
@@ -3300,8 +3411,6 @@ export function CultureEnglishLanguage({ data, isRo = false }: CultureEnglishLan
     </section>
   );
 }
-
-
 
 
 
