@@ -845,8 +845,8 @@ const BENTO_IMAGES: Record<string, string> = {
   sports: SITE_IMAGES.culture.nflStadium,
   entertainment: SITE_IMAGES.culture.disneyWorld,
   brands: SITE_IMAGES.culture.melsDriveIn,
-  food: SITE_IMAGES.culture.burger,
-  fashion: SITE_IMAGES.culture.classicCar,
+  food: SITE_IMAGES.culture.mcdMenu,
+  fashion: SITE_IMAGES.culture.fashionJeansSneakers,
   music: SITE_IMAGES.culture.jazzClub,
 };
 
@@ -930,7 +930,7 @@ export function CultureBentoGrid({ subpages, sectionTitle }: CultureBentoGridPro
 }
 
 function BentoCard({ card, isAlt }: { card: CultureSubpage; isAlt?: boolean }) {
-  const imgSrc = isAlt ? SITE_IMAGES.culture.burgerFries : (BENTO_IMAGES[card.id] || SITE_IMAGES.culture.timesSquare);
+  const imgSrc = isAlt ? SITE_IMAGES.culture.cokeGlass : (BENTO_IMAGES[card.id] || SITE_IMAGES.culture.timesSquare);
   const isExternal = card.href !== "#";
 
   const inner = (
@@ -1717,9 +1717,16 @@ const CINEMA_ITEMS: ArchiveItem[] = [
   { title: "The Godfather", subtitle: "Dir. Francis Ford Coppola", year: "1972", imageKey: "vaultGodfather" },
   { title: "Jaws", subtitle: "Dir. Steven Spielberg", year: "1975", imageKey: "vaultJaws" },
   { title: "Star Wars", subtitle: "Dir. George Lucas", year: "1977", imageKey: "vaultStarWars" },
+  { title: "Blade Runner", subtitle: "Dir. Ridley Scott", year: "1982", imageKey: "vaultBladeRunner" },
+  { title: "Goodfellas", subtitle: "Dir. Martin Scorsese", year: "1990", imageKey: "vaultGoodfellas" },
   { title: "Jurassic Park", subtitle: "Dir. Steven Spielberg", year: "1993", imageKey: "vaultJurassicPark" },
   { title: "Pulp Fiction", subtitle: "Dir. Quentin Tarantino", year: "1994", imageKey: "vaultPulpFiction" },
+  { title: "Titanic", subtitle: "Dir. James Cameron", year: "1997", imageKey: "vaultTitanic" },
+  { title: "Saving Private Ryan", subtitle: "Dir. Steven Spielberg", year: "1998", imageKey: "vaultSavingPrivateRyan" },
+  { title: "The Matrix", subtitle: "Dir. The Wachowskis", year: "1999", imageKey: "vaultMatrix" },
+  { title: "The Dark Knight", subtitle: "Dir. Christopher Nolan", year: "2008", imageKey: "vaultDarkKnight" },
   { title: "Interstellar", subtitle: "Dir. Christopher Nolan", year: "2014", imageKey: "vaultInterstellar" },
+  { title: "Avengers: Endgame", subtitle: "Dir. Anthony & Joe Russo", year: "2019", imageKey: "vaultAvengers" },
 ];
 
 const MUSIC_ITEMS: ArchiveItem[] = [
@@ -1728,22 +1735,55 @@ const MUSIC_ITEMS: ArchiveItem[] = [
   { title: "At Folsom Prison", subtitle: "Johnny Cash", year: "1968", imageKey: "vaultJohnnyCash" },
   { title: "Thriller", subtitle: "Michael Jackson", year: "1982", imageKey: "vaultMichaelJackson" },
   { title: "Nevermind", subtitle: "Nirvana", year: "1991", imageKey: "vaultNirvana" },
+  { title: "The Marshall Mathers LP", subtitle: "Eminem", year: "2000", imageKey: "vaultEminem" },
+  { title: "Get Rich or Die Tryin'", subtitle: "50 Cent", year: "2003", imageKey: "vault50Cent" },
 ];
 
 const EDITORIAL_ITEMS: ArchiveItem[] = [
   { title: "Fortune Cover", subtitle: "Aviation as Seen by Monkeys", year: "1931", imageKey: "vaultFortune1931" },
+  { title: "National Geographic", subtitle: "American Flag War Bonds Ad", year: "1942", imageKey: "vaultNatGeo1942" },
   { title: "LIFE Magazine", subtitle: "Marilyn Monroe Feature", year: "1953", imageKey: "vaultLifeMarilyn" },
+  { title: "Avant Garde", subtitle: "Marilyn Monroe Tribute Cover", year: "1968", imageKey: "vaultMarilynAvantGarde" },
+  { title: "Sports Illustrated", subtitle: "Vince Lombardi Super Champion", year: "1968", imageKey: "vaultSportsSI1968" },
+  { title: "Produce & Gourmet", subtitle: "Gourmet Magazine Cover", year: "1969", imageKey: "vaultGourmetProduce" },
+  { title: "National Geographic", subtitle: "Apollo 11 Astronaut on Moon", year: "1969", imageKey: "vaultNatGeo1969" },
   { title: "LIFE Magazine", subtitle: "Disney World Grand Opening", year: "1971", imageKey: "vaultLifeDisney" },
+  { title: "Sports Illustrated", subtitle: "USA Olympic Hockey Miracle on Ice", year: "1980", imageKey: "vaultSportsSI1980" },
+  { title: "National Geographic", subtitle: "Space Shuttle Columbia Launch", year: "1981", imageKey: "vaultNatGeo1981" },
+  { title: "National Geographic", subtitle: "The Laser Hologram Eagle", year: "1984", imageKey: "vaultNatGeo1984" },
+  { title: "Sports Illustrated", subtitle: "Michael Jordan: A Star Is Born", year: "1984", imageKey: "vaultSportsSI1984" },
+  { title: "TV Guide", subtitle: "Twin Peaks Cast Feature", year: "1990", imageKey: "vaultTvGuideTwinPeaks" },
+  { title: "Sports Illustrated", subtitle: "Dream Team Olympic Five", year: "1991", imageKey: "vaultSportsSI1991" },
+  { title: "Sports Illustrated", subtitle: "George Steinbrenner on Horse", year: "1993", imageKey: "vaultSportsSI1993" },
+  { title: "National Geographic", subtitle: "Emperors of the Ice Penguins", year: "1996", imageKey: "vaultNatGeo1996" },
+  { title: "National Geographic", subtitle: "Hubble's Eye on the Universe", year: "1997", imageKey: "vaultNatGeo1997" },
+  { title: "Sports Illustrated", subtitle: "Brandi Chastain Soccer Victory", year: "1999", imageKey: "vaultSportsSI1999" },
   { title: "TIME Magazine", subtitle: "September 11 Remembrance", year: "2001", imageKey: "vaultTime911" },
+  { title: "Sports Illustrated", subtitle: "Muhammad Ali Tribute", year: "2016", imageKey: "vaultSportsSI2016" },
+  { title: "Sports Illustrated", subtitle: "Chicago Cubs World Series Win", year: "2016", imageKey: "vaultSportsSI2016Cubs" },
+  { title: "Sports Illustrated", subtitle: "Tiger Woods Masters Victory", year: "2019", imageKey: "vaultSportsSI2019" },
 ];
 
 const ADS_ITEMS: ArchiveItem[] = [
+  { title: "Vintage Magic Chef", subtitle: "Gas Range advertisement", year: "1950", imageKey: "vaultMagicChef1950" },
+  { title: "Sprite with Vodka", subtitle: "Vintage Beverage Ad", year: "1966", imageKey: "vaultSprite1966" },
+  { title: "Tiffany & Co.", subtitle: "Archival Ad", year: "1967", imageKey: "vaultTiffany1967" },
+  { title: "Chiquita Banana", subtitle: "Retro Brand Ad", year: "1968", imageKey: "vaultChiquita1968" },
+  { title: "KFC Advertisement", subtitle: "Vintage Fried Chicken Ad", year: "1968", imageKey: "vaultKfc1968" },
+  { title: "Converse Shoes", subtitle: "Basketball Shoes Ad", year: "1968", imageKey: "vaultConverse1968" },
+  { title: "Lemon Go Lightly", subtitle: "Vintage Hair Product Ad", year: "1970", imageKey: "vaultLemonGoLightly" },
   { title: "Coca-Cola Ad", subtitle: "Vintage Print Ad", year: "1971", imageKey: "vaultCocaCola1971" },
+  { title: "Retro Corduroy Jeans", subtitle: "Western Jeans Ad", year: "1973", imageKey: "vaultJeans70s" },
+  { title: "Converse by Sears", subtitle: "Converse Shoes Ad", year: "1977", imageKey: "vaultConverseSears1977" },
+  { title: "Minute Maid Ad", subtitle: "Orange Juice Ad", year: "1979", imageKey: "vaultMinuteMaid1979" },
+  { title: "Asteroids Arcade", subtitle: "Atari Video Game Flyer", year: "1979", imageKey: "vaultAsteroids1979" },
+  { title: "Pac-Man Arcade", subtitle: "Midway Video Game Flyer", year: "1980", imageKey: "vaultPacMan1980" },
   { title: "General Foods", subtitle: "International Coffees Ad", year: "1982", imageKey: "vaultGeneralFoods1982" },
   { title: "Uniden Ad", subtitle: "Cordless Phone Ad", year: "1987", imageKey: "vaultUniden1987" },
+  { title: "Ford Advertisement", subtitle: "Classic Ford Ad", year: "1987", imageKey: "vaultFord1987" },
   { title: "Coca-Cola is it", subtitle: "Classic Slogan Ad", year: "1988", imageKey: "vaultCocaCola1988" },
+  { title: "The Wall Street Journal", subtitle: "WSJ Retro Ad", year: "1988", imageKey: "vaultWsj1988" },
   { title: "Coca-Cola Ad", subtitle: "You Can't Beat the Feeling", year: "1989", imageKey: "vaultCocaCola1989" },
-  { title: "Tiffany & Co.", subtitle: "Archival Ad", year: "1967", imageKey: "vaultTiffany1967" },
 ];
 
 interface CultureArchiveVaultProps {
@@ -2379,8 +2419,8 @@ export function CultureCulinarySection({ pillars, sectionTitle, isRo }: CultureC
   const [selectedSubtitle, setSelectedSubtitle] = useState<string>("");
 
   const culinaryImages: Record<string, string> = {
-    diner: SITE_IMAGES.culture.flosV8,
-    burger: SITE_IMAGES.culture.burger,
+    diner: SITE_IMAGES.culture.dinerInside,
+    speakeasy: SITE_IMAGES.culture.speakeasyDesign,
     food: SITE_IMAGES.culture.mcDonalds,
   };
 

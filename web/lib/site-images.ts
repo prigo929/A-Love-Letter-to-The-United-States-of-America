@@ -143,6 +143,65 @@ import cultureBaseballPark from "@/IMAGES/Culture/Sports/Stadiums/Scenic-Daytime
 import cultureCowboysStadium from "@/IMAGES/Culture/Sports/Stadiums/Wide-Interior-View-Of-Packed-ATT-Stadium-During-Dallas-Cowboys-Football-Game.jpg";
 import cultureStatueOfLiberty from "@/IMAGES/Culture/Iconic Things/Statue Of Liberty.jpg";
 
+// New Core Visuals
+import fashionJeansSneakers from "@/IMAGES/Culture/Iconic Things/Blue Jeans and White Sneakers.jpg";
+import dinerInside from "@/IMAGES/Culture/Iconic Things/American Diner inside.jpg";
+import speakeasyDesign from "@/IMAGES/Culture/Iconic Things/1920s Speakeasy Design.jpg";
+import cokeGlass from "@/IMAGES/Culture/Iconic Things/Coca Cola Glass full.jpeg";
+import mcdMenu from "@/IMAGES/Culture/Food/McDonald's Menu with burger and fries and soda.jpeg";
+
+// New Movie Posters
+import vaultBladeRunner from "@/IMAGES/Culture/Movie Posters/Blade Runner 1982 cinematic neo-noir poster.jpg";
+import vaultGoodfellas from "@/IMAGES/Culture/Movie Posters/Goodfellas 1990 classic Scorsese high-contrast font poster.jpg";
+import vaultAvengers from "@/IMAGES/Culture/Movie Posters/Marvel Avengers Endgame cinematic theatrical poster.jpg";
+import vaultSavingPrivateRyan from "@/IMAGES/Culture/Movie Posters/Saving Private Ryan 1998 gritty military cinematic poster.jpg";
+import vaultDarkKnight from "@/IMAGES/Culture/Movie Posters/The Dark Knight 2008 high-contrast Batman skyline poster.jpg";
+import vaultMatrix from "@/IMAGES/Culture/Movie Posters/The Matrix 1999 green digital rain matrix poster.jpg";
+import vaultTitanic from "@/IMAGES/Culture/Movie Posters/Titanic 1997 classic cinematic epic promotional poster.jpg";
+
+// New Album Covers
+import vault50Cent from "@/IMAGES/Culture/Album Covers/50-Cent-Get-Rich-or-Die-Tryin-2003 Album Cover.jpeg";
+import vaultEminem from "@/IMAGES/Culture/Album Covers/Eminem The Marshall Mathers LP original casing cover.jpg";
+
+// New Magazine Covers
+import vaultMarilynAvantGarde from "@/IMAGES/Culture/Magazines/Marilyn Monroe, Avant Garde, March 1968 cover.jpg";
+import vaultGourmetProduce from "@/IMAGES/Culture/Magazines/Produce, Gourmet, May 1969 cover.jpg";
+import vaultTvGuideTwinPeaks from "@/IMAGES/Culture/Magazines/Sheryl Lee, Lara Flynn Boyle and Peggy Lipton, TV Guide, Sept. 8-14, 1990 cover.jpg";
+
+// National Geographic
+import vaultNatGeo1942 from "@/IMAGES/Culture/Magazines/National Geographic/National Geographic Magazine Cover July 1942 American Flag Buy US War Savings Bonds And Stamps.jpg";
+import vaultNatGeo1969 from "@/IMAGES/Culture/Magazines/National Geographic/National Geographic Magazine Cover December 1969 Astronaut On The Moon Apollo 11.jpg";
+import vaultNatGeo1981 from "@/IMAGES/Culture/Magazines/National Geographic/National Geographic Magazine Cover October 1981 Space Shuttle Columbia Launch First Flight.jpg";
+import vaultNatGeo1984 from "@/IMAGES/Culture/Magazines/National Geographic/National Geographic Magazine Cover March 1984 The Laser A Splendid Light Hologram Eagle.jpg";
+import vaultNatGeo1996 from "@/IMAGES/Culture/Magazines/National Geographic/National Geographic Magazine Cover March 1996 Emperors Of The Ice Emperor Penguins With Chick.jpg";
+import vaultNatGeo1997 from "@/IMAGES/Culture/Magazines/National Geographic/National Geographic Magazine Cover April 1997 Hubbles Eye On The Universe Nebula.jpg";
+
+// Sports Illustrated
+import vaultSportsSI1968 from "@/IMAGES/Culture/Magazines/Sports Illustrated/Sports Illustrated Magazine Cover January 1968 Vince Lombardi Green Bay Packers Super Champion.jpg";
+import vaultSportsSI1980 from "@/IMAGES/Culture/Magazines/Sports Illustrated/Sports Illustrated Magazine Cover March 1980 USA Olympic Mens Hockey Team Miracle On Ice Celebration.jpg";
+import vaultSportsSI1984 from "@/IMAGES/Culture/Magazines/Sports Illustrated/Sports Illustrated Magazine Cover December 1984 Michael Jordan Chicago Bulls A Star Is Born.jpg";
+import vaultSportsSI1991 from "@/IMAGES/Culture/Magazines/Sports Illustrated/Sports Illustrated Magazine Cover February 1991 Dream Team USA Basketball Olympic Five.jpeg";
+import vaultSportsSI1993 from "@/IMAGES/Culture/Magazines/Sports Illustrated/Sports Illustrated Magazine Cover March 1993 George Steinbrenner As George II On White Horse.jpg";
+import vaultSportsSI1999 from "@/IMAGES/Culture/Magazines/Sports Illustrated/Sports Illustrated Magazine Cover July 1999 Brandi Chastain US Womens Soccer World Cup Victory Yes.jpg";
+import vaultSportsSI2016 from "@/IMAGES/Culture/Magazines/Sports Illustrated/Sports Illustrated Magazine Cover June 2016 Muhammad Ali The Greatest Boxing Tribute.jpg";
+import vaultSportsSI2016Cubs from "@/IMAGES/Culture/Magazines/Sports Illustrated/Sports Illustrated Magazine Cover November 2016 Chicago Cubs World Series Win Kris Bryant Celebration.jpg";
+import vaultSportsSI2019 from "@/IMAGES/Culture/Magazines/Sports Illustrated/Sports Illustrated Magazine Cover April 2019 Tiger Woods Masters Golf Celebration.jpg";
+
+// New Brand Ads
+import vaultChiquita1968 from "@/IMAGES/Culture/Brand Ads/1968 Chiquita banana advertisement.jpg";
+import vaultKfc1968 from "@/IMAGES/Culture/Brand Ads/1968 Kentucky Fried Chicken advertisement.jpg";
+import vaultMinuteMaid1979 from "@/IMAGES/Culture/Brand Ads/1979 Minute Maid Ad.jpg";
+import vaultFord1987 from "@/IMAGES/Culture/Brand Ads/1987 advertisement for Ford.jpg";
+import vaultWsj1988 from "@/IMAGES/Culture/Brand Ads/1988 The Wall Street Journal advertisement.jpg";
+import vaultAsteroids1979 from "@/IMAGES/Culture/Brand Ads/Asteroids-arcade-video-game.jpg";
+import vaultConverse1968 from "@/IMAGES/Culture/Brand Ads/Converse-basketball-shoes-from-1968.jpg";
+import vaultConverseSears1977 from "@/IMAGES/Culture/Brand Ads/Converse-shoes-by-Sears-1977.jpg";
+import vaultPacMan1980 from "@/IMAGES/Culture/Brand Ads/Pac-Man-arcade-video-games-from-1980.jpg";
+import vaultJeans70s from "@/IMAGES/Culture/Brand Ads/Retro-70s-corduroy-western-jeans-with-bell-bottoms-1973.jpg";
+import vaultSprite1966 from "@/IMAGES/Culture/Brand Ads/Sprite-with-vodka-1966.jpg";
+import vaultLemonGoLightly from "@/IMAGES/Culture/Brand Ads/Vintage-Lemon-Go-Lightly-for-blonde-hair-1970s.jpg";
+import vaultMagicChef1950 from "@/IMAGES/Culture/Brand Ads/Vintage-Magic-Chef-gas-range-from-1950.jpg";
+
 // Culture Eras
 import era1920s from "@/IMAGES/Culture/Eras/1920s Jazz CarterAndKingJazzingOrchestra.jpg";
 import era1950s from "@/IMAGES/Culture/Eras/1950s Hollywood.jpg";
@@ -446,5 +505,50 @@ export const SITE_IMAGES = {
     michaelJordan: iconMichaelJordan.src,
     martinLutherKing: iconMartinLutherKing.src,
     arnoldSchwarzenegger: iconArnoldSchwarzenegger.src,
+    fashionJeansSneakers: fashionJeansSneakers.src,
+    dinerInside: dinerInside.src,
+    speakeasyDesign: speakeasyDesign.src,
+    cokeGlass: cokeGlass.src,
+    mcdMenu: mcdMenu.src,
+    vaultBladeRunner: vaultBladeRunner.src,
+    vaultGoodfellas: vaultGoodfellas.src,
+    vaultAvengers: vaultAvengers.src,
+    vaultSavingPrivateRyan: vaultSavingPrivateRyan.src,
+    vaultDarkKnight: vaultDarkKnight.src,
+    vaultMatrix: vaultMatrix.src,
+    vaultTitanic: vaultTitanic.src,
+    vault50Cent: vault50Cent.src,
+    vaultEminem: vaultEminem.src,
+    vaultMarilynAvantGarde: vaultMarilynAvantGarde.src,
+    vaultGourmetProduce: vaultGourmetProduce.src,
+    vaultTvGuideTwinPeaks: vaultTvGuideTwinPeaks.src,
+    vaultNatGeo1942: vaultNatGeo1942.src,
+    vaultNatGeo1969: vaultNatGeo1969.src,
+    vaultNatGeo1981: vaultNatGeo1981.src,
+    vaultNatGeo1984: vaultNatGeo1984.src,
+    vaultNatGeo1996: vaultNatGeo1996.src,
+    vaultNatGeo1997: vaultNatGeo1997.src,
+    vaultSportsSI1968: vaultSportsSI1968.src,
+    vaultSportsSI1980: vaultSportsSI1980.src,
+    vaultSportsSI1984: vaultSportsSI1984.src,
+    vaultSportsSI1991: vaultSportsSI1991.src,
+    vaultSportsSI1993: vaultSportsSI1993.src,
+    vaultSportsSI1999: vaultSportsSI1999.src,
+    vaultSportsSI2016: vaultSportsSI2016.src,
+    vaultSportsSI2016Cubs: vaultSportsSI2016Cubs.src,
+    vaultSportsSI2019: vaultSportsSI2019.src,
+    vaultChiquita1968: vaultChiquita1968.src,
+    vaultKfc1968: vaultKfc1968.src,
+    vaultMinuteMaid1979: vaultMinuteMaid1979.src,
+    vaultFord1987: vaultFord1987.src,
+    vaultWsj1988: vaultWsj1988.src,
+    vaultAsteroids1979: vaultAsteroids1979.src,
+    vaultConverse1968: vaultConverse1968.src,
+    vaultConverseSears1977: vaultConverseSears1977.src,
+    vaultPacMan1980: vaultPacMan1980.src,
+    vaultJeans70s: vaultJeans70s.src,
+    vaultSprite1966: vaultSprite1966.src,
+    vaultLemonGoLightly: vaultLemonGoLightly.src,
+    vaultMagicChef1950: vaultMagicChef1950.src,
   },
 } as const;
