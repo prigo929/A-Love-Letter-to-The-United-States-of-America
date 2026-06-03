@@ -9,6 +9,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence, useInView, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
+import { WeThePeopleSignature } from "./WeThePeopleSignature";
 
 // ── ExhibitCase ───────────────────────────────────────────────────────────────
 // Wraps content in a museum-vitrine container with recessed glass illusion.
@@ -573,23 +574,10 @@ export function WeThePeople({ isRo }: { isRo: boolean }) {
         />
 
         <motion.div
-          className="relative z-10 text-center"
+          className="relative z-10 text-center w-full max-w-screen-md px-4"
           style={{ opacity, scale, y, willChange: "transform, opacity" }}
         >
-          <p
-            className="select-none"
-            style={{
-              fontFamily: "'EB Garamond', 'Georgia', serif",
-              fontSize: "clamp(48px, 10vw, 120px)",
-              fontStyle: "italic",
-              fontWeight: 400,
-              color: "#C9A84C",
-              textShadow: "0 0 80px rgba(201,168,76,0.3), 0 0 160px rgba(201,168,76,0.1)",
-              letterSpacing: "0.04em",
-            }}
-          >
-            We the People
-          </p>
+          <WeThePeopleSignature />
           <p className="mt-4 font-body text-sm tracking-[0.3em] uppercase text-[#6B6860]">
             {isRo ? "Statele Unite ale Americii · Înf. 1776" : "United States of America · Est. 1776"}
           </p>

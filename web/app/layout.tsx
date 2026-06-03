@@ -10,7 +10,7 @@
 
 import type { Metadata, Viewport } from "next";
 import type { StaticImport } from "next/dist/shared/lib/get-img-props";
-import { Bebas_Neue, Playfair_Display, Inter, Archivo, Space_Mono } from "next/font/google";
+import { Bebas_Neue, Playfair_Display, Inter, Archivo, Space_Mono, Pinyon_Script } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/layout/Header";
@@ -60,6 +60,14 @@ const spaceMono = Space_Mono({
   variable: "--font-mono",
   display: "swap",
 });
+
+const pinyonScript = Pinyon_Script({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-signature",
+  display: "swap",
+});
+
 const STATES_VIDEO_PRELOAD_SRC = "/videos/flag-loop.mp4";
 
 // ─── Site-wide Metadata ───────────────────────────────────────────────────────
@@ -182,7 +190,7 @@ export default function RootLayout({
   return (
       <html
         lang="en"
-        className={`${bebasNeue.variable} ${playfairDisplay.variable} ${inter.variable} ${archivo.variable} ${spaceMono.variable} overflow-x-hidden`}
+        className={`${bebasNeue.variable} ${playfairDisplay.variable} ${inter.variable} ${archivo.variable} ${spaceMono.variable} ${pinyonScript.variable} overflow-x-hidden`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >

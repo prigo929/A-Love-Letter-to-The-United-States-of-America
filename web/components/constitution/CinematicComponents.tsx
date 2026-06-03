@@ -19,6 +19,7 @@ import {
 import { useEffect, useState, useLayoutEffect } from "react";
 import Image from "next/image";
 import type { PresidentialTransfer } from "@/lib/data/constitution-data";
+import { WeThePeopleSignature } from "./WeThePeopleSignature";
 
 // ─── CountUp (local) ──────────────────────────────────────────────────────────
 
@@ -116,6 +117,8 @@ export function CinematicStat({
   );
 }
 
+
+
 // 2. CINEMATIC HERO — The grand introduction of the exhibit.
 // This component uses "Scroll-Driven Animations". 
 // As you scroll down the page, different elements fade in and out.
@@ -188,7 +191,7 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
 
         {/* Phase 1: "We the People" */}
         <motion.div
-          className="absolute z-10 text-center"
+          className="absolute z-10 text-center w-full max-w-screen-md px-4"
           style={{
             opacity: wtpOpacity,
             scale: wtpScale,
@@ -196,20 +199,7 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
             willChange: "transform, opacity",
           }}
         >
-          <p
-            className="select-none"
-            style={{
-              fontFamily: "'EB Garamond', 'Georgia', serif",
-              fontSize: "clamp(48px, 10vw, 120px)",
-              fontStyle: "italic",
-              fontWeight: 400,
-              color: "#C9A84C",
-              textShadow: "0 0 80px rgba(201,168,76,0.3), 0 0 160px rgba(201,168,76,0.1)",
-              letterSpacing: "0.04em",
-            }}
-          >
-            We the People
-          </p>
+          <WeThePeopleSignature />
           <p className="mt-4 font-body text-sm tracking-[0.3em] uppercase text-[#6B6860]">
             {isRo ? "Statele Unite ale Americii · Înf. 1776" : "United States of America · Est. 1776"}
           </p>

@@ -137,6 +137,9 @@
   .font-body {
     font-family: "Inter", system-ui, sans-serif;
   }
+  .font-signature {
+    font-family: var(--font-signature), cursive;
+  }
 
   /* ── Section heading pattern ─────────────────────────────────────────── */
   .section-eyebrow {

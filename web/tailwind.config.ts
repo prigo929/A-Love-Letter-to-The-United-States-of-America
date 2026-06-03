@@ -33,6 +33,7 @@ const config: Config = {
         hero: ['"Bebas Neue"', "Impact", "sans-serif"],
         // Body copy — clean & readable
         body: ['"Inter"', "system-ui", "sans-serif"],
+        signature: ["var(--font-signature)", "cursive"],
       },
 
       fontSize: {
