@@ -745,20 +745,20 @@ export interface CultureCulinaryPillar {
 const CULINARY_PILLARS_EN: CultureCulinaryPillar[] = [
   {
     title: "The American Diner",
-    subtitle: "Aesthetics of Comfort",
-    body: "The neon-lit diner with its endless coffee and retro booths is the spatial layout of democratic dining. Open to everyone, serving breakfast at midnight, it represents a casual, shared public comfort.",
+    subtitle: "The Design of Democratic Dining",
+    body: "With its neon lighting, endless coffee refills, and retro booths, the diner represents the spatial design of democratic access. Open to anyone at any hour, it is an architectural comfort zone that commoditized community and conversation.",
     imageKey: "diner",
   },
   {
-    title: "Southern BBQ",
-    subtitle: "The Craft of Slow Smoke",
-    body: "A slow-cooked fire tradition born of regional identity, wood smoke, and community gatherings. From Texas brisket to Carolina pulled pork, BBQ is a pure craft of patience and flavor.",
-    imageKey: "burger",
+    title: "The Speakeasy Aesthetic",
+    subtitle: "The Beverage Craft Export",
+    body: "From the bourbon revival and craft beer movement to the cocktail renaissance, America redefined global drinking culture. Every hip cocktail lounge in Tokyo or Paris is modeled on the dark woods, low lights, and rigorous mixology of a pre-Prohibition New York or Brooklyn speakeasy—exporting a classic, market-proven lifestyle.",
+    imageKey: "jazzClub",
   },
   {
-    title: "The Global Franchise",
+    title: "The Logistics Franchise",
     subtitle: "Exporting Operational Systems",
-    body: "McDonald's, Starbucks, and Coca-Cola didn't just export menu items — they exported a perfect, predictable system of operation. A franchise in Tokyo delivers the exact same experience as one in Chicago.",
+    body: "McDonald's and Starbucks didn't just export burgers and lattes; they exported operational logistics. Their global reach is a triumph of cold-chain supply management, strict food safety protocols, real estate site-selection algorithms, and hyper-optimized labor productivity standards. It turned culinary service into a highly engineered, predictable system of global replication.",
     imageKey: "food",
   },
 ];
@@ -766,20 +766,20 @@ const CULINARY_PILLARS_EN: CultureCulinaryPillar[] = [
 const CULINARY_PILLARS_RO: CultureCulinaryPillar[] = [
   {
     title: "Diner-ul American",
-    subtitle: "Estetica Confortului",
-    body: "Diner-ul luminat de neon, cu cafeaua sa nesfârșită și separeurile retro, este designul spațial al mesei democratice. Deschis oricui, servind micul dejun la miezul nopții, reprezintă un confort public împărtășit.",
+    subtitle: "Designul Mesei Democrate",
+    body: "Cu iluminarea sa de neon, cafeaua nesfârșită și separeurile retro, diner-ul reprezintă designul spațial al accesului democratic. Deschis oricui și la orice oră, este o zonă de confort arhitectural care a transformat comunitatea și conversația în bunuri accesibile tuturor.",
     imageKey: "diner",
   },
   {
-    title: "Southern BBQ",
-    subtitle: "Arta Fumului Lent",
-    body: "O tradiție a focului lent, născută din identitatea regională, fumul de lemn și adunările comunității. De la brisket-ul din Texas la pulled pork-ul din Carolina, BBQ-ul este o artă a răbdării și a savorii.",
-    imageKey: "burger",
+    title: "Estetica Speakeasy",
+    subtitle: "Exportul Băuturilor Artizanale",
+    body: "De la renașterea bourbonului și mișcarea berii artizanale până la revigorarea cocktailurilor clasice, America a redefinit cultura globală a băutului. Fiecare lounge modern din Tokyo sau Paris este modelat după lemnul întunecat, lumina difuză și mixologia riguroasă a speakeasy-urilor istorice din New York sau Brooklyn—exportând un stil de viață clasic.",
+    imageKey: "jazzClub",
   },
   {
-    title: "Franciza Globală",
-    subtitle: "Exportul de Sisteme de Servicii",
-    body: "McDonald's, Starbucks și Coca-Cola nu au exportat doar meniuri — au exportat un sistem perfect și previzibil de funcționare. O franciză din Tokyo oferă exact aceeași experiență ca una din Chicago.",
+    title: "Franciza Logistică",
+    subtitle: "Exportul de Sisteme Operaționale",
+    body: "McDonald's și Starbucks nu au exportat doar hamburgeri și cafele; au exportat logistică operațională. Expansiunea lor globală este un triumf al managementului lanțului de aprovizionare, al protocoalelor stricte de siguranță alimentară, al algoritmilor de selecție imobiliară și al productivității muncii hiper-optimizate. A transformat serviciul culinar într-un sistem industrial de replicare globală.",
     imageKey: "food",
   },
 ];
