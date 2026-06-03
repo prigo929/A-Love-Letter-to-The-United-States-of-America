@@ -603,124 +603,74 @@ interface CultureThesisBlockProps {
 }
 
 export function CultureThesisBlock({ thesis }: CultureThesisBlockProps) {
-  const scrollTrackRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: scrollTrackRef,
-    offset: ["start start", "end end"],
-  });
-
-  const backgroundColor = useTransform(
-    scrollYProgress,
-    [0.0, 0.3, 0.8, 0.95],
-    ["#0C0907", "#F5EDD8", "#F5EDD8", "#0C0907"]
-  );
-
-  const pullQuoteColor = useTransform(
-    scrollYProgress,
-    [0.0, 0.3, 0.8, 0.95],
-    ["#F5EDD8", "#0C0907", "#0C0907", "#F5EDD8"]
-  );
-
-  const citationColor = useTransform(
-    scrollYProgress,
-    [0.0, 0.3, 0.8, 0.95],
-    ["rgba(212,175,55,0.8)", "rgba(184,134,11,0.9)", "rgba(184,134,11,0.9)", "rgba(212,175,55,0.8)"]
-  );
-
-  const paragraphTextColor = useTransform(
-    scrollYProgress,
-    [0.0, 0.3, 0.8, 0.95],
-    ["rgba(245,237,216,0.75)", "rgba(12,9,7,0.75)", "rgba(12,9,7,0.75)", "rgba(245,237,216,0.75)"]
-  );
-
-  const quoteOpacity = useTransform(scrollYProgress, [0.0, 0.1, 0.85, 0.95], [0, 1, 1, 0]);
-  const quoteScale = useTransform(scrollYProgress, [0.0, 0.15], [0.95, 1.0]);
-  const dotGridOpacity = useTransform(scrollYProgress, [0.0, 0.3, 0.8, 0.95], [0.25, 0.1, 0.1, 0.25]);
-
-  const p1Opacity = useTransform(scrollYProgress, [0.18, 0.26, 0.48, 0.54], [0, 1, 1, 0]);
-  const p1Y = useTransform(scrollYProgress, [0.18, 0.26, 0.48, 0.54], [30, 0, 0, -30]);
-
-  const p2Opacity = useTransform(scrollYProgress, [0.56, 0.64, 0.82, 0.88], [0, 1, 1, 0]);
-  const p2Y = useTransform(scrollYProgress, [0.56, 0.64, 0.82, 0.88], [30, 0, 0, -30]);
-
   return (
-    <div ref={scrollTrackRef} className="relative h-[250vh] w-full">
-      <motion.section
-        id="culture-thesis"
-        style={{ backgroundColor }}
-        className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden"
-      >
-        {/* Dot-grid background texture */}
-        <motion.div 
-          style={{ opacity: dotGridOpacity }} 
-          className="absolute inset-0 culture-dot-canvas pointer-events-none" 
-        />
+    <section id="culture-thesis" className="relative culture-bg py-24 md:py-36 overflow-hidden">
+      {/* Dot-grid background texture */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-25 pointer-events-none" />
 
-        <div className="relative z-10 mx-auto max-w-[850px] px-6 sm:px-8 flex flex-col items-center w-full">
-          {/* Pull Quote */}
-          <motion.blockquote
-            style={{ opacity: quoteOpacity, scale: quoteScale }}
-            className="relative text-center w-full"
+      <div className="relative z-10 mx-auto max-w-[800px] px-6 sm:px-8 flex flex-col items-center">
+        {/* Pull Quote */}
+        <motion.blockquote
+          className="relative text-center mb-24 w-full"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
+        >
+          {/* Decorative opening quote */}
+          <span
+            className="block font-editorial text-glory-gold/15 text-[140px] leading-none select-none -mb-14"
+            aria-hidden="true"
           >
-            {/* Decorative opening quote */}
-            <span
-              className="block font-editorial text-glory-gold/15 text-[100px] md:text-[140px] leading-none select-none -mb-10 md:-mb-14"
-              aria-hidden="true"
-            >
-              &ldquo;
-            </span>
+            &ldquo;
+          </span>
 
-            {/* Gold rule above */}
-            <div className="w-20 h-px bg-gradient-to-r from-transparent via-glory-gold to-transparent mx-auto mb-6 md:mb-10" />
+          {/* Gold rule above */}
+          <div className="w-20 h-px bg-gradient-to-r from-transparent via-glory-gold to-transparent mx-auto mb-10" />
 
-            <motion.p 
-              style={{ color: pullQuoteColor }}
-              className="font-editorial italic text-2xl sm:text-3xl lg:text-[2.5rem] leading-[1.4] mb-6 md:mb-8"
-            >
-              &ldquo;{parseTextWithHighlights(thesis.pullQuote)}&rdquo;
-            </motion.p>
+          <p className="font-editorial italic text-[#F5EDD8] text-2xl sm:text-3xl lg:text-[2.6rem] leading-[1.5] mb-8">
+            &ldquo;{parseTextWithHighlights(thesis.pullQuote)}&rdquo;
+          </p>
 
-            {/* Gold rule below */}
-            <div className="w-12 h-px bg-glory-gold/40 mx-auto mb-4 md:mb-6" />
+          {/* Gold rule below */}
+          <div className="w-12 h-px bg-glory-gold/40 mx-auto mb-6" />
 
-            <motion.cite 
-              style={{ color: citationColor }}
-              className="not-italic culture-text-metadata tracking-[0.25em] text-[10px] md:text-[11px]"
-            >
-              — {thesis.attribution}
-            </motion.cite>
-          </motion.blockquote>
+          <cite className="not-italic culture-text-metadata text-glory-gold/80 tracking-[0.25em] text-[11px]">
+            — {thesis.attribution}
+          </cite>
+        </motion.blockquote>
 
-          {/* Narrative Flow: Connecting gold line */}
-          <div className="w-px h-10 md:h-16 bg-gradient-to-b from-glory-gold/30 to-transparent my-6 md:my-10" />
+        {/* Narrative Flow: Connecting gold line */}
+        <div className="w-px h-16 bg-gradient-to-b from-glory-gold/30 to-transparent mb-16" />
 
-          {/* Editorial paragraphs slideshow container */}
-          <div className="relative w-full h-[180px] md:h-[150px] flex justify-center">
-            {/* Paragraph 1 */}
+        {/* Editorial paragraphs in a staggered vertical flow */}
+        <div className="w-full flex flex-col gap-20">
+          {thesis.paragraphs.map((p, i) => (
             <motion.div
-              style={{ opacity: p1Opacity, y: p1Y, color: paragraphTextColor }}
-              className="absolute inset-0 flex flex-col items-center text-center px-4"
+              key={i}
+              className="relative pl-12 md:pl-16 border-l border-white/5 hover:border-glory-gold/30 transition-colors duration-500"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0.1, 0.25, 1] as const,
+                delay: i * 0.1,
+              }}
             >
-              <span className="font-editorial italic text-glory-gold/30 text-2xl md:text-3xl mb-2">01</span>
-              <p className="font-editorial text-base sm:text-lg md:text-xl lg:text-2xl leading-[1.6] md:leading-[1.8] max-w-[720px]">
-                {parseTextWithHighlights(thesis.paragraphs[0])}
+              {/* Large floating serif number */}
+              <span className="absolute left-0 top-0 font-editorial italic text-glory-gold/20 text-3xl md:text-4xl select-none leading-none -translate-x-1/2 bg-[#0C0907] py-1">
+                0{i + 1}
+              </span>
+
+              <p className="font-editorial text-[#F5EDD8]/75 text-lg sm:text-xl md:text-2xl leading-[1.8] max-w-[680px]">
+                {parseTextWithHighlights(p)}
               </p>
             </motion.div>
-
-            {/* Paragraph 2 */}
-            <motion.div
-              style={{ opacity: p2Opacity, y: p2Y, color: paragraphTextColor }}
-              className="absolute inset-0 flex flex-col items-center text-center px-4"
-            >
-              <span className="font-editorial italic text-glory-gold/30 text-2xl md:text-3xl mb-2">02</span>
-              <p className="font-editorial text-base sm:text-lg md:text-xl lg:text-2xl leading-[1.6] md:leading-[1.8] max-w-[720px]">
-                {parseTextWithHighlights(thesis.paragraphs[1])}
-              </p>
-            </motion.div>
-          </div>
+          ))}
         </div>
-      </motion.section>
-    </div>
+      </div>
+    </section>
   );
 }
 
@@ -774,136 +724,74 @@ interface CulturePillarsStripProps {
 }
 
 export function CulturePillarsStrip({ pillars }: CulturePillarsStripProps) {
-  const scrollTrackRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: scrollTrackRef,
-    offset: ["start start", "end end"],
-  });
-
-  // Declare 8 separate useTransforms to satisfy React hooks rule (no hooks in loops/map)
-  const card1Opacity = useTransform(scrollYProgress, [0.1, 0.18], [0, 1]);
-  const card1Y = useTransform(scrollYProgress, [0.1, 0.18], [40, 0]);
-
-  const card2Opacity = useTransform(scrollYProgress, [0.18, 0.26], [0, 1]);
-  const card2Y = useTransform(scrollYProgress, [0.18, 0.26], [40, 0]);
-
-  const card3Opacity = useTransform(scrollYProgress, [0.26, 0.34], [0, 1]);
-  const card3Y = useTransform(scrollYProgress, [0.26, 0.34], [40, 0]);
-
-  const card4Opacity = useTransform(scrollYProgress, [0.34, 0.42], [0, 1]);
-  const card4Y = useTransform(scrollYProgress, [0.34, 0.42], [40, 0]);
-
-  const card5Opacity = useTransform(scrollYProgress, [0.42, 0.50], [0, 1]);
-  const card5Y = useTransform(scrollYProgress, [0.42, 0.50], [40, 0]);
-
-  const card6Opacity = useTransform(scrollYProgress, [0.50, 0.58], [0, 1]);
-  const card6Y = useTransform(scrollYProgress, [0.50, 0.58], [40, 0]);
-
-  const card7Opacity = useTransform(scrollYProgress, [0.58, 0.66], [0, 1]);
-  const card7Y = useTransform(scrollYProgress, [0.58, 0.66], [40, 0]);
-
-  const card8Opacity = useTransform(scrollYProgress, [0.66, 0.74], [0, 1]);
-  const card8Y = useTransform(scrollYProgress, [0.66, 0.74], [40, 0]);
-
-  const cardStates = [
-    { opacity: card1Opacity, y: card1Y },
-    { opacity: card2Opacity, y: card2Y },
-    { opacity: card3Opacity, y: card3Y },
-    { opacity: card4Opacity, y: card4Y },
-    { opacity: card5Opacity, y: card5Y },
-    { opacity: card6Opacity, y: card6Y },
-    { opacity: card7Opacity, y: card7Y },
-    { opacity: card8Opacity, y: card8Y },
-  ];
-
-  // Header entrance animations
-  const headerOpacity = useTransform(scrollYProgress, [0.0, 0.1], [0, 1]);
-  const headerY = useTransform(scrollYProgress, [0.0, 0.1], [-20, 0]);
-  const headerScale = useTransform(scrollYProgress, [0.0, 0.1], [0.95, 1.0]);
-
-  // Container exit animations: slide up and fade out at the very end of scroll track
-  const containerY = useTransform(scrollYProgress, [0.9, 1.0], [0, -100]);
-  const containerOpacity = useTransform(scrollYProgress, [0.9, 0.98], [1, 0]);
-
   return (
-    <div ref={scrollTrackRef} className="relative h-[300vh] w-full culture-bg">
-      <motion.section
-        id="culture-pillars"
-        style={{ y: containerY, opacity: containerOpacity }}
-        className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden"
-      >
-        {/* Dot-grid background */}
-        <div className="absolute inset-0 culture-dot-canvas opacity-20 pointer-events-none" />
+    <section id="culture-pillars" className="relative culture-bg py-32 md:py-48 overflow-hidden">
+      {/* Dot-grid background */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-20 pointer-events-none" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center">
-          {/* Section header — monumental typography */}
-          <motion.div
-            style={{ opacity: headerOpacity, y: headerY, scale: headerScale }}
-            className="mb-8 sm:mb-12 md:mb-16 text-center"
-          >
-            <span className="culture-text-label text-glory-gold/70 block mb-2 sm:mb-4" style={{ letterSpacing: "0.5em" }}>
-              THE SOFT POWER ARSENAL
-            </span>
-            <h2 className="culture-text-hero text-white" style={{ fontSize: "clamp(32px, 5.5vw, 100px)" }}>
-              <span className="block">DIMENSIONS OF</span>
-              <span className="block text-white/20">GLOBAL INFLUENCE</span>
-            </h2>
-          </motion.div>
-
-          {/* Cinematic Bento-style pillars grid - optimized columns to prevent mobile screen vertical overflow */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 w-full">
-            {pillars.map((pillar, i) => {
-              const scheme = PILLAR_GLOW_SCHEMES[i % PILLAR_GLOW_SCHEMES.length];
-              const state = cardStates[i];
-
-              return (
-                <motion.div
-                  key={i}
-                  style={{
-                    opacity: state ? state.opacity : 1,
-                    y: state ? state.y : 0,
-                  }}
-                  className={cn(
-                    "relative overflow-hidden rounded-xl border border-white/[0.05] bg-white/[0.015] p-3 sm:p-5 md:p-6 flex flex-col justify-between group transition-all duration-500 hover:-translate-y-1 hover:bg-white/[0.03] min-h-[110px] sm:min-h-[160px] md:min-h-[220px] culture-gradient-border",
-                    scheme.border
-                  )}
-                >
-                  {/* Dot-grid texture inside card */}
-                  <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none rounded-xl" />
-
-                  {/* Glowing pools at top right */}
-                  <div className={cn("absolute -right-16 -top-16 w-36 h-36 rounded-full bg-gradient-to-br filter blur-3xl opacity-0 group-hover:opacity-80 transition-opacity duration-700 pointer-events-none", scheme.color)} />
-                  
-                  {/* Top Row: Domain name + Emoji Container */}
-                  <div className="flex items-center justify-between w-full mb-3 sm:mb-4 md:mb-6 relative z-10">
-                    <span className="culture-text-label text-[8px] sm:text-[10px] group-hover:text-[#F5EDD8]/70 transition-colors duration-300">
-                      {pillar.domain}
-                    </span>
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs sm:text-sm group-hover:scale-110 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300 select-none">
-                      {pillar.emoji}
-                    </div>
-                  </div>
-
-                  {/* Bottom content: Huge metric + Label */}
-                  <div className="flex flex-col items-start mt-auto relative z-10">
-                    <span className="text-[clamp(18px,3vw,36px)] sm:text-[clamp(28px,4vw,44px)] font-extralight tracking-tighter text-[#F5EDD8] group-hover:text-white transition-colors duration-300 leading-none">
-                      {pillar.stat}
-                    </span>
-                    <div className="h-px w-6 sm:w-8 bg-white/10 mt-1.5 sm:mt-2.5 mb-1 group-hover:w-12 group-hover:bg-glory-gold/30 transition-all duration-500" />
-                    <span className="culture-text-label text-[8px] sm:text-[9px] group-hover:text-[#F5EDD8]/60 transition-colors duration-300 leading-normal sm:leading-relaxed">
-                      {pillar.statLabel}
-                    </span>
-                  </div>
-
-                  {/* Expanding bottom accent line */}
-                  <div className={cn("absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] transition-all duration-500 group-hover:w-full", scheme.lineBg)} />
-                </motion.div>
-              );
-            })}
-          </div>
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
+        {/* Section header — monumental typography */}
+        <div className="mb-24 text-center">
+          <span className="culture-text-label text-glory-gold/70 block mb-6" style={{ letterSpacing: "0.5em" }}>
+            THE SOFT POWER ARSENAL
+          </span>
+          <h2 className="culture-text-hero text-white">
+            <span className="block">DIMENSIONS OF</span>
+            <span className="block text-white/20">GLOBAL INFLUENCE</span>
+          </h2>
         </div>
-      </motion.section>
-    </div>
+
+        {/* Cinematic Bento-style pillars grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {pillars.map((pillar, i) => {
+            const scheme = PILLAR_GLOW_SCHEMES[i % PILLAR_GLOW_SCHEMES.length];
+
+            return (
+              <div
+                key={i}
+                className={cn(
+                  "relative overflow-hidden rounded-xl border border-white/[0.05] bg-white/[0.015] p-6 md:p-8 flex flex-col justify-between group transition-all duration-500 hover:-translate-y-1 hover:bg-white/[0.03] min-h-[240px] opacity-0 animate-fade-in-up culture-gradient-border",
+                  scheme.border
+                )}
+                style={{
+                  animationDelay: `${i * 80}ms`,
+                }}
+              >
+                {/* Dot-grid texture inside card */}
+                <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none rounded-xl" />
+
+                {/* Glowing pools at top right */}
+                <div className={cn("absolute -right-16 -top-16 w-36 h-36 rounded-full bg-gradient-to-br filter blur-3xl opacity-0 group-hover:opacity-80 transition-opacity duration-700 pointer-events-none", scheme.color)} />
+                
+                {/* Top Row: Domain name + Emoji Container */}
+                <div className="flex items-center justify-between w-full mb-8 relative z-10">
+                  <span className="culture-text-label text-[10px] group-hover:text-[#F5EDD8]/70 transition-colors duration-300">
+                    {pillar.domain}
+                  </span>
+                  <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-sm group-hover:scale-110 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300 select-none">
+                    {pillar.emoji}
+                  </div>
+                </div>
+
+                {/* Bottom content: Huge metric + Label */}
+                <div className="flex flex-col items-start mt-auto relative z-10">
+                  <span className="text-[clamp(32px,4vw,48px)] font-extralight tracking-tighter text-[#F5EDD8] group-hover:text-white transition-colors duration-300 leading-none">
+                    {pillar.stat}
+                  </span>
+                  <div className="h-px w-8 bg-white/10 mt-3 mb-2 group-hover:w-12 group-hover:bg-glory-gold/30 transition-all duration-500" />
+                  <span className="culture-text-label text-[10px] group-hover:text-[#F5EDD8]/60 transition-colors duration-300 leading-relaxed">
+                    {pillar.statLabel}
+                  </span>
+                </div>
+
+                {/* Expanding bottom accent line */}
+                <div className={cn("absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] transition-all duration-500 group-hover:w-full", scheme.lineBg)} />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 }
 
