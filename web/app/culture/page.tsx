@@ -173,7 +173,7 @@ export default async function CulturePage() {
       <CultureBentoGrid subpages={subpages} sectionTitle={gridTitle} />
 
       {/* Transition: Dark to Cream */}
-      <div className="h-36 w-full gradient-dark-to-cream" />
+      <div className="h-48 w-full gradient-dark-to-cream" />
 
       {/* §6 — Free Market Argument (Cream Section) */}
       <CultureFreeMarketStrip arguments_={arguments_} sectionTitle={argumentTitle} />
@@ -188,7 +188,7 @@ export default async function CulturePage() {
       <CultureEnglishLanguage data={englishLanguageData} isRo={isRo} />
 
       {/* Transition: Cream to Dark */}
-      <div className="h-36 w-full gradient-cream-to-dark" />
+      <div className="h-48 w-full gradient-cream-to-dark" />
 
       {/* Editorial Counter-Programming: Imperialism Critique */}
       <CultureEditorialImperialism data={editorialImperialism} isRo={isRo} />
