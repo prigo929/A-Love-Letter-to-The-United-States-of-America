@@ -180,6 +180,18 @@ import vaultCocaCola1989 from "@/IMAGES/Culture/Brand Ads/Coca-Cola (1989) You C
 import vaultCocaCola1988 from "@/IMAGES/Culture/Brand Ads/Coca-Cola is it, 1988.jpg";
 import vaultTiffany1967 from "@/IMAGES/Culture/Brand Ads/Tiffany & Co_ Archival Ad 1967.jpg";
 
+// Famous People
+import iconWaltDisney from "@/IMAGES/Culture/Famous People/01_walt_disney.jpg";
+import iconLouisArmstrong from "@/IMAGES/Culture/Famous People/02_louis_armstrong.jpg";
+import iconElvisPresley from "@/IMAGES/Culture/Famous People/03_elvis_presley.jpg";
+import iconMarilynMonroe from "@/IMAGES/Culture/Famous People/04_marilyn_monroe.jpg";
+import iconMarkTwain from "@/IMAGES/Culture/Famous People/05_mark_twain.jpg";
+import iconMuhammadAli from "@/IMAGES/Culture/Famous People/06_muhammad_ali.jpg";
+import iconMichaelJackson from "@/IMAGES/Culture/Famous People/07_michael_jackson.jpg";
+import iconMichaelJordan from "@/IMAGES/Culture/Famous People/08_michael_jordan.jpg";
+import iconMartinLutherKing from "@/IMAGES/Culture/Famous People/09_martin_luther_king_jr.jpg";
+import iconArnoldSchwarzenegger from "@/IMAGES/Culture/Famous People/10_arnold_schwarzenegger.jpg";
+
 // Global Bases
 import baseRamstein from "@/IMAGES/Military/Global Bases/ramstein_air_base.jpg";
 import baseYokosuka from "@/IMAGES/Military/Global Bases/western_pacific_fleet_activities_yokosuka.jpg";
@@ -424,5 +436,15 @@ export const SITE_IMAGES = {
     vaultCocaCola1989: vaultCocaCola1989.src,
     vaultCocaCola1988: vaultCocaCola1988.src,
     vaultTiffany1967: vaultTiffany1967.src,
+    waltDisney: iconWaltDisney.src,
+    louisArmstrong: iconLouisArmstrong.src,
+    elvisPresley: iconElvisPresley.src,
+    marilynMonroe: iconMarilynMonroe.src,
+    markTwain: iconMarkTwain.src,
+    muhammadAli: iconMuhammadAli.src,
+    michaelJackson: iconMichaelJackson.src,
+    michaelJordan: iconMichaelJordan.src,
+    martinLutherKing: iconMartinLutherKing.src,
+    arnoldSchwarzenegger: iconArnoldSchwarzenegger.src,
   },
 } as const;
