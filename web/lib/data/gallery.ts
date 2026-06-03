@@ -3,18 +3,28 @@ import { GALLERY_ASSETS } from "@/lib/data/gallery-assets";
 
 export const GALLERY_CATEGORIES = [
   "All",
+  "Aerials",
+  "American Life",
+  "Brand Ads",
+  "Cinema",
   "Cities",
+  "Collages",
   "Constitution",
-  "Culture",
+  "Culinary",
+  "Cultural Icons",
   "Economy",
   "Education",
   "Founders",
+  "History",
   "Housing",
+  "Iconic Symbols",
   "Infrastructure",
   "Landscapes",
-  "Leadership",
+  "Magazines",
   "Military",
+  "Music",
   "Science",
+  "Sports",
   "Technology",
   "US Buildings",
   "US Flags",
@@ -157,12 +167,58 @@ function getOrientation(src: StaticImageData): GalleryImage["orientation"] {
 }
 
 function getCategory(path: string): Exclude<GalleryCategory, "All"> {
-  const category = path.split("/")[0] as Exclude<GalleryCategory, "All">;
-  return category;
+  const parts = path.split("/");
+  const first = parts[0];
+  if (first === "Culture" && parts.length > 1) {
+    const sub = parts[1];
+    if (sub === "Album Covers" || sub === "Music") {
+      return "Music";
+    } else if (sub === "Brand Ads") {
+      return "Brand Ads";
+    } else if (sub === "Cinema" || sub === "Movie Posters") {
+      return "Cinema";
+    } else if (sub === "Collage") {
+      return "Collages";
+    } else if (sub === "Famous People") {
+      return "Cultural Icons";
+    } else if (sub === "Food") {
+      return "Culinary";
+    } else if (sub === "Iconic Things") {
+      return "Iconic Symbols";
+    } else if (sub === "Just America") {
+      return "American Life";
+    } else if (sub === "Magazines") {
+      return "Magazines";
+    } else if (sub === "School") {
+      return "Education";
+    } else if (sub === "Sports") {
+      return "Sports";
+    } else if (sub === "Eras") {
+      return "History";
+    }
+  }
+  if (first === "Leadership") {
+    return "American Life";
+  }
+  return first as Exclude<GalleryCategory, "All">;
 }
 
-function getSubcategory(path: string) {
+function getSubcategory(path: string): string | undefined {
   const parts = path.split("/");
+  const first = parts[0];
+  if (first === "Culture") {
+    if (parts.length > 3) {
+      return parts[2];
+    }
+    const sub = parts[1];
+    if (sub === "Album Covers") {
+      return "Album Covers";
+    }
+    if (sub === "Movie Posters") {
+      return "Posters";
+    }
+    return undefined;
+  }
   return parts.length > 2 ? parts[1] : undefined;
 }
 
