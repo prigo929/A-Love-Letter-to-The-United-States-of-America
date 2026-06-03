@@ -38,7 +38,10 @@ import type {
   CultureCulinaryPillar,
   CultureOriginationItem,
   CultureEditorialImperialismData,
+  CultureDigitalPipesData,
 } from "@/lib/data/culture-data";
+
+
 
 
 // ─── Culture Palette Injection ───────────────────────────────────────────────
@@ -2552,6 +2555,223 @@ export function CultureEditorialImperialism({ data, isRo = false }: CultureEdito
     </section>
   );
 }
+
+// ─── §3.8 — Digital America: Pipes of Global Culture ─────────────────────────
+
+function PipeIcon({ iconKey }: { iconKey: string }) {
+  switch (iconKey) {
+    case "search":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.604 10.604Z" />
+        </svg>
+      );
+    case "social":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a3 3 0 0 0 3-3V12a3 3 0 0 0-3-3h-.721m-4.5 9.72a3 3 0 0 0-3-3v-6a3 3 0 0 0 3-3m0 0V4.5a3 3 0 0 1 3-3h.721M12 22.5c.07 0 .14-.002.21-.006A9.973 9.973 0 0 0 18 18.72m-6 3.78a9.973 9.973 0 0 1-5.79-3.78m0 0a3 3 0 0 1-3-3V12a3 3 0 0 1 3-3h.721m0 0a9.972 9.972 0 0 1 5.069-5.212m0 0a9.972 9.972 0 0 1 5.069 5.212M12 1.5c.07 0 .14.002.21.006A9.973 9.973 0 0 1 18 5.28m-6-3.774a9.973 9.973 0 0 0-5.79 3.774" />
+        </svg>
+      );
+    case "streaming":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+        </svg>
+      );
+    case "podcast":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" />
+        </svg>
+      );
+    case "smartphone":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+        </svg>
+      );
+    case "ai":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 21l-.813-5.096L3 15l5.096-.813L9 9l.813 5.187L15 15l-5.187.904ZM18 9.096 17.25 13l-.75-3.904L13 8.25l3.5-.75L17.25 4l.75 3.5 3.904.75-3.904.846Zm-12-6L5.5 6l-.5-3-3-.5L5 2l.5-3 .5 3 3 .5-3 .5Z" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
+function parseTextWithLinks(text: string) {
+  const parts = text.split(/(\[.*?\]\(.*?\))/g);
+  return parts.map((part, idx) => {
+    const match = part.match(/\[(.*?)\]\((.*?)\)/);
+    if (match) {
+      const linkText = match[1];
+      const linkHref = match[2];
+      return (
+        <Link 
+          key={idx} 
+          href={linkHref} 
+          className="text-glory-gold hover:text-glory-gold/80 font-semibold underline underline-offset-4 decoration-glory-gold/30 hover:decoration-glory-gold transition-all duration-300"
+        >
+          {linkText}
+        </Link>
+      );
+    }
+    return part;
+  });
+}
+
+export function CultureDigitalPipes({ data, isRo = false }: { data: CultureDigitalPipesData; isRo?: boolean }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  return (
+    <section
+      ref={containerRef}
+      id="culture-digital-pipes"
+      className="relative culture-bg py-28 md:py-36 overflow-hidden border-b border-white/5"
+    >
+      {/* Background grid canvas with slight digital hue tint */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-[0.15] pointer-events-none" />
+      
+      {/* Subtle radial glow background */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at 70% 30%, rgba(212,175,55,0.02) 0%, transparent 60%)",
+        }}
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* Left Column: Garamond Quote Callout */}
+          <motion.div
+            className="lg:col-span-4 lg:sticky lg:top-28"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <motion.div
+              whileHover="hover"
+              className="relative p-8 sm:p-10 rounded-2xl bg-white/[0.01] border border-white/[0.05] hover:border-glory-gold/30 transition-colors duration-500 overflow-hidden group cursor-default"
+            >
+              {/* Gold radial shine on hover */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" 
+                style={{
+                  background: "radial-gradient(circle at center, rgba(212,175,55,0.06) 0%, transparent 70%)"
+                }}
+              />
+
+              <div className="absolute top-0 left-0 w-0 h-[2px] bg-gradient-to-r from-transparent via-glory-gold to-transparent group-hover:w-full transition-all duration-700 ease-out" />
+              
+              <span className="font-editorial text-glory-gold/10 text-[90px] leading-none absolute -top-4 -left-2 select-none pointer-events-none">
+                &ldquo;
+              </span>
+
+              <motion.p
+                variants={{
+                  hover: { color: "#FFD700", textShadow: "0 0 15px rgba(255,215,0,0.12)" }
+                }}
+                transition={{ duration: 0.4 }}
+                className="font-editorial italic text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#F5EDD8] leading-snug relative z-10"
+              >
+                {data.statement}
+              </motion.p>
+
+              <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between relative z-10">
+                <span className="culture-text-label text-[9px] text-[#F5EDD8]/45 tracking-[0.2em] uppercase font-bold">
+                  {isRo ? "Noul Peisaj" : "The New Landscape"}
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-glory-gold/30 group-hover:bg-glory-gold transition-colors duration-500" />
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column: Title, Body, and Pipes Grid */}
+          <div className="lg:col-span-8 flex flex-col gap-12">
+            
+            {/* Header Block */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <span className="culture-text-label text-glory-gold block mb-4 tracking-[0.3em] font-bold">
+                {data.eyebrow}
+              </span>
+              <h2 className="font-editorial text-4xl sm:text-5xl lg:text-5xl xl:text-6xl text-white font-bold leading-tight mb-6">
+                {data.headline}
+              </h2>
+              <div className="w-16 h-0.5 bg-glory-gold/40 mb-6" />
+              <p className="font-body text-[#F5EDD8]/70 text-sm sm:text-base leading-relaxed font-light">
+                {data.body}
+              </p>
+            </motion.div>
+
+            {/* The 6 Pipes Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {data.pipes.map((pipe, idx) => (
+                <motion.div
+                  key={pipe.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.2 + idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  className="culture-glass rounded-xl p-6 border border-white/[0.04] hover:border-glory-gold/30 transition-all duration-300 group/pipe cursor-default flex flex-col gap-3 relative overflow-hidden"
+                >
+                  <div className="absolute top-0 left-0 w-[2px] h-0 bg-glory-gold group-hover/pipe:h-full transition-all duration-500 ease-out" />
+                  
+                  <div className="text-glory-gold/70 group-hover/pipe:text-glory-gold group-hover/pipe:scale-105 transition-all duration-300 w-fit">
+                    <PipeIcon iconKey={pipe.iconKey} />
+                  </div>
+                  
+                  <h3 className="font-editorial italic text-lg sm:text-xl text-[#F5EDD8] group-hover/pipe:text-white transition-colors duration-300">
+                    {pipe.title}
+                  </h3>
+                  
+                  <p className="font-body text-xs sm:text-[13px] text-[#F5EDD8]/50 group-hover/pipe:text-[#F5EDD8]/75 transition-colors duration-300 leading-relaxed font-light">
+                    {pipe.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Bridge Callout Link Box */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="relative p-6 sm:p-8 rounded-xl bg-gradient-to-r from-white/[0.01] to-white/[0.03] border border-white/[0.05] hover:border-glory-gold/20 transition-all duration-500 flex flex-col sm:flex-row gap-4 items-center justify-between group/bridge cursor-default overflow-hidden mt-4"
+            >
+              {/* Subtle tech grid background behind bridge card */}
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:14px_24px] opacity-30 pointer-events-none" />
+
+              <div className="flex flex-col gap-1 relative z-10 text-center sm:text-left">
+                <span className="culture-text-label text-[9px] text-glory-gold tracking-[0.25em]">
+                  {isRo ? "CONEXIUNI INTER-DOMENII" : "INTER-DOMAIN LINKS"}
+                </span>
+                <p className="font-body text-xs sm:text-[13px] text-[#F5EDD8]/65 leading-relaxed font-light max-w-xl">
+                  {parseTextWithLinks(data.bridgeText)}
+                </p>
+              </div>
+
+              <div className="flex-shrink-0 relative z-10 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-[#F5EDD8]/60 group-hover/bridge:border-glory-gold/40 group-hover/bridge:text-glory-gold transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-4 h-4 transform group-hover/bridge:translate-x-1 transition-transform">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </div>
+            </motion.div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 
 

@@ -913,4 +913,106 @@ export function getCultureEditorialImperialism(locale: Locale): CultureEditorial
   return locale === "ro" ? EDITORIAL_IMPERIALISM_RO : EDITORIAL_IMPERIALISM_EN;
 }
 
+// ─── Digital America data ────────────────────────────────────────────────────
+
+export interface CultureDigitalPipeItem {
+  title: string;
+  description: string;
+  iconKey: string;
+}
+
+export interface CultureDigitalPipesData {
+  eyebrow: string;
+  headline: string;
+  statement: string;
+  body: string;
+  bridgeText: string;
+  pipes: CultureDigitalPipeItem[];
+}
+
+const DIGITAL_PIPES_EN: CultureDigitalPipesData = {
+  eyebrow: "THE 21ST CENTURY INFRASTRUCTURE · DIGITAL AMERICA",
+  headline: "BUILDING THE PIPES OF GLOBAL CULTURE",
+  statement: "The medium is the American message.",
+  body: "In the 20th century, American cultural power was defined by the content it exported: Hollywood films, Motown records, Levi's jeans, and Coca-Cola bottles. But in the 21st century, America did something far more profound: it built the digital pipes upon which the entire world's culture now runs. Every dominant search engine that indexes human knowledge, every major social platform where global conversations happen, every frontier AI model, the streaming paradigm, the podcast format, and the smartphone UX itself—these are not just technological feats; they are the new infrastructure of global human expression. The world doesn't just watch American movies anymore; it lives inside the American digital landscape.",
+  bridgeText: "Explore the venture capital engines and technological breakthroughs that built this digital foundation in [Economy & Growth](/economy) and [Tech & Innovation](/innovation).",
+  pipes: [
+    {
+      title: "The Search Engine",
+      description: "Organizing and ranking the entirety of human knowledge under a single input bar.",
+      iconKey: "search",
+    },
+    {
+      title: "Social Platforms",
+      description: "Creating the global digital public squares where conversations, trends, and revolutions begin.",
+      iconKey: "social",
+    },
+    {
+      title: "The Streaming Paradigm",
+      description: "Replacing physical media with instantly accessible, personalized global broadcasting feeds.",
+      iconKey: "streaming",
+    },
+    {
+      title: "The Podcast Format",
+      description: "Decentralizing talk radio into long-form, intimate global conversations on demand.",
+      iconKey: "podcast",
+    },
+    {
+      title: "Smartphone UX",
+      description: "Standardizing the multi-touch gestures and app ecosystems that navigate human reality.",
+      iconKey: "smartphone",
+    },
+    {
+      title: "Frontier AI",
+      description: "Inventing the cognitive engines that synthesize information, code, and creative output in real time.",
+      iconKey: "ai",
+    },
+  ],
+};
+
+const DIGITAL_PIPES_RO: CultureDigitalPipesData = {
+  eyebrow: "INFRASTRUCTURA SECOLULUI XXI · AMERICA DIGITALĂ",
+  headline: "CONSTRUIREA CANALELOR CULTURII GLOBALE",
+  statement: "Mediul este mesajul american.",
+  body: "În secolul XX, puterea culturală a Americii a fost definită de conținutul pe care l-a exportat: filme de la Hollywood, discuri Motown, blugi Levi's și sticle de Coca-Cola. Însă în secolul XXI, America a realizat ceva mult mai profund: a construit canalele digitale pe care rulează acum întreaga cultură a lumii. Fiecare motor de căutare dominant care indexează cunoașterea umană, fiecare platformă socială majoră unde au loc conversațiile globale, fiecare model AI de frontieră, paradigma de streaming, formatul de podcast și interfața smartphone-ului în sine—acestea nu sunt doar realizări tehnologice; ele reprezintă noua infrastructură a exprimării umane globale. Lumea nu se mai uită doar la filme americane, ci trăiește în interiorul peisajului digital american.",
+  bridgeText: "Explorați motoarele capitalului de risc și inovațiile tehnologice care au clădit această fundație digitală în [Economie și Creștere](/economy) și [Tehnologie și Inovare](/innovation).",
+  pipes: [
+    {
+      title: "Motorul de Căutare",
+      description: "Organizarea și ierarhizarea întregii cunoașteri umane sub o singură bară de căutare.",
+      iconKey: "search",
+    },
+    {
+      title: "Platformele Sociale",
+      description: "Crearea piețelor publice digitale globale unde încep conversații, tendințe și revoluții.",
+      iconKey: "social",
+    },
+    {
+      title: "Paradigma de Streaming",
+      description: "Înlocuirea suporturilor fizice cu fluxuri de difuzare globale personalizate și accesibile instant.",
+      iconKey: "streaming",
+    },
+    {
+      title: "Formatul de Podcast",
+      description: "Decentralizarea emisiunilor radio în conversații globale de lungă durată, intime și la cerere.",
+      iconKey: "podcast",
+    },
+    {
+      title: "Interfața Smartphone",
+      description: "Standardizarea gesturilor multi-touch și a ecosistemelor de aplicații prin care navigăm realitatea.",
+      iconKey: "smartphone",
+    },
+    {
+      title: "Modelele AI de Frontieră",
+      description: "Inventarea motoarelor cognitive care sintetizează informații, cod și creație în timp real.",
+      iconKey: "ai",
+    },
+  ],
+};
+
+export function getCultureDigitalPipes(locale: Locale): CultureDigitalPipesData {
+  return locale === "ro" ? DIGITAL_PIPES_RO : DIGITAL_PIPES_EN;
+}
+
+
 

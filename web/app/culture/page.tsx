@@ -33,7 +33,9 @@ import {
   getCultureCulinaryPillars,
   getCultureOriginations,
   getCultureEditorialImperialism,
+  getCultureDigitalPipes,
 } from "@/lib/data/culture-data";
+
 
 
 import {
@@ -57,7 +59,9 @@ import {
   CultureCulinarySection,
   CultureOriginationStrip,
   CultureEditorialImperialism,
+  CultureDigitalPipes,
 } from "@/components/culture/CulturePageComponents";
+
 
 
 import { NewsletterSection } from "@/components/sections/NewsletterSection";
@@ -95,6 +99,8 @@ export default async function CulturePage() {
   const culinaryPillars = getCultureCulinaryPillars(locale);
   const originations = getCultureOriginations(locale);
   const editorialImperialism = getCultureEditorialImperialism(locale);
+  const digitalPipes = getCultureDigitalPipes(locale);
+
 
 
   // Localized copy
@@ -183,8 +189,12 @@ export default async function CulturePage() {
       {/* Living Media Wall Grid (40 Shifting Cultural Artifacts) */}
       <CultureLivingMediaWall isRo={isRo} />
 
+      {/* Digital America: Pipes of Global Culture */}
+      <CultureDigitalPipes data={digitalPipes} isRo={isRo} />
+
       {/* §17 — Music Origins Section */}
       <CultureMusicSection genres={musicGenres} sectionTitle={musicTitle} isRo={isRo} />
+
 
       {/* §7 — Radar Chart Teaser */}
       <CultureRadarTeaser
