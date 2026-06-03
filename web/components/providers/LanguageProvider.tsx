@@ -15,6 +15,7 @@ import {
   startTransition,
 } from "react";
 import { useRouter } from "next/navigation";
+import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
 import {
   DEFAULT_LOCALE,
   isLocale,
@@ -64,6 +65,9 @@ export function LanguageProvider({
   };
 
   useEffect(() => {
+    // Polyfill flag emojis on Windows/Android if not natively supported
+    polyfillCountryFlagEmojis();
+
     try {
       const storedLocale = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
       if (storedLocale && isLocale(storedLocale)) {
