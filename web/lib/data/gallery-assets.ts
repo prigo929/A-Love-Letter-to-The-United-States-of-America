@@ -332,6 +332,81 @@ import asset328 from "@/IMAGES/Culture/Brand Ads/1987 Uniden cordless phone adve
 import asset329 from "@/IMAGES/Culture/Brand Ads/Coca-Cola (1989) You Can't beat the feeling.jpg";
 import asset330 from "@/IMAGES/Culture/Brand Ads/Coca-Cola is it, 1988.jpg";
 import asset331 from "@/IMAGES/Culture/Brand Ads/Tiffany & Co_ Archival Ad 1967.jpg";
+import asset332 from "@/IMAGES/Culture/Brand Ads/1968 Chiquita banana advertisement.jpg";
+import asset333 from "@/IMAGES/Culture/Brand Ads/1968 Kentucky Fried Chicken advertisement.jpg";
+import asset334 from "@/IMAGES/Culture/Brand Ads/1979 Minute Maid Ad.jpg";
+import asset335 from "@/IMAGES/Culture/Brand Ads/1987 advertisement for Ford.jpg";
+import asset336 from "@/IMAGES/Culture/Brand Ads/1988 The Wall Street Journal advertisement.jpg";
+import asset337 from "@/IMAGES/Culture/Brand Ads/Asteroids-arcade-video-game.jpg";
+import asset338 from "@/IMAGES/Culture/Brand Ads/Converse-basketball-shoes-from-1968.jpg";
+import asset339 from "@/IMAGES/Culture/Brand Ads/Converse-shoes-by-Sears-1977.jpg";
+import asset340 from "@/IMAGES/Culture/Brand Ads/Pac-Man-arcade-video-games-from-1980.jpg";
+import asset341 from "@/IMAGES/Culture/Brand Ads/Retro-70s-corduroy-western-jeans-with-bell-bottoms-1973.jpg";
+import asset342 from "@/IMAGES/Culture/Brand Ads/Sprite-with-vodka-1966.jpg";
+import asset343 from "@/IMAGES/Culture/Brand Ads/Vintage-Lemon-Go-Lightly-for-blonde-hair-1970s.jpg";
+import asset344 from "@/IMAGES/Culture/Brand Ads/Vintage-Magic-Chef-gas-range-from-1950.jpg";
+import asset345 from "@/IMAGES/Culture/Collage/America collage Happy 4th🇺🇸 1.jpg";
+import asset346 from "@/IMAGES/Culture/Collage/America collage Happy 4th🇺🇸 2.jpg";
+import asset347 from "@/IMAGES/Culture/Collage/America collage Happy 4th🇺🇸 4.jpg";
+import asset348 from "@/IMAGES/Culture/Collage/America collage Happy 4th🇺🇸 5.jpg";
+import asset349 from "@/IMAGES/Culture/Collage/America collage Happy 4th🇺🇸.jpg";
+import asset350 from "@/IMAGES/Culture/Collage/New York collage 🇺🇸 3.jpg";
+import asset351 from "@/IMAGES/Culture/Famous People/01_walt_disney.jpg";
+import asset352 from "@/IMAGES/Culture/Famous People/02_louis_armstrong.jpg";
+import asset353 from "@/IMAGES/Culture/Famous People/03_elvis_presley.jpg";
+import asset354 from "@/IMAGES/Culture/Famous People/04_marilyn_monroe.jpg";
+import asset355 from "@/IMAGES/Culture/Famous People/05_mark_twain.jpg";
+import asset356 from "@/IMAGES/Culture/Famous People/06_muhammad_ali.jpg";
+import asset357 from "@/IMAGES/Culture/Famous People/07_michael_jackson.jpg";
+import asset358 from "@/IMAGES/Culture/Famous People/08_michael_jordan.jpg";
+import asset359 from "@/IMAGES/Culture/Famous People/09_martin_luther_king_jr.jpg";
+import asset360 from "@/IMAGES/Culture/Famous People/10_arnold_schwarzenegger.jpg";
+import asset361 from "@/IMAGES/Culture/Food/BLT Sandwich.jpg";
+import asset362 from "@/IMAGES/Culture/Food/Boneless-Buffalo-Wings.jpg";
+import asset363 from "@/IMAGES/Culture/Food/Brownies.jpg";
+import asset364 from "@/IMAGES/Culture/Food/Chocolate Chip Cookies.jpg";
+import asset365 from "@/IMAGES/Culture/Food/Classic-Fluffy-Pancakes-3.jpg";
+import asset366 from "@/IMAGES/Culture/Food/Glazed Doughnuts 2.jpg";
+import asset367 from "@/IMAGES/Culture/Food/Glazed Doughnuts.jpg";
+import asset368 from "@/IMAGES/Culture/Food/Grilled Hot Dogs.jpg";
+import asset369 from "@/IMAGES/Culture/Food/Key-Lime-Pie.jpg";
+import asset370 from "@/IMAGES/Culture/Food/Maine-Lobster-Rolls.jpg";
+import asset371 from "@/IMAGES/Culture/Food/McDonald's Menu with burger and fries and soda.jpeg";
+import asset372 from "@/IMAGES/Culture/Food/Onion-Rings.jpg";
+import asset373 from "@/IMAGES/Culture/Food/Peanut Butter And Jelly Sandwich.png";
+import asset374 from "@/IMAGES/Culture/Food/Philly-Cheesesteak.jpg";
+import asset375 from "@/IMAGES/Culture/Food/Pumpkin-Pie 2.jpg";
+import asset376 from "@/IMAGES/Culture/Food/S'mores.jpg";
+import asset377 from "@/IMAGES/Culture/Food/Sausage-Gravy-and-Biscuits.jpg";
+import asset378 from "@/IMAGES/Culture/Food/Southern Fried Chicken Wings.jpg";
+import asset379 from "@/IMAGES/Culture/Food/Texas Barbecue Brisket.jpeg";
+import asset380 from "@/IMAGES/Culture/Food/mac-cheese-stretching-fork.jpg";
+import asset381 from "@/IMAGES/Culture/Food/pumpkin-pie.jpg";
+import asset382 from "@/IMAGES/Culture/Iconic Things/1920s Speakeasy Design.jpg";
+import asset383 from "@/IMAGES/Culture/Iconic Things/American Diner inside.jpg";
+import asset384 from "@/IMAGES/Culture/Iconic Things/Blue Jeans and White Sneakers.jpg";
+import asset385 from "@/IMAGES/Culture/Iconic Things/Coca Cola Glass full.jpeg";
+import asset386 from "@/IMAGES/Constitution/bill-of-rights-page-1.jpg";
+import asset387 from "@/IMAGES/Constitution/constitution-page-1.jpg";
+import asset388 from "@/IMAGES/Constitution/marble-texture.png";
+import asset389 from "@/IMAGES/Constitution/marble-texture.webp";
+import asset390 from "@/IMAGES/Founders/alexander-hamilton.jpg";
+import asset391 from "@/IMAGES/Founders/benjamin-franklin.jpg";
+import asset392 from "@/IMAGES/Founders/george-washington.jpg";
+import asset393 from "@/IMAGES/Founders/james-madison.jpg";
+import asset394 from "@/IMAGES/Founders/john-adams.jpg";
+import asset395 from "@/IMAGES/Founders/john-jay.jpg";
+import asset396 from "@/IMAGES/Founders/thomas-jefferson.jpg";
+import asset397 from "@/IMAGES/Military/Space Force/gps_satellite_orbit.png";
+import asset398 from "@/IMAGES/Military/Space Force/joint_components_map.png";
+import asset399 from "@/IMAGES/Military/Space Force/missile_warning_sat.png";
+import asset400 from "@/IMAGES/Military/Space Force/national_security_launch.png";
+import asset401 from "@/IMAGES/Military/Space Force/protected_satcom_orbit.png";
+import asset402 from "@/IMAGES/Military/Space Force/space_domain_radar.png";
+import asset403 from "@/IMAGES/Military/Space Force/spoc_command_center.png";
+import asset404 from "@/IMAGES/Military/Space Force/ssc_clean_room.png";
+import asset405 from "@/IMAGES/Military/Space Force/starcom_simulator.png";
+import asset406 from "@/IMAGES/US Buildings/us-supreme-court-building.jpg";
 
 export type GalleryAssetRecord = {
   path: string;
@@ -671,4 +746,79 @@ export const GALLERY_ASSETS = [
   { path: "Culture/Brand Ads/Coca-Cola (1989) You Can't beat the feeling.jpg", src: asset329 },
   { path: "Culture/Brand Ads/Coca-Cola is it, 1988.jpg", src: asset330 },
   { path: "Culture/Brand Ads/Tiffany & Co_ Archival Ad 1967.jpg", src: asset331 },
+  { path: "Culture/Brand Ads/1968 Chiquita banana advertisement.jpg", src: asset332 },
+  { path: "Culture/Brand Ads/1968 Kentucky Fried Chicken advertisement.jpg", src: asset333 },
+  { path: "Culture/Brand Ads/1979 Minute Maid Ad.jpg", src: asset334 },
+  { path: "Culture/Brand Ads/1987 advertisement for Ford.jpg", src: asset335 },
+  { path: "Culture/Brand Ads/1988 The Wall Street Journal advertisement.jpg", src: asset336 },
+  { path: "Culture/Brand Ads/Asteroids-arcade-video-game.jpg", src: asset337 },
+  { path: "Culture/Brand Ads/Converse-basketball-shoes-from-1968.jpg", src: asset338 },
+  { path: "Culture/Brand Ads/Converse-shoes-by-Sears-1977.jpg", src: asset339 },
+  { path: "Culture/Brand Ads/Pac-Man-arcade-video-games-from-1980.jpg", src: asset340 },
+  { path: "Culture/Brand Ads/Retro-70s-corduroy-western-jeans-with-bell-bottoms-1973.jpg", src: asset341 },
+  { path: "Culture/Brand Ads/Sprite-with-vodka-1966.jpg", src: asset342 },
+  { path: "Culture/Brand Ads/Vintage-Lemon-Go-Lightly-for-blonde-hair-1970s.jpg", src: asset343 },
+  { path: "Culture/Brand Ads/Vintage-Magic-Chef-gas-range-from-1950.jpg", src: asset344 },
+  { path: "Culture/Collage/America collage Happy 4th🇺🇸 1.jpg", src: asset345 },
+  { path: "Culture/Collage/America collage Happy 4th🇺🇸 2.jpg", src: asset346 },
+  { path: "Culture/Collage/America collage Happy 4th🇺🇸 4.jpg", src: asset347 },
+  { path: "Culture/Collage/America collage Happy 4th🇺🇸 5.jpg", src: asset348 },
+  { path: "Culture/Collage/America collage Happy 4th🇺🇸.jpg", src: asset349 },
+  { path: "Culture/Collage/New York collage 🇺🇸 3.jpg", src: asset350 },
+  { path: "Culture/Famous People/01_walt_disney.jpg", src: asset351 },
+  { path: "Culture/Famous People/02_louis_armstrong.jpg", src: asset352 },
+  { path: "Culture/Famous People/03_elvis_presley.jpg", src: asset353 },
+  { path: "Culture/Famous People/04_marilyn_monroe.jpg", src: asset354 },
+  { path: "Culture/Famous People/05_mark_twain.jpg", src: asset355 },
+  { path: "Culture/Famous People/06_muhammad_ali.jpg", src: asset356 },
+  { path: "Culture/Famous People/07_michael_jackson.jpg", src: asset357 },
+  { path: "Culture/Famous People/08_michael_jordan.jpg", src: asset358 },
+  { path: "Culture/Famous People/09_martin_luther_king_jr.jpg", src: asset359 },
+  { path: "Culture/Famous People/10_arnold_schwarzenegger.jpg", src: asset360 },
+  { path: "Culture/Food/BLT Sandwich.jpg", src: asset361 },
+  { path: "Culture/Food/Boneless-Buffalo-Wings.jpg", src: asset362 },
+  { path: "Culture/Food/Brownies.jpg", src: asset363 },
+  { path: "Culture/Food/Chocolate Chip Cookies.jpg", src: asset364 },
+  { path: "Culture/Food/Classic-Fluffy-Pancakes-3.jpg", src: asset365 },
+  { path: "Culture/Food/Glazed Doughnuts 2.jpg", src: asset366 },
+  { path: "Culture/Food/Glazed Doughnuts.jpg", src: asset367 },
+  { path: "Culture/Food/Grilled Hot Dogs.jpg", src: asset368 },
+  { path: "Culture/Food/Key-Lime-Pie.jpg", src: asset369 },
+  { path: "Culture/Food/Maine-Lobster-Rolls.jpg", src: asset370 },
+  { path: "Culture/Food/McDonald's Menu with burger and fries and soda.jpeg", src: asset371 },
+  { path: "Culture/Food/Onion-Rings.jpg", src: asset372 },
+  { path: "Culture/Food/Peanut Butter And Jelly Sandwich.png", src: asset373 },
+  { path: "Culture/Food/Philly-Cheesesteak.jpg", src: asset374 },
+  { path: "Culture/Food/Pumpkin-Pie 2.jpg", src: asset375 },
+  { path: "Culture/Food/S'mores.jpg", src: asset376 },
+  { path: "Culture/Food/Sausage-Gravy-and-Biscuits.jpg", src: asset377 },
+  { path: "Culture/Food/Southern Fried Chicken Wings.jpg", src: asset378 },
+  { path: "Culture/Food/Texas Barbecue Brisket.jpeg", src: asset379 },
+  { path: "Culture/Food/mac-cheese-stretching-fork.jpg", src: asset380 },
+  { path: "Culture/Food/pumpkin-pie.jpg", src: asset381 },
+  { path: "Culture/Iconic Things/1920s Speakeasy Design.jpg", src: asset382 },
+  { path: "Culture/Iconic Things/American Diner inside.jpg", src: asset383 },
+  { path: "Culture/Iconic Things/Blue Jeans and White Sneakers.jpg", src: asset384 },
+  { path: "Culture/Iconic Things/Coca Cola Glass full.jpeg", src: asset385 },
+  { path: "Constitution/bill-of-rights-page-1.jpg", src: asset386 },
+  { path: "Constitution/constitution-page-1.jpg", src: asset387 },
+  { path: "Constitution/marble-texture.png", src: asset388 },
+  { path: "Constitution/marble-texture.webp", src: asset389 },
+  { path: "Founders/alexander-hamilton.jpg", src: asset390 },
+  { path: "Founders/benjamin-franklin.jpg", src: asset391 },
+  { path: "Founders/george-washington.jpg", src: asset392 },
+  { path: "Founders/james-madison.jpg", src: asset393 },
+  { path: "Founders/john-adams.jpg", src: asset394 },
+  { path: "Founders/john-jay.jpg", src: asset395 },
+  { path: "Founders/thomas-jefferson.jpg", src: asset396 },
+  { path: "Military/Space Force/gps_satellite_orbit.png", src: asset397 },
+  { path: "Military/Space Force/joint_components_map.png", src: asset398 },
+  { path: "Military/Space Force/missile_warning_sat.png", src: asset399 },
+  { path: "Military/Space Force/national_security_launch.png", src: asset400 },
+  { path: "Military/Space Force/protected_satcom_orbit.png", src: asset401 },
+  { path: "Military/Space Force/space_domain_radar.png", src: asset402 },
+  { path: "Military/Space Force/spoc_command_center.png", src: asset403 },
+  { path: "Military/Space Force/ssc_clean_room.png", src: asset404 },
+  { path: "Military/Space Force/starcom_simulator.png", src: asset405 },
+  { path: "US Buildings/us-supreme-court-building.jpg", src: asset406 },
 ] as const satisfies readonly GalleryAssetRecord[];

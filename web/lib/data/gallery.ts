@@ -8,6 +8,7 @@ export const GALLERY_CATEGORIES = [
   "Culture",
   "Economy",
   "Education",
+  "Founders",
   "Housing",
   "Infrastructure",
   "Landscapes",
