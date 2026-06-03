@@ -559,17 +559,50 @@ export function VideoCultureHero({
 
 interface CultureNumbersStripProps {
   stats: CultureStat[];
+  isRo?: boolean;
 }
 
-export function CultureNumbersStrip({ stats }: CultureNumbersStripProps) {
+export function CultureNumbersStrip({ stats, isRo = false }: CultureNumbersStripProps) {
   return (
-    <section id="culture-stats" className="culture-bg">
-      <div className="mx-auto max-w-[1440px]">
-        <div className="grid grid-cols-2 md:grid-cols-5 border-b border-white/5">
+    <section id="culture-stats" className="culture-bg py-16 md:py-24 border-b border-white/5 relative overflow-hidden">
+      {/* Subtle radial glow background */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at center, rgba(212,175,55,0.015) 0%, transparent 70%)",
+        }}
+      />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center mb-16 flex flex-col items-center">
+          <motion.p
+            className="culture-text-label text-glory-gold"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 0.6, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {isRo ? "METRICI SOFT POWER" : "SOFT POWER METRICS"}
+          </motion.p>
+          <motion.h2
+            className="font-editorial text-3xl sm:text-4xl text-white font-bold tracking-wide mt-4 text-center max-w-2xl leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            {isRo ? "Amprenta Globală a Modelului American" : "The Planetary Footprint of American Export"}
+          </motion.h2>
+          <div className="w-20 h-px bg-gradient-to-r from-transparent via-glory-gold/40 to-transparent mt-6" />
+        </div>
+
+        {/* Floating cards grid */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-6xl mx-auto">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
-              className="relative border-r border-white/5 last:border-r-0 p-8 md:p-12 flex flex-col group"
+              className="relative overflow-hidden rounded-2xl bg-white/[0.01] border border-white/5 hover:border-glory-gold/30 hover:bg-white/[0.02] p-6 sm:p-8 flex flex-col justify-between group transition-all duration-500 shadow-xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -579,15 +612,23 @@ export function CultureNumbersStrip({ stats }: CultureNumbersStripProps) {
                 ease: [0.25, 0.1, 0.25, 1] as const,
               }}
             >
-              {/* Hover gold accent top line */}
-              <div className="absolute top-0 left-0 w-0 h-px bg-glory-gold/60 group-hover:w-full transition-all duration-700" />
-              <p className="text-[clamp(28px,4vw,52px)] font-extralight tracking-tighter text-white mb-4 leading-none tabular-nums">
-                <AnimatedNumber value={stat.value} />
-              </p>
-              <div className="h-px w-8 bg-white/10 mb-4" />
-              <p className="culture-text-label text-[10px] leading-relaxed">
-                {stat.label}
-              </p>
+              {/* Dynamic top gold border transition */}
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-glory-gold/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+              
+              {/* Radial glow background on hover */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.03)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+              <div className="flex flex-col h-full justify-between relative z-10">
+                <div>
+                  <p className="text-[clamp(32px,3vw,48px)] font-editorial italic font-bold text-white group-hover:text-glory-gold transition-colors duration-500 mb-4 leading-none tabular-nums">
+                    <AnimatedNumber value={stat.value} />
+                  </p>
+                  <div className="h-[2px] w-8 bg-glory-gold/30 group-hover:w-16 transition-all duration-500 mb-4" />
+                </div>
+                <p className="font-body text-xs sm:text-[13px] text-[#F5EDD8]/70 group-hover:text-[#F5EDD8] transition-colors duration-500 leading-relaxed font-light mt-auto">
+                  {stat.label}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -2448,62 +2489,103 @@ interface CultureOriginationStripProps {
 
 export function CultureOriginationStrip({ originations, isRo }: CultureOriginationStripProps) {
   return (
-    <section id="culture-origination" className="culture-bg border-b border-white/5 relative overflow-hidden">
-      {/* Subtle grid pattern background */}
-      <div className="absolute inset-0 culture-dot-canvas opacity-10 pointer-events-none" />
+    <section id="culture-origination" className="relative culture-bg py-28 md:py-36 overflow-hidden border-b border-white/5">
+      {/* Dot-grid background */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none" />
 
-      <div className="mx-auto max-w-[1440px] relative z-10">
-        {/* Eyebrow Label */}
-        <div className="px-8 pt-8 md:pt-10 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-glory-gold animate-pulse" />
-            <p className="culture-text-label text-[10px] tracking-[0.35em] text-glory-gold/90 font-bold uppercase">
-              {isRo ? "INVENTAREA FORMELOR CULTURALE" : "INVENTING THE CULTURAL FORMS"}
-            </p>
-          </div>
-          <span className="font-editorial italic text-xs text-[#F5EDD8]/30">
-            {isRo ? "Made in America, Sold to the World" : "Made in America, Sold to the World"}
-          </span>
+      {/* Gold radial background glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at center, rgba(212,175,55,0.015) 0%, transparent 75%)",
+        }}
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center mb-20 max-w-4xl mx-auto flex flex-col items-center">
+          <motion.p
+            className="culture-text-label text-glory-gold"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 0.6, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {isRo ? "INVENTAREA FORMELOR CULTURALE" : "INVENTING THE CULTURAL FORMS"}
+          </motion.p>
+          <motion.h2
+            className="font-editorial text-3xl sm:text-4xl lg:text-5xl text-white font-bold leading-tight mt-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            {isRo ? "Creat în America, Difuzat în Lume" : "Made in America, Sold to the World"}
+          </motion.h2>
+          <motion.p
+            className="font-body text-[#F5EDD8]/60 text-sm sm:text-base leading-relaxed font-light mt-6 max-w-3xl text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            {isRo 
+              ? "Spre deosebire de alte culturi care doar replică formate existente, America a servit ca motorul principal de creație al civilizației moderne, inventând tiparele de bază pe care rulează divertismentul, comerțul și tehnologia mondială."
+              : "Beyond distributing or commercializing culture, the United States acted as the foundational laboratory of modern civilization—creating the very formats, genres, and systems that set the global template."}
+          </motion.p>
+          <div className="w-24 h-px bg-gradient-to-r from-transparent via-glory-gold to-transparent mt-8" />
         </div>
 
-        {/* 8-Item Tight Grid Layout */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 divide-x divide-y sm:divide-y-0 divide-white/5 border-t border-white/5 mt-6">
-          {originations.map((orig, i) => (
-            <motion.div
-              key={orig.innovation}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{
-                duration: 0.5,
-                delay: i * 0.05,
-                ease: [0.25, 0.1, 0.25, 1] as const,
-              }}
-              className="relative p-6 md:p-8 flex flex-col justify-between group min-h-[170px] overflow-hidden cursor-default"
-            >
-              {/* Dynamic top gold border transition */}
-              <div className="absolute top-0 left-0 w-0 h-[2px] bg-glory-gold group-hover:w-full transition-all duration-500 ease-out" />
-              
-              {/* Radial glow background on hover */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.06)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        {/* 2x4 responsive grid of premium cards */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {originations.map((orig, i) => {
+            const indexStr = String(i + 1).padStart(2, "0");
 
-              {/* Decade label */}
-              <span className="font-editorial italic text-glory-gold/40 group-hover:text-glory-gold/80 transition-colors duration-300 text-sm leading-none mb-3">
-                {orig.decade}
-              </span>
+            return (
+              <motion.div
+                key={orig.innovation}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{
+                  duration: 0.6,
+                  delay: (i % 4) * 0.08,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="relative p-6 sm:p-8 flex flex-col justify-between group min-h-[200px] overflow-hidden rounded-2xl bg-white/[0.01] border border-white/5 hover:border-glory-gold/30 hover:bg-white/[0.02] shadow-xl hover:-translate-y-1 transition-all duration-500 cursor-default"
+              >
+                {/* Dynamic top gold border transition */}
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-glory-gold/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+                
+                {/* Radial glow background on hover */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.03)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-              <div className="flex flex-col mt-auto">
-                {/* Innovation Title */}
-                <h4 className="font-editorial text-lg sm:text-xl text-[#F5EDD8] group-hover:text-white transition-colors duration-300 mb-2 leading-tight">
-                  {orig.innovation}
-                </h4>
-                {/* Small Description */}
-                <p className="font-body text-[11px] text-[#F5EDD8]/45 group-hover:text-[#F5EDD8]/70 transition-colors duration-300 leading-relaxed font-medium">
-                  {orig.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+                {/* Big watermark number in background */}
+                <span className="font-editorial text-6xl font-bold text-glory-gold/[0.03] group-hover:text-glory-gold/[0.07] absolute right-4 bottom-3 transition-colors duration-500 pointer-events-none select-none z-0">
+                  {indexStr}
+                </span>
+
+                <div className="relative z-10 flex flex-col h-full justify-between">
+                  {/* Decade label */}
+                  <span className="font-editorial italic text-glory-gold/80 transition-colors duration-300 text-sm leading-none mb-3">
+                    {orig.decade}
+                  </span>
+
+                  <div className="flex flex-col mt-auto">
+                    {/* Innovation Title */}
+                    <h3 className="font-hero text-xl sm:text-2xl text-white group-hover:text-glory-gold transition-colors duration-300 mb-2 leading-tight">
+                      {orig.innovation}
+                    </h3>
+                    {/* Small Description */}
+                    <p className="font-editorial text-xs sm:text-[13px] text-[#F5EDD8]/60 group-hover:text-[#F5EDD8]/85 transition-colors duration-300 leading-relaxed font-light">
+                      {orig.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

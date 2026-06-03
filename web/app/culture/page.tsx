@@ -152,10 +152,7 @@ export default async function CulturePage() {
       />
 
       {/* §2 — Numbers Strip */}
-      <CultureNumbersStrip stats={stats} />
-
-      {/* §2.5 — Origination Strip */}
-      <CultureOriginationStrip originations={originations} isRo={isRo} />
+      <CultureNumbersStrip stats={stats} isRo={isRo} />
 
       {/* §3 — Thesis Block */}
       <CultureThesisBlock thesis={thesis} />
@@ -171,6 +168,9 @@ export default async function CulturePage() {
 
       {/* §5 — Editorial Bento Grid */}
       <CultureBentoGrid subpages={subpages} sectionTitle={gridTitle} />
+
+      {/* §2.5 — Origination Strip */}
+      <CultureOriginationStrip originations={originations} isRo={isRo} />
 
       {/* Transition: Dark to Cream */}
       <div className="h-12 w-full gradient-dark-to-cream" />
