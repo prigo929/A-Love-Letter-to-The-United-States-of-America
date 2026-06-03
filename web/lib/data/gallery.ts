@@ -10,7 +10,7 @@ export const GALLERY_CATEGORIES = [
   "Cities",
   "Collages",
   "Constitution",
-  "Culinary",
+  "Food",
   "Cultural Icons",
   "Economy",
   "Education",
@@ -182,7 +182,7 @@ function getCategory(path: string): Exclude<GalleryCategory, "All"> {
     } else if (sub === "Famous People") {
       return "Cultural Icons";
     } else if (sub === "Food") {
-      return "Culinary";
+      return "Food";
     } else if (sub === "Iconic Things") {
       return "Iconic Symbols";
     } else if (sub === "Just America") {
