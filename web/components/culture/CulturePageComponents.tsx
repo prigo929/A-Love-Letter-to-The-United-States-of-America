@@ -2269,7 +2269,7 @@ export function CultureMusicSection({ genres, sectionTitle, isRo }: CultureMusic
                     <h3 className="font-hero text-2xl lg:text-3xl text-white tracking-wide mb-3">
                       {g.genre}
                     </h3>
-                    <p className="font-editorial text-xs sm:text-[13px] text-[#F5EDD8]/70 leading-relaxed">
+                    <p className="font-editorial text-sm sm:text-base text-[#F5EDD8]/70 leading-relaxed">
                       {g.description}
                     </p>
                   </div>
@@ -2916,7 +2916,7 @@ export function CultureIconsSection({ data, isRo = false }: CultureIconsSectionP
                   <h3 className="font-editorial italic text-lg sm:text-xl text-white group-hover:text-glory-gold transition-colors duration-300 leading-tight">
                     {icon.name}
                   </h3>
-                  <p className="font-editorial text-[11px] sm:text-xs text-[#F5EDD8]/50 group-hover:text-[#F5EDD8]/75 transition-colors duration-300 leading-relaxed font-light line-clamp-3">
+                  <p className="font-editorial text-xs sm:text-sm text-[#F5EDD8]/60 group-hover:text-[#F5EDD8]/80 transition-colors duration-300 leading-relaxed font-light line-clamp-3">
                     {icon.description}
                   </p>
                 </div>
