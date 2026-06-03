@@ -58,7 +58,7 @@ export function WeThePeopleSignature() {
             hidden: { opacity: 0 },
             visible: { 
               opacity: 0.9,
-              transition: { duration: 0.6, delay: 3.2, ease: cinematicEase }
+              transition: { duration: 1.5, delay: 0.2, ease: cinematicEase }
             }
           }}
         />
