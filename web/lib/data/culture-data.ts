@@ -56,19 +56,19 @@ export interface CultureRadarPoint {
 // ─── Stats Strip (§2) ────────────────────────────────────────────────────────
 
 const CULTURE_STATS_EN: CultureStat[] = [
-  { value: "$900B+", label: "Annual Cultural Export Revenue" },
+  { value: "78.4%", label: "US Share of Global Box Office Revenue" },
+  { value: "190", label: "Netflix Countries Reached in 45 Languages" },
+  { value: "64%", label: "Billboard Global Top Hits by US Artists" },
+  { value: "87.5%", label: "Frontier AI Models Invented in the US" },
   { value: "1.9B", label: "Daily Coca-Cola Servings Globally" },
-  { value: "260M+", label: "Netflix Subscribers in 190 Countries" },
-  { value: "1.5B", label: "English Speakers Worldwide" },
-  { value: "8 of 10", label: "Most Valuable Sports Franchises" },
 ];
 
 const CULTURE_STATS_RO: CultureStat[] = [
-  { value: "$900Mld+", label: "Venituri Anuale din Export Cultural" },
+  { value: "78,4%", label: "Cota SUA în Box Office-ul Global" },
+  { value: "190", label: "Țări cu Acoperire Netflix în 45 de Limbi" },
+  { value: "64%", label: "Hituri Billboard Global de Artiști Americani" },
+  { value: "87,5%", label: "Modele AI de Frontieră Create în SUA" },
   { value: "1,9Mld", label: "Porții Zilnice Coca-Cola Global" },
-  { value: "260M+", label: "Abonați Netflix în 190 de Țări" },
-  { value: "1,5Mld", label: "Vorbitori de Engleză în Lume" },
-  { value: "8 din 10", label: "Cele Mai Valoroase Francize Sportive" },
 ];
 
 export function getCultureStats(locale: Locale): CultureStat[] {
