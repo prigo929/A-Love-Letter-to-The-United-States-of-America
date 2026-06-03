@@ -1014,5 +1014,162 @@ export function getCultureDigitalPipes(locale: Locale): CultureDigitalPipesData 
   return locale === "ro" ? DIGITAL_PIPES_RO : DIGITAL_PIPES_EN;
 }
 
+// ─── Cultural Icons data ─────────────────────────────────────────────────────
+
+export interface CultureIconItem {
+  name: string;
+  years: string;
+  description: string;
+  imageKey: string;
+}
+
+export interface CultureIconsSectionData {
+  eyebrow: string;
+  title: string;
+  deck: string;
+  icons: CultureIconItem[];
+}
+
+const CULTURE_ICONS_EN: CultureIconsSectionData = {
+  eyebrow: "CULTURAL AMBASSADORS · THE FACES OF AMERICA",
+  title: "THE PERSONALITY DEFAULT",
+  deck: "Unlike other nations, America has no ministry of culture. It does not export its lifestyle through state mandates. Instead, the global face of America was built by individuals—ambitious dreamers, rebels, and creators whose talent and drive were rewarded by free markets at global scale.",
+  icons: [
+    {
+      name: "Walt Disney",
+      years: "1901 – 1966",
+      description: "Pioneered animated cinema and built the modern global franchise model of childhood imagination.",
+      imageKey: "disneyWorld",
+    },
+    {
+      name: "Louis Armstrong",
+      years: "1901 – 1971",
+      description: "The foundational virtuoso of jazz who projected American musical freedom to the global stage.",
+      imageKey: "jazzClub",
+    },
+    {
+      name: "Elvis Presley",
+      years: "1935 – 1977",
+      description: "The undisputed King of Rock 'n' Roll who catalyzed youth culture and modernized musical performance.",
+      imageKey: "guitarNeon",
+    },
+    {
+      name: "Marilyn Monroe",
+      years: "1926 – 1962",
+      description: "The ultimate Hollywood icon whose star power and image defined 20th-century pop culture glamour.",
+      imageKey: "vaultLifeMarilyn",
+    },
+    {
+      name: "Mark Twain",
+      years: "1835 – 1910",
+      description: "The great American humorist who captured the democratic, energetic voice of a growing nation.",
+      imageKey: "route66",
+    },
+    {
+      name: "Muhammad Ali",
+      years: "1942 – 2016",
+      description: "The champion athlete and cultural force whose principles and charisma transcended sports globally.",
+      imageKey: "baseballPark",
+    },
+    {
+      name: "Michael Jackson",
+      years: "1958 – 2009",
+      description: "The King of Pop whose music videos, dance, and scale revolutionized global entertainment.",
+      imageKey: "vaultMichaelJackson",
+    },
+    {
+      name: "Michael Jordan",
+      years: "born 1963",
+      description: "The basketball legend who transformed sports into a global marketing and endorsement powerhouse.",
+      imageKey: "cowboysStadium",
+    },
+    {
+      name: "Martin Luther King Jr.",
+      years: "1929 – 1968",
+      description: "The moral voice of civil rights whose vision of liberty reshaped the nation's democratic conscience.",
+      imageKey: "statueOfLiberty",
+    },
+    {
+      name: "Arnold Schwarzenegger",
+      years: "born 1947",
+      description: "The immigrant bodybuilder who conquered Hollywood and became the ultimate global action archetype.",
+      imageKey: "hollywoodPalms",
+    },
+  ],
+};
+
+const CULTURE_ICONS_RO: CultureIconsSectionData = {
+  eyebrow: "AMBASADORI CULTURALI · CHIPURILE AMERICII",
+  title: "REPREZENTAREA PRIN PERSONALITATE",
+  deck: "Spre deosebire de alte națiuni, America nu are un minister al culturii. Nu își exportă stilul de viață prin mandate de stat. În schimb, fața globală a Americii a fost construită de indivizi—visători ambițioși, rebelii și creatori ale căror talent și determinare au fost răsplătite de piețele libere la scară globală.",
+  icons: [
+    {
+      name: "Walt Disney",
+      years: "1901 – 1966",
+      description: "A fost pionierul cinematografiei de animație și a construit modelul global de franciză al imaginației infantile.",
+      imageKey: "disneyWorld",
+    },
+    {
+      name: "Louis Armstrong",
+      years: "1901 – 1971",
+      description: "Virtuozul fondator al jazzului care a proiectat libertatea muzicală americană pe scena globală.",
+      imageKey: "jazzClub",
+    },
+    {
+      name: "Elvis Presley",
+      years: "1935 – 1977",
+      description: "Regele incontestabil al Rock 'n' Roll-ului care a catalizat cultura tineretului și a modernizat spectacolul muzical.",
+      imageKey: "guitarNeon",
+    },
+    {
+      name: "Marilyn Monroe",
+      years: "1926 – 1962",
+      description: "Cea mai mare pictogramă de la Hollywood a cărei imagine a definit farmecul culturii pop din secolul XX.",
+      imageKey: "vaultLifeMarilyn",
+    },
+    {
+      name: "Mark Twain",
+      years: "1835 – 1910",
+      description: "Marele umorist american care a surprins vocea democratică și plină de energie a unei națiuni în creștere.",
+      imageKey: "route66",
+    },
+    {
+      name: "Muhammad Ali",
+      years: "1942 – 2016",
+      description: "Campionul atlet și forța culturală ale cărui principii și carismă au transcens sportul la nivel global.",
+      imageKey: "baseballPark",
+    },
+    {
+      name: "Michael Jackson",
+      years: "1958 – 2009",
+      description: "Regele Pop a cărui muzică, dans și amploare au revoluționat divertismentul global.",
+      imageKey: "vaultMichaelJackson",
+    },
+    {
+      name: "Michael Jordan",
+      years: "născut 1963",
+      description: "Legenda baschetului care a transformat sportul într-o forță globală de marketing și publicitate.",
+      imageKey: "cowboysStadium",
+    },
+    {
+      name: "Martin Luther King Jr.",
+      years: "1929 – 1968",
+      description: "Vocea morală a drepturilor civile a cărei viziune despre libertate a remodelat conștiința democratică.",
+      imageKey: "statueOfLiberty",
+    },
+    {
+      name: "Arnold Schwarzenegger",
+      years: "născut 1947",
+      description: "Culturistul imigrant care a cucerit Hollywood-ul și a devenit arhetipul suprem al filmelor de acțiune globale.",
+      imageKey: "hollywoodPalms",
+    },
+  ],
+};
+
+export function getCultureIcons(locale: Locale): CultureIconsSectionData {
+  return locale === "ro" ? CULTURE_ICONS_RO : CULTURE_ICONS_EN;
+}
+
+
 
 

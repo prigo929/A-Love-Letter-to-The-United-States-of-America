@@ -39,7 +39,9 @@ import type {
   CultureOriginationItem,
   CultureEditorialImperialismData,
   CultureDigitalPipesData,
+  CultureIconsSectionData,
 } from "@/lib/data/culture-data";
+
 
 
 
@@ -2771,6 +2773,147 @@ export function CultureDigitalPipes({ data, isRo = false }: { data: CultureDigit
     </section>
   );
 }
+
+// ─── §3.9 — Cultural Icons: The Faces of America ───────────────────────────
+
+interface CultureIconsSectionProps {
+  data: CultureIconsSectionData;
+  isRo?: boolean;
+}
+
+export function CultureIconsSection({ data, isRo = false }: CultureIconsSectionProps) {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedTitle, setSelectedTitle] = useState<string>("");
+  const [selectedSubtitle, setSelectedSubtitle] = useState<string>("");
+
+  return (
+    <section id="culture-icons" className="relative culture-bg py-28 md:py-36 overflow-hidden border-b border-white/5">
+      {/* Dot-grid background */}
+      <div className="absolute inset-0 culture-dot-canvas opacity-15 pointer-events-none" />
+
+      {/* Gold radial background glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at center, rgba(212,175,55,0.01) 0%, transparent 75%)",
+        }}
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center mb-20 max-w-4xl mx-auto flex flex-col items-center">
+          <motion.p
+            className="culture-text-label text-glory-gold"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 0.6, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {data.eyebrow}
+          </motion.p>
+          <motion.h2
+            className="font-editorial text-4xl sm:text-5xl lg:text-6xl text-white font-bold leading-tight mt-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            {data.title}
+          </motion.h2>
+          <motion.p
+            className="font-body text-[#F5EDD8]/60 text-sm sm:text-base leading-relaxed font-light mt-6 max-w-3xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            {data.deck}
+          </motion.p>
+          <div className="w-24 h-px bg-gradient-to-r from-transparent via-glory-gold to-transparent mt-8" />
+        </div>
+
+        {/* 10-Icons Responsive Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+          {data.icons.map((icon, i) => {
+            const imgKey = icon.imageKey as keyof typeof SITE_IMAGES.culture;
+            const imageSrc = SITE_IMAGES.culture[imgKey] || SITE_IMAGES.culture.statueOfLiberty;
+
+            return (
+              <motion.div
+                key={icon.name}
+                onClick={() => {
+                  setSelectedImage(imageSrc);
+                  setSelectedTitle(icon.name);
+                  setSelectedSubtitle(`${icon.years} — ${icon.description}`);
+                }}
+                className="group relative aspect-[3/4.5] rounded-xl overflow-hidden culture-gradient-border border border-white/5 flex flex-col justify-end p-5 cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  delay: (i % 5) * 0.08,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+              >
+                {/* Grayscale Background Image */}
+                <Image
+                  src={imageSrc}
+                  alt={icon.name}
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                />
+
+                {/* Dark Vignette Overlay */}
+                <div
+                  className="absolute inset-0 transition-opacity duration-700"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom, rgba(12,9,7,0.1) 0%, rgba(12,9,7,0.55) 40%, rgba(12,9,7,0.98) 100%)",
+                  }}
+                />
+
+                {/* Card border shine top line on hover */}
+                <div className="absolute top-0 left-0 w-0 h-[2px] bg-glory-gold group-hover:w-full transition-all duration-500 ease-out" />
+
+                {/* Card Content */}
+                <div className="relative z-10 flex flex-col gap-1.5 pointer-events-none">
+                  <span className="font-body text-[9px] uppercase tracking-widest text-glory-gold/80 leading-none">
+                    {icon.years}
+                  </span>
+                  <h3 className="font-editorial italic text-lg sm:text-xl text-white group-hover:text-glory-gold transition-colors duration-300 leading-tight">
+                    {icon.name}
+                  </h3>
+                  <p className="font-editorial text-[11px] sm:text-xs text-[#F5EDD8]/50 group-hover:text-[#F5EDD8]/75 transition-colors duration-300 leading-relaxed font-light line-clamp-3">
+                    {icon.description}
+                  </p>
+                </div>
+
+                {/* Magnifier overlay indicator on hover */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none z-20">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-5 h-5 text-white/90">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" />
+                  </svg>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+      </div>
+
+      <ImageLightboxModal
+        src={selectedImage}
+        title={selectedTitle}
+        subtitle={selectedSubtitle}
+        onClose={() => setSelectedImage(null)}
+      />
+    </section>
+  );
+}
+
 
 
 

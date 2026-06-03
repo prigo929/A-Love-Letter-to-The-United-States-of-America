@@ -34,7 +34,9 @@ import {
   getCultureOriginations,
   getCultureEditorialImperialism,
   getCultureDigitalPipes,
+  getCultureIcons,
 } from "@/lib/data/culture-data";
+
 
 
 
@@ -60,7 +62,9 @@ import {
   CultureOriginationStrip,
   CultureEditorialImperialism,
   CultureDigitalPipes,
+  CultureIconsSection,
 } from "@/components/culture/CulturePageComponents";
+
 
 
 
@@ -100,6 +104,8 @@ export default async function CulturePage() {
   const originations = getCultureOriginations(locale);
   const editorialImperialism = getCultureEditorialImperialism(locale);
   const digitalPipes = getCultureDigitalPipes(locale);
+  const culturalIcons = getCultureIcons(locale);
+
 
 
 
@@ -195,6 +201,8 @@ export default async function CulturePage() {
       {/* §17 — Music Origins Section */}
       <CultureMusicSection genres={musicGenres} sectionTitle={musicTitle} isRo={isRo} />
 
+      {/* Cultural Icons — The Faces of America */}
+      <CultureIconsSection data={culturalIcons} isRo={isRo} />
 
       {/* §7 — Radar Chart Teaser */}
       <CultureRadarTeaser
