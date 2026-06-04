@@ -1422,7 +1422,7 @@ export function CultureBrandLogosMarquee() {
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
                   className={cn(
-                    "w-full h-full object-contain grayscale opacity-75 group-hover:opacity-100 group-hover:filter-none transition-[opacity,filter] duration-300 pointer-events-none select-none",
+                    "w-full h-full object-contain grayscale opacity-75 group-hover:opacity-100 group-hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none",
                     logo.scale || "scale-100",
                     logo.invert && "invert brightness-200"
                   )}
@@ -1442,7 +1442,7 @@ export function CultureBrandLogosMarquee() {
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
                   className={cn(
-                    "w-full h-full object-contain grayscale opacity-75 group-hover:opacity-100 group-hover:filter-none transition-[opacity,filter] duration-300 pointer-events-none select-none",
+                    "w-full h-full object-contain grayscale opacity-75 group-hover:opacity-100 group-hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none",
                     logo.scale || "scale-100",
                     logo.invert && "invert brightness-200"
                   )}
@@ -1468,9 +1468,9 @@ export function CultureBrandLogosMarquee() {
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
                   className={cn(
-                    "w-full h-full object-contain grayscale opacity-75 group-hover:opacity-100 group-hover:filter-none transition-[opacity,filter] duration-300 pointer-events-none select-none",
+                    "w-full h-full object-contain opacity-60 group-hover:opacity-100 group-hover:[filter:none] transition-[opacity,filter] duration-300 pointer-events-none select-none",
                     logo.scale || "scale-100",
-                    logo.invert && "invert brightness-200"
+                    logo.invert ? "[filter:invert(1)_brightness(2)_grayscale(1)]" : "grayscale"
                   )}
                   loading="eager"
                 />
@@ -1488,9 +1488,9 @@ export function CultureBrandLogosMarquee() {
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
                   className={cn(
-                    "w-full h-full object-contain grayscale opacity-75 group-hover:opacity-100 group-hover:filter-none transition-[opacity,filter] duration-300 pointer-events-none select-none",
+                    "w-full h-full object-contain opacity-60 group-hover:opacity-100 group-hover:[filter:none] transition-[opacity,filter] duration-300 pointer-events-none select-none",
                     logo.scale || "scale-100",
-                    logo.invert && "invert brightness-200"
+                    logo.invert ? "[filter:invert(1)_brightness(2)_grayscale(1)]" : "grayscale"
                   )}
                   loading="eager"
                 />
