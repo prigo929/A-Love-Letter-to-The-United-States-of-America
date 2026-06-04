@@ -201,7 +201,19 @@ export function Footer() {
               aria-label="love"
             />
             {copy.inThe}
-            <span className="text-glory-gold font-semibold">{copy.country}</span>
+            {locale === "ro" ? (
+              <span className="font-semibold select-none">
+                <span className="text-glory-red">S</span>
+                <span className="text-white">U</span>
+                <span className="text-blue-400">A</span> 🇺🇸
+              </span>
+            ) : (
+              <span className="font-semibold select-none">
+                <span className="text-glory-red">U</span>
+                <span className="text-white">S</span>
+                <span className="text-blue-400">A</span> 🇺🇸
+              </span>
+            )}
           </p>
 
           {/* Disclaimer */}
