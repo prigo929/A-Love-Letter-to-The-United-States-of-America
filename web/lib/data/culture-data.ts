@@ -517,7 +517,7 @@ export const BRAND_LOGOS_ROW_1 = [
   { name: "3M", file: "3m.svg", invert: true, scale: "scale-120" },
   { name: "Activision Blizzard", file: "Activision_Blizzard.svg", scale: "scale-100" },
   { name: "Cadillac", file: "Cadillac_Logo_2021.svg", scale: "scale-95" },
-  { name: "Champion", file: "Champion_USA_logo.svg", invert: true, scale: "scale-90" },
+  { name: "Champion", file: "Champion_USA_logo.svg", scale: "scale-90" },
   { name: "Chevrolet", file: "Chevrolet_simple_logo.svg", scale: "scale-90" },
   { name: "DuPont", file: "DuPont_logo.svg", scale: "scale-90" },
   { name: "Electronic Arts", file: "Electronic-Arts-Logo.svg", scale: "scale-90" },
