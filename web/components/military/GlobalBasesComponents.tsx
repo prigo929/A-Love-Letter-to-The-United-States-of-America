@@ -335,10 +335,6 @@ export function GlobalCommandMap({
     zoom: 1,
   });
 
-  const [programmaticViewport, setProgrammaticViewport] = useState<{ coordinates: [number, number]; zoom: number } | null>(null);
-
-  const isProgrammaticTransitionRef = useRef(false);
-
   const activeRegion = regions.find((region) => region.id === activeRegionId) ?? regions[0];
   const activeRegionBases = useMemo(
     () => bases.filter((base) => base.Region === activeRegionId),
@@ -351,56 +347,45 @@ export function GlobalCommandMap({
     setIsMapMounted(true);
   }, []);
 
-  const triggerProgrammaticMove = (viewport: { coordinates: [number, number]; zoom: number }) => {
-    isProgrammaticTransitionRef.current = true;
-    setPosition(viewport);
-    setProgrammaticViewport(viewport);
-  };
-
   const handleRegionClick = (regionId: GlobalBaseRegion) => {
     setActiveRegionId(regionId);
     const viewport = REGION_VIEWPORTS[regionId];
     if (viewport) {
-      triggerProgrammaticMove(viewport);
+      setPosition(viewport);
     }
   };
 
   const handleZoomIn = () => {
-    const nextZoom = Math.min(position.zoom * 1.5, 8);
-    triggerProgrammaticMove({ coordinates: position.coordinates, zoom: nextZoom });
+    setPosition((pos) => ({
+      ...pos,
+      zoom: Math.min(pos.zoom * 1.5, 40),
+    }));
   };
 
   const handleZoomOut = () => {
-    const nextZoom = Math.max(position.zoom / 1.5, 1);
-    triggerProgrammaticMove({ coordinates: position.coordinates, zoom: nextZoom });
+    setPosition((pos) => ({
+      ...pos,
+      zoom: Math.max(pos.zoom / 1.5, 1),
+    }));
   };
 
   const handleReset = () => {
-    triggerProgrammaticMove({ coordinates: [12, 24], zoom: 1 });
-  };
-
-  const handleMove = (newPosition: { coordinates: [number, number]; zoom: number }) => {
-    if (isProgrammaticTransitionRef.current) {
-      return;
-    }
-    setPosition(newPosition);
-    setProgrammaticViewport(null);
+    setPosition({
+      coordinates: [12, 24],
+      zoom: 1,
+    });
   };
 
   const handleMoveEnd = (newPosition: { coordinates: [number, number]; zoom: number }) => {
-    if (isProgrammaticTransitionRef.current) {
-      isProgrammaticTransitionRef.current = false;
-      setProgrammaticViewport(null);
-      setPosition(newPosition);
-    } else {
-      setPosition(newPosition);
-      setProgrammaticViewport(null);
-    }
+    setPosition(newPosition);
   };
 
   const handleClusterClick = (cluster: Cluster) => {
-    const nextZoom = Math.min(position.zoom * 1.8, 8);
-    triggerProgrammaticMove({ coordinates: cluster.center, zoom: nextZoom });
+    const nextZoom = Math.min(position.zoom * 1.8, 40);
+    setPosition({
+      coordinates: cluster.center,
+      zoom: nextZoom,
+    });
 
     const firstBase = cluster.bases[0];
     if (firstBase) {
@@ -411,7 +396,10 @@ export function GlobalCommandMap({
   const handleBaseSelect = (base: StrategicBase) => {
     setSelectedBase(base);
     const baseCoords = parseCoordinates(base.Coordinates);
-    triggerProgrammaticMove({ coordinates: baseCoords, zoom: 5 });
+    setPosition({
+      coordinates: baseCoords,
+      zoom: 5,
+    });
     setActiveRegionId(base.Region);
   };
 
@@ -462,11 +450,10 @@ export function GlobalCommandMap({
                     style={{ width: "100%", height: "100%" }}
                   >
                     <ZoomableGroup
-                      center={programmaticViewport ? programmaticViewport.coordinates : undefined}
-                      zoom={programmaticViewport ? programmaticViewport.zoom : undefined}
-                      maxZoom={8}
+                      center={position.coordinates}
+                      zoom={position.zoom}
+                      maxZoom={40}
                       minZoom={1}
-                      onMove={handleMove}
                       onMoveEnd={handleMoveEnd}
                       translateExtent={[[0, 0], [800, 600]]}
                       filterZoomEvent={(e: any) => e.type !== "dblclick"}
