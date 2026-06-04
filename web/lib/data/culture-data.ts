@@ -504,7 +504,7 @@ export const BRAND_LOGOS_ROW_1 = [
   { name: "JPMorgan", file: "Logo_of_JPMorganChase_2024.svg", invert: true, scale: "scale-95" },
   { name: "Mastercard", file: "Mastercard-logo.svg", scale: "scale-85" },
   { name: "OpenAI", file: "openai.svg", invert: true, scale: "scale-90" },
-  { name: "Stripe", file: "Stripe_Logo,_revised_2016.svg", invert: true, scale: "scale-105" },
+  { name: "Stripe", file: "Stripe_Logo,_revised_2016.svg", scale: "scale-105" },
   { name: "Intel", file: "intel.svg", scale: "scale-105" },
   { name: "Ford", file: "Ford-Motor-Company-Logo.png", scale: "scale-95" },
   { name: "GE Aerospace", file: "ge-aerospace.svg", invert: true, scale: "scale-100" },
