@@ -335,6 +335,8 @@ export function GlobalCommandMap({
     zoom: 1,
   });
 
+  const [programmaticViewport, setProgrammaticViewport] = useState<{ coordinates: [number, number]; zoom: number } | null>(null);
+
   const activeRegion = regions.find((region) => region.id === activeRegionId) ?? regions[0];
   const activeRegionBases = useMemo(
     () => bases.filter((base) => base.Region === activeRegionId),
@@ -352,40 +354,50 @@ export function GlobalCommandMap({
     const viewport = REGION_VIEWPORTS[regionId];
     if (viewport) {
       setPosition(viewport);
+      setProgrammaticViewport(viewport);
     }
   };
 
   const handleZoomIn = () => {
-    setPosition((pos) => ({
-      ...pos,
-      zoom: Math.min(pos.zoom * 1.5, 8),
-    }));
+    setPosition((pos) => {
+      const nextZoom = Math.min(pos.zoom * 1.5, 8);
+      const nextPos = { ...pos, zoom: nextZoom };
+      setProgrammaticViewport(nextPos);
+      return nextPos;
+    });
   };
 
   const handleZoomOut = () => {
-    setPosition((pos) => ({
-      ...pos,
-      zoom: Math.max(pos.zoom / 1.5, 1),
-    }));
+    setPosition((pos) => {
+      const nextZoom = Math.max(pos.zoom / 1.5, 1);
+      const nextPos = { ...pos, zoom: nextZoom };
+      setProgrammaticViewport(nextPos);
+      return nextPos;
+    });
   };
 
   const handleReset = () => {
-    setPosition({
-      coordinates: [12, 24],
+    const defaultPos = {
+      coordinates: [12, 24] as [number, number],
       zoom: 1,
-    });
+    };
+    setPosition(defaultPos);
+    setProgrammaticViewport(defaultPos);
   };
 
   const handleMoveEnd = (newPosition: { coordinates: [number, number]; zoom: number }) => {
     setPosition(newPosition);
+    setProgrammaticViewport(null);
   };
 
   const handleClusterClick = (cluster: Cluster) => {
     const nextZoom = Math.min(position.zoom * 1.8, 8);
-    setPosition({
+    const nextPos = {
       coordinates: cluster.center,
       zoom: nextZoom,
-    });
+    };
+    setPosition(nextPos);
+    setProgrammaticViewport(nextPos);
 
     const firstBase = cluster.bases[0];
     if (firstBase) {
@@ -396,10 +408,12 @@ export function GlobalCommandMap({
   const handleBaseSelect = (base: StrategicBase) => {
     setSelectedBase(base);
     const baseCoords = parseCoordinates(base.Coordinates);
-    setPosition({
+    const nextPos = {
       coordinates: baseCoords,
       zoom: 5,
-    });
+    };
+    setPosition(nextPos);
+    setProgrammaticViewport(nextPos);
     setActiveRegionId(base.Region);
   };
 
@@ -450,12 +464,13 @@ export function GlobalCommandMap({
                     style={{ width: "100%", height: "100%" }}
                   >
                     <ZoomableGroup
-                      center={position.coordinates}
-                      zoom={position.zoom}
+                      center={programmaticViewport ? programmaticViewport.coordinates : undefined}
+                      zoom={programmaticViewport ? programmaticViewport.zoom : undefined}
                       maxZoom={8}
                       minZoom={1}
                       onMove={handleMoveEnd}
                       onMoveEnd={handleMoveEnd}
+                      translateExtent={[[-150, -50], [950, 650]]}
                     >
                       <Geographies geography={WORLD_GEO_URL}>
                         {({ geographies }: { geographies: any[] }) =>
