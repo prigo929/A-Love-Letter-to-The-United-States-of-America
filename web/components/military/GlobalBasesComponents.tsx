@@ -5,15 +5,18 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import type { KeyboardEvent, ReactNode } from "react";
-import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
+import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from "react-simple-maps";
 import {
   ArrowUpRight,
   Building2,
   Handshake,
   MapPin,
+  Minus,
   Network,
   Package,
   Plane,
+  Plus,
+  RotateCcw,
   Ship,
   X,
 } from "lucide-react";
@@ -30,22 +33,67 @@ import type {
 
 const WORLD_GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
-const MARKER_OFFSETS: Record<string, { x: number; y: number }> = {
-  "ramstein-air-base": { x: -7, y: -6 },
-  "spangdahlem-air-base": { x: 8, y: 5 },
-  "raf-lakenheath": { x: -8, y: 5 },
-  "aviano-air-base": { x: 8, y: -7 },
-  "naval-station-rota": { x: -5, y: 8 },
-  "al-udeid-air-base": { x: -7, y: -5 },
-  "al-dhafra-air-base": { x: 8, y: 3 },
-  "naval-support-activity-bahrain": { x: 7, y: -7 },
-  "ali-al-salem-air-base": { x: -8, y: 7 },
-  "yokosuka-naval-base": { x: 7, y: -5 },
-  "kadena-air-base": { x: -7, y: 7 },
-  "camp-humphreys": { x: -6, y: -6 },
-  "clear-space-force-station": { x: -7, y: 6 },
-  "eielson-air-force-base": { x: 8, y: -5 },
+const REGION_VIEWPORTS: Record<GlobalBaseRegion, { coordinates: [number, number]; zoom: number }> = {
+  "Europe": { coordinates: [15, 50], zoom: 2.8 },
+  "Indo-Pacific": { coordinates: [115, 5], zoom: 2 },
+  "Middle East": { coordinates: [48, 25], zoom: 3.5 },
+  "Americas": { coordinates: [-95, 38], zoom: 1.8 },
+  "Africa": { coordinates: [25, 0], zoom: 2 },
+  "Arctic / High North": { coordinates: [-50, 72], zoom: 2.2 },
 };
+
+interface Cluster {
+  id: string;
+  center: [number, number];
+  bases: StrategicBase[];
+}
+
+function getClusters(bases: StrategicBase[], zoom: number): Cluster[] {
+  const threshold = 12 / zoom;
+  const clusters: Cluster[] = [];
+  const merged = new Set<string>();
+
+  const sortedBases = [...bases].sort((a, b) => a.ID.localeCompare(b.ID));
+
+  for (const base of sortedBases) {
+    if (merged.has(base.ID)) continue;
+
+    const baseCoords = parseCoordinates(base.Coordinates);
+    const clusterBases = [base];
+    merged.add(base.ID);
+
+    for (const otherBase of sortedBases) {
+      if (merged.has(otherBase.ID)) continue;
+
+      const otherCoords = parseCoordinates(otherBase.Coordinates);
+      const dx = baseCoords[0] - otherCoords[0];
+      const dy = baseCoords[1] - otherCoords[1];
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < threshold) {
+        clusterBases.push(otherBase);
+        merged.add(otherBase.ID);
+      }
+    }
+
+    let sumLon = 0;
+    let sumLat = 0;
+    for (const cb of clusterBases) {
+      const coords = parseCoordinates(cb.Coordinates);
+      sumLon += coords[0];
+      sumLat += coords[1];
+    }
+    const center: [number, number] = [sumLon / clusterBases.length, sumLat / clusterBases.length];
+
+    clusters.push({
+      id: clusterBases.length === 1 ? clusterBases[0].ID : `cluster-${clusterBases[0].ID}`,
+      center,
+      bases: clusterBases,
+    });
+  }
+
+  return clusters;
+}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -276,15 +324,78 @@ export function GlobalCommandMap({
   const [activeRegionId, setActiveRegionId] = useState<GlobalBaseRegion>("Europe");
   const [selectedBase, setSelectedBase] = useState<StrategicBase | null>(null);
 
+  const [position, setPosition] = useState<{ coordinates: [number, number]; zoom: number }>({
+    coordinates: [12, 24],
+    zoom: 1,
+  });
+
   const activeRegion = regions.find((region) => region.id === activeRegionId) ?? regions[0];
   const activeRegionBases = useMemo(
     () => bases.filter((base) => base.Region === activeRegionId),
     [activeRegionId, bases]
   );
 
+  const clusters = useMemo(() => getClusters(bases, position.zoom), [bases, position.zoom]);
+
   useEffect(() => {
     setIsMapMounted(true);
   }, []);
+
+  const handleRegionClick = (regionId: GlobalBaseRegion) => {
+    setActiveRegionId(regionId);
+    const viewport = REGION_VIEWPORTS[regionId];
+    if (viewport) {
+      setPosition(viewport);
+    }
+  };
+
+  const handleZoomIn = () => {
+    setPosition((pos) => ({
+      ...pos,
+      zoom: Math.min(pos.zoom * 1.5, 8),
+    }));
+  };
+
+  const handleZoomOut = () => {
+    setPosition((pos) => ({
+      ...pos,
+      zoom: Math.max(pos.zoom / 1.5, 1),
+    }));
+  };
+
+  const handleReset = () => {
+    setPosition({
+      coordinates: [12, 24],
+      zoom: 1,
+    });
+  };
+
+  const handleMoveEnd = (newPosition: { coordinates: [number, number]; zoom: number }) => {
+    setPosition(newPosition);
+  };
+
+  const handleClusterClick = (cluster: Cluster) => {
+    const nextZoom = Math.min(position.zoom * 1.8, 8);
+    setPosition({
+      coordinates: cluster.center,
+      zoom: nextZoom,
+    });
+
+    const firstBase = cluster.bases[0];
+    if (firstBase) {
+      setActiveRegionId(firstBase.Region);
+    }
+  };
+
+  const handleBaseSelect = (base: StrategicBase) => {
+    setSelectedBase(base);
+    const baseCoords = parseCoordinates(base.Coordinates);
+    setPosition({
+      coordinates: baseCoords,
+      zoom: 5,
+    });
+    setActiveRegionId(base.Region);
+  };
 
   return (
     <section className="bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
@@ -304,11 +415,11 @@ export function GlobalCommandMap({
                 <button
                   key={region.id}
                   type="button"
-                  onClick={() => setActiveRegionId(region.id)}
+                  onClick={() => handleRegionClick(region.id)}
                   className={
                     activeRegionId === region.id
-                      ? "bg-white px-3 py-2 font-mono text-[9px] uppercase tracking-[0.18em] text-black"
-                      : "bg-zinc-950 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-400 transition-colors hover:bg-zinc-900 hover:text-white"
+                      ? "bg-white px-3 py-2 font-mono text-[9px] uppercase tracking-[0.18em] text-black cursor-pointer"
+                      : "bg-zinc-950 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-400 transition-colors hover:bg-zinc-900 hover:text-white cursor-pointer"
                   }
                 >
                   {isRo ? (
@@ -326,92 +437,173 @@ export function GlobalCommandMap({
 
             <div className="h-[620px] pt-20 lg:h-full">
               {isMapMounted ? (
-                <ComposableMap
-                  projection="geoMercator"
-                  projectionConfig={{ scale: 112, center: [12, 24] }}
-                  style={{ width: "100%", height: "100%" }}
-                >
-                  <Geographies geography={WORLD_GEO_URL}>
-                    {({ geographies }: { geographies: any[] }) =>
-                      geographies.map((geo) => (
-                        <Geography
-                          key={geo.rsmKey}
-                          geography={geo}
-                          style={{
-                            default: {
-                              fill: "#18181b",
-                              stroke: "#27272a",
-                              strokeWidth: 0.34,
-                              outline: "none",
-                            },
-                            hover: {
-                              fill: "#202024",
-                              stroke: "#3f3f46",
-                              strokeWidth: 0.34,
-                              outline: "none",
-                            },
-                            pressed: {
-                              fill: "#18181b",
-                              outline: "none",
-                            },
-                          }}
-                        />
-                      ))
-                    }
-                  </Geographies>
+                <div className="relative h-full w-full">
+                  <ComposableMap
+                    projection="geoMercator"
+                    projectionConfig={{ scale: 112 }}
+                    style={{ width: "100%", height: "100%" }}
+                  >
+                    <ZoomableGroup
+                      center={position.coordinates}
+                      zoom={position.zoom}
+                      maxZoom={8}
+                      minZoom={1}
+                      onMoveEnd={handleMoveEnd}
+                    >
+                      <Geographies geography={WORLD_GEO_URL}>
+                        {({ geographies }: { geographies: any[] }) =>
+                          geographies.map((geo) => (
+                            <Geography
+                              key={geo.rsmKey}
+                              geography={geo}
+                              style={{
+                                default: {
+                                  fill: "#18181b",
+                                  stroke: "#27272a",
+                                  strokeWidth: 0.34 / position.zoom,
+                                  outline: "none",
+                                },
+                                hover: {
+                                  fill: "#202024",
+                                  stroke: "#3f3f46",
+                                  strokeWidth: 0.34 / position.zoom,
+                                  outline: "none",
+                                },
+                                pressed: {
+                                  fill: "#18181b",
+                                  outline: "none",
+                                },
+                              }}
+                            />
+                          ))
+                        }
+                      </Geographies>
 
-                  {bases.map((base) => {
-                    const isActiveRegion = base.Region === activeRegionId;
-                    const isSelected = selectedBase?.ID === base.ID;
-                    const offset = MARKER_OFFSETS[base.ID] ?? { x: 0, y: 0 };
-                    const hasOffset = offset.x !== 0 || offset.y !== 0;
-                    return (
-                      <Marker key={base.ID} coordinates={parseCoordinates(base.Coordinates)}>
-                        <g
-                          role="button"
-                          tabIndex={0}
-                          aria-label={base.Name}
-                          onClick={() => setSelectedBase(base)}
-                          onKeyDown={(event: KeyboardEvent<SVGGElement>) => {
-                            if (event.key === "Enter" || event.key === " ") {
-                              event.preventDefault();
-                              setSelectedBase(base);
-                            }
-                          }}
-                          className="cursor-pointer"
-                        >
-                          {hasOffset && (
-                            <line
-                              x1={0}
-                              y1={0}
-                              x2={offset.x}
-                              y2={offset.y}
-                              stroke="#71717a"
-                              strokeWidth={0.45}
-                              opacity={isActiveRegion ? 0.65 : 0.22}
-                              pointerEvents="none"
-                            />
-                          )}
-                          <g transform={`translate(${offset.x} ${offset.y})`}>
-                            <circle
-                              r={10}
-                              fill="transparent"
-                              stroke="transparent"
-                              strokeWidth={0}
-                              className="cursor-pointer"
-                            />
-                            <circle
-                              r={isSelected ? 4 : isActiveRegion ? 3 : 2.2}
-                              fill="#fafafa"
-                              opacity={isActiveRegion ? 1 : 0.42}
-                              pointerEvents="none"
-                            />
-                          </g>
-                        </g>
-                      </Marker>
-                    );
-                  })}
-                </ComposableMap>
+                      {clusters.map((cluster) => {
+                        if (cluster.bases.length === 1) {
+                          const base = cluster.bases[0];
+                          const isActiveRegion = base.Region === activeRegionId;
+                          const isSelected = selectedBase?.ID === base.ID;
+                          const r = isSelected ? 5.5 : isActiveRegion ? 4 : 2.5;
+
+                          return (
+                            <Marker key={base.ID} coordinates={cluster.center}>
+                              <g
+                                role="button"
+                                tabIndex={0}
+                                aria-label={base.Name}
+                                onClick={() => handleBaseSelect(base)}
+                                onKeyDown={(event: KeyboardEvent<SVGGElement>) => {
+                                  if (event.key === "Enter" || event.key === " ") {
+                                    event.preventDefault();
+                                    handleBaseSelect(base);
+                                  }
+                                }}
+                                className="cursor-pointer"
+                              >
+                                <circle
+                                  r={18 / position.zoom}
+                                  fill="transparent"
+                                />
+                                <circle
+                                  r={r / position.zoom}
+                                  fill="#fafafa"
+                                  opacity={isActiveRegion ? 1 : 0.42}
+                                  pointerEvents="none"
+                                />
+                                {isSelected && (
+                                  <circle
+                                    r={(r + 3) / position.zoom}
+                                    fill="none"
+                                    stroke="#fafafa"
+                                    strokeWidth={1 / position.zoom}
+                                    opacity={0.6}
+                                    pointerEvents="none"
+                                  />
+                                )}
+                              </g>
+                            </Marker>
+                          );
+                        } else {
+                          const hasActiveBase = cluster.bases.some((b) => b.Region === activeRegionId);
+
+                          return (
+                            <Marker key={cluster.id} coordinates={cluster.center}>
+                              <g
+                                role="button"
+                                tabIndex={0}
+                                onClick={() => handleClusterClick(cluster)}
+                                onKeyDown={(event: KeyboardEvent<SVGGElement>) => {
+                                  if (event.key === "Enter" || event.key === " ") {
+                                    event.preventDefault();
+                                    handleClusterClick(cluster);
+                                  }
+                                }}
+                                className="cursor-pointer select-none"
+                              >
+                                <circle
+                                  r={22 / position.zoom}
+                                  fill="transparent"
+                                />
+                                <circle
+                                  r={14 / position.zoom}
+                                  fill="rgba(250, 250, 250, 0.12)"
+                                  stroke="#fafafa"
+                                  strokeWidth={1 / position.zoom}
+                                  opacity={hasActiveBase ? 0.85 : 0.4}
+                                />
+                                <circle
+                                  r={10 / position.zoom}
+                                  fill="#09090b"
+                                />
+                                <text
+                                  textAnchor="middle"
+                                  y={3 / position.zoom}
+                                  style={{
+                                    fontFamily: "monospace",
+                                    fontSize: `${9 / position.zoom}px`,
+                                    fill: hasActiveBase ? "#fafafa" : "#71717a",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  {cluster.bases.length}
+                                </text>
+                              </g>
+                            </Marker>
+                          );
+                        }
+                      })}
+                    </ZoomableGroup>
+                  </ComposableMap>
+
+                  {/* Zoom Controls */}
+                  <div className="absolute bottom-4 left-4 z-10 flex flex-col gap-2">
+                    <button
+                      type="button"
+                      onClick={handleZoomIn}
+                      className="flex h-8 w-8 items-center justify-center bg-zinc-950 text-zinc-400 border border-zinc-800 transition-colors hover:bg-zinc-900 hover:text-white cursor-pointer"
+                      aria-label="Zoom in"
+                    >
+                      <Plus size={16} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleZoomOut}
+                      className="flex h-8 w-8 items-center justify-center bg-zinc-950 text-zinc-400 border border-zinc-800 transition-colors hover:bg-zinc-900 hover:text-white cursor-pointer"
+                      aria-label="Zoom out"
+                    >
+                      <Minus size={16} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleReset}
+                      className="flex h-8 w-8 items-center justify-center bg-zinc-950 text-zinc-400 border border-zinc-800 transition-colors hover:bg-zinc-900 hover:text-white cursor-pointer"
+                      aria-label="Reset map view"
+                    >
+                      <RotateCcw size={14} />
+                    </button>
+                  </div>
+                </div>
               ) : (
                 <div className="flex h-full min-h-[560px] items-center justify-center bg-black">
                   <div className="h-px w-40 bg-zinc-900" />
@@ -466,8 +658,8 @@ export function GlobalCommandMap({
                     <button
                       key={base.ID}
                       type="button"
-                      onClick={() => setSelectedBase(base)}
-                      className="block w-full bg-black px-3 py-2 text-left font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-400 transition-colors hover:bg-zinc-900 hover:text-white"
+                      onClick={() => handleBaseSelect(base)}
+                      className="block w-full bg-black px-3 py-2 text-left font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-400 transition-colors hover:bg-zinc-900 hover:text-white cursor-pointer"
                     >
                       {base.Name}
                     </button>
