@@ -1412,41 +1412,33 @@ export function CultureBrandLogosMarquee() {
       <div className="relative w-full overflow-hidden">
         <div className="flex w-max animate-marquee-left whitespace-nowrap">
           {/* Track 1 */}
-          <div className="flex items-center gap-16 pr-16 flex-shrink-0">
+          <div className="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 flex-shrink-0">
             {BRAND_LOGOS_ROW_1.map((logo) => (
-              <div
+              <img
                 key={`${logo.name}-row1-track1`}
-                className="inline-flex items-center justify-center h-12 md:h-16 px-6 md:px-10 flex-shrink-0"
-              >
-                <img
-                  src={`/assets/companies/${logo.file}`}
-                  alt={logo.name}
-                  className={cn(
-                    "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
-                    logo.invert && "invert brightness-200"
-                  )}
-                  loading="eager"
-                />
-              </div>
+                src={`/assets/companies/${logo.file}`}
+                alt={logo.name}
+                className={cn(
+                  "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none flex-shrink-0",
+                  logo.invert && "invert brightness-200"
+                )}
+                loading="eager"
+              />
             ))}
           </div>
           {/* Track 2 */}
-          <div className="flex items-center gap-16 pr-16 flex-shrink-0" aria-hidden="true">
+          <div className="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 flex-shrink-0" aria-hidden="true">
             {BRAND_LOGOS_ROW_1.map((logo) => (
-              <div
+              <img
                 key={`${logo.name}-row1-track2`}
-                className="inline-flex items-center justify-center h-12 md:h-16 px-6 md:px-10 flex-shrink-0"
-              >
-                <img
-                  src={`/assets/companies/${logo.file}`}
-                  alt={logo.name}
-                  className={cn(
-                    "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
-                    logo.invert && "invert brightness-200"
-                  )}
-                  loading="eager"
-                />
-              </div>
+                src={`/assets/companies/${logo.file}`}
+                alt={logo.name}
+                className={cn(
+                  "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none flex-shrink-0",
+                  logo.invert && "invert brightness-200"
+                )}
+                loading="eager"
+              />
             ))}
           </div>
         </div>
@@ -1456,41 +1448,33 @@ export function CultureBrandLogosMarquee() {
       <div className="relative w-full overflow-hidden">
         <div className="flex w-max animate-marquee-right whitespace-nowrap">
           {/* Track 1 */}
-          <div className="flex items-center gap-16 pr-16 flex-shrink-0">
+          <div className="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 flex-shrink-0">
             {BRAND_LOGOS_ROW_2.map((logo) => (
-              <div
+              <img
                 key={`${logo.name}-row2-track1`}
-                className="inline-flex items-center justify-center h-12 md:h-16 px-6 md:px-10 flex-shrink-0"
-              >
-                <img
-                  src={`/assets/companies/${logo.file}`}
-                  alt={logo.name}
-                  className={cn(
-                    "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
-                    logo.invert && "invert brightness-200"
-                  )}
-                  loading="eager"
-                />
-              </div>
+                src={`/assets/companies/${logo.file}`}
+                alt={logo.name}
+                className={cn(
+                  "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none flex-shrink-0",
+                  logo.invert && "invert brightness-200"
+                )}
+                loading="eager"
+              />
             ))}
           </div>
           {/* Track 2 */}
-          <div className="flex items-center gap-16 pr-16 flex-shrink-0" aria-hidden="true">
+          <div className="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 flex-shrink-0" aria-hidden="true">
             {BRAND_LOGOS_ROW_2.map((logo) => (
-              <div
+              <img
                 key={`${logo.name}-row2-track2`}
-                className="inline-flex items-center justify-center h-12 md:h-16 px-6 md:px-10 flex-shrink-0"
-              >
-                <img
-                  src={`/assets/companies/${logo.file}`}
-                  alt={logo.name}
-                  className={cn(
-                    "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-all duration-300 pointer-events-none select-none",
-                    logo.invert && "invert brightness-200"
-                  )}
-                  loading="eager"
-                />
-              </div>
+                src={`/assets/companies/${logo.file}`}
+                alt={logo.name}
+                className={cn(
+                  "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none flex-shrink-0",
+                  logo.invert && "invert brightness-200"
+                )}
+                loading="eager"
+              />
             ))}
           </div>
         </div>
