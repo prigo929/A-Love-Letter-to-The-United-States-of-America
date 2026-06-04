@@ -148,24 +148,24 @@ export function CultureStyles() {
       .logo-img-dark {
         filter: invert(1) brightness(2) grayscale(1);
         opacity: 0.7;
-        transition: filter 0.35s ease, opacity 0.35s ease;
+        transition: filter 0.18s ease, opacity 0.18s ease;
         pointer-events: none;
         user-select: none;
       }
       .logo-slot:hover .logo-img-dark {
-        filter: invert(1) brightness(2.2);
+        filter: invert(1) brightness(2.2) grayscale(0);
         opacity: 1;
       }
       /* Colored SVGs — appear grey, reveal true brand color on hover */
       .logo-img-color {
-        filter: grayscale(1);
+        filter: grayscale(1) brightness(1);
         opacity: 0.7;
-        transition: filter 0.35s ease, opacity 0.35s ease;
+        transition: filter 0.18s ease, opacity 0.18s ease;
         pointer-events: none;
         user-select: none;
       }
       .logo-slot:hover .logo-img-color {
-        filter: grayscale(0);
+        filter: grayscale(0) brightness(1);
         opacity: 1;
       }
 
