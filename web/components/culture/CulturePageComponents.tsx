@@ -1424,7 +1424,7 @@ export function CultureBrandLogosMarquee() {
                   className={cn(
                     "w-full h-full object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none",
                     logo.scale || "scale-100",
-                    logo.invert && "invert brightness-200"
+                    logo.invert && "invert brightness-200 hover:invert-0 hover:brightness-100"
                   )}
                   loading="eager"
                 />
@@ -1444,7 +1444,7 @@ export function CultureBrandLogosMarquee() {
                   className={cn(
                     "w-full h-full object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none",
                     logo.scale || "scale-100",
-                    logo.invert && "invert brightness-200"
+                    logo.invert && "invert brightness-200 hover:invert-0 hover:brightness-100"
                   )}
                   loading="eager"
                 />
@@ -1470,7 +1470,7 @@ export function CultureBrandLogosMarquee() {
                   className={cn(
                     "w-full h-full object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none",
                     logo.scale || "scale-100",
-                    logo.invert && "invert brightness-200"
+                    logo.invert && "invert brightness-200 hover:invert-0 hover:brightness-100"
                   )}
                   loading="eager"
                 />
@@ -1490,7 +1490,7 @@ export function CultureBrandLogosMarquee() {
                   className={cn(
                     "w-full h-full object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none",
                     logo.scale || "scale-100",
-                    logo.invert && "invert brightness-200"
+                    logo.invert && "invert brightness-200 hover:invert-0 hover:brightness-100"
                   )}
                   loading="eager"
                 />
