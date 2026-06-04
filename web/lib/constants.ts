@@ -210,11 +210,6 @@ export const NAV_SECTIONS = [
     badge: "Global Culture",
     items: [
       {
-        label: "Overview",
-        href: "/culture/overview",
-        description: "The culture hub and soft power thesis",
-      },
-      {
         label: "Film & Storytelling",
         href: "/culture/film-and-storytelling",
         description: "Hollywood and the syntax of human dreaming",
@@ -693,10 +688,6 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "America nu a construit doar o națiune — a construit cultura globală",
     badge: "Cultură Globală",
     items: {
-      "/culture/overview": {
-        label: "Prezentare Generală",
-        description: "Hubul cultural și teza despre soft power",
-      },
       "/culture/film-and-storytelling": {
         label: "Film și Narativă",
         description: "Hollywood și sintaxa viselor umane",
