@@ -54,7 +54,7 @@ interface Cluster {
 }
 
 function getClusters(bases: StrategicBase[], zoom: number): Cluster[] {
-  const threshold = 6 / zoom;
+  const threshold = 12 / zoom;
   const clusters: Cluster[] = [];
   const merged = new Set<string>();
 
