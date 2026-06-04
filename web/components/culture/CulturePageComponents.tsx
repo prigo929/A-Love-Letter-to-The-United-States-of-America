@@ -1409,72 +1409,92 @@ export function CultureBrandLogosMarquee() {
   return (
     <section className="culture-bg pt-8 md:pt-12 pb-16 md:pb-24 overflow-hidden flex flex-col gap-24 md:gap-32">
       {/* Row 1 (Scrolling Left) */}
-      <div className="relative w-full overflow-hidden">
+      <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div className="flex w-max animate-marquee-left whitespace-nowrap">
           {/* Track 1 */}
           <div className="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 flex-shrink-0">
             {BRAND_LOGOS_ROW_1.map((logo) => (
-              <img
+              <div
                 key={`${logo.name}-row1-track1`}
-                src={`/assets/companies/${logo.file}`}
-                alt={logo.name}
-                className={cn(
-                  "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none flex-shrink-0",
-                  logo.invert && "invert brightness-200"
-                )}
-                loading="eager"
-              />
+                className="w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
+              >
+                <img
+                  src={`/assets/companies/${logo.file}`}
+                  alt={logo.name}
+                  className={cn(
+                    "w-full h-full object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none",
+                    logo.scale || "scale-100",
+                    logo.invert && "invert brightness-200"
+                  )}
+                  loading="eager"
+                />
+              </div>
             ))}
           </div>
           {/* Track 2 */}
           <div className="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 flex-shrink-0" aria-hidden="true">
             {BRAND_LOGOS_ROW_1.map((logo) => (
-              <img
+              <div
                 key={`${logo.name}-row1-track2`}
-                src={`/assets/companies/${logo.file}`}
-                alt={logo.name}
-                className={cn(
-                  "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none flex-shrink-0",
-                  logo.invert && "invert brightness-200"
-                )}
-                loading="eager"
-              />
+                className="w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
+              >
+                <img
+                  src={`/assets/companies/${logo.file}`}
+                  alt={logo.name}
+                  className={cn(
+                    "w-full h-full object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none",
+                    logo.scale || "scale-100",
+                    logo.invert && "invert brightness-200"
+                  )}
+                  loading="eager"
+                />
+              </div>
             ))}
           </div>
         </div>
       </div>
 
       {/* Row 2 (Scrolling Right) */}
-      <div className="relative w-full overflow-hidden">
+      <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div className="flex w-max animate-marquee-right whitespace-nowrap">
           {/* Track 1 */}
           <div className="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 flex-shrink-0">
             {BRAND_LOGOS_ROW_2.map((logo) => (
-              <img
+              <div
                 key={`${logo.name}-row2-track1`}
-                src={`/assets/companies/${logo.file}`}
-                alt={logo.name}
-                className={cn(
-                  "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none flex-shrink-0",
-                  logo.invert && "invert brightness-200"
-                )}
-                loading="eager"
-              />
+                className="w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
+              >
+                <img
+                  src={`/assets/companies/${logo.file}`}
+                  alt={logo.name}
+                  className={cn(
+                    "w-full h-full object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none",
+                    logo.scale || "scale-100",
+                    logo.invert && "invert brightness-200"
+                  )}
+                  loading="eager"
+                />
+              </div>
             ))}
           </div>
           {/* Track 2 */}
           <div className="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 flex-shrink-0" aria-hidden="true">
             {BRAND_LOGOS_ROW_2.map((logo) => (
-              <img
+              <div
                 key={`${logo.name}-row2-track2`}
-                src={`/assets/companies/${logo.file}`}
-                alt={logo.name}
-                className={cn(
-                  "h-8 md:h-12 w-auto object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none flex-shrink-0",
-                  logo.invert && "invert brightness-200"
-                )}
-                loading="eager"
-              />
+                className="w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
+              >
+                <img
+                  src={`/assets/companies/${logo.file}`}
+                  alt={logo.name}
+                  className={cn(
+                    "w-full h-full object-contain grayscale opacity-75 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none",
+                    logo.scale || "scale-100",
+                    logo.invert && "invert brightness-200"
+                  )}
+                  loading="eager"
+                />
+              </div>
             ))}
           </div>
         </div>
