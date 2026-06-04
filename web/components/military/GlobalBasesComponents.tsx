@@ -380,18 +380,20 @@ export function GlobalCommandMap({
   };
 
   const handleMove = (newPosition: { coordinates: [number, number]; zoom: number }) => {
-    setPosition(newPosition);
-    if (!isProgrammaticTransitionRef.current) {
-      setProgrammaticViewport(null);
+    if (isProgrammaticTransitionRef.current) {
+      return;
     }
+    setPosition(newPosition);
+    setProgrammaticViewport(null);
   };
 
   const handleMoveEnd = (newPosition: { coordinates: [number, number]; zoom: number }) => {
-    setPosition(newPosition);
     if (isProgrammaticTransitionRef.current) {
       isProgrammaticTransitionRef.current = false;
       setProgrammaticViewport(null);
+      setPosition(newPosition);
     } else {
+      setPosition(newPosition);
       setProgrammaticViewport(null);
     }
   };
@@ -467,6 +469,7 @@ export function GlobalCommandMap({
                       onMove={handleMove}
                       onMoveEnd={handleMoveEnd}
                       translateExtent={[[0, 0], [800, 600]]}
+                      filterZoomEvent={(e: any) => e.type !== "dblclick"}
                     >
                       <Geographies geography={WORLD_GEO_URL}>
                         {({ geographies }: { geographies: any[] }) =>
