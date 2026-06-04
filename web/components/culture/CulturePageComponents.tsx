@@ -602,7 +602,7 @@ export function CultureNumbersStrip({ stats, isRo = false }: CultureNumbersStrip
           {stats.map((stat, i) => (
             <motion.div
               key={i}
-              className="relative overflow-hidden rounded-2xl bg-white/[0.01] border border-white/5 hover:border-glory-gold/30 hover:bg-white/[0.02] p-6 sm:p-8 flex flex-col justify-between group transition-all duration-500 shadow-xl"
+              className="relative overflow-hidden rounded-2xl bg-white/[0.01] border border-white/5 hover:border-glory-gold/30 hover:bg-white/[0.02] p-6 sm:p-8 flex flex-col justify-between group transition-colors duration-500 shadow-xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -1214,7 +1214,7 @@ export function CultureAsymmetryMatrix({ data, headline }: CultureAsymmetryMatri
           {data.map((domain, domainIdx) => (
             <motion.div
               key={domain.domain}
-              className="relative overflow-hidden rounded-xl bg-white/[0.015] border border-white/[0.05] p-5 sm:p-6 hover:border-glory-gold/20 hover:bg-white/[0.025] transition-all duration-500 group"
+              className="relative overflow-hidden rounded-xl bg-white/[0.015] border border-white/[0.05] p-5 sm:p-6 hover:border-glory-gold/20 hover:bg-white/[0.025] transition-colors duration-500 group"
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
@@ -1649,7 +1649,7 @@ export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimeline
                 setSelectedTitle(`${dec.year} — ${dec.title}`);
                 setSelectedSubtitle(dec.sentence);
               }}
-              className="flex-shrink-0 w-[80vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] snap-start bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden group hover:border-glory-gold/30 transition-all duration-500 flex flex-col justify-between culture-gradient-border cursor-pointer"
+              className="flex-shrink-0 w-[80vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] snap-start bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden group hover:border-glory-gold/30 transition-colors duration-500 flex flex-col justify-between culture-gradient-border cursor-pointer"
             >
               <div className="p-6 md:p-8 flex flex-col gap-2">
                 <span className="font-body text-7xl md:text-8xl font-black text-white/[0.03] group-hover:text-glory-gold/8 transition-colors duration-500 leading-none">
@@ -2574,51 +2574,55 @@ export function CultureCulinarySection({ pillars, sectionTitle, isRo }: CultureC
             return (
               <motion.div
                 key={p.title}
-                onClick={() => {
-                  setSelectedImage(imgSrc);
-                  setSelectedTitle(p.title);
-                  setSelectedSubtitle(p.subtitle);
-                }}
-                className="group flex flex-col bg-white/40 backdrop-blur-md rounded-2xl p-5 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.02)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.06)] transition-all duration-500 hover:-translate-y-1.5 cursor-pointer"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                className="h-full"
               >
-                {/* Image Box */}
-                <div className="relative h-[220px] rounded-xl overflow-hidden mb-6 shadow-inner border border-[#0C0907]/5">
-                  <Image
-                    src={imgSrc}
-                    alt={p.title}
-                    fill
-                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-                    sizes="(max-width: 1024px) 100vw, 30vw"
-                    placeholder="blur"
-                    blurDataURL={BLUR_PLACEHOLDER}
-                  />
-                  <div className="absolute inset-0 bg-[#0C0907]/5 group-hover:bg-[#0C0907]/0 transition-colors duration-500" />
-                  {/* Magnifier icon on hover */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-6 h-6 text-white/90">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" />
-                    </svg>
+                <div
+                  onClick={() => {
+                    setSelectedImage(imgSrc);
+                    setSelectedTitle(p.title);
+                    setSelectedSubtitle(p.subtitle);
+                  }}
+                  className="group flex flex-col bg-white/40 backdrop-blur-md rounded-2xl p-5 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.02)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.06)] transition-all duration-500 hover:-translate-y-1.5 cursor-pointer h-full"
+                >
+                  {/* Image Box */}
+                  <div className="relative h-[220px] rounded-xl overflow-hidden mb-6 shadow-inner border border-[#0C0907]/5">
+                    <Image
+                      src={imgSrc}
+                      alt={p.title}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                      sizes="(max-width: 1024px) 100vw, 30vw"
+                      placeholder="blur"
+                      blurDataURL={BLUR_PLACEHOLDER}
+                    />
+                    <div className="absolute inset-0 bg-[#0C0907]/5 group-hover:bg-[#0C0907]/0 transition-colors duration-500" />
+                    {/* Magnifier icon on hover */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-6 h-6 text-white/90">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" />
+                      </svg>
+                    </div>
                   </div>
+
+                  {/* Subtitle / Eyebrow */}
+                  <p className="culture-text-label text-[10px] text-glory-gold tracking-[0.25em] mb-2 font-bold">
+                    {p.subtitle}
+                  </p>
+
+                  {/* Title */}
+                  <h3 className="font-editorial text-2xl font-semibold mb-4 text-[#0C0907]">
+                    {p.title}
+                  </h3>
+
+                  {/* Body Paragraph */}
+                  <p className="font-editorial text-sm text-[#0C0907]/70 leading-relaxed">
+                    {parseTextWithHighlights(p.body)}
+                  </p>
                 </div>
-
-                {/* Subtitle / Eyebrow */}
-                <p className="culture-text-label text-[10px] text-glory-gold tracking-[0.25em] mb-2 font-bold">
-                  {p.subtitle}
-                </p>
-
-                {/* Title */}
-                <h3 className="font-editorial text-2xl font-semibold mb-4 text-[#0C0907]">
-                  {p.title}
-                </h3>
-
-                {/* Body Paragraph */}
-                <p className="font-editorial text-sm text-[#0C0907]/70 leading-relaxed">
-                  {parseTextWithHighlights(p.body)}
-                </p>
               </motion.div>
             );
           })}
@@ -3016,7 +3020,7 @@ export function CultureDigitalPipes({ data, isRo = false }: { data: CultureDigit
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.2 + idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  className="culture-glass rounded-xl p-6 border border-white/[0.04] hover:border-glory-gold/30 transition-all duration-300 group/pipe cursor-default flex flex-col gap-3 relative overflow-hidden"
+                  className="culture-glass rounded-xl p-6 border border-white/[0.04] hover:border-glory-gold/30 transition-colors duration-300 group/pipe cursor-default flex flex-col gap-3 relative overflow-hidden"
                 >
                   <div className="absolute top-0 left-0 w-[2px] h-0 bg-glory-gold group-hover/pipe:h-full transition-all duration-500 ease-out" />
                   
@@ -3040,7 +3044,7 @@ export function CultureDigitalPipes({ data, isRo = false }: { data: CultureDigit
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="relative p-6 sm:p-8 rounded-xl bg-gradient-to-r from-white/[0.01] to-white/[0.03] border border-white/[0.05] hover:border-glory-gold/20 transition-all duration-500 flex flex-col sm:flex-row gap-4 items-center justify-between group/bridge cursor-default overflow-hidden mt-4"
+              className="relative p-6 sm:p-8 rounded-xl bg-gradient-to-r from-white/[0.01] to-white/[0.03] border border-white/[0.05] hover:border-glory-gold/20 transition-colors duration-500 flex flex-col sm:flex-row gap-4 items-center justify-between group/bridge cursor-default overflow-hidden mt-4"
             >
               {/* Subtle tech grid background behind bridge card */}
               <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:14px_24px] opacity-30 pointer-events-none" />
