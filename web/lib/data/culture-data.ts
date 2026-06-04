@@ -497,7 +497,7 @@ export const BRAND_LOGOS_ROW_1 = [
   { name: "Netflix", file: "Netflix_Logo_0.svg" },
   { name: "Disney", file: "Disney_iddEtLt1OH_0.svg", invert: true, scale: "scale-110" },
   { name: "Amazon", file: "Amazon_Logo_0.svg" },
-  { name: "Meta", file: "Meta_idlf4cVSsS_0.svg", invert: true, scale: "scale-130" },
+  { name: "Meta", file: "Meta_idlf4cVSsS_0.svg", scale: "scale-130" },
   { name: "Levi's", file: "Levi's_logo.svg", scale: "scale-95" },
   { name: "Starbucks", file: "Starbucks_Corporation_Logo_2011.svg", scale: "scale-80" },
   { name: "Visa", file: "Visa_Inc._logo_(2021–present).svg", scale: "scale-100" },
