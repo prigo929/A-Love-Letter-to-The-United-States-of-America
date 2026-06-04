@@ -132,11 +132,6 @@ export const NAV_SECTIONS = [
     badge: "$954B Budget",
     items: [
       {
-        label: "Overview",
-        href: "/military",
-        description: "$954B budget, 1.34M active duty",
-      },
-      {
         label: "US Navy",
         href: "/military/navy",
         description: "11 carrier strike groups",
@@ -625,10 +620,6 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "Cea mai puternică forță militară din istoria civilizației",
     badge: "Buget de 954 Mld. $",
     items: {
-      "/military": {
-        label: "Prezentare Generală",
-        description: "954 Mld. $, 1,34 milioane de militari activi",
-      },
       "/military/navy": {
         label: "Marina SUA",
         description: "11 grupuri de atac cu portavion",
