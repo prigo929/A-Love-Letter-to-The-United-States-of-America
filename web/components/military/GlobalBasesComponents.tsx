@@ -42,6 +42,11 @@ const REGION_VIEWPORTS: Record<GlobalBaseRegion, { coordinates: [number, number]
   "Arctic / High North": { coordinates: [-50, 72], zoom: 2.2 },
 };
 
+function parseCoordinates(coordinates: string): [number, number] {
+  const [lat, lon] = coordinates.split(",").map((value) => Number(value.trim()));
+  return [lon, lat];
+}
+
 interface Cluster {
   id: string;
   center: [number, number];
@@ -55,35 +60,41 @@ function getClusters(bases: StrategicBase[], zoom: number): Cluster[] {
 
   const sortedBases = [...bases].sort((a, b) => a.ID.localeCompare(b.ID));
 
-  for (const base of sortedBases) {
-    if (merged.has(base.ID)) continue;
+  const parsedBases = sortedBases.map((b) => ({
+    base: b,
+    coords: parseCoordinates(b.Coordinates),
+  }));
 
-    const baseCoords = parseCoordinates(base.Coordinates);
-    const clusterBases = [base];
-    merged.add(base.ID);
+  for (let i = 0; i < parsedBases.length; i++) {
+    const itemA = parsedBases[i];
+    if (merged.has(itemA.base.ID)) continue;
 
-    for (const otherBase of sortedBases) {
-      if (merged.has(otherBase.ID)) continue;
+    const clusterBases = [itemA.base];
+    merged.add(itemA.base.ID);
 
-      const otherCoords = parseCoordinates(otherBase.Coordinates);
-      const dx = baseCoords[0] - otherCoords[0];
-      const dy = baseCoords[1] - otherCoords[1];
+    let sumLon = itemA.coords[0];
+    let sumLat = itemA.coords[1];
+
+    for (let j = i + 1; j < parsedBases.length; j++) {
+      const itemB = parsedBases[j];
+      if (merged.has(itemB.base.ID)) continue;
+
+      const dx = itemA.coords[0] - itemB.coords[0];
+      const dy = itemA.coords[1] - itemB.coords[1];
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance < threshold) {
-        clusterBases.push(otherBase);
-        merged.add(otherBase.ID);
+        clusterBases.push(itemB.base);
+        merged.add(itemB.base.ID);
+        sumLon += itemB.coords[0];
+        sumLat += itemB.coords[1];
       }
     }
 
-    let sumLon = 0;
-    let sumLat = 0;
-    for (const cb of clusterBases) {
-      const coords = parseCoordinates(cb.Coordinates);
-      sumLon += coords[0];
-      sumLat += coords[1];
-    }
-    const center: [number, number] = [sumLon / clusterBases.length, sumLat / clusterBases.length];
+    const center: [number, number] = [
+      sumLon / clusterBases.length,
+      sumLat / clusterBases.length,
+    ];
 
     clusters.push({
       id: clusterBases.length === 1 ? clusterBases[0].ID : `cluster-${clusterBases[0].ID}`,
@@ -99,11 +110,6 @@ const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0 },
 };
-
-function parseCoordinates(coordinates: string): [number, number] {
-  const [lat, lon] = coordinates.split(",").map((value) => Number(value.trim()));
-  return [lon, lat];
-}
 
 function SectionKicker({ children }: { children: ReactNode }) {
   return (
@@ -448,6 +454,7 @@ export function GlobalCommandMap({
                       zoom={position.zoom}
                       maxZoom={8}
                       minZoom={1}
+                      onMove={handleMoveEnd}
                       onMoveEnd={handleMoveEnd}
                     >
                       <Geographies geography={WORLD_GEO_URL}>
