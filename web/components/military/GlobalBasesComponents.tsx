@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { KeyboardEvent, ReactNode } from "react";
 import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from "react-simple-maps";
 import {
@@ -39,7 +39,7 @@ const REGION_VIEWPORTS: Record<GlobalBaseRegion, { coordinates: [number, number]
   "Middle East": { coordinates: [48, 25], zoom: 3.5 },
   "Americas": { coordinates: [-95, 38], zoom: 1.8 },
   "Africa": { coordinates: [25, 0], zoom: 2 },
-  "Arctic / High North": { coordinates: [-50, 72], zoom: 2.2 },
+  "Arctic / High North": { coordinates: [-108, 62], zoom: 1.5 },
 };
 
 function parseCoordinates(coordinates: string): [number, number] {
@@ -337,6 +337,8 @@ export function GlobalCommandMap({
 
   const [programmaticViewport, setProgrammaticViewport] = useState<{ coordinates: [number, number]; zoom: number } | null>(null);
 
+  const isProgrammaticTransitionRef = useRef(false);
+
   const activeRegion = regions.find((region) => region.id === activeRegionId) ?? regions[0];
   const activeRegionBases = useMemo(
     () => bases.filter((base) => base.Region === activeRegionId),
@@ -349,55 +351,54 @@ export function GlobalCommandMap({
     setIsMapMounted(true);
   }, []);
 
+  const triggerProgrammaticMove = (viewport: { coordinates: [number, number]; zoom: number }) => {
+    isProgrammaticTransitionRef.current = true;
+    setPosition(viewport);
+    setProgrammaticViewport(viewport);
+  };
+
   const handleRegionClick = (regionId: GlobalBaseRegion) => {
     setActiveRegionId(regionId);
     const viewport = REGION_VIEWPORTS[regionId];
     if (viewport) {
-      setPosition(viewport);
-      setProgrammaticViewport(viewport);
+      triggerProgrammaticMove(viewport);
     }
   };
 
   const handleZoomIn = () => {
-    setPosition((pos) => {
-      const nextZoom = Math.min(pos.zoom * 1.5, 8);
-      const nextPos = { ...pos, zoom: nextZoom };
-      setProgrammaticViewport(nextPos);
-      return nextPos;
-    });
+    const nextZoom = Math.min(position.zoom * 1.5, 8);
+    triggerProgrammaticMove({ coordinates: position.coordinates, zoom: nextZoom });
   };
 
   const handleZoomOut = () => {
-    setPosition((pos) => {
-      const nextZoom = Math.max(pos.zoom / 1.5, 1);
-      const nextPos = { ...pos, zoom: nextZoom };
-      setProgrammaticViewport(nextPos);
-      return nextPos;
-    });
+    const nextZoom = Math.max(position.zoom / 1.5, 1);
+    triggerProgrammaticMove({ coordinates: position.coordinates, zoom: nextZoom });
   };
 
   const handleReset = () => {
-    const defaultPos = {
-      coordinates: [12, 24] as [number, number],
-      zoom: 1,
-    };
-    setPosition(defaultPos);
-    setProgrammaticViewport(defaultPos);
+    triggerProgrammaticMove({ coordinates: [12, 24], zoom: 1 });
+  };
+
+  const handleMove = (newPosition: { coordinates: [number, number]; zoom: number }) => {
+    setPosition(newPosition);
+    if (!isProgrammaticTransitionRef.current) {
+      setProgrammaticViewport(null);
+    }
   };
 
   const handleMoveEnd = (newPosition: { coordinates: [number, number]; zoom: number }) => {
     setPosition(newPosition);
-    setProgrammaticViewport(null);
+    if (isProgrammaticTransitionRef.current) {
+      isProgrammaticTransitionRef.current = false;
+      setProgrammaticViewport(null);
+    } else {
+      setProgrammaticViewport(null);
+    }
   };
 
   const handleClusterClick = (cluster: Cluster) => {
     const nextZoom = Math.min(position.zoom * 1.8, 8);
-    const nextPos = {
-      coordinates: cluster.center,
-      zoom: nextZoom,
-    };
-    setPosition(nextPos);
-    setProgrammaticViewport(nextPos);
+    triggerProgrammaticMove({ coordinates: cluster.center, zoom: nextZoom });
 
     const firstBase = cluster.bases[0];
     if (firstBase) {
@@ -408,12 +409,7 @@ export function GlobalCommandMap({
   const handleBaseSelect = (base: StrategicBase) => {
     setSelectedBase(base);
     const baseCoords = parseCoordinates(base.Coordinates);
-    const nextPos = {
-      coordinates: baseCoords,
-      zoom: 5,
-    };
-    setPosition(nextPos);
-    setProgrammaticViewport(nextPos);
+    triggerProgrammaticMove({ coordinates: baseCoords, zoom: 5 });
     setActiveRegionId(base.Region);
   };
 
@@ -468,9 +464,9 @@ export function GlobalCommandMap({
                       zoom={programmaticViewport ? programmaticViewport.zoom : undefined}
                       maxZoom={8}
                       minZoom={1}
-                      onMove={handleMoveEnd}
+                      onMove={handleMove}
                       onMoveEnd={handleMoveEnd}
-                      translateExtent={[[-150, -50], [950, 650]]}
+                      translateExtent={[[0, 0], [800, 600]]}
                     >
                       <Geographies geography={WORLD_GEO_URL}>
                         {({ geographies }: { geographies: any[] }) =>
