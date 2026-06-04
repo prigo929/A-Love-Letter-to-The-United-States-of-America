@@ -143,6 +143,32 @@ export function CultureStyles() {
         will-change: transform;
       }
 
+      /* ── Logo Marquee Hover System ──────────────────────────────── */
+      /* Dark/black SVGs — appear white via invert, stay white on hover */
+      .logo-img-dark {
+        filter: invert(1) brightness(2) grayscale(1);
+        opacity: 0.7;
+        transition: filter 0.35s ease, opacity 0.35s ease;
+        pointer-events: none;
+        user-select: none;
+      }
+      .logo-slot:hover .logo-img-dark {
+        filter: invert(1) brightness(2.2);
+        opacity: 1;
+      }
+      /* Colored SVGs — appear grey, reveal true brand color on hover */
+      .logo-img-color {
+        filter: grayscale(1);
+        opacity: 0.7;
+        transition: filter 0.35s ease, opacity 0.35s ease;
+        pointer-events: none;
+        user-select: none;
+      }
+      .logo-slot:hover .logo-img-color {
+        filter: grayscale(0);
+        opacity: 1;
+      }
+
       /* ── Entry Animations ───────────────────────────────────────── */
       @keyframes fadeInUp {
         from { opacity: 0; transform: translate3d(0, 24px, 0); }
@@ -1416,15 +1442,15 @@ export function CultureBrandLogosMarquee() {
             {BRAND_LOGOS_ROW_1.map((logo) => (
               <div
                 key={`${logo.name}-row1-track1`}
-                className="w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center group"
+                className="logo-slot w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
               >
                 <img
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
                   className={cn(
-                    "w-full h-full object-contain grayscale opacity-75 group-hover:opacity-100 group-hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none",
+                    "w-full h-full object-contain",
                     logo.scale || "scale-100",
-                    logo.invert && "invert brightness-200"
+                    logo.invert ? "logo-img-dark" : "logo-img-color"
                   )}
                   loading="eager"
                 />
@@ -1436,15 +1462,15 @@ export function CultureBrandLogosMarquee() {
             {BRAND_LOGOS_ROW_1.map((logo) => (
               <div
                 key={`${logo.name}-row1-track2`}
-                className="w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center group"
+                className="logo-slot w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
               >
                 <img
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
                   className={cn(
-                    "w-full h-full object-contain grayscale opacity-75 group-hover:opacity-100 group-hover:grayscale-0 transition-[opacity,filter] duration-300 pointer-events-none select-none",
+                    "w-full h-full object-contain",
                     logo.scale || "scale-100",
-                    logo.invert && "invert brightness-200"
+                    logo.invert ? "logo-img-dark" : "logo-img-color"
                   )}
                   loading="eager"
                 />
@@ -1462,15 +1488,15 @@ export function CultureBrandLogosMarquee() {
             {BRAND_LOGOS_ROW_2.map((logo) => (
               <div
                 key={`${logo.name}-row2-track1`}
-                className="w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center group"
+                className="logo-slot w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
               >
                 <img
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
                   className={cn(
-                    "w-full h-full object-contain opacity-60 group-hover:opacity-100 group-hover:[filter:none] transition-[opacity,filter] duration-300 pointer-events-none select-none",
+                    "w-full h-full object-contain",
                     logo.scale || "scale-100",
-                    logo.invert ? "[filter:invert(1)_brightness(2)_grayscale(1)]" : "grayscale"
+                    logo.invert ? "logo-img-dark" : "logo-img-color"
                   )}
                   loading="eager"
                 />
@@ -1482,15 +1508,15 @@ export function CultureBrandLogosMarquee() {
             {BRAND_LOGOS_ROW_2.map((logo) => (
               <div
                 key={`${logo.name}-row2-track2`}
-                className="w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center group"
+                className="logo-slot w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
               >
                 <img
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
                   className={cn(
-                    "w-full h-full object-contain opacity-60 group-hover:opacity-100 group-hover:[filter:none] transition-[opacity,filter] duration-300 pointer-events-none select-none",
+                    "w-full h-full object-contain",
                     logo.scale || "scale-100",
-                    logo.invert ? "[filter:invert(1)_brightness(2)_grayscale(1)]" : "grayscale"
+                    logo.invert ? "logo-img-dark" : "logo-img-color"
                   )}
                   loading="eager"
                 />
