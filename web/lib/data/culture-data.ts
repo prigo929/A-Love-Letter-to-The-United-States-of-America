@@ -490,7 +490,7 @@ export function getCultureDecades(locale: Locale): CultureDecade[] {
 
 export const BRAND_LOGOS_ROW_1 = [
   { name: "Apple", file: "Apple_Logo white.svg", scale: "scale-90" },
-  { name: "Nike", file: "Logo_NIKE.svg", invert: true, scale: "scale-105" },
+  { name: "Nike", file: "Logo_NIKE.svg", invert: true, scale: "scale-90" },
   { name: "Google", file: "Google_Logo_0.svg", scale: "scale-95" },
   { name: "Coca-Cola", file: "Coca-Cola_Logo_0.svg", scale: "scale-110" },
   { name: "McDonald's", file: "McDonald's_Symbol_0.svg", scale: "scale-90" },
@@ -509,7 +509,7 @@ export const BRAND_LOGOS_ROW_1 = [
   { name: "Ford", file: "Ford-Motor-Company-Logo.png", scale: "scale-95" },
   { name: "GE Aerospace", file: "ge-aerospace.svg", invert: true, scale: "scale-100" },
   { name: "American Express", file: "American_Express_logo_(2018).svg", scale: "scale-95" },
-  { name: "Delta Air Lines", file: "delta-air-lines.svg", invert: true, scale: "scale-95" },
+  { name: "Delta Air Lines", file: "delta-air-lines.svg", invert: true, scale: "scale-120" },
   { name: "FedEx", file: "FedEx_Express.svg", scale: "scale-95" },
   { name: "Epic Games", file: "Epic_Games_logo.svg", invert: true, scale: "scale-90" },
   { name: "Paramount", file: "Paramount_idOwWCnILA_0.svg", invert: true, scale: "scale-100" },

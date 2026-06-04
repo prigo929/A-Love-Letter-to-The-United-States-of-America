@@ -1412,7 +1412,7 @@ export function CultureBrandLogosMarquee() {
       <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div className="flex w-max animate-marquee-left whitespace-nowrap">
           {/* Track 1 */}
-          <div className="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 flex-shrink-0">
+          <div className="flex items-center gap-24 md:gap-36 pr-24 md:pr-36 flex-shrink-0">
             {BRAND_LOGOS_ROW_1.map((logo) => (
               <div
                 key={`${logo.name}-row1-track1`}
@@ -1432,7 +1432,7 @@ export function CultureBrandLogosMarquee() {
             ))}
           </div>
           {/* Track 2 */}
-          <div className="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 flex-shrink-0" aria-hidden="true">
+          <div className="flex items-center gap-24 md:gap-36 pr-24 md:pr-36 flex-shrink-0" aria-hidden="true">
             {BRAND_LOGOS_ROW_1.map((logo) => (
               <div
                 key={`${logo.name}-row1-track2`}
@@ -1458,7 +1458,7 @@ export function CultureBrandLogosMarquee() {
       <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div className="flex w-max animate-marquee-right whitespace-nowrap">
           {/* Track 1 */}
-          <div className="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 flex-shrink-0">
+          <div className="flex items-center gap-24 md:gap-36 pr-24 md:pr-36 flex-shrink-0">
             {BRAND_LOGOS_ROW_2.map((logo) => (
               <div
                 key={`${logo.name}-row2-track1`}
@@ -1478,7 +1478,7 @@ export function CultureBrandLogosMarquee() {
             ))}
           </div>
           {/* Track 2 */}
-          <div className="flex items-center gap-16 md:gap-24 pr-16 md:pr-24 flex-shrink-0" aria-hidden="true">
+          <div className="flex items-center gap-24 md:gap-36 pr-24 md:pr-36 flex-shrink-0" aria-hidden="true">
             {BRAND_LOGOS_ROW_2.map((logo) => (
               <div
                 key={`${logo.name}-row2-track2`}
