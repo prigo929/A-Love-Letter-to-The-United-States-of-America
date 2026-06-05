@@ -1,0 +1,765 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  Play, 
+  X, 
+  Film, 
+  Sparkles, 
+  Tv, 
+  Layers, 
+  Compass, 
+  Music, 
+  HelpCircle, 
+  Maximize2, 
+  Volume2, 
+  Eye, 
+  BookOpen,
+  Home,
+  ChevronRight
+} from "lucide-react";
+import { GalleryImage } from "@/lib/data/gallery";
+import { CultureStyles } from "./CulturePageComponents";
+
+
+
+interface FilmAndStorytellingClientProps {
+  filmImages: GalleryImage[];
+  isRo?: boolean;
+  hollywoodData: {
+    eyebrow: string;
+    headline: string;
+    pullQuote: string;
+    body: string;
+    stats: Array<{ value: string; label: string }>;
+  };
+}
+
+export function FilmAndStorytellingClient({ 
+  filmImages, 
+  isRo = false, 
+  hollywoodData 
+}: FilmAndStorytellingClientProps) {
+  const [theaterMode, setTheaterMode] = useState(false);
+  const [activeEra, setActiveEra] = useState<"golden" | "new" | "digital">("golden");
+  const [selectedMovie, setSelectedMovie] = useState<GalleryImage | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Trigger theater mode scroll and status
+  useEffect(() => {
+    if (theaterMode && scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [theaterMode]);
+
+  // Handle escape key to exit modals or theater mode
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (selectedMovie) {
+          setSelectedMovie(null);
+        } else if (theaterMode) {
+          setTheaterMode(false);
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedMovie, theaterMode]);
+
+  const content = {
+    theaterModeToggle: isRo ? "Mod Cinema" : "Theater Mode",
+    theaterModeDesc: isRo 
+      ? "Apasă pentru a reduce luminozitatea și a activa proiectorul de film"
+      : "Engage to dim ambient elements and enable the film projector layer",
+    theaterModeActive: isRo 
+      ? "🎥 Mod Cinema Activ — Esc pentru ieșire"
+      : "🎥 Theater Mode Active — Esc to Exit",
+    eraTitle: isRo ? "EPOCHILE CINEMATOGRAFICE ALE AMERICII" : "THE CINEMATIC EPOCHS OF AMERICA",
+    eraSubtitle: isRo 
+      ? "Cum competiția liberă și inovația tehnică au remodelat peisajul narativ global"
+      : "How free competition and technical risk-taking reshaped global narrative forms",
+    grammarTitle: isRo ? "SINTAXA VIZUALĂ: CUM VISEAZĂ PLANETA" : "VISUAL SYNTAX: HOW THE PLANET DREAMS",
+    grammarSubtitle: isRo 
+      ? "Inovațiile gramaticale pe care Hollywood le-a transformat în limbajul universal al atenției"
+      : "The grammatical structures Hollywood standardized into a universal linguistic currency of attention",
+    posterShelfTitle: isRo ? "RAFTUL DE POSTERE FILME CLASICE" : "CLASSIC CINEMATIC POSTER SHELF",
+    posterShelfSubtitle: isRo 
+      ? "Apasă pe poster pentru a analiza inovația cinematografică din spatele fiecărei capodopere"
+      : "Click on any theatrical poster to analyze the technical and storytelling breakthrough behind the masterpiece",
+    modalDirector: isRo ? "Regizor" : "Director",
+    modalYear: isRo ? "An Lansare" : "Release Year",
+    modalRuntime: isRo ? "Durată" : "Runtime",
+    modalGenre: isRo ? "Gen" : "Genre",
+    modalBreakthrough: isRo ? "Inovație Cheie" : "Key Cinematic Breakthrough",
+    closeBtn: isRo ? "Închide" : "Close",
+    backLink: isRo ? "← Înapoi la Prezentare Generală" : "← Back to Overview",
+    nextLink: isRo ? "Sportul American →" : "American Sports →",
+  };
+
+  const eras = {
+    golden: {
+      title: isRo ? "Epoca de Aur (1920-1950)" : "The Golden Age (1920-1950)",
+      headline: isRo ? "Sistemul de Studiouri și Montajul de Continuitate" : "The Studio System & Continuity",
+      desc: isRo 
+        ? "Dezvoltat în timpul ascensiunii marilor studiouri din Los Angeles, acest sistem a creat regulile gramaticale fundamentale ale filmului. Principiul montajului invizibil a creat o continuitate perfectă a spațiului și timpului, atrăgând publicul în poveste fără să observe tăieturile."
+        : "Developed during the rise of Los Angeles' major studios, this era established the fundamental grammatical rules of cinema. The principle of invisible editing constructed a seamless continuity of space and time, pulling audiences into narratives without notice.",
+      keyTech: isRo 
+        ? ["Regula de 180 de Grade pentru convergența privirilor", "Sistemul contractelor de exclusivitate cu mari actori", "Inovația culorilor prin Technicolor în 3 benzi", "Standardizarea genurilor (Western, Noir, Musical)"]
+        : ["The 180-Degree Rule for seamless eye-line matching", "Exclusive star-contract studio roster system", "Technicolor 3-strip chemistry and visual saturation", "Classic genre formulas (Westerns, Noir, Musicals)"],
+      quote: isRo 
+        ? "„Cinemaul nu este o felie de viață, ci o felie de tort.”"
+        : "\"Cinema is not a slice of life, it's a piece of cake.\"",
+      quoteAuthor: "Alfred Hitchcock",
+    },
+    new: {
+      title: isRo ? "Noul Hollywood (1960-1970)" : "New Hollywood (1960-1970)",
+      headline: isRo ? "Auteur-ii și Deconstrucția Miturilor" : "Auteurs & Deconstructed Myths",
+      desc: isRo 
+        ? "Odată cu prăbușirea vechiului cod de cenzură, o nouă generație de regizori instruiți în școli de film a preluat frâiele. Influențați de modernismul european, au deconstruit genurile clasice și au înlocuit eroii ideali cu anti-eroi complecși pe fundalul realității urbane."
+        : "With the collapse of the old censorship code, a new wave of film-school educated directors took creative control. Inspired by European modernism, they deconstructed classic genres, replacing idealized heroes with complex, morally gray anti-heroes set in gritty realism.",
+      keyTech: isRo 
+        ? ["Auteurismul - controlul creativ deplin al regizorului", "Filmări pe străzi reale în loc de decoruri de studio", "Ambiguitate morală și finaluri deschise", "Montaj experimental (jump cuts, montaj sonor)"]
+        : ["Auteur Theory - absolute creative dominance of the director", "Location shooting on real streets instead of studio backlots", "Moral ambiguity and open-ended narrative resolutions", "Experimental editing (jump cuts, overlapping soundscapes)"],
+      quote: isRo 
+        ? "„Cel mai practic lucru pe care îl poți face în artă este să îți urmezi intuiția.”"
+        : "\"The most businesslike thing you can do in art is to follow your own intuition.\"",
+      quoteAuthor: "Francis Ford Coppola",
+    },
+    digital: {
+      title: isRo ? "Blockbuster & Digital (1980-Prezent)" : "Blockbuster & Digital (1980-Pres.)",
+      headline: isRo ? "Spectacolul High-Concept și CGI" : "High-Concept Spectacle & CGI",
+      desc: isRo 
+        ? "Începând cu Jaws și Star Wars, Hollywood a perfecționat filmul de tip eveniment global. Narațiunile au devenit 'high-concept' (ușor de explicat într-o propoziție), iar apariția efectelor digitale (CGI) a transformat ecranul într-o pânză a imaginației nelimitate, accesibilă oricărei limbi."
+        : "Pivoting with Jaws and Star Wars, Hollywood mastered the global event movie. Narratives were built around clear, 'high-concept' premises easily pitched in a single sentence, while computer-generated imagery (CGI) turned screens into spaces of limitless sensory fantasy.",
+      keyTech: isRo 
+        ? ["CGI de ultimă generație și mapare digitală a mișcării", "Macro-narațiuni (universuri cinematografice extinse)", "Sisteme de sunet multi-canal Dolby Atmos & IMAX", "Strategii de marketing global simultan"]
+        : ["State-of-the-art CGI, rendering, and performance capture", "Macro-storytelling (interconnected cinematic universes)", "Dolby Atmos multi-channel surround and IMAX format scale", "Simultaneous worldwide multi-platform saturation releases"],
+      quote: isRo 
+        ? "„De fiecare dată când merg la un film, este ceva magic, indiferent despre ce e vorba.”"
+        : "\"Every time I go to a movie, it's magic, no matter what the movie's about.\"",
+      quoteAuthor: "Steven Spielberg",
+    }
+  };
+
+  const grammarCards = [
+    {
+      icon: <Layers className="w-6 h-6 text-glory-gold" />,
+      title: isRo ? "Montajul Paralel (Cross-Cutting)" : "Parallel Editing",
+      text: isRo 
+        ? "Prezentarea a două acțiuni în locuri diferite simultan. Această invenție gramaticală timpurie a permis Hollywood-ului să creeze tensiune și suspans extrem, stabilind ritmul de bază pentru thrillere și filme de acțiune."
+        : "Showing two separate actions in different locations simultaneously. This early grammatical invention allowed Hollywood to engineer supreme suspense, establishing the fundamental pacing of thrillers and action sequences.",
+      example: "Inception, The Godfather (Christening scene)"
+    },
+    {
+      icon: <Compass className="w-6 h-6 text-glory-gold" />,
+      title: isRo ? "Monomitul: Călătoria Eroului" : "The Hero's Journey",
+      text: isRo 
+        ? "Structurarea scenariilor pe baza etapelor mitologice identificate de Joseph Campbell (Plecare, Inițiere, Întoarcere). Această rețetă oferă filmelor rezonanță emoțională universală în orice cultură."
+        : "Structuring screenplays around Joseph Campbell's universal mythological stages (Departure, Initiation, Return). This structural blueprint gives movies intuitive emotional resonance across all human cultures.",
+      example: "Star Wars, The Matrix, The Lion King"
+    },
+    {
+      icon: <Music className="w-6 h-6 text-glory-gold" />,
+      title: isRo ? "Leitmotivul Muzical în Sunet" : "The Musical Leitmotif",
+      text: isRo 
+        ? "Asocierea unor teme orchestrale specifice fiecărui personaj sau concept. Adaptat din opera wagneriană, acest truc ghidează subconștientul spectatorului, dând o identitate sonoră memorabilă filmelor."
+        : "Assigning specific orchestral signatures to characters, themes, or objects. Adapted from Wagnerian opera, this system guides the viewer's subconscious, creating instant auditory recognition.",
+      example: "Jaws, Star Wars (John Williams), Inception (Hans Zimmer)"
+    },
+    {
+      icon: <Tv className="w-6 h-6 text-glory-gold" />,
+      title: isRo ? "Narațiunea High-Concept" : "High-Concept Narrative",
+      text: isRo 
+        ? "Construirea poveștii în jurul unui sâmbure narativ atât de simplu și vizual încât poate fi explicat într-o singură propoziție. Aceasta permite traducerea facilă pe piețele externe, fără bariere culturale."
+        : "Designing movies around a hook so simple and highly visual it can be fully pitched in a single sentence. This streamlines cross-border distribution and eliminates semantic barriers for global crowds.",
+      example: "Jurassic Park (\"Cloned dinosaurs run loose in an island theme park\")"
+    }
+  ];
+
+  // Helper to get movie extra data based on image path
+  const getMovieExtraData = (path: string) => {
+    const p = path.toLowerCase();
+    if (p.includes("blade runner")) {
+      return {
+        director: "Ridley Scott",
+        year: "1982",
+        genre: isRo ? "Sci-Fi / Neo-Noir" : "Sci-Fi / Neo-Noir",
+        runtime: "117 min",
+        innovationTitle: isRo ? "Estetică Cyberpunk & Worldbuilding" : "Cyberpunk Aesthetic & Worldbuilding",
+        innovationText: isRo 
+          ? "Blade Runner a redefinit modul în care cinematografia imaginează viitorul. Splicing-ul dintre neonul japonez, ploaia continuă din Los Angeles și arhitectura retro-fitted a creat modelul vizual pentru întregul gen cyberpunk."
+          : "Blade Runner redefined how cinema imagines the future. Splicing Japanese neon, continuous Los Angeles rain, and retro-fitted architecture, it established the visual template for the entire cyberpunk genre."
+      };
+    }
+    if (p.includes("goodfellas")) {
+      return {
+        director: "Martin Scorsese",
+        year: "1990",
+        genre: isRo ? "Biografic / Crimă" : "Biographical / Crime",
+        runtime: "145 min",
+        innovationTitle: isRo ? "Montaj Hiperkinetic & Narațiune Voiceover" : "Hyper-Kinetic Editing & Voiceover",
+        innovationText: isRo
+          ? "Goodfellas a spart structurile narative liniare prin utilizarea cadrelor înghețate (freeze-frames), tăieturilor rapide de montaj și a narațiunii suprapuse dinamice, influențând zeci de regizori moderni."
+          : "Goodfellas shattered linear narrative structures through dynamic freeze-frames, rapid whip-pan edits, and overlapping double voiceover narration, shaping decades of modern filmmaking."
+      };
+    }
+    if (p.includes("interstellar")) {
+      return {
+        director: "Christopher Nolan",
+        year: "2014",
+        genre: isRo ? "Sci-Fi / Aventură" : "Sci-Fi / Adventure",
+        runtime: "169 min",
+        innovationTitle: isRo ? "Fizică Teoretică & Emoție la Scară Cosmică" : "Theoretical Physics & Cosmic Emotion",
+        innovationText: isRo
+          ? "Filmul a colaborat îndeaproape cu astrofizicianul Kip Thorne pentru a crea prima reprezentare vizuală precisă din punct de vedere științific a unei găuri negre supermasive (Gargantua), randată pe baza ecuațiilor relativității generale."
+          : "The film collaborated closely with astrophysicist Kip Thorne to build the first scientifically accurate visual model of a supermasive black hole (Gargantua), rendered using general relativity equations."
+      };
+    }
+    if (p.includes("avengers") || p.includes("endgame")) {
+      return {
+        director: "Anthony & Joe Russo",
+        year: "2019",
+        genre: isRo ? "Acțiune / Sci-Fi" : "Action / Sci-Fi",
+        runtime: "181 min",
+        innovationTitle: isRo ? "Macro-Narațiune de Univers Interconectat" : "Interconnected Shared Universe",
+        innovationText: isRo
+          ? "Reprezintă apogeul unui experiment narativ fără precedent: interconectarea a 22 de filme diferite pe parcursul a 11 ani într-o singură macro-narațiune coerentă și profitabilă la nivel global."
+          : "Represents the absolute peak of an unprecedented storytelling experiment: interconnecting 22 separate films over 11 years into a single, cohesive, globally dominant narrative arc."
+      };
+    }
+    if (p.includes("saving private ryan")) {
+      return {
+        director: "Steven Spielberg",
+        year: "1998",
+        genre: isRo ? "Dramă / Război" : "Drama / War",
+        runtime: "169 min",
+        innovationTitle: isRo ? "Realismul Combativ & Unghiul Obturatorului" : "Combat Realism & Shutter Angle",
+        innovationText: isRo
+          ? "Spielberg a desincronizat obturatorul camerei la 45 sau 90 de grade în loc de standardul de 180, eliminând neclaritatea de mișcare pentru a reda explozii și lupte cu o claritate stroboscopică, viscerală și copleșitoare."
+          : "Spielberg desynchronized the camera shutter to 45 or 90 degrees instead of the 180-degree standard, stripping motion blur to render explosions and flying shrapnel with stroboscopic, visceral clarity."
+      };
+    }
+    if (p.includes("dark knight")) {
+      return {
+        director: "Christopher Nolan",
+        year: "2008",
+        genre: isRo ? "Acțiune / Thriller" : "Action / Thriller",
+        runtime: "152 min",
+        innovationTitle: isRo ? "Cinema cu Supereroi în Format IMAX" : "Comic Book Cinema in IMAX Scale",
+        innovationText: isRo
+          ? "Primul lungmetraj major de ficțiune care a folosit camere native IMAX de 70mm pentru secvențe de acțiune cheie, ridicând cinematografia cu supereroi la rangul de tragedie urbană shakespeariană."
+          : "The first major narrative feature to utilize native 70mm IMAX cameras for key action sequences, elevating comic-book adaptations into high-stakes, grand-scale urban tragedies."
+      };
+    }
+    if (p.includes("matrix")) {
+      return {
+        director: "Lana & Lilly Wachowski",
+        year: "1999",
+        genre: isRo ? "Sci-Fi / Acțiune" : "Sci-Fi / Action",
+        runtime: "136 min",
+        innovationTitle: isRo ? "Bullet-Time & Coregrafia Digitală" : "Bullet-Time & Cyberpunk Philosophy",
+        innovationText: isRo
+          ? "Introducerea efectului revoluționar 'bullet-time' (folosind zeci de camere fixe declanșate secvențial) a permis camerei să se miște în timp real în jurul personajelor înghețate într-o mișcare ultra-lentă."
+          : "The introduction of the revolutionary 'bullet-time' effect (using a circular array of still cameras triggered sequentially) allowed the camera to orbit characters frozen in hyper-slow motion."
+      };
+    }
+    if (p.includes("titanic")) {
+      return {
+        director: "James Cameron",
+        year: "1997",
+        genre: isRo ? "Dramă / Romantic" : "Drama / Romance",
+        runtime: "194 min",
+        innovationTitle: isRo ? "Simulări de Mulțime & Producție la Scară Gigantă" : "Digital Crowd Simulation & Epic Scale",
+        innovationText: isRo
+          ? "Filmul a dezvoltat software specializat de simulare a mulțimilor umane pentru a popula nava digitală în timpul scufundării, îmbinând modelarea fizică la scară reală cu efectele digitale de ultimă generație."
+          : "The film developed pioneering software for human crowd simulation to populate the digital ship during sinking, merging real-scale physical models with cutting-edge digital composites."
+      };
+    }
+    return {
+      director: "Hollywood Director",
+      year: "Classic",
+      genre: isRo ? "Cinematografie" : "Cinematography",
+      runtime: "N/A",
+      innovationTitle: isRo ? "Inovație Americană" : "American Innovation",
+      innovationText: isRo ? "Inovație tehnică și narativă majoră." : "Major technical and narrative innovation."
+    };
+  };
+
+  return (
+    <div 
+      ref={scrollRef}
+      className={`transition-all duration-1000 relative ${
+        theaterMode ? "bg-black text-gray-200" : "culture-bg text-[#F5EDD8]"
+      }`}
+    >
+      <CultureStyles />
+
+      {/* ─── Theater Mode Interactive Overlays ─────────────────────────────────── */}
+      <AnimatePresence>
+        {theaterMode && (
+          <>
+            {/* Film Widescreen Letterbox Bars */}
+            <motion.div 
+              initial={{ height: 0 }}
+              animate={{ height: "4rem" }}
+              exit={{ height: 0 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="fixed top-0 left-0 right-0 bg-black z-50 pointer-events-none border-b border-white/5"
+            />
+            <motion.div 
+              initial={{ height: 0 }}
+              animate={{ height: "4rem" }}
+              exit={{ height: 0 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="fixed bottom-0 left-0 right-0 bg-black z-50 pointer-events-none border-t border-white/5"
+            />
+
+            {/* Vintage Film Grain Projector Overlay */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.08 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-40 pointer-events-none overflow-hidden bg-film-noise animate-film-grain"
+            />
+
+            {/* Floating indicator */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="fixed top-20 right-6 z-50 bg-glory-gold/90 text-navy-dark text-[10px] font-sans font-bold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-lg"
+            >
+              {content.theaterModeActive}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-24 font-editorial">
+        <nav
+          aria-label={isRo ? "Fir de navigare" : "Breadcrumb"}
+          className="flex flex-wrap items-center gap-1.5 font-body text-sm text-white/50 mb-12 font-sans"
+        >
+          <Link
+            href="/"
+            className="flex items-center gap-1 transition-colors duration-150 hover:text-white"
+          >
+            <Home className="h-3.5 w-3.5" aria-hidden="true" />
+            <span className="sr-only">{isRo ? "Acasă" : "Home"}</span>
+          </Link>
+
+          <ChevronRight className="h-3 w-3 shrink-0 opacity-40" aria-hidden="true" />
+          <Link
+            href="/culture"
+            className="transition-colors duration-150 hover:text-white"
+          >
+            {isRo ? "Cultură" : "Culture"}
+          </Link>
+
+          <ChevronRight className="h-3 w-3 shrink-0 opacity-40" aria-hidden="true" />
+          <span className="text-white font-medium" aria-current="page">
+            {isRo ? "Film și Narativă" : "Film & Storytelling"}
+          </span>
+
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: isRo ? "Acasă" : "Home", item: "/" },
+                  { "@type": "ListItem", position: 2, name: isRo ? "Cultură" : "Culture", item: "/culture" },
+                  { "@type": "ListItem", position: 3, name: isRo ? "Film și Narativă" : "Film & Storytelling" },
+                ],
+              }),
+            }}
+          />
+        </nav>
+
+
+        {/* Header Controls Area */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 border-b border-white/10 pb-8 font-sans">
+          <div>
+            <span className="culture-text-label text-glory-gold block mb-2">
+              {hollywoodData.eyebrow}
+            </span>
+            <h1 className="culture-text-hero text-[#F5EDD8]">
+              {hollywoodData.headline}
+            </h1>
+          </div>
+
+          {/* Theater Mode Action Button */}
+          <button
+            onClick={() => setTheaterMode(!theaterMode)}
+            className={`group flex items-center gap-3 px-5 py-3 rounded-full border text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
+              theaterMode 
+                ? "bg-glory-gold text-navy-dark border-glory-gold hover:bg-white hover:border-white shadow-[0_0_20px_rgba(255,215,0,0.15)]" 
+                : "bg-white/5 text-[#F5EDD8] border-white/10 hover:bg-white hover:text-navy-dark hover:border-white"
+            }`}
+            title={content.theaterModeDesc}
+          >
+            <Film className={`w-4 h-4 transition-transform duration-500 group-hover:rotate-12 ${
+              theaterMode ? "animate-pulse" : ""
+            }`} />
+            {content.theaterModeToggle}
+            {theaterMode && <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping" />}
+          </button>
+        </div>
+
+        {/* Hero & Longread Editorial */}
+        <section className="mb-24">
+          <div className="grid gap-12 lg:grid-cols-3 items-start">
+            <div className="lg:col-span-2">
+              <blockquote className="text-2xl md:text-3xl font-editorial italic text-[#F5EDD8]/90 leading-relaxed mb-8 pl-6 border-l-2 border-[#E8391B]">
+                "{hollywoodData.pullQuote}"
+              </blockquote>
+
+              <p className="font-sans text-base text-[#F5EDD8]/70 leading-relaxed">
+                {hollywoodData.body}
+              </p>
+            </div>
+
+            {/* Sidebar Stats */}
+            <div className="culture-glass rounded-2xl p-6 border border-white/5 space-y-6 font-sans relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-b from-glory-gold/[0.02] to-transparent pointer-events-none" />
+              {hollywoodData.stats.map((stat, idx) => (
+                <div key={idx} className="border-b border-white/5 pb-4 last:border-0 last:pb-0 relative z-10">
+                  <div className="text-4xl font-bold text-white tracking-tight group-hover:text-glory-gold transition-colors duration-300">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-glory-gold uppercase tracking-wider mt-1">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Timeline of Cinematic Eras ─────────────────────────────────────── */}
+        <section className="mb-24 border-t border-white/10 pt-16 font-sans">
+          <div className="mb-12 text-center md:text-left">
+            <h2 className="text-xs font-semibold tracking-wider text-glory-gold uppercase mb-2">
+              {content.eraTitle}
+            </h2>
+            <p className="text-sm text-[#F5EDD8]/60 font-serif italic max-w-2xl">
+              {content.eraSubtitle}
+            </p>
+          </div>
+
+          {/* Timeline Tabs Header */}
+          <div className="flex flex-wrap md:flex-nowrap border-b border-white/5 mb-10 gap-2 overflow-x-auto pb-1 no-scrollbar">
+            {(Object.keys(eras) as Array<keyof typeof eras>).map((eraKey) => (
+              <button
+                key={eraKey}
+                onClick={() => setActiveEra(eraKey)}
+                className={`px-6 py-4 text-sm font-semibold uppercase tracking-wider border-b-2 transition-all duration-300 whitespace-nowrap ${
+                  activeEra === eraKey
+                    ? "border-glory-gold text-glory-gold bg-white/[0.02]"
+                    : "border-transparent text-[#F5EDD8]/50 hover:text-[#F5EDD8] hover:bg-white/[0.01]"
+                }`}
+              >
+                {eras[eraKey].title}
+              </button>
+            ))}
+          </div>
+
+          {/* Timeline Tab Content */}
+          <div className="culture-glass rounded-2xl p-8 md:p-10 border border-white/5 min-h-[300px] flex flex-col justify-between relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-glory-gold/[0.01] to-transparent pointer-events-none" />
+            
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeEra}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.4 }}
+                className="grid gap-10 lg:grid-cols-12 items-start"
+              >
+                {/* Era explanation */}
+                <div className="lg:col-span-7 space-y-6">
+                  <span className="text-xs text-glory-gold uppercase tracking-widest font-bold block">
+                    {eras[activeEra].title}
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-editorial text-white font-bold leading-tight">
+                    {eras[activeEra].headline}
+                  </h3>
+                  <p className="text-sm text-[#F5EDD8]/70 leading-relaxed font-sans">
+                    {eras[activeEra].desc}
+                  </p>
+
+                  <div className="pt-4 space-y-2">
+                    <h4 className="text-xs font-semibold text-white uppercase tracking-wider mb-3">
+                      {isRo ? "Inovații Industriale & Artistice:" : "Industrial & Artistic Breakthroughs:"}
+                    </h4>
+                    <div className="grid gap-2 sm:grid-cols-2">
+                      {eras[activeEra].keyTech.map((tech, idx) => (
+                        <div key={idx} className="flex items-center gap-3 text-xs text-[#F5EDD8]/80 font-sans">
+                          <span className="w-1.5 h-1.5 rounded-full bg-glory-gold shrink-0" />
+                          <span>{tech}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Director Quote Showcase */}
+                <div className="lg:col-span-5 flex flex-col justify-center h-full border-t lg:border-t-0 lg:border-l border-white/5 pt-8 lg:pt-0 lg:pl-10">
+                  <div className="relative p-6 rounded-xl bg-black/20 border border-white/5">
+                    <span className="font-editorial text-glory-gold/5 text-[90px] leading-none absolute -top-4 -left-1 select-none pointer-events-none">
+                      &ldquo;
+                    </span>
+                    <p className="font-editorial italic text-lg text-[#F5EDD8]/90 relative z-10 leading-relaxed mb-4">
+                      {eras[activeEra].quote}
+                    </p>
+                    <div className="text-xs uppercase tracking-widest font-bold text-glory-gold font-sans">
+                      — {eras[activeEra].quoteAuthor}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </section>
+
+        {/* ─── Cinematic Grammar Grid ─────────────────────────────────────────── */}
+        <section className="mb-24 border-t border-white/10 pt-16 font-sans">
+          <div className="mb-12 text-center md:text-left">
+            <h2 className="text-xs font-semibold tracking-wider text-glory-gold uppercase mb-2">
+              {content.grammarTitle}
+            </h2>
+            <p className="text-sm text-[#F5EDD8]/60 font-serif italic max-w-2xl">
+              {content.grammarSubtitle}
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {grammarCards.map((card, idx) => (
+              <div
+                key={idx}
+                className="culture-glass rounded-2xl p-6 border border-white/5 hover:border-glory-gold/30 hover:bg-white/[0.02] transition-all duration-300 flex flex-col justify-between group cursor-default"
+              >
+                <div>
+                  <div className="p-3 bg-white/[0.03] rounded-xl w-fit mb-5 group-hover:bg-glory-gold/10 transition-colors duration-300">
+                    {card.icon}
+                  </div>
+                  <h3 className="text-base font-bold text-white mb-3 tracking-tight group-hover:text-glory-gold transition-colors duration-300">
+                    {card.title}
+                  </h3>
+                  <p className="text-xs text-[#F5EDD8]/60 leading-relaxed mb-6">
+                    {card.text}
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-white/5">
+                  <span className="text-[10px] text-glory-gold uppercase tracking-wider block font-bold mb-1">
+                    {isRo ? "Exemple cheie:" : "Key Example:"}
+                  </span>
+                  <span className="text-xs text-white/95 font-serif italic">
+                    {card.example}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ─── Poster Grid Shelf (Interactive Film Vault) ────────────────────────── */}
+        <section className="border-t border-white/10 pt-16 mb-20 font-sans">
+          <div className="mb-12 text-center md:text-left">
+            <h2 className="text-xs font-semibold tracking-wider text-glory-gold uppercase mb-2">
+              {content.posterShelfTitle}
+            </h2>
+            <p className="text-sm text-[#F5EDD8]/60 font-serif italic">
+              {content.posterShelfSubtitle}
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {filmImages.map((img) => (
+              <div
+                key={img.id}
+                onClick={() => setSelectedMovie(img)}
+                className="group relative culture-glass rounded-2xl overflow-hidden border border-white/5 hover:border-glory-gold/30 hover:scale-[1.02] hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-300 flex flex-col cursor-pointer bg-black/20"
+              >
+                {/* Poster Frame Container */}
+                <div className="relative aspect-[2/3] w-full overflow-hidden bg-black/40">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  />
+                  {/* Hover Overlay Shimmer */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                    <span className="bg-glory-gold text-navy-dark text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-md">
+                      <Maximize2 className="w-3 h-3" />
+                      {isRo ? "Analizează" : "Analyze"}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Card Title Label */}
+                <div className="p-4 border-t border-white/5">
+                  <h3 className="text-sm font-bold text-white group-hover:text-glory-gold transition-colors duration-300 truncate">
+                    {img.caption}
+                  </h3>
+                  <p className="text-[10px] text-[#F5EDD8]/50 mt-0.5 uppercase tracking-wider font-bold">
+                    {getMovieExtraData(img.path).director} · {getMovieExtraData(img.path).year}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ─── Lightbox Modal ─────────────────────────────────────────────────── */}
+        <AnimatePresence>
+          {selectedMovie && (
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10">
+              {/* Darkened blur backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectedMovie(null)}
+                className="absolute inset-0 bg-black/80 backdrop-blur-md"
+              />
+
+              {/* Theater Program Booklet Modal Content */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 30 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 30 }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                className="relative bg-[#0b0e14] border border-white/10 rounded-2xl overflow-hidden max-w-4xl w-full max-h-[85vh] md:max-h-[80vh] flex flex-col md:flex-row shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-10"
+              >
+                {/* Left side: Poster Image */}
+                <div className="relative w-full md:w-2/5 aspect-[4/5] md:aspect-auto md:min-h-full bg-black/40 border-b md:border-b-0 md:border-r border-white/5">
+                  <Image
+                    src={selectedMovie.src}
+                    alt={selectedMovie.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                </div>
+
+                {/* Right side: Detailed Narrative Analysis */}
+                <div className="p-6 sm:p-8 md:p-10 w-full md:w-3/5 overflow-y-auto flex flex-col justify-between max-h-[50vh] md:max-h-none font-sans">
+                  <div>
+                    {/* Header */}
+                    <div className="flex justify-between items-start gap-4 mb-4">
+                      <div>
+                        <h2 className="text-2xl font-bold text-white tracking-tight leading-tight">
+                          {selectedMovie.caption}
+                        </h2>
+                        <span className="text-xs text-glory-gold font-bold uppercase tracking-wider mt-1 block">
+                          {getMovieExtraData(selectedMovie.path).genre}
+                        </span>
+                      </div>
+                      
+                      <button
+                        onClick={() => setSelectedMovie(null)}
+                        className="p-1 rounded-full bg-white/5 border border-white/10 text-white/50 hover:text-white hover:bg-white/10 transition-colors"
+                      >
+                        <X className="w-5 h-5" />
+                      </button>
+                    </div>
+
+                    {/* Stats strip */}
+                    <div className="grid grid-cols-3 gap-3 border-y border-white/5 py-4 mb-6 text-xs">
+                      <div>
+                        <span className="text-white/40 block mb-1 uppercase tracking-wider font-semibold text-[9px]">
+                          {content.modalDirector}
+                        </span>
+                        <span className="text-white font-medium">
+                          {getMovieExtraData(selectedMovie.path).director}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-white/40 block mb-1 uppercase tracking-wider font-semibold text-[9px]">
+                          {content.modalYear}
+                        </span>
+                        <span className="text-white font-medium">
+                          {getMovieExtraData(selectedMovie.path).year}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-white/40 block mb-1 uppercase tracking-wider font-semibold text-[9px]">
+                          {content.modalRuntime}
+                        </span>
+                        <span className="text-white font-medium">
+                          {getMovieExtraData(selectedMovie.path).runtime}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Editorial Essay */}
+                    <div className="space-y-4 mb-8">
+                      <p className="text-sm text-[#F5EDD8]/80 leading-relaxed font-serif">
+                        {selectedMovie.description}
+                      </p>
+                    </div>
+
+                    {/* Innovation Callout */}
+                    <div className="p-5 rounded-xl bg-glory-gold/[0.02] border border-glory-gold/10 relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-glory-gold/[0.02] to-transparent pointer-events-none" />
+                      <div className="flex gap-3">
+                        <Sparkles className="w-5 h-5 text-glory-gold shrink-0 mt-0.5" />
+                        <div>
+                          <h4 className="text-xs font-bold text-glory-gold uppercase tracking-wider mb-2">
+                            {content.modalBreakthrough}
+                          </h4>
+                          <h5 className="text-sm font-semibold text-white mb-1">
+                            {getMovieExtraData(selectedMovie.path).innovationTitle}
+                          </h5>
+                          <p className="text-xs text-[#F5EDD8]/70 leading-relaxed">
+                            {getMovieExtraData(selectedMovie.path).innovationText}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Close footer */}
+                  <div className="mt-8 pt-4 border-t border-white/5 flex justify-end">
+                    <button
+                      onClick={() => setSelectedMovie(null)}
+                      className="px-6 py-2.5 rounded-lg bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-wider text-white hover:bg-white hover:text-navy-dark hover:border-white transition-all duration-300"
+                    >
+                      {content.closeBtn}
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+
+        {/* Bottom Navigation */}
+        <div className="flex items-center justify-between border-t border-white/10 pt-12 mt-16 font-sans">
+          <a
+            href="/culture/overview"
+            className="text-xs uppercase tracking-widest text-[#F5EDD8]/50 hover:text-white transition-colors"
+          >
+            {content.backLink}
+          </a>
+          <a
+            href="/culture/sports"
+            className="text-xs uppercase tracking-widest text-glory-gold hover:text-white transition-colors"
+          >
+            {content.nextLink}
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
