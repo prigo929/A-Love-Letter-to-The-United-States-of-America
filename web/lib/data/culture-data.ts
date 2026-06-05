@@ -586,7 +586,7 @@ export const BRAND_LOGOS_ROW_2 = [
   { name: "X", file: "X_logo_2023.svg", invert: true, scale: "scale-65" },
   { name: "Oculus", file: "Symbol.png", invert: true, scale: "scale-90" },
   { name: "Dell", file: "dell.svg", invert: true, scale: "scale-100" },
-  { name: "Dodge", file: "dodge.svg", invert: true, scale: "scale-95" },
+  { name: "Dodge", file: "dodge.svg", scale: "scale-95" },
   { name: "Dolby", file: "dolby-laboratories.svg", invert: true, scale: "scale-105" },
   { name: "Dominos", file: "dominos.svg", scale: "scale-90" },
   { name: "Doordash", file: "doordash.svg", scale: "scale-100" },
