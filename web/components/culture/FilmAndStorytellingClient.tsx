@@ -13,18 +13,15 @@ import {
   Layers, 
   Compass, 
   Music, 
-  HelpCircle, 
   Maximize2, 
-  Volume2, 
-  Eye, 
-  BookOpen,
-  Home,
-  ChevronRight
+  Home, 
+  ChevronRight,
+  Camera,
+  Clapperboard
 } from "lucide-react";
 import { GalleryImage } from "@/lib/data/gallery";
 import { CultureStyles } from "./CulturePageComponents";
-
-
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
 
 interface FilmAndStorytellingClientProps {
   filmImages: GalleryImage[];
@@ -43,41 +40,23 @@ export function FilmAndStorytellingClient({
   isRo = false, 
   hollywoodData 
 }: FilmAndStorytellingClientProps) {
-  const [theaterMode, setTheaterMode] = useState(false);
   const [activeEra, setActiveEra] = useState<"golden" | "new" | "digital">("golden");
   const [selectedMovie, setSelectedMovie] = useState<GalleryImage | null>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Trigger theater mode scroll and status
-  useEffect(() => {
-    if (theaterMode && scrollRef.current) {
-      scrollRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }, [theaterMode]);
-
-  // Handle escape key to exit modals or theater mode
+  // Handle escape key to exit modals
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         if (selectedMovie) {
           setSelectedMovie(null);
-        } else if (theaterMode) {
-          setTheaterMode(false);
         }
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedMovie, theaterMode]);
+  }, [selectedMovie]);
 
   const content = {
-    theaterModeToggle: isRo ? "Mod Cinema" : "Theater Mode",
-    theaterModeDesc: isRo 
-      ? "Apasă pentru a reduce luminozitatea și a activa proiectorul de film"
-      : "Engage to dim ambient elements and enable the film projector layer",
-    theaterModeActive: isRo 
-      ? "🎥 Mod Cinema Activ — Esc pentru ieșire"
-      : "🎥 Theater Mode Active — Esc to Exit",
     eraTitle: isRo ? "EPOCHILE CINEMATOGRAFICE ALE AMERICII" : "THE CINEMATIC EPOCHS OF AMERICA",
     eraSubtitle: isRo 
       ? "Cum competiția liberă și inovația tehnică au remodelat peisajul narativ global"
@@ -86,6 +65,22 @@ export function FilmAndStorytellingClient({
     grammarSubtitle: isRo 
       ? "Inovațiile gramaticale pe care Hollywood le-a transformat în limbajul universal al atenției"
       : "The grammatical structures Hollywood standardized into a universal linguistic currency of attention",
+    
+    auteursTitle: isRo ? "AUTEURII: LEGENDARI REPARATORI DE VISURI" : "THE LEGENDARY AUTEURS OF CINEMA",
+    auteursSubtitle: isRo
+      ? "Creatorii vizionari care au modelat subconștientul colectiv global prin semnăturile lor artistice"
+      : "The visionary directors who shaped the global collective subconscious through distinct artistic signatures",
+    auteursSignature: isRo ? "Semnătură Vizuală:" : "Visual Signature:",
+    auteursMasterpieces: isRo ? "Filme de Referință:" : "Key Masterpieces:",
+    
+    frameTitle: isRo ? "ANATOMIA UNUI CADRU: COMPoziție ȘI PSIHOLOGIE" : "ANATOMY OF A FRAME: VISUAL PSYCHOLOGY",
+    frameSubtitle: isRo
+      ? "Cum transmit regizorii mesaje subconștiente publicului prin geometrie și optică"
+      : "How directors communicate subconscious ideas through optical scale, angles, and geometry",
+    frameRationale: isRo ? "Rol Narativ:" : "Narrative Rationale:",
+    frameTechnique: isRo ? "Metodă Tehnică:" : "Technical Method:",
+    frameExample: isRo ? "Exemple Clasice:" : "Classic Examples:",
+    
     posterShelfTitle: isRo ? "RAFTUL DE POSTERE FILME CLASICE" : "CLASSIC CINEMATIC POSTER SHELF",
     posterShelfSubtitle: isRo 
       ? "Apasă pe poster pentru a analiza inovația cinematografică din spatele fiecărei capodopere"
@@ -180,6 +175,103 @@ export function FilmAndStorytellingClient({
     }
   ];
 
+  const auteurs = [
+    {
+      name: "Steven Spielberg",
+      title: isRo ? "Maestrul Miracolului și al Spectacolului" : "Master of Wonder & Spectacle",
+      bio: isRo
+        ? "Regizorul definitoriu al cinematografiei moderne. Spielberg a modelat formatul blockbusterului de vară, îmbinând inovațiile tehnice masive cu empatia umană profundă, inocența copilăriei și temele istorice dramatice."
+        : "The defining director of modern cinema. Spielberg masterminded the summer blockbuster template, blending massive technical scale with deep human empathy, childhood wonder, and historic drama.",
+      signature: isRo
+        ? "Cadre luate de jos sugerând uimirea copilărească, urmăriri complexe de cameră, culori calde."
+        : "Low-angle child-like wonder frames, complex camera tracking shots, warm backlighting.",
+      masterpieces: ["Jaws", "E.T. the Extra-Terrestrial", "Schindler's List", "Saving Private Ryan"]
+    },
+    {
+      name: "Martin Scorsese",
+      title: isRo ? "Arhitectul Realismului Brut" : "Architect of Underworld Realism",
+      bio: isRo
+        ? "Cronicarul subconștientului urban și al gangsterilor americani. Scorsese explorează vinovăția, lăcomia, mântuirea și cultura italo-americană folosind un stil vizual hiper-dinamic și editare extrem de alertă."
+        : "The chronicler of urban anxiety and the American underworld. Scorsese explores guilt, greed, redemption, and Italian-American identity through hyper-kinetic camerawork and high-tempo editing.",
+      signature: isRo
+        ? "Whip-pans rapide, narațiuni suprapuse (voiceover), freeze-frame-uri și cadre secvență extrem de lungi."
+        : "Rapid whip-pans, extensive voiceover narration, freeze-frames, and ultra-long tracking shots.",
+      masterpieces: ["Taxi Driver", "Raging Bull", "Goodfellas", "The Departed"]
+    },
+    {
+      name: "Stanley Kubrick",
+      title: isRo ? "Simetrie, Filozofie și Precizie" : "Symmetry, Philosophy & Precision",
+      bio: isRo
+        ? "Filozoful perfecționist al lentilei. Kubrick a forțat limitele tehnice și compoziționale ale camerei, oferind analize reci, simetrice și profunde despre condiția umană, nebunie, violență și viitor."
+        : "The perfectionist philosopher of the frame. Kubrick pushed optical and technical boundaries to their limits, presenting symmetrical, cerebral investigations into human nature, madness, and technology.",
+      signature: isRo
+        ? "Perspectivă cu punct de fugă central, mișcări perfect orizontale de traveling, muzică clasică epică."
+        : "One-point perspective symmetry, slow and steady tracking dollies, epic classical scores.",
+      masterpieces: ["Dr. Strangelove", "2001: A Space Odyssey", "A Clockwork Orange", "The Shining"]
+    },
+    {
+      name: "Francis Ford Coppola",
+      title: isRo ? "Măreție Operatică și Tragedie" : "Operatic Grandeur & Tragedy",
+      bio: isRo
+        ? "Forța creativă a revoluției cinematografice din anii '70. Coppola a reinventat epopeea de familie și miturile violenței americane prin drame masive caracterizate de o estetică operatică teatrală."
+        : "The creative titan of 1970s artistic independence. Coppola reinvented the family epic and the mythology of American violence through grand, operatic dramas defined by theatrical aesthetic scale.",
+      signature: isRo
+        ? "Umbre chiaroscuro dramatice, dizolvări picturale între cadre, montaj paralel epic."
+        : "Dramatic chiaroscuro shadow play, pictorial cross-dissolves, epic parallel montage.",
+      masterpieces: ["The Godfather I & II", "The Conversation", "Apocalypse Now"]
+    },
+    {
+      name: "Alfred Hitchcock",
+      title: isRo ? "Maestrul Suspansului Psihologic" : "Master of Psychological Suspense",
+      bio: isRo
+        ? "Regizorul care a transformat structura camerei într-un instrument de control al anxietății. Hitchcock a formalizat gramatica suspansului, transformând voyeurismul și paranoia în spectacol artistic."
+        : "The director who turned the camera lens into a mechanism of pure anxiety control. Hitchcock formalized the rules of suspense, transforming voyeurism and paranoia into high art.",
+      signature: isRo
+        ? "Cadre subiective din unghiul personajului, asocieri de montaj rapid, concepte tip 'MacGuffin'."
+        : "Subjective point-of-view angles, rapid associative montage sequences, 'MacGuffin' plot engines.",
+      masterpieces: ["Rear Window", "Vertigo", "North by Northwest", "Psycho"]
+    }
+  ];
+
+  const compositions = [
+    {
+      title: isRo ? "Orizontul Larg" : "The Wide Horizon",
+      rationale: isRo ? "Libertate și Izolare la Frontieră" : "Frontier Freedom & Isolation",
+      desc: isRo
+        ? "Încadrarea subiectului ca un detaliu minuscul pe fundalul unui peisaj grandios. Această compoziție reflectă scara imensă a geografiei americane, simbolizând atât libertatea supremă, cât și izolarea copleșitoare."
+        : "Framing a human subject as a tiny spec against a massive environment. This scale matches the physical geography of the American continent, representing both boundless individual freedom and absolute isolation.",
+      technique: isRo ? "Obiectiv grandangular, linie de orizont joasă, profunzime mare de focalizare." : "Wide-angle lens, low horizon line, deep focus depth-of-field.",
+      example: "The Searchers (John Ford), Paris, Texas (Wim Wenders)"
+    },
+    {
+      title: isRo ? "Unghiul Înclinat (Dutch Angle)" : "The Dutch Angle",
+      rationale: isRo ? "Paranoia și Colaps Moral" : "Moral Disorientation & Paranoia",
+      desc: isRo
+        ? "Înclinarea axei orizontale a camerei pentru a crea un cadru dezechilibrat. Cadrul comunică subconștient panică mentală, anxietate, dezorientare și sentimentul că realitatea s-a destabilizat complet."
+        : "Tilting the camera's horizontal axis to create an unbalanced frame. This angle communicates mental disorientation, paranoia, fear, and the structural collapse of a character's reality.",
+      technique: isRo ? "Înclinarea laterală a capului de trepied, linii diagonale dominante." : "Roll axis tilt, dominant diagonal guidelines, unbalanced framing vectors.",
+      example: "The Third Man, Mission: Impossible (De Palma)"
+    },
+    {
+      title: isRo ? "Dolly Zoom (Efectul Vertigo)" : "The Dolly Zoom",
+      rationale: isRo ? "Șoc Subconștient Brusc" : "Subconscious Shock & Vertigo",
+      desc: isRo
+        ? "Deplasarea fizică a camerei spre subiect în timp ce se face zoom-out optic (sau invers). Subiectul rămâne de aceeași dimensiune în timp ce perspectiva fundalului se strânge sau se extinde spectaculos, redând un atac de panică vizual."
+        : "Moving the camera physically while zooming the lens in the opposite direction. The subject stays static while the background perspective rapidly expands or compresses, mimicking an internal panic attack.",
+      technique: isRo ? "Tragere fizică pe șine (dolly) sincronizată electronic cu schimbarea zoomului." : "Synchronized camera carriage movement and optical focal length adjustment.",
+      example: "Vertigo (Hitchcock), Jaws (Spielberg)"
+    },
+    {
+      title: isRo ? "Cadrul de Jos (Hero Shot)" : "The Low-Angle Hero Shot",
+      rationale: isRo ? "Putere, Dominanță și Statut" : "Power, Dominance & Mythic Status",
+      desc: isRo
+        ? "Amplasarea camerei aproape de sol, orientată în sus spre personaj. Forțează privitorul să ridice privirea, inducând subconștient o percepție de măreție, autoritate, pericol sau statură mitică."
+        : "Placing the camera low to the ground and tilting upward toward a subject. This forces the audience to physically look up, inducing subconscious feelings of authority, power, danger, or mythic status.",
+      technique: isRo ? "Poziționare joasă, obiectiv grandangular pentru accentuarea înălțimii." : "Low tripod index, upward tilt, wide-angle lens scaling to exaggerate dimensions.",
+      example: "Citizen Kane (Welles), Pulp Fiction (Tarantino)"
+    }
+  ];
+
   // Helper to get movie extra data based on image path
   const getMovieExtraData = (path: string) => {
     const p = path.toLowerCase();
@@ -187,7 +279,7 @@ export function FilmAndStorytellingClient({
       return {
         director: "Ridley Scott",
         year: "1982",
-        genre: isRo ? "Sci-Fi / Neo-Noir" : "Sci-Fi / Neo-Noir",
+        genre: "Sci-Fi / Neo-Noir",
         runtime: "117 min",
         innovationTitle: isRo ? "Estetică Cyberpunk & Worldbuilding" : "Cyberpunk Aesthetic & Worldbuilding",
         innovationText: isRo 
@@ -223,7 +315,7 @@ export function FilmAndStorytellingClient({
       return {
         director: "Anthony & Joe Russo",
         year: "2019",
-        genre: isRo ? "Acțiune / Sci-Fi" : "Action / Sci-Fi",
+        genre: "Action / Sci-Fi",
         runtime: "181 min",
         innovationTitle: isRo ? "Macro-Narațiune de Univers Interconectat" : "Interconnected Shared Universe",
         innovationText: isRo
@@ -290,99 +382,11 @@ export function FilmAndStorytellingClient({
   };
 
   return (
-    <div 
-      ref={scrollRef}
-      className={`transition-all duration-1000 relative ${
-        theaterMode ? "bg-black text-gray-200" : "culture-bg text-[#F5EDD8]"
-      }`}
-    >
+    <div className="culture-bg text-[#F5EDD8] min-h-screen">
       <CultureStyles />
 
-      {/* ─── Theater Mode Interactive Overlays ─────────────────────────────────── */}
-      <AnimatePresence>
-        {theaterMode && (
-          <>
-            {/* Film Widescreen Letterbox Bars */}
-            <motion.div 
-              initial={{ height: 0 }}
-              animate={{ height: "4rem" }}
-              exit={{ height: 0 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="fixed top-0 left-0 right-0 bg-black z-50 pointer-events-none border-b border-white/5"
-            />
-            <motion.div 
-              initial={{ height: 0 }}
-              animate={{ height: "4rem" }}
-              exit={{ height: 0 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="fixed bottom-0 left-0 right-0 bg-black z-50 pointer-events-none border-t border-white/5"
-            />
-
-            {/* Vintage Film Grain Projector Overlay */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.08 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 pointer-events-none overflow-hidden bg-film-noise animate-film-grain"
-            />
-
-            {/* Floating indicator */}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="fixed top-20 right-6 z-50 bg-glory-gold/90 text-navy-dark text-[10px] font-sans font-bold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-lg"
-            >
-              {content.theaterModeActive}
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-
       <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-24 font-editorial">
-        <nav
-          aria-label={isRo ? "Fir de navigare" : "Breadcrumb"}
-          className="flex flex-wrap items-center gap-1.5 font-body text-sm text-white/50 mb-12 font-sans"
-        >
-          <Link
-            href="/"
-            className="flex items-center gap-1 transition-colors duration-150 hover:text-white"
-          >
-            <Home className="h-3.5 w-3.5" aria-hidden="true" />
-            <span className="sr-only">{isRo ? "Acasă" : "Home"}</span>
-          </Link>
-
-          <ChevronRight className="h-3 w-3 shrink-0 opacity-40" aria-hidden="true" />
-          <Link
-            href="/culture"
-            className="transition-colors duration-150 hover:text-white"
-          >
-            {isRo ? "Cultură" : "Culture"}
-          </Link>
-
-          <ChevronRight className="h-3 w-3 shrink-0 opacity-40" aria-hidden="true" />
-          <span className="text-white font-medium" aria-current="page">
-            {isRo ? "Film și Narativă" : "Film & Storytelling"}
-          </span>
-
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "BreadcrumbList",
-                itemListElement: [
-                  { "@type": "ListItem", position: 1, name: isRo ? "Acasă" : "Home", item: "/" },
-                  { "@type": "ListItem", position: 2, name: isRo ? "Cultură" : "Culture", item: "/culture" },
-                  { "@type": "ListItem", position: 3, name: isRo ? "Film și Narativă" : "Film & Storytelling" },
-                ],
-              }),
-            }}
-          />
-        </nav>
-
-
-        {/* Header Controls Area */}
+        {/* Header Area */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 border-b border-white/10 pb-8 font-sans">
           <div>
             <span className="culture-text-label text-glory-gold block mb-2">
@@ -392,23 +396,6 @@ export function FilmAndStorytellingClient({
               {hollywoodData.headline}
             </h1>
           </div>
-
-          {/* Theater Mode Action Button */}
-          <button
-            onClick={() => setTheaterMode(!theaterMode)}
-            className={`group flex items-center gap-3 px-5 py-3 rounded-full border text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
-              theaterMode 
-                ? "bg-glory-gold text-navy-dark border-glory-gold hover:bg-white hover:border-white shadow-[0_0_20px_rgba(255,215,0,0.15)]" 
-                : "bg-white/5 text-[#F5EDD8] border-white/10 hover:bg-white hover:text-navy-dark hover:border-white"
-            }`}
-            title={content.theaterModeDesc}
-          >
-            <Film className={`w-4 h-4 transition-transform duration-500 group-hover:rotate-12 ${
-              theaterMode ? "animate-pulse" : ""
-            }`} />
-            {content.theaterModeToggle}
-            {theaterMode && <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping" />}
-          </button>
         </div>
 
         {/* Hero & Longread Editorial */}
@@ -528,6 +515,68 @@ export function FilmAndStorytellingClient({
           </div>
         </section>
 
+        {/* ─── Legendary Auteurs Spotlight ────────────────────────────────────── */}
+        <section className="mb-24 border-t border-white/10 pt-16 font-sans">
+          <div className="mb-12 text-center md:text-left">
+            <h2 className="text-xs font-semibold tracking-wider text-glory-gold uppercase mb-2">
+              {content.auteursTitle}
+            </h2>
+            <p className="text-sm text-[#F5EDD8]/60 font-serif italic max-w-2xl">
+              {content.auteursSubtitle}
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {auteurs.map((auteur, idx) => (
+              <div 
+                key={idx}
+                className="culture-glass rounded-2xl p-6 border border-white/5 hover:border-glory-gold/20 hover:bg-white/[0.01] transition-all duration-300 flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Clapperboard className="w-5 h-5 text-glory-gold shrink-0" />
+                    <span className="text-[10px] font-bold text-glory-gold uppercase tracking-widest">
+                      {auteur.title}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-glory-gold transition-colors duration-300">
+                    {auteur.name}
+                  </h3>
+                  <p className="text-xs text-[#F5EDD8]/70 leading-relaxed mb-6 font-sans">
+                    {auteur.bio}
+                  </p>
+                </div>
+
+                <div className="space-y-4 pt-4 border-t border-white/5 text-xs font-sans">
+                  <div>
+                    <span className="text-[10px] text-glory-gold uppercase tracking-wider block font-bold mb-1">
+                      {content.auteursSignature}
+                    </span>
+                    <span className="text-white/90 italic font-serif">
+                      {auteur.signature}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-glory-gold uppercase tracking-wider block font-bold mb-1">
+                      {content.auteursMasterpieces}
+                    </span>
+                    <div className="flex flex-wrap gap-1.5 mt-1">
+                      {auteur.masterpieces.map((film, fIdx) => (
+                        <span 
+                          key={fIdx}
+                          className="bg-white/5 border border-white/10 text-[10px] text-white/90 px-2 py-0.5 rounded-full"
+                        >
+                          {film}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* ─── Cinematic Grammar Grid ─────────────────────────────────────────── */}
         <section className="mb-24 border-t border-white/10 pt-16 font-sans">
           <div className="mb-12 text-center md:text-left">
@@ -563,6 +612,61 @@ export function FilmAndStorytellingClient({
                   <span className="text-xs text-white/95 font-serif italic">
                     {card.example}
                   </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ─── Anatomy of a Frame: Visual Composition ─────────────────────────── */}
+        <section className="mb-24 border-t border-white/10 pt-16 font-sans">
+          <div className="mb-12 text-center md:text-left">
+            <h2 className="text-xs font-semibold tracking-wider text-glory-gold uppercase mb-2">
+              {content.frameTitle}
+            </h2>
+            <p className="text-sm text-[#F5EDD8]/60 font-serif italic max-w-2xl">
+              {content.frameSubtitle}
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {compositions.map((comp, idx) => (
+              <div
+                key={idx}
+                className="culture-glass rounded-2xl p-6 border border-white/5 hover:border-glory-gold/30 hover:bg-white/[0.01] transition-all duration-300 flex flex-col justify-between group cursor-default"
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-4">
+                    <span className="text-[10px] font-bold text-glory-gold uppercase tracking-widest">
+                      {comp.rationale}
+                    </span>
+                    <Camera className="w-4 h-4 text-[#F5EDD8]/40 group-hover:text-glory-gold transition-colors" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-3 group-hover:text-glory-gold transition-colors duration-300">
+                    {comp.title}
+                  </h3>
+                  <p className="text-xs text-[#F5EDD8]/70 leading-relaxed mb-6 font-sans">
+                    {comp.desc}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-white/5 space-y-3 text-xs font-sans">
+                  <div>
+                    <span className="text-[10px] text-glory-gold uppercase tracking-wider block font-bold mb-0.5">
+                      {content.frameTechnique}
+                    </span>
+                    <span className="text-white/80">
+                      {comp.technique}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-glory-gold uppercase tracking-wider block font-bold mb-0.5">
+                      {content.frameExample}
+                    </span>
+                    <span className="text-white/90 italic font-serif">
+                      {comp.example}
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
