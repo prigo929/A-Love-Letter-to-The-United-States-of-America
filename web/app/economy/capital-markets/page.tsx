@@ -98,6 +98,20 @@ const CAPITAL_MARKETS_EXTENDED_FACTS = [
     source: "Options Clearing Corporation 2026",
     color: "blue" as const,
   },
+  {
+    id: "401k-revolution",
+    fact: "The 401(k) Revolution: Democratizing Compound Wealth",
+    detail: "Total US retirement financial assets reached $45.8 trillion in mid-2025, with IRAs holding $18 trillion and 401(k) plans accounting for $9.3 trillion. Created by a tax loophole in 1978, this system effectively turned ordinary workers into long-term equity investors compounding in the deepest market on Earth.",
+    source: "Investment Company Institute (ICI) Q3 2025",
+    color: "gold" as const,
+  },
+  {
+    id: "index-fund-innovation",
+    fact: "The Index Fund: Financial Innovation That Eliminated Active Management Fees",
+    detail: "Launched by Jack Bogle (Vanguard) in 1976, passive retail index investing represents over $15 trillion in US assets. Low-cost passive indexing and ETFs (invented in 1993) eliminate active management fees, letting middle-class retirement savers capture the full compounding returns of the market.",
+    source: "Vanguard / ICI 2026",
+    color: "red" as const,
+  },
 ];
 
 const MAJOR_US_EXCHANGES = [
@@ -188,6 +202,18 @@ export default async function CapitalMarketsPage() {
             fact: "Piața opțiunilor din SUA este mai mare decât toate celelalte piețe globale la un loc",
             detail:
               "Bursele americane de derivate tranzacționează peste 40 de milioane de contracte pe zi, oferind cel mai sofisticat mecanism din lume pentru acoperirea riscurilor și descoperirea prețurilor.",
+          },
+          {
+            ...CAPITAL_MARKETS_EXTENDED_FACTS[8],
+            fact: "Revoluția 401(k): Democratizarea Acumulării de Avere",
+            detail: "Activele de pensionare din SUA au atins 45,8 trilioane $ în 2025, planurile 401(k) reprezentând 9,3 trilioane $, iar conturile IRA 18 trilioane $. Apărut dintr-o lacună fiscală din 1978, sistemul a transformat lucrătorii în investitori pe termen lung pe piețele americane de acțiuni.",
+            source: "Investment Company Institute (ICI) Q3 2025",
+          },
+          {
+            ...CAPITAL_MARKETS_EXTENDED_FACTS[9],
+            fact: "Fondul de Indici: Inovația Financiară ce a Eliminat Comisioanele Active",
+            detail: "Lansat de Jack Bogle (Vanguard) în 1976, investițiile pasive în fonduri indexate reprezintă acum peste 15 trilioane $ în active din SUA. Urmărirea pasivă a indicilor și ETF-urile (create în 1993) economisesc comisioane masive, stimulând randamentul economiilor de pensionare.",
+            source: "Vanguard / ICI 2026",
           },
         ]
       : CAPITAL_MARKETS_EXTENDED_FACTS;

@@ -178,6 +178,12 @@ const copyEn: QualityOfLifeCopy = {
       description: "America leads globally in boat ownership, with approximately 17 million recreational boats and yachts owned by 15 million households. While China registers fewer than 120,000 boats, US middle-class families utilize millions of navigable freshwater lakes and coastal access points as a standard recreational outlet.",
       source: "National Marine Manufacturers Association (NMMA)",
       sourceUrl: "https://www.nmma.org/"
+    },
+    {
+      title: "The Public Library System",
+      description: "The US operates over 17,000 public library outlets — more than the number of McDonald's locations globally. Free to any resident with a library card, these institutions lend over 1.3 billion items annually (books, DVDs, streaming media, and digital devices), serving as a highly democratic, locally-funded knowledge infrastructure.",
+      source: "American Library Association (ALA)",
+      sourceUrl: "https://www.ala.org/tools/libfactsheets/olfacts01"
     }
   ],
   incomeTitle: "Disposable Income & Charitable Giving",
@@ -333,6 +339,12 @@ const copyRo: QualityOfLifeCopy = {
       description: "America conduce la nivel mondial în posesia de bărci, cu circa 17 milioane de bărci și iahturi deținute de 15 milioane de gospodării. În timp ce China înregistrează sub 120.000 de bărci, familiile de clasă medie din SUA folosesc rețeaua vastă de lacuri și coaste ca pe un standard accesibil de petrecere a timpului liber.",
       source: "National Marine Manufacturers Association (NMMA)",
       sourceUrl: "https://www.nmma.org/"
+    },
+    {
+      title: "Sistemul Bibliotecilor Publice",
+      description: "SUA operează peste 17.000 de biblioteci publice — mai multe decât numărul total de locații McDonald's la nivel global. Gratuite pentru rezidenți, ele împrumută peste 1,3 miliarde de materiale anual (cărți, media digitală, instrumente, hotspot-uri), reprezentând o infrastructură democratică a cunoașterii.",
+      source: "American Library Association (ALA)",
+      sourceUrl: "https://www.ala.org/tools/libfactsheets/olfacts01"
     }
   ],
   incomeTitle: "Venit Disponibil și Generozitate Privată",

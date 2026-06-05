@@ -69,9 +69,9 @@ const copyEn: UniversitiesCopy = {
       description: "Dominating major global indexes (QS, Times, Shanghai ARWU) year after year."
     },
     {
-      value: "$250B+",
-      label: "Combined Endowments",
-      description: "Wealth that finances cutting-edge research facilities and financial aid."
+      value: "$873.7B",
+      label: "Academic Endowments",
+      description: "The private wealth of 658 institutions. Harvard ($52B) and Yale each hold endowments higher than the GDP of countries like Iceland, Nicaragua, and Senegal, compounding their advantage over Europe's public-funding model."
     },
     {
       value: "400k+",
@@ -140,9 +140,9 @@ const copyRo: UniversitiesCopy = {
       description: "Dominarea indicilor globali majori (QS, Times, Shanghai ARWU) an de an."
     },
     {
-      value: "250+ Mld. $",
-      label: "Fonduri Private (Endowments)",
-      description: "Avere care finanțează laboratoare avansate și burse de studiu."
+      value: "873,7 Mld. $",
+      label: "Fonduri Academice (Endowments)",
+      description: "Averea privată a 658 de instituții. Harvard (52 mld. $) și Yale dețin fonduri ce depășesc PIB-ul unor țări ca Islanda, Nicaragua sau Senegal, consolidând avantajul față de modelul european bazat pe bugete publice."
     },
     {
       value: "400k+",

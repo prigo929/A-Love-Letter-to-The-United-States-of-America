@@ -118,6 +118,13 @@ const TRADE_FACTS = [
     source: "American Trucking Associations / Bureau of Transportation Statistics 2026",
     color: "gold" as const,
   },
+  {
+    id: "interstate-highway",
+    fact: "The Interstate Highway System: Eisenhower's Continent-Scale Infrastructure",
+    detail: "Spanning 47,856 miles, it is the largest limited-access highway system in the world. Built primarily between 1956 and 1992, this unified network compressed travel times across a landmass the size of Europe, making long-haul trucking viable, enabling suburban growth, and generating unmatched national economic integration.",
+    source: "Federal Highway Administration (FHWA) 2024",
+    color: "blue" as const,
+  },
 ];
 
 const TRADE_PARTNERS = [
@@ -315,6 +322,12 @@ export default async function TradeAndExportsPage() {
             fact: "Republica Tiriștilor: Sistemul Nervos al Transportului Terestru",
             detail: "Peste 3,5 milioane de șoferi profesioniști de camion transportă 70% din valoarea mărfurilor interne din SUA, coordonând anual transporturi terestre de 800 de miliarde de dolari. Susținută de lanțuri private de popasuri gigantice (Pilot Flying J, Love's, TA), această rețea logistică de mare viteză menține economia continentală în timp real.",
             source: "American Trucking Associations / Bureau of Transportation Statistics 2026",
+          },
+          {
+            ...TRADE_FACTS[10],
+            fact: "Autostrăzile Interstatale: Integrarea Economică a Continentului",
+            detail: "Cu 47.856 de mile (77.000 km) de autostrăzi cu acces limitat, aceasta este cea mai mare rețea din lume. Construită din 1956, a conectat o populație de 330 de milioane de oameni cu o geometrie rutieră standardizată, reducând timpii de transport de marfă și integrând forța de muncă.",
+            source: "Federal Highway Administration (FHWA) 2024",
           },
         ]
       : TRADE_FACTS;

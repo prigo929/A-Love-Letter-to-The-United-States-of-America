@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { CultureStyles } from "@/components/culture/CulturePageComponents";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Entertainment & Media | The American Operating System",
-  description: "Explore the global attention loop dominated by Netflix, Disney, and YouTube.",
+  description: "Explore the global attention loop dominated by Netflix, Disney, and YouTube, alongside North America's massive theme park industry.",
 };
 
 export default async function CultureEntertainmentPage() {
@@ -17,7 +19,7 @@ export default async function CultureEntertainmentPage() {
 
   const content = {
     eyebrow: isRo ? "MAȘINA DE ATENȚIE · ENTERTAINMENT" : "THE ATTENTION MACHINE · ENTERTAINMENT",
-    title: isRo ? "PIETELE GLOBALE DE MEDIA ȘI SCREEN TIME" : "GLOBAL MEDIA MARKETS & SCREEN TIME",
+    title: isRo ? "PIEȚE GLOBALE DE MEDIA ȘI SCREEN TIME" : "GLOBAL MEDIA MARKETS & SCREEN TIME",
     pullQuote: isRo
       ? "Spre deosebire de televiziunile de stat tradiționale, mașina de divertisment din SUA este alimentată în întregime de cererea globală a consumatorilor."
       : "Unlike traditional state-run media, the U.S. entertainment machine is powered entirely by global consumer demand.",
@@ -34,6 +36,15 @@ export default async function CultureEntertainmentPage() {
     stat2Label: isRo ? "Țări Deservite în 45 Limbi" : "Countries Reached in 45 Languages",
     stat3Value: "$260B",
     stat3Label: isRo ? "Piața de Media din SUA" : "US Media & Entertainment Market Size",
+
+    themeParkLabel: isRo ? "DIVERTISMENT EXPERIENȚIAL" : "EXPERIENTIAL ENTERTAINMENT",
+    themeParkTitle: isRo ? "Complexul Industrial al Parcurilor Tematice" : "The Theme Park Industrial Complex",
+    themeParkText1: isRo
+      ? "America de Nord domină piața mondială a parcurilor tematice cu o cotă de venituri de 37% în 2025. Acesta nu este doar divertisment simplu; este un export industrial extrem de avansat de proprietate intelectuală culturală americană (Marvel, Star Wars, Pixar) transpus în realitate fizică."
+      : "North America dominates the global theme park market with a largest revenue share of approximately 37% in 2025. This is not entertainment for its own sake; it is a massive export industry that builds American cultural IP — Marvel, Star Wars, Pixar, and Harry Potter — into physical, experiential reality at premium prices.",
+    themeParkText2: isRo
+      ? "Cele 12 parcuri Disney la nivel global atrag singure peste 34% din vizitatorii mondiali (140 de milioane de vizitatori anual), în timp ce Universal atrage alte 57 de milioane. În Florida Centrală, 75 de milioane de vizitatori au generat un impact economic de 95 de miliarde de dolari în 2024 — depășind economia turistică a multor țări întregi."
+      : "Disney's 12 parks alone capture over 34% of global theme park attendance, with 140 million visitors annually, while Universal's 6 parks draw another 57 million. Central Florida alone recorded 75 million visitors in 2024 generating nearly $95 billion in total economic impact, making a single American metro area's theme park cluster larger than the entire tourism economies of most nations.",
 
     backLink: isRo ? "← Înapoi la Sport" : "← Back to Sports",
     nextLink: isRo ? "Companii și Branduri →" : "Companies & Brands →",
@@ -53,7 +64,7 @@ export default async function CultureEntertainmentPage() {
         />
 
         {/* Hero */}
-        <section className="mb-20">
+        <section className="mb-24">
           <span className="culture-text-label block mb-4 text-glory-gold">
             {content.eyebrow}
           </span>
@@ -88,6 +99,35 @@ export default async function CultureEntertainmentPage() {
                 <div className="text-4xl font-bold text-white tracking-tight">{content.stat3Value}</div>
                 <div className="text-xs text-glory-gold uppercase tracking-wider mt-1">{content.stat3Label}</div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Experiential Entertainment / Theme Parks */}
+        <section className="mb-24 border-t border-white/10 pt-16 font-sans">
+          <div className="grid gap-12 lg:grid-cols-2 items-center">
+            <div className="space-y-6">
+              <span className="text-xs font-semibold tracking-wider text-glory-gold uppercase">
+                {content.themeParkLabel}
+              </span>
+              <h2 className="text-3xl font-editorial font-bold text-white leading-tight">
+                {content.themeParkTitle}
+              </h2>
+              <p className="text-[#F5EDD8]/70 leading-relaxed text-sm">
+                {content.themeParkText1}
+              </p>
+              <p className="text-[#F5EDD8]/70 leading-relaxed text-sm">
+                {content.themeParkText2}
+              </p>
+            </div>
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/5 bg-black/40">
+              <Image
+                src={SITE_IMAGES.culture.disneyWorld}
+                alt="Disney World Cinderella Castle"
+                fill
+                className="object-cover hover:scale-102 transition-transform duration-500"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
           </div>
         </section>

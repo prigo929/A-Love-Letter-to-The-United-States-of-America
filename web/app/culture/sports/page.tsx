@@ -48,6 +48,18 @@ export default async function CultureSportsPage() {
       ? "Statele Unite găzduiesc 42,4% din toate terenurile de golf din lume (aproape 16.000 de terenuri față de cele 8.900 din întreaga Europă). Această densitate reprezintă accesul unic al clasei de mijloc la spațiu verde și timp liber, o reflectare a abundenței de teren și a culturii de recreere fără echivalent global."
       : "The United States accounts for 42.4% of the world's golf courses (nearly 16,000 of the 38,000 courses globally), compared to about 8,900 in all of Europe. This represents a concentration of leisure land density and discretionary free time with no global equivalent.",
 
+    sportsEconomyLabel: isRo ? "MOTOR ECONOMIC SPORTIV" : "THE SPORTS ENGINE",
+    sportsEconomyTitle: isRo ? "Economia Sportului Profesionist: Cadență Globală" : "The Professional Sports Economy: Global Dominance",
+    sportsEconomyText: isRo
+      ? "Statele Unite operează cele mai mari patru ligi profesioniste din lume după venituri: NFL, NBA, MLB și NHL. NFL generează singură peste 20 mld. $ anual, în timp ce NBA este difuzată în 215 țări. Susținut de ecosistemul unic NCAA (finanțat masiv din donații ale absolvenților), sportul american reprezintă o economie uriașă de peste 80 de miliarde de dolari care proiectează o putere soft fără egal."
+      : "The United States operates four major professional sports leagues — the NFL, NBA, MLB, and NHL — each individually larger by revenue than the top league of most developed nations. The NFL alone generates over $20 billion in revenue, while the NBA broadcasts to 215 countries. Supported by the unique NCAA college athletics pipeline, the US sports economy reaches over $80 billion annually, projecting unmatched global soft power.",
+    sportsEconomyStat1Val: "$80B+",
+    sportsEconomyStat1Lbl: isRo ? "Industria Sportului din SUA" : "Total US Sports Industry",
+    sportsEconomyStat2Val: "$20B+",
+    sportsEconomyStat2Lbl: isRo ? "Venituri Anuale NFL" : "Annual NFL Revenue",
+    sportsEconomyStat3Val: "215",
+    sportsEconomyStat3Lbl: isRo ? "Țări Difuzare NBA" : "Countries Broadcasting NBA",
+
     backLink: isRo ? "← Înapoi la Film și Narativă" : "← Back to Film & Storytelling",
     nextLink: isRo ? "Divertisment și Media →" : "Entertainment & Media →",
   };
@@ -173,6 +185,41 @@ export default async function CultureSportsPage() {
               <p className="text-[#F5EDD8]/70 leading-relaxed text-sm">
                 {content.golfText}
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Sports Economy Overview */}
+        <section className="mt-24 border-t border-white/10 pt-16 font-sans">
+          <div className="culture-glass rounded-3xl p-8 md:p-12 border border-white/5 relative overflow-hidden">
+            <div className="relative z-10 grid gap-8 lg:grid-cols-3">
+              <div className="lg:col-span-2 space-y-6">
+                <span className="text-xs font-semibold tracking-wider text-glory-gold uppercase">
+                  {content.sportsEconomyLabel}
+                </span>
+                <h2 className="text-3xl font-editorial font-bold text-white leading-tight">
+                  {content.sportsEconomyTitle}
+                </h2>
+                <p className="text-[#F5EDD8]/70 leading-relaxed text-sm">
+                  {content.sportsEconomyText}
+                </p>
+              </div>
+
+              {/* Stats column */}
+              <div className="grid grid-cols-1 gap-6 border-l border-white/10 pl-0 lg:pl-8">
+                <div>
+                  <div className="text-4xl font-bold text-white tracking-tight">{content.sportsEconomyStat1Val}</div>
+                  <div className="text-xs text-glory-gold uppercase tracking-wider mt-1">{content.sportsEconomyStat1Lbl}</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold text-white tracking-tight">{content.sportsEconomyStat2Val}</div>
+                  <div className="text-xs text-glory-gold uppercase tracking-wider mt-1">{content.sportsEconomyStat2Lbl}</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold text-white tracking-tight">{content.sportsEconomyStat3Val}</div>
+                  <div className="text-xs text-glory-gold uppercase tracking-wider mt-1">{content.sportsEconomyStat3Lbl}</div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

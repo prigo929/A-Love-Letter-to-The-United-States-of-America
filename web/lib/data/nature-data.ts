@@ -414,6 +414,13 @@ export const NATURE_OVERVIEW_FACTS: NatureFact[] = [
   { id: "volcanic-lead", fact: "The US manages the most active volcanic territory in the developed world", detail: "With over 130 volcanoes in Alaska alone, the active Cascades in the Pacific Northwest, and Kilauea in Hawaii — the world's most active volcano — the United States possesses a dynamic volcanic landscape that powers geothermal energy and creates new land every year.", source: "USGS Volcano Hazards Program", color: "gold" },
   { id: "coastline", fact: "The US has 95,471 miles of coastline — more than any nation except Canada", detail: "From the rocky shores of Maine to the tropical beaches of Hawaii, from the Gulf Coast wetlands to the Alaskan fjords — American coastline spans more geographic diversity than any comparable landmass.", source: "NOAA 2024", color: "blue" },
   { id: "rivers", fact: "The Mississippi-Missouri river system is the world's 4th longest", detail: "At over 3,700 miles, the Missouri-Mississippi system drains 41% of the continental United States — an area of 1.2 million square miles that made America's agricultural heartland one of the most productive on Earth.", source: "USGS", color: "red" },
+  {
+    id: "ocean-estate",
+    fact: "The Ocean Estate: America's 4.5 Million Square Miles of Maritime Sovereignty",
+    detail: "The US Exclusive Economic Zone (EEZ) spans over 13,000 miles of coastline and contains 3.4 million square nautical miles (4.5 million sq miles) of ocean — larger than the combined land area of all 50 states. This massive oceanic territory grants the US exclusive rights over fisheries, seabed minerals, energy resources, and research, translating into unmatched maritime leverage.",
+    source: "NOAA Office of Ocean Exploration 2024",
+    color: "blue" as const
+  },
 ];
 
 export const ALASKA_FACTS: NatureFact[] = [
@@ -505,6 +512,13 @@ const NATURE_OVERVIEW_FACTS_RO: NatureFact[] = [
   { id: "volcanic-lead", fact: "SUA gestionează cel mai activ teritoriu vulcanic din lumea dezvoltată", detail: "Cu peste 130 de vulcani doar în Alaska, lanțul activ al Cascadelor în Nord-Vestul Pacificului și Kilauea în Hawaii — cel mai activ vulcan din lume — Statele Unite posedă un peisaj vulcanic dinamic ce alimentează energia geotermală și creează pământ nou în fiecare an.", source: "USGS Volcano Hazards Program", color: "gold" },
   { id: "coastline",     fact: "SUA au 153.500 km de coastă — mai mult decât orice națiune, în afară de Canada", detail: "De la țărmurile stâncoase ale statului Maine până la plajele tropicale din Hawaii, linia de coastă americană cuprinde mai multă diversitate geografică decât orice altă masă de pământ comparabilă.", source: "NOAA 2024", color: "blue" },
   { id: "rivers",        fact: "Sistemul fluvial Mississippi-Missouri este al 4-lea cel mai lung din lume",    detail: "Cu peste 5.970 km, sistemul Missouri-Mississippi drenează 41% din Statele Unite continentale — o suprafață de 3,1 milioane de km² care a făcut heartland-ul agricol american unul dintre cele mai productive de pe Pământ.", source: "USGS", color: "red" },
+  {
+    id: "ocean-estate",
+    fact: "Domeniul Oceanic: 4,5 Milioane de Mile Pătrate de Suveranitate Maritimă",
+    detail: "Zona Economică Exclusivă (EEZ) a SUA se întinde pe 13.000 de mile de coastă și conține 3,4 milioane de mile marine pătrate (4,5 milioane de mile pătrate) de ocean — mai mare decât suprafața terestră a tuturor celor 50 de state la un loc. Acest teritoriu oferă drepturi suverane exclusive asupra pescuitului, mineralelor de fund și resurselor energetice.",
+    source: "NOAA Office of Ocean Exploration 2024",
+    color: "blue" as const
+  },
 ];
 
 // ─── i18n Getters ─────────────────────────────────────────────────────────────
