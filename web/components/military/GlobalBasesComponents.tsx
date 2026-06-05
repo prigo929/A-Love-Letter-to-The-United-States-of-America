@@ -136,6 +136,65 @@ function getOverseasRegion(base: OverseasBase): GlobalBaseRegion {
   return "Americas";
 }
 
+function getInfraCapabilities(branch: ServiceBranch, name: string, isRo: boolean): string[] {
+  const nameLower = name.toLowerCase();
+  const isAirfield = nameLower.includes("air field") || nameLower.includes("air base") || nameLower.includes("airforce base") || nameLower.includes("afb") || nameLower.includes("mcas") || nameLower.includes("aviation");
+  const isPort = nameLower.includes("naval base") || nameLower.includes("homeport") || nameLower.includes("shipyard") || nameLower.includes("submarine") || nameLower.includes("fleet activities") || nameLower.includes("port") || nameLower.includes("dock");
+  const isDepot = nameLower.includes("depot") || nameLower.includes("arsenal") || nameLower.includes("logistics") || nameLower.includes("supply") || nameLower.includes("sustainment") || nameLower.includes("terminal");
+  const isAcademy = nameLower.includes("academy");
+  const isRadar = nameLower.includes("radar") || nameLower.includes("satellite") || nameLower.includes("communication") || nameLower.includes("tracking");
+
+  if (isRo) {
+    if (isRadar) return ["Urmărire sateliți", "Rețea radar", "Comunicații securizate"];
+    if (isAcademy) return ["Instruire ofițeri", "Școală de comandă", "Facilități educaționale"];
+    if (isDepot) return ["Depozit logistic greu", "Stocare muniții", "Nod lanț de aprovizionare"];
+    if (isAirfield && isPort) return ["Pistă aviație", "Port de mare adâncime", "Hub logistic comun"];
+    if (isAirfield) return ["Pistă aviație", "Hangare blindate", "Transport aerian tactic"];
+    if (isPort) return ["Ponton adânc", "Șantier naval", "Docuri submarine"];
+
+    switch (branch) {
+      case "Joint":
+        return ["Nod de comandă comun", "Logistică multi-serviciu", "Legătură securizată"];
+      case "Army":
+        return ["Teren de manevră", "Cazărmi trupe", "Logistică tactică"];
+      case "Marine Corps":
+        return ["Poligon de debarcare amfibie", "Pregătire expediționară", "Cazărmi trupe"];
+      case "Navy":
+        return ["Port maritim", "Cală de întreținere", "Logistică navală"];
+      case "Air Force":
+        return ["Linie de zbor", "Terminal transport aerian", "Depozitare combustibil aviație"];
+      case "Space Force":
+        return ["Hub de comandă spațială", "Stație sol telemetrie", "Rețea avertizare rachete"];
+      default:
+        return ["Hub de postură strategică", "Nod logistic", "Facilitate de comandă"];
+    }
+  }
+
+  if (isRadar) return ["Satellite Tracking", "Radar Array", "Secure Communications"];
+  if (isAcademy) return ["Officer Training", "Command School", "Educational Facilities"];
+  if (isDepot) return ["Heavy Logistics Depot", "Munitions Storage", "Supply Chain Link"];
+  if (isAirfield && isPort) return ["Aviation Runway", "Deepwater Port", "Joint Logistics Hub"];
+  if (isAirfield) return ["Aviation Runway", "Hardened Hangars", "Tactical Airlift"];
+  if (isPort) return ["Deepwater Pier", "Naval Dockyard", "Submarine Berths"];
+
+  switch (branch) {
+    case "Joint":
+      return ["Joint Command Node", "Multi-Service Logistics", "Secure Link"];
+    case "Army":
+      return ["Maneuver Ground", "Troop Barracks", "Tactical Logistics"];
+    case "Marine Corps":
+      return ["Amphibious Landing Range", "Expeditionary Staging", "Troop Barracks"];
+    case "Navy":
+      return ["Maritime Port", "Maintenance Slipway", "Naval Logistics"];
+    case "Air Force":
+      return ["Flight Line", "Airlift Terminal", "Aviation Fuel Storage"];
+    case "Space Force":
+      return ["Space Command Hub", "Telemetry Ground Station", "Missile Warning Array"];
+    default:
+      return ["Strategic Posture Hub", "Logistical Node", "Command Facility"];
+  }
+}
+
 function getDirectoryMapBases({
   domesticBases = [],
   overseasBases = [],
@@ -154,15 +213,13 @@ function getDirectoryMapBases({
     Region: getDomesticRegion(base),
     Coordinates: base.coordinates,
     "Primary Branch": base.branch,
-    "Operational Focus": base.locationDetails
-      ? `${isRo ? "Instalație domestică" : "Domestic installation"} / ${base.locationDetails}`
-      : isRo
-        ? "Instalație domestică din rețeaua de generare și susținere a forței."
-        : "Domestic installation in the force-generation and sustainment network.",
-    "Critical Infrastructure": [base.branch, base.state],
-    "Strategic Rationale": base.description || (isRo
-      ? "Nod din infrastructura domestică a SUA, cartografiat cu coordonatele instalației."
-      : "Node in the domestic U.S. infrastructure network, mapped with installation coordinates."),
+    "Operational Focus": base.description || (isRo
+      ? "Instalație domestică din rețeaua de generare și susținere a forței."
+      : "Domestic installation in the force-generation and sustainment network."),
+    "Critical Infrastructure": getInfraCapabilities(base.branch, base.name, isRo),
+    "Strategic Rationale": isRo
+      ? `Nod logistic și de generare a forței în ${base.state}.`
+      : `Force-generation and logistical command node in ${base.state}.`,
     "Image URL": SITE_IMAGES.homeUsaAtNightFromSpace,
   }));
 
@@ -173,15 +230,13 @@ function getDirectoryMapBases({
     Region: getOverseasRegion(base),
     Coordinates: base.coordinates,
     "Primary Branch": base.branch,
-    "Operational Focus": base.locationDetails
-      ? `${isRo ? "Instalație externă" : "Overseas installation"} / ${base.locationDetails}`
-      : isRo
-        ? "Instalație externă din rețeaua avansată de acces și susținere."
-        : "Overseas installation in the forward access and sustainment network.",
-    "Critical Infrastructure": [base.branch, base.country],
-    "Strategic Rationale": base.description || (isRo
-      ? "Nod din infrastructura externă a SUA, cartografiat cu coordonatele instalației."
-      : "Node in the overseas U.S. infrastructure network, mapped with installation coordinates."),
+    "Operational Focus": base.description || (isRo
+      ? "Instalație externă din rețeaua avansată de acces și susținere."
+      : "Overseas installation in the forward access and sustainment network."),
+    "Critical Infrastructure": getInfraCapabilities(base.branch, base.name, isRo),
+    "Strategic Rationale": isRo
+      ? `Instalație externă avansată în ${base.country}.`
+      : `Forward-deployed security footprint in ${base.country}.`,
     "Image URL": SITE_IMAGES.homeUsaAtNightFromSpace,
   }));
 
@@ -1162,15 +1217,13 @@ export function DomesticBasesSection({
     Region: getDomesticRegion(base),
     Coordinates: base.coordinates,
     "Primary Branch": base.branch,
-    "Operational Focus": base.locationDetails
-      ? `${isRo ? "Instalație domestică" : "Domestic installation"} / ${base.locationDetails}`
-      : isRo
-        ? "Instalație domestică din rețeaua de generare și susținere a forței."
-        : "Domestic installation in the force-generation and sustainment network.",
-    "Critical Infrastructure": [base.branch, base.state],
-    "Strategic Rationale": base.description || (isRo
-      ? "Nod din infrastructura domestică a SUA, cartografiat cu coordonatele instalației."
-      : "Node in the domestic U.S. infrastructure network, mapped with installation coordinates."),
+    "Operational Focus": base.description || (isRo
+      ? "Instalație domestică din rețeaua de generare și susținere a forței."
+      : "Domestic installation in the force-generation and sustainment network."),
+    "Critical Infrastructure": getInfraCapabilities(base.branch, base.name, isRo),
+    "Strategic Rationale": isRo
+      ? `Nod logistic și de generare a forței în ${base.state}.`
+      : `Force-generation and logistical command node in ${base.state}.`,
     "Image URL": SITE_IMAGES.homeUsaAtNightFromSpace,
   });
 
@@ -1364,15 +1417,13 @@ export function OverseasBasesSection({
     Region: getOverseasRegion(base),
     Coordinates: base.coordinates,
     "Primary Branch": base.branch,
-    "Operational Focus": base.locationDetails
-      ? `${isRo ? "Instalație externă" : "Overseas installation"} / ${base.locationDetails}`
-      : isRo
-        ? "Instalație externă din rețeaua avansată de acces și susținere."
-        : "Overseas installation in the forward access and sustainment network.",
-    "Critical Infrastructure": [base.branch, base.country],
-    "Strategic Rationale": base.description || (isRo
-      ? "Nod din infrastructura externă a SUA, cartografiat cu coordonatele instalației."
-      : "Node in the overseas U.S. infrastructure network, mapped with installation coordinates."),
+    "Operational Focus": base.description || (isRo
+      ? "Instalație externă din rețeaua avansată de acces și susținere."
+      : "Overseas installation in the forward access and sustainment network."),
+    "Critical Infrastructure": getInfraCapabilities(base.branch, base.name, isRo),
+    "Strategic Rationale": isRo
+      ? `Instalație externă avansată în ${base.country}.`
+      : `Forward-deployed security footprint in ${base.country}.`,
     "Image URL": SITE_IMAGES.homeUsaAtNightFromSpace,
   });
 
