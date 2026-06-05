@@ -97,6 +97,20 @@ const TRADE_FACTS = [
     source: "Association of American Railroads 2026",
     color: "gold" as const,
   },
+  {
+    id: "trade-waterways",
+    fact: "The Invisible Freight Highway: America's Inland Waterways",
+    detail: "The US manages 12,000 miles of inland navigation channels and 11,000 miles of intracoastal waterways. A single barge moves as much cargo as 70 tractor-trailers. The Mississippi River alone carries 60% of all US grain exports down to Gulf terminals — a cheap, natural geography asset unmatched in Europe or Asia.",
+    source: "US Army Corps of Engineers / ASCE 2024",
+    color: "blue" as const,
+  },
+  {
+    id: "trade-ag-geography",
+    fact: "Agricultural Geography: The Unrepeatable Endowment",
+    detail: "The US possesses the world's largest contiguous block of Class I and II arable land across the Midwest and Great Plains, combined with temperate precipitation and direct dual-ocean and Gulf access, creating structural immunity to food insecurity.",
+    source: "USDA Foreign Agricultural Service 2026",
+    color: "red" as const,
+  },
 ];
 
 const TRADE_PARTNERS = [
@@ -276,6 +290,18 @@ export default async function TradeAndExportsPage() {
             detail:
               "În timp ce Europa subvenționează masiv transportul feroviar de călători, SUA excelează în transportul feroviar de marfă. Trenurile cu containere duble reduc costurile de transport, permițând logistica rapidă și prețurile mici.",
             source: "Association of American Railroads 2026",
+          },
+          {
+            ...TRADE_FACTS[7],
+            fact: "Autostrada Invizibilă de Marfă: Căile Navigabile Interioare ale Americii",
+            detail: "SUA administrează 19.300 km de canale de navigație interioară și 17.700 km de căi navigabile intracoastale. O singură barjă transportă cât 70 de TIR-uri. Fluviul Mississippi susține 60% din exporturile de cereale ale SUA — un avantaj geografic natural neegalat în Europa sau Asia.",
+            source: "US Army Corps of Engineers / ASCE 2024",
+          },
+          {
+            ...TRADE_FACTS[8],
+            fact: "Geografia Agricolă: O Moștenire Naturală Unică",
+            detail: "Statele Unite dețin cel mai mare bloc contiguu de terenuri arabile de Clasa I și II din lume în Midwest și Marile Câmpii, beneficiind de precipitații temperate și acces direct la două oceane și Golful Mexic, oferind imunitate la insecuritate alimentară.",
+            source: "USDA Foreign Agricultural Service 2026",
           },
         ]
       : TRADE_FACTS;

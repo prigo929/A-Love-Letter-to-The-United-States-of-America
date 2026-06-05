@@ -60,6 +60,7 @@ const PARKS_SYSTEM_FACTS_EN = [
   { id: "ps-trail",     fact: "The US National Trails System spans 50,000+ miles",                     detail: "The Appalachian Trail (2,190 mi), Pacific Crest Trail (2,653 mi), Continental Divide Trail (3,100 mi), and thousands of local trails form a free public wilderness network.", source: "American Hiking Society 2024", color: "red"  as const },
   { id: "ps-newest",    fact: "New River Gorge became the 63rd national park in December 2020",         detail: "West Virginia's New River Gorge — one of the oldest rivers in the world, predating the Appalachians — protects 70,000 acres of Appalachian wilderness.", source: "NPS", color: "blue" as const },
   { id: "ps-public-land", fact: "The US manages 640 million acres of public land for recreation", detail: "Freely accessible to every citizen for hiking, hunting, fishing, and camping, this massive system covers roughly 28% of the US land area — a democratic inheritance of wilderness at a continental scale.", source: "Bureau of Land Management (BLM)", color: "gold" as const },
+  { id: "ps-rv", fact: "The RV Civilization: 11.2 million households with a mobile home", detail: "Over 11 million American households own an RV, with 1 million living in them full-time. This unique mobile lifestyle is supported by cheap gas, 4.1 million miles of roads, and 15,000 campgrounds, generating over $100B in economic activity.", source: "RV Industry Association (RVIA)", color: "gold" as const },
 ];
 
 const PARKS_SYSTEM_FACTS_RO = [
@@ -70,6 +71,7 @@ const PARKS_SYSTEM_FACTS_RO = [
   { id: "ps-trail",     fact: "Sistemul Național de Trasee al SUA se întinde pe 80.000+ km",                detail: "Appalachian Trail (3.524 km), Pacific Crest Trail (4.270 km), Continental Divide Trail (4.989 km) și mii de trasee locale formează o rețea gratuită de acces în sălbăticie.", source: "American Hiking Society 2024", color: "red"  as const },
   { id: "ps-newest",    fact: "New River Gorge a devenit al 63-lea parc național în decembrie 2020",        detail: "New River Gorge din West Virginia — unul dintre cele mai vechi râuri din lume, mai vechi decât Munții Apalachieni — protejează 113.000 de acri de sălbăticie apalachiană.", source: "NPS", color: "blue" as const },
   { id: "ps-public-land", fact: "SUA administrează 640 de milioane de acri de teren public pentru recreere", detail: "Liber accesibile fiecărui cetățean pentru drumeții, vânătoare, pescuit și camping, aceste terenuri acoperă 28% din suprafața țării — o moștenire democratică neegalată în lume.", source: "Bureau of Land Management (BLM)", color: "gold" as const },
+  { id: "ps-rv", fact: "Civilizația RV: 11,2 milioane de gospodării dețin o locuință mobilă", detail: "Peste 11 milioane de gospodării americane dețin un vehicul recreațional (RV), iar aproximativ 1 milion locuiesc în ele cu normă întreagă. Acest stil de viață mobil este susținut de combustibil ieftin, 6,6 milioane km de drumuri și 15.000 de campinguri.", source: "RV Industry Association (RVIA)", color: "gold" as const },
 ];
 
 export default async function NationalParksPage() {

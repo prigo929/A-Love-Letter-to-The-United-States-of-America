@@ -5,6 +5,7 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { 
   CheckCircle, 
   Home, 
+  Building,
   DollarSign, 
   Flame, 
   Zap, 
@@ -15,7 +16,8 @@ import {
   HeartPulse, 
   Smile, 
   TrendingUp, 
-  Users 
+  Users,
+  ShoppingBag
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -90,6 +92,13 @@ const copyEn: QualityOfLifeCopy = {
       sourceUrl: "https://www.numbeo.com/property-investment/rankings_by_country.jsp"
     },
     {
+      title: "30-Year Fixed Mortgage",
+      value: "Generation-Locked Rates",
+      description: "America is the only country where the 30-year fixed-rate mortgage is dominant (~90% of buyers), shielding homeowners from interest-rate payment shocks by transferring risk to capital markets.",
+      source: "CNBC / Fannie Mae 2024",
+      sourceUrl: "https://www.cnbc.com/2024/05/07/why-the-30-year-fixed-rate-mortgage-is-a-uniquely-american-construct.html"
+    },
+    {
       title: "OECD Purchasing Power Wages",
       value: "#2 Highest Wages Globally",
       description: "Adjusted for purchasing power parity (PPP), average American wages are the second highest in the OECD, surpassed only by Switzerland.",
@@ -116,6 +125,13 @@ const copyEn: QualityOfLifeCopy = {
       description: "The US has the most progressive tax system in the developed world. There is no regressive national sales tax (VAT); the top 1% pays 40% of income tax, while the bottom 50% pays just 3%.",
       source: "Cato Institute & Tax Foundation 2025",
       sourceUrl: "https://www.cato.org/blog/united-states-has-most-progressive-tax-system-developed-world"
+    },
+    {
+      title: "Retail Infrastructure Density",
+      value: "24.5 Sq Ft Per Capita",
+      description: "The US has 24.5 sq ft of retail space per person, compared to an average of just 4.5 sq ft in Europe (UK/France: ~5, Germany: 2), creating massive consumer abundance and competition.",
+      source: "ASCE Report Card",
+      sourceUrl: "https://2021.infrastructurereportcard.org/cat-item/inland-waterways-infrastructure/"
     }
   ],
   luxuryTitle: "Democratized Luxury & Convenience",
@@ -140,10 +156,16 @@ const copyEn: QualityOfLifeCopy = {
       sourceUrl: "https://en.wikipedia.org/wiki/List_of_countries_by_vehicles_per_capita"
     },
     {
-      title: "Aviation Network & Connectivity",
-      description: "The US has the most extensive civil aviation network on the planet, handling nearly 1 billion passengers annually. Mega-hubs like Atlanta, O'Hare, and DFW move more traffic than top European airports, enabling rapid, cheap domestic travel across a landmass the size of Europe.",
-      source: "U.S. Air Transport passenger statistics",
-      sourceUrl: "https://statbase.org/data/usa-air-transport-passengers/"
+      title: "General Aviation & Personal Sky",
+      description: "The US civil aviation fleet has 220,000 registered aircraft — 42% of the global total, dwarfing China (5,366) and Canada (4,888). Over 90% are general aviation (private/business), and over 80% of the 609,000 certified pilots fly GA, landing at over 5,000 public-use airports. Personal mobility in the sky is a utilitarian network for agriculture, medicine, cargo, and business.",
+      source: "Aircraft Owners and Pilots Association (AOPA)",
+      sourceUrl: "https://download.aopa.org/Media/General-Aviation-Explained-r5.pdf"
+    },
+    {
+      title: "The Cold Chain & Food Logistics",
+      description: "A continuous, massive network of refrigerated trucks, warehouses, and retail cases spans the continent. It keeps fresh strawberries, avocados, and seafood available year-round in even the most remote areas at affordable prices, underpinning why Americans spend the lowest share of income on food.",
+      source: "Global Cold Chain Alliance (GCCA)",
+      sourceUrl: "https://www.iarw.org/"
     }
   ],
   incomeTitle: "Disposable Income & Charitable Giving",
@@ -213,6 +235,13 @@ const copyRo: QualityOfLifeCopy = {
       sourceUrl: "https://www.numbeo.com/property-investment/rankings_by_country.jsp"
     },
     {
+      title: "Ipoteca Fixă pe 30 de Ani",
+      value: "Dobânzi Blocate pe o Generație",
+      description: "SUA sunt singura țară din lume unde creditul ipotecar cu rată fixă pe 30 de ani este dominant (~90% din cumpărători), protejând proprietarii de șocurile dobânzilor prin transferul riscului către piețele de capital.",
+      source: "CNBC / Fannie Mae 2024",
+      sourceUrl: "https://www.cnbc.com/2024/05/07/why-the-30-year-fixed-rate-mortgage-is-a-uniquely-american-construct.html"
+    },
+    {
       title: "Salarii OCDE (Ajustate la PPP)",
       value: "#2 Cele Mai Mari Salarii din Lume",
       description: "Ajustat la paritatea puterii de cumpărare (PPP), salariul mediu american este al doilea cel mai mare din OCDE, fiind depășit doar de cel din Elveția.",
@@ -239,6 +268,13 @@ const copyRo: QualityOfLifeCopy = {
       description: "SUA au cel mai progresiv sistem fiscal din lumea dezvoltată. Nu există TVA națională regresivă; primii 1% din contribuabili suportă 40% din totalul impozitului pe venit, în timp ce jumătatea inferioară plătește doar 3%.",
       source: "Cato Institute & Tax Foundation 2025",
       sourceUrl: "https://www.cato.org/blog/united-states-has-most-progressive-tax-system-developed-world"
+    },
+    {
+      title: "Densitatea Spațiilor Comerciale",
+      value: "2,3 mp per persoană (24,5 sq ft)",
+      description: "SUA au 2,3 mp de spațiu comercial per locuitor, comparativ cu o medie de doar 0,4 mp în Europa (Marea Britanie/Franța: ~0,5 mp, Germania: 0,2 mp), oferind o abundență și o comoditate uriașă pentru consumatori.",
+      source: "ASCE Report Card",
+      sourceUrl: "https://2021.infrastructurereportcard.org/cat-item/inland-waterways-infrastructure/"
     }
   ],
   luxuryTitle: "Lux Democratizat și Utilitate Zilnică",
@@ -263,10 +299,16 @@ const copyRo: QualityOfLifeCopy = {
       sourceUrl: "https://en.wikipedia.org/wiki/List_of_countries_by_vehicles_per_capita"
     },
     {
-      title: "Rețeaua de Aviație Civilă",
-      description: "SUA au cea mai extinsă rețea de aviație civilă de pe glob, deservind aproape 1 miliard de pasageri anual. Huburile uriașe ca Atlanta, O'Hare și DFW gestionează un trafic mai mare decât aeroporturile de top din Europa, facilitând călătoriile rapide.",
-      source: "U.S. Air Transport passenger statistics",
-      sourceUrl: "https://statbase.org/data/usa-air-transport-passengers/"
+      title: "Aviația Generală și Cerul Privat",
+      description: "Flota de aviație civilă din SUA numără 220.000 de aeronave înregistrate — 42% din flota globală, depășind masiv China (5.366) și Canada (4.888). Peste 90% sunt aeronave de aviație generală (private/de afaceri) și peste 80% dintre cei 609.000 de piloți autorizați zboară în această categorie, având acces la peste 5.000 de aeroporturi publice.",
+      source: "Aircraft Owners and Pilots Association (AOPA)",
+      sourceUrl: "https://download.aopa.org/Media/General-Aviation-Explained-r5.pdf"
+    },
+    {
+      title: "Lanțul Frigorific și Logistica Alimentară",
+      description: "O rețea continuă și masivă de camioane, depozite și vitrine frigorifice acoperă întregul continent. Aceasta permite ca căpșunile proaspete, avocado și fructele de mare să fie accesibile tot anul în orice oraș izolat la prețuri mici, fiind baza pentru care americanii cheltuiesc cea mai mică pondere din venit pe hrană.",
+      source: "Global Cold Chain Alliance (GCCA)",
+      sourceUrl: "https://www.iarw.org/"
     }
   ],
   incomeTitle: "Venit Disponibil și Generozitate Privată",
@@ -312,6 +354,7 @@ const copyRo: QualityOfLifeCopy = {
   ],
   oracleDescription: "Întreabă Oracolul AI despre paritatea puterii de cumpărare, dimensiunea medie a locuințelor, statistici privind proprietatea auto, ratele de supraviețuire medicală sau democratizarea luxului."
 };
+
 
 export default async function QualityOfLifePage() {
   const locale = await getServerLocale();
@@ -369,10 +412,12 @@ export default async function QualityOfLifePage() {
                   <div className="flex items-center gap-2 mb-4">
                     {idx === 0 && <Home className="h-6 w-6 text-glory-gold" />}
                     {idx === 1 && <Home className="h-6 w-6 text-glory-gold" />}
-                    {idx === 2 && <DollarSign className="h-6 w-6 text-glory-gold" />}
-                    {idx === 3 && <Smile className="h-6 w-6 text-glory-gold" />}
-                    {idx === 4 && <Flame className="h-6 w-6 text-glory-gold" />}
-                    {idx === 5 && <Zap className="h-6 w-6 text-glory-gold" />}
+                    {idx === 2 && <Building className="h-6 w-6 text-glory-gold" />}
+                    {idx === 3 && <DollarSign className="h-6 w-6 text-glory-gold" />}
+                    {idx === 4 && <Smile className="h-6 w-6 text-glory-gold" />}
+                    {idx === 5 && <Flame className="h-6 w-6 text-glory-gold" />}
+                    {idx === 6 && <Zap className="h-6 w-6 text-glory-gold" />}
+                    {idx === 7 && <ShoppingBag className="h-6 w-6 text-glory-gold" />}
                     <h3 className="font-display text-lg font-bold text-white">
                       {stat.title}
                     </h3>

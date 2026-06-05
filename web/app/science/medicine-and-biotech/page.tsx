@@ -36,6 +36,12 @@ interface BiotechCopy {
   pharmaParagraph2: string;
   pharmaSource: string;
   pharmaSourceUrl: string;
+  plasmaLabel: string;
+  plasmaTitle: string;
+  plasmaParagraph1: string;
+  plasmaParagraph2: string;
+  plasmaSource: string;
+  plasmaSourceUrl: string;
   oracleDescription: string;
 }
 
@@ -76,6 +82,12 @@ const copyEn: BiotechCopy = {
   pharmaParagraph2: "European single-payer systems negotiate cheap drug prices by free-riding on American innovation: they know that if the US didn't accept market-rate pricing and bear the full cost of R&D failure, most of these treatments simply wouldn't exist. The American healthcare 'premium' is, in substantial part, the price of underwriting the world's pharmaceutical pipeline on everyone else's behalf.",
   pharmaSource: "PhRMA Research & Development Report",
   pharmaSourceUrl: "https://www.phrma.org/en/Advocacy/Research-and-Development",
+  plasmaLabel: "THE GLOBAL PLASMA ARSENAL",
+  plasmaTitle: "America Bleeds for the World: The Global Plasma Supply",
+  plasmaParagraph1: "With just 5% of the global population, the United States provides 68% of the blood plasma used to manufacture lifesaving medicines for the entire world. Plasma-derived therapies treat immune deficiencies, bleeding disorders, and other serious conditions for which there is no synthetic substitute. Treating a single patient for a year requires between 130 and 1,300 individual donations, with global demand rising by 6% to 8% annually.",
+  plasmaParagraph2: "The reason for US dominance is simple: the US is one of the very few nations that legally compensates plasma donors, creating a reliable market-driven supply. Countries like France, which ban compensation, face massive shortages (coming up 1.5 million liters short in 2024), forcing countries like the UK and Canada to import their shortfalls from the United States. The American market-based model literally keeps patients alive across other continents.",
+  plasmaSource: "Georgetown University / Donor Ethics",
+  plasmaSourceUrl: "https://www.georgetown.edu/news/the-professor-untangling-the-thorny-ethics-of-global-blood-plasma-collection/",
   oracleDescription: "Ask the AI Oracle about NIH biomedical funding, mRNA platform discoveries, gene-splicing history, or global pharmaceutical R&D."
 };
 
@@ -116,6 +128,12 @@ const copyRo: BiotechCopy = {
   pharmaParagraph2: "Sistemele europene cu plătitor unic negociază prețuri mici la medicamente profitând de inovația americană: știu că dacă SUA nu ar accepta prețurile de piață și nu ar suporta costul total al eșecului R&D, majoritatea acestor tratamente pur și simplu nu ar exista. „Prima” plătită de consumatorii americani este costul prin care se susține progresul medical mondial.",
   pharmaSource: "Raportul PhRMA privind Cercetarea și Dezvoltarea",
   pharmaSourceUrl: "https://www.phrma.org/en/Advocacy/Research-and-Development",
+  plasmaLabel: "DONATORUL DE SÂNGE AL PLANETEI",
+  plasmaTitle: "America Sângerează pentru Lume: Rezerva Globală de Plasmă",
+  plasmaParagraph1: "Cu doar 5% din populația globală, Statele Unite furnizează 68% din plasma sanguină utilizată pentru fabricarea medicamentelor vitale pentru întreaga planetă. Terapiile derivate din plasmă tratează deficiențe imunitare, tulburări de coagulare și alte afecțiuni grave pentru care nu există substitute sintetice. Tratarea unui singur pacient timp de un an necesită între 130 și 1.300 de donări individuale.",
+  plasmaParagraph2: "Mecanismul din spatele dominanței americane este simplu: SUA este una dintre puținele țări care compensează legal donatorii de plasmă, creând o piață stabilă. Țări precum Franța, care interzic compensarea, se confruntă cu penurii masive (un deficit de 1,5 milioane de litri în 2024), forțând state precum Marea Britanie și Canada să importe deficitul din SUA. Modelul de piață american ține în viață pacienți de pe alte continente.",
+  plasmaSource: "Georgetown University / Donor Ethics",
+  plasmaSourceUrl: "https://www.georgetown.edu/news/the-professor-untangling-the-thorny-ethics-of-global-blood-plasma-collection/",
   oracleDescription: "Întreabă Oracolul AI despre finanțarea NIH, descoperirea vaccinurilor mRNA, istoria ingineriei genetice sau dezvoltarea globală de noi medicamente."
 };
 
@@ -242,6 +260,46 @@ export default async function MedicineAndBiotechPage() {
                 className="inline-flex items-center gap-1 text-glory-gold hover:underline"
               >
                 {isRo ? "Detalii cercetare PhRMA" : "PhRMA Research Details"}
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Global Plasma Supply Section */}
+      <section
+        id="plasma-feature"
+        className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 pb-24 bg-gradient-to-r from-navy-dark via-navy-mid to-navy-dark border-t border-white/5"
+      >
+        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-navy-dark/60 backdrop-blur p-8 md:p-12 relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 opacity-10">
+            <Heart className="h-40 w-40 text-glory-gold" />
+          </div>
+          
+          <div className="relative z-10">
+            <span className="font-mono text-xs uppercase tracking-widest text-glory-gold mb-3 block">
+              {copy.plasmaLabel}
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-6">
+              {copy.plasmaTitle}
+            </h2>
+            <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
+              {copy.plasmaParagraph1}
+            </p>
+            <p className="font-body text-white/80 text-lg leading-relaxed mb-8">
+              {copy.plasmaParagraph2}
+            </p>
+            
+            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
+              <span>Source: {copy.plasmaSource}</span>
+              <a 
+                href={copy.plasmaSourceUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center gap-1 text-glory-gold hover:underline"
+              >
+                {isRo ? "Detalii etică donare Georgetown" : "Georgetown Donor Ethics Details"}
                 <ExternalLink className="h-3.5 w-3.5" />
               </a>
             </div>
