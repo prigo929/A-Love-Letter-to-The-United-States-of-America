@@ -56,7 +56,7 @@ interface Cluster {
   bases: StrategicBase[];
 }
 
-function getClusters(bases: StrategicBase[], zoom: number): Cluster[] {
+function getClusters(bases: StrategicBase[], zoom: number, selectedBaseId: string | null = null): Cluster[] {
   const threshold = 12 / zoom;
   const clusters: Cluster[] = [];
   const merged = new Set<string>();
@@ -65,22 +65,37 @@ function getClusters(bases: StrategicBase[], zoom: number): Cluster[] {
 
   const parsedBases = sortedBases.map((b) => ({
     base: b,
+    id: b.ID,
     coords: parseCoordinates(b.Coordinates),
   }));
 
+  // STEP 1: THE BREAKOUT (Absolute Priority)
+  if (selectedBaseId) {
+    const selectedItem = parsedBases.find(item => item.id === selectedBaseId);
+    if (selectedItem) {
+      clusters.push({
+        id: selectedItem.id,
+        center: selectedItem.coords,
+        bases: [selectedItem.base],
+      });
+      merged.add(selectedItem.id);
+    }
+  }
+
+  // STEP 2: CLUSTER EVERYTHING ELSE
   for (let i = 0; i < parsedBases.length; i++) {
     const itemA = parsedBases[i];
-    if (merged.has(itemA.base.ID)) continue;
+    if (merged.has(itemA.id)) continue;
 
     const clusterBases = [itemA.base];
-    merged.add(itemA.base.ID);
+    merged.add(itemA.id);
 
     let sumLon = itemA.coords[0];
     let sumLat = itemA.coords[1];
 
     for (let j = i + 1; j < parsedBases.length; j++) {
       const itemB = parsedBases[j];
-      if (merged.has(itemB.base.ID)) continue;
+      if (merged.has(itemB.id)) continue;
 
       const dx = itemA.coords[0] - itemB.coords[0];
       const dy = itemA.coords[1] - itemB.coords[1];
@@ -88,7 +103,7 @@ function getClusters(bases: StrategicBase[], zoom: number): Cluster[] {
 
       if (distance < threshold) {
         clusterBases.push(itemB.base);
-        merged.add(itemB.base.ID);
+        merged.add(itemB.id);
         sumLon += itemB.coords[0];
         sumLat += itemB.coords[1];
       }
@@ -509,7 +524,10 @@ export function GlobalCommandMap({
     [activeRegionId, mapBases]
   );
 
-  const clusters = useMemo(() => getClusters(mapBases, position.zoom), [mapBases, position.zoom]);
+  const clusters = useMemo(
+    () => getClusters(mapBases, position.zoom, selectedBase?.ID || null),
+    [mapBases, position.zoom, selectedBase]
+  );
 
   useEffect(() => {
     setIsMapMounted(true);
@@ -687,7 +705,14 @@ export function GlobalCommandMap({
                         }
                       </Geographies>
 
-                      {clusters.map((cluster) => {
+                      {/* Sort clusters so the selected base renders ON TOP of neighboring clusters */}
+                      {[...clusters]
+                        .sort((a, b) => {
+                          const aIsSelected = a.bases.length === 1 && a.bases[0].ID === selectedBase?.ID;
+                          const bIsSelected = b.bases.length === 1 && b.bases[0].ID === selectedBase?.ID;
+                          return aIsSelected ? 1 : bIsSelected ? -1 : 0;
+                        })
+                        .map((cluster) => {
                         if (cluster.bases.length === 1) {
                           const base = cluster.bases[0];
                           const isActiveRegion = base.Region === activeRegionId;
