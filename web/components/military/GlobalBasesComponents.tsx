@@ -160,9 +160,9 @@ function getDirectoryMapBases({
         ? "Instalație domestică din rețeaua de generare și susținere a forței."
         : "Domestic installation in the force-generation and sustainment network.",
     "Critical Infrastructure": [base.branch, base.state],
-    "Strategic Rationale": isRo
+    "Strategic Rationale": base.description || (isRo
       ? "Nod din infrastructura domestică a SUA, cartografiat cu coordonatele instalației."
-      : "Node in the domestic U.S. infrastructure network, mapped with installation coordinates.",
+      : "Node in the domestic U.S. infrastructure network, mapped with installation coordinates."),
     "Image URL": SITE_IMAGES.homeUsaAtNightFromSpace,
   }));
 
@@ -179,9 +179,9 @@ function getDirectoryMapBases({
         ? "Instalație externă din rețeaua avansată de acces și susținere."
         : "Overseas installation in the forward access and sustainment network.",
     "Critical Infrastructure": [base.branch, base.country],
-    "Strategic Rationale": isRo
+    "Strategic Rationale": base.description || (isRo
       ? "Nod din infrastructura externă a SUA, cartografiat cu coordonatele instalației."
-      : "Node in the overseas U.S. infrastructure network, mapped with installation coordinates.",
+      : "Node in the overseas U.S. infrastructure network, mapped with installation coordinates."),
     "Image URL": SITE_IMAGES.homeUsaAtNightFromSpace,
   }));
 
@@ -391,6 +391,21 @@ function BaseDetailDrawer({
               </div>
               <p className="mt-3 text-sm leading-7 text-zinc-300">{base["Strategic Rationale"]}</p>
             </div>
+
+            <button
+              type="button"
+              onClick={() => {
+                const locateEvent = new CustomEvent("locate-base-on-map", {
+                  detail: { baseId: base.ID }
+                });
+                window.dispatchEvent(locateEvent);
+                onClose();
+              }}
+              className="mt-10 flex w-full items-center justify-center gap-2 bg-white hover:bg-zinc-200 text-black py-3 px-4 font-mono text-[10px] uppercase tracking-wider transition-colors cursor-pointer"
+            >
+              <MapPin size={12} />
+              {isRo ? "Localizează pe hartă" : "Locate on Map"}
+            </button>
           </motion.aside>
         </>
       )}
@@ -440,6 +455,38 @@ export function GlobalCommandMap({
   useEffect(() => {
     setIsMapMounted(true);
   }, []);
+
+  useEffect(() => {
+    const handleLocateBase = (e: Event) => {
+      const customEvent = e as CustomEvent<{ baseId: string }>;
+      const baseId = customEvent.detail.baseId;
+      const targetBase = mapBases.find(
+        (b) =>
+          b.ID === baseId ||
+          b.ID === `domestic-${baseId}` ||
+          b.ID === `overseas-${baseId}`
+      );
+      if (targetBase) {
+        setSelectedBase(targetBase);
+        const baseCoords = parseCoordinates(targetBase.Coordinates);
+        setPosition({
+          coordinates: baseCoords,
+          zoom: 5,
+        });
+        setActiveRegionId(targetBase.Region);
+
+        const mapEl = document.getElementById("global-command-map");
+        if (mapEl) {
+          mapEl.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    };
+
+    window.addEventListener("locate-base-on-map", handleLocateBase);
+    return () => {
+      window.removeEventListener("locate-base-on-map", handleLocateBase);
+    };
+  }, [mapBases]);
 
   const handleRegionClick = (regionId: GlobalBaseRegion) => {
     setActiveRegionId(regionId);
@@ -498,7 +545,7 @@ export function GlobalCommandMap({
   };
 
   return (
-    <section className="bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
+    <section id="global-command-map" className="bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
       <div className="mx-auto max-w-[1520px]">
         <SectionTitle
           label={isRo ? "HARTA DE COMANDĂ" : "GLOBAL COMMAND MAP"}
@@ -1068,7 +1115,7 @@ export function DomesticBasesSection({
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBranch, setSelectedBranch] = useState<ServiceBranch | "All">("All");
   const [currentPage, setCurrentPage] = useState(1);
-  const [expandedBases, setExpandedBases] = useState<Record<string, boolean>>({});
+  const [selectedBaseForPopup, setSelectedBaseForPopup] = useState<StrategicBase | null>(null);
 
   const BRANCHES: (ServiceBranch | "All")[] = [
     "All",
@@ -1104,9 +1151,24 @@ export function DomesticBasesSection({
     return filteredBases.slice(start, start + itemsPerPage);
   }, [filteredBases, currentPage]);
 
-  const toggleBase = (id: string) => {
-    setExpandedBases((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
+  const mapDomesticBase = (base: DomesticBase, isRo: boolean): StrategicBase => ({
+    ID: `domestic-${base.id}`,
+    Name: base.name,
+    Country: base.state,
+    Region: getDomesticRegion(base),
+    Coordinates: base.coordinates,
+    "Primary Branch": base.branch,
+    "Operational Focus": base.locationDetails
+      ? `${isRo ? "Instalație domestică" : "Domestic installation"} / ${base.locationDetails}`
+      : isRo
+        ? "Instalație domestică din rețeaua de generare și susținere a forței."
+        : "Domestic installation in the force-generation and sustainment network.",
+    "Critical Infrastructure": [base.branch, base.state],
+    "Strategic Rationale": base.description || (isRo
+      ? "Nod din infrastructura domestică a SUA, cartografiat cu coordonatele instalației."
+      : "Node in the domestic U.S. infrastructure network, mapped with installation coordinates."),
+    "Image URL": SITE_IMAGES.homeUsaAtNightFromSpace,
+  });
 
   return (
     <section className="bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
@@ -1164,11 +1226,10 @@ export function DomesticBasesSection({
             <>
               <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {paginatedBases.map((base) => {
-                  const isExpanded = expandedBases[base.id] || false;
                   return (
                     <div
                       key={base.id}
-                      onClick={() => toggleBase(base.id)}
+                      onClick={() => setSelectedBaseForPopup(mapDomesticBase(base, isRo))}
                       className="cursor-pointer group flex flex-col justify-between border-t border-zinc-900 pt-3 transition-colors hover:border-zinc-700"
                     >
                       <div>
@@ -1176,18 +1237,12 @@ export function DomesticBasesSection({
                           <h4 className="text-sm font-medium tracking-wide text-zinc-300 transition-colors group-hover:text-white">
                             {base.name}
                           </h4>
-                          {base.description && (
-                            <span className="text-[9px] font-mono uppercase text-zinc-600 group-hover:text-zinc-400 mt-1 select-none">
-                              {isExpanded ? "[LESS]" : "[MORE]"}
-                            </span>
-                          )}
+                          <span className="text-[9px] font-mono uppercase text-zinc-600 group-hover:text-zinc-400 mt-1 select-none">
+                            {isRo ? "[DETALII]" : "[BRIEFING]"}
+                          </span>
                         </div>
                         {base.description && (
-                          <p className={`mt-2 text-xs leading-relaxed transition-all duration-300 ${
-                            isExpanded
-                              ? "text-zinc-300 line-clamp-none"
-                              : "text-zinc-500 line-clamp-2 group-hover:text-zinc-400"
-                          }`}>
+                          <p className="mt-2 text-xs leading-relaxed text-zinc-500 line-clamp-2 transition-colors group-hover:text-zinc-400">
                             {base.description}
                           </p>
                         )}
@@ -1242,6 +1297,11 @@ export function DomesticBasesSection({
           )}
         </div>
       </div>
+      <BaseDetailDrawer
+        base={selectedBaseForPopup}
+        onClose={() => setSelectedBaseForPopup(null)}
+        locale={locale}
+      />
     </section>
   );
 }
@@ -1257,7 +1317,7 @@ export function OverseasBasesSection({
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBranch, setSelectedBranch] = useState<ServiceBranch | "All">("All");
   const [currentPage, setCurrentPage] = useState(1);
-  const [expandedBases, setExpandedBases] = useState<Record<string, boolean>>({});
+  const [selectedBaseForPopup, setSelectedBaseForPopup] = useState<StrategicBase | null>(null);
 
   const BRANCHES: (ServiceBranch | "All")[] = [
     "All",
@@ -1293,9 +1353,24 @@ export function OverseasBasesSection({
     return filteredBases.slice(start, start + itemsPerPage);
   }, [filteredBases, currentPage]);
 
-  const toggleBase = (id: string) => {
-    setExpandedBases((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
+  const mapOverseasBase = (base: OverseasBase, isRo: boolean): StrategicBase => ({
+    ID: `overseas-${base.id}`,
+    Name: base.name,
+    Country: base.country,
+    Region: getOverseasRegion(base),
+    Coordinates: base.coordinates,
+    "Primary Branch": base.branch,
+    "Operational Focus": base.locationDetails
+      ? `${isRo ? "Instalație externă" : "Overseas installation"} / ${base.locationDetails}`
+      : isRo
+        ? "Instalație externă din rețeaua avansată de acces și susținere."
+        : "Overseas installation in the forward access and sustainment network.",
+    "Critical Infrastructure": [base.branch, base.country],
+    "Strategic Rationale": base.description || (isRo
+      ? "Nod din infrastructura externă a SUA, cartografiat cu coordonatele instalației."
+      : "Node in the overseas U.S. infrastructure network, mapped with installation coordinates."),
+    "Image URL": SITE_IMAGES.homeUsaAtNightFromSpace,
+  });
 
   return (
     <section className="border-t border-zinc-900 bg-zinc-950 px-6 py-28 sm:px-10 md:py-36 lg:px-16">
@@ -1353,11 +1428,10 @@ export function OverseasBasesSection({
             <>
               <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {paginatedBases.map((base) => {
-                  const isExpanded = expandedBases[base.id] || false;
                   return (
                     <div
                       key={base.id}
-                      onClick={() => toggleBase(base.id)}
+                      onClick={() => setSelectedBaseForPopup(mapOverseasBase(base, isRo))}
                       className="cursor-pointer group flex flex-col justify-between border-t border-zinc-800 pt-3 transition-colors hover:border-zinc-600"
                     >
                       <div>
@@ -1365,18 +1439,12 @@ export function OverseasBasesSection({
                           <h4 className="text-sm font-medium tracking-wide text-zinc-300 transition-colors group-hover:text-white">
                             {base.name}
                           </h4>
-                          {base.description && (
-                            <span className="text-[9px] font-mono uppercase text-zinc-600 group-hover:text-zinc-400 mt-1 select-none">
-                              {isExpanded ? "[LESS]" : "[MORE]"}
-                            </span>
-                          )}
+                          <span className="text-[9px] font-mono uppercase text-zinc-600 group-hover:text-zinc-400 mt-1 select-none">
+                            {isRo ? "[DETALII]" : "[BRIEFING]"}
+                          </span>
                         </div>
                         {base.description && (
-                          <p className={`mt-2 text-xs leading-relaxed transition-all duration-300 ${
-                            isExpanded
-                              ? "text-zinc-300 line-clamp-none"
-                              : "text-zinc-500 line-clamp-2 group-hover:text-zinc-400"
-                          }`}>
+                          <p className="mt-2 text-xs leading-relaxed text-zinc-500 line-clamp-2 transition-colors group-hover:text-zinc-400">
                             {base.description}
                           </p>
                         )}
@@ -1431,6 +1499,11 @@ export function OverseasBasesSection({
           )}
         </div>
       </div>
+      <BaseDetailDrawer
+        base={selectedBaseForPopup}
+        onClose={() => setSelectedBaseForPopup(null)}
+        locale={locale}
+      />
     </section>
   );
 }
