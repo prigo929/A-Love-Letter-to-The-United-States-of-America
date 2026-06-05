@@ -168,10 +168,6 @@ export function CultureStyles() {
         filter: grayscale(0) brightness(1);
         opacity: 1;
       }
-      /* Logo slot — clips oversized logos */
-      .logo-slot {
-        overflow: hidden;
-      }
 
       /* ── Entry Animations ───────────────────────────────────────── */
       @keyframes fadeInUp {
