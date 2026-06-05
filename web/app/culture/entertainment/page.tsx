@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
-import { CultureStyles } from "@/components/culture/CulturePageComponents";
+import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
+import {
+  MacroStyles,
+  MacroHero,
+  CountUp,
+  InfrastructureBand,
+} from "@/components/economy/EconomyAnimations";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Entertainment & Media | The American Operating System",
-  description: "Explore the global attention loop dominated by Netflix, Disney, and YouTube, alongside North America's massive theme park industry.",
+  description:
+    "Explore the global attention loop dominated by Netflix, Disney, and YouTube, alongside North America's massive theme park industry.",
 };
 
 export default async function CultureEntertainmentPage() {
@@ -18,136 +24,297 @@ export default async function CultureEntertainmentPage() {
   const breadcrumbPage = isRo ? "Divertisment" : "Entertainment";
 
   const content = {
-    eyebrow: isRo ? "MAȘINA DE ATENȚIE · ENTERTAINMENT" : "THE ATTENTION MACHINE · ENTERTAINMENT",
-    title: isRo ? "PIEȚE GLOBALE DE MEDIA ȘI SCREEN TIME" : "GLOBAL MEDIA MARKETS & SCREEN TIME",
+    eyebrow: isRo
+      ? "MAȘINA DE ATENȚIE · ENTERTAINMENT"
+      : "THE ATTENTION MACHINE · ENTERTAINMENT",
+    title: isRo
+      ? "PIEȚE GLOBALE DE MEDIA ȘI SCREEN TIME"
+      : "GLOBAL MEDIA MARKETS & SCREEN TIME",
     pullQuote: isRo
       ? "Spre deosebire de televiziunile de stat tradiționale, mașina de divertisment din SUA este alimentată în întregime de cererea globală a consumatorilor."
       : "Unlike traditional state-run media, the U.S. entertainment machine is powered entirely by global consumer demand.",
     body1: isRo
-      ? "Netflix, Disney, YouTube și Amazon Prime Video dictează timpul de ecran la nivel mondial. Aceste platforme nu sunt doar servicii de streaming; sunt conducte digitale care transmit valori, estetici și narațiuni către fiecare colț al planetei. Ele reprezintă exportul infrastructurii de atenție."
+      ? "Netflix, Disney, YouTube și Amazon Prime Video dictează timpul de ecran la nivel mondial. Aceste platforme nu sunt doar servicii de streaming; sunt conducte digitale care transmit valori, estetici și narațiuni către fiecare colț al planetei."
       : "Netflix, Disney, YouTube, and Amazon Prime Video dictate global screen time. These platforms are not just streaming services; they are digital pipelines broadcasting values, aesthetics, and narratives to every corner of the planet. They represent the export of attention infrastructure.",
     body2: isRo
       ? "Această industrie se bazează pe o competiție privată acerbă și pe infuzii masive de capital de risc pentru conținut original. O singură companie, cum ar fi Netflix, cheltuiește peste 15 miliarde de dolari anual pe conținut — o cifră care depășește bugetele întregi de cultură ale majorității națiunilor europene adunate la un loc."
       : "This industry relies on fierce private competition and massive venture funding for original content. A single company like Netflix spends over $15 billion annually on content — a figure that dwarfs the entire cultural budgets of most European nations combined.",
-    
-    stat1Value: "260M+",
-    stat1Label: isRo ? "Abonați Netflix Global" : "Global Netflix Subscribers",
-    stat2Value: "190",
-    stat2Label: isRo ? "Țări Deservite în 45 Limbi" : "Countries Reached in 45 Languages",
-    stat3Value: "$260B",
-    stat3Label: isRo ? "Piața de Media din SUA" : "US Media & Entertainment Market Size",
 
-    themeParkLabel: isRo ? "DIVERTISMENT EXPERIENȚIAL" : "EXPERIENTIAL ENTERTAINMENT",
-    themeParkTitle: isRo ? "Complexul Industrial al Parcurilor Tematice" : "The Theme Park Industrial Complex",
+    themeParkLabel: isRo
+      ? "DIVERTISMENT EXPERIENȚIAL"
+      : "EXPERIENTIAL ENTERTAINMENT",
+    themeParkTitle: isRo
+      ? "Complexul Industrial al Parcurilor Tematice"
+      : "The Theme Park Industrial Complex",
     themeParkText1: isRo
-      ? "America de Nord domină piața mondială a parcurilor tematice cu o cotă de venituri de 37% în 2025. Acesta nu este doar divertisment simplu; este un export industrial extrem de avansat de proprietate intelectuală culturală americană (Marvel, Star Wars, Pixar) transpus în realitate fizică."
-      : "North America dominates the global theme park market with a largest revenue share of approximately 37% in 2025. This is not entertainment for its own sake; it is a massive export industry that builds American cultural IP — Marvel, Star Wars, Pixar, and Harry Potter — into physical, experiential reality at premium prices.",
+      ? "America de Nord domină piața mondială a parcurilor tematice cu o cotă de venituri de 37% în 2025. Acesta nu este doar divertisment simplu; este un export industrial de proprietate intelectuală culturală americană (Marvel, Star Wars, Pixar) transpus în realitate fizică."
+      : "North America dominates the global theme park market with the largest revenue share of approximately 37% in 2025. This is not entertainment for its own sake; it is a massive export industry that builds American cultural IP — Marvel, Star Wars, Pixar — into physical, experiential reality at premium prices.",
     themeParkText2: isRo
-      ? "Cele 12 parcuri Disney la nivel global atrag singure peste 34% din vizitatorii mondiali (140 de milioane de vizitatori anual), în timp ce Universal atrage alte 57 de milioane. În Florida Centrală, 75 de milioane de vizitatori au generat un impact economic de 95 de miliarde de dolari în 2024 — depășind economia turistică a multor țări întregi."
-      : "Disney's 12 parks alone capture over 34% of global theme park attendance, with 140 million visitors annually, while Universal's 6 parks draw another 57 million. Central Florida alone recorded 75 million visitors in 2024 generating nearly $95 billion in total economic impact, making a single American metro area's theme park cluster larger than the entire tourism economies of most nations.",
+      ? "Cele 12 parcuri Disney la nivel global atrag singure peste 34% din vizitatorii mondiali (140 de milioane de vizitatori anual). În Florida Centrală, 75 de milioane de vizitatori au generat un impact economic de 95 de miliarde de dolari în 2024 — depășind economia turistică a multor țări întregi."
+      : "Disney's 12 parks alone capture over 34% of global theme park attendance, with 140 million visitors annually. Central Florida alone recorded 75 million visitors in 2024 generating nearly $95 billion in total economic impact, making a single American metro area's theme park cluster larger than the entire tourism economies of most nations.",
 
     backLink: isRo ? "← Înapoi la Sport" : "← Back to Sports",
     nextLink: isRo ? "Companii și Branduri →" : "Companies & Brands →",
   };
 
+  const streamingPlatforms = [
+    {
+      name: "Netflix",
+      stat: "260M+",
+      statLabel: isRo ? "Abonați Globali" : "Global Subscribers",
+      detail: isRo
+        ? "Conținut în 45 de limbi, 190 de țări. Cel mai mare exportator de narațiuni din lume."
+        : "Content in 45 languages, 190 countries. The world's largest exporter of narrative.",
+    },
+    {
+      name: "YouTube",
+      stat: "2.7B",
+      statLabel: isRo ? "Utilizatori Lunari" : "Monthly Users",
+      detail: isRo
+        ? "Platforma video a omenirii — creată, finanțată și construită în Silicon Valley."
+        : "Humanity's video platform — built, funded, and engineered in Silicon Valley.",
+    },
+    {
+      name: "Disney+",
+      stat: "150M+",
+      statLabel: isRo ? "Abonați" : "Subscribers",
+      detail: isRo
+        ? "Marvel, Star Wars, Pixar, National Geographic — proprietate intelectuală americană globalizată."
+        : "Marvel, Star Wars, Pixar, National Geographic — American IP globalized at scale.",
+    },
+  ];
+
   return (
-    <main className="min-h-screen culture-bg pt-32 pb-24 text-[#F5EDD8] font-editorial">
-      <CultureStyles />
+    <>
+      <MacroStyles />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <Breadcrumb
-          items={[
-            { label: breadcrumbCulture, href: "/culture" },
-            { label: breadcrumbPage },
-          ]}
-          className="mb-12 font-sans"
-        />
+      {/* Cinematic Hero — Times Square Aerial */}
+      <MacroHero
+        videoSrc="/videos/library/Culture/Times Square Aerial.mp4"
+        eyebrow={isRo ? "MEDIA · ENTERTAINMENT" : "MEDIA · ENTERTAINMENT"}
+        titleLead={isRo ? "PIEȚE GLOBALE" : "GLOBAL MEDIA"}
+        titleAccent={isRo ? "DE MEDIA" : "MARKETS"}
+        description={content.pullQuote}
+        stats={[
+          {
+            value: "260M+",
+            label: isRo ? "Abonați Netflix" : "Netflix Subscribers",
+          },
+          {
+            value: "$260B",
+            label: isRo ? "Piața Media SUA" : "US Media Market",
+          },
+          {
+            value: "190",
+            label: isRo ? "Țări Deservite" : "Countries Reached",
+          },
+        ]}
+      />
 
-        {/* Hero */}
-        <section className="mb-24">
-          <span className="culture-text-label block mb-4 text-glory-gold">
-            {content.eyebrow}
-          </span>
-          <h1 className="culture-text-hero mb-8 text-[#F5EDD8]">
-            {content.title}
-          </h1>
+      <div className="bg-[#030405] relative z-10 pb-32 pt-16 font-body text-white">
+        {/* Breadcrumb */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
+          <Breadcrumb
+            items={[
+              { label: breadcrumbCulture, href: "/culture" },
+              { label: breadcrumbPage },
+            ]}
+            className="mb-8"
+          />
+        </div>
 
-          <div className="grid gap-12 lg:grid-cols-3 items-start border-t border-white/10 pt-12">
-            <div className="lg:col-span-2 space-y-6">
-              <blockquote className="text-2xl font-editorial italic text-[#F5EDD8]/90 leading-relaxed mb-8 pl-6 border-l-2 border-[#E8391B]">
-                "{content.pullQuote}"
-              </blockquote>
-              <p className="font-sans text-base text-[#F5EDD8]/70 leading-relaxed">
-                {content.body1}
-              </p>
-              <p className="font-sans text-base text-[#F5EDD8]/70 leading-relaxed">
-                {content.body2}
-              </p>
+        {/* Streaming Dominance Stats */}
+        <section className="py-24 border-t border-b border-white/5 bg-white/[0.01] mb-32">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-16 font-semibold">
+              {isRo ? "DOMINANȚĂ STREAMING" : "STREAMING DOMINANCE"}
+            </p>
+            <div className="grid gap-6 sm:grid-cols-3">
+              {streamingPlatforms.map((platform, i) => (
+                <div
+                  key={i}
+                  className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500"
+                >
+                  <p className="font-mono text-xs uppercase tracking-widest text-[#E8B923] mb-4">
+                    {platform.name}
+                  </p>
+                  <p className="font-macro-display text-4xl md:text-5xl text-white font-black tracking-tight mb-2">
+                    {platform.stat}
+                  </p>
+                  <p className="font-mono text-xs text-[#E8B923] uppercase tracking-wider mb-4">
+                    {platform.statLabel}
+                  </p>
+                  <p className="text-sm text-white/50 leading-relaxed font-body">
+                    {platform.detail}
+                  </p>
+                </div>
+              ))}
             </div>
+          </div>
+        </section>
 
-            {/* Sidebar Stats */}
-            <div className="culture-glass rounded-2xl p-6 border border-white/5 space-y-6 font-sans">
-              <div className="border-b border-white/5 pb-4">
-                <div className="text-4xl font-bold text-white tracking-tight">{content.stat1Value}</div>
-                <div className="text-xs text-glory-gold uppercase tracking-wider mt-1">{content.stat1Label}</div>
+        {/* Main Editorial Section */}
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
+          <div className="grid gap-12 lg:grid-cols-5 items-start">
+            <div className="lg:col-span-3 space-y-6">
+              <span className="macro-eyebrow">{content.eyebrow}</span>
+              <h2 className="macro-section-title text-white text-3xl md:text-5xl">
+                {content.title}
+              </h2>
+              <blockquote className="text-xl md:text-2xl font-display italic text-white/90 leading-relaxed pl-6 border-l-2 border-[#E8B923] mt-4">
+                &ldquo;{content.pullQuote}&rdquo;
+              </blockquote>
+            </div>
+            <div className="lg:col-span-2 space-y-6 pt-2">
+              <p className="macro-body text-white/70">{content.body1}</p>
+              <p className="macro-body text-white/70">{content.body2}</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Dynamic Count-Up Stats */}
+        <section className="py-24 border-t border-b border-white/5 bg-white/[0.01] mb-32">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-16 font-semibold">
+              {isRo ? "INFLUENȚĂ GLOBALĂ" : "GLOBAL FOOTPRINT"}
+            </p>
+            <div className="grid gap-12 sm:grid-cols-3 text-center">
+              <div className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500">
+                <p className="font-macro-display text-5xl md:text-6xl text-[#E8B923] font-black tracking-tight mb-4">
+                  $<CountUp value={15} suffix="B" />
+                </p>
+                <p className="font-macro-display text-xl font-bold text-white mb-3">
+                  {isRo ? "Netflix — Buget Conținut" : "Netflix Content Budget"}
+                </p>
+                <p className="text-xs text-white/50 leading-relaxed font-body">
+                  {isRo
+                    ? "O singură companie americană cheltuiește mai mult pe conținut decât bugetele culturale ale întregii Europe combinate."
+                    : "A single American company spends more on content than the cultural budgets of all of Europe combined."}
+                </p>
               </div>
-              <div className="border-b border-white/5 pb-4">
-                <div className="text-4xl font-bold text-white tracking-tight">{content.stat2Value}</div>
-                <div className="text-xs text-glory-gold uppercase tracking-wider mt-1">{content.stat2Label}</div>
+              <div className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500">
+                <p className="font-macro-display text-5xl md:text-6xl text-[#E8B923] font-black tracking-tight mb-4">
+                  <CountUp value={75} suffix="M" />
+                </p>
+                <p className="font-macro-display text-xl font-bold text-white mb-3">
+                  {isRo ? "Vizitatori Florida Centrală" : "Central Florida Visitors"}
+                </p>
+                <p className="text-xs text-white/50 leading-relaxed font-body">
+                  {isRo
+                    ? "Un singur cluster de parcuri tematice americane depășește turismul anual al majorității națiunilor."
+                    : "A single American theme park cluster out-draws the annual tourism of most nations."}
+                </p>
               </div>
-              <div>
-                <div className="text-4xl font-bold text-white tracking-tight">{content.stat3Value}</div>
-                <div className="text-xs text-glory-gold uppercase tracking-wider mt-1">{content.stat3Label}</div>
+              <div className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500">
+                <p className="font-macro-display text-5xl md:text-6xl text-[#E8B923] font-black tracking-tight mb-4">
+                  $<CountUp value={95} suffix="B" />
+                </p>
+                <p className="font-macro-display text-xl font-bold text-white mb-3">
+                  {isRo ? "Impact Economic Orlando" : "Orlando Economic Impact"}
+                </p>
+                <p className="text-xs text-white/50 leading-relaxed font-body">
+                  {isRo
+                    ? "Impactul economic generat de parcurile tematice din Florida Centrală în 2024."
+                    : "Total economic impact generated by Central Florida's theme park cluster in 2024."}
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Experiential Entertainment / Theme Parks */}
-        <section className="mb-24 border-t border-white/10 pt-16 font-sans">
+        {/* Parallax Band — Times Square / Hollywood */}
+        <InfrastructureBand
+          imageSrc={SITE_IMAGES.culture.timesSquareIconic}
+          imageAlt="Times Square New York City"
+        >
+          <div className="relative z-10 text-center md:text-left">
+            <span className="macro-eyebrow mb-2 block">
+              {content.themeParkLabel}
+            </span>
+            <h2 className="macro-section-title text-white mb-4">
+              {content.themeParkTitle}
+            </h2>
+            <p className="macro-body text-white/70 max-w-3xl leading-relaxed">
+              {content.themeParkText1}
+            </p>
+          </div>
+        </InfrastructureBand>
+
+        {/* Theme Parks Editorial */}
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div className="space-y-6">
-              <span className="text-xs font-semibold tracking-wider text-glory-gold uppercase">
-                {content.themeParkLabel}
-              </span>
-              <h2 className="text-3xl font-editorial font-bold text-white leading-tight">
+              <span className="macro-eyebrow">{content.themeParkLabel}</span>
+              <h2 className="macro-section-title text-white text-3xl md:text-4xl">
                 {content.themeParkTitle}
               </h2>
-              <p className="text-[#F5EDD8]/70 leading-relaxed text-sm">
-                {content.themeParkText1}
-              </p>
-              <p className="text-[#F5EDD8]/70 leading-relaxed text-sm">
-                {content.themeParkText2}
-              </p>
+              <p className="macro-body text-white/70">{content.themeParkText1}</p>
+              <p className="macro-body text-white/70">{content.themeParkText2}</p>
             </div>
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/5 bg-black/40">
-              <Image
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-white/5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={SITE_IMAGES.culture.disneyWorld}
-                alt="Disney World Cinderella Castle"
-                fill
-                className="object-cover hover:scale-102 transition-transform duration-500"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                alt="Disney World Cinderella Castle Orlando"
+                className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </div>
+          </div>
+        </section>
+
+        {/* Hollywood / Cinema Images */}
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-12 font-semibold">
+            {isRo ? "FABRICAT ÎN HOLLYWOOD" : "MADE IN HOLLYWOOD"}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="relative aspect-video overflow-hidden rounded-3xl border border-white/5 md:col-span-2">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={SITE_IMAGES.culture.hollywoodSign}
+                alt="Hollywood Sign at Sunset"
+                className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            <div className="relative aspect-video overflow-hidden rounded-3xl border border-white/5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={SITE_IMAGES.culture.chicagoTheatre}
+                alt="Chicago Theatre Marquee"
+                className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>
         </section>
 
         {/* Navigation */}
-        <div className="flex items-center justify-between border-t border-white/10 pt-12 mt-16 font-sans">
-          <a
-            href="/culture/sports"
-            className="text-xs uppercase tracking-widest text-[#F5EDD8]/50 hover:text-white transition-colors"
-          >
-            {content.backLink}
-          </a>
-          <a
-            href="/culture/companies-brands"
-            className="text-xs uppercase tracking-widest text-glory-gold hover:text-white transition-colors"
-          >
-            {content.nextLink}
-          </a>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between border-t border-white/10 pt-12">
+            <a
+              href="/culture/sports"
+              className="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors font-mono"
+            >
+              {content.backLink}
+            </a>
+            <a
+              href="/culture/companies-brands"
+              className="text-xs uppercase tracking-widest text-[#E8B923] hover:text-white transition-colors font-mono"
+            >
+              {content.nextLink}
+            </a>
+          </div>
+        </div>
+
+        {/* AI Oracle */}
+        <div className="mt-32">
+          <AskAmericaCTA
+            locale={locale}
+            descriptionEn="Ask the AI Oracle about Netflix's global reach, Disney's theme park empire, Hollywood's cultural exports, or the US media market."
+            descriptionRo="Întreabă Oracolul AI despre dominanța Netflix, imperiul parcurilor Disney, exporturile culturale Hollywood sau piața media din SUA."
+          />
         </div>
       </div>
-    </main>
+    </>
   );
 }

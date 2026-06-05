@@ -108,7 +108,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     location: "New York Harbor",
     tone: "National symbol",
   },
-  "Education/Columbia University.jpg": {
+  "University/Columbia University.jpg": {
     alt: "Low Memorial Library on the Columbia University campus in New York City",
     caption: "Columbia University, New York",
     description:

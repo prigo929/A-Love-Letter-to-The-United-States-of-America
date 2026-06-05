@@ -4,11 +4,14 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { 
   Cpu, 
-  ExternalLink,
-  PlusCircle,
-  Brain,
-  Layers
+  ExternalLink
 } from "lucide-react";
+import { 
+  MacroStyles, 
+  MacroHero, 
+  CountUp, 
+  InfrastructureBand 
+} from "@/components/economy/EconomyAnimations";
 
 export const metadata: Metadata = {
   title: "AI & Tech | Innovation & Technology",
@@ -127,139 +130,151 @@ export default async function AiAndTechPage() {
   const copy = isRo ? copyRo : copyEn;
 
   return (
-    <main className="min-h-screen bg-navy-dark pt-24 text-white font-body selection:bg-glory-gold selection:text-navy-dark">
-      {/* Breadcrumbs */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Breadcrumb
-          items={[
-            { label: copy.breadcrumbParent, href: "/innovation" },
-            { label: copy.breadcrumbPage },
-          ]}
-          className="mb-8"
-        />
-      </div>
+    <>
+      <MacroStyles />
+      
+      {/* Cinematic Looping Video Hero */}
+      <MacroHero 
+        titleLead={copy.heroTitle}
+        titleAccent={copy.heroTagline}
+        eyebrow={copy.breadcrumbPage}
+        description={copy.heroSubtitle}
+        videoSrc="/videos/library/Earth from Space/Earth rotating during the night from space wiht light from cities.mp4"
+      />
 
-      {/* Hero Section */}
-      <section
-        id="hero"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-gradient-to-b from-navy-dark via-navy-mid to-navy-dark relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-star-pattern opacity-30 pointer-events-none" />
-        <div className="mx-auto max-w-4xl text-center relative z-10">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-glory-gold mb-4 block">
-            {copy.heroTagline}
-          </span>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            {copy.heroTitle}
-          </h1>
-          <p className="font-body text-white/70 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-            {copy.heroSubtitle}
-          </p>
+      <div className="bg-[#030405] relative z-10 pb-32 pt-16 font-body text-white">
+        {/* Breadcrumbs */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
+          <Breadcrumb
+            items={[
+              { label: copy.breadcrumbParent, href: "/innovation" },
+              { label: copy.breadcrumbPage },
+            ]}
+          />
         </div>
-      </section>
 
-      {/* Thesis Section */}
-      <section
-        id="intro"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
-      >
-        <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/3 p-8 md:p-12 relative">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-            <Brain className="h-24 w-24 text-glory-gold" />
+        {/* Thesis Section */}
+        <section id="intro" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-32">
+          <div className="rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-4 opacity-5">
+              <Cpu className="h-40 w-40 text-[#E8B923]" />
+            </div>
+            <h2 className="font-macro-display text-3xl font-bold text-[#E8B923] mb-8">
+              {copy.thesisTitle}
+            </h2>
+            <p className="font-macro-body text-white/80 text-xl leading-relaxed mb-6">
+              {copy.thesisParagraph1}
+            </p>
+            <p className="font-macro-body text-white/80 text-xl leading-relaxed">
+              {copy.thesisParagraph2}
+            </p>
           </div>
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-glory-gold mb-6">
-            {copy.thesisTitle}
-          </h2>
-          <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
-            {copy.thesisParagraph1}
-          </p>
-          <p className="font-body text-white/80 text-lg leading-relaxed">
-            {copy.thesisParagraph2}
-          </p>
-        </div>
-      </section>
+        </section>
 
-      {/* Milestones grid */}
-      <section
-        id="milestones"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
-      >
-        <div className="mx-auto max-w-7xl">
-          <h2 className="font-display text-3xl font-bold text-white text-center mb-12">
+        {/* AI & Computing Stats Section */}
+        <section className="py-24 border-t border-b border-white/5 bg-white/[0.01] mb-32">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+              <div className="flex flex-col items-center">
+                <span className="font-macro-display text-6xl md:text-7xl font-black text-[#E8B923] mb-4">
+                  <CountUp value={50} suffix="%" />
+                </span>
+                <span className="macro-metadata max-w-xs leading-relaxed">
+                  {isRo ? "Din veniturile globale din semiconductori captate de firme din SUA" : "Of global semiconductor design revenues captured by US firms"}
+                </span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span className="font-macro-display text-6xl md:text-7xl font-black text-[#E8B923] mb-4">
+                  <CountUp value={100} suffix="%" />
+                </span>
+                <span className="macro-metadata max-w-xs leading-relaxed">
+                  {isRo ? "Dependență globală de software-ul EDA din SUA pentru cipuri avansate" : "Global reliance on US EDA software for advanced chip design"}
+                </span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span className="font-macro-display text-6xl md:text-7xl font-black text-[#E8B923] mb-4">
+                  <CountUp value={90} suffix="%" />
+                </span>
+                <span className="macro-metadata max-w-xs leading-relaxed">
+                  {isRo ? "Din supercomputerele de antrenament AI operând pe IP din SUA" : "Of frontier AI training compute running on American designed IP"}
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Milestones grid */}
+        <section id="milestones" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
+          <h2 className="font-macro-display text-4xl font-bold text-center mb-16 text-white uppercase tracking-tight">
             {copy.milestonesTitle}
           </h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {copy.milestones.map((item, idx) => (
               <div 
                 key={idx}
-                className="rounded-3xl border border-white/10 bg-white/5 p-6 flex flex-col justify-between hover:border-glory-gold/40 transition-all duration-300"
+                className="rounded-3xl border border-white/5 bg-white/[0.02] p-8 flex flex-col justify-between hover:border-[#E8B923]/40 hover:bg-white/[0.04] transition-all duration-500 group"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono text-glory-gold border border-glory-gold/25 px-2 py-0.5 rounded">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-xs font-mono text-[#E8B923] border border-[#E8B923]/25 px-2 py-0.5 rounded">
                       {item.date}
                     </span>
-                    <PlusCircle className="h-5 w-5 text-white/30" />
                   </div>
-                  <h3 className="font-display text-xl font-bold text-white mb-3">
+                  <h3 className="font-macro-display text-2xl font-bold text-white mb-4 group-hover:text-[#E8B923] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-white/50 leading-relaxed font-body">
+                  <p className="text-sm text-white/60 leading-relaxed font-body">
                     {item.details}
                   </p>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Semiconductor Design Feature Section */}
-      <section
-        id="semiconductor-design-feature"
-        className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 pb-24 bg-gradient-to-r from-navy-dark via-navy-mid to-navy-dark"
-      >
-        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-navy-dark/60 backdrop-blur p-8 md:p-12 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-            <Cpu className="h-40 w-40 text-glory-gold" />
-          </div>
-          
+        {/* Semiconductor Design Feature Section (Cinematic Silicon Wafer Parallax) */}
+        <InfrastructureBand
+          imageSrc="/images/library/Technology/Vivid and detailed close-up of a patterned silicon wafer with vibrant green and blue colors.jpg"
+          imageAlt="Patterned Silicon Wafer Close-up"
+        >
           <div className="relative z-10">
-            <span className="font-mono text-xs uppercase tracking-widest text-glory-gold mb-3 block">
+            <span className="macro-eyebrow mb-3 block">
               {copy.aiLabel}
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-6">
+            <h2 className="macro-section-title text-white mb-6">
               {copy.aiTitle}
             </h2>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
+            <p className="macro-body text-white/80 mb-6 max-w-4xl">
               {copy.aiParagraph1}
             </p>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-8">
+            <p className="macro-body text-white/80 mb-8 max-w-4xl">
               {copy.aiParagraph2}
             </p>
             
-            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
+            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40 font-mono">
               <span>Source: {copy.aiSource}</span>
               <a 
                 href={copy.aiSourceUrl} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-flex items-center gap-1 text-glory-gold hover:underline"
+                className="inline-flex items-center gap-1 text-[#E8B923] hover:underline"
               >
                 {isRo ? "Verifică datele industriei" : "Verify Industry Data"}
                 <ExternalLink className="h-3.5 w-3.5" />
               </a>
             </div>
           </div>
-        </div>
-      </section>
+        </InfrastructureBand>
 
-      {/* AI Ask America Oracle Section */}
-      <AskAmericaCTA
-        locale={locale}
-        descriptionEn={copyEn.oracleDescription}
-        descriptionRo={copyRo.oracleDescription}
-      />
-    </main>
+        {/* AI Ask America Oracle Section */}
+        <div className="mt-32">
+          <AskAmericaCTA
+            locale={locale}
+            descriptionEn={copyEn.oracleDescription}
+            descriptionRo={copyRo.oracleDescription}
+          />
+        </div>
+      </div>
+    </>
   );
 }

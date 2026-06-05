@@ -14,7 +14,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import type { Locale } from "@/lib/i18n/config";
 import { getServerLocale } from "@/lib/i18n/server";
-import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand } from "@/components/economy/EconomyAnimations";
+import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import {
   getTradeOverviewParagraphs,
   US_EXPORT_CATEGORIES,
@@ -510,10 +510,10 @@ export default async function TradeAndExportsPage() {
 
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 mt-24">
               {exportCategories.map((cat) => (
-                <div key={cat.category} className="flex flex-col border-t border-white/10 pt-8">
-                  <h3 className="font-macro-display text-2xl text-white mb-4">{cat.category}</h3>
+                <div key={cat.category} className="flex flex-col border-t border-[#E8B923]/30 pt-8 hover:border-[#E8B923]/60 transition-colors duration-300">
+                  <h3 className="font-macro-display text-2xl text-white mb-6">{cat.category}</h3>
                   <p className="font-macro-display text-5xl text-[#E8B923] mt-auto">
-                    ${cat.exports}B
+                    $<CountUp value={cat.exports} suffix="B" decimals={0} />+
                   </p>
                 </div>
               ))}

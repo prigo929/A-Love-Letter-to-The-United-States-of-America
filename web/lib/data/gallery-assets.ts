@@ -150,8 +150,8 @@ import asset146 from "@/IMAGES/Economy/economy-nyse-upside-down.jpg";
 import asset147 from "@/IMAGES/Economy/economy-port.jpg";
 import asset148 from "@/IMAGES/Economy/economy-trade-skyline.jpg";
 import asset149 from "@/IMAGES/Economy/paul-alain-hunt-_QhDyjKpQQI-unsplash.jpg";
-import asset150 from "@/IMAGES/Education/Columbia University.jpg";
-import asset151 from "@/IMAGES/Education/harvard-campus.jpg";
+import asset150 from "@/IMAGES/University/Columbia University.jpg";
+import asset151 from "@/IMAGES/University/Cambridge_-_USA_-_Harvard_University_-_Harry_Elkins_Widener_Memorial_Library_-_panoramio.jpg";
 import asset152 from "@/IMAGES/Housing/Charming suburban house with front porch, landscaping, and white facade.jpg";
 import asset153 from "@/IMAGES/Housing/Charming two-story house with manicured lawn and garage, set in Yelm, WA, under dusk sky.jpg";
 import asset154 from "@/IMAGES/Housing/Florida Suburban Houses.jpg";
@@ -407,8 +407,6 @@ import asset403 from "@/IMAGES/Military/Space Force/spoc_command_center.png";
 import asset404 from "@/IMAGES/Military/Space Force/ssc_clean_room.png";
 import asset405 from "@/IMAGES/Military/Space Force/starcom_simulator.png";
 import asset406 from "@/IMAGES/US Buildings/us-supreme-court-building.jpg";
-import asset407 from "@/IMAGES/Culture/Iconic Things/American Bald Eagle with USA Flag detailed illustration.jpg";
-import asset408 from "@/IMAGES/Culture/Iconic Things/Welcome to Las Vegas Sign logo.jpg";
 
 export type GalleryAssetRecord = {
   path: string;
@@ -566,8 +564,8 @@ export const GALLERY_ASSETS = [
   { path: "Economy/economy-port.jpg", src: asset147 },
   { path: "Economy/economy-trade-skyline.jpg", src: asset148 },
   { path: "Economy/paul-alain-hunt-_QhDyjKpQQI-unsplash.jpg", src: asset149 },
-  { path: "Education/Columbia University.jpg", src: asset150 },
-  { path: "Education/harvard-campus.jpg", src: asset151 },
+  { path: "University/Columbia University.jpg", src: asset150 },
+  { path: "University/Harvard Widener Library.jpg", src: asset151 },
   { path: "Housing/Charming suburban house with front porch, landscaping, and white facade.jpg", src: asset152 },
   { path: "Housing/Charming two-story house with manicured lawn and garage, set in Yelm, WA, under dusk sky.jpg", src: asset153 },
   { path: "Housing/Florida Suburban Houses.jpg", src: asset154 },
@@ -823,6 +821,4 @@ export const GALLERY_ASSETS = [
   { path: "Military/Space Force/ssc_clean_room.png", src: asset404 },
   { path: "Military/Space Force/starcom_simulator.png", src: asset405 },
   { path: "US Buildings/us-supreme-court-building.jpg", src: asset406 },
-  { path: "Culture/Iconic Things/American Bald Eagle with USA Flag detailed illustration.jpg", src: asset407 },
-  { path: "Culture/Iconic Things/Welcome to Las Vegas Sign logo.jpg", src: asset408 },
 ] as const satisfies readonly GalleryAssetRecord[];

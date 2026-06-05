@@ -16,7 +16,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { SP500Chart } from "@/components/data/SP500Chart";
 import { MarketCapChart } from "@/components/data/DollarMarketCharts";
-import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand } from "@/components/economy/EconomyAnimations";
+import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
   SP500_HISTORY,
@@ -353,7 +353,7 @@ export default async function CapitalMarketsPage() {
             </h2>
             <div className="grid gap-16 md:grid-cols-3">
               {exchanges.map((exchange) => (
-                <div key={exchange.name} className="flex flex-col border-t border-[#E8B923]/30 pt-8">
+                <div key={exchange.name} className="flex flex-col border-t border-[#E8B923]/30 pt-8 hover:border-[#E8B923]/60 transition-colors duration-300">
                   <div className="mb-8">
                     <h3 className="font-macro-display text-5xl text-white mb-2">
                       {exchange.name}
@@ -363,7 +363,9 @@ export default async function CapitalMarketsPage() {
                     </span>
                   </div>
                   <p className="font-macro-display text-4xl text-[#E8B923] mb-6">
-                    {exchange.marketCap}
+                    {exchange.marketCap.startsWith("$") ? (
+                      <>$<CountUp value={parseFloat(exchange.marketCap.replace(/[$T\s]/g, ""))} suffix="T" decimals={1} /></>
+                    ) : exchange.marketCap}
                   </p>
                   <p className="font-macro-body text-white/60 mb-8 leading-relaxed">
                     {exchange.description}

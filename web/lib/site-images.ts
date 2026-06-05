@@ -19,7 +19,7 @@ import homeNycSkyline from "@/IMAGES/Cities/Manhattan One World Trade Center Clo
 import homeDeclarationIndependence from "@/IMAGES/Constitution/usa-independence-day-concept-with-declaration-independence.jpg";
 import constitutionDocument from "@/IMAGES/Constitution/We The People Wooden Background.jpg";
 import cultureFlagCrowd from "@/IMAGES/Culture/Iconic Things/Statue Of Liberty.jpg";
-import harvardCampus from "@/IMAGES/Education/Columbia University.jpg";
+import harvardCampus from "@/IMAGES/University/Columbia University.jpg";
 import economyDollar from "@/IMAGES/Economy/100 dollar bill.jpg";
 import economyGrowth from "@/IMAGES/Economy/economy-growth.jpg";
 import economyNyseHero from "@/IMAGES/Economy/New York Stock Exchange.jpg";

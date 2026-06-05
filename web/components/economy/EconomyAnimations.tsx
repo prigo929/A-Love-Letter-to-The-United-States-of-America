@@ -10,7 +10,7 @@
 // - Organic Motion: Frictionless fades and scales mapped to scroll physics.
 
 import { useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useInView, useMotionValue, animate } from "framer-motion";
 import Image from "next/image";
 import { cn, BLUR_PLACEHOLDER } from "@/lib/utils";
 
@@ -118,8 +118,9 @@ export function MacroStyles() {
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface MacroHeroProps {
-  imageSrc: string;
-  imageAlt: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  videoSrc?: string;
   eyebrow: string;
   titleLead: string;
   titleAccent: string;
@@ -127,8 +128,9 @@ interface MacroHeroProps {
   stats?: { value: string | number; label: string; sub?: string }[];
 }
 
-export function MacroHero({ imageSrc, imageAlt, eyebrow, titleLead, titleAccent, description, stats }: MacroHeroProps) {
+export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, titleAccent, description, stats }: MacroHeroProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -138,20 +140,44 @@ export function MacroHero({ imageSrc, imageAlt, eyebrow, titleLead, titleAccent,
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+      video.play().catch((err) => {
+        console.warn("Autoplay block in MacroHero:", err);
+      });
+    }
+  }, [videoSrc]);
+
   return (
     <div ref={ref} className="relative min-h-[100dvh] w-full overflow-hidden bg-[#030405] pt-48 pb-24">
       <motion.div style={{ y, scale, opacity: 0.6 }} className="absolute inset-0">
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL={BLUR_PLACEHOLDER}
-          quality={90}
-        />
+        {videoSrc ? (
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+        ) : imageSrc ? (
+          <Image
+            src={imageSrc}
+            alt={imageAlt || ""}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+            placeholder="blur"
+            blurDataURL={BLUR_PLACEHOLDER}
+            quality={90}
+          />
+        ) : null}
         <div className="absolute inset-0 bg-linear-to-t from-[#030405] via-transparent to-[#030405] pointer-events-none" />
         <div className="absolute inset-0 bg-linear-to-b from-[#030405] via-transparent to-[#030405] pointer-events-none opacity-80" />
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(3,4,5,0.7) 100%)' }} />
@@ -223,6 +249,30 @@ export function MacroHero({ imageSrc, imageAlt, eyebrow, titleLead, titleAccent,
       </motion.div>
     </div>
   );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CountUp — Scroll-triggered numeric count-up animation
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function CountUp({ value, prefix = "", suffix = "", decimals = 0, color = "#E8B923" }: {
+  value: number; prefix?: string; suffix?: string; decimals?: number; color?: string;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const motionValue = useMotionValue(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    const controls = animate(motionValue, value, {
+      duration: 2.2,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: (v) => { if (ref.current) ref.current.textContent = prefix + v.toFixed(decimals) + suffix; },
+    });
+    return controls.stop;
+  }, [inView, value, prefix, suffix, decimals, motionValue]);
+
+  return <span ref={ref} className="font-mono tabular-nums" style={{ color }}>{prefix}0{suffix}</span>;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
