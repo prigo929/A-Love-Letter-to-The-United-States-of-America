@@ -22,6 +22,7 @@ import {
 import { GalleryImage } from "@/lib/data/gallery";
 import { CultureStyles } from "./CulturePageComponents";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 interface FilmAndStorytellingClientProps {
   filmImages: GalleryImage[];
@@ -66,7 +67,7 @@ export function FilmAndStorytellingClient({
       ? "Inovațiile gramaticale pe care Hollywood le-a transformat în limbajul universal al atenției"
       : "The grammatical structures Hollywood standardized into a universal linguistic currency of attention",
     
-    auteursTitle: isRo ? "AUTEURII: LEGENDARI REPARATORI DE VISURI" : "THE LEGENDARY AUTEURS OF CINEMA",
+    auteursTitle: isRo ? "AUTEURII: LEGENDARI CREATORI DE VISURI" : "THE LEGENDARY AUTEURS OF CINEMA",
     auteursSubtitle: isRo
       ? "Creatorii vizionari care au modelat subconștientul colectiv global prin semnăturile lor artistice"
       : "The visionary directors who shaped the global collective subconscious through distinct artistic signatures",
@@ -93,6 +94,7 @@ export function FilmAndStorytellingClient({
     closeBtn: isRo ? "Închide" : "Close",
     backLink: isRo ? "← Înapoi la Prezentare Generală" : "← Back to Overview",
     nextLink: isRo ? "Sportul American →" : "American Sports →",
+    ticketStubTitle: isRo ? "BILET DE CINEMA ADMIS" : "CINEMA ADMIT ONE TICKET",
   };
 
   const eras = {
@@ -178,14 +180,14 @@ export function FilmAndStorytellingClient({
   const auteurs = [
     {
       name: "Steven Spielberg",
-      title: isRo ? "Maestrul Miracolului și al Spectacolului" : "Master of Wonder & Spectacle",
+      title: isRo ? "Maestrul Miracolului" : "Master of Wonder & Spectacle",
       bio: isRo
         ? "Regizorul definitoriu al cinematografiei moderne. Spielberg a modelat formatul blockbusterului de vară, îmbinând inovațiile tehnice masive cu empatia umană profundă, inocența copilăriei și temele istorice dramatice."
         : "The defining director of modern cinema. Spielberg masterminded the summer blockbuster template, blending massive technical scale with deep human empathy, childhood wonder, and historic drama.",
       signature: isRo
         ? "Cadre luate de jos sugerând uimirea copilărească, urmăriri complexe de cameră, culori calde."
         : "Low-angle child-like wonder frames, complex camera tracking shots, warm backlighting.",
-      masterpieces: ["Jaws", "E.T. the Extra-Terrestrial", "Schindler's List", "Saving Private Ryan"]
+      masterpieces: ["Jaws", "E.T. the Extra-Terrestrial", "Schindler's List", "Saving Ryan"]
     },
     {
       name: "Martin Scorsese",
@@ -200,18 +202,18 @@ export function FilmAndStorytellingClient({
     },
     {
       name: "Stanley Kubrick",
-      title: isRo ? "Simetrie, Filozofie și Precizie" : "Symmetry, Philosophy & Precision",
+      title: isRo ? "Simetrie și Precizie" : "Symmetry, Philosophy & Precision",
       bio: isRo
         ? "Filozoful perfecționist al lentilei. Kubrick a forțat limitele tehnice și compoziționale ale camerei, oferind analize reci, simetrice și profunde despre condiția umană, nebunie, violență și viitor."
         : "The perfectionist philosopher of the frame. Kubrick pushed optical and technical boundaries to their limits, presenting symmetrical, cerebral investigations into human nature, madness, and technology.",
       signature: isRo
         ? "Perspectivă cu punct de fugă central, mișcări perfect orizontale de traveling, muzică clasică epică."
         : "One-point perspective symmetry, slow and steady tracking dollies, epic classical scores.",
-      masterpieces: ["Dr. Strangelove", "2001: A Space Odyssey", "A Clockwork Orange", "The Shining"]
+      masterpieces: ["Dr. Strangelove", "2001: Space Odyssey", "Clockwork Orange", "The Shining"]
     },
     {
       name: "Francis Ford Coppola",
-      title: isRo ? "Măreție Operatică și Tragedie" : "Operatic Grandeur & Tragedy",
+      title: isRo ? "Măreție Operatică" : "Operatic Grandeur & Tragedy",
       bio: isRo
         ? "Forța creativă a revoluției cinematografice din anii '70. Coppola a reinventat epopeea de familie și miturile violenței americane prin drame masive caracterizate de o estetică operatică teatrală."
         : "The creative titan of 1970s artistic independence. Coppola reinvented the family epic and the mythology of American violence through grand, operatic dramas defined by theatrical aesthetic scale.",
@@ -222,7 +224,7 @@ export function FilmAndStorytellingClient({
     },
     {
       name: "Alfred Hitchcock",
-      title: isRo ? "Maestrul Suspansului Psihologic" : "Master of Psychological Suspense",
+      title: isRo ? "Maestrul Suspansului" : "Master of Psychological Suspense",
       bio: isRo
         ? "Regizorul care a transformat structura camerei într-un instrument de control al anxietății. Hitchcock a formalizat gramatica suspansului, transformând voyeurismul și paranoia în spectacol artistic."
         : "The director who turned the camera lens into a mechanism of pure anxiety control. Hitchcock formalized the rules of suspense, transforming voyeurism and paranoia into high art.",
@@ -244,7 +246,7 @@ export function FilmAndStorytellingClient({
       example: "The Searchers (John Ford), Paris, Texas (Wim Wenders)"
     },
     {
-      title: isRo ? "Unghiul Înclinat (Dutch Angle)" : "The Dutch Angle",
+      title: isRo ? "Unghiul Înclinat" : "The Dutch Angle",
       rationale: isRo ? "Paranoia și Colaps Moral" : "Moral Disorientation & Paranoia",
       desc: isRo
         ? "Înclinarea axei orizontale a camerei pentru a crea un cadru dezechilibrat. Cadrul comunică subconștient panică mentală, anxietate, dezorientare și sentimentul că realitatea s-a destabilizat complet."
@@ -253,7 +255,7 @@ export function FilmAndStorytellingClient({
       example: "The Third Man, Mission: Impossible (De Palma)"
     },
     {
-      title: isRo ? "Dolly Zoom (Efectul Vertigo)" : "The Dolly Zoom",
+      title: isRo ? "Dolly Zoom (Vertigo)" : "The Dolly Zoom",
       rationale: isRo ? "Șoc Subconștient Brusc" : "Subconscious Shock & Vertigo",
       desc: isRo
         ? "Deplasarea fizică a camerei spre subiect în timp ce se face zoom-out optic (sau invers). Subiectul rămâne de aceeași dimensiune în timp ce perspectiva fundalului se strânge sau se extinde spectaculos, redând un atac de panică vizual."
@@ -271,6 +273,65 @@ export function FilmAndStorytellingClient({
       example: "Citizen Kane (Welles), Pulp Fiction (Tarantino)"
     }
   ];
+
+  // Render camera viewfinders inside each frame card
+  const renderViewfinder = (index: number) => {
+    return (
+      <div className="relative w-full aspect-[16/10] bg-black/40 border border-white/10 rounded-xl overflow-hidden mb-6 flex items-center justify-center group-hover:border-glory-gold/30 transition-colors duration-300">
+        {/* Corner viewfinder marks */}
+        <div className="absolute top-2.5 left-2.5 w-3 h-3 border-t-2 border-l-2 border-white/20 group-hover:border-glory-gold/50 transition-colors duration-300" />
+        <div className="absolute top-2.5 right-2.5 w-3 h-3 border-t-2 border-r-2 border-white/20 group-hover:border-glory-gold/50 transition-colors duration-300" />
+        <div className="absolute bottom-2.5 left-2.5 w-3 h-3 border-b-2 border-l-2 border-white/20 group-hover:border-glory-gold/50 transition-colors duration-300" />
+        <div className="absolute bottom-2.5 right-2.5 w-3 h-3 border-b-2 border-r-2 border-white/20 group-hover:border-glory-gold/50 transition-colors duration-300" />
+        
+        {/* Viewfinder crosshair */}
+        <span className="text-white/10 group-hover:text-glory-gold/30 font-sans text-sm select-none pointer-events-none transition-colors duration-300">+</span>
+
+        {index === 0 && (
+          /* Wide Horizon vector */
+          <svg className="w-3/4 h-3/4 text-white/10 group-hover:text-glory-gold/25 transition-all duration-500 group-hover:scale-[1.03]" viewBox="0 0 100 60" fill="none" stroke="currentColor" strokeWidth="1">
+            <line x1="5" y1="42" x2="95" y2="42" />
+            <path d="M 5,42 L 25,28 L 50,38 L 75,22 L 95,42" strokeDasharray="2 2" />
+            <circle cx="50" cy="39" r="1.5" fill="currentColor" />
+          </svg>
+        )}
+
+        {index === 1 && (
+          /* Dutch Angle vector */
+          <svg className="w-3/4 h-3/4 text-white/10 group-hover:text-glory-gold/25 transition-all duration-500 group-hover:scale-[1.03] rotate-[12deg] group-hover:rotate-[15deg]" viewBox="0 0 100 60" fill="none" stroke="currentColor" strokeWidth="1">
+            <rect x="15" y="12" width="70" height="36" strokeDasharray="3 3" />
+            <line x1="5" y1="20" x2="95" y2="45" strokeWidth="1.2" />
+            <path d="M 45,35 L 45,22 L 55,22 L 55,35 Z" fill="currentColor" fillOpacity="0.05" />
+          </svg>
+        )}
+
+        {index === 2 && (
+          /* Dolly Zoom perspective lines */
+          <svg className="w-3/4 h-3/4 text-white/10 group-hover:text-glory-gold/25 transition-all duration-500 group-hover:scale-[1.03]" viewBox="0 0 100 60" fill="none" stroke="currentColor" strokeWidth="1">
+            <rect x="8" y="6" width="84" height="48" opacity="0.2" />
+            <rect x="22" y="15" width="56" height="30" opacity="0.4" />
+            <rect x="38" y="24" width="24" height="12" opacity="0.7" />
+            <line x1="8" y1="6" x2="38" y2="24" />
+            <line x1="92" y1="6" x2="62" y2="24" />
+            <line x1="8" y1="54" x2="38" y2="36" />
+            <line x1="92" y1="54" x2="62" y2="36" />
+            <path d="M 50,7 L 50,14 M 47,11 L 50,14 L 53,11" strokeWidth="1.2" className="animate-pulse" />
+            <path d="M 50,53 L 50,46 M 47,49 L 50,46 L 53,49" strokeWidth="1.2" className="animate-pulse" />
+          </svg>
+        )}
+
+        {index === 3 && (
+          /* Low-Angle Hero vector */
+          <svg className="w-3/4 h-3/4 text-white/10 group-hover:text-glory-gold/25 transition-all duration-500 group-hover:scale-[1.03]" viewBox="0 0 100 60" fill="none" stroke="currentColor" strokeWidth="1">
+            <line x1="12" y1="60" x2="42" y2="5" />
+            <line x1="88" y1="60" x2="58" y2="5" />
+            <path d="M 40,55 L 45,30 L 35,24 L 50,8 L 65,24 L 55,30 L 60,55 Z" fill="currentColor" fillOpacity="0.1" />
+            <path d="M 50,4 L 46,8 M 50,4 L 54,8" strokeWidth="1.2" />
+          </svg>
+        )}
+      </div>
+    );
+  };
 
   // Helper to get movie extra data based on image path
   const getMovieExtraData = (path: string) => {
@@ -382,25 +443,70 @@ export function FilmAndStorytellingClient({
   };
 
   return (
-    <div className="culture-bg text-[#F5EDD8] min-h-screen">
+    <div className="culture-bg text-[#F5EDD8] min-h-screen relative overflow-hidden">
       <CultureStyles />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-24 font-editorial">
-        {/* Header Area */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 border-b border-white/10 pb-8 font-sans">
-          <div>
-            <span className="culture-text-label text-glory-gold block mb-2">
-              {hollywoodData.eyebrow}
-            </span>
-            <h1 className="culture-text-hero text-[#F5EDD8]">
-              {hollywoodData.headline}
-            </h1>
-          </div>
+      {/* ─── §1 Full-Bleed Cinematic Hero Banner ─── */}
+      <div className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden border-b border-white/5 bg-[#080504]">
+        {/* Background Image Layer */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={SITE_IMAGES.culture.hollywoodSign}
+            alt="Hollywood sign sunset"
+            fill
+            priority
+            className="object-cover opacity-25 scale-102 select-none pointer-events-none filter blur-[1px]"
+          />
+          {/* Ambient Film Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0C0907] via-[#0C0907]/60 to-transparent" />
+          <div className="absolute inset-0 bg-black/30" />
+          {/* Subtle grid pattern */}
+          <div className="absolute inset-0 bg-star-pattern-grid opacity-[0.03] pointer-events-none" />
         </div>
 
-        {/* Hero & Longread Editorial */}
+        {/* Hero typography */}
+        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center space-y-6 pt-10">
+          {/* Integrated Breadcrumb trail */}
+          <div className="flex justify-center mb-4">
+            <nav
+              aria-label={isRo ? "Fir de navigare" : "Breadcrumb"}
+              className="flex items-center gap-1.5 font-body text-xs text-[#F5EDD8]/40 font-sans tracking-wide"
+            >
+              <Link href="/" className="hover:text-white transition-colors flex items-center">
+                <Home className="h-3.5 w-3.5" />
+              </Link>
+              <ChevronRight className="h-3 w-3 opacity-30 shrink-0" />
+              <Link href="/culture" className="hover:text-white transition-colors">
+                {isRo ? "Cultură" : "Culture"}
+              </Link>
+              <ChevronRight className="h-3 w-3 opacity-30 shrink-0" />
+              <span className="text-[#F5EDD8]/80 font-medium">
+                {isRo ? "Film și Narativă" : "Film & Storytelling"}
+              </span>
+            </nav>
+          </div>
+
+          <span className="text-[10px] font-sans font-bold tracking-[0.35em] uppercase text-glory-gold block">
+            {hollywoodData.eyebrow}
+          </span>
+          
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-editorial font-bold text-white tracking-tight uppercase leading-[0.95] drop-shadow-2xl">
+            {hollywoodData.headline}
+          </h1>
+
+          <p className="max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-[#F5EDD8]/75 font-sans leading-relaxed pt-2">
+            {isRo 
+              ? "Hollywood-ul a generat codul vizual prin care întreaga planetă își spune poveștile, își expune valorile și își imaginează viitorul."
+              : "Hollywood generated the visual syntax through which the entire planet tells its stories, projects its values, and dreams of the future."}
+          </p>
+        </div>
+      </div>
+
+      {/* Main Content Area */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 font-editorial">
+        {/* Hero Quote & Editorial */}
         <section className="mb-24">
-          <div className="grid gap-12 lg:grid-cols-3 items-start">
+          <div className="grid gap-12 lg:grid-cols-3 items-center">
             <div className="lg:col-span-2">
               <blockquote className="text-2xl md:text-3xl font-editorial italic text-[#F5EDD8]/90 leading-relaxed mb-8 pl-6 border-l-2 border-[#E8391B]">
                 "{hollywoodData.pullQuote}"
@@ -515,7 +621,7 @@ export function FilmAndStorytellingClient({
           </div>
         </section>
 
-        {/* ─── Legendary Auteurs Spotlight ────────────────────────────────────── */}
+        {/* ─── Legendary Auteurs Spotlight (Film Cell Styling) ──────────────────── */}
         <section className="mb-24 border-t border-white/10 pt-16 font-sans">
           <div className="mb-12 text-center md:text-left">
             <h2 className="text-xs font-semibold tracking-wider text-glory-gold uppercase mb-2">
@@ -530,11 +636,23 @@ export function FilmAndStorytellingClient({
             {auteurs.map((auteur, idx) => (
               <div 
                 key={idx}
-                className="culture-glass rounded-2xl p-6 border border-white/5 hover:border-glory-gold/20 hover:bg-white/[0.01] transition-all duration-300 flex flex-col justify-between group"
+                className="relative bg-black/30 border border-white/5 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-glory-gold/25 hover:bg-white/[0.01] transition-all duration-300 group shadow-lg outline outline-1 outline-white/5 outline-offset-4"
               >
-                <div>
+                {/* Top Film sprocket perforated border */}
+                <div className="flex justify-between px-4 py-2 border-b border-white/5 bg-black/50 select-none">
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
+                </div>
+
+                <div className="p-6 flex-grow">
                   <div className="flex items-center gap-3 mb-4">
-                    <Clapperboard className="w-5 h-5 text-glory-gold shrink-0" />
+                    <Clapperboard className="w-4.5 h-4.5 text-glory-gold shrink-0" />
                     <span className="text-[10px] font-bold text-glory-gold uppercase tracking-widest">
                       {auteur.title}
                     </span>
@@ -542,35 +660,47 @@ export function FilmAndStorytellingClient({
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-glory-gold transition-colors duration-300">
                     {auteur.name}
                   </h3>
-                  <p className="text-xs text-[#F5EDD8]/70 leading-relaxed mb-6 font-sans">
+                  <p className="text-xs text-[#F5EDD8]/65 leading-relaxed mb-6 font-sans">
                     {auteur.bio}
                   </p>
-                </div>
 
-                <div className="space-y-4 pt-4 border-t border-white/5 text-xs font-sans">
-                  <div>
-                    <span className="text-[10px] text-glory-gold uppercase tracking-wider block font-bold mb-1">
-                      {content.auteursSignature}
-                    </span>
-                    <span className="text-white/90 italic font-serif">
-                      {auteur.signature}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="text-[10px] text-glory-gold uppercase tracking-wider block font-bold mb-1">
-                      {content.auteursMasterpieces}
-                    </span>
-                    <div className="flex flex-wrap gap-1.5 mt-1">
-                      {auteur.masterpieces.map((film, fIdx) => (
-                        <span 
-                          key={fIdx}
-                          className="bg-white/5 border border-white/10 text-[10px] text-white/90 px-2 py-0.5 rounded-full"
-                        >
-                          {film}
-                        </span>
-                      ))}
+                  <div className="space-y-4 pt-4 border-t border-white/5 text-xs font-sans">
+                    <div>
+                      <span className="text-[10px] text-glory-gold uppercase tracking-wider block font-bold mb-1">
+                        {content.auteursSignature}
+                      </span>
+                      <span className="text-white/80 italic font-serif">
+                        {auteur.signature}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-[10px] text-glory-gold uppercase tracking-wider block font-bold mb-1.5">
+                        {content.auteursMasterpieces}
+                      </span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {auteur.masterpieces.map((film, fIdx) => (
+                          <span 
+                            key={fIdx}
+                            className="bg-glory-gold/[0.04] border border-glory-gold/15 text-glory-gold text-[9px] font-semibold px-2 py-0.5 rounded"
+                          >
+                            {film}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
+                </div>
+
+                {/* Bottom Film sprocket perforated border */}
+                <div className="flex justify-between px-4 py-2 border-t border-white/5 bg-black/50 select-none">
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
+                  <span className="w-1.5 h-2.5 bg-white/10 rounded-sm" />
                 </div>
               </div>
             ))}
@@ -618,7 +748,7 @@ export function FilmAndStorytellingClient({
           </div>
         </section>
 
-        {/* ─── Anatomy of a Frame: Visual Composition ─────────────────────────── */}
+        {/* ─── Anatomy of a Frame: Visual Composition (Viewfinder Layout) ─────── */}
         <section className="mb-24 border-t border-white/10 pt-16 font-sans">
           <div className="mb-12 text-center md:text-left">
             <h2 className="text-xs font-semibold tracking-wider text-glory-gold uppercase mb-2">
@@ -636,11 +766,13 @@ export function FilmAndStorytellingClient({
                 className="culture-glass rounded-2xl p-6 border border-white/5 hover:border-glory-gold/30 hover:bg-white/[0.01] transition-all duration-300 flex flex-col justify-between group cursor-default"
               >
                 <div>
-                  <div className="flex justify-between items-start mb-4">
+                  {/* Dynamic Viewfinder Graphic */}
+                  {renderViewfinder(idx)}
+
+                  <div className="flex justify-between items-start mb-2">
                     <span className="text-[10px] font-bold text-glory-gold uppercase tracking-widest">
                       {comp.rationale}
                     </span>
-                    <Camera className="w-4 h-4 text-[#F5EDD8]/40 group-hover:text-glory-gold transition-colors" />
                   </div>
                   <h3 className="text-lg font-bold text-white mb-3 group-hover:text-glory-gold transition-colors duration-300">
                     {comp.title}
@@ -723,7 +855,7 @@ export function FilmAndStorytellingClient({
           </div>
         </section>
 
-        {/* ─── Lightbox Modal ─────────────────────────────────────────────────── */}
+        {/* ─── Lightbox Modal (Ticket Stub Style Overhaul) ────────────────────── */}
         <AnimatePresence>
           {selectedMovie && (
             <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10">
@@ -733,7 +865,7 @@ export function FilmAndStorytellingClient({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setSelectedMovie(null)}
-                className="absolute inset-0 bg-black/80 backdrop-blur-md"
+                className="absolute inset-0 bg-black/85 backdrop-blur-md"
               />
 
               {/* Theater Program Booklet Modal Content */}
@@ -742,27 +874,46 @@ export function FilmAndStorytellingClient({
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 30 }}
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className="relative bg-[#0b0e14] border border-white/10 rounded-2xl overflow-hidden max-w-4xl w-full max-h-[85vh] md:max-h-[80vh] flex flex-col md:flex-row shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-10"
+                className="relative bg-[#0d0f14] border border-white/10 rounded-2xl overflow-hidden max-w-4xl w-full max-h-[85vh] md:max-h-[80vh] flex flex-col md:flex-row shadow-[0_25px_60px_rgba(0,0,0,0.95)] z-10"
               >
                 {/* Left side: Poster Image */}
-                <div className="relative w-full md:w-2/5 aspect-[4/5] md:aspect-auto md:min-h-full bg-black/40 border-b md:border-b-0 md:border-r border-white/5">
+                <div className="relative w-full md:w-2/5 aspect-[4/5] md:aspect-auto md:min-h-full bg-black/40 border-b md:border-b-0 border-white/5 overflow-hidden">
                   <Image
                     src={selectedMovie.src}
                     alt={selectedMovie.alt}
                     fill
-                    className="object-cover"
+                    className="object-cover scale-[1.01]"
                     sizes="(max-width: 768px) 100vw, 40vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
+                  
+                  {/* Decorative Ticket Brand */}
+                  <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center z-10 select-none opacity-40 font-sans">
+                    <span className="text-[8px] font-bold text-white tracking-[0.3em] uppercase">
+                      {content.ticketStubTitle}
+                    </span>
+                    <span className="text-[8px] font-bold text-glory-gold tracking-widest font-mono">
+                      N° 732948
+                    </span>
+                  </div>
+                </div>
+
+                {/* Vertical Perforated Separation Line */}
+                <div className="hidden md:flex relative flex-col items-center justify-between w-[1px] bg-transparent z-20">
+                  <div className="absolute top-0 bottom-0 left-[-1px] w-[1px] border-l border-dashed border-white/15 h-full" />
+                  
+                  {/* Perforated ticket punch notches */}
+                  <div className="absolute top-[-10px] left-[-10px] w-5 h-5 bg-[#0C0907] border border-white/10 rounded-full z-20" />
+                  <div className="absolute bottom-[-10px] left-[-10px] w-5 h-5 bg-[#0C0907] border border-white/10 rounded-full z-20" />
                 </div>
 
                 {/* Right side: Detailed Narrative Analysis */}
-                <div className="p-6 sm:p-8 md:p-10 w-full md:w-3/5 overflow-y-auto flex flex-col justify-between max-h-[50vh] md:max-h-none font-sans">
+                <div className="p-6 sm:p-8 md:p-10 w-full md:w-3/5 overflow-y-auto flex flex-col justify-between max-h-[50vh] md:max-h-none font-sans bg-[#0c0f14]">
                   <div>
                     {/* Header */}
                     <div className="flex justify-between items-start gap-4 mb-4">
                       <div>
-                        <h2 className="text-2xl font-bold text-white tracking-tight leading-tight">
+                        <h2 className="text-2xl md:text-3xl font-editorial font-bold text-white tracking-tight leading-tight">
                           {selectedMovie.caption}
                         </h2>
                         <span className="text-xs text-glory-gold font-bold uppercase tracking-wider mt-1 block">
@@ -772,16 +923,16 @@ export function FilmAndStorytellingClient({
                       
                       <button
                         onClick={() => setSelectedMovie(null)}
-                        className="p-1 rounded-full bg-white/5 border border-white/10 text-white/50 hover:text-white hover:bg-white/10 transition-colors"
+                        className="p-1.5 rounded-full bg-white/5 border border-white/10 text-white/45 hover:text-white hover:bg-white/10 transition-colors"
                       >
-                        <X className="w-5 h-5" />
+                        <X className="w-4 h-4" />
                       </button>
                     </div>
 
                     {/* Stats strip */}
-                    <div className="grid grid-cols-3 gap-3 border-y border-white/5 py-4 mb-6 text-xs">
+                    <div className="grid grid-cols-3 gap-3 border-y border-white/5 py-4 mb-6 text-xs bg-black/10 px-4 rounded-xl">
                       <div>
-                        <span className="text-white/40 block mb-1 uppercase tracking-wider font-semibold text-[9px]">
+                        <span className="text-white/35 block mb-1 uppercase tracking-wider font-semibold text-[8px]">
                           {content.modalDirector}
                         </span>
                         <span className="text-white font-medium">
@@ -789,7 +940,7 @@ export function FilmAndStorytellingClient({
                         </span>
                       </div>
                       <div>
-                        <span className="text-white/40 block mb-1 uppercase tracking-wider font-semibold text-[9px]">
+                        <span className="text-white/35 block mb-1 uppercase tracking-wider font-semibold text-[8px]">
                           {content.modalYear}
                         </span>
                         <span className="text-white font-medium">
@@ -797,7 +948,7 @@ export function FilmAndStorytellingClient({
                         </span>
                       </div>
                       <div>
-                        <span className="text-white/40 block mb-1 uppercase tracking-wider font-semibold text-[9px]">
+                        <span className="text-white/35 block mb-1 uppercase tracking-wider font-semibold text-[8px]">
                           {content.modalRuntime}
                         </span>
                         <span className="text-white font-medium">
@@ -814,18 +965,18 @@ export function FilmAndStorytellingClient({
                     </div>
 
                     {/* Innovation Callout */}
-                    <div className="p-5 rounded-xl bg-glory-gold/[0.02] border border-glory-gold/10 relative overflow-hidden">
+                    <div className="p-5 rounded-xl bg-glory-gold/[0.01] border border-glory-gold/15 relative overflow-hidden">
                       <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-glory-gold/[0.02] to-transparent pointer-events-none" />
                       <div className="flex gap-3">
                         <Sparkles className="w-5 h-5 text-glory-gold shrink-0 mt-0.5" />
                         <div>
-                          <h4 className="text-xs font-bold text-glory-gold uppercase tracking-wider mb-2">
+                          <h4 className="text-[10px] font-bold text-glory-gold uppercase tracking-wider mb-2">
                             {content.modalBreakthrough}
                           </h4>
-                          <h5 className="text-sm font-semibold text-white mb-1">
+                          <h5 className="text-sm font-semibold text-white mb-1 font-sans">
                             {getMovieExtraData(selectedMovie.path).innovationTitle}
                           </h5>
-                          <p className="text-xs text-[#F5EDD8]/70 leading-relaxed">
+                          <p className="text-xs text-[#F5EDD8]/70 leading-relaxed font-sans">
                             {getMovieExtraData(selectedMovie.path).innovationText}
                           </p>
                         </div>
