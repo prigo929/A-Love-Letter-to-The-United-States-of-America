@@ -1067,6 +1067,8 @@ export function DomesticBasesSection({
   const isRo = locale === "ro";
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBranch, setSelectedBranch] = useState<ServiceBranch | "All">("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [expandedBases, setExpandedBases] = useState<Record<string, boolean>>({});
 
   const BRANCHES: (ServiceBranch | "All")[] = [
     "All",
@@ -1077,6 +1079,10 @@ export function DomesticBasesSection({
     "Air Force",
     "Space Force",
   ];
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedBranch]);
 
   const filteredBases = useMemo(() => {
     const query = searchQuery.toLowerCase();
@@ -1090,6 +1096,17 @@ export function DomesticBasesSection({
       return matchesSearch && matchesBranch;
     });
   }, [searchQuery, selectedBranch, bases]);
+
+  const itemsPerPage = 12;
+  const totalPages = Math.ceil(filteredBases.length / itemsPerPage);
+  const paginatedBases = useMemo(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    return filteredBases.slice(start, start + itemsPerPage);
+  }, [filteredBases, currentPage]);
+
+  const toggleBase = (id: string) => {
+    setExpandedBases((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
 
   return (
     <section className="bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
@@ -1143,23 +1160,81 @@ export function DomesticBasesSection({
             </span>
           </div>
 
-          {filteredBases.length > 0 ? (
-            <div className="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {filteredBases.map((base) => (
-                <div
-                  key={base.id}
-                  className="group flex flex-col justify-between border-t border-zinc-900 pt-3 transition-colors hover:border-zinc-700"
-                >
-                  <h4 className="text-sm font-medium tracking-wide text-zinc-300 transition-colors group-hover:text-white">
-                    {base.name}
-                  </h4>
-                  <div className="mt-2 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-600">
-                    <span>{base.state}</span>
-                    <span className="text-zinc-500">{base.branch}</span>
+          {paginatedBases.length > 0 ? (
+            <>
+              <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {paginatedBases.map((base) => {
+                  const isExpanded = expandedBases[base.id] || false;
+                  return (
+                    <div
+                      key={base.id}
+                      onClick={() => toggleBase(base.id)}
+                      className="cursor-pointer group flex flex-col justify-between border-t border-zinc-900 pt-3 transition-colors hover:border-zinc-700"
+                    >
+                      <div>
+                        <div className="flex items-start justify-between gap-2">
+                          <h4 className="text-sm font-medium tracking-wide text-zinc-300 transition-colors group-hover:text-white">
+                            {base.name}
+                          </h4>
+                          {base.description && (
+                            <span className="text-[9px] font-mono uppercase text-zinc-600 group-hover:text-zinc-400 mt-1 select-none">
+                              {isExpanded ? "[LESS]" : "[MORE]"}
+                            </span>
+                          )}
+                        </div>
+                        {base.description && (
+                          <p className={`mt-2 text-xs leading-relaxed transition-all duration-300 ${
+                            isExpanded
+                              ? "text-zinc-300 line-clamp-none"
+                              : "text-zinc-500 line-clamp-2 group-hover:text-zinc-400"
+                          }`}>
+                            {base.description}
+                          </p>
+                        )}
+                      </div>
+                      <div className="mt-4 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-600">
+                        <span>{base.state}</span>
+                        <span className="text-zinc-500">{base.branch}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {totalPages > 1 && (
+                <div className="mt-12 flex items-center justify-between border-t border-zinc-900 pt-6 font-mono text-[10px] tracking-wider text-zinc-500">
+                  <button
+                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                    className="cursor-pointer transition-colors hover:text-white disabled:cursor-not-allowed disabled:text-zinc-800 disabled:hover:text-zinc-800"
+                  >
+                    {isRo ? "← PRECEDENT" : "← PREVIOUS"}
+                  </button>
+                  <div className="flex items-center gap-3">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`cursor-pointer px-2 py-1 transition-colors ${
+                          currentPage === page
+                            ? "text-white font-bold border-b border-white"
+                            : "text-zinc-600 hover:text-zinc-400"
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ))}
                   </div>
+                  <button
+                    onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                    className="cursor-pointer transition-colors hover:text-white disabled:cursor-not-allowed disabled:text-zinc-800 disabled:hover:text-zinc-800"
+                  >
+                    {isRo ? "URMĂTOR →" : "NEXT →"}
+                  </button>
                 </div>
-              ))}
-            </div>
+              )}
+            </>
           ) : (
             <div className="py-20 text-center font-mono text-xs uppercase tracking-[0.2em] text-zinc-600">
               {isRo ? "Nu există rezultate." : "No facilities match criteria."}
@@ -1181,6 +1256,8 @@ export function OverseasBasesSection({
   const isRo = locale === "ro";
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBranch, setSelectedBranch] = useState<ServiceBranch | "All">("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [expandedBases, setExpandedBases] = useState<Record<string, boolean>>({});
 
   const BRANCHES: (ServiceBranch | "All")[] = [
     "All",
@@ -1191,6 +1268,10 @@ export function OverseasBasesSection({
     "Air Force",
     "Space Force",
   ];
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedBranch]);
 
   const filteredBases = useMemo(() => {
     const query = searchQuery.toLowerCase();
@@ -1204,6 +1285,17 @@ export function OverseasBasesSection({
       return matchesSearch && matchesBranch;
     });
   }, [searchQuery, selectedBranch, bases]);
+
+  const itemsPerPage = 12;
+  const totalPages = Math.ceil(filteredBases.length / itemsPerPage);
+  const paginatedBases = useMemo(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    return filteredBases.slice(start, start + itemsPerPage);
+  }, [filteredBases, currentPage]);
+
+  const toggleBase = (id: string) => {
+    setExpandedBases((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
 
   return (
     <section className="border-t border-zinc-900 bg-zinc-950 px-6 py-28 sm:px-10 md:py-36 lg:px-16">
@@ -1257,23 +1349,81 @@ export function OverseasBasesSection({
             </span>
           </div>
 
-          {filteredBases.length > 0 ? (
-            <div className="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {filteredBases.map((base) => (
-                <div
-                  key={base.id}
-                  className="group flex flex-col justify-between border-t border-zinc-800 pt-3 transition-colors hover:border-zinc-600"
-                >
-                  <h4 className="text-sm font-medium tracking-wide text-zinc-300 transition-colors group-hover:text-white">
-                    {base.name}
-                  </h4>
-                  <div className="mt-2 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-500">
-                    <span className="text-white/70">{base.country}</span>
-                    <span className="text-zinc-600">{base.branch}</span>
+          {paginatedBases.length > 0 ? (
+            <>
+              <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {paginatedBases.map((base) => {
+                  const isExpanded = expandedBases[base.id] || false;
+                  return (
+                    <div
+                      key={base.id}
+                      onClick={() => toggleBase(base.id)}
+                      className="cursor-pointer group flex flex-col justify-between border-t border-zinc-800 pt-3 transition-colors hover:border-zinc-600"
+                    >
+                      <div>
+                        <div className="flex items-start justify-between gap-2">
+                          <h4 className="text-sm font-medium tracking-wide text-zinc-300 transition-colors group-hover:text-white">
+                            {base.name}
+                          </h4>
+                          {base.description && (
+                            <span className="text-[9px] font-mono uppercase text-zinc-600 group-hover:text-zinc-400 mt-1 select-none">
+                              {isExpanded ? "[LESS]" : "[MORE]"}
+                            </span>
+                          )}
+                        </div>
+                        {base.description && (
+                          <p className={`mt-2 text-xs leading-relaxed transition-all duration-300 ${
+                            isExpanded
+                              ? "text-zinc-300 line-clamp-none"
+                              : "text-zinc-500 line-clamp-2 group-hover:text-zinc-400"
+                          }`}>
+                            {base.description}
+                          </p>
+                        )}
+                      </div>
+                      <div className="mt-4 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-500">
+                        <span className="text-white/70">{base.country}</span>
+                        <span className="text-zinc-600">{base.branch}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {totalPages > 1 && (
+                <div className="mt-12 flex items-center justify-between border-t border-zinc-800 pt-6 font-mono text-[10px] tracking-wider text-zinc-500">
+                  <button
+                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                    className="cursor-pointer transition-colors hover:text-white disabled:cursor-not-allowed disabled:text-zinc-800 disabled:hover:text-zinc-800"
+                  >
+                    {isRo ? "← PRECEDENT" : "← PREVIOUS"}
+                  </button>
+                  <div className="flex items-center gap-3">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`cursor-pointer px-2 py-1 transition-colors ${
+                          currentPage === page
+                            ? "text-white font-bold border-b border-white"
+                            : "text-zinc-600 hover:text-zinc-400"
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ))}
                   </div>
+                  <button
+                    onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                    className="cursor-pointer transition-colors hover:text-white disabled:cursor-not-allowed disabled:text-zinc-800 disabled:hover:text-zinc-800"
+                  >
+                    {isRo ? "URMĂTOR →" : "NEXT →"}
+                  </button>
                 </div>
-              ))}
-            </div>
+              )}
+            </>
           ) : (
             <div className="py-20 text-center font-mono text-xs uppercase tracking-[0.2em] text-zinc-600">
               {isRo ? "Nu există rezultate." : "No facilities match criteria."}
