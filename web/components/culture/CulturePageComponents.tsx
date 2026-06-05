@@ -144,23 +144,26 @@ export function CultureStyles() {
       }
 
       /* ── Logo Marquee Hover System ──────────────────────────────── */
-      /* Dark/black SVGs — appear white via invert, stay white on hover (brighter) */
+
+      /* Dark/black SVGs — appear muted grey, snap to smooth white on hover */
       .logo-img-dark {
-        filter: invert(1) brightness(2) grayscale(1);
-        opacity: 0.7;
-        transition: filter 0.18s ease, opacity 0.18s ease;
+        filter: invert(1) brightness(0.6);
+        opacity: 0.6;
+        transition: filter 0.3s ease, opacity 0.3s ease;
         pointer-events: none;
         user-select: none;
       }
+
       .logo-slot:hover .logo-img-dark {
-        filter: invert(1) brightness(2) grayscale(0);
-        opacity: 1;
+        filter: invert(1) brightness(1.1);
+        opacity: 0.9;
       }
+
       /* Colored SVGs — appear grey, reveal true brand color on hover */
       .logo-img-color {
         filter: grayscale(1) brightness(1);
         opacity: 0.7;
-        transition: filter 0.18s ease, opacity 0.18s ease;
+        transition: filter 0.3s ease, opacity 0.3s ease;
         pointer-events: none;
         user-select: none;
       }
