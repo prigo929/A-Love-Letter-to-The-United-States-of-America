@@ -296,10 +296,12 @@ function BaseDetailDrawer({
   base,
   onClose,
   locale = "en",
+  showLocateButton = true,
 }: {
   base: StrategicBase | null;
   onClose: () => void;
   locale?: Locale;
+  showLocateButton?: boolean;
 }) {
   const isRo = locale === "ro";
 
@@ -392,20 +394,22 @@ function BaseDetailDrawer({
               <p className="mt-3 text-sm leading-7 text-zinc-300">{base["Strategic Rationale"]}</p>
             </div>
 
-            <button
-              type="button"
-              onClick={() => {
-                const locateEvent = new CustomEvent("locate-base-on-map", {
-                  detail: { baseId: base.ID }
-                });
-                window.dispatchEvent(locateEvent);
-                onClose();
-              }}
-              className="mt-10 flex w-full items-center justify-center gap-2 bg-white hover:bg-zinc-200 text-black py-3 px-4 font-mono text-[10px] uppercase tracking-wider transition-colors cursor-pointer"
-            >
-              <MapPin size={12} />
-              {isRo ? "Localizează pe hartă" : "Locate on Map"}
-            </button>
+            {showLocateButton && (
+              <button
+                type="button"
+                onClick={() => {
+                  const locateEvent = new CustomEvent("locate-base-on-map", {
+                    detail: { baseId: base.ID }
+                  });
+                  window.dispatchEvent(locateEvent);
+                  onClose();
+                }}
+                className="mt-10 flex w-full items-center justify-center gap-2 bg-white hover:bg-zinc-200 text-black py-3 px-4 font-mono text-[10px] uppercase tracking-wider transition-colors cursor-pointer"
+              >
+                <MapPin size={12} />
+                {isRo ? "Localizează pe hartă" : "Locate on Map"}
+              </button>
+            )}
           </motion.aside>
         </>
       )}
@@ -477,7 +481,7 @@ export function GlobalCommandMap({
 
         const mapEl = document.getElementById("global-command-map");
         if (mapEl) {
-          mapEl.scrollIntoView({ behavior: "smooth" });
+          mapEl.scrollIntoView({ behavior: "smooth", block: "center" });
         }
       }
     };
@@ -820,7 +824,7 @@ export function GlobalCommandMap({
         </div>
       </div>
 
-      <BaseDetailDrawer base={selectedBase} onClose={() => setSelectedBase(null)} locale={locale} />
+      <BaseDetailDrawer base={selectedBase} onClose={() => setSelectedBase(null)} locale={locale} showLocateButton={false} />
     </section>
   );
 }
