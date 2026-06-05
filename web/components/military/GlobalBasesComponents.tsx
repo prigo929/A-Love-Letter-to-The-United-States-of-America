@@ -576,7 +576,7 @@ export function GlobalCommandMap({
   const handleZoomIn = () => {
     setPosition((pos) => ({
       ...pos,
-      zoom: Math.min(pos.zoom * 1.5, 40),
+      zoom: Math.min(pos.zoom * 1.5, 150),
     }));
   };
 
@@ -599,7 +599,7 @@ export function GlobalCommandMap({
   };
 
   const handleClusterClick = (cluster: Cluster) => {
-    const nextZoom = Math.min(position.zoom * 1.8, 40);
+    const nextZoom = Math.min(position.zoom * 1.8, 150);
     setPosition({
       coordinates: cluster.center,
       zoom: nextZoom,
@@ -670,7 +670,7 @@ export function GlobalCommandMap({
                     <ZoomableGroup
                       center={position.coordinates}
                       zoom={position.zoom}
-                      maxZoom={40}
+                      maxZoom={150}
                       minZoom={1}
                       onMoveEnd={handleMoveEnd}
                       translateExtent={[[0, 0], [800, 600]]}
@@ -810,7 +810,7 @@ export function GlobalCommandMap({
                   </ComposableMap>
 
                   {/* Zoom Controls */}
-                  <div className="absolute bottom-4 left-4 z-10 flex flex-col gap-2">
+                  <div className="absolute bottom-8 left-6 z-10 flex flex-col gap-2">
                     <button
                       type="button"
                       onClick={handleZoomIn}
