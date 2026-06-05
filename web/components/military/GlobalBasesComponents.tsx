@@ -17,11 +17,13 @@ import {
   Plane,
   Plus,
   RotateCcw,
+  Search,
   Ship,
   X,
 } from "lucide-react";
 import type { Locale } from "@/lib/i18n/config";
 import { SITE_IMAGES } from "@/lib/site-images";
+import type { DomesticBase, ServiceBranch } from "@/lib/data/domestic-bases-data";
 import type {
   AllianceNode,
   GlobalBaseRegion,
@@ -30,6 +32,7 @@ import type {
   StrategicBase,
   TheaterCard,
 } from "@/lib/data/global-bases-data";
+import type { OverseasBase } from "@/lib/data/overseas-bases-data";
 
 const WORLD_GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
@@ -957,6 +960,234 @@ export function GlobalBasesClosing({ locale = "en" }: { locale?: Locale }) {
               </Link>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function DomesticBasesSection({
+  bases,
+  locale = "en",
+}: {
+  bases: DomesticBase[];
+  locale?: Locale;
+}) {
+  const isRo = locale === "ro";
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedBranch, setSelectedBranch] = useState<ServiceBranch | "All">("All");
+
+  const BRANCHES: (ServiceBranch | "All")[] = [
+    "All",
+    "Joint",
+    "Army",
+    "Navy",
+    "Marine Corps",
+    "Air Force",
+    "Space Force",
+  ];
+
+  const filteredBases = useMemo(() => {
+    const query = searchQuery.toLowerCase();
+
+    return bases.filter((base) => {
+      const matchesSearch =
+        base.name.toLowerCase().includes(query) ||
+        base.state.toLowerCase().includes(query);
+      const matchesBranch = selectedBranch === "All" || base.branch === selectedBranch;
+
+      return matchesSearch && matchesBranch;
+    });
+  }, [searchQuery, selectedBranch, bases]);
+
+  return (
+    <section className="bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16">
+      <div className="mx-auto max-w-[1520px]">
+        <SectionTitle
+          label={isRo ? "INFRASTRUCTURĂ DOMESTICĂ" : "DOMESTIC INFRASTRUCTURE"}
+          title={isRo ? "Arsenalul Democrației." : "The Arsenal of Democracy."}
+          body={
+            isRo
+              ? "Fundația logistică și de generare a forțelor pe teritoriul continental al SUA. Căutați prin sute de facilități active."
+              : "The continental force-generation and logistics foundation. Search across hundreds of active CONUS facilities."
+          }
+        />
+
+        <div className="mb-12 flex flex-col items-start justify-between gap-8 border-b border-zinc-900 pb-8 md:flex-row md:items-end">
+          <div className="relative w-full md:w-96">
+            <Search className="absolute left-0 top-1 text-zinc-600" size={14} />
+            <input
+              type="text"
+              placeholder={isRo ? "CĂUTARE BAZĂ SAU STAT..." : "SEARCH BASE OR STATE..."}
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              className="w-full bg-transparent pb-2 pl-6 font-mono text-[10px] uppercase tracking-[0.2em] text-white placeholder-zinc-700 transition-colors focus:border-zinc-500 focus:outline-none"
+              style={{ borderBottom: "1px solid #27272a" }}
+            />
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {BRANCHES.map((branch) => (
+              <button
+                key={branch}
+                type="button"
+                onClick={() => setSelectedBranch(branch)}
+                className={`cursor-pointer px-3 py-2 font-mono text-[9px] uppercase tracking-[0.18em] transition-colors ${
+                  selectedBranch === branch
+                    ? "bg-white text-black"
+                    : "bg-zinc-950 text-zinc-500 hover:bg-zinc-900 hover:text-white"
+                }`}
+              >
+                {branch === "All" && isRo ? "Toate" : branch}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative">
+          <div className="mb-6 flex justify-between font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-600">
+            <span>{isRo ? "INSTALAȚIE" : "INSTALLATION"}</span>
+            <span>
+              {filteredBases.length} {isRo ? "REZULTATE" : "RESULTS"}
+            </span>
+          </div>
+
+          {filteredBases.length > 0 ? (
+            <div className="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {filteredBases.map((base) => (
+                <div
+                  key={base.id}
+                  className="group flex flex-col justify-between border-t border-zinc-900 pt-3 transition-colors hover:border-zinc-700"
+                >
+                  <h4 className="text-sm font-medium tracking-wide text-zinc-300 transition-colors group-hover:text-white">
+                    {base.name}
+                  </h4>
+                  <div className="mt-2 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-600">
+                    <span>{base.state}</span>
+                    <span className="text-zinc-500">{base.branch}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="py-20 text-center font-mono text-xs uppercase tracking-[0.2em] text-zinc-600">
+              {isRo ? "Nu există rezultate." : "No facilities match criteria."}
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function OverseasBasesSection({
+  bases,
+  locale = "en",
+}: {
+  bases: OverseasBase[];
+  locale?: Locale;
+}) {
+  const isRo = locale === "ro";
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedBranch, setSelectedBranch] = useState<ServiceBranch | "All">("All");
+
+  const BRANCHES: (ServiceBranch | "All")[] = [
+    "All",
+    "Joint",
+    "Army",
+    "Navy",
+    "Marine Corps",
+    "Air Force",
+    "Space Force",
+  ];
+
+  const filteredBases = useMemo(() => {
+    const query = searchQuery.toLowerCase();
+
+    return bases.filter((base) => {
+      const matchesSearch =
+        base.name.toLowerCase().includes(query) ||
+        base.country.toLowerCase().includes(query);
+      const matchesBranch = selectedBranch === "All" || base.branch === selectedBranch;
+
+      return matchesSearch && matchesBranch;
+    });
+  }, [searchQuery, selectedBranch, bases]);
+
+  return (
+    <section className="border-t border-zinc-900 bg-zinc-950 px-6 py-28 sm:px-10 md:py-36 lg:px-16">
+      <div className="mx-auto max-w-[1520px]">
+        <SectionTitle
+          label={isRo ? "INFRASTRUCTURĂ EXTERNĂ (OCONUS)" : "OVERSEAS INFRASTRUCTURE (OCONUS)"}
+          title={isRo ? "Profunzime strategică." : "Strategic Depth."}
+          body={
+            isRo
+              ? "Rețeaua avansată de facilități, stații radar, noduri logistice și acorduri de acces pe șase continente."
+              : "The forward network of facilities, radar stations, logistics nodes, and access agreements across six continents."
+          }
+        />
+
+        <div className="mb-12 flex flex-col items-start justify-between gap-8 border-b border-zinc-800 pb-8 md:flex-row md:items-end">
+          <div className="relative w-full md:w-96">
+            <Search className="absolute left-0 top-1 text-zinc-500" size={14} />
+            <input
+              type="text"
+              placeholder={isRo ? "CĂUTARE BAZĂ SAU ȚARĂ..." : "SEARCH BASE OR COUNTRY..."}
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              className="w-full bg-transparent pb-2 pl-6 font-mono text-[10px] uppercase tracking-[0.2em] text-white placeholder-zinc-600 transition-colors focus:border-zinc-400 focus:outline-none"
+              style={{ borderBottom: "1px solid #3f3f46" }}
+            />
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {BRANCHES.map((branch) => (
+              <button
+                key={branch}
+                type="button"
+                onClick={() => setSelectedBranch(branch)}
+                className={`cursor-pointer px-3 py-2 font-mono text-[9px] uppercase tracking-[0.18em] transition-colors ${
+                  selectedBranch === branch
+                    ? "bg-white text-black"
+                    : "border border-zinc-800 bg-black text-zinc-500 hover:bg-zinc-900 hover:text-white"
+                }`}
+              >
+                {branch === "All" && isRo ? "Toate" : branch}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative">
+          <div className="mb-6 flex justify-between font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-500">
+            <span>{isRo ? "INSTALAȚIE" : "INSTALLATION"}</span>
+            <span>
+              {filteredBases.length} {isRo ? "REZULTATE" : "RESULTS"}
+            </span>
+          </div>
+
+          {filteredBases.length > 0 ? (
+            <div className="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {filteredBases.map((base) => (
+                <div
+                  key={base.id}
+                  className="group flex flex-col justify-between border-t border-zinc-800 pt-3 transition-colors hover:border-zinc-600"
+                >
+                  <h4 className="text-sm font-medium tracking-wide text-zinc-300 transition-colors group-hover:text-white">
+                    {base.name}
+                  </h4>
+                  <div className="mt-2 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-500">
+                    <span className="text-white/70">{base.country}</span>
+                    <span className="text-zinc-600">{base.branch}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="py-20 text-center font-mono text-xs uppercase tracking-[0.2em] text-zinc-600">
+              {isRo ? "Nu există rezultate." : "No facilities match criteria."}
+            </div>
+          )}
         </div>
       </div>
     </section>
