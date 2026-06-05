@@ -56,6 +56,101 @@ interface Cluster {
   bases: StrategicBase[];
 }
 
+const DOMESTIC_STATE_COORDINATES: Record<string, string> = {
+  Alabama: "32.8067, -86.7911",
+  Alaska: "64.2008, -149.4937",
+  "American Samoa": "-14.2710, -170.1322",
+  Arizona: "34.0489, -111.0937",
+  Arkansas: "35.2010, -91.8318",
+  California: "36.7783, -119.4179",
+  Colorado: "39.5501, -105.7821",
+  Connecticut: "41.6032, -73.0877",
+  Delaware: "38.9108, -75.5277",
+  Florida: "27.6648, -81.5158",
+  Georgia: "32.1656, -82.9001",
+  Guam: "13.4443, 144.7937",
+  Hawaii: "19.8968, -155.5828",
+  Idaho: "44.0682, -114.7420",
+  Illinois: "40.6331, -89.3985",
+  Indiana: "40.2672, -86.1349",
+  Iowa: "41.8780, -93.0977",
+  Kansas: "39.0119, -98.4842",
+  Kentucky: "37.8393, -84.2700",
+  Louisiana: "30.9843, -91.9623",
+  Maine: "45.2538, -69.4455",
+  Maryland: "39.0458, -76.6413",
+  Massachusetts: "42.4072, -71.3824",
+  Michigan: "44.3148, -85.6024",
+  Minnesota: "46.7296, -94.6859",
+  Mississippi: "32.3547, -89.3985",
+  Missouri: "37.9643, -91.8318",
+  Montana: "46.8797, -110.3626",
+  Nebraska: "41.4925, -99.9018",
+  Nevada: "38.8026, -116.4194",
+  "New Hampshire": "43.1939, -71.5724",
+  "New Jersey": "40.0583, -74.4057",
+  "New Mexico": "34.5199, -105.8701",
+  "New York": "43.2994, -74.2179",
+  "North Carolina": "35.7596, -79.0193",
+  "North Dakota": "47.5515, -101.0020",
+  Ohio: "40.4173, -82.9071",
+  Oklahoma: "35.0078, -97.0929",
+  Oregon: "43.8041, -120.5542",
+  Pennsylvania: "41.2033, -77.1945",
+  "Puerto Rico": "18.2208, -66.5901",
+  "Rhode Island": "41.5801, -71.4774",
+  "South Carolina": "33.8361, -81.1637",
+  "South Dakota": "43.9695, -99.9018",
+  Tennessee: "35.5175, -86.5804",
+  Texas: "31.9686, -99.9018",
+  Utah: "39.3210, -111.0937",
+  Vermont: "44.5588, -72.5778",
+  Virginia: "37.4316, -78.6569",
+  Washington: "47.7511, -120.7401",
+  "Washington, D.C.": "38.9072, -77.0369",
+  "West Virginia": "38.5976, -80.4549",
+  Wisconsin: "43.7844, -88.7879",
+  Wyoming: "43.0760, -107.2903",
+};
+
+const OVERSEAS_COUNTRY_COORDINATES: Record<string, string> = {
+  Australia: "-25.2744, 133.7751",
+  Bahamas: "25.0343, -77.3963",
+  Bahrain: "26.0667, 50.5577",
+  Belgium: "50.5039, 4.4699",
+  Bulgaria: "42.7339, 25.4858",
+  Cameroon: "7.3697, 12.3547",
+  Canada: "56.1304, -106.3468",
+  Cuba: "21.5218, -77.7812",
+  Djibouti: "11.8251, 42.5903",
+  Germany: "51.1657, 10.4515",
+  Greece: "39.0742, 21.8243",
+  Greenland: "71.7069, -42.6043",
+  Honduras: "15.2000, -86.2419",
+  Iraq: "33.2232, 43.6793",
+  Israel: "31.0461, 34.8516",
+  Italy: "41.8719, 12.5674",
+  Japan: "36.2048, 138.2529",
+  Jordan: "30.5852, 36.2384",
+  Kenya: "-0.0236, 37.9062",
+  Kosovo: "42.6026, 20.9030",
+  Kuwait: "29.3117, 47.4818",
+  "Marshall Islands": "7.1315, 171.1845",
+  Netherlands: "52.1326, 5.2913",
+  Poland: "51.9194, 19.1451",
+  Portugal: "39.3999, -8.2245",
+  Qatar: "25.3548, 51.1839",
+  Romania: "45.9432, 24.9668",
+  "Saudi Arabia": "23.8859, 45.0792",
+  Singapore: "1.3521, 103.8198",
+  Somalia: "5.1521, 46.1996",
+  "South Korea": "35.9078, 127.7669",
+  Spain: "40.4637, -3.7492",
+  Turkey: "38.9637, 35.2433",
+  "United Arab Emirates": "23.4241, 53.8478",
+  "United Kingdom": "55.3781, -3.4360",
+};
+
 function getClusters(bases: StrategicBase[], zoom: number): Cluster[] {
   const threshold = 12 / zoom;
   const clusters: Cluster[] = [];
@@ -107,6 +202,107 @@ function getClusters(bases: StrategicBase[], zoom: number): Cluster[] {
   }
 
   return clusters;
+}
+
+function getDirectoryCoordinate(seed: string, anchor: string): string {
+  const [lat, lon] = anchor.split(",").map((value) => Number(value.trim()));
+  let hash = 0;
+
+  for (let i = 0; i < seed.length; i++) {
+    hash = (hash * 31 + seed.charCodeAt(i)) % 9973;
+  }
+
+  const angle = (hash % 360) * (Math.PI / 180);
+  const ring = 0.2 + ((hash % 9) * 0.08);
+  const latOffset = Math.sin(angle) * ring;
+  const lonOffset = Math.cos(angle) * ring;
+
+  return `${(lat + latOffset).toFixed(4)}, ${(lon + lonOffset).toFixed(4)}`;
+}
+
+function getDomesticRegion(base: DomesticBase): GlobalBaseRegion {
+  if (base.state === "Alaska") return "Arctic / High North";
+  if (["American Samoa", "Guam", "Hawaii"].includes(base.state)) return "Indo-Pacific";
+  return "Americas";
+}
+
+function getOverseasRegion(base: OverseasBase): GlobalBaseRegion {
+  if (["Belgium", "Bulgaria", "Germany", "Greece", "Italy", "Kosovo", "Netherlands", "Poland", "Portugal", "Romania", "Spain", "Turkey", "United Kingdom"].includes(base.country)) {
+    return "Europe";
+  }
+  if (["Australia", "Japan", "Marshall Islands", "Singapore", "South Korea"].includes(base.country)) {
+    return "Indo-Pacific";
+  }
+  if (["Bahrain", "Iraq", "Israel", "Jordan", "Kuwait", "Qatar", "Saudi Arabia", "United Arab Emirates"].includes(base.country)) {
+    return "Middle East";
+  }
+  if (["Cameroon", "Djibouti", "Kenya", "Somalia"].includes(base.country)) {
+    return "Africa";
+  }
+  if (base.country === "Greenland") return "Arctic / High North";
+  if (base.country === "British Overseas Territory" && base.id.includes("diego-garcia")) {
+    return "Indo-Pacific";
+  }
+  if (base.country === "British Overseas Territory") return "Africa";
+  return "Americas";
+}
+
+function getOverseasAnchor(base: OverseasBase): string {
+  if (base.id.includes("diego-garcia")) return "-7.3133, 72.4111";
+  if (base.id.includes("ascension")) return "-7.9467, -14.3559";
+  return OVERSEAS_COUNTRY_COORDINATES[base.country] ?? "20.0000, 0.0000";
+}
+
+function getDirectoryMapBases({
+  domesticBases = [],
+  overseasBases = [],
+  locale,
+}: {
+  domesticBases?: DomesticBase[];
+  overseasBases?: OverseasBase[];
+  locale: Locale;
+}): StrategicBase[] {
+  const isRo = locale === "ro";
+
+  const domesticMapBases = domesticBases.map((base): StrategicBase => ({
+    ID: `domestic-${base.id}`,
+    Name: base.name,
+    Country: base.state,
+    Region: getDomesticRegion(base),
+    Coordinates: getDirectoryCoordinate(base.id, DOMESTIC_STATE_COORDINATES[base.state] ?? "39.8283, -98.5795"),
+    "Primary Branch": base.branch,
+    "Operational Focus": base.locationDetails
+      ? `${isRo ? "Instalație domestică" : "Domestic installation"} / ${base.locationDetails}`
+      : isRo
+        ? "Instalație domestică din rețeaua de generare și susținere a forței."
+        : "Domestic installation in the force-generation and sustainment network.",
+    "Critical Infrastructure": [base.branch, base.state],
+    "Strategic Rationale": isRo
+      ? "Nod din infrastructura domestică a SUA. Poziția de pe hartă este aproximată la nivel de stat pentru directorul complet."
+      : "Node in the domestic U.S. infrastructure network. Map position is approximated at state level for the complete directory.",
+    "Image URL": SITE_IMAGES.homeUsaAtNightFromSpace,
+  }));
+
+  const overseasMapBases = overseasBases.map((base): StrategicBase => ({
+    ID: `overseas-${base.id}`,
+    Name: base.name,
+    Country: base.country,
+    Region: getOverseasRegion(base),
+    Coordinates: getDirectoryCoordinate(base.id, getOverseasAnchor(base)),
+    "Primary Branch": base.branch,
+    "Operational Focus": base.locationDetails
+      ? `${isRo ? "Instalație externă" : "Overseas installation"} / ${base.locationDetails}`
+      : isRo
+        ? "Instalație externă din rețeaua avansată de acces și susținere."
+        : "Overseas installation in the forward access and sustainment network.",
+    "Critical Infrastructure": [base.branch, base.country],
+    "Strategic Rationale": isRo
+      ? "Nod din infrastructura externă a SUA. Poziția de pe hartă este aproximată la nivel de țară sau teritoriu pentru directorul complet."
+      : "Node in the overseas U.S. infrastructure network. Map position is approximated at country or territory level for the complete directory.",
+    "Image URL": SITE_IMAGES.homeUsaAtNightFromSpace,
+  }));
+
+  return [...domesticMapBases, ...overseasMapBases];
 }
 
 const fadeUp = {
@@ -321,10 +517,14 @@ function BaseDetailDrawer({
 
 export function GlobalCommandMap({
   bases,
+  domesticBases = [],
+  overseasBases = [],
   regions,
   locale = "en",
 }: {
   bases: StrategicBase[];
+  domesticBases?: DomesticBase[];
+  overseasBases?: OverseasBase[];
   regions: RegionBrief[];
   locale?: Locale;
 }) {
@@ -338,13 +538,21 @@ export function GlobalCommandMap({
     zoom: 1,
   });
 
-  const activeRegion = regions.find((region) => region.id === activeRegionId) ?? regions[0];
-  const activeRegionBases = useMemo(
-    () => bases.filter((base) => base.Region === activeRegionId),
-    [activeRegionId, bases]
+  const mapBases = useMemo(
+    () => [
+      ...bases,
+      ...getDirectoryMapBases({ domesticBases, overseasBases, locale }),
+    ],
+    [bases, domesticBases, overseasBases, locale]
   );
 
-  const clusters = useMemo(() => getClusters(bases, position.zoom), [bases, position.zoom]);
+  const activeRegion = regions.find((region) => region.id === activeRegionId) ?? regions[0];
+  const activeRegionBases = useMemo(
+    () => mapBases.filter((base) => base.Region === activeRegionId),
+    [activeRegionId, mapBases]
+  );
+
+  const clusters = useMemo(() => getClusters(mapBases, position.zoom), [mapBases, position.zoom]);
 
   useEffect(() => {
     setIsMapMounted(true);

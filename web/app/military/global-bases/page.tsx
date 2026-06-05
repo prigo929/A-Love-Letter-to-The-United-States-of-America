@@ -54,7 +54,13 @@ export default async function GlobalBasesPage() {
       <MilStyles />
       <GlobalBasesHero stats={stats} locale={locale} />
       <StrategicThesis locale={locale} />
-      <GlobalCommandMap bases={bases} regions={regions} locale={locale} />
+      <GlobalCommandMap
+        bases={bases}
+        domesticBases={domesticBases}
+        overseasBases={overseasBases}
+        regions={regions}
+        locale={locale}
+      />
       <RegionalTheaterGrid theaters={theaters} locale={locale} />
       <BaseDossierSection bases={bases} locale={locale} />
       <LogisticsBackboneSection nodes={nodes} locale={locale} />
