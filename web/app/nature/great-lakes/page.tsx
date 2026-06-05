@@ -161,6 +161,13 @@ const GL_EXTENDED_EN = [
     source: "Natural Resources Canada",
     color: "gold" as const,
   },
+  {
+    id: "gl-boating",
+    fact: "Freshwater Geography: Seeding a Recreational Boating Civilization",
+    detail: "Containing over 20% of Earth's surface freshwater, the Great Lakes region is the epicenter of the American recreational boating civilization. Lake Michigan's shoreline alone exceeds the entire US Atlantic coast, and Michigan, Minnesota, and Wisconsin host over 2.5 million registered boats — demonstrating how massive freshwater geography creates democratization of outdoor leisure.",
+    source: "US Coast Guard / National Marine Manufacturers Association 2025",
+    color: "blue" as const,
+  },
 ];
 
 const GL_EXTENDED_RO = [
@@ -195,6 +202,13 @@ const GL_EXTENDED_RO = [
       "Cu 2.766 km², Insula Manitoulin este mai mare decât multe județe americane. Conține numeroase lacuri în interior — inclusiv cel mai mare lac de pe o insulă dintr-un lac de apă dulce din lume.",
     source: "Natural Resources Canada",
     color: "gold" as const,
+  },
+  {
+    id: "gl-boating",
+    fact: "Geografia Apei Dulci: Civilizația Navigației de Recreere",
+    detail: "Deținând peste 20% din apa dulce de suprafață a lumii, regiunea Marilor Lacuri este epicentrul navigației de agrement din SUA. Linia de coastă a Lacului Michigan depășește întreaga coastă atlantică a SUA, iar state precum Michigan, Minnesota și Wisconsin găzduiesc peste 2,5 milioane de ambarcațiuni înregistrate — demonstrând cum geografia apei dulci democratizează recreerea în aer liber.",
+    source: "US Coast Guard / National Marine Manufacturers Association 2025",
+    color: "blue" as const,
   },
 ];
 

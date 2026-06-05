@@ -46,6 +46,12 @@ interface ScienceCopy {
   shaleParagraph2: string;
   shaleSource: string;
   shaleSourceUrl: string;
+  labsLabel: string;
+  labsTitle: string;
+  labsParagraph1: string;
+  labsParagraph2: string;
+  labsSource: string;
+  labsSourceUrl: string;
   oracleDescription: string;
 }
 
@@ -60,9 +66,9 @@ const copyEn: ScienceCopy = {
   statsTitle: "Scientific Leadership by the Numbers",
   stats: [
     {
-      value: "400+",
-      label: "Nobel Prizes",
-      description: "More than any other nation in history, demonstrating a culture of deep basic research."
+      value: "398",
+      label: "Nobel Laureates",
+      description: "American scientists have won ~34% of all Nobel Prizes in history. Since 1970, over half of all prizes have been won by Americans (nearly two-thirds recently), and they account for half of all global scientific citations."
     },
     {
       value: "350k+",
@@ -105,9 +111,15 @@ const copyEn: ScienceCopy = {
   shaleLabel: "THE PRIVATE-SECTOR REVOLUTION",
   shaleTitle: "Energy Dominance: The Shale Revolution",
   shaleParagraph1: "In 2008, the United States was a net importer of oil and gas, geopolitically constrained by OPEC pricing. By the mid-2010s, it had become the world's single largest producer of both oil and natural gas simultaneously — surpassing Saudi Arabia and Russia — driven entirely by private entrepreneurs, risk capital, and a property rights system that let landowners profit from what lay beneath their own soil.",
-  shaleParagraph2: "No government ministry planned this. No state energy company executed it. It was hydraulic fracturing, horizontal drilling, and American ingenuity operating in a competitive market. The strategic consequences were immense: energy independence, cheap domestic fuel, and a geopolitical trump card that energy-dependent Europe desperately wished it had possessed before February 2022.",
-  shaleSource: "US Energy Information Administration (EIA)",
-  shaleSourceUrl: "https://www.eia.gov/energyexplained/oil-and-petroleum-products/where-our-oil-comes-from.php",
+  shaleParagraph2: "No government planned this; it was market-driven ingenuity. Powering this is the Pipeline Nation: the US operates the world's largest energy pipeline network with over 2.8 million miles of pipe — a 65% global share (vs Russia 8%, Canada 3%). This underground web delivers cheap natural gas and crude invisibly and continuously, creating a domestic commodity market structurally insulated from the foreign import vulnerabilities that haunt Europe.",
+  shaleSource: "US Energy Information Administration (EIA) / Pipeline 101",
+  shaleSourceUrl: "https://pipeline101.org/location/",
+  labsLabel: "NATIONAL SCIENTIFIC CONCENTRATION",
+  labsTitle: "The DOE National Labs: Unmatched Research Infrastructure",
+  labsParagraph1: "The Department of Energy's 17 National Laboratories (including Lawrence Livermore, Oak Ridge, Argonne, SLAC, and Fermilab) represent the most comprehensive scientific research system in the world. Directly descended from the wartime Manhattan Project, this system coordinates specialized, large-scale scientific infrastructure that no other country can replicate.",
+  labsParagraph2: "Operating continuously for over 70 years, these institutions house instruments found nowhere else on Earth. It was here that scientists achieved the world's first fusion ignition at Lawrence Livermore in 2022 and built some of the fastest supercomputers in existence at Oak Ridge. The system stands as a monument to deep research that no single private corporation or foreign state could fund.",
+  labsSource: "US Department of Energy (DOE)",
+  labsSourceUrl: "https://www.energy.gov/us-department-energy-national-laboratories",
   oracleDescription: "Ask the AI Oracle about historic scientific breakthroughs, transistors, biotechnology developments, or American Nobel prize counts."
 };
 
@@ -119,12 +131,12 @@ const copyRo: ScienceCopy = {
   thesisTitle: "Motorul Cercetării Științifice",
   thesisParagraph1: "De la becul electric și avion până la microcip și inteligența artificială, lumea modernă funcționează pe baza proprietății intelectuale americane. Această dominație este produsul direct al unui cadru legal stabilit în Articolul I din Constituție pentru protejarea drepturilor de autor, combinat cu finanțări uriașe.",
   thesisParagraph2: "SUA conduc lumea în ceea ce privește citările științifice evaluate de colegi și atrag cele mai bune minți internaționale. Fie că vorbim de vindecarea bolilor, fie de pionieratul în era digitală, oamenii de știință americani operează cu resurse fără egal.",
-  statsTitle: "Leadership-ul Științific în Cifre",
+  statsTitle: "Conducerea Științifică în Cifre",
   stats: [
     {
-      value: "400+",
-      label: "Premii Nobel",
-      description: "Mai multe decât orice altă țară din istorie, dovedind o cultură a cercetării de bază."
+      value: "398",
+      label: "Laureați Nobel",
+      description: "Oamenii de știință din SUA au câștigat ~34% din toate premiile Nobel din istorie. Din 1970, peste jumătate din premii au fost câștigate de americani (aproape două treimi recent), producând jumătate din citările științifice globale."
     },
     {
       value: "350k+",
@@ -167,9 +179,15 @@ const copyRo: ScienceCopy = {
   shaleLabel: "REVOLUȚIA SECTORULUI PRIVAT",
   shaleTitle: "Dominanța Energetică: Revoluția Șisturilor",
   shaleParagraph1: "În 2008, Statele Unite erau un importator net de petrol și gaze, limitate geopolitic de prețurile OPEC. Până la jumătatea anilor 2010, deveniseră cel mai mare producător mondial atât de petrol, cât și de gaze naturale simultan — depășind Arabia Saudită și Rusia — un impuls generat în întregime de antreprenori privați, capital de risc și un sistem de drepturi de proprietate care permite proprietarilor de terenuri să profite de resursele din subsol.",
-  shaleParagraph2: "Niciun minister guvernamental nu a planificat asta. Nicio companie energetică de stat nu a executat-o. A fost fracturarea hidraulică, forajul orizontal și ingeniozitatea americană pe o piață competitivă. Consecințele strategice au fost imense: independență energetică, combustibil intern ieftin și un atu geopolitic de invidiat.",
-  shaleSource: "Administrația Americană pentru Informații în Domeniul Energiei (EIA)",
-  shaleSourceUrl: "https://www.eia.gov/energyexplained/oil-and-petroleum-products/where-our-oil-comes-from.php",
+  shaleParagraph2: "Niciun minister nu a planificat asta; a fost ingeniozitate privată. Motorul acestei abundențe este rețeaua națională de conducte: SUA au cea mai mare rețea de conducte energetice din lume, cu peste 4,5 milioane de kilometri (2,8 milioane mile) — o cotă globală de 65% (față de Rusia 8%, Canada 3%). Această rețea subterană transportă gaze și petrol continuu și ieftin, oferind o imunitate structurală în fața vulnerabilităților de import care afectează Europa.",
+  shaleSource: "Administrația Americană pentru Informații în Domeniul Energiei (EIA) / Pipeline 101",
+  shaleSourceUrl: "https://pipeline101.org/location/",
+  labsLabel: "CONCENTRARE ȘTIINȚIFICĂ NAȚIONALĂ",
+  labsTitle: "Laboratoarele Naționale DOE: Infrastructură de Cercetare Unică",
+  labsParagraph1: "Cele 17 Laboratoare Naționale ale Departamentului de Energie al SUA (inclusiv Lawrence Livermore, Oak Ridge, Argonne, SLAC și Fermilab) reprezintă cel mai cuprinzător sistem de cercetare științifică din lume. Descendent direct din Proiectul Manhattan, acest sistem reunește o infrastructură masivă și specializată pe care nicio altă țară nu o poate replica.",
+  labsParagraph2: "Funcționând continuu de peste 70 de ani, aceste instituții dețin instrumente unice. Aici a fost realizată prima aprindere prin fuziune din lume la Lawrence Livermore în 2022 și sunt găzduite cele mai rapide supercomputere la Oak Ridge. Sistemul este un monument al cercetării fundamentale pe care nicio companie privată sau stat străin nu o poate finanța la această scară.",
+  labsSource: "Departamentul de Energie al SUA (DOE)",
+  labsSourceUrl: "https://www.energy.gov/us-department-energy-national-laboratories",
   oracleDescription: "Întreabă Oracolul AI despre descoperirile științifice istorice, tranzistori, dezvoltarea biotehnologiei sau numărul de premii Nobel din SUA."
 };
 
@@ -331,6 +349,46 @@ export default async function SciencePage() {
               >
                 {isRo ? "Date oficiale EIA" : "EIA Official Data"}
                 <ExternalLink className="h-3. w-3" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* DOE National Labs Section */}
+      <section
+        id="labs-feature"
+        className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 pb-16 bg-gradient-to-r from-navy-dark via-navy-mid to-navy-dark border-t border-white/5"
+      >
+        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-navy-dark/60 backdrop-blur p-8 md:p-12 relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 opacity-10">
+            <FlaskConical className="h-40 w-40 text-glory-gold" />
+          </div>
+          
+          <div className="relative z-10">
+            <span className="font-mono text-xs uppercase tracking-widest text-glory-gold mb-3 block">
+              {copy.labsLabel}
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-6">
+              {copy.labsTitle}
+            </h2>
+            <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
+              {copy.labsParagraph1}
+            </p>
+            <p className="font-body text-white/80 text-lg leading-relaxed mb-8">
+              {copy.labsParagraph2}
+            </p>
+            
+            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
+              <span>Source: {copy.labsSource}</span>
+              <a 
+                href={copy.labsSourceUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center gap-1 text-glory-gold hover:underline"
+              >
+                {isRo ? "Portal Oficial DOE Labs" : "Official DOE Labs Portal"}
+                <ExternalLink className="h-3.5 w-3.5" />
               </a>
             </div>
           </div>

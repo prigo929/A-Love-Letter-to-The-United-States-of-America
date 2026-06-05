@@ -56,7 +56,7 @@ const copyEn: InventionsCopy = {
   heroSubtitle: "How the synergy of government research, academic freedom, and venture capital created the core technologies of the modern era.",
   thesisTitle: "The Birth of Computing and Global Systems",
   thesisParagraph1: "The second half of the 20th century saw the United States construct the fundamental building blocks of modern technological civilization. From the invention of the transistor at Bell Labs to the packet-switching networks of ARPANET and the microprocessors of Silicon Valley, American labs laid the groundwork for computing, global networks, and space-based utility systems.",
-  thesisParagraph2: "These inventions are not merely national achievements; they function as global public utilities, quietly running everything from international aviation and logistics to the smartphones in the pockets of billions of people across the planet.",
+  thesisParagraph2: "Quietly powering this digital revolution is the DARPA model: a defense agency operating with a $4 billion budget, no permanent research staff, and autonomous, short-term program managers. Born in response to Sputnik, DARPA funded ARPANET, GPS, stealth aircraft, autonomous vehicles, and mRNA vaccine platforms — yielding trillions of dollars of global economic value from a budget smaller than many mid-sized nations spend on military research.",
   milestonesTitle: "Foundational Digital Inventions",
   milestones: [
     {
@@ -103,7 +103,7 @@ const copyRo: InventionsCopy = {
   heroSubtitle: "Cum sinergia dintre cercetarea guvernamentală, libertatea academică și capitalul de risc a creat tehnologiile erei moderne.",
   thesisTitle: "Nașterea Informaticii și a Sistemelor Globale",
   thesisParagraph1: "A doua jumătate a secolului XX a văzut Statele Unite construind blocurile fundamentale ale civilizației tehnologice moderne. De la inventarea tranzistorului la Bell Labs, până la rețelele ARPANET și microprocesoarele din Silicon Valley, laboratoarele americane au pus bazele informaticii, rețelelor globale și utilităților spațiale.",
-  thesisParagraph2: "Aceste invenții nu sunt doar realizări naționale; ele funcționează ca utilități publice globale, susținând în mod silențios totul, de la aviația internațională și logistică până la smartphone-urile din buzunarele a miliarde de oameni de pe planetă.",
+  thesisParagraph2: "Motorul acestei revoluții este modelul DARPA: o agenție de apărare cu un buget de 4 miliarde de dolari, fără personal de cercetare permanent, care folosește manageri de program autonomi. Creată ca răspuns la Sputnik, DARPA a finanțat ARPANET, GPS, tehnologia stealth, vehiculele autonome și platformele mRNA — generând trilioane de dolari în valoare economică globală dintr-un buget redus.",
   milestonesTitle: "Invenții Digitale Fundamentale",
   milestones: [
     {

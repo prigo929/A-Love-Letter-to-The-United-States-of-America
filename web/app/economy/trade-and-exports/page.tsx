@@ -111,6 +111,13 @@ const TRADE_FACTS = [
     source: "USDA Foreign Agricultural Service 2026",
     color: "red" as const,
   },
+  {
+    id: "trade-truckers",
+    fact: "The Trucker's Republic: America's Overland Freight Nervous System",
+    detail: "Over 3.5 million professional truck drivers move 70% of all domestic freight value in the US, coordinating $800 billion in overland shipping annually. Supported by massive private travel center chains like Pilot Flying J, Love's, and TA, this high-velocity highway logistics network keeps the continental economy operating in real-time.",
+    source: "American Trucking Associations / Bureau of Transportation Statistics 2026",
+    color: "gold" as const,
+  },
 ];
 
 const TRADE_PARTNERS = [
@@ -302,6 +309,12 @@ export default async function TradeAndExportsPage() {
             fact: "Geografia Agricolă: O Moștenire Naturală Unică",
             detail: "Statele Unite dețin cel mai mare bloc contiguu de terenuri arabile de Clasa I și II din lume în Midwest și Marile Câmpii, beneficiind de precipitații temperate și acces direct la două oceane și Golful Mexic, oferind imunitate la insecuritate alimentară.",
             source: "USDA Foreign Agricultural Service 2026",
+          },
+          {
+            ...TRADE_FACTS[9],
+            fact: "Republica Tiriștilor: Sistemul Nervos al Transportului Terestru",
+            detail: "Peste 3,5 milioane de șoferi profesioniști de camion transportă 70% din valoarea mărfurilor interne din SUA, coordonând anual transporturi terestre de 800 de miliarde de dolari. Susținută de lanțuri private de popasuri gigantice (Pilot Flying J, Love's, TA), această rețea logistică de mare viteză menține economia continentală în timp real.",
+            source: "American Trucking Associations / Bureau of Transportation Statistics 2026",
           },
         ]
       : TRADE_FACTS;

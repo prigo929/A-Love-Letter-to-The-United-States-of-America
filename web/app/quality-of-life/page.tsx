@@ -166,6 +166,18 @@ const copyEn: QualityOfLifeCopy = {
       description: "A continuous, massive network of refrigerated trucks, warehouses, and retail cases spans the continent. It keeps fresh strawberries, avocados, and seafood available year-round in even the most remote areas at affordable prices, underpinning why Americans spend the lowest share of income on food.",
       source: "Global Cold Chain Alliance (GCCA)",
       sourceUrl: "https://www.iarw.org/"
+    },
+    {
+      title: "The Self-Storage Civilization",
+      description: "The US holds a 90% share of global self-storage inventory, with over 50,000 facilities — more locations than McDonald's, Starbucks, and Subway combined. Generating $40B+ in annual revenue, this industry serves as a physical ledger of American abundance, reflecting the immense volume of property owned by middle-class households.",
+      source: "SpareFoot Industry Statistics",
+      sourceUrl: "https://www.sparefoot.com/self-storage/news/1432-self-storage-industry-statistics/"
+    },
+    {
+      title: "Recreational Boats & Watercraft",
+      description: "America leads globally in boat ownership, with approximately 17 million recreational boats and yachts owned by 15 million households. While China registers fewer than 120,000 boats, US middle-class families utilize millions of navigable freshwater lakes and coastal access points as a standard recreational outlet.",
+      source: "National Marine Manufacturers Association (NMMA)",
+      sourceUrl: "https://www.nmma.org/"
     }
   ],
   incomeTitle: "Disposable Income & Charitable Giving",
@@ -309,6 +321,18 @@ const copyRo: QualityOfLifeCopy = {
       description: "O rețea continuă și masivă de camioane, depozite și vitrine frigorifice acoperă întregul continent. Aceasta permite ca căpșunile proaspete, avocado și fructele de mare să fie accesibile tot anul în orice oraș izolat la prețuri mici, fiind baza pentru care americanii cheltuiesc cea mai mică pondere din venit pe hrană.",
       source: "Global Cold Chain Alliance (GCCA)",
       sourceUrl: "https://www.iarw.org/"
+    },
+    {
+      title: "Civilizația Depozitării Personale (Self-Storage)",
+      description: "SUA dețin 90% din stocul global de spații de depozitare personală, cu peste 50.000 de facilități — mai multe decât locațiile McDonald's, Starbucks și Subway la un loc. Generând venituri anuale de peste 40 de miliarde de dolari, industria reflectă volumul imens de bunuri deținute de clasa medie.",
+      source: "SpareFoot Industry Statistics",
+      sourceUrl: "https://www.sparefoot.com/self-storage/news/1432-self-storage-industry-statistics/"
+    },
+    {
+      title: "Ambarcațiuni Recreaționale",
+      description: "America conduce la nivel mondial în posesia de bărci, cu circa 17 milioane de bărci și iahturi deținute de 15 milioane de gospodării. În timp ce China înregistrează sub 120.000 de bărci, familiile de clasă medie din SUA folosesc rețeaua vastă de lacuri și coaste ca pe un standard accesibil de petrecere a timpului liber.",
+      source: "National Marine Manufacturers Association (NMMA)",
+      sourceUrl: "https://www.nmma.org/"
     }
   ],
   incomeTitle: "Venit Disponibil și Generozitate Privată",

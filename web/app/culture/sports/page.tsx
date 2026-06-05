@@ -42,6 +42,12 @@ export default async function CultureSportsPage() {
       ? "Major League Baseball reprezintă nostalgia și istoria Americii. În paralel, fotbalul și baschetul universitar din NCAA mobilizează comunități locale cu stadioane gigantice de peste 100.000 de locuri."
       : "Major League Baseball represents nostalgia and the history of America. In parallel, NCAA college football and basketball mobilize local communities with giant stadiums exceeding 100,000 capacities.",
 
+    golfLabel: isRo ? "GOLF ȘI SPAȚIU DE AGREMENT" : "GOLF & LEISURE LAND DENSITY",
+    golfTitle: isRo ? "42% din Terenurile de Golf ale Lumii" : "42% of Global Golf Supply",
+    golfText: isRo
+      ? "Statele Unite găzduiesc 42,4% din toate terenurile de golf din lume (aproape 16.000 de terenuri față de cele 8.900 din întreaga Europă). Această densitate reprezintă accesul unic al clasei de mijloc la spațiu verde și timp liber, o reflectare a abundenței de teren și a culturii de recreere fără echivalent global."
+      : "The United States accounts for 42.4% of the world's golf courses (nearly 16,000 of the 38,000 courses globally), compared to about 8,900 in all of Europe. This represents a concentration of leisure land density and discretionary free time with no global equivalent.",
+
     backLink: isRo ? "← Înapoi la Film și Narativă" : "← Back to Film & Storytelling",
     nextLink: isRo ? "Divertisment și Media →" : "Entertainment & Media →",
   };
@@ -143,6 +149,30 @@ export default async function CultureSportsPage() {
                 className="object-cover hover:scale-102 transition-transform duration-500"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
+            </div>
+          </div>
+
+          {/* Section 4: Golf & Leisure */}
+          <div className="grid gap-12 lg:grid-cols-2 items-center">
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/5 bg-black/40 lg:order-2">
+              <Image
+                src={SITE_IMAGES.culture.vaultSportsSI2019}
+                alt="Golf and Leisure Land Density"
+                fill
+                className="object-cover hover:scale-102 transition-transform duration-500"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+            <div className="space-y-6 lg:order-1">
+              <span className="text-xs font-semibold tracking-wider text-glory-gold uppercase">
+                {content.golfLabel}
+              </span>
+              <h2 className="text-2xl md:text-3xl font-editorial font-bold text-white">
+                {content.golfTitle}
+              </h2>
+              <p className="text-[#F5EDD8]/70 leading-relaxed text-sm">
+                {content.golfText}
+              </p>
             </div>
           </div>
         </section>
