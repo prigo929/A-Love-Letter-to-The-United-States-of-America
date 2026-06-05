@@ -37,6 +37,20 @@ const CAPITAL_MARKETS_EXTENDED_FACTS = [
   // Page-specific supporting facts. Shared facts stay in economy-data.ts;
   // local facts that belong only to this page can live here.
   {
+    id: "stock-market-wealth",
+    fact: "US stock market represents roughly 60% of total global equity value",
+    detail: "Despite having only 4% of the world's population, everyday Americans utilize 401(k)s and Roth IRAs to invest in the S&P 500, which has historically crushed European indices like the Stoxx 600, compounding wealth at a rate that is largely impossible in Europe.",
+    source: "Visual Capitalist 2024",
+    color: "gold" as const,
+  },
+  {
+    id: "capital-markets-depth",
+    fact: "The NYSE and NASDAQ carry a combined market capitalization exceeding $40 trillion",
+    detail: "This unmatched depth means American companies of every size — from seed-stage startups to Fortune 500 firms — can access the cheapest financing on Earth, which is a primary reason why they scale faster, invest in R&D, and dominate global markets.",
+    source: "World Federation of Exchanges 2026",
+    color: "red" as const,
+  },
+  {
     id: "asset-management",
     fact: "US asset managers control over $25 trillion in global wealth",
     detail:
@@ -128,37 +142,49 @@ export default async function CapitalMarketsPage() {
     locale === "ro"
       ? [
           {
-            ...CAPITAL_MARKETS_EXTENDED_FACTS[0],
+            id: "stock-market-wealth",
+            fact: "Bursa din SUA reprezintă aproximativ 60% din valoarea totală a acțiunilor globale",
+            detail: "În ciuda faptului că are doar 4% din populație, clasa de mijloc din SUA folosește conturi 401(k) și Roth IRA pentru a investi în S&P 500, care a depășit istoric indicii europeni (Stoxx 600), acumulând avere într-un mod imposibil în Europa.",
+            source: "Visual Capitalist 2024",
+          },
+          {
+            id: "capital-markets-depth",
+            fact: "NYSE și NASDAQ au o capitalizare combinată de peste 40 de trilioane de dolari",
+            detail: "Această profunzime unică înseamnă că firmele americane de toate dimensiunile pot accesa cea mai ieftină finanțare de pe Pământ, ajutându-le să se dezvolte rapid, să investească în R&D și să domine piețele.",
+            source: "World Federation of Exchanges 2026",
+          },
+          {
+            ...CAPITAL_MARKETS_EXTENDED_FACTS[2],
             fact: "Administratorii de active din SUA controlează peste 25 de trilioane de dolari",
             detail:
               "BlackRock, Vanguard și State Street gestionează mai multe active decât întregul PIB al Chinei. Acești «Giganți» reprezintă coloana vertebrală a investițiilor instituționale globale.",
           },
           {
-            ...CAPITAL_MARKETS_EXTENDED_FACTS[1],
+            ...CAPITAL_MARKETS_EXTENDED_FACTS[3],
             fact: "ETF-urile pe S&P 500 tranzacționează peste 50 mld. $ în fiecare zi de bursă",
             detail:
               "Doar ETF-ul SPY depășește frecvent 50 de miliarde de dolari volum zilnic — mai mult decât PIB-ul anual al multor națiuni, tranzacționat într-o singură zi pe o singură bursă americană.",
           },
           {
-            ...CAPITAL_MARKETS_EXTENDED_FACTS[2],
+            ...CAPITAL_MARKETS_EXTENDED_FACTS[4],
             fact: "Private equity-ul american administrează peste 12 trilioane de dolari",
             detail:
               "Industria americană de private equity — Blackstone, Apollo, KKR, Carlyle — administrează mai mult capital decât PIB-ul Chinei, Japoniei și Germaniei la un loc doar în piețele private.",
           },
           {
-            ...CAPITAL_MARKETS_EXTENDED_FACTS[3],
+            ...CAPITAL_MARKETS_EXTENDED_FACTS[5],
             fact: "70% din activele hedge fund-urilor globale sunt gestionate din Statele Unite",
             detail:
               "Greenwich, Connecticut și Midtown Manhattan găzduiesc cei mai sofisticați alocatori de capital din lume. Numai Bridgewater al lui Ray Dalio administrează peste 150 mld. $.",
           },
           {
-            ...CAPITAL_MARKETS_EXTENDED_FACTS[4],
+            ...CAPITAL_MARKETS_EXTENDED_FACTS[6],
             fact: "Piața IPO din SUA strânge mai mult capital decât următoarele 5 burse la un loc",
             detail:
               "Companii din toată lumea — Alibaba, Arm Holdings, Spotify — aleg listarea pe bursele americane pentru a accesa profunzimea capitalului american. Nu există rival.",
           },
           {
-            ...CAPITAL_MARKETS_EXTENDED_FACTS[5],
+            ...CAPITAL_MARKETS_EXTENDED_FACTS[7],
             fact: "Piața opțiunilor din SUA este mai mare decât toate celelalte piețe globale la un loc",
             detail:
               "Bursele americane de derivate tranzacționează peste 40 de milioane de contracte pe zi, oferind cel mai sofisticat mecanism din lume pentru acoperirea riscurilor și descoperirea prețurilor.",

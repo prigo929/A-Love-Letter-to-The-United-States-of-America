@@ -559,6 +559,13 @@ export const VC_EXTENDED_FACTS: ExtendedFact[] = [
     source: "Forbes / Crunchbase",
     color: "blue",
   },
+  {
+    id: "vc-dynamism",
+    fact: "Forming an LLC in the US takes days or hours, not weeks or months",
+    detail: "While European labor regulations require weeks or months to legally incorporate and hire, American corporate formation is frictionless, attracting the vast majority of global venture capital.",
+    source: "Pitchbook 2026",
+    color: "gold" as const,
+  },
 ];
 
 // ─── Founding Timeline ────────────────────────────────────────────────────────
@@ -1148,6 +1155,12 @@ export function getVcExtendedFacts(locale: Locale) {
         fact: "Cele mai bune 10 randamente de VC din SUA au produs peste 2 trilioane $ din investiții minuscule",
         detail:
           "Investiția de 60 mil. $ a Sequoia în Google a returnat 12 mld. $. Cele 13 mil. $ ale Benchmark în eBay au devenit 2,5 mld. $. Venture capitalul american este cel mai mare mecanism de creare de avere.",
+      },
+      {
+        ...VC_EXTENDED_FACTS[6],
+        fact: "Înființarea unui LLC în SUA durează ore sau zile, nu săptămâni sau luni",
+        detail:
+          "În timp ce legile și reglementările europene ale muncii necesită săptămâni sau chiar luni pentru încorporare și angajare, formarea unei firme în SUA este simplă, atrăgând majoritatea fluxurilor de capital de risc.",
       },
     ];
   }

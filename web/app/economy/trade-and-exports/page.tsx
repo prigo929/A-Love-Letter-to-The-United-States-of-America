@@ -90,6 +90,13 @@ const TRADE_FACTS = [
     source: "BEA Intellectual Property Products 2026",
     color: "blue" as const,
   },
+  {
+    id: "trade-freight",
+    fact: "US freight rail is the most efficient and cost-effective in the world",
+    detail: "While Europe focuses heavily on subsidizing passenger rail, the US dominates in global freight rail efficiency. Carrying double-stacked containers, US freight rail drops shipping costs dramatically, powering next-day logistics and fully stocked shelves.",
+    source: "Association of American Railroads 2026",
+    color: "gold" as const,
+  },
 ];
 
 const TRADE_PARTNERS = [
@@ -262,6 +269,13 @@ export default async function TradeAndExportsPage() {
             fact: "Exporturile americane de software și proprietate intelectuală depășesc 200 mld. $ anual",
             detail:
               "Microsoft Windows, Adobe Creative Suite, Salesforce, AWS, App Store-ul Apple — software-ul american este infrastructura invizibilă a economiei globale.",
+          },
+          {
+            ...TRADE_FACTS[6],
+            fact: "Căile ferate de marfă din SUA sunt cele mai eficiente din lume",
+            detail:
+              "În timp ce Europa subvenționează masiv transportul feroviar de călători, SUA excelează în transportul feroviar de marfă. Trenurile cu containere duble reduc costurile de transport, permițând logistica rapidă și prețurile mici.",
+            source: "Association of American Railroads 2026",
           },
         ]
       : TRADE_FACTS;

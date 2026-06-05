@@ -87,6 +87,13 @@ const GDP_EXTENDED_FACTS = [
     source: "NSF 2026",
     color: "blue" as const,
   },
+  {
+    id: "gdp-productivity",
+    fact: "Worker Productivity: Output Per Hour",
+    detail: "Measured by GDP per hour worked, the United States consistently ranks in the top tier of OECD nations, outperforming Germany, the United Kingdom, and Japan by a meaningful margin. High productivity is why American wages are high.",
+    source: "OECD 2026",
+    color: "gold" as const,
+  },
 ];
 
 const STATE_GDP_RANKINGS = [
@@ -175,6 +182,13 @@ export default async function GdpGrowthPage() {
             fact: "SUA cheltuiesc mai mult pe cercetare și dezvoltare decât orice altă națiune — peste 800 mld. $ anual",
             detail:
               "Companiile, universitățile și instituțiile publice americane investesc peste 800 de miliarde de dolari pe an în cercetare și dezvoltare — combustibilul pentru următoarea generație de leadership economic.",
+          },
+          {
+            ...GDP_EXTENDED_FACTS[6],
+            fact: "Productivitatea Muncii: Producția pe Oră",
+            detail:
+              "Măsurată prin PIB pe oră lucrată, SUA se află în mod constant în vârful OCDE, depășind Germania, Marea Britanie și Japonia. Această productivitate mare explică salariile mari ale americanilor și succesul global al companiilor lor.",
+            source: "OECD 2026",
           },
         ]
       : GDP_EXTENDED_FACTS;

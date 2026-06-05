@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
+import { 
+  AlertTriangle, 
+  HelpCircle, 
+  Layers, 
+  TrendingUp, 
+  ShieldAlert 
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Common Misconceptions | Data & Media",
@@ -10,9 +17,30 @@ export const metadata: Metadata = {
 interface MisconceptionCard {
   title: string;
   description: string;
+  sourceUrl?: string;
 }
 
 const CARDS_EN: MisconceptionCard[] = [
+  {
+    title: "Maternal Mortality Reporting",
+    description: "The US maternal mortality rate is often compared apples-to-oranges with other countries. The US includes all pregnancy-associated deaths up to a full year post-birth, including accidental, mental health, and unrelated causes, which European registries simply ignore.",
+    sourceUrl: "https://cosm.aei.org/is-the-us-really-an-outlier-on-pregnancy-deaths-and-have-such-deaths-spiked/"
+  },
+  {
+    title: "Life Expectancy & Lifestyle",
+    description: "The oft-cited life expectancy gap is less about healthcare quality or national wealth and more about diet, obesity, and accidents. Middle-income nations like Costa Rica or Puerto Rico outperform OECD averages due to dietary habits, not superior medical facilities.",
+    sourceUrl: "https://cosm.aei.org/is-the-us-really-an-outlier-on-pregnancy-deaths-and-have-such-deaths-spiked/"
+  },
+  {
+    title: "Tax System Progressivity",
+    description: "Despite narratives of low taxes on the rich, the US has the most progressive income tax system in the OECD. It features no regressive national sales tax (VAT); the top 1% earners pay 40% of all income taxes, while the bottom 50% pay just 3%.",
+    sourceUrl: "https://www.cato.org/blog/united-states-has-most-progressive-tax-system-developed-world"
+  },
+  {
+    title: "Freight Rail vs. Passenger Rail",
+    description: "Critics highlight European passenger high-speed rail, but the US dominates in freight rail efficiency. Carrying double-stacked containers, US freight rails drop shipping costs dramatically, powering next-day logistics and cheap consumer goods.",
+    sourceUrl: "https://www.freightwaves.com/news/why-is-europe-so-absurdly-backward-compared-to-the-u-s-in-rail-freight-transport"
+  },
   {
     title: "Healthcare & Itemization",
     description: "Debunking the viral 'itemization loophole' and clarifying the realities of insurance, financial assistance, and emergency billing.",
@@ -56,6 +84,26 @@ const CARDS_EN: MisconceptionCard[] = [
 ];
 
 const CARDS_RO: MisconceptionCard[] = [
+  {
+    title: "Mortalitatea Maternă",
+    description: "Comparațiile cu alte țări sunt adesea deformate. SUA raportează toate decesele asociate sarcinii până la un an după naștere (inclusiv cauze accidentale sau colaterale), în timp ce statele din UE omit adesea aceste statistici.",
+    sourceUrl: "https://cosm.aei.org/is-the-us-really-an-outlier-on-pregnancy-deaths-and-have-such-deaths-spiked/"
+  },
+  {
+    title: "Speranța de Viață și Bunăstarea",
+    description: "Diferențele de speranță de viață sunt mai mult legate de stilul de viață, obezitate și dietă, nu de calitatea medicinei. Țări cu venituri medii precum Costa Rica au rezultate similare sau superioare OCDE din motive de nutriție.",
+    sourceUrl: "https://cosm.aei.org/is-the-us-really-an-outlier-on-pregnancy-deaths-and-have-such-deaths-spiked/"
+  },
+  {
+    title: "Progresivitatea Impozitării",
+    description: "SUA au cel mai progresiv sistem fiscal din OCDE, fără taxă națională pe valoarea adăugată (TVA regresivă). Cei mai bogați 1% plătesc 40% din toate impozitele, în timp ce jumătatea inferioară plătește doar 3%.",
+    sourceUrl: "https://www.cato.org/blog/united-states-has-most-progressive-tax-system-developed-world"
+  },
+  {
+    title: "Căile Ferate de Marfă vs. Pasageri",
+    description: "În timp ce Europa se axează pe trenuri de pasageri, SUA excelează în transportul feroviar de marfă. Trenurile cu containere duble reduc costurile de transport, permițând logistica rapidă și prețurile mici.",
+    sourceUrl: "https://www.freightwaves.com/news/why-is-europe-so-absurdly-backward-compared-to-the-u-s-in-rail-freight-transport"
+  },
   {
     title: "Sistemul Medical și Facturile",
     description: "Demontarea mitului viral privind 'itemizarea facturilor ca metodă de anulare' și explicarea regulilor reale de asigurări și asistență financiară.",
@@ -115,7 +163,7 @@ export default async function MisconceptionsPage() {
   const cards = isRo ? CARDS_RO : CARDS_EN;
 
   return (
-    <main className="min-h-screen bg-navy-dark pt-24 text-white">
+    <main className="min-h-screen bg-navy-dark pt-24 text-white font-body selection:bg-glory-gold selection:text-navy-dark">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Breadcrumb
           items={[
@@ -136,19 +184,21 @@ export default async function MisconceptionsPage() {
       </div>
 
       <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto min-h-[35dvh] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8 flex flex-col items-center justify-center text-center">
-          <div className="max-w-md">
-            <span className="font-mono text-xs uppercase tracking-widest text-glory-gold mb-4 block">
-              {isRo ? "SECȚIUNE ÎN DEZVOLTARE" : "SECTION UNDER DEVELOPMENT"}
-            </span>
-            <h2 className="text-2xl font-bold mb-4 font-display">
-              {isRo ? "Date empirice contra retoricii" : "Empirical Data vs. Rhetoric"}
-            </h2>
-            <p className="text-sm text-white/55 leading-relaxed font-body">
-              {isRo
-                ? "Această secțiune va găzdui diagrame interactive, seturi de date comparative și analize de fact-checking pentru a demonta cele mai comune idei preconcepute despre societatea, economia și istoria SUA."
-                : "This section will house interactive data visualizations, comparative datasets, and fact-checking analysis to address the most common misconceptions about U.S. society, economy, and history."}
-            </p>
+        <div className="mx-auto max-w-7xl rounded-3xl border border-white/10 bg-white/3 p-8 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="flex items-start gap-4">
+            <div className="p-3 bg-glory-gold/10 rounded-2xl text-glory-gold">
+              <HelpCircle className="h-8 w-8" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold font-display text-white mb-2">
+                {isRo ? "Fapte Empirice vs. Narative Virale" : "Empirical Data vs. Viral Narratives"}
+              </h2>
+              <p className="text-sm text-white/60 leading-relaxed font-body max-w-2xl">
+                {isRo
+                  ? "Această secțiune analizează miturile comune despre societatea, economia, taxele și sistemul medical din SUA utilizând date din surse auditate internațional precum OCDE, Banca Mondială și baze de date publice."
+                  : "This section deconstructs popular misconceptions regarding U.S. society, economy, taxation, and healthcare using audited international datasets from the OECD, World Bank, and public records."}
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -159,16 +209,28 @@ export default async function MisconceptionsPage() {
             {cards.map((card, index) => (
               <div
                 key={index}
-                className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6 flex flex-col justify-between min-h-[220px]"
+                className="rounded-3xl border border-white/10 bg-white/5 p-6 flex flex-col justify-between min-h-[260px] hover:border-glory-gold/30 transition-all duration-300 shadow-card"
               >
                 <div>
                   <h3 className="font-display text-lg font-bold text-glory-gold mb-3">
                     {card.title}
                   </h3>
-                  <p className="text-xs text-white/50 leading-relaxed font-body">
+                  <p className="text-xs text-white/60 leading-relaxed font-body">
                     {card.description}
                   </p>
                 </div>
+                {card.sourceUrl && (
+                  <div className="border-t border-white/10 pt-3 mt-4 flex justify-end">
+                    <a 
+                      href={card.sourceUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-[10px] font-mono text-glory-gold hover:underline flex items-center gap-1"
+                    >
+                      {isRo ? "Verifică Date →" : "Verify Data →"}
+                    </a>
+                  </div>
+                )}
               </div>
             ))}
           </div>

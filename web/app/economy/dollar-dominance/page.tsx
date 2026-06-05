@@ -34,6 +34,13 @@ export const metadata: Metadata = {
 const DOLLAR_EXTENDED_FACTS = [
   // Extra facts that belong only to this page.
   {
+    id: "exorbitant-privilege",
+    fact: "The Dollar as Global Reserve Currency: The Exorbitant Privilege",
+    detail: "The US dollar constitutes approximately 60% of global foreign exchange reserves and is used in 88% of all international transactions. This 'exorbitant privilege' allows the US to borrow at lower rates and issue sovereign debt in its own currency, effectively subsidizing American borrowing costs.",
+    source: "Federal Reserve / BIS 2026",
+    color: "gold" as const,
+  },
+  {
     id: "dollar-countries",
     fact: "Over 65 countries peg or tightly link their currency to the US dollar",
     detail:
@@ -143,7 +150,13 @@ export default async function DollarDominancePage() {
     locale === "ro"
       ? [
           {
-            ...DOLLAR_EXTENDED_FACTS[0],
+            id: "exorbitant-privilege",
+            fact: "Dolarul ca Monedă de Rezervă Globală: Privilegiul Exorbitant",
+            detail: "Dolarul constituie aproximativ 60% din rezervele valutare globale și este utilizat în 88% din tranzacțiile internaționale. Acest 'privilegiu exorbitant' permite SUA să se împrumute la rate mai mici în propria monedă.",
+            source: "Federal Reserve / BIS 2026",
+          },
+          {
+            ...DOLLAR_EXTENDED_FACTS[1],
             fact: "Peste 65 de țări își fixează sau leagă strâns moneda de dolarul american",
             detail:
               "De la Panama, care folosește USD ca mijloc legal de plată, până la Arabia Saudită, zeci de națiuni își ancorează sistemele monetare de dolar, amplificându-i influența cu mult dincolo de granițele SUA.",
