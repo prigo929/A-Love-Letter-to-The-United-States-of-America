@@ -571,7 +571,7 @@ export const BRAND_LOGOS_ROW_2 = [
   { name: "NVIDIA", file: "nvidia.svg", invert: true, scale: "scale-100" },
   { name: "Adobe", file: "adobe.svg", invert: true, scale: "scale-90" },
   { name: "Warner Bros.", file: "Warner_Bros-_Logo_0.svg", scale: "scale-90" },
-  { name: "Converse", file: "Converse_logo.svg", invert: true, scale: "scale-90" },
+  { name: "Converse", file: "Converse_logo.svg", scale: "scale-90" },
   { name: "Ralph Lauren", file: "Ralph_Lauren_id4gNvWZ8Z_0.svg", invert: true, scale: "scale-85" },
   { name: "Palantir", file: "palantir.svg", invert: true, scale: "scale-95" },
   { name: "Anduril", file: "anduril.svg", invert: true, scale: "scale-95" },
