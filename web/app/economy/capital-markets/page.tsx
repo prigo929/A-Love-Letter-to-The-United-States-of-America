@@ -112,6 +112,20 @@ const CAPITAL_MARKETS_EXTENDED_FACTS = [
     source: "Vanguard / ICI 2026",
     color: "red" as const,
   },
+  {
+    id: "municipal-bond-market",
+    fact: "The Municipal Bond Market: Tax-Exempt Local Finance at $4 Trillion",
+    detail: "Established in the Revenue Act of 1913, the US municipal bond market allows state and local governments to issue debt exempt from federal and frequently state taxes. This allows school districts, water systems, and local transport authorities to borrow at lower yields, channeling private capital into public goods without requiring federal appropriations.",
+    source: "SIFMA 2026",
+    color: "gold" as const,
+  },
+  {
+    id: "us-insurance-market",
+    fact: "The US Insurance Market: Underwriting the World's Risk-Taking",
+    detail: "Accounting for 40% of global insurance premiums, the depth of the US insurance market enables high-risk innovation, mortgage availability, and corporate venture investments. Giants MetLife, Prudential, and Berkshire Hathaway constitute a private risk-distribution infrastructure that underpins the dynamism of the entire economy.",
+    source: "Insurance Information Institute 2026",
+    color: "blue" as const,
+  },
 ];
 
 const MAJOR_US_EXCHANGES = [
@@ -214,6 +228,18 @@ export default async function CapitalMarketsPage() {
             fact: "Fondul de Indici: Inovația Financiară ce a Eliminat Comisioanele Active",
             detail: "Lansat de Jack Bogle (Vanguard) în 1976, investițiile pasive în fonduri indexate reprezintă acum peste 15 trilioane $ în active din SUA. Urmărirea pasivă a indicilor și ETF-urile (create în 1993) economisesc comisioane masive, stimulând randamentul economiilor de pensionare.",
             source: "Vanguard / ICI 2026",
+          },
+          {
+            id: "municipal-bond-market",
+            fact: "Piața Obligațiunilor Municipale: Finanțare Locală de 4 Trilioane $",
+            detail: "Înființată în 1913, piața obligațiunilor municipale din SUA permite guvernelor locale să emită datorii scutite de taxe. Acest mecanism permite orașelor și districtelor școlare să împrumute la dobânzi mai mici pentru drumuri și școli, direcționând capitalul privat spre bunuri publice fără alocare federală.",
+            source: "SIFMA 2026",
+          },
+          {
+            id: "us-insurance-market",
+            fact: "Piața Asigurărilor din SUA: Asigurarea Riscului Global",
+            detail: "Statele Unite operează cea mai mare piață de asigurări din lume, reprezentând aproximativ 40% din primele de asigurare globale. Această profunzime permite asumarea riscurilor în afaceri și investiții: capitalul de risc finanțează startup-uri, iar companiile operează în medii intense de litigiu știind că riscurile sunt calculate și distribuite.",
+            source: "Insurance Information Institute 2026",
           },
         ]
       : CAPITAL_MARKETS_EXTENDED_FACTS;

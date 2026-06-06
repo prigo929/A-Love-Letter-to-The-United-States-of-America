@@ -289,15 +289,23 @@ export default async function AiAndTechPage() {
               : "Artificial intelligence is not just software. It relies on the most complex manufacturing supply chains and massive physical infrastructure on Earth — from specialized silicon hardware to hyper-scale data centers consuming gigawatts of energy."}
           </p>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 tag: isRo ? "Hardware Avansat" : "Advanced Silicon",
-                title: isRo ? "Nvidia H100: Motorul AI Generative" : "Nvidia H100: The AI Engine",
+                title: isRo ? "Nvidia H100: Motorul AI" : "Nvidia H100: The AI Engine",
                 description: isRo
                   ? "GPU-ul NVIDIA H100 Tensor Core, bazat pe arhitectura Hopper, reprezintă un salt uriaș în accelerarea computațională. Acesta conține 80 de miliarde de tranzistori și este proiectat să antreneze LLM-uri la viteze și eficiențe fără precedent, fiind piesa de bază a supercomputerelor AI."
                   : "The NVIDIA H100 Tensor Core GPU, built on the Hopper architecture, represents a monumental leap in acceleration. It houses 80 billion transistors and is designed to train LLMs at unprecedented speed and efficiency, serving as the foundational hardware block for AI supercomputers.",
                 imageSrc: "/images/library/Technology/NVIDIA H100 GPU on new SXM5 Module. GTC2022_SXM5_01_v001_DL.png"
+              },
+              {
+                tag: isRo ? "Echipamente de Fabricație" : "Fab Equipment",
+                title: isRo ? "Echipamente Semiconductori" : "Semiconductor Tooling",
+                description: isRo
+                  ? "Companiile americane — Applied Materials, Lam Research și KLA Corporation — dețin un cvasi-monopol pe echipamentele critice de depunere, gravare chimică și metrologie utilizate în fabrici. Fără aceste mașini din SUA, nicio fabrică avansată de cipuri din lume nu poate opera."
+                  : "While ASML handles lithography, the fabrication process requires hundreds of other advanced machines. US companies — Applied Materials, Lam Research, and KLA — hold a near-monopoly on critical deposition, etching, and metrology equipment, forming a secondary hardware chokehold.",
+                imageSrc: "/images/library/Technology/macro of a silicon wafer.jpg"
               },
               {
                 tag: isRo ? "Centre de Date Hyper-scale" : "Hyper-scale Data Centers",
@@ -334,7 +342,7 @@ export default async function AiAndTechPage() {
                     <span className="text-xs font-mono text-[#E8B923] uppercase tracking-wider mb-2 block">
                       {item.tag}
                     </span>
-                    <h3 className="font-macro-display text-2xl font-bold text-white mb-3 group-hover:text-[#E8B923] transition-colors">
+                    <h3 className="font-macro-display text-2xl font-bold text-white mb-3 group-hover:text-[#E8B923] transition-colors min-h-[4rem]">
                       {item.title}
                     </h3>
                     <p className="text-sm text-white/70 leading-relaxed font-body">

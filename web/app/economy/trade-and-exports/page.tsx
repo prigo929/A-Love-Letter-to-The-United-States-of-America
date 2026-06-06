@@ -125,6 +125,20 @@ const TRADE_FACTS = [
     source: "Federal Highway Administration (FHWA) 2024",
     color: "blue" as const,
   },
+  {
+    id: "trade-faa",
+    fact: "The FAA: Managing the World's Most Complex Airspace",
+    detail: "The Federal Aviation Administration manages over 80,000 flights daily across 29 million square miles of airspace, employing 14,000 controllers. While Europe's airspace is fragmented across 37 national air traffic organizations coordinating across borders, the US operates one unified system over a comparable landmass with a commercial aviation safety record approaching statistical zero.",
+    source: "Federal Aviation Administration (FAA) 2026",
+    color: "blue" as const,
+  },
+  {
+    id: "trade-logistics-duopoly",
+    fact: "FedEx and UPS: The Private Logistics Duopoly That Delivers the Economy",
+    detail: "FedEx and UPS pioneered modern express logistics, overnight shipping, and supply chain management. FedEx's Memphis hub processes 1M+ packages nightly, and UPS runs the world's 9th largest airline fleet for cargo. Together moving 40M packages daily, this private duopoly forms the backbone of global commerce, funded entirely by capital markets.",
+    source: "FedEx / UPS company data 2026",
+    color: "gold" as const,
+  },
 ];
 
 const TRADE_PARTNERS = [
@@ -328,6 +342,18 @@ export default async function TradeAndExportsPage() {
             fact: "Autostrăzile Interstatale: Integrarea Economică a Continentului",
             detail: "Cu 47.856 de mile (77.000 km) de autostrăzi cu acces limitat, aceasta este cea mai mare rețea din lume. Construită din 1956, a conectat o populație de 330 de milioane de oameni cu o geometrie rutieră standardizată, reducând timpii de transport de marfă și integrând forța de muncă.",
             source: "Federal Highway Administration (FHWA) 2024",
+          },
+          {
+            id: "trade-faa",
+            fact: "FAA: Gestionarea Celui Mai Complex Spațiu Aerian",
+            detail: "Federal Aviation Administration (FAA) gestionează peste 80.000 de zboruri zilnic pe o suprafață de 29 de milioane de mile pătrate, având peste 14.000 de controlori de trafic. În timp ce spațiul aerian european este fragmentat între 37 de organizații naționale, SUA operează un singur sistem unificat cu o rată de accidente fatale de aproape zero.",
+            source: "Federal Aviation Administration (FAA) 2026",
+          },
+          {
+            id: "trade-logistics-duopoly",
+            fact: "FedEx și UPS: Duopolul Privat Logistica al Economiei",
+            detail: "FedEx și UPS au fost pionierii logisticii moderne rapide și ai livrărilor garantate peste noapte. Hub-ul Memphis al FedEx sortează peste 1 milion de pachete pe noapte, iar UPS deține a 9-a cea mai mare flotă aeriană de marfă din lume. Împreună livrează 40 de milioane de colete zilnic în SUA, fiind finanțate integral prin piața de capital.",
+            source: "FedEx / UPS company data 2026",
           },
         ]
       : TRADE_FACTS;

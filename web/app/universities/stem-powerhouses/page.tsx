@@ -8,7 +8,7 @@ import {
   CountUp, 
   InfrastructureBand
 } from "@/components/economy/EconomyAnimations";
-import { Atom, Award, Laptop, Rocket } from "lucide-react";
+import { Atom, Award, Laptop, Rocket, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "STEM Powerhouses | Innovation & Tech Foundations",
@@ -35,6 +35,12 @@ interface StemCopy {
   parallelLabel: string;
   parallelTitle: string;
   parallelSubtitle: string;
+  bayhLabel: string;
+  bayhTitle: string;
+  bayhParagraph1: string;
+  bayhParagraph2: string;
+  bayhSource: string;
+  bayhSourceUrl: string;
   oracleDescription: string;
 }
 
@@ -78,6 +84,12 @@ const copyEn: StemCopy = {
   parallelLabel: "TECH TRANSFER SYSTEM",
   parallelTitle: "From the Blackboard to the Nasdaq",
   parallelSubtitle: "American STEM universities don't just hoard patents; they act as rapid tech incubators. Stanford and MIT alone generate billions in annual licensing revenues and have spun off thousands of active companies.",
+  bayhLabel: "UNIVERSITY VENTURE PIPELINE",
+  bayhTitle: "The Bayh-Dole Act of 1980: Unlocking Academic Inventions",
+  bayhParagraph1: "Before 1980, the US federal government owned the patents on any discoveries funded by federal research grants, licensing fewer than 5% of them. The Bayh-Dole Act flipped this ownership structure, allowing universities and research institutions to retain patent title to their discoveries and license them to private startups and corporations. This single policy shift transformed American universities from theoretical ivory towers into commercial launchpads.",
+  bayhParagraph2: "Since its passage, academic tech transfer has generated over $1.9 trillion in U.S. gross industrial output, supported over 4.2 million jobs, and helped launch more than 11,000 startup companies. Over 70% of university licenses are granted to small companies and startups. The act is the legal engine behind biotechnology clusters like Boston's Kendall Square, Silicon Valley's tech transfer, and countless life-saving innovations like mRNA platforms and cancer therapies — funded by federal research, commercialized by private capital.",
+  bayhSource: "AUTM / Association of American Universities (AAU) 2026",
+  bayhSourceUrl: "https://autm.net",
   oracleDescription: "Ask the AI Oracle about Stanford's role in founding Google, MIT's Lincoln Lab, Caltech's management of JPL, or CMU's robotics research.",
 };
 
@@ -86,7 +98,7 @@ const copyRo: StemCopy = {
   breadcrumbPage: "Centre STEM",
   heroTagline: "CAPITALELE INTELECTUALE ALE CALCULULUI",
   heroTitle: "Centrele STEM de Elită",
-  heroSubtitle: "MIT, Stanford, Caltech și Carnegie Mellon — creuzetele de cercetare care au inventat computingul modern, au creat Silicon Valley și conduc inovația globală.",
+  heroSubtitle: "MIT, Stanford, Caltech și Carnegie Mellon — creuzetele de cercetare care au inovat computingul modern, au creat Silicon Valley și conduc inovația globală.",
   thesisTitle: "Infrastructura Inovației",
   thesisParagraph1: "Hegemonia tehnologică a Americii nu este un accident geografic; este rezultatul direct al unui număr mic de laboratoare de cercetare de elită. Instituții precum MIT, Stanford, Caltech și Carnegie Mellon funcționează ca motoare de mare viteză care transformă cercetarea de bază în produse comerciale prin parteneriate de capital de risc.",
   thesisParagraph2: "Îmbinând granturile de apărare națională, parteneriatele corporate pentru R&D și o cultură antreprenorială care vede în startup-uri validarea academică supremă, aceste universități au creat un model unic. Ele nu scriu doar lucrări științifice; ele construiesc industrii.",
@@ -121,6 +133,12 @@ const copyRo: StemCopy = {
   parallelLabel: "SISTEMUL DE TRANSFER TEHNOLOGIC",
   parallelTitle: "De la Tablă la Indicele Nasdaq",
   parallelSubtitle: "Universitățile americane STEM nu doar acumulează brevete; ele acționează ca incubatoare rapide. Numai Stanford și MIT au generat mii de companii active ce domină piețele globale.",
+  bayhLabel: "CONDUCTA DE STARTUP-URI UNIVERSITARE",
+  bayhTitle: "Legea Bayh-Dole din 1980: Deblocarea Invențiilor Academice",
+  bayhParagraph1: "Înainte de 1980, guvernul federal al SUA deținea brevetele pentru orice descoperire finanțată din fonduri federale, licențiind mai puțin de 5% dintre acestea. Legea Bayh-Dole a inversat această structură de proprietate, permițând universităților și instituțiilor de cercetare să păstreze drepturile de brevet asupra descoperirilor lor și să le licențieze către startup-uri și corporații private. Această schimbare de politică a transformat universitățile din turnuri de fildeș teoretice în rampe de lansare comercială.",
+  bayhParagraph2: "De la adoptarea sa, transferul tehnologic academic a generat peste 1,9 trilioane de dolari în producția industrială brută a SUA, a susținut peste 4,2 milioane de locuri de muncă și a ajutat la lansarea a peste 11.000 de startup-uri. Peste 70% din licențele universitare sunt acordate companiilor mici și startup-urilor. Actul este motorul juridic din spatele clusterelor de biotehnologie precum Kendall Square din Boston, transferului de tehnologie din Silicon Valley și a nenumăratelor inovații salvatoare de vieți, cum ar fi platformele mRNA și terapiile împotriva cancerului — finanțate din cercetare federală, dar comercializate de capital privat.",
+  bayhSource: "AUTM / Association of American Universities (AAU) 2026",
+  bayhSourceUrl: "https://autm.net",
   oracleDescription: "Întreabă Oracolul AI despre rolul Stanford în fondarea Google, laboratorul Lincoln al MIT, managementul JPL de către Caltech sau cercetările în robotică de la CMU.",
 };
 
@@ -276,6 +294,46 @@ export default async function StemPowerhousesPage() {
             </p>
           </div>
         </InfrastructureBand>
+
+        {/* Bayh-Dole Act Section */}
+        <section
+          id="bayh-dole-feature"
+          className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-32 mb-16"
+        >
+          <div className="rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-md p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-4 opacity-5">
+              <Award className="h-40 w-40 text-[#E8B923]" />
+            </div>
+            
+            <div className="relative z-10">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#E8B923] mb-3 block">
+                {copy.bayhLabel}
+              </span>
+              <h2 className="font-macro-display text-3xl sm:text-4xl font-bold text-white mb-6">
+                {copy.bayhTitle}
+              </h2>
+              <p className="font-macro-body text-white/80 text-lg leading-relaxed mb-6">
+                {copy.bayhParagraph1}
+              </p>
+              <p className="font-macro-body text-white/80 text-lg leading-relaxed mb-8">
+                {copy.bayhParagraph2}
+              </p>
+              
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40 gap-4">
+                <span>Source: {copy.bayhSource}</span>
+                <a 
+                  href={copy.bayhSourceUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center gap-1 text-[#E8B923] hover:underline self-start sm:self-auto"
+                >
+                  {isRo ? "Verifică datele AUTM" : "Verify AUTM Data"}
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Back Link */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">

@@ -421,6 +421,20 @@ export const NATURE_OVERVIEW_FACTS: NatureFact[] = [
     source: "NOAA Office of Ocean Exploration 2024",
     color: "blue" as const
   },
+  {
+    id: "pittman-robertson",
+    fact: "The Pittman-Robertson Act: Market-Based Conservation Nobody Talks About",
+    detail: "Since its inception in 1937, the Pittman-Robertson Act has generated over $29 billion to monitor and manage the nation's fish and wildlife resources, support hunter and aquatic education, and improve access for outdoor activities. The mechanism is elegant in its market logic: an 11% excise tax on firearms, ammunition, and archery equipment paid by manufacturers, distributed to state wildlife agencies for habitat restoration, wildlife management, and hunter education. In Fiscal Year 2024 alone, $989.5 million was apportioned to fish and wildlife agencies in all 50 states and five US territories. Hunters and shooting sports enthusiasts pay into the system, and all Americans benefit from healthy wildlife populations and natural landscapes. No government bureaucracy decided to save the white-tailed deer, the wild turkey, or the wood duck. Hunters, through market transactions, funded it themselves.",
+    source: "NRA HLF 2024",
+    color: "gold" as const
+  },
+  {
+    id: "ogallala-aquifer",
+    fact: "The Ogallala Aquifer: America's Underground Ocean",
+    detail: "Beneath the Great Plains lies the Ogallala Aquifer — one of the world's largest freshwater aquifers, stretching across 174,000 square miles beneath eight states from South Dakota to Texas. It contains an estimated 3 billion acre-feet of water, roughly equivalent to the volume of Lake Huron, accumulated over tens of thousands of years. This underground reservoir has made the semi-arid High Plains one of the most productive agricultural regions on Earth, irrigating roughly 30% of all US groundwater-irrigated farmland. Kansas alone produces enough wheat annually to bake 36 billion loaves of bread. The aquifer is a geological endowment that required no investment or engineering to create — a key structural reason why American agricultural productivity is structurally unmatched.",
+    source: "USGS",
+    color: "red" as const
+  },
 ];
 
 export const ALASKA_FACTS: NatureFact[] = [
@@ -515,9 +529,23 @@ const NATURE_OVERVIEW_FACTS_RO: NatureFact[] = [
   {
     id: "ocean-estate",
     fact: "Domeniul Oceanic: 4,5 Milioane de Mile Pătrate de Suveranitate Maritimă",
-    detail: "Zona Economică Exclusivă (EEZ) a SUA se întinde pe 13.000 de mile de coastă și conține 3,4 milioane de mile marine pătrate (4,5 milioane de mile pătrate) de ocean — mai mare decât suprafața terestră a tuturor celor 50 de state la un loc. Acest teritoriu oferă drepturi suverane exclusive asupra pescuitului, mineralelor de fund și resurselor energetice.",
+    detail: "Zona Economică Exclusivă (EEZ) a SUA se întinde pe 13.000 de mile de coastă și conține 3,4 milioane de mile marine pătrate (4,5 milioane de mile pătrate) de ocean — mai mare decât suprafața terestră a tuturor celor 50 de state la un colț. Acest teritoriu oferă drepturi suverane exclusive asupra pescuitului, mineralelor de fund și resurselor energetice.",
     source: "NOAA Office of Ocean Exploration 2024",
     color: "blue" as const
+  },
+  {
+    id: "pittman-robertson",
+    fact: "Legea Pittman-Robertson: Conservare Bazată pe Piață",
+    detail: "De la înființarea sa în 1937, Legea Pittman-Robertson a generat peste 29 de miliarde de dolari pentru monitorizarea și gestionarea resurselor de pește și faună sălbatică ale națiunii. Mecanismul este elegant în logica sa de piață: o taxă specială de 11% pe arme de foc, muniție și echipamente de tir cu arcul plătită de producători, distribuită agențiilor de stat pentru restaurarea habitatelor. În anul fiscal 2024, au fost alocate 989,5 milioane de dolari în toate cele 50 de state și 5 teritorii SUA. Vânătorii și pasionații de sporturi de tragere plătesc în sistem, iar toți americanii beneficiază de faună sălbatică sănătoasă.",
+    source: "NRA HLF 2024",
+    color: "gold" as const
+  },
+  {
+    id: "ogallala-aquifer",
+    fact: "Acviferul Ogallala: Oceanul Subteran al Americii",
+    detail: "Sub Marile Câmpii se află Acviferul Ogallala — unul dintre cele mai mari acvifere de apă dulce din lume, întinzându-se pe 174.000 de mile pătrate sub opt state. Conține aproximativ 3 miliarde de acri-picioare de apă, echivalent cu volumul Lacului Huron. Acest rezervor subteran face din High Plains una dintre cele mai productive regiuni agricole de pe Pământ, irigând circa 30% din totalul terenurilor irigate cu apă subterană din SUA. Kansas singur produce suficient grâu anual pentru a coace 36 de miliarde de pâini.",
+    source: "USGS",
+    color: "red" as const
   },
 ];
 

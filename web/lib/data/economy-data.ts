@@ -537,10 +537,9 @@ export const VC_EXTENDED_FACTS: ExtendedFact[] = [
   },
   {
     id: "vc-second-chance",
-    fact: "America's bankruptcy laws make failure survivable — a key innovation advantage",
-    detail:
-      "Chapter 11 bankruptcy protection allows American entrepreneurs to restructure and try again. This tolerance for failure — unique in the world — is a core driver of American startup culture.",
-    source: "World Bank Doing Business Report",
+    fact: "Chapter 11 Bankruptcy: Bounding the Downside of Risk-Taking",
+    detail: "No other country's bankruptcy framework so comprehensively protects a business's ability to continue operating while restructuring its debts under court protection, allowing management to stay in place, customers to be served, and employees to keep their jobs. Treating failure as a recoverable condition rather than a permanent stigma is one of the least-discussed structural advantages of the American entrepreneurial ecosystem.",
+    source: "Chicago Booth Review 2026",
     color: "gold",
   },
   {
@@ -565,6 +564,13 @@ export const VC_EXTENDED_FACTS: ExtendedFact[] = [
     detail: "While European labor regulations require weeks or months to legally incorporate and hire, American corporate formation is frictionless, attracting the vast majority of global venture capital.",
     source: "Pitchbook 2026",
     color: "gold" as const,
+  },
+  {
+    id: "vc-franchise",
+    fact: "The American Franchise System: Democratizing Business Ownership",
+    detail: "Ray Kroc's standardization of McDonald's in the 1950s established the template. Today, the US franchise sector encompasses over 800,000 establishments across 300 categories, employing 8 million people and generating over $800 billion in economic output. It democratizes ownership: allowing first-generation immigrants or veterans to run a proven system without building a brand from scratch.",
+    source: "International Franchise Association 2026",
+    color: "blue",
   },
 ];
 
@@ -1140,9 +1146,9 @@ export function getVcExtendedFacts(locale: Locale) {
       },
       {
         ...VC_EXTENDED_FACTS[3],
-        fact: "Legile americane ale falimentului fac eșecul suportabil — un avantaj-cheie al inovației",
-        detail:
-          "Capitolul 11 din legea falimentului permite antreprenorilor americani să se restructureze și să încerce din nou. Această toleranță pentru eșec este un motor de bază al culturii startup.",
+        fact: "Falimentul Chapter 11: Delimitarea Riscurilor în Afaceri",
+        detail: "Niciun alt cadru de faliment din lume nu protejează atât de cuprinzător capacitatea unei afaceri de a continua să funcționeze în timpul restructurării datoriilor sub protecția instanței. Tratarea eșecului ca o etapă recuperabilă, nu ca un stigmat permanent, reprezintă un avantaj structural de bază al ecosistemului american.",
+        source: "Chicago Booth Review 2026",
       },
       {
         ...VC_EXTENDED_FACTS[4],
@@ -1161,6 +1167,12 @@ export function getVcExtendedFacts(locale: Locale) {
         fact: "Înființarea unui LLC în SUA durează ore sau zile, nu săptămâni sau luni",
         detail:
           "În timp ce legile și reglementările europene ale muncii necesită săptămâni sau chiar luni pentru încorporare și angajare, formarea unei firme în SUA este simplă, atrăgând majoritatea fluxurilor de capital de risc.",
+      },
+      {
+        ...VC_EXTENDED_FACTS[7],
+        fact: "Sistemul de Franciză American: Democratizarea Afacerilor",
+        detail: "Standardizat de Ray Kroc cu McDonald's în anii 1950, modelul de franciză cuprinde azi peste 800.000 de unități din 300 de categorii, angajând 8 milioane de oameni și generând peste 800 mld. $ anual. Permite oricărui antreprenor sau imigrant să opereze un sistem dovedit, cu suport complet.",
+        source: "International Franchise Association 2026",
       },
     ];
   }

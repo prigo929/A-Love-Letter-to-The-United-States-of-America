@@ -53,6 +53,19 @@ export default async function CultureEntertainmentPage() {
       ? "Cele 12 parcuri Disney la nivel global atrag singure peste 34% din vizitatorii mondiali (140 de milioane de vizitatori anual). În Florida Centrală, 75 de milioane de vizitatori au generat un impact economic de 95 de miliarde de dolari în 2024 — depășind economia turistică a multor țări întregi."
       : "Disney's 12 parks alone capture over 34% of global theme park attendance, with 140 million visitors annually. Central Florida alone recorded 75 million visitors in 2024 generating nearly $95 billion in total economic impact, making a single American metro area's theme park cluster larger than the entire tourism economies of most nations.",
 
+    hollywoodLabel: isRo ? "MAȘINA CULTURALĂ" : "THE CULTURE MACHINE",
+    hollywoodTitle: isRo
+      ? "Hollywood și Mașina de Export Cultural American"
+      : "Hollywood and the American Cultural Export Machine",
+    hollywoodText1: isRo
+      ? "Exporturile SUA de filme și divertisment depășesc frecvent 90% din cota de piață în multe țări, datorită interesului global ridicat. America de Nord a reprezentat aproximativ 34,2% din piața globală de cinema în 2024, SUA conducând cu peste 2,3 miliarde de bilete vândute și 390 de milioane de utilizatori digitali activi."
+      : "US exports of film and entertainment media often attain shares in international markets in excess of 90 percent due to high global interest in US filmed entertainment. North America accounted for approximately 34.2% of the global movies and entertainment market in 2024, with the US leading with over 2.3 billion cinema admissions and 390 million active digital users.",
+    hollywoodText2: isRo
+      ? "Platforme americane precum Netflix, Disney+, Amazon Prime și HBO Max domină streamingul global. Hollywood nu este doar divertisment; este o industrie de export de proprietate intelectuală de sute de miliarde care vinde valori, estetică, limbă și aspirații americane. Piețele internaționale generează peste 70% din încasările de box office, ceea ce înseamnă că studiourile americane colectează practic o taxă pe timpul de recreere al întregii lumi. Universul Cinematic Marvel a strâns singur peste 30 de miliarde de dolari global. Nicio altă țară nu se apropie de această scară de penetrare sistematică."
+      : "Netflix, Disney+, Amazon Prime Video, and HBO Max — all American platforms — collectively dominate global streaming in virtually every market they operate in. The deeper point is that Hollywood is not entertainment; it is a multi-hundred-billion-dollar IP export industry that sells American values, aesthetics, language, and aspirations to the entire world simultaneously. International markets now account for over 70% of Hollywood's box office revenue, meaning American studios are essentially taxing the world's leisure time. The Marvel Cinematic Universe alone has grossed over $30 billion globally. No other country's culture industry comes close to this scale of systematic global penetration — not Bollywood, not K-pop, not British television, despite their genuine quality and influence.",
+    hollywoodSource: "SelectUSA snapshot",
+    hollywoodSourceUrl: "https://selectusa.github.io/events/industry-snapshots/media-entertainment-industry-united-states.html",
+
     backLink: isRo ? "← Înapoi la Sport" : "← Back to Sports",
     nextLink: isRo ? "Companii și Branduri →" : "Companies & Brands →",
   };
@@ -284,6 +297,63 @@ export default async function CultureEntertainmentPage() {
                 alt="Chicago Theatre Marquee"
                 className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
+            </div>
+          </div>
+        </section>
+
+        {/* Hollywood Export Machine Editorial */}
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
+          <div className="rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 md:p-12">
+            <div className="grid gap-8 lg:grid-cols-3 items-start">
+              <div className="lg:col-span-2 space-y-6">
+                <span className="macro-eyebrow">{content.hollywoodLabel}</span>
+                <h2 className="macro-section-title text-white text-3xl md:text-4xl">
+                  {content.hollywoodTitle}
+                </h2>
+                <p className="macro-body text-white/70 leading-relaxed">{content.hollywoodText1}</p>
+                <p className="macro-body text-white/70 leading-relaxed">{content.hollywoodText2}</p>
+              </div>
+
+              {/* Stats column */}
+              <div className="grid gap-8 border-l border-white/10 pl-8 h-full justify-center">
+                <div>
+                  <p className="font-macro-display text-5xl font-bold text-[#E8B923] tracking-tight mb-1">
+                    90%+
+                  </p>
+                  <p className="font-mono text-xs text-white/50 uppercase tracking-wider">
+                    {isRo ? "Cotă de Piață Internațională" : "International Market Share"}
+                  </p>
+                </div>
+                <div>
+                  <p className="font-macro-display text-5xl font-bold text-white tracking-tight mb-1">
+                    70%+
+                  </p>
+                  <p className="font-mono text-xs text-white/50 uppercase tracking-wider">
+                    {isRo ? "Venituri Box Office din Export" : "Box Office from Exports"}
+                  </p>
+                </div>
+                <div>
+                  <p className="font-macro-display text-5xl font-bold text-white tracking-tight mb-1">
+                    $30B+
+                  </p>
+                  <p className="font-mono text-xs text-white/50 uppercase tracking-wider">
+                    {isRo ? "Încasări Totale MCU" : "Total MCU Gross"}
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex items-center justify-between border-t border-white/10 pt-6 mt-8 text-xs text-white/40 font-mono">
+              <span>Source: {content.hollywoodSource}</span>
+              <a 
+                href={content.hollywoodSourceUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center gap-1 text-[#E8B923] hover:underline"
+              >
+                {isRo ? "Vezi datele SelectUSA" : "View SelectUSA Data"}
+                <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+              </a>
             </div>
           </div>
         </section>

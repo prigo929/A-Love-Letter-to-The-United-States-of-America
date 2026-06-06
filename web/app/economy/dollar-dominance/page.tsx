@@ -88,6 +88,13 @@ const DOLLAR_EXTENDED_FACTS = [
     source: "Bank for International Settlements / Federal Reserve",
     color: "blue" as const,
   },
+  {
+    id: "dollar-fed-lender",
+    fact: "The Federal Reserve as Global Lender of Last Resort",
+    detail: "During crises, the Federal Reserve serves as the de facto international lender of last resort. In response to COVID-19, it extended $450 billion in dollar liquidity swap lines to foreign central banks. No international body, IMF mechanism, or other central bank possesses the capacity to stabilize the global financial system in this way.",
+    source: "Dallas Fed 2024",
+    color: "gold" as const,
+  },
 ];
 
 const DOLLAR_TIMELINE = [
@@ -190,6 +197,12 @@ export default async function DollarDominancePage() {
             fact: "Federal Reserve este, în practică, banca centrală a lumii",
             detail:
               "Când Fed ridică dobânzile, fluxurile globale de capital se mută. Când Fed le reduce, datoria piețelor emergente devine mai ieftină. Nicio altă instituție nu deține o asemenea autoritate financiară globală.",
+          },
+          {
+            id: "dollar-fed-lender",
+            fact: "Federal Reserve ca Împrumutător Global de Ultimă Instanță",
+            detail: "În perioadele de criză, Fed acționează ca împrumutătorul internațional de ultimă instanță de facto. În timpul crizei COVID-19 (martie 2020), Fed a extins liniile de swap valutar cu 450 de miliarde de dolari pentru băncile centrale străine. Nicio altă instituție sau mecanism FMI nu are capacitatea de a asigura această lichiditate în dolari, stabilizând sistemul mondial în 2008, 2011 și 2020.",
+            source: "Dallas Fed 2024",
           },
         ]
       : DOLLAR_EXTENDED_FACTS;

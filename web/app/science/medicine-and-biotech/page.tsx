@@ -30,6 +30,12 @@ interface BiotechCopy {
     details: string;
     date: string;
   }>;
+  nihLabel: string;
+  nihTitle: string;
+  nihParagraph1: string;
+  nihParagraph2: string;
+  nihSource: string;
+  nihSourceUrl: string;
   pharmaLabel: string;
   pharmaTitle: string;
   pharmaParagraph1: string;
@@ -74,8 +80,24 @@ const copyEn: BiotechCopy = {
       title: "mRNA Vaccine Platform",
       date: "2020",
       details: "Decades of research in US universities culminated in the rapid development, financing, and scaling of mRNA platforms that effectively ended the global COVID-19 emergency."
+    },
+    {
+      title: "Boston-Cambridge Biotech Hub",
+      date: "Kendall Square",
+      details: "Kendall Square adjacent to MIT and Harvard contains over 120 biotech companies in a single square mile. Boston and Cambridge together host 63.2M sq ft of lab space and raised $6.85B in venture capital in 2024, forming the most innovative square mile on Earth."
+    },
+    {
+      title: "Medical Device Dominance",
+      date: "Medtech Leader",
+      details: "US companies control over 45% of global medtech revenue. Industry leaders Medtronic, Abbott, Stryker, and Boston Scientific dominate international markets for surgical robotics, implantable devices, and advanced diagnostics."
     }
   ],
+  nihLabel: "THE BIOMEDICAL RESEARCH ENGINE",
+  nihTitle: "The National Institutes of Health (NIH)",
+  nihParagraph1: "The annual budget of the National Institutes of Health — the biggest funder of biomedical research in the world — is approximately $48 billion. To put this in perspective: the entire research budget of the UK Medical Research Council runs to roughly £1 billion. Germany's DFG, the main public research funder, operates at a similar scale. The NIH budget is not double or triple these figures — it is an order of magnitude larger than any comparable institution in the world.",
+  nihParagraph2: "NIH funding has played a significant role in the dramatic increase in US life expectancy from 47.3 years in 1900 to 78.4 years today. Every dollar of NIH funding delivers $2.56 in economic activity, and in fiscal year 2024 alone the agency awarded over $36.9 billion to researchers, supporting more than 400,000 jobs and generating over $94 billion in new economic activity nationwide. The global pharmaceutical and biotechnology industries are built on discoveries seeded by NIH grants to academic researchers, frequently decades before commercial applications emerge. The NIH is, in effect, a publicly funded basic research subsidy to the entire global health industry.",
+  nihSource: "National Institutes of Health (NIH)",
+  nihSourceUrl: "https://www.nih.gov/about-nih/organization/budget",
   pharmaLabel: "CARRYING THE WORLD'S R&D",
   pharmaTitle: "Pharmaceutical Innovation: Underwriting Global Pipelines",
   pharmaParagraph1: "Roughly half of all new molecular entities approved globally each year originate from American companies or American research institutions. Every major cancer immunotherapy, antiviral drug class, and the mRNA vaccine platform that ended the COVID-19 emergency was developed, financed, and scaled in the United States.",
@@ -120,8 +142,24 @@ const copyRo: BiotechCopy = {
       title: "Platforma de Vaccin mRNA",
       date: "2020",
       details: "Decenii de cercetare în universitățile din SUA au culminat cu dezvoltarea rapidă, finanțarea și scalarea platformelor mRNA, punând capăt pandemiei de COVID-19."
+    },
+    {
+      title: "Hub-ul Biotech Boston-Cambridge",
+      date: "Kendall Square",
+      details: "Kendall Square, situat lângă MIT și Harvard, găzduiește peste 120 de companii biotehnologice pe o singură milă pătrată. Boston și Cambridge dețin împreună 5,8 milioane mp de spații de laborator, fiind cel mai inovator hub bio-tech de pe Pământ."
+    },
+    {
+      title: "Dominanța Echipamentelor Medicale",
+      date: "Lider Medtech",
+      details: "Companiile americane dețin peste 45% din veniturile globale din tehnologie medicală (medtech) în 2025. Giganții Medtronic, Abbott, Stryker și Boston Scientific domină piețele internaționale de robotică chirurgicală și implanturi."
     }
   ],
+  nihLabel: "MOTORUL BIOMEDICAL MONDIAL",
+  nihTitle: "National Institutes of Health (NIH)",
+  nihParagraph1: "Bugetul anual al National Institutes of Health (NIH) — cel mai mare finanțator de cercetare biomedicală din lume — este de aproximativ 48 de miliarde de dolari. Pentru a pune acest lucru în perspectivă: întregul buget de cercetare al Medical Research Council din Marea Britanie se ridică la aproximativ 1 miliard de lire sterline. Bugetul NIH nu este dublu sau triplu, ci cu un ordin de mărime mai mare decât al oricărei instituții de profil din lume.",
+  nihParagraph2: "Finanțarea NIH a avut un rol major în creșterea speranței de viață în SUA de la 47,3 ani în 1900 la 78,4 ani astăzi. Fiecare dolar investit de NIH generează 2,56 dolari în activitate economică directă. În anul fiscal 2024, agenția a acordat peste 36,9 miliarde de dolari sub formă de granturi cercetătorilor din universități, susținând peste 400.000 de locuri de muncă. Decoperirile de bază finanțate de NIH subvenționează, în esență, întreaga industrie globală de farmaceutice și biotehnologie.",
+  nihSource: "National Institutes of Health (NIH)",
+  nihSourceUrl: "https://www.nih.gov/about-nih/organization/budget",
   pharmaLabel: "FINANȚAREA R&D-ului MONDIAL",
   pharmaTitle: "Inovația Farmaceutică: Finanțarea R&D-ului Mondial",
   pharmaParagraph1: "Aproximativ jumătate din toate entitățile moleculare noi aprobate la nivel global în fiecare an provin de la companii sau instituții de cercetare americane. Fiecare imunoterapie majoră pentru cancer, clasă de medicamente antivirale și platforma de vaccin mRNA care a pus capăt urgenței COVID-19 au fost dezvoltate, finanțate și scalate în Statele Unite.",
@@ -223,6 +261,46 @@ export default async function MedicineAndBiotechPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* NIH Section */}
+      <section
+        id="nih-feature"
+        className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 pb-16 bg-gradient-to-r from-navy-dark via-navy-mid to-navy-dark"
+      >
+        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-navy-dark/60 backdrop-blur p-8 md:p-12 relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 opacity-10">
+            <Award className="h-40 w-40 text-glory-gold" />
+          </div>
+          
+          <div className="relative z-10">
+            <span className="font-mono text-xs uppercase tracking-widest text-glory-gold mb-3 block">
+              {copy.nihLabel}
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-6">
+              {copy.nihTitle}
+            </h2>
+            <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
+              {copy.nihParagraph1}
+            </p>
+            <p className="font-body text-white/80 text-lg leading-relaxed mb-8">
+              {copy.nihParagraph2}
+            </p>
+            
+            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
+              <span>Source: {copy.nihSource}</span>
+              <a 
+                href={copy.nihSourceUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center gap-1 text-glory-gold hover:underline"
+              >
+                {isRo ? "Bugetul și structura NIH" : "NIH Budget & Structure"}
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
           </div>
         </div>
       </section>

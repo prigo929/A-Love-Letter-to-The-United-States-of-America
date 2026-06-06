@@ -82,6 +82,14 @@ export default async function CultureSportsPage() {
       ? "Stadioanele americane nu sunt doar locuri de joc — ele sunt temple ale identității naționale, capabile să coaguleze 100,000 de oameni sub același steag în orice weekend."
       : "American stadiums are not merely venues — they are cathedrals of national identity, capable of gathering 100,000 people under the same flag on any given weekend.",
 
+    olympicLabel: isRo ? "DOMINAȚIE OLIMPICĂ" : "OLYMPIC DOMINANCE",
+    olympicTitle: isRo
+      ? "Dominația Olimpică: O Țară care Concurează ca un Continent"
+      : "Olympic Dominance: A Country That Competes as a Continent",
+    olympicText: isRo
+      ? "SUA dețin cele mai multe medalii de aur per total (1.220), cu Uniunea Sovietică pe locul doi (473). Înainte de Paris 2024, SUA acumulaseră 1.179 de medalii de aur — de peste două ori și jumătate totalul istoric al Uniunii Sovietice. În total, Statele Unite au 3.094 de medalii combinate (vară și iarnă), dintre care 1.215 de aur, comparativ cu 1.015 ale Marii Britanii și 955 ale Germaniei. Ceea ce face acest lucru și mai remarcabil este contextul competitiv: SUA câștigă aceste medalii fără un aparat sportiv dirijat de stat, fără academii sportive obligatorii și fără programe farmaceutice sistematice de dopaj. Succesul olimpic american este produsul unei infrastructuri private profunde de atletism universitar, cluburi private, sponsorizări comerciale și ambiție individuală într-o societate liberă — aceleași mecanisme ce produc excelență economică."
+      : "The US holds the most gold medals overall with 1,220, with the Soviet Union in second place at 473. Ahead of Paris 2024, the US had earned a total of 1,179 golds — more than two and a half times the Soviet Union's all-time total, which was accumulated across just nine Olympic Games before the country ceased to exist. The United States has a total of 3,094 combined Summer and Winter medals, 1,215 of them gold, compared to the UK's 1,015 total and Germany's 955. What makes this more remarkable is the competitive context: the US earns these medals without a state-directed athletic apparatus, without mandatory sports academies, and without the systematic pharmaceutical programs that artificially inflated totals for East Germany and the Soviet Union. American Olympic success is the product of a deep private infrastructure of collegiate athletics, private clubs, commercial sponsorships, and individual ambition operating in a free society — the exact same mechanisms that produce economic excellence applied to sport.",
+
     backLink: isRo
       ? "← Înapoi la Film și Narativă"
       : "← Back to Film & Storytelling",
@@ -122,6 +130,13 @@ export default async function CultureSportsPage() {
       imageSrc: SITE_IMAGES.culture.vaultSportsSI2019,
       imageAlt: "Tiger Woods Masters Golf Celebration",
       reversed: true,
+    },
+    {
+      label: content.olympicLabel,
+      title: content.olympicTitle,
+      text: content.olympicText,
+      imageSrc: SITE_IMAGES.culture.vaultSportsSI1991,
+      imageAlt: "Dream Team USA Basketball Olympic Five",
     },
   ];
 
