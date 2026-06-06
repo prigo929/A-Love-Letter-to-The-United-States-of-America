@@ -163,10 +163,10 @@ export default async function SpaceTechnologyPage() {
             <h2 className="font-macro-display text-3xl font-bold text-[#E8B923] mb-8">
               {copy.thesisTitle}
             </h2>
-            <p className="font-macro-body text-white/80 text-xl leading-relaxed mb-6">
+            <p className="font-macro-body text-white/80 text-lg md:text-xl leading-relaxed mb-6">
               {copy.thesisParagraph1}
             </p>
-            <p className="font-macro-body text-white/80 text-xl leading-relaxed">
+            <p className="font-macro-body text-white/80 text-lg md:text-xl leading-relaxed">
               {copy.thesisParagraph2}
             </p>
           </div>
@@ -180,25 +180,34 @@ export default async function SpaceTechnologyPage() {
                 <span className="font-macro-display text-6xl md:text-7xl font-black text-[#E8B923] mb-4">
                   <CountUp value={52} suffix="%" />
                 </span>
-                <span className="macro-metadata max-w-xs leading-relaxed">
-                  {isRo ? "Din lansările orbitale globale în 2024 (SpaceX)" : "Of global orbital launches in 2024 (SpaceX)"}
+                <span className="macro-metadata mb-2">
+                  {isRo ? "CADENȚĂ LANSĂRI" : "LAUNCH CADENCE"}
                 </span>
+                <p className="text-sm text-white/60 max-w-xs leading-relaxed font-body">
+                  {isRo ? "Din lansările orbitale globale în 2024 efectuate de SpaceX" : "Of global orbital launches conducted by SpaceX in 2024"}
+                </p>
               </div>
               <div className="flex flex-col items-center">
                 <span className="font-macro-display text-6xl md:text-7xl font-black text-[#E8B923] mb-4">
                   <CountUp value={84} suffix="%" />
                 </span>
-                <span className="macro-metadata max-w-xs leading-relaxed">
-                  {isRo ? "Din masa totală trimisă pe orbită în 2024" : "Of total satellite mass delivered to orbit in 2024"}
+                <span className="macro-metadata mb-2">
+                  {isRo ? "MASĂ TRANSMISĂ" : "MASS TO ORBIT"}
                 </span>
+                <p className="text-sm text-white/60 max-w-xs leading-relaxed font-body">
+                  {isRo ? "Din masa totală de sateliți trimisă pe orbită în 2024" : "Of total satellite mass delivered to orbit in 2024"}
+                </p>
               </div>
               <div className="flex flex-col items-center">
                 <span className="font-macro-display text-6xl md:text-7xl font-black text-[#E8B923] mb-4">
                   <CountUp value={65} suffix="%" />
                 </span>
-                <span className="macro-metadata max-w-xs leading-relaxed">
-                  {isRo ? "Din toți sateliții activi în spațiu (Starlink)" : "Of all active operational satellites (Starlink)"}
+                <span className="macro-metadata mb-2">
+                  {isRo ? "REȚEAUA ACTIVE" : "STARLINK NETWORK"}
                 </span>
+                <p className="text-sm text-white/60 max-w-xs leading-relaxed font-body">
+                  {isRo ? "Din toți sateliții operaționali activi în spațiu în prezent" : "Of all active operational satellites in space today"}
+                </p>
               </div>
             </div>
           </div>

@@ -139,7 +139,7 @@ export default async function AiAndTechPage() {
         titleAccent={copy.heroTagline}
         eyebrow={copy.breadcrumbPage}
         description={copy.heroSubtitle}
-        videoSrc="/videos/library/Earth from Space/Earth rotating during the night from space wiht light from cities.mp4"
+        videoSrc="/videos/library/Technology/Nvidia AI cinematic.mp4"
       />
 
       <div className="bg-[#030405] relative z-10 pb-32 pt-16 font-body text-white">
@@ -162,10 +162,10 @@ export default async function AiAndTechPage() {
             <h2 className="font-macro-display text-3xl font-bold text-[#E8B923] mb-8">
               {copy.thesisTitle}
             </h2>
-            <p className="font-macro-body text-white/80 text-xl leading-relaxed mb-6">
+            <p className="font-macro-body text-white/80 text-lg md:text-xl leading-relaxed mb-6">
               {copy.thesisParagraph1}
             </p>
-            <p className="font-macro-body text-white/80 text-xl leading-relaxed">
+            <p className="font-macro-body text-white/80 text-lg md:text-xl leading-relaxed">
               {copy.thesisParagraph2}
             </p>
           </div>
@@ -179,25 +179,34 @@ export default async function AiAndTechPage() {
                 <span className="font-macro-display text-6xl md:text-7xl font-black text-[#E8B923] mb-4">
                   <CountUp value={50} suffix="%" />
                 </span>
-                <span className="macro-metadata max-w-xs leading-relaxed">
-                  {isRo ? "Din veniturile globale din semiconductori captate de firme din SUA" : "Of global semiconductor design revenues captured by US firms"}
+                <span className="macro-metadata mb-2">
+                  {isRo ? "DESIGN DOMINANȚĂ" : "DESIGN DOMINANCE"}
                 </span>
+                <p className="text-sm text-white/60 max-w-xs leading-relaxed font-body">
+                  {isRo ? "Din veniturile globale din semiconductori captate de firme din SUA" : "Of global semiconductor design revenues captured by US firms"}
+                </p>
               </div>
               <div className="flex flex-col items-center">
                 <span className="font-macro-display text-6xl md:text-7xl font-black text-[#E8B923] mb-4">
                   <CountUp value={100} suffix="%" />
                 </span>
-                <span className="macro-metadata max-w-xs leading-relaxed">
-                  {isRo ? "Dependență globală de software-ul EDA din SUA pentru cipuri avansate" : "Global reliance on US EDA software for advanced chip design"}
+                <span className="macro-metadata mb-2">
+                  {isRo ? "SOFTWARE EDA" : "EDA SOFTWARE"}
                 </span>
+                <p className="text-sm text-white/60 max-w-xs leading-relaxed font-body">
+                  {isRo ? "Dependență globală de software-ul EDA din SUA pentru cipuri avansate" : "Global reliance on US EDA software for advanced chip design"}
+                </p>
               </div>
               <div className="flex flex-col items-center">
                 <span className="font-macro-display text-6xl md:text-7xl font-black text-[#E8B923] mb-4">
                   <CountUp value={90} suffix="%" />
                 </span>
-                <span className="macro-metadata max-w-xs leading-relaxed">
-                  {isRo ? "Din supercomputerele de antrenament AI operând pe IP din SUA" : "Of frontier AI training compute running on American designed IP"}
+                <span className="macro-metadata mb-2">
+                  {isRo ? "CALCUL DE FRONTIERĂ AI" : "AI COMPUTE"}
                 </span>
+                <p className="text-sm text-white/60 max-w-xs leading-relaxed font-body">
+                  {isRo ? "Din supercomputerele de antrenament AI operând pe IP din SUA" : "Of frontier AI training compute running on American designed IP"}
+                </p>
               </div>
             </div>
           </div>
