@@ -60,7 +60,7 @@ const subPagesEn = [
     href: "/innovation/gaming",
     badge: "Atari to Unreal Engine",
     description: "The birth of interactive entertainment, from early arcade cabinets to state-of-the-art physics engines.",
-    imageSrc: "/images/library/Technology/nils-huenerfuerst-87-z5bW4ihk-unsplash.jpg",
+    imageSrc: "/images/library/Technology/EA HQ campus logo.jpg",
     icon: Gamepad2,
   },
 ];
@@ -111,7 +111,7 @@ const subPagesRo = [
     href: "/innovation/gaming",
     badge: "De la Atari la Unreal",
     description: "Nașterea divertismentului interactiv, de la primele jocuri mecanice la motoarele grafice de ultimă generație.",
-    imageSrc: "/images/library/Technology/nils-huenerfuerst-87-z5bW4ihk-unsplash.jpg",
+    imageSrc: "/images/library/Technology/EA HQ campus logo.jpg",
     icon: Gamepad2,
   },
 ];
