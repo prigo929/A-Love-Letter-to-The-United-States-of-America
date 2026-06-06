@@ -178,10 +178,10 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
             quality={90}
           />
         ) : null}
-        <div className="absolute inset-0 bg-linear-to-t from-[#030405] via-transparent to-[#030405] pointer-events-none" />
-        <div className="absolute inset-0 bg-linear-to-b from-[#030405] via-transparent to-[#030405] pointer-events-none opacity-80" />
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(3,4,5,0.7) 100%)' }} />
       </motion.div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[#030405] via-transparent to-[#030405] pointer-events-none z-[1]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#030405] via-transparent to-[#030405] pointer-events-none opacity-80 z-[1]" />
+      <div className="absolute inset-0 pointer-events-none z-[1]" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(3,4,5,0.7) 100%)' }} />
 
       <motion.div 
         style={{ opacity }}
