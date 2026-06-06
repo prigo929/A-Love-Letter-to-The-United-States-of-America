@@ -288,6 +288,48 @@ export default async function CultureEntertainmentPage() {
           </div>
         </section>
 
+        {/* Culture Archive Vault */}
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-4 font-semibold">
+            {isRo ? "ARHIVA CULTURALĂ" : "THE CULTURE ARCHIVE"}
+          </p>
+          <h2 className="font-macro-display text-4xl font-bold text-center mb-12 text-white uppercase tracking-tight">
+            {isRo ? "Capodopere Globale: Cinema și Muzică" : "Global Masterpieces: Cinema & Music"}
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {[
+              { src: SITE_IMAGES.culture.vaultGodfather, title: "The Godfather", sub: "1972" },
+              { src: SITE_IMAGES.culture.vaultStarWars, title: "Star Wars", sub: "1977" },
+              { src: SITE_IMAGES.culture.vaultJaws, title: "Jaws", sub: "1975" },
+              { src: SITE_IMAGES.culture.vaultPulpFiction, title: "Pulp Fiction", sub: "1994" },
+              { src: SITE_IMAGES.culture.vaultJurassicPark, title: "Jurassic Park", sub: "1993" },
+              { src: SITE_IMAGES.culture.vaultInterstellar, title: "Interstellar", sub: "2014" },
+              { src: SITE_IMAGES.culture.vaultMilesDavis, title: "Miles Davis", sub: "Kind of Blue" },
+              { src: SITE_IMAGES.culture.vaultMichaelJackson, title: "Michael Jackson", sub: "Thriller" },
+              { src: SITE_IMAGES.culture.vaultNirvana, title: "Nirvana", sub: "Nevermind" },
+              { src: SITE_IMAGES.culture.vaultJohnnyCash, title: "Johnny Cash", sub: "Folsom Prison" },
+              { src: SITE_IMAGES.culture.vault50Cent, title: "50 Cent", sub: "Get Rich..." },
+              { src: SITE_IMAGES.culture.vaultEminem, title: "Eminem", sub: "MMLP" },
+            ].map((vault, i) => (
+              <div
+                key={i}
+                className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/5 bg-white/[0.01] group hover:border-[#E8B923]/40 transition-all duration-300"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={vault.src}
+                  alt={vault.title}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                  <span className="text-sm font-bold text-white leading-tight">{vault.title}</span>
+                  <span className="text-xs text-[#E8B923] font-mono mt-1 leading-none">{vault.sub}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Navigation */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between border-t border-white/10 pt-12">

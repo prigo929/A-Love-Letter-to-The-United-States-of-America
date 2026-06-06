@@ -574,6 +574,64 @@ export default async function TradeAndExportsPage() {
             </div>
           </section>
 
+          {/* Infrastructure & Logistics Features */}
+          <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-12 font-semibold">
+              {locale === "ro" ? "LOGISTICĂ ȘI INFRASTRUCTURĂ" : "LOGISTICS & INFRASTRUCTURE SYSTEMS"}
+            </p>
+            <div className="grid gap-12 lg:grid-cols-2">
+              <div className="rounded-3xl border border-white/5 bg-white/[0.02] overflow-hidden hover:border-[#E8B923]/20 transition-all duration-300">
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/40">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/library/Landscapes/Mississippi River running through Minneapolis .jpg"
+                    alt="Mississippi River Inland Waterways"
+                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                </div>
+                <div className="p-8 space-y-4">
+                  <span className="macro-eyebrow">
+                    {locale === "ro" ? "AUTOSTRĂZILE INVIZIBILE DE APĂ" : "THE INVISIBLE WATER HIGHWAY"}
+                  </span>
+                  <h3 className="font-macro-display text-2xl font-bold text-white">
+                    {locale === "ro" ? "Căile Navigabile Interioare ale Americii" : "The Inland Waterway Network"}
+                  </h3>
+                  <p className="font-macro-body text-base text-white/70 leading-relaxed">
+                    {locale === "ro"
+                      ? "Cu peste 12.000 de mile de canale de navigație interioară coordonate de US Army Corps of Engineers, fluviul Mississippi și intrările intracoastale acționează ca un sistem circulator continental extrem de ieftin. O singură barjă transportă cât 70 de TIR-uri, Mississippi singur susținând 60% din exporturile de cereale."
+                      : "Spanning over 12,000 miles of commercial navigation channels managed by the US Army Corps of Engineers, America's river systems form a continental plumbing network of radical shipping efficiency. A single barge moves the equivalent cargo of 70 tractor-trailers, carrying 60% of all US grain exports down to Gulf terminals."}
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-3xl border border-white/5 bg-white/[0.02] overflow-hidden hover:border-[#E8B923]/20 transition-all duration-300">
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/40">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/library/Infrastructure/I-110 and I-115 Interchange Los Angeles.jpg"
+                    alt="US Interstate Highway System Interchange"
+                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                </div>
+                <div className="p-8 space-y-4">
+                  <span className="macro-eyebrow">
+                    {locale === "ro" ? "SISTEMUL NERVOS DE MARFĂ" : "THE OVERLAND FREIGHT SYSTEM"}
+                  </span>
+                  <h3 className="font-macro-display text-2xl font-bold text-white">
+                    {locale === "ro" ? "Autostrăzile Interstatale și Transportul Terestru" : "The Interstate Highway & Trucking"}
+                  </h3>
+                  <p className="font-macro-body text-base text-white/70 leading-relaxed">
+                    {locale === "ro"
+                      ? "Inițiat de președintele Eisenhower, sistemul de autostrăzi interstatale de 47.856 de mile a integrat economia continentului. Astăzi, peste 3,5 milioane de șoferi profesioniști de camion transportă 70% din valoarea mărfurilor interne din SUA, menținând logistica în timp real."
+                      : "Initiated under President Eisenhower, the 47,856-mile Interstate Highway System unified the labor and distribution systems of a continent. Today, over 3.5 million professional truck drivers move 70% of all domestic freight value, coordinated by massive travel centers that operate in real-time."}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Facts */}
           <section className="border-t border-white/5 pt-32">
             <h2 className="macro-section-title text-[clamp(24px,4vw,60px)] mb-16">

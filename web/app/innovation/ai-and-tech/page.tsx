@@ -266,6 +266,78 @@ export default async function AiAndTechPage() {
           </div>
         </InfrastructureBand>
 
+        {/* Physical Infrastructure of AI Section */}
+        <section id="ai-infrastructure" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-6 font-semibold">
+            {isRo ? "INFRASTRUCTURA FIZICĂ" : "PHYSICAL INFRASTRUCTURE"}
+          </p>
+          <h2 className="font-macro-display text-4xl font-bold text-center mb-6 text-white uppercase tracking-tight">
+            {isRo ? "Infrastructura Fizică a Inteligenței Artificiale" : "The Physical Infrastructure of AI"}
+          </h2>
+          <p className="font-macro-body text-white/70 text-lg text-center max-w-3xl mx-auto mb-16 leading-relaxed">
+            {isRo 
+              ? "Inteligența artificială nu este doar software. Ea se bazează pe cele mai complexe lanțuri de aprovizionare și pe o infrastructură fizică masivă — de la microprocesoare specializate la centre de date gigantice care consumă gigawați de energie." 
+              : "Artificial intelligence is not just software. It relies on the most complex manufacturing supply chains and massive physical infrastructure on Earth — from specialized silicon hardware to hyper-scale data centers consuming gigawatts of energy."}
+          </p>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {[
+              {
+                tag: isRo ? "Hardware Avansat" : "Advanced Silicon",
+                title: isRo ? "Nvidia H100: Motorul AI Generative" : "Nvidia H100: The AI Engine",
+                description: isRo
+                  ? "GPU-ul NVIDIA H100 Tensor Core, bazat pe arhitectura Hopper, reprezintă un salt uriaș în accelerarea computațională. Acesta conține 80 de miliarde de tranzistori și este proiectat să antreneze LLM-uri la viteze și eficiențe fără precedent, fiind piesa de bază a supercomputerelor AI."
+                  : "The NVIDIA H100 Tensor Core GPU, built on the Hopper architecture, represents a monumental leap in acceleration. It houses 80 billion transistors and is designed to train LLMs at unprecedented speed and efficiency, serving as the foundational hardware block for AI supercomputers.",
+                imageSrc: "/images/library/Technology/NVIDIA H100 GPU on new SXM5 Module. GTC2022_SXM5_01_v001_DL.png"
+              },
+              {
+                tag: isRo ? "Centre de Date Hyper-scale" : "Hyper-scale Data Centers",
+                title: isRo ? "Google Midlothian: Centrul de Date" : "Google Midlothian: The Powerhouse",
+                description: isRo
+                  ? "Centrul de date Google din Midlothian, Texas, arătând dimensiunea rezervoarelor de răcire și a curții de generatoare. Aceste facilități moderne funcționează 24/7 pentru a găzdui clustere TPU și servicii cloud, optimizând consumul de apă și energie."
+                  : "Google's data center in Midlothian, Texas, showcasing the scale of cooling water tanks and generator yards. These modern facilities run 24/7 to host TPU clusters and cloud services, operating with advanced water and power efficiency to minimize carbon footprint.",
+                imageSrc: "/images/library/Technology/Google Data Center Midlothian Texas at Dusk with Water Tanks and GCUB Generator Yard.jpg"
+              },
+              {
+                tag: isRo ? "Rețea Distribuită" : "Distributed Compute",
+                title: isRo ? "Coridorul de Servere din Ohio" : "The Ohio Server Aisles",
+                description: isRo
+                  ? "În interiorul unui coridor de servere de înaltă densitate din centrul de date Google din Ohio. Mii de servere echipate cu procesoare avansate sunt interconectate prin fibră optică de mare viteză, formând rețeaua computațională distribuită ce rulează modelele AI de frontieră."
+                  : "Inside a high-density server aisle in Google's Ohio data center. Thousands of servers containing advanced processors are networked with high-throughput fiber optics, forming the distributed computing fabric that runs frontier AI models.",
+                imageSrc: "/images/library/Technology/server aisles in google data center in Ohio.jpg"
+              }
+            ].map((item, idx) => (
+              <div 
+                key={idx}
+                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] flex flex-col hover:border-[#E8B923]/30 transition-all duration-500"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.imageSrc}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#030405] via-transparent to-transparent" />
+                </div>
+                <div className="p-8 flex-1 flex flex-col justify-between bg-black/20">
+                  <div>
+                    <span className="text-xs font-mono text-[#E8B923] uppercase tracking-wider mb-2 block">
+                      {item.tag}
+                    </span>
+                    <h3 className="font-macro-display text-2xl font-bold text-white mb-3 group-hover:text-[#E8B923] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-white/70 leading-relaxed font-body">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* AI Ask America Oracle Section */}
         <div className="mt-32">
           <AskAmericaCTA

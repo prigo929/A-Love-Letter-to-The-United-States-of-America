@@ -378,6 +378,55 @@ export default async function CapitalMarketsPage() {
             </div>
           </section>
 
+          {/* Democratization of Capital Section */}
+          <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-12 font-semibold">
+              {locale === "ro" ? "DEMOCRATIZAREA CAPITALULUI" : "THE DEMOCRATIZATION OF CAPITAL"}
+            </p>
+            <div className="grid gap-12 lg:grid-cols-2 items-center">
+              <div className="space-y-6">
+                <span className="macro-eyebrow">
+                  {locale === "ro" ? "REVOLUȚIA DE ECONOMISIRE" : "THE RETIREMENT REVOLUTION"}
+                </span>
+                <h3 className="font-macro-display text-3xl font-bold text-white leading-tight">
+                  {locale === "ro" ? "Sistemul 401(k) și Conturile IRA" : "The 401(k) & Individual Retirement Assets"}
+                </h3>
+                <p className="font-macro-body text-lg text-white/70 leading-relaxed">
+                  {locale === "ro"
+                    ? "În loc să se bazeze pe pensii de stat rigide, clasa de mijloc din SUA folosește planurile 401(k) și conturile IRA, acumulând active de pensionare de peste 45 de trilioane de dolari. Acest sistem, apărut dintr-o lacună fiscală în 1978, a transformat zeci de milioane de lucrători în acționari pe termen lung ai economiei americane."
+                    : "Rather than relying on rigid, state-managed pension schemes, ordinary American workers leverage tax-advantaged 401(k) and IRA accounts to compound wealth. Total retirement assets exceed $45 trillion. Formally established in 1978, this system effectively turned everyday citizens into long-term equity owners of the S&P 500."}
+                </p>
+                <p className="font-macro-body text-lg text-white/70 leading-relaxed">
+                  {locale === "ro"
+                    ? "Această acumulare masivă de active de retail oferă o lichiditate profundă și stabilă pentru piețele de capital, oferind companiilor americane un cost extrem de redus al capitalului pentru a finanța expansiunea și R&D-ul."
+                    : "This massive aggregation of retail capital provides deep, stable liquidity to US financial markets, ensuring American companies have access to the cheapest funding on Earth for R&D and global expansion."}
+                </p>
+              </div>
+              <div className="space-y-6">
+                <span className="macro-eyebrow">
+                  {locale === "ro" ? "ELIMINAREA COMISIOANELOR ACTIVE" : "THE INDEX FUND REVOLUTION"}
+                </span>
+                <h3 className="font-macro-display text-3xl font-bold text-white leading-tight">
+                  {locale === "ro" ? "Inovația Fondurilor de Indici (Jack Bogle)" : "The Rise of Low-Cost Passive Indexing"}
+                </h3>
+                <p className="font-macro-body text-lg text-white/70 leading-relaxed">
+                  {locale === "ro"
+                    ? "Lansat de Jack Bogle (fondatorul Vanguard) în 1976, fondul de indici pasiv și inventarea ulterioară a ETF-urilor în 1993 au democratizat complet Wall Street. Prin eliminarea comisioanelor managerilor activi de fonduri, saverii din clasa de mijloc pot capta direct randamentul complet al pieței de acțiuni, economisind trilioane în comisioane."
+                    : "Pioneered by Vanguard founder Jack Bogle in 1976, and accelerated by the invention of the ETF in 1993, passive index investing democratized Wall Street. By eliminating high management fees of active managers, middle-class savers directly capture the full compounding returns of the market, holding over $15 trillion in index-linked assets."}
+                </p>
+                <div className="relative aspect-[16/8] w-full overflow-hidden rounded-3xl border border-white/5 bg-black/40 mt-6">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/library/Economy/100 dollar bill.jpg"
+                    alt="US 100 Dollar Bill detailed engraving representing capital wealth"
+                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700 opacity-60"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Extended facts */}
           <section className="border-t border-white/5 pt-32">
             <h2 className="macro-section-title text-[clamp(24px,4vw,60px)] mb-16">

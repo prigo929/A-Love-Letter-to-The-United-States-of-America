@@ -319,17 +319,21 @@ export default async function CultureSportsPage() {
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-12 font-semibold">
             {isRo ? "MOMENTELE DEFINITORII" : "DEFINING MOMENTS"}
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-4">
             {[
-              { src: SITE_IMAGES.culture.vaultSportsSI1968, alt: "Lombardi, 1968" },
-              { src: SITE_IMAGES.culture.vaultSportsSI1980, alt: "Miracle on Ice, 1980" },
+              { src: SITE_IMAGES.culture.vaultSportsSI1968, alt: "Vince Lombardi, 1968" },
+              { src: SITE_IMAGES.culture.vaultSportsSI1980, alt: isRo ? "Miracolul pe Gheață, 1980" : "Miracle on Ice, 1980" },
               { src: SITE_IMAGES.culture.vaultSportsSI1984, alt: "Michael Jordan, 1984" },
-              { src: SITE_IMAGES.culture.vaultSportsSI1991, alt: "Dream Team, 1991" },
+              { src: SITE_IMAGES.culture.vaultSportsSI1991, alt: isRo ? "Dream Team, 1991" : "Dream Team, 1991" },
+              { src: SITE_IMAGES.culture.vaultSportsSI1993, alt: "George Steinbrenner, 1993" },
+              { src: SITE_IMAGES.culture.vaultSportsSI1999, alt: "Brandi Chastain, 1999" },
               { src: SITE_IMAGES.culture.vaultSportsSI2016, alt: "Muhammad Ali, 2016" },
+              { src: SITE_IMAGES.culture.vaultSportsSI2016Cubs, alt: "Chicago Cubs, 2016" },
+              { src: SITE_IMAGES.culture.vaultSportsSI2019, alt: "Tiger Woods, 2019" },
             ].map((cover, i) => (
               <div
                 key={i}
-                className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/5 group"
+                className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/5 bg-white/[0.01] group hover:border-[#E8B923]/40 transition-all duration-300"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -337,8 +341,8 @@ export default async function CultureSportsPage() {
                   alt={cover.alt}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="text-xs font-mono text-white/80">{cover.alt}</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                  <span className="text-[10px] font-mono text-white leading-tight">{cover.alt}</span>
                 </div>
               </div>
             ))}

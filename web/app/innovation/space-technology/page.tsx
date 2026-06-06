@@ -267,6 +267,81 @@ export default async function SpaceTechnologyPage() {
           </div>
         </InfrastructureBand>
 
+        {/* Apollo Legacy Gallery */}
+        <section id="apollo-legacy" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-6 font-semibold">
+            {isRo ? "MOȘTENIREA APOLLO" : "THE APOLLO LEGACY"}
+          </p>
+          <h2 className="font-macro-display text-4xl font-bold text-center mb-16 text-white uppercase tracking-tight">
+            {isRo ? "Arhiva Istorică a Programului Apollo" : "The Apollo Program Historical Archive"}
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                tag: isRo ? "Pregătire Lansare" : "Launch Prep",
+                title: isRo ? "Transferul Saturn V" : "Saturn V Rollout",
+                description: isRo
+                  ? "Racheta Saturn V SA-506, purtând capsula Apollo 11, iese din clădirea VAB (Vehicle Assembly Building) spre Complexul de Lansare 39 pe 16 iulie 1969. Cu o înălțime de 111 metri, rămâne cea mai mare rachetă operațională din istorie."
+                  : "The Saturn V SA-506 rocket, carrying Apollo 11, moves out of the Vehicle Assembly Building (VAB) towards Launch Complex 39 on July 16, 1969. Standing 363 feet tall, it remains the tallest, heaviest, and most powerful rocket ever brought to operational status.",
+                imageSrc: "/images/library/Technology/Space/Saturn V SA-506, the rocket carrying the Apollo 11 spacecraft, moves out of the Vehicle Assembly Building towards Launch Complex 39.jpg"
+              },
+              {
+                tag: isRo ? "Suprafața Lunară" : "Lunar Surface",
+                title: isRo ? "Experimente Științifice" : "Scientific Deployment",
+                description: isRo
+                  ? "Buzz Aldrin stă lângă Pachetul de Experimente Seismice Pasive pe suprafața Lunii, cu modulul Eagle în fundal. Acest pachet a înregistrat primele cutremure lunare, oferind date esențiale despre structura internă a Lunii."
+                  : "Buzz Aldrin stands next to the Passive Seismic Experiment Package on the lunar surface, with the Lunar Module Eagle in the background. This package recorded the first moonquakes, providing key insights into the Moon's internal structure.",
+                imageSrc: "/images/library/Technology/Space/Aldrin next to the Passive Seismic Experiment Package with the Lunar Module Eagle in the background.jpg"
+              },
+              {
+                tag: isRo ? "Moment Istoric" : "Patriotic Milestone",
+                title: isRo ? "Salutul Drapelului American" : "Saluting the Stars and Stripes",
+                description: isRo
+                  ? "Astronautul Buzz Aldrin salută drapelul Statelor Unite arborat pe suprafața Lunii în timpul misiunii Apollo 11. Neil Armstrong a surprins această imagine legendară, arătând steagul susținut de o tijă metalică în vidul spațial."
+                  : "Astronaut Buzz Aldrin salutes the U.S. flag deployed on the lunar surface during the Apollo 11 mission. Neil Armstrong captured this iconic image, showing the flag stiffened by a horizontal rod to remain visible in the vacuum of space.",
+                imageSrc: "/images/library/Technology/Space/Buzz_salutes_the_U.S._Flag on the lunar surface.jpg"
+              },
+              {
+                tag: isRo ? "Amprenta Umană" : "Legacy",
+                title: isRo ? "Prima Urmă de Pas" : "The First Footprint",
+                description: isRo
+                  ? "Amprenta cizmei lui Buzz Aldrin în solul fin al Lunii, fotografiată pentru a studia mecanica solului. Această imagine a devenit una dintre cele mai recunoscute simboluri ale explorării și curajului uman."
+                  : "Buzz Aldrin's bootprint in the fine lunar soil, taken to study the soil mechanics of the surface. This image became one of the most recognizable symbols of human exploration and technological achievement.",
+                imageSrc: "/images/library/Technology/Space/Buzz_Aldrin's_bootprint_on_the_Moon.jpg"
+              }
+            ].map((item, idx) => (
+              <div 
+                key={idx}
+                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] flex flex-col hover:border-[#E8B923]/30 transition-all duration-500"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.imageSrc}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#030405] via-transparent to-transparent" />
+                </div>
+                <div className="p-8 flex-1 flex flex-col justify-between bg-black/20">
+                  <div>
+                    <span className="text-xs font-mono text-[#E8B923] uppercase tracking-wider mb-2 block">
+                      {item.tag}
+                    </span>
+                    <h3 className="font-macro-display text-2xl font-bold text-white mb-3 group-hover:text-[#E8B923] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-white/70 leading-relaxed font-body">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* AI Ask America Oracle Section */}
         <div className="mt-32">
           <AskAmericaCTA

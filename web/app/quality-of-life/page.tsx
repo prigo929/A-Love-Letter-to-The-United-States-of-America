@@ -141,7 +141,7 @@ const copyEn: QualityOfLifeCopy = {
         "The US has 24.5 sq ft of retail space per person, compared to an average of just 4.5 sq ft in Europe, creating massive consumer abundance and competition.",
       source: "ASCE Report Card",
       sourceUrl:
-        "https://2021.infrastructurereportcard.org/cat-item/inland-waterways-infrastructure/",
+        "https://www.statista.com/statistics/1058852/retail-space-per-capita-select-countries-worldwide/",
     },
   ],
   luxuryTitle: "Democratized Luxury & Convenience",
@@ -347,7 +347,7 @@ const copyRo: QualityOfLifeCopy = {
         "SUA au 2,3 mp de spațiu comercial per locuitor, comparativ cu o medie de doar 0,4 mp în Europa, oferind o abundență și o comoditate uriașă pentru consumatori.",
       source: "ASCE Report Card",
       sourceUrl:
-        "https://2021.infrastructurereportcard.org/cat-item/inland-waterways-infrastructure/",
+        "https://www.statista.com/statistics/1058852/retail-space-per-capita-select-countries-worldwide/",
     },
   ],
   luxuryTitle: "Lux Democratizat și Utilitate Zilnică",
@@ -650,6 +650,39 @@ export default async function QualityOfLifePage() {
                       {isRo ? "Date →" : "Data →"}
                     </a>
                   )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Abundance & Democratized Luxury Gallery */}
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-12 font-semibold">
+            {isRo ? "PANORAMA ABUNDENȚEI CASNICE" : "VISUALIZING AMERICAN ABUNDANCE"}
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { src: SITE_IMAGES.culture.mcdMenu, title: isRo ? "Abundența Alimentară" : "Food Abundance", desc: isRo ? "Calorii ieftine și accesibile la orice colț de stradă." : "Low-cost, high-velocity calories accessible on every corner." },
+              { src: SITE_IMAGES.culture.dinerInside, title: isRo ? "Cultura Diner-ului" : "Diner Dining", desc: isRo ? "Restaurantul informal american, un simbol al clasei de mijloc." : "The informal community hub for middle-class casual dining." },
+              { src: SITE_IMAGES.culture.fashionJeansSneakers, title: isRo ? "Moda Uniformizată" : "Democratic Fashion", desc: isRo ? "Blugi albaștri și pantofi sport: uniforma modernă fără clase." : "Levi's blue jeans and sneakers: the global uniform of classless comfort." },
+              { src: "/images/library/Housing/USA Suburb sunset.jpg", title: isRo ? "Suburbia la Apus" : "Suburban Sunset", desc: isRo ? "Case spațioase cu curte, un standard generalizat." : "Spacious multi-bedroom homes with lawns as a baseline norm." },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="rounded-3xl border border-white/5 bg-white/[0.02] overflow-hidden hover:border-[#E8B923]/30 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div className="relative aspect-video w-full overflow-hidden bg-black/40">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <div className="p-6">
+                  <h4 className="font-macro-display text-lg font-bold text-white mb-2">{item.title}</h4>
+                  <p className="text-sm text-white/55 leading-relaxed font-body">{item.desc}</p>
                 </div>
               </div>
             ))}
