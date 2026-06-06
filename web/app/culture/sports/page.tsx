@@ -144,10 +144,9 @@ export default async function CultureSportsPage() {
     <>
       <MacroStyles />
 
-      {/* Cinematic Hero — MetLife Stadium night game */}
+      {/* Cinematic Hero — Michael Jordan Edit */}
       <MacroHero
-        imageSrc="/images/library/Culture/Sports/Stadiums/Wide-Angle-Night-View-Of-Giant-American-Flag-On-Field-At-MetLife-Stadium.jpg"
-        imageAlt="MetLife Stadium Night Game with Giant American Flag"
+        videoSrc="/videos/library/Culture/Michael Jordan | Edit.mp4"
         eyebrow={isRo ? "CULTURĂ · SPECTACOL" : "CULTURE · SPECTACLE"}
         titleLead={isRo ? "SPORTUL AMERICAN" : "AMERICAN SPORTS"}
         titleAccent={isRo ? "& TRADIȚIE" : "& TRADITION"}

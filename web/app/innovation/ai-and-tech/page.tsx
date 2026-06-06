@@ -45,8 +45,8 @@ interface AiCopy {
 const copyEn: AiCopy = {
   breadcrumbParent: "Innovation & Technology",
   breadcrumbPage: "AI & Tech",
-  heroTagline: "COMPUTATIONAL SOVEREIGNTY",
-  heroTitle: "Designing the AI Frontier",
+  heroTagline: "COMPUTATIONAL\nSOVEREIGNTY",
+  heroTitle: "Designing the\nAI Frontier",
   heroSubtitle: "How Silicon Valley and American intellectual property command the design layer of the global computing stack.",
   thesisTitle: "The Architecture of Intelligence",
   thesisParagraph1: "From the silicon transistor invented at Bell Labs to the neural networks powering generative AI, the United States is the primary architect of digital intelligence. While manufacturing has expanded globally, the intellectual property, design software, and advanced architectures remain concentrated in American technology hubs, creating a structural advantage.",
@@ -86,8 +86,8 @@ const copyEn: AiCopy = {
 const copyRo: AiCopy = {
   breadcrumbParent: "Inovație și Tehnologie",
   breadcrumbPage: "AI și Tehnologie",
-  heroTagline: "SUVERANITATE COMPUTAȚIONALĂ",
-  heroTitle: "Proiectarea Frontierei AI",
+  heroTagline: "SUVERANITATE\nCOMPUTAȚIONALĂ",
+  heroTitle: "Proiectarea\nFrontierei AI",
   heroSubtitle: "Cum Silicon Valley și proprietatea intelectuală americană controlează stratul de proiectare al întregului ecosistem global de computing.",
   thesisTitle: "Arhitectura Inteligenței",
   thesisParagraph1: "De la tranzistorul de siliciu inventat la Bell Labs până la rețelele neuronale care alimentează AI generativă, Statele Unite sunt arhitectul principal al inteligenței digitale. În timp ce producția fizică s-a extins global, designul de bază, software-ul de proiectare și arhitecturile avansate rămân concentrate în hub-urile americane.",
