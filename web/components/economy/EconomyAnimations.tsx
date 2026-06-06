@@ -232,7 +232,7 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 1 }}
-                className="grid grid-cols-3 gap-6 lg:grid-cols-1 lg:gap-6"
+                className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:grid-cols-1 lg:gap-6"
               >
                 {stats.map((stat, i) => (
                   <div key={i} className="flex flex-col">

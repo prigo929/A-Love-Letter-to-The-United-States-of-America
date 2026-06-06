@@ -148,14 +148,14 @@ export default async function CultureSportsPage() {
       <MacroHero
         imageSrc="/images/library/Culture/Sports/Stadiums/Wide-Angle-Night-View-Of-Giant-American-Flag-On-Field-At-MetLife-Stadium.jpg"
         imageAlt="MetLife Stadium Night Game with Giant American Flag"
-        eyebrow={isRo ? "SPORT · SOFT POWER" : "SPORTS · SOFT POWER"}
+        eyebrow={isRo ? "CULTURĂ · SPECTACOL" : "CULTURE · SPECTACLE"}
         titleLead={isRo ? "SPORTUL AMERICAN" : "AMERICAN SPORTS"}
-        titleAccent={isRo ? "& PUTEREA SOFT" : "& SOFT POWER"}
+        titleAccent={isRo ? "& TRADIȚIE" : "& TRADITION"}
         description={content.deck}
         stats={[
           {
             value: "$80B+",
-            label: isRo ? "Industria Sportivă SUA" : "Total US Sports Industry",
+            label: isRo ? "Industria Sportului" : "Sports Industry",
           },
           {
             value: "100M+",
@@ -163,7 +163,7 @@ export default async function CultureSportsPage() {
           },
           {
             value: "215",
-            label: isRo ? "Țări Difuzare NBA" : "Countries Broadcasting NBA",
+            label: isRo ? "Difuzări Globale NBA" : "NBA Global Broadcasts",
           },
         ]}
       />
