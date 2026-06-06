@@ -267,6 +267,68 @@ export default async function SpaceTechnologyPage() {
           </div>
         </InfrastructureBand>
 
+        {/* SpaceX Videos Cinematic Showcase */}
+        <section id="spacex-showcase" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32 border-t border-white/5 pt-24">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-6 font-semibold">
+            {isRo ? "MULTIMEDIA CINEMATIC" : "CINEMATIC MULTIMEDIA"}
+          </p>
+          <h2 className="font-macro-display text-4xl font-bold text-center mb-16 text-white uppercase tracking-tight">
+            {isRo ? "Tehnologia SpaceX în Acțiune" : "SpaceX Technology in Action"}
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {[
+              {
+                title: isRo ? "Lansarea și Aterizarea Falcon 9" : "Falcon 9 Launch & Landing",
+                description: isRo
+                  ? "Urmăriți precizia uluitoare a boosterului Falcon 9 care se lansează în spațiu și revine pentru a ateriza în picioare pe o platformă autonomă din Oceanul Atlantic. Această inovație a transformat reutilizarea rachetelor într-o rutină comercială."
+                  : "Watch the breathtaking precision of the Falcon 9 booster launching into space and returning to land upright on an autonomous drone ship in the Atlantic Ocean. This engineering breakthrough turned rocket reuse into a routine commercial operation.",
+                videoSrc: "/videos/library/Technology/Falcon 9 Launch and Landing cinematic.mp4",
+                tag: isRo ? "REUTILIZARE COMPLETĂ" : "RAPID REUSABILITY"
+              },
+              {
+                title: isRo ? "Costumul Spațial EVA de Nouă Generație" : "Next-Gen EVA Spacesuit",
+                description: isRo
+                  ? "Proiectat pentru misiunea Polaris Dawn și viitoarele zboruri către Marte, costumul spațial de activitate extravehiculară (EVA) dezvoltat de SpaceX asigură suport vital avansat, protecție termică și mobilitate sporită în vidul spațial."
+                  : "Designed for the Polaris Dawn mission and future Martian voyages, the SpaceX Extravehicular Activity (EVA) suit provides advanced life support, thermal protection, and mobility in the vacuum of space, scaling astronaut safety.",
+                videoSrc: "/videos/library/Technology/The Extravehicular Activity (EVA) Suit SpaceX ShowCase 4K Cinematic.mp4",
+                tag: isRo ? "EXPLORARE SPAȚIALĂ UMANĂ" : "HUMAN SPACEFLIGHT"
+              }
+            ].map((item, idx) => (
+              <div 
+                key={idx}
+                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] flex flex-col hover:border-[#E8B923]/30 transition-all duration-500"
+              >
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-black">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-102 transition-transform duration-700"
+                  >
+                    <source src={item.videoSrc} type="video/mp4" />
+                  </video>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#030405] via-transparent to-transparent" />
+                  <span className="absolute top-4 left-4 text-[10px] font-mono text-[#E8B923] bg-black/60 backdrop-blur-sm border border-[#E8B923]/25 px-2.5 py-0.5 rounded uppercase tracking-wider">
+                    {item.tag}
+                  </span>
+                </div>
+                <div className="p-8 flex-1 flex flex-col justify-between bg-black/20">
+                  <div>
+                    <h3 className="font-macro-display text-2xl font-bold text-white mb-4 group-hover:text-[#E8B923] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-white/70 leading-relaxed font-body">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Apollo Legacy Gallery */}
         <section id="apollo-legacy" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-6 font-semibold">
