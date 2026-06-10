@@ -45,7 +45,7 @@ interface AiCopy {
 const copyEn: AiCopy = {
   breadcrumbParent: "Innovation & Technology",
   breadcrumbPage: "AI & Tech",
-  heroTagline: "COMPUTATIONAL",
+  heroTagline: "THE SILICON AGE",
   heroTitle: "Designing the\nAI Frontier",
   heroSubtitle: "How Silicon Valley and American intellectual property command the design layer of the global computing stack.",
   thesisTitle: "The Architecture of Intelligence",
@@ -86,7 +86,7 @@ const copyEn: AiCopy = {
 const copyRo: AiCopy = {
   breadcrumbParent: "Inovație și Tehnologie",
   breadcrumbPage: "AI și Tehnologie",
-  heroTagline: "COMPUTAȚIONAL",
+  heroTagline: "ERA SILICIULUI",
   heroTitle: "Proiectarea\nFrontierei AI",
   heroSubtitle: "Cum Silicon Valley și proprietatea intelectuală americană controlează stratul de proiectare al întregului ecosistem global de computing.",
   thesisTitle: "Arhitectura Inteligenței",

@@ -46,7 +46,7 @@ interface SpaceCopy {
 const copyEn: SpaceCopy = {
   breadcrumbParent: "Innovation & Technology",
   breadcrumbPage: "Space Technology",
-  heroTagline: "COSMIC COMMERCIALIZATION",
+  heroTagline: "COMMERCIAL SPACE",
   heroTitle: "Privatizing the Cosmos",
   heroSubtitle: "How private American enterprise and venture capital revolutionized access to orbit, breaking the launch monopolies of nation-states.",
   thesisTitle: "The Shift to Commercial Space",
@@ -87,7 +87,7 @@ const copyEn: SpaceCopy = {
 const copyRo: SpaceCopy = {
   breadcrumbParent: "Inovație și Tehnologie",
   breadcrumbPage: "Tehnologie Spațială",
-  heroTagline: "COMERCIALIZAREA COSMICĂ",
+  heroTagline: "SPAȚIUL COMERCIAL",
   heroTitle: "Privatizarea Cosmosului",
   heroSubtitle: "Cum întreprinderea privată americană și capitalul de risc au revoluționat accesul pe orbită, spărgând monopolul statelor suverane.",
   thesisTitle: "Tranziția către Spațiul Comercial",
