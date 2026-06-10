@@ -151,7 +151,7 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
   }, [videoSrc]);
 
   return (
-    <div ref={ref} className="relative min-h-[100dvh] w-full overflow-hidden bg-[#030405] pt-48 pb-24">
+    <div ref={ref} className="relative min-h-[100dvh] w-full overflow-hidden bg-[#030405] pt-32 pb-16 flex flex-col justify-center">
       <motion.div style={{ y, scale, opacity: 0.6 }} className="absolute inset-0">
         {videoSrc ? (
           <video
@@ -185,15 +185,15 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
 
       <motion.div 
         style={{ opacity }}
-        className="relative z-10 flex min-h-[70dvh] flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto w-full"
+        className="relative z-10 flex min-h-[60dvh] flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto w-full"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 lg:items-start pt-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 lg:items-start pt-8">
           <div className="lg:col-span-8">
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="macro-eyebrow mb-8"
+              className="macro-eyebrow mb-6"
               style={{ textShadow: "0px 2px 10px rgba(0,0,0,0.8)" }}
             >
               {eyebrow}
@@ -221,7 +221,7 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.5, delay: 0.8 }}
-              className="macro-body mb-10 text-white/90"
+              className="macro-body mb-6 text-white/90"
               style={{ textShadow: "0px 4px 20px rgba(0,0,0,0.9), 0px 2px 4px rgba(0,0,0,0.8)" }}
             >
               {description}
@@ -232,11 +232,11 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 1 }}
-                className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:grid-cols-1 lg:gap-6"
+                className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:grid-cols-1 lg:gap-4"
               >
                 {stats.map((stat, i) => (
                   <div key={i} className="flex flex-col">
-                    <span className="font-macro-display text-4xl md:text-5xl font-bold text-white tracking-tight mb-2">
+                    <span className="font-macro-display text-3xl md:text-4xl font-bold text-white tracking-tight mb-1">
                       {stat.value}
                     </span>
                     <span className="macro-metadata">{stat.label}</span>
