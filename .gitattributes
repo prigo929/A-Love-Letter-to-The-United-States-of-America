@@ -3,3 +3,5 @@ web/VIDEOS/** filter=lfs diff=lfs merge=lfs -text
 web/IMAGES/Technology/Space/Eugene_Cernan_at_the_LM,_Apollo_17,_AS17-134-20378.jpg filter=lfs diff=lfs merge=lfs -text
 web/IMAGES/Technology/Space/Apollo[[:space:]]11[[:space:]]Buzz[[:space:]]Aldrin[[:space:]]on[[:space:]]the[[:space:]]Moon[[:space:]]in[[:space:]]a[[:space:]]photograph[[:space:]]taken[[:space:]]by[[:space:]]Neil[[:space:]]Armstrong,[[:space:]]who[[:space:]]can[[:space:]]be[[:space:]]seen[[:space:]]in[[:space:]]the[[:space:]]visor[[:space:]]reflection[[:space:]]along[[:space:]]with[[:space:]]Earth,[[:space:]]the[[:space:]]Lunar[[:space:]]Module[[:space:]]Eagle,[[:space:]]and[[:space:]]the[[:space:]]U.S.[[:space:]]flag.jpg filter=lfs diff=lfs merge=lfs -text
 web/IMAGES/Technology/Space/Buzz_Aldrin's_bootprint_on_the_Moon.jpg filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
