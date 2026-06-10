@@ -118,12 +118,12 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 | **📈 Economy & Capital** | **"Macro-Capital Editorial"**<br>• Clean grid alignments<br>• Wall Street Journal-grade typography<br>• High-contrast monetary scales | • **GDP & Venture Capital Charts**: Gold-highlighted Recharts comparisons.<br>• **National Debt Ticker**: Live real-time projection.<br>• **Innovation Index**: Global patent comparative metric. | • `/economy`<br>• `/economy/gdp-growth`<br>• `/economy/capital-markets`<br>• `/economy/startups-venture-capital`<br>• `/economy/dollar-dominance`<br>• `/economy/trade-and-exports` |
 | **🌲 Natural Majesty** | **"Spatial Editorial"**<br>• Earthy obsidian backdrops<br>• Emerald green accents<br>• Generous typographic quote spacing | • **Geyser Eruption Simulator**: Real-time interval tracker.<br>• **Biodiversity Strata**: Interactive layered mountain mapping.<br>• **NPS Mobile Charts**: Angle-rotated responsive label charts. | • `/nature`<br>• `/nature/national-parks`<br>• `/nature/alaska`<br>• `/nature/rockies`<br>• `/nature/grand-canyon`<br>• `/nature/yellowstone`<br>• `/nature/great-lakes` |
 | **🎖️ Arsenal of Democracy** | **"Minimalist Black-Ops"**<br>• Stark monochromatic headers<br>• Zinc/black palette with thin border accents<br>• Cinematic looping video heroes<br>• "Classified dossier" modal drawers | • **Global Carrier Map**: Live SVG tracker for all 11 carrier strike groups.<br>• **Nuclear Triad Simulation**: Interactive silo, sub, and bomber parity engine.<br>• **DARPA Future Systems Grid**: Active classified program cards.<br>• **Base Dossier Drawer**: Per-installation intelligence briefs with image previews.<br>• **Heritage Timeline**: Branch-by-branch milestone narratives (Navy, Air Force, Space Force).<br>• **Platform Showcases**: Spec-sheet modals for every major weapons platform.<br>• **Five Eyes Geometry**: Alliance node network visual (Intelligence page). | • `/military`<br>• `/military/navy`<br>• `/military/air-force`<br>• `/military/space-force`<br>• `/military/global-bases`<br>• `/military/intelligence` |
-| **📜 American History** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Historical Chapter Hooks**: 15 distinct cards ready for content drops detailing America's narrative. | • `/history`<br>• `/history/founding-principles`<br>• `/history/american-exceptionalism`<br>• `/history/frontier-and-expansion`<br>• `/history/union-and-liberty`<br>• `/history/industrial-rise`<br>• `/history/arsenal-of-democracy`<br>• `/history/cold-war-and-anti-communism`<br>• `/history/the-american-dream`<br>• `/history/the-reagan-revolution`<br>• `/history/faith-family-and-community`<br>• `/history/free-markets-and-prosperity`<br>• `/history/border-sovereignty-and-national-identity`<br>• `/history/constitutional-battles`<br>• `/history/post-9-11-america`<br>• `/history/the-populist-era` |
-| **💡 Innovation & Tech** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Tech Grid Hooks**: Custom cards ready for Internet, AI, Space, and Computing drops. | • `/innovation`<br>• `/innovation/internet-history`<br>• `/innovation/ai-and-tech`<br>• `/innovation/smartphones`<br>• `/innovation/cloud-computing`<br>• `/innovation/space-technology`<br>• `/innovation/gaming` |
-| **🔬 Science & Inventions** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Invention Timeline Hooks**: Sections ready for Pre-1890, World War, and Biotech breakthroughs. | • `/science`<br>• `/science/inventions-pre-1890`<br>• `/science/inventions-1890-1945`<br>• `/science/inventions-post-1991`<br>• `/science/medicine-and-biotech` |
-| **🎓 Higher Education** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Academic Campus Hooks**: Zones ready for Ivy League, STEM, and Public Research showcases. | • `/universities`<br>• `/universities/ivy-league`<br>• `/universities/stem-powerhouses`<br>• `/universities/business-schools`<br>• `/universities/public-research-universities` |
-| **🌎 Global Leadership** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Planetary Influence Hooks**: Zones ready for NATO, Reserve Currency, and Soft Power visualizers. | • `/global-leadership`<br>• `/global-leadership/nato`<br>• `/global-leadership/dollar-as-reserve`<br>• `/global-leadership/soft-power`<br>• `/global-leadership/un` |
-| **🎭 Culture & Life** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Anthology & Life Hooks**: Anthropology school/aesthetic cards ready for content drops. | • `/culture`<br>• `/culture/the-american-high-school`<br>• `/culture/american-aesthetics`<br>• `/culture/american-sports`<br>• `/quality-of-life` |
+| **📜 American History** | **"Partially Scaffolded"**<br>• Main landing page is placeholder<br>• Deep-dive pages serve as placeholders | • **Exceptionalism Exhibit**: `/history/american-exceptionalism` is fully operational with custom widgets and detailed text. | • `/history`<br>• `/history/founding-principles`<br>• `/history/american-exceptionalism`<br>• `/history/frontier-and-expansion`<br>• `/history/union-and-liberty`<br>• `/history/industrial-rise`<br>• `/history/arsenal-of-democracy`<br>• `/history/cold-war-and-anti-communism`<br>• `/history/the-american-dream`<br>• `/history/the-reagan-revolution`<br>• `/history/faith-family-and-community`<br>• `/history/free-markets-and-prosperity`<br>• `/history/border-sovereignty-and-national-identity`<br>• `/history/constitutional-battles`<br>• `/history/post-9-11-america`<br>• `/history/the-populist-era` |
+| **💡 Innovation & Tech** | **"High-Tech Modern Grids"**<br>• Obsidian tech palettes<br>• Modular sub-pages directory<br>• Dynamic video hero showcases | • **Generative AI & Cloud Nodes**: Advanced visualizers details Silicon Valley semiconductor design, AWS/Google Cloud centers, and SpaceX launch statistics. | • `/innovation`<br>• `/innovation/internet-history`<br>• `/innovation/ai-and-tech`<br>• `/innovation/smartphones`<br>• `/innovation/cloud-computing`<br>• `/innovation/space-technology`<br>• `/innovation/gaming` |
+| **🔬 Science & Inventions** | **"Empirical Research"**<br>• Clinical details and patent lists<br>• Dark slate modern backgrounds | • **Biotech & Inventions**: Interactive data cards tracking biomedical innovations and post-1991 tech breakthroughs. | • `/science`<br>• `/science/inventions-pre-1890`<br>• `/science/inventions-1890-1945`<br>• `/science/inventions-post-1991`<br>• `/science/medicine-and-biotech` |
+| **🎓 Higher Education** | **"Campus Showcase Grids"**<br>• Gold-trimmed obsidian lists<br>• University research insights | • **Academic Prestige**: Custom tables displaying Ivy League endowments, STEM research output, and public university tech-transfer systems. | • `/universities`<br>• `/universities/ivy-league`<br>• `/universities/stem-powerhouses`<br>• `/universities/business-schools`<br>• `/universities/public-research-universities` |
+| **🌎 Global Leadership** | **"Indispensable Nation Roles"**<br>• Treaty maps and reserve indexes | • **NATO Alliance**: Fully operational NATO collective security details and force multiplier breakdowns. | • `/global-leadership`<br>• `/global-leadership/nato`<br>• `/global-leadership/dollar-as-reserve`<br>• `/global-leadership/soft-power`<br>• `/global-leadership/un` |
+| **🎭 Culture & Life** | **"Warm Editorial Flow"**<br>• Alternating light-dark cream panels<br>• Dynamic brand marquees<br>• Multi-media music & food grids | • **Soft Power Asymmetry**: Recharts soft power comparison indices, Hollywood distribution economics, and interactive archive vault. | • `/culture`<br>• `/culture/entertainment`<br>• `/culture/food-and-drinks`<br>• `/culture/fashion`<br>• `/culture/sports`<br>• `/culture/music-genres`<br>• `/culture/english-language`<br>• `/culture/companies-brands`<br>• `/culture/film-and-storytelling`<br>• `/culture/overview`<br>• `/quality-of-life` |
 | **🌱 Abundance & People** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Demographic & Resource Hooks**: Melding pot and energy production visual spots. | • `/natural-resources`<br>• `/immigration-demographics` |
 | **📊 Data & Media** | **"Editorial Dark"**<br>• Full-bleed masonry / mosaic gallery<br>• Category filter strip with animated transitions<br>• Tactical SVG map with heatmap overlays | • **Cinematic Photo Gallery** (`/gallery`): 210-image masonry archive spanning all site verticals, with category tabs, lightbox zoom, and full bilingual copy.<br>• **U.S. Map Explorer** (`/explorer`): Interactive 50-state SVG map with GDP/population/statehood heatmaps, per-state data panels, search, regional filters, and per-state regional chronicle copy.<br>• **Data Fact Sheet** (`/data`): Curated empirical reference database. | • `/data`<br>• `/gallery`<br>• `/explorer` |
 | **🎮 Interactive Features** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Civic Tools Navigation**: Connects interactive components. | • `/interactive` |
@@ -274,55 +274,66 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 </details>
 
 <details>
-<summary><strong>💡 Innovation & Technology</strong> (Scaffolded)</summary>
+<summary><strong>💡 Innovation & Technology</strong> (Partially Operational)</summary>
 
-- `/innovation` parent page plus subpage scaffolds:
-  - `/innovation/internet-history` (The Internet history)
-  - `/innovation/ai-and-tech` (AI & computing power)
-  - `/innovation/smartphones` (Smartphones revolution)
-  - `/innovation/cloud-computing` (Cloud scaling)
-  - `/innovation/space-technology` (Commercial space tech)
-  - `/innovation/gaming` (Video game industry)
+- `/innovation` — Main hub page detailing the technological ecosystem (R&D budgets, VC percentage, unicorns)
+- `/innovation/ai-and-tech` (AI & computing power, GPUs, generative models, Silicon Valley cluster hubs)
+- `/innovation/cloud-computing` (Hyper-scale datacenter locations, AWS/Azure/Google Cloud footprint)
+- `/innovation/space-technology` (SpaceX launchers, reusable booster systems, GPS navigation networks)
+- Subpage scaffolds:
+  - `/innovation/internet-history` (ARPANET and DARPA history)
+  - `/innovation/smartphones` (iPhone and Android mobile operating systems)
+  - `/innovation/gaming` (Atari to graphics engine systems)
 </details>
 
 <details>
-<summary><strong>🔬 Science & Inventions</strong> (Scaffolded)</summary>
+<summary><strong>🔬 Science & Inventions</strong> (Partially Operational)</summary>
 
-- `/science` parent page plus subpage scaffolds:
-  - `/science/inventions-pre-1890` (Early inventions)
-  - `/science/inventions-1890-1945` (Industrial inventions)
-  - `/science/inventions-post-1991` (Post-War breakthroughs)
-  - `/science/medicine-and-biotech` (Medical biotechnology)
+- `/science` — Main hub page highlighting patent indexes and scientific R&D infrastructure
+- `/science/medicine-and-biotech` (Gene mapping, diagnostic equipment, biomedical startups)
+- `/science/inventions-post-1991` (Digital inventions, software tools, GPS optimization)
+- Subpage scaffolds:
+  - `/science/inventions-pre-1890` (Early industrial inventions)
+  - `/science/inventions-1890-1945` (Industrial-era and war-time inventions)
 </details>
 
 <details>
-<summary><strong>🎓 Higher Education</strong> (Scaffolded)</summary>
+<summary><strong>🎓 Higher Education</strong> (Fully Operational)</summary>
 
-- `/universities` parent page plus subpage scaffolds:
-  - `/universities/ivy-league` (Ivy League)
-  - `/universities/stem-powerhouses` (STEM Powerhouses)
-  - `/universities/business-schools` (Business Schools)
-  - `/universities/public-research-universities` (Public Research)
+- `/universities` — Main hub page outlining higher education parameters and research funding
+- Subpages:
+  - `/universities/ivy-league` (Endowments, academic legacy, and leadership pipelines)
+  - `/universities/stem-powerhouses` (MIT, Caltech, Stanford, and advanced physics labs)
+  - `/universities/business-schools` (Elite MBA ecosystems and entrepreneurial networks)
+  - `/universities/public-research-universities` (Land-grant acts and massive research throughput)
 </details>
 
 <details>
-<summary><strong>🌎 Global Leadership</strong> (Scaffolded)</summary>
+<summary><strong>🌎 Global Leadership</strong> (Partially Operational)</summary>
 
-- `/global-leadership` parent page plus subpage scaffolds:
-  - `/global-leadership/nato` (NATO Alliance)
-  - `/global-leadership/dollar-as-reserve` (Reserve Currency role)
-  - `/global-leadership/soft-power` (Soft Power export)
-  - `/global-leadership/un` (International Institutions)
+- `/global-leadership/nato` (NATO Alliance, collective defense commitments, and command centers)
+- `/global-leadership` (Main hub page scaffold)
+- Subpage scaffolds:
+  - `/global-leadership/dollar-as-reserve` (Reserve currency status and SWIFT system)
+  - `/global-leadership/soft-power` (Soft Power export parameters)
+  - `/global-leadership/un` (Founding role in international organizations)
 </details>
 
 <details>
-<summary><strong>🎭 Culture & Quality of Life</strong> (Scaffolded)</summary>
+<summary><strong>🎭 Culture & Quality of Life</strong> (Fully Operational)</summary>
 
-- `/culture` parent page plus subpage scaffolds:
-  - `/culture/the-american-high-school` (The American High School)
-  - `/culture/american-aesthetics` (American Aesthetics)
-  - `/culture/american-sports` (American Sports & Soft Power)
-- `/quality-of-life` (Quality of Life)
+- `/culture` — "The American Operating System" hub page detailing cultural verticals
+- Subpages:
+  - `/culture/entertainment` (Broadcasting networks, streaming platforms, and gaming distribution)
+  - `/culture/food-and-drinks` (Diner culture, fast food systems, regional barbecue, and industrial logistics)
+  - `/culture/fashion` (Jeans, sneakers, casual wear, and global branding)
+  - `/culture/sports` (NFL, NBA, MLB, and sports entertainment networks)
+  - `/culture/music-genres` (Origins of Jazz, Blues, Rock, and Hip-Hop)
+  - `/culture/english-language` (Global lingua franca statistics and syntax)
+  - `/culture/companies-brands` (Impact of consumer brands on global lifestyle)
+  - `/culture/film-and-storytelling` (Hollywood economics and storytelling templates)
+  - `/culture/overview` (Synthesis of cultural soft power and asymmetry)
+- `/quality-of-life` (Standard of living, income metrics, public health, safety, and wealth indicators)
 </details>
 
 <details>
@@ -359,7 +370,7 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 - `/interactive` (Interactive Features hub page linking to Quiz)
 </details>
 
-The **gallery**, **explorer**, **military** (main + all 6 sub-pages) are now **fully operational** cinematic editorial pages. The culture, quality-of-life, innovation, science, universities, natural-resources, immigration-demographics, global-leadership, interactive, and history subpages are currently clean scaffolds with TODO zones, ready for content drops.
+The **gallery**, **explorer**, **military** (main + all 6 sub-pages), **economy** (main + all 5 sub-pages), **nature** (main + all 6 sub-pages), **constitution** (main + all 8 sub-pages), **culture** (main + all 9 sub-pages), **quality of life**, and **higher education/universities** are now **fully operational** cinematic editorial pages. The innovation, science, global leadership, and history verticals are **partially operational** with key sections completed, while their remaining pages, along with natural-resources and immigration-demographics, are clean scaffolds with TODO zones, ready for content drops.
 
 ## Experience Highlights
 
@@ -377,9 +388,11 @@ The **gallery**, **explorer**, **military** (main + all 6 sub-pages) are now **f
 - local image library with category folders for easier media management
 - Romanian translation mode wired through provider state and cookies
 - custom `STATES` homepage title treatment in `StatesVideoTitle.tsx`
-- **Typographic Legibility & Contrast Hardening**: Comprehensive audit and overhaul of all secondary text, metadata labels, and strategic captions across Nature, Economy, and Military pages to guarantee extreme readability (minimum 14px–16px bold scales) against high-contrast backgrounds.
+- **Typographic Legibility & Contrast Hardening**: Comprehensive audit and overhaul of all secondary text, metadata labels, and strategic captions across Nature, Economy, Culture, and Military pages to guarantee extreme readability (minimum 14px–16px bold scales) against high-contrast backgrounds.
 - **Responsive Chart Polish**: Clean axis grid tick sizing (12px–14px), angled horizontal axis labels, and custom chart gutters/margins across all key metrics to fully support mobile device viewports.
 - **Mobile Header Alignment**: Standardized block span structural wrapping on all large section titles to prevent awkward 3-row page splits or broken words on small screens.
+- **MacroHero & Layout Optimization**: Standardized the `MacroHero` layout spacing and vertical stat elements across Economy, Quality of Life, and Culture pages to eliminate any overlap of statistics and titles on smaller screens.
+- **High-Fidelity Media Assets**: Integrated high-quality, local video background components (such as Apple technology and Michael Jordan sports reels) with built-in mute/unmute audio control.
 
 ## 🛠️ The Sovereignty Tech Stack
 
@@ -1577,8 +1590,8 @@ Strategic milestones for the next phase of development:
 | **Military — Intelligence** | 🇺🇸 **FULLY OPERATIONAL** | CIA/NSA/NRO/NGA/DIA dossiers, Five Eyes geometry, intelligence disciplines, failures case studies |
 | **Gallery** | 🇺🇸 **FULLY OPERATIONAL** | 210-image masonry archive, category filters, lightbox, bilingual copy |
 | **U.S. Map Explorer** | 🇺🇸 **FULLY OPERATIONAL** | 50-state SVG map, GDP/population/statehood heatmaps, per-state panels, search & filter |
-| **Culture Hub** | 🛠️ **BUILDING DEMOCRACY** | Dynamic multimedia grid components scaffolded and content-ready |
-| **Quality of Life** | 🛠️ **BUILDING DEMOCRACY** | Life-satisfaction, metric comparators scaffolded and content-ready |
+| **Culture Hub** | 🇺🇸 **FULLY OPERATIONAL** | Magazine warm editorial, brand marquees, asymmetry matrix, music/food/fashion/sports subpages |
+| **Quality of Life** | 🇺🇸 **FULLY OPERATIONAL** | Standard of living, metrics tracker, public health, and wealth indexes |
 | **Bilingual Translation** | 🟢 **LIVE & RESILIENT** | 100% server + client cookie parity with Romanian getters in `/lib/data` |
 | **Central Media Registry** | 🟢 **LIVE & RESILIENT** | 210+ image assets indexed in `lib/site-images.ts`, 23 base images in `SITE_IMAGES.globalBases` |
 | **Project Documentation** | 🟢 **LIVE & RESILIENT** | Formatted with high-fidelity patriotic design templates and development rules |
