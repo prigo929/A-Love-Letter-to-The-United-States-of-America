@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
+import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
+import {
+  MacroStyles,
+  MacroHero,
+  CountUp,
+  InfrastructureBand,
+} from "@/components/economy/EconomyAnimations";
 import { CultureStyles, CultureBrandLogosMarquee } from "@/components/culture/CulturePageComponents";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Companies & Brands | The American Operating System",
@@ -37,88 +45,212 @@ export default async function CultureCompaniesBrandsPage() {
     brand4Title: "Levi's",
     brand4Desc: isRo ? "Creatorul uniformei globale a modernității: blugii albaștri." : "The creator of modernity's global uniform: blue jeans.",
 
+    statsTitle: isRo ? "FORTĂREAȚA COMMERCIALĂ" : "COMMERCIAL EMPIRE",
+    stat1Label: isRo ? "Cele mai Valoroase Branduri" : "Top Valuable Brands",
+    stat2Label: isRo ? "Portii Coca-Cola / Zi" : "Daily Coke Servings",
+    stat3Label: isRo ? "Tari cu Magazine Nike" : "Nike Markets Reached",
+
+    bandLabel: isRo ? "CALEA LIBERTĂȚII" : "THE HIGHWAY OF FREEDOM",
+    bandTitle: isRo ? "Autostrada visului american" : "The Highway of the American Dream",
+    bandSubtitle: isRo
+      ? "Pe Route 66 sau în inima marilor metropole, brandurile americane au conturat peisajul libertății individuale de mișcare și exprimare."
+      : "Across Route 66 or in the heart of major metros, American brands constructed the physical landscape of individual mobility and personal expression.",
+
     backLink: isRo ? "← Înapoi la Divertisment" : "← Back to Entertainment",
     nextLink: isRo ? "Mâncare și Băuturi →" : "Food & Drinks →",
+    oracleDescription: isRo
+      ? "Întreabă Oracolul AI despre valoarea brandului Apple, istoria Nike, logistica Coca-Cola sau blugii Levi's."
+      : "Ask the AI Oracle about Apple's brand value, Nike's cultural history, Coca-Cola's global distribution, or Levi Strauss history.",
   };
 
   return (
-    <main className="min-h-screen culture-bg pt-32 pb-24 text-[#F5EDD8] font-editorial">
+    <>
+      <MacroStyles />
       <CultureStyles />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <Breadcrumb
-          items={[
-            { label: breadcrumbCulture, href: "/culture" },
-            { label: breadcrumbPage },
-          ]}
-          className="mb-12 font-sans"
-        />
+      {/* Cinematic Hero Banner */}
+      <MacroHero
+        imageSrc={SITE_IMAGES.culture.classicCar}
+        imageAlt="Classic Car reflecting neon signs at Mel's Diner"
+        eyebrow={content.eyebrow}
+        titleLead={isRo ? "BRANDUL" : "THE BRAND"}
+        titleAccent={isRo ? "AMERICAN" : "EMPIRE"}
+        description={content.pullQuote}
+        stats={[
+          {
+            value: "7/10",
+            label: content.stat1Label,
+          },
+          {
+            value: "1.9B",
+            label: content.stat2Label,
+          },
+          {
+            value: "150+",
+            label: content.stat3Label,
+          },
+        ]}
+      />
 
-        {/* Hero */}
-        <section className="mb-20">
-          <span className="culture-text-label block mb-4 text-glory-gold">
-            {content.eyebrow}
-          </span>
-          <h1 className="culture-text-hero mb-8 text-[#F5EDD8]">
-            {content.title}
-          </h1>
+      <div className="bg-[#030405] relative z-10 pb-32 pt-16 font-body text-white">
+        {/* Breadcrumb */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
+          <Breadcrumb
+            items={[
+              { label: breadcrumbCulture, href: "/culture" },
+              { label: breadcrumbPage },
+            ]}
+            className="mb-8"
+          />
+        </div>
 
-          <div className="grid gap-12 lg:grid-cols-3 items-start border-t border-white/10 pt-12 mb-16">
-            <div className="lg:col-span-2 space-y-6">
-              <blockquote className="text-2xl font-editorial italic text-[#F5EDD8]/90 leading-relaxed mb-8 pl-6 border-l-2 border-[#E8391B]">
-                "{content.pullQuote}"
-              </blockquote>
-              <p className="font-sans text-base text-[#F5EDD8]/70 leading-relaxed">
-                {content.body1}
-              </p>
-              <p className="font-sans text-[#F5EDD8]/70 leading-relaxed text-sm">
-                {content.body2}
-              </p>
-            </div>
-            
-            {/* Grid of featured brands */}
-            <div className="culture-glass rounded-2xl p-6 border border-white/5 space-y-4 font-sans text-sm">
-              <div>
-                <h4 className="font-bold text-white">{content.brand1Title}</h4>
-                <p className="text-[#F5EDD8]/60 mt-1 text-xs">{content.brand1Desc}</p>
+        {/* Dynamic Count-Up Stats */}
+        <section className="py-24 border-t border-b border-white/5 bg-white/[0.01] mb-32">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-16 font-semibold">
+              {content.statsTitle}
+            </p>
+            <div className="grid gap-12 sm:grid-cols-3 text-center">
+              <div className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500">
+                <p className="font-macro-display text-5xl md:text-6xl text-[#E8B923] font-black tracking-tight mb-4">
+                  <CountUp value={70} suffix="%" />
+                </p>
+                <p className="font-macro-display text-xl font-bold text-white mb-3">
+                  {isRo ? "Top Branduri Globale" : "Top 10 Global Brands"}
+                </p>
+                <p className="text-xs text-white/50 leading-relaxed font-body">
+                  {isRo
+                    ? "7 din primele 10 cele mai valoroase mărci de pe planetă sunt create în Statele Unite ale Americii."
+                    : "7 of the top 10 most valuable brands on the planet are engineered in the United States."}
+                </p>
               </div>
-              <div className="border-t border-white/5 pt-3">
-                <h4 className="font-bold text-white">{content.brand2Title}</h4>
-                <p className="text-[#F5EDD8]/60 mt-1 text-xs">{content.brand2Desc}</p>
+              <div className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500">
+                <p className="font-macro-display text-5xl md:text-6xl text-[#E8B923] font-black tracking-tight mb-4">
+                  <CountUp value={1900} suffix="M" />
+                </p>
+                <p className="font-macro-display text-xl font-bold text-white mb-3">
+                  {isRo ? "Serviri Zilnice Coke" : "Daily Coke Servings"}
+                </p>
+                <p className="text-xs text-white/50 leading-relaxed font-body">
+                  {isRo
+                    ? "Produsele Coca-Cola sunt consumate de 1,9 miliarde de ori în fiecare zi în peste 200 de țări."
+                    : "Coca-Cola products are consumed 1.9 billion times every single day across over 200 nations."}
+                </p>
               </div>
-              <div className="border-t border-white/5 pt-3">
-                <h4 className="font-bold text-white">{content.brand3Title}</h4>
-                <p className="text-[#F5EDD8]/60 mt-1 text-xs">{content.brand3Desc}</p>
-              </div>
-              <div className="border-t border-white/5 pt-3">
-                <h4 className="font-bold text-white">{content.brand4Title}</h4>
-                <p className="text-[#F5EDD8]/60 mt-1 text-xs">{content.brand4Desc}</p>
+              <div className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500">
+                <p className="font-macro-display text-5xl md:text-6xl text-[#E8B923] font-black tracking-tight mb-4">
+                  <CountUp value={150} suffix="+" />
+                </p>
+                <p className="font-macro-display text-xl font-bold text-white mb-3">
+                  {isRo ? "Piețe Internaționale" : "International Markets"}
+                </p>
+                <p className="text-xs text-white/50 leading-relaxed font-body">
+                  {isRo
+                    ? "Brandurile americane conduc distribuția globală, definind standardele de stil urban."
+                    : "US brands drive worldwide distribution network systems, defining urban fashion standards."}
+                </p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Editorial Essay & Featured Brands */}
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
+          <div className="grid gap-12 lg:grid-cols-3 items-start">
+            <div className="lg:col-span-2 space-y-6">
+              <h2 className="font-macro-display text-3xl font-bold text-[#E8B923] mb-6">
+                {content.title}
+              </h2>
+              <p className="font-macro-body text-white/80 text-lg md:text-xl leading-relaxed mb-6">
+                {content.body1}
+              </p>
+              <p className="font-macro-body text-white/70 text-base md:text-lg leading-relaxed">
+                {content.body2}
+              </p>
+            </div>
+
+            {/* Featured brands sidebar container */}
+            <div className="culture-glass rounded-3xl p-8 border border-white/5 space-y-6 font-sans">
+              <h3 className="font-macro-display text-lg font-bold text-glory-gold border-b border-white/10 pb-3 uppercase tracking-wider">
+                {isRo ? "Pilonii Logo-ului" : "Logo Pillars"}
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-bold text-white text-base">{content.brand1Title}</h4>
+                  <p className="text-[#F5EDD8]/60 mt-1 text-xs leading-relaxed">{content.brand1Desc}</p>
+                </div>
+                <div className="border-t border-white/5 pt-4">
+                  <h4 className="font-bold text-white text-base">{content.brand2Title}</h4>
+                  <p className="text-[#F5EDD8]/60 mt-1 text-xs leading-relaxed">{content.brand2Desc}</p>
+                </div>
+                <div className="border-t border-white/5 pt-4">
+                  <h4 className="font-bold text-white text-base">{content.brand3Title}</h4>
+                  <p className="text-[#F5EDD8]/60 mt-1 text-xs leading-relaxed">{content.brand3Desc}</p>
+                </div>
+                <div className="border-t border-white/5 pt-4">
+                  <h4 className="font-bold text-white text-base">{content.brand4Title}</h4>
+                  <p className="text-[#F5EDD8]/60 mt-1 text-xs leading-relaxed">{content.brand4Desc}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Parallax Band — Route 66 */}
+        <InfrastructureBand
+          imageSrc={SITE_IMAGES.culture.route66}
+          imageAlt="Route 66 Sunrise Highway"
+        >
+          <div className="relative z-10 text-center md:text-left">
+            <span className="macro-eyebrow mb-2 block">
+              {content.bandLabel}
+            </span>
+            <h2 className="macro-section-title text-white mb-4">
+              {content.bandTitle}
+            </h2>
+            <p className="macro-body text-white/70 max-w-3xl leading-relaxed">
+              {content.bandSubtitle}
+            </p>
+          </div>
+        </InfrastructureBand>
+
         {/* Brand Logos Marquee */}
-        <section className="mb-20">
-          <CultureBrandLogosMarquee />
+        <section className="py-24 border-t border-b border-white/5 bg-white/[0.01] my-32">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-16 font-semibold">
+              {isRo ? "MARCI ICONICE IN COLECTIV" : "ICONIC CORPORATIONS IN THE COLLECTIVE"}
+            </p>
+            <CultureBrandLogosMarquee />
+          </div>
         </section>
 
         {/* Navigation */}
-        <div className="flex items-center justify-between border-t border-white/10 pt-12 mt-16 font-sans">
-          <a
-            href="/culture/entertainment"
-            className="text-xs uppercase tracking-widest text-[#F5EDD8]/50 hover:text-white transition-colors"
-          >
-            {content.backLink}
-          </a>
-          <a
-            href="/culture/food-and-drinks"
-            className="text-xs uppercase tracking-widest text-glory-gold hover:text-white transition-colors"
-          >
-            {content.nextLink}
-          </a>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between border-t border-white/10 pt-12">
+            <a
+              href="/culture/entertainment"
+              className="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors font-mono"
+            >
+              {content.backLink}
+            </a>
+            <a
+              href="/culture/food-and-drinks"
+              className="text-xs uppercase tracking-widest text-[#E8B923] hover:text-white transition-colors font-mono"
+            >
+              {content.nextLink}
+            </a>
+          </div>
+        </div>
+
+        {/* AI Oracle */}
+        <div className="mt-32">
+          <AskAmericaCTA
+            locale={locale}
+            descriptionEn={content.oracleDescription}
+            descriptionRo={content.oracleDescription}
+          />
         </div>
       </div>
-    </main>
+    </>
   );
 }

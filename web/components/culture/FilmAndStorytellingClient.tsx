@@ -21,8 +21,11 @@ import {
 } from "lucide-react";
 import { GalleryImage } from "@/lib/data/gallery";
 import { CultureStyles } from "./CulturePageComponents";
-import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { SITE_IMAGES } from "@/lib/site-images";
+import { 
+  MacroStyles, 
+  MacroHero 
+} from "@/components/economy/EconomyAnimations";
 
 interface FilmAndStorytellingClientProps {
   filmImages: GalleryImage[];
@@ -445,65 +448,42 @@ export function FilmAndStorytellingClient({
   return (
     <div className="culture-bg text-[#F5EDD8] min-h-screen relative overflow-hidden">
       <CultureStyles />
+      <MacroStyles />
 
-      {/* ─── §1 Full-Bleed Cinematic Hero Banner ─── */}
-      <div className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden border-b border-white/5 bg-[#080504]">
-        {/* Background Image Layer */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={SITE_IMAGES.culture.hollywoodSign}
-            alt="Hollywood sign sunset"
-            fill
-            priority
-            className="object-cover opacity-25 scale-102 select-none pointer-events-none filter blur-[1px]"
-          />
-          {/* Ambient Film Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0C0907] via-[#0C0907]/60 to-transparent" />
-          <div className="absolute inset-0 bg-black/30" />
-          {/* Subtle grid pattern */}
-          <div className="absolute inset-0 bg-star-pattern-grid opacity-[0.03] pointer-events-none" />
-        </div>
-
-        {/* Hero typography */}
-        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center space-y-6 pt-10">
-          {/* Integrated Breadcrumb trail */}
-          <div className="flex justify-center mb-4">
-            <nav
-              aria-label={isRo ? "Fir de navigare" : "Breadcrumb"}
-              className="flex items-center gap-1.5 font-body text-xs text-[#F5EDD8]/40 font-sans tracking-wide"
-            >
-              <Link href="/" className="hover:text-white transition-colors flex items-center">
-                <Home className="h-3.5 w-3.5" />
-              </Link>
-              <ChevronRight className="h-3 w-3 opacity-30 shrink-0" />
-              <Link href="/culture" className="hover:text-white transition-colors">
-                {isRo ? "Cultură" : "Culture"}
-              </Link>
-              <ChevronRight className="h-3 w-3 opacity-30 shrink-0" />
-              <span className="text-[#F5EDD8]/80 font-medium">
-                {isRo ? "Film și Narativă" : "Film & Storytelling"}
-              </span>
-            </nav>
-          </div>
-
-          <span className="text-[10px] font-sans font-bold tracking-[0.35em] uppercase text-glory-gold block">
-            {hollywoodData.eyebrow}
-          </span>
-          
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-editorial font-bold text-white tracking-tight uppercase leading-[0.95] drop-shadow-2xl">
-            {hollywoodData.headline}
-          </h1>
-
-          <p className="max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-[#F5EDD8]/75 font-sans leading-relaxed pt-2">
-            {isRo 
-              ? "Hollywood-ul a generat codul vizual prin care întreaga planetă își spune poveștile, își expune valorile și își imaginează viitorul."
-              : "Hollywood generated the visual syntax through which the entire planet tells its stories, projects its values, and dreams of the future."}
-          </p>
-        </div>
-      </div>
+      {/* Cinematic Hero */}
+      <MacroHero 
+        eyebrow={hollywoodData.eyebrow}
+        titleLead={hollywoodData.headline}
+        titleAccent=""
+        description={isRo 
+          ? "Hollywood-ul a generat codul vizual prin care întreaga planetă își spune poveștile, își expune valorile și își imaginează viitorul."
+          : "Hollywood generated the visual syntax through which the entire planet tells its stories, projects its values, and dreams of the future."}
+        imageSrc={SITE_IMAGES.culture.hollywoodSign}
+        imageAlt="Hollywood sign sunset"
+        stats={hollywoodData.stats.map(s => ({ value: s.value, label: s.label }))}
+      />
 
       {/* Main Content Area */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 font-editorial">
+        {/* Integrated Breadcrumb trail */}
+        <div className="flex justify-start mb-12">
+          <nav
+            aria-label={isRo ? "Fir de navigare" : "Breadcrumb"}
+            className="flex items-center gap-1.5 font-body text-sm text-white/50 font-sans tracking-wide"
+          >
+            <Link href="/" className="hover:text-white transition-colors flex items-center">
+              <Home className="h-3.5 w-3.5" />
+            </Link>
+            <ChevronRight className="h-3 w-3 opacity-30 shrink-0" />
+            <Link href="/culture" className="hover:text-white transition-colors">
+              {isRo ? "Cultură" : "Culture"}
+            </Link>
+            <ChevronRight className="h-3 w-3 opacity-30 shrink-0" />
+            <span className="text-white font-medium">
+              {isRo ? "Film și Narativă" : "Film & Storytelling"}
+            </span>
+          </nav>
+        </div>
         {/* Hero Quote & Editorial */}
         <section className="mb-24">
           <div className="grid gap-12 lg:grid-cols-3 items-center">
