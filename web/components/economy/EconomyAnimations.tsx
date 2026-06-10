@@ -47,6 +47,11 @@ export function MacroStyles() {
         text-transform: uppercase;
       }
 
+      .macro-hero-accent {
+        font-size: clamp(30px, 6.5vw, 95px);
+        word-break: keep-all;
+      }
+
       .macro-section-title {
         font-family: var(--font-macro-display);
         font-size: clamp(36px, 4vw, 80px);
@@ -209,7 +214,7 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
                   <span key={i} className="block">{line}</span>
                 ))}
               </span>
-              <span className="block text-[#E8B923]">
+              <span className="block text-[#E8B923] macro-hero-accent">
                 {titleAccent.split('\n').map((line, i) => (
                   <span key={i} className="block">{line}</span>
                 ))}
