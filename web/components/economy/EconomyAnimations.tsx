@@ -37,18 +37,18 @@ export function MacroStyles() {
         color: var(--macro-text);
       }
 
-      /* Typographic Scale */
       .macro-hero-title {
         font-family: var(--font-macro-display);
-        font-size: clamp(60px, 8vw, 140px);
+        font-size: clamp(38px, 8vw, 140px);
         font-weight: 900;
         line-height: 0.95;
         letter-spacing: -0.02em;
         text-transform: uppercase;
+        overflow-wrap: normal;
+        word-break: normal;
       }
 
       .macro-hero-accent {
-        font-size: clamp(30px, 6.5vw, 95px);
         word-break: keep-all;
       }
 
