@@ -96,6 +96,46 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </span>
 </p>
 
+<p align="center">
+  <img src="web/IMAGES/Landscapes/Grand Canyon National Park.jpg" width="600" alt="Grand Canyon: The Monument of Deep Time" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <span style="display: block; max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase;">★ "The Monument of Deep Time" ★</strong>
+    The breathtaking expanse of the Grand Canyon in Arizona, showcasing the vast, untouched geological heritage and natural scale of the American West.
+  </span>
+</p>
+
+<p align="center">
+  <img src="web/IMAGES/Technology/Commercial Space & SpaceX/SpaceX launch.jpg" width="600" alt="SpaceX Launch: Conquering the Orbital Commons" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <span style="display: block; max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase;">★ "Conquering the Orbital Commons" ★</strong>
+    A commercial space launch lighting up the Florida sky, representing the private aerospace revolution and the expansion of American technology into Earth orbit and beyond.
+  </span>
+</p>
+
+<p align="center">
+  <img src="web/IMAGES/Military/Navy/us-navy-gerald-ford-carrier.jpg" width="600" alt="USS Gerald R. Ford Strike Group: Shield of Liberty" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <span style="display: block; max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase;">★ "The Absolute Shield of Liberty" ★</strong>
+    The USS Gerald R. Ford carrier strike group navigating blue ocean waters, illustrating the global reach, deterrent capability, and naval power projection of the United States.
+  </span>
+</p>
+
+<p align="center">
+  <img src="web/IMAGES/Landscapes/Mount Denali National Park.jpg" width="600" alt="Denali: Apex of North America" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <span style="display: block; max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase;">★ "The Apex of North America" ★</strong>
+    Mount Denali rising majestically above the Alaskan wilderness, symbolizing the raw, untamed grandeur of America's northern frontier and its massive public conservation networks.
+  </span>
+</p>
+
+<p align="center">
+  <img src="web/IMAGES/US Buildings/US Capitol.jpg" width="600" alt="US Capitol Dome: Sanctuary of the Republic" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <span style="display: block; max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase;">★ "The Sanctuary of the Republic" ★</strong>
+    The neoclassical dome of the United States Capitol in Washington, D.C., representing the architectural focus and historical continuity of representative democracy.
+  </span>
+</p>
+
 ---
 
 ## 🦅 Quick Snapshot (Core Architecture)
