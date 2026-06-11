@@ -114,8 +114,8 @@ const copyEn: AiCopy = {
   softwareTitle: "The Programming Moat: CUDA and the US Framework Monopoly",
   softwareParagraph1: "Silicon hardware is useless without compiler software to orchestrate parallel computations. The ultimate lock-in of the American AI stack is the software layer, anchored by Nvidia's CUDA (Compute Unified Device Architecture) platform. Launched in 2006, CUDA has received nearly two decades of continuous optimization, creating a developer ecosystem so deeply integrated that porting AI workloads to non-Nvidia hardware is exceptionally difficult and costly.",
   softwareParagraph2: "On top of the compiler layer lie the neural network frameworks. PyTorch, originally developed by Meta, and TensorFlow, created by Google, are the standard tools used by virtually every AI engineer on Earth. Because these open-source frameworks are engineered and maintained in the United States, they are naturally optimized first for American silicon, creating a self-reinforcing flywheel that keeps global AI development bound to the American software toolchain.",
-  softwareCudaTitle: "NVIDIA CUDA Kernel (Parallel Compute)",
-  softwarePytorchTitle: "PyTorch Neural Net Model Definition",
+  softwareCudaTitle: "NVIDIA CUDA Fused RMSNorm Kernel",
+  softwarePytorchTitle: "PyTorch Llama Attention Layer",
   labsLabel: "FRONTIER COGNITION",
   labsTitle: "Frontier Labs: Orchestrating the Mind",
   labsSubtitle: "The most advanced foundation models on Earth are conceptualized, trained, and scaled by American research institutions.",
@@ -204,8 +204,8 @@ const copyRo: AiCopy = {
   softwareTitle: "Monopolul pe Software: CUDA și Ecosistemul Cadrelor de Lucru",
   softwareParagraph1: "Hardware-ul din siliciu este inutil fără un software de compilare care să coordoneze calculele paralele. Adevărata barieră de intrare în ecosistemul AI este stratul software, ancorat de platforma CUDA (Compute Unified Device Architecture) de la Nvidia. Lansată în 2006, CUDA a primit aproape două decenii de optimizare continuă, creând un ecosistem de dezvoltatori atât de integrat încât rularea sarcinilor AI pe alt hardware în afară de cel de la Nvidia este extrem de dificilă și costisitoare.",
   softwareParagraph2: "Deasupra stratului de compilare se află cadrele de lucru pentru rețele neuronale. PyTorch, dezvoltat inițial de Meta, și TensorFlow, creat de Google, sunt instrumentele standard utilizate de practic fiecare inginer AI din lume. Deoarece aceste instrumente open-source sunt proiectate și întreținute în Statele Unite, ele sunt optimizate din start pentru siliciul american, creând un cerc virtuos care menține dezvoltarea globală de AI strâns legată de lanțul de instrumente software din SUA.",
-  softwareCudaTitle: "Kernel NVIDIA CUDA (Calcul Paralel)",
-  softwarePytorchTitle: "Definiție Model Rețea Neuronală în PyTorch",
+  softwareCudaTitle: "Kernel Fuzionat RMSNorm NVIDIA CUDA",
+  softwarePytorchTitle: "Strat de Atenție Llama în PyTorch",
   labsLabel: "COGNIȚIA DE FRONTIERĂ",
   labsTitle: "Laboratoarele de Frontieră: Dirijarea Inteligenței",
   labsSubtitle: "Cele mai avansate modele de bază din lume sunt conceptualizate, antrenate și scalate de instituții de cercetare americane.",
@@ -441,22 +441,38 @@ export default async function AiAndTechPage() {
                   <span className="text-[#2ac3de]">CUDA C++</span>
                 </div>
                 <pre className="whitespace-pre">
-{`// CUDA kernel executing parallel element-wise activation
-`}<span className="text-[#bb9af2]">__global__</span> <span className="text-[#2ac3de]">void</span> <span className="text-[#7aa2f7]">relu_activation_kernel</span>(<span className="text-[#2ac3de]">float</span>* out, <span className="text-[#bb9af2]">const</span> <span className="text-[#2ac3de]">float</span>* in, <span className="text-[#2ac3de]">int</span> size) {"{"}
-    <span className="text-[#2ac3de]">int</span> idx = blockIdx.x * blockDim.x + threadIdx.x;
-    <span className="text-[#bb9af2]">if</span> (idx {"<"} size) {"{"}
-        out[idx] = in[idx] {">"} <span className="text-[#ff9e64]">0.0f</span> ? in[idx] : <span className="text-[#ff9e64]">0.0f</span>;
+{`// CUDA kernel: Parallel RMSNorm execution targeting Tensor Cores
+`}<span className="text-[#bb9af2]">__global__</span> <span className="text-[#2ac3de]">void</span> <span className="text-[#7aa2f7]">rms_norm_kernel</span>(<span className="text-[#2ac3de]">float</span>* out, <span className="text-[#bb9af2]">const</span> <span className="text-[#2ac3de]">float</span>* in, <span className="text-[#bb9af2]">const</span> <span className="text-[#2ac3de]">float</span>* weight, <span className="text-[#2ac3de]">float</span> eps, <span className="text-[#2ac3de]">int</span> size) {"{"}
+    <span className="text-[#2ac3de]">int</span> row_idx = blockIdx.x; <span className="text-[#565f89]">// Thread block processes one matrix row</span>
+    <span className="text-[#2ac3de]">int</span> col_idx = threadIdx.x; <span className="text-[#565f89]">// Threads parallelize columns</span>
+    
+    <span className="text-[#bb9af2]">__shared__</span> <span className="text-[#2ac3de]">float</span> s_variance;
+    <span className="text-[#2ac3de]">float</span> sum = <span className="text-[#ff9e64]">0.0f</span>;
+    
+    <span className="text-[#565f89]">// Accumulate squared sum</span>
+    <span className="text-[#bb9af2]">for</span> (<span className="text-[#2ac3de]">int</span> i = col_idx; i {"<"} size; i += blockDim.x) {"{"}
+        <span className="text-[#2ac3de]">float</span> val = in[row_idx * size + i];
+        sum += val * val;
+    {"}"}
+    
+    <span className="text-[#565f89]">// Parallel reduction in shared memory</span>
+    <span className="text-[#2ac3de]">float</span> block_sum = block_reduce_sum(sum);
+    <span className="text-[#bb9af2]">if</span> (col_idx == <span className="text-[#ff9e64]">0</span>) {"{"}
+        s_variance = rsqrtf(block_sum / size + eps);
+    {"}"}
+    <span className="text-[#7aa2f7]">__syncthreads</span>();
+    
+    <span className="text-[#565f89]">// Normalize and scale with weights</span>
+    <span className="text-[#bb9af2]">for</span> (<span className="text-[#2ac3de]">int</span> i = col_idx; i {"<"} size; i += blockDim.x) {"{"}
+        <span className="text-[#2ac3de]">int</span> idx = row_idx * size + i;
+        out[idx] = in[idx] * s_variance * weight[i];
     {"}"}
 {"}"}
 
-<span className="text-[#2ac3de]">void</span> <span className="text-[#7aa2f7]">launch_relu</span>(<span className="text-[#2ac3de]">float</span>* d_out, <span className="text-[#2ac3de]">float</span>* d_in, <span className="text-[#2ac3de]">int</span> size) {"{"}
-    <span className="text-[#2ac3de]">int</span> threads_per_block = <span className="text-[#ff9e64]">256</span>;
-    <span className="text-[#2ac3de]">int</span> blocks_per_grid = (size + threads_per_block - <span className="text-[#ff9e64]">1</span>) / threads_per_block;
-    
-    <span className="text-[#565f89]">// Launch kernel on GPU hardware grids</span>
-    relu_activation_kernel{"<<<"}blocks_per_grid, threads_per_block{">>>"}(d_out, d_in, size);
-    
-    <span className="text-[#565f89]">// Synchronize H100 hardware thread barriers</span>
+<span className="text-[#2ac3de]">void</span> <span className="text-[#7aa2f7]">launch_rms_norm</span>(<span className="text-[#2ac3de]">float</span>* d_out, <span className="text-[#2ac3de]">float</span>* d_in, <span className="text-[#2ac3de]">float</span>* d_weight, <span className="text-[#2ac3de]">int</span> rows, <span className="text-[#2ac3de]">int</span> cols) {"{"}
+    <span className="text-[#2ac3de]">int</span> threads = <span className="text-[#ff9e64]">1024</span>;
+    <span className="text-[#565f89]">// Launch row blocks to utilize parallel grid streaming</span>
+    rms_norm_kernel{"<<<"}rows, threads{">>>"}(d_out, d_in, d_weight, <span className="text-[#ff9e64]">1e-5f</span>, cols);
     <span className="text-[#7aa2f7]">cudaDeviceSynchronize</span>();
 {"}"}</pre>
               </div>
@@ -470,25 +486,36 @@ export default async function AiAndTechPage() {
                 <pre className="whitespace-pre">
 <span className="text-[#bb9af2]">import</span> torch
 <span className="text-[#bb9af2]">import</span> torch.nn <span className="text-[#bb9af2]">as</span> nn
+<span className="text-[#bb9af2]">import</span> math
 
-<span className="text-[#bb9af2]">class</span> <span className="text-[#2ac3de]">FrontierNeuralNet</span>(nn.Module):
+<span className="text-[#bb9af2]">class</span> <span className="text-[#2ac3de]">LlamaAttentionBlock</span>(nn.Module):
     <span className="text-[#bb9af2]">def</span> <span className="text-[#7aa2f7]">__init__</span>(<span className="text-[#bb9af2]">self</span>, d_model=<span className="text-[#ff9e64]">4096</span>, n_heads=<span className="text-[#ff9e64]">32</span>):
         <span className="text-[#7aa2f7]">super</span>().__init__()
-        <span className="text-[#565f89]"># Core Attention Mechanism targeting H100 clusters</span>
-        <span className="text-[#bb9af2]">self</span>.attn = nn.MultiheadAttention(embed_dim=d_model, num_heads=n_heads)
-        <span className="text-[#bb9af2]">self</span>.mlp = nn.Sequential(
-            nn.Linear(d_model, d_model * <span className="text-[#ff9e64]">4</span>),
-            nn.ReLU(),
-            nn.Linear(d_model * <span className="text-[#ff9e64]">4</span>, d_model)
-        )
+        <span className="text-[#bb9af2]">self</span>.n_heads = n_heads
+        <span className="text-[#bb9af2]">self</span>.head_dim = d_model // n_heads
+        
+        <span className="text-[#565f89]"># Projection weights targeting Tensor Cores</span>
+        <span className="text-[#bb9af2]">self</span>.q_proj = nn.Linear(d_model, d_model, bias=<span className="text-[#bb9af2]">False</span>)
+        <span className="text-[#bb9af2]">self</span>.k_proj = nn.Linear(d_model, d_model, bias=<span className="text-[#bb9af2]">False</span>)
+        <span className="text-[#bb9af2]">self</span>.v_proj = nn.Linear(d_model, d_model, bias=<span className="text-[#bb9af2]">False</span>)
+        <span className="text-[#bb9af2]">self</span>.o_proj = nn.Linear(d_model, d_model, bias=<span className="text-[#bb9af2]">False</span>)
 
     <span className="text-[#bb9af2]">def</span> <span className="text-[#7aa2f7]">forward</span>(<span className="text-[#bb9af2]">self</span>, x):
-        attn_out, _ = <span className="text-[#bb9af2]">self</span>.attn(x, x, x)
-        x = x + attn_out
-        <span className="text-[#bb9af2]">return</span> x + <span className="text-[#bb9af2]">self</span>.mlp(x)
+        b, s, d = x.shape
+        q = <span className="text-[#bb9af2]">self</span>.q_proj(x).view(b, s, <span className="text-[#bb9af2]">self</span>.n_heads, <span className="text-[#bb9af2]">self</span>.head_dim).transpose(<span className="text-[#ff9e64]">1</span>, <span className="text-[#ff9e64]">2</span>)
+        k = <span className="text-[#bb9af2]">self</span>.k_proj(x).view(b, s, <span className="text-[#bb9af2]">self</span>.n_heads, <span className="text-[#bb9af2]">self</span>.head_dim).transpose(<span className="text-[#ff9e64]">1</span>, <span className="text-[#ff9e64]">2</span>)
+        v = <span className="text-[#bb9af2]">self</span>.v_proj(x).view(b, s, <span className="text-[#bb9af2]">self</span>.n_heads, <span className="text-[#bb9af2]">self</span>.head_dim).transpose(<span className="text-[#ff9e64]">1</span>, <span className="text-[#ff9e64]">2</span>)
+        
+        <span className="text-[#565f89]"># Scaled dot-product attention executed on GPU</span>
+        scores = torch.matmul(q, k.transpose(-<span className="text-[#ff9e64]">2</span>, -<span className="text-[#ff9e64]">1</span>)) / math.sqrt(<span className="text-[#bb9af2]">self</span>.head_dim)
+        attn = torch.softmax(scores, dim=-<span className="text-[#ff9e64]">1</span>)
+        context = torch.matmul(attn, v)
+        
+        context = context.transpose(<span className="text-[#ff9e64]">1</span>, <span className="text-[#ff9e64]">2</span>).contiguous().view(b, s, d)
+        <span className="text-[#bb9af2]">return</span> <span className="text-[#bb9af2]">self</span>.o_proj(context)
 
-<span className="text-[#565f89]"># Instantiate and push parameters directly to CUDA device memory</span>
-model = FrontierNeuralNet().to(<span className="text-[#9ece6a]">"cuda"</span>)</pre>
+# Move parameters and allocate directly in CUDA memory
+model = LlamaAttentionBlock().to(<span className="text-[#9ece6a]">"cuda"</span>)</pre>
               </div>
             </div>
           </div>
