@@ -1,53 +1,236 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
+import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
+import InventionsDashboard from "@/components/interactive/InventionsDashboard";
+import { INVENTIONS_1890_1945 } from "@/lib/data/inventions-1890-1945-data";
+import { 
+  Plane, 
+  Settings, 
+  Orbit, 
+  Flame, 
+  ExternalLink,
+  Shield,
+  Lightbulb,
+  FileText
+} from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Inventions 1890-1945 | Science",
-  description: "An empty layout scaffold for the Inventions 1890-1945 page.",
+  title: "Rise of the Machine Age (1890–1945) | Science & Inventions",
+  description: "Explore the era of speed and power: from the Wright Brothers' airplane and Ford's assembly line to Goddard's liquid rocket and the Manhattan Project.",
 };
+
+interface Inventions1890To1945Copy {
+  breadcrumbParent: string;
+  breadcrumbPage: string;
+  heroTagline: string;
+  heroTitle: string;
+  heroSubtitle: string;
+  thesisTitle: string;
+  thesisParagraph1: string;
+  thesisParagraph2: string;
+  featuredTitle: string;
+  archiveTitle: string;
+  archiveSubtitle: string;
+  oracleDescription: string;
+}
+
+const copyEn: Inventions1890To1945Copy = {
+  breadcrumbParent: "Science & Inventions",
+  breadcrumbPage: "Inventions 1890–1945",
+  heroTagline: "THE MACHINE & WAR TIME ERA",
+  heroTitle: "Architects of Speed and Power",
+  heroSubtitle: "How the convergence of industrial scaling, corporate research labs, and wartime mobilization accelerated American technological dominance.",
+  thesisTitle: "Mass Production and the Crucible of Global War",
+  thesisParagraph1: "Between 1890 and 1945, the United States transitioned from an emerging industrial player to the industrial and scientific workshop of the world. The era was defined by scaling: the invention of the assembly line transformed luxury items into accessible consumer goods, and electrical networks expanded across the country. American ingenuity shifted from solitary inventors to structured research labs, like those of General Electric, DuPont, and Bell Labs.",
+  thesisParagraph2: "This era of scaling reached its absolute peak under the extreme crucible of World War II. Facing existential global threats, the U.S. government coordinated with private corporations and elite universities under the Office of Scientific Research and Development. This mobilization produced radar, mass-produced penicillin, synthetic rubber, and ultimately the atomic bomb, establishing a federally-funded scientific infrastructure that continues to define global technology.",
+  featuredTitle: "Pivotal 1890-1945 Inventions",
+  archiveTitle: "The Machine Age archives",
+  archiveSubtitle: "Explore the full, detailed history of 234 American inventions from the Progressive Era, the Roaring Twenties, and World War II.",
+  oracleDescription: "Ask the AI Oracle about the Wright brothers' airplane, Henry Ford's assembly line, Robert Goddard's rockets, or the Manhattan Project."
+};
+
+const copyRo: Inventions1890To1945Copy = {
+  breadcrumbParent: "Știință și Invenții",
+  breadcrumbPage: "Invenții 1890–1945",
+  heroTagline: "ERA MAȘINILOR ȘI A RĂZBOIULUI",
+  heroTitle: "Arhitecții Vitezei și ai Puterii",
+  heroSubtitle: "Cum convergența dezvoltării industriale, a laboratoarelor de cercetare corporative și a mobilizării din timpul războiului a accelerat dominația tehnologică americană.",
+  thesisTitle: "Producția de Masă și Al Doilea Război Mondial",
+  thesisParagraph1: "Între 1890 și 1945, Statele Unite au trecut de la statutul de jucător industrial emergent la cel de atelier industrial și științific al lumii. Era a fost definită de scalare: inventarea benzii de asamblare a transformat articolele de lux în bunuri de larg consum accesibile, iar rețelele electrice s-au extins în întreaga țară. Ingeniozitatea s-a mutat de la inventatori solitari la laboratoare de cercetare organizate.",
+  thesisParagraph2: "Această epocă a atins apogeul în timpul celui de-al Doilea Război Mondial. Confruntându-se cu amenințări globale, guvernul SUA a colaborat cu corporații private și universități de elită în cadrul Biroului de Cercetare și Dezvoltare Științifică. Această mobilizare de forțe a produs radarul, penicilina de masă, cauciucul sintetic și, în cele din urmă, bomba atomică, stabilind o infrastructură științifică de vârf.",
+  featuredTitle: "Invenții Pivotale între 1890 și 1945",
+  archiveTitle: "Arhivele Erei Mașinilor",
+  archiveSubtitle: "Explorează istoria detaliată a celor 234 de invenții americane din Epoca Progresistă, Anii Nebuni și al Doilea Război Mondial.",
+  oracleDescription: "Întreabă Oracolul AI despre avionul fraților Wright, linia de asamblare a lui Henry Ford, rachetele lui Robert Goddard sau Proiectul Manhattan."
+};
+
+// Key Featured Inventions Data (Fully Localized for Depth and Detail)
+const featuredInventions = [
+  {
+    year: "1903",
+    titleEn: "The Airplane",
+    titleRo: "Avionul (Aparatul de Zbor Motorizat)",
+    inventor: "Orville & Wilbur Wright",
+    icon: Plane,
+    descEn: "At Kitty Hawk, North Carolina, the Wright brothers achieved the first controlled, sustained, and powered flight of a heavier-than-air aircraft. Through their pioneering research in three-axis control, they solved the fundamental aerodynamic stability problems that had blocked flight for centuries, launching the modern aviation age.",
+    descRo: "La Kitty Hawk, Carolina de Nord, frații Wright au realizat primul zbor controlat, susținut și propulsat al unui aparat mai greu decât aerul. Prin cercetările lor în controlul pe trei axe, au rezolvat problemele fundamentale de stabilitate aerodinamică, deschizând era aviației moderne."
+  },
+  {
+    year: "1913",
+    titleEn: "The Moving Assembly Line",
+    titleRo: "Banda de Asamblare în Flux",
+    inventor: "Henry Ford",
+    icon: Settings,
+    descEn: "Ford revolutionized industrial manufacturing by installing the first moving assembly line for the mass production of the Model T. By dividing labor, standardizing parts, and bringing the work directly to the worker, he cut chassis assembly time from 12 hours to 93 minutes, making cars affordable to the working class.",
+    descRo: "Ford a revoluționat producția industrială prin instalarea primei linii de asamblare în mișcare pentru producția în masă a Modelului T. Împărțind munca și standardizând piesele, a redus timpul de asamblare a șasiului de la 12 ore la 93 de minute, făcând mașinile accesibile clasei muncitoare."
+  },
+  {
+    year: "1926",
+    titleEn: "The Liquid-Fuel Rocket",
+    titleRo: "Racheta cu Combustibil Lichid",
+    inventor: "Robert Goddard",
+    icon: Orbit,
+    descEn: "Goddard launched the world's first liquid-propellant rocket in Auburn, Massachusetts. Using gasoline and liquid oxygen, the flight lasted 2.5 seconds and reached 41 feet, proving that liquid propulsion was physically possible. This breakthrough laid the direct structural foundation for Apollo lunar flights and modern space travel.",
+    descRo: "Goddard a lansat prima rachetă din lume cu combustibil lichid în Auburn, Massachusetts. Folosind benzină și oxigen lichid, zborul a durat 2,5 secunde și a atins o înălțime de 12 metri. Această descoperire a pus bazele structurale ale zborurilor lunare Apollo și explorării spațiale moderne."
+  },
+  {
+    year: "1945",
+    titleEn: "The Atomic Bomb (Nuclear Fission)",
+    titleRo: "Bomba Atomică (Proiectul Manhattan)",
+    inventor: "J. Robert Oppenheimer & Team",
+    icon: Shield,
+    descEn: "Under the extreme urgency of WWII, the US government mobilized the Manhattan Project—the largest scientific collaboration in history. Culminating in the Trinity test in July 1945, this breakthrough harnessed controlled nuclear fission, bringing a rapid end to WWII and thrusting humanity into the nuclear age.",
+    descRo: "Sub urgența extremă a celui de-al Doilea Război Mondial, guvernul SUA a organizat Proiectul Manhattan - cea mai mare colaborare științifică din istorie. Culminând cu testul Trinity în iulie 1945, această descoperire a stăpânit fisiunea nucleară controlată, punând capăt războiului."
+  }
+];
 
 export default async function Inventions1890To1945Page() {
   const locale = await getServerLocale();
-  const breadcrumbParent = locale === "ro" ? "Știință și Invenții" : "Science & Inventions";
-  const breadcrumbPage = locale === "ro" ? "Invenții 1890–1945" : "Inventions 1890-1945";
+  const isRo = locale === "ro";
+  const copy = isRo ? copyRo : copyEn;
 
   return (
-    <main className="min-h-screen bg-navy-dark pt-24 text-white">
+    <main className="min-h-screen bg-navy-dark pt-24 text-white font-body selection:bg-glory-gold selection:text-navy-dark">
+      {/* Breadcrumbs */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Breadcrumb
           items={[
-            { label: breadcrumbParent, href: "/science" },
-            { label: breadcrumbPage },
+            { label: copy.breadcrumbParent, href: "/science" },
+            { label: copy.breadcrumbPage },
           ]}
           className="mb-8"
         />
       </div>
 
-      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto min-h-[65dvh] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
-          {/* TODO: Drop in inventions 1890-1945 gallery or image here */}
+      {/* Hero Section */}
+      <section
+        id="hero"
+        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-gradient-to-b from-navy-dark via-navy-mid to-navy-dark relative overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-star-pattern opacity-30 pointer-events-none" />
+        <div className="mx-auto max-w-4xl text-center relative z-10">
+          <span className="font-mono text-xs uppercase tracking-[0.25em] text-glory-gold mb-4 block animate-fade-in">
+            {copy.heroTagline}
+          </span>
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            {copy.heroTitle}
+          </h1>
+          <p className="font-body text-white/70 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
+            {copy.heroSubtitle}
+          </p>
         </div>
       </section>
 
-      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
-          {/* TODO: Drop in thesis statement on the height of industrialization and war-time inventions here */}
+      {/* Thesis Section */}
+      <section
+        id="intro"
+        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
+      >
+        <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/3 p-8 md:p-12 relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+            <Settings className="h-32 w-32 text-glory-gold" />
+          </div>
+          <h2 className="font-display text-2xl sm:text-3xl font-bold text-glory-gold mb-6">
+            {copy.thesisTitle}
+          </h2>
+          <p className="font-body text-white/85 text-base sm:text-lg leading-relaxed mb-6">
+            {copy.thesisParagraph1}
+          </p>
+          <p className="font-body text-white/85 text-base sm:text-lg leading-relaxed">
+            {copy.thesisParagraph2}
+          </p>
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      {/* Featured Highlights Section */}
+      <section
+        id="featured"
+        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
+      >
         <div className="mx-auto max-w-7xl">
-          <div className="grid auto-rows-[minmax(180px,1fr)] gap-6 md:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6">
-              {/* TODO: Create empty cards. Drop in content for Airplane, Assembly Line, Liquid Rocket, and Manhattan Project here */}
-            </div>
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
+          <h2 className="font-display text-3xl font-bold text-white text-center mb-16 uppercase tracking-wider">
+            {copy.featuredTitle}
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2">
+            {featuredInventions.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div 
+                  key={idx}
+                  className="group rounded-3xl border border-white/10 bg-gradient-to-br from-navy-mid to-navy-dark p-8 relative overflow-hidden hover:border-[#E8B923]/30 transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
+                    <Icon className="h-32 w-32 text-glory-gold" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="font-mono text-sm font-bold text-glory-gold bg-glory-gold/10 px-3 py-1 rounded-full border border-glory-gold/25">
+                        {item.year}
+                      </span>
+                      <span className="text-xs text-white/40 font-mono">
+                        {item.inventor}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-2xl font-bold text-white mb-4 group-hover:text-glory-gold transition-colors">
+                      {isRo ? item.titleRo : item.titleEn}
+                    </h3>
+                    <p className="font-body text-sm text-white/70 leading-relaxed font-light">
+                      {isRo ? item.descRo : item.descEn}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
+
+      {/* Main Interactive Database Archive */}
+      <section
+        id="archive"
+        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
+              {copy.archiveTitle}
+            </h2>
+            <p className="font-body text-white/60 text-base">
+              {copy.archiveSubtitle}
+            </p>
+          </div>
+
+          <InventionsDashboard locale={locale} inventions={INVENTIONS_1890_1945} />
+        </div>
+      </section>
+
+      {/* AI Ask America Oracle Section */}
+      <AskAmericaCTA
+        locale={locale}
+        descriptionEn={copyEn.oracleDescription}
+        descriptionRo={copyRo.oracleDescription}
+      />
     </main>
   );
 }

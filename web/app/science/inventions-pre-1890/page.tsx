@@ -3,6 +3,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import InventionsDashboard from "@/components/interactive/InventionsDashboard";
+import { INVENTIONS_PRE_1890 } from "@/lib/data/inventions-pre-1890-data";
 import { 
   Lightbulb, 
   Cpu, 
@@ -220,7 +221,7 @@ export default async function InventionsPre1890Page() {
             </p>
           </div>
 
-          <InventionsDashboard locale={locale} />
+          <InventionsDashboard locale={locale} inventions={INVENTIONS_PRE_1890} />
         </div>
       </section>
 

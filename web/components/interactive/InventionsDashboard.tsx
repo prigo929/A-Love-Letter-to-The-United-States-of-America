@@ -1,14 +1,31 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { INVENTIONS_PRE_1890, InventionItem } from "@/lib/data/inventions-pre-1890-data";
 import { Search, ArrowUpDown, SlidersHorizontal, Sparkles, Filter, X } from "lucide-react";
+
+export interface InventionItem {
+  id: string;
+  year: string;
+  name: {
+    en: string;
+    ro: string;
+  };
+  description: {
+    en: string;
+    ro: string;
+  };
+  era: {
+    en: string;
+    ro: string;
+  };
+}
 
 interface InventionsDashboardProps {
   locale: string;
+  inventions: InventionItem[];
 }
 
-export default function InventionsDashboard({ locale }: InventionsDashboardProps) {
+export default function InventionsDashboard({ locale, inventions }: InventionsDashboardProps) {
   const isRo = locale === "ro";
 
   // State
@@ -20,11 +37,6 @@ export default function InventionsDashboard({ locale }: InventionsDashboardProps
   // Localization Copy
   const copy = {
     searchPlaceholder: isRo ? "Caută invenții, inventatori sau cuvinte cheie..." : "Search inventions, inventors, or keywords...",
-    eraAll: isRo ? "Toate Enele" : "All Eras",
-    eraColonial: isRo ? "Colonială" : "Colonial",
-    eraIndependence: isRo ? "Independență" : "Independence",
-    eraCivilWar: isRo ? "Războiul Civil" : "Civil War",
-    eraGilded: isRo ? "Epoca de Aur" : "Gilded Age",
     sortBy: isRo ? "Sortează după an" : "Sort by year",
     oldest: isRo ? "Cei mai vechi" : "Oldest First",
     newest: isRo ? "Cei mai noi" : "Newest First",
@@ -33,24 +45,32 @@ export default function InventionsDashboard({ locale }: InventionsDashboardProps
     results: isRo ? "invenții" : "inventions",
     loadMore: isRo ? "Încarcă mai multe invenții" : "Load More Inventions",
     noResults: isRo ? "Nu s-au găsit invenții care să corespundă criteriilor." : "No inventions found matching your criteria.",
-    clearFilters: isRo ? "Resetează filtrele" : "Clear filters",
-    eraLabel: isRo ? "Era Istorică" : "Historical Era"
+    clearFilters: isRo ? "Resetează filtrele" : "Clear filters"
   };
 
-  // Eras options based on actual data
+  // Eras options dynamically computed based on actual inventions data
   const eras = useMemo(() => {
-    return [
-      { en: "All", ro: "Toate" },
-      { en: "Colonial Period (1500s–1775)", ro: "Perioada Colonială (1500s–1775)" },
-      { en: "Independence and the Federalist Era (1776–1860)", ro: "Era Independenței (1776–1860)" },
-      { en: "Civil War and the Reconstruction Era (1861–1877)", ro: "Războiul Civil (1861–1877)" },
-      { en: "Gilded Age (1878–1899)", ro: "Epoca de Aur (1878–1899)" }
+    const uniqueErasEn = Array.from(new Set(inventions.map(inv => inv.era.en)));
+    const eraOptions = [
+      { en: "All", ro: "Toate" }
     ];
-  }, []);
+    
+    uniqueErasEn.forEach(eraEn => {
+      const match = inventions.find(inv => inv.era.en === eraEn);
+      if (match) {
+        eraOptions.push({
+          en: eraEn,
+          ro: match.era.ro
+        });
+      }
+    });
+    
+    return eraOptions;
+  }, [inventions]);
 
   // Filter & Sort Logic
   const filteredAndSortedInventions = useMemo(() => {
-    let result = [...INVENTIONS_PRE_1890];
+    let result = [...inventions];
 
     // Filter by Era
     if (selectedEra !== "All") {
@@ -70,7 +90,6 @@ export default function InventionsDashboard({ locale }: InventionsDashboardProps
 
     // Sort chronologically
     result.sort((a, b) => {
-      // Parse years (handle ranges by using the starting year)
       const yearA = parseInt(a.year.split("–")[0].split("-")[0]);
       const yearB = parseInt(b.year.split("–")[0].split("-")[0]);
 
@@ -82,7 +101,7 @@ export default function InventionsDashboard({ locale }: InventionsDashboardProps
     });
 
     return result;
-  }, [selectedEra, searchQuery, sortOrder]);
+  }, [inventions, selectedEra, searchQuery, sortOrder]);
 
   // Handle Load More
   const handleLoadMore = () => {
@@ -116,7 +135,7 @@ export default function InventionsDashboard({ locale }: InventionsDashboardProps
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value);
-                setVisibleCount(24); // reset pagination on search
+                setVisibleCount(24);
               }}
               className="w-full bg-navy-dark border border-white/10 rounded-2xl py-3 pl-12 pr-10 text-white placeholder-white/45 focus:outline-none focus:border-glory-gold/45 focus:ring-1 focus:ring-glory-gold/25 transition-all text-sm"
             />
@@ -130,14 +149,14 @@ export default function InventionsDashboard({ locale }: InventionsDashboardProps
             )}
           </div>
 
-          {/* Era Filter Selector (Dropdown for mobile/tablet, tabs on desktop) */}
+          {/* Era Filter Selector */}
           <div className="md:col-span-4 flex items-center gap-2">
             <Filter className="h-4 w-4 text-glory-gold shrink-0" />
             <select
               value={selectedEra}
               onChange={(e) => {
                 setSelectedEra(e.target.value);
-                setVisibleCount(24); // reset pagination on filter
+                setVisibleCount(24);
               }}
               className="w-full bg-navy-dark border border-white/10 rounded-2xl py-3 px-4 text-white text-sm focus:outline-none focus:border-glory-gold/45 transition-all cursor-pointer"
             >
@@ -165,7 +184,7 @@ export default function InventionsDashboard({ locale }: InventionsDashboardProps
         {/* Stats and Reset */}
         <div className="flex flex-col sm:flex-row justify-between items-center border-t border-white/5 pt-4 gap-4 text-xs font-mono text-white/50">
           <div>
-            {copy.showing} <span className="text-glory-gold font-bold">{filteredAndSortedInventions.length}</span> {copy.of} <span className="text-white">{INVENTIONS_PRE_1890.length}</span> {copy.results}
+            {copy.showing} <span className="text-glory-gold font-bold">{filteredAndSortedInventions.length}</span> {copy.of} <span className="text-white">{inventions.length}</span> {copy.results}
           </div>
           {(searchQuery || selectedEra !== "All" || sortOrder !== "asc") && (
             <button
@@ -187,13 +206,12 @@ export default function InventionsDashboard({ locale }: InventionsDashboardProps
               key={inv.id}
               className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-6 hover:border-glory-gold/40 hover:bg-white/8 transition-all duration-300 relative overflow-hidden"
             >
-              {/* Subtle design flare inside cards */}
               <div className="absolute -right-8 -top-8 w-24 h-24 bg-glory-gold/5 rounded-full blur-2xl group-hover:bg-glory-gold/10 transition-all duration-500" />
 
               <div>
                 {/* Badge and Year Header */}
                 <div className="flex items-center justify-between mb-4 border-b border-white/5 pb-3">
-                  <span className="text-sm font-mono font-bold text-glory-gold bg-glory-gold/10 px-3 py-1 rounded-full border border-glory-gold/20">
+                  <span className="text-sm font-mono font-bold text-glory-gold bg-glory-gold/10 px-3 py-1 rounded-full border border-glory-gold/25">
                     {inv.year}
                   </span>
                   <span className="text-[10px] font-mono uppercase tracking-widest text-white/40">
