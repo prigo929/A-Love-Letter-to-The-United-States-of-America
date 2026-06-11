@@ -45,8 +45,8 @@ interface InternetCopy {
 const copyEn: InternetCopy = {
   breadcrumbParent: "Innovation & Technology",
   breadcrumbPage: "The Internet",
-  heroTagline: "MADE IN AMERICA",
-  heroTitle: "The\nInternet",
+  heroTagline: "THE INTERNET",
+  heroTitle: "Born\nin America",
   heroSubtitle:
     "How a US Defense Department project became the global communications backbone — and how five American companies now own the platforms that run it.",
   thesisTitle: "America Built the Internet — and Still Controls the Infrastructure It Runs On",
@@ -134,8 +134,8 @@ const copyEn: InternetCopy = {
 const copyRo: InternetCopy = {
   breadcrumbParent: "Inovație și Tehnologie",
   breadcrumbPage: "Internetul",
-  heroTagline: "CREAT ÎN AMERICA",
-  heroTitle: "Internetul",
+  heroTagline: "INTERNETUL",
+  heroTitle: "Născut\nîn America",
   heroSubtitle:
     "Cum un proiect al Departamentului Apărării din SUA a devenit coloana vertebrală globală de comunicații — și cum cinci companii americane dețin acum platformele pe care rulează.",
   thesisTitle: "America a Construit Internetul — și Controlează Încă Infrastructura pe Care Rulează",
