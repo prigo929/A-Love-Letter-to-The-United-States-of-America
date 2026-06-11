@@ -55,8 +55,8 @@ interface SmartphonesCopy {
 const copyEn: SmartphonesCopy = {
   breadcrumbParent: "Innovation & Technology",
   breadcrumbPage: "Smartphones",
-  heroTagline: "THE MOBILE\nREVOLUTION",
-  heroTitle: "The Device That\nRewired Humanity",
+  heroTagline: "MOBILE REVOLUTION",
+  heroTitle: "Rewired\nHumanity",
   heroSubtitle:
     "How America invented the modern smartphone and now controls the operating systems running in every pocket on Earth.",
   thesisTitle: "America Holds Both Sides of the Mobile Duopoly",
@@ -186,8 +186,8 @@ const copyEn: SmartphonesCopy = {
 const copyRo: SmartphonesCopy = {
   breadcrumbParent: "Inovație și Tehnologie",
   breadcrumbPage: "Smartphone-uri",
-  heroTagline: "REVOLUȚIA\nMOBILĂ",
-  heroTitle: "Dispozitivul Care\na Recablat Omenirea",
+  heroTagline: "REVOLUȚIA MOBILĂ",
+  heroTitle: "Recablând\nOmenirea",
   heroSubtitle:
     "Cum America a inventat smartphone-ul modern și controlează acum sistemele de operare din fiecare buzunar de pe Pământ.",
   thesisTitle: "America Deține Ambele Laturi ale Duopolului Mobil",
@@ -440,30 +440,25 @@ export default async function SmartphonesPage() {
           </div>
         </section>
 
-        {/* iOS/Android Duopoly Feature Band */}
-        <InfrastructureBand
-          imageSrc="/images/library/Technology/iPhone saying Hello on dark background.jpg"
-          imageAlt="iPhone displaying Hello on a dark background"
-        >
-          <div className="relative z-10">
-            <span className="macro-eyebrow mb-3 block">{copy.duopolyLabel}</span>
-            <h2 className="macro-section-title text-white mb-6">{copy.duopolyTitle}</h2>
-            <p className="macro-body text-white/80 mb-6 max-w-4xl">{copy.duopolyParagraph1}</p>
-            <p className="macro-body text-white/80 mb-8 max-w-4xl">{copy.duopolyParagraph2}</p>
-            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40 font-mono">
-              <span>Source: {copy.duopolySource}</span>
-              <a
-                href={copy.duopolySourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[#E8B923] hover:underline"
-              >
-                {isRo ? "Verifică datele" : "Verify Data"}
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            </div>
+        {/* iOS/Android Duopoly Section */}
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 border-t border-white/5">
+          <span className="macro-eyebrow mb-3 block">{copy.duopolyLabel}</span>
+          <h2 className="macro-section-title text-white mb-6">{copy.duopolyTitle}</h2>
+          <p className="macro-body text-white/80 mb-6 max-w-4xl">{copy.duopolyParagraph1}</p>
+          <p className="macro-body text-white/80 mb-8 max-w-4xl">{copy.duopolyParagraph2}</p>
+          <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40 font-mono">
+            <span>Source: {copy.duopolySource}</span>
+            <a
+              href={copy.duopolySourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-[#E8B923] hover:underline"
+            >
+              {isRo ? "Verifică datele" : "Verify Data"}
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
           </div>
-        </InfrastructureBand>
+        </section>
 
         {/* Apple Silicon Section — 2-col spec panel (mirrors GPS section in Space page) */}
         <section id="apple-silicon" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
