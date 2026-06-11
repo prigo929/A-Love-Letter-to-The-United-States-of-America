@@ -1,19 +1,32 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
+import { THEMATIC_HISTORY_DATA } from "@/lib/data/history-thematic-data";
+import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
 
 export const metadata: Metadata = {
-  title: "Border Sovereignty & National Identity | History",
-  description: "Immigration waves, assimilation, citizenship, national cohesion, border policy debates.",
+  title: "Border Sovereignty | Patriotic USA",
+  description: "Immigration history, assimilation, national identity, and border security.",
 };
 
 export default async function BorderSovereigntyAndNationalIdentityPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
-  const breadcrumbPage = locale === "ro" ? "Suveranitatea Frontierelor și Identitatea Națională" : "Border Sovereignty & National Identity";
+  const breadcrumbPage = locale === "ro" ? "Suveranitatea Frontierelor" : "Border Sovereignty";
+  const topics = THEMATIC_HISTORY_DATA["border-sovereignty-and-national-identity"] || [];
+
+  const title = {
+    en: "Border Sovereignty",
+    ro: "Suveranitatea Frontierelor",
+  };
+
+  const description = {
+    en: "Immigration history, assimilation, national identity, and border security.",
+    ro: "Istoria imigrației, asimilarea, identitatea națională și securitatea frontierelor.",
+  };
 
   return (
-    <main className="min-h-screen bg-navy-dark pt-24 text-white">
+    <main className="min-h-screen bg-navy-dark pt-24 text-white selection:bg-glory-gold selection:text-navy-dark">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Breadcrumb
           items={[
@@ -23,31 +36,13 @@ export default async function BorderSovereigntyAndNationalIdentityPage() {
           className="mb-8"
         />
       </div>
-
-      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto min-h-[65dvh] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
-          {/* TODO: Drop in Ellis Island / border / citizenship visual here */}
-        </div>
-      </section>
-
-      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
-          {/* TODO: Drop in thesis statement on immigration waves, assimilation, citizenship, national cohesion, and border sovereignty here */}
-        </div>
-      </section>
-
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid auto-rows-[minmax(180px,1fr)] gap-6 md:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6">
-              {/* TODO: Create empty cards. Drop in content for Historical Immigration, Assimilation & Melting Pot, Legal Citizenship, and Border Security here */}
-            </div>
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-          </div>
-        </div>
-      </section>
+      <ThematicSubpageClient
+        locale={locale}
+        subpageId="border-sovereignty-and-national-identity"
+        title={title}
+        description={description}
+        topics={topics}
+      />
     </main>
   );
 }

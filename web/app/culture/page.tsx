@@ -18,6 +18,8 @@
 import type { Metadata } from "next";
 import { getServerLocale } from "@/lib/i18n/server";
 import { SITE_IMAGES } from "@/lib/site-images";
+import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
+import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
 
 import {
   getCultureStats,
@@ -223,6 +225,22 @@ export default async function CulturePage() {
 
       {/* §20 — Quote Carousel */}
       <CultureQuoteCarousel quotes={quotes} />
+
+      {/* Detailed Chronicles */}
+      <ThematicSubpageClient
+        locale={locale}
+        subpageId="culture"
+        title={{
+          en: "Detailed Chronicles",
+          ro: "Cronici Detaliate",
+        }}
+        description={{
+          en: "Explore the comprehensive archives of American literature, music history, cinema, sports, cuisine, and the evolution of American English.",
+          ro: "Explorați arhivele complete ale literaturii americane, istoriei muzicii, cinematografiei, sportului, bucătăriei și evoluției limbii engleze americane.",
+        }}
+        topics={VERTICALS_THEMATIC_DATA["culture"] || []}
+        embed={true}
+      />
 
       {/* §21 — Closing Manifesto exit section */}
       <CultureManifestoSection data={manifestoData} isRo={isRo} />

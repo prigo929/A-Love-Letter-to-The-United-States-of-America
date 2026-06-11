@@ -1,19 +1,32 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
+import { THEMATIC_HISTORY_DATA } from "@/lib/data/history-thematic-data";
+import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
 
 export const metadata: Metadata = {
-  title: "Cold War & Anti-Communism | History",
-  description: "Truman Doctrine, containment, McCarthy era, Reagan, SDI, collapse of the USSR.",
+  title: "Cold War | Patriotic USA",
+  description: "The global struggle for freedom, containment of communism, and Soviet collapse.",
 };
 
 export default async function ColdWarAndAntiCommunismPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
-  const breadcrumbPage = locale === "ro" ? "Războiul Rece și Anticomunismul" : "Cold War & Anti-Communism";
+  const breadcrumbPage = locale === "ro" ? "Războiul Rece" : "Cold War";
+  const topics = THEMATIC_HISTORY_DATA["cold-war-and-anti-communism"] || [];
+
+  const title = {
+    en: "Cold War",
+    ro: "Războiul Rece",
+  };
+
+  const description = {
+    en: "The global struggle for freedom, containment of communism, and Soviet collapse.",
+    ro: "Lupta globală pentru libertate, îndiguirea comunismului și prăbușirea sovietică.",
+  };
 
   return (
-    <main className="min-h-screen bg-navy-dark pt-24 text-white">
+    <main className="min-h-screen bg-navy-dark pt-24 text-white selection:bg-glory-gold selection:text-navy-dark">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Breadcrumb
           items={[
@@ -23,31 +36,13 @@ export default async function ColdWarAndAntiCommunismPage() {
           className="mb-8"
         />
       </div>
-
-      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto min-h-[65dvh] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
-          {/* TODO: Drop in Cold War/Soviet collapse visual here */}
-        </div>
-      </section>
-
-      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
-          {/* TODO: Drop in thesis statement on Truman Doctrine, containment policy, Reagan's SDI, and the collapse of the USSR here */}
-        </div>
-      </section>
-
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid auto-rows-[minmax(180px,1fr)] gap-6 md:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6">
-              {/* TODO: Create empty cards. Drop in content for Containment Doctrine, Space Race, Strategic Defense Initiative, and Collapse of the USSR here */}
-            </div>
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-          </div>
-        </div>
-      </section>
+      <ThematicSubpageClient
+        locale={locale}
+        subpageId="cold-war-and-anti-communism"
+        title={title}
+        description={description}
+        topics={topics}
+      />
     </main>
   );
 }

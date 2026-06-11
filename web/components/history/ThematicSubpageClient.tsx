@@ -4,7 +4,7 @@
 // A premium, interactive tabbed explorer designed to show detailed historical
 // articles for any of the 15 thematic history routes, supporting bilingual views.
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Search, BookOpen, Clock } from "lucide-react";
@@ -32,6 +32,7 @@ interface ThematicSubpageClientProps {
   title: { en: string; ro: string };
   description: { en: string; ro: string };
   topics: ThematicTopic[];
+  embed?: boolean;
 }
 
 const TEXT = {
@@ -55,9 +56,35 @@ export default function ThematicSubpageClient({
   title,
   description,
   topics,
+  embed = false,
 }: ThematicSubpageClientProps) {
   const currentLocale = locale as Locale;
   const [activeTopicId, setActiveTopicId] = useState(topics[0]?.id || "");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleHashChange = () => {
+        if (window.location.hash) {
+          const hash = decodeURIComponent(window.location.hash.replace("#", ""));
+          const matched = topics.find(
+            (t) => t.id === hash || t.id.toLowerCase() === hash.toLowerCase()
+          );
+          if (matched) {
+            setActiveTopicId(matched.id);
+          }
+        }
+      };
+
+      // Run on initial mount
+      handleHashChange();
+
+      // Listen for hash changes
+      window.addEventListener("hashchange", handleHashChange);
+      return () => {
+        window.removeEventListener("hashchange", handleHashChange);
+      };
+    }
+  }, [topics]);
 
   // If there are no topics, render a clean fallback
   if (!topics || topics.length === 0) {
@@ -71,34 +98,50 @@ export default function ThematicSubpageClient({
   const activeTopic = topics.find((t) => t.id === activeTopicId) || topics[0];
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
+    <div className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20 ${embed ? "pt-16 border-t border-white/10" : ""}`}>
       
       {/* Back button */}
-      <div className="mb-6">
-        <Link
-          href="/history"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-glory-gold hover:text-glory-gold/80 transition-colors group"
-        >
-          <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-0.5 transition-transform" />
-          {TEXT.backButton[currentLocale]}
-        </Link>
-      </div>
+      {!embed && (
+        <div className="mb-6">
+          <Link
+            href="/history"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-glory-gold hover:text-glory-gold/80 transition-colors group"
+          >
+            <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-0.5 transition-transform" />
+            {TEXT.backButton[currentLocale]}
+          </Link>
+        </div>
+      )}
 
       {/* Hero Header */}
-      <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-glory-blue/15 via-white/3 to-glory-red/10 p-8 md:p-12 mb-12 shadow-xl">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-glory-blue via-glory-gold to-glory-red" />
-        <div className="max-w-3xl space-y-4">
+      {embed ? (
+        <div className="mb-10 space-y-3">
           <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-glory-gold/30 bg-glory-gold/5 text-glory-gold text-[10px] font-bold uppercase tracking-wider">
-            <BookOpen className="w-3 h-3" /> Chapter Explorer
+            <BookOpen className="w-3 h-3" /> {currentLocale === "ro" ? "Cronici Detaliate" : "Detailed Chronicles"}
           </span>
-          <h1 className="font-display text-3xl md:text-5xl font-black text-white leading-tight tracking-tight">
+          <h2 className="font-display text-2xl md:text-4xl font-black text-white tracking-tight">
             {title[currentLocale]}
-          </h1>
-          <p className="font-body text-white/70 text-sm md:text-base leading-relaxed">
+          </h2>
+          <p className="font-body text-white/60 text-sm md:text-base leading-relaxed">
             {description[currentLocale]}
           </p>
         </div>
-      </section>
+      ) : (
+        <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-glory-blue/15 via-white/3 to-glory-red/10 p-8 md:p-12 mb-12 shadow-xl">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-glory-blue via-glory-gold to-glory-red" />
+          <div className="max-w-3xl space-y-4">
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-glory-gold/30 bg-glory-gold/5 text-glory-gold text-[10px] font-bold uppercase tracking-wider">
+              <BookOpen className="w-3 h-3" /> Chapter Explorer
+            </span>
+            <h1 className="font-display text-3xl md:text-5xl font-black text-white leading-tight tracking-tight">
+              {title[currentLocale]}
+            </h1>
+            <p className="font-body text-white/70 text-sm md:text-base leading-relaxed">
+              {description[currentLocale]}
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Main Grid: Left Tabs, Right Content Reader */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">

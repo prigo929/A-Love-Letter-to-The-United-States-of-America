@@ -34,6 +34,8 @@ import { ParkVisitorsChart, BiodiversityChart } from "@/components/data/NatureCh
 import { getServerLocale } from "@/lib/i18n/server";
 import { SITE_IMAGES }     from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
+import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
+import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
 
 import {
   getNatureHeroStats,
@@ -389,6 +391,22 @@ export default async function NaturePage() {
           </div>
         </div>
       </section>
+
+      {/* Detailed Chronicles */}
+      <ThematicSubpageClient
+        locale={locale}
+        subpageId="nature"
+        title={{
+          en: "Detailed Chronicles",
+          ro: "Cronici Detaliate",
+        }}
+        description={{
+          en: "Explore comprehensive historical archives and geological, geographical, and climate profiles of the American continent.",
+          ro: "Explorați arhive istorice cuprinzătoare și profile geologice, geografice și climatice ale continentului american.",
+        }}
+        topics={VERTICALS_THEMATIC_DATA["nature"] || []}
+        embed={true}
+      />
 
       {/* Ask America AI Oracle CTA */}
       <section className="bg-(--nat-void,#030504) pb-32 px-6 md:px-12">

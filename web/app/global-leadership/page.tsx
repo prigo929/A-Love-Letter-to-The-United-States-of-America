@@ -2,15 +2,18 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
+import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
+import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
 
 export const metadata: Metadata = {
-  title: "Global Leadership",
-  description: "An empty layout scaffold for the Global Leadership section.",
+  title: "Global Leadership | Patriotic USA",
+  description: "American foreign policy, defense of global liberty, the Marshall Plan, and security alliances.",
 };
 
 export default async function GlobalLeadershipPage() {
   const locale = await getServerLocale();
   const breadcrumb = locale === "ro" ? "Leadership Global" : "Global Leadership";
+  const isRo = locale === "ro";
 
   return (
     <main className="min-h-screen bg-navy-dark pt-24 text-white">
@@ -18,48 +21,40 @@ export default async function GlobalLeadershipPage() {
         <Breadcrumb items={[{ label: breadcrumb }]} className="mb-8" />
       </div>
 
-      <section
-        id="hero"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8"
-      >
-        <div className="mx-auto min-h-[60dvh] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
-          {/* TODO: Drop in existing dark mode gradient and main title here */}
-        </div>
-      </section>
-
-      <section
-        id="intro"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8"
-      >
-        <div className="mx-auto max-w-4xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
-          {/* TODO: Drop in existing thesis statement on the indispensable nation role here */}
-        </div>
-      </section>
-
-      <section
-        id="nav-grid"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            <div className="min-h-[180px] rounded-2xl border border-dashed border-white/15 bg-white/3 p-6">
-              {/* TODO: Create empty cards. Drop in links to NATO, Dollar as Reserve Currency, Soft Power Export, UN & Institutions here */}
-            </div>
-            <div className="min-h-[180px] rounded-2xl border border-dashed border-white/15 bg-white/3 p-6" />
-            <div className="min-h-[180px] rounded-2xl border border-dashed border-white/15 bg-white/3 p-6" />
-            <div className="min-h-[180px] rounded-2xl border border-dashed border-white/15 bg-white/3 p-6" />
+      {/* Hero Header */}
+      <section className="relative overflow-hidden px-4 py-8 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl rounded-3xl border border-white/10 bg-gradient-to-r from-glory-blue/15 via-white/3 to-glory-red/10 p-8 md:p-12 shadow-xl">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-glory-blue via-glory-gold to-glory-red" />
+          <div className="max-w-3xl space-y-4">
+            <h1 className="font-display text-3xl md:text-5xl font-black text-white leading-tight tracking-tight">
+              {isRo ? "LIDER MUNDIAL" : "GLOBAL LEADERSHIP"}
+            </h1>
+            <p className="font-body text-white/70 text-sm md:text-base leading-relaxed">
+              {isRo
+                ? "Garanția globală a libertății și ordinii internaționale. De la Marshall Plan la alianța NATO, Statele Unite sprijină democrațiile și stabilitatea pe fiecare continent."
+                : "The global guarantor of freedom and international order. From the Marshall Plan to the NATO alliance, the United States supports democracies and stability on every continent."}
+            </p>
           </div>
         </div>
       </section>
 
-      <section
-        id="feature"
-        className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8 pb-12"
-      >
-        <div className="mx-auto min-h-[420px] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
-          {/* TODO: Drop in alliances map or global reserve charts component here */}
-        </div>
-      </section>
+      {/* Detailed Chronicles */}
+      <div className="pb-16">
+        <ThematicSubpageClient
+          locale={locale}
+          subpageId="global-leadership"
+          title={{
+            en: "Detailed Chronicles",
+            ro: "Cronici Detaliate",
+          }}
+          description={{
+            en: "Explore the complete archives of U.S. foreign policy, relations with the United Nations, global influence, the Monroe Doctrine, Marshall Plan, and NATO alliance.",
+            ro: "Explorați arhivele complete ale politicii externe a SUA, relațiilor cu Organizația Națiunilor Unite, influenței globale, Doctrinei Monroe, Planului Marshall și alianței NATO.",
+          }}
+          topics={VERTICALS_THEMATIC_DATA["global-leadership"] || []}
+          embed={true}
+        />
+      </div>
 
       <AskAmericaCTA
         locale={locale}

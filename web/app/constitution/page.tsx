@@ -43,6 +43,8 @@ import {
 import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
+import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
+import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
 import {
   getConstitutionSubPages, getConstitutionMetrics, getRightsAtRiskStats,
   getFoundingFathers, getConstitutionClauses, getBillOfRights,
@@ -571,6 +573,24 @@ export default async function ConstitutionPage() {
           </Section>
 
         </div>
+      </div>
+
+      {/* Detailed Chronicles */}
+      <div className="relative bg-[#080B12] pb-16">
+        <ThematicSubpageClient
+          locale={locale}
+          subpageId="constitution"
+          title={{
+            en: "Detailed Chronicles",
+            ro: "Cronici Detaliate",
+          }}
+          description={{
+            en: "Explore the complete archives of the federal government, Congress, Senate, House of Representatives, Presidency, Supreme Court, Bill of Rights, and electoral history.",
+            ro: "Explorați arhivele complete ale guvernului federal, Congresului, Senatului, Camerei Reprezentanților, Președinției, Curții Supreme, Cartei Drepturilor și istoriei electorale.",
+          }}
+          topics={VERTICALS_THEMATIC_DATA["constitution"] || []}
+          embed={true}
+        />
       </div>
 
       <div className="relative bg-[#080B12] pt-12 pb-8">

@@ -247,6 +247,40 @@ export const NAV_SECTIONS = [
     ],
   },
   {
+    title: "Demographics",
+    href: "/immigration-demographics",
+    description: "The American people — a diverse nation united under shared liberty",
+    imageSrc: SITE_IMAGES.cultureFlagCrowd,
+    badge: "E Pluribus Unum",
+    items: [
+      {
+        label: "Overview",
+        href: "/immigration-demographics#Demographics_of_the_United_States",
+        description: "Bilingual profile of population dynamics",
+      },
+      {
+        label: "Immigration History",
+        href: "/immigration-demographics#Immigration_to_the_United_States",
+        description: "Historical waves and the melting pot",
+      },
+      {
+        label: "Race & Ethnicity",
+        href: "/immigration-demographics#Race_and_ethnicity_in_the_United_States",
+        description: "Demographics by ethnic background",
+      },
+      {
+        label: "Religion in America",
+        href: "/immigration-demographics#Religion_in_the_United_States",
+        description: "Faith and religious freedom",
+      },
+      {
+        label: "Education System",
+        href: "/immigration-demographics#Education_in_the_United_States",
+        description: "U.S. education structure and levels",
+      },
+    ],
+  },
+  {
     title: "Innovation",
     href: "/innovation",
     description: "The internet, the iPhone, AI — all made in America",
@@ -935,6 +969,33 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "/data/misconceptions": {
         label: "Concepții Greșite",
         description: "Demistificarea miturilor și narațiunilor comune",
+      },
+    },
+  },
+  "/immigration-demographics": {
+    title: "Demografie",
+    description: "Poporul american — o națiune diversă unită sub o libertate comună",
+    badge: "E Pluribus Unum",
+    items: {
+      "/immigration-demographics#Demographics_of_the_United_States": {
+        label: "Prezentare Generală",
+        description: "Profil bilingv al dinamicii populației",
+      },
+      "/immigration-demographics#Immigration_to_the_United_States": {
+        label: "Istoria Imigrației",
+        description: "Valurile istorice de imigranți și asimilarea",
+      },
+      "/immigration-demographics#Race_and_ethnicity_in_the_United_States": {
+        label: "Rasă și Etnie",
+        description: "Demografie pe medii etnice",
+      },
+      "/immigration-demographics#Religion_in_the_United_States": {
+        label: "Religia în America",
+        description: "Credința și libertatea religioasă",
+      },
+      "/immigration-demographics#Education_in_the_United_States": {
+        label: "Sistemul Educațional",
+        description: "Structura și nivelurile de învățământ",
       },
     },
   },

@@ -1,19 +1,32 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
+import { THEMATIC_HISTORY_DATA } from "@/lib/data/history-thematic-data";
+import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
 
 export const metadata: Metadata = {
-  title: "Free Markets & Prosperity | History",
-  description: "Entrepreneurship, small business, capitalism vs socialism, innovation economy.",
+  title: "Free Markets & Prosperity | Patriotic USA",
+  description: "Private property, entrepreneurship, free enterprise, and economic liberty.",
 };
 
 export default async function FreeMarketsAndProsperityPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
   const breadcrumbPage = locale === "ro" ? "Piețe Libere și Prosperitate" : "Free Markets & Prosperity";
+  const topics = THEMATIC_HISTORY_DATA["free-markets-and-prosperity"] || [];
+
+  const title = {
+    en: "Free Markets & Prosperity",
+    ro: "Piețe Libere și Prosperitate",
+  };
+
+  const description = {
+    en: "Private property, entrepreneurship, free enterprise, and economic liberty.",
+    ro: "Proprietatea privată, antreprenoriatul, libera inițiativă și libertatea economică.",
+  };
 
   return (
-    <main className="min-h-screen bg-navy-dark pt-24 text-white">
+    <main className="min-h-screen bg-navy-dark pt-24 text-white selection:bg-glory-gold selection:text-navy-dark">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Breadcrumb
           items={[
@@ -23,31 +36,13 @@ export default async function FreeMarketsAndProsperityPage() {
           className="mb-8"
         />
       </div>
-
-      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto min-h-[65dvh] max-w-7xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
-          {/* TODO: Drop in capitalism / commerce visual here */}
-        </div>
-      </section>
-
-      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-dashed border-white/15 bg-white/3 p-8">
-          {/* TODO: Drop in thesis statement on free enterprise, entrepreneurship, small business, and comparison of capitalism vs socialism here */}
-        </div>
-      </section>
-
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid auto-rows-[minmax(180px,1fr)] gap-6 md:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6">
-              {/* TODO: Create empty cards. Drop in content for Private Property Rights, Entrepreneurship, Small Business Dynamism, and Free Enterprise Morality here */}
-            </div>
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-            <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-6" />
-          </div>
-        </div>
-      </section>
+      <ThematicSubpageClient
+        locale={locale}
+        subpageId="free-markets-and-prosperity"
+        title={title}
+        description={description}
+        topics={topics}
+      />
     </main>
   );
 }
