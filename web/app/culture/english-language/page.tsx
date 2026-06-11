@@ -71,6 +71,43 @@ export default async function EnglishLanguagePage() {
         : "NYSE, NASDAQ, IMF, World Bank — all major international law contracts and financial transactions are drafted in English.",
       icon: "⚖",
     },
+    {
+      title: isRo ? "Internet & Social Media" : "Internet & Social Media",
+      stat: "5B+",
+      statLabel: isRo ? "Utilizatori internet global" : "Global internet users",
+      desc: isRo
+        ? "Tweet, Like, Share, Google, App, Streaming, Podcast, Selfie, Hashtag — vocabularul internetului este vocabularul englez american. Platformele americane definesc gramatica vieții digitale globale."
+        : "Tweet, Like, Share, Google, App, Streaming, Podcast, Selfie, Hashtag — the vocabulary of the internet is American English vocabulary. US-built platforms define the grammar of global digital life.",
+      icon: "#",
+    },
+    {
+      title: isRo ? "Cultură Pop & Hollywood" : "Pop Culture & Hollywood",
+      stat: "90%+",
+      statLabel: isRo ? "Cota globală box office" : "Global box office share",
+      desc: isRo
+        ? "Blockbuster, sequel, franchise, cool, OK, jazz, denim — exporturile culturale americane au injectat sute de cuvinte în limbile lumii fără echivalent local. Hollywood a creat primul vocabular vizual global."
+        : "Blockbuster, sequel, franchise, cool, OK, jazz, denim — American cultural exports have injected hundreds of words into world languages with no local equivalent. Hollywood built the first global visual vocabulary.",
+      icon: "★",
+    },
+  ];
+
+  const americanWords = [
+    { word: "OK", origin: isRo ? "Boston, 1839" : "Boston, 1839" },
+    { word: "Cool", origin: isRo ? "Slang jazz, 1930s" : "Jazz slang, 1930s" },
+    { word: "Startup", origin: isRo ? "Silicon Valley, 1970s" : "Silicon Valley, 1970s" },
+    { word: "Blockbuster", origin: isRo ? "Hollywood, 1942" : "Hollywood, 1942" },
+    { word: "Jazz", origin: isRo ? "New Orleans, 1915" : "New Orleans, 1915" },
+    { word: "Google", origin: isRo ? "Googleplex, 1998" : "Googleplex, 1998" },
+    { word: "Tweet", origin: isRo ? "Twitter, 2006" : "Twitter, 2006" },
+    { word: "Like", origin: isRo ? "Facebook, 2009" : "Facebook, 2009" },
+    { word: "App", origin: isRo ? "App Store, 2008" : "App Store, 2008" },
+    { word: "Streaming", origin: isRo ? "Netflix, 2007" : "Netflix, 2007" },
+    { word: "Selfie", origin: isRo ? "Instagram, 2013" : "Instagram, 2013" },
+    { word: "Hashtag", origin: isRo ? "Twitter, 2007" : "Twitter, 2007" },
+    { word: "Cloud", origin: isRo ? "Amazon AWS, 2006" : "Amazon AWS, 2006" },
+    { word: "Podcast", origin: isRo ? "iPod + radio, 2004" : "iPod + broadcast, 2004" },
+    { word: "Viral", origin: isRo ? "Internet, 1990s" : "Internet culture, 1990s" },
+    { word: "Denim", origin: isRo ? "Levi's, 1873" : "Levi's, 1873" },
   ];
 
   const magazineCovers = [
@@ -149,7 +186,7 @@ export default async function EnglishLanguagePage() {
               <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "SISTEMUL GLOBAL" : "THE GLOBAL OS"}</h2>
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {domains.map((d, i) => (
                 <div key={i} className="bg-white/40 backdrop-blur-md rounded-2xl p-8 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">
                   <p className="font-macro-display text-4xl mb-3 text-[#E8391B]">{d.icon}</p>
@@ -188,6 +225,33 @@ export default async function EnglishLanguagePage() {
           </div>
         </section>
 
+        {/* CREAM: American Words That Conquered The World */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-28 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "EXPORT LEXICAL AMERICAN" : "AMERICAN LEXICAL EXPORT"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "CUVINTE CARE AU CUCERIT LUMEA" : "WORDS THAT CONQUERED THE WORLD"}</h2>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+              <p className="font-editorial text-lg text-[#0C0907]/65 mt-8 max-w-2xl mx-auto">
+                {isRo
+                  ? "Sute de cuvinte americane nu mai au echivalente funcționale în alte limbi — ele au înlocuit termenul local original în vorbirea cotidiană pe 6 continente."
+                  : "Hundreds of American words no longer have functional equivalents in other languages — they replaced the original local term in everyday speech across 6 continents."}
+              </p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-3">
+              {americanWords.map((w, i) => (
+                <div key={i} className="bg-white/50 backdrop-blur-md rounded-xl p-4 border border-[#0C0907]/5 text-center hover:shadow-[0_8px_30px_rgb(12,9,7,0.08)] hover:-translate-y-1 transition-all duration-300">
+                  <p className="font-macro-display text-2xl md:text-3xl font-black text-[#0C0907] tracking-tight">{w.word}</p>
+                  <p className="font-body text-[9px] font-bold uppercase tracking-wider text-[#E8391B] mt-2 leading-tight">{w.origin}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <div className="h-16 w-full gradient-cream-to-dark" />
 
         {/* Dark: stats + Times Square parallax */}
@@ -196,7 +260,7 @@ export default async function EnglishLanguagePage() {
             {[
               { value: "100%", label: isRo ? "Standard aviație ICAO" : "ICAO aviation standard", note: isRo ? "Zero excepții" : "Zero exceptions" },
               { value: "90%", label: isRo ? "Cercetare globală" : "Global scientific research", note: isRo ? "Publicată în engleză" : "Published in English" },
-              { value: "100%", label: isRo ? "Limbaje programare" : "Programming languages", note: isRo ? "Cuvinte cheie engleze" : "Use English keywords" },
+              { value: "5B+", label: isRo ? "Utilizatori internet" : "Internet users worldwide", note: isRo ? "Toate platformele — engleze" : "All platforms — English" },
               { value: "1.5B", label: isRo ? "Vorbitori de engleză" : "English speakers", note: isRo ? "Locutori globali" : "Global speakers" },
             ].map((s, i) => (
               <div key={i} className={`p-8 flex flex-col gap-2 ${i > 0 ? "border-l border-white/5" : ""}`}>

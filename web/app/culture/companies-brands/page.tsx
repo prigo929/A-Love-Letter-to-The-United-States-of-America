@@ -86,6 +86,30 @@ export default async function CultureCompaniesBrandsPage() {
       valueLabel: isRo ? "Cota piața mondială search" : "Global Search Market Share",
       desc: isRo ? "'A căuta pe Google' este un verb în 50+ de limbi. Infrastructura informațională a planetei — Search, Maps, Gmail, YouTube — toate alimentate de o companie americană." : "'To Google' is a verb in 50+ languages. The information infrastructure of the planet — Search, Maps, Gmail, YouTube — all powered by one American company.",
     },
+    {
+      name: "Disney",
+      value: "$200B+",
+      valueLabel: isRo ? "Valoare brand + IP" : "Brand + IP Value",
+      desc: isRo ? "Mickey Mouse, Marvel, Star Wars, Pixar, ESPN, National Geographic — Disney controlează mai multă proprietate intelectuală culturală decât orice altă companie de pe planetă. Un imperiu construit pe puterea poveștilor." : "Mickey Mouse, Marvel, Star Wars, Pixar, ESPN, National Geographic — Disney controls more cultural intellectual property than any other company on Earth. An empire built entirely on the power of storytelling.",
+    },
+    {
+      name: "McDonald's",
+      value: "100+",
+      valueLabel: isRo ? "Țări cu restaurante" : "Countries with restaurants",
+      desc: isRo ? "McDonald's nu vinde doar burgeri — exportă un sistem standardizat de experiență culinară la scară globală. Arcurile de aur sunt mai recunoscute decât Crucea Roșie pe toate continentele." : "McDonald's doesn't just sell burgers — it exports a standardized culinary experience system at global scale. The Golden Arches are recognized by more people worldwide than the Red Cross.",
+    },
+    {
+      name: "Microsoft",
+      value: "$3.1T",
+      valueLabel: isRo ? "Capitalizare de piață" : "Market Capitalization",
+      desc: isRo ? "Windows, Office, Azure, Xbox, LinkedIn, GitHub — Microsoft a construit sistemul de operare al economiei globale a cunoașterii. Achiziția Activision Blizzard (2023, 69 miliarde $) a consolidat și imperiul global al gaming-ului." : "Windows, Office, Azure, Xbox, LinkedIn, GitHub — Microsoft built the operating system of the global knowledge economy. The Activision Blizzard acquisition (2023, $69B) consolidated the global gaming empire.",
+    },
+    {
+      name: "Starbucks",
+      value: "36,000+",
+      valueLabel: isRo ? "Locații globale" : "Global Locations",
+      desc: isRo ? "Starbucks a inventat 'al treilea loc' — nici acasă, nici la birou, ci spațiul neutru al productivității moderne. A exportat cultura cafelei de specialitate și personalizarea beverajelor în 86 de țări." : "Starbucks invented 'the third place' — neither home nor office, but the neutral space of modern productivity. It exported specialty coffee culture and beverage personalization to 86 countries worldwide.",
+    },
   ];
 
   return (
@@ -218,6 +242,56 @@ export default async function CultureCompaniesBrandsPage() {
                 <span className="text-xs font-body text-white/45">{s.note}</span>
               </div>
             ))}
+          </div>
+
+          {/* Sports Franchise Economy */}
+          <div className="mb-20">
+            <div className="grid gap-10 lg:grid-cols-2 items-center">
+              <div>
+                <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-3">{isRo ? "ECONOMIA FRANCIZELOR SPORTIVE" : "THE SPORTS FRANCHISE ECONOMY"}</p>
+                <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-6">{isRo ? "STADIOANELE CA BRAND" : "STADIUMS AS BRAND"}</h2>
+                <p className="font-editorial text-base text-[#F5EDD8]/70 leading-relaxed mb-4">
+                  {isRo
+                    ? "Dallas Cowboys sunt cea mai valoroasă franciză sportivă din lume — 10 miliarde de dolari. New York Yankees valorează 7,1 miliarde de dolari. Las Vegas Raiders au construit un stadion de 2 miliarde de dolari finanțat parțial public. Francizele sportive americane generează un ecosistem de 100+ miliarde de dolari incluzând media, merchandising și publicitate."
+                    : "The Dallas Cowboys are the world's most valuable sports franchise at $10 billion. The New York Yankees are worth $7.1 billion. The Las Vegas Raiders built a $2 billion stadium partly publicly funded. American sports franchises generate a $100B+ ecosystem spanning media rights, merchandise, and global advertising."}
+                </p>
+                <div className="grid grid-cols-3 gap-4 mt-6">
+                  {[
+                    { value: "$10B", label: "Dallas Cowboys" },
+                    { value: "$7.1B", label: "NY Yankees" },
+                    { value: "$100B+", label: isRo ? "Ecosistem Sport SUA" : "US Sports Ecosystem" },
+                  ].map((stat, i) => (
+                    <div key={i} className="border border-white/10 rounded-xl p-4 text-center">
+                      <p className="font-macro-display text-2xl font-black text-[#E8B923]">{stat.value}</p>
+                      <p className="font-body text-[9px] uppercase tracking-wider text-white/50 mt-1">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="relative aspect-16/10 rounded-2xl overflow-hidden">
+                <Image src={SITE_IMAGES.culture.cowboysStadium} alt="AT&T Stadium Dallas Cowboys — world's most valuable sports franchise" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
+              </div>
+            </div>
+          </div>
+
+          {/* McDonald's Visual */}
+          <div className="mb-20">
+            <div className="grid gap-10 lg:grid-cols-2 items-center">
+              <div className="relative aspect-16/10 rounded-2xl overflow-hidden">
+                <Image src={SITE_IMAGES.culture.mcDonalds} alt="McDonald's restaurant — the Golden Arches empire" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
+              </div>
+              <div>
+                <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-3">{isRo ? "SISTEMUL FAST FOOD" : "THE FAST FOOD SYSTEM"}</p>
+                <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-6">{isRo ? "ARCADELE DE AUR" : "THE GOLDEN ARCHES"}</h2>
+                <p className="font-editorial text-base text-[#F5EDD8]/70 leading-relaxed">
+                  {isRo
+                    ? "McDonald's este prezent în 100+ de țări cu 40.000+ de restaurante și servește 69 milioane de clienți zilnic. Modelul de franciză inventat de Ray Kroc în 1954 a redefinit ce înseamnă un restaurant, o experiență de consum și un standard calitativ la scară planetară. Arcadele de aur sunt recunoscute de 88% din locuitorii Pământului."
+                    : "McDonald's operates in 100+ countries with 40,000+ restaurants and serves 69 million customers daily. The franchise model invented by Ray Kroc in 1954 redefined what a restaurant, consumer experience, and quality standard means at planetary scale. The Golden Arches are recognized by 88% of the Earth's population."}
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Vintage Ad Archive */}

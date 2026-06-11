@@ -115,6 +115,11 @@ export default async function CultureEntertainmentPage() {
     { src: SITE_IMAGES.culture.era2020s, label: isRo ? "Anii 2020 · AI & Streaming" : "2020s · AI & Streaming" },
   ];
 
+  const arcadeVault = [
+    { src: SITE_IMAGES.culture.vaultAsteroids1979, title: "Asteroids", sub: "Atari · 1979" },
+    { src: SITE_IMAGES.culture.vaultPacMan1980, title: "Pac-Man", sub: "Namco · 1980" },
+  ];
+
   return (
     <>
       <MacroStyles />
@@ -325,6 +330,72 @@ export default async function CultureEntertainmentPage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </section>
+
+          {/* Gaming Section */}
+          <section className="mb-24">
+            <p className="font-body text-xs uppercase tracking-[0.25em] text-glory-gold text-center mb-4 font-semibold">
+              {isRo ? "JOCURI VIDEO · INDUSTRIA DE 200 MILIARDE $" : "VIDEO GAMES · THE $200B INDUSTRY"}
+            </p>
+            <h2 className="font-macro-display text-3xl font-bold text-center mb-6 text-white uppercase tracking-tight">
+              {isRo ? "America A Inventat Jocul" : "America Invented The Game"}
+            </h2>
+            <p className="font-editorial text-base text-[#F5EDD8]/70 leading-relaxed text-center max-w-2xl mx-auto mb-10">
+              {isRo
+                ? "Atari, Xbox, PlayStation, Nintendo of America — industria globală a jocurilor video a fost construită pe codul american. Asteroids (1979) și Pac-Man (1980) au transformat arcadele în cultură de masă. Azi, industria gaming depășește Hollywood și muzica împreună."
+                : "Atari, Xbox, PlayStation, Nintendo of America — the global video game industry was built on American code. Asteroids (1979) and Pac-Man (1980) turned arcades into mass culture. Today, gaming surpasses Hollywood and music combined."}
+            </p>
+            <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto mb-8">
+              {arcadeVault.map((g, i) => (
+                <div key={i} className="relative aspect-3/4 rounded-2xl overflow-hidden border border-white/10 group hover:border-glory-gold/40 transition-all duration-300">
+                  <Image src={g.src} alt={g.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="250px" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/85 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <p className="font-macro-display text-sm font-black text-white">{g.title}</p>
+                    <p className="font-body text-[9px] font-bold text-glory-gold uppercase tracking-wider">{g.sub}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+              {[
+                { value: "$200B+", label: isRo ? "Valoare Industrie" : "Industry Value" },
+                { value: "3.2B", label: isRo ? "Jucători Globali" : "Global Gamers" },
+                { value: "1972", label: isRo ? "Atari Fondată" : "Atari Founded" },
+              ].map((stat, i) => (
+                <div key={i} className="border border-white/10 rounded-xl p-4 text-center">
+                  <p className="font-macro-display text-2xl font-black text-[#E8B923]">{stat.value}</p>
+                  <p className="font-body text-[9px] uppercase tracking-wider text-white/50 mt-1">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Hollywood Sign */}
+          <section className="mb-24">
+            <div className="grid gap-10 lg:grid-cols-2 items-center">
+              <div>
+                <p className="font-body text-[11px] uppercase tracking-[0.3em] text-glory-gold font-bold mb-3">
+                  {isRo ? "LOS ANGELES · CAPITALA LUMII" : "LOS ANGELES · CAPITAL OF THE WORLD"}
+                </p>
+                <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-6 uppercase">
+                  {isRo ? "Semnul Hollywood" : "The Hollywood Sign"}
+                </h2>
+                <p className="font-editorial text-base text-[#F5EDD8]/70 leading-relaxed mb-4">
+                  {isRo
+                    ? "Construit în 1923 ca reclamă imobiliară, semnul HOLLYWOODLAND a devenit cel mai recunoscut simbol al industriei de divertisment din lume. Los Angeles generează 700.000+ de locuri de muncă în entertainment și produce conținut care ajunge la 5+ miliarde de oameni. Palmele, lumina aurie, studiourile — LA este fabrica de vise a omenirii."
+                    : "Built in 1923 as a real-estate ad, the HOLLYWOODLAND sign became the most recognized symbol of the world's entertainment industry. Los Angeles generates 700,000+ entertainment jobs and produces content reaching 5+ billion people. The palms, the golden light, the studios — LA is humanity's dream factory."}
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="relative aspect-4/3 rounded-2xl overflow-hidden">
+                  <Image src={SITE_IMAGES.culture.hollywoodSign} alt="Hollywood Sign overlooking Los Angeles" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                </div>
+                <div className="relative aspect-4/3 rounded-2xl overflow-hidden">
+                  <Image src={SITE_IMAGES.culture.hollywoodPalms} alt="Hollywood palm trees against blue sky" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                </div>
+              </div>
             </div>
           </section>
 
