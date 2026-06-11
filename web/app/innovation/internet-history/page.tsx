@@ -234,7 +234,7 @@ export default async function InternetHistoryPage() {
         titleAccent={copy.heroTagline}
         eyebrow={copy.breadcrumbPage}
         description={copy.heroSubtitle}
-        videoSrc="/videos/library/Technology/Fiber Optics, light, trails video.mov"
+        videoSrc="/videos/library/Technology/Fiber Optics, light, trails video.mp4"
       />
 
       <div className="bg-[#030405] relative z-10 pb-32 pt-16 font-body text-white">
