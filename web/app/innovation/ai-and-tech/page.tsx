@@ -49,35 +49,45 @@ const copyEn: AiCopy = {
   heroTitle: "Designing the\nAI Frontier",
   heroSubtitle: "How Silicon Valley and American intellectual property command the design layer of the global computing stack.",
   thesisTitle: "The Architecture of Intelligence",
-  thesisParagraph1: "From the silicon transistor invented at Bell Labs to the neural networks powering generative AI, the United States is the primary architect of digital intelligence. While manufacturing has expanded globally, the intellectual property, design software, and advanced architectures remain concentrated in American technology hubs, creating a structural advantage.",
-  thesisParagraph2: "This command of the design layer is anchored in Electronic Design Automation (EDA) software and processor architectures. Because high-value chip design requires immense R&D capital, American firms capture the majority of global industry profits, leaving physical fabrication as a service.",
+  thesisParagraph1: "From the silicon transistor invented at Bell Labs to the neural networks powering generative AI, the United States is the primary architect of digital intelligence. While physical fabrication has expanded globally, the core design layer, specialized architectures, and software toolchains remain deeply concentrated in American technology hubs. This structural advantage ensures that every compute cycle on earth relies on American IP.",
+  thesisParagraph2: "This command is secured by a double lock: Electronic Design Automation (EDA) software and Instruction Set Architectures (ISAs). Because high-value chip design requires billions in R&D capital, American firms capture the majority of global industry profits. Physical fabrication is outsourced as a service to overseas foundries, while the high-margin, irreplaceable design layer remains safely in Silicon Valley.",
   milestonesTitle: "Chronology of Compute",
   milestones: [
     {
       title: "The Silicon Transistor",
       date: "1947",
-      details: "Invented at Bell Labs, the transistor replaced vacuum tubes, enabling the miniaturization of electronic switches and launching modern computing."
+      details: "Invented at Bell Labs in New Jersey, this solid-state amplifier replaced fragile, hot vacuum tubes, creating the core binary building block of all modern digital logic."
     },
     {
       title: "The Integrated Circuit",
       date: "1958",
-      details: "Co-invented in the US, the microchip combined multiple transistors onto a single piece of silicon, scaling processing power exponentially."
+      details: "Co-invented in the United States, this breakthrough consolidated multiple transistors, resistors, and capacitors onto a single flat piece of silicon, scaling compute density."
     },
     {
       title: "The Microprocessor",
       date: "1971",
-      details: "Intel launched the 4004, placing an entire Central Processing Unit (CPU) on a single silicon wafer and democratizing microcomputers."
+      details: "Intel released the 4004, the world's first commercial single-chip CPU. Placing all computing components on a single chip democratized personal computing and microchips."
     },
     {
-      title: "Deep Learning & LLMs",
-      date: "2010s - 2020s",
-      details: "Pioneered by US research labs and funded by venture capital, neural networks scaled to trillions of parameters, launching generative AI."
+      title: "GPU Parallel Compute",
+      date: "1999",
+      details: "Nvidia invented the GeForce 256, defining the Graphics Processing Unit. By executing thousands of mathematical calculations in parallel, GPUs later became the bedrock of deep learning."
+    },
+    {
+      title: "The Transformer Architecture",
+      date: "2017",
+      details: "Google researchers published the 'Attention Is All You Need' paper. By introducing self-attention mechanisms, it allowed neural networks to process data in parallel and capture complex context."
+    },
+    {
+      title: "Generative Scaling & LLMs",
+      date: "2020s",
+      details: "American research labs scaled neural networks to trillions of parameters. GPT models and ChatGPT proved that scaling compute power yields emergent cognitive reasoning capabilities."
     }
   ],
   aiLabel: "THE DESIGN CHOKEHLD",
   aiTitle: "Semiconductor Design: The Invisible American Chokehold",
-  aiParagraph1: "The global semiconductor industry is often described as a Taiwan manufacturing story, but the more structurally important fact is that the US controls the design layer of the entire global chip stack. Nvidia, AMD, Qualcomm, Apple Silicon, Broadcom, and Intel — the companies designing the processors powering every AI data center, smartphone, and automobile on Earth — are all American.",
-  aiParagraph2: "Furthermore, Synopsys and Cadence provide the Electronic Design Automation (EDA) software used to design virtually every advanced chip made globally, while ARM Holdings (US-listed, UK-origin) defines the underlying instruction sets. Because design is where the value lives, US firms capture roughly 50% of global semiconductor revenue despite not owning the fabs. When the US placed export controls on advanced chips in 2022, it was turning off a valve in a pipeline that runs through American intellectual property.",
+  aiParagraph1: "The global semiconductor supply chain is often viewed through the lens of physical manufacturing in Taiwan. However, the design layer controls the ecosystem's direction and captures its economic value. Nvidia, AMD, Qualcomm, Apple Silicon, Broadcom, and Intel—the companies that draft the blueprints for the chips running every AI supercomputer, hyperscale data center, and smart device on Earth—are all headquartered in the United States.",
+  aiParagraph2: "Moreover, two American companies, Synopsys and Cadence, hold a virtual duopoly on Electronic Design Automation (EDA) software—the highly complex computer-aided tools required to layout billions of transistors on a single chip. Without this software, semiconductor design globally would halt. As a result, US firms capture approximately 50% of all global semiconductor revenue despite owning minimal physical fabrication capacity. The 2022 export restrictions demonstrated that the global compute pipeline has a physical master switch controlled entirely by American intellectual property.",
   aiSource: "Semiconductor Industry Association (SIA)",
   aiSourceUrl: "https://www.semiconductors.org/",
   oracleDescription: "Ask the AI Oracle about electronic design automation software, Nvidia H100 architecture, ARM instruction sets, or US semiconductor export controls."
@@ -90,35 +100,45 @@ const copyRo: AiCopy = {
   heroTitle: "Proiectarea\nFrontierei AI",
   heroSubtitle: "Cum Silicon Valley și proprietatea intelectuală americană controlează stratul de proiectare al întregului ecosistem global de computing.",
   thesisTitle: "Arhitectura Inteligenței",
-  thesisParagraph1: "De la tranzistorul de siliciu inventat la Bell Labs până la rețelele neuronale care alimentează AI generativă, Statele Unite sunt arhitectul principal al inteligenței digitale. În timp ce producția fizică s-a extins global, designul de bază, software-ul de proiectare și arhitecturile avansate rămân concentrate în hub-urile americane.",
-  thesisParagraph2: "Acest avantaj structural este ancorat în software-ul de automatizare a proiectării electronice (EDA) și în arhitecturile procesoarelor. Deoarece proiectarea de cipuri necesită capital uriaș de cercetare, firmele americane captează majoritatea profiturilor, fabricarea fiind un serviciu complementar.",
+  thesisParagraph1: "De la tranzistorul de siliciu inventat la Bell Labs până la rețelele neuronale care alimentează AI generativă, Statele Unite sunt arhitectul principal al inteligenței digitale. În timp ce fabricarea fizică s-a extins global, stratul de proiectare de bază, arhitecturile specializate și lanțurile de instrumente software rămân profund concentrate în hub-urile tehnologice americane. Acest avantaj structural asigură că fiecare ciclu de calcul de pe pământ depinde de proprietatea intelectuală (IP) americană.",
+  thesisParagraph2: "Această dominație este asigurată de un dublu control: software-ul de automatizare a proiectării electronice (EDA) și arhitecturile seturilor de instrucțiuni (ISA). Deoarece proiectarea de cipuri de mare valoare necesită miliarde în capital de cercetare și dezvoltare, firmele americane captează majoritatea profiturilor industriei, lăsând fabricarea fizică ca un serviciu externalizat către turnătoriile de peste mări.",
   milestonesTitle: "Cronologia Calculului Digital",
   milestones: [
     {
       title: "Tranzistorul de Siliciu",
       date: "1947",
-      details: "Inventat la Bell Labs, tranzistorul a înlocuit tuburile vidate, permițând miniaturizarea comutatoarelor electronice și lansând computingul modern."
+      details: "Inventat la Bell Labs în New Jersey, acest amplificator a înlocuit tuburile vidate fragile și fierbinți, creând blocul de bază al întregii logici digitale moderne."
     },
     {
       title: "Circuitul Integrat",
       date: "1958",
-      details: "Co-inventat în SUA, microcipul a reunit componente multiple pe o singură plăcuță de siliciu, crescând exponențial puterea de calcul."
+      details: "Co-inventat în SUA, acest progres a reunit tranzistori, rezistori și condensatori pe o singură plăcuță de siliciu, crescând exponențial densitatea de calcul."
     },
     {
       title: "Microprocesorul",
       date: "1971",
-      details: "Intel a lansat 4004, punând o unitate centrală de procesare (CPU) pe o singură placă de siliciu și democratizând microcomputerele."
+      details: "Intel a lansat 4004, primul CPU comercial pe un singur cip. Plasarea tuturor componentelor de calcul pe o singură plăcuță a democratizat calculul personal."
     },
     {
-      title: "Deep Learning și LLM-uri",
-      date: "Anii 2010 - 2020",
-      details: "Pionierate de laboratoare de cercetare din SUA și finanțate de capital de risc, rețelele neuronale au crescut la trilioane de parametri, creând AI generativă."
+      title: "Calculul Paralel pe GPU",
+      date: "1999",
+      details: "Nvidia a inventat GeForce 256, definind unitatea de procesare grafică (GPU). Executând mii de calcule în paralel, GPU-urile au devenit fundamentul deep learning."
+    },
+    {
+      title: "Arhitectura Transformer",
+      date: "2017",
+      details: "Cercetătorii Google au publicat 'Attention Is All You Need'. Arhitectura Transformer a permis rețelelor neuronale să proceseze datele în paralel și să capteze context complex."
+    },
+    {
+      title: "Scalarea Generativă și LLM-urile",
+      date: "2020s",
+      details: "Laboratoarele de cercetare din SUA au scalat rețelele neuronale la trilioane de parametri. Modelele GPT au dovedit că scalarea calculului determină abilități cognitive emergente."
     }
   ],
   aiLabel: "CONTROLUL DE DESIGN",
   aiTitle: "Proiectarea Semiconductorilor: Controlul Invizibil al Americii",
-  aiParagraph1: "Industria globală de semiconductori este descrisă adesea ca o poveste de producție din Taiwan, dar faptul structural mai important este că SUA controlează stratul de design al întregului ecosistem. Nvidia, AMD, Qualcomm, Apple Silicon, Broadcom și Intel — companiile care proiectează procesoarele pentru centrele de date AI, smartphone-uri și automobile — sunt toate americane.",
-  aiParagraph2: "În plus, Synopsys și Cadence oferă software-ul de automatizare a proiectării electronice (EDA) utilizat pentru a proiecta practic orice cip avansat din lume, în timp ce ARM Holdings definește seturile de instrucțiuni. Companiile din SUA captează circa 50% din veniturile din semiconductori fără a deține fabrici de producție. Restricțiile de export din 2022 au arătat cum SUA pot opri un robinet care depinde integral de IP-ul american.",
+  aiParagraph1: "Lanțul global de aprovizionare cu semiconductori este adesea privit prin prisma producției fizice din Taiwan. Cu toate acestea, stratul de proiectare controlează direcția întregului ecosistem și îi captează valoarea economică. Nvidia, AMD, Qualcomm, Apple Silicon, Broadcom și Intel — companiile care creează planurile pentru cipurile ce rulează pe fiecare supercomputer AI, centru de date hyper-scale și dispozitiv inteligent — își au toate sediile în Statele Unite.",
+  aiParagraph2: "Mai mult, două companii americane, Synopsys și Cadence, dețin un cvasi-monopol pe software-ul de automatizare a proiectării electronice (EDA) — instrumentele software extrem de complexe necesare pentru a proiecta dispunerea a miliarde de tranzistori pe un singur cip. Fără acest software, proiectarea globală de semiconductori s-ar opri. Ca urmare, firmele din SUA captează aproximativ 50% din veniturile globale din semiconductori, deși dețin o capacitate de producție fizică minimă. Restricțiile de export din 2022 au demonstrat că fluxul global de compute are un comutator principal controlat de IP-ul american.",
   aiSource: "Semiconductor Industry Association (SIA)",
   aiSourceUrl: "https://www.semiconductors.org/",
   oracleDescription: "Întreabă Oracolul AI despre programele EDA, arhitectura Nvidia H100, seturile de instrucțiuni ARM sau restricțiile de export ale SUA pe cipuri."
@@ -217,7 +237,7 @@ export default async function AiAndTechPage() {
           <h2 className="font-macro-display text-4xl font-bold text-center mb-16 text-white uppercase tracking-tight">
             {copy.milestonesTitle}
           </h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {copy.milestones.map((item, idx) => (
               <div 
                 key={idx}
