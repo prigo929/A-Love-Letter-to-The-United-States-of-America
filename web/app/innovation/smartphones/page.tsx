@@ -345,22 +345,16 @@ export default async function SmartphonesPage() {
 
         {/* Thesis Section */}
         <section id="intro" className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mb-32">
-          <div className="relative pt-10">
-            <div className="absolute top-0 left-0 w-20 h-px bg-[#E8B923]" />
-            <div className="absolute -right-2 top-0 opacity-[0.03] pointer-events-none select-none">
-              <Smartphone className="h-72 w-72 text-white" />
-            </div>
-            <h2 className="font-macro-display text-3xl md:text-4xl font-bold text-[#E8B923] mb-10 max-w-3xl leading-tight">
-              {copy.thesisTitle}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14">
-              <p className="font-macro-body text-white/75 text-lg leading-relaxed">
-                {copy.thesisParagraph1}
-              </p>
-              <p className="font-macro-body text-white/75 text-lg leading-relaxed">
-                {copy.thesisParagraph2}
-              </p>
-            </div>
+          <h2 className="font-macro-display text-3xl md:text-4xl font-bold text-[#E8B923] mb-10 max-w-3xl leading-tight">
+            {copy.thesisTitle}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14">
+            <p className="font-macro-body text-white/75 text-lg leading-relaxed">
+              {copy.thesisParagraph1}
+            </p>
+            <p className="font-macro-body text-white/75 text-lg leading-relaxed">
+              {copy.thesisParagraph2}
+            </p>
           </div>
         </section>
 
@@ -424,7 +418,7 @@ export default async function SmartphonesPage() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="text-xs font-mono text-[#E8B923] border border-[#E8B923]/25 px-2 py-0.5 rounded">
+                    <span className="text-xs font-mono text-white/35">
                       {item.date}
                     </span>
                   </div>

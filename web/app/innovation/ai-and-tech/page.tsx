@@ -273,27 +273,21 @@ export default async function AiAndTechPage() {
 
         {/* Thesis Section */}
         <section id="intro" className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mb-32">
-          <div className="relative pt-10">
-            <div className="absolute top-0 left-0 w-20 h-px bg-[#E8B923]" />
-            <div className="absolute -right-2 top-0 opacity-[0.03] pointer-events-none select-none">
-              <Cpu className="h-72 w-72 text-white" />
-            </div>
-            <h2 className="font-macro-display text-3xl md:text-4xl font-bold text-[#E8B923] mb-10 max-w-3xl leading-tight">
-              {copy.thesisTitle}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14">
-              <p className="font-macro-body text-white/75 text-lg leading-relaxed">
-                {copy.thesisParagraph1}
-              </p>
-              <p className="font-macro-body text-white/75 text-lg leading-relaxed">
-                {copy.thesisParagraph2}
-              </p>
-            </div>
+          <h2 className="font-macro-display text-3xl md:text-4xl font-bold text-[#E8B923] mb-10 max-w-3xl leading-tight">
+            {copy.thesisTitle}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14">
+            <p className="font-macro-body text-white/75 text-lg leading-relaxed">
+              {copy.thesisParagraph1}
+            </p>
+            <p className="font-macro-body text-white/75 text-lg leading-relaxed">
+              {copy.thesisParagraph2}
+            </p>
           </div>
         </section>
 
         {/* AI & Computing Stats Section */}
-        <section className="py-24 border-t border-b border-white/5 bg-white/[0.01] mb-32">
+        <section className="py-24 border-t border-b border-white/5 bg-white/1 mb-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
               <div className="flex flex-col items-center">
@@ -342,11 +336,11 @@ export default async function AiAndTechPage() {
             {copy.milestones.map((item, idx) => (
               <div 
                 key={idx}
-                className="rounded-3xl border border-white/5 bg-white/[0.02] p-8 flex flex-col justify-between hover:border-[#E8B923]/40 hover:bg-white/[0.04] transition-all duration-500 group"
+                className="rounded-3xl border border-white/5 bg-white/2 p-8 flex flex-col justify-between hover:border-[#E8B923]/40 hover:bg-white/4 transition-all duration-500 group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="text-xs font-mono text-[#E8B923] border border-[#E8B923]/25 px-2 py-0.5 rounded">
+                    <span className="text-xs font-mono text-white/35">
                       {item.date}
                     </span>
                   </div>
@@ -485,9 +479,6 @@ export default async function AiAndTechPage() {
                         <div className="h-full rounded-full" style={{ width: `${c.share}%`, backgroundColor: c.dominant ? "#E8B923" : "rgba(255,255,255,0.18)" }} />
                       </div>
                       <span className="text-xs font-mono text-white/35 w-6">{c.share}%</span>
-                      <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded border ${c.dominant ? "text-[#E8B923] border-[#E8B923]/30" : "text-white/25 border-white/8"}`}>
-                        {c.status}
-                      </span>
                     </div>
                   ))}
                   <p className="text-[10px] font-body text-white/25 mt-1">
@@ -535,7 +526,7 @@ export default async function AiAndTechPage() {
             {copy.labsList.map((lab, idx) => (
               <div 
                 key={idx}
-                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.01] p-8 flex flex-col justify-between hover:border-[#E8B923]/30 hover:bg-white/[0.03] transition-all duration-500 hover:-translate-y-1"
+                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/1 p-8 flex flex-col justify-between hover:border-[#E8B923]/30 hover:bg-white/3 transition-all duration-500 hover:-translate-y-1"
               >
                 <div>
                   <h3 className="font-macro-display text-2xl font-bold text-white mb-1 group-hover:text-[#E8B923] transition-colors">
@@ -617,23 +608,23 @@ export default async function AiAndTechPage() {
             ].map((item, idx) => (
               <div 
                 key={idx}
-                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] flex flex-col hover:border-[#E8B923]/30 transition-all duration-500"
+                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/2 flex flex-col hover:border-[#E8B923]/30 transition-all duration-500"
               >
-                <div className="relative aspect-[16/10] overflow-hidden">
+                <div className="relative aspect-16/10 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.imageSrc}
                     alt={item.title}
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#030405] via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#030405] via-transparent to-transparent" />
                 </div>
                 <div className="p-8 flex-1 flex flex-col justify-between bg-black/20">
                   <div>
                     <span className="text-xs font-mono text-[#E8B923] uppercase tracking-wider mb-2 block">
                       {item.tag}
                     </span>
-                    <h3 className="font-macro-display text-2xl font-bold text-white mb-3 group-hover:text-[#E8B923] transition-colors min-h-[4rem]">
+                    <h3 className="font-macro-display text-2xl font-bold text-white mb-3 group-hover:text-[#E8B923] transition-colors min-h-16">
                       {item.title}
                     </h3>
                     <p className="text-sm text-white/70 leading-relaxed font-body">

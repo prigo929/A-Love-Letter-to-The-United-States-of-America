@@ -216,18 +216,15 @@ export default async function CloudComputingPage() {
         </div>
 
         {/* Thesis Section */}
-        <section id="intro" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-32">
-          <div className="rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 md:p-12 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-4 opacity-5">
-              <Cloud className="h-40 w-40 text-[#E8B923]" />
-            </div>
-            <h2 className="font-macro-display text-3xl font-bold text-[#E8B923] mb-8">
-              {copy.thesisTitle}
-            </h2>
-            <p className="font-macro-body text-white/80 text-lg md:text-xl leading-relaxed mb-6">
+        <section id="intro" className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mb-32">
+          <h2 className="font-macro-display text-3xl md:text-4xl font-bold text-[#E8B923] mb-10 max-w-3xl leading-tight">
+            {copy.thesisTitle}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14">
+            <p className="font-macro-body text-white/75 text-lg leading-relaxed">
               {copy.thesisParagraph1}
             </p>
-            <p className="font-macro-body text-white/80 text-lg md:text-xl leading-relaxed">
+            <p className="font-macro-body text-white/75 text-lg leading-relaxed">
               {copy.thesisParagraph2}
             </p>
           </div>
@@ -290,7 +287,7 @@ export default async function CloudComputingPage() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="text-xs font-mono text-[#E8B923] border border-[#E8B923]/25 px-2 py-0.5 rounded">
+                    <span className="text-xs font-mono text-white/35">
                       {item.date}
                     </span>
                   </div>
