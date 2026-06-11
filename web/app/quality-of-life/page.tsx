@@ -10,6 +10,9 @@ import {
   InfrastructureBand,
 } from "@/components/economy/EconomyAnimations";
 import { SITE_IMAGES } from "@/lib/site-images";
+import DeepDiveSection from "@/components/shared/DeepDiveSection";
+import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
+import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 
 export const metadata: Metadata = {
   title: "Quality of Life | Standard of Living & Abundance",
@@ -839,6 +842,13 @@ export default async function QualityOfLifePage() {
           />
         </div>
       </div>
+
+      {/* Deep Dive Archive */}
+      <DeepDiveSection
+        locale={locale}
+        topics={VERTICALS_THEMATIC_DATA["quality-of-life"] || []}
+        theme={DEEP_DIVE_THEMES["quality-of-life"]}
+      />
     </>
   );
 }

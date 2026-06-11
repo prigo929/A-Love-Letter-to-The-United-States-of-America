@@ -36,4 +36,22 @@ export const DEEP_DIVE_THEMES = {
     label: "IN DEPTH",
     labelRo: "ÎN DETALIU",
   },
+  "quality-of-life": {
+    bg: "#030405",
+    accent: "#E8B923",
+    label: "IN DEPTH",
+    labelRo: "ÎN DETALIU",
+  },
+  "global-leadership": {
+    bg: "#050810",
+    accent: "#60a5fa",
+    label: "IN DEPTH",
+    labelRo: "ÎN DETALIU",
+  },
+  demographics: {
+    bg: "#070508",
+    accent: "#a78bfa",
+    label: "IN DEPTH",
+    labelRo: "ÎN DETALIU",
+  },
 } satisfies Record<string, DeepDiveTheme>;
