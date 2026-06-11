@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import { ComputeCalculator } from "@/components/interactive/ComputeCalculator";
 import { 
   Cpu, 
   ExternalLink,
-  Terminal,
   Brain,
-  Code2
+  Layers,
+  Lock
 } from "lucide-react";
+
 import { 
   MacroStyles, 
   MacroHero, 
@@ -412,120 +412,161 @@ export default async function AiAndTechPage() {
             </div>
           </div>
 
-          {/* IDE Mock Code Block Showcase */}
-          <div className="rounded-3xl border border-white/5 bg-[#08090b] overflow-hidden shadow-2xl relative">
-            {/* Terminal Header */}
-            <div className="bg-[#0f1115] px-6 py-4 border-b border-white/5 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-3.5 h-3.5 rounded-full bg-[#ff5f56]" />
-                <div className="w-3.5 h-3.5 rounded-full bg-[#ffbd2e]" />
-                <div className="w-3.5 h-3.5 rounded-full bg-[#27c93f]" />
-              </div>
-              <div className="flex gap-4 text-xs font-mono text-white/40">
-                <span className="flex items-center gap-1.5 text-white/60 font-semibold border-b-2 border-[#E8B923] pb-1 px-1">
-                  <Code2 className="h-3.5 w-3.5 text-[#E8B923]" />
-                  AI_Stack_Blueprints
-                </span>
-              </div>
-              <div className="flex items-center gap-1.5 text-xs text-white/30 font-mono">
-                <Terminal className="h-3.5 w-3.5" />
-                <span>bash - host_h100_cluster</span>
-              </div>
+          {/* CUDA Ecosystem Stack Diagram */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            {/* Left: The software stack ladder */}
+            <div className="flex flex-col gap-2">
+              {[
+                {
+                  layer: isRo ? "STRATUL 5 – APLICAȚII" : "LAYER 5 – APPLICATIONS",
+                  title: isRo ? "Produse AI de Consum & Enterprise" : "Consumer & Enterprise AI Products",
+                  items: ["ChatGPT", "Claude", "Gemini", "GitHub Copilot", "Midjourney"],
+                  color: "#E8B923",
+                  bg: "bg-[#E8B923]/5",
+                  border: "border-[#E8B923]/25",
+                  dot: "bg-[#E8B923]",
+                },
+                {
+                  layer: isRo ? "STRATUL 4 – MODELE FUNDAMENT" : "LAYER 4 – FOUNDATION MODELS",
+                  title: isRo ? "Modele Mari de Limbaj (LLM) & Multimodale" : "Large Language Models (LLMs) & Multimodal",
+                  items: ["GPT-5.5", "Claude Fable 5", "Gemini 3.5", "Llama 4"],
+                  color: "#bb9af2",
+                  bg: "bg-purple-500/5",
+                  border: "border-purple-500/20",
+                  dot: "bg-purple-400",
+                },
+                {
+                  layer: isRo ? "STRATUL 3 – CADRE DE LUCRU ML" : "LAYER 3 – ML FRAMEWORKS",
+                  title: isRo ? "Instrumente de Antrenament Rețele Neuronale" : "Neural Network Training Orchestration",
+                  items: ["PyTorch (Meta)", "TensorFlow (Google)", "JAX (Google)", "Triton (OpenAI)"],
+                  color: "#ff9e64",
+                  bg: "bg-orange-500/5",
+                  border: "border-orange-500/20",
+                  dot: "bg-orange-400",
+                },
+                {
+                  layer: isRo ? "STRATUL 2 – BIBLIOTECI CUDA" : "LAYER 2 – CUDA LIBRARIES",
+                  title: isRo ? "Primitive Matematice Accelerate pe GPU" : "GPU-Accelerated Mathematical Primitives",
+                  items: ["cuDNN", "cuBLAS", "cuSPARSE", "NCCL"],
+                  color: "#2ac3de",
+                  bg: "bg-cyan-500/5",
+                  border: "border-cyan-500/20",
+                  dot: "bg-cyan-400",
+                },
+                {
+                  layer: isRo ? "STRATUL 1 – RUNTIME CUDA" : "LAYER 1 – CUDA RUNTIME",
+                  title: isRo ? "Compute Unified Device Architecture (Nvidia, 2006)" : "Compute Unified Device Architecture (Nvidia, 2006)",
+                  items: ["Kernel Execution", "Memory Management", "Thread Scheduling", "Parallel Grid API"],
+                  color: "#4ade80",
+                  bg: "bg-green-500/5",
+                  border: "border-green-500/20",
+                  dot: "bg-green-400",
+                },
+                {
+                  layer: isRo ? "STRATUL 0 – SILICON NVIDIA" : "LAYER 0 – NVIDIA SILICON",
+                  title: isRo ? "Hardware GPU Tensor Core (H100 / H200 / B200)" : "Tensor Core GPU Hardware (H100 / H200 / B200)",
+                  items: ["80B Transistors", "3,958 TFLOPS", "HBM3 Memory Fabric", "NVLink 4.0"],
+                  color: "#94a3b8",
+                  bg: "bg-slate-500/5",
+                  border: "border-slate-500/20",
+                  dot: "bg-slate-400",
+                },
+              ].map((l, i) => (
+                <div key={i} className={`rounded-2xl border ${l.border} ${l.bg} px-5 py-4 flex items-start gap-4 hover:brightness-110 transition-all duration-300`}>
+                  <div className="flex-shrink-0 mt-1.5">
+                    <div className={`w-2.5 h-2.5 rounded-full ${l.dot}`} style={{ boxShadow: `0 0 8px ${l.color}55` }} />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <span className="text-[9px] font-mono uppercase tracking-widest font-bold block mb-1" style={{ color: l.color }}>{l.layer}</span>
+                    <p className="text-white font-semibold text-sm font-body mb-2 leading-snug">{l.title}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {l.items.map((item) => (
+                        <span key={item} className="text-[10px] font-mono text-white/50 border border-white/10 px-2 py-0.5 rounded bg-white/[0.02]">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            {/* Code Body - side by side on desktop, stacked on mobile */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-white/5 font-mono text-[11px] sm:text-xs text-white/70 leading-relaxed">
-              {/* CUDA Column */}
-              <div className="p-6 sm:p-8 bg-black/10 flex flex-col min-w-0 overflow-hidden">
-                <div className="text-white/40 uppercase tracking-widest text-[10px] font-bold mb-4 flex items-center justify-between">
-                  <span>{copy.softwareCudaTitle}</span>
-                  <span className="text-[#2ac3de]">CUDA C++</span>
+            {/* Right: Lock-in analysis */}
+            <div className="flex flex-col gap-5">
+              <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Lock className="h-5 w-5 text-[#E8B923]" />
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#E8B923] font-semibold">
+                    {isRo ? "DOMINANȚA ECOSISTEMULUI" : "THE ECOSYSTEM DOMINANCE"}
+                  </span>
                 </div>
-                <pre className="whitespace-pre overflow-x-auto max-h-[360px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-white/10">
-{`// CUDA kernel: Parallel RMSNorm execution targeting Tensor Cores
-`}<span className="text-[#bb9af2]">__global__</span> <span className="text-[#2ac3de]">void</span> <span className="text-[#7aa2f7]">rms_norm_kernel</span>(<span className="text-[#2ac3de]">float</span>* out, <span className="text-[#bb9af2]">const</span> <span className="text-[#2ac3de]">float</span>* in, <span className="text-[#bb9af2]">const</span> <span className="text-[#2ac3de]">float</span>* weight, <span className="text-[#2ac3de]">float</span> eps, <span className="text-[#2ac3de]">int</span> size) {"{"}
-    <span className="text-[#2ac3de]">int</span> row_idx = blockIdx.x; <span className="text-[#565f89]">// Thread block processes one matrix row</span>
-    <span className="text-[#2ac3de]">int</span> col_idx = threadIdx.x; <span className="text-[#565f89]">// Threads parallelize columns</span>
-    
-    <span className="text-[#bb9af2]">__shared__</span> <span className="text-[#2ac3de]">float</span> s_variance;
-    <span className="text-[#2ac3de]">float</span> sum = <span className="text-[#ff9e64]">0.0f</span>;
-    
-    <span className="text-[#565f89]">// Accumulate squared sum</span>
-    <span className="text-[#bb9af2]">for</span> (<span className="text-[#2ac3de]">int</span> i = col_idx; i {"<"} size; i += blockDim.x) {"{"}
-        <span className="text-[#2ac3de]">float</span> val = in[row_idx * size + i];
-        sum += val * val;
-    {"}"}
-    
-    <span className="text-[#565f89]">// Parallel reduction in shared memory</span>
-    <span className="text-[#2ac3de]">float</span> block_sum = block_reduce_sum(sum);
-    <span className="text-[#bb9af2]">if</span> (col_idx == <span className="text-[#ff9e64]">0</span>) {"{"}
-        s_variance = rsqrtf(block_sum / size + eps);
-    {"}"}
-    <span className="text-[#7aa2f7]">__syncthreads</span>();
-    
-    <span className="text-[#565f89]">// Normalize and scale with weights</span>
-    <span className="text-[#bb9af2]">for</span> (<span className="text-[#2ac3de]">int</span> i = col_idx; i {"<"} size; i += blockDim.x) {"{"}
-        <span className="text-[#2ac3de]">int</span> idx = row_idx * size + i;
-        out[idx] = in[idx] * s_variance * weight[i];
-    {"}"}
-{"}"}
-
-<span className="text-[#2ac3de]">void</span> <span className="text-[#7aa2f7]">launch_rms_norm</span>(<span className="text-[#2ac3de]">float</span>* d_out, <span className="text-[#2ac3de]">float</span>* d_in, <span className="text-[#2ac3de]">float</span>* d_weight, <span className="text-[#2ac3de]">int</span> rows, <span className="text-[#2ac3de]">int</span> cols) {"{"}
-    <span className="text-[#2ac3de]">int</span> threads = <span className="text-[#ff9e64]">1024</span>;
-    <span className="text-[#565f89]">// Launch row blocks to utilize parallel grid streaming</span>
-    rms_norm_kernel{"<<<"}rows, threads{">>>"}(d_out, d_in, d_weight, <span className="text-[#ff9e64]">1e-5f</span>, cols);
-    <span className="text-[#7aa2f7]">cudaDeviceSynchronize</span>();
-{"}"}</pre>
+                <h3 className="font-macro-display text-xl font-bold text-white mb-3">
+                  {isRo ? "De ce migrarea de pe CUDA este aproape imposibilă" : "Why migrating away from CUDA is nearly impossible"}
+                </h3>
+                <p className="text-sm text-white/60 leading-relaxed font-body">
+                  {isRo
+                    ? "CUDA nu este doar un instrument — este un ecosistem de ~20 de ani construit în jurul hardware-ului Nvidia. Bibliotecile, cadrele, modelele pre-antrenate și întreg corpul de cunoștințe al inginerilor AI sunt optimizate exclusiv pentru CUDA."
+                    : "CUDA is not just a tool — it is a ~20-year ecosystem built around Nvidia hardware. Libraries, frameworks, pre-trained models, and the entire body of ML engineering knowledge are optimized exclusively for CUDA."}
+                </p>
               </div>
 
-              {/* PyTorch Column */}
-              <div className="p-6 sm:p-8 bg-black/20 flex flex-col min-w-0 overflow-hidden">
-                <div className="text-white/40 uppercase tracking-widest text-[10px] font-bold mb-4 flex items-center justify-between">
-                  <span>{copy.softwarePytorchTitle}</span>
-                  <span className="text-[#9ece6a]">Python 3.11</span>
+              <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-6">
+                <div className="flex items-center gap-3 mb-5">
+                  <Layers className="h-5 w-5 text-white/40" />
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-white/40 font-semibold">
+                    {isRo ? "COMPARAȚIE CU ALTERNATIVELE" : "ALTERNATIVES COMPARISON"}
+                  </span>
                 </div>
-                <pre className="whitespace-pre overflow-x-auto max-h-[360px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-white/10">
-<span className="text-[#bb9af2]">import</span> torch
-<span className="text-[#bb9af2]">import</span> torch.nn <span className="text-[#bb9af2]">as</span> nn
-<span className="text-[#bb9af2]">import</span> math
+                <div className="flex flex-col gap-3">
+                  {[
+                    { name: "NVIDIA CUDA", share: 92, color: "#4ade80", status: isRo ? "DOMINANT" : "DOMINANT" },
+                    { name: "AMD ROCm", share: 5, color: "#f87171", status: isRo ? "LIMITAT" : "LIMITED" },
+                    { name: "Intel oneAPI", share: 2, color: "#fb923c", status: isRo ? "EMERGENT" : "EMERGING" },
+                    { name: "OpenCL / Other", share: 1, color: "#94a3b8", status: isRo ? "MOȘTENIRE" : "LEGACY" },
+                  ].map((c) => (
+                    <div key={c.name} className="flex items-center gap-3">
+                      <span className="text-xs font-mono text-white/60 w-28 flex-shrink-0">{c.name}</span>
+                      <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden">
+                        <div
+                          className="h-full rounded-full"
+                          style={{ width: `${c.share}%`, backgroundColor: c.color, boxShadow: `0 0 6px ${c.color}66` }}
+                        />
+                      </div>
+                      <span className="text-xs font-mono w-6 text-white/50">{c.share}%</span>
+                      <span className="text-[9px] font-mono px-1.5 py-0.5 rounded border" style={{ color: c.color, borderColor: `${c.color}40` }}>
+                        {c.status}
+                      </span>
+                    </div>
+                  ))}
+                  <p className="text-[10px] text-white/30 font-body mt-2 leading-relaxed">
+                    {isRo ? "Estimat cotă de piață AI compute, 2025. Sursă: Ark Invest Research." : "Estimated AI compute market share, 2025. Source: Ark Invest Research."}
+                  </p>
+                </div>
+              </div>
 
-<span className="text-[#bb9af2]">class</span> <span className="text-[#2ac3de]">LlamaAttentionBlock</span>(nn.Module):
-    <span className="text-[#bb9af2]">def</span> <span className="text-[#7aa2f7]">__init__</span>(<span className="text-[#bb9af2]">self</span>, d_model=<span className="text-[#ff9e64]">4096</span>, n_heads=<span className="text-[#ff9e64]">32</span>):
-        <span className="text-[#7aa2f7]">super</span>().__init__()
-        <span className="text-[#bb9af2]">self</span>.n_heads = n_heads
-        <span className="text-[#bb9af2]">self</span>.head_dim = d_model // n_heads
-        
-        <span className="text-[#565f89]"># Projection weights targeting Tensor Cores</span>
-        <span className="text-[#bb9af2]">self</span>.q_proj = nn.Linear(d_model, d_model, bias=<span className="text-[#bb9af2]">False</span>)
-        <span className="text-[#bb9af2]">self</span>.k_proj = nn.Linear(d_model, d_model, bias=<span className="text-[#bb9af2]">False</span>)
-        <span className="text-[#bb9af2]">self</span>.v_proj = nn.Linear(d_model, d_model, bias=<span className="text-[#bb9af2]">False</span>)
-        <span className="text-[#bb9af2]">self</span>.o_proj = nn.Linear(d_model, d_model, bias=<span className="text-[#bb9af2]">False</span>)
-
-    <span className="text-[#bb9af2]">def</span> <span className="text-[#7aa2f7]">forward</span>(<span className="text-[#bb9af2]">self</span>, x):
-        b, s, d = x.shape
-        q = <span className="text-[#bb9af2]">self</span>.q_proj(x).view(b, s, <span className="text-[#bb9af2]">self</span>.n_heads, <span className="text-[#bb9af2]">self</span>.head_dim).transpose(<span className="text-[#ff9e64]">1</span>, <span className="text-[#ff9e64]">2</span>)
-        k = <span className="text-[#bb9af2]">self</span>.k_proj(x).view(b, s, <span className="text-[#bb9af2]">self</span>.n_heads, <span className="text-[#bb9af2]">self</span>.head_dim).transpose(<span className="text-[#ff9e64]">1</span>, <span className="text-[#ff9e64]">2</span>)
-        v = <span className="text-[#bb9af2]">self</span>.v_proj(x).view(b, s, <span className="text-[#bb9af2]">self</span>.n_heads, <span className="text-[#bb9af2]">self</span>.head_dim).transpose(<span className="text-[#ff9e64]">1</span>, <span className="text-[#ff9e64]">2</span>)
-        
-        <span className="text-[#565f89]"># Scaled dot-product attention executed on GPU</span>
-        scores = torch.matmul(q, k.transpose(-<span className="text-[#ff9e64]">2</span>, -<span className="text-[#ff9e64]">1</span>)) / math.sqrt(<span className="text-[#bb9af2]">self</span>.head_dim)
-        attn = torch.softmax(scores, dim=-<span className="text-[#ff9e64]">1</span>)
-        context = torch.matmul(attn, v)
-        
-        context = context.transpose(<span className="text-[#ff9e64]">1</span>, <span className="text-[#ff9e64]">2</span>).contiguous().view(b, s, d)
-        <span className="text-[#bb9af2]">return</span> <span className="text-[#bb9af2]">self</span>.o_proj(context)
-
-# Move parameters and allocate directly in CUDA memory
-model = LlamaAttentionBlock().to(<span className="text-[#9ece6a]">"cuda"</span>)</pre>
+              <div className="rounded-2xl border border-[#E8B923]/15 bg-[#E8B923]/[0.03] p-6">
+                <span className="text-[9px] font-mono uppercase tracking-widest text-[#E8B923] font-semibold mb-4 block">
+                  {isRo ? "BARIERA DE INTRARE" : "THE MOAT IN NUMBERS"}
+                </span>
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { value: "~20yr", label: isRo ? "Avans CUDA" : "CUDA head start" },
+                    { value: "4M+", label: isRo ? "Devs în ecosistem" : "CUDA developers" },
+                    { value: "500K+", label: isRo ? "Modele pe HuggingFace" : "HuggingFace models" },
+                    { value: "$2B+", label: isRo ? "Cunoaștere înglobată" : "Embedded tooling R&D" },
+                  ].map((s) => (
+                    <div key={s.label}>
+                      <span className="font-macro-display text-2xl font-bold text-[#E8B923] block">{s.value}</span>
+                      <span className="text-[10px] text-white/50 font-body block leading-snug mt-0.5">{s.label}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Compute Scaling Law Simulator */}
-        <section id="scaling-calculator" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
-          <ComputeCalculator locale={locale} />
-        </section>
 
         {/* Frontier Labs Section */}
         <section id="frontier-labs" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">

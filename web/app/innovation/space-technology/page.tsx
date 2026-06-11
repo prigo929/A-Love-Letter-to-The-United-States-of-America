@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import { SpaceLogisticsCalculator } from "@/components/interactive/SpaceLogisticsCalculator";
 import { 
   Rocket, 
   ExternalLink,
@@ -552,22 +551,6 @@ export default async function SpaceTechnologyPage() {
               </div>
             ))}
           </div>
-        </section>
-
-        {/* Space Launch Economics & Logistics Calculator */}
-        <section id="launch-economics" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-6 font-semibold">
-            {isRo ? "LABORATORUL DE ECONOMIE SPAȚIALĂ" : "THE SPACE ECONOMICS LAB"}
-          </p>
-          <h2 className="font-macro-display text-4xl font-bold text-center mb-6 text-white uppercase tracking-tight">
-            {isRo ? "Calculator de Lansare & Logistică Orbitală" : "Launch Economics & Orbital Logistics Calculator"}
-          </h2>
-          <p className="font-macro-body text-white/60 text-lg text-center max-w-3xl mx-auto mb-16 leading-relaxed">
-            {isRo
-              ? "De la Saturn V la Starship — explorați revoluția costurilor de lansare și cum realimentarea criogenică pe orbită a transformat Sistemul Solar într-un mediu logistic viabil."
-              : "From Saturn V to Starship — explore the revolution in launch economics and how in-orbit cryogenic refueling has transformed the Solar System into a viable logistical operating environment."}
-          </p>
-          <SpaceLogisticsCalculator locale={locale} />
         </section>
 
         {/* AI Ask America Oracle Section */}
