@@ -251,6 +251,73 @@ import iconMichaelJordan from "@/IMAGES/Culture/Famous People/08_michael_jordan.
 import iconMartinLutherKing from "@/IMAGES/Culture/Famous People/09_martin_luther_king_jr.jpg";
 import iconArnoldSchwarzenegger from "@/IMAGES/Culture/Famous People/10_arnold_schwarzenegger.jpg";
 
+// Music — new artist photos
+import musicTaylorSwiftEras from "@/IMAGES/Culture/Music/Taylor Swift Eras concert.jpg";
+import musicTaylorSwiftSpeakNow from "@/IMAGES/Culture/Music/Taylor_Swift_-_Speak_Now_World_Tour_Sydney_2012.jpg";
+import musicElvisPerforming1956 from "@/IMAGES/Culture/Music/Presley performing live at the Olympia Theater in Miami, August 3, 1956.jpg";
+import musicElvisWithBand1956 from "@/IMAGES/Culture/Music/Presley performing with Scotty Moore and Bill Black in 1956.jpg";
+import musicElvisPortrait1973 from "@/IMAGES/Culture/Music/Elvis_Presley_1973_RCA_Records_and_Tapes_publicity_2_-_cropped.png";
+import musicFrankSinatra1961 from "@/IMAGES/Culture/Music/Frank_Sinatra_1961 portrait.jpg";
+import musicFrankSinatraPalJoey from "@/IMAGES/Culture/Music/Promo still for the 1957 film Pal Joey, showing Frank Sinatra standing facing the camera with a cigarette hanging out of his mouth.jpg";
+import musicMichaelJackson1983 from "@/IMAGES/Culture/Music/Michael Jackson in a press photo dated to 1983.jpg";
+import musicMichaelJacksonWithBush from "@/IMAGES/Culture/Music/George_H._W._Bush_with_Michael_Jackson_(cropped).png";
+import musicWhitneyHouston from "@/IMAGES/Culture/Music/Whitney_Houston_by_Richard_Avedon_color_(cropped).jpg";
+import musicBeyonce from "@/IMAGES/Culture/Music/Beyonce_Knowles_GMA_Run_the_World_cropped_saluting.jpg";
+import musicMariahCarey2013 from "@/IMAGES/Culture/Music/Carey performing on Good Morning America in May 2013.jpg";
+import musicMariahCarey2019 from "@/IMAGES/Culture/Music/Carey pressing her in-ear monitor, while hitting a whistle note during her Caution World Tour in 2019.jpg";
+import musicTheEagles2008 from "@/IMAGES/Culture/Music/The_Eagles_in_performance,_2008.jpg";
+import musicTravisScott2024 from "@/IMAGES/Culture/Music/Travis-Scott-BET-Awards-2024.jpg";
+import musicTheWeeknd from "@/IMAGES/Culture/Music/The_Weeknd_Portrait_by_Brian_Ziff.jpg";
+import musicPostMalone from "@/IMAGES/Culture/Music/A live performance shot of Post Malone.jpg";
+import musicLukeCombs2021 from "@/IMAGES/Culture/Music/luke combs-2021tour.jpg";
+import musicImagineDragons2017 from "@/IMAGES/Culture/Music/Imagine Dragons at Mohegan Sun in 2017. Left to right, Wayne Sermon, Dan Reynolds, former drummer Daniel Platzman, and Ben McKee.jpg";
+import musicMaroon52020 from "@/IMAGES/Culture/Music/Lineup of Maroon 5 since 2020. Clockwise from top left, Adam Levine, Jesse Carmichael, James Valentine, Matt Flynn, PJ Morton, Sam Farrar.jpg";
+
+// Food — new images
+import foodBlt from "@/IMAGES/Culture/Food/BLT Sandwich.jpg";
+import foodBuffaloWings from "@/IMAGES/Culture/Food/Boneless-Buffalo-Wings.jpg";
+import foodBrownies from "@/IMAGES/Culture/Food/Brownies.jpg";
+import foodChocolateChipCookies from "@/IMAGES/Culture/Food/Chocolate Chip Cookies.jpg";
+import foodPancakes from "@/IMAGES/Culture/Food/Classic-Fluffy-Pancakes-3.jpg";
+import foodDoughnuts from "@/IMAGES/Culture/Food/Glazed Doughnuts.jpg";
+import foodHotDogs from "@/IMAGES/Culture/Food/Grilled Hot Dogs.jpg";
+import foodKeyLimePie from "@/IMAGES/Culture/Food/Key-Lime-Pie.jpg";
+import foodLobsterRoll from "@/IMAGES/Culture/Food/Maine-Lobster-Rolls.jpg";
+import foodOnionRings from "@/IMAGES/Culture/Food/Onion-Rings.jpg";
+import foodPbj from "@/IMAGES/Culture/Food/Peanut Butter And Jelly Sandwich.png";
+import foodPhillyCheesesteak from "@/IMAGES/Culture/Food/Philly-Cheesesteak.jpg";
+import foodPumpkinPie from "@/IMAGES/Culture/Food/Pumpkin-Pie 2.jpg";
+import foodSmores from "@/IMAGES/Culture/Food/S'mores.jpg";
+import foodBiscuitsGravy from "@/IMAGES/Culture/Food/Sausage-Gravy-and-Biscuits.jpg";
+import foodFriedChicken from "@/IMAGES/Culture/Food/Southern Fried Chicken Wings.jpg";
+import foodBrisket from "@/IMAGES/Culture/Food/Texas Barbecue Brisket.jpeg";
+import foodMacCheese from "@/IMAGES/Culture/Food/mac-cheese-stretching-fork.jpg";
+import foodIceCreamTruck from "@/IMAGES/Culture/Food/ice cream truck.jpg";
+import foodBbqMap from "@/IMAGES/Culture/Food/Illustrated Regional United States Barbecue Map Showing Local Meat Specialties.jpg";
+
+// Sports — new action images
+import sportsAliVsFrazierJab from "@/IMAGES/Culture/Sports/Muhammad Ali Landing Powerful Left Jab On Joe Frazier During Historic Bout.webp";
+import sportsAliVsFrazier1971 from "@/IMAGES/Culture/Sports/Muhammad Ali Leaning Back From Joe Frazier Left Hook Fight Of The Century 1971.jpg";
+import sportsMarchMadness from "@/IMAGES/Culture/Sports/NCAA March Madness Tournament Basketball Court MSG.jpg";
+import sportsBasketballDunk from "@/IMAGES/Culture/Sports/Stadiums/Miami-Heat-Player-Dunking-During-Game-Against-Orlando-Magic-At-Amway-Center.jpg";
+import sportsBatterAtPlate from "@/IMAGES/Culture/Sports/Stadiums/Batter-Swinging-At-Pitch-With-Catcher-And-Umpire-At-Home-Plate.jpg";
+import sportsCollegeFootball from "@/IMAGES/Culture/Sports/Stadiums/Tennessee_Volunteers_at_Ohio_State_Buckeyes,_College_Football_Playoff_Round_1_game(December_21,_2024).jpg";
+import sportsDaytona500 from "@/IMAGES/Culture/Sports/Donnie Allison was leading Cale Yarborough when the two made contact and crashed on the last lap of the 1979 Daytona 500.jpg";
+import sportsAllegiantStadium from "@/IMAGES/Culture/Sports/Stadiums/Exterior-View-Of-Allegiant-Stadium-With-Las-Vegas-Skyline-In-Background.jpg";
+import sportsYankeeStadium from "@/IMAGES/Culture/Sports/Stadiums/New-York-Yankees-Baseball-Game-From-Stands-At-Yankee-Stadium.jpg";
+import sportsMetLifeFlag from "@/IMAGES/Culture/Sports/Stadiums/Elevated-View-Of-Large-US-Flag-Unfurled-Before-Jets-Game-At-MetLife-Stadium.jpg";
+import sportsBaseballAerial from "@/IMAGES/Culture/Sports/Stadiums/High-Aerial-Top-Down-View-Of-Illuminated-Baseball-Diamond-And-Crowd.jpg";
+
+// Fashion — new images
+import fashionCowboyBoots from "@/IMAGES/Culture/Fashion/Cowboy boots girl sitting on fence on ranch with blue jeans and black t shirt.jpg";
+import fashionLittleCowboy from "@/IMAGES/Culture/Fashion/Little cowboy wearing wranglers watching a horse.jpg";
+import fashionRalphLaurenStore from "@/IMAGES/Culture/Fashion/Ralph Lauren Retail Store Interior Featuring Preppy Nautical Apparel On Mannequins And Racks.jpg";
+import fashionCowboyBootsLasso from "@/IMAGES/Culture/Fashion/Worn Square Toe Leather Cowboy Boots With Coiled Lasso Rope And Woven Straw Hat.jpg";
+
+// Landscapes — Nashville
+import nashvilleSkyline from "@/IMAGES/Landscapes/Downtown Nashville Tennesse.jpg";
+import nashvilleSkyline2 from "@/IMAGES/Landscapes/Downtown Nashville Tennesse 2.jpg";
+
 // Global Bases
 import baseRamstein from "@/IMAGES/Military/Global Bases/ramstein_air_base.jpg";
 import baseYokosuka from "@/IMAGES/Military/Global Bases/western_pacific_fleet_activities_yokosuka.jpg";
@@ -550,5 +617,73 @@ export const SITE_IMAGES = {
     vaultSprite1966: vaultSprite1966.src,
     vaultLemonGoLightly: vaultLemonGoLightly.src,
     vaultMagicChef1950: vaultMagicChef1950.src,
+
+    // Music — artist portraits & performances
+    taylorSwiftEras: musicTaylorSwiftEras.src,
+    taylorSwiftSpeakNow: musicTaylorSwiftSpeakNow.src,
+    elvisPerforming1956: musicElvisPerforming1956.src,
+    elvisWithBand1956: musicElvisWithBand1956.src,
+    elvisPortrait1973: musicElvisPortrait1973.src,
+    frankSinatra1961: musicFrankSinatra1961.src,
+    frankSinatraPalJoey: musicFrankSinatraPalJoey.src,
+    michaelJackson1983: musicMichaelJackson1983.src,
+    michaelJacksonWithBush: musicMichaelJacksonWithBush.src,
+    whitneyHouston: musicWhitneyHouston.src,
+    beyonce: musicBeyonce.src,
+    mariahCarey2013: musicMariahCarey2013.src,
+    mariahCarey2019: musicMariahCarey2019.src,
+    theEagles2008: musicTheEagles2008.src,
+    travisScott2024: musicTravisScott2024.src,
+    theWeeknd: musicTheWeeknd.src,
+    postMalone: musicPostMalone.src,
+    lukeCombs2021: musicLukeCombs2021.src,
+    imagineDragons2017: musicImagineDragons2017.src,
+    maroon52020: musicMaroon52020.src,
+
+    // Food — catalogue
+    foodBlt: foodBlt.src,
+    foodBuffaloWings: foodBuffaloWings.src,
+    foodBrownies: foodBrownies.src,
+    foodChocolateChipCookies: foodChocolateChipCookies.src,
+    foodPancakes: foodPancakes.src,
+    foodDoughnuts: foodDoughnuts.src,
+    foodHotDogs: foodHotDogs.src,
+    foodKeyLimePie: foodKeyLimePie.src,
+    foodLobsterRoll: foodLobsterRoll.src,
+    foodOnionRings: foodOnionRings.src,
+    foodPbj: foodPbj.src,
+    foodPhillyCheesesteak: foodPhillyCheesesteak.src,
+    foodPumpkinPie: foodPumpkinPie.src,
+    foodSmores: foodSmores.src,
+    foodBiscuitsGravy: foodBiscuitsGravy.src,
+    foodFriedChicken: foodFriedChicken.src,
+    foodBrisket: foodBrisket.src,
+    foodMacCheese: foodMacCheese.src,
+    foodIceCreamTruck: foodIceCreamTruck.src,
+    foodBbqMap: foodBbqMap.src,
+
+    // Sports — action & venues
+    aliVsFrazierJab: sportsAliVsFrazierJab.src,
+    aliVsFrazier1971: sportsAliVsFrazier1971.src,
+    marchMadness: sportsMarchMadness.src,
+    basketballDunk: sportsBasketballDunk.src,
+    batterAtPlate: sportsBatterAtPlate.src,
+    collegeFootball: sportsCollegeFootball.src,
+    daytona500: sportsDaytona500.src,
+    allegiantStadium: sportsAllegiantStadium.src,
+    yankeeStadium: sportsYankeeStadium.src,
+    metLifeFlag: sportsMetLifeFlag.src,
+    baseballAerial: sportsBaseballAerial.src,
+
+    // Fashion — western & preppy
+    fashionCowboyBoots: fashionCowboyBoots.src,
+    fashionLittleCowboy: fashionLittleCowboy.src,
+    fashionRalphLaurenStore: fashionRalphLaurenStore.src,
+    fashionCowboyBootsLasso: fashionCowboyBootsLasso.src,
+  },
+
+  nashville: {
+    skyline: nashvilleSkyline.src,
+    skyline2: nashvilleSkyline2.src,
   },
 } as const;

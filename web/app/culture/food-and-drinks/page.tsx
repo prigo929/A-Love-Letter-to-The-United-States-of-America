@@ -10,7 +10,7 @@ import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Food & Drinks | The American Operating System",
-  description: "Diners, fast food, and the democratic palate — explore the history and catalogue of American culinary culture.",
+  description: "Diners, fast food, BBQ, ice cream — explore the democratic palate and iconic foods invented and popularized in America.",
 };
 
 export default async function FoodAndDrinksPage() {
@@ -22,11 +22,11 @@ export default async function FoodAndDrinksPage() {
       ? "Sistemul culinar american a industrializat consistența și a democratizat accesul la mâncare la scară planetară."
       : "The American culinary system industrialized consistency and democratized access to food on a planetary scale.",
     body1: isRo
-      ? "Diner-ul clasic american reprezintă designul spațial al accesului democratic. Deschis oricui, la orice oră, cu cafea fără fund și cabine retro, este o zonă de confort arhitecturală care a transformat comunitatea și conversația în bunuri accesibile. Modelul de franciză (McDonald's, Starbucks, Subway) a transformat prepararea mâncării într-un sistem de asamblare de precizie — o rețetă unică, reprodusă identic în zeci de mii de bucătării de pe toate continentele."
-      : "The classic American diner represents the spatial design of democratic access. Open to anyone at any hour, with bottomless coffee and retro booths, it is an architectural comfort zone that commoditized community. The franchise model (McDonald's, Starbucks, Subway) turned food preparation into a precision assembly system — one recipe replicated identically across tens of thousands of kitchens on every continent.",
+      ? "Diner-ul clasic american reprezintă designul spațial al accesului democratic. Modelul de franciză (McDonald's, Starbucks, Subway) a transformat prepararea mâncării într-un sistem de asamblare de precizie. Pizza americană — NY slice și Chicago deep dish — a reinventat un preparat italian în ceva complet nou. Înghețata, chipsurile de cartofi, brownies-urile, donuts-urile — toate au origini sau popularizări distinctiv americane."
+      : "The American diner represents the spatial design of democratic access. The franchise model (McDonald's, Starbucks, Subway) turned food preparation into a precision assembly system. American pizza — NY slice and Chicago deep dish — reinvented an Italian dish into something entirely new. Ice cream, potato chips, brownies, donuts — all have distinctly American origins or popularization.",
     body2: isRo
-      ? "De la grătarele afumate lent în Texas la barurile speakeasy pre-Prohibiție exportate în Paris sau Tokyo, bucătăria americană combină tradițiile regionale cu scalabilitatea modernă."
-      : "From low-and-slow smoked barbecue in Texas to pre-Prohibition speakeasy bars exported to Paris or Tokyo, American food and drink blend regional traditions with modern scalability.",
+      ? "BBQ-ul american este de fapt patru tradiții regionale complet diferite: brisket afumat texan, coaste din Memphis, pulled pork carolina și burnt ends din Kansas City. Fiecare cu propriul tip de lemn, propriul sos și propria filozofie despre ce înseamnă carnea perfectă."
+      : "American BBQ is actually four completely different regional traditions: Texas smoked brisket, Memphis ribs, Carolina pulled pork, and Kansas City burnt ends. Each with its own wood, its own sauce, and its own philosophy about what perfect meat means.",
     bandSubtitle: isRo
       ? "Cu tejghele cromate, lumini neon și cabine din vinilin, diner-ul este interfața democratică a conversației libere din SUA."
       : "With chrome counters, neon glow, and vinyl booths, the diner is the democratic interface of neighborhood conversation across America.",
@@ -34,33 +34,33 @@ export default async function FoodAndDrinksPage() {
     nextLink: isRo ? "Genuri Muzicale →" : "Music Genres →",
   };
 
-  const foodPillars = [
+  const mainPillars = [
     {
       title: isRo ? "Hamburgerul" : "The Hamburger",
       subtitle: isRo ? "Simbolul Democrației Culinare" : "Symbol of Culinary Democracy",
       image: SITE_IMAGES.culture.burger,
       alt: "Classic American Burger",
       desc: isRo
-        ? "De la grătarul din curte la McDonald's, hamburgherul american a redefinit ce înseamnă o masă rapidă, satisfăcătoare și universală."
-        : "From the backyard grill to McDonald's, the American hamburger redefined what a fast, satisfying, universal meal looks like.",
+        ? "De la grătarul din curte la McDonald's, hamburgherul american a redefinit ce înseamnă o masă rapidă, satisfăcătoare și universală. Acum consumat de miliarde de oameni zilnic în toată lumea."
+        : "From the backyard grill to McDonald's, the American hamburger redefined what a fast, satisfying, universal meal looks like. Now consumed by billions worldwide daily.",
     },
     {
-      title: isRo ? "Fast Food" : "Fast Food Nation",
-      subtitle: isRo ? "Franciza care a cucerit lumea" : "The Franchise That Conquered the World",
-      image: SITE_IMAGES.culture.mcdMenu,
-      alt: "McDonald's Menu with burger, fries, and soda",
+      title: isRo ? "BBQ Texan" : "Texas BBQ",
+      subtitle: isRo ? "Patru Tradiții, O Filozofie" : "Four Traditions, One Philosophy",
+      image: SITE_IMAGES.culture.foodBrisket,
+      alt: "Texas BBQ brisket",
       desc: isRo
-        ? "McDonald's a creat primul sistem global de preparare a mâncării — consistență perfectă în orice colț al lumii."
-        : "McDonald's created the first global food preparation system — perfect consistency in every corner of the world.",
+        ? "Brisket afumat 12–18 ore în lemn de stejar, coaste Memphis glasate cu sos dulce-iute, pulled pork Carolina în stil vinegar-based, burnt ends Kansas City — patru religii culinare distincte cu milioane de adepți."
+        : "12–18 hour oak-smoked brisket, Memphis ribs glazed with sweet-hot sauce, Carolina vinegar-based pulled pork, Kansas City burnt ends — four distinct culinary religions with millions of devoted followers.",
     },
     {
-      title: isRo ? "Diner-ul American" : "The American Diner",
-      subtitle: isRo ? "Templul Nostalgiei" : "Cathedral of Nostalgia",
-      image: SITE_IMAGES.culture.dinerInside,
-      alt: "Inside of a classic American diner",
+      title: isRo ? "Înghețata" : "Ice Cream",
+      subtitle: isRo ? "Inventată și Industrializată în America" : "Invented & Industrialized in America",
+      image: SITE_IMAGES.culture.foodIceCreamTruck,
+      alt: "American ice cream truck",
       desc: isRo
-        ? "Tejghele cromate, lumini neon și cafea fără fund — diner-ul este tabloul accesului democratic la confort și comunitate."
-        : "Chrome counters, neon lights, and bottomless coffee — the diner is the tableau of democratic access to comfort and community.",
+        ? "Cornul de înghețată a fost inventat la Expoziția Mondială din St. Louis (1904). Soft serve-ul — inventat de americani. Ben & Jerry's, Häagen-Dazs — branduri americane care domină piața globală de 97 miliarde de dolari."
+        : "The ice cream cone was invented at the St. Louis World's Fair (1904). Soft serve — American invention. Ben & Jerry's, Häagen-Dazs — American brands dominating the $97 billion global market.",
     },
   ];
 
@@ -68,27 +68,43 @@ export default async function FoodAndDrinksPage() {
     {
       title: "Coca-Cola",
       stat: "1886",
-      statLabel: isRo ? "An fondare" : "Founded",
-      desc: isRo
-        ? "Inventată în Atlanta, Georgia — acum disponibilă în peste 200 de țări, cel mai distribuit produs din lume."
-        : "Invented in Atlanta, Georgia — now available in 200+ countries, the most distributed product on Earth.",
+      statLabel: isRo ? "An fondare, Atlanta GA" : "Founded, Atlanta GA",
+      desc: isRo ? "Inventată de Dr. John Pemberton. Acum disponibilă în peste 200 de țări — cel mai distribuit produs din lume." : "Invented by Dr. John Pemberton. Now available in 200+ countries — the most distributed product on Earth.",
     },
     {
-      title: isRo ? "Speakeasy & Cocktail" : "Speakeasy & Cocktail",
+      title: "Speakeasy & Cocktail",
       stat: "1920s",
       statLabel: isRo ? "Era Prohibiției" : "Prohibition Era",
-      desc: isRo
-        ? "Barurile clandestine din era Prohibiției au inventat cocktail-ul modern și au exportat cultura mixologiei americane în toată lumea."
-        : "Prohibition-era underground bars invented the modern cocktail and exported American mixology culture worldwide.",
+      desc: isRo ? "Barurile clandestine au inventat cocktail-ul modern. Manhattan, Old Fashioned, Martini — toate au origini americane." : "Underground bars invented the modern cocktail. Manhattan, Old Fashioned, Martini — all American in origin.",
     },
     {
-      title: isRo ? "Cafeaua Americană" : "American Coffee",
+      title: isRo ? "Cafea Americană" : "American Coffee",
       stat: "$100B+",
       statLabel: isRo ? "Piața anuală" : "Annual Market",
-      desc: isRo
-        ? "Starbucks a transformat o băutură simplă într-o experiență aspirațională — 35,000 de cafenele pe 6 continente."
-        : "Starbucks transformed a simple beverage into an aspirational experience — 35,000 locations across 6 continents.",
+      desc: isRo ? "Starbucks a transformat cafeaua într-o experiență aspirațională — 35,000 de cafenele pe 6 continente." : "Starbucks transformed coffee into an aspirational experience — 35,000 locations across 6 continents.",
     },
+  ];
+
+  // Catalogue grid — all dishes
+  const catalogue = [
+    { src: SITE_IMAGES.culture.foodPancakes, label: isRo ? "Pancakes" : "Pancakes" },
+    { src: SITE_IMAGES.culture.foodHotDogs, label: isRo ? "Hot Dogs" : "Hot Dogs" },
+    { src: SITE_IMAGES.culture.foodBuffaloWings, label: isRo ? "Buffalo Wings" : "Buffalo Wings" },
+    { src: SITE_IMAGES.culture.foodPhillyCheesesteak, label: isRo ? "Philly Cheesesteak" : "Philly Cheesesteak" },
+    { src: SITE_IMAGES.culture.foodBlt, label: "BLT Sandwich" },
+    { src: SITE_IMAGES.culture.foodPbj, label: isRo ? "PB&J" : "PB&J" },
+    { src: SITE_IMAGES.culture.foodMacCheese, label: isRo ? "Mac & Cheese" : "Mac & Cheese" },
+    { src: SITE_IMAGES.culture.foodFriedChicken, label: isRo ? "Fried Chicken" : "Fried Chicken" },
+    { src: SITE_IMAGES.culture.foodLobsterRoll, label: isRo ? "Lobster Roll" : "Lobster Roll" },
+    { src: SITE_IMAGES.culture.foodOnionRings, label: isRo ? "Onion Rings" : "Onion Rings" },
+    { src: SITE_IMAGES.culture.foodDoughnuts, label: isRo ? "Glazed Donuts" : "Glazed Donuts" },
+    { src: SITE_IMAGES.culture.foodBiscuitsGravy, label: isRo ? "Biscuits & Gravy" : "Biscuits & Gravy" },
+    { src: SITE_IMAGES.culture.foodPumpkinPie, label: isRo ? "Pumpkin Pie" : "Pumpkin Pie" },
+    { src: SITE_IMAGES.culture.foodKeyLimePie, label: isRo ? "Key Lime Pie" : "Key Lime Pie" },
+    { src: SITE_IMAGES.culture.foodSmores, label: isRo ? "S'mores" : "S'mores" },
+    { src: SITE_IMAGES.culture.foodChocolateChipCookies, label: isRo ? "Chocolate Chip Cookies" : "Choc Chip Cookies" },
+    { src: SITE_IMAGES.culture.foodBrownies, label: isRo ? "Brownies" : "Brownies" },
+    { src: SITE_IMAGES.culture.mcdMenu, label: isRo ? "McDonald's" : "McDonald's" },
   ];
 
   return (
@@ -132,7 +148,7 @@ export default async function FoodAndDrinksPage() {
               {[
                 { value: "1.9B", label: isRo ? "Porții Coca-Cola servite zilnic" : "Daily Coca-Cola servings worldwide" },
                 { value: "40,000+", label: isRo ? "Restaurante McDonald's globale" : "McDonald's locations worldwide" },
-                { value: "$900B", label: isRo ? "Piața Food Service SUA" : "U.S. food service market size" },
+                { value: "$97B", label: isRo ? "Piața globală a înghețatei" : "Global ice cream market" },
               ].map((s, i) => (
                 <div key={i} className="border-b border-white/5 pb-4 last:border-0 last:pb-0">
                   <div className="font-macro-display text-4xl font-bold text-white group-hover:text-glory-gold transition-colors duration-300">{s.value}</div>
@@ -145,7 +161,7 @@ export default async function FoodAndDrinksPage() {
 
         <div className="h-16 w-full gradient-dark-to-cream" />
 
-        {/* CREAM: Food pillars */}
+        {/* CREAM: Main pillars */}
         <section className="relative culture-cream-bg text-[#0C0907] py-24 md:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
           <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
@@ -157,7 +173,7 @@ export default async function FoodAndDrinksPage() {
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
             <div className="space-y-28">
-              {foodPillars.map((pillar, i) => (
+              {mainPillars.map((pillar, i) => (
                 <div key={i} className={`grid gap-12 md:gap-20 items-center ${i % 2 === 0 ? "md:grid-cols-[3fr_2fr]" : "md:grid-cols-[2fr_3fr] md:[&>*:first-child]:order-last"}`}>
                   <div>
                     <p className="font-body text-[10px] font-bold uppercase tracking-[0.35em] text-[#E8391B] mb-3">{pillar.subtitle}</p>
@@ -173,7 +189,48 @@ export default async function FoodAndDrinksPage() {
           </div>
         </section>
 
-        {/* CREAM: Drink pillars */}
+        {/* CREAM: BBQ Map */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-20 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-5xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-12">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "PATRU TRADIȚII, O FILOZOFIE" : "FOUR TRADITIONS, ONE PHILOSOPHY"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "HARTA BBQ" : "THE BBQ MAP"}</h2>
+            </div>
+            <div className="relative rounded-2xl overflow-hidden shadow-[0_30px_80px_rgb(12,9,7,0.12)]">
+              <Image src={SITE_IMAGES.culture.foodBbqMap} alt="Illustrated Regional US Barbecue Map" width={1200} height={800} className="w-full h-auto" />
+            </div>
+          </div>
+        </section>
+
+        {/* CREAM: Full catalogue grid */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-28 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "CATALOGUL PREPARATELOR AMERICANE" : "THE AMERICAN DISH CATALOGUE"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "PREPARATELE ICONICE" : "ICONIC DISHES"}</h2>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+              {catalogue.map((item, i) => (
+                <div key={i} className="group relative aspect-square rounded-xl overflow-hidden shadow-[0_4px_20px_rgb(12,9,7,0.08)] hover:shadow-[0_12px_40px_rgb(12,9,7,0.15)] hover:-translate-y-1 transition-all duration-400">
+                  <Image src={item.src} alt={item.label} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 640px) 33vw, (max-width: 768px) 25vw, 16vw" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/65 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-2">
+                    <p className="font-body text-[9px] font-bold text-white leading-tight">{item.label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CREAM: Drinks */}
         <section className="relative culture-cream-bg text-[#0C0907] pb-28 overflow-hidden border-t border-[#0C0907]/5">
           <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
           <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
@@ -205,8 +262,8 @@ export default async function FoodAndDrinksPage() {
             {[
               { value: "1.9B", label: isRo ? "Porții Coca-Cola / zi" : "Daily Coke servings", note: isRo ? "Distribuit global" : "Globally distributed" },
               { value: "40K+", label: isRo ? "Restaurante McDonald's" : "McDonald's locations", note: isRo ? "Pe 6 continente" : "Across 6 continents" },
-              { value: "$900B", label: isRo ? "Piața food service" : "Food service market", note: isRo ? "Economia gastro SUA" : "American gastro economy" },
-              { value: "35K+", label: isRo ? "Cafenele Starbucks" : "Starbucks cafes", note: isRo ? "Experiența aspirațională" : "Aspirational experience" },
+              { value: "$900B", label: isRo ? "Piața food service SUA" : "Food service market", note: isRo ? "Economia gastro SUA" : "American gastro economy" },
+              { value: "1904", label: isRo ? "An inventare corn înghețată" : "Ice cream cone invented", note: isRo ? "World's Fair, St. Louis" : "World's Fair, St. Louis" },
             ].map((s, i) => (
               <div key={i} className={`p-8 flex flex-col gap-2 ${i > 0 ? "border-l border-white/5" : ""}`}>
                 <span className="font-macro-display text-4xl md:text-5xl font-black text-[#E8B923]">{s.value}</span>
@@ -257,8 +314,8 @@ export default async function FoodAndDrinksPage() {
         <div className="culture-bg">
           <AskAmericaCTA
             locale={locale}
-            descriptionEn="Ask the AI Oracle about the history of McDonald's, the origins of Coca-Cola, American BBQ traditions, or the classic American diner."
-            descriptionRo="Întreabă Oracolul AI despre istoria McDonald's, originile Coca-Cola, tradițiile BBQ americane sau diner-ul clasic."
+            descriptionEn="Ask the AI Oracle about the history of McDonald's, Coca-Cola's origins, American BBQ regional styles, or how ice cream was invented in America."
+            descriptionRo="Întreabă Oracolul AI despre istoria McDonald's, originile Coca-Cola, stilurile regionale BBQ sau invenția înghețatei în America."
           />
         </div>
       </div>

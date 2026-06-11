@@ -178,6 +178,56 @@ export default async function CultureSportsPage() {
           </div>
         </section>
 
+        {/* CREAM: Boxing & College Sports */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-0 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-24 pb-24">
+            <div className="grid gap-20 md:gap-28">
+
+              {/* Boxing */}
+              <div className="grid gap-12 md:gap-20 items-center md:grid-cols-[2fr_3fr] md:[&>*:first-child]:order-last">
+                <div>
+                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.35em] text-[#E8391B] mb-3">
+                    {isRo ? "SPORTUL REGALILOR · NEW YORK, 1882–PREZENT" : "THE SPORT OF KINGS · NEW YORK, 1882–PRESENT"}
+                  </p>
+                  <h3 className="font-macro-display text-5xl md:text-6xl font-black text-[#0C0907] tracking-tight mb-6 leading-none">
+                    {isRo ? "Boxul American" : "American Boxing"}
+                  </h3>
+                  <p className="font-editorial text-lg text-[#0C0907]/70 leading-relaxed">
+                    {isRo
+                      ? "Muhammad Ali vs. Joe Frazier — Fight of the Century (1971) rămâne cel mai văzut eveniment sportiv din istoria televiziunii la acea dată. Ali a redefinit ce înseamnă un campion: nu doar un atlet, ci un simbol al rezistenței sociale, curajului moral și excelenței perfecte. Tyson, Foreman, Sugar Ray Leonard — America a produs cei mai mari campioni de box din toate timpurile."
+                      : "Muhammad Ali vs. Joe Frazier — the Fight of the Century (1971) remains the most watched live TV event in history at that time. Ali redefined what a champion means: not just an athlete, but a symbol of social resistance, moral courage, and perfect excellence. Tyson, Foreman, Sugar Ray Leonard — America has produced the greatest boxing champions of all time."}
+                  </p>
+                </div>
+                <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_30px_80px_rgb(12,9,7,0.15)]">
+                  <Image src={SITE_IMAGES.culture.aliVsFrazier1971} alt="Muhammad Ali vs Joe Frazier Fight of the Century 1971" fill className="object-cover" sizes="(max-width: 768px) 100vw, 55vw" />
+                </div>
+              </div>
+
+              {/* College Sports */}
+              <div className="grid gap-12 md:gap-20 items-center md:grid-cols-[3fr_2fr]">
+                <div>
+                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.35em] text-[#E8391B] mb-3">
+                    {isRo ? "NCAA · MARCH MADNESS · UNIC ÎN LUME" : "NCAA · MARCH MADNESS · UNIQUE IN THE WORLD"}
+                  </p>
+                  <h3 className="font-macro-display text-5xl md:text-6xl font-black text-[#0C0907] tracking-tight mb-6 leading-none">
+                    {isRo ? "Sport Universitar" : "College Sports"}
+                  </h3>
+                  <p className="font-editorial text-lg text-[#0C0907]/70 leading-relaxed">
+                    {isRo
+                      ? "March Madness — turneul NCAA de baschet universitar — este un fenomen cultural fără echivalent în afara Statelor Unite: 68 de echipe, 67 de meciuri, 100+ milioane de spectatori. Fotbalul universitar umple stadioane de 100.000+ de locuri în fiecare weekend de toamnă. NCAA generează singur 4 miliarde de dolari anual. Nu există altă țară unde sportul universitar are această scară."
+                      : "March Madness — the NCAA college basketball tournament — is a cultural phenomenon unique to the United States: 68 teams, 67 games, 100M+ viewers. College football fills 100,000+ seat stadiums every autumn weekend. NCAA generates $4 billion annually on its own. No other country has college athletics at this scale."}
+                  </p>
+                </div>
+                <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_30px_80px_rgb(12,9,7,0.15)]">
+                  <Image src={SITE_IMAGES.culture.marchMadness} alt="NCAA March Madness Tournament Basketball Court MSG" fill className="object-cover" sizes="(max-width: 768px) 100vw, 40vw" />
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
         {/* CREAM: Sports Economy */}
         <section className="relative culture-cream-bg text-[#0C0907] pb-28 md:pb-36 overflow-hidden border-t border-[#0C0907]/5">
           <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />

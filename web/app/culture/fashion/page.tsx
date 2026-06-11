@@ -62,6 +62,24 @@ export default async function CultureFashionPage() {
         ? "Supreme, Off-White și BAPE au transformat cultura stradală în industrie globală de miliarde. Streetwear-ul a democratizat moda de lux și a distrus barierele sociale ale couture-ului tradițional."
         : "Supreme, Off-White, and BAPE transformed street culture into a billion-dollar global industry. Streetwear democratized luxury fashion and demolished the social barriers of traditional couture.",
     },
+    {
+      title: isRo ? "Moda Cowboy" : "Western Wear",
+      subtitle: isRo ? "De la Ranch la Runway" : "From Ranch to Runway",
+      image: SITE_IMAGES.culture.fashionCowboyBoots,
+      alt: "Cowboy boots girl sitting on fence on ranch",
+      desc: isRo
+        ? "Cizmele cowboy, pălăria Stetson, Wrangler-ul cu talie înaltă — îmbrăcămintea de ranch texan a cucerit podiumurile de modă la Coachella, Milan și Tokyo."
+        : "Cowboy boots, Stetson hats, high-rise Wranglers — Texas ranch workwear conquered the fashion runways at Coachella, Milan, and Tokyo.",
+    },
+    {
+      title: isRo ? "Preppy & Ivy League" : "Preppy & Ivy League",
+      subtitle: isRo ? "Ralph Lauren și Estetica Aspirațională" : "Ralph Lauren & The Aspirational Aesthetic",
+      image: SITE_IMAGES.culture.fashionRalphLaurenStore,
+      alt: "Ralph Lauren retail store interior with preppy nautical apparel",
+      desc: isRo
+        ? "Ralph Lauren a transformat estetica Ivy League — polo, blazer navy, pantaloni chino — în cel mai exportat stil american de lux casual. O viziune despre o Americă aspirațională, vândută în toată lumea."
+        : "Ralph Lauren transformed the Ivy League aesthetic — polo shirts, navy blazers, chino trousers — into America's most exported casual luxury style. A vision of aspirational America, sold worldwide.",
+    },
   ];
 
   const vaultAds = [
@@ -188,7 +206,7 @@ export default async function CultureFashionPage() {
               { value: "1853", label: isRo ? "An fondare Levi's" : "Levi's patent year", note: isRo ? "Îmbrăcămintea eternă" : "The eternal garment" },
               { value: "4B+", label: isRo ? "Purtători de blugi / zi" : "Daily jeans wearers", note: isRo ? "Pe toate continentele" : "Across every continent" },
               { value: "$5B+", label: isRo ? "Venituri Air Jordan" : "Air Jordan revenues", note: isRo ? "Cultura sneaker-ilor" : "The sneaker economy" },
-              { value: "$300B+", label: isRo ? "Piața streetwear globală" : "Global streetwear market", note: isRo ? "Moda democratizată" : "Democratized fashion" },
+              { value: "$300B+", label: isRo ? "Piața streetwear globală" : "Global streetwear market", note: isRo ? "Democratizată global" : "Democratized globally" },
             ].map((s, i) => (
               <div key={i} className={`p-8 flex flex-col gap-2 ${i > 0 ? "border-l border-white/5" : ""}`}>
                 <span className="font-macro-display text-4xl md:text-5xl font-black text-[#E8B923]">{s.value}</span>
