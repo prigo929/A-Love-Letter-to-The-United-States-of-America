@@ -181,6 +181,27 @@ export default async function CultureFashionPage() {
           </div>
         </section>
 
+        {/* CREAM: Western Wear gallery */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-20 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-16">
+            <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold text-center mb-10">
+              {isRo ? "DE LA RANCH LA RUNWAY" : "FROM RANCH TO RUNWAY"}
+            </p>
+            <div className="grid grid-cols-3 gap-4">
+              <div className="relative aspect-3/4 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(12,9,7,0.10)]">
+                <Image src={SITE_IMAGES.culture.fashionCowboyBoots} alt="Cowboy boots girl sitting on fence on ranch with jeans" fill className="object-cover" sizes="33vw" />
+              </div>
+              <div className="relative aspect-3/4 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(12,9,7,0.10)]">
+                <Image src={SITE_IMAGES.culture.fashionLittleCowboy} alt="Little cowboy wearing Wranglers watching a horse" fill className="object-cover" sizes="33vw" />
+              </div>
+              <div className="relative aspect-3/4 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(12,9,7,0.10)]">
+                <Image src={SITE_IMAGES.culture.fashionCowboyBootsLasso} alt="Worn square toe leather cowboy boots with coiled lasso rope and straw hat" fill className="object-cover" sizes="33vw" />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CREAM: Vintage ad vault */}
         <section className="relative culture-cream-bg text-[#0C0907] pb-28 overflow-hidden border-t border-[#0C0907]/5">
           <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />

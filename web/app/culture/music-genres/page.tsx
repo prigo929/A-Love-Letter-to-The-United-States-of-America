@@ -48,7 +48,9 @@ export default async function MusicGenresPage() {
       name: isRo ? "Rock & Roll" : "Rock & Roll",
       origin: "Memphis, 1950s",
       image: SITE_IMAGES.culture.elvisPerforming1956,
+      image2: SITE_IMAGES.culture.elvisWithBand1956,
       alt: "Elvis Presley performing live in Miami 1956",
+      alt2: "Elvis Presley with Scotty Moore and Bill Black band 1956",
       desc: isRo
         ? "Elvis Presley, Chuck Berry și Little Richard au transformat blues-ul și gospel-ul într-un gen complet nou — muzică pentru tineri, cu energie electrică și libertate corporală pe scenă."
         : "Elvis Presley, Chuck Berry, and Little Richard transformed blues and gospel into something entirely new — music for youth, with electric energy and physical freedom on stage.",
@@ -74,6 +76,13 @@ export default async function MusicGenresPage() {
   ];
 
   const popIcons = [
+    {
+      name: "Elvis Presley",
+      era: "1954–1977",
+      image: SITE_IMAGES.culture.elvisPortrait1973,
+      alt: "Elvis Presley 1973 portrait",
+      desc: isRo ? "Regele Rock and Roll-ului. Elvis a vândut 500M+ înregistrări și a redefinit muzica americană, moda și cultura celebrity." : "The King of Rock and Roll. Elvis sold 500M+ recordings and single-handedly redefined American music, fashion, and celebrity culture.",
+    },
     {
       name: "Frank Sinatra",
       era: "1940s–1990s",
@@ -105,15 +114,22 @@ export default async function MusicGenresPage() {
     {
       name: "Mariah Carey",
       era: "1990–present",
-      image: SITE_IMAGES.culture.mariahCarey2019,
-      alt: "Mariah Carey performing Caution World Tour 2019",
+      image: SITE_IMAGES.culture.mariahCarey2013,
+      alt: "Mariah Carey performing on Good Morning America 2013",
       desc: isRo ? "Cu cea mai mare extensie vocală din istoria muzicii pop comerciale, Mariah Carey a vândut 220 de milioane de albume." : "With the greatest vocal range in commercial pop history, Mariah Carey has sold 220 million albums worldwide.",
+    },
+    {
+      name: "The Eagles",
+      era: "1971–present",
+      image: SITE_IMAGES.culture.theEagles2008,
+      alt: "The Eagles performing in 2008",
+      desc: isRo ? "Hotel California (1976) este cel mai bine vândut album din istoria RIAA. Eagles a definit sunetul California și era rock 70s–80s." : "Hotel California (1976) is the best-selling album in RIAA history. The Eagles defined the California sound and the 1970s–80s rock era.",
     },
     {
       name: "Taylor Swift",
       era: "2006–present",
-      image: SITE_IMAGES.culture.taylorSwiftEras,
-      alt: "Taylor Swift Eras Tour concert",
+      image: SITE_IMAGES.culture.taylorSwiftSpeakNow,
+      alt: "Taylor Swift Speak Now World Tour Sydney 2012",
       desc: isRo ? "The Eras Tour a generat 2,1 miliarde de dolari — cel mai profitabil tur muzical din istoria omenirii." : "The Eras Tour generated $2.1 billion — the most profitable music tour in human history.",
     },
   ];
@@ -210,9 +226,20 @@ export default async function MusicGenresPage() {
                     <h3 className="font-macro-display text-5xl md:text-6xl font-black text-[#0C0907] tracking-tight mb-6 leading-none">{genre.name}</h3>
                     <p className="font-editorial text-lg text-[#0C0907]/70 leading-relaxed">{genre.desc}</p>
                   </div>
-                  <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_30px_80px_rgb(12,9,7,0.15)]">
-                    <Image src={genre.image} alt={genre.alt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 40vw" />
-                  </div>
+                  {genre.image2 ? (
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="relative aspect-3/4 rounded-2xl overflow-hidden shadow-[0_20px_60px_rgb(12,9,7,0.15)]">
+                        <Image src={genre.image} alt={genre.alt} fill className="object-cover" sizes="20vw" />
+                      </div>
+                      <div className="relative aspect-3/4 rounded-2xl overflow-hidden shadow-[0_20px_60px_rgb(12,9,7,0.15)]">
+                        <Image src={genre.image2} alt={genre.alt2 ?? ""} fill className="object-cover" sizes="20vw" />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_30px_80px_rgb(12,9,7,0.15)]">
+                      <Image src={genre.image} alt={genre.alt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 40vw" />
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -230,7 +257,7 @@ export default async function MusicGenresPage() {
               <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "ICOANELE POP" : "THE POP ICONS"}</h2>
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {popIcons.map((icon, i) => (
                 <div key={i} className="group bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">
                   <div className="relative aspect-4/3 overflow-hidden">

@@ -54,10 +54,10 @@ export default async function CultureSportsPage() {
       label: isRo ? "BASCHET" : "BASKETBALL",
       title: isRo ? "NBA și Cultura Superstarurilor" : "The NBA & Global Superstar Culture",
       text: isRo
-        ? "De la Dream Team din 1992 până la superstarurile de astăzi, baschetul este unul dintre cele mai de succes exporturi culturale ale Americii, influențând moda, muzica și stilul urban pe toate continentele."
-        : "From the 1992 Dream Team to modern global superstars, basketball is one of America's most successful cultural exports, shaping global fashion, music, and urban lifestyle trends.",
-      image: SITE_IMAGES.culture.cowboysStadium,
-      alt: "AT&T Stadium Packed Game",
+        ? "De la Dream Team din 1992 până la Michael Jordan (6 titluri NBA, 5 MVP-uri) și superstarurile de astăzi, baschetul este unul dintre cele mai de succes exporturi culturale ale Americii, influențând moda, muzica și stilul urban pe toate continentele."
+        : "From the 1992 Dream Team to Michael Jordan's 6 championships and 5 MVPs — to LeBron and beyond — basketball is one of America's most powerful cultural exports, shaping global fashion, music, and urban lifestyle on every continent.",
+      image: SITE_IMAGES.culture.basketballDunk,
+      alt: "Miami Heat player dunking during NBA game",
       reversed: true,
     },
     {
@@ -199,8 +199,13 @@ export default async function CultureSportsPage() {
                       : "Muhammad Ali vs. Joe Frazier — the Fight of the Century (1971) remains the most watched live TV event in history at that time. Ali redefined what a champion means: not just an athlete, but a symbol of social resistance, moral courage, and perfect excellence. Tyson, Foreman, Sugar Ray Leonard — America has produced the greatest boxing champions of all time."}
                   </p>
                 </div>
-                <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_30px_80px_rgb(12,9,7,0.15)]">
-                  <Image src={SITE_IMAGES.culture.aliVsFrazier1971} alt="Muhammad Ali vs Joe Frazier Fight of the Century 1971" fill className="object-cover" sizes="(max-width: 768px) 100vw, 55vw" />
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="relative aspect-3/4 rounded-2xl overflow-hidden shadow-[0_20px_60px_rgb(12,9,7,0.15)]">
+                    <Image src={SITE_IMAGES.culture.aliVsFrazierJab} alt="Muhammad Ali landing powerful left jab on Joe Frazier" fill className="object-cover" sizes="25vw" />
+                  </div>
+                  <div className="relative aspect-3/4 rounded-2xl overflow-hidden shadow-[0_20px_60px_rgb(12,9,7,0.15)]">
+                    <Image src={SITE_IMAGES.culture.aliVsFrazier1971} alt="Muhammad Ali vs Joe Frazier Fight of the Century 1971" fill className="object-cover" sizes="25vw" />
+                  </div>
                 </div>
               </div>
 
@@ -325,6 +330,50 @@ export default async function CultureSportsPage() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Legends portraits */}
+          <div className="mb-20">
+            <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-2">{isRo ? "CEI MAI MARI SPORTIVI AMERICANI" : "THE GREATEST AMERICAN ATHLETES"}</p>
+            <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-8">{isRo ? "LEGENDELE" : "THE LEGENDS"}</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { src: SITE_IMAGES.culture.michaelJordan, name: "Michael Jordan", note: isRo ? "6× Campion NBA" : "6× NBA Champion" },
+                { src: SITE_IMAGES.culture.muhammadAli, name: "Muhammad Ali", note: isRo ? "Cel Mai Mare din Toate Timpurile" : "The Greatest of All Time" },
+                { src: SITE_IMAGES.culture.vaultSportsSI2019, name: "Tiger Woods", note: isRo ? "15× Major de Golf" : "15× Golf Major Winner" },
+                { src: SITE_IMAGES.culture.vaultSportsSI1980, name: isRo ? "Miracolul pe Gheață" : "Miracle on Ice", note: isRo ? "Olimpiada 1980 — SUA vs URSS" : "1980 Olympics — USA vs USSR" },
+              ].map((l, i) => (
+                <div key={i} className="group relative aspect-3/4 rounded-2xl overflow-hidden">
+                  <Image src={l.src} alt={l.name} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="25vw" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="font-macro-display text-base font-black text-white leading-tight">{l.name}</p>
+                    <p className="font-body text-[10px] font-bold text-glory-gold uppercase tracking-wider mt-1">{l.note}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Stadium gallery */}
+          <div className="mb-20">
+            <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-2">{isRo ? "CATEDRALELE SPORTULUI AMERICAN" : "CATHEDRALS OF AMERICAN SPORT"}</p>
+            <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-8">{isRo ? "STADIOANELE" : "THE STADIUMS"}</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {[
+                { src: SITE_IMAGES.culture.allegiantStadium, alt: "Allegiant Stadium exterior — Las Vegas Raiders" },
+                { src: SITE_IMAGES.culture.yankeeStadium, alt: "Yankee Stadium — New York Yankees game from stands" },
+                { src: SITE_IMAGES.culture.baseballAerial, alt: "Aerial top-down view of illuminated baseball diamond" },
+                { src: SITE_IMAGES.culture.batterAtPlate, alt: "Baseball batter swinging at pitch with catcher and umpire" },
+                { src: SITE_IMAGES.culture.collegeFootball, alt: "Tennessee vs Ohio State college football playoff 2024" },
+                { src: SITE_IMAGES.culture.metLifeFlag, alt: "Massive US flag unfurled before Jets game at MetLife Stadium" },
+              ].map((img, i) => (
+                <div key={i} className="group relative aspect-16/10 rounded-2xl overflow-hidden">
+                  <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 50vw, 33vw" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Parallax quote */}
