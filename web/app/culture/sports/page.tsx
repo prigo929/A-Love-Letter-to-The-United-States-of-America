@@ -56,8 +56,8 @@ export default async function CultureSportsPage() {
       text: isRo
         ? "De la Dream Team din 1992 până la Michael Jordan (6 titluri NBA, 5 MVP-uri) și superstarurile de astăzi, baschetul este unul dintre cele mai de succes exporturi culturale ale Americii, influențând moda, muzica și stilul urban pe toate continentele."
         : "From the 1992 Dream Team to Michael Jordan's 6 championships and 5 MVPs — to LeBron and beyond — basketball is one of America's most powerful cultural exports, shaping global fashion, music, and urban lifestyle on every continent.",
-      image: SITE_IMAGES.culture.basketballDunk,
-      alt: "Miami Heat player dunking during NBA game",
+      image: SITE_IMAGES.culture.leBron2022,
+      alt: "LeBron James — Los Angeles Lakers vs Cleveland Cavaliers 2022",
       reversed: true,
     },
     {
@@ -269,6 +269,26 @@ export default async function CultureSportsPage() {
                 </div>
               </div>
 
+              {/* Extreme Sports */}
+              <div className="grid gap-12 md:gap-20 items-center md:grid-cols-[2fr_3fr] md:[&>*:first-child]:order-last">
+                <div>
+                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.35em] text-[#E8391B] mb-3">
+                    {isRo ? "X GAMES · VENICE BEACH · SKATEBOARDING" : "X GAMES · VENICE BEACH · SKATEBOARDING"}
+                  </p>
+                  <h3 className="font-macro-display text-5xl md:text-6xl font-black text-[#0C0907] tracking-tight mb-6 leading-none">
+                    {isRo ? "Sporturi Extreme" : "Extreme Sports"}
+                  </h3>
+                  <p className="font-editorial text-lg text-[#0C0907]/70 leading-relaxed">
+                    {isRo
+                      ? "America a inventat skateboard-ul în California anilor '50 și l-a transformat într-o cultură globală. X Games (1995) a adus snowboard-ul, BMX-ul și skateboard-ul în prime time. Tony Hawk's Pro Skater (1999) a introdus generații întregi în cultura skate. Venice Beach Skate Park rămâne locul de pelerinaj al skater-ilor din toată lumea — și în 2020, skateboard-ul a intrat oficial la Jocurile Olimpice."
+                      : "America invented skateboarding in 1950s California and turned it into a global cultural force. X Games (1995) brought snowboarding, BMX, and skating into prime time. Tony Hawk's Pro Skater (1999) introduced entire generations to skate culture. Venice Beach Skate Park remains a global pilgrimage site — and in 2020, skateboarding officially entered the Olympic Games."}
+                  </p>
+                </div>
+                <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_30px_80px_rgb(12,9,7,0.15)]">
+                  <Image src={SITE_IMAGES.culture.skateboarderVeniceBeach} alt="Skateboarder at Venice Beach 2022" fill className="object-cover" sizes="(max-width: 768px) 100vw, 55vw" />
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
@@ -336,9 +356,10 @@ export default async function CultureSportsPage() {
           <div className="mb-20">
             <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-2">{isRo ? "CEI MAI MARI SPORTIVI AMERICANI" : "THE GREATEST AMERICAN ATHLETES"}</p>
             <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-8">{isRo ? "LEGENDELE" : "THE LEGENDS"}</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {[
                 { src: SITE_IMAGES.culture.michaelJordan, name: "Michael Jordan", note: isRo ? "6× Campion NBA" : "6× NBA Champion" },
+                { src: SITE_IMAGES.culture.leBron2018, name: "LeBron James", note: isRo ? "4× Campion NBA · Lakers" : "4× NBA Champion · Lakers" },
                 { src: SITE_IMAGES.culture.muhammadAli, name: "Muhammad Ali", note: isRo ? "Cel Mai Mare din Toate Timpurile" : "The Greatest of All Time" },
                 { src: SITE_IMAGES.culture.vaultSportsSI2019, name: "Tiger Woods", note: isRo ? "15× Major de Golf" : "15× Golf Major Winner" },
                 { src: SITE_IMAGES.culture.vaultSportsSI1980, name: isRo ? "Miracolul pe Gheață" : "Miracle on Ice", note: isRo ? "Olimpiada 1980 — SUA vs URSS" : "1980 Olympics — USA vs USSR" },

@@ -272,6 +272,7 @@ import musicPostMalone from "@/IMAGES/Culture/Music/A live performance shot of P
 import musicLukeCombs2021 from "@/IMAGES/Culture/Music/luke combs-2021tour.jpg";
 import musicImagineDragons2017 from "@/IMAGES/Culture/Music/Imagine Dragons at Mohegan Sun in 2017. Left to right, Wayne Sermon, Dan Reynolds, former drummer Daniel Platzman, and Ben McKee.jpg";
 import musicMaroon52020 from "@/IMAGES/Culture/Music/Lineup of Maroon 5 since 2020. Clockwise from top left, Adam Levine, Jesse Carmichael, James Valentine, Matt Flynn, PJ Morton, Sam Farrar.jpg";
+import musicMadonna1987 from "@/IMAGES/Culture/Music/Madonna performing during the 1987 Who's That Girl World Tour.jpg";
 
 // Food — new images
 import foodBlt from "@/IMAGES/Culture/Food/BLT Sandwich.jpg";
@@ -307,6 +308,12 @@ import sportsAllegiantStadium from "@/IMAGES/Culture/Sports/Stadiums/Exterior-Vi
 import sportsYankeeStadium from "@/IMAGES/Culture/Sports/Stadiums/New-York-Yankees-Baseball-Game-From-Stands-At-Yankee-Stadium.jpg";
 import sportsMetLifeFlag from "@/IMAGES/Culture/Sports/Stadiums/Elevated-View-Of-Large-US-Flag-Unfurled-Before-Jets-Game-At-MetLife-Stadium.jpg";
 import sportsBaseballAerial from "@/IMAGES/Culture/Sports/Stadiums/High-Aerial-Top-Down-View-Of-Illuminated-Baseball-Diamond-And-Crowd.jpg";
+import sportsSkateboarderVeniceBeach from "@/IMAGES/Culture/Sports/A skateboarder at Venice Beach (2022).jpg";
+import sportsLeBron2018 from "@/IMAGES/Culture/Sports/James during his first season with the Lakers in 2018.jpg";
+import sportsLeBron2022 from "@/IMAGES/Culture/Sports/LeBron James at Los Angeles Lakers @ Cleveland Cavaliers, March 21, 2022.jpg";
+
+// Food — pepperoni pizza
+import foodPepperoniPizza from "@/IMAGES/Culture/Food/Pepperoni pizza american.jpg";
 
 // Fashion — new images
 import fashionCowboyBoots from "@/IMAGES/Culture/Fashion/Cowboy boots girl sitting on fence on ranch with blue jeans and black t shirt.jpg";
@@ -639,6 +646,7 @@ export const SITE_IMAGES = {
     lukeCombs2021: musicLukeCombs2021.src,
     imagineDragons2017: musicImagineDragons2017.src,
     maroon52020: musicMaroon52020.src,
+    madonna1987: musicMadonna1987.src,
 
     // Food — catalogue
     foodBlt: foodBlt.src,
@@ -661,6 +669,7 @@ export const SITE_IMAGES = {
     foodMacCheese: foodMacCheese.src,
     foodIceCreamTruck: foodIceCreamTruck.src,
     foodBbqMap: foodBbqMap.src,
+    foodPepperoniPizza: foodPepperoniPizza.src,
 
     // Sports — action & venues
     aliVsFrazierJab: sportsAliVsFrazierJab.src,
@@ -674,6 +683,9 @@ export const SITE_IMAGES = {
     yankeeStadium: sportsYankeeStadium.src,
     metLifeFlag: sportsMetLifeFlag.src,
     baseballAerial: sportsBaseballAerial.src,
+    skateboarderVeniceBeach: sportsSkateboarderVeniceBeach.src,
+    leBron2018: sportsLeBron2018.src,
+    leBron2022: sportsLeBron2022.src,
 
     // Fashion — western & preppy
     fashionCowboyBoots: fashionCowboyBoots.src,

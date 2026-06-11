@@ -132,6 +132,13 @@ export default async function MusicGenresPage() {
       alt: "Taylor Swift Speak Now World Tour Sydney 2012",
       desc: isRo ? "The Eras Tour a generat 2,1 miliarde de dolari — cel mai profitabil tur muzical din istoria omenirii." : "The Eras Tour generated $2.1 billion — the most profitable music tour in human history.",
     },
+    {
+      name: "Madonna",
+      era: "1983–present",
+      image: SITE_IMAGES.culture.madonna1987,
+      alt: "Madonna performing during the 1987 Who's That Girl World Tour",
+      desc: isRo ? "Regina Pop-ului a vândut 300 de milioane de albume și a redefinit în mod repetat muzica pop, moda și spectacolul vizual de-a lungul a patru decenii." : "The Queen of Pop sold 300 million albums and repeatedly reinvented pop music, fashion, and visual spectacle across four decades.",
+    },
   ];
 
   const modernStars = [
@@ -257,7 +264,7 @@ export default async function MusicGenresPage() {
               <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "ICOANELE POP" : "THE POP ICONS"}</h2>
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {popIcons.map((icon, i) => (
                 <div key={i} className="group bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">
                   <div className="relative aspect-4/3 overflow-hidden">
@@ -293,8 +300,8 @@ export default async function MusicGenresPage() {
                   image: SITE_IMAGES.culture.jazzClub,
                   alt: "Live soul and R&B performance stage",
                   desc: isRo
-                    ? "Motown Records (Detroit, 1959) a creat cea mai prolifică uzină muzicală din istoria pop-ului: Marvin Gaye, Stevie Wonder, Diana Ross, The Temptations. Aretha Franklin, Atlantic Records — Soul-ul este podul dintre blues și hip-hop, cu un catalog care a modelat muzica mondială timp de 70 de ani."
-                    : "Motown Records (Detroit, 1959) built pop's most prolific hit factory: Marvin Gaye, Stevie Wonder, Diana Ross, The Temptations. Aretha Franklin, Atlantic Records — Soul is the connective tissue between blues and hip-hop, shaping world music for 70 years.",
+                    ? "Motown Records (Detroit, 1959) a creat cea mai prolifică uzină muzicală din istoria pop-ului: Marvin Gaye, Stevie Wonder, Diana Ross, The Temptations. Soul-ul este podul dintre blues și hip-hop, cu un catalog care a modelat muzica mondială timp de 70 de ani."
+                    : "Motown Records (Detroit, 1959) built pop's most prolific hit factory: Marvin Gaye, Stevie Wonder, Diana Ross, The Temptations. Soul is the connective tissue between blues and hip-hop, shaping world music for 70 years.",
                 },
                 {
                   era: isRo ? "PUNK & ALTERNATIVE · NEW YORK, 1974–PREZENT" : "PUNK & ALTERNATIVE · NEW YORK, 1974–PRESENT",

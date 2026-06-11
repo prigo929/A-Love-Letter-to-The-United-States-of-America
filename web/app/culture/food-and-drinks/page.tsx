@@ -65,8 +65,8 @@ export default async function FoodAndDrinksPage() {
     {
       title: isRo ? "Pizza Americană" : "American Pizza",
       subtitle: isRo ? "NY Slice & Chicago Deep Dish" : "NY Slice & Chicago Deep Dish",
-      image: SITE_IMAGES.culture.timesSquareIconic,
-      alt: "Times Square New York City — birthplace of NY-style pizza slice culture",
+      image: SITE_IMAGES.culture.foodPepperoniPizza,
+      alt: "Classic American pepperoni pizza",
       desc: isRo
         ? "Imigranții italieni au adus pizza la New York la începutul secolului XX, dar America a reinventat-o complet. NY slice (1905), Chicago deep dish (1943), Pizza Hut (1958, Kansas), Domino's (1960, Michigan) au exportat-o în 100+ țări. Azi pizza este o industrie globală de 153 miliarde de dolari — cu NY slice și Chicago deep dish ca două invenții distinctiv americane."
         : "Italian immigrants brought pizza to New York in the early 1900s, but America reinvented it entirely. The NY slice (1905), Chicago deep dish (1943), Pizza Hut (1958, Kansas), Domino's (1960, Michigan) then exported it worldwide. Today pizza is a $153 billion global industry — the NY slice and Chicago deep dish are distinctly American inventions.",
