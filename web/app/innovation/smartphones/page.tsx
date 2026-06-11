@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import { Smartphone, Globe, TrendingUp, Layers, Cpu } from "lucide-react";
-
+import { Smartphone, ExternalLink, Cpu, ShoppingBag } from "lucide-react";
 import {
   MacroStyles,
   MacroHero,
@@ -34,19 +33,22 @@ interface SmartphonesCopy {
   duopolyParagraph2: string;
   duopolySource: string;
   duopolySourceUrl: string;
-  appEconomyLabel: string;
-  appEconomyTitle: string;
-  appEconomyParagraph1: string;
-  appEconomyParagraph2: string;
-  platformsTitle: string;
-  platformsSubtitle: string;
-  platforms: Array<{
-    name: string;
-    founded: string;
-    marketShare: string;
-    role: string;
-    contribution: string;
-  }>;
+  chipLabel: string;
+  chipTitle: string;
+  chipParagraph1: string;
+  chipParagraph2: string;
+  chipSpecs: Array<{ label: string; value: string; accent?: boolean }>;
+  videosLabel: string;
+  videosTitle: string;
+  videoItems: Array<{ title: string; description: string; videoSrc: string; tag: string }>;
+  appLabel: string;
+  appTitle: string;
+  appParagraph1: string;
+  appParagraph2: string;
+  appStats: Array<{ label: string; value: string; accent?: boolean }>;
+  galleryLabel: string;
+  galleryTitle: string;
+  gallery: Array<{ tag: string; title: string; description: string; imageSrc: string }>;
   oracleDescription: string;
 }
 
@@ -59,7 +61,7 @@ const copyEn: SmartphonesCopy = {
     "How America invented the modern smartphone and now controls the operating systems running in every pocket on Earth.",
   thesisTitle: "America Holds Both Sides of the Mobile Duopoly",
   thesisParagraph1:
-    "On January 9, 2007, Steve Jobs walked onto a stage in San Francisco and introduced the iPhone — describing it as \"an iPod, a phone, and an internet communicator.\" The audience laughed at the audacity. What followed was the single most consequential consumer product launch in human history. Within eighteen months, Apple had also shipped the App Store, and the mobile internet economy was born. A year after that, Google — headquartered seventeen miles away in Mountain View — released Android to the world.",
+    "On January 9, 2007, Steve Jobs walked onto a stage in San Francisco and introduced the iPhone — describing it as \"an iPod, a phone, and an internet communicator.\" The audience laughed at the audacity. What followed was the single most consequential consumer product launch in human history. Within eighteen months, Apple had shipped the App Store and the mobile internet economy was born. A year after that, Google — headquartered seventeen miles away in Mountain View — released Android to the world.",
   thesisParagraph2:
     "The result is the most lopsided technology monopoly ever constructed: two American companies, born within a few years of each other in the same geographic corridor of California, now provide the operating system for 99.6% of all smartphones on Earth. Every app downloaded, every mobile transaction processed, every person navigating an unfamiliar city — all of it runs on a platform invented, designed, and controlled in the United States.",
   milestonesTitle: "The Chronology of Mobile",
@@ -68,104 +70,117 @@ const copyEn: SmartphonesCopy = {
       title: "The iPhone Launch",
       date: "2007",
       details:
-        "Steve Jobs unveils the first iPhone at Macworld, combining a phone, an iPod, and an internet communicator into a single device. The multi-touch capacitive screen, visual voicemail, and Safari browser set standards that every subsequent phone followed.",
+        "Steve Jobs unveils the first iPhone at Macworld. The multi-touch screen, visual voicemail, and full Safari browser set standards every subsequent phone followed. It redefined what a phone could be.",
     },
     {
-      title: "The App Store Opens",
+      title: "The App Store & Android",
       date: "2008",
       details:
-        "Apple launches the App Store with 500 applications. It creates an entirely new software economy: developers could now build and monetize apps to a global audience, generating what would grow into a $2T+ cumulative ecosystem.",
+        "Apple's App Store launches with 500 apps and creates an entirely new software economy. Within months, Google releases Android 1.0 — both American. Together, they establish a duopoly that has never been seriously challenged.",
     },
     {
-      title: "Android Goes Open Source",
-      date: "2008",
+      title: "64-Bit & Neural Engine",
+      date: "2013 – 2017",
       details:
-        "Google releases Android 1.0 on the HTC Dream (T-Mobile G1). By making the OS open-source and licensing it freely to manufacturers, Google ensured that American mobile software would power virtually every non-Apple smartphone ever built.",
+        "Apple's A7 introduces the world's first 64-bit mobile processor. By 2017, the iPhone X ships a dedicated Neural Engine — the first on-device AI accelerator in a consumer product — enabling Face ID and real-time ML inference.",
     },
     {
-      title: "The Retina Display & FaceTime",
-      date: "2010",
+      title: "5G & AI-Native Mobile",
+      date: "2020 – Present",
       details:
-        "iPhone 4 debuts the Retina Display (326 ppi) and FaceTime video calling. The screen density became the new industry benchmark; FaceTime normalized video communication years before it became a global necessity.",
-    },
-    {
-      title: "64-Bit Mobile Computing",
-      date: "2013",
-      details:
-        "The iPhone 5s introduces Apple's A7 chip — the world's first 64-bit processor in a consumer smartphone. This architectural leap doubled computational throughput and laid the groundwork for on-device AI and augmented reality experiences.",
-    },
-    {
-      title: "The Post-PC Era Solidified",
-      date: "2017",
-      details:
-        "iPhone X marks the tenth anniversary with Face ID, an OLED Super Retina display, and the neural engine enabling real-time machine learning. Smartphone penetration surpasses the PC by more than 3:1, confirming mobile as humanity's primary computing platform.",
-    },
-    {
-      title: "5G & the Next Frontier",
-      date: "2020",
-      details:
-        "iPhone 12 becomes the first 5G iPhone, accelerating the global rollout of fifth-generation wireless networks. American chipmakers — Qualcomm, Apple Silicon — design the modems and baseband processors powering nearly all 5G devices worldwide.",
-    },
-    {
-      title: "AI-Native Smartphones",
-      date: "2024+",
-      details:
-        "Apple Intelligence and Google's Gemini Nano bring large language models directly onto device silicon. The smartphone has evolved from communication tool to personal AI agent — and once again the architecture, silicon, and software are designed in America.",
+        "iPhone 12 accelerates the global 5G rollout. By 2024, Apple Intelligence and Google's Gemini Nano bring foundation models directly onto device silicon, completing the smartphone's evolution from communication tool to personal AI agent.",
     },
   ],
   duopolyLabel: "THE 99.6% LOCK",
-  duopolyTitle: "The American Operating System That Runs Every Pocket on Earth",
+  duopolyTitle: "The American Operating System Running Every Pocket on Earth",
   duopolyParagraph1:
-    "The mobile operating system market is the most concentrated technology duopoly in history. iOS (Apple, Cupertino, California) and Android (Google, Mountain View, California) together account for 99.6% of all smartphone operating systems globally. No other consumer technology platform — not search, not social media, not streaming — achieves this level of concentrated American control.",
+    "The mobile operating system market is the most concentrated technology duopoly in history. iOS (Apple, Cupertino, California) and Android (Google, Mountain View, California) together account for 99.6% of all smartphone operating systems globally. No other technology platform — not search, not social media, not cloud — achieves this level of concentrated American control.",
   duopolyParagraph2:
-    "Android's open-source licensing strategy proved especially decisive: by offering the OS free to manufacturers from Samsung to Xiaomi, Google ensured that its platform — and its advertising, services, and app ecosystem — would become the default infrastructure of global mobile computing. When a farmer in rural India opens a banking app, when a schoolchild in Lagos accesses Wikipedia, when a shopper in São Paulo hails a taxi — they are all running American software.",
+    "Android's open-source licensing strategy proved especially decisive: by offering the OS free to any manufacturer, Google ensured that its platform, advertising, and app ecosystem would become the default infrastructure of global mobile computing. When a farmer in rural India opens a banking app, when a schoolchild in Lagos accesses Wikipedia, when a commuter in São Paulo hails a taxi — they are all running American software.",
   duopolySource: "StatCounter Global Stats",
   duopolySourceUrl: "https://gs.statcounter.com/os-market-share/mobile/worldwide/",
-  appEconomyLabel: "THE APP STORE ECONOMY",
-  appEconomyTitle: "The Platform Economy That Apple Built",
-  appEconomyParagraph1:
-    "The App Store, launched in July 2008 with 500 applications, has become one of the most economically significant platforms in history. By 2024, the combined iOS and Google Play ecosystem facilitated over $1.1 trillion in developer billings and sales — an economic output comparable to a G20 nation. Apple alone has paid out over $320 billion to developers since the App Store's inception.",
-  appEconomyParagraph2:
-    "The platform model Apple pioneered with the App Store became the template for every digital marketplace that followed: the App Store's 30% commission structure, its curated review process, and its trust-and-safety architecture were all copied by Google Play, Steam, the PlayStation Store, and every major digital distribution platform. Apple did not just build a store — it invented the rules of how digital economies operate.",
-  platformsTitle: "The Two Platforms That Run the World",
-  platformsSubtitle:
-    "Both operating systems powering 99.6% of global smartphones were conceived, engineered, and are headquartered in the same 20-mile corridor of Northern California.",
-  platforms: [
+  chipLabel: "APPLE SILICON: THE PERFORMANCE CHOKEHOLD",
+  chipTitle: "A-Series Chips: The World's Most Advanced Mobile Silicon",
+  chipParagraph1:
+    "Apple's in-house chip design team, operating out of Cupertino since 2010, has led mobile semiconductor performance benchmarks for over a decade without interruption. Every year the A-series chip releases, it sets a new record for mobile compute density, energy efficiency, and on-device AI inference that Android competitors take 18–24 months to approach.",
+  chipParagraph2:
+    "The A18 Pro chip powering the iPhone 16 Pro packs 16 billion transistors on a 3-nanometer node. Its 16-core Neural Engine executes 35 trillion operations per second, enabling real-time camera computational photography, on-device large language model inference, and augmented reality rendering — all simultaneously, without a network connection.",
+  chipSpecs: [
+    { label: "Process Node", value: "3nm (TSMC N3E)", accent: true },
+    { label: "Transistor Count", value: "16 Billion" },
+    { label: "CPU Cores", value: "6-Core (2P + 4E)" },
+    { label: "GPU Cores", value: "6-Core" },
+    { label: "Neural Engine", value: "16-Core NPU", accent: true },
+    { label: "AI Performance", value: "35 TOPS" },
+    { label: "Memory Bandwidth", value: "68.25 GB/s" },
+    { label: "First 3nm Mobile", value: "iPhone 15 Pro, 2023" },
+  ],
+  videosLabel: "CINEMATIC MULTIMEDIA",
+  videosTitle: "Apple's Product Vision in Motion",
+  videoItems: [
     {
-      name: "Apple iOS",
-      founded: "2007 | Cupertino, CA",
-      marketShare: "~28% Global",
-      role: "Premium Mobile Ecosystem",
-      contribution:
-        "iOS powers approximately 28% of global smartphones but generates over 65% of global mobile app revenue. The iPhone's vertical integration — owning chip design (Apple Silicon), OS (iOS), and distribution (App Store) — gives Apple the highest-margin consumer hardware business in history and a $3.5T market cap.",
+      title: "Introducing iPhone Air",
+      description:
+        "Apple's thinnest iPhone ever — the iPhone Air — redefines what a premium smartphone can feel like. At just 5.5mm, it achieves structural rigidity through a custom aluminum alloy and a new internal architecture, proving that thinness and performance are no longer in tension.",
+      videoSrc: "/videos/library/Technology/Introducing iPhone Air | Apple.mp4",
+      tag: "IPHONE AIR",
     },
     {
-      name: "Google Android",
-      founded: "2008 | Mountain View, CA",
-      marketShare: "~72% Global",
-      role: "Open-Source Global Infrastructure",
-      contribution:
-        "Android powers approximately 72% of all smartphones globally — roughly 3.3 billion active devices. By licensing it freely, Google ensured its services (Search, Maps, Gmail, YouTube, Play Store) become the default on billions of devices, generating over $150B in annual mobile advertising revenue.",
+      title: "Design Is How It Works",
+      description:
+        "Apple's design philosophy, articulated in the voice of Jony Ive: that true design is not surface appearance but the way a product functions. This ethos — inherited from Steve Jobs — is the reason every iPhone generation resets the benchmark for the entire industry.",
+      videoSrc: "/videos/library/Technology/Design is how it works | Apple.mp4",
+      tag: "DESIGN PHILOSOPHY",
+    },
+  ],
+  appLabel: "THE APP STORE ECONOMY",
+  appTitle: "The Platform Economy That Apple Built",
+  appParagraph1:
+    "The App Store, launched in July 2008 with 500 applications, became the template for every digital marketplace that followed. Its 30% commission structure, curated review process, and developer SDK were all subsequently copied by Google Play, Steam, the PlayStation Store, and every major digital distribution platform on Earth. Apple invented the rules of how digital economies operate.",
+  appParagraph2:
+    "By 2024, the combined iOS and Google Play ecosystem facilitated over $1.1 trillion in developer billings and sales — an economic output comparable to a G20 nation's GDP. Apple alone has paid out over $320 billion to developers since inception. The App Store economy employs an estimated 2.4 million people in the United States alone.",
+  appStats: [
+    { label: "Combined App Economy", value: "$1.1T+", accent: true },
+    { label: "Apple Developer Payouts (lifetime)", value: "$320B+" },
+    { label: "Active App Store Apps", value: "1.8M+" },
+    { label: "US Jobs Supported", value: "2.4M" },
+    { label: "Daily Global Downloads", value: "500M+" },
+    { label: "App Store Launch Year", value: "2008" },
+  ],
+  galleryLabel: "THE APPLE CAMPUS",
+  galleryTitle: "Inside the World's Most Valuable Technology Company",
+  gallery: [
+    {
+      tag: "Apple Park, 2017",
+      title: "The Spaceship Campus",
+      description:
+        "Apple Park — completed in 2017 at a cost of $5 billion — is the 175-acre headquarters designed by Norman Foster. Its 2.8 million square foot main building houses over 12,000 employees and contains the Steve Jobs Theater, where every iPhone since the iPhone X has been announced.",
+      imageSrc: "/images/library/Technology/Apple Cupertino headquarters from above.jpg",
     },
     {
-      name: "Apple Silicon (A-Series)",
-      founded: "2010 | Cupertino, CA",
-      marketShare: "World's fastest mobile chips",
-      role: "Mobile Chip Architecture Leader",
-      contribution:
-        "Apple's in-house A-series chips have led mobile semiconductor performance benchmarks for over a decade. The A17 Pro and A18 chips feature 6-core CPUs, 6-core GPUs, and a 16-core Neural Engine capable of 35+ trillion operations per second — enabling on-device AI inference that no Android competitor has matched.",
+      tag: "The Product Line",
+      title: "iPhone, iPad, Mac — One Ecosystem",
+      description:
+        "Apple's hardware ecosystem is the most tightly integrated in consumer technology. The iPhone, iPad, MacBook, Apple Watch, and AirPods are all designed by the same team, run on in-house silicon, and share the same OS family — creating switching costs unmatched by any other platform.",
+      imageSrc: "/images/library/Technology/Apple Products.jpg",
     },
     {
-      name: "Qualcomm Snapdragon",
-      founded: "1985 | San Diego, CA",
-      marketShare: "~65% Android premium",
-      role: "Mobile Modem & SoC Monopoly",
-      contribution:
-        "Qualcomm, headquartered in San Diego, California, designs the Snapdragon system-on-chip that powers the majority of premium Android smartphones worldwide, including Samsung Galaxy, Google Pixel, and OnePlus. Its CDMA and 5G modem patents create a royalty stream from virtually every cellular device sold on Earth.",
+      tag: "Apple Inc., Cupertino",
+      title: "Apple Headquarters",
+      description:
+        "Apple's original Infinite Loop campus in Cupertino, California — the address where Steve Jobs, Steve Wozniak, and Jony Ive developed the Mac, iPod, and iPhone. The company that started in a Cupertino garage in 1976 became the first company in history to reach a $1 trillion, then $2 trillion, then $3 trillion market capitalization.",
+      imageSrc: "/images/library/Technology/Apple Headquarters.jpg",
+    },
+    {
+      tag: "Hello Again",
+      title: "The Device That Changed Everything",
+      description:
+        "The iPhone's \"Hello\" screen — carried across every generation since 2007 — is a deliberate homage to the original 1984 Macintosh's boot sequence. It is the most recognized product image in consumer technology history, symbolizing the moment America put a computer in every pocket on Earth.",
+      imageSrc: "/images/library/Technology/iPhone saying Hello on wooden background.jpg",
     },
   ],
   oracleDescription:
-    "Ask the AI Oracle about the iPhone's original 2007 launch, the App Store economy, Apple Silicon architecture, 5G modem patents, or the iOS vs Android market share dynamics.",
+    "Ask the AI Oracle about the iPhone's 2007 launch, Apple Silicon architecture, the App Store's $1T economy, iOS vs Android market share, or 5G modem patent royalties.",
 };
 
 const copyRo: SmartphonesCopy = {
@@ -177,7 +192,7 @@ const copyRo: SmartphonesCopy = {
     "Cum America a inventat smartphone-ul modern și controlează acum sistemele de operare din fiecare buzunar de pe Pământ.",
   thesisTitle: "America Deține Ambele Laturi ale Duopolului Mobil",
   thesisParagraph1:
-    "Pe 9 ianuarie 2007, Steve Jobs a urcat pe o scenă din San Francisco și a prezentat iPhone-ul — descriindu-l drept „un iPod, un telefon și un comunicator de internet.\" Publicul a râs de îndrăzneală. Ceea ce a urmat a fost cel mai important lansări de produs de consum din istoria omenirii. În mai puțin de optsprezece luni, Apple lansase și App Store-ul, iar economia internetului mobil se năștea. La un an distanță, Google — cu sediul la șaptesprezece mile mai încolo, în Mountain View — a lansat Android.",
+    "Pe 9 ianuarie 2007, Steve Jobs a urcat pe o scenă din San Francisco și a prezentat iPhone-ul — descriindu-l drept un iPod, un telefon și un comunicator de internet. Publicul a râs de îndrăzneală. Ceea ce a urmat a fost cel mai important lansări de produs de consum din istoria omenirii. În mai puțin de optsprezece luni, Apple lansase și App Store-ul, iar economia internetului mobil se năștea. La un an distanță, Google — cu sediul la șaptesprezece mile mai încolo, în Mountain View — a lansat Android.",
   thesisParagraph2:
     "Rezultatul este cel mai asimetric monopol tehnologic construit vreodată: două companii americane, născute la câțiva ani distanță una de alta, în același coridor geografic din California, furnizează acum sistemul de operare pentru 99,6% din toate smartphone-urile de pe Pământ. Fiecare aplicație descărcată, fiecare tranzacție mobilă procesată, fiecare persoană care navighează printr-un oraș necunoscut — totul rulează pe o platformă inventată, proiectată și controlată în Statele Unite.",
   milestonesTitle: "Cronologia Revoluției Mobile",
@@ -186,104 +201,117 @@ const copyRo: SmartphonesCopy = {
       title: "Lansarea iPhone",
       date: "2007",
       details:
-        "Steve Jobs prezintă primul iPhone la Macworld, combinând un telefon, un iPod și un comunicator de internet într-un singur dispozitiv. Ecranul capacitiv multi-touch, mesageria vocală vizuală și browserul Safari au stabilit standarde pe care fiecare telefon ulterior le-a urmat.",
+        "Steve Jobs prezintă primul iPhone la Macworld. Ecranul multi-touch, mesageria vocală vizuală și browserul Safari complet au stabilit standarde pe care fiecare telefon ulterior le-a urmat. A redefinit ce poate fi un telefon.",
     },
     {
-      title: "Deschiderea App Store",
+      title: "App Store și Android",
       date: "2008",
       details:
-        "Apple lansează App Store cu 500 de aplicații. Creează o economie software complet nouă: dezvoltatorii puteau acum construi și monetiza aplicații pentru un public global, generând ceea ce va crește într-un ecosistem cumulativ de peste 2 trilioane de dolari.",
+        "App Store-ul Apple se lansează cu 500 de aplicații, creând o economie software complet nouă. La scurt timp, Google lansează Android 1.0 — ambele americane. Împreună, ele stabilesc un duopol care nu a fost niciodată serios contestat.",
     },
     {
-      title: "Android devine Open Source",
-      date: "2008",
+      title: "64-Bit și Motor Neural",
+      date: "2013 – 2017",
       details:
-        "Google lansează Android 1.0 pe HTC Dream (T-Mobile G1). Oferind sistemul de operare gratuit producătorilor, Google s-a asigurat că software-ul mobil american va alimenta practic fiecare smartphone non-Apple construit vreodată.",
+        "A7 de la Apple introduce primul procesor mobil pe 64 de biți din lume. Până în 2017, iPhone X lansează un Motor Neural dedicat — primul accelerator AI pe dispozitiv dintr-un produs de consum — permițând Face ID și inferență ML în timp real.",
     },
     {
-      title: "Retina Display și FaceTime",
-      date: "2010",
+      title: "5G și Mobile Nativ AI",
+      date: "2020 – Prezent",
       details:
-        "iPhone 4 debutează cu Retina Display (326 ppi) și apeluri video FaceTime. Densitatea ecranului a devenit noul reper industrial; FaceTime a normalizat comunicarea video cu ani înainte de a deveni o necesitate globală.",
-    },
-    {
-      title: "Calculul Mobil pe 64 de Biți",
-      date: "2013",
-      details:
-        "iPhone 5s introduce cipul A7 de la Apple — primul procesor pe 64 de biți din lume într-un smartphone de consum. Saltul arhitectural a dublat debitul computațional și a pus bazele pentru AI pe dispozitiv și realitate augmentată.",
-    },
-    {
-      title: "Era Post-PC Consolidată",
-      date: "2017",
-      details:
-        "iPhone X marchează al zecelea aniversar cu Face ID, un ecran OLED Super Retina și motorul neural care permite machine learning în timp real. Penetrarea smartphone-urilor depășește PC-ul cu mai mult de 3:1, confirmând mobilul ca platformă primară de calcul a omenirii.",
-    },
-    {
-      title: "5G și Noua Frontieră",
-      date: "2020",
-      details:
-        "iPhone 12 devine primul iPhone 5G, accelerând implementarea globală a rețelelor wireless de a cincea generație. Producătorii americani de cipuri — Qualcomm, Apple Silicon — proiectează modemurile și procesoarele de bandă de bază care alimentează aproape toate dispozitivele 5G din lume.",
-    },
-    {
-      title: "Smartphone-uri Native AI",
-      date: "2024+",
-      details:
-        "Apple Intelligence și Gemini Nano de la Google aduc modele lingvistice mari direct pe siliciul dispozitivului. Smartphone-ul a evoluat de la instrument de comunicare la agent AI personal — și din nou arhitectura, siliciul și software-ul sunt proiectate în America.",
+        "iPhone 12 accelerează implementarea globală a 5G. Până în 2024, Apple Intelligence și Gemini Nano de la Google aduc modele de bază direct pe siliciul dispozitivului, completând evoluția smartphone-ului de la instrument de comunicare la agent AI personal.",
     },
   ],
   duopolyLabel: "CONTROLUL DE 99,6%",
   duopolyTitle: "Sistemul de Operare American Care Rulează în Fiecare Buzunar de pe Pământ",
   duopolyParagraph1:
-    "Piața sistemelor de operare mobile este cel mai concentrat duopol tehnologic din istorie. iOS (Apple, Cupertino, California) și Android (Google, Mountain View, California) reprezintă împreună 99,6% din toate sistemele de operare pentru smartphone-uri la nivel global. Nicio altă platformă tehnologică de consum — nici căutarea, nici rețelele sociale, nici streaming-ul — nu atinge acest nivel de control american concentrat.",
+    "Piața sistemelor de operare mobile este cel mai concentrat duopol tehnologic din istorie. iOS (Apple, Cupertino, California) și Android (Google, Mountain View, California) reprezintă împreună 99,6% din toate sistemele de operare pentru smartphone-uri la nivel global. Nicio altă platformă tehnologică — nici căutarea, nici rețelele sociale, nici cloud-ul — nu atinge acest nivel de control american concentrat.",
   duopolyParagraph2:
-    "Strategia de licențiere open-source a Android s-a dovedit mai ales decisivă: oferind sistemul de operare gratuit producătorilor, de la Samsung la Xiaomi, Google s-a asigurat că platforma sa — și serviciile, publicitatea și ecosistemul său de aplicații — vor deveni infrastructura implicită a calculului mobil global.",
+    "Strategia de licențiere open-source a Android s-a dovedit mai ales decisivă: oferind sistemul de operare gratuit oricărui producător, Google s-a asigurat că platforma sa, publicitatea și ecosistemul de aplicații vor deveni infrastructura implicită a calculului mobil global. Când un fermier din India rurală deschide o aplicație bancară, când un elev din Lagos accesează Wikipedia, când un navetist din São Paulo solicită un taxi — toți rulează software american.",
   duopolySource: "StatCounter Global Stats",
   duopolySourceUrl: "https://gs.statcounter.com/os-market-share/mobile/worldwide/",
-  appEconomyLabel: "ECONOMIA APP STORE",
-  appEconomyTitle: "Economia de Platformă pe Care Apple a Construit-o",
-  appEconomyParagraph1:
-    "App Store, lansat în iulie 2008 cu 500 de aplicații, a devenit una dintre cele mai semnificative platforme din punct de vedere economic din istorie. Până în 2024, ecosistemul combinat iOS și Google Play a facilitat peste 1,1 trilioane de dolari în facturare și vânzări ale dezvoltatorilor. Apple singur a plătit peste 320 de miliarde de dolari dezvoltatorilor de la înființarea App Store.",
-  appEconomyParagraph2:
-    "Modelul de platformă pe care Apple l-a pionierat cu App Store a devenit șablonul pentru fiecare piață digitală care a urmat: comisionul de 30%, procesul de revizuire curatoriat și arhitectura de încredere și siguranță au fost copiate de Google Play, Steam, PlayStation Store și fiecare platformă majoră de distribuție digitală.",
-  platformsTitle: "Cele Două Platforme Care Conduc Lumea",
-  platformsSubtitle:
-    "Ambele sisteme de operare care alimentează 99,6% din smartphone-urile globale au fost concepute, inginerate și au sediul în același coridor de 30 de kilometri din nordul Californiei.",
-  platforms: [
+  chipLabel: "APPLE SILICON: CONTROLUL PERFORMANȚEI",
+  chipTitle: "Cipurile din Seria A: Cel Mai Avansat Siliciu Mobil din Lume",
+  chipParagraph1:
+    "Echipa internă de proiectare a cipurilor Apple, operând din Cupertino din 2010, a condus benchmark-urile de performanță în semiconductori mobili timp de peste un deceniu fără întrerupere. În fiecare an, cipul din seria A stabilește un nou record pentru densitatea de calcul mobil, eficiența energetică și inferența AI pe dispozitiv, pe care concurenții Android le ating abia după 18–24 de luni.",
+  chipParagraph2:
+    "Cipul A18 Pro care alimentează iPhone 16 Pro conține 16 miliarde de tranzistori pe un nod de 3 nanometri. Motorul Neural cu 16 nuclee execută 35 de trilioane de operații pe secundă, permițând fotografie computațională în timp real, inferență de modele mari de limbaj pe dispozitiv și randare de realitate augmentată — toate simultan, fără conexiune la rețea.",
+  chipSpecs: [
+    { label: "Nod de Procesare", value: "3nm (TSMC N3E)", accent: true },
+    { label: "Număr Tranzistori", value: "16 Miliarde" },
+    { label: "Nuclee CPU", value: "6 Nuclee (2P + 4E)" },
+    { label: "Nuclee GPU", value: "6 Nuclee" },
+    { label: "Motor Neural", value: "16 Nuclee NPU", accent: true },
+    { label: "Performanță AI", value: "35 TOPS" },
+    { label: "Lățime de Bandă Memorie", value: "68,25 GB/s" },
+    { label: "Primul 3nm Mobil", value: "iPhone 15 Pro, 2023" },
+  ],
+  videosLabel: "MULTIMEDIA CINEMATIC",
+  videosTitle: "Viziunea de Produs Apple în Mișcare",
+  videoItems: [
     {
-      name: "Apple iOS",
-      founded: "2007 | Cupertino, CA",
-      marketShare: "~28% Global",
-      role: "Ecosistem Mobil Premium",
-      contribution:
-        "iOS alimentează aproximativ 28% din smartphone-urile globale, dar generează peste 65% din veniturile globale din aplicații mobile. Integrarea verticală a iPhone — deținând proiectarea cipurilor (Apple Silicon), sistemul de operare (iOS) și distribuția (App Store) — oferă Apple cea mai profitabilă afacere de hardware de consum din istorie și o capitalizare de piață de 3,5 trilioane de dolari.",
+      title: "Prezentare iPhone Air",
+      description:
+        "Cel mai subțire iPhone al Apple — iPhone Air — redefinește ce poate simți un smartphone premium. La doar 5,5mm grosime, atinge rigiditate structurală printr-un aliaj de aluminiu personalizat și o nouă arhitectură internă, dovedind că subțirimea și performanța nu mai sunt în tensiune.",
+      videoSrc: "/videos/library/Technology/Introducing iPhone Air | Apple.mp4",
+      tag: "IPHONE AIR",
     },
     {
-      name: "Google Android",
-      founded: "2008 | Mountain View, CA",
-      marketShare: "~72% Global",
-      role: "Infrastructură Globală Open-Source",
-      contribution:
-        "Android alimentează aproximativ 72% din toate smartphone-urile la nivel global — aproximativ 3,3 miliarde de dispozitive active. Prin licențierea gratuită, Google s-a asigurat că serviciile sale (Căutare, Maps, Gmail, YouTube, Play Store) devin implicite pe miliarde de dispozitive, generând peste 150 de miliarde de dolari în venituri anuale din publicitate mobilă.",
+      title: "Design-ul Este Modul în Care Funcționează",
+      description:
+        "Filosofia de design a Apple, articulată în vocea lui Jony Ive: că adevăratul design nu este aspectul de suprafață, ci modul în care funcționează un produs. Acest etos — moștenit de la Steve Jobs — este motivul pentru care fiecare generație iPhone resetează standardul de referință pentru întreaga industrie.",
+      videoSrc: "/videos/library/Technology/Design is how it works | Apple.mp4",
+      tag: "FILOSOFIE DE DESIGN",
+    },
+  ],
+  appLabel: "ECONOMIA APP STORE",
+  appTitle: "Economia de Platformă pe Care Apple a Construit-o",
+  appParagraph1:
+    "App Store, lansat în iulie 2008 cu 500 de aplicații, a devenit șablonul pentru fiecare piață digitală care a urmat. Comisionul său de 30%, procesul de revizuire curatoriat și SDK-ul pentru dezvoltatori au fost ulterior copiate de Google Play, Steam, PlayStation Store și fiecare platformă majoră de distribuție digitală de pe Pământ. Apple a inventat regulile după care funcționează economiile digitale.",
+  appParagraph2:
+    "Până în 2024, ecosistemul combinat iOS și Google Play a facilitat peste 1,1 trilioane de dolari în facturare și vânzări ale dezvoltatorilor — un output economic comparabil cu PIB-ul unui stat G20. Apple singur a plătit peste 320 de miliarde de dolari dezvoltatorilor de la înființare. Economia App Store susține un număr estimat de 2,4 milioane de locuri de muncă numai în Statele Unite.",
+  appStats: [
+    { label: "Economia Combinată a Aplicațiilor", value: "$1,1T+", accent: true },
+    { label: "Plăți Apple către Dezvoltatori (total)", value: "$320 Mld.+" },
+    { label: "Aplicații Active în App Store", value: "1,8M+" },
+    { label: "Locuri de Muncă Susținute în SUA", value: "2,4M" },
+    { label: "Descărcări Globale Zilnice", value: "500M+" },
+    { label: "Anul Lansării App Store", value: "2008" },
+  ],
+  galleryLabel: "CAMPUSUL APPLE",
+  galleryTitle: "Înăuntrul Celei Mai Valoroase Companii Tehnologice din Lume",
+  gallery: [
+    {
+      tag: "Apple Park, 2017",
+      title: "Campusul Navă Spațială",
+      description:
+        "Apple Park — finalizat în 2017 la costul de 5 miliarde de dolari — este cartierul general de 175 de acri proiectat de Norman Foster. Clădirea principală de 260.000 de metri pătrați găzduiește peste 12.000 de angajați și conține Steve Jobs Theater, unde a fost prezentat fiecare iPhone începând cu iPhone X.",
+      imageSrc: "/images/library/Technology/Apple Cupertino headquarters from above.jpg",
     },
     {
-      name: "Apple Silicon (Seria A)",
-      founded: "2010 | Cupertino, CA",
-      marketShare: "Cei mai rapizi cipuri mobile din lume",
-      role: "Lider în Arhitectura Cipurilor Mobile",
-      contribution:
-        "Cipurile din seria A de la Apple au condus benchmark-urile de performanță în semiconductori mobili timp de peste un deceniu. Cipurile A17 Pro și A18 dispun de CPU cu 6 nuclee, GPU cu 6 nuclee și un Motor Neural cu 16 nuclee capabil de 35+ trilioane de operații pe secundă — permițând inferență AI pe dispozitiv pe care niciun concurent Android nu a egalat-o.",
+      tag: "Linia de Produse",
+      title: "iPhone, iPad, Mac — Un Ecosistem",
+      description:
+        "Ecosistemul hardware al Apple este cel mai integrat din tehnologia de consum. iPhone, iPad, MacBook, Apple Watch și AirPods sunt toate proiectate de aceeași echipă, rulează pe siliciu intern și partajează aceeași familie de sisteme de operare — creând costuri de schimbare fără egal.",
+      imageSrc: "/images/library/Technology/Apple Products.jpg",
     },
     {
-      name: "Qualcomm Snapdragon",
-      founded: "1985 | San Diego, CA",
-      marketShare: "~65% Android premium",
-      role: "Monopol pe Modem Mobil și SoC",
-      contribution:
-        "Qualcomm, cu sediul în San Diego, California, proiectează chip-ul Snapdragon system-on-chip care alimentează majoritatea smartphone-urilor Android premium din întreaga lume. Brevetele sale CDMA și 5G creează un flux de redevențe din practic fiecare dispozitiv celular vândut pe Pământ.",
+      tag: "Apple Inc., Cupertino",
+      title: "Sediul Apple",
+      description:
+        "Campusul original Infinite Loop al Apple din Cupertino, California — adresa unde Steve Jobs, Steve Wozniak și Jony Ive au dezvoltat Mac, iPod și iPhone. Compania care a început într-un garaj din Cupertino în 1976 a devenit prima companie din istorie care a atins o capitalizare de 1, 2 și apoi 3 trilioane de dolari.",
+      imageSrc: "/images/library/Technology/Apple Headquarters.jpg",
+    },
+    {
+      tag: "Hello Din Nou",
+      title: "Dispozitivul Care a Schimbat Totul",
+      description:
+        "Ecranul iPhone cu mesajul „Hello” — prezent în fiecare generație din 2007 — este un omagiu deliberat adus secvenței de pornire a Macintosh-ului din 1984. Este imaginea de produs cel mai recunoscută în istoria tehnologiei de consum, simbolizând momentul în care America a pus un calculator în fiecare buzunar de pe Pământ.",
+      imageSrc: "/images/library/Technology/iPhone saying Hello on wooden background.jpg",
     },
   ],
   oracleDescription:
-    "Întreabă Oracolul AI despre lansarea originală iPhone din 2007, economia App Store, arhitectura Apple Silicon, brevetele modem 5G sau dinamica cotei de piață iOS versus Android.",
+    "Întreabă Oracolul AI despre lansarea iPhone din 2007, arhitectura Apple Silicon, economia de 1 trilion de dolari a App Store, cota de piață iOS versus Android sau brevetele de modem 5G.",
 };
 
 export default async function SmartphonesPage() {
@@ -295,7 +323,7 @@ export default async function SmartphonesPage() {
     <>
       <MacroStyles />
 
-      {/* Cinematic Hero */}
+      {/* Cinematic Video Hero */}
       <MacroHero
         titleLead={copy.heroTitle}
         titleAccent={copy.heroTagline}
@@ -359,7 +387,7 @@ export default async function SmartphonesPage() {
                 </span>
                 <p className="text-sm text-white/60 max-w-xs leading-relaxed font-body">
                   {isRo
-                    ? "Plătite de Apple dezvoltatorilor de aplicații din întreaga lume de la lansarea App Store în 2008"
+                    ? "Plătite de Apple dezvoltatorilor de aplicații din întreaga lume de la lansarea App Store"
                     : "Paid by Apple to app developers worldwide since the App Store launched in 2008"}
                 </p>
               </div>
@@ -372,7 +400,7 @@ export default async function SmartphonesPage() {
                 </span>
                 <p className="text-sm text-white/60 max-w-xs leading-relaxed font-body">
                   {isRo
-                    ? "Apple este cea mai valoroasă companie publică din istoria omenirii — construită în jurul iPhone-ului"
+                    ? "Apple este cea mai valoroasă companie publică din istoria omenirii, construită pe iPhone"
                     : "Apple is the most valuable public company in human history — built on the iPhone"}
                 </p>
               </div>
@@ -380,7 +408,7 @@ export default async function SmartphonesPage() {
           </div>
         </section>
 
-        {/* Timeline / Milestones */}
+        {/* Milestones */}
         <section id="milestones" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
           <h2 className="font-macro-display text-4xl font-bold text-center mb-16 text-white uppercase tracking-tight">
             {copy.milestonesTitle}
@@ -397,7 +425,7 @@ export default async function SmartphonesPage() {
                       {item.date}
                     </span>
                   </div>
-                  <h3 className="font-macro-display text-xl font-bold text-white mb-4 group-hover:text-[#E8B923] transition-colors">
+                  <h3 className="font-macro-display text-2xl font-bold text-white mb-4 group-hover:text-[#E8B923] transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-sm text-white/60 leading-relaxed font-body">
@@ -409,7 +437,7 @@ export default async function SmartphonesPage() {
           </div>
         </section>
 
-        {/* iPhone Hero Image Feature Band */}
+        {/* iOS/Android Duopoly Feature Band */}
         <InfrastructureBand
           imageSrc="/images/library/Technology/iPhone saying Hello on dark background.jpg"
           imageAlt="iPhone displaying Hello on a dark background"
@@ -427,183 +455,48 @@ export default async function SmartphonesPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-[#E8B923] hover:underline"
               >
-                {isRo ? "Verifică datele" : "Verify Data"} →
+                {isRo ? "Verifică datele" : "Verify Data"}
+                <ExternalLink className="h-3.5 w-3.5" />
               </a>
             </div>
           </div>
         </InfrastructureBand>
 
-        {/* OS Duopoly Breakdown */}
-        <section id="duopoly" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
-          <div className="text-center mb-16">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] font-semibold mb-3 block">
-              {isRo ? "DOMINANȚA SISTEMULUI DE OPERARE" : "OS DOMINANCE"}
+        {/* Apple Silicon Section — 2-col spec panel (mirrors GPS section in Space page) */}
+        <section id="apple-silicon" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
+          <div className="border-t border-white/5 pt-16">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] font-semibold mb-3 flex items-center gap-2">
+              <Cpu className="h-4 w-4 text-[#E8B923]" />
+              {copy.chipLabel}
             </span>
             <h2 className="font-macro-display text-4xl font-bold text-white uppercase tracking-tight mb-8">
-              {isRo ? "Distribuția Globală a Sistemelor de Operare Mobile" : "Global Mobile OS Distribution"}
+              {copy.chipTitle}
             </h2>
-          </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div>
+                <p className="font-macro-body text-white/80 text-lg leading-relaxed mb-6">
+                  {copy.chipParagraph1}
+                </p>
+                <p className="font-macro-body text-white/80 text-lg leading-relaxed">
+                  {copy.chipParagraph2}
+                </p>
+              </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* OS Share bars */}
-            <div className="flex flex-col gap-5">
-              <div className="rounded-2xl border border-white/5 bg-white/1 p-6">
-                <div className="flex items-center gap-3 mb-5">
-                  <Globe className="h-5 w-5 text-white/40" />
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-white/40 font-semibold">
-                    {isRo ? "COTĂ DE PIAȚĂ GLOBALĂ" : "GLOBAL MARKET SHARE"}
-                  </span>
-                </div>
-                <div className="flex flex-col gap-4">
-                  {[
-                    {
-                      name: "Android (Google)",
-                      share: 72,
-                      color: "#4ade80",
-                      status: isRo ? "DOMINANT" : "DOMINANT",
-                      hq: "Mountain View, CA",
-                    },
-                    {
-                      name: "iOS (Apple)",
-                      share: 27.6,
-                      color: "#E8B923",
-                      status: isRo ? "PREMIUM" : "PREMIUM",
-                      hq: "Cupertino, CA",
-                    },
-                    {
-                      name: isRo ? "Altele" : "Other",
-                      share: 0.4,
-                      color: "#94a3b8",
-                      status: isRo ? "NEGLIJABIL" : "NEGLIGIBLE",
-                      hq: "—",
-                    },
-                  ].map((c) => (
-                    <div key={c.name} className="flex items-center gap-3">
-                      <span className="text-xs font-mono text-white/60 w-36 shrink-0">{c.name}</span>
-                      <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden">
-                        <div
-                          className="h-full rounded-full"
-                          style={{
-                            width: `${c.share}%`,
-                            backgroundColor: c.color,
-                            boxShadow: `0 0 6px ${c.color}66`,
-                          }}
-                        />
-                      </div>
-                      <span className="text-xs font-mono w-10 text-white/50">{c.share}%</span>
+              {/* A18 Pro Spec Grid */}
+              <div className="bg-white/1 rounded-3xl border border-white/5 p-8 flex flex-col justify-center">
+                <p className="text-[10px] font-mono uppercase tracking-widest text-white/40 font-semibold mb-6">
+                  {isRo ? "SPECIFICAȚII APPLE A18 PRO" : "APPLE A18 PRO SPECIFICATIONS"}
+                </p>
+                <div className="grid grid-cols-2 gap-5 font-body">
+                  {copy.chipSpecs.map((spec) => (
+                    <div key={spec.label} className="flex flex-col gap-1">
+                      <span className="text-white/40 text-[10px] uppercase tracking-widest font-semibold">
+                        {spec.label}
+                      </span>
                       <span
-                        className="text-[9px] font-mono px-1.5 py-0.5 rounded border"
-                        style={{ color: c.color, borderColor: `${c.color}40` }}
+                        className={`font-bold text-lg ${spec.accent ? "text-[#E8B923]" : "text-white"}`}
                       >
-                        {c.status}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-[10px] text-white/30 font-body mt-4 leading-relaxed">
-                  {isRo
-                    ? "Estimat cotă de piață globală, 2025. Sursă: StatCounter."
-                    : "Estimated global market share, 2025. Source: StatCounter."}
-                </p>
-              </div>
-
-              {/* American Origin callout */}
-              <div className="rounded-2xl border border-[#E8B923]/15 bg-[#E8B923]/3 p-6">
-                <span className="text-[9px] font-mono uppercase tracking-widest text-[#E8B923] font-semibold mb-4 block">
-                  {isRo ? "ORIGINEA GEOGRAFICĂ" : "GEOGRAPHIC ORIGIN"}
-                </span>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    {
-                      value: "Cupertino, CA",
-                      label: isRo ? "Bornă iOS" : "iOS birthplace",
-                    },
-                    {
-                      value: "Mountain View, CA",
-                      label: isRo ? "Bornă Android" : "Android birthplace",
-                    },
-                    {
-                      value: "17 miles",
-                      label: isRo ? "Distanța dintre ele" : "Distance between them",
-                    },
-                    {
-                      value: "99.6%",
-                      label: isRo ? "Control mobil combinat" : "Combined mobile control",
-                    },
-                  ].map((s) => (
-                    <div key={s.label}>
-                      <span className="font-macro-display text-xl font-bold text-[#E8B923] block leading-tight">
-                        {s.value}
-                      </span>
-                      <span className="text-[10px] text-white/50 font-body block leading-snug mt-0.5">
-                        {s.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* App Economy breakdown */}
-            <div className="flex flex-col gap-5">
-              <div className="rounded-2xl border border-white/5 bg-white/1 p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <TrendingUp className="h-5 w-5 text-[#E8B923]" />
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#E8B923] font-semibold">
-                    {copy.appEconomyLabel}
-                  </span>
-                </div>
-                <h3 className="font-macro-display text-xl font-bold text-white mb-3">
-                  {copy.appEconomyTitle}
-                </h3>
-                <p className="text-sm text-white/60 leading-relaxed font-body mb-4">
-                  {copy.appEconomyParagraph1}
-                </p>
-                <p className="text-sm text-white/60 leading-relaxed font-body">
-                  {copy.appEconomyParagraph2}
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-white/5 bg-white/1 p-6">
-                <div className="flex items-center gap-3 mb-5">
-                  <Layers className="h-5 w-5 text-white/40" />
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-white/40 font-semibold">
-                    {isRo ? "ECONOMIA APLICAȚIILOR MOBILE" : "MOBILE APP ECONOMY"}
-                  </span>
-                </div>
-                <div className="flex flex-col gap-3">
-                  {[
-                    {
-                      label: isRo ? "Facturare globală App Store + Play" : "Global App Store + Play billings",
-                      value: "$1.1T+",
-                      color: "#E8B923",
-                    },
-                    {
-                      label: isRo ? "Plăți totale Apple către dev" : "Apple lifetime dev payouts",
-                      value: "$320B+",
-                      color: "#4ade80",
-                    },
-                    {
-                      label: isRo ? "Aplicații active în App Store" : "Active App Store apps",
-                      value: "1.8M+",
-                      color: "#bb9af2",
-                    },
-                    {
-                      label: isRo ? "Descărcări zilnice globale" : "Global daily downloads",
-                      value: "500M+",
-                      color: "#ff9e64",
-                    },
-                  ].map((item) => (
-                    <div
-                      key={item.label}
-                      className="flex items-center justify-between py-2 border-b border-white/5 last:border-0"
-                    >
-                      <span className="text-xs font-body text-white/50">{item.label}</span>
-                      <span
-                        className="text-sm font-mono font-bold"
-                        style={{ color: item.color }}
-                      >
-                        {item.value}
+                        {spec.value}
                       </span>
                     </div>
                   ))}
@@ -613,88 +506,47 @@ export default async function SmartphonesPage() {
           </div>
         </section>
 
-        {/* Apple HQ Image Feature */}
-        <InfrastructureBand
-          imageSrc="/images/library/Technology/Apple Cupertino headquarters from above.jpg"
-          imageAlt="Apple Park headquarters in Cupertino, California from above"
+        {/* Cinematic Video Showcase (mirrors Space page video section) */}
+        <section
+          id="apple-videos"
+          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32 border-t border-white/5 pt-24"
         >
-          <div className="relative z-10">
-            <span className="macro-eyebrow mb-3 block">
-              {isRo ? "APPLE PARK, CUPERTINO" : "APPLE PARK, CUPERTINO"}
-            </span>
-            <h2 className="macro-section-title text-white mb-6">
-              {isRo ? "Cel Mai Valoros Produs din Istorie" : "The Most Valuable Product in History"}
-            </h2>
-            <p className="macro-body text-white/80 mb-6 max-w-4xl">
-              {isRo
-                ? "Apple Park, finalizat în 2017 la costul de 5 miliarde de dolari, este cartierul general al companiei care a creat cel mai valoros produs al tuturor timpurilor. iPhone-ul singur generează mai mult venit anual decât întreaga industrie a cafelei din lume, mai mult decât Netflix și Disney combinate și mai mult decât PIB-ul a 130 de țări suverane."
-                : "Apple Park, completed in 2017 at a cost of $5 billion, is the headquarters of the company that created the most valuable product of all time. The iPhone alone generates more annual revenue than the entire global coffee industry, more than Netflix and Disney combined, and more than the GDP of 130 sovereign nations."}
-            </p>
-            <p className="macro-body text-white/80 mb-8 max-w-4xl">
-              {isRo
-                ? "Conducta inovației Apple — de la cipul M-series la Apple Intelligence până la Vision Pro — demonstrează că această companie nu a lansat pur și simplu un produs în 2007. A inventat o întreagă paradigmă de calcul care continuă să se extindă în noi dimensiuni ale existenței umane."
-                : "Apple's innovation pipeline — from the M-series chip to Apple Intelligence to Vision Pro — demonstrates that this company did not simply launch a product in 2007. It invented an entire computing paradigm that continues expanding into new dimensions of human existence."}
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-white/10">
-              {[
-                { value: "$3.5T", label: isRo ? "Capitalizare piață" : "Market cap" },
-                { value: "$390B+", label: isRo ? "Venit anual" : "Annual revenue" },
-                { value: "2.2B+", label: isRo ? "Dispozitive active" : "Active devices" },
-                { value: "1976", label: isRo ? "Fondată" : "Founded" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <span className="font-macro-display text-2xl md:text-3xl font-bold text-[#E8B923] block">
-                    {s.value}
-                  </span>
-                  <span className="text-[10px] text-white/50 font-body block leading-snug mt-1 uppercase tracking-wide">
-                    {s.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </InfrastructureBand>
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-6 font-semibold">
+            {copy.videosLabel}
+          </p>
+          <h2 className="font-macro-display text-4xl font-bold text-center mb-16 text-white uppercase tracking-tight">
+            {copy.videosTitle}
+          </h2>
 
-        {/* The Four Platforms Section */}
-        <section id="platforms" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
-          <div className="text-center mb-16">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] font-semibold mb-3 flex items-center justify-center gap-2">
-              <Cpu className="h-4 w-4 text-[#E8B923]" />
-              {isRo ? "PLATFORMELE AMERICANE" : "THE AMERICAN PLATFORMS"}
-            </span>
-            <h2 className="font-macro-display text-4xl font-bold text-white uppercase tracking-tight mb-4">
-              {copy.platformsTitle}
-            </h2>
-            <p className="font-macro-body text-white/60 text-lg max-w-3xl mx-auto">
-              {copy.platformsSubtitle}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {copy.platforms.map((platform, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {copy.videoItems.map((item, idx) => (
               <div
                 key={idx}
-                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/1 p-8 flex flex-col justify-between hover:border-[#E8B923]/30 hover:bg-white/3 transition-all duration-500 hover:-translate-y-1"
+                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/2 flex flex-col hover:border-[#E8B923]/30 transition-all duration-500"
               >
-                <div>
-                  <h3 className="font-macro-display text-2xl font-bold text-white mb-1 group-hover:text-[#E8B923] transition-colors">
-                    {platform.name}
-                  </h3>
-                  <span className="text-[10px] font-mono text-[#E8B923]/70 uppercase tracking-widest block mb-4">
-                    {platform.role}
+                <div className="relative aspect-video w-full overflow-hidden bg-black">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
+                  >
+                    <source src={item.videoSrc} type="video/mp4" />
+                  </video>
+                  <div className="absolute inset-0 bg-linear-to-t from-[#030405] via-transparent to-transparent" />
+                  <span className="absolute top-4 left-4 text-[10px] font-mono text-[#E8B923] bg-black/60 backdrop-blur-sm border border-[#E8B923]/25 px-2.5 py-0.5 rounded uppercase tracking-wider">
+                    {item.tag}
                   </span>
-                  <p className="text-sm text-white/70 leading-relaxed font-body mb-6">
-                    {platform.contribution}
-                  </p>
                 </div>
-                <div className="border-t border-white/5 pt-4 mt-auto">
-                  <div className="flex justify-between text-[11px] font-mono text-white/40 mb-1">
-                    <span>{isRo ? "FONDATĂ / SEDIU" : "FOUNDED / HQ"}</span>
-                    <span className="text-white/60 font-semibold">{platform.founded}</span>
-                  </div>
-                  <div className="flex justify-between text-[11px] font-mono text-white/40">
-                    <span>{isRo ? "COTĂ DE PIAȚĂ" : "MARKET SHARE"}</span>
-                    <span className="text-[#E8B923] font-semibold">{platform.marketShare}</span>
+                <div className="p-8 flex-1 flex flex-col justify-between bg-black/20">
+                  <div>
+                    <h3 className="font-macro-display text-2xl font-bold text-white mb-4 group-hover:text-[#E8B923] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-white/70 leading-relaxed font-body">
+                      {item.description}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -702,47 +554,93 @@ export default async function SmartphonesPage() {
           </div>
         </section>
 
-        {/* Apple Products image grid */}
-        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/2 aspect-16/10">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/library/Technology/Apple Products.jpg"
-                alt="Apple product lineup including iPhone, iPad, and MacBook"
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-[#030405] via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 p-8">
-                <span className="text-xs font-mono text-[#E8B923] uppercase tracking-wider mb-2 block">
-                  {isRo ? "Ecosistemul Apple" : "The Apple Ecosystem"}
-                </span>
-                <h3 className="font-macro-display text-2xl font-bold text-white">
-                  {isRo ? "iPhone, iPad, Mac — Un Ecosistem Unificat" : "iPhone, iPad, Mac — One Unified Ecosystem"}
-                </h3>
+        {/* App Store Economy Section — 2-col spec panel (mirrors Artemis section in Space page) */}
+        <section id="app-economy" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
+          <div className="border-t border-white/5 pt-16">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] font-semibold mb-3 flex items-center gap-2">
+              <ShoppingBag className="h-4 w-4 text-[#E8B923]" />
+              {copy.appLabel}
+            </span>
+            <h2 className="font-macro-display text-4xl font-bold text-white uppercase tracking-tight mb-8">
+              {copy.appTitle}
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div>
+                <p className="font-macro-body text-white/80 text-lg leading-relaxed mb-6">
+                  {copy.appParagraph1}
+                </p>
+                <p className="font-macro-body text-white/80 text-lg leading-relaxed">
+                  {copy.appParagraph2}
+                </p>
               </div>
-            </div>
-            <div className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/2 aspect-16/10">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/library/Technology/iPhone saying Hello on wooden background.jpg"
-                alt="iPhone displaying Hello on a wooden background"
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-[#030405] via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 p-8">
-                <span className="text-xs font-mono text-[#E8B923] uppercase tracking-wider mb-2 block">
-                  {isRo ? "iPhone, 2007 – Prezent" : "iPhone, 2007 – Present"}
-                </span>
-                <h3 className="font-macro-display text-2xl font-bold text-white">
-                  {isRo ? "Hello. — Cel Mai Iconic Cuvânt din Istoria Tehnologiei" : "Hello. — The Most Iconic Word in Tech History"}
-                </h3>
+
+              {/* App Economy Stats Grid */}
+              <div className="bg-white/1 rounded-3xl border border-white/5 p-8 flex flex-col justify-center">
+                <p className="text-[10px] font-mono uppercase tracking-widest text-white/40 font-semibold mb-6">
+                  {isRo ? "CIFRE CHEIE" : "KEY FIGURES"}
+                </p>
+                <div className="grid grid-cols-2 gap-5 font-body">
+                  {copy.appStats.map((stat) => (
+                    <div key={stat.label} className="flex flex-col gap-1">
+                      <span className="text-white/40 text-[10px] uppercase tracking-widest font-semibold">
+                        {stat.label}
+                      </span>
+                      <span
+                        className={`font-bold text-xl ${stat.accent ? "text-[#E8B923]" : "text-white"}`}
+                      >
+                        {stat.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Ask America Oracle */}
+        {/* Apple Campus Gallery (mirrors Apollo Legacy gallery in Space page) */}
+        <section id="apple-campus" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-6 font-semibold">
+            {copy.galleryLabel}
+          </p>
+          <h2 className="font-macro-display text-4xl font-bold text-center mb-16 text-white uppercase tracking-tight">
+            {copy.galleryTitle}
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {copy.gallery.map((item, idx) => (
+              <div
+                key={idx}
+                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/2 flex flex-col hover:border-[#E8B923]/30 transition-all duration-500"
+              >
+                <div className="relative aspect-16/10 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.imageSrc}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#030405] via-transparent to-transparent" />
+                </div>
+                <div className="p-8 flex-1 flex flex-col justify-between bg-black/20">
+                  <div>
+                    <span className="text-xs font-mono text-[#E8B923] uppercase tracking-wider mb-2 block">
+                      {item.tag}
+                    </span>
+                    <h3 className="font-macro-display text-2xl font-bold text-white mb-3 group-hover:text-[#E8B923] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-white/70 leading-relaxed font-body">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* AI Ask America Oracle */}
         <div className="mt-32">
           <AskAmericaCTA
             locale={locale}

@@ -422,67 +422,43 @@ export default async function AiAndTechPage() {
                   layer: isRo ? "STRATUL 5 – APLICAȚII" : "LAYER 5 – APPLICATIONS",
                   title: isRo ? "Produse AI de Consum & Enterprise" : "Consumer & Enterprise AI Products",
                   items: ["ChatGPT", "Claude", "Gemini", "GitHub Copilot", "Midjourney"],
-                  color: "#E8B923",
-                  bg: "bg-[#E8B923]/5",
-                  border: "border-[#E8B923]/25",
-                  dot: "bg-[#E8B923]",
                 },
                 {
                   layer: isRo ? "STRATUL 4 – MODELE FUNDAMENT" : "LAYER 4 – FOUNDATION MODELS",
                   title: isRo ? "Modele Mari de Limbaj (LLM) & Multimodale" : "Large Language Models (LLMs) & Multimodal",
                   items: ["GPT-5.5", "Claude Fable 5", "Gemini 3.5", "Llama 4"],
-                  color: "#bb9af2",
-                  bg: "bg-purple-500/5",
-                  border: "border-purple-500/20",
-                  dot: "bg-purple-400",
                 },
                 {
                   layer: isRo ? "STRATUL 3 – CADRE DE LUCRU ML" : "LAYER 3 – ML FRAMEWORKS",
                   title: isRo ? "Instrumente de Antrenament Rețele Neuronale" : "Neural Network Training Orchestration",
                   items: ["PyTorch (Meta)", "TensorFlow (Google)", "JAX (Google)", "Triton (OpenAI)"],
-                  color: "#ff9e64",
-                  bg: "bg-orange-500/5",
-                  border: "border-orange-500/20",
-                  dot: "bg-orange-400",
                 },
                 {
                   layer: isRo ? "STRATUL 2 – BIBLIOTECI CUDA" : "LAYER 2 – CUDA LIBRARIES",
                   title: isRo ? "Primitive Matematice Accelerate pe GPU" : "GPU-Accelerated Mathematical Primitives",
                   items: ["cuDNN", "cuBLAS", "cuSPARSE", "NCCL"],
-                  color: "#2ac3de",
-                  bg: "bg-cyan-500/5",
-                  border: "border-cyan-500/20",
-                  dot: "bg-cyan-400",
                 },
                 {
                   layer: isRo ? "STRATUL 1 – RUNTIME CUDA" : "LAYER 1 – CUDA RUNTIME",
                   title: isRo ? "Compute Unified Device Architecture (Nvidia, 2006)" : "Compute Unified Device Architecture (Nvidia, 2006)",
                   items: ["Kernel Execution", "Memory Management", "Thread Scheduling", "Parallel Grid API"],
-                  color: "#4ade80",
-                  bg: "bg-green-500/5",
-                  border: "border-green-500/20",
-                  dot: "bg-green-400",
                 },
                 {
                   layer: isRo ? "STRATUL 0 – SILICON NVIDIA" : "LAYER 0 – NVIDIA SILICON",
                   title: isRo ? "Hardware GPU Tensor Core (H100 / H200 / B200)" : "Tensor Core GPU Hardware (H100 / H200 / B200)",
                   items: ["80B Transistors", "3,958 TFLOPS", "HBM3 Memory Fabric", "NVLink 4.0"],
-                  color: "#94a3b8",
-                  bg: "bg-slate-500/5",
-                  border: "border-slate-500/20",
-                  dot: "bg-slate-400",
                 },
               ].map((l, i) => (
-                <div key={i} className={`rounded-2xl border ${l.border} ${l.bg} px-5 py-4 flex items-start gap-4 hover:brightness-110 transition-all duration-300`}>
-                  <div className="flex-shrink-0 mt-1.5">
-                    <div className={`w-2.5 h-2.5 rounded-full ${l.dot}`} style={{ boxShadow: `0 0 8px ${l.color}55` }} />
+                <div key={i} className="rounded-2xl border border-white/5 bg-white/1 px-5 py-4 flex items-start gap-4 hover:border-white/10 transition-all duration-300">
+                  <div className="shrink-0 mt-1.5">
+                    <div className="w-2 h-2 rounded-full bg-white/20" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <span className="text-[9px] font-mono uppercase tracking-widest font-bold block mb-1" style={{ color: l.color }}>{l.layer}</span>
-                    <p className="text-white font-semibold text-sm font-body mb-2 leading-snug">{l.title}</p>
+                    <span className="macro-eyebrow block mb-1">{l.layer}</span>
+                    <p className="macro-body text-white/80 text-sm mb-2 leading-snug">{l.title}</p>
                     <div className="flex flex-wrap gap-1.5">
                       {l.items.map((item) => (
-                        <span key={item} className="text-[10px] font-mono text-white/50 border border-white/10 px-2 py-0.5 rounded bg-white/[0.02]">
+                        <span key={item} className="macro-metadata text-white/40 border border-white/8 px-2 py-0.5 rounded bg-white/1">
                           {item}
                         </span>
                       ))}
@@ -520,21 +496,21 @@ export default async function AiAndTechPage() {
                 </div>
                 <div className="flex flex-col gap-3">
                   {[
-                    { name: "NVIDIA CUDA", share: 92, color: "#4ade80", status: isRo ? "DOMINANT" : "DOMINANT" },
-                    { name: "AMD ROCm", share: 5, color: "#f87171", status: isRo ? "LIMITAT" : "LIMITED" },
-                    { name: "Intel oneAPI", share: 2, color: "#fb923c", status: isRo ? "EMERGENT" : "EMERGING" },
-                    { name: "OpenCL / Other", share: 1, color: "#94a3b8", status: isRo ? "MOȘTENIRE" : "LEGACY" },
+                    { name: "NVIDIA CUDA", share: 92, dominant: true, status: isRo ? "DOMINANT" : "DOMINANT" },
+                    { name: "AMD ROCm", share: 5, dominant: false, status: isRo ? "LIMITAT" : "LIMITED" },
+                    { name: "Intel oneAPI", share: 2, dominant: false, status: isRo ? "EMERGENT" : "EMERGING" },
+                    { name: "OpenCL / Other", share: 1, dominant: false, status: isRo ? "MOȘTENIRE" : "LEGACY" },
                   ].map((c) => (
                     <div key={c.name} className="flex items-center gap-3">
-                      <span className="text-xs font-mono text-white/60 w-28 flex-shrink-0">{c.name}</span>
+                      <span className="macro-metadata text-white/60 w-28 shrink-0">{c.name}</span>
                       <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden">
                         <div
                           className="h-full rounded-full"
-                          style={{ width: `${c.share}%`, backgroundColor: c.color, boxShadow: `0 0 6px ${c.color}66` }}
+                          style={{ width: `${c.share}%`, backgroundColor: c.dominant ? "#E8B923" : "rgba(255,255,255,0.18)" }}
                         />
                       </div>
-                      <span className="text-xs font-mono w-6 text-white/50">{c.share}%</span>
-                      <span className="text-[9px] font-mono px-1.5 py-0.5 rounded border" style={{ color: c.color, borderColor: `${c.color}40` }}>
+                      <span className="macro-metadata text-white/40 w-6">{c.share}%</span>
+                      <span className={`macro-metadata px-1.5 py-0.5 rounded border ${c.dominant ? "text-[#E8B923] border-[#E8B923]/30" : "text-white/30 border-white/10"}`}>
                         {c.status}
                       </span>
                     </div>
