@@ -469,30 +469,20 @@ export default async function GamingPage() {
                 </p>
               </div>
 
-              {/* Engine Stack */}
-              <div className="bg-white/1 rounded-3xl border border-white/5 p-8 flex flex-col justify-center">
-                <p className="text-[10px] font-mono uppercase tracking-widest text-white/40 font-semibold mb-8">
-                  {isRo ? "ARHITECTURA UNREAL ENGINE 5" : "UNREAL ENGINE 5 ARCHITECTURE"}
-                </p>
-                <div className="grid grid-cols-3 gap-x-6 gap-y-8">
-                  {copy.engineLayers.map((l, i) => (
-                    <div key={i}>
-                      <p className="text-[10px] font-mono uppercase tracking-widest text-[#E8B923] mb-3">
-                        {l.layer}
-                      </p>
-                      <div className="flex flex-col gap-1.5">
-                        {l.items.map((item) => (
-                          <span
-                            key={item}
-                            className="text-xs font-body text-white/55 bg-white/4 px-2 py-0.5 rounded w-fit"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              {/* Engine Stats */}
+              <div className="flex flex-col gap-8 justify-center">
+                {[
+                  { value: "50%+",  label: isRo ? "Din titlurile AAA globale rulează pe Unreal" : "Of all global AAA titles run on Unreal Engine", note: isRo ? "Cel mai utilizat motor din industrie" : "The most-used engine in the industry" },
+                  { value: "5%",    label: isRo ? "Redevență pe venitul brut al studiourilor" : "Royalty on studio gross revenue over $1M", note: isRo ? "Fiecare joc livrat aduce bani la Epic" : "Every shipped game sends royalties to Epic" },
+                  { value: "190",   label: isRo ? "Țări cu studiouri ce folosesc Unreal" : "Countries with studios building on Unreal", note: isRo ? "Controlul platformei este global" : "Platform control is truly global" },
+                  { value: "UE5",   label: isRo ? "Nanite + Lumen — standard de industrie neegalat" : "Nanite + Lumen — unmatched industry standard", note: isRo ? "Concurența are nevoie de ani pentru a apropia" : "Competitors need years to approach it" },
+                ].map((s, i) => (
+                  <div key={i} className="border-t border-white/5 pt-6">
+                    <span className="font-macro-display text-5xl font-black text-[#E8B923] block mb-2">{s.value}</span>
+                    <span className="text-base font-body text-white/80 block leading-snug mb-1">{s.label}</span>
+                    <span className="text-sm font-body text-white/50">{s.note}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -640,16 +630,16 @@ export default async function GamingPage() {
                     : "#2 engine after Unreal · dominates mobile gaming · 70%+ of top 1000 mobile games built on Unity",
                 },
               ].map((row, i) => (
-                <div key={i} className="flex items-baseline gap-6 py-5">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-white/25 w-20 shrink-0">
-                    {String(i + 1).padStart(2, "0")}.
+                <div key={i} className="flex items-start gap-8 py-7">
+                  <span className="font-macro-display text-2xl font-bold text-[#E8B923]/30 w-10 shrink-0 mt-0.5">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-baseline gap-4 mb-1">
-                      <p className="text-sm font-body text-white font-semibold">{row.company}</p>
-                      <span className="text-[10px] font-mono text-white/30 uppercase tracking-wider">{row.hq}</span>
+                    <div className="flex flex-wrap items-baseline gap-3 mb-2">
+                      <p className="font-macro-display text-2xl font-bold text-white">{row.company}</p>
+                      <span className="text-sm font-body text-white/50">{row.hq}</span>
                     </div>
-                    <p className="text-xs font-mono text-white/35">{row.fact}</p>
+                    <p className="text-sm font-body text-white/65 leading-relaxed">{row.fact.replace(/ · /g, "  ·  ")}</p>
                   </div>
                 </div>
               ))}

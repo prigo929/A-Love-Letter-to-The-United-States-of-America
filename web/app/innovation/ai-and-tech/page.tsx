@@ -407,88 +407,24 @@ export default async function AiAndTechPage() {
             </div>
           </div>
 
-          {/* CUDA Ecosystem Stack Diagram */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-
-            {/* Left: Stack as chip-tag grid */}
-            <div className="bg-white/1 rounded-3xl border border-white/5 p-8">
-              <p className="text-[10px] font-mono uppercase tracking-widest text-white/40 font-semibold mb-8">
-                {isRo ? "STIVA SOFTWARE AI" : "THE AI SOFTWARE STACK"}
-              </p>
-              <div className="grid grid-cols-3 gap-x-6 gap-y-8">
-                {[
-                  {
-                    group: isRo ? "APLICAȚII" : "APPS",
-                    items: ["ChatGPT", "Claude", "Gemini", "Copilot", "Midjourney"],
-                  },
-                  {
-                    group: isRo ? "MODELE" : "MODELS",
-                    items: ["GPT-5.5", "Claude Fable 5", "Gemini 3.5", "Llama 4"],
-                  },
-                  {
-                    group: isRo ? "CADRE ML" : "FRAMEWORKS",
-                    items: ["PyTorch", "TensorFlow", "JAX", "Triton"],
-                  },
-                  {
-                    group: isRo ? "BIBLIOTECI" : "LIBRARIES",
-                    items: ["cuDNN", "cuBLAS", "cuSPARSE", "NCCL"],
-                  },
-                  {
-                    group: isRo ? "RUNTIME" : "RUNTIME",
-                    items: ["Kernel Exec", "Memory Mgmt", "Thread Sched", "Grid API"],
-                  },
-                  {
-                    group: isRo ? "SILICON" : "SILICON",
-                    items: ["80B Transistors", "3,958 TFLOPS", "HBM3 Memory", "NVLink 4.0"],
-                  },
-                ].map((g, i) => (
-                  <div key={i}>
-                    <p className="text-[10px] font-mono uppercase tracking-widest text-[#E8B923] mb-3">
-                      {g.group}
-                    </p>
-                    <div className="flex flex-col gap-1.5">
-                      {g.items.map((item) => (
-                        <span
-                          key={item}
-                          className="text-xs font-body text-white/55 bg-white/4 px-2 py-0.5 rounded w-fit"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+          {/* CUDA Key Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-white/5 rounded-3xl overflow-hidden">
+            {[
+              { value: "92%",   label: isRo ? "Cotă de piață AI compute" : "AI compute market share", note: isRo ? "Nvidia CUDA vs. toți rivalii" : "Nvidia CUDA vs. all rivals" },
+              { value: "~20yr", label: isRo ? "Avans față de concurență" : "Head start on competition", note: isRo ? "Lansat 2006, neegalat încă" : "Launched 2006, unmatched today" },
+              { value: "4M+",   label: isRo ? "Developeri în ecosistem" : "Developers in ecosystem", note: isRo ? "Imposibil de migrat rapid" : "Impossible to migrate quickly" },
+              { value: "500K+", label: isRo ? "Modele optimizate CUDA" : "CUDA-optimized models", note: isRo ? "Pe HuggingFace Hub" : "On HuggingFace Hub" },
+            ].map((s, i) => (
+              <div key={i} className={`p-8 flex flex-col gap-2 ${i > 0 ? "border-l border-white/5" : ""}`}>
+                <span className="font-macro-display text-4xl md:text-5xl font-black text-[#E8B923]">{s.value}</span>
+                <span className="text-sm font-body text-white/75 leading-snug">{s.label}</span>
+                <span className="text-xs font-body text-white/45">{s.note}</span>
               </div>
-            </div>
-
-            {/* Right: Lock-in analysis */}
-            <div className="flex flex-col gap-10 justify-center">
-              <p className="font-macro-body text-white/65 text-base leading-relaxed">
-                {isRo
-                  ? "CUDA nu este doar un instrument — este un ecosistem de ~20 de ani construit în jurul hardware-ului Nvidia. Bibliotecile, cadrele, modelele pre-antrenate și întreg corpul de cunoștințe al inginerilor AI sunt optimizate exclusiv pentru CUDA."
-                  : "CUDA is not just a tool — it is a ~20-year ecosystem built around Nvidia hardware. Libraries, frameworks, pre-trained models, and the entire body of ML engineering knowledge are optimized exclusively for CUDA."}
-              </p>
-
-              <div className="grid grid-cols-2 gap-8">
-                {[
-                  { value: "92%",   label: isRo ? "Cotă AI compute" : "AI compute share", sub: isRo ? "NVIDIA CUDA" : "NVIDIA CUDA" },
-                  { value: "~20yr", label: isRo ? "Avans față de rivali" : "Head start on rivals", sub: isRo ? "LANSAT 2006" : "LAUNCHED 2006" },
-                  { value: "4M+",   label: isRo ? "Developeri în ecosistem" : "Developers in ecosystem", sub: isRo ? "CUDA DEVS" : "CUDA DEVS" },
-                  { value: "500K+", label: isRo ? "Modele pe HuggingFace" : "Models on HuggingFace", sub: isRo ? "OPTIMIZATE CUDA" : "CUDA-OPTIMIZED" },
-                ].map((s) => (
-                  <div key={s.label} className="border-t border-white/5 pt-5">
-                    <span className="font-macro-display text-3xl font-bold text-[#E8B923] block mb-1">{s.value}</span>
-                    <span className="text-sm font-body text-white/60 block leading-snug">{s.label}</span>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/25 block mt-1">{s.sub}</span>
-                  </div>
-                ))}
-              </div>
-
-              <p className="text-[10px] font-body text-white/25">
-                {isRo ? "Sursă: Ark Invest Research, 2025." : "Source: Ark Invest Research, 2025."}
-              </p>
-            </div>
+            ))}
           </div>
+          <p className="text-xs font-body text-white/35 mt-4">
+            {isRo ? "Sursă: Ark Invest Research, 2025." : "Source: Ark Invest Research, 2025."}
+          </p>
         </section>
 
 
