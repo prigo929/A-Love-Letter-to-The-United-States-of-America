@@ -8,7 +8,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  BookOpen, Globe, Scale, TrendingUp, Users, Palette, FlameKindling,
+  BookOpen, Globe, Scale, TrendingUp, Users, Palette,
   ChevronRight, Star, ExternalLink, Info, Map, Swords, Flag,
 } from "lucide-react";
 import { US_SECTIONS, US_QUICK_FACTS } from "@/lib/data/united-states-data";
@@ -84,13 +84,6 @@ const TABS: {
     label_ro: "Cultură și Valori",
     color: "from-pink-500 to-fuchsia-600",
     link: { href: "/culture", label_en: "Explore American Culture →", label_ro: "Explorează Cultura Americană →" },
-  },
-  {
-    id: "controversies-and-debates",
-    icon: <FlameKindling className="w-4 h-4" />,
-    label_en: "Controversies",
-    label_ro: "Controverse",
-    color: "from-orange-500 to-red-600",
   },
 ];
 
