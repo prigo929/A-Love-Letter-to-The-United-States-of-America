@@ -97,7 +97,7 @@ export function FilmAndStorytellingClient({
       span: isRo ? "1920 – 1950" : "1920 – 1950",
       title: isRo ? "Epoca de Aur" : "The Golden Age",
       headline: isRo ? "Sistemul de Studiouri și Montajul de Continuitate" : "The Studio System & Continuity",
-      image: SITE_IMAGES.culture.era1920s,
+      image: "/images/library/Culture/Cinema/Golden Age of Hollywood different people.png",
       desc: isRo
         ? "Dezvoltat în timpul ascensiunii marilor studiouri din Los Angeles, acest sistem a creat regulile gramaticale fundamentale ale filmului. Principiul montajului invizibil a creat o continuitate perfectă a spațiului și timpului, atrăgând publicul în poveste fără să observe tăieturile."
         : "Developed during the rise of Los Angeles' major studios, this era established the fundamental grammatical rules of cinema. The principle of invisible editing constructed a seamless continuity of space and time, pulling audiences into narratives without notice.",
@@ -112,7 +112,7 @@ export function FilmAndStorytellingClient({
       span: isRo ? "1960 – 1970" : "1960 – 1970",
       title: isRo ? "Noul Hollywood" : "New Hollywood",
       headline: isRo ? "Auterii și Deconstrucția Miturilor" : "Auteurs & Deconstructed Myths",
-      image: SITE_IMAGES.culture.era1970s,
+      image: "/images/library/Culture/Cinema/Bonnie_and_Clyde_(1967_promo_photo_-_Dunaway_&_Beatty).jpg",
       desc: isRo
         ? "Odată cu prăbușirea vechiului cod de cenzură, o nouă generație de regizori instruiți în școli de film a preluat frâiele. Influențați de modernismul european, au deconstruit genurile clasice și au înlocuit eroii ideali cu anti-eroi complecși pe fundalul realității urbane."
         : "With the collapse of the old censorship code, a new wave of film-school educated directors took creative control. Inspired by European modernism, they deconstructed classic genres, replacing idealized heroes with complex, morally gray anti-heroes set in gritty realism.",
@@ -127,7 +127,7 @@ export function FilmAndStorytellingClient({
       span: isRo ? "1980 – Prezent" : "1980 – Present",
       title: isRo ? "Blockbuster & Digital" : "Blockbuster & Digital",
       headline: isRo ? "Spectacolul High-Concept și CGI" : "High-Concept Spectacle & CGI",
-      image: SITE_IMAGES.culture.era1990s,
+      image: "/images/library/Culture/Cinema/movies-before-after-green-screen-cgi-avengers-1.jpg",
       desc: isRo
         ? "Începând cu Jaws și Star Wars, Hollywood a perfecționat filmul de tip eveniment global. Narațiunile au devenit „high-concept” (ușor de explicat într-o propoziție), iar apariția efectelor digitale (CGI) a transformat ecranul într-o pânză a imaginației nelimitate, accesibilă oricărei limbi."
         : "Pivoting with Jaws and Star Wars, Hollywood mastered the global event movie. Narratives were built around clear, 'high-concept' premises easily pitched in a single sentence, while computer-generated imagery (CGI) turned screens into spaces of limitless sensory fantasy.",
