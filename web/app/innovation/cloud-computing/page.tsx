@@ -9,7 +9,8 @@ import {
   Network, 
   ExternalLink,
   PlusCircle,
-  Cpu
+  Cpu,
+  Globe
 } from "lucide-react";
 import { 
   MacroStyles, 
@@ -36,6 +37,13 @@ interface CloudCopy {
   milestones: Array<{
     title: string;
     date: string;
+    details: string;
+  }>;
+  layersTitle: string;
+  layersSubtitle: string;
+  layers: Array<{
+    title: string;
+    tagline: string;
     details: string;
   }>;
   centersLabel: string;
@@ -79,6 +87,30 @@ const copyEn: CloudCopy = {
       details: "The training of modern generative AI models shifted the cloud from individual virtual servers to massive, unified supercomputers. Hyper-scalers now deploy tens of thousands of GPUs connected by high-speed NVLink fabrics inside single custom-built facilities."
     }
   ],
+  layersTitle: "Architectural Layers of the American Cloud",
+  layersSubtitle: "The hidden software and hardware innovations that enable millions of businesses to run on shared global utility hardware.",
+  layers: [
+    {
+      title: "Hyper-scale SDN Fabrics",
+      tagline: "SOFTWARE-DEFINED NETWORKS",
+      details: "Virtualization extends from CPU to the physical network. Technologies like Google's Andromeda and AWS's Hyperplane abstract physical switches, routing trillions of packets per second with microsecond latency, enabling secure multi-tenant isolation on shared routers."
+    },
+    {
+      title: "The Global Fiber Substrate",
+      tagline: "PRIVATE UNDERSEA CABLES",
+      details: "To bypass public internet congestion, American tech giants have financed and laid over 100 private undersea fiber optic cables across the Atlantic and Pacific. Google, Meta, and Microsoft now own or lease the majority of global transoceanic bandwidth."
+    },
+    {
+      title: "Eleven 9s Durability",
+      tagline: "DISTRIBUTED OBJECT STORAGE",
+      details: "Systems like Amazon S3 and Google Colossus store data as chunks replicated across multiple physical storage domains. By automated parity coding, they achieve 99.999999999% durability, ensuring data is never lost even during simultaneous data center power losses."
+    },
+    {
+      title: "Proprietary Cloud Silicon",
+      tagline: "CUSTOM HARDWARE ENGINE",
+      details: "To optimize power and performance, cloud leaders design proprietary chips. AWS's Graviton processors provide ARM-based efficiency for server workloads, while Google's custom TPUs (Tensor Processing Units) power the world's largest AI neural training grids."
+    }
+  ],
   centersLabel: "HYPER-SCALE HEGEMONY",
   centersTitle: "The Physical Substrate: America's Data Center Dominance",
   centersParagraph1: "Behind the ephemeral metaphor of the 'cloud' lies an immense physical landscape of concrete and power lines. The United States houses over 5,400 operational data centers, representing 43% of the global total—more than the next ten nations combined. In terms of raw electrical grid capacity, the US represents 53.7 gigawatts of installed data center capacity, eclipsing the entire European Union's 11.9 gigawatts by more than four times.",
@@ -118,6 +150,30 @@ const copyRo: CloudCopy = {
       title: "Superclusterele de AI",
       date: "Anii 2020",
       details: "Antrenarea modelelor moderne de AI a transformat cloud-ul din servere virtuale individuale în supercomputere masive, unificate. Furnizorii hyper-scale instalează acum zeci de mii de GPU-uri conectate prin rețele NVLink de mare viteză în cadrul aceleiași facilități personalizate."
+    }
+  ],
+  layersTitle: "Straturile Arhitecturale ale Cloud-ului American",
+  layersSubtitle: "Inovațiile ascunse de software și hardware care permit milioanelor de afaceri să ruleze pe o infrastructură globală partajată.",
+  layers: [
+    {
+      title: "Structuri SDN Hyper-scale",
+      tagline: "REȚELE DEFINITE PRIN SOFTWARE",
+      details: "Virtualizarea se extinde de la CPU la rețeaua fizică. Tehnologii precum Google Andromeda și AWS Hyperplane abstractizează switch-urile fizice, rutând trilioane de pachete pe secundă cu latență de microsecunde, asigurând izolarea securizată pe routere partajate."
+    },
+    {
+      title: "Substratul de Fibră Globală",
+      tagline: "CABLURI SUBMARINE PRIVATE",
+      details: "Pentru a evita congestionarea internetului public, giganții tehnologici americani au finanțat și instalat peste 100 de cabluri submarine de fibră optică peste Atlantic și Pacific. Google, Meta și Microsoft dețin acum majoritatea lățimii de bandă transoceanice globale."
+    },
+    {
+      title: "Durabilitate de 11 de Nouă",
+      tagline: "STOCARE DISTRIBUITĂ DE OBIECTE",
+      details: "Sisteme precum Amazon S3 și Google Colossus stochează datele segmentate și duplicate în multiple domenii fizice de stocare. Prin codare automatizată a parității, obțin o durabilitate de 99.999999999%, prevenind pierderea datelor."
+    },
+    {
+      title: "Cipuri Proprietare de Cloud",
+      tagline: "PROCESARE PERSONALIZATĂ",
+      details: "Pentru a optimiza consumul și performanța, liderii de cloud proiectează cipuri proprii. Procesoarele AWS Graviton oferă eficiență bazată pe arhitectura ARM, în timp ce unitățile TPU de la Google alimentează cele mai mari rețele de antrenare AI."
     }
   ],
   centersLabel: "HEGEMONIE HYPER-SCALE",
@@ -247,6 +303,48 @@ export default async function CloudComputingPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Architectural Layers Section */}
+        <section id="layers" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32 border-t border-white/5 pt-24">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-6 font-semibold">
+            {isRo ? "INFRASCTRUCTURĂ DE JOS ÎN SUS" : "STACK FROM THE GROUND UP"}
+          </p>
+          <h2 className="font-macro-display text-4xl font-bold text-center mb-6 text-white uppercase tracking-tight">
+            {copy.layersTitle}
+          </h2>
+          <p className="font-macro-body text-white/60 text-lg md:text-xl text-center max-w-3xl mx-auto leading-relaxed mb-16">
+            {copy.layersSubtitle}
+          </p>
+          
+          <div className="grid gap-8 md:grid-cols-2">
+            {copy.layers.map((layer, idx) => {
+              const Icon = [Network, Globe, Database, Cpu][idx % 4];
+              return (
+                <div 
+                  key={idx}
+                  className="rounded-3xl border border-white/5 bg-white/[0.01] p-8 hover:border-[#E8B923]/30 hover:bg-white/[0.02] transition-all duration-500 flex gap-6"
+                >
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 rounded-2xl bg-white/[0.04] flex items-center justify-center border border-white/10">
+                      <Icon className="h-6 w-6 text-[#E8B923]" />
+                    </div>
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono text-[#E8B923] tracking-widest block uppercase mb-2">
+                      {layer.tagline}
+                    </span>
+                    <h3 className="font-macro-display text-2xl font-bold text-white mb-4">
+                      {layer.title}
+                    </h3>
+                    <p className="text-sm text-white/70 leading-relaxed font-body">
+                      {layer.details}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </section>
 
