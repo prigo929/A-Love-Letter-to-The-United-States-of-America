@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
+import { ComputeCalculator } from "@/components/interactive/ComputeCalculator";
 import { 
   Cpu, 
   ExternalLink,
@@ -435,12 +436,12 @@ export default async function AiAndTechPage() {
             {/* Code Body - side by side on desktop, stacked on mobile */}
             <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-white/5 font-mono text-[11px] sm:text-xs text-white/70 leading-relaxed overflow-x-auto">
               {/* CUDA Column */}
-              <div className="p-6 sm:p-8 bg-black/10">
+              <div className="p-6 sm:p-8 bg-black/10 flex flex-col">
                 <div className="text-white/40 uppercase tracking-widest text-[10px] font-bold mb-4 flex items-center justify-between">
                   <span>{copy.softwareCudaTitle}</span>
                   <span className="text-[#2ac3de]">CUDA C++</span>
                 </div>
-                <pre className="whitespace-pre">
+                <pre className="whitespace-pre overflow-x-auto max-h-[360px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-white/10">
 {`// CUDA kernel: Parallel RMSNorm execution targeting Tensor Cores
 `}<span className="text-[#bb9af2]">__global__</span> <span className="text-[#2ac3de]">void</span> <span className="text-[#7aa2f7]">rms_norm_kernel</span>(<span className="text-[#2ac3de]">float</span>* out, <span className="text-[#bb9af2]">const</span> <span className="text-[#2ac3de]">float</span>* in, <span className="text-[#bb9af2]">const</span> <span className="text-[#2ac3de]">float</span>* weight, <span className="text-[#2ac3de]">float</span> eps, <span className="text-[#2ac3de]">int</span> size) {"{"}
     <span className="text-[#2ac3de]">int</span> row_idx = blockIdx.x; <span className="text-[#565f89]">// Thread block processes one matrix row</span>
@@ -478,12 +479,12 @@ export default async function AiAndTechPage() {
               </div>
 
               {/* PyTorch Column */}
-              <div className="p-6 sm:p-8 bg-black/20">
+              <div className="p-6 sm:p-8 bg-black/20 flex flex-col">
                 <div className="text-white/40 uppercase tracking-widest text-[10px] font-bold mb-4 flex items-center justify-between">
                   <span>{copy.softwarePytorchTitle}</span>
                   <span className="text-[#9ece6a]">Python 3.11</span>
                 </div>
-                <pre className="whitespace-pre">
+                <pre className="whitespace-pre overflow-x-auto max-h-[360px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-white/10">
 <span className="text-[#bb9af2]">import</span> torch
 <span className="text-[#bb9af2]">import</span> torch.nn <span className="text-[#bb9af2]">as</span> nn
 <span className="text-[#bb9af2]">import</span> math
@@ -519,6 +520,11 @@ model = LlamaAttentionBlock().to(<span className="text-[#9ece6a]">"cuda"</span>)
               </div>
             </div>
           </div>
+        </section>
+
+        {/* Compute Scaling Law Simulator */}
+        <section id="scaling-calculator" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
+          <ComputeCalculator locale={locale} />
         </section>
 
         {/* Frontier Labs Section */}
