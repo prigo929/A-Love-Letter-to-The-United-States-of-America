@@ -37,7 +37,7 @@ import { VCBarChart } from "@/components/data/VCCharts";
 import { DollarReserveChart } from "@/components/data/DollarMarketCharts";
 import { getServerLocale } from "@/lib/i18n/server";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
-import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
+import DeepDiveSection, { DEEP_DIVE_THEMES } from "@/components/shared/DeepDiveSection";
 
 // ── Data ────────────────────────────────────────────────────────────────────
 // This page is intentionally data-driven. Most factual edits belong in
@@ -788,20 +788,11 @@ export default async function EconomyPage() {
           </div>
         </section>
 
-      {/* Detailed Chronicles */}
-      <ThematicSubpageClient
+      {/* Deep Dive Archive */}
+      <DeepDiveSection
         locale={locale}
-        subpageId="economy"
-        title={{
-          en: "Detailed Chronicles",
-          ro: "Cronici Detaliate",
-        }}
-        description={{
-          en: "Explore the comprehensive archives of the US national economy, trade, taxation, capitalism, Wall Street, and agricultural production.",
-          ro: "Explorați arhivele cuprinzătoare ale economiei naționale a SUA, comerțului, fiscalității, capitalismului, Wall Street-ului și producției agricole.",
-        }}
         topics={VERTICALS_THEMATIC_DATA["economy"] || []}
-        embed={true}
+        theme={DEEP_DIVE_THEMES.economy}
       />
 
         {/* Interactive Chat CTA */}

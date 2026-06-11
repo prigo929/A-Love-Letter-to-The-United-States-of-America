@@ -50,7 +50,7 @@ import type { Locale } from "@/lib/i18n/config";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
-import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
+import DeepDiveSection, { DEEP_DIVE_THEMES } from "@/components/shared/DeepDiveSection";
 
 import {
   MILITARY_STATS,
@@ -690,20 +690,11 @@ export default async function MilitaryPage() {
           ))}
         </div>
 
-        {/* Detailed Chronicles */}
-        <ThematicSubpageClient
+        {/* Deep Dive Archive */}
+        <DeepDiveSection
           locale={locale}
-          subpageId="military"
-          title={{
-            en: "Detailed Chronicles",
-            ro: "Cronici Detaliate",
-          }}
-          description={{
-            en: "Explore the comprehensive archives of the United States Armed Forces, including the Army, Navy, Air Force, Marine Corps, and global military history.",
-            ro: "Explorați arhivele complete ale Forțelor Armate ale Statelor Unite, inclusiv Armata, Marina, Forțele Aeriene, Corpul Maritim și istoria militară globală.",
-          }}
           topics={VERTICALS_THEMATIC_DATA["military"] || []}
-          embed={true}
+          theme={DEEP_DIVE_THEMES.military}
         />
  
         {/* Interactive Chat CTA */}

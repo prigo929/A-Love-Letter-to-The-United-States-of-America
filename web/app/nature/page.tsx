@@ -35,7 +35,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { SITE_IMAGES }     from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
-import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
+import DeepDiveSection, { DEEP_DIVE_THEMES } from "@/components/shared/DeepDiveSection";
 
 import {
   getNatureHeroStats,
@@ -392,20 +392,11 @@ export default async function NaturePage() {
         </div>
       </section>
 
-      {/* Detailed Chronicles */}
-      <ThematicSubpageClient
+      {/* Deep Dive Archive */}
+      <DeepDiveSection
         locale={locale}
-        subpageId="nature"
-        title={{
-          en: "Detailed Chronicles",
-          ro: "Cronici Detaliate",
-        }}
-        description={{
-          en: "Explore comprehensive historical archives and geological, geographical, and climate profiles of the American continent.",
-          ro: "Explorați arhive istorice cuprinzătoare și profile geologice, geografice și climatice ale continentului american.",
-        }}
         topics={VERTICALS_THEMATIC_DATA["nature"] || []}
-        embed={true}
+        theme={DEEP_DIVE_THEMES.nature}
       />
 
       {/* Ask America AI Oracle CTA */}
