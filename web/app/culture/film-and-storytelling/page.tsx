@@ -3,6 +3,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { getCultureHollywood } from "@/lib/data/culture-data";
 import { GALLERY_IMAGES } from "@/lib/data/gallery";
 import { FilmAndStorytellingClient } from "@/components/culture/FilmAndStorytellingClient";
+import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 
 export const metadata: Metadata = {
   title: "Film & Storytelling | The American Operating System",
@@ -27,6 +28,13 @@ export default async function FilmAndStorytellingPage() {
         isRo={isRo}
         hollywoodData={data}
       />
+      <div className="culture-bg">
+        <AskAmericaCTA
+          locale={locale}
+          descriptionEn="Ask the AI Oracle about Hollywood's global box office dominance, the auteurs who shaped cinema, the grammar of visual storytelling, or how American film became the world's shared dream language."
+          descriptionRo="Întreabă Oracolul AI despre dominanța globală a Hollywood-ului, regizorii care au modelat cinematografia, gramatica povestirii vizuale sau cum filmul american a devenit limbajul comun al viselor lumii."
+        />
+      </div>
     </main>
   );
 }
