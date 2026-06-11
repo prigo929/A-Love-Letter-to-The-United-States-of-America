@@ -61,6 +61,33 @@ export default async function CultureCompaniesBrandsPage() {
     },
   ];
 
+  const megaBrands = [
+    {
+      name: "Walmart",
+      value: "2.1M",
+      valueLabel: isRo ? "Angajați globali" : "Global Employees",
+      desc: isRo ? "Cel mai mare angajator privat de pe Pământ. Walmart a inventat logistica big-box retail și deservește 265 milioane de clienți săptămânal în 20+ țări." : "The largest private employer on Earth. Walmart invented big-box retail logistics and serves 265 million customers weekly across 20+ countries.",
+    },
+    {
+      name: "Amazon",
+      value: "30%+",
+      valueLabel: isRo ? "Internet global (AWS)" : "Global Internet (AWS)",
+      desc: isRo ? "AWS alimentează 30%+ din internet. Prime a redefinit așteptările de livrare globale. Amazon este stratul de infrastructură al comerțului modern." : "AWS powers 30%+ of the internet. Prime redefined global delivery expectations. Amazon is the infrastructure layer of modern commerce worldwide.",
+    },
+    {
+      name: "Ford",
+      value: "1908",
+      valueLabel: isRo ? "Modelul T · Linia de asamblare" : "Model T · Assembly Line",
+      desc: isRo ? "Ford nu a vândut doar mașini — a inventat producția de masă ca paradigmă economică. Modelul T a democratizat mobilitatea personală și a schimbat structura societății americane." : "Ford didn't just sell cars — it invented mass production as an economic paradigm. The Model T democratized personal mobility and reshaped the structure of American society.",
+    },
+    {
+      name: "Google",
+      value: "92%",
+      valueLabel: isRo ? "Cota piața mondială search" : "Global Search Market Share",
+      desc: isRo ? "'A căuta pe Google' este un verb în 50+ de limbi. Infrastructura informațională a planetei — Search, Maps, Gmail, YouTube — toate alimentate de o companie americană." : "'To Google' is a verb in 50+ languages. The information infrastructure of the planet — Search, Maps, Gmail, YouTube — all powered by one American company.",
+    },
+  ];
+
   return (
     <>
       <MacroStyles />
@@ -128,6 +155,30 @@ export default async function CultureCompaniesBrandsPage() {
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {brands.map((b, i) => (
+                <div key={i} className="bg-white/40 backdrop-blur-md rounded-2xl p-8 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">
+                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8391B] mb-3">{b.name}</p>
+                  <p className="font-macro-display text-4xl font-black text-[#0C0907] tracking-tight mb-1">{b.value}</p>
+                  <p className="font-body text-xs font-bold uppercase tracking-wider text-[#0C0907]/45 mb-5">{b.valueLabel}</p>
+                  <p className="font-editorial text-sm text-[#0C0907]/70 leading-relaxed">{b.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CREAM: Mega-brands — Walmart, Amazon, Ford, Google */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-0 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20 pb-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "INFRASTRUCTURA LUMII MODERNE" : "THE INFRASTRUCTURE OF THE MODERN WORLD"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "GIGANȚII TEHNO-INDUSTRIALI" : "TECH & INDUSTRIAL GIANTS"}</h2>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {megaBrands.map((b, i) => (
                 <div key={i} className="bg-white/40 backdrop-blur-md rounded-2xl p-8 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">
                   <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8391B] mb-3">{b.name}</p>
                   <p className="font-macro-display text-4xl font-black text-[#0C0907] tracking-tight mb-1">{b.value}</p>

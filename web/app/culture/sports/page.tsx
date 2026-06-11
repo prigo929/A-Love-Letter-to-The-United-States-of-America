@@ -224,6 +224,46 @@ export default async function CultureSportsPage() {
                 </div>
               </div>
 
+              {/* NASCAR */}
+              <div className="grid gap-12 md:gap-20 items-center md:grid-cols-[2fr_3fr] md:[&>*:first-child]:order-last">
+                <div>
+                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.35em] text-[#E8391B] mb-3">
+                    {isRo ? "NASCAR · DAYTONA, 1948–PREZENT" : "NASCAR · DAYTONA, 1948–PRESENT"}
+                  </p>
+                  <h3 className="font-macro-display text-5xl md:text-6xl font-black text-[#0C0907] tracking-tight mb-6 leading-none">
+                    NASCAR
+                  </h3>
+                  <p className="font-editorial text-lg text-[#0C0907]/70 leading-relaxed">
+                    {isRo
+                      ? "75 de milioane de fani. Daytona 500 este Super Bowl-ul curselor auto — Marea Cursă Americană. Fondat în 1948, NASCAR este distinctiv american: piste ovale, mașini de stradă modificate, dinastii familiale, și un ecosistem complet de brand și lifestyle fără echivalent global. Duminicile de cursă din Sud sunt rituale culturale la fel de profunde ca un meci de fotbal."
+                      : "75 million fans. The Daytona 500 is the Super Bowl of racing — the Great American Race. Founded in 1948, NASCAR is uniquely American: oval tracks, stock cars, family dynasties, and a complete brand lifestyle ecosystem with zero global equivalent. Sunday race days across the South are cultural rituals as deep as any football game."}
+                  </p>
+                </div>
+                <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_30px_80px_rgb(12,9,7,0.15)]">
+                  <Image src={SITE_IMAGES.culture.daytona500} alt="Daytona 500 1979 dramatic last-lap crash between Donnie Allison and Cale Yarborough" fill className="object-cover" sizes="(max-width: 768px) 100vw, 55vw" />
+                </div>
+              </div>
+
+              {/* Women's Sports */}
+              <div className="grid gap-12 md:gap-20 items-center md:grid-cols-[3fr_2fr]">
+                <div>
+                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.35em] text-[#E8391B] mb-3">
+                    {isRo ? "USWNT · TITLE IX · LIDERII GLOBALI" : "USWNT · TITLE IX · GLOBAL LEADERS"}
+                  </p>
+                  <h3 className="font-macro-display text-5xl md:text-6xl font-black text-[#0C0907] tracking-tight mb-6 leading-none">
+                    {isRo ? "Sportul Feminin" : "Women's Sports"}
+                  </h3>
+                  <p className="font-editorial text-lg text-[#0C0907]/70 leading-relaxed">
+                    {isRo
+                      ? "Title IX (1972) a creat cea mai mare infrastructură de atletism feminin din lume. USWNT este cea mai decorată echipă feminină de fotbal din istorie — 4 titluri mondiale, 4 medalii olimpice de aur. Poza Sports Illustrated cu Brandi Chastain celebrând victoria Mondialului din 1999 a devenit imaginea definitorie a sportului feminin la nivel global."
+                      : "Title IX (1972) created the world's largest women's athletics infrastructure. The USWNT is the most decorated women's soccer team in history — 4 World Cup titles, 4 Olympic gold medals. Brandi Chastain's Sports Illustrated cover celebrating the 1999 World Cup victory became the defining image of women's sports globally."}
+                  </p>
+                </div>
+                <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_30px_80px_rgb(12,9,7,0.15)]">
+                  <Image src={SITE_IMAGES.culture.vaultSportsSI1999} alt="Brandi Chastain Sports Illustrated 1999 US Women's Soccer World Cup Victory" fill className="object-cover" sizes="(max-width: 768px) 100vw, 40vw" />
+                </div>
+              </div>
+
             </div>
           </div>
         </section>

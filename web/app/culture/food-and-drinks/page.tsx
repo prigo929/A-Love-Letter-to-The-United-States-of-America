@@ -62,6 +62,15 @@ export default async function FoodAndDrinksPage() {
         ? "Cornul de înghețată a fost inventat la Expoziția Mondială din St. Louis (1904). Soft serve-ul — inventat de americani. Ben & Jerry's, Häagen-Dazs — branduri americane care domină piața globală de 97 miliarde de dolari."
         : "The ice cream cone was invented at the St. Louis World's Fair (1904). Soft serve — American invention. Ben & Jerry's, Häagen-Dazs — American brands dominating the $97 billion global market.",
     },
+    {
+      title: isRo ? "Pizza Americană" : "American Pizza",
+      subtitle: isRo ? "NY Slice & Chicago Deep Dish" : "NY Slice & Chicago Deep Dish",
+      image: SITE_IMAGES.culture.timesSquareIconic,
+      alt: "Times Square New York City — birthplace of NY-style pizza slice culture",
+      desc: isRo
+        ? "Imigranții italieni au adus pizza la New York la începutul secolului XX, dar America a reinventat-o complet. NY slice (1905), Chicago deep dish (1943), Pizza Hut (1958, Kansas), Domino's (1960, Michigan) au exportat-o în 100+ țări. Azi pizza este o industrie globală de 153 miliarde de dolari — cu NY slice și Chicago deep dish ca două invenții distinctiv americane."
+        : "Italian immigrants brought pizza to New York in the early 1900s, but America reinvented it entirely. The NY slice (1905), Chicago deep dish (1943), Pizza Hut (1958, Kansas), Domino's (1960, Michigan) then exported it worldwide. Today pizza is a $153 billion global industry — the NY slice and Chicago deep dish are distinctly American inventions.",
+    },
   ];
 
   const drinkPillars = [
@@ -82,6 +91,12 @@ export default async function FoodAndDrinksPage() {
       stat: "$100B+",
       statLabel: isRo ? "Piața anuală" : "Annual Market",
       desc: isRo ? "Starbucks a transformat cafeaua într-o experiență aspirațională — 35,000 de cafenele pe 6 continente." : "Starbucks transformed coffee into an aspirational experience — 35,000 locations across 6 continents.",
+    },
+    {
+      title: isRo ? "Bourbon & Tennessee Whiskey" : "Bourbon & Tennessee Whiskey",
+      stat: "1791",
+      statLabel: isRo ? "Prima distilerie bourbon" : "First bourbon distillery",
+      desc: isRo ? "Jack Daniel's, Maker's Mark, Buffalo Trace — bourbon whiskey este legal produs doar în SUA (actul din 1964). Piața valorează $12+ miliarde și exportă cultura distinctivă a Sudului american." : "Jack Daniel's, Maker's Mark, Buffalo Trace — bourbon is legally producible only in the USA (1964 act of Congress). The industry tops $12B and exports the distinct culture of the American South worldwide.",
     },
   ];
 
@@ -205,6 +220,31 @@ export default async function FoodAndDrinksPage() {
           </div>
         </section>
 
+        {/* CREAM: Breakfast Culture */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-20 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="grid gap-12 md:gap-20 items-center md:grid-cols-[3fr_2fr]">
+              <div>
+                <p className="font-body text-[10px] font-bold uppercase tracking-[0.35em] text-[#E8391B] mb-3">
+                  {isRo ? "KELLOGG'S · IHOP · WAFFLE HOUSE · TRADIȚIA DIMINEȚII" : "KELLOGG'S · IHOP · WAFFLE HOUSE · THE MORNING RITUAL"}
+                </p>
+                <h3 className="font-macro-display text-5xl md:text-6xl font-black text-[#0C0907] tracking-tight mb-6 leading-none">
+                  {isRo ? "Cultura Micului Dejun" : "Breakfast Culture"}
+                </h3>
+                <p className="font-editorial text-lg text-[#0C0907]/70 leading-relaxed">
+                  {isRo
+                    ? "America a inventat micul dejun modern. Kellogg's Corn Flakes (Battle Creek, Michigan, 1906) a redefinit dimineața. IHOP (1958), Waffle House (1955), Denny's (1953) — all-day breakfast ca instituție democratică. Pancakes cu sirop de arțar, waffle belgiene, ouă Benedict, hash browns, bacon crocant: nicio altă națiune nu mănâncă micul dejun cu atâta religiozitate."
+                    : "America invented the modern breakfast. Kellogg's Corn Flakes (Battle Creek, Michigan, 1906) redefined the morning. IHOP (1958), Waffle House (1955), Denny's (1953) turned the all-day breakfast into a democratic institution. Maple syrup pancakes, waffles, eggs Benedict, hash browns, crispy bacon — no nation eats breakfast with more religious devotion than America."}
+                </p>
+              </div>
+              <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_30px_80px_rgb(12,9,7,0.15)]">
+                <Image src={SITE_IMAGES.culture.foodPancakes} alt="Classic fluffy American pancakes with maple syrup" fill className="object-cover" sizes="(max-width: 768px) 100vw, 40vw" />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CREAM: Full catalogue grid */}
         <section className="relative culture-cream-bg text-[#0C0907] pb-28 overflow-hidden border-t border-[#0C0907]/5">
           <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
@@ -241,7 +281,7 @@ export default async function FoodAndDrinksPage() {
               <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "BĂUTURILE AMERICANE" : "THE DRINKS"}</h2>
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {drinkPillars.map((d, i) => (
                 <div key={i} className="bg-white/40 backdrop-blur-md rounded-2xl p-8 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">
                   <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8391B] mb-3">{d.title}</p>

@@ -247,6 +247,62 @@ export default async function MusicGenresPage() {
           </div>
         </section>
 
+        {/* CREAM: More genres — Soul/R&B, Punk/Alt, Broadway */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-28 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "SPECTRUL COMPLET" : "THE FULL SPECTRUM"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "MAI MULTE GENURI" : "MORE GENRES"}</h2>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+            <div className="grid gap-6 sm:grid-cols-3">
+              {[
+                {
+                  era: isRo ? "SOUL & R&B · DETROIT, 1950s–PREZENT" : "SOUL & R&B · DETROIT, 1950s–PRESENT",
+                  title: isRo ? "Soul & R&B" : "Soul & R&B",
+                  image: SITE_IMAGES.culture.jazzClub,
+                  alt: "Live soul and R&B performance stage",
+                  desc: isRo
+                    ? "Motown Records (Detroit, 1959) a creat cea mai prolifică uzină muzicală din istoria pop-ului: Marvin Gaye, Stevie Wonder, Diana Ross, The Temptations. Aretha Franklin, Atlantic Records — Soul-ul este podul dintre blues și hip-hop, cu un catalog care a modelat muzica mondială timp de 70 de ani."
+                    : "Motown Records (Detroit, 1959) built pop's most prolific hit factory: Marvin Gaye, Stevie Wonder, Diana Ross, The Temptations. Aretha Franklin, Atlantic Records — Soul is the connective tissue between blues and hip-hop, shaping world music for 70 years.",
+                },
+                {
+                  era: isRo ? "PUNK & ALTERNATIVE · NEW YORK, 1974–PREZENT" : "PUNK & ALTERNATIVE · NEW YORK, 1974–PRESENT",
+                  title: isRo ? "Punk & Alternative" : "Punk & Alternative",
+                  image: SITE_IMAGES.culture.vaultNirvana,
+                  alt: "Nirvana Nevermind 1991 album cover",
+                  desc: isRo
+                    ? "CBGB (New York, 1973), Ramones, Patti Smith — punk-ul american a fost refuzul brut al pop-ului comercial. Nevermind al Nirvana (1991) a lansat grunge în mainstream și a creat o cultură alternativă globală care durează și azi."
+                    : "CBGB (New York, 1973), the Ramones, Patti Smith — American punk was raw refusal of commercial pop. Nirvana's Nevermind (1991) launched grunge into the mainstream and created a global alternative culture that outlasted the decade.",
+                },
+                {
+                  era: isRo ? "BROADWAY · NEW YORK, 1880s–PREZENT" : "BROADWAY · NEW YORK, 1880s–PRESENT",
+                  title: isRo ? "Broadway & Teatrul Muzical" : "Broadway & Musical Theatre",
+                  image: SITE_IMAGES.culture.chicagoTheatre,
+                  alt: "Illuminated Chicago Theatre marquee at night",
+                  desc: isRo
+                    ? "Hamilton, West Side Story, Chicago, The Lion King — un format de artă distinctiv american care fuzionează muzica, drama și spectacolul vizual. Broadway generează 1,8 miliarde de dolari anual în New York City. Nu există echivalent cultural la această scară în altă parte pe planetă."
+                    : "Hamilton, West Side Story, Chicago, The Lion King — a distinctly American art form fusing music, drama, and visual spectacle. Broadway generates $1.8 billion annually in New York City alone. There is no cultural equivalent at this scale anywhere else on Earth.",
+                },
+              ].map((g, i) => (
+                <div key={i} className="group bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">
+                  <div className="relative aspect-4/3 overflow-hidden">
+                    <Image src={g.image} alt={g.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 100vw, 33vw" />
+                  </div>
+                  <div className="p-6">
+                    <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8391B] mb-1">{g.era}</p>
+                    <p className="font-macro-display text-2xl font-black text-[#0C0907] tracking-tight mb-3">{g.title}</p>
+                    <p className="font-editorial text-sm text-[#0C0907]/70 leading-relaxed">{g.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <div className="h-16 w-full gradient-cream-to-dark" />
 
         {/* Dark: Modern stars + album vault + stats */}

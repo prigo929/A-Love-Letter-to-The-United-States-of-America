@@ -80,6 +80,15 @@ export default async function CultureFashionPage() {
         ? "Ralph Lauren a transformat estetica Ivy League — polo, blazer navy, pantaloni chino — în cel mai exportat stil american de lux casual. O viziune despre o Americă aspirațională, vândută în toată lumea."
         : "Ralph Lauren transformed the Ivy League aesthetic — polo shirts, navy blazers, chino trousers — into America's most exported casual luxury style. A vision of aspirational America, sold worldwide.",
     },
+    {
+      title: isRo ? "Athleisure" : "Athleisure",
+      subtitle: isRo ? "Hainele de Sală ca Modă de Zi" : "Gym Clothes as Everyday Fashion",
+      image: SITE_IMAGES.culture.basketballDunk,
+      alt: "Basketball player dunking — the athletic culture that spawned athleisure",
+      desc: isRo
+        ? "Lululemon (1998), Under Armour (1996), Nike Dri-FIT — America a inventat conceptul de îmbrăcăminte sport purtată drept fashion casual cotidian. Piața globală de athleisure valorează 600+ miliarde de dolari și crește. Post-2010, leggings de yoga, hoodie-uri de sală și sneakers au înlocuit hainele formale în birouri și restaurante pe tot globul."
+        : "Lululemon (1998), Under Armour (1996), Nike Dri-FIT — America invented the concept of gym-wear as everyday fashion. The global athleisure market tops $600B and keeps growing. Post-2010, yoga leggings, gym hoodies, and performance sneakers replaced formal wear in offices and restaurants worldwide.",
+    },
   ];
 
   const vaultAds = [
@@ -191,6 +200,51 @@ export default async function CultureFashionPage() {
                   <div className="absolute bottom-0 left-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <p className="font-body text-[9px] font-bold text-white leading-tight">{ad.label}</p>
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CREAM: American designers */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-28 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "CASELE DE MODĂ AMERICANE" : "AMERICAN DESIGN HOUSES"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "DESIGNERI AMERICANI" : "AMERICAN DESIGNERS"}</h2>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                {
+                  name: "Calvin Klein",
+                  era: "1968–present",
+                  desc: isRo ? "Minimalismul american ca lux. Klein a redefinit lenjeria, parfumul și denimul prin campanii provocatoare care au plasat SUA pe harta haute couture." : "American minimalism as luxury. Klein redefined underwear, fragrance, and denim through provocative campaigns that put the US on the haute couture map.",
+                },
+                {
+                  name: "Donna Karan",
+                  era: "DKNY, 1989",
+                  desc: isRo ? "7 pièces essentielles pentru femeia modernă — Donna Karan a inventat garderoba de putere și a creat DKNY ca primul brand aspirațional new-yorkez global." : "Seven easy pieces for the modern woman — Donna Karan invented the power wardrobe and created DKNY as the first globally aspirational New York City brand.",
+                },
+                {
+                  name: "Marc Jacobs",
+                  era: "1984–present",
+                  desc: isRo ? "Directorul creativ care a pus Louis Vuitton pe harta streetwear-ului. Colecția sa grunge (1992) a schimbat ce înseamnă luxul democratic la nivel global." : "The creative director who put Louis Vuitton on the streetwear map. His grunge collection (1992) permanently changed what democratic luxury means worldwide.",
+                },
+                {
+                  name: "Tom Ford",
+                  era: "Gucci 1994, own house 2005",
+                  desc: isRo ? "Ford a salvat Gucci de la faliment prin reinventarea sexualității ca instrument de branding. Propriul său brand este sinonimul luxului american modern." : "Ford saved Gucci from bankruptcy by reinventing sexuality as a branding tool. His own house is now synonymous with modern American luxury.",
+                },
+              ].map((d, i) => (
+                <div key={i} className="bg-white/40 backdrop-blur-md rounded-2xl p-8 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">
+                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8391B] mb-3">{d.name}</p>
+                  <p className="font-macro-display text-2xl font-black text-[#0C0907] tracking-tight mb-1">{d.era}</p>
+                  <div className="w-8 h-px bg-[#E8391B]/40 my-4" />
+                  <p className="font-editorial text-sm text-[#0C0907]/70 leading-relaxed">{d.desc}</p>
                 </div>
               ))}
             </div>
