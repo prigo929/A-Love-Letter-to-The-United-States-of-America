@@ -66,6 +66,8 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </div>
 </div>
 
+<br /><br /><br />
+
 <div align="center">
   <img src="web/IMAGES/Cities/Golden Gate Bridge.jpg" width="600" alt="Golden Gate Bridge: Pacific Gateway" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
   <br /><br />
@@ -75,6 +77,8 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
     The majestic orange span of the Golden Gate Bridge in San Francisco, California—a legendary engineering masterpiece demonstrating the ambition and connectivity of American infrastructure.
   </div>
 </div>
+
+<br /><br /><br />
 
 <div align="center">
   <img src="web/IMAGES/Technology/Apple Headquarters.jpg" width="600" alt="Silicon Valley Innovation Hub: Apple Park" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
@@ -86,6 +90,8 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </div>
 </div>
 
+<br /><br /><br />
+
 <div align="center">
   <img src="web/IMAGES/Cities/New York Skyline at sunset.jpg" width="600" alt="Capital of Capital: Manhattan NYC at Sunset" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
   <br /><br />
@@ -95,6 +101,8 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
     The iconic skyline of Manhattan glowing at sunset, representing the unmatched liquidity, trade velocity, and absolute depth of the United States capital markets.
   </div>
 </div>
+
+<br /><br /><br />
 
 <div align="center">
   <img src="web/IMAGES/Infrastructure/I-110 and I-115 Interchange Los Angeles.jpg" width="600" alt="Arteries of Commerce: Los Angeles Highway Interchange" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
@@ -106,6 +114,8 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </div>
 </div>
 
+<br /><br /><br />
+
 <div align="center">
   <img src="web/IMAGES/Landscapes/Grand Canyon National Park.jpg" width="600" alt="Grand Canyon: The Monument of Deep Time" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
   <br /><br />
@@ -115,6 +125,8 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
     The breathtaking expanse of the Grand Canyon in Arizona, showcasing the vast, untouched geological heritage and natural scale of the American West.
   </div>
 </div>
+
+<br /><br /><br />
 
 <div align="center">
   <img src="web/IMAGES/Technology/Commercial Space & SpaceX/SpaceX launch.jpg" width="600" alt="SpaceX Launch: Conquering the Orbital Commons" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
@@ -126,6 +138,8 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </div>
 </div>
 
+<br /><br /><br />
+
 <div align="center">
   <img src="web/IMAGES/Military/Navy/us-navy-gerald-ford-carrier.jpg" width="600" alt="USS Gerald R. Ford Strike Group: Shield of Liberty" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
   <br /><br />
@@ -136,6 +150,8 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </div>
 </div>
 
+<br /><br /><br />
+
 <div align="center">
   <img src="web/IMAGES/Landscapes/Mount Denali National Park.jpg" width="600" alt="Denali: Apex of North America" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
   <br /><br />
@@ -145,6 +161,8 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
     Mount Denali rising majestically above the Alaskan wilderness, symbolizing the raw, untamed grandeur of America's northern frontier and its massive public conservation networks.
   </div>
 </div>
+
+<br /><br /><br />
 
 <div align="center">
   <img src="web/IMAGES/US Buildings/US Capitol.jpg" width="600" alt="US Capitol Dome: Sanctuary of the Republic" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
