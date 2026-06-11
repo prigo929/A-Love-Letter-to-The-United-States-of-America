@@ -345,6 +345,29 @@ export default async function FoodAndDrinksPage() {
             </div>
           </div>
 
+          {/* Vintage Food & Drink Ads */}
+          <div className="mb-20">
+            <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-2">{isRo ? "ARHIVA RECLAMELOR VINTAGE" : "VINTAGE AD ARCHIVE"}</p>
+            <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-8">{isRo ? "GUSTUL TRECUTULUI" : "THE TASTE OF HISTORY"}</h2>
+            <div className="grid grid-cols-4 md:grid-cols-6 gap-3">
+              {[
+                { src: SITE_IMAGES.culture.vaultChiquita1968, label: "Chiquita · 1968" },
+                { src: SITE_IMAGES.culture.vaultMinuteMaid1979, label: "Minute Maid · 1979" },
+                { src: SITE_IMAGES.culture.vaultSprite1966, label: "Sprite · 1966" },
+                { src: SITE_IMAGES.culture.vaultMagicChef1950, label: "Magic Chef · 1950" },
+                { src: SITE_IMAGES.culture.vaultGourmetProduce, label: "Gourmet · 1969" },
+                { src: SITE_IMAGES.culture.burgerFries, label: isRo ? "Burger & Cartofi Prăjiți" : "Burger & Fries" },
+              ].map((ad, i) => (
+                <div key={i} className="group relative aspect-3/4 rounded-xl overflow-hidden border border-white/5 hover:border-glory-gold/40 transition-all duration-300">
+                  <Image src={ad.src} alt={ad.label} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="16vw" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2">
+                    <span className="text-[9px] font-body text-white leading-tight">{ad.label}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="flex items-center justify-between border-t border-white/10 pt-12 font-body">
             <a href="/culture/companies-brands" className="text-xs uppercase tracking-widest text-[#F5EDD8]/50 hover:text-white transition-colors">{content.backLink}</a>
             <a href="/culture/music-genres" className="text-xs uppercase tracking-widest text-glory-gold hover:text-white transition-colors">{content.nextLink}</a>

@@ -39,7 +39,9 @@ export default async function MusicGenresPage() {
       name: isRo ? "Jazz" : "Jazz",
       origin: "New Orleans, 1900s",
       image: SITE_IMAGES.culture.jazzClub,
+      image2: SITE_IMAGES.culture.louisArmstrong,
       alt: "Live Jazz Band performing on stage with neon sign",
+      alt2: "Louis Armstrong portrait",
       desc: isRo
         ? "Sinteza improvizată a muzicii africane, ritmurilor caraibiene și armoniilor europene. Primul mare export cultural american — Louis Armstrong a dus jazz-ul în toată lumea."
         : "The improvised synthesis of African music, Caribbean rhythms, and European harmonics. The first great American cultural export — Louis Armstrong carried jazz across the world.",
@@ -139,6 +141,13 @@ export default async function MusicGenresPage() {
       alt: "Madonna performing during the 1987 Who's That Girl World Tour",
       desc: isRo ? "Regina Pop-ului a vândut 300 de milioane de albume și a redefinit în mod repetat muzica pop, moda și spectacolul vizual de-a lungul a patru decenii." : "The Queen of Pop sold 300 million albums and repeatedly reinvented pop music, fashion, and visual spectacle across four decades.",
     },
+    {
+      name: "Mariah Carey",
+      era: "1990–present · World Tour",
+      image: SITE_IMAGES.culture.mariahCarey2019,
+      alt: "Mariah Carey hitting whistle note during Caution World Tour 2019",
+      desc: isRo ? "Tur mondial de forță — Mariah Carey rămâne singura artistă de pop capabilă să atingă note whistle live pe scenă la cel mai înalt nivel." : "A tour de force — Mariah Carey remains the only pop artist capable of live whistle notes at this caliber on any stage, on any night.",
+    },
   ];
 
   const modernStars = [
@@ -148,6 +157,13 @@ export default async function MusicGenresPage() {
     { name: "Luke Combs", image: SITE_IMAGES.culture.lukeCombs2021, alt: "Luke Combs 2021 tour" },
     { name: "Imagine Dragons", image: SITE_IMAGES.culture.imagineDragons2017, alt: "Imagine Dragons Mohegan Sun 2017" },
     { name: "Maroon 5", image: SITE_IMAGES.culture.maroon52020, alt: "Maroon 5 lineup 2020" },
+    { name: "Pitbull", image: SITE_IMAGES.culture.pitbull2011, alt: "Pitbull performing in 2011" },
+  ];
+
+  const artistArchive = [
+    { src: SITE_IMAGES.culture.frankSinatraPalJoey, name: "Frank Sinatra", note: isRo ? "Pal Joey, 1957" : "Pal Joey, 1957" },
+    { src: SITE_IMAGES.culture.michaelJacksonWithBush, name: "Michael Jackson", note: isRo ? "Cu Președintele Bush, 1990" : "With President Bush, 1990" },
+    { src: SITE_IMAGES.culture.guitarFlat, name: isRo ? "Chitara Americană" : "The American Guitar", note: isRo ? "Instrumentul exprimării" : "Instrument of expression" },
   ];
 
   const albums = [
@@ -267,8 +283,8 @@ export default async function MusicGenresPage() {
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {popIcons.map((icon, i) => (
                 <div key={i} className="group bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">
-                  <div className="relative aspect-4/3 overflow-hidden">
-                    <Image src={icon.image} alt={icon.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 100vw, 33vw" />
+                  <div className="relative aspect-3/4 overflow-hidden">
+                    <Image src={icon.image} alt={icon.alt} fill className="object-cover object-top group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 50vw, 33vw" />
                   </div>
                   <div className="p-6">
                     <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8391B] mb-1">{icon.era}</p>
@@ -344,13 +360,30 @@ export default async function MusicGenresPage() {
           <div className="mb-20">
             <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-2">{isRo ? "GENERAȚIA ACTUALĂ" : "CURRENT GENERATION"}</p>
             <h2 className="font-macro-display text-4xl md:text-5xl font-black text-white mb-10">{isRo ? "STARURILE MODERNE" : "MODERN STARS"}</h2>
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+            <div className="grid grid-cols-4 md:grid-cols-7 gap-3">
               {modernStars.map((star, i) => (
                 <div key={i} className="group relative aspect-square rounded-2xl overflow-hidden">
                   <Image src={star.image} alt={star.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 33vw, 16vw" />
                   <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <p className="font-body text-[10px] font-bold text-white/90 leading-tight">{star.name}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Artist Archive */}
+          <div className="mb-20">
+            <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-2">{isRo ? "ARHIVA ARTIȘTILOR" : "ARTIST ARCHIVE"}</p>
+            <div className="grid grid-cols-3 gap-3 mt-6">
+              {artistArchive.map((item, i) => (
+                <div key={i} className="group relative aspect-4/3 rounded-2xl overflow-hidden">
+                  <Image src={item.src} alt={item.name} fill className="object-cover object-top group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 33vw, 25vw" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/75 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="font-macro-display text-sm font-black text-white leading-tight">{item.name}</p>
+                    <p className="font-body text-[10px] font-bold text-glory-gold uppercase tracking-wider mt-1">{item.note}</p>
                   </div>
                 </div>
               ))}

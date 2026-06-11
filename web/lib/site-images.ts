@@ -273,6 +273,7 @@ import musicLukeCombs2021 from "@/IMAGES/Culture/Music/luke combs-2021tour.jpg";
 import musicImagineDragons2017 from "@/IMAGES/Culture/Music/Imagine Dragons at Mohegan Sun in 2017. Left to right, Wayne Sermon, Dan Reynolds, former drummer Daniel Platzman, and Ben McKee.jpg";
 import musicMaroon52020 from "@/IMAGES/Culture/Music/Lineup of Maroon 5 since 2020. Clockwise from top left, Adam Levine, Jesse Carmichael, James Valentine, Matt Flynn, PJ Morton, Sam Farrar.jpg";
 import musicMadonna1987 from "@/IMAGES/Culture/Music/Madonna performing during the 1987 Who's That Girl World Tour.jpg";
+import musicPitbull2011 from "@/IMAGES/Culture/Music/Pitbull performing in 2011.jpg";
 
 // Food — new images
 import foodBlt from "@/IMAGES/Culture/Food/BLT Sandwich.jpg";
@@ -647,6 +648,7 @@ export const SITE_IMAGES = {
     imagineDragons2017: musicImagineDragons2017.src,
     maroon52020: musicMaroon52020.src,
     madonna1987: musicMadonna1987.src,
+    pitbull2011: musicPitbull2011.src,
 
     // Food — catalogue
     foodBlt: foodBlt.src,

@@ -74,12 +74,45 @@ export default async function CultureEntertainmentPage() {
     { src: SITE_IMAGES.culture.vaultPulpFiction, title: "Pulp Fiction", sub: "1994" },
     { src: SITE_IMAGES.culture.vaultJurassicPark, title: "Jurassic Park", sub: "1993" },
     { src: SITE_IMAGES.culture.vaultInterstellar, title: "Interstellar", sub: "2014" },
+    { src: SITE_IMAGES.culture.vaultBladeRunner, title: "Blade Runner", sub: "1982" },
+    { src: SITE_IMAGES.culture.vaultGoodfellas, title: "Goodfellas", sub: "1990" },
+    { src: SITE_IMAGES.culture.vaultAvengers, title: "Avengers: Endgame", sub: "2019" },
+    { src: SITE_IMAGES.culture.vaultSavingPrivateRyan, title: "Saving Private Ryan", sub: "1998" },
+    { src: SITE_IMAGES.culture.vaultDarkKnight, title: "The Dark Knight", sub: "2008" },
+    { src: SITE_IMAGES.culture.vaultMatrix, title: "The Matrix", sub: "1999" },
+    { src: SITE_IMAGES.culture.vaultTitanic, title: "Titanic", sub: "1997" },
     { src: SITE_IMAGES.culture.vaultMilesDavis, title: "Miles Davis", sub: "Kind of Blue" },
     { src: SITE_IMAGES.culture.vaultMichaelJackson, title: "Michael Jackson", sub: "Thriller" },
     { src: SITE_IMAGES.culture.vaultNirvana, title: "Nirvana", sub: "Nevermind" },
     { src: SITE_IMAGES.culture.vaultJohnnyCash, title: "Johnny Cash", sub: "Folsom Prison" },
     { src: SITE_IMAGES.culture.vault50Cent, title: "50 Cent", sub: "Get Rich..." },
     { src: SITE_IMAGES.culture.vaultEminem, title: "Eminem", sub: "MMLP" },
+  ];
+
+  const americanIcons = [
+    { src: SITE_IMAGES.culture.waltDisney, name: "Walt Disney", note: isRo ? "Creator al Imperiului Divertismentului" : "Creator of the Entertainment Empire" },
+    { src: SITE_IMAGES.culture.marilynMonroe, name: "Marilyn Monroe", note: isRo ? "Icoana Hollywood-ului de Aur" : "Golden Hollywood Icon" },
+    { src: SITE_IMAGES.culture.markTwain, name: "Mark Twain", note: isRo ? "Vocea Americii Literare" : "The Voice of Literary America" },
+    { src: SITE_IMAGES.culture.martinLutherKing, name: "Martin Luther King Jr.", note: isRo ? "«I Have a Dream» · 1963" : "\"I Have a Dream\" · 1963" },
+    { src: SITE_IMAGES.culture.arnoldSchwarzenegger, name: "Arnold Schwarzenegger", note: isRo ? "Terminator · Guvernator · Legendă" : "Terminator · Governor · Legend" },
+    { src: SITE_IMAGES.culture.elvisPresley, name: "Elvis Presley", note: isRo ? "Regele Rock and Roll-ului" : "The King of Rock and Roll" },
+  ];
+
+  const magazineVault = [
+    { src: SITE_IMAGES.culture.vaultLifeMarilyn, title: "LIFE", sub: "Marilyn Monroe · 1953" },
+    { src: SITE_IMAGES.culture.vaultLifeDisney, title: "LIFE", sub: "Disney World · 1971" },
+    { src: SITE_IMAGES.culture.vaultMarilynAvantGarde, title: "Avant Garde", sub: "Marilyn Monroe · 1968" },
+    { src: SITE_IMAGES.culture.vaultTvGuideTwinPeaks, title: "TV Guide", sub: "Twin Peaks · 1990" },
+    { src: SITE_IMAGES.culture.vaultTime911, title: "TIME", sub: "9/11 · 2001" },
+    { src: SITE_IMAGES.culture.vaultFortune1931, title: "Fortune", sub: "Aviation · 1931" },
+  ];
+
+  const culturalEras = [
+    { src: SITE_IMAGES.culture.era1920s, label: isRo ? "Anii 1920 · Jazz Age" : "1920s · Jazz Age" },
+    { src: SITE_IMAGES.culture.era1950s, label: isRo ? "Anii 1950 · Hollywood de Aur" : "1950s · Golden Hollywood" },
+    { src: SITE_IMAGES.culture.era1970s, label: isRo ? "Anii 1970 · Fast Food & Rock" : "1970s · Fast Food & Rock" },
+    { src: SITE_IMAGES.culture.era1990s, label: isRo ? "Anii 1990 · Era Internetului" : "1990s · The Internet Age" },
+    { src: SITE_IMAGES.culture.era2020s, label: isRo ? "Anii 2020 · AI & Streaming" : "2020s · AI & Streaming" },
   ];
 
   return (
@@ -229,6 +262,66 @@ export default async function CultureEntertainmentPage() {
                   <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
                     <span className="font-body text-xs font-bold text-white leading-tight">{v.title}</span>
                     <span className="font-body text-[10px] text-glory-gold mt-1">{v.sub}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* American Icons */}
+          <section className="mb-24">
+            <p className="font-body text-xs uppercase tracking-[0.25em] text-glory-gold text-center mb-4 font-semibold">
+              {isRo ? "AMERICANII CARE AU SCHIMBAT LUMEA" : "AMERICANS WHO CHANGED THE WORLD"}
+            </p>
+            <h2 className="font-macro-display text-3xl font-bold text-center mb-10 text-white uppercase tracking-tight">
+              {isRo ? "Iconele Americane" : "American Icons"}
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {americanIcons.map((icon, i) => (
+                <div key={i} className="group relative aspect-3/4 rounded-2xl overflow-hidden">
+                  <Image src={icon.src} alt={icon.name} fill className="object-cover object-top group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 50vw, 16vw" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/85 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <p className="font-macro-display text-xs font-black text-white leading-tight">{icon.name}</p>
+                    <p className="font-body text-[9px] font-bold text-glory-gold uppercase tracking-wider mt-0.5">{icon.note}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Magazine Archive */}
+          <section className="mb-24">
+            <p className="font-body text-xs uppercase tracking-[0.25em] text-glory-gold text-center mb-4 font-semibold">
+              {isRo ? "ARHIVA REVISTELOR ICONICE" : "ICONIC MAGAZINE ARCHIVE"}
+            </p>
+            <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+              {magazineVault.map((m, i) => (
+                <div key={i} className="relative aspect-3/4 overflow-hidden rounded-xl border border-white/5 group hover:border-glory-gold/40 transition-all duration-300">
+                  <Image src={m.src} alt={m.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="16vw" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2">
+                    <span className="text-[9px] font-body text-white leading-tight">{m.title} · {m.sub}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Cultural Eras */}
+          <section className="mb-24">
+            <p className="font-body text-xs uppercase tracking-[0.25em] text-glory-gold text-center mb-4 font-semibold">
+              {isRo ? "EVOLUȚIA CULTURALĂ" : "CULTURAL EVOLUTION"}
+            </p>
+            <h2 className="font-macro-display text-3xl font-bold text-center mb-10 text-white uppercase tracking-tight">
+              {isRo ? "Erele Americii" : "The American Eras"}
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+              {culturalEras.map((era, i) => (
+                <div key={i} className="group relative aspect-square rounded-2xl overflow-hidden">
+                  <Image src={era.src} alt={era.label} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 50vw, 20vw" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/75 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <p className="font-body text-[10px] font-bold text-white leading-tight">{era.label}</p>
                   </div>
                 </div>
               ))}

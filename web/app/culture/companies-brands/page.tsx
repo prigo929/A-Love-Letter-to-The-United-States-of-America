@@ -220,6 +220,31 @@ export default async function CultureCompaniesBrandsPage() {
             ))}
           </div>
 
+          {/* Vintage Ad Archive */}
+          <div className="mb-20">
+            <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-2">{isRo ? "ARHIVA RECLAMELOR VINTAGE" : "VINTAGE AD ARCHIVE"}</p>
+            <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-8">{isRo ? "MĂRCI ÎN TIMP" : "BRANDS THROUGH TIME"}</h2>
+            <div className="grid grid-cols-4 md:grid-cols-8 gap-3">
+              {[
+                { src: SITE_IMAGES.culture.vaultCocaCola1971, label: "Coca-Cola · 1971" },
+                { src: SITE_IMAGES.culture.vaultCocaCola1988, label: "Coca-Cola · 1988" },
+                { src: SITE_IMAGES.culture.vaultCocaCola1989, label: "Coca-Cola · 1989" },
+                { src: SITE_IMAGES.culture.vaultKfc1968, label: "KFC · 1968" },
+                { src: SITE_IMAGES.culture.vaultFord1987, label: "Ford · 1987" },
+                { src: SITE_IMAGES.culture.vaultWsj1988, label: "WSJ · 1988" },
+                { src: SITE_IMAGES.culture.vaultGeneralFoods1982, label: "General Foods · 1982" },
+                { src: SITE_IMAGES.culture.vaultUniden1987, label: "Uniden · 1987" },
+              ].map((ad, i) => (
+                <div key={i} className="group relative aspect-3/4 rounded-xl overflow-hidden border border-white/5 hover:border-glory-gold/40 transition-all duration-300">
+                  <Image src={ad.src} alt={ad.label} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="12vw" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2">
+                    <span className="text-[8px] font-body text-white leading-tight">{ad.label}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="relative rounded-3xl h-72 overflow-hidden flex items-center justify-center mb-20">
             <Image src={SITE_IMAGES.culture.route66} alt="Route 66 Sunrise Highway" fill className="object-cover" sizes="100vw" />
             <div className="absolute inset-0 bg-black/60" />
