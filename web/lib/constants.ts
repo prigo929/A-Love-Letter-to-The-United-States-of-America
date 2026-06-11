@@ -382,22 +382,22 @@ export const NAV_SECTIONS = [
       {
         label: "NATO Alliance",
         href: "/global-leadership/nato",
-        description: "Defender of the free world",
+        description: "Leading 32 nations in collective defense",
       },
       {
-        label: "Dollar as Reserve",
-        href: "/global-leadership/dollar-as-reserve",
-        description: "60%+ of global reserves",
-      },
-      {
-        label: "Soft Power",
-        href: "/global-leadership/soft-power",
-        description: "Hollywood to Harvard",
-      },
-      {
-        label: "UN & Institutions",
+        label: "UN & World Order",
         href: "/global-leadership/un",
-        description: "Founder of the postwar order",
+        description: "Founder of the postwar multilateral order",
+      },
+      {
+        label: "Pax Americana",
+        href: "/global-leadership/pax-americana",
+        description: "750+ bases, 11 carrier groups, global reach",
+      },
+      {
+        label: "Foreign Policy",
+        href: "/global-leadership/foreign-policy",
+        description: "Monroe Doctrine to modern diplomacy",
       },
     ],
   },
@@ -833,19 +833,19 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
     items: {
       "/global-leadership/nato": {
         label: "Alianța NATO",
-        description: "Apărătorul lumii libere",
-      },
-      "/global-leadership/dollar-as-reserve": {
-        label: "Dolarul ca Rezervă",
-        description: "Peste 60% din rezervele globale",
-      },
-      "/global-leadership/soft-power": {
-        label: "Soft Power",
-        description: "De la Hollywood la Harvard",
+        description: "Conducând 32 de națiuni în apărarea colectivă",
       },
       "/global-leadership/un": {
-        label: "ONU și Instituțiile",
-        description: "Fondatorul ordinii postbelice",
+        label: "ONU și Ordinea Mondială",
+        description: "Fondatorul ordinii multilaterale postbelice",
+      },
+      "/global-leadership/pax-americana": {
+        label: "Pax Americana",
+        description: "750+ baze, 11 grupuri de portavioane",
+      },
+      "/global-leadership/foreign-policy": {
+        label: "Politică Externă",
+        description: "Doctrina Monroe până la diplomația modernă",
       },
     },
   },
