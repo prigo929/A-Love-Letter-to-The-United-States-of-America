@@ -50,39 +50,39 @@ interface CloudCopy {
 const copyEn: CloudCopy = {
   breadcrumbParent: "Innovation & Technology",
   breadcrumbPage: "Cloud Computing",
-  heroTagline: "GLOBAL DIGITAL SUBSTRATE",
-  heroTitle: "Powering the Global Cloud",
-  heroSubtitle: "How American software engineering and capital created the utility computing paradigm that runs today's internet.",
-  thesisTitle: "The Infrastructure of the Invisible Web",
-  thesisParagraph1: "Cloud computing shifted the world from physical servers to elastic, on-demand utility infrastructure. Guided by innovations in virtualization and the creation of Amazon Web Services (AWS) in 2006, followed by Google Cloud and Microsoft Azure, American firms created the platforms that allow startups, multinationals, and governments to scale instantly.",
-  thesisParagraph2: "Operating this digital universe requires a massive physical footprint. Today, the core databases, machine learning systems, and streaming pipelines of the global economy reside on physical infrastructure designed, financed, and operated by American technology leaders.",
+  heroTagline: "THE ELASTIC WEB",
+  heroTitle: "The Global Cloud",
+  heroSubtitle: "How Silicon Valley engineering and hyper-scale capital created the on-demand utility infrastructure running the modern digital world.",
+  thesisTitle: "The Utility Engine of Civilization",
+  thesisParagraph1: "The creation of the cloud is the story of turning raw computer hardware into an on-demand public utility. In 2002, an internal mandate at Amazon declared that all teams must expose their data and functionality through service interfaces, preparing the architectural groundwork. In 2006, Amazon Web Services launched S3 and EC2, followed closely by Google Cloud and Microsoft Azure, permanently shifting the global economy from physical server purchase cycles to elastic rental infrastructure.",
+  thesisParagraph2: "This transformation decoupled software scaling from physical limits. Startups that once required millions of dollars in capital expenditure to buy server hardware could now launch for dollars a day, while multi-national corporations and sovereign states could dynamically scale their computations to meet real-time spikes. The modern internet is not a decentralized network of independent machines; it is a virtualization layer running on hyper-scale infrastructure engineered in America.",
   milestonesTitle: "Key Pillars of the Cloud",
   milestones: [
     {
       title: "Virtualization",
       date: "Late 1990s",
-      details: "Pioneered by VMware and other US firms, virtualization allowed a single physical server to run multiple operating systems, dramatically improving hardware efficiency."
+      details: "Pioneered by VMware, virtualization decoupled software from physical hardware. By introducing the hypervisor, it allowed single physical servers to run dozens of virtual machines simultaneously, increasing CPU utilization rates from a wasteful 5-15% to over 80%."
     },
     {
-      title: "The Launch of AWS",
-      date: "2006",
-      details: "Amazon launched S3 (storage) and EC2 (computing), establishing the modern public cloud model and letting companies rent infrastructure instead of buying it."
+      title: "The AWS API Mandate",
+      date: "2002 - 2006",
+      details: "Jeff Bezos' famous 2002 internal directive mandated that all software modules communicate via APIs, preparing the architecture for the public launch of AWS in 2006. This turned computing, database storage, and bandwidth into instantly rentable utilities."
     },
     {
-      title: "The SaaS Economy",
+      title: "The SaaS Revolution",
       date: "2010s",
-      details: "Companies like Salesforce, Adobe, and ServiceNow shifted software from desktop installations to cloud subscriptions, creating the multi-trillion dollar Software-as-a-Service industry."
+      details: "The cloud enabled the Software-as-a-Service model. Led by Salesforce, Adobe, and ServiceNow, software shifted from physical CD-ROMs and desktop licenses to dynamic web subscriptions, creating a multi-trillion dollar market and accelerating enterprise productivity."
     },
     {
-      title: "AI Training & Hyper-scale",
+      title: "AI Superclusters",
       date: "2020s",
-      details: "Modern deep learning models and large language models require vast hyper-scale data center arrays operating hundreds of thousands of specialized GPUs in parallel."
+      details: "The training of modern generative AI models shifted the cloud from individual virtual servers to massive, unified supercomputers. Hyper-scalers now deploy tens of thousands of GPUs connected by high-speed NVLink fabrics inside single custom-built facilities."
     }
   ],
-  centersLabel: "THE PHYSICAL BACKBONE",
-  centersTitle: "The Digital Backbone: America's Data Center Dominance",
-  centersParagraph1: "The United States accounts for 43% of all data centers globally, with over 5,400 facilities — more than the next ten countries combined (with Germany at a distant second with 529 and the UK at 523). In terms of raw power capacity, the US represents 44% of the global total, with 53.7 gigawatts of installed capacity compared to the entire European Union's 11.9 gigawatts.",
-  centersParagraph2: "The practical consequence is that the physical substrate of global digital civilization — cloud computing, streaming, AI training, and financial transactions — runs on American hardware in American buildings. Northern Virginia alone is the world's largest concentration, hosting more data capacity than most European nations in their entirety, representing a modern form of infrastructure dominance with no historical precedent.",
+  centersLabel: "HYPER-SCALE HEGEMONY",
+  centersTitle: "The Physical Substrate: America's Data Center Dominance",
+  centersParagraph1: "Behind the ephemeral metaphor of the 'cloud' lies an immense physical landscape of concrete and power lines. The United States houses over 5,400 operational data centers, representing 43% of the global total—more than the next ten nations combined. In terms of raw electrical grid capacity, the US represents 53.7 gigawatts of installed data center capacity, eclipsing the entire European Union's 11.9 gigawatts by more than four times.",
+  centersParagraph2: "This density is anchored in regional hubs like Northern Virginia (the 'Data Center Alley' of Loudoun County), which processes an estimated 70% of the world's daily internet traffic. Because global fiber optics, undersea cables, and routing protocols are physically anchored in these American corridors, the data streams of foreign governments, multinational corporations, and billions of individuals are routed through and stored on infrastructure managed under American jurisdictional and technical standards.",
   centersSource: "Visual Capitalist / Data Center Map 2024",
   centersSourceUrl: "https://www.visualcapitalist.com/data-center-capacity-around-the-world/",
   oracleDescription: "Ask the AI Oracle about AWS launch history, virtualization technologies, data center power capacity, or SaaS economic growth."
@@ -91,39 +91,39 @@ const copyEn: CloudCopy = {
 const copyRo: CloudCopy = {
   breadcrumbParent: "Inovație și Tehnologie",
   breadcrumbPage: "Cloud Computing",
-  heroTagline: "SUBSTRATUL DIGITAL GLOBAL",
-  heroTitle: "Alimentarea Cloud-ului Global",
-  heroSubtitle: "Cum ingineria software și capitalul american au creat paradigma rețelelor elastice pe care rulează internetul de astăzi.",
-  thesisTitle: "Infrastructura Web-ului Invizibil",
-  thesisParagraph1: "Cloud computing-ul a mutat lumea de la serverele fizice la o infrastructură elastică, la cerere. Ghidați de inovații în virtualizare și lansarea Amazon Web Services (AWS) în 2006, urmați de Google Cloud și Microsoft Azure, companiile americane au creat platformele care permit startup-urilor, corporațiilor și guvernelor să se scaleze instantaneu.",
-  thesisParagraph2: "Operarea acestui univers digital necesită o amprentă fizică masivă. Astăzi, bazele de date, sistemele de învățare automată și fluxurile de streaming ale economiei globale rezidă pe o infrastructură fizică concepută, finanțată și operată de liderii tehnologici americani.",
+  heroTagline: "WEB-UL ELASTIC",
+  heroTitle: "Cloud-ul Global",
+  heroSubtitle: "Cum ingineria din Silicon Valley și capitalul hyper-scale au creat infrastructura de utilitate publică ce rulează lumea digitală modernă.",
+  thesisTitle: "Motorul de Utilitate al Civilizației",
+  thesisParagraph1: "Crearea cloud-ului reprezintă povestea transformării hardware-ului brut într-o utilitate publică la cerere. În 2002, o directivă internă la Amazon a decretat că toate echipele trebuie să își expună datele și funcționalitățile prin interfețe de servicii (API), pregătind terenul arhitectural. În 2006, Amazon Web Services a lansat S3 și EC2, urmat îndeaproape de Google Cloud și Microsoft Azure, mutând definitiv economia globală de la ciclurile de achiziție de servere fizice la închirierea de infrastructură elastică.",
+  thesisParagraph2: "Această transformare a decuplat scalarea software-ului de limitele fizice. Startup-urile care odată aveau nevoie de milioane de dolari pentru a cumpăra servere fizice puteau acum să se lanseze cu doar câțiva dolari pe zi, în timp ce corporațiile multinaționale și statele suverane își puteau scala dinamic calculele pentru a face față vârfurilor de trafic în timp real. Internetul modern nu este o rețea descentralizată de computere independente, ci un strat de virtualizare ce rulează pe o infrastructură hyper-scale proiectată în America.",
   milestonesTitle: "Pilonii Cheie ai Cloud-ului",
   milestones: [
     {
       title: "Virtualizarea",
       date: "Sfârșitul anilor 1990",
-      details: "Pionierată de VMware și alte firme din SUA, virtualizarea a permis unui singur server fizic să ruleze mai multe sisteme de operare, îmbunătățind dramatic eficiența hardware-ului."
+      details: "Pionierată de VMware, virtualizarea a decuplat software-ul de hardware-ul fizic. Prin introducerea hypervisorului, a permis unui singur server fizic să ruleze zeci de mașini virtuale simultan, crescând ratele de utilizare a CPU de la un nivel ineficient de 5-15% la peste 80%."
     },
     {
-      title: "Lansarea AWS",
-      date: "2006",
-      details: "Amazon a lansat S3 (stocare) și EC2 (calcul), stabilind modelul modern de cloud public și permițând companiilor să închirieze infrastructură în loc să o cumpere."
+      title: "Directiva API și Lansarea AWS",
+      date: "2002 - 2006",
+      details: "Directiva faimoasă a lui Jeff Bezos din 2002 a impus ca toate modulele software să comunice prin API-uri, pregătind structura pentru lansarea publică a AWS în 2006. Aceasta a transformat calculul, stocarea și lățimea de bandă în utilități închiriabile instantaneu."
     },
     {
-      title: "Economia SaaS",
+      title: "Revoluția SaaS",
       date: "Anii 2010",
-      details: "Companii precum Salesforce, Adobe și ServiceNow au mutat software-ul de la instalările locale la abonamente în cloud, creând industria Software-as-a-Service de trilioane de dolari."
+      details: "Cloud-ul a deblocat modelul Software-as-a-Service. Condus de companii precum Salesforce, Adobe și ServiceNow, software-ul a trecut de la CD-ROM-uri fizice și licențe desktop la abonamente web dinamice, creând o piață de trilioane de dolari și accelerând productivitatea."
     },
     {
-      title: "Antrenarea AI și Hyper-scale",
+      title: "Superclusterele de AI",
       date: "Anii 2020",
-      details: "Modelele moderne de deep learning și rețelele neuronale necesită clustere imense de centre de date hyper-scale, operând sute de mii de GPU-uri specializate în paralel."
+      details: "Antrenarea modelelor moderne de AI a transformat cloud-ul din servere virtuale individuale în supercomputere masive, unificate. Furnizorii hyper-scale instalează acum zeci de mii de GPU-uri conectate prin rețele NVLink de mare viteză în cadrul aceleiași facilități personalizate."
     }
   ],
-  centersLabel: "COLOANA VERTEBRALĂ FIZICĂ",
-  centersTitle: "Coloana Vertebrală Digitală: Dominanța SUA în Centre de Date",
-  centersParagraph1: "Statele Unite găzduiesc 43% din toate centrele de date din întreaga lume, cu peste 5.400 de facilități — mai mult decât următoarele zece țări combinate (Germania se află pe locul doi cu 529 de facilități, iar Regatul Unit pe trei cu 523). În ceea ce privește capacitatea brută de alimentare, SUA reprezintă 44% din totalul global, cu 53,7 gigawați de capacitate instalată, comparativ cu doar 11,9 gigawați în întreaga Uniune Europeană.",
-  centersParagraph2: "Consecința practică este că infrastructura fizică a civilizației digitale — cloud computing, streaming, antrenare AI și tranzacții financiare — rulează pe hardware american. Regiunea Northern Virginia găzduiește cea mai mare concentrare de centre de date de pe planetă, având o capacitate mai mare decât majoritatea națiunilor europene la un loc.",
+  centersLabel: "HEGEMONIE HYPER-SCALE",
+  centersTitle: "Substratul Fizic: Dominanța SUA în Centrele de Date",
+  centersParagraph1: "În spatele metaforei efemere a 'cloud-ului' se află un peisaj fizic imens de beton și linii electrice. Statele Unite găzduiesc peste 5.400 de centre de date operaționale, reprezentând 43% din totalul global — mai mult decât următoarele zece națiuni combinate. În ceea ce privește capacitatea rețelei electrice, SUA dețin 53,7 gigawați de capacitate instalată în centre de date, depășind de peste patru ori capacitatea de 11,9 gigawați a întregii Uniuni Europene.",
+  centersParagraph2: "Această densitate este ancorată în hub-uri regionale precum Northern Virginia ('Data Center Alley' din comitatul Loudoun), care procesează aproximativ 70% din traficul zilnic de internet al planetei. Deoarece fibrele optice globale, cablurile submarine și protocoalele de rutare sunt ancorate fizic în aceste coridoare americane, fluxurile de date ale guvernelor străine, corporațiilor și miliardelor de utilizatori sunt rutate și stocate pe o infrastructură gestionată sub standardele tehnice și jurisdicționale ale SUA.",
   centersSource: "Visual Capitalist / Data Center Map 2024",
   centersSourceUrl: "https://www.visualcapitalist.com/data-center-capacity-around-the-world/",
   oracleDescription: "Întreabă Oracolul AI despre istoria lansării AWS, tehnologiile de virtualizare, capacitatea energetică a centrelor de date sau creșterea economică SaaS."
