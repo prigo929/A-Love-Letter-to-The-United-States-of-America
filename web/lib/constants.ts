@@ -493,6 +493,11 @@ export const NAV_SECTIONS = [
     badge: "Facts & Stats",
     items: [
       {
+        label: "US Profile",
+        href: "/united-states",
+        description: "Complete profile: history, geography, government, culture",
+      },
+      {
         label: "Data & Studies",
         href: "/data",
         description: "Fact card database and FAQ archive",
@@ -911,6 +916,10 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
     description: "Fapte empirice, media, hărți interactive și indici ai succesului",
     badge: "Fapte și Statistici",
     items: {
+      "/united-states": {
+        label: "Profilul SUA",
+        description: "Profil complet: istorie, geografie, guvern, cultură",
+      },
       "/data": {
         label: "Date și Studii",
         description: "Baza de date cu fișe de fapte și FAQ",
