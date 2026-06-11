@@ -55,7 +55,7 @@ interface SmartphonesCopy {
 const copyEn: SmartphonesCopy = {
   breadcrumbParent: "Innovation & Technology",
   breadcrumbPage: "Smartphones",
-  heroTagline: "THE MOBILE REVOLUTION",
+  heroTagline: "THE MOBILE\nREVOLUTION",
   heroTitle: "The Device That\nRewired Humanity",
   heroSubtitle:
     "How America invented the modern smartphone and now controls the operating systems running in every pocket on Earth.",
@@ -186,7 +186,7 @@ const copyEn: SmartphonesCopy = {
 const copyRo: SmartphonesCopy = {
   breadcrumbParent: "Inovație și Tehnologie",
   breadcrumbPage: "Smartphone-uri",
-  heroTagline: "REVOLUȚIA MOBILĂ",
+  heroTagline: "REVOLUȚIA\nMOBILĂ",
   heroTitle: "Dispozitivul Care\na Recablat Omenirea",
   heroSubtitle:
     "Cum America a inventat smartphone-ul modern și controlează acum sistemele de operare din fiecare buzunar de pe Pământ.",
@@ -344,20 +344,23 @@ export default async function SmartphonesPage() {
         </div>
 
         {/* Thesis Section */}
-        <section id="intro" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-32">
-          <div className="rounded-3xl border border-white/5 bg-white/2 backdrop-blur-md p-8 md:p-12 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-4 opacity-5">
-              <Smartphone className="h-40 w-40 text-[#E8B923]" />
+        <section id="intro" className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mb-32">
+          <div className="relative pt-10">
+            <div className="absolute top-0 left-0 w-20 h-px bg-[#E8B923]" />
+            <div className="absolute -right-2 top-0 opacity-[0.03] pointer-events-none select-none">
+              <Smartphone className="h-72 w-72 text-white" />
             </div>
-            <h2 className="font-macro-display text-3xl font-bold text-[#E8B923] mb-8">
+            <h2 className="font-macro-display text-3xl md:text-4xl font-bold text-[#E8B923] mb-10 max-w-3xl leading-tight">
               {copy.thesisTitle}
             </h2>
-            <p className="font-macro-body text-white/80 text-lg md:text-xl leading-relaxed mb-6">
-              {copy.thesisParagraph1}
-            </p>
-            <p className="font-macro-body text-white/80 text-lg md:text-xl leading-relaxed">
-              {copy.thesisParagraph2}
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14">
+              <p className="font-macro-body text-white/75 text-lg leading-relaxed">
+                {copy.thesisParagraph1}
+              </p>
+              <p className="font-macro-body text-white/75 text-lg leading-relaxed">
+                {copy.thesisParagraph2}
+              </p>
+            </div>
           </div>
         </section>
 
@@ -409,7 +412,7 @@ export default async function SmartphonesPage() {
         </section>
 
         {/* Milestones */}
-        <section id="milestones" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
+        <section id="milestones" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
           <h2 className="font-macro-display text-4xl font-bold text-center mb-16 text-white uppercase tracking-tight">
             {copy.milestonesTitle}
           </h2>
