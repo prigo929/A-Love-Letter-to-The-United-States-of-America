@@ -124,30 +124,30 @@ const copyEn: AiCopy = {
     {
       name: "OpenAI",
       founded: "2015 | San Francisco, CA",
-      models: "GPT-4o, o1, Sora",
-      role: "Pioneer of Scaling Laws",
-      contribution: "Sparked the global generative AI era. Pioneered LLM reinforcement learning from human feedback (RLHF) and massive reinforcement training models."
+      models: "GPT-5.5, o3, Rosalind",
+      role: "Pioneer of Reasoning at Scale",
+      contribution: "Launched GPT-5.5 (April 2026), the dominant flagship for complex reasoning and enterprise coding. Released GPT-Rosalind, a specialized frontier model for genomics and drug discovery, extending AI reach into the life sciences."
     },
     {
       name: "Anthropic",
       founded: "2021 | San Francisco, CA",
-      models: "Claude 3.5 Sonnet, Claude 3 Opus",
-      role: "Pioneering AI Safety & Reasoning",
-      contribution: "Founded by former OpenAI researchers. Focuses on constitutional AI and safety steering, while consistently matching or exceeding raw reasoning frontiers."
+      models: "Claude Fable 5, Claude Opus 4.8",
+      role: "Safety-First Frontier Reasoning",
+      contribution: "Launched Claude Fable 5 (June 2026), its most capable model for long-horizon agentic work. Introduced the Mythos performance tier for high-stakes enterprise environments, matching the frontier on both raw reasoning and safety alignment."
     },
     {
       name: "Google DeepMind",
       founded: "2010 | Mountain View & London",
-      models: "Gemini 1.5 Pro, AlphaFold 3",
-      role: "Scientific AI & Multi-Modal Leaders",
-      contribution: "Pioneered deep reinforcement learning (AlphaGo). Merged with Google's main AI labs to create Gemini, boasting the world's longest context windows."
+      models: "Gemini 3.5 Pro, Gemini 3.5 Flash, AlphaFold 3",
+      role: "Agentic Orchestration Leaders",
+      contribution: "Deployed Gemini 3.5 Flash (May 2026) for high-speed agentic and coding workflows. Pivoted to an 'Agentic 2.0' strategy emphasizing multi-agent parallel task orchestration with the world's longest production context windows."
     },
     {
       name: "Meta AI",
       founded: "2013 | Menlo Park, CA",
-      models: "Llama 3.1, Llama 3.2, Segment Anything",
-      role: "Open-Source Force Multiplier",
-      contribution: "Democratized state-of-the-art weights globally. By releasing the open-weights Llama series, Meta anchor-biased the global software developer ecosystem."
+      models: "Llama 4 Maverick, Llama 4 Scout, Muse Spark",
+      role: "Open-Weight Force Multiplier",
+      contribution: "Released Llama 4 (Maverick & Scout) — natively multimodal Mixture-of-Experts models enabling sovereign, on-premises AI deployment globally. Llama 4's open weights have been downloaded over 700 million times, anchoring the open-source AI ecosystem."
     }
   ]
 };
@@ -214,30 +214,30 @@ const copyRo: AiCopy = {
     {
       name: "OpenAI",
       founded: "2015 | San Francisco, CA",
-      models: "GPT-4o, o1, Sora",
-      role: "Pionierul Legilor de Scalare",
-      contribution: "A declanșat era AI generative la nivel global. A pionierat învățarea prin întărire din feedback uman (RLHF) și antrenamentul prin învățare consolidată la scară largă."
+      models: "GPT-5.5, o3, Rosalind",
+      role: "Pionierul Raționamentului la Scară",
+      contribution: "A lansat GPT-5.5 (aprilie 2026), cel mai avansat model pentru raționament complex și programare enterprise. A lansat GPT-Rosalind, un model specializat pentru descoperire de medicamente și genomică, extinzând AI în biologia moleculară."
     },
     {
       name: "Anthropic",
       founded: "2021 | San Francisco, CA",
-      models: "Claude 3.5 Sonnet, Claude 3 Opus",
-      role: "Pionierul Siguranței și Raționamentului AI",
-      contribution: "Fondat de foști cercetători OpenAI. Se concentrează pe AI constituțional și direcționare sigură, egalând sau depășind în mod contrastant frontierele raționamentului brut."
+      models: "Claude Fable 5, Claude Opus 4.8",
+      role: "Raționament Frontier Centrat pe Siguranță",
+      contribution: "A lansat Claude Fable 5 (iunie 2026), cel mai capabil model al său pentru sarcini agentice de lungă durată. A introdus nivelul de performanță Mythos pentru medii enterprise de înaltă miză, atingând simultan frontierele de raționament brut și alinierea la siguranță."
     },
     {
       name: "Google DeepMind",
       founded: "2010 | Mountain View & Londra",
-      models: "Gemini 1.5 Pro, AlphaFold 3",
-      role: "Lideri în AI Științific și Multi-Modal",
-      contribution: "A pionierat învățarea profundă prin întărire (AlphaGo). Fuzionat cu laboratoarele principale Google pentru a crea Gemini, oferind cele mai mari ferestre de context din lume."
+      models: "Gemini 3.5 Pro, Gemini 3.5 Flash, AlphaFold 3",
+      role: "Lideri în Orchestrare Agentică",
+      contribution: "A lansat Gemini 3.5 Flash (mai 2026) pentru fluxuri de lucru agentice de mare viteză. A adoptat strategia 'Agentic 2.0' cu accent pe orchestrarea paralelă a sarcinilor de către mai mulți agenți, cu cele mai mari ferestre de context din producție."
     },
     {
       name: "Meta AI",
       founded: "2013 | Menlo Park, CA",
-      models: "Llama 3.1, Llama 3.2, Segment Anything",
-      role: "Multiplicator de Forță Open-Source",
-      contribution: "A democratizat ponderile modelelor de top la nivel global. Prin lansarea seriei Llama cu ponderi deschise, Meta a ancorat ecosistemul global de dezvoltatori de software."
+      models: "Llama 4 Maverick, Llama 4 Scout, Muse Spark",
+      role: "Multiplicator de Forță Open-Weight",
+      contribution: "A lansat Llama 4 (Maverick & Scout) — modele multimodale native cu arhitectură Mixture-of-Experts, care permit implementarea AI suverană, on-premises, la nivel global. Ponderile deschise ale Llama 4 au fost descărcate de peste 700 de milioane de ori."
     }
   ]
 };
@@ -434,9 +434,9 @@ export default async function AiAndTechPage() {
             </div>
 
             {/* Code Body - side by side on desktop, stacked on mobile */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-white/5 font-mono text-[11px] sm:text-xs text-white/70 leading-relaxed overflow-x-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-white/5 font-mono text-[11px] sm:text-xs text-white/70 leading-relaxed">
               {/* CUDA Column */}
-              <div className="p-6 sm:p-8 bg-black/10 flex flex-col">
+              <div className="p-6 sm:p-8 bg-black/10 flex flex-col min-w-0 overflow-hidden">
                 <div className="text-white/40 uppercase tracking-widest text-[10px] font-bold mb-4 flex items-center justify-between">
                   <span>{copy.softwareCudaTitle}</span>
                   <span className="text-[#2ac3de]">CUDA C++</span>
@@ -479,7 +479,7 @@ export default async function AiAndTechPage() {
               </div>
 
               {/* PyTorch Column */}
-              <div className="p-6 sm:p-8 bg-black/20 flex flex-col">
+              <div className="p-6 sm:p-8 bg-black/20 flex flex-col min-w-0 overflow-hidden">
                 <div className="text-white/40 uppercase tracking-widest text-[10px] font-bold mb-4 flex items-center justify-between">
                   <span>{copy.softwarePytorchTitle}</span>
                   <span className="text-[#9ece6a]">Python 3.11</span>

@@ -9,12 +9,12 @@ interface ComputeCalculatorProps {
 
 // Concrete real-world scales for parameters and tokens
 const PARAMS_OPTIONS = [
-  { label: "1B (Edge)", value: 1e9 },
-  { label: "8B (Llama 3)", value: 8e9 },
-  { label: "70B (Llama 3)", value: 70e9 },
-  { label: "175B (GPT-3)", value: 175e9 },
-  { label: "405B (Llama 3.1)", value: 405e9 },
-  { label: "1T (Frontier)", value: 1e12 },
+  { label: "1.5B (Llama 3.2)", value: 1.5e9 },
+  { label: "17B (Llama 4 Maverick)", value: 17e9 },
+  { label: "70B (Llama 3.3)", value: 70e9 },
+  { label: "175B (GPT-3 / o1-mini)", value: 175e9 },
+  { label: "405B (Llama 3.1 / 4)", value: 405e9 },
+  { label: "1.5T (Frontier MoE)", value: 1.5e12 },
 ];
 
 const TOKENS_OPTIONS = [
@@ -23,12 +23,13 @@ const TOKENS_OPTIONS = [
   { label: "1T (Web Corpora)", value: 1e12 },
   { label: "5T (Chinchilla)", value: 5e12 },
   { label: "15T (Llama 3.1)", value: 15e12 },
-  { label: "30T (Next-Gen)", value: 30e12 },
+  { label: "25T (GPT-5 class)", value: 25e12 },
+  { label: "50T (Next-Gen)", value: 50e12 },
 ];
 
 export function ComputeCalculator({ locale }: ComputeCalculatorProps) {
   const isRo = locale === "ro";
-  const [paramIndex, setParamIndex] = useState(1); // Default to 8B
+  const [paramIndex, setParamIndex] = useState(1); // Default to 17B Llama 4 Maverick
   const [tokenIndex, setTokenIndex] = useState(4); // Default to 15T
 
   const N = PARAMS_OPTIONS[paramIndex].value;
@@ -101,12 +102,12 @@ export function ComputeCalculator({ locale }: ComputeCalculatorProps) {
                 className="w-full accent-[#E8B923] bg-white/10 rounded-lg appearance-none h-1 cursor-pointer"
               />
               <div className="flex justify-between text-[10px] text-white/30 font-mono mt-1.5 uppercase">
-                <span>1B</span>
-                <span>8B</span>
+                <span>1.5B</span>
+                <span>17B</span>
                 <span>70B</span>
                 <span>175B</span>
                 <span>405B</span>
-                <span>1T</span>
+                <span>1.5T</span>
               </div>
             </div>
 
@@ -131,7 +132,8 @@ export function ComputeCalculator({ locale }: ComputeCalculatorProps) {
                 <span>1T</span>
                 <span>5T</span>
                 <span>15T</span>
-                <span>30T</span>
+                <span>25T</span>
+                <span>50T</span>
               </div>
             </div>
           </div>
