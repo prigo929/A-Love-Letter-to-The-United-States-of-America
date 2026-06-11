@@ -414,56 +414,47 @@ export default async function AiAndTechPage() {
           </div>
 
           {/* CUDA Ecosystem Stack Diagram */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
-            {/* Left: The software stack ladder */}
-            <div className="flex flex-col gap-2">
+            {/* Left: Stack as a clean divided list */}
+            <div className="divide-y divide-white/5">
               {[
                 {
-                  layer: isRo ? "STRATUL 5 – APLICAȚII" : "LAYER 5 – APPLICATIONS",
-                  title: isRo ? "Produse AI de Consum & Enterprise" : "Consumer & Enterprise AI Products",
+                  layer: isRo ? "STRAT 5" : "LAYER 5",
+                  title: isRo ? "Aplicații" : "Applications",
                   items: ["ChatGPT", "Claude", "Gemini", "GitHub Copilot", "Midjourney"],
                 },
                 {
-                  layer: isRo ? "STRATUL 4 – MODELE FUNDAMENT" : "LAYER 4 – FOUNDATION MODELS",
-                  title: isRo ? "Modele Mari de Limbaj (LLM) & Multimodale" : "Large Language Models (LLMs) & Multimodal",
+                  layer: isRo ? "STRAT 4" : "LAYER 4",
+                  title: isRo ? "Modele Fundament" : "Foundation Models",
                   items: ["GPT-5.5", "Claude Fable 5", "Gemini 3.5", "Llama 4"],
                 },
                 {
-                  layer: isRo ? "STRATUL 3 – CADRE DE LUCRU ML" : "LAYER 3 – ML FRAMEWORKS",
-                  title: isRo ? "Instrumente de Antrenament Rețele Neuronale" : "Neural Network Training Orchestration",
-                  items: ["PyTorch (Meta)", "TensorFlow (Google)", "JAX (Google)", "Triton (OpenAI)"],
+                  layer: isRo ? "STRAT 3" : "LAYER 3",
+                  title: isRo ? "Cadre ML" : "ML Frameworks",
+                  items: ["PyTorch", "TensorFlow", "JAX", "Triton"],
                 },
                 {
-                  layer: isRo ? "STRATUL 2 – BIBLIOTECI CUDA" : "LAYER 2 – CUDA LIBRARIES",
-                  title: isRo ? "Primitive Matematice Accelerate pe GPU" : "GPU-Accelerated Mathematical Primitives",
+                  layer: isRo ? "STRAT 2" : "LAYER 2",
+                  title: isRo ? "Biblioteci CUDA" : "CUDA Libraries",
                   items: ["cuDNN", "cuBLAS", "cuSPARSE", "NCCL"],
                 },
                 {
-                  layer: isRo ? "STRATUL 1 – RUNTIME CUDA" : "LAYER 1 – CUDA RUNTIME",
-                  title: isRo ? "Compute Unified Device Architecture (Nvidia, 2006)" : "Compute Unified Device Architecture (Nvidia, 2006)",
+                  layer: isRo ? "STRAT 1" : "LAYER 1",
+                  title: isRo ? "Runtime CUDA" : "CUDA Runtime",
                   items: ["Kernel Execution", "Memory Management", "Thread Scheduling", "Parallel Grid API"],
                 },
                 {
-                  layer: isRo ? "STRATUL 0 – SILICON NVIDIA" : "LAYER 0 – NVIDIA SILICON",
-                  title: isRo ? "Hardware GPU Tensor Core (H100 / H200 / B200)" : "Tensor Core GPU Hardware (H100 / H200 / B200)",
-                  items: ["80B Transistors", "3,958 TFLOPS", "HBM3 Memory Fabric", "NVLink 4.0"],
+                  layer: isRo ? "STRAT 0" : "LAYER 0",
+                  title: isRo ? "Silicon Nvidia" : "Nvidia Silicon",
+                  items: ["80B Transistors", "3,958 TFLOPS", "HBM3 Memory", "NVLink 4.0"],
                 },
               ].map((l, i) => (
-                <div key={i} className="rounded-2xl border border-white/5 bg-white/1 px-5 py-4 flex items-start gap-4 hover:border-white/10 transition-all duration-300">
-                  <div className="shrink-0 mt-1.5">
-                    <div className="w-2 h-2 rounded-full bg-white/20" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <span className="macro-eyebrow block mb-1">{l.layer}</span>
-                    <p className="macro-body text-white/80 text-sm mb-2 leading-snug">{l.title}</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {l.items.map((item) => (
-                        <span key={item} className="macro-metadata text-white/40 border border-white/8 px-2 py-0.5 rounded bg-white/1">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
+                <div key={i} className="flex items-baseline gap-6 py-4">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-white/25 w-16 shrink-0">{l.layer}</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-body text-white/75 mb-1">{l.title}</p>
+                    <p className="text-xs font-mono text-white/35">{l.items.join(" · ")}</p>
                   </div>
                 </div>
               ))}
@@ -472,56 +463,53 @@ export default async function AiAndTechPage() {
             {/* Right: Lock-in analysis */}
             <div className="flex flex-col gap-10">
               <div>
-                <p className="macro-body text-white/60 leading-relaxed mb-8">
+                <p className="font-macro-body text-white/60 text-base leading-relaxed mb-8">
                   {isRo
                     ? "CUDA nu este doar un instrument — este un ecosistem de ~20 de ani construit în jurul hardware-ului Nvidia. Bibliotecile, cadrele, modelele pre-antrenate și întreg corpul de cunoștințe al inginerilor AI sunt optimizate exclusiv pentru CUDA."
                     : "CUDA is not just a tool — it is a ~20-year ecosystem built around Nvidia hardware. Libraries, frameworks, pre-trained models, and the entire body of ML engineering knowledge are optimized exclusively for CUDA."}
                 </p>
 
-                <span className="macro-eyebrow block mb-5">
+                <p className="text-[10px] font-mono uppercase tracking-widest text-white/30 mb-4">
                   {isRo ? "COMPARAȚIE CU ALTERNATIVELE" : "ALTERNATIVES COMPARISON"}
-                </span>
+                </p>
                 <div className="flex flex-col gap-3">
                   {[
                     { name: "NVIDIA CUDA", share: 92, dominant: true, status: isRo ? "DOMINANT" : "DOMINANT" },
-                    { name: "AMD ROCm", share: 5, dominant: false, status: isRo ? "LIMITAT" : "LIMITED" },
-                    { name: "Intel oneAPI", share: 2, dominant: false, status: isRo ? "EMERGENT" : "EMERGING" },
+                    { name: "AMD ROCm",    share: 5,  dominant: false, status: isRo ? "LIMITAT"  : "LIMITED"  },
+                    { name: "Intel oneAPI",share: 2,  dominant: false, status: isRo ? "EMERGENT" : "EMERGING" },
                     { name: "OpenCL / Other", share: 1, dominant: false, status: isRo ? "MOȘTENIRE" : "LEGACY" },
                   ].map((c) => (
                     <div key={c.name} className="flex items-center gap-3">
-                      <span className="macro-metadata text-white/60 w-28 shrink-0">{c.name}</span>
-                      <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden">
-                        <div
-                          className="h-full rounded-full"
-                          style={{ width: `${c.share}%`, backgroundColor: c.dominant ? "#E8B923" : "rgba(255,255,255,0.18)" }}
-                        />
+                      <span className="text-xs font-mono text-white/55 w-28 shrink-0">{c.name}</span>
+                      <div className="flex-1 h-1 bg-white/5 rounded-full overflow-hidden">
+                        <div className="h-full rounded-full" style={{ width: `${c.share}%`, backgroundColor: c.dominant ? "#E8B923" : "rgba(255,255,255,0.18)" }} />
                       </div>
-                      <span className="macro-metadata text-white/40 w-6">{c.share}%</span>
-                      <span className={`macro-metadata px-1.5 py-0.5 rounded border ${c.dominant ? "text-[#E8B923] border-[#E8B923]/30" : "text-white/30 border-white/10"}`}>
+                      <span className="text-xs font-mono text-white/35 w-6">{c.share}%</span>
+                      <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded border ${c.dominant ? "text-[#E8B923] border-[#E8B923]/30" : "text-white/25 border-white/8"}`}>
                         {c.status}
                       </span>
                     </div>
                   ))}
-                  <p className="macro-metadata text-white/30 mt-2">
+                  <p className="text-[10px] font-body text-white/25 mt-1">
                     {isRo ? "Estimat cotă de piață AI compute, 2025. Sursă: Ark Invest Research." : "Estimated AI compute market share, 2025. Source: Ark Invest Research."}
                   </p>
                 </div>
               </div>
 
               <div className="border-t border-white/5 pt-8">
-                <span className="macro-eyebrow block mb-6">
+                <p className="text-[10px] font-mono uppercase tracking-widest text-white/30 mb-6">
                   {isRo ? "BARIERA DE INTRARE" : "THE MOAT IN NUMBERS"}
-                </span>
+                </p>
                 <div className="grid grid-cols-2 gap-6">
                   {[
                     { value: "~20yr", label: isRo ? "Avans CUDA" : "CUDA head start" },
-                    { value: "4M+", label: isRo ? "Devs în ecosistem" : "CUDA developers" },
+                    { value: "4M+",   label: isRo ? "Devs în ecosistem" : "CUDA developers" },
                     { value: "500K+", label: isRo ? "Modele pe HuggingFace" : "HuggingFace models" },
-                    { value: "$2B+", label: isRo ? "Cunoaștere înglobată" : "Embedded tooling R&D" },
+                    { value: "$2B+",  label: isRo ? "Cunoaștere înglobată" : "Embedded tooling R&D" },
                   ].map((s) => (
                     <div key={s.label}>
                       <span className="font-macro-display text-2xl font-bold text-[#E8B923] block">{s.value}</span>
-                      <span className="macro-metadata text-white/50 block mt-0.5">{s.label}</span>
+                      <span className="text-xs font-body text-white/45 block mt-0.5">{s.label}</span>
                     </div>
                   ))}
                 </div>
