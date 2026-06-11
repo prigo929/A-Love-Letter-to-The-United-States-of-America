@@ -471,18 +471,24 @@ export default async function GamingPage() {
 
               {/* Engine Stack */}
               <div className="bg-white/1 rounded-3xl border border-white/5 p-8 flex flex-col justify-center">
-                <p className="text-[10px] font-mono uppercase tracking-widest text-white/40 font-semibold mb-6">
+                <p className="text-[10px] font-mono uppercase tracking-widest text-white/40 font-semibold mb-8">
                   {isRo ? "ARHITECTURA UNREAL ENGINE 5" : "UNREAL ENGINE 5 ARCHITECTURE"}
                 </p>
-                <div className="divide-y divide-white/5">
+                <div className="grid grid-cols-3 gap-x-6 gap-y-8">
                   {copy.engineLayers.map((l, i) => (
-                    <div key={i} className="flex items-baseline gap-6 py-4">
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-white/25 w-14 shrink-0">
+                    <div key={i}>
+                      <p className="text-[10px] font-mono uppercase tracking-widest text-[#E8B923] mb-3">
                         {l.layer}
-                      </span>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-body text-white/75 mb-1">{l.title}</p>
-                        <p className="text-xs font-mono text-white/35">{l.items.join(" · ")}</p>
+                      </p>
+                      <div className="flex flex-col gap-1.5">
+                        {l.items.map((item) => (
+                          <span
+                            key={item}
+                            className="text-xs font-body text-white/55 bg-white/4 px-2 py-0.5 rounded w-fit"
+                          >
+                            {item}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   ))}
