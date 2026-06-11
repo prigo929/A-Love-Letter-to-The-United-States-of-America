@@ -50,6 +50,3 @@ coverage/
 # Misc
 *.pem
 .eslintcache
-
-# Large Military Video Assets
-web/public/videos/military/fly-navy.mp4
