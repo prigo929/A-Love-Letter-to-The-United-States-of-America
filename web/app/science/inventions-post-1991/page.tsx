@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
+import InventionsDashboard from "@/components/interactive/InventionsDashboard";
+import { INVENTIONS_POST_1991 } from "@/lib/data/inventions-post-1991-data";
 import { 
   Lightbulb, 
   Cpu, 
@@ -312,6 +314,27 @@ export default async function InventionsPost1991Page() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Main Interactive Database Archive */}
+      <section
+        id="archive"
+        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
+              {isRo ? "Arhiva Erei Digitale" : "The Digital Era Archives"}
+            </h2>
+            <p className="font-body text-white/60 text-base">
+              {isRo 
+                ? "Explorează istoria completă a celor 33 de invenții americane de după 1991 din era internetului, smartphone-urilor și AI-ului." 
+                : "Explore the full, detailed history of 33 post-1991 American inventions in the age of the internet, smartphones, and AI."}
+            </p>
+          </div>
+
+          <InventionsDashboard locale={locale} inventions={INVENTIONS_POST_1991} />
         </div>
       </section>
 
