@@ -58,7 +58,7 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
 
 <div align="center">
   <img src="web/IMAGES/USA from Space/USA at night from Space.jpg" width="600" alt="The Shining City on a Hill: USA at night from Space" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
-  <br /><br />
+  <br />
   <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
     <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Shining City on a Hill" ★</strong>
     <br />
@@ -70,7 +70,7 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
 
 <div align="center">
   <img src="web/IMAGES/Cities/Golden Gate Bridge.jpg" width="600" alt="Golden Gate Bridge: Pacific Gateway" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
-  <br /><br />
+  <br />
   <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
     <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "Gateway to the Pacific" ★</strong>
     <br />
@@ -78,11 +78,11 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </div>
 </div>
 
-<br /><br /><br />
+<br />
 
 <div align="center">
   <img src="web/IMAGES/Technology/Apple Headquarters.jpg" width="600" alt="Silicon Valley Innovation Hub: Apple Park" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
-  <br /><br />
+  <br />
   <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
     <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Spaceship Campus" ★</strong>
     <br />
@@ -90,11 +90,11 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </div>
 </div>
 
-<br /><br /><br />
+<br />
 
 <div align="center">
   <img src="web/IMAGES/Cities/New York Skyline at sunset.jpg" width="600" alt="Capital of Capital: Manhattan NYC at Sunset" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
-  <br /><br />
+  <br />
   <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
     <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Capital of Capital" ★</strong>
     <br />
@@ -102,11 +102,11 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </div>
 </div>
 
-<br /><br /><br />
+<br />
 
 <div align="center">
   <img src="web/IMAGES/Infrastructure/I-110 and I-115 Interchange Los Angeles.jpg" width="600" alt="Arteries of Commerce: Los Angeles Highway Interchange" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
-  <br /><br />
+  <br />
   <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
     <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Arteries of Commerce" ★</strong>
     <br />
@@ -114,11 +114,11 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </div>
 </div>
 
-<br /><br /><br />
+<br />
 
 <div align="center">
   <img src="web/IMAGES/Landscapes/Grand Canyon National Park.jpg" width="600" alt="Grand Canyon: The Monument of Deep Time" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
-  <br /><br />
+  <br />
   <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
     <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Monument of Deep Time" ★</strong>
     <br />
@@ -126,11 +126,11 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </div>
 </div>
 
-<br /><br /><br />
+<br />
 
 <div align="center">
   <img src="web/IMAGES/Technology/Commercial Space & SpaceX/SpaceX launch.jpg" width="600" alt="SpaceX Launch: Conquering the Orbital Commons" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
-  <br /><br />
+  <br />
   <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
     <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "Conquering the Orbital Commons" ★</strong>
     <br />
@@ -138,11 +138,11 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </div>
 </div>
 
-<br /><br /><br />
+<br />
 
 <div align="center">
   <img src="web/IMAGES/Military/Navy/us-navy-gerald-ford-carrier.jpg" width="600" alt="USS Gerald R. Ford Strike Group: Shield of Liberty" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
-  <br /><br />
+  <br />
   <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
     <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Absolute Shield of Liberty" ★</strong>
     <br />
@@ -150,11 +150,11 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </div>
 </div>
 
-<br /><br /><br />
+<br />
 
 <div align="center">
   <img src="web/IMAGES/Landscapes/Mount Denali National Park.jpg" width="600" alt="Denali: Apex of North America" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
-  <br /><br />
+  <br />
   <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
     <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Apex of North America" ★</strong>
     <br />
@@ -162,11 +162,11 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </div>
 </div>
 
-<br /><br /><br />
+<br />
 
 <div align="center">
   <img src="web/IMAGES/US Buildings/US Capitol.jpg" width="600" alt="US Capitol Dome: Sanctuary of the Republic" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
-  <br /><br />
+  <br />
   <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
     <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Sanctuary of the Republic" ★</strong>
     <br />
