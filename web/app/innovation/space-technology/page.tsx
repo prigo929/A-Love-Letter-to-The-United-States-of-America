@@ -292,116 +292,45 @@ export default async function SpaceTechnologyPage() {
           </div>
         </section>
 
-        {/* GPS Satellite Constellation HUD Section */}
+        {/* GPS Section */}
         <section id="gps-constellation" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column: Copy */}
-            <div>
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] font-semibold mb-3 block flex items-center gap-2">
-                <Compass className="h-4 w-4 text-[#E8B923]" />
-                {copy.gpsLabel}
-              </span>
-              <h2 className="font-macro-display text-4xl font-bold text-white uppercase tracking-tight mb-8">
-                {copy.gpsTitle}
-              </h2>
-              <p className="font-macro-body text-white/75 text-lg leading-relaxed mb-6">
-                {copy.gpsParagraph1}
-              </p>
-              <p className="font-macro-body text-white/75 text-lg leading-relaxed mb-8">
-                {copy.gpsParagraph2}
-              </p>
-
+          <div className="border-t border-white/5 pt-16">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] font-semibold mb-3 block flex items-center gap-2">
+              <Compass className="h-4 w-4 text-[#E8B923]" />
+              {copy.gpsLabel}
+            </span>
+            <h2 className="font-macro-display text-4xl font-bold text-white uppercase tracking-tight mb-8">
+              {copy.gpsTitle}
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div>
+                <p className="font-macro-body text-white/80 text-lg leading-relaxed mb-6">
+                  {copy.gpsParagraph1}
+                </p>
+                <p className="font-macro-body text-white/80 text-lg leading-relaxed">
+                  {copy.gpsParagraph2}
+                </p>
+              </div>
+              
               {/* GPS Specs Grid */}
-              <div className="grid grid-cols-2 gap-4 border-t border-white/5 pt-6 font-mono text-xs text-white/50">
-                <div className="flex flex-col gap-1">
-                  <span className="text-white/30 uppercase tracking-widest">Active Fleet</span>
-                  <span className="text-white font-semibold text-sm">{copy.gpsSatellites}</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-white/30 uppercase tracking-widest">Orbit Class</span>
-                  <span className="text-white font-semibold text-sm">{copy.gpsOrbitType}</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-white/30 uppercase tracking-widest">Precision</span>
-                  <span className="text-[#E8B923] font-semibold text-sm">{copy.gpsPrecision}</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-white/30 uppercase tracking-widest">Availability</span>
-                  <span className="text-white font-semibold text-sm">{copy.gpsCoverage}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: Animated Constellation SVG HUD */}
-            <div className="relative aspect-square rounded-3xl border border-white/5 bg-[#08090b] p-6 flex flex-col justify-between overflow-hidden shadow-2xl">
-              {/* Header HUD panel */}
-              <div className="flex justify-between items-center text-[10px] font-mono text-white/40 border-b border-white/5 pb-4">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#27c93f] animate-ping" />
-                  <span className="text-white/60 font-bold uppercase tracking-wider">US SPACE FORCE GPS CONTROL</span>
-                </div>
-                <span>SYSTEM HEALTH: NOMINAL</span>
-              </div>
-
-              {/* The SVG Constellation */}
-              <div className="flex-1 flex items-center justify-center p-4">
-                <svg viewBox="0 0 400 400" className="w-full h-full max-w-[280px]">
-                  {/* Orbit paths */}
-                  <ellipse cx="200" cy="200" rx="140" ry="40" fill="none" stroke="rgba(232, 185, 35, 0.1)" strokeWidth="1" transform="rotate(0, 200, 200)" />
-                  <ellipse cx="200" cy="200" rx="140" ry="40" fill="none" stroke="rgba(232, 185, 35, 0.1)" strokeWidth="1" transform="rotate(60, 200, 200)" />
-                  <ellipse cx="200" cy="200" rx="140" ry="40" fill="none" stroke="rgba(232, 185, 35, 0.1)" strokeWidth="1" transform="rotate(120, 200, 200)" />
-
-                  {/* Earth center */}
-                  <circle cx="200" cy="200" r="35" fill="none" stroke="rgba(232, 185, 35, 0.2)" strokeWidth="1" strokeDasharray="3 3" />
-                  <circle cx="200" cy="200" r="30" fill="#0A3161" opacity="0.6" />
-                  <circle cx="200" cy="200" r="10" fill="#E8B923" opacity="0.4" />
-                  <circle cx="200" cy="200" r="5" fill="#E8B923" />
-
-                  {/* Radiating signal waves */}
-                  <circle cx="200" cy="200" r="70" fill="none" stroke="rgba(39, 201, 63, 0.1)" strokeWidth="1">
-                    <animate attributeName="r" values="30;120" dur="4s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="0.8;0" dur="4s" repeatCount="indefinite" />
-                  </circle>
-                  
-                  {/* Satellites rotating on orbits */}
-                  <g transform="rotate(0, 200, 200)">
-                    <circle cx="60" cy="200" r="4" fill="#E8B923">
-                      <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="15s" repeatCount="indefinite" />
-                    </circle>
-                    <line x1="60" y1="200" x2="200" y2="200" stroke="rgba(39, 201, 63, 0.05)" strokeWidth="1">
-                      <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="15s" repeatCount="indefinite" />
-                    </line>
-                  </g>
-                  
-                  <g transform="rotate(60, 200, 200)">
-                    <circle cx="340" cy="200" r="4" fill="#E8B923">
-                      <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="20s" repeatCount="indefinite" />
-                    </circle>
-                    <line x1="340" y1="200" x2="200" y2="200" stroke="rgba(39, 201, 63, 0.05)" strokeWidth="1">
-                      <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="20s" repeatCount="indefinite" />
-                    </line>
-                  </g>
-
-                  <g transform="rotate(120, 200, 200)">
-                    <circle cx="200" cy="60" r="4" fill="#E8B923">
-                      <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="25s" repeatCount="indefinite" />
-                    </circle>
-                    <line x1="200" y1="60" x2="200" y2="200" stroke="rgba(39, 201, 63, 0.05)" strokeWidth="1">
-                      <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="25s" repeatCount="indefinite" />
-                    </line>
-                  </g>
-                </svg>
-              </div>
-
-              {/* Footer HUD panel telemetry */}
-              <div className="border-t border-white/5 pt-4 font-mono text-[9px] text-white/30 flex justify-between uppercase">
-                <div className="flex flex-col">
-                  <span>Sat Tracking Logs</span>
-                  <span className="text-[#2ac3de] font-semibold">PRN-18 / GPS-III</span>
-                </div>
-                <div className="flex flex-col text-right">
-                  <span>Orbital Speed</span>
-                  <span className="text-white/60 font-semibold">3.87 km/s</span>
+              <div className="bg-white/[0.01] rounded-3xl border border-white/5 p-8 flex flex-col justify-center">
+                <div className="grid grid-cols-2 gap-6 font-body">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-white/40 text-[10px] uppercase tracking-widest font-semibold">Active Fleet</span>
+                    <span className="text-[#E8B923] font-bold text-xl">{copy.gpsSatellites}</span>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-white/40 text-[10px] uppercase tracking-widest font-semibold">Orbit Class</span>
+                    <span className="text-white font-semibold text-lg">{copy.gpsOrbitType}</span>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-white/40 text-[10px] uppercase tracking-widest font-semibold">Precision</span>
+                    <span className="text-white font-semibold text-lg">{copy.gpsPrecision}</span>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-white/40 text-[10px] uppercase tracking-widest font-semibold">Availability</span>
+                    <span className="text-white font-semibold text-lg">{copy.gpsCoverage}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -504,126 +433,45 @@ export default async function SpaceTechnologyPage() {
           </div>
         </section>
 
-        {/* Starship & Artemis Deep Space Pipeline Section */}
+        {/* Starship & Artemis Deep Space Section */}
         <section id="deep-space-pipeline" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column: Visual vector transit SVG */}
-            <div className="relative aspect-[4/3] rounded-3xl border border-white/5 bg-[#08090b] p-6 flex flex-col justify-between overflow-hidden shadow-2xl order-last lg:order-first">
-              {/* Header HUD panel */}
-              <div className="flex justify-between items-center text-[10px] font-mono text-white/40 border-b border-white/5 pb-4">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#E8B923] animate-pulse" />
-                  <span className="text-white/60 font-bold uppercase tracking-wider">DEEP SPACE LOGISTICS SCHEMATIC</span>
-                </div>
-                <span>SCALE: INTERPLANETARY</span>
+          <div className="border-t border-white/5 pt-16">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] font-semibold mb-3 block flex items-center gap-2">
+              <Navigation className="h-4 w-4 text-[#E8B923]" />
+              {copy.artemisLabel}
+            </span>
+            <h2 className="font-macro-display text-4xl font-bold text-white uppercase tracking-tight mb-8">
+              {copy.artemisTitle}
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div>
+                <p className="font-macro-body text-white/80 text-lg leading-relaxed mb-6">
+                  {copy.artemisParagraph1}
+                </p>
+                <p className="font-macro-body text-white/80 text-lg leading-relaxed">
+                  {copy.artemisParagraph2}
+                </p>
               </div>
-
-              {/* Interplanetary transit SVG */}
-              <div className="flex-1 flex items-center justify-center p-4">
-                <svg viewBox="0 0 400 300" className="w-full h-full max-w-[320px]">
-                  {/* Earth */}
-                  <g>
-                    <circle cx="60" cy="150" r="30" fill="#0A3161" opacity="0.8" />
-                    <circle cx="60" cy="150" r="30" fill="none" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="1" />
-                    <circle cx="60" cy="150" r="35" fill="none" stroke="rgba(39, 201, 63, 0.2)" strokeWidth="1" strokeDasharray="3 3" />
-                    <text x="60" y="154" textAnchor="middle" fill="white" fontSize="9" fontWeight="bold" fontFamily="monospace">EARTH</text>
-                  </g>
-
-                  {/* Refueling Orbit (LEO) */}
-                  <circle cx="120" cy="150" r="45" fill="none" stroke="rgba(232, 185, 35, 0.15)" strokeWidth="1" strokeDasharray="4 4" />
-                  
-                  {/* Refuel Station marker */}
-                  <g transform="rotate(30, 120, 150)">
-                    <circle cx="165" cy="150" r="3" fill="#E8B923" />
-                    <line x1="162" y1="150" x2="168" y2="150" stroke="#E8B923" strokeWidth="1" />
-                    <line x1="165" y1="147" x2="165" y2="153" stroke="#E8B923" strokeWidth="1" />
-                  </g>
-
-                  {/* Moon */}
-                  <g>
-                    <circle cx="230" cy="90" r="15" fill="#3f4b5a" />
-                    <circle cx="230" cy="90" r="15" fill="none" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="1" />
-                    <circle cx="230" cy="90" r="20" fill="none" stroke="rgba(232, 185, 35, 0.2)" strokeWidth="1" strokeDasharray="2 2" />
-                    <text x="230" y="93" textAnchor="middle" fill="white" fontSize="7" fontWeight="bold" fontFamily="monospace">MOON</text>
-                  </g>
-
-                  {/* Mars */}
-                  <g>
-                    <circle cx="340" cy="150" r="22" fill="#B22234" opacity="0.8" />
-                    <circle cx="340" cy="150" r="22" fill="none" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="1" />
-                    <text x="340" y="153" textAnchor="middle" fill="white" fontSize="8" fontWeight="bold" fontFamily="monospace">MARS</text>
-                  </g>
-
-                  {/* Transit vectors */}
-                  <path id="moon-path" d="M 90 150 Q 160 90 215 90" fill="none" stroke="rgba(255, 255, 255, 0.15)" strokeWidth="1.5" strokeDasharray="3 3" />
-                  <path id="mars-path" d="M 90 150 Q 200 210 318 150" fill="none" stroke="rgba(255, 255, 255, 0.15)" strokeWidth="1.5" strokeDasharray="3 3" />
-
-                  {/* Refueling label */}
-                  <text x="120" y="210" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7" fontFamily="monospace">LEO CRYOGENIC REFUELING</text>
-                  
-                  {/* Starship nodes animating along transit vectors */}
-                  <g>
-                    <circle r="3.5" fill="#E8B923" />
-                    <animateMotion dur="8s" repeatCount="indefinite" rotate="auto">
-                      <mpath href="#moon-path" />
-                    </animateMotion>
-                  </g>
-
-                  <g>
-                    <polygon points="0,-2 4,0 0,2" fill="#2ac3de" />
-                    <animateMotion dur="14s" repeatCount="indefinite" rotate="auto">
-                      <mpath href="#mars-path" />
-                    </animateMotion>
-                  </g>
-                </svg>
-              </div>
-
-              {/* Footer HUD panel telemetry */}
-              <div className="border-t border-white/5 pt-4 font-mono text-[9px] text-white/30 flex justify-between uppercase">
-                <div className="flex flex-col">
-                  <span>Target Mission</span>
-                  <span className="text-[#E8B923] font-semibold">Artemis III / Lunar Landing</span>
-                </div>
-                <div className="flex flex-col text-right">
-                  <span>Rocket Status</span>
-                  <span className="text-[#27c93f] font-semibold">100% Fully Reusable</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: Copy */}
-            <div>
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] font-semibold mb-3 block flex items-center gap-2">
-                <Navigation className="h-4 w-4 text-[#E8B923]" />
-                {copy.artemisLabel}
-              </span>
-              <h2 className="font-macro-display text-4xl font-bold text-white uppercase tracking-tight mb-8">
-                {copy.artemisTitle}
-              </h2>
-              <p className="font-macro-body text-white/75 text-lg leading-relaxed mb-6">
-                {copy.artemisParagraph1}
-              </p>
-              <p className="font-macro-body text-white/75 text-lg leading-relaxed mb-8">
-                {copy.artemisParagraph2}
-              </p>
 
               {/* Starship Specs Grid */}
-              <div className="grid grid-cols-2 gap-4 border-t border-white/5 pt-6 font-mono text-xs text-white/50">
-                <div className="flex flex-col gap-1">
-                  <span className="text-white/30 uppercase tracking-widest">Stack Height</span>
-                  <span className="text-white font-semibold text-sm">{copy.artemisHeight}</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-white/30 uppercase tracking-widest">Launch Thrust</span>
-                  <span className="text-white font-semibold text-sm">{copy.artemisThrust}</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-white/30 uppercase tracking-widest">Payload Capacity</span>
-                  <span className="text-[#E8B923] font-semibold text-sm">{copy.artemisCapacity}</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-white/30 uppercase tracking-widest">Operational Core</span>
-                  <span className="text-white font-semibold text-sm">{copy.artemisDestinations}</span>
+              <div className="bg-white/[0.01] rounded-3xl border border-white/5 p-8 flex flex-col justify-center">
+                <div className="grid grid-cols-2 gap-6 font-body">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-white/40 text-[10px] uppercase tracking-widest font-semibold">Stack Height</span>
+                    <span className="text-white font-semibold text-lg">{copy.artemisHeight}</span>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-white/40 text-[10px] uppercase tracking-widest font-semibold">Launch Thrust</span>
+                    <span className="text-[#E8B923] font-bold text-xl">{copy.artemisThrust}</span>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-white/40 text-[10px] uppercase tracking-widest font-semibold">Payload Capacity</span>
+                    <span className="text-white font-semibold text-lg">{copy.artemisCapacity}</span>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-white/40 text-[10px] uppercase tracking-widest font-semibold">Operational Core</span>
+                    <span className="text-white font-semibold text-lg">{copy.artemisDestinations}</span>
+                  </div>
                 </div>
               </div>
             </div>
