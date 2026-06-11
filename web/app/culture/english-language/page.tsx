@@ -243,9 +243,9 @@ export default async function EnglishLanguagePage() {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-3">
               {americanWords.map((w, i) => (
-                <div key={i} className="bg-white/50 backdrop-blur-md rounded-xl p-4 border border-[#0C0907]/5 text-center hover:shadow-[0_8px_30px_rgb(12,9,7,0.08)] hover:-translate-y-1 transition-all duration-300">
-                  <p className="font-macro-display text-2xl md:text-3xl font-black text-[#0C0907] tracking-tight">{w.word}</p>
-                  <p className="font-body text-[9px] font-bold uppercase tracking-wider text-[#E8391B] mt-2 leading-tight">{w.origin}</p>
+                <div key={i} className="bg-white/50 backdrop-blur-md rounded-xl px-2 py-4 border border-[#0C0907]/5 text-center hover:shadow-[0_8px_30px_rgb(12,9,7,0.08)] hover:-translate-y-1 transition-all duration-300 min-w-0">
+                  <p className="font-macro-display text-lg md:text-xl font-black text-[#0C0907] tracking-tight leading-none wrap-break-word">{w.word}</p>
+                  <p className="font-body text-[8px] font-bold uppercase tracking-wider text-[#E8391B] mt-2 leading-tight wrap-break-word">{w.origin}</p>
                 </div>
               ))}
             </div>
