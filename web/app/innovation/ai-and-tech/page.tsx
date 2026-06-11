@@ -272,20 +272,23 @@ export default async function AiAndTechPage() {
         </div>
 
         {/* Thesis Section */}
-        <section id="intro" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-32">
-          <div className="rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 md:p-12 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-4 opacity-5">
-              <Cpu className="h-40 w-40 text-[#E8B923]" />
+        <section id="intro" className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mb-32">
+          <div className="relative pt-10">
+            <div className="absolute top-0 left-0 w-20 h-px bg-[#E8B923]" />
+            <div className="absolute -right-2 top-0 opacity-[0.03] pointer-events-none select-none">
+              <Cpu className="h-72 w-72 text-white" />
             </div>
-            <h2 className="font-macro-display text-3xl font-bold text-[#E8B923] mb-8">
+            <h2 className="font-macro-display text-3xl md:text-4xl font-bold text-[#E8B923] mb-10 max-w-3xl leading-tight">
               {copy.thesisTitle}
             </h2>
-            <p className="font-macro-body text-white/80 text-lg md:text-xl leading-relaxed mb-6">
-              {copy.thesisParagraph1}
-            </p>
-            <p className="font-macro-body text-white/80 text-lg md:text-xl leading-relaxed">
-              {copy.thesisParagraph2}
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14">
+              <p className="font-macro-body text-white/75 text-lg leading-relaxed">
+                {copy.thesisParagraph1}
+              </p>
+              <p className="font-macro-body text-white/75 text-lg leading-relaxed">
+                {copy.thesisParagraph2}
+              </p>
+            </div>
           </div>
         </section>
 
@@ -395,14 +398,12 @@ export default async function AiAndTechPage() {
 
         {/* Software Moat Section */}
         <section id="software-moat" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
-          <div className="text-center mb-16">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] font-semibold mb-3 block">
-              {copy.softwareLabel}
-            </span>
+          <div className="border-t border-white/5 pt-16 mb-12">
+            <span className="macro-eyebrow mb-3 block">{copy.softwareLabel}</span>
             <h2 className="font-macro-display text-4xl font-bold text-white uppercase tracking-tight mb-8">
               {copy.softwareTitle}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl">
               <p className="font-macro-body text-white/70 text-lg leading-relaxed">
                 {copy.softwareParagraph1}
               </p>
@@ -469,31 +470,17 @@ export default async function AiAndTechPage() {
             </div>
 
             {/* Right: Lock-in analysis */}
-            <div className="flex flex-col gap-5">
-              <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <Lock className="h-5 w-5 text-[#E8B923]" />
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#E8B923] font-semibold">
-                    {isRo ? "DOMINANȚA ECOSISTEMULUI" : "THE ECOSYSTEM DOMINANCE"}
-                  </span>
-                </div>
-                <h3 className="font-macro-display text-xl font-bold text-white mb-3">
-                  {isRo ? "De ce migrarea de pe CUDA este aproape imposibilă" : "Why migrating away from CUDA is nearly impossible"}
-                </h3>
-                <p className="text-sm text-white/60 leading-relaxed font-body">
+            <div className="flex flex-col gap-10">
+              <div>
+                <p className="macro-body text-white/60 leading-relaxed mb-8">
                   {isRo
                     ? "CUDA nu este doar un instrument — este un ecosistem de ~20 de ani construit în jurul hardware-ului Nvidia. Bibliotecile, cadrele, modelele pre-antrenate și întreg corpul de cunoștințe al inginerilor AI sunt optimizate exclusiv pentru CUDA."
                     : "CUDA is not just a tool — it is a ~20-year ecosystem built around Nvidia hardware. Libraries, frameworks, pre-trained models, and the entire body of ML engineering knowledge are optimized exclusively for CUDA."}
                 </p>
-              </div>
 
-              <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-6">
-                <div className="flex items-center gap-3 mb-5">
-                  <Layers className="h-5 w-5 text-white/40" />
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-white/40 font-semibold">
-                    {isRo ? "COMPARAȚIE CU ALTERNATIVELE" : "ALTERNATIVES COMPARISON"}
-                  </span>
-                </div>
+                <span className="macro-eyebrow block mb-5">
+                  {isRo ? "COMPARAȚIE CU ALTERNATIVELE" : "ALTERNATIVES COMPARISON"}
+                </span>
                 <div className="flex flex-col gap-3">
                   {[
                     { name: "NVIDIA CUDA", share: 92, dominant: true, status: isRo ? "DOMINANT" : "DOMINANT" },
@@ -515,17 +502,17 @@ export default async function AiAndTechPage() {
                       </span>
                     </div>
                   ))}
-                  <p className="text-[10px] text-white/30 font-body mt-2 leading-relaxed">
+                  <p className="macro-metadata text-white/30 mt-2">
                     {isRo ? "Estimat cotă de piață AI compute, 2025. Sursă: Ark Invest Research." : "Estimated AI compute market share, 2025. Source: Ark Invest Research."}
                   </p>
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-[#E8B923]/15 bg-[#E8B923]/[0.03] p-6">
-                <span className="text-[9px] font-mono uppercase tracking-widest text-[#E8B923] font-semibold mb-4 block">
+              <div className="border-t border-white/5 pt-8">
+                <span className="macro-eyebrow block mb-6">
                   {isRo ? "BARIERA DE INTRARE" : "THE MOAT IN NUMBERS"}
                 </span>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-6">
                   {[
                     { value: "~20yr", label: isRo ? "Avans CUDA" : "CUDA head start" },
                     { value: "4M+", label: isRo ? "Devs în ecosistem" : "CUDA developers" },
@@ -534,7 +521,7 @@ export default async function AiAndTechPage() {
                   ].map((s) => (
                     <div key={s.label}>
                       <span className="font-macro-display text-2xl font-bold text-[#E8B923] block">{s.value}</span>
-                      <span className="text-[10px] text-white/50 font-body block leading-snug mt-0.5">{s.label}</span>
+                      <span className="macro-metadata text-white/50 block mt-0.5">{s.label}</span>
                     </div>
                   ))}
                 </div>
@@ -547,10 +534,7 @@ export default async function AiAndTechPage() {
         {/* Frontier Labs Section */}
         <section id="frontier-labs" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
           <div className="text-center mb-16">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] font-semibold mb-3 block flex items-center justify-center gap-2">
-              <Brain className="h-4 w-4 text-[#E8B923] animate-pulse" />
-              {copy.labsLabel}
-            </span>
+            <span className="macro-eyebrow mb-3 block">{copy.labsLabel}</span>
             <h2 className="font-macro-display text-4xl font-bold text-white uppercase tracking-tight mb-4">
               {copy.labsTitle}
             </h2>
@@ -594,17 +578,19 @@ export default async function AiAndTechPage() {
 
         {/* Physical Infrastructure of AI Section */}
         <section id="ai-infrastructure" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-6 font-semibold">
-            {isRo ? "INFRASTRUCTURA FIZICĂ" : "PHYSICAL INFRASTRUCTURE"}
-          </p>
-          <h2 className="font-macro-display text-4xl font-bold text-center mb-6 text-white uppercase tracking-tight">
-            {isRo ? "Infrastructura Fizică a Inteligenței Artificiale" : "The Physical Infrastructure of AI"}
-          </h2>
-          <p className="font-macro-body text-white/70 text-lg text-center max-w-3xl mx-auto mb-16 leading-relaxed">
-            {isRo 
-              ? "Inteligența artificială nu este doar software. Ea se bazează pe cele mai complexe lanțuri de aprovizionare și pe o infrastructură fizică masivă — de la microprocesoare specializate la centre de date gigantice care consumă gigawați de energie." 
-              : "Artificial intelligence is not just software. It relies on the most complex manufacturing supply chains and massive physical infrastructure on Earth — from specialized silicon hardware to hyper-scale data centers consuming gigawatts of energy."}
-          </p>
+          <div className="border-t border-white/5 pt-16 mb-16">
+            <span className="macro-eyebrow mb-3 block">
+              {isRo ? "INFRASTRUCTURA FIZICĂ" : "PHYSICAL INFRASTRUCTURE"}
+            </span>
+            <h2 className="font-macro-display text-4xl font-bold text-white uppercase tracking-tight mb-6">
+              {isRo ? "Infrastructura Fizică a Inteligenței Artificiale" : "The Physical Infrastructure of AI"}
+            </h2>
+            <p className="font-macro-body text-white/70 text-lg max-w-3xl leading-relaxed">
+              {isRo
+                ? "Inteligența artificială nu este doar software. Ea se bazează pe cele mai complexe lanțuri de aprovizionare și pe o infrastructură fizică masivă — de la microprocesoare specializate la centre de date gigantice care consumă gigawați de energie."
+                : "Artificial intelligence is not just software. It relies on the most complex manufacturing supply chains and massive physical infrastructure on Earth — from specialized silicon hardware to hyper-scale data centers consuming gigawatts of energy."}
+            </p>
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
