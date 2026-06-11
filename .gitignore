@@ -33,6 +33,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Raw video source archive (never deploy these)
+web/VIDEOS/
+
 # OS
 .DS_Store
 Thumbs.db
