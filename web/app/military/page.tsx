@@ -50,7 +50,8 @@ import type { Locale } from "@/lib/i18n/config";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
-import DeepDiveSection, { DEEP_DIVE_THEMES } from "@/components/shared/DeepDiveSection";
+import DeepDiveSection from "@/components/shared/DeepDiveSection";
+import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 
 import {
   MILITARY_STATS,

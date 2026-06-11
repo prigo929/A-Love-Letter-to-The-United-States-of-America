@@ -37,7 +37,8 @@ import { VCBarChart } from "@/components/data/VCCharts";
 import { DollarReserveChart } from "@/components/data/DollarMarketCharts";
 import { getServerLocale } from "@/lib/i18n/server";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
-import DeepDiveSection, { DEEP_DIVE_THEMES } from "@/components/shared/DeepDiveSection";
+import DeepDiveSection from "@/components/shared/DeepDiveSection";
+import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 
 // ── Data ────────────────────────────────────────────────────────────────────
 // This page is intentionally data-driven. Most factual edits belong in

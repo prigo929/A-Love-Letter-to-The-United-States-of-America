@@ -35,7 +35,8 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { SITE_IMAGES }     from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
-import DeepDiveSection, { DEEP_DIVE_THEMES } from "@/components/shared/DeepDiveSection";
+import DeepDiveSection from "@/components/shared/DeepDiveSection";
+import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 
 import {
   getNatureHeroStats,
