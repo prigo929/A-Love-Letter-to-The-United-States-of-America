@@ -325,12 +325,12 @@ export default async function InventionsPost1991Page() {
         <div className="mx-auto max-w-7xl">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
-              {isRo ? "Arhiva Erei Digitale" : "The Digital Era Archives"}
+              {isRo ? "Arhiva Miracolelor Postbelice" : "Post-War & Digital Era Archives"}
             </h2>
             <p className="font-body text-white/60 text-base">
               {isRo 
-                ? "Explorează istoria completă a celor 33 de invenții americane de după 1991 din era internetului, smartphone-urilor și AI-ului." 
-                : "Explore the full, detailed history of 33 post-1991 American inventions in the age of the internet, smartphones, and AI."}
+                ? "Explorează istoria completă a celor 249 de invenții americane postbelice (1946–prezent) din era digitală, a internetului și a inteligenței artificiale." 
+                : "Explore the full, detailed history of 249 post-war and digital era American inventions (1946–present) in the age of computing, internet, and artificial intelligence."}
             </p>
           </div>
 

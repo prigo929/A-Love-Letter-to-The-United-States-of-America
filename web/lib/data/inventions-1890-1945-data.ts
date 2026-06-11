@@ -321,6 +321,38 @@ export const INVENTIONS_1890_1945: InventionItem[] = [
     }
   },
   {
+    id: "sousaphone-1893",
+    year: "1893",
+    name: {
+      en: "Sousaphone",
+      ro: "Sousaphone"
+    },
+    description: {
+      en: "The sousaphone, sometimes referred to as a marching tuba, is a wearable tuba descended from the hélicon. It was designed such that it fits around the body of the wearer and so it can be easily played while being worn. The sousaphone is named after John Philip Sousa but was invented by C.G. Conn in 1898.",
+      ro: "Sousafonul, denumit uneori tubă în marș, este o tubă purtabilă care coboară din hélicon. A fost proiectat astfel încât să se potrivească în jurul corpului purtătorului și astfel încât să poată fi jucat cu ușurință în timp ce este purtat. Sousafonul poartă numele lui John Philip Sousa, dar a fost inventat de C.G. Conn în 1898."
+    },
+    era: {
+      en: "Progressive Era (1890–1919)",
+      ro: "Era Progresistă (1890–1919)"
+    }
+  },
+  {
+    id: "clasp-locker-1893",
+    year: "1893",
+    name: {
+      en: "Clasp locker",
+      ro: "Dulap cu închizătoare"
+    },
+    description: {
+      en: "The period's ingenuity extended to fastening devices in 1893, when Whitcomb Judson patented the clasp locker, an early sliding fastener with interlocking metal clasps operated by a pull tab, serving as the precursor to the modern zipper and initially applied to shoes and clothing. These inventions collectively exemplified the Gilded Age's shift toward efficient, electrified urban living, building on prior communication breakthroughs like the telephone to integrate technology into everyday commerce and infrastructure.",
+      ro: "Ingeniozitatea perioadei s-a extins la dispozitivele de prindere în 1893, când Whitcomb Judson a brevetat încuietoarea cu închizătoare, un dispozitiv de închidere cu alunecare timpurie, cu închizătoare metalice interblocate, acţionate de o clapă de tragere, servind drept precursor pentru fermoarul modern şi aplicat iniţial pe pantofi şi îmbrăcăminte. Aceste invenții au exemplificat în mod colectiv schimbarea Epocii de Aur către o viață urbană eficientă și electrificată, bazându-se pe progrese anterioare în comunicare, cum ar fi telefonul, pentru a integra tehnologia în comerțul și infrastructura de zi cu zi."
+    },
+    era: {
+      en: "Gilded Age (1878–1899)",
+      ro: "Epoca de Aur (Gilded Age) (1878–1899)"
+    }
+  },
+  {
     id: "stadimeter-1894",
     year: "1894",
     name: {
@@ -602,22 +634,6 @@ export const INVENTIONS_1890_1945: InventionItem[] = [
     description: {
       en: "Installer bits are a type of twist drill bit for use with a hand-portable power tool. Installer bits are also known as bell-hanger bits or fishing bits. The key distinguishing feature of an installer bit is a transverse hole drilled through the web of the bit near the tip. Once the bit has penetrated a wall, a wire can be threaded through this transverse hole, and the bit pulled back through the drilled hole. The installer bit was invented and patented by Sinclair Smith of Brooklyn, New York, in 1898.",
       ro: "Bițurile de instalare sunt un tip de burghiu elicoidal pentru utilizarea cu o unealtă electrică portabilă de mână. Biții de instalare sunt, de asemenea, cunoscuți sub denumirea de biți pentru agățat de clopoței sau bucăți de pescuit. Caracteristica cheie distinctivă a unui burghiu de instalare este o gaură transversală găurită prin banda burghiului lângă vârf. Odată ce burghiul a pătruns într-un perete, un fir poate fi trecut prin acest orificiu transversal, iar buricul poate fi tras înapoi prin gaura forată. Bitul de instalare a fost inventat și brevetat de Sinclair Smith din Brooklyn, New York, în 1898."
-    },
-    era: {
-      en: "Progressive Era (1890–1919)",
-      ro: "Era Progresistă (1890–1919)"
-    }
-  },
-  {
-    id: "sousaphone-1893",
-    year: "1893",
-    name: {
-      en: "Sousaphone",
-      ro: "Sousaphone"
-    },
-    description: {
-      en: "The sousaphone, sometimes referred to as a marching tuba, is a wearable tuba descended from the hélicon. It was designed such that it fits around the body of the wearer and so it can be easily played while being worn. The sousaphone is named after John Philip Sousa but was invented by C.G. Conn in 1898.",
-      ro: "Sousafonul, denumit uneori tubă în marș, este o tubă purtabilă care coboară din hélicon. A fost proiectat astfel încât să se potrivească în jurul corpului purtătorului și astfel încât să poată fi jucat cu ușurință în timp ce este purtat. Sousafonul poartă numele lui John Philip Sousa, dar a fost inventat de C.G. Conn în 1898."
     },
     era: {
       en: "Progressive Era (1890–1919)",
@@ -1057,6 +1073,22 @@ export const INVENTIONS_1890_1945: InventionItem[] = [
     }
   },
   {
+    id: "wright-flyer-1903",
+    year: "1903",
+    name: {
+      en: "Wright Flyer",
+      ro: "Wright Flyer"
+    },
+    description: {
+      en: "The Wright brothers, Orville and Wilbur, achieved the first successful powered, controlled flight of a heavier-than-air machine on December 17, 1903, at Kill Devil Hills near Kitty Hawk, North Carolina, with their Wright Flyer biplane. The aircraft, constructed from spruce, muslin-covered wings, and a 12-horsepower gasoline engine, lifted off for 12 seconds and covered 120 feet at a groundspeed of about 6.8 miles per hour, using wing warping for lateral control and a movable rudder for yaw. This breakthrough demonstrated three-axis control—pitch, roll, and yaw—essential for stable flight, and the brothers refined the design through subsequent flights that day, with the longest reaching 852 feet in 59 seconds. Their invention transformed aviation from theoretical to practical, influencing global transportation and military applications.",
+      ro: "Frații Wright, Orville și Wilbur, au realizat primul zbor cu motor și controlat de succes al unei mașini mai grele decât aerul pe 17 decembrie 1903, la Kill Devil Hills, lângă Kitty Hawk, Carolina de Nord, cu biplanul lor Wright Flyer. Aeronava, construită din molid, aripi acoperite cu muselină și un motor pe benzină de 12 cai putere, a decolat timp de 12 secunde și a acoperit 120 de picioare la o viteză la sol de aproximativ 6,8 mile pe oră, folosind deformarea aripilor pentru control lateral și o cârmă mobilă pentru viată. Această descoperire a demonstrat controlul pe trei axe - înclinare, rostogolire și rotire - esențial pentru zborul stabil, iar frații au rafinat designul prin zborurile ulterioare în acea zi, cel mai lung atingând 852 de picioare în 59 de secunde. Invenția lor a transformat aviația de la teoretică la practică, influențând transportul global și aplicațiile militare."
+    },
+    era: {
+      en: "Progressive Era (1890–1919)",
+      ro: "Era Progresistă (1890–1919)"
+    }
+  },
+  {
     id: "automatic-transmission-1904",
     year: "1904",
     name: {
@@ -1441,6 +1473,22 @@ export const INVENTIONS_1890_1945: InventionItem[] = [
     }
   },
   {
+    id: "electric-self-starter-1911",
+    year: "1911",
+    name: {
+      en: "Electric self-starter",
+      ro: "Autopornire electrică"
+    },
+    description: {
+      en: "In 1911, inventor Charles F. Kettering created the electric self-starter for automobiles while working at the Dayton Engineering Laboratories Company (DELCO), first implementing it on Cadillac vehicles to replace hazardous hand-cranking. The device featured a compact electric motor powered by a storage battery, generating high torque to crank the engine without manual effort, integrated with a voltage regulator and generator for reliable operation. Kettering's innovation, tested successfully in a 1912 New York Auto Show demonstration where cars started effortlessly in cold weather, reduced accidents—particularly among women drivers—and accelerated the adoption of gasoline-powered vehicles, with Cadillac adopting it standard by 1912.",
+      ro: "În 1911, inventatorul Charles F. Kettering a creat auto-pornirea electrică pentru automobile în timp ce lucra la Dayton Engineering Laboratories Company (DELCO), implementându-l mai întâi pe vehiculele Cadillac pentru a înlocui manevrarea manuală periculoasă. Dispozitivul dispunea de un motor electric compact alimentat de o baterie de stocare, care generează un cuplu mare pentru a porni motorul fără efort manual, integrat cu un regulator de tensiune și un generator pentru o funcționare fiabilă. Inovația lui Kettering, testată cu succes într-o demonstrație a Salonului Auto de la New York din 1912, unde mașinile au pornit fără efort pe vreme rece, a redus accidentele – în special în rândul șoferilor – și a accelerat adoptarea vehiculelor pe benzină, Cadillac adoptând-o standard până în 1912."
+    },
+    era: {
+      en: "Progressive Era (1890–1919)",
+      ro: "Era Progresistă (1890–1919)"
+    }
+  },
+  {
     id: "articulated-tram-1912",
     year: "1912",
     name: {
@@ -1514,6 +1562,22 @@ export const INVENTIONS_1890_1945: InventionItem[] = [
     description: {
       en: "Formica is a hard durable plastic laminate used for countertops, cupboard doors, and other surfaces which are heat-resistant and easy to clean. Formica was invented in 1913 by Herbert A Faber and Daniel J. O'Connor of Westinghouse Electric.",
       ro: "Formica este un laminat din plastic dur, durabil, folosit pentru blaturi, uși de dulapuri și alte suprafețe care sunt rezistente la căldură și ușor de curățat. Formica a fost inventată în 1913 de Herbert A Faber și Daniel J. O'Connor de la Westinghouse Electric."
+    },
+    era: {
+      en: "Progressive Era (1890–1919)",
+      ro: "Era Progresistă (1890–1919)"
+    }
+  },
+  {
+    id: "moving-assembly-line-1913",
+    year: "1913",
+    name: {
+      en: "Moving assembly line",
+      ro: "Linie de asamblare în mișcare"
+    },
+    description: {
+      en: "In 1913, Henry Ford introduced the moving assembly line at his Highland Park plant in Michigan, revolutionizing automobile manufacturing by continuously moving chassis along a chain-driven conveyor belt where workers added parts in sequence. This system reduced the assembly time for a Model T from over 12 hours to about 93 minutes, enabling production of 1,000 vehicles per day by 1914 and slashing costs to $850 per car, making personal automobiles accessible to the middle class. Ford's innovation, which incorporated gravity slides and specialized tools, scaled mass production principles and influenced industries beyond automotive, from appliances to food processing.",
+      ro: "În 1913, Henry Ford a introdus linia de asamblare în mișcare la fabrica sa din Highland Park din Michigan, revoluționând producția de automobile prin mișcarea continuă a șasiului de-a lungul unei benzi transportoare cu lanț, unde muncitorii adăugau piese în secvență. Acest sistem a redus timpul de asamblare pentru un Model T de la peste 12 ore la aproximativ 93 de minute, permițând producția de 1.000 de vehicule pe zi până în 1914 și reducând costurile la 850 USD per mașină, făcând autovehiculele personale accesibile clasei de mijloc. Inovația Ford, care a încorporat glisiere gravitaționale și unelte specializate, a scalat principiile producției de masă și a influențat industriile dincolo de auto, de la aparate electrocasnice până la procesarea alimentelor."
     },
     era: {
       en: "Progressive Era (1890–1919)",
@@ -1889,6 +1953,22 @@ export const INVENTIONS_1890_1945: InventionItem[] = [
     }
   },
   {
+    id: "pop-up-toaster-1919",
+    year: "1919",
+    name: {
+      en: "Pop-up toaster",
+      ro: "Pâine de pâine de tip pop-up"
+    },
+    description: {
+      en: "In 1919, Charles Strite invented the pop-up toaster in Stillwater, Minnesota, frustrated by inconsistent bread toasting in workplace cafeterias, leading to his automatic model that used a clockwork timer to regulate heating. The device featured spring-loaded slots that ejected bread after 3 minutes of toasting on both sides via exposed heating elements, preventing burning and ensuring uniform results without manual monitoring. Patented in 1921 and first sold commercially as the Toastmaster in 1926, Strite's toaster revolutionized household appliances by simplifying breakfast preparation and influencing the growth of the electric kitchen gadget market.",
+      ro: "În 1919, Charles Strite a inventat prăjitorul pop-up în Stillwater, Minnesota, frustrat de prăjirea inconsecventă a pâinii în cantinele de la locul de muncă, ceea ce a condus la modelul său automat care folosea un cronometru pentru a regla încălzirea. Dispozitivul dispunea de fante cu arc care aruncau pâinea după 3 minute de prăjire pe ambele părți prin intermediul elementelor de încălzire expuse, prevenind arderea și asigurând rezultate uniforme fără monitorizare manuală. Patentat în 1921 și vândut pentru prima dată comercial ca Toastmaster în 1926, prăjitorul de pâine de la Strite a revoluționat aparatele de uz casnic simplificând pregătirea micului dejun și influențând creșterea pieței gadgeturilor electrice de bucătărie."
+    },
+    era: {
+      en: "Progressive Era (1890–1919)",
+      ro: "Era Progresistă (1890–1919)"
+    }
+  },
+  {
     id: "eskimo-pie-1920",
     year: "1920",
     name: {
@@ -1914,6 +1994,22 @@ export const INVENTIONS_1890_1945: InventionItem[] = [
     description: {
       en: "The jungle gym, also known as monkey bars or climbing frame, is a piece of playground equipment made of many pieces of thin material, such as metal pipe or, in more current playgrounds, rope, on which children can climb, hang, or sit. The monkey bar designation was for the resemblance that playing children had to the rambunctious, climbing play of monkeys, though the term nowadays often refers specifically to a single row of overhead bars designed to be swung across. The jungle gym was invented and patented by Sebastian Hinton of Chicago in 1920.",
       ro: "Sala de sport din junglă, cunoscută și sub denumirea de bare de maimuță sau cadru de cățărat, este o piesă de echipament pentru terenul de joacă realizată din multe piese din material subțire, precum țeava metalică sau, în locurile de joacă mai actuale, frânghie, pe care copiii se pot cățăra, se pot atârna sau se pot așeza. Denumirea barului de maimuță era pentru asemănarea pe care o aveau copiii care se jucau cu jocul agitat și cățărător al maimuțelor, deși în zilele noastre termenul se referă adesea în mod specific la un singur rând de bare deasupra capului concepute pentru a fi balansate. Sala de sport din junglă a fost inventată și patentată de Sebastian Hinton din Chicago în 1920."
+    },
+    era: {
+      en: "Roaring Twenties and the Jazz Age (1920–1928)",
+      ro: "Anii Nebuni și Era Jazzului (1920–1928)"
+    }
+  },
+  {
+    id: "band-aid-1920",
+    year: "1920",
+    name: {
+      en: "Band-Aid",
+      ro: "Plasture"
+    },
+    description: {
+      en: "In 1920, Earle Dickson, a cotton buyer for Johnson & Johnson, invented the adhesive bandage, known as the Band-Aid, to protect his wife's frequent minor cuts from kitchen accidents. He created it by affixing sterile gauze to adhesive strips and covering it with crinoline for protection, allowing easy application without additional tape. Johnson & Johnson began mass-producing the pre-packaged bandages in 1921, revolutionizing first aid by making wound care portable and accessible for households.",
+      ro: "În 1920, Earle Dickson, un cumpărător de bumbac pentru Johnson & Johnson, a inventat bandajul adeziv, cunoscut sub numele de Band-Aid, pentru a proteja frecventele tăieturi minore ale soției sale de accidentele în bucătărie. El a creat-o prin aplicarea unui tifon steril pe benzi adezive și acoperind-o cu crinolină pentru protecție, permițând aplicarea ușoară fără bandă suplimentară. Johnson & Johnson a început să producă în masă bandaje preambalate în 1921, revoluționând primul ajutor, făcând îngrijirea rănilor portabilă și accesibilă pentru gospodării."
     },
     era: {
       en: "Roaring Twenties and the Jazz Age (1920–1928)",
@@ -2490,6 +2586,22 @@ export const INVENTIONS_1890_1945: InventionItem[] = [
     description: {
       en: "The quartz clock is a clock that keeps time by using an electronic oscillator regulated by a quartz crystal. This allows for significantly better accuracy than mechanical clocks. The first quartz clock was built in 1927 by Warren Marrison and J.W. Horton at Bell Telephone Laboratories.",
       ro: "Ceasul de cuarț este un ceas care ține timpul folosind un oscilator electronic reglat de un cristal de cuarț. Acest lucru permite o precizie semnificativ mai bună decât ceasurile mecanice. Primul ceas cu cuarț a fost construit în 1927 de către Warren Marrison și J.W. Horton de la Bell Telephone Laboratories."
+    },
+    era: {
+      en: "Roaring Twenties and the Jazz Age (1920–1928)",
+      ro: "Anii Nebuni și Era Jazzului (1920–1928)"
+    }
+  },
+  {
+    id: "bread-slicing-machine-1927",
+    year: "1927",
+    name: {
+      en: "Bread-slicing machine",
+      ro: "Mașină de feliat pâine"
+    },
+    description: {
+      en: "Otto Frederick Rohwedder developed the first commercial bread-slicing machine in 1927, featuring mechanical blades that produced uniform slices from a whole loaf. After years of prototyping starting in 1912, the device was installed at Chillicothe Baking Company in Missouri on July 6, 1928, where it sliced bread on demand, wrapped it to prevent staleness, and boosted sales by appealing to consumers' preference for convenience. This invention transformed baking from an artisanal craft into a standardized consumer product, famously inspiring the idiom \"the greatest thing since sliced bread.\"",
+      ro: "Otto Frederick Rohwedder a dezvoltat prima mașină comercială de feliat pâine în 1927, având lame mecanice care produceau felii uniforme dintr-o pâine întreagă. După ani de prototipare, începând din 1912, dispozitivul a fost instalat la Chillicothe Baking Company din Missouri pe 6 iulie 1928, unde a feliat pâinea la cerere, a împachetat-o ​​pentru a preveni învechirea și a stimulat vânzările făcând apel la preferința consumatorilor pentru comoditate. Această invenție a transformat coacerea dintr-un meșteșug artizanal într-un produs de consum standardizat, inspirând expresia „cel mai grozav lucru de la feliile de pâine”."
     },
     era: {
       en: "Roaring Twenties and the Jazz Age (1920–1928)",
@@ -3585,6 +3697,22 @@ export const INVENTIONS_1890_1945: InventionItem[] = [
     }
   },
   {
+    id: "microwave-radar-1940",
+    year: "1940",
+    name: {
+      en: "Microwave radar",
+      ro: "Radar cu microunde"
+    },
+    description: {
+      en: "Electronics and weaponry saw transformative developments, particularly in radar systems refined at the Massachusetts Institute of Technology's Radiation Laboratory, established in 1940 to advance British cavity magnetron technology for microwave radar. By 1945, this effort yielded over 100 radar variants, including airborne bombing radars (like the SCR-584 for anti-aircraft fire control), shipboard search radars for naval detection, and ground-controlled approach systems that improved aircraft landings in poor visibility, contributing decisively to victories in the Pacific and European theaters. Complementing radar was the proximity fuse, a miniaturized radio transceiver invented by a collaboration between the Office of Scientific Research and Development and Johns Hopkins University's Applied Physics Laboratory starting in 1941; it used Doppler radar to detonate shells near targets without direct impact, increasing artillery effectiveness by up to 400% in battles like Iwo Jima and Okinawa.",
+      ro: "Electronica și armamentul au cunoscut evoluții transformatoare, în special în sistemele radar rafinate la Laboratorul de radiații al Institutului de Tehnologie din Massachusetts, înființat în 1940 pentru a avansa tehnologia magnetronului cu cavitate britanică pentru radarul cu microunde. Până în 1945, acest efort a produs peste 100 de variante de radar, inclusiv radare de bombardament aeriene (cum ar fi SCR-584 pentru controlul incendiilor antiaeriene), radare de căutare la bord pentru detectarea navale și sisteme de apropiere controlată de la sol care au îmbunătățit aterizările aeronavelor în condiții de vizibilitate slabă, contribuind decisiv la victoriile din Pacific și Europa. În completarea radarului a fost siguranța de proximitate, un transceiver radio miniaturizat inventat printr-o colaborare între Oficiul de Cercetare Științifică și Dezvoltare și Laboratorul de Fizică Aplicată al Universității Johns Hopkins, începând cu 1941; a folosit radarul Doppler pentru a detona obuze în apropierea țintelor fără impact direct, sporind eficiența artileriei cu până la 400% în bătălii precum Iwo Jima și Okinawa."
+    },
+    era: {
+      en: "Great Depression and World War II (1929–1945)",
+      ro: "Marea Criză Economică și al Doilea Război Mondial (1929–1945)"
+    }
+  },
+  {
     id: "aerosol-bomb-1941",
     year: "1941",
     name: {
@@ -3658,6 +3786,22 @@ export const INVENTIONS_1890_1945: InventionItem[] = [
     description: {
       en: "A bazooka is a shoulder-fired, man-portable recoilless rocket anti-tank warfare weapon that has a solid rocket motor for propulsion, allowing for high explosive (HE) and high-explosive anti-tank (HEAT) warheads to be delivered against armored vehicles, machine gun nests, and fortified bunkers at ranges beyond that of a standard thrown grenade or mine. The bazooka was co-invented in February 1942 by Edward Uhl, then a lieutenant in the United States Army, and Colonel Leslie Skinner.",
       ro: "O bazooka este o armă de război antitanc cu rachetă fără recul, portabilă de umăr, care are un motor solid pentru propulsie, permițând lansarea focoaselor cu explozive mari (HE) și antitanc puternic explozive (HEAT) împotriva vehiculelor blindate, cuiburilor de mitraliere și buncărelor fortificate la distanțe standard sau aruncate dincolo de o mină. Bazooka a fost co-inventat în februarie 1942 de Edward Uhl, pe atunci locotenent în armata Statelor Unite, și colonelul Leslie Skinner."
+    },
+    era: {
+      en: "Great Depression and World War II (1929–1945)",
+      ro: "Marea Criză Economică și al Doilea Război Mondial (1929–1945)"
+    }
+  },
+  {
+    id: "duct-tape-1942",
+    year: "1942",
+    name: {
+      en: "Duct tape",
+      ro: "Bandă adezivă Duct Tape"
+    },
+    description: {
+      en: "In parallel, logistical and chemical innovations addressed immediate wartime needs. In 1941, USDA entomologists Lyle D. Goodhue and William N. Sullivan patented the aerosol spray can, a pressurized device using liquefied gases to dispense insecticides evenly, initially dubbed the \"bug bomb\" for combating malaria-carrying mosquitoes among troops in the Pacific. This breakthrough, tested in field trials by 1942, enabled portable, non-clogging delivery of pesticides, reducing disease outbreaks and saving countless lives. The following year, 1942, saw the creation of duct tape by Johnson & Johnson's Permacel division, inspired by factory worker Vesta Stoudt's suggestion for a strong, waterproof adhesive to seal ammunition boxes against moisture; the green-backed tape, made with polyethylene-coated cloth and rubber adhesive, proved indispensable for quick repairs on ships and vehicles, with over 20 million yards produced monthly by war's end.",
+      ro: "Dezvoltată în 1942 de divizia Permacel a companiei Johnson & Johnson pentru etanșarea cutiilor de muniție împotriva umezelii, devenind celebra bandă adezivă universală."
     },
     era: {
       en: "Great Depression and World War II (1929–1945)",
@@ -3754,6 +3898,22 @@ export const INVENTIONS_1890_1945: InventionItem[] = [
     description: {
       en: "A block heater warms the engine of an automobile in order to ease and speed starting and vehicle warm-up in cold weather. The most common type is an electric heating element connected through a power cord often routed through the vehicle's grille. The block heater may replace one of the engine's core plugs, or may be installed in line with one of the radiator or heater hoses. The block heater, first known as a head bolt heater, was invented in 1945 by Andrew Freeman in Grand Forks, North Dakota. Freeman used some scrap hoses and copper tubing onto the heating element of an old flat-iron and produced the first headbolt heater, which warmed the engine's water jacket and the oil film between cylinder heads and pistons. U.S. patent #2,487,326 was filed on November 4, 1946, and issued to Freeman on November 8, 1949. United States portalTechnology portal Timelines of United States inventions Timeline of United States inventions (before 1890) Timeline of United States inventions (after 1991) Related topics History of United States patent law Lemelson Foundation Lemelson–MIT Prize List of inventors List of inventors killed by their own inventions List of military inventions List of prolific inventors NASA spinoff technologies National Inventors Hall of Fame Science and technology in the United States Technological and industrial history of the United States Timeline of United States discoveries United States Patent and Trademark Office United States patent law Yankee ingenuity Deitch, Joanne Weisman, \"A Nation of Inventors\", Carlisle, Massachusetts : Discovery Enterprises Limited, 2001 Haven, Kendall, \"100 Greatest Science Inventions of All Time\", Westport, Connecticut : Libraries Unlimited, 2006 Hopping-Egan, Lorraine, \"Inventors and Inventions\", New York City, New York : Scholastic, Incorporated, 1997 Ngeow, Evelyn, \"Inventors and Inventions\", New York City, New York : Marshall Cavendish Corporation, 2008 Philbin, Tom, \"The 100 Greatest Inventions of All Time\", New York City, New York : Kensington Publishing Corporation, 2003 American Inventors Google: U.S. Patents Search PBS: They Made America MIT: Invention Dimension NASA: Scientific and Technical Information: NASA Spinoff National Inventors Hall of Fame Foundation The Great Idea Finder United States Patent and Trademark Office",
       ro: "Un bloc de încălzire încălzește motorul unui automobil pentru a ușura și accelera pornirea și încălzirea vehiculului pe vreme rece. Cel mai comun tip este un element de încălzire electric conectat printr-un cablu de alimentare adesea direcționat prin grila vehiculului. Blocul de încălzire poate înlocui unul dintre dopurile de bază ale motorului sau poate fi instalat în linie cu unul dintre furtunurile radiatorului sau al încălzitorului. Încălzitorul blocului, cunoscut pentru prima dată ca un încălzitor cu șuruburi, a fost inventat în 1945 de Andrew Freeman în Grand Forks, Dakota de Nord. Freeman a folosit niște furtunuri vechi și tuburi de cupru pe elementul de încălzire al unui fier plat vechi și a produs primul încălzitor cu șuruburi, care a încălzit mantaua de apă a motorului și pelicula de ulei dintre chiulasele și pistoane. Brevetul american nr. 2.487.326 a fost depus la 4 noiembrie 1946 și eliberat lui Freeman pe 8 noiembrie 1949. Portalul Statelor Unite Portalul tehnologiei Cronologia invențiilor din Statele Unite Cronologia invențiilor din Statele Unite ale Americii (înainte de 1890) Cronologia invențiilor din Statele Unite ale Americii (după 1991 Lemelson Legislație Lemelson Legislația Statelor Unite ale Americii Lemelson Legislație de brevete – Fundația Lemelson) Lista inventatorilor Lista inventatorilor uciși de propriile invenții Lista inventatorilor prolifici Tehnologii derivate ale NASA Inventatorii naționali Hall of Fame Știința și tehnologia în Statele Unite Istoria tehnologică și industrială a Statelor Unite Cronologia descoperirilor din Statele Unite ale Americii Biroul de brevete și mărci înregistrate din Statele Unite Legea brevetelor din Statele Unite ale Americii Ingeniozitatea yankee Deitch, Joanne Naisman, Descoperitor, Limited 2001 Haven, Kendall, „100 Greatest Science Inventions of All Time”, Westport, Connecticut: Libraries Unlimited, 2006 Hopping-Egan, Lorraine, „Inventors and Inventions”, New York City, New York : Scholastic, Incorporated, 1997 Ngeow, Evelyn, „Inventions, New York City”, „Inventors, Marshall” 2008 Philbin, Tom, „The 100 Greatest Inventions of All Time”, New York City, New York : Kensington Publishing Corporation, 2003 American Inventors Google: U.S. Patent Search PBS: They Made America MIT: Invention Dimension NASA: Scientific and Technical Information: NASA Spinoff National Inventors Hall of Fame Finder Office The Great Idea Patent Finder and Trademark Foundation United States"
+    },
+    era: {
+      en: "Great Depression and World War II (1929–1945)",
+      ro: "Marea Criză Economică și al Doilea Război Mondial (1929–1945)"
+    }
+  },
+  {
+    id: "atomic-bomb-1945",
+    year: "1945",
+    name: {
+      en: "Atomic bomb",
+      ro: "Bomba atomică"
+    },
+    description: {
+      en: "The era's pinnacle of invention was the atomic bomb, developed under the Manhattan Project, a $2 billion U.S.-led initiative launched in 1942 involving over 130,000 personnel across sites like Los Alamos, Oak Ridge, and Hanford. Facing challenges with plutonium-239's high neutron emission, which ruled out simpler gun-type assembly, Project physicists including J. Robert Oppenheimer and Edward Teller devised the implosion method by 1944: a spherical core of plutonium compressed symmetrically by conventional explosives to achieve supercritical mass and initiate fission. Tested successfully at Trinity on July 16, 1945, with a yield equivalent to 20 kilotons of TNT, this plutonium implosion design powered the \"Fat Man\" bomb dropped on Nagasaki, demonstrating controlled nuclear chain reactions and ushering in the atomic age.",
+      ro: "Dezvoltată în cadrul Proiectului Manhattan sub coordonarea lui J. Robert Oppenheimer, culminând cu testul Trinity din iulie 1945. A deschis era nucleară și a grăbit sfârșitul celui de-al Doilea Război Mondial."
     },
     era: {
       en: "Great Depression and World War II (1929–1945)",

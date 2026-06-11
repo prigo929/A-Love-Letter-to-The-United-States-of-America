@@ -129,6 +129,22 @@ export const INVENTIONS_PRE_1890: InventionItem[] = [
     }
   },
   {
+    id: "turtle-1775",
+    year: "1775",
+    name: {
+      en: "Turtle",
+      ro: "Submersibilul Turtle"
+    },
+    description: {
+      en: "In 1775, David Bushnell invented the Turtle, the world's first submersible vessel designed for military use during the American Revolutionary War. The one-man submarine, resembling two upper tortoise shells fastened together, measured about 7 feet 6 inches in length and 3 feet in diameter, constructed from oak with iron fittings and cowhide covering. It submerged by flooding bilges with seawater and surfaced by pumping them out using a hand-operated crank; propulsion came from hand- and foot-cranked propellers for forward and vertical movement, with air supplied through snorkel-like tubes equipped with valves. The Turtle carried a 150-pound keg of gunpowder fitted with a clockwork time fuse, intended to be attached to the hull of enemy ships via a screw auger to detonate as a torpedo, aiming to break the British naval blockade. Though the 1776 attack on HMS Eagle failed due to mechanical issues and strong currents, the invention demonstrated pioneering concepts in underwater warfare and stealth technology.",
+      ro: "Inventat de David Bushnell în 1775. A fost primul submersibil din lume folosit în scopuri militare, conceput în timpul Războiului de Independență al SUA."
+    },
+    era: {
+      en: "Colonial Period (1500s–1775)",
+      ro: "Perioada Colonială (1500s–1775)"
+    }
+  },
+  {
     id: "swivel-chair-1776",
     year: "1776",
     name: {
@@ -289,6 +305,22 @@ export const INVENTIONS_PRE_1890: InventionItem[] = [
     }
   },
   {
+    id: "voltaic-pile-1800",
+    year: "1800",
+    name: {
+      en: "Voltaic pile",
+      ro: "grămada voltaică"
+    },
+    description: {
+      en: "In 1800, American chemist Robert Hare adapted Alessandro Volta's voltaic pile into one of the first functional batteries constructed in the United States, advancing electrochemical research. Hare's version stacked alternating zinc and copper discs separated by brine-soaked cloth or cardboard, producing a steady electric current through chemical reactions between the metals and electrolyte. This setup generated reliable voltage for experiments, unlike sporadic static devices, and Hare demonstrated it in Philadelphia lectures, producing sparks and decomposition of water. The adaptation aided early American scientific inquiry, providing a portable power source for studies in chemistry and physics that informed post-Revolutionary education and innovation.",
+      ro: "În 1800, chimistul american Robert Hare a adaptat grămada voltaică a lui Alessandro Volta într-una dintre primele baterii funcționale construite în Statele Unite, promovând cercetarea electrochimică. Versiunea lui Hare a stivuit alternative discuri de zinc și cupru separate prin pânză sau carton îmbibat în saramură, producând un curent electric constant prin reacții chimice dintre metale și electrolit. Această configurație a generat o tensiune de încredere pentru experimente, spre deosebire de dispozitivele statice sporadice, iar Hare a demonstrat-o în prelegerile din Philadelphia, producând scântei și descompunerea apei. Adaptarea a ajutat cercetările științifice americane timpurii, oferind o sursă de energie portabilă pentru studii de chimie și fizică care au informat educația și inovația post-revoluționară."
+    },
+    era: {
+      en: "Independence and the Federalist Era (1776–1860)",
+      ro: "Era Independenței și a Federalismului (1776–1860)"
+    }
+  },
+  {
     id: "suspension-bridge-1801",
     year: "1801",
     name: {
@@ -401,6 +433,22 @@ export const INVENTIONS_PRE_1890: InventionItem[] = [
     }
   },
   {
+    id: "steamboat-1807",
+    year: "1807",
+    name: {
+      en: "Steamboat",
+      ro: "Nava cu aburi Clermont"
+    },
+    description: {
+      en: "The practical steamboat emerged in 1807 through Robert Fulton's Clermont, the first commercially viable vessel powered by a steam engine driving paddlewheels for propulsion on inland waterways. Fulton's design integrated a high-pressure steam engine built by Charles Brown, with twin side-mounted paddlewheels that achieved speeds of 4-5 miles per hour against the current of the Hudson River during its maiden voyage from New York City to Albany, covering 150 miles in 32 hours. This innovation overcame the limitations of wind-dependent sailing by harnessing steam to turn a crankshaft connected to the wheels, reducing travel time dramatically and enabling reliable scheduled service, which Fulton established under a monopoly granted by New York state.",
+      ro: "Construită de Robert Fulton în 1807, fiind prima navă propulsată de un motor cu abur viabilă comercial din lume, ce a transformat transportul pe ape interioare."
+    },
+    era: {
+      en: "Independence and the Federalist Era (1776–1860)",
+      ro: "Era Independenței și a Federalismului (1776–1860)"
+    }
+  },
+  {
     id: "lobster-trap-1808",
     year: "1808",
     name: {
@@ -497,6 +545,22 @@ export const INVENTIONS_PRE_1890: InventionItem[] = [
     }
   },
   {
+    id: "erie-canal-1825",
+    year: "1825",
+    name: {
+      en: "Erie Canal",
+      ro: "Canalul Erie"
+    },
+    description: {
+      en: "Complementing these inventions, the expansion of canals and railroads formed critical infrastructure that amplified their impact on trade and mobility from the 1810s to 1860. The Erie Canal, completed in 1825, linked the Great Lakes to the Hudson River via 363 miles of locks and channels, slashing freight costs from $100 to $10 per ton for goods like grain to New York City and enabling the transport of 1.5 million tons annually by 1840. Railroads followed, with the Baltimore & Ohio line opening in 1830 as the first common-carrier system, growing to over 30,000 miles of track by 1860 through steam locomotives that hauled heavier loads faster than canals, integrating markets from the Atlantic seaboard to the Mississippi River.",
+      ro: "Completând aceste invenții, extinderea canalelor și a căilor ferate a format o infrastructură critică care a amplificat impactul acestora asupra comerțului și mobilității din anii 1810 până în 1860. Canalul Erie, finalizat în 1825, a legat Marile Lacuri de râul Hudson prin 363 de mile de ecluze și canale, costă de la 10 USD la tone de mărfuri, de la 10 USD la tone de mărfuri. New York City și a permis transportul a 1,5 milioane de tone anual până în 1840. Au urmat căile ferate, cu linia Baltimore și Ohio deschisă în 1830 ca primul sistem de transport comun, crescând la peste 30.000 de mile de șină până în 1860 prin locomotive cu abur care transportau încărcături mai grele de la râurile Atlantic, integrând mai repede piețele de la râurile Mississii."
+    },
+    era: {
+      en: "Independence and the Federalist Era (1776–1860)",
+      ro: "Era Independenței și a Federalismului (1776–1860)"
+    }
+  },
+  {
     id: "detachable-collar-1827",
     year: "1827",
     name: {
@@ -586,6 +650,22 @@ export const INVENTIONS_PRE_1890: InventionItem[] = [
     description: {
       en: "A doorbell is a signaling device commonly found near a door. It commonly emits a ringing sound to alert the occupant of the building to a visitor's presence. The electric doorbell was invented by Joseph Henry in 1831.",
       ro: "O sonerie este un dispozitiv de semnalizare care se găsește în mod obișnuit lângă o ușă. În mod obișnuit, emite un sunet pentru a alerta ocupantul clădirii cu privire la prezența unui vizitator. Soneria electrică a fost inventată de Joseph Henry în 1831."
+    },
+    era: {
+      en: "Independence and the Federalist Era (1776–1860)",
+      ro: "Era Independenței și a Federalismului (1776–1860)"
+    }
+  },
+  {
+    id: "reaper-1831",
+    year: "1831",
+    name: {
+      en: "Reaper",
+      ro: "Secătoarea mecanică McCormick"
+    },
+    description: {
+      en: "Agricultural mechanization advanced significantly with Cyrus McCormick's 1831 reaper, a horse-drawn machine that automated grain harvesting by using a vibrating blade to cut wheat and other cereals at speeds far exceeding manual sickles. The device featured a reciprocating serrated blade mounted on a horizontal platform, with a reel above to sweep stalks toward the cutters, allowing cut grain to fall onto the platform for manual binding while the machine advanced via ground-driven wheels. Demonstrated successfully on the McCormick family farm in Virginia's Shenandoah Valley, it harvested up to 12 acres per day with two horses and two operators, revolutionizing Midwestern wheat production by reducing labor needs during peak harvest seasons.",
+      ro: "Inventată de Cyrus McCormick în 1831, automatizând recoltarea cerealelor și revoluționând productivitatea agricolă în SUA și Europa."
     },
     era: {
       en: "Independence and the Federalist Era (1776–1860)",
@@ -730,6 +810,22 @@ export const INVENTIONS_PRE_1890: InventionItem[] = [
     description: {
       en: "The plow is a tool used in farming for initial cultivation of soil in preparation for sowing seed or planting. It has been a basic instrument for most of recorded history, and represents one of the major advances in agriculture. In modern use, a plowed field is typically left to dry out, and is harrowed before planting. An American agricultural pioneer named John Deere modernized the plow by shaping steel from an old sawmill blade and joining it to a wrought iron moldboard. Deere polished both parts smooth so the damp soil would no longer stick. After patenting the device in 1837, it became an instant success and a necessity on American farms.",
       ro: "Plugul este un instrument folosit în agricultură pentru cultivarea inițială a solului în pregătirea pentru semănat sau plantare. A fost un instrument de bază pentru cea mai mare parte a istoriei înregistrate și reprezintă unul dintre progresele majore în agricultură. În utilizarea modernă, un câmp arat este de obicei lăsat să se usuce și este grăpat înainte de plantare. Un pionier agricol american pe nume John Deere a modernizat plugul modelând oțel dintr-o pânză veche de cherestea și îmbinându-l cu o tablă din fier forjat. Deere a lustruit ambele părți netede, astfel încât solul umed să nu se mai lipească. După brevetarea dispozitivului în 1837, acesta a devenit un succes instantaneu și o necesitate în fermele americane."
+    },
+    era: {
+      en: "Independence and the Federalist Era (1776–1860)",
+      ro: "Era Independenței și a Federalismului (1776–1860)"
+    }
+  },
+  {
+    id: "telegraph-1837",
+    year: "1837",
+    name: {
+      en: "Telegraph",
+      ro: "Telegraful electromagnetic"
+    },
+    description: {
+      en: "Communication underwent a profound change in 1837 with Samuel F. B. Morse's electric telegraph, which transmitted messages over wires using electromagnetic pulses amplified by relay stations for long-distance reliability. Morse's system employed a key to send coded electrical signals—dots and dashes representing letters in what became known as Morse code—through a single wire, with receivers using electromagnets to register marks on paper tape or sound clicks. The electromagnetic relay, inspired by Joseph Henry's research, boosted weak signals at intervals every 10-20 miles via additional batteries and coils, enabling the first public demonstration in 1844 between Washington, D.C., and Baltimore, where Morse sent the message \"What hath God wrought.\" This technology compressed intercity messaging from days to minutes, spurring national information networks.",
+      ro: "Dezvoltat de Samuel Morse în 1837, transmițând semnale electrice sub formă de impulsuri prin cabluri și utilizând codul Morse pentru comunicații rapide la distanță."
     },
     era: {
       en: "Independence and the Federalist Era (1776–1860)",
@@ -986,6 +1082,22 @@ export const INVENTIONS_PRE_1890: InventionItem[] = [
     description: {
       en: "The printing telegraph is a derivative of the electrical telegraph which links two 28-key piano-style keyboards by electrical wire representing a letter of the alphabet and when pressed causing the corresponding letter to print at the receiving end. The receiver would then receive the instantly readable text of the message on a paper strip. This is in contrast to the electrical telegraphs that used Morse Code 'dots' and 'dashes' which needed to be converted into readable text. After 1850, the printing telegraph was in common use, namely along the United States east coast and in France. The printing telegraph was invented in 1846 by Royal Earl House of Rockland, Vermont.",
       ro: "Dezvoltat de Samuel Morse în 1837. A permis transmiterea instantanee de mesaje la distanțe mari prin codul Morse, punând bazele telecomunicațiilor globale."
+    },
+    era: {
+      en: "Independence and the Federalist Era (1776–1860)",
+      ro: "Era Independenței și a Federalismului (1776–1860)"
+    }
+  },
+  {
+    id: "sewing-machine-1846",
+    year: "1846",
+    name: {
+      en: "Sewing machine",
+      ro: "Mașina de cusut lockstitch"
+    },
+    description: {
+      en: "Elias Howe's 1846 sewing machine introduced the lockstitch mechanism, which interlocked two threads—one from an eyed needle descending vertically and another from a horizontal shuttle—for durable seams in fabric production. Howe's patented design used a continuous loop formed by the needle's upper thread, through which the shuttle's thread passed to create the stitch, powered by a foot treadle that allowed one operator to sew at rates up to 250 stitches per minute, compared to 40 by hand. Tested in a Cambridge, Massachusetts, workshop, the machine targeted garment makers and was pivotal in shifting sewing from home crafts to factory operations, despite initial patent disputes that Howe won in court.",
+      ro: "Inventată de Elias Howe în 1846, introducând cusătura de tip lockstitch cu două fire de ață și marcând trecerea la producția industrială de îmbrăcăminte."
     },
     era: {
       en: "Independence and the Federalist Era (1776–1860)",
@@ -1601,6 +1713,38 @@ export const INVENTIONS_PRE_1890: InventionItem[] = [
     }
   },
   {
+    id: "gatling-gun-1861",
+    year: "1861",
+    name: {
+      en: "Gatling gun",
+      ro: "Mitraliera Gatling"
+    },
+    description: {
+      en: "In 1861, amid escalating Civil War tensions, Indiana physician and inventor Richard Jordan Gatling conceived the Gatling gun, a hand-cranked, multi-barrel firearm designed to increase firepower efficiency and reduce casualties by minimizing the need for infantry lines. The weapon featured six to ten barrels arranged in a cluster around a central axis, rotated by a hand crank that sequentially loaded, fired, and ejected .58-caliber paper cartridges from gravity-fed hoppers, achieving a firing rate of approximately 200 rounds per minute without excessive overheating. Patented in 1862 (U.S. Patent No. 36,836), the Gatling gun saw limited Union deployment late in the war, such as at the Battle of Petersburg in 1864, though its mechanical complexity limited widespread adoption until post-war refinements.",
+      ro: "Inventată de Richard Jordan Gatling în 1861. A fost prima armă de foc cu țevi rotative acționată manual, capabilă de foc automat rapid."
+    },
+    era: {
+      en: "Civil War and the Reconstruction Era (1861–1877)",
+      ro: "Războiul Civil și Era Reconstrucției (1861–1877)"
+    }
+  },
+  {
+    id: "uss-monitor-1862",
+    year: "1862",
+    name: {
+      en: "USS Monitor",
+      ro: "Nava blindată USS Monitor"
+    },
+    description: {
+      en: "The following year, Swedish-American engineer John Ericsson designed the USS Monitor, the first ironclad warship commissioned by the U.S. Navy, fundamentally altering naval warfare by introducing armored plating and innovative armament configurations. Launched on January 30, 1862, the vessel's low-profile hull, drawing only 10 feet of water, minimized its target profile, while its revolutionary revolving turret— an 11-inch-thick iron cylinder 20 feet in diameter housing two 11-inch Dahlgren smoothbore guns—enabled 360-degree firing capability without broadside limitations. Powered by a novel vibrating-lever steam engine and protected by 5-inch iron plates over a wooden hull, the Monitor's design emphasized speed, stability, and protection in coastal combat, culminating in its famous clash with the Confederate ironclad CSS Virginia at the Battle of Hampton Roads on March 9, 1862, which prevented a Union blockade collapse. Over 50 similar \"Monitor-class\" ships were built during the war, influencing global naval architecture.",
+      ro: "Proiectată de John Ericsson în 1862. Prima navă de război blindată cu turelă rotativă din dotarea Marinei SUA, redefinind tacticile navale la nivel mondial."
+    },
+    era: {
+      en: "Civil War and the Reconstruction Era (1861–1877)",
+      ro: "Războiul Civil și Era Reconstrucției (1861–1877)"
+    }
+  },
+  {
     id: "breakfast-cereal-1863",
     year: "1863",
     name: {
@@ -2113,6 +2257,22 @@ export const INVENTIONS_PRE_1890: InventionItem[] = [
     }
   },
   {
+    id: "blue-jeans-1873",
+    year: "1873",
+    name: {
+      en: "Blue jeans",
+      ro: "Blugii albaștri (Blue jeans)"
+    },
+    description: {
+      en: "Complementing these agricultural advances, in 1873, San Francisco dry goods merchant Levi Strauss and Nevada tailor Jacob W. Davis patented the copper-riveted blue jeans (U.S. Patent No. 139,121), creating durable work pants tailored for miners, farmers, and laborers rebuilding war-torn regions. Crafted from coarse denim or canvas dyed indigo for fade resistance, the pants featured reinforced copper rivets at stress points like pockets and seams to prevent tearing under heavy use, addressing complaints from California Gold Rush workers about flimsy attire. Introduced as \"waist overalls,\" these pants became essential workwear during Reconstruction, supporting freedmen in Southern fields and westward migrants in construction, with Levi Strauss & Co. scaling production to meet demand for rugged clothing that symbolized industrial resilience and mobility in a recovering economy.",
+      ro: "Brevetați de Levi Strauss și Jacob Davis în 1873, folosind nituri de cupru la punctele de tensiune pentru a crea pantaloni de lucru extrem de rezistenți."
+    },
+    era: {
+      en: "Civil War and the Reconstruction Era (1861–1877)",
+      ro: "Războiul Civil și Era Reconstrucției (1861–1877)"
+    }
+  },
+  {
     id: "fire-sprinkler-automated-1874",
     year: "1874",
     name: {
@@ -2321,6 +2481,22 @@ export const INVENTIONS_PRE_1890: InventionItem[] = [
     }
   },
   {
+    id: "telephone-1876",
+    year: "1876",
+    name: {
+      en: "Telephone",
+      ro: "Telefonul electromagnetic"
+    },
+    description: {
+      en: "Culminating the era's innovations, Scottish-born inventor Alexander Graham Bell patented the telephone in 1876 (U.S. Patent No. 174,465), a device that converted sound waves into electrical signals for transmission over wires, revolutionizing long-distance communication vital for coordinating Reconstruction efforts across divided states. Bell's early model employed a liquid transmitter—a diaphragm vibrating a needle in an acidic solution to vary electrical resistance and modulate current proportional to voice frequencies—allowing intelligible speech transmission, as demonstrated on March 10, 1876, when Bell famously called his assistant Thomas Watson with the words, \"Mr. Watson, come here—I want to see you.\" This breakthrough, refined from harmonic telegraph experiments, enabled real-time voice relay over existing telegraph lines, facilitating administrative oversight, business transactions, and family reunions in the post-war South, though commercial viability grew slowly until the 1880s. During Reconstruction, such labor-saving communication devices underscored a broader push for technologies that streamlined governance and economic integration without physical travel.",
+      ro: "Inventat de Alexander Graham Bell în 1876. Dispozitivul a transformat undele sonore în semnale electrice pentru transmisia prin cablu, revoluționând comunicațiile la distanță."
+    },
+    era: {
+      en: "Civil War and the Reconstruction Era (1861–1877)",
+      ro: "Războiul Civil și Era Reconstrucției (1861–1877)"
+    }
+  },
+  {
     id: "phonograph-1877",
     year: "1877",
     name: {
@@ -2442,6 +2618,22 @@ export const INVENTIONS_PRE_1890: InventionItem[] = [
     description: {
       en: "",
       ro: ""
+    },
+    era: {
+      en: "Gilded Age (1878–1899)",
+      ro: "Epoca de Aur (Gilded Age) (1878–1899)"
+    }
+  },
+  {
+    id: "incandescent-light-bulb-1879",
+    year: "1879",
+    name: {
+      en: "Incandescent light bulb",
+      ro: "Becul electric incandescent"
+    },
+    description: {
+      en: "In 1879, Thomas Edison patented the incandescent light bulb, featuring a carbon filament sealed in a vacuum to produce practical, long-lasting illumination that revolutionized indoor lighting and urban night activity. That same year, James Ritty and his brother John invented the mechanical cash register, known as the \"Incorruptible Cashier,\" which recorded sales and reduced theft in saloons and stores through a dial mechanism that tallied transactions. These inventions supported the era's booming retail and hospitality sectors amid rapid city growth. Concurrently, elevator technology advanced with Otis Elevator Company's introduction of roped hydraulic elevators in 1878, capable of speeds up to 244 meters per minute, facilitating the construction of taller buildings and denser urban populations.",
+      ro: "Dezvoltat de Thomas Edison în 1879, folosind un filament de carbon într-un glob vidat pentru a produce o sursă de lumină electrică durabilă și comercială."
     },
     era: {
       en: "Gilded Age (1878–1899)",
@@ -2634,6 +2826,22 @@ export const INVENTIONS_PRE_1890: InventionItem[] = [
     description: {
       en: "",
       ro: ""
+    },
+    era: {
+      en: "Gilded Age (1878–1899)",
+      ro: "Epoca de Aur (Gilded Age) (1878–1899)"
+    }
+  },
+  {
+    id: "automatic-machine-gun-1884",
+    year: "1884",
+    name: {
+      en: "Automatic machine gun",
+      ro: "Mitralieră automată"
+    },
+    description: {
+      en: "Military innovation emerged in 1884 when Hiram Maxim, an American-born inventor, developed the first recoil-operated automatic machine gun, which used the recoil from each shot to load and fire cartridges continuously, marking a significant leap in firearm automation. Consumer conveniences followed in 1888 with Marvin Stone's flexible drinking straw, a paper tube wound spirally and coated in wax to replace fragile rye grass versions, improving hygiene and usability in beverages. By 1891, Nikola Tesla invented the Tesla coil, a high-frequency transformer that generated high voltages at low currents for wireless energy transmission experiments, influencing later electrical research.",
+      ro: "Inovația militară a apărut în 1884 când Hiram Maxim, un inventator de origine americană, a dezvoltat prima mitralieră automată acționată cu recul, care folosea recul de la fiecare împușcătură pentru a încărca și a trage continuu cartușe, marcând un salt semnificativ în automatizarea armelor de foc. În 1888, au urmat confortul consumatorilor cu paiele flexibile de băut a lui Marvin Stone, un tub de hârtie înfășurat în spirală și acoperit cu ceară pentru a înlocui versiunile fragile de iarbă de secară, îmbunătățind igiena și utilizarea în băuturi. Până în 1891, Nikola Tesla a inventat bobina Tesla, un transformator de înaltă frecvență care a generat tensiuni înalte la curenți scăzuti pentru experimente de transmitere a energiei fără fir, influențând cercetările electrice ulterioare."
     },
     era: {
       en: "Gilded Age (1878–1899)",
