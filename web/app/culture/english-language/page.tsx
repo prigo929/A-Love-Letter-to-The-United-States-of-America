@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
-import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import Link from "next/link";
+import Image from "next/image";
+import { Home, ChevronRight } from "lucide-react";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import {
-  MacroStyles,
-  MacroHero,
-  CountUp,
-  InfrastructureBand,
-} from "@/components/economy/EconomyAnimations";
+import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 import { CultureStyles } from "@/components/culture/CulturePageComponents";
-import { getCultureEnglishLanguage } from "@/lib/data/culture-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
@@ -21,200 +17,220 @@ export default async function EnglishLanguagePage() {
   const locale = await getServerLocale();
   const isRo = locale === "ro";
 
-  const data = getCultureEnglishLanguage(locale);
-
-  const breadcrumbCulture = isRo ? "Cultură" : "Culture";
-  const breadcrumbPage = isRo ? "Limba Engleză" : "English Language";
-
   const content = {
-    statsTitle: isRo ? "GRAVITATEA OPERATORULUI GLOBAL" : "GLOBAL OPERATING SYSTEM DENSITY",
+    pullQuote: isRo
+      ? "Engleza nu a cucerit lumea prin decrete imperiale — a câștigat prin utilitate voluntară, devenind sistemul de operare al logicii globale."
+      : "English did not conquer the world through imperial decree — it won through voluntary utility, becoming the operating system of global logic.",
+    body1: isRo
+      ? "Fiecare linie de cod scrisă în Tokyo, Berlin sau São Paulo conține cuvinte cheie în engleză. 90% din cercetarea științifică internațională este publicată în engleză. ICAO mandatează engleza ca limbă universală a aviației. Toate tranzacțiile financiare majore, toate contractele de drept internațional, toate standardele tehnice globale sunt redactate în engleză."
+      : "Every line of code compiled in Tokyo, Berlin, or São Paulo contains English keywords. 90% of international scientific research is published in English. ICAO mandates English as the universal language of aviation. All major financial transactions, international law contracts, and global technical standards are written in English.",
+    body2: isRo
+      ? "Engleza americană, în special, a adăugat o nouă dimensiune limbii: vocabularul inovației tehnologice (startup, disrupt, app, streaming, cloud) și al culturii pop (blockbuster, jeans, cool, OK) — cuvinte care nu mai au echivalente funcționale în alte limbi."
+      : "American English in particular added a new dimension to the language: the vocabulary of technological innovation (startup, disrupt, app, streaming, cloud) and pop culture (blockbuster, jeans, cool, OK) — words that no longer have functional equivalents in other languages.",
+    bandSubtitle: isRo
+      ? "În spatele fiecărei linii de cod compilate în Tokyo, Berlin sau São Paulo stau cuvintele cheie în engleză — standardul voluntar care scalează eficiența globală."
+      : "Behind every line of code compiled in Tokyo, Berlin, or São Paulo lie English keywords — the voluntary standard scaling global efficiency.",
     backLink: isRo ? "← Înapoi la Modă" : "← Back to Fashion",
     nextLink: isRo ? "Prezentare Generală →" : "Overview →",
-    bandLabel: isRo ? "SISTEMUL DE OPERARE AL LOGICII" : "THE OPERATING SYSTEM OF LOGIC",
-    bandTitle: isRo ? "Codul: Engleza ca Standard Universal" : "The Code: English as the Universal Logic Standard",
-    bandSubtitle: isRo
-      ? "În spatele fiecărei linii de cod scrise în Tokyo, Berlin sau São Paulo stau cuvintele cheie în limba engleză — standardul global de eficiență."
-      : "Behind every line of code compiled in Tokyo, Berlin, or São Paulo lie English keywords — the voluntary standard scaling global efficiency.",
-    oracleDescription: isRo
-      ? "Întreabă Oracolul AI despre standardul ICAO în aviație, terminologia de programare în engleză sau răspândirea limbii."
-      : "Ask the AI Oracle about ICAO aviation language mandates, the origins of English coding syntax, or its role as a global scientific lingua franca.",
   };
+
+  const domains = [
+    {
+      title: isRo ? "Cod & Tehnologie" : "Code & Technology",
+      stat: "100%",
+      statLabel: isRo ? "Limbaje de programare" : "Programming languages",
+      desc: isRo
+        ? "Python, JavaScript, C++, SQL — fiecare limbaj de programare major folosește cuvinte cheie în engleză. Nu există alternativă viabilă la scară globală."
+        : "Python, JavaScript, C++, SQL — every major programming language uses English keywords. There is no viable alternative at global scale.",
+      icon: "{ }",
+    },
+    {
+      title: isRo ? "Știință & Cercetare" : "Science & Research",
+      stat: "90%",
+      statLabel: isRo ? "Lucrări științifice" : "Scientific papers",
+      desc: isRo
+        ? "Nouăzeci de procente din publicațiile de cercetare internaționale sunt scrise în engleză — inclusiv cele din China, Germania sau Japonia."
+        : "Ninety percent of international research publications are written in English — including those from China, Germany, and Japan.",
+      icon: "∑",
+    },
+    {
+      title: isRo ? "Aviație & Spațiu" : "Aviation & Space",
+      stat: "100%",
+      statLabel: isRo ? "Standard ICAO global" : "ICAO global standard",
+      desc: isRo
+        ? "ICAO mandatează engleza ca singura limbă acceptată în comunicațiile de control al traficului aerian internațional. Zero excepții."
+        : "ICAO mandates English as the sole accepted language in international air traffic control communications. Zero exceptions.",
+      icon: "✈",
+    },
+    {
+      title: isRo ? "Finanțe & Drept" : "Finance & Law",
+      stat: "$",
+      statLabel: isRo ? "Moneda tranzacțiilor" : "Currency of transactions",
+      desc: isRo
+        ? "NYSE, NASDAQ, FMI, Banca Mondială — toate contractele de drept internațional și tranzacțiile financiare majore sunt redactate în engleză."
+        : "NYSE, NASDAQ, IMF, World Bank — all major international law contracts and financial transactions are drafted in English.",
+      icon: "⚖",
+    },
+  ];
+
+  const magazineCovers = [
+    { src: SITE_IMAGES.culture.vaultNatGeo1942, alt: "National Geographic July 1942 — American Flag", label: "Nat Geo 1942" },
+    { src: SITE_IMAGES.culture.vaultNatGeo1969, alt: "National Geographic Dec 1969 — Apollo 11 Moon", label: "Nat Geo 1969" },
+    { src: SITE_IMAGES.culture.vaultNatGeo1981, alt: "National Geographic Oct 1981 — Space Shuttle", label: "Nat Geo 1981" },
+    { src: SITE_IMAGES.culture.vaultNatGeo1984, alt: "National Geographic March 1984 — The Laser", label: "Nat Geo 1984" },
+    { src: SITE_IMAGES.culture.vaultNatGeo1996, alt: "National Geographic March 1996 — Emperor Penguins", label: "Nat Geo 1996" },
+    { src: SITE_IMAGES.culture.vaultNatGeo1997, alt: "National Geographic April 1997 — Hubble Universe", label: "Nat Geo 1997" },
+    { src: SITE_IMAGES.culture.vaultTime911, alt: "TIME Magazine — 9/11 Cover", label: "TIME 9/11" },
+    { src: SITE_IMAGES.culture.vaultFortune1931, alt: "Fortune 1931 — Aviation Cover", label: "Fortune 1931" },
+  ];
 
   return (
     <>
       <MacroStyles />
       <CultureStyles />
 
-      {/* Cinematic Hero Banner */}
       <MacroHero
         imageSrc={SITE_IMAGES.culture.timesSquare}
-        imageAlt="Times Square NYC Rainy Night with Yellow Taxis"
-        eyebrow={data.eyebrow}
-        titleLead={isRo ? "GRAVITATEA" : "LINGUISTIC"}
+        imageAlt="Times Square NYC at night with illuminated signs"
+        eyebrow={isRo ? "GRAVITAȚIA GLOBALĂ · LIMBĂ" : "THE GLOBAL GRAVITY · LANGUAGE"}
+        titleLead={isRo ? "GRAVITAȚIE" : "LINGUISTIC"}
         titleAccent={isRo ? "LINGVISTICĂ" : "GRAVITY"}
-        description={data.paragraphs[0]}
+        description={content.pullQuote}
         stats={[
-          {
-            value: "100%",
-            label: isRo ? "Software și Programare" : "Software & Coding",
-          },
-          {
-            value: "90%",
-            label: isRo ? "Lucrări Științifice" : "Scientific Papers",
-          },
-          {
-            value: "100%",
-            label: isRo ? "Aviație și Spațiu" : "Aviation & Space",
-          },
+          { value: "100%", label: isRo ? "Aviație & Cod" : "Aviation & Coding" },
+          { value: "90%", label: isRo ? "Publicații Științifice" : "Scientific Papers" },
+          { value: "1.5B", label: isRo ? "Vorbitori de Engleză" : "English Speakers" },
         ]}
       />
 
-      <div className="bg-[#030405] relative z-10 pb-32 pt-16 font-body text-white">
-        {/* Breadcrumb */}
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
-          <Breadcrumb
-            items={[
-              { label: breadcrumbCulture, href: "/culture" },
-              { label: breadcrumbPage },
-            ]}
-            className="mb-8"
-          />
-        </div>
-
-        {/* Dynamic Count-Up Stats */}
-        <section className="py-24 border-t border-b border-white/5 bg-white/[0.01] mb-32">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-16 font-semibold">
-              {content.statsTitle}
-            </p>
-            <div className="grid gap-12 sm:grid-cols-3 text-center">
-              <div className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500">
-                <p className="font-macro-display text-5xl md:text-6xl text-[#E8B923] font-black tracking-tight mb-4">
-                  <CountUp value={100} suffix="%" />
-                </p>
-                <p className="font-macro-display text-xl font-bold text-white mb-3">
-                  {isRo ? "Limbaje de Programare" : "Software Syntax Standard"}
-                </p>
-                <p className="text-xs text-white/50 leading-relaxed font-body">
-                  {isRo
-                    ? "Cuvinte cheie precum `if`, `for`, `while` sau `return` sunt uniformizate global în engleză."
-                    : "Keywords like `if`, `while`, and `return` are standardized globally in English keywords."}
-                </p>
-              </div>
-              <div className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500">
-                <p className="font-macro-display text-5xl md:text-6xl text-[#E8B923] font-black tracking-tight mb-4">
-                  <CountUp value={90} suffix="%" />
-                </p>
-                <p className="font-macro-display text-xl font-bold text-white mb-3">
-                  {isRo ? "Cercetare Științifică" : "Indexed Research"}
-                </p>
-                <p className="text-xs text-white/50 leading-relaxed font-body">
-                  {isRo
-                    ? "Cota lucrărilor de cercetare indexate global publicate integral în limba engleză."
-                    : "Linguistic share of indexed peer-reviewed scientific discovery papers."}
-                </p>
-              </div>
-              <div className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500">
-                <p className="font-macro-display text-5xl md:text-6xl text-[#E8B923] font-black tracking-tight mb-4">
-                  <CountUp value={100} suffix="%" />
-                </p>
-                <p className="font-macro-display text-xl font-bold text-white mb-3">
-                  {isRo ? "Control Trafic Aerian" : "Air Traffic Control"}
-                </p>
-                <p className="text-xs text-white/50 leading-relaxed font-body">
-                  {isRo
-                    ? "Standardul mandatat obligatoriu de Organizația Aviației Civile Internaționale."
-                    : "Mandatory standard mandated by the International Civil Aviation Organization."}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Editorial Essay & Domain progress bars */}
-        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
+      {/* Dark thesis */}
+      <div className="culture-bg text-[#F5EDD8]">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-24">
+          <nav className="flex items-center gap-1.5 font-body text-sm text-white/50 tracking-wide mb-14">
+            <Link href="/" className="hover:text-white transition-colors flex items-center"><Home className="h-3.5 w-3.5" /></Link>
+            <ChevronRight className="h-3 w-3 opacity-30 shrink-0" />
+            <Link href="/culture" className="hover:text-white transition-colors">{isRo ? "Cultură" : "Culture"}</Link>
+            <ChevronRight className="h-3 w-3 opacity-30 shrink-0" />
+            <span className="text-white font-medium">{isRo ? "Limba Engleză" : "English Language"}</span>
+          </nav>
           <div className="grid gap-12 lg:grid-cols-3 items-start">
-            <div className="lg:col-span-2 space-y-6">
-              <h2 className="font-macro-display text-3xl font-bold text-[#E8B923] mb-6">
-                {data.headline}
-              </h2>
-              {data.paragraphs.slice(1).map((p, idx) => (
-                <p key={idx} className="font-macro-body text-white/80 text-lg md:text-xl leading-relaxed mb-6">
-                  {p}
-                </p>
+            <div className="lg:col-span-2">
+              <blockquote className="font-editorial text-2xl md:text-[2.1rem] italic text-[#F5EDD8]/95 leading-[1.4] mb-8 pl-6 border-l-2 border-[#E8391B]">
+                &ldquo;{content.pullQuote}&rdquo;
+              </blockquote>
+              <p className="font-editorial text-lg text-[#F5EDD8]/70 leading-relaxed mb-4">{content.body1}</p>
+              <p className="font-editorial text-lg text-[#F5EDD8]/70 leading-relaxed">{content.body2}</p>
+            </div>
+            <div className="culture-glass rounded-2xl p-6 border border-white/5 space-y-6 group">
+              {[
+                { value: "100%", label: isRo ? "Aviație internațională (ICAO)" : "International aviation (ICAO standard)" },
+                { value: "90%", label: isRo ? "Publicații științifice globale" : "Global scientific publications" },
+                { value: "1.5B", label: isRo ? "Vorbitori de engleză în lume" : "English speakers worldwide" },
+              ].map((s, i) => (
+                <div key={i} className="border-b border-white/5 pb-4 last:border-0 last:pb-0">
+                  <div className="font-macro-display text-4xl font-bold text-white group-hover:text-glory-gold transition-colors duration-300">{s.value}</div>
+                  <div className="text-xs text-glory-gold uppercase tracking-wider mt-1 font-body">{s.label}</div>
+                </div>
               ))}
             </div>
+          </div>
+        </div>
 
-            {/* Sidebar with progress bars */}
-            <div className="culture-glass rounded-3xl p-8 border border-white/5 space-y-6 font-sans">
-              <h3 className="font-macro-display text-lg font-bold text-glory-gold border-b border-white/10 pb-3 uppercase tracking-wider">
-                {isRo ? "GRAVITAȚIA LINGVISTICĂ" : "LINGUISTIC GRAVITY"}
-              </h3>
-              <div className="space-y-6">
-                {data.domains.map((dom, idx) => (
-                  <div key={idx} className="space-y-2">
-                    <div className="flex justify-between text-xs font-semibold text-white">
-                      <span>{dom.name}</span>
-                      <span className="text-glory-gold">{dom.percentage}%</span>
-                    </div>
-                    <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-glory-gold rounded-full"
-                        style={{ width: `${dom.percentage}%` }}
-                      />
-                    </div>
-                    <p className="text-[10px] text-[#F5EDD8]/50 leading-relaxed">
-                      {dom.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
+        <div className="h-16 w-full gradient-dark-to-cream" />
+
+        {/* CREAM: Domain cards */}
+        <section className="relative culture-cream-bg text-[#0C0907] py-24 md:py-32 overflow-hidden">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="text-center mb-20">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "DOMENII DE DOMINANȚĂ" : "DOMAINS OF DOMINANCE"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "SISTEMUL GLOBAL" : "THE GLOBAL OS"}</h2>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {domains.map((d, i) => (
+                <div key={i} className="bg-white/40 backdrop-blur-md rounded-2xl p-8 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">
+                  <p className="font-macro-display text-4xl mb-3 text-[#E8391B]">{d.icon}</p>
+                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8391B] mb-3">{d.title}</p>
+                  <p className="font-macro-display text-4xl font-black text-[#0C0907] tracking-tight mb-1">{d.stat}</p>
+                  <p className="font-body text-xs font-bold uppercase tracking-wider text-[#0C0907]/45 mb-5">{d.statLabel}</p>
+                  <p className="font-editorial text-sm text-[#0C0907]/70 leading-relaxed">{d.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Parallax Band — Times Square Iconic */}
-        <InfrastructureBand
-          imageSrc={SITE_IMAGES.culture.timesSquareIconic}
-          imageAlt="Times Square Iconic View"
-        >
-          <div className="relative z-10 text-center md:text-left">
-            <span className="macro-eyebrow mb-2 block">
-              {content.bandLabel}
-            </span>
-            <h2 className="macro-section-title text-white mb-4">
-              {content.bandTitle}
-            </h2>
-            <p className="macro-body text-white/70 max-w-3xl leading-relaxed">
-              {content.bandSubtitle}
-            </p>
+        {/* CREAM: Magazine vault */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-28 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "ARHIVA PRESEI AMERICANE" : "THE AMERICAN PRESS ARCHIVE"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "PRESA CA PUTERE" : "THE PRESS AS POWER"}</h2>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+            <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 gap-3">
+              {magazineCovers.map((cover, i) => (
+                <div key={i} className="group relative aspect-3/4 rounded-xl overflow-hidden shadow-[0_8px_30px_rgb(12,9,7,0.1)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.2)] hover:-translate-y-1 transition-all duration-500">
+                  <Image src={cover.src} alt={cover.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 25vw, 12vw" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="font-body text-[9px] font-bold text-white leading-tight">{cover.label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </InfrastructureBand>
+        </section>
 
-        {/* Navigation */}
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32">
-          <div className="flex items-center justify-between border-t border-white/10 pt-12">
-            <a
-              href="/culture/fashion"
-              className="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors font-mono"
-            >
-              {content.backLink}
-            </a>
-            <a
-              href="/culture/overview"
-              className="text-xs uppercase tracking-widest text-[#E8B923] hover:text-white transition-colors font-mono"
-            >
-              {content.nextLink}
-            </a>
+        <div className="h-16 w-full gradient-cream-to-dark" />
+
+        {/* Dark: stats + Times Square parallax */}
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-white/5 rounded-3xl overflow-hidden mb-20">
+            {[
+              { value: "100%", label: isRo ? "Standard aviație ICAO" : "ICAO aviation standard", note: isRo ? "Zero excepții" : "Zero exceptions" },
+              { value: "90%", label: isRo ? "Cercetare globală" : "Global scientific research", note: isRo ? "Publicată în engleză" : "Published in English" },
+              { value: "100%", label: isRo ? "Limbaje programare" : "Programming languages", note: isRo ? "Cuvinte cheie engleze" : "Use English keywords" },
+              { value: "1.5B", label: isRo ? "Vorbitori de engleză" : "English speakers", note: isRo ? "Locutori globali" : "Global speakers" },
+            ].map((s, i) => (
+              <div key={i} className={`p-8 flex flex-col gap-2 ${i > 0 ? "border-l border-white/5" : ""}`}>
+                <span className="font-macro-display text-4xl md:text-5xl font-black text-[#E8B923]">{s.value}</span>
+                <span className="text-sm font-body text-white/75 leading-snug">{s.label}</span>
+                <span className="text-xs font-body text-white/45">{s.note}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="relative rounded-3xl h-72 overflow-hidden flex items-center justify-center mb-20">
+            <Image src={SITE_IMAGES.culture.timesSquareIconic} alt="Times Square NYC iconic view" fill className="object-cover" sizes="100vw" />
+            <div className="absolute inset-0 bg-black/60" />
+            <div className="relative z-10 text-center px-6 max-w-3xl">
+              <p className="font-body text-xs font-bold uppercase tracking-[0.3em] text-glory-gold mb-4">
+                {isRo ? "SISTEMUL DE OPERARE AL LOGICII" : "THE OPERATING SYSTEM OF LOGIC"}
+              </p>
+              <p className="font-editorial italic text-2xl md:text-3xl text-[#F5EDD8] leading-snug">
+                &ldquo;{content.bandSubtitle}&rdquo;
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between border-t border-white/10 pt-12 font-body">
+            <a href="/culture/fashion" className="text-xs uppercase tracking-widest text-[#F5EDD8]/50 hover:text-white transition-colors">{content.backLink}</a>
+            <a href="/culture" className="text-xs uppercase tracking-widest text-glory-gold hover:text-white transition-colors">{content.nextLink}</a>
           </div>
         </div>
 
-        {/* AI Oracle */}
-        <div className="mt-32">
+        <div className="culture-bg">
           <AskAmericaCTA
             locale={locale}
-            descriptionEn={content.oracleDescription}
-            descriptionRo={content.oracleDescription}
+            descriptionEn="Ask the AI Oracle about ICAO aviation language mandates, the origins of English coding syntax, or its role as a global scientific lingua franca."
+            descriptionRo="Întreabă Oracolul AI despre standardul ICAO în aviație, terminologia de programare în engleză sau răspândirea limbii ca lingua franca."
           />
         </div>
       </div>

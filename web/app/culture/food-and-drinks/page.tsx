@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
-import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import Link from "next/link";
+import Image from "next/image";
+import { Home, ChevronRight } from "lucide-react";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import {
-  MacroStyles,
-  MacroHero,
-  CountUp,
-  InfrastructureBand,
-} from "@/components/economy/EconomyAnimations";
+import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 import { CultureStyles } from "@/components/culture/CulturePageComponents";
-import { GALLERY_IMAGES } from "@/lib/data/gallery";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
@@ -21,272 +17,248 @@ export default async function FoodAndDrinksPage() {
   const locale = await getServerLocale();
   const isRo = locale === "ro";
 
-  // Filter gallery images for food category
-  const foodImages = GALLERY_IMAGES.filter((img) => img.category === "Food");
-
-  const breadcrumbCulture = isRo ? "Cultură" : "Culture";
-  const breadcrumbPage = isRo ? "Mâncare și Băuturi" : "Food & Drinks";
-
   const content = {
-    eyebrow: isRo ? "GUSTUL DEMOCRATIZAT · CULINAR" : "THE DEMOCRATIC PALATE · CULINARY",
-    title: isRo ? "DINER-URI, AFUMĂTOARE ȘI SISTEME" : "DINERS, SMOKE & SYSTEMS",
     pullQuote: isRo
       ? "Sistemul culinar american a industrializat consistența și a democratizat accesul la mâncare la scară planetară."
       : "The American culinary system industrialized consistency and democratized access to food on a planetary scale.",
     body1: isRo
-      ? "Diner-ul clasic american reprezintă designul spațial al accesului democratic. Deschis oricui, la orice oră, cu cafea fără fund și cabine retro, este o zonă de confort arhitecturală care a transformat comunitatea și conversația în bunuri accesibile. În paralel, modelul de franciză (McDonald's, Starbucks, Subway) a transformat prepararea mâncării într-un sistem de asamblare de precizie — o rețetă unică, reprodusă identic în zeci de mii de bucătării de pe toate continentele."
-      : "The classic American diner represents the spatial design of democratic access. Open to anyone at any hour, featuring bottomless coffee refills and retro booths, it is an architectural comfort zone that commoditized community and conversation. In parallel, the franchise model (McDonald's, Starbucks, Subway) turned food preparation into a precision assembly system — one single recipe, replicated identically in tens of thousands of kitchens across every continent.",
+      ? "Diner-ul clasic american reprezintă designul spațial al accesului democratic. Deschis oricui, la orice oră, cu cafea fără fund și cabine retro, este o zonă de confort arhitecturală care a transformat comunitatea și conversația în bunuri accesibile. Modelul de franciză (McDonald's, Starbucks, Subway) a transformat prepararea mâncării într-un sistem de asamblare de precizie — o rețetă unică, reprodusă identic în zeci de mii de bucătării de pe toate continentele."
+      : "The classic American diner represents the spatial design of democratic access. Open to anyone at any hour, with bottomless coffee and retro booths, it is an architectural comfort zone that commoditized community. The franchise model (McDonald's, Starbucks, Subway) turned food preparation into a precision assembly system — one recipe replicated identically across tens of thousands of kitchens on every continent.",
     body2: isRo
       ? "De la grătarele afumate lent în Texas la barurile speakeasy pre-Prohibiție exportate în Paris sau Tokyo, bucătăria americană combină tradițiile regionale cu scalabilitatea modernă."
-      : "From low-and-slow smoked barbecue in Texas to pre-Prohibition speakeasy bars exported to Paris or Tokyo, American food and drinks blend regional traditions with modern scalability.",
-    
-    gridTitle: isRo ? "CATALOGUL PREPARATELOR CLASICE AMERICANE" : "CLASSIC AMERICAN CULINARY CATALOGUE",
-    gridSubtitle: isRo
-      ? "O galerie vizuală a preparatelor emblematice care definesc cultura alimentară din SUA"
-      : "A visual showcase of the defining dishes that shape the U.S. food landscape",
-    
-    statsTitle: isRo ? "SCALĂ ȘI FRÂNCIZĂ" : "FRANCHISE & DEMOCRACY",
-    stat1Label: isRo ? "Porții Zilnice Coca-Cola" : "Daily Coke Servings",
-    stat2Label: isRo ? "Restaurante McDonald's" : "McDonald's Locations",
-    stat3Label: isRo ? "Cota de Piață Francize" : "Global Franchise Share",
-
-    bandLabel: isRo ? "DEDICAȚIE PENTRU DETALII" : "THE SPATIAL DESIGN OF COMFORT",
-    bandTitle: isRo ? "Diner-ul American: Templul Nostalgiei" : "The American Diner: A Cathedral of Nostalgia",
+      : "From low-and-slow smoked barbecue in Texas to pre-Prohibition speakeasy bars exported to Paris or Tokyo, American food and drink blend regional traditions with modern scalability.",
     bandSubtitle: isRo
-      ? "Cu tejghele cromate, lumini neon și o atmosferă primitoare, diner-ul este interfața democratică a conversației libere din SUA."
+      ? "Cu tejghele cromate, lumini neon și cabine din vinilin, diner-ul este interfața democratică a conversației libere din SUA."
       : "With chrome counters, neon glow, and vinyl booths, the diner is the democratic interface of neighborhood conversation across America.",
-
     backLink: isRo ? "← Înapoi la Companii și Branduri" : "← Back to Companies & Brands",
     nextLink: isRo ? "Genuri Muzicale →" : "Music Genres →",
-    oracleDescription: isRo
-      ? "Întreabă Oracolul AI despre istoria burgerilor, barbecue-ul din Texas, diner-urile americane sau sistemul de franciză."
-      : "Ask the AI Oracle about the history of hamburgers, Texas barbecue methods, the design of American diners, or the global franchise assembly system.",
   };
+
+  const foodPillars = [
+    {
+      title: isRo ? "Hamburgerul" : "The Hamburger",
+      subtitle: isRo ? "Simbolul Democrației Culinare" : "Symbol of Culinary Democracy",
+      image: SITE_IMAGES.culture.burger,
+      alt: "Classic American Burger",
+      desc: isRo
+        ? "De la grătarul din curte la McDonald's, hamburgherul american a redefinit ce înseamnă o masă rapidă, satisfăcătoare și universală."
+        : "From the backyard grill to McDonald's, the American hamburger redefined what a fast, satisfying, universal meal looks like.",
+    },
+    {
+      title: isRo ? "Fast Food" : "Fast Food Nation",
+      subtitle: isRo ? "Franciza care a cucerit lumea" : "The Franchise That Conquered the World",
+      image: SITE_IMAGES.culture.mcdMenu,
+      alt: "McDonald's Menu with burger, fries, and soda",
+      desc: isRo
+        ? "McDonald's a creat primul sistem global de preparare a mâncării — consistență perfectă în orice colț al lumii."
+        : "McDonald's created the first global food preparation system — perfect consistency in every corner of the world.",
+    },
+    {
+      title: isRo ? "Diner-ul American" : "The American Diner",
+      subtitle: isRo ? "Templul Nostalgiei" : "Cathedral of Nostalgia",
+      image: SITE_IMAGES.culture.dinerInside,
+      alt: "Inside of a classic American diner",
+      desc: isRo
+        ? "Tejghele cromate, lumini neon și cafea fără fund — diner-ul este tabloul accesului democratic la confort și comunitate."
+        : "Chrome counters, neon lights, and bottomless coffee — the diner is the tableau of democratic access to comfort and community.",
+    },
+  ];
+
+  const drinkPillars = [
+    {
+      title: "Coca-Cola",
+      stat: "1886",
+      statLabel: isRo ? "An fondare" : "Founded",
+      desc: isRo
+        ? "Inventată în Atlanta, Georgia — acum disponibilă în peste 200 de țări, cel mai distribuit produs din lume."
+        : "Invented in Atlanta, Georgia — now available in 200+ countries, the most distributed product on Earth.",
+    },
+    {
+      title: isRo ? "Speakeasy & Cocktail" : "Speakeasy & Cocktail",
+      stat: "1920s",
+      statLabel: isRo ? "Era Prohibiției" : "Prohibition Era",
+      desc: isRo
+        ? "Barurile clandestine din era Prohibiției au inventat cocktail-ul modern și au exportat cultura mixologiei americane în toată lumea."
+        : "Prohibition-era underground bars invented the modern cocktail and exported American mixology culture worldwide.",
+    },
+    {
+      title: isRo ? "Cafeaua Americană" : "American Coffee",
+      stat: "$100B+",
+      statLabel: isRo ? "Piața anuală" : "Annual Market",
+      desc: isRo
+        ? "Starbucks a transformat o băutură simplă într-o experiență aspirațională — 35,000 de cafenele pe 6 continente."
+        : "Starbucks transformed a simple beverage into an aspirational experience — 35,000 locations across 6 continents.",
+    },
+  ];
 
   return (
     <>
       <MacroStyles />
       <CultureStyles />
 
-      {/* Cinematic Hero Banner */}
       <MacroHero
-        imageSrc={SITE_IMAGES.culture.burgerFries}
-        imageAlt="Classic American Burger and Fries close up"
-        eyebrow={content.eyebrow}
-        titleLead={isRo ? "GUSTUL" : "THE DEMOCRATIC"}
-        titleAccent={isRo ? "DEMOCRATIZAT" : "PALATE"}
+        imageSrc={SITE_IMAGES.culture.melsDriveIn}
+        imageAlt="Vintage Classic Cars parked outside Mel's Drive-In retro diner at night"
+        eyebrow={isRo ? "GUSTUL DEMOCRATIZAT · CULINAR" : "THE DEMOCRATIC PALATE · CULINARY"}
+        titleLead={isRo ? "MÂNCARE" : "FOOD &"}
+        titleAccent={isRo ? "ȘI BĂUTURI" : "DRINKS"}
         description={content.pullQuote}
         stats={[
-          {
-            value: "1.9B",
-            label: content.stat1Label,
-          },
-          {
-            value: "40K+",
-            label: content.stat2Label,
-          },
-          {
-            value: "35%+",
-            label: content.stat3Label,
-          },
+          { value: "1.9B", label: isRo ? "Porții Coca-Cola / Zi" : "Daily Coca-Cola Servings" },
+          { value: "40,000+", label: isRo ? "Restaurante McDonald's" : "McDonald's Locations" },
+          { value: "$900B", label: isRo ? "Piața Food Service SUA" : "U.S. Food Service Market" },
         ]}
       />
 
-      <div className="bg-[#030405] relative z-10 pb-32 pt-16 font-body text-white">
-        {/* Breadcrumb */}
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
-          <Breadcrumb
-            items={[
-              { label: breadcrumbCulture, href: "/culture" },
-              { label: breadcrumbPage },
-            ]}
-            className="mb-8"
-          />
+      {/* Dark thesis */}
+      <div className="culture-bg text-[#F5EDD8]">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-24">
+          <nav className="flex items-center gap-1.5 font-body text-sm text-white/50 tracking-wide mb-14">
+            <Link href="/" className="hover:text-white transition-colors flex items-center"><Home className="h-3.5 w-3.5" /></Link>
+            <ChevronRight className="h-3 w-3 opacity-30 shrink-0" />
+            <Link href="/culture" className="hover:text-white transition-colors">{isRo ? "Cultură" : "Culture"}</Link>
+            <ChevronRight className="h-3 w-3 opacity-30 shrink-0" />
+            <span className="text-white font-medium">{isRo ? "Mâncare și Băuturi" : "Food & Drinks"}</span>
+          </nav>
+          <div className="grid gap-12 lg:grid-cols-3 items-start">
+            <div className="lg:col-span-2">
+              <blockquote className="font-editorial text-2xl md:text-[2.1rem] italic text-[#F5EDD8]/95 leading-[1.4] mb-8 pl-6 border-l-2 border-[#E8391B]">
+                &ldquo;{content.pullQuote}&rdquo;
+              </blockquote>
+              <p className="font-editorial text-lg text-[#F5EDD8]/70 leading-relaxed mb-4">{content.body1}</p>
+              <p className="font-editorial text-lg text-[#F5EDD8]/70 leading-relaxed">{content.body2}</p>
+            </div>
+            <div className="culture-glass rounded-2xl p-6 border border-white/5 space-y-6 group">
+              {[
+                { value: "1.9B", label: isRo ? "Porții Coca-Cola servite zilnic" : "Daily Coca-Cola servings worldwide" },
+                { value: "40,000+", label: isRo ? "Restaurante McDonald's globale" : "McDonald's locations worldwide" },
+                { value: "$900B", label: isRo ? "Piața Food Service SUA" : "U.S. food service market size" },
+              ].map((s, i) => (
+                <div key={i} className="border-b border-white/5 pb-4 last:border-0 last:pb-0">
+                  <div className="font-macro-display text-4xl font-bold text-white group-hover:text-glory-gold transition-colors duration-300">{s.value}</div>
+                  <div className="text-xs text-glory-gold uppercase tracking-wider mt-1 font-body">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Dynamic Count-Up Stats */}
-        <section className="py-24 border-t border-b border-white/5 bg-white/[0.01] mb-32">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-16 font-semibold">
-              {content.statsTitle}
-            </p>
-            <div className="grid gap-12 sm:grid-cols-3 text-center">
-              <div className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500">
-                <p className="font-macro-display text-5xl md:text-6xl text-[#E8B923] font-black tracking-tight mb-4">
-                  <CountUp value={1900} suffix="M" />
-                </p>
-                <p className="font-macro-display text-xl font-bold text-white mb-3">
-                  {isRo ? "Consum Zilnic de Cola" : "Daily Coke Servings"}
-                </p>
-                <p className="text-xs text-white/50 leading-relaxed font-body">
-                  {isRo
-                    ? "Subliniază dominanța absolută a rețelei globale de îmbuteliere și distribuție a brandului."
-                    : "Highlighting the absolute planetary reach of the brand's bottling and distribution networks."}
-                </p>
-              </div>
-              <div className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500">
-                <p className="font-macro-display text-5xl md:text-6xl text-[#E8B923] font-black tracking-tight mb-4">
-                  <CountUp value={40000} suffix="+" />
-                </p>
-                <p className="font-macro-display text-xl font-bold text-white mb-3">
-                  {isRo ? "Restaurante în Lume" : "McDonald's Locations"}
-                </p>
-                <p className="text-xs text-white/50 leading-relaxed font-body">
-                  {isRo
-                    ? "Standardizarea completă a bucătăriei ca un sistem industrial de asamblare precisă."
-                    : "The complete standardization of a kitchen layout operating as a precision factory system."}
-                </p>
-              </div>
-              <div className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500">
-                <p className="font-macro-display text-5xl md:text-6xl text-[#E8B923] font-black tracking-tight mb-4">
-                  <CountUp value={35} suffix="%" />
-                </p>
-                <p className="font-macro-display text-xl font-bold text-white mb-3">
-                  {isRo ? "Cota de Piață a Francizelor" : "Global Franchise Share"}
-                </p>
-                <p className="text-xs text-white/50 leading-relaxed font-body">
-                  {isRo
-                    ? "Sistemul comercial din SUA domină modelul de parteneriat comercial de fast-food la nivel mondial."
-                    : "US business methods command the global fast-food commercial partnership template."}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <div className="h-16 w-full gradient-dark-to-cream" />
 
-        {/* Editorial Essay */}
-        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
-          <div className="grid gap-12 lg:grid-cols-3 items-start">
-            <div className="lg:col-span-2 space-y-6">
-              <h2 className="font-macro-display text-3xl font-bold text-[#E8B923] mb-6">
-                {content.title}
-              </h2>
-              <p className="font-macro-body text-white/80 text-lg md:text-xl leading-relaxed mb-6">
-                {content.body1}
+        {/* CREAM: Food pillars */}
+        <section className="relative culture-cream-bg text-[#0C0907] py-24 md:py-32 overflow-hidden">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="text-center mb-20">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "ICOANE CULINARE" : "CULINARY ICONS"}
               </p>
-              <p className="font-macro-body text-white/70 text-base md:text-lg leading-relaxed">
-                {content.body2}
-              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "PILONII CULINARI" : "FOOD PILLARS"}</h2>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
-
-            {/* Quick stats panel */}
-            <div className="culture-glass rounded-3xl p-8 border border-white/5 space-y-6 font-sans">
-              <h3 className="font-macro-display text-lg font-bold text-glory-gold border-b border-white/10 pb-3 uppercase tracking-wider">
-                {isRo ? "Sistemul Alimentar" : "The Food Network"}
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-bold text-white text-base">{isRo ? "Automatizare și Rețetă" : "Standardization"}</h4>
-                  <p className="text-[#F5EDD8]/60 mt-1 text-xs leading-relaxed">
-                    {isRo
-                      ? "Fiecare ingredient este calibrat, măsurat și transportat folosind logistica de congelare rapidă."
-                      : "Every ingredient is calibrated, measured, and transported using flash-freezing logistics."}
-                  </p>
-                </div>
-                <div className="border-t border-white/5 pt-4">
-                  <h4 className="font-bold text-white text-base">{isRo ? "Diversitate Regională" : "Regional Smoked Craft"}</h4>
-                  <p className="text-[#F5EDD8]/60 mt-1 text-xs leading-relaxed">
-                    {isRo
-                      ? "Cultura BBQ reprezintă un meșteșug istoric bazat pe lemn local de stejar, mesquite sau hickory și coacere lentă."
-                      : "BBQ culture represents historical regional craft relying on local oak, mesquite, or hickory woods and slow cook times."}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Parallax Band — Diner Inside */}
-        <InfrastructureBand
-          imageSrc={SITE_IMAGES.culture.dinerInside}
-          imageAlt="American Diner Interior"
-        >
-          <div className="relative z-10 text-center md:text-left">
-            <span className="macro-eyebrow mb-2 block">
-              {content.bandLabel}
-            </span>
-            <h2 className="macro-section-title text-white mb-4">
-              {content.bandTitle}
-            </h2>
-            <p className="macro-body text-white/70 max-w-3xl leading-relaxed">
-              {content.bandSubtitle}
-            </p>
-          </div>
-        </InfrastructureBand>
-
-        {/* Visual Showcase Catalogue */}
-        {foodImages.length > 0 && (
-          <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-32">
-            <div className="mb-16 text-center">
-              <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] mb-4 font-semibold">
-                {isRo ? "EXPLOREAZĂ SABORURILE" : "EXPLORE THE FLAVORS"}
-              </p>
-              <h2 className="font-macro-display text-4xl font-bold text-white uppercase tracking-tight mb-4">
-                {content.gridTitle}
-              </h2>
-              <p className="font-macro-body text-white/60 text-lg max-w-2xl mx-auto leading-relaxed">
-                {content.gridSubtitle}
-              </p>
-            </div>
-
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {foodImages.map((img) => (
-                <div
-                  key={img.id}
-                  className="group relative culture-glass rounded-3xl overflow-hidden border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/30 transition-all duration-500 flex flex-col justify-between"
-                >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/40">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={img.src.src}
-                      alt={img.alt}
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#030405] via-transparent to-transparent" />
+            <div className="space-y-28">
+              {foodPillars.map((pillar, i) => (
+                <div key={i} className={`grid gap-12 md:gap-20 items-center ${i % 2 === 0 ? "md:grid-cols-[3fr_2fr]" : "md:grid-cols-[2fr_3fr] md:[&>*:first-child]:order-last"}`}>
+                  <div>
+                    <p className="font-body text-[10px] font-bold uppercase tracking-[0.35em] text-[#E8391B] mb-3">{pillar.subtitle}</p>
+                    <h3 className="font-macro-display text-5xl md:text-6xl font-black text-[#0C0907] tracking-tight mb-6 leading-none">{pillar.title}</h3>
+                    <p className="font-editorial text-lg text-[#0C0907]/70 leading-relaxed">{pillar.desc}</p>
                   </div>
-                  <div className="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                      <h3 className="font-macro-display text-lg font-bold text-white mb-1 group-hover:text-[#E8B923] transition-colors">
-                        {img.caption}
-                      </h3>
-                      <p className="text-xs text-[#E8B923] font-mono uppercase tracking-wider mb-3">
-                        {img.location || "USA"}
-                      </p>
-                    </div>
-                    <p className="text-sm text-white/70 leading-relaxed font-body">
-                      {img.description}
-                    </p>
+                  <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_30px_80px_rgb(12,9,7,0.15)]">
+                    <Image src={pillar.image} alt={pillar.alt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 40vw" />
                   </div>
                 </div>
               ))}
             </div>
-          </section>
-        )}
+          </div>
+        </section>
 
-        {/* Navigation */}
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between border-t border-white/10 pt-12">
-            <a
-              href="/culture/companies-brands"
-              className="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors font-mono"
-            >
-              {content.backLink}
-            </a>
-            <a
-              href="/culture/music-genres"
-              className="text-xs uppercase tracking-widest text-[#E8B923] hover:text-white transition-colors font-mono"
-            >
-              {content.nextLink}
-            </a>
+        {/* CREAM: Drink pillars */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-28 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "BĂUTURI EMBLEMATICE" : "ICONIC DRINKS"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "BĂUTURILE AMERICANE" : "THE DRINKS"}</h2>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              {drinkPillars.map((d, i) => (
+                <div key={i} className="bg-white/40 backdrop-blur-md rounded-2xl p-8 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">
+                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8391B] mb-3">{d.title}</p>
+                  <p className="font-macro-display text-4xl font-black text-[#0C0907] tracking-tight mb-1">{d.stat}</p>
+                  <p className="font-body text-xs font-bold uppercase tracking-wider text-[#0C0907]/45 mb-5">{d.statLabel}</p>
+                  <p className="font-editorial text-sm text-[#0C0907]/70 leading-relaxed">{d.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <div className="h-16 w-full gradient-cream-to-dark" />
+
+        {/* Dark: stats + diner parallax */}
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-white/5 rounded-3xl overflow-hidden mb-20">
+            {[
+              { value: "1.9B", label: isRo ? "Porții Coca-Cola / zi" : "Daily Coke servings", note: isRo ? "Distribuit global" : "Globally distributed" },
+              { value: "40K+", label: isRo ? "Restaurante McDonald's" : "McDonald's locations", note: isRo ? "Pe 6 continente" : "Across 6 continents" },
+              { value: "$900B", label: isRo ? "Piața food service" : "Food service market", note: isRo ? "Economia gastro SUA" : "American gastro economy" },
+              { value: "35K+", label: isRo ? "Cafenele Starbucks" : "Starbucks cafes", note: isRo ? "Experiența aspirațională" : "Aspirational experience" },
+            ].map((s, i) => (
+              <div key={i} className={`p-8 flex flex-col gap-2 ${i > 0 ? "border-l border-white/5" : ""}`}>
+                <span className="font-macro-display text-4xl md:text-5xl font-black text-[#E8B923]">{s.value}</span>
+                <span className="text-sm font-body text-white/75 leading-snug">{s.label}</span>
+                <span className="text-xs font-body text-white/45">{s.note}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="relative rounded-3xl h-72 overflow-hidden flex items-center justify-center mb-20">
+            <Image src={SITE_IMAGES.culture.dinerInside} alt="Inside a classic American diner" fill className="object-cover" sizes="100vw" />
+            <div className="absolute inset-0 bg-black/60" />
+            <div className="relative z-10 text-center px-6 max-w-3xl">
+              <p className="font-body text-xs font-bold uppercase tracking-[0.3em] text-glory-gold mb-4">
+                {isRo ? "DESIGNUL SPAȚIAL AL CONFORTULUI" : "THE SPATIAL DESIGN OF COMFORT"}
+              </p>
+              <p className="font-editorial italic text-2xl md:text-3xl text-[#F5EDD8] leading-snug">
+                &ldquo;{content.bandSubtitle}&rdquo;
+              </p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-20">
+            <div className="relative aspect-4/3 rounded-2xl overflow-hidden">
+              <Image src={SITE_IMAGES.culture.speakeasyDesign} alt="1920s Speakeasy Design" fill className="object-cover" sizes="50vw" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 p-6">
+                <p className="font-body text-xs font-bold uppercase tracking-widest text-glory-gold mb-1">{isRo ? "SPEAKEASY ERA" : "SPEAKEASY ERA"}</p>
+                <p className="font-editorial italic text-xl text-white">{isRo ? "1920–1933 · Arta Cocktail-ului" : "1920–1933 · The Art of the Cocktail"}</p>
+              </div>
+            </div>
+            <div className="relative aspect-4/3 rounded-2xl overflow-hidden">
+              <Image src={SITE_IMAGES.culture.cokeGlass} alt="Coca-Cola glass full" fill className="object-cover" sizes="50vw" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 p-6">
+                <p className="font-body text-xs font-bold uppercase tracking-widest text-glory-gold mb-1">{isRo ? "SIMBOLUL GLOBAL" : "THE GLOBAL SYMBOL"}</p>
+                <p className="font-editorial italic text-xl text-white">{isRo ? "Coca-Cola · Creat în 1886, Atlanta" : "Coca-Cola · Created 1886, Atlanta"}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between border-t border-white/10 pt-12 font-body">
+            <a href="/culture/companies-brands" className="text-xs uppercase tracking-widest text-[#F5EDD8]/50 hover:text-white transition-colors">{content.backLink}</a>
+            <a href="/culture/music-genres" className="text-xs uppercase tracking-widest text-glory-gold hover:text-white transition-colors">{content.nextLink}</a>
           </div>
         </div>
 
-        {/* AI Oracle */}
-        <div className="mt-32">
+        <div className="culture-bg">
           <AskAmericaCTA
             locale={locale}
-            descriptionEn={content.oracleDescription}
-            descriptionRo={content.oracleDescription}
+            descriptionEn="Ask the AI Oracle about the history of McDonald's, the origins of Coca-Cola, American BBQ traditions, or the classic American diner."
+            descriptionRo="Întreabă Oracolul AI despre istoria McDonald's, originile Coca-Cola, tradițiile BBQ americane sau diner-ul clasic."
           />
         </div>
       </div>
