@@ -356,19 +356,24 @@ export const NAV_SECTIONS = [
         description: "Quality of life section landing page",
       },
       {
-        label: "Stat Grid",
-        href: "/quality-of-life#stats",
-        description: "PPP income, home size, cars, and healthcare",
+        label: "Housing & Real Estate",
+        href: "/quality-of-life/housing",
+        description: "Largest homes, 30-year mortgage, suburban wealth-building",
       },
       {
-        label: "Democratized Luxury",
-        href: "/quality-of-life#luxury",
-        description: "Split-layout section on abundance and access",
+        label: "Healthcare Outcomes",
+        href: "/quality-of-life/healthcare",
+        description: "Cancer survival rates, diagnostic density, pharma leadership",
       },
       {
-        label: "Comparison Chart",
-        href: "/quality-of-life#comparison",
-        description: "Placeholder wrapper for the D3 comparison chart",
+        label: "Wages & Purchasing Power",
+        href: "/quality-of-life/wages",
+        description: "OECD PPP rankings, disposable income, food costs",
+      },
+      {
+        label: "Consumer Abundance",
+        href: "/quality-of-life/abundance",
+        description: "AC, cars, pools, boats — the density of American consumer goods",
       },
     ],
   },
@@ -811,17 +816,21 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
         label: "Prezentare Generală",
         description: "Pagina principală a secțiunii despre nivelul de trai",
       },
-      "/quality-of-life#stats": {
-        label: "Grilă de Statistici",
-        description: "Venit PPP, dimensiunea locuinței, mașini și sănătate",
+      "/quality-of-life/housing": {
+        label: "Locuințe și Imobiliare",
+        description: "Cele mai mari case, ipoteca pe 30 ani, acumularea de avere",
       },
-      "/quality-of-life#luxury": {
-        label: "Lux Democratizat",
-        description: "Secțiune despre abundență și acces",
+      "/quality-of-life/healthcare": {
+        label: "Rezultate în Sănătate",
+        description: "Supraviețuire cancer, densitate echipamente diagnostice",
       },
-      "/quality-of-life#comparison": {
-        label: "Grafic Comparativ",
-        description: "Loc rezervat pentru graficul comparativ D3",
+      "/quality-of-life/wages": {
+        label: "Salarii și Putere de Cumpărare",
+        description: "Clasamente OECD PPP, venituri disponibile, costuri alimentare",
+      },
+      "/quality-of-life/abundance": {
+        label: "Abundență de Consum",
+        description: "AC, mașini, bărci, piscine — densitatea bunurilor de consum",
       },
     },
   },
