@@ -577,11 +577,13 @@ export default async function ConstitutionPage() {
       </div>
 
       {/* Deep Dive Archive */}
-      <DeepDiveSection
-        locale={locale}
-        topics={VERTICALS_THEMATIC_DATA["constitution"] || []}
-        theme={DEEP_DIVE_THEMES.constitution}
-      />
+      <div className="bg-[#080B12]">
+        <DeepDiveSection
+          locale={locale}
+          topics={VERTICALS_THEMATIC_DATA["constitution"] || []}
+          theme={DEEP_DIVE_THEMES.constitution}
+        />
+      </div>
 
       <div className="relative bg-[#080B12] pt-12 pb-8">
         <AskAmericaCTA

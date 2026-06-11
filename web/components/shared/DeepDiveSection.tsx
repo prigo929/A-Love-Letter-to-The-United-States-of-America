@@ -14,7 +14,6 @@ function extractPullQuote(topic: ThematicTopic, isRo: boolean): string | null {
       for (const para of sub.paragraphs) {
         const text = isRo ? para.ro : para.en;
         if (!text || text.length < 80) continue;
-        // Take up to the first sentence (period + space or end)
         const firstDot = text.search(/\.\s/);
         const sentence = firstDot > 0 ? text.slice(0, firstDot + 1) : text;
         if (sentence.length >= 60 && sentence.length <= 380) return sentence;
@@ -39,6 +38,7 @@ export default function DeepDiveSection({
 }: DeepDiveSectionProps) {
   const isRo = locale === "ro";
   const [activeId, setActiveId] = useState(topics[0]?.id ?? "");
+  const [openSections, setOpenSections] = useState<Set<number>>(new Set([0]));
 
   if (!topics.length) return null;
 
@@ -49,12 +49,29 @@ export default function DeepDiveSection({
   const accentFaint = accentRgb ? `rgba(${accentRgb},0.08)` : "rgba(255,255,255,0.05)";
   const accentBorder = accentRgb ? `rgba(${accentRgb},0.25)` : "rgba(255,255,255,0.15)";
 
+  function toggleSection(idx: number) {
+    setOpenSections((prev) => {
+      const next = new Set(prev);
+      if (next.has(idx)) {
+        next.delete(idx);
+      } else {
+        next.add(idx);
+      }
+      return next;
+    });
+  }
+
+  function handleTopicChange(id: string) {
+    setActiveId(id);
+    setOpenSections(new Set([0]));
+  }
+
   return (
     <section style={{ background: theme.bg }} className="relative overflow-hidden">
 
       {/* ── Section-break bar ─────────────────────────────────────────────── */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-24">
-        <div className="flex items-center gap-5 mb-14">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-20">
+        <div className="flex items-center gap-5 mb-12">
           <div className="h-px flex-1" style={{ background: accentBorder }} />
           <span
             className="font-mono text-[10px] font-black uppercase tracking-[0.35em] shrink-0"
@@ -67,7 +84,7 @@ export default function DeepDiveSection({
 
         {/* ── Topic index grid ────────────────────────────────────────────── */}
         <div
-          className="grid gap-2 mb-16"
+          className="grid gap-2 mb-14"
           style={{
             gridTemplateColumns: `repeat(auto-fill, minmax(${topics.length > 10 ? "160px" : "180px"}, 1fr))`,
           }}
@@ -77,14 +94,13 @@ export default function DeepDiveSection({
             return (
               <button
                 key={topic.id}
-                onClick={() => setActiveId(topic.id)}
+                onClick={() => handleTopicChange(topic.id)}
                 className="group relative text-left p-3.5 rounded-xl border transition-all duration-200 focus-visible:outline-none"
                 style={{
                   background: isActive ? accentFaint : "transparent",
                   borderColor: isActive ? accentBorder : "rgba(255,255,255,0.07)",
                 }}
               >
-                {/* Active indicator strip */}
                 {isActive && (
                   <span
                     className="absolute left-0 top-3 bottom-3 w-[2px] rounded-full"
@@ -109,11 +125,11 @@ export default function DeepDiveSection({
         </div>
 
         {/* ── Divider ─────────────────────────────────────────────────────── */}
-        <div className="h-px mb-14" style={{ background: "rgba(255,255,255,0.06)" }} />
+        <div className="h-px mb-12" style={{ background: "rgba(255,255,255,0.06)" }} />
       </div>
 
       {/* ── Article reader ─────────────────────────────────────────────────── */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 pb-28">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 pb-24">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeId}
@@ -123,118 +139,128 @@ export default function DeepDiveSection({
             transition={{ duration: 0.22, ease: "easeOut" }}
           >
             {/* Article title */}
-            <h2
-              className="font-hero text-[clamp(40px,6vw,80px)] leading-none tracking-wide text-white mb-6"
-            >
+            <h2 className="font-hero text-[clamp(36px,5vw,72px)] leading-none tracking-wide text-white mb-5">
               {isRo ? activeTopic.title.ro : activeTopic.title.en}
             </h2>
 
-            {/* Section jump links */}
-            {activeTopic.sections.length > 2 && (
-              <div className="flex flex-wrap gap-2 mb-10">
-                {activeTopic.sections.map((sec, i) => {
-                  const heading = isRo ? sec.heading.ro : sec.heading.en;
-                  if (!heading || heading === "Introduction") return null;
-                  return (
-                    <a
-                      key={i}
-                      href={`#dds-sec-${i}`}
-                      className="px-3 py-1 rounded-full text-[11px] font-semibold transition-colors"
-                      style={{
-                        background: "rgba(255,255,255,0.05)",
-                        color: "rgba(255,255,255,0.45)",
-                        border: "1px solid rgba(255,255,255,0.08)",
-                      }}
-                    >
-                      {heading}
-                    </a>
-                  );
-                })}
-              </div>
-            )}
-
-            {/* Pull quote — editorial lede */}
+            {/* Pull quote — always visible, collapses never */}
             {pullQuote && (
               <blockquote
-                className="mb-12 pl-5 text-[clamp(15px,1.5vw,18px)] italic leading-relaxed max-w-[780px]"
+                className="mb-10 pl-5 text-[clamp(14px,1.4vw,17px)] italic leading-relaxed max-w-[720px]"
                 style={{
                   borderLeft: `3px solid ${theme.accent}`,
-                  color: "rgba(255,255,255,0.65)",
+                  color: "rgba(255,255,255,0.55)",
                 }}
               >
                 {pullQuote}
               </blockquote>
             )}
 
-            {/* Sections */}
-            <div className="space-y-12">
+            {/* ── Accordion sections ──────────────────────────────────────── */}
+            <div className="space-y-1">
               {activeTopic.sections.map((sec, secIdx) => {
                 const heading = isRo ? sec.heading.ro : sec.heading.en;
+                const isOpen = openSections.has(secIdx);
+                const isIntro = !heading || heading === "Introduction";
+
                 return (
                   <div
                     key={secIdx}
-                    id={`dds-sec-${secIdx}`}
-                    className="scroll-mt-24"
+                    className="rounded-xl overflow-hidden"
+                    style={{
+                      border: isOpen
+                        ? `1px solid ${accentBorder}`
+                        : "1px solid rgba(255,255,255,0.05)",
+                      background: isOpen ? accentFaint : "transparent",
+                    }}
                   >
-                    {/* Section heading */}
-                    {heading && heading !== "Introduction" && (
-                      <h3
-                        className="font-mono text-[11px] font-black uppercase tracking-[0.2em] mb-5 flex items-center gap-3"
-                        style={{ color: theme.accent }}
-                      >
-                        <span
-                          className="inline-block w-5 h-px shrink-0"
-                          style={{ background: theme.accent }}
-                        />
-                        {heading}
-                      </h3>
-                    )}
-
-                    {/* Two-column layout for sections with many subsections */}
-                    <div
-                      className={
-                        sec.subsections.length > 3
-                          ? "grid grid-cols-1 lg:grid-cols-2 gap-x-14 gap-y-8"
-                          : "space-y-8 max-w-[900px]"
-                      }
+                    {/* Accordion toggle */}
+                    <button
+                      onClick={() => toggleSection(secIdx)}
+                      className="w-full text-left px-5 py-4 flex items-center justify-between gap-4 group transition-colors"
                     >
-                      {sec.subsections.map((sub, subIdx) => {
-                        const subHeading = isRo ? sub.heading.ro : sub.heading.en;
-                        return (
-                          <div key={subIdx}>
-                            {subHeading && (
-                              <h4
-                                className="text-[13px] font-bold text-white/90 mb-3 leading-snug"
-                              >
-                                {subHeading}
-                              </h4>
-                            )}
-                            <div className="space-y-3">
-                              {sub.paragraphs.map((para, pIdx) => {
-                                // Skip the pull-quote paragraph (sec 0, sub 0, para 0) if used
-                                if (
-                                  pullQuote &&
-                                  secIdx === 0 &&
-                                  subIdx === 0 &&
-                                  pIdx === 0
-                                )
-                                  return null;
-                                const text = isRo ? para.ro : para.en;
-                                if (!text) return null;
-                                return (
-                                  <p
-                                    key={pIdx}
-                                    className="text-[14px] md:text-[15px] leading-[1.75] text-white/60"
-                                  >
-                                    {text}
-                                  </p>
-                                );
-                              })}
-                            </div>
+                      <span
+                        className="font-mono text-[11px] font-black uppercase tracking-[0.2em] flex items-center gap-3"
+                        style={{ color: isOpen ? theme.accent : "rgba(255,255,255,0.35)" }}
+                      >
+                        {!isIntro && (
+                          <span
+                            className="inline-block w-4 h-px shrink-0"
+                            style={{ background: isOpen ? theme.accent : "rgba(255,255,255,0.2)" }}
+                          />
+                        )}
+                        {isIntro
+                          ? (isRo ? activeTopic.title.ro : activeTopic.title.en)
+                          : heading}
+                      </span>
+                      {/* Chevron */}
+                      <span
+                        className="shrink-0 text-[10px] font-mono transition-transform duration-200"
+                        style={{
+                          color: isOpen ? theme.accent : "rgba(255,255,255,0.2)",
+                          transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                          display: "inline-block",
+                        }}
+                      >
+                        ▾
+                      </span>
+                    </button>
+
+                    {/* Accordion body */}
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          key="body"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25, ease: "easeInOut" }}
+                          style={{ overflow: "hidden" }}
+                        >
+                          <div
+                            className={
+                              sec.subsections.length > 3
+                                ? "px-5 pb-6 grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-6"
+                                : "px-5 pb-6 space-y-6 max-w-[860px]"
+                            }
+                          >
+                            {sec.subsections.map((sub, subIdx) => {
+                              const subHeading = isRo ? sub.heading.ro : sub.heading.en;
+                              return (
+                                <div key={subIdx}>
+                                  {subHeading && (
+                                    <h4 className="text-[13px] font-bold text-white/85 mb-2.5 leading-snug">
+                                      {subHeading}
+                                    </h4>
+                                  )}
+                                  <div className="space-y-2.5">
+                                    {sub.paragraphs.map((para, pIdx) => {
+                                      if (
+                                        pullQuote &&
+                                        secIdx === 0 &&
+                                        subIdx === 0 &&
+                                        pIdx === 0
+                                      )
+                                        return null;
+                                      const text = isRo ? para.ro : para.en;
+                                      if (!text) return null;
+                                      return (
+                                        <p
+                                          key={pIdx}
+                                          className="text-[14px] md:text-[15px] leading-[1.75] text-white/55"
+                                        >
+                                          {text}
+                                        </p>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                              );
+                            })}
                           </div>
-                        );
-                      })}
-                    </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               })}

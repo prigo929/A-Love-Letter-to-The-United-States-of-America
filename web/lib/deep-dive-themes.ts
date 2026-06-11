@@ -7,16 +7,16 @@ export interface DeepDiveTheme {
 
 export const DEEP_DIVE_THEMES = {
   economy: {
-    bg: "#060810",
+    bg: "#030405",
     accent: "#E8B923",
-    label: "THE ARCHIVE",
-    labelRo: "ARHIVA",
+    label: "IN DEPTH",
+    labelRo: "ÎN DETALIU",
   },
   military: {
-    bg: "#080A0E",
+    bg: "#000000",
     accent: "#E8B923",
-    label: "INTELLIGENCE BRIEF",
-    labelRo: "DOSAR INFORMATIV",
+    label: "IN DEPTH",
+    labelRo: "ÎN DETALIU",
   },
   nature: {
     bg: "#030504",
@@ -27,13 +27,13 @@ export const DEEP_DIVE_THEMES = {
   constitution: {
     bg: "#080B12",
     accent: "#c4a96e",
-    label: "THE ARCHIVE",
-    labelRo: "ARHIVA",
+    label: "IN DEPTH",
+    labelRo: "ÎN DETALIU",
   },
   culture: {
     bg: "#0C0907",
     accent: "#E8391B",
-    label: "THE ARCHIVE",
-    labelRo: "ARHIVA",
+    label: "IN DEPTH",
+    labelRo: "ÎN DETALIU",
   },
 } satisfies Record<string, DeepDiveTheme>;
