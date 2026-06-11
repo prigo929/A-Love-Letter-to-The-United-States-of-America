@@ -5,7 +5,9 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { 
   Rocket, 
   ExternalLink,
-  Orbit
+  Orbit,
+  Compass,
+  Navigation
 } from "lucide-react";
 import { 
   MacroStyles, 
@@ -41,6 +43,22 @@ interface SpaceCopy {
   spaceSource: string;
   spaceSourceUrl: string;
   oracleDescription: string;
+  gpsLabel: string;
+  gpsTitle: string;
+  gpsParagraph1: string;
+  gpsParagraph2: string;
+  gpsSatellites: string;
+  gpsOrbitType: string;
+  gpsPrecision: string;
+  gpsCoverage: string;
+  artemisLabel: string;
+  artemisTitle: string;
+  artemisParagraph1: string;
+  artemisParagraph2: string;
+  artemisHeight: string;
+  artemisThrust: string;
+  artemisCapacity: string;
+  artemisDestinations: string;
 }
 
 const copyEn: SpaceCopy = {
@@ -81,7 +99,23 @@ const copyEn: SpaceCopy = {
   spaceParagraph2: "Founded in 2002 by an immigrant, built with private capital, and operating in a regulatory environment that permits rapid iteration, SpaceX achieved what no European space agency, Chinese state enterprise, or Russian program has matched. The Falcon 9 has fundamentally restructured the global launch market like the 747 restructured air travel, while Starlink serves 9 million users in 125 countries, doing to global broadband what the interstate highway system did to domestic freight.",
   spaceSource: "American Enterprise Institute (AEI) 2024",
   spaceSourceUrl: "https://www.aei.org/op-eds/space-trends-in-2024/",
-  oracleDescription: "Ask the AI Oracle about SpaceX launch cadence, reusable rocket economics, Starlink global coverage, or NASA commercial crew partnerships."
+  oracleDescription: "Ask the AI Oracle about SpaceX launch cadence, reusable rocket economics, Starlink global coverage, or NASA commercial crew partnerships.",
+  gpsLabel: "THE GLOBAL POSITIONING SYSTEM",
+  gpsTitle: "GPS: The Invisible American Utility Running Global Trade",
+  gpsParagraph1: "Developed by the United States Department of Defense in 1978 and opened to civil utility in the 1980s, the Global Positioning System (GPS) is a space-based radio navigation network operated and maintained by the United States Space Force. By broadcasting continuous, high-precision timing signals from Medium Earth Orbit (MEO), GPS provides geolocation, velocity, and synchronization data to billions of devices worldwide, entirely as a free public service funded by American taxpayers.",
+  gpsParagraph2: "This infrastructure is the silent heartbeat of the modern global economy. It coordinates the transoceanic routes of global shipping fleets, regulates the separation of commercial aircraft, synchronizes global cell towers, and stamps timestamps onto every financial transaction on Wall Street. While other nations have built regional alternatives, GPS remains the foundational planetary standard, saving global industries hundreds of billions of dollars annually.",
+  gpsSatellites: "31 Active Satellites",
+  gpsOrbitType: "Medium Earth Orbit (MEO)",
+  gpsPrecision: "Sub-Decimeter Accuracy",
+  gpsCoverage: "100% Global Footprint",
+  artemisLabel: "THE DEEP SPACE CORRIDOR",
+  artemisTitle: "Starship & Artemis: Re-Engineering Human Frontiers",
+  artemisParagraph1: "The second space age is defined by NASA's Artemis project collaborating with private space enterprises to build a high-frequency supply line to the Moon and Mars. Unlike the expendable Saturn V of the Apollo era, the anchor of this new logistical pipeline is SpaceX's Starship. Standing 121 meters tall, Starship is the most massive launch vehicle ever assembled, built to be fully and rapidly reusable to lower launch costs by two orders of magnitude.",
+  artemisParagraph2: "By pioneering in-orbit cryogenic propellant transfer—refueling methane and oxygen in low Earth orbit—Starship bypasses the traditional constraints of gravity wells, enabling the delivery of over 100 metric tons of cargo to the lunar surface. Developed in South Texas (Starbase), Starship is not merely a rocket; it is the core transport vehicle of a logistics network designed to extend permanent human presence into deep space.",
+  artemisHeight: "121m Tall Stack",
+  artemisThrust: "16.7M lbs Thrust",
+  artemisCapacity: "100+ Tons to Orbit",
+  artemisDestinations: "Moon & Mars Landing"
 };
 
 const copyRo: SpaceCopy = {
@@ -122,7 +156,23 @@ const copyRo: SpaceCopy = {
   spaceParagraph2: "Fondată în 2002 de un imigrant, construită cu capital privat și operând într-un mediu de reglementare permisiv, SpaceX a realizat ceea ce nicio agenție de stat chineză, europeană sau rusă nu a putut egala. Falcon 9 a restructurat piața globală de lansări așa cum Boeing 747 a schimbat călătoriile aeriene, în timp ce Starlink deservește 9 milioane de utilizatori din 125 de țări.",
   spaceSource: "American Enterprise Institute (AEI) 2024",
   spaceSourceUrl: "https://www.aei.org/op-eds/space-trends-in-2024/",
-  oracleDescription: "Întreabă Oracolul AI despre cadența de lansare SpaceX, economia rachetelor reutilizabile, acoperirea Starlink sau parteneriatele comerciale NASA."
+  oracleDescription: "Întreabă Oracolul AI despre cadența de lansare SpaceX, economia rachetelor reutilizabile, acoperirea Starlink sau parteneriatele comerciale NASA.",
+  gpsLabel: "SISTEMUL DE POZIȚIONARE GLOBALĂ",
+  gpsTitle: "GPS: Utilitatea Invizibilă ce Coordonează Comerțul Mondial",
+  gpsParagraph1: "Dezvoltat de Departamentul de Apărare al SUA în 1978 și deschis uzului civil în anii 1980, Sistemul de Poziționare Globală (GPS) este o rețea de navigație prin satelit operată și întreținută de Forța Spațială a SUA. Difuzând semnale temporale de înaltă precizie de pe orbita medie (MEO), GPS oferă geolocalizare, viteză și sincronizare pentru miliarde de dispozitive din întreaga lume, fiind un serviciu public global gratuit finanțat de contribuabilii americani.",
+  gpsParagraph2: "Această infrastructură este pulsul invizibil al economiei globale moderne. Coordonarea navelor pe rute transoceanice, dirijarea avioanelor comerciale, sincronizarea antenelor de telecomunicații și marcarea timpului pentru tranzacțiile financiare depind în totalitate de GPS. Deși alte națiuni au creat sisteme regionale proprii, GPS rămâne standardul planetar fundamental, economisind industriilor sute de miliarde de dolari anual.",
+  gpsSatellites: "31 Sateliți Activi",
+  gpsOrbitType: "Orbită Medie (MEO)",
+  gpsPrecision: "Precizie Subdecimetrică",
+  gpsCoverage: "Acoperire Globală 100%",
+  artemisLabel: "CORIDORUL SPAȚIULUI ÎNDEPĂRTAT",
+  artemisTitle: "Starship și Artemis: Reproiectarea Frontierelor Umane",
+  artemisParagraph1: "A doua eră spațială este definită de colaborarea dintre proiectul Artemis al NASA și întreprinderile spațiale private pentru a construi o linie logistică către Lună și Marte. Spre deosebire de Saturn V din era Apollo, piesa centrală a acestei noi structuri logistice este Starship de la SpaceX. Cu o înălțime de 121 de metri, Starship este cel mai masiv vehicul de lansare asamblat vreodată, fiind proiectat pentru reutilizare rapidă și integrală.",
+  artemisParagraph2: "Prin pionieratul transferului de propulsie criogenică pe orbită — realimentarea cu metan și oxigen pe orbita joasă a Pământului — Starship ocolește limitele gravitaționale tradiționale, permițând livrarea a peste 100 de tone pe suprafața lunară. Dezvoltat în Texasul de Sud (Starbase), Starship nu este doar o rachetă; este vehiculul de transport principal al unei rețele logistice menite să extindă prezența umană permanentă în spațiul cosmic.",
+  artemisHeight: "121m Înălțime Totală",
+  artemisThrust: "7.5M kg Tracțiune",
+  artemisCapacity: "100+ Tone pe Orbită",
+  artemisDestinations: "Lansări Lună & Marte"
 };
 
 export default async function SpaceTechnologyPage() {
@@ -242,6 +292,122 @@ export default async function SpaceTechnologyPage() {
           </div>
         </section>
 
+        {/* GPS Satellite Constellation HUD Section */}
+        <section id="gps-constellation" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Column: Copy */}
+            <div>
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] font-semibold mb-3 block flex items-center gap-2">
+                <Compass className="h-4 w-4 text-[#E8B923]" />
+                {copy.gpsLabel}
+              </span>
+              <h2 className="font-macro-display text-4xl font-bold text-white uppercase tracking-tight mb-8">
+                {copy.gpsTitle}
+              </h2>
+              <p className="font-macro-body text-white/75 text-lg leading-relaxed mb-6">
+                {copy.gpsParagraph1}
+              </p>
+              <p className="font-macro-body text-white/75 text-lg leading-relaxed mb-8">
+                {copy.gpsParagraph2}
+              </p>
+
+              {/* GPS Specs Grid */}
+              <div className="grid grid-cols-2 gap-4 border-t border-white/5 pt-6 font-mono text-xs text-white/50">
+                <div className="flex flex-col gap-1">
+                  <span className="text-white/30 uppercase tracking-widest">Active Fleet</span>
+                  <span className="text-white font-semibold text-sm">{copy.gpsSatellites}</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-white/30 uppercase tracking-widest">Orbit Class</span>
+                  <span className="text-white font-semibold text-sm">{copy.gpsOrbitType}</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-white/30 uppercase tracking-widest">Precision</span>
+                  <span className="text-[#E8B923] font-semibold text-sm">{copy.gpsPrecision}</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-white/30 uppercase tracking-widest">Availability</span>
+                  <span className="text-white font-semibold text-sm">{copy.gpsCoverage}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Animated Constellation SVG HUD */}
+            <div className="relative aspect-square rounded-3xl border border-white/5 bg-[#08090b] p-6 flex flex-col justify-between overflow-hidden shadow-2xl">
+              {/* Header HUD panel */}
+              <div className="flex justify-between items-center text-[10px] font-mono text-white/40 border-b border-white/5 pb-4">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#27c93f] animate-ping" />
+                  <span className="text-white/60 font-bold uppercase tracking-wider">US SPACE FORCE GPS CONTROL</span>
+                </div>
+                <span>SYSTEM HEALTH: NOMINAL</span>
+              </div>
+
+              {/* The SVG Constellation */}
+              <div className="flex-1 flex items-center justify-center p-4">
+                <svg viewBox="0 0 400 400" className="w-full h-full max-w-[280px]">
+                  {/* Orbit paths */}
+                  <ellipse cx="200" cy="200" rx="140" ry="40" fill="none" stroke="rgba(232, 185, 35, 0.1)" strokeWidth="1" transform="rotate(0, 200, 200)" />
+                  <ellipse cx="200" cy="200" rx="140" ry="40" fill="none" stroke="rgba(232, 185, 35, 0.1)" strokeWidth="1" transform="rotate(60, 200, 200)" />
+                  <ellipse cx="200" cy="200" rx="140" ry="40" fill="none" stroke="rgba(232, 185, 35, 0.1)" strokeWidth="1" transform="rotate(120, 200, 200)" />
+
+                  {/* Earth center */}
+                  <circle cx="200" cy="200" r="35" fill="none" stroke="rgba(232, 185, 35, 0.2)" strokeWidth="1" strokeDasharray="3 3" />
+                  <circle cx="200" cy="200" r="30" fill="#0A3161" opacity="0.6" />
+                  <circle cx="200" cy="200" r="10" fill="#E8B923" opacity="0.4" />
+                  <circle cx="200" cy="200" r="5" fill="#E8B923" />
+
+                  {/* Radiating signal waves */}
+                  <circle cx="200" cy="200" r="70" fill="none" stroke="rgba(39, 201, 63, 0.1)" strokeWidth="1">
+                    <animate attributeName="r" values="30;120" dur="4s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0.8;0" dur="4s" repeatCount="indefinite" />
+                  </circle>
+                  
+                  {/* Satellites rotating on orbits */}
+                  <g transform="rotate(0, 200, 200)">
+                    <circle cx="60" cy="200" r="4" fill="#E8B923">
+                      <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="15s" repeatCount="indefinite" />
+                    </circle>
+                    <line x1="60" y1="200" x2="200" y2="200" stroke="rgba(39, 201, 63, 0.05)" strokeWidth="1">
+                      <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="15s" repeatCount="indefinite" />
+                    </line>
+                  </g>
+                  
+                  <g transform="rotate(60, 200, 200)">
+                    <circle cx="340" cy="200" r="4" fill="#E8B923">
+                      <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="20s" repeatCount="indefinite" />
+                    </circle>
+                    <line x1="340" y1="200" x2="200" y2="200" stroke="rgba(39, 201, 63, 0.05)" strokeWidth="1">
+                      <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="20s" repeatCount="indefinite" />
+                    </line>
+                  </g>
+
+                  <g transform="rotate(120, 200, 200)">
+                    <circle cx="200" cy="60" r="4" fill="#E8B923">
+                      <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="25s" repeatCount="indefinite" />
+                    </circle>
+                    <line x1="200" y1="60" x2="200" y2="200" stroke="rgba(39, 201, 63, 0.05)" strokeWidth="1">
+                      <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="25s" repeatCount="indefinite" />
+                    </line>
+                  </g>
+                </svg>
+              </div>
+
+              {/* Footer HUD panel telemetry */}
+              <div className="border-t border-white/5 pt-4 font-mono text-[9px] text-white/30 flex justify-between uppercase">
+                <div className="flex flex-col">
+                  <span>Sat Tracking Logs</span>
+                  <span className="text-[#2ac3de] font-semibold">PRN-18 / GPS-III</span>
+                </div>
+                <div className="flex flex-col text-right">
+                  <span>Orbital Speed</span>
+                  <span className="text-white/60 font-semibold">3.87 km/s</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* SpaceX Feature Section (Cinematic Parallax Band) */}
         <InfrastructureBand
           imageSrc="/images/library/Technology/Landed rockets in hangar 39A SpaceX.jpg"
@@ -335,6 +501,132 @@ export default async function SpaceTechnologyPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Starship & Artemis Deep Space Pipeline Section */}
+        <section id="deep-space-pipeline" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Column: Visual vector transit SVG */}
+            <div className="relative aspect-[4/3] rounded-3xl border border-white/5 bg-[#08090b] p-6 flex flex-col justify-between overflow-hidden shadow-2xl order-last lg:order-first">
+              {/* Header HUD panel */}
+              <div className="flex justify-between items-center text-[10px] font-mono text-white/40 border-b border-white/5 pb-4">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#E8B923] animate-pulse" />
+                  <span className="text-white/60 font-bold uppercase tracking-wider">DEEP SPACE LOGISTICS SCHEMATIC</span>
+                </div>
+                <span>SCALE: INTERPLANETARY</span>
+              </div>
+
+              {/* Interplanetary transit SVG */}
+              <div className="flex-1 flex items-center justify-center p-4">
+                <svg viewBox="0 0 400 300" className="w-full h-full max-w-[320px]">
+                  {/* Earth */}
+                  <g>
+                    <circle cx="60" cy="150" r="30" fill="#0A3161" opacity="0.8" />
+                    <circle cx="60" cy="150" r="30" fill="none" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="1" />
+                    <circle cx="60" cy="150" r="35" fill="none" stroke="rgba(39, 201, 63, 0.2)" strokeWidth="1" strokeDasharray="3 3" />
+                    <text x="60" y="154" textAnchor="middle" fill="white" fontSize="9" fontWeight="bold" fontFamily="monospace">EARTH</text>
+                  </g>
+
+                  {/* Refueling Orbit (LEO) */}
+                  <circle cx="120" cy="150" r="45" fill="none" stroke="rgba(232, 185, 35, 0.15)" strokeWidth="1" strokeDasharray="4 4" />
+                  
+                  {/* Refuel Station marker */}
+                  <g transform="rotate(30, 120, 150)">
+                    <circle cx="165" cy="150" r="3" fill="#E8B923" />
+                    <line x1="162" y1="150" x2="168" y2="150" stroke="#E8B923" strokeWidth="1" />
+                    <line x1="165" y1="147" x2="165" y2="153" stroke="#E8B923" strokeWidth="1" />
+                  </g>
+
+                  {/* Moon */}
+                  <g>
+                    <circle cx="230" cy="90" r="15" fill="#3f4b5a" />
+                    <circle cx="230" cy="90" r="15" fill="none" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="1" />
+                    <circle cx="230" cy="90" r="20" fill="none" stroke="rgba(232, 185, 35, 0.2)" strokeWidth="1" strokeDasharray="2 2" />
+                    <text x="230" y="93" textAnchor="middle" fill="white" fontSize="7" fontWeight="bold" fontFamily="monospace">MOON</text>
+                  </g>
+
+                  {/* Mars */}
+                  <g>
+                    <circle cx="340" cy="150" r="22" fill="#B22234" opacity="0.8" />
+                    <circle cx="340" cy="150" r="22" fill="none" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="1" />
+                    <text x="340" y="153" textAnchor="middle" fill="white" fontSize="8" fontWeight="bold" fontFamily="monospace">MARS</text>
+                  </g>
+
+                  {/* Transit vectors */}
+                  <path id="moon-path" d="M 90 150 Q 160 90 215 90" fill="none" stroke="rgba(255, 255, 255, 0.15)" strokeWidth="1.5" strokeDasharray="3 3" />
+                  <path id="mars-path" d="M 90 150 Q 200 210 318 150" fill="none" stroke="rgba(255, 255, 255, 0.15)" strokeWidth="1.5" strokeDasharray="3 3" />
+
+                  {/* Refueling label */}
+                  <text x="120" y="210" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7" fontFamily="monospace">LEO CRYOGENIC REFUELING</text>
+                  
+                  {/* Starship nodes animating along transit vectors */}
+                  <g>
+                    <circle r="3.5" fill="#E8B923" />
+                    <animateMotion dur="8s" repeatCount="indefinite" rotate="auto">
+                      <mpath href="#moon-path" />
+                    </animateMotion>
+                  </g>
+
+                  <g>
+                    <polygon points="0,-2 4,0 0,2" fill="#2ac3de" />
+                    <animateMotion dur="14s" repeatCount="indefinite" rotate="auto">
+                      <mpath href="#mars-path" />
+                    </animateMotion>
+                  </g>
+                </svg>
+              </div>
+
+              {/* Footer HUD panel telemetry */}
+              <div className="border-t border-white/5 pt-4 font-mono text-[9px] text-white/30 flex justify-between uppercase">
+                <div className="flex flex-col">
+                  <span>Target Mission</span>
+                  <span className="text-[#E8B923] font-semibold">Artemis III / Lunar Landing</span>
+                </div>
+                <div className="flex flex-col text-right">
+                  <span>Rocket Status</span>
+                  <span className="text-[#27c93f] font-semibold">100% Fully Reusable</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Copy */}
+            <div>
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] font-semibold mb-3 block flex items-center gap-2">
+                <Navigation className="h-4 w-4 text-[#E8B923]" />
+                {copy.artemisLabel}
+              </span>
+              <h2 className="font-macro-display text-4xl font-bold text-white uppercase tracking-tight mb-8">
+                {copy.artemisTitle}
+              </h2>
+              <p className="font-macro-body text-white/75 text-lg leading-relaxed mb-6">
+                {copy.artemisParagraph1}
+              </p>
+              <p className="font-macro-body text-white/75 text-lg leading-relaxed mb-8">
+                {copy.artemisParagraph2}
+              </p>
+
+              {/* Starship Specs Grid */}
+              <div className="grid grid-cols-2 gap-4 border-t border-white/5 pt-6 font-mono text-xs text-white/50">
+                <div className="flex flex-col gap-1">
+                  <span className="text-white/30 uppercase tracking-widest">Stack Height</span>
+                  <span className="text-white font-semibold text-sm">{copy.artemisHeight}</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-white/30 uppercase tracking-widest">Launch Thrust</span>
+                  <span className="text-white font-semibold text-sm">{copy.artemisThrust}</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-white/30 uppercase tracking-widest">Payload Capacity</span>
+                  <span className="text-[#E8B923] font-semibold text-sm">{copy.artemisCapacity}</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-white/30 uppercase tracking-widest">Operational Core</span>
+                  <span className="text-white font-semibold text-sm">{copy.artemisDestinations}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
