@@ -4,16 +4,17 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import InventionsDashboard from "@/components/interactive/InventionsDashboard";
 import { INVENTIONS_PRE_1890 } from "@/lib/data/inventions-pre-1890-data";
-import { 
-  Lightbulb, 
-  Cpu, 
-  MessageSquareCode, 
-  Wrench, 
+import {
+  Lightbulb,
+  Cpu,
+  MessageSquareCode,
+  Wrench,
   ExternalLink,
   Flame,
   Radio,
   FileText
 } from "lucide-react";
+import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 
 export const metadata: Metadata = {
   title: "Early American Ingenuity (Pre-1890) | Science & Inventions",
@@ -111,126 +112,83 @@ export default async function InventionsPre1890Page() {
   const copy = isRo ? copyRo : copyEn;
 
   return (
-    <main className="min-h-screen bg-navy-dark pt-24 text-white font-body selection:bg-glory-gold selection:text-navy-dark">
-      {/* Breadcrumbs */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Breadcrumb
-          items={[
-            { label: copy.breadcrumbParent, href: "/science" },
-            { label: copy.breadcrumbPage },
-          ]}
-          className="mb-8"
-        />
-      </div>
-
-      {/* Hero Section */}
-      <section
-        id="hero"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-gradient-to-b from-navy-dark via-navy-mid to-navy-dark relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-star-pattern opacity-30 pointer-events-none" />
-        <div className="mx-auto max-w-4xl text-center relative z-10">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-glory-gold mb-4 block animate-fade-in">
-            {copy.heroTagline}
-          </span>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            {copy.heroTitle}
-          </h1>
-          <p className="font-body text-white/70 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-            {copy.heroSubtitle}
-          </p>
-        </div>
-      </section>
-
-      {/* Thesis Section */}
-      <section
-        id="intro"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
-      >
-        <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/3 p-8 md:p-12 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-            <Cpu className="h-32 w-32 text-glory-gold" />
-          </div>
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-glory-gold mb-6">
-            {copy.thesisTitle}
-          </h2>
-          <p className="font-body text-white/85 text-base sm:text-lg leading-relaxed mb-6">
-            {copy.thesisParagraph1}
-          </p>
-          <p className="font-body text-white/85 text-base sm:text-lg leading-relaxed">
-            {copy.thesisParagraph2}
-          </p>
-        </div>
-      </section>
-
-      {/* Featured Highlights Section */}
-      <section
-        id="featured"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
-      >
-        <div className="mx-auto max-w-7xl">
-          <h2 className="font-display text-3xl font-bold text-white text-center mb-16 uppercase tracking-wider">
-            {copy.featuredTitle}
-          </h2>
-          <div className="grid gap-8 md:grid-cols-2">
-            {featuredInventions.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div 
-                  key={idx}
-                  className="group rounded-3xl border border-white/10 bg-gradient-to-br from-navy-mid to-navy-dark p-8 relative overflow-hidden hover:border-[#E8B923]/30 transition-all duration-300 flex flex-col justify-between"
-                >
-                  <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
-                    <Icon className="h-32 w-32 text-glory-gold" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="font-mono text-sm font-bold text-glory-gold bg-glory-gold/10 px-3 py-1 rounded-full border border-glory-gold/25">
-                        {item.year}
-                      </span>
-                      <span className="text-xs text-white/40 font-mono">
-                        {item.inventor}
-                      </span>
-                    </div>
-                    <h3 className="font-display text-2xl font-bold text-white mb-4 group-hover:text-glory-gold transition-colors">
-                      {isRo ? item.titleRo : item.titleEn}
-                    </h3>
-                    <p className="font-body text-sm text-white/70 leading-relaxed font-light">
-                      {isRo ? item.descRo : item.descEn}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Main Interactive Database Archive */}
-      <section
-        id="archive"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
-              {copy.archiveTitle}
-            </h2>
-            <p className="font-body text-white/60 text-base">
-              {copy.archiveSubtitle}
-            </p>
-          </div>
-
-          <InventionsDashboard locale={locale} inventions={INVENTIONS_PRE_1890} />
-        </div>
-      </section>
-
-      {/* AI Ask America Oracle Section */}
-      <AskAmericaCTA
-        locale={locale}
-        descriptionEn={copyEn.oracleDescription}
-        descriptionRo={copyRo.oracleDescription}
+    <>
+      <MacroStyles />
+      <MacroHero
+        imageSrc="/images/library/Technology/PCB circuit board of electronic device.jpg"
+        imageAlt="Industrial era circuit board and mechanical components"
+        eyebrow={copy.heroTagline}
+        titleLead={isRo ? "FUNDAȚIA" : "FOUNDATIONS OF"}
+        titleAccent={isRo ? "INGENIOZITĂȚII" : "AMERICAN INGENUITY"}
+        description={copy.heroSubtitle}
+        stats={[
+          { value: "1787", label: isRo ? "Brevete Constituționale" : "Constitutional Patents" },
+          { value: "187", label: isRo ? "Invenții Catalogate" : "Inventions Catalogued" },
+          { value: "1879", label: isRo ? "Becul lui Edison" : "Edison's Lightbulb" },
+        ]}
       />
-    </main>
+
+      <div className="bg-[#030405] relative z-10 pb-32 font-body text-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 mb-8">
+          <Breadcrumb items={[{ label: copy.breadcrumbParent, href: "/science" }, { label: copy.breadcrumbPage }]} />
+        </div>
+
+        {/* Thesis */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
+              <Cpu className="h-32 w-32 text-[#E8B923]" />
+            </div>
+            <h2 className="macro-section-title text-[#E8B923] text-3xl mb-6">{copy.thesisTitle}</h2>
+            <p className="macro-body mb-6">{copy.thesisParagraph1}</p>
+            <p className="macro-body">{copy.thesisParagraph2}</p>
+          </div>
+        </section>
+
+        {/* Featured Inventions */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <h2 className="macro-section-title text-white text-center text-3xl mb-16">{copy.featuredTitle}</h2>
+            <div className="grid gap-8 md:grid-cols-2">
+              {featuredInventions.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div key={idx} className="group rounded-3xl border border-white/10 bg-white/2 p-8 relative overflow-hidden hover:border-[#E8B923]/30 transition-all duration-300 flex flex-col justify-between">
+                    <div className="absolute top-4 right-4 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity pointer-events-none">
+                      <Icon className="h-32 w-32 text-[#E8B923]" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="font-mono text-sm font-bold text-[#E8B923] bg-[#E8B923]/10 px-3 py-1 rounded-full border border-[#E8B923]/25">
+                          {item.year}
+                        </span>
+                        <span className="text-xs text-white/40 font-mono">{item.inventor}</span>
+                      </div>
+                      <h3 className="font-display text-2xl font-bold text-white mb-4 group-hover:text-[#E8B923] transition-colors">
+                        {isRo ? item.titleRo : item.titleEn}
+                      </h3>
+                      <p className="macro-body text-sm">{isRo ? item.descRo : item.descEn}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Archive */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="macro-section-title text-white text-3xl mb-4">{copy.archiveTitle}</h2>
+              <p className="macro-body text-sm">{copy.archiveSubtitle}</p>
+            </div>
+            <InventionsDashboard locale={locale} inventions={INVENTIONS_PRE_1890} />
+          </div>
+        </section>
+
+        <AskAmericaCTA locale={locale} descriptionEn={copyEn.oracleDescription} descriptionRo={copyRo.oracleDescription} />
+      </div>
+    </>
   );
 }

@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import { 
-  Dna, 
-  Heart, 
-  PlusCircle, 
-  FlaskConical, 
-  Award, 
-  ExternalLink 
+import {
+  Dna,
+  Heart,
+  PlusCircle,
+  FlaskConical,
+  Award,
+  ExternalLink
 } from "lucide-react";
+import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 
 export const metadata: Metadata = {
   title: "Medicine & Biotech | Science & Inventions",
@@ -181,216 +182,129 @@ export default async function MedicineAndBiotechPage() {
   const copy = isRo ? copyRo : copyEn;
 
   return (
-    <main className="min-h-screen bg-navy-dark pt-24 text-white font-body selection:bg-glory-gold selection:text-navy-dark">
-      {/* Breadcrumbs */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Breadcrumb
-          items={[
-            { label: copy.breadcrumbParent, href: "/science" },
-            { label: copy.breadcrumbPage },
-          ]}
-          className="mb-8"
-        />
-      </div>
-
-      {/* Hero Section */}
-      <section
-        id="hero"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-gradient-to-b from-navy-dark via-navy-mid to-navy-dark relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-star-pattern opacity-30 pointer-events-none" />
-        <div className="mx-auto max-w-4xl text-center relative z-10">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-glory-gold mb-4 block">
-            {copy.heroTagline}
-          </span>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            {copy.heroTitle}
-          </h1>
-          <p className="font-body text-white/70 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-            {copy.heroSubtitle}
-          </p>
-        </div>
-      </section>
-
-      {/* Thesis Section */}
-      <section
-        id="intro"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
-      >
-        <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/3 p-8 md:p-12 relative">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-            <Dna className="h-24 w-24 text-glory-gold" />
-          </div>
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-glory-gold mb-6">
-            {copy.thesisTitle}
-          </h2>
-          <p className="font-body text-white/80 text-lg leading-relaxed">
-            {copy.thesisParagraph}
-          </p>
-        </div>
-      </section>
-
-      {/* Milestones grid */}
-      <section
-        id="milestones"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
-      >
-        <div className="mx-auto max-w-7xl">
-          <h2 className="font-display text-3xl font-bold text-white text-center mb-12">
-            {copy.milestonesTitle}
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {copy.milestones.map((item, idx) => (
-              <div 
-                key={idx}
-                className="rounded-3xl border border-white/10 bg-white/5 p-6 flex flex-col justify-between hover:border-glory-gold/40 transition-all duration-300"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono text-glory-gold border border-glory-gold/25 px-2 py-0.5 rounded">
-                      {item.date}
-                    </span>
-                    <PlusCircle className="h-5 w-5 text-white/30" />
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-white mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-white/50 leading-relaxed font-body">
-                    {item.details}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* NIH Section */}
-      <section
-        id="nih-feature"
-        className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 pb-16 bg-gradient-to-r from-navy-dark via-navy-mid to-navy-dark"
-      >
-        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-navy-dark/60 backdrop-blur p-8 md:p-12 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-            <Award className="h-40 w-40 text-glory-gold" />
-          </div>
-          
-          <div className="relative z-10">
-            <span className="font-mono text-xs uppercase tracking-widest text-glory-gold mb-3 block">
-              {copy.nihLabel}
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-6">
-              {copy.nihTitle}
-            </h2>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
-              {copy.nihParagraph1}
-            </p>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-8">
-              {copy.nihParagraph2}
-            </p>
-            
-            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
-              <span>Source: {copy.nihSource}</span>
-              <a 
-                href={copy.nihSourceUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-flex items-center gap-1 text-glory-gold hover:underline"
-              >
-                {isRo ? "Bugetul și structura NIH" : "NIH Budget & Structure"}
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pharmaceutical innovation R&D underwriting Section */}
-      <section
-        id="pharma-feature"
-        className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 pb-16 bg-gradient-to-r from-navy-dark via-navy-mid to-navy-dark"
-      >
-        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-navy-dark/60 backdrop-blur p-8 md:p-12 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-            <FlaskConical className="h-40 w-40 text-glory-gold" />
-          </div>
-          
-          <div className="relative z-10">
-            <span className="font-mono text-xs uppercase tracking-widest text-glory-gold mb-3 block">
-              {copy.pharmaLabel}
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-6">
-              {copy.pharmaTitle}
-            </h2>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
-              {copy.pharmaParagraph1}
-            </p>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-8">
-              {copy.pharmaParagraph2}
-            </p>
-            
-            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
-              <span>Source: {copy.pharmaSource}</span>
-              <a 
-                href={copy.pharmaSourceUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-flex items-center gap-1 text-glory-gold hover:underline"
-              >
-                {isRo ? "Detalii cercetare PhRMA" : "PhRMA Research Details"}
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Global Plasma Supply Section */}
-      <section
-        id="plasma-feature"
-        className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 pb-24 bg-gradient-to-r from-navy-dark via-navy-mid to-navy-dark border-t border-white/5"
-      >
-        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-navy-dark/60 backdrop-blur p-8 md:p-12 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-            <Heart className="h-40 w-40 text-glory-gold" />
-          </div>
-          
-          <div className="relative z-10">
-            <span className="font-mono text-xs uppercase tracking-widest text-glory-gold mb-3 block">
-              {copy.plasmaLabel}
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-6">
-              {copy.plasmaTitle}
-            </h2>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
-              {copy.plasmaParagraph1}
-            </p>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-8">
-              {copy.plasmaParagraph2}
-            </p>
-            
-            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
-              <span>Source: {copy.plasmaSource}</span>
-              <a 
-                href={copy.plasmaSourceUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-flex items-center gap-1 text-glory-gold hover:underline"
-              >
-                {isRo ? "Detalii etică donare Georgetown" : "Georgetown Donor Ethics Details"}
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* AI Ask America Oracle Section */}
-      <AskAmericaCTA
-        locale={locale}
-        descriptionEn={copyEn.oracleDescription}
-        descriptionRo={copyRo.oracleDescription}
+    <>
+      <MacroStyles />
+      <MacroHero
+        imageSrc="/images/library/Technology/Fiber Optic Cable.jpg"
+        imageAlt="Scientific research and biotech laboratory"
+        eyebrow={copy.heroTagline}
+        titleLead={isRo ? "CUCERIREA BOLILOR," : "CONQUERING DISEASE,"}
+        titleAccent={isRo ? "CODUL VIEȚII" : "MAPPING LIFE'S CODE"}
+        description={copy.heroSubtitle}
+        stats={[
+          { value: "$48B", label: isRo ? "Buget NIH Anual" : "NIH Annual Budget" },
+          { value: "68%", label: isRo ? "Plasmă Globală" : "Global Blood Plasma" },
+          { value: "~50%", label: isRo ? "Entități Moleculare Noi" : "New Molecular Entities" },
+        ]}
       />
-    </main>
+
+      <div className="bg-[#030405] relative z-10 pb-32 font-body text-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 mb-8">
+          <Breadcrumb items={[{ label: copy.breadcrumbParent, href: "/science" }, { label: copy.breadcrumbPage }]} />
+        </div>
+
+        {/* Thesis */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
+              <Dna className="h-32 w-32 text-[#E8B923]" />
+            </div>
+            <h2 className="macro-section-title text-[#E8B923] text-3xl mb-6">{copy.thesisTitle}</h2>
+            <p className="macro-body">{copy.thesisParagraph}</p>
+          </div>
+        </section>
+
+        {/* Milestones */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <h2 className="macro-section-title text-white text-center text-3xl mb-12">{copy.milestonesTitle}</h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {copy.milestones.map((item, idx) => (
+                <div key={idx} className="rounded-3xl border border-white/10 bg-white/2 p-6 flex flex-col justify-between hover:border-[#E8B923]/40 transition-all duration-300">
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-xs font-mono text-[#E8B923] border border-[#E8B923]/25 px-2 py-0.5 rounded">
+                        {item.date}
+                      </span>
+                      <PlusCircle className="h-5 w-5 text-white/30" />
+                    </div>
+                    <h3 className="font-display text-xl font-bold text-white mb-3">{item.title}</h3>
+                    <p className="macro-body text-xs">{item.details}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* NIH Feature */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
+              <Award className="h-40 w-40 text-[#E8B923]" />
+            </div>
+            <div className="relative z-10">
+              <span className="macro-eyebrow text-[#E8B923] mb-3 block">{copy.nihLabel}</span>
+              <h2 className="macro-section-title text-white text-3xl mb-6">{copy.nihTitle}</h2>
+              <p className="macro-body mb-6">{copy.nihParagraph1}</p>
+              <p className="macro-body mb-8">{copy.nihParagraph2}</p>
+              <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
+                <span>Source: {copy.nihSource}</span>
+                <a href={copy.nihSourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[#E8B923] hover:underline">
+                  {isRo ? "Bugetul și structura NIH" : "NIH Budget & Structure"}
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Pharma Feature */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
+              <FlaskConical className="h-40 w-40 text-[#E8B923]" />
+            </div>
+            <div className="relative z-10">
+              <span className="macro-eyebrow text-[#E8B923] mb-3 block">{copy.pharmaLabel}</span>
+              <h2 className="macro-section-title text-white text-3xl mb-6">{copy.pharmaTitle}</h2>
+              <p className="macro-body mb-6">{copy.pharmaParagraph1}</p>
+              <p className="macro-body mb-8">{copy.pharmaParagraph2}</p>
+              <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
+                <span>Source: {copy.pharmaSource}</span>
+                <a href={copy.pharmaSourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[#E8B923] hover:underline">
+                  {isRo ? "Detalii cercetare PhRMA" : "PhRMA Research Details"}
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Plasma Feature */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
+              <Heart className="h-40 w-40 text-[#E8B923]" />
+            </div>
+            <div className="relative z-10">
+              <span className="macro-eyebrow text-[#E8B923] mb-3 block">{copy.plasmaLabel}</span>
+              <h2 className="macro-section-title text-white text-3xl mb-6">{copy.plasmaTitle}</h2>
+              <p className="macro-body mb-6">{copy.plasmaParagraph1}</p>
+              <p className="macro-body mb-8">{copy.plasmaParagraph2}</p>
+              <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
+                <span>Source: {copy.plasmaSource}</span>
+                <a href={copy.plasmaSourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[#E8B923] hover:underline">
+                  {isRo ? "Detalii etică donare Georgetown" : "Georgetown Donor Ethics Details"}
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <AskAmericaCTA locale={locale} descriptionEn={copyEn.oracleDescription} descriptionRo={copyRo.oracleDescription} />
+      </div>
+    </>
   );
 }

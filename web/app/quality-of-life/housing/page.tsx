@@ -3,6 +3,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { Home, TrendingUp, Key, Shield } from "lucide-react";
+import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 
 export const metadata: Metadata = {
   title: "Housing & Real Estate | Quality of Life",
@@ -238,165 +239,118 @@ export default async function HousingPage() {
   const copy = isRo ? copyRo : copyEn;
 
   return (
-    <main className="min-h-screen bg-navy-dark pt-24 text-white font-body selection:bg-glory-gold selection:text-navy-dark">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Breadcrumb
-          items={[
-            { label: copy.breadcrumbParent, href: "/quality-of-life" },
-            { label: copy.breadcrumbPage },
-          ]}
-          className="mb-8"
-        />
-      </div>
-
-      {/* Hero */}
-      <section className="border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-gradient-to-b from-[#07090f] via-navy-mid to-navy-dark relative overflow-hidden">
-        <div className="absolute inset-0 bg-star-pattern opacity-20 pointer-events-none" />
-        <div className="mx-auto max-w-4xl text-center relative z-10">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-glory-gold mb-4 block">
-            {copy.heroTagline}
-          </span>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            {copy.heroTitle}
-          </h1>
-          <p className="font-body text-white/70 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-            {copy.heroSubtitle}
-          </p>
-        </div>
-      </section>
-
-      {/* Thesis */}
-      <section className="border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/3 p-8 md:p-12 relative">
-          <div className="absolute top-4 right-4 opacity-8">
-            <Home className="h-20 w-20 text-glory-gold" />
-          </div>
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-glory-gold mb-6">
-            {copy.thesisTitle}
-          </h2>
-          <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
-            {copy.thesisParagraph1}
-          </p>
-          <p className="font-body text-white/80 text-lg leading-relaxed">
-            {copy.thesisParagraph2}
-          </p>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8 bg-navy-dark">
-        <div className="mx-auto max-w-7xl">
-          <h3 className="font-mono text-xs uppercase tracking-widest text-glory-gold text-center mb-12">
-            {copy.statsTitle}
-          </h3>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {copy.stats.map((stat, i) => (
-              <div
-                key={i}
-                className="p-6 rounded-2xl border border-white/5 bg-white/2 hover:border-glory-gold/20 transition-all text-center"
-              >
-                <p className="font-hero text-4xl sm:text-5xl text-glory-gold tracking-wide mb-2">
-                  {stat.value}
-                </p>
-                <p className="font-display text-base font-bold text-white mb-2">
-                  {stat.label}
-                </p>
-                <p className="text-xs text-white/50 leading-relaxed font-body">
-                  {stat.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Four Pillars */}
-      <section className="border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="font-display text-3xl font-bold text-white text-center mb-12">
-            {copy.pillarsTitle}
-          </h2>
-          <div className="grid gap-8 sm:grid-cols-2">
-            {copy.pillars.map((pillar, i) => {
-              const Icon = pillar.icon;
-              return (
-                <div
-                  key={i}
-                  className="rounded-3xl border border-white/10 bg-white/3 p-8 hover:border-glory-gold/20 transition-all"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="rounded-xl bg-glory-gold/10 p-2">
-                      <Icon className="h-5 w-5 text-glory-gold" />
-                    </div>
-                    <h3 className="font-display text-xl font-bold text-white">
-                      {pillar.title}
-                    </h3>
-                  </div>
-                  <p className="font-body text-white/70 text-sm leading-relaxed mb-4">
-                    {pillar.body}
-                  </p>
-                  <div className="border-t border-white/8 pt-3">
-                    {pillar.sourceUrl ? (
-                      <a
-                        href={pillar.sourceUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-glory-gold/60 hover:text-glory-gold transition-colors"
-                      >
-                        {pillar.source} ↗
-                      </a>
-                    ) : (
-                      <span className="text-xs text-white/30">{pillar.source}</span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Additional Facts */}
-      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8 bg-navy-dark">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="font-display text-2xl font-bold text-white mb-10">
-            {copy.factTitle}
-          </h2>
-          <div className="space-y-4">
-            {copy.factItems.map((item, i) => (
-              <div
-                key={i}
-                className="rounded-2xl border border-white/8 bg-white/2 p-6 hover:border-glory-gold/20 transition-all"
-              >
-                <h4 className="font-display text-base font-bold text-glory-gold mb-2">
-                  {item.title}
-                </h4>
-                <p className="text-sm text-white/70 leading-relaxed mb-3">
-                  {item.body}
-                </p>
-                {item.sourceUrl ? (
-                  <a
-                    href={item.sourceUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-white/30 hover:text-glory-gold transition-colors"
-                  >
-                    {item.source} ↗
-                  </a>
-                ) : (
-                  <span className="text-xs text-white/30">{item.source}</span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <AskAmericaCTA
-        locale={locale}
-        descriptionEn={copyEn.oracleDescription}
-        descriptionRo={copyRo.oracleDescription}
+    <>
+      <MacroStyles />
+      <MacroHero
+        imageSrc="/images/library/Housing/Modern suburban house with garden and American flag, showcasing beautiful architecture in Eagle Mountain, UT.jpg"
+        imageAlt="Modern American suburban home with American flag"
+        eyebrow={copy.heroTagline}
+        titleLead={isRo ? "CEL MAI SPAȚIOS" : "THE WORLD'S MOST"}
+        titleAccent={isRo ? "IMOBILIARE DIN LUME" : "SPACIOUS HOMES"}
+        description={copy.heroSubtitle}
+        stats={[
+          { value: "2,301", label: isRo ? "Mp Medie Locuință" : "Sq Ft Average Home" },
+          { value: "#2", label: isRo ? "Accesibilitate Globală" : "Global Affordability" },
+          { value: "~90%", label: isRo ? "Ipotecă Fixă 30 Ani" : "30-Year Fixed Mortgage" },
+        ]}
       />
-    </main>
+
+      <div className="bg-[#030405] relative z-10 pb-32 font-body text-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 mb-8">
+          <Breadcrumb
+            items={[
+              { label: copy.breadcrumbParent, href: "/quality-of-life" },
+              { label: copy.breadcrumbPage },
+            ]}
+          />
+        </div>
+
+        {/* Thesis */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative">
+            <div className="absolute top-4 right-4 opacity-[0.06]">
+              <Home className="h-24 w-24 text-[#E8B923]" />
+            </div>
+            <h2 className="macro-section-title text-[#E8B923] text-3xl mb-6">{copy.thesisTitle}</h2>
+            <p className="macro-body mb-6">{copy.thesisParagraph1}</p>
+            <p className="macro-body">{copy.thesisParagraph2}</p>
+          </div>
+        </section>
+
+        {/* Stats */}
+        <section className="border-b border-white/5 px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <h3 className="font-mono text-xs uppercase tracking-widest text-[#E8B923] text-center mb-12">
+              {copy.statsTitle}
+            </h3>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {copy.stats.map((stat, i) => (
+                <div key={i} className="p-6 rounded-2xl border border-white/5 bg-white/2 hover:border-[#E8B923]/20 transition-all text-center">
+                  <p className="macro-stat-value mb-2">{stat.value}</p>
+                  <p className="font-display text-base font-bold text-white mb-2">{stat.label}</p>
+                  <p className="text-xs text-white/50 leading-relaxed">{stat.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Four Pillars */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <h2 className="macro-section-title text-white text-center text-3xl mb-12">{copy.pillarsTitle}</h2>
+            <div className="grid gap-8 sm:grid-cols-2">
+              {copy.pillars.map((pillar, i) => {
+                const Icon = pillar.icon;
+                return (
+                  <div key={i} className="rounded-3xl border border-white/10 bg-white/2 p-8 hover:border-[#E8B923]/20 transition-all">
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className="rounded-xl bg-[#E8B923]/10 p-2.5">
+                        <Icon className="h-5 w-5 text-[#E8B923]" />
+                      </div>
+                      <h3 className="font-display text-xl font-bold text-white leading-tight">{pillar.title}</h3>
+                    </div>
+                    <p className="macro-body text-sm mb-5">{pillar.body}</p>
+                    <div className="border-t border-white/5 pt-3">
+                      {pillar.sourceUrl ? (
+                        <a href={pillar.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-[#E8B923]/60 hover:text-[#E8B923] transition-colors">
+                          {pillar.source} ↗
+                        </a>
+                      ) : (
+                        <span className="text-xs text-white/30">{pillar.source}</span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Additional Facts */}
+        <section className="border-b border-white/5 px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="macro-section-title text-white text-2xl mb-10">{copy.factTitle}</h2>
+            <div className="space-y-4">
+              {copy.factItems.map((item, i) => (
+                <div key={i} className="rounded-2xl border border-white/5 bg-white/2 p-6 hover:border-[#E8B923]/20 transition-all">
+                  <h4 className="font-display text-base font-bold text-[#E8B923] mb-2">{item.title}</h4>
+                  <p className="macro-body text-sm mb-3">{item.body}</p>
+                  {item.sourceUrl ? (
+                    <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-white/30 hover:text-[#E8B923] transition-colors">
+                      {item.source} ↗
+                    </a>
+                  ) : (
+                    <span className="text-xs text-white/30">{item.source}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <AskAmericaCTA locale={locale} descriptionEn={copyEn.oracleDescription} descriptionRo={copyRo.oracleDescription} />
+      </div>
+    </>
   );
 }

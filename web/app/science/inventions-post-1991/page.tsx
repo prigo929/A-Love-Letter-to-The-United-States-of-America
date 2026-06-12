@@ -4,16 +4,17 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import InventionsDashboard from "@/components/interactive/InventionsDashboard";
 import { INVENTIONS_POST_1991 } from "@/lib/data/inventions-post-1991-data";
-import { 
-  Lightbulb, 
-  Cpu, 
-  RadioTower, 
-  Globe, 
-  Satellite, 
-  CloudRain, 
+import {
+  Lightbulb,
+  Cpu,
+  RadioTower,
+  Globe,
+  Satellite,
+  CloudRain,
   ExternalLink,
   PlusCircle
 } from "lucide-react";
+import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 
 export const metadata: Metadata = {
   title: "Post-War Miracles | Science & Inventions",
@@ -150,200 +151,124 @@ export default async function InventionsPost1991Page() {
   const copy = isRo ? copyRo : copyEn;
 
   return (
-    <main className="min-h-screen bg-navy-dark pt-24 text-white font-body selection:bg-glory-gold selection:text-navy-dark">
-      {/* Breadcrumbs */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Breadcrumb
-          items={[
-            { label: copy.breadcrumbParent, href: "/science" },
-            { label: copy.breadcrumbPage },
-          ]}
-          className="mb-8"
-        />
-      </div>
-
-      {/* Hero Section */}
-      <section
-        id="hero"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-gradient-to-b from-navy-dark via-navy-mid to-navy-dark relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-star-pattern opacity-30 pointer-events-none" />
-        <div className="mx-auto max-w-4xl text-center relative z-10">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-glory-gold mb-4 block">
-            {copy.heroTagline}
-          </span>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            {copy.heroTitle}
-          </h1>
-          <p className="font-body text-white/70 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-            {copy.heroSubtitle}
-          </p>
-        </div>
-      </section>
-
-      {/* Thesis Section */}
-      <section
-        id="intro"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
-      >
-        <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/3 p-8 md:p-12 relative">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-            <Cpu className="h-24 w-24 text-glory-gold" />
-          </div>
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-glory-gold mb-6">
-            {copy.thesisTitle}
-          </h2>
-          <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
-            {copy.thesisParagraph1}
-          </p>
-          <p className="font-body text-white/80 text-lg leading-relaxed">
-            {copy.thesisParagraph2}
-          </p>
-        </div>
-      </section>
-
-      {/* Milestones grid */}
-      <section
-        id="milestones"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
-      >
-        <div className="mx-auto max-w-7xl">
-          <h2 className="font-display text-3xl font-bold text-white text-center mb-12">
-            {copy.milestonesTitle}
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {copy.milestones.map((item, idx) => (
-              <div 
-                key={idx}
-                className="rounded-3xl border border-white/10 bg-white/5 p-6 flex flex-col justify-between hover:border-glory-gold/40 transition-all duration-300"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono text-glory-gold border border-glory-gold/25 px-2 py-0.5 rounded">
-                      {item.date}
-                    </span>
-                    <PlusCircle className="h-5 w-5 text-white/30" />
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-white mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-white/50 leading-relaxed font-body">
-                    {item.details}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* GPS Feature Section */}
-      <section
-        id="gps-feature"
-        className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 bg-gradient-to-r from-navy-dark via-navy-mid to-navy-dark border-b border-white/10"
-      >
-        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-navy-dark/60 backdrop-blur p-8 md:p-12 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-            <Satellite className="h-40 w-40 text-glory-gold" />
-          </div>
-          
-          <div className="relative z-10">
-            <span className="font-mono text-xs uppercase tracking-widest text-glory-gold mb-3 block">
-              {copy.gpsLabel}
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-6">
-              {copy.gpsTitle}
-            </h2>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
-              {copy.gpsParagraph1}
-            </p>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-8">
-              {copy.gpsParagraph2}
-            </p>
-            
-            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
-              <span>Source: {copy.gpsSource}</span>
-              <a 
-                href={copy.gpsSourceUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-flex items-center gap-1 text-glory-gold hover:underline"
-              >
-                {isRo ? "Verifică site oficial GPS" : "Verify Official GPS Website"}
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* NEXRAD Feature Section */}
-      <section
-        id="nexrad-feature"
-        className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 pb-24 bg-gradient-to-r from-navy-dark via-navy-mid to-navy-dark"
-      >
-        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-navy-dark/60 backdrop-blur p-8 md:p-12 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-            <CloudRain className="h-40 w-40 text-glory-gold" />
-          </div>
-          
-          <div className="relative z-10">
-            <span className="font-mono text-xs uppercase tracking-widest text-glory-gold mb-3 block">
-              {copy.nexradLabel}
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-6">
-              {copy.nexradTitle}
-            </h2>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
-              {copy.nexradParagraph1}
-            </p>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-8">
-              {copy.nexradParagraph2}
-            </p>
-            
-            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
-              <span>Source: {copy.nexradSource}</span>
-              <a 
-                href={copy.nexradSourceUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-flex items-center gap-1 text-glory-gold hover:underline"
-              >
-                {isRo ? "Vezi portalul NOAA NEXRAD" : "View NOAA NEXRAD Portal"}
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Interactive Database Archive */}
-      <section
-        id="archive"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
-              {isRo ? "Arhiva Miracolelor Postbelice" : "Post-War & Digital Era Archives"}
-            </h2>
-            <p className="font-body text-white/60 text-base">
-              {isRo 
-                ? "Explorează istoria completă a celor 249 de invenții americane postbelice (1946–prezent) din era digitală, a internetului și a inteligenței artificiale." 
-                : "Explore the full, detailed history of 249 post-war and digital era American inventions (1946–present) in the age of computing, internet, and artificial intelligence."}
-            </p>
-          </div>
-
-          <InventionsDashboard locale={locale} inventions={INVENTIONS_POST_1991} />
-        </div>
-      </section>
-
-      {/* AI Ask America Oracle Section */}
-      <AskAmericaCTA
-        locale={locale}
-        descriptionEn={copyEn.oracleDescription}
-        descriptionRo={copyRo.oracleDescription}
+    <>
+      <MacroStyles />
+      <MacroHero
+        videoSrc="/videos/library/Technology/Falcon 9 Launch and Landing cinematic.mp4"
+        eyebrow={copy.heroTagline}
+        titleLead={isRo ? "ARHITECȚII" : "ARCHITECTS OF THE"}
+        titleAccent={isRo ? "UNIVERSULUI DIGITAL" : "DIGITAL UNIVERSE"}
+        description={copy.heroSubtitle}
+        stats={[
+          { value: "1947", label: isRo ? "Tranzistorul" : "The Transistor" },
+          { value: "31", label: isRo ? "Sateliți GPS Activi" : "Active GPS Satellites" },
+          { value: "160", label: isRo ? "Radare NEXRAD" : "NEXRAD Radars" },
+        ]}
       />
-    </main>
+
+      <div className="bg-[#030405] relative z-10 pb-32 font-body text-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 mb-8">
+          <Breadcrumb items={[{ label: copy.breadcrumbParent, href: "/science" }, { label: copy.breadcrumbPage }]} />
+        </div>
+
+        {/* Thesis */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
+              <Cpu className="h-32 w-32 text-[#E8B923]" />
+            </div>
+            <h2 className="macro-section-title text-[#E8B923] text-3xl mb-6">{copy.thesisTitle}</h2>
+            <p className="macro-body mb-6">{copy.thesisParagraph1}</p>
+            <p className="macro-body">{copy.thesisParagraph2}</p>
+          </div>
+        </section>
+
+        {/* Milestones */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <h2 className="macro-section-title text-white text-center text-3xl mb-12">{copy.milestonesTitle}</h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {copy.milestones.map((item, idx) => (
+                <div key={idx} className="rounded-3xl border border-white/10 bg-white/2 p-6 flex flex-col justify-between hover:border-[#E8B923]/40 transition-all duration-300">
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-xs font-mono text-[#E8B923] border border-[#E8B923]/25 px-2 py-0.5 rounded">
+                        {item.date}
+                      </span>
+                      <PlusCircle className="h-5 w-5 text-white/30" />
+                    </div>
+                    <h3 className="font-display text-xl font-bold text-white mb-3">{item.title}</h3>
+                    <p className="macro-body text-xs">{item.details}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* GPS Feature */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
+              <Satellite className="h-40 w-40 text-[#E8B923]" />
+            </div>
+            <div className="relative z-10">
+              <span className="macro-eyebrow text-[#E8B923] mb-3 block">{copy.gpsLabel}</span>
+              <h2 className="macro-section-title text-white text-3xl mb-6">{copy.gpsTitle}</h2>
+              <p className="macro-body mb-6">{copy.gpsParagraph1}</p>
+              <p className="macro-body mb-8">{copy.gpsParagraph2}</p>
+              <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
+                <span>Source: {copy.gpsSource}</span>
+                <a href={copy.gpsSourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[#E8B923] hover:underline">
+                  {isRo ? "Verifică site oficial GPS" : "Verify Official GPS Website"}
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* NEXRAD Feature */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
+              <CloudRain className="h-40 w-40 text-[#E8B923]" />
+            </div>
+            <div className="relative z-10">
+              <span className="macro-eyebrow text-[#E8B923] mb-3 block">{copy.nexradLabel}</span>
+              <h2 className="macro-section-title text-white text-3xl mb-6">{copy.nexradTitle}</h2>
+              <p className="macro-body mb-6">{copy.nexradParagraph1}</p>
+              <p className="macro-body mb-8">{copy.nexradParagraph2}</p>
+              <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
+                <span>Source: {copy.nexradSource}</span>
+                <a href={copy.nexradSourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[#E8B923] hover:underline">
+                  {isRo ? "Vezi portalul NOAA NEXRAD" : "View NOAA NEXRAD Portal"}
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Archive */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="macro-section-title text-white text-3xl mb-4">
+                {isRo ? "Arhiva Miracolelor Postbelice" : "Post-War & Digital Era Archives"}
+              </h2>
+              <p className="macro-body text-sm">
+                {isRo
+                  ? "Explorează istoria completă a celor 249 de invenții americane postbelice (1946–prezent) din era digitală, a internetului și a inteligenței artificiale."
+                  : "Explore the full, detailed history of 249 post-war and digital era American inventions (1946–present) in the age of computing, internet, and artificial intelligence."}
+              </p>
+            </div>
+            <InventionsDashboard locale={locale} inventions={INVENTIONS_POST_1991} />
+          </div>
+        </section>
+
+        <AskAmericaCTA locale={locale} descriptionEn={copyEn.oracleDescription} descriptionRo={copyRo.oracleDescription} />
+      </div>
+    </>
   );
 }

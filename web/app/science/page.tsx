@@ -3,16 +3,17 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import { 
-  Lightbulb, 
-  Atom, 
-  Flame, 
-  ShieldAlert, 
-  FlaskConical, 
-  Cpu, 
-  Dna, 
-  ExternalLink 
+import {
+  Lightbulb,
+  Atom,
+  Flame,
+  ShieldAlert,
+  FlaskConical,
+  Cpu,
+  Dna,
+  ExternalLink
 } from "lucide-react";
+import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 
 export const metadata: Metadata = {
   title: "Science & Inventions | Built the Modern World",
@@ -197,210 +198,137 @@ export default async function SciencePage() {
   const copy = isRo ? copyRo : copyEn;
 
   return (
-    <main className="min-h-screen bg-navy-dark pt-24 text-white font-body selection:bg-glory-gold selection:text-navy-dark">
-      {/* Breadcrumb */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Breadcrumb items={[{ label: copy.breadcrumb }]} className="mb-8" />
-      </div>
-
-      {/* Hero Section */}
-      <section
-        id="hero"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-gradient-to-b from-navy-dark via-navy-mid to-navy-dark relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-star-pattern opacity-30 pointer-events-none" />
-        <div className="mx-auto max-w-4xl text-center relative z-10">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-glory-gold mb-4 block">
-            {copy.heroTagline}
-          </span>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            {copy.heroTitle}
-          </h1>
-          <p className="font-body text-white/70 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-            {copy.heroSubtitle}
-          </p>
-        </div>
-      </section>
-
-      {/* Thesis Section */}
-      <section
-        id="intro"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
-      >
-        <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/3 p-8 md:p-12 relative">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-            <FlaskConical className="h-24 w-24 text-glory-gold" />
-          </div>
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-glory-gold mb-6">
-            {copy.thesisTitle}
-          </h2>
-          <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
-            {copy.thesisParagraph1}
-          </p>
-          <p className="font-body text-white/80 text-lg leading-relaxed">
-            {copy.thesisParagraph2}
-          </p>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section
-        id="stats"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8 bg-navy-dark"
-      >
-        <div className="mx-auto max-w-7xl">
-          <h3 className="font-mono text-xs uppercase tracking-widest text-glory-gold text-center mb-12">
-            {copy.statsTitle}
-          </h3>
-          <div className="grid gap-8 sm:grid-cols-3 text-center">
-            {copy.stats.map((stat, idx) => (
-              <div 
-                key={idx}
-                className="p-6 rounded-2xl border border-white/5 bg-white/2 hover:border-glory-gold/20 transition-all"
-              >
-                <p className="font-hero text-4xl sm:text-5xl text-glory-gold tracking-wide mb-2">
-                  {stat.value}
-                </p>
-                <p className="font-display text-lg font-bold text-white mb-2">
-                  {stat.label}
-                </p>
-                <p className="text-xs text-white/50 leading-relaxed font-body">
-                  {stat.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Grid Links Section */}
-      <section
-        id="nav-grid"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
-      >
-        <div className="mx-auto max-w-7xl">
-          <h2 className="font-display text-3xl font-bold text-white text-center mb-12">
-            {copy.gridTitle}
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {copy.gridItems.map((item, idx) => (
-              <Link
-                key={idx}
-                href={item.href}
-                className="group rounded-3xl border border-white/10 bg-white/5 p-6 flex flex-col justify-between hover:border-glory-gold/40 hover:bg-white/8 transition-all duration-300"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono text-glory-gold border border-glory-gold/25 px-2 py-0.5 rounded">
-                      {item.badge}
-                    </span>
-                    {idx === 0 && <Lightbulb className="h-5 w-5 text-white/40 group-hover:text-glory-gold transition-colors" />}
-                    {idx === 1 && <Atom className="h-5 w-5 text-white/40 group-hover:text-glory-gold transition-colors" />}
-                    {idx === 2 && <Cpu className="h-5 w-5 text-white/40 group-hover:text-glory-gold transition-colors" />}
-                    {idx === 3 && <Dna className="h-5 w-5 text-white/40 group-hover:text-glory-gold transition-colors" />}
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-glory-gold transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-white/50 leading-relaxed font-body">
-                    {item.description}
-                  </p>
-                </div>
-                <span className="mt-6 text-xs text-glory-gold group-hover:underline block">
-                  {isRo ? "Vezi perioada →" : "View era →"}
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Shale Revolution (Energy Dominance) Section */}
-      <section
-        id="feature"
-        className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 pb-12 bg-gradient-to-r from-navy-dark via-navy-mid to-navy-dark"
-      >
-        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-navy-dark/60 backdrop-blur p-8 md:p-12 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-            <Flame className="h-40 w-40 text-glory-gold" />
-          </div>
-          
-          <div className="relative z-10">
-            <span className="font-mono text-xs uppercase tracking-widest text-glory-gold mb-3 block">
-              {copy.shaleLabel}
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-6">
-              {copy.shaleTitle}
-            </h2>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
-              {copy.shaleParagraph1}
-            </p>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-8">
-              {copy.shaleParagraph2}
-            </p>
-            
-            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
-              <span>Source: {copy.shaleSource}</span>
-              <a 
-                href={copy.shaleSourceUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-flex items-center gap-1 text-glory-gold hover:underline"
-              >
-                {isRo ? "Date oficiale EIA" : "EIA Official Data"}
-                <ExternalLink className="h-3. w-3" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* DOE National Labs Section */}
-      <section
-        id="labs-feature"
-        className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 pb-16 bg-gradient-to-r from-navy-dark via-navy-mid to-navy-dark border-t border-white/5"
-      >
-        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-navy-dark/60 backdrop-blur p-8 md:p-12 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-            <FlaskConical className="h-40 w-40 text-glory-gold" />
-          </div>
-          
-          <div className="relative z-10">
-            <span className="font-mono text-xs uppercase tracking-widest text-glory-gold mb-3 block">
-              {copy.labsLabel}
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-6">
-              {copy.labsTitle}
-            </h2>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
-              {copy.labsParagraph1}
-            </p>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-8">
-              {copy.labsParagraph2}
-            </p>
-            
-            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
-              <span>Source: {copy.labsSource}</span>
-              <a 
-                href={copy.labsSourceUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-flex items-center gap-1 text-glory-gold hover:underline"
-              >
-                {isRo ? "Portal Oficial DOE Labs" : "Official DOE Labs Portal"}
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* AI Ask America Oracle Section */}
-      <AskAmericaCTA
-        locale={locale}
-        descriptionEn={copyEn.oracleDescription}
-        descriptionRo={copyRo.oracleDescription}
+    <>
+      <MacroStyles />
+      <MacroHero
+        videoSrc="/videos/library/Technology/Fiber Optics, light, trails video.mp4"
+        eyebrow={copy.heroTagline}
+        titleLead={isRo ? "AU CONSTRUIT" : "THEY BUILT THE"}
+        titleAccent={isRo ? "LUMEA MODERNĂ" : "MODERN WORLD"}
+        description={copy.heroSubtitle}
+        stats={[
+          { value: "398", label: isRo ? "Laureați Nobel" : "Nobel Laureates" },
+          { value: "350k+", label: isRo ? "Brevete / An" : "Patents / Year" },
+          { value: "#1", label: isRo ? "Finanțare R&D" : "Global R&D Funding" },
+        ]}
       />
-    </main>
+
+      <div className="bg-[#030405] relative z-10 pb-32 font-body text-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 mb-8">
+          <Breadcrumb items={[{ label: copy.breadcrumb }]} />
+        </div>
+
+        {/* Thesis */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative">
+            <div className="absolute top-4 right-4 opacity-[0.06]">
+              <FlaskConical className="h-24 w-24 text-[#E8B923]" />
+            </div>
+            <h2 className="macro-section-title text-[#E8B923] text-3xl mb-6">{copy.thesisTitle}</h2>
+            <p className="macro-body mb-6">{copy.thesisParagraph1}</p>
+            <p className="macro-body">{copy.thesisParagraph2}</p>
+          </div>
+        </section>
+
+        {/* Stats */}
+        <section className="border-b border-white/5 px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <h3 className="font-mono text-xs uppercase tracking-widest text-[#E8B923] text-center mb-12">
+              {copy.statsTitle}
+            </h3>
+            <div className="grid gap-8 sm:grid-cols-3 text-center">
+              {copy.stats.map((stat, idx) => (
+                <div key={idx} className="p-8 rounded-2xl border border-white/5 bg-white/2 hover:border-[#E8B923]/20 transition-all">
+                  <p className="macro-stat-value mb-2">{stat.value}</p>
+                  <p className="font-display text-lg font-bold text-white mb-3">{stat.label}</p>
+                  <p className="text-xs text-white/50 leading-relaxed">{stat.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Chronology nav grid */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <h2 className="macro-section-title text-white text-center text-3xl mb-12">{copy.gridTitle}</h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {copy.gridItems.map((item, idx) => (
+                <Link
+                  key={idx}
+                  href={item.href}
+                  className="group rounded-3xl border border-white/10 bg-white/2 p-6 flex flex-col justify-between hover:border-[#E8B923]/40 hover:bg-white/4 transition-all duration-300"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-xs font-mono text-[#E8B923] border border-[#E8B923]/25 px-2 py-0.5 rounded">
+                        {item.badge}
+                      </span>
+                      {idx === 0 && <Lightbulb className="h-5 w-5 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
+                      {idx === 1 && <Atom className="h-5 w-5 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
+                      {idx === 2 && <Cpu className="h-5 w-5 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
+                      {idx === 3 && <Dna className="h-5 w-5 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
+                    </div>
+                    <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-[#E8B923] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-white/50 leading-relaxed">{item.description}</p>
+                  </div>
+                  <span className="mt-6 text-xs text-[#E8B923] group-hover:underline block">
+                    {isRo ? "Vezi perioada →" : "View era →"}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Shale Revolution */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-4 right-4 opacity-[0.06]">
+              <Flame className="h-40 w-40 text-[#E8B923]" />
+            </div>
+            <div className="relative z-10">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#E8B923] mb-3 block">{copy.shaleLabel}</span>
+              <h2 className="macro-section-title text-white text-3xl mb-6">{copy.shaleTitle}</h2>
+              <p className="macro-body mb-6">{copy.shaleParagraph1}</p>
+              <p className="macro-body mb-8">{copy.shaleParagraph2}</p>
+              <div className="flex items-center justify-between border-t border-white/5 pt-6 text-xs text-white/40">
+                <span>Source: {copy.shaleSource}</span>
+                <a href={copy.shaleSourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[#E8B923] hover:underline">
+                  {isRo ? "Date oficiale EIA" : "EIA Official Data"}
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* DOE National Labs */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-4 right-4 opacity-[0.06]">
+              <FlaskConical className="h-40 w-40 text-[#E8B923]" />
+            </div>
+            <div className="relative z-10">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#E8B923] mb-3 block">{copy.labsLabel}</span>
+              <h2 className="macro-section-title text-white text-3xl mb-6">{copy.labsTitle}</h2>
+              <p className="macro-body mb-6">{copy.labsParagraph1}</p>
+              <p className="macro-body mb-8">{copy.labsParagraph2}</p>
+              <div className="flex items-center justify-between border-t border-white/5 pt-6 text-xs text-white/40">
+                <span>Source: {copy.labsSource}</span>
+                <a href={copy.labsSourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[#E8B923] hover:underline">
+                  {isRo ? "Portal Oficial DOE Labs" : "Official DOE Labs Portal"}
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <AskAmericaCTA locale={locale} descriptionEn={copyEn.oracleDescription} descriptionRo={copyRo.oracleDescription} />
+      </div>
+    </>
   );
 }
