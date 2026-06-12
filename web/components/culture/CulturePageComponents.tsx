@@ -172,6 +172,30 @@ export function CultureStyles() {
         opacity: 1;
       }
 
+      /* ── Cream-background logo overrides ───────────────────────── */
+      .cream-logos-mode .logo-img-dark {
+        filter: brightness(0.2);
+        opacity: 0.5;
+        transition: filter 0.3s ease, opacity 0.3s ease;
+        pointer-events: none;
+        user-select: none;
+      }
+      .cream-logos-mode .logo-slot:hover .logo-img-dark {
+        filter: brightness(0.05);
+        opacity: 0.8;
+      }
+      .cream-logos-mode .logo-img-color {
+        filter: grayscale(1) brightness(0.5);
+        opacity: 0.5;
+        transition: filter 0.3s ease, opacity 0.3s ease;
+        pointer-events: none;
+        user-select: none;
+      }
+      .cream-logos-mode .logo-slot:hover .logo-img-color {
+        filter: grayscale(0) brightness(0.9);
+        opacity: 1;
+      }
+
       /* ── Entry Animations ───────────────────────────────────────── */
       @keyframes fadeInUp {
         from { opacity: 0; transform: translate3d(0, 24px, 0); }
@@ -1432,9 +1456,12 @@ export function CultureParallaxDivider({
 
 // ─── §12 — Brand Logos Marquee ───────────────────────────────────────────────
 
-export function CultureBrandLogosMarquee() {
+export function CultureBrandLogosMarquee({ bgVariant = "dark" }: { bgVariant?: "dark" | "cream" }) {
   return (
-    <section className="culture-bg pt-8 md:pt-12 pb-16 md:pb-24 overflow-hidden flex flex-col gap-24 md:gap-32">
+    <section className={cn(
+      "pt-8 md:pt-12 pb-16 md:pb-24 overflow-hidden flex flex-col gap-24 md:gap-32",
+      bgVariant === "dark" ? "culture-bg" : "cream-logos-mode"
+    )}>
       {/* Row 1 (Scrolling Left) */}
       <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div className="flex w-max animate-marquee-left whitespace-nowrap" style={{ animationDuration: "140s" }}>
@@ -3634,8 +3661,115 @@ export function CultureEnglishLanguage({ data, isRo = false }: CultureEnglishLan
   );
 }
 
+// ─── Sports & Fashion Editorial Strip ────────────────────────────────────────
 
+export function CultureSportsFashionStrip({ isRo = false }: { isRo?: boolean }) {
+  const cards = [
+    {
+      id: "sports",
+      label: isRo ? "SPORT · ATLETISM" : "SPORTS · ATHLETICS",
+      title: isRo ? "Națiunea Stadioanelor" : "The Stadium Nation",
+      stat: "$83B",
+      statLabel: isRo ? "Industria sportivă americană" : "U.S. sports industry",
+      body: isRo
+        ? "NFL, NBA, MLB — cele mai mari patru ligi profesioniste din lume după venituri. Super Bowl reunește 100M+ telespectatori. NBA transmite în 215 țări. Sportul american este soft power la cea mai înaltă frecvență."
+        : "NFL, NBA, MLB — the four largest professional sports leagues on Earth by revenue. The Super Bowl draws 100M+ viewers. The NBA broadcasts to 215 countries. American sports is soft power at peak frequency.",
+      image: SITE_IMAGES.culture.metLifeFlag,
+      href: "/culture/sports",
+      cta: isRo ? "Explorează Sportul →" : "Explore Sports →",
+    },
+    {
+      id: "fashion",
+      label: isRo ? "MODĂ · STREETWEAR" : "FASHION · STREETWEAR",
+      title: isRo ? "Uniforma Rebeliunii" : "The Uniform of Rebellion",
+      stat: "4B+",
+      statLabel: isRo ? "Oameni care poartă blugi zilnic" : "People wearing jeans daily",
+      body: isRo
+        ? "Blugii albaștri, pantofii sport și streetwear-ul nu au venit din saloanele haute-couture — au pornit de la mineri, terenuri de sport și cartiere. Democratizarea stilului este o invenție americană."
+        : "Blue jeans, athletic sneakers, and streetwear didn't come from haute-couture salons — they came from miners, courts, and neighborhoods. The democratization of style is an American invention.",
+      image: SITE_IMAGES.culture.fashionJeansSneakers,
+      href: "/culture/fashion",
+      cta: isRo ? "Explorează Moda →" : "Explore Fashion →",
+    },
+  ];
 
+  return (
+    <section className="relative culture-bg py-24 md:py-32 overflow-hidden border-t border-white/5">
+      <div className="absolute inset-0 culture-dot-canvas opacity-10 pointer-events-none" />
 
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
+        {/* Header */}
+        <motion.div
+          className="mb-14 md:mb-20 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <span className="culture-text-label text-glory-gold/70 block mb-5" style={{ letterSpacing: "0.5em" }}>
+            {isRo ? "★ EXPORTURI CULTURALE ★" : "★ CULTURAL EXPORTS ★"}
+          </span>
+          <h2 className="font-hero text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.92] tracking-wide uppercase">
+            <span className="block">{isRo ? "TERENUL" : "THE COURT"}</span>
+            <span className="block text-glory-gold">{isRo ? "& STRADA" : "& THE STREET"}</span>
+          </h2>
+          <div className="w-20 h-px bg-gradient-to-r from-transparent via-glory-gold/40 to-transparent mt-8 mx-auto" />
+        </motion.div>
+
+        {/* Two-column cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {cards.map((card, i) => (
+            <motion.div
+              key={card.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.7, delay: i * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+            >
+              <Link href={card.href} className="group block">
+                <div className="relative overflow-hidden rounded-2xl h-[420px] md:h-[500px]">
+                  {/* Background image */}
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  {/* Dark overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
+
+                  {/* Content */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-10">
+                    <span className="culture-text-label text-white/50 block mb-3">{card.label}</span>
+                    <h3 className="font-hero text-white text-3xl md:text-4xl lg:text-5xl leading-[0.92] tracking-wide uppercase mb-4">
+                      {card.title}
+                    </h3>
+
+                    {/* Stat row */}
+                    <div className="flex items-baseline gap-2 mb-5">
+                      <span className="font-macro-display text-glory-gold text-4xl md:text-5xl font-black leading-none">
+                        {card.stat}
+                      </span>
+                      <span className="font-body text-white/50 text-sm">{card.statLabel}</span>
+                    </div>
+
+                    <p className="font-body text-white/70 text-sm md:text-base leading-relaxed mb-6 max-w-md">
+                      {card.body}
+                    </p>
+
+                    <span className="inline-flex items-center gap-2 text-glory-gold font-body text-sm font-semibold tracking-widest uppercase group-hover:gap-3 transition-all duration-300">
+                      {card.cta}
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 

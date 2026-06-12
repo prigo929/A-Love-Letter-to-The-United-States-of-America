@@ -72,6 +72,7 @@ import {
   CultureHollywoodEditorial,
   CultureManifestoSection,
   CultureEnglishLanguage,
+  CultureSportsFashionStrip,
 } from "@/components/culture/CulturePageComponents";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
@@ -206,7 +207,10 @@ export default async function CulturePage() {
       {/* §15 — Music Origins Section */}
       <CultureMusicSection genres={musicGenres} sectionTitle={musicTitle} isRo={isRo} />
 
-      {/* §16 — Cultural Icons — The Faces of America */}
+      {/* §16 — Sports & Fashion Editorial Teasers */}
+      <CultureSportsFashionStrip isRo={isRo} />
+
+      {/* §17 — Cultural Icons — The Faces of America */}
       <CultureIconsSection data={culturalIcons} isRo={isRo} />
 
       {/* §17 — Asymmetry of Influence Matrix */}
