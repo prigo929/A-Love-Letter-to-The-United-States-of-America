@@ -16,7 +16,8 @@ import {
   PieChart,
   Pie,
 } from "recharts";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { CHART_GOLD, CHART_NAVY } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
@@ -54,6 +55,8 @@ function VCTooltip({
 }
 
 export function VCBarChart({ data, title, source }: VCBarChartProps) {
+  const vcRef = useRef<HTMLDivElement>(null);
+  const vcInView = useInView(vcRef, { once: true, margin: "-60px" });
   const { locale } = useLanguage();
   const ofGlobalLabel =
     locale === "ro" ? "din venture capitalul global" : "of global VC";
@@ -61,6 +64,7 @@ export function VCBarChart({ data, title, source }: VCBarChartProps) {
 
   return (
     <motion.div
+      ref={vcRef}
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
@@ -132,7 +136,7 @@ export function VCBarChart({ data, title, source }: VCBarChartProps) {
                 }}
                 cursor={{ fill: "rgba(255,255,255,0.04)" }}
               />
-              <Bar dataKey="investment" radius={[5, 5, 0, 0]} maxBarSize={55}>
+              <Bar dataKey="investment" radius={[5, 5, 0, 0]} maxBarSize={55} isAnimationActive={vcInView} animationDuration={1500} animationEasing="ease-out" animationBegin={200}>
                 {data.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}

@@ -17,7 +17,8 @@ import {
   YAxis,
   CartesianGrid,
 } from "recharts";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { CHART_GOLD, CHART_NAVY } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
@@ -85,7 +86,7 @@ export function DollarReserveChart({
       <LazyChart height={260}>
         <div className="grid gap-8 md:grid-cols-2 md:items-center">
           {/* Pie */}
-          <div className="h-[260px] w-full">
+          <div className="h-65 w-full">
             <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
               <PieChart>
                 <Pie
@@ -189,11 +190,14 @@ function MarketCapTooltip({
 }
 
 export function MarketCapChart({ data, title, source }: MarketCapChartProps) {
+  const mcRef = useRef<HTMLDivElement>(null);
+  const mcInView = useInView(mcRef, { once: true, margin: "-60px" });
   const { locale } = useLanguage();
   const sourceLabel = locale === "ro" ? "Sursă:" : "Source:";
 
   return (
     <motion.div
+      ref={mcRef}
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
@@ -207,7 +211,7 @@ export function MarketCapChart({ data, title, source }: MarketCapChartProps) {
       )}
 
       <LazyChart height={280}>
-        <div className="h-[280px] w-full">
+        <div className="h-70 w-full">
           <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
             <BarChart
               data={data}
@@ -246,7 +250,7 @@ export function MarketCapChart({ data, title, source }: MarketCapChartProps) {
                 content={<MarketCapTooltip />}
                 cursor={{ fill: "rgba(255,255,255,0.04)" }}
               />
-              <Bar dataKey="marketCap" radius={[0, 6, 6, 0]} maxBarSize={30}>
+              <Bar dataKey="marketCap" radius={[0, 6, 6, 0]} maxBarSize={30} isAnimationActive={mcInView} animationDuration={1500} animationEasing="ease-out" animationBegin={200}>
                 {data.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}

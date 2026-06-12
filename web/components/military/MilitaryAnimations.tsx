@@ -1321,7 +1321,7 @@ export function BudgetComparisonBar({
                     className="h-full rounded bg-white"
                     initial={{ width: 0 }}
                     animate={inView ? { width: "100%" } : { width: 0 }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 1.6, ease: [0.25, 0.46, 0.45, 0.94] }}
                     style={{
                       boxShadow: "0 0 10px rgba(255,255,255,0.15)"
                     }}
@@ -1342,7 +1342,7 @@ export function BudgetComparisonBar({
                     className="h-full rounded bg-white/30"
                     initial={{ width: 0 }}
                     animate={inView ? { width: `${nextTenPCT}%` } : { width: 0 }}
-                    transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 1.6, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
                   />
                 </div>
               </div>
@@ -1413,7 +1413,7 @@ export function BudgetComparisonBar({
                       )}
                       initial={{ width: 0 }}
                       animate={inView ? { width: `${pct}%` } : { width: 0 }}
-                      transition={{ duration: 1.2, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 1.4, delay: 0.1 + i * 0.07, ease: [0.25, 0.46, 0.45, 0.94] }}
                     />
                   </div>
                 </div>
