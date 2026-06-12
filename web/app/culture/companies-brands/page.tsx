@@ -221,6 +221,8 @@ export default async function CultureCompaniesBrandsPage() {
             <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold text-center mb-12">
               {isRo ? "MĂRCI ICONICE ÎN COLECTIV" : "ICONIC CORPORATIONS IN THE COLLECTIVE"}
             </p>
+          </div>
+          <div className="relative z-10 w-full">
             <CultureBrandLogosMarquee bgVariant="cream" />
           </div>
         </section>
