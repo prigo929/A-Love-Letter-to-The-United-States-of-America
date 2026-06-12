@@ -9389,6 +9389,209 @@ export const VERTICALS_THEMATIC_DATA: Record<string, ThematicTopic[]> = {
         },
       ],
     },
+    {
+      id: "United_States_in_World_War_I",
+      title: { en: "World War I (U.S. involvement)", ro: "Statele Unite în Primul Război Mondial" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The United States\' entry into World War I in April 1917 marked a decisive turning point in the global conflict, transitioning the nation from formal neutrality to active global military leadership. Under President Woodrow Wilson, the U.S. mobilized vast economic, industrial, and military resources to tip the balance of power in favor of the Allied powers.", ro: "Intrarea Statelor Unite în Primul Război Mondial în aprilie 1917 a marcat un punct de cotitură decisiv în conflictul global, trecând națiunea de la neutralitatea formală la un leadership militar global activ. Sub președintele Woodrow Wilson, SUA au mobilizat resurse economice, industriale și militare vaste pentru a înclina balanța de putere în favoarea puterilor aliate." },
+                { en: "Driven by the resumption of unrestricted submarine warfare by Germany and the interception of the Zimmermann Telegram, the American declaration of war mobilized over four million personnel.", ro: "Impulsionată de reluarea războiului submarin fără restricții de către Germania și de interceptarea Telegramei Zimmermann, declarația americană de război a mobilizat peste patru milioane de soldați." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Military Operations", ro: "Operațiuni Militare" },
+          subsections: [
+            {
+              heading: { en: "The American Expeditionary Forces", ro: "Forțele Expediționare Americane" },
+              paragraphs: [
+                { en: "The American Expeditionary Forces (AEF), commanded by General John J. Pershing, arrived in Europe in late 1917 and played a critical role in halting the German Spring Offensive of 1918.", ro: "Forțele Expediționare Americane (AEF), comandate de generalul John J. Pershing, au sosit în Europa la sfârșitul anului 1917 și au jucat un rol critic în oprirea Ofensivei germane de primăvară din 1918." },
+                { en: "American troops proved vital in key engagements, including the Battle of Belleau Wood and the massive Meuse-Argonne Offensive, which broke German defensive lines and hastened the November 11 armistice.", ro: "Trupele americane s-au dovedit vitale în confruntări cheie, inclusiv Bătălia de la Belleau Wood și ofensiva masivă Meuse-Argonne, care a spart liniile defensive germane și a grăbit armistițiul din 11 noiembrie." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Home Front and Legacy", ro: "Mobilizarea Internă și Moștenirea" },
+          subsections: [
+            {
+              heading: { en: "Industrial Mobilization and Post-War Influence", ro: "Mobilizarea Industrială și Influența Postbelică" },
+              paragraphs: [
+                { en: "On the home front, the war prompted unprecedented federal coordination of the economy and society, driving industrial expansion and setting the stage for women\'s suffrage and major labor reforms.", ro: "Pe plan intern, războiul a determinat o coordonare federală fără precedent a economiei și societății, stimulând expansiunea industrială și pregătind terenul pentru sufragiul feminin și reforme majore ale muncii." },
+                { en: "The conflict elevated the global prestige of the United States, cementing its role as a key architect of the post-war international order.", ro: "Conflictul a sporit prestigiul global al Statelor Unite, cimentând rolul său de arhitect cheie al ordinii internaționale postbelice." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "United_States_in_World_War_II",
+      title: { en: "World War II (U.S. involvement)", ro: "Statele Unite în al Doilea Război Mondial" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The United States\' involvement in World War II began formally after the Japanese attack on Pearl Harbor on December 7, 1941, launching a total mobilization of the nation\'s military, industrial, and human resources. As the leader of the Allied coalition, the U.S. fought a two-front global war in Europe and the Pacific, culminating in the defeat of the Axis powers in 1945.", ro: "Implicarea Statelor Unite în al Doilea Război Mondial a început oficial după atacul japonez asupra Pearl Harbor de la 7 decembrie 1941, declanșând o mobilizare totală a resurselor militare, industriale și umane ale națiunii. Ca lider al coaliției Aliate, SUA au purtat un război global pe două fronturi, în Europa și în Pacific, culminând cu înfrângerea puterilor Axei în 1945." },
+                { en: "Before its formal entry, the U.S. supported Allied nations through the Lend-Lease program, transforming its economy into the \'Arsenal of Democracy\'.", ro: "Înainte de intrarea sa oficială, SUA au sprijinit națiunile Aliate prin programul Lend-Lease, transformându-și economia în \'Arsenalul Democrației\'." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Military Campaigns", ro: "Campanii Militare" },
+          subsections: [
+            {
+              heading: { en: "Two-Front Operations", ro: "Operațiuni pe Două Fronturi" },
+              paragraphs: [
+                { en: "In the European theater, U.S. forces collaborated with allies to liberate North Africa, invade Italy, and execute the Normandy Landings (D-Day) on June 6, 1944, which established a vital western front.", ro: "Pe teatrul european, forțele SUA au colaborat cu aliații pentru a elibera Africa de Nord, a invada Italia și a executa Debarcările din Normandia (Ziua Z) la 6 iunie 1944, stabilind un front vestic esențial." },
+                { en: "In the Pacific, U.S. forces implemented a successful \'island-hopping\' strategy, reclaiming key islands and achieving decisive naval victories, leading to Japan\'s surrender in August 1945.", ro: "În Pacific, forțele SUA au implementat o strategie de succes de tip \'island-hopping\' (sărituri din insulă în insulă), recuperând insule-cheie și obținând victorii navale decisive, ducând la capitularea Japoniei în august 1945." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Mobilization and Post-War Legacy", ro: "Mobilizarea și Moștenirea Postbelică" },
+          subsections: [
+            {
+              heading: { en: "The Birth of a Superpower", ro: "Nașterea unei Superputeri" },
+              paragraphs: [
+                { en: "The war effort involved over 16 million American servicemen and women, spurred massive industrial innovations like the Manhattan Project, and permanently established the United States as a global superpower.", ro: "Efortul de război a implicat peste 16 milioane de militari americani, a impulsionat inovații industriale masive precum Proiectul Manhattan și a consacrat permanent Statele Unite ca superputere globală." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "United_States_Special_Operations_Command",
+      title: { en: "United States Special Operations Command", ro: "Comandamentul pentru Operațiuni Speciale al SUA" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The United States Special Operations Command (USSOCOM) is the unified combatant command charged with overseeing the various special operations component forces of the Army, Marine Corps, Navy, and Air Force. Established in 1987 in the wake of the failed Operation Eagle Claw rescue mission, USSOCOM provides unified command, funding, and doctrine for America\'s elite forces.", ro: "Comandamentul pentru Operațiuni Speciale al Statelor Unite (USSOCOM) este comandamentul de luptă unificat însărcinat cu supravegherea diverselor forțe speciale componente din Armată, Corpul de Pușcași Marini, Marină și Forțele Aeriene. Creat în 1987 în urma eșecului misiunii de salvare Operation Eagle Claw, USSOCOM oferă comandă unificată, finanțare și doctrină pentru forțele de elită ale Americii." },
+                { en: "Headquartered at MacDill Air Force Base in Florida, USSOCOM oversees elite units such as the Navy SEALs, Army Green Berets, Rangers, and Air Force Combat Controllers.", ro: "Cu sediul la Baza Aeriană MacDill din Florida, USSOCOM coordonează unități de elită precum Navy SEALs, Green Berets (Beretele Verzi), Rangers și Controlorii de Combat ai Forțelor Aeriene." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Capabilities and Missions", ro: "Capacități și Misiuni" },
+          subsections: [
+            {
+              heading: { en: "Unconventional Warfare and Anti-Terrorism", ro: "Război Neconvențional și Antiterorism" },
+              paragraphs: [
+                { en: "USSOCOM forces specialize in unconventional warfare, counter-terrorism, direct action, special reconnaissance, and foreign internal defense.", ro: "Forțele USSOCOM sunt specializate în război neconvențional, antiterorism, acțiune directă, recunoaștere specială și apărare internă externă." },
+                { en: "Operating globally in both overt and covert contexts, these forces utilize highly advanced technology, intensive training, and precise coordination to conduct high-stakes national security missions.", ro: "Operând la nivel global în contexte atât deschise, cât și secrete, aceste forțe folosesc tehnologie avansată, antrenament intens și o coordonare precisă pentru a desfășura misiuni de securitate națională cu mize mari." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "United_States_Coast_Guard",
+      title: { en: "United States Coast Guard", ro: "Garda de Coastă a Statelor Unite" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The United States Coast Guard (USCG) is the maritime security, search and rescue, and law enforcement branch of the U.S. Armed Forces, and one of the country\'s eight uniformed services. Operating under the Department of Homeland Security during peacetime and transitionable to the Navy during war, the Coast Guard serves a unique dual role as both a military and regulatory agency.", ro: "Garda de Coastă a Statelor Unite (USCG) este ramura de securitate maritimă, căutare și salvare și aplicare a legii a Forțelor Armate ale SUA, și unul dintre cele opt servicii în uniformă ale țării. Operând sub Departamentul de Securitate Internă în timp de pace și transferabilă la Marină pe timp de război, Garda de Coastă servește un rol dublu unic ca agenție militară și de reglementare." },
+                { en: "Established in 1790 by Alexander Hamilton as the Revenue Marine, it is one of the nation\'s oldest continuous sea-going services.", ro: "Înființată în 1790 de Alexander Hamilton sub numele de Revenue Marine, este una dintre cele mai vechi structuri navale continue ale națiunii." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Missions and Operations", ro: "Misiuni și Operațiuni" },
+          subsections: [
+            {
+              heading: { en: "Maritime Protection and Enforcement", ro: "Protecție Maritimă și Aplicarea Legii" },
+              paragraphs: [
+                { en: "The Coast Guard executes eleven statutory missions, including search and rescue, drug interdiction, marine environmental protection, port security, and icebreaking operations.", ro: "Garda de Coastă execută unsprezece misiuni legale, inclusiv căutare și salvare, interdicție de droguri, protecția mediului marin, securitatea porturilor și operațiuni de spargere a gheții." },
+                { en: "With a fleet of cutters, aircraft, and boats, the USCG patrols domestic waters and international seas to protect lives, enforce federal laws, and safeguard American maritime interests.", ro: "Cu o flotă de nave tip cutter, aeronave și bărci, USCG patrulează apele interne și mările internaționale pentru a proteja vieți, a aplica legile federale și a proteja interesele maritime americane." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Medal_of_Honor",
+      title: { en: "Medal of Honor", ro: "Medalia de Onoare" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The Medal of Honor is the United States government\'s highest and most prestigious military decoration, awarded to recognize American soldiers, sailors, marines, airmen, guardians, and coast guardsmen who distinguish themselves by gallantry and intrepidity at the risk of their lives above and beyond the call of duty. Established during the American Civil War in 1861, it represents the pinnacle of valor and sacrifice.", ro: "Medalia de Onoare este cea mai înaltă și prestigioasă decorație militară a guvernului Statelor Unite, acordată pentru a recunoaște militarii americani care se remarcă prin vitejie și cutezanță, cu riscul vieții lor, peste limitele datoriei. Înființată în timpul Războiului Civil American în 1861, aceasta reprezintă apogeul valorii și al sacrificiului." },
+                { en: "There are three distinct versions of the medal, corresponding to the Army, Navy, and Air Force.", ro: "Există trei versiuni distincte ale medaliei, corespunzătoare Armatei, Marinei și Forțelor Aeriene." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Criteria and Presentation", ro: "Criterii și Prezentare" },
+          subsections: [
+            {
+              heading: { en: "The Ultimate Valorous Award", ro: "Decorația Supremă pentru Bravură" },
+              paragraphs: [
+                { en: "The criteria for the award are extremely stringent, requiring undisputed proof of conspicuous gallantry in combat against an enemy force.", ro: "Criteriile pentru acordarea premiului sunt extrem de stricte, necesitând dovezi incontestabile de bravură remarcabilă în lupta împotriva unei forțe inamice." },
+                { en: "Due to its rigorous standards, the medal is frequently awarded posthumously and is typically presented personally to the recipient or their next of kin by the President of the United States.", ro: "Datorită standardelor sale riguroase, medalia este adesea acordată postum și este prezentată de obicei personal beneficiarului sau celei mai apropiate rude de către Președintele Statelor Unite." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "United_States_Space_Force",
+      title: { en: "United States Space Force", ro: "Forța Spațială a Statelor Unite" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The United States Space Force (USSF) is the space warfare service branch of the U.S. Armed Forces, established on December 20, 2019, with the enactment of the United States Space Force Act. As the newest branch of the military, the Space Force is organized under the Department of the Air Force and is charged with securing American interests in, from, and to space.", ro: "Forța Spațială a Statelor Unite (USSF) este ramura de serviciu de război spațial a Forțelor Armate ale SUA, înființată pe 20 decembrie 2019, prin adoptarea Legii Forței Spațiale a Statelor Unite. Ca cea mai nouă ramură a armatei, Forța Spațială este organizată sub egida Departamentului Forțelor Aeriene și este însărcinată cu asigurarea intereselor americane în, din și către spațiu." },
+                { en: "The branch traces its origins back to the Air Force Space Command, which was established in 1982 to coordinate military space systems.", ro: "Ramura își are originile în Comandamentul Spațial al Forțelor Aeriene, care a fost înființat în 1982 pentru a coordona sistemele spațiale militare." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Strategic Missions and Operations", ro: "Misiuni și Operațiuni Strategice" },
+          subsections: [
+            {
+              heading: { en: "Securing the High Frontier", ro: "Securizarea Înaltei Frontiere" },
+              paragraphs: [
+                { en: "The Space Force operates satellite networks, missile warning systems, space surveillance sensors, and satellite communications, protecting U.S. and allied space assets from growing orbital threats.", ro: "Forța Spațială operează rețele de sateliți, sisteme de avertizare timpurie a rachetelor, senzori de supraveghere spațială și comunicații prin satelit, protejând activele spațiale ale SUA și ale aliaților de amenințările orbitale în creștere." },
+                { en: "By providing global space capabilities to the joint force, the USSF ensures military readiness and technological dominance in the high-frontier domain.", ro: "Prin furnizarea de capacități spațiale globale forței întrunite, USSF asigură pregătirea militară și dominanța tehnologică în domeniul înaltei frontiere." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
 ],
   "global-leadership": [
     {
