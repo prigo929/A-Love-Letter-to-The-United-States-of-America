@@ -1059,7 +1059,7 @@ export function ParallaxMilitaryHero({
             transition: { staggerChildren: 0.12, delayChildren: 0.2 }
           }
         }}
-        className="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-20 pb-12 text-center md:pt-0 md:pb-0"
+        className="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-32 pb-12 text-center md:pt-0 md:pb-0"
         style={{ opacity: textOpacity, y: textY }}
       >
         {/* Tagline */}
@@ -1190,7 +1190,7 @@ export function VideoMilitaryHero({
           initial="hidden"
           animate="visible"
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12, delayChildren: 0.3 } } }}
-          className="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-20 pb-12 text-center md:pt-0 md:pb-0"
+          className="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-32 pb-12 text-center md:pt-0 md:pb-0"
           style={{ opacity: textOpacity, y: textY }}
         >
           <motion.p
