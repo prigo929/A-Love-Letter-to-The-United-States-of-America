@@ -25,8 +25,7 @@ import {
   Cell,
   LabelList,
 } from "recharts";
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { CHART_GOLD, CHART_NAVY } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
@@ -112,8 +111,6 @@ export function GdpBarChart({
   valueSuffix = "T",
   valueLabel = "GDP (2024, USD Trillions)",
 }: GdpBarChartProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
   const { locale } = useLanguage();
   const localizedValueLabel =
     locale === "ro" && valueLabel === "GDP (2024, USD Trillions)"
@@ -125,7 +122,6 @@ export function GdpBarChart({
 
   return (
     <motion.div
-      ref={ref}
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
@@ -193,7 +189,7 @@ export function GdpBarChart({
                 }
                 cursor={{ fill: "rgba(255,255,255,0.04)" }}
               />
-              <Bar dataKey="gdp" radius={[6, 6, 0, 0]} maxBarSize={60} isAnimationActive={isInView} animationDuration={1500} animationEasing="ease-out" animationBegin={200}>
+              <Bar dataKey="gdp" radius={[6, 6, 0, 0]} maxBarSize={60} isAnimationActive={false}>
                 {data.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}

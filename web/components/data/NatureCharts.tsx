@@ -19,8 +19,7 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
 import type {
   ParkVisitorData,
@@ -75,11 +74,8 @@ export function ParkVisitorsChart({
   subtitle,
   source,
 }: ParkChartProps) {
-  const parkRef = useRef<HTMLDivElement>(null);
-  const parkInView = useInView(parkRef, { once: true, margin: "-60px" });
   return (
     <motion.div
-      ref={parkRef}
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
@@ -98,7 +94,7 @@ export function ParkVisitorsChart({
           )}
         </div>
       )}
-      <div className="h-[300px] w-full md:h-[360px]">
+      <div className="h-75 w-full md:h-90">
         <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
           <BarChart
             data={data}
@@ -140,7 +136,7 @@ export function ParkVisitorsChart({
               content={<ParkTooltip />}
               cursor={{ fill: "rgba(255,255,255,0.04)" }}
             />
-            <Bar dataKey="visitors" radius={[0, 6, 6, 0]} maxBarSize={35} isAnimationActive={parkInView} animationDuration={1500} animationEasing="ease-out" animationBegin={200}>
+            <Bar dataKey="visitors" radius={[0, 6, 6, 0]} maxBarSize={35} isAnimationActive={false}>
               {data.map((entry, i) => (
                 <Cell
                   key={`cell-${i}`}
@@ -200,11 +196,8 @@ export function BiodiversityChart({
   subtitle,
   source,
 }: BiodiversityChartProps) {
-  const bioRef = useRef<HTMLDivElement>(null);
-  const bioInView = useInView(bioRef, { once: true, margin: "-60px" });
   return (
     <motion.div
-      ref={bioRef}
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
@@ -223,7 +216,7 @@ export function BiodiversityChart({
           )}
         </div>
       )}
-      <div className="h-[300px] w-full">
+      <div className="h-75 w-full">
         <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
           <BarChart
             data={data}
@@ -264,7 +257,7 @@ export function BiodiversityChart({
               content={<BiodiversityTooltip />}
               cursor={{ fill: "rgba(255,255,255,0.04)" }}
             />
-            <Bar dataKey="species" radius={[6, 6, 0, 0]} maxBarSize={65} isAnimationActive={bioInView} animationDuration={1500} animationEasing="ease-out" animationBegin={200}>
+            <Bar dataKey="species" radius={[6, 6, 0, 0]} maxBarSize={65} isAnimationActive={false}>
               {data.map((entry, i) => (
                 <Cell
                   key={`cell-${i}`}
@@ -327,11 +320,8 @@ export function GreatLakesChart({
   subtitle,
   source,
 }: GreatLakesChartProps) {
-  const lakesRef = useRef<HTMLDivElement>(null);
-  const lakesInView = useInView(lakesRef, { once: true, margin: "-60px" });
   return (
     <motion.div
-      ref={lakesRef}
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
@@ -350,7 +340,7 @@ export function GreatLakesChart({
           )}
         </div>
       )}
-      <div className="h-[320px] w-full">
+      <div className="h-80 w-full">
         <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
           <BarChart
             data={data}
@@ -387,7 +377,7 @@ export function GreatLakesChart({
               content={<LakesTooltip />}
               cursor={{ fill: "rgba(255,255,255,0.04)" }}
             />
-            <Bar dataKey="volume" radius={[6, 6, 0, 0]} maxBarSize={70} isAnimationActive={lakesInView} animationDuration={1500} animationEasing="ease-out" animationBegin={200}>
+            <Bar dataKey="volume" radius={[6, 6, 0, 0]} maxBarSize={70} isAnimationActive={false}>
               {data.map((entry, i) => (
                 <Cell key={`cell-${i}`} fill={entry.color} opacity={0.9} />
               ))}

@@ -17,8 +17,7 @@ import {
   YAxis,
   CartesianGrid,
 } from "recharts";
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { CHART_GOLD, CHART_NAVY } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
@@ -190,14 +189,11 @@ function MarketCapTooltip({
 }
 
 export function MarketCapChart({ data, title, source }: MarketCapChartProps) {
-  const mcRef = useRef<HTMLDivElement>(null);
-  const mcInView = useInView(mcRef, { once: true, margin: "-60px" });
   const { locale } = useLanguage();
   const sourceLabel = locale === "ro" ? "Sursă:" : "Source:";
 
   return (
     <motion.div
-      ref={mcRef}
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
@@ -250,7 +246,7 @@ export function MarketCapChart({ data, title, source }: MarketCapChartProps) {
                 content={<MarketCapTooltip />}
                 cursor={{ fill: "rgba(255,255,255,0.04)" }}
               />
-              <Bar dataKey="marketCap" radius={[0, 6, 6, 0]} maxBarSize={30} isAnimationActive={mcInView} animationDuration={1500} animationEasing="ease-out" animationBegin={200}>
+              <Bar dataKey="marketCap" radius={[0, 6, 6, 0]} maxBarSize={30} isAnimationActive={false}>
                 {data.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}

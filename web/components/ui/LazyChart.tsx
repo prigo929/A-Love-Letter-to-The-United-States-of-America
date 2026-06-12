@@ -22,7 +22,7 @@ export function LazyChart({
   children,
   height = "300px",
   className,
-  offset = "200px",
+  offset = "50px",
 }: LazyChartProps) {
   const [hasRendered, setHasRendered] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
