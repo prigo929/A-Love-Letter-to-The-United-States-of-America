@@ -7730,7 +7730,49 @@ export const VERTICALS_THEMATIC_DATA: Record<string, ThematicTopic[]> = {
         },
       ],
     },
-  ],
+      {
+      id: "Bretton_Woods_system",
+      title: { en: "Bretton Woods system", ro: "Sistemul Bretton Woods" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The Bretton Woods system was a monetary management agreement established in July 1944 at a conference of 44 Allied nations in Bretton Woods, New Hampshire. It created the framework for post-World War II global commerce, placing the United States dollar at the center of international finance and establishing the IMF and World Bank.", ro: "Sistemul Bretton Woods a fost un acord de gestionare monetară stabilit în iulie 1944 la o conferință a 44 de națiuni aliate în Bretton Woods, New Hampshire. A creat cadrul pentru comerțul global post-al Doilea Război Mondial, plasând dolarul american în centrul finanțelor internaționale și înființând FMI și Banca Mondială." },
+                { en: "The system aimed to foster global economic stability, promote free trade, and rebuild war-torn economies.", ro: "Sistemul a urmărit să favorizeze stabilitatea economică globală, să promoveze comerțul liber și să reconstruiască economiile devastate de război." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Operational Framework", ro: "Cadru Operațional" },
+          subsections: [
+            {
+              heading: { en: "The Dollar-Gold Standard", ro: "Standardul Dolar-Aur" },
+              paragraphs: [
+                { en: "Under Bretton Woods, member countries pegged their national currencies to the United States dollar, which was in turn pegged to gold at a fixed rate of $35 per ounce.", ro: "Sub Bretton Woods, țările membre și-au legat monedele naționale de dolarul american, care la rândul său era legat de aur la o rată fixă de 35 de dolari pe uncie." },
+                { en: "This dollar-gold standard established the USD as the world\'s primary reserve currency, reflecting the preeminent size and strength of the American economy.", ro: "Acest standard dolar-aur a consacrat USD ca principală monedă de rezervă a lumii, reflectând dimensiunea și forța preeminentă a economiei americane." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Decline and Legacy", ro: "Declin și Moștenire" },
+          subsections: [
+            {
+              heading: { en: "The Nixon Shock and Aftermath", ro: "Șocul Nixon și Urmările" },
+              paragraphs: [
+                { en: "Growing pressures on gold reserves and balance-of-payment deficits led President Richard Nixon to suspend the gold convertibility of the dollar in August 1971, concluding the fixed-exchange-rate system.", ro: "Presiunile crescânde asupra rezervelor de aur și deficitele balanței de plăți l-au demarat pe președintele Richard Nixon să suspende convertibilitatea în aur a dolarului în august 1971, punând capăt sistemului de rate de schimb fixe." },
+                { en: "Despite its end, the system cemented the U.S. dollar\'s role as the global reserve currency, laid the foundation for modern global trade, and created institutional frameworks that continue to govern international finance today.", ro: "În ciuda sfârșitului său, sistemul a cimentat rolul dolarului american ca monedă globală de rezervă, a pus bazele comerțului global modern și a creat cadre instituționale care continuă să guverneze finanțele internaționale și în prezent." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+],
   "quality-of-life": [
     {
       id: "Standard_of_living_in_the_United_States",
@@ -9222,7 +9264,132 @@ export const VERTICALS_THEMATIC_DATA: Record<string, ThematicTopic[]> = {
         },
       ],
     },
-  ],
+      {
+      id: "Korean_War",
+      title: { en: "Korean War", ro: "Războiul din Coreea" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The Korean War was a conflict fought between North Korea, supported by China and the Soviet Union, and South Korea, supported by the United States and United Nations forces, from 1950 to 1953. It was the first major military action of the Cold War, demonstrating America\'s resolve to defend democratic nations against communist aggression.", ro: "Războiul din Coreea a fost un conflict purtat între Coreea de Nord, susținută de China și Uniunea Sovietică, și Coreea de Sud, susținută de Statele Unite și forțele Națiunilor Unite, între 1950 și 1953. A fost prima acțiune militară majoră a Războiului Rece, demonstrând hotărârea Americii de a apăra națiunile democratice împotriva agresiunii comuniste." },
+                { en: "The war began when North Korean forces invaded South Korea across the 38th parallel on June 25, 1950, triggering immediate international intervention.", ro: "Războiul a început când forțele nord-coreene au invadat Coreea de Sud trecând peste paralela 38 la 25 iunie 1950, declanșând o intervenție internațională imediată." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "U.S. and UN Intervention", ro: "Intervenția SUA și ONU" },
+          subsections: [
+            {
+              heading: { en: "The Inchon Landing and Battle", ro: "Debarcarea de la Inchon și Lupta" },
+              paragraphs: [
+                { en: "Under a United Nations mandate, U.S. forces, led by General Douglas MacArthur, launched a daring amphibious landing at Inchon, turning the tide of the war and liberating Seoul.", ro: "Sub mandatul Națiunilor Unite, forțele americane, conduse de generalul Douglas MacArthur, au lansat o debarcare amfibie îndrăzneață la Inchon, întorcând cursul războiului și eliberând Seulul." },
+                { en: "Despite subsequent intervention by Chinese forces, U.S. and UN troops established a strong defensive line near the original border, demonstrating robust military capability and international cooperation.", ro: "În ciuda intervenției ulterioare a forțelor chineze, trupele SUA și ONU au stabilit o linie defensivă puternică în apropierea graniței inițiale, demonstrând o capacitate militară robustă și o strânsă cooperare internațională." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Aftermath and Legacy", ro: "Urmări și Moștenire" },
+          subsections: [
+            {
+              heading: { en: "Demilitarized Zone and Preservation", ro: "Zona Demilitarizată și Conservarea" },
+              paragraphs: [
+                { en: "The war ended in a stalemate with the signing of the Korean Armistice Agreement on July 27, 1953, establishing the Korean Demilitarized Zone (DMZ) near the 38th parallel.", ro: "Războiul s-a încheiat într-un impas cu semnarea Acordului de armistițiu coreean pe 27 iulie 1953, stabilind Zona Demilitarizată Coreeană (DMZ) în apropierea paralelei 38." },
+                { en: "U.S. military commitment preserved the sovereignty of South Korea, which has since developed into a prosperous, democratic, and technological powerhouse, standing as a testament to the value of U.S. defense guarantees.", ro: "Angajamentul militar al SUA a păstrat suveranitatea Coreii de Sud, care de atunci s-a dezvoltat într-o putere prosperă, democratică și tehnologică, fiind o dovadă clară a valorii garanțiilor de apărare ale SUA." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Gulf_War",
+      title: { en: "Gulf War", ro: "Războiul din Golf" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The Gulf War was a military conflict waged by a United States-led coalition of 35 nations against Iraq, in response to Iraq\'s invasion and annexation of Kuwait. Operating under UN authorization, the coalition executed Operation Desert Shield and Operation Desert Storm, representing a masterclass in modern coalition warfare and high-tech military execution.", ro: "Războiul din Golf a fost un conflict militar purtat de o coaliție de 35 de națiuni condusă de Statele Unite împotriva Irakului, ca răspuns la invazia și anexarea Kuweitului de către Irak. Operând sub autorizarea ONU, coaliția a executat Operațiunea Desert Shield și Operațiunea Desert Storm, reprezentând o demonstrație de excelență în războiul de coaliție modern și execuția militară hi-tech." },
+                { en: "The conflict, lasting from August 1990 to February 1991, established a new standard for precision-guided weapons and air superiority.", ro: "Conflictul, desfășurat din august 1990 până în februarie 1991, a stabilit un nou standard pentru armele ghidate de precizie și superioritatea aeriană." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Military Operations", ro: "Operațiuni Militare" },
+          subsections: [
+            {
+              heading: { en: "Desert Storm Campaigns", ro: "Campaniile Furtună în Deșert" },
+              paragraphs: [
+                { en: "Operation Desert Storm began on January 17, 1991, with an intense aerial bombardment campaign that dismantled Iraqi command and control systems, air defenses, and ground forces.", ro: "Operațiunea Desert Storm a început pe 17 ianuarie 1991, cu o campanie intensă de bombardament aerian care a demontat sistemele irakiene de comandă și control, apărările aeriene și forțele terestre." },
+                { en: "The subsequent ground assault, launched on February 24, lasted only 100 hours and saw U.S. armored divisions rapidly bypass and defeat Iraqi defenses, leading to the liberation of Kuwait.", ro: "Asaltul terestru ulterior, lansat pe 24 februarie, a durat doar 100 de ore și a văzut diviziile blindate ale SUA ocolind și învingând rapid apărările irakiene, ducând la eliberarea Kuweitului." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Technological Advances and Outcomes", ro: "Progrese Tehnologice și Rezultate" },
+          subsections: [
+            {
+              heading: { en: "Smart Weapons and Air Superiority", ro: "Arme Inteligente și Superioritate Aeriană" },
+              paragraphs: [
+                { en: "The war showcased advanced technologies such as stealth aircraft (F-117 Nighthawk), Patriot missile systems, GPS navigation, and smart bombs, demonstrating American technological superiority.", ro: "Războiul a prezentat tehnologii avansate, cum ar fi avioanele stealth (F-117 Nighthawk), sistemele de rachete Patriot, navigația prin GPS și bombele inteligente, demonstrând superioritatea tehnologică americană." },
+                { en: "The decisive victory reestablished international borders, asserted the rule of law, and restored U.S. confidence in its military capabilities.", ro: "Victoria decisivă a restabilit granițele internaționale, a afirmat statul de drept și a restabilit încrederea SUA în capacitățilese sale militare." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "War_in_Afghanistan_2001_2021",
+      title: { en: "War in Afghanistan (2001–2021)", ro: "Războiul din Afganistan (2001–2021)" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The War in Afghanistan was a 20-year conflict triggered by the September 11 terrorist attacks on the United States. A U.S.-led coalition invaded Afghanistan in October 2001, targeting the al-Qaeda network and overthrowing the Taliban regime that harbored them, marking the longest conflict in American military history.", ro: "Războiul din Afganistan a fost un conflict de 20 de ani declanșat de atacurile teroriste de la 11 septembrie asupra Statelor Unite. O coaliție condusă de SUA a invadat Afganistanul în octombrie 2001, vizând rețeaua al-Qaeda și răsturnând regimul taliban care o adăpostea, marcând cel mai lung conflict din istoria militară a Americii." },
+                { en: "The campaign sought to disrupt international terrorism and establish a stable, democratic Afghan state.", ro: "Campania a urmărit să perturbe terorismul internațional și să stabilească un stat afgan stabil și democratic." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Invasion and Resurgence", ro: "Invazie și Resurgență" },
+          subsections: [
+            {
+              heading: { en: "Counterinsurgency and Bin Laden", ro: "Contrainsugența și Bin Laden" },
+              paragraphs: [
+                { en: "Early military operations quickly removed the Taliban from power and forced al-Qaeda leadership into hiding, paving the way for democratic elections and reconstruction efforts.", ro: "Operațiunile militare inițiale au înlăturat rapid talibanii de la putere și au forțat conducerea al-Qaeda să se ascundă, deschizând calea pentru alegeri democratice și eforturi de reconstrucție." },
+                { en: "However, the Taliban reorganized, launching a persistent insurgency that required sustained U.S. and NATO support, culminating in the historic 2011 operation that eliminated Osama bin Laden.", ro: "Cu toate acestea, talibanii s-au reorganizat, lansând o insurgență persistentă care a necesitat sprijin susținut din partea SUA și NATO, culminând cu operațiunea istorică din 2011 care l-a eliminat pe Osama bin Laden." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Withdrawal and Legacy", ro: "Retragere și Moștenire" },
+          subsections: [
+            {
+              heading: { en: "Force Projection and Lessons", ro: "Proiecția Forței și Învățăminte" },
+              paragraphs: [
+                { en: "U.S. forces completed their withdrawal in August 2021, ending two decades of direct military engagement. The campaign demonstrated U.S. capability to project power globally, degrade terrorist infrastructure, and coordinate large-scale international coalitions, while providing crucial lessons for future counterinsurgency strategies.", ro: "Forțele SUA și-au finalizat retragerea în august 2021, punând capăt la două decenii de implicare militară directă. Campania a demonstrat capacitatea SUA de a proiecta putere la nivel global, de a degrada infrastructura teroristă și de a coordona coaliții internaționale la scară largă, oferind în același timp lecții cruciale pentru viitoarele strategii de contraspionaj." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+],
   "global-leadership": [
     {
       id: "Foreign_policy_of_the_United_States",
@@ -10195,7 +10362,90 @@ export const VERTICALS_THEMATIC_DATA: Record<string, ThematicTopic[]> = {
         },
       ],
     },
-  ],
+      {
+      id: "United_States_involvement_in_regime_change",
+      title: { en: "United States involvement in regime change", ro: "Schimbarea regimurilor externe" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "United States involvement in regime change encompasses both overt and covert actions aimed at altering, replacing, or preserving foreign governments. This practice, shaped by changing geopolitical interests and national security strategies, has played a significant role in modern international relations.", ro: "Implicarea Statelor Unite în schimbarea regimurilor cuprinde atât acțiuni deschise, cât și secrete, menite să modifice, să înlocuiască sau să conserve guverne străine. Această practică, modelată de interese geopolitice în schimbare și strategii de securitate națională, a jucat un rol semnificativ în relațiile internaționale moderne." },
+                { en: "During the 20th and 21st centuries, the U.S. intervened in various regions, driven by the ideological struggles of the Cold War and post-Cold War security challenges.", ro: "În secolele al XX-lea și al XXI-lea, SUA au intervenit în diverse regiuni, impulsionate de disputele ideologice ale Războiului Rece și de provocările de securitate post-Război Rece." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Cold War Interventions", ro: "Intervenții din Războiul Rece" },
+          subsections: [
+            {
+              heading: { en: "Containing Soviet Influence", ro: "Îndiguirea Influenței Sovietice" },
+              paragraphs: [
+                { en: "Throughout the Cold War (1945–1991), U.S. administrations engaged in foreign interventions to contain Soviet expansion and the spread of communism, prioritizing stable pro-Western alliances.", ro: "Pe tot parcursul Războiului Rece (1945–1991), administrațiile americane s-au angajat în intervenții externe pentru a limita expansiunea sovietică și răspândirea comunismului, acordând prioritate alianțelor pro-occidentale stabile." },
+                { en: "Key instances included the restoration of the Shah in Iran in 1953, support for the anti-communist coup in Guatemala in 1954, and efforts to contain socialist movements in Latin America and Southeast Asia.", ro: "Exemple cheie au inclus restaurarea Șahului în Iran în 1953, sprijinul pentru lovitura de stat anticomunistă din Guatemala în 1954 și eforturile de limitare a mișcărilor socialiste în America Laterală și Asia de Sud-Est." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Post-Cold War Interventions", ro: "Intervenții Post-Război Rece" },
+          subsections: [
+            {
+              heading: { en: "Democracy Promotion and Security", ro: "Promovarea Democrației și Securitatea" },
+              paragraphs: [
+                { en: "Following the collapse of the Soviet Union, U.S. foreign policy focused on promoting democracy, human rights, and addressing threats such as state-sponsored terrorism.", ro: "În urma prăbușirii Uniunii Sovietice, politica externă a SUA s-a concentrat pe promovarea democrației, a drepturilor omului și pe contracararea amenințărilor precum terorismul sponsorizat de stat." },
+                { en: "The interventions in Iraq (2003) and Libya (2011) reflected shifts toward democracy promotion and humanitarian intervention, generating extensive debate over the long-term outcomes of democratic rebuilding efforts.", ro: "Intervențiile din Irak (2003) și Libia (2011) au reflectat treceri către promovarea democrației și intervenții umanitare, generând dezbateri ample asupra rezultatelor pe termen lung ale eforturilor de reconstrucție democratică." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Cold_War",
+      title: { en: "Cold War", ro: "Războiul Rece" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The Cold War was a period of geopolitical tension between the United States and its allies on one side, and the Soviet Union and its satellite states on the other, spanning from the end of World War II in 1945 to the dissolution of the Soviet Union in 1991. It shaped the global order, sparking competition in ideology, technology, space, and military readiness.", ro: "Războiul Rece a fost o perioadă de tensiune geopolitică între Statele Unite și aliații săi, pe de o parte, și Uniunea Sovietică și statele sale satelit, pe de altă parte, întinzându-se de la sfârșitul celui de-al Doilea Război Mondial în 1945 până la dizolvarea Uniunii Sovietice în 1991. Aceasta a modelat ordinea globală, stimulând competiția în ideologie, tehnologie, spațiu și pregătire militară." },
+                { en: "Although the two superpowers never engaged in direct large-scale combat, the conflict led to proxy wars, defense pacts like NATO, and a massive nuclear arms race.", ro: "Deși cele două superputeri nu s-au angajat niciodată în lupte directe la scară largă, conflictul a dus la războaie prin proxy, pacte de apărare precum NATO și o cursă masivă a înarmării nucleare." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Onset and Containment", ro: "Declanșare și Containment" },
+          subsections: [
+            {
+              heading: { en: "Truman Doctrine and Marshall Plan", ro: "Doctrina Truman și Planul Marshall" },
+              paragraphs: [
+                { en: "In the late 1940s, the United States adopted the policy of containment, aiming to prevent the spread of communism worldwide. This strategy was implemented through the Truman Doctrine and the Marshall Plan, which poured billions of dollars into rebuilding Western Europe\'s democratic economies.", ro: "La sfârșitul anilor 1940, Statele Unite au adoptat politica de containment (îndiguire), cu scopul de a preveni răspândirea comunismului în întreaga lume. Această strategie a fost implementată prin Doctrina Truman și Planul Marshall, care a direcționat miliarde de dolari pentru reconstrucția economiilor democratice din Europa de Vest." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Crises and Collapse", ro: "Crize și Colaps" },
+          subsections: [
+            {
+              heading: { en: "From Proxy Wars to 1991", ro: "De la Războaie Proxy la 1991" },
+              paragraphs: [
+                { en: "The struggle escalated through critical events such as the Berlin Blockade, the Cuban Missile Crisis, and proxy conflicts in Korea and Vietnam, testing global diplomacy and deterrence.", ro: "Disputa a escaladat prin evenimente critice precum Blocada Berlinului, Criza rachetelor din Cuba și conflictele prin proxy din Coreea și Vietnam, testând diplomația globală și descurajarea militară." },
+                { en: "The Cold War concluded in 1991 with the collapse of communist regimes in Eastern Europe and the dissolution of the Soviet Union, leaving the United States as the world\'s preeminent superpower.", ro: "Războiul Rece s-a încheiat în 1991 cu prăbușirea regimurilor comuniste din Europa de Est și dizolvarea Uniunii Sovietice, lăsând Statele Unite ca superputere preeminentă a lumii." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+],
   "demographics": [
     {
       id: "Demographics_of_the_United_States",
