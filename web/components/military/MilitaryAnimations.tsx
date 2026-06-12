@@ -1074,17 +1074,15 @@ export function ParallaxMilitaryHero({
         </motion.p>
         
         {/* Title - Nature-style reveal */}
-        <div className="overflow-hidden py-2">
-          <motion.h1 
-            variants={{
-              hidden: { opacity: 0, y: 60 },
-              visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } }
-            }}
-            className="mil-text-hero"
-          >
-            {title}
-          </motion.h1>
-        </div>
+        <motion.h1
+          variants={{
+            hidden: { opacity: 0, y: 32 },
+            visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } }
+          }}
+          className="mil-text-hero"
+        >
+          {title}
+        </motion.h1>
 
         {/* Subtitle */}
         <motion.p 
@@ -1200,14 +1198,12 @@ export function VideoMilitaryHero({
             {tagline}
           </motion.p>
 
-          <div className="overflow-hidden py-2">
-            <motion.h1
-              variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } } }}
-              className="mil-text-hero"
-            >
-              {title}
-            </motion.h1>
-          </div>
+          <motion.h1
+            variants={{ hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } } }}
+            className="mil-text-hero"
+          >
+            {title}
+          </motion.h1>
 
           <motion.p
             variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 0.85, y: 0, transition: { duration: 0.8 } } }}

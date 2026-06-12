@@ -560,16 +560,14 @@ export function VideoCultureHero({
           </motion.p>
 
           {/* Main Title */}
-          <div className="overflow-hidden py-2">
-            <motion.h1
-              variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } } }}
-              className="font-hero text-white leading-[0.9] mb-4 md:mb-6"
-              style={{ fontSize: "clamp(48px, 10vw, 140px)", letterSpacing: "0.02em" }}
-            >
-              <span className="block">{titleLine1}</span>
-              <span className="block text-glory-gold">{titleLine2}</span>
-            </motion.h1>
-          </div>
+          <motion.h1
+            variants={{ hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } } }}
+            className="font-hero text-white leading-[0.9] mb-4 md:mb-6"
+            style={{ fontSize: "clamp(48px, 10vw, 140px)", letterSpacing: "0.02em" }}
+          >
+            <span className="block">{titleLine1}</span>
+            <span className="block text-glory-gold">{titleLine2}</span>
+          </motion.h1>
 
           {/* Deck */}
           <motion.p

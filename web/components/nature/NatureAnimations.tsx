@@ -421,15 +421,13 @@ export function HeroTextReveal({ line1, line2, line2Color = "#4ade80", eyebrow, 
           className="nat-text-label mb-3 md:mb-6" style={{ color: 'var(--nat-accent-earth)' }}>{eyebrow}
         </motion.p>
       )}
-      <div className="overflow-hidden py-2">
-        <motion.h1
-          variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } } }}
-          className="nat-text-hero"
-        >
-          <span className="block text-white">{line1}</span>
-          <span className="block" style={{ color: line2Color }}>{line2}</span>
-        </motion.h1>
-      </div>
+      <motion.h1
+        variants={{ hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } } }}
+        className="nat-text-hero"
+      >
+        <span className="block text-white">{line1}</span>
+        <span className="block" style={{ color: line2Color }}>{line2}</span>
+      </motion.h1>
       {body && (
         <motion.p variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.1 } } }}
           className="nat-text-body mt-4 md:mt-8 max-w-2xl">{body}
