@@ -1189,7 +1189,187 @@ export const VERTICALS_THEMATIC_DATA: Record<string, ThematicTopic[]> = {
         },
       ],
     },
-  ],
+      {
+      id: "List_of_national_parks_of_the_United_States",
+      title: { en: "National parks of the United States", ro: "Parcurile Naționale ale Statelor Unite" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The National Parks of the United States represent a world-leading system of protected areas renowned for their natural wonders, unique geological formations, and diverse ecosystems. Managed by the National Park Service, this network preserves the country\'s most spectacular landscapes for conservation, scientific research, and public enjoyment.", ro: "Parcurile Naționale ale Statelor Unite reprezintă un sistem de arii protejate de top la nivel mondial, renumit pentru minunile sale naturale, formațiunile geologice unice și ecosistemele diverse. Gestionată de Serviciul Parcurilor Naționale, această rețea conservă cele mai spectaculoase peisaje ale țării pentru conservare, cercetare științifică și recreere publică." },
+                { en: "Established through congressional acts beginning with Yellowstone in 1872, the system includes 63 designated national parks that attract millions of global visitors annually.", ro: "Înființat prin acte ale Congresului începând cu Yellowstone în 1872, sistemul include 63 de parcuri naționale desemnate care atrag anual milioane de vizitatori din întreaga lume." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Historical Development", ro: "Dezvoltare Istorică" },
+          subsections: [
+            {
+              heading: { en: "Preserving the Wild", ro: "Conservarea Sălbăticiei" },
+              paragraphs: [
+                { en: "The national park concept was pioneered in the U.S. as a democratic ideal to protect wilderness from private exploitation. Under President Theodore Roosevelt, the conservation movement expanded rapidly.", ro: "Conceptul de parc național a fost inițiat în SUA ca un ideal democratic de a proteja natura sălbatică de exploatarea privată. Sub președintele Theodore Roosevelt, mișcarea de conservare s-a extins rapid." },
+                { en: "The National Park Service Organic Act of 1916 consolidated the management of these lands, ensuring their preservation in an unimpaired state for future generations.", ro: "Actul Organic al Serviciului Parcurilor Naționale din 1916 a consolidat gestionarea acestor teritorii, asigurând conservarea lor într-o stare nealterată pentru generațiile viitoare." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Appalachian_Mountains",
+      title: { en: "Appalachian Mountains", ro: "Munții Apalași" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The Appalachian Mountains are a vast mountain range system in eastern North America, stretching from southeastern Canada to central Alabama. Among the oldest mountains on Earth, the Appalachians are famous for their rich biodiversity, rolling ridge-and-valley landscapes, and deep cultural heritage.", ro: "Munții Apalași reprezintă un sistem muntos vast din estul Americii de Nord, întinzându-se de la sud-estul Canadei până în centrul statului Alabama. Printre cei mai vechi munți de pe Pământ, Apalașii sunt renumiți pentru biodiversitatea lor bogată, peisajele ondulate de culmi și văi și moștenirea culturală profundă." },
+                { en: "The range forms a natural barrier that significantly influenced early American migration, settlement patterns, and economic expansion.", ro: "Lanțul muntos formează o barieră naturală care a influențat semnificativ migrația timpurie americană, modelele de așezare și expansiunea economică." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Ecology and Culture", ro: "Ecologie și Cultură" },
+          subsections: [
+            {
+              heading: { en: "Deciduous Forests and the Trail", ro: "Pădurile Foioase și Traseul" },
+              paragraphs: [
+                { en: "The Appalachians contain some of the world\'s most diverse temperate deciduous forests, harboring thousands of endemic plant and animal species.", ro: "Apalașii găzduiesc unele dintre cele mai diverse păduri foioase temperate din lume, adăpostind mii de specii de plante și animale endemice." },
+                { en: "The region has fostered a distinct cultural identity, famous for Appalachian folk music, storytelling, and historic routes such as the 2,190-mile Appalachian Trail.", ro: "Regiunea a promovat o identitate culturală distinctă, faimoasă pentru muzica populară apalașă, legendele locale și traseele istorice, cum ar fi Appalachian Trail de 2.190 de mile." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Rocky_Mountains",
+      title: { en: "Rocky Mountains", ro: "Munții Stâncoși" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The Rocky Mountains, or the Rockies, are a massive mountain range stretching over 3,000 miles from northern British Columbia to New Mexico in the southwestern United States. Boasting dramatic alpine peaks, deep glacial valleys, and the Continental Divide, the Rockies are a symbol of the American West.", ro: "Munții Stâncoși reprezintă un lanț muntos masiv care se întinde pe mai mult de 3.000 de mile, de la nordul Columbiei Britanice până în New Mexico, în sud-vestul Statelor Unite. Cu vârfuri alpine dramatice, văi glaciare adânci și Divizia Continentală, Stâncoșii sunt un simbol al Vestului american." },
+                { en: "The range serves as a critical watershed, feeding major rivers that supply water to millions of people across North America.", ro: "Lanțul muntos servește drept bazin hidrografic critic, alimentând râuri majore care furnizează apă pentru milioane de oameni din întreaga Americă de Nord." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Geology and Human History", ro: "Geologie și Istorie Umană" },
+          subsections: [
+            {
+              heading: { en: "Laramide Orogeny and the Frontier", ro: "Orogeneza Laramide și Frontiera" },
+              paragraphs: [
+                { en: "Formed between 80 and 55 million years ago during the Laramide orogeny, the Rockies feature complex geological structures, rich mineral deposits, and active thermal systems.", ro: "Formați acum 80 până la 55 de milioane de ani în timpul orogenezei Laramide, Munții Stâncoși prezintă structuri geologice complexe, zăcăminte minerale bogate și sisteme termice active." },
+                { en: "Historically home to Native American tribes, the range later drew fur trappers, gold prospectors, and pioneers, shaping the iconic frontier history of the United States.", ro: "Istoric cămin al triburilor de nativi americani, lanțul muntos a atras ulterior capkani de blănuri, căutători de aur și pionieri, modelând istoria emblematică de frontieră a Statelor Unite." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Mississippi_River",
+      title: { en: "Mississippi River", ro: "Fluviul Mississippi" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The Mississippi River is the second-longest river in North America, flowing 2,340 miles from its source at Lake Itasca in Minnesota to the Gulf of Mexico. Acting as a vital ecological corridor and a cornerstone of American commerce, the Mississippi has shaped the geography, history, and culture of the United States.", ro: "Fluviul Mississippi este al doilea cel mai lung râu din America de Nord, curgând 2.340 de mile de la sursa sa din Lacul Itasca din Minnesota până în Golful Mexic. Acționând ca un coridor ecologic vital și o piatră de temelie a comerțului american, Mississippi a modelat geografia, istoria și cultura Statelor Unite." },
+                { en: "Its vast drainage basin covers parts of 32 U.S. states, draining approximately 40% of the continental United States.", ro: "Bazinul său vast de colectare acoperă părți din 32 de state americane, drenând aproximativ 40% din teritoriul continental al Statelor Unite." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Commerce and Culture", ro: "Comerț și Cultură" },
+          subsections: [
+            {
+              heading: { en: "Navigation and Artistic Inspiration", ro: "Navigația și Inspirația Artistică" },
+              paragraphs: [
+                { en: "As a major commercial waterway, the Mississippi supports a massive navigation network, transporting agricultural goods, energy resources, and manufactured products globally.", ro: "Ca o cale navigabilă comercială majoră, Mississippi susține o rețea masivă de navigație, transportând la nivel global mărfuri agricole, resurse energetice și produse manufacturate." },
+                { en: "The river inspired classic American literature, most notably the works of Mark Twain, and gave birth to unique musical styles such as Delta blues and jazz.", ro: "Fluviul a inspirat literatura americană clasică, în special operele lui Mark Twain, și a dat naștere unor stiluri muzicale unice precum Delta blues și jazz-ul." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Great_Lakes",
+      title: { en: "Great Lakes", ro: "Marile Lacuri" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The Great Lakes are a series of five interconnected freshwater lakes—Superior, Huron, Michigan, Erie, and Ontario—located on the Canada–United States border. Holding approximately 21% of the world\'s surface fresh water, they constitute the largest group of freshwater lakes on Earth by total area.", ro: "Marile Lacuri sunt o serie de cinci lacuri de apă dulce interconectate – Superior, Huron, Michigan, Erie și Ontario – situate pe granița dintre Canada și Statele Unite. Găzduind aproximativ 21% din apa dulce de suprafață a lumii, acestea reprezintă cel mai mare grup de lacuri de apă dulce de pe Pământ ca suprafață totală." },
+                { en: "The lakes form a critical freshwater sea system, supporting diverse marine habitats and regulating regional climate patterns.", ro: "Lacurile formează un sistem marin de apă dulce critic, susținând habitate marine diverse și reglând modelele climatice regionale." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Economic and Transport Role", ro: "Rolul Economic și de Transport" },
+          subsections: [
+            {
+              heading: { en: "Industrial Shipping and Manufacturing Core", ro: "Transportul Industrial și Nucleul Manufacturier" },
+              paragraphs: [
+                { en: "The Great Lakes Waterway, linked to the Atlantic via the St. Lawrence Seaway, serves as a vital shipping corridor, carrying iron ore, grain, and industrial materials.", ro: "Calea navigabilă a Marilor Lacuri, legată de Atlantic prin Canalul Sfântul Laurențiu, servește drept coridor de transport maritim esențial, transportând minereu de fier, cereale și materiale industriale." },
+                { en: "The basin supports major agricultural zones, urban centers, and industrial hubs, acting as a historical anchor for North America\'s manufacturing and economic core.", ro: "Bazinul susține zone agricole majore, centre urbane și noduri industriale, funcționând ca o ancoră istorică pentru centrul manufacturier și economic al Americii de Nord." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Yellowstone_National_Park",
+      title: { en: "Yellowstone National Park", ro: "Parcul Național Yellowstone" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "Yellowstone National Park, established by Congress in 1872, is widely considered the world\'s first national park. Spanning 3,468 square miles across Wyoming, Montana, and Idaho, it is famous for its unique geothermal features, active supervolcano, and abundant wildlife.", ro: "Parcul Național Yellowstone, înființat de Congres în 1872, este considerat primul parc național din lume. Întinzându-se pe 3.468 de mile pătrate în Wyoming, Montana și Idaho, este renumit pentru caracteristicile sale geotermale unice, supervulcanul activ și fauna sălbatică abundentă." },
+                { en: "The park preserves more than half of the world\'s active geysers, including the iconic Old Faithful.", ro: "Parcul păstrează mai mult de jumătate din gheizerele active ale lumii, inclusiv celebrul Old Faithful." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Ecology and Geothermal Wonders", ro: "Ecologie și Minuni Geotermale" },
+          subsections: [
+            {
+              heading: { en: "Caldera Extremophiles and Wildlife", ro: "Extremofilele Calderei și Fauna Sălbatică" },
+              paragraphs: [
+                { en: "Yellowstone sits atop the massive Yellowstone Caldera, driving thousands of hot springs, mudpots, fumaroles, and geysers that support rare extremophile organisms.", ro: "Yellowstone se află deasupra Calderei masive Yellowstone, care alimentează mii de izvoare termale, bazine de noroi, fumarole și gheizere ce susțin organisme extremofile rare." },
+                { en: "The park is the centerpiece of the Greater Yellowstone Ecosystem, one of the largest nearly intact temperate zone ecosystems remaining on Earth, home to wolves, grizzly bears, and bison.", ro: "Parcul este piesa centrală a Ecosistemului Greater Yellowstone, unul dintre cele mai mari ecosisteme din zona temperată aproape intacte rămase pe Pământ, cămin al lupilor, urșilor grizzly și bizonilor." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+],
   "constitution": [
     {
       id: "Federal_government_of_the_United_States",
