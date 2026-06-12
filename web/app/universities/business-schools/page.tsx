@@ -41,7 +41,7 @@ interface BusinessCopy {
 const copyEn: BusinessCopy = {
   breadcrumbParent: "Universities",
   breadcrumbPage: "Business Schools",
-  heroTagline: "THE ARCHITECTS OF CAPITALISM",
+  heroTagline: "ARCHITECTS OF CAPITALISM",
   heroTitle: "Business Schools",
   heroSubtitle: "HBS, Wharton, Stanford GSB, and Chicago Booth — the management hubs that invented the MBA and train the executives of global commerce.",
   thesisTitle: "The Command of Management Capital",
