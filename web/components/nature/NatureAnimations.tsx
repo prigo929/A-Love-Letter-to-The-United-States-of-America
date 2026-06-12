@@ -222,7 +222,7 @@ export function NatureHeroCrossfade({ children }: { children: React.ReactNode })
       </div>
 
       {/* Content overlay */}
-      <div className="relative z-20 flex h-screen flex-col justify-end pb-12 pt-20 md:pb-24 md:pt-48">
+      <div className="relative z-20 flex h-screen flex-col justify-end pb-16 pt-28 md:pb-24 md:pt-48">
         <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">{children}</div>
       </div>
     </section>
@@ -583,7 +583,7 @@ export function NatureSubPageHero({ imageSrc, imageAlt, label, children }: {
       </div>
 
       {/* Content overlay */}
-      <div className="relative z-20 flex h-screen flex-col justify-end pb-12 pt-20 md:pb-24 md:pt-48">
+      <div className="relative z-20 flex h-screen flex-col justify-end pb-16 pt-28 md:pb-24 md:pt-48">
         <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">{children}</div>
       </div>
     </section>
