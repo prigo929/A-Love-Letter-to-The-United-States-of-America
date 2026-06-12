@@ -132,7 +132,7 @@ export function VCBarChart({ data, title, source }: VCBarChartProps) {
                 }}
                 cursor={{ fill: "rgba(255,255,255,0.04)" }}
               />
-              <Bar dataKey="investment" radius={[5, 5, 0, 0]} maxBarSize={55} isAnimationActive={false}>
+              <Bar dataKey="investment" radius={[5, 5, 0, 0]} maxBarSize={55} isAnimationActive={true}>
                 {data.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}

@@ -246,7 +246,7 @@ export function MarketCapChart({ data, title, source }: MarketCapChartProps) {
                 content={<MarketCapTooltip />}
                 cursor={{ fill: "rgba(255,255,255,0.04)" }}
               />
-              <Bar dataKey="marketCap" radius={[0, 6, 6, 0]} maxBarSize={30} isAnimationActive={false}>
+              <Bar dataKey="marketCap" radius={[0, 6, 6, 0]} maxBarSize={30} isAnimationActive={true}>
                 {data.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}

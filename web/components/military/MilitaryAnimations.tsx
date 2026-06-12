@@ -1406,7 +1406,7 @@ export function BudgetComparisonBar({
                   <div className="h-1 rounded-full bg-white/5 overflow-hidden">
                     <motion.div
                       className={cn(
-                        "h-full rounded-full transition-all duration-200",
+                        "h-full rounded-full transition-colors duration-200",
                         isUS 
                           ? "bg-white" 
                           : isHovered ? "bg-white/40" : "bg-white/15"

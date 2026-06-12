@@ -136,7 +136,7 @@ export function ParkVisitorsChart({
               content={<ParkTooltip />}
               cursor={{ fill: "rgba(255,255,255,0.04)" }}
             />
-            <Bar dataKey="visitors" radius={[0, 6, 6, 0]} maxBarSize={35} isAnimationActive={false}>
+            <Bar dataKey="visitors" radius={[0, 6, 6, 0]} maxBarSize={35} isAnimationActive={true}>
               {data.map((entry, i) => (
                 <Cell
                   key={`cell-${i}`}
@@ -257,7 +257,7 @@ export function BiodiversityChart({
               content={<BiodiversityTooltip />}
               cursor={{ fill: "rgba(255,255,255,0.04)" }}
             />
-            <Bar dataKey="species" radius={[6, 6, 0, 0]} maxBarSize={65} isAnimationActive={false}>
+            <Bar dataKey="species" radius={[6, 6, 0, 0]} maxBarSize={65} isAnimationActive={true}>
               {data.map((entry, i) => (
                 <Cell
                   key={`cell-${i}`}
@@ -377,7 +377,7 @@ export function GreatLakesChart({
               content={<LakesTooltip />}
               cursor={{ fill: "rgba(255,255,255,0.04)" }}
             />
-            <Bar dataKey="volume" radius={[6, 6, 0, 0]} maxBarSize={70} isAnimationActive={false}>
+            <Bar dataKey="volume" radius={[6, 6, 0, 0]} maxBarSize={70} isAnimationActive={true}>
               {data.map((entry, i) => (
                 <Cell key={`cell-${i}`} fill={entry.color} opacity={0.9} />
               ))}

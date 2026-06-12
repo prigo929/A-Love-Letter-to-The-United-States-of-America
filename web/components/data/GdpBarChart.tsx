@@ -189,7 +189,7 @@ export function GdpBarChart({
                 }
                 cursor={{ fill: "rgba(255,255,255,0.04)" }}
               />
-              <Bar dataKey="gdp" radius={[6, 6, 0, 0]} maxBarSize={60} isAnimationActive={false}>
+              <Bar dataKey="gdp" radius={[6, 6, 0, 0]} maxBarSize={60} isAnimationActive={true}>
                 {data.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
