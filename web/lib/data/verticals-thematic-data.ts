@@ -13563,7 +13563,199 @@ export const VERTICALS_THEMATIC_DATA: Record<string, ThematicTopic[]> = {
         },
       ],
     },
-  ],
+      {
+      id: "Architecture_of_the_United_States",
+      title: { en: "American architecture", ro: "Arhitectura americană" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "American architecture is a rich, eclectic tradition shaped by colonial history, diverse cultural influences, and continuous engineering innovation. Rather than being defined by a single aesthetic, it is characterized by its adaptability, regional variety, and the expression of democratic ideals.", ro: "Arhitectura americană este o tradiție bogată și eclectică, modelată de istoria colonială, influențele culturale diverse și inovația continuă în inginerie. În loc să fie definită de o singură estetică, aceasta se caracterizează prin adaptabilitate, varietate regională și exprimarea idealurilor democratice." },
+                { en: "From indigenous Pueblo structures and colonial Cape Cod designs to iconic steel-frame skyscrapers, the built environment of the United States reflects its historic growth.", ro: "De la structurile indigene Pueblo și designurile coloniale Cape Cod până la zgârie-nori emblematici cu cadru de oțel, mediul construit al Statelor Unite reflectă dezvoltarea sa istorică." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Classical and Federal Styles", ro: "Stilurile Clasice și Federale" },
+          subsections: [
+            {
+              heading: { en: "Neoclassicism and National Identity", ro: "Neoclasicismul și Identitatea Națională" },
+              paragraphs: [
+                { en: "Following the American Revolution, the young republic established its national identity through architecture by adopting the Federal and Greek Revival styles, which drew inspiration from Ancient Rome and Greece to symbolize democratic principles.", ro: "În urma Revoluției Americane, tânăra republică și-a stabilit identitatea națională prin arhitectură prin adoptarea stilurilor Federal și Greek Revival, care s-au inspirat din Roma și Grecia Antică pentru a simboliza principiile democratice." },
+                { en: "This neoclassicism became the dominant style for public buildings, monuments, and civic spaces, visually anchoring the nation\'s democratic institutions.", ro: "Acest neoclasicism a devenit stilul dominant pentru clădirile publice, monumente și spațiile civice, ancorând vizual instituțiile democratice ale națiunii." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Modernism and Skyscraper", ro: "Modernismul și Zgârie-norii" },
+          subsections: [
+            {
+              heading: { en: "Steel Frames and Organic Form", ro: "Cadre de Oțel și Forma Organică" },
+              paragraphs: [
+                { en: "The late 19th and 20th centuries saw the birth of the skyscraper, enabled by steel-frame construction and passenger elevators, transforming urban skylines worldwide.", ro: "Sfârșitul secolului al XIX-lea și secolul al XX-lea au asistat la nașterea zgârie-norilor, posibili datorită structurilor cu cadru de oțel și lifturilor pentru pasageri, transformând profilurile urbane la nivel mondial." },
+                { en: "Concurrently, architects like Frank Lloyd Wright pioneered the Prairie School style, promoting organic architecture that integrated structures harmoniously with the surrounding landscape.", ro: "În paralel, arhitecți precum Frank Lloyd Wright au fost pionieri ai stilului Prairie School, promovând o arhitectură organică ce integra structurile în mod armonios cu peisajul înconjurător." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Jazz",
+      title: { en: "Jazz", ro: "Jazz" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "Jazz is a uniquely American music genre that originated in the late 19th and early 20th centuries in African American communities, particularly in New Orleans. Characterized by improvisation, syncopation, and swing rhythms, jazz is widely celebrated as \'America\'s classical music\' and a monumental contribution to global culture.", ro: "Jazzul este un gen muzical unic american care a apărut la sfârșitul secolului al XIX-lea și începutul secolului al XX-lea în comunitățile afro-americane, în special în New Orleans. Caracterizat prin improvizație, sincopă și ritmuri de swing, jazzul este celebrat pe scară largă ca „muzica clasică a Americii” și o contribuție monumentală la cultura globală." },
+                { en: "The genre arose from a fusion of West African musical traditions, spirituals, blues, and European classical harmonies.", ro: "Genul a apărut dintr-o fuziune de tradiții muzicale din Africa de Vest, cântece spirituale, blues și armonii clasice europene." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Evolution and Eras", ro: "Evoluție și Epoci" },
+          subsections: [
+            {
+              heading: { en: "From Dixieland to Bebop", ro: "De la Dixieland la Bebop" },
+              paragraphs: [
+                { en: "Jazz evolved through various distinct eras, from early Dixieland and the Big Band Swing era of the 1930s, which dominated popular music, to the complex improvisations of Bebop and Cool Jazz in the post-war years.", ro: "Jazzul a evoluat prin diverse epoci distincte, de la Dixieland timpuriu și epoca Swing a marilor orchestre (Big Band) din anii 1930, care a dominat muzica populară, până la improvizațiile complexe de Bebop și Cool Jazz din anii postbelici." },
+                { en: "Pioneering artists such as Louis Armstrong, Duke Ellington, Charlie Parker, and Miles Davis constantly pushed artistic boundaries, establishing jazz as a dynamic and influential art form.", ro: "Artiști pionieri precum Louis Armstrong, Duke Ellington, Charlie Parker și Miles Davis au depășit constant granițele artistice, consacrând jazzul ca o formă de artă dinamică și influentă." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Broadway_theatre",
+      title: { en: "Broadway theatre", ro: "Teatrul Broadway" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "Broadway theatre represents the pinnacle of commercial live theatre in the English-speaking world, centered in the Theater District of Midtown Manhattan in New York City. Comprising 41 professional theatres with 500 or more seats, Broadway is a cornerstone of American culture and a major global tourist draw.", ro: "Teatrul Broadway reprezintă apogeul teatrului live comercial din lumea anglofonă, centrat în Districtul Teatrelor din Midtown Manhattan, New York. Cuprinzând 41 de teatre profesionale cu 500 sau mai multe locuri, Broadway este o piatră de temelie a culturii americane și un punct de atracție turistic global major." },
+                { en: "Along with London\'s West End, it showcases the highest level of professional theatrical production worldwide.", ro: "Alături de West End din Londra, acesta prezintă cel mai înalt nivel de producție teatrală profesională la nivel mondial." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "The Golden Age of Musicals", ro: "Epoca de Aur a Musicalului" },
+          subsections: [
+            {
+              heading: { en: "Narrative, Song, and Dance", ro: "Narațiune, Cântec și Dans" },
+              paragraphs: [
+                { en: "During the mid-20th century Golden Age, Broadway popularized the modern book musical, blending story, song, and dance into a cohesive narrative through legendary collaborations like Rodgers and Hammerstein.", ro: "În timpul Epocii de Aur de la mijlocul secolului al XX-lea, Broadway a popularizat musicalul modern, îmbinând povestea, cântecul și dansul într-o narațiune coezivă prin colaborări legendare precum cea dintre Rodgers și Hammerstein." },
+                { en: "Shows like Oklahoma!, West Side Story, and modern blockbusters like Hamilton have achieved massive global influence, shaping popular music and storytelling.", ro: "Spectacole precum Oklahoma!, West Side Story și blockbustere moderne precum Hamilton au obținut o influență globală masivă, modelând muzica populară și arta povestirii." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Fashion_in_the_United_States",
+      title: { en: "American fashion", ro: "Moda americană" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "American fashion is characterized by its practicality, casual elegance, and the democratization of style, balancing high-end design with mass-market accessibility. Centered in New York City, one of the world\'s major fashion capitals, American style has exerted a profound influence on global dress codes, promoting sportswear and functional attire.", ro: "Moda americană se caracterizează prin caracterul său practic, eleganța casual și democratizarea stilului, echilibrând designul de înaltă calitate cu accesibilitatea pentru publicul larg. Centrat în New York, una dintre marile capitale ale modei din lume, stilul american a exercitat o influență profundă asupra codurilor vestimentare globale, promovând îmbrăcămintea sport și ținutele funcționale." },
+                { en: "The development of ready-to-wear manufacturing in the 20th century allowed high-quality designs to be accessible to a wide audience.", ro: "Dezvoltarea producției de ready-to-wear în secolul al XX-lea a permis ca designurile de înaltă calitate să fie accesibile unui public larg." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Sportswear and Denim", ro: "Sportswear și Denim" },
+          subsections: [
+            {
+              heading: { en: "Casualization of Global Dress", ro: "Casualizarea Vestimentației Globale" },
+              paragraphs: [
+                { en: "Pioneers like Claire McCardell established the \'American Look\' in the 1940s, prioritizing comfort and freedom of movement over European formality.", ro: "Pionieri precum Claire McCardell au stabilit \'American Look\' (aspectul american) în anii 1940, acordând prioritate confortului și libertății de mișcare în detrimentul formalismului european." },
+                { en: "The global dominance of denim (blue jeans), popularized by Levi Strauss, and designers like Ralph Lauren and Calvin Klein, established American fashion as a symbol of youthful, modern, and casual lifestyles.", ro: "Dominanța globală a denimului (blugilor albaștri), popularizat de Levi Strauss, și designeri precum Ralph Lauren și Calvin Klein, au consacrat moda americană ca un simbol al stilului de viață tineresc, modern și casual." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Thanksgiving",
+      title: { en: "Thanksgiving", ro: "Ziua Recunoștinței" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "Thanksgiving is a national holiday in the United States, celebrated on the fourth Thursday of November, dedicated to giving thanks for the harvest and the blessings of the past year. Rooted in early colonial history, the holiday is a cornerstone of American cultural identity, centering on family gatherings, gratitude, and communal feasts.", ro: "Ziua Recunoștinței este o sărbătoare națională în Statele Unite, celebrată în a patra joi din noiembrie, dedicată exprimării recunoștinței pentru recoltă și binecuvântările din anul trecut. Înrădăcinată în istoria colonială timpurie, sărbătoarea este o piatră de temelie a identității culturale americane, concentrându-se pe reuniunile de familie, recunoștință și ospețe comunitare." },
+                { en: "The holiday traces its origins back to a 1621 harvest feast shared between the English Pilgrims of Plymouth and the Wampanoag people.", ro: "Sărbătoarea își are originile într-un ospăț de recoltă din 1621, împărtășit între pelerinii englezi din Plymouth și membrii tribului Wampanoag." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Traditions and Nationalization", ro: "Tradiții și Naționalizare" },
+          subsections: [
+            {
+              heading: { en: "A Harvest of Unity", ro: "O Recoltă a Unității" },
+              paragraphs: [
+                { en: "Thanksgiving was formally established as a national holiday by President Abraham Lincoln in 1863, during the Civil War, as a day of national unity and reconciliation.", ro: "Ziua Recunoștinței a fost stabilită oficial ca sărbătoare națională de către președintele Abraham Lincoln în 1863, în timpul Războiului Civil, ca o zi de unitate națională și reconciliere." },
+                { en: "Today, the holiday is celebrated with traditional family dinners featuring roast turkey, pumpkin pie, and cranberries, alongside civic events like parades and charitable volunteering.", ro: "Astăzi, sărbătoarea este celebrată cu cine tradiționale în familie având în centru curcanul la cuptor, plăcinta cu dovleac și merișoarele, alături de evenimente civice precum paradele și activitățile caritabile de voluntariat." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Independence_Day_United_States",
+      title: { en: "Independence Day", ro: "Ziua Independenței" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "Independence Day, commonly known as the Fourth of July, is a federal holiday in the United States commemorating the adoption of the Declaration of Independence on July 4, 1776. It celebrates the birth of the nation, declaring its freedom from British rule and asserting the universal rights to life, liberty, and the pursuit of happiness.", ro: "Ziua Independenței, cunoscută în mod obișnuit ca 4 Iulie (Fourth of July), este o sărbătoare federală în Statele Unite care comemorează adoptarea Declarației de Independență la 4 iulie 1776. Aceasta celebrează nașterea națiunii, declararea libertății față de stăpânirea britanică și afirmarea drepturilor universale la viață, libertate și căutarea fericirii." },
+                { en: "The document, drafted by Thomas Jefferson and approved by the Second Continental Congress, laid the philosophical foundation of American democracy.", ro: "Documentul, redactat de Thomas Jefferson și aprobat de al Doilea Congres Continental, a pus bazele filozofice ale democrației americane." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Celebrations and Civic Pride", ro: "Celebrări și Mândrie Civică" },
+          subsections: [
+            {
+              heading: { en: "A Legacy of Freedom", ro: "O Moștenire a Libertății" },
+              paragraphs: [
+                { en: "Independence Day is celebrated with massive firework displays, community parades, concerts, and family barbecues, reflecting a deep sense of patriotism and shared civic history.", ro: "Ziua Independenței este celebrată cu spectacole masive de artificii, parade comunitare, concerte și grătare în familie, reflectând un sentiment profund de patriotism și istorie civică comună." },
+                { en: "From the ringing of liberty bells to historical readings of the Declaration, the holiday reinforces the core values of freedom and self-governance upon which the nation was founded.", ro: "De la tragerea clopotelor libertății până la citirile istorice ale Declarației, sărbătoarea consolidează valorile fundamentale de libertate și auto-guvernare pe care a fost fondată națiunea." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+],
   "innovation": [
     {
       id: "Silicon_Valley",
