@@ -10852,7 +10852,7 @@ export const VERTICALS_THEMATIC_DATA: Record<string, ThematicTopic[]> = {
       ],
     },
     {
-      id: "Federal_Reserve",
+      id: "Federal_Reserve_2",
       title: { en: "The Federal Reserve System", ro: "Sistemul Rezervei Federale" },
       sections: [
         {
