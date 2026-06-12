@@ -13,7 +13,9 @@ import {
   Dna,
   ExternalLink
 } from "lucide-react";
-import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
+import { MacroStyles, MacroHero } from "@/components/shared/CinematicSystem";
+import { HorizontalScrollBand, ScrollytellPin } from "@/components/shared/CinematicScroll";
+import { RevealSection } from "@/components/shared/Reveal";
 
 export const metadata: Metadata = {
   title: "Science & Inventions | Built the Modern World",
@@ -219,7 +221,7 @@ export default async function SciencePage() {
         </div>
 
         {/* Thesis */}
-        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative">
             <div className="absolute top-4 right-4 opacity-[0.06]">
               <FlaskConical className="h-24 w-24 text-[#E8B923]" />
@@ -228,10 +230,10 @@ export default async function SciencePage() {
             <p className="macro-body mb-6">{copy.thesisParagraph1}</p>
             <p className="macro-body">{copy.thesisParagraph2}</p>
           </div>
-        </section>
+        </RevealSection>
 
         {/* Stats */}
-        <section className="border-b border-white/5 px-4 py-16 sm:px-6 lg:px-8">
+        <RevealSection className="border-b border-white/5 px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <h3 className="font-mono text-xs uppercase tracking-widest text-[#E8B923] text-center mb-12">
               {copy.statsTitle}
@@ -246,13 +248,13 @@ export default async function SciencePage() {
               ))}
             </div>
           </div>
-        </section>
+        </RevealSection>
 
-        {/* Chronology nav grid */}
-        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+        {/* Chronology — mobile grid */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:hidden">
           <div className="mx-auto max-w-7xl">
             <h2 className="macro-section-title text-white text-center text-3xl mb-12">{copy.gridTitle}</h2>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6 sm:grid-cols-2">
               {copy.gridItems.map((item, idx) => (
                 <Link
                   key={idx}
@@ -283,8 +285,51 @@ export default async function SciencePage() {
           </div>
         </section>
 
+        {/* Chronology — desktop horizontal scroll timeline */}
+        <section className="hidden lg:block border-b border-white/5">
+          <div className="mx-auto max-w-7xl px-8 pt-20">
+            <h2 className="macro-section-title text-white text-center text-3xl">{copy.gridTitle}</h2>
+            <p className="text-center font-mono text-xs uppercase tracking-[0.25em] text-white/30 mt-4">
+              {isRo ? "Derulează pentru a traversa erele" : "Scroll to travel through the eras"}
+            </p>
+          </div>
+          <HorizontalScrollBand panels={4}>
+            {copy.gridItems.map((item, idx) => (
+              <div key={idx} className="flex-1 h-full flex items-center justify-center px-16">
+                <Link
+                  href={item.href}
+                  className="group relative w-full max-w-3xl rounded-3xl border border-white/10 bg-white/2 p-14 hover:border-[#E8B923]/40 hover:bg-white/4 transition-all duration-300"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="absolute -top-10 right-6 font-mono text-[120px] font-bold leading-none text-white/4 select-none"
+                  >
+                    {(idx + 1).toString().padStart(2, "0")}
+                  </span>
+                  <div className="flex items-center justify-between mb-8">
+                    <span className="text-sm font-mono text-[#E8B923] border border-[#E8B923]/25 px-3 py-1 rounded">
+                      {item.badge}
+                    </span>
+                    {idx === 0 && <Lightbulb className="h-8 w-8 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
+                    {idx === 1 && <Atom className="h-8 w-8 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
+                    {idx === 2 && <Cpu className="h-8 w-8 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
+                    {idx === 3 && <Dna className="h-8 w-8 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
+                  </div>
+                  <h3 className="font-display text-4xl font-bold text-white mb-6 group-hover:text-[#E8B923] transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="macro-body text-base mb-8">{item.description}</p>
+                  <span className="text-sm text-[#E8B923] group-hover:underline">
+                    {isRo ? "Vezi perioada →" : "View era →"}
+                  </span>
+                </Link>
+              </div>
+            ))}
+          </HorizontalScrollBand>
+        </section>
+
         {/* Shale Revolution */}
-        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
             <div className="absolute top-4 right-4 opacity-[0.06]">
               <Flame className="h-40 w-40 text-[#E8B923]" />
@@ -303,19 +348,21 @@ export default async function SciencePage() {
               </div>
             </div>
           </div>
-        </section>
+        </RevealSection>
 
-        {/* DOE National Labs */}
+        {/* DOE National Labs — pinned scrollytelling */}
         <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
-            <div className="absolute top-4 right-4 opacity-[0.06]">
-              <FlaskConical className="h-40 w-40 text-[#E8B923]" />
-            </div>
-            <div className="relative z-10">
-              <span className="font-mono text-xs uppercase tracking-widest text-[#E8B923] mb-3 block">{copy.labsLabel}</span>
-              <h2 className="macro-section-title text-white text-3xl mb-6">{copy.labsTitle}</h2>
-              <p className="macro-body mb-6">{copy.labsParagraph1}</p>
-              <p className="macro-body mb-8">{copy.labsParagraph2}</p>
+          <div className="mx-auto max-w-7xl">
+            <ScrollytellPin
+              imageSrc="/images/library/Technology/server aisles in google data center in Ohio.jpg"
+              imageAlt="Server aisles inside a hyperscale American data center"
+            >
+              <div>
+                <span className="font-mono text-xs uppercase tracking-widest text-[#E8B923] mb-3 block">{copy.labsLabel}</span>
+                <h2 className="macro-section-title text-white text-3xl">{copy.labsTitle}</h2>
+              </div>
+              <p className="macro-body">{copy.labsParagraph1}</p>
+              <p className="macro-body">{copy.labsParagraph2}</p>
               <div className="flex items-center justify-between border-t border-white/5 pt-6 text-xs text-white/40">
                 <span>Source: {copy.labsSource}</span>
                 <a href={copy.labsSourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[#E8B923] hover:underline">
@@ -323,7 +370,7 @@ export default async function SciencePage() {
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
               </div>
-            </div>
+            </ScrollytellPin>
           </div>
         </section>
 

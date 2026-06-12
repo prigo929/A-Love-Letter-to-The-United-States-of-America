@@ -18,6 +18,7 @@ import {
   CartesianGrid,
 } from "recharts";
 import { motion } from "framer-motion";
+import { CHART_GOLD, CHART_NAVY } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -113,7 +114,7 @@ export function DollarReserveChart({
                     dy="0"
                     fontSize="28"
                     fontFamily="var(--font-hero)"
-                    fill="#FFD700"
+                    fill={CHART_GOLD}
                   >
                     {usdReserve ? `${usdReserve.percentage.toFixed(1)}%` : "N/A"}
                   </tspan>
@@ -249,7 +250,7 @@ export function MarketCapChart({ data, title, source }: MarketCapChartProps) {
                 {data.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
-                    fill={entry.highlight ? "#FFD700" : "#3C3B6E"}
+                    fill={entry.highlight ? CHART_GOLD : CHART_NAVY}
                     opacity={entry.highlight ? 1 : 0.72}
                   />
                 ))}

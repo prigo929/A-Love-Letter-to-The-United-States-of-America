@@ -17,6 +17,7 @@ import {
   Pie,
 } from "recharts";
 import { motion } from "framer-motion";
+import { CHART_GOLD, CHART_NAVY } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -135,7 +136,7 @@ export function VCBarChart({ data, title, source }: VCBarChartProps) {
                 {data.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
-                    fill={entry.highlight ? "#FFD700" : "#3C3B6E"}
+                    fill={entry.highlight ? CHART_GOLD : CHART_NAVY}
                     opacity={entry.highlight ? 1 : 0.7}
                   />
                 ))}
@@ -163,9 +164,9 @@ interface UnicornPieChartProps {
 }
 
 const PIE_COLORS = [
-  "#FFD700",
+  CHART_GOLD,
   "#B22234",
-  "#3C3B6E",
+  CHART_NAVY,
   "#5554A0",
   "#8B1A26",
   "#5B8CFF",

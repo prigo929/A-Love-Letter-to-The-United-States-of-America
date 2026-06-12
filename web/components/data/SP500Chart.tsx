@@ -21,6 +21,7 @@ import {
   ReferenceLine,
 } from "recharts";
 import { motion } from "framer-motion";
+import { CHART_GOLD } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -196,7 +197,7 @@ export function SP500Chart({ data, title, subtitle, source }: SP500ChartProps) {
                 dot={false}
                 activeDot={{
                   r: 5,
-                  fill: "#FFD700",
+                  fill: CHART_GOLD,
                   stroke: "#fff",
                   strokeWidth: 2,
                 }}

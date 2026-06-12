@@ -195,10 +195,15 @@ function getCategory(path: string): Exclude<GalleryCategory, "All"> {
       return "Sports";
     } else if (sub === "Eras") {
       return "History";
+    } else if (sub === "Fashion") {
+      return "American Life";
     }
   }
-  if (first === "Leadership") {
+  if (first === "Leadership" || first === "Outdoors Lifestyle" || first === "Quality of Life") {
     return "American Life";
+  }
+  if (first === "University") {
+    return "Education";
   }
   return first as Exclude<GalleryCategory, "All">;
 }

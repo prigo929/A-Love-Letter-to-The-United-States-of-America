@@ -10,7 +10,8 @@ import {
   Award,
   ExternalLink
 } from "lucide-react";
-import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
+import { MacroStyles, MacroHero } from "@/components/shared/CinematicSystem";
+import { RevealSection } from "@/components/shared/Reveal";
 
 export const metadata: Metadata = {
   title: "Medicine & Biotech | Science & Inventions",
@@ -204,7 +205,7 @@ export default async function MedicineAndBiotechPage() {
         </div>
 
         {/* Thesis */}
-        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
             <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
               <Dna className="h-32 w-32 text-[#E8B923]" />
@@ -212,10 +213,10 @@ export default async function MedicineAndBiotechPage() {
             <h2 className="macro-section-title text-[#E8B923] text-3xl mb-6">{copy.thesisTitle}</h2>
             <p className="macro-body">{copy.thesisParagraph}</p>
           </div>
-        </section>
+        </RevealSection>
 
         {/* Milestones */}
-        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <h2 className="macro-section-title text-white text-center text-3xl mb-12">{copy.milestonesTitle}</h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -235,10 +236,10 @@ export default async function MedicineAndBiotechPage() {
               ))}
             </div>
           </div>
-        </section>
+        </RevealSection>
 
         {/* NIH Feature */}
-        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
             <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
               <Award className="h-40 w-40 text-[#E8B923]" />
@@ -257,10 +258,10 @@ export default async function MedicineAndBiotechPage() {
               </div>
             </div>
           </div>
-        </section>
+        </RevealSection>
 
         {/* Pharma Feature */}
-        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
             <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
               <FlaskConical className="h-40 w-40 text-[#E8B923]" />
@@ -279,10 +280,10 @@ export default async function MedicineAndBiotechPage() {
               </div>
             </div>
           </div>
-        </section>
+        </RevealSection>
 
         {/* Plasma Feature */}
-        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
             <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
               <Heart className="h-40 w-40 text-[#E8B923]" />
@@ -301,7 +302,7 @@ export default async function MedicineAndBiotechPage() {
               </div>
             </div>
           </div>
-        </section>
+        </RevealSection>
 
         <AskAmericaCTA locale={locale} descriptionEn={copyEn.oracleDescription} descriptionRo={copyRo.oracleDescription} />
       </div>

@@ -14,7 +14,8 @@ import {
   Radio,
   FileText
 } from "lucide-react";
-import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
+import { MacroStyles, MacroHero } from "@/components/shared/CinematicSystem";
+import { RevealSection } from "@/components/shared/Reveal";
 
 export const metadata: Metadata = {
   title: "Early American Ingenuity (Pre-1890) | Science & Inventions",
@@ -134,7 +135,7 @@ export default async function InventionsPre1890Page() {
         </div>
 
         {/* Thesis */}
-        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
             <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
               <Cpu className="h-32 w-32 text-[#E8B923]" />
@@ -143,10 +144,10 @@ export default async function InventionsPre1890Page() {
             <p className="macro-body mb-6">{copy.thesisParagraph1}</p>
             <p className="macro-body">{copy.thesisParagraph2}</p>
           </div>
-        </section>
+        </RevealSection>
 
         {/* Featured Inventions */}
-        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <h2 className="macro-section-title text-white text-center text-3xl mb-16">{copy.featuredTitle}</h2>
             <div className="grid gap-8 md:grid-cols-2">
@@ -174,10 +175,10 @@ export default async function InventionsPre1890Page() {
               })}
             </div>
           </div>
-        </section>
+        </RevealSection>
 
         {/* Archive */}
-        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="macro-section-title text-white text-3xl mb-4">{copy.archiveTitle}</h2>
@@ -185,7 +186,7 @@ export default async function InventionsPre1890Page() {
             </div>
             <InventionsDashboard locale={locale} inventions={INVENTIONS_PRE_1890} />
           </div>
-        </section>
+        </RevealSection>
 
         <AskAmericaCTA locale={locale} descriptionEn={copyEn.oracleDescription} descriptionRo={copyRo.oracleDescription} />
       </div>

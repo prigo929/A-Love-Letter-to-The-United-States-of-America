@@ -3,7 +3,8 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { Home, TrendingUp, Key, Shield } from "lucide-react";
-import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
+import { MacroStyles, MacroHero } from "@/components/shared/CinematicSystem";
+import { RevealSection } from "@/components/shared/Reveal";
 
 export const metadata: Metadata = {
   title: "Housing & Real Estate | Quality of Life",
@@ -266,7 +267,7 @@ export default async function HousingPage() {
         </div>
 
         {/* Thesis */}
-        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative">
             <div className="absolute top-4 right-4 opacity-[0.06]">
               <Home className="h-24 w-24 text-[#E8B923]" />
@@ -275,10 +276,10 @@ export default async function HousingPage() {
             <p className="macro-body mb-6">{copy.thesisParagraph1}</p>
             <p className="macro-body">{copy.thesisParagraph2}</p>
           </div>
-        </section>
+        </RevealSection>
 
         {/* Stats */}
-        <section className="border-b border-white/5 px-4 py-16 sm:px-6 lg:px-8">
+        <RevealSection className="border-b border-white/5 px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <h3 className="font-mono text-xs uppercase tracking-widest text-[#E8B923] text-center mb-12">
               {copy.statsTitle}
@@ -293,10 +294,10 @@ export default async function HousingPage() {
               ))}
             </div>
           </div>
-        </section>
+        </RevealSection>
 
         {/* Four Pillars */}
-        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <h2 className="macro-section-title text-white text-center text-3xl mb-12">{copy.pillarsTitle}</h2>
             <div className="grid gap-8 sm:grid-cols-2">
@@ -325,10 +326,10 @@ export default async function HousingPage() {
               })}
             </div>
           </div>
-        </section>
+        </RevealSection>
 
         {/* Additional Facts */}
-        <section className="border-b border-white/5 px-4 py-16 sm:px-6 lg:px-8">
+        <RevealSection className="border-b border-white/5 px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <h2 className="macro-section-title text-white text-2xl mb-10">{copy.factTitle}</h2>
             <div className="space-y-4">
@@ -347,7 +348,7 @@ export default async function HousingPage() {
               ))}
             </div>
           </div>
-        </section>
+        </RevealSection>
 
         <AskAmericaCTA locale={locale} descriptionEn={copyEn.oracleDescription} descriptionRo={copyRo.oracleDescription} />
       </div>

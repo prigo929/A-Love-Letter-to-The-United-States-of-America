@@ -1,11 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 import type { StaticImageData } from "next/image";
-import { Camera, ChevronRight, Grid3X3, Home, MapPin, X } from "lucide-react";
+import { Camera, ChevronLeft, ChevronRight, Grid3X3, Home, MapPin, X } from "lucide-react";
 import type { GalleryCategory, GalleryImage } from "@/lib/data/gallery";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 
@@ -92,14 +92,42 @@ function GalleryTile({
         ? "aspect-square"
         : "aspect-[16/10]";
 
+  // 3D tilt: the frame leans toward the cursor like a handled print.
+  const prefersReducedMotion = useReducedMotion();
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const springRX = useSpring(rotateX, { stiffness: 260, damping: 20 });
+  const springRY = useSpring(rotateY, { stiffness: 260, damping: 20 });
+
+  const handleTilt = (e: React.PointerEvent<HTMLButtonElement>) => {
+    if (prefersReducedMotion || e.pointerType !== "mouse") return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    rotateY.set(px * 6);
+    rotateX.set(py * -6);
+  };
+
+  const resetTilt = () => {
+    rotateX.set(0);
+    rotateY.set(0);
+  };
+
   return (
     <motion.button
       layout
       type="button"
       onClick={() => onSelect(image)}
+      onPointerMove={handleTilt}
+      onPointerLeave={resetTilt}
+      style={
+        prefersReducedMotion
+          ? undefined
+          : { rotateX: springRX, rotateY: springRY, transformPerspective: 900 }
+      }
       className="group overflow-hidden rounded-lg border border-white/10 bg-white/[0.04] text-left"
     >
-      <div className={cn("relative overflow-hidden", aspect)}>
+      <motion.div layoutId={`gallery-${image.path}`} className={cn("relative overflow-hidden", aspect)}>
         <Image
           src={image.src}
           alt={image.alt}
@@ -127,7 +155,7 @@ function GalleryTile({
             <span className="truncate">{image.location}</span>
           </p>
         </div>
-      </div>
+      </motion.div>
     </motion.button>
   );
 }
@@ -136,11 +164,26 @@ function ImageDialog({
   image,
   copy,
   onClose,
+  onPrev,
+  onNext,
 }: {
   image: GalleryImage;
   copy: GalleryCopy;
   onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
 }) {
+  // Keyboard: Escape closes, arrows move through the filtered collection.
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      else if (e.key === "ArrowLeft") onPrev();
+      else if (e.key === "ArrowRight") onNext();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [onClose, onPrev, onNext]);
+
   return (
     <AnimatePresence>
       <motion.div
@@ -171,18 +214,47 @@ function ImageDialog({
           <X className="h-5 w-5" aria-hidden="true" />
         </button>
 
-        <div className="relative h-[58vh] bg-black lg:h-full">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            className="object-contain"
-            sizes="(max-width: 1024px) 100vw, 70vw"
-            placeholder="blur"
-            blurDataURL={BLUR_PLACEHOLDER}
-            priority
-          />
-        </div>
+        <motion.div layoutId={`gallery-${image.path}`} className="relative h-[58vh] bg-black lg:h-full">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={image.path}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="object-contain"
+                sizes="(max-width: 1024px) 100vw, 70vw"
+                placeholder="blur"
+                blurDataURL={BLUR_PLACEHOLDER}
+                priority
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Prev / next */}
+          <button
+            type="button"
+            onClick={onPrev}
+            className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white/75 backdrop-blur transition hover:bg-black/75 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
+            aria-label="Previous image"
+          >
+            <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            onClick={onNext}
+            className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white/75 backdrop-blur transition hover:bg-black/75 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
+            aria-label="Next image"
+          >
+            <ChevronRight className="h-5 w-5" aria-hidden="true" />
+          </button>
+        </motion.div>
 
         <aside className="overflow-y-auto px-6 py-8 md:px-8 lg:py-10">
           <p className="font-body text-xs font-semibold uppercase tracking-[0.24em] text-glory-gold">
@@ -265,6 +337,25 @@ export function GalleryExperience({
   );
 
   const featuredImages = images.filter((image) => image.featured).slice(0, 3);
+
+  // Flat display order for keyboard / arrow navigation inside the lightbox.
+  const orderedImages = useMemo(
+    () => groupedImages.flatMap((group) => group.images),
+    [groupedImages],
+  );
+
+  const stepImage = useCallback(
+    (direction: 1 | -1) => {
+      setSelectedImage((current) => {
+        if (!current || orderedImages.length === 0) return current;
+        const idx = orderedImages.findIndex((img) => img.path === current.path);
+        const nextIdx =
+          (idx + direction + orderedImages.length) % orderedImages.length;
+        return orderedImages[nextIdx] ?? current;
+      });
+    },
+    [orderedImages],
+  );
 
   return (
     <main className="min-h-screen bg-[#05070d] text-white">
@@ -414,6 +505,8 @@ export function GalleryExperience({
           image={selectedImage}
           copy={copy}
           onClose={() => setSelectedImage(null)}
+          onPrev={() => stepImage(-1)}
+          onNext={() => stepImage(1)}
         />
       )}
     </main>

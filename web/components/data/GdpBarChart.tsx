@@ -26,6 +26,7 @@ import {
   LabelList,
 } from "recharts";
 import { motion } from "framer-motion";
+import { CHART_GOLD, CHART_NAVY } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -89,7 +90,7 @@ function CustomLabel(props: {
     <text
       x={x + width / 2}
       y={y - 8}
-      fill="#FFD700"
+      fill={CHART_GOLD}
       textAnchor="middle"
       fontSize={12}
       fontWeight={700}
@@ -192,7 +193,7 @@ export function GdpBarChart({
                 {data.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
-                    fill={entry.highlight ? "#FFD700" : "#3C3B6E"}
+                    fill={entry.highlight ? CHART_GOLD : CHART_NAVY}
                     opacity={entry.highlight ? 1 : 0.75}
                   />
                 ))}

@@ -219,6 +219,7 @@ export function Header() {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
+                        style={{ transformOrigin: "top center" }}
                         className="absolute top-full left-1/2 mt-1 w-64 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/20 bg-navy-dark/65 shadow-2xl backdrop-blur-2xl isolate"
                         onMouseEnter={() => handleMenuEnter(section.title)}
                         onMouseLeave={handleMenuLeave}

@@ -8,7 +8,6 @@ import { Star, Heart } from "lucide-react";
 import { SITE } from "@/lib/constants";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { yearsSince1776 } from "@/lib/utils";
-
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const yearsOld = yearsSince1776();

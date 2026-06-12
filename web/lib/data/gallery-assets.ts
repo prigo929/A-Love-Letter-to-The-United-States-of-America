@@ -408,6 +408,132 @@ import asset404 from "@/IMAGES/Military/Space Force/ssc_clean_room.png";
 import asset405 from "@/IMAGES/Military/Space Force/starcom_simulator.png";
 import asset406 from "@/IMAGES/US Buildings/us-supreme-court-building.jpg";
 
+import asset407 from "@/IMAGES/Cities/Seattle Central Library.jpg";
+import asset408 from "@/IMAGES/Culture/Cinema/Bonnie_and_Clyde_(1967_promo_photo_-_Dunaway_&_Beatty).jpg";
+import asset409 from "@/IMAGES/Culture/Cinema/Golden Age of Hollywood different people.png";
+import asset410 from "@/IMAGES/Culture/Cinema/movies-before-after-green-screen-cgi-avengers-1.jpg";
+import asset411 from "@/IMAGES/Culture/Fashion/Cowboy boots girl sitting on fence on ranch with blue jeans and black t shirt.jpg";
+import asset412 from "@/IMAGES/Culture/Fashion/Little cowboy wearing wranglers watching a horse.jpg";
+import asset413 from "@/IMAGES/Culture/Fashion/Ralph Lauren Retail Store Interior Featuring Preppy Nautical Apparel On Mannequins And Racks.jpg";
+import asset414 from "@/IMAGES/Culture/Fashion/Worn Square Toe Leather Cowboy Boots With Coiled Lasso Rope And Woven Straw Hat.jpg";
+import asset415 from "@/IMAGES/Culture/Food/Illustrated Regional United States Barbecue Map Showing Local Meat Specialties.jpg";
+import asset416 from "@/IMAGES/Culture/Food/Pepperoni pizza american.jpg";
+import asset417 from "@/IMAGES/Culture/Food/ice cream truck.jpg";
+import asset418 from "@/IMAGES/Culture/Iconic Things/White_color_illumination_in_Magic_Kingdom_castle.jpg";
+import asset419 from "@/IMAGES/Culture/Iconic Things/guest-ride-a-roller-coaster-in-the-isle-I7F5DPCEMULMU3SACPCLMJEAXA.jpg";
+import asset420 from "@/IMAGES/Culture/Iconic Things/islandsofadventure.jpg";
+import asset421 from "@/IMAGES/Culture/Music/A live performance shot of Post Malone.jpg";
+import asset422 from "@/IMAGES/Culture/Music/Beyonce_Knowles_GMA_Run_the_World_cropped_saluting.jpg";
+import asset423 from '@/IMAGES/Culture/Music/Carey at Edwards Air Force Base during the making of the "I Still Believe" music video in December 1998.jpg';
+import asset424 from "@/IMAGES/Culture/Music/Carey performing on Good Morning America in May 2013.jpg";
+import asset425 from "@/IMAGES/Culture/Music/Carey pressing her in-ear monitor, while hitting a whistle note during her Caution World Tour in 2019.jpg";
+import asset426 from "@/IMAGES/Culture/Music/Elvis_Presley_1973_RCA_Records_and_Tapes_publicity_2_-_cropped.png";
+import asset427 from "@/IMAGES/Culture/Music/Frank_Sinatra_1961 portrait.jpg";
+import asset428 from "@/IMAGES/Culture/Music/George_H._W._Bush_with_Michael_Jackson_(cropped).png";
+import asset429 from "@/IMAGES/Culture/Music/Imagine Dragons at Mohegan Sun in 2017. Left to right, Wayne Sermon, Dan Reynolds, former drummer Daniel Platzman, and Ben McKee.jpg";
+import asset430 from "@/IMAGES/Culture/Music/Lineup of Maroon 5 since 2020. Clockwise from top left, Adam Levine, Jesse Carmichael, James Valentine, Matt Flynn, PJ Morton, Sam Farrar.jpg";
+// asset431 skipped — apostrophe in filename
+import asset432 from "@/IMAGES/Culture/Music/Michael Jackson in a press photo dated to 1983.jpg";
+import asset433 from "@/IMAGES/Culture/Music/Pitbull performing in 2011.jpg";
+import asset434 from "@/IMAGES/Culture/Music/Pitbull performing with Enrique Iglesias at the Frank Erwin Center in Austin, Texas, 2015.jpg";
+import asset435 from "@/IMAGES/Culture/Music/Presley performing live at the Olympia Theater in Miami, August 3, 1956.jpg";
+import asset436 from "@/IMAGES/Culture/Music/Presley performing with Scotty Moore and Bill Black in 1956.jpg";
+import asset437 from "@/IMAGES/Culture/Music/Promo still for the 1957 film Pal Joey, showing Frank Sinatra standing facing the camera with a cigarette hanging out of his mouth.jpg";
+import asset438 from "@/IMAGES/Culture/Music/Sinatra (center) with President Richard Nixon and Italian Prime Minister Giulio Andreotti in 1973.jpg";
+import asset439 from "@/IMAGES/Culture/Music/Taylor Swift Eras concert.jpg";
+import asset440 from "@/IMAGES/Culture/Music/Taylor_Swift_-_Speak_Now_World_Tour_Sydney_2012.jpg";
+import asset441 from "@/IMAGES/Culture/Music/The_Eagles_in_performance,_2008.jpg";
+import asset442 from "@/IMAGES/Culture/Music/The_Weeknd_Portrait_by_Brian_Ziff.jpg";
+import asset443 from "@/IMAGES/Culture/Music/Travis-Scott-BET-Awards-2024.jpg";
+import asset444 from "@/IMAGES/Culture/Music/Whitney_Houston_by_Richard_Avedon_color_(cropped).jpg";
+import asset445 from "@/IMAGES/Culture/Music/luke combs-2021tour.jpg";
+import asset446 from "@/IMAGES/Culture/Sports/A skateboarder at Venice Beach (2022).jpg";
+import asset447 from "@/IMAGES/Culture/Sports/Golf Course in Colorado.jpg";
+import asset448 from "@/IMAGES/Culture/Sports/Golf cart on grass Highland Course At Primland Resort, Meadows of Dan.jpg";
+import asset449 from "@/IMAGES/Culture/Sports/James during his first season with the Lakers in 2018.jpg";
+import asset450 from "@/IMAGES/Culture/Sports/LeBron James at Los Angeles Lakers @ Cleveland Cavaliers, March 21, 2022.jpg";
+import asset451 from "@/IMAGES/Culture/Sports/Looking back across a pond on the 18th hole at Heritage Palms Golf Course, Indio.jpg";
+import asset452 from "@/IMAGES/Culture/Sports/Muhammad Ali Landing Powerful Left Jab On Joe Frazier During Historic Bout.webp";
+import asset453 from "@/IMAGES/Culture/Sports/Muhammad Ali Leaning Back From Joe Frazier Left Hook Fight Of The Century 1971.jpg";
+import asset454 from "@/IMAGES/Culture/Sports/NCAA March Madness Tournament Basketball Court MSG.jpg";
+import asset455 from "@/IMAGES/Culture/Sports/Stadiums/AT&T Stadium match kickoff(Wisconsin_-_Alabama).jpg";
+import asset456 from "@/IMAGES/Culture/Sports/Stadiums/Tennessee_Volunteers_at_Ohio_State_Buckeyes,_College_Football_Playoff_Round_1_game(December_21,_2024).jpg";
+import asset457 from "@/IMAGES/Culture/Sports/a golf ball in focus on Golf course.jpg";
+import asset458 from "@/IMAGES/Economy/The Warby Parker team on the podium ringing the NYSE opening bell.jpg";
+// asset459 skipped — apostrophe in filename
+import asset460 from "@/IMAGES/Landscapes/Downtown Nashville Tennesse 2.jpg";
+import asset461 from "@/IMAGES/Landscapes/Downtown Nashville Tennesse.jpg";
+import asset462 from "@/IMAGES/Military/Air Force/Lockheed_SR-71_Blackbird.jpg";
+import asset463 from "@/IMAGES/Outdoors Lifestyle/Camping in Madera Canyon, Arizona.jpg";
+import asset464 from "@/IMAGES/Outdoors Lifestyle/Close-up portrait of a majestic bald eagle showcasing its fierce gaze and distinct white feathers.jpg";
+import asset465 from "@/IMAGES/Outdoors Lifestyle/Detailed portrait of a bald eagle with striking plumage and piercing eyes.jpg";
+// asset466 skipped — apostrophe in filename
+import asset467 from "@/IMAGES/Outdoors Lifestyle/Hunter with a dog wearing orange vest in a Florida field. Bright sunny day with F-150 in background.jpg";
+import asset468 from "@/IMAGES/Outdoors Lifestyle/Interior of the Forrest River FR3 Class A Motor-home.jpeg";
+import asset469 from "@/IMAGES/Outdoors Lifestyle/Man Fishing in Provo River Utah.jpg";
+import asset470 from "@/IMAGES/Outdoors Lifestyle/RVing family on road Arizona.jpg";
+import asset471 from "@/IMAGES/Outdoors Lifestyle/RVing in Grand Canyon National Park Arizona.jpg";
+import asset472 from "@/IMAGES/Outdoors Lifestyle/Sedona Arizona Rv parked on the side of the road.jpg";
+import asset473 from "@/IMAGES/Outdoors Lifestyle/Torch Lake sandbar Michigan lots of boats aerial.jpg";
+import asset474 from "@/IMAGES/Outdoors Lifestyle/boats docked in Marquette, MI.jpg";
+import asset475 from "@/IMAGES/Outdoors Lifestyle/chicago-to-mackinac-island-sailing.jpg";
+import asset476 from "@/IMAGES/Outdoors Lifestyle/michigan-boating 2 girls on boat.png";
+import asset477 from "@/IMAGES/Quality of Life/walmart-thanksgiving-shopping-13.jpg";
+import asset478 from "@/IMAGES/Quality of Life/walmart-thanksgiving-shopping-2.jpg";
+import asset479 from "@/IMAGES/Science/Blacksmoker_in_Atlantic_Ocean underwater seabed hydrothermal vents minerals close-up.jpg";
+import asset480 from "@/IMAGES/Science/NOAA Remotely operated vehicle Deep Discoverer images a coral community during the second Voyage to the Ridge 2022 expedition..jpg";
+import asset481 from "@/IMAGES/Science/Remotely operated vehicle Deep Discoverer documents the benthic communities at Paganini Seamount during the Deep-Sea Symphony.jpg";
+import asset482 from "@/IMAGES/Technology/CRS-8 first stage landing.jpg";
+import asset483 from "@/IMAGES/Technology/Commercial Space & SpaceX/Falcon 9 CRS-11_vertical-scaled.jpeg";
+import asset484 from "@/IMAGES/Technology/Commercial Space & SpaceX/Falcon 9 CRS-13_launch-view-scaled-1.jpeg";
+import asset485 from "@/IMAGES/Technology/Commercial Space & SpaceX/Falcon 9 First stage booster CRS-11-wide-launch-11_v2-.jpeg";
+import asset486 from "@/IMAGES/Technology/Commercial Space & SpaceX/Flacon 9 CRS-13_launch-sky-view-scaled-1.jpeg";
+import asset487 from "@/IMAGES/Technology/Commercial Space & SpaceX/SpaceX launch from Florida Cape Cod.jpeg";
+import asset488 from "@/IMAGES/Technology/Commercial Space & SpaceX/SpaceX launch.jpg";
+import asset489 from "@/IMAGES/Technology/Commercial Space & SpaceX/Visualisation of the 30 000 planned satellites from the Starlink Generation 2 constellation as of 2022.jpg";
+import asset490 from "@/IMAGES/Technology/Commercial Space & SpaceX/spacex--p-KCm6xB9I-unsplash.jpg";
+import asset491 from "@/IMAGES/Technology/EA HQ campus logo.jpg";
+import asset492 from "@/IMAGES/Technology/Google Data Center Midlothian Texas at Dusk with Water Tanks and GCUB Generator Yard.jpg";
+import asset493 from "@/IMAGES/Technology/Landed rockets in hangar 39A SpaceX.jpg";
+import asset494 from "@/IMAGES/Technology/NVIDIA H100 GPU on new SXM5 Module. GTC2022_SXM5_01_v001_DL.png";
+import asset495 from "@/IMAGES/Technology/Space/Aldrin next to the Passive Seismic Experiment Package with the Lunar Module Eagle in the background.jpg";
+import asset496 from "@/IMAGES/Technology/Space/Apollo 11 Buzz Aldrin on the Moon in a photograph taken by Neil Armstrong, who can be seen in the visor reflection along with Earth, the Lunar Module Eagle, and the U.S. flag.jpg";
+import asset497 from "@/IMAGES/Technology/Space/Apollo_11_Crew.jpg";
+import asset498 from "@/IMAGES/Technology/Space/Apollo_11_insignia.png";
+// asset499 skipped — apostrophe in filename
+import asset500 from "@/IMAGES/Technology/Space/Buzz_salutes_the_U.S._Flag on the lunar surface.jpg";
+import asset501 from "@/IMAGES/Technology/Space/Eugene_Cernan_at_the_LM,_Apollo_17,_AS17-134-20378.jpg";
+import asset502 from "@/IMAGES/Technology/Space/Saturn V SA-506, the rocket carrying the Apollo 11 spacecraft, moves out of the Vehicle Assembly Building towards Launch Complex 39.jpg";
+import asset503 from "@/IMAGES/Technology/Vivid and detailed close-up of a patterned silicon wafer with vibrant green and blue colors.jpg";
+import asset504 from "@/IMAGES/Technology/server aisles in google data center in Ohio.jpg";
+import asset505 from "@/IMAGES/Technology/visualization Full-H100-GPU-with-144-SMs-1536x686.png";
+import asset506 from "@/IMAGES/University/2019_UCLA_Royce_Hall_1.jpg";
+// asset507 skipped — apostrophe in filename
+import asset508 from "@/IMAGES/University/Cornell University, view, landscape, greens, mountains.jpg";
+import asset509 from "@/IMAGES/University/Dartmouth College.jpg";
+import asset510 from "@/IMAGES/University/Duke_Chapel,_West_Campus,_Duke_University,_Durham,_NC_(48961090317).jpg";
+import asset511 from "@/IMAGES/University/Duke_University_(5744250215).jpg";
+import asset512 from "@/IMAGES/University/Fall foliage adds dazzling color to the view of campus from across the Charles River.jpg";
+import asset513 from "@/IMAGES/University/Harvard Law School graduates celebrate.jpg";
+import asset514 from "@/IMAGES/University/Harvard Widener Library interior reading room.jpg";
+// asset515 skipped — apostrophe in filename
+import asset516 from "@/IMAGES/University/Li Ka Shing Learning and Knowledge Center home to Stanford School of Medicine.jpg";
+import asset517 from "@/IMAGES/University/MIT_Main_Campus_aerial.jpg";
+import asset518 from "@/IMAGES/University/Main Green. Brown University.jpg";
+import asset519 from "@/IMAGES/University/Princeton University 2.jpg";
+import asset520 from "@/IMAGES/University/Princeton University.jpg";
+import asset521 from "@/IMAGES/University/Stanford University Campus.jpg";
+import asset522 from "@/IMAGES/University/Trees frame the rowers on the Charles River.jpg";
+import asset523 from "@/IMAGES/University/UC-Berkeley-campus-overview-from-hills.h.jpg";
+import asset524 from "@/IMAGES/University/UCBerkeleyCampus.jpg";
+import asset525 from "@/IMAGES/University/University of Chicago Aerial View.jpg";
+import asset526 from "@/IMAGES/University/University_of_Chicago,_Harper_Library.jpg";
+import asset527 from "@/IMAGES/University/View From Kline Tower Over Science Hill And New Haven To Long Island Sound.jpg";
+import asset528 from "@/IMAGES/University/Wheeler_Hall,_University_of_California,_Berkeley.jpg";
+import asset529 from "@/IMAGES/University/Yale Aerial.jpg";
+import asset530 from "@/IMAGES/University/central-campus-aerial-sunset_paul-coco.jpg";
+import asset531 from "@/IMAGES/University/zoshua-colah-Juzqxc8MwtU-unsplash.jpg";
+
 export type GalleryAssetRecord = {
   path: string;
   src: StaticImageData;
@@ -821,4 +947,123 @@ export const GALLERY_ASSETS = [
   { path: "Military/Space Force/ssc_clean_room.png", src: asset404 },
   { path: "Military/Space Force/starcom_simulator.png", src: asset405 },
   { path: "US Buildings/us-supreme-court-building.jpg", src: asset406 },
+  { path: "Cities/Seattle Central Library.jpg", src: asset407 },
+  { path: "Culture/Cinema/Bonnie_and_Clyde_(1967_promo_photo_-_Dunaway_&_Beatty).jpg", src: asset408 },
+  { path: "Culture/Cinema/Golden Age of Hollywood different people.png", src: asset409 },
+  { path: "Culture/Cinema/movies-before-after-green-screen-cgi-avengers-1.jpg", src: asset410 },
+  { path: "Culture/Fashion/Cowboy boots girl sitting on fence on ranch with blue jeans and black t shirt.jpg", src: asset411 },
+  { path: "Culture/Fashion/Little cowboy wearing wranglers watching a horse.jpg", src: asset412 },
+  { path: "Culture/Fashion/Ralph Lauren Retail Store Interior Featuring Preppy Nautical Apparel On Mannequins And Racks.jpg", src: asset413 },
+  { path: "Culture/Fashion/Worn Square Toe Leather Cowboy Boots With Coiled Lasso Rope And Woven Straw Hat.jpg", src: asset414 },
+  { path: "Culture/Food/Illustrated Regional United States Barbecue Map Showing Local Meat Specialties.jpg", src: asset415 },
+  { path: "Culture/Food/Pepperoni pizza american.jpg", src: asset416 },
+  { path: "Culture/Food/ice cream truck.jpg", src: asset417 },
+  { path: "Culture/Iconic Things/White_color_illumination_in_Magic_Kingdom_castle.jpg", src: asset418 },
+  { path: "Culture/Iconic Things/guest-ride-a-roller-coaster-in-the-isle-I7F5DPCEMULMU3SACPCLMJEAXA.jpg", src: asset419 },
+  { path: "Culture/Iconic Things/islandsofadventure.jpg", src: asset420 },
+  { path: "Culture/Music/A live performance shot of Post Malone.jpg", src: asset421 },
+  { path: "Culture/Music/Beyonce_Knowles_GMA_Run_the_World_cropped_saluting.jpg", src: asset422 },
+  { path: 'Culture/Music/Carey at Edwards Air Force Base during the making of the "I Still Believe" music video in December 1998.jpg', src: asset423 },
+  { path: "Culture/Music/Carey performing on Good Morning America in May 2013.jpg", src: asset424 },
+  { path: "Culture/Music/Carey pressing her in-ear monitor, while hitting a whistle note during her Caution World Tour in 2019.jpg", src: asset425 },
+  { path: "Culture/Music/Elvis_Presley_1973_RCA_Records_and_Tapes_publicity_2_-_cropped.png", src: asset426 },
+  { path: "Culture/Music/Frank_Sinatra_1961 portrait.jpg", src: asset427 },
+  { path: "Culture/Music/George_H._W._Bush_with_Michael_Jackson_(cropped).png", src: asset428 },
+  { path: "Culture/Music/Imagine Dragons at Mohegan Sun in 2017. Left to right, Wayne Sermon, Dan Reynolds, former drummer Daniel Platzman, and Ben McKee.jpg", src: asset429 },
+  { path: "Culture/Music/Lineup of Maroon 5 since 2020. Clockwise from top left, Adam Levine, Jesse Carmichael, James Valentine, Matt Flynn, PJ Morton, Sam Farrar.jpg", src: asset430 },
+  { path: "Culture/Music/Michael Jackson in a press photo dated to 1983.jpg", src: asset432 },
+  { path: "Culture/Music/Pitbull performing in 2011.jpg", src: asset433 },
+  { path: "Culture/Music/Pitbull performing with Enrique Iglesias at the Frank Erwin Center in Austin, Texas, 2015.jpg", src: asset434 },
+  { path: "Culture/Music/Presley performing live at the Olympia Theater in Miami, August 3, 1956.jpg", src: asset435 },
+  { path: "Culture/Music/Presley performing with Scotty Moore and Bill Black in 1956.jpg", src: asset436 },
+  { path: "Culture/Music/Promo still for the 1957 film Pal Joey, showing Frank Sinatra standing facing the camera with a cigarette hanging out of his mouth.jpg", src: asset437 },
+  { path: "Culture/Music/Sinatra (center) with President Richard Nixon and Italian Prime Minister Giulio Andreotti in 1973.jpg", src: asset438 },
+  { path: "Culture/Music/Taylor Swift Eras concert.jpg", src: asset439 },
+  { path: "Culture/Music/Taylor_Swift_-_Speak_Now_World_Tour_Sydney_2012.jpg", src: asset440 },
+  { path: "Culture/Music/The_Eagles_in_performance,_2008.jpg", src: asset441 },
+  { path: "Culture/Music/The_Weeknd_Portrait_by_Brian_Ziff.jpg", src: asset442 },
+  { path: "Culture/Music/Travis-Scott-BET-Awards-2024.jpg", src: asset443 },
+  { path: "Culture/Music/Whitney_Houston_by_Richard_Avedon_color_(cropped).jpg", src: asset444 },
+  { path: "Culture/Music/luke combs-2021tour.jpg", src: asset445 },
+  { path: "Culture/Sports/A skateboarder at Venice Beach (2022).jpg", src: asset446 },
+  { path: "Culture/Sports/Golf Course in Colorado.jpg", src: asset447 },
+  { path: "Culture/Sports/Golf cart on grass Highland Course At Primland Resort, Meadows of Dan.jpg", src: asset448 },
+  { path: "Culture/Sports/James during his first season with the Lakers in 2018.jpg", src: asset449 },
+  { path: "Culture/Sports/LeBron James at Los Angeles Lakers @ Cleveland Cavaliers, March 21, 2022.jpg", src: asset450 },
+  { path: "Culture/Sports/Looking back across a pond on the 18th hole at Heritage Palms Golf Course, Indio.jpg", src: asset451 },
+  { path: "Culture/Sports/Muhammad Ali Landing Powerful Left Jab On Joe Frazier During Historic Bout.webp", src: asset452 },
+  { path: "Culture/Sports/Muhammad Ali Leaning Back From Joe Frazier Left Hook Fight Of The Century 1971.jpg", src: asset453 },
+  { path: "Culture/Sports/NCAA March Madness Tournament Basketball Court MSG.jpg", src: asset454 },
+  { path: "Culture/Sports/Stadiums/AT&T Stadium match kickoff(Wisconsin_-_Alabama).jpg", src: asset455 },
+  { path: "Culture/Sports/Stadiums/Tennessee_Volunteers_at_Ohio_State_Buckeyes,_College_Football_Playoff_Round_1_game(December_21,_2024).jpg", src: asset456 },
+  { path: "Culture/Sports/a golf ball in focus on Golf course.jpg", src: asset457 },
+  { path: "Economy/The Warby Parker team on the podium ringing the NYSE opening bell.jpg", src: asset458 },
+  { path: "Landscapes/Downtown Nashville Tennesse 2.jpg", src: asset460 },
+  { path: "Landscapes/Downtown Nashville Tennesse.jpg", src: asset461 },
+  { path: "Military/Air Force/Lockheed_SR-71_Blackbird.jpg", src: asset462 },
+  { path: "Outdoors Lifestyle/Camping in Madera Canyon, Arizona.jpg", src: asset463 },
+  { path: "Outdoors Lifestyle/Close-up portrait of a majestic bald eagle showcasing its fierce gaze and distinct white feathers.jpg", src: asset464 },
+  { path: "Outdoors Lifestyle/Detailed portrait of a bald eagle with striking plumage and piercing eyes.jpg", src: asset465 },
+  { path: "Outdoors Lifestyle/Hunter with a dog wearing orange vest in a Florida field. Bright sunny day with F-150 in background.jpg", src: asset467 },
+  { path: "Outdoors Lifestyle/Interior of the Forrest River FR3 Class A Motor-home.jpeg", src: asset468 },
+  { path: "Outdoors Lifestyle/Man Fishing in Provo River Utah.jpg", src: asset469 },
+  { path: "Outdoors Lifestyle/RVing family on road Arizona.jpg", src: asset470 },
+  { path: "Outdoors Lifestyle/RVing in Grand Canyon National Park Arizona.jpg", src: asset471 },
+  { path: "Outdoors Lifestyle/Sedona Arizona Rv parked on the side of the road.jpg", src: asset472 },
+  { path: "Outdoors Lifestyle/Torch Lake sandbar Michigan lots of boats aerial.jpg", src: asset473 },
+  { path: "Outdoors Lifestyle/boats docked in Marquette, MI.jpg", src: asset474 },
+  { path: "Outdoors Lifestyle/chicago-to-mackinac-island-sailing.jpg", src: asset475 },
+  { path: "Outdoors Lifestyle/michigan-boating 2 girls on boat.png", src: asset476 },
+  { path: "Quality of Life/walmart-thanksgiving-shopping-13.jpg", src: asset477 },
+  { path: "Quality of Life/walmart-thanksgiving-shopping-2.jpg", src: asset478 },
+  { path: "Science/Blacksmoker_in_Atlantic_Ocean underwater seabed hydrothermal vents minerals close-up.jpg", src: asset479 },
+  { path: "Science/NOAA Remotely operated vehicle Deep Discoverer images a coral community during the second Voyage to the Ridge 2022 expedition..jpg", src: asset480 },
+  { path: "Science/Remotely operated vehicle Deep Discoverer documents the benthic communities at Paganini Seamount during the Deep-Sea Symphony.jpg", src: asset481 },
+  { path: "Technology/CRS-8 first stage landing.jpg", src: asset482 },
+  { path: "Technology/Commercial Space & SpaceX/Falcon 9 CRS-11_vertical-scaled.jpeg", src: asset483 },
+  { path: "Technology/Commercial Space & SpaceX/Falcon 9 CRS-13_launch-view-scaled-1.jpeg", src: asset484 },
+  { path: "Technology/Commercial Space & SpaceX/Falcon 9 First stage booster CRS-11-wide-launch-11_v2-.jpeg", src: asset485 },
+  { path: "Technology/Commercial Space & SpaceX/Flacon 9 CRS-13_launch-sky-view-scaled-1.jpeg", src: asset486 },
+  { path: "Technology/Commercial Space & SpaceX/SpaceX launch from Florida Cape Cod.jpeg", src: asset487 },
+  { path: "Technology/Commercial Space & SpaceX/SpaceX launch.jpg", src: asset488 },
+  { path: "Technology/Commercial Space & SpaceX/Visualisation of the 30 000 planned satellites from the Starlink Generation 2 constellation as of 2022.jpg", src: asset489 },
+  { path: "Technology/Commercial Space & SpaceX/spacex--p-KCm6xB9I-unsplash.jpg", src: asset490 },
+  { path: "Technology/EA HQ campus logo.jpg", src: asset491 },
+  { path: "Technology/Google Data Center Midlothian Texas at Dusk with Water Tanks and GCUB Generator Yard.jpg", src: asset492 },
+  { path: "Technology/Landed rockets in hangar 39A SpaceX.jpg", src: asset493 },
+  { path: "Technology/NVIDIA H100 GPU on new SXM5 Module. GTC2022_SXM5_01_v001_DL.png", src: asset494 },
+  { path: "Technology/Space/Aldrin next to the Passive Seismic Experiment Package with the Lunar Module Eagle in the background.jpg", src: asset495 },
+  { path: "Technology/Space/Apollo 11 Buzz Aldrin on the Moon in a photograph taken by Neil Armstrong, who can be seen in the visor reflection along with Earth, the Lunar Module Eagle, and the U.S. flag.jpg", src: asset496 },
+  { path: "Technology/Space/Apollo_11_Crew.jpg", src: asset497 },
+  { path: "Technology/Space/Apollo_11_insignia.png", src: asset498 },
+  { path: "Technology/Space/Buzz_salutes_the_U.S._Flag on the lunar surface.jpg", src: asset500 },
+  { path: "Technology/Space/Eugene_Cernan_at_the_LM,_Apollo_17,_AS17-134-20378.jpg", src: asset501 },
+  { path: "Technology/Space/Saturn V SA-506, the rocket carrying the Apollo 11 spacecraft, moves out of the Vehicle Assembly Building towards Launch Complex 39.jpg", src: asset502 },
+  { path: "Technology/Vivid and detailed close-up of a patterned silicon wafer with vibrant green and blue colors.jpg", src: asset503 },
+  { path: "Technology/server aisles in google data center in Ohio.jpg", src: asset504 },
+  { path: "Technology/visualization Full-H100-GPU-with-144-SMs-1536x686.png", src: asset505 },
+  { path: "University/2019_UCLA_Royce_Hall_1.jpg", src: asset506 },
+  { path: "University/Cornell University, view, landscape, greens, mountains.jpg", src: asset508 },
+  { path: "University/Dartmouth College.jpg", src: asset509 },
+  { path: "University/Duke_Chapel,_West_Campus,_Duke_University,_Durham,_NC_(48961090317).jpg", src: asset510 },
+  { path: "University/Duke_University_(5744250215).jpg", src: asset511 },
+  { path: "University/Fall foliage adds dazzling color to the view of campus from across the Charles River.jpg", src: asset512 },
+  { path: "University/Harvard Law School graduates celebrate.jpg", src: asset513 },
+  { path: "University/Harvard Widener Library interior reading room.jpg", src: asset514 },
+  { path: "University/Li Ka Shing Learning and Knowledge Center home to Stanford School of Medicine.jpg", src: asset516 },
+  { path: "University/MIT_Main_Campus_aerial.jpg", src: asset517 },
+  { path: "University/Main Green. Brown University.jpg", src: asset518 },
+  { path: "University/Princeton University 2.jpg", src: asset519 },
+  { path: "University/Princeton University.jpg", src: asset520 },
+  { path: "University/Stanford University Campus.jpg", src: asset521 },
+  { path: "University/Trees frame the rowers on the Charles River.jpg", src: asset522 },
+  { path: "University/UC-Berkeley-campus-overview-from-hills.h.jpg", src: asset523 },
+  { path: "University/UCBerkeleyCampus.jpg", src: asset524 },
+  { path: "University/University of Chicago Aerial View.jpg", src: asset525 },
+  { path: "University/University_of_Chicago,_Harper_Library.jpg", src: asset526 },
+  { path: "University/View From Kline Tower Over Science Hill And New Haven To Long Island Sound.jpg", src: asset527 },
+  { path: "University/Wheeler_Hall,_University_of_California,_Berkeley.jpg", src: asset528 },
+  { path: "University/Yale Aerial.jpg", src: asset529 },
+  { path: "University/central-campus-aerial-sunset_paul-coco.jpg", src: asset530 },
+  { path: "University/zoshua-colah-Juzqxc8MwtU-unsplash.jpg", src: asset531 },
 ] as const satisfies readonly GalleryAssetRecord[];

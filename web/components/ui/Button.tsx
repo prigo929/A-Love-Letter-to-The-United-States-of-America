@@ -14,6 +14,7 @@ import { forwardRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Magnetic } from "@/components/shared/Magnetic";
 
 type ButtonVariant = "primary" | "secondary" | "ghost" | "gold";
 type ButtonSize = "sm" | "md" | "lg" | "xl";
@@ -173,28 +174,32 @@ export const Button = forwardRef<
     const { href, external } = props;
     if (external) {
       return (
-        <motion.a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={classes}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.97 }}
-        >
-          {content}
-        </motion.a>
+        <Magnetic className="inline-block">
+          <motion.a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={classes}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            {content}
+          </motion.a>
+        </Magnetic>
       );
     }
     return (
-      <motion.div
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.97 }}
-        className={fullWidth ? "w-full" : "inline-block"}
-      >
-        <Link href={href} className={classes}>
-          {content}
-        </Link>
-      </motion.div>
+      <Magnetic className={fullWidth ? "w-full" : "inline-block"}>
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.97 }}
+          className={fullWidth ? "w-full" : "inline-block"}
+        >
+          <Link href={href} className={classes}>
+            {content}
+          </Link>
+        </motion.div>
+      </Magnetic>
     );
   }
 
@@ -202,17 +207,19 @@ export const Button = forwardRef<
   // Otherwise this is a normal clickable button that can submit forms or run handlers.
   const { type = "button", onClick } = props as ButtonAsButton;
   return (
-    <motion.button
-      ref={ref as React.Ref<HTMLButtonElement>}
-      type={type}
-      onClick={onClick}
-      disabled={disabled || loading}
-      className={classes}
-      whileHover={!disabled ? { scale: 1.02 } : {}}
-      whileTap={!disabled ? { scale: 0.97 } : {}}
-    >
-      {content}
-    </motion.button>
+    <Magnetic className={fullWidth ? "w-full" : "inline-block"}>
+      <motion.button
+        ref={ref as React.Ref<HTMLButtonElement>}
+        type={type}
+        onClick={onClick}
+        disabled={disabled || loading}
+        className={classes}
+        whileHover={!disabled ? { scale: 1.02 } : {}}
+        whileTap={!disabled ? { scale: 0.97 } : {}}
+      >
+        {content}
+      </motion.button>
+    </Magnetic>
   );
 });
 
