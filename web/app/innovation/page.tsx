@@ -8,6 +8,9 @@ import {
   MacroHero 
 } from "@/components/economy/EconomyAnimations";
 import { Cpu, Globe, Phone, Cloud, Orbit, Gamepad2 } from "lucide-react";
+import DeepDiveSection from "@/components/shared/DeepDiveSection";
+import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
+import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 
 export const metadata: Metadata = {
   title: "Innovation & Technology",
@@ -314,6 +317,13 @@ export default async function InnovationPage() {
             })}
           </div>
         </section>
+
+        {/* Deep Dive Section */}
+        <DeepDiveSection
+          locale={locale}
+          topics={VERTICALS_THEMATIC_DATA["innovation"] || []}
+          theme={DEEP_DIVE_THEMES.innovation}
+        />
 
         {/* AI Oracle */}
         <div className="mt-32">

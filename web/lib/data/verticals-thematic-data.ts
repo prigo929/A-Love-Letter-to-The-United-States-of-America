@@ -12931,4 +12931,447 @@ export const VERTICALS_THEMATIC_DATA: Record<string, ThematicTopic[]> = {
       ],
     },
   ],
+  "innovation": [
+    {
+      id: "Silicon_Valley",
+      title: { en: "Silicon Valley", ro: "Silicon Valley" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "Silicon Valley, located in the southern San Francisco Bay Area of California, is the global hub for high technology, venture capital, and innovation. It is home to many of the world\'s largest high-tech corporations and thousands of startup companies, representing the peak of American technological leadership and entrepreneurial spirit.", ro: "Silicon Valley, situat în sudul zonei golfului San Francisco din California, este centrul global pentru înaltă tehnologie, capital de risc și inovație. Gazdă a multora dintre cele mai mari corporații hi-tech din lume și a mii de startup-uri, acesta reprezintă vârful leadership-ului tehnologic și al spiritului antreprenorial american." },
+                { en: "The region\'s name originally derived from the large number of silicon chip innovators and manufacturers in the area, but it has since expanded to encompass all aspects of software, biotechnology, internet services, and artificial intelligence.", ro: "Numele regiunii a provenit inițial de la numărul mare de inovatori și producători de cipuri de siliciu din zonă, dar de atunci s-a extins pentru a cuprinde toate aspectele legate de software, biotehnologie, servicii de internet și inteligență artificială." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Historical Development", ro: "Dezvoltare Istorică" },
+          subsections: [
+            {
+              heading: { en: "Early Foundations and Terman's Vision", ro: "Fundațiile Timpurii și Viziunea lui Terman" },
+              paragraphs: [
+                { en: "The foundations of Silicon Valley were laid in the mid-20th century through a combination of military spending, academic research led by Stanford University, and the creation of Stanford Industrial Park by Frederick Terman.", ro: "Bazele Silicon Valley au fost puse la mijlocul secolului al XX-lea printr-o combinație de cheltuieli militare, cercetare academică condusă de Universitatea Stanford și crearea Parcului Industrial Stanford de către Frederick Terman." },
+                { en: "The birth of the semiconductor industry, pioneered by Shockley Semiconductor Laboratory and the subsequent \'Traitorous Eight\' who founded Fairchild Semiconductor, established the region as a hotbed for electronic innovation, eventually leading to the founding of Intel, Apple, and Hewlett-Packard.", ro: "Nașterea industriei semiconductorilor, inițiată de Shockley Semiconductor Laboratory și ulterior de grupul „Traitorous Eight” care a fondat Fairchild Semiconductor, a stabilit regiunea ca un focar de inovație electronică, ducând în cele din urmă la fondarea Intel, Apple și Hewlett-Packard." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Innovation Ecosystem", ro: "Ecosistemul de Inovare" },
+          subsections: [
+            {
+              heading: { en: "Venture Capital and Research Synergy", ro: "Capital de Risc și Sinergie în Cercetare" },
+              paragraphs: [
+                { en: "Silicon Valley\'s ecosystem is driven by a unique synergy between top-tier research universities, abundant venture capital firms along Sand Hill Road, and a highly skilled global workforce attracted by the concentration of opportunity.", ro: "Ecosistemul din Silicon Valley este stimulat de o sinergie unică între universități de cercetare de top, firme abundente de capital de risc de pe Sand Hill Road și o forță de muncă globală extrem de calificată, atrasă de concentrarea de oportunități." },
+                { en: "The presence of tech giants like Google, Meta, Apple, and Nvidia creates a continuous cycle of talent, investment, and technological breakthroughs, securing America\'s dominance in the global digital economy.", ro: "Prezența giganților tehnologici precum Google, Meta, Apple și Nvidia creează un ciclu continuu de talent, investiții și descoperiri tehnologice, asigurând dominația Americii în economia digitală globală." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Culture and Norms", ro: "Cultură și Norme" },
+          subsections: [
+            {
+              heading: { en: "Entrepreneurial Mindset", ro: "Mentalitatea Antreprenorială" },
+              paragraphs: [
+                { en: "The culture of Silicon Valley is defined by an entrepreneurial mindset that embraces risk, views failure as a learning experience, and encourages open collaboration and rapid iteration.", ro: "Cultura din Silicon Valley este definită de o mentalitate antreprenorială care acceptă riscul, vede eșecul ca pe o experiență de învățare și încurajează colaborarea deschisă și iterarea rapidă." },
+                { en: "This culture of disruption and constant innovation has fostered a relentless pursuit of groundbreaking ideas that continuously redefine how humanity communicates, works, and lives.", ro: "Această cultură a perturbării constructive și a inovării constante a favorizat o căutare neîncetată a ideilor revoluționare care redifinesc continuu modul în care omenirea comunică, lucrează și trăiește." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "NASA",
+      title: { en: "NASA", ro: "NASA" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The National Aeronautics and Space Administration (NASA) is an independent agency of the United States federal government responsible for the civil space program, aeronautics research, and space research. Established in 1958, NASA has led the world\'s most ambitious space exploration achievements, symbolizing American curiosity and scientific excellence.", ro: "Administrația Națională Aeronautică și Spațială (NASA) este o agenție independentă a guvernului federal al Statelor Unite, responsabilă pentru programul spațial civil, cercetarea aeronautică și cercetarea spațială. Înființată în 1958, NASA a condus cele mai ambițioase realizări de explorare spațială din lume, simbolizând curiozitatea americană și excelența științifică." },
+                { en: "NASA succeeded the National Advisory Committee for Aeronautics (NACA), inheriting its research centers and pioneering spirit to lead America\'s entry into the space age.", ro: "NASA a succedat Comitetului Consultativ Național pentru Aeronautică (NACA), moștenind centrele sale de cercetare și spiritul de pionierat pentru a conduce intrarea Americii în era spațială." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "History", ro: "Istoric" },
+          subsections: [
+            {
+              heading: { en: "Cold War Space Race", ro: "Cursa Spațială din Războiul Rece" },
+              paragraphs: [
+                { en: "NASA\'s history is characterized by rapid technological breakthroughs driven by the Cold War Space Race, starting with Project Mercury and Project Gemini, which laid the technical groundwork for human spaceflight.", ro: "Istoria NASA este caracterizată de descoperiri tehnologice rapide determinate de Cursa Spațială din timpul Războiului Rece, începând cu Proiectul Mercury și Proiectul Gemini, care au pus bazele tehnice pentru zborurile spațiale cu echipaj uman." },
+                { en: "The agency\'s achievements continued with the Space Shuttle program, the construction of the International Space Station, and robotic missions that have explored every planet in our solar system.", ro: "Realizările agenției au continuat cu programul Space Shuttle, construcția Stației Spațiale Internaționale și misiuni robotice care au explorat fiecare planetă din sistemul nostru solar." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Human Spaceflight Programs", ro: "Programe de Zboruri Spațiale Umane" },
+          subsections: [
+            {
+              heading: { en: "From Apollo to Artemis", ro: "De la Apollo la Artemis" },
+              paragraphs: [
+                { en: "From the early orbits of John Glenn to the historic Apollo Moon landings, NASA has consistently pushed the boundaries of human presence in space.", ro: "De la primele orbite ale lui John Glenn până la aterizările istorice pe Lună ale programului Apollo, NASA a împins în mod constant granițele prezenței umane în spațiu." },
+                { en: "Under the modern Artemis program, NASA is collaborating with international and commercial partners to land the first woman and next man on the Moon, establishing a sustainable presence to prepare for human missions to Mars.", ro: "În cadrul programului modern Artemis, NASA colaborează cu parteneri internaționali și comerciali pentru a trimite prima femeie și următorul bărbat pe Lună, stabilind o prezență durabilă pentru a pregăti misiunile umane către Marte." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Scientific and Economic Impacts", ro: "Impactul Științific și Economic" },
+          subsections: [
+            {
+              heading: { en: "Spinoffs and STEM Education", ro: "Tehnologii Secundare și Educația STEM" },
+              paragraphs: [
+                { en: "Beyond exploration, NASA\'s research has generated thousands of technological spinoffs in medicine, computing, and materials science that improve daily life on Earth.", ro: "Dincolo de explorare, cercetările NASA au generat mii de tehnologii secundare în medicină, calcul și știința materialelor, care îmbunătățesc viața de zi cu zi pe Pământ." },
+                { en: "The agency\'s investment in space technology drives economic growth, fosters high-tech industries, and inspires millions of students to pursue careers in science, technology, engineering, and mathematics (STEM).", ro: "Investițiile agenției în tehnologia spațială stimulează creșterea economică, încurajează industriile de înaltă tehnologie și inspiră milioane de studenți să urmeze cariere în știință, tehnologie, inginerie și matematică (STEM)." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Apollo_program",
+      title: { en: "Moon landing (Apollo program)", ro: "Aterizarea pe Lună (Programul Apollo)" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The Apollo program was the third United States human spaceflight program carried out by NASA, which succeeded in landing the first humans on the Moon in 1969. It remains one of the greatest technological and engineering achievements in human history, demonstrating American capability, resourcefulness, and determination.", ro: "Programul Apollo a fost al treilea program de zbor spațial cu echipaj uman al Statelor Unite, desfășurat de NASA, care a reușit să trimită primii oameni pe Lună în 1969. Acesta rămâne una dintre cele mai mari realizări tehnologice și de inginerie din istoria omenirii, demonstrând capacitatea, ingeniozitatea și determinarea americană." },
+                { en: "Apollo ran from 1961 to 1972, encompassing a total of 17 missions that advanced space science, technology, and national prestige.", ro: "Programul Apollo s-a desfășurat între 1961 și 1972, cuprinzând un total de 17 misiuni care au propulsat știința spațială, tehnologia și prestigiul național." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Origins and Geopolitical Context", ro: "Origini și Context Geopolitic" },
+          subsections: [
+            {
+              heading: { en: "Kennedy's Bold Vision", ro: "Viziunea Îndrăzneață a lui Kennedy" },
+              paragraphs: [
+                { en: "In the midst of the Cold War, President John F. Kennedy set the ambitious national goal in May 1961 of landing a man on the Moon and returning him safely to Earth before the decade was out.", ro: "În plin Război Rece, președintele John F. Kennedy a stabilit în mai 1961 obiectivul național ambițios de a trimite un om pe Lună și de a-l aduce înapoi în siguranță pe Pământ înainte de sfârșitul deceniului." },
+                { en: "This goal was a direct response to Soviet early lead in the Space Race, mobilizing a massive national effort that employed over 400,000 scientists, engineers, and technicians across the United States.", ro: "Acest obiectiv a fost un răspuns direct la avansul inițial al sovieticilor în Cursa Spațială, mobilizând un efort național masiv care a angajat peste 400.000 de oameni de știință, ingineri și tehnicieni din Statele Unite." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Execution of Lunar Missions", ro: "Executarea Misiunilor Lunare" },
+          subsections: [
+            {
+              heading: { en: "One Giant Leap for Mankind", ro: "Un Pas Uriaș pentru Omenire" },
+              paragraphs: [
+                { en: "The program achieved its ultimate goal on July 20, 1969, when Apollo 11 astronauts Neil Armstrong and Buzz Aldrin landed the Lunar Module Eagle on the Moon\'s surface, witnessed by an estimated 650 million viewers worldwide.", ro: "Programul și-a atins scopul suprem pe 20 iulie 1969, când astronauții Apollo 11 Neil Armstrong și Buzz Aldrin au plasat modulul lunar Eagle pe suprafața Lunii, moment urmărit de aproximativ 650 de milioane de telespectatori din întreaga lume." },
+                { en: "Subsequent missions, including Apollo 12 through 17, conducted extensive scientific experiments on the lunar surface, deployed lunar rovers, and collected invaluable geological samples that transformed our understanding of the solar system.", ro: "Misiunile ulterioare, de la Apollo 12 la 17, au efectuat experimente științifice ample pe suprafața lunară, au desfășurat vehicule lunare și au colectat probe geologice neprețuite care au transformat înțelegerea noastră despre sistemul solar." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Enduring Legacy", ro: "Moștenirea Durabilă" },
+          subsections: [
+            {
+              heading: { en: "Technological Catalyst", ro: "Catalizator Tehnologic" },
+              paragraphs: [
+                { en: "The Apollo program left an enduring legacy of technological innovation, including advancements in integrated circuits, computing, materials science, and telecommunications that catalyzed the modern digital revolution.", ro: "Programul Apollo a lăsat o moștenire durabilă de inovare tehnologică, incluzând progrese în circuite integrate, calcul, știința materialelor și telecomunicații care au catalizat revoluția digitală modernă." },
+                { en: "It stands as a powerful testament to what can be achieved through national unity, public investment, and scientific courage.", ro: "Acesta rămâne o mărturie puternică a ceea ce se poate realiza prin unitate națională, investiții publice și curaj științific." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "History_of_the_Internet",
+      title: { en: "History of the Internet", ro: "Istoria Internetului" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The history of the internet began with American defense and academic research, growing from a military communications project into the global network that defines modern life. The technologies, protocols, and infrastructure that power the internet were overwhelmingly designed, developed, and scaled in the United States.", ro: "Istoria internetului a început cu cercetarea academică și de apărare din America, evoluând de la un proiect de comunicații militare la rețeaua globală care definește viața modernă. Tehnologiile, protocoalele și infrastructura care alimentează internetul au fost în mod covârșitor proiectate, dezvoltate și scalate în Statele Unite." },
+                { en: "From packet switching to TCP/IP and the World Wide Web, American innovators created the architecture of the digital age.", ro: "De la comutarea de pachete la TCP/IP și World Wide Web, inovatorii americani au creat arhitectura erei digitale." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Pioneering Networks and Experiments", ro: "Rețele de Pionierat și Experimente" },
+          subsections: [
+            {
+              heading: { en: "ARPANET and Packet Switching", ro: "ARPANET și Comutarea de Pachete" },
+              paragraphs: [
+                { en: "In 1969, the Advanced Research Projects Agency (ARPA) of the U.S. Department of Defense funded ARPANET, the world\'s first operational packet-switching network.", ro: "În 1969, Agenția pentru Proiecte de Cercetare Avansată (ARPA) a Departamentului Apărării al SUA a finanțat ARPANET, prima rețea operațională de comutare de pachete din lume." },
+                { en: "ARPANET pioneered key concepts like distributed routing and network resilience, laying the technological foundation for what would eventually become the global internet.", ro: "ARPANET a inițiat concepte-cheie precum rutarea distribuită și rezistența rețelei, punând bazele tehnologice pentru ceea ce avea să devină în cele din urmă internetul global." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Birth of the World Wide Web", ro: "Nașterea World Wide Web" },
+          subsections: [
+            {
+              heading: { en: "TCP/IP and Global Standardization", ro: "TCP/IP și Standardizarea Globală" },
+              paragraphs: [
+                { en: "The development of the Transmission Control Protocol and Internet Protocol (TCP/IP) by Vint Cerf and Bob Kahn in the 1970s provided a standardized framework that allowed different computer networks to communicate seamlessly.", ro: "Dezvoltarea protocoalelor TCP/IP (Transmission Control Protocol / Internet Protocol) de către Vint Cerf și Bob Kahn în anii 1970 a oferit un cadru standardizat care a permis diferitelor rețele de calculatoare să comunice perfect." },
+                { en: "In 1983, ARPANET adopted TCP/IP, marking the birth of the modern Internet, which was further expanded by the National Science Foundation\'s NSFNET, connecting universities and research hubs across the country.", ro: "În 1983, ARPANET a adoptat TCP/IP, marcând nașterea Internetului modern, care a fost extins în continuare prin NSFNET de la National Science Foundation, conectând universități și centre de cercetare din întreaga țară." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Mobile and Ubiquitous Access Revolution", ro: "Revoluția Accesului Mobil și Omniprezent" },
+          subsections: [
+            {
+              heading: { en: "Commercialization and Web Browsers", ro: "Comercializarea și Browserele Web" },
+              paragraphs: [
+                { en: "The commercialization of the internet in the 1990s, combined with the development of easy-to-use web browsers like Mosaic and Netscape created in American research centers, triggered an exponential expansion of digital connectivity.", ro: "Comercializarea internetului în anii 1990, combinată cu dezvoltarea browserelor web ușor de utilizat, cum ar fi Mosaic și Netscape create în centrele de cercetare americane, a declanșat o expansiune exponențială a conectivității digitale." },
+                { en: "This transition turned the internet from an academic tool into a global commercial and social platform, paving the way for the digital economy, cloud computing, and mobile technology.", ro: "Această tranziție a transformat internetul dintr-un instrument academic într-o platformă comercială și socială globală, deschizând calea pentru economia digitală, cloud computing și tehnologia mobilă." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "American_inventions",
+      title: { en: "American Inventions", ro: "Invenții Americane" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The United States has been a leading source of inventions and technological breakthroughs, driven by a strong patent system, a culture of practical problem-solving, and substantial investment in research and development. From early agricultural tools to advanced biotechnology and computers, American inventors have continuously reshaped the modern world.", ro: "Statele Unite au fost o sursă principală de invenții și descoperiri tehnologice, impulsionate de un sistem robust de brevete, o cultură a rezolvării problemelor practice și investiții substanțiale în cercetare și dezvoltare. De la primele unelte agricole la biotehnologia avansată și calculatoare, inventatorii americani au remodelat continuu lumea modernă." },
+                { en: "This legacy of innovation has elevated global standards of living, fueled economic growth, and established America as a beacon of scientific progress.", ro: "Această moștenire a inovării a ridicat standardele globale de trai, a stimulat creșterea economică și a stabilit America ca un far al progresului științific." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "19th Century Inventions (1801–1900)", ro: "Invenții din Secolul al XIX-lea (1801–1900)" },
+          subsections: [
+            {
+              heading: { en: "Industrial Revolution and Telecommunications", ro: "Revoluția Industrială și Telecomunicațiile" },
+              paragraphs: [
+                { en: "During the 19th century, American inventors created technologies that catalyzed the Industrial Revolution, including Eli Whitney\'s cotton gin, Robert Fulton\'s commercial steamboat, and Samuel Morse\'s electromagnetic telegraph.", ro: "În timpul secolului al XIX-lea, inventatorii americani au creat tehnologii care au catalizat Revoluția Industrială, inclusiv separatorul de bumbac al lui Eli Whitney, vaporul comercial cu aburi al lui Robert Fulton și telegraful electromagnetic al lui Samuel Morse." },
+                { en: "The late 19th century saw Thomas Edison\'s development of the incandescent light bulb, the phonograph, and the research laboratory concept, alongside Alexander Graham Bell\'s invention of the telephone, laying the groundwork for the modern electrical and telecommunication grids.", ro: "Sfârșitul secolului al XIX-lea a adus dezvoltarea becului incandescent, a fonografului și a conceptului de laborator de cercetare de către Thomas Edison, alături de inventarea telefonului de către Alexander Graham Bell, punând bazele rețelelor electrice și de telecomunicații moderne." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Early 20th Century Inventions (1901–1945)", ro: "Invenții de la Începutul Secolului XX (1901–1945)" },
+          subsections: [
+            {
+              heading: { en: "Flight and Assembly Line", ro: "Zborul și Linia de Asamblare" },
+              paragraphs: [
+                { en: "The 20th century witnessed an extraordinary surge in American invention, beginning with the Wright brothers\' first controlled powered flight in 1903 and Henry Ford\'s assembly line, which revolutionized manufacturing.", ro: "Secolul al XX-lea a fost martorul unui val extraordinar de invenții americane, începând cu primul zbor controlat al fraților Wright în 1903 și linia de asamblare a lui Henry Ford, care a revoluționat industria manufacturieră." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Postwar and Cold War Inventions (1946–1991)", ro: "Invenții din Perioada Postbelică și din Războiul Rece (1946–1991)" },
+          subsections: [
+            {
+              heading: { en: "Birth of the Digital Era", ro: "Nașterea Erei Digitale" },
+              paragraphs: [
+                { en: "Postwar innovations saw the creation of the transistor at Bell Labs in 1947, the laser, the integrated circuit, and GPS technology, which formed the foundational pillars of the digital revolution and the computing age.", ro: "Inovațiile postbelice au adus crearea tranzistorului la Bell Labs în 1947, a laserului, a circuitului integrat și a tehnologiei GPS, care au format pilonii de bază ai revoluției digitale și ai erei computerelor." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Information Age and 21st Century Inventions (1992–present)", ro: "Era Informațională și Invenții din Secolul XXI (1992–prezent)" },
+          subsections: [
+            {
+              heading: { en: "AI and Modern Frontier", ro: "AI și Frontiera Modernă" },
+              paragraphs: [
+                { en: "In the late 20th and early 21st centuries, American software engineers and scientists pioneered personal computers, search engines, smartphones, cloud computing, and gene-editing technologies like CRISPR.", ro: "La sfârșitul secolului al XX-lea și începutul secolului al XXI-lea, inginerii software și oamenii de știință americani au deschis drumul pentru calculatoarele personale, motoarele de căutare, smartphone-urile, cloud computing-ul și tehnologiile de editare genetică precum CRISPR." },
+                { en: "The ongoing development of generative artificial intelligence and quantum computing continues this tradition, ensuring that American creativity remains at the forefront of global technological evolution.", ro: "Dezvoltarea continuă a inteligenței artificiale generative și a calculului cuantic continuă această tradiție, asigurând că ingeniozitatea americană rămâne în avangarda evoluției tehnologice globale." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Manhattan_Project",
+      title: { en: "Manhattan Project", ro: "Proiectul Manhattan" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "The Manhattan Project was a research and development undertaking during World War II that produced the first nuclear weapons. Led by the United States with the support of the United Kingdom and Canada, this massive project combined military leadership, scientific genius, and industrial capacity on an unprecedented scale, changing the course of history and geopolitics forever.", ro: "Proiectul Manhattan a fost o inițiativă de cercetare și dezvoltare din timpul celui de-al Doilea Război Mondial care a produs primele arme nucleare. Condus de Statele Unite cu sprijinul Regatului Unit și al Canadei, acest proiect masiv a combinat leadership-ul militar, geniul științific și capacitatea industrială la o scară fără precedent, schimbând cursul istoriei și al geopoliticii pentru totdeauna." },
+                { en: "The project was directed by Major General Leslie Groves of the U.S. Army Corps of Engineers, while physicist J. Robert Oppenheimer served as the director of the Los Alamos Laboratory that designed the bombs.", ro: "Proiectul a fost condus de generalul-maior Leslie Groves din Corpul de Ingineri al Armatei SUA, în timp ce fizicianul J. Robert Oppenheimer a fost directorul Laboratorului Los Alamos, unde s-au proiectat bombele." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Major Research and Production Sites", ro: "Locații Majore de Cercetare și Producție" },
+          subsections: [
+            {
+              heading: { en: "A Secret Nationwide Infrastructure", ro: "O Infrastructură Secretă la Nivel Național" },
+              paragraphs: [
+                { en: "The project operated across several secret sites, including Oak Ridge in Tennessee for uranium enrichment, Hanford in Washington for plutonium production, and Los Alamos in New Mexico for scientific design and assembly.", ro: "Proiectul s-a desfășurat în mai multe locații secrete, inclusiv Oak Ridge în Tennessee pentru îmbogățirea uraniului, Hanford în Washington pentru producția de plutoniu și Los Alamos în New Mexico pentru proiectarea științifică și asamblare." },
+                { en: "At its peak, the Manhattan Project employed over 130,000 people and cost nearly $2 billion, demonstrating the vast industrial and logistical capability of the United States.", ro: "La apogeul său, Proiectul Manhattan a angajat peste 130.000 de oameni și a costat aproape 2 miliarde de dolari, demonstrând capacitatea industrială și logistică uriașă a Statelor Unite." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Weapon Development and Testing", ro: "Dezvoltarea și Testarea Armelor" },
+          subsections: [
+            {
+              heading: { en: "The Trinity Test", ro: "Testul Trinity" },
+              paragraphs: [
+                { en: "The scientific efforts culminated in the Trinity test on July 16, 1945, near Alamogordo, New Mexico, where the first atomic device was successfully detonated, ushering in the nuclear age.", ro: "Eforturile științifice au culminat cu testul Trinity pe 16 iulie 1945, lângă Alamogordo, New Mexico, unde primul dispozitiv atomic a fost detonat cu succes, inaugurând era nucleară." },
+                { en: "The subsequent deployment of atomic bombs at Hiroshima and Nagasaki led directly to the end of World War II, establishing the United States as the world\'s preeminent military and scientific superpower.", ro: "Utilizarea ulterioară a bombelor atomice la Hiroshima și Nagasaki a dus direct la încheierea celui de-al Doilea Război Mondial, stabilind Statele Unite ca superputere militară și științifică preeminentă a lumii." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Post-War Transition and Enduring Legacy", ro: "Tranziția Postbelică și Moștenirea Durabilă" },
+          subsections: [
+            {
+              heading: { en: "The National Laboratory System", ro: "Sistemul de Laboratoare Naționale" },
+              paragraphs: [
+                { en: "The Manhattan Project laid the foundation for the postwar establishment of the national laboratory system, including Argonne, Oak Ridge, and Lawrence Berkeley, which continue to drive research in high-energy physics, supercomputing, and national security.", ro: "Proiectul Manhattan a pus bazele sistemului postbelic de laboratoare naționale, inclusiv Argonne, Oak Ridge și Lawrence Berkeley, care continue să conducă cercetarea în fizica energiilor înalte, supercomputere și securitate națională." },
+                { en: "It also initiated the nuclear power industry and nuclear medicine, demonstrating the dual potential of atomic energy.", ro: "De asemenea, a inițiat industria energiei nucleare și medicina nucleară, demonstrând dublul potențial al energiei atomice." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Bell_Labs",
+      title: { en: "Bell Labs", ro: "Bell Labs" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "Nokia Bell Labs, originally Bell Telephone Laboratories, is an American industrial research and scientific development company that has been a premier source of technological innovation for nearly a century. Established in 1925 by AT&T and Western Electric, it has generated some of the most fundamental discoveries in communication, physics, and computer science.", ro: "Nokia Bell Labs, inițial Bell Telephone Laboratories, este o companie americană de cercetare industrială și dezvoltare științifică care a fost o sursă principală de inovare tehnologică timp de aproape un secol. Înființată în 1925 de AT&T și Western Electric, aceasta a generat unele dintre cele mai fundamentale descoperiri în comunicații, fizică și informatică." },
+                { en: "Its researchers have been awarded nine Nobel Prizes, reflecting the laboratory\'s unparalleled contribution to fundamental science.", ro: "Cercetătorii săi au fost premiați cu nouă premii Nobel, reflectând contribuția fără precedent a laboratorului la știința fundamentală." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Origins and Early History", ro: "Origini și Istorie Timpurie" },
+          subsections: [
+            {
+              heading: { en: "The Birth of Murray Hill R&D", ro: "Nașterea R&D la Murray Hill" },
+              paragraphs: [
+                { en: "Bell Labs was structured to combine academic-style research freedom with practical industrial needs. This unique environment fostered multidisciplinary teams of physicists, engineers, and mathematicians working together.", ro: "Bell Labs a fost structurat pentru a combina libertatea cercetării de stil academic cu nevoile industriale practice. Acest mediu unic a încurajat echipe multidisciplinare de fizicieni, ingineri și matematicieni să lucreze împreună." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Innovations and Discoveries", ro: "Inovații și Descoperiri" },
+          subsections: [
+            {
+              heading: { en: "The Transistor and Information Theory", ro: "Tranzistorul și Teoria Informației" },
+              paragraphs: [
+                { en: "In 1947, John Bardeen, Walter Brattain, and William Shockley invented the transistor at Bell Labs, a device that replaced vacuum tubes and catalyzed the entire solid-state electronics industry, serving as the building block for all modern computers.", ro: "In 1947, John Bardeen, Walter Brattain și William Shockley au inventat tranzistorul la Bell Labs, un dispozitiv care a înlocuit tuburile cu vid și a catalizat întreaga industrie a electronicelor solide, servind ca element de bază pentru toate computerele moderne." },
+                { en: "Other breakthroughs include Claude Shannon\'s formulation of Information Theory in 1948, the invention of the laser, solar cells, and the charge-coupled device (CCD) used in digital imaging.", ro: "Alte descoperiri includ formularea Teoriei Informației de către Claude Shannon în 1948, inventarea laserului, a celulelor solare și a dispozitivului cu cuplaj de sarcină (CCD) utilizat în imagistica digitală." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Publications and Legacy", ro: "Moștenire și Descoperiri Cosmice" },
+          subsections: [
+            {
+              heading: { en: "Unix, C Language and the Big Bang", ro: "Unix, Limbajul C și Big Bang-ul" },
+              paragraphs: [
+                { en: "Bell Labs developed the Unix operating system and the C programming language in the early 1970s under Dennis Ritchie and Ken Thompson, which became the foundational software infrastructure for modern operating systems.", ro: "Bell Labs a dezvoltat sistemul de operare Unix și limbajul de programare C la începutul anilor 1970, sub conducerea lui Dennis Ritchie și Ken Thompson, care au devenit infrastructura software de bază pentru sistemele de operare moderne." },
+                { en: "In 1964, Arno Penzias and Robert Wilson discovered the Cosmic Microwave Background radiation using the Holmdel Horn Antenna, providing the definitive observational evidence for the Big Bang theory of the universe\'s origin.", ro: "În 1964, Arno Penzias și Robert Wilson au descoperit radiația cosmică de fond folosind antena Holmdel, oferind dovada observațională decisivă pentru teoria Big Bang-ului privind originea universului." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "Science_and_technology_in_the_United_States",
+      title: { en: "Science and technology in the United States", ro: "Știința și Tehnologia în Statele Unite" },
+      sections: [
+        {
+          heading: { en: "Introduction", ro: "Introducere" },
+          subsections: [
+            {
+              heading: { en: "", ro: "" },
+              paragraphs: [
+                { en: "Science and technology in the United States represent a core driver of the nation\'s economic power, military capabilities, and high standards of living. Since its founding, the U.S. has cultivated a society that highly values education, scientific inquiry, and technological application, leading to a long history of global leadership in research and innovation.", ro: "Știința și tehnologia în Statele Unite reprezintă un motor central al puterii economice a națiunii, al capacităților sale militare și al standardelor ridicate de trai. Încă de la fondarea sa, SUA a cultivat o societate care prețuiește educația, cercetarea științifică și aplicarea tehnologică, ducând la o lungă istorie de leadership global în cercetare și inovare." },
+                { en: "This focus on progress has produced more Nobel Prize laureates than any other country and attracts top-tier scientific talent from around the world.", ro: "Această orientare spre progres a produs mai mulți laureați ai Premiului Nobel decât orice altă țară și atrage talente științifice de top din întreaga lume." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Historical Foundations", ro: "Fundamente Istorice" },
+          subsections: [
+            {
+              heading: { en: "From the Founding Fathers to the Endless Frontier", ro: "De la Părinții Fondatori la Frontiera Infinită" },
+              paragraphs: [
+                { en: "Early American figures like Benjamin Franklin and Thomas Jefferson were passionate scientists who integrated research into the national identity, advocating for patents to protect inventors.", ro: "Personalități timpurii ale Americii, precum Benjamin Franklin și Thomas Jefferson, au fost oameni de știință pasionați care au integrat cercetarea în identitatea națională, militând pentru brevete care să protejeze inventatorii." },
+                { en: "The establishment of the land-grant university system in 1862 and the post-World War II surge in federal research funding, championed by Vannevar Bush\'s vision of science as the \'Endless Frontier\', institutionalized American research excellence.", ro: "Înființarea sistemului de universități land-grant în 1862 și creșterea masivă a finanțării federale a cercetării după cel de-al Doilea Război Mondial, susținută de viziunea lui Vannevar Bush despre știință ca „Frontiera Infinită”, au instituționalizat excelența în cercetare a Americii." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Post-War Expansion and \"Big Science\"", ro: "Expansiunea Postbelică și \"Big Science\"" },
+          subsections: [
+            {
+              heading: { en: "The Public-Private R&D Engine", ro: "Motorul de R&D Public-Privat" },
+              paragraphs: [
+                { en: "The American scientific engine is supported by public agencies like the National Science Foundation (NSF), the National Institutes of Health (NIH), and DARPA, alongside world-renowned research universities and private corporate laboratories.", ro: "Motorul științific american este susținut de agenții publice precum National Science Foundation (NSF), National Institutes of Health (NIH) și DARPA, alături de universități de cercetare de renume mondial și laboratoare corporative private." },
+                { en: "This public-private framework facilitates the rapid translation of basic science into commercial products, from semiconductors and pharmaceuticals to advanced software and internet protocols.", ro: "Acest cadru public-privat facilitează traducerea rapidă a științei de bază în produse comerciale, de la semiconductori și produse farmaceutice la software avansat și protocoale de internet." },
+              ],
+            },
+          ],
+        },
+        {
+          heading: { en: "Key Technological Domains", ro: "Domenii Tehnologice Cheie" },
+          subsections: [
+            {
+              heading: { en: "Global Leadership and Investment", ro: "Leadership și Investiții Globale" },
+              paragraphs: [
+                { en: "Today, the United States leads the world in critical technological domains including aerospace, computer design, biomedical engineering, and artificial intelligence.", ro: "Astăzi, Statele Unite conduc lumea în domenii tehnologice critice, inclusiv industria aerospațială, proiectarea computerelor, ingineria biomedicală și inteligența artificială." },
+                { en: "American institutions and enterprises continue to invest hundreds of billions of dollars annually in R&D, ensuring that the nation remains at the cutting edge of global scientific exploration and technological progress.", ro: "Instituțiile și întreprinderile americane continuă să investească sute de miliarde de dolari anual în R&D, asigurându-se că națiunea rămâne în avangarda explorării științifice globale și a progresului tehnologic." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
 };

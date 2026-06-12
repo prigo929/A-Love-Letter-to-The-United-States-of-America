@@ -54,4 +54,10 @@ export const DEEP_DIVE_THEMES = {
     label: "IN DEPTH",
     labelRo: "ÎN DETALIU",
   },
+  innovation: {
+    bg: "#030405",
+    accent: "#E8B923",
+    label: "IN DEPTH",
+    labelRo: "ÎN DETALIU",
+  },
 } satisfies Record<string, DeepDiveTheme>;
