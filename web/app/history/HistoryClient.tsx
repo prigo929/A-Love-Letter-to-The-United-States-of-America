@@ -117,7 +117,7 @@ export default function HistoryClient({ locale }: { locale: string }) {
         </div>
 
         <div className="mx-auto max-w-7xl relative">
-          <div className="rounded-3xl border border-white/10 bg-white/3 backdrop-blur-md p-8 md:p-12 text-center overflow-hidden relative">
+          <div className="rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 md:p-12 text-center overflow-hidden relative">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-glory-blue via-glory-gold to-glory-red" />
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -138,62 +138,62 @@ export default function HistoryClient({ locale }: { locale: string }) {
           </div>
         </div>
       </section>
-
+ 
       {/* ── Chronological History Interactive Timeline Dashboard ── */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Vertical/Horizontal Navigation Sidebar (Timeline Selector) */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="p-5 rounded-2xl border border-white/10 bg-white/3 backdrop-blur-sm relative">
+            <div className="p-5 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm relative">
               <h2 className="font-display text-lg font-bold text-white mb-1">
                 {TEXT.timelineTitle[currentLocale]}
               </h2>
               <p className="font-body text-xs text-white/50 mb-4">
                 {TEXT.timelineSubtitle[currentLocale]}
               </p>
-
+ 
               {/* Desktop timeline list */}
               <div className="hidden lg:block relative pl-4 border-l border-white/10 space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
                 {HISTORY_ERAS.map((era) => {
-                  const isActive = era.id === activeEraId;
-                  return (
-                    <button
-                      key={era.id}
-                      onClick={() => setActiveEraId(era.id)}
-                      className={`w-full text-left p-3 rounded-xl transition-all duration-200 relative group flex flex-col gap-1 border ${
-                        isActive
-                          ? "border-glory-gold/30 bg-gradient-to-r from-navy-mid to-glory-blue/20 shadow-[0_0_15px_rgba(255,215,0,0.06)]"
-                          : "border-transparent bg-transparent hover:bg-white/5"
-                      }`}
-                    >
-                      {/* Active indicator node */}
-                      <div
-                        className={`absolute left-[-21px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full border transition-all ${
-                          isActive
-                            ? "bg-glory-gold border-glory-gold scale-125 shadow-[0_0_8px_#FFD700]"
-                            : "bg-navy-dark border-white/30 group-hover:border-white/60"
-                        }`}
-                      />
-                      <span
-                        className={`font-display font-bold text-sm tracking-wide transition-colors ${
-                          isActive ? "text-glory-gold" : "text-white/85 group-hover:text-white"
-                        }`}
-                      >
-                        {era.years}
-                      </span>
-                      <span
-                        className={`font-body text-xs line-clamp-1 transition-colors ${
-                          isActive ? "text-white/90" : "text-white/60"
-                        }`}
-                      >
-                        {currentLocale === "ro" ? era.title.ro : era.title.en}
-                      </span>
-                    </button>
-                  );
+                   const isActive = era.id === activeEraId;
+                   return (
+                     <button
+                       key={era.id}
+                       onClick={() => setActiveEraId(era.id)}
+                       className={`w-full text-left p-3 rounded-xl transition-all duration-200 relative group flex flex-col gap-1 border ${
+                         isActive
+                           ? "border-glory-gold/30 bg-white/[0.05] shadow-[0_0_15px_rgba(255,215,0,0.06)]"
+                           : "border-transparent bg-transparent hover:bg-white/5"
+                       }`}
+                     >
+                       {/* Active indicator node */}
+                       <div
+                         className={`absolute left-[-21px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full border transition-all ${
+                           isActive
+                             ? "bg-glory-gold border-glory-gold scale-125 shadow-[0_0_8px_#FFD700]"
+                             : "bg-black border-white/30 group-hover:border-white/60"
+                         }`}
+                       />
+                       <span
+                         className={`font-display font-bold text-sm tracking-wide transition-colors ${
+                           isActive ? "text-glory-gold" : "text-white/85 group-hover:text-white"
+                         }`}
+                       >
+                         {era.years}
+                       </span>
+                       <span
+                         className={`font-body text-xs line-clamp-1 transition-colors ${
+                           isActive ? "text-white/90" : "text-white/60"
+                         }`}
+                       >
+                         {currentLocale === "ro" ? era.title.ro : era.title.en}
+                       </span>
+                     </button>
+                   );
                 })}
               </div>
-
+ 
               {/* Mobile horizontal scroller */}
               <div className="lg:hidden flex gap-3 overflow-x-auto pb-2 scrollbar-none snap-x snap-mandatory">
                 {HISTORY_ERAS.map((era) => {
@@ -204,7 +204,7 @@ export default function HistoryClient({ locale }: { locale: string }) {
                       onClick={() => setActiveEraId(era.id)}
                       className={`flex-shrink-0 snap-center p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center min-w-[120px] ${
                         isActive
-                          ? "border-glory-gold/40 bg-gradient-to-b from-navy-mid to-glory-blue/25 text-glory-gold shadow-[0_0_15px_rgba(255,215,0,0.1)]"
+                          ? "border-glory-gold/40 bg-white/[0.08] text-glory-gold shadow-[0_0_15px_rgba(255,215,0,0.1)]"
                           : "border-white/10 bg-white/3 text-white/70"
                       }`}
                     >
@@ -218,7 +218,7 @@ export default function HistoryClient({ locale }: { locale: string }) {
               </div>
             </div>
           </div>
-
+ 
           {/* Era Content Display Area */}
           <div className="lg:col-span-8">
             <AnimatePresence mode="wait">
@@ -228,12 +228,12 @@ export default function HistoryClient({ locale }: { locale: string }) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="rounded-2xl border border-white/10 bg-gradient-to-b from-navy-mid to-navy-dark p-6 md:p-8 space-y-6 shadow-xl"
+                className="rounded-2xl border border-white/5 bg-white/[0.02] p-6 md:p-8 space-y-6 shadow-xl"
               >
                 {/* Era Header */}
                 <div className="border-b border-white/10 pb-5 space-y-2">
                   <div className="flex items-center gap-2">
-                    <span className="px-3 py-1 rounded-md bg-glory-blue/40 text-glory-gold border border-glory-gold/25 font-display text-sm font-bold tracking-wider">
+                    <span className="px-3 py-1 rounded-md bg-white/5 text-glory-gold border border-glory-gold/25 font-display text-sm font-bold tracking-wider">
                       {activeEra.years}
                     </span>
                   </div>
@@ -241,10 +241,10 @@ export default function HistoryClient({ locale }: { locale: string }) {
                     {currentLocale === "ro" ? activeEra.title.ro : activeEra.title.en}
                   </h2>
                 </div>
-
+ 
                 {/* mini Table of Contents / Anchors */}
                 {activeEra.sections.length > 1 && (
-                  <div className="p-4 rounded-xl border border-white/5 bg-white/3 flex flex-wrap gap-2 text-xs items-center">
+                  <div className="p-4 rounded-xl border border-white/5 bg-white/[0.01] flex flex-wrap gap-2 text-xs items-center">
                     <span className="text-white/45 flex items-center gap-1 font-semibold uppercase tracking-wider mr-2">
                       <Search className="w-3.5 h-3.5" /> {TEXT.sectionsLabel[currentLocale]}
                     </span>
@@ -255,7 +255,7 @@ export default function HistoryClient({ locale }: { locale: string }) {
                         <a
                           key={idx}
                           href={`#section-${idx}`}
-                          className="px-2.5 py-1 rounded-lg bg-navy-mid hover:bg-glory-gold/15 hover:text-glory-gold transition-colors text-white/75 border border-white/5"
+                          className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-glory-gold/15 hover:text-glory-gold transition-colors text-white/75 border border-white/5"
                         >
                           {heading}
                         </a>
@@ -263,7 +263,7 @@ export default function HistoryClient({ locale }: { locale: string }) {
                     })}
                   </div>
                 )}
-
+ 
                 {/* Subsections & Paragraphs */}
                 <div className="space-y-8">
                   {activeEra.sections.map((sec, secIdx) => {
@@ -279,7 +279,7 @@ export default function HistoryClient({ locale }: { locale: string }) {
                             {sectionHeading}
                           </h3>
                         )}
-
+ 
                         <div className="space-y-4">
                           {sec.subsections.map((sub, subIdx) => {
                             const subHeading = currentLocale === "ro" ? sub.heading.ro : sub.heading.en;
@@ -313,9 +313,9 @@ export default function HistoryClient({ locale }: { locale: string }) {
           </div>
         </div>
       </section>
-
+ 
       {/* ── Thematic History Journeys Navigation Grid ── */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-navy-mid/10">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-black">
         <div className="mx-auto max-w-7xl space-y-12">
           
           <div className="text-center space-y-3">
@@ -326,7 +326,7 @@ export default function HistoryClient({ locale }: { locale: string }) {
               {TEXT.thematicSubtitle[currentLocale]}
             </p>
           </div>
-
+ 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {thematicItems.map((item, index) => (
               <motion.div
@@ -335,7 +335,7 @@ export default function HistoryClient({ locale }: { locale: string }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.04 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/3 hover:border-glory-gold/30 hover:shadow-[0_0_20px_rgba(255,215,0,0.08)] transition-all duration-300 flex flex-col justify-between"
+                className="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] hover:border-glory-gold/30 hover:shadow-[0_0_20px_rgba(255,215,0,0.08)] transition-all duration-300 flex flex-col justify-between"
               >
                 {/* Visual top bar glow */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-glory-blue/40 to-transparent group-hover:from-glory-gold/40 group-hover:to-glory-blue/40 transition-colors" />

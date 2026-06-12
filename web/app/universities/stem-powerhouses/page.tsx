@@ -47,7 +47,7 @@ interface StemCopy {
 const copyEn: StemCopy = {
   breadcrumbParent: "Universities",
   breadcrumbPage: "STEM Powerhouses",
-  heroTagline: "INTELLECTUAL CAPITALS OF COMPUTE",
+  heroTagline: "CAPITALS OF COMPUTE",
   heroTitle: "STEM Powerhouses",
   heroSubtitle: "MIT, Stanford, Caltech, and Carnegie Mellon — the research crucibles that engineered modern computing, launched Silicon Valley, and power global tech transfer.",
   thesisTitle: "The Infrastructure of Innovation",
@@ -96,7 +96,7 @@ const copyEn: StemCopy = {
 const copyRo: StemCopy = {
   breadcrumbParent: "Universități",
   breadcrumbPage: "Centre STEM",
-  heroTagline: "CAPITALELE INTELECTUALE ALE CALCULULUI",
+  heroTagline: "CAPITALELE CALCULULUI",
   heroTitle: "Centrele STEM de Elită",
   heroSubtitle: "MIT, Stanford, Caltech și Carnegie Mellon — creuzetele de cercetare care au inovat computingul modern, au creat Silicon Valley și conduc inovația globală.",
   thesisTitle: "Infrastructura Inovației",

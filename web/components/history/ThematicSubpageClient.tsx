@@ -127,7 +127,7 @@ export default function ThematicSubpageClient({
           </p>
         </div>
       ) : (
-        <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-glory-blue/15 via-white/3 to-glory-red/10 p-8 md:p-12 mb-12 shadow-xl">
+        <section className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] p-8 md:p-12 mb-12 shadow-xl">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-glory-blue via-glory-gold to-glory-red" />
           <div className="max-w-3xl space-y-4">
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-glory-gold/30 bg-glory-gold/5 text-glory-gold text-[10px] font-bold uppercase tracking-wider">
@@ -142,13 +142,13 @@ export default function ThematicSubpageClient({
           </div>
         </section>
       )}
-
+ 
       {/* Main Grid: Left Tabs, Right Content Reader */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
         {/* Left column: Topic Tabs */}
         <div className="lg:col-span-4 space-y-4">
-          <div className="p-5 rounded-2xl border border-white/10 bg-white/3 backdrop-blur-sm">
+          <div className="p-5 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm">
             <h2 className="font-display text-base font-bold text-white mb-3">
               {TEXT.selectTopic[currentLocale]}
             </h2>
@@ -161,7 +161,7 @@ export default function ThematicSubpageClient({
                     onClick={() => setActiveTopicId(topic.id)}
                     className={`w-full text-left p-3.5 rounded-xl border transition-all flex items-center justify-between group ${
                       isActive
-                        ? "border-glory-gold/45 bg-gradient-to-r from-navy-mid to-glory-blue/25 text-glory-gold shadow-[0_0_15px_rgba(255,215,0,0.06)] font-bold"
+                        ? "border-glory-gold/45 bg-white/[0.05] text-glory-gold shadow-[0_0_15px_rgba(255,215,0,0.06)] font-bold"
                         : "border-transparent bg-transparent hover:bg-white/5 text-white/75 hover:text-white"
                     }`}
                   >
@@ -175,7 +175,7 @@ export default function ThematicSubpageClient({
             </div>
           </div>
         </div>
-
+ 
         {/* Right column: Content Reader Pane */}
         <div className="lg:col-span-8">
           <AnimatePresence mode="wait">
@@ -185,7 +185,7 @@ export default function ThematicSubpageClient({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="rounded-2xl border border-white/10 bg-gradient-to-b from-navy-mid to-navy-dark p-6 md:p-8 space-y-6 shadow-xl"
+              className="rounded-2xl border border-white/5 bg-white/[0.02] p-6 md:p-8 space-y-6 shadow-xl"
             >
               {/* Topic Header */}
               <div className="border-b border-white/10 pb-5">
@@ -193,10 +193,10 @@ export default function ThematicSubpageClient({
                   {currentLocale === "ro" ? activeTopic.title.ro : activeTopic.title.en}
                 </h2>
               </div>
-
+ 
               {/* Local Table of Contents */}
               {activeTopic.sections && activeTopic.sections.length > 1 && (
-                <div className="p-4 rounded-xl border border-white/5 bg-white/3 flex flex-wrap gap-2 text-xs items-center">
+                <div className="p-4 rounded-xl border border-white/5 bg-white/[0.01] flex flex-wrap gap-2 text-xs items-center">
                   <span className="text-white/45 flex items-center gap-1 font-semibold uppercase tracking-wider mr-2">
                     <Search className="w-3.5 h-3.5" /> {TEXT.sectionsLabel[currentLocale]}
                   </span>
@@ -207,7 +207,7 @@ export default function ThematicSubpageClient({
                       <a
                         key={idx}
                         href={`#topic-sec-${idx}`}
-                        className="px-2.5 py-1 rounded-lg bg-navy-mid hover:bg-glory-gold/15 hover:text-glory-gold transition-colors text-white/75 border border-white/5"
+                        className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-glory-gold/15 hover:text-glory-gold transition-colors text-white/75 border border-white/5"
                       >
                         {heading}
                       </a>

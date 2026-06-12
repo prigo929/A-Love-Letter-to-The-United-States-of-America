@@ -41,7 +41,7 @@ interface PublicCopy {
 const copyEn: PublicCopy = {
   breadcrumbParent: "Universities",
   breadcrumbPage: "Public Research",
-  heroTagline: "DEMOCRATIZING WORLD-CLASS RESEARCH",
+  heroTagline: "DEMOCRATIZE RESEARCH",
   heroTitle: "Public Research",
   heroSubtitle: "UC Berkeley, Michigan, UT Austin, and UCLA — the state-funded giants that combine massive scale with research outputs that rival the private Ivy League.",
   thesisTitle: "Elite Education at Scale",
@@ -84,7 +84,7 @@ const copyEn: PublicCopy = {
 const copyRo: PublicCopy = {
   breadcrumbParent: "Universități",
   breadcrumbPage: "Cercetare Publică",
-  heroTagline: "DEMOCRATIZAREA CERCETĂRII MONDIALE",
+  heroTagline: "CERCETARE DEMOCRATIZATĂ",
   heroTitle: "Universitățile de Cercetare Publică",
   heroSubtitle: "UC Berkeley, Michigan, UT Austin și UCLA — giganții finanțați de stat care oferă educație la scară largă și cercetare de nivel Ivy League.",
   thesisTitle: "Educație de Elită la Scară Largă",

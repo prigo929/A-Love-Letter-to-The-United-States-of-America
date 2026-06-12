@@ -22,9 +22,9 @@ export const COLORS = {
   gloryBlueLight: "#5554A0",
   gloryGold: "#FFD700",
   gloryGoldDark: "#CC9900",
-  navyDark: "#0d1117",
-  navyMid: "#1a1f3a",
-  navyLight: "#252b4a",
+  navyDark: "#000000",
+  navyMid: "#050608",
+  navyLight: "#0d1117",
   parchment: "#F5F0E8",
   parchmentDark: "#E8E0CC",
 } as const;

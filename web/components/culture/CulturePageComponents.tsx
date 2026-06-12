@@ -58,10 +58,67 @@ export function CultureStyles() {
       @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
 
       /* ── Core Palette ───────────────────────────────────────────── */
-      .culture-bg { background-color: #0C0907; }
-      .culture-cream-bg { background-color: #F5EDD8; }
+      .culture-bg { background-color: #000000; }
+      .culture-cream-bg { background-color: #050608; }
       .culture-red { color: #E8391B; }
       .font-editorial { font-family: 'EB Garamond', 'Playfair Display', Georgia, serif; }
+
+      /* Override former cream backgrounds text and border colors globally */
+      .culture-cream-bg,
+      .culture-cream-bg * {
+        color: #F5EDD8;
+      }
+      .culture-cream-bg .text-\[\#0C0907\],
+      .culture-cream-bg [class*="text-[#0C0907]"] {
+        color: #F5EDD8 !important;
+      }
+      .culture-cream-bg .text-black {
+        color: #F5EDD8 !important;
+      }
+      .culture-cream-bg .text-\[\#0C0907\]\/60,
+      .culture-cream-bg [class*="text-[#0C0907]/60"] {
+        color: rgba(245, 237, 216, 0.6) !important;
+      }
+      .culture-cream-bg .text-\[\#0C0907\]\/70,
+      .culture-cream-bg [class*="text-[#0C0907]/70"] {
+        color: rgba(245, 237, 216, 0.7) !important;
+      }
+      .culture-cream-bg .text-\[\#0C0907\]\/80,
+      .culture-cream-bg [class*="text-[#0C0907]/80"] {
+        color: rgba(245, 237, 216, 0.8) !important;
+      }
+      .culture-cream-bg .text-slate-600,
+      .culture-cream-bg .text-slate-700,
+      .culture-cream-bg .text-slate-800 {
+        color: rgba(245, 237, 216, 0.7) !important;
+      }
+
+      /* Borders inside cream-bg should be dark-glass borders */
+      .culture-cream-bg .border-\[\#0C0907\]\/5,
+      .culture-cream-bg [class*="border-[#0C0907]/5"] {
+        border-color: rgba(255, 255, 255, 0.08) !important;
+      }
+      .culture-cream-bg .border-\[\#0C0907\]\/10,
+      .culture-cream-bg [class*="border-[#0C0907]/10"] {
+        border-color: rgba(255, 255, 255, 0.12) !important;
+      }
+
+      /* Card backgrounds inside cream-bg should be dark glass */
+      .culture-cream-bg .bg-white\/40,
+      .culture-cream-bg .bg-white\/50,
+      .culture-cream-bg .bg-white\/60,
+      .culture-cream-bg [class*="bg-white/40"],
+      .culture-cream-bg [class*="bg-white/50"],
+      .culture-cream-bg [class*="bg-white/60"] {
+        background-color: rgba(255, 255, 255, 0.02) !important;
+        backdrop-filter: blur(12px) !important;
+      }
+
+      /* Hover effects in cards */
+      .culture-cream-bg .shadow-\[0_8px_30px_rgb\(12\,9\,7\,0\.03\)\],
+      .culture-cream-bg [class*="shadow-"] {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5) !important;
+      }
 
       /* ── Typography Utilities ────────────────────────────────────── */
       .culture-text-hero {
@@ -174,25 +231,25 @@ export function CultureStyles() {
 
       /* ── Cream-background logo overrides ───────────────────────── */
       .cream-logos-mode .logo-img-dark {
-        filter: brightness(0.2);
-        opacity: 0.5;
+        filter: grayscale(1) invert(1) brightness(0.55);
+        opacity: 0.6;
         transition: filter 0.3s ease, opacity 0.3s ease;
         pointer-events: none;
         user-select: none;
       }
       .cream-logos-mode .logo-slot:hover .logo-img-dark {
-        filter: brightness(0.05);
-        opacity: 0.8;
+        filter: grayscale(1) invert(1) brightness(1.1);
+        opacity: 1;
       }
       .cream-logos-mode .logo-img-color {
-        filter: grayscale(1) brightness(0.5);
-        opacity: 0.5;
+        filter: grayscale(1) brightness(1.1);
+        opacity: 0.65;
         transition: filter 0.3s ease, opacity 0.3s ease;
         pointer-events: none;
         user-select: none;
       }
       .cream-logos-mode .logo-slot:hover .logo-img-color {
-        filter: grayscale(0) brightness(0.9);
+        filter: grayscale(0) brightness(1);
         opacity: 1;
       }
 
@@ -222,24 +279,24 @@ export function CultureStyles() {
           to bottom,
           transparent,
           transparent 2px,
-          rgba(0,0,0,0.03) 2px,
-          rgba(0,0,0,0.03) 4px
+          rgba(255,255,255,0.01) 2px,
+          rgba(255,255,255,0.01) 4px
         );
         pointer-events: none;
       }
 
       /* ── Section Transition Fade ────────────────────────────────── */
       .culture-section-fade-top {
-        background: linear-gradient(to bottom, #0C0907 0%, transparent 100%);
+        background: linear-gradient(to bottom, #000000 0%, transparent 100%);
       }
       .culture-section-fade-bottom {
-        background: linear-gradient(to top, #0C0907 0%, transparent 100%);
+        background: linear-gradient(to top, #000000 0%, transparent 100%);
       }
       .gradient-dark-to-cream {
-        background: linear-gradient(to bottom, #0C0907, #F5EDD8);
+        background: linear-gradient(to bottom, #000000, #050608);
       }
       .gradient-cream-to-dark {
-        background: linear-gradient(to bottom, #F5EDD8, #0C0907);
+        background: linear-gradient(to bottom, #050608, #000000);
       }
     `}</style>
   );

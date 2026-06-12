@@ -20,9 +20,9 @@
     --color-glory-blue-dark: #2a2950;
     --color-glory-gold: #ffd700;
     --color-glory-gold-dark: #cc9900;
-    --color-navy-dark: #0d1117;
-    --color-navy-mid: #1a1f3a;
-    --color-navy-light: #252b4a;
+    --color-navy-dark: #000000;
+    --color-navy-mid: #050608;
+    --color-navy-light: #0d1117;
     --color-parchment: #f5f0e8;
 
     /* Global emoji font fallback stack */

@@ -54,7 +54,7 @@ interface UniversitiesCopy {
 const copyEn: UniversitiesCopy = {
   breadcrumb: "Universities",
   heroTagline: "THE WORLD'S UNIVERSITY",
-  heroTitle: "7 of the Top 10 Universities are American",
+  heroTitle: "Top American Universities",
   heroSubtitle: "A competitive, market-driven ecosystem combining massive private endowments, federal research grants, and a culture that rewards output over seniority.",
   thesisTitle: "Higher Education: The World's University",
   thesisParagraph1: "Of the top 20 universities in every major global ranking — QS, Times Higher Education, the Shanghai ARWU — American institutions consistently occupy 15 to 17 spots. This is the direct product of a competitive, market-driven model that funds research through a combination of federal grants, massive private endowments, and tuition revenues, and rewards output over seniority.",
@@ -108,7 +108,7 @@ const copyEn: UniversitiesCopy = {
 const copyRo: UniversitiesCopy = {
   breadcrumb: "Universități",
   heroTagline: "UNIVERSITATEA LUMII",
-  heroTitle: "7 din Top 10 Universități sunt Americane",
+  heroTitle: "Universități de Elită",
   heroSubtitle: "Un ecosistem competitiv, bazat pe piață, care combină fonduri private masive, granturi federale de cercetare și o cultură a meritocrației.",
   thesisTitle: "Învățământul Superior: Universitatea Lumii",
   thesisParagraph1: "Din primele 20 de universități în fiecare clasament global major — QS, Times Higher Education, Shanghai ARWU — instituțiile americane ocupă în mod constant între 15 și 17 locuri. Acesta este produsul direct al unui model competitiv, orientat spre piață, care finanțează cercetarea printr-o combinație de granturi federale, donații private masive și taxe de școlarizare.",
