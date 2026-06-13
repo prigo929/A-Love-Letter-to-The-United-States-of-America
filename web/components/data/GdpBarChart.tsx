@@ -14,6 +14,7 @@
 // - The actual numbers come from the page or data file that calls it
 // - `valueSuffix` lets the same chart work for trillions ("T") or thousands ("K")
 
+import { useRef } from "react";
 import {
   BarChart,
   Bar,
@@ -25,7 +26,7 @@ import {
   Cell,
   LabelList,
 } from "recharts";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { CHART_GOLD, CHART_NAVY } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
@@ -85,7 +86,7 @@ function CustomLabel(props: {
   index?: number;
   valueSuffix?: string;
 }) {
-  const { x = 0, y = 0, width = 0, value = 0, valueSuffix = "T" } = props;
+  const { x = 0, y = 0, width = 0, value = 0, index = 0, valueSuffix = "T" } = props;
   return (
     <text
       x={x + width / 2}
@@ -96,6 +97,11 @@ function CustomLabel(props: {
       fontWeight={700}
       fontFamily="var(--font-hero)"
       letterSpacing="0.05em"
+      style={{
+        opacity: 0,
+        animation: "chartLabelFadeIn 0.5s ease-out forwards",
+        animationDelay: `${0.4 + index * 0.05}s`, // Fade in starts halfway through the bar rising (900ms total)
+      }}
     >
       ${value.toFixed(1)}
       {valueSuffix}
@@ -120,6 +126,9 @@ export function GdpBarChart({
         : valueLabel;
   const sourceLabel = locale === "ro" ? "Sursă:" : "Source:";
 
+  const chartRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(chartRef, { once: true, margin: "-60px" });
+
   return (
     <motion.div
       variants={fadeUp}
@@ -128,6 +137,19 @@ export function GdpBarChart({
       viewport={{ once: true, margin: "-60px" }}
       className="w-full"
     >
+      <style jsx global>{`
+        @keyframes chartLabelFadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(4px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+
       {(title || subtitle) && (
         <div className="mb-6">
           {title && (
@@ -142,65 +164,76 @@ export function GdpBarChart({
       )}
 
       <LazyChart height={400}>
-        <div className="h-80 w-full md:h-96">
-          <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
-            <BarChart
-              data={data}
-              margin={{ top: 30, right: 20, left: 10, bottom: 60 }}
-              barCategoryGap="30%"
-            >
-              <CartesianGrid
-                strokeDasharray="3 3"
-                stroke="rgba(255,255,255,0.07)"
-                vertical={false}
-              />
-              <XAxis
-                dataKey="country"
-                tick={{
-                  fill: "rgba(255,255,255,0.7)",
-                  fontSize: 13,
-                  fontFamily: "var(--font-body)",
-                  fontWeight: 500,
-                }}
-                axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
-                tickLine={false}
-                angle={-35}
-                textAnchor="end"
-                interval={0}
-                height={80}
-              />
-              <YAxis
-                tick={{
-                  fill: "rgba(255,255,255,0.5)",
-                  fontSize: 13,
-                  fontFamily: "var(--font-body)",
-                  fontWeight: 500,
-                }}
-                axisLine={false}
-                tickLine={false}
-                tickFormatter={(v) => `$${v}${valueSuffix}`}
-              />
-              <Tooltip
-                content={
-                  <CustomTooltip
-                    valueSuffix={valueSuffix}
-                    valueLabel={localizedValueLabel}
-                  />
-                }
-                cursor={{ fill: "rgba(255,255,255,0.04)" }}
-              />
-              <Bar dataKey="gdp" radius={[6, 6, 0, 0]} maxBarSize={60} isAnimationActive={true}>
-                {data.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={entry.highlight ? CHART_GOLD : CHART_NAVY}
-                    opacity={entry.highlight ? 1 : 0.75}
-                  />
-                ))}
-                <LabelList content={<CustomLabel valueSuffix={valueSuffix} />} />
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
+        <div ref={chartRef} className="h-80 w-full md:h-96">
+          {inView ? (
+            <ResponsiveContainer width="100%" height="100%" minWidth={0} debounce={100}>
+              <BarChart
+                data={data}
+                margin={{ top: 30, right: 20, left: 10, bottom: 60 }}
+                barCategoryGap="30%"
+              >
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke="rgba(255,255,255,0.07)"
+                  vertical={false}
+                />
+                <XAxis
+                  dataKey="country"
+                  tick={{
+                    fill: "rgba(255,255,255,0.7)",
+                    fontSize: 13,
+                    fontFamily: "var(--font-body)",
+                    fontWeight: 500,
+                  }}
+                  axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
+                  tickLine={false}
+                  angle={-35}
+                  textAnchor="end"
+                  interval={0}
+                  height={80}
+                />
+                <YAxis
+                  tick={{
+                    fill: "rgba(255,255,255,0.5)",
+                    fontSize: 13,
+                    fontFamily: "var(--font-body)",
+                    fontWeight: 500,
+                  }}
+                  axisLine={false}
+                  tickLine={false}
+                  tickFormatter={(v) => `$${v}${valueSuffix}`}
+                />
+                <Tooltip
+                  content={
+                    <CustomTooltip
+                      valueSuffix={valueSuffix}
+                      valueLabel={localizedValueLabel}
+                    />
+                  }
+                  cursor={{ fill: "rgba(255,255,255,0.04)" }}
+                />
+                <Bar
+                  dataKey="gdp"
+                  radius={[6, 6, 0, 0]}
+                  maxBarSize={60}
+                  isAnimationActive={true}
+                  animationDuration={900}
+                  animationEasing="ease-out"
+                >
+                  {data.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={entry.highlight ? CHART_GOLD : CHART_NAVY}
+                      opacity={entry.highlight ? 1 : 0.75}
+                    />
+                  ))}
+                  <LabelList content={<CustomLabel valueSuffix={valueSuffix} />} />
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          ) : (
+            <div className="h-full w-full" />
+          )}
         </div>
       </LazyChart>
 

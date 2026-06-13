@@ -57,6 +57,30 @@ function ChartTooltip({ active, payload, label, unit }: ChartTooltipProps) {
   );
 }
 
+function CustomTeaserLabel(props: any) {
+  const { x = 0, y = 0, width = 0, value = 0, index = 0, unit = "" } = props;
+  const formatted = unit ? `${value}${unit}` : (value >= 1000 ? `${(value / 1000).toFixed(1)}k` : String(value));
+  
+  return (
+    <text
+      x={x + width / 2}
+      y={y - 8}
+      fill="rgba(255,255,255,0.65)"
+      fontSize={10}
+      fontFamily="Inter"
+      fontWeight={500}
+      textAnchor="middle"
+      style={{
+        opacity: 0,
+        animation: "chartLabelFadeIn 0.5s ease-out forwards",
+        animationDelay: `${0.4 + index * 0.05}s`, // Fade in starts halfway through the bar rising (900ms total)
+      }}
+    >
+      {formatted}
+    </text>
+  );
+}
+
 interface ChartCardProps {
   title: string;
   subtitle: string;
@@ -87,6 +111,19 @@ function ChartCard({
       variants={fadeUp}
       className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-navy-light"
     >
+      <style jsx global>{`
+        @keyframes chartLabelFadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(4px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+
       <div className="border-b border-white/8 px-6 pb-4 pt-6">
         <p className="mb-1 font-body text-xs font-semibold uppercase tracking-widest text-glory-gold">
           {subtitle}
@@ -106,62 +143,55 @@ function ChartCard({
 
       <div className="min-h-[200px] flex-1 px-2 pb-4">
         {/* Recharts handles the responsive sizing inside this container. */}
-        <ResponsiveContainer width="100%" height={200} debounce={100}>
-          <BarChart
-            data={data}
-            margin={{ top: 16, right: 16, bottom: 8, left: 8 }}
-            barCategoryGap="25%"
-          >
-            <XAxis
-              dataKey="country"
-              interval={0}
-              padding={{ left: 10, right: 10 }}
-              tick={{
-                fill: "rgba(255,255,255,0.45)",
-                fontSize: 11,
-                fontFamily: "Inter",
-              }}
-              axisLine={false}
-              tickLine={false}
-            />
-            <YAxis hide />
-            <Tooltip
-              content={<ChartTooltip unit={unit} />}
-              cursor={{ fill: "rgba(255,255,255,0.04)" }}
-            />
-            <Bar
-              dataKey="value"
-              radius={[4, 4, 0, 0]}
-              isAnimationActive={inView}
-              animationBegin={index * 120}
-              animationDuration={900}
-              animationEasing="ease-out"
+        {inView ? (
+          <ResponsiveContainer width="100%" height={200} debounce={100}>
+            <BarChart
+              data={data}
+              margin={{ top: 16, right: 16, bottom: 8, left: 8 }}
+              barCategoryGap="25%"
             >
-              {/* One Cell per bar lets us color the USA differently from the rest. */}
-              {data.map((entry) => (
-                <Cell
-                  key={entry.country}
-                  fill={entry.isUSA ? COLORS.gloryGold : "rgba(60,59,110,0.7)"}
-                />
-              ))}
-              <LabelList
-                dataKey="value"
-                position="top"
-                style={{
-                  fill: "rgba(255,255,255,0.4)",
-                  fontSize: 10,
+              <XAxis
+                dataKey="country"
+                interval={0}
+                padding={{ left: 10, right: 10 }}
+                tick={{
+                  fill: "rgba(255,255,255,0.45)",
+                  fontSize: 11,
                   fontFamily: "Inter",
                 }}
-                formatter={(value: any) => {
-                  if (unit) return `${value}${unit}`;
-                  return value >= 1000
-                    ? `${(value / 1000).toFixed(1)}k`
-                    : String(value);
-                }}
+                axisLine={false}
+                tickLine={false}
               />
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
+              <YAxis hide />
+              <Tooltip
+                content={<ChartTooltip unit={unit} />}
+                cursor={{ fill: "rgba(255,255,255,0.04)" }}
+              />
+              <Bar
+                dataKey="value"
+                radius={[4, 4, 0, 0]}
+                isAnimationActive={true}
+                animationBegin={index * 120}
+                animationDuration={900}
+                animationEasing="ease-out"
+              >
+                {/* One Cell per bar lets us color the USA differently from the rest. */}
+                {data.map((entry) => (
+                  <Cell
+                    key={entry.country}
+                    fill={entry.isUSA ? COLORS.gloryGold : "rgba(60,59,110,0.7)"}
+                  />
+                ))}
+                <LabelList
+                  dataKey="value"
+                  content={<CustomTeaserLabel unit={unit} />}
+                />
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        ) : (
+          <div className="h-[200px] w-full" />
+        )}
       </div>
 
       <p className="px-6 pb-4 font-body text-xs text-white/30">
@@ -170,6 +200,7 @@ function ChartCard({
     </motion.div>
   );
 }
+
 
 export function DataTeaserSection() {
   const { locale } = useLanguage();
