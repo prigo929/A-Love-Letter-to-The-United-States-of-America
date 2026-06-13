@@ -56,10 +56,12 @@ const nextConfig: NextConfig = {
     // Cache optimized images aggressively so repeat visits and route
     // transitions do not keep paying the transform cost.
     minimumCacheTTL: 60 * 60 * 24 * 365,
+    // Limit Next.js image disk cache size to 500MB to avoid ballooning cache folders
+    maximumDiskCacheSize: 5000000000,
     // Device breakpoints for responsive images. Keep the set useful, but avoid
     // generating unnecessary ultra-large variants for most screens.
-    deviceSizes: [640, 750, 828, 1080, 1200, 1536, 1920, 2560],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    deviceSizes: [640, 1080, 1920, 2560],
+    imageSizes: [32, 64, 128, 256, 384],
   },
 
   // ─── Experimental ───────────────────────────────────────────────
@@ -67,6 +69,9 @@ const nextConfig: NextConfig = {
     // The Electoral Archive generates a massive biennial dataset (1788-2024).
     // The sequential initialization in electoral-data.ts keeps this well under limits.
     serverSourceMaps: false,
+    // Optimize memory during compilation
+    webpackMemoryOptimizations: true,
+    optimizePackageImports: ["lucide-react", "framer-motion", "recharts", "zod", "zustand"],
   },
 
   // ─── Turbopack ───────────────────────────────────────────────────
