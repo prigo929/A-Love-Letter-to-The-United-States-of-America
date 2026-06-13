@@ -216,10 +216,7 @@ export function NatureHeroCrossfade({ children }: { children: React.ReactNode })
         </motion.p>
       </AnimatePresence>
 
-      {/* Breathing scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3">
-        <div className="h-8 w-px bg-white/20 nat-breathe" />
-      </div>
+
 
       {/* Content overlay */}
       <div className="relative z-20 flex h-screen flex-col justify-end pb-16 pt-32 md:pb-24 md:pt-48">
@@ -575,10 +572,7 @@ export function NatureSubPageHero({ imageSrc, imageAlt, label, children }: {
         </p>
       )}
 
-      {/* Breathing scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3">
-        <div className="h-8 w-px bg-white/20 nat-breathe" />
-      </div>
+
 
       {/* Content overlay */}
       <div className="relative z-20 flex h-screen flex-col justify-end pb-16 pt-32 md:pb-24 md:pt-48">
