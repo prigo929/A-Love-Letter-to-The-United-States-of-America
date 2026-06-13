@@ -26,7 +26,7 @@ export function MacroStyles() {
   return (
     <style jsx global>{`
       :root {
-        --macro-bg: #030405; /* Absolute deep void */
+        --macro-bg: #000000; /* Absolute deep void */
         --macro-text: #F0F2F5;
         --macro-muted: rgba(240, 242, 245, 0.4);
         --macro-accent: #E8B923; /* Glory gold */
@@ -298,7 +298,7 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
   }, [videoSrc]);
 
   return (
-    <div ref={ref} className="relative min-h-[100dvh] w-full overflow-hidden bg-[#030405] pt-32 pb-16 flex flex-col justify-center">
+    <div ref={ref} className="relative min-h-[100dvh] w-full overflow-hidden bg-[#000000] pt-32 pb-16 flex flex-col justify-center">
       <motion.div style={{ y, scale, opacity: 0.6 }} className="absolute inset-0">
         {videoSrc ? (
           <video
@@ -326,8 +326,8 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
           />
         ) : null}
       </motion.div>
-      <div className="absolute inset-0 bg-linear-to-t from-[#030405] via-transparent to-[#030405] pointer-events-none z-[1]" />
-      <div className="absolute inset-0 bg-linear-to-b from-[#030405] via-transparent to-[#030405] pointer-events-none opacity-80 z-[1]" />
+      <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-[#000000] pointer-events-none z-[1]" />
+      <div className="absolute inset-0 bg-linear-to-b from-[#000000] via-transparent to-[#000000] pointer-events-none opacity-80 z-[1]" />
       <div className="absolute inset-0 pointer-events-none z-[1]" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(3,4,5,0.7) 100%)' }} />
 
       <motion.div
@@ -504,7 +504,7 @@ export function InfrastructureBand({ imageSrc, imageAlt, children }: { imageSrc:
   const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
 
   return (
-    <div ref={ref} className="relative w-full my-32 overflow-hidden bg-[#030405]">
+    <div ref={ref} className="relative w-full my-32 overflow-hidden bg-[#000000]">
       <motion.div style={{ y }} className="absolute inset-0 h-[130%] top-[-15%]">
         <Image
           src={imageSrc}
@@ -513,8 +513,8 @@ export function InfrastructureBand({ imageSrc, imageAlt, children }: { imageSrc:
           className="object-cover opacity-50 grayscale-[0.3]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-[#030405] via-transparent to-[#030405] pointer-events-none" />
-        <div className="absolute inset-0 bg-linear-to-b from-[#030405] via-transparent to-[#030405] pointer-events-none opacity-80" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-[#000000] pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#000000] via-transparent to-[#000000] pointer-events-none opacity-80" />
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(3,4,5,0.7) 100%)' }} />
       </motion.div>
       <div className="relative z-10 w-full macro-blur-mask p-12 md:p-24 lg:p-32 mt-64">

@@ -129,7 +129,7 @@ export default async function Inventions1890To1945Page() {
         ]}
       />
 
-      <div className="bg-[#030405] relative z-10 pb-32 font-body text-white">
+      <div className="bg-[#000000] relative z-10 pb-32 font-body text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 mb-8">
           <Breadcrumb items={[{ label: copy.breadcrumbParent, href: "/science" }, { label: copy.breadcrumbPage }]} />
         </div>

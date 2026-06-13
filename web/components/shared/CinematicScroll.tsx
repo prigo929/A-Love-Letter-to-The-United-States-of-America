@@ -96,7 +96,7 @@ export function ScrollytellPin({
           placeholder="blur"
           blurDataURL={BLUR_PLACEHOLDER}
         />
-        <div className="absolute inset-0 bg-linear-to-t from-[#030405]/70 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#000000]/70 via-transparent to-transparent pointer-events-none" />
       </div>
       <div className={cn("flex flex-col gap-12", reverse && "lg:order-1")}>
         {children}

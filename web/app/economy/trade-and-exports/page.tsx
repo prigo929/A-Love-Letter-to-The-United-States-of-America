@@ -499,7 +499,7 @@ export default async function TradeAndExportsPage() {
       />
 
       {/* Main Content */}
-      <div className="bg-[#030405] relative z-10 pb-32 pt-16">
+      <div className="bg-[#000000] relative z-10 pb-32 pt-16">
         <div className="mx-auto max-w-[1600px] px-6 md:px-12 mb-24">
           <Breadcrumb
             items={[

@@ -332,7 +332,7 @@ export default async function SmartphonesPage() {
         videoSrc="/videos/library/Technology/Introducing iPhone 17 Pro | Apple.mp4"
       />
 
-      <div className="bg-[#030405] relative z-10 pb-32 pt-16 font-body text-white">
+      <div className="bg-[#000000] relative z-10 pb-32 pt-16 font-body text-white">
         {/* Breadcrumbs */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
           <Breadcrumb
@@ -526,7 +526,7 @@ export default async function SmartphonesPage() {
                   >
                     <source src={item.videoSrc} type="video/mp4" />
                   </video>
-                  <div className="absolute inset-0 bg-linear-to-t from-[#030405] via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-transparent" />
                   <span className="absolute top-4 left-4 text-[10px] font-mono text-[#E8B923] bg-black/60 backdrop-blur-sm border border-[#E8B923]/25 px-2.5 py-0.5 rounded uppercase tracking-wider">
                     {item.tag}
                   </span>
@@ -612,7 +612,7 @@ export default async function SmartphonesPage() {
                     alt={item.title}
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-[#030405] via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-transparent" />
                 </div>
                 <div className="p-8 flex-1 flex flex-col justify-between bg-black/20">
                   <div>

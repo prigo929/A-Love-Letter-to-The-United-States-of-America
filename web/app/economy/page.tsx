@@ -321,7 +321,7 @@ export default async function EconomyPage() {
       />
 
       {/* ── Main Content — Full-width Macro-Editorial Flow ─────────────── */}
-      <main className="relative bg-[#030405] pb-32">
+      <main className="relative bg-[#000000] pb-32">
         {/* Breadcrumb */}
         <div className="mx-auto max-w-[1600px] px-6 md:px-12 py-12">
           <Breadcrumb items={[{ label: copy.breadcrumb }]} />
@@ -485,7 +485,7 @@ export default async function EconomyPage() {
             </div>
             
             {/* S&P 500 Chart - Borderless on top of cinematic blur */}
-            <div className="bg-[#030405]/50 backdrop-blur-md p-8 border border-white/10">
+            <div className="bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
               <SP500Chart
                 data={SP500_HISTORY}
                 title={copy.capitalChartTitle}
@@ -626,7 +626,7 @@ export default async function EconomyPage() {
             </div>
           </div>
 
-          <div className="my-24 bg-[#030405]/50 backdrop-blur-md p-8 border border-white/10">
+          <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
             <DollarReserveChart
               data={DOLLAR_RESERVE_SHARE}
               title={copy.dollarChartTitle}
@@ -770,7 +770,7 @@ export default async function EconomyPage() {
                     placeholder="blur"
                     blurDataURL={BLUR_PLACEHOLDER}
                   />
-                  <span className="absolute right-4 top-4 bg-[#E8B923] text-[#030405] font-macro-mono text-[10px] uppercase tracking-widest px-3 py-1 font-bold">
+                  <span className="absolute right-4 top-4 bg-[#E8B923] text-[#000000] font-macro-mono text-[10px] uppercase tracking-widest px-3 py-1 font-bold">
                     {page.badge}
                   </span>
                 </div>

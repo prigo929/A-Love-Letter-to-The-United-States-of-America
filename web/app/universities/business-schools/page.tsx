@@ -148,7 +148,7 @@ export default async function BusinessSchoolsPage() {
         ]}
       />
 
-      <div className="bg-[#030405] relative z-10 pb-32 pt-16 font-body text-white">
+      <div className="bg-[#000000] relative z-10 pb-32 pt-16 font-body text-white">
         {/* Breadcrumbs */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
           <Breadcrumb

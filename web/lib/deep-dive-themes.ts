@@ -7,7 +7,7 @@ export interface DeepDiveTheme {
 
 export const DEEP_DIVE_THEMES = {
   economy: {
-    bg: "#030405",
+    bg: "#000000",
     accent: "#E8B923",
     label: "IN DEPTH",
     labelRo: "ÎN DETALIU",
@@ -37,7 +37,7 @@ export const DEEP_DIVE_THEMES = {
     labelRo: "ÎN DETALIU",
   },
   "quality-of-life": {
-    bg: "#030405",
+    bg: "#000000",
     accent: "#E8B923",
     label: "IN DEPTH",
     labelRo: "ÎN DETALIU",
@@ -55,7 +55,7 @@ export const DEEP_DIVE_THEMES = {
     labelRo: "ÎN DETALIU",
   },
   innovation: {
-    bg: "#030405",
+    bg: "#000000",
     accent: "#E8B923",
     label: "IN DEPTH",
     labelRo: "ÎN DETALIU",

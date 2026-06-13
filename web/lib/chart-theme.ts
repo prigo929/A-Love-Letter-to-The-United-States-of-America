@@ -27,4 +27,4 @@ export const CHART_TICK_MUTED = {
 
 // Tooltip container — keep chart popups consistent with the void aesthetic.
 export const CHART_TOOLTIP_CLASS =
-  "rounded-xl border border-white/15 bg-[#030405]/95 px-4 py-3 shadow-2xl backdrop-blur-sm";
+  "rounded-xl border border-white/15 bg-[#000000]/95 px-4 py-3 shadow-2xl backdrop-blur-sm";

@@ -237,7 +237,7 @@ export default async function InternetHistoryPage() {
         videoSrc="/videos/library/Technology/Fiber Optics, light, trails video.mp4"
       />
 
-      <div className="bg-[#030405] relative z-10 pb-32 pt-16 font-body text-white">
+      <div className="bg-[#000000] relative z-10 pb-32 pt-16 font-body text-white">
         {/* Breadcrumbs */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
           <Breadcrumb
@@ -442,7 +442,7 @@ export default async function InternetHistoryPage() {
                     alt={item.title}
                     className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-90 transition-all duration-700"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-[#030405] via-[#030405]/40 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-[#000000]/40 to-transparent" />
                   <span className="absolute top-4 left-4 text-[10px] font-mono text-[#E8B923] bg-black/60 backdrop-blur-sm border border-[#E8B923]/25 px-2.5 py-0.5 rounded uppercase tracking-wider">
                     {item.tag}
                   </span>

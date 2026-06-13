@@ -330,7 +330,7 @@ export default async function DollarDominancePage() {
       />
 
       {/* Main Content */}
-      <div className="bg-[#030405] relative z-10 pb-32 pt-16">
+      <div className="bg-[#000000] relative z-10 pb-32 pt-16">
         <div className="mx-auto max-w-[1600px] px-6 md:px-12 mb-24">
           <Breadcrumb
             items={[
@@ -358,7 +358,7 @@ export default async function DollarDominancePage() {
 
           {/* Reserve chart */}
           <section>
-            <div className="my-24 bg-[#030405]/50 backdrop-blur-md p-8 border border-white/10">
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
               <DollarReserveChart
                 data={DOLLAR_RESERVE_SHARE}
                 title={copy.chartTitle}

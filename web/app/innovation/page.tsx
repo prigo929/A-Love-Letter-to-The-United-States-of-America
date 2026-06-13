@@ -225,7 +225,7 @@ export default async function InnovationPage() {
         stats={copy.heroStats}
       />
 
-      <div className="bg-[#030405] relative z-10 pb-32 pt-16 font-body text-white">
+      <div className="bg-[#000000] relative z-10 pb-32 pt-16 font-body text-white">
         {/* Breadcrumb */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
           <Breadcrumb items={[{ label: copy.heroEyebrow }]} />
@@ -292,8 +292,8 @@ export default async function InnovationPage() {
                       alt={page.title}
                       className="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-85"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#030405] via-transparent to-transparent" />
-                    <span className="absolute right-4 top-4 bg-[#E8B923] text-[#030405] font-mono text-[9px] uppercase tracking-widest px-2.5 py-0.5 rounded font-bold">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-transparent" />
+                    <span className="absolute right-4 top-4 bg-[#E8B923] text-[#000000] font-mono text-[9px] uppercase tracking-widest px-2.5 py-0.5 rounded font-bold">
                       {page.badge}
                     </span>
                     <div className="absolute left-4 bottom-4 p-2 bg-black/40 backdrop-blur-md rounded-lg border border-white/10 text-[#E8B923]">

@@ -260,7 +260,7 @@ export default async function AiAndTechPage() {
         videoSrc="/videos/library/Technology/Nvidia AI cinematic.mp4"
       />
 
-      <div className="bg-[#030405] relative z-10 pb-32 pt-16 font-body text-white">
+      <div className="bg-[#000000] relative z-10 pb-32 pt-16 font-body text-white">
         {/* Breadcrumbs */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
           <Breadcrumb
@@ -535,7 +535,7 @@ export default async function AiAndTechPage() {
                     alt={item.title}
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-[#030405] via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-transparent" />
                 </div>
                 <div className="p-8 flex-1 flex flex-col justify-between bg-black/20">
                   <div>
