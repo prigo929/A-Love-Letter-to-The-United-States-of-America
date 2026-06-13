@@ -195,6 +195,8 @@ export function AskAmerica({ locale }: AskAmericaProps) {
       score: number;
     } | null = null;
 
+    const genericTopicWords = new Set(["united", "states", "america", "american", "the", "of", "to", "in", "and", "for"]);
+
     // 1. Search through the 52 Grokipedia deep-dives
     for (const [vertical, topics] of Object.entries(VERTICALS_THEMATIC_DATA)) {
       for (const topic of topics) {
@@ -202,8 +204,27 @@ export function AskAmerica({ locale }: AskAmericaProps) {
         const titleRo = topic.title.ro.toLowerCase();
         const idName = topic.id.toLowerCase().replace(/_/g, " ");
 
-        // Boost score if title or ID matches exactly in user text
-        const titleMatched = cleanText.includes(titleEn) || cleanText.includes(titleRo) || cleanText.includes(idName);
+        // Tokenise title/ID to find unique significant words
+        const titleWords = new Set(
+          `${titleEn} ${titleRo} ${idName}`
+            .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, " ")
+            .split(/\s+/)
+            .filter((word) => word.length > 2 && !genericTopicWords.has(word))
+        );
+
+        // Calculate matching fraction of title words against the query words
+        const matchedTitleWords = Array.from(titleWords).filter((w) =>
+          queryWords.some((qw) => w.startsWith(qw) || qw.startsWith(w))
+        );
+
+        const titleMatched = matchedTitleWords.length > 0;
+
+        // Title boost based on matching fraction of significant topic terms
+        let titleBoost = 0;
+        if (titleMatched) {
+          const fraction = titleWords.size > 0 ? matchedTitleWords.length / titleWords.size : 0.5;
+          titleBoost = 10.0 + 10.0 * fraction;
+        }
 
         for (const section of topic.sections) {
           const secHeading = isRo ? section.heading.ro : section.heading.en;
@@ -213,28 +234,43 @@ export function AskAmerica({ locale }: AskAmericaProps) {
               if (!paraText) continue;
 
               const paraLower = paraText.toLowerCase();
+              const paraWords = paraLower
+                .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, " ")
+                .split(/\s+/);
+
               let score = 0;
 
               for (const word of queryWords) {
-                if (paraLower.includes(word)) {
-                  score += 1;
+                const hasMatch = paraWords.some((pw) =>
+                  pw.length >= 3 && (pw.startsWith(word) || word.startsWith(pw))
+                );
+                if (hasMatch) {
+                  score += 1.0;
                 }
               }
 
-              // Give a strong preference if the user asked specifically about this article's topic
-              if (titleMatched) {
-                score += 3;
-              }
+              const totalScore = score + titleBoost;
 
-              // Save the best scoring paragraph match (minimum score of 1 match word or title matched)
-              if (score > 0 && (!bestMatch || score > bestMatch.score)) {
+              // Save the best scoring paragraph match (minimum base score of 1 match word, excluding title boost)
+              if (score > 0 && (!bestMatch || totalScore > bestMatch.score)) {
                 bestMatch = {
                   topic,
                   vertical,
                   sectionHeading: secHeading || (isRo ? topic.title.ro : topic.title.en),
                   paragraphText: paraText,
-                  score,
+                  score: totalScore,
                 };
+              } else if (score > 0 && bestMatch && totalScore === bestMatch.score) {
+                // Tie break by ID length (prefer shorter/more general parent topics)
+                if (topic.id.length < bestMatch.topic.id.length) {
+                  bestMatch = {
+                    topic,
+                    vertical,
+                    sectionHeading: secHeading || (isRo ? topic.title.ro : topic.title.en),
+                    paragraphText: paraText,
+                    score: totalScore,
+                  };
+                }
               }
             }
           }
