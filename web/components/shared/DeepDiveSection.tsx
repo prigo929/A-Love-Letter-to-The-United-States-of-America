@@ -51,7 +51,11 @@ export default function DeepDiveSection({
           setActiveId(matched.id);
           setOpenSections(new Set([0]));
           setTimeout(() => {
-            sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+            if (sectionRef.current) {
+              const yOffset = -90; // offset to clear sticky header
+              const y = sectionRef.current.getBoundingClientRect().top + window.scrollY + yOffset;
+              window.scrollTo({ top: y, behavior: "smooth" });
+            }
           }, 150);
         }
       }

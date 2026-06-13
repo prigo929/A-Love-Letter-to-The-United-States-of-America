@@ -21,6 +21,7 @@ export function renderTextWithLinks(text: string) {
       <Link
         key={match.index}
         href={linkHref}
+        scroll={false}
         className="text-[#E8B923] underline underline-offset-4 hover:text-white transition-colors font-medium"
       >
         {linkText}
