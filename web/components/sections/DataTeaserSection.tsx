@@ -72,8 +72,8 @@ function CustomTeaserLabel(props: any) {
       textAnchor="middle"
       style={{
         opacity: 0,
-        animation: "chartLabelFadeIn 0.5s ease-out forwards",
-        animationDelay: `${0.4 + index * 0.05}s`, // Fade in starts halfway through the bar rising (900ms total)
+        animation: "chartLabelFadeIn 0.8s ease-out forwards",
+        animationDelay: `${(index * 120) / 1000 + 0.1}s`, // Starts 100ms after the bar begins its stagger animation
       }}
     >
       {formatted}

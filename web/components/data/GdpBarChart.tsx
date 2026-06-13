@@ -99,8 +99,8 @@ function CustomLabel(props: {
       letterSpacing="0.05em"
       style={{
         opacity: 0,
-        animation: "chartLabelFadeIn 0.5s ease-out forwards",
-        animationDelay: `${0.4 + index * 0.05}s`, // Fade in starts halfway through the bar rising (900ms total)
+        animation: "chartLabelFadeIn 0.8s ease-out forwards",
+        animationDelay: `${0.1 + index * 0.05}s`, // Starts 100ms after the bar begins rising
       }}
     >
       ${value.toFixed(1)}
