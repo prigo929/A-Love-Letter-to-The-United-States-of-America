@@ -224,10 +224,29 @@ export function AskAmerica({ locale }: AskAmericaProps) {
         if (titleMatched) {
           const fraction = titleWords.size > 0 ? matchedTitleWords.length / titleWords.size : 0.5;
           titleBoost = 10.0 + 10.0 * fraction;
+
+          // Subject Directness Boost: if topic represents exactly the single word queried
+          if (titleWords.size === 1) {
+            titleBoost += 10.0;
+          }
         }
 
         for (const section of topic.sections) {
           const secHeading = isRo ? section.heading.ro : section.heading.en;
+
+          // Introduction boost
+          let introBoost = 0.0;
+          const secHeadingLower = (secHeading || "").toLowerCase();
+          if (
+            secHeadingLower === "introduction" ||
+            secHeadingLower === "introducere" ||
+            secHeadingLower === "overview" ||
+            secHeadingLower === "prezentare generală" ||
+            secHeadingLower === "prezentare"
+          ) {
+            introBoost = 1.5;
+          }
+
           for (const sub of section.subsections) {
             for (const para of sub.paragraphs) {
               const paraText = isRo ? para.ro : para.en;
@@ -249,7 +268,7 @@ export function AskAmerica({ locale }: AskAmericaProps) {
                 }
               }
 
-              const totalScore = score + titleBoost;
+              const totalScore = score + titleBoost + introBoost;
 
               // Save the best scoring paragraph match (minimum base score of 1 match word, excluding title boost)
               if (score > 0 && (!bestMatch || totalScore > bestMatch.score)) {

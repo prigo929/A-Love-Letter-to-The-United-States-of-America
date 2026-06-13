@@ -32058,3 +32058,69 @@ export const VERTICALS_THEMATIC_DATA: Record<string, ThematicTopic[]> = {
       ],
     },],
 };
+
+// Runtime filtering to keep the site entirely celebratory, patriotic, and positive, removing any negative/controversial topics, sections, or subsections.
+(function filterCelebratoryData() {
+  const badTopicKeywords = ["regime_change", "poverty", "crime", "imperialism"];
+
+  const badHeadingKeywordsEn = [
+    "controvers", "challeng", "critic", "debat", "scandal", "limit", "ethical", 
+    "failur", "bad take", "risk", "vulnerabilit", "shortage", "threat", 
+    "insurrect", "decline", "loss", "strain", "tension", "abuse", "greenwash",
+    "weakness", "conflict", "surrender", "uprising", "overuse", "misconduct",
+    "underinvestment", "exclusion", "hypocrisy", "profiteer", "sourcing",
+    "emissions", "strike", "protest", "boycott", "bias", "monopoly", "antitrust",
+    "scrutiny", "exploit", "inequality", "propaganda"
+  ];
+
+  const badHeadingKeywordsRo = [
+    "controvers", "provocări", "critic", "dezbater", "scandal", "limit", "etic", 
+    "eșec", "risc", "vulnerabilit", "deficit", "ameninț", "insurecț", 
+    "declin", "pierder", "tensiun", "abuz", "slăbiciun", "conflict",
+    "capitulare", "răscoală", "suprasolicitare", "abatere", "subinvestiții",
+    "excludere", "ipocrizie", "profit", "sursă", "emisii", "grevă",
+    "protest", "boicot", "părtinire", "monopol", "antitrust", "control",
+    "exploat", "inegalitat", "propagand"
+  ];
+
+  // Helper to check if text contains any forbidden words
+  const isForbiddenText = (text: string): boolean => {
+    if (!text) return false;
+    const clean = text.toLowerCase();
+    return badHeadingKeywordsEn.some(k => clean.includes(k)) || 
+           badHeadingKeywordsRo.some(k => clean.includes(k));
+  };
+
+  for (const vertical in VERTICALS_THEMATIC_DATA) {
+    if (!Object.prototype.hasOwnProperty.call(VERTICALS_THEMATIC_DATA, vertical)) continue;
+
+    // 1. Filter out controversial topics entirely
+    let topics = VERTICALS_THEMATIC_DATA[vertical];
+    topics = topics.filter(topic => {
+      const idLower = topic.id.toLowerCase();
+      const isBadTopic = badTopicKeywords.some(kw => idLower.includes(kw));
+      return !isBadTopic;
+    });
+
+    // 2. Filter sections and subsections in the remaining topics
+    topics.forEach(topic => {
+      // Filter out sections
+      topic.sections = topic.sections.filter(section => {
+        const hEn = section.heading.en || "";
+        const hRo = section.heading.ro || "";
+        return !isForbiddenText(hEn) && !isForbiddenText(hRo);
+      });
+
+      // Filter subsections
+      topic.sections.forEach(section => {
+        section.subsections = section.subsections.filter(sub => {
+          const hEn = sub.heading.en || "";
+          const hRo = sub.heading.ro || "";
+          return !isForbiddenText(hEn) && !isForbiddenText(hRo);
+        });
+      });
+    });
+
+    VERTICALS_THEMATIC_DATA[vertical] = topics;
+  }
+})();
