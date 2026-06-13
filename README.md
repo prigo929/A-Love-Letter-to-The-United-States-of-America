@@ -203,7 +203,7 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 | **🌎 Global Leadership** | **"Indispensable Nation Roles"**<br>• Treaty maps and reserve indexes | • **NATO Alliance**: Fully operational NATO collective security details and force multiplier breakdowns. | • `/global-leadership`<br>• `/global-leadership/nato`<br>• `/global-leadership/dollar-as-reserve`<br>• `/global-leadership/soft-power`<br>• `/global-leadership/un` |
 | **🎭 Culture & Life** | **"Warm Editorial Flow"**<br>• Alternating light-dark cream panels<br>• Dynamic brand marquees<br>• Multi-media music & food grids | • **Soft Power Asymmetry**: Recharts soft power comparison indices, Hollywood distribution economics, and interactive archive vault. | • `/culture`<br>• `/culture/entertainment`<br>• `/culture/food-and-drinks`<br>• `/culture/fashion`<br>• `/culture/sports`<br>• `/culture/music-genres`<br>• `/culture/english-language`<br>• `/culture/companies-brands`<br>• `/culture/film-and-storytelling`<br>• `/culture/overview`<br>• `/quality-of-life` |
 | **🌱 Abundance & People** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Demographic & Resource Hooks**: Melding pot and energy production visual spots. | • `/natural-resources`<br>• `/immigration-demographics` |
-| **📊 Data & Media** | **"Editorial Dark"**<br>• Full-bleed masonry / mosaic gallery<br>• Category filter strip with animated transitions<br>• Tactical SVG map with heatmap overlays | • **Cinematic Photo Gallery** (`/gallery`): 210-image masonry archive spanning all site verticals, with category tabs, lightbox zoom, and full bilingual copy.<br>• **U.S. Map Explorer** (`/explorer`): Interactive 50-state SVG map with GDP/population/statehood heatmaps, per-state data panels, search, regional filters, and per-state regional chronicle copy.<br>• **Data Fact Sheet** (`/data`): Curated empirical reference database. | • `/data`<br>• `/gallery`<br>• `/explorer` |
+| **📊 Data & Media** | **"Editorial Dark"**<br>• Full-bleed masonry / mosaic gallery<br>• Category filter strip with animated transitions<br>• Tactical SVG map with heatmap overlays | • **Cinematic Photo Gallery** (`/gallery`): 520+-image masonry archive spanning all site verticals, with category tabs, lightbox zoom, and full bilingual copy.<br>• **U.S. Map Explorer** (`/explorer`): Interactive 50-state SVG map with GDP/population/statehood heatmaps, per-state data panels, search, regional filters, and per-state regional chronicle copy.<br>• **Data Fact Sheet** (`/data`): Curated empirical reference database. | • `/data`<br>• `/gallery`<br>• `/explorer` |
 | **🎮 Interactive Features** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Civic Tools Navigation**: Connects interactive components. | • `/interactive` |
 
 ## 🗺️ What Is Built
@@ -426,7 +426,7 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 
 - `/data` — Curated empirical reference database
 - `/gallery` — **Cinematic Visual Archive** (Fully Operational):
-  - 210-image masonry gallery spanning all site verticals: Landscapes, Cities, Military, Space Force, Navy, Air Force, Global Bases, Coast Guard, and more
+  - 520+-image masonry gallery spanning all site verticals: Landscapes, Cities, Military, Space Force, Navy, Air Force, Global Bases, Coast Guard, and more
   - Category filter strip (All / Landscapes / Cities / Military / Space / Economy / Science / Culture)
   - Masonry / mosaic responsive layout with Framer Motion animated transitions
   - Full-screen lightbox with image title, location, and tone metadata
@@ -708,12 +708,20 @@ When building or modifying charts (`components/data/`), they must remain fully r
 - **Angled Labels**: Always angle long X-axis label strings (e.g., `-30` or `-45` degrees) on mobile screens to prevent text overlap.
 - **Margins & Gutters**: Reserve plenty of padding (adjust the `margin` prop on `<ResponsiveContainer>` or `<BarChart>`) to avoid text truncation and label clipping.
 - **Highlighting**: Always color the United States bar/value in **Glory Gold** (`#F59E0B` or similar theme accent) to emphasize leadership visually.
+- **Lazy Mounting & Animation**: Heavy Recharts visualizations are wrapped in `components/ui/LazyChart.tsx`, which defers DOM mounting until the chart is near the viewport (≈50px ahead). The outer `motion.div` provides the smooth scroll-in (opacity + `y`); keep the bar's own `isAnimationActive` consistent with that intent so the grow animation isn't already finished before the user scrolls to it.
 
 ### 7. Mobile Header Alignment & Wrapping Safeguards
 To prevent long cinematic titles (such as "ORBITAL DOMINANCE", "THE PRIME CONTRACTORS", or "THE ARSENAL OF DEMOCRACY") from breaking awkwardly into 3 rows or splitting words across lines on narrow mobile viewports, follow this standard pattern:
 - **Wrap in Block Spans**: Divide multi-row headings into separate `span` elements, each utilizing the `block` and `whitespace-nowrap` classes.
 - **Enforce Flex-Centering**: Always apply `flex flex-col items-center w-full text-center` directly to the `h2` or `h1` element itself to guarantee perfect centering on all browsers.
 - **Responsive Clamp Limits**: Keep the minimum clamp bounds of the header font scale flexible (e.g., `clamp(38px, 12vw, 180px)`) so the text automatically shrinks to fit the container width.
+
+### 8. Deep-Dive Thematic Archive & Content Policy (MANDATORY)
+The long-form "in-depth" reading archive (`lib/data/verticals-thematic-data.ts`, ~32k lines, bilingual `en`/`ro`, auto-generated) feeds the `DeepDiveSection` reader and powers the keyword search in `AskAmerica`.
+- **The data file is generated** — `DO NOT EDIT MANUALLY` except for the single content-policy hook wired at the very bottom.
+- **All consumers receive *filtered* data.** The raw object is declared as `RAW_VERTICALS_THEMATIC_DATA`; the exported `VERTICALS_THEMATIC_DATA` is `filterThematicData(RAW_…)` from `lib/data/thematic-content-filter.ts`.
+- **To remove or restore a section/topic**, edit the curated `DENYLISTED_HEADINGS` / `DENYLISTED_TOPIC_IDS` in `thematic-content-filter.ts` — **never** add a substring keyword scan. Matching is **exact** (case-insensitive, trimmed) on the English heading precisely to avoid the collisions a keyword filter causes (`"strain"` ⊂ "Constraints", `"loss"` ⊂ "Losses", `"critic"` ⊂ "Critical").
+- **Editorial intent**: the policy strips controversial / negative / left-leaning critiques *of America* while deliberately **keeping** conservative/originalist/free-market critiques, neutral historical conflicts, factual constitutional doctrine, and adversary wrongdoing. The filter is pure (no mutation) and the full denylist is visible in code so every removal is auditable in git.
 
 ---
 
@@ -1136,6 +1144,16 @@ Nature-specific visuals:
 
 - `components/nature/NatureAnimations.tsx`
 
+Culture hub (warm editorial system):
+
+- `components/culture/CulturePageComponents.tsx` — bento "table of contents" grid, thesis block, parallax dividers, soft-power matrix, viewport-quote moment, the **Sports & Fashion editorial strip**, and the **brand-logo marquee**. The marquee accepts `bgVariant="dark" | "cream"`: on cream sections it switches to `cream-logos-mode` (dark-on-cream filters), and all logos are normalized with `grayscale(1)` *before* `invert(1)` so colored SVGs render as neutral white at rest instead of inverting to the wrong hue.
+
+Deep-dive archive & search:
+
+- `components/shared/DeepDiveSection.tsx` — renders a vertical's filtered `VERTICALS_THEMATIC_DATA` topics.
+- `components/interactive/AskAmerica.tsx` — keyword/token search with title + introduction ranking boosts over the same archive.
+- `lib/data/thematic-content-filter.ts` — the curated, auditable content policy (see Guardrail #8).
+
 ## How Do I Change X?
 
 This is the practical operator section.
@@ -1163,6 +1181,22 @@ Edit `lib/data/nature-data.ts`
 ### Change constitution data, historical checks, or policy settings
 
 Edit `lib/data/constitution-data.ts` or `lib/data/federalism-data.ts`
+
+### Change culture hub content, subpage cards, or brand-marquee logos
+
+Edit `lib/data/culture-data.ts` (stats, thesis, subpages, `BRAND_LOGOS_ROW_1/2`). The `/culture/fashion` and `/culture/sports` subpages are surfaced on the hub via the `CultureSportsFashionStrip` in `app/culture/page.tsx`.
+
+### Change deep-dive in-depth article content
+
+Edit `lib/data/verticals-thematic-data.ts` (generated; see Guardrail #8). Note all consumers read the **filtered** export.
+
+### Remove or restore controversial / negative deep-dive sections
+
+Edit the `DENYLISTED_HEADINGS` / `DENYLISTED_TOPIC_IDS` lists in `lib/data/thematic-content-filter.ts` — exact heading match, no keyword scans.
+
+### Change gallery images or category mapping
+
+Add the import + entry in `lib/data/gallery-assets.ts` and adjust folder→category routing in `getCategory()` inside `lib/data/gallery.ts`. (Filenames containing apostrophes/quotes cannot be webpack-imported — rename them first.)
 
 ### Change header navigation or submenu structure
 
@@ -1486,6 +1520,7 @@ This section is for future AI-assisted edits. The goal is to explain how the cod
 - **Always** run `npm run type-check` after making changes to catch import or type mismatches
 - Use named imports for all layout components
 - Use `as const` on motion transition ease arrays to satisfy strict Framer Motion types
+- Never reintroduce a substring keyword scan over the deep-dive archive; curate exact headings in `lib/data/thematic-content-filter.ts` (Guardrail #8)
 
 ### Where AI Should Start
 
@@ -1505,6 +1540,9 @@ This section is for future AI-assisted edits. The goal is to explain how the cod
 | Base images (global bases) | `SITE_IMAGES.globalBases` in `lib/site-images.ts` |
 | Gallery images & categories | `lib/data/gallery.ts` + `lib/data/gallery-assets.ts` |
 | Gallery layout & lightbox | `components/gallery/GalleryExperience.tsx` |
+| Culture hub & brand marquee | `lib/data/culture-data.ts` + `components/culture/CulturePageComponents.tsx` |
+| Deep-dive article content | `lib/data/verticals-thematic-data.ts` (filtered export) |
+| Deep-dive content policy / removing negative sections | `lib/data/thematic-content-filter.ts` |
 | Explorer map & state data | `components/explorer/MapExplorerClient.tsx` |
 | Constitution content | `lib/data/constitution-data.ts`, `lib/data/federalism-data.ts` |
 | Constitution interactions | `components/constitution/*` |
@@ -1682,7 +1720,7 @@ If Vercel fails on static image imports:
 - 🎛️ **Policy Sliders (Federalism)**: A multidimensional scoring engine matching fiscal and regulatory sliders directly to 50 states.
 - 🎥 **Video-Backed STATES Title**: Cinematic text rendering in `StatesVideoTitle.tsx` showing active landscapes in the word masks.
 - 🌍 **Planetary Footprint (Global Bases)**: 23-installation intelligence brief with looping Earth-pixels video hero, SVG world map, high-fidelity base images, dossier drawers, logistics backbone, and alliance architecture.
-- 🖼️ **Cinematic Gallery Archive**: 210-image masonry gallery with category filtering, Framer Motion transitions, and full-screen lightbox — spanning all site verticals.
+- 🖼️ **Cinematic Gallery Archive**: 520+-image masonry gallery with category filtering, Framer Motion transitions, and full-screen lightbox — spanning all site verticals.
 - 🗺️ **U.S. Map Explorer**: Interactive 50-state SVG map with GDP/population/statehood heatmaps, per-state panels, search, regional filters, and state chronicles.
 - 🛡️ **Intelligence Community Exhibit**: CIA/NSA/NRO/NGA/DIA agency dossiers, Five Eyes geometry, discipline panels, and classified program showcase.
 - 🔄 **Romanian state-parity**: Dynamic, compiled JSON data arrays in `lib/data` using active locale getters to secure 100% server + client translation.
@@ -1711,9 +1749,10 @@ Strategic milestones for the next phase of development:
 | **Military — Space Force** | 🇺🇸 **FULLY OPERATIONAL** | GPS/SBIRS/AEHF platforms, SPOC/SSC/STARCOM consoles, orbital fleet comparison, future constellation stack |
 | **Military — Global Bases** | 🇺🇸 **FULLY OPERATIONAL** | Earth-pixels video hero, 23-base world map, dossier drawers with high-fidelity images, logistics & alliance sections |
 | **Military — Intelligence** | 🇺🇸 **FULLY OPERATIONAL** | CIA/NSA/NRO/NGA/DIA dossiers, Five Eyes geometry, intelligence disciplines, failures case studies |
-| **Gallery** | 🇺🇸 **FULLY OPERATIONAL** | 210-image masonry archive, category filters, lightbox, bilingual copy |
+| **Gallery** | 🇺🇸 **FULLY OPERATIONAL** | 520+-image masonry archive, category filters, lightbox, bilingual copy |
 | **U.S. Map Explorer** | 🇺🇸 **FULLY OPERATIONAL** | 50-state SVG map, GDP/population/statehood heatmaps, per-state panels, search & filter |
-| **Culture Hub** | 🇺🇸 **FULLY OPERATIONAL** | Magazine warm editorial, brand marquees, asymmetry matrix, music/food/fashion/sports subpages |
+| **Culture Hub** | 🇺🇸 **FULLY OPERATIONAL** | Magazine warm editorial, dual-mode (dark/cream) brand marquees, asymmetry matrix, Sports & Fashion editorial strip, music/food/fashion/sports subpages |
+| **Deep-Dive Archive** | 🇺🇸 **FULLY OPERATIONAL** | Bilingual long-form thematic reader (`DeepDiveSection`) + `AskAmerica` keyword search, gated by the curated content policy in `thematic-content-filter.ts` |
 | **Quality of Life** | 🇺🇸 **FULLY OPERATIONAL** | Standard of living, metrics tracker, public health, and wealth indexes |
 | **Bilingual Translation** | 🟢 **LIVE & RESILIENT** | 100% server + client cookie parity with Romanian getters in `/lib/data` |
 | **Central Media Registry** | 🟢 **LIVE & RESILIENT** | 210+ image assets indexed in `lib/site-images.ts`, 23 base images in `SITE_IMAGES.globalBases` |
