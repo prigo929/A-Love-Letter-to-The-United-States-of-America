@@ -67,6 +67,7 @@ const DENYLISTED_HEADINGS: string[] = [
   "Criticisms: Limits of Intervention and Post-War Uprisings",
   "Critiques of Vague and Conflicting Goals",
   "Cultural and Ethical Critiques",
+  "Diversity, Inclusion, and Representation",
   "Economic Stimulus vs. Opportunity Costs and Critiques",
   "Economic Weaknesses and Policy Critiques",
   "Emissions, Resources, and Criticisms",
