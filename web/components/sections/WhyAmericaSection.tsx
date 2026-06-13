@@ -237,7 +237,7 @@ export function WhyAmericaSection() {
                   )}
                 >
                   <span
-                    className="-mb-6 block select-none font-hero text-[80px] leading-none text-white/5"
+                    className="-mb-6 block select-none font-hero text-[80px] leading-none text-white/20"
                     aria-hidden="true"
                   >
                     0{index + 1}
