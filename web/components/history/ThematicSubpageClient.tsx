@@ -9,6 +9,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Search, BookOpen, Clock } from "lucide-react";
 import type { Locale } from "@/lib/i18n/config";
+import { HistoryStyles } from "./HistoryStyles";
 
 export interface ThematicSubsection {
   heading: { en: string; ro: string };
@@ -98,16 +99,17 @@ export default function ThematicSubpageClient({
   const activeTopic = topics.find((t) => t.id === activeTopicId) || topics[0];
 
   return (
-    <div className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20 ${embed ? "pt-16 border-t border-white/10" : ""}`}>
+    <div className="relative history-classified-bg">
+      <HistoryStyles />
       
       {/* Back button */}
       {!embed && (
-        <div className="mb-6">
+        <div className="mb-8">
           <Link
             href="/history"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-glory-gold hover:text-glory-gold/80 transition-colors group"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-glory-gold hover:text-white transition-colors group tracking-wider uppercase"
           >
-            <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-0.5 transition-transform" />
+            <ArrowLeft className="w-3.5 h-3.5 transform group-hover:-translate-x-0.5 transition-transform" />
             {TEXT.backButton[currentLocale]}
           </Link>
         </div>
@@ -115,28 +117,31 @@ export default function ThematicSubpageClient({
 
       {/* Hero Header */}
       {embed ? (
-        <div className="mb-10 space-y-3">
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-glory-gold/30 bg-glory-gold/5 text-glory-gold text-[10px] font-bold uppercase tracking-wider">
-            <BookOpen className="w-3 h-3" /> {currentLocale === "ro" ? "Cronici Detaliate" : "Detailed Chronicles"}
-          </span>
-          <h2 className="font-display text-2xl md:text-4xl font-black text-white tracking-tight">
+        <div className="mb-10 space-y-3 pb-6 border-b border-white/10">
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded border border-glory-gold/30 bg-glory-gold/5 text-glory-gold text-[9px] font-bold uppercase tracking-wider">
+              <BookOpen className="w-3 h-3" /> {currentLocale === "ro" ? "Cronici Detaliate" : "Detailed Chronicles"}
+            </span>
+          </div>
+          <h2 className="history-serif-title text-2xl md:text-4xl font-bold text-white tracking-tight">
             {title[currentLocale]}
           </h2>
-          <p className="font-body text-white/60 text-sm md:text-base leading-relaxed">
+          <p className="text-white/60 text-sm leading-relaxed max-w-3xl font-light">
             {description[currentLocale]}
           </p>
         </div>
       ) : (
-        <section className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] p-8 md:p-12 mb-12 shadow-xl">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-glory-blue via-glory-gold to-glory-red" />
-          <div className="max-w-3xl space-y-4">
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-glory-gold/30 bg-glory-gold/5 text-glory-gold text-[10px] font-bold uppercase tracking-wider">
-              <BookOpen className="w-3 h-3" /> Chapter Explorer
-            </span>
-            <h1 className="font-display text-3xl md:text-5xl font-black text-white leading-tight tracking-tight">
+        <section className="relative overflow-hidden history-grid-border p-8 md:p-12 mb-12 rounded-lg">
+          <div className="space-y-3">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded border border-glory-gold/30 bg-glory-gold/5 text-glory-gold text-[9px] font-bold uppercase tracking-wider">
+                <BookOpen className="w-3 h-3" /> {currentLocale === "ro" ? "Cronici Tematice" : "Thematic Chronicles"}
+              </span>
+            </div>
+            <h1 className="history-serif-title text-3xl md:text-5xl font-bold text-white tracking-tight leading-tight">
               {title[currentLocale]}
             </h1>
-            <p className="font-body text-white/70 text-sm md:text-base leading-relaxed">
+            <p className="text-white/60 text-base max-w-3xl leading-relaxed font-light">
               {description[currentLocale]}
             </p>
           </div>
@@ -148,27 +153,37 @@ export default function ThematicSubpageClient({
         
         {/* Left column: Topic Tabs */}
         <div className="lg:col-span-4 space-y-4">
-          <div className="p-5 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm">
-            <h2 className="font-display text-base font-bold text-white mb-3">
+          <div className="p-6 rounded-lg border border-white/10 bg-white/[0.02] backdrop-blur-sm">
+            <h2 className="text-xs font-semibold text-glory-gold tracking-widest uppercase mb-4">
               {TEXT.selectTopic[currentLocale]}
             </h2>
             <div className="space-y-2">
-              {topics.map((topic) => {
+              {topics.map((topic, index) => {
                 const isActive = topic.id === activeTopicId;
                 return (
                   <button
                     key={topic.id}
                     onClick={() => setActiveTopicId(topic.id)}
-                    className={`w-full text-left p-3.5 rounded-xl border transition-all flex items-center justify-between group ${
+                    className={`w-full text-left p-3.5 rounded-lg transition-all duration-300 relative group flex items-center justify-between border ${
                       isActive
-                        ? "border-glory-gold/45 bg-white/[0.05] text-glory-gold shadow-[0_0_15px_rgba(255,215,0,0.06)] font-bold"
-                        : "border-transparent bg-transparent hover:bg-white/5 text-white/75 hover:text-white"
+                        ? "border-glory-gold/30 bg-white/[0.04] shadow-[0_4px_20px_rgba(232,185,35,0.04)] text-glory-gold font-medium"
+                        : "border-transparent bg-transparent hover:bg-white/[0.02] text-white/70 hover:text-white"
                     }`}
                   >
-                    <span className="font-display text-sm tracking-wide">
+                    {/* Active indicator dot */}
+                    <div
+                      className={`absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-r transition-all duration-300 ${
+                        isActive
+                          ? "bg-glory-gold scale-y-100"
+                          : "bg-transparent scale-y-0 group-hover:bg-white/10 group-hover:scale-y-50"
+                      }`}
+                    />
+                    <span className="text-xs tracking-wider pl-2 uppercase">
                       {currentLocale === "ro" ? topic.title.ro : topic.title.en}
                     </span>
-                    <Clock className={`w-3.5 h-3.5 opacity-40 group-hover:opacity-85 transition-opacity ${isActive ? "opacity-90" : ""}`} />
+                    <span className="text-[9px] text-white/30 tracking-wider">
+                      {(index + 1).toString().padStart(2, '0')}
+                    </span>
                   </button>
                 );
               })}
@@ -185,20 +200,23 @@ export default function ThematicSubpageClient({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="rounded-2xl border border-white/5 bg-white/[0.02] p-6 md:p-8 space-y-6 shadow-xl"
+              className="history-grid-border p-8 md:p-12 space-y-6 relative overflow-hidden rounded-lg"
             >
               {/* Topic Header */}
-              <div className="border-b border-white/10 pb-5">
-                <h2 className="font-display text-2xl md:text-3xl font-black text-white leading-tight">
+              <div className="border-b border-white/10 pb-5 space-y-1">
+                <span className="text-[10px] font-semibold text-glory-gold tracking-widest uppercase block">
+                  {currentLocale === "ro" ? "SECȚIUNE INDIVIDUALĂ" : "INDIVIDUAL FOCUS"}
+                </span>
+                <h2 className="history-serif-title text-2xl md:text-3xl font-bold text-white leading-tight">
                   {currentLocale === "ro" ? activeTopic.title.ro : activeTopic.title.en}
                 </h2>
               </div>
  
               {/* Local Table of Contents */}
               {activeTopic.sections && activeTopic.sections.length > 1 && (
-                <div className="p-4 rounded-xl border border-white/5 bg-white/[0.01] flex flex-wrap gap-2 text-xs items-center">
-                  <span className="text-white/45 flex items-center gap-1 font-semibold uppercase tracking-wider mr-2">
-                    <Search className="w-3.5 h-3.5" /> {TEXT.sectionsLabel[currentLocale]}
+                <div className="p-3.5 rounded-lg border border-white/10 bg-white/[0.02] flex flex-wrap gap-2 text-[11px] items-center">
+                  <span className="text-white/50 flex items-center gap-1 font-semibold uppercase tracking-wider mr-2">
+                    <Search className="w-3.5 h-3.5 text-glory-gold" /> {TEXT.sectionsLabel[currentLocale]}
                   </span>
                   {activeTopic.sections.map((sec, idx) => {
                     const heading = currentLocale === "ro" ? sec.heading.ro : sec.heading.en;
@@ -207,7 +225,7 @@ export default function ThematicSubpageClient({
                       <a
                         key={idx}
                         href={`#topic-sec-${idx}`}
-                        className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-glory-gold/15 hover:text-glory-gold transition-colors text-white/75 border border-white/5"
+                        className="px-3 py-1 rounded bg-white/5 hover:bg-glory-gold/10 hover:text-glory-gold transition-all duration-200 text-white/80 border border-white/5"
                       >
                         {heading}
                       </a>
@@ -224,10 +242,10 @@ export default function ThematicSubpageClient({
                     <div
                       key={secIdx}
                       id={`topic-sec-${secIdx}`}
-                      className="space-y-4 scroll-mt-24 border-b border-white/5 pb-6 last:border-0 last:pb-0"
+                      className="space-y-4 scroll-mt-24 border-b border-white/5 pb-8 last:border-0 last:pb-0"
                     >
                       {heading && heading !== "Introduction" && (
-                        <h3 className="font-display text-lg md:text-xl font-bold text-glory-gold border-l-2 border-glory-gold pl-3">
+                        <h3 className="text-sm font-semibold text-glory-gold tracking-wider uppercase border-l border-glory-gold pl-3">
                           {heading}
                         </h3>
                       )}
@@ -238,19 +256,22 @@ export default function ThematicSubpageClient({
                           return (
                             <div key={subIdx} className="space-y-2.5">
                               {subHeading && (
-                                <h4 className="font-display text-sm md:text-base font-bold text-white/95">
+                                <h4 className="text-xs font-semibold text-white/90 uppercase tracking-wider">
                                   {subHeading}
                                 </h4>
                               )}
-                              <div className="space-y-3">
-                                {sub.paragraphs.map((para, pIdx) => (
-                                  <p
-                                    key={pIdx}
-                                    className="font-body text-white/75 leading-relaxed text-sm md:text-[15px] text-justify"
-                                  >
-                                    {currentLocale === "ro" ? para.ro : para.en}
-                                  </p>
-                                ))}
+                              <div className="space-y-4">
+                                {sub.paragraphs.map((para, pIdx) => {
+                                  const text = currentLocale === "ro" ? para.ro : para.en;
+                                  return (
+                                    <p
+                                      key={pIdx}
+                                      className="history-serif-body text-white/80 leading-relaxed text-base md:text-lg text-justify font-light"
+                                    >
+                                      {text}
+                                    </p>
+                                  );
+                                })}
                               </div>
                             </div>
                           );

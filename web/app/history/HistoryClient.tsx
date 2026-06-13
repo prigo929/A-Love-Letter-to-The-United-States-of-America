@@ -34,6 +34,7 @@ import { HISTORY_ERAS } from "@/lib/data/history-eras-data";
 import { getLocalizedNavSections } from "@/lib/constants";
 import type { Locale } from "@/lib/i18n/config";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
+import { HistoryStyles } from "@/components/history/HistoryStyles";
 
 // Translation dictionary for local UI elements
 const TEXT = {
@@ -95,6 +96,22 @@ const getIconForItem = (href: string) => {
   return <BookOpen className="w-5 h-5" />;
 };
 
+const HERO_STATS = {
+  en: [
+    { value: "1776", label: "Founding Year" },
+    { value: "250", label: "Years of Liberty" },
+    { value: "13", label: "Original Colonies" },
+    { value: "50", label: "United States" },
+  ],
+  ro: [
+    { value: "1776", label: "Anul Fondării" },
+    { value: "250", label: "Ani de Libertate" },
+    { value: "13", label: "Colonii Originale" },
+    { value: "50", label: "State Unite" },
+  ],
+} as const;
+
+
 export default function HistoryClient({ locale }: { locale: string }) {
   const currentLocale = locale as Locale;
   const [activeEraId, setActiveEraId] = useState(HISTORY_ERAS[0].id);
@@ -108,86 +125,92 @@ export default function HistoryClient({ locale }: { locale: string }) {
   const thematicItems = historySection ? historySection.items : [];
 
   return (
-    <div className="relative">
-      {/* ── Hero section ── */}
-      <section className="relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[300px] bg-glory-blue/10 rounded-full blur-[100px]" />
-          <div className="absolute top-10 right-0 w-[300px] h-[300px] bg-glory-red/5 rounded-full blur-[90px]" />
-        </div>
+    <div className="relative history-classified-bg min-h-screen pb-16">
+      <HistoryStyles />
 
+      {/* ── Hero section ── */}
+      <section className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8 border-b border-white/10">
         <div className="mx-auto max-w-7xl relative">
-          <div className="rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 md:p-12 text-center overflow-hidden relative">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-glory-blue via-glory-gold to-glory-red" />
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-3xl mx-auto space-y-4"
-            >
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-glory-gold/30 bg-glory-gold/5 text-glory-gold text-xs font-semibold uppercase tracking-wider">
-                <Calendar className="w-3.5 h-3.5" /> 1776 – Present
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-8 space-y-4">
+              <span className="text-xs font-semibold text-glory-gold tracking-widest uppercase block">
+                {currentLocale === "ro" ? "PAGINĂ CRONOLOGICĂ" : "CHRONOLOGICAL HISTORY"}
               </span>
-              <h1 className="font-display text-3xl md:text-5xl font-black text-white leading-tight tracking-tight">
+              <h1 className="history-serif-title text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight">
                 {TEXT.title[currentLocale]}
               </h1>
-              <p className="font-body text-white/70 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+              <p className="text-base md:text-lg text-white/60 max-w-2xl leading-relaxed font-light">
                 {TEXT.subtitle[currentLocale]}
               </p>
-            </motion.div>
+            </div>
+            
+            {/* Hero Stats */}
+            <div className="lg:col-span-4 grid grid-cols-2 gap-6 border-l border-white/10 pl-8">
+              {HERO_STATS[currentLocale].map((stat, i) => (
+                <div key={i} className="space-y-1">
+                  <div className="text-3xl font-extralight tracking-tight text-white">{stat.value}</div>
+                  <div className="text-[10px] font-semibold text-white/40 tracking-wider uppercase">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
  
       {/* ── Chronological History Interactive Timeline Dashboard ── */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Vertical/Horizontal Navigation Sidebar (Timeline Selector) */}
+          {/* Timeline Selector Sidebar */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="p-5 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm relative">
-              <h2 className="font-display text-lg font-bold text-white mb-1">
+            <div className="p-6 rounded-lg border border-white/10 bg-white/[0.02] backdrop-blur-sm relative">
+              <h2 className="text-xs font-semibold text-glory-gold tracking-widest uppercase mb-1">
                 {TEXT.timelineTitle[currentLocale]}
               </h2>
-              <p className="font-body text-xs text-white/50 mb-4">
+              <p className="text-[10px] text-white/40 mb-5 uppercase tracking-wider">
                 {TEXT.timelineSubtitle[currentLocale]}
               </p>
  
               {/* Desktop timeline list */}
-              <div className="hidden lg:block relative pl-4 border-l border-white/10 space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
-                {HISTORY_ERAS.map((era) => {
+              <div className="hidden lg:block relative pl-3 border-l border-white/10 space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+                {HISTORY_ERAS.map((era, index) => {
                    const isActive = era.id === activeEraId;
                    return (
                      <button
                        key={era.id}
                        onClick={() => setActiveEraId(era.id)}
-                       className={`w-full text-left p-3 rounded-xl transition-all duration-200 relative group flex flex-col gap-1 border ${
+                       className={`w-full text-left p-3.5 rounded-lg transition-all duration-300 relative group flex flex-col gap-1 border ${
                          isActive
-                           ? "border-glory-gold/30 bg-white/[0.05] shadow-[0_0_15px_rgba(255,215,0,0.06)]"
-                           : "border-transparent bg-transparent hover:bg-white/5"
+                           ? "border-glory-gold/30 bg-white/[0.04] shadow-[0_4px_20px_rgba(232,185,35,0.04)]"
+                           : "border-transparent bg-transparent hover:bg-white/[0.02]"
                        }`}
                      >
                        {/* Active indicator node */}
                        <div
-                         className={`absolute left-[-21px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full border transition-all ${
+                         className={`absolute left-[-16px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full border transition-all ${
                            isActive
-                             ? "bg-glory-gold border-glory-gold scale-125 shadow-[0_0_8px_#FFD700]"
-                             : "bg-black border-white/30 group-hover:border-white/60"
+                             ? "bg-glory-gold border-glory-gold scale-110 shadow-[0_0_6px_#E8B923]"
+                             : "bg-black border-white/20 group-hover:border-white/40"
                          }`}
                        />
+                       <div className="flex items-center justify-between w-full">
+                         <span
+                           className={`font-semibold text-xs tracking-wider transition-colors ${
+                             isActive ? "text-glory-gold" : "text-white/60 group-hover:text-white"
+                           }`}
+                         >
+                           {era.years}
+                         </span>
+                         <span className="text-[8px] text-white/30 tracking-wider">
+                           ERA {index + 1}
+                         </span>
+                       </div>
                        <span
-                         className={`font-display font-bold text-sm tracking-wide transition-colors ${
-                           isActive ? "text-glory-gold" : "text-white/85 group-hover:text-white"
+                         className={`text-xs tracking-wide transition-colors ${
+                           isActive ? "text-white/95" : "text-white/50 group-hover:text-white/80"
                          }`}
                        >
-                         {era.years}
-                       </span>
-                       <span
-                         className={`font-body text-xs line-clamp-1 transition-colors ${
-                           isActive ? "text-white/90" : "text-white/60"
-                         }`}
-                       >
-                         {currentLocale === "ro" ? era.title.ro : era.title.en}
+                         {currentLocale === "ro" ? era.title.ro.replace("Istoria Statelor Unite (", "").replace(")", "") : era.title.en.replace("History of the United States (", "").replace(")", "")}
                        </span>
                      </button>
                    );
@@ -196,20 +219,20 @@ export default function HistoryClient({ locale }: { locale: string }) {
  
               {/* Mobile horizontal scroller */}
               <div className="lg:hidden flex gap-3 overflow-x-auto pb-2 scrollbar-none snap-x snap-mandatory">
-                {HISTORY_ERAS.map((era) => {
+                {HISTORY_ERAS.map((era, index) => {
                   const isActive = era.id === activeEraId;
                   return (
                     <button
                       key={era.id}
                       onClick={() => setActiveEraId(era.id)}
-                      className={`flex-shrink-0 snap-center p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center min-w-[120px] ${
+                      className={`flex-shrink-0 snap-center p-3 rounded-lg border text-center transition-all flex flex-col items-center justify-center min-w-[130px] ${
                         isActive
-                          ? "border-glory-gold/40 bg-white/[0.08] text-glory-gold shadow-[0_0_15px_rgba(255,215,0,0.1)]"
-                          : "border-white/10 bg-white/3 text-white/70"
+                          ? "border-glory-gold/40 bg-white/[0.06] text-glory-gold shadow-[0_4px_15px_rgba(232,185,35,0.05)]"
+                          : "border-white/10 bg-white/[0.02] text-white/70"
                       }`}
                     >
-                      <span className="font-display font-bold text-xs">{era.years}</span>
-                      <span className="font-body text-[10px] uppercase tracking-wider text-white/40 mt-1 line-clamp-1 max-w-[100px]">
+                      <span className="font-semibold text-xs">{era.years}</span>
+                      <span className="text-[9px] uppercase tracking-wider text-white/40 mt-1 line-clamp-1 max-w-[110px]">
                         {currentLocale === "ro" ? era.title.ro.replace("Istoria Statelor Unite", "") : era.title.en.replace("History of the United States", "")}
                       </span>
                     </button>
@@ -218,7 +241,7 @@ export default function HistoryClient({ locale }: { locale: string }) {
               </div>
             </div>
           </div>
- 
+  
           {/* Era Content Display Area */}
           <div className="lg:col-span-8">
             <AnimatePresence mode="wait">
@@ -228,25 +251,23 @@ export default function HistoryClient({ locale }: { locale: string }) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="rounded-2xl border border-white/5 bg-white/[0.02] p-6 md:p-8 space-y-6 shadow-xl"
+                className="history-grid-border p-8 md:p-12 space-y-8 relative overflow-hidden rounded-lg"
               >
                 {/* Era Header */}
-                <div className="border-b border-white/10 pb-5 space-y-2">
-                  <div className="flex items-center gap-2">
-                    <span className="px-3 py-1 rounded-md bg-white/5 text-glory-gold border border-glory-gold/25 font-display text-sm font-bold tracking-wider">
-                      {activeEra.years}
-                    </span>
-                  </div>
-                  <h2 className="font-display text-2xl md:text-3xl font-black text-white">
+                <div className="border-b border-white/10 pb-6 space-y-2">
+                  <span className="text-xs font-semibold text-glory-gold tracking-widest uppercase">
+                    {activeEra.years}
+                  </span>
+                  <h2 className="history-serif-title text-3xl md:text-4xl font-bold text-white">
                     {currentLocale === "ro" ? activeEra.title.ro : activeEra.title.en}
                   </h2>
                 </div>
  
-                {/* mini Table of Contents / Anchors */}
+                {/* Table of Contents / Anchors */}
                 {activeEra.sections.length > 1 && (
-                  <div className="p-4 rounded-xl border border-white/5 bg-white/[0.01] flex flex-wrap gap-2 text-xs items-center">
-                    <span className="text-white/45 flex items-center gap-1 font-semibold uppercase tracking-wider mr-2">
-                      <Search className="w-3.5 h-3.5" /> {TEXT.sectionsLabel[currentLocale]}
+                  <div className="p-3.5 rounded-lg border border-white/10 bg-white/[0.02] flex flex-wrap gap-2 text-[11px] items-center">
+                    <span className="text-white/50 flex items-center gap-1 font-semibold uppercase tracking-wider mr-2">
+                      <Search className="w-3.5 h-3.5 text-glory-gold" /> {TEXT.sectionsLabel[currentLocale]}
                     </span>
                     {activeEra.sections.map((sec, idx) => {
                       const heading = currentLocale === "ro" ? sec.heading.ro : sec.heading.en;
@@ -255,7 +276,7 @@ export default function HistoryClient({ locale }: { locale: string }) {
                         <a
                           key={idx}
                           href={`#section-${idx}`}
-                          className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-glory-gold/15 hover:text-glory-gold transition-colors text-white/75 border border-white/5"
+                          className="px-3 py-1 rounded bg-white/5 hover:bg-glory-gold/10 hover:text-glory-gold transition-all duration-200 text-white/80 border border-white/5"
                         >
                           {heading}
                         </a>
@@ -272,10 +293,10 @@ export default function HistoryClient({ locale }: { locale: string }) {
                       <div
                         key={secIdx}
                         id={`section-${secIdx}`}
-                        className="space-y-4 scroll-mt-24 border-b border-white/5 pb-6 last:border-0 last:pb-0"
+                        className="space-y-4 scroll-mt-24 border-b border-white/5 pb-8 last:border-0 last:pb-0"
                       >
                         {sectionHeading && (
-                          <h3 className="font-display text-lg md:text-xl font-bold text-glory-gold border-l-2 border-glory-gold pl-3">
+                          <h3 className="text-sm font-semibold text-glory-gold tracking-wider uppercase border-l border-glory-gold pl-3">
                             {sectionHeading}
                           </h3>
                         )}
@@ -286,19 +307,22 @@ export default function HistoryClient({ locale }: { locale: string }) {
                             return (
                               <div key={subIdx} className="space-y-3">
                                 {subHeading && (
-                                  <h4 className="font-display text-sm md:text-base font-semibold text-white/95">
+                                  <h4 className="text-xs font-semibold text-white/90 uppercase tracking-wider">
                                     {subHeading}
                                   </h4>
                                 )}
-                                <div className="space-y-3">
-                                  {sub.paragraphs.map((para, paraIdx) => (
-                                    <p
-                                      key={paraIdx}
-                                      className="font-body text-white/75 leading-relaxed text-sm md:text-[15px] text-justify"
-                                    >
-                                      {currentLocale === "ro" ? para.ro : para.en}
-                                    </p>
-                                  ))}
+                                <div className="space-y-4">
+                                  {sub.paragraphs.map((para, paraIdx) => {
+                                    const text = currentLocale === "ro" ? para.ro : para.en;
+                                    return (
+                                      <p
+                                        key={paraIdx}
+                                        className="history-serif-body text-white/80 leading-relaxed text-base md:text-lg text-justify font-light"
+                                      >
+                                        {text}
+                                      </p>
+                                    );
+                                  })}
                                 </div>
                               </div>
                             );
@@ -315,14 +339,15 @@ export default function HistoryClient({ locale }: { locale: string }) {
       </section>
  
       {/* ── Thematic History Journeys Navigation Grid ── */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-black">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-black">
         <div className="mx-auto max-w-7xl space-y-12">
           
-          <div className="text-center space-y-3">
-            <h2 className="font-display text-3xl font-black text-white tracking-tight">
+          <div className="text-center space-y-3 pb-8 border-b border-white/10 max-w-3xl mx-auto">
+            <span className="text-xs text-glory-gold font-semibold tracking-widest uppercase">THEMATIC HISTORICAL JOURNEYS</span>
+            <h2 className="history-serif-title text-3xl md:text-4xl font-bold text-white tracking-tight">
               {TEXT.thematicTitle[currentLocale]}
             </h2>
-            <p className="font-body text-white/60 text-sm md:text-base max-w-2xl mx-auto">
+            <p className="text-white/60 text-sm leading-relaxed font-light">
               {TEXT.thematicSubtitle[currentLocale]}
             </p>
           </div>
@@ -335,32 +360,34 @@ export default function HistoryClient({ locale }: { locale: string }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.04 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] hover:border-glory-gold/30 hover:shadow-[0_0_20px_rgba(255,215,0,0.08)] transition-all duration-300 flex flex-col justify-between"
+                className="group relative overflow-hidden history-grid-border hover:border-glory-gold/30 hover:bg-white/[0.04] transition-all duration-300 flex flex-col justify-between p-6 min-h-[260px] rounded-lg"
               >
                 {/* Visual top bar glow */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-glory-blue/40 to-transparent group-hover:from-glory-gold/40 group-hover:to-glory-blue/40 transition-colors" />
-
-                <div className="p-5 space-y-3">
-                  <div className="flex items-center justify-between text-glory-gold/80 group-hover:text-glory-gold transition-colors">
-                    {getIconForItem(item.href)}
-                    <span className="font-display text-[10px] tracking-wider text-white/30 uppercase group-hover:text-glory-gold/45">
-                      {locale === "ro" ? `Cap. ${index + 1}` : `Ch. ${index + 1}`}
-                    </span>
+                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-glory-blue/20 to-transparent group-hover:from-glory-gold/40 group-hover:to-glory-blue/40 transition-all duration-300" />
+ 
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between text-glory-gold/70 group-hover:text-glory-gold transition-colors text-[10px] font-semibold tracking-wider uppercase">
+                    <div className="flex items-center gap-2">
+                      {getIconForItem(item.href)}
+                      <span>
+                        {locale === "ro" ? `Cap. ${index + 1}` : `Ch. ${index + 1}`}
+                      </span>
+                    </div>
                   </div>
-                  <div className="space-y-1">
-                    <h3 className="font-display font-bold text-white/90 group-hover:text-white transition-colors text-sm md:text-base leading-tight">
+                  <div className="space-y-2">
+                    <h3 className="font-semibold text-white/95 group-hover:text-white transition-colors text-xs uppercase tracking-wider">
                       {item.label}
                     </h3>
-                    <p className="font-body text-white/60 text-xs leading-normal line-clamp-3">
+                    <p className="text-white/50 text-xs leading-relaxed line-clamp-4 font-light">
                       {item.description}
                     </p>
                   </div>
                 </div>
-
-                <div className="p-5 pt-0">
+ 
+                <div className="pt-4 mt-auto">
                   <Link
                     href={item.href}
-                    className="flex items-center justify-between w-full text-left text-xs font-semibold text-glory-gold hover:text-glory-gold-light group-2 transition-colors pt-3 border-t border-white/5"
+                    className="flex items-center justify-between w-full text-left text-[11px] uppercase tracking-wider font-semibold text-glory-gold group-hover:text-white transition-colors pt-3 border-t border-white/5"
                   >
                     <span>{TEXT.readChapter[currentLocale]}</span>
                     <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
@@ -371,7 +398,7 @@ export default function HistoryClient({ locale }: { locale: string }) {
           </div>
         </div>
       </section>
-
+ 
       {/* ── AI Oracle CTA ── */}
       <AskAmericaCTA
         locale={currentLocale}
@@ -381,3 +408,4 @@ export default function HistoryClient({ locale }: { locale: string }) {
     </div>
   );
 }
+
