@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { ThematicTopic } from "@/lib/data/verticals-thematic-data";
 import type { DeepDiveTheme } from "@/lib/deep-dive-themes";
@@ -39,6 +39,30 @@ export default function DeepDiveSection({
   const isRo = locale === "ro";
   const [activeId, setActiveId] = useState(topics[0]?.id ?? "");
   const [openSections, setOpenSections] = useState<Set<number>>(new Set([0]));
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash.startsWith("#deep-dive-")) {
+        const id = hash.replace("#deep-dive-", "");
+        const matched = topics.find((t) => t.id.toLowerCase() === id.toLowerCase());
+        if (matched) {
+          setActiveId(matched.id);
+          setOpenSections(new Set([0]));
+          setTimeout(() => {
+            sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 150);
+        }
+      }
+    };
+
+    // Run on initial mount
+    handleHashChange();
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, [topics]);
 
   if (!topics.length) return null;
 
@@ -67,7 +91,7 @@ export default function DeepDiveSection({
   }
 
   return (
-    <section style={{ background: theme.bg }} className="relative overflow-hidden">
+    <section ref={sectionRef} style={{ background: theme.bg }} className="relative overflow-hidden">
 
       {/* ── Section-break bar ─────────────────────────────────────────────── */}
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-20">

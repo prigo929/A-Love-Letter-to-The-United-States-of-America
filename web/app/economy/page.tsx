@@ -36,6 +36,7 @@ import { SP500Chart } from "@/components/data/SP500Chart";
 import { VCBarChart } from "@/components/data/VCCharts";
 import { DollarReserveChart } from "@/components/data/DollarMarketCharts";
 import { getServerLocale } from "@/lib/i18n/server";
+import { renderTextWithLinks } from "@/lib/link-renderer";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import DeepDiveSection from "@/components/shared/DeepDiveSection";
 import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
@@ -337,7 +338,7 @@ export default async function EconomyPage() {
 
               {economyOverviewParagraphs.map((para, i) => (
                 <p key={i} className="macro-body mb-8 max-w-4xl">
-                  {para}
+                  {renderTextWithLinks(para)}
                 </p>
               ))}
             </div>
@@ -375,7 +376,7 @@ export default async function EconomyPage() {
 
               {gdpOverviewParagraphs.map((para, i) => (
                 <p key={i} className="macro-body mb-8 max-w-4xl">
-                  {para}
+                  {renderTextWithLinks(para)}
                 </p>
               ))}
             </div>
@@ -453,7 +454,7 @@ export default async function EconomyPage() {
 
               {capitalMarketsParagraphs.map((para, i) => (
                 <p key={i} className="macro-body mb-8 max-w-4xl">
-                  {para}
+                  {renderTextWithLinks(para)}
                 </p>
               ))}
             </div>
@@ -515,7 +516,7 @@ export default async function EconomyPage() {
 
               {vcOverviewParagraphs.map((para, i) => (
                 <p key={i} className="macro-body mb-8 max-w-4xl">
-                  {para}
+                  {renderTextWithLinks(para)}
                 </p>
               ))}
             </div>
@@ -619,7 +620,7 @@ export default async function EconomyPage() {
 
               {dollarOverviewParagraphs.map((para, i) => (
                 <p key={i} className="macro-body mb-8 max-w-4xl">
-                  {para}
+                  {renderTextWithLinks(para)}
                 </p>
               ))}
             </div>
@@ -683,7 +684,7 @@ export default async function EconomyPage() {
 
               {tradeOverviewParagraphs.map((para, i) => (
                 <p key={i} className="macro-body mb-8 max-w-4xl">
-                  {para}
+                  {renderTextWithLinks(para)}
                 </p>
               ))}
             </div>

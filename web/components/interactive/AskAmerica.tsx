@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Send, Sparkles, RotateCcw, HelpCircle, ChevronRight, MessageSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 
 interface Message {
   id: string;
@@ -173,6 +174,42 @@ export function AskAmerica({ locale }: AskAmericaProps) {
   const findResponse = (text: string): { response: string; cta?: { label: string; href: string } } => {
     const cleanText = text.toLowerCase();
 
+    // 1. Search through the 52 Grokipedia deep-dives
+    for (const [vertical, topics] of Object.entries(VERTICALS_THEMATIC_DATA)) {
+      for (const topic of topics) {
+        const titleEn = topic.title.en.toLowerCase();
+        const titleRo = topic.title.ro.toLowerCase();
+        const idName = topic.id.toLowerCase().replace(/_/g, " ");
+
+        if (
+          cleanText.includes(titleEn) ||
+          cleanText.includes(titleRo) ||
+          cleanText.includes(idName) ||
+          (titleEn.split(" ").length > 1 && titleEn.split(" ").some(word => word.length > 4 && cleanText.includes(word)))
+        ) {
+          const firstSection = topic.sections[0];
+          const firstSub = firstSection?.subsections[0];
+          const firstPara = firstSub?.paragraphs[0];
+          const introText = isRo ? firstPara?.ro : firstPara?.en;
+
+          if (introText) {
+            return {
+              response: isRo
+                ? `Conform arhivei noastre detaliate despre ${topic.title.ro}: ${introText}`
+                : `According to our detailed archive on ${topic.title.en}: ${introText}`,
+              cta: {
+                label: isRo
+                  ? `Citește analiza completă despre '${topic.title.ro}' →`
+                  : `Read full '${topic.title.en}' deep-dive →`,
+                href: `/${vertical}#deep-dive-${topic.id}`,
+              },
+            };
+          }
+        }
+      }
+    }
+
+    // 2. Fall back to generic knowledge base
     for (const item of KNOWLEDGE_BASE) {
       if (item.keywords.some((kw) => cleanText.includes(kw))) {
         return {

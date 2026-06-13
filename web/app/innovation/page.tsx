@@ -9,6 +9,7 @@ import {
 } from "@/components/economy/EconomyAnimations";
 import { Cpu, Globe, Phone, Cloud, Orbit, Gamepad2 } from "lucide-react";
 import DeepDiveSection from "@/components/shared/DeepDiveSection";
+import { renderTextWithLinks } from "@/lib/link-renderer";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 
@@ -139,9 +140,9 @@ export default async function InnovationPage() {
         overviewEyebrow: "AVANTAJUL TEHNOLOGIC",
         overviewTitle: "Cum proiectează America viitorul digital",
         overviewBody1:
-          "Ascensiunea tehnologică a Statelor Unite nu a fost un accident al istoriei, ci rezultatul unui ecosistem unic ce îmbină cercetarea fundamentală finanțată de stat (prin agenții ca DARPA și NASA) cu adâncimea inegalabilă a capitalului privat și o cultură a riscului asumat din Silicon Valley.",
+          "Ascensiunea tehnologică a Statelor Unite nu a fost un accident al istoriei, ci rezultatul unui ecosistem unic ce îmbină cercetarea fundamentală finanțată de stat (prin agenții ca DARPA și [NASA](#deep-dive-NASA)) cu adâncimea inegalabilă a capitalului privat și o cultură a riscului asumat din [Silicon Valley](#deep-dive-Silicon_Valley).",
         overviewBody2:
-          "De la microcipul de siliciu inventat la mijlocul secolului trecut până la modelele de limbaj de frontieră de astăzi, companiile americane continuă să controleze cele mai valoroase straturi ale stivei tehnologice globale: designul proprietății intelectuale, software-ul critic de proiectare și infrastructura globală de stocare în cloud.",
+          "De la microcipul de siliciu inventat la mijlocul secolului trecut până la modelele de limbaj de frontieră de astăzi, companiile americane continuă să controleze cele mai valaoarse straturi ale stivei tehnologice globale: designul proprietății intelectuale, software-ul critic de proiectare și infrastructura globală de stocare în cloud.",
         factsTitle: "Pilonii Economiei Digitale",
         exploreCta: "Explorează →",
         oracleDescription:
@@ -161,7 +162,7 @@ export default async function InnovationPage() {
         overviewEyebrow: "THE TECHNOLOGICAL ADVANTAGE",
         overviewTitle: "How America Designs the Digital Future",
         overviewBody1:
-          "The technological rise of the United States was not an accident of history, but the product of a unique ecosystem that pairs state-funded foundational research (through agencies like DARPA and NASA) with the unmatched depth of private capital and the high-risk culture of Silicon Valley.",
+          "The technological rise of the United States was not an accident of history, but the product of a unique ecosystem that pairs state-funded foundational research (through agencies like DARPA and [NASA](#deep-dive-NASA)) with the unmatched depth of private capital and the high-risk culture of [Silicon Valley](#deep-dive-Silicon_Valley).",
         overviewBody2:
           "From the silicon microchip invented in the mid-20th century to the frontier AI models of today, American companies continue to command the most valuable layers of the global technology stack: intellectual property design, critical design software, and the global cloud computing fabric.",
         factsTitle: "Pillars of the Digital Economy",
@@ -176,19 +177,19 @@ export default async function InnovationPage() {
           id: "semiconductor-chokehold",
           fact: "Controlul pe design-ul de semiconductori",
           detail:
-            "Companiile americane captează circa 50% din veniturile globale din proiectarea semiconductorilor (Nvidia, AMD, Apple Silicon) și controlează software-ul critic EDA utilizat de orice fabrică din lume.",
+            "Companiile americane captează circa 50% din veniturile globale din proiectarea semiconductorilor (Nvidia, AMD, [Apple Silicon](#deep-dive-Apple_Inc.)) și controlează software-ul critic EDA utilizat de orice fabrică din lume.",
         },
         {
           id: "venture-catalyst",
           fact: "Catalizatorul capitalului de risc",
           detail:
-            "Aproape jumătate din întregul capital de risc global circulă prin hub-urile americane, permițând proiectelor ambițioase de tehnologie să acceseze finanțare masivă mult înainte de a fi profitabile.",
+            "Aproape jumătate din întregul capital de risc global circulă prin hub-urile americane din [Silicon Valley](#deep-dive-Silicon_Valley) și din țară, permițând proiectelor ambițioase să acceseze finanțare masivă înainte de profitabilitate.",
         },
         {
           id: "cloud-domination",
           fact: "Dominația cloud-ului hyper-scale",
           detail:
-            "Trei furnizori americani (AWS, Microsoft Azure și Google Cloud) controlează peste 65% din piața mondială de infrastructură cloud, pe care rulează întreaga economie digitală.",
+            "Trei furnizori americani (AWS, [Microsoft Azure](#deep-dive-Microsoft_Corporation) și [Google Cloud](#deep-dive-Google)) controlează peste 65% din piața mondială de infrastructură cloud, pe care rulează întreaga economie digitală.",
         },
       ]
     : [
@@ -196,19 +197,19 @@ export default async function InnovationPage() {
           id: "semiconductor-chokehold",
           fact: "The Semiconductor Design Chokehold",
           detail:
-            "US firms capture approximately 50% of global semiconductor design revenues (Nvidia, AMD, Apple Silicon) and control the critical EDA software tools used to design advanced chips globally.",
+            "US firms capture approximately 50% of global semiconductor design revenues (Nvidia, AMD, [Apple Silicon](#deep-dive-Apple_Inc.)) and control the critical EDA software tools used to design advanced chips globally.",
         },
         {
           id: "venture-catalyst",
           fact: "The Venture Capital Catalyst",
           detail:
-            "Nearly half of all global venture capital flows through American hubs, enabling high-risk, high-reward technologies to secure deep funding years before they achieve profitability.",
+            "Nearly half of all global venture capital flows through American hubs centered in [Silicon Valley](#deep-dive-Silicon_Valley), enabling high-risk, high-reward technologies to secure deep funding.",
         },
         {
           id: "cloud-domination",
           fact: "Hyper-Scale Cloud Domination",
           detail:
-            "Three American providers (AWS, Microsoft Azure, and Google Cloud) host over 65% of the global cloud infrastructure, powering the modern digital commons.",
+            "Three American providers (AWS, [Microsoft Azure](#deep-dive-Microsoft_Corporation), and [Google Cloud](#deep-dive-Google)) host over 65% of the global cloud infrastructure, powering the modern digital commons.",
         },
       ];
 
@@ -239,15 +240,15 @@ export default async function InnovationPage() {
                 {copy.overviewTitle}
               </h2>
               <p className="font-macro-body text-white/80 text-xl leading-relaxed">
-                {copy.overviewBody1}
+                {renderTextWithLinks(copy.overviewBody1)}
               </p>
               <p className="font-macro-body text-white/80 text-xl leading-relaxed">
-                {copy.overviewBody2}
+                {renderTextWithLinks(copy.overviewBody2)}
               </p>
             </div>
           </div>
         </section>
-
+ 
         {/* Fact grid */}
         <section id="pillars" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32 border-t border-white/5 pt-24">
           <h2 className="font-macro-display text-3xl font-bold text-[#E8B923] mb-16">
@@ -261,7 +262,7 @@ export default async function InnovationPage() {
                   {fact.fact}
                 </h3>
                 <p className="font-macro-body text-white/60 leading-relaxed">
-                  {fact.detail}
+                  {renderTextWithLinks(fact.detail)}
                 </p>
               </div>
             ))}
