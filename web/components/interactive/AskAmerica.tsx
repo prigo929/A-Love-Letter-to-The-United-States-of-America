@@ -173,8 +173,90 @@ export function AskAmerica({ locale }: AskAmericaProps) {
 
   const findResponse = (text: string): { response: string; cta?: { label: string; href: string } } => {
     const cleanText = text.toLowerCase();
+    
+    // Stop words to remove from query words
+    const stopWords = new Set([
+      "the", "a", "an", "is", "of", "and", "in", "to", "for", "with", "about", 
+      "on", "why", "what", "how", "who", "where", "explain", "describe", "tell", 
+      "me", "show", "are", "by", "from", "that", "this", "these", "those"
+    ]);
+    
+    // Parse query into unique significant search words
+    const queryWords = cleanText
+      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, " ")
+      .split(/\s+/)
+      .filter((word) => word.length > 2 && !stopWords.has(word));
+
+    let bestMatch: {
+      topic: any;
+      vertical: string;
+      sectionHeading: string;
+      paragraphText: string;
+      score: number;
+    } | null = null;
 
     // 1. Search through the 52 Grokipedia deep-dives
+    for (const [vertical, topics] of Object.entries(VERTICALS_THEMATIC_DATA)) {
+      for (const topic of topics) {
+        const titleEn = topic.title.en.toLowerCase();
+        const titleRo = topic.title.ro.toLowerCase();
+        const idName = topic.id.toLowerCase().replace(/_/g, " ");
+
+        // Boost score if title or ID matches exactly in user text
+        const titleMatched = cleanText.includes(titleEn) || cleanText.includes(titleRo) || cleanText.includes(idName);
+
+        for (const section of topic.sections) {
+          const secHeading = isRo ? section.heading.ro : section.heading.en;
+          for (const sub of section.subsections) {
+            for (const para of sub.paragraphs) {
+              const paraText = isRo ? para.ro : para.en;
+              if (!paraText) continue;
+
+              const paraLower = paraText.toLowerCase();
+              let score = 0;
+
+              for (const word of queryWords) {
+                if (paraLower.includes(word)) {
+                  score += 1;
+                }
+              }
+
+              // Give a strong preference if the user asked specifically about this article's topic
+              if (titleMatched) {
+                score += 3;
+              }
+
+              // Save the best scoring paragraph match (minimum score of 1 match word or title matched)
+              if (score > 0 && (!bestMatch || score > bestMatch.score)) {
+                bestMatch = {
+                  topic,
+                  vertical,
+                  sectionHeading: secHeading || (isRo ? topic.title.ro : topic.title.en),
+                  paragraphText: paraText,
+                  score,
+                };
+              }
+            }
+          }
+        }
+      }
+    }
+
+    if (bestMatch && bestMatch.score >= 2) {
+      return {
+        response: isRo
+          ? `Din arhiva noastră detaliată despre „${bestMatch.topic.title.ro}” (Secțiunea: ${bestMatch.sectionHeading}):\n\n„${bestMatch.paragraphText}”`
+          : `From our detailed archive on "${bestMatch.topic.title.en}" (Section: ${bestMatch.sectionHeading}):\n\n"${bestMatch.paragraphText}"`,
+        cta: {
+          label: isRo
+            ? `Citește documentul complet despre „${bestMatch.topic.title.ro}” →`
+            : `Read full document on "${bestMatch.topic.title.en}" →`,
+          href: `/${bestMatch.vertical}#deep-dive-${bestMatch.topic.id}`,
+        },
+      };
+    }
+
+    // 2. Fall back to exact title matching (if score was below threshold but title matched)
     for (const [vertical, topics] of Object.entries(VERTICALS_THEMATIC_DATA)) {
       for (const topic of topics) {
         const titleEn = topic.title.en.toLowerCase();
@@ -184,8 +266,7 @@ export function AskAmerica({ locale }: AskAmericaProps) {
         if (
           cleanText.includes(titleEn) ||
           cleanText.includes(titleRo) ||
-          cleanText.includes(idName) ||
-          (titleEn.split(" ").length > 1 && titleEn.split(" ").some(word => word.length > 4 && cleanText.includes(word)))
+          cleanText.includes(idName)
         ) {
           const firstSection = topic.sections[0];
           const firstSub = firstSection?.subsections[0];
@@ -195,12 +276,12 @@ export function AskAmerica({ locale }: AskAmericaProps) {
           if (introText) {
             return {
               response: isRo
-                ? `Conform arhivei noastre detaliate despre ${topic.title.ro}: ${introText}`
-                : `According to our detailed archive on ${topic.title.en}: ${introText}`,
+                ? `Conform arhivei noastre detaliate despre „${topic.title.ro}”:\n\n${introText}`
+                : `According to our detailed archive on "${topic.title.en}":\n\n${introText}`,
               cta: {
                 label: isRo
-                  ? `Citește analiza completă despre '${topic.title.ro}' →`
-                  : `Read full '${topic.title.en}' deep-dive →`,
+                  ? `Citește documentul complet despre „${topic.title.ro}” →`
+                  : `Read full document on "${topic.title.en}" →`,
                 href: `/${vertical}#deep-dive-${topic.id}`,
               },
             };
@@ -209,7 +290,7 @@ export function AskAmerica({ locale }: AskAmericaProps) {
       }
     }
 
-    // 2. Fall back to generic knowledge base
+    // 3. Fall back to generic knowledge base
     for (const item of KNOWLEDGE_BASE) {
       if (item.keywords.some((kw) => cleanText.includes(kw))) {
         return {
@@ -259,15 +340,16 @@ export function AskAmerica({ locale }: AskAmericaProps) {
 
     let currentText = "";
     let i = 0;
+    const chunkSize = Math.max(2, Math.ceil(response.length / 120)); // stream faster for longer texts (max ~1.5s total)
     const interval = setInterval(() => {
       if (i < response.length) {
-        currentText += response.slice(i, i + 2);
+        currentText += response.slice(i, i + chunkSize);
         setMessages((prev) =>
           prev.map((msg) =>
             msg.id === oracleMsgId ? { ...msg, text: currentText } : msg
           )
         );
-        i += 2;
+        i += chunkSize;
       } else {
         clearInterval(interval);
         setMessages((prev) =>
