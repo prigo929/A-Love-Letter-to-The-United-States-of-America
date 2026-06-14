@@ -209,7 +209,7 @@ function SFSectionTitle({
       <motion.div
         variants={fadeUp}
         transition={{ duration: 0.6 }}
-        className="sf-font-mono mb-6 tracking-[0.3em] text-[10px] text-[#3ddbd9]/70"
+        className="sf-font-mono mb-5 tracking-[0.25em] text-[11px] font-bold text-[#3ddbd9]"
       >
         {label}
       </motion.div>
@@ -302,7 +302,7 @@ export function SpaceForceFullBleed({
 
       {caption && (
         <div className="absolute bottom-7 left-0 right-0 text-center">
-          <span className="sf-font-mono text-[9px] tracking-[0.3em] text-white/25">{caption}</span>
+          <span className="sf-font-mono text-[11px] tracking-[0.25em] font-semibold text-white/55">{caption}</span>
         </div>
       )}
     </div>
@@ -397,10 +397,10 @@ export function SpaceForceFleetComparisonSection({ data, locale = "en" }: { data
               key={t.key}
               onClick={() => setTab(t.key)}
               className={cn(
-                "sf-font-mono px-6 py-3 text-[10px] tracking-[0.15em] transition-all duration-300 rounded-sm",
+                "sf-font-mono px-6 py-3 text-[11px] font-bold tracking-[0.12em] transition-all duration-300 rounded-sm",
                 tab === t.key
                   ? "bg-white text-black"
-                  : "text-white/30 hover:text-white/60 hover:bg-white/[0.04]"
+                  : "text-white/50 hover:text-white/80 hover:bg-white/[0.04]"
               )}
             >
               {t.label}
@@ -431,7 +431,7 @@ export function SpaceForceFleetComparisonSection({ data, locale = "en" }: { data
                     )}>
                       <div className="flex items-center gap-3 w-36 shrink-0">
                         <span className="text-lg">{d.flag}</span>
-                        <span className={cn("sf-font-mono text-[10px] tracking-[0.08em]", isUS ? "text-white" : "text-white/40")}>
+                        <span className={cn("sf-font-mono text-[11px] tracking-[0.08em] font-medium", isUS ? "text-white" : "text-white/55")}>
                           {d.country}
                         </span>
                       </div>
@@ -488,7 +488,7 @@ export function SpaceForceFleetComparisonSection({ data, locale = "en" }: { data
                     </div>
                     
                     {isUS && (
-                      <div className="flex flex-wrap gap-x-6 gap-y-2 mt-1 mb-4 pl-5 md:pl-[164px] pr-20 text-[9px] tracking-wider sf-font-mono text-white/40">
+                      <div className="flex flex-wrap gap-x-6 gap-y-2 mt-1 mb-4 pl-5 md:pl-[164px] pr-20 text-[11px] tracking-wider sf-font-mono text-white/65 font-medium">
                         {tab === "total" ? (
                           <>
                             <span className="flex items-center gap-1.5">
@@ -496,11 +496,11 @@ export function SpaceForceFleetComparisonSection({ data, locale = "en" }: { data
                               {isRo ? "Sateliți militari SUA: 250+" : "U.S. military satellites: 250+"}
                             </span>
                             <span className="flex items-center gap-1.5">
-                              <span className="h-1.5 w-1.5 rounded-full bg-white/40" />
+                              <span className="h-1.5 w-1.5 rounded-full bg-white/50" />
                               {isRo ? "GPS activ: 31+" : "Active GPS: 31+"}
                             </span>
                             <span className="flex items-center gap-1.5">
-                              <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+                              <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
                               {isRo ? "Comercial/civil: dominant" : "Commercial/civil: dominant"}
                             </span>
                           </>
@@ -511,7 +511,7 @@ export function SpaceForceFleetComparisonSection({ data, locale = "en" }: { data
                               {isRo ? "SUA: 250+ active militare" : "United States: 250+ military assets"}
                             </span>
                             <span className="flex items-center gap-1.5">
-                              <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+                              <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
                               {isRo ? "Operat prin arhitecturi comune" : "Operated across joint architectures"}
                             </span>
                           </>
@@ -536,7 +536,7 @@ export function SpaceForceFleetComparisonSection({ data, locale = "en" }: { data
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="mt-8 border-l border-zinc-600/60 pl-5 py-1 text-left"
             >
-              <h4 className="sf-font-mono text-[9px] font-bold tracking-[0.25em] text-[#3ddbd9] uppercase mb-2">
+              <h4 className="sf-font-mono text-[11px] font-bold tracking-[0.2em] text-[#3ddbd9] uppercase mb-2.5">
                 {isRo ? "RAPORT ANALITIC: INFRASTRUCTURA INVIZIBILĂ" : "INTELLIGENCE BRIEF: THE INVISIBLE INFRASTRUCTURE"}
               </h4>
               <p className="text-[11px] leading-[1.8] text-zinc-400 max-w-3xl">
@@ -548,7 +548,7 @@ export function SpaceForceFleetComparisonSection({ data, locale = "en" }: { data
           )}
         </div>
 
-        <div className="mt-12 text-center sf-font-mono text-[9px] tracking-[0.25em] text-white/20">
+        <div className="mt-12 text-center sf-font-mono text-[10px] tracking-[0.2em] font-medium text-white/40">
           {isRo ? "Sursa: registre publice orbitale și fact sheets oficiale USSF" : "Source: public orbital registries and official USSF fact sheets"}
         </div>
       </div>
@@ -632,7 +632,7 @@ export function SpaceForceCapabilityGrid({ capabilities, locale = "en" }: { capa
                     cap.accent === "#34d399" ? "bg-emerald-400" :
                     "bg-red-400"
                   )} />
-                  <span className="sf-font-mono text-[9px] tracking-[0.2em] text-white/30 transition-colors duration-500 group-hover:text-white/50">
+                  <span className="sf-font-mono text-[11px] font-bold tracking-[0.15em] text-white/50 transition-colors duration-500 group-hover:text-white/80">
                     {cap.kicker}
                   </span>
                 </div>
@@ -652,7 +652,7 @@ export function SpaceForceCapabilityGrid({ capabilities, locale = "en" }: { capa
                     "transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden",
                     isHovered ? "opacity-100 max-h-[300px] mb-2" : "lg:opacity-0 lg:max-h-0"
                   )}>
-                    <p className="leading-[1.8] text-[12px] text-white/40 max-w-md">
+                    <p className="text-[13px] leading-[1.8] text-white/65 max-w-md font-medium">
                       {cap.description}
                     </p>
                   </div>
@@ -661,8 +661,8 @@ export function SpaceForceCapabilityGrid({ capabilities, locale = "en" }: { capa
                 {/* Footer: Bottom Stat */}
                 <div className="shrink-0 mt-2 lg:mt-0">
                   <span className={cn(
-                    "sf-font-mono text-[9px] tracking-[0.15em] transition-all duration-500",
-                    isHovered ? "opacity-90" : "opacity-40",
+                    "sf-font-mono text-[11px] font-bold tracking-[0.1em] transition-all duration-500",
+                    isHovered ? "opacity-100" : "opacity-55",
                     cap.accent === "#3ddbd9" ? "text-cyan-300" :
                     cap.accent === "#b9c7d9" ? "text-slate-300" :
                     cap.accent === "#8b5cf6" ? "text-violet-400" :
@@ -726,10 +726,10 @@ export function SpaceForceOperationalConsole({ theaters, locale = "en" }: { thea
                       transition={{ type: "spring", stiffness: 400, damping: 40 }}
                     />
                   )}
-                  <div className="sf-font-mono text-[8px] tracking-[0.2em] text-white/25 mb-2">{theater.region}</div>
+                  <div className="sf-font-mono text-[10px] tracking-[0.15em] text-white/40 mb-2">{theater.region}</div>
                   <div className={cn(
                     "sf-font-display text-lg font-black leading-none transition-colors",
-                    selected ? "text-white" : "text-white/35"
+                    selected ? "text-white" : "text-white/55"
                   )}>
                     {theater.name}
                   </div>
@@ -773,7 +773,7 @@ export function SpaceForceOperationalConsole({ theaters, locale = "en" }: { thea
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div className="sf-font-mono text-[9px] tracking-[0.2em] text-white/30 mb-3">{active.signal}</div>
+                  <div className="sf-font-mono text-[11px] font-bold tracking-[0.15em] text-[#3ddbd9] mb-3">{active.signal}</div>
                   <div className="sf-font-display text-2xl sm:text-3xl font-black text-white leading-[0.9]">{active.headline}</div>
                 </motion.div>
               </AnimatePresence>
@@ -791,15 +791,15 @@ export function SpaceForceOperationalConsole({ theaters, locale = "en" }: { thea
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="flex flex-col h-full"
               >
-                <div className="sf-font-mono text-[8px] tracking-[0.2em] text-white/25 mb-2">{active.region}</div>
+                <div className="sf-font-mono text-[10px] tracking-[0.15em] text-white/40 mb-2">{active.region}</div>
                 <h3 className="sf-font-display text-xl font-black text-white mb-5 leading-[0.92]">{active.name}</h3>
-                <p className="text-[13px] leading-[1.85] text-white/40 mb-10">{active.description}</p>
+                <p className="text-[13px] leading-[1.85] text-white/65 mb-10">{active.description}</p>
 
                 <div className="mt-auto space-y-4">
                   {active.metrics.map((m) => (
                     <div key={m.label} className="flex items-center justify-between">
-                      <span className="sf-font-mono text-[9px] tracking-[0.12em] text-white/30">{m.label}</span>
-                      <span className="sf-font-mono text-[10px] tracking-[0.08em] text-white/65">{m.value}</span>
+                      <span className="sf-font-mono text-[11px] tracking-[0.12em] font-medium text-white/45">{m.label}</span>
+                      <span className="sf-font-mono text-[11px] tracking-[0.08em] font-semibold text-white/80">{m.value}</span>
                     </div>
                   ))}
                 </div>
@@ -865,10 +865,10 @@ export function SpaceForcePlatformShowcase({ platforms, locale = "en" }: { platf
               key={p.name}
               onClick={() => setActiveIndex(i)}
               className={cn(
-                "sf-font-mono px-4 py-2.5 text-[9px] tracking-[0.1em] transition-all duration-300 rounded-sm",
+                "sf-font-mono px-4 py-2.5 text-[11px] tracking-[0.08em] font-semibold transition-all duration-300 rounded-sm",
                 activeIndex === i
                   ? "bg-white text-black"
-                  : "text-white/25 hover:text-white/55 hover:bg-white/[0.04]"
+                  : "text-white/45 hover:text-white/80 hover:bg-white/[0.04]"
               )}
             >
               {p.name}
@@ -909,20 +909,20 @@ export function SpaceForcePlatformShowcase({ platforms, locale = "en" }: { platf
               <div className="absolute inset-0 bg-gradient-to-t from-[#050608] via-transparent to-transparent pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050608]/50 pointer-events-none" />
               <div className="absolute bottom-10 left-10 z-10">
-                <div className="sf-font-mono text-[9px] tracking-[0.2em] text-white/30 mb-3">{active.designation}</div>
+                <div className="sf-font-mono text-[11px] tracking-[0.15em] font-medium text-white/50 mb-3">{active.designation}</div>
                 <div className="sf-font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[0.85]">{active.name}</div>
               </div>
             </div>
 
             {/* Detail panel */}
             <div className="flex flex-col p-9 lg:p-11 border-t lg:border-t-0 lg:border-l border-white/[0.04]">
-              <div className="sf-font-mono text-[9px] tracking-[0.2em] text-[#b9c7d9]/50 mb-4">{active.capability}</div>
+              <div className="sf-font-mono text-[11px] tracking-[0.15em] font-bold text-[#b9c7d9]/75 mb-4">{active.capability}</div>
               <p className="text-[13px] leading-[1.85] text-white/45 mb-10">{active.role}</p>
 
               <div className="grid grid-cols-2 gap-3 mt-auto">
                 {active.specs.map((s) => (
                   <div key={s.label} className="sf-panel p-5">
-                    <div className="sf-font-mono text-[8px] tracking-[0.2em] text-white/25 mb-2">{s.label}</div>
+                    <div className="sf-font-mono text-[10px] tracking-[0.15em] text-white/40 mb-2">{s.label}</div>
                     <div className="sf-font-display text-lg font-black text-white leading-none">{s.value}</div>
                   </div>
                 ))}
@@ -995,7 +995,7 @@ export function SpaceForceHeritageTimeline({ events, locale = "en" }: { events: 
                   isLeft ? "md:col-start-1 md:pr-8" : "md:col-start-2 md:pl-8"
                 )}>
                   {/* Year badge */}
-                  <div className="sf-font-mono text-[11px] tracking-[0.2em] text-[#3ddbd9]/60 mb-3">{event.year}</div>
+                  <div className="sf-font-mono text-[13px] tracking-[0.15em] font-bold text-[#3ddbd9]/90 mb-2">{event.year}</div>
 
                   {/* Enhancement 4: Alternating aspect + sepia */}
                   {event.imageSrc && (
@@ -1025,9 +1025,9 @@ export function SpaceForceHeritageTimeline({ events, locale = "en" }: { events: 
                   )}
 
                   <h3 className="sf-font-display text-lg sm:text-xl font-black text-white mb-3 leading-[0.95]">{event.title}</h3>
-                  <p className="text-[12px] leading-[1.8] text-white/40 mb-4">{event.description}</p>
+                  <p className="text-[14px] leading-[1.8] text-white/65 mb-4">{event.description}</p>
 
-                  <span className="sf-font-mono text-[8px] tracking-[0.15em] text-white/25">{event.significance}</span>
+                  <span className="sf-font-mono text-[10px] font-semibold tracking-[0.12em] text-white/50">{event.significance}</span>
                 </div>
 
                 {/* Empty col */}
@@ -1082,14 +1082,14 @@ export function SpaceForceBasesSection({ bases, locale = "en" }: { bases: SpaceF
                   boxShadow: `0 0 0 1px ${base.accent}35, inset 0 0 30px ${base.accent}08`,
                 } : {}}
               >
-                <MapPin size={11} className={cn("mb-3 transition-colors", activeIndex === i ? "text-white/50" : "text-white/20")} strokeWidth={1.5} />
+                <MapPin size={11} className={cn("mb-3 transition-colors", activeIndex === i ? "text-white/70" : "text-white/35")} strokeWidth={1.5} />
                 <div className={cn(
                   "sf-font-display text-sm font-black leading-none mb-1.5 transition-colors",
-                  activeIndex === i ? "text-white" : "text-white/40"
+                  activeIndex === i ? "text-white" : "text-white/60"
                 )}>
                   {base.name}
                 </div>
-                <div className="sf-font-mono text-[8px] tracking-[0.12em] text-white/25">{base.location}</div>
+                <div className="sf-font-mono text-[10px] tracking-[0.12em] text-white/45">{base.location}</div>
                 {/* Enhancement 9: accent-colored left bar */}
                 {activeIndex === i && (
                   <motion.div
@@ -1114,16 +1114,16 @@ export function SpaceForceBasesSection({ bases, locale = "en" }: { bases: SpaceF
               className="sf-panel p-9 rounded-sm"
               style={{ borderColor: `${active.accent}28`, boxShadow: `0 0 48px ${active.accent}0a` }}
             >
-              <div className="sf-font-mono text-[9px] tracking-[0.2em] text-white/25 mb-2">{active.role}</div>
+              <div className="sf-font-mono text-[11px] tracking-[0.15em] font-bold text-[#3ddbd9] mb-2">{active.role}</div>
               <h3 className="sf-font-display text-2xl sm:text-3xl font-black text-white mb-2 leading-[0.92]">{active.name}</h3>
-              <div className="sf-font-mono text-[8px] tracking-[0.15em] text-white/25 mb-7">{active.location}</div>
-              <p className="text-[13px] leading-[1.85] text-white/40 mb-10">{active.description}</p>
+              <div className="sf-font-mono text-[10px] tracking-[0.12em] text-white/45 mb-7">{active.location}</div>
+              <p className="text-[13px] leading-[1.85] text-white/65 mb-10">{active.description}</p>
 
               <div className="space-y-4">
                 {active.stats.map((s) => (
                   <div key={s.label} className="flex items-center justify-between">
-                    <span className="sf-font-mono text-[9px] tracking-[0.12em] text-white/30">{s.label}</span>
-                    <span className="sf-font-mono text-[10px] tracking-[0.08em] text-white/60">{s.value}</span>
+                    <span className="sf-font-mono text-[11px] tracking-[0.12em] text-white/45">{s.label}</span>
+                    <span className="sf-font-mono text-[11px] tracking-[0.08em] text-white/75">{s.value}</span>
                   </div>
                 ))}
               </div>
@@ -1191,10 +1191,10 @@ export function SpaceForceFutureStack({ programs, locale = "en" }: { programs: S
                   key={p.label}
                   onClick={() => setActiveIndex(i)}
                   className={cn(
-                    "flex-1 py-4 text-center sf-font-mono text-[10px] tracking-[0.12em] transition-all duration-300 border-t border-r border-white/[0.04] last:border-r-0",
+                    "flex-1 py-4 text-center sf-font-mono text-[11px] tracking-[0.1em] font-semibold transition-all duration-300 border-t border-r border-white/[0.04] last:border-r-0",
                     activeIndex === i
                       ? "bg-white/[0.08] text-white"
-                      : "bg-black/60 text-white/25 hover:text-white/50"
+                      : "bg-black/60 text-white/45 hover:text-white/80"
                   )}
                 >
                   {p.label}
@@ -1214,16 +1214,16 @@ export function SpaceForceFutureStack({ programs, locale = "en" }: { programs: S
               className="flex flex-col p-9 border-t lg:border-t-0 lg:border-l border-white/[0.04]"
             >
               <div className="flex items-center gap-3 mb-5">
-                <span className="sf-font-mono text-[9px] tracking-[0.15em] text-[#3ddbd9]/50">{active.status}</span>
+                <span className="sf-font-mono text-[11px] tracking-[0.15em] font-bold text-[#3ddbd9]">{active.status}</span>
               </div>
               <h3 className="sf-font-display text-xl sm:text-2xl font-black text-white mb-5 leading-[0.92]">{active.title}</h3>
-              <div className="sf-font-mono text-[9px] tracking-[0.15em] text-[#b9c7d9]/40 mb-4">{active.capability}</div>
-              <p className="text-[13px] leading-[1.85] text-white/40 mb-10">{active.description}</p>
+              <div className="sf-font-mono text-[11px] tracking-[0.15em] font-bold text-[#b9c7d9]/70 mb-4">{active.capability}</div>
+              <p className="text-[13px] leading-[1.85] text-white/65 mb-10">{active.description}</p>
 
               <div className="grid grid-cols-2 gap-2.5 mt-auto">
                 {active.specs.map((s) => (
                   <div key={s.label} className="sf-panel p-4">
-                    <div className="sf-font-mono text-[7px] tracking-[0.2em] text-white/25 mb-1.5">{s.label}</div>
+                    <div className="sf-font-mono text-[9px] tracking-[0.15em] text-white/40 mb-1.5">{s.label}</div>
                     <div className="sf-font-display text-sm font-black text-white leading-none">{s.value}</div>
                   </div>
                 ))}
@@ -1291,7 +1291,7 @@ export function SpaceForceClosing({ locale = "en" }: { locale?: Locale }) {
           <motion.p
             variants={fadeUp}
             transition={{ duration: 0.7 }}
-            className="mx-auto mt-10 max-w-2xl text-sm leading-[1.9] text-white/40"
+            className="mx-auto mt-10 max-w-2xl text-sm leading-[1.9] text-white/55 font-medium"
           >
             {isRo
               ? "Când o criză apare oriunde pe Pământ, primele date decisive vin adesea de deasupra: avertizare, poziționare, comunicații și custodie orbitală."
@@ -1312,7 +1312,7 @@ export function SpaceForceClosing({ locale = "en" }: { locale?: Locale }) {
 
         {/* Cross-links */}
         <div className="mt-24 pt-16 border-t border-white/[0.04]">
-          <div className="sf-font-mono text-[10px] uppercase tracking-[0.25em] text-white/35 mb-8">
+          <div className="sf-font-mono text-[12px] uppercase tracking-[0.2em] font-bold text-white/60 mb-8">
             {isRo ? "ALTE DIMENSIUNI MILITARE" : "OTHER MILITARY DIMENSIONS"}
           </div>
           <div className="flex flex-wrap justify-center gap-8 md:gap-12">
