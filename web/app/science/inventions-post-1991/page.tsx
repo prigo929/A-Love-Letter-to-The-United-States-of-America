@@ -5,10 +5,6 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import InventionsDashboard from "@/components/interactive/InventionsDashboard";
 import { INVENTIONS_POST_1991 } from "@/lib/data/inventions-post-1991-data";
 import {
-  Lightbulb,
-  Cpu,
-  RadioTower,
-  Globe,
   Satellite,
   CloudRain,
   ExternalLink,
@@ -173,14 +169,20 @@ export default async function InventionsPost1991Page() {
         </div>
 
         {/* Thesis */}
-        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
-            <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
-              <Cpu className="h-32 w-32 text-[#E8B923]" />
+        <RevealSection className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32 pt-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-8 space-y-6">
+              <span className="macro-eyebrow">{copy.heroTagline}</span>
+              <h2 className="font-macro-display text-4xl md:text-5xl font-bold text-white leading-tight">
+                {copy.thesisTitle}
+              </h2>
+              <p className="font-macro-body text-white/80 text-xl leading-relaxed">
+                {copy.thesisParagraph1}
+              </p>
+              <p className="font-macro-body text-white/80 text-xl leading-relaxed">
+                {copy.thesisParagraph2}
+              </p>
             </div>
-            <h2 className="macro-section-title text-[#E8B923] text-3xl mb-6">{copy.thesisTitle}</h2>
-            <p className="macro-body mb-6">{copy.thesisParagraph1}</p>
-            <p className="macro-body">{copy.thesisParagraph2}</p>
           </div>
         </RevealSection>
 

@@ -8,7 +8,10 @@ import {
   CountUp, 
   InfrastructureBand
 } from "@/components/economy/EconomyAnimations";
-import { Atom, Award, Laptop, Rocket, ExternalLink } from "lucide-react";
+import {
+  Award,
+  ExternalLink
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "STEM Powerhouses | Innovation & Tech Foundations",
@@ -178,20 +181,20 @@ export default async function StemPowerhousesPage() {
         </div>
 
         {/* Thesis Section */}
-        <section id="intro" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-32">
-          <div className="rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 md:p-12 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-4 opacity-5">
-              <Atom className="h-40 w-40 text-[#E8B923]" />
+        <section id="overview" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-8 space-y-6">
+              <span className="macro-eyebrow">{copy.heroTagline}</span>
+              <h2 className="font-macro-display text-4xl md:text-5xl font-bold text-white leading-tight">
+                {copy.thesisTitle}
+              </h2>
+              <p className="font-macro-body text-white/80 text-xl leading-relaxed">
+                {copy.thesisParagraph1}
+              </p>
+              <p className="font-macro-body text-white/80 text-xl leading-relaxed">
+                {copy.thesisParagraph2}
+              </p>
             </div>
-            <h2 className="font-macro-display text-3xl font-bold text-[#E8B923] mb-8">
-              {copy.thesisTitle}
-            </h2>
-            <p className="font-macro-body text-white/80 text-xl leading-relaxed mb-6">
-              {copy.thesisParagraph1}
-            </p>
-            <p className="font-macro-body text-white/80 text-xl leading-relaxed">
-              {copy.thesisParagraph2}
-            </p>
           </div>
         </section>
 
