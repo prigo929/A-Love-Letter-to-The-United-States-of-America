@@ -76,6 +76,7 @@ export default async function IntelligencePage() {
         tagline={isRo ? "HUMINT · SIGINT · GEOINT · RAZBOI CIBERNETIC" : "HUMINT · SIGINT · GEOINT · CYBER WARFARE"}
         stats={heroStats}
         heightClass="h-[135dvh]"
+        isDarker={true}
       />
 
 

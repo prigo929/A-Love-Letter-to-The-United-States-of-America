@@ -718,6 +718,10 @@ export default async function QualityOfLifePage() {
               { src: SITE_IMAGES.culture.dinerInside, title: isRo ? "Cultura Diner-ului" : "Diner Dining", desc: isRo ? "Restaurantul informal american, un simbol al clasei de mijloc." : "The informal community hub for middle-class casual dining." },
               { src: SITE_IMAGES.culture.fashionJeansSneakers, title: isRo ? "Moda Uniformizată" : "Democratic Fashion", desc: isRo ? "Blugi albaștri și pantofi sport: uniforma modernă fără clase." : "Levi's blue jeans and sneakers: the global uniform of classless comfort." },
               { src: "/images/library/Housing/USA Suburb sunset.jpg", title: isRo ? "Suburbia la Apus" : "Suburban Sunset", desc: isRo ? "Case spațioase cu curte, un standard generalizat." : "Spacious multi-bedroom homes with lawns as a baseline norm." },
+              { src: SITE_IMAGES.housing.frontPorch, title: isRo ? "Pridvorul American" : "The American Porch", desc: isRo ? "Veranda din față — un spațiu semi-public emblematic." : "The front porch: a uniquely American semi-public living space." },
+              { src: SITE_IMAGES.housing.indianaAutumn, title: isRo ? "Toamna în Suburbie" : "Suburban Autumn", desc: isRo ? "Cartiere cu frunze ruginii — un tablou al normalității americane." : "Tree-lined suburban streets as a middle-class baseline." },
+              { src: SITE_IMAGES.housing.suburbSpring, title: isRo ? "Primăvara în Suburbie" : "Suburb in Spring", desc: isRo ? "Peluze verzi și flori — peisajul standard al casei americane." : "Green lawns and blossoms: the expected standard of home ownership." },
+              { src: SITE_IMAGES.housing.floridaSuburb, title: isRo ? "Suburbia Floridei" : "Florida Suburbs", desc: isRo ? "Case solare, piscine și parcuri — viața în Sun Belt." : "Sun Belt living: pools, palms, and year-round outdoor life." },
             ].map((item, i) => (
               <div
                 key={i}
@@ -734,6 +738,59 @@ export default async function QualityOfLifePage() {
                 <div className="p-6">
                   <h4 className="font-macro-display text-lg font-bold text-white mb-2">{item.title}</h4>
                   <p className="text-sm text-white/55 leading-relaxed font-body">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Outdoors & Recreation Band */}
+        <InfrastructureBand
+          imageSrc={SITE_IMAGES.outdoors.torchLake}
+          imageAlt="Torch Lake Michigan — boats on the sandbar"
+        >
+          <div className="relative z-10 text-center md:text-left">
+            <span className="macro-eyebrow mb-2 block">
+              {isRo ? "LIBERTATE ÎN AER LIBER" : "OUTDOOR FREEDOM"}
+            </span>
+            <h2 className="macro-section-title text-white mb-4">
+              {isRo ? "America în Natură" : "America in the Wild"}
+            </h2>
+            <p className="macro-body text-white/70 max-w-3xl leading-relaxed">
+              {isRo
+                ? "17 milioane de ambarcațiuni, mii de campinguri, milioane de acri de pădure și libertatea de a pleca oricând — vânătoare, pescuit, navigație, drumeție. Accesul la natură nu este un privilegiu; este parte din standardul de viață american."
+                : "17 million recreational boats, thousands of campgrounds, millions of acres of public land, and the freedom to go. Hunting, fishing, sailing, hiking — outdoor recreation is not a privilege here; it's part of the baseline standard of living."}
+            </p>
+          </div>
+        </InfrastructureBand>
+
+        {/* Outdoors Photo Grid */}
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32 mt-16">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {[
+              { src: SITE_IMAGES.outdoors.fishing, title: isRo ? "Pescuit" : "River Fishing", location: "Provo River, Utah" },
+              { src: SITE_IMAGES.outdoors.camping, title: isRo ? "Camping" : "Camping", location: "Madera Canyon, Arizona" },
+              { src: SITE_IMAGES.outdoors.rvFamily, title: isRo ? "Vacanță cu RV" : "Family RV Life", location: "American Southwest" },
+              { src: SITE_IMAGES.outdoors.sailing, title: isRo ? "Navigație" : "Great Lakes Sailing", location: "Chicago to Mackinac" },
+              { src: SITE_IMAGES.outdoors.rvGrandCanyon, title: isRo ? "RV la Grand Canyon" : "Grand Canyon RV", location: "Grand Canyon, Arizona" },
+              { src: SITE_IMAGES.outdoors.boating, title: isRo ? "Barcă pe lac" : "Lake Boating", location: "Michigan" },
+              { src: SITE_IMAGES.outdoors.hunting, title: isRo ? "Vânătoare" : "Hunting", location: "Florida" },
+              { src: SITE_IMAGES.outdoors.baldEagle, title: isRo ? "Vulturul Chel" : "Bald Eagle", location: "Symbol of American freedom" },
+              { src: SITE_IMAGES.outdoors.boatsDocked, title: isRo ? "Port de agrement" : "Marina Life", location: "Marquette, Michigan" },
+              { src: SITE_IMAGES.outdoors.rvArizona, title: isRo ? "RV în deșert" : "Desert RV", location: "Arizona" },
+              { src: SITE_IMAGES.outdoors.torchLake, title: isRo ? "Torch Lake" : "Torch Lake Sandbar", location: "Michigan" },
+            ].map((item, i) => (
+              <div key={i} className="relative aspect-square overflow-hidden rounded-2xl group">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                  <p className="text-white text-xs font-bold font-mono uppercase tracking-wider">{item.title}</p>
+                  <p className="text-white/60 text-[10px] font-mono">{item.location}</p>
                 </div>
               </div>
             ))}
@@ -828,6 +885,55 @@ export default async function QualityOfLifePage() {
                     </a>
                   )}
                 </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Cities of America */}
+        <section className="mb-32">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-10">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center font-semibold mb-2">
+              {isRo ? "ORAȘELE AMERICII" : "CITIES OF AMERICA"}
+            </p>
+            <p className="text-center text-white/40 text-sm font-body max-w-xl mx-auto">
+              {isRo
+                ? "De la coasta la coastă — metropole vibrante, capitalele statelor și orașe de dimensiuni medii prospere."
+                : "Coast to coast — vibrant metropolises, state capitals, and thriving mid-size cities that define American urban life."}
+            </p>
+          </div>
+          <div className="flex gap-3 overflow-x-auto pb-4 px-4 sm:px-6 lg:px-8 scrollbar-none" style={{ scrollSnapType: "x mandatory" }}>
+            {[
+              { src: SITE_IMAGES.cities.atlanta, label: "Atlanta, GA" },
+              { src: SITE_IMAGES.cities.chicagoSkyline, label: "Chicago, IL" },
+              { src: SITE_IMAGES.cities.nycCentralPark, label: "New York, NY" },
+              { src: SITE_IMAGES.cities.austin, label: "Austin, TX" },
+              { src: SITE_IMAGES.cities.dallas, label: "Dallas, TX" },
+              { src: SITE_IMAGES.cities.seattleNight, label: "Seattle, WA" },
+              { src: SITE_IMAGES.cities.nashville, label: "Nashville, TN" },
+              { src: SITE_IMAGES.cities.savannah, label: "Savannah, GA" },
+              { src: SITE_IMAGES.cities.seattleSpring, label: "Seattle in Spring" },
+              { src: SITE_IMAGES.cities.aerialDallas, label: "Dallas — Aerial" },
+              { src: SITE_IMAGES.cities.aerialChicago, label: "Chicago — Aerial" },
+              { src: SITE_IMAGES.cities.aerialSantaMonica, label: "Santa Monica, CA" },
+              { src: SITE_IMAGES.cities.aerialPasadena, label: "Pasadena, CA" },
+              { src: SITE_IMAGES.cities.seattleDay, label: "Seattle Skyline" },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="relative shrink-0 w-64 h-44 rounded-2xl overflow-hidden group"
+                style={{ scrollSnapAlign: "start" }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.src}
+                  alt={item.label}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/65 to-transparent" />
+                <p className="absolute bottom-3 left-3 text-white text-xs font-mono font-bold uppercase tracking-wider">
+                  {item.label}
+                </p>
               </div>
             ))}
           </div>

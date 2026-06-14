@@ -962,7 +962,7 @@ export function GlobalCarrierMap({ positions, locale = 'en' }: { positions: Carr
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ParallaxMilitaryHero({
-  imageSrc, imageAlt, videoSrc, title, subtitle, tagline, stats, heightClass = "h-[180dvh]"
+  imageSrc, imageAlt, videoSrc, title, subtitle, tagline, stats, heightClass = "h-[180dvh]", isDarker = false
 }: { 
   imageSrc: string; 
   imageAlt: string; 
@@ -972,6 +972,7 @@ export function ParallaxMilitaryHero({
   tagline?: string;
   stats?: { value: string; label: string }[];
   heightClass?: string;
+  isDarker?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -1004,6 +1005,10 @@ export function ParallaxMilitaryHero({
   const textOpacity = useTransform(scrollYProgress, [0, 0.2, 0.5], [1, 1, 0]);
   const textY = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
 
+  const mediaClass = isDarker
+    ? "brightness-[0.45] saturate-[0.75] grayscale-[0.3]"
+    : "brightness-[0.68] saturate-[0.85] grayscale-[0.3]";
+
   return (
     <div ref={ref} className={cn("relative bg-black", heightClass)}>
       {/* Sticky container */}
@@ -1024,7 +1029,7 @@ export function ParallaxMilitaryHero({
               alt={imageAlt}
               fill
               priority
-              className="object-cover brightness-[0.68] saturate-[0.85] grayscale-[0.3]"
+              className={cn("object-cover", mediaClass)}
               sizes="100vw"
               placeholder="blur"
               blurDataURL={BLUR_PLACEHOLDER}
@@ -1040,7 +1045,7 @@ export function ParallaxMilitaryHero({
               playsInline
               preload="auto"
               poster={imageSrc}
-              className="absolute inset-0 h-full w-full object-cover brightness-[0.68] saturate-[0.85] grayscale-[0.3]"
+              className={cn("absolute inset-0 h-full w-full object-cover", mediaClass)}
             >
               <source src={videoSrc} type="video/mp4" />
             </video>
@@ -1157,6 +1162,7 @@ export function VideoMilitaryHero({
   const videoOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
   const videoScale  = useTransform(scrollYProgress, [0, 0.55], [1.0, 1.18]);
   const videoY      = useTransform(scrollYProgress, [0, 1],    ["0%", "22%"]);
+  const videoBlur   = useTransform(scrollYProgress, [0, 0.55], [0, 15]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.2, 0.5], [1, 1, 0]);
   const textY       = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
   const placeholderImage = imageSrc || posterSrc;
@@ -1167,7 +1173,12 @@ export function VideoMilitaryHero({
         {/* ── Looping video layer ── */}
         <motion.div
           className="absolute inset-0 will-change-transform"
-          style={{ opacity: videoOpacity, scale: videoScale, y: videoY }}
+          style={{ 
+            opacity: videoOpacity, 
+            scale: videoScale, 
+            y: videoY,
+            filter: useTransform(videoBlur, (v) => `blur(${v}px)`)
+          }}
         >
           {!videoSrc && placeholderImage && (
             <Image
