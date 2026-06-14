@@ -43,6 +43,33 @@ import scienceLab from "@/IMAGES/Science/science-lab.jpg";
 import homeSiliconValley from "@/IMAGES/Technology/macro of a silicon wafer.jpg";
 import siliconValleyOffice from "@/IMAGES/Technology/Apple Headquarters.jpg";
 
+// University
+import uniDartmouth from "@/IMAGES/University/Dartmouth College.jpg";
+import uniBrown from "@/IMAGES/University/Main Green. Brown University.jpg";
+import uniYaleAerial from "@/IMAGES/University/Yale Aerial.jpg";
+import uniYaleKlineTower from "@/IMAGES/University/View From Kline Tower Over Science Hill And New Haven To Long Island Sound.jpg";
+import uniDukeChapel from "@/IMAGES/University/Duke_Chapel,_West_Campus,_Duke_University,_Durham,_NC_(48961090317).jpg";
+import uniHarvardCommencement from "@/IMAGES/University/Harvard-Commencement-Conan-OBrien-85.jpg";
+import uniHarvardLawGrads from "@/IMAGES/University/Harvard Law School graduates celebrate.jpg";
+import uniHarvardFall from "@/IMAGES/University/Fall foliage adds dazzling color to the view of campus from across the Charles River.jpg";
+import uniHarvardRowers from "@/IMAGES/University/Trees frame the rowers on the Charles River.jpg";
+import uniHarvardWidener from "@/IMAGES/University/Cambridge_-_USA_-_Harvard_University_-_Harry_Elkins_Widener_Memorial_Library_-_panoramio.jpg";
+import uniChicagoAerial from "@/IMAGES/University/University of Chicago Aerial View.jpg";
+import uniPrinceton2 from "@/IMAGES/University/Princeton University 2.jpg";
+import uniBerkeleyHills from "@/IMAGES/University/UC-Berkeley-campus-overview-from-hills.h.jpg";
+
+// Landscapes
+import landscapeGrandTeton from "@/IMAGES/Landscapes/Grand Teton National Park.jpg";
+import landscapeSaguaro from "@/IMAGES/Landscapes/Saguaro National Park, United States Desert.jpg";
+import landscapeSequoia from "@/IMAGES/Landscapes/Sequoia National Park.jpg";
+import landscapeTheodoreRoosevelt from "@/IMAGES/Landscapes/Theodore Roosevelt National Park, North Dakota.jpg";
+import landscapeBlueRidge from "@/IMAGES/Landscapes/Blue Ridge Mountains, Western North Carolina.jpg";
+import landscapeTunnelViewYosemite from "@/IMAGES/Landscapes/Tunnel View Yosemite National Park.jpg";
+import landscapeGrandCanyonCave from "@/IMAGES/Landscapes/Grand Canyon National Park Cave.jpg";
+import landscapeColoradoRiver from "@/IMAGES/Landscapes/colorado-river-in-the-grand-canyon.jpg";
+import landscapeMississippi from "@/IMAGES/Landscapes/Mississippi River running through Minneapolis .jpg";
+import landscapeChattanooga from "@/IMAGES/Landscapes/Chattanooga, TN Moccasin Bend Elevated View of River Bend Forest and Highway.jpg";
+
 // Housing
 import housingFrontPorch from "@/IMAGES/Housing/Charming suburban house with front porch, landscaping, and white facade.jpg";
 import housingDuskHouse from "@/IMAGES/Housing/Charming two-story house with manicured lawn and garage, set in Yelm, WA, under dusk sky.jpg";
@@ -392,6 +419,12 @@ import baseEielson from "@/IMAGES/Military/Global Bases/Eielson Air Force Base.j
 import baseClear from "@/IMAGES/Military/Global Bases/Clear Space Force Station.jpg";
 import baseFortLiberty from "@/IMAGES/Military/Global Bases/Fort_Bragg : Liberty.jpg";
 import baseKadena from "@/IMAGES/Military/Global Bases/Kadena_Air_Base_Aerial_photograph_1977.jpg";
+import basePearlHarbor from "@/IMAGES/Military/Global Bases/indo_pacific_joint_base_pearl_harbor_hickam.jpg";
+import baseSanDiego from "@/IMAGES/Military/Global Bases/pacific_naval_base_san_diego.jpg";
+import baseRotaNavy from "@/IMAGES/Military/Global Bases/naval_station_rota.jpg";
+import sr71Blackbird from "@/IMAGES/Military/Air Force/Lockheed_SR-71_Blackbird.jpg";
+import zumwaltDDG1000 from "@/IMAGES/Military/Navy/uss_zumwalt_ddg_1000.jpg";
+import virginiaClassSub from "@/IMAGES/Military/Navy/virginia_class_ssn_uss_minnesota.jpg";
 
 // Export plain `.src` strings so the rest of the app can use them in Next Image
 // components without caring which physical file they came from.
@@ -486,6 +519,8 @@ export const SITE_IMAGES = {
     heritageCubanMissileCrisis: navyHeritageCubanMissileCrisis.src,
     heritageTomahawk: navyHeritageTomahawk.src,
     heritageLincoln: navyHeritageLincoln.src,
+    zumwalt: zumwaltDDG1000.src,
+    virginiaClass: virginiaClassSub.src,
   },
   airForce: {
     hero: airForceHero.src,
@@ -511,6 +546,7 @@ export const SITE_IMAGES = {
     f117: f117StealthBaghdad.src,
     kc135: kc135Stratotanker.src,
     kc46: kc46Pegasus.src,
+    sr71: sr71Blackbird.src,
   },
   spaceForce: {
     launch: spaceForceLaunch.src,
@@ -563,6 +599,9 @@ export const SITE_IMAGES = {
     clear: baseClear.src,
     fortLiberty: baseFortLiberty.src,
     kadena: baseKadena.src,
+    pearlHarbor: basePearlHarbor.src,
+    sanDiego: baseSanDiego.src,
+    rotaNavy: baseRotaNavy.src,
   },
   culture: {
     hollywoodSign: cultureHollywoodSign.src,
@@ -743,6 +782,19 @@ export const SITE_IMAGES = {
     skyline2: nashvilleSkyline2.src,
   },
 
+  landscapes: {
+    grandTeton: landscapeGrandTeton.src,
+    saguaro: landscapeSaguaro.src,
+    sequoia: landscapeSequoia.src,
+    theodoreRoosevelt: landscapeTheodoreRoosevelt.src,
+    blueRidge: landscapeBlueRidge.src,
+    tunnelViewYosemite: landscapeTunnelViewYosemite.src,
+    grandCanyonCave: landscapeGrandCanyonCave.src,
+    coloradoRiver: landscapeColoradoRiver.src,
+    mississippi: landscapeMississippi.src,
+    chattanooga: landscapeChattanooga.src,
+  },
+
   housing: {
     frontPorch: housingFrontPorch.src,
     duskHouse: housingDuskHouse.src,
@@ -784,5 +836,21 @@ export const SITE_IMAGES = {
     aerialSantaMonica: aerialSantaMonica.src,
     aerialDallasHighway: aerialDallasHighway.src,
     aerialPasadena: aerialPasadena.src,
+  },
+
+  university: {
+    dartmouth: uniDartmouth.src,
+    brown: uniBrown.src,
+    yaleAerial: uniYaleAerial.src,
+    yaleKlineTower: uniYaleKlineTower.src,
+    dukeChapel: uniDukeChapel.src,
+    harvardCommencement: uniHarvardCommencement.src,
+    harvardLawGrads: uniHarvardLawGrads.src,
+    harvardFall: uniHarvardFall.src,
+    harvardRowers: uniHarvardRowers.src,
+    harvardWidener: uniHarvardWidener.src,
+    chicagoAerial: uniChicagoAerial.src,
+    princeton2: uniPrinceton2.src,
+    berkeleyHills: uniBerkeleyHills.src,
   },
 } as const;

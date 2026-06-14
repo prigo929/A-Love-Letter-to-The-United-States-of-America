@@ -431,6 +431,13 @@ export const AF_HERITAGE_TIMELINE: AirForceHeritageEvent[] = [
     imageSrc: SITE_IMAGES.airForce.b52,
   },
   {
+    year: "1966",
+    title: "SR-71 Blackbird — Mach 3 Invincibility",
+    description: "The Lockheed SR-71 Blackbird enters operational service, flying at Mach 3.2 and 85,000 feet — above every known surface-to-air missile and interceptor. Over 32 years of operations, no SR-71 was ever shot down.",
+    significance: "Unchallengeable ISR dominance",
+    imageSrc: SITE_IMAGES.airForce.sr71,
+  },
+  {
     year: "1991",
     title: "Desert Storm — Stealth Revolution",
     description: "F-117 Nighthawks strike Baghdad on opening night with zero losses. The 43-day air campaign destroys Iraq's military infrastructure and proves stealth technology has permanently changed warfare.",

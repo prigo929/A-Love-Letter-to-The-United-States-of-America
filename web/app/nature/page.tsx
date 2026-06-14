@@ -333,6 +333,51 @@ export default async function NaturePage() {
         </div>
       </section>
 
+      {/* ── LANDSCAPE MOSAIC ──────────────────────────────────────────────── */}
+      <section className="bg-(--nat-void,#030504) py-24 md:py-32">
+        <div className="mx-auto max-w-[1440px] px-6 md:px-12">
+          <p className="nat-text-label mb-6" style={{ color: 'var(--nat-accent-forest)' }}>
+            {isRo ? "Diversitatea Peisajelor" : "Landscape Diversity"}
+          </p>
+          <h2 className="nat-text-heading text-white mb-4">
+            {isRo ? "De la Deșert la Ghetar" : "Desert to Glacier"}
+          </h2>
+          <p className="nat-text-body mb-12 max-w-[700px]">
+            {isRo
+              ? "Nicio altă țară dezvoltată nu cuprinde un spectru atât de vast de ecosisteme — deșerturi de cactus saguaro, păduri de secvoia, munți stâncoși, câmpii de iarbă, fluvii și lanțuri muntoase îmbrăcate în brumă."
+              : "No other developed nation spans such a breadth of ecosystems — saguaro deserts, sequoia forests, rocky badlands, prairies, rivers, and mist-covered mountain ranges all within one country."}
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
+            {([
+              { src: SITE_IMAGES.landscapes.grandTeton,          label: isRo ? "Munții Grand Teton" : "Grand Teton NP",              region: isRo ? "Wyoming" : "Wyoming" },
+              { src: SITE_IMAGES.landscapes.saguaro,             label: isRo ? "Parcul Național Saguaro" : "Saguaro NP",             region: isRo ? "Arizona" : "Arizona" },
+              { src: SITE_IMAGES.landscapes.sequoia,             label: isRo ? "Parcul Național Sequoia" : "Sequoia NP",             region: isRo ? "California" : "California" },
+              { src: SITE_IMAGES.landscapes.theodoreRoosevelt,   label: isRo ? "P.N. Theodore Roosevelt" : "Theodore Roosevelt NP",  region: isRo ? "Dakota de Nord" : "North Dakota" },
+              { src: SITE_IMAGES.landscapes.blueRidge,           label: isRo ? "Munții Blue Ridge" : "Blue Ridge Mountains",         region: isRo ? "Carolina de Nord" : "North Carolina" },
+              { src: SITE_IMAGES.landscapes.tunnelViewYosemite,  label: isRo ? "Yosemite — Tunnel View" : "Yosemite Tunnel View",    region: isRo ? "California" : "California" },
+              { src: SITE_IMAGES.landscapes.grandCanyonCave,     label: isRo ? "Grand Canyon — Peșteră" : "Grand Canyon Cave",       region: isRo ? "Arizona" : "Arizona" },
+              { src: SITE_IMAGES.landscapes.coloradoRiver,       label: isRo ? "Râul Colorado" : "Colorado River",                  region: isRo ? "Grand Canyon" : "Grand Canyon" },
+              { src: SITE_IMAGES.landscapes.mississippi,         label: isRo ? "Fluviul Mississippi" : "Mississippi River",         region: isRo ? "Minneapolis" : "Minneapolis" },
+              { src: SITE_IMAGES.landscapes.chattanooga,         label: isRo ? "Chattanooga" : "Chattanooga",                       region: isRo ? "Tennessee" : "Tennessee" },
+            ] as { src: string; label: string; region: string }[]).map((item, i) => (
+              <div key={i} className="relative overflow-hidden rounded-xl group" style={{ aspectRatio: '3/4' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.src}
+                  alt={item.label}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(3,5,4,0.85)_0%,rgba(3,5,4,0)_55%)]" />
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <p className="nat-text-label text-white leading-tight" style={{ fontSize: '11px' }}>{item.label}</p>
+                  <p className="nat-text-metadata mt-0.5" style={{ color: 'var(--nat-accent-forest)', fontSize: '10px' }}>{item.region}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── PARALLAX BAND 3 — Burns ──────────────────────────────────────── */}
       <ParallaxImageBand
         imageSrc={SITE_IMAGES.denaliNationalPark}

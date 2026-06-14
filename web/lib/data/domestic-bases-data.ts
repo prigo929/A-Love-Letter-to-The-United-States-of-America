@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n/config";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 export type ServiceBranch = 'Joint' | 'Army' | 'Marine Corps' | 'Navy' | 'Air Force' | 'Space Force';
 
@@ -10,6 +11,7 @@ export interface DomesticBase {
   coordinates: string;
   locationDetails?: string;
   description?: string;
+  imageUrl?: string;
 }
 
 export const domesticBases: DomesticBase[] = [
@@ -18,7 +20,7 @@ export const domesticBases: DomesticBase[] = [
   // ==========================================
   { id: 'pentagon', name: 'The Pentagon', branch: 'Joint', state: 'Virginia', coordinates: '38.8719, -77.0563', locationDetails: 'Arlington County', description: 'Headquarters of the United States Department of Defense and the central command node for the U.S. Armed Forces.' },
   { id: 'jb-elmendorf-richardson', name: 'Joint Base Elmendorf–Richardson', branch: 'Joint', state: 'Alaska', coordinates: '61.2514, -149.8058', locationDetails: 'Anchorage', description: 'Premier staging hub for Pacific Air Forces and Army airborne units, offering rapid deployment across the Indo-Pacific and Arctic.' },
-  { id: 'jb-pearl-harbor-hickam', name: 'Joint Base Pearl Harbor–Hickam', branch: 'Joint', state: 'Hawaii', coordinates: '21.3382, -157.9468', locationDetails: 'Honolulu', description: 'Historic deep-water naval base and aviation hub serving as the central nervous system for Pacific Fleet and Pacific Air Forces.' },
+  { id: 'jb-pearl-harbor-hickam', name: 'Joint Base Pearl Harbor–Hickam', branch: 'Joint', state: 'Hawaii', coordinates: '21.3382, -157.9468', locationDetails: 'Honolulu', description: 'Historic deep-water naval base and aviation hub serving as the central nervous system for Pacific Fleet and Pacific Air Forces.', imageUrl: SITE_IMAGES.globalBases.pearlHarbor },
   { id: 'jb-mcguire-dix-lakehurst', name: 'Joint Base McGuire–Dix–Lakehurst', branch: 'Joint', state: 'New Jersey', coordinates: '40.0347, -74.5888', locationDetails: 'Trenton', description: 'The DoD’s only tri-service joint base, specializing in global mobility, rapid deployment, and advanced aviation engineering.' },
   { id: 'jb-charleston', name: 'Joint Base Charleston', branch: 'Joint', state: 'South Carolina', coordinates: '32.8986, -80.0405', locationDetails: 'North Charleston', description: 'Massive logistics and airlift node responsible for sustaining global operations and moving heavy armor via sealift.' },
   { id: 'jb-san-antonio', name: 'Joint Base San Antonio', branch: 'Joint', state: 'Texas', coordinates: '29.4526, -98.4354', locationDetails: 'San Antonio', description: 'The largest joint base in the DoD, acting as the epicenter for military medical training and Air Force basic training.' },
@@ -87,7 +89,7 @@ export const domesticBases: DomesticBase[] = [
   // ==========================================
   { id: 'naws-china-lake', name: 'Naval Air Weapons Station China Lake', branch: 'Navy', state: 'California', coordinates: '35.6880, -117.6583', description: 'The Navy’s premier installation for research, testing, and evaluation of advanced aviation weapons systems.' },
   { id: 'nb-coronado', name: 'Naval Base Coronado', branch: 'Navy', state: 'California', coordinates: '32.6946, -117.1818', description: 'Consortium of installations housing aircraft carriers, SEAL teams, and Pacific Fleet naval aviation.' },
-  { id: 'nb-san-diego', name: 'Naval Base San Diego', branch: 'Navy', state: 'California', coordinates: '32.6806, -117.1260', description: 'The principal homeport of the Pacific Fleet, accommodating over 50 combat ships.' },
+  { id: 'nb-san-diego', name: 'Naval Base San Diego', branch: 'Navy', state: 'California', coordinates: '32.6806, -117.1260', description: 'The principal homeport of the Pacific Fleet, accommodating over 50 combat ships.', imageUrl: SITE_IMAGES.globalBases.sanDiego },
   { id: 'nsb-new-london', name: 'Naval Submarine Base New London', branch: 'Navy', state: 'Connecticut', coordinates: '41.3967, -72.0883', description: 'The "Home of the Submarine Force," serving as the primary East Coast base for fast-attack nuclear submarines.' },
   { id: 'nas-jacksonville', name: 'Naval Air Station Jacksonville', branch: 'Navy', state: 'Florida', coordinates: '30.2335, -81.6807', description: 'A massive aviation hub focused on anti-submarine warfare and maritime patrol (P-8 Poseidon).' },
   { id: 'nas-pensacola', name: 'Naval Air Station Pensacola', branch: 'Navy', state: 'Florida', coordinates: '30.3541, -87.3142', description: 'The "Cradle of Naval Aviation" and home base for the legendary Blue Angels flight demonstration squadron.' },

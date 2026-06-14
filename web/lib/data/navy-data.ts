@@ -238,8 +238,8 @@ export const NAVY_PLATFORMS: NavyPlatform[] = [
     name: "Virginia-class SSN",
     className: "Fast attack submarine",
     role: "Undersea search & strike",
-    imageSrc: SITE_IMAGES.navy.ohioSubmarine,
-    imageAlt: "Virginia-class fast attack submarine underway",
+    imageSrc: SITE_IMAGES.navy.virginiaClass,
+    imageAlt: "USS Minnesota Virginia-class fast attack submarine underway",
     capability:
       "The backbone of modern undersea warfare, designed to hunt hostile submarines, launch Tomahawk cruise missiles, deploy Special Forces, and conduct intelligence gathering in contested littoral waters.",
     specs: [
@@ -253,8 +253,8 @@ export const NAVY_PLATFORMS: NavyPlatform[] = [
     name: "USS Zumwalt (DDG-1000)",
     className: "Stealth guided-missile destroyer",
     role: "Littoral stealth & land strike",
-    imageSrc: SITE_IMAGES.navy.destroyer,
-    imageAlt: "USS Zumwalt stealth destroyer at sea",
+    imageSrc: SITE_IMAGES.navy.zumwalt,
+    imageAlt: "USS Zumwalt DDG-1000 stealth destroyer at sea",
     capability:
       "A multi-mission stealth destroyer designed with a radically minimized radar profile and an integrated electric power system to operate in littoral regions and project land-attack fires.",
     specs: [

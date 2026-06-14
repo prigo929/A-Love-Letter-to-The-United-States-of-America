@@ -3,18 +3,35 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import { 
-  Award, 
-  BookOpen, 
-  Atom, 
-  Building2 
+import { SITE_IMAGES } from "@/lib/site-images";
+import {
+  Award,
+  BookOpen,
+  Atom,
+  Building2
 } from "lucide-react";
-import { 
-  MacroStyles, 
-  MacroHero, 
-  CountUp, 
-  InfrastructureBand 
+import {
+  MacroStyles,
+  MacroHero,
+  CountUp,
+  InfrastructureBand
 } from "@/components/economy/EconomyAnimations";
+
+const campusPhotos = [
+  { key: "harvardFall" as const,        label: "Harvard University",          sub: "Cambridge, MA — Charles River fall foliage" },
+  { key: "harvardWidener" as const,     label: "Widener Library, Harvard",     sub: "Cambridge, MA" },
+  { key: "harvardCommencement" as const,label: "Harvard Commencement",         sub: "Tercentenary Theatre" },
+  { key: "harvardRowers" as const,      label: "Rowing on the Charles River",  sub: "Cambridge, MA" },
+  { key: "harvardLawGrads" as const,    label: "Harvard Law School",           sub: "Cambridge, MA" },
+  { key: "yaleAerial" as const,         label: "Yale University",              sub: "New Haven, CT — Aerial" },
+  { key: "yaleKlineTower" as const,     label: "Yale Science Hill",            sub: "New Haven, CT — Long Island Sound view" },
+  { key: "princeton2" as const,         label: "Princeton University",         sub: "Princeton, NJ" },
+  { key: "dartmouth" as const,          label: "Dartmouth College",            sub: "Hanover, NH" },
+  { key: "brown" as const,              label: "Brown University",             sub: "Providence, RI — Main Green" },
+  { key: "dukeChapel" as const,         label: "Duke Chapel",                  sub: "West Campus, Duke University, Durham, NC" },
+  { key: "chicagoAerial" as const,      label: "University of Chicago",        sub: "Chicago, IL — Aerial view" },
+  { key: "berkeleyHills" as const,      label: "UC Berkeley",                  sub: "Berkeley, CA — View from the hills" },
+];
 
 export const metadata: Metadata = {
   title: "Higher Education | The World's University",
@@ -201,13 +218,13 @@ export default async function UniversitiesPage() {
         </section>
 
         {/* Dynamic Count-Up Academic Stats */}
-        <section className="py-24 border-t border-b border-white/5 bg-white/[0.01] mb-32">
+        <section className="py-24 border-t border-b border-white/5 bg-white/1 mb-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h3 className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-16 font-semibold">
               {copy.statsTitle}
             </h3>
             <div className="grid gap-12 sm:grid-cols-3 text-center">
-              <div className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500">
+              <div className="p-8 rounded-2xl border border-white/5 bg-white/1 hover:border-[#E8B923]/20 transition-all duration-500">
                 <p className="font-macro-display text-5xl md:text-6xl text-[#E8B923] font-black tracking-tight mb-4">
                   <CountUp value={17} prefix="15-" suffix=" of 20" />
                 </p>
@@ -218,7 +235,7 @@ export default async function UniversitiesPage() {
                   {isRo ? "Dominarea indicilor globali majori (QS, Times, Shanghai ARWU) an de an." : "Dominating major global indexes (QS, Times, Shanghai ARWU) year after year."}
                 </p>
               </div>
-              <div className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500">
+              <div className="p-8 rounded-2xl border border-white/5 bg-white/1 hover:border-[#E8B923]/20 transition-all duration-500">
                 <p className="font-macro-display text-5xl md:text-6xl text-[#E8B923] font-black tracking-tight mb-4">
                   <CountUp value={873.7} prefix="$" suffix="B" decimals={1} />
                 </p>
@@ -229,7 +246,7 @@ export default async function UniversitiesPage() {
                   {isRo ? "Harvard ($52B) și Yale dețin fonduri ce depășesc PIB-ul unor țări ca Islanda sau Nicaragua, consolidând avantajul." : "The private wealth of 658 institutions. Harvard ($52B) and Yale hold assets exceeding the GDP of countries like Iceland."}
                 </p>
               </div>
-              <div className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-[#E8B923]/20 transition-all duration-500">
+              <div className="p-8 rounded-2xl border border-white/5 bg-white/1 hover:border-[#E8B923]/20 transition-all duration-500">
                 <p className="font-macro-display text-5xl md:text-6xl text-[#E8B923] font-black tracking-tight mb-4">
                   <CountUp value={400} suffix="k+" />
                 </p>
@@ -254,7 +271,7 @@ export default async function UniversitiesPage() {
               <Link
                 key={idx}
                 href={item.href}
-                className="group rounded-3xl border border-white/5 bg-white/[0.02] p-8 flex flex-col justify-between hover:border-[#E8B923]/40 hover:bg-white/[0.04] transition-all duration-500 shadow-xl"
+                className="group rounded-3xl border border-white/5 bg-white/2 p-8 flex flex-col justify-between hover:border-[#E8B923]/40 hover:bg-white/4 transition-all duration-500 shadow-xl"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
@@ -301,9 +318,9 @@ export default async function UniversitiesPage() {
 
         {/* Rankings Section */}
         <section id="feature" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
-          <div className="rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 md:p-12">
+          <div className="rounded-3xl border border-white/5 bg-white/2 backdrop-blur-md p-8 md:p-12">
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[600px] text-left">
+              <table className="w-full min-w-150 text-left">
                 <thead>
                   <tr className="border-b border-white/10">
                     <th className="py-4 text-xs font-mono uppercase tracking-wider text-white/40 px-4">#</th>
@@ -314,7 +331,7 @@ export default async function UniversitiesPage() {
                 </thead>
                 <tbody>
                   {copy.rankingTable.map((row, i) => (
-                    <tr key={i} className="border-b border-white/5 last:border-0 hover:bg-white/[0.03] transition-colors">
+                    <tr key={i} className="border-b border-white/5 last:border-0 hover:bg-white/3 transition-colors">
                       <td className="py-5 font-mono text-lg text-[#E8B923] font-bold px-4">{row.rank}</td>
                       <td className="py-5 text-base font-semibold text-white px-4">{row.university}</td>
                       <td className="py-5 text-sm text-white/60 px-4">{row.location}</td>
@@ -328,6 +345,38 @@ export default async function UniversitiesPage() {
                 </tbody>
               </table>
             </div>
+          </div>
+        </section>
+
+        {/* Campus Photo Mosaic */}
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
+          <div className="text-center mb-12">
+            <span className="macro-eyebrow mb-4 block">
+              {isRo ? "CAMPUSURI EMBLEMATICE" : "ICONIC CAMPUSES"}
+            </span>
+            <h2 className="font-macro-display text-4xl font-bold text-white">
+              {isRo ? "America Academică în Imagini" : "Academic America in Images"}
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {campusPhotos.map((photo) => (
+              <div
+                key={photo.key}
+                className="group relative overflow-hidden rounded-xl"
+                style={{ aspectRatio: "4/3" }}
+              >
+                <img
+                  src={SITE_IMAGES.university[photo.key]}
+                  alt={photo.label}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <p className="text-white text-sm font-semibold leading-tight">{photo.label}</p>
+                  <p className="text-white/60 text-xs mt-0.5">{photo.sub}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 

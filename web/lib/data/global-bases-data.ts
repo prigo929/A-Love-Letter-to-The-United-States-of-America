@@ -128,7 +128,7 @@ export const strategicBases: StrategicBase[] = [
     "Operational Focus": "Mediterranean access, ballistic missile defense patrols, Atlantic logistics, and naval forward presence.",
     "Critical Infrastructure": ["Destroyer homeport", "Port access", "Airfield", "Ammunition support"],
     "Strategic Rationale": "A hinge point between the Atlantic, Mediterranean, and North Africa that keeps naval missile-defense assets forward without cycling every hull from the U.S. East Coast.",
-    "Image URL": SITE_IMAGES.globalBases.rota,
+    "Image URL": SITE_IMAGES.globalBases.rotaNavy,
   },
   {
     ID: "andersen-air-force-base",

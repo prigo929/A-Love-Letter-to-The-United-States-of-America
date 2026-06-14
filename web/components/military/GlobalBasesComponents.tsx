@@ -1249,7 +1249,7 @@ export function DomesticBasesSection({
     "Strategic Rationale": isRo
       ? `Nod logistic și de generare a forței în ${base.state}.`
       : `Force-generation and logistical command node in ${base.state}.`,
-    "Image URL": SITE_IMAGES.homeUsaAtNightFromSpace,
+    "Image URL": base.imageUrl ?? SITE_IMAGES.homeUsaAtNightFromSpace,
   });
 
   return (
