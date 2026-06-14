@@ -522,6 +522,12 @@ export const NAV_SECTIONS = [
         href: "/data/misconceptions",
         description: "Debunking common myths and narratives",
       },
+      {
+        label: "Ask America Oracle",
+        href: "/interactive",
+        description:
+          "AI oracle: ask a question and get a sourced answer synthesized from all 12 verticals",
+      },
     ],
   },
 ] as const;
@@ -944,6 +950,11 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "/data/misconceptions": {
         label: "Concepții Greșite",
         description: "Demistificarea miturilor și narațiunilor comune",
+      },
+      "/interactive": {
+        label: "Oracolul Ask America",
+        description:
+          "Oracol AI: pune o întrebare și primești un răspuns documentat, sintetizat din toate cele 12 verticale",
       },
     },
   },
