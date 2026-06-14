@@ -191,6 +191,8 @@ export default async function SpaceTechnologyPage() {
         eyebrow={copy.breadcrumbPage}
         description={copy.heroSubtitle}
         videoSrc="/videos/library/Technology/Starship's Tenth Flight Test launch and landing cinematic.mp4"
+        imageSrc="/images/library/Technology/Landed rockets in hangar 39A SpaceX.jpg"
+        imageAlt="SpaceX Landed Rockets in Hangar 39A"
       />
 
       <div className="bg-[#000000] relative z-10 pb-32 pt-16 font-body text-white">

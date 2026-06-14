@@ -218,6 +218,8 @@ export default async function InnovationPage() {
       <MacroStyles />
       <MacroHero
         videoSrc="/videos/library/Technology/TERAFAB cinematic - with Tesla and SpaceX.mp4"
+        imageSrc="/images/library/Technology/home-silicon-valley.jpg"
+        imageAlt="Silicon Valley technology hub"
         eyebrow={copy.heroEyebrow}
         titleLead={copy.heroTitleLead}
         titleAccent={copy.heroTitleAccent}

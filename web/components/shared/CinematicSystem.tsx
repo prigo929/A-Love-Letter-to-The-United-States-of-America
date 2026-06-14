@@ -278,6 +278,7 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -300,31 +301,39 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
   return (
     <div ref={ref} className="relative min-h-[100dvh] w-full overflow-hidden bg-[#000000] pt-32 pb-16 flex flex-col justify-center">
       <motion.div style={{ y, scale, opacity: 0.6 }} className="absolute inset-0">
-        {videoSrc ? (
+        {videoSrc && (
           <video
             ref={videoRef}
             autoPlay
             loop
             muted
             playsInline
-            preload="metadata"
-            className="absolute inset-0 h-full w-full object-cover"
+            preload="auto"
+            onLoadedData={() => setIsVideoLoaded(true)}
+            className={cn(
+              "absolute inset-0 h-full w-full object-cover transition-opacity duration-1000",
+              !imageSrc || isVideoLoaded ? "opacity-100" : "opacity-0"
+            )}
           >
             <source src={videoSrc} type="video/mp4" />
           </video>
-        ) : imageSrc ? (
+        )}
+        {imageSrc && (
           <Image
             src={imageSrc}
             alt={imageAlt || ""}
             fill
             priority
-            className="object-cover"
+            className={cn(
+              "object-cover transition-opacity duration-1000",
+              videoSrc && isVideoLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
+            )}
             sizes="100vw"
             placeholder="blur"
             blurDataURL={BLUR_PLACEHOLDER}
             quality={90}
           />
-        ) : null}
+        )}
       </motion.div>
       <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-[#000000] pointer-events-none z-[1]" />
       <div className="absolute inset-0 bg-linear-to-b from-[#000000] via-transparent to-[#000000] pointer-events-none opacity-80 z-[1]" />

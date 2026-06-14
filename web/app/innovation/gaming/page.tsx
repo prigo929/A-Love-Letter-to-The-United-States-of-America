@@ -325,6 +325,8 @@ export default async function GamingPage() {
         eyebrow={copy.breadcrumbPage}
         description={copy.heroSubtitle}
         videoSrc="/videos/library/Technology/Video Games edit.mp4"
+        imageSrc="/images/library/Technology/EA HQ campus logo.jpg"
+        imageAlt="Electronic Arts campus logo"
       />
 
       <div className="bg-[#000000] relative z-10 pb-32 pt-16 font-body text-white">

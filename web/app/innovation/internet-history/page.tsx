@@ -235,6 +235,8 @@ export default async function InternetHistoryPage() {
         eyebrow={copy.breadcrumbPage}
         description={copy.heroSubtitle}
         videoSrc="/videos/library/Technology/Fiber Optics, light, trails video.mp4"
+        imageSrc="/images/library/Technology/Fiber Optic Cable.jpg"
+        imageAlt="Fiber optic internet backbone cable"
       />
 
       <div className="bg-[#000000] relative z-10 pb-32 pt-16 font-body text-white">

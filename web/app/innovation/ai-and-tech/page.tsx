@@ -258,6 +258,8 @@ export default async function AiAndTechPage() {
         eyebrow={copy.breadcrumbPage}
         description={copy.heroSubtitle}
         videoSrc="/videos/library/Technology/Nvidia AI cinematic.mp4"
+        imageSrc="/images/library/Technology/Vivid and detailed close-up of a patterned silicon wafer with vibrant green and blue colors.jpg"
+        imageAlt="Detailed silicon wafer close-up"
       />
 
       <div className="bg-[#000000] relative z-10 pb-32 pt-16 font-body text-white">

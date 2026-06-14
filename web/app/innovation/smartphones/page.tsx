@@ -330,6 +330,8 @@ export default async function SmartphonesPage() {
         eyebrow={copy.breadcrumbPage}
         description={copy.heroSubtitle}
         videoSrc="/videos/library/Technology/Introducing iPhone 17 Pro | Apple.mp4"
+        imageSrc="/images/library/Technology/iPhone saying Hello on dark background.jpg"
+        imageAlt="iPhone hello screen on dark background"
       />
 
       <div className="bg-[#000000] relative z-10 pb-32 pt-16 font-body text-white">
