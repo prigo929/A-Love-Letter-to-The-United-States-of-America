@@ -108,8 +108,8 @@ export function MacroStyles() {
         -webkit-backdrop-filter: blur(24px) saturate(1.5);
         background: linear-gradient(
           to bottom,
-          rgba(3, 4, 5, 0.8) 0%,
-          rgba(3, 4, 5, 0.4) 100%
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.4) 100%
         );
         border-top: 1px solid rgba(255, 255, 255, 0.05);
       }
@@ -278,7 +278,6 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const prefersReducedMotion = useReducedMotion();
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -301,6 +300,19 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
   return (
     <div ref={ref} className="relative min-h-[100dvh] w-full overflow-hidden bg-[#000000] pt-32 pb-16 flex flex-col justify-center">
       <motion.div style={{ y, scale, opacity: 0.6 }} className="absolute inset-0">
+        {imageSrc && (
+          <Image
+            src={imageSrc}
+            alt={imageAlt || ""}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+            placeholder="blur"
+            blurDataURL={BLUR_PLACEHOLDER}
+            quality={90}
+          />
+        )}
         {videoSrc && (
           <video
             ref={videoRef}
@@ -309,35 +321,15 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
             muted
             playsInline
             preload="auto"
-            onLoadedData={() => setIsVideoLoaded(true)}
-            className={cn(
-              "absolute inset-0 h-full w-full object-cover transition-opacity duration-1000",
-              !imageSrc || isVideoLoaded ? "opacity-100" : "opacity-0"
-            )}
+            className="absolute inset-0 h-full w-full object-cover"
           >
             <source src={videoSrc} type="video/mp4" />
           </video>
         )}
-        {imageSrc && (
-          <Image
-            src={imageSrc}
-            alt={imageAlt || ""}
-            fill
-            priority
-            className={cn(
-              "object-cover transition-opacity duration-1000",
-              videoSrc && isVideoLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
-            )}
-            sizes="100vw"
-            placeholder="blur"
-            blurDataURL={BLUR_PLACEHOLDER}
-            quality={90}
-          />
-        )}
       </motion.div>
       <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-[#000000] pointer-events-none z-[1]" />
       <div className="absolute inset-0 bg-linear-to-b from-[#000000] via-transparent to-[#000000] pointer-events-none opacity-80 z-[1]" />
-      <div className="absolute inset-0 pointer-events-none z-[1]" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(3,4,5,0.7) 100%)' }} />
+      <div className="absolute inset-0 pointer-events-none z-[1]" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%)' }} />
 
       <motion.div
         style={{ opacity }}
@@ -524,7 +516,7 @@ export function InfrastructureBand({ imageSrc, imageAlt, children }: { imageSrc:
         />
         <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-[#000000] pointer-events-none" />
         <div className="absolute inset-0 bg-linear-to-b from-[#000000] via-transparent to-[#000000] pointer-events-none opacity-80" />
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(3,4,5,0.7) 100%)' }} />
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%)' }} />
       </motion.div>
       <div className="relative z-10 w-full macro-blur-mask p-12 md:p-24 lg:p-32 mt-64">
         <div className="max-w-[1600px] mx-auto">

@@ -1018,19 +1018,7 @@ export function ParallaxMilitaryHero({
             y: imageY
           }}
         >
-          {videoSrc ? (
-            <video
-              ref={videoRef}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              className="absolute inset-0 h-full w-full object-cover"
-            >
-              <source src={videoSrc} type="video/mp4" />
-            </video>
-          ) : (
+          {imageSrc && (
             <Image
               src={imageSrc}
               alt={imageAlt}
@@ -1038,8 +1026,23 @@ export function ParallaxMilitaryHero({
               priority
               className="object-cover brightness-[0.4] grayscale-[0.3]"
               sizes="100vw"
+              placeholder="blur"
+              blurDataURL={BLUR_PLACEHOLDER}
               quality={90}
             />
+          )}
+          {videoSrc && (
+            <video
+              ref={videoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              className="absolute inset-0 h-full w-full object-cover brightness-[0.4] grayscale-[0.3]"
+            >
+              <source src={videoSrc} type="video/mp4" />
+            </video>
           )}
         </motion.div>
 
@@ -1123,9 +1126,10 @@ export function ParallaxMilitaryHero({
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function VideoMilitaryHero({
-  videoSrc, title, subtitle, tagline, stats
+  videoSrc, imageSrc, posterSrc, title, subtitle, tagline, stats
 }: {
   videoSrc: string;
+  imageSrc?: string;
   posterSrc?: string;
   title?: string;
   subtitle?: string;
@@ -1155,6 +1159,8 @@ export function VideoMilitaryHero({
   const textOpacity = useTransform(scrollYProgress, [0, 0.2, 0.5], [1, 1, 0]);
   const textY       = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
 
+  const placeholderImage = imageSrc || posterSrc;
+
   return (
     <div ref={ref} className="relative h-[180dvh] bg-black">
       <div className="sticky top-0 h-screen w-full overflow-hidden mil-noise">
@@ -1163,17 +1169,32 @@ export function VideoMilitaryHero({
           className="absolute inset-0 will-change-transform"
           style={{ opacity: videoOpacity, scale: videoScale, y: videoY }}
         >
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="absolute inset-0 h-full w-full object-[center_40%] object-cover brightness-[0.48] saturate-[0.75] scale-[1.15] md:scale-100 md:object-cover"
-          >
-            <source src={videoSrc} type="video/mp4" />
-          </video>
+          {placeholderImage && (
+            <Image
+              src={placeholderImage}
+              alt={title || ""}
+              fill
+              priority
+              className="absolute inset-0 h-full w-full object-[center_40%] object-cover brightness-[0.48] saturate-[0.75] scale-[1.15] md:scale-100 md:object-cover"
+              sizes="100vw"
+              placeholder="blur"
+              blurDataURL={BLUR_PLACEHOLDER}
+              quality={90}
+            />
+          )}
+          {videoSrc && (
+            <video
+              ref={videoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              className="absolute inset-0 h-full w-full object-[center_40%] object-cover brightness-[0.48] saturate-[0.75] scale-[1.15] md:scale-100 md:object-cover"
+            >
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          )}
         </motion.div>
 
         {/* ── Cinematic vignette ── */}

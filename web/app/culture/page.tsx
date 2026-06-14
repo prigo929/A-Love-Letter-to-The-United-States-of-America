@@ -147,6 +147,7 @@ export default async function CulturePage() {
       {/* §1 — Video Culture Hero */}
       <VideoCultureHero
         videoSrc="/videos/times-square-aerial.mp4"
+        imageSrc={SITE_IMAGES.culture.timesSquare}
         eyebrow={hero.eyebrow}
         titleLine1={hero.titleLine1}
         titleLine2={hero.titleLine2}

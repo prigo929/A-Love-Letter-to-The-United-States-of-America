@@ -551,6 +551,7 @@ export function CultureFilmstripHero({
 
 export interface VideoCultureHeroProps {
   videoSrc: string;
+  imageSrc?: string;
   eyebrow: string;
   titleLine1: string;
   titleLine2: string;
@@ -559,6 +560,7 @@ export interface VideoCultureHeroProps {
 
 export function VideoCultureHero({
   videoSrc,
+  imageSrc,
   eyebrow,
   titleLine1,
   titleLine2,
@@ -566,6 +568,7 @@ export function VideoCultureHero({
 }: VideoCultureHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -595,17 +598,32 @@ export function VideoCultureHero({
           className="absolute inset-0 will-change-transform"
           style={{ opacity: videoOpacity, scale: videoScale, y: videoY }}
         >
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            className="absolute inset-0 h-full w-full object-cover brightness-[0.4] saturate-[0.8]"
-          >
-            <source src={videoSrc} type="video/mp4" />
-          </video>
+          {imageSrc && (
+            <Image
+              src={imageSrc}
+              alt={titleLine1 || ""}
+              fill
+              priority
+              className="absolute inset-0 h-full w-full object-cover brightness-[0.4] saturate-[0.8]"
+              sizes="100vw"
+              placeholder="blur"
+              blurDataURL={BLUR_PLACEHOLDER}
+              quality={90}
+            />
+          )}
+          {videoSrc && (
+            <video
+              ref={videoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              className="absolute inset-0 h-full w-full object-cover brightness-[0.4] saturate-[0.8]"
+            >
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          )}
         </motion.div>
 
         {/* Dark gradient overlay — bottom 60% and top vignette */}
