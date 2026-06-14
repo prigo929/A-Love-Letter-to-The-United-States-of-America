@@ -1018,7 +1018,7 @@ export function ParallaxMilitaryHero({
             y: imageY
           }}
         >
-          {imageSrc && (
+          {!videoSrc && imageSrc && (
             <Image
               src={imageSrc}
               alt={imageAlt}
@@ -1039,6 +1039,7 @@ export function ParallaxMilitaryHero({
               muted
               playsInline
               preload="auto"
+              poster={imageSrc}
               className="absolute inset-0 h-full w-full object-cover brightness-[0.4] grayscale-[0.3]"
             >
               <source src={videoSrc} type="video/mp4" />
@@ -1169,7 +1170,7 @@ export function VideoMilitaryHero({
           className="absolute inset-0 will-change-transform"
           style={{ opacity: videoOpacity, scale: videoScale, y: videoY }}
         >
-          {placeholderImage && (
+          {!videoSrc && placeholderImage && (
             <Image
               src={placeholderImage}
               alt={title || ""}
@@ -1190,6 +1191,7 @@ export function VideoMilitaryHero({
               muted
               playsInline
               preload="auto"
+              poster={placeholderImage}
               className="absolute inset-0 h-full w-full object-[center_40%] object-cover brightness-[0.48] saturate-[0.75] scale-[1.15] md:scale-100 md:object-cover"
             >
               <source src={videoSrc} type="video/mp4" />

@@ -598,7 +598,7 @@ export function VideoCultureHero({
           className="absolute inset-0 will-change-transform"
           style={{ opacity: videoOpacity, scale: videoScale, y: videoY }}
         >
-          {imageSrc && (
+          {!videoSrc && imageSrc && (
             <Image
               src={imageSrc}
               alt={titleLine1 || ""}
@@ -619,6 +619,7 @@ export function VideoCultureHero({
               muted
               playsInline
               preload="auto"
+              poster={imageSrc}
               className="absolute inset-0 h-full w-full object-cover brightness-[0.4] saturate-[0.8]"
             >
               <source src={videoSrc} type="video/mp4" />

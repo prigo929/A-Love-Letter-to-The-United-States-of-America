@@ -300,7 +300,7 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
   return (
     <div ref={ref} className="relative min-h-[100dvh] w-full overflow-hidden bg-[#000000] pt-32 pb-16 flex flex-col justify-center">
       <motion.div style={{ y, scale, opacity: 0.6 }} className="absolute inset-0">
-        {imageSrc && (
+        {!videoSrc && imageSrc && (
           <Image
             src={imageSrc}
             alt={imageAlt || ""}
@@ -321,6 +321,7 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
             muted
             playsInline
             preload="auto"
+            poster={imageSrc}
             className="absolute inset-0 h-full w-full object-cover"
           >
             <source src={videoSrc} type="video/mp4" />
