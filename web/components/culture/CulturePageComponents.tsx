@@ -174,25 +174,25 @@ export function CultureStyles() {
 
       /* ── Cream-background logo overrides ───────────────────────── */
       .cream-logos-mode .logo-img-dark {
-        filter: brightness(0.2);
-        opacity: 0.5;
+        filter: grayscale(1) invert(1) brightness(0.55);
+        opacity: 0.6;
         transition: filter 0.3s ease, opacity 0.3s ease;
         pointer-events: none;
         user-select: none;
       }
       .cream-logos-mode .logo-slot:hover .logo-img-dark {
-        filter: brightness(0.05);
-        opacity: 0.8;
+        filter: grayscale(1) invert(1) brightness(1.1);
+        opacity: 1;
       }
       .cream-logos-mode .logo-img-color {
-        filter: grayscale(1) brightness(0.5);
-        opacity: 0.5;
+        filter: grayscale(1) brightness(1.1);
+        opacity: 0.65;
         transition: filter 0.3s ease, opacity 0.3s ease;
         pointer-events: none;
         user-select: none;
       }
       .cream-logos-mode .logo-slot:hover .logo-img-color {
-        filter: grayscale(0) brightness(0.9);
+        filter: grayscale(0) brightness(1);
         opacity: 1;
       }
 
@@ -222,8 +222,8 @@ export function CultureStyles() {
           to bottom,
           transparent,
           transparent 2px,
-          rgba(0,0,0,0.03) 2px,
-          rgba(0,0,0,0.03) 4px
+          rgba(255,255,255,0.01) 2px,
+          rgba(255,255,255,0.01) 4px
         );
         pointer-events: none;
       }
