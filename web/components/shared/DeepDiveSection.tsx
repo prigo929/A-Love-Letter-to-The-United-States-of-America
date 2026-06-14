@@ -245,13 +245,7 @@ export default function DeepDiveSection({
                           transition={{ duration: 0.25, ease: "easeInOut" }}
                           style={{ overflow: "hidden" }}
                         >
-                          <div
-                            className={
-                              sec.subsections.length > 3
-                                ? "px-5 pb-6 grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-6"
-                                : "px-5 pb-6 space-y-6 max-w-[860px]"
-                            }
-                          >
+                          <div className="px-5 pb-6 space-y-6">
                             {sec.subsections.map((sub, subIdx) => {
                               const subHeading = isRo ? sub.heading.ro : sub.heading.en;
                               return (
@@ -275,7 +269,7 @@ export default function DeepDiveSection({
                                       return (
                                         <p
                                           key={pIdx}
-                                          className="text-[14px] md:text-[15px] leading-[1.75] text-white/55"
+                                          className="text-[14px] md:text-[15px] leading-[1.75] text-white/55 text-justify"
                                         >
                                           {text}
                                         </p>

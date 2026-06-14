@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { DeepDiveLink } from "@/components/shared/DeepDiveLink";
 
 /**
  * Parses a string containing markdown-style links like [Text](#anchor)
@@ -17,15 +18,18 @@ export function renderTextWithLinks(text: string) {
     }
     const linkText = match[1];
     const linkHref = match[2];
+    const linkClass =
+      "text-[#E8B923] underline underline-offset-4 hover:text-white transition-colors font-medium";
     parts.push(
-      <Link
-        key={match.index}
-        href={linkHref}
-        scroll={false}
-        className="text-[#E8B923] underline underline-offset-4 hover:text-white transition-colors font-medium"
-      >
-        {linkText}
-      </Link>
+      linkHref.startsWith("#deep-dive-") ? (
+        <DeepDiveLink key={match.index} href={linkHref} className={linkClass}>
+          {linkText}
+        </DeepDiveLink>
+      ) : (
+        <Link key={match.index} href={linkHref} scroll={false} className={linkClass}>
+          {linkText}
+        </Link>
+      )
     );
     lastIndex = regex.lastIndex;
   }

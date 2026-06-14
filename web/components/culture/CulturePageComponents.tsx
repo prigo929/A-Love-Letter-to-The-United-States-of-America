@@ -18,6 +18,7 @@ import {
   Legend,
 } from "recharts";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
+import { DeepDiveLink } from "@/components/shared/DeepDiveLink";
 import { SITE_IMAGES } from "@/lib/site-images";
 import {
   BRAND_LOGOS_ROW_1,
@@ -2986,12 +2987,17 @@ function parseTextWithLinks(text: string) {
     if (match) {
       const linkText = match[1];
       const linkHref = match[2];
+      const linkClass =
+        "text-glory-gold hover:text-glory-gold/80 font-semibold underline underline-offset-4 decoration-glory-gold/30 hover:decoration-glory-gold transition-all duration-300";
+      if (linkHref.startsWith("#deep-dive-")) {
+        return (
+          <DeepDiveLink key={idx} href={linkHref} className={linkClass}>
+            {linkText}
+          </DeepDiveLink>
+        );
+      }
       return (
-        <Link 
-          key={idx} 
-          href={linkHref} 
-          className="text-glory-gold hover:text-glory-gold/80 font-semibold underline underline-offset-4 decoration-glory-gold/30 hover:decoration-glory-gold transition-all duration-300"
-        >
+        <Link key={idx} href={linkHref} className={linkClass}>
           {linkText}
         </Link>
       );
