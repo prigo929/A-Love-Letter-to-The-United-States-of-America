@@ -209,7 +209,7 @@ function AFSectionTitle({
       <motion.div
         variants={fadeUp}
         transition={{ duration: 0.6 }}
-        className="af-font-mono mb-6 tracking-[0.3em] text-[10px] text-[#d4a44a]/70"
+        className="af-font-mono mb-5 tracking-[0.25em] text-[11px] font-bold text-[#d4a44a]"
       >
         {label}
       </motion.div>
@@ -302,7 +302,7 @@ export function AirForceFullBleed({
 
       {caption && (
         <div className="absolute bottom-7 left-0 right-0 text-center">
-          <span className="af-font-mono text-[9px] tracking-[0.3em] text-white/25">{caption}</span>
+          <span className="af-font-mono text-[11px] tracking-[0.25em] font-semibold text-white/55">{caption}</span>
         </div>
       )}
     </div>
@@ -431,7 +431,7 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
                     )}>
                       <div className="flex items-center gap-3 w-36 shrink-0">
                         <span className="text-lg">{d.flag}</span>
-                        <span className={cn("af-font-mono text-[10px] tracking-[0.08em]", isUS ? "text-white" : "text-white/40")}>
+                        <span className={cn("af-font-mono text-[11px] tracking-[0.08em] font-medium", isUS ? "text-white" : "text-white/55")}>
                           {d.country}
                         </span>
                       </div>
@@ -491,7 +491,7 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
                     </div>
                     
                     {isUS && (
-                      <div className="flex flex-wrap gap-x-6 gap-y-2 mt-1 mb-4 pl-5 md:pl-[164px] pr-20 text-[9px] tracking-wider af-font-mono text-white/40">
+                      <div className="flex flex-wrap gap-x-6 gap-y-2 mt-1 mb-4 pl-5 md:pl-[164px] pr-20 text-[11px] tracking-wider af-font-mono text-white/65 font-medium">
                         {tab === "total" ? (
                           <>
                             <span className="flex items-center gap-1.5">
@@ -499,11 +499,11 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
                               {isRo ? "U.S. Air Force: 5.217" : "U.S. Air Force: 5,217"}
                             </span>
                             <span className="flex items-center gap-1.5">
-                              <span className="h-1.5 w-1.5 rounded-full bg-white/40" />
+                              <span className="h-1.5 w-1.5 rounded-full bg-white/50" />
                               {isRo ? "U.S. Army: 4.400" : "U.S. Army: 4,400"}
                             </span>
                             <span className="flex items-center gap-1.5">
-                              <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+                              <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
                               {isRo ? "U.S. Navy & Marines: 3.600" : "U.S. Navy & Marines: 3,600"}
                             </span>
                           </>
@@ -514,7 +514,7 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
                               {isRo ? "U.S. Air Force: 1.900" : "U.S. Air Force: 1,900"}
                             </span>
                             <span className="flex items-center gap-1.5">
-                              <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+                              <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
                               {isRo ? "U.S. Navy & Marines: 1.150" : "U.S. Navy & Marines: 1,150"}
                             </span>
                           </>
@@ -562,7 +562,7 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
           )}
         </div>
 
-        <div className="mt-12 text-center af-font-mono text-[9px] tracking-[0.25em] text-white/20">
+        <div className="mt-12 text-center af-font-mono text-[10px] tracking-[0.2em] font-medium text-white/40">
           {isRo ? "Sursa: Flight International · Global Combat Aircraft Audit 2024" : "Source: Flight International · Global Combat Aircraft Audit 2024"}
         </div>
       </div>
@@ -646,7 +646,7 @@ export function AirForceCapabilityGrid({ capabilities, locale = "en" }: { capabi
                     cap.accent === "#34d399" ? "bg-emerald-400" :
                     "bg-red-400"
                   )} />
-                  <span className="af-font-mono text-[9px] tracking-[0.2em] text-white/30 transition-colors duration-500 group-hover:text-white/50">
+                  <span className="af-font-mono text-[11px] font-bold tracking-[0.15em] text-white/50 transition-colors duration-500 group-hover:text-white/80">
                     {cap.kicker}
                   </span>
                 </div>
@@ -675,8 +675,8 @@ export function AirForceCapabilityGrid({ capabilities, locale = "en" }: { capabi
                 {/* Footer: Bottom Stat */}
                 <div className="shrink-0 mt-2 lg:mt-0">
                   <span className={cn(
-                    "af-font-mono text-[9px] tracking-[0.15em] transition-all duration-500",
-                    isHovered ? "opacity-90" : "opacity-40",
+                    "af-font-mono text-[11px] font-bold tracking-[0.1em] transition-all duration-500",
+                    isHovered ? "opacity-100" : "opacity-55",
                     cap.accent === "#7dd3fc" ? "text-sky-300" :
                     cap.accent === "#f5a623" ? "text-amber-500" :
                     cap.accent === "#a78bfa" ? "text-violet-400" :
@@ -740,10 +740,10 @@ export function AirForceOperationalConsole({ theaters, locale = "en" }: { theate
                       transition={{ type: "spring", stiffness: 400, damping: 40 }}
                     />
                   )}
-                  <div className="af-font-mono text-[8px] tracking-[0.2em] text-white/25 mb-2">{theater.region}</div>
+                  <div className="af-font-mono text-[10px] tracking-[0.15em] text-white/40 mb-2">{theater.region}</div>
                   <div className={cn(
                     "af-font-display text-lg font-black leading-none transition-colors",
-                    selected ? "text-white" : "text-white/35"
+                    selected ? "text-white" : "text-white/55"
                   )}>
                     {theater.name}
                   </div>
@@ -787,7 +787,7 @@ export function AirForceOperationalConsole({ theaters, locale = "en" }: { theate
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div className="af-font-mono text-[9px] tracking-[0.2em] text-white/30 mb-3">{active.signal}</div>
+                  <div className="af-font-mono text-[11px] tracking-[0.15em] font-bold text-white/55 mb-3">{active.signal}</div>
                   <div className="af-font-display text-2xl sm:text-3xl font-black text-white leading-[0.9]">{active.headline}</div>
                 </motion.div>
               </AnimatePresence>
@@ -805,15 +805,15 @@ export function AirForceOperationalConsole({ theaters, locale = "en" }: { theate
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="flex flex-col h-full"
               >
-                <div className="af-font-mono text-[8px] tracking-[0.2em] text-white/25 mb-2">{active.region}</div>
+                <div className="af-font-mono text-[10px] tracking-[0.15em] text-white/40 mb-2">{active.region}</div>
                 <h3 className="af-font-display text-xl font-black text-white mb-5 leading-[0.92]">{active.name}</h3>
                 <p className="text-[13px] leading-[1.85] text-white/40 mb-10">{active.description}</p>
 
                 <div className="mt-auto space-y-4">
                   {active.metrics.map((m) => (
                     <div key={m.label} className="flex items-center justify-between">
-                      <span className="af-font-mono text-[9px] tracking-[0.12em] text-white/30">{m.label}</span>
-                      <span className="af-font-mono text-[10px] tracking-[0.08em] text-white/65">{m.value}</span>
+                      <span className="af-font-mono text-[11px] tracking-[0.12em] text-white/45">{m.label}</span>
+                      <span className="af-font-mono text-[11px] tracking-[0.08em] text-white/75">{m.value}</span>
                     </div>
                   ))}
                 </div>
@@ -879,10 +879,10 @@ export function AirForcePlatformShowcase({ platforms, locale = "en" }: { platfor
               key={p.name}
               onClick={() => setActiveIndex(i)}
               className={cn(
-                "af-font-mono px-4 py-2.5 text-[9px] tracking-[0.1em] transition-all duration-300 rounded-sm",
+                "af-font-mono px-4 py-2.5 text-[11px] tracking-[0.08em] font-semibold transition-all duration-300 rounded-sm",
                 activeIndex === i
                   ? "bg-white text-black"
-                  : "text-white/25 hover:text-white/55 hover:bg-white/[0.04]"
+                  : "text-white/45 hover:text-white/80 hover:bg-white/[0.05]"
               )}
             >
               {p.name}
@@ -923,20 +923,20 @@ export function AirForcePlatformShowcase({ platforms, locale = "en" }: { platfor
               <div className="absolute inset-0 bg-gradient-to-t from-[#050608] via-transparent to-transparent pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050608]/50 pointer-events-none" />
               <div className="absolute bottom-10 left-10 z-10">
-                <div className="af-font-mono text-[9px] tracking-[0.2em] text-white/30 mb-3">{active.designation}</div>
+                <div className="af-font-mono text-[11px] tracking-[0.15em] font-medium text-white/50 mb-3">{active.designation}</div>
                 <div className="af-font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[0.85]">{active.name}</div>
               </div>
             </div>
 
             {/* Detail panel */}
             <div className="flex flex-col p-9 lg:p-11 border-t lg:border-t-0 lg:border-l border-white/[0.04]">
-              <div className="af-font-mono text-[9px] tracking-[0.2em] text-[#7aaed4]/50 mb-4">{active.capability}</div>
+              <div className="af-font-mono text-[11px] tracking-[0.15em] font-bold text-[#7aaed4]/70 mb-4">{active.capability}</div>
               <p className="text-[13px] leading-[1.85] text-white/45 mb-10">{active.role}</p>
 
               <div className="grid grid-cols-2 gap-3 mt-auto">
                 {active.specs.map((s) => (
                   <div key={s.label} className="af-panel p-5">
-                    <div className="af-font-mono text-[8px] tracking-[0.2em] text-white/25 mb-2">{s.label}</div>
+                    <div className="af-font-mono text-[10px] tracking-[0.15em] text-white/40 mb-2">{s.label}</div>
                     <div className="af-font-display text-lg font-black text-white leading-none">{s.value}</div>
                   </div>
                 ))}
@@ -1009,7 +1009,7 @@ export function AirForceHeritageTimeline({ events, locale = "en" }: { events: Ai
                   isLeft ? "md:col-start-1 md:pr-8" : "md:col-start-2 md:pl-8"
                 )}>
                   {/* Year badge */}
-                  <div className="af-font-mono text-[11px] tracking-[0.2em] text-[#d4a44a]/60 mb-3">{event.year}</div>
+                  <div className="af-font-mono text-[13px] tracking-[0.15em] font-bold text-[#d4a44a]/90 mb-2">{event.year}</div>
 
                   {/* Enhancement 4: Alternating aspect + sepia */}
                   {event.imageSrc && (
@@ -1036,9 +1036,9 @@ export function AirForceHeritageTimeline({ events, locale = "en" }: { events: Ai
                   )}
 
                   <h3 className="af-font-display text-lg sm:text-xl font-black text-white mb-3 leading-[0.95]">{event.title}</h3>
-                  <p className="text-[12px] leading-[1.8] text-white/40 mb-4">{event.description}</p>
+                  <p className="text-[14px] leading-[1.8] text-white/65 mb-4">{event.description}</p>
 
-                  <span className="af-font-mono text-[8px] tracking-[0.15em] text-white/25">{event.significance}</span>
+                  <span className="af-font-mono text-[10px] font-semibold tracking-[0.12em] text-white/50">{event.significance}</span>
                 </div>
 
                 {/* Empty col */}
@@ -1125,16 +1125,16 @@ export function AirForceBasesSection({ bases, locale = "en" }: { bases: AirForce
               className="af-panel p-9 rounded-sm"
               style={{ borderColor: `${active.accent}28`, boxShadow: `0 0 48px ${active.accent}0a` }}
             >
-              <div className="af-font-mono text-[9px] tracking-[0.2em] text-white/25 mb-2">{active.role}</div>
+              <div className="af-font-mono text-[11px] tracking-[0.15em] font-bold text-[#d4a44a] mb-2">{active.role}</div>
               <h3 className="af-font-display text-2xl sm:text-3xl font-black text-white mb-2 leading-[0.92]">{active.name}</h3>
-              <div className="af-font-mono text-[8px] tracking-[0.15em] text-white/25 mb-7">{active.location}</div>
+              <div className="af-font-mono text-[10px] tracking-[0.12em] text-white/45 mb-7">{active.location}</div>
               <p className="text-[13px] leading-[1.85] text-white/40 mb-10">{active.description}</p>
 
               <div className="space-y-4">
                 {active.stats.map((s) => (
                   <div key={s.label} className="flex items-center justify-between">
-                    <span className="af-font-mono text-[9px] tracking-[0.12em] text-white/30">{s.label}</span>
-                    <span className="af-font-mono text-[10px] tracking-[0.08em] text-white/60">{s.value}</span>
+                    <span className="af-font-mono text-[11px] tracking-[0.12em] text-white/45">{s.label}</span>
+                    <span className="af-font-mono text-[11px] tracking-[0.08em] text-white/75">{s.value}</span>
                   </div>
                 ))}
               </div>
@@ -1202,10 +1202,10 @@ export function AirForceFutureStack({ programs, locale = "en" }: { programs: Air
                   key={p.label}
                   onClick={() => setActiveIndex(i)}
                   className={cn(
-                    "flex-1 py-4 text-center af-font-mono text-[10px] tracking-[0.12em] transition-all duration-300 border-t border-r border-white/[0.04] last:border-r-0",
+                    "flex-1 py-4 text-center af-font-mono text-[11px] tracking-[0.1em] font-semibold transition-all duration-300 border-t border-r border-white/[0.04] last:border-r-0",
                     activeIndex === i
                       ? "bg-white/[0.08] text-white"
-                      : "bg-black/60 text-white/25 hover:text-white/50"
+                      : "bg-black/60 text-white/45 hover:text-white/80"
                   )}
                 >
                   {p.label}
@@ -1225,16 +1225,16 @@ export function AirForceFutureStack({ programs, locale = "en" }: { programs: Air
               className="flex flex-col p-9 border-t lg:border-t-0 lg:border-l border-white/[0.04]"
             >
               <div className="flex items-center gap-3 mb-5">
-                <span className="af-font-mono text-[9px] tracking-[0.15em] text-[#d4a44a]/50">{active.status}</span>
+                <span className="af-font-mono text-[11px] tracking-[0.15em] font-bold text-[#d4a44a]">{active.status}</span>
               </div>
               <h3 className="af-font-display text-xl sm:text-2xl font-black text-white mb-5 leading-[0.92]">{active.title}</h3>
-              <div className="af-font-mono text-[9px] tracking-[0.15em] text-[#7aaed4]/40 mb-4">{active.capability}</div>
+              <div className="af-font-mono text-[11px] tracking-[0.15em] font-bold text-[#7aaed4]/70 mb-4">{active.capability}</div>
               <p className="text-[13px] leading-[1.85] text-white/40 mb-10">{active.description}</p>
 
               <div className="grid grid-cols-2 gap-2.5 mt-auto">
                 {active.specs.map((s) => (
                   <div key={s.label} className="af-panel p-4">
-                    <div className="af-font-mono text-[7px] tracking-[0.2em] text-white/25 mb-1.5">{s.label}</div>
+                    <div className="af-font-mono text-[9px] tracking-[0.15em] text-white/40 mb-1.5">{s.label}</div>
                     <div className="af-font-display text-sm font-black text-white leading-none">{s.value}</div>
                   </div>
                 ))}
@@ -1323,7 +1323,7 @@ export function AirForceClosing({ locale = "en" }: { locale?: Locale }) {
 
         {/* Cross-links */}
         <div className="mt-24 pt-16 border-t border-white/[0.04]">
-          <div className="af-font-mono text-[10px] uppercase tracking-[0.25em] text-white/35 mb-8">
+          <div className="af-font-mono text-[12px] uppercase tracking-[0.2em] font-bold text-white/60 mb-8">
             {isRo ? "ALTE DIMENSIUNI MILITARE" : "OTHER MILITARY DIMENSIONS"}
           </div>
           <div className="flex flex-wrap justify-center gap-8 md:gap-12">

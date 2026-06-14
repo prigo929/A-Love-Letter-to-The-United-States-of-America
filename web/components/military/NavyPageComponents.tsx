@@ -308,8 +308,8 @@ export function NavyHero({
                 <div className="navy-font-display text-4xl font-black text-white">
                   <NavyCountUp value={metric.value} locale={locale} />
                 </div>
-                <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.15em] text-white/60">{metric.label}</div>
-                <p className="mt-4 text-[11px] leading-relaxed text-white/40">{metric.detail}</p>
+                <div className="mt-2 text-[11px] font-bold uppercase tracking-[0.12em] text-white/85">{metric.label}</div>
+                <p className="mt-4 text-[13px] leading-relaxed text-white/65 font-medium">{metric.detail}</p>
               </div>
             ))}
           </motion.div>
@@ -438,14 +438,14 @@ export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabiliti
                   <div className="flex h-11 w-11 items-center justify-center border border-white/8 bg-black text-[#8edcff] transition-colors duration-500 group-hover:border-[#8edcff]/25">
                     <Icon size={18} strokeWidth={1.5} />
                   </div>
-                  <span className="navy-font-mono text-[9px] uppercase tracking-wider text-white/30 transition-colors duration-500 group-hover:text-white/50">
+                  <span className="navy-font-mono text-[11px] font-bold tracking-[0.12em] text-[#8edcff]/70 transition-colors duration-500 group-hover:text-[#8edcff]/90">
                     {cap.stat}
                   </span>
                 </div>
 
                 {/* Middle Content */}
                 <div className="flex-1 flex flex-col justify-center my-4 lg:my-0">
-                  <span className="navy-font-mono text-[9px] tracking-[0.2em] text-white/30 transition-colors duration-500 group-hover:text-white/50 mb-2 block">
+                  <span className="navy-font-mono text-[11px] font-bold tracking-[0.15em] text-[#8edcff]/70 transition-colors duration-500 group-hover:text-[#8edcff]/90 mb-2 block">
                     {cap.kicker}
                   </span>
                   <h3 className={cn(
@@ -461,7 +461,7 @@ export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabiliti
                     "transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden",
                     isHovered ? "opacity-100 max-h-[300px] mb-2" : "lg:opacity-0 lg:max-h-0"
                   )}>
-                    <p className="leading-[1.8] text-[12px] text-white/40 max-w-md">
+                    <p className="text-[13px] leading-[1.8] text-white/65 max-w-md font-medium">
                       {cap.description}
                     </p>
                   </div>
@@ -518,7 +518,7 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
                   onClick={() => setActiveIndex(index)}
                   className={cn(
                     "group relative min-h-32 overflow-hidden border border-transparent p-6 text-left transition-colors duration-300 mb-2 last:mb-0",
-                    selected ? "bg-white/[0.04] text-white" : "text-white/40 hover:bg-white/[0.015] hover:text-white/70"
+                    selected ? "bg-white/[0.04] text-white" : "text-white/55 hover:bg-white/[0.015] hover:text-white/80"
                   )}
                 >
                   {selected && (
@@ -530,7 +530,7 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
                     />
                   )}
                   <div className="relative z-10">
-                    <div className="navy-font-mono text-[9px] uppercase tracking-[0.2em]">{theater.region}</div>
+                    <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#8edcff]/70">{theater.region}</div>
                     <div className="navy-font-display mt-3 text-2xl font-black uppercase leading-none">{theater.name}</div>
                     <div className="mt-5 h-px w-full bg-white/5">
                       <div
@@ -581,7 +581,7 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
                   transition={{ duration: 0.45 }}
                   className="max-w-2xl"
                 >
-                  <div className="navy-font-mono text-[9px] font-bold uppercase text-white/50 tracking-[0.2em]">{active.signal}</div>
+                  <div className="navy-font-mono text-[11px] font-bold uppercase text-[#8edcff] tracking-[0.15em]">{active.signal}</div>
                   <h3 className="navy-font-display mt-4 text-4xl font-black uppercase leading-none md:text-6xl text-white">
                     {active.headline}
                   </h3>
@@ -602,7 +602,7 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
                 className="flex h-full flex-col"
               >
                 <div className="flex items-center justify-between gap-4 mb-5">
-                  <span className="navy-font-mono text-[8px] tracking-[0.2em] text-white/25 uppercase">
+                  <span className="navy-font-mono text-[10px] tracking-[0.15em] font-semibold text-white/45 uppercase">
                     {locale === "ro" ? "Profilul teatrului" : "Theater profile"}
                   </span>
                   <div className="relative flex h-2 w-2">
@@ -611,12 +611,12 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
                   </div>
                 </div>
                 <h3 className="navy-font-display text-xl font-black text-white mb-4 leading-[0.92]">{active.name}</h3>
-                <p className="text-[13px] leading-[1.85] text-white/40 mb-8">{active.description}</p>
+                <p className="text-[13px] leading-[1.85] text-white/65 mb-8">{active.description}</p>
                 <div className="mt-auto space-y-4">
                   {active.metrics.map((metric) => (
                     <div key={metric.label} className="flex items-center justify-between border-b border-white/[0.03] pb-3 last:border-0 last:pb-0">
-                      <span className="navy-font-mono text-[9px] tracking-[0.12em] text-white/30">{metric.label}</span>
-                      <span className="navy-font-mono text-[10px] tracking-[0.08em] text-white/65">{metric.value}</span>
+                      <span className="navy-font-mono text-[11px] tracking-[0.12em] font-medium text-white/45">{metric.label}</span>
+                      <span className="navy-font-mono text-[11px] tracking-[0.08em] font-semibold text-white/80">{metric.value}</span>
                     </div>
                   ))}
                 </div>
@@ -715,7 +715,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
             
             {/* Active label badge */}
             <div className="absolute left-8 top-8 z-20 hidden max-w-sm border border-white/10 bg-black/60 p-5 backdrop-blur-xl md:block rounded">
-              <div className="navy-font-mono text-[9px] uppercase tracking-widest text-white/40">
+              <div className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-white/60">
                 {locale === "ro" ? "Platformă activă" : "Active platform"}
               </div>
               <div className="navy-font-display mt-3 text-2xl sm:text-3xl font-black uppercase leading-snug text-white" style={{ wordSpacing: "0.22em", letterSpacing: "0.05em" }}>
@@ -732,11 +732,11 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <div className="navy-font-mono text-[10px] font-bold uppercase tracking-widest text-[#8edcff]/80">{active.className}</div>
+                  <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#8edcff]">{active.className}</div>
                   <h3 className="navy-font-display mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-tight text-white" style={{ wordSpacing: "0.22em", letterSpacing: "0.05em" }}>
                     {active.role}
                   </h3>
-                  <p className="mt-7 max-w-2xl text-xs leading-relaxed text-white/60">{active.capability}</p>
+                  <p className="mt-7 max-w-2xl text-[13px] leading-relaxed text-white/65 font-medium">{active.capability}</p>
                   
                   {/* Premium dossier trigger button */}
                   <button
@@ -762,7 +762,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                     onClick={() => setActiveIndex(index)}
                     className={cn(
                       "relative overflow-hidden border border-white/5 p-4 text-left transition-colors duration-300 rounded",
-                      selected ? "bg-white/[0.04] text-white border-white/15" : "bg-white/[0.008] text-white/40 hover:bg-white/[0.02] hover:text-white/70"
+                      selected ? "bg-white/[0.04] text-white border-white/15" : "bg-white/[0.008] text-white/55 hover:bg-white/[0.02] hover:text-white/80"
                     )}
                   >
                     {selected && (
@@ -776,7 +776,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                       <div className="navy-font-display text-lg sm:text-xl font-extrabold uppercase leading-snug" style={{ wordSpacing: "0.22em", letterSpacing: "0.05em" }}>
                         {platform.name}
                       </div>
-                      <div className="mt-2 text-[9px] font-bold uppercase tracking-wider text-[#8edcff]/50">
+                      <div className="mt-2 text-[11px] font-bold uppercase tracking-wider text-[#8edcff]/70">
                         {platform.className}
                       </div>
                     </div>
@@ -797,7 +797,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                 >
                   {active.specs.map((spec) => (
                     <div key={spec.label} className="bg-black p-4 border border-white/5 rounded-sm">
-                      <div className="text-[9px] uppercase tracking-widest text-white/30">{spec.label}</div>
+                      <div className="text-[11px] font-semibold uppercase tracking-widest text-white/45">{spec.label}</div>
                       <div className="mt-2 text-xs font-bold text-white/80">{spec.value}</div>
                     </div>
                   ))}
@@ -838,12 +838,12 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
             >
               {/* Overlay sticky header */}
               <div className="sticky top-0 z-50 flex justify-between items-center px-6 md:px-10 py-5 bg-[#000308]/90 backdrop-blur-md border-b border-white/5">
-                <span className="navy-font-mono text-[10px] tracking-[0.3em] text-white/50">
+                <span className="navy-font-mono text-[11px] font-bold tracking-[0.25em] text-white/70">
                   {locale === "ro" ? "DOSAR TEHNIC FLOTĂ" : "FLEET SYSTEM DOSSIER"}
                 </span>
                 <button
                   onClick={() => setIsDossierOpen(false)}
-                  className="navy-font-mono text-[10px] hover:text-white transition-colors tracking-[0.2em] text-white/40"
+                  className="navy-font-mono text-[11px] hover:text-white transition-colors tracking-[0.15em] text-white/55"
                 >
                   {locale === "ro" ? "[ ÎNCHIDE ]" : "[ CLOSE ]"}
                 </button>
@@ -854,7 +854,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                 <Image src={active.imageSrc} alt={active.imageAlt} fill className="object-cover" priority sizes="100vw" />
                 <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute bottom-8 left-6 md:left-10">
-                  <p className="navy-font-mono text-[9px] mb-3 tracking-[0.25em] text-[#8edcff] uppercase">{active.className}</p>
+                  <p className="navy-font-mono text-[11px] font-bold mb-3 tracking-[0.15em] text-[#8edcff] uppercase">{active.className}</p>
                   <h3 className="navy-font-display text-2xl sm:text-4xl md:text-5xl font-black uppercase text-white leading-snug" style={{ wordSpacing: "0.22em", letterSpacing: "0.05em" }}>
                     {active.name}
                   </h3>
@@ -865,17 +865,17 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
               <div className="px-6 md:px-10 py-12">
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_1px_1fr] gap-12">
                   <div>
-                    <div className="navy-font-mono text-[10px] mb-4 tracking-[0.2em] text-white/40">
+                    <div className="navy-font-mono text-[11px] font-bold mb-4 tracking-[0.15em] text-white/60">
                       {locale === "ro" ? "DESCRIEREA CAPABILITĂȚILOR" : "CAPABILITY OVERVIEW"}
                     </div>
-                    <p className="text-xs leading-relaxed text-white/60 mb-8">{active.capability}</p>
+                    <p className="text-[13px] leading-relaxed text-white/65 mb-8">{active.capability}</p>
                     
                     {/* Dark Navy visual signature band */}
                     <div className="pl-5 border-l-2 border-[#8edcff]/25 bg-white/[0.025] py-4 pr-4">
-                      <div className="navy-font-mono text-[9px] mb-2 tracking-[0.2em] text-[#8edcff]">
+                      <div className="navy-font-mono text-[11px] font-bold mb-2 tracking-[0.15em] text-[#8edcff]">
                         {locale === "ro" ? "SIGNATURĂ STRATEGICĂ" : "STRATEGIC SIGNATURE"}
                       </div>
-                      <p className="text-[11px] leading-relaxed text-white/40">
+                      <p className="text-[13px] leading-relaxed text-white/65 font-medium">
                         {locale === "ro" 
                           ? "Această navă reprezintă prezență americană deplină, suveranitate operațională în ape internaționale și integrare tactică în kill-web-ul digital."
                           : "This platform represents complete sovereign presence, operational maneuverability, and multi-domain fire-control networking globally."}
@@ -886,26 +886,26 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                   <div className="hidden lg:block bg-white/5" />
 
                   <div>
-                    <div className="navy-font-mono text-[10px] mb-6 tracking-[0.2em] text-white/40">
+                    <div className="navy-font-mono text-[11px] font-bold mb-6 tracking-[0.15em] text-white/60">
                       {locale === "ro" ? "SPECIFICAȚII TEHNICE" : "TECHNICAL SPECIFICATIONS"}
                     </div>
                     
                     <div className="space-y-4">
                       {active.specs.map((spec, i) => (
                         <div key={i} className="flex justify-between items-baseline py-2.5 border-b border-white/5 last:border-b-0">
-                          <span className="navy-font-mono text-[9px] tracking-[0.15em] text-white/30">{spec.label.toUpperCase()}</span>
-                          <span className="text-xs font-bold text-white/80">{spec.value}</span>
+                          <span className="navy-font-mono text-[11px] font-medium tracking-[0.12em] text-white/45">{spec.label.toUpperCase()}</span>
+                          <span className="text-[13px] font-bold text-white">{spec.value}</span>
                         </div>
                       ))}
                     </div>
 
                     <div className="mt-8 grid grid-cols-2 gap-3">
                       <div className="bg-[#000a14] border border-white/5 p-4">
-                        <div className="navy-font-mono text-[8px] text-white/30 tracking-wider">DOMAIN</div>
+                        <div className="navy-font-mono text-[10px] font-semibold text-white/45 tracking-wider">DOMAIN</div>
                         <div className="text-xs font-bold text-[#8edcff] mt-1">{locale === "ro" ? "DOMINANȚĂ GLOBALĂ" : "GLOBAL DOMAIN"}</div>
                       </div>
                       <div className="bg-[#000a14] border border-white/5 p-4">
-                        <div className="navy-font-mono text-[8px] text-white/30 tracking-wider">STATUS</div>
+                        <div className="navy-font-mono text-[10px] font-semibold text-white/45 tracking-wider">STATUS</div>
                         <div className="text-xs font-bold text-[#8edcff] mt-1">{locale === "ro" ? "ACTIV / OPERAȚIONAL" : "DEPLOYED / ACT"}</div>
                       </div>
                     </div>
@@ -1058,7 +1058,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
       
       return (
         <span className="flex flex-wrap gap-1 items-center">
-          <span className="text-white/40 uppercase">{label}:</span>
+          <span className="text-white/60 font-semibold uppercase">{label}:</span>
           <span
             className={matchedFontWeight}
             style={{
@@ -1101,7 +1101,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
               {/* Radar glowing sweep overlay */}
               <div className="absolute top-4 right-4 flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full animate-ping bg-[#8edcff]" />
-                <span className="navy-font-mono text-[9px] font-bold uppercase tracking-widest text-[#8edcff]">
+                <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#8edcff]">
                   {activeIdx === 0
                     ? (locale === "ro" ? "ISR CONECTAT" : "SENSING ACTIVE")
                     : activeIdx === 1
@@ -1110,7 +1110,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                 </span>
               </div>
 
-              <div className="navy-font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 mb-6">
+              <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-white/60 mb-6">
                 {locale === "ro" ? "VIZUALIZARE REȚEA DE LUPTĂ" : "TACTICAL DATA LINK MESH"}
               </div>
 
@@ -1519,7 +1519,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
               </div>
 
               {/* Live console logging logs feed */}
-              <div className="mt-5 border border-white/5 bg-black/95 p-4 rounded no-scrollbar h-[135px] overflow-y-auto navy-font-mono text-[9px] tracking-wider leading-relaxed">
+              <div className="mt-5 border border-white/5 bg-black/95 p-4 rounded no-scrollbar h-[135px] overflow-y-auto navy-font-mono text-[11px] tracking-wider leading-relaxed">
                 <div className="text-[#8edcff]/40 font-bold mb-2 flex items-center gap-1.5">
                   <span>{getPromptHeader()}</span>
                   {!isTypingComplete && (
@@ -1536,7 +1536,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                       transition={{ duration: 0.2 }}
                       className="text-white/85 flex items-start"
                     >
-                      <span className="text-white/20 mr-2 shrink-0">{timestamps[lidx]}</span>
+                      <span className="text-white/35 mr-2 shrink-0">{timestamps[lidx]}</span>
                       {renderColoredLog(log)}
                     </motion.div>
                   ))}
@@ -1557,7 +1557,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
               {/* Progress telemetry meters */}
               <div className="mt-6 space-y-4 border-t border-white/5 pt-5">
                 <div>
-                  <div className="flex justify-between items-center text-[9px] uppercase tracking-wider text-white/40 mb-1.5">
+                  <div className="flex justify-between items-center text-[11px] font-bold uppercase tracking-wider text-white/55 mb-1.5">
                     <span>{locale === "ro" ? "INTEGRITATE DATE REȚEA" : "DATA INTEGRITY CORE"}</span>
                     <span className="navy-font-mono font-bold text-white/80">
                       {activeIdx === 0 ? "98%" : activeIdx === 1 ? "99.9%" : "95.4%"}
@@ -1575,7 +1575,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                 </div>
 
                 <div>
-                  <div className="flex justify-between items-center text-[9px] uppercase tracking-wider text-white/40 mb-1.5">
+                  <div className="flex justify-between items-center text-[11px] font-bold uppercase tracking-wider text-white/55 mb-1.5">
                     <span>{locale === "ro" ? "LATENȚĂ COOPERATIVĂ" : "NETWORK LATENCY INDEX"}</span>
                     <span className="navy-font-mono font-bold text-white/80">
                       {activeIdx === 0 ? "14 ms" : activeIdx === 1 ? "4 ms" : "12 ms"}
@@ -1626,11 +1626,11 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-3">
-                        <span className="navy-font-mono text-[9px] tracking-widest text-white/30 uppercase">
+                        <span className="navy-font-mono text-[11px] font-bold tracking-widest text-white/45 uppercase">
                           LAYER 0{index + 1}
                         </span>
                         {selected && (
-                          <span className="navy-font-mono text-[8px] bg-white/[0.035] text-[#8edcff] px-2 py-0.5 border border-[#8edcff]/10 uppercase font-black tracking-widest">
+                          <span className="navy-font-mono text-[10px] bg-white/[0.035] text-[#8edcff] px-2 py-0.5 border border-[#8edcff]/15 uppercase font-black tracking-widest">
                             {locale === "ro" ? "TELEMETRIE ACTIVĂ" : "LIVE FEED"}
                           </span>
                         )}
@@ -1647,11 +1647,11 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                       {layer.title}
                     </h3>
                     
-                    <p className="mt-4 text-[10px] font-bold uppercase tracking-wider text-white/50 leading-relaxed">
+                    <p className="mt-4 text-[11px] font-bold uppercase tracking-wider text-white/70 leading-relaxed">
                       {layer.subtitle}
                     </p>
                     
-                    <p className="mt-3 text-xs leading-relaxed text-white/40">
+                    <p className="mt-3 text-[13px] leading-relaxed text-white/60 font-medium">
                       {layer.description}
                     </p>
                   </div>
@@ -1661,7 +1661,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                       {layer.nodes.map((node) => (
                         <span
                           key={node}
-                          className="border border-white/5 bg-black/40 px-2 py-1 text-[8px] sm:text-[9px] font-bold uppercase text-white/40 tracking-wider rounded"
+                          className="border border-white/5 bg-black/40 px-2 py-1 text-[10px] sm:text-[11px] font-bold uppercase text-white/60 tracking-wider rounded"
                         >
                           {node}
                         </span>
@@ -1669,7 +1669,7 @@ export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyComman
                     </div>
 
                     {!selected && (
-                      <span className="navy-font-mono text-[8px] tracking-[0.25em] text-[#8edcff]/40 uppercase hover:text-[#8edcff]/80 transition-colors">
+                      <span className="navy-font-mono text-[11px] font-bold tracking-[0.2em] text-[#8edcff]/60 uppercase hover:text-[#8edcff]/90 transition-colors">
                         {locale === "ro" ? "[ SELECTEAZĂ C2 ]" : "[ ACTIVATE C2 ]"}
                       </span>
                     )}
@@ -1792,7 +1792,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
             >
               <div>
                 <div className="mb-6 flex flex-col items-start gap-3">
-                  <span className="border border-[#8edcff]/15 bg-white/[0.03] px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-[#8edcff]/90">
+                  <span className="border border-[#8edcff]/15 bg-white/[0.03] px-2.5 py-1 text-[11px] font-bold uppercase tracking-widest text-[#8edcff]">
                     {program.status}
                   </span>
                   <span className="navy-font-display text-3xl sm:text-4xl font-black text-white/10 block leading-none transition-colors group-hover:text-white/20" title={program.label}>
@@ -1802,10 +1802,10 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
                 <h3 className="navy-font-display mt-8 text-lg sm:text-xl font-black uppercase leading-tight text-white/80 group-hover:text-white transition-colors">
                   {program.title}
                 </h3>
-                <p className="mt-4 text-xs leading-relaxed text-white/40 group-hover:text-white/50 transition-colors">{program.description}</p>
+                <p className="mt-4 text-[13px] leading-relaxed text-white/60 group-hover:text-white/75 transition-colors font-medium">{program.description}</p>
               </div>
               <div className="mt-8 flex items-center justify-between">
-                <span className="navy-font-mono text-[9px] font-bold uppercase tracking-widest text-[#8edcff]/60 group-hover:text-[#8edcff] transition-colors">
+                <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#8edcff]/80 group-hover:text-[#8edcff] transition-colors">
                   {locale === "ro" ? "DOSAR TEHNIC →" : "PROGRAM DOSSIER →"}
                 </span>
               </div>
@@ -1835,12 +1835,12 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
             >
               {/* Overlay sticky header */}
               <div className="sticky top-0 z-50 flex justify-between items-center px-6 md:px-10 py-5 bg-[#000308]/95 backdrop-blur-md border-b border-white/5">
-                <span className="navy-font-mono text-[10px] tracking-[0.3em] text-[#8edcff] uppercase">
+                <span className="navy-font-mono text-[11px] font-bold tracking-[0.2em] text-[#8edcff] uppercase">
                   {locale === "ro" ? "VIITORUL GEOMETRIEI FLOTEI" : "FLEET CAPITAL PROGRAM"}
                 </span>
                 <button
                   onClick={() => setActiveProgram(null)}
-                  className="navy-font-mono text-[10px] hover:text-white transition-colors tracking-[0.2em] text-white/40"
+                  className="navy-font-mono text-[11px] hover:text-white transition-colors tracking-[0.15em] text-white/55"
                 >
                   {locale === "ro" ? "[ ÎNCHIDE ]" : "[ CLOSE ]"}
                 </button>
@@ -1851,7 +1851,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
                 <Image src={activeProgram.imageSrc} alt={activeProgram.imageAlt} fill className="object-cover grayscale-[0.2]" priority sizes="100vw" />
                 <div className="absolute inset-0 bg-linear-to-t from-black via-black/45 to-transparent" />
                 <div className="absolute bottom-8 left-6 md:left-10">
-                  <p className="navy-font-mono text-[9px] mb-3 tracking-[0.25em] text-[#8edcff] uppercase">{activeProgram.status}</p>
+                  <p className="navy-font-mono text-[11px] font-bold mb-3 tracking-[0.15em] text-[#8edcff] uppercase">{activeProgram.status}</p>
                   <h3 className="navy-font-display text-3xl md:text-5xl font-black tracking-tighter uppercase text-white leading-none">
                     {activeProgram.title}
                   </h3>
@@ -1862,17 +1862,17 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
               <div className="px-6 md:px-10 py-12">
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_1px_1.2fr] gap-12">
                   <div>
-                    <div className="navy-font-mono text-[10px] mb-4 tracking-[0.2em] text-white/40">
+                    <div className="navy-font-mono text-[11px] font-bold mb-4 tracking-[0.15em] text-white/60">
                       {locale === "ro" ? "DIRECȚIA CAPABILITĂȚII" : "CAPABILITY DIRECTION"}
                     </div>
-                    <p className="text-xs sm:text-sm leading-relaxed text-white/60 mb-8">{activeProgram.capability}</p>
+                    <p className="text-[13px] leading-relaxed text-white/65 mb-8">{activeProgram.capability}</p>
                     
                     {/* Visual signature band */}
                     <div className="pl-5 border-l-2 border-[#8edcff]/25 bg-white/[0.025] py-4 pr-4">
-                      <div className="navy-font-mono text-[9px] mb-2 tracking-[0.2em] text-[#8edcff]">
+                      <div className="navy-font-mono text-[11px] font-bold mb-2 tracking-[0.15em] text-[#8edcff]">
                         {locale === "ro" ? "PROIECTARE TACTICĂ" : "TACTICAL PROJECTION"}
                       </div>
-                      <p className="text-[11px] leading-relaxed text-white/40">
+                      <p className="text-[13px] leading-relaxed text-white/65 font-medium">
                         {locale === "ro" 
                           ? "Această componentă redefineste logistica, detecția și dominația spațiului de luptă maritim într-un mod descentralizat și rezistent."
                           : "This program redefines marine logistics, distributed detection, and tactical maritime command under a highly survivable, modular model."}
@@ -1885,13 +1885,13 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
                   {/* Right side specs */}
                   <div className="space-y-8">
                     <div>
-                      <div className="navy-font-mono text-[10px] mb-4 tracking-[0.2em] text-white/40">
+                      <div className="navy-font-mono text-[11px] font-bold mb-4 tracking-[0.15em] text-white/60">
                         {locale === "ro" ? "SPECIFICAȚII PROGRAM" : "PROGRAM SPECIFICATIONS"}
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         {activeProgram.specs.map((spec) => (
                           <div key={spec.label} className="navy-panel-tactical p-4 border border-white/5 rounded bg-black/40">
-                            <div className="text-[9px] uppercase tracking-widest text-white/30">{spec.label}</div>
+                            <div className="text-[11px] font-semibold uppercase tracking-widest text-white/45">{spec.label}</div>
                             <div className="mt-2 text-xs font-bold text-white/90">{spec.value}</div>
                           </div>
                         ))}
@@ -1899,10 +1899,10 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
                     </div>
 
                     <div className="border-t border-white/5 pt-6">
-                      <div className="navy-font-mono text-[9px] mb-2 tracking-[0.2em] text-white/30">
+                      <div className="navy-font-mono text-[11px] font-bold mb-2 tracking-[0.15em] text-white/45">
                         STATUS: <span className="text-[#8edcff] font-bold">{activeProgram.status.toUpperCase()}</span>
                       </div>
-                      <p className="text-[11px] leading-relaxed text-white/40">
+                      <p className="text-[13px] leading-relaxed text-white/65 font-medium">
                         {locale === "ro"
                           ? "Programul se încadrează în agenda pe termen lung a Departamentului Apărării pentru susținerea superiorității în teatru."
                           : "Approved under the Department of the Navy's strategic fleet framework for long-term multi-domain operational supremacy."}
@@ -1976,7 +1976,7 @@ export function NavyClosing({ locale = "en" }: { locale?: Locale }) {
 
         {/* Cross-links */}
         <div className="mt-20 border-t border-white/5 pt-16">
-          <div className="text-[10px] font-mono uppercase tracking-[0.25em] text-white/35 mb-8">
+          <div className="navy-font-mono text-[12px] font-bold uppercase tracking-[0.2em] text-white/60 mb-8">
             {locale === "ro" ? "ALTE DIMENSIUNI MILITARE" : "OTHER MILITARY DIMENSIONS"}
           </div>
           <div className="flex flex-wrap justify-center gap-8 md:gap-12">
@@ -2035,7 +2035,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                   "relative flex-1 min-w-[170px] px-6 py-5 text-left transition-all duration-300 font-mono border-r border-white/5 last:border-r-0 group overflow-hidden",
                   idx === activeTab
                     ? "text-white bg-white/5 font-bold"
-                    : "text-white/40 hover:text-white/70 hover:bg-white/2"
+                    : "text-white/55 hover:text-white/80 hover:bg-white/2"
                 )}
               >
                 {/* Active glow accent */}
@@ -2053,7 +2053,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                   <span className="text-[11px] tracking-[0.2em] font-black uppercase text-white group-hover:text-[#8edcff] transition-colors duration-200">
                     {w.name.split(" ")[0]}
                   </span>
-                  <span className="text-[8px] tracking-wider text-white/30 lowercase group-hover:text-white/50 transition-colors duration-200">
+                  <span className="text-[10px] tracking-wider font-semibold text-white/45 group-hover:text-white/70 transition-colors duration-200">
                     {w.designation}
                   </span>
                 </div>
@@ -2075,7 +2075,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                   {weapon.name}
                 </h3>
                 
-                <div className="inline-block border border-[#8edcff]/10 rounded bg-[#0a0c10]/40 px-3 py-1 text-[10px] tracking-widest text-[#8edcff]/80 font-mono">
+                <div className="inline-block border border-[#8edcff]/10 rounded bg-[#0a0c10]/40 px-3 py-1 text-[11px] tracking-widest text-[#8edcff] font-bold font-mono">
                   {locale === "ro" ? "DESEMNARE SISTEM" : "SYSTEM DESIGNATION"}: {weapon.designation}
                 </div>
                 
@@ -2092,7 +2092,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                     className="relative overflow-hidden navy-panel-tactical p-4 border border-white/5 rounded bg-black/40 flex flex-col space-y-1 group hover:border-[#8edcff]/20 transition-all duration-300"
                   >
                     <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#8edcff]/10 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-                    <span className="font-mono text-[9px] tracking-wider text-white/30 uppercase">
+                    <span className="navy-font-mono text-[11px] font-semibold tracking-wider text-white/45 uppercase">
                       {s.label}
                     </span>
                     <span className="text-xs sm:text-sm font-semibold text-white tracking-wide uppercase">
@@ -2108,7 +2108,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                   
                   {/* Accuracy telemetry */}
                   <div className="space-y-2">
-                    <div className="flex justify-between text-[10px] font-mono tracking-widest text-white/50">
+                    <div className="flex justify-between text-[11px] font-bold tracking-widest text-white/70">
                       <span>{locale === "ro" ? "ACURATEȚE SISTEM" : "SYSTEM ACCURACY"}</span>
                       <span className="text-[#8edcff] font-bold">{weapon.accuracy}%</span>
                     </div>
@@ -2124,7 +2124,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
 
                   {/* Operations telemetry */}
                   <div className="flex flex-col justify-end">
-                    <div className="text-[9px] font-mono tracking-widest text-white/30 uppercase">
+                    <div className="navy-font-mono text-[11px] font-bold tracking-widest text-white/45 uppercase">
                       {locale === "ro" ? "STATUS TELEMETRIE" : "TELEMETRY STATUS"}
                     </div>
                     <div className="text-xs font-mono tracking-wider text-[#8edcff] font-bold uppercase mt-1">
@@ -2136,8 +2136,8 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
               </div>
 
               {/* Tactical Deployment Profile Block */}
-              <div className="border border-white/10 rounded bg-[#0a0c10]/60 p-5 font-mono text-[10px] leading-relaxed text-white/60 space-y-2">
-                <div className="text-[#8edcff] text-[9.5px] uppercase tracking-widest font-black border-b border-white/10 pb-1 mb-2">
+              <div className="border border-white/10 rounded bg-[#0a0c10]/60 p-5 font-mono text-[11px] leading-relaxed text-white/70 space-y-2">
+                <div className="text-[#8edcff] text-[11px] uppercase tracking-widest font-black border-b border-white/10 pb-1.5 mb-2">
                   {locale === "ro" ? "PROFIL DE DESFĂȘURARE TACTICĂ" : "TACTICAL DEPLOYMENT PROFILE"}
                 </div>
                 <div className="flex justify-between border-b border-white/5 pb-1">
@@ -2212,7 +2212,7 @@ function SectionTitle({
       <motion.div
         variants={fadeUp}
         transition={{ duration: 0.6 }}
-        className="navy-font-mono mb-6 tracking-[0.3em] text-[10px] text-[#8edcff]/80"
+        className="navy-font-mono mb-5 tracking-[0.25em] text-[11px] font-bold text-[#8edcff]"
       >
         {label}
       </motion.div>
@@ -2389,10 +2389,10 @@ export function NavyFleetComparisonSection({
               type="button"
               onClick={() => setActiveMetric(opt.key)}
               className={cn(
-                "px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] border transition-all duration-200",
+                "px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.15em] border transition-all duration-200",
                 activeMetric === opt.key
                   ? "bg-white/[0.06] border-white/15 text-white"
-                  : "bg-transparent border-white/5 text-white/30 hover:text-white/60 hover:border-white/10"
+                  : "bg-transparent border-white/5 text-white/50 hover:text-white/80 hover:border-white/10"
               )}
             >
               {opt.label}
@@ -2422,7 +2422,7 @@ export function NavyFleetComparisonSection({
                     </div>
                     <span className={cn(
                       "font-mono text-[12px]",
-                      row.highlight ? "text-white font-bold" : "text-white/40"
+                      row.highlight ? "text-white font-bold" : "text-white/60"
                     )}>
                       {getDisplayValue(row)}
                     </span>
@@ -2447,21 +2447,21 @@ export function NavyFleetComparisonSection({
           {/* Footer stats strip */}
           <div className="grid grid-cols-3 border-t border-white/5">
             <div className="p-5 border-r border-white/5 text-center">
-              <div className="text-[9px] font-mono uppercase tracking-widest text-white/30 mb-1">{isRo ? "PORTAVIOANE NUCLEARE" : "NUCLEAR CARRIERS"}</div>
+              <div className="navy-font-mono text-[11px] font-bold tracking-widest text-white/45 mb-1">{isRo ? "PORTAVIOANE NUCLEARE" : "NUCLEAR CARRIERS"}</div>
               <div className="text-xl font-black text-white">11</div>
             </div>
             <div className="p-5 border-r border-white/5 text-center">
-              <div className="text-[9px] font-mono uppercase tracking-widest text-white/30 mb-1">{isRo ? "SUBMARINE ACTIVE" : "ACTIVE SUBMARINES"}</div>
+              <div className="navy-font-mono text-[11px] font-bold tracking-widest text-white/45 mb-1">{isRo ? "SUBMARINE ACTIVE" : "ACTIVE SUBMARINES"}</div>
               <div className="text-xl font-black text-white">72</div>
             </div>
             <div className="p-5 text-center">
-              <div className="text-[9px] font-mono uppercase tracking-widest text-white/30 mb-1">{isRo ? "TONAJ TOTAL FLOTĂ" : "TOTAL FLEET TONNAGE"}</div>
+              <div className="navy-font-mono text-[11px] font-bold tracking-widest text-white/45 mb-1">{isRo ? "TONAJ TOTAL FLOTĂ" : "TOTAL FLEET TONNAGE"}</div>
               <div className="text-xl font-black text-white">{isRo ? "4,6 mil." : "4.6M"}</div>
             </div>
           </div>
         </div>
 
-        <p className="mt-4 text-center font-mono text-[8px] text-white/25 uppercase tracking-widest">
+        <p className="mt-4 text-center navy-font-mono text-[10px] font-medium text-white/40 uppercase tracking-widest">
           {isRo ? "Surse: IISS Military Balance 2024, Naval Vessel Register" : "Sources: IISS Military Balance 2024, Naval Vessel Register"}
         </p>
       </div>
@@ -2539,9 +2539,9 @@ export function NavyHeritageTimeline({
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         </div>
-                        <div className="text-[9px] font-mono uppercase tracking-widest text-[#8edcff]/70 mb-3">{event.significance}</div>
+                        <div className="navy-font-mono text-[11px] font-bold tracking-widest text-[#8edcff] mb-2.5">{event.significance}</div>
                         <h4 className="navy-font-display text-lg font-black uppercase text-white leading-tight mb-3">{event.title}</h4>
-                        <p className="text-[11px] leading-relaxed text-white/50">{event.description}</p>
+                        <p className="text-[13px] sm:text-[14px] leading-relaxed text-white/65 font-medium">{event.description}</p>
                       </div>
                     )}
                   </div>
@@ -2549,7 +2549,7 @@ export function NavyHeritageTimeline({
                   {/* Center node */}
                   <div className="flex flex-col items-center z-10">
                     <div className="flex h-12 w-12 items-center justify-center border border-white/10 bg-black text-white">
-                      <span className="font-mono text-[10px] font-bold tracking-wider">{event.year}</span>
+                      <span className="navy-font-mono text-[13px] font-bold tracking-wider text-white">{event.year}</span>
                     </div>
                   </div>
 
@@ -2572,9 +2572,9 @@ export function NavyHeritageTimeline({
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                       </div>
-                      <div className="text-[9px] font-mono uppercase tracking-widest text-[#8edcff]/70 mb-3">{event.significance}</div>
+                      <div className="navy-font-mono text-[11px] font-bold tracking-widest text-[#8edcff] mb-2.5">{event.significance}</div>
                       <h4 className="navy-font-display text-lg font-black uppercase text-white leading-tight mb-3">{event.title}</h4>
-                      <p className="text-[11px] leading-relaxed text-white/50">{event.description}</p>
+                      <p className="text-[13px] sm:text-[14px] leading-relaxed text-white/65 font-medium">{event.description}</p>
                     </div>
                     {/* Show on desktop for right-side items */}
                     {!isLeft && (
@@ -2591,9 +2591,9 @@ export function NavyHeritageTimeline({
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         </div>
-                        <div className="text-[9px] font-mono uppercase tracking-widest text-[#8edcff]/70 mb-3">{event.significance}</div>
+                        <div className="navy-font-mono text-[11px] font-bold tracking-widest text-[#8edcff] mb-2.5">{event.significance}</div>
                         <h4 className="navy-font-display text-lg font-black uppercase text-white leading-tight mb-3">{event.title}</h4>
-                        <p className="text-[11px] leading-relaxed text-white/50">{event.description}</p>
+                        <p className="text-[13px] sm:text-[14px] leading-relaxed text-white/65 font-medium">{event.description}</p>
                       </div>
                     )}
                   </div>
@@ -2656,7 +2656,7 @@ export function NavySpecWarSection({
                   onClick={() => setActiveIndex(index)}
                   className={cn(
                     "relative flex-1 lg:flex-auto min-h-24 lg:min-h-40 overflow-hidden border-r lg:border-r-0 lg:border-b border-white/5 last:border-r-0 last:border-b-0 p-6 text-left transition-all duration-300",
-                    selected ? "bg-white/[0.04] text-white" : "text-white/35 hover:bg-white/[0.015] hover:text-white/60"
+                    selected ? "bg-white/[0.04] text-white" : "text-white/55 hover:bg-white/[0.015] hover:text-white/80"
                   )}
                 >
                   {selected && (
@@ -2667,9 +2667,9 @@ export function NavySpecWarSection({
                     />
                     )}
                   <div className="relative z-10">
-                    <div className="navy-font-mono text-[9px] uppercase tracking-[0.2em] mb-2 text-[#8edcff]/70">{unit.role}</div>
+                    <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] mb-2 text-[#8edcff]">{unit.role}</div>
                     <div className="navy-font-display text-xl lg:text-2xl font-black uppercase leading-tight">{unit.name}</div>
-                    <div className="hidden lg:block mt-2 text-[10px] text-white/40">{unit.fullName}</div>
+                    <div className="hidden lg:block mt-2 text-[11px] text-white/55 font-medium">{unit.fullName}</div>
                   </div>
                 </button>
               );
@@ -2689,18 +2689,18 @@ export function NavySpecWarSection({
               >
                 {/* Header */}
                 <div>
-                  <div className="navy-font-mono text-[9px] uppercase tracking-[0.25em] mb-3 text-[#8edcff]">{active.fullName}</div>
+                  <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] mb-3 text-[#8edcff]">{active.fullName}</div>
                   <h3 className="navy-font-display text-3xl md:text-4xl font-black uppercase text-white leading-tight">{active.name}</h3>
                 </div>
 
                 {/* Description */}
-                <p className="text-xs leading-relaxed text-white/60 max-w-2xl">{active.description}</p>
+                <p className="text-[13px] leading-relaxed text-white/65 font-medium max-w-2xl">{active.description}</p>
 
                 {/* Stats grid */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5">
                   {active.stats.map((stat) => (
                     <div key={stat.label} className="bg-[#020202] p-4">
-                      <div className="text-[9px] uppercase tracking-widest text-white/30 mb-2">{stat.label}</div>
+                      <div className="text-[11px] font-semibold uppercase tracking-widest text-white/45 mb-2">{stat.label}</div>
                       <div className="text-sm font-bold text-white">{stat.value}</div>
                     </div>
                   ))}
@@ -2708,14 +2708,14 @@ export function NavySpecWarSection({
 
                 {/* Mission profile tags */}
                 <div>
-                  <div className="text-[9px] font-mono uppercase tracking-widest text-white/30 mb-3">
+                  <div className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-white/45 mb-3">
                     {isRo ? "PROFILURI DE MISIUNE" : "MISSION PROFILES"}
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {active.missions.map((mission) => (
                       <span
                         key={mission}
-                        className="border border-white/8 bg-white/[0.02] px-3.5 py-1.5 text-[10px] font-bold uppercase text-white/50 tracking-wider"
+                        className="border border-white/8 bg-white/[0.02] px-3.5 py-1.5 text-[11px] font-bold uppercase text-white/70 tracking-wider"
                       >
                         {mission}
                       </span>
@@ -2727,7 +2727,7 @@ export function NavySpecWarSection({
                 {active.id === "seal-teams" && (
                   <div className="navy-panel-tactical p-5 mt-4">
                     <div className="flex justify-between items-center mb-3">
-                      <span className="text-[9px] font-mono uppercase tracking-widest text-white/40">
+                      <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-white/60">
                         {isRo ? "RATA DE SELECȚIE BUD/S" : "BUD/S SELECTION RATE"}
                       </span>
                       <span className="text-sm font-bold text-white">~25%</span>
@@ -2742,7 +2742,7 @@ export function NavySpecWarSection({
                         style={{ background: "#8edcff", boxShadow: "0 0 8px rgba(142,220,255,0.18)" }}
                       />
                     </div>
-                    <p className="mt-3 text-[10px] text-white/35 leading-relaxed">
+                    <p className="mt-3 text-[12px] text-white/55 leading-relaxed font-medium">
                       {isRo
                         ? "Din fiecare clasă BUD/S, aproximativ 75% din candidați renunță sau sunt eliminați. Cei care rămân devin unii dintre cei mai capabili operatori militari din lume."
                         : "Of every BUD/S class, approximately 75% of candidates drop on request or are eliminated. Those who remain become some of the most capable military operators on Earth."}
@@ -2797,12 +2797,12 @@ export function NavyAirWingComposition({
         >
           <div className="navy-panel-tactical px-8 py-4 flex items-center gap-6">
             <div className="text-center">
-              <div className="text-[9px] font-mono uppercase tracking-widest text-white/30 mb-1">{isRo ? "TOTAL AERONAVE / CVW" : "TOTAL AIRCRAFT / CVW"}</div>
+              <div className="navy-font-mono text-[11px] font-bold tracking-widest text-white/45 mb-1">{isRo ? "TOTAL AERONAVE / CVW" : "TOTAL AIRCRAFT / CVW"}</div>
               <div className="text-3xl font-black text-white">{totalAircraft}</div>
             </div>
             <div className="w-px h-10 bg-white/10" />
             <div className="text-center">
-              <div className="text-[9px] font-mono uppercase tracking-widest text-white/30 mb-1">{isRo ? "TIPURI ESCADRILE" : "SQUADRON TYPES"}</div>
+              <div className="navy-font-mono text-[11px] font-bold tracking-widest text-white/45 mb-1">{isRo ? "TIPURI ESCADRILE" : "SQUADRON TYPES"}</div>
               <div className="text-3xl font-black text-white">{squadrons.length}</div>
             </div>
           </div>
@@ -2823,16 +2823,16 @@ export function NavyAirWingComposition({
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#8edcff]/40" />
 
               <div className="flex items-center justify-between mb-4">
-                <span className="navy-font-mono text-[9px] uppercase tracking-widest text-[#8edcff]/80">{sq.designation}</span>
+                <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#8edcff]">{sq.designation}</span>
                 <span className="navy-font-display text-2xl font-black text-white">×{sq.count}</span>
               </div>
 
-              <div className="text-[10px] font-bold uppercase tracking-wider text-white/40 mb-2">{sq.type}</div>
+              <div className="text-[11px] font-bold uppercase tracking-wider text-white/55 mb-2">{sq.type}</div>
               <h4 className="navy-font-display text-base font-extrabold uppercase text-white leading-tight mb-4" style={{ letterSpacing: "0.03em" }}>
                 {sq.aircraft}
               </h4>
 
-              <p className="text-[10px] leading-relaxed text-white/45">{sq.role}</p>
+              <p className="text-[12px] leading-relaxed text-white/60 font-medium">{sq.role}</p>
 
               <div className="mt-5 h-px w-full bg-white/5">
                 <div
@@ -2906,22 +2906,22 @@ export function NavyBasesSection({
                     <MapPin size={16} strokeWidth={1.5} />
                   </div>
                   <div>
-                    <div className="navy-font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 mb-1">{active.region}</div>
+                    <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#8edcff] mb-1">{active.region}</div>
                     <h3 className="navy-font-display text-2xl md:text-3xl font-black uppercase text-white leading-tight">{active.name}</h3>
                   </div>
                 </div>
 
-                <div className="navy-font-mono text-[10px] uppercase tracking-widest mb-4 text-[#8edcff]/80">
+                <div className="navy-font-mono text-[11px] font-bold uppercase tracking-widest mb-4 text-[#8edcff]">
                   {active.location} · {active.role}
                 </div>
 
-                <p className="text-xs leading-relaxed text-white/55 max-w-2xl mb-8">{active.description}</p>
+                <p className="text-[13px] leading-relaxed text-white/65 font-medium max-w-2xl mb-8">{active.description}</p>
 
                 {/* Stats grid */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 mt-auto">
                   {active.stats.map((stat) => (
                     <div key={stat.label} className="bg-[#020202] p-4">
-                      <div className="text-[9px] uppercase tracking-widest text-white/30 mb-2">{stat.label}</div>
+                      <div className="text-[11px] font-semibold uppercase tracking-widest text-white/45 mb-2">{stat.label}</div>
                       <div className="text-sm font-bold text-white">{stat.value}</div>
                     </div>
                   ))}
@@ -2941,7 +2941,7 @@ export function NavyBasesSection({
                   onClick={() => setActiveIndex(index)}
                   className={cn(
                     "relative overflow-hidden border-b border-white/5 last:border-b-0 p-5 text-left transition-all duration-300",
-                    selected ? "bg-white/[0.04] text-white" : "text-white/35 hover:bg-white/[0.015] hover:text-white/60"
+                    selected ? "bg-white/[0.04] text-white" : "text-white/55 hover:bg-white/[0.015] hover:text-white/80"
                   )}
                 >
                   {selected && (
@@ -2955,12 +2955,12 @@ export function NavyBasesSection({
                   <div className="pl-3">
                     <div className="flex items-center gap-2">
                       <MapPin size={11} strokeWidth={1.5} className="text-[#8edcff]/60" />
-                      <span className="navy-font-mono text-[8px] uppercase tracking-widest text-white/30">{base.region}</span>
+                      <span className="navy-font-mono text-[10px] font-semibold uppercase tracking-widest text-[#8edcff]/70">{base.region}</span>
                     </div>
                     <div className="navy-font-display text-sm sm:text-base font-extrabold uppercase leading-snug mt-1.5" style={{ letterSpacing: "0.04em" }}>
                       {base.name}
                     </div>
-                    <div className="mt-1 text-[9px] text-white/30">{base.location}</div>
+                    <div className="mt-1 text-[11px] text-white/45 font-medium">{base.location}</div>
                   </div>
                 </button>
               );
@@ -3019,22 +3019,22 @@ export function NavyHumanitarianSection({
                   >
                     <Heart size={14} strokeWidth={1.5} />
                   </div>
-                  <span className="navy-font-mono text-[9px] uppercase tracking-widest text-white/30">{mission.year}</span>
+                  <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#8edcff]/80">{mission.year}</span>
                 </div>
               </div>
 
               <h4 className="navy-font-display text-xl font-black uppercase text-white leading-tight mb-4">{mission.name}</h4>
-              <p className="text-[11px] leading-relaxed text-white/50 mb-6">{mission.description}</p>
+              <p className="text-[13px] leading-relaxed text-white/65 font-medium mb-6">{mission.description}</p>
 
               {/* Impact & Asset */}
               <div className="grid grid-cols-1 gap-3 mt-auto">
                 <div className="navy-panel-tactical p-3 flex items-center gap-3">
-                  <span className="text-[9px] font-mono uppercase tracking-widest text-white/30 shrink-0">{isRo ? "IMPACT" : "IMPACT"}</span>
+                  <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-white/45 shrink-0">{isRo ? "IMPACT" : "IMPACT"}</span>
                   <span className="text-[11px] font-bold text-white">{mission.impact}</span>
                 </div>
                 <div className="navy-panel-tactical p-3 flex items-center gap-3">
-                  <span className="text-[9px] font-mono uppercase tracking-widest text-white/30 shrink-0">{isRo ? "RESURSE" : "ASSETS"}</span>
-                  <span className="text-[10px] text-white/50 font-mono">{mission.asset}</span>
+                  <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-white/45 shrink-0">{isRo ? "RESURSE" : "ASSETS"}</span>
+                  <span className="text-[12px] text-white/65 font-semibold font-mono">{mission.asset}</span>
                 </div>
               </div>
 
