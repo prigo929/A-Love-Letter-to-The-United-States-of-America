@@ -995,7 +995,7 @@ export function ParallaxMilitaryHero({
   // Stage 2 (30–60vh): Text appears, image stabilizes
   // Stage 3 (60–100vh): Image zooms to 120%, text fades + blurs
   // Content is sharp and visible at start, then fades/blurs as we scroll away
-  const imageOpacity = useTransform(scrollYProgress, [0, 0.5], [0.35, 0.05]);
+  const imageOpacity = useTransform(scrollYProgress, [0, 0.5], [1.0, 0.05]);
   const imageScale = useTransform(scrollYProgress, [0, 0.5], [1.0, 1.2]);
   const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   const imageBlur = useTransform(scrollYProgress, [0, 0.5], [0, 15]);

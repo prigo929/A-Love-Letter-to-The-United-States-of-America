@@ -43,6 +43,48 @@ import scienceLab from "@/IMAGES/Science/science-lab.jpg";
 import homeSiliconValley from "@/IMAGES/Technology/macro of a silicon wafer.jpg";
 import siliconValleyOffice from "@/IMAGES/Technology/Apple Headquarters.jpg";
 
+// Housing
+import housingFrontPorch from "@/IMAGES/Housing/Charming suburban house with front porch, landscaping, and white facade.jpg";
+import housingDuskHouse from "@/IMAGES/Housing/Charming two-story house with manicured lawn and garage, set in Yelm, WA, under dusk sky.jpg";
+import housingFloridaSuburb from "@/IMAGES/Housing/Florida Suburban Houses.jpg";
+import housingChicagoSuburb from "@/IMAGES/Housing/Homes in Chicago suburb of River Forest, Illinois.jpg";
+import housingIowaSuburb from "@/IMAGES/Housing/New homes in suburbia, in Urbandale, Iowa, a suburb on the northwest side of Des Moines.jpg";
+import housingIndianaAutumn from "@/IMAGES/Housing/Suburb in Indiana Autumn.jpeg";
+import housingSuburbSpring from "@/IMAGES/Housing/nature in suburb spring.jpeg";
+import housingQolHouse from "@/IMAGES/Housing/quality-of-life-house.jpg";
+
+// Outdoors Lifestyle
+import outdoorsCamping from "@/IMAGES/Outdoors Lifestyle/Camping in Madera Canyon, Arizona.jpg";
+import outdoorsBaldEagle from "@/IMAGES/Outdoors Lifestyle/Close-up portrait of a majestic bald eagle showcasing its fierce gaze and distinct white feathers.jpg";
+import outdoorsRvFamily from "@/IMAGES/Outdoors Lifestyle/Family of 4 full-time rv'ing with Ford F-350.jpg";
+import outdoorsHunting from "@/IMAGES/Outdoors Lifestyle/Hunter with a dog wearing orange vest in a Florida field. Bright sunny day with F-150 in background.jpg";
+import outdoorsFishing from "@/IMAGES/Outdoors Lifestyle/Man Fishing in Provo River Utah.jpg";
+import outdoorsRvArizona from "@/IMAGES/Outdoors Lifestyle/RVing family on road Arizona.jpg";
+import outdoorsRvGrandCanyon from "@/IMAGES/Outdoors Lifestyle/RVing in Grand Canyon National Park Arizona.jpg";
+import outdoorsTorchLake from "@/IMAGES/Outdoors Lifestyle/Torch Lake sandbar Michigan lots of boats aerial.jpg";
+import outdoorsBoatsDocked from "@/IMAGES/Outdoors Lifestyle/boats docked in Marquette, MI.jpg";
+import outdoorsSailing from "@/IMAGES/Outdoors Lifestyle/chicago-to-mackinac-island-sailing.jpg";
+import outdoorsBoating from "@/IMAGES/Outdoors Lifestyle/michigan-boating 2 girls on boat.png";
+
+// Cities
+import cityAtlanta from "@/IMAGES/Cities/Atlanta Downtown at Sunset View.jpg";
+import cityAustin from "@/IMAGES/Cities/Austin Texas Capitol between trees.jpg";
+import cityChicagoSkyline from "@/IMAGES/Cities/Chicago Skyline and Grid at Sunset.jpg";
+import cityDallas from "@/IMAGES/Cities/Dallas with the interstate and downtown.jpg";
+import cityNashville from "@/IMAGES/Cities/Downtown Nashville Tennesse 2.jpg";
+import cityNycCentralPark from "@/IMAGES/Cities/New York City Central Park.jpg";
+import citySeattleNight from "@/IMAGES/Cities/Seattle Skyline at Night.jpg";
+import citySeattleDay from "@/IMAGES/Cities/Seattle Skyline Day.jpg";
+import citySavannah from "@/IMAGES/Cities/Nice Building in Savannah GA with GA Flag.jpg";
+import citySeattleSpring from "@/IMAGES/Cities/Girl walking Seattle Bloosoming japanese pink trees.jpg";
+
+// Aerials
+import aerialDallas from "@/IMAGES/Aerials/Aerial View of Dallas.jpg";
+import aerialChicago from "@/IMAGES/Aerials/Aerial_view_of_Chicago,_Illinois Photograph taken in the 1990s.jpg";
+import aerialSantaMonica from "@/IMAGES/Aerials/Aerial_View_of_Santa_Monica,_California.jpg";
+import aerialDallasHighway from "@/IMAGES/Aerials/I-30_at_TX161_Aerial_-_Facing_East.jpg";
+import aerialPasadena from "@/IMAGES/Aerials/Aerial_view_of_Pasadena,_California.jpg";
+
 // Military replacements
 import armyHero from "@/IMAGES/Military/Army/us-army-soldiers-flag.jpg";
 import navyHero from "@/IMAGES/Military/Navy/us-navy-dual-carrier-strike-group.jpg";
@@ -699,5 +741,48 @@ export const SITE_IMAGES = {
   nashville: {
     skyline: nashvilleSkyline.src,
     skyline2: nashvilleSkyline2.src,
+  },
+
+  housing: {
+    frontPorch: housingFrontPorch.src,
+    duskHouse: housingDuskHouse.src,
+    floridaSuburb: housingFloridaSuburb.src,
+    chicagoSuburb: housingChicagoSuburb.src,
+    iowaSuburb: housingIowaSuburb.src,
+    indianaAutumn: housingIndianaAutumn.src,
+    suburbSpring: housingSuburbSpring.src,
+    qolHouse: housingQolHouse.src,
+  },
+
+  outdoors: {
+    camping: outdoorsCamping.src,
+    baldEagle: outdoorsBaldEagle.src,
+    rvFamily: outdoorsRvFamily.src,
+    hunting: outdoorsHunting.src,
+    fishing: outdoorsFishing.src,
+    rvArizona: outdoorsRvArizona.src,
+    rvGrandCanyon: outdoorsRvGrandCanyon.src,
+    torchLake: outdoorsTorchLake.src,
+    boatsDocked: outdoorsBoatsDocked.src,
+    sailing: outdoorsSailing.src,
+    boating: outdoorsBoating.src,
+  },
+
+  cities: {
+    atlanta: cityAtlanta.src,
+    austin: cityAustin.src,
+    chicagoSkyline: cityChicagoSkyline.src,
+    dallas: cityDallas.src,
+    nashville: cityNashville.src,
+    nycCentralPark: cityNycCentralPark.src,
+    seattleNight: citySeattleNight.src,
+    seattleDay: citySeattleDay.src,
+    savannah: citySavannah.src,
+    seattleSpring: citySeattleSpring.src,
+    aerialDallas: aerialDallas.src,
+    aerialChicago: aerialChicago.src,
+    aerialSantaMonica: aerialSantaMonica.src,
+    aerialDallasHighway: aerialDallasHighway.src,
+    aerialPasadena: aerialPasadena.src,
   },
 } as const;
