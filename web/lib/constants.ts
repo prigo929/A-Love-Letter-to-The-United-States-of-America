@@ -508,11 +508,6 @@ export const NAV_SECTIONS = [
         description: "Bilingual profile of population and immigration dynamics",
       },
       {
-        label: "Data & Studies",
-        href: "/data",
-        description: "Fact card database and FAQ archive",
-      },
-      {
         label: "Photo Gallery",
         href: "/gallery",
         description: "Bespoke high-fidelity visual gallery",
@@ -937,10 +932,6 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "/immigration-demographics": {
         label: "Imigrație și Demografie",
         description: "Profil bilingv al dinamicii populației și imigrației",
-      },
-      "/data": {
-        label: "Date și Studii",
-        description: "Baza de date cu fișe de fapte și FAQ",
       },
       "/gallery": {
         label: "Galerie Foto",
