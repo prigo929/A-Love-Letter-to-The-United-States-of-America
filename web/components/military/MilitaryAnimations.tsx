@@ -1024,7 +1024,7 @@ export function ParallaxMilitaryHero({
               alt={imageAlt}
               fill
               priority
-              className="object-cover brightness-[0.4] grayscale-[0.3]"
+              className="object-cover brightness-[0.68] saturate-[0.85] grayscale-[0.3]"
               sizes="100vw"
               placeholder="blur"
               blurDataURL={BLUR_PLACEHOLDER}
@@ -1040,7 +1040,7 @@ export function ParallaxMilitaryHero({
               playsInline
               preload="auto"
               poster={imageSrc}
-              className="absolute inset-0 h-full w-full object-cover brightness-[0.4] grayscale-[0.3]"
+              className="absolute inset-0 h-full w-full object-cover brightness-[0.68] saturate-[0.85] grayscale-[0.3]"
             >
               <source src={videoSrc} type="video/mp4" />
             </video>
@@ -1070,7 +1070,7 @@ export function ParallaxMilitaryHero({
         <motion.p 
           variants={{
             hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+            visible: { opacity: 0.75, y: 0, transition: { duration: 0.6 } }
           }}
           className="mil-text-label mb-4 md:mb-8 tracking-[0.2em] md:tracking-[0.5em]"
         >
@@ -1081,7 +1081,7 @@ export function ParallaxMilitaryHero({
         <motion.h1
           variants={{
             hidden: { opacity: 0, y: 32 },
-            visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } }
+            visible: { opacity: 0.80, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } }
           }}
           className="mil-text-hero"
         >
@@ -1092,7 +1092,7 @@ export function ParallaxMilitaryHero({
         <motion.p 
           variants={{
             hidden: { opacity: 0, y: 30 },
-            visible: { opacity: 0.85, y: 0, transition: { duration: 0.8 } }
+            visible: { opacity: 0.70, y: 0, transition: { duration: 0.8 } }
           }}
           className="mil-text-metadata mt-6 md:mt-12 max-w-2xl font-bold tracking-[0.3em] leading-relaxed uppercase"
         >
@@ -1104,14 +1104,14 @@ export function ParallaxMilitaryHero({
           <motion.div 
             variants={{
               hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
+              visible: { opacity: 0.75, y: 0, transition: { duration: 0.7 } }
             }}
             className="mt-10 md:mt-20 flex flex-wrap justify-center gap-x-14 gap-y-6"
           >
             {stats.map((s, i) => (
               <div key={i} className="text-center group">
-                <div className="mil-text-metadata mb-2 font-black uppercase tracking-widest text-[11px] text-white/50">{s.label}</div>
-                <div className="text-2xl md:text-3xl font-black tracking-tight text-white/90">{s.value}</div>
+                <div className="mil-text-metadata mb-2 font-black uppercase tracking-widest text-[11px] text-white/70">{s.label}</div>
+                <div className="text-2xl md:text-3xl font-black tracking-tight text-white/80">{s.value}</div>
               </div>
             ))}
           </motion.div>
