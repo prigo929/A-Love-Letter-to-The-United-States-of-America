@@ -1159,7 +1159,6 @@ export function VideoMilitaryHero({
   const videoY      = useTransform(scrollYProgress, [0, 1],    ["0%", "22%"]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.2, 0.5], [1, 1, 0]);
   const textY       = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
-
   const placeholderImage = imageSrc || posterSrc;
 
   return (
@@ -1176,7 +1175,7 @@ export function VideoMilitaryHero({
               alt={title || ""}
               fill
               priority
-              className="absolute inset-0 h-full w-full object-[center_40%] object-cover brightness-[0.48] saturate-[0.75] scale-[1.15] md:scale-100 md:object-cover"
+              className="absolute inset-0 h-full w-full object-[center_40%] object-cover brightness-[0.68] saturate-[0.85] scale-[1.15] md:scale-100 md:object-cover"
               sizes="100vw"
               placeholder="blur"
               blurDataURL={BLUR_PLACEHOLDER}
@@ -1192,7 +1191,7 @@ export function VideoMilitaryHero({
               playsInline
               preload="auto"
               poster={placeholderImage}
-              className="absolute inset-0 h-full w-full object-[center_40%] object-cover brightness-[0.48] saturate-[0.75] scale-[1.15] md:scale-100 md:object-cover"
+              className="absolute inset-0 h-full w-full object-[center_40%] object-cover brightness-[0.68] saturate-[0.85] scale-[1.15] md:scale-100 md:object-cover"
             >
               <source src={videoSrc} type="video/mp4" />
             </video>
@@ -1215,21 +1214,21 @@ export function VideoMilitaryHero({
           style={{ opacity: textOpacity, y: textY }}
         >
           <motion.p
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 0.75, y: 0, transition: { duration: 0.6 } } }}
             className="mil-text-label mb-4 md:mb-8 tracking-[0.2em] md:tracking-[0.5em]"
           >
             {tagline}
           </motion.p>
 
           <motion.h1
-            variants={{ hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } } }}
+            variants={{ hidden: { opacity: 0, y: 32 }, visible: { opacity: 0.80, y: 0, transition: { duration: 1.0, ease: [0.19, 1, 0.22, 1] } } }}
             className="mil-text-hero"
           >
             {title}
           </motion.h1>
 
           <motion.p
-            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 0.85, y: 0, transition: { duration: 0.8 } } }}
+            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 0.70, y: 0, transition: { duration: 0.8 } } }}
             className="mil-text-metadata mt-6 md:mt-12 max-w-2xl font-bold tracking-[0.3em] leading-relaxed uppercase"
           >
             {subtitle}
@@ -1237,13 +1236,13 @@ export function VideoMilitaryHero({
 
           {stats && (
             <motion.div
-              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7 } } }}
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 0.75, y: 0, transition: { duration: 0.7 } } }}
               className="mt-10 md:mt-20 flex flex-wrap justify-center gap-x-14 gap-y-6"
             >
               {stats.map((s, i) => (
                 <div key={i} className="text-center">
-                  <div className="mil-text-metadata mb-2 font-black uppercase tracking-widest text-[11px] text-white/50">{s.label}</div>
-                  <div className="text-2xl md:text-3xl font-black tracking-tight text-white/90">{s.value}</div>
+                  <div className="mil-text-metadata mb-2 font-black uppercase tracking-widest text-[11px] text-white/70">{s.label}</div>
+                  <div className="text-2xl md:text-3xl font-black tracking-tight text-white/80">{s.value}</div>
                 </div>
               ))}
             </motion.div>
