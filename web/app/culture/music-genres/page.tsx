@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 import { Home, ChevronRight } from "lucide-react";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
@@ -360,34 +361,32 @@ export default async function MusicGenresPage() {
           <div className="mb-20">
             <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-2">{isRo ? "GENERAȚIA ACTUALĂ" : "CURRENT GENERATION"}</p>
             <h2 className="font-macro-display text-4xl md:text-5xl font-black text-white mb-10">{isRo ? "STARURILE MODERNE" : "MODERN STARS"}</h2>
-            <div className="grid grid-cols-4 md:grid-cols-7 gap-3">
-              {modernStars.map((star, i) => (
-                <div key={i} className="group relative aspect-square rounded-2xl overflow-hidden">
-                  <Image src={star.image} alt={star.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 33vw, 16vw" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <p className="font-body text-[10px] font-bold text-white/90 leading-tight">{star.name}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-4 md:grid-cols-7 gap-3"
+              sizes="(max-width: 768px) 33vw, 16vw"
+              photos={modernStars.map((star) => ({
+                src: star.image,
+                alt: star.alt,
+                caption: star.name,
+                aspect: "1/1",
+              }))}
+            />
           </div>
 
           {/* Artist Archive */}
           <div className="mb-20">
             <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-2">{isRo ? "ARHIVA ARTIȘTILOR" : "ARTIST ARCHIVE"}</p>
-            <div className="grid grid-cols-3 gap-3 mt-6">
-              {artistArchive.map((item, i) => (
-                <div key={i} className="group relative aspect-4/3 rounded-2xl overflow-hidden">
-                  <Image src={item.src} alt={item.name} fill className="object-cover object-top group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 33vw, 25vw" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/75 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <p className="font-macro-display text-sm font-black text-white leading-tight">{item.name}</p>
-                    <p className="font-body text-[10px] font-bold text-glory-gold uppercase tracking-wider mt-1">{item.note}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-3 gap-3 mt-6"
+              sizes="(max-width: 768px) 33vw, 25vw"
+              photos={artistArchive.map((item) => ({
+                src: item.src,
+                alt: `${item.name} — ${item.note}`,
+                caption: `${item.name} · ${item.note}`,
+                aspect: "4/3",
+                objectClassName: "object-top",
+              }))}
+            />
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-white/5 rounded-3xl overflow-hidden mb-20">
@@ -408,17 +407,16 @@ export default async function MusicGenresPage() {
           {/* Vinyl vault */}
           <div className="mb-20">
             <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-2">{isRo ? "ARHIVA VINILULUI" : "THE VINYL VAULT"}</p>
-            <div className="grid grid-cols-4 md:grid-cols-7 gap-3 mt-6">
-              {albums.map((album, i) => (
-                <div key={i} className="group relative aspect-square rounded-xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all duration-500">
-                  <Image src={album.src} alt={album.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 25vw, 14vw" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="font-body text-[9px] font-bold text-white leading-tight">{album.label}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-4 md:grid-cols-7 gap-3 mt-6"
+              sizes="(max-width: 768px) 25vw, 14vw"
+              photos={albums.map((album) => ({
+                src: album.src,
+                alt: album.alt,
+                caption: album.label,
+                aspect: "1/1",
+              }))}
+            />
           </div>
 
           <div className="relative rounded-3xl h-72 overflow-hidden flex items-center justify-center mb-20">

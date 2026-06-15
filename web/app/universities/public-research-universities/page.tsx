@@ -85,7 +85,7 @@ const copyRo: PublicCopy = {
   breadcrumbParent: "Universități",
   breadcrumbPage: "Cercetare Publică",
   heroTagline: "CERCETARE DEMOCRATIZATĂ",
-  heroTitle: "Universitățile de Cercetare Publică",
+  heroTitle: "Cercetare Publică",
   heroSubtitle: "UC Berkeley, Michigan, UT Austin și UCLA — giganții finanțați de stat care oferă educație la scară largă și cercetare de nivel Ivy League.",
   thesisTitle: "Educație de Elită la Scară Largă",
   thesisParagraph1: "În timp ce universitățile private domină prestigiul Ivy League, sistemele publice de cercetare finanțate de statele americane sunt campionii accesului democratic și ai dezvoltării economice regionale. Sisteme precum University of California sau University of Texas înscriu sute de mii de studenți în timp ce mențin laboratoare de vârf.",

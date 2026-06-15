@@ -66,7 +66,7 @@ const copyEn: AiCopy = {
   breadcrumbParent: "Innovation & Technology",
   breadcrumbPage: "AI & Tech",
   heroTagline: "THE SILICON AGE",
-  heroTitle: "Designing the\nAI Frontier",
+  heroTitle: "The\nAI Frontier",
   heroSubtitle: "How Silicon Valley and American intellectual property command the design layer of the global computing stack.",
   thesisTitle: "The Architecture of Intelligence",
   thesisParagraph1: "From the silicon transistor invented at Bell Labs to the neural networks powering generative AI, the United States is the primary architect of digital intelligence. While physical fabrication has expanded globally, the core design layer, specialized architectures, and software toolchains remain deeply concentrated in American technology hubs. This structural advantage ensures that every compute cycle on earth relies on American IP.",

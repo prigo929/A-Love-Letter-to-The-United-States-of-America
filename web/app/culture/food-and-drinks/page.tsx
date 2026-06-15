@@ -7,6 +7,7 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 import { CultureStyles } from "@/components/culture/CulturePageComponents";
 import { SITE_IMAGES } from "@/lib/site-images";
+import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 
 export const metadata: Metadata = {
   title: "Food & Drinks | The American Operating System",
@@ -256,17 +257,16 @@ export default async function FoodAndDrinksPage() {
               <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "PREPARATELE ICONICE" : "ICONIC DISHES"}</h2>
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-              {catalogue.map((item, i) => (
-                <div key={i} className="group relative aspect-square rounded-xl overflow-hidden shadow-[0_4px_20px_rgb(12,9,7,0.08)] hover:shadow-[0_12px_40px_rgb(12,9,7,0.15)] hover:-translate-y-1 transition-all duration-400">
-                  <Image src={item.src} alt={item.label} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 640px) 33vw, (max-width: 768px) 25vw, 16vw" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/65 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-2">
-                    <p className="font-body text-[9px] font-bold text-white leading-tight">{item.label}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3"
+              sizes="(max-width: 640px) 33vw, (max-width: 768px) 25vw, 16vw"
+              photos={catalogue.map((item) => ({
+                src: item.src,
+                alt: item.label,
+                caption: item.label,
+                aspect: "1/1",
+              }))}
+            />
           </div>
         </section>
 
@@ -326,46 +326,41 @@ export default async function FoodAndDrinksPage() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-20">
-            <div className="relative aspect-4/3 rounded-2xl overflow-hidden">
-              <Image src={SITE_IMAGES.culture.speakeasyDesign} alt="1920s Speakeasy Design" fill className="object-cover" sizes="50vw" />
-              <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 p-6">
-                <p className="font-body text-xs font-bold uppercase tracking-widest text-glory-gold mb-1">{isRo ? "SPEAKEASY ERA" : "SPEAKEASY ERA"}</p>
-                <p className="font-editorial italic text-xl text-white">{isRo ? "1920–1933 · Arta Cocktail-ului" : "1920–1933 · The Art of the Cocktail"}</p>
-              </div>
-            </div>
-            <div className="relative aspect-4/3 rounded-2xl overflow-hidden">
-              <Image src={SITE_IMAGES.culture.cokeGlass} alt="Coca-Cola glass full" fill className="object-cover" sizes="50vw" />
-              <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 p-6">
-                <p className="font-body text-xs font-bold uppercase tracking-widest text-glory-gold mb-1">{isRo ? "SIMBOLUL GLOBAL" : "THE GLOBAL SYMBOL"}</p>
-                <p className="font-editorial italic text-xl text-white">{isRo ? "Coca-Cola · Creat în 1886, Atlanta" : "Coca-Cola · Created 1886, Atlanta"}</p>
-              </div>
-            </div>
-          </div>
+          <PhotoLightboxGrid
+            gridClassName="grid md:grid-cols-2 gap-6 mb-20"
+            sizes="50vw"
+            photos={[
+              {
+                src: SITE_IMAGES.culture.speakeasyDesign,
+                alt: "1920s Speakeasy interior design",
+                caption: isRo ? "Speakeasy Era · 1920–1933 · Arta Cocktail-ului" : "Speakeasy Era · 1920–1933 · The Art of the Cocktail",
+                aspect: "4/3",
+              },
+              {
+                src: SITE_IMAGES.culture.cokeGlass,
+                alt: "Full Coca-Cola glass",
+                caption: isRo ? "Coca-Cola · Creat în 1886, Atlanta" : "Coca-Cola · Created 1886, Atlanta",
+                aspect: "4/3",
+              },
+            ]}
+          />
 
           {/* Vintage Food & Drink Ads */}
           <div className="mb-20">
             <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-2">{isRo ? "ARHIVA RECLAMELOR VINTAGE" : "VINTAGE AD ARCHIVE"}</p>
             <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-8">{isRo ? "GUSTUL TRECUTULUI" : "THE TASTE OF HISTORY"}</h2>
-            <div className="grid grid-cols-4 md:grid-cols-6 gap-3">
-              {[
-                { src: SITE_IMAGES.culture.vaultChiquita1968, label: "Chiquita · 1968" },
-                { src: SITE_IMAGES.culture.vaultMinuteMaid1979, label: "Minute Maid · 1979" },
-                { src: SITE_IMAGES.culture.vaultSprite1966, label: "Sprite · 1966" },
-                { src: SITE_IMAGES.culture.vaultMagicChef1950, label: "Magic Chef · 1950" },
-                { src: SITE_IMAGES.culture.vaultGourmetProduce, label: "Gourmet · 1969" },
-                { src: SITE_IMAGES.culture.burgerFries, label: isRo ? "Burger & Cartofi Prăjiți" : "Burger & Fries" },
-              ].map((ad, i) => (
-                <div key={i} className="group relative aspect-3/4 rounded-xl overflow-hidden border border-white/5 hover:border-glory-gold/40 transition-all duration-300">
-                  <Image src={ad.src} alt={ad.label} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="16vw" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2">
-                    <span className="text-[9px] font-body text-white leading-tight">{ad.label}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-4 md:grid-cols-6 gap-3"
+              sizes="16vw"
+              photos={[
+                { src: SITE_IMAGES.culture.vaultChiquita1968, alt: "Chiquita vintage ad, 1968", caption: "Chiquita · 1968", aspect: "3/4" },
+                { src: SITE_IMAGES.culture.vaultMinuteMaid1979, alt: "Minute Maid vintage ad, 1979", caption: "Minute Maid · 1979", aspect: "3/4" },
+                { src: SITE_IMAGES.culture.vaultSprite1966, alt: "Sprite vintage ad, 1966", caption: "Sprite · 1966", aspect: "3/4" },
+                { src: SITE_IMAGES.culture.vaultMagicChef1950, alt: "Magic Chef vintage ad, 1950", caption: "Magic Chef · 1950", aspect: "3/4" },
+                { src: SITE_IMAGES.culture.vaultGourmetProduce, alt: "Gourmet produce vintage ad, 1969", caption: "Gourmet · 1969", aspect: "3/4" },
+                { src: SITE_IMAGES.culture.burgerFries, alt: isRo ? "Burger și cartofi prăjiți" : "Burger and fries", caption: isRo ? "Burger & Cartofi Prăjiți" : "Burger & Fries", aspect: "3/4" },
+              ]}
+            />
           </div>
 
           <div className="flex items-center justify-between border-t border-white/10 pt-12 font-body">

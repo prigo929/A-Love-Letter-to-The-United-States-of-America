@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 import { Home, ChevronRight } from "lucide-react";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
@@ -300,25 +301,20 @@ export default async function CultureCompaniesBrandsPage() {
           <div className="mb-20">
             <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-2">{isRo ? "ARHIVA RECLAMELOR VINTAGE" : "VINTAGE AD ARCHIVE"}</p>
             <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-8">{isRo ? "MĂRCI ÎN TIMP" : "BRANDS THROUGH TIME"}</h2>
-            <div className="grid grid-cols-4 md:grid-cols-8 gap-3">
-              {[
-                { src: SITE_IMAGES.culture.vaultCocaCola1971, label: "Coca-Cola · 1971" },
-                { src: SITE_IMAGES.culture.vaultCocaCola1988, label: "Coca-Cola · 1988" },
-                { src: SITE_IMAGES.culture.vaultCocaCola1989, label: "Coca-Cola · 1989" },
-                { src: SITE_IMAGES.culture.vaultKfc1968, label: "KFC · 1968" },
-                { src: SITE_IMAGES.culture.vaultFord1987, label: "Ford · 1987" },
-                { src: SITE_IMAGES.culture.vaultWsj1988, label: "WSJ · 1988" },
-                { src: SITE_IMAGES.culture.vaultGeneralFoods1982, label: "General Foods · 1982" },
-                { src: SITE_IMAGES.culture.vaultUniden1987, label: "Uniden · 1987" },
-              ].map((ad, i) => (
-                <div key={i} className="group relative aspect-3/4 rounded-xl overflow-hidden border border-white/5 hover:border-glory-gold/40 transition-all duration-300">
-                  <Image src={ad.src} alt={ad.label} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="12vw" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2">
-                    <span className="text-[8px] font-body text-white leading-tight">{ad.label}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-4 md:grid-cols-8 gap-3"
+              sizes="12vw"
+              photos={[
+                { src: SITE_IMAGES.culture.vaultCocaCola1971, alt: "Coca-Cola vintage ad, 1971", caption: "Coca-Cola · 1971", aspect: "3/4" },
+                { src: SITE_IMAGES.culture.vaultCocaCola1988, alt: "Coca-Cola vintage ad, 1988", caption: "Coca-Cola · 1988", aspect: "3/4" },
+                { src: SITE_IMAGES.culture.vaultCocaCola1989, alt: "Coca-Cola vintage ad, 1989", caption: "Coca-Cola · 1989", aspect: "3/4" },
+                { src: SITE_IMAGES.culture.vaultKfc1968, alt: "KFC vintage ad, 1968", caption: "KFC · 1968", aspect: "3/4" },
+                { src: SITE_IMAGES.culture.vaultFord1987, alt: "Ford vintage ad, 1987", caption: "Ford · 1987", aspect: "3/4" },
+                { src: SITE_IMAGES.culture.vaultWsj1988, alt: "Wall Street Journal ad, 1988", caption: "WSJ · 1988", aspect: "3/4" },
+                { src: SITE_IMAGES.culture.vaultGeneralFoods1982, alt: "General Foods vintage ad, 1982", caption: "General Foods · 1982", aspect: "3/4" },
+                { src: SITE_IMAGES.culture.vaultUniden1987, alt: "Uniden vintage ad, 1987", caption: "Uniden · 1987", aspect: "3/4" },
+              ]}
+            />
           </div>
 
           <div className="relative rounded-3xl h-72 overflow-hidden flex items-center justify-center mb-20">

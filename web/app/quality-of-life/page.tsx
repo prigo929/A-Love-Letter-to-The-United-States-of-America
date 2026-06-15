@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
@@ -14,6 +15,7 @@ import DeepDiveSection from "@/components/shared/DeepDiveSection";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
+import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Quality of Life | Standard of Living & Abundance",
@@ -925,11 +927,14 @@ export default async function QualityOfLifePage() {
                 className="relative shrink-0 w-64 h-44 rounded-2xl overflow-hidden group"
                 style={{ scrollSnapAlign: "start" }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={item.src}
                   alt={item.label}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  fill
+                  sizes="256px"
+                  placeholder="blur"
+                  blurDataURL={BLUR_PLACEHOLDER}
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/65 to-transparent" />
                 <p className="absolute bottom-3 left-3 text-white text-xs font-mono font-bold uppercase tracking-wider">

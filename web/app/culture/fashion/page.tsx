@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 import { Home, ChevronRight } from "lucide-react";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
@@ -188,17 +189,15 @@ export default async function CultureFashionPage() {
             <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold text-center mb-10">
               {isRo ? "DE LA RANCH LA RUNWAY" : "FROM RANCH TO RUNWAY"}
             </p>
-            <div className="grid grid-cols-3 gap-4">
-              <div className="relative aspect-3/4 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(12,9,7,0.10)]">
-                <Image src={SITE_IMAGES.culture.fashionCowboyBoots} alt="Cowboy boots girl sitting on fence on ranch with jeans" fill className="object-cover" sizes="33vw" />
-              </div>
-              <div className="relative aspect-3/4 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(12,9,7,0.10)]">
-                <Image src={SITE_IMAGES.culture.fashionLittleCowboy} alt="Little cowboy wearing Wranglers watching a horse" fill className="object-cover" sizes="33vw" />
-              </div>
-              <div className="relative aspect-3/4 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(12,9,7,0.10)]">
-                <Image src={SITE_IMAGES.culture.fashionCowboyBootsLasso} alt="Worn square toe leather cowboy boots with coiled lasso rope and straw hat" fill className="object-cover" sizes="33vw" />
-              </div>
-            </div>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-3 gap-4"
+              sizes="33vw"
+              photos={[
+                { src: SITE_IMAGES.culture.fashionCowboyBoots, alt: "Cowboy boots girl sitting on fence on ranch with jeans", caption: isRo ? "Cizme de Cowboy · Ranch" : "Cowboy Boots · The Ranch", aspect: "3/4" },
+                { src: SITE_IMAGES.culture.fashionLittleCowboy, alt: "Little cowboy wearing Wranglers watching a horse", caption: isRo ? "Micul Cowboy · Wranglers" : "Little Cowboy · Wranglers", aspect: "3/4" },
+                { src: SITE_IMAGES.culture.fashionCowboyBootsLasso, alt: "Worn square toe leather cowboy boots with coiled lasso rope and straw hat", caption: isRo ? "Cizme & Lasou" : "Boots & Lasso", aspect: "3/4" },
+              ]}
+            />
           </div>
         </section>
 
@@ -213,17 +212,16 @@ export default async function CultureFashionPage() {
               <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "RECLAME CLASICE" : "CLASSIC ADS"}</h2>
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-              {vaultAds.map((ad, i) => (
-                <div key={i} className="group relative aspect-3/4 rounded-xl overflow-hidden shadow-[0_8px_30px_rgb(12,9,7,0.1)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.2)] hover:-translate-y-1 transition-all duration-500">
-                  <Image src={ad.src} alt={ad.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 50vw, 20vw" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="font-body text-[9px] font-bold text-white leading-tight">{ad.label}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4"
+              sizes="(max-width: 768px) 50vw, 20vw"
+              photos={vaultAds.map((ad) => ({
+                src: ad.src,
+                alt: ad.alt,
+                caption: ad.label,
+                aspect: "3/4",
+              }))}
+            />
           </div>
         </section>
 

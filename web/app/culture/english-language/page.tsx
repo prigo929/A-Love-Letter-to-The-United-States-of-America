@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 import { Home, ChevronRight } from "lucide-react";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
@@ -211,17 +212,16 @@ export default async function EnglishLanguagePage() {
               <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "PRESA CA PUTERE" : "THE PRESS AS POWER"}</h2>
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
-            <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 gap-3">
-              {magazineCovers.map((cover, i) => (
-                <div key={i} className="group relative aspect-3/4 rounded-xl overflow-hidden shadow-[0_8px_30px_rgb(12,9,7,0.1)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.2)] hover:-translate-y-1 transition-all duration-500">
-                  <Image src={cover.src} alt={cover.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 25vw, 12vw" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="font-body text-[9px] font-bold text-white leading-tight">{cover.label}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 gap-3"
+              sizes="(max-width: 768px) 25vw, 12vw"
+              photos={magazineCovers.map((cover) => ({
+                src: cover.src,
+                alt: cover.alt,
+                caption: cover.label,
+                aspect: "3/4",
+              }))}
+            />
           </div>
         </section>
 

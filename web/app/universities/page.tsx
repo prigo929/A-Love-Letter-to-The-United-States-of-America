@@ -4,6 +4,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { SITE_IMAGES } from "@/lib/site-images";
+import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 import {
   Award,
   BookOpen,
@@ -358,26 +359,15 @@ export default async function UniversitiesPage() {
               {isRo ? "America Academică în Imagini" : "Academic America in Images"}
             </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-            {campusPhotos.map((photo) => (
-              <div
-                key={photo.key}
-                className="group relative overflow-hidden rounded-xl"
-                style={{ aspectRatio: "4/3" }}
-              >
-                <img
-                  src={SITE_IMAGES.university[photo.key]}
-                  alt={photo.label}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-white text-sm font-semibold leading-tight">{photo.label}</p>
-                  <p className="text-white/60 text-xs mt-0.5">{photo.sub}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <PhotoLightboxGrid
+            gridClassName="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"
+            photos={campusPhotos.map((photo) => ({
+              src: SITE_IMAGES.university[photo.key],
+              alt: `${photo.label} — ${photo.sub}`,
+              caption: photo.label,
+              aspect: "4/3",
+            }))}
+          />
         </section>
 
         {/* AI Ask America Oracle Section */}

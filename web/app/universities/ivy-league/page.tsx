@@ -102,7 +102,7 @@ const copyRo: IvyCopy = {
   breadcrumbParent: "Universități",
   breadcrumbPage: "Ivy League",
   heroTagline: "TRADIȚIE ACADEMICĂ ȘI CAPITAL",
-  heroTitle: "Liga Iederii (Ivy League)",
+  heroTitle: "Ivy League",
   heroSubtitle: "Opt instituții de elită ce reprezintă fundamentul istoric al leadershipului intelectual american, al rigorii academice și al fondurilor financiare uriașe.",
   thesisTitle: "Fundamentele Prestigiului",
   thesisParagraph1: "Ivy League nu este doar o conferință sportivă; este un brand global sinonim cu supremația academică, admiterea extrem de selectivă și rețelele sociale ale elitei. Fondate în principal în perioada colonială (Cornell fiind singura adăugată după Revoluție), aceste opt instituții au acumulat secole de prestigiu și rețele de absolvenți.",

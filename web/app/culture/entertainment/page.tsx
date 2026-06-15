@@ -7,6 +7,7 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 import { CultureStyles } from "@/components/culture/CulturePageComponents";
 import { SITE_IMAGES } from "@/lib/site-images";
+import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 
 export const metadata: Metadata = {
   title: "Entertainment & Media | The American Operating System",
@@ -260,17 +261,16 @@ export default async function CultureEntertainmentPage() {
             <h2 className="font-macro-display text-3xl font-bold text-center mb-12 text-white uppercase tracking-tight">
               {isRo ? "Capodopere Globale" : "Global Masterpieces"}
             </h2>
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-              {vault.map((v, i) => (
-                <div key={i} className="relative aspect-3/4 overflow-hidden rounded-xl border border-white/5 group hover:border-glory-gold/40 transition-all duration-300">
-                  <Image src={v.src} alt={v.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="16vw" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
-                    <span className="font-body text-xs font-bold text-white leading-tight">{v.title}</span>
-                    <span className="font-body text-[10px] text-glory-gold mt-1">{v.sub}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3"
+              sizes="16vw"
+              photos={vault.map((v) => ({
+                src: v.src,
+                alt: `${v.title} (${v.sub})`,
+                caption: `${v.title} · ${v.sub}`,
+                aspect: "3/4",
+              }))}
+            />
           </section>
 
           {/* American Icons */}
@@ -281,18 +281,17 @@ export default async function CultureEntertainmentPage() {
             <h2 className="font-macro-display text-3xl font-bold text-center mb-10 text-white uppercase tracking-tight">
               {isRo ? "Iconele Americane" : "American Icons"}
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {americanIcons.map((icon, i) => (
-                <div key={i} className="group relative aspect-3/4 rounded-2xl overflow-hidden">
-                  <Image src={icon.src} alt={icon.name} fill className="object-cover object-top group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 50vw, 16vw" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/85 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <p className="font-macro-display text-xs font-black text-white leading-tight">{icon.name}</p>
-                    <p className="font-body text-[9px] font-bold text-glory-gold uppercase tracking-wider mt-0.5">{icon.note}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
+              sizes="(max-width: 768px) 50vw, 16vw"
+              photos={americanIcons.map((icon) => ({
+                src: icon.src,
+                alt: `${icon.name} — ${icon.note}`,
+                caption: icon.name,
+                aspect: "3/4",
+                objectClassName: "object-top",
+              }))}
+            />
           </section>
 
           {/* Magazine Archive */}
@@ -300,16 +299,16 @@ export default async function CultureEntertainmentPage() {
             <p className="font-body text-xs uppercase tracking-[0.25em] text-glory-gold text-center mb-4 font-semibold">
               {isRo ? "ARHIVA REVISTELOR ICONICE" : "ICONIC MAGAZINE ARCHIVE"}
             </p>
-            <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
-              {magazineVault.map((m, i) => (
-                <div key={i} className="relative aspect-3/4 overflow-hidden rounded-xl border border-white/5 group hover:border-glory-gold/40 transition-all duration-300">
-                  <Image src={m.src} alt={m.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="16vw" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2">
-                    <span className="text-[9px] font-body text-white leading-tight">{m.title} · {m.sub}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-3 sm:grid-cols-6 gap-3"
+              sizes="16vw"
+              photos={magazineVault.map((m) => ({
+                src: m.src,
+                alt: `${m.title} · ${m.sub}`,
+                caption: `${m.title} · ${m.sub}`,
+                aspect: "3/4",
+              }))}
+            />
           </section>
 
           {/* Cultural Eras */}
@@ -320,17 +319,16 @@ export default async function CultureEntertainmentPage() {
             <h2 className="font-macro-display text-3xl font-bold text-center mb-10 text-white uppercase tracking-tight">
               {isRo ? "Erele Americii" : "The American Eras"}
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-              {culturalEras.map((era, i) => (
-                <div key={i} className="group relative aspect-square rounded-2xl overflow-hidden">
-                  <Image src={era.src} alt={era.label} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 50vw, 20vw" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/75 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <p className="font-body text-[10px] font-bold text-white leading-tight">{era.label}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-2 md:grid-cols-5 gap-3"
+              sizes="(max-width: 768px) 50vw, 20vw"
+              photos={culturalEras.map((era) => ({
+                src: era.src,
+                alt: era.label,
+                caption: era.label,
+                aspect: "1/1",
+              }))}
+            />
           </section>
 
           {/* Gaming Section */}
@@ -346,18 +344,16 @@ export default async function CultureEntertainmentPage() {
                 ? "Atari, Xbox, PlayStation, Nintendo of America — industria globală a jocurilor video a fost construită pe codul american. Asteroids (1979) și Pac-Man (1980) au transformat arcadele în cultură de masă. Azi, industria gaming depășește Hollywood și muzica împreună."
                 : "Atari, Xbox, PlayStation, Nintendo of America — the global video game industry was built on American code. Asteroids (1979) and Pac-Man (1980) turned arcades into mass culture. Today, gaming surpasses Hollywood and music combined."}
             </p>
-            <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto mb-8">
-              {arcadeVault.map((g, i) => (
-                <div key={i} className="relative aspect-3/4 rounded-2xl overflow-hidden border border-white/10 group hover:border-glory-gold/40 transition-all duration-300">
-                  <Image src={g.src} alt={g.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="250px" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/85 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <p className="font-macro-display text-sm font-black text-white">{g.title}</p>
-                    <p className="font-body text-[9px] font-bold text-glory-gold uppercase tracking-wider">{g.sub}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-2 gap-4 max-w-lg mx-auto mb-8"
+              sizes="250px"
+              photos={arcadeVault.map((g) => ({
+                src: g.src,
+                alt: `${g.title} · ${g.sub}`,
+                caption: `${g.title} · ${g.sub}`,
+                aspect: "3/4",
+              }))}
+            />
             <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
               {[
                 { value: "$200B+", label: isRo ? "Valoare Industrie" : "Industry Value" },
@@ -388,14 +384,24 @@ export default async function CultureEntertainmentPage() {
                     : "Built in 1923 as a real-estate ad, the HOLLYWOODLAND sign became the most recognized symbol of the world's entertainment industry. Los Angeles generates 700,000+ entertainment jobs and produces content reaching 5+ billion people. The palms, the golden light, the studios — LA is humanity's dream factory."}
                 </p>
               </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div className="relative aspect-4/3 rounded-2xl overflow-hidden">
-                  <Image src={SITE_IMAGES.culture.hollywoodSign} alt="Hollywood Sign overlooking Los Angeles" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
-                </div>
-                <div className="relative aspect-4/3 rounded-2xl overflow-hidden">
-                  <Image src={SITE_IMAGES.culture.hollywoodPalms} alt="Hollywood palm trees against blue sky" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
-                </div>
-              </div>
+              <PhotoLightboxGrid
+                gridClassName="grid grid-cols-2 gap-3"
+                sizes="(max-width: 1024px) 50vw, 25vw"
+                photos={[
+                  {
+                    src: SITE_IMAGES.culture.hollywoodSign,
+                    alt: "Hollywood Sign overlooking Los Angeles",
+                    caption: isRo ? "Semnul Hollywood" : "The Hollywood Sign",
+                    aspect: "4/3",
+                  },
+                  {
+                    src: SITE_IMAGES.culture.hollywoodPalms,
+                    alt: "Hollywood palm trees against blue sky",
+                    caption: isRo ? "Palmieri din Los Angeles" : "Los Angeles Palms",
+                    aspect: "4/3",
+                  },
+                ]}
+              />
             </div>
           </section>
 
