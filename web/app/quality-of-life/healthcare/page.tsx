@@ -286,11 +286,9 @@ export default async function HealthcarePage() {
               {copy.pillars.map((pillar, i) => {
                 const Icon = pillar.icon;
                 return (
-                  <div key={i} className="rounded-3xl border border-white/10 bg-white/2 p-8 hover:border-[#E8B923]/20 transition-all">
+                  <div key={i} className="border-t border-white/10 pt-6">
                     <div className="flex items-center gap-3 mb-5">
-                      <div className="rounded-xl bg-[#E8B923]/10 p-2.5">
-                        <Icon className="h-5 w-5 text-[#E8B923]" />
-                      </div>
+                      <Icon className="h-5 w-5 text-[#E8B923]" />
                       <h3 className="font-display text-xl font-bold text-white leading-tight">{pillar.title}</h3>
                     </div>
                     <p className="macro-body text-sm mb-5">{pillar.body}</p>

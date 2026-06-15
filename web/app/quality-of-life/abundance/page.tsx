@@ -372,14 +372,12 @@ export default async function AbundancePage() {
                 return (
                   <div key={ci}>
                     <div className="flex items-center gap-3 mb-8 pb-4 border-b border-white/5">
-                      <div className="rounded-xl bg-[#E8B923]/10 p-2.5">
-                        <Icon className="h-6 w-6 text-[#E8B923]" />
-                      </div>
+                      <Icon className="h-6 w-6 text-[#E8B923]" />
                       <h3 className="macro-section-title text-white text-2xl">{cat.title}</h3>
                     </div>
                     <div className="grid gap-6 sm:grid-cols-2">
                       {cat.items.map((item, ii) => (
-                        <div key={ii} className="rounded-3xl border border-white/10 bg-white/2 p-8 hover:border-[#E8B923]/20 transition-all">
+                        <div key={ii} className="border-t border-white/10 pt-6">
                           <h4 className="font-display text-lg font-bold text-[#E8B923] mb-3">{item.title}</h4>
                           <p className="macro-body text-sm mb-4">{item.body}</p>
                           <div className="border-t border-white/5 pt-3">
