@@ -518,7 +518,7 @@ export default async function SpaceTechnologyPage() {
                 description: isRo
                   ? "Amprenta cizmei lui Buzz Aldrin în solul fin al Lunii, fotografiată pentru a studia mecanica solului. Această imagine a devenit una dintre cele mai recunoscute simboluri ale explorării și curajului uman."
                   : "Buzz Aldrin's bootprint in the fine lunar soil, taken to study the soil mechanics of the surface. This image became one of the most recognizable symbols of human exploration and technological achievement.",
-                imageSrc: "/images/library/Technology/Space/Buzz_Aldrin's_bootprint_on_the_Moon.jpg"
+                imageSrc: "/images/library/Technology/Space/Buzz_Aldrins_bootprint_on_the_Moon.jpg"
               }
             ].map((item, idx) => (
               <div 

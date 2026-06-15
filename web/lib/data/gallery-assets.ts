@@ -432,7 +432,7 @@ import asset427 from "@/IMAGES/Culture/Music/Frank_Sinatra_1961 portrait.jpg";
 import asset428 from "@/IMAGES/Culture/Music/George_H._W._Bush_with_Michael_Jackson_(cropped).png";
 import asset429 from "@/IMAGES/Culture/Music/Imagine Dragons at Mohegan Sun in 2017. Left to right, Wayne Sermon, Dan Reynolds, former drummer Daniel Platzman, and Ben McKee.jpg";
 import asset430 from "@/IMAGES/Culture/Music/Lineup of Maroon 5 since 2020. Clockwise from top left, Adam Levine, Jesse Carmichael, James Valentine, Matt Flynn, PJ Morton, Sam Farrar.jpg";
-// asset431 skipped — apostrophe in filename
+import asset431 from "@/IMAGES/Culture/Music/Madonna performing during the 1987 Whos That Girl World Tour.jpg";
 import asset432 from "@/IMAGES/Culture/Music/Michael Jackson in a press photo dated to 1983.jpg";
 import asset433 from "@/IMAGES/Culture/Music/Pitbull performing in 2011.jpg";
 import asset434 from "@/IMAGES/Culture/Music/Pitbull performing with Enrique Iglesias at the Frank Erwin Center in Austin, Texas, 2015.jpg";
@@ -460,14 +460,14 @@ import asset455 from "@/IMAGES/Culture/Sports/Stadiums/AT&T Stadium match kickof
 import asset456 from "@/IMAGES/Culture/Sports/Stadiums/Tennessee_Volunteers_at_Ohio_State_Buckeyes,_College_Football_Playoff_Round_1_game(December_21,_2024).jpg";
 import asset457 from "@/IMAGES/Culture/Sports/a golf ball in focus on Golf course.jpg";
 import asset458 from "@/IMAGES/Economy/The Warby Parker team on the podium ringing the NYSE opening bell.jpg";
-// asset459 skipped — apostrophe in filename
+import asset459 from "@/IMAGES/Infrastructure/Colorados Glenwood Canyon I-70 thruway.jpeg";
 import asset460 from "@/IMAGES/Landscapes/Downtown Nashville Tennesse 2.jpg";
 import asset461 from "@/IMAGES/Landscapes/Downtown Nashville Tennesse.jpg";
 import asset462 from "@/IMAGES/Military/Air Force/Lockheed_SR-71_Blackbird.jpg";
 import asset463 from "@/IMAGES/Outdoors Lifestyle/Camping in Madera Canyon, Arizona.jpg";
 import asset464 from "@/IMAGES/Outdoors Lifestyle/Close-up portrait of a majestic bald eagle showcasing its fierce gaze and distinct white feathers.jpg";
 import asset465 from "@/IMAGES/Outdoors Lifestyle/Detailed portrait of a bald eagle with striking plumage and piercing eyes.jpg";
-// asset466 skipped — apostrophe in filename
+import asset466 from "@/IMAGES/Outdoors Lifestyle/Family of 4 full-time rving with Ford F-350.jpg";
 import asset467 from "@/IMAGES/Outdoors Lifestyle/Hunter with a dog wearing orange vest in a Florida field. Bright sunny day with F-150 in background.jpg";
 import asset468 from "@/IMAGES/Outdoors Lifestyle/Interior of the Forrest River FR3 Class A Motor-home.jpeg";
 import asset469 from "@/IMAGES/Outdoors Lifestyle/Man Fishing in Provo River Utah.jpg";
@@ -500,7 +500,7 @@ import asset495 from "@/IMAGES/Technology/Space/Aldrin next to the Passive Seism
 import asset496 from "@/IMAGES/Technology/Space/Apollo 11 Buzz Aldrin on the Moon in a photograph taken by Neil Armstrong, who can be seen in the visor reflection along with Earth, the Lunar Module Eagle, and the U.S. flag.jpg";
 import asset497 from "@/IMAGES/Technology/Space/Apollo_11_Crew.jpg";
 import asset498 from "@/IMAGES/Technology/Space/Apollo_11_insignia.png";
-// asset499 skipped — apostrophe in filename
+import asset499 from "@/IMAGES/Technology/Space/Buzz_Aldrins_bootprint_on_the_Moon.jpg";
 import asset500 from "@/IMAGES/Technology/Space/Buzz_salutes_the_U.S._Flag on the lunar surface.jpg";
 import asset501 from "@/IMAGES/Technology/Space/Eugene_Cernan_at_the_LM,_Apollo_17,_AS17-134-20378.jpg";
 import asset502 from "@/IMAGES/Technology/Space/Saturn V SA-506, the rocket carrying the Apollo 11 spacecraft, moves out of the Vehicle Assembly Building towards Launch Complex 39.jpg";
@@ -508,7 +508,7 @@ import asset503 from "@/IMAGES/Technology/Vivid and detailed close-up of a patte
 import asset504 from "@/IMAGES/Technology/server aisles in google data center in Ohio.jpg";
 import asset505 from "@/IMAGES/Technology/visualization Full-H100-GPU-with-144-SMs-1536x686.png";
 import asset506 from "@/IMAGES/University/2019_UCLA_Royce_Hall_1.jpg";
-// asset507 skipped — apostrophe in filename
+import asset507 from "@/IMAGES/University/Johns_Hopkins_Historic_Dome_-_panoramio.jpg";
 import asset508 from "@/IMAGES/University/Cornell University, view, landscape, greens, mountains.jpg";
 import asset509 from "@/IMAGES/University/Dartmouth College.jpg";
 import asset510 from "@/IMAGES/University/Duke_Chapel,_West_Campus,_Duke_University,_Durham,_NC_(48961090317).jpg";
@@ -516,7 +516,7 @@ import asset511 from "@/IMAGES/University/Duke_University_(5744250215).jpg";
 import asset512 from "@/IMAGES/University/Fall foliage adds dazzling color to the view of campus from across the Charles River.jpg";
 import asset513 from "@/IMAGES/University/Harvard Law School graduates celebrate.jpg";
 import asset514 from "@/IMAGES/University/Harvard Widener Library interior reading room.jpg";
-// asset515 skipped — apostrophe in filename
+import asset515 from "@/IMAGES/University/Harvard-Commencement-Conan-OBrien-85.jpg";
 import asset516 from "@/IMAGES/University/Li Ka Shing Learning and Knowledge Center home to Stanford School of Medicine.jpg";
 import asset517 from "@/IMAGES/University/MIT_Main_Campus_aerial.jpg";
 import asset518 from "@/IMAGES/University/Main Green. Brown University.jpg";
@@ -561,8 +561,10 @@ import asset555 from "@/IMAGES/Military/Intelligence/Seal_of_the_U.S._National_S
 import asset556 from "@/IMAGES/Military/Intelligence/US-NationalGeospatialIntelligenceAgency-2008Seal.svg";
 import asset557 from "@/IMAGES/Military/tactical-world-map.svg";
 import asset558 from "@/IMAGES/US Flags/Flag_of_the_United_States.svg";
-// asset559 skipped — unusual filename (accuratesvg.svg double extension)
-import asset560 from "@/IMAGES/University/Harvard-Commencement-Conan-OBrien-85.jpg";
+import asset559 from "@/IMAGES/US Flags/USA Flag SVG 1 more dark colors not fully accurate.svg";
+import asset560 from "@/IMAGES/Constitution/Howard Chandler Christy Scene at the Signing of the Constitution of the United States.jpg";
+import asset561 from "@/IMAGES/Cities/Seattle-Public-Libraries_Seattle-Central-Library.webp";
+import asset562 from "@/IMAGES/Culture/Music/Michael Jackson Tour pic.webp";
 
 export type GalleryAssetRecord = {
   path: string;
@@ -1123,5 +1125,14 @@ export const GALLERY_ASSETS = [
   { path: "Military/Intelligence/US-NationalGeospatialIntelligenceAgency-2008Seal.svg", src: asset556 },
   { path: "Military/tactical-world-map.svg", src: asset557 },
   { path: "US Flags/Flag_of_the_United_States.svg", src: asset558 },
-  { path: "University/Harvard-Commencement-Conan-OBrien-85.jpg", src: asset560 },
+  { path: "Culture/Music/Madonna performing during the 1987 Whos That Girl World Tour.jpg", src: asset431 },
+  { path: "Infrastructure/Colorados Glenwood Canyon I-70 thruway.jpeg", src: asset459 },
+  { path: "Outdoors Lifestyle/Family of 4 full-time rving with Ford F-350.jpg", src: asset466 },
+  { path: "Technology/Space/Buzz_Aldrins_bootprint_on_the_Moon.jpg", src: asset499 },
+  { path: "University/Johns_Hopkins_Historic_Dome_-_panoramio.jpg", src: asset507 },
+  { path: "University/Harvard-Commencement-Conan-OBrien-85.jpg", src: asset515 },
+  { path: "US Flags/USA Flag SVG 1 more dark colors not fully accurate.svg", src: asset559 },
+  { path: "Constitution/Howard Chandler Christy Scene at the Signing of the Constitution of the United States.jpg", src: asset560 },
+  { path: "Cities/Seattle-Public-Libraries_Seattle-Central-Library.webp", src: asset561 },
+  { path: "Culture/Music/Michael Jackson Tour pic.webp", src: asset562 },
 ] as const satisfies readonly GalleryAssetRecord[];

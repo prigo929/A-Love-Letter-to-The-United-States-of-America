@@ -19,7 +19,7 @@ import homeNycSkyline from "@/IMAGES/Cities/Manhattan One World Trade Center Clo
 import homeDeclarationIndependence from "@/IMAGES/Constitution/usa-independence-day-concept-with-declaration-independence.jpg";
 import constitutionDocument from "@/IMAGES/Constitution/We The People Wooden Background.jpg";
 import constitutionIndependenceHall from "@/IMAGES/Constitution/A view of the north side of Independence Hall in Philadelphia, showing the main building in the center with the east and west wings on the sides.jpg";
-import constitutionChristySigning from "@/IMAGES/Constitution/Howard Chandler Christy's Scene at the Signing of the Constitution of the United States.jpg";
+import constitutionChristySigning from "@/IMAGES/Constitution/Howard Chandler Christy Scene at the Signing of the Constitution of the United States.jpg";
 import constitutionNationalArchives from "@/IMAGES/Constitution/United States National Archives Building, Washington D.C.jpg";
 import constitutionPg1 from "@/IMAGES/Constitution/Constitution_Pg1of4_AC.jpg";
 import constitutionPg2 from "@/IMAGES/Constitution/Constitution_Pg2of4_AC.jpg";
@@ -97,7 +97,7 @@ import housingQolHouse from "@/IMAGES/Housing/quality-of-life-house.jpg";
 // Outdoors Lifestyle
 import outdoorsCamping from "@/IMAGES/Outdoors Lifestyle/Camping in Madera Canyon, Arizona.jpg";
 import outdoorsBaldEagle from "@/IMAGES/Outdoors Lifestyle/Close-up portrait of a majestic bald eagle showcasing its fierce gaze and distinct white feathers.jpg";
-import outdoorsRvFamily from "@/IMAGES/Outdoors Lifestyle/Family of 4 full-time rv'ing with Ford F-350.jpg";
+import outdoorsRvFamily from "@/IMAGES/Outdoors Lifestyle/Family of 4 full-time rving with Ford F-350.jpg";
 import outdoorsHunting from "@/IMAGES/Outdoors Lifestyle/Hunter with a dog wearing orange vest in a Florida field. Bright sunny day with F-150 in background.jpg";
 import outdoorsFishing from "@/IMAGES/Outdoors Lifestyle/Man Fishing in Provo River Utah.jpg";
 import outdoorsRvArizona from "@/IMAGES/Outdoors Lifestyle/RVing family on road Arizona.jpg";
@@ -362,7 +362,7 @@ import musicPostMalone from "@/IMAGES/Culture/Music/A live performance shot of P
 import musicLukeCombs2021 from "@/IMAGES/Culture/Music/luke combs-2021tour.jpg";
 import musicImagineDragons2017 from "@/IMAGES/Culture/Music/Imagine Dragons at Mohegan Sun in 2017. Left to right, Wayne Sermon, Dan Reynolds, former drummer Daniel Platzman, and Ben McKee.jpg";
 import musicMaroon52020 from "@/IMAGES/Culture/Music/Lineup of Maroon 5 since 2020. Clockwise from top left, Adam Levine, Jesse Carmichael, James Valentine, Matt Flynn, PJ Morton, Sam Farrar.jpg";
-import musicMadonna1987 from "@/IMAGES/Culture/Music/Madonna performing during the 1987 Who's That Girl World Tour.jpg";
+import musicMadonna1987 from "@/IMAGES/Culture/Music/Madonna performing during the 1987 Whos That Girl World Tour.jpg";
 import musicPitbull2011 from "@/IMAGES/Culture/Music/Pitbull performing in 2011.jpg";
 
 // Food — new images
