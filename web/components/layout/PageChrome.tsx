@@ -42,7 +42,7 @@ export function ReadingProgressBar() {
       aria-label={locale === "ro" ? "Progres de citire" : "Reading progress"}
     >
       <motion.div
-        className="h-full origin-left bg-glory-gold shadow-glow-gold"
+        className="h-full origin-left bg-glory-gold"
         animate={{ scaleX: progress }}
         initial={false}
         transition={{ duration: 0.1, ease: "linear" }}

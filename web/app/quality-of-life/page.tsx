@@ -918,6 +918,9 @@ export default async function QualityOfLifePage() {
               { src: SITE_IMAGES.cities.aerialSantaMonica, label: "Santa Monica, CA" },
               { src: SITE_IMAGES.cities.aerialPasadena, label: "Pasadena, CA" },
               { src: SITE_IMAGES.cities.seattleDay, label: "Seattle Skyline" },
+              { src: SITE_IMAGES.cities.chicagoTwilight, label: "Chicago at Twilight" },
+              { src: SITE_IMAGES.cities.midtownGolden, label: "Midtown Manhattan — Golden Hour" },
+              { src: SITE_IMAGES.cities.nycTopDown, label: "NYC Midtown — Top Down" },
             ].map((item, i) => (
               <div
                 key={i}

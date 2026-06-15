@@ -9,6 +9,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { SITE_IMAGES } from "@/lib/site-images";
 import { Breadcrumb }  from "@/components/layout/Breadcrumb";
 import { QuoteBlock }  from "@/components/sections/QuoteBlock";
 import {
@@ -183,7 +184,7 @@ export default async function ConstitutionPage() {
               <ExhibitCase>
                 <div className="relative overflow-hidden">
                   <Image
-                    src="/images/constitution/constitution-page-1.jpg"
+                    src={SITE_IMAGES.constitution.pg1}
                     alt="United States Constitution, Page 1 — original parchment, National Archives"
                     width={1200} height={500}
                     className="h-[320px] w-full object-cover object-top md:h-[420px]"

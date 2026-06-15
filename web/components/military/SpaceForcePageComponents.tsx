@@ -102,18 +102,11 @@ export function SpaceForceStyles() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. SpaceForcePageProgress — with section markers (Enhancement 10)
+// 2. SpaceForcePageProgress (Enhancement 10)
 // ─────────────────────────────────────────────────────────────────────────────
-
-const SECTION_MARKERS = [0.1, 0.24, 0.38, 0.53, 0.67, 0.82, 0.95];
 
 export function SpaceForcePageProgress() {
   const { scrollYProgress } = useScroll();
-  const [pct, setPct] = useState(0);
-
-  useEffect(() => {
-    return scrollYProgress.on("change", (v) => setPct(v));
-  }, [scrollYProgress]);
 
   return (
     <div className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-[2px] bg-white/[0.03]">
@@ -121,17 +114,6 @@ export function SpaceForcePageProgress() {
         className="h-full origin-left bg-gradient-to-r from-[#3ddbd9] via-white/90 to-white"
         style={{ scaleX: scrollYProgress }}
       />
-      {SECTION_MARKERS.map((pos) => (
-        <div
-          key={pos}
-          className="absolute top-1/2 -translate-y-1/2 h-[5px] w-[5px] rounded-full -translate-x-1/2"
-          style={{
-            left: `${pos * 100}%`,
-            background: pct >= pos ? "rgba(61,219,217,0.9)" : "rgba(255,255,255,0.12)",
-            transition: "background 0.4s ease",
-          }}
-        />
-      ))}
     </div>
   );
 }

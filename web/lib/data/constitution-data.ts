@@ -7,6 +7,7 @@
 // information a clause should have (name, text, impact, etc.).
 
 import type { Locale } from "@/lib/i18n/config";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -795,7 +796,7 @@ export const CONSTITUTION_SUB_PAGES = [
     href: "/constitution/bill-of-rights",
     title: "The Bill of Rights",
     description: "10 amendments, 45 rights, 235 years of protection",
-    imageSrc: "/images/constitution/bill-of-rights-page-1.jpg",
+    imageSrc: SITE_IMAGES.constitution.billOfRights,
     imageAlt: "The Bill of Rights — original engrossed parchment, National Archives",
     badge: "10 Amendments",
   },
@@ -803,24 +804,24 @@ export const CONSTITUTION_SUB_PAGES = [
     href: "/constitution/first-amendment",
     title: "First Amendment",
     description: "The broadest free speech protection in the world — and why it matters",
-    imageSrc: "/images/constitution/national-archives-bill-of-rights.jpg",
-    imageAlt: "Bill of Rights displayed at the National Archives",
+    imageSrc: SITE_IMAGES.constitution.nationalArchives,
+    imageAlt: "United States National Archives Building, Washington D.C.",
     badge: "Free Speech",
   },
   {
     href: "/constitution/federalism",
     title: "Laboratories of Democracy",
     description: "50 states, 50 policy experiments — the world's greatest governance system",
-    imageSrc: "/images/us-buildings/us-capitol.jpg",
-    imageAlt: "United States Capitol building",
+    imageSrc: SITE_IMAGES.constitution.independenceHall,
+    imageAlt: "Independence Hall, Philadelphia — birthplace of the Constitution",
     badge: "50 States",
   },
   {
     href: "/constitution/separation-of-powers",
     title: "Separation of Powers",
     description: "The system that makes tyranny nearly impossible",
-    imageSrc: "/images/us-buildings/us-supreme-court-building.jpg",
-    imageAlt: "US Supreme Court building",
+    imageSrc: SITE_IMAGES.constitution.christySigning,
+    imageAlt: "Howard Chandler Christy — Scene at the Signing of the Constitution",
     badge: "3 Branches",
   },
   {

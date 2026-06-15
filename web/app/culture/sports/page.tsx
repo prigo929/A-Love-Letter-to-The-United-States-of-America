@@ -75,8 +75,8 @@ export default async function CultureSportsPage() {
       text: isRo
         ? "Statele Unite găzduiesc 42,4% din toate terenurile de golf din lume — aproape 16.000 față de cele 8.900 din întreaga Europă. Această densitate reprezintă accesul unic al clasei de mijloc la spațiu verde și timp liber, o reflectare a abundenței de teren fără echivalent global."
         : "The United States accounts for 42.4% of the world's golf courses — nearly 16,000 of the 38,000 globally, compared to about 8,900 in all of Europe. This represents a concentration of leisure land density and discretionary free time with no global equivalent.",
-      image: SITE_IMAGES.culture.vaultSportsSI2019,
-      alt: "Tiger Woods Masters Golf",
+      image: SITE_IMAGES.culture.golfColorado,
+      alt: "Golf course in Colorado — sweeping mountain landscape",
       reversed: true,
     },
   ];
@@ -177,6 +177,24 @@ export default async function CultureSportsPage() {
             </div>
           </div>
         </section>
+
+        {/* Golf Course Strip */}
+        <div className="relative culture-cream-bg">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8 pb-16">
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { src: SITE_IMAGES.culture.golfColorado, alt: "Golf course in the Colorado mountains" },
+                { src: SITE_IMAGES.culture.golfPond, alt: "18th hole at Heritage Palms Golf Course, Indio — pond view" },
+                { src: SITE_IMAGES.culture.golfBall, alt: "Golf ball in focus on a fairway" },
+              ].map((img, i) => (
+                <div key={i} className="relative overflow-hidden rounded-2xl shadow-[0_20px_50px_rgb(12,9,7,0.12)] group" style={{ aspectRatio: "4/3" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={img.src} alt={img.alt} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
         {/* CREAM: Boxing & College Sports */}
         <section className="relative culture-cream-bg text-[#0C0907] pb-0 overflow-hidden border-t border-[#0C0907]/5">
@@ -388,6 +406,12 @@ export default async function CultureSportsPage() {
                 { src: SITE_IMAGES.culture.batterAtPlate, alt: "Baseball batter swinging at pitch with catcher and umpire" },
                 { src: SITE_IMAGES.culture.collegeFootball, alt: "Tennessee vs Ohio State college football playoff 2024" },
                 { src: SITE_IMAGES.culture.metLifeFlag, alt: "Massive US flag unfurled before Jets game at MetLife Stadium" },
+                { src: SITE_IMAGES.culture.stadiumAsuArizona, alt: "ASU Arizona NFL Stadium aerial" },
+                { src: SITE_IMAGES.culture.stadiumAttKickoff, alt: "AT&T Stadium — Alabama vs Wisconsin kickoff" },
+                { src: SITE_IMAGES.culture.stadiumCarolina, alt: "Bank of America Stadium — Carolina Panthers, Charlotte" },
+                { src: SITE_IMAGES.culture.stadiumFedEx, alt: "FedExField — Washington NFL game panoramic" },
+                { src: SITE_IMAGES.culture.stadiumBaltimore, alt: "M&T Bank Stadium — Baltimore Ravens aerial top-down" },
+                { src: SITE_IMAGES.culture.stadiumAtlantaBraves, alt: "Atlanta Braves baseball game — evening view from home plate" },
               ].map((img, i) => (
                 <div key={i} className="group relative aspect-16/10 rounded-2xl overflow-hidden">
                   <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 50vw, 33vw" />

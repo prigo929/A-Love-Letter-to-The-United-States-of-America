@@ -442,6 +442,20 @@ export default async function DollarDominancePage() {
             />
           </div>
 
+          {/* Dollar Bill Photo Strip */}
+          <div className="mt-24 mb-8 grid grid-cols-3 gap-3">
+            {[
+              { src: SITE_IMAGES.economyPaperMoney, alt: "American paper currency denominations" },
+              { src: SITE_IMAGES.economyDollarObverse, alt: "United States one dollar bill — obverse" },
+              { src: SITE_IMAGES.economyDollarReverse, alt: "United States one dollar bill — reverse" },
+            ].map((img, i) => (
+              <div key={i} className="relative overflow-hidden rounded-xl" style={{ aspectRatio: "4/3" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+              </div>
+            ))}
+          </div>
+
           {/* Nav */}
           <div className="flex items-center justify-between border-t border-white/10 pt-16 mt-32">
             <Link

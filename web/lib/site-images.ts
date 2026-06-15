@@ -18,9 +18,22 @@ import homeNycSunset from "@/IMAGES/Cities/New York Skyline at sunset.jpg";
 import homeNycSkyline from "@/IMAGES/Cities/Manhattan One World Trade Center Close-up.jpg";
 import homeDeclarationIndependence from "@/IMAGES/Constitution/usa-independence-day-concept-with-declaration-independence.jpg";
 import constitutionDocument from "@/IMAGES/Constitution/We The People Wooden Background.jpg";
+import constitutionIndependenceHall from "@/IMAGES/Constitution/A view of the north side of Independence Hall in Philadelphia, showing the main building in the center with the east and west wings on the sides.jpg";
+import constitutionChristySigning from "@/IMAGES/Constitution/Howard Chandler Christy's Scene at the Signing of the Constitution of the United States.jpg";
+import constitutionNationalArchives from "@/IMAGES/Constitution/United States National Archives Building, Washington D.C.jpg";
+import constitutionPg1 from "@/IMAGES/Constitution/Constitution_Pg1of4_AC.jpg";
+import constitutionPg2 from "@/IMAGES/Constitution/Constitution_Pg2of4_AC.jpg";
+import constitutionPg3 from "@/IMAGES/Constitution/Constitution_Pg3of4_AC.jpg";
+import constitutionPg4 from "@/IMAGES/Constitution/Constitution_Pg4of4_AC.jpg";
+import constitutionBillOfRights from "@/IMAGES/Constitution/Bill_of_Rights_Pg1of1_AC.jpg";
+import constitutionDeclaration from "@/IMAGES/Constitution/Declaration_Pg1of1_AC.jpg";
+import constitutionDeclarationEngrav from "@/IMAGES/Constitution/Declaration_Engrav_Pg1of1_AC.jpg";
 import cultureFlagCrowd from "@/IMAGES/Culture/Iconic Things/Statue Of Liberty.jpg";
 import harvardCampus from "@/IMAGES/University/Columbia University.jpg";
 import economyDollar from "@/IMAGES/Economy/100 dollar bill.jpg";
+import economyPaperMoney from "@/IMAGES/Economy/American paper money laid out vertically from small to large bills.jpg";
+import economyDollarObverse from "@/IMAGES/Economy/United_States_one_dollar_bill,_obverse.jpg";
+import economyDollarReverse from "@/IMAGES/Economy/United_States_one_dollar_bill,_reverse.jpg";
 import economyGrowth from "@/IMAGES/Economy/economy-growth.jpg";
 import economyNyseHero from "@/IMAGES/Economy/New York Stock Exchange.jpg";
 import economyNYSEUpsideDown from "@/IMAGES/Economy/economy-nyse-upside-down.jpg";
@@ -69,6 +82,7 @@ import landscapeGrandCanyonCave from "@/IMAGES/Landscapes/Grand Canyon National 
 import landscapeColoradoRiver from "@/IMAGES/Landscapes/colorado-river-in-the-grand-canyon.jpg";
 import landscapeMississippi from "@/IMAGES/Landscapes/Mississippi River running through Minneapolis .jpg";
 import landscapeChattanooga from "@/IMAGES/Landscapes/Chattanooga, TN Moccasin Bend Elevated View of River Bend Forest and Highway.jpg";
+import landscapeArizonaHighway from "@/IMAGES/Landscapes/Closeup of a curvy Arizona highway snaking its way through a canyon.jpg";
 
 // Housing
 import housingFrontPorch from "@/IMAGES/Housing/Charming suburban house with front porch, landscaping, and white facade.jpg";
@@ -104,6 +118,9 @@ import citySeattleNight from "@/IMAGES/Cities/Seattle Skyline at Night.jpg";
 import citySeattleDay from "@/IMAGES/Cities/Seattle Skyline Day.jpg";
 import citySavannah from "@/IMAGES/Cities/Nice Building in Savannah GA with GA Flag.jpg";
 import citySeattleSpring from "@/IMAGES/Cities/Girl walking Seattle Bloosoming japanese pink trees.jpg";
+import cityChicagoTwilight from "@/IMAGES/Cities/Aerial High Angle Chicago Skyline At Twilight Dense Illuminated Urban Grid Aon Center Two Prudential Plaza And Glowing Arterial Streets.jpg";
+import cityMidtownGolden from "@/IMAGES/Cities/Aerial High Angle Midtown Manhattan Skyline Golden Hour Dense Skyscrapers Bank Of America Tower MetLife Building And 432 Park Avenue.jpg";
+import cityNycTopDown from "@/IMAGES/Cities/Aerial Top Down NYC Midtown Dense Urban Grid Elevated Highway Interchange Lincoln Tunnel Approach And Skyscrapers.jpg";
 
 // Aerials
 import aerialDallas from "@/IMAGES/Aerials/Aerial View of Dallas.jpg";
@@ -111,6 +128,10 @@ import aerialChicago from "@/IMAGES/Aerials/Aerial_view_of_Chicago,_Illinois Pho
 import aerialSantaMonica from "@/IMAGES/Aerials/Aerial_View_of_Santa_Monica,_California.jpg";
 import aerialDallasHighway from "@/IMAGES/Aerials/I-30_at_TX161_Aerial_-_Facing_East.jpg";
 import aerialPasadena from "@/IMAGES/Aerials/Aerial_view_of_Pasadena,_California.jpg";
+
+// USA Map SVGs
+import usaMapFlag from "@/ASSETS/SVGs and Logos/USA continental map filled with american flag.svg";
+import usaMapPeople from "@/ASSETS/SVGs and Logos/USA map including AK and HI filled with peole shaped figures colored red and blue.svg";
 
 // Military replacements
 import armyHero from "@/IMAGES/Military/Army/us-army-soldiers-flag.jpg";
@@ -381,6 +402,15 @@ import sportsBaseballAerial from "@/IMAGES/Culture/Sports/Stadiums/High-Aerial-T
 import sportsSkateboarderVeniceBeach from "@/IMAGES/Culture/Sports/A skateboarder at Venice Beach (2022).jpg";
 import sportsLeBron2018 from "@/IMAGES/Culture/Sports/James during his first season with the Lakers in 2018.jpg";
 import sportsLeBron2022 from "@/IMAGES/Culture/Sports/LeBron James at Los Angeles Lakers @ Cleveland Cavaliers, March 21, 2022.jpg";
+import sportsGolfColorado from "@/IMAGES/Culture/Sports/Golf Course in Colorado.jpg";
+import sportsGolfPond from "@/IMAGES/Culture/Sports/Looking back across a pond on the 18th hole at Heritage Palms Golf Course, Indio.jpg";
+import sportsGolfBall from "@/IMAGES/Culture/Sports/a golf ball in focus on Golf course.jpg";
+import stadiumAsuArizona from "@/IMAGES/Culture/Sports/Stadiums/ASU Arizona NFL Stadium.jpg";
+import stadiumAttKickoff from "@/IMAGES/Culture/Sports/Stadiums/AT&T Stadium match kickoff(Wisconsin_-_Alabama).jpg";
+import stadiumCarolina from "@/IMAGES/Culture/Sports/Stadiums/Aerial-Cityscape-View-Of-Carolina-Panthers-Bank-Of-America-Stadium-In-Charlotte.jpg";
+import stadiumFedEx from "@/IMAGES/Culture/Sports/Stadiums/Panoramic-View-Of-Packed-FedExField-During-Washington-Redskins-NFL-Game.jpg";
+import stadiumBaltimore from "@/IMAGES/Culture/Sports/Stadiums/Top-Down-Aerial-View-Of-Baltimore-Ravens-Field-At-M-And-T-Bank-Stadium.jpg";
+import stadiumAtlantaBraves from "@/IMAGES/Culture/Sports/Stadiums/Wide-Evening-View-Of-Atlanta-Braves-Baseball-Game-From-Behind-Home-Plate.jpg";
 
 // Food — pepperoni pizza
 import foodPepperoniPizza from "@/IMAGES/Culture/Food/Pepperoni pizza american.jpg";
@@ -444,6 +474,8 @@ export const SITE_IMAGES = {
   homeSiliconValley: homeSiliconValley.src,
   homeUsaAtNightFromSpace: homeUsaAtNightFromSpace.src,
   constitutionDocument: constitutionDocument.src,
+  usaMapFlag: usaMapFlag.src,
+  usaMapPeople: usaMapPeople.src,
   grandTeton: grandTeton.src,
   yellowstonePrismatic: yellowstoneNationalPark.src,
   chicagoSkyline: chicagoSkyline.src,
@@ -455,6 +487,9 @@ export const SITE_IMAGES = {
   qualityOfLifeHouse: qualityOfLifeHouse.src,
   economyNYSEUpsideDown: economyNYSEUpsideDown.src,
   economyDollar: economyDollar.src,
+  economyPaperMoney: economyPaperMoney.src,
+  economyDollarObverse: economyDollarObverse.src,
+  economyDollarReverse: economyDollarReverse.src,
   economyGrowth: economyGrowth.src,
   economyNyseHero: economyNyseHero.src,
   economyPort: economyPort.src,
@@ -769,6 +804,15 @@ export const SITE_IMAGES = {
     skateboarderVeniceBeach: sportsSkateboarderVeniceBeach.src,
     leBron2018: sportsLeBron2018.src,
     leBron2022: sportsLeBron2022.src,
+    golfColorado: sportsGolfColorado.src,
+    golfPond: sportsGolfPond.src,
+    golfBall: sportsGolfBall.src,
+    stadiumAsuArizona: stadiumAsuArizona.src,
+    stadiumAttKickoff: stadiumAttKickoff.src,
+    stadiumCarolina: stadiumCarolina.src,
+    stadiumFedEx: stadiumFedEx.src,
+    stadiumBaltimore: stadiumBaltimore.src,
+    stadiumAtlantaBraves: stadiumAtlantaBraves.src,
 
     // Fashion — western & preppy
     fashionCowboyBoots: fashionCowboyBoots.src,
@@ -793,6 +837,7 @@ export const SITE_IMAGES = {
     coloradoRiver: landscapeColoradoRiver.src,
     mississippi: landscapeMississippi.src,
     chattanooga: landscapeChattanooga.src,
+    arizonaHighway: landscapeArizonaHighway.src,
   },
 
   housing: {
@@ -836,6 +881,22 @@ export const SITE_IMAGES = {
     aerialSantaMonica: aerialSantaMonica.src,
     aerialDallasHighway: aerialDallasHighway.src,
     aerialPasadena: aerialPasadena.src,
+    chicagoTwilight: cityChicagoTwilight.src,
+    midtownGolden: cityMidtownGolden.src,
+    nycTopDown: cityNycTopDown.src,
+  },
+
+  constitution: {
+    independenceHall: constitutionIndependenceHall.src,
+    christySigning: constitutionChristySigning.src,
+    nationalArchives: constitutionNationalArchives.src,
+    pg1: constitutionPg1.src,
+    pg2: constitutionPg2.src,
+    pg3: constitutionPg3.src,
+    pg4: constitutionPg4.src,
+    billOfRights: constitutionBillOfRights.src,
+    declaration: constitutionDeclaration.src,
+    declarationEngrav: constitutionDeclarationEngrav.src,
   },
 
   university: {

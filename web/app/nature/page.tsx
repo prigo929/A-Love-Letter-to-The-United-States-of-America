@@ -359,6 +359,7 @@ export default async function NaturePage() {
               { src: SITE_IMAGES.landscapes.coloradoRiver,       label: isRo ? "Râul Colorado" : "Colorado River",                  region: isRo ? "Grand Canyon" : "Grand Canyon" },
               { src: SITE_IMAGES.landscapes.mississippi,         label: isRo ? "Fluviul Mississippi" : "Mississippi River",         region: isRo ? "Minneapolis" : "Minneapolis" },
               { src: SITE_IMAGES.landscapes.chattanooga,         label: isRo ? "Chattanooga" : "Chattanooga",                       region: isRo ? "Tennessee" : "Tennessee" },
+              { src: SITE_IMAGES.landscapes.arizonaHighway,      label: isRo ? "Autostradă prin Canyon" : "Canyon Highway",          region: isRo ? "Arizona" : "Arizona" },
             ] as { src: string; label: string; region: string }[]).map((item, i) => (
               <div key={i} className="relative overflow-hidden rounded-xl group" style={{ aspectRatio: '3/4' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}

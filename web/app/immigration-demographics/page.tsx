@@ -4,6 +4,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Immigration & Demographics | Patriotic USA",
@@ -35,6 +36,24 @@ export default async function ImmigrationDemographicsPage() {
                 : "The story of the American people — a nation of immigrants united under the same principles of liberty and equal opportunity. From the first waves of settlement to modern demographic dynamics."}
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* USA Map Panel */}
+      <section className="px-4 py-6 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={SITE_IMAGES.usaMapFlag}
+            alt="United States map filled with the American flag"
+            className="w-full rounded-2xl border border-white/10"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={SITE_IMAGES.usaMapPeople}
+            alt="United States map showing population distribution with people figures"
+            className="w-full rounded-2xl border border-white/10"
+          />
         </div>
       </section>
 
