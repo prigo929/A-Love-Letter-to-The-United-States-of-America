@@ -5,6 +5,7 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
 import { SITE_IMAGES } from "@/lib/site-images";
+import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 
 export const metadata: Metadata = {
   title: "Immigration & Demographics | Patriotic USA",
@@ -24,8 +25,8 @@ export default async function ImmigrationDemographicsPage() {
 
       {/* Hero Header */}
       <section className="relative overflow-hidden px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl rounded-3xl border border-white/10 bg-gradient-to-r from-glory-blue/15 via-white/3 to-glory-red/10 p-8 md:p-12 shadow-xl">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-glory-blue via-glory-gold to-glory-red" />
+        <div className="mx-auto max-w-7xl rounded-3xl border border-white/10 bg-linear-to-r from-glory-blue/15 via-white/3 to-glory-red/10 p-8 md:p-12 shadow-xl">
+          <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-glory-blue via-glory-gold to-glory-red" />
           <div className="max-w-3xl space-y-4">
             <h1 className="font-display text-3xl md:text-5xl font-black text-white leading-tight tracking-tight">
               {isRo ? "IMIGRAȚIE & DEMOGRAFIE" : "IMMIGRATION & DEMOGRAPHICS"}
@@ -41,20 +42,33 @@ export default async function ImmigrationDemographicsPage() {
 
       {/* USA Map Panel */}
       <section className="px-4 py-6 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={SITE_IMAGES.usaMapFlag}
-            alt="United States map filled with the American flag"
-            className="w-full rounded-2xl border border-white/10"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={SITE_IMAGES.usaMapPeople}
-            alt="United States map showing population distribution with people figures"
-            className="w-full rounded-2xl border border-white/10"
-          />
+        <div className="mx-auto max-w-7xl mb-6">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-glory-gold font-semibold mb-2">
+            {isRo ? "GEOGRAFIA NAȚIUNII" : "THE NATION AT A GLANCE"}
+          </p>
+          <p className="text-white/50 text-sm font-body leading-relaxed max-w-2xl">
+            {isRo
+              ? "Statele Unite se întind pe 9,8 milioane km² — de la coastele arctice ale Alaskăi până la insulele tropicale ale Hawaiʻi. Cu 335 de milioane de locuitori, SUA este a treia cea mai populată țară din lume."
+              : "The United States spans 3.8 million square miles across 50 states — from the Arctic tundra of Alaska to the tropical shores of Hawaiʻi. With over 335 million residents, the U.S. is the world's third most populous nation."}
+          </p>
         </div>
+        <PhotoLightboxGrid
+          gridClassName="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-6"
+          photos={[
+            {
+              src: SITE_IMAGES.usaMapFlag,
+              alt: "United States map filled with the American flag pattern across all 50 states",
+              caption: isRo ? "O Națiune, 50 de State — de la Oceanic la Oceanic" : "One Nation, 50 States — From Sea to Shining Sea",
+              aspect: "5/3",
+            },
+            {
+              src: SITE_IMAGES.usaMapPeople,
+              alt: "United States map showing population distribution with red and blue people figures",
+              caption: isRo ? "Distribuția Populației — coaste, lacuri și văi" : "Population Distribution — coasts, Great Lakes, river valleys",
+              aspect: "5/3",
+            },
+          ]}
+        />
       </section>
 
       {/* Detailed Chronicles */}

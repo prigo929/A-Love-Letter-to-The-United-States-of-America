@@ -13,6 +13,7 @@ import { SITE_IMAGES } from "@/lib/site-images";
 import DeepDiveSection from "@/components/shared/DeepDiveSection";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
+import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 
 export const metadata: Metadata = {
   title: "Quality of Life | Standard of Living & Abundance",
@@ -918,9 +919,6 @@ export default async function QualityOfLifePage() {
               { src: SITE_IMAGES.cities.aerialSantaMonica, label: "Santa Monica, CA" },
               { src: SITE_IMAGES.cities.aerialPasadena, label: "Pasadena, CA" },
               { src: SITE_IMAGES.cities.seattleDay, label: "Seattle Skyline" },
-              { src: SITE_IMAGES.cities.chicagoTwilight, label: "Chicago at Twilight" },
-              { src: SITE_IMAGES.cities.midtownGolden, label: "Midtown Manhattan — Golden Hour" },
-              { src: SITE_IMAGES.cities.nycTopDown, label: "NYC Midtown — Top Down" },
             ].map((item, i) => (
               <div
                 key={i}
@@ -939,6 +937,48 @@ export default async function QualityOfLifePage() {
                 </p>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* America from Above — featured aerial section */}
+        <section className="mb-32">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-10">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center font-semibold mb-2">
+              {isRo ? "AMERICA VĂZUTĂ DE SUS" : "AMERICA FROM ABOVE"}
+            </p>
+            <h2 className="font-display text-2xl md:text-3xl font-black text-white text-center mb-4">
+              {isRo ? "Metropole la Altitudine" : "Cities at Altitude"}
+            </h2>
+            <p className="text-center text-white/40 text-sm font-body max-w-xl mx-auto">
+              {isRo
+                ? "De la 300 de metri înălțime, orașele americane dezvăluie adevărata lor amploare — rețele de oțel și sticlă care adăpostesc inima economică și culturală a națiunii."
+                : "From 1,000 feet up, America's great cities reveal their true scale — engineered grids of steel, glass, and water that pulse with the nation's economic and cultural energy."}
+            </p>
+          </div>
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-1 md:grid-cols-3 gap-4"
+              photos={[
+                {
+                  src: SITE_IMAGES.cities.chicagoTwilight,
+                  alt: "Chicago skyline at twilight with Lake Michigan reflecting the city lights",
+                  caption: isRo ? "Chicago la Amurg — Lacul Michigan" : "Chicago at Twilight — Lake Michigan",
+                  aspect: "3/2",
+                },
+                {
+                  src: SITE_IMAGES.cities.midtownGolden,
+                  alt: "Midtown Manhattan aerial view in golden hour light",
+                  caption: isRo ? "Midtown Manhattan — Ora de Aur" : "Midtown Manhattan — Golden Hour",
+                  aspect: "3/2",
+                },
+                {
+                  src: SITE_IMAGES.cities.nycTopDown,
+                  alt: "New York City Midtown viewed directly from above showing grid pattern",
+                  caption: isRo ? "New York City — Vedere de Sus" : "NYC Midtown — Top Down",
+                  aspect: "3/2",
+                },
+              ]}
+            />
           </div>
         </section>
 

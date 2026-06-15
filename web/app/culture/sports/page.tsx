@@ -7,6 +7,7 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { MacroStyles, MacroHero, CountUp } from "@/components/economy/EconomyAnimations";
 import { CultureStyles } from "@/components/culture/CulturePageComponents";
 import { SITE_IMAGES } from "@/lib/site-images";
+import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 
 export const metadata: Metadata = {
   title: "American Sports & Soft Power | The American Operating System",
@@ -178,21 +179,45 @@ export default async function CultureSportsPage() {
           </div>
         </section>
 
-        {/* Golf Course Strip */}
+        {/* Golf Culture Section */}
         <div className="relative culture-cream-bg">
           <div className="mx-auto max-w-7xl px-6 sm:px-8 pb-16">
-            <div className="grid grid-cols-3 gap-3">
-              {[
-                { src: SITE_IMAGES.culture.golfColorado, alt: "Golf course in the Colorado mountains" },
-                { src: SITE_IMAGES.culture.golfPond, alt: "18th hole at Heritage Palms Golf Course, Indio — pond view" },
-                { src: SITE_IMAGES.culture.golfBall, alt: "Golf ball in focus on a fairway" },
-              ].map((img, i) => (
-                <div key={i} className="relative overflow-hidden rounded-2xl shadow-[0_20px_50px_rgb(12,9,7,0.12)] group" style={{ aspectRatio: "4/3" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={img.src} alt={img.alt} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                </div>
-              ))}
+            <div className="mb-8">
+              <p className="font-body text-[10px] font-bold uppercase tracking-[0.35em] text-[#E8391B] mb-2">
+                {isRo ? "TERENURI DE GOLF · PESTE 16.000" : "AMERICA'S FAIRWAYS · 16,000+ COURSES"}
+              </p>
+              <h3 className="font-macro-display text-3xl md:text-4xl font-black text-[#0C0907] mb-4">
+                {isRo ? "Cultura Golfului American" : "Golf Culture"}
+              </h3>
+              <p className="font-editorial text-base text-[#0C0907]/65 leading-relaxed max-w-2xl">
+                {isRo
+                  ? "Statele Unite găzduiesc mai multe terenuri de golf decât oricare altă țară — de la trasee sălbatice în Munții Stâncoși până la links-uri impecabile la malul mării. Augusta National, Pebble Beach și Pine Valley sunt temple ale sportului recunoscute la nivel mondial."
+                  : "The United States hosts more golf courses than any other country — from rugged mountain layouts carved through the Rockies to manicured seaside links on both coasts. Augusta National, Pebble Beach, and Pine Valley are world-renowned temples of the sport."}
+              </p>
             </div>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-1 md:grid-cols-3 gap-4"
+              photos={[
+                {
+                  src: SITE_IMAGES.culture.golfColorado,
+                  alt: "Golf course carved through the Colorado Rocky Mountains with dramatic peak views",
+                  caption: isRo ? "Golf în Munții Stâncoși, Colorado" : "Mountain Golf — Colorado Rockies",
+                  aspect: "4/3",
+                },
+                {
+                  src: SITE_IMAGES.culture.golfPond,
+                  alt: "18th hole at Heritage Palms Golf Course in Indio, California — pond view",
+                  caption: isRo ? "Gaura 18 — Heritage Palms, Indio, CA" : "18th Hole — Heritage Palms, Indio, CA",
+                  aspect: "4/3",
+                },
+                {
+                  src: SITE_IMAGES.culture.golfBall,
+                  alt: "Golf ball in sharp focus resting on a sunlit fairway",
+                  caption: isRo ? "Pe Fairway" : "On the Fairway",
+                  aspect: "4/3",
+                },
+              ]}
+            />
           </div>
         </div>
 
@@ -397,28 +422,29 @@ export default async function CultureSportsPage() {
           {/* Stadium gallery */}
           <div className="mb-20">
             <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-2">{isRo ? "CATEDRALELE SPORTULUI AMERICAN" : "CATHEDRALS OF AMERICAN SPORT"}</p>
-            <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-8">{isRo ? "STADIOANELE" : "THE STADIUMS"}</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {[
-                { src: SITE_IMAGES.culture.allegiantStadium, alt: "Allegiant Stadium exterior — Las Vegas Raiders" },
-                { src: SITE_IMAGES.culture.yankeeStadium, alt: "Yankee Stadium — New York Yankees game from stands" },
-                { src: SITE_IMAGES.culture.baseballAerial, alt: "Aerial top-down view of illuminated baseball diamond" },
-                { src: SITE_IMAGES.culture.batterAtPlate, alt: "Baseball batter swinging at pitch with catcher and umpire" },
-                { src: SITE_IMAGES.culture.collegeFootball, alt: "Tennessee vs Ohio State college football playoff 2024" },
-                { src: SITE_IMAGES.culture.metLifeFlag, alt: "Massive US flag unfurled before Jets game at MetLife Stadium" },
-                { src: SITE_IMAGES.culture.stadiumAsuArizona, alt: "ASU Arizona NFL Stadium aerial" },
-                { src: SITE_IMAGES.culture.stadiumAttKickoff, alt: "AT&T Stadium — Alabama vs Wisconsin kickoff" },
-                { src: SITE_IMAGES.culture.stadiumCarolina, alt: "Bank of America Stadium — Carolina Panthers, Charlotte" },
-                { src: SITE_IMAGES.culture.stadiumFedEx, alt: "FedExField — Washington NFL game panoramic" },
-                { src: SITE_IMAGES.culture.stadiumBaltimore, alt: "M&T Bank Stadium — Baltimore Ravens aerial top-down" },
-                { src: SITE_IMAGES.culture.stadiumAtlantaBraves, alt: "Atlanta Braves baseball game — evening view from home plate" },
-              ].map((img, i) => (
-                <div key={i} className="group relative aspect-16/10 rounded-2xl overflow-hidden">
-                  <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 50vw, 33vw" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
-                </div>
-              ))}
-            </div>
+            <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-4">{isRo ? "STADIOANELE" : "THE STADIUMS"}</h2>
+            <p className="font-body text-sm text-white/45 leading-relaxed max-w-2xl mb-8">
+              {isRo
+                ? "Stadioanele americane sunt mai mult decât arene — sunt experiențe culturale complete, cu capacități de 60.000–100.000 de spectatori, tehnologie de ultimă generație și tradiții de zeci de ani."
+                : "American stadiums are more than arenas — they are complete cultural experiences, seating 60,000–100,000 fans with cutting-edge technology and decades of storied tradition."}
+            </p>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-2 md:grid-cols-3 gap-3"
+              photos={[
+                { src: SITE_IMAGES.culture.allegiantStadium, alt: "Allegiant Stadium exterior — Las Vegas Raiders", caption: isRo ? "Allegiant Stadium — Las Vegas" : "Allegiant Stadium — Las Vegas", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.yankeeStadium, alt: "Yankee Stadium — New York Yankees game from the stands", caption: isRo ? "Yankee Stadium — The Bronx" : "Yankee Stadium — The Bronx", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.baseballAerial, alt: "Aerial top-down view of illuminated baseball diamond at night", caption: isRo ? "Diamantul de Baseball — vedere aeriană" : "Baseball Diamond — Aerial", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.batterAtPlate, alt: "Baseball batter swinging at pitch with catcher and umpire", caption: isRo ? "La Bataie" : "At the Plate", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.collegeFootball, alt: "Tennessee vs Ohio State college football playoff 2024", caption: isRo ? "Tennessee vs. Ohio State — Playoff 2024" : "Tennessee vs. Ohio State — 2024 Playoff", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.metLifeFlag, alt: "Massive US flag unfurled before Jets game at MetLife Stadium", caption: isRo ? "MetLife Stadium — Drapelul American" : "MetLife Stadium — The Flag", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumAsuArizona, alt: "State Farm Stadium — NFL Arizona Cardinals aerial view", caption: isRo ? "State Farm Stadium — Glendale, AZ" : "State Farm Stadium — Glendale, AZ", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumAttKickoff, alt: "AT&T Stadium — Alabama vs Wisconsin kickoff aerial panoramic", caption: isRo ? "AT&T Stadium — Arlington, TX" : "AT&T Stadium — Arlington, TX", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumCarolina, alt: "Bank of America Stadium — Carolina Panthers, Charlotte NC", caption: isRo ? "Bank of America Stadium — Charlotte" : "Bank of America Stadium — Charlotte", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumFedEx, alt: "FedExField — Washington NFL game panoramic view", caption: isRo ? "FedExField — Landover, MD" : "FedExField — Landover, MD", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumBaltimore, alt: "M&T Bank Stadium — Baltimore Ravens aerial top-down view", caption: isRo ? "M&T Bank Stadium — Baltimore" : "M&T Bank Stadium — Baltimore", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumAtlantaBraves, alt: "Atlanta Braves baseball game — evening view from home plate", caption: isRo ? "Truist Park — Atlanta Braves" : "Truist Park — Atlanta", aspect: "16/10" },
+              ]}
+            />
           </div>
 
           {/* Parallax quote */}

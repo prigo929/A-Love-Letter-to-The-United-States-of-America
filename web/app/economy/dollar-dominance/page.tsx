@@ -23,6 +23,7 @@ import {
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
+import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 
 export const metadata: Metadata = {
   title: "Dollar Dominance | Economy",
@@ -442,18 +443,44 @@ export default async function DollarDominancePage() {
             />
           </div>
 
-          {/* Dollar Bill Photo Strip */}
-          <div className="mt-24 mb-8 grid grid-cols-3 gap-3">
-            {[
-              { src: SITE_IMAGES.economyPaperMoney, alt: "American paper currency denominations" },
-              { src: SITE_IMAGES.economyDollarObverse, alt: "United States one dollar bill — obverse" },
-              { src: SITE_IMAGES.economyDollarReverse, alt: "United States one dollar bill — reverse" },
-            ].map((img, i) => (
-              <div key={i} className="relative overflow-hidden rounded-xl" style={{ aspectRatio: "4/3" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
-              </div>
-            ))}
+          {/* Dollar Bill Gallery */}
+          <div className="mt-24 mb-8">
+            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#E8B923]/70 mb-3">
+              {locale === "ro" ? "SIMBOLURILE MONEDEI" : "THE CURRENCY"}
+            </p>
+            <h3 className="text-white font-display text-xl font-bold mb-4">
+              {locale === "ro"
+                ? "Designul Dolarului American"
+                : "The Dollar Bill — Designed in Detail"}
+            </h3>
+            <p className="text-white/50 text-sm font-body leading-relaxed mb-8 max-w-2xl">
+              {locale === "ro"
+                ? "Fiecare bancnotă americană poartă simboluri cu rezonanță istorică profundă: Ochiul Providenței, constelația celor 13 stele, vulturul și scutul. Peste 2 trilioane de dolari circulă la nivel global — circa 60% în afara Statelor Unite."
+                : "Every Federal Reserve Note carries centuries of symbolism: the Eye of Providence, the thirteen-star constellation, the eagle and shield. Over $2 trillion in physical dollars circulate globally, with roughly 60% held outside the United States."}
+            </p>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-1 md:grid-cols-3 gap-4"
+              photos={[
+                {
+                  src: SITE_IMAGES.economyPaperMoney,
+                  alt: "American paper money denominations laid out from small to large bills",
+                  caption: locale === "ro" ? "Bancnotele Americane — de la $1 la $100" : "US Currency — $1 to $100",
+                  aspect: "4/3",
+                },
+                {
+                  src: SITE_IMAGES.economyDollarObverse,
+                  alt: "United States one dollar bill — obverse side with George Washington portrait",
+                  caption: locale === "ro" ? "Dolarul — față (George Washington)" : "Dollar Bill — Obverse",
+                  aspect: "12/5",
+                },
+                {
+                  src: SITE_IMAGES.economyDollarReverse,
+                  alt: "United States one dollar bill — reverse side with the Great Seal",
+                  caption: locale === "ro" ? "Dolarul — verso (Marele Sigiliu)" : "Dollar Bill — Reverse (Great Seal)",
+                  aspect: "12/5",
+                },
+              ]}
+            />
           </div>
 
           {/* Nav */}
