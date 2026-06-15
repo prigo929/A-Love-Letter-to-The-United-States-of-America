@@ -21,9 +21,9 @@ export function OpeningStatement() {
           emphasis: " Statele Unite ale Americii",
           quoteEnd: ".",
           paragraphs: [
-            "Aceste realizări sunt documentate de date provenite de la Banca Mondială, Fundația Nobel, OECD și alte organizații internaționale care evaluează progresul uman.",
-            "Această cronică urmărește contribuția americană în toată diversitatea ei: de la splendoarea Marelui Canion la inventarea cipului semiconductor, principiile Declarației de Independență, designul iPhone-ului, nașterea jazz-ului în New Orleans și aselenizarea istorică a misiunii Apollo.",
-            "Documentăm această istorie în detaliu, prezentând întreaga dimensiune a realizărilor americane.",
+            "Realizările documentate pe acest site sunt date istorice și statistice verificate de Banca Mondială, Fundația Nobel, OECD și alte instituții internaționale majore care măsoară progresul uman.",
+            "Aceasta este cronica contribuției americane. Ea cuprinde măreția Marelui Canion, idealurile revoluționare ale Declarației de Independență, crearea semiconductorului și a iPhone-ului, spiritul jazz-ului din New Orleans și reușita istorică a aselenizării.",
+            "Prezentăm această călătorie în întregime, cu claritatea și mândria pe care le merită.",
           ],
         }
       : {
@@ -33,9 +33,9 @@ export function OpeningStatement() {
           emphasis: " United States of America",
           quoteEnd: ".",
           paragraphs: [
-            "These achievements are documented by data from the World Bank, the Nobel Foundation, the OECD, and other international organizations tracking human progress.",
-            "This chronicle traces the trajectory of American contribution: from the natural wonder of the Grand Canyon to the invention of the semiconductor chip, the principles of the Declaration of Independence, the design of the iPhone, the birth of jazz in New Orleans, and the historic Apollo Moon landing.",
-            "We document this history in detail, sharing the full scope of American achievement.",
+            "The achievements documented on this site are matters of historic and statistical record, verified by the World Bank, the Nobel Foundation, the OECD, and other major international institutions that measure human progress.",
+            "This is the chronicle of American contribution. It encompasses the grandeur of the Grand Canyon, the revolutionary ideals of the Declaration of Independence, the creation of the semiconductor and the iPhone, the spirit of New Orleans jazz, and the historic feat of walking on the Moon.",
+            "We present this journey in full, with the clarity and pride it deserves.",
           ],
         };
 

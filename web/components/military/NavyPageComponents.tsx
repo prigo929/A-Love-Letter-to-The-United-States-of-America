@@ -26,7 +26,6 @@ import type {
   NavyAirWingSquadron,
   NavyBase,
   NavyCapability,
-  NavyCommandLayer,
   NavyFleetComparison,
   NavyFutureProgram,
   NavyHeritageEvent,
@@ -60,7 +59,7 @@ export function NavyStyles() {
         --navy-elevated: #12151b;
         --navy-panel: rgba(8, 10, 14, 0.82);
         --navy-border: rgba(255, 255, 255, 0.06);
-        --navy-blue: #8edcff;
+        --navy-blue: #7aaed4;
         background: var(--navy-black);
         color: white;
       }
@@ -152,7 +151,7 @@ export function NavySectionDivider() {
         whileInView={{ scaleX: 1, opacity: 1 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-        className="h-px w-full max-w-[480px] origin-center bg-gradient-to-r from-transparent via-[#8edcff]/20 to-transparent"
+        className="h-px w-full max-w-[480px] origin-center bg-gradient-to-r from-transparent via-[#7aaed4]/20 to-transparent"
       />
     </div>
   );
@@ -244,7 +243,7 @@ export function NavyHero({
       <div className="navy-noise absolute inset-0" />
 
       <div className="relative z-10 flex min-h-[100svh] items-end">
-        <div className="mx-auto grid w-full max-w-[1520px] gap-10 px-5 pb-8 pt-32 sm:px-8 md:grid-cols-[1fr_420px] md:items-end md:pb-12 lg:px-12">
+        <div className="mx-auto grid w-full max-w-[1520px] gap-10 px-5 pb-8 pt-44 sm:px-8 md:grid-cols-[1fr_420px] md:items-end md:pb-12 lg:px-12">
           <motion.div
             style={{ y: titleY }}
             initial="hidden"
@@ -431,21 +430,21 @@ export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabiliti
                   </div>
                 )}
 
-                <div className="absolute top-0 right-0 h-40 w-40 rounded-full bg-[#8edcff] blur-[80px] pointer-events-none transition-opacity duration-1000 opacity-0 group-hover:opacity-[0.06]" />
+                <div className="absolute top-0 right-0 h-40 w-40 rounded-full bg-[#7aaed4] blur-[80px] pointer-events-none transition-opacity duration-1000 opacity-0 group-hover:opacity-[0.06]" />
 
                 {/* Header: Icon + Stat */}
                 <div className="flex items-center justify-between mb-6 lg:mb-0 shrink-0">
-                  <div className="flex h-11 w-11 items-center justify-center border border-white/8 bg-black text-[#8edcff] transition-colors duration-500 group-hover:border-[#8edcff]/25">
+                  <div className="flex h-11 w-11 items-center justify-center border border-white/8 bg-black text-[#7aaed4] transition-colors duration-500 group-hover:border-[#7aaed4]/25">
                     <Icon size={18} strokeWidth={1.5} />
                   </div>
-                  <span className="navy-font-mono text-[11px] font-bold tracking-[0.12em] text-[#8edcff]/70 transition-colors duration-500 group-hover:text-[#8edcff]/90">
+                  <span className="navy-font-mono text-[11px] font-bold tracking-[0.12em] text-[#7aaed4]/70 transition-colors duration-500 group-hover:text-[#7aaed4]/90">
                     {cap.stat}
                   </span>
                 </div>
 
                 {/* Middle Content */}
                 <div className="flex-1 flex flex-col justify-center my-4 lg:my-0">
-                  <span className="navy-font-mono text-[11px] font-bold tracking-[0.15em] text-[#8edcff]/70 transition-colors duration-500 group-hover:text-[#8edcff]/90 mb-2 block">
+                  <span className="navy-font-mono text-[11px] font-bold tracking-[0.15em] text-[#7aaed4]/70 transition-colors duration-500 group-hover:text-[#7aaed4]/90 mb-2 block">
                     {cap.kicker}
                   </span>
                   <h3 className={cn(
@@ -470,7 +469,7 @@ export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabiliti
                 {/* Footer Line indicator */}
                 <div className="shrink-0 mt-2 lg:mt-0">
                   <div className="h-px w-full bg-white/5">
-                    <div className="h-px w-12 bg-[#8edcff] transition-all duration-500 group-hover:w-full" />
+                    <div className="h-px w-12 bg-[#7aaed4] transition-all duration-500 group-hover:w-full" />
                   </div>
                 </div>
               </motion.div>
@@ -530,12 +529,12 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
                     />
                   )}
                   <div className="relative z-10">
-                    <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#8edcff]/70">{theater.region}</div>
+                    <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#7aaed4]/70">{theater.region}</div>
                     <div className="navy-font-display mt-3 text-2xl font-black uppercase leading-none">{theater.name}</div>
                     <div className="mt-5 h-px w-full bg-white/5">
                       <div
                         className={cn("h-px transition-all duration-500", selected ? "w-full" : "w-10 group-hover:w-1/2")}
-                        style={{ backgroundColor: "#8edcff" }}
+                        style={{ backgroundColor: "#7aaed4" }}
                       />
                     </div>
                   </div>
@@ -581,7 +580,7 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
                   transition={{ duration: 0.45 }}
                   className="max-w-2xl"
                 >
-                  <div className="navy-font-mono text-[11px] font-bold uppercase text-[#8edcff] tracking-[0.15em]">{active.signal}</div>
+                  <div className="navy-font-mono text-[11px] font-bold uppercase text-[#7aaed4] tracking-[0.15em]">{active.signal}</div>
                   <h3 className="navy-font-display mt-4 text-4xl font-black uppercase leading-none md:text-6xl text-white">
                     {active.headline}
                   </h3>
@@ -606,8 +605,8 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
                     {locale === "ro" ? "Profilul teatrului" : "Theater profile"}
                   </span>
                   <div className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8edcff] opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#8edcff]" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#7aaed4] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#7aaed4]" />
                   </div>
                 </div>
                 <h3 className="navy-font-display text-xl font-black text-white mb-4 leading-[0.92]">{active.name}</h3>
@@ -732,7 +731,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#8edcff]">{active.className}</div>
+                  <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#7aaed4]">{active.className}</div>
                   <h3 className="navy-font-display mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-tight text-white" style={{ wordSpacing: "0.22em", letterSpacing: "0.05em" }}>
                     {active.role}
                   </h3>
@@ -768,7 +767,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                     {selected && (
                       <motion.div
                         layoutId="navy-platform-active"
-                        className="absolute inset-y-0 left-0 w-[2px] bg-[#8edcff]"
+                        className="absolute inset-y-0 left-0 w-[2px] bg-[#7aaed4]"
                         transition={{ type: "spring", stiffness: 330, damping: 35 }}
                       />
                     )}
@@ -776,7 +775,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                       <div className="navy-font-display text-lg sm:text-xl font-extrabold uppercase leading-snug" style={{ wordSpacing: "0.22em", letterSpacing: "0.05em" }}>
                         {platform.name}
                       </div>
-                      <div className="mt-2 text-[11px] font-bold uppercase tracking-wider text-[#8edcff]/70">
+                      <div className="mt-2 text-[11px] font-bold uppercase tracking-wider text-[#7aaed4]/70">
                         {platform.className}
                       </div>
                     </div>
@@ -806,7 +805,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
               <div className="mt-6 h-px bg-white/5">
                 <motion.div
                   key={activeIndex}
-                  className="h-px bg-[linear-gradient(90deg,rgba(255,255,255,0.08),#8edcff,#ffffff)]"
+                  className="h-px bg-[linear-gradient(90deg,rgba(255,255,255,0.08),#7aaed4,#ffffff)]"
                   initial={{ width: "0%" }}
                   animate={{ width: `${((activeIndex + 1) / platforms.length) * 100}%` }}
                   transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
@@ -854,7 +853,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                 <Image src={active.imageSrc} alt={active.imageAlt} fill className="object-cover" priority sizes="100vw" />
                 <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute bottom-8 left-6 md:left-10">
-                  <p className="navy-font-mono text-[11px] font-bold mb-3 tracking-[0.15em] text-[#8edcff] uppercase">{active.className}</p>
+                  <p className="navy-font-mono text-[11px] font-bold mb-3 tracking-[0.15em] text-[#7aaed4] uppercase">{active.className}</p>
                   <h3 className="navy-font-display text-2xl sm:text-4xl md:text-5xl font-black uppercase text-white leading-snug" style={{ wordSpacing: "0.22em", letterSpacing: "0.05em" }}>
                     {active.name}
                   </h3>
@@ -871,8 +870,8 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                     <p className="text-[13px] leading-relaxed text-white/65 mb-8">{active.capability}</p>
                     
                     {/* Dark Navy visual signature band */}
-                    <div className="pl-5 border-l-2 border-[#8edcff]/25 bg-white/[0.025] py-4 pr-4">
-                      <div className="navy-font-mono text-[11px] font-bold mb-2 tracking-[0.15em] text-[#8edcff]">
+                    <div className="pl-5 border-l-2 border-[#7aaed4]/25 bg-white/[0.025] py-4 pr-4">
+                      <div className="navy-font-mono text-[11px] font-bold mb-2 tracking-[0.15em] text-[#7aaed4]">
                         {locale === "ro" ? "SIGNATURĂ STRATEGICĂ" : "STRATEGIC SIGNATURE"}
                       </div>
                       <p className="text-[13px] leading-relaxed text-white/65 font-medium">
@@ -902,11 +901,11 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                     <div className="mt-8 grid grid-cols-2 gap-3">
                       <div className="bg-[#000a14] border border-white/5 p-4">
                         <div className="navy-font-mono text-[10px] font-semibold text-white/45 tracking-wider">DOMAIN</div>
-                        <div className="text-xs font-bold text-[#8edcff] mt-1">{locale === "ro" ? "DOMINANȚĂ GLOBALĂ" : "GLOBAL DOMAIN"}</div>
+                        <div className="text-xs font-bold text-[#7aaed4] mt-1">{locale === "ro" ? "DOMINANȚĂ GLOBALĂ" : "GLOBAL DOMAIN"}</div>
                       </div>
                       <div className="bg-[#000a14] border border-white/5 p-4">
                         <div className="navy-font-mono text-[10px] font-semibold text-white/45 tracking-wider">STATUS</div>
-                        <div className="text-xs font-bold text-[#8edcff] mt-1">{locale === "ro" ? "ACTIV / OPERAȚIONAL" : "DEPLOYED / ACT"}</div>
+                        <div className="text-xs font-bold text-[#7aaed4] mt-1">{locale === "ro" ? "ACTIV / OPERAȚIONAL" : "DEPLOYED / ACT"}</div>
                       </div>
                     </div>
                   </div>
@@ -920,769 +919,6 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// 7. NavyCommandStack — Command Layers (Vercel-inspired)
-// ─────────────────────────────────────────────────────────────────────────────
-
-export function NavyCommandStack({ layers, locale = "en" }: { layers: NavyCommandLayer[]; locale?: Locale }) {
-  const [activeIdx, setActiveIdx] = useState(0);
-
-  // Custom localized logs
-  const getLogs = (idx: number) => {
-    if (locale === "ro") {
-      switch (idx) {
-        case 0:
-          return [
-            "STATUS: SCANARE PERSISTENTĂ ISR SPAȚIU-AER ACTIVĂ",
-            "REȚEA: SAT-LINK MILITARĂ CRIPTATĂ (SECURE LEVEL 5)",
-            "LĂȚIME BANDĂ: 1.8 GBPS ÎN TIMP REAL DIRECT DIN TEATRU",
-            "SATELLITE CUEING: DETECȚIE TACTICĂ FLUX CONTINUU"
-          ];
-        case 1:
-          return [
-            "STATUS: COMANDĂ INTEGRATĂ AEGIS BASELINE 10 CONECTATĂ",
-            "REȚEA-COOP: CEC ACTIVAT (8 NODURI FLOTĂ CONECTATE)",
-            "CONEXIUNE LINK 16: STABILĂ // INTEGRITATE DATE 99.99%",
-            "DECISION GRID: FUZIUNE VECTORIALĂ DETECȚIE-CONTROL"
-          ];
-        case 2:
-          return [
-            "STATUS: AUTORIZARE ENGAGEMENT JOINT FIRES CONFIRMATĂ",
-            "ARSENAL TACTIC: CELULE Mk 41 VLS / TORPILE Mk 48 PREGĂTITE",
-            "GHIDARE ACTIVER-VECTOR: LOCK PE COORDONATE ACTIVE",
-            "PROIECȚIE DE FORȚĂ: GRUP AERIAN PORTAVION DEPLOYAT"
-          ];
-        default:
-          return [];
-      }
-    } else {
-      switch (idx) {
-        case 0:
-          return [
-            "STATUS: PERSISTENT ACTIVE SPACE-AIR ISR SCAN",
-            "UP-LINK: SECURE MILITARY SATELLITE NETWORK (LEVEL 5)",
-            "BANDWIDTH: 1.8 GBPS REAL-TIME STREAMING FROM ORBIT",
-            "SATELLITE CUEING: PERSISTENT THREAT TRACK DETECTED"
-          ];
-        case 1:
-          return [
-            "STATUS: AEGIS BASELINE 10 DECISION CORE ENGAGED",
-            "COOP-NET: CEC DEPLOYED (8 FLEET NODES SYNCHRONIZED)",
-            "LINK 15/16 STABILITY: 99.999% TACTICAL INTEGRITY",
-            "DECISION GRID: FUSING HIGH-SPEED TELEMETRY VOLLEYS"
-          ];
-        case 2:
-          return [
-            "STATUS: JOINT FIRES KINETIC ENGAGEMENT AUTHORIZED",
-            "READY ARSENAL: Mk 41 VLS CELLS / Mk 48 TUBES CHARGED",
-            "ACTIVE GUIDANCE: TERMINAL TARGET ACQUISITION LOCKED",
-            "POWER PROJECTION: CARRIER AIR WING STRIKE ACTIVE"
-          ];
-        default:
-          return [];
-      }
-    }
-  };
-
-  const activeLogs = getLogs(activeIdx);
-  const activeColor = "#8edcff";
-
-  // Typing simulator state for the monospaced terminal logs
-  const [visibleLines, setVisibleLines] = useState<string[]>([]);
-  const [typingIdx, setTypingIdx] = useState(0);
-  const [isTypingComplete, setIsTypingComplete] = useState(false);
-  const [timestamps, setTimestamps] = useState<string[]>([]);
-
-
-
-  useEffect(() => {
-    // Generate simulated high-precision timestamps
-    const now = new Date();
-    const h = String(now.getHours()).padStart(2, '0');
-    const m = String(now.getMinutes()).padStart(2, '0');
-    const s = String(now.getSeconds()).padStart(2, '0');
-    
-    const times = [
-      `[${h}:${now.getMinutes()}:${now.getSeconds()}.024]`,
-      `[${h}:${now.getMinutes()}:${now.getSeconds()}.108]`,
-      `[${h}:${now.getMinutes()}:${now.getSeconds()}.254]`,
-      `[${h}:${now.getMinutes()}:${now.getSeconds()}.392]`,
-    ];
-    setTimestamps(times);
-    
-    // Clear and reset typing simulation
-    setVisibleLines([]);
-    setTypingIdx(0);
-    setIsTypingComplete(false);
-  }, [activeIdx]);
-
-  useEffect(() => {
-    if (typingIdx < activeLogs.length) {
-      const timeout = setTimeout(() => {
-        setVisibleLines((prev) => [...prev, activeLogs[typingIdx]]);
-        setTypingIdx((prev) => prev + 1);
-      }, 150);
-      return () => clearTimeout(timeout);
-    } else {
-      setIsTypingComplete(true);
-    }
-  }, [typingIdx, activeLogs]);
-
-  // Command shell prompt
-  const getPromptHeader = () => {
-    switch (activeIdx) {
-      case 0:
-        return "C2-DECK:~# exec_isr_scan --level-5";
-      case 1:
-        return "C2-DECK:~# sysctl --init aegis_combat_core";
-      case 2:
-        return "C2-DECK:~# authorize_strike --vector-vls";
-      default:
-        return "C2-DECK:~# sh";
-    }
-  };
-
-  // Helper to format/parse status tags and color them
-  const renderColoredLog = (log: string) => {
-    if (log.includes(":")) {
-      const [label, val] = log.split(":");
-      
-      // Check if value contains active keywords to highlight
-      const highlights = ["ACTIVĂ", "ONLINE", "CONECTATĂ", "OK", "ONLINE & tracking", "ENGAGED", "SYNCHRONIZED", "CONFIRMED", "ACTIVE"];
-      const warningHighlights = ["LOCK", "LOCKED", "STRIKE ACTIVE", "KINETIC ENGAGEMENT"];
-      
-      const matchedFontWeight = "font-bold";
-      
-      const containsHighlight = highlights.some(h => val.includes(h));
-      const containsWarning = warningHighlights.some(w => val.includes(w));
-      
-      return (
-        <span className="flex flex-wrap gap-1 items-center">
-          <span className="text-white/60 font-semibold uppercase">{label}:</span>
-          <span
-            className={matchedFontWeight}
-            style={{
-              color: activeColor,
-              textShadow: containsHighlight || containsWarning ? `0 0 8px ${activeColor}40` : "none"
-            }}
-          >
-            {val}
-          </span>
-        </span>
-      );
-    }
-    return <span className="flex-1">{log}</span>;
-  };
-
-  // Icons corresponding to layers
-  const icons = [Satellite, Network, Crosshair];
-
-  return (
-    <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(0,42,102,0.18),transparent_50%),radial-gradient(circle_at_70%_70%,rgba(0,26,51,0.12),transparent_40%)]" />
-      <div className="absolute inset-0 navy-grid-plane opacity-15 pointer-events-none" />
-      <div className="navy-noise absolute inset-0 opacity-35 pointer-events-none" />
-      
-      <div className="relative mx-auto max-w-[1520px]">
-        <SectionTitle
-          label={locale === "ro" ? "SISTEM DE COMANDĂ ȘI CONTROL C2" : "COMMAND & CONTROL ARCHITECTURE"}
-          titlePart1={locale === "ro" ? "VITEZĂ DECIZIONALĂ" : "DECISION SPEED"}
-          titlePart2={locale === "ro" ? "REȚEA DE LUPTĂ INTEGRATĂ" : "INTEGRATED KILL WEB"}
-          body={locale === "ro"
-            ? "Flota este concepută pentru a detecta prima, a decide mai rapid și a lansa atacuri multi-domeniu sincronizate. Secretul constă în integrarea de rețea, nu într-o armă singulară."
-            : "The fleet is designed to sense first, decide faster, and create effects from multiple domains at once. The real power is the cooperative network integration, not a single weapon."}
-          align="left"
-        />
-
-        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 lg:items-start mt-12">
-          {/* Left Column: Cyber-Tactical C2 Command HUD */}
-          <div className="lg:sticky lg:top-28 space-y-6">
-            <div className="navy-glass-premium border border-white/10 bg-[#020202] p-6 rounded-lg relative overflow-hidden">
-              {/* Radar glowing sweep overlay */}
-              <div className="absolute top-4 right-4 flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full animate-ping bg-[#8edcff]" />
-                <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#8edcff]">
-                  {activeIdx === 0
-                    ? (locale === "ro" ? "ISR CONECTAT" : "SENSING ACTIVE")
-                    : activeIdx === 1
-                    ? (locale === "ro" ? "CORE AEGIS ONLINE" : "AEGIS MERGE OK")
-                    : (locale === "ro" ? "LOCK FOC-ARMAMENT" : "FIRE CONTROL SECURE")}
-                </span>
-              </div>
-
-              <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-white/60 mb-6">
-                {locale === "ro" ? "VIZUALIZARE REȚEA DE LUPTĂ" : "TACTICAL DATA LINK MESH"}
-              </div>
-
-              {/* HUD Screen Graphic visualizer */}
-              <div className="h-[220px] w-full border border-white/5 bg-black/60 relative overflow-hidden rounded flex items-center justify-center">
-                {/* Background radar grid pattern */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:16px_16px]" />
-                
-                {/* 1. Sensing Layer Graphic */}
-                {activeIdx === 0 && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <svg className="w-full h-full p-2" viewBox="0 0 100 100">
-                      {/* Animated Orbital trajectory line */}
-                      <motion.path
-                        d="M 10 20 Q 50 -5 90 20"
-                        stroke="#8edcff"
-                        strokeWidth="0.4"
-                        strokeDasharray="4,4"
-                        fill="none"
-                        opacity="0.3"
-                        animate={{ strokeDashoffset: [0, -20] }}
-                        transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-                      />
-                      
-                      {/* Detailed Space Satellite */}
-                      <motion.g
-                        initial={{ opacity: 0, x: -10, y: -10 }}
-                        animate={{ opacity: 1, x: 0, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                      >
-                        {/* Connection line */}
-                        <line x1="30" y1="16" x2="50" y2="40" stroke="#8edcff" strokeWidth="0.4" strokeDasharray="2,2" opacity="0.4" />
-                        
-                        {/* Satellite dish assembly */}
-                        <circle cx="30" cy="16" r="3.5" fill="#0a0c10" stroke="#8edcff" strokeWidth="0.8" />
-                        <circle cx="30" cy="16" r="1.2" fill="#8edcff" className="animate-pulse" />
-                        
-                        {/* Dual Solar Panels */}
-                        <rect x="18" y="14" width="7" height="3" fill="#1e293b" stroke="#8edcff" strokeWidth="0.4" />
-                        <rect x="35" y="14" width="7" height="3" fill="#1e293b" stroke="#8edcff" strokeWidth="0.4" />
-                        <line x1="25" y1="15.5" x2="35" y2="15.5" stroke="#8edcff" strokeWidth="0.5" />
-                        <text x="30" y="8" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">USA-MIL-SAT</text>
-                      </motion.g>
- 
-                      {/* E-2D Hawkeye Airborne Early Warning Plane */}
-                      <motion.g
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.15 }}
-                      >
-                        {/* Plane silhouette */}
-                        <polygon points="50,34 52,38 56,38 50,44 44,38 48,38" fill="#8edcff" opacity="0.9" />
-                        <line x1="38" y1="38" x2="62" y2="38" stroke="#8edcff" strokeWidth="1.2" />
-                        
-                        {/* Rotating Rotodome Radar Disk */}
-                        <ellipse cx="50" cy="33" rx="7" ry="1.5" fill="#0a0c10" stroke="#8edcff" strokeWidth="0.75" />
-                        <line x1="50" y1="33" x2="50" y2="35.5" stroke="#8edcff" strokeWidth="0.6" />
-                        
-                        {/* Dual Concentric Glowing Radar rings radiating from E-2D */}
-                        <circle cx="50" cy="33" r="14" stroke="#8edcff" strokeWidth="0.3" strokeDasharray="2,2" fill="none" opacity="0.25" />
-                        <circle cx="50" cy="33" r="10" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.35" className="animate-ping" style={{ animationDuration: '2.5s' }} />
-                        <circle cx="50" cy="33" r="6" stroke="#8edcff" strokeWidth="0.6" fill="none" opacity="0.45" className="animate-ping" style={{ animationDuration: '1.2s' }} />
-                        
-                        <text x="50" y="49" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">E-2D HAWKEYE</text>
-                      </motion.g>
- 
-                      {/* Undersea Submarine (Bottom Left) & Acoustic Echoes */}
-                      <motion.g
-                        initial={{ opacity: 0, x: -15 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                      >
-                        {/* Submarine Silhouette */}
-                        <rect x="14" y="78" width="15" height="3" rx="1.5" fill="#8edcff" opacity="0.85" />
-                        <rect x="21" y="74" width="3" height="4" fill="#8edcff" opacity="0.85" />
-                        <line x1="22.5" y1="74" x2="22.5" y2="71" stroke="#8edcff" strokeWidth="0.5" /> {/* Periscope */}
-                        
-                        {/* Undersea acoustic sonar point */}
-                        <circle cx="8" cy="80" r="1" fill="#8edcff" className="animate-pulse" />
-                        <circle cx="21" cy="74" r="1.5" fill="#8edcff" className="animate-pulse" />
-                        
-                        {/* Pulsating Sonar sound waves */}
-                        <path d="M 8 75 A 8 8 0 0 0 8 84" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.5" className="animate-pulse" />
-                        <path d="M 6 72 A 12 12 0 0 0 6 87" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.3" className="animate-pulse" />
-                        
-                        <motion.circle
-                          cx="22" cy="74" r="8"
-                          stroke="#8edcff" strokeWidth="0.35" fill="none"
-                          initial={{ r: 2, opacity: 0.8 }}
-                          animate={{ r: 14, opacity: 0 }}
-                          transition={{ repeat: Infinity, duration: 3, ease: "easeOut" }}
-                        />
-                        
-                        <text x="21.5" y="87" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">VIRGINIA-SSN</text>
-                      </motion.g>
- 
-                      {/* Surface Arleigh Burke Destroyer (Bottom Right) */}
-                      <motion.g
-                        initial={{ opacity: 0, x: 15 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                      >
-                        {/* Destroyer Silhouette */}
-                        <polygon points="68,79 84,79 87,74 65,74" fill="#8edcff" opacity="0.85" />
-                        <rect x="70" y="69" width="7" height="5" fill="#8edcff" opacity="0.85" />
-                        <line x1="77" y1="74" x2="81" y2="69" stroke="#8edcff" strokeWidth="0.8" /> {/* Gun mount */}
-                        
-                        <text x="76" y="87" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">DDG-FLIGHT III</text>
-                      </motion.g>
- 
-                      {/* Integrated Net Link Lines */}
-                      <line x1="30" y1="16" x2="50" y2="33" stroke="#8edcff" strokeWidth="0.5" strokeDasharray="2,2" opacity="0.5" />
-                      <line x1="50" y1="38" x2="21.5" y2="74" stroke="#8edcff" strokeWidth="0.5" strokeDasharray="2,2" opacity="0.5" />
-                      <line x1="50" y1="38" x2="76" y2="74" stroke="#8edcff" strokeWidth="0.5" strokeDasharray="2,2" opacity="0.5" />
-                      <line x1="21.5" y1="78" x2="68" y2="76" stroke="#8edcff" strokeWidth="0.4" strokeDasharray="3,3" opacity="0.4" /> {/* Undersea acoustic line */}
- 
-                      {/* Dynamic incoming telemetry data packets flowing along links */}
-                      <motion.circle
-                        cx="21.5" cy="74" r="1.2" fill="#ffffff"
-                        animate={{ cx: [21.5, 50], cy: [74, 38] }}
-                        transition={{ repeat: Infinity, duration: 2.2, ease: "linear" }}
-                      />
-                      <motion.circle
-                        cx="76" cy="74" r="1.2" fill="#ffffff"
-                        animate={{ cx: [76, 50], cy: [74, 38] }}
-                        transition={{ repeat: Infinity, duration: 1.8, ease: "linear" }}
-                      />
-                      <motion.circle
-                        cx="50" cy="33" r="1.2" fill="#ffffff"
-                        animate={{ cx: [50, 30], cy: [33, 16] }}
-                        transition={{ repeat: Infinity, duration: 2.5, ease: "linear" }}
-                      />
- 
-                      {/* Animated scanning cone */}
-                      <polygon points="50,33 15,74 85,74" fill="url(#sensing-cone-gradient)" opacity="0.12" />
- 
-                      <defs>
-                        <linearGradient id="sensing-cone-gradient" x1="0" x2="0" y1="0" y2="1">
-                          <stop offset="0%" stopColor="#8edcff" stopOpacity="0.4" />
-                          <stop offset="100%" stopColor="#8edcff" stopOpacity="0" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                  </div>
-                )}
- 
-                {/* 2. Decision Layer Graphic */}
-                {activeIdx === 1 && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <svg className="w-full h-full p-2" viewBox="0 0 100 100">
-                      {/* Aegis Radar concentric scope compass rings */}
-                      <circle cx="50" cy="50" r="12" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.2" />
-                      <circle cx="50" cy="50" r="28" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.15" />
-                      <circle cx="50" cy="50" r="44" stroke="#8edcff" strokeWidth="0.75" fill="none" opacity="0.3" />
- 
-                      {/* Compass Heading Labels */}
-                      <text x="50" y="10" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">N 000</text>
-                      <text x="92" y="51" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">E 090</text>
-                      <text x="50" y="93" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">S 180</text>
-                      <text x="8" y="51" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.7">W 270</text>
- 
-                      {/* Rotating Radar Segment Sweep Shadow */}
-                      <motion.path
-                        d="M 50 50 L 88 28 A 44 44 0 0 0 68 8 L 50 50 Z"
-                        fill="url(#radar-sweep-gradient)"
-                        animate={{ rotate: 360 }}
-                        transition={{ repeat: Infinity, duration: 4.5, ease: "linear" }}
-                        style={{ transformOrigin: "50px 50px" }}
-                      />
- 
-                      {/* Aegis continuous rotative sweeper line */}
-                      <motion.line
-                        x1="50"
-                        y1="50"
-                        x2="88"
-                        y2="28"
-                        stroke="#8edcff"
-                        strokeWidth="1.2"
-                        opacity="0.75"
-                        animate={{ rotate: 360 }}
-                        transition={{ repeat: Infinity, duration: 4.5, ease: "linear" }}
-                        style={{ transformOrigin: "50px 50px" }}
-                      />
- 
-                      {/* Connected Tactical Mesh Nodes */}
-                      <g fill="#8edcff">
-                        {/* Central Decision Hub Core */}
-                        <circle cx="50" cy="50" r="4.5" className="animate-pulse" />
-                        
-                        {/* Node 1: TRK-882 */}
-                        <circle cx="28" cy="32" r="2.5" />
-                        <line x1="50" y1="50" x2="28" y2="32" stroke="#8edcff" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
-                        <text x="24" y="27" fill="#8edcff" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-882</text>
-                        <text x="24" y="30.5" fill="#8edcff" fontSize="2" className="navy-font-mono" opacity="0.5">AZ:284 RNG:120</text>
- 
-                        {/* Node 2: TRK-491 */}
-                        <circle cx="72" cy="38" r="2.5" />
-                        <line x1="50" y1="50" x2="72" y2="38" stroke="#8edcff" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
-                        <text x="75" y="34" fill="#8edcff" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-491</text>
-                        <text x="75" y="37.5" fill="#8edcff" fontSize="2" className="navy-font-mono" opacity="0.5">AZ:084 RNG:402</text>
- 
-                        {/* Node 3: TRK-504 */}
-                        <circle cx="64" cy="70" r="2.5" />
-                        <line x1="50" y1="50" x2="64" y2="70" stroke="#8edcff" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
-                        <text x="67" y="75" fill="#8edcff" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-504</text>
- 
-                        {/* Node 4: TRK-119 */}
-                        <circle cx="34" cy="68" r="2.5" />
-                        <line x1="50" y1="50" x2="34" y2="68" stroke="#8edcff" strokeWidth="0.75" strokeDasharray="2,2" opacity="0.5" />
-                        <text x="22" y="74" fill="#8edcff" fontSize="2.8" className="navy-font-mono font-black" opacity="0.8">TRK-119</text>
-                      </g>
- 
-                      {/* Active target coordinate tracking brackets */}
-                      <g stroke="#8edcff" strokeWidth="0.4" fill="none" opacity="0.6">
-                        {/* Node 1 Brackets */}
-                        <path d="M 24 29 L 24 27 L 26 27" />
-                        <path d="M 32 29 L 32 27 L 30 27" />
-                        <path d="M 24 35 L 24 37 L 26 37" />
-                        <path d="M 32 35 L 32 37 L 30 37" />
-                        
-                        {/* Node 2 Brackets */}
-                        <path d="M 68 35 L 68 33 L 70 33" />
-                        <path d="M 76 35 L 76 33 L 74 33" />
-                        <path d="M 68 41 L 68 43 L 70 43" />
-                        <path d="M 76 41 L 76 43 L 74 43" />
-                      </g>
- 
-                      {/* Moving Data Packets (Neon Dots flowing along links) */}
-                      <motion.circle
-                        cx="28" cy="32" r="1.5" fill="#ffffff"
-                        animate={{ cx: [28, 50], cy: [32, 50] }}
-                        transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                      />
-                      <motion.circle
-                        cx="72" cy="38" r="1.5" fill="#ffffff"
-                        animate={{ cx: [72, 50], cy: [38, 50] }}
-                        transition={{ repeat: Infinity, duration: 2.5, ease: "linear" }}
-                      />
-                      <motion.circle
-                        cx="34" cy="68" r="1.5" fill="#ffffff"
-                        animate={{ cx: [34, 50], cy: [68, 50] }}
-                        transition={{ repeat: Infinity, duration: 1.8, ease: "linear" }}
-                      />
- 
-                      {/* Interactive text badge */}
-                      <rect x="36" y="44" width="28" height="6" fill="#0a0c10" stroke="#8edcff" strokeWidth="0.5" rx="1" />
-                      <text x="50" y="48.5" fill="#8edcff" fontSize="2.8" textAnchor="middle" fontWeight="bold" className="navy-font-mono animate-pulse">AEGIS LINK</text>
- 
-                      <defs>
-                        <linearGradient id="radar-sweep-gradient" x1="0" x2="1" y1="0" y2="1">
-                          <stop offset="0%" stopColor="#8edcff" stopOpacity="0.25" />
-                          <stop offset="100%" stopColor="#8edcff" stopOpacity="0" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                  </div>
-                )}
-
-                {/* 3. Effect Layer Graphic */}
-                {activeIdx === 2 && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <svg className="w-full h-full p-2" viewBox="0 0 100 100">
-                      {/* Crosshair target scope lines */}
-                      <line x1="8" y1="50" x2="92" y2="50" stroke="#8edcff" strokeWidth="0.4" strokeDasharray="3,3" opacity="0.4" />
-                      <line x1="50" y1="8" x2="50" y2="92" stroke="#8edcff" strokeWidth="0.4" strokeDasharray="3,3" opacity="0.4" />
-                      <circle cx="50" cy="50" r="38" stroke="#8edcff" strokeWidth="0.5" fill="none" opacity="0.2" />
-                      <circle cx="50" cy="50" r="22" stroke="#8edcff" strokeWidth="0.6" fill="none" opacity="0.35" />
-                      <circle cx="50" cy="50" r="2.5" fill="#8edcff" />
- 
-                      {/* Twin-tail F-35C aerospace stealth fighter silhouette (Middle Left) */}
-                      <motion.g
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                      >
-                        {/* F-35C Body & Wings (y: 32-38) */}
-                        <polygon points="12,32 20,36 18,38 10,38 8,34" fill="#8edcff" opacity="0.8" />
-                        {/* Stabilizer tails */}
-                        <line x1="8" y1="34" x2="6" y2="30" stroke="#8edcff" strokeWidth="0.8" />
-                        <line x1="8" y1="38" x2="6" y2="42" stroke="#8edcff" strokeWidth="0.8" />
-                        
-                        <text x="8" y="26" fill="#8edcff" fontSize="3" className="navy-font-mono font-black" opacity="0.8">F-35C STRIKE</text>
-                        
-                        {/* Guided weapon launch drop trail to TR-02 */}
-                        <motion.circle
-                          cx="14" cy="38" r="0.8" fill="#ffffff"
-                          animate={{ cx: [14, 34], cy: [38, 62] }}
-                          transition={{ repeat: Infinity, duration: 2.5, ease: "easeIn" }}
-                        />
-                      </motion.g>
- 
-                      {/* Terminal Flight Calculations Readout Block (Top Right) */}
-                      <g opacity="0.85" className="navy-font-mono" fill="#8edcff">
-                        <text x="94" y="14" fontSize="2.8" textAnchor="end" fontWeight="bold">HYPERSONIC INTERCEPT</text>
-                      </g>
- 
-                      {/* Detailed Surface Destroyer Firing VLS (Bottom Left) */}
-                      <motion.g
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        {/* Deck silhouette */}
-                        <polygon points="5,88 24,88 28,82 1,82" fill="#8edcff" opacity="0.65" />
-                        <rect x="11" y="82" width="6" height="1" fill="#ffffff" />
-                        
-                        {/* Rising hypersonic interceptor missile */}
-                        <line x1="14" y1="82" x2="14" y2="70" stroke="#ffffff" strokeWidth="1.2" />
-                        <polygon points="14,66 12.5,70 15.5,70" fill="#ffffff" />
-                        
-                        {/* Glowing orange exhaust plume trail */}
-                        <polygon points="12,82 16,82 14,88" fill="url(#fire-plume-gradient)" opacity="0.8" />
-                        
-                        <text x="14" y="94" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">VLS Mk 41</text>
-                      </motion.g>
- 
-                      {/* Underwater Virginia-SSN launching a Tomahawk (Bottom Right) */}
-                      <motion.g
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.4 }}
-                      >
-                        {/* Underwater sub hull */}
-                        <rect x="74" y="86" width="20" height="3.5" rx="1" fill="#8edcff" opacity="0.5" />
-                        {/* Tomahawk missile launched underwater, traveling up to Node 1 */}
-                        <motion.path
-                          d="M 78 86 Q 84 62 68 42"
-                          fill="none"
-                          stroke="#ffffff"
-                          strokeWidth="0.8"
-                          strokeDasharray="2,2"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 0.5 }}
-                        />
-                        <text x="84" y="94" fill="#8edcff" fontSize="2.5" textAnchor="middle" className="navy-font-mono" opacity="0.6">TOMAHAWK UGM</text>
-                      </motion.g>
- 
-                      {/* Live System Status Waveform & Warhead Status (Bottom Center - Isolated) */}
-                      <g>
-                        <path d="M 38 86 L 41 88 L 44 84 L 47 89 L 50 82 L 53 87 L 56 85 L 59 88 L 62 86" fill="none" stroke="#8edcff" strokeWidth="0.8" opacity="0.6" className="animate-pulse" />
-                        <text x="50" y="94" fill="#8edcff" fontSize="3" textAnchor="middle" className="navy-font-mono font-black" opacity="0.8">WARHEAD CHARGED</text>
-                      </g>
- 
-                      {/* Lock-on target 1 tracking coordinates brackets (Center Right - Moved Down to Avoid Readout) */}
-                      <motion.g
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.1 }}
-                      >
-                        {/* Pulsing ring target lock */}
-                        <circle cx="68" cy="42" r="4.5" fill="none" stroke="#8edcff" strokeWidth="1.2" className="animate-ping" style={{ animationDuration: '1.5s' }} />
-                        <circle cx="68" cy="42" r="1.5" fill="#8edcff" />
-                        
-                        {/* Closing targeting brackets [  ] */}
-                        <path d="M 62 37 L 64 37 L 64 39" stroke="#8edcff" strokeWidth="0.8" fill="none" />
-                        <path d="M 74 37 L 72 37 L 72 39" stroke="#8edcff" strokeWidth="0.8" fill="none" />
-                        <path d="M 62 47 L 64 47 L 64 45" stroke="#8edcff" strokeWidth="0.8" fill="none" />
-                        <path d="M 74 47 L 72 47 L 72 45" stroke="#8edcff" strokeWidth="0.8" fill="none" />
-                        
-                        <text x="68" y="54" fill="#8edcff" fontSize="2.8" textAnchor="middle" className="navy-font-mono font-black">LOCK [TR-01]</text>
-                        <text x="68" y="57.5" fill="#8edcff" fontSize="2.2" textAnchor="middle" className="navy-font-mono" opacity="0.5">AZ:084 EL:15</text>
-                      </motion.g>
- 
-                      {/* Lock-on target 2 tracking coordinates brackets (Center Left) */}
-                      <motion.g
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.35 }}
-                      >
-                        {/* Pulsing ring target lock */}
-                        <circle cx="34" cy="62" r="4.5" fill="none" stroke="#8edcff" strokeWidth="1.2" className="animate-ping" style={{ animationDuration: '2s' }} />
-                        <circle cx="34" cy="62" r="1.5" fill="#8edcff" />
-                        
-                        {/* Targeting brackets [  ] */}
-                        <path d="M 28 57 L 30 57 L 30 59" stroke="#8edcff" strokeWidth="0.8" fill="none" />
-                        <path d="M 40 57 L 38 57 L 38 59" stroke="#8edcff" strokeWidth="0.8" fill="none" />
-                        <path d="M 28 67 L 30 67 L 30 65" stroke="#8edcff" strokeWidth="0.8" fill="none" />
-                        <path d="M 40 67 L 38 67 L 38 65" stroke="#8edcff" strokeWidth="0.8" fill="none" />
-                        
-                        <text x="34" y="74" fill="#8edcff" fontSize="2.8" textAnchor="middle" className="navy-font-mono font-black">LOCK [TR-02]</text>
-                        <text x="34" y="77.5" fill="#8edcff" fontSize="2.2" textAnchor="middle" className="navy-font-mono" opacity="0.5">AZ:284 EL:08</text>
-                      </motion.g>
- 
-                      {/* Launch flight vector trajectory curve */}
-                      <motion.path
-                        d="M 14 74 Q 35 44 68 42"
-                        fill="none"
-                        stroke="#8edcff"
-                        strokeWidth="1.5"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1.6, repeat: Infinity, repeatDelay: 1 }}
-                      />
- 
-                      <defs>
-                        <linearGradient id="fire-plume-gradient" x1="0" x2="0" y1="0" y2="1">
-                          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
-                          <stop offset="50%" stopColor="#8edcff" stopOpacity="0.7" />
-                          <stop offset="100%" stopColor="#8edcff" stopOpacity="0" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                  </div>
-                )}
-              </div>
-
-              {/* Live console logging logs feed */}
-              <div className="mt-5 border border-white/5 bg-black/95 p-4 rounded no-scrollbar h-[135px] overflow-y-auto navy-font-mono text-[11px] tracking-wider leading-relaxed">
-                <div className="text-[#8edcff]/40 font-bold mb-2 flex items-center gap-1.5">
-                  <span>{getPromptHeader()}</span>
-                  {!isTypingComplete && (
-                    <span className="animate-pulse h-2.5 w-1.5 bg-[#8edcff]" style={{ backgroundColor: activeColor }} />
-                  )}
-                </div>
-                
-                <div className="space-y-1">
-                  {visibleLines.map((log, lidx) => (
-                    <motion.div
-                      key={log}
-                      initial={{ opacity: 0, x: -6 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="text-white/85 flex items-start"
-                    >
-                      <span className="text-white/35 mr-2 shrink-0">{timestamps[lidx]}</span>
-                      {renderColoredLog(log)}
-                    </motion.div>
-                  ))}
-                </div>
-
-                {isTypingComplete && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="text-[#8edcff]/40 font-bold mt-2 flex items-center gap-1.5"
-                  >
-                    <span>C2-DECK:~#</span>
-                    <span className="animate-pulse h-2.5 w-1.5 bg-[#8edcff]" style={{ backgroundColor: activeColor }} />
-                  </motion.div>
-                )}
-              </div>
-
-              {/* Progress telemetry meters */}
-              <div className="mt-6 space-y-4 border-t border-white/5 pt-5">
-                <div>
-                  <div className="flex justify-between items-center text-[11px] font-bold uppercase tracking-wider text-white/55 mb-1.5">
-                    <span>{locale === "ro" ? "INTEGRITATE DATE REȚEA" : "DATA INTEGRITY CORE"}</span>
-                    <span className="navy-font-mono font-bold text-white/80">
-                      {activeIdx === 0 ? "98%" : activeIdx === 1 ? "99.9%" : "95.4%"}
-                    </span>
-                  </div>
-                  <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full rounded-full"
-                      style={{ backgroundColor: activeColor }}
-                      initial={{ width: "0%" }}
-                      animate={{ width: activeIdx === 0 ? "98%" : activeIdx === 1 ? "99.9%" : "95.4%" }}
-                      transition={{ duration: 0.45, ease: "easeOut" }}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex justify-between items-center text-[11px] font-bold uppercase tracking-wider text-white/55 mb-1.5">
-                    <span>{locale === "ro" ? "LATENȚĂ COOPERATIVĂ" : "NETWORK LATENCY INDEX"}</span>
-                    <span className="navy-font-mono font-bold text-white/80">
-                      {activeIdx === 0 ? "14 ms" : activeIdx === 1 ? "4 ms" : "12 ms"}
-                    </span>
-                  </div>
-                  <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full rounded-full"
-                      style={{ backgroundColor: activeColor }}
-                      initial={{ width: "0%" }}
-                      animate={{ width: activeIdx === 0 ? "80%" : activeIdx === 1 ? "96%" : "85%" }}
-                      transition={{ duration: 0.45, ease: "easeOut" }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Interactive Layers Selector Tiles */}
-          <div className="space-y-4">
-            {layers.map((layer, index) => {
-              const selected = index === activeIdx;
-              const LayerIcon = icons[index] ?? Network;
-
-              return (
-                <button
-                  key={layer.title}
-                  type="button"
-                  onClick={() => setActiveIdx(index)}
-                  className={cn(
-                    "w-full text-left p-6 md:p-8 transition-all duration-300 relative border flex flex-col justify-between overflow-hidden",
-                    selected
-                      ? "bg-white/[0.04] border-white/10"
-                      : "bg-[#020202] border-white/5 hover:border-white/10 hover:bg-white/[0.01]"
-                  )}
-                >
-                  {/* Sliding spring indicator border on the left */}
-                  {selected && (
-                    <motion.div
-                      layoutId="c2-active-border"
-                      className="absolute inset-y-0 left-0 w-[3px]"
-                      style={{ backgroundColor: activeColor }}
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    />
-                  )}
-
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-3">
-                        <span className="navy-font-mono text-[11px] font-bold tracking-widest text-white/45 uppercase">
-                          LAYER 0{index + 1}
-                        </span>
-                        {selected && (
-                          <span className="navy-font-mono text-[10px] bg-white/[0.035] text-[#8edcff] px-2 py-0.5 border border-[#8edcff]/15 uppercase font-black tracking-widest">
-                            {locale === "ro" ? "TELEMETRIE ACTIVĂ" : "LIVE FEED"}
-                          </span>
-                        )}
-                      </div>
-                      <div
-                        className="h-9 w-9 rounded border border-white/5 bg-black flex items-center justify-center"
-                        style={{ color: selected ? activeColor : "rgba(255,255,255,0.3)" }}
-                      >
-                        <LayerIcon size={16} strokeWidth={1.5} />
-                      </div>
-                    </div>
-
-                    <h3 className="navy-font-display text-2xl font-black uppercase leading-none text-white/90">
-                      {layer.title}
-                    </h3>
-                    
-                    <p className="mt-4 text-[11px] font-bold uppercase tracking-wider text-white/70 leading-relaxed">
-                      {layer.subtitle}
-                    </p>
-                    
-                    <p className="mt-3 text-[13px] leading-relaxed text-white/60 font-medium">
-                      {layer.description}
-                    </p>
-                  </div>
-
-                  <div className="mt-6 pt-5 border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
-                    <div className="flex flex-wrap gap-1.5">
-                      {layer.nodes.map((node) => (
-                        <span
-                          key={node}
-                          className="border border-white/5 bg-black/40 px-2 py-1 text-[10px] sm:text-[11px] font-bold uppercase text-white/60 tracking-wider rounded"
-                        >
-                          {node}
-                        </span>
-                      ))}
-                    </div>
-
-                    {!selected && (
-                      <span className="navy-font-mono text-[11px] font-bold tracking-[0.2em] text-[#8edcff]/60 uppercase hover:text-[#8edcff]/90 transition-colors">
-                        {locale === "ro" ? "[ SELECTEAZĂ C2 ]" : "[ ACTIVATE C2 ]"}
-                      </span>
-                    )}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 8. NavyFullscreenPanel — Parallax Image Blocks
@@ -1792,7 +1028,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
             >
               <div>
                 <div className="mb-6 flex flex-col items-start gap-3">
-                  <span className="border border-[#8edcff]/15 bg-white/[0.03] px-2.5 py-1 text-[11px] font-bold uppercase tracking-widest text-[#8edcff]">
+                  <span className="border border-[#7aaed4]/15 bg-white/[0.03] px-2.5 py-1 text-[11px] font-bold uppercase tracking-widest text-[#7aaed4]">
                     {program.status}
                   </span>
                   <span className="navy-font-display text-3xl sm:text-4xl font-black text-white/10 block leading-none transition-colors group-hover:text-white/20" title={program.label}>
@@ -1805,7 +1041,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
                 <p className="mt-4 text-[13px] leading-relaxed text-white/60 group-hover:text-white/75 transition-colors font-medium">{program.description}</p>
               </div>
               <div className="mt-8 flex items-center justify-between">
-                <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#8edcff]/80 group-hover:text-[#8edcff] transition-colors">
+                <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#7aaed4]/80 group-hover:text-[#7aaed4] transition-colors">
                   {locale === "ro" ? "DOSAR TEHNIC →" : "PROGRAM DOSSIER →"}
                 </span>
               </div>
@@ -1835,7 +1071,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
             >
               {/* Overlay sticky header */}
               <div className="sticky top-0 z-50 flex justify-between items-center px-6 md:px-10 py-5 bg-[#000308]/95 backdrop-blur-md border-b border-white/5">
-                <span className="navy-font-mono text-[11px] font-bold tracking-[0.2em] text-[#8edcff] uppercase">
+                <span className="navy-font-mono text-[11px] font-bold tracking-[0.2em] text-[#7aaed4] uppercase">
                   {locale === "ro" ? "VIITORUL GEOMETRIEI FLOTEI" : "FLEET CAPITAL PROGRAM"}
                 </span>
                 <button
@@ -1851,7 +1087,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
                 <Image src={activeProgram.imageSrc} alt={activeProgram.imageAlt} fill className="object-cover grayscale-[0.2]" priority sizes="100vw" />
                 <div className="absolute inset-0 bg-linear-to-t from-black via-black/45 to-transparent" />
                 <div className="absolute bottom-8 left-6 md:left-10">
-                  <p className="navy-font-mono text-[11px] font-bold mb-3 tracking-[0.15em] text-[#8edcff] uppercase">{activeProgram.status}</p>
+                  <p className="navy-font-mono text-[11px] font-bold mb-3 tracking-[0.15em] text-[#7aaed4] uppercase">{activeProgram.status}</p>
                   <h3 className="navy-font-display text-3xl md:text-5xl font-black tracking-tighter uppercase text-white leading-none">
                     {activeProgram.title}
                   </h3>
@@ -1868,8 +1104,8 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
                     <p className="text-[13px] leading-relaxed text-white/65 mb-8">{activeProgram.capability}</p>
                     
                     {/* Visual signature band */}
-                    <div className="pl-5 border-l-2 border-[#8edcff]/25 bg-white/[0.025] py-4 pr-4">
-                      <div className="navy-font-mono text-[11px] font-bold mb-2 tracking-[0.15em] text-[#8edcff]">
+                    <div className="pl-5 border-l-2 border-[#7aaed4]/25 bg-white/[0.025] py-4 pr-4">
+                      <div className="navy-font-mono text-[11px] font-bold mb-2 tracking-[0.15em] text-[#7aaed4]">
                         {locale === "ro" ? "PROIECTARE TACTICĂ" : "TACTICAL PROJECTION"}
                       </div>
                       <p className="text-[13px] leading-relaxed text-white/65 font-medium">
@@ -1900,7 +1136,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
 
                     <div className="border-t border-white/5 pt-6">
                       <div className="navy-font-mono text-[11px] font-bold mb-2 tracking-[0.15em] text-white/45">
-                        STATUS: <span className="text-[#8edcff] font-bold">{activeProgram.status.toUpperCase()}</span>
+                        STATUS: <span className="text-[#7aaed4] font-bold">{activeProgram.status.toUpperCase()}</span>
                       </div>
                       <p className="text-[13px] leading-relaxed text-white/65 font-medium">
                         {locale === "ro"
@@ -1953,7 +1189,7 @@ export function NavyClosing({ locale = "en" }: { locale?: Locale }) {
       <div className="navy-noise absolute inset-0 opacity-35 pointer-events-none" />
       
       <div className="relative mx-auto max-w-[1160px] text-center">
-        <Anchor className="mx-auto mb-8 text-[#8edcff]/50 animate-pulse" size={32} strokeWidth={1.2} />
+        <Anchor className="mx-auto mb-8 text-[#7aaed4]/50 animate-pulse" size={32} strokeWidth={1.2} />
         <h2 className="navy-font-display text-4xl font-black uppercase leading-[0.95] md:text-7xl text-white">
           {locale === "ro" ? "Putere militară fără o adresă fixă." : "American power with no fixed address."}
         </h2>
@@ -1984,7 +1220,7 @@ export function NavyClosing({ locale = "en" }: { locale?: Locale }) {
               <Link
                 key={b.href}
                 href={b.href}
-                className="font-mono text-xs uppercase tracking-[0.15em] text-white/50 transition-colors hover:text-[#8edcff]"
+                className="font-mono text-xs uppercase tracking-[0.15em] text-white/50 transition-colors hover:text-[#7aaed4]"
               >
                 {b.label}
               </Link>
@@ -2042,15 +1278,15 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                 {idx === activeTab && (
                   <motion.div
                     layoutId="active-weapon-indicator"
-                    className="absolute bottom-0 left-0 h-[2px] w-full bg-[#8edcff]"
+                    className="absolute bottom-0 left-0 h-[2px] w-full bg-[#7aaed4]"
                     transition={{ type: "spring", stiffness: 350, damping: 30 }}
                   />
                 )}
                 {/* Micro tech borders inside tabs */}
-                <div className="absolute top-0 right-0 h-1.5 w-1.5 border-t border-r border-white/10 group-hover:border-[#8edcff]/50" />
+                <div className="absolute top-0 right-0 h-1.5 w-1.5 border-t border-r border-white/10 group-hover:border-[#7aaed4]/50" />
                 
                 <div className="flex flex-col space-y-1 relative z-10">
-                  <span className="text-[11px] tracking-[0.2em] font-black uppercase text-white group-hover:text-[#8edcff] transition-colors duration-200">
+                  <span className="text-[11px] tracking-[0.2em] font-black uppercase text-white group-hover:text-[#7aaed4] transition-colors duration-200">
                     {w.name.split(" ")[0]}
                   </span>
                   <span className="text-[10px] tracking-wider font-semibold text-white/45 group-hover:text-white/70 transition-colors duration-200">
@@ -2069,13 +1305,13 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
               
               <div className="space-y-5 relative">
                 {/* Cyber corner brackets accent */}
-                <div className="absolute -top-4 -left-4 h-6 w-6 border-t-2 border-l-2 border-[#8edcff]/20 pointer-events-none" />
+                <div className="absolute -top-4 -left-4 h-6 w-6 border-t-2 border-l-2 border-[#7aaed4]/20 pointer-events-none" />
                 
                 <h3 className="navy-font-display text-2xl sm:text-4.5xl font-black text-white leading-snug uppercase pt-1" style={{ wordSpacing: "0.25em", letterSpacing: "0.06em" }}>
                   {weapon.name}
                 </h3>
                 
-                <div className="inline-block border border-[#8edcff]/10 rounded bg-[#0a0c10]/40 px-3 py-1 text-[11px] tracking-widest text-[#8edcff] font-bold font-mono">
+                <div className="inline-block border border-[#7aaed4]/10 rounded bg-[#0a0c10]/40 px-3 py-1 text-[11px] tracking-widest text-[#7aaed4] font-bold font-mono">
                   {locale === "ro" ? "DESEMNARE SISTEM" : "SYSTEM DESIGNATION"}: {weapon.designation}
                 </div>
                 
@@ -2089,9 +1325,9 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                 {weapon.specs.map((s) => (
                   <div
                     key={s.label}
-                    className="relative overflow-hidden navy-panel-tactical p-4 border border-white/5 rounded bg-black/40 flex flex-col space-y-1 group hover:border-[#8edcff]/20 transition-all duration-300"
+                    className="relative overflow-hidden navy-panel-tactical p-4 border border-white/5 rounded bg-black/40 flex flex-col space-y-1 group hover:border-[#7aaed4]/20 transition-all duration-300"
                   >
-                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#8edcff]/10 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#7aaed4]/10 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                     <span className="navy-font-mono text-[11px] font-semibold tracking-wider text-white/45 uppercase">
                       {s.label}
                     </span>
@@ -2110,14 +1346,14 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                   <div className="space-y-2">
                     <div className="flex justify-between text-[11px] font-bold tracking-widest text-white/70">
                       <span>{locale === "ro" ? "ACURATEȚE SISTEM" : "SYSTEM ACCURACY"}</span>
-                      <span className="text-[#8edcff] font-bold">{weapon.accuracy}%</span>
+                      <span className="text-[#7aaed4] font-bold">{weapon.accuracy}%</span>
                     </div>
                     <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden relative">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${weapon.accuracy}%` }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="h-full bg-[#8edcff] rounded-full"
+                        className="h-full bg-[#7aaed4] rounded-full"
                       />
                     </div>
                   </div>
@@ -2127,7 +1363,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                     <div className="navy-font-mono text-[11px] font-bold tracking-widest text-white/45 uppercase">
                       {locale === "ro" ? "STATUS TELEMETRIE" : "TELEMETRY STATUS"}
                     </div>
-                    <div className="text-xs font-mono tracking-wider text-[#8edcff] font-bold uppercase mt-1">
+                    <div className="text-xs font-mono tracking-wider text-[#7aaed4] font-bold uppercase mt-1">
                       {weapon.operations}
                     </div>
                   </div>
@@ -2137,7 +1373,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
 
               {/* Tactical Deployment Profile Block */}
               <div className="border border-white/10 rounded bg-[#0a0c10]/60 p-5 font-mono text-[11px] leading-relaxed text-white/70 space-y-2">
-                <div className="text-[#8edcff] text-[11px] uppercase tracking-widest font-black border-b border-white/10 pb-1.5 mb-2">
+                <div className="text-[#7aaed4] text-[11px] uppercase tracking-widest font-black border-b border-white/10 pb-1.5 mb-2">
                   {locale === "ro" ? "PROFIL DE DESFĂȘURARE TACTICĂ" : "TACTICAL DEPLOYMENT PROFILE"}
                 </div>
                 <div className="flex justify-between border-b border-white/5 pb-1">
@@ -2146,7 +1382,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                 </div>
                 <div className="flex justify-between border-b border-white/5 pb-1">
                   <span className="text-white/40">{locale === "ro" ? "STATUS DESFĂȘURARE:" : "DEPLOYMENT STATUS:"}</span>
-                  <span className="text-[#8edcff] font-semibold">{locale === "ro" ? "PREGĂTIRE OPERAȚIONALĂ OK" : "OPERATIONAL Readiness OK"}</span>
+                  <span className="text-[#7aaed4] font-semibold">{locale === "ro" ? "PREGĂTIRE OPERAȚIONALĂ OK" : "OPERATIONAL Readiness OK"}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-white/40">{locale === "ro" ? "POTRIVIRE SISTEM ȚINTĂ:" : "TARGET SYSTEM MATCH:"}</span>
@@ -2212,7 +1448,7 @@ function SectionTitle({
       <motion.div
         variants={fadeUp}
         transition={{ duration: 0.6 }}
-        className="navy-font-mono mb-5 tracking-[0.25em] text-[11px] font-bold text-[#8edcff]"
+        className="navy-font-mono mb-5 tracking-[0.25em] text-[11px] font-bold text-[#7aaed4]"
       >
         {label}
       </motion.div>
@@ -2539,7 +1775,7 @@ export function NavyHeritageTimeline({
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         </div>
-                        <div className="navy-font-mono text-[11px] font-bold tracking-widest text-[#8edcff] mb-2.5">{event.significance}</div>
+                        <div className="navy-font-mono text-[11px] font-bold tracking-widest text-[#7aaed4] mb-2.5">{event.significance}</div>
                         <h4 className="navy-font-display text-lg font-black uppercase text-white leading-tight mb-3">{event.title}</h4>
                         <p className="text-[13px] sm:text-[14px] leading-relaxed text-white/65 font-medium">{event.description}</p>
                       </div>
@@ -2572,7 +1808,7 @@ export function NavyHeritageTimeline({
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                       </div>
-                      <div className="navy-font-mono text-[11px] font-bold tracking-widest text-[#8edcff] mb-2.5">{event.significance}</div>
+                      <div className="navy-font-mono text-[11px] font-bold tracking-widest text-[#7aaed4] mb-2.5">{event.significance}</div>
                       <h4 className="navy-font-display text-lg font-black uppercase text-white leading-tight mb-3">{event.title}</h4>
                       <p className="text-[13px] sm:text-[14px] leading-relaxed text-white/65 font-medium">{event.description}</p>
                     </div>
@@ -2591,7 +1827,7 @@ export function NavyHeritageTimeline({
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         </div>
-                        <div className="navy-font-mono text-[11px] font-bold tracking-widest text-[#8edcff] mb-2.5">{event.significance}</div>
+                        <div className="navy-font-mono text-[11px] font-bold tracking-widest text-[#7aaed4] mb-2.5">{event.significance}</div>
                         <h4 className="navy-font-display text-lg font-black uppercase text-white leading-tight mb-3">{event.title}</h4>
                         <p className="text-[13px] sm:text-[14px] leading-relaxed text-white/65 font-medium">{event.description}</p>
                       </div>
@@ -2662,12 +1898,12 @@ export function NavySpecWarSection({
                   {selected && (
                     <motion.div
                       layoutId="navy-specwar-active"
-                      className="absolute inset-y-0 left-0 w-[2px] bg-[#8edcff] hidden lg:block"
+                      className="absolute inset-y-0 left-0 w-[2px] bg-[#7aaed4] hidden lg:block"
                       transition={{ type: "spring", stiffness: 330, damping: 35 }}
                     />
                     )}
                   <div className="relative z-10">
-                    <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] mb-2 text-[#8edcff]">{unit.role}</div>
+                    <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] mb-2 text-[#7aaed4]">{unit.role}</div>
                     <div className="navy-font-display text-xl lg:text-2xl font-black uppercase leading-tight">{unit.name}</div>
                     <div className="hidden lg:block mt-2 text-[11px] text-white/55 font-medium">{unit.fullName}</div>
                   </div>
@@ -2689,7 +1925,7 @@ export function NavySpecWarSection({
               >
                 {/* Header */}
                 <div>
-                  <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] mb-3 text-[#8edcff]">{active.fullName}</div>
+                  <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] mb-3 text-[#7aaed4]">{active.fullName}</div>
                   <h3 className="navy-font-display text-3xl md:text-4xl font-black uppercase text-white leading-tight">{active.name}</h3>
                 </div>
 
@@ -2739,7 +1975,7 @@ export function NavySpecWarSection({
                         whileInView={{ width: "25%" }}
                         viewport={{ once: true }}
                         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                        style={{ background: "#8edcff", boxShadow: "0 0 8px rgba(142,220,255,0.18)" }}
+                        style={{ background: "#7aaed4", boxShadow: "0 0 8px rgba(142,220,255,0.18)" }}
                       />
                     </div>
                     <p className="mt-3 text-[12px] text-white/55 leading-relaxed font-medium">
@@ -2820,10 +2056,10 @@ export function NavyAirWingComposition({
               className="group relative bg-[#020202] p-6 transition-colors duration-300 hover:bg-[#000a14]"
             >
               {/* Accent top bar */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#8edcff]/40" />
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#7aaed4]/40" />
 
               <div className="flex items-center justify-between mb-4">
-                <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#8edcff]">{sq.designation}</span>
+                <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#7aaed4]">{sq.designation}</span>
                 <span className="navy-font-display text-2xl font-black text-white">×{sq.count}</span>
               </div>
 
@@ -2837,7 +2073,7 @@ export function NavyAirWingComposition({
               <div className="mt-5 h-px w-full bg-white/5">
                 <div
                   className="h-px w-8 transition-all duration-500 group-hover:w-full"
-                  style={{ backgroundColor: "#8edcff" }}
+                  style={{ backgroundColor: "#7aaed4" }}
                 />
               </div>
             </motion.div>
@@ -2901,17 +2137,17 @@ export function NavyBasesSection({
                 <div className="flex items-start gap-4 mb-6">
                   <div
                     className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/8 bg-black"
-                    style={{ color: "#8edcff" }}
+                    style={{ color: "#7aaed4" }}
                   >
                     <MapPin size={16} strokeWidth={1.5} />
                   </div>
                   <div>
-                    <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#8edcff] mb-1">{active.region}</div>
+                    <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#7aaed4] mb-1">{active.region}</div>
                     <h3 className="navy-font-display text-2xl md:text-3xl font-black uppercase text-white leading-tight">{active.name}</h3>
                   </div>
                 </div>
 
-                <div className="navy-font-mono text-[11px] font-bold uppercase tracking-widest mb-4 text-[#8edcff]">
+                <div className="navy-font-mono text-[11px] font-bold uppercase tracking-widest mb-4 text-[#7aaed4]">
                   {active.location} · {active.role}
                 </div>
 
@@ -2948,14 +2184,14 @@ export function NavyBasesSection({
                     <motion.div
                       layoutId="navy-base-active"
                       className="absolute inset-y-0 left-0 w-[2px]"
-                      style={{ backgroundColor: "#8edcff" }}
+                      style={{ backgroundColor: "#7aaed4" }}
                       transition={{ type: "spring", stiffness: 330, damping: 35 }}
                     />
                   )}
                   <div className="pl-3">
                     <div className="flex items-center gap-2">
-                      <MapPin size={11} strokeWidth={1.5} className="text-[#8edcff]/60" />
-                      <span className="navy-font-mono text-[10px] font-semibold uppercase tracking-widest text-[#8edcff]/70">{base.region}</span>
+                      <MapPin size={11} strokeWidth={1.5} className="text-[#7aaed4]/60" />
+                      <span className="navy-font-mono text-[10px] font-semibold uppercase tracking-widest text-[#7aaed4]/70">{base.region}</span>
                     </div>
                     <div className="navy-font-display text-sm sm:text-base font-extrabold uppercase leading-snug mt-1.5" style={{ letterSpacing: "0.04em" }}>
                       {base.name}
@@ -3015,11 +2251,11 @@ export function NavyHumanitarianSection({
                 <div className="flex items-center gap-3">
                   <div
                     className="flex h-9 w-9 items-center justify-center border border-white/8 bg-black"
-                    style={{ color: "#8edcff" }}
+                    style={{ color: "#7aaed4" }}
                   >
                     <Heart size={14} strokeWidth={1.5} />
                   </div>
-                  <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#8edcff]/80">{mission.year}</span>
+                  <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#7aaed4]/80">{mission.year}</span>
                 </div>
               </div>
 
@@ -3041,7 +2277,7 @@ export function NavyHumanitarianSection({
               <div className="mt-6 h-px w-full bg-white/5">
                 <div
                   className="h-px w-10 transition-all duration-500 group-hover:w-full"
-                  style={{ backgroundColor: "#8edcff" }}
+                  style={{ backgroundColor: "#7aaed4" }}
                 />
               </div>
             </motion.div>

@@ -60,7 +60,7 @@ export function MacroStyles() {
         font-family: var(--font-macro-display);
         font-size: clamp(36px, 4vw, 80px);
         font-weight: 800;
-        line-height: 0.95;
+        line-height: 1.0;
         letter-spacing: -0.01em;
         text-transform: uppercase;
       }
@@ -79,7 +79,7 @@ export function MacroStyles() {
         font-family: var(--font-macro-display);
         font-size: clamp(40px, 6vw, 90px);
         font-weight: 900;
-        line-height: 0.9;
+        line-height: 0.95;
         letter-spacing: -0.04em;
         color: var(--macro-accent);
       }

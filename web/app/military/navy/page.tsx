@@ -5,7 +5,6 @@ import {
   NavyBasesSection,
   NavyCapabilityGrid,
   NavyClosing,
-  NavyCommandStack,
   NavyFleetComparisonSection,
   NavyFullscreenPanel,
   NavyFutureStack,
@@ -28,7 +27,6 @@ import {
   getNavySecondaryMetrics,
   getNavyCapabilities,
   getNavyPlatforms,
-  getNavyCommandLayers,
   getNavyTheaters,
   getNavyFuturePrograms,
   getNavyVisualPanels,
@@ -60,7 +58,6 @@ export default async function NavyPage() {
   const capabilities = getNavyCapabilities(locale);
   const theaters = getNavyTheaters(locale);
   const platforms = getNavyPlatforms(locale);
-  const layers = getNavyCommandLayers(locale);
   const programs = getNavyFuturePrograms(locale);
   const visualPanels = getNavyVisualPanels(locale);
   const fleetComparison = getNavyFleetComparison(locale);
@@ -127,9 +124,7 @@ export default async function NavyPage() {
       <NavyPlatformShowcase platforms={platforms} locale={locale} />
       
       <NavyWeaponsConsole locale={locale} />
-      
-      <NavyCommandStack layers={layers} locale={locale} />
-      
+
       <NavySectionDivider />
       
       <NavyHeritageTimeline events={heritageTimeline} locale={locale} />
