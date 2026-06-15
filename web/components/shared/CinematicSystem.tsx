@@ -45,7 +45,7 @@ export function MacroStyles() {
         font-family: var(--font-macro-display);
         font-size: clamp(38px, 8vw, 140px);
         font-weight: 900;
-        line-height: 0.95;
+        line-height: 1.0;
         letter-spacing: -0.02em;
         text-transform: uppercase;
         overflow-wrap: normal;
@@ -261,7 +261,7 @@ function StaggeredTitleLines({ text, className }: { text: string; className?: st
       {text.split("\n").map((line, lineIdx) => (
         <span key={lineIdx} className="block">
           {line.split(" ").map((word, wordIdx) => (
-            <span key={wordIdx} className="inline-block overflow-hidden pb-[0.08em] -mb-[0.08em] align-bottom">
+            <span key={wordIdx} className="inline-block overflow-hidden pt-[0.16em] -mt-[0.16em] pb-[0.08em] -mb-[0.08em] align-bottom">
               <motion.span variants={heroWord} className="inline-block">
                 {word}
                 {wordIdx < line.split(" ").length - 1 ? " " : ""}

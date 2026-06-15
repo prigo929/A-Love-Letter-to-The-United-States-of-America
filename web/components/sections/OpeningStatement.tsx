@@ -21,9 +21,9 @@ export function OpeningStatement() {
           emphasis: " Statele Unite ale Americii",
           quoteEnd: ".",
           paragraphs: [
-            "Acesta nu este naționalism. Aceasta nu este propagandă. Acestea sunt fapte — susținute de date de la Banca Mondială, Fundația Nobel, OECD și de la orice instituție internațională importantă ce măsoară realizările umane.",
-            "De la Grand Canyon la cipul semiconductor. De la Declarația de Independență la iPhone. De la jazz-ul din New Orleans la omul care a pășit pe Lună. Povestea Americii este cea mai mare poveste a omenirii.",
-            "Aceasta este acea poveste. Spusă în întregime. Spusă cu mândrie.",
+            "Aceste realizări sunt documentate de date provenite de la Banca Mondială, Fundația Nobel, OECD și alte organizații internaționale care evaluează progresul uman.",
+            "Această cronică urmărește contribuția americană în toată diversitatea ei: de la splendoarea Marelui Canion la inventarea cipului semiconductor, principiile Declarației de Independență, designul iPhone-ului, nașterea jazz-ului în New Orleans și aselenizarea istorică a misiunii Apollo.",
+            "Documentăm această istorie în detaliu, prezentând întreaga dimensiune a realizărilor americane.",
           ],
         }
       : {
@@ -33,9 +33,9 @@ export function OpeningStatement() {
           emphasis: " United States of America",
           quoteEnd: ".",
           paragraphs: [
-            "This is not nationalism. This is not propaganda. These are facts — backed by data from the World Bank, Nobel Foundation, OECD, and every major international institution that measures human achievement.",
-            "From the Grand Canyon to the semiconductor chip. From the Declaration of Independence to the iPhone. From jazz in New Orleans to a man walking on the Moon. America's story is humanity's greatest story.",
-            "This is that story. Told in full. Told with pride.",
+            "These achievements are documented by data from the World Bank, the Nobel Foundation, the OECD, and other international organizations tracking human progress.",
+            "This chronicle traces the trajectory of American contribution: from the natural wonder of the Grand Canyon to the invention of the semiconductor chip, the principles of the Declaration of Independence, the design of the iPhone, the birth of jazz in New Orleans, and the historic Apollo Moon landing.",
+            "We document this history in detail, sharing the full scope of American achievement.",
           ],
         };
 
