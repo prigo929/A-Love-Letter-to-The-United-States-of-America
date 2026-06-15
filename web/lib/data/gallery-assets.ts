@@ -534,6 +534,36 @@ import asset529 from "@/IMAGES/University/Yale Aerial.jpg";
 import asset530 from "@/IMAGES/University/central-campus-aerial-sunset_paul-coco.jpg";
 import asset531 from "@/IMAGES/University/zoshua-colah-Juzqxc8MwtU-unsplash.jpg";
 
+import asset532 from "@/IMAGES/Cities/Aerial High Angle Chicago Skyline At Twilight Dense Illuminated Urban Grid Aon Center Two Prudential Plaza And Glowing Arterial Streets.jpg";
+import asset533 from "@/IMAGES/Cities/Aerial High Angle Midtown Manhattan Skyline Golden Hour Dense Skyscrapers Bank Of America Tower MetLife Building And 432 Park Avenue.jpg";
+import asset534 from "@/IMAGES/Cities/Aerial Top Down NYC Midtown Dense Urban Grid Elevated Highway Interchange Lincoln Tunnel Approach And Skyscrapers.jpg";
+import asset535 from "@/IMAGES/Cities/Downtown Nashville Tennesse 2.jpg";
+import asset536 from "@/IMAGES/Cities/Mississippi River running through Minneapolis .jpg";
+import asset537 from "@/IMAGES/Constitution/A view of the north side of Independence Hall in Philadelphia, showing the main building in the center with the east and west wings on the sides.jpg";
+import asset538 from "@/IMAGES/Constitution/Bill_of_Rights_Pg1of1_AC.jpg";
+import asset539 from "@/IMAGES/Constitution/Constitution_Pg1of4_AC.jpg";
+import asset540 from "@/IMAGES/Constitution/Constitution_Pg2of4_AC.jpg";
+import asset541 from "@/IMAGES/Constitution/Constitution_Pg3of4_AC.jpg";
+import asset542 from "@/IMAGES/Constitution/Constitution_Pg4of4_AC.jpg";
+import asset543 from "@/IMAGES/Constitution/Declaration_Engrav_Pg1of1_AC.jpg";
+import asset544 from "@/IMAGES/Constitution/Declaration_Pg1of1_AC.jpg";
+import asset545 from "@/IMAGES/Constitution/United States National Archives Building, Washington D.C.jpg";
+import asset546 from "@/IMAGES/Culture/Sports/NCAA March Madness Tournament Basketball Court MSG.webp";
+import asset547 from "@/IMAGES/Economy/American paper money laid out vertically from small to large bills.jpg";
+import asset548 from "@/IMAGES/Economy/United_States_one_dollar_bill,_obverse.jpg";
+import asset549 from "@/IMAGES/Economy/United_States_one_dollar_bill,_reverse.jpg";
+import asset550 from "@/IMAGES/Infrastructure/DEB11ECC-A182-45C2-8C87BB4E5CE323F3.jpg";
+import asset551 from "@/IMAGES/Landscapes/Closeup of a curvy Arizona highway snaking its way through a canyon.jpg";
+import asset552 from "@/IMAGES/Military/Intelligence/NRO.svg";
+import asset553 from "@/IMAGES/Military/Intelligence/Seal_of_the_Central_Intelligence_Agency.svg";
+import asset554 from "@/IMAGES/Military/Intelligence/Seal_of_the_U.S._Defense_Intelligence_Agency.svg";
+import asset555 from "@/IMAGES/Military/Intelligence/Seal_of_the_U.S._National_Security_Agency.svg";
+import asset556 from "@/IMAGES/Military/Intelligence/US-NationalGeospatialIntelligenceAgency-2008Seal.svg";
+import asset557 from "@/IMAGES/Military/tactical-world-map.svg";
+import asset558 from "@/IMAGES/US Flags/Flag_of_the_United_States.svg";
+// asset559 skipped — unusual filename (accuratesvg.svg double extension)
+import asset560 from "@/IMAGES/University/Harvard-Commencement-Conan-OBrien-85.jpg";
+
 export type GalleryAssetRecord = {
   path: string;
   src: StaticImageData;
@@ -1066,4 +1096,32 @@ export const GALLERY_ASSETS = [
   { path: "University/Yale Aerial.jpg", src: asset529 },
   { path: "University/central-campus-aerial-sunset_paul-coco.jpg", src: asset530 },
   { path: "University/zoshua-colah-Juzqxc8MwtU-unsplash.jpg", src: asset531 },
+  { path: "Cities/Aerial High Angle Chicago Skyline At Twilight Dense Illuminated Urban Grid Aon Center Two Prudential Plaza And Glowing Arterial Streets.jpg", src: asset532 },
+  { path: "Cities/Aerial High Angle Midtown Manhattan Skyline Golden Hour Dense Skyscrapers Bank Of America Tower MetLife Building And 432 Park Avenue.jpg", src: asset533 },
+  { path: "Cities/Aerial Top Down NYC Midtown Dense Urban Grid Elevated Highway Interchange Lincoln Tunnel Approach And Skyscrapers.jpg", src: asset534 },
+  { path: "Cities/Downtown Nashville Tennesse 2.jpg", src: asset535 },
+  { path: "Cities/Mississippi River running through Minneapolis .jpg", src: asset536 },
+  { path: "Constitution/A view of the north side of Independence Hall in Philadelphia, showing the main building in the center with the east and west wings on the sides.jpg", src: asset537 },
+  { path: "Constitution/Bill_of_Rights_Pg1of1_AC.jpg", src: asset538 },
+  { path: "Constitution/Constitution_Pg1of4_AC.jpg", src: asset539 },
+  { path: "Constitution/Constitution_Pg2of4_AC.jpg", src: asset540 },
+  { path: "Constitution/Constitution_Pg3of4_AC.jpg", src: asset541 },
+  { path: "Constitution/Constitution_Pg4of4_AC.jpg", src: asset542 },
+  { path: "Constitution/Declaration_Engrav_Pg1of1_AC.jpg", src: asset543 },
+  { path: "Constitution/Declaration_Pg1of1_AC.jpg", src: asset544 },
+  { path: "Constitution/United States National Archives Building, Washington D.C.jpg", src: asset545 },
+  { path: "Culture/Sports/NCAA March Madness Tournament Basketball Court MSG.webp", src: asset546 },
+  { path: "Economy/American paper money laid out vertically from small to large bills.jpg", src: asset547 },
+  { path: "Economy/United_States_one_dollar_bill,_obverse.jpg", src: asset548 },
+  { path: "Economy/United_States_one_dollar_bill,_reverse.jpg", src: asset549 },
+  { path: "Infrastructure/DEB11ECC-A182-45C2-8C87BB4E5CE323F3.jpg", src: asset550 },
+  { path: "Landscapes/Closeup of a curvy Arizona highway snaking its way through a canyon.jpg", src: asset551 },
+  { path: "Military/Intelligence/NRO.svg", src: asset552 },
+  { path: "Military/Intelligence/Seal_of_the_Central_Intelligence_Agency.svg", src: asset553 },
+  { path: "Military/Intelligence/Seal_of_the_U.S._Defense_Intelligence_Agency.svg", src: asset554 },
+  { path: "Military/Intelligence/Seal_of_the_U.S._National_Security_Agency.svg", src: asset555 },
+  { path: "Military/Intelligence/US-NationalGeospatialIntelligenceAgency-2008Seal.svg", src: asset556 },
+  { path: "Military/tactical-world-map.svg", src: asset557 },
+  { path: "US Flags/Flag_of_the_United_States.svg", src: asset558 },
+  { path: "University/Harvard-Commencement-Conan-OBrien-85.jpg", src: asset560 },
 ] as const satisfies readonly GalleryAssetRecord[];
