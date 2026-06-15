@@ -3,10 +3,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import {
-  Heart,
   PlusCircle,
-  FlaskConical,
-  Award,
   ExternalLink
 } from "lucide-react";
 import { MacroStyles, MacroHero } from "@/components/shared/CinematicSystem";
@@ -222,15 +219,15 @@ export default async function MedicineAndBiotechPage() {
         <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <h2 className="macro-section-title text-white text-center text-3xl mb-12">{copy.milestonesTitle}</h2>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {copy.milestones.map((item, idx) => (
-                <div key={idx} className="rounded-3xl border border-white/10 bg-white/2 p-6 flex flex-col justify-between hover:border-[#E8B923]/40 transition-all duration-300">
+                <div key={idx} className="border-t border-white/10 pt-6 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <span className="text-xs font-mono text-[#E8B923] border border-[#E8B923]/25 px-2 py-0.5 rounded">
+                      <span className="text-xs font-mono uppercase tracking-[0.15em] text-[#E8B923]">
                         {item.date}
                       </span>
-                      <PlusCircle className="h-5 w-5 text-white/30" />
+                      <PlusCircle className="h-4 w-4 text-white/25" />
                     </div>
                     <h3 className="font-display text-xl font-bold text-white mb-3">{item.title}</h3>
                     <p className="macro-body text-xs">{item.details}</p>
@@ -243,12 +240,9 @@ export default async function MedicineAndBiotechPage() {
 
         {/* NIH Feature */}
         <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
-            <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
-              <Award className="h-40 w-40 text-[#E8B923]" />
-            </div>
-            <div className="relative z-10">
-              <span className="macro-eyebrow text-[#E8B923] mb-3 block">{copy.nihLabel}</span>
+          <div className="mx-auto max-w-3xl">
+            <div>
+              <span className="macro-eyebrow text-[#E8B923] mb-4 block">{copy.nihLabel}</span>
               <h2 className="macro-section-title text-white text-3xl mb-6">{copy.nihTitle}</h2>
               <p className="macro-body mb-6">{copy.nihParagraph1}</p>
               <p className="macro-body mb-8">{copy.nihParagraph2}</p>
@@ -265,12 +259,9 @@ export default async function MedicineAndBiotechPage() {
 
         {/* Pharma Feature */}
         <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
-            <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
-              <FlaskConical className="h-40 w-40 text-[#E8B923]" />
-            </div>
-            <div className="relative z-10">
-              <span className="macro-eyebrow text-[#E8B923] mb-3 block">{copy.pharmaLabel}</span>
+          <div className="mx-auto max-w-3xl">
+            <div>
+              <span className="macro-eyebrow text-[#E8B923] mb-4 block">{copy.pharmaLabel}</span>
               <h2 className="macro-section-title text-white text-3xl mb-6">{copy.pharmaTitle}</h2>
               <p className="macro-body mb-6">{copy.pharmaParagraph1}</p>
               <p className="macro-body mb-8">{copy.pharmaParagraph2}</p>
@@ -287,12 +278,9 @@ export default async function MedicineAndBiotechPage() {
 
         {/* Plasma Feature */}
         <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
-            <div className="absolute top-4 right-4 opacity-[0.06] pointer-events-none">
-              <Heart className="h-40 w-40 text-[#E8B923]" />
-            </div>
-            <div className="relative z-10">
-              <span className="macro-eyebrow text-[#E8B923] mb-3 block">{copy.plasmaLabel}</span>
+          <div className="mx-auto max-w-3xl">
+            <div>
+              <span className="macro-eyebrow text-[#E8B923] mb-4 block">{copy.plasmaLabel}</span>
               <h2 className="macro-section-title text-white text-3xl mb-6">{copy.plasmaTitle}</h2>
               <p className="macro-body mb-6">{copy.plasmaParagraph1}</p>
               <p className="macro-body mb-8">{copy.plasmaParagraph2}</p>

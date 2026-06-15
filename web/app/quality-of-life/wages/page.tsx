@@ -309,7 +309,7 @@ export default async function WagesPage() {
             </h3>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {copy.stats.map((stat, i) => (
-                <div key={i} className="p-6 rounded-2xl border border-white/5 bg-white/2 hover:border-[#E8B923]/20 transition-all text-center">
+                <div key={i} className="border-t border-white/10 pt-6">
                   <p className="macro-stat-value mb-2">{stat.value}</p>
                   <p className="font-display text-base font-bold text-white mb-2">{stat.label}</p>
                   <p className="text-xs text-white/50 leading-relaxed">{stat.description}</p>

@@ -130,7 +130,7 @@ export const NAVY_CAPABILITIES: NavyCapability[] = [
     description:
       "A carrier strike group is a mobile airbase, missile battery, sensor network, command node, and sovereign American presence moving through international waters.",
     stat: "70+ aircraft",
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
   {
     kicker: "Silent deterrence",
@@ -138,7 +138,7 @@ export const NAVY_CAPABILITIES: NavyCapability[] = [
     description:
       "Attack submarines hunt, map, shadow, and collect. Ballistic missile submarines remain hidden to guarantee strategic second-strike credibility.",
     stat: "24/7 patrol",
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
   {
     kicker: "Integrated fire control",
@@ -146,7 +146,7 @@ export const NAVY_CAPABILITIES: NavyCapability[] = [
     description:
       "Aegis fuses ship sensors, weapons, command software, and cooperative engagement into a fleet-wide air and missile defense architecture.",
     stat: "100+ tracks",
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
   {
     kicker: "Autonomous edge",
@@ -154,7 +154,7 @@ export const NAVY_CAPABILITIES: NavyCapability[] = [
     description:
       "Unmanned surface, air, and undersea systems extend sensing, targeting, decoy, logistics, and strike capacity across the maritime battlespace.",
     stat: "distributed",
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
 ];
 
@@ -273,7 +273,7 @@ export const NAVY_COMMAND_LAYERS: NavyCommandLayer[] = [
     description:
       "The fleet first wins by seeing. Every platform is a sensor, every sensor contributes to a larger maritime picture, and every picture compresses decision time.",
     nodes: ["ISR", "acoustic arrays", "airborne early warning", "space cueing"],
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
   {
     title: "Decision Layer",
@@ -281,7 +281,7 @@ export const NAVY_COMMAND_LAYERS: NavyCommandLayer[] = [
     description:
       "The Navy's advantage is not only steel. It is the ability to convert distributed information into coordinated action faster than an adversary can isolate one ship.",
     nodes: ["Aegis", "CEC", "joint fires", "mission command"],
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
   {
     title: "Effect Layer",
@@ -289,7 +289,7 @@ export const NAVY_COMMAND_LAYERS: NavyCommandLayer[] = [
     description:
       "A carrier strike group can defend itself, open airspace, strike inland, protect allies, and shape a crisis without needing a foreign runway.",
     nodes: ["air wing", "VLS", "undersea strike", "expeditionary force"],
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
 ];
 
@@ -304,7 +304,7 @@ export const NAVY_THEATERS: NavyTheater[] = [
     signal: "Forward presence at scale",
     imageSrc: SITE_IMAGES.navy.carrierFormation,
     imageAlt: "U.S. Navy carrier strike group operating in formation",
-    accent: "#7aaed4",
+    accent: "#7d93ab",
     metrics: [
       { label: "Fleet posture", value: "forward" },
       { label: "Primary domain", value: "sea-air" },
@@ -321,7 +321,7 @@ export const NAVY_THEATERS: NavyTheater[] = [
     signal: "Convoy logic, modernized",
     imageSrc: SITE_IMAGES.navy.geraldFord,
     imageAlt: "U.S. Navy aircraft carrier underway in open ocean",
-    accent: "#7aaed4",
+    accent: "#7d93ab",
     metrics: [
       { label: "Mission shape", value: "deterrence" },
       { label: "Tempo", value: "persistent" },
@@ -338,7 +338,7 @@ export const NAVY_THEATERS: NavyTheater[] = [
     signal: "Fast theater access",
     imageSrc: SITE_IMAGES.navy.dualCarrier,
     imageAlt: "Two U.S. Navy carrier strike groups operating together",
-    accent: "#7aaed4",
+    accent: "#7d93ab",
     metrics: [
       { label: "Response", value: "rapid" },
       { label: "Coverage", value: "dense" },
@@ -355,7 +355,7 @@ export const NAVY_THEATERS: NavyTheater[] = [
     signal: "Sortie generation",
     imageSrc: SITE_IMAGES.navy.flightDeck,
     imageAlt: "U.S. Navy carrier flight deck operations",
-    accent: "#7aaed4",
+    accent: "#7d93ab",
     metrics: [
       { label: "Cycle", value: "minutes" },
       { label: "System type", value: "human-machine" },
@@ -372,7 +372,7 @@ export const NAVY_THEATERS: NavyTheater[] = [
     signal: "Maritime choke security",
     imageSrc: SITE_IMAGES.navy.destroyer,
     imageAlt: "U.S. Navy destroyer patrolling the Arabian Gulf",
-    accent: "#7aaed4",
+    accent: "#7d93ab",
     metrics: [
       { label: "Focus", value: "Chokepoints" },
       { label: "Coalition mesh", value: "High (CMF)" },
@@ -552,7 +552,7 @@ export function getNavyCapabilities(locale: Locale): NavyCapability[] {
       description:
         "Un grup de atac de portavioane este o bază aeriană mobilă, baterie de rachete, rețea de senzori, nod de comandă și prezență americană suverană.",
       stat: "70+ aeronave",
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
     {
       kicker: "Descurajare silențioasă",
@@ -560,7 +560,7 @@ export function getNavyCapabilities(locale: Locale): NavyCapability[] {
       description:
         "Submarinele de atac vânează, cartografiază, monitorizează și colectează informații. Submarinele cu rachete balistice rămân ascunse pentru a garanta capacitatea de contraatac.",
       stat: "patrulă 24/7",
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
     {
       kicker: "Control integrat al focului",
@@ -568,7 +568,7 @@ export function getNavyCapabilities(locale: Locale): NavyCapability[] {
       description:
         "Aegis fuzionează senzorii navei, armele, software-ul de comandă și angajamentul cooperativ într-o arhitectură de apărare aeriană și antirachetă la nivelul întregii flote.",
       stat: "100+ ținte",
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
     {
       kicker: "Avantaj autonom",
@@ -576,7 +576,7 @@ export function getNavyCapabilities(locale: Locale): NavyCapability[] {
       description:
         "Sistemele autonome de suprafață, aeriene și subacvatice extind capacitatea de detectare, țintire, momeală, logistică și atac în spațiul de luptă maritim.",
       stat: "distribuit",
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
   ];
 }
@@ -701,7 +701,7 @@ export function getNavyCommandLayers(locale: Locale): NavyCommandLayer[] {
       description:
         "Flota câștigă în primul rând prin vizibilitate. Fiecare platformă este un senzor, fiecare senzor contribuie la o imagine maritimă mai largă, iar fiecare imagine comprimă timpul de decizie.",
       nodes: ["ISR", "antene acustice", "avertizare timpurie", "ghidare spațială"],
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
     {
       title: "Stratul de Decizie",
@@ -709,7 +709,7 @@ export function getNavyCommandLayers(locale: Locale): NavyCommandLayer[] {
       description:
         "Avantajul Marinei nu constă doar în oțel. Este capacitatea de a converti informațiile distribuite în acțiune coordonată mai rapid decât poate un adversar să izoleze o singură navă.",
       nodes: ["Aegis", "CEC", "focuri comune", "comandă misiune"],
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
     {
       title: "Stratul de Efect",
@@ -717,7 +717,7 @@ export function getNavyCommandLayers(locale: Locale): NavyCommandLayer[] {
       description:
         "Un grup de atac de portavioane se poate apăra singur, poate deschide spațiul aerian, poate lovi în interiorul uscatului, poate proteja aliații și poate gestiona o criză fără a avea nevoie de o pistă străină.",
       nodes: ["grup aerian", "sisteme VLS", "atac subacvatic", "forță amfibie"],
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
   ];
 }
@@ -735,7 +735,7 @@ export function getNavyTheaters(locale: Locale): NavyTheater[] {
       signal: "Prezență avansată la scară",
       imageSrc: SITE_IMAGES.navy.carrierFormation,
       imageAlt: "Grup de atac de portavioane american în formație",
-      accent: "#7aaed4",
+      accent: "#7d93ab",
       metrics: [
         { label: "Poziție flotă", value: "avansată" },
         { label: "Domeniu primar", value: "aer-mare" },
@@ -752,7 +752,7 @@ export function getNavyTheaters(locale: Locale): NavyTheater[] {
       signal: "Logica convoaielor, modernizată",
       imageSrc: SITE_IMAGES.navy.geraldFord,
       imageAlt: "Portavionul USS Gerald R. Ford în Oceanul Atlantic",
-      accent: "#7aaed4",
+      accent: "#7d93ab",
       metrics: [
         { label: "Tip misiune", value: "descurajare" },
         { label: "Ritm", value: "persistent" },
@@ -769,7 +769,7 @@ export function getNavyTheaters(locale: Locale): NavyTheater[] {
       signal: "Acces rapid în teatru",
       imageSrc: SITE_IMAGES.navy.dualCarrier,
       imageAlt: "Două grupuri de atac de portavioane operând împreună în Mediterană",
-      accent: "#7aaed4",
+      accent: "#7d93ab",
       metrics: [
         { label: "Răspuns", value: "rapid" },
         { label: "Acoperire", value: "densă" },
@@ -786,7 +786,7 @@ export function getNavyTheaters(locale: Locale): NavyTheater[] {
       signal: "Generare de sortii",
       imageSrc: SITE_IMAGES.navy.flightDeck,
       imageAlt: "Activitate intensă pe puntea de zbor a unui portavion",
-      accent: "#7aaed4",
+      accent: "#7d93ab",
       metrics: [
         { label: "Ciclu", value: "minute" },
         { label: "Tip sistem", value: "om-mașină" },
@@ -803,7 +803,7 @@ export function getNavyTheaters(locale: Locale): NavyTheater[] {
       signal: "Securitatea strâmtorilor",
       imageSrc: SITE_IMAGES.navy.destroyer,
       imageAlt: "Distrugător din clasa Arleigh Burke patrulinând Golful Arab",
-      accent: "#7aaed4",
+      accent: "#7d93ab",
       metrics: [
         { label: "Focus", value: "Strâmtori" },
         { label: "Coaliție", value: "Ridicate (CMF)" },
@@ -1245,7 +1245,7 @@ export const NAVY_SPECWAR_UNITS: NavySpecWarUnit[] = [
       { label: "Deployment", value: "Global" },
     ],
     missions: ["Direct Action", "Special Reconnaissance", "Counter-Terrorism", "Unconventional Warfare"],
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
   {
     id: "swcc",
@@ -1260,7 +1260,7 @@ export const NAVY_SPECWAR_UNITS: NavySpecWarUnit[] = [
       { label: "Mission", value: "Insertion/Extraction" },
     ],
     missions: ["Coastal Patrol", "Riverine Operations", "Personnel Recovery", "Combat Support"],
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
 ];
 
@@ -1280,7 +1280,7 @@ export function getNavySpecWarUnits(locale: Locale): NavySpecWarUnit[] {
         { label: "Desfășurare", value: "Globală" },
       ],
       missions: ["Acțiune Directă", "Recunoaștere Specială", "Contraterorism", "Război Neconvențional"],
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
     {
       id: "swcc",
@@ -1295,7 +1295,7 @@ export function getNavySpecWarUnits(locale: Locale): NavySpecWarUnit[] {
         { label: "Misiune", value: "Inserție/Extracție" },
       ],
       missions: ["Patrulare Costieră", "Operațiuni Fluviale", "Recuperare Personal", "Sprijin de Luptă"],
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
   ];
 }
@@ -1312,27 +1312,27 @@ export interface NavyAirWingSquadron {
 }
 
 export const NAVY_AIR_WING: NavyAirWingSquadron[] = [
-  { type: "Strike Fighter", aircraft: "F/A-18E/F Super Hornet", designation: "VFA", count: 44, role: "Multirole air superiority, precision strike, fleet defense", accent: "#7aaed4" },
-  { type: "Stealth Strike", aircraft: "F-35C Lightning II", designation: "VFA", count: 10, role: "5th-gen stealth penetration, sensor fusion, electronic attack", accent: "#7aaed4" },
-  { type: "Electronic Warfare", aircraft: "EA-18G Growler", designation: "VAQ", count: 5, role: "Airborne electronic attack, radar jamming, SIGINT", accent: "#7aaed4" },
-  { type: "Airborne Early Warning", aircraft: "E-2D Advanced Hawkeye", designation: "VAW", count: 4, role: "Battle management, long-range surveillance, datalink coordination", accent: "#7aaed4" },
-  { type: "Helicopter ASW", aircraft: "MH-60R Seahawk", designation: "HSM", count: 11, role: "Anti-submarine warfare, surface search, torpedo attack", accent: "#7aaed4" },
-  { type: "Helicopter Utility", aircraft: "MH-60S Knighthawk", designation: "HSC", count: 8, role: "Vertical replenishment, SAR, MEDEVAC, mine countermeasures", accent: "#7aaed4" },
-  { type: "Fleet Logistics", aircraft: "CMV-22B Osprey", designation: "VRM", count: 3, role: "Carrier onboard delivery, high-speed resupply, passenger transport", accent: "#7aaed4" },
-  { type: "Unmanned Tanker", aircraft: "MQ-25A Stingray", designation: "VUQ", count: 4, role: "Autonomous aerial refueling, ISR extension, strike range doubling", accent: "#7aaed4" },
+  { type: "Strike Fighter", aircraft: "F/A-18E/F Super Hornet", designation: "VFA", count: 44, role: "Multirole air superiority, precision strike, fleet defense", accent: "#7d93ab" },
+  { type: "Stealth Strike", aircraft: "F-35C Lightning II", designation: "VFA", count: 10, role: "5th-gen stealth penetration, sensor fusion, electronic attack", accent: "#7d93ab" },
+  { type: "Electronic Warfare", aircraft: "EA-18G Growler", designation: "VAQ", count: 5, role: "Airborne electronic attack, radar jamming, SIGINT", accent: "#7d93ab" },
+  { type: "Airborne Early Warning", aircraft: "E-2D Advanced Hawkeye", designation: "VAW", count: 4, role: "Battle management, long-range surveillance, datalink coordination", accent: "#7d93ab" },
+  { type: "Helicopter ASW", aircraft: "MH-60R Seahawk", designation: "HSM", count: 11, role: "Anti-submarine warfare, surface search, torpedo attack", accent: "#7d93ab" },
+  { type: "Helicopter Utility", aircraft: "MH-60S Knighthawk", designation: "HSC", count: 8, role: "Vertical replenishment, SAR, MEDEVAC, mine countermeasures", accent: "#7d93ab" },
+  { type: "Fleet Logistics", aircraft: "CMV-22B Osprey", designation: "VRM", count: 3, role: "Carrier onboard delivery, high-speed resupply, passenger transport", accent: "#7d93ab" },
+  { type: "Unmanned Tanker", aircraft: "MQ-25A Stingray", designation: "VUQ", count: 4, role: "Autonomous aerial refueling, ISR extension, strike range doubling", accent: "#7d93ab" },
 ];
 
 export function getNavyAirWing(locale: Locale): NavyAirWingSquadron[] {
   if (locale !== "ro") return NAVY_AIR_WING;
   return [
-    { type: "Avion de Vânătoare", aircraft: "F/A-18E/F Super Hornet", designation: "VFA", count: 44, role: "Superioritate aeriană multirol, atac de precizie, apărarea flotei", accent: "#7aaed4" },
-    { type: "Atac Stealth", aircraft: "F-35C Lightning II", designation: "VFA", count: 10, role: "Penetrare stealth gen. 5, fuziune senzori, atac electronic", accent: "#7aaed4" },
-    { type: "Război Electronic", aircraft: "EA-18G Growler", designation: "VAQ", count: 5, role: "Atac electronic aeropurtat, bruiaj radar, SIGINT", accent: "#7aaed4" },
-    { type: "Alertă Timpurie", aircraft: "E-2D Advanced Hawkeye", designation: "VAW", count: 4, role: "Gestionare luptă, supraveghere la distanță, coordonare datalink", accent: "#7aaed4" },
-    { type: "Elicopter ASW", aircraft: "MH-60R Seahawk", designation: "HSM", count: 11, role: "Luptă antisubmarin, căutare de suprafață, atac cu torpile", accent: "#7aaed4" },
-    { type: "Elicopter Utilitar", aircraft: "MH-60S Knighthawk", designation: "HSC", count: 8, role: "Reaprovizionare verticală, SAR, MEDEVAC, contramăsuri mine", accent: "#7aaed4" },
-    { type: "Logistică Flotă", aircraft: "CMV-22B Osprey", designation: "VRM", count: 3, role: "Livrare la bord, reaprovizionare rapidă, transport persoane", accent: "#7aaed4" },
-    { type: "Cisternă Autonomă", aircraft: "MQ-25A Stingray", designation: "VUQ", count: 4, role: "Realimentare autonomă, extensie ISR, dublarea razei de atac", accent: "#7aaed4" },
+    { type: "Avion de Vânătoare", aircraft: "F/A-18E/F Super Hornet", designation: "VFA", count: 44, role: "Superioritate aeriană multirol, atac de precizie, apărarea flotei", accent: "#7d93ab" },
+    { type: "Atac Stealth", aircraft: "F-35C Lightning II", designation: "VFA", count: 10, role: "Penetrare stealth gen. 5, fuziune senzori, atac electronic", accent: "#7d93ab" },
+    { type: "Război Electronic", aircraft: "EA-18G Growler", designation: "VAQ", count: 5, role: "Atac electronic aeropurtat, bruiaj radar, SIGINT", accent: "#7d93ab" },
+    { type: "Alertă Timpurie", aircraft: "E-2D Advanced Hawkeye", designation: "VAW", count: 4, role: "Gestionare luptă, supraveghere la distanță, coordonare datalink", accent: "#7d93ab" },
+    { type: "Elicopter ASW", aircraft: "MH-60R Seahawk", designation: "HSM", count: 11, role: "Luptă antisubmarin, căutare de suprafață, atac cu torpile", accent: "#7d93ab" },
+    { type: "Elicopter Utilitar", aircraft: "MH-60S Knighthawk", designation: "HSC", count: 8, role: "Reaprovizionare verticală, SAR, MEDEVAC, contramăsuri mine", accent: "#7d93ab" },
+    { type: "Logistică Flotă", aircraft: "CMV-22B Osprey", designation: "VRM", count: 3, role: "Livrare la bord, reaprovizionare rapidă, transport persoane", accent: "#7d93ab" },
+    { type: "Cisternă Autonomă", aircraft: "MQ-25A Stingray", designation: "VUQ", count: 4, role: "Realimentare autonomă, extensie ISR, dublarea razei de atac", accent: "#7d93ab" },
   ];
 }
 
@@ -1361,7 +1361,7 @@ export const NAVY_BASES: NavyBase[] = [
       { label: "Piers", value: "14" },
       { label: "Fleet", value: "2nd / Atlantic" },
     ],
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
   {
     name: "Naval Base San Diego",
@@ -1375,7 +1375,7 @@ export const NAVY_BASES: NavyBase[] = [
       { label: "Mission", value: "Pacific deterrence" },
       { label: "Fleet", value: "3rd / Pacific" },
     ],
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
   {
     name: "Joint Base Pearl Harbor–Hickam",
@@ -1389,7 +1389,7 @@ export const NAVY_BASES: NavyBase[] = [
       { label: "History", value: "Since 1899" },
       { label: "Significance", value: "Strategic anchor" },
     ],
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
   {
     name: "Fleet Activities Yokosuka",
@@ -1403,7 +1403,7 @@ export const NAVY_BASES: NavyBase[] = [
       { label: "Status", value: "Forward deployed" },
       { label: "Theater", value: "7th Fleet" },
     ],
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
   {
     name: "NSA Bahrain",
@@ -1417,7 +1417,7 @@ export const NAVY_BASES: NavyBase[] = [
       { label: "AOR", value: "2.5M sq miles" },
       { label: "Partners", value: "CMF coalition" },
     ],
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
   {
     name: "Naval Station Rota",
@@ -1431,7 +1431,7 @@ export const NAVY_BASES: NavyBase[] = [
       { label: "Alliance", value: "NATO" },
       { label: "Theater", value: "6th Fleet" },
     ],
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
 ];
 
@@ -1450,7 +1450,7 @@ export function getNavyBases(locale: Locale): NavyBase[] {
         { label: "Dane", value: "14" },
         { label: "Flotă", value: "A 2-a / Atlantic" },
       ],
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
     {
       name: "Baza Navală San Diego",
@@ -1464,7 +1464,7 @@ export function getNavyBases(locale: Locale): NavyBase[] {
         { label: "Misiune", value: "Descurajare Pacific" },
         { label: "Flotă", value: "A 3-a / Pacific" },
       ],
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
     {
       name: "Baza Comună Pearl Harbor–Hickam",
@@ -1478,7 +1478,7 @@ export function getNavyBases(locale: Locale): NavyBase[] {
         { label: "Istorie", value: "Din 1899" },
         { label: "Semnificație", value: "Ancoră strategică" },
       ],
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
     {
       name: "Facilități Flotă Yokosuka",
@@ -1492,7 +1492,7 @@ export function getNavyBases(locale: Locale): NavyBase[] {
         { label: "Status", value: "Desfășurat avansat" },
         { label: "Teatru", value: "Flota a 7-a" },
       ],
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
     {
       name: "NSA Bahrain",
@@ -1506,7 +1506,7 @@ export function getNavyBases(locale: Locale): NavyBase[] {
         { label: "Zonă", value: "6,5 mil. km²" },
         { label: "Parteneri", value: "Coaliția CMF" },
       ],
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
     {
       name: "Stația Navală Rota",
@@ -1520,7 +1520,7 @@ export function getNavyBases(locale: Locale): NavyBase[] {
         { label: "Alianță", value: "NATO" },
         { label: "Teatru", value: "Flota a 6-a" },
       ],
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
   ];
 }
@@ -1543,7 +1543,7 @@ export const NAVY_HUMANITARIAN_MISSIONS: NavyHumanitarianMission[] = [
     description: "After the Indian Ocean tsunami killed 230,000 people, the Navy deployed the USS Abraham Lincoln carrier strike group, helicopter squadrons, and Seabee construction battalions within 72 hours to deliver aid across Indonesia, Sri Lanka, and Thailand.",
     impact: "2.2M+ lbs of supplies delivered",
     asset: "Carrier Strike Group + Hospital Ships",
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
   {
     name: "USNS Mercy & Comfort Deployments",
@@ -1551,7 +1551,7 @@ export const NAVY_HUMANITARIAN_MISSIONS: NavyHumanitarianMission[] = [
     description: "The Navy operates two 1,000-bed hospital ships — USNS Mercy (Pacific) and USNS Comfort (Atlantic). They deploy for humanitarian missions, providing surgeries, dental care, and medical training across developing nations.",
     impact: "500,000+ patients treated",
     asset: "USNS Mercy (T-AH-19) · USNS Comfort (T-AH-20)",
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
   {
     name: "Pacific Partnership",
@@ -1559,7 +1559,7 @@ export const NAVY_HUMANITARIAN_MISSIONS: NavyHumanitarianMission[] = [
     description: "The largest annual multinational humanitarian mission in the Indo-Pacific. Navy ships, medical teams, engineers, and allied partners provide healthcare, infrastructure improvements, and disaster preparedness training across Pacific Island nations.",
     impact: "400,000+ people assisted",
     asset: "Multinational coalition fleet",
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
   {
     name: "Hurricane Relief Operations",
@@ -1567,7 +1567,7 @@ export const NAVY_HUMANITARIAN_MISSIONS: NavyHumanitarianMission[] = [
     description: "After Hurricanes Irma and Maria devastated Puerto Rico and the U.S. Virgin Islands, the Navy deployed the USS Kearsarge amphibious group, USNS Comfort, and Seabee battalions to restore power, deliver water, and rebuild infrastructure.",
     impact: "4.3M meals + 4.8M liters water",
     asset: "Amphibious Ready Group + USNS Comfort",
-    accent: "#7aaed4",
+    accent: "#7d93ab",
   },
 ];
 
@@ -1580,7 +1580,7 @@ export function getNavyHumanitarianMissions(locale: Locale): NavyHumanitarianMis
       description: "După ce tsunamiul din Oceanul Indian a ucis 230.000 de oameni, Marina a desfășurat grupul de atac al USS Abraham Lincoln, escadrile de elicoptere și batalionele Seabee în 72 de ore pentru a livra ajutoare în Indonezia, Sri Lanka și Thailanda.",
       impact: "Peste 1.000 tone de provizii livrate",
       asset: "Grup de Atac Portavion + Nave Spital",
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
     {
       name: "Desfășurările USNS Mercy și Comfort",
@@ -1588,7 +1588,7 @@ export function getNavyHumanitarianMissions(locale: Locale): NavyHumanitarianMis
       description: "Marina operează două nave spital cu 1.000 de paturi — USNS Mercy (Pacific) și USNS Comfort (Atlantic). Se desfășoară în misiuni umanitare, oferind intervenții chirurgicale, asistență dentară și instruire medicală.",
       impact: "Peste 500.000 pacienți tratați",
       asset: "USNS Mercy (T-AH-19) · USNS Comfort (T-AH-20)",
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
     {
       name: "Parteneriatul Pacific",
@@ -1596,7 +1596,7 @@ export function getNavyHumanitarianMissions(locale: Locale): NavyHumanitarianMis
       description: "Cea mai mare misiune umanitară multinațională anuală din Indo-Pacific. Nave, echipe medicale, ingineri și parteneri aliați oferă asistență medicală, îmbunătățiri de infrastructură și instruire pentru pregătirea dezastrelor.",
       impact: "Peste 400.000 persoane asistate",
       asset: "Coaliție navală multinațională",
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
     {
       name: "Operațiuni de Ajutor în Uragan",
@@ -1604,7 +1604,7 @@ export function getNavyHumanitarianMissions(locale: Locale): NavyHumanitarianMis
       description: "După ce Uraganele Irma și Maria au devastat Puerto Rico și Insulele Virgine, Marina a desfășurat grupul amfibiu USS Kearsarge, USNS Comfort și batalionele Seabee pentru a restaura energia, livra apă și reconstrui infrastructura.",
       impact: "4,3 mil. mese + 4,8 mil. litri apă",
       asset: "Grup Amfibiu + USNS Comfort",
-      accent: "#7aaed4",
+      accent: "#7d93ab",
     },
   ];
 }

@@ -154,15 +154,11 @@ export default async function InventionsPre1890Page() {
             <h2 className="macro-section-title text-white text-center text-3xl mb-16">{copy.featuredTitle}</h2>
             <div className="grid gap-8 md:grid-cols-2">
               {featuredInventions.map((item, idx) => {
-                const Icon = item.icon;
                 return (
-                  <div key={idx} className="group rounded-3xl border border-white/10 bg-white/2 p-8 relative overflow-hidden hover:border-[#E8B923]/30 transition-all duration-300 flex flex-col justify-between">
-                    <div className="absolute top-4 right-4 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity pointer-events-none">
-                      <Icon className="h-32 w-32 text-[#E8B923]" />
-                    </div>
+                  <div key={idx} className="group border-t border-white/10 pt-8 flex flex-col justify-between transition-colors duration-300 hover:border-[#E8B923]/40">
                     <div>
                       <div className="flex items-center gap-3 mb-4">
-                        <span className="font-mono text-sm font-bold text-[#E8B923] bg-[#E8B923]/10 px-3 py-1 rounded-full border border-[#E8B923]/25">
+                        <span className="font-mono text-sm font-bold text-[#E8B923]">
                           {item.year}
                         </span>
                         <span className="text-xs text-white/40 font-mono">{item.inventor}</span>

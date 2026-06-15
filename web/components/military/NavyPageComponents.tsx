@@ -59,7 +59,7 @@ export function NavyStyles() {
         --navy-elevated: #12151b;
         --navy-panel: rgba(8, 10, 14, 0.82);
         --navy-border: rgba(255, 255, 255, 0.06);
-        --navy-blue: #7aaed4;
+        --navy-blue: #7d93ab;
         background: var(--navy-black);
         color: white;
       }
@@ -109,7 +109,7 @@ export function NavyStyles() {
 
       .navy-depth-ring {
         background:
-          radial-gradient(circle at 50% 50%, transparent 0 38%, rgba(0, 132, 255, 0.12) 39%, transparent 40%),
+          radial-gradient(circle at 50% 50%, transparent 0 38%, rgba(120,132,150,0.12) 39%, transparent 40%),
           radial-gradient(circle at 50% 50%, transparent 0 58%, rgba(255, 255, 255, 0.08) 59%, transparent 60%);
       }
 
@@ -136,7 +136,7 @@ export function NavyStyles() {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(105deg, transparent 36%, rgba(142, 220, 255, 0.1), transparent 64%);
+        background: linear-gradient(105deg, transparent 36%, rgba(150,160,175,0.1), transparent 64%);
         animation: navy-sheen 8s ease-in-out infinite;
       }
     `}</style>
@@ -151,7 +151,7 @@ export function NavySectionDivider() {
         whileInView={{ scaleX: 1, opacity: 1 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-        className="h-px w-full max-w-[480px] origin-center bg-gradient-to-r from-transparent via-[#7aaed4]/20 to-transparent"
+        className="h-px w-full max-w-[480px] origin-center bg-gradient-to-r from-transparent via-[#7d93ab]/20 to-transparent"
       />
     </div>
   );
@@ -236,8 +236,8 @@ export function NavyHero({
       <div className="absolute inset-x-0 bottom-0 h-56 bg-[linear-gradient(180deg,transparent,#000000)]" />
       
       {/* Strong Navy Sonar Glow Overlays */}
-      <div className="navy-drift absolute -left-20 top-20 h-[42rem] w-[42rem] rounded-full bg-[radial-gradient(circle,rgba(0,42,102,0.22),transparent_62%)] blur-3xl" />
-      <div className="navy-drift absolute -right-24 bottom-10 h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,rgba(0,26,51,0.15),transparent_64%)] blur-3xl" />
+      <div className="navy-drift absolute -left-20 top-20 h-[42rem] w-[42rem] rounded-full bg-[radial-gradient(circle,rgba(96,108,126,0.22),transparent_62%)] blur-3xl" />
+      <div className="navy-drift absolute -right-24 bottom-10 h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,rgba(74,82,94,0.15),transparent_64%)] blur-3xl" />
       
       <div className="navy-grid-plane absolute inset-0 opacity-40" />
       <div className="navy-noise absolute inset-0" />
@@ -384,7 +384,7 @@ export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabiliti
 
   return (
     <section className="relative overflow-hidden bg-black px-6 py-28 sm:px-10 md:py-36 lg:px-16 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(0,42,102,0.15),transparent_45%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(96,108,126,0.15),transparent_45%)] pointer-events-none" />
       <div className="absolute inset-0 navy-grid-plane opacity-20 pointer-events-none" />
       <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
       <div className="relative mx-auto max-w-[1400px]">
@@ -430,21 +430,21 @@ export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabiliti
                   </div>
                 )}
 
-                <div className="absolute top-0 right-0 h-40 w-40 rounded-full bg-[#7aaed4] blur-[80px] pointer-events-none transition-opacity duration-1000 opacity-0 group-hover:opacity-[0.06]" />
+                <div className="absolute top-0 right-0 h-40 w-40 rounded-full bg-[#7d93ab] blur-[80px] pointer-events-none transition-opacity duration-1000 opacity-0 group-hover:opacity-[0.06]" />
 
                 {/* Header: Icon + Stat */}
                 <div className="flex items-center justify-between mb-6 lg:mb-0 shrink-0">
-                  <div className="flex h-11 w-11 items-center justify-center border border-white/8 bg-black text-[#7aaed4] transition-colors duration-500 group-hover:border-[#7aaed4]/25">
+                  <div className="flex h-11 w-11 items-center justify-center border border-white/8 bg-black text-[#7d93ab] transition-colors duration-500 group-hover:border-[#7d93ab]/25">
                     <Icon size={18} strokeWidth={1.5} />
                   </div>
-                  <span className="navy-font-mono text-[11px] font-bold tracking-[0.12em] text-[#7aaed4]/70 transition-colors duration-500 group-hover:text-[#7aaed4]/90">
+                  <span className="navy-font-mono text-[11px] font-bold tracking-[0.12em] text-[#7d93ab]/70 transition-colors duration-500 group-hover:text-[#7d93ab]/90">
                     {cap.stat}
                   </span>
                 </div>
 
                 {/* Middle Content */}
                 <div className="flex-1 flex flex-col justify-center my-4 lg:my-0">
-                  <span className="navy-font-mono text-[11px] font-bold tracking-[0.15em] text-[#7aaed4]/70 transition-colors duration-500 group-hover:text-[#7aaed4]/90 mb-2 block">
+                  <span className="navy-font-mono text-[11px] font-bold tracking-[0.15em] text-[#7d93ab]/70 transition-colors duration-500 group-hover:text-[#7d93ab]/90 mb-2 block">
                     {cap.kicker}
                   </span>
                   <h3 className={cn(
@@ -469,7 +469,7 @@ export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabiliti
                 {/* Footer Line indicator */}
                 <div className="shrink-0 mt-2 lg:mt-0">
                   <div className="h-px w-full bg-white/5">
-                    <div className="h-px w-12 bg-[#7aaed4] transition-all duration-500 group-hover:w-full" />
+                    <div className="h-px w-12 bg-[#7d93ab] transition-all duration-500 group-hover:w-full" />
                   </div>
                 </div>
               </motion.div>
@@ -491,7 +491,7 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
 
   return (
     <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(0,42,102,0.18),transparent_32%),radial-gradient(circle_at_82%_72%,rgba(0,26,51,0.15),transparent_34%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(96,108,126,0.18),transparent_32%),radial-gradient(circle_at_82%_72%,rgba(74,82,94,0.15),transparent_34%)]" />
       <div className="absolute inset-0 navy-grid-plane opacity-20 pointer-events-none" />
       <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
 
@@ -524,17 +524,17 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
                     <motion.div
                       layoutId="navy-theater-active"
                       className="absolute inset-0 border border-white/10"
-                      style={{ boxShadow: 'inset 0 0 12px rgba(0, 132, 255, 0.08)' }}
+                      style={{ boxShadow: 'inset 0 0 12px rgba(120,132,150,0.08)' }}
                       transition={{ type: "spring", stiffness: 320, damping: 34 }}
                     />
                   )}
                   <div className="relative z-10">
-                    <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#7aaed4]/70">{theater.region}</div>
+                    <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#7d93ab]/70">{theater.region}</div>
                     <div className="navy-font-display mt-3 text-2xl font-black uppercase leading-none">{theater.name}</div>
                     <div className="mt-5 h-px w-full bg-white/5">
                       <div
                         className={cn("h-px transition-all duration-500", selected ? "w-full" : "w-10 group-hover:w-1/2")}
-                        style={{ backgroundColor: "#7aaed4" }}
+                        style={{ backgroundColor: "#7d93ab" }}
                       />
                     </div>
                   </div>
@@ -580,7 +580,7 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
                   transition={{ duration: 0.45 }}
                   className="max-w-2xl"
                 >
-                  <div className="navy-font-mono text-[11px] font-bold uppercase text-[#7aaed4] tracking-[0.15em]">{active.signal}</div>
+                  <div className="navy-font-mono text-[11px] font-bold uppercase text-[#7d93ab] tracking-[0.15em]">{active.signal}</div>
                   <h3 className="navy-font-display mt-4 text-4xl font-black uppercase leading-none md:text-6xl text-white">
                     {active.headline}
                   </h3>
@@ -605,8 +605,8 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
                     {locale === "ro" ? "Profilul teatrului" : "Theater profile"}
                   </span>
                   <div className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#7aaed4] opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#7aaed4]" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#7d93ab] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#7d93ab]" />
                   </div>
                 </div>
                 <h3 className="navy-font-display text-xl font-black text-white mb-4 leading-[0.92]">{active.name}</h3>
@@ -666,7 +666,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
   return (
     <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
       <div className="absolute inset-0 bg-[linear-gradient(180deg,#000000,transparent_20%,transparent_80%,#000000)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(0,42,102,0.15),transparent_55%)] animate-pulse" style={{ animationDuration: '6s' }} />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(96,108,126,0.15),transparent_55%)] animate-pulse" style={{ animationDuration: '6s' }} />
       <div className="absolute inset-0 navy-grid-plane opacity-15 pointer-events-none" />
       <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
       <div className="mx-auto max-w-[1520px]">
@@ -731,7 +731,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#7aaed4]">{active.className}</div>
+                  <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#7d93ab]">{active.className}</div>
                   <h3 className="navy-font-display mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-tight text-white" style={{ wordSpacing: "0.22em", letterSpacing: "0.05em" }}>
                     {active.role}
                   </h3>
@@ -767,7 +767,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                     {selected && (
                       <motion.div
                         layoutId="navy-platform-active"
-                        className="absolute inset-y-0 left-0 w-[2px] bg-[#7aaed4]"
+                        className="absolute inset-y-0 left-0 w-[2px] bg-[#7d93ab]"
                         transition={{ type: "spring", stiffness: 330, damping: 35 }}
                       />
                     )}
@@ -775,7 +775,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                       <div className="navy-font-display text-lg sm:text-xl font-extrabold uppercase leading-snug" style={{ wordSpacing: "0.22em", letterSpacing: "0.05em" }}>
                         {platform.name}
                       </div>
-                      <div className="mt-2 text-[11px] font-bold uppercase tracking-wider text-[#7aaed4]/70">
+                      <div className="mt-2 text-[11px] font-bold uppercase tracking-wider text-[#7d93ab]/70">
                         {platform.className}
                       </div>
                     </div>
@@ -805,7 +805,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
               <div className="mt-6 h-px bg-white/5">
                 <motion.div
                   key={activeIndex}
-                  className="h-px bg-[linear-gradient(90deg,rgba(255,255,255,0.08),#7aaed4,#ffffff)]"
+                  className="h-px bg-[linear-gradient(90deg,rgba(255,255,255,0.08),#7d93ab,#ffffff)]"
                   initial={{ width: "0%" }}
                   animate={{ width: `${((activeIndex + 1) / platforms.length) * 100}%` }}
                   transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
@@ -853,7 +853,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                 <Image src={active.imageSrc} alt={active.imageAlt} fill className="object-cover" priority sizes="100vw" />
                 <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute bottom-8 left-6 md:left-10">
-                  <p className="navy-font-mono text-[11px] font-bold mb-3 tracking-[0.15em] text-[#7aaed4] uppercase">{active.className}</p>
+                  <p className="navy-font-mono text-[11px] font-bold mb-3 tracking-[0.15em] text-[#7d93ab] uppercase">{active.className}</p>
                   <h3 className="navy-font-display text-2xl sm:text-4xl md:text-5xl font-black uppercase text-white leading-snug" style={{ wordSpacing: "0.22em", letterSpacing: "0.05em" }}>
                     {active.name}
                   </h3>
@@ -870,8 +870,8 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                     <p className="text-[13px] leading-relaxed text-white/65 mb-8">{active.capability}</p>
                     
                     {/* Dark Navy visual signature band */}
-                    <div className="pl-5 border-l-2 border-[#7aaed4]/25 bg-white/[0.025] py-4 pr-4">
-                      <div className="navy-font-mono text-[11px] font-bold mb-2 tracking-[0.15em] text-[#7aaed4]">
+                    <div className="pl-5 border-l-2 border-[#7d93ab]/25 bg-white/[0.025] py-4 pr-4">
+                      <div className="navy-font-mono text-[11px] font-bold mb-2 tracking-[0.15em] text-[#7d93ab]">
                         {locale === "ro" ? "SIGNATURĂ STRATEGICĂ" : "STRATEGIC SIGNATURE"}
                       </div>
                       <p className="text-[13px] leading-relaxed text-white/65 font-medium">
@@ -901,11 +901,11 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
                     <div className="mt-8 grid grid-cols-2 gap-3">
                       <div className="bg-[#000a14] border border-white/5 p-4">
                         <div className="navy-font-mono text-[10px] font-semibold text-white/45 tracking-wider">DOMAIN</div>
-                        <div className="text-xs font-bold text-[#7aaed4] mt-1">{locale === "ro" ? "DOMINANȚĂ GLOBALĂ" : "GLOBAL DOMAIN"}</div>
+                        <div className="text-xs font-bold text-[#7d93ab] mt-1">{locale === "ro" ? "DOMINANȚĂ GLOBALĂ" : "GLOBAL DOMAIN"}</div>
                       </div>
                       <div className="bg-[#000a14] border border-white/5 p-4">
                         <div className="navy-font-mono text-[10px] font-semibold text-white/45 tracking-wider">STATUS</div>
-                        <div className="text-xs font-bold text-[#7aaed4] mt-1">{locale === "ro" ? "ACTIV / OPERAȚIONAL" : "DEPLOYED / ACT"}</div>
+                        <div className="text-xs font-bold text-[#7d93ab] mt-1">{locale === "ro" ? "ACTIV / OPERAȚIONAL" : "DEPLOYED / ACT"}</div>
                       </div>
                     </div>
                   </div>
@@ -1003,7 +1003,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
 
   return (
     <section className="relative overflow-hidden bg-[#020202] px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-t border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(0,42,102,0.12),transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(96,108,126,0.12),transparent_50%)] pointer-events-none" />
       <div className="absolute inset-0 navy-grid-plane opacity-15 pointer-events-none" />
       <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
       <div className="mx-auto max-w-[1520px]">
@@ -1028,7 +1028,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
             >
               <div>
                 <div className="mb-6 flex flex-col items-start gap-3">
-                  <span className="border border-[#7aaed4]/15 bg-white/[0.03] px-2.5 py-1 text-[11px] font-bold uppercase tracking-widest text-[#7aaed4]">
+                  <span className="border border-[#7d93ab]/15 bg-white/[0.03] px-2.5 py-1 text-[11px] font-bold uppercase tracking-widest text-[#7d93ab]">
                     {program.status}
                   </span>
                   <span className="navy-font-display text-3xl sm:text-4xl font-black text-white/10 block leading-none transition-colors group-hover:text-white/20" title={program.label}>
@@ -1041,7 +1041,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
                 <p className="mt-4 text-[13px] leading-relaxed text-white/60 group-hover:text-white/75 transition-colors font-medium">{program.description}</p>
               </div>
               <div className="mt-8 flex items-center justify-between">
-                <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#7aaed4]/80 group-hover:text-[#7aaed4] transition-colors">
+                <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#7d93ab]/80 group-hover:text-[#7d93ab] transition-colors">
                   {locale === "ro" ? "DOSAR TEHNIC →" : "PROGRAM DOSSIER →"}
                 </span>
               </div>
@@ -1071,7 +1071,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
             >
               {/* Overlay sticky header */}
               <div className="sticky top-0 z-50 flex justify-between items-center px-6 md:px-10 py-5 bg-[#000308]/95 backdrop-blur-md border-b border-white/5">
-                <span className="navy-font-mono text-[11px] font-bold tracking-[0.2em] text-[#7aaed4] uppercase">
+                <span className="navy-font-mono text-[11px] font-bold tracking-[0.2em] text-[#7d93ab] uppercase">
                   {locale === "ro" ? "VIITORUL GEOMETRIEI FLOTEI" : "FLEET CAPITAL PROGRAM"}
                 </span>
                 <button
@@ -1087,7 +1087,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
                 <Image src={activeProgram.imageSrc} alt={activeProgram.imageAlt} fill className="object-cover grayscale-[0.2]" priority sizes="100vw" />
                 <div className="absolute inset-0 bg-linear-to-t from-black via-black/45 to-transparent" />
                 <div className="absolute bottom-8 left-6 md:left-10">
-                  <p className="navy-font-mono text-[11px] font-bold mb-3 tracking-[0.15em] text-[#7aaed4] uppercase">{activeProgram.status}</p>
+                  <p className="navy-font-mono text-[11px] font-bold mb-3 tracking-[0.15em] text-[#7d93ab] uppercase">{activeProgram.status}</p>
                   <h3 className="navy-font-display text-3xl md:text-5xl font-black tracking-tighter uppercase text-white leading-none">
                     {activeProgram.title}
                   </h3>
@@ -1104,8 +1104,8 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
                     <p className="text-[13px] leading-relaxed text-white/65 mb-8">{activeProgram.capability}</p>
                     
                     {/* Visual signature band */}
-                    <div className="pl-5 border-l-2 border-[#7aaed4]/25 bg-white/[0.025] py-4 pr-4">
-                      <div className="navy-font-mono text-[11px] font-bold mb-2 tracking-[0.15em] text-[#7aaed4]">
+                    <div className="pl-5 border-l-2 border-[#7d93ab]/25 bg-white/[0.025] py-4 pr-4">
+                      <div className="navy-font-mono text-[11px] font-bold mb-2 tracking-[0.15em] text-[#7d93ab]">
                         {locale === "ro" ? "PROIECTARE TACTICĂ" : "TACTICAL PROJECTION"}
                       </div>
                       <p className="text-[13px] leading-relaxed text-white/65 font-medium">
@@ -1136,7 +1136,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
 
                     <div className="border-t border-white/5 pt-6">
                       <div className="navy-font-mono text-[11px] font-bold mb-2 tracking-[0.15em] text-white/45">
-                        STATUS: <span className="text-[#7aaed4] font-bold">{activeProgram.status.toUpperCase()}</span>
+                        STATUS: <span className="text-[#7d93ab] font-bold">{activeProgram.status.toUpperCase()}</span>
                       </div>
                       <p className="text-[13px] leading-relaxed text-white/65 font-medium">
                         {locale === "ro"
@@ -1184,12 +1184,12 @@ export function NavyClosing({ locale = "en" }: { locale?: Locale }) {
 
   return (
     <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-t border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,42,102,0.18),transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(96,108,126,0.18),transparent_70%)] pointer-events-none" />
       <div className="absolute inset-0 navy-grid-plane opacity-25 pointer-events-none" />
       <div className="navy-noise absolute inset-0 opacity-35 pointer-events-none" />
       
       <div className="relative mx-auto max-w-[1160px] text-center">
-        <Anchor className="mx-auto mb-8 text-[#7aaed4]/50 animate-pulse" size={32} strokeWidth={1.2} />
+        <Anchor className="mx-auto mb-8 text-[#7d93ab]/50 animate-pulse" size={32} strokeWidth={1.2} />
         <h2 className="navy-font-display text-4xl font-black uppercase leading-[0.95] md:text-7xl text-white">
           {locale === "ro" ? "Putere militară fără o adresă fixă." : "American power with no fixed address."}
         </h2>
@@ -1220,7 +1220,7 @@ export function NavyClosing({ locale = "en" }: { locale?: Locale }) {
               <Link
                 key={b.href}
                 href={b.href}
-                className="font-mono text-xs uppercase tracking-[0.15em] text-white/50 transition-colors hover:text-[#7aaed4]"
+                className="font-mono text-xs uppercase tracking-[0.15em] text-white/50 transition-colors hover:text-[#7d93ab]"
               >
                 {b.label}
               </Link>
@@ -1278,15 +1278,15 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                 {idx === activeTab && (
                   <motion.div
                     layoutId="active-weapon-indicator"
-                    className="absolute bottom-0 left-0 h-[2px] w-full bg-[#7aaed4]"
+                    className="absolute bottom-0 left-0 h-[2px] w-full bg-[#7d93ab]"
                     transition={{ type: "spring", stiffness: 350, damping: 30 }}
                   />
                 )}
                 {/* Micro tech borders inside tabs */}
-                <div className="absolute top-0 right-0 h-1.5 w-1.5 border-t border-r border-white/10 group-hover:border-[#7aaed4]/50" />
+                <div className="absolute top-0 right-0 h-1.5 w-1.5 border-t border-r border-white/10 group-hover:border-[#7d93ab]/50" />
                 
                 <div className="flex flex-col space-y-1 relative z-10">
-                  <span className="text-[11px] tracking-[0.2em] font-black uppercase text-white group-hover:text-[#7aaed4] transition-colors duration-200">
+                  <span className="text-[11px] tracking-[0.2em] font-black uppercase text-white group-hover:text-[#7d93ab] transition-colors duration-200">
                     {w.name.split(" ")[0]}
                   </span>
                   <span className="text-[10px] tracking-wider font-semibold text-white/45 group-hover:text-white/70 transition-colors duration-200">
@@ -1305,13 +1305,13 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
               
               <div className="space-y-5 relative">
                 {/* Cyber corner brackets accent */}
-                <div className="absolute -top-4 -left-4 h-6 w-6 border-t-2 border-l-2 border-[#7aaed4]/20 pointer-events-none" />
+                <div className="absolute -top-4 -left-4 h-6 w-6 border-t-2 border-l-2 border-[#7d93ab]/20 pointer-events-none" />
                 
                 <h3 className="navy-font-display text-2xl sm:text-4.5xl font-black text-white leading-snug uppercase pt-1" style={{ wordSpacing: "0.25em", letterSpacing: "0.06em" }}>
                   {weapon.name}
                 </h3>
                 
-                <div className="inline-block border border-[#7aaed4]/10 rounded bg-[#0a0c10]/40 px-3 py-1 text-[11px] tracking-widest text-[#7aaed4] font-bold font-mono">
+                <div className="inline-block border border-[#7d93ab]/10 rounded bg-[#0a0c10]/40 px-3 py-1 text-[11px] tracking-widest text-[#7d93ab] font-bold font-mono">
                   {locale === "ro" ? "DESEMNARE SISTEM" : "SYSTEM DESIGNATION"}: {weapon.designation}
                 </div>
                 
@@ -1325,9 +1325,9 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                 {weapon.specs.map((s) => (
                   <div
                     key={s.label}
-                    className="relative overflow-hidden navy-panel-tactical p-4 border border-white/5 rounded bg-black/40 flex flex-col space-y-1 group hover:border-[#7aaed4]/20 transition-all duration-300"
+                    className="relative overflow-hidden navy-panel-tactical p-4 border border-white/5 rounded bg-black/40 flex flex-col space-y-1 group hover:border-[#7d93ab]/20 transition-all duration-300"
                   >
-                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#7aaed4]/10 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#7d93ab]/10 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                     <span className="navy-font-mono text-[11px] font-semibold tracking-wider text-white/45 uppercase">
                       {s.label}
                     </span>
@@ -1346,14 +1346,14 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                   <div className="space-y-2">
                     <div className="flex justify-between text-[11px] font-bold tracking-widest text-white/70">
                       <span>{locale === "ro" ? "ACURATEȚE SISTEM" : "SYSTEM ACCURACY"}</span>
-                      <span className="text-[#7aaed4] font-bold">{weapon.accuracy}%</span>
+                      <span className="text-[#7d93ab] font-bold">{weapon.accuracy}%</span>
                     </div>
                     <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden relative">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${weapon.accuracy}%` }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="h-full bg-[#7aaed4] rounded-full"
+                        className="h-full bg-[#7d93ab] rounded-full"
                       />
                     </div>
                   </div>
@@ -1363,7 +1363,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                     <div className="navy-font-mono text-[11px] font-bold tracking-widest text-white/45 uppercase">
                       {locale === "ro" ? "STATUS TELEMETRIE" : "TELEMETRY STATUS"}
                     </div>
-                    <div className="text-xs font-mono tracking-wider text-[#7aaed4] font-bold uppercase mt-1">
+                    <div className="text-xs font-mono tracking-wider text-[#7d93ab] font-bold uppercase mt-1">
                       {weapon.operations}
                     </div>
                   </div>
@@ -1373,7 +1373,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
 
               {/* Tactical Deployment Profile Block */}
               <div className="border border-white/10 rounded bg-[#0a0c10]/60 p-5 font-mono text-[11px] leading-relaxed text-white/70 space-y-2">
-                <div className="text-[#7aaed4] text-[11px] uppercase tracking-widest font-black border-b border-white/10 pb-1.5 mb-2">
+                <div className="text-[#7d93ab] text-[11px] uppercase tracking-widest font-black border-b border-white/10 pb-1.5 mb-2">
                   {locale === "ro" ? "PROFIL DE DESFĂȘURARE TACTICĂ" : "TACTICAL DEPLOYMENT PROFILE"}
                 </div>
                 <div className="flex justify-between border-b border-white/5 pb-1">
@@ -1382,7 +1382,7 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                 </div>
                 <div className="flex justify-between border-b border-white/5 pb-1">
                   <span className="text-white/40">{locale === "ro" ? "STATUS DESFĂȘURARE:" : "DEPLOYMENT STATUS:"}</span>
-                  <span className="text-[#7aaed4] font-semibold">{locale === "ro" ? "PREGĂTIRE OPERAȚIONALĂ OK" : "OPERATIONAL Readiness OK"}</span>
+                  <span className="text-[#7d93ab] font-semibold">{locale === "ro" ? "PREGĂTIRE OPERAȚIONALĂ OK" : "OPERATIONAL Readiness OK"}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-white/40">{locale === "ro" ? "POTRIVIRE SISTEM ȚINTĂ:" : "TARGET SYSTEM MATCH:"}</span>
@@ -1448,7 +1448,7 @@ function SectionTitle({
       <motion.div
         variants={fadeUp}
         transition={{ duration: 0.6 }}
-        className="navy-font-mono mb-5 tracking-[0.25em] text-[11px] font-bold text-[#7aaed4]"
+        className="navy-font-mono mb-5 tracking-[0.25em] text-[11px] font-bold text-[#7d93ab]"
       >
         {label}
       </motion.div>
@@ -1603,7 +1603,7 @@ export function NavyFleetComparisonSection({
 
   return (
     <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_-10%,rgba(0,42,102,0.12),transparent_45%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_-10%,rgba(96,108,126,0.12),transparent_45%)] pointer-events-none" />
       <div className="absolute inset-0 navy-grid-plane opacity-15 pointer-events-none" />
       <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
 
@@ -1720,7 +1720,7 @@ export function NavyHeritageTimeline({
 
   return (
     <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(0,42,102,0.10),transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(96,108,126,0.10),transparent_50%)] pointer-events-none" />
       <div className="absolute inset-0 navy-grid-plane opacity-10 pointer-events-none" />
       <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
 
@@ -1775,7 +1775,7 @@ export function NavyHeritageTimeline({
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         </div>
-                        <div className="navy-font-mono text-[11px] font-bold tracking-widest text-[#7aaed4] mb-2.5">{event.significance}</div>
+                        <div className="navy-font-mono text-[11px] font-bold tracking-widest text-[#7d93ab] mb-2.5">{event.significance}</div>
                         <h4 className="navy-font-display text-lg font-black uppercase text-white leading-tight mb-3">{event.title}</h4>
                         <p className="text-[13px] sm:text-[14px] leading-relaxed text-white/65 font-medium">{event.description}</p>
                       </div>
@@ -1808,7 +1808,7 @@ export function NavyHeritageTimeline({
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                       </div>
-                      <div className="navy-font-mono text-[11px] font-bold tracking-widest text-[#7aaed4] mb-2.5">{event.significance}</div>
+                      <div className="navy-font-mono text-[11px] font-bold tracking-widest text-[#7d93ab] mb-2.5">{event.significance}</div>
                       <h4 className="navy-font-display text-lg font-black uppercase text-white leading-tight mb-3">{event.title}</h4>
                       <p className="text-[13px] sm:text-[14px] leading-relaxed text-white/65 font-medium">{event.description}</p>
                     </div>
@@ -1827,7 +1827,7 @@ export function NavyHeritageTimeline({
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         </div>
-                        <div className="navy-font-mono text-[11px] font-bold tracking-widest text-[#7aaed4] mb-2.5">{event.significance}</div>
+                        <div className="navy-font-mono text-[11px] font-bold tracking-widest text-[#7d93ab] mb-2.5">{event.significance}</div>
                         <h4 className="navy-font-display text-lg font-black uppercase text-white leading-tight mb-3">{event.title}</h4>
                         <p className="text-[13px] sm:text-[14px] leading-relaxed text-white/65 font-medium">{event.description}</p>
                       </div>
@@ -1860,7 +1860,7 @@ export function NavySpecWarSection({
 
   return (
     <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(0,42,102,0.12),transparent_40%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(96,108,126,0.12),transparent_40%)] pointer-events-none" />
       <div className="absolute inset-0 navy-grid-plane opacity-15 pointer-events-none" />
       <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
 
@@ -1898,12 +1898,12 @@ export function NavySpecWarSection({
                   {selected && (
                     <motion.div
                       layoutId="navy-specwar-active"
-                      className="absolute inset-y-0 left-0 w-[2px] bg-[#7aaed4] hidden lg:block"
+                      className="absolute inset-y-0 left-0 w-[2px] bg-[#7d93ab] hidden lg:block"
                       transition={{ type: "spring", stiffness: 330, damping: 35 }}
                     />
                     )}
                   <div className="relative z-10">
-                    <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] mb-2 text-[#7aaed4]">{unit.role}</div>
+                    <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] mb-2 text-[#7d93ab]">{unit.role}</div>
                     <div className="navy-font-display text-xl lg:text-2xl font-black uppercase leading-tight">{unit.name}</div>
                     <div className="hidden lg:block mt-2 text-[11px] text-white/55 font-medium">{unit.fullName}</div>
                   </div>
@@ -1925,7 +1925,7 @@ export function NavySpecWarSection({
               >
                 {/* Header */}
                 <div>
-                  <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] mb-3 text-[#7aaed4]">{active.fullName}</div>
+                  <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] mb-3 text-[#7d93ab]">{active.fullName}</div>
                   <h3 className="navy-font-display text-3xl md:text-4xl font-black uppercase text-white leading-tight">{active.name}</h3>
                 </div>
 
@@ -1975,7 +1975,7 @@ export function NavySpecWarSection({
                         whileInView={{ width: "25%" }}
                         viewport={{ once: true }}
                         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                        style={{ background: "#7aaed4", boxShadow: "0 0 8px rgba(142,220,255,0.18)" }}
+                        style={{ background: "#7d93ab", boxShadow: "0 0 8px rgba(150,160,175,0.18)" }}
                       />
                     </div>
                     <p className="mt-3 text-[12px] text-white/55 leading-relaxed font-medium">
@@ -2010,7 +2010,7 @@ export function NavyAirWingComposition({
 
   return (
     <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_-10%,rgba(0,42,102,0.12),transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_-10%,rgba(96,108,126,0.12),transparent_50%)] pointer-events-none" />
       <div className="absolute inset-0 navy-grid-plane opacity-15 pointer-events-none" />
       <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
 
@@ -2056,10 +2056,10 @@ export function NavyAirWingComposition({
               className="group relative bg-[#020202] p-6 transition-colors duration-300 hover:bg-[#000a14]"
             >
               {/* Accent top bar */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#7aaed4]/40" />
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#7d93ab]/40" />
 
               <div className="flex items-center justify-between mb-4">
-                <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#7aaed4]">{sq.designation}</span>
+                <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#7d93ab]">{sq.designation}</span>
                 <span className="navy-font-display text-2xl font-black text-white">×{sq.count}</span>
               </div>
 
@@ -2073,7 +2073,7 @@ export function NavyAirWingComposition({
               <div className="mt-5 h-px w-full bg-white/5">
                 <div
                   className="h-px w-8 transition-all duration-500 group-hover:w-full"
-                  style={{ backgroundColor: "#7aaed4" }}
+                  style={{ backgroundColor: "#7d93ab" }}
                 />
               </div>
             </motion.div>
@@ -2101,7 +2101,7 @@ export function NavyBasesSection({
 
   return (
     <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_60%,rgba(0,42,102,0.12),transparent_45%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_60%,rgba(96,108,126,0.12),transparent_45%)] pointer-events-none" />
       <div className="absolute inset-0 navy-grid-plane opacity-12 pointer-events-none" />
       <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
 
@@ -2137,17 +2137,17 @@ export function NavyBasesSection({
                 <div className="flex items-start gap-4 mb-6">
                   <div
                     className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/8 bg-black"
-                    style={{ color: "#7aaed4" }}
+                    style={{ color: "#7d93ab" }}
                   >
                     <MapPin size={16} strokeWidth={1.5} />
                   </div>
                   <div>
-                    <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#7aaed4] mb-1">{active.region}</div>
+                    <div className="navy-font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#7d93ab] mb-1">{active.region}</div>
                     <h3 className="navy-font-display text-2xl md:text-3xl font-black uppercase text-white leading-tight">{active.name}</h3>
                   </div>
                 </div>
 
-                <div className="navy-font-mono text-[11px] font-bold uppercase tracking-widest mb-4 text-[#7aaed4]">
+                <div className="navy-font-mono text-[11px] font-bold uppercase tracking-widest mb-4 text-[#7d93ab]">
                   {active.location} · {active.role}
                 </div>
 
@@ -2184,14 +2184,14 @@ export function NavyBasesSection({
                     <motion.div
                       layoutId="navy-base-active"
                       className="absolute inset-y-0 left-0 w-[2px]"
-                      style={{ backgroundColor: "#7aaed4" }}
+                      style={{ backgroundColor: "#7d93ab" }}
                       transition={{ type: "spring", stiffness: 330, damping: 35 }}
                     />
                   )}
                   <div className="pl-3">
                     <div className="flex items-center gap-2">
-                      <MapPin size={11} strokeWidth={1.5} className="text-[#7aaed4]/60" />
-                      <span className="navy-font-mono text-[10px] font-semibold uppercase tracking-widest text-[#7aaed4]/70">{base.region}</span>
+                      <MapPin size={11} strokeWidth={1.5} className="text-[#7d93ab]/60" />
+                      <span className="navy-font-mono text-[10px] font-semibold uppercase tracking-widest text-[#7d93ab]/70">{base.region}</span>
                     </div>
                     <div className="navy-font-display text-sm sm:text-base font-extrabold uppercase leading-snug mt-1.5" style={{ letterSpacing: "0.04em" }}>
                       {base.name}
@@ -2223,7 +2223,7 @@ export function NavyHumanitarianSection({
 
   return (
     <section className="relative overflow-hidden bg-black px-5 py-24 sm:px-8 md:py-32 lg:px-12 border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(0,42,102,0.10),transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(96,108,126,0.10),transparent_50%)] pointer-events-none" />
       <div className="absolute inset-0 navy-grid-plane opacity-10 pointer-events-none" />
       <div className="navy-noise absolute inset-0 opacity-30 pointer-events-none" />
 
@@ -2251,11 +2251,11 @@ export function NavyHumanitarianSection({
                 <div className="flex items-center gap-3">
                   <div
                     className="flex h-9 w-9 items-center justify-center border border-white/8 bg-black"
-                    style={{ color: "#7aaed4" }}
+                    style={{ color: "#7d93ab" }}
                   >
                     <Heart size={14} strokeWidth={1.5} />
                   </div>
-                  <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#7aaed4]/80">{mission.year}</span>
+                  <span className="navy-font-mono text-[11px] font-bold uppercase tracking-widest text-[#7d93ab]/80">{mission.year}</span>
                 </div>
               </div>
 
@@ -2277,7 +2277,7 @@ export function NavyHumanitarianSection({
               <div className="mt-6 h-px w-full bg-white/5">
                 <div
                   className="h-px w-10 transition-all duration-500 group-hover:w-full"
-                  style={{ backgroundColor: "#7aaed4" }}
+                  style={{ backgroundColor: "#7d93ab" }}
                 />
               </div>
             </motion.div>
