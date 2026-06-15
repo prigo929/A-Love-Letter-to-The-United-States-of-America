@@ -43,11 +43,23 @@ export function PhotoLightboxGrid({
       if (e.key === "Escape") close();
     };
     document.addEventListener("keydown", onKey);
-    // Lock body scroll while a photo is open.
-    document.body.style.overflow = "hidden";
+    // Lock scroll while a photo is open. Lock BOTH <html> and <body> because the
+    // document scroller varies (body only sets overflow-x), and compensate for the
+    // removed scrollbar width to avoid a layout jump.
+    const html = document.documentElement;
+    const body = document.body;
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyOverflow = body.style.overflow;
+    const prevBodyPadding = body.style.paddingRight;
+    const scrollbarW = window.innerWidth - html.clientWidth;
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    if (scrollbarW > 0) body.style.paddingRight = `${scrollbarW}px`;
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overflow = prevBodyOverflow;
+      body.style.paddingRight = prevBodyPadding;
     };
   }, [active, close]);
 

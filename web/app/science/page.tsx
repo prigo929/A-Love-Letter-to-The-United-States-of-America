@@ -6,7 +6,6 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import {
   Lightbulb,
   Atom,
-  Flame,
   Cpu,
   Dna,
   ExternalLink
@@ -242,12 +241,12 @@ export default async function SciencePage() {
             <h3 className="font-mono text-xs uppercase tracking-widest text-[#E8B923] text-center mb-12">
               {copy.statsTitle}
             </h3>
-            <div className="grid gap-8 sm:grid-cols-3 text-center">
+            <div className="grid gap-12 sm:grid-cols-3 sm:gap-8">
               {copy.stats.map((stat, idx) => (
-                <div key={idx} className="p-8 rounded-2xl border border-white/5 bg-white/2 hover:border-[#E8B923]/20 transition-all">
-                  <p className="macro-stat-value mb-2">{stat.value}</p>
+                <div key={idx} className="border-t border-white/10 pt-6">
+                  <p className="macro-stat-value mb-3">{stat.value}</p>
                   <p className="font-display text-lg font-bold text-white mb-3">{stat.label}</p>
-                  <p className="text-xs text-white/50 leading-relaxed">{stat.description}</p>
+                  <p className="text-sm text-white/50 leading-relaxed">{stat.description}</p>
                 </div>
               ))}
             </div>
@@ -263,24 +262,24 @@ export default async function SciencePage() {
                 <Link
                   key={idx}
                   href={item.href}
-                  className="group rounded-3xl border border-white/10 bg-white/2 p-6 flex flex-col justify-between hover:border-[#E8B923]/40 hover:bg-white/4 transition-all duration-300"
+                  className="group border-t border-white/10 pt-5 flex flex-col justify-between transition-colors duration-300 hover:border-[#E8B923]/40"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-xs font-mono text-[#E8B923] border border-[#E8B923]/25 px-2 py-0.5 rounded">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#E8B923]">
                         {item.badge}
                       </span>
-                      {idx === 0 && <Lightbulb className="h-5 w-5 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
-                      {idx === 1 && <Atom className="h-5 w-5 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
-                      {idx === 2 && <Cpu className="h-5 w-5 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
-                      {idx === 3 && <Dna className="h-5 w-5 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
+                      {idx === 0 && <Lightbulb className="h-4 w-4 text-white/25 group-hover:text-[#E8B923] transition-colors" />}
+                      {idx === 1 && <Atom className="h-4 w-4 text-white/25 group-hover:text-[#E8B923] transition-colors" />}
+                      {idx === 2 && <Cpu className="h-4 w-4 text-white/25 group-hover:text-[#E8B923] transition-colors" />}
+                      {idx === 3 && <Dna className="h-4 w-4 text-white/25 group-hover:text-[#E8B923] transition-colors" />}
                     </div>
                     <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-[#E8B923] transition-colors">
                       {item.title}
                     </h3>
-                    <p className="text-xs text-white/50 leading-relaxed">{item.description}</p>
+                    <p className="text-sm text-white/50 leading-relaxed">{item.description}</p>
                   </div>
-                  <span className="mt-6 text-xs text-[#E8B923] group-hover:underline block">
+                  <span className="mt-6 text-xs font-mono uppercase tracking-[0.2em] text-[#E8B923] group-hover:underline block">
                     {isRo ? "Vezi perioada →" : "View era →"}
                   </span>
                 </Link>
@@ -302,28 +301,22 @@ export default async function SciencePage() {
               <div key={idx} className="flex-1 h-full flex items-center justify-center px-16">
                 <Link
                   href={item.href}
-                  className="group relative w-full max-w-3xl rounded-3xl border border-white/10 bg-white/2 p-14 hover:border-[#E8B923]/40 hover:bg-white/4 transition-all duration-300"
+                  className="group relative w-full max-w-3xl border-t border-white/10 pt-10 transition-colors duration-300 hover:border-[#E8B923]/40"
                 >
-                  <span
-                    aria-hidden="true"
-                    className="absolute -top-10 right-6 font-mono text-[120px] font-bold leading-none text-white/4 select-none"
-                  >
-                    {(idx + 1).toString().padStart(2, "0")}
-                  </span>
-                  <div className="flex items-center justify-between mb-8">
-                    <span className="text-sm font-mono text-[#E8B923] border border-[#E8B923]/25 px-3 py-1 rounded">
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#E8B923]">
                       {item.badge}
                     </span>
-                    {idx === 0 && <Lightbulb className="h-8 w-8 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
-                    {idx === 1 && <Atom className="h-8 w-8 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
-                    {idx === 2 && <Cpu className="h-8 w-8 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
-                    {idx === 3 && <Dna className="h-8 w-8 text-white/30 group-hover:text-[#E8B923] transition-colors" />}
+                    {idx === 0 && <Lightbulb className="h-5 w-5 text-white/25 group-hover:text-[#E8B923] transition-colors" />}
+                    {idx === 1 && <Atom className="h-5 w-5 text-white/25 group-hover:text-[#E8B923] transition-colors" />}
+                    {idx === 2 && <Cpu className="h-5 w-5 text-white/25 group-hover:text-[#E8B923] transition-colors" />}
+                    {idx === 3 && <Dna className="h-5 w-5 text-white/25 group-hover:text-[#E8B923] transition-colors" />}
                   </div>
                   <h3 className="font-display text-4xl font-bold text-white mb-6 group-hover:text-[#E8B923] transition-colors">
                     {item.title}
                   </h3>
                   <p className="macro-body text-base mb-8">{item.description}</p>
-                  <span className="text-sm text-[#E8B923] group-hover:underline">
+                  <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#E8B923] group-hover:underline">
                     {isRo ? "Vezi perioada →" : "View era →"}
                   </span>
                 </Link>
@@ -334,12 +327,9 @@ export default async function SciencePage() {
 
         {/* Shale Revolution */}
         <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/2 p-8 md:p-12 relative overflow-hidden">
-            <div className="absolute top-4 right-4 opacity-[0.06]">
-              <Flame className="h-40 w-40 text-[#E8B923]" />
-            </div>
-            <div className="relative z-10">
-              <span className="font-mono text-xs uppercase tracking-widest text-[#E8B923] mb-3 block">{copy.shaleLabel}</span>
+          <div className="mx-auto max-w-3xl">
+            <div>
+              <span className="font-mono text-xs uppercase tracking-widest text-[#E8B923] mb-4 block">{copy.shaleLabel}</span>
               <h2 className="macro-section-title text-white text-3xl mb-6">{copy.shaleTitle}</h2>
               <p className="macro-body mb-6">{copy.shaleParagraph1}</p>
               <p className="macro-body mb-8">{copy.shaleParagraph2}</p>

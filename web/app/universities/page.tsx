@@ -319,7 +319,7 @@ export default async function UniversitiesPage() {
 
         {/* Rankings Section */}
         <section id="feature" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
-          <div className="rounded-3xl border border-white/5 bg-white/2 backdrop-blur-md p-8 md:p-12">
+          <div className="border-t border-white/10 pt-2">
             <div className="overflow-x-auto">
               <table className="w-full min-w-150 text-left">
                 <thead>
@@ -337,7 +337,7 @@ export default async function UniversitiesPage() {
                       <td className="py-5 text-base font-semibold text-white px-4">{row.university}</td>
                       <td className="py-5 text-sm text-white/60 px-4">{row.location}</td>
                       <td className="py-5 px-4">
-                        <span className="text-xs bg-white/5 border border-white/10 px-2.5 py-1 rounded text-white/70 font-mono">
+                        <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-white/45">
                           {row.category}
                         </span>
                       </td>
