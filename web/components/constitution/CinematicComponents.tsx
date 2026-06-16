@@ -707,7 +707,7 @@ export function ConstitutionRace({ isRo }: { isRo: boolean }) {
   return (
     <div
       ref={containerRef}
-      className="relative overflow-hidden rounded-2xl border border-[rgba(201,168,76,0.15)] bg-[#0A0E15] p-6 md:p-8"
+      className="relative overflow-hidden rounded-2xl border border-[rgba(201,168,76,0.15)] bg-[#0A0E15] p-6 md:p-8 min-h-120 md:min-h-130"
       style={{ position: "relative" }}
     >
       <div className="mb-6 flex items-center justify-between">

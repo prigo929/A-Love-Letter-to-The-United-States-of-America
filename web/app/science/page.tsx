@@ -11,7 +11,7 @@ import {
   ExternalLink
 } from "lucide-react";
 import { MacroStyles, MacroHero } from "@/components/shared/CinematicSystem";
-import { HorizontalScrollBand, ScrollytellPin } from "@/components/shared/CinematicScroll";
+import { ScrollytellPin } from "@/components/shared/CinematicScroll";
 import { RevealSection } from "@/components/shared/Reveal";
 
 export const metadata: Metadata = {
@@ -253,11 +253,11 @@ export default async function SciencePage() {
           </div>
         </RevealSection>
 
-        {/* Chronology — mobile grid */}
-        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:hidden">
+        {/* Chronology — era cards */}
+        <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <h2 className="macro-section-title text-white text-center text-3xl mb-12">{copy.gridTitle}</h2>
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {copy.gridItems.map((item, idx) => (
                 <Link
                   key={idx}
@@ -286,43 +286,6 @@ export default async function SciencePage() {
               ))}
             </div>
           </div>
-        </section>
-
-        {/* Chronology — desktop horizontal scroll timeline */}
-        <section className="hidden lg:block border-b border-white/5">
-          <div className="mx-auto max-w-7xl px-8 pt-20">
-            <h2 className="macro-section-title text-white text-center text-3xl">{copy.gridTitle}</h2>
-            <p className="text-center font-mono text-xs uppercase tracking-[0.25em] text-white/30 mt-4">
-              {isRo ? "Derulează pentru a traversa erele" : "Scroll to travel through the eras"}
-            </p>
-          </div>
-          <HorizontalScrollBand panels={4}>
-            {copy.gridItems.map((item, idx) => (
-              <div key={idx} className="flex-1 h-full flex items-center justify-center px-16">
-                <Link
-                  href={item.href}
-                  className="group relative w-full max-w-3xl border-t border-white/10 pt-10 transition-colors duration-300 hover:border-[#E8B923]/40"
-                >
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#E8B923]">
-                      {item.badge}
-                    </span>
-                    {idx === 0 && <Lightbulb className="h-5 w-5 text-white/25 group-hover:text-[#E8B923] transition-colors" />}
-                    {idx === 1 && <Atom className="h-5 w-5 text-white/25 group-hover:text-[#E8B923] transition-colors" />}
-                    {idx === 2 && <Cpu className="h-5 w-5 text-white/25 group-hover:text-[#E8B923] transition-colors" />}
-                    {idx === 3 && <Dna className="h-5 w-5 text-white/25 group-hover:text-[#E8B923] transition-colors" />}
-                  </div>
-                  <h3 className="font-display text-4xl font-bold text-white mb-6 group-hover:text-[#E8B923] transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="macro-body text-base mb-8">{item.description}</p>
-                  <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#E8B923] group-hover:underline">
-                    {isRo ? "Vezi perioada →" : "View era →"}
-                  </span>
-                </Link>
-              </div>
-            ))}
-          </HorizontalScrollBand>
         </section>
 
         {/* Shale Revolution */}

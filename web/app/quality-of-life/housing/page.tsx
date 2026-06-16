@@ -5,6 +5,7 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { Home, TrendingUp, Key, Shield } from "lucide-react";
 import { MacroStyles, MacroHero } from "@/components/shared/CinematicSystem";
 import { RevealSection } from "@/components/shared/Reveal";
+import { CountryBarChart } from "@/components/shared/CountryBarChart";
 
 export const metadata: Metadata = {
   title: "Housing & Real Estate | Quality of Life",
@@ -298,6 +299,91 @@ export default async function HousingPage() {
                   <p className="text-xs text-white/50 leading-relaxed">{stat.description}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </RevealSection>
+
+        {/* Global Comparison — bar charts */}
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="macro-section-title text-white text-3xl mb-3">
+              {isRo ? "America în Context Global" : "America in Global Context"}
+            </h2>
+            <p className="macro-body text-sm mb-12 max-w-2xl">
+              {isRo
+                ? "Pe fiecare indicator al spațiului locuibil, Statele Unite se află în vârful lumii dezvoltate — case mai mari, mai multe camere de persoană și o povară a costului locuinței printre cele mai mici."
+                : "On nearly every measure of living space, the United States sits at the top of the developed world — bigger homes, more rooms per person, and one of the lowest housing cost burdens anywhere."}
+            </p>
+            <div className="grid gap-12 lg:grid-cols-2">
+              <CountryBarChart
+                title={isRo ? "Suprafața medie a caselor noi (m²)" : "Average floor space of new homes (m²)"}
+                source="Policy Exchange · CABE · US Census Bureau"
+                data={[
+                  { label: "USA", value: 214, display: "214 m²", isUS: true },
+                  { label: "Australia", value: 206, display: "206 m²" },
+                  { label: "Denmark", value: 137, display: "137 m²" },
+                  { label: "France", value: 113, display: "113 m²" },
+                  { label: "Spain", value: 97, display: "97 m²" },
+                  { label: "Ireland", value: 88, display: "88 m²" },
+                  { label: "UK", value: 76, display: "76 m²" },
+                ]}
+              />
+              <CountryBarChart
+                title={isRo ? "Camere de persoană" : "Rooms per person"}
+                source="OECD Better Life Index"
+                data={[
+                  { label: "Canada", value: 2.5, display: "2.5" },
+                  { label: "USA", value: 2.4, display: "2.4", isUS: true },
+                  { label: "New Zealand", value: 2.4, display: "2.4" },
+                  { label: "Australia", value: 2.3, display: "2.3" },
+                  { label: "Belgium", value: 2.2, display: "2.2" },
+                  { label: "Norway", value: 2.1, display: "2.1" },
+                  { label: "Ireland", value: 2.1, display: "2.1" },
+                  { label: "United Kingdom", value: 2.0, display: "2.0" },
+                  { label: "Netherlands", value: 1.9, display: "1.9" },
+                  { label: "Japan", value: 1.9, display: "1.9" },
+                  { label: "Germany", value: 1.8, display: "1.8" },
+                  { label: "France", value: 1.8, display: "1.8" },
+                ]}
+              />
+              <CountryBarChart
+                title={isRo ? "Mărimea mediană a locuinței (sq ft)" : "Median dwelling size (sq ft)"}
+                source="US Census Bureau · OECD · national statistics"
+                data={[
+                  { label: "Australia", value: 2303, display: "2,303" },
+                  { label: "New Zealand", value: 2174, display: "2,174" },
+                  { label: "USA", value: 2164, display: "2,164", isUS: true },
+                  { label: "Canada", value: 1948, display: "1,948" },
+                  { label: "Denmark", value: 1475, display: "1,475" },
+                  { label: "Luxembourg", value: 1359, display: "1,359" },
+                  { label: "Greece", value: 1356, display: "1,356" },
+                  { label: "Belgium", value: 1293, display: "1,293" },
+                  { label: "Netherlands", value: 1261, display: "1,261" },
+                  { label: "France", value: 1206, display: "1,206" },
+                  { label: "Germany", value: 1173, display: "1,173" },
+                  { label: "Japan", value: 1023, display: "1,023" },
+                  { label: "United Kingdom", value: 818, display: "818" },
+                ]}
+              />
+              <CountryBarChart
+                title={isRo ? "Cheltuieli cu locuința (% din venit) — mai puțin e mai bine" : "Housing expenditure (% of income) — lower is better"}
+                subtitle={isRo ? "Ponderea venitului disponibil ajustat cheltuit pe locuință." : "Share of gross adjusted disposable income spent on housing."}
+                source="OECD"
+                data={[
+                  { label: "Korea", value: 15, display: "15%" },
+                  { label: "Norway", value: 17, display: "17%" },
+                  { label: "USA", value: 18, display: "18%", isUS: true },
+                  { label: "Chile", value: 18, display: "18%" },
+                  { label: "Estonia", value: 18, display: "18%" },
+                  { label: "Slovenia", value: 18, display: "18%" },
+                  { label: "Germany", value: 20, display: "20%" },
+                  { label: "Netherlands", value: 20, display: "20%" },
+                  { label: "Australia", value: 20, display: "20%" },
+                  { label: "France", value: 21, display: "21%" },
+                  { label: "Canada", value: 22, display: "22%" },
+                  { label: "United Kingdom", value: 24, display: "24%" },
+                ]}
+              />
             </div>
           </div>
         </RevealSection>

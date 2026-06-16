@@ -423,6 +423,70 @@ export default async function InternetHistoryPage() {
           </div>
         </section>
 
+        {/* Browser Wars & the Open Web */}
+        <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 mt-32">
+          <span className="font-mono text-xs uppercase tracking-widest text-[#E8B923] mb-4 block">
+            {isRo ? "DE LA MOSAIC LA CHROME" : "FROM MOSAIC TO CHROME"}
+          </span>
+          <h2 className="macro-section-title text-white text-3xl mb-6">
+            {isRo ? "Războaiele Browserelor și Web-ul Deschis" : "The Browser Wars & the Open Web"}
+          </h2>
+          <p className="macro-body mb-6">
+            {isRo
+              ? "În 1993, browserul Mosaic — dezvoltat la Universitatea Illinois — a transformat internetul dintr-un instrument academic într-un fenomen de masă. Succesorul său, Netscape Navigator, a declanșat primul „război al browserelor” cu Internet Explorer de la Microsoft, definind ritmul inovației pe web timp de un deceniu."
+              : "In 1993 the Mosaic browser — built at the University of Illinois — turned the internet from an academic tool into a mass phenomenon. Its successor, Netscape Navigator, ignited the first 'browser war' with Microsoft's Internet Explorer, setting the pace of web innovation for a decade."}
+          </p>
+          <p className="macro-body mb-8">
+            {isRo
+              ? "Astăzi, Google Chrome — lansat în 2008 — domină cu peste 65% din piața globală, iar motorul său open-source Chromium stă la baza majorității celorlalte browsere, inclusiv Microsoft Edge. Standardele web deschise (HTML, CSS, JavaScript), administrate de organisme cu sediul preponderent în SUA, rămân limba comună a întregii umanități online."
+              : "Today Google Chrome — launched in 2008 — commands over 65% of the global market, and its open-source Chromium engine powers most other browsers, including Microsoft Edge. The open web standards (HTML, CSS, JavaScript), stewarded by largely US-based bodies, remain the common tongue of everyone online."}
+          </p>
+          <div className="grid gap-8 sm:grid-cols-3 border-t border-white/10 pt-8">
+            {[
+              { value: "65%+", label: isRo ? "Cotă globală Chrome" : "Chrome global share" },
+              { value: "1993", label: isRo ? "Mosaic la U. Illinois" : "Mosaic at U. Illinois" },
+              { value: "3", label: isRo ? "Limbaje care rulează web-ul" : "Languages that run the web" },
+            ].map((s, i) => (
+              <div key={i}>
+                <span className="font-macro-display text-4xl font-black text-[#E8B923] block mb-2">{s.value}</span>
+                <span className="text-sm font-body text-white/60 block leading-snug">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* E-Commerce & the Platform Economy */}
+        <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 mt-32">
+          <span className="font-mono text-xs uppercase tracking-widest text-[#E8B923] mb-4 block">
+            {isRo ? "ECONOMIA PLATFORMELOR" : "THE PLATFORM ECONOMY"}
+          </span>
+          <h2 className="macro-section-title text-white text-3xl mb-6">
+            {isRo ? "E-Commerce și Economia Aplicațiilor" : "E-Commerce & the App Economy"}
+          </h2>
+          <p className="macro-body mb-6">
+            {isRo
+              ? "America nu a inventat doar internetul — a inventat și modul de a face bani pe el. Amazon (1994) a redefinit comerțul cu amănuntul, iar AWS a devenit coloana vertebrală a jumătate din web. App Store-ul Apple (2008) și Google Play au creat o economie a aplicațiilor de peste 1 trilion de dolari, construită aproape în întregime pe două platforme americane."
+              : "America didn't just invent the internet — it invented how to make money on it. Amazon (1994) redefined retail, and AWS became the backbone of half the web. Apple's App Store (2008) and Google Play created a $1-trillion-plus app economy built almost entirely on two American platforms."}
+          </p>
+          <p className="macro-body mb-8">
+            {isRo
+              ? "De la streaming (Netflix, YouTube) la plăți (PayPal, Stripe, Visa) și publicitate (Google, Meta), straturile economice ale internetului modern sunt, în covârșitoare majoritate, deținute și operate din Statele Unite."
+              : "From streaming (Netflix, YouTube) to payments (PayPal, Stripe, Visa) to advertising (Google, Meta), the economic layers of the modern internet are overwhelmingly owned and operated from the United States."}
+          </p>
+          <div className="grid gap-8 sm:grid-cols-3 border-t border-white/10 pt-8">
+            {[
+              { value: "$1T+", label: isRo ? "Economia globală a aplicațiilor" : "Global app economy" },
+              { value: "~40%", label: isRo ? "Din cloud-ul lumii rulează pe AWS" : "Of the world's cloud runs on AWS" },
+              { value: "1994", label: isRo ? "Amazon fondată" : "Amazon founded" },
+            ].map((s, i) => (
+              <div key={i}>
+                <span className="font-macro-display text-4xl font-black text-[#E8B923] block mb-2">{s.value}</span>
+                <span className="text-sm font-body text-white/60 block leading-snug">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Gallery */}
         <section id="gallery" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-6 font-semibold">

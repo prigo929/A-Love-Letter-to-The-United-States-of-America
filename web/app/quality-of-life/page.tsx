@@ -715,36 +715,21 @@ export default async function QualityOfLifePage() {
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center mb-12 font-semibold">
             {isRo ? "PANORAMA ABUNDENȚEI CASNICE" : "VISUALIZING AMERICAN ABUNDANCE"}
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { src: SITE_IMAGES.culture.mcdMenu, title: isRo ? "Abundența Alimentară" : "Food Abundance", desc: isRo ? "Calorii ieftine și accesibile la orice colț de stradă." : "Low-cost, high-velocity calories accessible on every corner." },
-              { src: SITE_IMAGES.culture.dinerInside, title: isRo ? "Cultura Diner-ului" : "Diner Dining", desc: isRo ? "Restaurantul informal american, un simbol al clasei de mijloc." : "The informal community hub for middle-class casual dining." },
-              { src: SITE_IMAGES.culture.fashionJeansSneakers, title: isRo ? "Moda Uniformizată" : "Democratic Fashion", desc: isRo ? "Blugi albaștri și pantofi sport: uniforma modernă fără clase." : "Levi's blue jeans and sneakers: the global uniform of classless comfort." },
-              { src: "/images/library/Housing/USA Suburb sunset.jpg", title: isRo ? "Suburbia la Apus" : "Suburban Sunset", desc: isRo ? "Case spațioase cu curte, un standard generalizat." : "Spacious multi-bedroom homes with lawns as a baseline norm." },
-              { src: SITE_IMAGES.housing.frontPorch, title: isRo ? "Pridvorul American" : "The American Porch", desc: isRo ? "Veranda din față — un spațiu semi-public emblematic." : "The front porch: a uniquely American semi-public living space." },
-              { src: SITE_IMAGES.housing.indianaAutumn, title: isRo ? "Toamna în Suburbie" : "Suburban Autumn", desc: isRo ? "Cartiere cu frunze ruginii — un tablou al normalității americane." : "Tree-lined suburban streets as a middle-class baseline." },
-              { src: SITE_IMAGES.housing.suburbSpring, title: isRo ? "Primăvara în Suburbie" : "Suburb in Spring", desc: isRo ? "Peluze verzi și flori — peisajul standard al casei americane." : "Green lawns and blossoms: the expected standard of home ownership." },
-              { src: SITE_IMAGES.housing.floridaSuburb, title: isRo ? "Suburbia Floridei" : "Florida Suburbs", desc: isRo ? "Case solare, piscine și parcuri — viața în Sun Belt." : "Sun Belt living: pools, palms, and year-round outdoor life." },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="rounded-3xl border border-white/5 bg-white/[0.02] overflow-hidden hover:border-[#E8B923]/30 transition-all duration-300 flex flex-col justify-between"
-              >
-                <div className="relative aspect-video w-full overflow-hidden bg-black/40">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={item.src}
-                    alt={item.title}
-                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-                <div className="p-6">
-                  <h4 className="font-macro-display text-lg font-bold text-white mb-2">{item.title}</h4>
-                  <p className="text-sm text-white/55 leading-relaxed font-body">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <PhotoLightboxGrid
+            gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            withCaptions
+            sizes="(max-width: 768px) 100vw, 25vw"
+            photos={[
+              { src: SITE_IMAGES.culture.mcdMenu, caption: isRo ? "Abundența Alimentară" : "Food Abundance", description: isRo ? "Calorii ieftine și accesibile la orice colț de stradă." : "Low-cost, high-velocity calories accessible on every corner.", aspect: "16/9", alt: isRo ? "Abundența Alimentară" : "Food Abundance" },
+              { src: SITE_IMAGES.culture.dinerInside, caption: isRo ? "Cultura Diner-ului" : "Diner Dining", description: isRo ? "Restaurantul informal american, un simbol al clasei de mijloc." : "The informal community hub for middle-class casual dining.", aspect: "16/9", alt: isRo ? "Cultura Diner-ului" : "Diner Dining" },
+              { src: SITE_IMAGES.culture.fashionJeansSneakers, caption: isRo ? "Moda Uniformizată" : "Democratic Fashion", description: isRo ? "Blugi albaștri și pantofi sport: uniforma modernă fără clase." : "Levi's blue jeans and sneakers: the global uniform of classless comfort.", aspect: "16/9", alt: isRo ? "Moda Uniformizată" : "Democratic Fashion" },
+              { src: "/images/library/Housing/USA Suburb sunset.jpg", caption: isRo ? "Suburbia la Apus" : "Suburban Sunset", description: isRo ? "Case spațioase cu curte, un standard generalizat." : "Spacious multi-bedroom homes with lawns as a baseline norm.", aspect: "16/9", alt: isRo ? "Suburbia la Apus" : "Suburban Sunset" },
+              { src: SITE_IMAGES.housing.frontPorch, caption: isRo ? "Pridvorul American" : "The American Porch", description: isRo ? "Veranda din față — un spațiu semi-public emblematic." : "The front porch: a uniquely American semi-public living space.", aspect: "16/9", alt: isRo ? "Pridvorul American" : "The American Porch" },
+              { src: SITE_IMAGES.housing.indianaAutumn, caption: isRo ? "Toamna în Suburbie" : "Suburban Autumn", description: isRo ? "Cartiere cu frunze ruginii — un tablou al normalității americane." : "Tree-lined suburban streets as a middle-class baseline.", aspect: "16/9", alt: isRo ? "Toamna în Suburbie" : "Suburban Autumn" },
+              { src: SITE_IMAGES.housing.suburbSpring, caption: isRo ? "Primăvara în Suburbie" : "Suburb in Spring", description: isRo ? "Peluze verzi și flori — peisajul standard al casei americane." : "Green lawns and blossoms: the expected standard of home ownership.", aspect: "16/9", alt: isRo ? "Primăvara în Suburbie" : "Suburb in Spring" },
+              { src: SITE_IMAGES.housing.floridaSuburb, caption: isRo ? "Suburbia Floridei" : "Florida Suburbs", description: isRo ? "Case solare, piscine și parcuri — viața în Sun Belt." : "Sun Belt living: pools, palms, and year-round outdoor life.", aspect: "16/9", alt: isRo ? "Suburbia Floridei" : "Florida Suburbs" },
+            ]}
+          />
         </section>
 
         {/* Outdoors & Recreation Band */}
@@ -769,35 +754,23 @@ export default async function QualityOfLifePage() {
 
         {/* Outdoors Photo Grid */}
         <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32 mt-16">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-            {[
-              { src: SITE_IMAGES.outdoors.fishing, title: isRo ? "Pescuit" : "River Fishing", location: "Provo River, Utah" },
-              { src: SITE_IMAGES.outdoors.camping, title: isRo ? "Camping" : "Camping", location: "Madera Canyon, Arizona" },
-              { src: SITE_IMAGES.outdoors.rvFamily, title: isRo ? "Vacanță cu RV" : "Family RV Life", location: "American Southwest" },
-              { src: SITE_IMAGES.outdoors.sailing, title: isRo ? "Navigație" : "Great Lakes Sailing", location: "Chicago to Mackinac" },
-              { src: SITE_IMAGES.outdoors.rvGrandCanyon, title: isRo ? "RV la Grand Canyon" : "Grand Canyon RV", location: "Grand Canyon, Arizona" },
-              { src: SITE_IMAGES.outdoors.boating, title: isRo ? "Barcă pe lac" : "Lake Boating", location: "Michigan" },
-              { src: SITE_IMAGES.outdoors.hunting, title: isRo ? "Vânătoare" : "Hunting", location: "Florida" },
-              { src: SITE_IMAGES.outdoors.baldEagle, title: isRo ? "Vulturul Chel" : "Bald Eagle", location: "Symbol of American freedom" },
-              { src: SITE_IMAGES.outdoors.boatsDocked, title: isRo ? "Port de agrement" : "Marina Life", location: "Marquette, Michigan" },
-              { src: SITE_IMAGES.outdoors.rvArizona, title: isRo ? "RV în deșert" : "Desert RV", location: "Arizona" },
-              { src: SITE_IMAGES.outdoors.torchLake, title: isRo ? "Torch Lake" : "Torch Lake Sandbar", location: "Michigan" },
-            ].map((item, i) => (
-              <div key={i} className="relative aspect-square overflow-hidden rounded-2xl group">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                  <p className="text-white text-xs font-bold font-mono uppercase tracking-wider">{item.title}</p>
-                  <p className="text-white/60 text-[10px] font-mono">{item.location}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <PhotoLightboxGrid
+            gridClassName="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"
+            sizes="(max-width: 768px) 50vw, 25vw"
+            photos={[
+              { src: SITE_IMAGES.outdoors.fishing, caption: `${isRo ? "Pescuit" : "River Fishing"} · Provo River, Utah`, alt: isRo ? "Pescuit pe râu" : "River Fishing", aspect: "1/1" },
+              { src: SITE_IMAGES.outdoors.camping, caption: `${isRo ? "Camping" : "Camping"} · Madera Canyon, Arizona`, alt: "Camping", aspect: "1/1" },
+              { src: SITE_IMAGES.outdoors.rvFamily, caption: `${isRo ? "Vacanță cu RV" : "Family RV Life"} · American Southwest`, alt: isRo ? "Vacanță cu RV" : "Family RV Life", aspect: "1/1" },
+              { src: SITE_IMAGES.outdoors.sailing, caption: `${isRo ? "Navigație" : "Great Lakes Sailing"} · Chicago to Mackinac`, alt: isRo ? "Navigație" : "Great Lakes Sailing", aspect: "1/1" },
+              { src: SITE_IMAGES.outdoors.rvGrandCanyon, caption: `${isRo ? "RV la Grand Canyon" : "Grand Canyon RV"} · Grand Canyon, Arizona`, alt: isRo ? "RV la Grand Canyon" : "Grand Canyon RV", aspect: "1/1" },
+              { src: SITE_IMAGES.outdoors.boating, caption: `${isRo ? "Barcă pe lac" : "Lake Boating"} · Michigan`, alt: isRo ? "Barcă pe lac" : "Lake Boating", aspect: "1/1" },
+              { src: SITE_IMAGES.outdoors.hunting, caption: `${isRo ? "Vânătoare" : "Hunting"} · Florida`, alt: isRo ? "Vânătoare" : "Hunting", aspect: "1/1" },
+              { src: SITE_IMAGES.outdoors.baldEagle, caption: `${isRo ? "Vulturul Chel" : "Bald Eagle"} · ${isRo ? "Simbolul libertății americane" : "Symbol of American freedom"}`, alt: isRo ? "Vulturul Chel" : "Bald Eagle", aspect: "1/1" },
+              { src: SITE_IMAGES.outdoors.boatsDocked, caption: `${isRo ? "Port de agrement" : "Marina Life"} · Marquette, Michigan`, alt: isRo ? "Port de agrement" : "Marina Life", aspect: "1/1" },
+              { src: SITE_IMAGES.outdoors.rvArizona, caption: `${isRo ? "RV în deșert" : "Desert RV"} · Arizona`, alt: isRo ? "RV în deșert" : "Desert RV", aspect: "1/1" },
+              { src: SITE_IMAGES.outdoors.torchLake, caption: `${isRo ? "Torch Lake" : "Torch Lake Sandbar"} · Michigan`, alt: "Torch Lake", aspect: "1/1" },
+            ]}
+          />
         </section>
 
         {/* Disposable Income & Giving Section */}

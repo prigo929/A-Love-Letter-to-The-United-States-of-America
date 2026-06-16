@@ -93,6 +93,13 @@ import housingIowaSuburb from "@/IMAGES/Housing/New homes in suburbia, in Urband
 import housingIndianaAutumn from "@/IMAGES/Housing/Suburb in Indiana Autumn.jpeg";
 import housingSuburbSpring from "@/IMAGES/Housing/nature in suburb spring.jpeg";
 import housingQolHouse from "@/IMAGES/Housing/quality-of-life-house.jpg";
+import grocerySafewayProduce from "@/IMAGES/Quality of Life/Grocery Store/produce department Safeway store, Foster City CA.jpg";
+import groceryKrogerProduce from "@/IMAGES/Quality of Life/Grocery Store/The_interior_produce_section_of_a_Kroger_Marketplace_store_in_Athens,_Georgia_03.jpg";
+import groceryWalmartEndcaps from "@/IMAGES/Quality of Life/Grocery Store/Endcaps at a Walmart store in the town of Wallkill, NY.jpg";
+import groceryWalmartInterior from "@/IMAGES/Quality of Life/Grocery Store/Inside Walmart Supercenter in Bloomsburg, Pennsylvania.jpg";
+import groceryWalmartFlag from "@/IMAGES/Quality of Life/Grocery Store/Hybla Valley Walmart Supercenter Interior Action Alley With Ziploc Pallet Display Rollback Signs Snack Aisle And Hanging American Flag.jpg";
+import groceryCostco from "@/IMAGES/Quality of Life/Grocery Store/Costco_Ocean_Township.jpg";
+import groceryWalmartThanksgiving from "@/IMAGES/Quality of Life/Grocery Store/walmart-thanksgiving-shopping-13.jpg";
 
 // Outdoors Lifestyle
 import outdoorsCamping from "@/IMAGES/Outdoors Lifestyle/Camping in Madera Canyon, Arizona.jpg";
@@ -411,6 +418,21 @@ import stadiumCarolina from "@/IMAGES/Culture/Sports/Stadiums/Aerial-Cityscape-V
 import stadiumFedEx from "@/IMAGES/Culture/Sports/Stadiums/Panoramic-View-Of-Packed-FedExField-During-Washington-Redskins-NFL-Game.jpg";
 import stadiumBaltimore from "@/IMAGES/Culture/Sports/Stadiums/Top-Down-Aerial-View-Of-Baltimore-Ravens-Field-At-M-And-T-Bank-Stadium.jpg";
 import stadiumAtlantaBraves from "@/IMAGES/Culture/Sports/Stadiums/Wide-Evening-View-Of-Atlanta-Braves-Baseball-Game-From-Behind-Home-Plate.jpg";
+import stadiumBeaver from "@/IMAGES/Culture/Sports/Stadiums/Penn State Beaver Stadium White Out Night Game Marching Band Field Formation And Fireworks.jpg";
+import stadiumNeyland from "@/IMAGES/Culture/Sports/Stadiums/Tennessee Volunteers Football Neyland Stadium Checker Neyland Crowd Full Capacity Evening Game.jpg";
+import stadiumKyleField from "@/IMAGES/Culture/Sports/Stadiums/Texas A&M Aggies Football Kyle Field Aerial View Full Capacity Maroon Crowd Daytime.png";
+import stadiumOhio from "@/IMAGES/Culture/Sports/Stadiums/Ohio State Buckeyes Football Ohio Stadium Full Capacity Crowd With Marching Band Performing Script Ohio On Field Daytime.jpg";
+import stadiumLsuTiger from "@/IMAGES/Culture/Sports/Stadiums/LSU Tigers Football Team Entrance Through Smoke At Packed Tiger Stadium Death Valley Daytime.jpg";
+import stadiumBryantDenny from "@/IMAGES/Culture/Sports/Stadiums/Alabama Crimson Tide Football Bryant Denny Stadium Full Capacity Crimson Crowd Daytime.jpeg";
+import stadiumTexasMemorial from "@/IMAGES/Culture/Sports/Stadiums/Texas Longhorns Football Darrell K Royal Texas Memorial Stadium Full Capacity Burnt Orange Crowd With Austin Skyline.jpg";
+import stadiumMichigan from "@/IMAGES/Culture/Sports/Stadiums/Michigan_Stadium_-_Michigan_vs._Iowa_11-17-2012.jpg";
+import stadiumRoseBowl from "@/IMAGES/Culture/Sports/Stadiums/Aerial Panorama Rose Bowl Stadium Game Day Sunset San Gabriel Mountains.jpg";
+import stadiumSoFi from "@/IMAGES/Culture/Sports/Stadiums/SoFi Stadium Super Bowl LVI Los Angeles Rams Vs Cincinnati Bengals Full Crowd Infinity Screen.jpg";
+import stadiumLambeau from "@/IMAGES/Culture/Sports/Stadiums/Green Bay Packers Lambeau Field Atrium Exterior Winter With Vince Lombardi Statue.jpg";
+import stadiumMercedesBenz from "@/IMAGES/Culture/Sports/Stadiums/Mercedes-Benz Stadium sunset.jpg";
+import stadiumAttExterior from "@/IMAGES/Culture/Sports/Stadiums/Dallas Cowboys AT&T Stadium Exterior Aerial View With Dome Roof And Plaza Daytime.jpg";
+import stadiumWrigley from "@/IMAGES/Culture/Sports/Stadiums/Wrigley Field aerial.jpg";
+import stadiumBristol from "@/IMAGES/Culture/Sports/Stadiums/Bristol Motor Speedway Battle At Bristol Football Field Giant American Flag Crowd Card Stunt USA Fireworks Ceremony.jpg";
 
 // Food — pepperoni pizza
 import foodPepperoniPizza from "@/IMAGES/Culture/Food/Pepperoni pizza american.jpg";
@@ -813,6 +835,21 @@ export const SITE_IMAGES = {
     stadiumFedEx: stadiumFedEx.src,
     stadiumBaltimore: stadiumBaltimore.src,
     stadiumAtlantaBraves: stadiumAtlantaBraves.src,
+    stadiumBeaver: stadiumBeaver.src,
+    stadiumNeyland: stadiumNeyland.src,
+    stadiumKyleField: stadiumKyleField.src,
+    stadiumOhio: stadiumOhio.src,
+    stadiumLsuTiger: stadiumLsuTiger.src,
+    stadiumBryantDenny: stadiumBryantDenny.src,
+    stadiumTexasMemorial: stadiumTexasMemorial.src,
+    stadiumMichigan: stadiumMichigan.src,
+    stadiumRoseBowl: stadiumRoseBowl.src,
+    stadiumSoFi: stadiumSoFi.src,
+    stadiumLambeau: stadiumLambeau.src,
+    stadiumMercedesBenz: stadiumMercedesBenz.src,
+    stadiumAttExterior: stadiumAttExterior.src,
+    stadiumWrigley: stadiumWrigley.src,
+    stadiumBristol: stadiumBristol.src,
 
     // Fashion — western & preppy
     fashionCowboyBoots: fashionCowboyBoots.src,
@@ -849,6 +886,16 @@ export const SITE_IMAGES = {
     indianaAutumn: housingIndianaAutumn.src,
     suburbSpring: housingSuburbSpring.src,
     qolHouse: housingQolHouse.src,
+  },
+
+  grocery: {
+    safewayProduce: grocerySafewayProduce.src,
+    krogerProduce: groceryKrogerProduce.src,
+    walmartEndcaps: groceryWalmartEndcaps.src,
+    walmartInterior: groceryWalmartInterior.src,
+    walmartFlag: groceryWalmartFlag.src,
+    costco: groceryCostco.src,
+    walmartThanksgiving: groceryWalmartThanksgiving.src,
   },
 
   outdoors: {

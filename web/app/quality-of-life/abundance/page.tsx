@@ -5,6 +5,8 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { Wind, Car, Waves, Package } from "lucide-react";
 import { MacroStyles, MacroHero } from "@/components/shared/CinematicSystem";
 import { RevealSection } from "@/components/shared/Reveal";
+import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Consumer Abundance | Quality of Life",
@@ -359,6 +361,36 @@ export default async function AbundancePage() {
                 </div>
               ))}
             </div>
+          </div>
+        </RevealSection>
+
+        {/* Grocery Abundance */}
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] mb-4">
+              {isRo ? "RAFTUL AMERICAN" : "THE AMERICAN SHELF"}
+            </p>
+            <h2 className="macro-section-title text-white text-3xl mb-3">
+              {isRo ? "Abundența de la Băcănie" : "Abundance at the Grocery Store"}
+            </h2>
+            <p className="macro-body text-sm mb-10 max-w-2xl">
+              {isRo
+                ? "Supermarketul american este, poate, cea mai vie expresie a abundenței de masă: raioane de produse proaspete pe tot parcursul anului, mii de SKU-uri, prețuri mici și magazine deschise non-stop — o normalitate pe care restul lumii o consideră lux."
+                : "The American supermarket may be the most vivid expression of mass abundance there is: year-round fresh produce, tens of thousands of SKUs, low prices, and stores open around the clock — a normalcy much of the world would consider luxury."}
+            </p>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10"
+              withCaptions
+              sizes="(max-width: 768px) 100vw, 33vw"
+              photos={[
+                { src: SITE_IMAGES.grocery.safewayProduce, alt: "Produce department at a Safeway store in Foster City, California", caption: "Safeway · Foster City, CA", description: isRo ? "Un raion de legume și fructe proaspete, aprovizionat tot anul — standardul oricărui supermarket american." : "A produce department stocked with fresh fruit and vegetables year-round — the baseline of any American supermarket.", aspect: "4/3" },
+                { src: SITE_IMAGES.grocery.krogerProduce, alt: "Produce section of a Kroger Marketplace store in Athens, Georgia", caption: "Kroger Marketplace · Athens, GA", description: isRo ? "Kroger operează aproape 2.800 de magazine; secțiunea de produse proaspete este o vitrină a abundenței agricole americane." : "Kroger runs nearly 2,800 stores; its produce section is a showcase of American agricultural abundance.", aspect: "4/3" },
+                { src: SITE_IMAGES.grocery.costco, alt: "Interior of a Costco warehouse in Ocean Township, New Jersey", caption: "Costco · Ocean Township, NJ", description: isRo ? "Modelul american de depozit en-gros: cantități uriașe la prețuri mici, copiat astăzi în întreaga lume." : "The American warehouse-club model: bulk quantities at rock-bottom prices, now copied worldwide.", aspect: "4/3" },
+                { src: SITE_IMAGES.grocery.walmartInterior, alt: "Inside a Walmart Supercenter in Bloomsburg, Pennsylvania", caption: "Walmart Supercenter · Bloomsburg, PA", description: isRo ? "Walmart este cel mai mare retailer din lume; un Supercenter tipic oferă peste 100.000 de produse sub un singur acoperiș." : "Walmart is the world's largest retailer; a typical Supercenter carries 100,000+ items under one roof.", aspect: "4/3" },
+                { src: SITE_IMAGES.grocery.walmartFlag, alt: "Walmart Supercenter action alley with rollback signs and a hanging American flag", caption: "Walmart · Action Alley", description: isRo ? "Etalaje „rollback”, palet după palet — promisiunea prețurilor mici de zi cu zi, sub drapelul american." : "Rollback displays pallet after pallet — the everyday-low-price promise, under the American flag.", aspect: "4/3" },
+                { src: SITE_IMAGES.grocery.walmartThanksgiving, alt: "Crowded Walmart store during Thanksgiving shopping", caption: isRo ? "Cumpărături de Thanksgiving" : "Thanksgiving Shopping", description: isRo ? "Cărucioare pline înainte de sărbători — un ritual al abundenței accesibile clasei de mijloc." : "Carts piled high before the holidays — a ritual of abundance accessible to the middle class.", aspect: "4/3" },
+              ]}
+            />
           </div>
         </RevealSection>
 

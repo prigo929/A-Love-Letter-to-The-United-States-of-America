@@ -604,7 +604,7 @@ export function FilmAndStorytellingClient({
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24">
         {/* Legendary Auteurs */}
         <section className="mb-28">
-          <div className="mb-12 text-center md:text-left">
+          <div className="mb-12 text-left">
             <h2 className="font-body text-xs font-semibold tracking-[0.2em] text-glory-gold uppercase mb-3">
               {content.auteursTitle}
             </h2>

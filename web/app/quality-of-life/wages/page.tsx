@@ -5,6 +5,7 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { DollarSign, BarChart3, Scale, Heart } from "lucide-react";
 import { MacroStyles, MacroHero } from "@/components/shared/CinematicSystem";
 import { RevealSection } from "@/components/shared/Reveal";
+import { CountryBarChart } from "@/components/shared/CountryBarChart";
 
 export const metadata: Metadata = {
   title: "Wages & Purchasing Power | Quality of Life",
@@ -367,6 +368,64 @@ export default async function WagesPage() {
                   <span className="text-xs text-white/50 leading-relaxed">{row.euNote}</span>
                 </div>
               ))}
+            </div>
+          </div>
+        </RevealSection>
+
+        {/* Global Comparison — bar charts */}
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="macro-section-title text-white text-3xl mb-3">
+              {isRo ? "Cea Mai Bogată Clasă de Mijloc din Lume" : "The World's Richest Middle Class"}
+            </h2>
+            <p className="macro-body text-sm mb-12 max-w-2xl">
+              {isRo
+                ? "Ajustat pentru puterea de cumpărare, gospodăriile americane dispun de cel mai mare venit și consumă cel mai mult din lume — cu un avans substanțial față de orice altă națiune dezvoltată."
+                : "Adjusted for purchasing power, American households have the highest disposable income and consume more than anyone on Earth — by a wide margin over every other developed nation."}
+            </p>
+            <div className="grid gap-12 lg:grid-cols-2">
+              <CountryBarChart
+                title={isRo ? "Venit disponibil pe gospodărie, pe cap (PPP)" : "Household disposable income per capita (PPP)"}
+                subtitle={isRo ? "Inclusiv transferuri sociale în natură, 2024." : "Including social transfers in kind, 2024."}
+                source="OECD"
+                data={[
+                  { label: "USA", value: 71300, display: "$71,300", isUS: true },
+                  { label: "Luxembourg", value: 70150, display: "$70,150" },
+                  { label: "Germany", value: 61303, display: "$61,303" },
+                  { label: "Austria", value: 57890, display: "$57,890" },
+                  { label: "Netherlands", value: 57419, display: "$57,419" },
+                  { label: "Australia", value: 56019, display: "$56,019" },
+                  { label: "Belgium", value: 54862, display: "$54,862" },
+                  { label: "France", value: 53701, display: "$53,701" },
+                  { label: "Switzerland", value: 53362, display: "$53,362" },
+                  { label: "Iceland", value: 52641, display: "$52,641" },
+                  { label: "Norway", value: 49788, display: "$49,788" },
+                  { label: "United Kingdom", value: 49367, display: "$49,367" },
+                  { label: "Denmark", value: 49099, display: "$49,099" },
+                  { label: "Sweden", value: 48314, display: "$48,314" },
+                ]}
+              />
+              <CountryBarChart
+                title={isRo ? "Consum pe gospodărie, pe cap (PPP)" : "Household consumption per capita (PPP)"}
+                subtitle={isRo ? "$ internațional constant 2021." : "Constant 2021 international $."}
+                source="World Bank"
+                data={[
+                  { label: "USA", value: 51433, display: "$51,433", isUS: true },
+                  { label: "Luxembourg", value: 36544, display: "$36,544" },
+                  { label: "Switzerland", value: 35466, display: "$35,466" },
+                  { label: "Norway", value: 31203, display: "$31,203" },
+                  { label: "Austria", value: 30974, display: "$30,974" },
+                  { label: "Germany", value: 29562, display: "$29,562" },
+                  { label: "Canada", value: 29257, display: "$29,257" },
+                  { label: "Australia", value: 29042, display: "$29,042" },
+                  { label: "United Kingdom", value: 28621, display: "$28,621" },
+                  { label: "Belgium", value: 27513, display: "$27,513" },
+                  { label: "Netherlands", value: 26997, display: "$26,997" },
+                  { label: "Denmark", value: 26680, display: "$26,680" },
+                  { label: "Italy", value: 26561, display: "$26,561" },
+                  { label: "France", value: 25014, display: "$25,014" },
+                ]}
+              />
             </div>
           </div>
         </RevealSection>

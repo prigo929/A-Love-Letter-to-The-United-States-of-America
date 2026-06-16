@@ -271,6 +271,53 @@ export default async function EnglishLanguagePage() {
             ))}
           </div>
 
+          {/* Lingua Franca of Power */}
+          <div className="max-w-3xl mb-20">
+            <span className="font-mono text-xs uppercase tracking-widest text-glory-gold mb-4 block">
+              {isRo ? "LIMBA PUTERII" : "THE LANGUAGE OF POWER"}
+            </span>
+            <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-6 uppercase tracking-tight">
+              {isRo ? "Lingua Franca a Științei, Aviației și Diplomației" : "Lingua Franca of Science, Aviation & Diplomacy"}
+            </h2>
+            <p className="font-editorial text-base md:text-lg text-[#F5EDD8]/75 leading-relaxed mb-6">
+              {isRo
+                ? "Un pilot care aterizează la Tokyo, un cercetător care publică la Berlin și un diplomat care negociază la Geneva operează cu toții în engleză. Nu printr-un decret, ci pentru că instituțiile americane — de la FAA și NASA la universitățile Ivy League — au stabilit standardele pe care lumea le-a adoptat."
+                : "A pilot landing in Tokyo, a researcher publishing in Berlin, and a diplomat negotiating in Geneva all operate in English. Not by decree, but because American institutions — from the FAA and NASA to the Ivy League — set the standards the world adopted."}
+            </p>
+            <p className="font-editorial text-base md:text-lg text-[#F5EDD8]/75 leading-relaxed">
+              {isRo
+                ? "Engleza este singura limbă oficială a controlului traficului aerian internațional, limba a peste 90% din lucrările științifice indexate și limba de lucru de facto a comerțului, tehnologiei și finanțelor globale."
+                : "English is the sole official language of international air-traffic control, the language of over 90% of indexed scientific papers, and the de-facto working language of global commerce, technology, and finance."}
+            </p>
+          </div>
+
+          {/* English on the Internet */}
+          <div className="max-w-3xl mb-20">
+            <span className="font-mono text-xs uppercase tracking-widest text-glory-gold mb-4 block">
+              {isRo ? "LIMBA INTERNETULUI" : "THE LANGUAGE OF THE INTERNET"}
+            </span>
+            <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-6 uppercase tracking-tight">
+              {isRo ? "Engleza Online" : "English on the Internet"}
+            </h2>
+            <p className="font-editorial text-base md:text-lg text-[#F5EDD8]/75 leading-relaxed mb-8">
+              {isRo
+                ? "Codul însuși vorbește engleză: cuvinte-cheie precum if, for, return și class apar identic în orice limbaj de programare, oriunde în lume. De la sintaxa programării la cultura meme-urilor, gramatica internetului a fost scrisă în engleza americană."
+                : "The code itself speaks English: keywords like if, for, return, and class appear identically in every programming language, everywhere on Earth. From programming syntax to meme culture, the grammar of the internet was written in American English."}
+            </p>
+            <div className="grid gap-8 sm:grid-cols-3 border-t border-white/10 pt-8">
+              {[
+                { value: "~50%", label: isRo ? "Din conținutul web este în engleză" : "Of all web content is in English" },
+                { value: "#1", label: isRo ? "Limbă pentru programare și AI" : "Language for coding & AI" },
+                { value: "1.5B", label: isRo ? "Persoane care învață engleza" : "People learning English" },
+              ].map((s, i) => (
+                <div key={i}>
+                  <span className="font-macro-display text-4xl font-black text-glory-gold block mb-2">{s.value}</span>
+                  <span className="text-sm font-body text-white/60 block leading-snug">{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="relative rounded-3xl h-72 overflow-hidden flex items-center justify-center mb-20">
             <Image src={SITE_IMAGES.culture.timesSquareIconic} alt="Times Square NYC iconic view" fill className="object-cover" sizes="100vw" />
             <div className="absolute inset-0 bg-black/60" />

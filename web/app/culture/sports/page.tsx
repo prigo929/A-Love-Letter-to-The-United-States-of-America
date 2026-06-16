@@ -447,6 +447,57 @@ export default async function CultureSportsPage() {
             />
           </div>
 
+          {/* College Football Cathedrals */}
+          <div className="mb-20">
+            <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-2">{isRo ? "SÂMBĂTĂ ÎN AMERICA" : "SATURDAYS IN AMERICA"}</p>
+            <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-4">{isRo ? "CATEDRALELE FOTBALULUI UNIVERSITAR" : "COLLEGE FOOTBALL CATHEDRALS"}</h2>
+            <p className="font-body text-sm text-white/45 leading-relaxed max-w-2xl mb-8">
+              {isRo
+                ? "Nicăieri în lume sportul universitar nu umple stadioane de peste 100.000 de locuri. Sâmbăta de toamnă în America este un ritual cultural — fanfare, tradiții centenare și o intensitate fără egal."
+                : "Nowhere else on Earth does amateur college sport fill 100,000-seat stadiums. The American autumn Saturday is a cultural ritual — marching bands, century-old traditions, and an intensity rivaling any professional league."}
+            </p>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10"
+              withCaptions
+              sizes="(max-width: 768px) 100vw, 33vw"
+              photos={[
+                { src: SITE_IMAGES.culture.stadiumMichigan, alt: "Michigan Stadium 'The Big House' filled to capacity", caption: "Michigan Stadium · “The Big House”", description: isRo ? "107.601 de locuri — cel mai mare stadion din Statele Unite și din emisfera vestică." : "107,601 seats — the largest stadium in the United States and the entire Western Hemisphere.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumBeaver, alt: "Penn State Beaver Stadium White Out night game", caption: "Beaver Stadium · Penn State", description: isRo ? "106.572 de locuri; faimoasele meciuri „White Out” de noapte sunt printre cele mai zgomotoase scene din sport." : "106,572 seats; the deafening “White Out” night games rank among the loudest spectacles in all of sport.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumOhio, alt: "Ohio Stadium with marching band performing Script Ohio", caption: "Ohio Stadium · “The Horseshoe”", description: isRo ? "102.780 de locuri; „Script Ohio” al fanfarei este o tradiție de peste 90 de ani." : "Holds 102,780; the marching band's dotting of “Script Ohio” is a tradition more than 90 years old.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumKyleField, alt: "Texas A&M Kyle Field aerial, full maroon crowd", caption: "Kyle Field · Texas A&M", description: isRo ? "102.733 de locuri — „Casa celui de-al 12-lea Om”, unde studenții stau în picioare tot meciul." : "102,733 seats — “Home of the 12th Man,” where the entire student body stands for all four quarters.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumLsuTiger, alt: "LSU Tiger Stadium team entrance through smoke at night", caption: "Tiger Stadium · LSU “Death Valley”", description: isRo ? "102.321 de locuri — meciurile de noapte de aici sunt considerate cele mai intimidante din sport." : "Seats 102,321 — night games in “Death Valley” are widely considered the most intimidating in the sport.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumNeyland, alt: "Tennessee Neyland Stadium checkerboard crowd", caption: "Neyland Stadium · Tennessee", description: isRo ? "101.915 de locuri pe râul Tennessee; șahul portocaliu-alb din zonele de end este o emblemă." : "101,915 seats on the Tennessee River; the orange-and-white checkerboard end zones are a college icon.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumTexasMemorial, alt: "Texas Memorial Stadium burnt orange crowd with Austin skyline", caption: "DKR–Texas Memorial · Texas", description: isRo ? "Peste 100.000 de fani în portocaliu, cu silueta orașului Austin în fundal." : "Over 100,000 burnt-orange fans with the Austin skyline rising beyond — among the largest in the nation.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumBryantDenny, alt: "Alabama Bryant-Denny Stadium full crimson crowd", caption: "Bryant-Denny Stadium · Alabama", description: isRo ? "100.077 de locuri în Tuscaloosa, casa celei mai dominante dinastii a erei moderne." : "100,077 seats in Tuscaloosa — home to the most dominant dynasty of the modern era.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumRoseBowl, alt: "Rose Bowl Stadium aerial at sunset with San Gabriel Mountains", caption: "Rose Bowl · Pasadena", description: isRo ? "„Bunicul tuturor” (1922), încadrat de Munții San Gabriel; Monument Istoric Național." : "The “Granddaddy of Them All” (1922), framed by the San Gabriel Mountains; a National Historic Landmark.", aspect: "16/10" },
+              ]}
+            />
+          </div>
+
+          {/* NFL & Ballparks */}
+          <div className="mb-20">
+            <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 font-bold mb-2">{isRo ? "DUMINICĂ ȘI ZILE DE MECI" : "SUNDAYS & GAME DAYS"}</p>
+            <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-4">{isRo ? "ARENELE PROFESIONISTE" : "NFL & BALLPARKS"}</h2>
+            <p className="font-body text-sm text-white/45 leading-relaxed max-w-2xl mb-8">
+              {isRo
+                ? "De la temple istorice cu iederă la domuri de miliarde de dolari, arenele profesioniste americane combină tradiția cu cea mai avansată tehnologie de pe planetă."
+                : "From ivy-clad historic shrines to billion-dollar domes, America's professional venues fuse deep tradition with the most advanced stadium technology on the planet."}
+            </p>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10"
+              withCaptions
+              sizes="(max-width: 768px) 100vw, 33vw"
+              photos={[
+                { src: SITE_IMAGES.culture.stadiumSoFi, alt: "SoFi Stadium Super Bowl LVI with Infinity Screen", caption: "SoFi Stadium · Los Angeles", description: isRo ? "Un miracol de peste 5 miliarde $ cu ecranul dublu „Infinity”; gazda Super Bowl LVI și a Jocurilor Olimpice 2028." : "A $5B+ marvel with the dual-sided Infinity Screen; host of Super Bowl LVI and the 2028 Olympics.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumAttExterior, alt: "Dallas Cowboys AT&T Stadium exterior aerial with dome roof", caption: "AT&T Stadium · Dallas Cowboys", description: isRo ? "„Jerry World” — un dom de 1,3 miliarde $ cu un ecran suspendat care se întinde aproape pe tot terenul." : "“Jerry World” — a $1.3B retractable dome with a center-hung video board spanning nearly the full field.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumMercedesBenz, alt: "Mercedes-Benz Stadium Atlanta at sunset", caption: "Mercedes-Benz Stadium · Atlanta", description: isRo ? "Acoperiș retractabil în formă de morișcă și un panou „halo” de 360°; unul dintre cele mai avansate stadioane din lume." : "Retractable pinwheel roof and a 360° halo board; one of the most advanced venues on Earth.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumLambeau, alt: "Green Bay Packers Lambeau Field exterior in winter", caption: "Lambeau Field · Green Bay", description: isRo ? "„Tundra Înghețată” (1957) — cel mai longeviv stadion din NFL și un altar deținut de comunitate." : "“The Frozen Tundra” (1957) — the longest-operating NFL stadium and a community-owned shrine.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumWrigley, alt: "Wrigley Field aerial, Chicago Cubs", caption: "Wrigley Field · Chicago Cubs", description: isRo ? "Deschis în 1914 — ziduri de cărămidă acoperite cu iederă și un tabelă întoarsă manual; muzeul viu al baseballului." : "Opened 1914 — ivy-covered brick walls and a hand-turned scoreboard; baseball's living museum.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumBristol, alt: "Bristol Motor Speedway Battle at Bristol with giant flag", caption: "Bristol Motor Speedway · Tennessee", description: isRo ? "Un bol de beton de jumătate de milă cu 150.000 de locuri — „Ultimul Mare Colosseum” al motorsportului american." : "A half-mile concrete bowl seating ~150,000 — “The Last Great Colosseum” of American motorsport.", aspect: "16/10" },
+              ]}
+            />
+          </div>
+
           {/* Parallax quote */}
           <div className="relative rounded-3xl h-80 overflow-hidden flex items-center justify-center mb-20">
             <Image src={SITE_IMAGES.culture.nflStadium} alt="NFL Stadium" fill className="object-cover" sizes="100vw" />

@@ -478,8 +478,8 @@ import asset473 from "@/IMAGES/Outdoors Lifestyle/Torch Lake sandbar Michigan lo
 import asset474 from "@/IMAGES/Outdoors Lifestyle/boats docked in Marquette, MI.jpg";
 import asset475 from "@/IMAGES/Outdoors Lifestyle/chicago-to-mackinac-island-sailing.jpg";
 import asset476 from "@/IMAGES/Outdoors Lifestyle/michigan-boating 2 girls on boat.png";
-import asset477 from "@/IMAGES/Quality of Life/walmart-thanksgiving-shopping-13.jpg";
-import asset478 from "@/IMAGES/Quality of Life/walmart-thanksgiving-shopping-2.jpg";
+import asset477 from "@/IMAGES/Quality of Life/Grocery Store/walmart-thanksgiving-shopping-13.jpg";
+import asset478 from "@/IMAGES/Quality of Life/Grocery Store/walmart-thanksgiving-shopping-2.jpg";
 import asset479 from "@/IMAGES/Science/Blacksmoker_in_Atlantic_Ocean underwater seabed hydrothermal vents minerals close-up.jpg";
 import asset480 from "@/IMAGES/Science/NOAA Remotely operated vehicle Deep Discoverer images a coral community during the second Voyage to the Ridge 2022 expedition..jpg";
 import asset481 from "@/IMAGES/Science/Remotely operated vehicle Deep Discoverer documents the benthic communities at Paganini Seamount during the Deep-Sea Symphony.jpg";
