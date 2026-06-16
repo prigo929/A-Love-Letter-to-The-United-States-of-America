@@ -30,7 +30,7 @@ export function HistoryStyles() {
 
       /* Editorial document headers */
       .history-dossier-header {
-        font-family: var(--font-display), Georgia, serif;
+        font-family: var(--font-archivo), 'Archivo', system-ui, sans-serif;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         padding-bottom: 12px;
         margin-bottom: 24px;
@@ -55,16 +55,16 @@ export function HistoryStyles() {
         background-color: rgba(255, 255, 255, 0.03);
       }
 
-      /* Editorial serif elements for human voice */
+      /* Editorial heading/body elements (Archivo sans, site-wide swap) */
       .history-serif-title {
-        font-family: var(--font-display), Georgia, serif;
+        font-family: var(--font-archivo), 'Archivo', system-ui, sans-serif;
         font-weight: 600;
         letter-spacing: -0.01em;
       }
       .history-serif-body {
-        font-family: var(--font-display), Georgia, serif;
+        font-family: var(--font-archivo), 'Archivo', system-ui, sans-serif;
         font-size: 17px;
-        line-height: 1.85;
+        line-height: 1.8;
         color: rgba(232, 226, 213, 0.85); /* Premium soft cream */
       }
     `}</style>

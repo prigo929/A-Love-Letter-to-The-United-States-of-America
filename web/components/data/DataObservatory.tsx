@@ -92,9 +92,13 @@ function StatCard({ d, i }: { d: Stat; i: number }) {
       transition={{ duration: 0.55, delay: (i % 4) * 0.06, ease: EASE }}
       className="group relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.02] p-6 transition-colors hover:border-white/15"
     >
-      <span className="absolute left-0 top-5 h-9 w-[3px] rounded-full" style={{ background: ACCENT[d.accent] }} />
-      <div className="font-macro-display text-4xl font-black leading-none tracking-tight md:text-5xl" style={{ color: ACCENT[d.accent] }}>
-        <AnimatedCounter value={d.value} prefix={d.prefix} suffix={d.suffix} decimals={d.decimals} />
+      {/* Accent bar + number share a flex row so the bar lines up with the
+          number's height exactly (leading-none keeps the line box tight). */}
+      <div className="flex items-stretch gap-3">
+        <span className="w-0.75 shrink-0 rounded-full" style={{ background: ACCENT[d.accent] }} />
+        <div className="font-macro-display text-4xl font-black leading-none tracking-tight md:text-5xl" style={{ color: ACCENT[d.accent] }}>
+          <AnimatedCounter value={d.value} prefix={d.prefix} suffix={d.suffix} decimals={d.decimals} />
+        </div>
       </div>
       <p className="mt-3 font-display text-base font-semibold text-white">{d.label}</p>
       <p className="mt-1 font-body text-sm leading-snug text-white/50">{d.sub}</p>
@@ -319,10 +323,6 @@ export function DataObservatory({ isRo }: { isRo: boolean }) {
               <span className="block text-glory-gold">{t.heroTitle2}</span>
             </h1>
             <p className="mt-7 max-w-2xl font-body text-lg leading-relaxed text-white/65">{t.heroDeck}</p>
-            <div className="mt-10 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-white/35">
-              <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-glory-gold" />
-              {t.scrollHint}
-            </div>
           </motion.div>
         </div>
       </section>

@@ -102,10 +102,11 @@ export function MacroStyles() {
         color: var(--macro-accent);
       }
 
-      /* Blur Masks */
+      /* Blur Masks — kept light: a 24px backdrop blur under scroll parallax is a
+         Safari repaint killer, so we use 12px and drop the saturate pass. */
       .macro-blur-mask {
-        backdrop-filter: blur(24px) saturate(1.5);
-        -webkit-backdrop-filter: blur(24px) saturate(1.5);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         background: linear-gradient(
           to bottom,
           rgba(0, 0, 0, 0.8) 0%,
@@ -283,18 +284,29 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", prefersReducedMotion ? "0%" : "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, prefersReducedMotion ? 1 : 1.05]);
 
+  // Play the hero video only while it's on screen, and pause it once scrolled
+  // away so Safari can release the decoder (it otherwise keeps looping video
+  // buffers resident in RAM). Combined with preload="none" this bounds memory.
   useEffect(() => {
     const video = videoRef.current;
-    if (video) {
-      video.muted = true;
-      video.play().catch((err) => {
-        console.warn("Autoplay block in MacroHero:", err);
-      });
-    }
+    if (!video) return;
+    video.muted = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.05 },
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
   }, [videoSrc]);
 
   return (
@@ -320,7 +332,7 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
             loop
             muted
             playsInline
-            preload="auto"
+            preload="none"
             poster={imageSrc}
             className="absolute inset-0 h-full w-full object-cover"
           >

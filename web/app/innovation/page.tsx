@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { 
@@ -287,14 +289,17 @@ export default async function InnovationPage() {
                   href={page.href}
                   className="group flex flex-col border border-white/5 bg-white/[0.02] hover:border-[#E8B923]/30 hover:bg-white/[0.04] transition-all duration-500 rounded-3xl overflow-hidden"
                 >
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                  <div className="relative aspect-16/10 overflow-hidden">
+                    <Image
                       src={page.imageSrc}
                       alt={page.title}
-                      className="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-85"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      placeholder="blur"
+                      blurDataURL={BLUR_PLACEHOLDER}
+                      className="object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-85"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-transparent" />
                     <span className="absolute right-4 top-4 bg-[#E8B923] text-[#000000] font-mono text-[9px] uppercase tracking-widest px-2.5 py-0.5 rounded font-bold">
                       {page.badge}
                     </span>

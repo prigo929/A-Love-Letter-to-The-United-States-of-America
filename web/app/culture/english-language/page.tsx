@@ -161,9 +161,9 @@ export default async function EnglishLanguagePage() {
             </div>
             <div className="culture-glass rounded-2xl p-6 border border-white/5 space-y-6 group">
               {[
-                { value: "100%", label: isRo ? "Aviație internațională (ICAO)" : "International aviation (ICAO standard)" },
-                { value: "90%", label: isRo ? "Publicații științifice globale" : "Global scientific publications" },
-                { value: "1.5B", label: isRo ? "Vorbitori de engleză în lume" : "English speakers worldwide" },
+                { value: "380M", label: isRo ? "Vorbitori nativi" : "Native speakers" },
+                { value: "67", label: isRo ? "Țări unde e limbă oficială" : "Countries where it's official" },
+                { value: "#1", label: isRo ? "Cea mai învățată limbă străină" : "Most-taught foreign language" },
               ].map((s, i) => (
                 <div key={i} className="border-b border-white/5 pb-4 last:border-0 last:pb-0">
                   <div className="font-macro-display text-4xl font-bold text-white group-hover:text-glory-gold transition-colors duration-300">{s.value}</div>
@@ -258,10 +258,10 @@ export default async function EnglishLanguagePage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-white/5 rounded-3xl overflow-hidden mb-20">
             {[
-              { value: "100%", label: isRo ? "Standard aviație ICAO" : "ICAO aviation standard", note: isRo ? "Zero excepții" : "Zero exceptions" },
-              { value: "90%", label: isRo ? "Cercetare globală" : "Global scientific research", note: isRo ? "Publicată în engleză" : "Published in English" },
-              { value: "5B+", label: isRo ? "Utilizatori internet" : "Internet users worldwide", note: isRo ? "Toate platformele — engleze" : "All platforms — English" },
-              { value: "1.5B", label: isRo ? "Vorbitori de engleză" : "English speakers", note: isRo ? "Locutori globali" : "Global speakers" },
+              { value: "~60%", label: isRo ? "Conținut web în engleză" : "Web content in English", note: isRo ? "Cea mai mare pondere online" : "Largest share of any language online" },
+              { value: "1.1B", label: isRo ? "Învață engleza acum" : "People learning English", note: isRo ? "Mai mult decât orice altă limbă" : "More than any other language" },
+              { value: "5B+", label: isRo ? "Utilizatori internet" : "Internet users worldwide", note: isRo ? "Limba implicită a web-ului" : "The default language of the web" },
+              { value: "UN · EU · NATO", label: isRo ? "Limbă de lucru" : "Working language", note: isRo ? "Și CIO și ICAO" : "Plus the IOC and ICAO" },
             ].map((s, i) => (
               <div key={i} className={`p-8 flex flex-col gap-2 ${i > 0 ? "border-l border-white/5" : ""}`}>
                 <span className="font-macro-display text-4xl md:text-5xl font-black text-[#E8B923]">{s.value}</span>

@@ -84,12 +84,23 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // ── Close mobile menu on route change ─────────────────────────────────────
+  // ── Close menus on route change ───────────────────────────────────────────
   useEffect(() => {
     setMobileOpen(false);
     setLanguageMenuOpen(false);
     setExpandedMobileSection(null);
+    // Also reset the desktop mega-menu so a stale hover state can't linger and
+    // flicker the dropdown after navigating to a subpage.
+    if (menuTimeout.current) clearTimeout(menuTimeout.current);
+    setActiveMenu(null);
   }, [pathname]);
+
+  // ── Clear any pending mega-menu close timer on unmount ────────────────────
+  useEffect(() => {
+    return () => {
+      if (menuTimeout.current) clearTimeout(menuTimeout.current);
+    };
+  }, []);
 
   // ── Lock body scroll when mobile menu is open ──────────────────────────────
   useEffect(() => {
@@ -220,11 +231,15 @@ export function Header() {
                         animate="visible"
                         exit="exit"
                         style={{ transformOrigin: "top center" }}
-                        className="absolute top-full left-1/2 mt-1 w-64 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/20 bg-navy-dark/65 shadow-2xl backdrop-blur-2xl isolate"
+                        // `pt-2` is a transparent hover bridge: the menu starts
+                        // flush with the trigger (no margin gap to cross), so the
+                        // cursor never leaves the hover region on its way down.
+                        className="absolute top-full left-1/2 w-64 -translate-x-1/2 pt-2"
                         onMouseEnter={() => handleMenuEnter(section.title)}
                         onMouseLeave={handleMenuLeave}
                         role="menu"
                       >
+                        <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-navy-dark/65 shadow-2xl backdrop-blur-2xl isolate">
                         {/* Keep the dropdown consistently blurred in both states,
                             but add enough tint that background text never wins. */}
                         <div
@@ -288,6 +303,7 @@ export function Header() {
                           >
                             {copy.viewAllPrefix} {section.title} →
                           </Link>
+                        </div>
                         </div>
                       </motion.div>
                     )}

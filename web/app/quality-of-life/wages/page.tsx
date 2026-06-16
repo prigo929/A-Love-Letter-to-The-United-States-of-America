@@ -356,16 +356,16 @@ export default async function WagesPage() {
             <h2 className="macro-section-title text-white text-2xl mb-2">{copy.comparisonTitle}</h2>
             <p className="font-mono text-xs uppercase tracking-widest text-white/30 mb-8">{copy.comparisonSubtitle}</p>
             <div className="rounded-2xl border border-white/10 overflow-hidden">
-              <div className="grid grid-cols-3 bg-white/5 px-6 py-3 text-xs font-mono uppercase tracking-widest text-white/40">
+              <div className="grid grid-cols-3 bg-white/5 px-6 py-4 text-xs sm:text-sm font-mono uppercase tracking-widest text-white/45">
                 <span>{isRo ? "Categorie" : "Category"}</span>
-                <span className="text-[#E8B923]">USA</span>
+                <span className="font-bold text-[#E8B923]">USA</span>
                 <span>{isRo ? "Europa" : "Europe"}</span>
               </div>
               {copy.comparisonItems.map((row, i) => (
-                <div key={i} className="grid grid-cols-3 px-6 py-4 border-t border-white/5 hover:bg-white/2 transition-colors">
-                  <span className="text-sm text-white font-display font-semibold pr-2">{row.category}</span>
-                  <span className="text-xs text-[#E8B923] leading-relaxed pr-2">{row.usNote}</span>
-                  <span className="text-xs text-white/50 leading-relaxed">{row.euNote}</span>
+                <div key={i} className="grid grid-cols-3 items-center gap-x-3 px-6 py-5 border-t border-white/5 hover:bg-white/2 transition-colors">
+                  <span className="text-sm sm:text-base text-white font-display font-bold pr-2">{row.category}</span>
+                  <span className="text-sm sm:text-base font-bold text-[#E8B923] leading-snug pr-2">{row.usNote}</span>
+                  <span className="text-sm text-white/70 leading-snug">{row.euNote}</span>
                 </div>
               ))}
             </div>

@@ -48,7 +48,9 @@ const jsonLd = {
 
 export default function HomePage() {
   return (
-    <>
+    // `serif-headings` keeps the homepage on Playfair serif while the rest of
+    // the site moved to Archivo sans (see globals.css).
+    <div className="serif-headings">
       {/* Structured data for search engines. Safe to leave alone unless SEO changes. */}
       <script
         type="application/ld+json"
@@ -86,6 +88,6 @@ export default function HomePage() {
 
       {/* Section 11: Newsletter signup — Supabase connected */}
       <NewsletterSection />
-    </>
+    </div>
   );
 }

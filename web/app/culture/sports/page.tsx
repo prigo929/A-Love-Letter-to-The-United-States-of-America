@@ -23,8 +23,8 @@ export default async function CultureSportsPage() {
       ? "NFL, NBA, MLB și fotbalul universitar — cultura sportivă americană este un export masiv de soft-power și o instituție unică."
       : "The NFL, NBA, MLB, and college football — American sports culture is a massive soft-power export and a uniquely American institution.",
     body: isRo
-      ? "De la cele 100+ milioane de spectatori ai Super Bowl-ului până la impactul global al baschetului, sportul definește ritualul colectiv american. Susținut de ecosistemul unic NCAA, sportul american reprezintă o economie de peste 80 de miliarde de dolari care proiectează o putere soft fără egal."
-      : "From the Super Bowl's 100+ million domestic viewers to basketball's global cultural footprint, sports define the American collective ritual. Supported by the unique NCAA athletics pipeline, the US sports economy reaches over $80 billion annually, projecting unmatched global soft power.",
+      ? "De la cele 100+ milioane de spectatori ai Super Bowl-ului până la impactul global al baschetului, sportul definește ritualul colectiv american. Este un ecosistem privat — patru ligi majore, sistemul universitar NCAA și cea mai urmărită transmisiune de pe Pământ — pe care niciun aparat sportiv de stat nu l-a egalat vreodată."
+      : "From the Super Bowl's 100+ million domestic viewers to basketball's global cultural footprint, sports define the American collective ritual. It is a private ecosystem — four major leagues, the NCAA pipeline, and the single most-watched broadcast on Earth — that no state-run sports apparatus has ever matched.",
     sportsEconomyTitle: isRo ? "Economia Sportului Profesionist: Dominanță Globală" : "The Professional Sports Economy: Global Dominance",
     sportsEconomyText: isRo
       ? "Statele Unite operează cele mai mari patru ligi profesioniste din lume după venituri: NFL, NBA, MLB și NHL. NFL generează singură peste 20 mld. $ anual, în timp ce NBA este difuzată în 215 țări. Susținut de ecosistemul unic NCAA, sportul american reprezintă o economie de peste 80 de miliarde de dolari care proiectează o putere soft fără egal."
@@ -131,9 +131,9 @@ export default async function CultureSportsPage() {
             </div>
             <div className="culture-glass rounded-2xl p-6 border border-white/5 space-y-6 group">
               {[
-                { value: "$80B+", label: isRo ? "Industria totală sport SUA" : "Total US Sports Industry" },
+                { value: "1,220", label: isRo ? "Medalii de aur olimpice (record absolut)" : "Olympic Golds — most all-time" },
                 { value: "$20B+", label: isRo ? "Venituri anuale NFL" : "Annual NFL Revenue" },
-                { value: "215", label: isRo ? "Țări difuzare NBA" : "Countries Broadcasting NBA" },
+                { value: "42%", label: isRo ? "Din terenurile de golf ale lumii" : "Of the World's Golf Courses" },
               ].map((s, i) => (
                 <div key={i} className="border-b border-white/5 pb-4 last:border-0 last:pb-0">
                   <div className="font-macro-display text-4xl font-bold text-white group-hover:text-glory-gold transition-colors duration-300">{s.value}</div>
@@ -429,20 +429,19 @@ export default async function CultureSportsPage() {
                 : "American stadiums are more than arenas — they are complete cultural experiences, seating 60,000–100,000 fans with cutting-edge technology and decades of storied tradition."}
             </p>
             <PhotoLightboxGrid
-              gridClassName="grid grid-cols-2 md:grid-cols-3 gap-3"
+              gridClassName="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12"
+              withCaptions
+              sizes="(max-width: 768px) 100vw, 50vw"
               photos={[
-                { src: SITE_IMAGES.culture.allegiantStadium, alt: "Allegiant Stadium exterior — Las Vegas Raiders", caption: isRo ? "Allegiant Stadium — Las Vegas" : "Allegiant Stadium — Las Vegas", aspect: "16/10" },
-                { src: SITE_IMAGES.culture.yankeeStadium, alt: "Yankee Stadium — New York Yankees game from the stands", caption: isRo ? "Yankee Stadium — The Bronx" : "Yankee Stadium — The Bronx", aspect: "16/10" },
-                { src: SITE_IMAGES.culture.baseballAerial, alt: "Aerial top-down view of illuminated baseball diamond at night", caption: isRo ? "Diamantul de Baseball — vedere aeriană" : "Baseball Diamond — Aerial", aspect: "16/10" },
-                { src: SITE_IMAGES.culture.batterAtPlate, alt: "Baseball batter swinging at pitch with catcher and umpire", caption: isRo ? "La Bataie" : "At the Plate", aspect: "16/10" },
-                { src: SITE_IMAGES.culture.collegeFootball, alt: "Tennessee vs Ohio State college football playoff 2024", caption: isRo ? "Tennessee vs. Ohio State — Playoff 2024" : "Tennessee vs. Ohio State — 2024 Playoff", aspect: "16/10" },
-                { src: SITE_IMAGES.culture.metLifeFlag, alt: "Massive US flag unfurled before Jets game at MetLife Stadium", caption: isRo ? "MetLife Stadium — Drapelul American" : "MetLife Stadium — The Flag", aspect: "16/10" },
-                { src: SITE_IMAGES.culture.stadiumAsuArizona, alt: "State Farm Stadium — NFL Arizona Cardinals aerial view", caption: isRo ? "State Farm Stadium — Glendale, AZ" : "State Farm Stadium — Glendale, AZ", aspect: "16/10" },
-                { src: SITE_IMAGES.culture.stadiumAttKickoff, alt: "AT&T Stadium — Alabama vs Wisconsin kickoff aerial panoramic", caption: isRo ? "AT&T Stadium — Arlington, TX" : "AT&T Stadium — Arlington, TX", aspect: "16/10" },
-                { src: SITE_IMAGES.culture.stadiumCarolina, alt: "Bank of America Stadium — Carolina Panthers, Charlotte NC", caption: isRo ? "Bank of America Stadium — Charlotte" : "Bank of America Stadium — Charlotte", aspect: "16/10" },
-                { src: SITE_IMAGES.culture.stadiumFedEx, alt: "FedExField — Washington NFL game panoramic view", caption: isRo ? "FedExField — Landover, MD" : "FedExField — Landover, MD", aspect: "16/10" },
-                { src: SITE_IMAGES.culture.stadiumBaltimore, alt: "M&T Bank Stadium — Baltimore Ravens aerial top-down view", caption: isRo ? "M&T Bank Stadium — Baltimore" : "M&T Bank Stadium — Baltimore", aspect: "16/10" },
-                { src: SITE_IMAGES.culture.stadiumAtlantaBraves, alt: "Atlanta Braves baseball game — evening view from home plate", caption: isRo ? "Truist Park — Atlanta Braves" : "Truist Park — Atlanta", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.allegiantStadium, alt: "Allegiant Stadium exterior — Las Vegas Raiders", caption: "Allegiant Stadium · Las Vegas", description: isRo ? "Un dom de sticlă neagră de 2 mld. $ lângă Strip — casa Raiders, cu un teren de iarbă naturală glisant; gazda Super Bowl LVIII." : "A $2B black-glass dome beside the Strip — home of the Raiders, with a roll-out natural-grass field; host of Super Bowl LVIII.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.yankeeStadium, alt: "Yankee Stadium — New York Yankees game from the stands", caption: "Yankee Stadium · The Bronx", description: isRo ? "Casa celei mai titrate francize din baseball — 27 de titluri World Series; arena din 2009 evocă templul construit de Babe Ruth." : "Home of baseball's most decorated franchise — 27 World Series titles; the 2009 ballpark echoes the cathedral Babe Ruth built.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.metLifeFlag, alt: "Massive US flag unfurled before Jets game at MetLife Stadium", caption: "MetLife Stadium · East Rutherford", description: isRo ? "Singurul stadion NFL împărțit de două echipe (Giants și Jets), 82.500 de locuri — gazda finalei Cupei Mondiale 2026." : "The NFL's only shared home (Giants and Jets), 82,500 seats — and host of the 2026 FIFA World Cup final.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumAsuArizona, alt: "State Farm Stadium — NFL Arizona Cardinals aerial view", caption: "State Farm Stadium · Glendale", description: isRo ? "Stadion cu acoperiș retractabil și teren de iarbă glisant; gazdă repetată de Super Bowl și Final Four în deșertul Arizonei." : "A retractable-roof venue with a roll-out grass field; a repeat Super Bowl and Final Four host in the Arizona desert.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumCarolina, alt: "Bank of America Stadium — Carolina Panthers, Charlotte NC", caption: "Bank of America Stadium · Charlotte", description: isRo ? "Casa din centru a Carolina Panthers, străjuită de pantere de bronz — o fortăreață în inima Noului Sud." : "The Carolina Panthers' downtown home, ringed by bronze panthers — a fortress in the heart of the New South.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumFedEx, alt: "FedExField — Washington NFL game panoramic view", caption: "FedExField · Landover, MD", description: isRo ? "Unul dintre cele mai mari stadioane NFL ca pe capacitate, lângă capitala națiunii — punct de întâlnire duminical." : "One of the NFL's largest by capacity, just outside the nation's capital — a Sunday gathering point for the region.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumBaltimore, alt: "M&T Bank Stadium — Baltimore Ravens aerial top-down view", caption: "M&T Bank Stadium · Baltimore", description: isRo ? "Casa Ravens lângă Inner Harbor — duminici violete și una dintre cele mai zgomotoase galerii din ligă." : "Home of the Ravens beside the Inner Harbor — purple Sundays and one of the league's loudest crowds.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumAtlantaBraves, alt: "Atlanta Braves baseball game — evening view from home plate", caption: "Truist Park · Atlanta", description: isRo ? "Arena Braves care ancorează The Battery — un stadion-cartier ce îmbină baseballul cu magazine, muzică și gastronomie." : "The Braves' ballpark anchoring The Battery — a stadium-as-neighborhood blending baseball with shops, music, and food.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumSuperdome, alt: "Caesars Superdome aerial at night before Super Bowl LIX, New Orleans", caption: "Caesars Superdome · New Orleans", description: isRo ? "O emblemă a Sudului de la Golf din 1975 — gazda a șapte ediții Super Bowl și inima orașului și a echipei Saints." : "An icon of the Gulf South since 1975 — host of seven Super Bowls and the beating heart of the Saints and the city.", aspect: "16/10" },
               ]}
             />
           </div>
@@ -457,9 +456,9 @@ export default async function CultureSportsPage() {
                 : "Nowhere else on Earth does amateur college sport fill 100,000-seat stadiums. The American autumn Saturday is a cultural ritual — marching bands, century-old traditions, and an intensity rivaling any professional league."}
             </p>
             <PhotoLightboxGrid
-              gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10"
+              gridClassName="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12"
               withCaptions
-              sizes="(max-width: 768px) 100vw, 33vw"
+              sizes="(max-width: 768px) 100vw, 50vw"
               photos={[
                 { src: SITE_IMAGES.culture.stadiumMichigan, alt: "Michigan Stadium 'The Big House' filled to capacity", caption: "Michigan Stadium · “The Big House”", description: isRo ? "107.601 de locuri — cel mai mare stadion din Statele Unite și din emisfera vestică." : "107,601 seats — the largest stadium in the United States and the entire Western Hemisphere.", aspect: "16/10" },
                 { src: SITE_IMAGES.culture.stadiumBeaver, alt: "Penn State Beaver Stadium White Out night game", caption: "Beaver Stadium · Penn State", description: isRo ? "106.572 de locuri; faimoasele meciuri „White Out” de noapte sunt printre cele mai zgomotoase scene din sport." : "106,572 seats; the deafening “White Out” night games rank among the loudest spectacles in all of sport.", aspect: "16/10" },
@@ -484,15 +483,16 @@ export default async function CultureSportsPage() {
                 : "From ivy-clad historic shrines to billion-dollar domes, America's professional venues fuse deep tradition with the most advanced stadium technology on the planet."}
             </p>
             <PhotoLightboxGrid
-              gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10"
+              gridClassName="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12"
               withCaptions
-              sizes="(max-width: 768px) 100vw, 33vw"
+              sizes="(max-width: 768px) 100vw, 50vw"
               photos={[
                 { src: SITE_IMAGES.culture.stadiumSoFi, alt: "SoFi Stadium Super Bowl LVI with Infinity Screen", caption: "SoFi Stadium · Los Angeles", description: isRo ? "Un miracol de peste 5 miliarde $ cu ecranul dublu „Infinity”; gazda Super Bowl LVI și a Jocurilor Olimpice 2028." : "A $5B+ marvel with the dual-sided Infinity Screen; host of Super Bowl LVI and the 2028 Olympics.", aspect: "16/10" },
                 { src: SITE_IMAGES.culture.stadiumAttExterior, alt: "Dallas Cowboys AT&T Stadium exterior aerial with dome roof", caption: "AT&T Stadium · Dallas Cowboys", description: isRo ? "„Jerry World” — un dom de 1,3 miliarde $ cu un ecran suspendat care se întinde aproape pe tot terenul." : "“Jerry World” — a $1.3B retractable dome with a center-hung video board spanning nearly the full field.", aspect: "16/10" },
                 { src: SITE_IMAGES.culture.stadiumMercedesBenz, alt: "Mercedes-Benz Stadium Atlanta at sunset", caption: "Mercedes-Benz Stadium · Atlanta", description: isRo ? "Acoperiș retractabil în formă de morișcă și un panou „halo” de 360°; unul dintre cele mai avansate stadioane din lume." : "Retractable pinwheel roof and a 360° halo board; one of the most advanced venues on Earth.", aspect: "16/10" },
                 { src: SITE_IMAGES.culture.stadiumLambeau, alt: "Green Bay Packers Lambeau Field exterior in winter", caption: "Lambeau Field · Green Bay", description: isRo ? "„Tundra Înghețată” (1957) — cel mai longeviv stadion din NFL și un altar deținut de comunitate." : "“The Frozen Tundra” (1957) — the longest-operating NFL stadium and a community-owned shrine.", aspect: "16/10" },
                 { src: SITE_IMAGES.culture.stadiumWrigley, alt: "Wrigley Field aerial, Chicago Cubs", caption: "Wrigley Field · Chicago Cubs", description: isRo ? "Deschis în 1914 — ziduri de cărămidă acoperite cu iederă și un tabelă întoarsă manual; muzeul viu al baseballului." : "Opened 1914 — ivy-covered brick walls and a hand-turned scoreboard; baseball's living museum.", aspect: "16/10" },
+                { src: SITE_IMAGES.culture.stadiumFenway, alt: "Fenway Park at sunset, Boston Red Sox game in progress", caption: "Fenway Park · Boston", description: isRo ? "Deschis în 1912 — cea mai veche arenă din MLB, casa „Monstrului Verde” și a Red Sox." : "Opened 1912 — the oldest ballpark in the majors, home of the Green Monster and the Red Sox.", aspect: "16/10" },
                 { src: SITE_IMAGES.culture.stadiumBristol, alt: "Bristol Motor Speedway Battle at Bristol with giant flag", caption: "Bristol Motor Speedway · Tennessee", description: isRo ? "Un bol de beton de jumătate de milă cu 150.000 de locuri — „Ultimul Mare Colosseum” al motorsportului american." : "A half-mile concrete bowl seating ~150,000 — “The Last Great Colosseum” of American motorsport.", aspect: "16/10" },
               ]}
             />

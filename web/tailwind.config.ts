@@ -27,8 +27,16 @@ const config: Config = {
 
       // ─── Typography ───────────────────────────────────────────────
       fontFamily: {
-        // Headings — editorial, editorial gravitas
-        display: ['"Playfair Display"', "Georgia", "serif", "var(--font-emoji)"],
+        // Headings — Archivo (sans). Serif restored, scoped, on home + culture
+        // via the `.serif-headings` rule in globals.css.
+        display: [
+          "var(--font-archivo)",
+          '"Archivo"',
+          '"Inter"',
+          "system-ui",
+          "sans-serif",
+          "var(--font-emoji)",
+        ],
         // Large hero numbers & display text
         hero: ['"Bebas Neue"', "Impact", "sans-serif", "var(--font-emoji)"],
         // Body copy — clean & readable

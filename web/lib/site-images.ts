@@ -433,6 +433,8 @@ import stadiumMercedesBenz from "@/IMAGES/Culture/Sports/Stadiums/Mercedes-Benz 
 import stadiumAttExterior from "@/IMAGES/Culture/Sports/Stadiums/Dallas Cowboys AT&T Stadium Exterior Aerial View With Dome Roof And Plaza Daytime.jpg";
 import stadiumWrigley from "@/IMAGES/Culture/Sports/Stadiums/Wrigley Field aerial.jpg";
 import stadiumBristol from "@/IMAGES/Culture/Sports/Stadiums/Bristol Motor Speedway Battle At Bristol Football Field Giant American Flag Crowd Card Stunt USA Fireworks Ceremony.jpg";
+import stadiumFenway from "@/IMAGES/Culture/Sports/Stadiums/Boston Red Sox Baseball Fenway Park Full Crowd Sunset Twilight Dramatic Sky Game In Progress.jpg";
+import stadiumSuperdome from "@/IMAGES/Culture/Sports/Stadiums/Caesars Superdome aerial Night prior to Super Bowl LIX.jpg";
 
 // Food — pepperoni pizza
 import foodPepperoniPizza from "@/IMAGES/Culture/Food/Pepperoni pizza american.jpg";
@@ -850,6 +852,8 @@ export const SITE_IMAGES = {
     stadiumAttExterior: stadiumAttExterior.src,
     stadiumWrigley: stadiumWrigley.src,
     stadiumBristol: stadiumBristol.src,
+    stadiumFenway: stadiumFenway.src,
+    stadiumSuperdome: stadiumSuperdome.src,
 
     // Fashion — western & preppy
     fashionCowboyBoots: fashionCowboyBoots.src,

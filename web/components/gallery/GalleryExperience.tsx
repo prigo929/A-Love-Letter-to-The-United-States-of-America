@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 import type { StaticImageData } from "next/image";
-import { Camera, ChevronLeft, ChevronRight, Grid3X3, Home, MapPin, X } from "lucide-react";
+import { Camera, ChevronLeft, ChevronRight, Download, Grid3X3, Home, MapPin, X, ZoomIn, ZoomOut } from "lucide-react";
 import type { GalleryCategory, GalleryImage } from "@/lib/data/gallery";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 
@@ -173,6 +173,8 @@ function ImageDialog({
   onPrev: () => void;
   onNext: () => void;
 }) {
+  const [zoomed, setZoomed] = useState(false);
+
   // Keyboard: Escape closes, arrows move through the filtered collection.
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -183,6 +185,35 @@ function ImageDialog({
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [onClose, onPrev, onNext]);
+
+  // Reset zoom whenever the focused image changes.
+  useEffect(() => {
+    setZoomed(false);
+  }, [image.path]);
+
+  // Lock background scroll while the lightbox is open (the dialog only mounts
+  // when open, so mount/unmount toggles the lock). Lock html + body and
+  // compensate the scrollbar width to avoid a layout shift.
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+    const prevHtml = html.style.overflow;
+    const prevBody = body.style.overflow;
+    const prevPad = body.style.paddingRight;
+    const scrollbar = window.innerWidth - html.clientWidth;
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    if (scrollbar > 0) body.style.paddingRight = `${scrollbar}px`;
+    return () => {
+      html.style.overflow = prevHtml;
+      body.style.overflow = prevBody;
+      body.style.paddingRight = prevPad;
+    };
+  }, []);
+
+  const downloadName = image.path.split("/").pop() ?? "image.jpg";
+  const downloadHref =
+    typeof image.src === "string" ? image.src : image.src.src;
 
   return (
     <AnimatePresence>
@@ -205,16 +236,40 @@ function ImageDialog({
         aria-modal="true"
         aria-label={image.caption}
       >
-        <button
-          type="button"
-          onClick={onClose}
-          className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-lg bg-black/55 text-white/80 backdrop-blur transition hover:bg-black/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
-          aria-label={copy.close}
-        >
-          <X className="h-5 w-5" aria-hidden="true" />
-        </button>
+        {/* Action buttons: download · zoom · close */}
+        <div className="absolute right-4 top-4 z-20 flex items-center gap-2">
+          <a
+            href={downloadHref}
+            download={downloadName}
+            onClick={(e) => e.stopPropagation()}
+            className="flex h-10 w-10 items-center justify-center rounded-lg bg-black/55 text-white/80 backdrop-blur transition hover:bg-black/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
+            aria-label="Download image"
+            title="Download"
+          >
+            <Download className="h-5 w-5" aria-hidden="true" />
+          </a>
+          <button
+            type="button"
+            onClick={() => setZoomed((v) => !v)}
+            className="flex h-10 w-10 items-center justify-center rounded-lg bg-black/55 text-white/80 backdrop-blur transition hover:bg-black/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
+            aria-label={zoomed ? "Zoom out" : "Zoom in"}
+            aria-pressed={zoomed}
+            title={zoomed ? "Zoom out" : "Zoom in"}
+          >
+            {zoomed ? <ZoomOut className="h-5 w-5" aria-hidden="true" /> : <ZoomIn className="h-5 w-5" aria-hidden="true" />}
+          </button>
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex h-10 w-10 items-center justify-center rounded-lg bg-black/55 text-white/80 backdrop-blur transition hover:bg-black/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
+            aria-label={copy.close}
+            title={copy.close}
+          >
+            <X className="h-5 w-5" aria-hidden="true" />
+          </button>
+        </div>
 
-        <motion.div layoutId={`gallery-${image.path}`} className="relative h-[58vh] bg-black lg:h-full">
+        <motion.div layoutId={`gallery-${image.path}`} className="relative h-[58vh] overflow-hidden bg-black lg:h-full">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={image.path}
@@ -222,14 +277,27 @@ function ImageDialog({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="absolute inset-0"
+              className={cn(
+                "absolute inset-0",
+                zoomed && "cursor-grab active:cursor-grabbing",
+              )}
+              drag={zoomed}
+              dragMomentum={false}
+              dragElastic={0.05}
+              dragConstraints={{ left: -600, right: 600, top: -400, bottom: 400 }}
             >
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
-                className="object-contain"
-                sizes="(max-width: 1024px) 100vw, 70vw"
+                draggable={false}
+                onClick={() => setZoomed((v) => !v)}
+                className={cn(
+                  "object-contain transition-transform duration-300",
+                  zoomed ? "scale-[1.9] cursor-zoom-out" : "cursor-zoom-in",
+                )}
+                sizes="(max-width: 1024px) 100vw, 75vw"
+                quality={90}
                 placeholder="blur"
                 blurDataURL={BLUR_PLACEHOLDER}
                 priority

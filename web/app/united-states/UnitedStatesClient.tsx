@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { US_SECTIONS, US_QUICK_FACTS } from "@/lib/data/united-states-data";
 import type { USSection } from "@/lib/data/united-states-data";
+import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 // ─── Tab config ───────────────────────────────────────────────────────────────
 const TABS: {
@@ -305,6 +307,37 @@ export default function UnitedStatesClient({ locale }: { locale: string }) {
               </motion.div>
             )}
           </AnimatePresence>
+        </div>
+      </section>
+
+      {/* ── Map illustrations (stylized) ──────────────────────────────────── */}
+      <section className="px-4 sm:px-6 lg:px-8 pb-4">
+        <div className="max-w-screen-xl mx-auto">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-glory-gold font-semibold mb-2">
+            {locale === "ro" ? "O NAȚIUNE, 50 DE STATE" : "ONE NATION, 50 STATES"}
+          </p>
+          <p className="text-white/50 text-sm font-body leading-relaxed max-w-2xl mb-6">
+            {locale === "ro"
+              ? "De la coastele arctice ale Alaskăi până la insulele tropicale ale Hawaiʻi — 50 de state sub același drapel. (Ilustrații stilizate.)"
+              : "From the Arctic coasts of Alaska to the tropical shores of Hawaiʻi — 50 states under one flag. (Stylized illustrations.)"}
+          </p>
+          <PhotoLightboxGrid
+            gridClassName="grid grid-cols-1 md:grid-cols-2 gap-6"
+            photos={[
+              {
+                src: SITE_IMAGES.usaMapFlag,
+                alt: "United States map filled with the American flag pattern across all 50 states",
+                caption: locale === "ro" ? "O Națiune, 50 de State — de la Oceanic la Oceanic" : "One Nation, 50 States — From Sea to Shining Sea",
+                aspect: "5/3",
+              },
+              {
+                src: SITE_IMAGES.usaMapPeople,
+                alt: "United States map with stylized red and blue people figures",
+                caption: locale === "ro" ? "Un Popor de Imigranți — ilustrație" : "A People of Many Origins — illustration",
+                aspect: "5/3",
+              },
+            ]}
+          />
         </div>
       </section>
 

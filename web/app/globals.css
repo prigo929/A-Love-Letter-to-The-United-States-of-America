@@ -54,14 +54,16 @@
     overflow-x: hidden;
   }
 
-  /* Headings use Playfair Display */
+  /* Headings default to Archivo (sans). Serif is restored, scoped, under
+     `.serif-headings` (homepage + culture) — see the override below. */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-family: "Playfair Display", Georgia, serif, var(--font-emoji);
+    font-family: var(--font-archivo), "Archivo", "Inter", system-ui, sans-serif,
+      var(--font-emoji);
     font-weight: 700;
     line-height: 1.15;
     max-width: 100%;
@@ -132,6 +134,18 @@
 @layer components {
   /* ── Typography helpers ──────────────────────────────────────────────── */
   .font-display {
+    font-family: var(--font-archivo), "Archivo", "Inter", system-ui, sans-serif,
+      var(--font-emoji);
+  }
+
+  /* ── Scoped serif restore (homepage + culture keep Playfair) ───────────── */
+  .serif-headings h1,
+  .serif-headings h2,
+  .serif-headings h3,
+  .serif-headings h4,
+  .serif-headings h5,
+  .serif-headings h6,
+  .serif-headings .font-display {
     font-family: "Playfair Display", Georgia, serif, var(--font-emoji);
   }
   .font-hero {
