@@ -271,7 +271,7 @@ export default function UnitedStatesClient({ locale }: { locale: string }) {
             </span>
           </div>
 
-          <h1 className="font-hero text-5xl md:text-7xl text-white tracking-wider mb-3">
+          <h1 className="font-display text-4xl md:text-6xl font-bold text-white leading-[1.05] mb-3">
             {heading.title}
           </h1>
           <p className="font-body text-white/60 text-lg max-w-2xl leading-relaxed">

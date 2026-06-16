@@ -4,6 +4,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
+import { HistoryStyles } from "@/components/history/HistoryStyles";
 
 export const metadata: Metadata = {
   title: "Global Leadership | Patriotic USA",
@@ -15,25 +16,41 @@ export default async function GlobalLeadershipPage() {
   const breadcrumb = locale === "ro" ? "Leadership Global" : "Global Leadership";
   const isRo = locale === "ro";
 
+  const heroStats = [
+    { value: "32", label: isRo ? "Aliați NATO conduși" : "NATO allies led" },
+    { value: "750+", label: isRo ? "Baze globale" : "Global bases" },
+    { value: "$886B", label: isRo ? "Buget de apărare" : "Defense budget" },
+    { value: "57%", label: isRo ? "Din rezervele în USD" : "Of FX reserves in USD" },
+  ];
+
   return (
-    <main className="min-h-screen bg-navy-dark pt-24 text-white">
+    <main className="history-classified-bg min-h-screen pt-24">
+      <HistoryStyles />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Breadcrumb items={[{ label: breadcrumb }]} className="mb-8" />
       </div>
 
-      {/* Hero Header */}
-      <section className="relative overflow-hidden px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl rounded-3xl border border-white/10 bg-gradient-to-r from-glory-blue/15 via-white/3 to-glory-red/10 p-8 md:p-12 shadow-xl">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-glory-blue via-glory-gold to-glory-red" />
-          <div className="max-w-3xl space-y-4">
-            <h1 className="font-display text-3xl md:text-5xl font-black text-white leading-tight tracking-tight">
-              {isRo ? "LIDER MUNDIAL" : "GLOBAL LEADERSHIP"}
-            </h1>
-            <p className="font-body text-white/70 text-sm md:text-base leading-relaxed">
-              {isRo
-                ? "Garanția globală a libertății și ordinii internaționale. De la Marshall Plan la alianța NATO, Statele Unite sprijină democrațiile și stabilitatea pe fiecare continent."
-                : "The global guarantor of freedom and international order. From the Marshall Plan to the NATO alliance, the United States supports democracies and stability on every continent."}
-            </p>
+      {/* Hero — editorial */}
+      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <span className="history-bureaucratic block mb-5">
+            {isRo ? "NAȚIUNEA INDISPENSABILĂ" : "THE INDISPENSABLE NATION"}
+          </span>
+          <h1 className="history-serif-title max-w-4xl text-4xl md:text-6xl font-bold text-white leading-[1.05]">
+            {isRo ? "Lider Mondial" : "Global Leadership"}
+          </h1>
+          <p className="history-serif-body mt-6 max-w-2xl text-lg">
+            {isRo
+              ? "Garanția globală a libertății și ordinii internaționale. De la Planul Marshall la alianța NATO, Statele Unite sprijină democrațiile și stabilitatea pe fiecare continent."
+              : "The global guarantor of freedom and international order. From the Marshall Plan to the NATO alliance, the United States supports democracies and stability on every continent."}
+          </p>
+          <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-white/10 bg-white/5 sm:grid-cols-4">
+            {heroStats.map((s, i) => (
+              <div key={i} className="bg-navy-dark p-5">
+                <div className="font-display text-3xl font-bold text-glory-gold">{s.value}</div>
+                <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-white/45">{s.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

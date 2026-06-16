@@ -2,15 +2,8 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import { 
-  Shield, 
-  Globe, 
-  Anchor, 
-  Zap, 
-  Coins, 
-  HelpCircle, 
-  ExternalLink 
-} from "lucide-react";
+import { HistoryStyles } from "@/components/history/HistoryStyles";
+import { Shield, Globe, Anchor, Zap, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "NATO Alliance & Pax Americana | Global Leadership",
@@ -23,6 +16,7 @@ interface NatoCopy {
   heroTagline: string;
   heroTitle: string;
   heroSubtitle: string;
+  heroStats: Array<{ value: string; label: string }>;
   thesisTitle: string;
   thesisParagraph: string;
   pillarsTitle: string;
@@ -46,6 +40,12 @@ const copyEn: NatoCopy = {
   heroTagline: "SECURITY & PAX AMERICANA",
   heroTitle: "NATO: The Shield of the Democratic World",
   heroSubtitle: "How collective defense and the American security umbrella have guaranteed peace and enabled global prosperity since 1945.",
+  heroStats: [
+    { value: "32", label: "Member Nations" },
+    { value: "1", label: "Time Article 5 Invoked" },
+    { value: "$886B", label: "US Defense Budget (FY24)" },
+    { value: "1949", label: "Alliance Founded" },
+  ],
   thesisTitle: "The Cornerstone of Transatlantic Security",
   thesisParagraph: "Established in 1949, the North Atlantic Treaty Organization (NATO) binds 32 sovereign democratic nations together in mutual defense. At its core is Article 5—the commitment that an attack on one is an attack on all. Underpinned by American military capability and the strategic nuclear umbrella, NATO has successfully deterred aggression and kept the peace in Europe for more than seven decades.",
   pillarsTitle: "Key Pillars of the Alliance",
@@ -86,6 +86,12 @@ const copyRo: NatoCopy = {
   heroTagline: "SECURITATE ȘI PAX AMERICANA",
   heroTitle: "NATO: Scutul Lumii Democratice",
   heroSubtitle: "Cum au garantat pacea apărarea colectivă și umbrela de securitate americană, permițând prosperitatea globală din 1945.",
+  heroStats: [
+    { value: "32", label: "Națiuni Membre" },
+    { value: "1", label: "Invocări ale Articolului 5" },
+    { value: "$886B", label: "Buget Apărare SUA (2024)" },
+    { value: "1949", label: "Alianță Înființată" },
+  ],
   thesisTitle: "Piatra de Temelie a Securității Transatlantice",
   thesisParagraph: "Înființată în 1949, Organizația Tratatului Atlanticului de Nord (NATO) reunește 32 de națiuni democratice suverane în apărarea reciprocă. În centrul său se află Articolul 5 — angajamentul că un atac împotriva unuia este un atac împotriva tuturor. Susținut de capacitatea militară a SUA și de umbrela sa nucleară, NATO a descurajat agresiunile externe timp de peste șapte decenii.",
   pillarsTitle: "Pilonii Cheie ai Alianței",
@@ -125,8 +131,12 @@ export default async function NatoAlliancePage() {
   const isRo = locale === "ro";
   const copy = isRo ? copyRo : copyEn;
 
+  const pillarIcons = [Shield, Anchor, Zap, Globe];
+
   return (
-    <main className="min-h-screen bg-navy-dark pt-24 text-white font-body selection:bg-glory-gold selection:text-navy-dark">
+    <main className="history-classified-bg min-h-screen pt-24 font-body selection:bg-glory-gold selection:text-navy-dark">
+      <HistoryStyles />
+
       {/* Breadcrumbs */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Breadcrumb
@@ -138,122 +148,79 @@ export default async function NatoAlliancePage() {
         />
       </div>
 
-      {/* Hero Section */}
-      <section
-        id="hero"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-gradient-to-b from-navy-dark via-navy-mid to-navy-dark relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-star-pattern opacity-30 pointer-events-none" />
-        <div className="mx-auto max-w-4xl text-center relative z-10">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-glory-gold mb-4 block">
-            {copy.heroTagline}
-          </span>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+      {/* Hero — editorial */}
+      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <span className="history-bureaucratic block mb-5">{copy.heroTagline}</span>
+          <h1 className="history-serif-title max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.05]">
             {copy.heroTitle}
           </h1>
-          <p className="font-body text-white/70 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-            {copy.heroSubtitle}
-          </p>
-        </div>
-      </section>
-
-      {/* Thesis Section */}
-      <section
-        id="intro"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
-      >
-        <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/3 p-8 md:p-12 relative">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-            <Shield className="h-24 w-24 text-glory-gold" />
-          </div>
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-glory-gold mb-6">
-            {copy.thesisTitle}
-          </h2>
-          <p className="font-body text-white/80 text-lg leading-relaxed">
-            {copy.thesisParagraph}
-          </p>
-        </div>
-      </section>
-
-      {/* Pillars Section */}
-      <section
-        id="pillars"
-        className="scroll-mt-24 border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8 bg-navy-dark"
-      >
-        <div className="mx-auto max-w-7xl">
-          <h2 className="font-display text-3xl font-bold text-white text-center mb-12">
-            {copy.pillarsTitle}
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {copy.pillars.map((item, idx) => (
-              <div 
-                key={idx}
-                className="rounded-3xl border border-white/10 bg-white/5 p-6 flex flex-col justify-between hover:border-glory-gold/40 transition-all duration-300"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono text-glory-gold border border-glory-gold/25 px-2 py-0.5 rounded">
-                      {item.badge}
-                    </span>
-                    {idx === 0 && <Shield className="h-5 w-5 text-white/35" />}
-                    {idx === 1 && <Anchor className="h-5 w-5 text-white/35" />}
-                    {idx === 2 && <Zap className="h-5 w-5 text-white/35" />}
-                    {idx === 3 && <Globe className="h-5 w-5 text-white/35" />}
-                  </div>
-                  <h3 className="font-display text-lg font-bold text-white mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-white/50 leading-relaxed font-body">
-                    {item.description}
-                  </p>
-                </div>
+          <p className="history-serif-body mt-6 max-w-2xl text-lg">{copy.heroSubtitle}</p>
+          <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-white/10 bg-white/5 sm:grid-cols-4">
+            {copy.heroStats.map((s, i) => (
+              <div key={i} className="bg-navy-dark p-5">
+                <div className="font-display text-3xl font-bold text-glory-gold">{s.value}</div>
+                <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-white/45">{s.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Pax Americana Underwriting Section */}
-      <section
-        id="defense-feature"
-        className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 pb-16 bg-gradient-to-r from-navy-dark via-navy-mid to-navy-dark"
-      >
-        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-navy-dark/60 backdrop-blur p-8 md:p-12 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-            <Coins className="h-40 w-40 text-glory-gold" />
-          </div>
-          
-          <div className="relative z-10">
-            <span className="font-mono text-xs uppercase tracking-widest text-glory-gold mb-3 block">
-              {copy.defenseLabel}
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-6">
-              {copy.defenseTitle}
-            </h2>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-6">
-              {copy.defenseParagraph1}
-            </p>
-            <p className="font-body text-white/80 text-lg leading-relaxed mb-8">
-              {copy.defenseParagraph2}
-            </p>
-            
-            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
-              <span>Source: {copy.defenseSource}</span>
-              <a 
-                href={copy.defenseSourceUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-flex items-center gap-1 text-glory-gold hover:underline"
-              >
-                {isRo ? "Detalii Buget DoD" : "DoD Budget Details"}
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            </div>
+      {/* Thesis — editorial */}
+      <section className="border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="history-serif-title text-2xl sm:text-3xl font-bold text-white border-b border-white/10 pb-4 mb-6">
+            {copy.thesisTitle}
+          </h2>
+          <p className="history-serif-body text-lg">{copy.thesisParagraph}</p>
+        </div>
+      </section>
+
+      {/* Pillars — editorial border-top cards */}
+      <section className="border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="history-serif-title text-3xl font-bold text-white mb-12">{copy.pillarsTitle}</h2>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {copy.pillars.map((item, idx) => {
+              const Icon = pillarIcons[idx] ?? Shield;
+              return (
+                <div key={idx} className="border-t border-white/10 pt-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Icon className="h-5 w-5 text-glory-gold" />
+                    <span className="history-bureaucratic">{item.badge}</span>
+                  </div>
+                  <h3 className="history-serif-title text-lg font-bold text-white mb-3">{item.title}</h3>
+                  <p className="text-sm text-white/55 leading-relaxed font-body">{item.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* AI Ask America Oracle Section */}
+      {/* Pax Americana — editorial */}
+      <section className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl">
+          <span className="history-bureaucratic block mb-3">{copy.defenseLabel}</span>
+          <h2 className="history-serif-title text-3xl sm:text-4xl font-bold text-white mb-6">{copy.defenseTitle}</h2>
+          <p className="history-serif-body text-lg mb-6">{copy.defenseParagraph1}</p>
+          <p className="history-serif-body text-lg mb-8">{copy.defenseParagraph2}</p>
+          <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
+            <span>Source: {copy.defenseSource}</span>
+            <a
+              href={copy.defenseSourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-glory-gold hover:underline"
+            >
+              {isRo ? "Detalii Buget DoD" : "DoD Budget Details"}
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       <AskAmericaCTA
         locale={locale}
         descriptionEn={copyEn.oracleDescription}
