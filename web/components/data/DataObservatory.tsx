@@ -209,6 +209,10 @@ export function DataObservatory({ isRo }: { isRo: boolean }) {
     { value: 57.4, suffix: "%", decimals: 1, accent: "gold", label: L("USD Reserve Share", "Cota USD în Rezerve"), sub: L("Of global FX reserves", "Din rezervele valutare globale"), source: "IMF COFER 2026" },
     { value: 342, suffix: "M", accent: "blue", label: L("Americans", "Americani"), sub: L("Third-most populous nation", "A treia cea mai populată națiune"), source: L("Census 2025", "Recensământ 2025") },
     { value: 25, suffix: "%", accent: "gold", label: L("Of World GDP", "Din PIB-ul Mondial"), sub: L("~4% of population, ~25% of output", "~4% din populație, ~25% din producție"), source: "World Bank 2026" },
+    { value: 80.6, prefix: "$", suffix: "K", decimals: 1, accent: "green", label: L("Median Household Income", "Venit Median pe Gospodărie"), sub: L("Among the highest on Earth", "Printre cele mai ridicate din lume"), source: L("Census 2024", "Recensământ 2024") },
+    { value: 139, accent: "gold", label: L("Fortune Global 500 Firms", "Firme Fortune Global 500"), sub: L("More than any other nation", "Mai multe decât orice altă națiune"), source: "Fortune 2025" },
+    { value: 13.2, suffix: L(" Mb/d", " Mb/zi"), decimals: 1, accent: "gold", label: L("Crude Oil Production", "Producție de Petrol"), sub: L("World's largest producer", "Cel mai mare producător din lume"), source: "EIA 2025" },
+    { value: 1.3, suffix: "M", decimals: 1, accent: "red", label: L("Active-Duty Military", "Militari Activi"), sub: L("Plus ~800k reserves", "Plus ~800k în rezervă"), source: "DoD 2025" },
   ];
 
   // ── Domain stat bands ──────────────────────────────────────────────────────
