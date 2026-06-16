@@ -318,6 +318,17 @@ export function Header() {
               >
                 {copy.dataLink}
               </Link>
+
+              {/* Flagship comparison page */}
+              <Link
+                href="/america-vs-the-world"
+                className={cn(
+                  "px-3 py-2 rounded-lg font-body text-sm font-semibold text-glory-gold/90 hover:text-glory-gold hover:bg-glory-gold/10 transition-colors",
+                  pathname.startsWith("/america-vs-the-world") && "bg-glory-gold/10 text-glory-gold",
+                )}
+              >
+                {locale === "ro" ? "America vs. Lumea" : "America vs. World"}
+              </Link>
             </nav>
 
             {/* ── Desktop CTA ────────────────────────────────────────────── */}
@@ -587,6 +598,18 @@ export function Header() {
                 })}
 
                 <div className="mt-4 pt-4 border-t border-white/10 space-y-3">
+                  <Link
+                    href="/america-vs-the-world"
+                    className="block px-4 py-3 rounded-xl font-body text-glory-gold hover:bg-glory-gold/10 font-semibold"
+                  >
+                    {locale === "ro" ? "America vs. Lumea" : "America vs. the World"}
+                  </Link>
+                  <Link
+                    href="/data"
+                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
+                  >
+                    {copy.dataLink}
+                  </Link>
                   <Link
                     href="/sitemap"
                     className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
