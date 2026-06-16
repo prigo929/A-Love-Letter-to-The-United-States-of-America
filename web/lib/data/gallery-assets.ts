@@ -565,6 +565,59 @@ import asset559 from "@/IMAGES/US Flags/USA Flag SVG 1 more dark colors not full
 import asset560 from "@/IMAGES/Constitution/Howard Chandler Christy Scene at the Signing of the Constitution of the United States.jpg";
 import asset561 from "@/IMAGES/Cities/Seattle-Public-Libraries_Seattle-Central-Library.webp";
 import asset562 from "@/IMAGES/Culture/Music/Michael Jackson Tour pic.webp";
+import asset563 from "@/IMAGES/Aerials/Orange County aerial.jpg";
+import asset564 from "@/IMAGES/Aerials/SoFi Stadium aerial 2.jpg";
+import asset565 from "@/IMAGES/Aerials/SoFi Stadium aerial.jpg";
+import asset566 from "@/IMAGES/Culture/Music/Beyoncé_Knowles_GMA_Run_the_World_cropped saluting.jpg";
+import asset567 from "@/IMAGES/Culture/Music/Carey at Edwards Air Force Base during the making of the \"I Still Believe\" music video in December 1998.jpg";
+import asset568 from "@/IMAGES/Culture/Sports/Stadiums/Aerial Panorama Rose Bowl Stadium Game Day Sunset San Gabriel Mountains.jpg";
+import asset569 from "@/IMAGES/Culture/Sports/Stadiums/Aerial of Indianapolis Motor Speedway complex looking north. West 16th Street is in the foreground.jpg";
+import asset570 from "@/IMAGES/Culture/Sports/Stadiums/Alabama Crimson Tide Football Bryant Denny Stadium Full Capacity Crimson Crowd Daytime.jpeg";
+import asset571 from "@/IMAGES/Culture/Sports/Stadiums/Boston Red Sox Baseball Fenway Park Full Crowd Sunset Twilight Dramatic Sky Game In Progress.jpg";
+import asset572 from "@/IMAGES/Culture/Sports/Stadiums/Bristol Motor Speedway Battle At Bristol Football Field Giant American Flag Crowd Card Stunt USA Fireworks Ceremony.jpg";
+import asset573 from "@/IMAGES/Culture/Sports/Stadiums/Bryant–Denny Stadium aerial.jpg";
+import asset574 from "@/IMAGES/Culture/Sports/Stadiums/Caesars Superdome aerial Night prior to Super Bowl LIX.jpg";
+import asset575 from "@/IMAGES/Culture/Sports/Stadiums/Churchill Downs.jpg";
+import asset576 from "@/IMAGES/Culture/Sports/Stadiums/Circuit of the Americas aerial.jpg";
+import asset577 from "@/IMAGES/Culture/Sports/Stadiums/Dallas Cowboys AT&T Stadium Exterior Aerial View With Dome Roof And Plaza Daytime.jpg";
+import asset578 from "@/IMAGES/Culture/Sports/Stadiums/Daytona International Speedway - DAYTONA-500-Flyover-2017---USAF-Thunderbirdss.jpg";
+import asset579 from "@/IMAGES/Culture/Sports/Stadiums/First pitch of the MLB Speedway Classic '25 at Bristol Motor Speedway.jpg";
+import asset580 from "@/IMAGES/Culture/Sports/Stadiums/Green Bay Packers Lambeau Field Atrium Exterior Winter With Vince Lombardi Statue.jpg";
+import asset581 from "@/IMAGES/Culture/Sports/Stadiums/LSU Tigers Football Team Entrance Through Smoke At Packed Tiger Stadium Death Valley Daytime.jpg";
+import asset582 from "@/IMAGES/Culture/Sports/Stadiums/Las-Vegas-Motor-Speedway Aerial.jpg";
+import asset583 from "@/IMAGES/Culture/Sports/Stadiums/Madison Square Garden Exterior View With NYC Skyscrapers And Street Traffic Daytime.jpg";
+import asset584 from "@/IMAGES/Culture/Sports/Stadiums/Mercedes Benz Stadium Exterior Aerial View Atlanta Daytime.jpg";
+import asset585 from "@/IMAGES/Culture/Sports/Stadiums/Mercedes-Benz Stadium sunset.jpg";
+import asset586 from "@/IMAGES/Culture/Sports/Stadiums/Michigan_Stadium_-_Michigan_vs._Iowa_11-17-2012.jpg";
+import asset587 from "@/IMAGES/Culture/Sports/Stadiums/Ohio State Buckeyes Football Ohio Stadium Full Capacity Crowd With Marching Band Performing Script Ohio On Field Daytime.jpg";
+import asset588 from "@/IMAGES/Culture/Sports/Stadiums/Penn State Beaver Stadium White Out Night Game Marching Band Field Formation And Fireworks.jpg";
+import asset589 from "@/IMAGES/Culture/Sports/Stadiums/SoFi Stadium Super Bowl LVI Los Angeles Rams Vs Cincinnati Bengals Full Crowd Infinity Screen.jpg";
+import asset590 from "@/IMAGES/Culture/Sports/Stadiums/SoFi Stadium aerial.jpg";
+import asset591 from "@/IMAGES/Culture/Sports/Stadiums/State Farm Stadium Aerial at Sunset.jpg";
+import asset592 from "@/IMAGES/Culture/Sports/Stadiums/Tennessee Volunteers Football Neyland Stadium Checker Neyland Crowd Full Capacity Evening Game.jpg";
+import asset593 from "@/IMAGES/Culture/Sports/Stadiums/Texas A&M Aggies Football Kyle Field Aerial View Full Capacity Maroon Crowd Daytime.png";
+import asset594 from "@/IMAGES/Culture/Sports/Stadiums/Texas Longhorns Football Darrell K Royal Texas Memorial Stadium Full Capacity Burnt Orange Crowd With Austin Skyline.jpg";
+import asset595 from "@/IMAGES/Culture/Sports/Stadiums/Texas-Motor-Speedway-Aerial-View.jpg";
+import asset596 from "@/IMAGES/Culture/Sports/Stadiums/The Thunderbirds fly over the Las Vegas Motor Speedway during UAW Dodge 400 NASCAR event.jpg";
+import asset597 from "@/IMAGES/Culture/Sports/Stadiums/Wrigley Field aerial.jpg";
+import asset598 from "@/IMAGES/Quality of Life/Grocery Store/A King Soopers in Colorado Springs, CO.jpg";
+import asset599 from "@/IMAGES/Quality of Life/Grocery Store/A view of the Publix store from the upstairs dining area in the MetroWest area of Orlando, Florida.jpg";
+import asset600 from "@/IMAGES/Quality of Life/Grocery Store/Albertsons in Weatherford, Texas.jpg";
+import asset601 from "@/IMAGES/Quality of Life/Grocery Store/Costco_Ocean_Township.jpg";
+import asset602 from "@/IMAGES/Quality of Life/Grocery Store/Endcaps at a Walmart store in the town of Wallkill, NY.jpg";
+import asset603 from "@/IMAGES/Quality of Life/Grocery Store/Front Area Safeway store, Foster City CA.jpg";
+import asset604 from "@/IMAGES/Quality of Life/Grocery Store/Hybla Valley Walmart Supercenter Interior Action Alley With Ziploc Pallet Display Rollback Signs Snack Aisle And Hanging American Flag.jpg";
+import asset605 from "@/IMAGES/Quality of Life/Grocery Store/Inside Walmart Supercenter in Bloomsburg, Pennsylvania.jpg";
+import asset606 from "@/IMAGES/Quality of Life/Grocery Store/Interior of Walmart Supercenter, Thomasville Road, Tallahassee, FL.jpg";
+import asset607 from "@/IMAGES/Quality of Life/Grocery Store/Interior of the two-story Wal-Mart Supercenter at Crossgates Commons, the largest in the United States, in Albany, New York.jpg";
+import asset608 from "@/IMAGES/Quality of Life/Grocery Store/Target_in_Ocean_Township,_NJ.jpg";
+import asset609 from "@/IMAGES/Quality of Life/Grocery Store/The_interior_produce_section_of_a_Kroger_Marketplace_store_in_Athens,_Georgia_03.jpg";
+import asset610 from "@/IMAGES/Quality of Life/Grocery Store/Walmart_Neighborhood_Market,_GA125,_Valdosta.jpg";
+import asset611 from "@/IMAGES/Quality of Life/Grocery Store/produce department Safeway store, Foster City CA.jpg";
+import asset612 from "@/IMAGES/Quality of Life/Grocery Store/walmart-thanksgiving-shopping-13.jpg";
+import asset613 from "@/IMAGES/Quality of Life/Grocery Store/walmart-thanksgiving-shopping-2.jpg";
+import asset614 from "@/IMAGES/Science/Aerial_view_of_Wake_Island_in_July_2014.jpg";
+import asset615 from "@/IMAGES/University/Cambridge_-_USA_-_Harvard_University_-_Harry_Elkins_Widener_Memorial_Library_-_panoramio.jpg";
 
 export type GalleryAssetRecord = {
   path: string;
@@ -1135,4 +1188,57 @@ export const GALLERY_ASSETS = [
   { path: "Constitution/Howard Chandler Christy Scene at the Signing of the Constitution of the United States.jpg", src: asset560 },
   { path: "Cities/Seattle-Public-Libraries_Seattle-Central-Library.webp", src: asset561 },
   { path: "Culture/Music/Michael Jackson Tour pic.webp", src: asset562 },
+  { path: "Aerials/Orange County aerial.jpg", src: asset563 },
+  { path: "Aerials/SoFi Stadium aerial 2.jpg", src: asset564 },
+  { path: "Aerials/SoFi Stadium aerial.jpg", src: asset565 },
+  { path: "Culture/Music/Beyoncé_Knowles_GMA_Run_the_World_cropped saluting.jpg", src: asset566 },
+  { path: "Culture/Music/Carey at Edwards Air Force Base during the making of the \"I Still Believe\" music video in December 1998.jpg", src: asset567 },
+  { path: "Culture/Sports/Stadiums/Aerial Panorama Rose Bowl Stadium Game Day Sunset San Gabriel Mountains.jpg", src: asset568 },
+  { path: "Culture/Sports/Stadiums/Aerial of Indianapolis Motor Speedway complex looking north. West 16th Street is in the foreground.jpg", src: asset569 },
+  { path: "Culture/Sports/Stadiums/Alabama Crimson Tide Football Bryant Denny Stadium Full Capacity Crimson Crowd Daytime.jpeg", src: asset570 },
+  { path: "Culture/Sports/Stadiums/Boston Red Sox Baseball Fenway Park Full Crowd Sunset Twilight Dramatic Sky Game In Progress.jpg", src: asset571 },
+  { path: "Culture/Sports/Stadiums/Bristol Motor Speedway Battle At Bristol Football Field Giant American Flag Crowd Card Stunt USA Fireworks Ceremony.jpg", src: asset572 },
+  { path: "Culture/Sports/Stadiums/Bryant–Denny Stadium aerial.jpg", src: asset573 },
+  { path: "Culture/Sports/Stadiums/Caesars Superdome aerial Night prior to Super Bowl LIX.jpg", src: asset574 },
+  { path: "Culture/Sports/Stadiums/Churchill Downs.jpg", src: asset575 },
+  { path: "Culture/Sports/Stadiums/Circuit of the Americas aerial.jpg", src: asset576 },
+  { path: "Culture/Sports/Stadiums/Dallas Cowboys AT&T Stadium Exterior Aerial View With Dome Roof And Plaza Daytime.jpg", src: asset577 },
+  { path: "Culture/Sports/Stadiums/Daytona International Speedway - DAYTONA-500-Flyover-2017---USAF-Thunderbirdss.jpg", src: asset578 },
+  { path: "Culture/Sports/Stadiums/First pitch of the MLB Speedway Classic '25 at Bristol Motor Speedway.jpg", src: asset579 },
+  { path: "Culture/Sports/Stadiums/Green Bay Packers Lambeau Field Atrium Exterior Winter With Vince Lombardi Statue.jpg", src: asset580 },
+  { path: "Culture/Sports/Stadiums/LSU Tigers Football Team Entrance Through Smoke At Packed Tiger Stadium Death Valley Daytime.jpg", src: asset581 },
+  { path: "Culture/Sports/Stadiums/Las-Vegas-Motor-Speedway Aerial.jpg", src: asset582 },
+  { path: "Culture/Sports/Stadiums/Madison Square Garden Exterior View With NYC Skyscrapers And Street Traffic Daytime.jpg", src: asset583 },
+  { path: "Culture/Sports/Stadiums/Mercedes Benz Stadium Exterior Aerial View Atlanta Daytime.jpg", src: asset584 },
+  { path: "Culture/Sports/Stadiums/Mercedes-Benz Stadium sunset.jpg", src: asset585 },
+  { path: "Culture/Sports/Stadiums/Michigan_Stadium_-_Michigan_vs._Iowa_11-17-2012.jpg", src: asset586 },
+  { path: "Culture/Sports/Stadiums/Ohio State Buckeyes Football Ohio Stadium Full Capacity Crowd With Marching Band Performing Script Ohio On Field Daytime.jpg", src: asset587 },
+  { path: "Culture/Sports/Stadiums/Penn State Beaver Stadium White Out Night Game Marching Band Field Formation And Fireworks.jpg", src: asset588 },
+  { path: "Culture/Sports/Stadiums/SoFi Stadium Super Bowl LVI Los Angeles Rams Vs Cincinnati Bengals Full Crowd Infinity Screen.jpg", src: asset589 },
+  { path: "Culture/Sports/Stadiums/SoFi Stadium aerial.jpg", src: asset590 },
+  { path: "Culture/Sports/Stadiums/State Farm Stadium Aerial at Sunset.jpg", src: asset591 },
+  { path: "Culture/Sports/Stadiums/Tennessee Volunteers Football Neyland Stadium Checker Neyland Crowd Full Capacity Evening Game.jpg", src: asset592 },
+  { path: "Culture/Sports/Stadiums/Texas A&M Aggies Football Kyle Field Aerial View Full Capacity Maroon Crowd Daytime.png", src: asset593 },
+  { path: "Culture/Sports/Stadiums/Texas Longhorns Football Darrell K Royal Texas Memorial Stadium Full Capacity Burnt Orange Crowd With Austin Skyline.jpg", src: asset594 },
+  { path: "Culture/Sports/Stadiums/Texas-Motor-Speedway-Aerial-View.jpg", src: asset595 },
+  { path: "Culture/Sports/Stadiums/The Thunderbirds fly over the Las Vegas Motor Speedway during UAW Dodge 400 NASCAR event.jpg", src: asset596 },
+  { path: "Culture/Sports/Stadiums/Wrigley Field aerial.jpg", src: asset597 },
+  { path: "Quality of Life/Grocery Store/A King Soopers in Colorado Springs, CO.jpg", src: asset598 },
+  { path: "Quality of Life/Grocery Store/A view of the Publix store from the upstairs dining area in the MetroWest area of Orlando, Florida.jpg", src: asset599 },
+  { path: "Quality of Life/Grocery Store/Albertsons in Weatherford, Texas.jpg", src: asset600 },
+  { path: "Quality of Life/Grocery Store/Costco_Ocean_Township.jpg", src: asset601 },
+  { path: "Quality of Life/Grocery Store/Endcaps at a Walmart store in the town of Wallkill, NY.jpg", src: asset602 },
+  { path: "Quality of Life/Grocery Store/Front Area Safeway store, Foster City CA.jpg", src: asset603 },
+  { path: "Quality of Life/Grocery Store/Hybla Valley Walmart Supercenter Interior Action Alley With Ziploc Pallet Display Rollback Signs Snack Aisle And Hanging American Flag.jpg", src: asset604 },
+  { path: "Quality of Life/Grocery Store/Inside Walmart Supercenter in Bloomsburg, Pennsylvania.jpg", src: asset605 },
+  { path: "Quality of Life/Grocery Store/Interior of Walmart Supercenter, Thomasville Road, Tallahassee, FL.jpg", src: asset606 },
+  { path: "Quality of Life/Grocery Store/Interior of the two-story Wal-Mart Supercenter at Crossgates Commons, the largest in the United States, in Albany, New York.jpg", src: asset607 },
+  { path: "Quality of Life/Grocery Store/Target_in_Ocean_Township,_NJ.jpg", src: asset608 },
+  { path: "Quality of Life/Grocery Store/The_interior_produce_section_of_a_Kroger_Marketplace_store_in_Athens,_Georgia_03.jpg", src: asset609 },
+  { path: "Quality of Life/Grocery Store/Walmart_Neighborhood_Market,_GA125,_Valdosta.jpg", src: asset610 },
+  { path: "Quality of Life/Grocery Store/produce department Safeway store, Foster City CA.jpg", src: asset611 },
+  { path: "Quality of Life/Grocery Store/walmart-thanksgiving-shopping-13.jpg", src: asset612 },
+  { path: "Quality of Life/Grocery Store/walmart-thanksgiving-shopping-2.jpg", src: asset613 },
+  { path: "Science/Aerial_view_of_Wake_Island_in_July_2014.jpg", src: asset614 },
+  { path: "University/Cambridge_-_USA_-_Harvard_University_-_Harry_Elkins_Widener_Memorial_Library_-_panoramio.jpg", src: asset615 },
 ] as const satisfies readonly GalleryAssetRecord[];
