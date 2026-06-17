@@ -594,10 +594,10 @@ export function Header() {
                     {locale === "ro" ? "Video" : "Videos"}
                   </Link>
                   <Link
-                    href="/data"
+                    href="/gallery"
                     className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
                   >
-                    {copy.dataLink}
+                    {locale === "ro" ? "Galerie" : "Gallery"}
                   </Link>
                   <Link
                     href="/sitemap"

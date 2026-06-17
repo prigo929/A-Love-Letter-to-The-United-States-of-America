@@ -44,12 +44,24 @@ interface VersusCopy {
   tableUs: string;
   tableThem: string;
   rows: Array<{ category: string; us: string; them: string }>;
+  usCitiesEyebrow: string;
+  usCitiesTitle: string;
+  usCitiesIntro: string;
+  usCities: Array<{ name: string; note: string }>;
   livesEyebrow: string;
   livesTitle: string;
   livesIntro: string;
   hereLabel: string;
   thereLabel: string;
   stages: Array<{ age: string; here: string; there: string }>;
+  pairsEyebrow: string;
+  pairsTitle: string;
+  pairsIntro: string;
+  pairs: Array<{ us: string; world: string; note: string }>;
+  benchmarksEyebrow: string;
+  benchmarksTitle: string;
+  benchmarksIntro: string;
+  benchmarks: Array<{ region: string; note: string }>;
   caveatTitle: string;
   caveats: string[];
   closingTitle: string;
@@ -117,6 +129,20 @@ const copyEn: VersusCopy = {
     { category: "Credit-card rewards", us: "1.5–5% cash back, perks", them: "Minimal" },
     { category: "Gym membership", us: "~$10–60/mo, resort-grade", them: "Often pricier, thinner market" },
   ],
+  usCitiesEyebrow: "MORE US REFERENCE CITIES",
+  usCitiesTitle: "The Pattern Isn't One City",
+  usCitiesIntro:
+    "Beyond north Houston, these metros each show a different dimension of the same American abundance — corporate migration, tech capital, no-income-tax growth, and outdoor-lifestyle booms.",
+  usCities: [
+    { name: "Dallas–Fort Worth / Frisco, TX", note: "The corporate-relocation magnet — Toyota, Goldman Sachs, Charles Schwab. Frisco is among America's fastest-growing, best-resourced suburbs." },
+    { name: "Austin, TX", note: "Apple, Tesla, Oracle, and SpaceX operations — Silicon Valley money meeting the Texas regulatory environment." },
+    { name: "Nashville, TN", note: "No state income tax, booming healthcare and tech, exploding suburbs — proof the pattern holds well outside Texas." },
+    { name: "Charlotte, NC", note: "A finance hub anchored by Bank of America, one of the fastest-growing major metros, affordable next to the Northeast." },
+    { name: "Salt Lake City / Provo, UT", note: "'Silicon Slopes' — world-class outdoor recreation, clean and family-friendly, with a booming tech scene." },
+    { name: "Phoenix / Scottsdale, AZ", note: "Sun Belt growth in desert form — master-planned communities, year-round golf, corporate campuses, no state income tax." },
+    { name: "Raleigh–Durham, NC", note: "The Research Triangle — three major universities, pharma and biotech, suburban quality of life at still-reasonable prices." },
+    { name: "Tampa / Orlando / Jacksonville, FL", note: "The Florida corridor — no state income tax, explosive growth, aerospace, Disney, finance, and waterfront living." },
+  ],
   livesEyebrow: "TWO PARALLEL LIVES",
   livesTitle: "Same Ambition, Different Platform",
   livesIntro:
@@ -139,6 +165,35 @@ const copyEn: VersusCopy = {
       here: "Senior engineer or director, $160–220k plus bonus. Net worth approaching $400–600k across home equity, retirement, and brokerage — still climbing. Excellent public schools, two or three real vacations a year, an environment that compounds ambition.",
       there: "Exceptional and earning €4,000–5,000 — a genuinely good Romanian life. But the Houston counterpart, same skills, has a $190k salary, a $450k house with $120k equity, and $280k in retirement accounts. The cumulative gap over those years is not a rounding error — it is a different life.",
     },
+  ],
+  pairsEyebrow: "TWELVE CITIES, TWO WORLDS",
+  pairsTitle: "Same Ambition, City by City",
+  pairsIntro:
+    "Pair each American city with its closest global counterpart — its sister in role, energy, and ambition — and the institutional gap snaps into focus. These aren't miracle-versus-poverty matchups; they're the same kind of place on two very different platforms.",
+  pairs: [
+    { us: "The Woodlands / N. Houston, TX", world: "Iași, Romania", note: "The flagship comparison: master-planned suburban excellence against a post-communist university city. The most dramatic gap on the page — the emotional anchor of the whole section." },
+    { us: "Frisco / Plano / Dallas, TX", world: "Warsaw, Poland", note: "Both their region's rising star, full of energy and ambition. But Warsaw's wages and institutional ceiling sit in another universe — ambition on a smaller platform." },
+    { us: "Austin, TX", world: "Berlin, Germany", note: "Both the 'cool alternative' tech-and-music city. Berlin's bureaucracy is legendary and German taxes punishing; Austin pulled in roughly 10× the venture capital." },
+    { us: "Nashville, TN", world: "Manchester, UK", note: "Music cities and healthcare hubs with underdog-to-powerhouse energy. But NHS waits and post-Brexit wage stagnation make Nashville the more viable place to build a career." },
+    { us: "Charlotte, NC", world: "Amsterdam, Netherlands", note: "Mid-size banking cities. The Dutch 52% top tax rate and Amsterdam's housing crisis versus Charlotte's still-affordable, explosive growth." },
+    { us: "Salt Lake City / Provo, UT", world: "Munich, Germany", note: "Outdoor-recreation capitals with university ecosystems. Munich's housing runs €7,000–12,000/m²; SLC stays affordable under a far lighter tax burden." },
+    { us: "Phoenix / Scottsdale, AZ", world: "Dubai, UAE", note: "Engineered desert prosperity. But Dubai offers no path to citizenship and runs on migrant labor without rights — wealth with institutions versus wealth without them." },
+    { us: "Raleigh–Durham, NC", world: "Stockholm, Sweden", note: "University-driven innovation ecosystems. Sweden's 50%+ marginal rates and a 10-million-person market versus the Triangle's expansion into a 330-million one." },
+    { us: "Tampa / Orlando, FL", world: "Barcelona, Spain", note: "Beloved sunshine cities. But Barcelona carries 25%+ youth unemployment and wages that don't match its cost of living; the Florida corridor runs on no state income tax and explosive job creation." },
+    { us: "New York City, NY", world: "London, UK", note: "A century-long rivalry for the title of world's financial center. Post-Brexit the gap widened — NY finance pay now outruns London for the same roles, and talent has shifted visibly westward." },
+    { us: "Los Angeles, CA", world: "Sydney, Australia", note: "Sun-drenched creative megacities built around the good life. But Sydney's housing is among the world's least affordable by wage multiples, and the opportunity argument still favors LA despite its dysfunction." },
+    { us: "Seattle / Bellevue, WA", world: "Seoul, South Korea", note: "Tech triangles built on anchor giants — Amazon and Microsoft versus Samsung and LG. But Seoul's chaebol rigidity, exam pressure, and housing costs make Bellevue's entrepreneurial path the freer one." },
+  ],
+  benchmarksEyebrow: "THE REST OF THE WORLD",
+  benchmarksTitle: "How the Other Regions Stack Up",
+  benchmarksIntro:
+    "The honest version of the comparison includes the sophisticated competitors, not just the easy cases. Region by region, the same conclusion keeps surfacing — institutions, not geography or resources, set the ceiling.",
+  benchmarks: [
+    { region: "Eastern Europe", note: "Prague, Budapest, Sofia, Belgrade, Kyiv, Moldova: even the best post-communist transitions reach only a fraction of US wages, with thin capital markets and EU taxes without EU incomes." },
+    { region: "Western Europe", note: "Munich, London, Paris, Amsterdam, Brussels, the Nordics, Switzerland: genuinely good, but 45–60% effective tax burdens, severe housing costs, and private-sector pay below US equivalents. Switzerland is the honest near-tie." },
+    { region: "Latin America", note: "São Paulo, Mexico City, Buenos Aires, Medellín: real pockets of world-class infrastructure surrounded by inequality, security costs, and institutional volatility." },
+    { region: "Asia-Pacific", note: "Tokyo, Seoul, Shanghai, Bengaluru, Singapore, Sydney: impressive and modern, yet constrained by stagnant wages, weak property rights and surveillance (China), or extreme housing costs (Singapore, Sydney)." },
+    { region: "Middle East & Africa", note: "Dubai, Abu Dhabi, Riyadh, Tel Aviv, Cape Town: oil and ambition can buy infrastructure, but not the institutions — citizenship, property rights, security — that let American prosperity compound." },
   ],
   caveatTitle: "The Honest Caveats",
   caveats: [
@@ -214,6 +269,20 @@ const copyRo: VersusCopy = {
     { category: "Recompense card de credit", us: "1,5–5% cashback, beneficii", them: "Minime" },
     { category: "Abonament la sală", us: "~$10–60/lună, nivel resort", them: "Adesea mai scump, piață subțire" },
   ],
+  usCitiesEyebrow: "MAI MULTE ORAȘE AMERICANE DE REFERINȚĂ",
+  usCitiesTitle: "Tiparul Nu Ține de Un Singur Oraș",
+  usCitiesIntro:
+    "Dincolo de nordul Houstonului, fiecare dintre aceste metropole arată o altă dimensiune a aceleiași abundențe americane — migrație corporativă, capital tehnologic, creștere fără impozit pe venit și boom-uri ale stilului de viață în aer liber.",
+  usCities: [
+    { name: "Dallas–Fort Worth / Frisco, TX", note: "Magnetul relocărilor corporative — Toyota, Goldman Sachs, Charles Schwab. Frisco e printre cele mai rapide și mai bine dotate suburbii din America." },
+    { name: "Austin, TX", note: "Operațiuni Apple, Tesla, Oracle și SpaceX — banii din Silicon Valley întâlnind mediul de reglementare din Texas." },
+    { name: "Nashville, TN", note: "Fără impozit pe venit la nivel de stat, sănătate și tech în plină expansiune, suburbii care explodează — dovada că tiparul ține bine și în afara Texasului." },
+    { name: "Charlotte, NC", note: "Un centru financiar ancorat de Bank of America, una dintre cele mai rapide metropole, accesibilă față de Nord-Est." },
+    { name: "Salt Lake City / Provo, UT", note: "'Silicon Slopes' — recreere în aer liber de clasă mondială, curată și prietenoasă cu familiile, cu o scenă tech în plin avânt." },
+    { name: "Phoenix / Scottsdale, AZ", note: "Creștere de tip Sun Belt în formă de deșert — comunități planificate, golf tot anul, campusuri corporative, fără impozit pe venit." },
+    { name: "Raleigh–Durham, NC", note: "Research Triangle — trei universități majore, farma și biotech, calitatea vieții suburbane la prețuri încă rezonabile." },
+    { name: "Tampa / Orlando / Jacksonville, FL", note: "Coridorul Floridei — fără impozit pe venit, creștere explozivă, aerospațial, Disney, finanțe și viață la malul apei." },
+  ],
   livesEyebrow: "DOUĂ VIEȚI PARALELE",
   livesTitle: "Aceeași Ambiție, o Altă Platformă",
   livesIntro:
@@ -236,6 +305,35 @@ const copyRo: VersusCopy = {
       here: "Inginer senior sau director, 160–220k $ plus bonus. Avere netă apropiindu-se de 400–600k $ între capitalul din casă, pensie și brokeraj — încă în creștere. Școli publice excelente, două-trei vacanțe reale pe an, un mediu care compune ambiția.",
       there: "Excepțional și câștigând 4.000–5.000 € — o viață românească chiar bună. Dar omologul din Houston, cu aceleași abilități, are un salariu de 190k $, o casă de 450k $ cu 120k $ capital propriu și 280k $ în conturi de pensie. Decalajul cumulat în acei ani nu este o eroare de rotunjire — este o altă viață.",
     },
+  ],
+  pairsEyebrow: "DOUĂSPREZECE ORAȘE, DOUĂ LUMI",
+  pairsTitle: "Aceeași Ambiție, Oraș cu Oraș",
+  pairsIntro:
+    "Pune fiecare oraș american alături de omologul său global cel mai apropiat — sora sa ca rol, energie și ambiție — și decalajul instituțional devine clar. Nu sunt confruntări miracol-versus-sărăcie; sunt același tip de loc pe două platforme foarte diferite.",
+  pairs: [
+    { us: "The Woodlands / N. Houston, TX", world: "Iași, România", note: "Comparația-far: excelență suburbană planificată față de un oraș universitar post-comunist. Cel mai dramatic decalaj de pe pagină — ancora emoțională a întregii secțiuni." },
+    { us: "Frisco / Plano / Dallas, TX", world: "Varșovia, Polonia", note: "Ambele, steaua în ascensiune a regiunii lor, pline de energie și ambiție. Dar salariile și plafonul instituțional al Varșoviei sunt în alt univers — ambiție pe o platformă mai mică." },
+    { us: "Austin, TX", world: "Berlin, Germania", note: "Ambele, orașul 'alternativ și cool' al tehnologiei și muzicii. Birocrația Berlinului e legendară, iar taxele germane apăsătoare; Austin a atras de circa 10× mai mult capital de risc." },
+    { us: "Nashville, TN", world: "Manchester, UK", note: "Orașe ale muzicii și centre medicale cu energie de outsider devenit forță. Dar listele de așteptare NHS și stagnarea salarială post-Brexit fac din Nashville locul mai viabil pentru o carieră." },
+    { us: "Charlotte, NC", world: "Amsterdam, Olanda", note: "Orașe bancare de dimensiuni medii. Cota olandeză de 52% și criza locuințelor din Amsterdam versus creșterea explozivă și încă accesibilă din Charlotte." },
+    { us: "Salt Lake City / Provo, UT", world: "München, Germania", note: "Capitale ale recreerii în aer liber, cu ecosisteme universitare. Locuințele din München costă 7.000–12.000 €/m²; SLC rămâne accesibil, cu o povară fiscală mult mai mică." },
+    { us: "Phoenix / Scottsdale, AZ", world: "Dubai, EAU", note: "Prosperitate inginerească în deșert. Dar Dubai nu oferă cale spre cetățenie și funcționează pe muncă de migranți fără drepturi — bogăție cu instituții versus bogăție fără ele." },
+    { us: "Raleigh–Durham, NC", world: "Stockholm, Suedia", note: "Ecosisteme de inovație conduse de universități. Cotele marginale suedeze de peste 50% și o piață de 10 milioane versus extinderea Triangle-ului într-una de 330 de milioane." },
+    { us: "Tampa / Orlando, FL", world: "Barcelona, Spania", note: "Orașe iubite, scăldate în soare. Dar Barcelona are peste 25% șomaj în rândul tinerilor și salarii care nu țin pasul cu costul vieții; coridorul Floridei merge pe zero impozit pe venit și creștere explozivă." },
+    { us: "New York City, NY", world: "Londra, UK", note: "O rivalitate de un secol pentru titlul de centru financiar mondial. Post-Brexit decalajul s-a lărgit — salariile din finanțe din NY le depășesc pe cele din Londra pentru aceleași roluri, iar talentul s-a mutat vizibil spre vest." },
+    { us: "Los Angeles, CA", world: "Sydney, Australia", note: "Megaorașe creative scăldate în soare, construite în jurul vieții bune. Dar locuințele din Sydney sunt printre cele mai inaccesibile din lume ca multiplu salarial, iar argumentul oportunității favorizează LA în ciuda disfuncțiilor sale." },
+    { us: "Seattle / Bellevue, WA", world: "Seul, Coreea de Sud", note: "Triunghiuri tech construite pe giganți de ancoră — Amazon și Microsoft versus Samsung și LG. Dar rigiditatea chaebol-urilor, presiunea examenelor și costul locuințelor din Seul fac din calea antreprenorială din Bellevue pe cea mai liberă." },
+  ],
+  benchmarksEyebrow: "RESTUL LUMII",
+  benchmarksTitle: "Cum Se Compară Celelalte Regiuni",
+  benchmarksIntro:
+    "Versiunea onestă a comparației include competitorii sofisticați, nu doar cazurile ușoare. Regiune cu regiune, aceeași concluzie revine — instituțiile, nu geografia sau resursele, stabilesc plafonul.",
+  benchmarks: [
+    { region: "Europa de Est", note: "Praga, Budapesta, Sofia, Belgrad, Kiev, Moldova: chiar și cele mai bune tranziții post-comuniste ajung doar la o fracțiune din salariile americane, cu piețe de capital subțiri și taxe UE fără venituri UE." },
+    { region: "Europa de Vest", note: "München, Londra, Paris, Amsterdam, Bruxelles, țările nordice, Elveția: chiar bune, dar cu poveri fiscale efective de 45–60%, costuri severe ale locuințelor și salarii din sectorul privat sub echivalentele americane. Elveția e cvasi-egalul onest." },
+    { region: "America Latină", note: "São Paulo, Ciudad de México, Buenos Aires, Medellín: insule reale de infrastructură de clasă mondială înconjurate de inegalitate, costuri de securitate și volatilitate instituțională." },
+    { region: "Asia-Pacific", note: "Tokyo, Seul, Shanghai, Bengaluru, Singapore, Sydney: impresionante și moderne, dar limitate de salarii stagnante, drepturi de proprietate slabe și supraveghere (China) sau costuri extreme ale locuințelor (Singapore, Sydney)." },
+    { region: "Orientul Mijlociu și Africa", note: "Dubai, Abu Dhabi, Riad, Tel Aviv, Cape Town: petrolul și ambiția pot cumpăra infrastructură, dar nu instituțiile — cetățenie, drepturi de proprietate, securitate — care permit prosperității americane să se compună." },
   ],
   caveatTitle: "Rezervele Oneste",
   caveats: [
@@ -348,6 +446,20 @@ export default async function AmericaVsTheWorldPage() {
                 { src: SITE_IMAGES.cities.chicagoTwilight, alt: "Chicago at twilight", caption: isRo ? "Chicago — amurg" : "Chicago — Twilight", aspect: "4/3" },
               ]}
             />
+
+            <div className="mt-16">
+              <span className="macro-eyebrow">{copy.usCitiesEyebrow}</span>
+              <h3 className="macro-section-title text-white text-2xl mt-3 mb-3">{copy.usCitiesTitle}</h3>
+              <p className="macro-body text-sm max-w-3xl mb-10">{copy.usCitiesIntro}</p>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {copy.usCities.map((c, i) => (
+                  <div key={i} className="rounded-2xl border border-white/10 bg-white/3 p-5">
+                    <h4 className="font-display text-base font-bold text-[#E8B923] mb-2 leading-snug">{c.name}</h4>
+                    <p className="macro-body text-sm leading-relaxed">{c.note}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </RevealSection>
 
@@ -458,6 +570,44 @@ export default async function AmericaVsTheWorldPage() {
                       <p className="macro-body text-sm leading-relaxed text-white/55">{s.there}</p>
                     </div>
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </RevealSection>
+
+        {/* Twelve cities, two worlds */}
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <span className="macro-eyebrow">{copy.pairsEyebrow}</span>
+            <h2 className="macro-section-title text-white text-3xl mt-3 mb-3">{copy.pairsTitle}</h2>
+            <p className="macro-body text-sm max-w-3xl mb-12">{copy.pairsIntro}</p>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {copy.pairs.map((p, i) => (
+                <div key={i} className="flex flex-col rounded-2xl border border-white/10 bg-white/3 p-6">
+                  <div className="mb-4 flex items-center gap-2 text-sm font-display font-bold">
+                    <span className="text-[#E8B923]">{p.us}</span>
+                    <span className="text-white/30">vs.</span>
+                    <span className="text-white/70">{p.world}</span>
+                  </div>
+                  <p className="macro-body text-sm leading-relaxed">{p.note}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </RevealSection>
+
+        {/* The rest of the world — regional benchmarks */}
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl">
+            <span className="macro-eyebrow">{copy.benchmarksEyebrow}</span>
+            <h2 className="macro-section-title text-white text-3xl mt-3 mb-3">{copy.benchmarksTitle}</h2>
+            <p className="macro-body text-sm max-w-3xl mb-10">{copy.benchmarksIntro}</p>
+            <div className="space-y-6">
+              {copy.benchmarks.map((b, i) => (
+                <div key={i} className="grid gap-2 border-t border-white/10 pt-6 md:grid-cols-4">
+                  <h3 className="font-display text-base font-bold text-[#E8B923] md:col-span-1">{b.region}</h3>
+                  <p className="macro-body text-sm leading-relaxed md:col-span-3">{b.note}</p>
                 </div>
               ))}
             </div>

@@ -3,6 +3,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { YouTubeEmbed } from "@/components/shared/YouTubeEmbed";
 import { LocalVideoCard } from "@/components/shared/LocalVideoCard";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "America in Motion | Watch the Story",
@@ -84,8 +85,6 @@ export default async function VideosPage() {
     { src: "/videos/flag-loop.mp4", title: isRo ? "Drapelul American" : "Old Glory", tag: isRo ? "Simboluri" : "Symbols" },
   ];
 
-  const [featured, ...rest] = videos;
-
   return (
     <main className="min-h-screen bg-navy-dark pt-24 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -101,35 +100,35 @@ export default async function VideosPage() {
         </div>
       </section>
 
-      {/* Featured film */}
-      <section className="px-4 py-14 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <YouTubeEmbed id={featured.id} title={featured.title} />
-          <div className="mt-4">
-            <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-glory-gold mb-2">{featured.tag}</p>
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-white">{featured.title}</h2>
-            <p className="mt-2 max-w-2xl font-body text-sm text-white/60 leading-relaxed">{featured.description}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* The rest of the featured films */}
-      <section className="px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-12 md:grid-cols-2">
-          {rest.map((v) => (
-            <div key={v.id}>
-              <YouTubeEmbed id={v.id} title={v.title} />
-              <div className="mt-4 flex items-start justify-between gap-3">
-                <div>
-                  <h3 className="font-display text-lg font-bold text-white">{v.title}</h3>
-                  <p className="mt-1 font-body text-sm text-white/55 leading-relaxed">{v.description}</p>
+      {/* Films — one highlighted larger per row */}
+      <section className="px-4 py-14 pb-16 sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-12 md:grid-cols-3 md:auto-rows-fr">
+          {videos.map((v, i) => {
+            const featured = i % 3 === 0;
+            return (
+              <div
+                key={v.id}
+                className={cn("flex h-full flex-col", featured && "md:col-span-2 md:row-span-2")}
+              >
+                <YouTubeEmbed
+                  id={v.id}
+                  title={v.title}
+                  aspectClassName={featured ? "grow min-h-80" : "aspect-video"}
+                />
+                <div className="mt-4 flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className={cn("font-display font-bold text-white", featured ? "text-2xl md:text-3xl" : "text-lg")}>
+                      {v.title}
+                    </h3>
+                    <p className="mt-1 max-w-2xl font-body text-sm text-white/55 leading-relaxed">{v.description}</p>
+                  </div>
+                  <span className="shrink-0 rounded border border-glory-gold/25 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-glory-gold">
+                    {v.tag}
+                  </span>
                 </div>
-                <span className="shrink-0 rounded border border-glory-gold/25 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-glory-gold">
-                  {v.tag}
-                </span>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 

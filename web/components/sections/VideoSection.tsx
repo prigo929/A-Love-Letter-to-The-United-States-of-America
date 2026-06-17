@@ -109,13 +109,18 @@ export function VideoSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
           variants={staggerContainer}
-          className="grid grid-cols-1 gap-6 md:grid-cols-3"
+          className="grid grid-cols-1 gap-6 md:grid-cols-3 md:auto-rows-fr"
         >
-          {videos.map((video) => (
+          {videos.map((video, index) => {
+            const featured = index === 0;
+            return (
             <motion.div
               key={video.id}
               variants={scaleUp}
-              className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 hover:border-glory-gold/40 hover:-translate-y-1"
+              className={cn(
+                "group relative flex h-full flex-col cursor-pointer overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 hover:border-glory-gold/40 hover:-translate-y-1",
+                featured && "md:col-span-2 md:row-span-2",
+              )}
               onClick={() => setActiveVideo(video.id)}
               role="button"
               tabIndex={0}
@@ -124,13 +129,18 @@ export function VideoSection() {
               }
               aria-label={`${copy.playPrefix} ${video.title}`}
             >
-              <div className="relative aspect-video w-full overflow-hidden">
+              <div
+                className={cn(
+                  "relative w-full overflow-hidden",
+                  featured ? "grow min-h-64" : "aspect-video",
+                )}
+              >
                 <Image
                   src={video.thumbnailSrc}
                   alt={video.thumbnailAlt}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes={featured ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
                   placeholder="blur"
                   blurDataURL={BLUR_PLACEHOLDER}
                 />
@@ -178,7 +188,8 @@ export function VideoSection() {
                 </p>
               </div>
             </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
 
         <motion.div
