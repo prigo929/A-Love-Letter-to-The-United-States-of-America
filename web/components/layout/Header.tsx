@@ -318,17 +318,6 @@ export function Header() {
               >
                 {copy.dataLink}
               </Link>
-
-              {/* Videos */}
-              <Link
-                href="/videos"
-                className={cn(
-                  "px-3 py-2 rounded-lg font-body text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors",
-                  pathname.startsWith("/videos") && "bg-glory-gold/10 text-glory-gold",
-                )}
-              >
-                {locale === "ro" ? "Video" : "Videos"}
-              </Link>
             </nav>
 
             {/* ── Desktop CTA ────────────────────────────────────────────── */}
