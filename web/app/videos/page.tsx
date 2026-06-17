@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { YouTubeEmbed } from "@/components/shared/YouTubeEmbed";
+import { LocalVideoCard } from "@/components/shared/LocalVideoCard";
 
 export const metadata: Metadata = {
   title: "America in Motion | Watch the Story",
@@ -16,6 +17,12 @@ interface VideoItem {
   tag: string;
 }
 
+interface SiteClip {
+  src: string;
+  title: string;
+  tag: string;
+}
+
 export default async function VideosPage() {
   const locale = await getServerLocale();
   const isRo = locale === "ro";
@@ -27,6 +34,10 @@ export default async function VideosPage() {
         title: "Privește Povestea",
         intro:
           "Filme cinematografice ale Statelor Unite — aeriene în 16K și 8K peste orașe, peisaje și cartierele vieții de zi cu zi.",
+        moreEyebrow: "DIN TOT SITE-UL",
+        moreTitle: "Mai Multe Filme",
+        moreIntro:
+          "Clipurile cinematografice folosite în paginile sitului — apărare, tehnologie, spațiu și cultură.",
       }
     : {
         breadcrumb: "Videos",
@@ -34,6 +45,10 @@ export default async function VideosPage() {
         title: "Watch the Story",
         intro:
           "Cinematic films of the United States — 16K and 8K aerials over its cities, landscapes, and the neighborhoods of everyday life.",
+        moreEyebrow: "FROM ACROSS THE SITE",
+        moreTitle: "More Films",
+        moreIntro:
+          "The cinematic clips woven through the site's pages — defense, technology, space, and culture.",
       };
 
   const videos: VideoItem[] = isRo
@@ -52,6 +67,23 @@ export default async function VideosPage() {
         { id: "zMGvONrrEVI", title: "The Suburbs of North Carolina", tag: "Everyday", description: "A walk through the neighborhoods and suburbs of North Carolina, USA." },
       ];
 
+  const siteClips: SiteClip[] = [
+    { src: "/videos/earth-pixels-from-space.mp4", title: isRo ? "Pământul din Spațiu" : "Earth from Space", tag: isRo ? "Spațiu" : "Space" },
+    { src: "/videos/library/Technology/Falcon 9 Launch and Landing cinematic.mp4", title: isRo ? "Falcon 9 — Lansare și Aterizare" : "Falcon 9 — Launch & Landing", tag: "SpaceX" },
+    { src: "/videos/library/Technology/Starship's Tenth Flight Test launch and landing cinematic.mp4", title: isRo ? "Starship — Zborul 10" : "Starship — Flight 10", tag: "SpaceX" },
+    { src: "/videos/library/Technology/The Extravehicular Activity (EVA) Suit SpaceX ShowCase 4K Cinematic.mp4", title: isRo ? "Costumul EVA SpaceX" : "SpaceX EVA Suit", tag: "SpaceX" },
+    { src: "/videos/library/Technology/TERAFAB cinematic - with Tesla and SpaceX.mp4", title: isRo ? "TERAFAB — Tesla și SpaceX" : "TERAFAB — Tesla & SpaceX", tag: isRo ? "Industrie" : "Industry" },
+    { src: "/videos/library/Technology/Nvidia AI cinematic.mp4", title: isRo ? "NVIDIA — Era AI" : "NVIDIA — The AI Era", tag: "AI" },
+    { src: "/videos/library/Technology/Introducing iPhone 17 Pro | Apple.mp4", title: "iPhone 17 Pro", tag: "Apple" },
+    { src: "/videos/military/b2-spirit-hero.mp4", title: isRo ? "B-2 Spirit" : "B-2 Spirit", tag: isRo ? "Forțele Aeriene" : "Air Force" },
+    { src: "/videos/military/fly-navy.mp4", title: isRo ? "Marina SUA" : "Fly Navy", tag: isRo ? "Marina" : "Navy" },
+    { src: "/videos/military/us-space-force-americas-invisible-front.mp4", title: isRo ? "Forța Spațială" : "Space Force", tag: isRo ? "Forța Spațială" : "Space Force" },
+    { src: "/videos/military/supremacy-wave.mp4", title: isRo ? "Supremație Aeriană" : "Air Supremacy", tag: isRo ? "Armată" : "Military" },
+    { src: "/videos/library/Culture/Michael Jordan | Edit.mp4", title: "Michael Jordan", tag: isRo ? "Sport" : "Sports" },
+    { src: "/videos/times-square-aerial.mp4", title: "Times Square", tag: isRo ? "Orașe" : "Cities" },
+    { src: "/videos/flag-loop.mp4", title: isRo ? "Drapelul American" : "Old Glory", tag: isRo ? "Simboluri" : "Symbols" },
+  ];
+
   const [featured, ...rest] = videos;
 
   return (
@@ -69,36 +101,51 @@ export default async function VideosPage() {
         </div>
       </section>
 
-      {/* Gallery */}
+      {/* Featured film */}
       <section className="px-4 py-14 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl space-y-12">
-          {/* Featured */}
-          <div>
-            <YouTubeEmbed id={featured.id} title={featured.title} />
-            <div className="mt-4 flex items-start justify-between gap-4">
-              <div>
-                <h2 className="font-display text-2xl font-bold text-white">{featured.title}</h2>
-                <p className="mt-1 max-w-2xl font-body text-sm text-white/55 leading-relaxed">{featured.description}</p>
-              </div>
-              <span className="shrink-0 rounded border border-glory-gold/25 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-glory-gold">
-                {featured.tag}
-              </span>
-            </div>
+        <div className="mx-auto max-w-7xl">
+          <YouTubeEmbed id={featured.id} title={featured.title} />
+          <div className="mt-4">
+            <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-glory-gold mb-2">{featured.tag}</p>
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-white">{featured.title}</h2>
+            <p className="mt-2 max-w-2xl font-body text-sm text-white/60 leading-relaxed">{featured.description}</p>
           </div>
+        </div>
+      </section>
 
-          {/* Rest */}
-          <div className="grid gap-x-8 gap-y-12 md:grid-cols-2">
-            {rest.map((v) => (
-              <div key={v.id}>
-                <YouTubeEmbed id={v.id} title={v.title} />
-                <div className="mt-4 flex items-start justify-between gap-3">
-                  <div>
-                    <h3 className="font-display text-lg font-bold text-white">{v.title}</h3>
-                    <p className="mt-1 font-body text-sm text-white/55 leading-relaxed">{v.description}</p>
-                  </div>
-                  <span className="shrink-0 rounded border border-glory-gold/25 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-glory-gold">
-                    {v.tag}
-                  </span>
+      {/* The rest of the featured films */}
+      <section className="px-4 pb-16 sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-12 md:grid-cols-2">
+          {rest.map((v) => (
+            <div key={v.id}>
+              <YouTubeEmbed id={v.id} title={v.title} />
+              <div className="mt-4 flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="font-display text-lg font-bold text-white">{v.title}</h3>
+                  <p className="mt-1 font-body text-sm text-white/55 leading-relaxed">{v.description}</p>
+                </div>
+                <span className="shrink-0 rounded border border-glory-gold/25 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-glory-gold">
+                  {v.tag}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* More from across the site (local clips) */}
+      <section className="border-t border-white/10 px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-glory-gold mb-3">{copy.moreEyebrow}</p>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-3">{copy.moreTitle}</h2>
+          <p className="max-w-2xl font-body text-sm text-white/55 leading-relaxed mb-10">{copy.moreIntro}</p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {siteClips.map((clip) => (
+              <div key={clip.src}>
+                <LocalVideoCard src={clip.src} title={clip.title} />
+                <div className="mt-3 flex items-center justify-between gap-3">
+                  <h3 className="font-display text-sm font-bold text-white">{clip.title}</h3>
+                  <span className="shrink-0 font-mono text-[10px] uppercase tracking-widest text-white/40">{clip.tag}</span>
                 </div>
               </div>
             ))}

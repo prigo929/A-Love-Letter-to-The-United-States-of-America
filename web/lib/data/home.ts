@@ -239,8 +239,8 @@ export const VIDEO_PREVIEWS = [
     description:
       "The United States in stunning 16K ultra-HD — the world's largest economy, from coast to shining coast.",
     youtubeId: "jPBfZrgvpSo",
-    thumbnailSrc: SITE_IMAGES.homeGrandCanyon,
-    thumbnailAlt: "The American landscape in ultra-high definition",
+    thumbnailSrc: SITE_IMAGES.homeNycSkyline,
+    thumbnailAlt: "American skyline in ultra-high definition",
     duration: "10:36",
     category: "The Nation",
   },
@@ -250,8 +250,8 @@ export const VIDEO_PREVIEWS = [
     description:
       "An 8K aerial journey over the skylines, grids, and endless suburbs of America's great cities.",
     youtubeId: "vE3BAgh_VAQ",
-    thumbnailSrc: SITE_IMAGES.homeSiliconValley,
-    thumbnailAlt: "Aerial view of an American city skyline",
+    thumbnailSrc: SITE_IMAGES.cities.aerialChicago,
+    thumbnailAlt: "Aerial view of an American city",
     duration: "8:12",
     category: "Cities",
   },

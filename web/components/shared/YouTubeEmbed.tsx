@@ -37,7 +37,10 @@ export function YouTubeEmbed({
       {playing ? (
         <iframe
           className="absolute inset-0 h-full w-full"
-          src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`}
+          // Clean, chrome-free playback: no controls bar, no related videos, no
+          // branding/annotations; autoplay on click; request the highest quality
+          // (YouTube ultimately auto-selects up to 4K/HDR based on player size).
+          src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&controls=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&color=white&vq=hd2160&hd=1`}
           title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"

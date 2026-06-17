@@ -111,14 +111,11 @@ export function VideoSection() {
           variants={staggerContainer}
           className="grid grid-cols-1 gap-6 md:grid-cols-3"
         >
-          {videos.map((video, index) => (
+          {videos.map((video) => (
             <motion.div
               key={video.id}
               variants={scaleUp}
-              className={cn(
-                "group relative cursor-pointer overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 hover:border-glory-gold/40",
-                index === 0 && "md:col-span-2 md:row-span-1",
-              )}
+              className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 hover:border-glory-gold/40 hover:-translate-y-1"
               onClick={() => setActiveVideo(video.id)}
               role="button"
               tabIndex={0}
@@ -127,12 +124,7 @@ export function VideoSection() {
               }
               aria-label={`${copy.playPrefix} ${video.title}`}
             >
-              <div
-                className={cn(
-                  "relative w-full overflow-hidden",
-                  index === 0 ? "aspect-video" : "aspect-[4/3]",
-                )}
-              >
+              <div className="relative aspect-video w-full overflow-hidden">
                 <Image
                   src={video.thumbnailSrc}
                   alt={video.thumbnailAlt}

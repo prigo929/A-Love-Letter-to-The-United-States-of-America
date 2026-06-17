@@ -231,8 +231,15 @@ export default function RootLayout({
           {/* Footer + site-wide helper widgets */}
           <Footer />
           <BackToTop />
-          <Analytics />
-          <SpeedInsights />
+          {/* Vercel telemetry only in production — its dev injection attempts
+              browser storage that throws "No available storage method found"
+              in some local browsers, and it serves no purpose during dev. */}
+          {process.env.NODE_ENV === "production" && (
+            <>
+              <Analytics />
+              <SpeedInsights />
+            </>
+          )}
         </LanguageProvider>
       </body>
     </html>

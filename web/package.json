@@ -4,8 +4,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "cap-cache": "node scripts/cap-cache.mjs",
+    "predev": "node scripts/cap-cache.mjs",
     "dev": "next dev --turbo",
     "dev:turbo": "next dev --webpack",
+    "prebuild": "node scripts/cap-cache.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
