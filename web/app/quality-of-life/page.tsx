@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
@@ -563,8 +565,34 @@ export default async function QualityOfLifePage() {
 
       <div className="bg-[#000000] relative z-10 pb-32 pt-16 font-body text-white">
         {/* Breadcrumb */}
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-12">
           <Breadcrumb items={[{ label: copy.breadcrumb }]} className="mb-8" />
+        </div>
+
+        {/* Flagship comparison CTA */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-20">
+          <Link
+            href="/quality-of-life/america-vs-the-world"
+            className="group flex flex-col gap-4 rounded-3xl border border-glory-gold/25 bg-glory-gold/6 p-6 transition-colors hover:border-glory-gold/50 sm:flex-row sm:items-center sm:justify-between md:p-8"
+          >
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.25em] text-glory-gold mb-2">
+                {isRo ? "ANALIZĂ COMPARATIVĂ" : "FLAGSHIP COMPARISON"}
+              </p>
+              <h2 className="macro-section-title text-white text-2xl md:text-3xl mb-2">
+                {isRo ? "America vs. Lumea" : "America vs. the World"}
+              </h2>
+              <p className="macro-body text-white/60 text-sm max-w-2xl">
+                {isRo
+                  ? "Cum arată cu adevărat excelența americană obișnuită față de lumea dezvoltată — nordul Houstonului versus Iași, categorie cu categorie."
+                  : "What normal American excellence really looks like next to the developed world — north Houston versus Iași, category by category."}
+              </p>
+            </div>
+            <span className="inline-flex shrink-0 items-center gap-2 font-body text-sm font-semibold text-glory-gold">
+              {isRo ? "Explorează" : "Explore"}
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            </span>
+          </Link>
         </div>
 
         {/* Stat Grid Section */}

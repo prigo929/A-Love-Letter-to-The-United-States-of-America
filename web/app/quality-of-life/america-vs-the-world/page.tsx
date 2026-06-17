@@ -248,7 +248,12 @@ export default async function AmericaVsTheWorldPage() {
 
       <div className="bg-[#000000] relative z-10 pb-32 font-body text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 mb-8">
-          <Breadcrumb items={[{ label: copy.breadcrumb }]} />
+          <Breadcrumb
+            items={[
+              { label: isRo ? "Calitatea Vieții" : "Quality of Life", href: "/quality-of-life" },
+              { label: copy.breadcrumb },
+            ]}
+          />
         </div>
 
         {/* Thesis */}

@@ -319,15 +319,15 @@ export function Header() {
                 {copy.dataLink}
               </Link>
 
-              {/* Flagship comparison page */}
+              {/* Videos */}
               <Link
-                href="/america-vs-the-world"
+                href="/videos"
                 className={cn(
-                  "px-3 py-2 rounded-lg font-body text-sm font-semibold text-glory-gold/90 hover:text-glory-gold hover:bg-glory-gold/10 transition-colors",
-                  pathname.startsWith("/america-vs-the-world") && "bg-glory-gold/10 text-glory-gold",
+                  "px-3 py-2 rounded-lg font-body text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors",
+                  pathname.startsWith("/videos") && "bg-glory-gold/10 text-glory-gold",
                 )}
               >
-                {locale === "ro" ? "America vs. Lumea" : "America vs. World"}
+                {locale === "ro" ? "Video" : "Videos"}
               </Link>
             </nav>
 
@@ -599,10 +599,10 @@ export function Header() {
 
                 <div className="mt-4 pt-4 border-t border-white/10 space-y-3">
                   <Link
-                    href="/america-vs-the-world"
-                    className="block px-4 py-3 rounded-xl font-body text-glory-gold hover:bg-glory-gold/10 font-semibold"
+                    href="/videos"
+                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
                   >
-                    {locale === "ro" ? "America vs. Lumea" : "America vs. the World"}
+                    {locale === "ro" ? "Video" : "Videos"}
                   </Link>
                   <Link
                     href="/data"

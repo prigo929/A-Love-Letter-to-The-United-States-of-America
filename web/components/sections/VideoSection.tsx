@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, X, Clock, Tag } from "lucide-react";
+import { Play, X, Clock, Tag, ArrowRight } from "lucide-react";
 import { fadeUp, scaleUp, staggerContainer } from "@/lib/animations";
 import { VIDEO_PREVIEWS } from "@/lib/data/home";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { YouTubeEmbed } from "@/components/shared/YouTubeEmbed";
 import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 
 export function VideoSection() {
@@ -17,24 +19,24 @@ export function VideoSection() {
       ? [
           {
             ...VIDEO_PREVIEWS[0],
-            title: "Peisajul American",
+            title: "America în 16K",
             description:
-              "Din Munții Stâncoși până în Everglades-ul Floridei — o călătorie cinematografică prin minunile naturale fără egal ale Americii.",
-            category: "Natură",
+              "Statele Unite în 16K ultra-HD uimitor — cea mai mare economie din lume, de la un ocean la altul.",
+            category: "Națiunea",
           },
           {
             ...VIDEO_PREVIEWS[1],
-            title: "Construită prin Inovație",
+            title: "Zbor Peste Orașele Americane",
             description:
-              "Din laboratorul lui Edison până în Silicon Valley — povestea felului în care ingeniozitatea americană a reconfigurat lumea.",
-            category: "Inovație",
+              "O călătorie aeriană în 8K peste skyline-urile, grilele și suburbiile nesfârșite ale marilor orașe americane.",
+            category: "Orașe",
           },
           {
             ...VIDEO_PREVIEWS[2],
-            title: "Apărătoarea Libertății",
+            title: "Cartiere Americane",
             description:
-              "Povestea celei mai puternice armate din istorie — și a păcii pe care a menținut-o timp de 80 de ani.",
-            category: "Armată",
+              "O plimbare liniștită pe străzile mărginite de copaci și suburbiile care definesc viața cotidiană americană.",
+            category: "Cotidian",
           },
         ]
       : VIDEO_PREVIEWS;
@@ -187,15 +189,21 @@ export function VideoSection() {
           ))}
         </motion.div>
 
-        <motion.p
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="mt-8 text-center font-body text-sm text-white/30"
+          className="mt-10 flex justify-center"
         >
-          {copy.phaseNotice}
-        </motion.p>
+          <Link
+            href="/videos"
+            className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 font-body text-sm font-semibold text-white/80 transition-colors hover:border-glory-gold/40 hover:text-white"
+          >
+            {locale === "ro" ? "Vezi toate videoclipurile" : "View all videos"}
+            <ArrowRight className="h-4 w-4 text-glory-gold" aria-hidden="true" />
+          </Link>
+        </motion.div>
       </div>
 
       <AnimatePresence>
@@ -238,33 +246,9 @@ export function VideoSection() {
                 </button>
               </div>
 
-              <div className="relative flex flex-1 items-center justify-center bg-black">
-                <Image
-                  src={active.thumbnailSrc}
-                  alt={active.thumbnailAlt}
-                  fill
-                  className="object-cover opacity-30"
-                  placeholder="blur"
-                  blurDataURL={BLUR_PLACEHOLDER}
-                />
-                <div className="relative z-10 px-8 text-center">
-                  <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border-2 border-glory-gold bg-glory-gold/20">
-                    <Play
-                      className="ml-1 h-8 w-8 fill-glory-gold text-glory-gold"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <p className="mb-2 font-display text-2xl text-white">
-                    {active.title}
-                  </p>
-                  <p className="mx-auto mb-6 max-w-md font-body text-sm text-white/60">
-                    {active.description}
-                  </p>
-                  <div className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3">
-                    <span className="font-body text-sm text-white/60">
-                      {copy.modalNotice}
-                    </span>
-                  </div>
+              <div className="relative flex flex-1 items-center justify-center bg-black p-4 sm:p-8">
+                <div className="mx-auto w-full max-w-5xl">
+                  <YouTubeEmbed id={active.youtubeId} title={active.title} />
                 </div>
               </div>
             </motion.div>

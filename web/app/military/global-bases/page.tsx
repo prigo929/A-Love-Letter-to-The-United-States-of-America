@@ -77,7 +77,7 @@ export default async function GlobalBasesPage() {
     <main className="min-h-screen overflow-hidden bg-black text-white">
       <MilStyles />
       <VideoMilitaryHero
-        videoSrc="/videos/military/supremacy-wave.mp4"
+        videoSrc="/videos/earth-pixels-from-space.mp4"
         posterSrc={SITE_IMAGES.globalBases.ramstein}
         title={isRo ? "PREZENȚĂ GLOBALĂ" : "GLOBAL PRESENCE"}
         subtitle={isRo

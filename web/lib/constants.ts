@@ -375,6 +375,11 @@ export const NAV_SECTIONS = [
         href: "/quality-of-life/abundance",
         description: "AC, cars, pools, boats — the density of American consumer goods",
       },
+      {
+        label: "America vs. the World",
+        href: "/quality-of-life/america-vs-the-world",
+        description: "Normal American excellence vs. the developed world — Houston vs. Iași",
+      },
     ],
   },
   {
@@ -832,6 +837,10 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "/quality-of-life/abundance": {
         label: "Abundență de Consum",
         description: "AC, mașini, bărci, piscine — densitatea bunurilor de consum",
+      },
+      "/quality-of-life/america-vs-the-world": {
+        label: "America vs. Lumea",
+        description: "Excelența americană obișnuită față de lumea dezvoltată",
       },
     },
   },
