@@ -78,7 +78,7 @@ const copyEn: InternetCopy = {
       title: "The Platform Era",
       date: "2004 – Present",
       details:
-        "Facebook (2004), YouTube (2005), Twitter (2006), AWS (2006), and the iPhone (2007) are all American. By 2024, the five most internet-valuable companies — Apple, Microsoft, Alphabet, Amazon, Meta — are all US-headquartered and collectively generate over $1.5 trillion annually from internet services.",
+        "Facebook (2004), YouTube (2005), Twitter (2006), AWS (2006), and the iPhone (2007) are all American. By 2025, the five most internet-valuable companies — Apple, Microsoft, Alphabet, Amazon, Meta — are all US-headquartered and collectively generate over $1.6 trillion annually from internet services.",
     },
   ],
   platformLabel: "THE AMERICAN INTERNET",
@@ -167,7 +167,7 @@ const copyRo: InternetCopy = {
       title: "Era Platformelor",
       date: "2004 – Prezent",
       details:
-        "Facebook (2004), YouTube (2005), Twitter (2006), AWS (2006) și iPhone (2007) sunt toate americane. Până în 2024, cele mai valoroase cinci companii de internet — Apple, Microsoft, Alphabet, Amazon, Meta — sunt toate cu sediul în SUA și generează colectiv peste 1,5 trilioane de dolari anual din servicii internet.",
+        "Facebook (2004), YouTube (2005), Twitter (2006), AWS (2006) și iPhone (2007) sunt toate americane. Până în 2025, cele mai valoroase cinci companii de internet — Apple, Microsoft, Alphabet, Amazon, Meta — sunt toate cu sediul în SUA și generează colectiv peste 1,6 trilioane de dolari anual din servicii internet.",
     },
   ],
   platformLabel: "INTERNETUL AMERICAN",

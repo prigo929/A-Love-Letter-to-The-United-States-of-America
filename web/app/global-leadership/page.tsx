@@ -19,7 +19,7 @@ export default async function GlobalLeadershipPage() {
   const heroStats = [
     { value: "32", label: isRo ? "Aliați NATO conduși" : "NATO allies led" },
     { value: "750+", label: isRo ? "Baze globale" : "Global bases" },
-    { value: "$886B", label: isRo ? "Buget de apărare" : "Defense budget" },
+    { value: "$954B", label: isRo ? "Buget de apărare" : "Defense budget" },
     { value: "57%", label: isRo ? "Din rezervele în USD" : "Of FX reserves in USD" },
   ];
 

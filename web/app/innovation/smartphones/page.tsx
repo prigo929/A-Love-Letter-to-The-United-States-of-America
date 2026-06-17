@@ -138,7 +138,7 @@ const copyEn: SmartphonesCopy = {
   appParagraph1:
     "The App Store, launched in July 2008 with 500 applications, became the template for every digital marketplace that followed. Its 30% commission structure, curated review process, and developer SDK were all subsequently copied by Google Play, Steam, the PlayStation Store, and every major digital distribution platform on Earth. Apple invented the rules of how digital economies operate.",
   appParagraph2:
-    "By 2024, the combined iOS and Google Play ecosystem facilitated over $1.1 trillion in developer billings and sales — an economic output comparable to a G20 nation's GDP. Apple alone has paid out over $320 billion to developers since inception. The App Store economy employs an estimated 2.4 million people in the United States alone.",
+    "By 2025, the combined iOS and Google Play ecosystem facilitated over $1.2 trillion in developer billings and sales — an economic output comparable to a G20 nation's GDP. Apple alone has paid out over $350 billion to developers since inception. The App Store economy employs an estimated 2.4 million people in the United States alone.",
   appStats: [
     { label: "Combined App Economy", value: "$1.1T+", accent: true },
     { label: "Apple Developer Payouts (lifetime)", value: "$320B+" },
@@ -269,7 +269,7 @@ const copyRo: SmartphonesCopy = {
   appParagraph1:
     "App Store, lansat în iulie 2008 cu 500 de aplicații, a devenit șablonul pentru fiecare piață digitală care a urmat. Comisionul său de 30%, procesul de revizuire curatoriat și SDK-ul pentru dezvoltatori au fost ulterior copiate de Google Play, Steam, PlayStation Store și fiecare platformă majoră de distribuție digitală de pe Pământ. Apple a inventat regulile după care funcționează economiile digitale.",
   appParagraph2:
-    "Până în 2024, ecosistemul combinat iOS și Google Play a facilitat peste 1,1 trilioane de dolari în facturare și vânzări ale dezvoltatorilor — un output economic comparabil cu PIB-ul unui stat G20. Apple singur a plătit peste 320 de miliarde de dolari dezvoltatorilor de la înființare. Economia App Store susține un număr estimat de 2,4 milioane de locuri de muncă numai în Statele Unite.",
+    "Până în 2025, ecosistemul combinat iOS și Google Play a facilitat peste 1,2 trilioane de dolari în facturare și vânzări ale dezvoltatorilor — un output economic comparabil cu PIB-ul unui stat G20. Apple singur a plătit peste 350 de miliarde de dolari dezvoltatorilor de la înființare. Economia App Store susține un număr estimat de 2,4 milioane de locuri de muncă numai în Statele Unite.",
   appStats: [
     { label: "Economia Combinată a Aplicațiilor", value: "$1,1T+", accent: true },
     { label: "Plăți Apple către Dezvoltatori (total)", value: "$320 Mld.+" },

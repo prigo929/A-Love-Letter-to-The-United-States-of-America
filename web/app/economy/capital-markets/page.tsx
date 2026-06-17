@@ -45,7 +45,7 @@ const CAPITAL_MARKETS_EXTENDED_FACTS = [
   },
   {
     id: "capital-markets-depth",
-    fact: "The NYSE and NASDAQ carry a combined market capitalization exceeding $40 trillion",
+    fact: "The NYSE and NASDAQ carry a combined market capitalization approaching $70 trillion",
     detail: "This unmatched depth means American companies of every size — from seed-stage startups to Fortune 500 firms — can access the cheapest financing on Earth, which is a primary reason why they scale faster, invest in R&D, and dominate global markets.",
     source: "World Federation of Exchanges 2026",
     color: "red" as const,

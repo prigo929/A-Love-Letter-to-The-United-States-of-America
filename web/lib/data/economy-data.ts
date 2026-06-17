@@ -616,7 +616,7 @@ export const STARTUP_TIMELINE: FoundingTimeline[] = [
     year: 2002,
     company: "SpaceX",
     founder: "Elon Musk",
-    currentValuation: "$350B",
+    currentValuation: "$400B+",
     industry: "Space",
   },
   {
@@ -665,7 +665,7 @@ export const STARTUP_TIMELINE: FoundingTimeline[] = [
     year: 2022,
     company: "OpenAI",
     founder: "Altman / Musk / Brockman",
-    currentValuation: "$300B",
+    currentValuation: "$500B",
     industry: "AI",
   },
 ];
