@@ -6,9 +6,12 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { MacroStyles, MacroHero } from "@/components/shared/CinematicSystem";
 import { RevealSection } from "@/components/shared/Reveal";
 import { CountryBarChart } from "@/components/shared/CountryBarChart";
+import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
+import { SITE_IMAGES } from "@/lib/site-images";
 import {
   Building2, ShoppingCart, Stethoscope, Fuel, Package, Briefcase,
-  Landmark, Home, GraduationCap, Trophy,
+  Landmark, Home, GraduationCap, Trophy, Utensils, Plane, Dog,
+  Star, Hammer, TreePine,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -82,6 +85,13 @@ const copyEn: VersusCopy = {
     { icon: Trophy, title: "Youth Sports Facilities", body: "A Texas public high school football stadium seating 10,000–20,000, with pro-grade turf, lighting, and a weight room — funded by a local tax base that actually generates revenue." },
     { icon: GraduationCap, title: "Opportunity & Wages", body: "A new-grad software engineer earns $140–180k plus benefits where the same role abroad pays a fraction — same company, same work, multiples of the compensation, in a no-state-income-tax environment." },
     { icon: Landmark, title: "Everyday Services", body: "Drive-throughs, apps, and an on-demand economy built on the assumption your time is worth something — Uber, DoorDash, Instacart, and a customer-service culture sharpened by public reviews." },
+    { icon: Utensils, title: "Dining & Restaurants", body: "Within five miles of any suburb: authentic pho, Tex-Mex refined over generations, ramen, Indian buffets, steakhouses, and a dozen fast-casual chains each optimized by billion-dollar R&D — density and variety at every price point." },
+    { icon: Package, title: "Delivery & Logistics", body: "Amazon Prime next-day (often same-day), built on hundreds of fulfillment centers and the UPS/FedEx/USPS backbone. Elsewhere, 'delivery' means a 5–10 day wait and a courier fee." },
+    { icon: Hammer, title: "Home-Improvement Ecosystem", body: "Home Depot and Lowe's each stock 30,000–40,000 SKUs, fueling a culture where capital flows continuously into homes — bigger, better-equipped, continuously upgraded because the financing and products both exist." },
+    { icon: Dog, title: "The Pet Economy", body: "A ~$150B industry: PetSmart and Petco with in-store vet clinics, grooming, and training; veterinary oncology and surgery at a standard that reflects the country's wider scientific depth." },
+    { icon: Star, title: "Customer-Service Culture", body: "Costco's no-questions return policy is an institution. Reinforced by Yelp and Google reviews, businesses compete on satisfaction — the baseline expectation that a problem will simply be fixed." },
+    { icon: Plane, title: "Aviation & Airports", body: "Two major international airports per metro, $80–200 domestic flights, TSA PreCheck and Global Entry, and general-aviation fields where middle-class people own small planes — mobility at a scale that reshapes what opportunities are even visible." },
+    { icon: TreePine, title: "Outdoor Recreation", body: "Maintained trails, proper campsites with hookups, ranger stations, and Bass Pro / Cabela's superstores — lakes, gulf coast, and national parks within a day's drive, all to a standard that makes the experience effortless." },
   ],
   priceTitle: "The Price–Wage Paradox",
   priceIntro:
@@ -101,6 +111,11 @@ const copyEn: VersusCopy = {
     { category: "Week of groceries", us: "~2 hours of work", them: "~6–8 hours of work" },
     { category: "Start an LLC", us: "~20 minutes, ~$300", them: "Notary + offices, weeks" },
     { category: "Top hospital", us: "Texas Medical Center, 30 min", them: "Often: travel to Western EU" },
+    { category: "Package delivery", us: "Next-day / same-day, free", them: "5–10 days + courier fee" },
+    { category: "Restaurant variety (5-mi radius)", us: "Dozens of cuisines", them: "A handful" },
+    { category: "Airports per metro", us: "2 international + GA fields", them: "1 regional, few routes" },
+    { category: "Credit-card rewards", us: "1.5–5% cash back, perks", them: "Minimal" },
+    { category: "Gym membership", us: "~$10–60/mo, resort-grade", them: "Often pricier, thinner market" },
   ],
   livesEyebrow: "TWO PARALLEL LIVES",
   livesTitle: "Same Ambition, Different Platform",
@@ -167,6 +182,13 @@ const copyRo: VersusCopy = {
     { icon: Trophy, title: "Facilități Sportive pentru Tineri", body: "Un stadion de fotbal al unui liceu public din Texas cu 10.000–20.000 de locuri, cu gazon profesionist, nocturnă și sală de forță — finanțat de o bază fiscală locală care chiar generează venituri." },
     { icon: GraduationCap, title: "Oportunitate și Salarii", body: "Un inginer software proaspăt absolvent câștigă 140–180k $ plus beneficii, unde același rol în străinătate plătește o fracțiune — aceeași companie, aceeași muncă, de câteva ori compensația, fără impozit pe venit la nivel de stat." },
     { icon: Landmark, title: "Servicii de Zi cu Zi", body: "Drive-through-uri, aplicații și o economie la cerere construită pe ideea că timpul tău valorează ceva — Uber, DoorDash, Instacart și o cultură a serviciului clienți ascuțită de recenziile publice." },
+    { icon: Utensils, title: "Restaurante și Gastronomie", body: "La cinci mile de orice suburbie: pho autentic, Tex-Mex rafinat de generații, ramen, bufete indiene, steakhouse-uri și o duzină de lanțuri fast-casual optimizate de departamente de cercetare de miliarde — densitate și varietate la orice preț." },
+    { icon: Package, title: "Livrare și Logistică", body: "Amazon Prime a doua zi (adesea în aceeași zi), pe sute de centre de distribuție și coloana vertebrală UPS/FedEx/USPS. În altă parte, „livrarea” înseamnă 5–10 zile de așteptare și o taxă de curier." },
+    { icon: Hammer, title: "Ecosistemul de Bricolaj", body: "Home Depot și Lowe's au fiecare 30.000–40.000 de produse, alimentând o cultură în care capitalul curge continuu în locuințe — mai mari, mai bine echipate, îmbunătățite constant pentru că există și finanțarea, și produsele." },
+    { icon: Dog, title: "Economia Animalelor de Companie", body: "O industrie de ~150 mld. $: PetSmart și Petco cu clinici veterinare în magazin, toaletaj și dresaj; oncologie și chirurgie veterinară la un standard care reflectă profunzimea științifică a țării." },
+    { icon: Star, title: "Cultura Serviciului Clienți", body: "Politica de retur fără întrebări de la Costco este o instituție. Susținute de Yelp și Google, firmele concurează pe satisfacție — așteptarea de bază că o problemă va fi pur și simplu rezolvată." },
+    { icon: Plane, title: "Aviație și Aeroporturi", body: "Două aeroporturi internaționale majore per metropolă, zboruri interne de 80–200 $, TSA PreCheck și Global Entry, plus aerodromuri unde clasa de mijloc deține avioane mici — o mobilitate care schimbă ce oportunități sunt vizibile." },
+    { icon: TreePine, title: "Recreere în Aer Liber", body: "Trasee întreținute, campinguri cu utilități, posturi de rangeri și superstore-uri Bass Pro / Cabela's — lacuri, coasta golfului și parcuri naționale la o zi de mers cu mașina, toate la un standard care face experiența fără efort." },
   ],
   priceTitle: "Paradoxul Preț–Salariu",
   priceIntro:
@@ -186,6 +208,11 @@ const copyRo: VersusCopy = {
     { category: "Cumpărături pe o săptămână", us: "~2 ore de muncă", them: "~6–8 ore de muncă" },
     { category: "Înființare SRL", us: "~20 minute, ~$300", them: "Notar + ghișee, săptămâni" },
     { category: "Spital de top", us: "Texas Medical Center, 30 min", them: "Adesea: deplasare în Vest" },
+    { category: "Livrare colete", us: "A doua zi / în aceeași zi, gratuit", them: "5–10 zile + taxă curier" },
+    { category: "Varietate restaurante (5 mile)", us: "Zeci de bucătării", them: "Câteva" },
+    { category: "Aeroporturi per metropolă", us: "2 internaționale + aerodromuri", them: "1 regional, puține rute" },
+    { category: "Recompense card de credit", us: "1,5–5% cashback, beneficii", them: "Minime" },
+    { category: "Abonament la sală", us: "~$10–60/lună, nivel resort", them: "Adesea mai scump, piață subțire" },
   ],
   livesEyebrow: "DOUĂ VIEȚI PARALELE",
   livesTitle: "Aceeași Ambiție, o Altă Platformă",
@@ -291,6 +318,39 @@ export default async function AmericaVsTheWorldPage() {
           </div>
         </RevealSection>
 
+        {/* It's not just Houston — cities */}
+        <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <span className="macro-eyebrow">{isRo ? "NU DOAR HOUSTON" : "IT'S NOT JUST HOUSTON"}</span>
+            <h2 className="macro-section-title text-white text-3xl mt-3 mb-3">
+              {isRo ? "Excelență Normală, Repetată" : "Normal Excellence, Repeated"}
+            </h2>
+            <p className="macro-body text-sm max-w-3xl mb-10">
+              {isRo
+                ? "The Woodlands nu este o excepție. Același nivel de bază — infrastructură, locuințe, comerț, oportunitate — se repetă în zeci de metropole din tot Sun Belt-ul și dincolo de el. Iată câteva."
+                : "The Woodlands is not an exception. The same baseline — infrastructure, housing, retail, opportunity — repeats across dozens of metros throughout the Sun Belt and beyond. A few of them."}
+            </p>
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+              sizes="(max-width: 768px) 50vw, 25vw"
+              photos={[
+                { src: SITE_IMAGES.cities.dallas, alt: "Dallas, Texas skyline", caption: "Dallas, TX", aspect: "4/3" },
+                { src: SITE_IMAGES.cities.austin, alt: "Austin, Texas", caption: "Austin, TX", aspect: "4/3" },
+                { src: SITE_IMAGES.cities.nashville, alt: "Nashville, Tennessee skyline", caption: "Nashville, TN", aspect: "4/3" },
+                { src: SITE_IMAGES.cities.atlanta, alt: "Atlanta, Georgia at sunset", caption: "Atlanta, GA", aspect: "4/3" },
+                { src: SITE_IMAGES.cities.chicagoSkyline, alt: "Chicago, Illinois skyline", caption: "Chicago, IL", aspect: "4/3" },
+                { src: SITE_IMAGES.cities.seattleDay, alt: "Seattle, Washington by day", caption: "Seattle, WA", aspect: "4/3" },
+                { src: SITE_IMAGES.cities.savannah, alt: "Savannah, Georgia historic district", caption: "Savannah, GA", aspect: "4/3" },
+                { src: SITE_IMAGES.cities.nycCentralPark, alt: "New York City and Central Park", caption: "New York, NY", aspect: "4/3" },
+                { src: SITE_IMAGES.cities.aerialDallasHighway, alt: "Dallas highway interchange from above", caption: isRo ? "Infrastructură — Dallas" : "Infrastructure — Dallas", aspect: "4/3" },
+                { src: SITE_IMAGES.cities.aerialChicago, alt: "Aerial view of Chicago", caption: isRo ? "Vedere aeriană — Chicago" : "Aerial — Chicago", aspect: "4/3" },
+                { src: SITE_IMAGES.cities.aerialPasadena, alt: "Aerial view of Pasadena, California", caption: "Pasadena, CA", aspect: "4/3" },
+                { src: SITE_IMAGES.cities.chicagoTwilight, alt: "Chicago at twilight", caption: isRo ? "Chicago — amurg" : "Chicago — Twilight", aspect: "4/3" },
+              ]}
+            />
+          </div>
+        </RevealSection>
+
         {/* Price–wage paradox */}
         <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
@@ -325,6 +385,35 @@ export default async function AmericaVsTheWorldPage() {
                   { label: "Japan", value: 5.2, display: "$5.20" },
                   { label: "Canada", value: 4.7, display: "$4.70" },
                   { label: "USA", value: 3.2, display: "$3.20", isUS: true },
+                ]}
+              />
+              <CountryBarChart
+                title={isRo ? "Preț electricitate rezidențială (¢/kWh) — mai puțin e mai bine" : "Residential electricity price (¢/kWh) — lower is better"}
+                subtitle={isRo ? "Preț mediu pentru gospodării." : "Average household rate."}
+                source="GlobalPetrolPrices / Eurostat / EIA"
+                data={[
+                  { label: "Germany", value: 38, display: "38¢" },
+                  { label: "United Kingdom", value: 34, display: "34¢" },
+                  { label: "Italy", value: 32, display: "32¢" },
+                  { label: "Spain", value: 24, display: "24¢" },
+                  { label: "Romania", value: 22, display: "22¢" },
+                  { label: "France", value: 22, display: "22¢" },
+                  { label: "Japan", value: 21, display: "21¢" },
+                  { label: "USA", value: 17, display: "17¢", isUS: true },
+                ]}
+              />
+              <CountryBarChart
+                title={isRo ? "Mărimea medie a locuinței noi (m²)" : "Average new-home size (m²)"}
+                source="US Census / national statistics"
+                data={[
+                  { label: "USA", value: 214, display: "214 m²", isUS: true },
+                  { label: "Australia", value: 206, display: "206 m²" },
+                  { label: "Canada", value: 181, display: "181 m²" },
+                  { label: "Germany", value: 109, display: "109 m²" },
+                  { label: "France", value: 112, display: "112 m²" },
+                  { label: "Japan", value: 95, display: "95 m²" },
+                  { label: "Romania", value: 46, display: "46 m²" },
+                  { label: "United Kingdom", value: 76, display: "76 m²" },
                 ]}
               />
             </div>

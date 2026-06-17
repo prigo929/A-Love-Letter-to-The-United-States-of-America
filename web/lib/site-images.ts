@@ -435,6 +435,7 @@ import stadiumWrigley from "@/IMAGES/Culture/Sports/Stadiums/Wrigley Field aeria
 import stadiumBristol from "@/IMAGES/Culture/Sports/Stadiums/Bristol Motor Speedway Battle At Bristol Football Field Giant American Flag Crowd Card Stunt USA Fireworks Ceremony.jpg";
 import stadiumFenway from "@/IMAGES/Culture/Sports/Stadiums/Boston Red Sox Baseball Fenway Park Full Crowd Sunset Twilight Dramatic Sky Game In Progress.jpg";
 import stadiumSuperdome from "@/IMAGES/Culture/Sports/Stadiums/Caesars Superdome aerial Night prior to Super Bowl LIX.jpg";
+import stadiumStateFarmAerial from "@/IMAGES/Culture/Sports/Stadiums/State Farm Stadium Aerial at Sunset.jpg";
 
 // Food — pepperoni pizza
 import foodPepperoniPizza from "@/IMAGES/Culture/Food/Pepperoni pizza american.jpg";
@@ -854,6 +855,7 @@ export const SITE_IMAGES = {
     stadiumBristol: stadiumBristol.src,
     stadiumFenway: stadiumFenway.src,
     stadiumSuperdome: stadiumSuperdome.src,
+    stadiumStateFarmAerial: stadiumStateFarmAerial.src,
 
     // Fashion — western & preppy
     fashionCowboyBoots: fashionCowboyBoots.src,
