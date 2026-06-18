@@ -13,6 +13,7 @@ import { Languages, Menu, X, ChevronDown, Star, Search } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { getLocalizedNavSections } from "@/lib/constants";
 import { SearchModal } from "@/components/layout/SearchModal";
+import { getHeaderCopy } from "@/lib/i18n/messages/layout";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import {
   mobileMenu,
@@ -44,40 +45,7 @@ export function Header() {
     useLanguage();
   const navSections = getLocalizedNavSections(locale);
   const primaryNav = navSections.slice(0, 6);
-  const copy =
-    locale === "ro"
-      ? {
-          logoTagline: "Cea Mai Mare Națiune",
-          dataLink: "Date",
-          chooseLanguage: "Alege limba",
-          viewAllCta: "Toate Secțiunile",
-          exploreCta: "Explorează",
-          openMenu: "Deschide meniul de navigare",
-          closeMenu: "Închide meniul de navigare",
-          mobileMenuLabel: "Meniu de navigare",
-          mobileNavLabel: "Navigare mobilă",
-          galleryLink: "Galerie",
-          historyLink: "Istorie",
-          exploreNation: "Explorează Națiunea",
-          languageHeading: "Limbă",
-          viewAllPrefix: "Vezi Toată Secțiunea",
-        }
-      : {
-          logoTagline: "The Greatest Nation",
-          dataLink: "Data",
-          chooseLanguage: "Choose language",
-          viewAllCta: "All Sections",
-          exploreCta: "Explore",
-          openMenu: "Open navigation menu",
-          closeMenu: "Close navigation menu",
-          mobileMenuLabel: "Navigation menu",
-          mobileNavLabel: "Mobile navigation",
-          galleryLink: "Gallery",
-          historyLink: "History",
-          exploreNation: "Explore the Nation",
-          languageHeading: "Language",
-          viewAllPrefix: "View All",
-        };
+  const copy = getHeaderCopy(locale);
 
   // ── Scroll detection ───────────────────────────────────────────────────────
   useEffect(() => {

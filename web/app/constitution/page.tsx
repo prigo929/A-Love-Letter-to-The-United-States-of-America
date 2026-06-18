@@ -48,6 +48,7 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import DeepDiveSection from "@/components/shared/DeepDiveSection";
 import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
+import { getConstitutionPageCopy } from "@/lib/i18n/messages/pages";
 import {
   getConstitutionSubPages, getConstitutionMetrics, getRightsAtRiskStats,
   getFoundingFathers, getConstitutionClauses, getBillOfRights,
@@ -87,41 +88,13 @@ export default async function ConstitutionPage() {
   // 1. Get the current language (English or Romanian) from the server-side cookie.
   const locale   = await getServerLocale();
   const isRo     = locale === "ro";
+  const copy     = getConstitutionPageCopy(locale);
 
   // 2. Fetch organized data from our local library (lib/data/constitution-data.ts).
   // We pass 'locale' so the function knows whether to return English or Romanian text.
   const metrics  = getConstitutionMetrics(locale);
   const subPages = getConstitutionSubPages(locale);
-
-  const tocItems = isRo
-    ? [
-        { label: "Introducere", href: "#overview" },
-        { label: "Pasaje Cheie", href: "#the-document" },
-        { label: "Arhitecții Libertății", href: "#founders" },
-        { label: "Carta Drepturilor", href: "#bill-of-rights" },
-        { label: "Separarea Puterilor", href: "#separation-of-powers" },
-        { label: "Laboratoarele Democrației", href: "#federalism" },
-        { label: "Linia Neîntreruptă", href: "#track-record" },
-        { label: "Cursa Constituțiilor", href: "#constitution-race" },
-        { label: "Arhiva Electorală", href: "#electoral-archive" },
-        { label: "Drepturi în Pericol", href: "#rights-at-risk" },
-        { label: "Lumea Fără", href: "#world-without" },
-        { label: "Imersiuni Profunde", href: "#explore" },
-      ]
-    : [
-        { label: "Introduction", href: "#overview" },
-        { label: "Key Passages", href: "#the-document" },
-        { label: "Architects of Liberty", href: "#founders" },
-        { label: "Bill of Rights", href: "#bill-of-rights" },
-        { label: "Separation of Powers", href: "#separation-of-powers" },
-        { label: "Democracy Labs", href: "#federalism" },
-        { label: "The Unbroken Line", href: "#track-record" },
-        { label: "The Constitution Race", href: "#constitution-race" },
-        { label: "Electoral Archive", href: "#electoral-archive" },
-        { label: "Rights at Risk", href: "#rights-at-risk" },
-        { label: "The World Without", href: "#world-without" },
-        { label: "Deep Dives", href: "#explore" },
-      ];
+  const tocItems = copy.tocItems;
 
   return (
     <>
@@ -160,8 +133,8 @@ export default async function ConstitutionPage() {
         <InkParticles count={40} />
         <CinematicStat
           value={4543}
-          label={isRo ? "cuvinte ce guvernează o economie de 31 trilioane $" : "words governing a $31 trillion economy"}
-          sublabel={isRo ? "Cea mai scurtă constituție națională majoră" : "The shortest major national constitution"}
+          label={copy.statLabel}
+          sublabel={copy.statSublabel}
         />
       </div>
 
@@ -188,28 +161,22 @@ export default async function ConstitutionPage() {
           */}
           <Entablature
             chapter="I"
-            title={isRo ? "Documentul Viu" : "The Living Document"}
+            title={copy.chapter1Title}
           />
 
-          <Section id="overview" eyebrow={isRo ? "Constituție și Democrație" : "Constitution & Democracy"}>
+          <Section id="overview" eyebrow={copy.chapter1Eyebrow}>
             <NutGraf>
-              {isRo
-                ? "4.543 de cuvinte. 237 de ani. Zero întreruperi."
-                : "4,543 words. 237 years. Zero interruptions."}
+              {copy.chapter1NutGraf}
             </NutGraf>
             <h2 className="mb-6 font-display text-h1 text-[#F5F0E8]">
-              {isRo ? "Documentul care Conduce Lumea" : "The Document That Runs the World"}
+              {copy.chapter1Heading}
             </h2>
             <div className="mb-8 grid gap-6 md:grid-cols-2">
               <p className="font-body text-lg leading-relaxed text-[#B8B4AC]">
-                {isRo
-                  ? "4.543 de cuvinte. Scrise de 55 de bărbați în 116 zile la Philadelphia, în vara anului 1787. Aceleași cuvinte care autorizau comerțul de-a lungul râului Potomac autorizează astăzi economia de 31 de trilioane de dolari a Americii."
-                  : "4,543 words. Written by 55 men in 116 days in Philadelphia, in the summer of 1787. The same words that authorized commerce along the Potomac River in 1787 authorize America's $31 trillion economy today."}
+                {copy.chapter1Paragraph1}
               </p>
               <p className="font-body text-lg leading-relaxed text-[#B8B4AC]">
-                {isRo
-                  ? "237 de ani de democrație constituțională neîntreruptă. 60 de alegeri prezidențiale. Niciun coup. Nicio suspendare. Niciun monarh. Un record pe care nicio altă națiune de pe Pământ nu îl poate egala."
-                  : "237 years of unbroken constitutional democracy. 60 presidential elections. Zero coups. Zero suspensions. Zero monarchs. A record no other nation on Earth comes close to matching."}
+                {copy.chapter1Paragraph2}
               </p>
             </div>
             <ConservationSpotlight>
@@ -230,10 +197,10 @@ export default async function ConstitutionPage() {
                   <div className="absolute inset-0 bg-linear-to-b from-[#080B12]/80 via-transparent to-transparent md:hidden" />
 
                   <AccessionLabel
-                    title={isRo ? "Constituția Statelor Unite, Pagina 1" : "United States Constitution, Page 1"}
-                    date={isRo ? "17 Septembrie 1787" : "September 17, 1787"}
-                    medium={isRo ? "Cerneală de fier pe pergament" : "Iron gall ink on parchment"}
-                    collection={isRo ? "Arhivele Naționale · Grupul 11" : "National Archives · Record Group 11"}
+                    title={copy.accessionLabelTitle}
+                    date={copy.accessionLabelDate}
+                    medium={copy.accessionLabelMedium}
+                    collection={copy.accessionLabelCollection}
                     accessionNumber="ARC #1667751"
                   />
                 </div>
@@ -246,12 +213,12 @@ export default async function ConstitutionPage() {
               We pass it the 'clauses' data from our library.
               In React, passing data like this is called 'Props' (short for properties).
           */}
-          <Section id="the-document" eyebrow={isRo ? "Documentul Viu" : "The Living Document"}>
+          <Section id="the-document" eyebrow={copy.vaultEyebrow}>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "Pasaje ce Au Schimbat Lumea" : "Passages That Changed the World"}
+              {copy.vaultHeading}
             </h2>
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-              {isRo ? "Dă click pe orice clauză pentru a-i ilumina moștenirea. Fiecare propoziție este în vigoare chiar acum." : "Click over any clause to illuminate its legacy. Every sentence is in force right now."}
+              {copy.vaultDescription}
             </p>
             <ClauseVault clauses={getConstitutionClauses(isRo)} isRo={isRo} />
           </Section>
@@ -262,30 +229,24 @@ export default async function ConstitutionPage() {
           {/* ── Founders ─────────────────────────────────────────────────────── */}
           <Entablature
             chapter="II"
-            title={isRo ? "Arhitecții Libertății" : "Architects of Liberty"}
+            title={copy.chapter2Title}
           />
 
           <Section id="founders">
             <NutGraf>
-              {isRo
-                ? "55 de delegați. 116 zile. Un singur scop."
-                : "55 delegates. 116 days. One purpose."}
+              {copy.chapter2NutGraf}
             </NutGraf>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "Galeria de la Miezul Nopții" : "The Midnight Gallery"}
+              {copy.chapter2Heading}
             </h2>
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-              {isRo
-                ? "Un seif privat, climatizat, adânc sub Arhivele Naționale. Dă click pe un portret pentru a deschide dosarul."
-                : "A private, climate-controlled vault deep beneath the National Archives. Click a portrait to open the dossier."}
+              {copy.chapter2Description}
             </p>
             <MidnightGallery founders={getFoundingFathers(isRo)} isRo={isRo} />
           </Section>
 
           <CinematicPullQuote
-            quote={isRo
-              ? "Constituția nu este un instrument prin care guvernul restrânge poporul, ci un instrument prin care poporul restrânge guvernul."
-              : "The Constitution is not an instrument for the government to restrain the people, it is an instrument for the people to restrain the government."}
+            quote={copy.chapter2PullQuote}
             attribution="Patrick Henry"
             source="1788"
           />
@@ -293,22 +254,20 @@ export default async function ConstitutionPage() {
           {/* ── Bill of Rights ───────────────────────────────────────────────── */}
           <Entablature
             chapter="III"
-            title={isRo ? "Declarația Drepturilor" : "Bill of Rights"}
+            title={copy.chapter3Title}
           />
 
           <Section id="bill-of-rights">
             <NutGraf>
-              {isRo
-                ? "Motivul pentru care criticarea acestei pagini este protejată constituțional."
-                : "The reason criticizing this page is constitutionally protected."}
+              {copy.chapter3NutGraf}
             </NutGraf>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "Zece Garanții. 235 de Ani." : "Ten Guarantees. 235 Years."}
+              {copy.chapter3Heading}
             </h2>
             <AmendmentAccordion amendments={getBillOfRights(isRo)} isRo={isRo} />
             <div className="mt-6 flex justify-end">
               <Link href="/constitution/bill-of-rights" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#C9A84C] hover:text-[#E8C878] transition-colors">
-                {isRo ? "Explorare Completă →" : "Full Explorer →"}
+                {copy.chapter3Explore}
               </Link>
             </div>
           </Section>
@@ -319,25 +278,23 @@ export default async function ConstitutionPage() {
           {/* ── Separation of Powers ─────────────────────────────────────────── */}
           <Entablature
             chapter="IV"
-            title={isRo ? "Separarea Puterilor" : "Separation of Powers"}
+            title={copy.chapter4Title}
           />
 
           <Section id="separation-of-powers">
             <NutGraf>
-              {isRo
-                ? "Trei ramuri. Fiecare verificând celelalte două."
-                : "Three branches. Each checking the other two."}
+              {copy.chapter4NutGraf}
             </NutGraf>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "Mașinăria în Lumea Reală" : "The Machine in the Real World"}
+              {copy.chapter4Heading}
             </h2>
             <p className="mb-10 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-              {isRo ? "Așa funcționează sistemul de 'Verificări și Echilibre' când țara se confruntă cu o criză națională reală. Fiecare pârghie este proiectată pentru a preveni acumularea unei puteri absolute." : "This is how the system of 'Checks and Balances' actually functions when the nation faces a real-world crisis. Every lever is designed to prevent the accumulation of absolute power."}
+              {copy.chapter4Description}
             </p>
             <SeparationDiagram examples={getPowersCheckExamples(isRo)} isRo={isRo} />
             <div className="mt-6 flex justify-end">
               <Link href="/constitution/separation-of-powers" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#C9A84C] hover:text-[#E8C878] transition-colors">
-                {isRo ? "Analiză Completă →" : "Full Analysis →"}
+                {copy.chapter4Explore}
               </Link>
             </div>
           </Section>
@@ -345,22 +302,18 @@ export default async function ConstitutionPage() {
           {/* ── Federalism ───────────────────────────────────────────────────── */}
           <Entablature
             chapter="V"
-            title={isRo ? "Laboratoare ale Democrației" : "Laboratories of Democracy"}
+            title={copy.chapter5Title}
           />
 
           <Section id="federalism">
             <NutGraf>
-              {isRo
-                ? "50 de state. 50 de experimente. Rezultate reale."
-                : "50 states. 50 experiments. Real outcomes."}
+              {copy.chapter5NutGraf}
             </NutGraf>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "50 de State. 50 de Experimente." : "50 States. 50 Experiments."}
+              {copy.chapter5Heading}
             </h2>
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-              {isRo
-                ? "Proiectează-ți statul ideal. Descoperă care stat american trăiește deja așa — și ce rezultate reale a produs."
-                : "Design your ideal state. Discover which real American state already lives that way — and what outcomes it produces."}
+              {copy.chapter5Description}
             </p>
             <FederalismHook isRo={isRo} />
           </Section>
@@ -373,8 +326,8 @@ export default async function ConstitutionPage() {
       <div className="relative bg-[#080B12]">
         <CinematicStat
           value={237}
-          label={isRo ? "ani de guvernare constituțională neîntreruptă" : "years of unbroken constitutional government"}
-          sublabel={isRo ? "Cel mai lung din istoria înregistrată" : "The longest in recorded history"}
+          label={copy.stat2Label}
+          sublabel={copy.stat2Sublabel}
         />
       </div>
 
@@ -385,22 +338,18 @@ export default async function ConstitutionPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Entablature
             chapter="VI"
-            title={isRo ? "250 de Ani de Dovezi" : "250 Years of Evidence"}
+            title={copy.chapter6Title}
           />
 
           <Section id="track-record">
             <NutGraf>
-              {isRo
-                ? "De Fiecare Dată"
-                : "Every. Single. Time."}
+              {copy.chapter6NutGraf}
             </NutGraf>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "Linia Neîntreruptă" : "The Unbroken Line"}
+              {copy.chapter6Heading}
             </h2>
             <p className="mb-4 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-              {isRo
-                ? "Fiecare nod de-a lungul liniei de aur reprezintă un transfer de putere prezidențial. Nodurile roșii sunt momente de criză — când sistemul a fost cel mai mult testat."
-                : "Each node along the golden line represents a presidential transfer of power. Red nodes are crisis moments — when the system was tested most severely."}
+              {copy.chapter6Description}
             </p>
           </Section>
 
@@ -408,19 +357,17 @@ export default async function ConstitutionPage() {
 
           <div className="mt-6 flex justify-end pb-8">
             <Link href="/constitution/democracy-track-record" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#C9A84C] hover:text-[#E8C878] transition-colors">
-              {isRo ? "Cronologie Completă →" : "Full Timeline →"}
+              {copy.chapter6Explore}
             </Link>
           </div>
 
           {/* ── Constitution Race ─────────────────────────────────────── */}
           <Section id="constitution-race">
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "Cursa pe Care Nimeni Altcineva nu o Câștigă" : "The Race Nobody Else Wins"}
+              {copy.raceHeading}
             </h2>
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-              {isRo
-                ? "Privește constituțiile lumii cum se ridică și se prăbușesc. Bara americană de aur nu se oprește niciodată."
-                : "Watch the world's constitutions rise and collapse. America's golden bar never stops."}
+              {copy.raceDescription}
             </p>
             <ConstitutionRace isRo={isRo} />
 
@@ -428,33 +375,31 @@ export default async function ConstitutionPage() {
             <div className="mt-8 rounded-xl border border-[rgba(201,168,76,0.15)] bg-[rgba(201,168,76,0.02)] p-6 md:p-8">
               <h3 className="mb-4 font-display text-xl text-[#F5F0E8] flex items-center gap-3">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[rgba(201,168,76,0.1)] text-xs font-bold text-[#C9A84C]">?</span>
-                {isRo ? "Excepția: Norvegia (1814)" : "The Exception: Norway (1814)"}
+                {copy.norwayTitle}
               </h3>
               <p className="mb-6 font-body text-sm leading-relaxed text-[#B8B4AC]">
-                {isRo
-                  ? "Deși ambele țări și-au păstrat documentele originale, Norvegia și-a transformat radical sistemul de guvernare prin amendamente, în timp ce S.U.A. a menținut aceeași structură fundamentală."
-                  : "While both countries have kept their original documents, Norway radically transformed its actual system of government, whereas the U.S. has maintained the exact same fundamental structure."}
+                {copy.norwayDescription}
               </p>
               
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
                   <h4 className="mb-2 font-display text-base font-semibold text-[#C9A84C]">
-                    {isRo ? "Schimbări Structurale: 27 vs. 300+" : "Structural Changes: 27 vs. 300+"}
+                    {copy.norwayHeading}
                   </h4>
                   <p className="font-body text-xs leading-relaxed text-[#8B8880]">
-                    {isRo
-                      ? "Constituția SUA a avut doar 27 de amendamente, menținând limba originală. Norvegia a avut peste 300 de amendamente și a rescris întregul document în 2014, deoarece limbajul originar în stil danez devenise prea dificil de citit."
-                      : "The US Constitution only has 27 amendments, maintaining its original language. Norway has had over 300 amendments and rewrote the entire document in modern Norwegian in 2014 because the 1814 Danish-style language became unreadable to modern citizens."}
+                    {copy.norwayText1}
                   </p>
                 </div>
                 <div>
                   <h4 className="mb-2 font-display text-base font-semibold text-[#C9A84C]">
-                    {isRo ? "Revizuiri Radicale" : "Radical Revisions"}
+                    {copy.norwayHeading2}
                   </h4>
                   <ul className="space-y-2 font-body text-xs leading-relaxed text-[#8B8880]">
-                    <li><strong className="text-[#B8B4AC]">1884 ({isRo ? "Parlamentarism" : "Parliamentarism"}):</strong> {isRo ? "Guvernul trebuie să aibă sprijinul majorității parlamentare." : "Introduced parliamentarism; cabinet requires parliamentary majority."}</li>
-                    <li><strong className="text-[#B8B4AC]">2009 ({isRo ? "Abolirea Unei Camere" : "Abolishing a House"}):</strong> {isRo ? "A trecut la un sistem unicameral, abolind o cameră a Parlamentului." : "Abolished a House of Parliament, switching to a unicameral system."}</li>
-                    <li><strong className="text-[#B8B4AC]">2012 ({isRo ? "Religie de Stat" : "State Religion"}):</strong> {isRo ? "A eliminat statutul Bisericii Evanghelice Luterane ca religie oficială." : "Removed the Evangelical-Lutheran Church as the official state religion."}</li>
+                    {copy.norwayRevisions.map((rev) => (
+                      <li key={rev.label}>
+                        <strong className="text-[#B8B4AC]">{rev.label}:</strong> {rev.value}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -469,8 +414,8 @@ export default async function ConstitutionPage() {
       <div className="relative bg-[#080B12]">
         <CinematicStat
           value={0}
-          label={isRo ? "lovituri de stat. În 237 de ani." : "coups. In 237 years."}
-          sublabel={isRo ? "Zero. Niciodată." : "Zero. Never."}
+          label={copy.stat3Label}
+          sublabel={copy.stat3Sublabel}
         />
       </div>
 
@@ -484,22 +429,18 @@ export default async function ConstitutionPage() {
 
           <Entablature
             chapter="VII"
-            title={isRo ? "Marea Stabilitate" : "The Great Stability"}
+            title={copy.chapter7Title}
           />
 
           <Section id="electoral-archive">
             <NutGraf>
-              {isRo
-                ? "60 de Alegeri. 0 Interuperi."
-                : "60 Elections. 0 Interruptions."}
+              {copy.chapter7NutGraf}
             </NutGraf>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "Arhiva Electorală Interactivă" : "Interactive Electoral Archive"}
+              {copy.chapter7Heading}
             </h2>
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-              {isRo
-                ? "Explorează reziliența arhitecturii constituționale a Americii. Scrubbează prin secole de date electorale pentru a vedea cum democrația a funcționat neîncetat, indiferent de războaie, crize sau schimbări tehnologice."
-                : "Explore the resilience of America's constitutional architecture. Scrub through centuries of electoral data to see how democracy has functioned relentlessly, regardless of wars, crises, or technological shifts."}
+              {copy.chapter7Description}
             </p>
             
             <div className="relative rounded-2xl border border-[rgba(201,168,76,0.15)] bg-[#0A0E14] p-4 md:p-8 shadow-2xl">
@@ -508,7 +449,7 @@ export default async function ConstitutionPage() {
 
             <div className="mt-6 flex justify-end pb-8">
               <Link href="/constitution/electoral-map" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#C9A84C] hover:text-[#E8C878] transition-colors">
-                {isRo ? "Vezi Arhiva Completă →" : "View Full Archive →"}
+                {copy.chapter7Explore}
               </Link>
             </div>
           </Section>
@@ -518,24 +459,20 @@ export default async function ConstitutionPage() {
               ══════════════════════════════════════════════════════════════════════ */}
           <Entablature
             chapter="VIII"
-            title={isRo ? "Context Global" : "Global Context"}
+            title={copy.chapter8Title}
           />
 
           <Section id="rights-at-risk">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
                 <NutGraf>
-                  {isRo
-                    ? "Construite. Nu moștenite."
-                    : "Built. Not inherited."}
+                  {copy.chapter8NutGraf}
                 </NutGraf>
                 <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-                  {isRo ? "Acestea Nu Sunt Normale" : "These Are Not the Default"}
+                  {copy.chapter8Heading}
                 </h2>
                 <p className="mb-6 font-body text-base leading-relaxed text-[#B8B4AC]">
-                  {isRo
-                    ? "Drepturile pe care americanii le iau de-a gata nu sunt starea normală a civilizației umane. Ele sunt excepția. Ele au fost construite. Trebuie păstrate."
-                    : "The rights Americans take for granted are not the default state of human civilization. They are the exception. They were built. They must be kept."}
+                  {copy.chapter8Description}
                 </p>
               </div>
               <RightsCounter stats={getRightsAtRiskStats(isRo)} />
@@ -545,27 +482,23 @@ export default async function ConstitutionPage() {
           {/* ── IX. The World Without ───────────────────────────────── */}
           <Entablature
             chapter="IX"
-            title={isRo ? "Lumea Fără" : "The World Without"}
+            title={copy.chapter9Title}
           />
 
           <Section id="world-without">
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "Ce Se Întâmplă Când Drepturile Nu Există" : "What Happens When Rights Don't Exist"}
+              {copy.chapter9Heading}
             </h2>
             <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-[#B8B4AC]">
-              {isRo
-                ? "Fiecare pereche arată un drept american alături de realitatea din țări unde acel drept nu există."
-                : "Each pair shows an American right alongside the reality in countries where that right does not exist."}
+              {copy.chapter9Description}
             </p>
             <WorldWithout isRo={isRo} />
           </Section>
 
           <CinematicPullQuote
-            quote={isRo
-              ? "Dacă oamenii ar fi îngeri, nu ar fi necesar niciun guvern. Dacă îngerii ar guverna oamenii, nu ar fi necesare controale externe sau interne ale guvernului."
-              : "If men were angels, no government would be necessary. If angels were to govern men, neither external nor internal controls on government would be necessary."}
+            quote={copy.madisonQuote}
             attribution="James Madison"
-            source={isRo ? "Federalistul Nr. 51, 1788" : "Federalist No. 51, 1788"}
+            source={copy.madisonSource}
           />
 
           {/* ── Deep Dives ─────────────────────────────────────────────────── 
@@ -573,9 +506,9 @@ export default async function ConstitutionPage() {
               'map' is a JavaScript tool that takes an array of data (like our subPages list)
               and turns each item into a React component (in this case, a Link card).
           */}
-          <Section id="explore" eyebrow={isRo ? "Explorează mai Adânc" : "Explore Deeper"}>
+          <Section id="explore" eyebrow={copy.chapter9DeepDives}>
             <h2 className="mb-8 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "Imersiuni în Profunzime" : "Deep Dives"}
+              {copy.chapter9DeepDivesHeading}
             </h2>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {subPages.map(page => (
@@ -598,7 +531,7 @@ export default async function ConstitutionPage() {
                     <h3 className="mb-1.5 font-display text-lg font-semibold text-[#F5F0E8] transition-colors group-hover:text-[#C9A84C]">{page.title}</h3>
                     <p className="font-body text-sm leading-relaxed text-[#6B6860]">{page.description}</p>
                     <p className="mt-4 font-body text-xs font-semibold text-[#C9A84C] opacity-0 transition-opacity group-hover:opacity-100">
-                      {isRo ? "Explorează →" : "Explore →"}
+                      {copy.exploreCta}
                     </p>
                   </div>
                 </Link>
