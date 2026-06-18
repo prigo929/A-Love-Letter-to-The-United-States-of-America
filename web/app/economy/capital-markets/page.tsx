@@ -441,10 +441,11 @@ export default async function CapitalMarketsPage() {
                     : "Pioneered by Vanguard founder Jack Bogle in 1976, and accelerated by the invention of the ETF in 1993, passive index investing democratized Wall Street. By eliminating high management fees of active managers, middle-class savers directly capture the full compounding returns of the market, holding over $15 trillion in index-linked assets."}
                 </p>
                 <div className="relative aspect-[16/8] w-full overflow-hidden rounded-3xl border border-white/5 bg-black/40 mt-6">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src="/images/library/Economy/100 dollar bill.jpg"
                     alt="US 100 Dollar Bill detailed engraving representing capital wealth"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700 opacity-60"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />

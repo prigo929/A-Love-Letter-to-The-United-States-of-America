@@ -1490,17 +1490,19 @@ export function CultureBrandLogosMarquee({ bgVariant = "dark" }: { bgVariant?: "
             {BRAND_LOGOS_ROW_1.map((logo) => (
               <div
                 key={`${logo.name}-row1-track1`}
-                className="logo-slot w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
+                className="logo-slot relative w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
               >
-                <img
+                <Image
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
+                  fill
+                  sizes="(max-width: 768px) 128px, 160px"
                   className={cn(
-                    "w-full h-full object-contain",
+                    "object-contain",
                     logo.scale || "scale-100",
                     logo.invert ? "logo-img-dark" : "logo-img-color"
                   )}
-                  loading="eager"
+                  priority
                 />
               </div>
             ))}
@@ -1510,17 +1512,19 @@ export function CultureBrandLogosMarquee({ bgVariant = "dark" }: { bgVariant?: "
             {BRAND_LOGOS_ROW_1.map((logo) => (
               <div
                 key={`${logo.name}-row1-track2`}
-                className="logo-slot w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
+                className="logo-slot relative w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
               >
-                <img
+                <Image
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
+                  fill
+                  sizes="(max-width: 768px) 128px, 160px"
                   className={cn(
-                    "w-full h-full object-contain",
+                    "object-contain",
                     logo.scale || "scale-100",
                     logo.invert ? "logo-img-dark" : "logo-img-color"
                   )}
-                  loading="eager"
+                  priority
                 />
               </div>
             ))}
@@ -1536,17 +1540,19 @@ export function CultureBrandLogosMarquee({ bgVariant = "dark" }: { bgVariant?: "
             {BRAND_LOGOS_ROW_2.map((logo) => (
               <div
                 key={`${logo.name}-row2-track1`}
-                className="logo-slot w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
+                className="logo-slot relative w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
               >
-                <img
+                <Image
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
+                  fill
+                  sizes="(max-width: 768px) 128px, 160px"
                   className={cn(
-                    "w-full h-full object-contain",
+                    "object-contain",
                     logo.scale || "scale-100",
                     logo.invert ? "logo-img-dark" : "logo-img-color"
                   )}
-                  loading="eager"
+                  priority
                 />
               </div>
             ))}
@@ -1556,17 +1562,19 @@ export function CultureBrandLogosMarquee({ bgVariant = "dark" }: { bgVariant?: "
             {BRAND_LOGOS_ROW_2.map((logo) => (
               <div
                 key={`${logo.name}-row2-track2`}
-                className="logo-slot w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
+                className="logo-slot relative w-32 h-16 md:w-40 md:h-20 shrink-0 flex items-center justify-center"
               >
-                <img
+                <Image
                   src={`/assets/companies/${logo.file}`}
                   alt={logo.name}
+                  fill
+                  sizes="(max-width: 768px) 128px, 160px"
                   className={cn(
-                    "w-full h-full object-contain",
+                    "object-contain",
                     logo.scale || "scale-100",
                     logo.invert ? "logo-img-dark" : "logo-img-color"
                   )}
-                  loading="eager"
+                  priority
                 />
               </div>
             ))}

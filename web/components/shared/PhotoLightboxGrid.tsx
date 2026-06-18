@@ -118,14 +118,17 @@ export function PhotoLightboxGrid({
             </div>
             {/* Clicking the area around the photo closes; clicking the photo itself does not. */}
             <div
-              className="flex flex-1 cursor-zoom-out items-center justify-center overflow-hidden rounded-b-2xl bg-[#050505] p-2 sm:p-4"
+              className="relative flex-1 cursor-zoom-out overflow-hidden rounded-b-2xl bg-[#050505]"
               onClick={close}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={photos[active].src}
                 alt={photos[active].alt}
-                className="max-h-full max-w-full cursor-default object-contain"
+                fill
+                sizes="90vw"
+                priority
+                unoptimized={isSvg(photos[active].src)}
+                className="cursor-default object-contain p-2 sm:p-4"
                 onClick={(e) => e.stopPropagation()}
               />
             </div>

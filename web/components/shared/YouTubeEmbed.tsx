@@ -8,6 +8,7 @@
 // and bandwidth.
 
 import { useState } from "react";
+import Image from "next/image";
 import { Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -54,11 +55,11 @@ export function YouTubeEmbed({
           className="absolute inset-0 h-full w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
           aria-label={`Play: ${title}`}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`}
             alt={title}
-            loading="lazy"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="absolute inset-0 h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
           />
           <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />

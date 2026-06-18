@@ -608,10 +608,11 @@ export default async function TradeAndExportsPage() {
             <div className="grid gap-12 lg:grid-cols-2">
               <div className="rounded-3xl border border-white/5 bg-white/[0.02] overflow-hidden hover:border-[#E8B923]/20 transition-all duration-300">
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/40">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src="/images/library/Landscapes/Mississippi River running through Minneapolis .jpg"
                     alt="Mississippi River Inland Waterways"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
@@ -633,10 +634,11 @@ export default async function TradeAndExportsPage() {
 
               <div className="rounded-3xl border border-white/5 bg-white/[0.02] overflow-hidden hover:border-[#E8B923]/20 transition-all duration-300">
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/40">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src="/images/library/Infrastructure/I-110 and I-115 Interchange Los Angeles.jpg"
                     alt="US Interstate Highway System Interchange"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />

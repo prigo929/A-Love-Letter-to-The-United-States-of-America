@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
@@ -608,10 +609,11 @@ export default async function SmartphonesPage() {
                 className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/2 flex flex-col hover:border-[#E8B923]/30 transition-all duration-500"
               >
                 <div className="relative aspect-16/10 overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={item.imageSrc}
                     alt={item.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-transparent" />

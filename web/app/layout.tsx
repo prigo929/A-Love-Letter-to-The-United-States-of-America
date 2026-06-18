@@ -18,6 +18,7 @@ import { Footer } from "@/components/layout/Footer";
 import { BackToTop, ReadingProgressBar } from "@/components/layout/PageChrome";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { SITE } from "@/lib/constants";
+import { getServerLocale } from "@/lib/i18n/server";
 import "@/app/globals.css";
 
 // ─── Font Loading (next/font for performance + no CLS) ────────────────────────
@@ -182,14 +183,16 @@ const jsonLd = {
 
 // ─── Root Layout Component ────────────────────────────────────────────────────
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const locale = await getServerLocale();
+
   return (
       <html
-        lang="en"
+        lang={locale}
         className={`${bebasNeue.variable} ${playfairDisplay.variable} ${inter.variable} ${archivo.variable} ${spaceMono.variable} ${pinyonScript.variable} overflow-x-hidden`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning

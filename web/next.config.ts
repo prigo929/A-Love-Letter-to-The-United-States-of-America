@@ -47,6 +47,12 @@ const nextConfig: NextConfig = {
         hostname: "cdn.pixabay.com",
         pathname: "/**",
       },
+      {
+        // YouTube thumbnails
+        protocol: "https",
+        hostname: "*.ytimg.com",
+        pathname: "/**",
+      },
     ],
     // Prefer WebP for faster real-world first loads. AVIF can be smaller, but
     // it is slower to encode on first request, which hurts perceived speed.
