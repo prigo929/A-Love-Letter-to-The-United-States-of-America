@@ -174,6 +174,42 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </div>
 </div>
 
+<br />
+
+<div align="center">
+  <img src="web/IMAGES/University/Columbia University.jpg" width="600" alt="Ivy League Academic Excellence: Columbia University" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "Ivy League and Academic Excellence" ★</strong>
+    <br />
+    The iconic Low Memorial Library at Columbia University in New York, representing the global leadership of American higher education, research output, and intellectual legacy.
+  </div>
+</div>
+
+<br />
+
+<div align="center">
+  <img src="web/IMAGES/Culture/Iconic Things/Statue Of Liberty.jpg" width="600" alt="The Colossus of Liberty: Statue of Liberty" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Colossus of Liberty" ★</strong>
+    <br />
+    The Statue of Liberty standing proudly in New York Harbor, representing the enduring American values of freedom, democracy, and a welcoming beacon to immigrants from across the globe.
+  </div>
+</div>
+
+<br />
+
+<div align="center">
+  <img src="web/IMAGES/Housing/USA Suburb house.jpg" width="600" alt="The Promise of Abundance: American Suburb" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Promise of Abundance" ★</strong>
+    <br />
+    A classic, spacious suburban home in America, representing the consumer abundance, high purchasing power, and standard of living enjoyed by millions across the nation.
+  </div>
+</div>
+
 ---
 
 ## 🦅 Quick Snapshot (Core Architecture)
@@ -184,7 +220,6 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
 | 📊 **Centralized Content Model** | 100% strict data-first architecture with mock specifications in `/lib/data/` | Dumb rendering components which cleanly select localized properties without ternary pollution |
 | 📂 **Registry-First Media** | Monolith image registry controlled inside `lib/site-images.ts` using local path mappings | Absolute protection against broken URLs, local image preloading, and dynamic SVG compression |
 | 🌐 **Bi-directional Locale Parity** | Pure English-Romanian interface compliance with dedicated locale cookies | High-speed server-side pre-rendering coupled with state-persistent language provider islands |
-| 🗺️ **Democratic Storytelling** | Continuous, narrative scroll layouts separating content into historical chapters | Interactive 50-state historical electoral trackers dating back to the first 1788 delegation |
 | 🎖️ **Editorial Verticals** | Bespoke vertical frameworks (Economy, Nature, Military) with domain-specific components | Custom interactive engines (Policy Match Laboratory, Carrier Strike coordinate trackers, Strata revealing) |
 
 ## 🏛️ Cinematic Visual Style & Verticals Matrix
@@ -193,18 +228,19 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 
 | 🏷️ Editorial Vertical | 🎨 Visual Tone & Aesthetic | ⚡ Active Interactive Engines | 🔗 Production Routes |
 | :--- | :--- | :--- | :--- |
-| **📈 Economy & Capital** | **"Macro-Capital Editorial"**<br>• Clean grid alignments<br>• Wall Street Journal-grade typography<br>• High-contrast monetary scales | • **GDP & Venture Capital Charts**: Gold-highlighted Recharts comparisons.<br>• **National Debt Ticker**: Live real-time projection.<br>• **Innovation Index**: Global patent comparative metric. | • `/economy`<br>• `/economy/gdp-growth`<br>• `/economy/capital-markets`<br>• `/economy/startups-venture-capital`<br>• `/economy/dollar-dominance`<br>• `/economy/trade-and-exports` |
-| **🌲 Natural Majesty** | **"Spatial Editorial"**<br>• Earthy obsidian backdrops<br>• Emerald green accents<br>• Generous typographic quote spacing | • **Geyser Eruption Simulator**: Real-time interval tracker.<br>• **Biodiversity Strata**: Interactive layered mountain mapping.<br>• **NPS Mobile Charts**: Angle-rotated responsive label charts. | • `/nature`<br>• `/nature/national-parks`<br>• `/nature/alaska`<br>• `/nature/rockies`<br>• `/nature/grand-canyon`<br>• `/nature/yellowstone`<br>• `/nature/great-lakes` |
-| **🎖️ Arsenal of Democracy** | **"Minimalist Black-Ops"**<br>• Stark monochromatic headers<br>• Zinc/black palette with thin border accents<br>• Cinematic looping video heroes<br>• "Classified dossier" modal drawers | • **Global Carrier Map**: Live SVG tracker for all 11 carrier strike groups.<br>• **Nuclear Triad Simulation**: Interactive silo, sub, and bomber parity engine.<br>• **DARPA Future Systems Grid**: Active classified program cards.<br>• **Base Dossier Drawer**: Per-installation intelligence briefs with image previews.<br>• **Heritage Timeline**: Branch-by-branch milestone narratives (Navy, Air Force, Space Force).<br>• **Platform Showcases**: Spec-sheet modals for every major weapons platform.<br>• **Five Eyes Geometry**: Alliance node network visual (Intelligence page). | • `/military`<br>• `/military/navy`<br>• `/military/air-force`<br>• `/military/space-force`<br>• `/military/global-bases`<br>• `/military/intelligence` |
-| **📜 American History** | **"Partially Scaffolded"**<br>• Main landing page is placeholder<br>• Deep-dive pages serve as placeholders | • **Exceptionalism Exhibit**: `/history/american-exceptionalism` is fully operational with custom widgets and detailed text. | • `/history`<br>• `/history/founding-principles`<br>• `/history/american-exceptionalism`<br>• `/history/frontier-and-expansion`<br>• `/history/union-and-liberty`<br>• `/history/industrial-rise`<br>• `/history/arsenal-of-democracy`<br>• `/history/cold-war-and-anti-communism`<br>• `/history/the-american-dream`<br>• `/history/the-reagan-revolution`<br>• `/history/faith-family-and-community`<br>• `/history/free-markets-and-prosperity`<br>• `/history/border-sovereignty-and-national-identity`<br>• `/history/constitutional-battles`<br>• `/history/post-9-11-america`<br>• `/history/the-populist-era` |
-| **💡 Innovation & Tech** | **"High-Tech Modern Grids"**<br>• Obsidian tech palettes<br>• Modular sub-pages directory<br>• Dynamic video hero showcases | • **Generative AI & Cloud Nodes**: Advanced visualizers details Silicon Valley semiconductor design, AWS/Google Cloud centers, and SpaceX launch statistics. | • `/innovation`<br>• `/innovation/internet-history`<br>• `/innovation/ai-and-tech`<br>• `/innovation/smartphones`<br>• `/innovation/cloud-computing`<br>• `/innovation/space-technology`<br>• `/innovation/gaming` |
-| **🔬 Science & Inventions** | **"Empirical Research"**<br>• Clinical details and patent lists<br>• Dark slate modern backgrounds | • **Biotech & Inventions**: Interactive data cards tracking biomedical innovations and post-1991 tech breakthroughs. | • `/science`<br>• `/science/inventions-pre-1890`<br>• `/science/inventions-1890-1945`<br>• `/science/inventions-post-1991`<br>• `/science/medicine-and-biotech` |
-| **🎓 Higher Education** | **"Campus Showcase Grids"**<br>• Gold-trimmed obsidian lists<br>• University research insights | • **Academic Prestige**: Custom tables displaying Ivy League endowments, STEM research output, and public university tech-transfer systems. | • `/universities`<br>• `/universities/ivy-league`<br>• `/universities/stem-powerhouses`<br>• `/universities/business-schools`<br>• `/universities/public-research-universities` |
-| **🌎 Global Leadership** | **"Indispensable Nation Roles"**<br>• Treaty maps and reserve indexes | • **NATO Alliance**: Fully operational NATO collective security details and force multiplier breakdowns. | • `/global-leadership`<br>• `/global-leadership/nato`<br>• `/global-leadership/dollar-as-reserve`<br>• `/global-leadership/soft-power`<br>• `/global-leadership/un` |
-| **🎭 Culture & Life** | **"Warm Editorial Flow"**<br>• Alternating light-dark cream panels<br>• Dynamic brand marquees<br>• Multi-media music & food grids | • **Soft Power Asymmetry**: Recharts soft power comparison indices, Hollywood distribution economics, and interactive archive vault. | • `/culture`<br>• `/culture/entertainment`<br>• `/culture/food-and-drinks`<br>• `/culture/fashion`<br>• `/culture/sports`<br>• `/culture/music-genres`<br>• `/culture/english-language`<br>• `/culture/companies-brands`<br>• `/culture/film-and-storytelling`<br>• `/culture/overview`<br>• `/quality-of-life` |
-| **🌱 Abundance & People** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Demographic & Resource Hooks**: Melding pot and energy production visual spots. | • `/natural-resources`<br>• `/immigration-demographics` |
+| **📈 Economy** | **"Macro-Capital Editorial"**<br>• Clean grid alignments<br>• Wall Street Journal-grade typography<br>• High-contrast monetary scales | • **GDP & Venture Capital Charts**: Gold-highlighted Recharts comparisons.<br>• **National Debt Ticker**: Live real-time projection.<br>• **Innovation Index**: Global patent comparative metric. | • `/economy`<br>• `/economy/gdp-growth`<br>• `/economy/capital-markets`<br>• `/economy/startups-venture-capital`<br>• `/economy/dollar-dominance`<br>• `/economy/trade-and-exports` |
+| **🌲 Nature** | **"Spatial Editorial"**<br>• Earthy obsidian backdrops<br>• Emerald green accents<br>• Generous typographic quote spacing | • **Geyser Eruption Simulator**: Real-time interval tracker.<br>• **Biodiversity Strata**: Interactive layered mountain mapping.<br>• **NPS Mobile Charts**: Angle-rotated responsive label charts. | • `/nature`<br>• `/nature/national-parks`<br>• `/nature/alaska`<br>• `/nature/rockies`<br>• `/nature/grand-canyon`<br>• `/nature/yellowstone`<br>• `/nature/great-lakes` |
+| **🎖️ Military** | **"Minimalist Black-Ops"**<br>• Stark monochromatic headers<br>• Zinc/black palette with thin border accents<br>• Cinematic looping video heroes<br>• "Classified dossier" modal drawers | • **Global Carrier Map**: Live SVG tracker for all 11 carrier strike groups.<br>• **Nuclear Triad Simulation**: Interactive silo, sub, and bomber parity engine.<br>• **DARPA Future Systems Grid**: Active classified program cards.<br>• **Base Dossier Drawer**: Per-installation intelligence briefs with image previews.<br>• **Heritage Timeline**: Branch-by-branch milestone narratives (Navy, Air Force, Space Force).<br>• **Platform Showcases**: Spec-sheet modals for every major weapons platform.<br>• **Five Eyes Geometry**: Alliance node network visual (Intelligence page). | • `/military`<br>• `/military/navy`<br>• `/military/air-force`<br>• `/military/space-force`<br>• `/military/global-bases`<br>• `/military/intelligence` |
+| **🏛️ Constitution** | **"Sovereign Civic Exhibit"**<br>• Neoclassical marble gradients<br>• High-contrast typography<br>• Neomorphic card layers | • **Electoral Map**: Biennial seat-flip and bipartisan delegation diagonal splits.<br>• **Federalism Slider Lab**: Multidimensional state matching engine.<br>• **Constitution Race**: Animated historical timeline of democratic stability.<br>• **Founder Constellation**: Relational SVG network map. | • `/constitution`<br>• `/constitution/separation-of-powers`<br>• `/constitution/federalism`<br>• `/constitution/bill-of-rights`<br>• `/constitution/first-amendment`<br>• `/constitution/second-amendment`<br>• `/constitution/democracy-track-record`<br>• `/constitution/unique-features`<br>• `/constitution/electoral-map` |
+| **🎭 Culture** | **"Warm Editorial Flow"**<br>• Alternating light-dark cream panels<br>• Dynamic brand marquees<br>• Multi-media music & food grids | • **Soft Power Asymmetry**: Hollywood distribution economics, interactive archive vault, and regional barbecue maps. | • `/culture`<br>• `/culture/entertainment`<br>• `/culture/food-and-drinks`<br>• `/culture/fashion`<br>• `/culture/sports`<br>• `/culture/music-genres`<br>• `/culture/english-language`<br>• `/culture/companies-brands`<br>• `/culture/film-and-storytelling`<br>• `/culture/overview` |
+| **💡 Innovation** | **"High-Tech Modern Grids"**<br>• Obsidian tech palettes<br>• Modular sub-pages directory<br>• Dynamic video hero showcases | • **Generative AI & Cloud Nodes**: Advanced visualizers details Silicon Valley semiconductor design, AWS/Google Cloud centers, and SpaceX launch statistics. | • `/innovation`<br>• `/innovation/internet-history`<br>• `/innovation/ai-and-tech`<br>• `/innovation/smartphones`<br>• `/innovation/cloud-computing`<br>• `/innovation/space-technology`<br>• `/innovation/gaming` |
+| **🔬 Science** | **"Empirical Research"**<br>• Clinical details and patent lists<br>• Dark slate modern backgrounds | • **Biotech & Inventions**: Interactive data cards tracking biomedical innovations and post-war tech breakthroughs. | • `/science`<br>• `/science/inventions-pre-1890`<br>• `/science/inventions-1890-1945`<br>• `/science/inventions-post-1991`<br>• `/science/medicine-and-biotech` |
+| **🎓 Universities** | **"Campus Showcase Grids"**<br>• Gold-trimmed obsidian lists<br>• University research insights | • **Academic Prestige**: Custom tables displaying Ivy League endowments, STEM research output, and public university tech-transfer systems. | • `/universities`<br>• `/universities/ivy-league`<br>• `/universities/stem-powerhouses`<br>• `/universities/business-schools`<br>• `/universities/public-research-universities` |
+| **🌱 Quality of Life** | **"Sovereign Standard of Living"**<br>• High-contrast data grids<br>• Modern consumer metrics | • **Consumer Abundance**: Real-world metrics detailing wages, healthcare outcomes, housing, and purchasing power. | • `/quality-of-life`<br>• `/quality-of-life/housing`<br>• `/quality-of-life/healthcare`<br>• `/quality-of-life/wages`<br>• `/quality-of-life/abundance`<br>• `/quality-of-life/america-vs-the-world` |
+| **🌎 Global Leadership** | **"Indispensable Nation Roles"**<br>• Treaty maps and reserve indexes | • **NATO Alliance & UN**: Fully operational NATO collective security details, Pax Americana, and foreign policy breakdowns. | • `/global-leadership`<br>• `/global-leadership/nato`<br>• `/global-leadership/un`<br>• `/global-leadership/pax-americana`<br>• `/global-leadership/foreign-policy` |
+| **📜 American History** | **"Patriotic Chronicle"**<br>• Custom thematic layout grids<br>• Deep-dive historical chapters | • **Sovereignty Chronicle**: Substantial analysis of American milestones, from founding principles to the populist era. | • `/history`<br>• `/history/founding-principles`<br>• `/history/american-exceptionalism`<br>• `/history/frontier-and-expansion`<br>• `/history/union-and-liberty`<br>• `/history/industrial-rise`<br>• `/history/arsenal-of-democracy`<br>• `/history/cold-war-and-anti-communism`<br>• `/history/the-american-dream`<br>• `/history/the-reagan-revolution`<br>• `/history/faith-family-and-community`<br>• `/history/free-markets-and-prosperity`<br>• `/history/border-sovereignty-and-national-identity`<br>• `/history/constitutional-battles`<br>• `/history/post-9-11-america`<br>• `/history/the-populist-era` |
 | **📊 Data & Media** | **"Editorial Dark"**<br>• Full-bleed masonry / mosaic gallery<br>• Category filter strip with animated transitions<br>• Tactical SVG map with heatmap overlays | • **Cinematic Photo Gallery** (`/gallery`): 520+-image masonry archive spanning all site verticals, with category tabs, lightbox zoom, and full bilingual copy.<br>• **U.S. Map Explorer** (`/explorer`): Interactive 50-state SVG map with GDP/population/statehood heatmaps, per-state data panels, search, regional filters, and per-state regional chronicle copy.<br>• **Data Fact Sheet** (`/data`): Curated empirical reference database. | • `/data`<br>• `/gallery`<br>• `/explorer` |
-| **🎮 Interactive Features** | **"Vault Scaffold"**<br>• Dashed containers (`border-dashed`)<br>• Double-language breadcrumbs<br>• High-contrast visual placeholders | • **Civic Tools Navigation**: Connects interactive components. | • `/interactive` |
+| **🎮 Interactive Features** | **"Interactive AI Oracle"**<br>• Guided AI chatbot interface | • **Ask America Oracle** (`/interactive`): Guided AI chatbot interface powered by arguments from all 12 verticals. | • `/interactive` |
 
 ## 🗺️ What Is Built
 
@@ -216,239 +252,159 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 </details>
 
 <details>
-<summary><strong>📜 American History</strong> (Scaffolded)</summary>
+<summary><strong>📈 Economy</strong> (The engine of the world — $32.4T GDP and counting)</summary>
 
-- `/history` parent page plus subpage scaffolds:
-  - `/history/founding-principles` (Founding Principles)
-  - `/history/american-exceptionalism` (American Exceptionalism)
-  - `/history/frontier-and-expansion` (Frontier & Expansion)
-  - `/history/union-and-liberty` (Union & Liberty)
-  - `/history/industrial-rise` (Industrial Rise)
-  - `/history/arsenal-of-democracy` (Arsenal of Democracy)
-  - `/history/cold-war-and-anti-communism` (Cold War & Anti-Communism)
-  - `/history/the-american-dream` (The American Dream)
-  - `/history/the-reagan-revolution` (The Reagan Revolution)
-  - `/history/faith-family-and-community` (Faith, Family & Community)
-  - `/history/free-markets-and-prosperity` (Free Markets & Prosperity)
-  - `/history/border-sovereignty-and-national-identity` (Border Sovereignty & National Identity)
-  - `/history/constitutional-battles` (Constitutional Battles)
-  - `/history/post-9-11-america` (Post-9/11 America)
-  - `/history/the-populist-era` (The Populist Era)
+- `/economy` full landing page plus deep-dive routes:
+  - **→ GDP & Scale** (`/economy/gdp-growth`)
+  - **→ Capital Markets** (`/economy/capital-markets`)
+  - **→ Venture Capital** (`/economy/startups-venture-capital`)
+  - **→ Dollar Dominance** (`/economy/dollar-dominance`)
+  - **→ Trade & Exports** (`/economy/trade-and-exports`)
 </details>
 
 <details>
-<summary><strong>🦅 The Constitution</strong> (Interactive Civics)</summary>
+<summary><strong>🌲 Nature</strong> (From the Arctic to the tropics — unrivaled natural beauty)</summary>
 
-- `/constitution` full interactive landing page plus deep dives:
-  - `/constitution/separation-of-powers`
-  - `/constitution/federalism`
-  - `/constitution/bill-of-rights`
-  - `/constitution/first-amendment`
-  - `/constitution/second-amendment`
-  - `/constitution/democracy-track-record`
-  - `/constitution/unique-features`
-  - **Electoral Archive Map**: A high-fidelity, historical 50-state interactive map documenting biennial election cycles (1788–2024), including midterm flips and bipartisan delegations.
+- `/nature` full landing page plus deep-dive routes:
+  - **→ National Parks** (`/nature/national-parks`)
+  - **→ Alaska** (`/nature/alaska`)
+  - **→ Rocky Mountains** (`/nature/rockies`)
+  - **→ Grand Canyon** (`/nature/grand-canyon`)
+  - **→ Yellowstone** (`/nature/yellowstone`)
+  - **→ Great Lakes** (`/nature/great-lakes`)
 </details>
 
 <details>
-<summary><strong>📈 The Economy</strong> (Data-Driven Vertical)</summary>
+<summary><strong>🎖️ Military</strong> (The most powerful military in the history of civilization)</summary>
 
-- `/economy` full landing page plus deep dives:
-  - `/economy/gdp-growth` (GDP & economic scale)
-  - `/economy/capital-markets` (Stock exchange & market depth)
-  - `/economy/startups-venture-capital` (Silicon Valley & startup density)
-  - `/economy/dollar-dominance` (Reserve currency status)
-  - `/economy/trade-and-exports` (Logistical exports)
+- `/military` — Cinematic main hub featuring global carrier tracker, weapons dossiers, nuclear triad simulation, DARPA grid, and bases network, plus deep-dive routes:
+  - **→ US Navy** (`/military/navy`)
+  - **→ US Air Force** (`/military/air-force`)
+  - **→ Space Force** (`/military/space-force`)
+  - **→ Global Bases** (`/military/global-bases`)
+  - **→ Intelligence** (`/military/intelligence`)
 </details>
 
 <details>
-<summary><strong>🌲 Natural Majesty</strong> (Geography Vertical)</summary>
+<summary><strong>🦅 Constitution</strong> (250 years of unbroken democratic government)</summary>
 
-- `/nature` full landing page plus deep dives:
-  - `/nature/alaska` (Glacial scale + Arctic geography)
-  - `/nature/rockies` (Mountain scale + biodiversity)
-  - `/nature/grand-canyon` (CanyonStrataReveal geological timeline)
-  - `/nature/yellowstone` (Hydrothermal breakdown + bison recovery)
-  - `/nature/great-lakes` (Freshwater dominance)
-  - `/nature/national-parks` (Cinematic park grid)
+- `/constitution` full landing page plus deep-dive routes:
+  - **→ Bill of Rights** (`/constitution/bill-of-rights`)
+  - **→ First Amendment** (`/constitution/first-amendment`)
+  - **→ Second Amendment** (`/constitution/second-amendment`)
+  - **→ Federalism** (`/constitution/federalism`)
+  - **→ Separation of Powers** (`/constitution/separation-of-powers`)
+  - **→ Electoral Archive Map** (`/constitution/electoral-map`)
 </details>
 
 <details>
-<summary><strong>🎖️ The Arsenal of Democracy</strong> (Military Vertical — Fully Operational)</summary>
+<summary><strong>🎭 Culture</strong> (America didn't just build a nation — it built global culture)</summary>
 
-- `/military` — Cinematic main hub featuring:
-  - **§0 Hero**: Looping `supremacy-wave.mp4` video hero (B-2 emerging from darkness)
-  - **§1 Stat Wall**: HUD counter strip across full viewport
-  - **§2 Global Dominance**: Defense budget comparison bars, dominance metrics
-  - **§3 Branch Selector**: Animated branch cards — Army, Navy, Air Force, Space Force, Marines, Coast Guard
-  - **§4 Carrier Map**: World SVG map with real-time carrier positions + SOCOM overlay
-  - **§5 Weapons Dossiers**: Classified cards for B-21 Raider, F-35, F-22, Ohio-class, and more
-  - **§6 Nuclear Triad**: Interactive SVG triangle simulation (land / sea / air legs)
-  - **§7 DARPA Grid**: Future systems cards (Hypersonics, Directed Energy, AI C2, Autonomous Systems)
-  - **§8 Defense Contractors**: Top-6 industrial base grid by revenue
-  - **§9 Facts Ticker**: Rolling military facts strip + fact cards
-  - **§10 Global Alliances**: Alliance network showcase
-  - **§11 Sub-Page Navigation**: Chapter nav to all six military deep dives
-
-- `/military/navy` — Full editorial deep dive:
-  - Parallax carrier hero with `us-navy-dual-carrier-strike-group` hero image
-  - **Metric Strip**: 6 key fleet stats (Battle Force Ships, Nuclear Carriers, etc.)
-  - **Capabilities Grid**: Sea Control, Carrier Aviation, Undersea Dominance, Missile Defense, Amphibious, Humanitarian
-  - **Platform Showcase**: Interactive spec-sheet modals for USS Gerald R. Ford (CVN-78), USS Jack H. Lucas (DDG-125), USS Kentucky (SSBN-737), F/A-18F Super Hornet, and more
-  - **Fleet Comparison**: US Navy vs. next six global navies
-  - **Weapons Console**: Tomahawk, SM-6, MK-48 ADCAP tactical systems
-  - **Operational Console**: Theater deployments across Indo-Pacific, Mediterranean, Gulf, Atlantic
-  - **Air Wing Composition**: Carrier air group breakdown by platform type
-  - **Special Warfare Section**: NSW / SEAL Team capabilities
-  - **Bases Section**: Major homeports and forward bases
-  - **Heritage Timeline**: Continental Navy (1775) → Midway → Cuban Missile Crisis → Tomahawk combat debut → Lincoln battlegroup (2003)
-  - **Future Stack**: Constellation-class, Columbia-class, CVN-80, autonomous surface/undersea vehicles
-  - **Humanitarian Missions**: HADR operations history
-  - **"Fly Navy" cinematic video panel**: Looping `fly-navy.mp4` with sound toggle
-
-- `/military/air-force` — Full editorial deep dive:
-  - Looping `b2-spirit-hero.mp4` video hero
-  - **Metric Strip**: 5,217 aircraft, 400 ICBMs on alert, 64 bases
-  - **Capabilities Grid**: Air Superiority, Global Strike, Rapid Mobility, Nuclear Deterrence, ISR, Cyber
-  - **Platform Showcase**: F-22, F-35, B-2, B-21 Raider, B-1B, C-17, C-130, KC-135, KC-46, AC-130J, Autonomous Drones
-  - **Fleet Comparison**: USAF vs. top global air powers
-  - **Operational Console**: Theater air operations (Pacific, European, CENTCOM, Global Strike)
-  - **Heritage Timeline**: Wright Brothers → Bell X-1 → F-86/MiG-15 → B-52 → F-117 stealth → B-2 Global Power → F-22 → B-21
-  - **Future Stack**: NGAD 6th-gen, CCA Collaborative Combat Aircraft, B-21 expansion
-  - **Bases Section**: Major installations with images
-
-- `/military/space-force` — Full editorial deep dive:
-  - Looping `us-space-force-americas-invisible-front.mp4` video hero
-  - **Metric Strip**: Founded 2019, 100+ satellites, 8,600 Guardians
-  - **Capabilities Grid**: GPS, Missile Warning, Protected SATCOM, Space Domain Awareness, Launch, Cyber Defense
-  - **Platform Showcase**: GPS III, SBIRS/Next-Gen OPIR, AEHF, WGS, GEO/LEO orbital constellations
-  - **Fleet Comparison**: US Space Force vs. China / Russia orbital inventories
-  - **Operational Console**: SPOC, SSC, STARCOM, Space Delta commands
-  - **Heritage Timeline**: Sputnik response → GPS Block I → GPS modernization → Space Force founding (2019)
-  - **Future Stack**: Next-Gen OPIR, Resilient PNT, Commercial Integration, Space Maneuver Vehicle
-  - **Bases Section**: Vandenberg, Schriever, Buckley, Peterson, Cape Canaveral
-
-- `/military/global-bases` — Full editorial intelligence brief:
-  - **Looping video hero** (`earth-pixels-from-space.mp4`) — "PLANETARY FOOTPRINT"
-  - **Strategic Thesis**: Data-driven rationale for the global base network
-  - **Interactive World Map**: SVG `react-simple-maps` globe with all 23 active base markers + hover labels
-  - **Regional Theater Grid**: Europe, Indo-Pacific, Middle East, Americas with high-fidelity theater images
-  - **Base Dossier Section**: Rows for the 7 most strategically critical installations, each showing a grayscale→color image thumbnail, country, name, rationale, and "Open Dossier" button
-  - **Base Detail Drawer**: Slide-in intelligence brief panel per base: image, coordinates, primary branch, operational focus, critical infrastructure tags, and strategic rationale
-  - **Logistics Backbone Section**: TRANSCOM, airlift corridors, sealift nodes, prepositioned stock
-  - **Alliance Architecture Section**: NATO, INDOPACOM, CENTCOM alliance node network
-  - All 23 bases have high-fidelity local images registered in `SITE_IMAGES.globalBases`
-
-- `/military/intelligence` — Full editorial deep dive:
-  - Parallax hero with classified aesthetic
-  - **Agency Dossiers**: CIA, NSA, NRO, NGA, DIA — with official seals, missions, and capabilities
-  - **Intelligence Disciplines**: SIGINT, HUMINT, GEOINT, MASINT, OSINT panels
-  - **Installations List**: Key SCIF and collection nodes worldwide
-  - **Five Eyes Geometry**: Alliance network visual showing FVEY partner relationships
-  - **Heritage List**: Historical milestones from OSS founding to Cyber Command
-  - **Intelligence Failures**: Analytical case studies (Pearl Harbor, 9/11, WMD assessment)
-  - **Future Programs**: AI-enabled analysis, satellite proliferation, autonomous collection
-  - **"The Vault"**: Closing cinematic call-to-action panel
+- `/culture` — "The American Operating System" hub page detailing cultural verticals and deep-dive routes:
+  - **→ Film & Storytelling** (`/culture/film-and-storytelling`)
+  - **→ Sports** (`/culture/sports`)
+  - **→ Entertainment** (`/culture/entertainment`)
+  - **→ Companies & Brands** (`/culture/companies-brands`)
+  - **→ Food & Drinks** (`/culture/food-and-drinks`)
+  - **→ Music Genres** (`/culture/music-genres`)
+  - **→ Fashion** (`/culture/fashion`)
+  - **→ English Language** (`/culture/english-language`)
 </details>
 
 <details>
-<summary><strong>💡 Innovation & Technology</strong> (Partially Operational)</summary>
+<summary><strong>💡 Innovation</strong> (The internet, the iPhone, AI — all made in America)</summary>
 
-- `/innovation` — Main hub page detailing the technological ecosystem (R&D budgets, VC percentage, unicorns)
-- `/innovation/ai-and-tech` (AI & computing power, GPUs, generative models, Silicon Valley cluster hubs)
-- `/innovation/cloud-computing` (Hyper-scale datacenter locations, AWS/Azure/Google Cloud footprint)
-- `/innovation/space-technology` (SpaceX launchers, reusable booster systems, GPS navigation networks)
-- Subpage scaffolds:
-  - `/innovation/internet-history` (ARPANET and DARPA history)
-  - `/innovation/smartphones` (iPhone and Android mobile operating systems)
-  - `/innovation/gaming` (Atari to graphics engine systems)
+- `/innovation` — Technological ecosystem hub page detailing R&D budgets, VC percentage, and unicorns, plus deep-dive routes:
+  - **→ The Internet** (`/innovation/internet-history`)
+  - **→ AI & Tech** (`/innovation/ai-and-tech`)
+  - **→ Smartphones** (`/innovation/smartphones`)
+  - **→ Cloud Computing** (`/innovation/cloud-computing`)
+  - **→ Space Technology** (`/innovation/space-technology`)
+  - **→ Gaming** (`/innovation/gaming`)
 </details>
 
 <details>
-<summary><strong>🔬 Science & Inventions</strong> (Partially Operational)</summary>
+<summary><strong>🔬 Science</strong> (They built the modern world, one invention at a time)</summary>
 
-- `/science` — Main hub page highlighting patent indexes and scientific R&D infrastructure
-- `/science/medicine-and-biotech` (Gene mapping, diagnostic equipment, biomedical startups)
-- `/science/inventions-post-1991` (Digital inventions, software tools, GPS optimization)
-- Subpage scaffolds:
-  - `/science/inventions-pre-1890` (Early industrial inventions)
-  - `/science/inventions-1890-1945` (Industrial-era and war-time inventions)
+- `/science` — R&D infrastructure and patent indexes hub page plus deep-dive routes:
+  - **→ Inventions Pre-1890** (`/science/inventions-pre-1890`)
+  - **→ Inventions 1890-1945** (`/science/inventions-1890-1945`)
+  - **→ Post-War Miracles** (`/science/inventions-post-1991`)
+  - **→ Medicine & Biotech** (`/science/medicine-and-biotech`)
 </details>
 
 <details>
-<summary><strong>🎓 Higher Education</strong> (Fully Operational)</summary>
+<summary><strong>🎓 Universities</strong> (7 of the top 10 universities in the world are American)</summary>
 
-- `/universities` — Main hub page outlining higher education parameters and research funding
-- Subpages:
-  - `/universities/ivy-league` (Endowments, academic legacy, and leadership pipelines)
-  - `/universities/stem-powerhouses` (MIT, Caltech, Stanford, and advanced physics labs)
-  - `/universities/business-schools` (Elite MBA ecosystems and entrepreneurial networks)
-  - `/universities/public-research-universities` (Land-grant acts and massive research throughput)
+- `/universities` — Main hub page outlining higher education parameters and research funding, plus deep-dive routes:
+  - **→ Ivy League** (`/universities/ivy-league`)
+  - **→ STEM Powerhouses** (`/universities/stem-powerhouses`)
+  - **→ Business Schools** (`/universities/business-schools`)
+  - **→ Public Research** (`/universities/public-research-universities`)
 </details>
 
 <details>
-<summary><strong>🌎 Global Leadership</strong> (Partially Operational)</summary>
+<summary><strong>🌱 Quality of Life</strong> (The highest standard of living for the most people)</summary>
 
-- `/global-leadership/nato` (NATO Alliance, collective defense commitments, and command centers)
-- `/global-leadership` (Main hub page scaffold)
-- Subpage scaffolds:
-  - `/global-leadership/dollar-as-reserve` (Reserve currency status and SWIFT system)
-  - `/global-leadership/soft-power` (Soft Power export parameters)
-  - `/global-leadership/un` (Founding role in international organizations)
+- `/quality-of-life` full landing page detailing standard of living parameters, plus deep-dive routes:
+  - **→ Overview** (`/quality-of-life`)
+  - **→ Housing & Real Estate** (`/quality-of-life/housing`)
+  - **→ Healthcare Outcomes** (`/quality-of-life/healthcare`)
+  - **→ Wages & Purchasing Power** (`/quality-of-life/wages`)
+  - **→ Consumer Abundance** (`/quality-of-life/abundance`)
+  - **→ America vs. the World** (`/quality-of-life/america-vs-the-world`)
 </details>
 
 <details>
-<summary><strong>🎭 Culture & Quality of Life</strong> (Fully Operational)</summary>
+<summary><strong>🌎 Global Leadership</strong> (The indispensable nation — leading the free world since 1945)</summary>
 
-- `/culture` — "The American Operating System" hub page detailing cultural verticals
-- Subpages:
-  - `/culture/entertainment` (Broadcasting networks, streaming platforms, and gaming distribution)
-  - `/culture/food-and-drinks` (Diner culture, fast food systems, regional barbecue, and industrial logistics)
-  - `/culture/fashion` (Jeans, sneakers, casual wear, and global branding)
-  - `/culture/sports` (NFL, NBA, MLB, and sports entertainment networks)
-  - `/culture/music-genres` (Origins of Jazz, Blues, Rock, and Hip-Hop)
-  - `/culture/english-language` (Global lingua franca statistics and syntax)
-  - `/culture/companies-brands` (Impact of consumer brands on global lifestyle)
-  - `/culture/film-and-storytelling` (Hollywood economics and storytelling templates)
-  - `/culture/overview` (Synthesis of cultural soft power and asymmetry)
-- `/quality-of-life` (Standard of living, income metrics, public health, safety, and wealth indicators)
+- `/global-leadership` — International footprint and treaty network hub page, plus deep-dive routes:
+  - **→ NATO Alliance** (`/global-leadership/nato`)
+  - **→ UN & World Order** (`/global-leadership/un`)
+  - **→ Pax Americana** (`/global-leadership/pax-americana`)
+  - **→ Foreign Policy** (`/global-leadership/foreign-policy`)
 </details>
 
 <details>
-<summary><strong>🌱 Natural Resources & Demographics</strong> (Scaffolded)</summary>
+<summary><strong>📜 History</strong> (From founding principles to modern times — the history of liberty)</summary>
 
-- `/natural-resources` (Natural Resources page scaffold)
-- `/immigration-demographics` (Immigration & Demographics page scaffold)
+- `/history` — Deep-dive chronicling page, plus deep-dive routes:
+  - **→ Founding Principles** (`/history/founding-principles`)
+  - **→ American Exceptionalism** (`/history/american-exceptionalism`)
+  - **→ Frontier & Expansion** (`/history/frontier-and-expansion`)
+  - **→ Union & Liberty** (`/history/union-and-liberty`)
+  - **→ Industrial Rise** (`/history/industrial-rise`)
+  - **→ Arsenal of Democracy** (`/history/arsenal-of-democracy`)
+  - **→ Cold War** (`/history/cold-war-and-anti-communism`)
+  - **→ The American Dream** (`/history/the-american-dream`)
+  - **→ Reagan Revolution** (`/history/the-reagan-revolution`)
+  - **→ Faith & Family** (`/history/faith-family-and-community`)
+  - **→ Free Markets** (`/history/free-markets-and-prosperity`)
+  - **→ Border Sovereignty** (`/history/border-sovereignty-and-national-identity`)
+  - **→ Constitutional Battles** (`/history/constitutional-battles`)
+  - **→ Post-9/11 America** (`/history/post-9-11-america`)
+  - **→ The Populist Era** (`/history/the-populist-era`)
 </details>
 
 <details>
-<summary><strong>📊 Data & Media</strong> (Fully Operational)</summary>
+<summary><strong>📊 Data & Media</strong> (Empirical facts, media, interactive maps, and indices of success)</summary>
 
-- `/data` — Curated empirical reference database
-- `/gallery` — **Cinematic Visual Archive** (Fully Operational):
-  - 520+-image masonry gallery spanning all site verticals: Landscapes, Cities, Military, Space Force, Navy, Air Force, Global Bases, Coast Guard, and more
-  - Category filter strip (All / Landscapes / Cities / Military / Space / Economy / Science / Culture)
-  - Masonry / mosaic responsive layout with Framer Motion animated transitions
-  - Full-screen lightbox with image title, location, and tone metadata
-  - Bilingual: "America Through the Lens" / "America Prin Obiectiv"
-  - Hero image: USA at night from space
-- `/explorer` — **U.S. Interactive Map Explorer** (Fully Operational):
-  - Interactive SVG 50-state map (via `react-simple-maps`)
-  - Per-state heatmap overlays: GDP intensity, Population density, and Statehood chronology
-  - Regional filters: All / West / South / Midwest / Northeast
-  - Sortable state directory: by statehood, population, GDP, land area
-  - Clickable state detail panel: GDP, population, capital, key industry sector, and regional chronicle
-  - Real-time search by state name or capital
-  - Fully bilingual ("Explore America" / "Explorează America")
+- Empirical database, cinematic image masonry, and map explorer routes:
+  - **→ US Profile** (`/data`)
+  - **→ Immigration & Demographics** (`/immigration-demographics`)
+  - **→ Photo Gallery** (`/gallery`)
+  - **→ Map Explorer** (`/explorer`)
+  - **→ Misconceptions** (`/data/misconceptions`)
+  - **→ Ask America Oracle** (`/interactive`)
 </details>
 
 <details>
-<summary><strong>🎮 Interactive Features</strong> (Scaffolded)</summary>
+<summary><strong>🎮 Interactive Features</strong></summary>
 
-- `/interactive` (Interactive Features hub page linking to Quiz)
+- `/interactive` — The Ask America Interactive AI Oracle
 </details>
 
-The **gallery**, **explorer**, **military** (main + all 6 sub-pages), **economy** (main + all 5 sub-pages), **nature** (main + all 6 sub-pages), **constitution** (main + all 8 sub-pages), **culture** (main + all 9 sub-pages), **quality of life**, and **higher education/universities** are now **fully operational** cinematic editorial pages. The innovation, science, global leadership, and history verticals are **partially operational** with key sections completed, while their remaining pages, along with natural-resources and immigration-demographics, are clean scaffolds with TODO zones, ready for content drops.
+All 12 core verticals of the platform—**Economy**, **Nature**, **Military**, **Constitution**, **Culture**, **Innovation**, **Science**, **Universities**, **Quality of Life**, **Global Leadership**, **History**, and **Data & Media**—are now **fully operational**, feature-complete cinematic editorial experiences with real-time simulations, interactive charts, and complete bilingual copy.
 
 ## Experience Highlights
 
