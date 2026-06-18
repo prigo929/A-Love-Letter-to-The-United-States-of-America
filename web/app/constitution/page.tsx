@@ -11,6 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { Breadcrumb }  from "@/components/layout/Breadcrumb";
+import { FloatingTOC } from "@/components/layout/FloatingTOC";
 import { QuoteBlock }  from "@/components/sections/QuoteBlock";
 import {
   ConstitutionAurora, InkParticles, MetricCard,
@@ -92,8 +93,39 @@ export default async function ConstitutionPage() {
   const metrics  = getConstitutionMetrics(locale);
   const subPages = getConstitutionSubPages(locale);
 
+  const tocItems = isRo
+    ? [
+        { label: "Introducere", href: "#overview" },
+        { label: "Pasaje Cheie", href: "#the-document" },
+        { label: "Arhitecții Libertății", href: "#founders" },
+        { label: "Carta Drepturilor", href: "#bill-of-rights" },
+        { label: "Separarea Puterilor", href: "#separation-of-powers" },
+        { label: "Laboratoarele Democrației", href: "#federalism" },
+        { label: "Linia Neîntreruptă", href: "#track-record" },
+        { label: "Cursa Constituțiilor", href: "#constitution-race" },
+        { label: "Arhiva Electorală", href: "#electoral-archive" },
+        { label: "Drepturi în Pericol", href: "#rights-at-risk" },
+        { label: "Lumea Fără", href: "#world-without" },
+        { label: "Imersiuni Profunde", href: "#explore" },
+      ]
+    : [
+        { label: "Introduction", href: "#overview" },
+        { label: "Key Passages", href: "#the-document" },
+        { label: "Architects of Liberty", href: "#founders" },
+        { label: "Bill of Rights", href: "#bill-of-rights" },
+        { label: "Separation of Powers", href: "#separation-of-powers" },
+        { label: "Democracy Labs", href: "#federalism" },
+        { label: "The Unbroken Line", href: "#track-record" },
+        { label: "The Constitution Race", href: "#constitution-race" },
+        { label: "Electoral Archive", href: "#electoral-archive" },
+        { label: "Rights at Risk", href: "#rights-at-risk" },
+        { label: "The World Without", href: "#world-without" },
+        { label: "Deep Dives", href: "#explore" },
+      ];
+
   return (
     <>
+      <FloatingTOC items={tocItems} />
       {/* ══════════════════════════════════════════════════════════════════════
           CINEMATIC HERO — "We the People" + headline + CTAs
           ══════════════════════════════════════════════════════════════════════ */}

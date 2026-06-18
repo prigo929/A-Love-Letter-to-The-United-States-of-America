@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { FloatingTOC } from "@/components/layout/FloatingTOC";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand } from "@/components/economy/EconomyAnimations";
@@ -308,6 +309,8 @@ export default async function EconomyPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+
+      <FloatingTOC items={copy.tocItems} />
 
       <MacroStyles />
       <MacroHero 

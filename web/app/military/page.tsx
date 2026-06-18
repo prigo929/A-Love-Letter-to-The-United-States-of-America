@@ -44,6 +44,7 @@ import {
   IntelligenceNetworkMap,
 } from "@/components/military/MilitaryAnimations";
 import { LayoutGroup } from "framer-motion";
+import { FloatingTOC } from "@/components/layout/FloatingTOC";
 
 import { getServerLocale } from "@/lib/i18n/server";
 import type { Locale } from "@/lib/i18n/config";
@@ -251,8 +252,41 @@ export default async function MilitaryPage() {
   const heroStats = getHeroStats(locale);
   const dominanceMetrics = getDominanceMetrics(locale);
 
+  const tocItems = isRo
+    ? [
+        { label: "Metrici Apărare", href: "#stats" },
+        { label: "Comandă Planetară", href: "#dominance" },
+        { label: "Ramurile Serviciului", href: "#branches" },
+        { label: "Operațiuni Speciale", href: "#socom" },
+        { label: "Harta Portavioanelor", href: "#carrier-map" },
+        { label: "Arsenalul Democrației", href: "#weapons" },
+        { label: "Triada Nucleară", href: "#nuclear" },
+        { label: "Rețeaua de Intelligence", href: "#intelligence" },
+        { label: "Generația Viitoare DARPA", href: "#darpa" },
+        { label: "Contractorii Principali", href: "#industry" },
+        { label: "Context Strategic", href: "#facts" },
+        { label: "Alianțe Globale", href: "#alliances" },
+        { label: "Explorați", href: "#explore" },
+      ]
+    : [
+        { label: "Defense Metrics", href: "#stats" },
+        { label: "Planetary Command", href: "#dominance" },
+        { label: "Branches of Service", href: "#branches" },
+        { label: "Special Operations", href: "#socom" },
+        { label: "Carrier Live Map", href: "#carrier-map" },
+        { label: "Arsenal of Democracy", href: "#weapons" },
+        { label: "Nuclear Deterrence", href: "#nuclear" },
+        { label: "Intelligence Network", href: "#intelligence" },
+        { label: "DARPA Future Tech", href: "#darpa" },
+        { label: "Prime Contractors", href: "#industry" },
+        { label: "Strategic Context", href: "#facts" },
+        { label: "Global Alliances", href: "#alliances" },
+        { label: "Explore", href: "#explore" },
+      ];
+
   return (
     <div className="bg-black text-white min-h-screen">
+      <FloatingTOC items={tocItems} />
       <MilStyles />
 
 

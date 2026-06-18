@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { FloatingTOC } from "@/components/layout/FloatingTOC";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import {
@@ -535,8 +536,27 @@ export default async function QualityOfLifePage() {
   const isRo = locale === "ro";
   const copy = isRo ? copyRo : copyEn;
 
+  const tocItems = isRo
+    ? [
+        { label: "Abundența în Cifre", href: "#stats" },
+        { label: "Lux Democratizat", href: "#luxury" },
+        { label: "Venit & Generozitate", href: "#comparison" },
+        { label: "Calitatea Sănătății", href: "#healthcare" },
+        { label: "Orașe și Peisaje", href: "#cities" },
+        { label: "Explorează în Profunzime", href: "#explore" },
+      ]
+    : [
+        { label: "Abundance in Numbers", href: "#stats" },
+        { label: "Democratized Luxury", href: "#luxury" },
+        { label: "Income & Giving", href: "#comparison" },
+        { label: "Healthcare Quality", href: "#healthcare" },
+        { label: "Cities & Landscapes", href: "#cities" },
+        { label: "Explore Deeper", href: "#explore" },
+      ];
+
   return (
     <>
+      <FloatingTOC items={tocItems} />
       <MacroStyles />
 
       {/* Cinematic Hero — American Suburbs */}
@@ -895,7 +915,7 @@ export default async function QualityOfLifePage() {
         </section>
 
         {/* Cities of America */}
-        <section className="mb-32">
+        <section id="cities" className="mb-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-10">
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center font-semibold mb-2">
               {isRo ? "ORAȘELE AMERICII" : "CITIES OF AMERICA"}
@@ -999,11 +1019,13 @@ export default async function QualityOfLifePage() {
       </div>
 
       {/* Deep Dive Archive */}
-      <DeepDiveSection
-        locale={locale}
-        topics={VERTICALS_THEMATIC_DATA["quality-of-life"] || []}
-        theme={DEEP_DIVE_THEMES["quality-of-life"]}
-      />
+      <div id="explore">
+        <DeepDiveSection
+          locale={locale}
+          topics={VERTICALS_THEMATIC_DATA["quality-of-life"] || []}
+          theme={DEEP_DIVE_THEMES["quality-of-life"]}
+        />
+      </div>
     </>
   );
 }

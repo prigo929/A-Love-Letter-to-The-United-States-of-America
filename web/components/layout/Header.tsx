@@ -9,9 +9,10 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Languages, Menu, X, ChevronDown, Star } from "lucide-react";
+import { Languages, Menu, X, ChevronDown, Star, Search } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { getLocalizedNavSections } from "@/lib/constants";
+import { SearchModal } from "@/components/layout/SearchModal";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import {
   mobileMenu,
@@ -35,6 +36,7 @@ export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
   const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
   const pathname = usePathname();
   const menuTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const languageMenuRef = useRef<HTMLDivElement>(null);
@@ -82,6 +84,18 @@ export function Header() {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // ── Keyboard shortcut for search ──────────────────────────────────────────
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   // ── Close menus on route change ───────────────────────────────────────────
@@ -322,6 +336,20 @@ export function Header() {
 
             {/* ── Desktop CTA ────────────────────────────────────────────── */}
             <div className="hidden lg:flex items-center gap-3">
+              {/* Desktop Search Trigger */}
+              <button
+                type="button"
+                onClick={() => setSearchOpen(true)}
+                className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 py-2 font-body text-sm font-medium text-white/60 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
+                aria-label={locale === "ro" ? "Caută pe site" : "Search site"}
+              >
+                <Search className="h-4 w-4 text-glory-gold" />
+                <span className="hidden xl:inline text-xs opacity-80">{locale === "ro" ? "Caută" : "Search"}</span>
+                <kbd className="hidden xl:inline-block select-none rounded bg-white/10 px-1.5 py-0.5 text-[9px] font-semibold text-white/40">
+                  ⌘K
+                </kbd>
+              </button>
+
               <div ref={languageMenuRef} className="relative">
                 <button
                   type="button"
@@ -388,16 +416,27 @@ export function Header() {
               </Button>
             </div>
 
-            {/* ── Mobile Hamburger ───────────────────────────────────────── */}
-            <button
-              className="lg:hidden p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
-              onClick={() => setMobileOpen(true)}
-              aria-label={copy.openMenu}
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-menu"
-            >
-              <Menu className="w-6 h-6" aria-hidden="true" />
-            </button>
+            {/* ── Mobile Actions ─────────────────────────────────────────── */}
+            <div className="flex lg:hidden items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setSearchOpen(true)}
+                className="p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
+                aria-label={locale === "ro" ? "Caută pe site" : "Search site"}
+              >
+                <Search className="w-5.5 h-5.5 text-glory-gold" />
+              </button>
+
+              <button
+                className="p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
+                onClick={() => setMobileOpen(true)}
+                aria-label={copy.openMenu}
+                aria-expanded={mobileOpen}
+                aria-controls="mobile-menu"
+              >
+                <Menu className="w-6 h-6" aria-hidden="true" />
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -646,6 +685,8 @@ export function Header() {
           </>
         )}
       </AnimatePresence>
+
+      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }
