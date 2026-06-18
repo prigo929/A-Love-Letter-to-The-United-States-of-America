@@ -304,20 +304,6 @@ export function Header() {
 
             {/* ── Desktop CTA ────────────────────────────────────────────── */}
             <div className="hidden lg:flex items-center gap-3">
-              {/* Desktop Search Trigger */}
-              <button
-                type="button"
-                onClick={() => setSearchOpen(true)}
-                className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 py-2 font-body text-sm font-medium text-white/60 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
-                aria-label={locale === "ro" ? "Caută pe site" : "Search site"}
-              >
-                <Search className="h-4 w-4 text-glory-gold" />
-                <span className="hidden xl:inline text-xs opacity-80">{locale === "ro" ? "Caută" : "Search"}</span>
-                <kbd className="hidden xl:inline-block select-none rounded bg-white/10 px-1.5 py-0.5 text-[9px] font-semibold text-white/40">
-                  ⌘K
-                </kbd>
-              </button>
-
               <div ref={languageMenuRef} className="relative">
                 <button
                   type="button"
@@ -379,9 +365,18 @@ export function Header() {
               <Button href="/sitemap" variant="ghost" size="sm">
                 {copy.viewAllCta}
               </Button>
-              <Button href="/economy" variant="gold" size="sm">
-                {copy.exploreCta}
-              </Button>
+              <button
+                type="button"
+                onClick={() => setSearchOpen(true)}
+                className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 py-2 font-body text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
+                aria-label={locale === "ro" ? "Caută pe site" : "Search site"}
+              >
+                <Search className="h-4 w-4 text-glory-gold" />
+                <span className="hidden xl:inline text-xs opacity-80">{locale === "ro" ? "Caută" : "Search"}</span>
+                <kbd className="hidden xl:inline-block select-none rounded bg-white/10 px-1.5 py-0.5 text-[9px] font-semibold text-white/40">
+                  ⌘K
+                </kbd>
+              </button>
             </div>
 
             {/* ── Mobile Actions ─────────────────────────────────────────── */}
@@ -615,9 +610,14 @@ export function Header() {
                 </div>
 
                 <div className="mt-6 px-4">
-                  <Button href="/economy" variant="gold" size="lg" fullWidth>
-                    {copy.exploreNation}
-                  </Button>
+                  <button
+                    type="button"
+                    onClick={() => { setSearchOpen(true); setMobileOpen(false); }}
+                    className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-3 font-body text-base font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
+                  >
+                    <Search className="h-5 w-5 text-glory-gold" />
+                    <span>{locale === "ro" ? "Caută" : "Search"}</span>
+                  </button>
                 </div>
 
                 <div className="mt-8 border-t border-white/10 px-4 pt-6">
