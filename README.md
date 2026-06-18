@@ -1341,7 +1341,40 @@ export interface EconomyFact {
 }
 ```
 
-### 4. Mathematical Vector Jittering for Geographic Clusters (`MilitaryAnimations.tsx`)
+### 4. Centralized Message Vaults for Shells & Categories
+To streamline internationalization and eliminate scattered, duplicated, or hardcoded translations, all layout-level and page-level copy are centralized into dedicated message vaults:
+- **Layout Vault (`lib/i18n/messages/layout.ts`)**: Houses common navigational element labels, headers, footer navigation, and general shell copy.
+- **Page Vault (`lib/i18n/messages/pages.ts`)**: Consolidates page-specific editorial copy, table headers, chart descriptions, and table-of-contents listings.
+
+By querying these vaults using a clean function-based API, components keep logic separate from raw bilingual data.
+
+```typescript
+// From web/lib/i18n/messages/pages.ts
+import type { Locale } from "@/lib/i18n/config";
+
+export function getEconomyPageCopy(locale: Locale) {
+  if (locale === "ro") {
+    return {
+      breadcrumb: "Economie",
+      heroTitleLead: "MOTORUL",
+      heroTitleAccent: "LUMII",
+      heroDescription: "Economia Statelor Unite este cea mai puternică forță economică...",
+      // ...
+    };
+  }
+  return {
+    breadcrumb: "Economy",
+    heroTitleLead: "THE ENGINE",
+    heroTitleAccent: "OF THE WORLD",
+    heroDescription: "The United States economy is the most powerful economic force...",
+    // ...
+  };
+}
+```
+
+This ensures bilingual data integrity and significantly reduces duplicate content rendering code inside individual JSX blocks.
+
+### 5. Mathematical Vector Jittering for Geographic Clusters (`MilitaryAnimations.tsx`)
 When visualizing the real-time positions of the 11 active US Carrier Strike Groups on our tactical SVG world map, multiple aircraft carriers are frequently docked at identical major homeports (such as Norfolk or San Diego). Drawing them at their exact lat/long coordinates would cause them to overlap, making individual markers invisible and unclickable.
 
 To solve this, we implement a custom, distance-based clustering algorithm using trigonometry to dynamically distribute overlapping carriers in a perfect circular orbit around their homeport center:
@@ -1393,7 +1426,7 @@ export function useCarrierJitter(positions: CarrierGroupPosition[]) {
 }
 ```
 
-### 5. Multidimensional Euclidean Distance Scoring (`FederalismHook.tsx`)
+### 6. Multidimensional Euclidean Distance Scoring (`FederalismHook.tsx`)
 In our Federalism civics laboratory (`/constitution/federalism`), users adjust 4 high-impact policy sliders (Income Tax, Corporate Tax, Gun Rights, and Regulatory Burden) to find their perfect geographic match among the 50 states. 
 
 To power the interactive US map, we implement a **multidimensional scoring engine** using Normalized Euclidean Distance. This normalizes different data scales (such as percentages vs. 1–10 qualitative indices) to a unified `[0, 1]` distance, averages the deviations, and inverts the score to return an instant "Policy Match" percentage:
