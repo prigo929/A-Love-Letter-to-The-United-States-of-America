@@ -2,7 +2,7 @@
 // Runs automatically before `dev` and `build` (via the predev/prebuild npm
 // lifecycle). If `.next/cache` exceeds the limit, it is cleared — Next simply
 // rebuilds it on demand.
-
+ 
 import { rmSync, statSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
