@@ -273,10 +273,10 @@ function ImageDialog({
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={image.path}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, x: 0, y: 0 }}
+              animate={zoomed ? { opacity: 1 } : { opacity: 1, x: 0, y: 0 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
               className={cn(
                 "absolute inset-0",
                 zoomed && "cursor-grab active:cursor-grabbing",
