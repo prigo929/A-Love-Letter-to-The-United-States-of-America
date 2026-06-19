@@ -180,7 +180,13 @@ export function Header() {
               {primaryNav.map((section) => (
                 <div
                   key={section.title}
-                  className="relative flex items-center h-full"
+                  // `self-center` (instead of stretching to the full header
+                  // height via the nav's items-stretch) keeps the hover/click
+                  // box tight to the visible button. The dropdown is still a DOM
+                  // child of this element, so the menu stays open when the cursor
+                  // moves into it — mouseleave doesn't fire when moving to a
+                  // descendant, even one positioned outside this box.
+                  className="relative flex items-center self-center"
                   onMouseEnter={() => handleMenuEnter(section.title)}
                   onMouseLeave={handleMenuLeave}
                 >
@@ -217,12 +223,21 @@ export function Header() {
                         animate="visible"
                         exit="exit"
                         style={{ transformOrigin: "top center" }}
-                        // `pt-2` is a transparent hover bridge: the menu starts
-                        // flush with the trigger (no margin gap to cross), so the
-                        // cursor never leaves the hover region on its way down.
-                        className="absolute top-[56px] left-1/2 w-64 -translate-x-1/2 pt-2"
-                        onMouseEnter={() => handleMenuEnter(section.title)}
-                        onMouseLeave={handleMenuLeave}
+                        // `top-full` anchors the menu just below the button (the
+                        // trigger box is now button-height), and `pt-2` is a small
+                        // transparent bridge across the gap. Hit area stays tight
+                        // to the visible card — no extra width or overlap.
+                        //
+                        // No hover handlers here on purpose: this wrapper is a DOM
+                        // child of the trigger container, so the container's
+                        // onMouseEnter/onMouseLeave already cover it (mouseleave
+                        // does not fire when moving to a descendant, even an
+                        // absolutely-positioned one). Adding them here caused a
+                        // flicker: the entrance `y` animation sweeps the bridge
+                        // over the cursor and back, and the wrapper's own
+                        // mouseleave would then schedule a close that nothing
+                        // cancelled — closing the menu mid-hover.
+                        className="absolute top-full left-1/2 w-64 -translate-x-1/2 pt-2"
                         role="menu"
                       >
                         <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-navy-dark/65 shadow-2xl backdrop-blur-2xl isolate">
