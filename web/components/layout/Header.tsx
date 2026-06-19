@@ -220,7 +220,7 @@ export function Header() {
                         // `pt-2` is a transparent hover bridge: the menu starts
                         // flush with the trigger (no margin gap to cross), so the
                         // cursor never leaves the hover region on its way down.
-                        className="absolute top-full left-1/2 w-64 -translate-x-1/2 pt-2"
+                        className="absolute top-[56px] left-1/2 w-64 -translate-x-1/2 pt-2"
                         onMouseEnter={() => handleMenuEnter(section.title)}
                         onMouseLeave={handleMenuLeave}
                         role="menu"
