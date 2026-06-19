@@ -34,6 +34,17 @@ export default function InventionsDashboard({ locale, inventions }: InventionsDa
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const [visibleCount, setVisibleCount] = useState(24);
 
+  // Read URL search parameter q on mount
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get("q");
+      if (q) {
+        setSearchQuery(q);
+      }
+    }
+  }, []);
+
   // Localization Copy
   const copy = {
     searchPlaceholder: isRo ? "Caută invenții, inventatori sau cuvinte cheie..." : "Search inventions, inventors, or keywords...",

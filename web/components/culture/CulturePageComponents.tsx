@@ -2256,7 +2256,7 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
                 const imageSrc = SITE_IMAGES.culture[item.imageKey] || SITE_IMAGES.culture.statueOfLiberty;
                 return (
                   <VaultCard
-                    key={`${activeTab}-${item.imageKey}`}
+                    key={`${activeTab}-${String(item.imageKey)}`}
                     item={item}
                     idx={idx}
                     onClick={() => {

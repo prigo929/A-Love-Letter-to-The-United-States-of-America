@@ -778,7 +778,7 @@ export function AmbientAudio({ src }: { src: string }) {
       />
       <button
         onClick={() => setIsPlaying(!isPlaying)}
-        className="fixed bottom-6 left-6 z-50 rounded-full border border-[rgba(201,168,76,0.25)] bg-[#080B12] p-3 text-[#C9A84C] shadow-[0_0_20px_rgba(201,168,76,0.1)] backdrop-blur-md transition-all hover:bg-[rgba(201,168,76,0.12)] hover:shadow-[0_0_30px_rgba(201,168,76,0.2)]"
+        className="fixed bottom-6 right-6 z-50 rounded-full border border-[rgba(201,168,76,0.25)] bg-[#080B12] p-3 text-[#C9A84C] shadow-[0_0_20px_rgba(201,168,76,0.1)] backdrop-blur-md transition-all hover:bg-[rgba(201,168,76,0.12)] hover:shadow-[0_0_30px_rgba(201,168,76,0.2)]"
         aria-label={isPlaying ? "Mute ambient audio" : "Play ambient audio"}
       >
         {isPlaying ? (

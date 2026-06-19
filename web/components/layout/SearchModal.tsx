@@ -8,6 +8,8 @@ import { getLocalizedNavSections } from "@/lib/constants";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { cn } from "@/lib/utils";
 
+import { SEARCH_INDEX_EN, SEARCH_INDEX_RO } from "@/lib/data/precompiled-search-index";
+
 interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -18,50 +20,31 @@ interface SearchItem {
   category: string;
   description: string;
   href: string;
+  keywords?: string[];
+}
+
+function removeDiacritics(str: string): string {
+  return str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[ăâ]/g, "a")
+    .replace(/[î]/g, "i")
+    .replace(/[ș]/g, "s")
+    .replace(/[ț]/g, "t")
+    .replace(/[ĂÂ]/g, "A")
+    .replace(/[Î]/g, "I")
+    .replace(/[Ș]/g, "S")
+    .replace(/[Ț]/g, "T");
 }
 
 function getSearchIndex(locale: "en" | "ro"): SearchItem[] {
-  const sections = getLocalizedNavSections(locale);
-  const items: SearchItem[] = [];
-
-  // Add Home
-  items.push({
-    title: locale === "ro" ? "Acasă" : "Home",
-    category: locale === "ro" ? "Navigare" : "Navigation",
-    description:
-      locale === "ro"
-        ? "Pagina principală a site-ului America: Cea Mai Mare Națiune."
-        : "The homepage of America: The Greatest Nation.",
-    href: "/",
-  });
-
-  // Map nav sections
-  sections.forEach((section) => {
-    items.push({
-      title: section.title,
-      category: locale === "ro" ? "Secțiune" : "Section",
-      description: section.description || "",
-      href: section.href,
-    });
-
-    if (section.items) {
-      section.items.forEach((subItem) => {
-        items.push({
-          title: subItem.label,
-          category: section.title,
-          description: subItem.description || "",
-          href: subItem.href,
-        });
-      });
-    }
-  });
-
-  return items;
+  return locale === "ro" ? SEARCH_INDEX_RO : SEARCH_INDEX_EN;
 }
 
 function runSearch(query: string, items: SearchItem[]): SearchItem[] {
   if (!query) return [];
-  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+  const cleanQuery = removeDiacritics(query.toLowerCase().trim());
+  const terms = cleanQuery.split(/\s+/).filter(Boolean);
   if (terms.length === 0) return [];
 
   interface ScoredItem {
@@ -72,36 +55,73 @@ function runSearch(query: string, items: SearchItem[]): SearchItem[] {
   const scored: ScoredItem[] = [];
 
   items.forEach((item) => {
-    const title = item.title.toLowerCase();
-    const desc = item.description.toLowerCase();
-    const cat = item.category.toLowerCase();
-    const href = item.href.toLowerCase();
+    const title = removeDiacritics(item.title.toLowerCase());
+    const desc = removeDiacritics(item.description.toLowerCase());
+    const cat = removeDiacritics(item.category.toLowerCase());
+    const href = removeDiacritics(item.href.toLowerCase());
+    const keywords = (item.keywords || []).map((kw) => removeDiacritics(kw.toLowerCase()));
 
-    let matchesAll = true;
     let score = 0;
+    let matchesAny = false;
 
     for (const term of terms) {
-      const isTitleExact = title === term;
-      const isTitleInclude = title.includes(term);
-      const isDescInclude = desc.includes(term);
-      const isCatInclude = cat.includes(term);
-      const isHrefInclude = href.includes(term);
+      let matched = false;
 
-      if (!isTitleInclude && !isDescInclude && !isCatInclude && !isHrefInclude) {
-        matchesAll = false;
-        break;
+      // Exact title match: +200
+      if (title === term) {
+        score += 200;
+        matched = true;
+      }
+      // Title starts with term: +100
+      else if (title.startsWith(term)) {
+        score += 100;
+        matched = true;
+      }
+      // Title contains term on word boundary: +60
+      else if (new RegExp(`\\b${term}\\b`).test(title)) {
+        score += 60;
+        matched = true;
+      }
+      // Title contains term anywhere: +30
+      else if (title.includes(term)) {
+        score += 30;
+        matched = true;
       }
 
-      if (isTitleExact) score += 100;
-      else if (title.startsWith(term)) score += 50;
-      else if (isTitleInclude) score += 30;
+      // Keyword match: +40
+      const kwMatches = keywords.filter((kw) => kw === term || kw.startsWith(term) || kw.includes(term));
+      if (kwMatches.length > 0) {
+        score += 40 * kwMatches.length;
+        matched = true;
+      }
 
-      if (isCatInclude) score += 20;
-      if (isDescInclude) score += 10;
-      if (isHrefInclude) score += 5;
+      // Category matches: exact +40, contains +20
+      if (cat === term) {
+        score += 40;
+        matched = true;
+      } else if (cat.includes(term)) {
+        score += 20;
+        matched = true;
+      }
+
+      // Description contains term: +10
+      if (desc.includes(term)) {
+        score += 10;
+        matched = true;
+      }
+
+      // Href contains term: +5
+      if (href.includes(term)) {
+        score += 5;
+        matched = true;
+      }
+
+      if (matched) {
+        matchesAny = true;
+      }
     }
 
-    if (matchesAll) {
+    if (matchesAny) {
       scored.push({ item, score });
     }
   });
