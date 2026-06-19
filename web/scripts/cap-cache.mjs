@@ -3,8 +3,22 @@
 // lifecycle). If `.next/cache` exceeds the limit, it is cleared — Next simply
 // rebuilds it on demand.
 
-import { rmSync, statSync, readdirSync } from "node:fs";
+import { rmSync, statSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+
+// Verify that site-images.ts is not left in a proxy stub state from build-search-index
+const siteImagesPath = join(process.cwd(), "lib", "site-images.ts");
+try {
+  const content = readFileSync(siteImagesPath, "utf-8");
+  if (content.includes("new Proxy")) {
+    console.error("\n\x1b[41m\x1b[37m CRITICAL ERROR \x1b[0m");
+    console.error("\x1b[31mweb/lib/site-images.ts is currently in a stubbed Proxy state!\x1b[0m");
+    console.error("\x1b[33mTo fix this, please run: git restore web/lib/site-images.ts\x1b[0m\n");
+    process.exit(1);
+  }
+} catch (e) {
+  // Ignore if file doesn't exist yet
+}
 
 const LIMIT_GB = Number(process.env.NEXT_CACHE_LIMIT_GB || 5);
 const LIMIT_BYTES = LIMIT_GB * 1024 * 1024 * 1024;

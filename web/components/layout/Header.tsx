@@ -140,6 +140,10 @@ export function Header() {
             {/* ── Logo ───────────────────────────────────────────────────── */}
             <Link
               href="/"
+              onMouseEnter={() => {
+                if (menuTimeout.current) clearTimeout(menuTimeout.current);
+                setActiveMenu(null);
+              }}
               className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold rounded-lg"
               aria-label="America: The Greatest Nation — Home"
             >
@@ -170,13 +174,13 @@ export function Header() {
 
             {/* ── Desktop Nav ────────────────────────────────────────────── */}
             <nav
-              className="hidden lg:flex items-center gap-1"
+              className="hidden lg:flex items-stretch gap-1 h-full"
               aria-label="Main navigation"
             >
               {primaryNav.map((section) => (
                 <div
                   key={section.title}
-                  className="relative"
+                  className="relative flex items-center h-full"
                   onMouseEnter={() => handleMenuEnter(section.title)}
                   onMouseLeave={handleMenuLeave}
                 >
@@ -296,14 +300,24 @@ export function Header() {
               {/* More dropdown or Data link */}
               <Link
                 href="/data"
-                className="px-3 py-2 rounded-lg font-body text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+                onMouseEnter={() => {
+                  if (menuTimeout.current) clearTimeout(menuTimeout.current);
+                  setActiveMenu(null);
+                }}
+                className="flex items-center px-3 py-2 rounded-lg font-body text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors h-full"
               >
                 {copy.dataLink}
               </Link>
             </nav>
 
             {/* ── Desktop CTA ────────────────────────────────────────────── */}
-            <div className="hidden lg:flex items-center gap-3">
+            <div 
+              className="hidden lg:flex items-center gap-3"
+              onMouseEnter={() => {
+                if (menuTimeout.current) clearTimeout(menuTimeout.current);
+                setActiveMenu(null);
+              }}
+            >
               <div ref={languageMenuRef} className="relative">
                 <button
                   type="button"
