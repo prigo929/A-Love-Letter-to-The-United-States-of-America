@@ -56,12 +56,16 @@ export function ReadingProgressBar() {
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
   const { locale } = useLanguage();
+  const pathname = usePathname();
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 600);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Hide on the Constitution landing page only (subpages keep the button).
+  if (pathname === "/constitution") return null;
 
   return (
     <AnimatePresence>
