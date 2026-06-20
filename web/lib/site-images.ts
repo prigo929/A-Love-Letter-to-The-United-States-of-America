@@ -436,6 +436,15 @@ import stadiumBristol from "@/IMAGES/Culture/Sports/Stadiums/Bristol Motor Speed
 import stadiumFenway from "@/IMAGES/Culture/Sports/Stadiums/Boston Red Sox Baseball Fenway Park Full Crowd Sunset Twilight Dramatic Sky Game In Progress.jpg";
 import stadiumSuperdome from "@/IMAGES/Culture/Sports/Stadiums/Caesars Superdome aerial Night prior to Super Bowl LIX.jpg";
 import stadiumStateFarmAerial from "@/IMAGES/Culture/Sports/Stadiums/State Farm Stadium Aerial at Sunset.jpg";
+import stadiumMsg from "@/IMAGES/Culture/Sports/Stadiums/Madison Square Garden Exterior View With NYC Skyscrapers And Street Traffic Daytime.jpg";
+import stadiumIndianapolis from "@/IMAGES/Culture/Sports/Stadiums/Aerial of Indianapolis Motor Speedway complex looking north. West 16th Street is in the foreground.jpg";
+import stadiumCota from "@/IMAGES/Culture/Sports/Stadiums/Circuit of the Americas aerial.jpg";
+import stadiumDaytona from "@/IMAGES/Culture/Sports/Stadiums/Daytona International Speedway - DAYTONA-500-Flyover-2017---USAF-Thunderbirdss.jpg";
+import stadiumChurchillDowns from "@/IMAGES/Culture/Sports/Stadiums/Churchill Downs.jpg";
+import stadiumLasVegasSpeedway from "@/IMAGES/Culture/Sports/Stadiums/Las-Vegas-Motor-Speedway Aerial.jpg";
+import stadiumTexasSpeedway from "@/IMAGES/Culture/Sports/Stadiums/Texas-Motor-Speedway-Aerial-View.jpg";
+import stadiumPnc from "@/IMAGES/Culture/Sports/Stadiums/Scenic-Daytime-View-Of-PNC-Park-Baseball-Stadium-And-Pittsburgh-Skyline.jpg";
+
 
 // Food — pepperoni pizza
 import foodPepperoniPizza from "@/IMAGES/Culture/Food/Pepperoni pizza american.jpg";
@@ -856,6 +865,15 @@ export const SITE_IMAGES = {
     stadiumFenway: stadiumFenway.src,
     stadiumSuperdome: stadiumSuperdome.src,
     stadiumStateFarmAerial: stadiumStateFarmAerial.src,
+    stadiumMsg: stadiumMsg.src,
+    stadiumIndianapolis: stadiumIndianapolis.src,
+    stadiumCota: stadiumCota.src,
+    stadiumDaytona: stadiumDaytona.src,
+    stadiumChurchillDowns: stadiumChurchillDowns.src,
+    stadiumLasVegasSpeedway: stadiumLasVegasSpeedway.src,
+    stadiumTexasSpeedway: stadiumTexasSpeedway.src,
+    stadiumPnc: stadiumPnc.src,
+
 
     // Fashion — western & preppy
     fashionCowboyBoots: fashionCowboyBoots.src,

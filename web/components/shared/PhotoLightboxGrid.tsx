@@ -26,6 +26,10 @@ interface PhotoLightboxGridProps {
   sizes?: string;
   /** Card mode: render caption + description beneath each tile instead of a hover overlay. */
   withCaptions?: boolean;
+  /** Image quality override, defaults to 90. */
+  quality?: number;
+  /** Optional aspect ratio to force on grid thumbnails (e.g. "3/2") */
+  thumbnailAspect?: string;
 }
 
 const DEFAULT_SIZES =
@@ -38,6 +42,8 @@ export function PhotoLightboxGrid({
   gridClassName = "grid grid-cols-1 md:grid-cols-3 gap-4",
   sizes = DEFAULT_SIZES,
   withCaptions = false,
+  quality = 100,
+  thumbnailAspect,
 }: PhotoLightboxGridProps) {
   const [active, setActive] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
@@ -87,14 +93,14 @@ export function PhotoLightboxGrid({
           />
           <motion.div
             key="lb-panel"
-            initial={{ opacity: 0, scale: 0.96 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.96 }}
+            exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-4 z-101 flex flex-col md:inset-10 lg:inset-16"
+            className="fixed inset-0 z-101 flex flex-col bg-black/98"
           >
             <div
-              className="flex items-start gap-4 rounded-t-2xl border-b border-white/10 bg-[#050505] px-5 py-3"
+              className="flex items-start gap-4 border-b border-white/10 bg-black/40 backdrop-blur-md px-5 py-4"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="min-w-0 flex-1">
@@ -118,15 +124,16 @@ export function PhotoLightboxGrid({
             </div>
             {/* Clicking the area around the photo closes; clicking the photo itself does not. */}
             <div
-              className="relative flex-1 cursor-zoom-out overflow-hidden rounded-b-2xl bg-[#050505]"
+              className="relative flex-1 cursor-zoom-out overflow-hidden bg-transparent"
               onClick={close}
             >
               <Image
                 src={photos[active].src}
                 alt={photos[active].alt}
                 fill
-                sizes="90vw"
+                sizes="100vw"
                 priority
+                quality={quality}
                 unoptimized={isSvg(photos[active].src)}
                 className="cursor-default object-contain p-2 sm:p-4"
                 onClick={(e) => e.stopPropagation()}
@@ -147,7 +154,7 @@ export function PhotoLightboxGrid({
               type="button"
               onClick={() => setActive(i)}
               className="group relative w-full overflow-hidden rounded-2xl cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
-              style={{ aspectRatio: photo.aspect ?? "3/2" }}
+              style={{ aspectRatio: thumbnailAspect ?? photo.aspect ?? "3/2" }}
               aria-label={`View full size: ${photo.alt}`}
             >
               <Image
@@ -157,6 +164,7 @@ export function PhotoLightboxGrid({
                 sizes={photo.sizes ?? sizes}
                 placeholder="blur"
                 blurDataURL={BLUR_PLACEHOLDER}
+                quality={quality}
                 unoptimized={isSvg(photo.src)}
                 className={`object-cover transition-transform duration-700 group-hover:scale-105 ${photo.objectClassName ?? ""}`}
               />
