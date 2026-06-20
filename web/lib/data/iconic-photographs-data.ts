@@ -231,7 +231,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     id: "eniac-in-operation",
     title: "ENIAC in Operation",
     year: "1946",
-    caption: "Operators program the first general-purpose electronic computer.",
+    caption: "The first general-purpose electronic computer.",
     description:
       "Unveiled at the University of Pennsylvania in 1946, ENIAC's 18,000 vacuum tubes performed thousands of calculations per second, opening the computing era.",
     category: "Technology",
@@ -239,6 +239,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     location: "University of Pennsylvania, Philadelphia",
     rights: "public-domain",
     source: "US Army / National Archives (PD).",
+    imagePath: "Technology/Iconic/ENIAC in Operation.jpg",
   },
   {
     id: "mount-rushmore-under-construction",
@@ -1396,16 +1397,17 @@ const CULTURE_SPORTS: IconicPhoto[] = [
 const SCIENCE_INVENTION: IconicPhoto[] = [
   {
     id: "edison-incandescent-light-bulb",
-    title: "Thomas Edison and the Incandescent Light Bulb",
-    year: "1880",
-    caption: "Edison with the practical electric lamp.",
+    title: "Thomas Edison",
+    year: "1878",
+    caption: "The inventor who electrified the modern world.",
     description:
-      "Thomas Edison's practical incandescent bulb and the power systems around it electrified the modern world from his Menlo Park lab.",
+      "Thomas Edison, photographed with his phonograph, whose practical incandescent bulb and the power systems around it transformed daily life worldwide.",
     category: "Science",
     section: "innovation",
     location: "Menlo Park, New Jersey",
     rights: "public-domain",
     source: "Library of Congress / NPS (PD).",
+    imagePath: "Science/Iconic/Thomas Edison and the Light Bulb.jpg",
   },
   {
     id: "transistor-bell-labs",
@@ -1432,6 +1434,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     location: "Marshall Space Flight Center, Alabama",
     rights: "public-domain",
     source: "NASA (PD).",
+    imagePath: "USA from Space/Von Braun and the Saturn V F-1 Engines.jpg",
   },
   {
     id: "tesla-colorado-springs-lab",
@@ -1445,6 +1448,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     location: "Colorado Springs, Colorado",
     rights: "public-domain",
     source: "Wikimedia Commons / Tesla collections (PD, 1899).",
+    imagePath: "Science/Iconic/Nikola Tesla in his Colorado Springs Laboratory.jpg",
   },
   {
     id: "goddard-first-liquid-fueled-rocket",
@@ -1458,6 +1462,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     location: "Auburn, Massachusetts",
     rights: "public-domain",
     source: "NASA / Smithsonian (PD).",
+    imagePath: "Science/Iconic/Robert Goddard and the First Liquid-Fueled Rocket.jpg",
   },
   {
     id: "microsoft-class-of-1978",
@@ -1497,6 +1502,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     location: "Cape Canaveral, Florida",
     rights: "public-domain",
     source: "SpaceX (released to public domain).",
+    imagePath: "USA from Space/SpaceX Falcon Dual Booster Landing.jpg",
   },
   {
     id: "jonas-salk-polio-vaccine",
@@ -1526,16 +1532,17 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
   },
   {
     id: "grace-hopper-harvard-mark-i",
-    title: "Dr. Grace Hopper and the Harvard Mark I",
-    year: "c. 1944",
-    caption: "A computing pioneer at an early electromechanical computer.",
+    title: "Dr. Grace Hopper",
+    year: "—",
+    caption: "The computing pioneer and U.S. Navy officer.",
     description:
-      "Grace Hopper programmed the Harvard Mark I in the 1940s and went on to pioneer compilers and the COBOL language.",
+      "Grace Hopper programmed the Harvard Mark I in the 1940s and went on to pioneer compilers and the COBOL language during a long Navy career.",
     category: "Technology",
     section: "innovation",
-    location: "Cambridge, Massachusetts",
+    location: "United States Navy",
     rights: "public-domain",
     source: "US Navy / Smithsonian (PD).",
+    imagePath: "Technology/Iconic/Grace Hopper and the Harvard Mark I.jpg",
   },
   {
     id: "farnsworth-first-electronic-television",
@@ -1588,6 +1595,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     location: "Low Earth orbit",
     rights: "public-domain",
     source: "NASA (PD).",
+    imagePath: "USA from Space/Hubble Space Telescope Being Repaired.jpg",
   },
   {
     id: "pale-blue-dot",
@@ -1615,6 +1623,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     location: "Washington, D.C.",
     rights: "public-domain",
     source: "NASA/JPL (PD).",
+    imagePath: "USA from Space/Explorer 1 Trio Holding the Satellite.jpg",
   },
   {
     id: "norman-borlaug-mexican-wheat-field",
@@ -1654,6 +1663,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     location: "Trinity Site, New Mexico",
     rights: "public-domain",
     source: "US Army / Los Alamos (PD).",
+    imagePath: "History/Oppenheimer and Groves at the Trinity Site.jpg",
   },
   {
     id: "pillars-of-creation",
@@ -1785,6 +1795,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     location: "Galaxy M87 (EHT)",
     rights: "public-domain",
     source: "EHT Collaboration (CC-BY).",
+    imagePath: "USA from Space/The First Image of a Black Hole.jpg",
   },
 ];
 
@@ -1945,6 +1956,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     location: "Galaxy cluster SMACS 0723 (JWST)",
     rights: "public-domain",
     source: "NASA/ESA/CSA/STScI (PD).",
+    imagePath: "USA from Space/The James Webb Telescope First Deep Field.jpg",
   },
   {
     id: "damadian-first-mri-scanner",

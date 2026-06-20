@@ -452,6 +452,107 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     theme: "Power at sea",
   },
 
+  // ── Iconic American photographs — batch 3 (Science & Space, public domain) ──
+  "Science/Iconic/Thomas Edison and the Light Bulb.jpg": {
+    alt: "Portrait of a young Thomas Edison seated beside an early phonograph",
+    caption: "Thomas Edison (1878)",
+    description:
+      "Thomas Edison, photographed with his phonograph, whose practical incandescent bulb and power systems would electrify the modern world.",
+    location: "Menlo Park, New Jersey",
+    theme: "The Wizard of Menlo Park",
+    featured: true,
+  },
+  "Science/Iconic/Nikola Tesla in his Colorado Springs Laboratory.jpg": {
+    alt: "Nikola Tesla sitting calmly amid massive electrical arcs in his Colorado Springs laboratory",
+    caption: "Nikola Tesla in his Colorado Springs Laboratory (1899)",
+    description:
+      "Tesla's famous 1899 publicity photograph, sitting amid arcs from his magnifying transmitter, dramatized his pioneering electrical experiments.",
+    location: "Colorado Springs, Colorado",
+    theme: "Master of lightning",
+  },
+  "Science/Iconic/Robert Goddard and the First Liquid-Fueled Rocket.jpg": {
+    alt: "Robert Goddard standing beside his 1926 liquid-fueled rocket on its launch frame in the snow",
+    caption: "Robert Goddard and the First Liquid-Fueled Rocket (1926)",
+    description:
+      "Robert Goddard launched the first liquid-fueled rocket on March 16, 1926 in Auburn, Massachusetts, founding modern rocketry.",
+    location: "Auburn, Massachusetts",
+    theme: "Father of rocketry",
+  },
+  "Technology/Iconic/ENIAC in Operation.jpg": {
+    alt: "The ENIAC computer's panels, the first general-purpose electronic computer",
+    caption: "ENIAC, the First Electronic Computer (1946)",
+    description:
+      "Unveiled at the University of Pennsylvania in 1946, ENIAC's 18,000 vacuum tubes performed thousands of calculations per second, opening the computing era.",
+    location: "University of Pennsylvania, Philadelphia",
+    theme: "Dawn of computing",
+  },
+  "Technology/Iconic/Grace Hopper and the Harvard Mark I.jpg": {
+    alt: "Official U.S. Navy portrait of Commodore Grace Hopper",
+    caption: "Dr. Grace Hopper, Computing Pioneer",
+    description:
+      "Grace Hopper programmed the Harvard Mark I in the 1940s and went on to pioneer compilers and the COBOL language as a U.S. Navy officer.",
+    location: "United States Navy",
+    theme: "Pioneer of programming",
+  },
+  "USA from Space/Von Braun and the Saturn V F-1 Engines.jpg": {
+    alt: "Wernher von Braun standing beside the five enormous F-1 engines of the Saturn V first stage",
+    caption: "Von Braun and the Saturn V F-1 Engines (1969)",
+    description:
+      "Wernher von Braun stands beside the five F-1 engines of the Saturn V's first stage — the propulsion that sent Apollo to the Moon.",
+    location: "Marshall Space Flight Center, Alabama",
+    theme: "Power to reach the Moon",
+  },
+  "USA from Space/Explorer 1 Trio Holding the Satellite.jpg": {
+    alt: "Pickering, Van Allen, and von Braun holding a model of Explorer 1 over their heads",
+    caption: "Pickering, Van Allen, and von Braun with Explorer 1 (1958)",
+    description:
+      "The three scientists hoist a model of Explorer 1, the first U.S. satellite, which discovered the Van Allen radiation belts in 1958.",
+    location: "Washington, D.C.",
+    theme: "America reaches orbit",
+  },
+  "USA from Space/Hubble Space Telescope Being Repaired.jpg": {
+    alt: "An astronaut servicing the Hubble Space Telescope on a spacewalk with Earth below",
+    caption: "Servicing the Hubble Space Telescope (1993)",
+    description:
+      "The 1993 servicing mission corrected Hubble's optics, rescuing the telescope that has since transformed astronomy.",
+    location: "Low Earth orbit",
+    theme: "Repair in orbit",
+  },
+  "USA from Space/The James Webb Telescope First Deep Field.jpg": {
+    alt: "The James Webb Space Telescope's first deep field, thousands of galaxies in infrared",
+    caption: "Webb's First Deep Field (2022)",
+    description:
+      "Webb's first deep field, released in 2022, revealed thousands of galaxies billions of light-years away in unprecedented detail.",
+    location: "Galaxy cluster SMACS 0723",
+    theme: "The deep universe",
+    featured: true,
+  },
+  "USA from Space/The First Image of a Black Hole.jpg": {
+    alt: "The first direct image of a black hole, the glowing ring around M87's shadow",
+    caption: "The First Image of a Black Hole (2019)",
+    description:
+      "In 2019 the Event Horizon Telescope produced the first direct image of a black hole's shadow, at the heart of galaxy M87.",
+    location: "Galaxy M87",
+    theme: "Seeing the unseeable",
+  },
+  "History/Oppenheimer and Groves at the Trinity Site.jpg": {
+    alt: "Oppenheimer and General Groves inspecting the twisted remains of the Trinity test tower",
+    caption: "Oppenheimer and Groves at the Trinity Site (1945)",
+    description:
+      "Oppenheimer and General Leslie Groves examine the remains of the Trinity test tower — the scientific and military faces of the Manhattan Project.",
+    location: "Trinity Site, New Mexico",
+    theme: "The atomic age",
+  },
+  "USA from Space/SpaceX Falcon Dual Booster Landing.jpg": {
+    alt: "Two SpaceX Falcon Heavy side boosters descending under power toward synchronized landings",
+    caption: "SpaceX Falcon Dual Booster Landing (2018)",
+    description:
+      "The Falcon Heavy demonstration in 2018 returned its twin side boosters to synchronized landings, advancing reusable rocketry.",
+    location: "Cape Canaveral, Florida",
+    theme: "Reusable rocketry",
+    featured: true,
+  },
+
   "Constitution/A view of the north side of Independence Hall in Philadelphia, showing the main building in the center with the east and west wings on the sides.jpg": {
     location: "Philadelphia, Pennsylvania",
     theme: "Founding Site",

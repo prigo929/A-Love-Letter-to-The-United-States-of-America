@@ -135,7 +135,7 @@ export function Header() {
         )}
         role="banner"
       >
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* ── Logo ───────────────────────────────────────────────────── */}
             <Link
@@ -174,7 +174,7 @@ export function Header() {
 
             {/* ── Desktop Nav ────────────────────────────────────────────── */}
             <nav
-              className="hidden lg:flex items-stretch gap-1 h-full"
+              className="hidden lg:flex items-stretch gap-1.5 xl:gap-3 h-full"
               aria-label="Main navigation"
             >
               {primaryNav.map((section) => (
@@ -193,7 +193,7 @@ export function Header() {
                   <Link
                     href={section.href}
                     className={cn(
-                      "flex items-center gap-1 px-3 py-2 rounded-lg font-body text-sm font-medium",
+                      "flex items-center gap-1 px-3.5 xl:px-4 py-2 rounded-lg font-body text-sm font-medium",
                       "transition-colors duration-150",
                       "text-white/80 hover:text-white hover:bg-white/10",
                       pathname.startsWith(section.href) &&
@@ -237,7 +237,7 @@ export function Header() {
                         // over the cursor and back, and the wrapper's own
                         // mouseleave would then schedule a close that nothing
                         // cancelled — closing the menu mid-hover.
-                        className="absolute top-full left-1/2 w-64 -translate-x-1/2 pt-2"
+                        className="absolute top-full left-1/2 w-72 xl:w-80 -translate-x-1/2 pt-2"
                         role="menu"
                       >
                         <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-navy-dark/65 shadow-2xl backdrop-blur-2xl isolate">
@@ -319,7 +319,7 @@ export function Header() {
                   if (menuTimeout.current) clearTimeout(menuTimeout.current);
                   setActiveMenu(null);
                 }}
-                className="flex items-center px-3 py-2 rounded-lg font-body text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors h-full"
+                className="flex items-center px-3.5 xl:px-4 py-2 rounded-lg font-body text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors h-full"
               >
                 {copy.dataLink}
               </Link>

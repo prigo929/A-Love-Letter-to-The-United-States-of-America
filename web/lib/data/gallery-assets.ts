@@ -644,6 +644,19 @@ import asset636 from "@/IMAGES/Military/Iconic/General George S. Patton.png";
 import asset637 from "@/IMAGES/Military/Iconic/General Norman Schwarzkopf.jpg";
 import asset638 from "@/IMAGES/Military/Iconic/U.S. Army Rangers at Pointe du Hoc.jpg";
 import asset639 from "@/IMAGES/Military/Iconic/The USS Nimitz Supercarrier.jpg";
+// Iconic American photographs — batch 3 (Science & Space, public domain)
+import asset640 from "@/IMAGES/Science/Iconic/Thomas Edison and the Light Bulb.jpg";
+import asset641 from "@/IMAGES/Science/Iconic/Nikola Tesla in his Colorado Springs Laboratory.jpg";
+import asset642 from "@/IMAGES/Science/Iconic/Robert Goddard and the First Liquid-Fueled Rocket.jpg";
+import asset643 from "@/IMAGES/Technology/Iconic/ENIAC in Operation.jpg";
+import asset644 from "@/IMAGES/Technology/Iconic/Grace Hopper and the Harvard Mark I.jpg";
+import asset645 from "@/IMAGES/USA from Space/Von Braun and the Saturn V F-1 Engines.jpg";
+import asset646 from "@/IMAGES/USA from Space/Explorer 1 Trio Holding the Satellite.jpg";
+import asset647 from "@/IMAGES/USA from Space/Hubble Space Telescope Being Repaired.jpg";
+import asset648 from "@/IMAGES/USA from Space/The James Webb Telescope First Deep Field.jpg";
+import asset649 from "@/IMAGES/USA from Space/The First Image of a Black Hole.jpg";
+import asset650 from "@/IMAGES/History/Oppenheimer and Groves at the Trinity Site.jpg";
+import asset651 from "@/IMAGES/USA from Space/SpaceX Falcon Dual Booster Landing.jpg";
 
 export type GalleryAssetRecord = {
   path: string;
@@ -1293,6 +1306,19 @@ const RAW_GALLERY_ASSETS = [
   { path: "Military/Iconic/General Norman Schwarzkopf.jpg", src: asset637 },
   { path: "Military/Iconic/U.S. Army Rangers at Pointe du Hoc.jpg", src: asset638 },
   { path: "Military/Iconic/The USS Nimitz Supercarrier.jpg", src: asset639 },
+  // Iconic American photographs — batch 3 (Science & Space, public domain)
+  { path: "Science/Iconic/Thomas Edison and the Light Bulb.jpg", src: asset640 },
+  { path: "Science/Iconic/Nikola Tesla in his Colorado Springs Laboratory.jpg", src: asset641 },
+  { path: "Science/Iconic/Robert Goddard and the First Liquid-Fueled Rocket.jpg", src: asset642 },
+  { path: "Technology/Iconic/ENIAC in Operation.jpg", src: asset643 },
+  { path: "Technology/Iconic/Grace Hopper and the Harvard Mark I.jpg", src: asset644 },
+  { path: "USA from Space/Von Braun and the Saturn V F-1 Engines.jpg", src: asset645 },
+  { path: "USA from Space/Explorer 1 Trio Holding the Satellite.jpg", src: asset646 },
+  { path: "USA from Space/Hubble Space Telescope Being Repaired.jpg", src: asset647 },
+  { path: "USA from Space/The James Webb Telescope First Deep Field.jpg", src: asset648 },
+  { path: "USA from Space/The First Image of a Black Hole.jpg", src: asset649 },
+  { path: "History/Oppenheimer and Groves at the Trinity Site.jpg", src: asset650 },
+  { path: "USA from Space/SpaceX Falcon Dual Booster Landing.jpg", src: asset651 },
 ] as const satisfies readonly GalleryAssetRecord[];
 
 export const GALLERY_ASSETS: readonly GalleryAssetRecord[] = Array.from(
