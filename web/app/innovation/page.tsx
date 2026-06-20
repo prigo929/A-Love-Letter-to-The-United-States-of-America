@@ -11,6 +11,7 @@ import {
 } from "@/components/economy/EconomyAnimations";
 import { Cpu, Globe, Phone, Cloud, Orbit, Gamepad2 } from "lucide-react";
 import DeepDiveSection from "@/components/shared/DeepDiveSection";
+import { IconicPhotographs } from "@/components/shared/IconicPhotographs";
 import { renderTextWithLinks } from "@/lib/link-renderer";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
@@ -325,6 +326,12 @@ export default async function InnovationPage() {
             })}
           </div>
         </section>
+
+        {/* Iconic Photographs */}
+        <IconicPhotographs
+          section="innovation"
+          intro="From the first nuclear fireball to the deepest views of the cosmos — the milestones of American science and spaceflight, captured on film."
+        />
 
         {/* Deep Dive Section */}
         <DeepDiveSection

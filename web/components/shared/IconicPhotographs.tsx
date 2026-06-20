@@ -41,7 +41,9 @@ export function IconicPhotographs({
           <p className="font-body text-xs font-semibold uppercase tracking-[0.3em] text-glory-gold">
             {eyebrow}
           </p>
-          <h2 className="macro-section-title mt-3 text-white">{title}</h2>
+          <h2 className="mt-3 font-hero text-4xl font-black uppercase leading-none tracking-tight text-white sm:text-5xl">
+            {title}
+          </h2>
           {intro && (
             <p className="mt-4 font-body text-base leading-relaxed text-white/55">
               {intro}

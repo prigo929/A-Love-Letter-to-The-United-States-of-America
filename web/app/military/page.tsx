@@ -52,6 +52,7 @@ import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import DeepDiveSection from "@/components/shared/DeepDiveSection";
+import { IconicPhotographs } from "@/components/shared/IconicPhotographs";
 import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 import { getMilitaryPageCopy } from "@/lib/i18n/messages/pages";
 
@@ -652,6 +653,12 @@ export default async function MilitaryPage() {
             </Link>
           ))}
         </div>
+
+        {/* Iconic Photographs */}
+        <IconicPhotographs
+          section="military"
+          intro="The American armed forces across a century of conflict — from the beaches of Normandy to the skies over the modern battlespace, captured on film."
+        />
 
         {/* Deep Dive Archive */}
         <DeepDiveSection
