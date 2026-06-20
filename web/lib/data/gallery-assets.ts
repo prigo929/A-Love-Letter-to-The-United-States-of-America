@@ -637,7 +637,7 @@ export type GalleryAssetRecord = {
   src: StaticImageData;
 };
 
-export const GALLERY_ASSETS = [
+const RAW_GALLERY_ASSETS = [
   { path: "Aerials/Aerial View of Dallas.jpg", src: asset000 },
   { path: "Aerials/Aerial view of Calabasas and the San Fernando Valley, facing northeast from a passing jetliner off the coast of Oxnard.jpg", src: asset001 },
   { path: "Aerials/Aerial_View_of_Santa_Monica,_California.jpg", src: asset002 },
@@ -1268,3 +1268,7 @@ export const GALLERY_ASSETS = [
   { path: "USA from Space/The Pillars of Creation.jpg", src: asset626 },
   { path: "History/The Trinity Test.jpg", src: asset627 },
 ] as const satisfies readonly GalleryAssetRecord[];
+
+export const GALLERY_ASSETS: readonly GalleryAssetRecord[] = Array.from(
+  new Map(RAW_GALLERY_ASSETS.map((item) => [item.path, item])).values()
+);
