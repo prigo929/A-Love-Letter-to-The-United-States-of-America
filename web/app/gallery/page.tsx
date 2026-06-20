@@ -28,7 +28,7 @@ export default async function GalleryPage() {
           allLabel: "Toate",
           close: "Închide imaginea",
           location: "Loc",
-          tone: "Cadru",
+          theme: "Temă",
         }
       : {
           breadcrumb: "Gallery",
@@ -41,7 +41,7 @@ export default async function GalleryPage() {
           allLabel: "All",
           close: "Close image",
           location: "Location",
-          tone: "Frame",
+          theme: "Theme",
         };
 
   return (

@@ -19,7 +19,7 @@ type GalleryCopy = {
   allLabel: string;
   close: string;
   location: string;
-  tone: string;
+  theme: string;
 };
 
 type GalleryExperienceProps = {
@@ -65,7 +65,7 @@ function FeaturedFrame({
       />
       <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
         <p className="mb-2 w-fit max-w-full truncate rounded-full border border-white/15 bg-black/35 px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 backdrop-blur">
-          {image.tone}
+          {image.theme}
         </p>
         <h2 className="font-display text-2xl leading-tight text-white md:text-4xl">
           {image.caption}
@@ -342,10 +342,10 @@ function ImageDialog({
             </div>
             <div className="rounded-lg border border-white/10 bg-white/[0.04] p-3">
               <p className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-white/35">
-                {copy.tone}
+                {copy.theme}
               </p>
               <p className="mt-1 font-body text-sm text-white/80">
-                {image.tone}
+                {image.theme}
               </p>
             </div>
           </div>
