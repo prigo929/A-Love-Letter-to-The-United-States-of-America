@@ -333,7 +333,6 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
             muted
             playsInline
             preload="none"
-            poster={imageSrc}
             className="absolute inset-0 h-full w-full object-cover"
           >
             <source src={videoSrc} type="video/mp4" />

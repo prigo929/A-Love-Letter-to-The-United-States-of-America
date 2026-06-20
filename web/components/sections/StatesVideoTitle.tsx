@@ -312,7 +312,6 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
           ref={videoRef}
           className="absolute inset-0 h-full w-full object-cover"
           src={FLAG_VIDEO_URL}
-          poster="/videos/flag-loop-poster.jpg"
           autoPlay
           muted
           playsInline

@@ -563,7 +563,6 @@ export function VideoCultureHero({
               muted
               playsInline
               preload="auto"
-              poster={imageSrc}
               className="absolute inset-0 h-full w-full object-cover brightness-[0.4] saturate-[0.8]"
             >
               <source src={videoSrc} type="video/mp4" />
