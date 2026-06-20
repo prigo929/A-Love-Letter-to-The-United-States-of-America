@@ -100,7 +100,7 @@ export default async function CultureSportsPage() {
       <CultureStyles />
 
       <MacroHero
-        videoSrc="/videos/library/Culture/Michael Jordan | Edit.mp4"
+        videoSrc="/videos/library/Culture/Michael Jordan - Edit.mp4"
         eyebrow={isRo ? "CULTURĂ · SPECTACOL" : "CULTURE · SPECTACLE"}
         titleLead={isRo ? "SPORTUL AMERICAN" : "AMERICAN SPORTS"}
         titleAccent={isRo ? "& TRADIȚIE" : "& TRADITION"}

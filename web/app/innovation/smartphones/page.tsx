@@ -123,14 +123,14 @@ const copyEn: SmartphonesCopy = {
       title: "Introducing iPhone Air",
       description:
         "Apple's thinnest iPhone ever — the iPhone Air — redefines what a premium smartphone can feel like. At just 5.5mm, it achieves structural rigidity through a custom aluminum alloy and a new internal architecture, proving that thinness and performance are no longer in tension.",
-      videoSrc: "/videos/library/Technology/Introducing iPhone Air | Apple.mp4",
+      videoSrc: "/videos/library/Technology/Introducing iPhone Air - Apple.mp4",
       tag: "IPHONE AIR",
     },
     {
       title: "Design Is How It Works",
       description:
         "Apple's design philosophy, articulated in the voice of Jony Ive: that true design is not surface appearance but the way a product functions. This ethos — inherited from Steve Jobs — is the reason every iPhone generation resets the benchmark for the entire industry.",
-      videoSrc: "/videos/library/Technology/Design is how it works | Apple.mp4",
+      videoSrc: "/videos/library/Technology/Design is how it works - Apple.mp4",
       tag: "DESIGN PHILOSOPHY",
     },
   ],
@@ -254,14 +254,14 @@ const copyRo: SmartphonesCopy = {
       title: "Prezentare iPhone Air",
       description:
         "Cel mai subțire iPhone al Apple — iPhone Air — redefinește ce poate simți un smartphone premium. La doar 5,5mm grosime, atinge rigiditate structurală printr-un aliaj de aluminiu personalizat și o nouă arhitectură internă, dovedind că subțirimea și performanța nu mai sunt în tensiune.",
-      videoSrc: "/videos/library/Technology/Introducing iPhone Air | Apple.mp4",
+      videoSrc: "/videos/library/Technology/Introducing iPhone Air - Apple.mp4",
       tag: "IPHONE AIR",
     },
     {
       title: "Design-ul Este Modul în Care Funcționează",
       description:
         "Filosofia de design a Apple, articulată în vocea lui Jony Ive: că adevăratul design nu este aspectul de suprafață, ci modul în care funcționează un produs. Acest etos — moștenit de la Steve Jobs — este motivul pentru care fiecare generație iPhone resetează standardul de referință pentru întreaga industrie.",
-      videoSrc: "/videos/library/Technology/Design is how it works | Apple.mp4",
+      videoSrc: "/videos/library/Technology/Design is how it works - Apple.mp4",
       tag: "FILOSOFIE DE DESIGN",
     },
   ],
@@ -330,7 +330,7 @@ export default async function SmartphonesPage() {
         titleAccent={copy.heroTagline}
         eyebrow={copy.breadcrumbPage}
         description={copy.heroSubtitle}
-        videoSrc="/videos/library/Technology/Introducing iPhone 17 Pro | Apple.mp4"
+        videoSrc="/videos/library/Technology/Introducing iPhone 17 Pro - Apple.mp4"
         imageSrc="/images/library/Technology/iPhone saying Hello on dark background.jpg"
         imageAlt="iPhone hello screen on dark background"
       />

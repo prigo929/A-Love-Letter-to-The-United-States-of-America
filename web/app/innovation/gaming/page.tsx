@@ -146,7 +146,7 @@ const copyEn: GamingCopy = {
       title: "The Call — League of Legends",
       description:
         "Riot Games' Season 2022 cinematic for League of Legends — one of the most-watched game trailers in history, produced entirely in-house by a studio born in Los Angeles. League of Legends has 150 million registered accounts and remains the most-played PC game on Earth, 14 years after its launch.",
-      videoSrc: "/videos/library/Technology/The Call | Season 2022 Cinematic - League of Legends cinematic.mp4",
+      videoSrc: "/videos/library/Technology/The Call - Season 2022 Cinematic - League of Legends cinematic.mp4",
       tag: "RIOT GAMES",
     },
   ],
@@ -278,7 +278,7 @@ const copyRo: GamingCopy = {
       title: "The Call — League of Legends",
       description:
         "Cinematicul Sezonului 2022 de la Riot Games pentru League of Legends — unul dintre cele mai vizionate traileruri de jocuri din istorie, produs în întregime intern de un studio născut în Los Angeles. League of Legends are 150 de milioane de conturi înregistrate și rămâne cel mai jucat joc pe PC de pe Pământ, la 14 ani de la lansare.",
-      videoSrc: "/videos/library/Technology/The Call | Season 2022 Cinematic - League of Legends cinematic.mp4",
+      videoSrc: "/videos/library/Technology/The Call - Season 2022 Cinematic - League of Legends cinematic.mp4",
       tag: "RIOT GAMES",
     },
   ],

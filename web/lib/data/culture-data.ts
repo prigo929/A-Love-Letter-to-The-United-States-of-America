@@ -675,7 +675,7 @@ export const CULTURE_MEDIA_WALL_IMAGES = [
   "/images/culture/Magazines/National Geographic/National Geographic Magazine Cover July 1942 American Flag Buy US War Savings Bonds And Stamps.jpg",
   "/images/culture/Magazines/National Geographic/National Geographic Magazine Cover December 1969 Astronaut On The Moon Apollo 11.jpg",
   "/images/culture/Magazines/National Geographic/National Geographic Magazine Cover April 1997 Hubbles Eye On The Universe Nebula.jpg",
-  "/images/culture/Magazines/TIME/Time Magazine Cover on 9 : 11.jpg",
+  "/images/culture/Magazines/TIME/Time Magazine Cover on 9-11.jpg",
   "/images/culture/Magazines/TIME/Time magazine covers 70's.jpg",
   "/images/culture/Magazines/TIME/Time magazine covers 50's.jpg",
   "/images/culture/Magazines/TIME/Time magazine covers 90's.jpg",

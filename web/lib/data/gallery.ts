@@ -419,7 +419,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     location: "Philadelphia, Pennsylvania",
     theme: "Diplomat & Polymath",
   },
-  "Culture/Music/Carey at Edwards Air Force Base during the making of the \"I Still Believe\" music video in December 1998.jpg": {
+  "Culture/Music/Carey at Edwards Air Force Base during the making of the I Still Believe music video in December 1998.jpg": {
     location: "Edwards AFB, California",
     theme: "USO Goodwill Show",
   },

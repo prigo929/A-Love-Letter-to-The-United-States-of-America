@@ -93,7 +93,7 @@ import asset089 from "@/IMAGES/Culture/Magazines/Sports Illustrated/Sports Illus
 import asset090 from "@/IMAGES/Culture/Magazines/Sports Illustrated/Sports Illustrated Magazine Cover March 1980 USA Olympic Mens Hockey Team Miracle On Ice Celebration.jpg";
 import asset091 from "@/IMAGES/Culture/Magazines/Sports Illustrated/Sports Illustrated Magazine Cover March 1993 George Steinbrenner As George II On White Horse.jpg";
 import asset092 from "@/IMAGES/Culture/Magazines/Sports Illustrated/Sports Illustrated Magazine Cover November 2016 Chicago Cubs World Series Win Kris Bryant Celebration.jpg";
-import asset093 from "@/IMAGES/Culture/Magazines/TIME/Time Magazine Cover on 9 : 11.jpg";
+import asset093 from "@/IMAGES/Culture/Magazines/TIME/Time Magazine Cover on 9-11.jpg";
 import asset094 from "@/IMAGES/Culture/Magazines/TIME/Time magazine covers 00's.jpg";
 import asset095 from "@/IMAGES/Culture/Magazines/TIME/Time magazine covers 50's.jpg";
 import asset096 from "@/IMAGES/Culture/Magazines/TIME/Time magazine covers 60's.jpg";
@@ -241,13 +241,13 @@ import asset237 from "@/IMAGES/Military/Global Bases/Clear Space Force Station.j
 import asset238 from "@/IMAGES/Military/Global Bases/Diego Garcia Base.jpeg";
 import asset239 from "@/IMAGES/Military/Global Bases/Eielson Air Force Base.jpg";
 import asset240 from "@/IMAGES/Military/Global Bases/Eloy Alfaro Air Base Manta, Ecuador Base.jpg";
-import asset241 from "@/IMAGES/Military/Global Bases/Fort_Bragg : Liberty.jpg";
+import asset241 from "@/IMAGES/Military/Global Bases/Fort_Bragg - Liberty.jpg";
 import asset242 from "@/IMAGES/Military/Global Bases/Kadena_Air_Base_Aerial_photograph_1977.jpg";
 import asset243 from "@/IMAGES/Military/Global Bases/Naval Air Station Sigonella.jpg";
 import asset244 from "@/IMAGES/Military/Global Bases/Naval Station Guantanamo Bay.jpg";
 import asset245 from "@/IMAGES/Military/Global Bases/Naval Station Norfolk.jpg";
 import asset246 from "@/IMAGES/Military/Global Bases/Naval Support Activity Bahrain Base.jpg";
-import asset247 from "@/IMAGES/Military/Global Bases/Thule : Pituffik Space Base.jpg";
+import asset247 from "@/IMAGES/Military/Global Bases/Thule - Pituffik Space Base.jpg";
 import asset248 from "@/IMAGES/Military/Global Bases/Yokosuka Naval Base.jpeg";
 import asset249 from "@/IMAGES/Military/Global Bases/arabian_gulf_nsa_bahrain.jpg";
 import asset250 from "@/IMAGES/Military/Global Bases/atlantic_naval_station_norfolk.jpg";
@@ -424,7 +424,7 @@ import asset419 from "@/IMAGES/Culture/Iconic Things/guest-ride-a-roller-coaster
 import asset420 from "@/IMAGES/Culture/Iconic Things/islandsofadventure.jpg";
 import asset421 from "@/IMAGES/Culture/Music/A live performance shot of Post Malone.jpg";
 import asset422 from "@/IMAGES/Culture/Music/Beyonce_Knowles_GMA_Run_the_World_cropped_saluting.jpg";
-import asset423 from '@/IMAGES/Culture/Music/Carey at Edwards Air Force Base during the making of the "I Still Believe" music video in December 1998.jpg';
+import asset423 from '@/IMAGES/Culture/Music/Carey at Edwards Air Force Base during the making of the I Still Believe music video in December 1998.jpg';
 import asset424 from "@/IMAGES/Culture/Music/Carey performing on Good Morning America in May 2013.jpg";
 import asset425 from "@/IMAGES/Culture/Music/Carey pressing her in-ear monitor, while hitting a whistle note during her Caution World Tour in 2019.jpg";
 import asset426 from "@/IMAGES/Culture/Music/Elvis_Presley_1973_RCA_Records_and_Tapes_publicity_2_-_cropped.png";
@@ -569,7 +569,7 @@ import asset563 from "@/IMAGES/Aerials/Orange County aerial.jpg";
 import asset564 from "@/IMAGES/Aerials/SoFi Stadium aerial 2.jpg";
 import asset565 from "@/IMAGES/Aerials/SoFi Stadium aerial.jpg";
 import asset566 from "@/IMAGES/Culture/Music/Beyoncé_Knowles_GMA_Run_the_World_cropped saluting.jpg";
-import asset567 from "@/IMAGES/Culture/Music/Carey at Edwards Air Force Base during the making of the \"I Still Believe\" music video in December 1998.jpg";
+import asset567 from "@/IMAGES/Culture/Music/Carey at Edwards Air Force Base during the making of the I Still Believe music video in December 1998.jpg";
 import asset568 from "@/IMAGES/Culture/Sports/Stadiums/Aerial Panorama Rose Bowl Stadium Game Day Sunset San Gabriel Mountains.jpg";
 import asset569 from "@/IMAGES/Culture/Sports/Stadiums/Aerial of Indianapolis Motor Speedway complex looking north. West 16th Street is in the foreground.jpg";
 import asset570 from "@/IMAGES/Culture/Sports/Stadiums/Alabama Crimson Tide Football Bryant Denny Stadium Full Capacity Crimson Crowd Daytime.jpeg";
@@ -731,7 +731,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "Culture/Magazines/Sports Illustrated/Sports Illustrated Magazine Cover March 1980 USA Olympic Mens Hockey Team Miracle On Ice Celebration.jpg", src: asset090 },
   { path: "Culture/Magazines/Sports Illustrated/Sports Illustrated Magazine Cover March 1993 George Steinbrenner As George II On White Horse.jpg", src: asset091 },
   { path: "Culture/Magazines/Sports Illustrated/Sports Illustrated Magazine Cover November 2016 Chicago Cubs World Series Win Kris Bryant Celebration.jpg", src: asset092 },
-  { path: "Culture/Magazines/TIME/Time Magazine Cover on 9 : 11.jpg", src: asset093 },
+  { path: "Culture/Magazines/TIME/Time Magazine Cover on 9-11.jpg", src: asset093 },
   { path: "Culture/Magazines/TIME/Time magazine covers 00's.jpg", src: asset094 },
   { path: "Culture/Magazines/TIME/Time magazine covers 50's.jpg", src: asset095 },
   { path: "Culture/Magazines/TIME/Time magazine covers 60's.jpg", src: asset096 },
@@ -879,13 +879,13 @@ const RAW_GALLERY_ASSETS = [
   { path: "Military/Global Bases/Diego Garcia Base.jpeg", src: asset238 },
   { path: "Military/Global Bases/Eielson Air Force Base.jpg", src: asset239 },
   { path: "Military/Global Bases/Eloy Alfaro Air Base Manta, Ecuador Base.jpg", src: asset240 },
-  { path: "Military/Global Bases/Fort_Bragg : Liberty.jpg", src: asset241 },
+  { path: "Military/Global Bases/Fort_Bragg - Liberty.jpg", src: asset241 },
   { path: "Military/Global Bases/Kadena_Air_Base_Aerial_photograph_1977.jpg", src: asset242 },
   { path: "Military/Global Bases/Naval Air Station Sigonella.jpg", src: asset243 },
   { path: "Military/Global Bases/Naval Station Guantanamo Bay.jpg", src: asset244 },
   { path: "Military/Global Bases/Naval Station Norfolk.jpg", src: asset245 },
   { path: "Military/Global Bases/Naval Support Activity Bahrain Base.jpg", src: asset246 },
-  { path: "Military/Global Bases/Thule : Pituffik Space Base.jpg", src: asset247 },
+  { path: "Military/Global Bases/Thule - Pituffik Space Base.jpg", src: asset247 },
   { path: "Military/Global Bases/Yokosuka Naval Base.jpeg", src: asset248 },
   { path: "Military/Global Bases/arabian_gulf_nsa_bahrain.jpg", src: asset249 },
   { path: "Military/Global Bases/atlantic_naval_station_norfolk.jpg", src: asset250 },
@@ -1061,7 +1061,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "Culture/Iconic Things/islandsofadventure.jpg", src: asset420 },
   { path: "Culture/Music/A live performance shot of Post Malone.jpg", src: asset421 },
   { path: "Culture/Music/Beyonce_Knowles_GMA_Run_the_World_cropped_saluting.jpg", src: asset422 },
-  { path: 'Culture/Music/Carey at Edwards Air Force Base during the making of the "I Still Believe" music video in December 1998.jpg', src: asset423 },
+  { path: 'Culture/Music/Carey at Edwards Air Force Base during the making of the I Still Believe music video in December 1998.jpg', src: asset423 },
   { path: "Culture/Music/Carey performing on Good Morning America in May 2013.jpg", src: asset424 },
   { path: "Culture/Music/Carey pressing her in-ear monitor, while hitting a whistle note during her Caution World Tour in 2019.jpg", src: asset425 },
   { path: "Culture/Music/Elvis_Presley_1973_RCA_Records_and_Tapes_publicity_2_-_cropped.png", src: asset426 },
@@ -1205,7 +1205,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "Aerials/SoFi Stadium aerial 2.jpg", src: asset564 },
   { path: "Aerials/SoFi Stadium aerial.jpg", src: asset565 },
   { path: "Culture/Music/Beyoncé_Knowles_GMA_Run_the_World_cropped saluting.jpg", src: asset566 },
-  { path: "Culture/Music/Carey at Edwards Air Force Base during the making of the \"I Still Believe\" music video in December 1998.jpg", src: asset567 },
+  { path: "Culture/Music/Carey at Edwards Air Force Base during the making of the I Still Believe music video in December 1998.jpg", src: asset567 },
   { path: "Culture/Sports/Stadiums/Aerial Panorama Rose Bowl Stadium Game Day Sunset San Gabriel Mountains.jpg", src: asset568 },
   { path: "Culture/Sports/Stadiums/Aerial of Indianapolis Motor Speedway complex looking north. West 16th Street is in the foreground.jpg", src: asset569 },
   { path: "Culture/Sports/Stadiums/Alabama Crimson Tide Football Bryant Denny Stadium Full Capacity Crimson Crowd Daytime.jpeg", src: asset570 },

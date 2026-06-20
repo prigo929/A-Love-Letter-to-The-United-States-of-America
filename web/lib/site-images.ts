@@ -323,7 +323,7 @@ import vaultJohnnyCash from "@/IMAGES/Culture/Album Covers/Johnny Cash At Folsom
 import vaultBeachBoys from "@/IMAGES/Culture/Album Covers/The Beach Boys Pet Sounds 1966 mono album cover.jpg";
 
 // Magazine Covers
-import vaultTime911 from "@/IMAGES/Culture/Magazines/TIME/Time Magazine Cover on 9 : 11.jpg";
+import vaultTime911 from "@/IMAGES/Culture/Magazines/TIME/Time Magazine Cover on 9-11.jpg";
 import vaultFortune1931 from "@/IMAGES/Culture/Magazines/“Aviation as Seen by Monkeys,” Fortune, January 1931 Cover.jpg";
 import vaultLifeMarilyn from "@/IMAGES/Culture/Magazines/marilyn-monroe-the-iconic-life-cover-from-may-25-1953.jpg";
 import vaultLifeDisney from "@/IMAGES/Culture/Magazines/disney-world-the-iconic-life-cover-from-october-15-1971.jpg";
@@ -467,7 +467,7 @@ import baseDiegoGarcia from "@/IMAGES/Military/Global Bases/Diego Garcia Base.jp
 import baseAlUdeid from "@/IMAGES/Military/Global Bases/Al_Udeid_Air_Base.jpg";
 import baseRota from "@/IMAGES/Military/Global Bases/mediterranean_naval_station_rota.jpg";
 import baseAndersen from "@/IMAGES/Military/Global Bases/Andersen Air Force Base.jpg";
-import basePituffik from "@/IMAGES/Military/Global Bases/Thule : Pituffik Space Base.jpg";
+import basePituffik from "@/IMAGES/Military/Global Bases/Thule - Pituffik Space Base.jpg";
 import baseLemonnier from "@/IMAGES/Military/Global Bases/Camp Lemonnier.jpg";
 import baseNorfolk from "@/IMAGES/Military/Global Bases/atlantic_naval_station_norfolk.jpg";
 import baseLakenheath from "@/IMAGES/Military/Global Bases/raf_lakenheath.jpeg";
@@ -481,7 +481,7 @@ import baseManta from "@/IMAGES/Military/Global Bases/Eloy Alfaro Air Base Manta
 import baseGuantanamo from "@/IMAGES/Military/Global Bases/Naval Station Guantanamo Bay.jpg";
 import baseEielson from "@/IMAGES/Military/Global Bases/Eielson Air Force Base.jpg";
 import baseClear from "@/IMAGES/Military/Global Bases/Clear Space Force Station.jpg";
-import baseFortLiberty from "@/IMAGES/Military/Global Bases/Fort_Bragg : Liberty.jpg";
+import baseFortLiberty from "@/IMAGES/Military/Global Bases/Fort_Bragg - Liberty.jpg";
 import baseKadena from "@/IMAGES/Military/Global Bases/Kadena_Air_Base_Aerial_photograph_1977.jpg";
 import basePearlHarbor from "@/IMAGES/Military/Global Bases/indo_pacific_joint_base_pearl_harbor_hickam.jpg";
 import baseSanDiego from "@/IMAGES/Military/Global Bases/pacific_naval_base_san_diego.jpg";
