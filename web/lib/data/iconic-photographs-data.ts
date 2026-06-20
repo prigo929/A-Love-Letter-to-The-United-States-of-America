@@ -212,6 +212,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     location: "Leyte, Philippines",
     rights: "public-domain",
     source: "US Army Signal Corps / National Archives (PD).",
+    imagePath: "Military/Iconic/MacArthur Wading Ashore at Leyte.jpg",
   },
   {
     id: "spindletop-gusher",
@@ -481,16 +482,17 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
   },
   {
     id: "patton-addressing-troops",
-    title: "General George S. Patton Addressing Troops",
+    title: "General George S. Patton",
     year: "1944",
-    caption: "The Third Army's commander rallies his men.",
+    caption: "The Third Army's hard-driving commander.",
     description:
-      "George S. Patton, among the most aggressive Allied commanders, is shown addressing troops in 1944 before the drive across France.",
+      "George S. Patton, among the most aggressive Allied commanders, led the Third Army's rapid drive across France in 1944.",
     category: "Military",
     section: "military",
     location: "England / France",
     rights: "public-domain",
     source: "US Army Signal Corps / National Archives (PD).",
+    imagePath: "Military/Iconic/General George S. Patton.png",
   },
   {
     id: "jobs-wozniak-apple-i",
@@ -543,6 +545,7 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
     location: "Hampton Roads, Virginia",
     rights: "public-domain",
     source: "US Navy / Library of Congress (PD).",
+    imagePath: "Military/Iconic/The Great White Fleet.jpg",
   },
   {
     id: "chicago-board-of-trade-floor",
@@ -559,16 +562,17 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
   },
   {
     id: "b-2-spirit-unveiling",
-    title: "The Unveiling of the B-2 Spirit Stealth Bomber",
+    title: "The B-2 Spirit Stealth Bomber",
     year: "1988",
-    caption: "The flying-wing stealth bomber is revealed.",
+    caption: "The flying-wing stealth bomber.",
     description:
-      "Northrop's B-2 Spirit was rolled out on November 22, 1988, a leap in low-observable design and strategic airpower.",
+      "Northrop's B-2 Spirit, first rolled out in 1988, was a leap in low-observable design and long-range strategic airpower.",
     category: "Military",
     section: "military",
     location: "Palmdale, California",
     rights: "public-domain",
     source: "US Air Force (PD).",
+    imagePath: "Military/Iconic/The B-2 Spirit Stealth Bomber.jpg",
   },
   {
     id: "scalia-swearing-in",
@@ -627,6 +631,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Pearl Harbor, Hawaii",
     rights: "public-domain",
     source: "US Navy / National Archives (PD).",
+    imagePath: "Military/Iconic/The USS Shaw Exploding at Pearl Harbor.jpg",
   },
   {
     id: "raising-the-flag-at-ground-zero",
@@ -799,6 +804,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Santiago de Cuba",
     rights: "public-domain",
     source: "Library of Congress (PD, 1898).",
+    imagePath: "Military/Iconic/Teddy Roosevelt and the Rough Riders.jpg",
   },
   {
     id: "doolittle-raiders-uss-hornet",
@@ -812,6 +818,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Pacific Ocean",
     rights: "public-domain",
     source: "US Navy / National Archives (PD).",
+    imagePath: "Military/Iconic/The Doolittle Raiders on the USS Hornet.jpg",
   },
   {
     id: "pershing-punitive-expedition",
@@ -838,6 +845,7 @@ const MILITARY: IconicPhoto[] = [
     location: "The White House, Washington, D.C.",
     rights: "public-domain",
     source: "Official White House photo by Pete Souza (federal work, PD).",
+    imagePath: "Military/Iconic/The Situation Room During Operation Neptune Spear.jpg",
   },
   {
     id: "navajo-code-talkers",
@@ -851,6 +859,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Pacific theater",
     rights: "public-domain",
     source: "USMC / National Archives (PD).",
+    imagePath: "Military/Iconic/Navajo Code Talkers.jpg",
   },
   {
     id: "m1-abrams-thunder-run-baghdad",
@@ -867,16 +876,17 @@ const MILITARY: IconicPhoto[] = [
   },
   {
     id: "schwarzkopf-desert-storm-briefing",
-    title: "General Norman Schwarzkopf's Desert Storm Press Briefing",
+    title: "General Norman Schwarzkopf in the Gulf",
     year: "1991",
-    caption: "“Stormin' Norman” explains the 'Hail Mary' maneuver.",
+    caption: "“Stormin' Norman,” commander of Desert Storm.",
     description:
-      "General Norman Schwarzkopf's confident 1991 briefings explained the sweeping flanking maneuver that routed Iraqi forces in 100 hours.",
+      "General Norman Schwarzkopf commanded the coalition whose sweeping flanking maneuver routed Iraqi forces in 100 hours during the 1991 Gulf War.",
     category: "Military",
     section: "military",
     location: "Riyadh, Saudi Arabia",
     rights: "public-domain",
     source: "DoD (PD).",
+    imagePath: "Military/Iconic/General Norman Schwarzkopf.jpg",
   },
   {
     id: "rangers-pointe-du-hoc",
@@ -890,6 +900,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Pointe du Hoc, Normandy, France",
     rights: "public-domain",
     source: "US Army / National Archives (PD).",
+    imagePath: "Military/Iconic/U.S. Army Rangers at Pointe du Hoc.jpg",
   },
   {
     id: "a-10-thunderbolt-in-flight",
@@ -917,6 +928,7 @@ const MILITARY: IconicPhoto[] = [
     location: "At sea",
     rights: "public-domain",
     source: "US Navy (PD).",
+    imagePath: "Military/Iconic/The USS Nimitz Supercarrier.jpg",
   },
   {
     id: "marines-battle-of-khe-sanh",

@@ -631,6 +631,19 @@ import asset624 from "@/IMAGES/USA from Space/Earthrise.jpg";
 import asset625 from "@/IMAGES/USA from Space/The Pale Blue Dot.png";
 import asset626 from "@/IMAGES/USA from Space/The Pillars of Creation.jpg";
 import asset627 from "@/IMAGES/History/The Trinity Test.jpg";
+// Iconic American photographs — batch 2 (Military, public domain)
+import asset628 from "@/IMAGES/Military/Iconic/The USS Shaw Exploding at Pearl Harbor.jpg";
+import asset629 from "@/IMAGES/Military/Iconic/The Doolittle Raiders on the USS Hornet.jpg";
+import asset630 from "@/IMAGES/Military/Iconic/MacArthur Wading Ashore at Leyte.jpg";
+import asset631 from "@/IMAGES/Military/Iconic/Teddy Roosevelt and the Rough Riders.jpg";
+import asset632 from "@/IMAGES/Military/Iconic/Navajo Code Talkers.jpg";
+import asset633b from "@/IMAGES/Military/Iconic/The Situation Room During Operation Neptune Spear.jpg";
+import asset634 from "@/IMAGES/Military/Iconic/The B-2 Spirit Stealth Bomber.jpg";
+import asset635 from "@/IMAGES/Military/Iconic/The Great White Fleet.jpg";
+import asset636 from "@/IMAGES/Military/Iconic/General George S. Patton.png";
+import asset637 from "@/IMAGES/Military/Iconic/General Norman Schwarzkopf.jpg";
+import asset638 from "@/IMAGES/Military/Iconic/U.S. Army Rangers at Pointe du Hoc.jpg";
+import asset639 from "@/IMAGES/Military/Iconic/The USS Nimitz Supercarrier.jpg";
 
 export type GalleryAssetRecord = {
   path: string;
@@ -1267,6 +1280,19 @@ const RAW_GALLERY_ASSETS = [
   { path: "USA from Space/The Pale Blue Dot.png", src: asset625 },
   { path: "USA from Space/The Pillars of Creation.jpg", src: asset626 },
   { path: "History/The Trinity Test.jpg", src: asset627 },
+  // Iconic American photographs — batch 2 (Military, public domain)
+  { path: "Military/Iconic/The USS Shaw Exploding at Pearl Harbor.jpg", src: asset628 },
+  { path: "Military/Iconic/The Doolittle Raiders on the USS Hornet.jpg", src: asset629 },
+  { path: "Military/Iconic/MacArthur Wading Ashore at Leyte.jpg", src: asset630 },
+  { path: "Military/Iconic/Teddy Roosevelt and the Rough Riders.jpg", src: asset631 },
+  { path: "Military/Iconic/Navajo Code Talkers.jpg", src: asset632 },
+  { path: "Military/Iconic/The Situation Room During Operation Neptune Spear.jpg", src: asset633b },
+  { path: "Military/Iconic/The B-2 Spirit Stealth Bomber.jpg", src: asset634 },
+  { path: "Military/Iconic/The Great White Fleet.jpg", src: asset635 },
+  { path: "Military/Iconic/General George S. Patton.png", src: asset636 },
+  { path: "Military/Iconic/General Norman Schwarzkopf.jpg", src: asset637 },
+  { path: "Military/Iconic/U.S. Army Rangers at Pointe du Hoc.jpg", src: asset638 },
+  { path: "Military/Iconic/The USS Nimitz Supercarrier.jpg", src: asset639 },
 ] as const satisfies readonly GalleryAssetRecord[];
 
 export const GALLERY_ASSETS: readonly GalleryAssetRecord[] = Array.from(

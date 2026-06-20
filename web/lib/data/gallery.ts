@@ -351,6 +351,107 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     location: "Jornada del Muerto, New Mexico",
     theme: "Dawn of the atomic age",
   },
+
+  // ── Iconic American photographs — batch 2 (Military, public domain) ──
+  "Military/Iconic/The USS Shaw Exploding at Pearl Harbor.jpg": {
+    alt: "The destroyer USS Shaw's forward magazine erupting during the attack on Pearl Harbor",
+    caption: "The USS Shaw Exploding at Pearl Harbor (1941)",
+    description:
+      "The dramatic explosion of the USS Shaw during the Japanese attack on Pearl Harbor became an emblem of the day that drew America into World War II.",
+    location: "Pearl Harbor, Hawaii",
+    theme: "Day of infamy",
+    featured: true,
+  },
+  "Military/Iconic/The Doolittle Raiders on the USS Hornet.jpg": {
+    alt: "A B-25 bomber lifting off from the deck of the USS Hornet during the Doolittle Raid",
+    caption: "The Doolittle Raid (1942)",
+    description:
+      "In April 1942, Jimmy Doolittle led B-25s launched from the USS Hornet to strike Tokyo — a daring, morale-lifting blow months after Pearl Harbor.",
+    location: "Pacific Ocean",
+    theme: "Carrier-launched daring",
+  },
+  "Military/Iconic/MacArthur Wading Ashore at Leyte.jpg": {
+    alt: "General Douglas MacArthur and staff wading ashore through the surf at Leyte",
+    caption: "MacArthur Wading Ashore at Leyte (1944)",
+    description:
+      "Douglas MacArthur strides through the surf at Leyte in October 1944, fulfilling his 1942 pledge to return to the Philippines.",
+    location: "Leyte, Philippines",
+    theme: "“I have returned”",
+  },
+  "Military/Iconic/Teddy Roosevelt and the Rough Riders.jpg": {
+    alt: "Theodore Roosevelt with the Rough Riders and the U.S. flag after the charge up San Juan Hill",
+    caption: "Roosevelt and the Rough Riders (1898)",
+    description:
+      "Theodore Roosevelt's Rough Riders and their charge up the San Juan Heights made him a national hero during the Spanish–American War.",
+    location: "Santiago de Cuba",
+    theme: "Volunteer cavalry",
+  },
+  "Military/Iconic/Navajo Code Talkers.jpg": {
+    alt: "Two Navajo Marine code talkers operating a field radio in the jungle",
+    caption: "Navajo Code Talkers (1943)",
+    description:
+      "Navajo Code Talkers used their language to create a battlefield code the enemy never broke, serving with the Marines across the Pacific theater.",
+    location: "Pacific theater",
+    theme: "Unbreakable code",
+  },
+  "Military/Iconic/The Situation Room During Operation Neptune Spear.jpg": {
+    alt: "President Obama and national security officials watching the bin Laden raid from the Situation Room",
+    caption: "The Situation Room, Operation Neptune Spear (2011)",
+    description:
+      "Pete Souza's photograph captured the tense minutes of the bin Laden raid on May 1, 2011, as leaders watched from the White House Situation Room.",
+    location: "The White House, Washington, D.C.",
+    theme: "The raid, watched live",
+    featured: true,
+  },
+  "Military/Iconic/The B-2 Spirit Stealth Bomber.jpg": {
+    alt: "A B-2 Spirit flying-wing stealth bomber in flight above the ocean",
+    caption: "The B-2 Spirit Stealth Bomber",
+    description:
+      "Northrop's B-2 Spirit, a flying-wing design, represented a leap in low-observable technology and long-range strategic airpower.",
+    location: "United States Air Force",
+    theme: "Stealth airpower",
+  },
+  "Military/Iconic/The Great White Fleet.jpg": {
+    alt: "U.S. Navy battleships of the Great White Fleet anchored in harbor during their global cruise",
+    caption: "The Great White Fleet (1907)",
+    description:
+      "Theodore Roosevelt sent the white-hulled U.S. battleship fleet around the world in 1907–09 to display American naval power and reach.",
+    location: "On its global cruise",
+    theme: "Naval power projection",
+  },
+  "Military/Iconic/General George S. Patton.png": {
+    alt: "General George S. Patton in the field during the 1944 campaign in Europe",
+    caption: "General George S. Patton (1944)",
+    description:
+      "George S. Patton, among the most aggressive Allied commanders, led the Third Army's rapid drive across France in 1944.",
+    location: "France",
+    theme: "Armored spearhead",
+  },
+  "Military/Iconic/General Norman Schwarzkopf.jpg": {
+    alt: "General Norman Schwarzkopf arriving by helicopter in the Gulf during Operation Desert Storm",
+    caption: "General Norman Schwarzkopf, Desert Storm (1991)",
+    description:
+      "“Stormin' Norman” Schwarzkopf commanded coalition forces whose sweeping flanking maneuver routed the Iraqi army in 100 hours during the Gulf War.",
+    location: "Persian Gulf",
+    theme: "Decisive command",
+  },
+  "Military/Iconic/U.S. Army Rangers at Pointe du Hoc.jpg": {
+    alt: "U.S. Army Rangers with ropes and ladders at the cliffs of Pointe du Hoc on D-Day",
+    caption: "U.S. Army Rangers at Pointe du Hoc (1944)",
+    description:
+      "The 2nd Ranger Battalion scaled the 100-foot cliffs of Pointe du Hoc under fire on June 6, 1944, to silence German guns overlooking the landings.",
+    location: "Pointe du Hoc, Normandy, France",
+    theme: "Scaling the cliffs",
+  },
+  "Military/Iconic/The USS Nimitz Supercarrier.jpg": {
+    alt: "An F/A-18 launching from the flight deck of the nuclear supercarrier USS Nimitz",
+    caption: "The USS Nimitz Supercarrier",
+    description:
+      "The USS Nimitz, lead ship of its class of nuclear supercarriers, projects American airpower across the globe from a floating airfield.",
+    location: "At sea",
+    theme: "Power at sea",
+  },
+
   "Constitution/A view of the north side of Independence Hall in Philadelphia, showing the main building in the center with the east and west wings on the sides.jpg": {
     location: "Philadelphia, Pennsylvania",
     theme: "Founding Site",
