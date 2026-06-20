@@ -103,7 +103,7 @@ import groceryWalmartThanksgiving from "@/IMAGES/Quality of Life/Grocery Store/w
 
 // Outdoors Lifestyle
 import outdoorsCamping from "@/IMAGES/Outdoors Lifestyle/Camping in Madera Canyon, Arizona.jpg";
-import outdoorsBaldEagle from "@/IMAGES/Outdoors Lifestyle/Close-up portrait of a majestic bald eagle showcasing its fierce gaze and distinct white feathers.jpg";
+import outdoorsBaldEagle from "@/IMAGES/Outdoors Lifestyle/Close-up portrait of a majestic bald eagle showcasing its fierce gaze and distinct white feathers with USA Flag in background.jpg";
 import outdoorsRvFamily from "@/IMAGES/Outdoors Lifestyle/Family of 4 full-time rving with Ford F-350.jpg";
 import outdoorsHunting from "@/IMAGES/Outdoors Lifestyle/Hunter with a dog wearing orange vest in a Florida field. Bright sunny day with F-150 in background.jpg";
 import outdoorsFishing from "@/IMAGES/Outdoors Lifestyle/Man Fishing in Provo River Utah.jpg";

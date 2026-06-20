@@ -465,7 +465,7 @@ import asset460 from "@/IMAGES/Landscapes/Downtown Nashville Tennesse 2.jpg";
 import asset461 from "@/IMAGES/Landscapes/Downtown Nashville Tennesse.jpg";
 import asset462 from "@/IMAGES/Military/Air Force/Lockheed_SR-71_Blackbird.jpg";
 import asset463 from "@/IMAGES/Outdoors Lifestyle/Camping in Madera Canyon, Arizona.jpg";
-import asset464 from "@/IMAGES/Outdoors Lifestyle/Close-up portrait of a majestic bald eagle showcasing its fierce gaze and distinct white feathers.jpg";
+import asset464 from "@/IMAGES/Outdoors Lifestyle/Close-up portrait of a majestic bald eagle showcasing its fierce gaze and distinct white feathers with USA Flag in background.jpg";
 import asset465 from "@/IMAGES/Outdoors Lifestyle/Detailed portrait of a bald eagle with striking plumage and piercing eyes.jpg";
 import asset466 from "@/IMAGES/Outdoors Lifestyle/Family of 4 full-time rving with Ford F-350.jpg";
 import asset467 from "@/IMAGES/Outdoors Lifestyle/Hunter with a dog wearing orange vest in a Florida field. Bright sunny day with F-150 in background.jpg";
@@ -1087,7 +1087,7 @@ export const GALLERY_ASSETS = [
   { path: "Landscapes/Downtown Nashville Tennesse.jpg", src: asset461 },
   { path: "Military/Air Force/Lockheed_SR-71_Blackbird.jpg", src: asset462 },
   { path: "Outdoors Lifestyle/Camping in Madera Canyon, Arizona.jpg", src: asset463 },
-  { path: "Outdoors Lifestyle/Close-up portrait of a majestic bald eagle showcasing its fierce gaze and distinct white feathers.jpg", src: asset464 },
+  { path: "Outdoors Lifestyle/Close-up portrait of a majestic bald eagle showcasing its fierce gaze and distinct white feathers with USA Flag in background.jpg", src: asset464 },
   { path: "Outdoors Lifestyle/Detailed portrait of a bald eagle with striking plumage and piercing eyes.jpg", src: asset465 },
   { path: "Outdoors Lifestyle/Hunter with a dog wearing orange vest in a Florida field. Bright sunny day with F-150 in background.jpg", src: asset467 },
   { path: "Outdoors Lifestyle/Interior of the Forrest River FR3 Class A Motor-home.jpeg", src: asset468 },
