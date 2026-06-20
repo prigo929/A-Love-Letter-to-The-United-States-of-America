@@ -618,6 +618,19 @@ import asset612 from "@/IMAGES/Quality of Life/Grocery Store/walmart-thanksgivin
 import asset613 from "@/IMAGES/Quality of Life/Grocery Store/walmart-thanksgiving-shopping-2.jpg";
 import asset614 from "@/IMAGES/Science/Aerial_view_of_Wake_Island_in_July_2014.jpg";
 import asset615 from "@/IMAGES/University/Cambridge_-_USA_-_Harvard_University_-_Harry_Elkins_Widener_Memorial_Library_-_panoramio.jpg";
+// Iconic American photographs — batch 1 (Military & Space, public domain)
+import asset616 from "@/IMAGES/Military/Iconic/Into the Jaws of Death.jpg";
+import asset617 from "@/IMAGES/Military/Iconic/Eisenhower Speaking to Paratroopers.jpg";
+import asset618 from "@/IMAGES/Military/Iconic/Surrender of Japan on the USS Missouri.jpg";
+import asset619 from "@/IMAGES/Military/Iconic/The Enola Gay and Her Crew.jpg";
+import asset620 from "@/IMAGES/Military/Iconic/Tuskegee Airmen Briefing.jpg";
+import asset621 from "@/IMAGES/Military/Iconic/A-10 Thunderbolt II in Flight.jpg";
+import asset622 from "@/IMAGES/Military/Iconic/F-22 Raptor Vertical Climb.jpg";
+import asset623 from "@/IMAGES/USA from Space/Saturn V Apollo 11 Launch.jpg";
+import asset624 from "@/IMAGES/USA from Space/Earthrise.jpg";
+import asset625 from "@/IMAGES/USA from Space/The Pale Blue Dot.png";
+import asset626 from "@/IMAGES/USA from Space/The Pillars of Creation.jpg";
+import asset627 from "@/IMAGES/History/The Trinity Test.jpg";
 
 export type GalleryAssetRecord = {
   path: string;
@@ -1241,4 +1254,17 @@ export const GALLERY_ASSETS = [
   { path: "Quality of Life/Grocery Store/walmart-thanksgiving-shopping-2.jpg", src: asset613 },
   { path: "Science/Aerial_view_of_Wake_Island_in_July_2014.jpg", src: asset614 },
   { path: "University/Cambridge_-_USA_-_Harvard_University_-_Harry_Elkins_Widener_Memorial_Library_-_panoramio.jpg", src: asset615 },
+  // Iconic American photographs — batch 1 (Military & Space, public domain)
+  { path: "Military/Iconic/Into the Jaws of Death.jpg", src: asset616 },
+  { path: "Military/Iconic/Eisenhower Speaking to Paratroopers.jpg", src: asset617 },
+  { path: "Military/Iconic/Surrender of Japan on the USS Missouri.jpg", src: asset618 },
+  { path: "Military/Iconic/The Enola Gay and Her Crew.jpg", src: asset619 },
+  { path: "Military/Iconic/Tuskegee Airmen Briefing.jpg", src: asset620 },
+  { path: "Military/Iconic/A-10 Thunderbolt II in Flight.jpg", src: asset621 },
+  { path: "Military/Iconic/F-22 Raptor Vertical Climb.jpg", src: asset622 },
+  { path: "USA from Space/Saturn V Apollo 11 Launch.jpg", src: asset623 },
+  { path: "USA from Space/Earthrise.jpg", src: asset624 },
+  { path: "USA from Space/The Pale Blue Dot.png", src: asset625 },
+  { path: "USA from Space/The Pillars of Creation.jpg", src: asset626 },
+  { path: "History/The Trinity Test.jpg", src: asset627 },
 ] as const satisfies readonly GalleryAssetRecord[];

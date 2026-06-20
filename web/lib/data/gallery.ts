@@ -140,6 +140,107 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     location: "California",
     tone: "National park road",
   },
+
+  // ── Iconic American photographs — batch 1 (Military & Space, public domain) ──
+  "Military/Iconic/Into the Jaws of Death.jpg": {
+    alt: "U.S. soldiers wading ashore from a landing craft toward Omaha Beach on D-Day",
+    caption: "Into the Jaws of Death (1944)",
+    description:
+      "Robert F. Sargent's photograph of the 1st Infantry Division disembarking at Omaha Beach, June 6, 1944, is among the defining images of the Normandy invasion.",
+    location: "Omaha Beach, Normandy, France",
+    tone: "D-Day landing",
+    featured: true,
+  },
+  "Military/Iconic/Eisenhower Speaking to Paratroopers.jpg": {
+    alt: "General Eisenhower speaking with paratroopers of the 101st Airborne on the eve of D-Day",
+    caption: "Eisenhower and the 101st Airborne (1944)",
+    description:
+      "General Dwight D. Eisenhower visits paratroopers of the 101st Airborne Division on June 5, 1944, hours before the Normandy drop — a portrait of command and resolve.",
+    location: "Greenham Common, England",
+    tone: "Eve of D-Day",
+  },
+  "Military/Iconic/Surrender of Japan on the USS Missouri.jpg": {
+    alt: "Japanese delegation aboard the USS Missouri for the formal surrender ending World War II",
+    caption: "Surrender of Japan on the USS Missouri (1945)",
+    description:
+      "On September 2, 1945, Japanese officials signed the instrument of surrender aboard the USS Missouri in Tokyo Bay, with General MacArthur presiding — the end of the Second World War.",
+    location: "Tokyo Bay, Japan",
+    tone: "End of WWII",
+  },
+  "Military/Iconic/The Enola Gay and Her Crew.jpg": {
+    alt: "The crew of the B-29 Enola Gay lined up in front of the aircraft",
+    caption: "The Enola Gay and Her Crew (1945)",
+    description:
+      "Colonel Paul Tibbets and the crew of the Enola Gay flew the B-29 that dropped the atomic bomb on Hiroshima, August 6, 1945, hastening the end of the war.",
+    location: "Tinian, Mariana Islands",
+    tone: "Atomic age",
+  },
+  "Military/Iconic/Tuskegee Airmen Briefing.jpg": {
+    alt: "Tuskegee Airmen gathered around a table for a mission briefing",
+    caption: "Tuskegee Airmen Briefing (1944)",
+    description:
+      "The Tuskegee Airmen, the first Black U.S. military aviators, whose distinguished combat record helped pave the way for desegregation of the armed forces.",
+    location: "Ramitelli, Italy",
+    tone: "Trailblazing aviators",
+  },
+  "Military/Iconic/A-10 Thunderbolt II in Flight.jpg": {
+    alt: "A formation of A-10 Thunderbolt II attack aircraft in flight above an island",
+    caption: "A-10 Thunderbolt II (“Warthog”) in Flight",
+    description:
+      "The rugged A-10, designed around a 30mm Gatling gun, is the U.S. Air Force's premier close-air-support aircraft, beloved by the ground troops it protects.",
+    location: "United States Air Force",
+    tone: "Close air support",
+  },
+  "Military/Iconic/F-22 Raptor Vertical Climb.jpg": {
+    alt: "An F-22 Raptor stealth fighter banking against a blue sky",
+    caption: "F-22 Raptor in Flight",
+    description:
+      "The F-22 Raptor combines stealth, supercruise, and thrust-vectoring agility — the U.S. Air Force's premier fifth-generation air-superiority fighter.",
+    location: "United States Air Force",
+    tone: "Air superiority",
+  },
+  "USA from Space/Saturn V Apollo 11 Launch.jpg": {
+    alt: "The Saturn V rocket lifting off from Launch Complex 39A carrying Apollo 11",
+    caption: "Saturn V Launch for Apollo 11 (1969)",
+    description:
+      "On July 16, 1969, the most powerful rocket ever flown carried Armstrong, Aldrin, and Collins off Launch Complex 39A toward the first crewed Moon landing.",
+    location: "Kennedy Space Center, Florida",
+    tone: "To the Moon",
+    featured: true,
+  },
+  "USA from Space/Earthrise.jpg": {
+    alt: "The Earth rising over the lunar horizon, photographed from Apollo 8",
+    caption: "Earthrise (1968)",
+    description:
+      "William Anders photographed the Earth rising beyond the Moon on December 24, 1968 — an image widely credited with galvanizing the modern environmental movement.",
+    location: "Lunar orbit",
+    tone: "A fragile blue world",
+    featured: true,
+  },
+  "USA from Space/The Pale Blue Dot.png": {
+    alt: "Earth as a single pale dot suspended in a band of scattered sunlight",
+    caption: "The Pale Blue Dot (1990)",
+    description:
+      "Voyager 1 photographed Earth as a single pixel from 3.7 billion miles away in 1990, inspiring Carl Sagan's reflection on our place in the cosmos.",
+    location: "Edge of the Solar System",
+    tone: "Cosmic perspective",
+  },
+  "USA from Space/The Pillars of Creation.jpg": {
+    alt: "Towering columns of interstellar gas and dust in the Eagle Nebula",
+    caption: "The Pillars of Creation (1995)",
+    description:
+      "Hubble's image of star-forming pillars in the Eagle Nebula became one of the most famous astronomical photographs ever made.",
+    location: "Eagle Nebula (Hubble)",
+    tone: "Star-forming pillars",
+  },
+  "History/The Trinity Test.jpg": {
+    alt: "The fireball and mushroom cloud of the first nuclear detonation at the Trinity test",
+    caption: "The Trinity Test (1945)",
+    description:
+      "The Manhattan Project's Trinity test in the New Mexico desert, July 16, 1945, ushered in the atomic age.",
+    location: "Jornada del Muerto, New Mexico",
+    tone: "Dawn of the atomic age",
+  },
 };
 
 function toTitle(value: string) {

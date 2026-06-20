@@ -129,6 +129,7 @@ const FOUNDATIONAL: IconicPhoto[] = [
     location: "Lunar orbit",
     rights: "public-domain",
     source: "NASA (AS8-14-2383).",
+    imagePath: "USA from Space/Earthrise.jpg",
   },
   {
     id: "vj-day-times-square",
@@ -289,6 +290,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     location: "Jornada del Muerto, New Mexico",
     rights: "public-domain",
     source: "Los Alamos / US Army (PD).",
+    imagePath: "History/The Trinity Test.jpg",
   },
   {
     id: "saturn-v-apollo-11-launch",
@@ -302,6 +304,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     location: "Kennedy Space Center, Florida",
     rights: "public-domain",
     source: "NASA (PD). Related Saturn V rollout already in IMAGES/Technology/Space.",
+    imagePath: "USA from Space/Saturn V Apollo 11 Launch.jpg",
   },
   {
     id: "nyse-floor-ve-day",
@@ -596,6 +599,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Omaha Beach, Normandy, France",
     rights: "public-domain",
     source: "US Coast Guard / National Archives (PD).",
+    imagePath: "Military/Iconic/Into the Jaws of Death.jpg",
   },
   {
     id: "eisenhower-speaking-to-paratroopers",
@@ -609,6 +613,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Greenham Common, England",
     rights: "public-domain",
     source: "US Army / National Archives (PD).",
+    imagePath: "Military/Iconic/Eisenhower Speaking to Paratroopers.jpg",
   },
   {
     id: "uss-shaw-exploding-pearl-harbor",
@@ -648,6 +653,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Tokyo Bay, Japan",
     rights: "public-domain",
     source: "US Navy / Army Signal Corps / National Archives (PD).",
+    imagePath: "Military/Iconic/Surrender of Japan on the USS Missouri.jpg",
   },
   {
     id: "burst-of-joy",
@@ -700,6 +706,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Ramitelli, Italy",
     rights: "public-domain",
     source: "Library of Congress (Frissell collection, PD).",
+    imagePath: "Military/Iconic/Tuskegee Airmen Briefing.jpg",
   },
   {
     id: "enola-gay-and-crew",
@@ -713,6 +720,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Tinian, Mariana Islands",
     rights: "public-domain",
     source: "US Army Air Forces / National Archives (PD).",
+    imagePath: "Military/Iconic/The Enola Gay and Her Crew.jpg",
   },
   {
     id: "f-117-desert-storm",
@@ -895,6 +903,7 @@ const MILITARY: IconicPhoto[] = [
     location: "United States",
     rights: "public-domain",
     source: "US Air Force (PD).",
+    imagePath: "Military/Iconic/A-10 Thunderbolt II in Flight.jpg",
   },
   {
     id: "uss-nimitz-flight-operations",
@@ -960,6 +969,7 @@ const MILITARY: IconicPhoto[] = [
     location: "United States",
     rights: "public-domain",
     source: "US Air Force (PD).",
+    imagePath: "Military/Iconic/F-22 Raptor Vertical Climb.jpg",
   },
   {
     id: "ridgway-front-lines-korea",
@@ -1579,6 +1589,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     location: "Edge of the Solar System",
     rights: "public-domain",
     source: "NASA/JPL (PD).",
+    imagePath: "USA from Space/The Pale Blue Dot.png",
   },
   {
     id: "explorer-1-trio-holding-satellite",
@@ -1644,6 +1655,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     location: "Eagle Nebula (Hubble)",
     rights: "public-domain",
     source: "NASA/ESA/STScI (PD).",
+    imagePath: "USA from Space/The Pillars of Creation.jpg",
   },
   {
     id: "edward-teller-at-the-chalkboard",
