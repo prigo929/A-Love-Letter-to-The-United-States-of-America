@@ -148,145 +148,136 @@ export default function ThematicSubpageClient({
         </section>
       )}
  
-      {/* Main Grid: Left Tabs, Right Content Reader */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
-        {/* Left column: Topic Tabs */}
-        <div className="lg:col-span-4 space-y-4">
-          <div className="p-6 rounded-lg border border-white/10 bg-white/[0.02] backdrop-blur-sm">
-            <h2 className="text-xs font-semibold text-glory-gold tracking-widest uppercase mb-4">
-              {TEXT.selectTopic[currentLocale]}
-            </h2>
-            <div className="space-y-2">
-              {topics.map((topic, index) => {
-                const isActive = topic.id === activeTopicId;
-                return (
-                  <button
-                    key={topic.id}
-                    onClick={() => setActiveTopicId(topic.id)}
-                    className={`w-full text-left p-3.5 rounded-lg transition-all duration-300 relative group flex items-center justify-between border ${
-                      isActive
-                        ? "border-glory-gold/30 bg-white/[0.04] shadow-[0_4px_20px_rgba(232,185,35,0.04)] text-glory-gold font-medium"
-                        : "border-transparent bg-transparent hover:bg-white/[0.02] text-white/70 hover:text-white"
-                    }`}
-                  >
-                    {/* Active indicator dot */}
-                    <div
-                      className={`absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-r transition-all duration-300 ${
-                        isActive
-                          ? "bg-glory-gold scale-y-100"
-                          : "bg-transparent scale-y-0 group-hover:bg-white/10 group-hover:scale-y-50"
-                      }`}
-                    />
-                    <span className="text-xs tracking-wider pl-2 uppercase">
-                      {currentLocale === "ro" ? topic.title.ro : topic.title.en}
-                    </span>
-                    <span className="text-[9px] text-white/30 tracking-wider">
-                      {(index + 1).toString().padStart(2, '0')}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+      {/* Topics Selector Top Bar */}
+      <div className="p-6 rounded-lg border border-white/10 bg-white/[0.02] backdrop-blur-sm relative mb-8 max-w-6xl mx-auto">
+        <div className="border-b border-white/10 pb-4 mb-6">
+          <h2 className="text-xs font-semibold text-glory-gold tracking-widest uppercase mb-1">
+            {TEXT.selectTopic[currentLocale]}
+          </h2>
         </div>
- 
-        {/* Right column: Content Reader Pane */}
-        <div className="lg:col-span-8">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTopicId}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="history-grid-border p-8 md:p-12 space-y-6 relative overflow-hidden rounded-lg"
-            >
-              {/* Topic Header */}
-              <div className="border-b border-white/10 pb-5 space-y-1">
-                <span className="text-[10px] font-semibold text-glory-gold tracking-widest uppercase block">
-                  {currentLocale === "ro" ? "SECȚIUNE INDIVIDUALĂ" : "INDIVIDUAL FOCUS"}
-                </span>
-                <h2 className="history-serif-title text-2xl md:text-3xl font-bold text-white leading-tight">
-                  {currentLocale === "ro" ? activeTopic.title.ro : activeTopic.title.en}
-                </h2>
-              </div>
- 
-              {/* Local Table of Contents */}
-              {activeTopic.sections && activeTopic.sections.length > 1 && (
-                <div className="p-3.5 rounded-lg border border-white/10 bg-white/[0.02] flex flex-wrap gap-2 text-[11px] items-center">
-                  <span className="text-white/50 flex items-center gap-1 font-semibold uppercase tracking-wider mr-2">
-                    <Search className="w-3.5 h-3.5 text-glory-gold" /> {TEXT.sectionsLabel[currentLocale]}
-                  </span>
-                  {activeTopic.sections.map((sec, idx) => {
-                    const heading = currentLocale === "ro" ? sec.heading.ro : sec.heading.en;
-                    if (!heading) return null;
-                    return (
-                      <a
-                        key={idx}
-                        href={`#topic-sec-${idx}`}
-                        className="px-3 py-1 rounded bg-white/5 hover:bg-glory-gold/10 hover:text-glory-gold transition-all duration-200 text-white/80 border border-white/5"
-                      >
-                        {heading}
-                      </a>
-                    );
-                  })}
-                </div>
-              )}
 
-              {/* Sections & Subsection details */}
-              <div className="space-y-8 pt-2">
-                {activeTopic.sections && activeTopic.sections.map((sec, secIdx) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          {topics.map((topic, index) => {
+            const isActive = topic.id === activeTopicId;
+            return (
+              <button
+                key={topic.id}
+                onClick={() => setActiveTopicId(topic.id)}
+                className={`p-4 rounded-lg border text-left transition-all duration-300 flex flex-col justify-between relative group ${
+                  isActive
+                    ? "border-glory-gold/40 bg-white/[0.06] text-glory-gold shadow-[0_4px_15px_rgba(232,185,35,0.05)]"
+                    : "border-white/10 bg-white/[0.02] text-white/70 hover:bg-white/[0.04] hover:text-white"
+                }`}
+              >
+                <div className="flex items-center justify-between w-full mb-2">
+                  <span className="text-[9px] text-white/30 tracking-wider">
+                    TOPIC {(index + 1).toString().padStart(2, '0')}
+                  </span>
+                </div>
+                <span className="text-xs font-semibold uppercase tracking-wider line-clamp-2 leading-snug">
+                  {currentLocale === "ro" ? topic.title.ro : topic.title.en}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Active Topic Chronicle Display Area */}
+      <div className="max-w-6xl mx-auto">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTopicId}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="history-grid-border p-8 md:p-12 space-y-6 relative overflow-hidden rounded-lg"
+          >
+            {/* Topic Header */}
+            <div className="border-b border-white/10 pb-5 space-y-1">
+              <span className="text-[10px] font-semibold text-glory-gold tracking-widest uppercase block">
+                {currentLocale === "ro" ? "SECȚIUNE INDIVIDUALĂ" : "INDIVIDUAL FOCUS"}
+              </span>
+              <h2 className="history-serif-title text-2xl md:text-3xl font-bold text-white leading-tight">
+                {currentLocale === "ro" ? activeTopic.title.ro : activeTopic.title.en}
+              </h2>
+            </div>
+
+            {/* Local Table of Contents */}
+            {activeTopic.sections && activeTopic.sections.length > 1 && (
+              <div className="p-3.5 rounded-lg border border-white/10 bg-white/[0.02] flex flex-wrap gap-2 text-[11px] items-center">
+                <span className="text-white/50 flex items-center gap-1 font-semibold uppercase tracking-wider mr-2">
+                  <Search className="w-3.5 h-3.5 text-glory-gold" /> {TEXT.sectionsLabel[currentLocale]}
+                </span>
+                {activeTopic.sections.map((sec, idx) => {
                   const heading = currentLocale === "ro" ? sec.heading.ro : sec.heading.en;
+                  if (!heading) return null;
                   return (
-                    <div
-                      key={secIdx}
-                      id={`topic-sec-${secIdx}`}
-                      className="space-y-4 scroll-mt-24 border-b border-white/5 pb-8 last:border-0 last:pb-0"
+                    <a
+                      key={idx}
+                      href={`#topic-sec-${idx}`}
+                      className="px-3 py-1 rounded bg-white/5 hover:bg-glory-gold/10 hover:text-glory-gold transition-all duration-200 text-white/80 border border-white/5"
                     >
-                      {heading && heading !== "Introduction" && (
-                        <h3 className="text-sm font-semibold text-glory-gold tracking-wider uppercase border-l border-glory-gold pl-3">
-                          {heading}
-                        </h3>
-                      )}
-                      
-                      <div className="space-y-5">
-                        {sec.subsections.map((sub, subIdx) => {
-                          const subHeading = currentLocale === "ro" ? sub.heading.ro : sub.heading.en;
-                          return (
-                            <div key={subIdx} className="space-y-2.5">
-                              {subHeading && (
-                                <h4 className="text-xs font-semibold text-white/90 uppercase tracking-wider">
-                                  {subHeading}
-                                </h4>
-                              )}
-                              <div className="space-y-4">
-                                {sub.paragraphs.map((para, pIdx) => {
-                                  const text = currentLocale === "ro" ? para.ro : para.en;
-                                  return (
-                                    <p
-                                      key={pIdx}
-                                      className="history-serif-body text-white/80 leading-relaxed text-base md:text-lg text-justify font-light"
-                                    >
-                                      {text}
-                                    </p>
-                                  );
-                                })}
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
+                      {heading}
+                    </a>
                   );
                 })}
               </div>
+            )}
 
-            </motion.div>
-          </AnimatePresence>
-        </div>
+            {/* Sections & Subsection details */}
+            <div className="space-y-8 pt-2">
+              {activeTopic.sections && activeTopic.sections.map((sec, secIdx) => {
+                const heading = currentLocale === "ro" ? sec.heading.ro : sec.heading.en;
+                return (
+                  <div
+                    key={secIdx}
+                    id={`topic-sec-${secIdx}`}
+                    className="space-y-4 scroll-mt-24 border-b border-white/5 pb-8 last:border-0 last:pb-0"
+                  >
+                    {heading && heading !== "Introduction" && (
+                      <h3 className="text-sm font-semibold text-glory-gold tracking-wider uppercase border-l border-glory-gold pl-3">
+                        {heading}
+                      </h3>
+                    )}
+                    
+                    <div className="space-y-5">
+                      {sec.subsections.map((sub, subIdx) => {
+                        const subHeading = currentLocale === "ro" ? sub.heading.ro : sub.heading.en;
+                        return (
+                          <div key={subIdx} className="space-y-2.5">
+                            {subHeading && (
+                              <h4 className="text-xs font-semibold text-white/90 uppercase tracking-wider">
+                                {subHeading}
+                              </h4>
+                            )}
+                            <div className="space-y-4">
+                              {sub.paragraphs.map((para, pIdx) => {
+                                const text = currentLocale === "ro" ? para.ro : para.en;
+                                return (
+                                  <p
+                                    key={pIdx}
+                                    className="history-serif-body text-white/80 leading-relaxed text-base md:text-lg text-justify font-light"
+                                  >
+                                    {text}
+                                  </p>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
 
+          </motion.div>
+        </AnimatePresence>
       </div>
+
 
     </div>
   );

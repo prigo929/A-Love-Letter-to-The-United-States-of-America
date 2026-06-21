@@ -158,183 +158,146 @@ export default function HistoryClient({ locale }: { locale: string }) {
       </section>
  
       {/* ── Chronological History Interactive Timeline Dashboard ── */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Timeline Selector Sidebar */}
-          <div className="lg:col-span-4 space-y-6">
-            <div className="p-6 rounded-lg border border-white/10 bg-white/[0.02] backdrop-blur-sm relative">
-              <h2 className="text-xs font-semibold text-glory-gold tracking-widest uppercase mb-1">
-                {TEXT.timelineTitle[currentLocale]}
-              </h2>
-              <p className="text-[10px] text-white/40 mb-5 uppercase tracking-wider">
-                {TEXT.timelineSubtitle[currentLocale]}
-              </p>
- 
-              {/* Desktop timeline list */}
-              <div className="hidden lg:block relative pl-3 border-l border-white/10 space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
-                {HISTORY_ERAS.map((era, index) => {
-                   const isActive = era.id === activeEraId;
-                   return (
-                     <button
-                       key={era.id}
-                       onClick={() => setActiveEraId(era.id)}
-                       className={`w-full text-left p-3.5 rounded-lg transition-all duration-300 relative group flex flex-col gap-1 border ${
-                         isActive
-                           ? "border-glory-gold/30 bg-white/[0.04] shadow-[0_4px_20px_rgba(232,185,35,0.04)]"
-                           : "border-transparent bg-transparent hover:bg-white/[0.02]"
-                       }`}
-                     >
-                       {/* Active indicator node */}
-                       <div
-                         className={`absolute left-[-16px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full border transition-all ${
-                           isActive
-                             ? "bg-glory-gold border-glory-gold scale-110 shadow-[0_0_6px_#E8B923]"
-                             : "bg-black border-white/20 group-hover:border-white/40"
-                         }`}
-                       />
-                       <div className="flex items-center justify-between w-full">
-                         <span
-                           className={`font-semibold text-xs tracking-wider transition-colors ${
-                             isActive ? "text-glory-gold" : "text-white/60 group-hover:text-white"
-                           }`}
-                         >
-                           {era.years}
-                         </span>
-                         <span className="text-[8px] text-white/30 tracking-wider">
-                           ERA {index + 1}
-                         </span>
-                       </div>
-                       <span
-                         className={`text-xs tracking-wide transition-colors ${
-                           isActive ? "text-white/95" : "text-white/50 group-hover:text-white/80"
-                         }`}
-                       >
-                         {currentLocale === "ro" ? era.title.ro.replace("Istoria Statelor Unite (", "").replace(")", "") : era.title.en.replace("History of the United States (", "").replace(")", "")}
-                       </span>
-                     </button>
-                   );
-                })}
-              </div>
- 
-              {/* Mobile horizontal scroller */}
-              <div className="lg:hidden flex gap-3 overflow-x-auto pb-2 scrollbar-none snap-x snap-mandatory">
-                {HISTORY_ERAS.map((era, index) => {
-                  const isActive = era.id === activeEraId;
-                  return (
-                    <button
-                      key={era.id}
-                      onClick={() => setActiveEraId(era.id)}
-                      className={`flex-shrink-0 snap-center p-3 rounded-lg border text-center transition-all flex flex-col items-center justify-center min-w-[130px] ${
-                        isActive
-                          ? "border-glory-gold/40 bg-white/[0.06] text-glory-gold shadow-[0_4px_15px_rgba(232,185,35,0.05)]"
-                          : "border-white/10 bg-white/[0.02] text-white/70"
-                      }`}
-                    >
-                      <span className="font-semibold text-xs">{era.years}</span>
-                      <span className="text-[9px] uppercase tracking-wider text-white/40 mt-1 line-clamp-1 max-w-[110px]">
-                        {currentLocale === "ro" ? era.title.ro.replace("Istoria Statelor Unite", "") : era.title.en.replace("History of the United States", "")}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-8">
+        
+        {/* Timeline Selector Top Bar */}
+        <div className="p-6 rounded-lg border border-white/10 bg-white/[0.02] backdrop-blur-sm relative">
+          <div className="border-b border-white/10 pb-4 mb-6">
+            <h2 className="text-xs font-semibold text-glory-gold tracking-widest uppercase mb-1">
+              {TEXT.timelineTitle[currentLocale]}
+            </h2>
+            <p className="text-[10px] text-white/40 uppercase tracking-wider">
+              {TEXT.timelineSubtitle[currentLocale]}
+            </p>
+          </div>
+
+          {/* Era Navigation Horizontal Scroll Track */}
+          <div className="w-full overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+            <div className="flex gap-4 min-w-max px-1">
+              {HISTORY_ERAS.map((era, index) => {
+                const isActive = era.id === activeEraId;
+                return (
+                  <button
+                    key={era.id}
+                    onClick={() => setActiveEraId(era.id)}
+                    className={`p-4 rounded-lg border text-left transition-all duration-300 flex flex-col justify-between w-60 relative group ${
+                      isActive
+                        ? "border-glory-gold/40 bg-white/[0.06] text-glory-gold shadow-[0_4px_15px_rgba(232,185,35,0.05)]"
+                        : "border-white/10 bg-white/[0.02] text-white/70 hover:bg-white/[0.04] hover:text-white"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between w-full mb-2">
+                      <span className="font-semibold text-xs tracking-wider">
+                        {era.years}
                       </span>
-                    </button>
-                  );
-                })}
-              </div>
+                      <span className="text-[8px] text-white/30 tracking-wider">
+                        ERA {index + 1}
+                      </span>
+                    </div>
+                    <span className="text-xs tracking-wide line-clamp-2 leading-snug">
+                      {currentLocale === "ro"
+                        ? era.title.ro.replace("Istoria Statelor Unite (", "").replace(")", "")
+                        : era.title.en.replace("History of the United States (", "").replace(")", "")}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
-  
-          {/* Era Content Display Area */}
-          <div className="lg:col-span-8">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeEraId}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="history-grid-border p-8 md:p-12 space-y-8 relative overflow-hidden rounded-lg"
-              >
-                {/* Era Header */}
-                <div className="border-b border-white/10 pb-6 space-y-2">
-                  <span className="text-xs font-semibold text-glory-gold tracking-widest uppercase">
-                    {activeEra.years}
+        </div>
+
+        {/* Era Content Display Area (Stacked, much wider) */}
+        <div className="max-w-6xl mx-auto">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeEraId}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="history-grid-border p-8 md:p-12 space-y-8 relative overflow-hidden rounded-lg"
+            >
+              {/* Era Header */}
+              <div className="border-b border-white/10 pb-6 space-y-2">
+                <span className="text-xs font-semibold text-glory-gold tracking-widest uppercase">
+                  {activeEra.years}
+                </span>
+                <h2 className="history-serif-title text-3xl md:text-4xl font-bold text-white">
+                  {currentLocale === "ro" ? activeEra.title.ro : activeEra.title.en}
+                </h2>
+              </div>
+
+              {/* Table of Contents / Anchors */}
+              {activeEra.sections.length > 1 && (
+                <div className="p-3.5 rounded-lg border border-white/10 bg-white/[0.02] flex flex-wrap gap-2 text-[11px] items-center">
+                  <span className="text-white/50 flex items-center gap-1 font-semibold uppercase tracking-wider mr-2">
+                    <Search className="w-3.5 h-3.5 text-glory-gold" /> {TEXT.sectionsLabel[currentLocale]}
                   </span>
-                  <h2 className="history-serif-title text-3xl md:text-4xl font-bold text-white">
-                    {currentLocale === "ro" ? activeEra.title.ro : activeEra.title.en}
-                  </h2>
-                </div>
- 
-                {/* Table of Contents / Anchors */}
-                {activeEra.sections.length > 1 && (
-                  <div className="p-3.5 rounded-lg border border-white/10 bg-white/[0.02] flex flex-wrap gap-2 text-[11px] items-center">
-                    <span className="text-white/50 flex items-center gap-1 font-semibold uppercase tracking-wider mr-2">
-                      <Search className="w-3.5 h-3.5 text-glory-gold" /> {TEXT.sectionsLabel[currentLocale]}
-                    </span>
-                    {activeEra.sections.map((sec, idx) => {
-                      const heading = currentLocale === "ro" ? sec.heading.ro : sec.heading.en;
-                      if (!heading) return null;
-                      return (
-                        <a
-                          key={idx}
-                          href={`#section-${idx}`}
-                          className="px-3 py-1 rounded bg-white/5 hover:bg-glory-gold/10 hover:text-glory-gold transition-all duration-200 text-white/80 border border-white/5"
-                        >
-                          {heading}
-                        </a>
-                      );
-                    })}
-                  </div>
-                )}
- 
-                {/* Subsections & Paragraphs */}
-                <div className="space-y-8">
-                  {activeEra.sections.map((sec, secIdx) => {
-                    const sectionHeading = currentLocale === "ro" ? sec.heading.ro : sec.heading.en;
+                  {activeEra.sections.map((sec, idx) => {
+                    const heading = currentLocale === "ro" ? sec.heading.ro : sec.heading.en;
+                    if (!heading) return null;
                     return (
-                      <div
-                        key={secIdx}
-                        id={`section-${secIdx}`}
-                        className="space-y-4 scroll-mt-24 border-b border-white/5 pb-8 last:border-0 last:pb-0"
+                      <a
+                        key={idx}
+                        href={`#section-${idx}`}
+                        className="px-3 py-1 rounded bg-white/5 hover:bg-glory-gold/10 hover:text-glory-gold transition-all duration-200 text-white/80 border border-white/5"
                       >
-                        {sectionHeading && (
-                          <h3 className="text-sm font-semibold text-glory-gold tracking-wider uppercase border-l border-glory-gold pl-3">
-                            {sectionHeading}
-                          </h3>
-                        )}
- 
-                        <div className="space-y-4">
-                          {sec.subsections.map((sub, subIdx) => {
-                            const subHeading = currentLocale === "ro" ? sub.heading.ro : sub.heading.en;
-                            return (
-                              <div key={subIdx} className="space-y-3">
-                                {subHeading && (
-                                  <h4 className="text-xs font-semibold text-white/90 uppercase tracking-wider">
-                                    {subHeading}
-                                  </h4>
-                                )}
-                                <div className="space-y-4">
-                                  {sub.paragraphs.map((para, paraIdx) => {
-                                    const text = currentLocale === "ro" ? para.ro : para.en;
-                                    return (
-                                      <p
-                                        key={paraIdx}
-                                        className="history-serif-body text-white/80 leading-relaxed text-base md:text-lg text-justify font-light"
-                                      >
-                                        {text}
-                                      </p>
-                                    );
-                                  })}
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
+                        {heading}
+                      </a>
                     );
                   })}
                 </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+              )}
+
+              {/* Subsections & Paragraphs */}
+              <div className="space-y-8">
+                {activeEra.sections.map((sec, secIdx) => {
+                  const sectionHeading = currentLocale === "ro" ? sec.heading.ro : sec.heading.en;
+                  return (
+                    <div
+                      key={secIdx}
+                      id={`section-${secIdx}`}
+                      className="space-y-4 scroll-mt-24 border-b border-white/5 pb-8 last:border-0 last:pb-0"
+                    >
+                      {sectionHeading && (
+                        <h3 className="text-sm font-semibold text-glory-gold tracking-wider uppercase border-l border-glory-gold pl-3">
+                          {sectionHeading}
+                        </h3>
+                      )}
+
+                      <div className="space-y-4">
+                        {sec.subsections.map((sub, subIdx) => {
+                          const subHeading = currentLocale === "ro" ? sub.heading.ro : sub.heading.en;
+                          return (
+                            <div key={subIdx} className="space-y-3">
+                              {subHeading && (
+                                <h4 className="text-xs font-semibold text-white/90 uppercase tracking-wider">
+                                  {subHeading}
+                                </h4>
+                              )}
+                              <div className="space-y-4">
+                                {sub.paragraphs.map((para, paraIdx) => {
+                                  const text = currentLocale === "ro" ? para.ro : para.en;
+                                  return (
+                                    <p
+                                      key={paraIdx}
+                                      className="history-serif-body text-white/80 leading-relaxed text-base md:text-lg text-justify font-light"
+                                    >
+                                      {text}
+                                    </p>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
  
