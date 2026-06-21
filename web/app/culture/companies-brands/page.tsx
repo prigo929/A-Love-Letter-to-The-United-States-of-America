@@ -119,7 +119,7 @@ export default async function CultureCompaniesBrandsPage() {
       <CultureStyles />
 
       <MacroHero
-        imageSrc={SITE_IMAGES.culture.classicCar}
+        imageSrc={SITE_IMAGES.culture.cokeGlass}
         imageAlt="Classic Car reflecting neon signs at Mel's Diner"
         eyebrow={isRo ? "IMPERIUL LOGO-URILOR · BRANDURI" : "THE LOGO EMPIRE · BRANDS"}
         titleLead={isRo ? "BRANDUL" : "THE BRAND"}

@@ -305,7 +305,7 @@ export default async function AbundancePage() {
     <>
       <MacroStyles />
       <MacroHero
-        imageSrc="/images/library/Housing/USA Suburb sunset.jpg"
+        imageSrc="/images/library/Housing/US Suburb from air.jpg"
         imageAlt="American suburb at sunset"
         eyebrow={copy.heroTagline}
         titleLead={isRo ? "UNDE CLASA DE MIJLOC" : "WHERE MIDDLE CLASS"}

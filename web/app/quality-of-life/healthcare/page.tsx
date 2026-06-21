@@ -219,7 +219,7 @@ export default async function HealthcarePage() {
     <>
       <MacroStyles />
       <MacroHero
-        imageSrc="/images/library/Technology/Fiber Optic Cable.jpg"
+        imageSrc="/images/library/Health/Children Receiving the Salk Polio Vaccine.jpeg"
         imageAlt="Fiber optic cables representing medical technology"
         eyebrow={copy.heroTagline}
         titleLead={isRo ? "LIDER MONDIAL ÎN" : "WORLD-LEADING"}

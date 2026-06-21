@@ -914,7 +914,7 @@ const TOC_IMAGES: Record<string, string> = {
   film: SITE_IMAGES.culture.hollywoodSign,
   sports: SITE_IMAGES.culture.nflStadium,
   entertainment: SITE_IMAGES.culture.disneyWorld,
-  brands: SITE_IMAGES.culture.melsDriveIn,
+  brands: SITE_IMAGES.culture.cokeGlass,
   food: SITE_IMAGES.culture.mcdMenu,
   fashion: SITE_IMAGES.culture.fashionJeansSneakers,
   music: SITE_IMAGES.culture.jazzClub,

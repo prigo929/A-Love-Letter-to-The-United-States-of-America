@@ -370,7 +370,7 @@ export default async function AmericaVsTheWorldPage() {
     <>
       <MacroStyles />
       <MacroHero
-        imageSrc="/images/library/Housing/Modern suburban house with garden and American flag, showcasing beautiful architecture in Eagle Mountain, UT.jpg"
+        imageSrc="/images/library/Infrastructure/I-110 and I-115 Interchange Los Angeles.jpg"
         imageAlt="Modern American suburban home with an American flag"
         eyebrow={copy.heroEyebrow}
         titleLead={copy.heroLead}
