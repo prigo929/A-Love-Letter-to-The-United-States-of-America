@@ -628,6 +628,64 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     theme: "The last foothold",
   },
 
+  // ── Iconic American photographs — batch 5 (Science & Technology, public domain) ──
+  "Military/Iconic/Bell X-1 in Flight.jpg": {
+    alt: "The Bell X-1 rocket plane in flight over mountains",
+    caption: "Bell X-1 in Flight (1947)",
+    description:
+      "Chuck Yeager flew the bright-orange Bell X-1 past Mach 1 on October 14, 1947 over the Mojave — the dawn of supersonic flight.",
+    location: "Muroc Army Air Field, California",
+    theme: "Breaking the sound barrier",
+  },
+  "Science/Iconic/Lawrence and the Cyclotron.jpg": {
+    alt: "Ernest Lawrence's Berkeley team gathered around the large cyclotron magnet",
+    caption: "Lawrence and the Cyclotron (1930s)",
+    description:
+      "Ernest Lawrence's cyclotron, for which he won the 1939 Nobel Prize, launched the era of big-machine physics at Berkeley.",
+    location: "Berkeley, California",
+    theme: "Big-machine physics",
+  },
+  "Science/Iconic/Glenn Seaborg and the Periodic Table.jpg": {
+    alt: "Glenn Seaborg standing beside a periodic table, pointing to the heavy elements",
+    caption: "Glenn Seaborg and the Periodic Table",
+    description:
+      "Glenn Seaborg co-discovered plutonium and other transuranium elements, reshaping the periodic table; element 106, seaborgium, bears his name.",
+    location: "Berkeley, California",
+    theme: "Expanding the elements",
+  },
+  "Science/Iconic/The LIGO Facility.jpg": {
+    alt: "Aerial view of the LIGO Hanford gravitational-wave observatory with its long arm",
+    caption: "The LIGO Facility (2015)",
+    description:
+      "LIGO's twin observatories detected gravitational waves from colliding black holes in 2015, confirming Einstein and opening a new astronomy.",
+    location: "Hanford, Washington",
+    theme: "Hearing spacetime",
+  },
+  "Technology/Iconic/Philo Farnsworth and Electronic Television.jpg": {
+    alt: "Portrait of a young Philo Farnsworth, inventor of all-electronic television",
+    caption: "Philo Farnsworth (1924)",
+    description:
+      "Philo Farnsworth demonstrated the first fully electronic television system in the late 1920s, the basis of broadcast TV.",
+    location: "San Francisco, California",
+    theme: "Inventor of television",
+  },
+  "Technology/Iconic/The Hollerith Census Machine.jpg": {
+    alt: "Period engraving of an operator using Hollerith electrical counting machines for the 1890 census",
+    caption: "The Hollerith Census Machine (1890)",
+    description:
+      "Herman Hollerith's punch-card tabulator processed the 1890 U.S. Census in record time; his company became part of IBM.",
+    location: "Washington, D.C.",
+    theme: "Punch-card computing",
+  },
+  "Technology/Iconic/Bell Opening the New York to Chicago Line.jpg": {
+    alt: "Alexander Graham Bell speaking into a telephone before a crowd to open a long-distance line",
+    caption: "Bell Opening the New York–Chicago Line (1892)",
+    description:
+      "Alexander Graham Bell placed the ceremonial first call on the New York–Chicago line in 1892, demonstrating the reach of the telephone network he had invented.",
+    location: "New York City",
+    theme: "Long-distance telephony",
+  },
+
   "Constitution/A view of the north side of Independence Hall in Philadelphia, showing the main building in the center with the east and west wings on the sides.jpg": {
     location: "Philadelphia, Pennsylvania",
     theme: "Founding Site",

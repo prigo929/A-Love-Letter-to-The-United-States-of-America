@@ -667,6 +667,14 @@ import asset657 from "@/IMAGES/Military/Iconic/The Highway of Death.jpg";
 import asset658 from "@/IMAGES/Military/Iconic/M1 Abrams Tanks into Baghdad.jpg";
 import asset659 from "@/IMAGES/Military/Iconic/Minuteman III Test Launch.jpg";
 import asset660 from "@/IMAGES/Military/Iconic/U.S. Troops at the Pusan Perimeter.jpg";
+// Iconic American photographs — batch 5 (Science & Technology, public domain)
+import asset661 from "@/IMAGES/Military/Iconic/Bell X-1 in Flight.jpg";
+import asset662 from "@/IMAGES/Science/Iconic/Lawrence and the Cyclotron.jpg";
+import asset663c from "@/IMAGES/Science/Iconic/Glenn Seaborg and the Periodic Table.jpg";
+import asset664 from "@/IMAGES/Science/Iconic/The LIGO Facility.jpg";
+import asset665 from "@/IMAGES/Technology/Iconic/Philo Farnsworth and Electronic Television.jpg";
+import asset666 from "@/IMAGES/Technology/Iconic/The Hollerith Census Machine.jpg";
+import asset667 from "@/IMAGES/Technology/Iconic/Bell Opening the New York to Chicago Line.jpg";
 
 export type GalleryAssetRecord = {
   path: string;
@@ -1339,6 +1347,14 @@ const RAW_GALLERY_ASSETS = [
   { path: "Military/Iconic/M1 Abrams Tanks into Baghdad.jpg", src: asset658 },
   { path: "Military/Iconic/Minuteman III Test Launch.jpg", src: asset659 },
   { path: "Military/Iconic/U.S. Troops at the Pusan Perimeter.jpg", src: asset660 },
+  // Iconic American photographs — batch 5 (Science & Technology, public domain)
+  { path: "Military/Iconic/Bell X-1 in Flight.jpg", src: asset661 },
+  { path: "Science/Iconic/Lawrence and the Cyclotron.jpg", src: asset662 },
+  { path: "Science/Iconic/Glenn Seaborg and the Periodic Table.jpg", src: asset663c },
+  { path: "Science/Iconic/The LIGO Facility.jpg", src: asset664 },
+  { path: "Technology/Iconic/Philo Farnsworth and Electronic Television.jpg", src: asset665 },
+  { path: "Technology/Iconic/The Hollerith Census Machine.jpg", src: asset666 },
+  { path: "Technology/Iconic/Bell Opening the New York to Chicago Line.jpg", src: asset667 },
 ] as const satisfies readonly GalleryAssetRecord[];
 
 export const GALLERY_ASSETS: readonly GalleryAssetRecord[] = Array.from(

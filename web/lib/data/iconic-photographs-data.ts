@@ -266,6 +266,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     location: "New York City",
     rights: "public-domain",
     source: "Library of Congress (PD, 1892).",
+    imagePath: "Technology/Iconic/Bell Opening the New York to Chicago Line.jpg",
   },
   {
     id: "golden-gate-bridge-nearing-completion",
@@ -333,6 +334,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     location: "Muroc Army Air Field, California",
     rights: "public-domain",
     source: "NASA / US Air Force (PD).",
+    imagePath: "Military/Iconic/Bell X-1 in Flight.jpg",
   },
   {
     id: "space-shuttle-columbia-maiden-voyage",
@@ -1555,9 +1557,9 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
   },
   {
     id: "farnsworth-first-electronic-television",
-    title: "Philo Farnsworth with the First All-Electronic Television",
-    year: "1929",
-    caption: "The inventor of electronic TV with his system.",
+    title: "Philo Farnsworth",
+    year: "1924",
+    caption: "The inventor of all-electronic television.",
     description:
       "Philo Farnsworth demonstrated the first fully electronic television system in the late 1920s, the basis of broadcast TV.",
     category: "Technology",
@@ -1565,6 +1567,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     location: "San Francisco, California",
     rights: "public-domain",
     source: "Library of Congress / Utah archives (PD, c.1929).",
+    imagePath: "Technology/Iconic/Philo Farnsworth and Electronic Television.jpg",
   },
   {
     id: "first-transatlantic-telegraph-cable-fleet",
@@ -1848,6 +1851,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     location: "Berkeley, California",
     rights: "public-domain",
     source: "LBNL / DOE archives (PD).",
+    imagePath: "Science/Iconic/Lawrence and the Cyclotron.jpg",
   },
   {
     id: "craig-venter-human-genome",
@@ -1887,6 +1891,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     location: "Berkeley, California",
     rights: "public-domain",
     source: "LBNL / DOE (PD).",
+    imagePath: "Science/Iconic/Glenn Seaborg and the Periodic Table.jpg",
   },
   {
     id: "kary-mullis-laboratory",
@@ -1939,6 +1944,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     location: "Washington, D.C.",
     rights: "public-domain",
     source: "Library of Congress / Census Bureau (PD, 1890).",
+    imagePath: "Technology/Iconic/The Hollerith Census Machine.jpg",
   },
   {
     id: "charles-townes-first-maser",
@@ -2005,6 +2011,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     location: "Hanford, Washington / Livingston, Louisiana",
     rights: "public-domain",
     source: "Caltech/MIT/LIGO (CC, NSF).",
+    imagePath: "Science/Iconic/The LIGO Facility.jpg",
   },
 ];
 
