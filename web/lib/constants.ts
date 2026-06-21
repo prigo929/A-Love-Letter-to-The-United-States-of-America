@@ -351,11 +351,6 @@ export const NAV_SECTIONS = [
     badge: "American Dream",
     items: [
       {
-        label: "Overview",
-        href: "/quality-of-life",
-        description: "Quality of life section landing page",
-      },
-      {
         label: "Housing & Real Estate",
         href: "/quality-of-life/housing",
         description: "Largest homes, 30-year mortgage, suburban wealth-building",
@@ -818,10 +813,6 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
     description: "Cel mai ridicat nivel de trai pentru cei mai mulți oameni",
     badge: "Visul American",
     items: {
-      "/quality-of-life": {
-        label: "Prezentare Generală",
-        description: "Pagina principală a secțiunii despre nivelul de trai",
-      },
       "/quality-of-life/housing": {
         label: "Locuințe și Imobiliare",
         description: "Cele mai mari case, ipoteca pe 30 ani, acumularea de avere",

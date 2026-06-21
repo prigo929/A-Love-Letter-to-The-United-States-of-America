@@ -44,7 +44,17 @@ export function Header() {
   const { locale, setLocale, selectedLanguage, languageOptions } =
     useLanguage();
   const navSections = getLocalizedNavSections(locale);
-  const primaryNav = navSections.slice(0, 6);
+  const primaryNav = navSections.filter((section) =>
+    [
+      "/economy",
+      "/nature",
+      "/military",
+      "/constitution",
+      "/culture",
+      "/innovation",
+      "/quality-of-life",
+    ].includes(section.href)
+  );
   const copy = getHeaderCopy(locale);
 
   // ── Scroll detection ───────────────────────────────────────────────────────
