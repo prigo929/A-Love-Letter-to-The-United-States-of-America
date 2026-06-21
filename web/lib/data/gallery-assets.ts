@@ -692,6 +692,46 @@ import asset679 from "@/IMAGES/History/The Kitchen Debate.jpg";
 import asset680 from "@/IMAGES/History/Trump Inauguration.jpg";
 import asset681 from "@/IMAGES/US Buildings/Capitol Dome Under Construction.jpg";
 import asset682 from "@/IMAGES/History/Antonin Scalia.jpg";
+// Iconic American photographs — batch 8 (user-supplied, organized)
+import asset683 from "@/IMAGES/Technology/Iconic/1980s Family with their First Home Computer.webp";
+import asset684 from "@/IMAGES/American Life/Iconic/Mother Using an Automatic Washing Machine.jpg";
+import asset685 from "@/IMAGES/Military/Iconic/SR-71 Blackbird in Flight.jpg";
+import asset686 from "@/IMAGES/Housing/Aerial View of Levittown.png";
+import asset687 from "@/IMAGES/Culture/Famous People/Andy Warhol with Campbells Soup Cans.webp";
+import asset688 from "@/IMAGES/Science/Iconic/Penzias and Wilson at the Holmdel Horn Antenna.jpg";
+import asset689 from "@/IMAGES/Culture/Famous People/Schwarzenegger at Muscle Beach.jpeg";
+import asset690 from "@/IMAGES/Infrastructure/Golden Gate Bridge Nearing Completion.jpg";
+import asset691 from "@/IMAGES/USA from Space/Carl Sagan and the Viking Mars Lander.jpg";
+import asset692 from "@/IMAGES/American Life/Iconic/Children Receiving the Salk Polio Vaccine.jpeg";
+import asset693 from "@/IMAGES/Technology/Iconic/Landing of the Transatlantic Telegraph Cable.jpg";
+import asset694 from "@/IMAGES/Science/Iconic/Damadian and the First MRI Scanner.webp";
+import asset695 from "@/IMAGES/American Life/Iconic/Loading the Car for a Road Trip.jpg";
+import asset696 from "@/IMAGES/American Life/Iconic/Family Gathered Around the Television.jpg";
+import asset697 from "@/IMAGES/Military/Iconic/General Matthew Ridgway in Korea.png";
+import asset698 from "@/IMAGES/American Life/Iconic/1950s Drive-In Movie Theater.jpg";
+import asset699 from "@/IMAGES/Science/Iconic/Einstein and Hubble at Mount Wilson.webp";
+import asset700 from "@/IMAGES/Culture/Sports/Jesse Owens at the Berlin Olympics.avif";
+import asset701 from "@/IMAGES/Technology/Iconic/Jobs and Wozniak with the Apple I.jpg";
+import asset702 from "@/IMAGES/Culture/Cinema/John Travolta in Saturday Night Fever.jpg";
+import asset703 from "@/IMAGES/Military/Iconic/Marines at the Battle of Khe Sanh.jpeg";
+import asset704 from "@/IMAGES/History/Bush at Ground Zero with the Bullhorn.webp";
+import asset705 from "@/IMAGES/Military/Iconic/Raising the Flag on Iwo Jima.jpg";
+import asset706 from "@/IMAGES/USA from Space/Space Shuttle Columbia Maiden Voyage.jpg";
+import asset707 from "@/IMAGES/Technology/Iconic/Steve Jobs Introducing the iPhone.jpg";
+import asset708 from "@/IMAGES/American Life/Iconic/Suburban Backyard Barbecue.avif";
+import asset709 from "@/IMAGES/Culture/Sports/The 1992 USA Basketball Dream Team.jpg";
+import asset710 from "@/IMAGES/Economy/The Sears Roebuck Catalog.jpeg";
+import asset711 from "@/IMAGES/Economy/The Spindletop Gusher.jpg";
+import asset712 from "@/IMAGES/American Life/Iconic/The Vagabonds Camping Trip.jpg";
+import asset713 from "@/IMAGES/Science/Iconic/Thomas Hunt Morgan in the Fly Room.jpeg";
+import asset714 from "@/IMAGES/Military/Iconic/Blue Angels over the USS Constitution.jpg";
+import asset715 from "@/IMAGES/Military/Iconic/SR-71 Blackbird Cockpit Self-Portrait.jpg";
+import asset716 from "@/IMAGES/Military/Iconic/SR-71 Blackbird Trio at Dryden.jpg";
+import asset717 from "@/IMAGES/Technology/Iconic/Map of the 1858 Transatlantic Cable Route.jpg";
+import asset718 from "@/IMAGES/American Life/Iconic/Gilmore Island Drive-In Complex.jpg";
+import asset719 from "@/IMAGES/US Buildings/Lawn in front of the White House, Washington, DC..jpg";
+import asset720 from "@/IMAGES/US Buildings/The White House in Washington DC, as viewed from the front lawn.jpg";
+import asset721 from "@/IMAGES/US Buildings/White_House_South_Lawn.jpg";
 
 export type GalleryAssetRecord = {
   path: string;
@@ -1389,6 +1429,46 @@ const RAW_GALLERY_ASSETS = [
   { path: "History/Trump Inauguration.jpg", src: asset680 },
   { path: "US Buildings/Capitol Dome Under Construction.jpg", src: asset681 },
   { path: "History/Antonin Scalia.jpg", src: asset682 },
+  // Iconic American photographs — batch 8 (user-supplied, organized)
+  { path: "Technology/Iconic/1980s Family with their First Home Computer.webp", src: asset683 },
+  { path: "American Life/Iconic/Mother Using an Automatic Washing Machine.jpg", src: asset684 },
+  { path: "Military/Iconic/SR-71 Blackbird in Flight.jpg", src: asset685 },
+  { path: "Housing/Aerial View of Levittown.png", src: asset686 },
+  { path: "Culture/Famous People/Andy Warhol with Campbells Soup Cans.webp", src: asset687 },
+  { path: "Science/Iconic/Penzias and Wilson at the Holmdel Horn Antenna.jpg", src: asset688 },
+  { path: "Culture/Famous People/Schwarzenegger at Muscle Beach.jpeg", src: asset689 },
+  { path: "Infrastructure/Golden Gate Bridge Nearing Completion.jpg", src: asset690 },
+  { path: "USA from Space/Carl Sagan and the Viking Mars Lander.jpg", src: asset691 },
+  { path: "American Life/Iconic/Children Receiving the Salk Polio Vaccine.jpeg", src: asset692 },
+  { path: "Technology/Iconic/Landing of the Transatlantic Telegraph Cable.jpg", src: asset693 },
+  { path: "Science/Iconic/Damadian and the First MRI Scanner.webp", src: asset694 },
+  { path: "American Life/Iconic/Loading the Car for a Road Trip.jpg", src: asset695 },
+  { path: "American Life/Iconic/Family Gathered Around the Television.jpg", src: asset696 },
+  { path: "Military/Iconic/General Matthew Ridgway in Korea.png", src: asset697 },
+  { path: "American Life/Iconic/1950s Drive-In Movie Theater.jpg", src: asset698 },
+  { path: "Science/Iconic/Einstein and Hubble at Mount Wilson.webp", src: asset699 },
+  { path: "Culture/Sports/Jesse Owens at the Berlin Olympics.avif", src: asset700 },
+  { path: "Technology/Iconic/Jobs and Wozniak with the Apple I.jpg", src: asset701 },
+  { path: "Culture/Cinema/John Travolta in Saturday Night Fever.jpg", src: asset702 },
+  { path: "Military/Iconic/Marines at the Battle of Khe Sanh.jpeg", src: asset703 },
+  { path: "History/Bush at Ground Zero with the Bullhorn.webp", src: asset704 },
+  { path: "Military/Iconic/Raising the Flag on Iwo Jima.jpg", src: asset705 },
+  { path: "USA from Space/Space Shuttle Columbia Maiden Voyage.jpg", src: asset706 },
+  { path: "Technology/Iconic/Steve Jobs Introducing the iPhone.jpg", src: asset707 },
+  { path: "American Life/Iconic/Suburban Backyard Barbecue.avif", src: asset708 },
+  { path: "Culture/Sports/The 1992 USA Basketball Dream Team.jpg", src: asset709 },
+  { path: "Economy/The Sears Roebuck Catalog.jpeg", src: asset710 },
+  { path: "Economy/The Spindletop Gusher.jpg", src: asset711 },
+  { path: "American Life/Iconic/The Vagabonds Camping Trip.jpg", src: asset712 },
+  { path: "Science/Iconic/Thomas Hunt Morgan in the Fly Room.jpeg", src: asset713 },
+  { path: "Military/Iconic/Blue Angels over the USS Constitution.jpg", src: asset714 },
+  { path: "Military/Iconic/SR-71 Blackbird Cockpit Self-Portrait.jpg", src: asset715 },
+  { path: "Military/Iconic/SR-71 Blackbird Trio at Dryden.jpg", src: asset716 },
+  { path: "Technology/Iconic/Map of the 1858 Transatlantic Cable Route.jpg", src: asset717 },
+  { path: "American Life/Iconic/Gilmore Island Drive-In Complex.jpg", src: asset718 },
+  { path: "US Buildings/Lawn in front of the White House, Washington, DC..jpg", src: asset719 },
+  { path: "US Buildings/The White House in Washington DC, as viewed from the front lawn.jpg", src: asset720 },
+  { path: "US Buildings/White_House_South_Lawn.jpg", src: asset721 },
 ] as const satisfies readonly GalleryAssetRecord[];
 
 export const GALLERY_ASSETS: readonly GalleryAssetRecord[] = Array.from(

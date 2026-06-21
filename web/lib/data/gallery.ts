@@ -815,6 +815,232 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     theme: "Originalism",
   },
 
+  // ── Iconic American photographs — batch 8 (user-supplied) ──
+  "Technology/Iconic/1980s Family with their First Home Computer.webp": {
+    alt: "The personal computer enters the home.",
+    caption: "A 1980s Family with their First Apple II or IBM PC (1980s)",
+    description:
+      "Affordable machines like the Apple II and IBM PC brought computing into American homes in the 1980s, previewing the digital age.",
+    location: "United States",
+  },
+  "American Life/Iconic/Mother Using an Automatic Washing Machine.jpg": {
+    alt: "Household appliances transform domestic work.",
+    caption: "A Mid-Century Mother Using an Automatic Washing Machine (1950s)",
+    description:
+      "Affordable automatic washers and other appliances dramatically cut domestic labor and reshaped American home life in the 1950s.",
+    location: "United States",
+  },
+  "Military/Iconic/SR-71 Blackbird in Flight.jpg": {
+    alt: "The fastest air-breathing crewed aircraft ever built.",
+    caption: "The SR-71 Blackbird in Flight (c. 1960s)",
+    description:
+      "Lockheed's SR-71 reconnaissance jet cruised above Mach 3 at the edge of space, an icon of Cold War aerospace engineering from Skunk Works.",
+    location: "United States",
+  },
+  "Housing/Aerial View of Levittown.png": {
+    alt: "Rows of affordable new suburban homes.",
+    caption: "Aerial View of Levittown, New York (1950s)",
+    description:
+      "Levittown's mass-produced houses made homeownership attainable for millions of postwar families and defined the American suburb.",
+    location: "Long Island, New York",
+  },
+  "Culture/Famous People/Andy Warhol with Campbells Soup Cans.webp": {
+    alt: "The pop-art icon beside his most famous work.",
+    caption: "Andy Warhol with his Campbell's Soup Cans (1964)",
+    description:
+      "Andy Warhol's Campbell's Soup Cans (1962) made consumer packaging into fine art and made Warhol the face of American Pop.",
+    location: "New York City",
+  },
+  "Science/Iconic/Penzias and Wilson at the Holmdel Horn Antenna.jpg": {
+    alt: "The antenna that heard the Big Bang's echo.",
+    caption: "Arno Penzias and Robert Wilson at the Holmdel Horn Antenna (1965)",
+    description:
+      "Penzias and Wilson detected the cosmic microwave background with the Holmdel horn antenna in 1965, confirming the Big Bang and winning the Nobel Prize.",
+    location: "Holmdel, New Jersey",
+  },
+  "Culture/Famous People/Schwarzenegger at Muscle Beach.jpeg": {
+    alt: "The bodybuilding champion who became a movie star.",
+    caption: "Arnold Schwarzenegger Posing at Muscle Beach (1970s)",
+    description:
+      "Arnold Schwarzenegger's 1970s Muscle Beach training and posing in California launched a bodybuilding boom and a Hollywood career.",
+    location: "Venice Beach, California",
+  },
+  "Infrastructure/Golden Gate Bridge Nearing Completion.jpg": {
+    alt: "The great suspension span closes over the strait.",
+    caption: "The Golden Gate Bridge Nearing Completion (1936)",
+    description:
+      "Photographed during its 1933–1937 construction, the Golden Gate Bridge became an enduring emblem of American engineering and the city of San Francisco.",
+    location: "San Francisco, California",
+  },
+  "USA from Space/Carl Sagan and the Viking Mars Lander.jpg": {
+    alt: "Sagan beside a model of the Mars lander.",
+    caption: "Carl Sagan and the Viking Mars Lander (1976)",
+    description:
+      "Carl Sagan, popularizer of science and a Viking team member, helped bring the 1976 Mars landings to a global public.",
+    location: "Jet Propulsion Laboratory, California",
+  },
+  "American Life/Iconic/Children Receiving the Salk Polio Vaccine.jpeg": {
+    alt: "Schoolchildren line up for the polio shot.",
+    caption: "Children Receiving the Salk Polio Vaccine (1955)",
+    description:
+      "The 1955 national rollout of the Salk vaccine to schoolchildren ended the annual terror of polio epidemics across America.",
+    location: "United States",
+  },
+  "Technology/Iconic/Landing of the Transatlantic Telegraph Cable.jpg": {
+    alt: "Ships lay the first cable across the Atlantic.",
+    caption: "The First Transatlantic Telegraph Cable Fleet (1858)",
+    description:
+      "The 1858 transatlantic telegraph cable, backed by American financier Cyrus Field, briefly connected continents and previewed instant global communication.",
+    location: "Atlantic Ocean",
+  },
+  "Science/Iconic/Damadian and the First MRI Scanner.webp": {
+    alt: "The inventor beside 'Indomitable,' the first MRI machine.",
+    caption: "Raymond Damadian and the First MRI Scanner (1977)",
+    description:
+      "Raymond Damadian produced the first MRI scan of a human body in 1977 with his machine 'Indomitable,' founding a pillar of modern medicine.",
+    location: "Brooklyn, New York",
+  },
+  "American Life/Iconic/Loading the Car for a Road Trip.jpg": {
+    alt: "The family car packed for vacation.",
+    caption: "Loading Up the Station Wagon for a Road Trip (1960s)",
+    description:
+      "The wood-paneled station wagon, loaded for a family road trip, captured the mobility and leisure of postwar America.",
+    location: "United States",
+  },
+  "American Life/Iconic/Family Gathered Around the Television.jpg": {
+    alt: "The new hearth of the American home.",
+    caption: "A Family Gathered Around a Black-and-White Television Set (1950s)",
+    description:
+      "Television swept into American living rooms in the 1950s, reshaping family life, news, and shared culture.",
+    location: "United States",
+  },
+  "Military/Iconic/General Matthew Ridgway in Korea.png": {
+    alt: "The general who steadied the Eighth Army.",
+    caption: "General Matthew Ridgway at the Front Lines in Korea (1951)",
+    description:
+      "Taking command in late 1950, Matthew Ridgway revitalized the Eighth Army and stabilized the Korean front in 1951, often visiting forward positions himself.",
+    location: "Korea",
+  },
+  "American Life/Iconic/1950s Drive-In Movie Theater.jpg": {
+    alt: "Cars lined up beneath the big outdoor screen.",
+    caption: "A 1950s Drive-In Movie Theater (1950s)",
+    description:
+      "The drive-in theater married two American loves — cars and movies — into a defining leisure pastime of the 1950s.",
+    location: "United States",
+  },
+  "Science/Iconic/Einstein and Hubble at Mount Wilson.webp": {
+    alt: "Theory meets observation atop Mount Wilson.",
+    caption: "Albert Einstein and Edwin Hubble at Mount Wilson (1931)",
+    description:
+      "Einstein visited Hubble at Mount Wilson in 1931 to see the evidence for cosmic expansion that reshaped his view of the universe.",
+    location: "Mount Wilson Observatory, California",
+  },
+  "Culture/Sports/Jesse Owens at the Berlin Olympics.avif": {
+    alt: "Owens wins four golds before a Nazi crowd.",
+    caption: "Jesse Owens at the Berlin Olympics (1936)",
+    description:
+      "Jesse Owens won four gold medals at the 1936 Berlin Olympics, a rebuke to Nazi racial ideology and a landmark in American sports.",
+    location: "Berlin, Germany",
+  },
+  "Technology/Iconic/Jobs and Wozniak with the Apple I.jpg": {
+    alt: "Two founders and the computer that started Apple.",
+    caption: "Jobs and Wozniak with the Apple I (1976)",
+    description:
+      "Steve Jobs and Steve Wozniak built and sold the hand-assembled Apple I in 1976, launching the company and helping spark the personal-computer industry.",
+    location: "Los Altos, California",
+  },
+  "Culture/Cinema/John Travolta in Saturday Night Fever.jpg": {
+    alt: "The white-suit, finger-to-the-sky disco pose.",
+    caption: "John Travolta Striking the Pose in Saturday Night Fever (1977)",
+    description:
+      "John Travolta's pose in 'Saturday Night Fever' (1977) became the emblem of the disco era and 1970s pop culture.",
+    location: "Brooklyn, New York City",
+  },
+  "Military/Iconic/Marines at the Battle of Khe Sanh.jpeg": {
+    alt: "Marines hold a besieged combat base in Vietnam.",
+    caption: "U.S. Marines at the Battle of Khe Sanh (1968)",
+    description:
+      "The 77-day siege of Khe Sanh in 1968 was one of the most intense engagements of the Vietnam War, sustained largely by aerial resupply.",
+    location: "Khe Sanh, South Vietnam",
+  },
+  "History/Bush at Ground Zero with the Bullhorn.webp": {
+    alt: "“I can hear you — and the people who knocked these buildings down will hear all of us soon.”",
+    caption: "President George W. Bush at Ground Zero with the Bullhorn (2001)",
+    description:
+      "Standing on the rubble of the World Trade Center on September 14, 2001, Bush rallied rescue workers and a grieving nation three days after the attacks.",
+    location: "World Trade Center site, New York City",
+  },
+  "Military/Iconic/Raising the Flag on Iwo Jima.jpg": {
+    alt: "Six Marines raise the Stars and Stripes atop Mount Suribachi.",
+    caption: "Raising the Flag on Iwo Jima (1945)",
+    description:
+      "Joe Rosenthal's photograph of the second flag-raising on Iwo Jima, February 23, 1945, became the most reproduced image of World War II and the model for the Marine Corps War Memorial.",
+    location: "Mount Suribachi, Iwo Jima, Japan",
+  },
+  "USA from Space/Space Shuttle Columbia Maiden Voyage.jpg": {
+    alt: "The first reusable spacecraft launches on STS-1.",
+    caption: "Space Shuttle Columbia's Maiden Voyage (1981)",
+    description:
+      "Columbia lifted off on April 12, 1981 with John Young and Robert Crippen aboard, beginning three decades of Space Shuttle flight.",
+    location: "Kennedy Space Center, Florida",
+  },
+  "Technology/Iconic/Steve Jobs Introducing the iPhone.jpg": {
+    alt: "“An iPod, a phone, and an internet communicator.”",
+    caption: "Steve Jobs Introducing the iPhone (2007)",
+    description:
+      "At Macworld on January 9, 2007, Steve Jobs unveiled the iPhone, redefining the smartphone and the mobile era.",
+    location: "Moscone Center, San Francisco",
+  },
+  "American Life/Iconic/Suburban Backyard Barbecue.avif": {
+    alt: "Families gather around the grill.",
+    caption: "The Suburban Backyard Barbecue (1950s)",
+    description:
+      "The backyard barbecue became a ritual of postwar suburban leisure and the growing American middle class.",
+    location: "United States",
+  },
+  "Culture/Sports/The 1992 USA Basketball Dream Team.jpg": {
+    alt: "The greatest team ever assembled, Barcelona 1992.",
+    caption: "The 1992 USA Basketball Dream Team (1992)",
+    description:
+      "The first U.S. Olympic basketball team of NBA stars — Jordan, Magic, Bird and more — dominated the 1992 Barcelona Games and globalized the sport.",
+    location: "Barcelona, Spain",
+  },
+  "Economy/The Sears Roebuck Catalog.jpeg": {
+    alt: "The 'wish book' that mailed America its abundance.",
+    caption: "The First Sears Roebuck Catalog of the Post-War Era (Post-war era)",
+    description:
+      "The Sears Roebuck catalog brought the full range of American consumer goods to every mailbox, a cornerstone of mid-century retail.",
+    location: "United States",
+  },
+  "Economy/The Spindletop Gusher.jpg": {
+    alt: "A 150-foot column of oil launches the Texas petroleum boom.",
+    caption: "The Spindletop Gusher (1901)",
+    description:
+      "The Lucas Gusher at Spindletop near Beaumont blew in on January 10, 1901, flowing at unheard-of volumes and inaugurating the American oil age.",
+    location: "Beaumont, Texas",
+  },
+  "American Life/Iconic/The Vagabonds Camping Trip.jpg": {
+    alt: "Edison, Ford, Firestone, and Burroughs camp together.",
+    caption: "The Vagabonds Camping Trip (1921)",
+    description:
+      "The self-styled 'Vagabonds' — Thomas Edison, Henry Ford, Harvey Firestone, and naturalist John Burroughs — took widely publicized motor-camping trips that celebrated American ingenuity and the open road.",
+    location: "Eastern United States",
+  },
+  "Science/Iconic/Thomas Hunt Morgan in the Fly Room.jpeg": {
+    alt: "The lab where genetics was born.",
+    caption: "Thomas Hunt Morgan in the Fly Room (1910s)",
+    description:
+      "Thomas Hunt Morgan's Columbia 'Fly Room' established the chromosome theory of heredity using fruit flies, founding modern genetics.",
+    location: "Columbia University, New York",
+  },
+  "Military/Iconic/Blue Angels over the USS Constitution.jpg": {
+    alt: "The flight demonstration squadron over 'Old Ironsides'.",
+    caption: "U.S. Navy Blue Angels Flying over the USS Constitution (1997)",
+    description:
+      "The Blue Angels roaring over the USS Constitution joined two enduring symbols of the U.S. Navy — its oldest commissioned warship and its precision flyers.",
+    location: "Boston Harbor, Massachusetts",
+  },
+
   "Constitution/A view of the north side of Independence Hall in Philadelphia, showing the main building in the center with the east and west wings on the sides.jpg": {
     location: "Philadelphia, Pennsylvania",
     theme: "Founding Site",

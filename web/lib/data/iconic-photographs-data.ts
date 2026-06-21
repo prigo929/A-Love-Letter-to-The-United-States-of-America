@@ -62,6 +62,7 @@ const FOUNDATIONAL: IconicPhoto[] = [
     location: "Mount Suribachi, Iwo Jima, Japan",
     rights: "needs-license",
     source: "Rosenthal/AP original is contested; use the USMC/National Archives frame or a PD alternate of the event.",
+    imagePath: "Military/Iconic/Raising the Flag on Iwo Jima.jpg",
   },
   {
     id: "lunch-atop-a-skyscraper",
@@ -231,6 +232,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     location: "Beaumont, Texas",
     rights: "public-domain",
     source: "Texas Energy Museum / Library of Congress (PD, 1901).",
+    imagePath: "Economy/The Spindletop Gusher.jpg",
   },
   {
     id: "eniac-in-operation",
@@ -286,6 +288,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     location: "San Francisco, California",
     rights: "public-domain",
     source: "Library of Congress / National Archives (PD).",
+    imagePath: "Infrastructure/Golden Gate Bridge Nearing Completion.jpg",
   },
   {
     id: "trinity-test",
@@ -354,6 +357,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     location: "Kennedy Space Center, Florida",
     rights: "public-domain",
     source: "NASA (PD).",
+    imagePath: "USA from Space/Space Shuttle Columbia Maiden Voyage.jpg",
   },
   {
     id: "bush-ground-zero-bullhorn",
@@ -367,6 +371,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     location: "World Trade Center site, New York City",
     rights: "public-domain",
     source: "White House photo / National Archives (federal work, PD).",
+    imagePath: "History/Bush at Ground Zero with the Bullhorn.webp",
   },
   {
     id: "first-integrated-circuit",
@@ -438,6 +443,7 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
     location: "Eastern United States",
     rights: "public-domain",
     source: "Library of Congress (PD, pre-1929).",
+    imagePath: "American Life/Iconic/The Vagabonds Camping Trip.jpg",
   },
   {
     id: "sr-71-blackbird-in-flight",
@@ -451,6 +457,7 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
     location: "United States",
     rights: "public-domain",
     source: "US Air Force / NASA (PD).",
+    imagePath: "Military/Iconic/SR-71 Blackbird in Flight.jpg",
   },
   {
     id: "steve-jobs-introducing-iphone",
@@ -464,6 +471,7 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
     location: "Moscone Center, San Francisco",
     rights: "needs-license",
     source: "Press/Getty imagery — user must license or supply.",
+    imagePath: "Technology/Iconic/Steve Jobs Introducing the iPhone.jpg",
   },
   {
     id: "ideal-x-first-container-ship",
@@ -518,6 +526,7 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
     location: "Los Altos, California",
     rights: "needs-license",
     source: "Apple/press archives — user supplies; some Apple I unit photos are CC-licensed.",
+    imagePath: "Technology/Iconic/Jobs and Wozniak with the Apple I.jpg",
   },
   {
     id: "us-capitol-dome-under-construction",
@@ -797,6 +806,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Boston Harbor, Massachusetts",
     rights: "public-domain",
     source: "US Navy (PD).",
+    imagePath: "Military/Iconic/Blue Angels over the USS Constitution.jpg",
   },
   {
     id: "highway-of-death",
@@ -963,6 +973,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Khe Sanh, South Vietnam",
     rights: "public-domain",
     source: "USMC / National Archives (PD).",
+    imagePath: "Military/Iconic/Marines at the Battle of Khe Sanh.jpeg",
   },
   {
     id: "minuteman-iii-test-launch",
@@ -1018,6 +1029,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Korea",
     rights: "public-domain",
     source: "US Army / National Archives (PD).",
+    imagePath: "Military/Iconic/General Matthew Ridgway in Korea.png",
   },
 ];
 
@@ -1194,6 +1206,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     location: "Brooklyn, New York City",
     rights: "needs-license",
     source: "Paramount Pictures — license or supply.",
+    imagePath: "Culture/Cinema/John Travolta in Saturday Night Fever.jpg",
   },
   {
     id: "soul-train-dancers",
@@ -1246,6 +1259,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     location: "Berlin, Germany",
     rights: "public-domain",
     source: "German Federal Archives (Bundesarchiv, CC-BY-SA) / public-domain frames.",
+    imagePath: "Culture/Sports/Jesse Owens at the Berlin Olympics.avif",
   },
   {
     id: "1992-usa-basketball-dream-team",
@@ -1259,6 +1273,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     location: "Barcelona, Spain",
     rights: "needs-license",
     source: "NBAE/Getty — license or supply.",
+    imagePath: "Culture/Sports/The 1992 USA Basketball Dream Team.jpg",
   },
   {
     id: "lombardi-carried-off-field",
@@ -1285,6 +1300,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     location: "Venice Beach, California",
     rights: "needs-license",
     source: "Press/Getty — license or supply.",
+    imagePath: "Culture/Famous People/Schwarzenegger at Muscle Beach.jpeg",
   },
   {
     id: "tom-cruise-top-gun",
@@ -1363,6 +1379,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     location: "New York City",
     rights: "needs-license",
     source: "Press/Getty (and Warhol estate for the artwork) — license or supply.",
+    imagePath: "Culture/Famous People/Andy Warhol with Campbells Soup Cans.webp",
   },
   {
     id: "beatles-arriving-jfk-airport",
@@ -1595,6 +1612,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     location: "Atlantic Ocean",
     rights: "public-domain",
     source: "Library of Congress (PD, 1858).",
+    imagePath: "Technology/Iconic/Landing of the Transatlantic Telegraph Cable.jpg",
   },
   {
     id: "jensen-huang-first-ai-supercomputer-openai",
@@ -1730,6 +1748,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     location: "Mount Wilson Observatory, California",
     rights: "needs-license",
     source: "Carnegie Observatories archives — request; some PD frames exist.",
+    imagePath: "Science/Iconic/Einstein and Hubble at Mount Wilson.webp",
   },
   {
     id: "feynman-playing-the-bongos",
@@ -1795,6 +1814,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     location: "Jet Propulsion Laboratory, California",
     rights: "needs-license",
     source: "NASA frames PD; Sagan portraits via Cornell/press — verify.",
+    imagePath: "USA from Space/Carl Sagan and the Viking Mars Lander.jpg",
   },
   {
     id: "alvarez-kt-boundary",
@@ -1839,6 +1859,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     location: "Holmdel, New Jersey",
     rights: "needs-license",
     source: "Nokia Bell Labs archives — request; some PD/CC frames exist.",
+    imagePath: "Science/Iconic/Penzias and Wilson at the Holmdel Horn Antenna.jpg",
   },
   {
     id: "von-neumann-ias-machine",
@@ -1999,6 +2020,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     location: "Brooklyn, New York",
     rights: "needs-license",
     source: "FONAR / Smithsonian — request permission.",
+    imagePath: "Science/Iconic/Damadian and the First MRI Scanner.webp",
   },
   {
     id: "thomas-hunt-morgan-fly-room",
@@ -2012,6 +2034,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     location: "Columbia University, New York",
     rights: "public-domain",
     source: "Caltech / public archives (PD, pre-1929 frames).",
+    imagePath: "Science/Iconic/Thomas Hunt Morgan in the Fly Room.jpeg",
   },
   {
     id: "ligo-facility-in-operation",
@@ -2057,6 +2080,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     location: "Long Island, New York",
     rights: "public-domain",
     source: "Library of Congress / public archives (PD).",
+    imagePath: "Housing/Aerial View of Levittown.png",
   },
   {
     id: "1950s-american-supermarket",
@@ -2083,6 +2107,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     location: "United States",
     rights: "loc",
     source: "Library of Congress / archives (verify PD per image).",
+    imagePath: "American Life/Iconic/Suburban Backyard Barbecue.avif",
   },
   {
     id: "family-around-black-and-white-tv",
@@ -2096,6 +2121,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     location: "United States",
     rights: "loc",
     source: "Library of Congress / archives (verify PD per image).",
+    imagePath: "American Life/Iconic/Family Gathered Around the Television.jpg",
   },
   {
     id: "first-enclosed-shopping-mall-southdale",
@@ -2122,6 +2148,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     location: "United States",
     rights: "loc",
     source: "Library of Congress / archives (verify PD per image).",
+    imagePath: "American Life/Iconic/Loading the Car for a Road Trip.jpg",
   },
   {
     id: "first-holiday-inn-opening",
@@ -2148,6 +2175,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     location: "United States",
     rights: "loc",
     source: "Library of Congress / archives (verify PD per image).",
+    imagePath: "American Life/Iconic/1950s Drive-In Movie Theater.jpg",
   },
   {
     id: "mother-using-automatic-washing-machine",
@@ -2161,6 +2189,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     location: "United States",
     rights: "loc",
     source: "Library of Congress / archives (verify PD per image).",
+    imagePath: "American Life/Iconic/Mother Using an Automatic Washing Machine.jpg",
   },
   {
     id: "children-receiving-salk-polio-vaccine",
@@ -2174,6 +2203,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     location: "United States",
     rights: "public-domain",
     source: "CDC / National Archives (PD).",
+    imagePath: "American Life/Iconic/Children Receiving the Salk Polio Vaccine.jpeg",
   },
   {
     id: "passengers-boarding-pan-am-707",
@@ -2200,6 +2230,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     location: "United States",
     rights: "loc",
     source: "Sears archives / Library of Congress (verify PD per image).",
+    imagePath: "Economy/The Sears Roebuck Catalog.jpeg",
   },
   {
     id: "1980s-family-first-home-computer",
@@ -2213,6 +2244,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     location: "United States",
     rights: "needs-license",
     source: "Press/archives — request or substitute CC frame.",
+    imagePath: "Technology/Iconic/1980s Family with their First Home Computer.webp",
   },
   {
     id: "first-blockbuster-video-store",
