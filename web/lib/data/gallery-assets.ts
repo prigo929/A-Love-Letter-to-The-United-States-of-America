@@ -675,6 +675,15 @@ import asset664 from "@/IMAGES/Science/Iconic/The LIGO Facility.jpg";
 import asset665 from "@/IMAGES/Technology/Iconic/Philo Farnsworth and Electronic Television.jpg";
 import asset666 from "@/IMAGES/Technology/Iconic/The Hollerith Census Machine.jpg";
 import asset667 from "@/IMAGES/Technology/Iconic/Bell Opening the New York to Chicago Line.jpg";
+// Iconic American photographs — batch 6 (Economy & general Americana, public domain)
+import asset668 from "@/IMAGES/History/The Driving of the Golden Spike.jpg";
+import asset669 from "@/IMAGES/Infrastructure/Construction of the Hoover Dam.jpg";
+import asset670 from "@/IMAGES/Economy/Ford Model T Assembly Line.jpg";
+import asset671 from "@/IMAGES/History/Reagan at the Brandenburg Gate.jpg";
+import asset672 from "@/IMAGES/US Buildings/Construction of the Empire State Building.jpg";
+import asset673 from "@/IMAGES/Infrastructure/Completion of the Panama Canal.jpg";
+import asset674 from "@/IMAGES/History/Mount Rushmore Under Construction.jpg";
+import asset675 from "@/IMAGES/History/Reagan and Thatcher.jpg";
 
 export type GalleryAssetRecord = {
   path: string;
@@ -1355,6 +1364,15 @@ const RAW_GALLERY_ASSETS = [
   { path: "Technology/Iconic/Philo Farnsworth and Electronic Television.jpg", src: asset665 },
   { path: "Technology/Iconic/The Hollerith Census Machine.jpg", src: asset666 },
   { path: "Technology/Iconic/Bell Opening the New York to Chicago Line.jpg", src: asset667 },
+  // Iconic American photographs — batch 6 (Economy & general Americana, public domain)
+  { path: "History/The Driving of the Golden Spike.jpg", src: asset668 },
+  { path: "Infrastructure/Construction of the Hoover Dam.jpg", src: asset669 },
+  { path: "Economy/Ford Model T Assembly Line.jpg", src: asset670 },
+  { path: "History/Reagan at the Brandenburg Gate.jpg", src: asset671 },
+  { path: "US Buildings/Construction of the Empire State Building.jpg", src: asset672 },
+  { path: "Infrastructure/Completion of the Panama Canal.jpg", src: asset673 },
+  { path: "History/Mount Rushmore Under Construction.jpg", src: asset674 },
+  { path: "History/Reagan and Thatcher.jpg", src: asset675 },
 ] as const satisfies readonly GalleryAssetRecord[];
 
 export const GALLERY_ASSETS: readonly GalleryAssetRecord[] = Array.from(

@@ -40,6 +40,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { renderTextWithLinks } from "@/lib/link-renderer";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import DeepDiveSection from "@/components/shared/DeepDiveSection";
+import { IconicPhotographs } from "@/components/shared/IconicPhotographs";
 import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 import { getEconomyPageCopy } from "@/lib/i18n/messages/pages";
 
@@ -620,6 +621,12 @@ export default async function EconomyPage() {
             ))}
           </div>
         </section>
+
+      {/* Iconic Photographs */}
+      <IconicPhotographs
+        section="economy"
+        intro="The industry, enterprise, and infrastructure that built American prosperity — from the golden spike to the skyline, captured on film."
+      />
 
       {/* Deep Dive Archive */}
       <DeepDiveSection

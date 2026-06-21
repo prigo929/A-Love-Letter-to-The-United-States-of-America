@@ -686,6 +686,75 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     theme: "Long-distance telephony",
   },
 
+  // ── Iconic American photographs — batch 6 (Economy & general Americana, public domain) ──
+  "History/The Driving of the Golden Spike.jpg": {
+    alt: "Railroad workers and locomotives meeting at Promontory Summit for the golden spike ceremony",
+    caption: "The Driving of the Golden Spike (1869)",
+    description:
+      "Andrew Russell's 'East and West Shaking Hands' at Promontory Summit, May 10, 1869, marked completion of the transcontinental railroad — knitting the continent together by rail.",
+    location: "Promontory Summit, Utah",
+    theme: "A continent joined",
+    featured: true,
+  },
+  "Infrastructure/Construction of the Hoover Dam.jpg": {
+    alt: "High-scalers at work on the canyon walls during construction of Hoover Dam",
+    caption: "Construction of the Hoover Dam (1931–1936)",
+    description:
+      "Built across the Colorado River during the Depression, Hoover Dam was an engineering triumph that tamed the river, powered the Southwest, and symbolized American scale.",
+    location: "Black Canyon, Nevada–Arizona",
+    theme: "Taming the Colorado",
+  },
+  "Economy/Ford Model T Assembly Line.jpg": {
+    alt: "A Model T body being lowered onto a chassis on Ford's moving assembly line",
+    caption: "Henry Ford's Model T Assembly Line (c. 1913)",
+    description:
+      "Ford's Highland Park line industrialized car-making, cutting build time from hours to minutes and putting the automobile within reach of ordinary workers.",
+    location: "Highland Park, Michigan",
+    theme: "America on wheels",
+    featured: true,
+  },
+  "History/Reagan at the Brandenburg Gate.jpg": {
+    alt: "President Reagan giving his Berlin Wall speech at the Brandenburg Gate",
+    caption: "Reagan at the Brandenburg Gate (1987)",
+    description:
+      "Ronald Reagan's June 12, 1987 challenge — 'Mr. Gorbachev, tear down this wall!' — framed the closing argument of the Cold War; the Wall fell two years later.",
+    location: "Brandenburg Gate, West Berlin",
+    theme: "Tear down this wall",
+  },
+  "US Buildings/Construction of the Empire State Building.jpg": {
+    alt: "An ironworker seated on a steel beam high above Manhattan with the Chrysler Building beyond",
+    caption: "Construction of the Empire State Building (1930)",
+    description:
+      "Lewis Hine's photographs of the Empire State Building's workers celebrated the men who raised 102 stories in just over a year at the height of the Depression.",
+    location: "Midtown Manhattan, New York City",
+    theme: "Raising the skyline",
+    featured: true,
+  },
+  "Infrastructure/Completion of the Panama Canal.jpg": {
+    alt: "The Culebra Cut excavation during construction of the Panama Canal",
+    caption: "Completion of the Panama Canal (1914)",
+    description:
+      "The American-built Panama Canal opened in 1914 after a decade of engineering and public-health triumphs, transforming global maritime trade.",
+    location: "Isthmus of Panama",
+    theme: "Two oceans joined",
+  },
+  "History/Mount Rushmore Under Construction.jpg": {
+    alt: "Workers on ropes carving the face of George Washington into Mount Rushmore",
+    caption: "Mount Rushmore Under Construction (c. 1936)",
+    description:
+      "Gutzon Borglum's crews drilled and carved the 60-foot heads of Washington, Jefferson, Roosevelt, and Lincoln into the Black Hills granite between 1927 and 1941.",
+    location: "Black Hills, South Dakota",
+    theme: "Carving the presidents",
+  },
+  "History/Reagan and Thatcher.jpg": {
+    alt: "Ronald and Nancy Reagan with Margaret Thatcher",
+    caption: "Reagan and Thatcher",
+    description:
+      "Reagan and British PM Margaret Thatcher embodied the close Anglo-American alliance of the late Cold War.",
+    location: "London, United Kingdom",
+    theme: "The special relationship",
+  },
+
   "Constitution/A view of the north side of Independence Hall in Philadelphia, showing the main building in the center with the east and west wings on the sides.jpg": {
     location: "Philadelphia, Pennsylvania",
     theme: "Founding Site",

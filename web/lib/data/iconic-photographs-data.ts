@@ -116,6 +116,7 @@ const FOUNDATIONAL: IconicPhoto[] = [
     location: "Promontory Summit, Utah",
     rights: "public-domain",
     source: "Library of Congress / Yale (PD, 1869).",
+    imagePath: "History/The Driving of the Golden Spike.jpg",
   },
   {
     id: "earthrise",
@@ -156,6 +157,7 @@ const FOUNDATIONAL: IconicPhoto[] = [
     location: "Brandenburg Gate, West Berlin",
     rights: "public-domain",
     source: "Reagan Presidential Library / National Archives (federal work, PD).",
+    imagePath: "History/Reagan at the Brandenburg Gate.jpg",
   },
   {
     id: "hoover-dam-construction",
@@ -169,6 +171,7 @@ const FOUNDATIONAL: IconicPhoto[] = [
     location: "Black Canyon, Nevada–Arizona border",
     rights: "public-domain",
     source: "Bureau of Reclamation / National Archives (PD).",
+    imagePath: "Infrastructure/Construction of the Hoover Dam.jpg",
   },
   {
     id: "ford-model-t-assembly-line",
@@ -182,6 +185,7 @@ const FOUNDATIONAL: IconicPhoto[] = [
     location: "Highland Park, Michigan",
     rights: "public-domain",
     source: "Library of Congress / Ford archives (PD, pre-1929).",
+    imagePath: "Economy/Ford Model T Assembly Line.jpg",
   },
 ];
 
@@ -199,6 +203,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     location: "Midtown Manhattan, New York City",
     rights: "public-domain",
     source: "Lewis Hine via NYPL / Library of Congress (PD).",
+    imagePath: "US Buildings/Construction of the Empire State Building.jpg",
   },
   {
     id: "macarthur-wading-ashore-leyte",
@@ -253,6 +258,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     location: "Black Hills, South Dakota",
     rights: "public-domain",
     source: "National Park Service / Library of Congress (PD).",
+    imagePath: "History/Mount Rushmore Under Construction.jpg",
   },
   {
     id: "bell-new-york-chicago-telephone",
@@ -387,6 +393,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     location: "Isthmus of Panama",
     rights: "public-domain",
     source: "Library of Congress / National Archives (PD).",
+    imagePath: "Infrastructure/Completion of the Panama Canal.jpg",
   },
 ];
 
@@ -472,16 +479,17 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
   },
   {
     id: "reagan-thatcher-camp-david",
-    title: "Ronald Reagan and Margaret Thatcher at Camp David",
-    year: "1984",
+    title: "Ronald Reagan and Margaret Thatcher",
+    year: "1988",
     caption: "The Anglo-American partnership that helped end the Cold War.",
     description:
-      "Reagan and British PM Margaret Thatcher, photographed at Camp David in 1984, embodied the close Western alliance of the late Cold War.",
+      "Reagan and British PM Margaret Thatcher embodied the close Western alliance of the late Cold War.",
     category: "History",
     section: "economy",
-    location: "Camp David, Maryland",
+    location: "London, United Kingdom",
     rights: "public-domain",
     source: "Reagan Presidential Library / National Archives (PD).",
+    imagePath: "History/Reagan and Thatcher.jpg",
   },
   {
     id: "patton-addressing-troops",
