@@ -259,7 +259,7 @@ export function Header() {
                         />
 
                         {/* Section header */}
-                        <div className="relative z-10 px-4 py-3 border-b border-white/10 bg-white/5">
+                        <div className="relative z-10 px-4 py-3 border-b border-white/10 bg-white/5 text-center">
                           <p className="font-body text-xs text-glory-gold uppercase tracking-widest font-semibold">
                             {section.title}
                           </p>
@@ -288,7 +288,7 @@ export function Header() {
                               <Link
                                 href={item.href}
                                 className={cn(
-                                  "flex flex-col px-4 py-2.5 hover:bg-white/8 transition-colors duration-150",
+                                  "flex flex-col items-center text-center px-4 py-2.5 hover:bg-white/8 transition-colors duration-150",
                                   "focus-visible:outline-none focus-visible:bg-white/8",
                                   pathname === item.href && "bg-glory-gold/10",
                                 )}
@@ -307,7 +307,7 @@ export function Header() {
                         </motion.ul>
 
                         {/* View all link */}
-                        <div className="relative z-10 px-4 py-3 border-t border-white/10 bg-white/5">
+                        <div className="relative z-10 px-4 py-3 border-t border-white/10 bg-white/5 flex justify-center">
                           <Link
                             href={section.href}
                             className="font-body text-xs text-glory-gold hover:text-glory-gold-dark font-semibold tracking-wide uppercase flex items-center gap-1 transition-colors"
@@ -323,16 +323,24 @@ export function Header() {
               ))}
 
               {/* More dropdown or Data link */}
-              <Link
-                href="/data"
-                onMouseEnter={() => {
-                  if (menuTimeout.current) clearTimeout(menuTimeout.current);
-                  setActiveMenu(null);
-                }}
-                className="flex items-center px-3.5 xl:px-4 py-2 rounded-lg font-body text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors h-full"
-              >
-                {copy.dataLink}
-              </Link>
+              <div className="relative flex items-center self-center">
+                <Link
+                  href="/data"
+                  onMouseEnter={() => {
+                    if (menuTimeout.current) clearTimeout(menuTimeout.current);
+                    setActiveMenu(null);
+                  }}
+                  className={cn(
+                    "flex items-center px-3.5 xl:px-4 py-2 rounded-lg font-body text-sm font-medium",
+                    "transition-colors duration-150",
+                    "text-white/80 hover:text-white hover:bg-white/10",
+                    pathname.startsWith("/data") && "text-glory-gold bg-glory-gold/10",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold",
+                  )}
+                >
+                  {copy.dataLink}
+                </Link>
+              </div>
             </nav>
 
             {/* ── Desktop CTA ────────────────────────────────────────────── */}
@@ -374,13 +382,13 @@ export function Header() {
                       className="absolute right-0 top-full z-60 mt-2 w-44 overflow-hidden rounded-2xl border border-white/15 bg-navy-dark/80 shadow-2xl backdrop-blur-2xl"
                       role="menu"
                     >
-                      {languageOptions.map((language) => (
+                       {languageOptions.map((language) => (
                         <button
                           key={language.code}
                           type="button"
                           onClick={() => handleLanguageSelect(language)}
                           className={cn(
-                            "flex w-full items-center justify-between px-4 py-3 text-left font-body text-sm transition-colors hover:bg-white/8",
+                            "flex w-full items-center justify-center gap-3 px-4 py-3 text-center font-body text-sm transition-colors hover:bg-white/8",
                             selectedLanguage.code === language.code
                               ? "bg-glory-gold/10 text-glory-gold"
                               : "text-white/80",
@@ -391,8 +399,8 @@ export function Header() {
                             <span>{language.flag}</span>
                             <span>{language.label}</span>
                           </span>
-                          <span className="text-xs tracking-widest">
-                            {language.code}
+                          <span className="text-xs tracking-widest opacity-60">
+                            ({language.code})
                           </span>
                         </button>
                       ))}
@@ -502,10 +510,13 @@ export function Header() {
                       )}
                     >
                       {/* Section row with split link/accordion trigger */}
-                      <div className="flex items-center justify-between w-full">
+                      <div className="relative flex items-center w-full">
                         <Link
                           href={section.href}
-                          className="flex-1 flex items-center gap-3 px-4 py-4 text-left font-display font-medium text-sm tracking-wide transition-colors"
+                          className={cn(
+                            "flex-1 flex items-center justify-center gap-3 py-4 text-center font-display font-medium text-sm tracking-wide transition-colors",
+                            section.items && section.items.length > 0 ? "pl-12 pr-12" : "px-4"
+                          )}
                         >
                           {/* Sequential index number */}
                           <span
@@ -528,17 +539,17 @@ export function Header() {
                           >
                             {section.title}
                           </span>
-                        </Link>
 
-                        <div className="flex items-center gap-2 pr-3">
-                          {/* Badge */}
+                          {/* Badge inside Link flow to prevent overlapping */}
                           {"badge" in section && (
                             <span className="text-[10px] font-body text-glory-gold bg-glory-gold/10 border border-glory-gold/20 font-semibold px-2 py-0.5 rounded-full select-none flex-shrink-0 whitespace-nowrap leading-none">
                               {section.badge}
                             </span>
                           )}
+                        </Link>
 
-                          {section.items && section.items.length > 0 && (
+                        {section.items && section.items.length > 0 && (
+                          <div className="absolute right-3 flex items-center">
                             <button
                               type="button"
                               onClick={() =>
@@ -560,8 +571,8 @@ export function Header() {
                                 )}
                               />
                             </button>
-                          )}
-                        </div>
+                          </div>
+                        )}
                       </div>
 
                       {/* Expandable sub-items */}
@@ -572,31 +583,23 @@ export function Header() {
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.25, ease: "easeInOut" }}
-                            className="border-t border-white/5 bg-black/20 relative"
+                            className="border-t border-white/5 bg-black/20"
                           >
-                            {/* Vertical spine line */}
-                            <div className="absolute left-[23px] top-0 bottom-6 w-[1px] bg-glory-gold/25" />
-
-                            <div className="py-2.5 space-y-1">
+                            <div className="py-2 px-3 space-y-1">
                               {section.items.map((item) => {
                                 const isChildActive = pathname === item.href;
                                 return (
                                   <Link
                                     key={item.href}
                                     href={item.href}
-                                    className="group relative flex flex-col pl-10 pr-4 py-2 transition-all duration-150"
+                                    className={cn(
+                                      "group flex flex-col items-center text-center px-4 py-2.5 rounded-xl transition-all duration-150 hover:bg-white/5",
+                                      isChildActive && "bg-glory-gold/5"
+                                    )}
                                   >
-                                    {/* Horizontal branch node */}
-                                    <div
-                                      className={cn(
-                                        "absolute left-[23px] w-3 h-[1px] transition-colors duration-200 top-[18px]",
-                                        isChildActive ? "bg-glory-gold" : "bg-white/20 group-hover:bg-white/40"
-                                      )}
-                                    />
-
                                     <span
                                       className={cn(
-                                        "font-body text-sm font-semibold transition-all duration-200 group-hover:translate-x-1",
+                                        "font-body text-sm font-semibold transition-all duration-200",
                                         isChildActive
                                           ? "text-glory-gold"
                                           : "text-white/70 group-hover:text-white"
@@ -607,7 +610,7 @@ export function Header() {
                                     {item.description && (
                                       <span
                                         className={cn(
-                                          "font-body text-[11px] mt-0.5 line-clamp-1 transition-all duration-200 group-hover:translate-x-1",
+                                          "font-body text-[11px] mt-0.5 transition-all duration-200",
                                           isChildActive
                                             ? "text-glory-gold/60"
                                             : "text-white/35 group-hover:text-white/50"
@@ -630,19 +633,19 @@ export function Header() {
                 <div className="mt-4 pt-4 border-t border-white/10 space-y-3">
                   <Link
                     href="/videos"
-                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
+                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold text-center"
                   >
                     {locale === "ro" ? "Video" : "Videos"}
                   </Link>
                   <Link
                     href="/gallery"
-                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
+                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold text-center"
                   >
                     {locale === "ro" ? "Galerie" : "Gallery"}
                   </Link>
                   <Link
                     href="/sitemap"
-                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
+                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold text-center"
                   >
                     {copy.viewAllCta}
                   </Link>
@@ -660,7 +663,7 @@ export function Header() {
                 </div>
 
                 <div className="mt-8 border-t border-white/10 px-4 pt-6">
-                  <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.28em] text-glory-gold">
+                  <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.28em] text-glory-gold text-center">
                     {copy.languageHeading}
                   </p>
                   <div className="space-y-2">
@@ -670,7 +673,7 @@ export function Header() {
                         type="button"
                         onClick={() => handleLanguageSelect(language)}
                         className={cn(
-                          "flex w-full items-center justify-between rounded-xl border px-4 py-3 text-left font-body text-sm transition-colors",
+                          "flex w-full items-center justify-center gap-3 rounded-xl border px-4 py-3 text-center font-body text-sm transition-colors",
                           selectedLanguage.code === language.code
                             ? "border-glory-gold/35 bg-glory-gold/10 text-glory-gold"
                             : "border-white/10 bg-white/5 text-white/75 hover:bg-white/10 hover:text-white",
@@ -680,8 +683,8 @@ export function Header() {
                           <span>{language.flag}</span>
                           <span>{language.label}</span>
                         </span>
-                        <span className="text-xs tracking-widest">
-                          {language.code}
+                        <span className="text-xs tracking-widest opacity-60">
+                          ({language.code})
                         </span>
                       </button>
                     ))}
