@@ -686,6 +686,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Chosin Reservoir, North Korea",
     rights: "public-domain",
     source: "USMC / National Archives (PD).",
+    imagePath: "Military/Iconic/The Chosin Reservoir Breakout.jpg",
   },
   {
     id: "toppling-statue-of-saddam-hussein",
@@ -699,6 +700,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Firdos Square, Baghdad, Iraq",
     rights: "public-domain",
     source: "USMC / DoD (PD).",
+    imagePath: "Military/Iconic/Toppling the Statue of Saddam Hussein.jpg",
   },
   {
     id: "tuskegee-airmen-briefing",
@@ -740,6 +742,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Iraq / Saudi Arabia",
     rights: "public-domain",
     source: "US Air Force (PD).",
+    imagePath: "Military/Iconic/F-117 Nighthawks in Desert Storm.jpg",
   },
   {
     id: "dead-confederate-sharpshooter-devils-den",
@@ -753,6 +756,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Gettysburg, Pennsylvania",
     rights: "public-domain",
     source: "Library of Congress (Gardner, PD).",
+    imagePath: "Military/Iconic/Dead Confederate Sharpshooter Devils Den.jpg",
   },
   {
     id: "marines-battle-of-fallujah",
@@ -766,6 +770,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Fallujah, Iraq",
     rights: "public-domain",
     source: "USMC / DoD (PD).",
+    imagePath: "Military/Iconic/Marines in the Battle of Fallujah.jpg",
   },
   {
     id: "blue-angels-over-uss-constitution",
@@ -792,6 +797,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Highway 80, Kuwait–Iraq",
     rights: "public-domain",
     source: "DoD / US Air Force (PD).",
+    imagePath: "Military/Iconic/The Highway of Death.jpg",
   },
   {
     id: "rough-riders-san-juan-hill",
@@ -874,6 +880,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Baghdad, Iraq",
     rights: "public-domain",
     source: "US Army / DoD (PD).",
+    imagePath: "Military/Iconic/M1 Abrams Tanks into Baghdad.jpg",
   },
   {
     id: "schwarzkopf-desert-storm-briefing",
@@ -956,6 +963,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Vandenberg Space Force Base, California",
     rights: "public-domain",
     source: "US Air Force (PD).",
+    imagePath: "Military/Iconic/Minuteman III Test Launch.jpg",
   },
   {
     id: "us-troops-pusan-perimeter",
@@ -969,6 +977,7 @@ const MILITARY: IconicPhoto[] = [
     location: "Pusan, South Korea",
     rights: "public-domain",
     source: "US Army / National Archives (PD).",
+    imagePath: "Military/Iconic/U.S. Troops at the Pusan Perimeter.jpg",
   },
   {
     id: "f-22-raptor-vertical-climb",

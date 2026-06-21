@@ -553,6 +553,81 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     featured: true,
   },
 
+  // ── Iconic American photographs — batch 4 (more Military, public domain) ──
+  "Military/Iconic/The Chosin Reservoir Breakout.jpg": {
+    alt: "U.S. Marines on a frozen ridge fighting out of encirclement at the Chosin Reservoir",
+    caption: "The Chosin Reservoir Breakout (1950)",
+    description:
+      "Surrounded by Chinese forces in sub-zero conditions, the 1st Marine Division fought its way out of the Chosin Reservoir in late 1950 — an epic of the Korean War.",
+    location: "Chosin Reservoir, North Korea",
+    theme: "Frozen Chosin",
+  },
+  "Military/Iconic/Toppling the Statue of Saddam Hussein.jpg": {
+    alt: "A statue of Saddam Hussein being pulled down in Firdos Square, Baghdad",
+    caption: "Toppling the Statue of Saddam Hussein (2003)",
+    description:
+      "On April 9, 2003, U.S. Marines and Iraqis pulled down a large statue of Saddam Hussein in Firdos Square — a symbol of the regime's fall.",
+    location: "Firdos Square, Baghdad, Iraq",
+    theme: "A regime falls",
+    featured: true,
+  },
+  "Military/Iconic/F-117 Nighthawks in Desert Storm.jpg": {
+    alt: "An F-117 Nighthawk stealth fighter flying over snow-capped mountains",
+    caption: "F-117 Nighthawk (Desert Storm, 1991)",
+    description:
+      "The faceted F-117 Nighthawk struck heavily defended targets in Baghdad in 1991, proving stealth airpower in combat during the Gulf War.",
+    location: "United States Air Force",
+    theme: "First in, unseen",
+  },
+  "Military/Iconic/Dead Confederate Sharpshooter Devils Den.jpg": {
+    alt: "A fallen Confederate soldier behind a stone wall at Devil's Den, Gettysburg",
+    caption: "Dead Confederate Sharpshooter, Devil's Den (1863)",
+    description:
+      "Alexander Gardner's somber Gettysburg photograph brought the human cost of the Civil War home to a nation that had never seen war so plainly.",
+    location: "Gettysburg, Pennsylvania",
+    theme: "The cost of war",
+  },
+  "Military/Iconic/Marines in the Battle of Fallujah.jpg": {
+    alt: "U.S. Marines advancing with a Humvee through urban combat in Fallujah",
+    caption: "Marines in the Battle of Fallujah (2004)",
+    description:
+      "The Second Battle of Fallujah in late 2004 was among the fiercest urban engagements fought by U.S. forces in the Iraq War.",
+    location: "Fallujah, Iraq",
+    theme: "Urban combat",
+  },
+  "Military/Iconic/The Highway of Death.jpg": {
+    alt: "Destroyed military and civilian vehicles strewn along Highway 80 out of Kuwait",
+    caption: "The Highway of Death (1991)",
+    description:
+      "Retreating Iraqi forces were struck on Highway 80 in February 1991; the wreckage became a stark image of the Gulf War's decisive close.",
+    location: "Highway 80, Kuwait–Iraq",
+    theme: "Decisive close",
+  },
+  "Military/Iconic/M1 Abrams Tanks into Baghdad.jpg": {
+    alt: "An M1 Abrams main battle tank with its crew advancing in Iraq",
+    caption: "M1 Abrams in Iraq (2003)",
+    description:
+      "The 'Thunder Runs' of April 2003 sent M1 Abrams tanks racing into Baghdad, collapsing organized resistance in the capital.",
+    location: "Iraq",
+    theme: "Armored spearhead",
+  },
+  "Military/Iconic/Minuteman III Test Launch.jpg": {
+    alt: "A Minuteman III intercontinental ballistic missile launching at night",
+    caption: "Minuteman III Test Launch",
+    description:
+      "Test launches of the Minuteman III from Vandenberg demonstrate the land-based leg of the U.S. nuclear deterrent triad.",
+    location: "Vandenberg Space Force Base, California",
+    theme: "The nuclear deterrent",
+  },
+  "Military/Iconic/U.S. Troops at the Pusan Perimeter.jpg": {
+    alt: "U.S. soldiers in a foxhole overlooking a valley while defending the Pusan Perimeter",
+    caption: "Defending the Pusan Perimeter (1950)",
+    description:
+      "American and allied forces held the Pusan Perimeter in 1950 against North Korean assault, buying time for the Inchon landing that turned the war.",
+    location: "Pusan, South Korea",
+    theme: "The last foothold",
+  },
+
   "Constitution/A view of the north side of Independence Hall in Philadelphia, showing the main building in the center with the east and west wings on the sides.jpg": {
     location: "Philadelphia, Pennsylvania",
     theme: "Founding Site",

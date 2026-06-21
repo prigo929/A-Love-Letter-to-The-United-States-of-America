@@ -657,6 +657,16 @@ import asset648 from "@/IMAGES/USA from Space/The James Webb Telescope First Dee
 import asset649 from "@/IMAGES/USA from Space/The First Image of a Black Hole.jpg";
 import asset650 from "@/IMAGES/History/Oppenheimer and Groves at the Trinity Site.jpg";
 import asset651 from "@/IMAGES/USA from Space/SpaceX Falcon Dual Booster Landing.jpg";
+// Iconic American photographs — batch 4 (more Military, public domain)
+import asset652 from "@/IMAGES/Military/Iconic/The Chosin Reservoir Breakout.jpg";
+import asset653 from "@/IMAGES/Military/Iconic/Toppling the Statue of Saddam Hussein.jpg";
+import asset654 from "@/IMAGES/Military/Iconic/F-117 Nighthawks in Desert Storm.jpg";
+import asset655 from "@/IMAGES/Military/Iconic/Dead Confederate Sharpshooter Devils Den.jpg";
+import asset656 from "@/IMAGES/Military/Iconic/Marines in the Battle of Fallujah.jpg";
+import asset657 from "@/IMAGES/Military/Iconic/The Highway of Death.jpg";
+import asset658 from "@/IMAGES/Military/Iconic/M1 Abrams Tanks into Baghdad.jpg";
+import asset659 from "@/IMAGES/Military/Iconic/Minuteman III Test Launch.jpg";
+import asset660 from "@/IMAGES/Military/Iconic/U.S. Troops at the Pusan Perimeter.jpg";
 
 export type GalleryAssetRecord = {
   path: string;
@@ -1319,6 +1329,16 @@ const RAW_GALLERY_ASSETS = [
   { path: "USA from Space/The First Image of a Black Hole.jpg", src: asset649 },
   { path: "History/Oppenheimer and Groves at the Trinity Site.jpg", src: asset650 },
   { path: "USA from Space/SpaceX Falcon Dual Booster Landing.jpg", src: asset651 },
+  // Iconic American photographs — batch 4 (more Military, public domain)
+  { path: "Military/Iconic/The Chosin Reservoir Breakout.jpg", src: asset652 },
+  { path: "Military/Iconic/Toppling the Statue of Saddam Hussein.jpg", src: asset653 },
+  { path: "Military/Iconic/F-117 Nighthawks in Desert Storm.jpg", src: asset654 },
+  { path: "Military/Iconic/Dead Confederate Sharpshooter Devils Den.jpg", src: asset655 },
+  { path: "Military/Iconic/Marines in the Battle of Fallujah.jpg", src: asset656 },
+  { path: "Military/Iconic/The Highway of Death.jpg", src: asset657 },
+  { path: "Military/Iconic/M1 Abrams Tanks into Baghdad.jpg", src: asset658 },
+  { path: "Military/Iconic/Minuteman III Test Launch.jpg", src: asset659 },
+  { path: "Military/Iconic/U.S. Troops at the Pusan Perimeter.jpg", src: asset660 },
 ] as const satisfies readonly GalleryAssetRecord[];
 
 export const GALLERY_ASSETS: readonly GalleryAssetRecord[] = Array.from(
