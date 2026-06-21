@@ -755,6 +755,66 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     theme: "The special relationship",
   },
 
+  // ── Iconic American photographs — batch 7 (Culture, Quality of Life & Constitution, public domain) ──
+  "History/MLK at the Lincoln Memorial.jpg": {
+    alt: "Martin Luther King Jr. delivering the I Have a Dream speech at a bank of microphones",
+    caption: "Martin Luther King Jr. at the Lincoln Memorial (1963)",
+    description:
+      "Martin Luther King Jr. delivered his 'I Have a Dream' speech at the March on Washington on August 28, 1963 — a turning point of the civil-rights movement.",
+    location: "Lincoln Memorial, Washington, D.C.",
+    theme: "I have a dream",
+    featured: true,
+  },
+  "Culture/Famous People/Elvis Meeting Nixon.jpg": {
+    alt: "Elvis Presley shaking hands with President Richard Nixon in the Oval Office",
+    caption: "Elvis Meets Nixon (1970)",
+    description:
+      "Elvis Presley's surreal 1970 White House visit produced what became the most-requested photograph in the U.S. National Archives.",
+    location: "The White House, Washington, D.C.",
+    theme: "The King and the President",
+  },
+  "History/Migrant Mother.jpg": {
+    alt: "Dorothea Lange's portrait of Florence Owens Thompson and her children",
+    caption: "Migrant Mother (1936)",
+    description:
+      "Dorothea Lange's portrait for the Farm Security Administration became the defining image of the Great Depression and American documentary photography.",
+    location: "Nipomo, California",
+    theme: "Face of the Depression",
+    featured: true,
+  },
+  "History/The Kitchen Debate.jpg": {
+    alt: "Nixon and Khrushchev debating beside a model American kitchen in Moscow",
+    caption: "The Kitchen Debate (1959)",
+    description:
+      "At the 1959 American National Exhibition in Moscow, Vice President Nixon and Khrushchev debated the merits of capitalism amid a model American kitchen.",
+    location: "Moscow, USSR",
+    theme: "Capitalism on display",
+  },
+  "History/Trump Inauguration.jpg": {
+    alt: "Donald Trump greeting Barack Obama at the 2017 presidential inauguration",
+    caption: "President Trump's Inauguration (2017)",
+    description:
+      "Donald Trump was sworn in as the 45th President of the United States on the West Front of the Capitol on January 20, 2017.",
+    location: "U.S. Capitol, Washington, D.C.",
+    theme: "Peaceful transfer of power",
+  },
+  "US Buildings/Capitol Dome Under Construction.jpg": {
+    alt: "The cast-iron dome of the U.S. Capitol partly built and surrounded by scaffolding",
+    caption: "The Capitol Dome Under Construction (1861)",
+    description:
+      "Lincoln insisted construction of the Capitol's new cast-iron dome continue through the Civil War as a symbol that the Union would endure; it was completed in 1863.",
+    location: "Washington, D.C.",
+    theme: "The Union endures",
+  },
+  "History/Antonin Scalia.jpg": {
+    alt: "Official Supreme Court portrait of Justice Antonin Scalia",
+    caption: "Justice Antonin Scalia",
+    description:
+      "Antonin Scalia, appointed in 1986, became one of the most influential voices for originalism and textualism in American law.",
+    location: "Supreme Court, Washington, D.C.",
+    theme: "Originalism",
+  },
+
   "Constitution/A view of the north side of Independence Hall in Philadelphia, showing the main building in the center with the east and west wings on the sides.jpg": {
     location: "Philadelphia, Pennsylvania",
     theme: "Founding Site",

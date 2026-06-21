@@ -47,6 +47,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import DeepDiveSection from "@/components/shared/DeepDiveSection";
+import { IconicPhotographs } from "@/components/shared/IconicPhotographs";
 import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 import { getConstitutionPageCopy } from "@/lib/i18n/messages/pages";
 import {
@@ -543,6 +544,11 @@ export default async function ConstitutionPage() {
       </div>
 
       {/* Deep Dive Archive */}
+      <IconicPhotographs
+        section="constitution"
+        intro="The institutions and milestones of American self-government — from the Capitol dome to the modern Court, captured on film."
+      />
+
       <div className="bg-[#080B12]">
         <DeepDiveSection
           locale={locale}

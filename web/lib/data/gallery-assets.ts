@@ -684,6 +684,14 @@ import asset672 from "@/IMAGES/US Buildings/Construction of the Empire State Bui
 import asset673 from "@/IMAGES/Infrastructure/Completion of the Panama Canal.jpg";
 import asset674 from "@/IMAGES/History/Mount Rushmore Under Construction.jpg";
 import asset675 from "@/IMAGES/History/Reagan and Thatcher.jpg";
+// Iconic American photographs — batch 7 (Culture, Quality of Life & Constitution, public domain)
+import asset676 from "@/IMAGES/History/MLK at the Lincoln Memorial.jpg";
+import asset677 from "@/IMAGES/Culture/Famous People/Elvis Meeting Nixon.jpg";
+import asset678 from "@/IMAGES/History/Migrant Mother.jpg";
+import asset679 from "@/IMAGES/History/The Kitchen Debate.jpg";
+import asset680 from "@/IMAGES/History/Trump Inauguration.jpg";
+import asset681 from "@/IMAGES/US Buildings/Capitol Dome Under Construction.jpg";
+import asset682 from "@/IMAGES/History/Antonin Scalia.jpg";
 
 export type GalleryAssetRecord = {
   path: string;
@@ -1373,6 +1381,14 @@ const RAW_GALLERY_ASSETS = [
   { path: "Infrastructure/Completion of the Panama Canal.jpg", src: asset673 },
   { path: "History/Mount Rushmore Under Construction.jpg", src: asset674 },
   { path: "History/Reagan and Thatcher.jpg", src: asset675 },
+  // Iconic American photographs — batch 7 (Culture, Quality of Life & Constitution, public domain)
+  { path: "History/MLK at the Lincoln Memorial.jpg", src: asset676 },
+  { path: "Culture/Famous People/Elvis Meeting Nixon.jpg", src: asset677 },
+  { path: "History/Migrant Mother.jpg", src: asset678 },
+  { path: "History/The Kitchen Debate.jpg", src: asset679 },
+  { path: "History/Trump Inauguration.jpg", src: asset680 },
+  { path: "US Buildings/Capitol Dome Under Construction.jpg", src: asset681 },
+  { path: "History/Antonin Scalia.jpg", src: asset682 },
 ] as const satisfies readonly GalleryAssetRecord[];
 
 export const GALLERY_ASSETS: readonly GalleryAssetRecord[] = Array.from(

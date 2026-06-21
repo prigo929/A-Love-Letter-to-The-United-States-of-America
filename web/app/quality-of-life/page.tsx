@@ -15,6 +15,7 @@ import {
 } from "@/components/economy/EconomyAnimations";
 import { SITE_IMAGES } from "@/lib/site-images";
 import DeepDiveSection from "@/components/shared/DeepDiveSection";
+import { IconicPhotographs } from "@/components/shared/IconicPhotographs";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
@@ -440,6 +441,11 @@ export default async function QualityOfLifePage() {
       </div>
 
       {/* Deep Dive Archive */}
+      <IconicPhotographs
+        section="quality-of-life"
+        intro="The postwar American dream — abundance, suburbia, and the everyday life that defined mid-century prosperity, captured on film."
+      />
+
       <div id="explore">
         <DeepDiveSection
           locale={locale}

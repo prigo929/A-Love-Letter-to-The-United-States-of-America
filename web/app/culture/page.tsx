@@ -20,6 +20,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import DeepDiveSection from "@/components/shared/DeepDiveSection";
+import { IconicPhotographs } from "@/components/shared/IconicPhotographs";
 import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 
 import {
@@ -231,6 +232,12 @@ export default async function CulturePage() {
 
       {/* §20 — Quote Carousel */}
       <CultureQuoteCarousel quotes={quotes} />
+
+      {/* Iconic Photographs */}
+      <IconicPhotographs
+        section="culture"
+        intro="American sport, music, film, and celebrity — the figures and moments that shaped the nation's popular culture, captured on film."
+      />
 
       {/* Deep Dive Archive */}
       <DeepDiveSection

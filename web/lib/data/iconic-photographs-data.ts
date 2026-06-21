@@ -424,6 +424,7 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
     location: "U.S. Capitol, Washington, D.C.",
     rights: "public-domain",
     source: "Official White House / DoD photo (federal work, PD).",
+    imagePath: "History/Trump Inauguration.jpg",
   },
   {
     id: "the-vagabonds-camping-trip",
@@ -530,6 +531,7 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
     location: "Washington, D.C.",
     rights: "public-domain",
     source: "Library of Congress / Architect of the Capitol (PD).",
+    imagePath: "US Buildings/Capitol Dome Under Construction.jpg",
   },
   {
     id: "boeing-747-maiden-flight",
@@ -587,16 +589,17 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
   },
   {
     id: "scalia-swearing-in",
-    title: "Antonin Scalia's Swearing-in to the Supreme Court",
+    title: "Justice Antonin Scalia",
     year: "1986",
-    caption: "A leading originalist joins the Court.",
+    caption: "A leading originalist on the Court.",
     description:
-      "Antonin Scalia was sworn in as an Associate Justice in 1986, becoming one of the most influential voices for originalism and textualism in American law.",
+      "Antonin Scalia, appointed in 1986, became one of the most influential voices for originalism and textualism in American law.",
     category: "History",
     section: "constitution",
     location: "Washington, D.C.",
     rights: "public-domain",
     source: "Supreme Court / White House photo (federal work, PD).",
+    imagePath: "History/Antonin Scalia.jpg",
   },
 ];
 
@@ -1045,6 +1048,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     location: "The White House, Washington, D.C.",
     rights: "public-domain",
     source: "National Archives (federal work, PD).",
+    imagePath: "Culture/Famous People/Elvis Meeting Nixon.jpg",
   },
   {
     id: "marilyn-monroe-subway-grate",
@@ -1084,6 +1088,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     location: "Lincoln Memorial, Washington, D.C.",
     rights: "public-domain",
     source: "National Archives / US Information Agency frames (federal work, PD).",
+    imagePath: "History/MLK at the Lincoln Memorial.jpg",
   },
   {
     id: "babe-ruth-farewell",
@@ -1136,6 +1141,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     location: "Nipomo, California",
     rights: "public-domain",
     source: "Library of Congress (FSA, PD).",
+    imagePath: "History/Migrant Mother.jpg",
   },
   {
     id: "jordan-free-throw-line-dunk",
@@ -2037,6 +2043,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     location: "Moscow, USSR",
     rights: "public-domain",
     source: "US government / National Archives (PD).",
+    imagePath: "History/The Kitchen Debate.jpg",
   },
   {
     id: "levittown-aerial",
