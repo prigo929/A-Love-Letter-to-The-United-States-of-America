@@ -36,47 +36,7 @@ function categoryLabel(category: GalleryCategory, allLabel: string) {
   return category === "All" ? allLabel : category;
 }
 
-function FeaturedFrame({
-  image,
-  onSelect,
-}: {
-  image: GalleryImage;
-  onSelect: (image: GalleryImage) => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={() => onSelect(image)}
-      className="group relative block h-[320px] overflow-hidden rounded-lg border border-white/10 bg-white/5 text-left shadow-2xl md:h-full"
-    >
-      <Image
-        src={image.src}
-        alt={image.alt}
-        fill
-        className="object-cover transition duration-700 group-hover:scale-[1.03] group-hover:saturate-125"
-        sizes="(max-width: 768px) 100vw, 48vw"
-        placeholder="blur"
-        blurDataURL={BLUR_PLACEHOLDER}
-        priority
-      />
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/18 to-transparent"
-        aria-hidden="true"
-      />
-      <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
-        <p className="mb-2 w-fit max-w-full truncate rounded-full border border-white/15 bg-black/35 px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 backdrop-blur">
-          {image.theme}
-        </p>
-        <h2 className="font-display text-2xl leading-tight text-white md:text-4xl">
-          {image.caption}
-        </h2>
-        <p className="mt-2 max-w-2xl font-body leading-relaxed text-white/65 line-clamp-2 text-sm">
-          {image.description}
-        </p>
-      </div>
-    </button>
-  );
-}
+
 
 function GalleryTile({
   image,
@@ -404,7 +364,7 @@ export function GalleryExperience({
     [filteredImages],
   );
 
-  const featuredImages = images.filter((image) => image.featured).slice(0, 3);
+
 
   // Flat display order for keyboard / arrow navigation inside the lightbox.
   const orderedImages = useMemo(
@@ -427,7 +387,7 @@ export function GalleryExperience({
 
   return (
     <main className="min-h-screen bg-[#05070d] text-white">
-      <section className="relative min-h-[92svh] overflow-hidden px-4 pb-14 pt-24 sm:px-6 lg:px-8">
+      <section className="relative min-h-[60svh] overflow-hidden px-4 pb-14 pt-24 sm:px-6 lg:px-8">
         <div className="absolute inset-0" aria-hidden="true">
           <Image
             src={heroImage.src}
@@ -445,7 +405,7 @@ export function GalleryExperience({
           <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-[#05070d] via-[#05070d]/85 to-transparent" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[calc(92svh-9.5rem)] max-w-screen-xl flex-col justify-end">
+        <div className="relative mx-auto flex min-h-[calc(60svh-9.5rem)] max-w-screen-xl flex-col justify-end">
           <nav
             aria-label="Breadcrumb"
             className="mb-8 flex flex-wrap items-center gap-1.5 font-body text-sm text-white/60"
@@ -463,52 +423,40 @@ export function GalleryExperience({
             </span>
           </nav>
 
-          <div className="grid gap-8 xl:grid-cols-[360px_minmax(0,1fr)] xl:items-end">
-            <div>
-              <p className="section-eyebrow">{copy.eyebrow}</p>
-              <h1 className="mt-3 max-w-3xl font-display text-h1 leading-none text-white">
-                {copy.title}
-              </h1>
-              <p className="mt-5 max-w-xl font-body text-base leading-7 text-white/64 md:text-lg">
-                {copy.description}
-              </p>
+          <div className="max-w-3xl">
+            <p className="section-eyebrow">{copy.eyebrow}</p>
+            <h1 className="mt-3 font-display text-h1 leading-none text-white">
+              {copy.title}
+            </h1>
+            <p className="mt-5 font-body text-base leading-7 text-white/64 md:text-lg">
+              {copy.description}
+            </p>
 
-              <div className="mt-8 grid grid-cols-2 gap-3">
-                <div className="rounded-lg border border-white/10 bg-white/[0.04] p-4 backdrop-blur">
-                  <Camera
-                    className="mb-4 h-5 w-5 text-glory-gold"
-                    aria-hidden="true"
-                  />
-                  <p className="font-hero text-4xl leading-none text-white">
-                    {images.length}
-                  </p>
-                  <p className="mt-1 font-body text-xs font-semibold uppercase tracking-[0.18em] text-white/42">
-                    {copy.collection}
-                  </p>
-                </div>
-                <div className="rounded-lg border border-white/10 bg-white/[0.04] p-4 backdrop-blur">
-                  <Grid3X3
-                    className="mb-4 h-5 w-5 text-glory-gold"
-                    aria-hidden="true"
-                  />
-                  <p className="font-hero text-4xl leading-none text-white">
-                    {categories.length - 1}
-                  </p>
-                  <p className="mt-1 font-body text-xs font-semibold uppercase tracking-[0.18em] text-white/42">
-                    {copy.featured}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid gap-3 md:h-[700px] md:grid-cols-2">
-              {featuredImages.map((image) => (
-                <FeaturedFrame
-                  key={image.path}
-                  image={image}
-                  onSelect={setSelectedImage}
+            <div className="mt-8 grid max-w-md grid-cols-2 gap-3">
+              <div className="rounded-lg border border-white/10 bg-white/[0.04] p-4 backdrop-blur">
+                <Camera
+                  className="mb-4 h-5 w-5 text-glory-gold"
+                  aria-hidden="true"
                 />
-              ))}
+                <p className="font-hero text-4xl leading-none text-white">
+                  {images.length}
+                </p>
+                <p className="mt-1 font-body text-xs font-semibold uppercase tracking-[0.18em] text-white/42">
+                  {copy.collection}
+                </p>
+              </div>
+              <div className="rounded-lg border border-white/10 bg-white/[0.04] p-4 backdrop-blur">
+                <Grid3X3
+                  className="mb-4 h-5 w-5 text-glory-gold"
+                  aria-hidden="true"
+                />
+                <p className="font-hero text-4xl leading-none text-white">
+                  {categories.length - 1}
+                </p>
+                <p className="mt-1 font-body text-xs font-semibold uppercase tracking-[0.18em] text-white/42">
+                  {copy.featured}
+                </p>
+              </div>
             </div>
           </div>
         </div>
