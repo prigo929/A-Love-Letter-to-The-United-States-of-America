@@ -131,7 +131,7 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
               <div className="flex items-center gap-2">
                 <span className="font-display text-2xl font-black text-[#F5F0E8]">{parties[0]?.[1] || 0}</span>
                 <div className="flex flex-col">
-                  <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: PARTY_COLORS[parties[0]?.[0]] }}>
+                  <span className="font-body text-[10px] uppercase tracking-widest" style={{ color: PARTY_COLORS[parties[0]?.[0]] }}>
                     {viewMode === "President" ? (
                       (yd.thirdPartyCandidates?.[parties[0]?.[0]] || 
                        ((parties[0]?.[0] === "DEM" || (year < 1860 && parties[0]?.[0] === "DR")) ? yd.demCandidate :
@@ -142,11 +142,11 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
                     {!isOffYear && parties[0]?.[1] > (parties[1]?.[1] || 0) && <span className="ml-1 text-white">✓</span>}
                   </span>
                   {viewMode === "President" && !isOffYear && getPopVote(parties[0]?.[0]) > 0 && (
-                    <span className="font-mono text-[9px] text-[#8A8780] opacity-80">
+                    <span className="font-body text-[9px] text-[#8A8780] opacity-80">
                       {getPopVote(parties[0]?.[0]).toLocaleString()}
                     </span>
                   )}
-                  {yd.unopposed && <span className="font-mono text-[8px] text-[#8A8780] uppercase tracking-tighter">{isRo ? "FĂRĂ OPOZIȚIE" : "UNOPPOSED"}</span>}
+                  {yd.unopposed && <span className="font-body text-[8px] text-[#8A8780] uppercase tracking-tighter">{isRo ? "FĂRĂ OPOZIȚIE" : "UNOPPOSED"}</span>}
                 </div>
               </div>
             </div>
@@ -156,7 +156,7 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
               <div className="flex flex-col items-end">
                 <div className="flex items-center gap-2">
                   <div className="flex flex-col items-end">
-                    <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: PARTY_COLORS[parties[1]?.[0]] }}>
+                    <span className="font-body text-[10px] uppercase tracking-widest" style={{ color: PARTY_COLORS[parties[1]?.[0]] }}>
                       {viewMode === "President" ? (
                         (yd.thirdPartyCandidates?.[parties[1]?.[0]] || 
                          ((parties[1]?.[0] === "DEM" || (year < 1860 && parties[1]?.[0] === "DR")) ? yd.demCandidate :
@@ -166,7 +166,7 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
                       ) : PARTY_FULL_NAMES[parties[1]?.[0]] || parties[1]?.[0]}
                     </span>
                     {viewMode === "President" && !isOffYear && getPopVote(parties[1]?.[0]) > 0 && (
-                      <span className="font-mono text-[9px] text-[#8A8780] opacity-80">
+                      <span className="font-body text-[9px] text-[#8A8780] opacity-80">
                         {getPopVote(parties[1]?.[0]).toLocaleString()}
                       </span>
                     )}
@@ -217,13 +217,13 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
           <div className="absolute inset-y-0 left-1/2 z-10 w-[3px] -translate-x-1/2 bg-black" />
           
           {/* Threshold Label (Above the bar) */}
-          <div className="absolute left-1/2 -top-[16px] z-20 -translate-x-1/2 whitespace-nowrap bg-[#080B12] px-1 font-mono text-[8px] font-bold tracking-tighter text-[#8A8780]">
+          <div className="absolute left-1/2 -top-[16px] z-20 -translate-x-1/2 whitespace-nowrap bg-[#080B12] px-1 font-body text-[8px] font-bold tracking-tighter text-[#8A8780]">
             {thresholdLabel}
           </div>
         </div>
       {/* ── BOTTOM DATA BAR ───────────────────────────────────────────────────── */}
       {viewMode === "President" && (
-        <div className="mt-1 flex justify-between font-mono text-[9px] text-[#8A8780]">
+        <div className="mt-1 flex justify-between font-body text-[9px] text-[#8A8780]">
           <span>
             {getPopVote(p1) > 0 ? `${getPopVote(p1).toLocaleString()} ${isRo ? "voturi" : "votes"} (${((getPopVote(p1) / yd.totalPopVote) * 100).toFixed(1)}%)` : "---"}
           </span>
@@ -235,21 +235,21 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
       )}
       
       {viewMode === "Senate" && (
-        <div className="mt-1 flex justify-between font-mono text-[9px] text-[#8A8780]">
+        <div className="mt-1 flex justify-between font-body text-[9px] text-[#8A8780]">
           <span>{notUpCount} {isRo ? "locuri nu se aleg acum" : "seats not up for election"}</span>
           <span style={{ color: PARTY_COLORS[topParty] }}>{netGainStr}</span>
         </div>
       )}
 
       {viewMode === "Governor" && (
-        <div className="mt-1 flex justify-between font-mono text-[9px] text-[#8A8780]">
+        <div className="mt-1 flex justify-between font-body text-[9px] text-[#8A8780]">
           <span>{notUpCount} {isRo ? "guvernatori nu se aleg acum" : "governors not up for election"}</span>
           <span style={{ color: PARTY_COLORS[topParty] }}>{netGainStr}</span>
         </div>
       )}
 
       {viewMode === "House" && (
-        <div className="mt-1 flex justify-between font-mono text-[9px] text-[#8A8780]">
+        <div className="mt-1 flex justify-between font-body text-[9px] text-[#8A8780]">
           <span style={{ color: PARTY_COLORS[topParty] }}>{netGainStr}</span>
           <span></span>
         </div>

@@ -648,18 +648,18 @@ export function MapRenderer({ year, viewMode, onStateClick, isRo }: { year: numb
           style={{ left: Math.min(tip.x + 12, typeof window !== "undefined" ? window.innerWidth - 230 : 800), top: Math.max(tip.y - 56, 8) }}>
           <div className="border border-[rgba(201,168,76,0.2)] bg-[#080B12]/97 px-3 py-2 backdrop-blur-sm" style={{ minWidth: 180 }}>
             <p className="font-body text-[11px] font-bold tracking-wide text-[#F5F0E8]">{tip.name}</p>
-            <p className="mt-0.5 font-mono text-[10px] text-[#8A8780]">{tip.detail}</p>
+            <p className="mt-0.5 font-body text-[10px] text-[#8A8780]">{tip.detail}</p>
             {tip.party && (
               <div className="mt-1 flex items-center gap-1.5">
                 {Array.isArray(tip.party) ? tip.party.map((p, i) => (
                   <div key={i} className="flex items-center gap-1">
                     <div className="h-[6px] w-[6px]" style={{ background: pc(p) }} />
-                    <span className="font-mono text-[8px] uppercase tracking-widest text-[#6B6860]">{p}</span>
+                    <span className="font-body text-[8px] uppercase tracking-widest text-[#6B6860]">{p}</span>
                   </div>
                 )) : (
                   <div className="flex items-center gap-1">
                     <div className="h-[6px] w-[6px]" style={{ background: pc(tip.party) }} />
-                    <span className="font-mono text-[8px] uppercase tracking-widest text-[#6B6860]">{PARTY_FULL_NAMES[tip.party] || tip.party}</span>
+                    <span className="font-body text-[8px] uppercase tracking-widest text-[#6B6860]">{PARTY_FULL_NAMES[tip.party] || tip.party}</span>
                   </div>
                 )}
               </div>
@@ -671,7 +671,7 @@ export function MapRenderer({ year, viewMode, onStateClick, isRo }: { year: numb
       {isOffYear && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
           <div className="bg-[#080B12]/60 px-8 py-4 border border-[rgba(201,168,76,0.3)] backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-            <span className="font-mono text-[10px] md:text-[12px] uppercase tracking-[0.6em] text-[#C9A84C] font-black text-center block">
+            <span className="font-body text-[10px] md:text-[12px] uppercase tracking-[0.6em] text-[#C9A84C] font-black text-center block">
               {isRo ? "AN INTERMEDIAR: FĂRĂ ALEGERI PREZIDENȚIALE" : "OFF-YEAR: NO PRESIDENTIAL ELECTION"}
             </span>
           </div>

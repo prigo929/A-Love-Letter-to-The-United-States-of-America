@@ -57,13 +57,13 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
     <div className="relative w-full">
       {/* Header */}
       <div className="mb-6 text-center">
-        <p className="mb-1 font-mono text-[9px] uppercase tracking-[0.3em] text-[#C9A84C]">
+        <p className="mb-1 font-body text-[9px] uppercase tracking-[0.3em] text-[#C9A84C]">
           {isRo ? "Arhiva Electorală · 1789–2024" : "Electoral Archive · 1789–2024"}
         </p>
         <h2 className="font-display text-2xl font-bold text-[#F5F0E8] md:text-3xl">
           {isRo ? "Harta Democrației Americane" : "The Map of American Democracy"}
         </h2>
-        <p className="mt-1 font-mono text-[10px] text-[#6B6860]">
+        <p className="mt-1 font-body text-[10px] text-[#6B6860]">
           {isRo ? "← → sau tastele 1-4 · click pe stat pentru detalii" : "← → or keys 1-4 · click state for details"}
         </p>
       </div>
@@ -72,7 +72,7 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
       <div className="mb-4 flex flex-wrap items-center justify-center gap-1">
         {VIEWS.map((m, i) => (
           <button key={m.key} onClick={() => setView(m.key)}
-            className={`relative px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all ${view === m.key ? "text-[#C9A84C]" : "text-[#6B6860] hover:text-[#B8B4AC]"}`}>
+            className={`relative px-3 py-1.5 font-body text-[10px] uppercase tracking-widest transition-all ${view === m.key ? "text-[#C9A84C]" : "text-[#6B6860] hover:text-[#B8B4AC]"}`}>
             <span className="mr-1 text-[8px] opacity-30">{i + 1}</span>
             {isRo ? m.ro : m.en}
             {view === m.key && <motion.div layoutId="vtab" className="absolute bottom-0 left-0 right-0 h-[1px] bg-[#C9A84C]" transition={{ type: "spring", stiffness: 400, damping: 30 }} />}
@@ -81,7 +81,7 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
       </div>
       <AnimatePresence mode="wait">
         <motion.p key={view} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-          className="mb-4 text-center font-mono text-[9px] uppercase tracking-widest text-[#6B6860]">
+          className="mb-4 text-center font-body text-[9px] uppercase tracking-widest text-[#6B6860]">
           {isRo ? v.descRo : v.descEn}
         </motion.p>
       </AnimatePresence>
@@ -101,11 +101,11 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
           {activeParties.map((p) => (
             <div key={p} className="flex items-center gap-1">
               <div className="h-[6px] w-[6px]" style={{ background: PARTY_COLORS[p] || "#C9A84C" }} />
-              <span className="font-mono text-[9px] uppercase tracking-widest text-[#8A8780]">{PARTY_FULL_NAMES[p] || p}</span>
+              <span className="font-body text-[9px] uppercase tracking-widest text-[#8A8780]">{PARTY_FULL_NAMES[p] || p}</span>
             </div>
           ))}
           {view === "House" && (
-            <span className="font-mono text-[8px] text-[#6B6860]">● = 1 rep</span>
+            <span className="font-body text-[8px] text-[#6B6860]">● = 1 rep</span>
           )}
         </div>
       </div>
@@ -123,8 +123,8 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
           { l: isRo ? "Alegeri" : "Elections", v: String(YEARS.length) },
         ].map((s) => (
           <div key={s.l} className="flex-1 border border-[rgba(201,168,76,0.04)] bg-[#080B12] p-2 text-center min-w-[70px]">
-            <p className="font-mono text-[7px] uppercase tracking-widest text-[#6B6860]">{s.l}</p>
-            <p className="font-mono text-sm font-bold text-[#C9A84C]" style={{ fontVariantNumeric: "tabular-nums" }}>{s.v}</p>
+            <p className="font-body text-[7px] uppercase tracking-widest text-[#6B6860]">{s.l}</p>
+            <p className="font-body text-sm font-bold text-[#C9A84C]" style={{ fontVariantNumeric: "tabular-nums" }}>{s.v}</p>
           </div>
         ))}
       </div>

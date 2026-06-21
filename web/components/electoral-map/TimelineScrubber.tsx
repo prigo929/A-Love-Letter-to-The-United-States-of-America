@@ -85,12 +85,12 @@ export function TimelineScrubber({
             aria-label={playing ? "Pause" : "Play"}>
             <span className="text-[8px]">{playing ? "⏸" : "▶"}</span>
           </button>
-          <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#6B6860]">
+          <span className="font-body text-[8px] uppercase tracking-[0.2em] text-[#6B6860]">
             {isRo ? "Cronologie" : "Timeline"} · {years.length} {isRo ? "alegeri" : "elections"}
           </span>
         </div>
         <motion.span key={currentYear} initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-          className="font-mono text-sm font-bold text-[#C9A84C]" style={{ fontVariantNumeric: "tabular-nums" }}>
+          className="font-body text-sm font-bold text-[#C9A84C]" style={{ fontVariantNumeric: "tabular-nums" }}>
           {currentYear}
         </motion.span>
       </div>
@@ -153,7 +153,7 @@ export function TimelineScrubber({
             else if (y === MAX_YEAR) { positionClasses = "-translate-x-full"; leftStyle = "100%"; }
 
             return (
-              <div key={`lbl-${y}`} className={`absolute font-mono tracking-tighter whitespace-nowrap ${positionClasses} ${active ? "text-[10px] font-bold text-[#C9A84C] -translate-y-[6px] z-10" : hov ? "text-[9px] text-[rgba(201,168,76,0.6)] z-0" : "text-[9px] text-[rgba(201,168,76,0.3)] z-0"}`} style={{ left: leftStyle, fontVariantNumeric: "tabular-nums" }}>
+              <div key={`lbl-${y}`} className={`absolute font-body tracking-tighter whitespace-nowrap ${positionClasses} ${active ? "text-[10px] font-bold text-[#C9A84C] -translate-y-[6px] z-10" : hov ? "text-[9px] text-[rgba(201,168,76,0.6)] z-0" : "text-[9px] text-[rgba(201,168,76,0.3)] z-0"}`} style={{ left: leftStyle, fontVariantNumeric: "tabular-nums" }}>
                 <span className={active ? "bg-[#080B12] px-1 py-0.5 rounded-sm" : ""}>{y}</span>
               </div>
             );

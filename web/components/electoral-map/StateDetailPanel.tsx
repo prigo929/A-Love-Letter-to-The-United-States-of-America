@@ -70,7 +70,7 @@ export function StateDetailPanel({
       <div className="p-5">
         {/* Close */}
         <button onClick={onClose}
-          className="absolute right-3 top-3 flex h-6 w-6 items-center justify-center text-[#6B6860] transition-colors hover:text-[#F5F0E8] font-mono text-xs">
+          className="absolute right-3 top-3 flex h-6 w-6 items-center justify-center text-[#6B6860] transition-colors hover:text-[#F5F0E8] font-body text-xs">
           ✕
         </button>
 
@@ -78,7 +78,7 @@ export function StateDetailPanel({
         <h2 className="mb-1 pr-8 font-display text-4xl font-black leading-none text-[#F5F0E8]">
           {stateName}
         </h2>
-        <div className="mb-5 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-[#6B6860]"
+        <div className="mb-5 flex items-center gap-2 font-body text-[10px] uppercase tracking-widest text-[#6B6860]"
           style={{ fontVariantNumeric: "tabular-nums" }}>
           {admitted && (
             <span className="border border-[rgba(201,168,76,0.12)] bg-[rgba(201,168,76,0.04)] px-1.5 py-0.5">
@@ -102,11 +102,11 @@ export function StateDetailPanel({
             >
               <div className="px-3 py-2.5">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="font-mono text-[8px] uppercase tracking-widest text-[#6B6860]">
+                  <span className="font-body text-[8px] uppercase tracking-widest text-[#6B6860]">
                     {r.label}
                   </span>
                   {r.blocks.length === 1 && r.blocks[0].flipped && (
-                    <span className="animate-pulse rounded-sm bg-[#C9A84C]/20 px-1 py-[1px] font-mono text-[7px] font-bold uppercase tracking-widest text-[#C9A84C]">
+                    <span className="animate-pulse rounded-sm bg-[#C9A84C]/20 px-1 py-[1px] font-body text-[7px] font-bold uppercase tracking-widest text-[#C9A84C]">
                       FLIP
                     </span>
                   )}
@@ -116,12 +116,12 @@ export function StateDetailPanel({
                     <div key={i} className="flex items-center justify-between">
                       <div className="flex items-center gap-1.5">
                         <div className="h-2 w-2 rounded-[1px]" style={{ background: pc(b.party) }} />
-                        <span className="font-mono text-[12px] font-bold text-[#F5F0E8]">
+                        <span className="font-body text-[12px] font-bold text-[#F5F0E8]">
                           {b.detail}
                         </span>
                       </div>
                       {r.blocks.length > 1 && b.flipped && (
-                        <span className="animate-pulse rounded-sm bg-[#C9A84C]/20 px-1 py-[1px] font-mono text-[7px] font-bold uppercase tracking-widest text-[#C9A84C]">
+                        <span className="animate-pulse rounded-sm bg-[#C9A84C]/20 px-1 py-[1px] font-body text-[7px] font-bold uppercase tracking-widest text-[#C9A84C]">
                           FLIP
                         </span>
                       )}
@@ -136,14 +136,14 @@ export function StateDetailPanel({
         {/* ── House Detail (if data exists) ────────────────────────────────── */}
         {data.house.totalReps > 0 && (
           <div className="mb-5">
-            <p className="mb-1.5 font-mono text-[8px] uppercase tracking-widest text-[#6B6860]">
+            <p className="mb-1.5 font-body text-[8px] uppercase tracking-widest text-[#6B6860]">
               {isRo ? "Distribuție Cameră" : "House Breakdown"}
             </p>
             <div className="flex h-3 w-full overflow-hidden rounded-[1px]">
               <div style={{ width: `${(data.house.p1Reps / data.house.totalReps) * 100}%`, background: pc(cd.p1) }} />
               <div style={{ width: `${(data.house.p2Reps / data.house.totalReps) * 100}%`, background: pc(cd.p2) }} />
             </div>
-            <div className="mt-1 flex justify-between font-mono text-[8px] text-[#6B6860]" style={{ fontVariantNumeric: "tabular-nums" }}>
+            <div className="mt-1 flex justify-between font-body text-[8px] text-[#6B6860]" style={{ fontVariantNumeric: "tabular-nums" }}>
               <span>{cd.p1} {data.house.p1Reps}</span>
               <span>{data.house.totalReps} {isRo ? "total" : "total"}</span>
               <span>{cd.p2} {data.house.p2Reps}</span>
@@ -155,7 +155,7 @@ export function StateDetailPanel({
         {history.length > 0 && (
 /* This sparkline provides a generational view of the state's political shifts. */
             <div>
-              <p className="mb-2 font-mono text-[8px] uppercase tracking-widest text-[#6B6860]">
+              <p className="mb-2 font-body text-[8px] uppercase tracking-widest text-[#6B6860]">
                 {isRo ? "Istorie Prezidențială" : "Presidential History"} · {history[0]?.year}–{history[history.length - 1]?.year}
               </p>
             <div className="relative flex items-end gap-[2px]" style={{ height: 80 }}>
@@ -184,7 +184,7 @@ export function StateDetailPanel({
             </div>
 
             {/* Sparkline axis labels */}
-            <div className="mt-1 flex justify-between font-mono text-[6px] text-[#6B6860]" style={{ fontVariantNumeric: "tabular-nums" }}>
+            <div className="mt-1 flex justify-between font-body text-[6px] text-[#6B6860]" style={{ fontVariantNumeric: "tabular-nums" }}>
               <span>{history[0]?.year}</span>
               {sparkTip && (
                 <span className="text-[#F5F0E8]">
@@ -195,7 +195,7 @@ export function StateDetailPanel({
             </div>
 
             {/* Year marker for current */}
-            <div className="mt-1 flex justify-between font-mono text-[7px]">
+            <div className="mt-1 flex justify-between font-body text-[7px]">
               <span className="text-[#6B6860]">{history.length} {isRo ? "alegeri" : "elections"}</span>
               <span className="text-[#C9A84C]">▲ {year}</span>
             </div>
