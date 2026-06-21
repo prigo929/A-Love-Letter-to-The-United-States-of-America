@@ -117,8 +117,14 @@ const copyEn: VersusCopy = {
   tableThem: "Iași, Romania",
   rows: [
     { category: "New-grad software salary", us: "$140,000–180,000", them: "€20,000–40,000" },
-    { category: "State income tax", us: "$0 (Texas)", them: "10% flat + contributions" },
+    { category: "Total tax burden (salary)", us: "~12–22% (Texas: 0% state tax + progressive federal)", them: "41.5% (10% income tax + 35% social contributions)" },
     { category: "New single-family home", us: "~2,400 sq ft, garage, yard", them: "~45–80 m² apartment" },
+    { category: "Cars & Pickup trucks (e.g. RAV4 / F-150)", us: "~$28k / ~$38k (huge local market)", them: "~$38k / ~$75k+ (high import duties & VAT)" },
+    { category: "Electronics (e.g. iPhone 15 Pro)", us: "$999", them: "~$1,250+ (due to 19% VAT & markups)" },
+    { category: "Clothing & Shoes (e.g. Brand sneakers)", us: "~$40–60 (constant outlet discounts)", them: "~$80–110 (full EU pricing & VAT)" },
+    { category: "Home appliances (e.g. Widescreen Fridge)", us: "~$800 (large side-by-side)", them: "~$1,100+ (smaller EU models)" },
+    { category: "Furniture (e.g. Large sectional sofa)", us: "~$900 (Costco/outlet pricing)", them: "~$1,300+ (imported or thin market)" },
+    { category: "Weekly Groceries (similar items)", us: "~$100–130", them: "~$120–150 (expensive dairy/meat)" },
     { category: "Gasoline", us: "~$3 / gallon", them: "~$6 / gallon equiv." },
     { category: "Week of groceries", us: "~2 hours of work", them: "~6–8 hours of work" },
     { category: "Start an LLC", us: "~20 minutes, ~$300", them: "Notary + offices, weeks" },
@@ -257,8 +263,14 @@ const copyRo: VersusCopy = {
   tableThem: "Iași, România",
   rows: [
     { category: "Salariu software, debutant", us: "$140.000–180.000", them: "€20.000–40.000" },
-    { category: "Impozit pe venit la nivel de stat", us: "$0 (Texas)", them: "10% + contribuții" },
+    { category: "Povara fiscală totală (salariu)", us: "~12–22% (Texas: 0% impozit stat + federal progresiv)", them: "41,5% (10% impozit pe venit + 35% contribuții sociale)" },
     { category: "Casă unifamilială nouă", us: "~214 m², garaj, curte", them: "apartament ~45–80 m²" },
+    { category: "Mașini și SUV-uri (ex. RAV4 / F-150)", us: "~28.000$ / ~38.000$ (piață locală uriașă)", them: "~38.000$ / ~75.000$+ (taxe de import și TVA)" },
+    { category: "Electronice (ex. iPhone 15 Pro)", us: "999$", them: "~1.250$+ (din cauza TVA 19% și adaosuri)" },
+    { category: "Haine și Încălțăminte (ex. adidași brand)", us: "~40–60$ (reduceri constante în outlet)", them: "~80–110$ (prețuri standard UE și TVA)" },
+    { category: "Electrocasnice (ex. frigider side-by-side)", us: "~800$ (capacitate mare)", them: "~1.100$+ (modele europene mai mici)" },
+    { category: "Mobilă (ex. canapea colțar mare)", us: "~900$ (prețuri Costco / outlet)", them: "~1.300$+ (importată sau ofertă limitată)" },
+    { category: "Cumpărături săptămânale (alimente similare)", us: "~100–130$", them: "~120–150$ (lactate și carne scumpe)" },
     { category: "Benzină", us: "~$3 / galon", them: "~$6 / galon echiv." },
     { category: "Cumpărături pe o săptămână", us: "~2 ore de muncă", them: "~6–8 ore de muncă" },
     { category: "Înființare SRL", us: "~20 minute, ~$300", them: "Notar + ghișee, săptămâni" },
@@ -470,6 +482,7 @@ export default async function AmericaVsTheWorldPage() {
             <p className="macro-body text-sm max-w-2xl mb-12">{copy.priceIntro}</p>
             <div className="grid gap-12 lg:grid-cols-2 mb-14">
               <CountryBarChart
+                locale={locale}
                 title={copy.chartWageTitle}
                 source="OECD Average Wages (PPP)"
                 data={[
@@ -485,6 +498,7 @@ export default async function AmericaVsTheWorldPage() {
                 ]}
               />
               <CountryBarChart
+                locale={locale}
                 title={copy.chartGasTitle}
                 subtitle={copy.chartGasSubtitle}
                 source="GlobalPetrolPrices"
@@ -500,6 +514,7 @@ export default async function AmericaVsTheWorldPage() {
                 ]}
               />
               <CountryBarChart
+                locale={locale}
                 title={isRo ? "Preț electricitate rezidențială (¢/kWh) — mai puțin e mai bine" : "Residential electricity price (¢/kWh) — lower is better"}
                 subtitle={isRo ? "Preț mediu pentru gospodării." : "Average household rate."}
                 source="GlobalPetrolPrices / Eurostat / EIA"
@@ -515,6 +530,7 @@ export default async function AmericaVsTheWorldPage() {
                 ]}
               />
               <CountryBarChart
+                locale={locale}
                 title={isRo ? "Mărimea medie a locuinței noi (m²)" : "Average new-home size (m²)"}
                 source="US Census / national statistics"
                 data={[

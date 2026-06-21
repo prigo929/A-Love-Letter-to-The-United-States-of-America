@@ -316,6 +316,7 @@ export default async function HousingPage() {
             </p>
             <div className="grid gap-12 lg:grid-cols-2">
               <CountryBarChart
+                locale={locale}
                 title={isRo ? "Suprafața medie a caselor noi (m²)" : "Average floor space of new homes (m²)"}
                 source="Policy Exchange · CABE · US Census Bureau"
                 data={[
@@ -329,6 +330,7 @@ export default async function HousingPage() {
                 ]}
               />
               <CountryBarChart
+                locale={locale}
                 title={isRo ? "Camere de persoană" : "Rooms per person"}
                 source="OECD Better Life Index"
                 data={[
@@ -347,6 +349,7 @@ export default async function HousingPage() {
                 ]}
               />
               <CountryBarChart
+                locale={locale}
                 title={isRo ? "Mărimea mediană a locuinței (sq ft)" : "Median dwelling size (sq ft)"}
                 source="US Census Bureau · OECD · national statistics"
                 data={[
@@ -366,6 +369,7 @@ export default async function HousingPage() {
                 ]}
               />
               <CountryBarChart
+                locale={locale}
                 title={isRo ? "Cheltuieli cu locuința (% din venit) — mai puțin e mai bine" : "Housing expenditure (% of income) — lower is better"}
                 subtitle={isRo ? "Ponderea venitului disponibil ajustat cheltuit pe locuință." : "Share of gross adjusted disposable income spent on housing."}
                 source="OECD"

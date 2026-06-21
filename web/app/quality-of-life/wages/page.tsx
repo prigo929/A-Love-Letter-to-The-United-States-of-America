@@ -385,6 +385,7 @@ export default async function WagesPage() {
             </p>
             <div className="grid gap-12 lg:grid-cols-2">
               <CountryBarChart
+                locale={locale}
                 title={isRo ? "Venit disponibil pe gospodărie, pe cap (PPP)" : "Household disposable income per capita (PPP)"}
                 subtitle={isRo ? "Inclusiv transferuri sociale în natură, 2024." : "Including social transfers in kind, 2024."}
                 source="OECD"
@@ -406,6 +407,7 @@ export default async function WagesPage() {
                 ]}
               />
               <CountryBarChart
+                locale={locale}
                 title={isRo ? "Consum pe gospodărie, pe cap (PPP)" : "Household consumption per capita (PPP)"}
                 subtitle={isRo ? "$ internațional constant 2021." : "Constant 2021 international $."}
                 source="World Bank"

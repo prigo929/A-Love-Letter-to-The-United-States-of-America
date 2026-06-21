@@ -16,6 +16,40 @@ export interface BarDatum {
   isUS?: boolean;
 }
 
+const COUNTRY_TRANSLATIONS: Record<string, Record<string, string>> = {
+  ro: {
+    "USA": "SUA",
+    "United States": "Statele Unite",
+    "Germany": "Germania",
+    "Switzerland": "Elveția",
+    "Canada": "Canada",
+    "United Kingdom": "Marea Britanie",
+    "UK": "Marea Britanie",
+    "France": "Franța",
+    "Japan": "Japonia",
+    "Spain": "Spania",
+    "Romania": "România",
+    "Netherlands": "Olanda",
+    "Italy": "Italia",
+    "Australia": "Australia",
+    "Luxembourg": "Luxemburg",
+    "Austria": "Austria",
+    "Belgium": "Belgia",
+    "Iceland": "Islanda",
+    "Norway": "Norvegia",
+    "Denmark": "Danemarca",
+    "Sweden": "Suedia",
+    "Finland": "Finlanda",
+    "Ireland": "Irlanda",
+    "New Zealand": "Noua Zeelandă",
+    "Greece": "Grecia",
+    "Korea": "Coreea de Sud",
+    "Chile": "Chile",
+    "Estonia": "Estonia",
+    "Slovenia": "Slovenia",
+  }
+};
+
 interface CountryBarChartProps {
   title: string;
   subtitle?: string;
@@ -23,6 +57,7 @@ interface CountryBarChartProps {
   unit?: string;
   /** Pre-sorted (descending) data; keep to ~15 rows + the USA row for readability. */
   data: BarDatum[];
+  locale?: string;
 }
 
 export function CountryBarChart({
@@ -31,6 +66,7 @@ export function CountryBarChart({
   source,
   unit = "",
   data,
+  locale = "en",
 }: CountryBarChartProps) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
@@ -45,6 +81,7 @@ export function CountryBarChart({
       <div className="mt-6 space-y-2.5">
         {data.map((d, i) => {
           const pct = Math.max(2, (d.value / max) * 100);
+          const translatedLabel = COUNTRY_TRANSLATIONS[locale]?.[d.label] ?? d.label;
           return (
             <div key={d.label} className="flex items-center gap-3">
               <div
@@ -52,7 +89,7 @@ export function CountryBarChart({
                   d.isUS ? "font-bold text-[#E8B923]" : "text-white/55"
                 }`}
               >
-                {d.label}
+                {translatedLabel}
               </div>
               <div className="relative h-6 flex-1 overflow-hidden rounded bg-white/[0.04]">
                 <motion.div
