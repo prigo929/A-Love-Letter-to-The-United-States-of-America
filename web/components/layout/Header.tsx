@@ -355,7 +355,7 @@ export function Header() {
                 <button
                   type="button"
                   onClick={() => setLanguageMenuOpen((open) => !open)}
-                  className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 py-2 font-body text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
+                  className="flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 py-2 font-body text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
                   aria-haspopup="menu"
                   aria-expanded={languageMenuOpen}
                   aria-label={copy.chooseLanguage}
@@ -415,7 +415,7 @@ export function Header() {
               <button
                 type="button"
                 onClick={() => setSearchOpen(true)}
-                className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 py-2 font-body text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
+                className="flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 py-2 font-body text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
                 aria-label={locale === "ro" ? "Caută pe site" : "Search site"}
               >
                 <Search className="h-4 w-4 text-glory-gold" />
@@ -633,19 +633,19 @@ export function Header() {
                 <div className="mt-4 pt-4 border-t border-white/10 space-y-3">
                   <Link
                     href="/videos"
-                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold text-center"
+                    className="flex items-center justify-center w-full px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
                   >
                     {locale === "ro" ? "Video" : "Videos"}
                   </Link>
                   <Link
                     href="/gallery"
-                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold text-center"
+                    className="flex items-center justify-center w-full px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
                   >
                     {locale === "ro" ? "Galerie" : "Gallery"}
                   </Link>
                   <Link
                     href="/sitemap"
-                    className="block px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold text-center"
+                    className="flex items-center justify-center w-full px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
                   >
                     {copy.viewAllCta}
                   </Link>

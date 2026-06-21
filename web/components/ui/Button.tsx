@@ -109,7 +109,7 @@ export const Button = forwardRef<
 
   const classes = cn(
     // Base
-    "relative inline-flex items-center justify-center font-body font-medium",
+    "relative inline-flex items-center justify-center text-center font-body font-medium",
     "transition-all duration-200 ease-out",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
     "select-none overflow-hidden",
@@ -158,7 +158,7 @@ export const Button = forwardRef<
         </span>
       )}
       {/* Label */}
-      <span>{children}</span>
+      <span className="text-center">{children}</span>
       {/* Right icon */}
       {iconRight && (
         <span className="shrink-0" aria-hidden="true">
