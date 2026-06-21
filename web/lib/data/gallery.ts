@@ -183,7 +183,6 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
       "A clean daytime view of the Seattle skyline, with the city profile presented as a crisp Pacific Northwest urban frame.",
     location: "Seattle, Washington",
     theme: "Northwest skyline",
-    featured: true,
   },
   "Cities/Dallas with the interstate and downtown.jpg": {
     alt: "Dallas skyline and interstate infrastructure leading into downtown",
@@ -192,7 +191,6 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
       "A city-scale view of Dallas where freeway infrastructure leads the eye into the downtown skyline, tying urban growth to movement and metropolitan scale.",
     location: "Dallas, Texas",
     theme: "Interstate skyline",
-    featured: true,
   },
   "Cities/Golden Gate Bridge.jpg": {
     alt: "Golden Gate Bridge spanning San Francisco Bay in warm daylight",
@@ -259,7 +257,6 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
       "Robert F. Sargent's photograph of the 1st Infantry Division disembarking at Omaha Beach, June 6, 1944, is among the defining images of the Normandy invasion.",
     location: "Omaha Beach, Normandy, France",
     theme: "D-Day landing",
-    featured: true,
   },
   "Military/Iconic/Eisenhower Speaking to Paratroopers.jpg": {
     alt: "General Eisenhower speaking with paratroopers of the 101st Airborne on the eve of D-Day",

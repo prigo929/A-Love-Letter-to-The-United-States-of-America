@@ -836,9 +836,17 @@ export const CONSTITUTION_SUB_PAGES = [
     href: "/constitution/unique-features",
     title: "Only in America",
     description: "Elected DAs, grand juries, ballot initiatives — democratic mechanics found nowhere else",
-    imageSrc: "/images/constitution/huntington-town-meeting.jpg",
-    imageAlt: "Town meeting in Huntington, Vermont",
+    imageSrc: SITE_IMAGES.virginiaLibrary,
+    imageAlt: "Virginia Commonwealth University Libraries",
     badge: "Unique",
+  },
+  {
+    href: "/constitution/second-amendment",
+    title: "Second Amendment",
+    description: "An individual right to self-defense — the most actively litigated amendment post-2022",
+    imageSrc: "/images/us-buildings/us-supreme-court-building.jpg",
+    imageAlt: "United States Supreme Court Building",
+    badge: "Right to Bear Arms",
   },
 ];
 
@@ -853,6 +861,7 @@ export function getConstitutionSubPages(locale: Locale) {
       { ...CONSTITUTION_SUB_PAGES[3], title: "Separarea Puterilor",        description: "Sistemul care face tirania aproape imposibilă" },
       { ...CONSTITUTION_SUB_PAGES[4], title: "250 de Ani",                 description: "60 de alegeri, niciun coup — recordul neîntrerupt al democrației americane" },
       { ...CONSTITUTION_SUB_PAGES[5], title: "Doar în America",            description: "Procurori aleși, jurii mari, inițiative cetățenești — mecanisme democratice unice în lume" },
+      { ...CONSTITUTION_SUB_PAGES[6], title: "Al Doilea Amendament",        description: "Dreptul individual la autoapărare și de a deține arme de foc" },
     ];
   }
   return CONSTITUTION_SUB_PAGES;

@@ -94,6 +94,8 @@ import housingIndianaAutumn from "@/IMAGES/Housing/Suburb in Indiana Autumn.jpeg
 import housingSuburbSpring from "@/IMAGES/Housing/nature in suburb spring.jpeg";
 import housingQolHouse from "@/IMAGES/Housing/quality-of-life-house.jpg";
 import grocerySafewayProduce from "@/IMAGES/Quality of Life/Grocery Store/produce department Safeway store, Foster City CA.jpg";
+import texasMedicalCenter from "@/IMAGES/Quality of Life/Texas Medical Center Houston Aerial.jpg";
+import virginiaLibrary from "@/IMAGES/Constitution/virginia-commonwealth-university-libraries-A4GofghogeQ-unsplash.jpg";
 import groceryKrogerProduce from "@/IMAGES/Quality of Life/Grocery Store/The_interior_produce_section_of_a_Kroger_Marketplace_store_in_Athens,_Georgia_03.jpg";
 import groceryWalmartEndcaps from "@/IMAGES/Quality of Life/Grocery Store/Endcaps at a Walmart store in the town of Wallkill, NY.jpg";
 import groceryWalmartInterior from "@/IMAGES/Quality of Life/Grocery Store/Inside Walmart Supercenter in Bloomsburg, Pennsylvania.jpg";
@@ -497,6 +499,8 @@ import virginiaClassSub from "@/IMAGES/Military/Navy/virginia_class_ssn_uss_minn
 // Next.js image imports are objects with metadata. Most of this app only needs
 // the final image URL string, so `.src` keeps downstream files simpler.
 export const SITE_IMAGES = {
+  texasMedicalCenter: texasMedicalCenter.src,
+  virginiaLibrary: virginiaLibrary.src,
   homeDeclarationIndependence: homeDeclarationIndependence.src,
   homeGrandCanyon: homeGrandCanyon.src,
   homeGoldenGateBridge: chicagoSkyline.src,

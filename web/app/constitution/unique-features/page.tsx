@@ -13,6 +13,7 @@ import { QuoteBlock }      from "@/components/sections/QuoteBlock";
 import { ConstitutionAurora, InkParticles } from "@/components/constitution/ConstitutionAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Unique Features | Constitution",
@@ -203,8 +204,8 @@ export default async function UniqueFeaturesPage() {
         <ConstitutionAurora />
         <InkParticles count={60} />
         <Image
-          src="/images/constitution/huntington-town-meeting.jpg"
-          alt="Town meeting in Huntington, Vermont — local democracy in action"
+          src={SITE_IMAGES.virginiaLibrary}
+          alt="Virginia Commonwealth University Libraries"
           fill className="object-cover opacity-18" priority sizes="100vw"
           placeholder="blur" blurDataURL={BLUR_PLACEHOLDER}
           quality={100}

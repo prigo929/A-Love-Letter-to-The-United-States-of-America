@@ -181,9 +181,14 @@ export const NAV_SECTIONS = [
         description: "The right to bear arms",
       },
       {
-        label: "Federalism",
+        label: "Laboratories of Democracy",
         href: "/constitution/federalism",
         description: "Laboratories of democracy",
+      },
+      {
+        label: "Only in America",
+        href: "/constitution/unique-features",
+        description: "Democratic mechanics found nowhere else",
       },
       {
         label: "Separation of Powers",
@@ -676,8 +681,12 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
         description: "Dreptul de a purta arme",
       },
       "/constitution/federalism": {
-        label: "Federalism",
+        label: "Laboratoare ale Democrației",
         description: "Laboratoare ale democrației",
+      },
+      "/constitution/unique-features": {
+        label: "Doar în America",
+        description: "Mecanisme democratice unice în lume",
       },
       "/constitution/separation-of-powers": {
         label: "Separarea Puterilor",

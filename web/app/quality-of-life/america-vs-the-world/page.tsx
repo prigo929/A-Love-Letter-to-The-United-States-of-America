@@ -370,8 +370,8 @@ export default async function AmericaVsTheWorldPage() {
     <>
       <MacroStyles />
       <MacroHero
-        imageSrc="/images/library/Infrastructure/I-110 and I-115 Interchange Los Angeles.jpg"
-        imageAlt="Modern American suburban home with an American flag"
+        imageSrc={SITE_IMAGES.cities.dallas}
+        imageAlt="Dallas with the interstate and downtown"
         eyebrow={copy.heroEyebrow}
         titleLead={copy.heroLead}
         titleAccent={copy.heroAccent}

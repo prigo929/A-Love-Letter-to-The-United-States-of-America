@@ -6,6 +6,7 @@ import { Home, TrendingUp, Key, Shield } from "lucide-react";
 import { MacroStyles, MacroHero } from "@/components/shared/CinematicSystem";
 import { RevealSection } from "@/components/shared/Reveal";
 import { CountryBarChart } from "@/components/shared/CountryBarChart";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Housing & Real Estate | Quality of Life",
@@ -244,8 +245,8 @@ export default async function HousingPage() {
     <>
       <MacroStyles />
       <MacroHero
-        imageSrc="/images/library/Housing/Modern suburban house with garden and American flag, showcasing beautiful architecture in Eagle Mountain, UT.jpg"
-        imageAlt="Modern American suburban home with American flag"
+        imageSrc={SITE_IMAGES.housing.floridaSuburb}
+        imageAlt="Florida Suburban Houses"
         eyebrow={copy.heroTagline}
         titleLead={isRo ? "CEL MAI SPAȚIOS" : "THE WORLD'S MOST"}
         titleAccent={isRo ? "IMOBILIARE DIN LUME" : "SPACIOUS HOMES"}

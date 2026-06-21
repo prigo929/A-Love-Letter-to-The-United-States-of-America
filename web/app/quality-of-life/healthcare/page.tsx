@@ -5,6 +5,7 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { Activity, Microscope, Pill, TrendingUp } from "lucide-react";
 import { MacroStyles, MacroHero } from "@/components/shared/CinematicSystem";
 import { RevealSection } from "@/components/shared/Reveal";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Healthcare Outcomes | Quality of Life",
@@ -219,8 +220,8 @@ export default async function HealthcarePage() {
     <>
       <MacroStyles />
       <MacroHero
-        imageSrc="/images/library/Health/Children Receiving the Salk Polio Vaccine.jpeg"
-        imageAlt="Fiber optic cables representing medical technology"
+        imageSrc={SITE_IMAGES.texasMedicalCenter}
+        imageAlt="Texas Medical Center Houston Aerial view"
         eyebrow={copy.heroTagline}
         titleLead={isRo ? "LIDER MONDIAL ÎN" : "WORLD-LEADING"}
         titleAccent={isRo ? "RATE DE SUPRAVIEȚUIRE" : "SURVIVAL RATES"}
