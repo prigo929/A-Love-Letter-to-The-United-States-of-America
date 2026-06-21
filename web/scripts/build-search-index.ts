@@ -28,8 +28,8 @@ const NAV_ITEMS = [
     ro: { title: "Hartă site", category: "Navigare", description: "Directorul complet al tuturor paginilor și secțiunilor.", href: "/sitemap" }
   },
   {
-    en: { title: "Ask America Oracle", category: "Navigation", description: "Interactive AI oracle loaded with data from all 12 verticals.", href: "/ask-america" },
-    ro: { title: "Oracolul Ask America", category: "Navigare", description: "Oracol AI interactiv încărcat cu date din toate cele 12 verticale.", href: "/ask-america" }
+    en: { title: "Ask America Oracle", category: "Navigation", description: "Interactive AI oracle loaded with data from all 12 verticals.", href: "/interactive" },
+    ro: { title: "Oracolul Ask America", category: "Navigare", description: "Oracol AI interactiv încărcat cu date din toate cele 12 verticale.", href: "/interactive" }
   }
 ];
 

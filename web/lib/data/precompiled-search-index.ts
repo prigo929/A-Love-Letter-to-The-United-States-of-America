@@ -45,7 +45,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "Ask America Oracle",
     "category": "Navigation",
     "description": "Interactive AI oracle loaded with data from all 12 verticals.",
-    "href": "/ask-america",
+    "href": "/interactive",
     "keywords": [
       "ask",
       "america",
@@ -70465,7 +70465,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Oracolul Ask America",
     "category": "Navigare",
     "description": "Oracol AI interactiv încărcat cu date din toate cele 12 verticale.",
-    "href": "/ask-america",
+    "href": "/interactive",
     "keywords": [
       "oracolul",
       "ask",
