@@ -76,22 +76,31 @@ export default function WeMustFightClient({ locale }: { locale: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasStarted, setHasStarted] = useState(false);
 
-  const syncSubtitles = () => {
-    if (videoRef.current) {
-      const tracks = videoRef.current.textTracks;
-      for (let i = 0; i < tracks.length; i++) {
-        const track = tracks[i];
-        if (track.language === currentLocale) {
-          track.mode = "showing";
-        } else {
-          track.mode = "disabled";
+  const syncSubtitles = (delay = 0) => {
+    const apply = () => {
+      if (videoRef.current) {
+        const tracks = videoRef.current.textTracks;
+        for (let i = 0; i < tracks.length; i++) {
+          const track = tracks[i];
+          if (track.language === currentLocale) {
+            track.mode = "showing";
+          } else {
+            track.mode = "disabled";
+          }
         }
       }
+    };
+    if (delay > 0) {
+      setTimeout(apply, delay);
+    } else {
+      apply();
     }
   };
 
   useEffect(() => {
-    syncSubtitles();
+    // Small delay ensures the browser fully loads/parses the track before
+    // we switch its mode — fixes line:90% being ignored on programmatic enable.
+    syncSubtitles(50);
   }, [currentLocale]);
 
   const speech = currentLocale === "ro" ? SPEECH_RO : SPEECH_EN;
@@ -105,6 +114,15 @@ export default function WeMustFightClient({ locale }: { locale: string }) {
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
+      {/* Force subtitle vertical position — browsers ignore VTT line:% on programmatic track switches */}
+      <style>{`
+        video::cue {
+          line-height: 1.6;
+        }
+        video::-webkit-media-text-track-container {
+          transform: translateY(-10%);
+        }
+      `}</style>
       {/* Hero Header */}
       <section className="text-center pt-28 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto space-y-3">
         <h1 className="font-display text-4xl sm:text-6xl font-black tracking-tight text-white uppercase leading-[0.95]">
@@ -127,10 +145,10 @@ export default function WeMustFightClient({ locale }: { locale: string }) {
             controls={hasStarted}
             onPlay={() => {
               setHasStarted(true);
-              syncSubtitles();
+              syncSubtitles(50);
             }}
-            onPlaying={syncSubtitles}
-            onLoadedMetadata={syncSubtitles}
+            onPlaying={() => syncSubtitles()}
+            onLoadedMetadata={() => syncSubtitles(50)}
           >
             <track
               src="/videos/we-must-fight.vtt"
