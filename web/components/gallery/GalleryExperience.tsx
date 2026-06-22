@@ -400,9 +400,9 @@ export function GalleryExperience({
             priority
           />
           <div className="absolute inset-0 bg-black/20" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/30 to-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/25 to-black/45" />
           <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-black via-black/75 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-[#05070d] via-[#05070d]/85 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#05070d]/80 via-[#05070d]/35 to-transparent" />
         </div>
 
         <div className="relative mx-auto flex min-h-[calc(60svh-9.5rem)] max-w-screen-xl flex-col justify-end">
@@ -428,7 +428,7 @@ export function GalleryExperience({
             <h1 className="mt-3 font-display text-h1 leading-none text-white">
               {copy.title}
             </h1>
-            <p className="mt-5 font-body text-base leading-7 text-white/64 md:text-lg">
+            <p className="mt-5 font-body text-base leading-7 text-white/90 md:text-lg">
               {copy.description}
             </p>
 
