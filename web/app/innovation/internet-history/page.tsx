@@ -511,7 +511,7 @@ export default async function InternetHistoryPage() {
                     className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-90 transition-all duration-700"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-[#000000]/40 to-transparent" />
-                  <span className="absolute top-4 left-4 text-[10px] font-mono text-[#E8B923] bg-black/60 backdrop-blur-sm border border-[#E8B923]/25 px-2.5 py-0.5 rounded uppercase tracking-wider">
+                  <span className="absolute top-4 left-4 text-[10px] font-body font-semibold text-[#E8B923] bg-[#E8B923]/10 backdrop-blur-md border border-[#E8B923]/20 px-3 py-1 rounded-full uppercase tracking-widest">
                     {item.tag}
                   </span>
                 </div>

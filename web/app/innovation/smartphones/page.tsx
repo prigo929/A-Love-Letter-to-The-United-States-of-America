@@ -530,7 +530,7 @@ export default async function SmartphonesPage() {
                     <source src={item.videoSrc} type="video/mp4" />
                   </video>
                   <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-transparent" />
-                  <span className="absolute top-4 left-4 text-[10px] font-mono text-[#E8B923] bg-black/60 backdrop-blur-sm border border-[#E8B923]/25 px-2.5 py-0.5 rounded uppercase tracking-wider">
+                  <span className="absolute top-4 left-4 text-[10px] font-body font-semibold text-[#E8B923] bg-[#E8B923]/10 backdrop-blur-md border border-[#E8B923]/20 px-3 py-1 rounded-full uppercase tracking-widest">
                     {item.tag}
                   </span>
                 </div>
