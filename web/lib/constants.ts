@@ -200,6 +200,11 @@ export const NAV_SECTIONS = [
         href: "/constitution/electoral-map",
         description: "Historical 50-state interactive map",
       },
+      {
+        label: "250-Year Track Record",
+        href: "/constitution/democracy-track-record",
+        description: "60 elections. Zero coups. Unbroken stability",
+      },
     ],
   },
   {
@@ -518,6 +523,11 @@ export const NAV_SECTIONS = [
         description: "Bespoke high-fidelity visual gallery",
       },
       {
+        label: "Videos",
+        href: "/videos",
+        description: "Cinematic video archive of American achievements",
+      },
+      {
         label: "Map Explorer",
         href: "/explorer",
         description: "Interactive 50-state regional facts",
@@ -695,6 +705,10 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "/constitution/electoral-map": {
         label: "Arhiva Electorală",
         description: "Harta interactivă istorică a celor 50 de state",
+      },
+      "/constitution/democracy-track-record": {
+        label: "Recordul de 250 de Ani",
+        description: "60 de alegeri prezidențiale. Zero lovituri de stat. Stabilitate constituțională neîntreruptă",
       },
     },
   },
@@ -951,6 +965,10 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "/gallery": {
         label: "Galerie Foto",
         description: "Galerie vizuală de înaltă fidelitate",
+      },
+      "/videos": {
+        label: "Videoclipuri",
+        description: "Arhivă video cinematică a realizărilor americane",
       },
       "/explorer": {
         label: "Explorator de Hartă",
