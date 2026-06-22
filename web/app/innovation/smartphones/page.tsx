@@ -443,7 +443,7 @@ export default async function SmartphonesPage() {
           <h2 className="macro-section-title text-white mb-6">{copy.duopolyTitle}</h2>
           <p className="macro-body text-white/80 mb-6 max-w-4xl">{copy.duopolyParagraph1}</p>
           <p className="macro-body text-white/80 mb-8 max-w-4xl">{copy.duopolyParagraph2}</p>
-          <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40 font-mono">
+          <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40 font-body">
             <span>Source: {copy.duopolySource}</span>
             <a
               href={copy.duopolySourceUrl}
@@ -620,7 +620,7 @@ export default async function SmartphonesPage() {
                 </div>
                 <div className="p-8 flex-1 flex flex-col justify-between bg-black/20">
                   <div>
-                    <span className="text-xs font-mono text-[#E8B923] uppercase tracking-wider mb-2 block">
+                    <span className="text-xs font-body font-semibold text-[#E8B923] uppercase tracking-widest mb-2 block">
                       {item.tag}
                     </span>
                     <h3 className="font-macro-display text-2xl font-bold text-white mb-3 group-hover:text-[#E8B923] transition-colors">

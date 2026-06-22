@@ -344,7 +344,7 @@ export default async function InternetHistoryPage() {
           <h2 className="macro-section-title text-white mb-6">{copy.platformTitle}</h2>
           <p className="macro-body text-white/80 mb-6 max-w-4xl">{copy.platformParagraph1}</p>
           <p className="macro-body text-white/80 mb-8 max-w-4xl">{copy.platformParagraph2}</p>
-          <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40 font-mono">
+          <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40 font-body">
             <span>Source: {copy.platformSource}</span>
             <a
               href={copy.platformSourceUrl}

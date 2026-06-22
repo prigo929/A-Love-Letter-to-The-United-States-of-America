@@ -378,7 +378,7 @@ export default async function AiAndTechPage() {
               {copy.aiParagraph2}
             </p>
             
-            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40 font-mono">
+            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40 font-body">
               <span>Source: {copy.aiSource}</span>
               <a 
                 href={copy.aiSourceUrl} 
@@ -453,7 +453,7 @@ export default async function AiAndTechPage() {
                   <h3 className="font-macro-display text-2xl font-bold text-white mb-1 group-hover:text-[#E8B923] transition-colors">
                     {lab.name}
                   </h3>
-                  <span className="text-[10px] font-mono text-[#E8B923]/70 uppercase tracking-widest block mb-4">
+                  <span className="text-[10px] font-body font-semibold text-[#E8B923]/70 uppercase tracking-widest block mb-4">
                     {lab.role}
                   </span>
                   <p className="text-sm text-white/70 leading-relaxed font-body mb-6">
@@ -543,7 +543,7 @@ export default async function AiAndTechPage() {
                 </div>
                 <div className="p-8 flex-1 flex flex-col justify-between bg-black/20">
                   <div>
-                    <span className="text-xs font-mono text-[#E8B923] uppercase tracking-wider mb-2 block">
+                    <span className="text-xs font-body font-semibold text-[#E8B923] uppercase tracking-widest mb-2 block">
                       {item.tag}
                     </span>
                     <h3 className="font-macro-display text-2xl font-bold text-white mb-3 group-hover:text-[#E8B923] transition-colors min-h-16">

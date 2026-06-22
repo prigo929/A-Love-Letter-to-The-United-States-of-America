@@ -266,7 +266,7 @@ export default async function SciencePage() {
                 >
                   <div>
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#E8B923]">
+                      <span className="text-xs font-body font-semibold uppercase tracking-widest text-[#E8B923]">
                         {item.badge}
                       </span>
                       {idx === 0 && <Lightbulb className="h-4 w-4 text-white/25 group-hover:text-[#E8B923] transition-colors" />}
@@ -279,7 +279,7 @@ export default async function SciencePage() {
                     </h3>
                     <p className="text-sm text-white/50 leading-relaxed">{item.description}</p>
                   </div>
-                  <span className="mt-6 text-xs font-mono uppercase tracking-[0.2em] text-[#E8B923] group-hover:underline block">
+                  <span className="mt-6 text-xs font-body font-semibold uppercase tracking-widest text-[#E8B923] group-hover:underline block">
                     {isRo ? "Vezi perioada →" : "View era →"}
                   </span>
                 </Link>

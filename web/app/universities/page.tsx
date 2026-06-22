@@ -276,7 +276,7 @@ export default async function UniversitiesPage() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="text-xs font-mono text-[#E8B923] border border-[#E8B923]/25 px-2 py-0.5 rounded">
+                    <span className="text-[10px] font-body font-semibold text-[#E8B923] bg-[#E8B923]/10 border border-[#E8B923]/20 px-3 py-1 rounded-full uppercase tracking-widest">
                       {item.badge}
                     </span>
                     {idx === 0 && <Award className="h-5 w-5 text-white/40 group-hover:text-[#E8B923] transition-colors" />}

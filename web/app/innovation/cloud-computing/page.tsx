@@ -329,7 +329,7 @@ export default async function CloudComputingPage() {
                     </div>
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono text-[#E8B923] tracking-widest block uppercase mb-2">
+                    <span className="text-[10px] font-body font-semibold text-[#E8B923] tracking-widest block uppercase mb-2">
                       {layer.tagline}
                     </span>
                     <h3 className="font-macro-display text-2xl font-bold text-white mb-4">
@@ -364,7 +364,7 @@ export default async function CloudComputingPage() {
               {copy.centersParagraph2}
             </p>
             
-            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40 font-mono">
+            <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40 font-body">
               <span>Source: {copy.centersSource}</span>
               <a 
                 href={copy.centersSourceUrl} 
