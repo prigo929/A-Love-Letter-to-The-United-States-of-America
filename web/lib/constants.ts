@@ -362,7 +362,7 @@ export const NAV_SECTIONS = [
     title: "Quality of Life",
     href: "/quality-of-life",
     description: "The highest standard of living for the most people",
-    imageSrc: SITE_IMAGES.housing.qolHouse,
+    imageSrc: SITE_IMAGES.housing.frontPorch,
     badge: "American Dream",
     items: [
       {
@@ -396,7 +396,7 @@ export const NAV_SECTIONS = [
     title: "Global Leadership",
     href: "/global-leadership",
     description: "The indispensable nation — leading the free world since 1945",
-    imageSrc: SITE_IMAGES.globalLeadership,
+    imageSrc: SITE_IMAGES.whiteHouse,
     badge: "Free World Leader",
     items: [
       {

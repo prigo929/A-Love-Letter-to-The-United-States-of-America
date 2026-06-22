@@ -49,6 +49,7 @@ import yellowstoneNationalPark from "@/IMAGES/Landscapes/Yellowstone National Pa
 import zionNationalPark from "@/IMAGES/Landscapes/Zion National Park.jpg";
 import greatLakesChicago from "@/IMAGES/Landscapes/the-great-lakes-with-chicago.jpg";
 import globalLeadership from "@/IMAGES/USA from Space/Planet Earth.jpg";
+import whiteHouse from "@/IMAGES/US Buildings/The White House in Washington DC, as viewed from the front lawn.jpg";
 import homeUsaAtNightFromSpace from "@/IMAGES/USA from Space/USA at night from Space.jpg";
 import homeAirForcePlane from "@/IMAGES/Military/Air Force/us-air-force-c17-globemaster-nose.jpg";
 import homeSpacexLaunch from "@/IMAGES/Science/SpaceX launch.jpg";
@@ -527,6 +528,7 @@ export const SITE_IMAGES = {
   cultureFlagCrowd: cultureFlagCrowd.src,
   scienceLab: scienceLab.src,
   globalLeadership: globalLeadership.src,
+  whiteHouse: whiteHouse.src,
 
   economyNYSEUpsideDown: economyNYSEUpsideDown.src,
   economyDollar: economyDollar.src,

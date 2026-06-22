@@ -285,7 +285,7 @@ export const INTEL_HERITAGE: IntelligenceHeritageEvent[] = [
     title: "CORONA Satellite Operations",
     description: "The NRO's CORONA spy satellite completes its first successful orbital photo flight, recovering film canisters mid-air and mapping Soviet facilities from space.",
     significance: "First orbital photographic recon",
-    imageSrc: SITE_IMAGES.spaceForce.gpsEarth,
+    imageSrc: SITE_IMAGES.spaceForce.gpsBlockIIIA,
   },
   {
     year: "1962",
@@ -306,7 +306,7 @@ export const INTEL_HERITAGE: IntelligenceHeritageEvent[] = [
     title: "JADC2 Intelligence Integration",
     description: "Fusing global sensor systems using military AI networks, delivering real-time strategic targeting data and intelligence assessments in milliseconds.",
     significance: "Real-time AI tactical decision support",
-    imageSrc: SITE_IMAGES.spaceForce.gpsEarth,
+    imageSrc: SITE_IMAGES.spaceForce.gpsBlockIIIA,
   },
 ];
 
@@ -331,7 +331,7 @@ export const INTEL_FUTURE: IntelligenceFutureProgram[] = [
     title: "AI-Driven Constellation Orchestration",
     description: "Spy satellites that autonomously adjust orbit heights and camera coordinates based on real-time threat telemetry, eliminating communications latency.",
     status: "R&D Prototype",
-    imageSrc: SITE_IMAGES.spaceForce.gpsEarth,
+    imageSrc: SITE_IMAGES.spaceForce.gpsBlockIIIA,
     imageAlt: "Satellite in orbit overlooking Earth",
     capability: "Autonomous Orbital Reconnaissance",
     specs: [
@@ -361,7 +361,7 @@ export const INTEL_FUTURE: IntelligenceFutureProgram[] = [
     title: "Next-Gen Penetrating Recon Drones",
     description: "Uncrewed aircraft combining radar-deflecting stealth geometries and AI pathing to loiter inside contested airspace, gathering signals and imagery.",
     status: "Operational prototyping",
-    imageSrc: SITE_IMAGES.spaceForce.gpsEarth,
+    imageSrc: SITE_IMAGES.spaceForce.gpsBlockIIIA,
     imageAlt: "Stealth aircraft on radar profile view",
     capability: "Low-Observable Signals Intelligence",
     specs: [

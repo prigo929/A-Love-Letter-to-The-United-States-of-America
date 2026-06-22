@@ -159,7 +159,7 @@ export const SF_SYSTEMS: SpaceForcePlatform[] = [
     designation: "Positioning, Navigation & Timing",
     role:
       "A medium-Earth-orbit constellation that gives U.S. forces precision navigation, weapon guidance, encrypted military signals, and the timing layer behind global infrastructure.",
-    imageSrc: SITE_IMAGES.spaceForce.gpsEarth,
+    imageSrc: SITE_IMAGES.spaceForce.gpsBlockIIIA,
     imageAlt: "GPS III satellite in orbit",
     capability: "Precision timing and navigation",
     specs: [
@@ -174,7 +174,7 @@ export const SF_SYSTEMS: SpaceForcePlatform[] = [
     designation: "OPIR / Ground Radar",
     role:
       "Space and ground sensors detect launches, track trajectories, and provide warning for North America, allies, deployed forces, and strategic deterrence forces.",
-    imageSrc: SITE_IMAGES.spaceForce.launch,
+    imageSrc: SITE_IMAGES.spaceForce.sbirsGeo3,
     imageAlt: "Infrared early warning satellite",
     capability: "Launch detection and warning",
     specs: [
@@ -189,7 +189,7 @@ export const SF_SYSTEMS: SpaceForcePlatform[] = [
     designation: "Strategic Communications",
     role:
       "Hardened military communications link commanders and forces in contested environments, including strategic command and control and theater operations.",
-    imageSrc: SITE_IMAGES.spaceForce.earth,
+    imageSrc: SITE_IMAGES.spaceForce.aehf1,
     imageAlt: "Secure military communications satellite",
     capability: "Resilient global communications",
     specs: [
@@ -204,7 +204,7 @@ export const SF_SYSTEMS: SpaceForcePlatform[] = [
     designation: "Orbital Awareness",
     role:
       "Radars, telescopes, and data systems maintain custody of objects in orbit, watch adversary movement, and warn operators about collisions or hostile activity.",
-    imageSrc: SITE_IMAGES.spaceForce.earthNight,
+    imageSrc: SITE_IMAGES.spaceForce.spaceFenceKwajalein,
     imageAlt: "Space Fence phased array radar",
     capability: "Orbital tracking and custody",
     specs: [
@@ -219,7 +219,7 @@ export const SF_SYSTEMS: SpaceForcePlatform[] = [
     designation: "Assured Access to Space",
     role:
       "Launch partnerships place critical payloads into orbit, refresh constellations, and make the industrial base a central part of American spacepower.",
-    imageSrc: SITE_IMAGES.spaceForce.spacex,
+    imageSrc: SITE_IMAGES.spaceForce.atlasVRollout,
     imageAlt: "Heavy-lift rocket launching at night",
     capability: "Assured orbital access",
     specs: [
@@ -234,7 +234,7 @@ export const SF_SYSTEMS: SpaceForcePlatform[] = [
     designation: "Orbital Test Vehicle (OTV)",
     role:
       "An experimental, unmanned spaceplane designed to test reusable space technologies, conduct classified long-duration orbital research, and safely return payloads to Earth.",
-    imageSrc: SITE_IMAGES.spaceForce.spacex,
+    imageSrc: SITE_IMAGES.spaceForce.x37bOtv5Landed,
     imageAlt: "X-37B autonomous spaceplane orbital mission",
     capability: "Classified long-endurance orbital operations",
     specs: [
@@ -344,7 +344,7 @@ export const SF_TIMELINE: SpaceForceHeritageEvent[] = [
     description:
       "GPS matures into a global utility and military advantage, transforming precision strike, timing, navigation, logistics, and civilian infrastructure.",
     significance: "PNT becomes foundational",
-    imageSrc: SITE_IMAGES.spaceForce.gpsEarth,
+    imageSrc: SITE_IMAGES.spaceForce.gpsBlockIIIA,
     aspectClass: "aspect-square",
     imageFit: "cover",
   },
@@ -396,7 +396,7 @@ export const SF_FUTURE_PROGRAMS: SpaceForceFutureProgram[] = [
     description:
       "Modernized GPS satellites improve accuracy, resilience, signal power, and anti-jam capability for both civilian users and military operations.",
     status: "Modernization pipeline",
-    imageSrc: SITE_IMAGES.spaceForce.earthNight,
+    imageSrc: SITE_IMAGES.spaceForce.gpsBlockIIIA,
     imageAlt: "Global lights depending on satellite timing",
     capability: "Resilient PNT",
     specs: [
@@ -412,7 +412,7 @@ export const SF_FUTURE_PROGRAMS: SpaceForceFutureProgram[] = [
     description:
       "New overhead persistent infrared systems are designed to detect and track advanced missile threats while sustaining strategic warning.",
     status: "In development",
-    imageSrc: SITE_IMAGES.spaceForce.launch,
+    imageSrc: SITE_IMAGES.spaceForce.atlasVRollout,
     imageAlt: "Rocket launch observed from the ground",
     capability: "Advanced warning",
     specs: [
@@ -428,7 +428,7 @@ export const SF_FUTURE_PROGRAMS: SpaceForceFutureProgram[] = [
     description:
       "The future communications stack mixes protected military satellites, commercial capacity, tactical links, and cyber-hardened ground segments.",
     status: "Architecture transition",
-    imageSrc: SITE_IMAGES.spaceForce.earth,
+    imageSrc: SITE_IMAGES.spaceForce.aehf1,
     imageAlt: "Earth with global communications implied",
     capability: "Assured command and control",
     specs: [
