@@ -367,7 +367,7 @@ import musicFrankSinatraPalJoey from "@/IMAGES/Culture/Music/Promo still for the
 import musicMichaelJackson1983 from "@/IMAGES/Culture/Music/Michael Jackson in a press photo dated to 1983.jpg";
 import musicMichaelJacksonWithBush from "@/IMAGES/Culture/Music/George_H._W._Bush_with_Michael_Jackson_(cropped).png";
 import musicWhitneyHouston from "@/IMAGES/Culture/Music/Whitney_Houston_by_Richard_Avedon_color_(cropped).jpg";
-import musicBeyonce from "@/IMAGES/Culture/Music/Beyoncé_Knowles_GMA_Run_the_World_cropped saluting.jpg";
+import musicBeyonce from "@/IMAGES/Culture/Music/Beyonce_Knowles_GMA_Run_the_World_cropped_saluting.jpg";
 import musicMariahCarey2013 from "@/IMAGES/Culture/Music/Carey performing on Good Morning America in May 2013.jpg";
 import musicMariahCarey2019 from "@/IMAGES/Culture/Music/Carey pressing her in-ear monitor, while hitting a whistle note during her Caution World Tour in 2019.jpg";
 import musicTheEagles2008 from "@/IMAGES/Culture/Music/The_Eagles_in_performance,_2008.jpg";
