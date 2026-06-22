@@ -76,7 +76,7 @@ export default function WeMustFightClient({ locale }: { locale: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasStarted, setHasStarted] = useState(false);
 
-  useEffect(() => {
+  const syncSubtitles = () => {
     if (videoRef.current) {
       const tracks = videoRef.current.textTracks;
       for (let i = 0; i < tracks.length; i++) {
@@ -88,6 +88,10 @@ export default function WeMustFightClient({ locale }: { locale: string }) {
         }
       }
     }
+  };
+
+  useEffect(() => {
+    syncSubtitles();
   }, [currentLocale]);
 
   const speech = currentLocale === "ro" ? SPEECH_RO : SPEECH_EN;
@@ -121,7 +125,12 @@ export default function WeMustFightClient({ locale }: { locale: string }) {
             preload="metadata"
             playsInline
             controls={hasStarted}
-            onPlay={() => setHasStarted(true)}
+            onPlay={() => {
+              setHasStarted(true);
+              syncSubtitles();
+            }}
+            onPlaying={syncSubtitles}
+            onLoadedMetadata={syncSubtitles}
           >
             <track
               src="/videos/we-must-fight.vtt"
