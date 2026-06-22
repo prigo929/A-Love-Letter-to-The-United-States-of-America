@@ -21,6 +21,10 @@ const SPEECH_EN = [
   {
     text: "You and I have the courage to say to our enemies, \"There is a price we will not pay.\" \"There is a point beyond which they must not advance.\" And this -- this is the meaning in the phrase of Barry Goldwater's \"peace through strength.\" Winston Churchill said, \"The destiny of man is not measured by material computations. When great forces are on the move in the world, we learn we're spirits -- not animals.\" And he said, \"There's something going on in time and space, and beyond time and space, which, whether we like it or not, spells duty\"",
     highlight: "You and I have the courage to say to our enemies, \"There is a price we will not pay.\" \"There is a point beyond which they must not advance.\" And this -- this is the meaning in the phrase of Barry Goldwater's \"peace through strength.\""
+  },
+  {
+    text: "You and I have a rendezvous with destiny. We'll preserve for our children this, the last best hope of man on earth, or we'll sentence them to take the last step into a thousand years of darkness.",
+    highlight: "You and I have a rendezvous with destiny. We'll preserve for our children this, the last best hope of man on earth"
   }
 ];
 
@@ -40,6 +44,10 @@ const SPEECH_RO = [
   {
     text: "Tu și cu mine avem curajul să le spunem dușmanilor noștri: «Există un preț pe care nu-l vom plăti. Există un punct dincolo de care nu trebuie să înaintați». Și acesta — acesta este sensul din spatele sintagmei lui Barry Goldwater: «pace prin forță». Winston Churchill a spus: «Destinul omului nu este măsurat prin calcule materiale. Când forțe mărețe sunt în mișcare în lume, aflăm că suntem spirite — nu animale». Și a mai spus: «Există ceva ce se petrece în timp și spațiu, și dincolo de timp și spațiu, care, fie că ne place sau nu, înseamnă datorie».",
     highlight: "Tu și cu mine avem curajul să le spunem dușmanilor noștri: «Există un preț pe care nu-l vom plăti. Există un punct dincolo de care nu trebuie să înaintați». Și acesta — acesta este sensul din spatele sintagmei lui Barry Goldwater: «pace prin forță»."
+  },
+  {
+    text: "Tu și cu mine avem o întâlnire cu destinul. Vom păstra pentru copiii noștri această ultimă și cea mai bună speranță a omului pe pământ, sau îi vom condamna să facă ultimul pas într-o mie de ani de întuneric.",
+    highlight: "Tu și cu mine avem o întâlnire cu destinul. Vom păstra pentru copiii noștri această ultimă și cea mai bună speranță a omului pe pământ"
   }
 ];
 
@@ -100,7 +108,22 @@ export default function WeMustFightClient({ locale }: { locale: string }) {
             playsInline
             controls={hasStarted}
             onPlay={() => setHasStarted(true)}
-          />
+          >
+            <track
+              src="/videos/we-must-fight.vtt"
+              kind="subtitles"
+              srcLang="en"
+              label="English"
+              default={currentLocale === "en"}
+            />
+            <track
+              src="/videos/we-must-fight-ro.vtt"
+              kind="subtitles"
+              srcLang="ro"
+              label="Română"
+              default={currentLocale === "ro"}
+            />
+          </video>
           {!hasStarted && (
             <button
               onClick={handlePlayClick}
