@@ -229,10 +229,10 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 | 🏷️ Editorial Vertical | 🎨 Visual Tone & Aesthetic | ⚡ Active Interactive Engines | 🔗 Production Routes |
 | :--- | :--- | :--- | :--- |
 | **📈 Economy** | **"Macro-Capital Editorial"**<br>• Clean grid alignments<br>• Wall Street Journal-grade typography<br>• High-contrast monetary scales | • **GDP & Venture Capital Charts**: Gold-highlighted Recharts comparisons.<br>• **National Debt Ticker**: Live real-time projection.<br>• **Innovation Index**: Global patent comparative metric. | • `/economy`<br>• `/economy/gdp-growth`<br>• `/economy/capital-markets`<br>• `/economy/startups-venture-capital`<br>• `/economy/dollar-dominance`<br>• `/economy/trade-and-exports` |
-| **🌲 Nature** | **"Spatial Editorial"**<br>• Earthy obsidian backdrops<br>• Emerald green accents<br>• Generous typographic quote spacing | • **Geyser Eruption Simulator**: Real-time interval tracker.<br>• **Biodiversity Strata**: Interactive layered mountain mapping.<br>• **NPS Mobile Charts**: Angle-rotated responsive label charts. | • `/nature`<br>• `/nature/national-parks`<br>• `/nature/alaska`<br>• `/nature/rockies`<br>• `/nature/grand-canyon`<br>• `/nature/yellowstone`<br>• `/nature/great-lakes` |
+| **🌲 Nature** | **"Spatial Editorial"**<br>• Earthy obsidian backdrops<br>• Emerald green accents<br>• Generous typographic quote spacing | • **Geyser Eruption Simulator**: Real-time interval tracker.<br>• **Biodiversity Strata**: Interactive layered mountain mapping.<br>• **NPS Mobile Charts**: Angle-rotated responsive label charts. | • `/nature`<br>• `/nature/national-parks`<br>• `/nature/alaska`<br>• `/nature/rockies`<br>• `/nature/grand-canyon`<br>• `/nature/yellowstone`<br>• `/nature/great-lakes`<br>• `/natural-resources` |
 | **🎖️ Military** | **"Minimalist Black-Ops"**<br>• Stark monochromatic headers<br>• Zinc/black palette with thin border accents<br>• Cinematic looping video heroes<br>• "Classified dossier" modal drawers | • **Global Carrier Map**: Live SVG tracker for all 11 carrier strike groups.<br>• **Nuclear Triad Simulation**: Interactive silo, sub, and bomber parity engine.<br>• **DARPA Future Systems Grid**: Active classified program cards.<br>• **Base Dossier Drawer**: Per-installation intelligence briefs with image previews.<br>• **Heritage Timeline**: Branch-by-branch milestone narratives (Navy, Air Force, Space Force).<br>• **Platform Showcases**: Spec-sheet modals for every major weapons platform.<br>• **Five Eyes Geometry**: Alliance node network visual (Intelligence page). | • `/military`<br>• `/military/navy`<br>• `/military/air-force`<br>• `/military/space-force`<br>• `/military/global-bases`<br>• `/military/intelligence` |
 | **🏛️ Constitution** | **"Sovereign Civic Exhibit"**<br>• Neoclassical marble gradients<br>• High-contrast typography<br>• Neomorphic card layers | • **Electoral Map**: Biennial seat-flip and bipartisan delegation diagonal splits.<br>• **Federalism Slider Lab**: Multidimensional state matching engine.<br>• **Constitution Race**: Animated historical timeline of democratic stability.<br>• **Founder Constellation**: Relational SVG network map. | • `/constitution`<br>• `/constitution/separation-of-powers`<br>• `/constitution/federalism`<br>• `/constitution/bill-of-rights`<br>• `/constitution/first-amendment`<br>• `/constitution/second-amendment`<br>• `/constitution/democracy-track-record`<br>• `/constitution/unique-features`<br>• `/constitution/electoral-map` |
-| **🎭 Culture** | **"Warm Editorial Flow"**<br>• Alternating light-dark cream panels<br>• Dynamic brand marquees<br>• Multi-media music & food grids | • **Soft Power Asymmetry**: Hollywood distribution economics, interactive archive vault, and regional barbecue maps. | • `/culture`<br>• `/culture/entertainment`<br>• `/culture/food-and-drinks`<br>• `/culture/fashion`<br>• `/culture/sports`<br>• `/culture/music-genres`<br>• `/culture/english-language`<br>• `/culture/companies-brands`<br>• `/culture/film-and-storytelling`<br>• `/culture/overview` |
+| **🎭 Culture** | **"Warm Editorial Flow"**<br>• Alternating light-dark cream panels<br>• Dynamic brand marquees<br>• Multi-media music & food grids | • **Soft Power Asymmetry**: Hollywood distribution economics, interactive archive vault, and regional barbecue maps. | • `/culture`<br>• `/culture/entertainment`<br>• `/culture/food-and-drinks`<br>• `/culture/fashion`<br>• `/culture/sports`<br>• `/culture/music-genres`<br>• `/culture/english-language`<br>• `/culture/companies-brands`<br>• `/culture/film-and-storytelling` |
 | **💡 Innovation** | **"High-Tech Modern Grids"**<br>• Obsidian tech palettes<br>• Modular sub-pages directory<br>• Dynamic video hero showcases | • **Generative AI & Cloud Nodes**: Advanced visualizers details Silicon Valley semiconductor design, AWS/Google Cloud centers, and SpaceX launch statistics. | • `/innovation`<br>• `/innovation/internet-history`<br>• `/innovation/ai-and-tech`<br>• `/innovation/smartphones`<br>• `/innovation/cloud-computing`<br>• `/innovation/space-technology`<br>• `/innovation/gaming` |
 | **🔬 Science** | **"Empirical Research"**<br>• Clinical details and patent lists<br>• Dark slate modern backgrounds | • **Biotech & Inventions**: Interactive data cards tracking biomedical innovations and post-war tech breakthroughs. | • `/science`<br>• `/science/inventions-pre-1890`<br>• `/science/inventions-1890-1945`<br>• `/science/inventions-post-1991`<br>• `/science/medicine-and-biotech` |
 | **🎓 Universities** | **"Campus Showcase Grids"**<br>• Gold-trimmed obsidian lists<br>• University research insights | • **Academic Prestige**: Custom tables displaying Ivy League endowments, STEM research output, and public university tech-transfer systems. | • `/universities`<br>• `/universities/ivy-league`<br>• `/universities/stem-powerhouses`<br>• `/universities/business-schools`<br>• `/universities/public-research-universities` |
@@ -272,6 +272,7 @@ The website is styled like an art-directed editorial manuscript, with distinct c
   - **→ Grand Canyon** (`/nature/grand-canyon`)
   - **→ Yellowstone** (`/nature/yellowstone`)
   - **→ Great Lakes** (`/nature/great-lakes`)
+  - **→ Natural Resources** (`/natural-resources`)
 </details>
 
 <details>
@@ -292,9 +293,11 @@ The website is styled like an art-directed editorial manuscript, with distinct c
   - **→ Bill of Rights** (`/constitution/bill-of-rights`)
   - **→ First Amendment** (`/constitution/first-amendment`)
   - **→ Second Amendment** (`/constitution/second-amendment`)
-  - **→ Federalism** (`/constitution/federalism`)
+  - **→ Laboratories of Democracy** (`/constitution/federalism`)
+  - **→ Only in America** (`/constitution/unique-features`)
   - **→ Separation of Powers** (`/constitution/separation-of-powers`)
   - **→ Electoral Archive Map** (`/constitution/electoral-map`)
+  - **→ 250-Year Track Record** (`/constitution/democracy-track-record`)
 </details>
 
 <details>
@@ -390,9 +393,11 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 <summary><strong>📊 Data & Media</strong> (Empirical facts, media, interactive maps, and indices of success)</summary>
 
 - Empirical database, cinematic image masonry, and map explorer routes:
-  - **→ US Profile** (`/data`)
+  - **→ US Profile** (`/united-states`)
+  - **→ Data Fact Sheet** (`/data`)
   - **→ Immigration & Demographics** (`/immigration-demographics`)
   - **→ Photo Gallery** (`/gallery`)
+  - **→ Videos** (`/videos`)
   - **→ Map Explorer** (`/explorer`)
   - **→ Misconceptions** (`/data/misconceptions`)
   - **→ Ask America Oracle** (`/interactive`)
@@ -427,6 +432,9 @@ All 12 core verticals of the platform—**Economy**, **Nature**, **Military**, *
 - **Mobile Header Alignment**: Standardized block span structural wrapping on all large section titles to prevent awkward 3-row page splits or broken words on small screens.
 - **MacroHero & Layout Optimization**: Standardized the `MacroHero` layout spacing and vertical stat elements across Economy, Quality of Life, and Culture pages to eliminate any overlap of statistics and titles on smaller screens.
 - **High-Fidelity Media Assets**: Integrated high-quality, local video background components (such as Apple technology and Michael Jordan sports reels) with built-in mute/unmute audio control.
+- **Visual Badge & Pill Standardization**: Upgraded category badges and metadata tags across Innovation subpages, Universities, and Science sections, shifting from boxy monospace elements to premium, high-contrast, rounded pills using `font-body font-semibold` and `rounded-full` for maximum aesthetic refinement.
+- **Feature Card Layout Scaling**: Rescaled highlight feature blocks (introducing key platforms or products like the iPhone Air, Spaceship Reusability, and Epic Games) to span the full grid column width (one per row) on both mobile and desktop viewports, creating a more prominent and immersive showcase.
+- **Sitemap & Navigation Cleanup**: Pruned the duplicate `"→ Overview"` link under the **Culture** section on the sitemap and All Sections page across both English and Romanian configurations to maintain a clean navigation structure.
 
 ## 🛠️ The Sovereignty Tech Stack
 
@@ -1467,6 +1475,8 @@ This section is for future AI-assisted edits. The goal is to explain how the cod
 - **Recharts Label Props**: Custom label components used in Recharts `Pie` charts receive props that may be `undefined`. Always destructure them as optional and include a null-check guard at the top of the function.
 - **Bilingual Data Integrity**: Every interface in `lib/data` that handles content requires both an English field (e.g., `tagline`) and a Romanian field (e.g., `taglineRo`). Never omit the `Ro` version, even if using a placeholder, to maintain interface compliance.
 - **Prop Naming Consistency**: Always verify the prop names of shared components. For example, `Breadcrumb` expects `items`, not `crumbs`.
+- **Monospace Font Abuse**: Do not use `font-mono` for metadata, tags, badges, or external source links unless it is raw code, parameters, or numeric strings. Standardize on `font-body` with semibold/bold weight to preserve the site's premium editorial identity.
+- **Sitemap Navigation Configurations**: When adding or updating main categories or subpages, ensure navigation lists in `lib/constants.ts` do not contain duplicate overview entries that overlap with the parent page.
 
 ### Architectural Decisions
 
@@ -1662,6 +1672,189 @@ The Innovation vertical illustrates the synthesis of public foundational researc
 
 > *“We choose to go to the Moon in this decade and do the other things, not because they are easy, but because they are hard; because that challenge is one that we are willing to accept.”*  
 > 🚀 **John F. Kennedy** · *Rice University Address, 1962*
+
+---
+
+## 🎖️ Deep Dive: The Arsenal of Democracy & Global Posture
+
+The Military vertical provides a comprehensive, interactive dossier tracking the defense logistics, space dominance, nuclear triad, and naval posture that support international security stability.
+
+<p align="center">
+  <img src="web/IMAGES/Military/Navy/us-navy-gerald-ford-carrier.jpg" width="600" alt="USS Gerald R. Ford Strike Group: Absolute Deterrence" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
+### 1. Vector Jitter-Clustering Naval Coordinates
+- **Circular Orbit Mapping**: Standardized custom trigonometric clustering to space out aircraft carriers docked at identical coordinates, ensuring clean hover details and clickability for Norfolk, San Diego, and Yokosuka bases.
+- **Spec-Sheet Dossier Overlays**: Custom UI drawers detailing armament payload, aviation wing size, and nuclear core specifications for Nimitz and Gerald R. Ford class carriers.
+
+### 2. Triad Deterrence & IC Intelligence Networks
+- **Three-Legged Deterrence Simulator**: Interactive vector triangle mapping silo, bomber (B-2, B-21), and ballistic submarine (Ohio, Columbia class) readiness states.
+- **Five Eyes Intelligence Geometry**: Interactive visualization outlining intelligence-sharing interfaces (NSA, CIA, GCHQ, etc.) alongside chronological failures and agency scope profiles.
+
+---
+
+> *“To be prepared for war is one of the most effectual means of preserving peace.”*  
+> ⚓️ **George Washington** · *First Annual Message to Congress, 1790*
+
+---
+
+## 🔬 Deep Dive: Science, Innovation & Higher Education
+
+The Science and Universities verticals outline the core research ecosystems, academic endowments, and tech-transfer frameworks that drive global innovation.
+
+<p align="center">
+  <img src="web/IMAGES/University/Columbia University.jpg" width="600" alt="Ivy League Academic Excellence: Columbia University" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
+### 1. Nobel Laureate Metrics & Historical Inventions
+- **Empirical Chronology**: Charts the developmental trajectory of civilization-defining technologies across pre-1890 (telegraph), 1890–1945 (assembly line), and post-war (transistor, microchip) milestones.
+- **Biomedical Hegemony**: Detailed timelines tracking major NIH-backed achievements, DNA sequencing breakthroughs, and CRISPR/mRNA platform development.
+
+### 2. Research Powerhouses & Tech Transfer
+- **Ivy League & STEM Endowments**: Custom comparisons of endowment scaling, patents granted per research dollar, and startup spin-off rates (MIT, Stanford, Berkeley).
+- **Public Land-Grant Systems**: Evaluates the civic return on investment of major state university research grids.
+
+---
+
+> *“Science is a cooperative enterprise, spanning the generations. It's the passing of a torch.”*  
+> 🔬 **Carl Sagan** · *Cosmos, 1980*
+
+---
+
+## 🗺️ Deep Dive: Map Explorer & Visual Heritage Archive
+
+The Data and Media verticals act as the empirical visual gallery of the platform, combining spatial vector state data with historical imagery.
+
+<p align="center">
+  <img src="web/IMAGES/USA from Space/USA at night from Space.jpg" width="600" alt="The Shining City on a Hill: USA at night" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
+### 1. Interactive 50-State SVG Map Engine
+- **GDP & Demographics Heatmaps**: Implements state-by-state heat coloring representing GDP scales, population density, and historical statehood dates.
+- **Regional State Chronicles**: Responsive detail panels containing curated regional summaries and Statehood profiles.
+
+### 2. Media Masonry & Full-Bleed Lightbox Gallery
+- **520+ Curator-Sorted Photos**: Optimized image grid organized by category tags (Landscapes, Cities, Technology, Space, Military, History) utilizing Framer Motion layout transitions.
+- **Safari-Fit Viewport Lightboxes**: Custom full-screen modal overlays featuring responsive zooming and bilingual asset descriptions.
+
+---
+
+> *“The United States is a land of passage... it is a society in constant motion.”*  
+> 🗺️ **Alexis de Tocqueville** · *Democracy in America, 1835*
+
+---
+
+## 🌎 Deep Dive: Global Alliances & Quality of Life
+
+This section details the treaty structures that secure the free world alongside domestic standards of living, purchasing power, and asset density.
+
+<p align="center">
+  <img src="web/IMAGES/Housing/USA Suburb house.jpg" width="600" alt="Suburban Abundance: Housing Standards" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
+### 1. Treaty Alliances & Geopolitical Posture
+- **NATO Defense Parity**: Charts collective defense spend percentages, troop deployment capabilities, and the logistical backbone of Pax Americana.
+- **Foreign Policy Doctrines**: Evaluates the historical evolution of diplomacy, trade routes, and international reserve currencies.
+
+### 2. Standards of Living & Consumer Abundance
+- **OECD PPP Compensation Comparisons**: Visualizes real disposable income, wages, and purchasing power adjustments.
+- **Housing & Infrastructure Scales**: Charts typical home square footage, diagnostic machinery density, and asset holdings compared to Peer developed nations.
+
+---
+
+> *“The world must be made safe for democracy. Its peace must be planted upon the tested foundations of political liberty.”*  
+> 🕊️ **Woodrow Wilson** · *Address to Congress, 1917*
+
+---
+
+## 💬 Deep Dive: Ask America Interactive AI Oracle
+
+The Interactive vertical at `/interactive` functions as a tokenized search and synthesis agent, designed to provide comprehensive bilingual answers to civic questions.
+
+<p align="center">
+  <img src="web/IMAGES/US Buildings/US Capitol.jpg" width="600" alt="Ask America Interactive AI Oracle" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
+### 1. Tokenized Query Analysis & Archive Matching
+- **Keyword Weighting Algorithms**: Implements clean client-side token parsing to strip common stopwords and apply relevance-boosting filters for matches in article titles and summaries.
+- **Cross-Vertical Query Routing**: Connects input prompts to relevant content nodes across all 12 platform verticals, producing synthesized summaries with direct source citations.
+
+### 2. High-Performance Chat Interfaces
+- **State-Persistent Message Streams**: Employs interactive modal dialogs and inline chat islands to sustain conversation context.
+- **Bilingual Response Parity**: Ensures instant translation of both predefined query templates and dynamic responses.
+
+---
+
+> *“Information is the currency of democracy.”*  
+> 🏛️ **Thomas Jefferson** · *attributed*
+
+---
+
+## 🎥 Deep Dive: America in Motion Video Archive
+
+The Video vertical at `/videos` hosts high-definition films illustrating the continental scale, cities, infrastructure, and daily neighborhoods of the United States.
+
+<p align="center">
+  <img src="web/IMAGES/Cities/Golden Gate Bridge.jpg" width="600" alt="Golden Gate Bridge: Cinematic Perspectives" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
+### 1. Responsive 16K/8K Aerial Showcases
+- **Single-Column Video Rails**: Displays full-bleed YouTube embeds of major geographic and urban drone footage (North Carolina, metropolitan skylines) side-by-side with historical commentary.
+- **Lazy-Loaded Video Frame Placeholders**: Optimizes Largest Contentful Paint (`LCP`) by displaying static blur-up poster overlays before the video elements enter the viewport.
+
+### 2. Monolith Local Clip Library
+- **Muted Looping Background Assets**: Organizes all site-wide video files (SpaceX rocketry, Steve Jobs archive clips, military aviation, Times Square) in a single registry, with built-in playback controls.
+
+---
+
+> *“The cinematic eye does not just record; it mythologizes and reveals.”*  
+> 🎬 **Hollywood Archivist**
+
+---
+
+## 🧠 Deep Dive: Common Misconceptions (Myth vs. Reality)
+
+The Misconceptions module at `/data/misconceptions` serves as an audited statistical checkpoint, contrasting viral narratives with verified global indicators.
+
+<p align="center">
+  <img src="web/IMAGES/Culture/Iconic Things/Statue Of Liberty.jpg" width="600" alt="Statue Of Liberty: Beacon of Truth" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
+### 1. Audited International Data Matching
+- **Demographic Definitions Audits**: Exposes reporting methodology variances between US CDC and EU national registries, such as maternal mortality tracking windows.
+- **OECD Progressive Tax Analytics**: Highlights data models demonstrating that the US federal income tax grid remains the most progressive in the G7.
+
+### 2. Logistical and Infrastructure Reality Checks
+- **Freight-Rail Network Metrics**: Dissects freight shipping efficiency (double-stacked rail capacity) versus standard passenger rail grids.
+- **Verifiable Sourced Badges**: Embeds click-through verification links to AEI, OECD, Cato, and World Bank datasets.
+
+---
+
+> *“Truth is generally the best vindication against slander.”*  
+> ⚖️ **Abraham Lincoln** · *Letter to Edwin M. Stanton, 1864*
+
+---
+
+## 🏛️ Deep Dive: United States Profile Tabbed Dashboard
+
+The United States Profile at `/united-states` acts as a high-fidelity interactive dashboard organizing the nation's core demographics, symbols, and history.
+
+<p align="center">
+  <img src="web/IMAGES/US Buildings/US Capitol Presidential Inauguration.jpg" width="600" alt="US Profile Tabbed Dashboard" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+</p>
+
+### 1. Interactive 8-Section Tab Controller
+- **Framer Motion Active-Tab States**: Uses smooth horizontal transitions to cycle between Identity, History, Geography, Government, Foreign Relations, Economy, Demographics, and Culture.
+- **Sourced Wikipedia Datasets**: Translates and displays comprehensive sub-tables for government divisions, GDP progression, and population densities.
+
+### 2. High-Density Quick Fact Strips
+- **Census Telemetry Metric Cards**: Features quick-stats on total land area, national symbols, population counts, and global economic share.
+- **Visual Grid Dividers**: Integrates high-resolution geographical map visualizers and flag compositions into the tab panels.
+
+---
+
+> *“The republic is not a final product; it is a permanent task.”*  
+> 🦅 **Civic Voice**
 
 ---
 

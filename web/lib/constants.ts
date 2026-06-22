@@ -122,6 +122,11 @@ export const NAV_SECTIONS = [
         href: "/nature/great-lakes",
         description: "21% of Earth's fresh surface water",
       },
+      {
+        label: "Natural Resources",
+        href: "/natural-resources",
+        description: "Energy hubs, agriculture, mineral wealth & water systems",
+      },
     ],
   },
   {
@@ -642,6 +647,10 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "/nature/great-lakes": {
         label: "Marile Lacuri",
         description: "21% din apa dulce de la suprafață a Pământului",
+      },
+      "/natural-resources": {
+        label: "Resurse Naturale",
+        description: "Hub-uri energetice, agricultură, bogăție minerală și sisteme de apă",
       },
     },
   },
