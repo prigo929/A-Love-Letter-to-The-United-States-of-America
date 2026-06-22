@@ -160,7 +160,7 @@ export default function WeMustFightClient({ locale }: { locale: string }) {
       </section>
 
       {/* Redesigned Historical Context Card (Minimal Typographic Footer) */}
-      <section className="max-w-4xl mx-auto px-4 mt-44 sm:px-6 lg:px-8">
+      <section className="max-w-4xl mx-auto px-4 mt-20 pb-24 sm:px-6 lg:px-8">
         <div className="border-t border-white/10 pt-12">
           <div className="space-y-4 max-w-3xl">
             <h3 className="font-body text-xs font-bold tracking-[0.25em] text-white/80 uppercase">
