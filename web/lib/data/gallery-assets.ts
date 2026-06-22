@@ -366,7 +366,7 @@ import asset0362 from "@/IMAGES/History/Subpage/Ronald Reagan at the Brandenburg
 import asset0363 from "@/IMAGES/History/Subpage/The Bretton Woods Conference.jpg";
 import asset0364 from "@/IMAGES/History/Subpage/The Camp David Accords.jpg";
 import asset0365 from "@/IMAGES/History/Subpage/The EXCOMM Meetings During the Cuban Missile Crisis.jpg";
-import asset0366 from "@/IMAGES/History/Subpage/The NATO Accession of Poland, Hungary, and the Czech Republic.jpg";
+import asset0366 from "@/IMAGES/History/Subpage/The NATO Accession of Poland, Hungary, and the Czech Republic.svg";
 import asset0367 from "@/IMAGES/History/Subpage/The San Francisco Conference.jpg";
 import asset0368 from "@/IMAGES/History/Subpage/U.S. and Soviet Tanks Facing Off at Checkpoint Charlie.jpg";
 import asset0369 from "@/IMAGES/History/The Driving of the Golden Spike.jpg";
@@ -575,7 +575,7 @@ import asset0571 from "@/IMAGES/Military/Subpage/A U.S. Navy Carrier Strike Grou
 import asset0572 from "@/IMAGES/Military/Subpage/An Ohio-Class Nuclear Submarine Surfacing Through Arctic Ice.jpg";
 import asset0573 from "@/IMAGES/Military/Subpage/C-47s Unloading During the Berlin Airlift.jpg";
 import asset0574 from "@/IMAGES/Military/Subpage/General Douglas MacArthur Leading the UN Command.jpg";
-import asset0575 from "@/IMAGES/Military/Subpage/NATO AWACS Patrolling American Skies.jpg";
+import asset0575 from "@/IMAGES/Military/Subpage/NATO AWACS Patrolling American Skies.svg";
 import asset0576 from "@/IMAGES/Military/Subpage/Operation Tomodachi in Japan.png";
 import asset0577 from "@/IMAGES/Military/tactical-world-map.svg";
 import asset0578 from "@/IMAGES/Outdoors Lifestyle/boats docked in Marquette, MI.jpg";
@@ -1112,7 +1112,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "History/Subpage/The Bretton Woods Conference.jpg", src: asset0363 },
   { path: "History/Subpage/The Camp David Accords.jpg", src: asset0364 },
   { path: "History/Subpage/The EXCOMM Meetings During the Cuban Missile Crisis.jpg", src: asset0365 },
-  { path: "History/Subpage/The NATO Accession of Poland, Hungary, and the Czech Republic.jpg", src: asset0366 },
+  { path: "History/Subpage/The NATO Accession of Poland, Hungary, and the Czech Republic.svg", src: asset0366 },
   { path: "History/Subpage/The San Francisco Conference.jpg", src: asset0367 },
   { path: "History/Subpage/U.S. and Soviet Tanks Facing Off at Checkpoint Charlie.jpg", src: asset0368 },
   { path: "History/The Driving of the Golden Spike.jpg", src: asset0369 },
@@ -1321,7 +1321,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "Military/Subpage/An Ohio-Class Nuclear Submarine Surfacing Through Arctic Ice.jpg", src: asset0572 },
   { path: "Military/Subpage/C-47s Unloading During the Berlin Airlift.jpg", src: asset0573 },
   { path: "Military/Subpage/General Douglas MacArthur Leading the UN Command.jpg", src: asset0574 },
-  { path: "Military/Subpage/NATO AWACS Patrolling American Skies.jpg", src: asset0575 },
+  { path: "Military/Subpage/NATO AWACS Patrolling American Skies.svg", src: asset0575 },
   { path: "Military/Subpage/Operation Tomodachi in Japan.png", src: asset0576 },
   { path: "Military/tactical-world-map.svg", src: asset0577 },
   { path: "Outdoors Lifestyle/boats docked in Marquette, MI.jpg", src: asset0578 },
