@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import type { Locale } from "@/lib/i18n/config";
@@ -75,6 +75,20 @@ export default function WeMustFightClient({ locale }: { locale: string }) {
   const t = TEXTS[currentLocale];
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasStarted, setHasStarted] = useState(false);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      const tracks = videoRef.current.textTracks;
+      for (let i = 0; i < tracks.length; i++) {
+        const track = tracks[i];
+        if (track.language === currentLocale) {
+          track.mode = "showing";
+        } else {
+          track.mode = "disabled";
+        }
+      }
+    }
+  }, [currentLocale]);
 
   const speech = currentLocale === "ro" ? SPEECH_RO : SPEECH_EN;
 
