@@ -120,7 +120,7 @@ export default async function FoodAndDrinksPage() {
     { src: SITE_IMAGES.culture.foodSmores, label: isRo ? "S'mores" : "S'mores" },
     { src: SITE_IMAGES.culture.foodChocolateChipCookies, label: isRo ? "Chocolate Chip Cookies" : "Choc Chip Cookies" },
     { src: SITE_IMAGES.culture.foodBrownies, label: isRo ? "Brownies" : "Brownies" },
-    { src: SITE_IMAGES.culture.mcdMenu, label: isRo ? "McDonald's" : "McDonald's" },
+    { src: SITE_IMAGES.culture.burgerFries, label: isRo ? "Burger \u0026 Cartofi" : "Burger \u0026 Fries" },
   ];
 
   return (
@@ -337,8 +337,8 @@ export default async function FoodAndDrinksPage() {
                 aspect: "4/3",
               },
               {
-                src: SITE_IMAGES.culture.cokeGlass,
-                alt: "Full Coca-Cola glass",
+                src: SITE_IMAGES.culture.vaultCocaCola1989,
+                alt: "Coca-Cola 1989 vintage advertisement",
                 caption: isRo ? "Coca-Cola · Creat în 1886, Atlanta" : "Coca-Cola · Created 1886, Atlanta",
                 aspect: "4/3",
               },

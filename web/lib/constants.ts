@@ -362,7 +362,7 @@ export const NAV_SECTIONS = [
     title: "Quality of Life",
     href: "/quality-of-life",
     description: "The highest standard of living for the most people",
-    imageSrc: SITE_IMAGES.qualityOfLifeHouse,
+    imageSrc: SITE_IMAGES.housing.qolHouse,
     badge: "American Dream",
     items: [
       {
