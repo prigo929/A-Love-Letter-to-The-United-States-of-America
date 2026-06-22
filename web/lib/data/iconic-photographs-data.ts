@@ -1259,7 +1259,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     location: "Berlin, Germany",
     rights: "public-domain",
     source: "German Federal Archives (Bundesarchiv, CC-BY-SA) / public-domain frames.",
-    imagePath: "Culture/Sports/Jesse Owens at the Berlin Olympics.avif",
+    imagePath: "Culture/Sports/Jesse Owens at the Berlin Olympics.jpg",
   },
   {
     id: "1992-usa-basketball-dream-team",
@@ -2107,7 +2107,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     location: "United States",
     rights: "loc",
     source: "Library of Congress / archives (verify PD per image).",
-    imagePath: "American Life/Iconic/Suburban Backyard Barbecue.avif",
+    imagePath: "American Life/Iconic/Suburban Backyard Barbecue.jpg",
   },
   {
     id: "family-around-black-and-white-tv",

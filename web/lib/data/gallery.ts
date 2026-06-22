@@ -932,7 +932,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
       "Einstein visited Hubble at Mount Wilson in 1931 to see the evidence for cosmic expansion that reshaped his view of the universe.",
     location: "Mount Wilson Observatory, California",
   },
-  "Culture/Sports/Jesse Owens at the Berlin Olympics.avif": {
+  "Culture/Sports/Jesse Owens at the Berlin Olympics.jpg": {
     alt: "Owens wins four golds before a Nazi crowd.",
     caption: "Jesse Owens at the Berlin Olympics (1936)",
     description:
@@ -988,7 +988,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
       "At Macworld on January 9, 2007, Steve Jobs unveiled the iPhone, redefining the smartphone and the mobile era.",
     location: "Moscone Center, San Francisco",
   },
-  "American Life/Iconic/Suburban Backyard Barbecue.avif": {
+  "American Life/Iconic/Suburban Backyard Barbecue.jpg": {
     alt: "Families gather around the grill.",
     caption: "The Suburban Backyard Barbecue (1950s)",
     description:

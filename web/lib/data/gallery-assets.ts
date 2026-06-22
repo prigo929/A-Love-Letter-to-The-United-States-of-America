@@ -19,7 +19,7 @@ import asset0015 from "@/IMAGES/American Life/Iconic/Family Gathered Around the 
 import asset0016 from "@/IMAGES/American Life/Iconic/Gilmore Island Drive-In Complex.jpg";
 import asset0017 from "@/IMAGES/American Life/Iconic/Loading the Car for a Road Trip.jpg";
 import asset0018 from "@/IMAGES/American Life/Iconic/Mother Using an Automatic Washing Machine.jpg";
-import asset0019 from "@/IMAGES/American Life/Iconic/Suburban Backyard Barbecue.avif";
+import asset0019 from "@/IMAGES/American Life/Iconic/Suburban Backyard Barbecue.jpg";
 import asset0020 from "@/IMAGES/American Life/Iconic/The Vagabonds Camping Trip.jpg";
 import asset0021 from "@/IMAGES/Cities/Aerial High Angle Chicago Skyline At Twilight Dense Illuminated Urban Grid Aon Center Two Prudential Plaza And Glowing Arterial Streets.jpg";
 import asset0022 from "@/IMAGES/Cities/Aerial High Angle Midtown Manhattan Skyline Golden Hour Dense Skyscrapers Bank Of America Tower MetLife Building And 432 Park Avenue.jpg";
@@ -265,7 +265,7 @@ import asset0261 from "@/IMAGES/Culture/Sports/Donnie Allison was leading Cale Y
 import asset0262 from "@/IMAGES/Culture/Sports/Golf cart on grass Highland Course At Primland Resort, Meadows of Dan.jpg";
 import asset0263 from "@/IMAGES/Culture/Sports/Golf Course in Colorado.jpg";
 import asset0264 from "@/IMAGES/Culture/Sports/James during his first season with the Lakers in 2018.jpg";
-import asset0265 from "@/IMAGES/Culture/Sports/Jesse Owens at the Berlin Olympics.avif";
+import asset0265 from "@/IMAGES/Culture/Sports/Jesse Owens at the Berlin Olympics.jpg";
 import asset0266 from "@/IMAGES/Culture/Sports/LeBron James at Los Angeles Lakers @ Cleveland Cavaliers, March 21, 2022.jpg";
 import asset0267 from "@/IMAGES/Culture/Sports/Looking back across a pond on the 18th hole at Heritage Palms Golf Course, Indio.jpg";
 import asset0268 from "@/IMAGES/Culture/Sports/Muhammad Ali Landing Powerful Left Jab On Joe Frazier During Historic Bout.webp";
@@ -765,7 +765,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "American Life/Iconic/Gilmore Island Drive-In Complex.jpg", src: asset0016 },
   { path: "American Life/Iconic/Loading the Car for a Road Trip.jpg", src: asset0017 },
   { path: "American Life/Iconic/Mother Using an Automatic Washing Machine.jpg", src: asset0018 },
-  { path: "American Life/Iconic/Suburban Backyard Barbecue.avif", src: asset0019 },
+  { path: "American Life/Iconic/Suburban Backyard Barbecue.jpg", src: asset0019 },
   { path: "American Life/Iconic/The Vagabonds Camping Trip.jpg", src: asset0020 },
   { path: "Cities/Aerial High Angle Chicago Skyline At Twilight Dense Illuminated Urban Grid Aon Center Two Prudential Plaza And Glowing Arterial Streets.jpg", src: asset0021 },
   { path: "Cities/Aerial High Angle Midtown Manhattan Skyline Golden Hour Dense Skyscrapers Bank Of America Tower MetLife Building And 432 Park Avenue.jpg", src: asset0022 },
@@ -1011,7 +1011,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "Culture/Sports/Golf cart on grass Highland Course At Primland Resort, Meadows of Dan.jpg", src: asset0262 },
   { path: "Culture/Sports/Golf Course in Colorado.jpg", src: asset0263 },
   { path: "Culture/Sports/James during his first season with the Lakers in 2018.jpg", src: asset0264 },
-  { path: "Culture/Sports/Jesse Owens at the Berlin Olympics.avif", src: asset0265 },
+  { path: "Culture/Sports/Jesse Owens at the Berlin Olympics.jpg", src: asset0265 },
   { path: "Culture/Sports/LeBron James at Los Angeles Lakers @ Cleveland Cavaliers, March 21, 2022.jpg", src: asset0266 },
   { path: "Culture/Sports/Looking back across a pond on the 18th hole at Heritage Palms Golf Course, Indio.jpg", src: asset0267 },
   { path: "Culture/Sports/Muhammad Ali Landing Powerful Left Jab On Joe Frazier During Historic Bout.webp", src: asset0268 },
