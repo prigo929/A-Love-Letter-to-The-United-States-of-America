@@ -722,7 +722,7 @@ import asset0718 from "@/IMAGES/US Buildings/US Capitol.jpg";
 import asset0719 from "@/IMAGES/US Buildings/us-supreme-court-building.jpg";
 import asset0720 from "@/IMAGES/US Buildings/White_House_South_Lawn.jpg";
 import asset0721 from "@/IMAGES/US Flags/A soft Red White and Blue Light beam angled at 45 degrees on a Black Background.jpg";
-import asset0722 from "@/IMAGES/US Flags/brandon-mowinkel-H2b1a5WNSW0-unsplash.jpg";
+import asset0722 from "@/IMAGES/US Flags/American Flag Flying Outside Herbert C Hoover Building US Department Of Commerce Washington DC United States.jpeg";
 import asset0723 from "@/IMAGES/US Flags/dave-sherrill-48elRjHbXRY-unsplash.jpg";
 import asset0724 from "@/IMAGES/US Flags/Flag_of_the_United_States.svg";
 import asset0725 from "@/IMAGES/US Flags/jon-sailer-sHebYIu6XQ4-unsplash.jpg";
@@ -1475,7 +1475,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "US Buildings/us-supreme-court-building.jpg", src: asset0719 },
   { path: "US Buildings/White_House_South_Lawn.jpg", src: asset0720 },
   { path: "US Flags/A soft Red White and Blue Light beam angled at 45 degrees on a Black Background.jpg", src: asset0721 },
-  { path: "US Flags/brandon-mowinkel-H2b1a5WNSW0-unsplash.jpg", src: asset0722 },
+  { path: "US Flags/American Flag Flying Outside Herbert C Hoover Building US Department Of Commerce Washington DC United States.jpeg", src: asset0722 },
   { path: "US Flags/dave-sherrill-48elRjHbXRY-unsplash.jpg", src: asset0723 },
   { path: "US Flags/Flag_of_the_United_States.svg", src: asset0724 },
   { path: "US Flags/jon-sailer-sHebYIu6XQ4-unsplash.jpg", src: asset0725 },

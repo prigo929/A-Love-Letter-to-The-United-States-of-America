@@ -25,14 +25,36 @@ import { SITE } from "@/lib/constants";
 
 // ─── Page Metadata ────────────────────────────────────────────────────────────
 
+const OG_IMAGE = "/images/og-homepage.jpg";
+
 export const metadata: Metadata = {
   title: "Home",
   description: SITE.description,
   alternates: { canonical: "/" },
+
   openGraph: {
+    type: "website",
+    url: SITE.url,
+    siteName: SITE.name,
     title: `${SITE.name} | The Greatest Nation in History`,
     description: SITE.description,
-    url: "/",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 800,
+        alt: "Midtown Manhattan skyline at golden hour — the United States of America",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    site: SITE.twitter,
+    creator: SITE.twitter,
+    title: `${SITE.name} | The Greatest Nation in History`,
+    description: SITE.description,
+    images: [OG_IMAGE],
   },
 };
 
