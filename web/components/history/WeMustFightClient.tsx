@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import type { Locale } from "@/lib/i18n/config";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const SPEECH_EN = [
   {
@@ -75,6 +76,17 @@ export default function WeMustFightClient({ locale }: { locale: string }) {
   const t = TEXTS[currentLocale];
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasStarted, setHasStarted] = useState(false);
+  const { locale: activeLocale, setLocale } = useLanguage();
+
+  // ── Apply ?lang= query param on first load so shared links open in the right language ──
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const langParam = params.get("lang");
+    if ((langParam === "ro" || langParam === "en") && langParam !== activeLocale) {
+      setLocale(langParam as Locale);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const syncSubtitles = (delay = 0) => {
     const apply = () => {
