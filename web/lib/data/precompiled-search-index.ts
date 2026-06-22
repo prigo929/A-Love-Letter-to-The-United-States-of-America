@@ -61,6 +61,27 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     ]
   },
   {
+    "title": "We Must Fight (Speech)",
+    "category": "Navigation",
+    "description": "Ronald Reagan's historic 1964 campaign address 'A Time for Choosing'.",
+    "href": "/history/we-must-fight",
+    "keywords": [
+      "must",
+      "fight",
+      "speech",
+      "navigation",
+      "ronald",
+      "reagan's",
+      "historic",
+      "1964",
+      "campaign",
+      "address",
+      "time",
+      "for",
+      "choosing'"
+    ]
+  },
+  {
     "title": "Geography of the United States",
     "category": "Nature",
     "description": "The geography of the United States encompasses a vast and varied physical landscape across 9,833,517 square kilometers (3,796,742 square miles) of land and w...",
@@ -70479,6 +70500,29 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
       "toate",
       "cele",
       "verticale"
+    ]
+  },
+  {
+    "title": "Trebuie Să Luptăm (Discurs)",
+    "category": "Navigare",
+    "description": "Discursul istoric de campanie din 1964 al lui Ronald Reagan, 'Timpul pentru Alegere'.",
+    "href": "/history/we-must-fight",
+    "keywords": [
+      "trebuie",
+      "luptăm",
+      "discurs",
+      "navigare",
+      "discursul",
+      "istoric",
+      "campanie",
+      "din",
+      "1964",
+      "lui",
+      "ronald",
+      "reagan",
+      "'timpul",
+      "pentru",
+      "alegere'"
     ]
   },
   {

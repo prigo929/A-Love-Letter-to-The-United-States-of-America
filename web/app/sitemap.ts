@@ -115,6 +115,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/history/cold-war-and-anti-communism",
     "/history/the-american-dream",
     "/history/the-reagan-revolution",
+    "/history/we-must-fight",
     "/history/faith-family-and-community",
     "/history/free-markets-and-prosperity",
     "/history/border-sovereignty-and-national-identity",

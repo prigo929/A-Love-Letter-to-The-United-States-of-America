@@ -30,6 +30,10 @@ const NAV_ITEMS = [
   {
     en: { title: "Ask America Oracle", category: "Navigation", description: "Interactive AI oracle loaded with data from all 12 verticals.", href: "/interactive" },
     ro: { title: "Oracolul Ask America", category: "Navigare", description: "Oracol AI interactiv încărcat cu date din toate cele 12 verticale.", href: "/interactive" }
+  },
+  {
+    en: { title: "We Must Fight (Speech)", category: "Navigation", description: "Ronald Reagan's historic 1964 campaign address 'A Time for Choosing'.", href: "/history/we-must-fight" },
+    ro: { title: "Trebuie Să Luptăm (Discurs)", category: "Navigare", description: "Discursul istoric de campanie din 1964 al lui Ronald Reagan, 'Timpul pentru Alegere'.", href: "/history/we-must-fight" }
   }
 ];
 

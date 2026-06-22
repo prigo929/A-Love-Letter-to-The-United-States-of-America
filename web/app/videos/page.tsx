@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { YouTubeEmbed } from "@/components/shared/YouTubeEmbed";
@@ -69,6 +70,7 @@ export default async function VideosPage() {
       ];
 
   const siteClips: SiteClip[] = [
+    { src: "/videos/we-must-fight.mp4", title: isRo ? "Trebuie Să Luptăm (Ronald Reagan)" : "We Must Fight (Ronald Reagan)", tag: isRo ? "Istorie" : "History" },
     { src: "/videos/earth-pixels-from-space.mp4", title: isRo ? "Pământul din Spațiu" : "Earth from Space", tag: isRo ? "Spațiu" : "Space" },
     { src: "/videos/library/Technology/Falcon 9 Launch and Landing cinematic.mp4", title: isRo ? "Falcon 9 — Lansare și Aterizare" : "Falcon 9 — Launch & Landing", tag: "SpaceX" },
     { src: "/videos/library/Technology/Starship's Tenth Flight Test launch and landing cinematic.mp4", title: isRo ? "Starship — Zborul 10" : "Starship — Flight 10", tag: "SpaceX" },
@@ -147,9 +149,18 @@ export default async function VideosPage() {
             {siteClips.map((clip) => (
               <div key={clip.src} className="flex flex-col">
                 <LocalVideoCard src={clip.src} title={clip.title} />
-                <div className="mt-4 flex items-start justify-between gap-3">
-                  <div>
+                <div className="mt-4 flex flex-col md:flex-row md:items-start justify-between gap-4">
+                  <div className="space-y-2">
                     <h3 className="font-display text-2xl md:text-3xl font-bold text-white">{clip.title}</h3>
+                    {clip.src === "/videos/we-must-fight.mp4" && (
+                      <Link
+                        href="/history/we-must-fight"
+                        className="inline-flex items-center gap-2 text-xs font-semibold text-glory-gold hover:underline uppercase tracking-wider"
+                        id="experience-cinematic-link"
+                      >
+                        {isRo ? "Experimentează Pagina Cinematică →" : "Experience Cinematic Page →"}
+                      </Link>
+                    )}
                   </div>
                   <span className="shrink-0 rounded border border-white/20 px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-white/60">
                     {clip.tag}

@@ -474,6 +474,11 @@ export const NAV_SECTIONS = [
         description: "Conservative revival and patriotism",
       },
       {
+        label: "We Must Fight",
+        href: "/history/we-must-fight",
+        description: "Ronald Reagan's landmark 1964 speech",
+      },
+      {
         label: "Faith & Family",
         href: "/history/faith-family-and-community",
         description: "Churches, civic associations, and moral culture",
@@ -931,6 +936,10 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "/history/the-reagan-revolution": {
         label: "Revoluția Reagan",
         description: "Revigorarea conservatoare și patriotismul",
+      },
+      "/history/we-must-fight": {
+        label: "Trebuie Să Luptăm",
+        description: "Discursul de referință din 1964 al lui Ronald Reagan",
       },
       "/history/faith-family-and-community": {
         label: "Credință și Familie",
