@@ -114,13 +114,13 @@ export default function WeMustFightClient({ locale }: { locale: string }) {
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
-      {/* Force subtitle vertical position — browsers ignore VTT line:% on programmatic track switches */}
+      {/* Ensure consistent subtitle rendering across both tracks */}
       <style>{`
         video::cue {
           line-height: 1.6;
         }
         video::-webkit-media-text-track-container {
-          transform: translateY(-10%);
+          transform: translateY(-5%);
         }
       `}</style>
       {/* Hero Header */}
