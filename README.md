@@ -210,6 +210,82 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
   </div>
 </div>
 
+<br />
+
+### ★ Witness to History — The Iconic Photograph Collection ★
+
+A second showcase, drawn from the **Iconic Photographs archive** (`web/lib/data/iconic-photographs-data.ts`) — a curated, ever-growing set of the landmark photographs that tell the American story, each sourced from public-domain collections (NASA, the National Archives, the Library of Congress, the DoD) and surfaced across the site's per-section "Iconic Photographs" strips.
+
+<div align="center">
+  <img src="web/IMAGES/USA from Space/Earthrise.jpg" width="600" alt="Earthrise, Apollo 8, 1968" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "Earthrise" — 1968 ★</strong>
+    <br />
+    William Anders' photograph of the Earth rising over the lunar horizon from Apollo 8 — an image widely credited with launching the modern environmental movement.
+  </div>
+</div>
+
+<br />
+
+<div align="center">
+  <img src="web/IMAGES/Military/Iconic/Into the Jaws of Death.jpg" width="600" alt="Into the Jaws of Death, Omaha Beach, D-Day 1944" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "Into the Jaws of Death" — 1944 ★</strong>
+    <br />
+    Robert F. Sargent's photograph of the 1st Infantry Division wading ashore at Omaha Beach on D-Day, June 6, 1944 — among the defining images of the Second World War.
+  </div>
+</div>
+
+<br />
+
+<div align="center">
+  <img src="web/IMAGES/USA from Space/Saturn V Apollo 11 Launch.jpg" width="600" alt="Saturn V launch for Apollo 11, 1969" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "To the Moon" — 1969 ★</strong>
+    <br />
+    The Saturn V — the most powerful rocket ever flown — lifting off from Launch Complex 39A carrying Armstrong, Aldrin, and Collins toward the first lunar landing.
+  </div>
+</div>
+
+<br />
+
+<div align="center">
+  <img src="web/IMAGES/USA from Space/The Pillars of Creation.jpg" width="600" alt="The Pillars of Creation, Eagle Nebula" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Pillars of Creation" ★</strong>
+    <br />
+    Towering columns of star-forming gas in the Eagle Nebula, imaged by American space telescopes — a symbol of the nation's leadership at the frontier of human knowledge.
+  </div>
+</div>
+
+<br />
+
+<div align="center">
+  <img src="web/IMAGES/History/Reagan at the Brandenburg Gate.jpg" width="600" alt="President Reagan at the Brandenburg Gate, 1987" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "Tear Down This Wall" — 1987 ★</strong>
+    <br />
+    Ronald Reagan at the Berlin Wall, delivering the challenge that framed the closing argument of the Cold War. The Wall fell two years later.
+  </div>
+</div>
+
+<br />
+
+<div align="center">
+  <img src="web/IMAGES/History/MLK at the Lincoln Memorial.jpg" width="600" alt="Martin Luther King Jr. at the Lincoln Memorial, 1963" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #C5A059; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "I Have a Dream" — 1963 ★</strong>
+    <br />
+    Martin Luther King Jr. delivering his address at the March on Washington from the steps of the Lincoln Memorial — a turning point of the civil-rights movement.
+  </div>
+</div>
+
 ---
 
 ## 🦅 Quick Snapshot (Core Architecture)
@@ -911,6 +987,23 @@ If you want to change a homepage hero image:
 - less chance of Vercel/Linux case-sensitivity failures
 - one obvious place to audit what the live site is using
 
+### The Gallery & Photograph Archives
+
+Beyond the registry, the site maintains a large **photographic gallery** and two curated **photograph archives** that power the filterable `/gallery` and the per-section "Iconic Photographs" strips:
+
+| File | Role |
+| :--- | :--- |
+| `web/lib/data/gallery-assets.ts` | The manifest: every gallery image is `import`-ed as a Next.js `StaticImageData` and listed as `{ path, src }`. This is the single source of truth for what physically exists. |
+| `web/lib/data/gallery.ts` | Builds the `GalleryImage[]` shown on `/gallery` — derives category from the path, applies `CATEGORY_DEFAULTS`, and pulls hand-written `CURATED_IMAGE_OVERRIDES` (alt / caption / description / theme) per image. |
+| `web/lib/data/iconic-photographs-data.ts` | A curated set of landmark American photographs (Iwo Jima, Earthrise, the Trinity Test, Migrant Mother …). Each entry carries a caption + 1–2 sentences of context, a gallery `category`, a `section`, a `rights` status (`public-domain` / `loc` / `needs-license`), a `source` hint, and an `imagePath` once sourced. |
+| `web/lib/data/subpage-photographs-data.ts` | The same model, plus a `subpage` slug, for ~260 photographs tied to specific sub-pages (Universities, Global Leadership, the Innovation / Culture / Military / Constitution sub-pages). |
+| `web/components/shared/IconicPhotographs.tsx` | A server component that renders a section's photographs (title, year, context), resolving each `imagePath` to its `StaticImageData` via the gallery manifest. It only shows entries whose image has been sourced, so the strips grow automatically. It is wired into the Economy, Military, Innovation, Culture, Quality-of-Life, and Constitution pages. |
+
+**Content-first workflow.** Entries are authored in the data files *before* the image binaries are sourced — the build stays green because nothing imports a missing file. As each image is obtained from a free source (Wikimedia Commons, NASA, the National Archives, the Library of Congress, the DoD, presidential libraries), it is dropped into `web/IMAGES/<Category>/…`, wired into `gallery-assets.ts`, given a curated caption in `gallery.ts`, and its path recorded in the entry's `imagePath`.
+
+> [!IMPORTANT]
+> **Windows / cross-platform safety.** Because these files are `import`-ed at build time, filenames must avoid characters that are illegal on Windows (`: | " < > * ?`) and must use lowercase, well-known extensions (`.jpg`, not `.JPG`). A file with an illegal character cannot be checked out on Windows, which breaks the build for every page that imports it. Keep new image filenames ASCII-clean.
+
 ## Content Workflow
 
 Most factual content is intentionally stored in data files.
@@ -1161,6 +1254,10 @@ Edit the `DENYLISTED_HEADINGS` / `DENYLISTED_TOPIC_IDS` lists in `lib/data/thema
 ### Change gallery images or category mapping
 
 Add the import + entry in `lib/data/gallery-assets.ts` and adjust folder→category routing in `getCategory()` inside `lib/data/gallery.ts`. (Filenames containing apostrophes/quotes cannot be webpack-imported — rename them first.)
+
+### Add or edit an iconic / sub-page photograph
+
+Edit `lib/data/iconic-photographs-data.ts` (per-section) or `lib/data/subpage-photographs-data.ts` (per-subpage). Write the caption/context first; once the image file exists under `web/IMAGES/`, wire it into `gallery-assets.ts`, give it a caption in `gallery.ts`, and set the entry's `imagePath`. The `IconicPhotographs` strip then picks it up automatically. See **Image Workflow → The Gallery & Photograph Archives**.
 
 ### Change header navigation or submenu structure
 
