@@ -53,6 +53,7 @@ export function Header() {
       "/culture",
       "/innovation",
       "/quality-of-life",
+      "/data",
     ].includes(section.href)
   );
   const copy = getHeaderCopy(locale);
@@ -322,25 +323,6 @@ export function Header() {
                 </div>
               ))}
 
-              {/* More dropdown or Data link */}
-              <div className="relative flex items-center self-center">
-                <Link
-                  href="/data"
-                  onMouseEnter={() => {
-                    if (menuTimeout.current) clearTimeout(menuTimeout.current);
-                    setActiveMenu(null);
-                  }}
-                  className={cn(
-                    "flex items-center px-3.5 xl:px-4 py-2 rounded-lg font-body text-sm font-medium",
-                    "transition-colors duration-150",
-                    "text-white/80 hover:text-white hover:bg-white/10",
-                    pathname.startsWith("/data") && "text-glory-gold bg-glory-gold/10",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold",
-                  )}
-                >
-                  {copy.dataLink}
-                </Link>
-              </div>
             </nav>
 
             {/* ── Desktop CTA ────────────────────────────────────────────── */}

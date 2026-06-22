@@ -429,7 +429,7 @@ import asset0425 from "@/IMAGES/Leadership/President Reagan giving speech on the
 import asset0426 from "@/IMAGES/Leadership/President Reagan Meeting with Congressman Silvio Conte in oval office. 03:2:1981.jpg";
 import asset0427 from "@/IMAGES/Leadership/President Ronald Reagan Talking on Telephone in His State Room on a Trip to Nevada Aboard Air Force One 25 June 1986.jpg";
 import asset0428 from "@/IMAGES/Leadership/President Ronald Reagan with George Bush and Thomas \"Tip\" O'Neil Applauding Giving The State of The Union Address to Congress and The Nation.jpg";
-import asset0429 from "@/IMAGES/Leadership/Reagan with US Flag in the Background.avif";
+import asset0429 from "@/IMAGES/Leadership/Reagan with US Flag in the Background.jpg";
 import asset0430 from "@/IMAGES/Military/Air Force/B-1B Lancer Flying.jpg";
 import asset0431 from "@/IMAGES/Military/Air Force/B-2 Spirit Bomber.jpg";
 import asset0432 from "@/IMAGES/Military/Air Force/B-52_Stratofortress_assigned_to_the_307th_Bomb_Wing.jpg";
@@ -1182,7 +1182,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "Leadership/President Reagan Meeting with Congressman Silvio Conte in oval office. 03:2:1981.jpg", src: asset0426 },
   { path: "Leadership/President Ronald Reagan Talking on Telephone in His State Room on a Trip to Nevada Aboard Air Force One 25 June 1986.jpg", src: asset0427 },
   { path: "Leadership/President Ronald Reagan with George Bush and Thomas \"Tip\" O'Neil Applauding Giving The State of The Union Address to Congress and The Nation.jpg", src: asset0428 },
-  { path: "Leadership/Reagan with US Flag in the Background.avif", src: asset0429 },
+  { path: "Leadership/Reagan with US Flag in the Background.jpg", src: asset0429 },
   { path: "Military/Air Force/B-1B Lancer Flying.jpg", src: asset0430 },
   { path: "Military/Air Force/B-2 Spirit Bomber.jpg", src: asset0431 },
   { path: "Military/Air Force/B-52_Stratofortress_assigned_to_the_307th_Bomb_Wing.jpg", src: asset0432 },

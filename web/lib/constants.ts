@@ -474,11 +474,6 @@ export const NAV_SECTIONS = [
         description: "Conservative revival and patriotism",
       },
       {
-        label: "We Must Fight",
-        href: "/history/we-must-fight",
-        description: "Ronald Reagan's landmark 1964 speech",
-      },
-      {
         label: "Faith & Family",
         href: "/history/faith-family-and-community",
         description: "Churches, civic associations, and moral culture",
@@ -536,6 +531,11 @@ export const NAV_SECTIONS = [
         label: "Videos",
         href: "/videos",
         description: "Cinematic video archive of American achievements",
+      },
+      {
+        label: "We Must Fight",
+        href: "/history/we-must-fight",
+        description: "Ronald Reagan's landmark 1964 speech",
       },
       {
         label: "Map Explorer",
@@ -937,10 +937,6 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
         label: "Revoluția Reagan",
         description: "Revigorarea conservatoare și patriotismul",
       },
-      "/history/we-must-fight": {
-        label: "Trebuie Să Luptăm",
-        description: "Discursul de referință din 1964 al lui Ronald Reagan",
-      },
       "/history/faith-family-and-community": {
         label: "Credință și Familie",
         description: "Bisericile, asociațiile civice și cultura morală",
@@ -987,6 +983,10 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "/videos": {
         label: "Videoclipuri",
         description: "Arhivă video cinematică a realizărilor americane",
+      },
+      "/history/we-must-fight": {
+        label: "Trebuie Să Luptăm",
+        description: "Discursul de referință din 1964 al lui Ronald Reagan",
       },
       "/explorer": {
         label: "Explorator de Hartă",
