@@ -66,19 +66,14 @@ export default function WeMustFightClient({ locale }: { locale: string }) {
   const currentLocale = (locale === "ro" ? "ro" : "en") as Locale;
   const t = TEXTS[currentLocale];
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
   const speech = currentLocale === "ro" ? SPEECH_RO : SPEECH_EN;
 
-  const togglePlay = () => {
+  const handlePlayClick = () => {
     if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        videoRef.current.play().catch(() => {});
-        setIsPlaying(true);
-      }
+      videoRef.current.play().catch(() => {});
+      setHasStarted(true);
     }
   };
 
@@ -103,13 +98,12 @@ export default function WeMustFightClient({ locale }: { locale: string }) {
             className="w-full h-full object-cover"
             preload="metadata"
             playsInline
-            controls={isPlaying}
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
+            controls={hasStarted}
+            onPlay={() => setHasStarted(true)}
           />
-          {!isPlaying && (
+          {!hasStarted && (
             <button
-              onClick={togglePlay}
+              onClick={handlePlayClick}
               className="absolute inset-0 w-full h-full flex flex-col items-center justify-center bg-black/85 transition-all duration-500 focus-visible:outline-none"
               aria-label="Play Speech Video"
               id="cinematic-play-btn"
