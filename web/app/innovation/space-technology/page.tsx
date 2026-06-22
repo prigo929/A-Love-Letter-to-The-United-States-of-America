@@ -380,7 +380,7 @@ export default async function SpaceTechnologyPage() {
             {isRo ? "Tehnologia SpaceX în Acțiune" : "SpaceX Technology in Action"}
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="flex flex-col gap-16 max-w-5xl mx-auto">
             {[
               {
                 title: isRo ? "Lansarea și Aterizarea Falcon 9" : "Falcon 9 Launch & Landing",
