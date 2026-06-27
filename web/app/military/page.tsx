@@ -36,13 +36,16 @@ import {
   BranchSelector,
   DARPAProgramGrid,
   NuclearTriadDiagram,
-  GlobalCarrierMap,
   VideoMilitaryHero,
   BudgetComparisonBar,
   AlliancesShowcase,
   SOCOMGrid,
   IntelligenceNetworkMap,
 } from "@/components/military/MilitaryAnimations";
+import { GlobalCommandMap } from "@/components/military/GlobalBasesComponents";
+import { getDomesticBases } from "@/lib/data/domestic-bases-data";
+import { getStrategicBases, getRegionBriefs } from "@/lib/data/global-bases-data";
+import { getOverseasBases } from "@/lib/data/overseas-bases-data";
 import { LayoutGroup } from "framer-motion";
 import { FloatingTOC } from "@/components/layout/FloatingTOC";
 
@@ -244,6 +247,10 @@ export default async function MilitaryPage() {
   const darpaPrograms = getDARPAPrograms(locale);
   const nuclearTriad = getNuclearTriad(locale);
   const carriers = getLocalizedCarriers(locale);
+  const bases = getStrategicBases(locale);
+  const regions = getRegionBriefs(locale);
+  const domesticBases = getDomesticBases(locale);
+  const overseasBases = getOverseasBases(locale);
   const budgetData = getBudgetData(locale);
   const contractors = getDefenseContractors(locale);
   const quotes = getMilitaryQuotes(locale);
@@ -355,15 +362,15 @@ export default async function MilitaryPage() {
         <SOCOMGrid units={socomUnits} locale={locale} />
       </Section>
 
-      {/* ─── §5  CARRIER MAP CINEMATIC INTERLUDE ────────────────────────────── */}
+      {/* ─── §5  GLOBAL COMMAND MAP CINEMATIC INTERLUDE ────────────────────────────── */}
       <CinematicImage
-        src={SITE_IMAGES.military.carrier}
-        alt="USS Nimitz carrier strike group"
+        src={SITE_IMAGES.homeUsaAtNightFromSpace}
+        alt="US military global presence"
       >
-        <div className="text-center">
+        <div className="text-center px-4">
           <div className="mil-text-label mb-12">{copy.carrierLabel}</div>
-          <h2 className="mil-text-hero flex flex-col items-center w-full text-center">
-            <span className="block whitespace-nowrap">11 {copy.carrierTitle1}</span>
+          <h2 className="text-[clamp(32px,8vw,110px)] font-black uppercase leading-[1.0] tracking-tight text-white flex flex-col items-center w-full text-center">
+            <span className="block whitespace-nowrap">{copy.carrierTitle1}</span>
             <span className="block whitespace-nowrap text-white/20">{copy.carrierTitle2}</span>
           </h2>
           <div className="mil-text-metadata mt-12 font-bold text-sm text-white/70">
@@ -372,21 +379,14 @@ export default async function MilitaryPage() {
         </div>
       </CinematicImage>
 
-      {/* ─── §6  GLOBAL CARRIER MAP ─────────────────────────────────────────── */}
-      <Section
-        id="carrier-map"
-        label={copy.carrierLiveLabel}
-      >
-        <GlobalCarrierMap positions={carriers} locale={locale}/>
-        <div className="mt-12 flex justify-center">
-          <Link
-            href="/military/global-bases"
-            className="inline-flex h-11 items-center justify-center border border-white/15 bg-white px-5 text-xs font-bold uppercase text-black transition-colors hover:bg-white/85"
-          >
-            {isRo ? "EXPLOREAZĂ BAZELE GLOBALE & LOGISTICA →" : "EXPLORE GLOBAL BASES & LOGISTICS →"}
-          </Link>
-        </div>
-      </Section>
+      {/* ─── §6  GLOBAL COMMAND MAP ─────────────────────────────────────────── */}
+      <GlobalCommandMap
+        bases={bases}
+        domesticBases={domesticBases}
+        overseasBases={overseasBases}
+        regions={regions}
+        locale={locale}
+      />
 
       {/* ─── §7  WEAPON SYSTEMS ─────────────────────────────────────────────── */}
       <Section
