@@ -59,11 +59,10 @@ const nextConfig: NextConfig = {
     formats: ["image/webp"],
     // Allow the quality levels used by next/image in this app
     qualities: [75, 85, 90, 100],
-    // Cache optimized images aggressively so repeat visits and route
-    // transitions do not keep paying the transform cost.
-    minimumCacheTTL: 60 * 60 * 24 * 365,
-    // Limit Next.js image disk cache size to 500MB to avoid ballooning cache folders
-    maximumDiskCacheSize: 5000000000,
+    // Cache optimized images for a shorter duration (1 day) to allow eviction of stale images.
+    minimumCacheTTL: 60 * 60 * 24,
+    // Limit Next.js image disk cache size to 100MB to prevent ballooning cache folders
+    maximumDiskCacheSize: 104857600,
     // Device breakpoints for responsive images. Keep the set useful, but avoid
     // generating unnecessary ultra-large variants for most screens.
     deviceSizes: [640, 1080, 1920, 2560],
