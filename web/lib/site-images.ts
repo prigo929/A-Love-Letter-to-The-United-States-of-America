@@ -188,7 +188,7 @@ import f35Lightning from "@/IMAGES/Military/Air Force/us-air-force-f35-lightning
 import geraldFordCarrier from "@/IMAGES/Military/Navy/us-navy-gerald-ford-carrier.jpg";
 import ohioSubmarine from "@/IMAGES/Military/Navy/us-navy-ohio-class-submarine.jpg";
 import minutemanLaunch from "@/IMAGES/Military/Air Force/us-air-force-minuteman-iii-launch.jpg";
-import cyberOps from "@/IMAGES/Military/Air Force/us-air-force-cyber-ops.jpg";
+import cyberOps from "@/IMAGES/Technology/server aisles in google data center in Ohio.jpg";
 import marinesAssault from "@/IMAGES/Military/Marines/us-marines-amphibious-assault.jpg";
 import socomOperators from "@/IMAGES/Military/SOCOM/us-army-socom-operators.jpg";
 import tacticalWorldMap from "@/IMAGES/Military/tactical-world-map.svg";
