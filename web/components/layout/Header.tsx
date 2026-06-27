@@ -141,7 +141,7 @@ export function Header() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           scrolled
-            ? "bg-navy-dark/95 backdrop-blur-glass shadow-xl"
+            ? "bg-navy-dark/100 shadow-xl"
             : "bg-transparent",
         )}
         role="banner"

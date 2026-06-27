@@ -562,7 +562,7 @@ export function VideoCultureHero({
               loop
               muted
               playsInline
-              preload="auto"
+              preload="metadata"
               className="absolute inset-0 h-full w-full object-cover brightness-[0.4] saturate-[0.8]"
             >
               <source src={videoSrc} type="video/mp4" />

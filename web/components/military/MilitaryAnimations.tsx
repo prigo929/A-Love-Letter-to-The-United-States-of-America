@@ -1043,7 +1043,7 @@ export function ParallaxMilitaryHero({
               loop
               muted
               playsInline
-              preload="auto"
+              preload="metadata"
               className={cn("absolute inset-0 h-full w-full object-cover", mediaClass)}
             >
               <source src={videoSrc} type="video/mp4" />
@@ -1199,7 +1199,7 @@ export function VideoMilitaryHero({
               loop
               muted
               playsInline
-              preload="auto"
+              preload="metadata"
               className="absolute inset-0 h-full w-full object-[center_40%] object-cover brightness-[0.68] saturate-[0.85] scale-[1.15] md:scale-100 md:object-cover"
             >
               <source src={videoSrc} type="video/mp4" />

@@ -344,25 +344,10 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
 
     window.addEventListener("resize", resize);
 
-    let isIntersecting = true;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isIntersecting = entry.isIntersecting;
-      },
-      { threshold: 0 }
-    );
-    observer.observe(canvas);
-
-    let frame: number;
+    let frame = 0;
     let lastTime = performance.now();
 
     const draw = (time: number) => {
-      if (!isIntersecting) {
-        lastTime = time;
-        frame = requestAnimationFrame(draw);
-        return;
-      }
-
       // `delta` keeps the animation from jumping too far if the browser slows
       // down for a moment between frames.
       const delta = Math.min((time - lastTime) / 16.6667, 2.4);
@@ -445,10 +430,32 @@ function ParticleCanvas({ currentImage }: { currentImage: number }) {
       frame = requestAnimationFrame(draw);
     };
 
-    frame = requestAnimationFrame(draw);
+    const start = () => {
+      if (frame) return;
+      lastTime = performance.now();
+      frame = requestAnimationFrame(draw);
+    };
+    const stop = () => {
+      if (frame) {
+        cancelAnimationFrame(frame);
+        frame = 0;
+      }
+    };
+
+    // Only animate while the hero canvas is on screen; fully stop the rAF loop
+    // when it scrolls out of view instead of spinning idle no-op frames.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) start();
+        else stop();
+      },
+      { threshold: 0 },
+    );
+    observer.observe(canvas);
+    start();
 
     return () => {
-      cancelAnimationFrame(frame);
+      stop();
       window.removeEventListener("resize", resize);
       observer.disconnect();
     };

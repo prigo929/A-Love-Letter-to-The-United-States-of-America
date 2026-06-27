@@ -316,7 +316,7 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
           muted
           playsInline
           loop
-          preload="auto"
+          preload="metadata"
           onCanPlay={() => setVideoReady(true)}
           onLoadedData={() => setVideoReady(true)}
           onError={() => {

@@ -16,6 +16,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop, ReadingProgressBar } from "@/components/layout/PageChrome";
+import { VideoAutoPause } from "@/components/shared/VideoAutoPause";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { SITE } from "@/lib/constants";
 import { getServerLocale } from "@/lib/i18n/server";
@@ -234,6 +235,8 @@ export default async function RootLayout({
           {/* Footer + site-wide helper widgets */}
           <Footer />
           <BackToTop />
+          {/* Pause off-screen background videos so Safari can release decoders */}
+          <VideoAutoPause />
           {/* Vercel telemetry only in production — its dev injection attempts
               browser storage that throws "No available storage method found"
               in some local browsers, and it serves no purpose during dev. */}
