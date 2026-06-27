@@ -133,7 +133,7 @@ export const NAV_SECTIONS = [
     title: "Military",
     href: "/military",
     description: "The most powerful military in the history of civilization",
-    imageSrc: SITE_IMAGES.homeAirForcePlane,
+    imageSrc: SITE_IMAGES.airForceCockpitSelfie,
     badge: "$954B Budget",
     items: [
       {

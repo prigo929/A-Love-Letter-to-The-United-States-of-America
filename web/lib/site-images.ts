@@ -52,6 +52,7 @@ import globalLeadership from "@/IMAGES/USA from Space/Planet Earth.jpg";
 import whiteHouse from "@/IMAGES/US Buildings/The White House in Washington DC, as viewed from the front lawn.jpg";
 import homeUsaAtNightFromSpace from "@/IMAGES/USA from Space/USA at night from Space.jpg";
 import homeAirForcePlane from "@/IMAGES/Military/Air Force/us-air-force-c17-globemaster-nose.jpg";
+import airForceCockpitSelfie from "@/IMAGES/Military/Air Force/us-air-force-pilot-cockpit-selfie.jpg";
 import homeSpacexLaunch from "@/IMAGES/Science/SpaceX launch.jpg";
 import scienceLab from "@/IMAGES/Science/science-lab.jpg";
 import homeSiliconValley from "@/IMAGES/Technology/macro of a silicon wafer.jpg";
@@ -514,6 +515,7 @@ export const SITE_IMAGES = {
   homeNycSunset: homeNycSunset.src,
   homeNycSkyline: homeNycSkyline.src,
   homeAirForcePlane: homeAirForcePlane.src,
+  airForceCockpitSelfie: airForceCockpitSelfie.src,
   homeSpacexLaunch: homeSpacexLaunch.src,
   homeSiliconValley: homeSiliconValley.src,
   homeUsaAtNightFromSpace: homeUsaAtNightFromSpace.src,
