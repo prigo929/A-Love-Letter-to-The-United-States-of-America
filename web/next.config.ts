@@ -77,6 +77,8 @@ const nextConfig: NextConfig = {
     // Optimize memory during compilation
     webpackMemoryOptimizations: true,
     optimizePackageImports: ["lucide-react", "framer-motion", "recharts", "zod", "zustand"],
+    // Disable Turbopack disk caching to prevent local development folder from growing to massive sizes (e.g. 80GB+)
+    turbopackFileSystemCacheForDev: false,
   },
 
   // ─── Turbopack ───────────────────────────────────────────────────
