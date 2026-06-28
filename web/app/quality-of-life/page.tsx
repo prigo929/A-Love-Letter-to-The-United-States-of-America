@@ -94,7 +94,7 @@ export default async function QualityOfLifePage() {
 
         {/* Everyday Abundance Stats Section */}
         <section id="stats" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-5xl mx-auto mb-16">
             <span className="macro-eyebrow mb-4 block">
               {copy.statsTitle}
             </span>
@@ -107,9 +107,9 @@ export default async function QualityOfLifePage() {
             {copy.stats.map((stat, idx) => (
               <div
                 key={idx}
-                className="rounded-3xl border border-white/5 bg-white/[0.02] p-6 hover:border-[#E8B923]/20 transition-all duration-300 flex flex-col justify-between"
+                className="rounded-3xl border border-white/5 bg-white/[0.02] p-6 hover:border-[#E8B923]/20 transition-all duration-300 flex flex-col justify-between text-center"
               >
-                <div>
+                <div className="flex flex-col items-center">
                   <h3 className="font-macro-display text-sm font-semibold text-white/50 tracking-wider uppercase mb-4">
                     {stat.title}
                   </h3>
@@ -120,8 +120,8 @@ export default async function QualityOfLifePage() {
                     {stat.description}
                   </p>
                 </div>
-                <div className="border-t border-white/10 pt-4 mt-6 flex items-center justify-between text-xs text-white/30">
-                  <span className="truncate max-w-[120px]">{stat.source}</span>
+                <div className="border-t border-white/10 pt-4 mt-6 flex flex-col items-center gap-1.5 text-xs text-white/30 w-full">
+                  <span>{stat.source}</span>
                   {stat.sourceUrl && (
                     <a
                       href={stat.sourceUrl}
@@ -140,49 +140,47 @@ export default async function QualityOfLifePage() {
 
         {/* Democratized Luxury & Convenience */}
         <section id="luxury" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
-          <div className="grid gap-12 lg:grid-cols-3 items-start">
-            <div className="lg:sticky lg:top-24">
-              <span className="macro-eyebrow mb-4 block">
-                {copy.luxuryLabel}
-              </span>
-              <h2 className="macro-section-title text-white text-3xl md:text-4xl mb-6">
-                {copy.luxuryTitle}
-              </h2>
-              <p className="macro-body text-white/65">
-                {copy.luxurySubtitle}
-              </p>
-            </div>
+          <div className="mb-12 max-w-3xl mx-auto text-center">
+            <span className="macro-eyebrow mb-4 block">
+              {copy.luxuryLabel}
+            </span>
+            <h2 className="macro-section-title text-white text-3xl md:text-4xl mb-6">
+              {copy.luxuryTitle}
+            </h2>
+            <p className="macro-body text-white/65">
+              {copy.luxurySubtitle}
+            </p>
+          </div>
 
-            <div className="lg:col-span-2 space-y-6">
-              {copy.luxuryItems.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-3xl border border-white/5 bg-white/[0.02] p-8 hover:border-[#E8B923]/20 transition-all duration-300"
-                >
-                  <div className="flex justify-between items-start gap-4 mb-4">
-                    <h3 className="font-macro-display text-lg font-bold text-white">
-                      {item.title}
-                    </h3>
-                    {item.sourceUrl && (
-                      <a
-                        href={item.sourceUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-[#E8B923] border border-[#E8B923]/25 px-3 py-1 rounded-full hover:bg-[#E8B923]/5 transition-colors shrink-0"
-                      >
-                        {isRo ? "Date →" : "Data →"}
-                      </a>
-                    )}
-                  </div>
+          <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {copy.luxuryItems.map((item, idx) => (
+              <div
+                key={idx}
+                className="rounded-3xl border border-white/5 bg-white/[0.02] p-8 hover:border-[#E8B923]/20 transition-all duration-300 flex flex-col justify-between text-center"
+              >
+                <div className="flex flex-col items-center">
+                  <h3 className="font-macro-display text-lg font-bold text-white leading-tight mb-3">
+                    {item.title}
+                  </h3>
+                  {item.sourceUrl && (
+                    <a
+                      href={item.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-[#E8B923] border border-[#E8B923]/25 px-3 py-1 rounded-full hover:bg-[#E8B923]/5 transition-colors mb-4 inline-block"
+                    >
+                      {isRo ? "Date →" : "Data →"}
+                    </a>
+                  )}
                   <p className="text-sm text-white/60 leading-relaxed font-body mb-4">
                     {item.description}
                   </p>
-                  <div className="text-xs text-white/30 font-mono">
-                    Source: {item.source}
-                  </div>
                 </div>
-              ))}
-            </div>
+                <div className="text-xs text-white/30 font-mono border-t border-white/10 pt-4 mt-auto w-full text-center">
+                  Source: {item.source}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -250,50 +248,50 @@ export default async function QualityOfLifePage() {
         {/* Disposable Income & Giving Section */}
         <section id="comparison" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-32">
           <div className="rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 md:p-12">
-            <div className="grid gap-12 lg:grid-cols-2 items-start">
-              <div>
-                <span className="macro-eyebrow mb-4 block">
-                  {copy.comparisonEyebrow}
-                </span>
-                <h2 className="macro-section-title text-white text-3xl md:text-4xl mb-6">
-                  {copy.incomeTitle}
-                </h2>
-                <p className="macro-body text-white/70 leading-relaxed mb-6">
-                  {copy.incomeParagraph1}
-                </p>
-                <p className="macro-body text-white/70 leading-relaxed">
-                  {copy.incomeParagraph2}
-                </p>
-              </div>
+            <div className="mb-12 max-w-3xl mx-auto text-center">
+              <span className="macro-eyebrow mb-4 block">
+                {copy.comparisonEyebrow}
+              </span>
+              <h2 className="macro-section-title text-white text-3xl md:text-4xl mb-6">
+                {copy.incomeTitle}
+              </h2>
+              <p className="macro-body text-white/70 leading-relaxed mb-6">
+                {copy.incomeParagraph1}
+              </p>
+              <p className="macro-body text-white/70 leading-relaxed">
+                {copy.incomeParagraph2}
+              </p>
+            </div>
 
-              <div className="space-y-6">
-                {copy.incomeItems.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="rounded-3xl border border-white/5 bg-white/[0.02] p-6 hover:border-[#E8B923]/20 transition-all"
-                  >
+            <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
+              {copy.incomeItems.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-3xl border border-white/5 bg-white/[0.02] p-6 hover:border-[#E8B923]/20 transition-all flex flex-col justify-between text-center"
+                >
+                  <div className="flex flex-col items-center">
                     <h3 className="font-macro-display text-lg font-bold text-white mb-3">
                       {item.title}
                     </h3>
                     <p className="text-sm text-white/60 leading-relaxed font-body mb-4">
                       {item.description}
                     </p>
-                    <div className="flex items-center justify-between text-xs text-white/30 border-t border-white/10 pt-3">
-                      <span>{item.source}</span>
-                      {item.sourceUrl && (
-                        <a
-                          href={item.sourceUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[#E8B923] hover:underline"
-                        >
-                          {isRo ? "Verifică Sursă →" : "Verify Source →"}
-                        </a>
-                      )}
-                    </div>
                   </div>
-                ))}
-              </div>
+                  <div className="flex flex-col items-center gap-1.5 text-xs text-white/30 border-t border-white/10 pt-3 mt-auto w-full">
+                    <span>{item.source}</span>
+                    {item.sourceUrl && (
+                      <a
+                        href={item.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#E8B923] hover:underline"
+                      >
+                        {isRo ? "Verifică Sursă →" : "Verify Source →"}
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

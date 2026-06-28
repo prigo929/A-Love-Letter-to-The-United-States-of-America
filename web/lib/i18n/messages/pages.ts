@@ -634,7 +634,7 @@ const qolCopyEn: QualityOfLifeCopy = {
   heroSubtitle:
     "An empirical analysis of daily purchasing power, home sizing, residential comfort, and medical outcomes that define the American middle class.",
   statsTitle: "Abundance by the Numbers",
-  statsSubtitle: "Key indicators of American household wealth, space, utilities, and tax structures.",
+  statsSubtitle: "Key indicators of American household wealth, space, utilities, and tax structures",
   stats: [
     {
       title: "Average Home Size",
