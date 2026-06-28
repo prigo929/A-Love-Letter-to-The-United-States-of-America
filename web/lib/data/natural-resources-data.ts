@@ -146,6 +146,20 @@ export function getAgricultureParagraphs(locale: Locale): string[] {
   ];
 }
 
+export function getIrrigationParagraphs(locale: Locale): string[] {
+  if (locale === "ro") {
+    return [
+      "Brevetat pentru prima dată în 1948 de fermierul din Nebraska, Frank Zybach, sistemul de irigare cu pivot central a transformat aridele Mari Câmpii americane într-o zonă agricolă de o productivitate uriașă. Conectate la vastul acvifer Ogallala, aceste sisteme rotative de aspersoare autopropulsate distribuie apa cu o precizie extremă, economisind resursele hidrice în timp ce maximizează producția.",
+      "De sus, această inginerie creează o rețea geometrică spectaculoasă de cercuri verzi pe peisaj — fiecare cerc având de obicei o suprafață standard de 160 de acri (un sfert de secțiune). Astăzi, sistemele cu pivot central irigă zeci de milioane de acri în state precum Kansas, Nebraska și Texas, transformând inima continentului într-un motor de securitate alimentară globală."
+    ];
+  }
+  return [
+    "First patented in 1948 by Nebraska farmer Frank Zybach, center-pivot irrigation transformed the arid American Great Plains into a highly productive agricultural powerhouse. By tapping into the vast Ogallala Aquifer, these self-propelled rotating sprinkler systems distribute water with extreme precision, conserving resources while maximizing crop yields.",
+    "From above, this engineering creates a striking geometric grid of green circles across the landscape — each circle typically covering a standard 160-acre quarter-section. Today, center-pivot systems irrigate tens of millions of acres in states like Kansas, Nebraska, and Texas, turning the heart of the continent into an engine of global food security."
+  ];
+}
+
+
 export function getMineralsParagraphs(locale: Locale): string[] {
   if (locale === "ro") {
     return [

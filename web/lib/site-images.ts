@@ -87,12 +87,14 @@ import landscapeChattanooga from "@/IMAGES/Landscapes/Chattanooga, TN Moccasin B
 import landscapeArizonaHighway from "@/IMAGES/Landscapes/Closeup of a curvy Arizona highway snaking its way through a canyon.jpg";
 
 // Natural Resources
-import resourcesHero from "@/IMAGES/Nature/Resources/resources-hero-wind-farm.jpg";
-import resourcesEnergy from "@/IMAGES/Nature/Resources/resources-energy-pumpjacks.jpg";
-import resourcesAgriculture from "@/IMAGES/Nature/Resources/resources-agriculture-corn-harvest.jpg";
+import resourcesHero from "@/IMAGES/Nature/Resources/dark silhouette of the oil pumpjack against sunset.jpg";
+import resourcesEnergy from "@/IMAGES/Nature/Resources/dark silhouette of the oil pumpjack against sunset.jpg";
+import resourcesAgriculture from "@/IMAGES/Nature/Resources/stunning photo of a vineyard in early summer in Polk County, Oregon, part of the Willamette Valley's wine region.jpg";
 import resourcesMinerals from "@/IMAGES/Nature/Resources/resources-minerals-bingham-canyon.jpg";
 import resourcesWater from "@/IMAGES/Nature/Resources/resources-water-hoover-dam.jpg";
 import resourcesSolar from "@/IMAGES/Nature/Resources/resources-renewables-solar.jpg";
+import resourcesIrrigationAerial from "@/IMAGES/Nature/Resources/Breathtaking aerial view of expansive green farmland with circular patterns under sunny skies.jpg";
+import resourcesIrrigationSatellite from "@/IMAGES/Nature/Resources/satellite image of circular fields characteristic of center-pivot irrigation, Kansas.jpg";
 
 // Housing
 import housingFrontPorch from "@/IMAGES/Housing/Charming suburban house with front porch, landscaping, and white facade.jpg";
@@ -563,6 +565,8 @@ export const SITE_IMAGES = {
   resourcesMinerals: resourcesMinerals.src,
   resourcesWater: resourcesWater.src,
   resourcesSolar: resourcesSolar.src,
+  resourcesIrrigationAerial: resourcesIrrigationAerial.src,
+  resourcesIrrigationSatellite: resourcesIrrigationSatellite.src,
 
   // Military
   armyHero: armyHero.src,
