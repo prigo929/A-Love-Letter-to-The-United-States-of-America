@@ -435,6 +435,20 @@ export default async function AbundancePage() {
               })()}
             </RevealSection>
 
+            {/* Full-width Highway Interchange Video */}
+            <div className="relative w-full h-[580px] overflow-hidden bg-[#000000]">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover opacity-60"
+              >
+                <source src="/videos/library/Infrastructure/atlanta-highway-interchange.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 pointer-events-none z-10" style={{ background: 'linear-gradient(to bottom, #000000 0%, transparent 12%, transparent 88%, #000000 100%)' }} />
+            </div>
+
             {/* Category 2: Personal Mobility */}
             <RevealSection className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               {(() => {
@@ -468,19 +482,16 @@ export default async function AbundancePage() {
               })()}
             </RevealSection>
 
-            {/* Full-width Highway Interchange Video */}
-            <div className="relative w-full h-[480px] overflow-hidden bg-[#000000]">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover opacity-60"
-              >
-                <source src="/videos/library/Infrastructure/atlanta-highway-interchange.mp4" type="video/mp4" />
-              </video>
-              <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-[#000000] pointer-events-none" />
-              <div className="absolute inset-0 bg-linear-to-b from-[#000000] via-transparent to-[#000000] pointer-events-none opacity-80" />
+            {/* Full-width Glendale, Arizona pool image */}
+            <div className="relative w-full h-[580px] overflow-hidden bg-[#000000]">
+              <Image
+                src={SITE_IMAGES.housing.glendalePools}
+                alt="Aerial view of homes with pools in suburb Glendale, Arizona"
+                fill
+                className="object-cover opacity-60"
+                sizes="100vw"
+              />
+              <div className="absolute inset-0 pointer-events-none z-10" style={{ background: 'linear-gradient(to bottom, #000000 0%, transparent 12%, transparent 88%, #000000 100%)' }} />
             </div>
 
             {/* Category 3: Recreation & Outdoor Assets */}
@@ -515,19 +526,6 @@ export default async function AbundancePage() {
                 );
               })()}
             </RevealSection>
-
-            {/* Full-width Glendale, Arizona pool image */}
-            <div className="relative w-full h-[480px] overflow-hidden bg-[#000000]">
-              <Image
-                src={SITE_IMAGES.housing.glendalePools}
-                alt="Aerial view of homes with pools in suburb Glendale, Arizona"
-                fill
-                className="object-cover opacity-60"
-                sizes="100vw"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-[#000000] pointer-events-none" />
-              <div className="absolute inset-0 bg-linear-to-b from-[#000000] via-transparent to-[#000000] pointer-events-none opacity-80" />
-            </div>
 
             {/* Category 4: The Overflow Economy */}
             <RevealSection className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
