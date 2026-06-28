@@ -56,7 +56,7 @@ const archivo = Archivo({
   preload: true,
 });
 
-const spaceMono = Space_Mono({
+const spaceMono = Inter({
   weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--font-mono",

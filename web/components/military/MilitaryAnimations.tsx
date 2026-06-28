@@ -88,7 +88,7 @@ export function MilStyles() {
         --color-graphite: #0a0a0a;
         --color-steel: #1a1a1a;
         --color-accent: #ffffff;
-        --font-mono: 'Space Mono', 'Courier', monospace;
+        --font-mono: var(--font-body, 'Inter', system-ui, sans-serif);
       }
 
       body {
@@ -1629,206 +1629,52 @@ export function SOCOMGrid({ units, locale = "en" }: { units: SOCOMUnit[]; locale
 
 export function IntelligenceNetworkMap({ agencies, locale = "en" }: { agencies: IntelligenceAgency[]; locale?: Locale }) {
   const [active, setActive] = useState("cia");
-  const [mode, setMode] = useState<"ALL" | "SIGINT" | "HUMINT" | "MILITARY">("ALL");
   const current = agencies.find(a => a.id === active) || agencies[0];
   const isRo = locale === "ro";
 
-  // Filter coordinates and properties based on active mode
-  const modeAgencies = {
-    ALL: ["cia", "nsa", "dia", "nro"],
-    SIGINT: ["nsa", "nro"],
-    HUMINT: ["cia"],
-    MILITARY: ["dia"]
-  };
-
-  const isHighlighted = (id: string) => {
-    return modeAgencies[mode].includes(id);
-  };
-
-  // Node position coordinates
-  const nodePositions = {
-    cia: { cx: "15%", cy: "30%" },
-    nsa: { cx: "38%", cy: "25%" },
-    dia: { cx: "62%", cy: "25%" },
-    nro: { cx: "85%", cy: "30%" }
-  };
-
-  // Custom status metrics for visual realism
-  const systemStatuses = {
-    cia: [
-      { label: "FEED_INTEGRITY", value: "98.4%" },
-      { label: "ORBITAL_COVERAGE", value: "72.1% (LOW_ALT)" },
-      { label: "DATA_CRYPT_MODE", value: "AES-256-GCM" }
-    ],
-    nsa: [
-      { label: "FEED_INTEGRITY", value: "99.98%" },
-      { label: "ORBITAL_COVERAGE", value: "100.0% (HIGH_ALT)" },
-      { label: "DATA_CRYPT_MODE", value: "POST_QUANTUM_CRY" }
-    ],
-    dia: [
-      { label: "FEED_INTEGRITY", value: "99.1%" },
-      { label: "ORBITAL_COVERAGE", value: "85.6% (TACTICAL)" },
-      { label: "DATA_CRYPT_MODE", value: "FIPS-140-3" }
-    ],
-    nro: [
-      { label: "FEED_INTEGRITY", value: "100.0%" },
-      { label: "ORBITAL_COVERAGE", value: "100.0% (CONSTELLATION)" },
-      { label: "DATA_CRYPT_MODE", value: "HARDWARE_ENCRYPT" }
-    ]
-  };
-
-  const activeStatus = systemStatuses[active as keyof typeof systemStatuses] || systemStatuses.cia;
-
-  // Professional static feeds telemetry table
-  const feeds = [
-    { id: "CIA", type: "HUMINT", latency: "0.18s", bandwidth: "12 Mbps", status: "SECURE" },
-    { id: "NSA", type: "SIGINT", latency: "0.02s", bandwidth: "2.4 Gbps", status: "SECURE" },
-    { id: "DIA", type: "MIL-INT", latency: "0.05s", bandwidth: "850 Mbps", status: "SECURE" },
-    { id: "NRO", type: "IMINT", latency: "0.08s", bandwidth: "4.8 Gbps", status: "SECURE" }
-  ];
-
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12 w-full items-stretch">
-      {/* Interactive Map Visual Area */}
-      <div className="relative min-h-[440px] md:min-h-[520px] bg-[#030303] border border-white/5 flex flex-col justify-between p-8 overflow-hidden">
-        {/* Fine static coordinate grid overlay */}
-        <div className="absolute inset-0 grid grid-cols-6 grid-rows-6 opacity-[0.02] pointer-events-none border border-white/5">
-          {[...Array(36)].map((_, i) => (
-            <div key={i} className="border-r border-b border-white/20 flex items-start p-1">
-              <span className="font-mono text-[6px]">{(i * 12.4).toFixed(1)}°N</span>
-            </div>
-          ))}
-        </div>
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8 w-full items-stretch">
+      {/* Clean Grid of Agency Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {agencies.map((agency) => {
+          const activeNode = active === agency.id;
+          const logoPath = `/assets/logos/${agency.id}.svg`;
 
-        {/* HUD corners */}
-        <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-white/10" />
-        <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-white/10" />
-        <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-white/10" />
-        <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-white/10" />
-
-        {/* Top Header metadata */}
-        <div className="relative z-10 flex justify-between items-center text-[9px] font-mono opacity-30">
-          <span>SYSTEM: INTEGRATED INTEL FEED</span>
-          <span>LATENCY: 0.08ms</span>
-        </div>
-
-        {/* Tactical Mode Filters */}
-        <div className="relative z-20 flex justify-center gap-2 mt-4">
-          {(["ALL", "SIGINT", "HUMINT", "MILITARY"] as const).map((m) => (
+          return (
             <button
-              key={m}
-              onClick={() => {
-                setMode(m);
-                const allowed = modeAgencies[m];
-                if (!allowed.includes(active)) {
-                  setActive(allowed[0]);
-                }
-              }}
+              key={agency.id}
+              onClick={() => setActive(agency.id)}
               className={cn(
-                "px-3 py-1 font-mono text-[9px] font-bold border transition-all duration-200",
-                mode === m
-                  ? "bg-white text-black border-white"
-                  : "bg-black text-white/30 border-white/10 hover:text-white/60 hover:border-white/25"
+                "rounded-3xl border p-8 flex flex-col items-center justify-center text-center transition-all duration-300 gap-4",
+                activeNode
+                  ? "bg-white/[0.04] border-[#E8B923] shadow-xl"
+                  : "bg-white/[0.01] border-white/5 hover:border-white/15"
               )}
             >
-              {m}
+              <div className="relative w-20 h-20 flex items-center justify-center p-2 rounded-2xl bg-neutral-900 border border-white/5">
+                <Image
+                  src={logoPath}
+                  alt={`${agency.shortName} Logo`}
+                  width={64}
+                  height={64}
+                  className="object-contain w-16 h-16"
+                />
+              </div>
+              <div>
+                <h4 className="font-bold text-white text-lg tracking-tight">
+                  {agency.shortName}
+                </h4>
+                <p className="text-xs text-white/50 font-medium mt-1">
+                  {agency.specialty}
+                </p>
+              </div>
             </button>
-          ))}
-        </div>
-
-        {/* Connection lines from nodes to Central Command Hub (cx: 50%, cy: 75%) */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none">
-          {/* Static Command Hub Crosshair Ticks */}
-          <line x1="50%" y1="71%" x2="50%" y2="79%" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
-          <line x1="46%" y1="75%" x2="54%" y2="75%" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
-
-          {Object.entries(nodePositions).map(([id, pos]) => {
-            const highlighted = isHighlighted(id);
-            const activePath = active === id;
-            return (
-              <line
-                key={id}
-                x1={pos.cx}
-                y1={pos.cy}
-                x2="50%"
-                y2="75%"
-                stroke={activePath ? "rgba(255,255,255,0.2)" : highlighted ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.01)"}
-                strokeWidth="1"
-                style={{ transition: "stroke 0.2s ease" }}
-              />
-            );
-          })}
-        </svg>
-
-        {/* Nodes Placement */}
-        <div className="relative z-10 w-full grow flex items-center justify-center min-h-[300px]">
-          {agencies.map((agency) => {
-            const pos = nodePositions[agency.id as keyof typeof nodePositions] || nodePositions.cia;
-            const highlighted = isHighlighted(agency.id);
-            const activeNode = active === agency.id;
-
-            return (
-              <div
-                key={agency.id}
-                className="absolute"
-                style={{ left: pos.cx, top: pos.cy, transform: "translate(-50%, -50%)" }}
-              >
-                {/* Minimal clean active boundary box */}
-                {activeNode && (
-                  <div className="absolute -inset-1.5 border border-white/20 pointer-events-none z-0" />
-                )}
-
-                <button
-                  onClick={() => setActive(agency.id)}
-                  disabled={!highlighted}
-                  className={cn(
-                    "relative focus:outline-none transition-all duration-300 z-10",
-                    !highlighted && "opacity-15 cursor-not-allowed pointer-events-none"
-                  )}
-                >
-                  <div className={cn(
-                    "px-4 py-2 border transition-all duration-200 flex flex-col items-center",
-                    activeNode 
-                      ? "bg-white text-black border-white" 
-                      : "bg-black text-white/40 border-white/10 hover:border-white/25 hover:text-white"
-                  )}>
-                    <span className="font-mono text-[10px] font-bold tracking-wide">{agency.id.toUpperCase()}</span>
-                    <span className="text-[7px] tracking-widest font-mono opacity-50 uppercase">{agency.specialty.split(" ")[0]}</span>
-                  </div>
-                </button>
-              </div>
-            );
-          })}
-
-          {/* Central Command Hub Node */}
-          <div
-            className="absolute flex flex-col items-center justify-center p-5 border border-white/10 bg-black z-20"
-            style={{ left: "50%", top: "75%", transform: "translate(-50%, -50%)" }}
-          >
-            <span className="font-mono text-[9px] font-bold tracking-[0.2em] text-white">COMMAND HUB</span>
-            <span className="text-[7px] font-mono opacity-30 uppercase tracking-widest">{isRo ? "Integrare Date" : "Data Integration"}</span>
-          </div>
-        </div>
-
-        {/* Professional feed telemetry log table */}
-        <div className="relative z-10 grid grid-cols-4 gap-4 border-t border-white/5 pt-4 font-mono text-[9px]">
-          {feeds.map((f) => {
-            const isActive = active === f.id.toLowerCase();
-            return (
-              <div key={f.id} className={cn("flex flex-col border-l pl-3 transition-colors duration-200", isActive ? "border-white/30" : "border-white/5")}>
-                <span className={cn("font-bold text-[8px]", isActive ? "text-white" : "text-white/30")}>
-                  {f.id} // {f.type}
-                </span>
-                <span className="text-white/20 mt-1">LAT: {f.latency}</span>
-                <span className="text-white/20">STATUS: {f.status}</span>
-              </div>
-            );
-          })}
-        </div>
+          );
+        })}
       </div>
 
       {/* Details Panel */}
-      <div className="mil-glass p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
+      <div className="mil-glass p-8 md:p-10 flex flex-col justify-between relative overflow-hidden rounded-3xl">
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
@@ -1852,34 +1698,19 @@ export function IntelligenceNetworkMap({ agencies, locale = "en" }: { agencies: 
               <p className="text-sm leading-relaxed text-white/60 mb-8">{current.description}</p>
             </div>
 
-            {/* Diagnostic system parameters */}
-            <div className="space-y-4 border-t border-white/5 pt-6">
-              <h4 className="mil-text-metadata text-[9px] tracking-[0.25em] opacity-40 font-black">
-                {isRo ? "DIAGNOSTIC SISTEM" : "SYSTEM DIAGNOSTICS"}
-              </h4>
-              <div className="grid grid-cols-1 gap-2.5">
-                {activeStatus.map((s, idx) => (
-                  <div key={idx} className="flex justify-between items-center py-1.5 border-b border-white/5 font-mono text-[10px]">
-                    <span className="text-white/40">{s.label}</span>
-                    <span className="font-bold text-white/80">{s.value}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             <div className="space-y-4 border-t border-white/5 pt-6 mt-6">
               <h4 className="mil-text-metadata text-[9px] tracking-[0.25em] opacity-40 font-black">
-                {isRo ? "METRICI SPECIFICE" : "KEY FOCUS AREAS"}
+                {isRo ? "DETALII AGENȚIE" : "AGENCY STATS"}
               </h4>
               <div className="grid grid-cols-1 gap-3">
                 {current.stats.map((s, idx) => (
                   <div key={idx} className="flex justify-between items-center py-2 border-b border-white/5">
-                    <span className="mil-text-metadata text-[8px] tracking-widest text-white/30">{s.label}</span>
+                    <span className="text-[10px] uppercase tracking-wider text-white/45">{s.label}</span>
                     <span className="text-xs font-semibold text-white/80">{s.value}</span>
                   </div>
                 ))}
               </div>
-              <div className="pt-4">
+              <div className="pt-6">
                 <Link
                   href="/military/intelligence"
                   className="w-full inline-flex h-11 items-center justify-center border border-white/15 bg-white px-5 text-xs font-bold uppercase text-black transition-colors hover:bg-white/85"
