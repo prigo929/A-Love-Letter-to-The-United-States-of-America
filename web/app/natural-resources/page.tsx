@@ -27,6 +27,8 @@ import {
 import { GdpBarChart } from "@/components/data/GdpBarChart";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import DeepDiveSection from "@/components/shared/DeepDiveSection";
+import { ResourceGallery } from "@/components/nature/ResourceGallery";
+import { getResourceGallery } from "@/lib/data/natural-resources-gallery-data";
 
 import { getServerLocale } from "@/lib/i18n/server";
 import { getNaturalResourcesPageCopy } from "@/lib/i18n/messages/pages";
@@ -176,6 +178,7 @@ export default async function NaturalResourcesPage() {
   const waterSystems = getWaterSystems(locale);
   const milestones = getMilestones(locale);
   const quotes = getResourcesQuotes(locale);
+  const galleryCategories = getResourceGallery(locale);
 
   return (
     <>
@@ -681,6 +684,14 @@ export default async function NaturalResourcesPage() {
             variant="dark"
           />
         </div>
+
+        {/* The Visual Record — grouped photo gallery */}
+        <ResourceGallery
+          categories={galleryCategories}
+          eyebrow={copy.galleryEyebrow}
+          title={copy.galleryTitle}
+          intro={copy.galleryIntro}
+        />
 
         {/* Deep Dive Archive */}
         <DeepDiveSection

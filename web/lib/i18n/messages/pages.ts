@@ -1174,6 +1174,10 @@ export function getNaturalResourcesPageCopy(locale: Locale) {
       waterSystemsTitle: "Marile Sisteme de Apă",
       milestonesEyebrow: "Cronologie",
       milestonesTitle: "Etape ale Puterii Resurselor Americane",
+      galleryEyebrow: "Mărturia Vizuală",
+      galleryTitle: "Bogăția în Imagini",
+      galleryIntro:
+        "De la erupția de la Spindletop la Barajul Hoover, de la Centura Porumbului la minele de cupru — fotografiile care au surprins felul în care America și-a valorificat resursele.",
       waterLinkLabel: "Explorează Marile Lacuri →",
       tocItems: [
         { label: "Prezentare", href: "#overview" },
@@ -1184,6 +1188,7 @@ export function getNaturalResourcesPageCopy(locale: Locale) {
         { label: "Apă", href: "#water" },
         { label: "Păduri", href: "#forests" },
         { label: "Etape", href: "#milestones" },
+        { label: "Galerie", href: "#gallery" },
       ],
       pillars: [
         { id: "energy", label: "Energie", desc: "Cel mai mare producător de petrol și gaze din lume și exportator de top de GNL." },
@@ -1246,6 +1251,10 @@ export function getNaturalResourcesPageCopy(locale: Locale) {
     waterSystemsTitle: "The Great Water Systems",
     milestonesEyebrow: "Timeline",
     milestonesTitle: "Milestones of American Resource Power",
+    galleryEyebrow: "The Visual Record",
+    galleryTitle: "The Wealth in Pictures",
+    galleryIntro:
+      "From the Spindletop gusher to the Hoover Dam, from the Corn Belt to the copper pits — the photographs that captured how America harnessed its resources.",
     waterLinkLabel: "Explore the Great Lakes →",
     tocItems: [
       { label: "Overview", href: "#overview" },
@@ -1256,6 +1265,7 @@ export function getNaturalResourcesPageCopy(locale: Locale) {
       { label: "Water", href: "#water" },
       { label: "Forests", href: "#forests" },
       { label: "Milestones", href: "#milestones" },
+      { label: "Gallery", href: "#gallery" },
     ],
     pillars: [
       { id: "energy", label: "Energy", desc: "World's #1 oil & gas producer and top LNG exporter." },
