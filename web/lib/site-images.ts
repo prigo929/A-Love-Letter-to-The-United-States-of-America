@@ -92,6 +92,7 @@ import resourcesEnergy from "@/IMAGES/Nature/Resources/resources-energy-pumpjack
 import resourcesAgriculture from "@/IMAGES/Nature/Resources/resources-agriculture-corn-harvest.jpg";
 import resourcesMinerals from "@/IMAGES/Nature/Resources/resources-minerals-bingham-canyon.jpg";
 import resourcesWater from "@/IMAGES/Nature/Resources/resources-water-hoover-dam.jpg";
+import resourcesSolar from "@/IMAGES/Nature/Resources/resources-renewables-solar.jpg";
 
 // Housing
 import housingFrontPorch from "@/IMAGES/Housing/Charming suburban house with front porch, landscaping, and white facade.jpg";
@@ -561,6 +562,7 @@ export const SITE_IMAGES = {
   resourcesAgriculture: resourcesAgriculture.src,
   resourcesMinerals: resourcesMinerals.src,
   resourcesWater: resourcesWater.src,
+  resourcesSolar: resourcesSolar.src,
 
   // Military
   armyHero: armyHero.src,

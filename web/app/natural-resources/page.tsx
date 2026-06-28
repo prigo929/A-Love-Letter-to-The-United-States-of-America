@@ -1,10 +1,11 @@
 // ─── Natural Resources Page ───────────────────────────────────────────────────
-// The "macro-editorial" hub for American natural wealth, told across four pillars:
-// Energy, Agriculture, Minerals, and Water. Mirrors the cinematic pattern of
+// The "macro-editorial" hub for American natural wealth, told across six pillars:
+// Energy, Renewables & Nuclear, Agriculture, Minerals, Water, and Forests & Public
+// Lands — plus a milestones timeline. Mirrors the cinematic pattern of
 // app/economy/page.tsx, with an emerald accent (the site's `nature` identity).
 //
 // Beginner guide:
-// - Numbers, paragraphs, facts, and quotes live in lib/data/natural-resources-data.ts
+// - Numbers, paragraphs, facts, grids, and quotes live in lib/data/natural-resources-data.ts
 // - On-page strings (titles, labels) live in getNaturalResourcesPageCopy (pages.ts)
 // - Hero/section images are SITE_IMAGES.resources* keys (lib/site-images.ts)
 
@@ -38,19 +39,32 @@ import {
   GAS_PRODUCTION,
   CORN_PRODUCTION,
   COAL_RESERVES,
+  LNG_EXPORTS,
+  NUCLEAR_GENERATION,
+  BEEF_PRODUCTION,
   getResourcesHeroStats,
   getResourcesOverviewStats,
   getResourcesOverviewParagraphs,
   getEnergyParagraphs,
+  getRenewablesParagraphs,
   getAgricultureParagraphs,
   getMineralsParagraphs,
   getWaterParagraphs,
+  getForestsParagraphs,
   getEnergyFacts,
+  getRenewablesFacts,
   getAgricultureFacts,
   getMineralsFacts,
   getWaterFacts,
+  getForestsFacts,
+  getEnergyBasins,
+  getTopCommodities,
+  getStrategicMinerals,
+  getWaterSystems,
+  getMilestones,
   getResourcesQuotes,
   type ResourceStat,
+  type ResourceItem,
 } from "@/lib/data/natural-resources-data";
 
 // ─── Theme ────────────────────────────────────────────────────────────────────
@@ -64,22 +78,55 @@ const STAT_COLOR: Record<NonNullable<ResourceStat["color"]>, string> = {
 
 const PILLAR_IMAGE: Record<string, string> = {
   energy: SITE_IMAGES.resourcesEnergy,
+  renewables: SITE_IMAGES.resourcesSolar,
   agriculture: SITE_IMAGES.resourcesAgriculture,
   minerals: SITE_IMAGES.resourcesMinerals,
   water: SITE_IMAGES.resourcesWater,
+  forests: SITE_IMAGES.landscapes.blueRidge,
 };
+
+// ─── Small server helpers ───────────────────────────────────────────────────────
+
+function ResourceGrid({ title, items }: { title: string; items: ResourceItem[] }) {
+  return (
+    <div className="mt-24 border-t border-white/5 pt-16">
+      <h3 className="macro-section-title text-[clamp(24px,4vw,56px)] mb-12">
+        {title}
+      </h3>
+      <div className="grid gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((it) => (
+          <div
+            key={it.name}
+            className="flex flex-col border-t border-[#4ade80]/30 pt-6"
+          >
+            <p className="font-macro-display text-2xl text-white">{it.name}</p>
+            <p
+              className="font-macro-display text-4xl font-bold mt-2"
+              style={{ color: ACCENT }}
+            >
+              {it.stat}
+            </p>
+            <p className="macro-metadata text-white/40 mt-3 leading-relaxed">
+              {it.note}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
   title: "Natural Resources",
   description:
-    "The wealth of a continent: America is the world's #1 oil & gas producer, a top agricultural exporter, holder of the largest coal reserves on Earth, and guardian of a fifth of the planet's surface fresh water.",
+    "The wealth of a continent: America is the world's #1 oil & gas producer, top LNG exporter, holder of the largest coal reserves and nuclear fleet on Earth, a leading agricultural power, and guardian of a fifth of the planet's surface fresh water.",
   alternates: { canonical: "/natural-resources" },
   openGraph: {
     title: "Natural Resources — The Wealth of a Continent",
     description:
-      "Energy, agriculture, minerals, and water: the most complete endowment of natural wealth ever granted to a single nation.",
+      "Energy, renewables, agriculture, minerals, water, and forests: the most complete endowment of natural wealth ever granted to a single nation.",
     url: "/natural-resources",
     images: [
       {
@@ -97,7 +144,7 @@ const jsonLd = {
   "@type": "Article",
   headline: "American Natural Resources — The Wealth of a Continent",
   description:
-    "A deep-dive into American resource abundance: energy, agriculture, minerals, and fresh water.",
+    "A deep-dive into American resource abundance: energy, renewables, agriculture, minerals, fresh water, and forests.",
   url: "https://america-greatest.vercel.app/natural-resources",
   author: { "@type": "Organization", name: "America: The Greatest Nation" },
 };
@@ -112,13 +159,22 @@ export default async function NaturalResourcesPage() {
   const overviewStats = getResourcesOverviewStats(locale);
   const overviewParagraphs = getResourcesOverviewParagraphs(locale);
   const energyParagraphs = getEnergyParagraphs(locale);
+  const renewablesParagraphs = getRenewablesParagraphs(locale);
   const agricultureParagraphs = getAgricultureParagraphs(locale);
   const mineralsParagraphs = getMineralsParagraphs(locale);
   const waterParagraphs = getWaterParagraphs(locale);
+  const forestsParagraphs = getForestsParagraphs(locale);
   const energyFacts = getEnergyFacts(locale);
+  const renewablesFacts = getRenewablesFacts(locale);
   const agricultureFacts = getAgricultureFacts(locale);
   const mineralsFacts = getMineralsFacts(locale);
   const waterFacts = getWaterFacts(locale);
+  const forestsFacts = getForestsFacts(locale);
+  const energyBasins = getEnergyBasins(locale);
+  const topCommodities = getTopCommodities(locale);
+  const strategicMinerals = getStrategicMinerals(locale);
+  const waterSystems = getWaterSystems(locale);
+  const milestones = getMilestones(locale);
   const quotes = getResourcesQuotes(locale);
 
   return (
@@ -191,7 +247,7 @@ export default async function NaturalResourcesPage() {
           </p>
           <h2 className="macro-section-title mb-16">{copy.pillarsTitle}</h2>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {copy.pillars.map((pillar) => (
               <a
                 key={pillar.id}
@@ -204,7 +260,7 @@ export default async function NaturalResourcesPage() {
                     alt={pillar.label}
                     fill
                     className="object-cover opacity-60 grayscale-[0.2] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     placeholder="blur"
                     blurDataURL={BLUR_PLACEHOLDER}
                   />
@@ -260,6 +316,21 @@ export default async function NaturalResourcesPage() {
               valueLabel={copy.gasValueLabel}
             />
           </div>
+
+          <div className="mb-8">
+            <GdpBarChart
+              data={LNG_EXPORTS}
+              title={copy.lngChartTitle}
+              subtitle={copy.lngChartSubtitle}
+              source="EIA / GIIGNL 2023"
+              valuePrefix=""
+              valueSuffix=""
+              valueDecimals={0}
+              valueLabel={copy.lngValueLabel}
+            />
+          </div>
+
+          <ResourceGrid title={copy.basinsTitle} items={energyBasins} />
         </section>
 
         <InfrastructureBand
@@ -271,9 +342,7 @@ export default async function NaturalResourcesPage() {
               <p className="macro-hero-title mb-4" style={{ color: ACCENT }}>
                 13.2M
               </p>
-              <p className="macro-metadata text-white/70">
-                {copy.oilValueLabel}
-              </p>
+              <p className="macro-metadata text-white/70">{copy.oilValueLabel}</p>
             </div>
             <div className="grid gap-12">
               {energyFacts.map((fact, i) => (
@@ -287,6 +356,60 @@ export default async function NaturalResourcesPage() {
             </div>
           </div>
         </InfrastructureBand>
+
+        {/* ── Renewables & Nuclear ────────────────────────────────── */}
+        <section id="renewables" className="mt-48 mb-48 mx-auto max-w-[1600px] px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-8">
+              <p className="macro-eyebrow mb-8" style={{ color: ACCENT }}>
+                {copy.renewablesEyebrow}
+              </p>
+              <h2 className="macro-section-title mb-12">{copy.renewablesTitle}</h2>
+              {renewablesParagraphs.map((para, i) => (
+                <p key={i} className="macro-body mb-8 max-w-4xl">
+                  {para}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <div className="my-24">
+            <GdpBarChart
+              data={NUCLEAR_GENERATION}
+              title={copy.nuclearChartTitle}
+              subtitle={copy.nuclearChartSubtitle}
+              source="IAEA / EIA 2023"
+              valuePrefix=""
+              valueSuffix=""
+              valueDecimals={0}
+              valueLabel={copy.nuclearValueLabel}
+            />
+          </div>
+
+          {/* Cinematic solar image */}
+          <div className="relative mb-24 overflow-hidden h-[440px]">
+            <Image
+              src={SITE_IMAGES.resourcesSolar}
+              alt="Aerial of the Ivanpah solar power towers in the Mojave Desert"
+              fill
+              className="object-cover macro-edge-fade opacity-70 grayscale-[0.15]"
+              sizes="100vw"
+              placeholder="blur"
+              blurDataURL={BLUR_PLACEHOLDER}
+            />
+          </div>
+
+          <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-4 border-t border-white/5 pt-16">
+            {renewablesFacts.map((fact, i) => (
+              <MacroFact
+                key={fact.id}
+                index={i + 1}
+                fact={fact.fact}
+                detail={fact.detail}
+              />
+            ))}
+          </div>
+        </section>
 
         {/* ── Pull Quote 1 ────────────────────────────────────────── */}
         <div className="mx-auto max-w-[1600px] px-6 md:px-12 my-32 border-t border-white/5 pt-32">
@@ -314,7 +437,7 @@ export default async function NaturalResourcesPage() {
             </div>
           </div>
 
-          <div className="my-24">
+          <div className="my-24 grid grid-cols-1 xl:grid-cols-2 gap-16">
             <GdpBarChart
               data={CORN_PRODUCTION}
               title={copy.cornChartTitle}
@@ -324,6 +447,16 @@ export default async function NaturalResourcesPage() {
               valueSuffix=""
               valueDecimals={0}
               valueLabel={copy.cornValueLabel}
+            />
+            <GdpBarChart
+              data={BEEF_PRODUCTION}
+              title={copy.beefChartTitle}
+              subtitle={copy.beefChartSubtitle}
+              source="USDA FAS 2023"
+              valuePrefix=""
+              valueSuffix=""
+              valueDecimals={1}
+              valueLabel={copy.beefValueLabel}
             />
           </div>
 
@@ -340,7 +473,7 @@ export default async function NaturalResourcesPage() {
             />
           </div>
 
-          <div className="grid gap-16 sm:grid-cols-3 border-t border-white/5 pt-16">
+          <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-4 border-t border-white/5 pt-16">
             {agricultureFacts.map((fact, i) => (
               <MacroFact
                 key={fact.id}
@@ -350,7 +483,19 @@ export default async function NaturalResourcesPage() {
               />
             ))}
           </div>
+
+          <ResourceGrid title={copy.commoditiesTitle} items={topCommodities} />
         </section>
+
+        {/* ── Pull Quote 2 ────────────────────────────────────────── */}
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12 my-32 border-t border-white/5 pt-32">
+          <QuoteBlock
+            quote={quotes[1].quote}
+            attribution={quotes[1].attribution}
+            title={quotes[1].title}
+            variant="dark"
+          />
+        </div>
 
         {/* ── Minerals ────────────────────────────────────────────── */}
         <section id="minerals" className="mb-48 mx-auto max-w-[1600px] px-6 md:px-12">
@@ -380,6 +525,8 @@ export default async function NaturalResourcesPage() {
               valueLabel={copy.coalValueLabel}
             />
           </div>
+
+          <ResourceGrid title={copy.mineralsGridTitle} items={strategicMinerals} />
         </section>
 
         <InfrastructureBand
@@ -438,6 +585,8 @@ export default async function NaturalResourcesPage() {
             ))}
           </div>
 
+          <ResourceGrid title={copy.waterSystemsTitle} items={waterSystems} />
+
           <div className="mt-16">
             <Link
               href="/nature/great-lakes"
@@ -449,12 +598,86 @@ export default async function NaturalResourcesPage() {
           </div>
         </section>
 
-        {/* ── Pull Quote 2 ────────────────────────────────────────── */}
+        {/* ── Forests & Public Lands ──────────────────────────────── */}
+        <section id="forests" className="mb-48 mx-auto max-w-[1600px] px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-8">
+              <p className="macro-eyebrow mb-8" style={{ color: ACCENT }}>
+                {copy.forestsEyebrow}
+              </p>
+              <h2 className="macro-section-title mb-12">{copy.forestsTitle}</h2>
+              {forestsParagraphs.map((para, i) => (
+                <p key={i} className="macro-body mb-8 max-w-4xl">
+                  {para}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <div className="my-24 grid gap-16 sm:grid-cols-3 border-t border-white/5 pt-16">
+            {forestsFacts.map((fact, i) => (
+              <MacroFact
+                key={fact.id}
+                index={i + 1}
+                fact={fact.fact}
+                detail={fact.detail}
+              />
+            ))}
+          </div>
+        </section>
+
+        <InfrastructureBand
+          imageSrc={SITE_IMAGES.landscapes.blueRidge}
+          imageAlt="The forested ridges of the Blue Ridge Mountains"
+        >
+          <div className="max-w-3xl">
+            <p className="macro-hero-title mb-4" style={{ color: ACCENT }}>
+              640M
+            </p>
+            <p className="macro-metadata text-white/70">
+              {locale === "ro"
+                ? "Acri de teren public — aproape 28% din America"
+                : "Acres of public land — nearly 28% of America"}
+            </p>
+          </div>
+        </InfrastructureBand>
+
+        {/* ── Milestones Timeline ─────────────────────────────────── */}
+        <section id="milestones" className="mt-48 mb-32 mx-auto max-w-[1600px] px-6 md:px-12">
+          <p className="macro-eyebrow mb-8" style={{ color: ACCENT }}>
+            {copy.milestonesEyebrow}
+          </p>
+          <h2 className="macro-section-title mb-16">{copy.milestonesTitle}</h2>
+
+          <div className="grid gap-6">
+            {milestones.map((m) => (
+              <div
+                key={m.year}
+                className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-6 border-b border-white/10 pb-6 md:items-baseline"
+              >
+                <div
+                  className="md:col-span-2 font-macro-display text-3xl font-bold"
+                  style={{ color: ACCENT }}
+                >
+                  {m.year}
+                </div>
+                <div className="md:col-span-3 font-macro-display text-2xl text-white">
+                  {m.title}
+                </div>
+                <div className="md:col-span-7 font-macro-body text-white/55">
+                  {m.detail}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Pull Quote 3 ────────────────────────────────────────── */}
         <div className="mx-auto max-w-[1600px] px-6 md:px-12 my-32 border-t border-white/5 pt-32">
           <QuoteBlock
-            quote={quotes[1].quote}
-            attribution={quotes[1].attribution}
-            title={quotes[1].title}
+            quote={quotes[2].quote}
+            attribution={quotes[2].attribution}
+            title={quotes[2].title}
             variant="dark"
           />
         </div>
