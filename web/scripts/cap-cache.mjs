@@ -19,11 +19,19 @@ try {
 }
 
 const CACHE_DIR = join(process.cwd(), ".next", "cache");
+const DEV_CACHE_DIR = join(process.cwd(), ".next", "dev");
 
 try {
   rmSync(CACHE_DIR, { recursive: true, force: true });
   console.log(`[cap-cache] .next/cache cleared successfully.`);
 } catch (e) {
   console.log(`[cap-cache] .next/cache not found or could not be removed.`);
+}
+
+try {
+  rmSync(DEV_CACHE_DIR, { recursive: true, force: true });
+  console.log(`[cap-cache] .next/dev cleared successfully.`);
+} catch (e) {
+  console.log(`[cap-cache] .next/dev not found or could not be removed.`);
 }
 
