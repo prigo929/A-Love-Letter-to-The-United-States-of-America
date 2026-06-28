@@ -40,6 +40,8 @@ interface GdpBarChartProps {
   source?: string;
   valueSuffix?: string;
   valueLabel?: string;
+  valuePrefix?: string;
+  valueDecimals?: number;
 }
 
 // ── Custom Tooltip ─────────────────────────────────────────────────────────────
@@ -51,12 +53,16 @@ function CustomTooltip({
   label,
   valueSuffix,
   valueLabel,
+  valuePrefix,
+  valueDecimals,
 }: {
   active?: boolean;
   payload?: Array<{ value: number; payload: GdpDataPoint }>;
   label?: string;
   valueSuffix: string;
   valueLabel: string;
+  valuePrefix: string;
+  valueDecimals: number;
 }) {
   if (!active || !payload?.length) return null;
   const item = payload[0];
@@ -67,7 +73,7 @@ function CustomTooltip({
         {item.payload.flag} {label}
       </p>
       <p className="font-hero text-2xl text-glory-gold">
-        ${item.value.toFixed(1)}
+        {valuePrefix}{item.value.toFixed(valueDecimals)}
         {valueSuffix}
       </p>
       <p className="font-body text-xs text-white/50">{valueLabel}</p>
@@ -85,8 +91,10 @@ function CustomLabel(props: {
   value?: number;
   index?: number;
   valueSuffix?: string;
+  valuePrefix?: string;
+  valueDecimals?: number;
 }) {
-  const { x = 0, y = 0, width = 0, value = 0, index = 0, valueSuffix = "T" } = props;
+  const { x = 0, y = 0, width = 0, value = 0, index = 0, valueSuffix = "T", valuePrefix = "$", valueDecimals = 1 } = props;
   return (
     <text
       x={x + width / 2}
@@ -103,7 +111,7 @@ function CustomLabel(props: {
         animationDelay: `${0.1 + index * 0.05}s`, // Starts 100ms after the bar begins rising
       }}
     >
-      ${value.toFixed(1)}
+      {valuePrefix}{value.toFixed(valueDecimals)}
       {valueSuffix}
     </text>
   );
@@ -116,6 +124,8 @@ export function GdpBarChart({
   source,
   valueSuffix = "T",
   valueLabel = "GDP (2024, USD Trillions)",
+  valuePrefix = "$",
+  valueDecimals = 1,
 }: GdpBarChartProps) {
   const { locale } = useLanguage();
   const localizedValueLabel =
@@ -197,13 +207,15 @@ export function GdpBarChart({
                 }}
                 axisLine={false}
                 tickLine={false}
-                tickFormatter={(v) => `$${v}${valueSuffix}`}
+                tickFormatter={(v) => `${valuePrefix}${v}${valueSuffix}`}
               />
               <Tooltip
                 content={
                   <CustomTooltip
                     valueSuffix={valueSuffix}
                     valueLabel={localizedValueLabel}
+                    valuePrefix={valuePrefix}
+                    valueDecimals={valueDecimals}
                   />
                 }
                 cursor={{ fill: "rgba(255,255,255,0.04)" }}
@@ -223,7 +235,7 @@ export function GdpBarChart({
                     opacity={entry.highlight ? 1 : 0.75}
                   />
                 ))}
-                <LabelList content={<CustomLabel valueSuffix={valueSuffix} />} />
+                <LabelList content={<CustomLabel valueSuffix={valueSuffix} valuePrefix={valuePrefix} valueDecimals={valueDecimals} />} />
               </Bar>
             </BarChart>
           </ResponsiveContainer>

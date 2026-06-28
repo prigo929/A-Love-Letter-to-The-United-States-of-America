@@ -86,6 +86,13 @@ import landscapeMississippi from "@/IMAGES/Landscapes/Mississippi River running 
 import landscapeChattanooga from "@/IMAGES/Landscapes/Chattanooga, TN Moccasin Bend Elevated View of River Bend Forest and Highway.jpg";
 import landscapeArizonaHighway from "@/IMAGES/Landscapes/Closeup of a curvy Arizona highway snaking its way through a canyon.jpg";
 
+// Natural Resources
+import resourcesHero from "@/IMAGES/Nature/Resources/resources-hero-wind-farm.jpg";
+import resourcesEnergy from "@/IMAGES/Nature/Resources/resources-energy-pumpjacks.jpg";
+import resourcesAgriculture from "@/IMAGES/Nature/Resources/resources-agriculture-corn-harvest.jpg";
+import resourcesMinerals from "@/IMAGES/Nature/Resources/resources-minerals-bingham-canyon.jpg";
+import resourcesWater from "@/IMAGES/Nature/Resources/resources-water-hoover-dam.jpg";
+
 // Housing
 import housingFrontPorch from "@/IMAGES/Housing/Charming suburban house with front porch, landscaping, and white facade.jpg";
 import housingDuskHouse from "@/IMAGES/Housing/Charming two-story house with manicured lawn and garage, set in Yelm, WA, under dusk sky.jpg";
@@ -547,6 +554,13 @@ export const SITE_IMAGES = {
   yellowstoneNationalPark: yellowstoneNationalPark.src,
   zionNationalPark: zionNationalPark.src,
   greatLakesChicago: greatLakesChicago.src,
+
+  // Natural Resources
+  resourcesHero: resourcesHero.src,
+  resourcesEnergy: resourcesEnergy.src,
+  resourcesAgriculture: resourcesAgriculture.src,
+  resourcesMinerals: resourcesMinerals.src,
+  resourcesWater: resourcesWater.src,
 
   // Military
   armyHero: armyHero.src,

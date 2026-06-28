@@ -1118,3 +1118,104 @@ const qolCopyRo: QualityOfLifeCopy = {
 export function getQualityOfLifePageCopy(locale: Locale): QualityOfLifeCopy {
   return locale === "ro" ? qolCopyRo : qolCopyEn;
 }
+
+// ─── NATURAL RESOURCES PAGE COPY ─────────────────────────────────────────────
+
+export function getNaturalResourcesPageCopy(locale: Locale) {
+  if (locale === "ro") {
+    return {
+      breadcrumb: "Resurse Naturale",
+      heroEyebrow: "Resurse Naturale",
+      heroTitleLead: "BOGĂȚIA UNUI",
+      heroTitleAccent: "CONTINENT",
+      heroDescription:
+        "De la câmpurile petroliere din Texas la mările de grâu din Kansas, de la minele de cupru din Utah la Marile Lacuri — Statele Unite comandă una dintre cele mai complete înzestrări de bogăție naturală acordate vreodată unei singure națiuni.",
+      overviewEyebrow: "Înzestrarea",
+      overviewTitle: "Un Continent al Abundenței",
+      pillarsEyebrow: "Cei Patru Piloni",
+      pillarsTitle: "Explorează Înzestrarea",
+      exploreCta: "Explorează →",
+      energyEyebrow: "Energie",
+      energyTitle: "Puterea Energetică a Lumii",
+      agEyebrow: "Agricultură",
+      agTitle: "Coșul de Pâine al Lumii",
+      mineralsEyebrow: "Minerale",
+      mineralsTitle: "Averea de Sub Pământ",
+      waterEyebrow: "Apă",
+      waterTitle: "Bogăția în Apă Dulce",
+      oilChartTitle: "Producția de Țiței — Principalii Producători (2024)",
+      oilChartSubtitle: "Milioane de barili pe zi — America conduce lumea",
+      oilValueLabel: "Mil. barili/zi",
+      gasChartTitle: "Producția de Gaz Natural pe Țară (2023)",
+      gasChartSubtitle: "Miliarde de metri cubi pe an",
+      gasValueLabel: "Mld. m³/an",
+      cornChartTitle: "Producția de Porumb pe Țară (2024)",
+      cornChartSubtitle: "Milioane de tone — inima Americii hrănește lumea",
+      cornValueLabel: "Mil. tone",
+      coalChartTitle: "Rezerve Recuperabile de Cărbune pe Țară",
+      coalChartSubtitle: "Miliarde de tone — cele mai mari rezerve de pe Pământ",
+      coalValueLabel: "Mld. tone",
+      waterLinkLabel: "Explorează Marile Lacuri →",
+      tocItems: [
+        { label: "Prezentare", href: "#overview" },
+        { label: "Energie", href: "#energy" },
+        { label: "Agricultură", href: "#agriculture" },
+        { label: "Minerale", href: "#minerals" },
+        { label: "Apă", href: "#water" },
+      ],
+      pillars: [
+        { id: "energy", label: "Energie", desc: "Cel mai mare producător de petrol și gaze din lume și exportator de top de GNL." },
+        { id: "agriculture", label: "Agricultură", desc: "880 de milioane de acri care hrănesc lumea din Centura Porumbului." },
+        { id: "minerals", label: "Minerale", desc: "Cele mai mari rezerve de cărbune de pe Pământ — plus cupru, aur și litiu." },
+        { id: "water", label: "Apă", desc: "O cincime din apa dulce de suprafață a planetei și barajele care o valorifică." },
+      ],
+    };
+  }
+  return {
+    breadcrumb: "Natural Resources",
+    heroEyebrow: "Natural Resources",
+    heroTitleLead: "THE WEALTH OF",
+    heroTitleAccent: "A CONTINENT",
+    heroDescription:
+      "From the oil fields of Texas to the wheat seas of Kansas, from the copper pits of Utah to the Great Lakes — the United States commands one of the most complete endowments of natural wealth ever granted to a single nation.",
+    overviewEyebrow: "The Endowment",
+    overviewTitle: "A Continent of Abundance",
+    pillarsEyebrow: "The Four Pillars",
+    pillarsTitle: "Explore the Endowment",
+    exploreCta: "Explore →",
+    energyEyebrow: "Energy",
+    energyTitle: "The World's Energy Power",
+    agEyebrow: "Agriculture",
+    agTitle: "The Breadbasket of the World",
+    mineralsEyebrow: "Minerals",
+    mineralsTitle: "The Fortune Beneath the Soil",
+    waterEyebrow: "Water",
+    waterTitle: "A Wealth of Fresh Water",
+    oilChartTitle: "Crude Oil Production — Top Producers (2024)",
+    oilChartSubtitle: "Millions of barrels per day — America leads the world",
+    oilValueLabel: "Million bbl/day",
+    gasChartTitle: "Natural Gas Production by Country (2023)",
+    gasChartSubtitle: "Billions of cubic metres per year",
+    gasValueLabel: "Billion m³/yr",
+    cornChartTitle: "Corn Production by Country (2024)",
+    cornChartSubtitle: "Millions of metric tons — the American heartland feeds the world",
+    cornValueLabel: "Million tonnes",
+    coalChartTitle: "Recoverable Coal Reserves by Country",
+    coalChartSubtitle: "Billions of metric tons — the largest reserves on Earth",
+    coalValueLabel: "Billion tonnes",
+    waterLinkLabel: "Explore the Great Lakes →",
+    tocItems: [
+      { label: "Overview", href: "#overview" },
+      { label: "Energy", href: "#energy" },
+      { label: "Agriculture", href: "#agriculture" },
+      { label: "Minerals", href: "#minerals" },
+      { label: "Water", href: "#water" },
+    ],
+    pillars: [
+      { id: "energy", label: "Energy", desc: "World's #1 oil & gas producer and top LNG exporter." },
+      { id: "agriculture", label: "Agriculture", desc: "880 million acres feeding the world from the Corn Belt." },
+      { id: "minerals", label: "Minerals", desc: "The largest coal reserves on Earth — plus copper, gold & lithium." },
+      { id: "water", label: "Water", desc: "A fifth of the planet's fresh surface water, and the dams that harness it." },
+    ],
+  };
+}
