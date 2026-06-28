@@ -736,6 +736,14 @@ import asset0732 from "@/IMAGES/USA from Space/The Pillars of Creation.jpg";
 import asset0733 from "@/IMAGES/USA from Space/USA at night from Space.jpg";
 import asset0734 from "@/IMAGES/USA from Space/Von Braun and the Saturn V F-1 Engines.jpg";
 
+// ── Subpage photographs: Constitution / Bill of Rights ──────────────────────
+import conBillDoc from "@/IMAGES/Constitution/Subpage/bill-of-rights-document.jpg";
+import conBillMason from "@/IMAGES/Constitution/Subpage/george-mason-portrait.jpg";
+import conBillMagna from "@/IMAGES/Constitution/Subpage/magna-carta.jpg";
+import conBillFederalist from "@/IMAGES/Constitution/Subpage/federalist-papers-title.jpg";
+import conBillThomas from "@/IMAGES/Constitution/Subpage/clarence-thomas.jpg";
+import conBillRotunda from "@/IMAGES/Constitution/Subpage/charters-of-freedom-rotunda.jpg";
+
 export type GalleryAssetRecord = {
   path: string;
   src: StaticImageData;
@@ -1477,6 +1485,12 @@ const RAW_GALLERY_ASSETS = [
   { path: "USA from Space/The Pillars of Creation.jpg", src: asset0732 },
   { path: "USA from Space/USA at night from Space.jpg", src: asset0733 },
   { path: "USA from Space/Von Braun and the Saturn V F-1 Engines.jpg", src: asset0734 },
+  { path: "Constitution/Subpage/bill-of-rights-document.jpg", src: conBillDoc },
+  { path: "Constitution/Subpage/george-mason-portrait.jpg", src: conBillMason },
+  { path: "Constitution/Subpage/magna-carta.jpg", src: conBillMagna },
+  { path: "Constitution/Subpage/federalist-papers-title.jpg", src: conBillFederalist },
+  { path: "Constitution/Subpage/clarence-thomas.jpg", src: conBillThomas },
+  { path: "Constitution/Subpage/charters-of-freedom-rotunda.jpg", src: conBillRotunda },
 ] as const satisfies readonly GalleryAssetRecord[];
 
 export const GALLERY_ASSETS: readonly GalleryAssetRecord[] = Array.from(

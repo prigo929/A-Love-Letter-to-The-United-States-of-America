@@ -16,6 +16,7 @@ import { ConstitutionAurora, InkParticles, AmendmentAccordion } from "@/componen
 import { getServerLocale }  from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { BILL_OF_RIGHTS }   from "@/lib/data/constitution-data";
+import { SubpagePhotographs } from "@/components/shared/SubpagePhotographs";
 
 export const metadata: Metadata = {
   title: "Bill of Rights | Constitution",
@@ -229,6 +230,14 @@ export default async function BillOfRightsPage() {
             attribution="James Madison"
             title={isRo ? "Părintele Constituției · Al 4-lea Președinte" : "Father of the Constitution · 4th President of the United States"}
             variant="dark"
+          />
+
+          <SubpagePhotographs
+            subpage="bill-of-rights"
+            title={isRo ? "Mărturia Vizuală" : "The Visual Record"}
+            intro={isRo
+              ? "Documentele, oamenii și locurile din spatele Declarației Drepturilor."
+              : "The documents, people, and places behind the Bill of Rights."}
           />
 
           <div className="flex items-center justify-between border-t border-white/8 pt-8">
