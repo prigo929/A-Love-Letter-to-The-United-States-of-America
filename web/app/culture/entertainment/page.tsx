@@ -4,7 +4,8 @@ import { getCultureHollywood } from "@/lib/data/culture-data";
 import { GALLERY_IMAGES } from "@/lib/data/gallery";
 import { FilmAndStorytellingClient } from "@/components/culture/FilmAndStorytellingClient";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
+import { MacroStyles } from "@/components/economy/EconomyAnimations";
+import { FilmHero } from "@/components/culture/FilmHero";
 import { CultureStyles } from "@/components/culture/CulturePageComponents";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
@@ -103,10 +104,8 @@ export default async function FilmAndEntertainmentPage() {
       <CultureStyles />
 
       {/* ── Single Hero (video) ─────────────────────────────────────────── */}
-      <MacroHero
+      <FilmHero
         videoSrc="/videos/library/Culture/every-living-breathing-moment.mp4#t=37"
-        fadeBottomColor="#0C0907"
-        fadeTopColor="rgba(12, 9, 7, 0.4)"
         eyebrow={isRo ? "FILM · STORYTELLING · ENTERTAINMENT" : "FILM · STORYTELLING · ENTERTAINMENT"}
         titleLead={isRo ? "FABRICA DE" : "THE DREAM"}
         titleAccent={isRo ? "VISE" : "FACTORY"}
