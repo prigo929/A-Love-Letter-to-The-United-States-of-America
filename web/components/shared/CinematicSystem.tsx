@@ -244,6 +244,8 @@ interface MacroHeroProps {
   titleAccent: string;
   description: string;
   stats?: { value: string | number; label: string; sub?: string }[];
+  fadeTopColor?: string;
+  fadeBottomColor?: string;
 }
 
 const heroWordContainer = {
@@ -275,7 +277,7 @@ function StaggeredTitleLines({ text, className }: { text: string; className?: st
   );
 }
 
-export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, titleAccent, description, stats }: MacroHeroProps) {
+export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, titleAccent, description, stats, fadeTopColor, fadeBottomColor }: MacroHeroProps) {
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -296,7 +298,7 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
     if (!video) return;
     video.muted = true;
 
-    // Parse media fragment if any, e.g., #t=37,53
+    // Parse media fragment if any, e.g., #t=37,53 or #t=37
     const hash = videoSrc?.split("#")[1];
     let startTime = 0;
     let endTime = Infinity;
@@ -313,9 +315,15 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
       }
     };
 
+    const onEnded = () => {
+      video.currentTime = startTime;
+      video.play().catch(() => {});
+    };
+
     if (endTime < Infinity) {
       video.addEventListener("timeupdate", onTimeUpdate);
     }
+    video.addEventListener("ended", onEnded);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -331,6 +339,7 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
 
     return () => {
       observer.disconnect();
+      video.removeEventListener("ended", onEnded);
       if (endTime < Infinity) {
         video.removeEventListener("timeupdate", onTimeUpdate);
       }
@@ -367,9 +376,19 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
           </video>
         )}
       </motion.div>
-      <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-[#000000] pointer-events-none z-[1]" />
-      <div className="absolute inset-0 bg-linear-to-b from-[#000000] via-transparent to-[#000000] pointer-events-none opacity-80 z-[1]" />
-      <div className="absolute inset-0 pointer-events-none z-[1]" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%)' }} />
+      <div 
+        className="absolute inset-0 pointer-events-none z-[1]" 
+        style={{ 
+          background: `linear-gradient(to top, ${fadeBottomColor || '#000000'} 0%, transparent 22%)` 
+        }} 
+      />
+      <div 
+        className="absolute inset-0 pointer-events-none z-[1]" 
+        style={{ 
+          background: `linear-gradient(to bottom, ${fadeTopColor || '#000000'} 0%, transparent 12%)` 
+        }} 
+      />
+      <div className="absolute inset-0 pointer-events-none z-[1]" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.65) 100%)' }} />
 
       <motion.div
         style={{ opacity }}

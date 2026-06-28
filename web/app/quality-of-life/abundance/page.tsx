@@ -436,7 +436,7 @@ export default async function AbundancePage() {
             </RevealSection>
 
             {/* Full-width Highway Interchange Video */}
-            <div className="relative w-full h-[580px] overflow-hidden bg-[#000000]">
+            <div className="relative w-full h-[700px] overflow-hidden bg-[#000000]">
               <video
                 autoPlay
                 loop
@@ -483,7 +483,7 @@ export default async function AbundancePage() {
             </RevealSection>
 
             {/* Full-width Glendale, Arizona pool image */}
-            <div className="relative w-full h-[580px] overflow-hidden bg-[#000000]">
+            <div className="relative w-full h-[700px] overflow-hidden bg-[#000000]">
               <Image
                 src={SITE_IMAGES.housing.glendalePools}
                 alt="Aerial view of homes with pools in suburb Glendale, Arizona"
