@@ -53,6 +53,7 @@ import {
   getMineralsParagraphs,
   getWaterParagraphs,
   getForestsParagraphs,
+  getIrrigationParagraphs,
   getEnergyFacts,
   getRenewablesFacts,
   getAgricultureFacts,
@@ -166,6 +167,7 @@ export default async function NaturalResourcesPage() {
   const mineralsParagraphs = getMineralsParagraphs(locale);
   const waterParagraphs = getWaterParagraphs(locale);
   const forestsParagraphs = getForestsParagraphs(locale);
+  const irrigationParagraphs = getIrrigationParagraphs(locale);
   const energyFacts = getEnergyFacts(locale);
   const renewablesFacts = getRenewablesFacts(locale);
   const agricultureFacts = getAgricultureFacts(locale);
@@ -388,20 +390,22 @@ export default async function NaturalResourcesPage() {
               valueLabel={copy.nuclearValueLabel}
             />
           </div>
+        </section>
 
-          {/* Cinematic solar image */}
-          <div className="relative mb-24 overflow-hidden h-[440px]">
-            <Image
-              src={SITE_IMAGES.resourcesSolar}
-              alt="Aerial of the Ivanpah solar power towers in the Mojave Desert"
-              fill
-              className="object-cover macro-edge-fade opacity-70 grayscale-[0.15]"
-              sizes="100vw"
-              placeholder="blur"
-              blurDataURL={BLUR_PLACEHOLDER}
-            />
-          </div>
+        {/* Cinematic solar image */}
+        <div className="relative w-full h-[440px] mb-24 overflow-hidden">
+          <Image
+            src={SITE_IMAGES.resourcesSolar}
+            alt="Aerial of the Ivanpah solar power towers in the Mojave Desert"
+            fill
+            className="object-cover macro-edge-fade opacity-70 grayscale-[0.15]"
+            sizes="100vw"
+            placeholder="blur"
+            blurDataURL={BLUR_PLACEHOLDER}
+          />
+        </div>
 
+        <section className="mx-auto max-w-[1600px] px-6 md:px-12 mb-48">
           <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-4 border-t border-white/5 pt-16">
             {renewablesFacts.map((fact, i) => (
               <MacroFact
@@ -462,20 +466,22 @@ export default async function NaturalResourcesPage() {
               valueLabel={copy.beefValueLabel}
             />
           </div>
+        </section>
 
-          {/* Cinematic image */}
-          <div className="relative mb-24 overflow-hidden h-[420px]">
-            <Image
-              src={SITE_IMAGES.resourcesAgriculture}
-              alt="A combine harvesting a golden cornfield in Iowa"
-              fill
-              className="object-cover macro-edge-fade opacity-70 grayscale-[0.15]"
-              sizes="100vw"
-              placeholder="blur"
-              blurDataURL={BLUR_PLACEHOLDER}
-            />
-          </div>
+        {/* Cinematic image */}
+        <div className="relative w-full h-[420px] mb-24 overflow-hidden">
+          <Image
+            src={SITE_IMAGES.resourcesAgriculture}
+            alt="A stunning vineyard in early summer in Polk County, Oregon, part of the Willamette Valley's wine region"
+            fill
+            className="object-cover macro-edge-fade opacity-70 grayscale-[0.15]"
+            sizes="100vw"
+            placeholder="blur"
+            blurDataURL={BLUR_PLACEHOLDER}
+          />
+        </div>
 
+        <section className="mx-auto max-w-[1600px] px-6 md:px-12 mb-48">
           <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-4 border-t border-white/5 pt-16">
             {agricultureFacts.map((fact, i) => (
               <MacroFact
@@ -499,6 +505,81 @@ export default async function NaturalResourcesPage() {
             variant="dark"
           />
         </div>
+
+        {/* ── Center-Pivot Irrigation Circles ────────────────────── */}
+        <section id="irrigation" className="mb-48 mx-auto max-w-[1600px] px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            {/* Left Column: Narrative Copy */}
+            <div className="lg:col-span-5 flex flex-col justify-center">
+              <p className="macro-eyebrow mb-8" style={{ color: ACCENT }}>
+                {copy.irrigationEyebrow}
+              </p>
+              <h2 className="macro-section-title mb-12">{copy.irrigationTitle}</h2>
+              {irrigationParagraphs.map((para, i) => (
+                <p key={i} className="macro-body mb-8 leading-relaxed text-white/70">
+                  {para}
+                </p>
+              ))}
+              
+              {/* Mini-stat callout for premium feel */}
+              <div className="mt-8 pt-8 border-t border-white/5 flex gap-8">
+                <div>
+                  <p className="font-macro-display text-4xl font-bold" style={{ color: ACCENT }}>
+                    160 Ac.
+                  </p>
+                  <p className="macro-metadata text-white/50 text-xs mt-2">
+                    {locale === "ro" ? "Dimensiune Cerc Standard" : "Standard Circle Size"}
+                  </p>
+                </div>
+                <div>
+                  <p className="font-macro-display text-4xl font-bold" style={{ color: ACCENT }}>
+                    1948
+                  </p>
+                  <p className="macro-metadata text-white/50 text-xs mt-2">
+                    {locale === "ro" ? "Anul Brevetării" : "Year of Patent"}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Premium Dual Image Grid with Hover Effects */}
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="flex flex-col group">
+                <div className="relative h-96 overflow-hidden border border-white/10 hover:border-[#4ade80]/40 transition-colors bg-white/5">
+                  <Image
+                    src={SITE_IMAGES.resourcesIrrigationAerial}
+                    alt={copy.irrigationAerialCaption}
+                    fill
+                    className="object-cover opacity-75 grayscale-[0.1] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                    sizes="(max-width: 768px) 100vw, 35vw"
+                    placeholder="blur"
+                    blurDataURL={BLUR_PLACEHOLDER}
+                  />
+                </div>
+                <p className="macro-metadata text-white/40 mt-4 leading-relaxed text-xs">
+                  {copy.irrigationAerialCaption}
+                </p>
+              </div>
+
+              <div className="flex flex-col group sm:mt-12">
+                <div className="relative h-96 overflow-hidden border border-white/10 hover:border-[#4ade80]/40 transition-colors bg-white/5">
+                  <Image
+                    src={SITE_IMAGES.resourcesIrrigationSatellite}
+                    alt={copy.irrigationSatelliteCaption}
+                    fill
+                    className="object-cover opacity-75 grayscale-[0.1] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                    sizes="(max-width: 768px) 100vw, 35vw"
+                    placeholder="blur"
+                    blurDataURL={BLUR_PLACEHOLDER}
+                  />
+                </div>
+                <p className="macro-metadata text-white/40 mt-4 leading-relaxed text-xs">
+                  {copy.irrigationSatelliteCaption}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* ── Minerals ────────────────────────────────────────────── */}
         <section id="minerals" className="mb-48 mx-auto max-w-[1600px] px-6 md:px-12">
@@ -563,20 +644,22 @@ export default async function NaturalResourcesPage() {
               ))}
             </div>
           </div>
+        </section>
 
-          {/* Cinematic image */}
-          <div className="relative my-24 overflow-hidden h-[440px]">
-            <Image
-              src={SITE_IMAGES.resourcesWater}
-              alt="Aerial of Hoover Dam and the Colorado River"
-              fill
-              className="object-cover macro-edge-fade opacity-70 grayscale-[0.15]"
-              sizes="100vw"
-              placeholder="blur"
-              blurDataURL={BLUR_PLACEHOLDER}
-            />
-          </div>
+        {/* Cinematic image */}
+        <div className="relative w-full h-[440px] my-24 overflow-hidden">
+          <Image
+            src={SITE_IMAGES.resourcesWater}
+            alt="Aerial of Hoover Dam and the Colorado River"
+            fill
+            className="object-cover macro-edge-fade opacity-70 grayscale-[0.15]"
+            sizes="100vw"
+            placeholder="blur"
+            blurDataURL={BLUR_PLACEHOLDER}
+          />
+        </div>
 
+        <section className="mx-auto max-w-[1600px] px-6 md:px-12 mb-48">
           <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-4 border-t border-white/5 pt-16">
             {waterFacts.map((fact, i) => (
               <MacroFact
@@ -589,7 +672,6 @@ export default async function NaturalResourcesPage() {
           </div>
 
           <ResourceGrid title={copy.waterSystemsTitle} items={waterSystems} />
-
           <div className="mt-16">
             <Link
               href="/nature/great-lakes"
