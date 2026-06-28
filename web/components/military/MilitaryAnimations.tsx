@@ -1633,8 +1633,8 @@ export function IntelligenceNetworkMap({ agencies, locale = "en" }: { agencies: 
   const isRo = locale === "ro";
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8 w-full items-stretch">
-      {/* Clean Grid of Agency Cards */}
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8 w-full items-start">
+      {/* Clean Grid of Agency Cards — fixed min-height so grid never reflows */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {agencies.map((agency) => {
           const activeNode = active === agency.id;
@@ -1645,19 +1645,20 @@ export function IntelligenceNetworkMap({ agencies, locale = "en" }: { agencies: 
               key={agency.id}
               onClick={() => setActive(agency.id)}
               className={cn(
-                "rounded-3xl border p-8 flex flex-col items-center justify-center text-center transition-all duration-300 gap-4",
+                "rounded-3xl border p-8 flex flex-col items-center justify-center text-center transition-colors duration-300 gap-5 min-h-[260px]",
                 activeNode
                   ? "bg-white/[0.04] border-[#E8B923] shadow-xl"
                   : "bg-white/[0.01] border-white/5 hover:border-white/15"
               )}
             >
-              <div className="relative w-20 h-20 flex items-center justify-center p-2 rounded-2xl bg-neutral-900 border border-white/5">
+              {/* Larger logo container */}
+              <div className="relative w-32 h-32 flex items-center justify-center p-3 rounded-2xl bg-neutral-900 border border-white/5">
                 <Image
                   src={logoPath}
                   alt={`${agency.shortName} Logo`}
-                  width={64}
-                  height={64}
-                  className="object-contain w-16 h-16"
+                  width={100}
+                  height={100}
+                  className="object-contain w-24 h-24"
                 />
               </div>
               <div>
@@ -1673,8 +1674,8 @@ export function IntelligenceNetworkMap({ agencies, locale = "en" }: { agencies: 
         })}
       </div>
 
-      {/* Details Panel */}
-      <div className="mil-glass p-8 md:p-10 flex flex-col justify-between relative overflow-hidden rounded-3xl">
+      {/* Details Panel — fixed height so it never shifts when switching agencies */}
+      <div className="mil-glass p-8 md:p-10 relative overflow-hidden rounded-3xl min-h-[540px] flex flex-col">
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
@@ -1682,9 +1683,9 @@ export function IntelligenceNetworkMap({ agencies, locale = "en" }: { agencies: 
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -5 }}
             transition={{ duration: 0.15 }}
-            className="flex flex-col h-full justify-between z-10"
+            className="flex flex-col flex-1 z-10"
           >
-            <div>
+            <div className="flex-1">
               <div className="flex items-center gap-2.5 mb-4">
                 <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: current.accentColor }} />
                 <span className="mil-text-metadata text-[10px] tracking-[0.3em] font-black">{current.specialty}</span>
@@ -1698,7 +1699,7 @@ export function IntelligenceNetworkMap({ agencies, locale = "en" }: { agencies: 
               <p className="text-sm leading-relaxed text-white/60 mb-8">{current.description}</p>
             </div>
 
-            <div className="space-y-4 border-t border-white/5 pt-6 mt-6">
+            <div className="space-y-4 border-t border-white/5 pt-6 mt-auto">
               <h4 className="mil-text-metadata text-[9px] tracking-[0.25em] opacity-40 font-black">
                 {isRo ? "DETALII AGENȚIE" : "AGENCY STATS"}
               </h4>
@@ -1710,7 +1711,7 @@ export function IntelligenceNetworkMap({ agencies, locale = "en" }: { agencies: 
                   </div>
                 ))}
               </div>
-              <div className="pt-6">
+              <div className="pt-4">
                 <Link
                   href="/military/intelligence"
                   className="w-full inline-flex h-11 items-center justify-center border border-white/15 bg-white px-5 text-xs font-bold uppercase text-black transition-colors hover:bg-white/85"
