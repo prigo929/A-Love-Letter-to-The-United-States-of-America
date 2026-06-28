@@ -104,7 +104,7 @@ export default async function FilmAndEntertainmentPage() {
 
       {/* ── Single Hero (video) ─────────────────────────────────────────── */}
       <MacroHero
-        videoSrc="/videos/library/Culture/Times Square Aerial.mp4"
+        videoSrc="/videos/library/Culture/every-living-breathing-moment.mp4#t=37,53"
         eyebrow={isRo ? "FILM · STORYTELLING · ENTERTAINMENT" : "FILM · STORYTELLING · ENTERTAINMENT"}
         titleLead={isRo ? "FABRICA DE" : "THE DREAM"}
         titleAccent={isRo ? "VISE" : "FACTORY"}

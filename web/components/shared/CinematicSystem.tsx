@@ -295,6 +295,28 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
     const video = videoRef.current;
     if (!video) return;
     video.muted = true;
+
+    // Parse media fragment if any, e.g., #t=37,53
+    const hash = videoSrc?.split("#")[1];
+    let startTime = 0;
+    let endTime = Infinity;
+    if (hash && hash.startsWith("t=")) {
+      const parts = hash.substring(2).split(",");
+      if (parts[0]) startTime = parseFloat(parts[0]);
+      if (parts[1]) endTime = parseFloat(parts[1]);
+    }
+
+    const onTimeUpdate = () => {
+      if (video.currentTime >= endTime) {
+        video.currentTime = startTime;
+        video.play().catch(() => {});
+      }
+    };
+
+    if (endTime < Infinity) {
+      video.addEventListener("timeupdate", onTimeUpdate);
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -306,7 +328,13 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
       { threshold: 0.05 },
     );
     observer.observe(video);
-    return () => observer.disconnect();
+
+    return () => {
+      observer.disconnect();
+      if (endTime < Infinity) {
+        video.removeEventListener("timeupdate", onTimeUpdate);
+      }
+    };
   }, [videoSrc]);
 
   return (

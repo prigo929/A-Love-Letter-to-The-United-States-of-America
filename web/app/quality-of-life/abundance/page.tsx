@@ -7,6 +7,7 @@ import { MacroStyles, MacroHero } from "@/components/shared/CinematicSystem";
 import { RevealSection } from "@/components/shared/Reveal";
 import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 import { SITE_IMAGES } from "@/lib/site-images";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Consumer Abundance | Quality of Life",
@@ -395,14 +396,19 @@ export default async function AbundancePage() {
         </RevealSection>
 
         {/* Categories */}
-        <RevealSection className="px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-7xl">
+        <section className="py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h2 className="macro-section-title text-white text-center text-3xl mb-16">{copy.categoriesTitle}</h2>
-            <div className="space-y-20">
-              {copy.categories.map((cat, ci) => {
+          </div>
+          
+          <div className="space-y-32">
+            {/* Category 1: Climate Control & Home Appliances */}
+            <RevealSection className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              {(() => {
+                const cat = copy.categories[0];
                 const Icon = cat.icon;
                 return (
-                  <div key={ci}>
+                  <div>
                     <div className="flex items-center gap-3 mb-8 pb-4 border-b border-white/5">
                       <Icon className="h-6 w-6 text-[#E8B923]" />
                       <h3 className="macro-section-title text-white text-2xl">{cat.title}</h3>
@@ -426,10 +432,137 @@ export default async function AbundancePage() {
                     </div>
                   </div>
                 );
-              })}
+              })()}
+            </RevealSection>
+
+            {/* Category 2: Personal Mobility */}
+            <RevealSection className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              {(() => {
+                const cat = copy.categories[1];
+                const Icon = cat.icon;
+                return (
+                  <div>
+                    <div className="flex items-center gap-3 mb-8 pb-4 border-b border-white/5">
+                      <Icon className="h-6 w-6 text-[#E8B923]" />
+                      <h3 className="macro-section-title text-white text-2xl">{cat.title}</h3>
+                    </div>
+                    <div className="grid gap-6 sm:grid-cols-2">
+                      {cat.items.map((item, ii) => (
+                        <div key={ii} className="border-t border-white/10 pt-6">
+                          <h4 className="font-display text-lg font-bold text-[#E8B923] mb-3">{item.title}</h4>
+                          <p className="macro-body text-sm mb-4">{item.body}</p>
+                          <div className="border-t border-white/5 pt-3">
+                            {item.sourceUrl ? (
+                              <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-[#E8B923]/60 hover:text-[#E8B923] transition-colors">
+                                {item.source} ↗
+                              </a>
+                            ) : (
+                              <span className="text-xs text-white/30">{item.source}</span>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
+            </RevealSection>
+
+            {/* Full-width Highway Interchange Video */}
+            <div className="relative w-full h-[480px] overflow-hidden bg-[#000000]">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover opacity-60"
+              >
+                <source src="/videos/library/Infrastructure/atlanta-highway-interchange.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-[#000000] pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-b from-[#000000] via-transparent to-[#000000] pointer-events-none opacity-80" />
             </div>
+
+            {/* Category 3: Recreation & Outdoor Assets */}
+            <RevealSection className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              {(() => {
+                const cat = copy.categories[2];
+                const Icon = cat.icon;
+                return (
+                  <div>
+                    <div className="flex items-center gap-3 mb-8 pb-4 border-b border-white/5">
+                      <Icon className="h-6 w-6 text-[#E8B923]" />
+                      <h3 className="macro-section-title text-white text-2xl">{cat.title}</h3>
+                    </div>
+                    <div className="grid gap-6 sm:grid-cols-2">
+                      {cat.items.map((item, ii) => (
+                        <div key={ii} className="border-t border-white/10 pt-6">
+                          <h4 className="font-display text-lg font-bold text-[#E8B923] mb-3">{item.title}</h4>
+                          <p className="macro-body text-sm mb-4">{item.body}</p>
+                          <div className="border-t border-white/5 pt-3">
+                            {item.sourceUrl ? (
+                              <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-[#E8B923]/60 hover:text-[#E8B923] transition-colors">
+                                {item.source} ↗
+                              </a>
+                            ) : (
+                              <span className="text-xs text-white/30">{item.source}</span>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
+            </RevealSection>
+
+            {/* Full-width Glendale, Arizona pool image */}
+            <div className="relative w-full h-[480px] overflow-hidden bg-[#000000]">
+              <Image
+                src={SITE_IMAGES.housing.glendalePools}
+                alt="Aerial view of homes with pools in suburb Glendale, Arizona"
+                fill
+                className="object-cover opacity-60"
+                sizes="100vw"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-[#000000] pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-b from-[#000000] via-transparent to-[#000000] pointer-events-none opacity-80" />
+            </div>
+
+            {/* Category 4: The Overflow Economy */}
+            <RevealSection className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              {(() => {
+                const cat = copy.categories[3];
+                const Icon = cat.icon;
+                return (
+                  <div>
+                    <div className="flex items-center gap-3 mb-8 pb-4 border-b border-white/5">
+                      <Icon className="h-6 w-6 text-[#E8B923]" />
+                      <h3 className="macro-section-title text-white text-2xl">{cat.title}</h3>
+                    </div>
+                    <div className="grid gap-6 sm:grid-cols-2">
+                      {cat.items.map((item, ii) => (
+                        <div key={ii} className="border-t border-white/10 pt-6">
+                          <h4 className="font-display text-lg font-bold text-[#E8B923] mb-3">{item.title}</h4>
+                          <p className="macro-body text-sm mb-4">{item.body}</p>
+                          <div className="border-t border-white/5 pt-3">
+                            {item.sourceUrl ? (
+                              <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-[#E8B923]/60 hover:text-[#E8B923] transition-colors">
+                                {item.source} ↗
+                              </a>
+                            ) : (
+                              <span className="text-xs text-white/30">{item.source}</span>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
+            </RevealSection>
           </div>
-        </RevealSection>
+        </section>
 
         <AskAmericaCTA locale={locale} descriptionEn={copyEn.oracleDescription} descriptionRo={copyRo.oracleDescription} />
       </div>

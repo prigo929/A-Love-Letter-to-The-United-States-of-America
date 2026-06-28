@@ -70,6 +70,9 @@ export default async function VideosPage() {
       ];
 
   const siteClips: SiteClip[] = [
+    { src: "/videos/library/Culture/every-living-breathing-moment.mp4", title: isRo ? "Fiecare Clipă Trăită (Cinema Edit)" : "Every Living Breathing Moment (Cinema Edit)", tag: isRo ? "Cultură" : "Culture" },
+    { src: "/videos/library/Infrastructure/atlanta-highway-interchange.mp4", title: isRo ? "Intersecție de Autostrăzi din Atlanta" : "Atlanta Highway Interchange", tag: isRo ? "Infrastructură" : "Infrastructure" },
+    { src: "/videos/library/Infrastructure/atlanta-skyline-highways.mp4", title: isRo ? "Skyline și Autostrăzi în Atlanta" : "Atlanta Skyline & Highways", tag: isRo ? "Orașe" : "Cities" },
     { src: "/videos/we-must-fight.mp4", title: isRo ? "Trebuie Să Luptăm (Ronald Reagan)" : "We Must Fight (Ronald Reagan)", tag: isRo ? "Istorie" : "History" },
     { src: "/videos/earth-pixels-from-space.mp4", title: isRo ? "Pământul din Spațiu" : "Earth from Space", tag: isRo ? "Spațiu" : "Space" },
     { src: "/videos/library/Technology/Falcon 9 Launch and Landing cinematic.mp4", title: isRo ? "Falcon 9 — Lansare și Aterizare" : "Falcon 9 — Launch & Landing", tag: "SpaceX" },
