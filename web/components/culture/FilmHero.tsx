@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
 import { motion, useScroll, useTransform, useReducedMotion, useInView, animate } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -52,19 +52,27 @@ function HeroStatValue({ value }: { value: string | number }) {
   const prefersReducedMotion = useReducedMotion();
 
   const raw = String(value);
-  const match = raw.match(/^([^0-9]*?)([0-9,.]+)([^0-9]*?)$/);
 
-  const prefix = match?.[1] ?? "";
-  const core = match?.[2] ?? "";
-  const suffix = match?.[3] ?? "";
-  const target = core ? parseFloat(core.replace(/,/g, "")) : 0;
-  const decimals = core.includes(".") ? core.split(".")[1].length : 0;
-  const grouped = core.includes(",");
+  // Stabilise parsed values with useMemo so they never change reference
+  const { hasMatch, prefix, core, suffix, target, decimals, grouped } = useMemo(() => {
+    const m = raw.match(/^([^0-9]*?)([0-9,.]+)([^0-9]*?)$/);
+    if (!m) return { hasMatch: false, prefix: "", core: raw, suffix: "", target: 0, decimals: 0, grouped: false };
+    const c = m[2];
+    return {
+      hasMatch: true,
+      prefix: m[1],
+      core: c,
+      suffix: m[3],
+      target: parseFloat(c.replace(/,/g, "")),
+      decimals: c.includes(".") ? c.split(".")[1].length : 0,
+      grouped: c.includes(","),
+    };
+  }, [raw]);
 
-  const [display, setDisplay] = useState(match && !prefersReducedMotion ? "0" : core);
+  const [display, setDisplay] = useState(hasMatch && !prefersReducedMotion ? "0" : core);
 
   useEffect(() => {
-    if (!match || !inView || prefersReducedMotion) return;
+    if (!hasMatch || !inView || prefersReducedMotion) return;
     const controls = animate(0, target, {
       duration: 1.8,
       ease: [0.16, 1, 0.3, 1],
@@ -77,9 +85,10 @@ function HeroStatValue({ value }: { value: string | number }) {
       },
     });
     return () => controls.stop();
-  }, [inView, target, decimals, grouped, prefersReducedMotion, match]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView, target, decimals, grouped, prefersReducedMotion]);
 
-  if (!match) return <span ref={ref}>{raw}</span>;
+  if (!hasMatch) return <span ref={ref}>{raw}</span>;
   return (
     <span ref={ref} className="tabular-nums" aria-label={raw}>
       {prefix}{display}{suffix}
@@ -176,48 +185,43 @@ export function FilmHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, tit
             playsInline
             preload="none"
             className="absolute inset-0 h-full w-full object-cover"
+            style={{ transform: 'scale(1.35)', transformOrigin: 'center center' }}
           >
             <source src={videoSrc} type="video/mp4" />
           </video>
         )}
       </motion.div>
 
-      {/* Double-layered original-style gradients customized for the Film page */}
+      {/* Black fade from top — reduced intensity */}
       <div 
         className="absolute inset-0 pointer-events-none z-[1]" 
-        style={{ 
-          background: 'linear-gradient(to top, #0C0907 0%, transparent 50%, rgba(0, 0, 0, 0.75) 100%)' 
-        }} 
+        style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 18%, transparent 50%)' }} 
       />
-      <div 
-        className="absolute inset-0 pointer-events-none z-[1] opacity-80" 
-        style={{ 
-          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 0%, transparent 50%, #0C0907 100%)' 
-        }} 
-      />
+      {/* Radial edge vignette */}
       <div 
         className="absolute inset-0 pointer-events-none z-[1]" 
-        style={{ 
-          background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.7) 100%)' 
-        }} 
+        style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%)' }} 
+      />
+      {/* Brown bottom fade */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 pointer-events-none z-[2]" 
+        style={{ height: '35%', background: 'linear-gradient(to top, #0C0907 0%, #0C0907 10%, transparent 100%)' }} 
       />
 
       <motion.div
         style={{ opacity }}
-        className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-end px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28"
+        className="relative z-10 flex min-h-[60dvh] flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto w-full"
       >
-        <div className="grid grid-cols-1 gap-y-12 lg:grid-cols-12 lg:gap-x-12 lg:gap-y-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 lg:items-start pt-8">
           <div className="lg:col-span-8">
             <motion.p
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: {},
-                visible: { transition: { staggerChildren: 0.04 } }
-              }}
-              className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923]/95 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="macro-eyebrow mb-6"
+              style={{ textShadow: "0px 2px 10px rgba(0,0,0,0.8)" }}
             >
-              <DecodeText text={eyebrow} />
+              <DecodeText text={eyebrow} delay={0.25} />
             </motion.p>
 
             {prefersReducedMotion ? (
