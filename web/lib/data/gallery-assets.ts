@@ -952,7 +952,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "Culture/Magazines/TIME/Time magazine covers 80's.jpg", src: asset0207 },
   { path: "Culture/Magazines/TIME/Time magazine covers 90's.jpg", src: asset0208 },
   { path: "Culture/Movie Posters/Blade Runner 1982 cinematic neo-noir poster.jpg", src: asset0209 },
-  { path: "Culture/Movie Posters/Bruce Springsteen Born in the U.S.A. 1984 denim flag cover.jpg", src: asset0210 },
+  { path: "Culture/Album Covers/Bruce Springsteen Born in the U.S.A. 1984 denim flag cover.jpg", src: asset0210 },
   { path: "Culture/Movie Posters/Goodfellas 1990 classic Scorsese high-contrast font poster.jpg", src: asset0211 },
   { path: "Culture/Movie Posters/Interstellar 2014 cinematic IMAX ice planet poster.jpg", src: asset0212 },
   { path: "Culture/Movie Posters/Jaws 1975 minimalist shark composition poster.jpg", src: asset0213 },

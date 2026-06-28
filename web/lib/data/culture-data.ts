@@ -734,7 +734,6 @@ export const CULTURE_MEDIA_WALL_IMAGES = [
   "/images/culture/Iconic Things/Flos-V8-Cafe-Neon-Sign-At-Dusk-In-Cars-Land-Disney-California-Adventure.jpg",
   "/images/culture/Iconic Things/Wall St Sign on street pole.jpg",
   "/images/culture/Movie Posters/Saving Private Ryan 1998 gritty military cinematic poster.jpg",
-  "/images/culture/Movie Posters/Bruce Springsteen Born in the U.S.A. 1984 denim flag cover.jpg",
   "/images/culture/Movie Posters/Interstellar 2014 cinematic IMAX ice planet poster.jpg",
   "/images/culture/Movie Posters/Blade Runner 1982 cinematic neo-noir poster.jpg",
   "/images/culture/Movie Posters/Marvel Avengers Endgame cinematic theatrical poster.jpg",
@@ -1508,7 +1507,6 @@ const ENGLISH_LANGUAGE_RO: CultureEnglishLanguageData = {
 export function getCultureEnglishLanguage(locale: Locale): CultureEnglishLanguageData {
   return locale === "ro" ? ENGLISH_LANGUAGE_RO : ENGLISH_LANGUAGE_EN;
 }
-
 
 
 
