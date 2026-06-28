@@ -378,7 +378,7 @@ import asset0374 from "@/IMAGES/Housing/nature in suburb spring.jpeg";
 import asset0375 from "@/IMAGES/Housing/nature in suburb winter.jpeg";
 import asset0376 from "@/IMAGES/Housing/nature in suburb.jpeg";
 import asset0377 from "@/IMAGES/Housing/New homes in suburbia, in Urbandale, Iowa, a suburb on the northwest side of Des Moines.jpg";
-import asset0378 from "@/IMAGES/Housing/quality-of-life-house.jpg";
+import asset0378 from "@/IMAGES/Housing/Charming suburban house with front porch, landscaping, and white facade.jpg";
 import asset0379 from "@/IMAGES/Housing/Suburb in Indiana Autumn 2.jpeg";
 import asset0380 from "@/IMAGES/Housing/Suburb in Indiana Autumn 3.jpeg";
 import asset0381 from "@/IMAGES/Housing/Suburb in Indiana Autumn 4.jpeg";
@@ -1128,7 +1128,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "Housing/nature in suburb winter.jpeg", src: asset0375 },
   { path: "Housing/nature in suburb.jpeg", src: asset0376 },
   { path: "Housing/New homes in suburbia, in Urbandale, Iowa, a suburb on the northwest side of Des Moines.jpg", src: asset0377 },
-  { path: "Housing/quality-of-life-house.jpg", src: asset0378 },
+  { path: "Housing/quality-of-life-house.jpg", src: asset0369 },
   { path: "Housing/Suburb in Indiana Autumn 2.jpeg", src: asset0379 },
   { path: "Housing/Suburb in Indiana Autumn 3.jpeg", src: asset0380 },
   { path: "Housing/Suburb in Indiana Autumn 4.jpeg", src: asset0381 },

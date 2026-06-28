@@ -261,7 +261,7 @@ export const VIDEO_PREVIEWS = [
     description:
       "A quiet walk through the tree-lined streets and suburbs that define everyday American life.",
     youtubeId: "rVrhikMug3A",
-    thumbnailSrc: SITE_IMAGES.housing.qolHouse,
+    thumbnailSrc: SITE_IMAGES.housing.frontPorch,
     thumbnailAlt: "A walk through an American suburban neighborhood",
     duration: "1:30:00",
     category: "Everyday",
@@ -373,7 +373,7 @@ export const GALLERY_PREVIEW_IMAGES = [
   },
   {
     id: "suburb-house",
-    src: SITE_IMAGES.housing.qolHouse,
+    src: SITE_IMAGES.housing.frontPorch,
     alt: "Traditional American coastal-style suburban home with a broad green lawn",
     caption: "American Suburbia",
     description:

@@ -104,7 +104,7 @@ import housingChicagoSuburb from "@/IMAGES/Housing/Homes in Chicago suburb of Ri
 import housingIowaSuburb from "@/IMAGES/Housing/New homes in suburbia, in Urbandale, Iowa, a suburb on the northwest side of Des Moines.jpg";
 import housingIndianaAutumn from "@/IMAGES/Housing/Suburb in Indiana Autumn.jpeg";
 import housingSuburbSpring from "@/IMAGES/Housing/nature in suburb spring.jpeg";
-import housingQolHouse from "@/IMAGES/Housing/quality-of-life-house.jpg";
+import housingGlendalePools from "@/IMAGES/Housing/Aerial view of homes with pools in suburb Glendale, Arizona.jpg";
 import grocerySafewayProduce from "@/IMAGES/Quality of Life/Grocery Store/produce department Safeway store, Foster City CA.jpg";
 import texasMedicalCenter from "@/IMAGES/Quality of Life/Texas Medical Center Houston Aerial.jpg";
 import virginiaLibrary from "@/IMAGES/Constitution/virginia-commonwealth-university-libraries-A4GofghogeQ-unsplash.jpg";
@@ -939,7 +939,8 @@ export const SITE_IMAGES = {
     iowaSuburb: housingIowaSuburb.src,
     indianaAutumn: housingIndianaAutumn.src,
     suburbSpring: housingSuburbSpring.src,
-    qolHouse: housingQolHouse.src,
+    qolHouse: housingFrontPorch.src,
+    glendalePools: housingGlendalePools.src,
   },
 
   grocery: {
