@@ -220,19 +220,14 @@ export const NAV_SECTIONS = [
     badge: "Global Culture",
     items: [
       {
-        label: "Film & Storytelling",
-        href: "/culture/film-and-storytelling",
-        description: "Hollywood and the syntax of human dreaming",
+        label: "Film & Entertainment",
+        href: "/culture/entertainment",
+        description: "Hollywood, Netflix, Disney, and the global attention machine",
       },
       {
         label: "Sports",
         href: "/culture/sports",
         description: "NFL, NBA, MLB, and the soft-power of sports",
-      },
-      {
-        label: "Entertainment",
-        href: "/culture/entertainment",
-        description: "Netflix, Disney, and the global attention machine",
       },
       {
         label: "Companies & Brands",
@@ -732,17 +727,13 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "America nu a construit doar o națiune — a construit cultura globală",
     badge: "Cultură Globală",
     items: {
-      "/culture/film-and-storytelling": {
-        label: "Film și Narativă",
-        description: "Hollywood și sintaxa viselor umane",
+      "/culture/entertainment": {
+        label: "Film \u0026 Divertisment",
+        description: "Hollywood, Netflix, Disney și mașina globală de atenție",
       },
       "/culture/sports": {
         label: "Sport",
         description: "NFL, NBA, MLB și soft power-ul sportului",
-      },
-      "/culture/entertainment": {
-        label: "Divertisment",
-        description: "Netflix, Disney și mașina globală de atenție",
       },
       "/culture/companies-brands": {
         label: "Companii și Branduri",

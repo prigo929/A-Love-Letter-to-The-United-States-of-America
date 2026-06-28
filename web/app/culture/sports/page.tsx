@@ -37,8 +37,8 @@ export default async function CultureSportsPage() {
       ? "Stadioanele americane nu sunt doar locuri de joc — ele sunt temple ale identității naționale, capabile să coaguleze 100.000 de oameni sub același steag în orice weekend."
       : "American stadiums are not merely venues — they are cathedrals of national identity, capable of gathering 100,000 people under the same flag on any given weekend.",
     definingMoments: isRo ? "MOMENTELE DEFINITORII" : "DEFINING MOMENTS",
-    backLink: isRo ? "← Înapoi la Film și Narativă" : "← Back to Film & Storytelling",
-    nextLink: isRo ? "Divertisment și Media →" : "Entertainment & Media →",
+    backLink: isRo ? "← Înapoi la Film & Divertisment" : "← Back to Film & Entertainment",
+    nextLink: isRo ? "Companii și Branduri →" : "Companies & Brands →",
   };
 
   const pillars = [
@@ -501,8 +501,8 @@ export default async function CultureSportsPage() {
           </div>
 
           <div className="flex items-center justify-between border-t border-white/10 pt-12 font-body">
-            <a href="/culture/film-and-storytelling" className="text-xs uppercase tracking-widest text-[#F5EDD8]/50 hover:text-white transition-colors">{content.backLink}</a>
-            <a href="/culture/entertainment" className="text-xs uppercase tracking-widest text-glory-gold hover:text-white transition-colors">{content.nextLink}</a>
+            <a href="/culture/entertainment" className="text-xs uppercase tracking-widest text-[#F5EDD8]/50 hover:text-white transition-colors">{content.backLink}</a>
+            <a href="/culture/companies-brands" className="text-xs uppercase tracking-widest text-glory-gold hover:text-white transition-colors">{content.nextLink}</a>
           </div>
         </div>
 

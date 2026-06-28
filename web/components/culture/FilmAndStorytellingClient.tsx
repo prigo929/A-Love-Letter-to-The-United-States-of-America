@@ -31,12 +31,18 @@ interface FilmAndStorytellingClientProps {
     body: string;
     stats: Array<{ value: string; label: string }>;
   };
+  /** When true (default), renders the MacroHero, CultureStyles, MacroStyles header */
+  showHero?: boolean;
+  /** When true (default), renders the bottom back/next nav links */
+  showBottomNav?: boolean;
 }
 
 export function FilmAndStorytellingClient({
   filmImages,
   isRo = false,
   hollywoodData,
+  showHero = true,
+  showBottomNav = true,
 }: FilmAndStorytellingClientProps) {
   const [selectedMovie, setSelectedMovie] = useState<GalleryImage | null>(null);
 
@@ -401,69 +407,75 @@ export function FilmAndStorytellingClient({
   };
 
   return (
-    <div className="culture-bg text-[#F5EDD8] min-h-screen relative overflow-hidden">
-      <CultureStyles />
-      <MacroStyles />
+    <div className={showHero ? "culture-bg text-[#F5EDD8] min-h-screen relative overflow-hidden" : "text-[#F5EDD8] relative overflow-hidden"}>
+      {showHero && <CultureStyles />}
+      {showHero && <MacroStyles />}
 
-      {/* ── Cinematic Hero (dark) ─────────────────────────────────────── */}
-      <MacroHero
-        eyebrow={hollywoodData.eyebrow}
-        titleLead={hollywoodData.headline}
-        titleAccent=""
-        description={isRo
-          ? "Hollywood-ul a generat codul vizual prin care întreaga planetă își spune poveștile, își expune valorile și își imaginează viitorul."
-          : "Hollywood generated the visual syntax through which the entire planet tells its stories, projects its values, and dreams of the future."}
-        imageSrc={SITE_IMAGES.culture.hollywoodSign}
-        imageAlt="Hollywood sign sunset"
-        stats={hollywoodData.stats.map((s) => ({ value: s.value, label: s.label }))}
-      />
+      {/* ── Cinematic Hero (dark) — only shown when standalone ────────── */}
+      {showHero && (
+        <MacroHero
+          eyebrow={hollywoodData.eyebrow}
+          titleLead={hollywoodData.headline}
+          titleAccent=""
+          description={isRo
+            ? "Hollywood-ul a generat codul vizual prin care întreaga planetă își spune poveștile, își expune valorile și își imaginează viitorul."
+            : "Hollywood generated the visual syntax through which the entire planet tells its stories, projects its values, and dreams of the future."}
+          imageSrc={SITE_IMAGES.culture.hollywoodSign}
+          imageAlt="Hollywood sign sunset"
+          stats={hollywoodData.stats.map((s) => ({ value: s.value, label: s.label }))}
+        />
+      )}
 
-      {/* ── Editorial Thesis (dark) ───────────────────────────────────── */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-24">
-        <nav
-          aria-label={isRo ? "Fir de navigare" : "Breadcrumb"}
-          className="flex items-center gap-1.5 font-body text-sm text-white/50 tracking-wide mb-14"
-        >
-          <Link href="/" className="hover:text-white transition-colors flex items-center">
-            <Home className="h-3.5 w-3.5" />
-          </Link>
-          <ChevronRight className="h-3 w-3 opacity-30 shrink-0" />
-          <Link href="/culture" className="hover:text-white transition-colors">
-            {isRo ? "Cultură" : "Culture"}
-          </Link>
-          <ChevronRight className="h-3 w-3 opacity-30 shrink-0" />
-          <span className="text-white font-medium">
-            {isRo ? "Film și Narativă" : "Film & Storytelling"}
-          </span>
-        </nav>
+      {/* ── Editorial Thesis + gradient — only when standalone ──────────── */}
+      {showHero && (
+        <>
+          <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-24">
+            <nav
+              aria-label={isRo ? "Fir de navigare" : "Breadcrumb"}
+              className="flex items-center gap-1.5 font-body text-sm text-white/50 tracking-wide mb-14"
+            >
+              <Link href="/" className="hover:text-white transition-colors flex items-center">
+                <Home className="h-3.5 w-3.5" />
+              </Link>
+              <ChevronRight className="h-3 w-3 opacity-30 shrink-0" />
+              <Link href="/culture" className="hover:text-white transition-colors">
+                {isRo ? "Cultură" : "Culture"}
+              </Link>
+              <ChevronRight className="h-3 w-3 opacity-30 shrink-0" />
+              <span className="text-white font-medium">
+                {isRo ? "Film & Divertisment" : "Film \u0026 Entertainment"}
+              </span>
+            </nav>
 
-        <div className="grid gap-12 lg:grid-cols-3 items-start">
-          <div className="lg:col-span-2">
-            <blockquote className="font-editorial text-2xl md:text-[2.1rem] italic text-[#F5EDD8]/95 leading-[1.4] mb-8 pl-6 border-l-2 border-[#E8391B]">
-              &ldquo;{hollywoodData.pullQuote}&rdquo;
-            </blockquote>
-            <p className="font-editorial text-lg text-[#F5EDD8]/70 leading-relaxed">
-              {hollywoodData.body}
-            </p>
-          </div>
-          <div className="culture-glass rounded-2xl p-6 border border-white/5 space-y-6 relative overflow-hidden group">
-            <div className="absolute inset-0 bg-linear-to-b from-glory-gold/2 to-transparent pointer-events-none" />
-            {hollywoodData.stats.map((stat, idx) => (
-              <div key={idx} className="border-b border-white/5 pb-4 last:border-0 last:pb-0 relative z-10">
-                <div className="font-macro-display text-4xl font-bold text-white tracking-tight group-hover:text-glory-gold transition-colors duration-300">
-                  {stat.value}
-                </div>
-                <div className="text-xs text-glory-gold uppercase tracking-wider mt-1 font-body">
-                  {stat.label}
-                </div>
+            <div className="grid gap-12 lg:grid-cols-3 items-start">
+              <div className="lg:col-span-2">
+                <blockquote className="font-editorial text-2xl md:text-[2.1rem] italic text-[#F5EDD8]/95 leading-[1.4] mb-8 pl-6 border-l-2 border-[#E8391B]">
+                  &ldquo;{hollywoodData.pullQuote}&rdquo;
+                </blockquote>
+                <p className="font-editorial text-lg text-[#F5EDD8]/70 leading-relaxed">
+                  {hollywoodData.body}
+                </p>
               </div>
-            ))}
+              <div className="culture-glass rounded-2xl p-6 border border-white/5 space-y-6 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-linear-to-b from-glory-gold/2 to-transparent pointer-events-none" />
+                {hollywoodData.stats.map((stat, idx) => (
+                  <div key={idx} className="border-b border-white/5 pb-4 last:border-0 last:pb-0 relative z-10">
+                    <div className="font-macro-display text-4xl font-bold text-white tracking-tight group-hover:text-glory-gold transition-colors duration-300">
+                      {stat.value}
+                    </div>
+                    <div className="text-xs text-glory-gold uppercase tracking-wider mt-1 font-body">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      {/* ── Transition: dark → cream ──────────────────────────────────── */}
-      <div className="h-16 w-full gradient-dark-to-cream" />
+          {/* Transition: dark → cream */}
+          <div className="h-16 w-full gradient-dark-to-cream" />
+        </>
+      )}
 
       {/* ── CREAM FEATURE: The Cinematic Epochs ───────────────────────── */}
       <section className="relative culture-cream-bg text-[#0C0907] py-24 md:py-32 overflow-hidden">
@@ -789,15 +801,17 @@ export function FilmAndStorytellingClient({
           </div>
         </section>
 
-        {/* Bottom Navigation */}
-        <div className="flex items-center justify-between border-t border-white/10 pt-12 mt-20 font-body">
-          <a href="/culture/overview" className="text-xs uppercase tracking-widest text-[#F5EDD8]/50 hover:text-white transition-colors">
-            {content.backLink}
-          </a>
-          <a href="/culture/sports" className="text-xs uppercase tracking-widest text-glory-gold hover:text-white transition-colors">
-            {content.nextLink}
-          </a>
-        </div>
+        {/* Bottom Navigation — only shown when standalone */}
+        {showBottomNav && (
+          <div className="flex items-center justify-between border-t border-white/10 pt-12 mt-20 font-body">
+            <a href="/culture/overview" className="text-xs uppercase tracking-widest text-[#F5EDD8]/50 hover:text-white transition-colors">
+              {content.backLink}
+            </a>
+            <a href="/culture/sports" className="text-xs uppercase tracking-widest text-glory-gold hover:text-white transition-colors">
+              {content.nextLink}
+            </a>
+          </div>
+        )}
       </div>
 
       {/* ── Poster Modal ──────────────────────────────────────────────── */}
