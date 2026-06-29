@@ -11,6 +11,7 @@ import { ConstitutionAurora, InkParticles } from "@/components/constitution/Cons
 import { PolicyLaboratory }     from "@/components/constitution/PolicyLaboratory";
 import { getServerLocale }      from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER }     from "@/lib/utils";
+import { SubpagePhotographs }   from "@/components/shared/SubpagePhotographs";
 
 export const metadata: Metadata = {
   title: "Federalism — Policy Laboratory | Constitution",
@@ -142,6 +143,14 @@ export default async function FederalismPage() {
             attribution={isRo ? "Judecătorul Louis Brandeis" : "Justice Louis Brandeis"}
             title={isRo ? "New State Ice Co. v. Liebmann, 1932" : "New State Ice Co. v. Liebmann, 1932"}
             variant="dark"
+          />
+
+          <SubpagePhotographs
+            subpage="federalism"
+            title={isRo ? "Mărturia Vizuală" : "The Visual Record"}
+            intro={isRo
+              ? "Statele drept laboratoare ale democrației — puterea rezervată guvernelor statale."
+              : "The states as laboratories of democracy — power reserved to the governments closest to the people."}
           />
 
           <div className="flex items-center justify-between border-t border-white/8 pt-8">

@@ -744,6 +744,38 @@ import conBillFederalist from "@/IMAGES/Constitution/Subpage/federalist-papers-t
 import conBillThomas from "@/IMAGES/Constitution/Subpage/clarence-thomas.jpg";
 import conBillRotunda from "@/IMAGES/Constitution/Subpage/charters-of-freedom-rotunda.jpg";
 
+// ── Subpage photographs: Constitution / Second Amendment ────────────────────
+import con2ndMinuteman from "@/IMAGES/Constitution/Subpage/minuteman-statue.jpg";
+import con2ndWinchester from "@/IMAGES/Constitution/Subpage/winchester-1873.jpg";
+import con2ndAthens from "@/IMAGES/Constitution/Subpage/battle-of-athens-tn.jpg";
+import con2ndGonzales from "@/IMAGES/Constitution/Subpage/come-and-take-it-flag.jpg";
+import con2ndOakley from "@/IMAGES/Constitution/Subpage/annie-oakley.jpg";
+import con2ndHeston from "@/IMAGES/Constitution/Subpage/charlton-heston.jpg";
+import con2ndLariots from "@/IMAGES/Constitution/Subpage/la-riots-1992.jpg";
+import con2ndHeller from "@/IMAGES/Constitution/Subpage/dick-heller-scotus.jpg";
+
+// ── Subpage photographs: Constitution / Separation of Powers ────────────────
+import conSepFdr from "@/IMAGES/Constitution/Subpage/sep-fdr-court-packing.jpg";
+import conSepSotu from "@/IMAGES/Constitution/Subpage/sep-state-of-union.jpg";
+import conSepScalia from "@/IMAGES/Constitution/Subpage/sep-scalia-hearings.jpg";
+import conSepLodge from "@/IMAGES/Constitution/Subpage/sep-lodge-league.jpg";
+import conSepCourt from "@/IMAGES/Constitution/Subpage/sep-supreme-court.jpg";
+import conSepNixon from "@/IMAGES/Constitution/Subpage/sep-nixon-resignation.jpg";
+
+// ── Subpage photographs: Constitution / First Amendment ─────────────────────
+import conFaMlk from "@/IMAGES/Constitution/Subpage/fa-mlk-dream.jpg";
+import conFaPress from "@/IMAGES/Constitution/Subpage/fa-printing-press.jpg";
+import conFaMarch from "@/IMAGES/Constitution/Subpage/fa-march-for-life.jpg";
+import conFaPentagon from "@/IMAGES/Constitution/Subpage/fa-pentagon-papers.jpg";
+import conFaPilgrims from "@/IMAGES/Constitution/Subpage/fa-pilgrims-plymouth.jpg";
+
+// ── Subpage photographs: Constitution / Federalism ──────────────────────────
+import conFedGuard from "@/IMAGES/Constitution/Subpage/fed-texas-guard-border.jpg";
+import conFedCapitol from "@/IMAGES/Constitution/Subpage/fed-texas-capitol.jpg";
+import conFedProhibition from "@/IMAGES/Constitution/Subpage/fed-repeal-prohibition.jpg";
+import conFedCoolidge from "@/IMAGES/Constitution/Subpage/fed-coolidge.jpg";
+import conFedGovernors from "@/IMAGES/Constitution/Subpage/fed-governors-2020.jpg";
+
 export type GalleryAssetRecord = {
   path: string;
   src: StaticImageData;
@@ -1491,6 +1523,30 @@ const RAW_GALLERY_ASSETS = [
   { path: "Constitution/Subpage/federalist-papers-title.jpg", src: conBillFederalist },
   { path: "Constitution/Subpage/clarence-thomas.jpg", src: conBillThomas },
   { path: "Constitution/Subpage/charters-of-freedom-rotunda.jpg", src: conBillRotunda },
+  { path: "Constitution/Subpage/minuteman-statue.jpg", src: con2ndMinuteman },
+  { path: "Constitution/Subpage/winchester-1873.jpg", src: con2ndWinchester },
+  { path: "Constitution/Subpage/battle-of-athens-tn.jpg", src: con2ndAthens },
+  { path: "Constitution/Subpage/come-and-take-it-flag.jpg", src: con2ndGonzales },
+  { path: "Constitution/Subpage/annie-oakley.jpg", src: con2ndOakley },
+  { path: "Constitution/Subpage/charlton-heston.jpg", src: con2ndHeston },
+  { path: "Constitution/Subpage/la-riots-1992.jpg", src: con2ndLariots },
+  { path: "Constitution/Subpage/dick-heller-scotus.jpg", src: con2ndHeller },
+  { path: "Constitution/Subpage/sep-fdr-court-packing.jpg", src: conSepFdr },
+  { path: "Constitution/Subpage/sep-state-of-union.jpg", src: conSepSotu },
+  { path: "Constitution/Subpage/sep-scalia-hearings.jpg", src: conSepScalia },
+  { path: "Constitution/Subpage/sep-lodge-league.jpg", src: conSepLodge },
+  { path: "Constitution/Subpage/sep-supreme-court.jpg", src: conSepCourt },
+  { path: "Constitution/Subpage/sep-nixon-resignation.jpg", src: conSepNixon },
+  { path: "Constitution/Subpage/fa-mlk-dream.jpg", src: conFaMlk },
+  { path: "Constitution/Subpage/fa-printing-press.jpg", src: conFaPress },
+  { path: "Constitution/Subpage/fa-march-for-life.jpg", src: conFaMarch },
+  { path: "Constitution/Subpage/fa-pentagon-papers.jpg", src: conFaPentagon },
+  { path: "Constitution/Subpage/fa-pilgrims-plymouth.jpg", src: conFaPilgrims },
+  { path: "Constitution/Subpage/fed-texas-guard-border.jpg", src: conFedGuard },
+  { path: "Constitution/Subpage/fed-texas-capitol.jpg", src: conFedCapitol },
+  { path: "Constitution/Subpage/fed-repeal-prohibition.jpg", src: conFedProhibition },
+  { path: "Constitution/Subpage/fed-coolidge.jpg", src: conFedCoolidge },
+  { path: "Constitution/Subpage/fed-governors-2020.jpg", src: conFedGovernors },
 ] as const satisfies readonly GalleryAssetRecord[];
 
 export const GALLERY_ASSETS: readonly GalleryAssetRecord[] = Array.from(

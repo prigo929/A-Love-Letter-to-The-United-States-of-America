@@ -13,6 +13,7 @@ import { QuoteBlock }       from "@/components/sections/QuoteBlock";
 import { ConstitutionAurora, InkParticles, SeparationDiagram } from "@/components/constitution/ConstitutionAnimations";
 import { getServerLocale }  from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
+import { SubpagePhotographs } from "@/components/shared/SubpagePhotographs";
 import { POWERS_CHECK_EXAMPLES } from "@/lib/data/constitution-data";
 
 export const metadata: Metadata = {
@@ -212,6 +213,14 @@ export default async function SeparationOfPowersPage() {
           <QuoteBlock
             quote={isRo ? "\"Dacă oamenii ar fi îngeri, nu ar fi necesar niciun guvern. Dacă îngerii ar guverna oamenii, nu ar fi necesare controale externe sau interne ale guvernului.\"" : "\"If men were angels, no government would be necessary. If angels were to govern men, neither external nor internal controls on government would be necessary.\""}
             attribution="James Madison" title={isRo ? "Federalistul Nr. 51, 1788" : "Federalist No. 51, 1788"} variant="dark"
+          />
+
+          <SubpagePhotographs
+            subpage="separation-of-powers"
+            title={isRo ? "Mărturia Vizuală" : "The Visual Record"}
+            intro={isRo
+              ? "Cele trei ramuri în acțiune — momentele în care controalele și echilibrele s-au dovedit reale."
+              : "The three branches in action — the moments when checks and balances proved real."}
           />
 
           <div className="flex items-center justify-between border-t border-white/8 pt-8">

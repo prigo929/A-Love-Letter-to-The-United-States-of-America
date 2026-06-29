@@ -13,6 +13,7 @@ import { QuoteBlock }     from "@/components/sections/QuoteBlock";
 import { ConstitutionAurora, InkParticles } from "@/components/constitution/ConstitutionAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
+import { SubpagePhotographs } from "@/components/shared/SubpagePhotographs";
 
 export const metadata: Metadata = {
   title: "First Amendment | Constitution",
@@ -241,6 +242,14 @@ export default async function FirstAmendmentPage() {
             attribution="Justice Robert Jackson"
             title={isRo ? "West Virginia State Board of Education v. Barnette, 1943" : "West Virginia State Board of Education v. Barnette, 1943"}
             variant="dark"
+          />
+
+          <SubpagePhotographs
+            subpage="first-amendment"
+            title={isRo ? "Mărturia Vizuală" : "The Visual Record"}
+            intro={isRo
+              ? "Cuvânt, presă, credință și adunare — cele cinci libertăți ale Primului Amendament în acțiune."
+              : "Speech, press, faith, and assembly — the five freedoms of the First Amendment in action."}
           />
 
           <div className="flex items-center justify-between border-t border-white/8 pt-8">

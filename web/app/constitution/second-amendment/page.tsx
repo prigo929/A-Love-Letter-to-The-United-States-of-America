@@ -13,6 +13,7 @@ import { QuoteBlock }      from "@/components/sections/QuoteBlock";
 import { ConstitutionAurora, InkParticles } from "@/components/constitution/ConstitutionAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
+import { SubpagePhotographs } from "@/components/shared/SubpagePhotographs";
 
 export const metadata: Metadata = {
   title: "Second Amendment | Constitution",
@@ -267,6 +268,14 @@ export default async function SecondAmendmentPage() {
             attribution={isRo ? "Judecătorul Antonin Scalia" : "Justice Antonin Scalia"}
             title={isRo ? "District of Columbia v. Heller, 2008" : "District of Columbia v. Heller, 2008"}
             variant="dark"
+          />
+
+          <SubpagePhotographs
+            subpage="second-amendment"
+            title={isRo ? "Mărturia Vizuală" : "The Visual Record"}
+            intro={isRo
+              ? "De la Minutemen la Heller — armele, oamenii și momentele din spatele Amendamentului II."
+              : "From the Minutemen to Heller — the arms, people, and moments behind the Second Amendment."}
           />
 
           <div className="flex items-center justify-between border-t border-white/8 pt-8">
