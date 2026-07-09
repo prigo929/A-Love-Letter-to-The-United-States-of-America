@@ -1175,6 +1175,12 @@ function getCategory(path: string): Exclude<GalleryCategory, "All"> {
   if (first === "University") {
     return "Education";
   }
+  if (first === "Nature") {
+    return "Landscapes";
+  }
+  if (first === "Tech & Commerce") {
+    return "Technology";
+  }
   return first as Exclude<GalleryCategory, "All">;
 }
 

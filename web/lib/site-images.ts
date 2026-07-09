@@ -473,6 +473,8 @@ import fashionCowboyBoots from "@/IMAGES/Culture/Fashion/Cowboy boots girl sitti
 import fashionLittleCowboy from "@/IMAGES/Culture/Fashion/Little cowboy wearing wranglers watching a horse.jpg";
 import fashionRalphLaurenStore from "@/IMAGES/Culture/Fashion/Ralph Lauren Retail Store Interior Featuring Preppy Nautical Apparel On Mannequins And Racks.jpg";
 import fashionCowboyBootsLasso from "@/IMAGES/Culture/Fashion/Worn Square Toe Leather Cowboy Boots With Coiled Lasso Rope And Woven Straw Hat.jpg";
+import fashionSneakerNike from "@/IMAGES/Culture/Fashion/Black Sneakers Nike Air Force 1 Low with US Flag under them.jpg";
+import fashionSupremeGirl from "@/IMAGES/Culture/Fashion/Girl wearing Supreme clothing streetwear.jpg";
 
 // Landscapes — Nashville
 import nashvilleSkyline from "@/IMAGES/Landscapes/Downtown Nashville Tennesse.jpg";
@@ -764,6 +766,8 @@ export const SITE_IMAGES = {
     fashionJeansSneakers: fashionJeansSneakers.src,
     dinerInside: dinerInside.src,
     speakeasyDesign: speakeasyDesign.src,
+    fashionSneakerNike: fashionSneakerNike.src,
+    fashionSupremeGirl: fashionSupremeGirl.src,
 
     vaultBladeRunner: vaultBladeRunner.src,
     vaultGoodfellas: vaultGoodfellas.src,

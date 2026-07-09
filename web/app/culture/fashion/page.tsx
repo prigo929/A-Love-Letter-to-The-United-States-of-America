@@ -48,8 +48,8 @@ export default async function CultureFashionPage() {
     {
       title: isRo ? "Sneaker Culture" : "Sneaker Culture",
       subtitle: isRo ? "De la Teren la Runway" : "From Court to Catwalk",
-      image: SITE_IMAGES.culture.classicCar,
-      alt: "Classic car and neon lights reflecting Americana culture",
+      image: SITE_IMAGES.culture.fashionSneakerNike,
+      alt: "Black Sneakers Nike Air Force 1 Low with US Flag under them",
       desc: isRo
         ? "Air Jordan, Chuck Taylor All-Star și Adidas Superstar — pantofii sport americani au redefint luxul urban și identitatea culturală a generațiilor întregi."
         : "Air Jordan, Chuck Taylor All-Star, and Adidas Superstar — American athletic shoes redefined urban luxury and the cultural identity of entire generations.",
@@ -57,8 +57,8 @@ export default async function CultureFashionPage() {
     {
       title: isRo ? "Streetwear" : "Streetwear",
       subtitle: isRo ? "Rebeliunea Stradală Globalizată" : "Globalized Street Rebellion",
-      image: SITE_IMAGES.culture.flosV8,
-      alt: "Flo's V8 Cafe neon sign at dusk",
+      image: SITE_IMAGES.culture.fashionSupremeGirl,
+      alt: "Girl wearing Supreme clothing streetwear",
       desc: isRo
         ? "Supreme, Off-White și BAPE au transformat cultura stradală în industrie globală de miliarde. Streetwear-ul a democratizat moda de lux și a distrus barierele sociale ale couture-ului tradițional."
         : "Supreme, Off-White, and BAPE transformed street culture into a billion-dollar global industry. Streetwear democratized luxury fashion and demolished the social barriers of traditional couture.",
