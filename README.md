@@ -1789,6 +1789,11 @@ The Military vertical provides a comprehensive, interactive dossier tracking the
 - **Three-Legged Deterrence Simulator**: Interactive vector triangle mapping silo, bomber (B-2, B-21), and ballistic submarine (Ohio, Columbia class) readiness states.
 - **Five Eyes Intelligence Geometry**: Interactive visualization outlining intelligence-sharing interfaces (NSA, CIA, GCHQ, etc.) alongside chronological failures and agency scope profiles.
 
+### 3. Global Bases & Logistics Command
+- **Global Command Map**: An SVG-driven world projection mapping domestic hubs, overseas bases, and regional theater operational sectors.
+- **Base Dossier Drawers**: Classified dossier panels detailing coordinates, branch command, mission summaries, and infrastructure capability metrics for 23 strategic installations.
+- **Alliance & Force Multipliers**: Integrated details detailing the logistics backbone of TRANSCOM, AMC, SDDC, and AUKUS/NATO collective security networks.
+
 ---
 
 > *“To be prepared for war is one of the most effectual means of preserving peace.”*  
