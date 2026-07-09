@@ -454,9 +454,9 @@ export const NAV_SECTIONS = [
         description: "WWII mobilization and industrial supremacy",
       },
       {
-        label: "WW2 in History",
-        href: "/history/world-war-ii",
-        description: "Military history, major campaigns, and strategic victories",
+        label: "WWII",
+        href: "/history/wwii",
+        description: "The United States of America during World War II",
       },
       {
         label: "Cold War",
@@ -921,9 +921,9 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
         label: "Arsenalul Democrației",
         description: "Mobilizarea în al Doilea Război Mondial și supremația industrială",
       },
-      "/history/world-war-ii": {
-        label: "al Doilea Război Mondial în Istorie",
-        description: "Istoria militară, marile campanii și victoriile strategice",
+      "/history/wwii": {
+        label: "al Doilea Război Mondial",
+        description: "Statele Unite ale Americii în timpul celui de-al Doilea Război Mondial",
       },
       "/history/cold-war-and-anti-communism": {
         label: "Războiul Rece",

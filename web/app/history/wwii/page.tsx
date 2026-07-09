@@ -5,19 +5,19 @@ import { THEMATIC_HISTORY_DATA } from "@/lib/data/history-thematic-data";
 import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
 
 export const metadata: Metadata = {
-  title: "WW2 in History | Patriotic USA",
+  title: "The United States of America during World War II | Patriotic USA",
   description: "Military history of the United States during World War II, major campaigns, and strategic victories.",
 };
 
-export default async function WorldWarIIPage() {
+export default async function WWIIHistoryPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
-  const breadcrumbPage = locale === "ro" ? "al Doilea Război Mondial în Istorie" : "WW2 in History";
-  const topics = THEMATIC_HISTORY_DATA["world-war-ii"] || [];
+  const breadcrumbPage = locale === "ro" ? "al Doilea Război Mondial" : "WWII";
+  const topics = THEMATIC_HISTORY_DATA["wwii"] || [];
 
   const title = {
-    en: "WW2 in History",
-    ro: "al Doilea Război Mondial în Istorie",
+    en: "The United States of America during World War II",
+    ro: "Statele Unite ale Americii în timpul celui de-al Doilea Război Mondial",
   };
 
   const description = {
@@ -38,7 +38,7 @@ export default async function WorldWarIIPage() {
       </div>
       <ThematicSubpageClient
         locale={locale}
-        subpageId="world-war-ii"
+        subpageId="wwii"
         title={title}
         description={description}
         topics={topics}

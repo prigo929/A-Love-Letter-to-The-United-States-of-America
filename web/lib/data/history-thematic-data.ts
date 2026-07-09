@@ -8185,10 +8185,10 @@ export const THEMATIC_HISTORY_DATA: Record<string, ThematicTopic[]> = {
       ],
     },
   ],
-  "world-war-ii": [
+  "wwii": [
     {
       id: "World_War_II_In_History",
-      title: { en: "WW2 in History", ro: "al Doilea Război Mondial în Istorie" },
+      title: { en: "The United States of America during World War II", ro: "Statele Unite ale Americii în timpul celui de-al Doilea Război Mondial" },
       sections: [
         {
           heading: { en: "Pre-War Context and Entry into the War", ro: "Contextul antebelic și intrarea în război" },
