@@ -454,6 +454,11 @@ export const NAV_SECTIONS = [
         description: "WWII mobilization and industrial supremacy",
       },
       {
+        label: "WW2 in History",
+        href: "/history/world-war-ii",
+        description: "Military history, major campaigns, and strategic victories",
+      },
+      {
         label: "Cold War",
         href: "/history/cold-war-and-anti-communism",
         description: "Containment and collapse of the USSR",
@@ -915,6 +920,10 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "/history/arsenal-of-democracy": {
         label: "Arsenalul Democrației",
         description: "Mobilizarea în al Doilea Război Mondial și supremația industrială",
+      },
+      "/history/world-war-ii": {
+        label: "al Doilea Război Mondial în Istorie",
+        description: "Istoria militară, marile campanii și victoriile strategice",
       },
       "/history/cold-war-and-anti-communism": {
         label: "Războiul Rece",
