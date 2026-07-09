@@ -465,9 +465,9 @@ export const NAV_SECTIONS = [
         description: "The Great Depression, the New Deal, and the Great Migrations",
       },
       {
-        label: "World War II",
-        href: "/history/wwii",
-        description: "From the Arsenal of Democracy to total victory",
+        label: "The World Wars",
+        href: "/history/world-wars",
+        description: "WWI, WWII, and the Arsenal of Democracy",
       },
       {
         label: "Cold War",
@@ -914,9 +914,9 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
         label: "Ascensiunea Industrială",
         description: "Dezvoltarea capitalismului american și a antreprenoriatului",
       },
-      "/history/wwii": {
-        label: "Al Doilea Război Mondial",
-        description: "De la Arsenalul Democrației la victoria totală",
+      "/history/world-wars": {
+        label: "Războaiele Mondiale",
+        description: "Primul și al Doilea Război Mondial și Arsenalul Democrației",
       },
       "/history/american-dream": {
         label: "Visul American",

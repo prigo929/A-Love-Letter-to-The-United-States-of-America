@@ -72,18 +72,30 @@ export default function ThematicSubpageClient({
 
   useEffect(() => setMounted(true), []);
 
-  // Full-screen viewer: lock scroll and close on Escape.
+  // Full-screen viewer: lock scroll (html + body, compensating for the
+  // scrollbar so the page doesn't shift) and close on Escape.
   useEffect(() => {
     if (!lightbox) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setLightbox(null);
     };
     document.addEventListener("keydown", onKey);
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+
+    const html = document.documentElement;
+    const body = document.body;
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyOverflow = body.style.overflow;
+    const prevBodyPadding = body.style.paddingRight;
+    const scrollbarW = window.innerWidth - html.clientWidth;
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    if (scrollbarW > 0) body.style.paddingRight = `${scrollbarW}px`;
+
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prev;
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overflow = prevBodyOverflow;
+      body.style.paddingRight = prevBodyPadding;
     };
   }, [lightbox]);
 
@@ -360,17 +372,15 @@ export default function ThematicSubpageClient({
                     <X className="h-4 w-4 text-white" />
                   </button>
                 </div>
-                <div
-                  className="relative flex-1 cursor-zoom-out overflow-hidden px-4 pb-6"
-                  onClick={() => setLightbox(null)}
-                >
+                {/* Clicking the empty space around the image (or the backdrop)
+                    closes; clicking the image itself does not. */}
+                <div className="flex flex-1 cursor-zoom-out items-center justify-center overflow-hidden p-4">
                   <Image
                     src={lightbox.src}
                     alt={lightbox.caption}
-                    fill
-                    sizes="100vw"
+                    sizes="92vw"
                     quality={95}
-                    className="object-contain"
+                    className="h-auto max-h-[85vh] w-auto max-w-[92vw] cursor-default"
                     onClick={(e) => e.stopPropagation()}
                   />
                 </div>

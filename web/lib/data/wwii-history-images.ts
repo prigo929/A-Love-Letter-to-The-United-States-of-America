@@ -1,5 +1,5 @@
 // ─── WWII History Images ──────────────────────────────────────────────────────
-// Photographs woven into the /history/wwii deep-dive tabs. Keyed by
+// Photographs woven into the /history/world-wars deep-dive tabs. Keyed by
 // `${topicId}::${section.heading.en}` so ThematicSubpageClient can drop the right
 // figures into the right section across all five WWII topics.
 

@@ -6,28 +6,28 @@ import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
 import { getWwiiHistoryImages } from "@/lib/data/wwii-history-images";
 
 export const metadata: Metadata = {
-  title: "The United States of America during World War II | Patriotic USA",
-  description: "Military history of the United States during World War II, major campaigns, and strategic victories.",
+  title: "The World Wars | Patriotic USA",
+  description: "America and the World Wars — from the Great War and the Arsenal of Democracy to victory in World War II and the Manhattan Project.",
 };
 
-export default async function WWIIHistoryPage() {
+export default async function WorldWarsHistoryPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
-  const breadcrumbPage = locale === "ro" ? "al Doilea Război Mondial" : "WWII";
-  // World War II absorbs the former "Arsenal of Democracy" chapter as extra topics.
+  const breadcrumbPage = locale === "ro" ? "Războaiele Mondiale" : "The World Wars";
+  // Spans World War I, World War II, the Arsenal of Democracy, and military history.
   const topics = [
     ...(THEMATIC_HISTORY_DATA["wwii"] || []),
     ...(THEMATIC_HISTORY_DATA["arsenal-of-democracy"] || []),
   ];
 
   const title = {
-    en: "The United States of America during World War II",
-    ro: "Statele Unite ale Americii în timpul celui de-al Doilea Război Mondial",
+    en: "The World Wars",
+    ro: "Războaiele Mondiale",
   };
 
   const description = {
-    en: "Military history of the United States during World War II, major campaigns, and strategic victories.",
-    ro: "Istoria militară a Statelor Unite în timpul celui de-al Doilea Război Mondial, marile campanii și victoriile strategice.",
+    en: "America and the World Wars — from the Great War and the Arsenal of Democracy to victory in World War II and the Manhattan Project.",
+    ro: "America și Războaiele Mondiale — de la Marele Război și Arsenalul Democrației la victoria din al Doilea Război Mondial și Proiectul Manhattan.",
   };
 
   return (

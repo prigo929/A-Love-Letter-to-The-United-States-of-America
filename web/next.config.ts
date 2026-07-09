@@ -142,7 +142,8 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       // History section reorganization — preserve old URLs
-      { source: "/history/arsenal-of-democracy", destination: "/history/wwii", permanent: true },
+      { source: "/history/wwii", destination: "/history/world-wars", permanent: true },
+      { source: "/history/arsenal-of-democracy", destination: "/history/world-wars", permanent: true },
       { source: "/history/the-american-dream", destination: "/history/american-dream", permanent: true },
       { source: "/history/cold-war-and-anti-communism", destination: "/history/cold-war", permanent: true },
       { source: "/history/the-reagan-revolution", destination: "/history/reagan-revolution", permanent: true },

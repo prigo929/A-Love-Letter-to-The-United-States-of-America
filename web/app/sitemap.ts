@@ -110,7 +110,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/history/frontier-and-expansion",
     "/history/union-and-liberty",
     "/history/industrial-rise",
-    "/history/wwii",
+    "/history/world-wars",
     "/history/american-dream",
     "/history/cold-war",
     "/history/reagan-revolution",

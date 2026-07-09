@@ -83,7 +83,7 @@ const getIconForItem = (href: string) => {
   if (href.endsWith("frontier-and-expansion")) return <Compass className="w-5 h-5" />;
   if (href.endsWith("union-and-liberty")) return <Flag className="w-5 h-5" />;
   if (href.endsWith("industrial-rise")) return <TrendingUp className="w-5 h-5" />;
-  if (href.endsWith("wwii")) return <Swords className="w-5 h-5" />;
+  if (href.endsWith("world-wars")) return <Swords className="w-5 h-5" />;
   if (href.endsWith("american-dream")) return <Home className="w-5 h-5" />;
   if (href.endsWith("cold-war")) return <Globe className="w-5 h-5" />;
   if (href.endsWith("reagan-revolution")) return <Sun className="w-5 h-5" />;
