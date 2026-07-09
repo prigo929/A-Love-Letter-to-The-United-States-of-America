@@ -4,6 +4,10 @@
 // Plays a locally-hosted MP4 from /public/videos. Shows a poster/first-frame with
 // a play button; on click it starts playback and reveals native controls. Light
 // by default (preload="metadata") so a grid of these stays fast.
+//
+// Props:
+//   muted  – when true the video plays without audio (default: false).
+//            Set to true for ambient/background clips; false for speech/music.
 
 import { useRef, useState } from "react";
 import { Play } from "lucide-react";
@@ -13,6 +17,7 @@ interface LocalVideoCardProps {
   src: string;
   title: string;
   poster?: string;
+  muted?: boolean;
   aspectClassName?: string;
   className?: string;
 }
@@ -21,6 +26,7 @@ export function LocalVideoCard({
   src,
   title,
   poster,
+  muted = false,
   aspectClassName = "aspect-video",
   className,
 }: LocalVideoCardProps) {
@@ -29,7 +35,10 @@ export function LocalVideoCard({
 
   const start = () => {
     setStarted(true);
-    ref.current?.play().catch(() => {});
+    if (ref.current) {
+      ref.current.muted = muted;
+      ref.current.play().catch(() => {});
+    }
   };
 
   return (
@@ -45,6 +54,7 @@ export function LocalVideoCard({
         src={src}
         poster={poster}
         controls={started}
+        muted={muted}
         preload="metadata"
         playsInline
         className="absolute inset-0 h-full w-full object-cover"
