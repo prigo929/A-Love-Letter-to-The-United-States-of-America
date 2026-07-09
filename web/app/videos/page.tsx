@@ -150,7 +150,7 @@ export default async function VideosPage() {
           <div className="flex flex-col gap-y-16">
             {siteClips.map((clip) => (
               <div key={clip.src} className="flex flex-col">
-                <LocalVideoCard src={clip.src} poster={clip.poster} title={clip.title} />
+                <LocalVideoCard src={clip.src} poster={clip.poster} muted={clip.muted} title={clip.title} />
                 <div className="mt-4 flex flex-col md:flex-row md:items-start justify-between gap-4">
                   <div className="space-y-2">
                     <h3 className="font-display text-2xl md:text-3xl font-bold text-white">{clip.title}</h3>
