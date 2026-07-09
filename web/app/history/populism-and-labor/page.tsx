@@ -5,24 +5,24 @@ import { THEMATIC_HISTORY_DATA } from "@/lib/data/history-thematic-data";
 import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
 
 export const metadata: Metadata = {
-  title: "The Populist Era | Patriotic USA",
-  description: "The Tea Party, MAGA movement, and the working-class backlash to globalization.",
+  title: "Populism & Labor | Patriotic USA",
+  description: "The 1890s Populist movement and the rise of organized labor and industrial conflict.",
 };
 
-export default async function ThePopulistEraPage() {
+export default async function PopulismAndLaborPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
-  const breadcrumbPage = locale === "ro" ? "Era Populistă" : "The Populist Era";
-  const topics = THEMATIC_HISTORY_DATA["populist-era"] || [];
+  const breadcrumbPage = locale === "ro" ? "Populism și Muncă" : "Populism & Labor";
+  const topics = THEMATIC_HISTORY_DATA["populism-and-labor"] || [];
 
   const title = {
-    en: "The Populist Era",
-    ro: "Era Populistă",
+    en: "Populism & Labor",
+    ro: "Populism și Muncă",
   };
 
   const description = {
-    en: "The Tea Party, MAGA movement, and the working-class backlash to globalization.",
-    ro: "Mișcarea Tea Party, MAGA și reacția clasei muncitoare împotriva globalizării.",
+    en: "The 1890s Populist movement and the rise of organized labor and industrial conflict.",
+    ro: "Mișcarea populistă din anii 1890 și ascensiunea muncii organizate și a conflictului industrial.",
   };
 
   return (
@@ -38,7 +38,7 @@ export default async function ThePopulistEraPage() {
       </div>
       <ThematicSubpageClient
         locale={locale}
-        subpageId="populist-era"
+        subpageId="populism-and-labor"
         title={title}
         description={description}
         topics={topics}

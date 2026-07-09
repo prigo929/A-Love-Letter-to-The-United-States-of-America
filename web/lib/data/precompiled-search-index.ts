@@ -15184,7 +15184,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "First Great Awakening",
     "category": "History - Faith & Family",
     "description": "The First Great Awakening was a Protestant religious revival movement that unfolded across the British American colonies mainly from the 1730s to the 1740s, ...",
-    "href": "/history/faith-and-family#First_Great_Awakening",
+    "href": "/history/faith-and-reform#First_Great_Awakening",
     "keywords": [
       "first",
       "great",
@@ -15245,7 +15245,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "Second Great Awakening",
     "category": "History - Faith & Family",
     "description": "The Second Great Awakening was a Protestant evangelical revival movement that swept through the United States from the late 1790s to the mid-1840s, character...",
-    "href": "/history/faith-and-family#Second_Great_Awakening",
+    "href": "/history/faith-and-reform#Second_Great_Awakening",
     "keywords": [
       "second",
       "great",
@@ -15411,7 +15411,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "Prohibition Era",
     "category": "History - Faith & Family",
     "description": "Prohibition in the United States was a constitutional ban on the production, importation, transportation, and sale of alcoholic beverages, enacted via the Ei...",
-    "href": "/history/faith-and-family#Prohibition_in_the_United_States",
+    "href": "/history/faith-and-reform#Prohibition_in_the_United_States",
     "keywords": [
       "prohibition",
       "era",
@@ -15620,7 +15620,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Great Migration",
     "category": "History - Borders & Identity",
     "description": "The Great Migration refers to the large-scale relocation of approximately six million African Americans from the rural Southern United States to urban center...",
-    "href": "/history/border-sovereignty#Great_Migration_African_American",
+    "href": "/history/crisis-and-resilience#Great_Migration_African_American",
     "keywords": [
       "the",
       "great",
@@ -15675,7 +15675,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Second Great Migration",
     "category": "History - Borders & Identity",
     "description": "The Second Great Migration refers to the movement of approximately five million African Americans from the rural South to cities in the North, Midwest, and W...",
-    "href": "/history/border-sovereignty#Second_Great_Migration_African_American",
+    "href": "/history/crisis-and-resilience#Second_Great_Migration_African_American",
     "keywords": [
       "the",
       "second",
@@ -15749,7 +15749,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The New Great Migration",
     "category": "History - Borders & Identity",
     "description": "The New Great Migration is the demographic reversal in which African Americans have increasingly relocated from the Northeast, Midwest, and West back to the ...",
-    "href": "/history/border-sovereignty#New_Great_Migration",
+    "href": "/history/crisis-and-resilience#New_Great_Migration",
     "keywords": [
       "the",
       "new",
@@ -15811,7 +15811,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Great Depression",
     "category": "History - Borders & Identity",
     "description": "The Great Depression in the United States was a severe and extended economic contraction that originated with the Wall Street stock market crash of October 1...",
-    "href": "/history/border-sovereignty#Great_Depression_in_the_United_States",
+    "href": "/history/crisis-and-resilience#Great_Depression_in_the_United_States",
     "keywords": [
       "the",
       "great",
@@ -15904,7 +15904,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The New Deal",
     "category": "History - Borders & Identity",
     "description": "The New Deal consisted of federal programs, public works projects, financial reforms, and regulations enacted by President Franklin D.",
-    "href": "/history/border-sovereignty#New_Deal",
+    "href": "/history/crisis-and-resilience#New_Deal",
     "keywords": [
       "the",
       "new",
@@ -16103,7 +16103,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "1970s Energy Crisis",
     "category": "History - Borders & Identity",
     "description": "The 1970s energy crisis consisted of two major episodes of acute petroleum supply shortfalls and price spikes that afflicted oil-importing nations, particula...",
-    "href": "/history/border-sovereignty#1970s_energy_crisis",
+    "href": "/history/crisis-and-resilience#1970s_energy_crisis",
     "keywords": [
       "1970s",
       "energy",
@@ -16155,7 +16155,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Progressive Era",
     "category": "History - Constitutional Battles",
     "description": "The Progressive Era was a period of political, social, and economic reform in the United States, roughly spanning the 1890s to the 1920s, during which activi...",
-    "href": "/history/constitutional-battles#Progressive_Era",
+    "href": "/history/reform-and-rights#Progressive_Era",
     "keywords": [
       "the",
       "progressive",
@@ -16226,7 +16226,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Lochner Era",
     "category": "History - Constitutional Battles",
     "description": "The Lochner era designates a period in United States Supreme Court history, roughly spanning from the late 1890s to 1937, during which the Court invoked the ...",
-    "href": "/history/constitutional-battles#_Lochner_",
+    "href": "/history/reform-and-rights#_Lochner_",
     "keywords": [
       "the",
       "lochner",
@@ -16301,7 +16301,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Red Scare",
     "category": "History - Constitutional Battles",
     "description": "The Red Scare (German: Rote Angst) denotes two episodes of widespread apprehension regarding communist infiltration and subversion within the United States: ...",
-    "href": "/history/constitutional-battles#Red_Scare",
+    "href": "/history/reform-and-rights#Red_Scare",
     "keywords": [
       "the",
       "red",
@@ -16471,7 +16471,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "First-Wave Feminism",
     "category": "History - Constitutional Battles",
     "description": "First-wave feminism was a period of women's advocacy spanning the mid-19th to early 20th centuries, principally aimed at attaining basic legal rights such as...",
-    "href": "/history/constitutional-battles#First-wave_feminism",
+    "href": "/history/reform-and-rights#First-wave_feminism",
     "keywords": [
       "first",
       "wave",
@@ -16558,7 +16558,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "Second-Wave Feminism",
     "category": "History - Constitutional Battles",
     "description": "Second-wave feminism refers to the feminist activism and ideology that emerged in the United States during the early 1960s and persisted into the 1980s, prim...",
-    "href": "/history/constitutional-battles#Second-wave_feminism",
+    "href": "/history/reform-and-rights#Second-wave_feminism",
     "keywords": [
       "second",
       "wave",
@@ -16768,7 +16768,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Populist Movement",
     "category": "History - The Populist Era",
     "description": "The Populist movement — formally the People's Party — emerged in the early 1890s as the most significant agrarian political revolt in American history, chann...",
-    "href": "/history/populist-era#Populist_Movement",
+    "href": "/history/populism-and-labor#Populist_Movement",
     "keywords": [
       "the",
       "populist",
@@ -16847,7 +16847,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "Labor Movement and Industrial Conflict",
     "category": "History - The Populist Era",
     "description": "The Gilded Age and Progressive Era (1877–1920) witnessed the bloodiest labor conflicts in American history as industrial workers fought for the eight-hour da...",
-    "href": "/history/populist-era#Labor_Movement_Industrial_Conflict",
+    "href": "/history/populism-and-labor#Labor_Movement_Industrial_Conflict",
     "keywords": [
       "labor",
       "movement",
@@ -86344,7 +86344,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Prima Mare Trezire",
     "category": "Istorie - Credință și Familie",
     "description": "Prima Mare Trezire a fost o mișcare de renaștere religioasă protestantă care s-a desfășurat în coloniile britanice americane în principal din anii 1730 până ...",
-    "href": "/history/faith-and-family#First_Great_Awakening",
+    "href": "/history/faith-and-reform#First_Great_Awakening",
     "keywords": [
       "prima",
       "mare",
@@ -86413,7 +86413,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "A doua Mare Trezire",
     "category": "Istorie - Credință și Familie",
     "description": "A Doua Mare Trezire a fost o mișcare de renaștere evanghelică protestantă care a străbătut Statele Unite de la sfârșitul anilor 1790 până la mijlocul anilor ...",
-    "href": "/history/faith-and-family#Second_Great_Awakening",
+    "href": "/history/faith-and-reform#Second_Great_Awakening",
     "keywords": [
       "doua",
       "mare",
@@ -86581,7 +86581,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Era prohibiției",
     "category": "Istorie - Credință și Familie",
     "description": "Interzicerea în Statele Unite a fost o interdicție constituțională a producției, importului, transportului și vânzării băuturilor alcoolice, adoptată prin ce...",
-    "href": "/history/faith-and-family#Prohibition_in_the_United_States",
+    "href": "/history/faith-and-reform#Prohibition_in_the_United_States",
     "keywords": [
       "era",
       "prohibiției",
@@ -86796,7 +86796,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Marea Migrație",
     "category": "Istorie - Frontiere și Identitate",
     "description": "Marea migrație se referă la relocarea pe scară largă a aproximativ șase milioane de afro-americani din zona rurală de sud a Statelor Unite în centrele urbane...",
-    "href": "/history/border-sovereignty#Great_Migration_African_American",
+    "href": "/history/crisis-and-resilience#Great_Migration_African_American",
     "keywords": [
       "marea",
       "migrație",
@@ -86855,7 +86855,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "A doua mare migrație",
     "category": "Istorie - Frontiere și Identitate",
     "description": "Cea de-a doua mare migrație se referă la mișcarea a aproximativ cinci milioane de afro-americani din sudul rural către orașele din nord, vestul mijlociu și v...",
-    "href": "/history/border-sovereignty#Second_Great_Migration_African_American",
+    "href": "/history/crisis-and-resilience#Second_Great_Migration_African_American",
     "keywords": [
       "doua",
       "mare",
@@ -86937,7 +86937,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Noua Mare Migrație",
     "category": "Istorie - Frontiere și Identitate",
     "description": "Noua Mare Migrație este inversarea demografică în care afro-americanii s-au mutat din ce în ce mai mult din nord-estul, vestul mijlociu și vest înapoi în sud...",
-    "href": "/history/border-sovereignty#New_Great_Migration",
+    "href": "/history/crisis-and-resilience#New_Great_Migration",
     "keywords": [
       "noua",
       "mare",
@@ -87002,7 +87002,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Marea Depresiune",
     "category": "Istorie - Frontiere și Identitate",
     "description": "Marea Depresiune din Statele Unite a fost o contracție economică severă și extinsă, care a apărut odată cu prăbușirea bursierei de pe Wall Street din octombr...",
-    "href": "/history/border-sovereignty#Great_Depression_in_the_United_States",
+    "href": "/history/crisis-and-resilience#Great_Depression_in_the_United_States",
     "keywords": [
       "marea",
       "depresiune",
@@ -87092,7 +87092,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "New Deal",
     "category": "Istorie - Frontiere și Identitate",
     "description": "New Deal a constat din programe federale, proiecte de lucrări publice, reforme financiare și reglementări adoptate de președintele Franklin D.",
-    "href": "/history/border-sovereignty#New_Deal",
+    "href": "/history/crisis-and-resilience#New_Deal",
     "keywords": [
       "new",
       "deal",
@@ -87314,7 +87314,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Criza energetică a anilor 1970",
     "category": "Istorie - Frontiere și Identitate",
     "description": "Criza energetică din anii 1970 a constat în două episoade majore de deficite acute ale aprovizionării cu petrol și creșteri ale prețurilor care au afectat ță...",
-    "href": "/history/border-sovereignty#1970s_energy_crisis",
+    "href": "/history/crisis-and-resilience#1970s_energy_crisis",
     "keywords": [
       "criza",
       "energetică",
@@ -87366,7 +87366,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Era progresivă",
     "category": "Istorie - Bătălii Constituționale",
     "description": "Era progresivă a fost o perioadă de reformă politică, socială și economică în Statele Unite, care a cuprins aproximativ între anii 1890 și 1920, în timpul că...",
-    "href": "/history/constitutional-battles#Progressive_Era",
+    "href": "/history/reform-and-rights#Progressive_Era",
     "keywords": [
       "era",
       "progresivă",
@@ -87442,7 +87442,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Epoca Lochner",
     "category": "Istorie - Bătălii Constituționale",
     "description": "Epoca Lochner desemnează o perioadă din istoria Curții Supreme a Statelor Unite, care se întinde aproximativ de la sfârșitul anilor 1890 până în 1937, în tim...",
-    "href": "/history/constitutional-battles#_Lochner_",
+    "href": "/history/reform-and-rights#_Lochner_",
     "keywords": [
       "epoca",
       "lochner",
@@ -87523,7 +87523,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Sperietura Roșie",
     "category": "Istorie - Bătălii Constituționale",
     "description": "The Red Scare (în germană: Rote Angst) denotă două episoade de îngrijorare larg răspândită cu privire la infiltrarea comunistă și subversia în Statele Unite:...",
-    "href": "/history/constitutional-battles#Red_Scare",
+    "href": "/history/reform-and-rights#Red_Scare",
     "keywords": [
       "sperietura",
       "roșie",
@@ -87699,7 +87699,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Feminismul din primul val",
     "category": "Istorie - Bătălii Constituționale",
     "description": "Feminismul din primul val a fost o perioadă de advocacy a femeilor care se întinde de la mijlocul secolului al XIX-lea până la începutul secolului al XX-lea,...",
-    "href": "/history/constitutional-battles#First-wave_feminism",
+    "href": "/history/reform-and-rights#First-wave_feminism",
     "keywords": [
       "feminismul",
       "din",
@@ -87791,7 +87791,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Feminismul al doilea val",
     "category": "Istorie - Bătălii Constituționale",
     "description": "Feminismul al doilea val se referă la activismul și ideologia feministă care a apărut în Statele Unite la începutul anilor 1960 și a persistat până în anii 1...",
-    "href": "/history/constitutional-battles#Second-wave_feminism",
+    "href": "/history/reform-and-rights#Second-wave_feminism",
     "keywords": [
       "feminismul",
       "doilea",
@@ -87988,7 +87988,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Mișcarea Populistă",
     "category": "Istorie - Era Populistă",
     "description": "Mișcarea Populistă — formal Partidul Poporului — a apărut în anii 1890 ca cea mai semnificativă revoltă politică agrară din istoria americană, canalizând fur...",
-    "href": "/history/populist-era#Populist_Movement",
+    "href": "/history/populism-and-labor#Populist_Movement",
     "keywords": [
       "mișcarea",
       "populistă",
@@ -88049,7 +88049,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Mișcarea Muncitorească și Conflictul Industrial",
     "category": "Istorie - Era Populistă",
     "description": "Epoca de Aur și Era Progresistă (1877-1920) au văzut cele mai sângeroase conflicte de muncă din istoria americană, pe măsură ce muncitorii industriali luptau...",
-    "href": "/history/populist-era#Labor_Movement_Industrial_Conflict",
+    "href": "/history/populism-and-labor#Labor_Movement_Industrial_Conflict",
     "keywords": [
       "mișcarea",
       "muncitorească",

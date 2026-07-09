@@ -115,12 +115,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/history/cold-war",
     "/history/reagan-revolution",
     "/history/post-9-11-america",
-    "/history/populist-era",
+    "/history/populism-and-labor",
     "/history/american-exceptionalism",
     "/history/free-markets",
-    "/history/faith-and-family",
-    "/history/constitutional-battles",
-    "/history/border-sovereignty",
+    "/history/faith-and-reform",
+    "/history/reform-and-rights",
+    "/history/crisis-and-resilience",
     "/history/we-must-fight",
   ];
 

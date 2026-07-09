@@ -5,24 +5,24 @@ import { THEMATIC_HISTORY_DATA } from "@/lib/data/history-thematic-data";
 import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
 
 export const metadata: Metadata = {
-  title: "Faith, Family & Community | Patriotic USA",
-  description: "Religious freedom, voluntary associations, and the moral foundations of society.",
+  title: "Faith & Reform | Patriotic USA",
+  description: "The Great Awakenings, religious revival, and the moral-reform movements that shaped America — from evangelism to Prohibition.",
 };
 
-export default async function FaithFamilyAndCommunityPage() {
+export default async function FaithAndReformPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
-  const breadcrumbPage = locale === "ro" ? "Credință, Familie și Comunitate" : "Faith, Family & Community";
-  const topics = THEMATIC_HISTORY_DATA["faith-and-family"] || [];
+  const breadcrumbPage = locale === "ro" ? "Credință și Reformă" : "Faith & Reform";
+  const topics = THEMATIC_HISTORY_DATA["faith-and-reform"] || [];
 
   const title = {
-    en: "Faith, Family & Community",
-    ro: "Credință, Familie și Comunitate",
+    en: "Faith & Reform",
+    ro: "Credință și Reformă",
   };
 
   const description = {
-    en: "Religious freedom, voluntary associations, and the moral foundations of society.",
-    ro: "Libertatea religioasă, asociațiile voluntare și fundațiile morale ale societății.",
+    en: "The Great Awakenings, religious revival, and the moral-reform movements that shaped America — from evangelism to Prohibition.",
+    ro: "Marile Treziri religioase, revigorarea credinței și mișcările de reformă morală care au modelat America — de la evanghelism la Prohibiție.",
   };
 
   return (
@@ -38,7 +38,7 @@ export default async function FaithFamilyAndCommunityPage() {
       </div>
       <ThematicSubpageClient
         locale={locale}
-        subpageId="faith-and-family"
+        subpageId="faith-and-reform"
         title={title}
         description={description}
         topics={topics}

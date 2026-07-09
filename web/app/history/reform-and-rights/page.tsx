@@ -5,24 +5,24 @@ import { THEMATIC_HISTORY_DATA } from "@/lib/data/history-thematic-data";
 import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
 
 export const metadata: Metadata = {
-  title: "Constitutional Battles | Patriotic USA",
-  description: "Originalism, states' rights, and key legal rulings defending free speech.",
+  title: "Reform & Rights | Patriotic USA",
+  description: "The Progressive Era, the Lochner era, and the civil-liberties battles of the early twentieth century.",
 };
 
-export default async function ConstitutionalBattlesPage() {
+export default async function ReformAndRightsPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
-  const breadcrumbPage = locale === "ro" ? "Bătălii Constituționale" : "Constitutional Battles";
-  const topics = THEMATIC_HISTORY_DATA["constitutional-battles"] || [];
+  const breadcrumbPage = locale === "ro" ? "Reformă și Drepturi" : "Reform & Rights";
+  const topics = THEMATIC_HISTORY_DATA["reform-and-rights"] || [];
 
   const title = {
-    en: "Constitutional Battles",
-    ro: "Bătălii Constituționale",
+    en: "Reform & Rights",
+    ro: "Reformă și Drepturi",
   };
 
   const description = {
-    en: "Originalism, states' rights, and key legal rulings defending free speech.",
-    ro: "Originalismul, drepturile statelor și deciziile juridice cheie ce apără libera exprimare.",
+    en: "The Progressive Era, the Lochner era, and the civil-liberties battles of the early twentieth century.",
+    ro: "Era Progresistă, era Lochner și bătăliile pentru libertățile civile de la începutul secolului XX.",
   };
 
   return (
@@ -38,7 +38,7 @@ export default async function ConstitutionalBattlesPage() {
       </div>
       <ThematicSubpageClient
         locale={locale}
-        subpageId="constitutional-battles"
+        subpageId="reform-and-rights"
         title={title}
         description={description}
         topics={topics}

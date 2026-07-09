@@ -445,14 +445,29 @@ export const NAV_SECTIONS = [
         description: "The rise of American capitalism and enterprise",
       },
       {
-        label: "World War II",
-        href: "/history/wwii",
-        description: "From the Arsenal of Democracy to total victory",
+        label: "Populism & Labor",
+        href: "/history/populism-and-labor",
+        description: "The 1890s Populist movement and the rise of organized labor",
+      },
+      {
+        label: "Reform & Rights",
+        href: "/history/reform-and-rights",
+        description: "The Progressive era, Lochner, and early civil-liberties battles",
       },
       {
         label: "The American Dream",
         href: "/history/american-dream",
-        description: "Postwar prosperity, suburbs, and mobility",
+        description: "The Roaring Twenties, jazz, and the American Century",
+      },
+      {
+        label: "Crisis & Resilience",
+        href: "/history/crisis-and-resilience",
+        description: "The Great Depression, the New Deal, and the Great Migrations",
+      },
+      {
+        label: "World War II",
+        href: "/history/wwii",
+        description: "From the Arsenal of Democracy to total victory",
       },
       {
         label: "Cold War",
@@ -469,11 +484,6 @@ export const NAV_SECTIONS = [
         href: "/history/post-9-11-america",
         description: "The War on Terror and the security state",
       },
-      {
-        label: "The Populist Era",
-        href: "/history/populist-era",
-        description: "MAGA, the Tea Party, and the backlash to globalization",
-      },
       // ── Enduring Themes ───────────────────────────────────────────────────
       {
         label: "American Exceptionalism",
@@ -486,19 +496,9 @@ export const NAV_SECTIONS = [
         description: "Capitalism versus socialism, and the roots of prosperity",
       },
       {
-        label: "Faith & Family",
-        href: "/history/faith-and-family",
-        description: "Churches, civic associations, and moral culture",
-      },
-      {
-        label: "Constitutional Battles",
-        href: "/history/constitutional-battles",
-        description: "Originalism, states' rights, and free speech",
-      },
-      {
-        label: "Border Sovereignty",
-        href: "/history/border-sovereignty",
-        description: "Immigration, assimilation, and border policy",
+        label: "Faith & Reform",
+        href: "/history/faith-and-reform",
+        description: "The Great Awakenings and moral-reform movements",
       },
     ],
   },
@@ -934,25 +934,25 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
         label: "America Post-9/11",
         description: "Războiul împotriva terorismului și statul de securitate națională",
       },
-      "/history/populist-era": {
-        label: "Era Populistă",
-        description: "Mişcarea MAGA, Tea Party și reacția împotriva globalizării",
+      "/history/populism-and-labor": {
+        label: "Populism și Muncă",
+        description: "Mișcarea populistă din anii 1890 și ascensiunea muncii organizate",
+      },
+      "/history/reform-and-rights": {
+        label: "Reformă și Drepturi",
+        description: "Era Progresistă, Lochner și primele bătălii pentru libertățile civile",
+      },
+      "/history/crisis-and-resilience": {
+        label: "Criză și Reziliență",
+        description: "Marea Criză, New Deal și Marile Migrații",
       },
       "/history/free-markets": {
         label: "Piețe Libere",
         description: "Capitalism versus socialism și prosperitate",
       },
-      "/history/faith-and-family": {
-        label: "Credință și Familie",
-        description: "Bisericile, asociațiile civice și cultura morală",
-      },
-      "/history/constitutional-battles": {
-        label: "Bătălii Constituționale",
-        description: "Originalismul, drepturile statelor și libertatea de exprimare",
-      },
-      "/history/border-sovereignty": {
-        label: "Suveranitatea Frontierelor",
-        description: "Imigrația, asimilarea și politica de frontieră",
+      "/history/faith-and-reform": {
+        label: "Credință și Reformă",
+        description: "Marile Treziri religioase și mișcările de reformă morală",
       },
     },
   },

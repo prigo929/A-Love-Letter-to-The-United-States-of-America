@@ -5,24 +5,24 @@ import { THEMATIC_HISTORY_DATA } from "@/lib/data/history-thematic-data";
 import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
 
 export const metadata: Metadata = {
-  title: "Border Sovereignty | Patriotic USA",
-  description: "Immigration history, assimilation, national identity, and border security.",
+  title: "Crisis & Resilience | Patriotic USA",
+  description: "The Great Depression, the New Deal, the Dust Bowl, the Great Migrations, and America's recovery from hardship.",
 };
 
-export default async function BorderSovereigntyAndNationalIdentityPage() {
+export default async function CrisisAndResiliencePage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
-  const breadcrumbPage = locale === "ro" ? "Suveranitatea Frontierelor" : "Border Sovereignty";
-  const topics = THEMATIC_HISTORY_DATA["border-sovereignty"] || [];
+  const breadcrumbPage = locale === "ro" ? "Criză și Reziliență" : "Crisis & Resilience";
+  const topics = THEMATIC_HISTORY_DATA["crisis-and-resilience"] || [];
 
   const title = {
-    en: "Border Sovereignty",
-    ro: "Suveranitatea Frontierelor",
+    en: "Crisis & Resilience",
+    ro: "Criză și Reziliență",
   };
 
   const description = {
-    en: "Immigration history, assimilation, national identity, and border security.",
-    ro: "Istoria imigrației, asimilarea, identitatea națională și securitatea frontierelor.",
+    en: "The Great Depression, the New Deal, the Dust Bowl, the Great Migrations, and America's recovery from hardship.",
+    ro: "Marea Criză, New Deal, Dust Bowl, Marile Migrații și redresarea Americii după greutăți.",
   };
 
   return (
@@ -38,7 +38,7 @@ export default async function BorderSovereigntyAndNationalIdentityPage() {
       </div>
       <ThematicSubpageClient
         locale={locale}
-        subpageId="border-sovereignty"
+        subpageId="crisis-and-resilience"
         title={title}
         description={description}
         topics={topics}
