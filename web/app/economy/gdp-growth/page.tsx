@@ -18,7 +18,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { GdpBarChart } from "@/components/data/GdpBarChart";
 import { SP500Chart } from "@/components/data/SP500Chart";
-import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand } from "@/components/economy/EconomyAnimations";
+import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
   GDP_COMPARISON,
@@ -35,66 +35,6 @@ export const metadata: Metadata = {
     "$32.4 trillion GDP — the United States has been the world's largest economy for over 130 years. A deep dive into American economic scale, resilience, and dominance.",
   alternates: { canonical: "/economy/gdp-growth" },
 };
-
-const GDP_EXTENDED_FACTS = [
-  // This page has a few extra facts stored locally because they are specific to
-  // this subpage and not reused elsewhere.
-  {
-    id: "gdp-services",
-    fact: "80% of US GDP is driven by the services sector",
-    detail:
-      "Finance, healthcare, education, and technology — America has successfully transitioned to a high-value service economy that is the envy of the industrialized world.",
-    source: "CIAA 2026",
-    color: "gold" as const,
-  },
-  {
-    id: "gdp-energy",
-    fact: "The US is the world's largest producer of oil and natural gas",
-    detail:
-      "America produces more energy than any nation on Earth, providing a massive structural advantage in industrial costs and national security.",
-    source: "EIA 2026",
-    color: "red" as const,
-  },
-  {
-    id: "gdp-texas",
-    fact: "Texas GDP exceeds all of Brazil or Russia",
-    detail:
-      "The state of Texas, with a GDP of approximately $2.9 trillion, produces more economic output annually than the entire nation of Brazil or the Russian Federation.",
-    source: "BEA & World Bank 2026",
-    color: "blue" as const,
-  },
-  {
-    id: "gdp-growth-resilience",
-    fact: "US GDP has grown in 70 of the last 75 years",
-    detail:
-      "Since 1950, the American economy has experienced growth in 70 out of 75 calendar years — a record of economic resilience unmatched by any major economy.",
-    source: "Bureau of Economic Analysis 2026",
-    color: "gold" as const,
-  },
-  {
-    id: "gdp-consumer",
-    fact: "US consumer spending (~$21T) exceeds China's entire GDP",
-    detail:
-      "American household consumption — driven by high incomes, easy credit access, and a culture of innovation — is a $21 trillion engine that pulls the global economy.",
-    source: "BEA 2026",
-    color: "red" as const,
-  },
-  {
-    id: "gdp-r-and-d",
-    fact: "The US spends more on R&D than any nation — $900B+ annually",
-    detail:
-      "American businesses, universities, and government agencies invest over $900 billion per year in research and development — the fuel for the next generation of economic leadership.",
-    source: "NSF 2026",
-    color: "blue" as const,
-  },
-  {
-    id: "gdp-productivity",
-    fact: "Worker Productivity: Output Per Hour",
-    detail: "Measured by GDP per hour worked, the United States consistently ranks in the top tier of OECD nations, outperforming Germany, the United Kingdom, and Japan by a meaningful margin. High productivity is why American wages are high.",
-    source: "OECD 2026",
-    color: "gold" as const,
-  },
-];
 
 const STATE_GDP_RANKINGS = [
   {
@@ -142,56 +82,49 @@ export default async function GdpGrowthPage() {
   const locale = await getServerLocale();
   const breadcrumbEconomy = locale === "ro" ? "Economie" : "Economy";
   const pageLabel = locale === "ro" ? "PIB și Dimensiune" : "GDP & Scale";
-  // These local arrays let the page translate or swap a few facts without
-  // editing the shared source data used elsewhere in the economy section.
-  const extendedFacts =
+  // Terminal "by the numbers" section: three headline stats plus two editorial
+  // insights, replacing the old wall of seven identical fact cards. The Texas
+  // fact was dropped — the state-vs-nation table above already makes that point.
+  const gdpStatTrio =
+    locale === "ro"
+      ? [
+          { value: "80%", label: "din PIB provine din servicii cu valoare mare" },
+          { value: "$21T", label: "cheltuieli de consum — depășesc întreg PIB-ul Chinei" },
+          { value: "$900B+", label: "investiți anual în cercetare și dezvoltare — nr. 1 mondial" },
+        ]
+      : [
+          { value: "80%", label: "of GDP comes from high-value services" },
+          { value: "$21T", label: "in consumer spending — exceeds China's entire GDP" },
+          { value: "$900B+", label: "invested in R&D every year — #1 on Earth" },
+        ];
+  const gdpInsights =
     locale === "ro"
       ? [
           {
-            ...GDP_EXTENDED_FACTS[0],
-            fact: "80% din PIB-ul SUA este generat de sectorul serviciilor",
+            fact: "Cel mai mare producător de energie de pe Pământ",
             detail:
-              "Finanțele, sănătatea, educația și tehnologia — America a trecut cu succes la o economie de servicii cu valoare adăugată mare, invidiată de lumea industrializată.",
+              "SUA produc mai mult petrol și gaze naturale decât orice altă națiune — un avantaj structural în costurile industriale și securitatea națională.",
           },
           {
-            ...GDP_EXTENDED_FACTS[1],
-            fact: "SUA sunt cel mai mare producător de petrol și gaze naturale din lume",
+            fact: "Productivitate pe oră în topul OCDE",
             detail:
-              "America produce mai multă energie decât orice altă națiune de pe Pământ, oferind un avantaj structural masiv în costurile industriale și securitatea națională.",
-          },
-          {
-            ...GDP_EXTENDED_FACTS[2],
-            fact: "PIB-ul Texasului depășește economia Braziliei sau a Rusiei",
-            detail:
-              "Statul Texas, cu un PIB de aproximativ 2,9 trilioane de dolari, produce anual mai multă activitate economică decât Brazilia sau întreaga Federație Rusă.",
-          },
-          {
-            ...GDP_EXTENDED_FACTS[3],
-            fact: "PIB-ul SUA a crescut în 70 din ultimii 75 de ani",
-            detail:
-              "Din 1950 încoace, economia americană a înregistrat creștere în 70 din 75 de ani calendaristici — un record de reziliență economică neegalat de vreo mare economie.",
-          },
-          {
-            ...GDP_EXTENDED_FACTS[4],
-            fact: "Cheltuielile consumatorilor americani (~19T $) depășesc întregul PIB al Chinei",
-            detail:
-              "Consumul gospodăriilor americane — susținut de venituri ridicate, acces facil la credit și o cultură a cheltuirii — este un motor de 19 trilioane de dolari care trage după el economia globală.",
-          },
-          {
-            ...GDP_EXTENDED_FACTS[5],
-            fact: "SUA cheltuiesc mai mult pe cercetare și dezvoltare decât orice altă națiune — peste 800 mld. $ anual",
-            detail:
-              "Companiile, universitățile și instituțiile publice americane investesc peste 800 de miliarde de dolari pe an în cercetare și dezvoltare — combustibilul pentru următoarea generație de leadership economic.",
-          },
-          {
-            ...GDP_EXTENDED_FACTS[6],
-            fact: "Productivitatea Muncii: Producția pe Oră",
-            detail:
-              "Măsurată prin PIB pe oră lucrată, SUA se află în mod constant în vârful OCDE, depășind Germania, Marea Britanie și Japonia. Această productivitate mare explică salariile mari ale americanilor și succesul global al companiilor lor.",
-            source: "OECD 2026",
+              "Măsurată prin PIB pe oră lucrată, America depășește constant Germania, Regatul Unit și Japonia — de aceea salariile americane sunt ridicate.",
           },
         ]
-      : GDP_EXTENDED_FACTS;
+      : [
+          {
+            fact: "The largest energy producer on Earth",
+            detail:
+              "The US pumps more oil and natural gas than any nation — a structural advantage in industrial costs and national security.",
+          },
+          {
+            fact: "Top-tier OECD productivity per hour",
+            detail:
+              "Measured by GDP per hour worked, America consistently outperforms Germany, the UK, and Japan — which is why American wages are high.",
+          },
+        ];
+  // These local arrays let the page translate or swap a few facts without
+  // editing the shared source data used elsewhere in the economy section.
   const stateRankings =
     locale === "ro"
       ? [
@@ -243,7 +176,11 @@ export default async function GdpGrowthPage() {
           comparisonLabel: "Comparație",
           globallyLabel: "la nivel global",
           statesSource: "Sursă: Bureau of Economic Analysis 2026, World Bank 2026",
-          numbersTitle: "Cifrele din spatele cifrelor",
+          growthPullLabel:
+            "ani de creștere din ultimii 75 — o reziliență economică pe care nicio mare economie nu o egalează.",
+          byNumbersEyebrow: "Amploarea, în cifre",
+          byNumbersTitle: "Cifrele din spatele cifrelor",
+          insightsEyebrow: "Avantaje structurale",
           quoteTitle: "Laureat Nobel pentru Economie, University of Chicago",
           backLink: "← Înapoi la prezentarea economiei",
           nextLink: "Piețe de Capital →",
@@ -282,7 +219,11 @@ export default async function GdpGrowthPage() {
           comparisonLabel: "Comparison",
           globallyLabel: "globally",
           statesSource: "Source: Bureau of Economic Analysis 2026, World Bank 2026",
-          numbersTitle: "The Numbers Behind the Numbers",
+          growthPullLabel:
+            "years of growth out of the last 75 — a record of economic resilience no major economy can match.",
+          byNumbersEyebrow: "The scale, in numbers",
+          byNumbersTitle: "The Numbers Behind the Numbers",
+          insightsEyebrow: "Structural advantages",
           quoteTitle: "Nobel Laureate in Economics, University of Chicago",
           backLink: "← Back to Economy Overview",
           nextLink: "Capital Markets →",
@@ -403,19 +344,33 @@ export default async function GdpGrowthPage() {
             </p>
           </section>
 
-          {/* Extended Facts Grid */}
+          {/* Featured pull-stat — one cinematic number instead of a card wall */}
           <section className="border-t border-white/5 pt-32">
-            <h2 className="macro-section-title text-[clamp(24px,4vw,60px)] mb-16">
-              {copy.numbersTitle}
-            </h2>
-            <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
-              {extendedFacts.map((fact: any, i: number) => (
-                <MacroFact
-                  key={fact.id}
-                  index={i + 1}
-                  fact={fact.fact}
-                  detail={fact.detail}
-                />
+            <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
+              <p className="font-macro-display font-black leading-none tracking-tighter text-[clamp(72px,15vw,200px)]">
+                <CountUp value={70} suffix=" / 75" />
+              </p>
+              <p className="macro-body mt-8 max-w-3xl">{copy.growthPullLabel}</p>
+            </div>
+          </section>
+
+          {/* By the numbers — headline stat trio */}
+          <section className="border-t border-white/5 pt-32">
+            <span className="macro-eyebrow">{copy.byNumbersEyebrow}</span>
+            <h2 className="macro-section-title mt-6 mb-16">{copy.byNumbersTitle}</h2>
+            <div className="grid gap-16 border-t border-[#E8B923]/30 pt-16 sm:grid-cols-3">
+              {gdpStatTrio.map((stat) => (
+                <MacroStat key={stat.label} value={stat.value} label={stat.label} />
+              ))}
+            </div>
+          </section>
+
+          {/* Two editorial insights */}
+          <section className="pt-8">
+            <span className="macro-eyebrow">{copy.insightsEyebrow}</span>
+            <div className="mt-10 grid gap-16 md:grid-cols-2">
+              {gdpInsights.map((insight) => (
+                <MacroFact key={insight.fact} fact={insight.fact} detail={insight.detail} />
               ))}
             </div>
           </section>
