@@ -674,7 +674,7 @@ An immersive multimedia exploration of the American landscape located at `/natur
 A fully built, 6-page technical intelligence platform covering every branch and global posture of American military power.
 
 <p align="center">
-  <img src="web/IMAGES/Military/Navy/us-navy-gerald-ford-carrier.jpg" width="600" alt="USS Gerald R. Ford Aircraft Carrier Strike Group" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Military/Navy/arleigh_burke_flight_iii_uss_jack_h_lucas.jpeg" width="600" alt="USS Jack H. Lucas Flight III Arleigh Burke Destroyer" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 - **Cinematic Video Heroes**: Every subpage opens with a looping, full-bleed cinematic video (`b2-spirit-hero.mp4`, `fly-navy.mp4`, `supremacy-wave.mp4`, `us-space-force-americas-invisible-front.mp4`, `earth-pixels-from-space.mp4`).
@@ -1804,7 +1804,7 @@ We developed custom configurations on top of the Recharts library to handle dens
 The Nature vertical is designed for absolute atmospheric immersion, letting developers and users explore the vast scale of the American wilderness.
 
 <p align="center">
-  <img src="web/IMAGES/Landscapes/Glacier National Park.jpg" width="600" alt="Glacier National Park Natural Majesty" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Landscapes/Grand Teton National Park.jpg" width="600" alt="Grand Teton National Park Mountain Marvel" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 ### 1. Spatial Editorial Animations
@@ -1874,7 +1874,7 @@ The Innovation vertical illustrates the synthesis of public foundational researc
 The Military vertical provides a comprehensive, interactive dossier tracking the defense logistics, space dominance, nuclear triad, and naval posture that support international security stability.
 
 <p align="center">
-  <img src="web/IMAGES/Military/Navy/us-navy-gerald-ford-carrier.jpg" width="600" alt="USS Gerald R. Ford Strike Group: Absolute Deterrence" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Military/Navy/uss_gerald_r_ford_ford_class_cvn.jpg" width="600" alt="USS Gerald R. Ford CVN Strike Group: Absolute Deterrence" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 ### 1. Vector Jitter-Clustering Naval Coordinates
@@ -1902,7 +1902,7 @@ The Military vertical provides a comprehensive, interactive dossier tracking the
 The Science and Universities verticals outline the core research ecosystems, academic endowments, and tech-transfer frameworks that drive global innovation.
 
 <p align="center">
-  <img src="web/IMAGES/University/Columbia University.jpg" width="600" alt="Ivy League Academic Excellence: Columbia University" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/University/Yale Aerial.jpg" width="600" alt="Ivy League Academic Excellence: Yale University" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 ### 1. Nobel Laureate Metrics & Historical Inventions
@@ -1925,7 +1925,7 @@ The Science and Universities verticals outline the core research ecosystems, aca
 The Data and Media verticals act as the empirical visual gallery of the platform, combining spatial vector state data with historical imagery.
 
 <p align="center">
-  <img src="web/IMAGES/USA from Space/USA at night from Space.jpg" width="600" alt="The Shining City on a Hill: USA at night" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Cities/Seattle Skyline at Night.jpg" width="600" alt="Seattle Skyline: Illuminated Urban Grid" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 ### 1. Interactive 50-State SVG Map Engine
@@ -1948,7 +1948,7 @@ The Data and Media verticals act as the empirical visual gallery of the platform
 This section details the treaty structures that secure the free world alongside domestic standards of living, purchasing power, and asset density.
 
 <p align="center">
-  <img src="web/IMAGES/Housing/USA Suburb house.jpg" width="600" alt="Suburban Abundance: Housing Standards" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Housing/Charming suburban house with front porch, landscaping, and white facade.jpg" width="600" alt="Suburban Abundance: Suburban Housing Standards" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 ### 1. Treaty Alliances & Geopolitical Posture
@@ -1971,7 +1971,7 @@ This section details the treaty structures that secure the free world alongside 
 The Interactive vertical at `/interactive` functions as a tokenized search and synthesis agent, designed to provide comprehensive bilingual answers to civic questions.
 
 <p align="center">
-  <img src="web/IMAGES/US Buildings/US Capitol.jpg" width="600" alt="Ask America Interactive AI Oracle" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/US Buildings/The White House in Washington DC, as viewed from the front lawn.jpg" width="600" alt="Ask America Interactive AI Oracle: The White House" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 ### 1. Tokenized Query Analysis & Archive Matching
