@@ -14,7 +14,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import type { Locale } from "@/lib/i18n/config";
 import { getServerLocale } from "@/lib/i18n/server";
-import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
+import { MacroStyles, MacroHero, MacroStat, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import {
   getTradeOverviewParagraphs,
   US_EXPORT_CATEGORIES,
