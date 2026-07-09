@@ -13958,7 +13958,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Cold War",
     "category": "History - Cold War",
     "description": "The Cold War was a prolonged era of geopolitical, ideological, and economic confrontation between the United States and its allies in the Western Bloc and th...",
-    "href": "/history/cold-war-and-anti-communism#Cold_War",
+    "href": "/history/cold-war#Cold_War",
     "keywords": [
       "the",
       "cold",
@@ -14024,7 +14024,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "McCarthyism",
     "category": "History - Cold War",
     "description": "McCarthyism refers to the aggressive investigations into alleged communist infiltration of U.S.",
-    "href": "/history/cold-war-and-anti-communism#McCarthyism",
+    "href": "/history/cold-war#McCarthyism",
     "keywords": [
       "mccarthyism",
       "history",
@@ -14121,7 +14121,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "Détente",
     "category": "History - Cold War",
     "description": "Détente was a period of moderated hostilities and diplomatic engagement between the United States and the Soviet Union during the Cold War, roughly spanning ...",
-    "href": "/history/cold-war-and-anti-communism#Détente",
+    "href": "/history/cold-war#Détente",
     "keywords": [
       "détente",
       "history",
@@ -14304,7 +14304,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Space Race",
     "category": "History - Cold War",
     "description": "The Space Race was an intense competition between the United States and the Soviet Union during the Cold War era to demonstrate technological superiority thr...",
-    "href": "/history/cold-war-and-anti-communism#Space_Race",
+    "href": "/history/cold-war#Space_Race",
     "keywords": [
       "the",
       "space",
@@ -14428,7 +14428,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "U.S. Global Influence",
     "category": "History - Cold War",
     "description": "The global influence of the United States encompasses its capacity to project power and shape international outcomes across economic, military, diplomatic, a...",
-    "href": "/history/cold-war-and-anti-communism#United_States_global_influence",
+    "href": "/history/cold-war#United_States_global_influence",
     "keywords": [
       "global",
       "influence",
@@ -14496,7 +14496,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The American Century",
     "category": "History - The American Dream",
     "description": "The American Century refers to the era of predominant United States influence in global affairs, particularly from the mid-20th century onward, a concept art...",
-    "href": "/history/the-american-dream#American_Century",
+    "href": "/history/american-dream#American_Century",
     "keywords": [
       "the",
       "american",
@@ -14595,7 +14595,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Dot-com Bubble",
     "category": "History - The American Dream",
     "description": "The dot-com bubble was a stock market phenomenon characterized by excessive speculation in internet-based companies, driving rapid increases in their equity ...",
-    "href": "/history/the-american-dream#Dot-com_bubble",
+    "href": "/history/american-dream#Dot-com_bubble",
     "keywords": [
       "the",
       "dot",
@@ -14704,7 +14704,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Roaring Twenties",
     "category": "History - The American Dream",
     "description": "The Roaring Twenties, encompassing the years 1920 to 1929, referred primarily to a transformative era in the United States marked by rapid economic expansion...",
-    "href": "/history/the-american-dream#Roaring_Twenties",
+    "href": "/history/american-dream#Roaring_Twenties",
     "keywords": [
       "the",
       "roaring",
@@ -14788,7 +14788,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Jazz Age",
     "category": "History - The American Dream",
     "description": "The Jazz Age designates the 1920s in the United States, a decade defined by rapid economic expansion, cultural experimentation, and the ascendance of jazz mu...",
-    "href": "/history/the-american-dream#Jazz_Age",
+    "href": "/history/american-dream#Jazz_Age",
     "keywords": [
       "the",
       "jazz",
@@ -14845,7 +14845,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "Music History",
     "category": "History - The American Dream",
     "description": "The music history of the United States involves the integration of Native American ceremonial chants, European folk ballads and hymnody introduced by colonis...",
-    "href": "/history/the-american-dream#Music_history_of_the_United_States",
+    "href": "/history/american-dream#Music_history_of_the_United_States",
     "keywords": [
       "music",
       "history",
@@ -14904,7 +14904,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Reagan Era",
     "category": "History - Reagan Revolution",
     "description": "The Reagan era denotes the period of Ronald Reagan's presidency from 1981 to 1989, characterized by the implementation of supply-side economic policies, a su...",
-    "href": "/history/the-reagan-revolution#Reagan",
+    "href": "/history/reagan-revolution#Reagan",
     "keywords": [
       "the",
       "reagan",
@@ -14946,7 +14946,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "Neoconservatism",
     "category": "History - Reagan Revolution",
     "description": "Neoconservatism is a political persuasion that arose in the United States during the 1970s among disillusioned liberal intellectuals reacting against the per...",
-    "href": "/history/the-reagan-revolution#Neoconservatism",
+    "href": "/history/reagan-revolution#Neoconservatism",
     "keywords": [
       "neoconservatism",
       "history",
@@ -15184,7 +15184,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "First Great Awakening",
     "category": "History - Faith & Family",
     "description": "The First Great Awakening was a Protestant religious revival movement that unfolded across the British American colonies mainly from the 1730s to the 1740s, ...",
-    "href": "/history/faith-family-and-community#First_Great_Awakening",
+    "href": "/history/faith-and-family#First_Great_Awakening",
     "keywords": [
       "first",
       "great",
@@ -15245,7 +15245,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "Second Great Awakening",
     "category": "History - Faith & Family",
     "description": "The Second Great Awakening was a Protestant evangelical revival movement that swept through the United States from the late 1790s to the mid-1840s, character...",
-    "href": "/history/faith-family-and-community#Second_Great_Awakening",
+    "href": "/history/faith-and-family#Second_Great_Awakening",
     "keywords": [
       "second",
       "great",
@@ -15411,7 +15411,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "Prohibition Era",
     "category": "History - Faith & Family",
     "description": "Prohibition in the United States was a constitutional ban on the production, importation, transportation, and sale of alcoholic beverages, enacted via the Ei...",
-    "href": "/history/faith-family-and-community#Prohibition_in_the_United_States",
+    "href": "/history/faith-and-family#Prohibition_in_the_United_States",
     "keywords": [
       "prohibition",
       "era",
@@ -15483,7 +15483,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "Economy of the United States",
     "category": "History - Free Markets",
     "description": "The economy of the United States is the world's largest by nominal gross domestic product, producing goods and services valued at $31.442 trillion (seasonall...",
-    "href": "/history/free-markets-and-prosperity#Economy_of_the_United_States",
+    "href": "/history/free-markets#Economy_of_the_United_States",
     "keywords": [
       "economy",
       "the",
@@ -15554,7 +15554,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "Economic History",
     "category": "History - Free Markets",
     "description": "The economic history of the United States traces the evolution from 17th-century colonial settlements centered on agriculture, extractive industries like fur...",
-    "href": "/history/free-markets-and-prosperity#Economic_history_of_the_United_States",
+    "href": "/history/free-markets#Economic_history_of_the_United_States",
     "keywords": [
       "economic",
       "history",
@@ -15620,7 +15620,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Great Migration",
     "category": "History - Borders & Identity",
     "description": "The Great Migration refers to the large-scale relocation of approximately six million African Americans from the rural Southern United States to urban center...",
-    "href": "/history/border-sovereignty-and-national-identity#Great_Migration_African_American",
+    "href": "/history/border-sovereignty#Great_Migration_African_American",
     "keywords": [
       "the",
       "great",
@@ -15675,7 +15675,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Second Great Migration",
     "category": "History - Borders & Identity",
     "description": "The Second Great Migration refers to the movement of approximately five million African Americans from the rural South to cities in the North, Midwest, and W...",
-    "href": "/history/border-sovereignty-and-national-identity#Second_Great_Migration_African_American",
+    "href": "/history/border-sovereignty#Second_Great_Migration_African_American",
     "keywords": [
       "the",
       "second",
@@ -15749,7 +15749,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The New Great Migration",
     "category": "History - Borders & Identity",
     "description": "The New Great Migration is the demographic reversal in which African Americans have increasingly relocated from the Northeast, Midwest, and West back to the ...",
-    "href": "/history/border-sovereignty-and-national-identity#New_Great_Migration",
+    "href": "/history/border-sovereignty#New_Great_Migration",
     "keywords": [
       "the",
       "new",
@@ -15811,7 +15811,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Great Depression",
     "category": "History - Borders & Identity",
     "description": "The Great Depression in the United States was a severe and extended economic contraction that originated with the Wall Street stock market crash of October 1...",
-    "href": "/history/border-sovereignty-and-national-identity#Great_Depression_in_the_United_States",
+    "href": "/history/border-sovereignty#Great_Depression_in_the_United_States",
     "keywords": [
       "the",
       "great",
@@ -15904,7 +15904,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The New Deal",
     "category": "History - Borders & Identity",
     "description": "The New Deal consisted of federal programs, public works projects, financial reforms, and regulations enacted by President Franklin D.",
-    "href": "/history/border-sovereignty-and-national-identity#New_Deal",
+    "href": "/history/border-sovereignty#New_Deal",
     "keywords": [
       "the",
       "new",
@@ -16103,7 +16103,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "1970s Energy Crisis",
     "category": "History - Borders & Identity",
     "description": "The 1970s energy crisis consisted of two major episodes of acute petroleum supply shortfalls and price spikes that afflicted oil-importing nations, particula...",
-    "href": "/history/border-sovereignty-and-national-identity#1970s_energy_crisis",
+    "href": "/history/border-sovereignty#1970s_energy_crisis",
     "keywords": [
       "1970s",
       "energy",
@@ -16768,7 +16768,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "The Populist Movement",
     "category": "History - The Populist Era",
     "description": "The Populist movement — formally the People's Party — emerged in the early 1890s as the most significant agrarian political revolt in American history, chann...",
-    "href": "/history/the-populist-era#Populist_Movement",
+    "href": "/history/populist-era#Populist_Movement",
     "keywords": [
       "the",
       "populist",
@@ -16847,7 +16847,7 @@ export const SEARCH_INDEX_EN: SearchItem[] = [
     "title": "Labor Movement and Industrial Conflict",
     "category": "History - The Populist Era",
     "description": "The Gilded Age and Progressive Era (1877–1920) witnessed the bloodiest labor conflicts in American history as industrial workers fought for the eight-hour da...",
-    "href": "/history/the-populist-era#Labor_Movement_Industrial_Conflict",
+    "href": "/history/populist-era#Labor_Movement_Industrial_Conflict",
     "keywords": [
       "labor",
       "movement",
@@ -85114,7 +85114,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Războiul Rece",
     "category": "Istorie - Războiul Rece",
     "description": "Războiul Rece a fost o eră prelungită de confruntare geopolitică, ideologică și economică între Statele Unite și aliații săi din Blocul de Vest și Uniunea So...",
-    "href": "/history/cold-war-and-anti-communism#Cold_War",
+    "href": "/history/cold-war#Cold_War",
     "keywords": [
       "războiul",
       "rece",
@@ -85171,7 +85171,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "macartismul",
     "category": "Istorie - Războiul Rece",
     "description": "McCarthyism se referă la investigațiile agresive privind presupusa infiltrare comunistă a instituțiilor guvernamentale și a societății americane în perioada ...",
-    "href": "/history/cold-war-and-anti-communism#McCarthyism",
+    "href": "/history/cold-war#McCarthyism",
     "keywords": [
       "macartismul",
       "istorie",
@@ -85261,7 +85261,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Detente",
     "category": "Istorie - Războiul Rece",
     "description": "Detente a fost o perioadă de ostilități moderate și angajament diplomatic între Statele Unite și Uniunea Sovietică în timpul Războiului Rece, aproximativ înt...",
-    "href": "/history/cold-war-and-anti-communism#Détente",
+    "href": "/history/cold-war#Détente",
     "keywords": [
       "detente",
       "istorie",
@@ -85454,7 +85454,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Cursa Spațială",
     "category": "Istorie - Războiul Rece",
     "description": "Cursa Spațială a fost o competiție intensă între Statele Unite și Uniunea Sovietică în perioada Războiului Rece pentru a demonstra superioritatea tehnologică...",
-    "href": "/history/cold-war-and-anti-communism#Space_Race",
+    "href": "/history/cold-war#Space_Race",
     "keywords": [
       "cursa",
       "spațială",
@@ -85567,7 +85567,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Influența globală a SUA",
     "category": "Istorie - Războiul Rece",
     "description": "Influența globală a Statelor Unite cuprinde capacitatea sa de a proiecta puterea și de a modela rezultatele internaționale în domenii economice, militare, di...",
-    "href": "/history/cold-war-and-anti-communism#United_States_global_influence",
+    "href": "/history/cold-war#United_States_global_influence",
     "keywords": [
       "influența",
       "globală",
@@ -85640,7 +85640,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Secolul american",
     "category": "Istorie - Visul American",
     "description": "Secolul american se referă la epoca influenței predominante a Statelor Unite în afacerile globale, în special de la mijlocul secolului al XX-lea înainte, un ...",
-    "href": "/history/the-american-dream#American_Century",
+    "href": "/history/american-dream#American_Century",
     "keywords": [
       "secolul",
       "american",
@@ -85741,7 +85741,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Bubble Dot-com",
     "category": "Istorie - Visul American",
     "description": "Bula dot-com a fost un fenomen de bursă caracterizat de speculații excesive în companiile bazate pe internet, care a determinat creșteri rapide ale evaluăril...",
-    "href": "/history/the-american-dream#Dot-com_bubble",
+    "href": "/history/american-dream#Dot-com_bubble",
     "keywords": [
       "bubble",
       "dot",
@@ -85849,7 +85849,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "The Roaring Twenties",
     "category": "Istorie - Visul American",
     "description": "Anii 1920, cuprinzând anii 1920-1929, s-au referit în primul rând la o eră transformatoare în Statele Unite, marcată de expansiune economică rapidă, exuberan...",
-    "href": "/history/the-american-dream#Roaring_Twenties",
+    "href": "/history/american-dream#Roaring_Twenties",
     "keywords": [
       "the",
       "roaring",
@@ -85936,7 +85936,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Epoca Jazzului",
     "category": "Istorie - Visul American",
     "description": "Epoca Jazzului desemnează anii 1920 în Statele Unite, un deceniu definit de expansiunea economică rapidă, experimentarea culturală și ascensiunea muzicii de ...",
-    "href": "/history/the-american-dream#Jazz_Age",
+    "href": "/history/american-dream#Jazz_Age",
     "keywords": [
       "epoca",
       "jazzului",
@@ -85994,7 +85994,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Istoria muzicii",
     "category": "Istorie - Visul American",
     "description": "Istoria muzicii a Statelor Unite implică integrarea cântecelor ceremoniale amerindiene, baladelor populare europene și imnodiilor introduse de coloniști și p...",
-    "href": "/history/the-american-dream#Music_history_of_the_United_States",
+    "href": "/history/american-dream#Music_history_of_the_United_States",
     "keywords": [
       "istoria",
       "muzicii",
@@ -86047,7 +86047,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Era Reagan",
     "category": "Istorie - Revoluția Reagan",
     "description": "Epoca Reagan denotă perioada președinției lui Ronald Reagan din 1981 până în 1989, caracterizată prin implementarea politicilor economice pe partea ofertei, ...",
-    "href": "/history/the-reagan-revolution#Reagan",
+    "href": "/history/reagan-revolution#Reagan",
     "keywords": [
       "era",
       "reagan",
@@ -86089,7 +86089,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Neoconservatorismul",
     "category": "Istorie - Revoluția Reagan",
     "description": "Neoconservatorismul este o convingere politică care a apărut în Statele Unite în anii 1970 în rândul intelectualilor liberali dezamăgiți care reacționau împo...",
-    "href": "/history/the-reagan-revolution#Neoconservatism",
+    "href": "/history/reagan-revolution#Neoconservatism",
     "keywords": [
       "neoconservatorismul",
       "istorie",
@@ -86344,7 +86344,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Prima Mare Trezire",
     "category": "Istorie - Credință și Familie",
     "description": "Prima Mare Trezire a fost o mișcare de renaștere religioasă protestantă care s-a desfășurat în coloniile britanice americane în principal din anii 1730 până ...",
-    "href": "/history/faith-family-and-community#First_Great_Awakening",
+    "href": "/history/faith-and-family#First_Great_Awakening",
     "keywords": [
       "prima",
       "mare",
@@ -86413,7 +86413,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "A doua Mare Trezire",
     "category": "Istorie - Credință și Familie",
     "description": "A Doua Mare Trezire a fost o mișcare de renaștere evanghelică protestantă care a străbătut Statele Unite de la sfârșitul anilor 1790 până la mijlocul anilor ...",
-    "href": "/history/faith-family-and-community#Second_Great_Awakening",
+    "href": "/history/faith-and-family#Second_Great_Awakening",
     "keywords": [
       "doua",
       "mare",
@@ -86581,7 +86581,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Era prohibiției",
     "category": "Istorie - Credință și Familie",
     "description": "Interzicerea în Statele Unite a fost o interdicție constituțională a producției, importului, transportului și vânzării băuturilor alcoolice, adoptată prin ce...",
-    "href": "/history/faith-family-and-community#Prohibition_in_the_United_States",
+    "href": "/history/faith-and-family#Prohibition_in_the_United_States",
     "keywords": [
       "era",
       "prohibiției",
@@ -86654,7 +86654,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Economia Statelor Unite",
     "category": "Istorie - Piețe Libere",
     "description": "Economia Statelor Unite este cea mai mare din lume după produsul intern brut nominal, producând bunuri și servicii evaluate la 31,442 trilioane de dolari (ra...",
-    "href": "/history/free-markets-and-prosperity#Economy_of_the_United_States",
+    "href": "/history/free-markets#Economy_of_the_United_States",
     "keywords": [
       "economia",
       "statelor",
@@ -86730,7 +86730,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Istorie economică",
     "category": "Istorie - Piețe Libere",
     "description": "Istoria economică a Statelor Unite urmărește evoluția de la așezările coloniale din secolul al XVII-lea centrate pe agricultură, industriile extractive precu...",
-    "href": "/history/free-markets-and-prosperity#Economic_history_of_the_United_States",
+    "href": "/history/free-markets#Economic_history_of_the_United_States",
     "keywords": [
       "istorie",
       "economică",
@@ -86796,7 +86796,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Marea Migrație",
     "category": "Istorie - Frontiere și Identitate",
     "description": "Marea migrație se referă la relocarea pe scară largă a aproximativ șase milioane de afro-americani din zona rurală de sud a Statelor Unite în centrele urbane...",
-    "href": "/history/border-sovereignty-and-national-identity#Great_Migration_African_American",
+    "href": "/history/border-sovereignty#Great_Migration_African_American",
     "keywords": [
       "marea",
       "migrație",
@@ -86855,7 +86855,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "A doua mare migrație",
     "category": "Istorie - Frontiere și Identitate",
     "description": "Cea de-a doua mare migrație se referă la mișcarea a aproximativ cinci milioane de afro-americani din sudul rural către orașele din nord, vestul mijlociu și v...",
-    "href": "/history/border-sovereignty-and-national-identity#Second_Great_Migration_African_American",
+    "href": "/history/border-sovereignty#Second_Great_Migration_African_American",
     "keywords": [
       "doua",
       "mare",
@@ -86937,7 +86937,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Noua Mare Migrație",
     "category": "Istorie - Frontiere și Identitate",
     "description": "Noua Mare Migrație este inversarea demografică în care afro-americanii s-au mutat din ce în ce mai mult din nord-estul, vestul mijlociu și vest înapoi în sud...",
-    "href": "/history/border-sovereignty-and-national-identity#New_Great_Migration",
+    "href": "/history/border-sovereignty#New_Great_Migration",
     "keywords": [
       "noua",
       "mare",
@@ -87002,7 +87002,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Marea Depresiune",
     "category": "Istorie - Frontiere și Identitate",
     "description": "Marea Depresiune din Statele Unite a fost o contracție economică severă și extinsă, care a apărut odată cu prăbușirea bursierei de pe Wall Street din octombr...",
-    "href": "/history/border-sovereignty-and-national-identity#Great_Depression_in_the_United_States",
+    "href": "/history/border-sovereignty#Great_Depression_in_the_United_States",
     "keywords": [
       "marea",
       "depresiune",
@@ -87092,7 +87092,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "New Deal",
     "category": "Istorie - Frontiere și Identitate",
     "description": "New Deal a constat din programe federale, proiecte de lucrări publice, reforme financiare și reglementări adoptate de președintele Franklin D.",
-    "href": "/history/border-sovereignty-and-national-identity#New_Deal",
+    "href": "/history/border-sovereignty#New_Deal",
     "keywords": [
       "new",
       "deal",
@@ -87314,7 +87314,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Criza energetică a anilor 1970",
     "category": "Istorie - Frontiere și Identitate",
     "description": "Criza energetică din anii 1970 a constat în două episoade majore de deficite acute ale aprovizionării cu petrol și creșteri ale prețurilor care au afectat ță...",
-    "href": "/history/border-sovereignty-and-national-identity#1970s_energy_crisis",
+    "href": "/history/border-sovereignty#1970s_energy_crisis",
     "keywords": [
       "criza",
       "energetică",
@@ -87988,7 +87988,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Mișcarea Populistă",
     "category": "Istorie - Era Populistă",
     "description": "Mișcarea Populistă — formal Partidul Poporului — a apărut în anii 1890 ca cea mai semnificativă revoltă politică agrară din istoria americană, canalizând fur...",
-    "href": "/history/the-populist-era#Populist_Movement",
+    "href": "/history/populist-era#Populist_Movement",
     "keywords": [
       "mișcarea",
       "populistă",
@@ -88049,7 +88049,7 @@ export const SEARCH_INDEX_RO: SearchItem[] = [
     "title": "Mișcarea Muncitorească și Conflictul Industrial",
     "category": "Istorie - Era Populistă",
     "description": "Epoca de Aur și Era Progresistă (1877-1920) au văzut cele mai sângeroase conflicte de muncă din istoria americană, pe măsură ce muncitorii industriali luptau...",
-    "href": "/history/the-populist-era#Labor_Movement_Industrial_Conflict",
+    "href": "/history/populist-era#Labor_Movement_Industrial_Conflict",
     "keywords": [
       "mișcarea",
       "muncitorească",

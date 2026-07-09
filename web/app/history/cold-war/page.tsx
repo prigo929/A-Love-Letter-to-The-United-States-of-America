@@ -13,7 +13,7 @@ export default async function ColdWarAndAntiCommunismPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
   const breadcrumbPage = locale === "ro" ? "Războiul Rece" : "Cold War";
-  const topics = THEMATIC_HISTORY_DATA["cold-war-and-anti-communism"] || [];
+  const topics = THEMATIC_HISTORY_DATA["cold-war"] || [];
 
   const title = {
     en: "Cold War",
@@ -38,7 +38,7 @@ export default async function ColdWarAndAntiCommunismPage() {
       </div>
       <ThematicSubpageClient
         locale={locale}
-        subpageId="cold-war-and-anti-communism"
+        subpageId="cold-war"
         title={title}
         description={description}
         topics={topics}

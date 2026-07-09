@@ -13,7 +13,7 @@ export default async function BorderSovereigntyAndNationalIdentityPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
   const breadcrumbPage = locale === "ro" ? "Suveranitatea Frontierelor" : "Border Sovereignty";
-  const topics = THEMATIC_HISTORY_DATA["border-sovereignty-and-national-identity"] || [];
+  const topics = THEMATIC_HISTORY_DATA["border-sovereignty"] || [];
 
   const title = {
     en: "Border Sovereignty",
@@ -38,7 +38,7 @@ export default async function BorderSovereigntyAndNationalIdentityPage() {
       </div>
       <ThematicSubpageClient
         locale={locale}
-        subpageId="border-sovereignty-and-national-identity"
+        subpageId="border-sovereignty"
         title={title}
         description={description}
         topics={topics}

@@ -83,18 +83,17 @@ const getIconForItem = (href: string) => {
   if (href.endsWith("frontier-and-expansion")) return <Compass className="w-5 h-5" />;
   if (href.endsWith("union-and-liberty")) return <Flag className="w-5 h-5" />;
   if (href.endsWith("industrial-rise")) return <TrendingUp className="w-5 h-5" />;
-  if (href.endsWith("arsenal-of-democracy")) return <Swords className="w-5 h-5" />;
   if (href.endsWith("wwii")) return <Swords className="w-5 h-5" />;
-  if (href.endsWith("cold-war-and-anti-communism")) return <Globe className="w-5 h-5" />;
-  if (href.endsWith("the-american-dream")) return <Home className="w-5 h-5" />;
-  if (href.endsWith("the-reagan-revolution")) return <Sun className="w-5 h-5" />;
+  if (href.endsWith("american-dream")) return <Home className="w-5 h-5" />;
+  if (href.endsWith("cold-war")) return <Globe className="w-5 h-5" />;
+  if (href.endsWith("reagan-revolution")) return <Sun className="w-5 h-5" />;
   if (href.endsWith("we-must-fight")) return <Megaphone className="w-5 h-5" />;
-  if (href.endsWith("faith-family-and-community")) return <Users className="w-5 h-5" />;
-  if (href.endsWith("free-markets-and-prosperity")) return <Coins className="w-5 h-5" />;
-  if (href.endsWith("border-sovereignty-and-national-identity")) return <Shield className="w-5 h-5" />;
+  if (href.endsWith("faith-and-family")) return <Users className="w-5 h-5" />;
+  if (href.endsWith("free-markets")) return <Coins className="w-5 h-5" />;
+  if (href.endsWith("border-sovereignty")) return <Shield className="w-5 h-5" />;
   if (href.endsWith("constitutional-battles")) return <Scale className="w-5 h-5" />;
   if (href.endsWith("post-9-11-america")) return <Eye className="w-5 h-5" />;
-  if (href.endsWith("the-populist-era")) return <Megaphone className="w-5 h-5" />;
+  if (href.endsWith("populist-era")) return <Megaphone className="w-5 h-5" />;
   return <BookOpen className="w-5 h-5" />;
 };
 

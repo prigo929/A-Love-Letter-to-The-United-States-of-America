@@ -141,6 +141,15 @@ const nextConfig: NextConfig = {
         destination: "/nature/national-parks",
         permanent: false,
       },
+      // History section reorganization — preserve old URLs
+      { source: "/history/arsenal-of-democracy", destination: "/history/wwii", permanent: true },
+      { source: "/history/the-american-dream", destination: "/history/american-dream", permanent: true },
+      { source: "/history/cold-war-and-anti-communism", destination: "/history/cold-war", permanent: true },
+      { source: "/history/the-reagan-revolution", destination: "/history/reagan-revolution", permanent: true },
+      { source: "/history/the-populist-era", destination: "/history/populist-era", permanent: true },
+      { source: "/history/free-markets-and-prosperity", destination: "/history/free-markets", permanent: true },
+      { source: "/history/faith-family-and-community", destination: "/history/faith-and-family", permanent: true },
+      { source: "/history/border-sovereignty-and-national-identity", destination: "/history/border-sovereignty", permanent: true },
     ];
   },
 };

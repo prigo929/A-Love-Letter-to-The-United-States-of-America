@@ -13,7 +13,7 @@ export default async function TheAmericanDreamPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
   const breadcrumbPage = locale === "ro" ? "Visul American" : "The American Dream";
-  const topics = THEMATIC_HISTORY_DATA["the-american-dream"] || [];
+  const topics = THEMATIC_HISTORY_DATA["american-dream"] || [];
 
   const title = {
     en: "The American Dream",
@@ -38,7 +38,7 @@ export default async function TheAmericanDreamPage() {
       </div>
       <ThematicSubpageClient
         locale={locale}
-        subpageId="the-american-dream"
+        subpageId="american-dream"
         title={title}
         description={description}
         topics={topics}

@@ -13,7 +13,7 @@ export default async function TheReaganRevolutionPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
   const breadcrumbPage = locale === "ro" ? "Revoluția Reagan" : "Reagan Revolution";
-  const topics = THEMATIC_HISTORY_DATA["the-reagan-revolution"] || [];
+  const topics = THEMATIC_HISTORY_DATA["reagan-revolution"] || [];
 
   const title = {
     en: "Reagan Revolution",
@@ -38,7 +38,7 @@ export default async function TheReaganRevolutionPage() {
       </div>
       <ThematicSubpageClient
         locale={locale}
-        subpageId="the-reagan-revolution"
+        subpageId="reagan-revolution"
         title={title}
         description={description}
         topics={topics}

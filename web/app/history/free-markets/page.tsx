@@ -13,7 +13,7 @@ export default async function FreeMarketsAndProsperityPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
   const breadcrumbPage = locale === "ro" ? "Piețe Libere și Prosperitate" : "Free Markets & Prosperity";
-  const topics = THEMATIC_HISTORY_DATA["free-markets-and-prosperity"] || [];
+  const topics = THEMATIC_HISTORY_DATA["free-markets"] || [];
 
   const title = {
     en: "Free Markets & Prosperity",
@@ -38,7 +38,7 @@ export default async function FreeMarketsAndProsperityPage() {
       </div>
       <ThematicSubpageClient
         locale={locale}
-        subpageId="free-markets-and-prosperity"
+        subpageId="free-markets"
         title={title}
         description={description}
         topics={topics}

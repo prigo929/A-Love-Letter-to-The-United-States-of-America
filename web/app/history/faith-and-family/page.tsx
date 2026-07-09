@@ -13,7 +13,7 @@ export default async function FaithFamilyAndCommunityPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
   const breadcrumbPage = locale === "ro" ? "Credință, Familie și Comunitate" : "Faith, Family & Community";
-  const topics = THEMATIC_HISTORY_DATA["faith-family-and-community"] || [];
+  const topics = THEMATIC_HISTORY_DATA["faith-and-family"] || [];
 
   const title = {
     en: "Faith, Family & Community",
@@ -38,7 +38,7 @@ export default async function FaithFamilyAndCommunityPage() {
       </div>
       <ThematicSubpageClient
         locale={locale}
-        subpageId="faith-family-and-community"
+        subpageId="faith-and-family"
         title={title}
         description={description}
         topics={topics}

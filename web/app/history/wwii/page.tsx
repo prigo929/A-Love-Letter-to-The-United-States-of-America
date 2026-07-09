@@ -3,6 +3,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { THEMATIC_HISTORY_DATA } from "@/lib/data/history-thematic-data";
 import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
+import { getWwiiHistoryImages } from "@/lib/data/wwii-history-images";
 
 export const metadata: Metadata = {
   title: "The United States of America during World War II | Patriotic USA",
@@ -13,7 +14,11 @@ export default async function WWIIHistoryPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
   const breadcrumbPage = locale === "ro" ? "al Doilea Război Mondial" : "WWII";
-  const topics = THEMATIC_HISTORY_DATA["wwii"] || [];
+  // World War II absorbs the former "Arsenal of Democracy" chapter as extra topics.
+  const topics = [
+    ...(THEMATIC_HISTORY_DATA["wwii"] || []),
+    ...(THEMATIC_HISTORY_DATA["arsenal-of-democracy"] || []),
+  ];
 
   const title = {
     en: "The United States of America during World War II",
@@ -42,6 +47,7 @@ export default async function WWIIHistoryPage() {
         title={title}
         description={description}
         topics={topics}
+        sectionImages={getWwiiHistoryImages(locale)}
       />
     </main>
   );

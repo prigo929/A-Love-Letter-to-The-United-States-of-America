@@ -423,20 +423,16 @@ export const NAV_SECTIONS = [
     imageSrc: SITE_IMAGES.homeDeclarationIndependence,
     badge: "1776 - Present",
     items: [
+      // ── Eras (chronological) ──────────────────────────────────────────────
       {
         label: "Founding Principles",
         href: "/history/founding-principles",
-        description: "Natural rights and constitutional republic",
-      },
-      {
-        label: "American Exceptionalism",
-        href: "/history/american-exceptionalism",
-        description: "Liberty-first political culture",
+        description: "Natural rights and the birth of the constitutional republic",
       },
       {
         label: "Frontier & Expansion",
         href: "/history/frontier-and-expansion",
-        description: "Westward expansion and individual pioneers",
+        description: "Westward expansion and the pioneer spirit",
       },
       {
         label: "Union & Liberty",
@@ -446,47 +442,53 @@ export const NAV_SECTIONS = [
       {
         label: "Industrial Rise",
         href: "/history/industrial-rise",
-        description: "Rise of American capitalism and entrepreneurship",
+        description: "The rise of American capitalism and enterprise",
       },
       {
-        label: "Arsenal of Democracy",
-        href: "/history/arsenal-of-democracy",
-        description: "WWII mobilization and industrial supremacy",
-      },
-      {
-        label: "WWII",
+        label: "World War II",
         href: "/history/wwii",
-        description: "The United States of America during World War II",
-      },
-      {
-        label: "Cold War",
-        href: "/history/cold-war-and-anti-communism",
-        description: "Containment and collapse of the USSR",
+        description: "From the Arsenal of Democracy to total victory",
       },
       {
         label: "The American Dream",
-        href: "/history/the-american-dream",
+        href: "/history/american-dream",
         description: "Postwar prosperity, suburbs, and mobility",
       },
       {
-        label: "Reagan Revolution",
-        href: "/history/the-reagan-revolution",
-        description: "Conservative revival and patriotism",
+        label: "Cold War",
+        href: "/history/cold-war",
+        description: "Containment and the collapse of the USSR",
       },
       {
-        label: "Faith & Family",
-        href: "/history/faith-family-and-community",
-        description: "Churches, civic associations, and moral culture",
+        label: "Reagan Revolution",
+        href: "/history/reagan-revolution",
+        description: "Conservative revival and renewed patriotism",
+      },
+      {
+        label: "Post-9/11 America",
+        href: "/history/post-9-11-america",
+        description: "The War on Terror and the security state",
+      },
+      {
+        label: "The Populist Era",
+        href: "/history/populist-era",
+        description: "MAGA, the Tea Party, and the backlash to globalization",
+      },
+      // ── Enduring Themes ───────────────────────────────────────────────────
+      {
+        label: "American Exceptionalism",
+        href: "/history/american-exceptionalism",
+        description: "The liberty-first political culture",
       },
       {
         label: "Free Markets",
-        href: "/history/free-markets-and-prosperity",
-        description: "Capitalism vs socialism and prosperity",
+        href: "/history/free-markets",
+        description: "Capitalism versus socialism, and the roots of prosperity",
       },
       {
-        label: "Border Sovereignty",
-        href: "/history/border-sovereignty-and-national-identity",
-        description: "Immigration, assimilation, and border policy",
+        label: "Faith & Family",
+        href: "/history/faith-and-family",
+        description: "Churches, civic associations, and moral culture",
       },
       {
         label: "Constitutional Battles",
@@ -494,14 +496,9 @@ export const NAV_SECTIONS = [
         description: "Originalism, states' rights, and free speech",
       },
       {
-        label: "Post-9/11 America",
-        href: "/history/post-9-11-america",
-        description: "War on terror and security state",
-      },
-      {
-        label: "The Populist Era",
-        href: "/history/the-populist-era",
-        description: "MAGA, Tea Party, and globalization backlash",
+        label: "Border Sovereignty",
+        href: "/history/border-sovereignty",
+        description: "Immigration, assimilation, and border policy",
       },
     ],
   },
@@ -917,49 +914,45 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
         label: "Ascensiunea Industrială",
         description: "Dezvoltarea capitalismului american și a antreprenoriatului",
       },
-      "/history/arsenal-of-democracy": {
-        label: "Arsenalul Democrației",
-        description: "Mobilizarea în al Doilea Război Mondial și supremația industrială",
-      },
       "/history/wwii": {
         label: "Al Doilea Război Mondial",
-        description: "Statele Unite ale Americii în timpul celui de-al Doilea Război Mondial",
+        description: "De la Arsenalul Democrației la victoria totală",
       },
-      "/history/cold-war-and-anti-communism": {
-        label: "Războiul Rece",
-        description: "Politica de îndiguire și prăbușirea URSS",
-      },
-      "/history/the-american-dream": {
+      "/history/american-dream": {
         label: "Visul American",
         description: "Prosperitatea postbelică, suburbiile și mobilitatea socială",
       },
-      "/history/the-reagan-revolution": {
+      "/history/cold-war": {
+        label: "Războiul Rece",
+        description: "Politica de îndiguire și prăbușirea URSS",
+      },
+      "/history/reagan-revolution": {
         label: "Revoluția Reagan",
         description: "Revigorarea conservatoare și patriotismul",
-      },
-      "/history/faith-family-and-community": {
-        label: "Credință și Familie",
-        description: "Bisericile, asociațiile civice și cultura morală",
-      },
-      "/history/free-markets-and-prosperity": {
-        label: "Piețe Libere",
-        description: "Capitalism versus socialism și prosperitate",
-      },
-      "/history/border-sovereignty-and-national-identity": {
-        label: "Suveranitatea Frontierelor",
-        description: "Imigrația, asimilarea și politica de frontieră",
-      },
-      "/history/constitutional-battles": {
-        label: "Bătălii Constituționale",
-        description: "Originalismul, drepturile statelor și libertatea de exprimare",
       },
       "/history/post-9-11-america": {
         label: "America Post-9/11",
         description: "Războiul împotriva terorismului și statul de securitate națională",
       },
-      "/history/the-populist-era": {
+      "/history/populist-era": {
         label: "Era Populistă",
         description: "Mişcarea MAGA, Tea Party și reacția împotriva globalizării",
+      },
+      "/history/free-markets": {
+        label: "Piețe Libere",
+        description: "Capitalism versus socialism și prosperitate",
+      },
+      "/history/faith-and-family": {
+        label: "Credință și Familie",
+        description: "Bisericile, asociațiile civice și cultura morală",
+      },
+      "/history/constitutional-battles": {
+        label: "Bătălii Constituționale",
+        description: "Originalismul, drepturile statelor și libertatea de exprimare",
+      },
+      "/history/border-sovereignty": {
+        label: "Suveranitatea Frontierelor",
+        description: "Imigrația, asimilarea și politica de frontieră",
       },
     },
   },

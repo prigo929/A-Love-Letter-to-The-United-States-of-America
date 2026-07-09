@@ -3620,7 +3620,7 @@ export const THEMATIC_HISTORY_DATA: Record<string, ThematicTopic[]> = {
       ],
     },
   ],
-  "cold-war-and-anti-communism": [
+  "cold-war": [
     {
       id: "Cold_War",
       title: { en: "The Cold War", ro: "Războiul Rece" },
@@ -4486,7 +4486,7 @@ export const THEMATIC_HISTORY_DATA: Record<string, ThematicTopic[]> = {
       ],
     },
   ],
-  "the-american-dream": [
+  "american-dream": [
     {
       id: "American_Century",
       title: { en: "The American Century", ro: "Secolul american" },
@@ -5233,7 +5233,7 @@ export const THEMATIC_HISTORY_DATA: Record<string, ThematicTopic[]> = {
       ],
     },
   ],
-  "the-reagan-revolution": [
+  "reagan-revolution": [
     {
       id: "Reagan",
       title: { en: "The Reagan Era", ro: "Era Reagan" },
@@ -5520,7 +5520,7 @@ export const THEMATIC_HISTORY_DATA: Record<string, ThematicTopic[]> = {
       ],
     },
   ],
-  "faith-family-and-community": [
+  "faith-and-family": [
     {
       id: "First_Great_Awakening",
       title: { en: "First Great Awakening", ro: "Prima Mare Trezire" },
@@ -6001,7 +6001,7 @@ export const THEMATIC_HISTORY_DATA: Record<string, ThematicTopic[]> = {
       ],
     },
   ],
-  "free-markets-and-prosperity": [
+  "free-markets": [
     {
       id: "Economy_of_the_United_States",
       title: { en: "Economy of the United States", ro: "Economia Statelor Unite" },
@@ -6416,7 +6416,7 @@ export const THEMATIC_HISTORY_DATA: Record<string, ThematicTopic[]> = {
       ],
     },
   ],
-  "border-sovereignty-and-national-identity": [
+  "border-sovereignty": [
     {
       id: "Great_Migration_African_American",
       title: { en: "The Great Migration", ro: "Marea Migrație" },
@@ -8112,7 +8112,7 @@ export const THEMATIC_HISTORY_DATA: Record<string, ThematicTopic[]> = {
       ],
     },
   ],
-  "the-populist-era": [
+  "populist-era": [
     {
       id: "Populist_Movement",
       title: { en: "The Populist Movement", ro: "Mișcarea Populistă" },

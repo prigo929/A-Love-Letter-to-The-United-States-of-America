@@ -13,7 +13,7 @@ export default async function ThePopulistEraPage() {
   const locale = await getServerLocale();
   const breadcrumbParent = locale === "ro" ? "Istorie" : "History";
   const breadcrumbPage = locale === "ro" ? "Era Populistă" : "The Populist Era";
-  const topics = THEMATIC_HISTORY_DATA["the-populist-era"] || [];
+  const topics = THEMATIC_HISTORY_DATA["populist-era"] || [];
 
   const title = {
     en: "The Populist Era",
@@ -38,7 +38,7 @@ export default async function ThePopulistEraPage() {
       </div>
       <ThematicSubpageClient
         locale={locale}
-        subpageId="the-populist-era"
+        subpageId="populist-era"
         title={title}
         description={description}
         topics={topics}
