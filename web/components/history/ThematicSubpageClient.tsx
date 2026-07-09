@@ -18,9 +18,16 @@ export interface SectionFigure {
   caption: string;
 }
 
+export interface ThematicTable {
+  caption?: { en: string; ro: string };
+  headers: { en: string; ro: string }[];
+  rows: { en: string; ro: string }[][];
+}
+
 export interface ThematicSubsection {
   heading: { en: string; ro: string };
   paragraphs: { en: string; ro: string }[];
+  table?: ThematicTable;
 }
 
 export interface ThematicSection {
@@ -332,6 +339,54 @@ export default function ThematicSubpageClient({
                                 );
                               })}
                             </div>
+                            {sub.table && (
+                              <div className="mt-6 overflow-x-auto rounded-lg border border-glory-gold/20 bg-white/[0.02]">
+                                {sub.table.caption && (
+                                  <div className="px-4 py-2.5 border-b border-glory-gold/20 bg-glory-gold/5">
+                                    <p className="text-[10px] font-bold text-glory-gold uppercase tracking-widest">
+                                      {currentLocale === "ro" ? sub.table.caption.ro : sub.table.caption.en}
+                                    </p>
+                                  </div>
+                                )}
+                                <table className="w-full text-sm">
+                                  <thead>
+                                    <tr className="border-b border-white/10 bg-white/[0.03]">
+                                      {sub.table.headers.map((h, hIdx) => (
+                                        <th
+                                          key={hIdx}
+                                          className="px-4 py-3 text-left text-[10px] font-bold text-glory-gold uppercase tracking-wider whitespace-nowrap"
+                                        >
+                                          {currentLocale === "ro" ? h.ro : h.en}
+                                        </th>
+                                      ))}
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {sub.table.rows.map((row, rIdx) => (
+                                      <tr
+                                        key={rIdx}
+                                        className={`border-b border-white/5 transition-colors hover:bg-white/[0.03] ${
+                                          rIdx % 2 === 0 ? "bg-transparent" : "bg-white/[0.01]"
+                                        }`}
+                                      >
+                                        {row.map((cell, cIdx) => (
+                                          <td
+                                            key={cIdx}
+                                            className={`px-4 py-3 text-sm leading-snug ${
+                                              cIdx === 0
+                                                ? "text-white/90 font-medium"
+                                                : "text-white/65"
+                                            }`}
+                                          >
+                                            {currentLocale === "ro" ? cell.ro : cell.en}
+                                          </td>
+                                        ))}
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </div>
+                            )}
                           </div>
                         );
                       })}
