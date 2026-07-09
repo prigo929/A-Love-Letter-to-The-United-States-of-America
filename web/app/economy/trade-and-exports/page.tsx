@@ -14,7 +14,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import type { Locale } from "@/lib/i18n/config";
 import { getServerLocale } from "@/lib/i18n/server";
-import { MacroStyles, MacroHero, MacroStat, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
+import { MacroStyles, MacroHero, MacroStat, InfrastructureBand, CountUp, MacroFact } from "@/components/economy/EconomyAnimations";
 import {
   getTradeOverviewParagraphs,
   US_EXPORT_CATEGORIES,
@@ -38,108 +38,6 @@ export async function generateMetadata() {
   const locale = await getServerLocale();
   return getPageMetadata(locale);
 }
-
-const TRADE_FACTS = [
-  // These facts are specific to the trade page, so they live here instead of
-  // the shared economy data file.
-  {
-    id: "trade-goods-total",
-    fact: "US merchandise exports exceed $2 trillion annually",
-    detail:
-      "Aircraft from Boeing, semiconductors from Intel and Qualcomm, medical devices from Medtronic, petrochemical products from ExxonMobil — America exports the most complex and high-value goods on Earth.",
-    source: "US Census Bureau / BEA 2026",
-    color: "gold" as const,
-  },
-  {
-    id: "trade-services",
-    fact: "US services exports exceed $1 trillion — the world's largest",
-    detail:
-      "Financial services from Goldman Sachs and JPMorgan, software from Microsoft and Salesforce, education from Harvard and MIT, entertainment from Hollywood — America's service exports are the envy of the world.",
-    source: "BEA / USTR 2026",
-    color: "red" as const,
-  },
-  {
-    id: "trade-aerospace",
-    fact: "America dominates aerospace exports — Boeing sells to 150+ countries",
-    detail:
-      "The aerospace and defense sector alone generates $132B+ in annual exports. Every major airline on Earth flies American-built engines, aircraft, or avionics. There is no peer competitor in commercial aerospace.",
-    source: "Aerospace Industries Association 2026",
-    color: "blue" as const,
-  },
-  {
-    id: "trade-ag",
-    fact: "America feeds the world — $58B+ in annual agricultural exports",
-    detail:
-      "The US is the world's largest exporter of soybeans, corn, cotton, and almonds, and among the top exporters of wheat, poultry, and pork. American farmers grow food that reaches every corner of the globe.",
-    source: "USDA Foreign Agricultural Service 2026",
-    color: "gold" as const,
-  },
-  {
-    id: "trade-pharma",
-    fact: "American pharmaceutical exports save lives on every continent",
-    detail:
-      "Pfizer, Merck, Eli Lilly, Johnson & Johnson — US pharmaceutical exports exceed $63 billion annually. COVID mRNA vaccines alone were a $50B+ export event. American biotech is a global public good.",
-    source: "PhRMA / BEA 2026",
-    color: "red" as const,
-  },
-  {
-    id: "trade-tech",
-    fact: "US software and intellectual property exports: $200B+ annually",
-    detail:
-      "Microsoft Windows, Adobe Creative Suite, Salesforce CRM, AWS cloud services, Apple App Store — American software is the invisible infrastructure of the global economy, generating hundreds of billions in annual export value.",
-    source: "BEA Intellectual Property Products 2026",
-    color: "blue" as const,
-  },
-  {
-    id: "trade-freight",
-    fact: "US freight rail is the most efficient and cost-effective in the world",
-    detail: "While Europe focuses heavily on subsidizing passenger rail, the US dominates in global freight rail efficiency. Carrying double-stacked containers, US freight rail drops shipping costs dramatically, powering next-day logistics and fully stocked shelves.",
-    source: "Association of American Railroads 2026",
-    color: "gold" as const,
-  },
-  {
-    id: "trade-waterways",
-    fact: "The Invisible Freight Highway: America's Inland Waterways",
-    detail: "The US manages 12,000 miles of inland navigation channels and 11,000 miles of intracoastal waterways. A single barge moves as much cargo as 70 tractor-trailers. The Mississippi River alone carries 60% of all US grain exports down to Gulf terminals — a cheap, natural geography asset unmatched in Europe or Asia.",
-    source: "US Army Corps of Engineers / ASCE 2024",
-    color: "blue" as const,
-  },
-  {
-    id: "trade-ag-geography",
-    fact: "Agricultural Geography: The Unrepeatable Endowment",
-    detail: "The US possesses the world's largest contiguous block of Class I and II arable land across the Midwest and Great Plains, combined with temperate precipitation and direct dual-ocean and Gulf access, creating structural immunity to food insecurity.",
-    source: "USDA Foreign Agricultural Service 2026",
-    color: "red" as const,
-  },
-  {
-    id: "trade-truckers",
-    fact: "The Trucker's Republic: America's Overland Freight Nervous System",
-    detail: "Over 3.5 million professional truck drivers move 70% of all domestic freight value in the US, coordinating $800 billion in overland shipping annually. Supported by massive private travel center chains like Pilot Flying J, Love's, and TA, this high-velocity highway logistics network keeps the continental economy operating in real-time.",
-    source: "American Trucking Associations / Bureau of Transportation Statistics 2026",
-    color: "gold" as const,
-  },
-  {
-    id: "interstate-highway",
-    fact: "The Interstate Highway System: Eisenhower's Continent-Scale Infrastructure",
-    detail: "Spanning 47,856 miles, it is the largest limited-access highway system in the world. Built primarily between 1956 and 1992, this unified network compressed travel times across a landmass the size of Europe, making long-haul trucking viable, enabling suburban growth, and generating unmatched national economic integration.",
-    source: "Federal Highway Administration (FHWA) 2024",
-    color: "blue" as const,
-  },
-  {
-    id: "trade-faa",
-    fact: "The FAA: Managing the World's Most Complex Airspace",
-    detail: "The Federal Aviation Administration manages over 80,000 flights daily across 29 million square miles of airspace, employing 14,000 controllers. While Europe's airspace is fragmented across 37 national air traffic organizations coordinating across borders, the US operates one unified system over a comparable landmass with a commercial aviation safety record approaching statistical zero.",
-    source: "Federal Aviation Administration (FAA) 2026",
-    color: "blue" as const,
-  },
-  {
-    id: "trade-logistics-duopoly",
-    fact: "FedEx and UPS: The Private Logistics Duopoly That Delivers the Economy",
-    detail: "FedEx and UPS pioneered modern express logistics, overnight shipping, and supply chain management. FedEx's Memphis hub processes 1M+ packages nightly, and UPS runs the world's 9th largest airline fleet for cargo. Together moving 40M packages daily, this private duopoly forms the backbone of global commerce, funded entirely by capital markets.",
-    source: "FedEx / UPS company data 2026",
-    color: "gold" as const,
-  },
-];
 
 const TRADE_PARTNERS = [
   // Trading partner cards are rendered from this array lower down the page.
@@ -271,92 +169,6 @@ export default async function TradeAndExportsPage() {
             }[category.category] ?? category.category,
         }))
       : US_EXPORT_CATEGORIES;
-  // These supporting facts belong only to the trade page, so they are kept
-  // local instead of expanding the shared data file unnecessarily.
-  const tradeFacts =
-    locale === "ro"
-      ? [
-          {
-            ...TRADE_FACTS[0],
-            fact: "Exporturile americane de bunuri depășesc anual 2 trilioane de dolari",
-            detail:
-              "Avioane Boeing, semiconductori Intel și Qualcomm, dispozitive medicale Medtronic, produse petrochimice ExxonMobil — America exportă cele mai complexe și valoroase bunuri de pe Pământ.",
-          },
-          {
-            ...TRADE_FACTS[1],
-            fact: "Exporturile americane de servicii depășesc 1 trilion de dolari — cele mai mari din lume",
-            detail:
-              "Servicii financiare de la Goldman Sachs și JPMorgan, software de la Microsoft și Salesforce, educație de la Harvard și MIT, divertisment de la Hollywood — exporturile americane de servicii sunt invidiate de toată lumea.",
-          },
-          {
-            ...TRADE_FACTS[2],
-            fact: "America domină exporturile aerospațiale — Boeing vinde în peste 150 de țări",
-            detail:
-              "Numai sectorul aerospațial și de apărare generează exporturi anuale de peste 132 mld. $. Fiecare mare companie aeriană din lume zboară cu motoare, avioane sau avionică americană.",
-          },
-          {
-            ...TRADE_FACTS[3],
-            fact: "America hrănește lumea — peste 58 mld. $ exporturi agricole anual",
-            detail:
-              "SUA sunt cel mai mare exportator mondial de soia, porumb, bumbac și migdale și printre lideri la grâu, carne de pasăre și porc. Fermierii americani cultivă hrană care ajunge în fiecare colț al globului.",
-          },
-          {
-            ...TRADE_FACTS[4],
-            fact: "Exporturile farmaceutice americane salvează vieți pe toate continentele",
-            detail:
-              "Pfizer, Merck, Eli Lilly, Johnson & Johnson — exporturile farmaceutice ale SUA depășesc anual 63 mld. $. Vaccinurile mRNA pentru COVID au fost singure un eveniment de export de peste 50 mld. $.",
-          },
-          {
-            ...TRADE_FACTS[5],
-            fact: "Exporturile americane de software și proprietate intelectuală depășesc 200 mld. $ anual",
-            detail:
-              "Microsoft Windows, Adobe Creative Suite, Salesforce, AWS, App Store-ul Apple — software-ul american este infrastructura invizibilă a economiei globale.",
-          },
-          {
-            ...TRADE_FACTS[6],
-            fact: "Căile ferate de marfă din SUA sunt cele mai eficiente din lume",
-            detail:
-              "În timp ce Europa subvenționează masiv transportul feroviar de călători, SUA excelează în transportul feroviar de marfă. Trenurile cu containere duble reduc costurile de transport, permițând logistica rapidă și prețurile mici.",
-            source: "Association of American Railroads 2026",
-          },
-          {
-            ...TRADE_FACTS[7],
-            fact: "Autostrada Invizibilă de Marfă: Căile Navigabile Interioare ale Americii",
-            detail: "SUA administrează 19.300 km de canale de navigație interioară și 17.700 km de căi navigabile intracoastale. O singură barjă transportă cât 70 de TIR-uri. Fluviul Mississippi susține 60% din exporturile de cereale ale SUA — un avantaj geografic natural neegalat în Europa sau Asia.",
-            source: "US Army Corps of Engineers / ASCE 2024",
-          },
-          {
-            ...TRADE_FACTS[8],
-            fact: "Geografia Agricolă: O Moștenire Naturală Unică",
-            detail: "Statele Unite dețin cel mai mare bloc contiguu de terenuri arabile de Clasa I și II din lume în Midwest și Marile Câmpii, beneficiind de precipitații temperate și acces direct la două oceane și Golful Mexic, oferind imunitate la insecuritate alimentară.",
-            source: "USDA Foreign Agricultural Service 2026",
-          },
-          {
-            ...TRADE_FACTS[9],
-            fact: "Republica Tiriștilor: Sistemul Nervos al Transportului Terestru",
-            detail: "Peste 3,5 milioane de șoferi profesioniști de camion transportă 70% din valoarea mărfurilor interne din SUA, coordonând anual transporturi terestre de 800 de miliarde de dolari. Susținută de lanțuri private de popasuri gigantice (Pilot Flying J, Love's, TA), această rețea logistică de mare viteză menține economia continentală în timp real.",
-            source: "American Trucking Associations / Bureau of Transportation Statistics 2026",
-          },
-          {
-            ...TRADE_FACTS[10],
-            fact: "Autostrăzile Interstatale: Integrarea Economică a Continentului",
-            detail: "Cu 47.856 de mile (77.000 km) de autostrăzi cu acces limitat, aceasta este cea mai mare rețea din lume. Construită din 1956, a conectat o populație de 330 de milioane de oameni cu o geometrie rutieră standardizată, reducând timpii de transport de marfă și integrând forța de muncă.",
-            source: "Federal Highway Administration (FHWA) 2024",
-          },
-          {
-            id: "trade-faa",
-            fact: "FAA: Gestionarea Celui Mai Complex Spațiu Aerian",
-            detail: "Federal Aviation Administration (FAA) gestionează peste 80.000 de zboruri zilnic pe o suprafață de 29 de milioane de mile pătrate, având peste 14.000 de controlori de trafic. În timp ce spațiul aerian european este fragmentat între 37 de organizații naționale, SUA operează un singur sistem unificat cu o rată de accidente fatale de aproape zero.",
-            source: "Federal Aviation Administration (FAA) 2026",
-          },
-          {
-            id: "trade-logistics-duopoly",
-            fact: "FedEx și UPS: Duopolul Privat Logistica al Economiei",
-            detail: "FedEx și UPS au fost pionierii logisticii moderne rapide și ai livrărilor garantate peste noapte. Hub-ul Memphis al FedEx sortează peste 1 milion de pachete pe noapte, iar UPS deține a 9-a cea mai mare flotă aeriană de marfă din lume. Împreună livrează 40 de milioane de colete zilnic în SUA, fiind finanțate integral prin piața de capital.",
-            source: "FedEx / UPS company data 2026",
-          },
-        ]
-      : TRADE_FACTS;
   const tradePartners =
     locale === "ro"
       ? TRADE_PARTNERS.map((partner) => ({
@@ -435,7 +247,21 @@ export default async function TradeAndExportsPage() {
           sectorLabel: "Sector",
           hqLabel: "Sediu",
           roleLabel: "Rol global",
-          numbersTitle: "Cifrele exporturilor",
+          enginesEyebrow: "Cele două motoare",
+          enginesTitle: "Bunuri și servicii: motoarele gemene ale comerțului american",
+          enginesLead:
+            "Două motoare distincte propulsează comerțul american: bunuri fizice expediate din porturi și ferme, și servicii invizibile livrate prin cabluri și contracte. Împreună depășesc 3 trilioane de dolari în exporturi anuale — o combinație pe care nicio altă economie nu o poate egala.",
+          engineGoodsLabel: "Exporturi de bunuri / an",
+          engineServicesLabel: "Exporturi de servicii / an",
+          engineSoftwareLabel: "Software și proprietate intelectuală / an",
+          vsEyebrow: "Avantajul structural",
+          vsTitle: "America față de restul lumii",
+          vsLead:
+            "Dincolo de produse, America exportă ceva ce nu poate fi copiat: o geografie continentală și sisteme logistice unificate care fac totul să circule mai ieftin și mai rapid.",
+          vsUsHeader: "Statele Unite",
+          vsWorldHeader: "Restul lumii",
+          pullStatLabel:
+            "de colete traversează America în fiecare zi — coloana vertebrală privată a comerțului global, FedEx și UPS, finanțată integral de piețele de capital.",
           servicesEyebrow: "Superputerea ascunsă a exporturilor",
           servicesTitle: "Serviciile: surplusul comercial de un trilion de dolari al Americii",
           servicesP1:
@@ -469,7 +295,21 @@ export default async function TradeAndExportsPage() {
           sectorLabel: "Sector",
           hqLabel: "HQ",
           roleLabel: "Global Role",
-          numbersTitle: "The Export Numbers",
+          enginesEyebrow: "The Two Engines",
+          enginesTitle: "Goods & Services: The Twin Engines of American Trade",
+          enginesLead:
+            "Two distinct engines drive American trade: physical goods shipped from ports and farms, and invisible services delivered over wires and contracts. Together they top $3 trillion in annual exports — a combination no other economy can match.",
+          engineGoodsLabel: "Goods exports / year",
+          engineServicesLabel: "Services exports / year",
+          engineSoftwareLabel: "Software & intellectual property / year",
+          vsEyebrow: "The Structural Edge",
+          vsTitle: "America vs. The World",
+          vsLead:
+            "Beyond products, America exports something that can't be copied: a continental geography and unified logistics systems that move everything cheaper and faster.",
+          vsUsHeader: "United States",
+          vsWorldHeader: "The Rest of the World",
+          pullStatLabel:
+            "packages move across America every day — the private backbone of global commerce, FedEx and UPS, funded entirely by capital markets.",
           servicesEyebrow: "The Hidden Export Superpower",
           servicesTitle: "Services: America's Trillion-Dollar Trade Surplus",
           servicesP1:
@@ -485,6 +325,63 @@ export default async function TradeAndExportsPage() {
 
   // Used to scale each export bar relative to the biggest category.
   const maxExport = Math.max(...exportCategories.map((c) => c.exports));
+
+  // The two headline export streams — rendered as big borderless stats rather
+  // than another wall of paragraphs.
+  const engines = [
+    { value: "$2T+", label: copy.engineGoodsLabel },
+    { value: "$1T+", label: copy.engineServicesLabel },
+    { value: "$200B+", label: copy.engineSoftwareLabel },
+  ];
+
+  // Head-to-head structural advantages. These used to be prose "facts"; a
+  // comparison table makes the US-vs-world contrast do the persuading.
+  const comparisons =
+    locale === "ro"
+      ? [
+          {
+            topic: "Trafic aerian",
+            us: "Un singur spațiu aerian unificat · 80.000 de zboruri pe zi",
+            world: "Europa: 37 de organizații naționale fragmentate",
+          },
+          {
+            topic: "Transport feroviar de marfă",
+            us: "Cea mai eficientă rețea de marfă din lume · containere duble",
+            world: "Europa: cale ferată de pasageri subvenționată, marfă redusă",
+          },
+          {
+            topic: "Căi navigabile interioare",
+            us: "O barjă = 70 de TIR-uri · Mississippi duce 60% din exporturile de cereale",
+            world: "Nicio rețea naturală comparabilă",
+          },
+          {
+            topic: "Teren agricol",
+            us: "Cel mai mare bloc contiguu de teren arabil de Clasa I/II de pe Pământ",
+            world: "Fragmentat peste granițe și climate",
+          },
+        ]
+      : [
+          {
+            topic: "Air Traffic Control",
+            us: "One unified airspace · 80,000 flights a day",
+            world: "Europe: 37 fragmented national ANSPs",
+          },
+          {
+            topic: "Freight Rail",
+            us: "World's most efficient freight network · double-stacked containers",
+            world: "Europe: subsidized passenger rail, minimal freight",
+          },
+          {
+            topic: "Inland Waterways",
+            us: "1 barge = 70 tractor-trailers · Mississippi carries 60% of grain exports",
+            world: "No comparable natural network",
+          },
+          {
+            topic: "Farmland",
+            us: "Largest contiguous Class I/II arable block on Earth",
+            world: "Fragmented across borders and climates",
+          },
+        ];
 
   return (
     <>
@@ -660,19 +557,59 @@ export default async function TradeAndExportsPage() {
             </div>
           </section>
 
-          {/* Facts */}
+          {/* America vs. the world — the structural, un-copyable advantages */}
           <section className="border-t border-white/5 pt-32">
-            <h2 className="macro-section-title text-[clamp(24px,4vw,60px)] mb-16">
-              {copy.numbersTitle}
-            </h2>
-            <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
-              {tradeFacts.map((fact, i) => (
-                <MacroFact
-                  key={fact.id}
-                  index={i + 1}
-                  fact={fact.fact}
-                  detail={fact.detail}
-                />
+            <span className="macro-eyebrow">{copy.vsEyebrow}</span>
+            <h2 className="macro-section-title mt-6 mb-12">{copy.vsTitle}</h2>
+            <p className="macro-body max-w-4xl mb-16">{copy.vsLead}</p>
+
+            <div className="grid grid-cols-12 gap-4 border-b border-white/10 pb-4">
+              <div className="hidden md:block md:col-span-3" />
+              <div className="col-span-6 md:col-span-5">
+                <span className="macro-metadata text-[#E8B923]">{copy.vsUsHeader}</span>
+              </div>
+              <div className="col-span-6 md:col-span-4">
+                <span className="macro-metadata text-white/40">{copy.vsWorldHeader}</span>
+              </div>
+            </div>
+
+            {comparisons.map((row) => (
+              <div
+                key={row.topic}
+                className="grid grid-cols-12 gap-4 border-b border-white/10 py-8 items-start"
+              >
+                <div className="col-span-12 md:col-span-3 font-macro-display text-xl md:text-2xl text-white mb-2 md:mb-0">
+                  {row.topic}
+                </div>
+                <div className="col-span-6 md:col-span-5 font-macro-body text-base md:text-lg text-white leading-relaxed">
+                  <span className="text-[#E8B923] mr-2" aria-hidden="true">▮</span>
+                  {row.us}
+                </div>
+                <div className="col-span-6 md:col-span-4 font-macro-body text-base text-white/40 leading-relaxed">
+                  {row.world}
+                </div>
+              </div>
+            ))}
+          </section>
+
+          {/* Logistics pull-stat — one cinematic number instead of a card */}
+          <section className="border-t border-white/5 pt-32">
+            <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
+              <p className="font-macro-display font-black leading-none tracking-tighter text-[clamp(80px,16vw,220px)]">
+                <CountUp value={40} suffix="M" />
+              </p>
+              <p className="macro-body mt-8 max-w-3xl">{copy.pullStatLabel}</p>
+            </div>
+          </section>
+
+          {/* The two engines — headline export stats, not paragraphs */}
+          <section className="border-t border-white/5 pt-32">
+            <span className="macro-eyebrow">{copy.enginesEyebrow}</span>
+            <h2 className="macro-section-title mt-6 mb-12">{copy.enginesTitle}</h2>
+            <p className="macro-body max-w-4xl mb-20">{copy.enginesLead}</p>
+            <div className="grid gap-16 border-t border-[#E8B923]/30 pt-16 sm:grid-cols-3">
+              {engines.map((engine) => (
+                <MacroStat key={engine.label} value={engine.value} label={engine.label} />
               ))}
             </div>
           </section>
