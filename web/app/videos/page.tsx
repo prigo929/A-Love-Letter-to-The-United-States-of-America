@@ -21,6 +21,7 @@ interface VideoItem {
 
 interface SiteClip {
   src: string;
+  poster?: string;
   title: string;
   tag: string;
 }
@@ -70,34 +71,35 @@ export default async function VideosPage() {
       ];
 
   const siteClips: SiteClip[] = [
-    { src: "/videos/library/Culture/every-living-breathing-moment.mp4", title: isRo ? "Fiecare Clipă Trăită (Cinema Edit)" : "Every Living Breathing Moment (Cinema Edit)", tag: isRo ? "Cultură" : "Culture" },
-    { src: "/videos/library/Infrastructure/atlanta-highway-interchange.mp4", title: isRo ? "Intersecție de Autostrăzi din Atlanta" : "Atlanta Highway Interchange", tag: isRo ? "Infrastructură" : "Infrastructure" },
-    { src: "/videos/library/Infrastructure/atlanta-skyline-highways.mp4", title: isRo ? "Skyline și Autostrăzi în Atlanta" : "Atlanta Skyline & Highways", tag: isRo ? "Orașe" : "Cities" },
-    { src: "/videos/we-must-fight.mp4", title: isRo ? "Trebuie Să Luptăm (Ronald Reagan)" : "We Must Fight (Ronald Reagan)", tag: isRo ? "Istorie" : "History" },
-    { src: "/videos/earth-pixels-from-space.mp4", title: isRo ? "Pământul din Spațiu" : "Earth from Space", tag: isRo ? "Spațiu" : "Space" },
-    { src: "/videos/library/Technology/Falcon 9 Launch and Landing cinematic.mp4", title: isRo ? "Falcon 9 — Lansare și Aterizare" : "Falcon 9 — Launch & Landing", tag: "SpaceX" },
-    { src: "/videos/library/Technology/Starship's Tenth Flight Test launch and landing cinematic.mp4", title: isRo ? "Starship — Zborul 10" : "Starship — Flight 10", tag: "SpaceX" },
-    { src: "/videos/library/Technology/The Extravehicular Activity (EVA) Suit SpaceX ShowCase 4K Cinematic.mp4", title: isRo ? "Costumul EVA SpaceX" : "SpaceX EVA Suit", tag: "SpaceX" },
-    { src: "/videos/library/Technology/TERAFAB cinematic - with Tesla and SpaceX.mp4", title: isRo ? "TERAFAB — Tesla și SpaceX" : "TERAFAB — Tesla & SpaceX", tag: isRo ? "Industrie" : "Industry" },
-    { src: "/videos/library/Technology/Nvidia AI cinematic.mp4", title: isRo ? "NVIDIA — Era AI" : "NVIDIA — The AI Era", tag: "AI" },
-    { src: "/videos/library/Technology/Fiber Optics, light, trails video.mp4", title: isRo ? "Fibre Optice și Internetul" : "Fiber Optics & The Internet", tag: isRo ? "Tehnologie" : "Technology" },
-    { src: "/videos/library/Technology/Introducing iPhone 17 Pro - Apple.mp4", title: "iPhone 17 Pro", tag: "Apple" },
-    { src: "/videos/library/Technology/Introducing iPhone Air - Apple.mp4", title: isRo ? "Prezentarea iPhone Air" : "Introducing iPhone Air", tag: "Apple" },
-    { src: "/videos/library/Technology/Design is how it works - Apple.mp4", title: isRo ? "Designul Este Cum Funcționează" : "Design Is How It Works", tag: "Apple" },
-    { src: "/videos/library/Technology/Celebrating Steve - October 5 - Apple.mp4", title: isRo ? "Celebrându-l pe Steve" : "Celebrating Steve", tag: "Apple" },
-    { src: "/videos/library/Technology/Video Games, the Movie.mp4", title: isRo ? "Jocuri Video: Filmul" : "Video Games: The Movie", tag: "Gaming" },
-    { src: "/videos/library/Technology/The Call - Season 2022 Cinematic - League of Legends cinematic.mp4", title: isRo ? "Apelul: Sezonul 2022" : "The Call: Season 2022", tag: "Gaming" },
-    { src: "/videos/library/Technology/Video Games edit.mp4", title: isRo ? "Revoluția Jocurilor Video" : "American Gaming Revolution", tag: "Gaming" },
-    { src: "/videos/military/b2-spirit-hero.mp4", title: isRo ? "Bombardierul B-2 Spirit" : "B-2 Spirit Stealth Bomber", tag: isRo ? "Forțele Aeriene" : "Air Force" },
-    { src: "/videos/military/fly-navy.mp4", title: isRo ? "Marina SUA" : "Fly Navy", tag: isRo ? "Marina" : "Navy" },
-    { src: "/videos/military/us-space-force-americas-invisible-front.mp4", title: isRo ? "Forța Spațială: Frontul Invizibil" : "Space Force: Invisible Front", tag: isRo ? "Forța Spațială" : "Space Force" },
-    { src: "/videos/military/supremacy-wave.mp4", title: isRo ? "Supremație Aeriană" : "Air Supremacy", tag: isRo ? "Armată" : "Military" },
-    { src: "/videos/military/cia-edit.mp4", title: isRo ? "Sediul CIA" : "CIA Headquarters", tag: isRo ? "Servicii Secrete" : "Intelligence" },
-    { src: "/videos/library/Culture/Michael Jordan - Edit.mp4", title: "Michael Jordan", tag: isRo ? "Sport" : "Sports" },
-    { src: "/videos/times-square-aerial.mp4", title: "Times Square", tag: isRo ? "Orașe" : "Cities" },
-    { src: "/videos/library/Culture/Times Square Aerial.mp4", title: isRo ? "Skyline Times Square" : "Times Square Skyline", tag: isRo ? "Orașe" : "Cities" },
-    { src: "/videos/flag-loop.mp4", title: isRo ? "Drapelul American" : "Old Glory", tag: isRo ? "Simboluri" : "Symbols" },
+    { src: "/videos/library/Culture/every-living-breathing-moment.mp4", poster: "/IMAGES/Culture/Cinema/Illuminated-Chicago-Theatre-Marquee-Sign-At-Night-With-Street-View.jpg", title: isRo ? "Fiecare Clipă Trăită (Cinema Edit)" : "Every Living Breathing Moment (Cinema Edit)", tag: isRo ? "Cultură" : "Culture" },
+    { src: "/videos/library/Infrastructure/atlanta-highway-interchange.mp4", poster: "/IMAGES/Infrastructure/I-110 and I-115 Interchange Los Angeles.jpg", title: isRo ? "Intersecție de Autostrăzi din Atlanta" : "Atlanta Highway Interchange", tag: isRo ? "Infrastructură" : "Infrastructure" },
+    { src: "/videos/library/Infrastructure/atlanta-skyline-highways.mp4", poster: "/IMAGES/Cities/Atlanta Downtown at Sunset View.jpg", title: isRo ? "Skyline și Autostrăzi în Atlanta" : "Atlanta Skyline & Highways", tag: isRo ? "Orașe" : "Cities" },
+    { src: "/videos/we-must-fight.mp4", poster: "/IMAGES/History/Reagan at the Brandenburg Gate.jpg", title: isRo ? "Trebuie Să Luptăm (Ronald Reagan)" : "We Must Fight (Ronald Reagan)", tag: isRo ? "Istorie" : "History" },
+    { src: "/videos/earth-pixels-from-space.mp4", poster: "/IMAGES/USA from Space/Planet Earth.jpg", title: isRo ? "Pământul din Spațiu" : "Earth from Space", tag: isRo ? "Spațiu" : "Space" },
+    { src: "/videos/library/Technology/Falcon 9 Launch and Landing cinematic.mp4", poster: "/IMAGES/Technology/Commercial Space & SpaceX/SpaceX launch.jpg", title: isRo ? "Falcon 9 — Lansare și Aterizare" : "Falcon 9 — Launch & Landing", tag: "SpaceX" },
+    { src: "/videos/library/Technology/Starship's Tenth Flight Test launch and landing cinematic.mp4", poster: "/IMAGES/Technology/CRS-8 first stage landing.jpg", title: isRo ? "Starship — Zborul 10" : "Starship — Flight 10", tag: "SpaceX" },
+    { src: "/videos/library/Technology/The Extravehicular Activity (EVA) Suit SpaceX ShowCase 4K Cinematic.mp4", poster: "/IMAGES/USA from Space/Buzz_salutes_the_U.S._Flag on the lunar surface.jpg", title: isRo ? "Costumul EVA SpaceX" : "SpaceX EVA Suit", tag: "SpaceX" },
+    { src: "/videos/library/Technology/TERAFAB cinematic - with Tesla and SpaceX.mp4", poster: "/IMAGES/Technology/Landed rockets in hangar 39A SpaceX.jpg", title: isRo ? "TERAFAB — Tesla și SpaceX" : "TERAFAB — Tesla & SpaceX", tag: isRo ? "Industrie" : "Industry" },
+    { src: "/videos/library/Technology/Nvidia AI cinematic.mp4", poster: "/IMAGES/Technology/NVIDIA H100 GPU on new SXM5 Module. GTC2022_SXM5_01_v001_DL.png", title: isRo ? "NVIDIA — Era AI" : "NVIDIA — The AI Era", tag: "AI" },
+    { src: "/videos/library/Technology/Fiber Optics, light, trails video.mp4", poster: "/IMAGES/Technology/Fiber Optic Cable.jpg", title: isRo ? "Fibre Optice și Internetul" : "Fiber Optics & The Internet", tag: isRo ? "Tehnologie" : "Technology" },
+    { src: "/videos/library/Technology/Introducing iPhone 17 Pro - Apple.mp4", poster: "/IMAGES/Technology/iPhone saying Hello on dark background.jpg", title: "iPhone 17 Pro", tag: "Apple" },
+    { src: "/videos/library/Technology/Introducing iPhone Air - Apple.mp4", poster: "/IMAGES/Technology/iPhone saying Hello on wooden background.jpg", title: isRo ? "Prezentarea iPhone Air" : "Introducing iPhone Air", tag: "Apple" },
+    { src: "/videos/library/Technology/Design is how it works - Apple.mp4", poster: "/IMAGES/Technology/MacBook Pro.jpg", title: isRo ? "Designul Este Cum Funcționează" : "Design Is How It Works", tag: "Apple" },
+    { src: "/videos/library/Technology/Celebrating Steve - October 5 - Apple.mp4", poster: "/IMAGES/Technology/Apple Headquarters.jpg", title: isRo ? "Celebrându-l pe Steve" : "Celebrating Steve", tag: "Apple" },
+    { src: "/videos/library/Technology/Video Games, the Movie.mp4", poster: "/IMAGES/Technology/EA HQ campus logo.jpg", title: isRo ? "Jocuri Video: Filmul" : "Video Games: The Movie", tag: "Gaming" },
+    { src: "/videos/library/Technology/The Call - Season 2022 Cinematic - League of Legends cinematic.mp4", poster: "/IMAGES/Technology/PCB circuit board of electronic device.jpg", title: isRo ? "Apelul: Sezonul 2022" : "The Call: Season 2022", tag: "Gaming" },
+    { src: "/videos/library/Technology/Video Games edit.mp4", poster: "/IMAGES/Technology/home-silicon-valley.jpg", title: isRo ? "Revoluția Jocurilor Video" : "American Gaming Revolution", tag: "Gaming" },
+    { src: "/videos/military/b2-spirit-hero.mp4", poster: "/IMAGES/Military/Air Force/B-2 Spirit Bomber.jpg", title: isRo ? "Bombardierul B-2 Spirit" : "B-2 Spirit Stealth Bomber", tag: isRo ? "Forțele Aeriene" : "Air Force" },
+    { src: "/videos/military/fly-navy.mp4", poster: "/IMAGES/Military/Navy/FA-18 Super Hornet.jpg", title: isRo ? "Marina SUA" : "Fly Navy", tag: isRo ? "Marina" : "Navy" },
+    { src: "/videos/military/us-space-force-americas-invisible-front.mp4", poster: "/IMAGES/Military/Space Force/US Space Force Launch poster.jpg", title: isRo ? "Forța Spațială: Frontul Invizibil" : "Space Force: Invisible Front", tag: isRo ? "Forța Spațială" : "Space Force" },
+    { src: "/videos/military/supremacy-wave.mp4", poster: "/IMAGES/Military/Air Force/us-air-force-f22-raptor-close.jpg", title: isRo ? "Supremație Aeriană" : "Air Supremacy", tag: isRo ? "Armată" : "Military" },
+    { src: "/videos/military/cia-edit.mp4", poster: "/IMAGES/Military/Intelligence/Seal_of_the_Central_Intelligence_Agency.svg", title: isRo ? "Sediul CIA" : "CIA Headquarters", tag: isRo ? "Servicii Secrete" : "Intelligence" },
+    { src: "/videos/library/Culture/Michael Jordan - Edit.mp4", poster: "/IMAGES/Culture/Iconic Things/American Diner inside.jpg", title: "Michael Jordan", tag: isRo ? "Sport" : "Sports" },
+    { src: "/videos/times-square-aerial.mp4", poster: "/IMAGES/Culture/Iconic Things/Times Square.jpg", title: "Times Square", tag: isRo ? "Orașe" : "Cities" },
+    { src: "/videos/library/Culture/Times Square Aerial.mp4", poster: "/IMAGES/Cities/Aerial High Angle Midtown Manhattan Skyline Golden Hour Dense Skyscrapers Bank Of America Tower MetLife Building And 432 Park Avenue.jpg", title: isRo ? "Skyline Times Square" : "Times Square Skyline", tag: isRo ? "Orașe" : "Cities" },
+    { src: "/videos/flag-loop.mp4", poster: "/IMAGES/US Flags/Flag_of_the_United_States.svg", title: isRo ? "Drapelul American" : "Old Glory", tag: isRo ? "Simboluri" : "Symbols" },
   ];
+
 
   return (
     <main className="min-h-screen bg-navy-dark pt-24 text-white">
@@ -151,7 +153,7 @@ export default async function VideosPage() {
           <div className="flex flex-col gap-y-16">
             {siteClips.map((clip) => (
               <div key={clip.src} className="flex flex-col">
-                <LocalVideoCard src={clip.src} title={clip.title} />
+                <LocalVideoCard src={clip.src} poster={clip.poster} title={clip.title} />
                 <div className="mt-4 flex flex-col md:flex-row md:items-start justify-between gap-4">
                   <div className="space-y-2">
                     <h3 className="font-display text-2xl md:text-3xl font-bold text-white">{clip.title}</h3>

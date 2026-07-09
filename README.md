@@ -411,7 +411,7 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 | **🌱 Quality of Life** | **"Sovereign Standard of Living"**<br>• High-contrast data grids<br>• Modern consumer metrics | • **Consumer Abundance**: Real-world metrics detailing wages, healthcare outcomes, housing, and purchasing power. | • `/quality-of-life`<br>• `/quality-of-life/housing`<br>• `/quality-of-life/healthcare`<br>• `/quality-of-life/wages`<br>• `/quality-of-life/abundance`<br>• `/quality-of-life/america-vs-the-world` |
 | **🌎 Global Leadership** | **"Indispensable Nation Roles"**<br>• Treaty maps and reserve indexes | • **NATO Alliance & UN**: Fully operational NATO collective security details, Pax Americana, and foreign policy breakdowns. | • `/global-leadership`<br>• `/global-leadership/nato`<br>• `/global-leadership/un`<br>• `/global-leadership/pax-americana`<br>• `/global-leadership/foreign-policy` |
 | **📜 American History** | **"Patriotic Chronicle"**<br>• Custom thematic layout grids<br>• Deep-dive historical chapters | • **Sovereignty Chronicle**: Substantial analysis of American milestones, from founding principles to the modern era. | • `/history`<br>• `/history/founding-principles`<br>• `/history/frontier-and-expansion`<br>• `/history/union-and-liberty`<br>• `/history/industrial-rise`<br>• `/history/populism-and-labor`<br>• `/history/reform-and-rights`<br>• `/history/the-american-dream`<br>• `/history/crisis-and-resilience`<br>• `/history/world-wars`<br>• `/history/cold-war`<br>• `/history/reagan-revolution`<br>• `/history/post-9-11-america`<br>• `/history/american-exceptionalism`<br>• `/history/free-markets`<br>• `/history/faith-and-reform` |
-| **📊 Data & Media** | **"Editorial Dark"**<br>• Full-bleed masonry / mosaic gallery<br>• Category filter strip with animated transitions<br>• Tactical SVG map with heatmap overlays | • **Cinematic Photo Gallery** (`/gallery`): 520+-image masonry archive spanning all site verticals, with category tabs, lightbox zoom, and full bilingual copy.<br>• **U.S. Map Explorer** (`/explorer`): Interactive 50-state SVG map with GDP/population/statehood heatmaps, per-state data panels, search, regional filters, and per-state regional chronicle copy.<br>• **Data Fact Sheet** (`/data`): Curated empirical reference database. | • `/data`<br>• `/gallery`<br>• `/explorer` |
+| **📊 Data & Media** | **"Editorial Dark"**<br>• Full-bleed masonry / mosaic gallery<br>• Category filter strip with animated transitions<br>• Tactical SVG map with heatmap overlays | • **Cinematic Photo Gallery** (`/gallery`): 520+-image masonry archive spanning all site verticals, with category tabs, lightbox zoom, and full bilingual copy.<br>• **U.S. Map Explorer** (`/explorer`): Interactive 50-state SVG map with GDP/population/statehood heatmaps, per-state data panels, search, regional filters, and per-state regional chronicle copy.<br>• **Data Fact Sheet** (`/data`): Curated empirical reference database.<br>• **We Must Fight** (`/history/we-must-fight`): Full-screen cinematic Reagan speech experience with synchronized video, transcript, and historical context. | • `/data`<br>• `/gallery`<br>• `/explorer`<br>• `/videos`<br>• `/united-states`<br>• `/immigration-demographics`<br>• `/interactive`<br>• `/data/misconceptions`<br>• `/history/we-must-fight` |
 | **🎮 Interactive Features** | **"Interactive AI Oracle"**<br>• Guided AI chatbot interface | • **Ask America Oracle** (`/interactive`): Guided AI chatbot interface powered by arguments from all 12 verticals. | • `/interactive` |
 
 ## 🗺️ What Is Built
@@ -435,7 +435,7 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 </details>
 
 <details>
-<summary><strong>🌲 Nature</strong> (From the Arctic to the tropics — unrivaled natural beauty)</summary>
+<summary><strong>🌲 Nature</strong> (Unrivaled natural beauty spanning from the Arctic to the tropics)</summary>
 
 - `/nature` full landing page plus deep-dive routes:
   - **→ National Parks** (`/nature/national-parks`)
@@ -473,7 +473,7 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 </details>
 
 <details>
-<summary><strong>🎭 Culture</strong> (America didn't just build a nation — it built global culture)</summary>
+<summary><strong>🎭 Culture</strong> (The global cultural powerhouse shaping film, music, sports, and fashion)</summary>
 
 - `/culture` — "The American Operating System" hub page detailing cultural verticals and deep-dive routes:
   - **→ Film & Storytelling** (`/culture/film-and-storytelling`)
@@ -487,7 +487,7 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 </details>
 
 <details>
-<summary><strong>💡 Innovation</strong> (The internet, the iPhone, AI — all made in America)</summary>
+<summary><strong>💡 Innovation</strong> (Pioneering technologies like the internet, the iPhone, and AI)</summary>
 
 - `/innovation` — Technological ecosystem hub page detailing R&D budgets, VC percentage, and unicorns, plus deep-dive routes:
   - **→ The Internet** (`/innovation/internet-history`)
@@ -522,7 +522,6 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 <summary><strong>🌱 Quality of Life</strong> (The highest standard of living for the most people)</summary>
 
 - `/quality-of-life` full landing page detailing standard of living parameters, plus deep-dive routes:
-  - **→ Overview** (`/quality-of-life`)
   - **→ Housing & Real Estate** (`/quality-of-life/housing`)
   - **→ Healthcare Outcomes** (`/quality-of-life/healthcare`)
   - **→ Wages & Purchasing Power** (`/quality-of-life/wages`)
@@ -531,7 +530,7 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 </details>
 
 <details>
-<summary><strong>🌎 Global Leadership</strong> (The indispensable nation — leading the free world since 1945)</summary>
+<summary><strong>🌎 Global Leadership</strong> (The indispensable nation leading the free world since 1945)</summary>
 
 - `/global-leadership` — International footprint and treaty network hub page, plus deep-dive routes:
   - **→ NATO Alliance** (`/global-leadership/nato`)
@@ -566,10 +565,10 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 
 - Empirical database, cinematic image masonry, and map explorer routes:
   - **→ US Profile** (`/united-states`)
-  - **→ Data Fact Sheet** (`/data`)
   - **→ Immigration & Demographics** (`/immigration-demographics`)
   - **→ Photo Gallery** (`/gallery`)
   - **→ Videos** (`/videos`)
+  - **→ We Must Fight** (`/history/we-must-fight`) — Full-screen cinematic Reagan speech experience
   - **→ Map Explorer** (`/explorer`)
   - **→ Misconceptions** (`/data/misconceptions`)
   - **→ Ask America Oracle** (`/interactive`)

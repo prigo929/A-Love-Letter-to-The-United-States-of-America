@@ -14,11 +14,10 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { DollarReserveChart } from "@/components/data/DollarMarketCharts";
-import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand } from "@/components/economy/EconomyAnimations";
+import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
   DOLLAR_RESERVE_SHARE,
-  getDollarFacts,
   getDollarOverviewParagraphs,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -32,71 +31,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/economy/dollar-dominance" },
 };
 
-const DOLLAR_EXTENDED_FACTS = [
-  // Extra facts that belong only to this page.
-  {
-    id: "exorbitant-privilege",
-    fact: "The Dollar as Global Reserve Currency: The Exorbitant Privilege",
-    detail: "The US dollar constitutes approximately 60% of global foreign exchange reserves and is used in 88% of all international transactions. This 'exorbitant privilege' allows the US to borrow at lower rates and issue sovereign debt in its own currency, effectively subsidizing American borrowing costs.",
-    source: "Federal Reserve / BIS 2026",
-    color: "gold" as const,
-  },
-  {
-    id: "dollar-countries",
-    fact: "Over 65 countries peg or tightly link their currency to the US dollar",
-    detail:
-      "From Panama (which uses USD as legal tender) to Saudi Arabia, dozens of nations anchor their monetary systems to the dollar — amplifying its global reach far beyond US borders.",
-    source: "IMF Annual Report on Exchange Rate Arrangements 2026",
-    color: "gold" as const,
-  },
-  {
-    id: "dollar-commodities",
-    fact: "Oil, gold, copper, wheat — virtually every major commodity is dollar-denominated",
-    detail:
-      "When Brazil buys oil from Saudi Arabia, they transact in US dollars. When China imports copper from Chile, dollars change hands. American monetary policy is felt in every corner of the world.",
-    source: "BIS Quarterly Review 2026",
-    color: "red" as const,
-  },
-  {
-    id: "dollar-debt",
-    fact: "Over 50% of all international debt is denominated in US dollars",
-    detail:
-      "Governments, corporations, and banks from Istanbul to Jakarta borrow in dollars. This creates a structural demand for dollars that underpins the currency's reserve status.",
-    source: "Bank for International Settlements 2026",
-    color: "blue" as const,
-  },
-  {
-    id: "dollar-seigniorage",
-    fact: 'The US earns "seigniorage" — profit from issuing the world\'s money',
-    detail:
-      "When the Federal Reserve issues dollars, it earns an interest-free loan from the world. Economists estimate the exorbitant privilege saves the US $100–$500 billion annually in borrowing costs.",
-    source: "Federal Reserve Research / IMF Working Papers",
-    color: "gold" as const,
-  },
-  {
-    id: "dollar-sanctions",
-    fact: "Dollar dominance gives the US unparalleled geopolitical leverage",
-    detail:
-      "Being cut off from the dollar system — via SWIFT sanctions — is among the most powerful economic weapons available. Iran, Russia, and North Korea have all felt this power acutely.",
-    source: "US Treasury / OFAC",
-    color: "red" as const,
-  },
-  {
-    id: "dollar-fed",
-    fact: "The Federal Reserve is effectively the world's central bank",
-    detail:
-      "When the Fed raises interest rates, capital flows globally shift. When the Fed cuts, emerging market debt becomes cheaper. No other institution holds this degree of global financial authority.",
-    source: "Bank for International Settlements / Federal Reserve",
-    color: "blue" as const,
-  },
-  {
-    id: "dollar-fed-lender",
-    fact: "The Federal Reserve as Global Lender of Last Resort",
-    detail: "During crises, the Federal Reserve serves as the de facto international lender of last resort. In response to COVID-19, it extended $450 billion in dollar liquidity swap lines to foreign central banks. No international body, IMF mechanism, or other central bank possesses the capacity to stabilize the global financial system in this way.",
-    source: "Dallas Fed 2024",
-    color: "gold" as const,
-  },
-];
 
 const DOLLAR_TIMELINE = [
   // Timeline entries are plain data objects so the page can render them with one map().
@@ -150,63 +84,48 @@ export default async function DollarDominancePage() {
   const locale = await getServerLocale();
   const breadcrumbEconomy = locale === "ro" ? "Economie" : "Economy";
   const pageLabel = locale === "ro" ? "Dominația Dolarului" : "Dollar Dominance";
-  const sharedFacts = getDollarFacts(locale);
   const overviewParagraphs = getDollarOverviewParagraphs(locale);
-  // These page-only facts explain dollar dominance from angles that are not
-  // reused on the other economy pages.
-  const localFacts =
+  // Terminal "dollar advantage" section: three headline stats plus two editorial
+  // insights, replacing the old wall of eleven identical fact cards. The stats
+  // here are deliberately distinct from the hero (reserves / SWIFT / pegs).
+  const dollarStatTrio =
+    locale === "ro"
+      ? [
+          { value: "50%+", label: "din datoria internațională este denominată în dolari" },
+          { value: "$100–500B", label: "economisiți anual prin seigniorage — profitul din emiterea banilor lumii" },
+          { value: "$450B", label: "în linii de swap de urgență extinse de Fed băncilor centrale străine în 2020" },
+        ]
+      : [
+          { value: "50%+", label: "of all international debt is denominated in US dollars" },
+          { value: "$100–500B", label: "saved every year through seigniorage — the profit of issuing the world's money" },
+          { value: "$450B", label: "in emergency swap lines the Fed extended to foreign central banks in 2020" },
+        ];
+  const dollarInsights =
     locale === "ro"
       ? [
           {
-            id: "exorbitant-privilege",
-            fact: "Dolarul ca Monedă de Rezervă Globală: Privilegiul Exorbitant",
-            detail: "Dolarul constituie aproximativ 60% din rezervele valutare globale și este utilizat în 88% din tranzacțiile internaționale. Acest 'privilegiu exorbitant' permite SUA să se împrumute la rate mai mici în propria monedă.",
-            source: "Federal Reserve / BIS 2026",
-          },
-          {
-            ...DOLLAR_EXTENDED_FACTS[1],
-            fact: "Peste 65 de țări își fixează sau leagă strâns moneda de dolarul american",
+            fact: "Petrodolarul",
             detail:
-              "De la Panama, care folosește USD ca mijloc legal de plată, până la Arabia Saudită, zeci de națiuni își ancorează sistemele monetare de dolar, amplificându-i influența cu mult dincolo de granițele SUA.",
+              "De la acordul din anii 1970, petrolul — și practic orice marfă majoră — este prețuit și decontat în dolari, înglobând cererea de dolari în economia fiecărei națiuni.",
           },
           {
-            ...DOLLAR_EXTENDED_FACTS[1],
-            fact: "Petrolul, aurul, cuprul, grâul — practic orice marfă majoră este denominată în dolari",
+            fact: "Dolarul ca armă geopolitică",
             detail:
-              "Când Brazilia cumpără petrol din Arabia Saudită, tranzacționează în dolari americani. Când China importă cupru din Chile, schimbă dolari. Politica monetară americană se simte în fiecare colț al lumii.",
-          },
-          {
-            ...DOLLAR_EXTENDED_FACTS[2],
-            fact: "Peste 50% din datoria internațională este denominată în dolari americani",
-            detail:
-              "Guverne, corporații și bănci de la Istanbul la Jakarta se împrumută în dolari. Asta creează o cerere structurală pentru dolari care susține statutul de monedă de rezervă.",
-          },
-          {
-            ...DOLLAR_EXTENDED_FACTS[3],
-            fact: "SUA câștigă «seigniorage» — profit din emiterea banilor lumii",
-            detail:
-              "Când Federal Reserve emite dolari, primește practic un împrumut fără dobândă din partea restului lumii. Economiștii estimează că acest privilegiu salvează SUA între 100 și 500 de miliarde de dolari anual la costurile de finanțare.",
-          },
-          {
-            ...DOLLAR_EXTENDED_FACTS[4],
-            fact: "Dominația dolarului oferă SUA o influență geopolitică neegalată",
-            detail:
-              "A fi tăiat de la sistemul dolarului, prin sancțiuni SWIFT, este una dintre cele mai puternice arme economice disponibile. Iranul, Rusia și Coreea de Nord au simțit direct această putere.",
-          },
-          {
-            ...DOLLAR_EXTENDED_FACTS[5],
-            fact: "Federal Reserve este, în practică, banca centrală a lumii",
-            detail:
-              "Când Fed ridică dobânzile, fluxurile globale de capital se mută. Când Fed le reduce, datoria piețelor emergente devine mai ieftină. Nicio altă instituție nu deține o asemenea autoritate financiară globală.",
-          },
-          {
-            id: "dollar-fed-lender",
-            fact: "Federal Reserve ca Împrumutător Global de Ultimă Instanță",
-            detail: "În perioadele de criză, Fed acționează ca împrumutătorul internațional de ultimă instanță de facto. În timpul crizei COVID-19 (martie 2020), Fed a extins liniile de swap valutar cu 450 de miliarde de dolari pentru băncile centrale străine. Nicio altă instituție sau mecanism FMI nu are capacitatea de a asigura această lichiditate în dolari, stabilizând sistemul mondial în 2008, 2011 și 2020.",
-            source: "Dallas Fed 2024",
+              "A fi tăiat de la sistemul dolarului prin sancțiuni SWIFT este una dintre cele mai puternice arme economice de pe Pământ — Iranul, Rusia și Coreea de Nord au simțit-o direct.",
           },
         ]
-      : DOLLAR_EXTENDED_FACTS;
+      : [
+          {
+            fact: "The petrodollar",
+            detail:
+              "Since the 1970s agreement, oil — and virtually every major commodity — is priced and settled in dollars, embedding dollar demand into every nation's economy.",
+          },
+          {
+            fact: "The dollar as a geopolitical weapon",
+            detail:
+              "Being cut off from the dollar system through SWIFT sanctions is one of the most powerful economic weapons on Earth — Iran, Russia, and North Korea have all felt it directly.",
+          },
+        ];
   // The timeline is plain data on purpose so the render section can stay
   // simple and focus on structure instead of hard-coded event blocks.
   const timeline =
@@ -275,7 +194,11 @@ export default async function DollarDominancePage() {
           timelineTitle: "82 de ani de supremație a dolarului",
           timelineBody:
             "Dominația dolarului nu a fost accidentală — a fost construită prin politică deliberată, putere militară și forță economică de-a lungul a peste opt decenii.",
+          detailPullLabel:
+            "din fiecare tranzacție internațională de pe Pământ implică dolarul american — sistemul de operare invizibil al comerțului global.",
+          detailEyebrow: "Dominația, în cifre",
           detailTitle: "Avantajul dolarului — în detaliu",
+          insightsEyebrow: "De ce contează",
           calloutTitle: "Despre «de-dolarizare» — o verificare a realității",
           calloutP1:
             "În fiecare deceniu de la Bretton Woods, analiștii au prezis înlocuirea iminentă a dolarului. Lansarea euro în 1999, ascensiunea Chinei în anii 2000, propunerile BRICS în anii 2020 — fiecare a fost prezentată cu încredere drept clopotul funerar al dolarului. De fiecare dată, ponderea dolarului în rezervele globale a scăzut modest, apoi s-a stabilizat.",
@@ -304,7 +227,11 @@ export default async function DollarDominancePage() {
           timelineTitle: "82 Years of Dollar Supremacy",
           timelineBody:
             "The dollar's dominance was not accidental — it was built through deliberate policy, military power, and economic strength over eight decades.",
+          detailPullLabel:
+            "of every international transaction on Earth involves the US dollar — the invisible operating system of global trade.",
+          detailEyebrow: "Dominance, in numbers",
           detailTitle: "The Dollar Advantage — In Detail",
+          insightsEyebrow: "Why it matters",
           calloutTitle: "On “De-Dollarization” — A Reality Check",
           calloutP1:
             "Every decade since Bretton Woods, analysts have predicted the dollar's imminent replacement. The Euro launch in 1999, China's rise in the 2000s, BRICS proposals in the 2020s — each was confidently declared the dollar's death knell. Each time, the dollar's share of global reserves declined modestly, then stabilized.",
@@ -397,19 +324,33 @@ export default async function DollarDominancePage() {
             </div>
           </section>
 
-          {/* Extended facts */}
+          {/* Featured pull-stat — one cinematic number instead of a card wall */}
           <section className="border-t border-white/5 pt-32">
-            <h2 className="macro-section-title text-[clamp(24px,4vw,60px)] mb-16">
-              {copy.detailTitle}
-            </h2>
-            <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
-              {[...sharedFacts, ...localFacts].map((fact, i) => (
-                <MacroFact
-                  key={fact.id}
-                  index={i + 1}
-                  fact={fact.fact}
-                  detail={fact.detail}
-                />
+            <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
+              <p className="font-macro-display font-black leading-none tracking-tighter text-[clamp(72px,15vw,200px)]">
+                <CountUp value={88} suffix="%" />
+              </p>
+              <p className="macro-body mt-8 max-w-3xl">{copy.detailPullLabel}</p>
+            </div>
+          </section>
+
+          {/* Dominance, in numbers — headline stat trio */}
+          <section className="border-t border-white/5 pt-32">
+            <span className="macro-eyebrow">{copy.detailEyebrow}</span>
+            <h2 className="macro-section-title mt-6 mb-16">{copy.detailTitle}</h2>
+            <div className="grid gap-16 border-t border-[#E8B923]/30 pt-16 sm:grid-cols-3">
+              {dollarStatTrio.map((stat) => (
+                <MacroStat key={stat.label} value={stat.value} label={stat.label} />
+              ))}
+            </div>
+          </section>
+
+          {/* Two editorial insights */}
+          <section className="pt-8">
+            <span className="macro-eyebrow">{copy.insightsEyebrow}</span>
+            <div className="mt-10 grid gap-16 md:grid-cols-2">
+              {dollarInsights.map((insight) => (
+                <MacroFact key={insight.fact} fact={insight.fact} detail={insight.detail} />
               ))}
             </div>
           </section>

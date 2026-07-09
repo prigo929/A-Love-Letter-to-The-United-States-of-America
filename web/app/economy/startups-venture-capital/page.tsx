@@ -14,19 +14,15 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { VCBarChart, UnicornPieChart } from "@/components/data/VCCharts";
-import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand } from "@/components/economy/EconomyAnimations";
+import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
   VC_BY_COUNTRY,
   UNICORNS_BY_COUNTRY,
-  getVcFacts,
   getStartupTimeline,
   getStartupEcosystems,
-  getVcExtendedFacts,
   getTopVcFirms,
   getVcOverviewParagraphs,
-  type EconomyFact,
-  type ExtendedFact,
   type FoundingTimeline,
   type StartupEcosystem,
   type VcFirm,
@@ -50,21 +46,52 @@ export default async function StartupsVCPage() {
   const locale = await getServerLocale();
   const breadcrumbEconomy = locale === "ro" ? "Economie" : "Economy";
   const pageLabel = locale === "ro" ? "Startup-uri și VC" : "Startups & VC";
-  const sharedFacts = getVcFacts(locale);
   const overviewParagraphs = getVcOverviewParagraphs(locale);
-  const localFacts = getVcExtendedFacts(locale);
   const vcFirms = getTopVcFirms(locale);
   const ecosystems = getStartupEcosystems(locale);
   const timeline = getStartupTimeline(locale);
 
-  // We intentionally filter a couple of shared facts here so the "by the
-  // numbers" grid does not duplicate ideas already highlighted elsewhere.
-  const byTheNumbersFacts = [
-    ...sharedFacts.filter(
-      (fact: EconomyFact) => fact.id !== "vc-ai" && fact.id !== "immigrant-founders",
-    ),
-    ...localFacts,
-  ];
+  // Terminal "by the numbers" section: three headline stats plus two editorial
+  // insights, replacing the old wall of identical fact cards. The unicorn count
+  // is featured in its own section above, so it is not repeated here.
+  const vcStatTrio =
+    locale === "ro"
+      ? [
+          { value: "350K", label: "brevete acordate anual în SUA — nr. 1 mondial ca valoare a PI" },
+          { value: "$250B+", label: "investiți anual în R&D de firmele tech americane (Amazon, Alphabet, Meta, Microsoft)" },
+          { value: "$2T+", label: "valoarea produsă de primele 10 randamente VC din SUA, din investiții minuscule" },
+        ]
+      : [
+          { value: "350K", label: "US patents granted every year — #1 in the world by IP value" },
+          { value: "$250B+", label: "invested in R&D each year by US tech firms (Amazon, Alphabet, Meta, Microsoft)" },
+          { value: "$2T+", label: "in value produced by the top 10 US VC returns from tiny checks" },
+        ];
+  const vcInsights =
+    locale === "ro"
+      ? [
+          {
+            fact: "Capitolul 11: eșecul ca stare recuperabilă",
+            detail:
+              "Niciun alt cadru de faliment nu protejează atât de complet capacitatea unei afaceri de a continua să opereze în timp ce își restructurează datoriile. A trata eșecul ca recuperabil, nu ca un stigmat permanent, este un avantaj structural discret al ecosistemului american.",
+          },
+          {
+            fact: "Formare fără fricțiune",
+            detail:
+              "În timp ce reglementările europene cer săptămâni sau luni pentru a înființa și angaja legal, o companie americană se poate forma în ore — atrăgând marea majoritate a capitalului de risc global.",
+          },
+        ]
+      : [
+          {
+            fact: "Chapter 11: failure as a recoverable condition",
+            detail:
+              "No other bankruptcy framework so fully protects a business's ability to keep operating while it restructures its debts. Treating failure as recoverable rather than a permanent stigma is a quiet structural advantage of the American ecosystem.",
+          },
+          {
+            fact: "Frictionless formation",
+            detail:
+              "Where European regulation takes weeks or months to legally incorporate and hire, an American company can form in hours — attracting the vast majority of global venture capital.",
+          },
+        ];
 
   const copy =
     locale === "ro"
@@ -98,7 +125,11 @@ export default async function StartupsVCPage() {
           firmsBody:
             "Toate cele mai importante firme de venture capital din lume își au sediul în Statele Unite. Aceste firme nu doar investesc — ele modelează strategia tehnologică globală, recrutează cei mai buni ingineri din lume și fabrică companiile de mâine.",
           portfolioLabel: "Portofoliu notabil:",
+          vcPullLabel:
+            "valoarea combinată a companiilor fondate doar de absolvenți Stanford — Google, NVIDIA, Netflix, PayPal, Cisco, HP.",
+          vcNumbersEyebrow: "Motorul, în cifre",
           numbersTitle: "În cifre",
+          insightsEyebrow: "Avantaje structurale",
           quoteTitle: "Co-fondator, Andreessen Horowitz — Menlo Park, California",
           prevLink: "← Piețe de Capital",
           nextLink: "Dominația Dolarului →",
@@ -133,7 +164,11 @@ export default async function StartupsVCPage() {
           firmsBody:
             "Every one of the world's most consequential venture capital firms is headquartered in the United States. These firms don't just invest — they shape global technology strategy, recruit the world's best engineers, and manufacture the companies of tomorrow.",
           portfolioLabel: "Notable portfolio:",
+          vcPullLabel:
+            "the combined value of companies founded by Stanford alumni alone — Google, NVIDIA, Netflix, PayPal, Cisco, HP.",
+          vcNumbersEyebrow: "The engine, in numbers",
           numbersTitle: "By the Numbers",
+          insightsEyebrow: "Structural advantages",
           quoteTitle: "Co-Founder, Andreessen Horowitz — Menlo Park, California",
           prevLink: "← Capital Markets",
           nextLink: "Dollar Dominance →",
@@ -311,19 +346,33 @@ export default async function StartupsVCPage() {
             </div>
           </section>
 
-          {/* Facts grid */}
+          {/* Featured pull-stat — one cinematic number instead of a card wall */}
           <section className="border-t border-white/5 pt-32">
-            <h2 className="macro-section-title text-[clamp(24px,4vw,60px)] mb-16">
-              {copy.numbersTitle}
-            </h2>
-            <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
-              {byTheNumbersFacts.map((fact, i) => (
-                <MacroFact
-                  key={fact.id}
-                  index={i + 1}
-                  fact={fact.fact}
-                  detail={fact.detail}
-                />
+            <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
+              <p className="font-macro-display font-black leading-none tracking-tighter text-[clamp(72px,15vw,200px)]">
+                <CountUp value={5} prefix="$" suffix="T+" />
+              </p>
+              <p className="macro-body mt-8 max-w-3xl">{copy.vcPullLabel}</p>
+            </div>
+          </section>
+
+          {/* By the numbers — headline stat trio */}
+          <section className="border-t border-white/5 pt-32">
+            <span className="macro-eyebrow">{copy.vcNumbersEyebrow}</span>
+            <h2 className="macro-section-title mt-6 mb-16">{copy.numbersTitle}</h2>
+            <div className="grid gap-16 border-t border-[#E8B923]/30 pt-16 sm:grid-cols-3">
+              {vcStatTrio.map((stat) => (
+                <MacroStat key={stat.label} value={stat.value} label={stat.label} />
+              ))}
+            </div>
+          </section>
+
+          {/* Two editorial insights */}
+          <section className="pt-8">
+            <span className="macro-eyebrow">{copy.insightsEyebrow}</span>
+            <div className="mt-10 grid gap-16 md:grid-cols-2">
+              {vcInsights.map((insight) => (
+                <MacroFact key={insight.fact} fact={insight.fact} detail={insight.detail} />
               ))}
             </div>
           </section>

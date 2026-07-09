@@ -21,7 +21,6 @@ import { getServerLocale } from "@/lib/i18n/server";
 import {
   SP500_HISTORY,
   MARKET_CAP_BY_EXCHANGE,
-  getCapitalMarketsFacts,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -32,101 +31,6 @@ export const metadata: Metadata = {
     "NYSE + NASDAQ: $69 trillion in market cap. US Treasuries set the world's risk-free rate. The deepest, most liquid capital markets in human history.",
   alternates: { canonical: "/economy/capital-markets" },
 };
-
-const CAPITAL_MARKETS_EXTENDED_FACTS = [
-  // Page-specific supporting facts. Shared facts stay in economy-data.ts;
-  // local facts that belong only to this page can live here.
-  {
-    id: "stock-market-wealth",
-    fact: "US stock market represents roughly 60% of total global equity value",
-    detail: "Despite having only 4% of the world's population, everyday Americans utilize 401(k)s and Roth IRAs to invest in the S&P 500, which has historically crushed European indices like the Stoxx 600, compounding wealth at a rate that is largely impossible in Europe.",
-    source: "Visual Capitalist 2024",
-    color: "gold" as const,
-  },
-  {
-    id: "capital-markets-depth",
-    fact: "The NYSE and NASDAQ carry a combined market capitalization approaching $70 trillion",
-    detail: "This unmatched depth means American companies of every size — from seed-stage startups to Fortune 500 firms — can access the cheapest financing on Earth, which is a primary reason why they scale faster, invest in R&D, and dominate global markets.",
-    source: "World Federation of Exchanges 2026",
-    color: "red" as const,
-  },
-  {
-    id: "asset-management",
-    fact: "US asset managers control over $25 trillion in global wealth",
-    detail:
-      "BlackRock, Vanguard, and State Street manage more assets than the entire GDP of China. This 'Big Three' provides the backbone of global institutional investment.",
-    source: "Investment Company Institute 2026",
-    color: "gold" as const,
-  },
-  {
-    id: "spy-liquidity",
-    fact: "S&P 500 ETFs trade $60B+ in volume every single trading day",
-    detail:
-      "The SPY ETF alone regularly exceeds $60 billion in daily volume — more than the entire annual GDP of many nations, traded in a single day on a single American exchange.",
-    source: "Bloomberg 2026",
-    color: "red" as const,
-  },
-  {
-    id: "private-equity",
-    fact: "US private equity manages over $14 trillion in assets",
-    detail:
-      "America's private equity industry — Blackstone, Apollo, KKR, Carlyle — manages more capital than the GDP of China, Japan, and Germany combined in private markets alone.",
-    source: "Preqin 2026",
-    color: "blue" as const,
-  },
-  {
-    id: "hedge-funds",
-    fact: "70% of global hedge fund AUM is managed from the United States",
-    detail:
-      "Greenwich, CT and Midtown Manhattan host the world's most sophisticated capital allocators. Ray Dalio's Bridgewater alone manages $160B+ in assets.",
-    source: "Preqin / HFR 2026",
-    color: "gold" as const,
-  },
-  {
-    id: "ipo-market",
-    fact: "The US IPO market raises more capital than the next 5 exchanges combined",
-    detail:
-      "Companies from around the world — Alibaba, Arm Holdings, Spotify — choose to list on US exchanges to access American capital depth. There is no rival.",
-    source: "Ernst & Young Global IPO Monitor 2026",
-    color: "red" as const,
-  },
-  {
-    id: "options-market",
-    fact: "The US options market is larger than all other global markets combined",
-    detail:
-      "American derivatives exchanges trade over 40 million contracts per day, providing the world's most sophisticated mechanism for hedging and price discovery.",
-    source: "Options Clearing Corporation 2026",
-    color: "blue" as const,
-  },
-  {
-    id: "401k-revolution",
-    fact: "The 401(k) Revolution: Democratizing Compound Wealth",
-    detail: "Total US retirement financial assets reached $45.8 trillion in mid-2025, with IRAs holding $18 trillion and 401(k) plans accounting for $9.3 trillion. Created by a tax loophole in 1978, this system effectively turned ordinary workers into long-term equity investors compounding in the deepest market on Earth.",
-    source: "Investment Company Institute (ICI) Q3 2025",
-    color: "gold" as const,
-  },
-  {
-    id: "index-fund-innovation",
-    fact: "The Index Fund: Financial Innovation That Eliminated Active Management Fees",
-    detail: "Launched by Jack Bogle (Vanguard) in 1976, passive retail index investing represents over $15 trillion in US assets. Low-cost passive indexing and ETFs (invented in 1993) eliminate active management fees, letting middle-class retirement savers capture the full compounding returns of the market.",
-    source: "Vanguard / ICI 2026",
-    color: "red" as const,
-  },
-  {
-    id: "municipal-bond-market",
-    fact: "The Municipal Bond Market: Tax-Exempt Local Finance at $4 Trillion",
-    detail: "Established in the Revenue Act of 1913, the US municipal bond market allows state and local governments to issue debt exempt from federal and frequently state taxes. This allows school districts, water systems, and local transport authorities to borrow at lower yields, channeling private capital into public goods without requiring federal appropriations.",
-    source: "SIFMA 2026",
-    color: "gold" as const,
-  },
-  {
-    id: "us-insurance-market",
-    fact: "The US Insurance Market: Underwriting the World's Risk-Taking",
-    detail: "Accounting for 40% of global insurance premiums, the depth of the US insurance market enables high-risk innovation, mortgage availability, and corporate venture investments. Giants MetLife, Prudential, and Berkshire Hathaway constitute a private risk-distribution infrastructure that underpins the dynamism of the entire economy.",
-    source: "Insurance Information Institute 2026",
-    color: "blue" as const,
-  },
-];
 
 const MAJOR_US_EXCHANGES = [
   // Simple content array used to generate the three exchange cards below.
@@ -163,86 +67,46 @@ export default async function CapitalMarketsPage() {
   const locale = await getServerLocale();
   const breadcrumbEconomy = locale === "ro" ? "Economie" : "Economy";
   const pageLabel = locale === "ro" ? "Piețe de Capital" : "Capital Markets";
-  const sharedFacts = getCapitalMarketsFacts(locale);
-  // Shared facts come from the central data file; local facts stay here when
-  // they only belong to this one subpage.
-  const localFacts =
+  // Terminal "advantage" section: three headline stats plus two editorial
+  // insights, replacing the old wall of fourteen identical fact cards.
+  const cmStatTrio =
+    locale === "ro"
+      ? [
+          { value: "$40T+", label: "capitalizarea combinată a NYSE și NASDAQ" },
+          { value: "$27T", label: "piața de obligațiuni a SUA — cea mai adâncă și lichidă din istorie" },
+          { value: "$12T", label: "administrați de private equity-ul american (Blackstone, Apollo, KKR)" },
+        ]
+      : [
+          { value: "$40T+", label: "combined market cap of the NYSE and NASDAQ" },
+          { value: "$27T", label: "the US bond market — the deepest, most liquid in history" },
+          { value: "$12T", label: "managed by American private equity (Blackstone, Apollo, KKR)" },
+        ];
+  const cmInsights =
     locale === "ro"
       ? [
           {
-            id: "stock-market-wealth",
-            fact: "Bursa din SUA reprezintă aproximativ 60% din valoarea totală a acțiunilor globale",
-            detail: "În ciuda faptului că are doar 4% din populație, clasa de mijloc din SUA folosește conturi 401(k) și Roth IRA pentru a investi în S&P 500, care a depășit istoric indicii europeni (Stoxx 600), acumulând avere într-un mod imposibil în Europa.",
-            source: "Visual Capitalist 2024",
-          },
-          {
-            id: "capital-markets-depth",
-            fact: "NYSE și NASDAQ au o capitalizare combinată de peste 40 de trilioane de dolari",
-            detail: "Această profunzime unică înseamnă că firmele americane de toate dimensiunile pot accesa cea mai ieftină finanțare de pe Pământ, ajutându-le să se dezvolte rapid, să investească în R&D și să domine piețele.",
-            source: "World Federation of Exchanges 2026",
-          },
-          {
-            ...CAPITAL_MARKETS_EXTENDED_FACTS[2],
-            fact: "Administratorii de active din SUA controlează peste 25 de trilioane de dolari",
+            fact: "Titlurile de Trezorerie ale SUA sunt reperul global fără risc",
             detail:
-              "BlackRock, Vanguard și State Street gestionează mai multe active decât întregul PIB al Chinei. Acești «Giganți» reprezintă coloana vertebrală a investițiilor instituționale globale.",
+              "Fiecare model financiar de pe Pământ pornește de la randamentele Trezoreriei americane ca bază pentru randamentul fără risc — nicio altă piață nu are aceeași adâncime și încredere.",
           },
           {
-            ...CAPITAL_MARKETS_EXTENDED_FACTS[3],
-            fact: "ETF-urile pe S&P 500 tranzacționează peste 50 mld. $ în fiecare zi de bursă",
+            fact: "Revoluția 401(k) a transformat muncitorii în investitori",
             detail:
-              "Doar ETF-ul SPY depășește frecvent 50 de miliarde de dolari volum zilnic — mai mult decât PIB-ul anual al multor națiuni, tranzacționat într-o singură zi pe o singură bursă americană.",
-          },
-          {
-            ...CAPITAL_MARKETS_EXTENDED_FACTS[4],
-            fact: "Private equity-ul american administrează peste 12 trilioane de dolari",
-            detail:
-              "Industria americană de private equity — Blackstone, Apollo, KKR, Carlyle — administrează mai mult capital decât PIB-ul Chinei, Japoniei și Germaniei la un loc doar în piețele private.",
-          },
-          {
-            ...CAPITAL_MARKETS_EXTENDED_FACTS[5],
-            fact: "70% din activele hedge fund-urilor globale sunt gestionate din Statele Unite",
-            detail:
-              "Greenwich, Connecticut și Midtown Manhattan găzduiesc cei mai sofisticați alocatori de capital din lume. Numai Bridgewater al lui Ray Dalio administrează peste 150 mld. $.",
-          },
-          {
-            ...CAPITAL_MARKETS_EXTENDED_FACTS[6],
-            fact: "Piața IPO din SUA strânge mai mult capital decât următoarele 5 burse la un loc",
-            detail:
-              "Companii din toată lumea — Alibaba, Arm Holdings, Spotify — aleg listarea pe bursele americane pentru a accesa profunzimea capitalului american. Nu există rival.",
-          },
-          {
-            ...CAPITAL_MARKETS_EXTENDED_FACTS[7],
-            fact: "Piața opțiunilor din SUA este mai mare decât toate celelalte piețe globale la un loc",
-            detail:
-              "Bursele americane de derivate tranzacționează peste 40 de milioane de contracte pe zi, oferind cel mai sofisticat mecanism din lume pentru acoperirea riscurilor și descoperirea prețurilor.",
-          },
-          {
-            ...CAPITAL_MARKETS_EXTENDED_FACTS[8],
-            fact: "Revoluția 401(k): Democratizarea Acumulării de Avere",
-            detail: "Activele de pensionare din SUA au atins 45,8 trilioane $ în 2025, planurile 401(k) reprezentând 9,3 trilioane $, iar conturile IRA 18 trilioane $. Apărut dintr-o lacună fiscală din 1978, sistemul a transformat lucrătorii în investitori pe termen lung pe piețele americane de acțiuni.",
-            source: "Investment Company Institute (ICI) Q3 2025",
-          },
-          {
-            ...CAPITAL_MARKETS_EXTENDED_FACTS[9],
-            fact: "Fondul de Indici: Inovația Financiară ce a Eliminat Comisioanele Active",
-            detail: "Lansat de Jack Bogle (Vanguard) în 1976, investițiile pasive în fonduri indexate reprezintă acum peste 15 trilioane $ în active din SUA. Urmărirea pasivă a indicilor și ETF-urile (create în 1993) economisesc comisioane masive, stimulând randamentul economiilor de pensionare.",
-            source: "Vanguard / ICI 2026",
-          },
-          {
-            id: "municipal-bond-market",
-            fact: "Piața Obligațiunilor Municipale: Finanțare Locală de 4 Trilioane $",
-            detail: "Înființată în 1913, piața obligațiunilor municipale din SUA permite guvernelor locale să emită datorii scutite de taxe. Acest mecanism permite orașelor și districtelor școlare să împrumute la dobânzi mai mici pentru drumuri și școli, direcționând capitalul privat spre bunuri publice fără alocare federală.",
-            source: "SIFMA 2026",
-          },
-          {
-            id: "us-insurance-market",
-            fact: "Piața Asigurărilor din SUA: Asigurarea Riscului Global",
-            detail: "Statele Unite operează cea mai mare piață de asigurări din lume, reprezentând aproximativ 40% din primele de asigurare globale. Această profunzime permite asumarea riscurilor în afaceri și investiții: capitalul de risc finanțează startup-uri, iar companiile operează în medii intense de litigiu știind că riscurile sunt calculate și distribuite.",
-            source: "Insurance Information Institute 2026",
+              "Activele de pensionare din SUA au atins 45,8 trilioane $. Un sistem apărut dintr-o lacună fiscală din 1978 a transformat americanii obișnuiți în investitori pe termen lung pe cea mai performantă piață din lume.",
           },
         ]
-      : CAPITAL_MARKETS_EXTENDED_FACTS;
+      : [
+          {
+            fact: "US Treasuries are the world's risk-free benchmark",
+            detail:
+              "Every financial model on Earth prices off US Treasury yields as the baseline for risk-free returns — no other market matches their depth and trust.",
+          },
+          {
+            fact: "The 401(k) revolution turned workers into investors",
+            detail:
+              "US retirement assets have reached $45.8 trillion. A system born from a 1978 tax quirk turned ordinary Americans into long-term investors in the best-performing market on Earth.",
+          },
+        ];
   // These cards are simple data objects so the JSX can render them with a
   // small `.map()` instead of repeating the same markup three times.
   const exchanges =
@@ -285,7 +149,11 @@ export default async function CapitalMarketsPage() {
             "S&P 500 — 46 de ani de performanță a piețelor americane de capital",
           exchangesTitle: "Marile burse ale Americii",
           estLabel: "Înființată",
+          advantagePullLabel:
+            "din valoarea acțiunilor publice de pe Pământ se tranzacționează pe piețele americane — dintr-o țară cu doar 4% din populația lumii.",
+          advantageEyebrow: "Adâncimea, în cifre",
           advantageTitle: "Avantajul piețelor de capital",
+          insightsEyebrow: "De ce contează",
           quoteTitle: "Președinte și CEO, Berkshire Hathaway — Omaha, Nebraska",
           prevLink: "← PIB și Dimensiune",
           nextLink: "Startup-uri și VC →",
@@ -308,7 +176,11 @@ export default async function CapitalMarketsPage() {
             "S&P 500 — 46 Years of American Capital Market Performance",
           exchangesTitle: "America's Major Exchanges",
           estLabel: "Est.",
+          advantagePullLabel:
+            "of all the public equity value on Earth trades on US markets — from a country with just 4% of the world's population.",
+          advantageEyebrow: "The depth, in numbers",
           advantageTitle: "The Capital Markets Advantage",
+          insightsEyebrow: "Why it matters",
           quoteTitle: "Chairman & CEO, Berkshire Hathaway — Omaha, Nebraska",
           prevLink: "← GDP & Scale",
           nextLink: "Startups & VC →",
@@ -454,19 +326,33 @@ export default async function CapitalMarketsPage() {
             </div>
           </section>
 
-          {/* Extended facts */}
+          {/* Featured pull-stat — one cinematic number instead of a card wall */}
           <section className="border-t border-white/5 pt-32">
-            <h2 className="macro-section-title text-[clamp(24px,4vw,60px)] mb-16">
-              {copy.advantageTitle}
-            </h2>
-            <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
-              {[...sharedFacts, ...localFacts].map((fact, i) => (
-                <MacroFact
-                  key={fact.id}
-                  index={i + 1}
-                  fact={fact.fact}
-                  detail={fact.detail}
-                />
+            <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
+              <p className="font-macro-display font-black leading-none tracking-tighter text-[clamp(72px,15vw,200px)]">
+                <CountUp value={60} suffix="%" />
+              </p>
+              <p className="macro-body mt-8 max-w-3xl">{copy.advantagePullLabel}</p>
+            </div>
+          </section>
+
+          {/* The advantage, in numbers — headline stat trio */}
+          <section className="border-t border-white/5 pt-32">
+            <span className="macro-eyebrow">{copy.advantageEyebrow}</span>
+            <h2 className="macro-section-title mt-6 mb-16">{copy.advantageTitle}</h2>
+            <div className="grid gap-16 border-t border-[#E8B923]/30 pt-16 sm:grid-cols-3">
+              {cmStatTrio.map((stat) => (
+                <MacroStat key={stat.label} value={stat.value} label={stat.label} />
+              ))}
+            </div>
+          </section>
+
+          {/* Two editorial insights */}
+          <section className="pt-8">
+            <span className="macro-eyebrow">{copy.insightsEyebrow}</span>
+            <div className="mt-10 grid gap-16 md:grid-cols-2">
+              {cmInsights.map((insight) => (
+                <MacroFact key={insight.fact} fact={insight.fact} detail={insight.detail} />
               ))}
             </div>
           </section>
