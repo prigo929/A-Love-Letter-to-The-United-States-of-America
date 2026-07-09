@@ -458,15 +458,11 @@ export default async function DollarDominancePage() {
                 ? "Fiecare bancnotă americană poartă simboluri cu rezonanță istorică profundă: Ochiul Providenței, constelația celor 13 stele, vulturul și scutul. Peste 2 trilioane de dolari circulă la nivel global — circa 60% în afara Statelor Unite."
                 : "Every Federal Reserve Note carries centuries of symbolism: the Eye of Providence, the thirteen-star constellation, the eagle and shield. Over $2 trillion in physical dollars circulate globally, with roughly 60% held outside the United States."}
             </p>
+            {/* The two banknote faces (wide/landscape) share one row; the vertical
+                currency stack gets its own row below, shown in full and uncropped. */}
             <PhotoLightboxGrid
-              gridClassName="grid grid-cols-1 md:grid-cols-3 gap-4"
+              gridClassName="grid grid-cols-1 sm:grid-cols-2 gap-4"
               photos={[
-                {
-                  src: SITE_IMAGES.economyPaperMoney,
-                  alt: "American paper money denominations laid out from small to large bills",
-                  caption: locale === "ro" ? "Bancnotele Americane — de la $1 la $100" : "US Currency — $1 to $100",
-                  aspect: "4/3",
-                },
                 {
                   src: SITE_IMAGES.economyDollarObverse,
                   alt: "United States one dollar bill — obverse side with George Washington portrait",
@@ -478,6 +474,17 @@ export default async function DollarDominancePage() {
                   alt: "United States one dollar bill — reverse side with the Great Seal",
                   caption: locale === "ro" ? "Dolarul — verso (Marele Sigiliu)" : "Dollar Bill — Reverse (Great Seal)",
                   aspect: "12/5",
+                },
+              ]}
+            />
+            <PhotoLightboxGrid
+              gridClassName="grid grid-cols-1 gap-4 mt-4 max-w-md mx-auto"
+              photos={[
+                {
+                  src: SITE_IMAGES.economyPaperMoney,
+                  alt: "American paper money denominations laid out from small to large bills",
+                  caption: locale === "ro" ? "Bancnotele Americane — de la $1 la $100" : "US Currency — $1 to $100",
+                  aspect: "2975/4460",
                 },
               ]}
             />

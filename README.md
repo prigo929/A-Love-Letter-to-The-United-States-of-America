@@ -1994,7 +1994,7 @@ The Interactive vertical at `/interactive` functions as a tokenized search and s
 The Video vertical at `/videos` hosts high-definition films illustrating the continental scale, cities, infrastructure, and daily neighborhoods of the United States.
 
 <p align="center">
-  <img src="web/IMAGES/Cities/Golden Gate Bridge.jpg" width="600" alt="Golden Gate Bridge: Cinematic Perspectives" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Culture/Cinema/Illuminated-Chicago-Theatre-Marquee-Sign-At-Night-With-Street-View.jpg" width="600" alt="Chicago Theatre Marquee: Cinematic Landscapes" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 ### 1. Responsive 16K/8K Aerial Showcases
@@ -2016,7 +2016,7 @@ The Video vertical at `/videos` hosts high-definition films illustrating the con
 The Misconceptions module at `/data/misconceptions` serves as an audited statistical checkpoint, contrasting viral narratives with verified global indicators.
 
 <p align="center">
-  <img src="web/IMAGES/Culture/Iconic Things/Statue Of Liberty.jpg" width="600" alt="Statue Of Liberty: Beacon of Truth" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Constitution/United States National Archives Building, Washington D.C.jpg" width="600" alt="National Archives Building: Beacon of Truth" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 ### 1. Audited International Data Matching
@@ -2039,7 +2039,7 @@ The Misconceptions module at `/data/misconceptions` serves as an audited statist
 The United States Profile at `/united-states` acts as a high-fidelity interactive dashboard organizing the nation's core demographics, symbols, and history.
 
 <p align="center">
-  <img src="web/IMAGES/US Buildings/US Capitol Presidential Inauguration.jpg" width="600" alt="US Profile Tabbed Dashboard" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
+  <img src="web/IMAGES/Cities/Manhattan One World Trade Center Close-up.jpg" width="600" alt="One World Trade Center: United States Profile Tabbed Dashboard" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 ### 1. Interactive 8-Section Tab Controller
