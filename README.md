@@ -212,6 +212,102 @@ A curated showcase of cinematic, ultra-high-resolution local assets from our cen
 
 <br />
 
+<h3>★ The Spirit of Adventure — Landscapes & Natural Majesty ★</h3>
+
+<p align="center">
+  A curated collection highlighting the sweeping natural scale and rugged beauty of the American outdoors.
+</p>
+
+<div align="center">
+  <img src="web/IMAGES/Landscapes/Yosemite National Park Road.jpg" width="600" alt="Yosemite National Park Road" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #48BB78; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Open Road in Yosemite" ★</strong>
+    <br />
+    A scenic drive cutting through the towering pines and granite cliffs of Yosemite National Park, California, capturing the pioneering call of the American West.
+  </div>
+</div>
+
+<div align="center">
+  <img src="web/IMAGES/Landscapes/Zion National Park.jpg" width="600" alt="Zion National Park" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #48BB78; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Red Canyons of Zion" ★</strong>
+    <br />
+    The monolithic Navajo sandstone peaks of Zion National Park, Utah, sculpted by millions of years of water carving through the Virgin River basin.
+  </div>
+</div>
+
+<div align="center">
+  <img src="web/IMAGES/Landscapes/Glacier National Park.jpg" width="600" alt="Glacier National Park" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #48BB78; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Glacial Valleys of Montana" ★</strong>
+    <br />
+    Carved U-shaped valleys and turquoise alpine lakes in Glacier National Park, Montana, along the Continental Divide.
+  </div>
+</div>
+
+<div align="center">
+  <img src="web/IMAGES/Landscapes/Saguaro National Park, United States Desert.jpg" width="600" alt="Saguaro National Park" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #48BB78; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Giants of Saguaro" ★</strong>
+    <br />
+    The towering saguaro cacti of the Sonoran Desert in Saguaro National Park, Arizona—an iconic symbol of the arid American Southwest.
+  </div>
+</div>
+
+<br />
+
+<h3>★ The Flight of Freedom — Air & Sea Dominance ★</h3>
+
+<p align="center">
+  A showcase of the strategic military platforms that secure international shipping lanes and project peace through strength.
+</p>
+
+<div align="center">
+  <img src="web/IMAGES/Military/Air Force/B-2 Spirit Bomber.jpg" width="600" alt="B-2 Spirit Stealth Bomber" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #E53E3E; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Stealth Sentinel" ★</strong>
+    <br />
+    The B-2 Spirit Stealth Bomber cruising through the clouds—a flying-wing design that forms the airborne leg of the nuclear triad.
+  </div>
+</div>
+
+<div align="center">
+  <img src="web/IMAGES/Military/Air Force/us-air-force-f22-raptor-close.jpg" width="600" alt="F-22 Raptor Air Superiority Fighter" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #E53E3E; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "Dominating the Skies" ★</strong>
+    <br />
+    The F-22 Raptor air superiority fighter displaying its thrust-vectoring nozzles and stealth geometries during an aerial demonstration.
+  </div>
+</div>
+
+<div align="center">
+  <img src="web/IMAGES/Military/Air Force/Boeing C-17 Globemaster III_aircraft_over_over_the_Blue_Ridge_Mountains_2005.jpg" width="600" alt="C-17 Globemaster III" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #E53E3E; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "Wings of Logistics" ★</strong>
+    <br />
+    The massive Boeing C-17 Globemaster III soaring above the misty ridges of the Blue Ridge Mountains, illustrating America's rapid continent-scale power projection.
+  </div>
+</div>
+
+<div align="center">
+  <img src="web/IMAGES/Military/Navy/us-navy-dual-carrier-strike-group.jpg" width="600" alt="Dual Carrier Strike Group" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <div style="max-width: 550px; text-align: center; margin: 15px auto 35px auto; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: #A0AEC0;">
+    <strong style="color: #E53E3E; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">★ "The Sovereign Strike Groups" ★</strong>
+    <br />
+    A dual U.S. Navy aircraft carrier strike group navigating in formation with guided-missile cruisers and destroyers, securing freedom of navigation across the world's oceans.
+  </div>
+</div>
+
+<br />
+
 ### ★ Witness to History — The Iconic Photograph Collection ★
 
 A second showcase, drawn from the **Iconic Photographs archive** (`web/lib/data/iconic-photographs-data.ts`) — a curated, ever-growing set of the landmark photographs that tell the American story, each sourced from public-domain collections (NASA, the National Archives, the Library of Congress, the DoD) and surfaced across the site's per-section "Iconic Photographs" strips.
