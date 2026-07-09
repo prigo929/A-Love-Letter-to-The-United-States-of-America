@@ -922,7 +922,7 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
         description: "Mobilizarea în al Doilea Război Mondial și supremația industrială",
       },
       "/history/wwii": {
-        label: "al Doilea Război Mondial",
+        label: "Al Doilea Război Mondial",
         description: "Statele Unite ale Americii în timpul celui de-al Doilea Război Mondial",
       },
       "/history/cold-war-and-anti-communism": {
