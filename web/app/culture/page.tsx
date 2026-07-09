@@ -81,11 +81,11 @@ import {
 export const metadata: Metadata = {
   title: "American Culture | The American Operating System",
   description:
-    "America didn't just build a nation — it built the operating system for modern civilization. Explore the cultural exports, soft power pillars, and free-market forces that shape how the world eats, dresses, watches, and dreams.",
+    "Explore the cultural exports, soft power pillars, and free-market forces that shape how the world eats, dresses, watches, and dreams, highlighting the global reach of American influence.",
   openGraph: {
     title: "American Culture | The American Operating System",
     description:
-      "Film, music, food, sports, fashion, brands — America's cultural arsenal, built by free markets and broadcast to the world.",
+      "Explore film, music, food, sports, fashion, and brands: America's cultural arsenal, built by free markets and broadcast to the world.",
     images: [{ url: SITE_IMAGES.culture.timesSquare, width: 1200, height: 630 }],
   },
 };
@@ -126,8 +126,8 @@ export default async function CulturePage() {
     titleLine1: isRo ? "SISTEMUL DE" : "THE AMERICAN",
     titleLine2: isRo ? "OPERARE AMERICAN" : "OPERATING SYSTEM",
     deck: isRo
-      ? "America nu a construit doar o națiune. A construit sistemul de operare al civilizației moderne — prin piețe libere, întreprinderi private și acces democratic."
-      : "America didn\u2019t just build a nation. It built the operating system for modern civilization \u2014 through free markets, private enterprise, and democratic access.",
+      ? "Sistemul de operare al civilizației moderne, clădit pe fundamentele piețelor libere, ale inițiativei private și ale accesului democratic."
+      : "The operating system for modern civilization, built on the foundations of free markets, private enterprise, and democratic access.",
   };
 
   const gridTitle = isRo ? "Verticale Culturale" : "Cultural Verticals";

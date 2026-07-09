@@ -165,7 +165,7 @@ export function DataObservatory({ isRo }: { isRo: boolean }) {
         heroTitle1: "AMERICA",
         heroTitle2: "ÎN CIFRE",
         heroDeck:
-          "Bilanțul măsurabil al celei mai puternice națiuni din istorie — economie, capital, inovație, natură, apărare, știință și cultură — strâns într-un singur observator de date, fiecare cifră fiind legată de o sursă primară.",
+          "Bilanțul măsurabil al celei mai puternice națiuni din istorie, acoperind economia, capitalul, inovația, natura, apărarea, știința și cultura, strâns într-un singur observator de date, cu fiecare cifră legată de o sursă primară.",
         scrollHint: "Derulează pentru a explora",
         exploreEyebrow: "Toate Verticalele",
         exploreTitle: "Explorează Fiecare Domeniu",
@@ -181,7 +181,7 @@ export function DataObservatory({ isRo }: { isRo: boolean }) {
         heroTitle1: "AMERICA",
         heroTitle2: "BY THE NUMBERS",
         heroDeck:
-          "The measurable record of the most powerful nation in history — economy, capital, innovation, nature, defense, science, and culture — gathered into a single data observatory, every figure tied to a primary source.",
+          "The measurable record of the most powerful nation in history, covering economy, capital, innovation, nature, defense, science, and culture, gathered into a single data observatory, with every figure tied to a primary source.",
         scrollHint: "Scroll to explore",
         exploreEyebrow: "Every Vertical",
         exploreTitle: "Explore Every Domain",
@@ -362,7 +362,7 @@ export function DataObservatory({ isRo }: { isRo: boolean }) {
       </DomainBlock>
 
       {/* §04 Nature */}
-      <DomainBlock shaded index="04" eyebrow={L("Nature & Geography", "Natură și Geografie")} title={L("A Continent of Natural Wealth", "Un Continent de Bogăție Naturală")} blurb={L("From the Arctic to the tropics — 63 national parks and a fifth of Earth's surface freshwater.", "Din Arctica până la tropice — 63 de parcuri naționale și o cincime din apa dulce a planetei.")}>
+      <DomainBlock shaded index="04" eyebrow={L("Nature & Geography", "Natură și Geografie")} title={L("A Continent of Natural Wealth", "Un Continent de Bogăție Naturală")} blurb={L("Unrivaled natural beauty spanning from the Arctic to the tropics, featuring 63 national parks and a fifth of Earth's surface freshwater.", "Frumusețe naturală fără rival din Arctica până în zonele tropicale, cu 63 de parcuri naționale și o cincime din apa dulce a planetei.")}>
         <div className="mb-6"><StatBand stats={natureStats} /></div>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <ChartFrame><ParkVisitorsChart data={TOP_PARKS_VISITORS} title={L("Most-Visited National Parks (M visitors)", "Cele Mai Vizitate Parcuri (mil. vizitatori)")} source="NPS 2024" /></ChartFrame>
@@ -377,12 +377,12 @@ export function DataObservatory({ isRo }: { isRo: boolean }) {
       </DomainBlock>
 
       {/* §06 Science & education */}
-      <DomainBlock shaded index="06" eyebrow={L("Science & Education", "Știință și Educație")} title={L("The Engine of Discovery", "Motorul Descoperirii")} blurb={L("America builds the modern world one invention at a time — and trains the minds that do it.", "America clădește lumea modernă o invenție pe rând — și formează mințile care o fac.")}>
+      <DomainBlock shaded index="06" eyebrow={L("Science & Education", "Știință și Educație")} title={L("The Engine of Discovery", "Motorul Descoperirii")} blurb={L("America builds the modern world one invention at a time, training the minds that make it possible.", "America clădește lumea modernă o invenție pe rând, formând în același timp mințile care o fac.")}>
         <StatBand stats={scienceStats} />
       </DomainBlock>
 
       {/* §07 Culture */}
-      <DomainBlock index="07" eyebrow={L("Culture & Soft Power", "Cultură și Putere Soft")} title={L("The Operating System of Modern Culture", "Sistemul de Operare al Culturii Moderne")} blurb={L("America didn't just build a nation — it built the default culture of the modern world.", "America nu a construit doar o națiune — a construit cultura implicită a lumii moderne.")}>
+      <DomainBlock index="07" eyebrow={L("Culture & Soft Power", "Cultură și Putere Soft")} title={L("The Operating System of Modern Culture", "Sistemul de Operare al Culturii Moderne")} blurb={L("The global cultural powerhouse shaping film, music, sports, and fashion across the modern world.", "Forța culturală globală care dă formă filmului, muzicii, sportului și modei în întreaga lume modernă.")}>
         <StatBand stats={cultureStats} />
       </DomainBlock>
 

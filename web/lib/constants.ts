@@ -54,7 +54,7 @@ export const NAV_SECTIONS = [
   {
     title: "Economy",
     href: "/economy",
-    description: "The engine of the world — $32.4T GDP and counting",
+    description: "The world's largest economy, driven by a $32.4T GDP",
     imageSrc: SITE_IMAGES.economyNYSEUpsideDown,
     badge: "$32.4T GDP",
     items: [
@@ -88,7 +88,7 @@ export const NAV_SECTIONS = [
   {
     title: "Nature",
     href: "/nature",
-    description: "From the Arctic to the tropics — unrivaled natural beauty",
+    description: "Unrivaled natural beauty spanning from the Arctic to the tropics",
     imageSrc: SITE_IMAGES.grandTeton,
     badge: "63 National Parks",
     items: [
@@ -215,7 +215,7 @@ export const NAV_SECTIONS = [
   {
     title: "Culture",
     href: "/culture",
-    description: "America didn't just build a nation — it built global culture",
+    description: "The global cultural powerhouse shaping film, music, sports, and fashion",
     imageSrc: SITE_IMAGES.cultureFlagCrowd,
     badge: "Global Culture",
     items: [
@@ -259,7 +259,7 @@ export const NAV_SECTIONS = [
   {
     title: "Innovation",
     href: "/innovation",
-    description: "The internet, the iPhone, AI — all made in America",
+    description: "Pioneering technologies like the internet, the iPhone, and AI",
     imageSrc: SITE_IMAGES.homeSiliconValley,
     badge: "Silicon Valley",
     items: [
@@ -390,7 +390,7 @@ export const NAV_SECTIONS = [
   {
     title: "Global Leadership",
     href: "/global-leadership",
-    description: "The indispensable nation — leading the free world since 1945",
+    description: "The indispensable nation leading the free world since 1945",
     imageSrc: SITE_IMAGES.whiteHouse,
     badge: "Free World Leader",
     items: [
@@ -419,7 +419,7 @@ export const NAV_SECTIONS = [
   {
     title: "History",
     href: "/history",
-    description: "From founding principles to modern times — the history of liberty",
+    description: "The history of liberty from founding principles to modern times",
     imageSrc: SITE_IMAGES.homeDeclarationIndependence,
     badge: "1776 - Present",
     items: [
@@ -596,7 +596,7 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
 > = {
   "/economy": {
     title: "Economie",
-    description: "Motorul lumii — PIB de 32,4 trilioane de dolari și în creștere",
+    description: "Cea mai mare economie a lumii, susținută de un PIB de 32,4 trilioane de dolari",
     badge: "$32,4T PIB",
     items: {
       "/economy/gdp-growth": {
@@ -623,7 +623,7 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
   },
   "/nature": {
     title: "Natură",
-    description: "Din Arctica până la tropice — frumusețe naturală fără rival",
+    description: "Frumusețe naturală fără rival din Arctica până în zonele tropicale",
     badge: "63 Parcuri Naționale",
     items: {
       "/nature/national-parks": {
@@ -726,7 +726,7 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
   "/culture": {
     title: "Cultură",
     description:
-      "America nu a construit doar o națiune — a construit cultura globală",
+      "Forța culturală globală care dă formă filmului, muzicii, sportului și modei",
     badge: "Cultură Globală",
     items: {
       "/culture/entertainment": {
@@ -762,7 +762,7 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
   "/innovation": {
     title: "Inovație",
     description:
-      "Internetul, iPhone-ul, AI-ul — toate au fost create în America",
+      "Tehnologii de pionierat precum internetul, iPhone-ul și inteligența artificială",
     badge: "Silicon Valley",
     items: {
       "/innovation/internet-history": {
@@ -868,7 +868,7 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
   "/global-leadership": {
     title: "Leadership Global",
     description:
-      "Națiunea indispensabilă — conduce lumea liberă din 1945",
+      "Națiunea indispensabilă care conduce lumea liberă din 1945",
     badge: "Liderul Lumii Libere",
     items: {
       "/global-leadership/nato": {
@@ -891,7 +891,7 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
   },
   "/history": {
     title: "Istorie",
-    description: "De la principiile fondatoare la timpurile moderne — istoria libertății",
+    description: "Istoria libertății, de la principiile fondatoare până în timpurile moderne",
     badge: "1776 - Prezent",
     items: {
       "/history/founding-principles": {
