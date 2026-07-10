@@ -40,58 +40,58 @@ const FIPS_TO_ABBREV: Record<string, string> = {
 
 
 // ─── State Trivia Lookup ─────────────────────────────────────────────────────
-const STATE_TRIVIA: Record<string, { landmark: string; fact: string }> = {
-  AL: { landmark: "US Space & Rocket Center", fact: "Huntsville built the Saturn V rocket that put American astronauts on the Moon." },
-  AK: { landmark: "Denali (Mount McKinley)", fact: "Has more coastline than all other 49 states combined." },
-  AZ: { landmark: "The Grand Canyon", fact: "Home to the Sonoran Desert, the only place where Saguaro cacti grow wild." },
-  AR: { landmark: "Hot Springs National Park", fact: "Only state with an active diamond mine open to the public." },
-  CA: { landmark: "Silicon Valley & Golden Gate Bridge", fact: "If California were a nation, its economy would rank 5th in the world." },
-  CO: { landmark: "Rocky Mountains", fact: "Has the highest average elevation of any U.S. state at 6,800 feet." },
-  CT: { landmark: "Yale University", fact: "Home of the first hamburger, Polaroid camera, and nuclear submarine." },
-  DE: { landmark: "Historic New Castle", fact: "The very first state to ratify the U.S. Constitution (December 7, 1787)." },
-  DC: { landmark: "The White House & Capitol", fact: "Designed by French engineer Pierre L'Enfant and holds 172 foreign embassies." },
-  FL: { landmark: "Kennedy Space Center & Everglades", fact: "Only place on Earth where alligators and crocodiles coexist in the wild." },
-  GA: { landmark: "Martin Luther King Jr. Historic Site", fact: "Atlanta's Hartsfield-Jackson Airport is the busiest airport in the world." },
-  HI: { landmark: "Pearl Harbor & Diamond Head", fact: "The youngest state in the union and the only one made entirely of islands." },
-  ID: { landmark: "Craters of the Moon", fact: "Produces one-third of all potatoes grown in the United States." },
-  IL: { landmark: "Willis (Sears) Tower", fact: "Chicago built the world's first modern skyscraper (Home Insurance Building) in 1885." },
-  IN: { landmark: "Indianapolis Motor Speedway", fact: "Hosts the Indy 500, the world's largest single-day sporting event." },
-  IA: { landmark: "Field of Dreams", fact: "Produces more corn, pork, and eggs than any other state in the nation." },
-  KS: { landmark: "Monument Rocks", fact: "Known as the wheat capital of the world, producing millions of bushels annually." },
-  KY: { landmark: "Churchill Downs (Kentucky Derby)", fact: "Produces 95% of the world's total supply of Bourbon whiskey." },
-  LA: { landmark: "New Orleans French Quarter", fact: "Birthplace of Jazz music and home of the world-famous Mardi Gras festival." },
-  ME: { landmark: "Acadia National Park", fact: "Produces 90% of the country's domestic lobster supply." },
-  MD: { landmark: "Fort McHenry National Monument", fact: "Where Francis Scott Key wrote 'The Star-Spangled Banner' in 1814." },
-  MA: { landmark: "Harvard Yard & Freedom Trail", fact: "Boston established America's first public park (Boston Common) in 1634." },
-  MI: { landmark: "Henry Ford Museum & Mackinac Bridge", fact: "Birthplace of Henry Ford's assembly line and the historic Motown sound." },
-  MN: { landmark: "Mall of America", fact: "Has 11,842 lakes, despite its famous nickname 'Land of 10,000 Lakes'." },
-  MS: { landmark: "Mississippi Delta Region", fact: "The birth site of Blues music and birthplace of rock legend Elvis Presley." },
-  MO: { landmark: "Gateway Arch St. Louis", fact: "The Gateway Arch is the tallest man-made monument in the Western Hemisphere." },
-  MT: { landmark: "Glacier National Park", fact: "Contains the Triple Divide Peak, where water flows to three different oceans." },
-  NE: { landmark: "Chimney Rock Site", fact: "Has the only unicameral (single-chamber) state legislature in the nation." },
-  NV: { landmark: "Las Vegas Strip & Hoover Dam", fact: "Produces more gold than any state, ranking behind only China, Australia, and Russia." },
-  NH: { landmark: "Mount Washington Observatory", fact: "Mount Washington once held the world record for the highest wind speed (231 mph)." },
-  NJ: { landmark: "Atlantic City Boardwalk", fact: "Has the highest population density of any U.S. state." },
-  NM: { landmark: "Carlsbad Caverns National Park", fact: "Santa Fe, founded in 1610, is the oldest capital city in the United States." },
-  NY: { landmark: "Statue of Liberty & Times Square", fact: "New York City was the first capital of the United States under the Constitution." },
-  NC: { landmark: "Kitty Hawk & Biltmore Estate", fact: "Site of the Wright Brothers' first successful airplane flight in 1903." },
-  ND: { landmark: "Theodore Roosevelt National Park", fact: "Grows more sunflowers and produces more honey than any other state." },
-  OH: { landmark: "Rock & Roll Hall of Fame", fact: "Known as the 'Mother of Presidents', having birthed 8 U.S. presidents." },
-  OK: { landmark: "National Cowboy Museum", fact: "Has the largest population of Native American tribes in the nation." },
-  OR: { landmark: "Crater Lake National Park", fact: "Crater Lake is the deepest lake in the U.S. and has exceptionally pure water." },
-  PA: { landmark: "Independence Hall & Gettysburg", fact: "Where both the Declaration of Independence and the Constitution were signed." },
-  RI: { landmark: "Newport Gilded Age Mansions", fact: "The first colony to renounce allegiance to the British Crown on May 4, 1776." },
-  SC: { landmark: "Fort Sumter National Monument", fact: "The first shots of the American Civil War were fired at Fort Sumter in 1861." },
-  SD: { landmark: "Mount Rushmore Memorial", fact: "Features the 60-foot granite heads of Washington, Jefferson, Roosevelt, and Lincoln." },
-  TN: { landmark: "Graceland & Grand Ole Opry", fact: "Great Smoky Mountains is the most visited National Park in the United States." },
-  TX: { landmark: "The Alamo & NASA Space Center", fact: "Only state to enter by treaty, and was its own independent republic for 9 years." },
-  UT: { landmark: "Zion National Park & Arches", fact: "Has the youngest average population age in the United States." },
-  VT: { landmark: "Green Mountain Forest", fact: "The largest producer of maple syrup in the United States." },
-  VA: { landmark: "Monticello & Jamestown", fact: "Known as the 'Birthplace of a Nation'—four of the first five U.S. presidents were Virginian." },
-  WA: { landmark: "Space Needle & Mount Rainier", fact: "Home of aerospace and tech giants Boeing, Microsoft, Amazon, and Starbucks." },
-  WV: { landmark: "New River Gorge Bridge", fact: "The first state to introduce a sales tax (in 1921)." },
-  WI: { landmark: "Wisconsin Dells & Lambeau Field", fact: "Produces over 2 billion pounds of cheese annually, leading the nation." },
-  WY: { landmark: "Yellowstone National Park", fact: "Yellowstone was established in 1872 as the world's first national park." }
+const STATE_TRIVIA: Record<string, { landmark: string; fact: string; motto: string; brand: string }> = {
+  AL: { landmark: "US Space & Rocket Center", fact: "Huntsville built the Saturn V rocket that put American astronauts on the Moon.", motto: "We dare defend our rights", brand: "ULA / Marshall Space Flight Center" },
+  AK: { landmark: "Denali (Mount McKinley)", fact: "Has more coastline than all other 49 states combined.", motto: "North to the Future", brand: "Alaska Air Group" },
+  AZ: { landmark: "The Grand Canyon", fact: "Home to the Sonoran Desert, the only place where Saguaro cacti grow wild.", motto: "God enriches", brand: "Freeport-McMoRan" },
+  AR: { landmark: "Hot Springs National Park", fact: "Only state with an active diamond mine open to the public.", motto: "The People Rule", brand: "Walmart" },
+  CA: { landmark: "Silicon Valley & Golden Gate Bridge", fact: "If California were a nation, its economy would rank 5th in the world.", motto: "Eureka (I have found it)", brand: "Apple / Google / Nvidia / Chevron" },
+  CO: { landmark: "Rocky Mountains", fact: "Has the highest average elevation of any U.S. state at 6,800 feet.", motto: "Nothing without providence", brand: "Coors Brewing / Arrow Electronics" },
+  CT: { landmark: "Yale University", fact: "Home of the first hamburger, Polaroid camera, and nuclear submarine.", motto: "He who transplanted sustains", brand: "General Electric / Otis Elevator" },
+  DE: { landmark: "Historic New Castle", fact: "The very first state to ratify the U.S. Constitution (December 7, 1787).", motto: "Liberty and Independence", brand: "DuPont" },
+  DC: { landmark: "The White House & Capitol", fact: "Designed by French engineer Pierre L'Enfant and holds 172 foreign embassies.", motto: "Justice for All", brand: "Danaher / Marriott International" },
+  FL: { landmark: "Kennedy Space Center & Everglades", fact: "Only place on Earth where alligators and crocodiles coexist in the wild.", motto: "In God We Trust", brand: "Publix Super Markets / NextEra Energy" },
+  GA: { landmark: "Martin Luther King Jr. Historic Site", fact: "Atlanta's Hartsfield-Jackson Airport is the busiest airport in the world.", motto: "Wisdom, Justice, and Moderation", brand: "Coca-Cola / Delta Air Lines / Home Depot" },
+  HI: { landmark: "Pearl Harbor & Diamond Head", fact: "The youngest state in the union and the only one made entirely of islands.", motto: "The life of the land is perpetuated in righteousness", brand: "Hawaiian Airlines" },
+  ID: { landmark: "Craters of the Moon", fact: "Produces one-third of all potatoes grown in the United States.", motto: "Let it be perpetual", brand: "Albertsons / Micron Technology" },
+  IL: { landmark: "Willis (Sears) Tower", fact: "Chicago built the world's first modern skyscraper (Home Insurance Building) in 1885.", motto: "State sovereignty, national union", brand: "McDonald's / Abbott Labs / Caterpillar" },
+  IN: { landmark: "Indianapolis Motor Speedway", fact: "Hosts the Indy 500, the world's largest single-day sporting event.", motto: "The Crossroads of America", brand: "Eli Lilly / Cummins" },
+  IA: { landmark: "Field of Dreams", fact: "Produces more corn, pork, and eggs than any other state in the nation.", motto: "Our liberties we prize and our rights we will maintain", brand: "John Deere (Manufacturing hub)" },
+  KS: { landmark: "Monument Rocks", fact: "Known as the wheat capital of the world, producing millions of bushels annually.", motto: "To the stars through difficulties", brand: "Koch Industries / Garmin" },
+  KY: { landmark: "Churchill Downs (Kentucky Derby)", fact: "Produces 95% of the world's total supply of Bourbon whiskey.", motto: "United we stand, divided we fall", brand: "Kentucky Bourbon Brands / Humana" },
+  LA: { landmark: "New Orleans French Quarter", fact: "Birthplace of Jazz music and home of the world-famous Mardi Gras festival.", motto: "Union, Justice, and Confidence", brand: "Entergy" },
+  ME: { landmark: "Acadia National Park", fact: "Produces 90% of the country's domestic lobster supply.", motto: "I lead", brand: "L.L. Bean" },
+  MD: { landmark: "Fort McHenry National Monument", fact: "Where Francis Scott Key wrote 'The Star-Spangled Banner' in 1814.", motto: "Manly deeds, womanly words", brand: "Lockheed Martin / Under Armour" },
+  MA: { landmark: "Harvard Yard & Freedom Trail", fact: "Boston established America's first public park (Boston Common) in 1634.", motto: "By the sword we seek peace, but peace only under liberty", brand: "Fidelity Investments / Boston Dynamics" },
+  MI: { landmark: "Henry Ford Museum & Mackinac Bridge", fact: "Birthplace of Henry Ford's assembly line and the historic Motown sound.", motto: "If you seek a pleasant peninsula, look about you", brand: "Ford Motor Company / General Motors / Whirlpool" },
+  MN: { landmark: "Mall of America", fact: "Has 11,842 lakes, despite its famous nickname 'Land of 10,000 Lakes'.", motto: "The Star of the North", brand: "Target / 3M / UnitedHealth Group" },
+  MS: { landmark: "Mississippi Delta Region", fact: "The birth site of Blues music and birthplace of rock legend Elvis Presley.", motto: "By valor and arms", brand: "Sanderson Farms" },
+  MO: { landmark: "Gateway Arch St. Louis", fact: "The Gateway Arch is the tallest man-made monument in the Western Hemisphere.", motto: "Let the welfare of the people be the supreme law", brand: "Anheuser-Busch / H&R Block" },
+  MT: { landmark: "Glacier National Park", fact: "Contains the Triple Divide Peak, where water flows to three different oceans.", motto: "Gold and Silver", brand: "Montana Resources" },
+  NE: { landmark: "Chimney Rock Site", fact: "Has the only unicameral (single-chamber) state legislature in the nation.", motto: "Equality before the law", brand: "Berkshire Hathaway" },
+  NV: { landmark: "Las Vegas Strip & Hoover Dam", fact: "Produces more gold than any state, ranking behind only China, Australia, and Russia.", motto: "All for Our Country", brand: "MGM Resorts / Caesars Entertainment" },
+  NH: { landmark: "Mount Washington Observatory", fact: "Mount Washington once held the world record for the highest wind speed (231 mph).", motto: "Live Free or Die", brand: "Timberland" },
+  NJ: { landmark: "Atlantic City Boardwalk", fact: "Has the highest population density of any U.S. state.", motto: "Liberty and prosperity", brand: "Johnson & Johnson / Prudential Financial" },
+  NM: { landmark: "Carlsbad Caverns National Park", fact: "Santa Fe, founded in 1610, is the oldest capital city in the United States.", motto: "It grows as it goes", brand: "Sandia National Labs" },
+  NY: { landmark: "Statue of Liberty & Times Square", fact: "New York City was the first capital of the United States under the Constitution.", motto: "Ever upward", brand: "IBM / JPMorgan Chase / Pfizer / PepsiCo" },
+  NC: { landmark: "Kitty Hawk & Biltmore Estate", fact: "Site of the Wright Brothers' first successful airplane flight in 1903.", motto: "To be, rather than to seem", brand: "Bank of America / Lowe's / Epic Games" },
+  ND: { landmark: "Theodore Roosevelt National Park", fact: "Grows more sunflowers and produces more honey than any other state.", motto: "Liberty and union, now and forever, one and inseparable", brand: "Bobcat Company" },
+  OH: { landmark: "Rock & Roll Hall of Fame", fact: "Known as the 'Mother of Presidents', having birthed 8 U.S. presidents.", motto: "With God, all things are possible", brand: "Procter & Gamble / Kroger" },
+  OK: { landmark: "National Cowboy Museum", fact: "Has the largest population of Native American tribes in the nation.", motto: "Labor conquers all things", brand: "Devon Energy / Love's Travel Stops" },
+  OR: { landmark: "Crater Lake National Park", fact: "Crater Lake is the deepest lake in the U.S. and has exceptionally pure water.", motto: "She flies with her own wings", brand: "Nike / Columbia Sportswear" },
+  PA: { landmark: "Independence Hall & Gettysburg", fact: "Where both the Declaration of Independence and the Constitution were signed.", motto: "Virtue, liberty, and independence", brand: "Comcast / Hershey's" },
+  RI: { landmark: "Newport Gilded Age Mansions", fact: "The first colony to renounce allegiance to the British Crown on May 4, 1776.", motto: "Hope", brand: "CVS Health / Hasbro" },
+  SC: { landmark: "Fort Sumter National Monument", fact: "The first shots of the American Civil War were fired at Fort Sumter in 1861.", motto: "While I breathe, I hope", brand: "Sonoco Products" },
+  SD: { landmark: "Mount Rushmore Memorial", fact: "Features the 60-foot granite heads of Washington, Jefferson, Roosevelt, and Lincoln.", motto: "Under God the people rule", brand: "Sanford Health" },
+  TN: { landmark: "Graceland & Grand Ole Opry", fact: "Great Smoky Mountains is the most visited National Park in the United States.", motto: "Agriculture and Commerce", brand: "FedEx / HCA Healthcare / Dollar General" },
+  TX: { landmark: "The Alamo & NASA Space Center", fact: "Only state to enter by treaty, and was its own independent republic for 9 years.", motto: "Friendship", brand: "ExxonMobil / AT&T / Tesla / Texas Instruments" },
+  UT: { landmark: "Zion National Park & Arches", fact: "Has the youngest average population age in the United States.", motto: "Industry", brand: "Huntsman / Overstock" },
+  VT: { landmark: "Green Mountain Forest", fact: "The largest producer of maple syrup in the United States.", motto: "Freedom and Unity", brand: "Ben & Jerry's / Keurig Dr Pepper" },
+  VA: { landmark: "Monticello & Jamestown", fact: "Known as the 'Birthplace of a Nation'—four of the first five U.S. presidents were Virginian.", motto: "Thus always to tyrants", brand: "General Dynamics / Northrop Grumman" },
+  WA: { landmark: "Space Needle & Mount Rainier", fact: "Home of aerospace and tech giants Boeing, Microsoft, Amazon, and Starbucks.", motto: "By and by", brand: "Microsoft / Amazon / Costco / Starbucks" },
+  WV: { landmark: "New River Gorge Bridge", fact: "The first state to introduce a sales tax (in 1921).", motto: "Mountaineers are always free", brand: "Wheeling-Pittsburgh Steel" },
+  WI: { landmark: "Wisconsin Dells & Lambeau Field", fact: "Produces over 2 billion pounds of cheese annually, leading the nation.", motto: "Forward", brand: "Harley-Davidson / Northwestern Mutual" },
+  WY: { landmark: "Yellowstone National Park", fact: "Yellowstone was established in 1872 as the world's first national park.", motto: "Equal Rights", brand: "Wyoming Coal Mines" }
 };
 
 // ─── Region Palette ───────────────────────────────────────────────────────────
@@ -99,32 +99,32 @@ const STATE_TRIVIA: Record<string, { landmark: string; fact: string }> = {
 // not so opaque they look like solid painted states.
 const REGION_COLORS: Record<string, { base: string; hover: string; border: string; label: string; stroke: string }> = {
   Northeast: {
-    base:   "hsla(240,65%,58%,0.22)",   // soft indigo
-    hover:  "hsla(240,72%,66%,0.40)",
+    base:   "hsla(240,65%,58%,0.34)",   // increased indigo opacity
+    hover:  "hsla(240,72%,66%,0.52)",
     border: "hsl(240 65% 62%)",
     label:  "#818cf8",
-    stroke: "hsla(240,72%,66%,0.65)",    // very crisp region outline border
+    stroke: "hsla(240,72%,66%,0.70)",    // slightly brighter border
   },
   South: {
-    base:   "hsla(355,75%,48%,0.22)",   // soft crimson
-    hover:  "hsla(355,80%,58%,0.40)",
+    base:   "hsla(355,75%,48%,0.34)",   // increased crimson opacity
+    hover:  "hsla(355,80%,58%,0.52)",
     border: "hsl(355 75% 52%)",
     label:  "#f87171",
-    stroke: "hsla(355,80%,58%,0.65)",
+    stroke: "hsla(355,80%,58%,0.70)",
   },
   Midwest: {
-    base:   "hsla(158,62%,38%,0.22)",   // soft emerald
-    hover:  "hsla(158,68%,48%,0.40)",
+    base:   "hsla(158,62%,38%,0.34)",   // increased emerald opacity
+    hover:  "hsla(158,68%,48%,0.52)",
     border: "hsl(158 62% 42%)",
     label:  "#34d399",
-    stroke: "hsla(158,68%,48%,0.65)",
+    stroke: "hsla(158,68%,48%,0.70)",
   },
   West: {
-    base:   "hsla(38,90%,50%,0.20)",    // soft amber
-    hover:  "hsla(38,95%,60%,0.38)",
+    base:   "hsla(38,90%,50%,0.32)",    // increased amber opacity
+    hover:  "hsla(38,95%,60%,0.50)",
     border: "hsl(38 90% 54%)",
     label:  "#fbbf24",
-    stroke: "hsla(38,95%,60%,0.65)",
+    stroke: "hsla(38,95%,60%,0.70)",
   },
 };
 
@@ -401,22 +401,22 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         fill = isHovered ? rc.hover : rc.base;
         stroke = isHovered ? rc.border : rc.stroke;
       } else if (heatmapMode === "gdp") {
-        const r = state.gdp / maxValues.maxGdp;
+        const r = Math.sqrt(state.gdp / maxValues.maxGdp);
         fill = isHovered
-          ? `hsla(38,95%,62%,${Math.max(0.16, r * 0.50)})`
-          : `hsla(38,90%,50%,${Math.max(0.08, r * 0.40)})`;
+          ? `hsla(38,95%,62%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(38,90%,50%,${(0.22 + r * 0.58).toFixed(2)})`;
         stroke = "rgba(255,255,255,0.30)";
       } else if (heatmapMode === "population") {
-        const r = state.population / maxValues.maxPop;
+        const r = Math.sqrt(state.population / maxValues.maxPop);
         fill = isHovered
-          ? `hsla(210,85%,62%,${Math.max(0.16, r * 0.50)})`
-          : `hsla(210,80%,52%,${Math.max(0.08, r * 0.40)})`;
+          ? `hsla(210,85%,62%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(210,80%,52%,${(0.22 + r * 0.58).toFixed(2)})`;
         stroke = "rgba(255,255,255,0.30)";
       } else {
         const r = (51 - state.statehoodOrder) / 50;
         fill = isHovered
-          ? `hsla(355,82%,58%,${Math.max(0.18, r * 0.50)})`
-          : `hsla(355,76%,46%,${Math.max(0.08, r * 0.40)})`;
+          ? `hsla(355,82%,58%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(355,76%,46%,${(0.22 + r * 0.58).toFixed(2)})`;
         stroke = "rgba(255,255,255,0.30)";
       }
 
@@ -867,45 +867,73 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
               {/* Row 2: Landmark, Fact and Rankings */}
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mt-6 pt-6 border-t border-white/[0.06]">
-                {/* Landmark & Fact (8 columns) */}
-                <div className="md:col-span-8 flex flex-col justify-between bg-white/[0.02] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all">
+                {/* Landmark & Fact (5 columns) */}
+                <div className="md:col-span-5 flex flex-col justify-between bg-white/[0.02] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all">
                   <div className="space-y-4">
                     <div className="flex items-center gap-2">
                       <Globe className="h-4 w-4 text-[#fbbf24]" />
                       <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/30">Iconic Landmark</span>
                     </div>
                     <div>
-                      <h4 className="font-display text-lg font-bold text-white">
+                      <h4 className="font-display text-base font-bold text-white truncate">
                         {STATE_TRIVIA[selectedState.abbrev]?.landmark || "National Monument"}
                       </h4>
-                      <p className="font-body text-xs text-white/40 mt-1 uppercase tracking-wider font-mono">
+                      <p className="font-body text-[10px] text-white/45 mt-1 uppercase tracking-wider font-mono">
                         State Heritage Site
                       </p>
                     </div>
-                    <p className="font-body text-sm text-white/75 leading-relaxed">
+                    <p className="font-body text-xs text-white/75 leading-relaxed">
                       <strong>{locale === "ro" ? "Fapt istoric:" : "Historical Fact:"}</strong> {STATE_TRIVIA[selectedState.abbrev]?.fact || "A center of American heritage and pride."}
                     </p>
                   </div>
                 </div>
 
-                {/* State Rankings (4 columns) */}
+                {/* Identity & Brand (4 columns) */}
                 <div className="md:col-span-4 flex flex-col justify-between bg-white/[0.02] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2">
+                      <Zap className="h-4 w-4 text-[#fbbf24]" />
+                      <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/30">
+                        {locale === "ro" ? "Identitate & Brand" : "Identity & Brand"}
+                      </span>
+                    </div>
+                    <div>
+                      <h5 className="font-display text-xs font-bold text-white/40 uppercase tracking-wider font-mono">
+                        {locale === "ro" ? "Motto Oficial" : "Official Motto"}
+                      </h5>
+                      <p className="font-body text-xs text-white/75 italic mt-1 leading-relaxed">
+                        "{STATE_TRIVIA[selectedState.abbrev]?.motto || "Liberty & Prosperity"}"
+                      </p>
+                    </div>
+                    <div className="pt-3 border-t border-white/[0.04]">
+                      <h5 className="font-display text-xs font-bold text-white/40 uppercase tracking-wider font-mono">
+                        {locale === "ro" ? "Brand / Entitate Emblematică" : "Iconic Brand / Entity"}
+                      </h5>
+                      <p className="font-body text-xs font-semibold text-[#fbbf24] mt-1 leading-relaxed">
+                        {STATE_TRIVIA[selectedState.abbrev]?.brand || "National Enterprise"}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* State Rankings (3 columns) */}
+                <div className="md:col-span-3 flex flex-col justify-between bg-white/[0.02] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all">
                   <div className="space-y-3">
                     <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/30 block">Comparative Rankings</span>
-                    <div className="space-y-2.5">
+                    <div className="space-y-2">
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-white/40 font-mono text-[9px] uppercase">GDP Rank</span>
-                        <span className="text-white font-semibold">#{gdpRank} of 50</span>
+                        <span className="text-white/40 font-mono text-[8px] uppercase">GDP Rank</span>
+                        <span className="text-white font-semibold">#{gdpRank}</span>
                       </div>
                       <div className="h-px bg-white/[0.04]" />
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-white/40 font-mono text-[9px] uppercase">Population Rank</span>
-                        <span className="text-white font-semibold">#{popRank} of 50</span>
+                        <span className="text-white/40 font-mono text-[8px] uppercase">Pop Rank</span>
+                        <span className="text-white font-semibold">#{popRank}</span>
                       </div>
                       <div className="h-px bg-white/[0.04]" />
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-white/40 font-mono text-[9px] uppercase">Land Area Rank</span>
-                        <span className="text-white font-semibold">#{areaRank} of 50</span>
+                        <span className="text-white/40 font-mono text-[8px] uppercase">Area Rank</span>
+                        <span className="text-white font-semibold">#{areaRank}</span>
                       </div>
                     </div>
                   </div>
