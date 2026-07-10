@@ -469,6 +469,31 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
     [areaRanked, selectedStateAbbrev]
   );
 
+  /** Rank orderings for the constitution heatmaps (used by the hover tooltip). */
+  const amendRanked = useMemo(
+    () =>
+      [...statesArray]
+        .sort(
+          (a, b) =>
+            (STATE_EXTENDED_DATA[b.abbrev]?.constitution.amendmentsCount ?? 0) -
+            (STATE_EXTENDED_DATA[a.abbrev]?.constitution.amendmentsCount ?? 0)
+        )
+        .map((s) => s.abbrev),
+    [statesArray]
+  );
+
+  const wordRanked = useMemo(
+    () =>
+      [...statesArray]
+        .sort(
+          (a, b) =>
+            (STATE_EXTENDED_DATA[b.abbrev]?.constitution.wordCount ?? 0) -
+            (STATE_EXTENDED_DATA[a.abbrev]?.constitution.wordCount ?? 0)
+        )
+        .map((s) => s.abbrev),
+    [statesArray]
+  );
+
   const regionalPeers = useMemo(
     () => statesArray
       .filter((s) => s.region === selectedState.region && s.abbrev !== selectedState.abbrev)
@@ -647,16 +672,19 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
             </div>
           </div>
 
-          {/* ── MAP CONTAINER ── */}
-          <div className="relative overflow-hidden rounded-3xl border border-white/[0.05] bg-black shadow-2xl">
+          {/* ── MAP CONTAINER ──
+              Mobile: a flex column (controls → map → legend) so nothing overlaps.
+              `sm` and up: a positioning context for the floating overlays. */}
+          <div className="relative flex flex-col overflow-hidden rounded-3xl border border-white/[0.05] bg-black shadow-2xl sm:block">
 
-            {/* Heatmap overlay selector */}
-            <div className="absolute top-4 left-4 z-20 flex flex-col gap-2 rounded-2xl border border-white/[0.08] bg-black/80 p-3 backdrop-blur-md max-w-[280px]">
+            {/* Heatmap overlay selector — stacked above the map on mobile so it
+                never covers the geography; floats over the map from `sm` up. */}
+            <div className="relative z-20 m-3 flex flex-col gap-2 rounded-2xl border border-white/[0.08] bg-black/80 p-3 backdrop-blur-md max-w-none sm:absolute sm:top-4 sm:left-4 sm:m-0 sm:max-w-[280px]">
               <span className="font-body text-[10px] tracking-[0.18em] text-white/35 uppercase flex items-center gap-1.5 font-bold">
                 <Layers className="h-3 w-3 text-[#fbbf24]" />
                 {translations.heatmapMode}
               </span>
-              <div className="flex flex-wrap gap-1.5 mt-0.5 max-w-[190px] sm:max-w-none">
+              <div className="flex flex-wrap gap-1.5 mt-0.5">
                 {[
                   { id: "none",       label: translations.defaultColor,   activeColor: "#fbbf24" },
                   { id: "gdp",        label: translations.gdpHeat,        activeColor: "#fbbf24" },
@@ -826,8 +854,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               )}
             </div>
 
-            {/* Region color legend — bottom bar */}
-            <div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-5 border-t border-white/[0.06] px-6 py-3 bg-black/60 backdrop-blur-sm">
+            {/* Region color legend — sits under the map on mobile, overlays it from `sm` up */}
+            <div className="relative z-20 order-last flex flex-wrap items-center justify-center gap-x-5 gap-y-2 border-t border-white/[0.06] px-4 py-3 bg-black/60 backdrop-blur-sm sm:absolute sm:bottom-0 sm:left-0 sm:right-0 sm:flex-nowrap sm:px-6">
               {heatmapMode === "none" ? (
                 Object.entries(REGION_COLORS).map(([region, rc]) => (
                   <button
@@ -857,7 +885,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
             {/* Map canvas */}
             <div
-              className="relative h-[280px] w-full sm:h-[450px] md:h-[560px] lg:h-[640px] px-2 py-4 pb-12"
+              className="relative h-[340px] w-full px-2 py-4 pb-2 sm:h-[450px] sm:pb-12 md:h-[560px] lg:h-[640px]"
               onMouseMove={(e: ReactMouseEvent<HTMLDivElement>) => {
                 const rect = e.currentTarget.getBoundingClientRect();
                 setTooltipPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
@@ -868,14 +896,30 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               {tooltipPos && hoveredStateAbbrev && EXPLORER_STATES[hoveredStateAbbrev] && (() => {
                 const hs = EXPLORER_STATES[hoveredStateAbbrev];
                 const rc = REGION_COLORS[hs.region];
-                const hr = gdpRanked.indexOf(hoveredStateAbbrev) + 1;
+                const con = STATE_EXTENDED_DATA[hoveredStateAbbrev]?.constitution;
+
+                // The tooltip leads with whichever metric the active overlay is
+                // colouring the map by, so hover always explains the shading.
+                const metric: { label: string; value: string; rank: string; color: string } | null =
+                  heatmapMode === "gdp"
+                    ? { label: translations.gdp, value: `$${hs.gdp}B`, rank: `#${gdpRanked.indexOf(hs.abbrev) + 1} / 50`, color: "#fbbf24" }
+                    : heatmapMode === "population"
+                    ? { label: translations.population, value: `${hs.population}M`, rank: `#${popRanked.indexOf(hs.abbrev) + 1} / 50`, color: "#60a5fa" }
+                    : heatmapMode === "statehood"
+                    ? { label: translations.statehood, value: String(hs.statehoodYear), rank: `#${hs.statehoodOrder} / 50`, color: "#f87171" }
+                    : heatmapMode === "amendments" && con
+                    ? { label: translations.amendmentsLabel, value: String(con.amendmentsCount), rank: `#${amendRanked.indexOf(hs.abbrev) + 1} / 50`, color: "#a78bfa" }
+                    : heatmapMode === "conLength" && con
+                    ? { label: translations.lengthLabel, value: `${(con.wordCount / 1000).toFixed(1)}k`, rank: `#${wordRanked.indexOf(hs.abbrev) + 1} / 50`, color: "#2dd4bf" }
+                    : null;
+
                 return (
                   <div
                     className="pointer-events-none absolute z-50 rounded-xl border bg-black/90 backdrop-blur-md px-3 py-2.5 shadow-2xl"
                     style={{
                       left: tooltipPos.x + 14,
                       top: tooltipPos.y - 52,
-                      borderColor: rc.border,
+                      borderColor: metric ? `${metric.color}66` : rc.border,
                       minWidth: 160,
                       transform: tooltipPos.x > 700 ? "translateX(-110%)" : undefined,
                     }}
@@ -884,11 +928,30 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       <span className="font-display text-sm font-bold text-white">{hs.name[locale]}</span>
                       <span className="font-hero text-xs" style={{ color: rc.label }}>{hs.abbrev}</span>
                     </div>
-                    <div className="flex gap-3 font-body text-[10px] text-white/50 font-semibold">
-                      <span>GDP <span className="text-white/80">${hs.gdp}B</span></span>
-                      <span>Pop <span className="text-white/80">{hs.population}M</span></span>
-                      <span>#{hr}</span>
-                    </div>
+
+                    {metric ? (
+                      <>
+                        <div className="flex items-baseline justify-between gap-4">
+                          <span className="font-body text-[10px] font-semibold uppercase tracking-wider text-white/40">
+                            {metric.label}
+                          </span>
+                          <span className="font-hero text-base" style={{ color: metric.color }}>
+                            {metric.value}
+                          </span>
+                        </div>
+                        <div className="mt-0.5 flex items-center justify-between gap-4 font-body text-[10px] font-semibold">
+                          <span className="text-white/30">{translations.rankLabel}</span>
+                          <span className="text-white/70">{metric.rank}</span>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="flex gap-3 font-body text-[10px] text-white/50 font-semibold">
+                        <span>GDP <span className="text-white/80">${hs.gdp}B</span></span>
+                        <span>Pop <span className="text-white/80">{hs.population}M</span></span>
+                        <span>#{gdpRanked.indexOf(hs.abbrev) + 1}</span>
+                      </div>
+                    )}
+
                     <div className="mt-1 font-body text-[10px] font-bold" style={{ color: rc.label }}>{hs.region}</div>
                   </div>
                 );
