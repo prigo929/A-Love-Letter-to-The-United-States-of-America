@@ -82,6 +82,19 @@ export default async function ExplorerPage() {
       locale === "ro"
         ? "Constituția medie a unui stat american are aproximativ {avg} de cuvinte — de peste patru ori mai lungă decât Constituția federală (circa 7.600 de cuvinte)."
         : "The average US state constitution runs about {avg} words — more than four times the length of the federal Constitution (roughly 7,600 words).",
+
+    // ── Interstate cooperation ──
+    cooperation: {
+      eyebrow: locale === "ro" ? "Federalismul în practică" : "Federalism in Practice",
+      title: locale === "ro" ? "Cooperarea interstatală" : "Interstate Cooperation",
+      intro:
+        locale === "ro"
+          ? "Constituția permite statelor să încheie pacte între ele, cu acordul Congresului. Rezultatul este o rețea de acorduri care administrează râuri, poduri, rețele electrice și răspunsul la dezastre peste granițele statelor. Alege un acord pentru a-i vedea membrii."
+          : "The Constitution lets states enter compacts with one another, with the consent of Congress. The result is a web of agreements governing rivers, bridges, power grids, and disaster response across state lines. Pick an agreement to see its members.",
+      membersLabel: locale === "ro" ? "State membre" : "Member States",
+      establishedLabel: locale === "ro" ? "Înființat" : "Established",
+      statesLabel: locale === "ro" ? "state" : "states",
+    },
   };
 
   return <MapExplorerClient locale={locale} translations={translations} />;

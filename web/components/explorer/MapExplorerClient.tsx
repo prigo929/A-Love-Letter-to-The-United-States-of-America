@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback, useEffect, useRef, MouseEvent as ReactMouseEvent } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ComposableMap,
@@ -22,6 +23,8 @@ import {
   Trees,
   Anchor,
   Flag,
+  X,
+  ZoomIn,
   Landmark,
   Scale,
   ScrollText,
@@ -32,20 +35,8 @@ import { EXPLORER_STATES, StateData } from "@/lib/data/explorer-data";
 import { STATE_EXTENDED_DATA } from "@/lib/data/state-details";
 import { COLORS } from "@/lib/constants";
 
-const GEO_URL = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
-
-// ─── FIPS → State Abbreviation ───────────────────────────────────────────────
-const FIPS_TO_ABBREV: Record<string, string> = {
-  "01": "AL", "02": "AK", "04": "AZ", "05": "AR", "06": "CA", "08": "CO",
-  "09": "CT", "10": "DE", "11": "DC", "12": "FL", "13": "GA", "15": "HI",
-  "16": "ID", "17": "IL", "18": "IN", "19": "IA", "20": "KS", "21": "KY",
-  "22": "LA", "23": "ME", "24": "MD", "25": "MA", "26": "MI", "27": "MN",
-  "28": "MS", "29": "MO", "30": "MT", "31": "NE", "32": "NV", "33": "NH",
-  "34": "NJ", "35": "NM", "36": "NY", "37": "NC", "38": "ND", "39": "OH",
-  "40": "OK", "41": "OR", "42": "PA", "44": "RI", "45": "SC", "46": "SD",
-  "47": "TN", "48": "TX", "49": "UT", "50": "VT", "51": "VA", "53": "WA",
-  "54": "WV", "55": "WI", "56": "WY",
-};
+import { GEO_URL, FIPS_TO_ABBREV } from "@/lib/data/us-geo";
+import { InterstateCooperationMap } from "@/components/explorer/InterstateCooperationMap";
 
 
 // ─── State Trivia Lookup ─────────────────────────────────────────────────────
@@ -212,6 +203,15 @@ interface MapExplorerClientProps {
     provisionsLabel: string;
     /** Contains a `{avg}` placeholder replaced with the mean word count. */
     avgLengthNote: string;
+    // Interstate cooperation
+    cooperation: {
+      eyebrow: string;
+      title: string;
+      intro: string;
+      membersLabel: string;
+      establishedLabel: string;
+      statesLabel: string;
+    };
   };
 }
 
@@ -364,6 +364,36 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   >("none");
   // Hover tooltip: {x, y} relative to the map container
   const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number } | null>(null);
+
+  // Fullscreen viewer for the state flag / seal.
+  const [symbol, setSymbol] = useState<{ src: string; label: string } | null>(null);
+  const [portalReady, setPortalReady] = useState(false);
+  useEffect(() => setPortalReady(true), []);
+
+  useEffect(() => {
+    if (!symbol) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSymbol(null);
+    };
+    document.addEventListener("keydown", onKey);
+    // Lock scroll on BOTH <html> and <body> (the document scroller varies) and
+    // compensate for the removed scrollbar so the page doesn't jump.
+    const html = document.documentElement;
+    const body = document.body;
+    const prevHtml = html.style.overflow;
+    const prevBody = body.style.overflow;
+    const prevPad = body.style.paddingRight;
+    const scrollbarW = window.innerWidth - html.clientWidth;
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    if (scrollbarW > 0) body.style.paddingRight = `${scrollbarW}px`;
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      html.style.overflow = prevHtml;
+      body.style.overflow = prevBody;
+      body.style.paddingRight = prevPad;
+    };
+  }, [symbol]);
 
   const statesArray = useMemo(() => Object.values(EXPLORER_STATES).filter((s) => s.abbrev !== "DC"), []);
 
@@ -613,7 +643,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         aria-hidden="true"
       />
 
-      <div className="relative z-10 mx-auto max-w-screen-xl px-4 pt-28 pb-24 sm:px-6 lg:px-8 font-body">
+      {/* Full-bleed: the explorer uses the whole viewport width, not a centred column. */}
+      <div className="relative z-10 w-full px-4 pt-28 pb-24 sm:px-6 lg:px-8 2xl:px-12 font-body">
 
         {/* ── HEADER ── */}
         <header className="mb-16 text-center">
@@ -1281,15 +1312,62 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     </div>
                     <div className="space-y-3">
                       <div>
-                        <h5 className="font-body text-[10px] font-bold text-white/40 uppercase tracking-wider mb-1">
+                        <h5 className="font-body text-[10px] font-bold text-white/40 uppercase tracking-wider mb-2">
                           {translations.flagLabel}
                         </h5>
+                        {/* Plain <img>: these are SVGs, so Next/Image optimisation adds nothing.
+                            The aspect box reserves height before load (so lazy-loading can fire
+                            and there is no layout shift) while staying visually invisible. */}
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setSymbol({
+                              src: `/state-symbols/flags/${selectedState.abbrev}.svg`,
+                              label: `${selectedState.name[locale]} — ${translations.flagLabel}`,
+                            })
+                          }
+                          className="group relative mb-3 block w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fbbf24]/60"
+                          aria-label={`${translations.flagLabel}: ${selectedState.name[locale]}`}
+                        >
+                          <img
+                            key={`flag-${selectedState.abbrev}`}
+                            src={`/state-symbols/flags/${selectedState.abbrev}.svg`}
+                            alt={`${selectedState.name[locale]} — ${translations.flagLabel}`}
+                            loading="lazy"
+                            className="aspect-[3/2] w-full object-contain"
+                          />
+                          <span className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/60 opacity-0 transition-opacity group-hover:opacity-100">
+                            <ZoomIn size={13} className="text-white" />
+                          </span>
+                        </button>
                         <p className="font-body text-xs text-white/75 leading-relaxed">{extended.flagDesc[locale]}</p>
                       </div>
                       <div className="pt-3 border-t border-white/[0.04]">
-                        <h5 className="font-body text-[10px] font-bold text-white/40 uppercase tracking-wider mb-1">
+                        <h5 className="font-body text-[10px] font-bold text-white/40 uppercase tracking-wider mb-2">
                           {translations.sealLabel}
                         </h5>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setSymbol({
+                              src: `/state-symbols/seals/${selectedState.abbrev}.svg`,
+                              label: `${selectedState.name[locale]} — ${translations.sealLabel}`,
+                            })
+                          }
+                          className="group relative mx-auto mb-3 block w-full max-w-[260px] cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fbbf24]/60"
+                          aria-label={`${translations.sealLabel}: ${selectedState.name[locale]}`}
+                        >
+                          <img
+                            key={`seal-${selectedState.abbrev}`}
+                            src={`/state-symbols/seals/${selectedState.abbrev}.svg`}
+                            alt={`${selectedState.name[locale]} — ${translations.sealLabel}`}
+                            loading="lazy"
+                            className="aspect-square w-full object-contain"
+                          />
+                          <span className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/60 opacity-0 transition-opacity group-hover:opacity-100">
+                            <ZoomIn size={13} className="text-white" />
+                          </span>
+                        </button>
                         <p className="font-body text-xs text-white/75 leading-relaxed">{extended.sealDesc[locale]}</p>
                       </div>
                       <div className="pt-3 border-t border-white/[0.04]">
@@ -1571,6 +1649,9 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
             </div>
           )}
 
+          {/* ── INTERSTATE COOPERATION ── */}
+          <InterstateCooperationMap locale={locale} translations={translations.cooperation} />
+
           {/* ── NATIONAL LEADERBOARDS ── */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Top 5 GDP */}
@@ -1738,6 +1819,42 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
         </div>
       </div>
+
+      {/* ── FULLSCREEN FLAG / SEAL VIEWER ──
+          Rendered in a portal so it escapes the page's stacking contexts.
+          Clicking the backdrop or the empty space closes; clicking the image does not. */}
+      {portalReady &&
+        symbol &&
+        createPortal(
+          <div className="fixed inset-0 z-[100] flex flex-col bg-black/95 backdrop-blur-sm">
+            <div
+              className="flex items-center justify-between gap-4 border-b border-white/10 bg-black/40 px-5 py-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <p className="truncate font-body text-sm text-white/70">{symbol.label}</p>
+              <button
+                type="button"
+                onClick={() => setSymbol(null)}
+                aria-label="Close"
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-white/20"
+              >
+                <X size={15} className="text-white" />
+              </button>
+            </div>
+            <div
+              className="flex flex-1 cursor-zoom-out items-center justify-center overflow-hidden p-4 sm:p-8"
+              onClick={() => setSymbol(null)}
+            >
+              <img
+                src={symbol.src}
+                alt={symbol.label}
+                onClick={(e) => e.stopPropagation()}
+                className="h-auto max-h-[85vh] w-auto max-w-[92vw] cursor-default object-contain"
+              />
+            </div>
+          </div>,
+          document.body
+        )}
     </div>
   );
 }
