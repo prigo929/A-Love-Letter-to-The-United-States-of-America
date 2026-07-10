@@ -23,6 +23,7 @@ import {
   Trees,
   Anchor,
   Flag,
+  Share2,
   X,
   ZoomIn,
   Landmark,
@@ -33,6 +34,7 @@ import {
 } from "lucide-react";
 import { EXPLORER_STATES, StateData } from "@/lib/data/explorer-data";
 import { STATE_EXTENDED_DATA } from "@/lib/data/state-details";
+import { COOPERATION_AGREEMENTS, COOPERATION_CATEGORIES } from "@/lib/data/interstate-cooperation";
 import { COLORS } from "@/lib/constants";
 
 import { GEO_URL, FIPS_TO_ABBREV } from "@/lib/data/us-geo";
@@ -41,58 +43,66 @@ import { StateRevenueBudget } from "@/components/explorer/StateRevenueBudget";
 
 
 // ─── State Trivia Lookup ─────────────────────────────────────────────────────
-const STATE_TRIVIA: Record<string, { landmark: string; fact: string; motto: string; brand: string }> = {
-  AL: { landmark: "US Space & Rocket Center", fact: "Huntsville built the Saturn V rocket that put American astronauts on the Moon.", motto: "We dare defend our rights", brand: "ULA / Marshall Space Flight Center" },
-  AK: { landmark: "Denali (Mount McKinley)", fact: "Has more coastline than all other 49 states combined.", motto: "North to the Future", brand: "Alaska Air Group" },
-  AZ: { landmark: "The Grand Canyon", fact: "Home to the Sonoran Desert, the only place where Saguaro cacti grow wild.", motto: "God enriches", brand: "Freeport-McMoRan" },
-  AR: { landmark: "Hot Springs National Park", fact: "Only state with an active diamond mine open to the public.", motto: "The People Rule", brand: "Walmart" },
-  CA: { landmark: "Silicon Valley & Golden Gate Bridge", fact: "If California were a nation, its economy would rank 5th in the world.", motto: "Eureka (I have found it)", brand: "Apple / Google / Nvidia / Chevron" },
-  CO: { landmark: "Rocky Mountains", fact: "Has the highest average elevation of any U.S. state at 6,800 feet.", motto: "Nothing without providence", brand: "Coors Brewing / Arrow Electronics" },
-  CT: { landmark: "Yale University", fact: "Home of the first hamburger, Polaroid camera, and nuclear submarine.", motto: "He who transplanted sustains", brand: "General Electric / Otis Elevator" },
-  DE: { landmark: "Historic New Castle", fact: "The very first state to ratify the U.S. Constitution (December 7, 1787).", motto: "Liberty and Independence", brand: "DuPont" },
-  DC: { landmark: "The White House & Capitol", fact: "Designed by French engineer Pierre L'Enfant and holds 172 foreign embassies.", motto: "Justice for All", brand: "Danaher / Marriott International" },
-  FL: { landmark: "Kennedy Space Center & Everglades", fact: "Only place on Earth where alligators and crocodiles coexist in the wild.", motto: "In God We Trust", brand: "Publix Super Markets / NextEra Energy" },
-  GA: { landmark: "Martin Luther King Jr. Historic Site", fact: "Atlanta's Hartsfield-Jackson Airport is the busiest airport in the world.", motto: "Wisdom, Justice, and Moderation", brand: "Coca-Cola / Delta Air Lines / Home Depot" },
-  HI: { landmark: "Pearl Harbor & Diamond Head", fact: "The youngest state in the union and the only one made entirely of islands.", motto: "The life of the land is perpetuated in righteousness", brand: "Hawaiian Airlines" },
-  ID: { landmark: "Craters of the Moon", fact: "Produces one-third of all potatoes grown in the United States.", motto: "Let it be perpetual", brand: "Albertsons / Micron Technology" },
-  IL: { landmark: "Willis (Sears) Tower", fact: "Chicago built the world's first modern skyscraper (Home Insurance Building) in 1885.", motto: "State sovereignty, national union", brand: "McDonald's / Abbott Labs / Caterpillar" },
-  IN: { landmark: "Indianapolis Motor Speedway", fact: "Hosts the Indy 500, the world's largest single-day sporting event.", motto: "The Crossroads of America", brand: "Eli Lilly / Cummins" },
-  IA: { landmark: "Field of Dreams", fact: "Produces more corn, pork, and eggs than any other state in the nation.", motto: "Our liberties we prize and our rights we will maintain", brand: "John Deere (Manufacturing hub)" },
-  KS: { landmark: "Monument Rocks", fact: "Known as the wheat capital of the world, producing millions of bushels annually.", motto: "To the stars through difficulties", brand: "Koch Industries / Garmin" },
-  KY: { landmark: "Churchill Downs (Kentucky Derby)", fact: "Produces 95% of the world's total supply of Bourbon whiskey.", motto: "United we stand, divided we fall", brand: "Kentucky Bourbon Brands / Humana" },
-  LA: { landmark: "New Orleans French Quarter", fact: "Birthplace of Jazz music and home of the world-famous Mardi Gras festival.", motto: "Union, Justice, and Confidence", brand: "Entergy" },
-  ME: { landmark: "Acadia National Park", fact: "Produces 90% of the country's domestic lobster supply.", motto: "I lead", brand: "L.L. Bean" },
-  MD: { landmark: "Fort McHenry National Monument", fact: "Where Francis Scott Key wrote 'The Star-Spangled Banner' in 1814.", motto: "Manly deeds, womanly words", brand: "Lockheed Martin / Under Armour" },
-  MA: { landmark: "Harvard Yard & Freedom Trail", fact: "Boston established America's first public park (Boston Common) in 1634.", motto: "By the sword we seek peace, but peace only under liberty", brand: "Fidelity Investments / Boston Dynamics" },
-  MI: { landmark: "Henry Ford Museum & Mackinac Bridge", fact: "Birthplace of Henry Ford's assembly line and the historic Motown sound.", motto: "If you seek a pleasant peninsula, look about you", brand: "Ford Motor Company / General Motors / Whirlpool" },
-  MN: { landmark: "Mall of America", fact: "Has 11,842 lakes, despite its famous nickname 'Land of 10,000 Lakes'.", motto: "The Star of the North", brand: "Target / 3M / UnitedHealth Group" },
-  MS: { landmark: "Mississippi Delta Region", fact: "The birth site of Blues music and birthplace of rock legend Elvis Presley.", motto: "By valor and arms", brand: "Sanderson Farms" },
-  MO: { landmark: "Gateway Arch St. Louis", fact: "The Gateway Arch is the tallest man-made monument in the Western Hemisphere.", motto: "Let the welfare of the people be the supreme law", brand: "Anheuser-Busch / H&R Block" },
-  MT: { landmark: "Glacier National Park", fact: "Contains the Triple Divide Peak, where water flows to three different oceans.", motto: "Gold and Silver", brand: "Montana Resources" },
-  NE: { landmark: "Chimney Rock Site", fact: "Has the only unicameral (single-chamber) state legislature in the nation.", motto: "Equality before the law", brand: "Berkshire Hathaway" },
-  NV: { landmark: "Las Vegas Strip & Hoover Dam", fact: "Produces more gold than any state, ranking behind only China, Australia, and Russia.", motto: "All for Our Country", brand: "MGM Resorts / Caesars Entertainment" },
-  NH: { landmark: "Mount Washington Observatory", fact: "Mount Washington once held the world record for the highest wind speed (231 mph).", motto: "Live Free or Die", brand: "Timberland" },
-  NJ: { landmark: "Atlantic City Boardwalk", fact: "Has the highest population density of any U.S. state.", motto: "Liberty and prosperity", brand: "Johnson & Johnson / Prudential Financial" },
-  NM: { landmark: "Carlsbad Caverns National Park", fact: "Santa Fe, founded in 1610, is the oldest capital city in the United States.", motto: "It grows as it goes", brand: "Sandia National Labs" },
-  NY: { landmark: "Statue of Liberty & Times Square", fact: "New York City was the first capital of the United States under the Constitution.", motto: "Ever upward", brand: "IBM / JPMorgan Chase / Pfizer / PepsiCo" },
-  NC: { landmark: "Kitty Hawk & Biltmore Estate", fact: "Site of the Wright Brothers' first successful airplane flight in 1903.", motto: "To be, rather than to seem", brand: "Bank of America / Lowe's / Epic Games" },
-  ND: { landmark: "Theodore Roosevelt National Park", fact: "Grows more sunflowers and produces more honey than any other state.", motto: "Liberty and union, now and forever, one and inseparable", brand: "Bobcat Company" },
-  OH: { landmark: "Rock & Roll Hall of Fame", fact: "Known as the 'Mother of Presidents', having birthed 8 U.S. presidents.", motto: "With God, all things are possible", brand: "Procter & Gamble / Kroger" },
-  OK: { landmark: "National Cowboy Museum", fact: "Has the largest population of Native American tribes in the nation.", motto: "Labor conquers all things", brand: "Devon Energy / Love's Travel Stops" },
-  OR: { landmark: "Crater Lake National Park", fact: "Crater Lake is the deepest lake in the U.S. and has exceptionally pure water.", motto: "She flies with her own wings", brand: "Nike / Columbia Sportswear" },
-  PA: { landmark: "Independence Hall & Gettysburg", fact: "Where both the Declaration of Independence and the Constitution were signed.", motto: "Virtue, liberty, and independence", brand: "Comcast / Hershey's" },
-  RI: { landmark: "Newport Gilded Age Mansions", fact: "The first colony to renounce allegiance to the British Crown on May 4, 1776.", motto: "Hope", brand: "CVS Health / Hasbro" },
-  SC: { landmark: "Fort Sumter National Monument", fact: "The first shots of the American Civil War were fired at Fort Sumter in 1861.", motto: "While I breathe, I hope", brand: "Sonoco Products" },
-  SD: { landmark: "Mount Rushmore Memorial", fact: "Features the 60-foot granite heads of Washington, Jefferson, Roosevelt, and Lincoln.", motto: "Under God the people rule", brand: "Sanford Health" },
-  TN: { landmark: "Graceland & Grand Ole Opry", fact: "Great Smoky Mountains is the most visited National Park in the United States.", motto: "Agriculture and Commerce", brand: "FedEx / HCA Healthcare / Dollar General" },
-  TX: { landmark: "The Alamo & NASA Space Center", fact: "Only state to enter by treaty, and was its own independent republic for 9 years.", motto: "Friendship", brand: "ExxonMobil / AT&T / Tesla / Texas Instruments" },
-  UT: { landmark: "Zion National Park & Arches", fact: "Has the youngest average population age in the United States.", motto: "Industry", brand: "Huntsman / Overstock" },
-  VT: { landmark: "Green Mountain Forest", fact: "The largest producer of maple syrup in the United States.", motto: "Freedom and Unity", brand: "Ben & Jerry's / Keurig Dr Pepper" },
-  VA: { landmark: "Monticello & Jamestown", fact: "Known as the 'Birthplace of a Nation'—four of the first five U.S. presidents were Virginian.", motto: "Thus always to tyrants", brand: "General Dynamics / Northrop Grumman" },
-  WA: { landmark: "Space Needle & Mount Rainier", fact: "Home of aerospace and tech giants Boeing, Microsoft, Amazon, and Starbucks.", motto: "By and by", brand: "Microsoft / Amazon / Costco / Starbucks" },
-  WV: { landmark: "New River Gorge Bridge", fact: "The first state to introduce a sales tax (in 1921).", motto: "Mountaineers are always free", brand: "Wheeling-Pittsburgh Steel" },
-  WI: { landmark: "Wisconsin Dells & Lambeau Field", fact: "Produces over 2 billion pounds of cheese annually, leading the nation.", motto: "Forward", brand: "Harley-Davidson / Northwestern Mutual" },
-  WY: { landmark: "Yellowstone National Park", fact: "Yellowstone was established in 1872 as the world's first national park.", motto: "Equal Rights", brand: "Wyoming Coal Mines" }
+// `brand` holds company/institution names, which are proper nouns and stay untranslated.
+interface StateTrivia {
+  landmark: { en: string; ro: string };
+  fact: { en: string; ro: string };
+  motto: { en: string; ro: string };
+  brand: string;
+}
+
+const STATE_TRIVIA: Record<string, StateTrivia> = {
+  AL: { landmark: { en: "US Space & Rocket Center", ro: "US Space & Rocket Center" }, fact: { en: "Huntsville built the Saturn V rocket that put American astronauts on the Moon.", ro: "La Huntsville a fost construită racheta Saturn V care a dus astronauții americani pe Lună." }, motto: { en: "We dare defend our rights", ro: "Îndrăznim să ne apărăm drepturile" }, brand: "ULA / Marshall Space Flight Center" },
+  AK: { landmark: { en: "Denali (Mount McKinley)", ro: "Denali (Muntele McKinley)" }, fact: { en: "Has more coastline than all other 49 states combined.", ro: "Are mai multă coastă decât celelalte 49 de state la un loc." }, motto: { en: "North to the Future", ro: "Spre nord, către viitor" }, brand: "Alaska Air Group" },
+  AZ: { landmark: { en: "The Grand Canyon", ro: "Marele Canion" }, fact: { en: "Home to the Sonoran Desert, the only place where Saguaro cacti grow wild.", ro: "Găzduiește Deșertul Sonora, singurul loc unde cactușii Saguaro cresc în sălbăticie." }, motto: { en: "God enriches", ro: "Dumnezeu îmbogățește" }, brand: "Freeport-McMoRan" },
+  AR: { landmark: { en: "Hot Springs National Park", ro: "Parcul Național Hot Springs" }, fact: { en: "Only state with an active diamond mine open to the public.", ro: "Singurul stat cu o mină de diamante activă, deschisă publicului." }, motto: { en: "The People Rule", ro: "Poporul conduce" }, brand: "Walmart" },
+  CA: { landmark: { en: "Silicon Valley & Golden Gate Bridge", ro: "Silicon Valley și Podul Golden Gate" }, fact: { en: "If California were a nation, its economy would rank 5th in the world.", ro: "Dacă California ar fi o țară, economia sa ar fi a 5-a din lume." }, motto: { en: "Eureka (I have found it)", ro: "Evrika (Am găsit)" }, brand: "Apple / Google / Nvidia / Chevron" },
+  CO: { landmark: { en: "Rocky Mountains", ro: "Munții Stâncoși" }, fact: { en: "Has the highest average elevation of any U.S. state at 6,800 feet.", ro: "Are cea mai mare altitudine medie dintre toate statele SUA — circa 2.070 de metri." }, motto: { en: "Nothing without providence", ro: "Nimic fără providență" }, brand: "Coors Brewing / Arrow Electronics" },
+  CT: { landmark: { en: "Yale University", ro: "Universitatea Yale" }, fact: { en: "Home of the first hamburger, Polaroid camera, and nuclear submarine.", ro: "Locul primului hamburger, al aparatului Polaroid și al primului submarin nuclear." }, motto: { en: "He who transplanted sustains", ro: "Cel care a răsădit susține" }, brand: "General Electric / Otis Elevator" },
+  DE: { landmark: { en: "Historic New Castle", ro: "Orașul istoric New Castle" }, fact: { en: "The very first state to ratify the U.S. Constitution (December 7, 1787).", ro: "Primul stat care a ratificat Constituția SUA (7 decembrie 1787)." }, motto: { en: "Liberty and Independence", ro: "Libertate și independență" }, brand: "DuPont" },
+  DC: { landmark: { en: "The White House & Capitol", ro: "Casa Albă și Capitoliul" }, fact: { en: "Designed by French engineer Pierre L'Enfant and holds 172 foreign embassies.", ro: "Proiectat de inginerul francez Pierre L'Enfant, găzduiește 172 de ambasade străine." }, motto: { en: "Justice for All", ro: "Dreptate pentru toți" }, brand: "Danaher / Marriott International" },
+  FL: { landmark: { en: "Kennedy Space Center & Everglades", ro: "Centrul Spațial Kennedy și Everglades" }, fact: { en: "Only place on Earth where alligators and crocodiles coexist in the wild.", ro: "Singurul loc de pe Pământ unde aligatorii și crocodilii coexistă în sălbăticie." }, motto: { en: "In God We Trust", ro: "În Dumnezeu ne încredem" }, brand: "Publix Super Markets / NextEra Energy" },
+  GA: { landmark: { en: "Martin Luther King Jr. Historic Site", ro: "Situl istoric Martin Luther King Jr." }, fact: { en: "Atlanta's Hartsfield-Jackson Airport is the busiest airport in the world.", ro: "Aeroportul Hartsfield-Jackson din Atlanta este cel mai aglomerat din lume." }, motto: { en: "Wisdom, Justice, and Moderation", ro: "Înțelepciune, dreptate și cumpătare" }, brand: "Coca-Cola / Delta Air Lines / Home Depot" },
+  HI: { landmark: { en: "Pearl Harbor & Diamond Head", ro: "Pearl Harbor și Diamond Head" }, fact: { en: "The youngest state in the union and the only one made entirely of islands.", ro: "Cel mai nou stat al Uniunii și singurul format în întregime din insule." }, motto: { en: "The life of the land is perpetuated in righteousness", ro: "Viața pământului dăinuie prin dreptate" }, brand: "Hawaiian Airlines" },
+  ID: { landmark: { en: "Craters of the Moon", ro: "Craters of the Moon" }, fact: { en: "Produces one-third of all potatoes grown in the United States.", ro: "Produce o treime din toți cartofii cultivați în Statele Unite." }, motto: { en: "Let it be perpetual", ro: "Să dăinuie veșnic" }, brand: "Albertsons / Micron Technology" },
+  IL: { landmark: { en: "Willis (Sears) Tower", ro: "Turnul Willis (Sears)" }, fact: { en: "Chicago built the world's first modern skyscraper (Home Insurance Building) in 1885.", ro: "Chicago a construit primul zgârie-nori modern din lume (Home Insurance Building) în 1885." }, motto: { en: "State sovereignty, national union", ro: "Suveranitatea statului, uniunea națională" }, brand: "McDonald's / Abbott Labs / Caterpillar" },
+  IN: { landmark: { en: "Indianapolis Motor Speedway", ro: "Circuitul Indianapolis Motor Speedway" }, fact: { en: "Hosts the Indy 500, the world's largest single-day sporting event.", ro: "Găzduiește Indy 500, cel mai mare eveniment sportiv de o zi din lume." }, motto: { en: "The Crossroads of America", ro: "Răscrucea Americii" }, brand: "Eli Lilly / Cummins" },
+  IA: { landmark: { en: "Field of Dreams", ro: "Field of Dreams" }, fact: { en: "Produces more corn, pork, and eggs than any other state in the nation.", ro: "Produce mai mult porumb, carne de porc și ouă decât orice alt stat." }, motto: { en: "Our liberties we prize and our rights we will maintain", ro: "Ne prețuim libertățile și ne vom apăra drepturile" }, brand: "John Deere (Manufacturing hub)" },
+  KS: { landmark: { en: "Monument Rocks", ro: "Monument Rocks" }, fact: { en: "Known as the wheat capital of the world, producing millions of bushels annually.", ro: "Cunoscut drept capitala mondială a grâului, cu milioane de baniți produși anual." }, motto: { en: "To the stars through difficulties", ro: "Către stele, prin greutăți" }, brand: "Koch Industries / Garmin" },
+  KY: { landmark: { en: "Churchill Downs (Kentucky Derby)", ro: "Churchill Downs (Derby-ul din Kentucky)" }, fact: { en: "Produces 95% of the world's total supply of Bourbon whiskey.", ro: "Produce 95% din whisky-ul Bourbon din lume." }, motto: { en: "United we stand, divided we fall", ro: "Uniți rezistăm, dezbinați cădem" }, brand: "Kentucky Bourbon Brands / Humana" },
+  LA: { landmark: { en: "New Orleans French Quarter", ro: "Cartierul Francez din New Orleans" }, fact: { en: "Birthplace of Jazz music and home of the world-famous Mardi Gras festival.", ro: "Locul de naștere al jazzului și gazda faimosului festival Mardi Gras." }, motto: { en: "Union, Justice, and Confidence", ro: "Uniune, dreptate și încredere" }, brand: "Entergy" },
+  ME: { landmark: { en: "Acadia National Park", ro: "Parcul Național Acadia" }, fact: { en: "Produces 90% of the country's domestic lobster supply.", ro: "Produce 90% din homarul din Statele Unite." }, motto: { en: "I lead", ro: "Eu conduc" }, brand: "L.L. Bean" },
+  MD: { landmark: { en: "Fort McHenry National Monument", ro: "Monumentul Național Fort McHenry" }, fact: { en: "Where Francis Scott Key wrote 'The Star-Spangled Banner' in 1814.", ro: "Locul unde Francis Scott Key a scris „The Star-Spangled Banner” în 1814." }, motto: { en: "Manly deeds, womanly words", ro: "Fapte bărbătești, vorbe femeiești" }, brand: "Lockheed Martin / Under Armour" },
+  MA: { landmark: { en: "Harvard Yard & Freedom Trail", ro: "Harvard Yard și Freedom Trail" }, fact: { en: "Boston established America's first public park (Boston Common) in 1634.", ro: "Boston a înființat primul parc public din America (Boston Common) în 1634." }, motto: { en: "By the sword we seek peace, but peace only under liberty", ro: "Cu sabia căutăm pacea, dar doar pacea sub libertate" }, brand: "Fidelity Investments / Boston Dynamics" },
+  MI: { landmark: { en: "Henry Ford Museum & Mackinac Bridge", ro: "Muzeul Henry Ford și Podul Mackinac" }, fact: { en: "Birthplace of Henry Ford's assembly line and the historic Motown sound.", ro: "Locul de naștere al liniei de asamblare a lui Henry Ford și al sunetului Motown." }, motto: { en: "If you seek a pleasant peninsula, look about you", ro: "De cauți o peninsulă plăcută, privește în jur" }, brand: "Ford Motor Company / General Motors / Whirlpool" },
+  MN: { landmark: { en: "Mall of America", ro: "Mall of America" }, fact: { en: "Has 11,842 lakes, despite its famous nickname 'Land of 10,000 Lakes'.", ro: "Are 11.842 de lacuri, în ciuda supranumelui „Ținutul celor 10.000 de lacuri”." }, motto: { en: "The Star of the North", ro: "Steaua Nordului" }, brand: "Target / 3M / UnitedHealth Group" },
+  MS: { landmark: { en: "Mississippi Delta Region", ro: "Regiunea Delta Mississippi" }, fact: { en: "The birth site of Blues music and birthplace of rock legend Elvis Presley.", ro: "Locul de naștere al muzicii blues și al legendei rock Elvis Presley." }, motto: { en: "By valor and arms", ro: "Prin vitejie și arme" }, brand: "Sanderson Farms" },
+  MO: { landmark: { en: "Gateway Arch St. Louis", ro: "Arcul Gateway din St. Louis" }, fact: { en: "The Gateway Arch is the tallest man-made monument in the Western Hemisphere.", ro: "Arcul Gateway este cel mai înalt monument construit de om din emisfera vestică." }, motto: { en: "Let the welfare of the people be the supreme law", ro: "Bunăstarea poporului să fie legea supremă" }, brand: "Anheuser-Busch / H&R Block" },
+  MT: { landmark: { en: "Glacier National Park", ro: "Parcul Național Glacier" }, fact: { en: "Contains the Triple Divide Peak, where water flows to three different oceans.", ro: "Conține Triple Divide Peak, de unde apa curge către trei oceane diferite." }, motto: { en: "Gold and Silver", ro: "Aur și argint" }, brand: "Montana Resources" },
+  NE: { landmark: { en: "Chimney Rock Site", ro: "Situl Chimney Rock" }, fact: { en: "Has the only unicameral (single-chamber) state legislature in the nation.", ro: "Are singurul legislativ unicameral (cu o singură cameră) din țară." }, motto: { en: "Equality before the law", ro: "Egalitate în fața legii" }, brand: "Berkshire Hathaway" },
+  NV: { landmark: { en: "Las Vegas Strip & Hoover Dam", ro: "Las Vegas Strip și Barajul Hoover" }, fact: { en: "Produces more gold than any state, ranking behind only China, Australia, and Russia.", ro: "Produce mai mult aur decât orice alt stat, fiind depășit doar de China, Australia și Rusia." }, motto: { en: "All for Our Country", ro: "Totul pentru țara noastră" }, brand: "MGM Resorts / Caesars Entertainment" },
+  NH: { landmark: { en: "Mount Washington Observatory", ro: "Observatorul de pe Muntele Washington" }, fact: { en: "Mount Washington once held the world record for the highest wind speed (231 mph).", ro: "Muntele Washington a deținut recordul mondial pentru cea mai mare viteză a vântului (372 km/h)." }, motto: { en: "Live Free or Die", ro: "Trăiește liber sau mori" }, brand: "Timberland" },
+  NJ: { landmark: { en: "Atlantic City Boardwalk", ro: "Promenada din Atlantic City" }, fact: { en: "Has the highest population density of any U.S. state.", ro: "Are cea mai mare densitate a populației dintre toate statele SUA." }, motto: { en: "Liberty and prosperity", ro: "Libertate și prosperitate" }, brand: "Johnson & Johnson / Prudential Financial" },
+  NM: { landmark: { en: "Carlsbad Caverns National Park", ro: "Parcul Național Carlsbad Caverns" }, fact: { en: "Santa Fe, founded in 1610, is the oldest capital city in the United States.", ro: "Santa Fe, fondat în 1610, este cea mai veche capitală din Statele Unite." }, motto: { en: "It grows as it goes", ro: "Crește pe măsură ce înaintează" }, brand: "Sandia National Labs" },
+  NY: { landmark: { en: "Statue of Liberty & Times Square", ro: "Statuia Libertății și Times Square" }, fact: { en: "New York City was the first capital of the United States under the Constitution.", ro: "New York a fost prima capitală a Statelor Unite sub Constituție." }, motto: { en: "Ever upward", ro: "Mereu mai sus" }, brand: "IBM / JPMorgan Chase / Pfizer / PepsiCo" },
+  NC: { landmark: { en: "Kitty Hawk & Biltmore Estate", ro: "Kitty Hawk și Conacul Biltmore" }, fact: { en: "Site of the Wright Brothers' first successful airplane flight in 1903.", ro: "Locul primului zbor reușit cu avionul al fraților Wright, în 1903." }, motto: { en: "To be, rather than to seem", ro: "A fi, mai degrabă decât a părea" }, brand: "Bank of America / Lowe's / Epic Games" },
+  ND: { landmark: { en: "Theodore Roosevelt National Park", ro: "Parcul Național Theodore Roosevelt" }, fact: { en: "Grows more sunflowers and produces more honey than any other state.", ro: "Cultivă mai multă floarea-soarelui și produce mai multă miere decât orice alt stat." }, motto: { en: "Liberty and union, now and forever, one and inseparable", ro: "Libertate și uniune, acum și pentru totdeauna, una și nedespărțită" }, brand: "Bobcat Company" },
+  OH: { landmark: { en: "Rock & Roll Hall of Fame", ro: "Rock & Roll Hall of Fame" }, fact: { en: "Known as the 'Mother of Presidents', having birthed 8 U.S. presidents.", ro: "Cunoscut drept „Mama Președinților”, fiind locul de naștere a 8 președinți americani." }, motto: { en: "With God, all things are possible", ro: "Cu Dumnezeu, totul este cu putință" }, brand: "Procter & Gamble / Kroger" },
+  OK: { landmark: { en: "National Cowboy Museum", ro: "Muzeul Național al Cowboy-ului" }, fact: { en: "Has the largest population of Native American tribes in the nation.", ro: "Are cea mai numeroasă populație de triburi native americane din țară." }, motto: { en: "Labor conquers all things", ro: "Munca învinge totul" }, brand: "Devon Energy / Love's Travel Stops" },
+  OR: { landmark: { en: "Crater Lake National Park", ro: "Parcul Național Crater Lake" }, fact: { en: "Crater Lake is the deepest lake in the U.S. and has exceptionally pure water.", ro: "Crater Lake este cel mai adânc lac din SUA și are o apă excepțional de pură." }, motto: { en: "She flies with her own wings", ro: "Ea zboară cu propriile aripi" }, brand: "Nike / Columbia Sportswear" },
+  PA: { landmark: { en: "Independence Hall & Gettysburg", ro: "Independence Hall și Gettysburg" }, fact: { en: "Where both the Declaration of Independence and the Constitution were signed.", ro: "Locul unde au fost semnate atât Declarația de Independență, cât și Constituția." }, motto: { en: "Virtue, liberty, and independence", ro: "Virtute, libertate și independență" }, brand: "Comcast / Hershey's" },
+  RI: { landmark: { en: "Newport Gilded Age Mansions", ro: "Conacele Epocii de Aur din Newport" }, fact: { en: "The first colony to renounce allegiance to the British Crown on May 4, 1776.", ro: "Prima colonie care a renunțat la supunerea față de Coroana Britanică, la 4 mai 1776." }, motto: { en: "Hope", ro: "Speranță" }, brand: "CVS Health / Hasbro" },
+  SC: { landmark: { en: "Fort Sumter National Monument", ro: "Monumentul Național Fort Sumter" }, fact: { en: "The first shots of the American Civil War were fired at Fort Sumter in 1861.", ro: "Primele focuri ale Războiului Civil American au fost trase la Fort Sumter, în 1861." }, motto: { en: "While I breathe, I hope", ro: "Cât respir, sper" }, brand: "Sonoco Products" },
+  SD: { landmark: { en: "Mount Rushmore Memorial", ro: "Memorialul Mount Rushmore" }, fact: { en: "Features the 60-foot granite heads of Washington, Jefferson, Roosevelt, and Lincoln.", ro: "Prezintă chipurile de granit, înalte de 18 metri, ale lui Washington, Jefferson, Roosevelt și Lincoln." }, motto: { en: "Under God the people rule", ro: "Sub Dumnezeu, poporul conduce" }, brand: "Sanford Health" },
+  TN: { landmark: { en: "Graceland & Grand Ole Opry", ro: "Graceland și Grand Ole Opry" }, fact: { en: "Great Smoky Mountains is the most visited National Park in the United States.", ro: "Great Smoky Mountains este cel mai vizitat parc național din Statele Unite." }, motto: { en: "Agriculture and Commerce", ro: "Agricultură și comerț" }, brand: "FedEx / HCA Healthcare / Dollar General" },
+  TX: { landmark: { en: "The Alamo & NASA Space Center", ro: "Alamo și Centrul Spațial NASA" }, fact: { en: "Only state to enter by treaty, and was its own independent republic for 9 years.", ro: "Singurul stat intrat în Uniune prin tratat; a fost republică independentă timp de 9 ani." }, motto: { en: "Friendship", ro: "Prietenie" }, brand: "ExxonMobil / AT&T / Tesla / Texas Instruments" },
+  UT: { landmark: { en: "Zion National Park & Arches", ro: "Parcurile Naționale Zion și Arches" }, fact: { en: "Has the youngest average population age in the United States.", ro: "Are cea mai tânără vârstă medie a populației din Statele Unite." }, motto: { en: "Industry", ro: "Hărnicie" }, brand: "Huntsman / Overstock" },
+  VT: { landmark: { en: "Green Mountain Forest", ro: "Pădurea Green Mountain" }, fact: { en: "The largest producer of maple syrup in the United States.", ro: "Cel mai mare producător de sirop de arțar din Statele Unite." }, motto: { en: "Freedom and Unity", ro: "Libertate și unitate" }, brand: "Ben & Jerry's / Keurig Dr Pepper" },
+  VA: { landmark: { en: "Monticello & Jamestown", ro: "Monticello și Jamestown" }, fact: { en: "Known as the 'Birthplace of a Nation'—four of the first five U.S. presidents were Virginian.", ro: "Cunoscut drept „Locul de naștere al unei națiuni” — patru dintre primii cinci președinți americani au fost din Virginia." }, motto: { en: "Thus always to tyrants", ro: "Astfel, întotdeauna, tiranilor" }, brand: "General Dynamics / Northrop Grumman" },
+  WA: { landmark: { en: "Space Needle & Mount Rainier", ro: "Space Needle și Muntele Rainier" }, fact: { en: "Home of aerospace and tech giants Boeing, Microsoft, Amazon, and Starbucks.", ro: "Casa giganților Boeing, Microsoft, Amazon și Starbucks." }, motto: { en: "By and by", ro: "Cu timpul" }, brand: "Microsoft / Amazon / Costco / Starbucks" },
+  WV: { landmark: { en: "New River Gorge Bridge", ro: "Podul New River Gorge" }, fact: { en: "The first state to introduce a sales tax (in 1921).", ro: "Primul stat care a introdus o taxă pe vânzări (în 1921)." }, motto: { en: "Mountaineers are always free", ro: "Muntenii sunt mereu liberi" }, brand: "Wheeling-Pittsburgh Steel" },
+  WI: { landmark: { en: "Wisconsin Dells & Lambeau Field", ro: "Wisconsin Dells și Lambeau Field" }, fact: { en: "Produces over 2 billion pounds of cheese annually, leading the nation.", ro: "Produce anual peste 900 de milioane de kilograme de brânză, cel mai mult din țară." }, motto: { en: "Forward", ro: "Înainte" }, brand: "Harley-Davidson / Northwestern Mutual" },
+  WY: { landmark: { en: "Yellowstone National Park", ro: "Parcul Național Yellowstone" }, fact: { en: "Yellowstone was established in 1872 as the world's first national park.", ro: "Yellowstone a fost înființat în 1872 ca primul parc național din lume." }, motto: { en: "Equal Rights", ro: "Drepturi egale" }, brand: "Wyoming Coal Mines" },
 };
 
 // ─── Region Palette ───────────────────────────────────────────────────────────
@@ -173,6 +183,31 @@ interface MapExplorerClientProps {
     selectedState: string;
     statehoodOrderLabel: string;
     detailsTitle: string;
+    // Panel labels
+    gdpRankLabel: string;
+    popRankLabel: string;
+    areaRankLabel: string;
+    entryOrderLabel: string;
+    perCapitaSuffix: string;
+    perSqMiSuffix: string;
+    squareMilesLabel: string;
+    toJoinSuffix: string;
+    rankOneLabel: string;
+    ofFiftyStates: string;
+    shareOfUsGdp: string;
+    iconicLandmark: string;
+    stateHeritageSite: string;
+    comparativeRankings: string;
+    sameRegionLabel: string;
+    totalSuffix: string;
+    nationalRanking: string;
+    top5Gdp: string;
+    top5Population: string;
+    americanLegacy: string;
+    ePluribusTitle: string;
+    ePluribusBody: string;
+    /** Localized region names keyed by the English region id. */
+    regionNames: Record<string, string>;
     // Extended state profile
     flagSeal: string;
     capitolLabel: string;
@@ -186,6 +221,17 @@ interface MapExplorerClientProps {
     politicalStructureLabel: string;
     uniqueLawsTitle: string;
     historicalFirstsTitle: string;
+    delegationLabel: string;
+    houseSeatsLabel: string;
+    senatorsLabel: string;
+    electoralShareNote: string;
+    constitutionGlanceTitle: string;
+    compactsTitle: string;
+    compactsNone: string;
+    defaultLandmark: string;
+    defaultFact: string;
+    defaultMotto: string;
+    defaultBrand: string;
     // State constitutions
     amendHeat: string;
     lengthHeat: string;
@@ -324,22 +370,21 @@ function StatTicker({ locale }: { locale: "en" | "ro" }) {
 }
 
 // ─── GDP Rank Bar ─────────────────────────────────────────────────────────────
-function GdpRankBar({ rank }: { rank: number }) {
+function GdpRankBar({ rank, label }: { rank: number; label: string }) {
   // rank 1 = best (CA) → fill = 100%; rank 50 = lowest → fill ≈ 2%
   const fillPct = Math.round(((51 - rank) / 50) * 100);
   return (
     <div className="space-y-1.5">
       <div className="flex justify-between items-center">
-        <span className="font-body text-[10px] uppercase tracking-widest text-white/35 font-semibold">GDP Rank</span>
+        <span className="font-body text-[10px] uppercase tracking-widest text-white/35 font-semibold">{label}</span>
         <span className="font-hero text-sm text-[#fbbf24]">#{rank} <span className="font-body text-[10px] text-white/30">/ 50</span></span>
       </div>
+      {/* Plain CSS width transition: framer-motion cannot interpolate `0` → `"NN%"`
+          and silently leaves the fill at 0px. */}
       <div className="h-1.5 w-full rounded-full bg-white/[0.07] overflow-hidden">
-        <motion.div
-          key={rank}
-          initial={{ width: 0 }}
-          animate={{ width: `${fillPct}%` }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="h-full rounded-full bg-gradient-to-r from-[#fbbf24] to-[#f59e0b]"
+        <div
+          style={{ width: `${fillPct}%` }}
+          className="h-full rounded-full bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] transition-[width] duration-500 ease-out"
         />
       </div>
     </div>
@@ -347,22 +392,18 @@ function GdpRankBar({ rank }: { rank: number }) {
 }
 
 // ─── Population Rank Bar ────────────────────────────────────────────────────
-function PopRankBar({ rank, color }: { rank: number; color: string }) {
+function PopRankBar({ rank, color, label }: { rank: number; color: string; label: string }) {
   const fillPct = Math.round(((51 - rank) / 50) * 100);
   return (
     <div className="space-y-1.5">
       <div className="flex justify-between items-center">
-        <span className="font-body text-[10px] uppercase tracking-widest text-white/35 font-semibold">Population Rank</span>
+        <span className="font-body text-[10px] uppercase tracking-widest text-white/35 font-semibold">{label}</span>
         <span className="font-hero text-sm" style={{ color }}>#{rank} <span className="font-body text-[10px] text-white/30">/ 50</span></span>
       </div>
       <div className="h-1.5 w-full rounded-full bg-white/[0.07] overflow-hidden">
-        <motion.div
-          key={rank}
-          initial={{ width: 0 }}
-          animate={{ width: `${fillPct}%` }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="h-full rounded-full"
-          style={{ background: `linear-gradient(to right, ${color}99, ${color})` }}
+        <div
+          className="h-full rounded-full transition-[width] duration-500 ease-out"
+          style={{ width: `${fillPct}%`, background: `linear-gradient(to right, ${color}99, ${color})` }}
         />
       </div>
     </div>
@@ -461,6 +502,19 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   /** Extended profile (governor, flag, laws, constitution) for the selected state. */
   const extended = useMemo(
     () => STATE_EXTENDED_DATA[selectedState.abbrev],
+    [selectedState.abbrev]
+  );
+
+  /** Congressional delegation, derived from electoral votes.
+   *  Every state's electoral votes == its House seats + its 2 senators. */
+  const delegation = useMemo(() => {
+    const ev = extended?.electoralVotes ?? 0;
+    return { electoralVotes: ev, houseSeats: Math.max(0, ev - 2), senators: 2 };
+  }, [extended]);
+
+  /** Interstate agreements the selected state is a party to. */
+  const stateCompacts = useMemo(
+    () => COOPERATION_AGREEMENTS.filter((a) => a.members.includes(selectedState.abbrev)),
     [selectedState.abbrev]
   );
 
@@ -994,8 +1048,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       </>
                     ) : (
                       <div className="flex gap-3 font-body text-[10px] text-white/50 font-semibold">
-                        <span>GDP <span className="text-white/80">${hs.gdp}B</span></span>
-                        <span>Pop <span className="text-white/80">{hs.population}M</span></span>
+                        <span>{translations.gdp} <span className="text-white/80">${hs.gdp}B</span></span>
+                        <span>{translations.population} <span className="text-white/80">{hs.population}M</span></span>
                         <span>#{gdpRanked.indexOf(hs.abbrev) + 1}</span>
                       </div>
                     )}
@@ -1122,15 +1176,15 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
                   <div className="mt-6 space-y-2.5 border-t border-white/[0.05] pt-5">
                     <div className="flex justify-between items-center">
-                      <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold">Capital</span>
+                      <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold">{translations.capital}</span>
                       <span className="font-body text-sm font-semibold text-white">{selectedState.capital[locale]}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold">Statehood</span>
+                      <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold">{translations.statehood}</span>
                       <span className="font-body text-sm font-semibold text-white">{selectedState.statehoodYear}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold">Entry Order</span>
+                      <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold">{translations.entryOrderLabel}</span>
                       <span className="font-hero text-base text-[#fbbf24]">#{selectedState.statehoodOrder} <span className="font-body text-[10px] text-white/25">/ 50</span></span>
                     </div>
                   </div>
@@ -1147,7 +1201,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         <span className="font-body text-[10px] uppercase tracking-wider text-white/30 font-semibold">{translations.gdp}</span>
                       </div>
                       <div className="font-hero text-3xl text-white">${selectedState.gdp}B</div>
-                      <div className="font-body text-[10px] text-white/30">${gdpPerCapita}k per capita</div>
+                      <div className="font-body text-[10px] text-white/30">${gdpPerCapita}k {translations.perCapitaSuffix}</div>
                     </div>
 
                     {/* Population */}
@@ -1157,7 +1211,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         <span className="font-body text-[10px] uppercase tracking-wider text-white/30 font-semibold">{translations.population}</span>
                       </div>
                       <div className="font-hero text-3xl text-white">{selectedState.population}M</div>
-                      <div className="font-body text-[10px] text-white/30">{popDensity} ppl/sq mi</div>
+                      <div className="font-body text-[10px] text-white/30">{popDensity} {translations.perSqMiSuffix}</div>
                     </div>
 
                     {/* Area */}
@@ -1167,7 +1221,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         <span className="font-body text-[10px] uppercase tracking-wider text-white/30 font-semibold">{translations.area}</span>
                       </div>
                       <div className="font-hero text-2xl text-white">{selectedState.area.toLocaleString()}</div>
-                      <div className="font-body text-[10px] text-white/30">square miles</div>
+                      <div className="font-body text-[10px] text-white/30">{translations.squareMilesLabel}</div>
                     </div>
 
                     {/* Statehood */}
@@ -1177,23 +1231,23 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         <span className="font-body text-[10px] uppercase tracking-wider text-white/30 font-semibold">{translations.statehood}</span>
                       </div>
                       <div className="font-hero text-3xl text-white">{selectedState.statehoodYear}</div>
-                      <div className="font-body text-[10px] text-white/30">#{selectedState.statehoodOrder} to join</div>
+                      <div className="font-body text-[10px] text-white/30">#{selectedState.statehoodOrder} {translations.toJoinSuffix}</div>
                     </div>
                   </div>
 
                   {/* GDP + Population Rank Bars */}
                   <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-5 space-y-4 shadow-sm">
-                    <GdpRankBar rank={gdpRank} />
+                    <GdpRankBar rank={gdpRank} label={translations.gdpRankLabel} />
                     <div className="h-px bg-white/[0.06]" />
-                    <PopRankBar rank={popRank} color="#60a5fa" />
+                    <PopRankBar rank={popRank} color="#60a5fa" label={translations.popRankLabel} />
                     <div className="flex justify-between font-body text-[10px] text-white/20 pt-1">
-                      <span>Rank 1 = California</span>
-                      <span>of 50 states</span>
+                      <span>{translations.rankOneLabel}</span>
+                      <span>{translations.ofFiftyStates}</span>
                     </div>
                   </div>
                   {/* Area rank pill */}
                   <div className="flex items-center justify-between rounded-xl border border-white/[0.05] bg-[#0c0c0c] px-4 py-3 shadow-sm">
-                    <span className="font-body text-[10px] uppercase tracking-wider text-white/30 font-semibold">Area Rank</span>
+                    <span className="font-body text-[10px] uppercase tracking-wider text-white/30 font-semibold">{translations.areaRankLabel}</span>
                     <div className="flex items-center gap-2">
                       <span className="font-hero text-base text-[#34d399]">#{areaRank}</span>
                       <span className="font-body text-[10px] text-white/25">/ 50 · {selectedState.area.toLocaleString()} sq mi</span>
@@ -1206,7 +1260,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <div>
                     <span className="font-body text-[10px] font-bold uppercase tracking-[0.18em] text-[#fbbf24] flex items-center gap-1.5 mb-3">
                       <MapPin className="h-3 w-3" />
-                      Regional Chronicle
+                      {translations.story}
                     </span>
                     <p className="font-body text-sm leading-relaxed text-white/70">
                       {selectedState.story[locale]}
@@ -1215,24 +1269,21 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
                   <div className="mt-6 pt-5 border-t border-white/[0.05] space-y-3">
                     <div>
-                      <span className="font-body text-[10px] font-bold uppercase tracking-wider text-white/30 block mb-1">Key Sector</span>
+                      <span className="font-body text-[10px] font-bold uppercase tracking-wider text-white/30 block mb-1">{translations.industry}</span>
                       <span className="font-body text-sm font-semibold text-[#fbbf24] leading-relaxed">{selectedState.industry[locale]}</span>
                     </div>
                     {/* US Share bar */}
                     <div>
                       <div className="flex justify-between items-center mb-1.5">
-                        <span className="font-body text-[10px] font-semibold uppercase tracking-wider text-white/30">Share of US GDP</span>
+                        <span className="font-body text-[10px] font-semibold uppercase tracking-wider text-white/30">{translations.shareOfUsGdp}</span>
                         <span className="font-body text-[10px] text-white/45">
                           {((selectedState.gdp / 29200) * 100).toFixed(1)}%
                         </span>
                       </div>
                       <div className="h-1 w-full rounded-full bg-white/[0.07] overflow-hidden">
-                        <motion.div
-                          key={selectedState.abbrev + "-gdpshare"}
-                          initial={{ width: 0 }}
-                          animate={{ width: `${Math.min(100, (selectedState.gdp / 29200) * 100 * 4)}%` }}
-                          transition={{ duration: 0.55, ease: "easeOut" }}
-                          className="h-full rounded-full bg-gradient-to-r from-[#fbbf24]/60 to-[#fbbf24]"
+                        <div
+                          style={{ width: `${Math.min(100, (selectedState.gdp / 29200) * 100 * 4)}%` }}
+                          className="h-full rounded-full bg-gradient-to-r from-[#fbbf24]/60 to-[#fbbf24] transition-[width] duration-500 ease-out"
                         />
                       </div>
                     </div>
@@ -1248,18 +1299,18 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <div className="space-y-4">
                     <div className="flex items-center gap-2">
                       <Globe className="h-4 w-4 text-[#fbbf24]" />
-                      <span className="font-body text-[10px] uppercase tracking-[0.18em] text-white/30 font-semibold">Iconic Landmark</span>
+                      <span className="font-body text-[10px] uppercase tracking-[0.18em] text-white/30 font-semibold">{translations.iconicLandmark}</span>
                     </div>
                     <div>
                       <h4 className="font-display text-base font-bold text-white truncate">
-                        {STATE_TRIVIA[selectedState.abbrev]?.landmark || "National Monument"}
+                        {STATE_TRIVIA[selectedState.abbrev]?.landmark[locale] ?? translations.defaultLandmark}
                       </h4>
                       <p className="font-body text-[10px] text-white/45 mt-1 uppercase tracking-wider">
-                        State Heritage Site
+                        {translations.stateHeritageSite}
                       </p>
                     </div>
                     <p className="font-body text-xs text-white/75 leading-relaxed">
-                      <strong>{locale === "ro" ? "Fapt istoric:" : "Historical Fact:"}</strong> {STATE_TRIVIA[selectedState.abbrev]?.fact || "A center of American heritage and pride."}
+                      <strong>{locale === "ro" ? "Fapt istoric:" : "Historical Fact:"}</strong> {STATE_TRIVIA[selectedState.abbrev]?.fact[locale] ?? translations.defaultFact}
                     </p>
                   </div>
                 </div>
@@ -1278,7 +1329,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         {locale === "ro" ? "Motto Oficial" : "Official Motto"}
                       </h5>
                       <p className="font-body text-xs text-white/75 italic mt-1 leading-relaxed">
-                        "{STATE_TRIVIA[selectedState.abbrev]?.motto || "Liberty & Prosperity"}"
+                        "{STATE_TRIVIA[selectedState.abbrev]?.motto[locale] ?? translations.defaultMotto}"
                       </p>
                     </div>
                     <div className="pt-3 border-t border-white/[0.04]">
@@ -1286,7 +1337,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         {locale === "ro" ? "Brand / Entitate Emblematică" : "Iconic Brand / Entity"}
                       </h5>
                       <p className="font-body text-xs font-semibold text-[#fbbf24] mt-1 leading-relaxed">
-                        {STATE_TRIVIA[selectedState.abbrev]?.brand || "National Enterprise"}
+                        {STATE_TRIVIA[selectedState.abbrev]?.brand ?? translations.defaultBrand}
                       </p>
                     </div>
                   </div>
@@ -1295,20 +1346,20 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 {/* State Rankings (3 columns) */}
                 <div className="md:col-span-3 flex flex-col justify-between bg-[#0c0c0c] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all shadow-sm">
                   <div className="space-y-3">
-                    <span className="font-body text-[10px] uppercase tracking-[0.18em] text-white/30 font-bold block">Comparative Rankings</span>
+                    <span className="font-body text-[10px] uppercase tracking-[0.18em] text-white/30 font-bold block">{translations.comparativeRankings}</span>
                     <div className="space-y-2">
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-white/40 font-body text-[9px] uppercase font-semibold">GDP Rank</span>
+                        <span className="text-white/40 font-body text-[9px] uppercase font-semibold">{translations.gdpRankLabel}</span>
                         <span className="text-white font-semibold">#{gdpRank}</span>
                       </div>
                       <div className="h-px bg-white/[0.04]" />
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-white/40 font-body text-[9px] uppercase font-semibold">Pop Rank</span>
+                        <span className="text-white/40 font-body text-[9px] uppercase font-semibold">{translations.popRankLabel}</span>
                         <span className="text-white font-semibold">#{popRank}</span>
                       </div>
                       <div className="h-px bg-white/[0.04]" />
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-white/40 font-body text-[9px] uppercase font-semibold">Area Rank</span>
+                        <span className="text-white/40 font-body text-[9px] uppercase font-semibold">{translations.areaRankLabel}</span>
                         <span className="text-white font-semibold">#{areaRank}</span>
                       </div>
                     </div>
@@ -1451,19 +1502,38 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         <span className="font-body text-xs text-white/75 leading-relaxed">{extended.legislature[locale]}</span>
                       </div>
                       <div className="h-px bg-white/[0.04]" />
-                      <div className="flex justify-between items-center">
-                        <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold">
-                          {translations.electoralVotesLabel}
-                        </span>
-                        <span className="font-hero text-base text-[#60a5fa]">{extended.electoralVotes}</span>
-                      </div>
-                      <div className="h-px bg-white/[0.04]" />
                       <div>
                         <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold block mb-1">
                           {translations.politicalStructureLabel}
                         </span>
                         <span className="font-body text-xs text-white/75 leading-relaxed">{extended.politicalStructure[locale]}</span>
                       </div>
+
+                      {/* Congressional delegation. Electoral votes == House seats + 2 senators,
+                          so the House number is derived rather than stored separately. */}
+                      <div className="h-px bg-white/[0.04]" />
+                      <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold block">
+                        {translations.delegationLabel}
+                      </span>
+                      <div className="grid grid-cols-3 gap-2">
+                        <div className="rounded-xl border border-white/[0.05] bg-black/40 p-2.5 text-center">
+                          <div className="font-hero text-lg text-[#60a5fa]">{delegation.houseSeats}</div>
+                          <div className="font-body text-[9px] text-white/35 leading-tight mt-0.5">{translations.houseSeatsLabel}</div>
+                        </div>
+                        <div className="rounded-xl border border-white/[0.05] bg-black/40 p-2.5 text-center">
+                          <div className="font-hero text-lg text-white">{delegation.senators}</div>
+                          <div className="font-body text-[9px] text-white/35 leading-tight mt-0.5">{translations.senatorsLabel}</div>
+                        </div>
+                        <div className="rounded-xl border border-white/[0.05] bg-black/40 p-2.5 text-center">
+                          <div className="font-hero text-lg text-[#fbbf24]">{delegation.electoralVotes}</div>
+                          <div className="font-body text-[9px] text-white/35 leading-tight mt-0.5">{translations.electoralVotesLabel}</div>
+                        </div>
+                      </div>
+                      <p className="font-body text-[10px] text-white/35 leading-relaxed">
+                        {translations.electoralShareNote
+                          .replace("{ev}", String(delegation.electoralVotes))
+                          .replace("{pct}", ((delegation.electoralVotes / 538) * 100).toFixed(1))}
+                      </p>
                     </div>
                   </div>
 
@@ -1502,6 +1572,63 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         ))}
                       </ul>
                     </div>
+
+                    {/* Constitution at a glance — pulled from the same data as the
+                        State Constitutions section further down the page. */}
+                    <div className="bg-[#0c0c0c] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all shadow-sm">
+                      <div className="flex items-center gap-2 mb-3">
+                        <ScrollText className="h-4 w-4 text-[#a78bfa]" />
+                        <span className="font-body text-[10px] uppercase tracking-[0.18em] text-white/30 font-semibold">
+                          {translations.constitutionGlanceTitle}
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <div className="rounded-xl border border-white/[0.05] bg-black/40 p-2.5 text-center">
+                          <div className="font-hero text-lg text-white">{extended.constitution.adoptedYear}</div>
+                          <div className="font-body text-[9px] text-white/35 mt-0.5">{translations.adoptedLabel}</div>
+                        </div>
+                        <div className="rounded-xl border border-white/[0.05] bg-black/40 p-2.5 text-center">
+                          <div className="font-hero text-lg text-[#a78bfa]">{extended.constitution.amendmentsCount}</div>
+                          <div className="font-body text-[9px] text-white/35 mt-0.5">{translations.amendmentsLabel}</div>
+                        </div>
+                        <div className="rounded-xl border border-white/[0.05] bg-black/40 p-2.5 text-center">
+                          <div className="font-hero text-lg text-[#2dd4bf]">
+                            {(extended.constitution.wordCount / 1000).toFixed(1)}k
+                          </div>
+                          <div className="font-body text-[9px] text-white/35 mt-0.5">{translations.lengthLabel}</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Which interstate agreements this state is a party to. */}
+                    <div className="bg-[#0c0c0c] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all shadow-sm">
+                      <div className="flex items-center gap-2 mb-3">
+                        <Share2 className="h-4 w-4 text-[#38bdf8]" />
+                        <span className="font-body text-[10px] uppercase tracking-[0.18em] text-white/30 font-semibold">
+                          {translations.compactsTitle}
+                        </span>
+                        <span className="ml-auto font-hero text-sm text-[#38bdf8]">{stateCompacts.length}</span>
+                      </div>
+                      {stateCompacts.length > 0 ? (
+                        <ul className="space-y-1.5">
+                          {stateCompacts.map((a) => {
+                            const color =
+                              COOPERATION_CATEGORIES.find((c) => c.id === a.category)?.color ?? "#38bdf8";
+                            return (
+                              <li key={a.id} className="flex items-start gap-2">
+                                <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: color }} />
+                                <span className="font-body text-[11px] leading-snug text-white/70">
+                                  {a.name[locale]}
+                                  <span className="text-white/30"> · {a.year}</span>
+                                </span>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      ) : (
+                        <p className="font-body text-[11px] text-white/35">{translations.compactsNone}</p>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}
@@ -1513,11 +1640,11 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           <div className="rounded-3xl border border-white/[0.06] bg-[#070707] p-6 md:p-8 shadow-lg">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <p className="font-body text-[9px] uppercase tracking-[0.18em] text-white/30 mb-1 font-bold">Same Region</p>
+                <p className="font-body text-[9px] uppercase tracking-[0.18em] text-white/30 mb-1 font-bold">{translations.sameRegionLabel}</p>
                 <h3 className="font-display text-base font-bold text-white">
-                  {selectedState.region} States
+                  {translations.regionNames[selectedState.region]}
                   <span className="ml-2 font-body text-[10px] font-normal text-white/40">
-                    · {regionalPeers.length + 1} total
+                    · {regionalPeers.length + 1} {translations.totalSuffix}
                   </span>
                 </h3>
               </div>
@@ -1658,12 +1785,9 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       </span>
                     </div>
                     <div className="h-1.5 w-full rounded-full bg-white/[0.07] overflow-hidden">
-                      <motion.div
-                        key={selectedState.abbrev + "-conlen"}
-                        initial={{ width: 0 }}
-                        animate={{ width: `${(extended.constitution.wordCount / maxValues.maxWords) * 100}%` }}
-                        transition={{ duration: 0.55, ease: "easeOut" }}
-                        className="h-full rounded-full bg-gradient-to-r from-[#2dd4bf]/50 to-[#2dd4bf]"
+                      <div
+                        style={{ width: `${(extended.constitution.wordCount / maxValues.maxWords) * 100}%` }}
+                        className="h-full rounded-full bg-gradient-to-r from-[#2dd4bf]/50 to-[#2dd4bf] transition-[width] duration-500 ease-out"
                       />
                     </div>
                     <div className="flex justify-between font-body text-[9px] text-white/25 mt-1.5">
@@ -1712,8 +1836,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Top 5 GDP */}
             <div className="rounded-3xl border border-white/[0.06] bg-[#070707] p-6 shadow-lg">
-              <p className="font-body text-[9px] uppercase tracking-[0.18em] text-white/30 mb-1 font-bold">National Ranking</p>
-              <h3 className="font-display text-base font-bold text-white mb-4">Top 5 · GDP</h3>
+              <p className="font-body text-[9px] uppercase tracking-[0.18em] text-white/30 mb-1 font-bold">{translations.nationalRanking}</p>
+              <h3 className="font-display text-base font-bold text-white mb-4">{translations.top5Gdp}</h3>
               <div className="space-y-2.5">
                 {top5Gdp.map((s, i) => {
                   const isCurrentState = s.abbrev === selectedStateAbbrev;
@@ -1752,8 +1876,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
             {/* Top 5 Population */}
             <div className="rounded-3xl border border-white/[0.06] bg-[#070707] p-6 shadow-lg">
-              <p className="font-body text-[9px] uppercase tracking-[0.18em] text-white/30 mb-1 font-bold">National Ranking</p>
-              <h3 className="font-display text-base font-bold text-white mb-4">Top 5 · Population</h3>
+              <p className="font-body text-[9px] uppercase tracking-[0.18em] text-white/30 mb-1 font-bold">{translations.nationalRanking}</p>
+              <h3 className="font-display text-base font-bold text-white mb-4">{translations.top5Population}</h3>
               <div className="space-y-2.5">
                 {top5Pop.map((s, i) => {
                   const isCurrentState = s.abbrev === selectedStateAbbrev;
@@ -1796,11 +1920,11 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           <div className="relative rounded-3xl overflow-hidden border border-white/[0.06] bg-[#070707] p-6 sm:p-8 mt-4 mb-8 shadow-lg">
             <div className="absolute inset-0 bg-gradient-to-r from-red-950/10 via-black to-blue-950/10 opacity-30 pointer-events-none" />
             <div className="relative z-10 max-w-3xl space-y-3">
-              <span className="font-body text-[9px] uppercase tracking-[0.2em] text-[#fbbf24] font-bold block">American Legacy</span>
-              <h3 className="font-display text-xl sm:text-2xl font-extrabold text-white">E Pluribus Unum — Out of Many, One</h3>
+              <span className="font-body text-[9px] uppercase tracking-[0.2em] text-[#fbbf24] font-bold block">{translations.americanLegacy}</span>
+              <h3 className="font-display text-xl sm:text-2xl font-extrabold text-white">{translations.ePluribusTitle}</h3>
               <p className="font-body text-xs sm:text-sm text-white/60 leading-relaxed">
-                The United States of America is a federal republic of 50 diverse states spanning ancient forests, endless plains, deep canyons, and majestic coastlines. From the founding thirteen colonies along the Atlantic coast to the towering volcanic peaks of the Pacific Northwest, each state contributes its own unique economy, heritage, and character to the shared tapestry of the Union.
-              </p>
+                {translations.ePluribusBody}
+                            </p>
             </div>
           </div>
 

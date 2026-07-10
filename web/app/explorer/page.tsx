@@ -45,6 +45,40 @@ export default async function ExplorerPage() {
     statehoodOrderLabel: locale === "ro" ? "Ordinea aderării" : "Statehood Entry",
     detailsTitle: locale === "ro" ? "Lista statelor" : "States Directory",
 
+    // ── Panel labels ──
+    gdpRankLabel: locale === "ro" ? "Clasament PIB" : "GDP Rank",
+    popRankLabel: locale === "ro" ? "Clasament populație" : "Population Rank",
+    areaRankLabel: locale === "ro" ? "Clasament suprafață" : "Area Rank",
+    entryOrderLabel: locale === "ro" ? "Ordinea aderării" : "Entry Order",
+    perCapitaSuffix: locale === "ro" ? "pe cap de locuitor" : "per capita",
+    perSqMiSuffix: locale === "ro" ? "loc./milă pătrată" : "ppl/sq mi",
+    squareMilesLabel: locale === "ro" ? "mile pătrate" : "square miles",
+    toJoinSuffix: locale === "ro" ? "stat aderat" : "to join",
+    rankOneLabel: locale === "ro" ? "Locul 1 = California" : "Rank 1 = California",
+    ofFiftyStates: locale === "ro" ? "din 50 de state" : "of 50 states",
+    shareOfUsGdp: locale === "ro" ? "Pondere din PIB-ul SUA" : "Share of US GDP",
+    iconicLandmark: locale === "ro" ? "Reper emblematic" : "Iconic Landmark",
+    stateHeritageSite: locale === "ro" ? "Sit de patrimoniu al statului" : "State Heritage Site",
+    comparativeRankings: locale === "ro" ? "Clasamente comparative" : "Comparative Rankings",
+    sameRegionLabel: locale === "ro" ? "Aceeași regiune" : "Same Region",
+    totalSuffix: locale === "ro" ? "în total" : "total",
+    nationalRanking: locale === "ro" ? "Clasament național" : "National Ranking",
+    top5Gdp: locale === "ro" ? "Top 5 · PIB" : "Top 5 · GDP",
+    top5Population: locale === "ro" ? "Top 5 · Populație" : "Top 5 · Population",
+    americanLegacy: locale === "ro" ? "Moștenirea americană" : "American Legacy",
+    ePluribusTitle:
+      locale === "ro"
+        ? "E Pluribus Unum — Din mai mulți, unul"
+        : "E Pluribus Unum — Out of Many, One",
+    ePluribusBody:
+      locale === "ro"
+        ? "Statele Unite ale Americii sunt o republică federală formată din 50 de state diverse, care se întind peste păduri străvechi, câmpii nesfârșite, canioane adânci și țărmuri maiestuoase. De la cele treisprezece colonii fondatoare de pe coasta Atlanticului până la piscurile vulcanice ale nord-vestului Pacificului, fiecare stat își aduce propria economie, moștenire și personalitate în țesătura comună a Uniunii."
+        : "The United States of America is a federal republic of 50 diverse states spanning ancient forests, endless plains, deep canyons, and majestic coastlines. From the founding thirteen colonies along the Atlantic coast to the towering volcanic peaks of the Pacific Northwest, each state contributes its own unique economy, heritage, and character to the shared tapestry of the Union.",
+    regionNames:
+      locale === "ro"
+        ? { Northeast: "Statele din Nord-Est", South: "Statele din Sud", Midwest: "Statele din Midwest", West: "Statele din Vest" }
+        : { Northeast: "Northeast States", South: "South States", Midwest: "Midwest States", West: "West States" },
+
     // ── Extended state profile ──
     flagSeal: locale === "ro" ? "Simboluri de stat" : "Symbols of State",
     capitolLabel: locale === "ro" ? "Capitoliul statului" : "State Capitol",
@@ -58,6 +92,23 @@ export default async function ExplorerPage() {
     politicalStructureLabel: locale === "ro" ? "Structură politică" : "Political Structure",
     uniqueLawsTitle: locale === "ro" ? "Legi neobișnuite" : "Unique Laws",
     historicalFirstsTitle: locale === "ro" ? "Premiere istorice" : "Historical Firsts",
+    delegationLabel: locale === "ro" ? "Delegația în Congres" : "Congressional Delegation",
+    houseSeatsLabel: locale === "ro" ? "Locuri în Cameră" : "House Seats",
+    senatorsLabel: locale === "ro" ? "Senatori" : "Senators",
+    electoralShareNote:
+      locale === "ro"
+        ? "{ev} din cele 538 de voturi electorale — {pct}% din Colegiul Electoral."
+        : "{ev} of 538 electoral votes — {pct}% of the Electoral College.",
+    constitutionGlanceTitle: locale === "ro" ? "Constituția pe scurt" : "Constitution at a Glance",
+    compactsTitle: locale === "ro" ? "Pacte interstatale" : "Interstate Compacts",
+    compactsNone: locale === "ro" ? "Niciun acord înregistrat." : "No agreements on record.",
+    defaultLandmark: locale === "ro" ? "Monument național" : "National Monument",
+    defaultFact:
+      locale === "ro"
+        ? "Un centru al moștenirii și mândriei americane."
+        : "A center of American heritage and pride.",
+    defaultMotto: locale === "ro" ? "Libertate și prosperitate" : "Liberty & Prosperity",
+    defaultBrand: locale === "ro" ? "Întreprindere națională" : "National Enterprise",
 
     // ── State constitutions ──
     amendHeat: locale === "ro" ? "Amendamente" : "Amendments",
