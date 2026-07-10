@@ -21,8 +21,15 @@ import {
   Globe,
   Trees,
   Anchor,
+  Flag,
+  Landmark,
+  Scale,
+  ScrollText,
+  Award,
+  Gavel,
 } from "lucide-react";
 import { EXPLORER_STATES, StateData } from "@/lib/data/explorer-data";
+import { STATE_EXTENDED_DATA } from "@/lib/data/state-details";
 import { COLORS } from "@/lib/constants";
 
 const GEO_URL = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
@@ -174,6 +181,37 @@ interface MapExplorerClientProps {
     selectedState: string;
     statehoodOrderLabel: string;
     detailsTitle: string;
+    // Extended state profile
+    flagSeal: string;
+    flagLabel: string;
+    sealLabel: string;
+    admissionLabel: string;
+    governmentTitle: string;
+    governorLabel: string;
+    legislatureLabel: string;
+    electoralVotesLabel: string;
+    politicalStructureLabel: string;
+    uniqueLawsTitle: string;
+    historicalFirstsTitle: string;
+    // State constitutions
+    amendHeat: string;
+    lengthHeat: string;
+    constitutionsEyebrow: string;
+    constitutionsTitle: string;
+    constitutionsIntro: string;
+    viewOnMap: string;
+    oldestLabel: string;
+    longestLabel: string;
+    shortestLabel: string;
+    mostAmendedLabel: string;
+    adoptedLabel: string;
+    amendmentsLabel: string;
+    lengthLabel: string;
+    vsLongest: string;
+    wordsLabel: string;
+    provisionsLabel: string;
+    /** Contains a `{avg}` placeholder replaced with the mean word count. */
+    avgLengthNote: string;
   };
 }
 
@@ -321,7 +359,9 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedRegion, setSelectedRegion] = useState<string>("All");
   const [sortBy, setSortBy] = useState<"name" | "gdp" | "population" | "statehood">("name");
-  const [heatmapMode, setHeatmapMode] = useState<"none" | "gdp" | "population" | "statehood">("none");
+  const [heatmapMode, setHeatmapMode] = useState<
+    "none" | "gdp" | "population" | "statehood" | "amendments" | "conLength"
+  >("none");
   // Hover tooltip: {x, y} relative to the map container
   const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number } | null>(null);
 
@@ -357,13 +397,37 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   );
 
   const maxValues = useMemo(() => {
-    let maxGdp = 0, maxPop = 0, maxOrder = 0;
+    let maxGdp = 0, maxPop = 0, maxOrder = 0, maxAmend = 0, maxWords = 0;
     statesArray.forEach((s) => {
       if (s.gdp > maxGdp) maxGdp = s.gdp;
       if (s.population > maxPop) maxPop = s.population;
       if (s.statehoodOrder > maxOrder) maxOrder = s.statehoodOrder;
+      const c = STATE_EXTENDED_DATA[s.abbrev]?.constitution;
+      if (c) {
+        if (c.amendmentsCount > maxAmend) maxAmend = c.amendmentsCount;
+        if (c.wordCount > maxWords) maxWords = c.wordCount;
+      }
     });
-    return { maxGdp, maxPop, maxOrder };
+    return { maxGdp, maxPop, maxOrder, maxAmend, maxWords };
+  }, [statesArray]);
+
+  /** Extended profile (governor, flag, laws, constitution) for the selected state. */
+  const extended = useMemo(
+    () => STATE_EXTENDED_DATA[selectedState.abbrev],
+    [selectedState.abbrev]
+  );
+
+  /** National constitution superlatives, used by the State Constitutions section. */
+  const constitutionFacts = useMemo(() => {
+    const rows = statesArray
+      .map((s) => ({ state: s, con: STATE_EXTENDED_DATA[s.abbrev]?.constitution }))
+      .filter((r): r is { state: StateData; con: NonNullable<typeof r.con> } => Boolean(r.con));
+    const longest = [...rows].sort((a, b) => b.con.wordCount - a.con.wordCount)[0];
+    const shortest = [...rows].sort((a, b) => a.con.wordCount - b.con.wordCount)[0];
+    const oldest = [...rows].sort((a, b) => a.con.adoptedYear - b.con.adoptedYear)[0];
+    const mostAmended = [...rows].sort((a, b) => b.con.amendmentsCount - a.con.amendmentsCount)[0];
+    const avgWords = Math.round(rows.reduce((t, r) => t + r.con.wordCount, 0) / rows.length);
+    return { rows, longest, shortest, oldest, mostAmended, avgWords };
   }, [statesArray]);
 
   const gdpRank = useMemo(
@@ -462,6 +526,20 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         fill = isHovered
           ? `hsla(210,85%,62%,${(0.35 + r * 0.55).toFixed(2)})`
           : `hsla(210,80%,52%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "amendments") {
+        const amend = STATE_EXTENDED_DATA[abbrev]?.constitution.amendmentsCount ?? 0;
+        const r = maxValues.maxAmend > 0 ? Math.sqrt(amend / maxValues.maxAmend) : 0;
+        fill = isHovered
+          ? `hsla(265,80%,68%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(265,72%,56%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "conLength") {
+        const words = STATE_EXTENDED_DATA[abbrev]?.constitution.wordCount ?? 0;
+        const r = maxValues.maxWords > 0 ? Math.sqrt(words / maxValues.maxWords) : 0;
+        fill = isHovered
+          ? `hsla(165,75%,58%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(165,68%,44%,${(0.22 + r * 0.58).toFixed(2)})`;
         stroke = "rgba(255,255,255,0.30)";
       } else {
         const r = (51 - state.statehoodOrder) / 50;
@@ -584,6 +662,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   { id: "gdp",        label: translations.gdpHeat,        activeColor: "#fbbf24" },
                   { id: "population", label: translations.popHeat,        activeColor: "#60a5fa" },
                   { id: "statehood",  label: translations.statehoodHeat,  activeColor: "#f87171" },
+                  { id: "amendments", label: translations.amendHeat,      activeColor: "#a78bfa" },
+                  { id: "conLength",  label: translations.lengthHeat,     activeColor: "#2dd4bf" },
                 ].map((mode) => (
                   <button
                     key={mode.id}
@@ -610,6 +690,10 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           ? "linear-gradient(to right, hsla(38,90%,50%,0.22), hsl(38,95%,62%))"
                           : heatmapMode === "population"
                           ? "linear-gradient(to right, hsla(210,80%,52%,0.22), hsl(210,85%,62%))"
+                          : heatmapMode === "amendments"
+                          ? "linear-gradient(to right, hsla(265,72%,56%,0.22), hsl(265,80%,68%))"
+                          : heatmapMode === "conLength"
+                          ? "linear-gradient(to right, hsla(165,68%,44%,0.22), hsl(165,75%,58%))"
                           : "linear-gradient(to right, hsla(355,76%,46%,0.22), hsl(355,82%,58%))",
                     }}
                   />
@@ -632,6 +716,22 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       <>
                         <span>Oldest (1787 · DE)</span>
                         <span className="text-right">Newest (1959 · HI)</span>
+                      </>
+                    )}
+                    {heatmapMode === "amendments" && (
+                      <>
+                        <span>Fewest ({constitutionFacts.rows.length ? Math.min(...constitutionFacts.rows.map((r) => r.con.amendmentsCount)) : 0})</span>
+                        <span className="text-right">
+                          Most ({constitutionFacts.mostAmended.con.amendmentsCount} · {constitutionFacts.mostAmended.state.abbrev})
+                        </span>
+                      </>
+                    )}
+                    {heatmapMode === "conLength" && (
+                      <>
+                        <span>Shortest ({(constitutionFacts.shortest.con.wordCount / 1000).toFixed(1)}k · {constitutionFacts.shortest.state.abbrev})</span>
+                        <span className="text-right">
+                          Longest ({(constitutionFacts.longest.con.wordCount / 1000).toFixed(0)}k · {constitutionFacts.longest.state.abbrev})
+                        </span>
                       </>
                     )}
                   </div>
@@ -689,6 +789,38 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         </div>
                       </div>
                     )}
+                    {heatmapMode === "amendments" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-1.5 w-1.5 rounded-full bg-[hsla(265,72%,56%,0.25)]" />
+                          <span>&lt; 50 (e.g., AL, RI, IL)</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-1.5 w-1.5 rounded-full bg-[hsla(265,72%,56%,0.50)]" />
+                          <span>50 - 200 (most states)</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-1.5 w-1.5 rounded-full bg-[hsla(265,80%,68%,0.85)]" />
+                          <span>&gt; 250 (e.g., CA, TX, OR)</span>
+                        </div>
+                      </div>
+                    )}
+                    {heatmapMode === "conLength" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-1.5 w-1.5 rounded-full bg-[hsla(165,68%,44%,0.25)]" />
+                          <span>&lt; 15k words (e.g., VT, RI, IN)</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-1.5 w-1.5 rounded-full bg-[hsla(165,68%,44%,0.50)]" />
+                          <span>15k - 60k words (most states)</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-1.5 w-1.5 rounded-full bg-[hsla(165,75%,58%,0.85)]" />
+                          <span>&gt; 70k words (e.g., AL, TX, LA)</span>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
@@ -710,7 +842,15 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 ))
               ) : (
                 <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-bold">
-                  {heatmapMode === "gdp" ? "GDP by State" : heatmapMode === "population" ? "Population by State" : "Statehood Order (oldest brightest)"}
+                  {heatmapMode === "gdp"
+                    ? "GDP by State"
+                    : heatmapMode === "population"
+                    ? "Population by State"
+                    : heatmapMode === "amendments"
+                    ? "Constitutional Amendments (most brightest)"
+                    : heatmapMode === "conLength"
+                    ? "Constitution Length (longest brightest)"
+                    : "Statehood Order (oldest brightest)"}
                 </span>
               )}
             </div>
@@ -1065,6 +1205,119 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 </div>
               </div>
 
+              {/* Row 3: Symbols, Government, Laws & Firsts */}
+              {extended && (
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mt-6 pt-6 border-t border-white/[0.06]">
+                  {/* Flag & Seal (4 columns) */}
+                  <div className="md:col-span-4 bg-[#0c0c0c] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all shadow-sm">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Flag className="h-4 w-4 text-[#fbbf24]" />
+                      <span className="font-body text-[10px] uppercase tracking-[0.18em] text-white/30 font-semibold">
+                        {translations.flagSeal}
+                      </span>
+                    </div>
+                    <div className="space-y-3">
+                      <div>
+                        <h5 className="font-body text-[10px] font-bold text-white/40 uppercase tracking-wider mb-1">
+                          {translations.flagLabel}
+                        </h5>
+                        <p className="font-body text-xs text-white/75 leading-relaxed">{extended.flagDesc[locale]}</p>
+                      </div>
+                      <div className="pt-3 border-t border-white/[0.04]">
+                        <h5 className="font-body text-[10px] font-bold text-white/40 uppercase tracking-wider mb-1">
+                          {translations.sealLabel}
+                        </h5>
+                        <p className="font-body text-xs text-white/75 leading-relaxed">{extended.sealDesc[locale]}</p>
+                      </div>
+                      <div className="pt-3 border-t border-white/[0.04]">
+                        <h5 className="font-body text-[10px] font-bold text-white/40 uppercase tracking-wider mb-1">
+                          {translations.admissionLabel}
+                        </h5>
+                        <p className="font-body text-xs font-semibold text-[#fbbf24] leading-relaxed">
+                          {extended.admissionUnion[locale]}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Government & Politics (4 columns) */}
+                  <div className="md:col-span-4 bg-[#0c0c0c] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all shadow-sm">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Landmark className="h-4 w-4 text-[#60a5fa]" />
+                      <span className="font-body text-[10px] uppercase tracking-[0.18em] text-white/30 font-semibold">
+                        {translations.governmentTitle}
+                      </span>
+                    </div>
+                    <div className="space-y-2.5">
+                      <div className="flex justify-between items-start gap-3">
+                        <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold shrink-0 pt-0.5">
+                          {translations.governorLabel}
+                        </span>
+                        <span className="font-body text-xs font-semibold text-white text-right">{extended.governor[locale]}</span>
+                      </div>
+                      <div className="h-px bg-white/[0.04]" />
+                      <div>
+                        <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold block mb-1">
+                          {translations.legislatureLabel}
+                        </span>
+                        <span className="font-body text-xs text-white/75 leading-relaxed">{extended.legislature[locale]}</span>
+                      </div>
+                      <div className="h-px bg-white/[0.04]" />
+                      <div className="flex justify-between items-center">
+                        <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold">
+                          {translations.electoralVotesLabel}
+                        </span>
+                        <span className="font-hero text-base text-[#60a5fa]">{extended.electoralVotes}</span>
+                      </div>
+                      <div className="h-px bg-white/[0.04]" />
+                      <div>
+                        <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold block mb-1">
+                          {translations.politicalStructureLabel}
+                        </span>
+                        <span className="font-body text-xs text-white/75 leading-relaxed">{extended.politicalStructure[locale]}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Unique Laws + Historical Firsts (4 columns) */}
+                  <div className="md:col-span-4 flex flex-col gap-6">
+                    <div className="bg-[#0c0c0c] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all shadow-sm">
+                      <div className="flex items-center gap-2 mb-3">
+                        <Gavel className="h-4 w-4 text-[#f87171]" />
+                        <span className="font-body text-[10px] uppercase tracking-[0.18em] text-white/30 font-semibold">
+                          {translations.uniqueLawsTitle}
+                        </span>
+                      </div>
+                      <ul className="space-y-2">
+                        {extended.uniqueLaws[locale].map((law) => (
+                          <li key={law} className="flex gap-2 font-body text-xs text-white/75 leading-relaxed">
+                            <span className="text-[#f87171] shrink-0" aria-hidden="true">§</span>
+                            <span>{law}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="bg-[#0c0c0c] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all shadow-sm">
+                      <div className="flex items-center gap-2 mb-3">
+                        <Award className="h-4 w-4 text-[#34d399]" />
+                        <span className="font-body text-[10px] uppercase tracking-[0.18em] text-white/30 font-semibold">
+                          {translations.historicalFirstsTitle}
+                        </span>
+                      </div>
+                      <ul className="space-y-2">
+                        {extended.historicalFirsts[locale].map((item) => (
+                          <li key={item} className="flex gap-2 font-body text-xs text-white/75 leading-relaxed">
+                            <span className="text-[#34d399] shrink-0" aria-hidden="true">★</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+
             </motion.div>
           </AnimatePresence>
 
@@ -1107,6 +1360,153 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               ))}
             </div>
           </div>
+
+          {/* ── STATE CONSTITUTIONS ── */}
+          {extended && (
+            <div className="rounded-3xl border border-white/[0.06] bg-[#070707] p-6 md:p-8 shadow-lg">
+              <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-6">
+                <div className="max-w-2xl">
+                  <p className="font-body text-[9px] uppercase tracking-[0.18em] text-[#a78bfa] mb-1 font-bold flex items-center gap-1.5">
+                    <ScrollText className="h-3 w-3" />
+                    {translations.constitutionsEyebrow}
+                  </p>
+                  <h3 className="font-display text-xl font-extrabold text-white mb-2">
+                    {translations.constitutionsTitle}
+                  </h3>
+                  <p className="font-body text-xs text-white/55 leading-relaxed">
+                    {translations.constitutionsIntro}
+                  </p>
+                </div>
+                {/* Ties the section back to the interactive map above */}
+                <div className="flex flex-wrap items-center gap-2 shrink-0">
+                  <span className="font-body text-[9px] uppercase tracking-wider text-white/30 font-bold">
+                    {translations.viewOnMap}
+                  </span>
+                  <button
+                    onClick={() => setHeatmapMode("amendments")}
+                    className="rounded-full px-3 py-1 text-[10px] font-semibold font-body transition-all"
+                    style={{
+                      background: heatmapMode === "amendments" ? "#a78bfa" : "rgba(255,255,255,0.05)",
+                      color: heatmapMode === "amendments" ? "#000" : "rgba(255,255,255,0.5)",
+                    }}
+                  >
+                    {translations.amendHeat}
+                  </button>
+                  <button
+                    onClick={() => setHeatmapMode("conLength")}
+                    className="rounded-full px-3 py-1 text-[10px] font-semibold font-body transition-all"
+                    style={{
+                      background: heatmapMode === "conLength" ? "#2dd4bf" : "rgba(255,255,255,0.05)",
+                      color: heatmapMode === "conLength" ? "#000" : "rgba(255,255,255,0.5)",
+                    }}
+                  >
+                    {translations.lengthHeat}
+                  </button>
+                </div>
+              </div>
+
+              {/* National superlatives */}
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+                {[
+                  { label: translations.oldestLabel, state: constitutionFacts.oldest.state, value: String(constitutionFacts.oldest.con.adoptedYear), color: "#fbbf24" },
+                  { label: translations.longestLabel, state: constitutionFacts.longest.state, value: `${Math.round(constitutionFacts.longest.con.wordCount / 1000)}k`, color: "#2dd4bf" },
+                  { label: translations.shortestLabel, state: constitutionFacts.shortest.state, value: `${(constitutionFacts.shortest.con.wordCount / 1000).toFixed(1)}k`, color: "#34d399" },
+                  { label: translations.mostAmendedLabel, state: constitutionFacts.mostAmended.state, value: String(constitutionFacts.mostAmended.con.amendmentsCount), color: "#a78bfa" },
+                ].map((card) => (
+                  <button
+                    key={card.label}
+                    onClick={() => setSelectedStateAbbrev(card.state.abbrev)}
+                    className="text-left rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-4 hover:border-white/20 transition-all"
+                  >
+                    <span className="font-body text-[9px] uppercase tracking-wider text-white/30 font-bold block mb-1.5">
+                      {card.label}
+                    </span>
+                    <div className="font-hero text-2xl" style={{ color: card.color }}>{card.value}</div>
+                    <div className="font-body text-[10px] text-white/45 mt-1 truncate">{card.state.name[locale]}</div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Selected state's constitution */}
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 border-t border-white/[0.06] pt-6">
+                <div className="md:col-span-5 space-y-4">
+                  <div className="flex items-center gap-2">
+                    <Scale className="h-4 w-4 text-[#a78bfa]" />
+                    <h4 className="font-display text-base font-bold text-white">
+                      {selectedState.name[locale]}
+                    </h4>
+                  </div>
+                  <div className="grid grid-cols-3 gap-3">
+                    <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-4">
+                      <span className="font-body text-[9px] uppercase tracking-wider text-white/30 font-bold block mb-1">
+                        {translations.adoptedLabel}
+                      </span>
+                      <div className="font-hero text-xl text-white">{extended.constitution.adoptedYear}</div>
+                    </div>
+                    <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-4">
+                      <span className="font-body text-[9px] uppercase tracking-wider text-white/30 font-bold block mb-1">
+                        {translations.amendmentsLabel}
+                      </span>
+                      <div className="font-hero text-xl text-[#a78bfa]">{extended.constitution.amendmentsCount}</div>
+                    </div>
+                    <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-4">
+                      <span className="font-body text-[9px] uppercase tracking-wider text-white/30 font-bold block mb-1">
+                        {translations.lengthLabel}
+                      </span>
+                      <div className="font-hero text-xl text-[#2dd4bf]">
+                        {(extended.constitution.wordCount / 1000).toFixed(1)}k
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Length relative to the longest state constitution */}
+                  <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-4">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="font-body text-[9px] uppercase tracking-wider text-white/30 font-bold">
+                        {translations.vsLongest}
+                      </span>
+                      <span className="font-body text-[10px] text-white/45">
+                        {extended.constitution.wordCount.toLocaleString()} {translations.wordsLabel}
+                      </span>
+                    </div>
+                    <div className="h-1.5 w-full rounded-full bg-white/[0.07] overflow-hidden">
+                      <motion.div
+                        key={selectedState.abbrev + "-conlen"}
+                        initial={{ width: 0 }}
+                        animate={{ width: `${(extended.constitution.wordCount / maxValues.maxWords) * 100}%` }}
+                        transition={{ duration: 0.55, ease: "easeOut" }}
+                        className="h-full rounded-full bg-gradient-to-r from-[#2dd4bf]/50 to-[#2dd4bf]"
+                      />
+                    </div>
+                    <div className="flex justify-between font-body text-[9px] text-white/25 mt-1.5">
+                      <span>0</span>
+                      <span>
+                        {constitutionFacts.longest.state.abbrev} · {Math.round(constitutionFacts.longest.con.wordCount / 1000)}k
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Interesting provisions */}
+                <div className="md:col-span-7 rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-5">
+                  <span className="font-body text-[10px] uppercase tracking-[0.18em] text-white/30 font-semibold block mb-3">
+                    {translations.provisionsLabel}
+                  </span>
+                  <ul className="space-y-3">
+                    {extended.constitution.provisions[locale].map((provision) => (
+                      <li key={provision} className="flex gap-2.5 font-body text-xs text-white/75 leading-relaxed">
+                        <span className="text-[#a78bfa] shrink-0" aria-hidden="true">▸</span>
+                        <span>{provision}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="font-body text-[10px] text-white/30 mt-4 pt-3 border-t border-white/[0.04] leading-relaxed">
+                    {translations.avgLengthNote.replace("{avg}", constitutionFacts.avgWords.toLocaleString())}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* ── NATIONAL LEADERBOARDS ── */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

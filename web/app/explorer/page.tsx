@@ -44,6 +44,44 @@ export default async function ExplorerPage() {
     selectedState: locale === "ro" ? "Statul selectat" : "Selected State",
     statehoodOrderLabel: locale === "ro" ? "Ordinea aderării" : "Statehood Entry",
     detailsTitle: locale === "ro" ? "Lista statelor" : "States Directory",
+
+    // ── Extended state profile ──
+    flagSeal: locale === "ro" ? "Drapel și sigiliu" : "Flag & Seal",
+    flagLabel: locale === "ro" ? "Drapel" : "Flag",
+    sealLabel: locale === "ro" ? "Sigiliu" : "Seal",
+    admissionLabel: locale === "ro" ? "Aderarea la Uniune" : "Admission to the Union",
+    governmentTitle: locale === "ro" ? "Guvern și politică" : "Government & Politics",
+    governorLabel: locale === "ro" ? "Guvernator" : "Governor",
+    legislatureLabel: locale === "ro" ? "Legislativ" : "Legislature",
+    electoralVotesLabel: locale === "ro" ? "Voturi electorale" : "Electoral Votes",
+    politicalStructureLabel: locale === "ro" ? "Structură politică" : "Political Structure",
+    uniqueLawsTitle: locale === "ro" ? "Legi neobișnuite" : "Unique Laws",
+    historicalFirstsTitle: locale === "ro" ? "Premiere istorice" : "Historical Firsts",
+
+    // ── State constitutions ──
+    amendHeat: locale === "ro" ? "Amendamente" : "Amendments",
+    lengthHeat: locale === "ro" ? "Lungime" : "Length",
+    constitutionsEyebrow: locale === "ro" ? "Cele 50 de constituții" : "The Fifty Constitutions",
+    constitutionsTitle: locale === "ro" ? "Constituțiile statelor" : "State Constitutions",
+    constitutionsIntro:
+      locale === "ro"
+        ? "Spre deosebire de Constituția federală, fiecare stat are propria constituție. Unele sunt scurte și durabile, altele lungi și amendate de sute de ori. Alege un stat de pe hartă pentru a-i vedea constituția."
+        : "Unlike the federal Constitution, every state has its own constitution. Some are short and durable; others run to hundreds of thousands of words and have been amended hundreds of times. Pick a state on the map to read its constitution.",
+    viewOnMap: locale === "ro" ? "Vezi pe hartă" : "View on map",
+    oldestLabel: locale === "ro" ? "Cea mai veche" : "Oldest",
+    longestLabel: locale === "ro" ? "Cea mai lungă" : "Longest",
+    shortestLabel: locale === "ro" ? "Cea mai scurtă" : "Shortest",
+    mostAmendedLabel: locale === "ro" ? "Cele mai multe amendamente" : "Most Amended",
+    adoptedLabel: locale === "ro" ? "Adoptată" : "Adopted",
+    amendmentsLabel: locale === "ro" ? "Amendamente" : "Amendments",
+    lengthLabel: locale === "ro" ? "Cuvinte" : "Words",
+    vsLongest: locale === "ro" ? "Față de cea mai lungă" : "Relative to longest",
+    wordsLabel: locale === "ro" ? "de cuvinte" : "words",
+    provisionsLabel: locale === "ro" ? "Prevederi interesante" : "Interesting Provisions",
+    avgLengthNote:
+      locale === "ro"
+        ? "Constituția medie a unui stat american are aproximativ {avg} de cuvinte — de peste patru ori mai lungă decât Constituția federală (circa 7.600 de cuvinte)."
+        : "The average US state constitution runs about {avg} words — more than four times the length of the federal Constitution (roughly 7,600 words).",
   };
 
   return <MapExplorerClient locale={locale} translations={translations} />;
