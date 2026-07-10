@@ -623,7 +623,8 @@ export function HeroSection() {
               this headline is a custom art-directed treatment, not normal body text. */}
           <motion.h1
             variants={heroTitle}
-            className="font-hero leading-none text-center"
+            className="font-hero leading-none text-center notranslate"
+            translate="no"
             style={{
               fontSize: "clamp(56px, 11vw, 148px)",
               letterSpacing: "0.02em",

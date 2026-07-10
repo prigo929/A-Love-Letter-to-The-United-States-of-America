@@ -365,7 +365,7 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
               fontWeight={metrics.fontWeight}
               letterSpacing={`${metrics.letterSpacing}px`}
               fill="#ffffff"
-              fillOpacity="0.001"
+              fillOpacity={(!videoReady || videoError) ? "1" : "0.001"}
               filter={`url(#${shadowFilterId})`}
             >
               {text}
