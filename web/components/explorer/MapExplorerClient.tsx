@@ -37,6 +37,7 @@ import { COLORS } from "@/lib/constants";
 
 import { GEO_URL, FIPS_TO_ABBREV } from "@/lib/data/us-geo";
 import { InterstateCooperationMap } from "@/components/explorer/InterstateCooperationMap";
+import { StateRevenueBudget } from "@/components/explorer/StateRevenueBudget";
 
 
 // ─── State Trivia Lookup ─────────────────────────────────────────────────────
@@ -174,6 +175,7 @@ interface MapExplorerClientProps {
     detailsTitle: string;
     // Extended state profile
     flagSeal: string;
+    capitolLabel: string;
     flagLabel: string;
     sealLabel: string;
     admissionLabel: string;
@@ -211,6 +213,21 @@ interface MapExplorerClientProps {
       membersLabel: string;
       establishedLabel: string;
       statesLabel: string;
+      historyLabel: string;
+    };
+    // How states make money
+    revenue: {
+      eyebrow: string;
+      title: string;
+      intro: string;
+      totalLabel: string;
+      perResidentLabel: string;
+      vsNationalLabel: string;
+      sourceLabel: string;
+      shareLabel: string;
+      noIncomeTax: string;
+      noSalesTax: string;
+      sourceNote: string;
     };
   };
 }
@@ -1313,6 +1330,36 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     <div className="space-y-3">
                       <div>
                         <h5 className="font-body text-[10px] font-bold text-white/40 uppercase tracking-wider mb-2">
+                          {translations.capitolLabel}
+                        </h5>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setSymbol({
+                              src: `/state-capitols/${selectedState.abbrev}.jpg`,
+                              label: `${selectedState.name[locale]} — ${translations.capitolLabel}`,
+                            })
+                          }
+                          className="group relative mb-3 block w-full cursor-zoom-in overflow-hidden rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fbbf24]/60"
+                          aria-label={`${translations.capitolLabel}: ${selectedState.name[locale]}`}
+                        >
+                          <img
+                            key={`capitol-${selectedState.abbrev}`}
+                            src={`/state-capitols/${selectedState.abbrev}.jpg`}
+                            alt={`${selectedState.name[locale]} — ${translations.capitolLabel}`}
+                            loading="lazy"
+                            className="aspect-[3/2] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          <span className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/60 opacity-0 transition-opacity group-hover:opacity-100">
+                            <ZoomIn size={13} className="text-white" />
+                          </span>
+                        </button>
+                        <p className="font-body text-xs text-white/55 leading-relaxed">
+                          {selectedState.capital[locale]}
+                        </p>
+                      </div>
+                      <div className="pt-3 border-t border-white/[0.04]">
+                        <h5 className="font-body text-[10px] font-bold text-white/40 uppercase tracking-wider mb-2">
                           {translations.flagLabel}
                         </h5>
                         {/* Plain <img>: these are SVGs, so Next/Image optimisation adds nothing.
@@ -1648,6 +1695,15 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               </div>
             </div>
           )}
+
+          {/* ── HOW STATES MAKE MONEY ── */}
+          <StateRevenueBudget
+            locale={locale}
+            abbrev={selectedState.abbrev}
+            stateName={selectedState.name[locale]}
+            population={selectedState.population}
+            translations={translations.revenue}
+          />
 
           {/* ── INTERSTATE COOPERATION ── */}
           <InterstateCooperationMap locale={locale} translations={translations.cooperation} />

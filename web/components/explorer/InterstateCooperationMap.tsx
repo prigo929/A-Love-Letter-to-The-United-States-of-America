@@ -8,7 +8,7 @@
 import { useMemo, useState } from "react";
 import { ComposableMap, Geographies, Geography, Line, Marker } from "react-simple-maps";
 import { geoCentroid } from "d3-geo";
-import { Share2, Info } from "lucide-react";
+import { Share2, Info, MapPin } from "lucide-react";
 import { GEO_URL, FIPS_TO_ABBREV } from "@/lib/data/us-geo";
 import {
   COOPERATION_AGREEMENTS,
@@ -25,6 +25,7 @@ interface Props {
     membersLabel: string;
     establishedLabel: string;
     statesLabel: string;
+    historyLabel: string;
   };
 }
 
@@ -115,8 +116,21 @@ export function InterstateCooperationMap({ locale, translations }: Props) {
           {/* Detail of the selected agreement */}
           <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-4 mt-1">
             <p className="font-body text-xs text-white/75 leading-relaxed">{agreement.blurb[locale]}</p>
+
+            <div className="mt-3 pt-3 border-t border-white/[0.05]">
+              <span className="font-body text-[9px] font-bold uppercase tracking-[0.18em] text-white/30 block mb-1.5">
+                {translations.historyLabel}
+              </span>
+              <p className="font-body text-[11px] text-white/60 leading-relaxed">{agreement.history[locale]}</p>
+            </div>
+
+            <p className="mt-3 pt-3 border-t border-white/[0.05] flex gap-2 font-body text-[10px] text-white/40 leading-relaxed">
+              <MapPin className="h-3 w-3 shrink-0 mt-0.5" style={{ color: accent }} />
+              <span>{agreement.hub.label[locale]}</span>
+            </p>
+
             {agreement.caveat && (
-              <p className="mt-3 pt-3 border-t border-white/[0.05] flex gap-2 font-body text-[10px] text-white/40 leading-relaxed">
+              <p className="mt-2 flex gap-2 font-body text-[10px] text-white/40 leading-relaxed">
                 <Info className="h-3 w-3 shrink-0 mt-0.5" />
                 <span>{agreement.caveat[locale]}</span>
               </p>
@@ -145,11 +159,12 @@ export function InterstateCooperationMap({ locale, translations }: Props) {
                   if (abbrev) centroids[abbrev] = geoCentroid(geo) as [number, number];
                 });
 
-                const anchorPos = centroids[agreement.anchor];
-                const links = anchorPos
-                  ? agreement.members
-                      .filter((m) => m !== agreement.anchor && centroids[m])
-                      .map((m) => ({ id: m, to: centroids[m] }))
+                const hubPos = agreement.hub.coordinates;
+                // Hub-and-spoke lines only where they carry meaning. For near-universal
+                // compacts a star from the secretariat would imply a hierarchy that
+                // does not exist, so we simply fill every member instead.
+                const links = agreement.network
+                  ? agreement.members.filter((m) => centroids[m]).map((m) => ({ id: m, to: centroids[m] }))
                   : [];
 
                 return (
@@ -157,14 +172,13 @@ export function InterstateCooperationMap({ locale, translations }: Props) {
                     {geographies.map((geo) => {
                       const abbrev = FIPS_TO_ABBREV[geo.id?.toString().padStart(2, "0") ?? ""] ?? "";
                       const isMember = memberSet.has(abbrev);
-                      const isAnchor = abbrev === agreement.anchor;
                       return (
                         <Geography
                           key={geo.rsmKey}
                           geography={geo}
                           style={{
                             default: {
-                              fill: isAnchor ? `${accent}55` : isMember ? `${accent}22` : "#101010",
+                              fill: isMember ? `${accent}26` : "#101010",
                               stroke: isMember ? `${accent}88` : "rgba(255,255,255,0.10)",
                               strokeWidth: isMember ? 0.7 : 0.5,
                               outline: "none",
@@ -176,33 +190,33 @@ export function InterstateCooperationMap({ locale, translations }: Props) {
                       );
                     })}
 
-                    {/* Connecting lines: anchor → each member */}
-                    {anchorPos &&
-                      links.map((l) => (
-                        <Line
-                          key={`${agreement.id}-${l.id}`}
-                          from={anchorPos}
-                          to={l.to}
-                          stroke={accent}
-                          strokeWidth={0.9}
-                          strokeLinecap="round"
-                          opacity={0.55}
-                        />
-                      ))}
+                    {/* Connecting lines: administrative seat → each member */}
+                    {links.map((l) => (
+                      <Line
+                        key={`${agreement.id}-${l.id}`}
+                        from={hubPos}
+                        to={l.to}
+                        stroke={accent}
+                        strokeWidth={0.9}
+                        strokeLinecap="round"
+                        opacity={0.5}
+                      />
+                    ))}
 
                     {/* Member nodes */}
                     {agreement.members.map((m) =>
                       centroids[m] ? (
                         <Marker key={`${agreement.id}-node-${m}`} coordinates={centroids[m]}>
-                          <circle
-                            r={m === agreement.anchor ? 3.4 : 1.9}
-                            fill={accent}
-                            stroke="#000"
-                            strokeWidth={0.5}
-                          />
+                          <circle r={1.9} fill={accent} stroke="#000" strokeWidth={0.5} />
                         </Marker>
                       ) : null
                     )}
+
+                    {/* The real administrative seat, drawn as a distinct ringed marker */}
+                    <Marker coordinates={hubPos}>
+                      <circle r={5.2} fill="none" stroke={accent} strokeWidth={0.9} opacity={0.7} />
+                      <circle r={2.6} fill="#fff" stroke={accent} strokeWidth={1} />
+                    </Marker>
                   </>
                 );
               }}

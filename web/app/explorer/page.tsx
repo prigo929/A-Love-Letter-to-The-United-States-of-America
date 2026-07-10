@@ -46,7 +46,8 @@ export default async function ExplorerPage() {
     detailsTitle: locale === "ro" ? "Lista statelor" : "States Directory",
 
     // ── Extended state profile ──
-    flagSeal: locale === "ro" ? "Drapel și sigiliu" : "Flag & Seal",
+    flagSeal: locale === "ro" ? "Simboluri de stat" : "Symbols of State",
+    capitolLabel: locale === "ro" ? "Capitoliul statului" : "State Capitol",
     flagLabel: locale === "ro" ? "Drapel" : "Flag",
     sealLabel: locale === "ro" ? "Sigiliu" : "Seal",
     admissionLabel: locale === "ro" ? "Aderarea la Uniune" : "Admission to the Union",
@@ -94,6 +95,28 @@ export default async function ExplorerPage() {
       membersLabel: locale === "ro" ? "State membre" : "Member States",
       establishedLabel: locale === "ro" ? "Înființat" : "Established",
       statesLabel: locale === "ro" ? "state" : "states",
+      historyLabel: locale === "ro" ? "Istoric" : "History",
+    },
+
+    // ── How states make money ──
+    revenue: {
+      eyebrow: locale === "ro" ? "Bugetul statului" : "The State Budget",
+      title: locale === "ro" ? "Cum fac bani statele" : "How States Make Money",
+      intro:
+        locale === "ro"
+          ? "Fiecare stat își strânge banii altfel. Unele nu au impozit pe venit, altele nu au taxă pe vânzări, iar câteva trăiesc din petrol. Apasă pe o sursă pentru a vedea din ce se compune."
+          : "Every state raises its money differently. Some have no income tax, some have no sales tax, and a few live off oil and gas. Click a source to see what it's made of.",
+      totalLabel: locale === "ro" ? "Venit general" : "General Revenue",
+      perResidentLabel: locale === "ro" ? "Per locuitor" : "Per Resident",
+      vsNationalLabel: locale === "ro" ? "vs. media" : "vs. Avg",
+      sourceLabel: locale === "ro" ? "Sursă de venit" : "Revenue Source",
+      shareLabel: locale === "ro" ? "Pondere" : "Share",
+      noIncomeTax: locale === "ro" ? "Fără impozit pe venitul persoanelor" : "No individual income tax",
+      noSalesTax: locale === "ro" ? "Fără taxă generală pe vânzări" : "No general sales tax",
+      sourceNote:
+        locale === "ro"
+          ? "Ponderi din venitul general, anul fiscal 2024"
+          : "Shares of general revenue, fiscal year 2024",
     },
   };
 
