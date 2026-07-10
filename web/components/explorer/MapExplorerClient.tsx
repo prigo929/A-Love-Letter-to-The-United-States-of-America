@@ -222,38 +222,17 @@ function StatTicker({ locale }: { locale: "en" | "ro" }) {
     },
     {
       icon: Compass,
-      unit: "Years",
-      value: "248",
-      label: locale === "ro" ? "Ani de Democrație" : "Years of Democracy",
-      detail: locale === "ro" ? "Din 1788" : "Constitution since 1788",
-    },
-    {
-      icon: Zap,
-      unit: "Innovation",
-      value: "#1",
-      label: locale === "ro" ? "Index Inovare" : "Innovation Index",
-      detail: locale === "ro" ? "Lider global în brevete" : "Global patent leader",
-    },
-    {
-      icon: Trees,
-      unit: "National Parks",
-      value: "63",
-      label: locale === "ro" ? "Parcuri Naționale" : "National Parks",
-      detail: locale === "ro" ? "84M+ acri protejați" : "84M+ acres preserved",
-    },
-    {
-      icon: Anchor,
-      unit: "Coastline",
-      value: "95,471 mi",
-      label: locale === "ro" ? "Linie de Coastă" : "Ocean Coastline",
-      detail: locale === "ro" ? "Trei oceane limitrofe" : "Three bordering oceans",
+      unit: "Democracy",
+      value: "248 Years",
+      label: locale === "ro" ? "Democrație Neîntreruptă" : "Unbroken Democracy",
+      detail: locale === "ro" ? "Constituție din 1788" : "Constitution since 1788",
     },
   ];
 
   return (
     <div
       ref={ref}
-      className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3"
+      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5 w-full"
     >
       {stats.map((stat, i) => {
         const Icon = stat.icon;
@@ -262,8 +241,8 @@ function StatTicker({ locale }: { locale: "en" | "ro" }) {
             key={i}
             initial={{ opacity: 0, y: 12 }}
             animate={visible ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: i * 0.04, duration: 0.4 }}
-            className="flex flex-col justify-between bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.04] rounded-2xl p-4 transition-all duration-300 group"
+            transition={{ delay: i * 0.05, duration: 0.4 }}
+            className="flex flex-col justify-between bg-[#070707] border border-white/[0.06] hover:border-white/[0.12] hover:bg-[#0c0c0c] rounded-2xl p-5 transition-all duration-300 group shadow-lg"
           >
             <div className="space-y-2">
               <div className="flex items-center gap-1.5 text-white/30 group-hover:text-white/50 transition-colors">
@@ -271,7 +250,7 @@ function StatTicker({ locale }: { locale: "en" | "ro" }) {
                 <span className="font-body text-[9px] uppercase tracking-[0.18em] font-bold">{stat.unit}</span>
               </div>
               <div>
-                <span className="font-hero text-2xl text-white leading-none tracking-tight block">
+                <span className="font-hero text-2xl sm:text-3xl text-white leading-none tracking-tight block">
                   {stat.value}
                 </span>
                 <span className="font-display text-xs text-white/70 font-semibold mt-1.5 block leading-tight">
@@ -296,7 +275,7 @@ function GdpRankBar({ rank }: { rank: number }) {
   return (
     <div className="space-y-1.5">
       <div className="flex justify-between items-center">
-        <span className="font-mono text-[9px] uppercase tracking-widest text-white/35">GDP Rank</span>
+        <span className="font-body text-[10px] uppercase tracking-widest text-white/35 font-semibold">GDP Rank</span>
         <span className="font-hero text-sm text-[#fbbf24]">#{rank} <span className="font-body text-[10px] text-white/30">/ 50</span></span>
       </div>
       <div className="h-1.5 w-full rounded-full bg-white/[0.07] overflow-hidden">
@@ -318,8 +297,8 @@ function PopRankBar({ rank, color }: { rank: number; color: string }) {
   return (
     <div className="space-y-1.5">
       <div className="flex justify-between items-center">
-        <span className="font-mono text-[9px] uppercase tracking-widest text-white/35">Population Rank</span>
-        <span className="font-hero text-sm" style={{ color }}>#{rank} <span className="font-mono text-[9px] text-white/30">/ 50</span></span>
+        <span className="font-body text-[10px] uppercase tracking-widest text-white/35 font-semibold">Population Rank</span>
+        <span className="font-hero text-sm" style={{ color }}>#{rank} <span className="font-body text-[10px] text-white/30">/ 50</span></span>
       </div>
       <div className="h-1.5 w-full rounded-full bg-white/[0.07] overflow-hidden">
         <motion.div
@@ -534,41 +513,41 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
       <div className="relative z-10 mx-auto max-w-screen-xl px-4 pt-28 pb-24 sm:px-6 lg:px-8 font-body">
 
         {/* ── HEADER ── */}
-        <header className="mb-10 text-center">
+        <header className="mb-16 text-center">
           <p className="font-body text-[11px] font-bold uppercase tracking-[0.32em] text-[#fbbf24] mb-4">
             FROM SEA TO SHINING SEA
           </p>
           <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl text-balance mb-4">
             {translations.title}
           </h1>
-          <p className="mx-auto max-w-2xl font-body text-lg text-white/45 leading-relaxed">
+          <p className="mx-auto max-w-2xl font-body text-lg text-white/40 leading-relaxed">
             {translations.subtitle}
           </p>
         </header>
 
         {/* ── NATIONAL STATS TICKER ── */}
-        <div className="mb-10">
+        <div className="mb-16">
           <StatTicker locale={locale} />
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-12">
 
           {/* ── CONTROLS TOOLBAR ── */}
-          <div className="grid grid-cols-1 gap-3 rounded-2xl border border-white/[0.08] bg-[#0a0a0a] p-4 md:grid-cols-12">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-white/[0.06] mb-4">
             {/* Search */}
-            <div className="relative md:col-span-5">
-              <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-white/30" />
+            <div className="relative w-full md:max-w-md">
+              <Search className="absolute top-1/2 left-3.5 h-4 w-4 -translate-y-1/2 text-white/30" />
               <input
                 type="text"
                 placeholder={translations.searchPlaceholder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-xl border border-white/[0.08] bg-white/[0.04] py-2.5 pl-9 pr-4 text-sm text-white placeholder-white/25 focus:border-[#fbbf24]/60 focus:outline-none focus:ring-1 focus:ring-[#fbbf24]/40 font-body transition-colors"
+                className="w-full rounded-full border border-white/[0.08] bg-transparent py-2.5 pl-10 pr-4 text-sm text-white placeholder-white/20 focus:border-[#fbbf24]/50 focus:outline-none transition-colors"
               />
             </div>
 
             {/* Region Filter Pills */}
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:col-span-7 md:pb-0 md:justify-end">
+            <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto justify-start md:justify-end pb-2 md:pb-0">
               <ListFilter className="h-3.5 w-3.5 text-white/30 shrink-0 mr-1" />
               {regionButtons.map((reg) => {
                 const isActive = selectedRegion === reg.id;
@@ -576,11 +555,11 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <button
                     key={reg.id}
                     onClick={() => setSelectedRegion(reg.id)}
-                    className="shrink-0 rounded-full px-3 py-1 text-[11px] font-semibold tracking-wide transition-all font-body"
+                    className="shrink-0 rounded-full px-4 py-1.5 text-[10px] font-bold tracking-wider uppercase transition-all duration-200"
                     style={{
-                      background: isActive ? `${reg.color}22` : "transparent",
-                      border: `1px solid ${isActive ? reg.color : "rgba(255,255,255,0.1)"}`,
-                      color: isActive ? reg.color : "rgba(255,255,255,0.5)",
+                      background: isActive ? `${reg.color}15` : "transparent",
+                      border: `1px solid ${isActive ? reg.color : "rgba(255,255,255,0.06)"}`,
+                      color: isActive ? reg.color : "rgba(255,255,255,0.4)",
                     }}
                   >
                     {reg.label}
@@ -591,11 +570,11 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           </div>
 
           {/* ── MAP CONTAINER ── */}
-          <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#050505] shadow-2xl">
+          <div className="relative overflow-hidden rounded-3xl border border-white/[0.05] bg-black shadow-2xl">
 
             {/* Heatmap overlay selector */}
             <div className="absolute top-4 left-4 z-20 flex flex-col gap-2 rounded-2xl border border-white/[0.08] bg-black/80 p-3 backdrop-blur-md max-w-[280px]">
-              <span className="font-mono text-[9px] tracking-[0.18em] text-white/35 uppercase flex items-center gap-1.5">
+              <span className="font-body text-[10px] tracking-[0.18em] text-white/35 uppercase flex items-center gap-1.5 font-bold">
                 <Layers className="h-3 w-3 text-[#fbbf24]" />
                 {translations.heatmapMode}
               </span>
@@ -636,7 +615,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   />
 
                   {/* Left / Right End Labels */}
-                  <div className="flex justify-between font-mono text-[8px] text-white/50 leading-tight">
+                  <div className="flex justify-between font-body text-[9px] text-white/50 leading-tight font-semibold">
                     {heatmapMode === "gdp" && (
                       <>
                         <span>Low (&lt; $50B)</span>
@@ -659,7 +638,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
                   {/* Segmented Legend Key Breakdown */}
                   <div className="space-y-1.5 pt-1">
-                    <span className="font-mono text-[8px] uppercase tracking-wider text-white/30 block">
+                    <span className="font-body text-[9px] uppercase tracking-wider text-white/30 block font-bold">
                       {locale === "ro" ? "Ghid de Culori" : "Color Scale Key"}
                     </span>
                     {heatmapMode === "gdp" && (
@@ -726,11 +705,11 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     style={{ opacity: selectedRegion !== "All" && selectedRegion !== region ? 0.35 : 1 }}
                   >
                     <div className="h-2.5 w-2.5 rounded-sm" style={{ background: rc.base }} />
-                    <span className="font-mono text-[9px] text-white/45 uppercase tracking-wider">{region}</span>
+                    <span className="font-body text-[10px] text-white/45 uppercase tracking-wider font-bold">{region}</span>
                   </button>
                 ))
               ) : (
-                <span className="font-mono text-[9px] text-white/30 uppercase tracking-wider">
+                <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-bold">
                   {heatmapMode === "gdp" ? "GDP by State" : heatmapMode === "population" ? "Population by State" : "Statehood Order (oldest brightest)"}
                 </span>
               )}
@@ -765,12 +744,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       <span className="font-display text-sm font-bold text-white">{hs.name[locale]}</span>
                       <span className="font-hero text-xs" style={{ color: rc.label }}>{hs.abbrev}</span>
                     </div>
-                    <div className="flex gap-3 font-mono text-[9px] text-white/50">
+                    <div className="flex gap-3 font-body text-[10px] text-white/50 font-semibold">
                       <span>GDP <span className="text-white/80">${hs.gdp}B</span></span>
                       <span>Pop <span className="text-white/80">{hs.population}M</span></span>
                       <span>#{hr}</span>
                     </div>
-                    <div className="mt-1 font-mono text-[9px]" style={{ color: rc.label }}>{hs.region}</div>
+                    <div className="mt-1 font-body text-[10px] font-bold" style={{ color: rc.label }}>{hs.region}</div>
                   </div>
                 );
               })()}
@@ -852,7 +831,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.28 }}
-              className="rounded-3xl border border-white/[0.08] bg-[#0a0a0a] p-6 md:p-8 shadow-2xl"
+              className="rounded-3xl border border-white/[0.06] bg-[#070707] p-8 md:p-10 shadow-2xl shadow-black/85"
             >
               {/* Region accent bar */}
               <div
@@ -867,7 +846,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <div>
                     <div className="flex items-center justify-between mb-3">
                       <span
-                        className="font-mono text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full"
+                        className="font-body text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full"
                         style={{
                           color: REGION_COLORS[selectedState.region]?.label ?? "#fbbf24",
                           background: `${REGION_COLORS[selectedState.region]?.base ?? "#fbbf24"}18`,
@@ -876,7 +855,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       >
                         {selectedState.region}
                       </span>
-                      <span className="font-mono text-[9px] text-white/25 tracking-wider">
+                      <span className="font-body text-[9px] text-white/25 tracking-wider">
                         FIPS {selectedState.fips}
                       </span>
                     </div>
@@ -892,16 +871,16 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
                   <div className="mt-6 space-y-2.5 border-t border-white/[0.05] pt-5">
                     <div className="flex justify-between items-center">
-                      <span className="font-mono text-[9px] text-white/30 uppercase tracking-wider">Capital</span>
+                      <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold">Capital</span>
                       <span className="font-body text-sm font-semibold text-white">{selectedState.capital[locale]}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="font-mono text-[9px] text-white/30 uppercase tracking-wider">Statehood</span>
+                      <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold">Statehood</span>
                       <span className="font-body text-sm font-semibold text-white">{selectedState.statehoodYear}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="font-mono text-[9px] text-white/30 uppercase tracking-wider">Entry Order</span>
-                      <span className="font-hero text-base text-[#fbbf24]">#{selectedState.statehoodOrder} <span className="font-mono text-[9px] text-white/25">/ 50</span></span>
+                      <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-semibold">Entry Order</span>
+                      <span className="font-hero text-base text-[#fbbf24]">#{selectedState.statehoodOrder} <span className="font-body text-[10px] text-white/25">/ 50</span></span>
                     </div>
                   </div>
                 </div>
@@ -911,70 +890,70 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   {/* 2×2 core stats */}
                   <div className="grid grid-cols-2 gap-3">
                     {/* GDP */}
-                    <div className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-4 space-y-1 hover:border-[#fbbf24]/20 transition-colors">
+                    <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-5 space-y-1 hover:border-[#fbbf24]/20 transition-colors shadow-sm">
                       <div className="flex items-center gap-1.5">
                         <TrendingUp className="h-3 w-3 text-[#fbbf24]" />
-                        <span className="font-mono text-[9px] uppercase tracking-wider text-white/30">{translations.gdp}</span>
+                        <span className="font-body text-[10px] uppercase tracking-wider text-white/30 font-semibold">{translations.gdp}</span>
                       </div>
                       <div className="font-hero text-3xl text-white">${selectedState.gdp}B</div>
-                      <div className="font-mono text-[9px] text-white/30">${gdpPerCapita}k per capita</div>
+                      <div className="font-body text-[10px] text-white/30">${gdpPerCapita}k per capita</div>
                     </div>
 
                     {/* Population */}
-                    <div className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-4 space-y-1 hover:border-[#60a5fa]/20 transition-colors">
+                    <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-5 space-y-1 hover:border-[#60a5fa]/20 transition-colors shadow-sm">
                       <div className="flex items-center gap-1.5">
                         <Users className="h-3 w-3 text-[#60a5fa]" />
-                        <span className="font-mono text-[9px] uppercase tracking-wider text-white/30">{translations.population}</span>
+                        <span className="font-body text-[10px] uppercase tracking-wider text-white/30 font-semibold">{translations.population}</span>
                       </div>
                       <div className="font-hero text-3xl text-white">{selectedState.population}M</div>
-                      <div className="font-mono text-[9px] text-white/30">{popDensity} ppl/sq mi</div>
+                      <div className="font-body text-[10px] text-white/30">{popDensity} ppl/sq mi</div>
                     </div>
 
                     {/* Area */}
-                    <div className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-4 space-y-1 hover:border-[#34d399]/20 transition-colors">
+                    <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-5 space-y-1 hover:border-[#34d399]/20 transition-colors shadow-sm">
                       <div className="flex items-center gap-1.5">
                         <Maximize2 className="h-3 w-3 text-[#34d399]" />
-                        <span className="font-mono text-[9px] uppercase tracking-wider text-white/30">{translations.area}</span>
+                        <span className="font-body text-[10px] uppercase tracking-wider text-white/30 font-semibold">{translations.area}</span>
                       </div>
                       <div className="font-hero text-2xl text-white">{selectedState.area.toLocaleString()}</div>
-                      <div className="font-mono text-[9px] text-white/30">square miles</div>
+                      <div className="font-body text-[10px] text-white/30">square miles</div>
                     </div>
 
                     {/* Statehood */}
-                    <div className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-4 space-y-1 hover:border-[#f87171]/20 transition-colors">
+                    <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-5 space-y-1 hover:border-[#f87171]/20 transition-colors shadow-sm">
                       <div className="flex items-center gap-1.5">
                         <Compass className="h-3 w-3 text-[#f87171]" />
-                        <span className="font-mono text-[9px] uppercase tracking-wider text-white/30">{translations.statehood}</span>
+                        <span className="font-body text-[10px] uppercase tracking-wider text-white/30 font-semibold">{translations.statehood}</span>
                       </div>
                       <div className="font-hero text-3xl text-white">{selectedState.statehoodYear}</div>
-                      <div className="font-mono text-[9px] text-white/30">#{selectedState.statehoodOrder} to join</div>
+                      <div className="font-body text-[10px] text-white/30">#{selectedState.statehoodOrder} to join</div>
                     </div>
                   </div>
 
                   {/* GDP + Population Rank Bars */}
-                  <div className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-4 space-y-4">
+                  <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-5 space-y-4 shadow-sm">
                     <GdpRankBar rank={gdpRank} />
                     <div className="h-px bg-white/[0.06]" />
                     <PopRankBar rank={popRank} color="#60a5fa" />
-                    <div className="flex justify-between font-mono text-[9px] text-white/20 pt-1">
+                    <div className="flex justify-between font-body text-[10px] text-white/20 pt-1">
                       <span>Rank 1 = California</span>
                       <span>of 50 states</span>
                     </div>
                   </div>
                   {/* Area rank pill */}
-                  <div className="flex items-center justify-between rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-2.5">
-                    <span className="font-mono text-[9px] uppercase tracking-wider text-white/30">Area Rank</span>
+                  <div className="flex items-center justify-between rounded-xl border border-white/[0.05] bg-[#0c0c0c] px-4 py-3 shadow-sm">
+                    <span className="font-body text-[10px] uppercase tracking-wider text-white/30 font-semibold">Area Rank</span>
                     <div className="flex items-center gap-2">
                       <span className="font-hero text-base text-[#34d399]">#{areaRank}</span>
-                      <span className="font-mono text-[9px] text-white/25">/ 50 · {selectedState.area.toLocaleString()} sq mi</span>
+                      <span className="font-body text-[10px] text-white/25">/ 50 · {selectedState.area.toLocaleString()} sq mi</span>
                     </div>
                   </div>
                 </div>
 
                 {/* ── Col 3: Chronicle + Industry (4 cols) ── */}
-                <div className="md:col-span-4 flex flex-col justify-between border-t md:border-t-0 md:border-l border-white/[0.06] pt-6 md:pt-0 md:pl-6">
+                <div className="md:col-span-4 flex flex-col justify-between border-t md:border-t-0 md:border-l border-white/[0.06] pt-6 md:pt-0 md:pl-8">
                   <div>
-                    <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#fbbf24] flex items-center gap-1.5 mb-3">
+                    <span className="font-body text-[10px] font-bold uppercase tracking-[0.18em] text-[#fbbf24] flex items-center gap-1.5 mb-3">
                       <MapPin className="h-3 w-3" />
                       Regional Chronicle
                     </span>
@@ -985,14 +964,14 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
                   <div className="mt-6 pt-5 border-t border-white/[0.05] space-y-3">
                     <div>
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-white/30 block mb-1">Key Sector</span>
+                      <span className="font-body text-[10px] font-bold uppercase tracking-wider text-white/30 block mb-1">Key Sector</span>
                       <span className="font-body text-sm font-semibold text-[#fbbf24] leading-relaxed">{selectedState.industry[locale]}</span>
                     </div>
                     {/* US Share bar */}
                     <div>
                       <div className="flex justify-between items-center mb-1.5">
-                        <span className="font-mono text-[9px] uppercase tracking-wider text-white/30">Share of US GDP</span>
-                        <span className="font-mono text-[9px] text-white/45">
+                        <span className="font-body text-[10px] font-semibold uppercase tracking-wider text-white/30">Share of US GDP</span>
+                        <span className="font-body text-[10px] text-white/45">
                           {((selectedState.gdp / 29200) * 100).toFixed(1)}%
                         </span>
                       </div>
@@ -1014,17 +993,17 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               {/* Row 2: Landmark, Fact and Rankings */}
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mt-6 pt-6 border-t border-white/[0.06]">
                 {/* Landmark & Fact (5 columns) */}
-                <div className="md:col-span-5 flex flex-col justify-between bg-white/[0.02] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all">
+                <div className="md:col-span-5 flex flex-col justify-between bg-[#0c0c0c] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all shadow-sm">
                   <div className="space-y-4">
                     <div className="flex items-center gap-2">
                       <Globe className="h-4 w-4 text-[#fbbf24]" />
-                      <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/30">Iconic Landmark</span>
+                      <span className="font-body text-[10px] uppercase tracking-[0.18em] text-white/30 font-semibold">Iconic Landmark</span>
                     </div>
                     <div>
                       <h4 className="font-display text-base font-bold text-white truncate">
                         {STATE_TRIVIA[selectedState.abbrev]?.landmark || "National Monument"}
                       </h4>
-                      <p className="font-body text-[10px] text-white/45 mt-1 uppercase tracking-wider font-mono">
+                      <p className="font-body text-[10px] text-white/45 mt-1 uppercase tracking-wider">
                         State Heritage Site
                       </p>
                     </div>
@@ -1035,16 +1014,16 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 </div>
 
                 {/* Identity & Brand (4 columns) */}
-                <div className="md:col-span-4 flex flex-col justify-between bg-white/[0.02] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all">
+                <div className="md:col-span-4 flex flex-col justify-between bg-[#0c0c0c] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all shadow-sm">
                   <div className="space-y-4">
                     <div className="flex items-center gap-2">
                       <Zap className="h-4 w-4 text-[#fbbf24]" />
-                      <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/30">
+                      <span className="font-body text-[10px] uppercase tracking-[0.18em] text-white/30 font-semibold">
                         {locale === "ro" ? "Identitate & Brand" : "Identity & Brand"}
                       </span>
                     </div>
                     <div>
-                      <h5 className="font-display text-xs font-bold text-white/40 uppercase tracking-wider font-mono">
+                      <h5 className="font-body text-[10px] font-bold text-white/40 uppercase tracking-wider">
                         {locale === "ro" ? "Motto Oficial" : "Official Motto"}
                       </h5>
                       <p className="font-body text-xs text-white/75 italic mt-1 leading-relaxed">
@@ -1052,7 +1031,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       </p>
                     </div>
                     <div className="pt-3 border-t border-white/[0.04]">
-                      <h5 className="font-display text-xs font-bold text-white/40 uppercase tracking-wider font-mono">
+                      <h5 className="font-body text-[10px] font-bold text-white/40 uppercase tracking-wider">
                         {locale === "ro" ? "Brand / Entitate Emblematică" : "Iconic Brand / Entity"}
                       </h5>
                       <p className="font-body text-xs font-semibold text-[#fbbf24] mt-1 leading-relaxed">
@@ -1063,22 +1042,22 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 </div>
 
                 {/* State Rankings (3 columns) */}
-                <div className="md:col-span-3 flex flex-col justify-between bg-white/[0.02] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all">
+                <div className="md:col-span-3 flex flex-col justify-between bg-[#0c0c0c] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all shadow-sm">
                   <div className="space-y-3">
-                    <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/30 block">Comparative Rankings</span>
+                    <span className="font-body text-[10px] uppercase tracking-[0.18em] text-white/30 font-bold block">Comparative Rankings</span>
                     <div className="space-y-2">
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-white/40 font-mono text-[8px] uppercase">GDP Rank</span>
+                        <span className="text-white/40 font-body text-[9px] uppercase font-semibold">GDP Rank</span>
                         <span className="text-white font-semibold">#{gdpRank}</span>
                       </div>
                       <div className="h-px bg-white/[0.04]" />
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-white/40 font-mono text-[8px] uppercase">Pop Rank</span>
+                        <span className="text-white/40 font-body text-[9px] uppercase font-semibold">Pop Rank</span>
                         <span className="text-white font-semibold">#{popRank}</span>
                       </div>
                       <div className="h-px bg-white/[0.04]" />
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-white/40 font-mono text-[8px] uppercase">Area Rank</span>
+                        <span className="text-white/40 font-body text-[9px] uppercase font-semibold">Area Rank</span>
                         <span className="text-white font-semibold">#{areaRank}</span>
                       </div>
                     </div>
@@ -1090,21 +1069,17 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           </AnimatePresence>
 
           {/* ── REGIONAL PEERS PANEL ── */}
-          <div className="rounded-3xl border border-white/[0.07] bg-[#0a0a0a] p-5 md:p-6">
+          <div className="rounded-3xl border border-white/[0.06] bg-[#070707] p-6 md:p-8 shadow-lg">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/30 mb-1">Same Region</p>
+                <p className="font-body text-[9px] uppercase tracking-[0.18em] text-white/30 mb-1 font-bold">Same Region</p>
                 <h3 className="font-display text-base font-bold text-white">
                   {selectedState.region} States
-                  <span className="ml-2 font-mono text-[10px] font-normal" style={{ color: REGION_COLORS[selectedState.region]?.label }}>
+                  <span className="ml-2 font-body text-[10px] font-normal text-white/40">
                     · {regionalPeers.length + 1} total
                   </span>
                 </h3>
               </div>
-              <div
-                className="h-2 w-2 rounded-full"
-                style={{ background: REGION_COLORS[selectedState.region]?.border, boxShadow: `0 0 8px ${REGION_COLORS[selectedState.region]?.border}` }}
-              />
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
               {/* Selected state first */}
@@ -1117,17 +1092,17 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               >
                 <div className="font-hero text-xs" style={{ color: REGION_COLORS[selectedState.region]?.label }}>{selectedState.abbrev} ★</div>
                 <div className="font-body text-xs font-semibold text-white truncate mt-0.5">{selectedState.name[locale]}</div>
-                <div className="font-mono text-[9px] text-white/40 mt-1">${selectedState.gdp}B</div>
+                <div className="font-body text-[10px] font-semibold text-white/40 mt-1">${selectedState.gdp}B</div>
               </div>
               {regionalPeers.map((peer) => (
                 <div
                   key={peer.abbrev}
                   onClick={() => setSelectedStateAbbrev(peer.abbrev)}
-                  className="rounded-xl p-3 border border-white/[0.06] bg-white/[0.03] cursor-pointer hover:border-white/20 transition-all"
+                  className="rounded-xl p-3 border border-white/[0.05] bg-[#0c0c0c] cursor-pointer hover:border-white/20 hover:bg-[#121212] transition-all"
                 >
                   <div className="font-hero text-xs" style={{ color: REGION_COLORS[peer.region]?.label }}>{peer.abbrev}</div>
                   <div className="font-body text-xs font-semibold text-white/80 truncate mt-0.5">{peer.name[locale]}</div>
-                  <div className="font-mono text-[9px] text-white/35 mt-1">${peer.gdp}B</div>
+                  <div className="font-body text-[10px] font-semibold text-white/35 mt-1">${peer.gdp}B</div>
                 </div>
               ))}
             </div>
@@ -1136,8 +1111,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           {/* ── NATIONAL LEADERBOARDS ── */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Top 5 GDP */}
-            <div className="rounded-3xl border border-white/[0.07] bg-[#0a0a0a] p-5">
-              <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/30 mb-1">National Ranking</p>
+            <div className="rounded-3xl border border-white/[0.06] bg-[#070707] p-6 shadow-lg">
+              <p className="font-body text-[9px] uppercase tracking-[0.18em] text-white/30 mb-1 font-bold">National Ranking</p>
               <h3 className="font-display text-base font-bold text-white mb-4">Top 5 · GDP</h3>
               <div className="space-y-2.5">
                 {top5Gdp.map((s, i) => {
@@ -1151,12 +1126,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     >
                       <div className="flex items-center justify-between mb-1">
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-[9px] text-white/30 w-4">#{i + 1}</span>
+                          <span className="font-body text-[10px] font-bold text-white/30 w-4">#{i + 1}</span>
                           <span className={`font-body text-xs font-semibold ${isCurrentState ? "text-[#fbbf24]" : "text-white/80 group-hover:text-white"}`}>
                             {s.name[locale]}
                           </span>
                         </div>
-                        <span className="font-mono text-[10px] text-white/50">${s.gdp}B</span>
+                        <span className="font-body text-[10px] text-white/50">${s.gdp}B</span>
                       </div>
                       <div className="h-1 w-full rounded-full bg-white/[0.05] overflow-hidden">
                         <div
@@ -1176,8 +1151,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
             </div>
 
             {/* Top 5 Population */}
-            <div className="rounded-3xl border border-white/[0.07] bg-[#0a0a0a] p-5">
-              <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/30 mb-1">National Ranking</p>
+            <div className="rounded-3xl border border-white/[0.06] bg-[#070707] p-6 shadow-lg">
+              <p className="font-body text-[9px] uppercase tracking-[0.18em] text-white/30 mb-1 font-bold">National Ranking</p>
               <h3 className="font-display text-base font-bold text-white mb-4">Top 5 · Population</h3>
               <div className="space-y-2.5">
                 {top5Pop.map((s, i) => {
@@ -1191,12 +1166,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     >
                       <div className="flex items-center justify-between mb-1">
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-[9px] text-white/30 w-4">#{i + 1}</span>
+                          <span className="font-body text-[10px] font-bold text-white/30 w-4">#{i + 1}</span>
                           <span className={`font-body text-xs font-semibold ${isCurrentState ? "text-[#60a5fa]" : "text-white/80 group-hover:text-white"}`}>
                             {s.name[locale]}
                           </span>
                         </div>
-                        <span className="font-mono text-[10px] text-white/50">{s.population}M</span>
+                        <span className="font-body text-[10px] text-white/50">{s.population}M</span>
                       </div>
                       <div className="h-1 w-full rounded-full bg-white/[0.05] overflow-hidden">
                         <div
@@ -1218,7 +1193,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
 
           {/* ── PATRIOTIC INSPIRATION BANNER ── */}
-          <div className="relative rounded-3xl overflow-hidden border border-white/[0.08] bg-[#050505] p-6 sm:p-8 mt-4 mb-8">
+          <div className="relative rounded-3xl overflow-hidden border border-white/[0.06] bg-[#070707] p-6 sm:p-8 mt-4 mb-8 shadow-lg">
             <div className="absolute inset-0 bg-gradient-to-r from-red-950/10 via-black to-blue-950/10 opacity-30 pointer-events-none" />
             <div className="relative z-10 max-w-3xl space-y-3">
               <span className="font-body text-[9px] uppercase tracking-[0.2em] text-[#fbbf24] font-bold block">American Legacy</span>
@@ -1236,16 +1211,16 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 {translations.detailsTitle} ({filteredStates.length})
               </h3>
               <div className="flex items-center gap-2">
-                <span className="font-mono text-[10px] text-white/30">{translations.sortBy}:</span>
+                <span className="font-body text-[10px] text-white/30 font-semibold">{translations.sortBy}:</span>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="rounded-xl border border-white/[0.08] bg-white/[0.04] py-1.5 px-3 text-xs text-white focus:border-[#fbbf24]/50 focus:outline-none font-body transition-colors"
+                  className="rounded-xl border border-white/[0.08] bg-transparent py-1.5 px-3 text-xs text-white focus:border-[#fbbf24]/50 focus:outline-none font-body transition-colors"
                 >
-                  <option value="name">{locale === "ro" ? "Nume" : "Name"}</option>
-                  <option value="gdp">{translations.gdp}</option>
-                  <option value="population">{translations.population}</option>
-                  <option value="statehood">{translations.statehood}</option>
+                  <option value="name" className="bg-black">{locale === "ro" ? "Nume" : "Name"}</option>
+                  <option value="gdp" className="bg-black">{translations.gdp}</option>
+                  <option value="population" className="bg-black">{translations.population}</option>
+                  <option value="statehood" className="bg-black">{translations.statehood}</option>
                 </select>
               </div>
             </div>
@@ -1263,8 +1238,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       onClick={() => setSelectedStateAbbrev(state.abbrev)}
                       className="relative cursor-pointer rounded-2xl border p-4 transition-all overflow-hidden"
                       style={{
-                        background: isSelected ? `${rc.base}14` : "rgba(10,10,10,0.8)",
-                        borderColor: isSelected ? rc.base : "rgba(255,255,255,0.07)",
+                        background: isSelected ? `${rc.base}14` : "#070707",
+                        borderColor: isSelected ? rc.base : "rgba(255,255,255,0.06)",
                         boxShadow: isSelected ? `0 0 16px ${rc.base}20` : "none",
                       }}
                     >
@@ -1275,16 +1250,16 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       />
                       <div className="flex items-center justify-between mb-1">
                         <span className="font-hero text-sm" style={{ color: rc.label }}>{state.abbrev}</span>
-                        <span className="font-mono text-[9px] text-white/25">${state.gdp}B</span>
+                        <span className="font-body text-[10px] text-white/25 font-semibold">${state.gdp}B</span>
                       </div>
                       <h4 className="font-body text-sm font-bold text-white truncate">{state.name[locale]}</h4>
-                      <p className="font-mono text-[9px] text-white/35 truncate mt-0.5">{state.capital[locale]}</p>
+                      <p className="font-body text-[10px] text-white/35 truncate mt-0.5">{state.capital[locale]}</p>
                     </div>
                   );
                 })}
 
                 {filteredStates.length === 0 && (
-                  <div className="col-span-full py-14 text-center font-mono text-xs text-white/25">
+                  <div className="col-span-full py-14 text-center font-body text-xs text-white/25">
                     {translations.noResults}
                   </div>
                 )}
