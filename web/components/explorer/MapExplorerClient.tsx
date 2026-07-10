@@ -19,6 +19,8 @@ import {
   BarChart2,
   Zap,
   Globe,
+  Trees,
+  Anchor,
 } from "lucide-react";
 import { EXPLORER_STATES, StateData } from "@/lib/data/explorer-data";
 import { COLORS } from "@/lib/constants";
@@ -176,40 +178,110 @@ interface MapExplorerClientProps {
 }
 
 // ─── Animated Counter ─────────────────────────────────────────────────────────
-function StatTicker() {
+function StatTicker({ locale }: { locale: "en" | "ro" }) {
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
+  const stats = [
+    {
+      icon: MapPin,
+      unit: "States",
+      value: "50",
+      label: locale === "ro" ? "State Constitutive" : "Constituent States",
+      detail: locale === "ro" ? "& 1 District Federal" : "& 1 Federal District",
+    },
+    {
+      icon: Users,
+      unit: "Population",
+      value: "335M",
+      label: locale === "ro" ? "Populație Totală" : "Total Population",
+      detail: locale === "ro" ? "A 3-a din lume" : "3rd largest on Earth",
+    },
+    {
+      icon: TrendingUp,
+      unit: "National GDP",
+      value: "$29.2T",
+      label: locale === "ro" ? "Produs Intern Brut" : "Gross Domestic Product",
+      detail: locale === "ro" ? "Cea mai mare economie" : "Largest in the world",
+    },
+    {
+      icon: Maximize2,
+      unit: "Square Miles",
+      value: "3.8M",
+      label: locale === "ro" ? "Suprafață Totală" : "Total Area",
+      detail: locale === "ro" ? "A 4-a din lume" : "4th largest country",
+    },
+    {
+      icon: Compass,
+      unit: "Years",
+      value: "248",
+      label: locale === "ro" ? "Ani de Democrație" : "Years of Democracy",
+      detail: locale === "ro" ? "Din 1788" : "Constitution since 1788",
+    },
+    {
+      icon: Zap,
+      unit: "Innovation",
+      value: "#1",
+      label: locale === "ro" ? "Index Inovare" : "Innovation Index",
+      detail: locale === "ro" ? "Lider global în brevete" : "Global patent leader",
+    },
+    {
+      icon: Trees,
+      unit: "National Parks",
+      value: "63",
+      label: locale === "ro" ? "Parcuri Naționale" : "National Parks",
+      detail: locale === "ro" ? "84M+ acri protejați" : "84M+ acres preserved",
+    },
+    {
+      icon: Anchor,
+      unit: "Coastline",
+      value: "95,471 mi",
+      label: locale === "ro" ? "Linie de Coastă" : "Ocean Coastline",
+      detail: locale === "ro" ? "Trei oceane limitrofe" : "Three bordering oceans",
+    },
+  ];
+
   return (
     <div
       ref={ref}
-      className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px bg-white/[0.06] rounded-2xl overflow-hidden border border-white/[0.07]"
+      className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3"
     >
-      {NATIONAL_STATS.map((stat, i) => {
+      {stats.map((stat, i) => {
         const Icon = stat.icon;
         return (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 12 }}
             animate={visible ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: i * 0.08, duration: 0.45 }}
-            className="flex flex-col gap-1 bg-[#0a0a0a] px-5 py-4"
+            transition={{ delay: i * 0.04, duration: 0.4 }}
+            className="flex flex-col justify-between bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.04] rounded-2xl p-4 transition-all duration-300 group"
           >
-            <div className="flex items-center gap-1.5 text-white/30 mb-1">
-              <Icon className="h-3 w-3 text-[#fbbf24]" />
-              <span className="font-mono text-[9px] uppercase tracking-[0.18em] font-semibold">{stat.unit}</span>
+            <div className="space-y-2">
+              <div className="flex items-center gap-1.5 text-white/30 group-hover:text-white/50 transition-colors">
+                <Icon className="h-3.5 w-3.5 text-[#fbbf24] group-hover:scale-110 transition-transform duration-300" />
+                <span className="font-body text-[9px] uppercase tracking-[0.18em] font-bold">{stat.unit}</span>
+              </div>
+              <div>
+                <span className="font-hero text-2xl text-white leading-none tracking-tight block">
+                  {stat.value}
+                </span>
+                <span className="font-display text-xs text-white/70 font-semibold mt-1.5 block leading-tight">
+                  {stat.label}
+                </span>
+                <span className="font-body text-[10px] text-white/40 block mt-0.5 leading-tight">
+                  {stat.detail}
+                </span>
+              </div>
             </div>
-            <span className="font-hero text-2xl text-white leading-none">{stat.value}</span>
-            <span className="font-body text-[10px] text-white/35 leading-tight">{stat.label}</span>
           </motion.div>
         );
       })}
@@ -463,8 +535,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
         {/* ── HEADER ── */}
         <header className="mb-10 text-center">
-          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#fbbf24] mb-4">
-            {translations.eyebrow}
+          <p className="font-body text-[11px] font-bold uppercase tracking-[0.32em] text-[#fbbf24] mb-4">
+            FROM SEA TO SHINING SEA
           </p>
           <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl text-balance mb-4">
             {translations.title}
@@ -476,7 +548,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
         {/* ── NATIONAL STATS TICKER ── */}
         <div className="mb-10">
-          <StatTicker />
+          <StatTicker locale={locale} />
         </div>
 
         <div className="space-y-6">
@@ -522,7 +594,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#050505] shadow-2xl">
 
             {/* Heatmap overlay selector */}
-            <div className="absolute top-4 left-4 z-20 flex flex-col gap-2 rounded-2xl border border-white/[0.08] bg-black/80 p-3 backdrop-blur-md">
+            <div className="absolute top-4 left-4 z-20 flex flex-col gap-2 rounded-2xl border border-white/[0.08] bg-black/80 p-3 backdrop-blur-md max-w-[280px]">
               <span className="font-mono text-[9px] tracking-[0.18em] text-white/35 uppercase flex items-center gap-1.5">
                 <Layers className="h-3 w-3 text-[#fbbf24]" />
                 {translations.heatmapMode}
@@ -547,23 +619,97 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   </button>
                 ))}
               </div>
-              {/* Heatmap gradient scale bar */}
+              {/* Dynamic Heatmap Legend scale key */}
               {heatmapMode !== "none" && (
-                <div className="mt-2 space-y-1">
+                <div className="mt-3 space-y-2 pt-2 border-t border-white/[0.06]">
+                  {/* Color Gradient Scale */}
                   <div
                     className="h-1.5 w-full rounded-full"
                     style={{
                       background:
                         heatmapMode === "gdp"
-                          ? "linear-gradient(to right, hsla(38,95%,52%,0.12), hsl(38,95%,52%))"
+                          ? "linear-gradient(to right, hsla(38,90%,50%,0.22), hsl(38,95%,62%))"
                           : heatmapMode === "population"
-                          ? "linear-gradient(to right, hsla(210,85%,55%,0.12), hsl(210,85%,55%))"
-                          : "linear-gradient(to right, hsla(355,82%,50%,0.12), hsl(355,82%,50%))",
+                          ? "linear-gradient(to right, hsla(210,80%,52%,0.22), hsl(210,85%,62%))"
+                          : "linear-gradient(to right, hsla(355,76%,46%,0.22), hsl(355,82%,58%))",
                     }}
                   />
-                  <div className="flex justify-between font-mono text-[8px] text-white/25">
-                    <span>Low</span>
-                    <span>High</span>
+
+                  {/* Left / Right End Labels */}
+                  <div className="flex justify-between font-mono text-[8px] text-white/50 leading-tight">
+                    {heatmapMode === "gdp" && (
+                      <>
+                        <span>Low (&lt; $50B)</span>
+                        <span className="text-right">Peak ($3.9T · CA)</span>
+                      </>
+                    )}
+                    {heatmapMode === "population" && (
+                      <>
+                        <span>Low (&lt; 1M)</span>
+                        <span className="text-right">Peak (39M · CA)</span>
+                      </>
+                    )}
+                    {heatmapMode === "statehood" && (
+                      <>
+                        <span>Oldest (1787 · DE)</span>
+                        <span className="text-right">Newest (1959 · HI)</span>
+                      </>
+                    )}
+                  </div>
+
+                  {/* Segmented Legend Key Breakdown */}
+                  <div className="space-y-1.5 pt-1">
+                    <span className="font-mono text-[8px] uppercase tracking-wider text-white/30 block">
+                      {locale === "ro" ? "Ghid de Culori" : "Color Scale Key"}
+                    </span>
+                    {heatmapMode === "gdp" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-1.5 w-1.5 rounded-full bg-[hsla(38,90%,50%,0.25)]" />
+                          <span>&lt; $100B (e.g., WY, VT, AK)</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-1.5 w-1.5 rounded-full bg-[hsla(38,90%,50%,0.50)]" />
+                          <span>$100B - $500B (e.g., AL, CO, OR)</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-1.5 w-1.5 rounded-full bg-[hsla(38,95%,62%,0.85)]" />
+                          <span>&gt; $1T (e.g., CA, TX, NY, FL)</span>
+                        </div>
+                      </div>
+                    )}
+                    {heatmapMode === "population" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-1.5 w-1.5 rounded-full bg-[hsla(210,80%,52%,0.25)]" />
+                          <span>&lt; 2M (e.g., WY, AK, DE)</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-1.5 w-1.5 rounded-full bg-[hsla(210,80%,52%,0.50)]" />
+                          <span>2M - 10M (e.g., OR, AL, AZ)</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-1.5 w-1.5 rounded-full bg-[hsla(210,85%,62%,0.85)]" />
+                          <span>&gt; 15M (e.g., CA, TX, FL, NY)</span>
+                        </div>
+                      </div>
+                    )}
+                    {heatmapMode === "statehood" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-1.5 w-1.5 rounded-full bg-[hsla(355,82%,58%,0.85)]" />
+                          <span>1787 - 1790 (Founding States)</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-1.5 w-1.5 rounded-full bg-[hsla(355,76%,46%,0.50)]" />
+                          <span>1800 - 1880 (Union expansion)</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-1.5 w-1.5 rounded-full bg-[hsla(355,76%,46%,0.25)]" />
+                          <span>1889 - 1959 (Modern States)</span>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
@@ -1071,10 +1217,22 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           </div>
 
 
+          {/* ── PATRIOTIC INSPIRATION BANNER ── */}
+          <div className="relative rounded-3xl overflow-hidden border border-white/[0.08] bg-[#050505] p-6 sm:p-8 mt-4 mb-8">
+            <div className="absolute inset-0 bg-gradient-to-r from-red-950/10 via-black to-blue-950/10 opacity-30 pointer-events-none" />
+            <div className="relative z-10 max-w-3xl space-y-3">
+              <span className="font-body text-[9px] uppercase tracking-[0.2em] text-[#fbbf24] font-bold block">American Legacy</span>
+              <h3 className="font-display text-xl sm:text-2xl font-extrabold text-white">E Pluribus Unum — Out of Many, One</h3>
+              <p className="font-body text-xs sm:text-sm text-white/60 leading-relaxed">
+                The United States of America is a federal republic of 50 diverse states spanning ancient forests, endless plains, deep canyons, and majestic coastlines. From the founding thirteen colonies along the Atlantic coast to the towering volcanic peaks of the Pacific Northwest, each state contributes its own unique economy, heritage, and character to the shared tapestry of the Union.
+              </p>
+            </div>
+          </div>
+
           {/* ── STATES DIRECTORY ── */}
           <div className="pt-4 border-t border-white/[0.05]">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5">
-              <h3 className="font-mono text-[10px] font-bold tracking-[0.18em] text-white/30 uppercase">
+              <h3 className="font-body text-[10px] font-bold tracking-[0.18em] text-white/30 uppercase">
                 {translations.detailsTitle} ({filteredStates.length})
               </h3>
               <div className="flex items-center gap-2">
