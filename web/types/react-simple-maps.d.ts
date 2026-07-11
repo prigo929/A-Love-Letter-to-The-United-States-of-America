@@ -7,4 +7,10 @@ declare module "react-simple-maps" {
   export const Marker: ComponentType<Record<string, unknown>>;
   export const Line: ComponentType<Record<string, unknown>>;
   export const ZoomableGroup: ComponentType<Record<string, unknown>>;
+  /** Returns the live d3 projection (plus width/height) for custom layers. */
+  export function useMapContext(): {
+    width: number;
+    height: number;
+    projection: (coords: [number, number]) => [number, number] | null;
+  };
 }

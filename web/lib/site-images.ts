@@ -40,6 +40,16 @@ import economyNYSEUpsideDown from "@/IMAGES/Economy/economy-nyse-upside-down.jpg
 import economyPort from "@/IMAGES/Economy/economy-port.jpg";
 import economyTradeSkyline from "@/IMAGES/Infrastructure/I-110 and I-115 Interchange Los Angeles.jpg";
 
+// ─── Infrastructure section ───────────────────────────────────────────────────
+import infraGlenwoodCanyon from "@/IMAGES/Infrastructure/Colorados Glenwood Canyon I-70 thruway.jpeg";
+import infraHooverConstruction from "@/IMAGES/Infrastructure/Construction of the Hoover Dam.jpg";
+import infraGoldenGateConstruction from "@/IMAGES/Infrastructure/Golden Gate Bridge Nearing Completion.jpg";
+import infraOHareJets from "@/IMAGES/Infrastructure/American-Airlines-Jets-Parked-At-OHare-Airport-Gates-With-Chicago-Skyline.jpg";
+import infraFloridaKeys from "@/IMAGES/Infrastructure/Flordia Keys Highway.jpg";
+import infraPanamaCanal from "@/IMAGES/Infrastructure/Completion of the Panama Canal.jpg";
+import infraGoldenSpike from "@/IMAGES/History/The Driving of the Golden Spike.jpg";
+import infraInterstateConstruction from "@/IMAGES/Tech & Commerce/interstate-construction.jpg";
+
 import denaliNationalPark from "@/IMAGES/Landscapes/Mount Denali National Park.jpg";
 import glacierNationalPark from "@/IMAGES/Landscapes/Glacier National Park.jpg";
 import grandTeton from "@/IMAGES/Landscapes/Yosemite National Park Road.jpg";
@@ -555,6 +565,14 @@ export const SITE_IMAGES = {
   economyNyseHero: economyNyseHero.src,
   economyPort: economyPort.src,
   economyTradeSkyline: economyTradeSkyline.src,
+  infraGlenwoodCanyon: infraGlenwoodCanyon.src,
+  infraHooverConstruction: infraHooverConstruction.src,
+  infraGoldenGateConstruction: infraGoldenGateConstruction.src,
+  infraOHareJets: infraOHareJets.src,
+  infraFloridaKeys: infraFloridaKeys.src,
+  infraPanamaCanal: infraPanamaCanal.src,
+  infraGoldenSpike: infraGoldenSpike.src,
+  infraInterstateConstruction: infraInterstateConstruction.src,
   denaliNationalPark: denaliNationalPark.src,
   glacierNationalPark: glacierNationalPark.src,
   yosemiteNationalPark: yosemiteNationalPark.src,
