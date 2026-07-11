@@ -87,6 +87,27 @@ function RoutesLayer({
     [routes, era, projection],
   );
 
+  const selectedRoute = useMemo(() => routes.find(r => r.id === selectedId) ?? null, [routes, selectedId]);
+
+  const isNodeOnSelectedRoute = useMemo(() => {
+    if (!selectedRoute) return () => true;
+    return (node: MapNode) => {
+      if (selectedRoute.waypoints && selectedRoute.waypoints.length > 0) {
+        return selectedRoute.waypoints.some(
+          (w) => Math.abs(w[0] - node.coordinates[0]) < 0.15 && Math.abs(w[1] - node.coordinates[1]) < 0.15,
+        );
+      }
+      const routeKey = selectedRoute.id.toUpperCase();
+      const detailPaths = (interstatesData as any)[routeKey];
+      if (detailPaths) {
+        return detailPaths.some((seg: LngLat[]) =>
+          seg.some((pt) => Math.abs(pt[0] - node.coordinates[0]) < 0.45 && Math.abs(pt[1] - node.coordinates[1]) < 0.45),
+        );
+      }
+      return false;
+    };
+  }, [selectedRoute]);
+
   const projectedNodes = useMemo(
     () =>
       nodes
@@ -110,13 +131,14 @@ function RoutesLayer({
           <g key={`${era}-${route.id}`} style={{ opacity: dimmed ? 0.08 : 1, transition: "opacity 0.3s ease" }}>
             {/* Soft glow underlay — only for featured or selected routes */}
             {(isFeatured || isSelected) && (
-              <path
+              <motion.path
                 d={d}
                 fill="none"
                 stroke={route.color}
                 strokeWidth={4}
                 strokeLinecap="round"
-                opacity={0.13}
+                animate={isSelected ? { opacity: [0.12, 0.28, 0.12] } : { opacity: 0.13 }}
+                transition={isSelected ? { duration: 2.0, repeat: Infinity, ease: "easeInOut" } : undefined}
                 style={{ pointerEvents: "none" }}
               />
             )}
@@ -150,9 +172,17 @@ function RoutesLayer({
             )}
             {/* Moving vehicle dot — only for featured routes to save CPU cycles */}
             {!reducedMotion && isFeatured && (
-              <circle r={2.2} fill={route.color} stroke="#000" strokeWidth={0.6} style={{ pointerEvents: "none" }}>
+              <motion.circle 
+                r={2.2} 
+                fill={route.color} 
+                stroke="#000" 
+                strokeWidth={0.6} 
+                style={{ pointerEvents: "none" }}
+                animate={{ r: [2.0, 3.2, 2.0] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+              >
                 <animateMotion dur={`${11 + i * 2.5}s`} repeatCount="indefinite" path={d} />
-              </circle>
+              </motion.circle>
             )}
             {/* Fat invisible hit-area for hover/tap */}
             <path
@@ -169,27 +199,32 @@ function RoutesLayer({
       })}
 
       {/* Junction nodes */}
-      {projectedNodes.map(({ node, p }) => (
-        <g key={node.id} style={{ pointerEvents: "none" }}>
-          <circle cx={p[0]} cy={p[1]} r={node.major ? 3.4 : 2.2} fill="#fff" stroke="#000" strokeWidth={0.8} />
-          <text
-            x={p[0] + 6}
-            y={p[1] - 5}
-            style={{
-              fontFamily: "var(--font-mono), monospace",
-              fontSize: node.major ? 10.5 : 8.5,
-              fill: node.major ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.45)",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase" as const,
-              paintOrder: "stroke",
-              stroke: "rgba(0,0,0,0.85)",
-              strokeWidth: 2.5,
-            }}
-          >
-            {node.name}
-          </text>
-        </g>
-      ))}
+      {projectedNodes.map(({ node, p }) => {
+        const onRoute = isNodeOnSelectedRoute(node);
+        const nodeOpacity = selectedId === null ? 1 : onRoute ? 1 : 0.15;
+        
+        return (
+          <g key={node.id} style={{ opacity: nodeOpacity, pointerEvents: "none", transition: "opacity 0.3s ease" }}>
+            <circle cx={p[0]} cy={p[1]} r={node.major ? 3.4 : 2.2} fill="#fff" stroke="#000" strokeWidth={0.8} />
+            <text
+              x={p[0] + 6}
+              y={p[1] - 5}
+              style={{
+                fontFamily: "var(--font-mono), monospace",
+                fontSize: node.major ? 10.5 : 8.5,
+                fill: node.major ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.45)",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase" as const,
+                paintOrder: "stroke",
+                stroke: "rgba(0,0,0,0.85)",
+                strokeWidth: 2.5,
+              }}
+            >
+              {node.name}
+            </text>
+          </g>
+        );
+      })}
     </g>
   );
 }
