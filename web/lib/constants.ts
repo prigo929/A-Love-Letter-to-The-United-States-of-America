@@ -552,6 +552,118 @@ export const NAV_SECTIONS = [
       },
     ],
   },
+  {
+    title: "Infrastructure",
+    href: "/infrastructure",
+    description: "Continental integration, global aviation hubs, and megaprojects",
+    imageSrc: SITE_IMAGES.homeGoldenGateBridge,
+    badge: "Engineering Feats",
+    items: [
+      {
+        label: "The Interstate Highway Network",
+        href: "/infrastructure/highway-system",
+        description: "The largest public works project in American history",
+      },
+      {
+        label: "The Continental Rail Network",
+        href: "/infrastructure/rail-network",
+        description: "Bridging the Atlantic and Pacific with steel rails",
+      },
+      {
+        label: "Monumental Dams & Bridges",
+        href: "/infrastructure/dams-bridges",
+        description: "Hoover Dam, Golden Gate, and engineering marvels",
+      },
+      {
+        label: "The Continental Power Grid",
+        href: "/infrastructure/power-grid",
+        description: "Electrification that powered industrial growth",
+      },
+      {
+        label: "Great Aqueducts & Waterways",
+        href: "/infrastructure/aqueducts-waterways",
+        description: "Engineering rivers and watering mega-cities",
+      },
+      {
+        label: "Global Aviation Hubs",
+        href: "/infrastructure/aviation-hubs",
+        description: "Pioneering commercial aviation and massive airports",
+      },
+      {
+        label: "Deepwater Maritime Ports",
+        href: "/infrastructure/maritime-ports",
+        description: "The massive gateways of global trade",
+      },
+    ],
+  },
+  {
+    title: "Literature & Philosophy",
+    href: "/literature-philosophy",
+    description: "Individualism, pragmatism, and literary masterworks",
+    imageSrc: SITE_IMAGES.homeDeclarationIndependence,
+    badge: "American Mind",
+    items: [
+      {
+        label: "Transcendentalism & Individualism",
+        href: "/literature-philosophy/transcendentalism",
+        description: "Emerson, Thoreau, and spiritual self-reliance",
+      },
+      {
+        label: "The Pragmatist School",
+        href: "/literature-philosophy/pragmatism",
+        description: "William James, John Dewey, and practical philosophy",
+      },
+      {
+        label: "The Great American Novel",
+        href: "/literature-philosophy/american-novel",
+        description: "Literary giants from Mark Twain to modern writers",
+      },
+      {
+        label: "Science Fiction & Modern Myth",
+        href: "/literature-philosophy/sci-fi-myth",
+        description: "Poe, Lovecraft, Asimov, Bradbury, and Stephen King",
+      },
+      {
+        label: "Patriotic Oratory & Poetry",
+        href: "/literature-philosophy/oratory-poetry",
+        description: "Gettysburg Address to Whitman's free verse",
+      },
+    ],
+  },
+  {
+    title: "Art & Architecture",
+    href: "/art-architecture",
+    description: "The skyscraper revolution, Hudson River painters, and pop art",
+    imageSrc: SITE_IMAGES.homeNycSunset,
+    badge: "Visual Legacy",
+    items: [
+      {
+        label: "The Skyscraper Revolution",
+        href: "/art-architecture/skyscraper-revolution",
+        description: "Steel frames, Frank Lloyd Wright, and modern skylines",
+      },
+      {
+        label: "The Hudson River Painters",
+        href: "/art-architecture/hudson-river-school",
+        description: "Cinematic landscape art capturing the frontier",
+      },
+      {
+        label: "Modern & Pop Art Movements",
+        href: "/art-architecture/modern-pop-art",
+        description: "Pollock, Warhol, and shifting the global art capital",
+      },
+      {
+        label: "American Realism",
+        href: "/art-architecture/american-realism",
+        description: "Winslow Homer, Edward Hopper, and iconic illustrations",
+      },
+      {
+        label: "The Smithsonian & Great Museums",
+        href: "/art-architecture/smithsonian-museums",
+        description: "Smithsonian, MET, MoMA, and the preservation of culture",
+      },
+    ],
+  },
 ] as const;
 
 // These images rotate in the full-screen homepage hero.
@@ -993,6 +1105,95 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
         label: "Oracolul Ask America",
         description:
           "Oracol AI: pune o întrebare și primești un răspuns documentat, sintetizat din toate cele 12 verticale",
+      },
+    },
+  },
+  "/infrastructure": {
+    title: "Infrastructură",
+    description: "Integrare continentală, megaproiecte și hub-uri comerciale globale",
+    badge: "Inginerie",
+    items: {
+      "/infrastructure/highway-system": {
+        label: "Sistemul de Autostrăzi Interstatale",
+        description: "Cel mai mare proiect de lucrări publice din istoria Americii",
+      },
+      "/infrastructure/rail-network": {
+        label: "Rețeaua Feroviară Continentală",
+        description: "Unirea oceanelor Atlantic și Pacific cu șine de oțel",
+      },
+      "/infrastructure/dams-bridges": {
+        label: "Baraje și Poduri Monumentale",
+        description: "Barajul Hoover, Podul Golden Gate și alte mari minuni inginerie",
+      },
+      "/infrastructure/power-grid": {
+        label: "Rețeaua Electrică Continentală",
+        description: "Electrificarea masivă care a alimentat creșterea industrială",
+      },
+      "/infrastructure/aqueducts-waterways": {
+        label: "Marile Apeducte și Căi Navigabile",
+        description: "Reconfigurarea cursurilor de apă și alimentarea metropolelor",
+      },
+      "/infrastructure/aviation-hubs": {
+        label: "Huburi Aviatice Globale",
+        description: "Pionieratul aviației comerciale și marile aeroporturi",
+      },
+      "/infrastructure/maritime-ports": {
+        label: "Porturi Maritime de Mare Adâncime",
+        description: "Porțile masive ale comerțului internațional",
+      },
+    },
+  },
+  "/literature-philosophy": {
+    title: "Literatură & Filosofie",
+    description: "Individualism, pragmatism și marile capodopere literare",
+    badge: "Gândirea Americană",
+    items: {
+      "/literature-philosophy/transcendentalism": {
+        label: "Transcendentalism și Individualism",
+        description: "Emerson, Thoreau și încrederea în sine spirituală",
+      },
+      "/literature-philosophy/pragmatism": {
+        label: "Școala Pragmatică",
+        description: "William James, John Dewey și filosofia practică",
+      },
+      "/literature-philosophy/american-novel": {
+        label: "Marele Roman American",
+        description: "Giganții literari de la Mark Twain până la scriitorii moderni",
+      },
+      "/literature-philosophy/sci-fi-myth": {
+        label: "Science Fiction și Mitul Modern",
+        description: "Poe, Lovecraft, Asimov, Bradbury și Stephen King",
+      },
+      "/literature-philosophy/oratory-poetry": {
+        label: "Discursuri și Poezii Patriotice",
+        description: "Discursul Gettysburg până la versul liber al lui Whitman",
+      },
+    },
+  },
+  "/art-architecture": {
+    title: "Artă & Arhitectură",
+    description: "Revoluția zgârie-norilor, pictorii peisagiști și curentele pop art",
+    badge: "Legat Vizual",
+    items: {
+      "/art-architecture/skyscraper-revolution": {
+        label: "Revoluția Zgârie-Norilor",
+        description: "Structuri de oțel, Frank Lloyd Wright și profilele urbane moderne",
+      },
+      "/art-architecture/hudson-river-school": {
+        label: "Pictorii de pe Râul Hudson",
+        description: "Arta peisajului romantic capturând frontiera sublimă",
+      },
+      "/art-architecture/modern-pop-art": {
+        label: "Mișcările de Artă Modernă și Pop Art",
+        description: "Pollock, Warhol și mutarea capitalei mondiale a artei",
+      },
+      "/art-architecture/american-realism": {
+        label: "Realismul American",
+        description: "Winslow Homer, Edward Hopper și ilustrațiile iconice",
+      },
+      "/art-architecture/smithsonian-museums": {
+        label: "Smithsonian și Marile Muzee",
+        description: "Smithsonian, MET, MoMA și păstrarea culturii",
       },
     },
   },
