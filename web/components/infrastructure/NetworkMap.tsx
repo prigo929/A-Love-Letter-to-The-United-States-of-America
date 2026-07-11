@@ -22,6 +22,7 @@ import {
   useMapContext,
 } from "react-simple-maps";
 import { GEO_URL } from "@/lib/data/us-geo";
+import interstatesData from "@/lib/data/interstates-simplified.json";
 import type { NetworkEra, NetworkRoute, MapNode, LngLat } from "@/lib/data/infrastructure-network-data";
 
 // ─── Path helpers ─────────────────────────────────────────────────────────────
@@ -82,8 +83,43 @@ function RoutesLayer({
     [nodes, projection],
   );
 
+  const allInterstatesPaths = useMemo(() => {
+    if (era !== "interstate") return [];
+    const pathsList: { id: string; d: string; isFeatured: boolean }[] = [];
+    for (const routeName in interstatesData) {
+      const isFeatured = routes.some(
+        (r) => r.era === "interstate" && r.id.toLowerCase() === routeName.toLowerCase(),
+      );
+      const segments = (interstatesData as any)[routeName] || [];
+      segments.forEach((seg: any, idx: number) => {
+        const d = buildPath(seg as LngLat[], projection);
+        if (d) {
+          pathsList.push({ id: `${routeName}-${idx}`, d, isFeatured });
+        }
+      });
+    }
+    return pathsList;
+  }, [era, routes, projection]);
+
   return (
     <g>
+      {/* Background Interstates Network */}
+      {era === "interstate" &&
+        allInterstatesPaths.map((p) => (
+          <motion.path
+            key={p.id}
+            d={p.d}
+            fill="none"
+            stroke={p.isFeatured ? "transparent" : "rgba(96, 165, 250, 0.18)"}
+            strokeWidth={0.7}
+            strokeLinecap="round"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.0, ease: "easeOut" }}
+            style={{ pointerEvents: "none" }}
+          />
+        ))}
+
       {drawn.map(({ route, d }, i) => {
         const dimmed = selectedId !== null && selectedId !== route.id;
         return (
