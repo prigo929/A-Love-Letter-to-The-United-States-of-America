@@ -10,7 +10,12 @@ interface Hotspot {
   label: { en: string; ro: string };
   title: { en: string; ro: string };
   desc: { en: string; ro: string };
-  stats?: { value: string; unit: string; label: { en: string; ro: string } };
+  stats: { value: string; unit: string; label: { en: string; ro: string } };
+  hudCodes: {
+    code: string;
+    label: string;
+    status: "compliant" | "optimal" | "active" | "secure" | "ready";
+  }[];
 }
 
 interface AnatomyDiagramProps {
@@ -32,7 +37,11 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
         en: "To support strategic military mobility during the Cold War, the Department of Defense mandated a minimum 16-foot (4.87 m) vertical clearance under all overpasses. This allows Intercontinental Ballistic Missiles (ICBMs) on transport-erector-launchers, heavy armor, and mobile radar arrays to traverse the country without bottlenecking.",
         ro: "Pentru a sprijini mobilitatea militară strategică în timpul Războiului Rece, Departamentul Apărării a impus o înălțime liberă de minimum 16 picioare (4,87 m) sub toate podurile. Acest lucru permite rachetelor balistice intercontinentale (ICBM), blindatelor grele și sistemelor radar să traverseze țara fără blocaje."
       },
-      stats: { value: "16", unit: "ft", label: { en: "military clearance limit", ro: "limita de înălțime militară" } }
+      stats: { value: "16.0", unit: "FT", label: { en: "military clearance limit", ro: "limita de înălțime militară" } },
+      hudCodes: [
+        { code: "DOD-MOBILITY-CODE", label: "CLASS-1 / ICBM SECURE", status: "secure" },
+        { code: "OVERPASS-STATUS", label: "COMPLIANT & UNRESTRICTED", status: "compliant" }
+      ]
     },
     {
       id: "lanes",
@@ -44,7 +53,11 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
         en: "Every Interstate travel lane is engineered to a uniform width of 12 feet (3.66 m). This design standard, adopted from early railway clearances, reduces lateral encroachment, decreases driver stress, and offers comfortable clearance margins for full-sized commercial vehicles traveling at high speeds.",
         ro: "Fiecare bandă de circulație are o lățime uniformă de 12 picioare (3,66 m). Acest standard reduce deviațiile laterale, scade stresul șoferului și oferă marje confortabile de siguranță pentru camioanele de mare tonaj la viteze ridicate."
       },
-      stats: { value: "12", unit: "ft", label: { en: "standard lane width", ro: "lățimea standard a benzii" } }
+      stats: { value: "12.0", unit: "FT", label: { en: "standard lane width", ro: "lățimea standard a benzii" } },
+      hudCodes: [
+        { code: "DESIGN-SPEED-MAX", label: "75 MPH / 120 KMH", status: "optimal" },
+        { code: "DRIVER-FATIGUE-COEFF", label: "REDUCED / OPTIMIZED", status: "optimal" }
+      ]
     },
     {
       id: "barrier",
@@ -56,7 +69,11 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
         en: "Originally designed at Stevens Institute of Technology and implemented in New Jersey, this solid concrete barrier is engineered to minimize damage. Its specific sloped base allows an errant vehicle's tires to ride upward, converting horizontal velocity into lift and safely redirecting the vehicle back into its lane.",
         ro: "Proiectată inițial la Institutul de Tehnologie Stevens, această barieră din beton masiv este concepută pentru a reduce daunele. Panta sa permite anvelopelor să urce ușor pe barieră, transformând energia impactului în forță de ridicare și redirecționând vehiculul în siguranță."
       },
-      stats: { value: "32", unit: "in", label: { en: "standard concrete height", ro: "înălțimea standard a betonului" } }
+      stats: { value: "32.0", unit: "IN", label: { en: "standard concrete height", ro: "înălțimea standard a betonului" } },
+      hudCodes: [
+        { code: "SAFETY-BARRIER-CLASS", label: "TL-4 / MASH COMPLIANT", status: "active" },
+        { code: "FORCE-REDIRECTION", label: "CONVERTED TO LIFT", status: "active" }
+      ]
     },
     {
       id: "shoulder",
@@ -68,7 +85,11 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
         en: "Safety protocols dictate a minimum 10-foot (3.05 m) paved outer shoulder. This width ensures that commercial semi-trucks can pull completely off the active lanes in an emergency, leaving a clear path for emergency services and keeping heavy traffic flowing without disruption.",
         ro: "Protocoalele de siguranță impun o bandă de urgență exterioară pavată de minimum 10 picioare (3,05 m). Această lățime garantează că și camioanele se pot retrage complet de pe benzile active în caz de avarie, permițând accesul salvatorilor."
       },
-      stats: { value: "10", unit: "ft", label: { en: "emergency refuge width", ro: "lățimea refugiului de urgență" } }
+      stats: { value: "10.0", unit: "FT", label: { en: "emergency refuge width", ro: "lățimea refugiului de urgență" } },
+      hudCodes: [
+        { code: "EMERGENCY-REFUGE", label: "FULL WIDTH AVAILABLE", status: "ready" },
+        { code: "MAINTENANCE-CLEARANCE", label: "SAFE OPERATIONS ZONE", status: "ready" }
+      ]
     },
     {
       id: "subbase",
@@ -80,7 +101,27 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
         en: "Interstate paving is built to survive. Beneath the 10-to-12-inch reinforced Portland cement concrete surface slab sits a highly compacted gravel base, a stabilized granular soil sub-base, and a geotextile drainage membrane. This robust multi-layer design prevents frost heaving, drains water, and supports millions of axle repetitions.",
         ro: "Pavajul interstatalei este construit să reziste. Sub placa de beton armat de 25-30 cm se află un strat de piatră spartă compactată, o fundație din sol granular stabilizat și o membrană de drenaj geotextilă. Această structură previne tasarea și degradările."
       },
-      stats: { value: "3", unit: "layers", label: { en: "engineered base strata", ro: "straturi de fundație proiectate" } }
+      stats: { value: "3.0", unit: "STRATA", label: { en: "engineered base strata", ro: "straturi de fundație proiectate" } },
+      hudCodes: [
+        { code: "AXLE-REPETITION-MAX", label: "150,000,000 REPS", status: "secure" },
+        { code: "PAVEMENT-LIFESPAN", label: "50-YEAR STRUCTURAL LIFE", status: "secure" }
+      ]
+    },
+    {
+      id: "drainage",
+      cx: 560,
+      cy: 235,
+      label: { en: "Drainage & Runoff", ro: "Drenaj & Scurgere" },
+      title: { en: "Stormwater runoff & Slope", ro: "Gestionarea Apelor de Ploaie și Panta" },
+      desc: {
+        en: "Interstate surfaces feature a subtle 2% crown slope radiating outward from the median to shed stormwater immediately. Runoff is directed to wide side ditches lined with geotextile filters, preventing hydroplaning and stopping sub-surface water pooling, which is the primary cause of asphalt cracking and sub-grade failure.",
+        ro: "Suprafețele autostrăzilor au o pantă transversală subtilă de 2% (bombament) care pornește din zona mediană pentru a evacua imediat apa de ploaie. Scurgerea este direcționată spre șanțuri laterale cu filtre geotextile, prevenind acvaplanarea."
+      },
+      stats: { value: "2.0", unit: "% SLOPE", label: { en: "crown runoff angle", ro: "unghiul de scurgere al pantei" } },
+      hudCodes: [
+        { code: "HYDROPLANING-RISK", label: "MINIMAL / SHED ACTIVE", status: "optimal" },
+        { code: "RUNOFF-CHANNEL-RATE", label: "HIGH PERFORMANCE FLOW", status: "optimal" }
+      ]
     }
   ];
 
@@ -92,11 +133,11 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
       <div className="lg:col-span-7 bg-[#070707] border border-white/[0.06] rounded-2xl p-6 md:p-8 flex flex-col justify-between relative overflow-hidden min-h-[400px]">
         
         {/* CAD Blueprint styling: watermark overlay */}
-        <div className="absolute top-4 left-4 font-macro-mono text-[9px] text-white/10 uppercase tracking-widest pointer-events-none select-none">
+        <div className="absolute top-4 left-4 font-macro-mono text-[9px] text-white/15 uppercase tracking-widest pointer-events-none select-none">
           FHWA STANDARD CROSS-SECTION // DWG NO: 1956-A
         </div>
-        <div className="absolute bottom-4 right-4 font-macro-mono text-[9px] text-white/10 pointer-events-none select-none">
-          SCALE: 1 FT = 8.33 PX // PROJECTION: TRANSVERSE
+        <div className="absolute bottom-4 right-4 font-macro-mono text-[9px] text-white/15 pointer-events-none select-none">
+          SCALE: 1 FT = 8.33 PX // SYSTEM: DWIGHT D. EISENHOWER INTR
         </div>
         
         {/* Technical cyan/grey grid background */}
@@ -105,10 +146,25 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
         <svg viewBox="0 0 640 360" className="w-full h-auto relative z-10 select-none my-auto">
           <defs>
             {/* Soft glowing filter for interactive highlights */}
-            <filter id="hud-glow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3.5" result="blur" />
+            <filter id="hud-glow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+
+            {/* Glowing yellow accent filter */}
+            <filter id="yellow-hud-glow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="5" result="blur" />
+              <feColorMatrix type="matrix" values="
+                0 0 0 0 0.91
+                0 0 0 0 0.72
+                0 0 0 0 0.14
+                0 0 0 1 0
+              " in="blur" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
@@ -123,6 +179,11 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
               <circle cx="8" cy="9" r="1.2" fill="rgba(255,255,255,0.07)" />
               <circle cx="10" cy="3" r="0.6" fill="rgba(255,255,255,0.15)" />
               <path d="M 4 8 L 6 9 L 5 11 Z" fill="rgba(255,255,255,0.06)" />
+            </pattern>
+
+            {/* Hazard stripe pattern for shoulders */}
+            <pattern id="hazard-stripes" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(232,185,35,0.15)" strokeWidth="3" />
             </pattern>
           </defs>
 
@@ -172,21 +233,34 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
             style={{ transition: "all 0.3s ease" }}
           />
 
-          {/* Asphalt Binder Surface Overlay */}
+          {/* Asphalt Base Course (Sub-surface layer overlay) */}
           <polygon 
             points="38,245 602,245 609,251 31,251" 
-            fill="#181818" 
+            fill={activeId === "subbase" ? "rgba(232, 185, 35, 0.12)" : "#181818"} 
             stroke="#222" 
             strokeWidth={0.5} 
+            style={{ transition: "fill 0.3s ease" }}
           />
 
           {/* Paved Travel Surface */}
           <polygon 
             points="40,235 600,235 604,245 36,245" 
-            fill="#141414" 
-            stroke={activeId === "lanes" ? "rgba(232,185,35,0.4)" : "#383838"} 
+            fill={activeId === "lanes" ? "#1a1813" : "#141414"} 
+            stroke={activeId === "lanes" ? "#E8B923" : "#383838"} 
             strokeWidth={1}
-            style={{ transition: "stroke 0.3s ease" }}
+            style={{ transition: "all 0.3s ease" }}
+          />
+
+          {/* Emergency shoulders filled with hazard pattern when selected */}
+          <polygon 
+            points="40,235 120,235 120,245 36,245" 
+            fill={activeId === "shoulder" ? "url(#hazard-stripes)" : "transparent"} 
+            style={{ transition: "opacity 0.3s ease" }}
+          />
+          <polygon 
+            points="520,235 600,235 604,245 520,245" 
+            fill={activeId === "shoulder" ? "url(#hazard-stripes)" : "transparent"} 
+            style={{ transition: "opacity 0.3s ease" }}
           />
 
           {/* Lane Markings */}
@@ -195,8 +269,8 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
           <line x1={520} y1={235} x2={520} y2={245} stroke="#888" strokeWidth={1.5} />
           
           {/* Dashed lane dividers */}
-          <line x1={220} y1={235} x2={220} y2={245} stroke="#888" strokeWidth={1.2} strokeDasharray="4 3" />
-          <line x1={420} y1={235} x2={420} y2={245} stroke="#888" strokeWidth={1.2} strokeDasharray="4 3" />
+          <line x1={220} y1={235} x2={220} y2={245} stroke={activeId === "lanes" ? "#E8B923" : "#888"} strokeWidth={1.2} strokeDasharray="4 3" style={{ transition: "stroke 0.3s ease" }} />
+          <line x1={420} y1={235} x2={420} y2={245} stroke={activeId === "lanes" ? "#E8B923" : "#888"} strokeWidth={1.2} strokeDasharray="4 3" style={{ transition: "stroke 0.3s ease" }} />
 
           {/* Concrete Jersey Median Barrier */}
           <polygon 
@@ -209,7 +283,7 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
           />
 
           {/* ── VEHICLE 1: Front profile of a standard Passenger SUV in Lane 3 (Centered at x=370) ── */}
-          <g opacity={activeId === "lanes" ? 0.9 : 0.4} style={{ transition: "opacity 0.3s ease" }}>
+          <g opacity={activeId === "lanes" || activeId === "drainage" ? 0.9 : 0.4} style={{ transition: "opacity 0.3s ease" }}>
             {/* Tires */}
             <rect x={347} y={222} width={8} height={14} rx={1.5} fill="#0d0d0d" stroke="#222" strokeWidth={0.5} />
             <rect x={385} y={222} width={8} height={14} rx={1.5} fill="#0d0d0d" stroke="#222" strokeWidth={0.5} />
@@ -231,7 +305,7 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
           </g>
 
           {/* ── VEHICLE 2: Front profile of a giant American Semi-Truck in Lane 1 (Centered at x=170) ── */}
-          <g opacity={activeId === "clearance" || activeId === "lanes" ? 0.95 : 0.55} style={{ transition: "opacity 0.3s ease" }}>
+          <g opacity={activeId === "clearance" || activeId === "lanes" ? 0.95 : 0.45} style={{ transition: "opacity 0.3s ease" }}>
             {/* Exhaust stacks extending high */}
             <line x1={138} y1={148} x2={138} y2={110} stroke="#3a3a3a" strokeWidth={1.5} />
             <line x1={202} y1={148} x2={202} y2={110} stroke="#3a3a3a" strokeWidth={1.5} />
@@ -290,9 +364,13 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
             opacity={activeId === "clearance" ? 1 : 0} 
             style={{ transition: "opacity 0.35s ease" }}
           >
-            <line x1={320} y1={102} x2={320} y2={208} stroke="#E8B923" strokeWidth={1.8} strokeDasharray="3 3" filter="url(#hud-glow)" />
+            <line x1={320} y1={102} x2={320} y2={208} stroke="#E8B923" strokeWidth={1.8} strokeDasharray="3 3" filter="url(#yellow-hud-glow)" />
             <path d="M 320 102 L 315 111 L 325 111 Z" fill="#E8B923" />
             <path d="M 320 208 L 315 199 L 325 199 Z" fill="#E8B923" />
+            
+            {/* Draw a subtle horizontal line showing the top stack height of the truck relative to the clearance line */}
+            <line x1={138} y1={110} x2={320} y2={110} stroke="rgba(232,185,35,0.4)" strokeWidth={0.8} strokeDasharray="2 2" />
+
             <rect x={328} y={140} width={90} height={20} rx={3} fill="#000" stroke="#E8B923" strokeWidth={0.8} />
             <text x={334} y={154} fill="#E8B923" fontSize={9.5} fontFamily="var(--font-mono)" letterSpacing="0.05em" fontWeight="bold">16 ft MIN</text>
           </g>
@@ -302,9 +380,13 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
             opacity={activeId === "lanes" ? 1 : 0} 
             style={{ transition: "opacity 0.35s ease" }}
           >
-            <line x1={120} y1={255} x2={220} y2={255} stroke="#E8B923" strokeWidth={1.5} filter="url(#hud-glow)" />
+            <line x1={120} y1={255} x2={220} y2={255} stroke="#E8B923" strokeWidth={1.5} filter="url(#yellow-hud-glow)" />
             <line x1={120} y1={250} x2={120} y2={260} stroke="#E8B923" strokeWidth={1.5} />
             <line x1={220} y1={250} x2={220} y2={260} stroke="#E8B923" strokeWidth={1.5} />
+            
+            {/* Highlighted lane 1 path under the truck */}
+            <polygon points="120,235 220,235 220,245 120,245" fill="rgba(232, 185, 35, 0.08)" style={{ pointerEvents: "none" }} />
+            
             <rect x={148} y={266} width={44} height={18} rx={3} fill="#000" stroke="#E8B923" strokeWidth={0.8} />
             <text x={156} y={279} fill="#E8B923" fontSize={9.5} fontFamily="var(--font-mono)" fontWeight="bold">12 ft</text>
           </g>
@@ -314,7 +396,7 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
             opacity={activeId === "shoulder" ? 1 : 0} 
             style={{ transition: "opacity 0.35s ease" }}
           >
-            <line x1={40} y1={255} x2={120} y2={255} stroke="#E8B923" strokeWidth={1.5} filter="url(#hud-glow)" />
+            <line x1={40} y1={255} x2={120} y2={255} stroke="#E8B923" strokeWidth={1.5} filter="url(#yellow-hud-glow)" />
             <line x1={40} y1={250} x2={40} y2={260} stroke="#E8B923" strokeWidth={1.5} />
             <line x1={120} y1={250} x2={120} y2={260} stroke="#E8B923" strokeWidth={1.5} />
             <rect x={58} y={266} width={44} height={18} rx={3} fill="#000" stroke="#E8B923" strokeWidth={0.8} />
@@ -327,10 +409,35 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
             style={{ transition: "opacity 0.35s ease" }}
           >
             {/* Draw indicators pointing down into strata layers */}
-            <path d="M 260 235 L 245 285 L 235 285" fill="none" stroke="#E8B923" strokeWidth={1.2} filter="url(#hud-glow)" />
+            <path d="M 260 235 L 245 285 L 235 285" fill="none" stroke="#E8B923" strokeWidth={1.2} filter="url(#yellow-hud-glow)" />
             <circle cx={260} cy={235} r={2} fill="#E8B923" />
+            
+            {/* Outline sub-base concrete layer slab specifically */}
+            <rect x={40} y={245} width={560} height={17} fill="transparent" stroke="#E8B923" strokeWidth={1.5} filter="url(#hud-glow)" />
+
             <rect x={145} y={276} width={85} height={18} rx={3} fill="#000" stroke="#E8B923" strokeWidth={0.8} />
             <text x={151} y={289} fill="#E8B923" fontSize={8.5} fontFamily="var(--font-mono)" fontWeight="bold">3 STRATA BASE</text>
+          </g>
+
+          {/* 5. Drainage & Runoff Arrows */}
+          <g 
+            opacity={activeId === "drainage" ? 1 : 0} 
+            style={{ transition: "opacity 0.35s ease" }}
+          >
+            {/* Pavement slope direction vectors showing runoff */}
+            {/* Left slope arrow */}
+            <path d="M 260 227 L 160 229" fill="none" stroke="#E8B923" strokeWidth={1.5} filter="url(#yellow-hud-glow)" />
+            <path d="M 160 229 L 168 225 L 167 232 Z" fill="#E8B923" />
+            <text x={180} y={222} fill="#E8B923" fontSize={8.5} fontFamily="var(--font-mono)" fontWeight="bold">2% SLOPE</text>
+
+            {/* Right slope arrow */}
+            <path d="M 380 227 L 480 229" fill="none" stroke="#E8B923" strokeWidth={1.5} filter="url(#yellow-hud-glow)" />
+            <path d="M 480 229 L 472 232 L 473 225 Z" fill="#E8B923" />
+            <text x={400} y={222} fill="#E8B923" fontSize={8.5} fontFamily="var(--font-mono)" fontWeight="bold">2% SLOPE</text>
+            
+            {/* Side ditch collection indicator */}
+            <path d="M 605 245 Q 615 270 630 270" fill="none" stroke="#E8B923" strokeWidth={1.5} strokeDasharray="3 3" filter="url(#hud-glow)" />
+            <circle cx={630} cy={270} r={2} fill="#E8B923" />
           </g>
 
           {/* Interactive Hotspot Targets */}
@@ -421,9 +528,22 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
                 {active.title[locale]}
               </h3>
               
-              <p className="font-macro-body text-[15px] leading-relaxed text-white/60">
+              <p className="font-macro-body text-[15px] leading-relaxed text-white/60 mb-6">
                 {active.desc[locale]}
               </p>
+
+              {/* High-tech HUD telemetry code readouts */}
+              <div className="space-y-3 pt-3 border-t border-white/[0.04]">
+                {active.hudCodes.map((codeInfo) => (
+                  <div key={codeInfo.code} className="flex items-center justify-between text-[11px] font-macro-mono">
+                    <span className="text-white/30 tracking-tight">{codeInfo.code}</span>
+                    <div className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#E8B923]" style={{ filter: "drop-shadow(0 0 3px rgba(232, 185, 35, 0.8))" }} />
+                      <span className="text-[#E8B923] font-bold uppercase tracking-wider">{codeInfo.label}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>
