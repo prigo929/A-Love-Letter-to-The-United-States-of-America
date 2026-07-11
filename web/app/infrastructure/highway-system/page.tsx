@@ -16,6 +16,7 @@ import {
   CountUp,
 } from "@/components/shared/CinematicSystem";
 import { NetworkMap } from "@/components/infrastructure/NetworkMap";
+import { AnatomyDiagram } from "@/components/infrastructure/AnatomyDiagram";
 import { SerifLede, Reveal } from "@/components/infrastructure/InfraMotion";
 import {
   HIGHWAY_ERAS,
@@ -267,6 +268,17 @@ export default async function HighwaySystemPage() {
                 <MacroFact key={f.fact} fact={f.fact} detail={f.detail} />
               ))}
             </div>
+          </section>
+
+          {/* ── Anatomy Diagram ── */}
+          <section className="border-t border-white/5 pt-24">
+            <span className="macro-eyebrow">
+              {isRo ? "Structura Autostrăzilor" : "Anatomy of the Road"}
+            </span>
+            <h2 className="macro-section-title mb-16 mt-6">
+              {isRo ? "Standardul de Construcție Eisenhower" : "The Eisenhower Construction Standard"}
+            </h2>
+            <AnatomyDiagram locale={locale} />
           </section>
 
           {/* ── Defense & Logistics ── */}
