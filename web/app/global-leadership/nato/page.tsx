@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import { HistoryStyles } from "@/components/history/HistoryStyles";
 import { Shield, Globe, Anchor, Zap, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -93,7 +92,7 @@ const copyRo: NatoCopy = {
     { value: "1949", label: "Alianță Înființată" },
   ],
   thesisTitle: "Piatra de Temelie a Securității Transatlantice",
-  thesisParagraph: "Înființată în 1949, Organizația Tratatului Atlanticului de Nord (NATO) reunește 32 de națiuni democratice suverane în apărarea reciprocă. În centrul său se află Articolul 5 — angajamentul că un atac împotriva unuia este un atac împotriva tuturor. Susținut de capacitatea militară a SUA și de umbrela sa nucleară, NATO a descurajat agresiunile externe timp de peste șapte decenii.",
+  thesisParagraph: "Înființată in 1949, Organizația Tratatului Atlanticului de Nord (NATO) reunește 32 de națiuni democratice suverane în apărarea reciprocă. În centrul său se află Articolul 5 — angajamentul că un atac împotriva unuia este un atac împotriva tuturor. Susținut de capacitatea militară a SUA și de umbrela sa nucleară, NATO a descurajat agresiunile externe timp de peste șapte decenii.",
   pillarsTitle: "Pilonii Cheie ai Alianței",
   pillars: [
     {
@@ -134,85 +133,94 @@ export default async function NatoAlliancePage() {
   const pillarIcons = [Shield, Anchor, Zap, Globe];
 
   return (
-    <main className="history-classified-bg min-h-screen pt-24 font-body selection:bg-glory-gold selection:text-navy-dark">
-      <HistoryStyles />
-
-      {/* Breadcrumbs */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-black pt-32 pb-24 text-white font-sans selection:bg-glory-gold selection:text-black">
+      {/* Breadcrumbs with spacious margin */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 mb-16">
         <Breadcrumb
           items={[
             { label: copy.breadcrumbParent, href: "/global-leadership" },
             { label: copy.breadcrumbPage },
           ]}
-          className="mb-8"
         />
       </div>
 
-      {/* Hero — editorial */}
-      <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <span className="history-bureaucratic block mb-5">{copy.heroTagline}</span>
-          <h1 className="history-serif-title max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.05]">
-            {copy.heroTitle}
-          </h1>
-          <p className="history-serif-body mt-6 max-w-2xl text-lg">{copy.heroSubtitle}</p>
-          <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-white/10 bg-white/5 sm:grid-cols-4">
-            {copy.heroStats.map((s, i) => (
-              <div key={i} className="bg-navy-dark p-5">
-                <div className="font-display text-3xl font-bold text-glory-gold">{s.value}</div>
-                <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-white/45">{s.label}</div>
-              </div>
-            ))}
-          </div>
+      {/* Hero Section */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-24">
+        <span className="text-xs font-semibold tracking-widest text-[#E8B923] uppercase block mb-4">
+          {copy.heroTagline}
+        </span>
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white max-w-5xl leading-tight">
+          {copy.heroTitle}
+        </h1>
+        <p className="mt-8 text-xl md:text-2xl text-white/60 font-light leading-relaxed max-w-3xl">
+          {copy.heroSubtitle}
+        </p>
+
+        {/* Large Stats - No borders or boxes, just clean spacing */}
+        <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+          {copy.heroStats.map((s, i) => (
+            <div key={i} className="flex flex-col">
+              <span className="text-6xl md:text-7xl font-bold text-glory-gold tracking-tight">{s.value}</span>
+              <span className="text-xs uppercase tracking-widest text-white/40 font-semibold mt-3">{s.label}</span>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Thesis — editorial */}
-      <section className="border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="history-serif-title text-2xl sm:text-3xl font-bold text-white border-b border-white/10 pb-4 mb-6">
+      {/* Thesis Section */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
+        <div className="max-w-3xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             {copy.thesisTitle}
           </h2>
-          <p className="history-serif-body text-lg">{copy.thesisParagraph}</p>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {copy.thesisParagraph}
+          </p>
         </div>
       </section>
 
-      {/* Pillars — editorial border-top cards */}
-      <section className="border-b border-white/10 px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="history-serif-title text-3xl font-bold text-white mb-12">{copy.pillarsTitle}</h2>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {copy.pillars.map((item, idx) => {
-              const Icon = pillarIcons[idx] ?? Shield;
-              return (
-                <div key={idx} className="border-t border-white/10 pt-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Icon className="h-5 w-5 text-glory-gold" />
-                    <span className="history-bureaucratic">{item.badge}</span>
-                  </div>
-                  <h3 className="history-serif-title text-lg font-bold text-white mb-3">{item.title}</h3>
-                  <p className="text-sm text-white/55 leading-relaxed font-body">{item.description}</p>
+      {/* Pillars Section */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-16">{copy.pillarsTitle}</h2>
+        <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-4">
+          {copy.pillars.map((item, idx) => {
+            const Icon = pillarIcons[idx] ?? Shield;
+            return (
+              <div key={idx} className="flex flex-col items-start">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/5 text-glory-gold mb-6">
+                  <Icon className="h-6 w-6" />
                 </div>
-              );
-            })}
-          </div>
+                <span className="text-xs font-semibold tracking-widest text-[#E8B923] uppercase mb-2">{item.badge}</span>
+                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed font-light">{item.description}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* Pax Americana — editorial */}
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl">
-          <span className="history-bureaucratic block mb-3">{copy.defenseLabel}</span>
-          <h2 className="history-serif-title text-3xl sm:text-4xl font-bold text-white mb-6">{copy.defenseTitle}</h2>
-          <p className="history-serif-body text-lg mb-6">{copy.defenseParagraph1}</p>
-          <p className="history-serif-body text-lg mb-8">{copy.defenseParagraph2}</p>
-          <div className="flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/40">
+      {/* Editorial Section */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
+        <div className="max-w-3xl">
+          <span className="text-sm font-semibold tracking-widest text-white/40 uppercase block mb-4">
+            {copy.defenseLabel}
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+            {copy.defenseTitle}
+          </h2>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed mb-6">
+            {copy.defenseParagraph1}
+          </p>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed mb-12">
+            {copy.defenseParagraph2}
+          </p>
+          <div className="flex items-center gap-6 text-xs text-white/40">
             <span>Source: {copy.defenseSource}</span>
             <a
               href={copy.defenseSourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-glory-gold hover:underline"
+              className="inline-flex items-center gap-1 text-glory-gold hover:underline font-semibold"
             >
               {isRo ? "Detalii Buget DoD" : "DoD Budget Details"}
               <ExternalLink className="h-3.5 w-3.5" />
@@ -221,11 +229,13 @@ export default async function NatoAlliancePage() {
         </div>
       </section>
 
-      <AskAmericaCTA
-        locale={locale}
-        descriptionEn={copyEn.oracleDescription}
-        descriptionRo={copyRo.oracleDescription}
-      />
+      <div className="mt-16">
+        <AskAmericaCTA
+          locale={locale}
+          descriptionEn={copyEn.oracleDescription}
+          descriptionRo={copyRo.oracleDescription}
+        />
+      </div>
     </main>
   );
 }
