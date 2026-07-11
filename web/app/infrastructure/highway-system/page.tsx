@@ -75,13 +75,16 @@ export default async function HighwaySystemPage() {
         mapEyebrow: "Harta interactivă",
         mapTitle: "Coridoarele continentului",
         mapBody:
-          "Comută între drumurile cu nume de dinainte de 1926 și Sistemul Interstatal care le-a înlocuit. Atinge un coridor pentru povestea lui.",
+          "Comută între drumurile cu nume de dinainte de 1926 și Sistemul Interstatal care le-a înlocuit. Întreaga rețea primară este desenată din geometria oficială FHWA — atinge orice linie, nu doar coridoarele evidențiate, pentru lungimea și traficul ei real.",
         mapLabels: {
           eraLabel: "Alege epoca",
-          corridorsLabel: "Treci peste un coridor pentru detalii",
+          corridorsLabel: "Treci peste un coridor pentru detalii — orice linie de pe hartă e interactivă",
           lengthLabel: "Lungime",
           openedLabel: "Perioadă",
-          hint: "Punctele în mișcare urmează traseele reale ale coridoarelor.",
+          hint: "Traseele urmează geometria oficială FHWA. Apropie harta pentru detalii.",
+          trafficLabel: "Trafic mediu zilnic",
+          vehiclesPerDay: "veh/zi",
+          zoomHint: "Zoom: butoane, pinch sau Ctrl + scroll · trage pentru a naviga",
         },
         pullStat: "≈1%",
         pullLabel:
@@ -144,13 +147,16 @@ export default async function HighwaySystemPage() {
         mapEyebrow: "The Interactive Map",
         mapTitle: "Corridors of the Continent",
         mapBody:
-          "Toggle between the named trails that preceded 1926 and the Interstate System that replaced them. Touch a corridor for its story.",
+          "Toggle between the named trails that preceded 1926 and the Interstate System that replaced them. The entire primary grid is drawn from official FHWA geometry — touch any line, not just the featured corridors, for its real length and traffic.",
         mapLabels: {
           eraLabel: "Choose the era",
-          corridorsLabel: "Hover a corridor for its story",
+          corridorsLabel: "Hover a corridor for its story — every line on the map is interactive",
           lengthLabel: "Length",
           openedLabel: "Built",
-          hint: "The moving dots trace each corridor's real routing.",
+          hint: "Routes follow official FHWA geometry. Zoom in for detail.",
+          trafficLabel: "Avg. daily traffic",
+          vehiclesPerDay: "veh/day",
+          zoomHint: "Zoom: buttons, pinch, or Ctrl + scroll · drag to pan",
         },
         pullStat: "≈1%",
         pullLabel:
@@ -240,6 +246,7 @@ export default async function HighwaySystemPage() {
               routes={HIGHWAY_ROUTES}
               nodes={HIGHWAY_NODES}
               accent="#E8B923"
+              backgroundNetwork
               labels={copy.mapLabels}
             />
           </section>
