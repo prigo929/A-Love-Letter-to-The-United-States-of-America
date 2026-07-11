@@ -3,7 +3,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import Link from "next/link";
-import { Shield, Globe, Compass, Landmark, ArrowRight } from "lucide-react";
+import { Shield, Globe, Compass, Landmark, ArrowRight, Sparkles, Landmark as DollarIcon } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Global Leadership | Patriotic USA",
@@ -87,14 +87,30 @@ export default async function GlobalLeadershipPage() {
     { value: "57%", label: isRo ? "Rezerve Valutare în USD" : "FX Reserves in USD" },
   ];
 
+  const fdrQuote = isRo
+    ? "În zilele viitoare, pe care căutăm să le asigurăm, așteptăm cu nerăbdare o lume întemeiată pe patru libertăți umane esențiale: libertatea de exprimare, libertatea de cult, libertatea de a trăi ferit de lipsuri și libertatea de a trăi fără frică."
+    : "In the future days, which we seek to make secure, we look forward to a world founded upon four essential human freedoms: freedom of speech, freedom of worship, freedom from want, and freedom from fear.";
+  const fdrQuoteAuthor = isRo
+    ? "Președintele Franklin D. Roosevelt, Discursul celor Patru Libertăți, 6 ianuarie 1941"
+    : "President Franklin D. Roosevelt, Four Freedoms Address, January 6, 1941";
+
   const thesisTitle = isRo ? "Garantul Sistemului Internațional" : "The Guarantor of the International System";
   const thesisParagraph1 = isRo
     ? "După al Doilea Război Mondial, Statele Unite au făcut o alegere istorică: abandonarea izolaționismului în favoarea construirii unei rețele cuprinzătoare de securitate globală, diplomație și sprijin financiar. Această paradigmă, denumită adesea Pax Americana, a asigurat cea mai lungă perioadă din istoria modernă fără conflicte directe între marile puteri militare."
     : "Following World War II, the United States made a historic choice: to abandon its traditional peacetime isolationism and construct a comprehensive network of global security guarantees, diplomatic institutions, and financial aid. This paradigm, often referred to as Pax Americana, has maintained the longest period in modern history without direct combat between major military powers.";
 
   const thesisParagraph2 = isRo
-    ? "Prin finanțarea a peste o cincime din bugetul Organizației Națiunilor Unite, patrularea oceanelor lumii pentru siguranța comerțului comercial și operarea constelației de sateliți GPS ca utilitate gratuită, Statele Unite subvenționează pilonii esențiali ai civilizației și economiei moderne globale."
-    : "By financing over a fifth of the United Nations budget, patrolling the world's oceans to keep commercial cargo safe from piracy, and operating the GPS satellite constellation as a free public utility, the United States continues to underwrite the vital architecture of modern global civilization.";
+    ? "Prin finanțarea a peste o cincime din bugetul Organizației Națiunilor Unite, patrularea oceanelor lumii pentru siguranța comerțului comercial și operarea constelației de sateliți GPS ca utilitate gratuită, Statele Unite subvenționează pilonii esențiali ai civilizației și economiei moderne globale. Această implicare activă previne formarea de viduri de putere geopolitică pe care regimurile autoritare le-ar putea specula."
+    : "By financing over a fifth of the United Nations budget, patrolling the world's oceans to keep commercial cargo safe from piracy, and operating the GPS satellite constellation as a free public utility, the United States continues to underwrite the vital architecture of modern global civilization. This active engagement prevents geopolitical power vacuums that authoritarian regimes could exploit.";
+
+  const dollarTitle = isRo ? "Temelia Financiară: Dolarul ca Valută de Rezervă" : "The Financial Bedrock: The Dollar as Global Reserve";
+  const dollarParagraph1 = isRo
+    ? "Stabilitatea sistemului comercial internațional se bazează pe o monedă de schimb unică și de încredere. Stabilit de acordurile de la Bretton Woods în 1944, dolarul american (USD) servește ca principală monedă de rezervă a lumii, reprezentând aproximativ 57% din rezervele valutare globale și fiind utilizat în peste 85% din tranzacțiile valutare internaționale."
+    : "The stability of the international trading system relies on a single, trusted medium of exchange. Established by the Bretton Woods agreements in 1944, the United States dollar (USD) serves as the world's primary reserve currency, accounting for roughly 57% of global foreign exchange reserves and participating in over 85% of international currency transactions.";
+
+  const dollarParagraph2 = isRo
+    ? "Această hegemonie financiară este susținută de lichiditatea de neegalat a piețelor de capital din SUA, de soliditatea legilor de proprietate americane și de stabilitatea sa politică. Oferind o valută stabilă și universal acceptată, Statele Unite elimină riscul valutar pentru comercianții de pe glob, stimulând globalizarea și creșterea economică internațională."
+    : "This financial hegemony is backed by the unmatched liquidity of U.S. capital markets, the strength of American property laws, and political stability. By providing a stable, universally accepted currency, the United States eliminates foreign exchange risk for merchants worldwide, driving globalization and international economic growth.";
 
   const selectSectionLabel = isRo ? "Alege un domeniu pentru a explora" : "Select a domain to explore";
 
@@ -128,6 +144,18 @@ export default async function GlobalLeadershipPage() {
         </div>
       </section>
 
+      {/* Editorial Quote */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32 py-12">
+        <div className="max-w-4xl border-l-2 border-[#E8391B] pl-8">
+          <p className="text-2xl md:text-3xl italic text-[#F5EDD8] leading-relaxed font-light">
+            &ldquo;{fdrQuote}&rdquo;
+          </p>
+          <span className="text-sm uppercase tracking-widest text-white/40 block mt-4 font-semibold">
+            {fdrQuoteAuthor}
+          </span>
+        </div>
+      </section>
+
       {/* Thesis Section */}
       <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
         <div className="max-w-3xl space-y-6">
@@ -143,11 +171,31 @@ export default async function GlobalLeadershipPage() {
         </div>
       </section>
 
+      {/* The Global Dollar Section */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
+        <div className="max-w-3xl space-y-6">
+          <div className="flex items-center gap-3 text-glory-gold mb-2">
+            <DollarIcon className="h-6 w-6" />
+            <span className="text-sm font-semibold tracking-widest uppercase">{isRo ? "GEOPOLITICĂ FINANCIARĂ" : "FINANCIAL GEOPOLITICS"}</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            {dollarTitle}
+          </h2>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {dollarParagraph1}
+          </p>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {dollarParagraph2}
+          </p>
+        </div>
+      </section>
+
       {/* Categories / Links Section - Spacious and borderless */}
       <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
-        <span className="text-xs font-semibold tracking-widest text-white/40 uppercase block mb-12">
-          {selectSectionLabel}
-        </span>
+        <div className="flex items-center gap-3 text-[#E8391B] mb-8">
+          <Sparkles className="h-6 w-6" />
+          <span className="text-sm font-semibold tracking-widest uppercase">{selectSectionLabel}</span>
+        </div>
         
         <div className="grid gap-16 md:grid-cols-2">
           {sections.map((sec) => {
