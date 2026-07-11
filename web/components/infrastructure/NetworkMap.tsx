@@ -56,6 +56,7 @@ function RoutesLayer({
   selectedId,
   onSelect,
   reducedMotion,
+  featuredIds,
 }: {
   routes: NetworkRoute[];
   nodes: MapNode[];
@@ -63,6 +64,7 @@ function RoutesLayer({
   selectedId: string | null;
   onSelect: (id: string | null) => void;
   reducedMotion: boolean;
+  featuredIds: Set<string>;
 }) {
   const { projection } = useMapContext();
 
@@ -93,82 +95,62 @@ function RoutesLayer({
     [nodes, projection],
   );
 
-  const allInterstatesPaths = useMemo(() => {
-    if (era !== "interstate") return [];
-    const pathsList: { id: string; d: string; isFeatured: boolean }[] = [];
-    for (const routeName in interstatesData) {
-      const isFeatured = routes.some(
-        (r) => r.era === "interstate" && r.id.toLowerCase() === routeName.toLowerCase(),
-      );
-      const segments = (interstatesData as any)[routeName] || [];
-      segments.forEach((seg: any, idx: number) => {
-        const d = buildPath(seg as LngLat[], projection);
-        if (d) {
-          pathsList.push({ id: `${routeName}-${idx}`, d, isFeatured });
-        }
-      });
-    }
-    return pathsList;
-  }, [era, routes, projection]);
-
   return (
     <g>
-      {/* Background Interstates Network */}
-      {era === "interstate" &&
-        allInterstatesPaths.map((p) => (
-          <motion.path
-            key={p.id}
-            d={p.d}
-            fill="none"
-            stroke={p.isFeatured ? "transparent" : "rgba(96, 165, 250, 0.18)"}
-            strokeWidth={0.7}
-            strokeLinecap="round"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.0, ease: "easeOut" }}
-            style={{ pointerEvents: "none" }}
-          />
-        ))}
-
       {drawn.map(({ route, d }, i) => {
-        const dimmed = selectedId !== null && selectedId !== route.id;
+        const isFeatured = featuredIds.has(route.id);
+        const isSelected = selectedId === route.id;
+        const dimmed = selectedId !== null && !isSelected;
+
+        const strokeWidth = isSelected ? 1.85 : isFeatured ? 1.45 : 0.85;
+        const strokeColor = isSelected ? route.color : isFeatured ? route.color : "rgba(96, 165, 250, 0.28)";
+        const opacity = dimmed ? 0.08 : 0.95;
+
         return (
-          <g key={`${era}-${route.id}`} style={{ opacity: dimmed ? 0.13 : 1, transition: "opacity 0.35s ease" }}>
-            {/* Soft glow underlay */}
-            <path d={d} fill="none" stroke={route.color} strokeWidth={5} strokeLinecap="round" opacity={0.14} style={{ pointerEvents: "none" }} />
-            {/* The corridor itself — draws on organically when the era mounts */}
+          <g key={`${era}-${route.id}`} style={{ opacity: dimmed ? 0.08 : 1, transition: "opacity 0.3s ease" }}>
+            {/* Soft glow underlay — only for featured or selected routes */}
+            {(isFeatured || isSelected) && (
+              <path
+                d={d}
+                fill="none"
+                stroke={route.color}
+                strokeWidth={4}
+                strokeLinecap="round"
+                opacity={0.13}
+                style={{ pointerEvents: "none" }}
+              />
+            )}
+            {/* The corridor itself */}
             {route.dashed || reducedMotion ? (
               <motion.path
                 d={d}
                 fill="none"
-                stroke={route.color}
-                strokeWidth={1.7}
+                stroke={strokeColor}
+                strokeWidth={strokeWidth}
                 strokeLinecap="round"
                 strokeDasharray={route.dashed ? "5 6" : undefined}
                 style={{ pointerEvents: "none" }}
                 initial={{ opacity: 0 }}
-                whileInView={{ opacity: 0.95 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 1.1, delay: i * 0.18 }}
+                animate={{ opacity }}
+                transition={{ duration: 1.1, delay: isFeatured ? i * 0.12 : 0 }}
               />
             ) : (
               <motion.path
                 d={d}
                 fill="none"
-                stroke={route.color}
-                strokeWidth={1.7}
+                stroke={strokeColor}
+                strokeWidth={strokeWidth}
                 strokeLinecap="round"
                 style={{ pointerEvents: "none" }}
                 initial={{ pathLength: 0, opacity: 0.4 }}
-                whileInView={{ pathLength: 1, opacity: 0.95 }}
+                whileInView={{ pathLength: 1, opacity }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 2.1, ease: "easeInOut", delay: i * 0.18 }}
+                transition={{ duration: isFeatured ? 2.1 : 1.2, ease: "easeInOut", delay: isFeatured ? i * 0.12 : 0 }}
               />
             )}
-            {/* Moving vehicle dot — always mounted (inherits group opacity);
-                pointer-transparent so it never perturbs hover state. */}
-            {!reducedMotion && (
-              <circle r={2.4} fill={route.color} stroke="#000" strokeWidth={0.6} style={{ pointerEvents: "none" }}>
+            {/* Moving vehicle dot — only for featured routes to save CPU cycles */}
+            {!reducedMotion && isFeatured && (
+              <circle r={2.2} fill={route.color} stroke="#000" strokeWidth={0.6} style={{ pointerEvents: "none" }}>
                 <animateMotion dur={`${11 + i * 2.5}s`} repeatCount="indefinite" path={d} />
               </circle>
             )}
@@ -177,7 +159,7 @@ function RoutesLayer({
               d={d}
               fill="none"
               stroke="transparent"
-              strokeWidth={14}
+              strokeWidth={10}
               style={{ pointerEvents: "stroke", cursor: "pointer" }}
               onMouseEnter={() => onSelect(route.id)}
               onClick={() => onSelect(selectedId === route.id ? null : route.id)}
@@ -235,7 +217,57 @@ export function NetworkMap({ locale, eras, routes, nodes, accent = "#fbbf24", la
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const prefersReducedMotion = useReducedMotion();
 
-  const eraRoutes = useMemo(() => routes.filter((r) => r.era === era), [routes, era]);
+  const originalFeaturedIds = useMemo(() => new Set(routes.map((r) => r.id)), [routes]);
+
+  const combinedRoutes = useMemo(() => {
+    const list = [...routes];
+    
+    // Add all other interstates dynamically
+    for (const routeName in interstatesData) {
+      const id = routeName.toLowerCase();
+      const exists = list.some((r) => r.id === id);
+      if (!exists) {
+        const num = parseInt(routeName.replace("I", ""), 10);
+        const isOdd = num % 2 !== 0;
+        
+        let totalMiles = 0;
+        const segments = (interstatesData as any)[routeName] || [];
+        segments.forEach((seg: LngLat[]) => {
+          for (let i = 0; i < seg.length - 1; i++) {
+            const p1 = seg[i];
+            const p2 = seg[i + 1];
+            const dy = (p2[1] - p1[1]) * 69;
+            const dx = (p2[0] - p1[0]) * 69 * Math.cos(((p1[1] + p2[1]) / 2) * Math.PI / 180);
+            totalMiles += Math.sqrt(dx * dx + dy * dy);
+          }
+        });
+        
+        const lengthLabel = totalMiles > 10 ? `${Math.round(totalMiles).toLocaleString()} mi` : "N/A";
+        const color = isOdd ? "#60a5fa" : "#fb923c"; // blue for north-south (odd), orange for even
+        
+        list.push({
+          id,
+          era: "interstate",
+          name: { en: `Interstate ${num}`, ro: `Interstatala ${num}` },
+          color,
+          waypoints: [],
+          endpoints: {
+            en: isOdd ? "North ⇄ South Corridor" : "East ⇄ West Corridor",
+            ro: isOdd ? "Coridor Nord ⇄ Sud" : "Coridor Est ⇄ Vest"
+          },
+          lengthLabel,
+          year: "1956",
+          description: {
+            en: `Interstate ${num} is a primary highway corridor in the national system, supporting interstate commerce, regional connectivity, and travel across the United States.`,
+            ro: `Interstatala ${num} este un coridor rutier primar din sistemul național, care susține comerțul interstatal, conectivitatea regională și tranzitul de mare viteză pe teritoriul Statelor Unite.`
+          }
+        });
+      }
+    }
+    return list;
+  }, [routes]);
+
+  const eraRoutes = useMemo(() => combinedRoutes.filter((r) => r.era === era), [combinedRoutes, era]);
   const selected = useMemo(
     () => eraRoutes.find((r) => r.id === selectedId) ?? null,
     [eraRoutes, selectedId],
@@ -288,7 +320,7 @@ export function NetworkMap({ locale, eras, routes, nodes, accent = "#fbbf24", la
 
       {/* Corridor chips (legend + selector) */}
       <div className="mb-6 flex flex-wrap gap-x-5 gap-y-2" onMouseLeave={() => setSelectedId(null)}>
-        {eraRoutes.map((r) => {
+        {eraRoutes.filter((r) => originalFeaturedIds.has(r.id)).map((r) => {
           const dim = selectedId !== null && selectedId !== r.id;
           return (
             <button
@@ -339,12 +371,13 @@ export function NetworkMap({ locale, eras, routes, nodes, accent = "#fbbf24", la
                   />
                 ))}
                 <RoutesLayer
-                  routes={routes}
+                  routes={combinedRoutes}
                   nodes={nodes}
                   era={era}
                   selectedId={selectedId}
                   onSelect={setSelectedId}
                   reducedMotion={!!prefersReducedMotion}
+                  featuredIds={originalFeaturedIds}
                 />
               </>
             )}
