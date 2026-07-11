@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import { Shield, Globe, Anchor, Zap, ExternalLink } from "lucide-react";
+import { Shield, Globe, Anchor, Zap, ExternalLink, Milestone, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "NATO Alliance & Pax Americana | Global Leadership",
-  description: "Explore the security foundations of the free world: NATO, Article 5, and how the U.S. defense budget underwrites global stability.",
+  title: "NATO Alliance & Transatlantic Shield | Global Leadership",
+  description: "Explore the security foundations of the free world: NATO, Article 5, the defense of the Suwalki Gap, and Swedish/Finnish integration under the U.S. security umbrella.",
 };
 
 interface NatoCopy {
@@ -16,14 +16,20 @@ interface NatoCopy {
   heroTitle: string;
   heroSubtitle: string;
   heroStats: Array<{ value: string; label: string }>;
+  trumanQuote: string;
+  trumanQuoteAuthor: string;
   thesisTitle: string;
-  thesisParagraph: string;
+  thesisParagraph1: string;
+  thesisParagraph2: string;
   pillarsTitle: string;
   pillars: Array<{
     title: string;
     description: string;
     badge: string;
   }>;
+  expansionTitle: string;
+  expansionParagraph1: string;
+  expansionParagraph2: string;
   defenseLabel: string;
   defenseTitle: string;
   defenseParagraph1: string;
@@ -38,45 +44,51 @@ const copyEn: NatoCopy = {
   breadcrumbPage: "NATO Alliance",
   heroTagline: "SECURITY & PAX AMERICANA",
   heroTitle: "NATO: The Shield of the Democratic World",
-  heroSubtitle: "How collective defense and the American security umbrella have guaranteed peace and enabled global prosperity since 1945.",
+  heroSubtitle: "How collective defense and the American security umbrella have guaranteed peace, integrated Allied forces, and enabled global prosperity since 1945.",
   heroStats: [
     { value: "32", label: "Member Nations" },
     { value: "1", label: "Time Article 5 Invoked" },
     { value: "$954B", label: "US Defense Budget (FY25)" },
     { value: "1949", label: "Alliance Founded" },
   ],
+  trumanQuote: "In this pact, we hope to create a shield against aggression and the fear of aggression — a bulwark which will permit us to get on with the real business of government and society, the business of achieving a fuller and happier life for all our citizens.",
+  trumanQuoteAuthor: "President Harry S. Truman, April 4, 1949",
   thesisTitle: "The Cornerstone of Transatlantic Security",
-  thesisParagraph: "Established in 1949, the North Atlantic Treaty Organization (NATO) binds 32 sovereign democratic nations together in mutual defense. At its core is Article 5—the commitment that an attack on one is an attack on all. Underpinned by American military capability and the strategic nuclear umbrella, NATO has successfully deterred aggression and kept the peace in Europe for more than seven decades.",
-  pillarsTitle: "Key Pillars of the Alliance",
+  thesisParagraph1: "Established in 1949 amidst the rise of the Soviet threat, the North Atlantic Treaty Organization (NATO) binds 32 sovereign democratic nations together in mutual defense. At its core is Article 5—the solemn commitment that an armed attack against one member is considered an attack against all. Underpinned by American military capability and the strategic nuclear umbrella, NATO has successfully deterred aggression and kept the peace in Europe for over seven decades.",
+  thesisParagraph2: "Beyond deterring territorial expansion, the alliance functions as an integrated command structure. Standardized military protocols (STANAG), shared intelligence, and regular joint combat exercises ensure that 32 separate national forces can plug-and-play as a single, highly coordinated global defense force capable of protecting the Suwalki Gap and Allied borders.",
+  pillarsTitle: "Key Pillars of the Transatlantic Shield",
   pillars: [
     {
-      title: "Article 5 Commitment",
-      description: "The sacred pledge of collective defense. It has been invoked only once in history: by European allies in support of the United States immediately following the September 11 attacks.",
+      title: "Article 5 Collective Defense",
+      description: "The commitment that an attack on one is an attack on all. Historically, it has been invoked only once: by European allies in support of the United States immediately following the September 11 attacks, leading to joint operations in Afghanistan.",
       badge: "Mutual Defense"
     },
     {
-      title: "Global Sea Lanes Control",
-      description: "The US Navy patrolled global choke points and shipping lanes, ensuring that trillions of dollars in trade can move freely between continents without piracy or blockade.",
+      title: "Global Sea Lanes Protection",
+      description: "The US Navy, alongside allied naval fleets, patrolled maritime choke points and global trade routes, keeping the oceans open for civilian shipping and securing trillions in commerce.",
       badge: "Maritime Security"
     },
     {
-      title: "The Nuclear Umbrella",
-      description: "A strategic security subsidy that protects non-nuclear allies (like Germany, Italy, and Japan) from external coercion, preventing a dangerous regional arms race.",
+      title: "The Strategic Nuclear Umbrella",
+      description: "A deterrence subsidy that extends American nuclear capabilities to non-nuclear allies (like Germany, Italy, and Poland), discouraging regional proliferation and maintaining stability.",
       badge: "Deterrence"
     },
     {
       title: "Allied Interoperability",
-      description: "Standardized command structures, equipment, and regular joint military exercises ensure that 32 armies can act as a unified, coordinated global defense force.",
-      badge: "Cooperation"
+      description: "From ammunition calibers and communication systems to logistics chains and command structures, NATO standardizes operations so diverse armies can fight as one.",
+      badge: "Operational Union"
     }
   ],
+  expansionTitle: "The Baltic Lake: Accession of Sweden & Finland",
+  expansionParagraph1: "The accession of Finland (2023) and Sweden (2024) marked a historic geopolitical shift. Spurred by regional aggression, these militarily advanced nations abandoned decades of neutrality to seek shelter under the U.S. security umbrella. Their integration effectively transforms the Baltic Sea into a 'NATO Lake,' securing northern Europe and reinforcing the defense of the vulnerable Baltic States.",
+  expansionParagraph2: "Finland adds a highly trained conscript army and a 830-mile border with the Russian Federation, while Sweden contributes a state-of-the-art navy, advanced submarine technology, and the strategic island of Gotland. This expansion secures the Arctic corridor and eliminates strategic gaps in the northeastern flank of the alliance.",
   defenseLabel: "UNDERWRITING THE FREE WORLD",
   defenseTitle: "Defense and the Pax Americana: Funding Global Stability",
-  defenseParagraph1: "The US defense budget of approximately $954 billion in FY2025 exceeds the combined military spending of all other NATO allies. This is frequently cited by critics as evidence of American imperialism — but what is omitted is that this spending underwrites the security of the entire liberal democratic world. The global shipping lanes that carry trade are patrolled by the US Navy, ensuring stable consumer prices worldwide.",
-  defenseParagraph2: "The nuclear umbrella that allows Germany, Japan, South Korea, and dozens of others to spend just 1% to 2% of GDP on defense is an American subsidy to global stability. Europe's ability to fund generous social welfare states is contingent, in substantial part, on not having to pay for its own serious defense. American taxpayers have been quietly subsidizing the conditions for global prosperity since 1945.",
+  defenseParagraph1: "The US defense budget of approximately $954 billion in FY2025 exceeds the combined military spending of all other NATO allies. While critics sometimes characterize this footprint as expansionist, it is the fundamental underwriter of security for the liberal democratic world. The global shipping routes that sustain commercial cargo are secured by U.S. naval patrols, keeping shipping rates stable and ports open.",
+  defenseParagraph2: "The security umbrella that allows Germany, Japan, South Korea, and others to dedicate their budgets to domestic welfare and industrial technological leadership is an American subsidy. By maintaining forward bases and high-readiness forces, American taxpayers have quietly financed the conditions required for modern global prosperity.",
   defenseSource: "U.S. Department of Defense Comptroller",
   defenseSourceUrl: "https://comptroller.defense.gov/Budget-Materials/",
-  oracleDescription: "Ask the AI Oracle about NATO Article 5 history, US defense budget allocations, shipping lane patrols, or transatlantic military spending."
+  oracleDescription: "Ask the AI Oracle about NATO Article 5 history, Sweden and Finland's military contributions, the defense of the Baltic Sea, or transatlantic defense budgets."
 };
 
 const copyRo: NatoCopy = {
@@ -84,45 +96,51 @@ const copyRo: NatoCopy = {
   breadcrumbPage: "Alianța NATO",
   heroTagline: "SECURITATE ȘI PAX AMERICANA",
   heroTitle: "NATO: Scutul Lumii Democratice",
-  heroSubtitle: "Cum au garantat pacea apărarea colectivă și umbrela de securitate americană, permițând prosperitatea globală din 1945.",
+  heroSubtitle: "Cum au garantat pacea apărarea colectivă și umbrela de securitate americană, au integrat forțele aliate și au permis prosperitatea globală din 1945.",
   heroStats: [
     { value: "32", label: "Națiuni Membre" },
     { value: "1", label: "Invocări ale Articolului 5" },
     { value: "$954B", label: "Buget Apărare SUA (2025)" },
     { value: "1949", label: "Alianță Înființată" },
   ],
+  trumanQuote: "Prin acest pact, sperăm să creăm un scut împotriva agresiunii și a temerii de agresiune — un bastion care ne va permite să ne continuăm activitatea reală de guvernare și societate, activitatea de a asigura o viață mai plină și mai fericită pentru toți cetățenii noștri.",
+  trumanQuoteAuthor: "Președintele Harry S. Truman, 4 aprilie 1949",
   thesisTitle: "Piatra de Temelie a Securității Transatlantice",
-  thesisParagraph: "Înființată in 1949, Organizația Tratatului Atlanticului de Nord (NATO) reunește 32 de națiuni democratice suverane în apărarea reciprocă. În centrul său se află Articolul 5 — angajamentul că un atac împotriva unuia este un atac împotriva tuturor. Susținut de capacitatea militară a SUA și de umbrela sa nucleară, NATO a descurajat agresiunile externe timp de peste șapte decenii.",
-  pillarsTitle: "Pilonii Cheie ai Alianței",
+  thesisParagraph1: "Înființată în 1949 în fața ascensiunii amenințării sovietice, Organizația Tratatului Atlanticului de Nord (NATO) reunește 32 de națiuni democratice suverane în apărarea reciprocă. În centrul său se află Articolul 5 — angajamentul solemn că un atac armat împotriva unui membru este considerat un atac împotriva tuturor. Susținut de capacitatea militară a SUA și de umbrela sa nucleară, NATO a descurajat agresiunile externe timp de peste șapte decenii.",
+  thesisParagraph2: "Dincolo de descurajarea expansiunii teritoriale, alianța funcționează ca o structură de comandă integrată. Protocoalele militare standardizate (STANAG), schimbul de informații secrete și exercițiile de luptă regulate asigură că 32 de forțe naționale diferite pot coopera instantaneu ca o singură forță, capabilă să apere coridorul Suwalki și granițele aliate.",
+  pillarsTitle: "Pilonii Cheie ai Scutului Transatlantic",
   pillars: [
     {
-      title: "Angajamentul Articolului 5",
-      description: "Promisiunea sacră a apărării colective. A fost invocat o singură dată în istorie: de către aliații europeni în sprijinul SUA, imediat după atacurile teroriste de la 11 septembrie.",
+      title: "Apărarea Colectivă (Articolul 5)",
+      description: "Angajamentul că un atac împotriva unui membru este un atac împotriva tuturor. A fost invocat o singură dată în istorie: de către aliații europeni în sprijinul SUA, imediat după atacurile teroriste de la 11 septembrie, ducând la operațiuni comune în Afganistan.",
       badge: "Apărare Reciprocă"
     },
     {
-      title: "Controlul Rutelor Maritime",
-      description: "Marina SUA patrulează punctele maritime strâmte și rutele comerciale globale, garantând că mărfuri de trilioane de dolari circulă liber între continente fără riscuri de piraterie.",
+      title: "Protecția Rutelor Maritime Globale",
+      description: "Marina SUA, alături de flotele aliate, patrulează strâmtorile și rutele comerciale globale, menținând oceanele deschise pentru navigația civilă și securizând trilioane de dolari în mărfuri.",
       badge: "Securitate Maritimă"
     },
     {
-      title: "Umbrela Nucleară",
-      description: "O subvenție strategică ce protejează aliații non-nucleari (cum ar fi Germania, Italia și Japonia) de coerciție externă, eliminând necesitatea ca aceștia să își dezvolte propriul arsenal.",
+      title: "Umbrela Nucleară Strategică",
+      description: "O subvenție de securitate care extinde capacitățile nucleare ale SUA asupra aliaților non-nucleari (cum ar fi Germania, Italia și Polonia), descurajând proliferarea și menținând stabilitatea.",
       badge: "Descurajare"
     },
     {
       title: "Interoperabilitatea Aliaților",
-      description: "Structurile de comandă unificate, echipamentele standardizate și exercițiile comune permit ca 32 de armate diferite să acționeze ca o singură forță coerentă.",
-      badge: "Cooperare"
+      description: "De la calibrele muniției și sistemele de comunicații la lanțurile logistice și structurile de comandă, NATO standardizează operațiunile pentru ca armate diverse să poată lupta ca una singură.",
+      badge: "Uniune Operațională"
     }
   ],
+  expansionTitle: "Lacul Baltic: Aderarea Suediei și Finlandei",
+  expansionParagraph1: "Aderarea Finlandei (2023) și a Suediei (2024) a marcat o schimbare geopolitică istorică. Sub presiunea agresiunii regionale, aceste națiuni avansate din punct de vedere militar au abandonat neutralitatea pentru a căuta protecție sub umbrela de securitate a SUA. Integrarea lor transformă Marea Baltică într-un „lac NATO”, securizând nordul Europei.",
+  expansionParagraph2: "Finlanda aduce o armată de rezervă foarte bine pregătită și o graniță de 1.340 de kilometri cu Federația Rusă, în timp ce Suedia contribuie cu o marină de ultimă generație, tehnologie avansată de submarine și insula strategică Gotland. Această expansiune securizează coridorul arctic.",
   defenseLabel: "SUBVENȚIONAREA LUMII LIBERE",
   defenseTitle: "Pacea Americană (Pax Americana): Cine Plătește Pacea?",
-  defenseParagraph1: "Bugetul de apărare al SUA de aproximativ 954 de miliarde de dolari în anul fiscal 2025 depășește cheltuielile militare cumulate ale tuturor celorlalți aliați NATO la un loc. Această cheltuială, adesea criticată ca fiind expansionistă, garantează securitatea întregii lumi democratice libere și patrularea rutelor prin care trec resursele comerciale.",
-  defenseParagraph2: "Umbrela nucleară americană le permite Germaniei, Japoniei și Coreei de Sud să aloce doar 1-2% din PIB pentru apărare, beneficiind de stabilitatea mondială finanțată de SUA. Capacitatea Europei de a susține state sociale generoase este condiționată, în mare parte, de faptul că nu trebuie să își plătească propria apărare militară serioasă.",
+  defenseParagraph1: "Bugetul de apărare al SUA de aproximativ 954 de miliarde de dolari în anul fiscal 2025 depășește cheltuielile militare cumulate ale tuturor celorlalți aliați NATO la un loc. Deși unii critici descriu această prezență ca fiind expansionistă, ea garantează securitatea întregii lumi democratice libere. Rutele maritime globale care susțin comerțul sunt securizate de patrulele navale americane.",
+  defenseParagraph2: "Umbrela de securitate care le permite Germaniei, Japoniei și Coreei de Sud să aloce resurse pentru programe sociale, educație și inovație tehnologică este o subvenție americană. Prin menținerea bazelor avansate, contribuabilii americani au finanțat condițiile necesare pentru prosperitatea globală modernă.",
   defenseSource: "Controlorul Bugetar al Departamentului de Apărare al SUA",
   defenseSourceUrl: "https://comptroller.defense.gov/Budget-Materials/",
-  oracleDescription: "Întreabă Oracolul AI despre istoria Articolului 5 al NATO, alocările bugetului de apărare al SUA, patrulele maritime sau cheltuielile militare transatlantice."
+  oracleDescription: "Întreabă Oracolul AI despre istoria Articolului 5 al NATO, contribuția militară a Suediei și Finlandei, apărarea Mării Baltice sau bugetele de apărare transatlantice."
 };
 
 export default async function NatoAlliancePage() {
@@ -167,14 +185,29 @@ export default async function NatoAlliancePage() {
         </div>
       </section>
 
+      {/* Editorial Quote - Big text, clean spacing */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32 py-12">
+        <div className="max-w-4xl border-l-2 border-[#E8391B] pl-8">
+          <p className="text-2xl md:text-3xl italic text-[#F5EDD8] leading-relaxed font-light">
+            &ldquo;{copy.trumanQuote}&rdquo;
+          </p>
+          <span className="text-sm uppercase tracking-widest text-white/40 block mt-4 font-semibold">
+            {copy.trumanQuoteAuthor}
+          </span>
+        </div>
+      </section>
+
       {/* Thesis Section */}
       <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             {copy.thesisTitle}
           </h2>
           <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
-            {copy.thesisParagraph}
+            {copy.thesisParagraph1}
+          </p>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {copy.thesisParagraph2}
           </p>
         </div>
       </section>
@@ -199,12 +232,32 @@ export default async function NatoAlliancePage() {
         </div>
       </section>
 
+      {/* Expansion Section */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
+        <div className="max-w-3xl space-y-6">
+          <div className="flex items-center gap-3 text-glory-gold mb-2">
+            <Milestone className="h-6 w-6" />
+            <span className="text-sm font-semibold tracking-widest uppercase">{isRo ? "GEOPOLITICĂ" : "GEOPOLITICS"}</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            {copy.expansionTitle}
+          </h2>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {copy.expansionParagraph1}
+          </p>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {copy.expansionParagraph2}
+          </p>
+        </div>
+      </section>
+
       {/* Editorial Section */}
       <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
         <div className="max-w-3xl">
-          <span className="text-sm font-semibold tracking-widest text-white/40 uppercase block mb-4">
-            {copy.defenseLabel}
-          </span>
+          <div className="flex items-center gap-3 text-[#E8391B] mb-2">
+            <Sparkles className="h-6 w-6" />
+            <span className="text-sm font-semibold tracking-widest uppercase">{copy.defenseLabel}</span>
+          </div>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
             {copy.defenseTitle}
           </h2>

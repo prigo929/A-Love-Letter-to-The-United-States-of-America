@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import { Landmark, Heart, ShieldAlert, Award } from "lucide-react";
+import { Landmark, Heart, ShieldAlert, Award, Sparkles, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "American Foreign Policy | Global Leadership",
@@ -16,14 +16,20 @@ interface ForeignPolicyCopy {
   heroTitle: string;
   heroSubtitle: string;
   heroStats: Array<{ value: string; label: string }>;
+  washingtonQuote: string;
+  washingtonQuoteAuthor: string;
   thesisTitle: string;
-  thesisParagraph: string;
+  thesisParagraph1: string;
+  thesisParagraph2: string;
   pillarsTitle: string;
   pillars: Array<{
     title: string;
     description: string;
     badge: string;
   }>;
+  softPowerTitle: string;
+  softPowerParagraph1: string;
+  softPowerParagraph2: string;
   doctrineTitle: string;
   doctrineParagraph1: string;
   doctrineParagraph2: string;
@@ -42,8 +48,11 @@ const copyEn: ForeignPolicyCopy = {
     { value: "1823", label: "Monroe Doctrine" },
     { value: "1947", label: "Truman Doctrine" },
   ],
+  washingtonQuote: "It is our true policy to steer clear of permanent alliances with any portion of the foreign world.",
+  washingtonQuoteAuthor: "President George Washington, Farewell Address, 1796",
   thesisTitle: "The Evolution of Global Engagement",
-  thesisParagraph: "American foreign policy has evolved from George Washington's advice of avoiding 'entangling alliances' to a posture of active, global leadership. During the twentieth century, faced with the threats of totalitarianism, the United States developed key doctrines and diplomatic frameworks (like the Marshall Plan and containment) to support sovereign democratic nations and maintain international law.",
+  thesisParagraph1: "American foreign policy has evolved from George Washington's advice of avoiding 'entangling alliances' to a posture of active, global leadership. During the twentieth century, faced with the threats of totalitarianism, the United States developed key doctrines and diplomatic frameworks (like the Marshall Plan and containment) to support sovereign democratic nations and maintain international law.",
+  thesisParagraph2: "This posture balances realism—protecting strategic trade corridors and resource flows—with idealism, which advocates for human rights, self-determination, and democratic governance worldwide. Today, U.S. diplomats operate a massive network of embassies to manage conflicts, negotiate trade agreements, and coordinate humanitarian response.",
   pillarsTitle: "Core Foundations of US Foreign Policy",
   pillars: [
     {
@@ -67,10 +76,13 @@ const copyEn: ForeignPolicyCopy = {
       badge: "Strategic Alliances"
     }
   ],
+  softPowerTitle: "Soft Power: Peace Corps & Fulbright Program",
+  softPowerParagraph1: "Diplomacy is not conducted solely through state departments and treaty signings; it is built on human connections. Established in 1961 by President John F. Kennedy, the Peace Corps has sent over 240,000 American volunteers to serve in 140 countries, working in education, agriculture, and community health to build grassroots friendships.",
+  softPowerParagraph2: "Similarly, the Fulbright Program, established in 1946 under Senator J. William Fulbright, has sponsored over 400,000 students, scholars, and teachers to conduct international exchanges. By fostering mutual understanding, these soft power initiatives export American ideals and build a global network of shared cultural values.",
   doctrineTitle: "From Isolation to Indispensability",
   doctrineParagraph1: "For its first century, the United States focused on territorial growth, using the Monroe Doctrine of 1823 to warn European empires against colonial interference in the Western Hemisphere. However, the world wars of the twentieth century demonstrated that American security is inextricably linked to global stability, turning the US into the 'indispensable nation' of the free world.",
-  doctrineParagraph2: "Today, American foreign policy continues to balance national interests with the defense of democratic values. By maintaining over 190 diplomatic missions and coordinating international coalitions, the United States remains the central pillar of international diplomacy and global crisis resolution.",
-  oracleDescription: "Ask the AI Oracle about the Marshall Plan, the Monroe Doctrine, the Truman Doctrine, or the structure of US foreign aid and diplomatic missions."
+  doctrineParagraph2: "During the Cold War, this expanded into the Carter Doctrine (pledging military force to defend the Persian Gulf) and the Reagan Doctrine (providing assistance to anti-communist movements). Today, American foreign policy continues to balance traditional alliances with emerging cyber security, space diplomacy, and supply chain resilience.",
+  oracleDescription: "Ask the AI Oracle about the Marshall Plan, the Monroe Doctrine, the Truman Doctrine, the Peace Corps, or the history of U.S. diplomatic missions."
 };
 
 const copyRo: ForeignPolicyCopy = {
@@ -85,8 +97,11 @@ const copyRo: ForeignPolicyCopy = {
     { value: "1823", label: "Doctrina Monroe" },
     { value: "1947", label: "Doctrina Truman" },
   ],
+  washingtonQuote: "Este politica noastră adevărată de a ne ține la distanță de alianțele permanente cu orice parte a lumii externe.",
+  washingtonQuoteAuthor: "Președintele George Washington, Discursul de Adio, 1796",
   thesisTitle: "Evoluția Angajamentului Global",
-  thesisParagraph: "Politică externă a SUA a evoluat de la recomandarea lui George Washington de a evita „alianțele încurcate” la o postură de leadership global activ. În timpul secolului al XX-lea, confruntate cu amenințarea totalitarismului, Statele Unite au dezvoltat doctrine cheie și cadre diplomatice (cum ar fi Planul Marshall) pentru a sprijini națiunile democratice suverane.",
+  thesisParagraph1: "Politică externă a SUA a evoluat de la recomandarea lui George Washington de a evita „alianțele încurcate” la o postură de leadership global activ. În timpul secolului al XX-lea, confruntate cu amenințarea totalitarismului, Statele Unite au dezvoltat doctrine cheie și cadre diplomatice (cum ar fi Planul Marshall) pentru a sprijini națiunile democratice suverane.",
+  thesisParagraph2: "Această postură echilibrează realismul — protejarea coridoarelor comerciale strategice — cu idealismul, care promovează drepturile omului și guvernarea democratică. Astăzi, diplomații americani operează o rețea uriașă de ambasade.",
   pillarsTitle: "Fundațiile Cheie ale Politicii Externe a SUA",
   pillars: [
     {
@@ -110,10 +125,13 @@ const copyRo: ForeignPolicyCopy = {
       badge: "Alianțe Strategice"
     }
   ],
+  softPowerTitle: "Puterea Blândă: Corpul Păcii și Programul Fulbright",
+  softPowerParagraph1: "Diplomația nu se desfășoară doar prin semnarea de tratate; se construiește pe conexiuni umane. Înființat în 1961 de președintele John F. Kennedy, Corpul Păcii a trimis peste 240.000 de voluntari americani în 140 de țări, lucrând în educație, agricultură și sănătate.",
+  softPowerParagraph2: "De asemenea, Programul Fulbright, înființat în 1946 sub senatorul J. William Fulbright, a sponsorizat peste 400.000 de studenți, cercetători și profesori în schimburi internaționale, promovând înțelegerea reciprocă.",
   doctrineTitle: "De la Izolare la Rolul Indispensabil",
   doctrineParagraph1: "În primul său secol, Statele Unite s-au concentrat pe creșterea internă, folosind Doctrina Monroe din 1823 pentru a avertiza imperiile europene împotriva interferențelor coloniale. Cu toate acestea, războaiele mondiale au demonstrat că securitatea americană este legată de stabilitatea globală, transformând SUA în națiunea indispensabilă a lumii libere.",
-  doctrineParagraph2: "Astăzi, politica externă americană continuă să echilibreze interesele naționale cu apărarea valorilor democratice. Prin menținerea a peste 190 de misiuni diplomatice și coordonarea coalițiilor internaționale, SUA rămân pilonul central al diplomației globale.",
-  oracleDescription: "Întreabă Oracolul AI despre Planul Marshall, Doctrina Monroe, Doctrina Truman, structura ajutorului extern sau misiunile diplomatice ale SUA."
+  doctrineParagraph2: "În timpul Războiului Rece, aceasta s-a extins în Doctrina Carter (apărarea Golfului Persic) și Doctrina Reagan (sprijinirea mișcărilor anticomuniste). Astăzi, politica externă a SUA echilibrează alianțele tradiționale cu securitatea cibernetică și diplomația spațială.",
+  oracleDescription: "Întreabă Oracolul AI despre Planul Marshall, Doctrina Monroe, Doctrina Truman, Corpul Păcii sau istoria misiunilor diplomatice ale SUA."
 };
 
 export default async function ForeignPolicyPage() {
@@ -158,14 +176,29 @@ export default async function ForeignPolicyPage() {
         </div>
       </section>
 
+      {/* Editorial Quote */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32 py-12">
+        <div className="max-w-4xl border-l-2 border-[#E8391B] pl-8">
+          <p className="text-2xl md:text-3xl italic text-[#F5EDD8] leading-relaxed font-light">
+            &ldquo;{copy.washingtonQuote}&rdquo;
+          </p>
+          <span className="text-sm uppercase tracking-widest text-white/40 block mt-4 font-semibold">
+            {copy.washingtonQuoteAuthor}
+          </span>
+        </div>
+      </section>
+
       {/* Thesis Section */}
       <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             {copy.thesisTitle}
           </h2>
           <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
-            {copy.thesisParagraph}
+            {copy.thesisParagraph1}
+          </p>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {copy.thesisParagraph2}
           </p>
         </div>
       </section>
@@ -190,9 +223,32 @@ export default async function ForeignPolicyPage() {
         </div>
       </section>
 
+      {/* Soft Power Section */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
+        <div className="max-w-3xl space-y-6">
+          <div className="flex items-center gap-3 text-glory-gold mb-2">
+            <BookOpen className="h-6 w-6" />
+            <span className="text-sm font-semibold tracking-widest uppercase">{isRo ? "PUTERE BLÂNDĂ" : "SOFT POWER"}</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            {copy.softPowerTitle}
+          </h2>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {copy.softPowerParagraph1}
+          </p>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {copy.softPowerParagraph2}
+          </p>
+        </div>
+      </section>
+
       {/* Editorial Section */}
       <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
         <div className="max-w-3xl">
+          <div className="flex items-center gap-3 text-[#E8391B] mb-2">
+            <Sparkles className="h-6 w-6" />
+            <span className="text-sm font-semibold tracking-widest uppercase">{isRo ? "DOCTRINE ISTORICE" : "HISTORIC DOCTRINES"}</span>
+          </div>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
             {copy.doctrineTitle}
           </h2>
