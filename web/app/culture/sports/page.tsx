@@ -27,12 +27,12 @@ export default async function CultureSportsPage() {
       : "From the Super Bowl's 100+ million domestic viewers to basketball's global cultural footprint, sports define the American collective ritual. It is a private ecosystem — four major leagues, the NCAA pipeline, and the single most-watched broadcast on Earth — that no state-run sports apparatus has ever matched.",
     sportsEconomyTitle: isRo ? "Economia Sportului Profesionist: Dominanță Globală" : "The Professional Sports Economy: Global Dominance",
     sportsEconomyText: isRo
-      ? "Statele Unite operează cele mai mari patru ligi profesioniste din lume după venituri: NFL, NBA, MLB și NHL. NFL generează singură peste 20 mld. $ anual, în timp ce NBA este difuzată în 215 țări. Susținut de ecosistemul unic NCAA, sportul american reprezintă o economie de peste 80 de miliarde de dolari care proiectează o putere soft fără egal."
-      : "The United States operates four major professional sports leagues — the NFL, NBA, MLB, and NHL — each individually larger by revenue than the top league of most developed nations. The NFL alone generates over $20 billion in revenue, while the NBA broadcasts to 215 countries. Supported by the unique NCAA college athletics pipeline, the US sports economy reaches over $80 billion annually, projecting unmatched global soft power.",
+      ? "Statele Unite operează cele mai mari patru ligi profesioniste din lume după venituri: NFL, NBA, MLB și NHL. Susținut de drepturile media, giganți de echipament sportiv precum Nike, vânzarea de bilete și sportul de masă, piața sportivă din SUA depășește 520 de miliarde de dolari anual, proiectând o putere soft de neegalat."
+      : "The United States operates four major professional sports leagues — the NFL, NBA, MLB, and NHL — each individually larger by revenue than the top league of most developed nations. Underwritten by sports media rights, apparel giants like Nike, ticketing, and youth athletics, the total U.S. sports market size exceeds $520 billion annually, projecting unmatched global soft power.",
     olympicTitle: isRo ? "Dominația Olimpică: O Țară care Concurează ca un Continent" : "Olympic Dominance: A Country That Competes as a Continent",
     olympicText: isRo
-      ? "SUA dețin cele mai multe medalii de aur per total (1.220), cu Uniunea Sovietică pe locul doi (473). Ceea ce face acest lucru și mai remarcabil este contextul competitiv: SUA câștigă aceste medalii fără un aparat sportiv dirijat de stat, fără academii sportive obligatorii. Succesul olimpic american este produsul unei infrastructuri private profunde de atletism universitar, cluburi private, sponsorizări comerciale și ambiție individuală."
-      : "The US holds the most gold medals overall with 1,220, with the Soviet Union in second place at 473. What makes this more remarkable is the competitive context: the US earns these medals without a state-directed athletic apparatus, without mandatory sports academies. American Olympic success is the product of a deep private infrastructure of collegiate athletics, private clubs, commercial sponsorships, and individual ambition operating in a free society.",
+      ? "SUA dețin cele mai multe medalii de aur la Jocurile de Vară (1.105) și 1.219 medalii de aur în total (inclusiv cele de Iarnă), cu Uniunea Sovietică pe locul doi (473). Ceea ce face acest lucru și mai remarcabil este contextul competitiv: SUA câștigă aceste medalii fără un aparat sportiv dirijat de stat sau academii obligatorii."
+      : "The US holds the most Summer gold medals overall with 1,105 (and 1,219 total gold medals overall including Winter games), with the Soviet Union in second place at 473. What makes this more remarkable is the competitive context: the US earns these medals without a state-directed athletic apparatus, without mandatory sports academies. American Olympic success is the product of a deep private infrastructure of collegiate athletics, private clubs, commercial sponsorships, and individual ambition operating in a free society.",
     parallelQuote: isRo
       ? "Stadioanele americane nu sunt doar locuri de joc — ele sunt temple ale identității naționale, capabile să coaguleze 100.000 de oameni sub același steag în orice weekend."
       : "American stadiums are not merely venues — they are cathedrals of national identity, capable of gathering 100,000 people under the same flag on any given weekend.",
@@ -106,7 +106,7 @@ export default async function CultureSportsPage() {
         titleAccent={isRo ? "& TRADIȚIE" : "& TRADITION"}
         description={content.pullQuote}
         stats={[
-          { value: "$80B+", label: isRo ? "Industria Sportului" : "Sports Industry" },
+          { value: "$520B+", label: isRo ? "Piața Sportivă SUA" : "US Sports Market" },
           { value: "100M+", label: isRo ? "Spectatori Super Bowl" : "Super Bowl Viewers" },
           { value: "215", label: isRo ? "Difuzări Globale NBA" : "NBA Global Broadcasts" },
         ]}
@@ -131,7 +131,7 @@ export default async function CultureSportsPage() {
             </div>
             <div className="culture-glass rounded-2xl p-6 border border-white/5 space-y-6 group">
               {[
-                { value: "1,220", label: isRo ? "Medalii de aur olimpice (record absolut)" : "Olympic Golds — most all-time" },
+                { value: "1,219", label: isRo ? "Medalii de aur olimpice totale (record)" : "Total Olympic Golds — most all-time" },
                 { value: "$20B+", label: isRo ? "Venituri anuale NFL" : "Annual NFL Revenue" },
                 { value: "42%", label: isRo ? "Din terenurile de golf ale lumii" : "Of the World's Golf Courses" },
               ].map((s, i) => (
@@ -363,8 +363,8 @@ export default async function CultureSportsPage() {
               </h2>
               <p className="font-editorial text-lg text-[#0C0907]/70 leading-relaxed">
                 {isRo
-                  ? "Statele Unite dețin un record absolut la Jocurile Olimpice moderne, cu 1.220 de medalii de aur la Jocurile de Vară și peste 2.900 de medalii în total. Această performanță uimitoare este realizată fără o direcție centralizată de stat sau academii naționale forțate, ci prin spirit de competiție, ligi universitare de elită și determinare individuală într-o societate liberă."
-                  : "The United States leads the modern Olympic Games with a record-shattering 1,220 gold medals in the Summer Games and over 2,900 medals overall. What makes this record remarkable is the context: the U.S. achieves this dominance without a government sports ministry or state-funded academies. Instead, Olympic success is driven by collegiate athletics (Title IX), private clubs, and commercial sponsorships operating in a free society."}
+                  ? "Statele Unite dețin un record absolut la Jocurile Olimpice moderne, cu 1.105 de medalii de aur la Jocurile de Vară (și 1.219 medalii de aur în total, inclusiv cele de Iarnă). Această performanță uimitoare este realizată fără o direcție centralizată de stat sau academii naționale forțate, ci prin spirit de competiție, ligi universitare de elită și determinare individuală într-o societate liberă."
+                  : "The United States leads the modern Olympic Games with a record-shattering 1,105 gold medals in the Summer Games (and 1,219 total gold medals overall including Winter games). What makes this record remarkable is the context: the U.S. achieves this dominance without a government sports ministry or state-funded academies. Instead, Olympic success is driven by collegiate athletics (Title IX), private clubs, and commercial sponsorships operating in a free society."}
               </p>
             </div>
 
@@ -436,6 +436,41 @@ export default async function CultureSportsPage() {
           </div>
         </section>
 
+        {/* CREAM: The Soccer Revolution & Grassroots Pipeline */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-28 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="grid gap-16 md:grid-cols-2">
+              <div>
+                <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold mb-4">
+                  {isRo ? "FENOMENUL SOCCER & CM 2026" : "THE SOCCER REVOLUTION & WC 2026"}
+                </p>
+                <h3 className="font-macro-display text-3xl font-black text-[#0C0907] mb-4">
+                  {isRo ? "Revoluția Fotbalului European" : "The European Football Boom"}
+                </h3>
+                <p className="font-editorial text-base text-[#0C0907]/75 leading-relaxed">
+                  {isRo
+                    ? "Fotbalul european (soccer) traversează o epocă de aur în Statele Unite. Propulsat de dezvoltarea explozivă a Major League Soccer (MLS) – acum o ligă extinsă la 30 de echipe care atrage audiențe majore și legende ale sportului precum Lionel Messi – jocul a devenit sportul cu cea mai rapidă creștere în rândul tinerilor. Această ascensiune va culmina cu organizarea Cupei Mondiale FIFA 2026, găzduită în co-parteneriat de SUA, Canada și Mexic, cel mai mare spectacol sportiv global urmând să fie difuzat pe marile arene din New York, Dallas, Los Angeles și Miami."
+                    : "Association football (soccer) is experiencing an unprecedented golden age in the United States. Propelled by the explosive expansion of Major League Soccer (MLS) — now a 30-team league drawing massive attendance and global icons like Lionel Messi — soccer has become the fastest-growing youth sport in the country. This rise is set to culminate in the hosting of the 2026 FIFA World Cup, co-hosted with Canada and Mexico, placing the world's grandest sporting event across historic American venues from New York and Dallas to Los Angeles and Miami."}
+                </p>
+              </div>
+              <div>
+                <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold mb-4">
+                  {isRo ? "PIPINELE COMUNITARE & DECENTRALIZAREA" : "GRASSROOTS & THE COMMUNITY PIPELINE"}
+                </p>
+                <h3 className="font-macro-display text-3xl font-black text-[#0C0907] mb-4">
+                  {isRo ? "Motorul de la Firul Ierbii și Suburbiile" : "The Grassroots Engine & Suburbia"}
+                </h3>
+                <p className="font-editorial text-base text-[#0C0907]/75 leading-relaxed">
+                  {isRo
+                    ? "În spatele fiecărei medalii olimpice americane se află un sistem comunitar extrem de puternic și descentralizat. În fiecare weekend, milioane de copii din suburbiile americane concurează în ligi de tineret (Little League Baseball, cluburi de fotbal juvenil, echipe locale de înot și atletism) finanțate în totalitate prin eforturile familiilor și ale micilor afaceri locale. Liceele americane continuă acest efort, operând echipe ultra-competitive cu stadioane de nivel profesionist și spirit comunitar extins, creând o rampă directă spre sportul universitar din NCAA și, în final, spre elita olimpică."
+                    : "Behind every American Olympic medal and professional athlete lies an incredibly robust, bottom-up community pipeline. Every weekend, millions of suburban children compete in local youth sports leagues (Little League Baseball, club soccer, community swim clubs, and track teams) funded entirely by family investment and local small-business sponsorships. American high schools build on this, operating highly competitive athletic programs with professional-grade facilities and deep school spirit, serving as the ultimate stepping stone to NCAA collegiate athletics and the Olympic stage."}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* gradient transition */}
         <div className="h-16 w-full gradient-cream-to-dark" />
 
@@ -444,10 +479,10 @@ export default async function CultureSportsPage() {
           {/* Bordered stats strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-white/5 rounded-3xl overflow-hidden mb-28">
             {[
-              { value: "$80B+", label: isRo ? "Industria sportului SUA" : "US Sports Industry", note: isRo ? "Cele 4 ligi + NCAA" : "4 major leagues + NCAA" },
+              { value: "$520B+", label: isRo ? "Piața sportivă SUA" : "US Sports Market", note: isRo ? "Inclusiv drepturi media, echipament și retail" : "Including media rights, gear, and retail" },
               { value: "$20B+", label: isRo ? "Venituri NFL anuale" : "Annual NFL Revenue", note: isRo ? "Cea mai valoroasă ligă" : "Most valuable league on Earth" },
               { value: "215", label: isRo ? "Țări difuzare NBA" : "Countries Broadcasting NBA", note: isRo ? "Cea mai globală ligă" : "The most globally distributed league" },
-              { value: "1,220", label: isRo ? "Medalii olimpice de aur" : "Olympic Gold Medals", note: isRo ? "Recordul absolut mondial" : "The all-time world record" },
+              { value: "1,219", label: isRo ? "Medalii olimpice de aur" : "Olympic Gold Medals", note: isRo ? "Recordul absolut mondial" : "The all-time world record" },
             ].map((s, i) => (
               <div key={i} className={`p-8 flex flex-col gap-2 ${i > 0 ? "border-l border-white/5" : ""}`}>
                 <span className="font-macro-display text-4xl md:text-5xl font-black text-[#E8B923]">{s.value}</span>
