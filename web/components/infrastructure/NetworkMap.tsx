@@ -70,7 +70,17 @@ function RoutesLayer({
     () =>
       routes
         .filter((r) => r.era === era)
-        .map((r) => ({ route: r, d: buildPath(r.waypoints, projection) }))
+        .map((r) => {
+          const routeKey = r.id.toUpperCase();
+          const detailPaths = (interstatesData as any)[routeKey];
+          if (detailPaths && detailPaths.length > 0) {
+            const paths = detailPaths
+              .map((seg: any) => buildPath(seg as LngLat[], projection))
+              .filter(Boolean);
+            return { route: r, d: paths.join(" ") };
+          }
+          return { route: r, d: buildPath(r.waypoints, projection) };
+        })
         .filter((r) => r.d),
     [routes, era, projection],
   );
