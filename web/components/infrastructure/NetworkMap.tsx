@@ -140,8 +140,11 @@ function RoutesLayer({
           <g
             key={`${era}-${route.id}`}
             className="group cursor-pointer"
-            style={{ opacity: dimmed ? (isFeatured ? 0.1 : 0.05) : 1, transition: "opacity 0.3s ease" }}
-            onClick={() => onSelect(selectedId === route.id ? null : route.id)}
+            style={{ opacity: dimmed ? (isFeatured ? 0.25 : 0.15) : 1, transition: "opacity 0.3s ease" }}
+            onClick={(e) => {
+              e.stopPropagation();
+              onSelect(selectedId === route.id ? null : route.id);
+            }}
           >
             {/* Soft glow underlay — featured/selected only */}
             {(isFeatured || isSelected) && (
@@ -456,6 +459,7 @@ export function NetworkMap({
           width={940}
           height={540}
           style={{ width: "100%", height: "auto" }}
+          onClick={() => setSelectedId(null)}
         >
           <ZoomableGroup
             center={position.coordinates}
