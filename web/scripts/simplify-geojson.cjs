@@ -115,18 +115,35 @@ function processGeoJSON() {
         const feat = JSON.parse(featureStr);
         if (feat.properties && feat.properties.SIGNT1 === "I") {
           const route = feat.properties.SIGN1;
-          if (/^I\d{1,2}$/.test(route)) {
-            if (feat.geometry && feat.geometry.type === "LineString") {
-              const coords = feat.geometry.coordinates;
-              const cleanCoords = coords.map(pt => [
-                Math.round(pt[0] * 1000) / 1000,
-                Math.round(pt[1] * 1000) / 1000
-              ]);
-              if (cleanCoords.length >= 2) {
-                if (!rawInterstates[route]) {
-                  rawInterstates[route] = [];
+          const match = route ? route.match(/^I(\d{1,2})([EWNS])?$/i) : null;
+          if (match) {
+            const parentRoute = "I" + match[1];
+            if (feat.geometry) {
+              if (feat.geometry.type === "LineString") {
+                const coords = feat.geometry.coordinates;
+                const cleanCoords = coords.map(pt => [
+                  Math.round(pt[0] * 1000) / 1000,
+                  Math.round(pt[1] * 1000) / 1000
+                ]);
+                if (cleanCoords.length >= 2) {
+                  if (!rawInterstates[parentRoute]) {
+                    rawInterstates[parentRoute] = [];
+                  }
+                  rawInterstates[parentRoute].push(cleanCoords);
                 }
-                rawInterstates[route].push(cleanCoords);
+              } else if (feat.geometry.type === "MultiLineString") {
+                feat.geometry.coordinates.forEach(coords => {
+                  const cleanCoords = coords.map(pt => [
+                    Math.round(pt[0] * 1000) / 1000,
+                    Math.round(pt[1] * 1000) / 1000
+                  ]);
+                  if (cleanCoords.length >= 2) {
+                    if (!rawInterstates[parentRoute]) {
+                      rawInterstates[parentRoute] = [];
+                    }
+                    rawInterstates[parentRoute].push(cleanCoords);
+                  }
+                });
               }
             }
           }

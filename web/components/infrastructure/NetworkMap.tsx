@@ -139,19 +139,23 @@ function RoutesLayer({
         return (
           <g
             key={`${era}-${route.id}`}
+            className="group cursor-pointer"
             style={{ opacity: dimmed ? (isFeatured ? 0.1 : 0.05) : 1, transition: "opacity 0.3s ease" }}
+            onClick={() => onSelect(selectedId === route.id ? null : route.id)}
           >
             {/* Soft glow underlay — featured/selected only */}
             {(isFeatured || isSelected) && (
-              <path
+              <motion.path
                 d={d}
                 fill="none"
                 stroke={route.color}
                 strokeWidth={4.5}
                 strokeLinecap="round"
-                opacity={0.13}
                 vectorEffect="non-scaling-stroke"
+                className="transition-all duration-200 group-hover:opacity-40"
                 style={{ pointerEvents: "none" }}
+                animate={isSelected ? { opacity: [0.12, 0.28, 0.12] } : { opacity: 0.13 }}
+                transition={isSelected ? { duration: 2.0, repeat: Infinity, ease: "easeInOut" } : undefined}
               />
             )}
             {/* The corridor itself */}
@@ -164,6 +168,7 @@ function RoutesLayer({
                 strokeLinecap="round"
                 strokeDasharray={route.dashed ? "5 6" : undefined}
                 vectorEffect="non-scaling-stroke"
+                className="transition-all duration-200 group-hover:brightness-150"
                 style={{ pointerEvents: "none" }}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 0.95 }}
@@ -178,6 +183,7 @@ function RoutesLayer({
                 strokeWidth={strokeWidth}
                 strokeLinecap="round"
                 vectorEffect="non-scaling-stroke"
+                className="transition-all duration-200 group-hover:brightness-150"
                 style={{ pointerEvents: "none" }}
                 initial={{ pathLength: 0, opacity: 0.4 }}
                 whileInView={{ pathLength: 1, opacity: 0.95 }}
@@ -192,6 +198,7 @@ function RoutesLayer({
                 strokeWidth={strokeWidth}
                 strokeLinecap="round"
                 vectorEffect="non-scaling-stroke"
+                className="transition-all duration-200 group-hover:brightness-150"
                 style={{ pointerEvents: "none" }}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 0.85 }}
@@ -201,15 +208,18 @@ function RoutesLayer({
             )}
             {/* Moving vehicle dot — featured routes, main alignment only */}
             {!reducedMotion && isFeatured && dotD && (
-              <circle
+              <motion.circle
                 r={2.3 * k}
                 fill={route.color}
                 stroke="#000"
                 strokeWidth={0.6 * k}
+                className="transition-all duration-200 group-hover:brightness-125"
                 style={{ pointerEvents: "none" }}
+                animate={{ r: [2.0 * k, 3.2 * k, 2.0 * k] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
               >
                 <animateMotion dur={`${11 + i * 2.5}s`} repeatCount="indefinite" path={dotD} />
-              </circle>
+              </motion.circle>
             )}
             {/* Fat invisible hit-area for hover/tap */}
             <path
@@ -218,9 +228,7 @@ function RoutesLayer({
               stroke="transparent"
               strokeWidth={isFeatured ? 11 : 7}
               vectorEffect="non-scaling-stroke"
-              style={{ pointerEvents: "stroke", cursor: "pointer" }}
-              onMouseEnter={() => onSelect(route.id)}
-              onClick={() => onSelect(selectedId === route.id ? null : route.id)}
+              style={{ pointerEvents: "stroke" }}
             />
           </g>
         );

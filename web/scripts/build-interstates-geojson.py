@@ -291,12 +291,16 @@ def main():
         nums = []
         for slot in ("1", "2", "3"):
             if p.get(f"SIGNT{slot}") == "I":
-                try:
-                    n = int(str(p.get(f"SIGNN{slot}", "")).strip())
-                except ValueError:
-                    continue
-                if n in REAL:
-                    nums.append(n)
+                val = str(p.get(f"SIGNN{slot}", "")).strip()
+                import re
+                m = re.match(r"^(\d+)", val)
+                if m:
+                    try:
+                        n = int(m.group(1))
+                    except ValueError:
+                        continue
+                    if n in REAL:
+                        nums.append(n)
         if not nums:
             continue
         g = feat.get("geometry") or {}
