@@ -140,7 +140,7 @@ function RoutesLayer({
           <g
             key={`${era}-${route.id}`}
             className="group cursor-pointer"
-            style={{ opacity: dimmed ? (isFeatured ? 0.25 : 0.15) : 1, transition: "opacity 0.3s ease" }}
+            style={{ opacity: dimmed ? (isFeatured ? 0.45 : 0.4) : 1, transition: "opacity 0.3s ease" }}
             onClick={(e) => {
               e.stopPropagation();
               onSelect(selectedId === route.id ? null : route.id);
