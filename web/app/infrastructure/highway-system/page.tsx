@@ -104,6 +104,10 @@ export default async function HighwaySystemPage() {
               "Glenwood Canyon, Colorado: 12 mile de viaducte suspendate deasupra râului Colorado, terminate abia în 1992 — porțiunea finală a Sistemului și, probabil, cea mai frumoasă autostradă din lume.",
           },
         ],
+        defenseTitle: "Securitatea Națională și Mitul Pistelor de Aterizare",
+        defenseP: "Denumit oficial Sistemul Național Dwight D. Eisenhower de Autostrăzi Interstatale și de Apărare, rețeaua a fost concepută având securitatea națională ca pilon central. Inspirat de experiența lui Eisenhower cu autostrăzile germane (Autobahn) din al Doilea Război Mondial, sistemul a fost creat pentru mobilizarea rapidă a forțelor militare. Podurile au fost construite cu o înălțime liberă de minimum 16 picioare (4,87 metri) special pentru a permite transportul rachetelor balistice intercontinentale (ICBM) și al vehiculelor militare grele. Deși credința populară conform căreia „una din cinci mile trebuie să fie dreaptă pentru a servi ca pistă de aterizare de urgență” este un mit urban, armata SUA a efectuat exerciții de aterizare a avioanelor de luptă pe secțiuni de autostradă, demonstrând capacitatea strategică a rețelei în caz de criză.",
+        revoltsTitle: "Revoltele Autostrăzilor și Revoluția Logistică",
+        revoltsP: "Traseul autostrăzilor prin marile orașe nu a fost lipsit de tensiuni. În anii 1960 și 1970, un val de proteste cetățenești cunoscute sub numele de „revoltele autostrăzilor” a cuprins orașe precum San Francisco, Boston și Washington, D.C. Locuitorii s-au opus coridoarelor masive de beton care tăiau cartiere istorice, ducând la anularea unor trasee majore și la redirecționarea fondurilor către transportul public urban. În ciuda acestor conflicte, sistemul a reconfigurat fundamental economia americană. Permițând un transport rapid și predictibil, a dat naștere industriei moderne de logistică, a popularizat producția de tip „just-in-time” și a creat elemente culturale noi: lanțurile de moteluri suburbane, drive-thru-ul fast-food și imperiile naționale de curierat precum FedEx și UPS.",
         quote:
           "Mai mult decât orice altă acțiune a guvernului de la sfârșitul războiului încoace, aceasta avea să schimbe fața Americii.",
         quoteAttribution: "Dwight D. Eisenhower",
@@ -169,6 +173,10 @@ export default async function HighwaySystemPage() {
               "Glenwood Canyon, Colorado: twelve miles of viaducts hung above the Colorado River, not finished until 1992 — the System's final link, and arguably the most beautiful stretch of freeway on Earth.",
           },
         ],
+        defenseTitle: "National Security & The Airfield Myth",
+        defenseP: "Officially named the Dwight D. Eisenhower National System of Interstate and Defense Highways, the network was designed with national security at its core. Drawing from Eisenhower's experience with the German Autobahn during WWII, the system was built to allow rapid mobilization of military forces. Bridges were built with a minimum vertical clearance of 16 feet specifically to accommodate the transport of Intercontinental Ballistic Missiles (ICBMs) and heavy military vehicles. While the popular belief that 'one out of every five miles must be straight to serve as emergency runways' is a urban myth, the U.S. military has indeed conducted successful exercises landing fighter jets on designated highway stretches, proving the system's strategic backup capability.",
+        revoltsTitle: "The Freeway Revolts & Modern Logistics",
+        revoltsP: "The Interstate's path through America was not without friction. In the 1960s and 1970s, a wave of citizen protests known as the 'freeway revolts' swept through cities like San Francisco, Boston, and Washington, D.C. Residents fought against massive concrete corridors cutting through historic neighborhoods, leading to the cancellation of major planned routes and the reallocation of highway funds to urban mass transit. Despite these conflicts, the system fundamentally rewired the American economy. By enabling high-speed, predictable transport, it birthed the modern logistics industry, popularized 'just-in-time' manufacturing, and spawned entirely new cultural fixtures: the suburban motel chain, the fast-food drive-thru, and the national shipping empires of FedEx and UPS.",
         quote:
           "More than any single action by the government since the end of the war, this one would change the face of America.",
         quoteAttribution: "Dwight D. Eisenhower",
@@ -258,6 +266,34 @@ export default async function HighwaySystemPage() {
               {copy.facts.map((f) => (
                 <MacroFact key={f.fact} fact={f.fact} detail={f.detail} />
               ))}
+            </div>
+          </section>
+
+          {/* ── Defense & Logistics ── */}
+          <section className="border-t border-white/5 pt-24">
+            <div className="grid gap-16 md:grid-cols-2">
+              <div>
+                <span className="macro-eyebrow">
+                  {isRo ? "Design Strategic & Securitate" : "Strategic Design & Security"}
+                </span>
+                <h3 className="font-macro-display text-3xl font-black text-white mt-4 mb-6">
+                  {copy.defenseTitle}
+                </h3>
+                <p className="macro-body leading-relaxed text-white/70">
+                  {copy.defenseP}
+                </p>
+              </div>
+              <div>
+                <span className="macro-eyebrow">
+                  {isRo ? "Impact Social & Economic" : "Social & Economic Impact"}
+                </span>
+                <h3 className="font-macro-display text-3xl font-black text-white mt-4 mb-6">
+                  {copy.revoltsTitle}
+                </h3>
+                <p className="macro-body leading-relaxed text-white/70">
+                  {copy.revoltsP}
+                </p>
+              </div>
             </div>
           </section>
 
