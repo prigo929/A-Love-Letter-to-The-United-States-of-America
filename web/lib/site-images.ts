@@ -431,6 +431,8 @@ import sportsLeBron2022 from "@/IMAGES/Culture/Sports/LeBron James at Los Angele
 import sportsGolfColorado from "@/IMAGES/Culture/Sports/Golf Course in Colorado.jpg";
 import sportsGolfPond from "@/IMAGES/Culture/Sports/Looking back across a pond on the 18th hole at Heritage Palms Golf Course, Indio.jpg";
 import sportsGolfBall from "@/IMAGES/Culture/Sports/a golf ball in focus on Golf course.jpg";
+import sportsJesseOwens from "@/IMAGES/Culture/Sports/Jesse Owens at the Berlin Olympics.jpeg";
+import sportsDreamTeam from "@/IMAGES/Culture/Sports/The 1992 USA Basketball Dream Team.jpg";
 import stadiumAsuArizona from "@/IMAGES/Culture/Sports/Stadiums/ASU Arizona NFL Stadium.jpg";
 import stadiumAttKickoff from "@/IMAGES/Culture/Sports/Stadiums/AT&T Stadium match kickoff(Wisconsin_-_Alabama).jpg";
 import stadiumCarolina from "@/IMAGES/Culture/Sports/Stadiums/Aerial-Cityscape-View-Of-Carolina-Panthers-Bank-Of-America-Stadium-In-Charlotte.jpg";
@@ -858,6 +860,8 @@ export const SITE_IMAGES = {
     foodPepperoniPizza: foodPepperoniPizza.src,
 
     // Sports — action & venues
+    jesseOwens: sportsJesseOwens.src,
+    dreamTeam1992: sportsDreamTeam.src,
     aliVsFrazierJab: sportsAliVsFrazierJab.src,
     aliVsFrazier1971: sportsAliVsFrazier1971.src,
     marchMadness: sportsMarchMadness.src,

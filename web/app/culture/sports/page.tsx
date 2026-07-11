@@ -337,25 +337,102 @@ export default async function CultureSportsPage() {
         </section>
 
         {/* CREAM: Sports Economy */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-20 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-24">
+            <div className="max-w-3xl mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold mb-4">
+                {isRo ? "MOTOR ECONOMIC SPORTIV" : "THE SPORTS ENGINE"}
+              </p>
+              <h2 className="font-macro-display text-4xl md:text-5xl font-black text-[#0C0907] leading-tight mb-6">{content.sportsEconomyTitle}</h2>
+              <p className="font-editorial text-lg text-[#0C0907]/70 leading-relaxed">{content.sportsEconomyText}</p>
+            </div>
+          </div>
+        </section>
+
+        {/* CREAM: Olympic Dominance & Legends */}
         <section className="relative culture-cream-bg text-[#0C0907] pb-28 md:pb-36 overflow-hidden border-t border-[#0C0907]/5">
           <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
           <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-24">
-            <div className="grid gap-10 lg:grid-cols-2 items-start">
+            <div className="max-w-3xl mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#E8391B] font-bold mb-4">
+                {isRo ? "DOMINAȚIE OLIMPICĂ & LEGENDE" : "OLYMPIC DOMINANCE & LEGENDS"}
+              </p>
+              <h2 className="font-macro-display text-4xl md:text-5xl font-black text-[#0C0907] leading-tight mb-6">
+                {isRo ? "Cea mai de succes națiune olimpică din istorie" : "The Most Successful Olympic Nation in History"}
+              </h2>
+              <p className="font-editorial text-lg text-[#0C0907]/70 leading-relaxed">
+                {isRo
+                  ? "Statele Unite dețin un record absolut la Jocurile Olimpice moderne, cu 1.220 de medalii de aur la Jocurile de Vară și peste 2.900 de medalii în total. Această performanță uimitoare este realizată fără o direcție centralizată de stat sau academii naționale forțate, ci prin spirit de competiție, ligi universitare de elită și determinare individuală într-o societate liberă."
+                  : "The United States leads the modern Olympic Games with a record-shattering 1,220 gold medals in the Summer Games and over 2,900 medals overall. What makes this record remarkable is the context: the U.S. achieves this dominance without a government sports ministry or state-funded academies. Instead, Olympic success is driven by collegiate athletics (Title IX), private clubs, and commercial sponsorships operating in a free society."}
+              </p>
+            </div>
+
+            {/* Olympic Highlights Grid */}
+            <div className="grid gap-12 md:grid-cols-3 mb-20">
+              {[
+                {
+                  title: isRo ? "Jesse Owens la Berlin (1936)" : "Jesse Owens in Berlin (1936)",
+                  desc: isRo
+                    ? "Sub ochii unui regim opresiv, atletul de culoare Jesse Owens a câștigat patru medalii de aur, dărâmând miturile supremației rasiale prin excelență absolută."
+                    : "Under the eyes of a hostile regime, African-American track star Jesse Owens won four gold medals, single-handedly shattering the myths of racial supremacy with quiet excellence.",
+                  image: SITE_IMAGES.culture.jesseOwens,
+                  alt: "Jesse Owens Berlin 1936",
+                },
+                {
+                  title: isRo ? "Miracolul pe Gheață (1980)" : "The Miracle on Ice (1980)",
+                  desc: isRo
+                    ? "O echipă de studenți americani a învins echipa de profesioniști a Uniunii Sovietice, o victorie legendară ce a depășit granițele sportului în plin Război Rece."
+                    : "A team of American college players defeated the four-time defending gold medalist Soviet team, a historic victory that transcended sports during the height of the Cold War.",
+                  image: SITE_IMAGES.culture.vaultSportsSI1980,
+                  alt: "Miracle on Ice SI Cover 1980",
+                },
+                {
+                  title: isRo ? "Dream Team (1992)" : "The 1992 Dream Team",
+                  desc: isRo
+                    ? "Cu Jordan, Magic și Bird, prima echipă olimpică a SUA cu jucători activi din NBA a captivat imaginația globală, popularizând baschetul în întreaga lume."
+                    : "Featuring Jordan, Magic, and Bird, the first U.S. Olympic basketball team with active NBA players captured global imagination, popularizing basketball on every continent.",
+                  image: SITE_IMAGES.culture.dreamTeam1992,
+                  alt: "The 1992 Dream Team",
+                }
+              ].map((item, idx) => (
+                <div key={idx} className="flex flex-col">
+                  <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl border border-[#0C0907]/10 shadow-md group mb-6">
+                    <Image src={item.image} alt={item.alt} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 30vw" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/10 to-transparent" />
+                  </div>
+                  <h4 className="font-macro-display text-xl font-bold text-[#0C0907] mb-3">{item.title}</h4>
+                  <p className="font-editorial text-sm text-[#0C0907]/65 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Olympic Titans Grid: Phelps and Biles */}
+            <div className="grid gap-12 md:grid-cols-2 pt-12 border-t border-[#0C0907]/10">
               <div>
-                <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold mb-4">
-                  {isRo ? "MOTOR ECONOMIC SPORTIV" : "THE SPORTS ENGINE"}
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#E8391B] font-body">
+                  {isRo ? "CEL MAI DECORAT OLIMPIC DIN TOATE TIMPURILE" : "THE MOST DECORATED OLYMPIAN IN HISTORY"}
+                </span>
+                <h3 className="font-macro-display text-3xl font-black text-[#0C0907] mt-2 mb-4">Michael Phelps</h3>
+                <p className="font-editorial text-base text-[#0C0907]/75 leading-relaxed">
+                  {isRo
+                    ? "Cu 28 de medalii olimpice, dintre care 23 de aur, înotătorul american Michael Phelps deține un record istoric care s-ar putea să nu fie doborât niciodată. Numai la Jocurile Olimpice de la Beijing din 2008, Phelps a câștigat 8 medalii de aur, depășind legendarul record de 7 medalii de aur stabilit de Mark Spitz în 1972, subordonând bazinele olimpice prin perseverență și capacitate fizică supranaturală."
+                    : "With 28 Olympic medals, 23 of them gold, American swimmer Michael Phelps holds an all-time record that may never be broken. At the 2008 Beijing Olympics alone, Phelps won 8 gold medals, eclipsing Mark Spitz's legendary 1972 record of 7 golds, demonstrating a level of individual dominance and athletic focus unmatched in human history."}
                 </p>
-                <h3 className="font-editorial text-3xl md:text-4xl font-bold text-[#0C0907] leading-tight mb-6">{content.sportsEconomyTitle}</h3>
-                <p className="font-editorial text-base text-[#0C0907]/70 leading-relaxed">{content.sportsEconomyText}</p>
               </div>
               <div>
-                <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold mb-4">
-                  {isRo ? "DOMINAȚIE OLIMPICĂ" : "OLYMPIC DOMINANCE"}
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#E8391B] font-body">
+                  {isRo ? "REAȘEZAREA LIIMITELOR GIMNASTICII" : "REDEFINING THE LIMITS OF GYMNASTICS"}
+                </span>
+                <h3 className="font-macro-display text-3xl font-black text-[#0C0907] mt-2 mb-4">Simone Biles</h3>
+                <p className="font-editorial text-base text-[#0C0907]/75 leading-relaxed">
+                  {isRo
+                    ? "Simone Biles este recunoscută pe scară largă ca fiind cea mai mare gimnastă din toate timpurile. Cu 30 de medalii la Campionatele Mondiale (dintre care 23 de aur) și 7 medalii olimpice de aur, ea a extins limitele fizice ale sportului, executând elemente cu un coeficient de dificultate atât de extrem încât nicio altă gimnastă nu le poate replica."
+                    : "Simone Biles is widely recognized as the greatest gymnast of all time. With 30 World Championship medals (23 gold) and 7 Olympic gold medals, she has pushed the physical boundaries of her sport to unprecedented heights, successfully landing vault and floor elements of such extreme difficulty that they are named after her in the official code of points."}
                 </p>
-                <h3 className="font-editorial text-3xl md:text-4xl font-bold text-[#0C0907] leading-tight mb-6">{content.olympicTitle}</h3>
-                <p className="font-editorial text-base text-[#0C0907]/70 leading-relaxed">{content.olympicText}</p>
               </div>
             </div>
+
           </div>
         </section>
 
