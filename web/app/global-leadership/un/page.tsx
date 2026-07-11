@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import { Globe, Building2, HeartHandshake, ShieldAlert, Sparkles, Scale } from "lucide-react";
+import { Globe, Building2, HeartHandshake, ShieldAlert, Sparkles, Scale, Heart } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "UN & International Order | Global Leadership",
-  description: "Explore the founding role of the United States in creating and funding the United Nations, IMF, World Bank, and post-war international architecture.",
+  description: "Explore the founding role of the United States in creating and funding the United Nations, IMF, World Bank, and global health programs like PEPFAR.",
 };
 
 interface UnCopy {
@@ -30,6 +30,9 @@ interface UnCopy {
   humanRightsTitle: string;
   humanRightsParagraph1: string;
   humanRightsParagraph2: string;
+  pepfarTitle: string;
+  pepfarParagraph1: string;
+  pepfarParagraph2: string;
   fundingTitle: string;
   fundingParagraph1: string;
   fundingParagraph2: string;
@@ -79,10 +82,13 @@ const copyEn: UnCopy = {
   humanRightsTitle: "Eleanor Roosevelt & The Declaration of Human Rights",
   humanRightsParagraph1: "As the first chairperson of the UN Commission on Human Rights, former First Lady Eleanor Roosevelt was the driving force behind the Universal Declaration of Human Rights (UDHR) adopted in 1948. She referred to the document as the 'International Magna Carta for all mankind,' bringing together representatives from diverse cultures and legal systems to define fundamental rights.",
   humanRightsParagraph2: "Under her guidance, the commission established that human dignity is sovereign and that governments must respect individual rights to life, liberty, privacy, and free expression. The declaration remains the most translated document in human history, serving as the moral standard for global justice.",
+  pepfarTitle: "PEPFAR: Saving 25 Million Lives from HIV/AIDS",
+  pepfarParagraph1: "Launched in 2003 by President George W. Bush, the President's Emergency Plan for AIDS Relief (PEPFAR) is the largest commitment by any nation to address a single disease in history. Financed by U.S. taxpayers and executed in partnership with the WHO and host nations, PEPFAR has provided life-saving antiretroviral treatment to over 20 million people, primarily in Sub-Saharan Africa.",
+  pepfarParagraph2: "By preventing millions of new infections—including preventing over 5.5 million babies from being born with HIV—this initiative has stabilized communities, strengthened local health systems, and averted societal collapse in critical regions. U.S. leadership in funding global health programs remains a cornerstone of humanitarian development.",
   fundingTitle: "Funding the Commons: The American Contribution",
   fundingParagraph1: "The United States is the single largest financial contributor to the United Nations system, providing 22% of the UN's core budget and over 25% of its peacekeeping budget. This funding supports essential operations from refugee protection and disaster relief to food security programs in developing nations.",
   fundingParagraph2: "By underwriting this international architecture, the American taxpayer has sustained a stable framework for global interaction, commerce, and human rights. This investment has prevented conflicts between major nuclear powers and fostered the longest period of relative peace in modern history.",
-  oracleDescription: "Ask the AI Oracle about the creation of the United Nations, US contributions to the UN budget, Eleanor Roosevelt's human rights advocacy, or the Bretton Woods system."
+  oracleDescription: "Ask the AI Oracle about the creation of the United Nations, US contributions to the UN budget, Eleanor Roosevelt's human rights advocacy, or the PEPFAR global health program."
 };
 
 const copyRo: UnCopy = {
@@ -128,10 +134,13 @@ const copyRo: UnCopy = {
   humanRightsTitle: "Eleanor Roosevelt și Declarația Drepturilor Omului",
   humanRightsParagraph1: "În calitate de prim președinte al Comisiei ONU pentru Drepturile Omului, fosta primă doamnă Eleanor Roosevelt a fost forța motrice din spatele Declarației Universale a Drepturilor Omului (DUDO), adoptată în 1948. Ea a numit documentul „Carta Magna internațională pentru întreaga omenire”.",
   humanRightsParagraph2: "Sub coordonarea ei, comisia a stabilit că demnitatea umană este suverană și că guvernele trebuie să respecte dreptul individual la viață, libertate, intimitate și liberă exprimare. Declarația rămâne cel mai tradus document din istorie.",
+  pepfarTitle: "PEPFAR: Salvarea a 25 de milioane de vieți de la HIV/AIDS",
+  pepfarParagraph1: "Lansat în 2003 de președintele George W. Bush, Planul de Urgență al Președintelui pentru Combaterea SIDA (PEPFAR) este cel mai mare angajament al unei singure națiuni împotriva unei boli. Finanțat de SUA și în parteneriat cu OMS, PEPFAR a oferit tratament antiretroviral pentru peste 20 de milioane de oameni.",
+  pepfarParagraph2: "Prevenind milioane de noi infecții—inclusiv peste 5,5 milioane de copii născuți fără virus—această inițiativă a stabilizat comunități întregi, în special în Africa Sub-Sahariană, demonstrând rolul umanitar de neegalat al Statelor Unite.",
   fundingTitle: "Finanțarea Ordinii: Contribuția Americană",
   fundingParagraph1: "Statele Unite sunt cel mai mare contribuabil financiar la sistemul Națiunilor Unite, oferind 22% din bugetul de bază al ONU și peste 25% din bugetul operațiunilor de menținere a păcii. Această finanțare sprijină protecția refugiaților, asistența în caz de dezastre și securitatea alimentară.",
   fundingParagraph2: "Subvenționând această arhitectură internațională, contribuabilul american a asigurat un cadru stabil pentru interacțiunea globală, comerț și drepturile omului, prevenind conflicte majore între marile puteri și oferind cea mai lungă perioadă de pace relativă din istoria modernă.",
-  oracleDescription: "Întreabă Oracolul AI despre crearea Organizației Națiunilor Unite, contribuțiile SUA la bugetul ONU, campaniile Eleanor Roosevelt sau sistemul Bretton Woods."
+  oracleDescription: "Întreabă Oracolul AI despre crearea Organizației Națiunilor Unite, contribuțiile SUA la bugetul ONU, campaniile Eleanor Roosevelt sau programul PEPFAR pentru combaterea SIDA."
 };
 
 export default async function UnInstitutionsPage() {
@@ -238,6 +247,25 @@ export default async function UnInstitutionsPage() {
           </p>
           <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
             {copy.humanRightsParagraph2}
+          </p>
+        </div>
+      </section>
+
+      {/* PEPFAR Section */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
+        <div className="max-w-3xl space-y-6">
+          <div className="flex items-center gap-3 text-glory-gold mb-2">
+            <Heart className="h-6 w-6" />
+            <span className="text-sm font-semibold tracking-widest uppercase">{isRo ? "SĂNĂTATE GLOBALĂ" : "GLOBAL HEALTH"}</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            {copy.pepfarTitle}
+          </h2>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {copy.pepfarParagraph1}
+          </p>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {copy.pepfarParagraph2}
           </p>
         </div>
       </section>

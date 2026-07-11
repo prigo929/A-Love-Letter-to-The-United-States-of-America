@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import { Landmark, Heart, ShieldAlert, Award, Sparkles, BookOpen } from "lucide-react";
+import { Landmark, Heart, ShieldAlert, Award, Sparkles, BookOpen, Activity } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "American Foreign Policy | Global Leadership",
@@ -27,6 +27,9 @@ interface ForeignPolicyCopy {
     description: string;
     badge: string;
   }>;
+  hadrTitle: string;
+  hadrParagraph1: string;
+  hadrParagraph2: string;
   softPowerTitle: string;
   softPowerParagraph1: string;
   softPowerParagraph2: string;
@@ -76,13 +79,16 @@ const copyEn: ForeignPolicyCopy = {
       badge: "Strategic Alliances"
     }
   ],
+  hadrTitle: "Disaster Relief: The World's First Responder",
+  hadrParagraph1: "A unique and critical element of U.S. foreign outreach is Humanitarian Aid and Disaster Relief (HADR). The United States military, particularly the U.S. Navy and Marine Corps, acts as the world's primary rapid-response humanitarian force. In the wake of catastrophic earthquakes, tsunamis, or typhoons (such as the 2004 Indian Ocean tsunami or the 2011 Japanese earthquake), U.S. carrier strike groups deploy immediately to deliver clean water, medical aid, and search-and-rescue services.",
+  hadrParagraph2: "Working alongside USAID, U.S. forces deploy heavy-lift helicopters and floating hospitals (like the USNS Mercy) to remote disaster zones long before civilian agencies can mobilize. This unique logistical capability saves thousands of lives annually and underscores America's commitment to protecting human life regardless of borders.",
   softPowerTitle: "Soft Power: Peace Corps & Fulbright Program",
   softPowerParagraph1: "Diplomacy is not conducted solely through state departments and treaty signings; it is built on human connections. Established in 1961 by President John F. Kennedy, the Peace Corps has sent over 240,000 American volunteers to serve in 140 countries, working in education, agriculture, and community health to build grassroots friendships.",
   softPowerParagraph2: "Similarly, the Fulbright Program, established in 1946 under Senator J. William Fulbright, has sponsored over 400,000 students, scholars, and teachers to conduct international exchanges. By fostering mutual understanding, these soft power initiatives export American ideals and build a global network of shared cultural values.",
   doctrineTitle: "From Isolation to Indispensability",
   doctrineParagraph1: "For its first century, the United States focused on territorial growth, using the Monroe Doctrine of 1823 to warn European empires against colonial interference in the Western Hemisphere. However, the world wars of the twentieth century demonstrated that American security is inextricably linked to global stability, turning the US into the 'indispensable nation' of the free world.",
   doctrineParagraph2: "During the Cold War, this expanded into the Carter Doctrine (pledging military force to defend the Persian Gulf) and the Reagan Doctrine (providing assistance to anti-communist movements). Today, American foreign policy continues to balance traditional alliances with emerging cyber security, space diplomacy, and supply chain resilience.",
-  oracleDescription: "Ask the AI Oracle about the Marshall Plan, the Monroe Doctrine, the Truman Doctrine, the Peace Corps, or the history of U.S. diplomatic missions."
+  oracleDescription: "Ask the AI Oracle about the Marshall Plan, the Monroe Doctrine, the Truman Doctrine, the Peace Corps, or U.S. military disaster relief (HADR) operations."
 };
 
 const copyRo: ForeignPolicyCopy = {
@@ -125,13 +131,16 @@ const copyRo: ForeignPolicyCopy = {
       badge: "Alianțe Strategice"
     }
   ],
+  hadrTitle: "Asistență în Caz de Dezastru: Primul Răspuns al Lumii",
+  hadrParagraph1: "Un element esențial al prezenței externe a SUA este Asistența Umanitară și în Caz de Dezastru (HADR). Armata SUA, în special Marina și Corpul de Infanterie Marină, acționează ca prima forță globală de răspuns umanitar rapid. În urma cutremurelor sau tsunami-urilor devastatoare (cum ar fi tsunami-ul din Oceanul Indian din 2004), grupurile navale intervin imediat.",
+  hadrParagraph2: "Colaborând cu USAID, forțele americane trimit elicoptere de transport și spitale plutitoare (precum USNS Mercy) în zonele afectate de dezastre, mult înainte ca agențiile civile să se poată mobiliza. Această capacitate logistică unică salvează mii de vieți anual.",
   softPowerTitle: "Puterea Blândă: Corpul Păcii și Programul Fulbright",
   softPowerParagraph1: "Diplomația nu se desfășoară doar prin semnarea de tratate; se construiește pe conexiuni umane. Înființat în 1961 de președintele John F. Kennedy, Corpul Păcii a trimis peste 240.000 de voluntari americani în 140 de țări, lucrând în educație, agricultură și sănătate.",
   softPowerParagraph2: "De asemenea, Programul Fulbright, înființat în 1946 sub senatorul J. William Fulbright, a sponsorizat peste 400.000 de studenți, cercetători și profesori în schimburi internaționale, promovând înțelegerea reciprocă.",
   doctrineTitle: "De la Izolare la Rolul Indispensabil",
   doctrineParagraph1: "În primul său secol, Statele Unite s-au concentrat pe creșterea internă, folosind Doctrina Monroe din 1823 pentru a avertiza imperiile europene împotriva interferențelor coloniale. Cu toate acestea, războaiele mondiale au demonstrat că securitatea americană este legată de stabilitatea globală, transformând SUA în națiunea indispensabilă a lumii libere.",
   doctrineParagraph2: "În timpul Războiului Rece, aceasta s-a extins în Doctrina Carter (apărarea Golfului Persic) și Doctrina Reagan (sprijinirea mișcărilor anticomuniste). Astăzi, politica externă a SUA echilibrează alianțele tradiționale cu securitatea cibernetică și diplomația spațială.",
-  oracleDescription: "Întreabă Oracolul AI despre Planul Marshall, Doctrina Monroe, Doctrina Truman, Corpul Păcii sau istoria misiunilor diplomatice ale SUA."
+  oracleDescription: "Întreabă Oracolul AI despre Planul Marshall, Doctrina Monroe, Doctrina Truman, Corpul Păcii sau misiunile militare de asistență umanitară (HADR) ale SUA."
 };
 
 export default async function ForeignPolicyPage() {
@@ -220,6 +229,25 @@ export default async function ForeignPolicyPage() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* Humanitarian HADR Section */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
+        <div className="max-w-3xl space-y-6">
+          <div className="flex items-center gap-3 text-glory-gold mb-2">
+            <Activity className="h-6 w-6" />
+            <span className="text-sm font-semibold tracking-widest uppercase">{isRo ? "ASISTENȚĂ UMANITARĂ" : "HUMANITARIAN ASSISTANCE"}</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            {copy.hadrTitle}
+          </h2>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {copy.hadrParagraph1}
+          </p>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {copy.hadrParagraph2}
+          </p>
         </div>
       </section>
 

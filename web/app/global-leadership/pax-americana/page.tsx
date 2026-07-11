@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import { Compass, Ship, Network, ShieldCheck, Sparkles, Navigation } from "lucide-react";
+import { Compass, Ship, Network, ShieldCheck, Sparkles, Navigation, Globe } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Pax Americana & Global Bases | Global Leadership",
-  description: "Explore the global security footprint of the United States — 750+ bases, 11 carrier strike groups, and the GPS network that powers global navigation.",
+  title: "Pax Americana & Global Security | Global Leadership",
+  description: "Explore the global security footprint of the United States — 750+ bases, 11 carrier strike groups, ocean shipping security, and undersea cable cyber defense.",
 };
 
 interface PaxAmericanaCopy {
@@ -30,6 +30,9 @@ interface PaxAmericanaCopy {
   gpsTitle: string;
   gpsParagraph1: string;
   gpsParagraph2: string;
+  cyberTitle: string;
+  cyberParagraph1: string;
+  cyberParagraph2: string;
   reachTitle: string;
   reachParagraph1: string;
   reachParagraph2: string;
@@ -79,10 +82,13 @@ const copyEn: PaxAmericanaCopy = {
   gpsTitle: "The GPS Network: A Free Global Subsidy",
   gpsParagraph1: "Beyond physical presence, Pax Americana underwrites the digital infrastructure of modern logistics. The Global Positioning System (GPS)—a constellation of over 30 satellites launched, maintained, and operated by the United States Space Force—is provided entirely free of charge to the entire world. It handles the navigation data for every commercial aircraft, container vessel, and smartphone application on Earth.",
   gpsParagraph2: "By operating this space-based utility without licensing fees or blockades, the United States provides a continuous global subsidy that drives trillions of dollars in economic efficiency, safety, and technological innovation across all industries.",
+  cyberTitle: "Securing the Deep: Undersea Cables & Cyber Defense",
+  cyberParagraph1: "In the modern era, the global commons includes the deep seabed and the digital ether. Over 99% of transoceanic internet traffic, financial transfers, and state communications flow through a network of fiber-optic undersea cables. Under Pax Americana, the U.S. Navy and Cyber Command work in tandem to monitor, patrol, and defend these physical lines of communication from undersea sabotage and espionage.",
+  cyberParagraph2: "This protection is matched in the electromagnetic and cyber domains, where American threat intelligence and cybersecurity infrastructure defend democratic networks from state-sponsored disruption. By keeping these physical and digital backbones secure, the United States prevents foreign coercion from severing the connectivity of the modern world.",
   reachTitle: "Deterrence and the Cost of Peace",
   reachParagraph1: "Pax Americana is not merely about military supremacy; it is the physical infrastructure that underwrites the global economy. By securing sea lanes, air corridors, and undersea fiber-optic communication cables, the US military ensures that international trade, capital flows, and communication lines remain unmolested. This stability benefits all trading nations, keeping global commodity prices stable.",
   reachParagraph2: "Maintaining this network requires significant resource allocations, financed directly by the American taxpayer. This global security subsidy has enabled allies to focus their national budgets on domestic welfare, education, and technological growth, consolidating a shared era of unprecedented prosperity.",
-  oracleDescription: "Ask the AI Oracle about the location of US military bases, the role of carrier strike groups, the GPS satellite network, or the concept of Pax Americana."
+  oracleDescription: "Ask the AI Oracle about the location of US military bases, the role of carrier strike groups, the GPS satellite network, undersea cable security, or the concept of Pax Americana."
 };
 
 const copyRo: PaxAmericanaCopy = {
@@ -128,10 +134,13 @@ const copyRo: PaxAmericanaCopy = {
   gpsTitle: "Rețeaua GPS: O Subvenție Globală Gratuită",
   gpsParagraph1: "Dincolo de prezența fizică, Pax Americana susține infrastructura digitală a logisticii moderne. Sistemul de Poziționare Globală (GPS)—o constelație de peste 30 de sateliți lansați, întreținuți și operați de Forța Spațială a Statelor Unite—este pus la dispoziție în mod gratuit pentru întreaga lume.",
   gpsParagraph2: "Prin operarea acestui serviciu satelitar fără taxe de licențiere, Statele Unite oferă o subvenție globală continuă care stimulează eficiența economică, siguranța și inovația tehnologică în toate industriile lumii.",
+  cyberTitle: "Securizarea Adâncurilor: Cablurile Submarine și Apărarea Cibernetică",
+  cyberParagraph1: "În era modernă, spațiile comune globale includ fundul mării și eterul digital. Peste 99% din traficul transoceanic de internet, transferurile financiare și comunicațiile guvernamentale trec prin cabluri de fibră optică submarine. Marina SUA și Comandamentul Cibernetic monitorizează și apără aceste linii împotriva sabotajelor.",
+  cyberParagraph2: "Această protecție este dublată în domeniul cibernetic, unde serviciile de informații ale SUA și infrastructura lor de securitate apără rețelele democratice de atacurile sponsorizate de state ostile, prevenind izolarea comunicațiilor mondiale.",
   reachTitle: "Descurajarea și Costul Păcii",
   reachParagraph1: "Pax Americana nu înseamnă doar supremație militară; este infrastructura fizică ce susține economia globală. Asigurând rutele maritime, coridoarele aeriene și cablurile de fibră optică submarine, armata SUA garantează că fluxurile comerciale și de comunicații rămân protejate, stabilizând prețurile globale.",
   reachParagraph2: "Menținerea acestei rețele necesită alocări substanțiale de resurse, finanțate direct de contribuabilul american. Această subvenție globală de securitate le-a permis aliaților să își concentreze resursele naționale pe programe sociale, educație și dezvoltare tehnologică.",
-  oracleDescription: "Întreabă Oracolul AI despre locațiile bazelor militare americane, rolul grupurilor de portavioane, rețeaua GPS sau conceptul Pax Americana."
+  oracleDescription: "Întreabă Oracolul AI despre locațiile bazelor militare americane, rolul grupurilor de portavioane, rețeaua GPS, securitatea cablurilor submarine sau conceptul Pax Americana."
 };
 
 export default async function PaxAmericanaPage() {
@@ -238,6 +247,25 @@ export default async function PaxAmericanaPage() {
           </p>
           <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
             {copy.gpsParagraph2}
+          </p>
+        </div>
+      </section>
+
+      {/* Cyber & Undersea Cables Section */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
+        <div className="max-w-3xl space-y-6">
+          <div className="flex items-center gap-3 text-glory-gold mb-2">
+            <Globe className="h-6 w-6" />
+            <span className="text-sm font-semibold tracking-widest uppercase">{isRo ? "SECURITATE DIGITALĂ" : "DIGITAL SECURITY"}</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            {copy.cyberTitle}
+          </h2>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {copy.cyberParagraph1}
+          </p>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {copy.cyberParagraph2}
           </p>
         </div>
       </section>

@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
-import { Shield, Globe, Anchor, Zap, ExternalLink, Milestone, Sparkles } from "lucide-react";
+import { Shield, Globe, Anchor, Zap, ExternalLink, Milestone, Sparkles, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "NATO Alliance & Transatlantic Shield | Global Leadership",
-  description: "Explore the security foundations of the free world: NATO, Article 5, the defense of the Suwalki Gap, and Swedish/Finnish integration under the U.S. security umbrella.",
+  description: "Explore the security foundations of the free world: NATO, Article 5, Aegis Ashore missile defense, and Sweden/Finland Baltic integration.",
 };
 
 interface NatoCopy {
@@ -27,6 +27,9 @@ interface NatoCopy {
     description: string;
     badge: string;
   }>;
+  missileDefenseTitle: string;
+  missileDefenseParagraph1: string;
+  missileDefenseParagraph2: string;
   expansionTitle: string;
   expansionParagraph1: string;
   expansionParagraph2: string;
@@ -79,16 +82,19 @@ const copyEn: NatoCopy = {
       badge: "Operational Union"
     }
   ],
+  missileDefenseTitle: "Missile Defense & The Aegis Ashore Shield",
+  missileDefenseParagraph1: "A critical element of NATO's modern defense architecture is the NATO Ballistic Missile Defense (BMD) system. Underwritten by American technology, this network features the Aegis Ashore sites located in Deveselu, Romania, and Redzikowo, Poland. These sites house advanced SPY-1 radars and SM-3 missile interceptors designed to detect, track, and destroy incoming short, medium, and intermediate-range ballistic missiles in space.",
+  missileDefenseParagraph2: "Supplemented by Aegis-equipped U.S. Navy destroyers stationed in Rota, Spain, and early-warning radar installations in Turkey, this system forms a continuous protective shield. It protects European populations and territory from ballistic threats originating outside the Euro-Atlantic area, exemplifying the technological cohesion of the alliance.",
   expansionTitle: "The Baltic Lake: Accession of Sweden & Finland",
   expansionParagraph1: "The accession of Finland (2023) and Sweden (2024) marked a historic geopolitical shift. Spurred by regional aggression, these militarily advanced nations abandoned decades of neutrality to seek shelter under the U.S. security umbrella. Their integration effectively transforms the Baltic Sea into a 'NATO Lake,' securing northern Europe and reinforcing the defense of the vulnerable Baltic States.",
   expansionParagraph2: "Finland adds a highly trained conscript army and a 830-mile border with the Russian Federation, while Sweden contributes a state-of-the-art navy, advanced submarine technology, and the strategic island of Gotland. This expansion secures the Arctic corridor and eliminates strategic gaps in the northeastern flank of the alliance.",
   defenseLabel: "UNDERWRITING THE FREE WORLD",
-  defenseTitle: "Defense and the Pax Americana: Funding Global Stability",
-  defenseParagraph1: "The US defense budget of approximately $954 billion in FY2025 exceeds the combined military spending of all other NATO allies. While critics sometimes characterize this footprint as expansionist, it is the fundamental underwriter of security for the liberal democratic world. The global shipping routes that sustain commercial cargo are secured by U.S. naval patrols, keeping shipping rates stable and ports open.",
-  defenseParagraph2: "The security umbrella that allows Germany, Japan, South Korea, and others to dedicate their budgets to domestic welfare and industrial technological leadership is an American subsidy. By maintaining forward bases and high-readiness forces, American taxpayers have quietly financed the conditions required for modern global prosperity.",
+  defenseTitle: "Defense Investment & The Pax Americana: Sharing the Shield",
+  defenseParagraph1: "The U.S. defense budget of approximately $954 billion in FY2025 underwrites the security of the entire liberal democratic world. At the 2014 Wales Summit, NATO allies committed to the Defense Investment Pledge, aiming to spend at least 2% of their GDP on defense. While the U.S. continues to provide the majority of strategic capabilities (including airlift, intelligence satellite systems, and heavy logistics), European allies have dramatically increased their budgets to share the deterrence burden.",
+  defenseParagraph2: "European nations spending 2% or more of their GDP—such as Poland, Greece, and the Baltic States—demonstrates a renewed commitment to transatlantic security. By aligning these defense investments, the alliance ensures that the strategic costs of maintaining global peace are shared, stabilizing the conditions required for international trade and liberty.",
   defenseSource: "U.S. Department of Defense Comptroller",
   defenseSourceUrl: "https://comptroller.defense.gov/Budget-Materials/",
-  oracleDescription: "Ask the AI Oracle about NATO Article 5 history, Sweden and Finland's military contributions, the defense of the Baltic Sea, or transatlantic defense budgets."
+  oracleDescription: "Ask the AI Oracle about NATO Article 5 history, the Aegis Ashore missile defense in Romania and Poland, Sweden and Finland's military contributions, or the 2% GDP defense spending target."
 };
 
 const copyRo: NatoCopy = {
@@ -131,16 +137,19 @@ const copyRo: NatoCopy = {
       badge: "Uniune Operațională"
     }
   ],
+  missileDefenseTitle: "Apărarea Antirachetă și Scutul Aegis Ashore",
+  missileDefenseParagraph1: "Un element esențial al arhitecturii de apărare a NATO este sistemul de Apărare Împotriva Rachetelor Balistice (BMD). Susținut de tehnologia americană, acesta include bazele Aegis Ashore de la Deveselu (România) și Redzikowo (Polonia). Acestea găzduiesc radare avansate SPY-1 și interceptoare SM-3 concepute pentru a distruge rachete în spațiu.",
+  missileDefenseParagraph2: "Completat de distrugătoarele Aegis ale SUA din Rota (Spania) și un radar de alertă timpurie în Turcia, sistemul formează un scut protector continuu. Acesta protejează populația europeană de amenințări externe, demonstrând coeziunea tehnologică a alianței.",
   expansionTitle: "Lacul Baltic: Aderarea Suediei și Finlandei",
-  expansionParagraph1: "Aderarea Finlandei (2023) și a Suediei (2024) a marcat o schimbare geopolitică istorică. Sub presiunea agresiunii regionale, aceste națiuni avansate din punct de vedere militar au abandonat neutralitatea pentru a căuta protecție sub umbrela de securitate a SUA. Integrarea lor transformă Marea Baltică într-un „lac NATO”, securizând nordul Europei.",
+  expansionParagraph1: "Aderarea Finlandei (2023) și a Suediei (2024) a marcat o schimbare geopolitică istorică. Sub presiunea agresiunii regionale, aceste națiuni au abandonat neutralitatea pentru a căuta protecție sub umbrela de securitate a SUA. Integrarea lor transformă Marea Baltică într-un „lac NATO”, securizând nordul Europei.",
   expansionParagraph2: "Finlanda aduce o armată de rezervă foarte bine pregătită și o graniță de 1.340 de kilometri cu Federația Rusă, în timp ce Suedia contribuie cu o marină de ultimă generație, tehnologie avansată de submarine și insula strategică Gotland. Această expansiune securizează coridorul arctic.",
   defenseLabel: "SUBVENȚIONAREA LUMII LIBERE",
-  defenseTitle: "Pacea Americană (Pax Americana): Cine Plătește Pacea?",
-  defenseParagraph1: "Bugetul de apărare al SUA de aproximativ 954 de miliarde de dolari în anul fiscal 2025 depășește cheltuielile militare cumulate ale tuturor celorlalți aliați NATO la un loc. Deși unii critici descriu această prezență ca fiind expansionistă, ea garantează securitatea întregii lumi democratice libere. Rutele maritime globale care susțin comerțul sunt securizate de patrulele navale americane.",
-  defenseParagraph2: "Umbrela de securitate care le permite Germaniei, Japoniei și Coreei de Sud să aloce resurse pentru programe sociale, educație și inovație tehnologică este o subvenție americană. Prin menținerea bazelor avansate, contribuabilii americani au finanțat condițiile necesare pentru prosperitatea globală modernă.",
+  defenseTitle: "Investițiile de Apărare și Pax Americana: Împărțirea Povării",
+  defenseParagraph1: "Bugetul de apărare al SUA de aproximativ 954 de miliarde de dolari subvenționează securitatea lumii libere. La Summitul din Wales din 2014, aliații NATO s-au angajat să aloce minimum 2% din PIB pentru apărare. Deși SUA continuă să asigure majoritatea capabilităților strategice (sateliți, transport greu, logistică), aliații europeni și-au mărit substanțial bugetele.",
+  defenseParagraph2: "Țările europene care alocă 2% sau mai mult din PIB—precum Polonia, Grecia și statele baltice—demonstrează un angajament reînnoit față de securitatea transatlantică. Prin alinierea acestor resurse, alianța se asigură că povara apărării colective este distribuită în mod echitabil.",
   defenseSource: "Controlorul Bugetar al Departamentului de Apărare al SUA",
   defenseSourceUrl: "https://comptroller.defense.gov/Budget-Materials/",
-  oracleDescription: "Întreabă Oracolul AI despre istoria Articolului 5 al NATO, contribuția militară a Suediei și Finlandei, apărarea Mării Baltice sau bugetele de apărare transatlantice."
+  oracleDescription: "Întreabă Oracolul AI despre istoria Articolului 5 al NATO, sistemul Aegis Ashore de la Deveselu, aderarea Finlandei și Suediei sau ținta de 2% din PIB pentru apărare."
 };
 
 export default async function NatoAlliancePage() {
@@ -229,6 +238,25 @@ export default async function NatoAlliancePage() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* Missile Defense Section */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 mb-32">
+        <div className="max-w-3xl space-y-6">
+          <div className="flex items-center gap-3 text-glory-gold mb-2">
+            <ShieldCheck className="h-6 w-6" />
+            <span className="text-sm font-semibold tracking-widest uppercase">{isRo ? "APĂRARE TEHNOLOGICĂ" : "TECHNOLOGICAL DEFENSE"}</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            {copy.missileDefenseTitle}
+          </h2>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {copy.missileDefenseParagraph1}
+          </p>
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+            {copy.missileDefenseParagraph2}
+          </p>
         </div>
       </section>
 
