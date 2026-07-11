@@ -134,13 +134,14 @@ function RoutesLayer({
         const dimmed = selectedId !== null && !isSelected;
 
         const strokeWidth = isSelected ? 2.1 : isFeatured ? 1.5 : 0.8;
-        const strokeColor = isSelected || isFeatured ? route.color : "rgba(148, 163, 184, 0.4)";
+        const strokeColor = route.color;
+        const activeOpacity = isSelected ? 1.0 : dimmed ? (isFeatured ? 0.45 : 0.22) : (isFeatured ? 0.95 : 0.35);
 
         return (
           <g
             key={`${era}-${route.id}`}
             className="group cursor-pointer"
-            style={{ opacity: dimmed ? (isFeatured ? 0.45 : 0.4) : 1, transition: "opacity 0.3s ease" }}
+            style={{ opacity: activeOpacity, transition: "opacity 0.3s ease" }}
             onClick={(e) => {
               e.stopPropagation();
               onSelect(selectedId === route.id ? null : route.id);
