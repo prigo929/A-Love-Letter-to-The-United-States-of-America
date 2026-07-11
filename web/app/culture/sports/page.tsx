@@ -27,8 +27,8 @@ export default async function CultureSportsPage() {
       : "From the Super Bowl's 100+ million domestic viewers to basketball's global cultural footprint, sports define the American collective ritual. It is a private ecosystem — four major leagues, the NCAA pipeline, and the single most-watched broadcast on Earth — that no state-run sports apparatus has ever matched.",
     sportsEconomyTitle: isRo ? "Economia Sportului Profesionist: Dominanță Globală" : "The Professional Sports Economy: Global Dominance",
     sportsEconomyText: isRo
-      ? "Statele Unite operează cele mai mari patru ligi profesioniste din lume după venituri: NFL, NBA, MLB și NHL. Susținut de drepturile media, giganți de echipament sportiv precum Nike, vânzarea de bilete și sportul de masă, piața sportivă din SUA depășește 520 de miliarde de dolari anual, proiectând o putere soft de neegalat."
-      : "The United States operates four major professional sports leagues — the NFL, NBA, MLB, and NHL — each individually larger by revenue than the top league of most developed nations. Underwritten by sports media rights, apparel giants like Nike, ticketing, and youth athletics, the total U.S. sports market size exceeds $520 billion annually, projecting unmatched global soft power.",
+      ? "Statele Unite operează cele mai mari patru ligi profesioniste din lume după venituri: NFL, NBA, MLB și NHL. Susținut de drepturile media, giganți de echipament sportiv precum Nike, vânzarea de bilete, activități recreative și fitness, întreaga piață a afacerilor sportive din SUA depășește 1,06 trilioane de dolari anual, proiectând o putere soft de neegalat."
+      : "The United States operates four major professional sports leagues — the NFL, NBA, MLB, and NHL — each individually larger by revenue than the top league of most developed nations. Underwritten by sports media rights, apparel giants like Nike, ticketing, fitness, and recreation, the total U.S. sports business industry exceeds $1.06 trillion annually, projecting unmatched global soft power.",
     olympicTitle: isRo ? "Dominația Olimpică: O Țară care Concurează ca un Continent" : "Olympic Dominance: A Country That Competes as a Continent",
     olympicText: isRo
       ? "SUA dețin cele mai multe medalii de aur la Jocurile de Vară (1.105) și 1.219 medalii de aur în total (inclusiv cele de Iarnă), cu Uniunea Sovietică pe locul doi (473). Ceea ce face acest lucru și mai remarcabil este contextul competitiv: SUA câștigă aceste medalii fără un aparat sportiv dirijat de stat sau academii obligatorii."
@@ -106,7 +106,7 @@ export default async function CultureSportsPage() {
         titleAccent={isRo ? "& TRADIȚIE" : "& TRADITION"}
         description={content.pullQuote}
         stats={[
-          { value: "$520B+", label: isRo ? "Piața Sportivă SUA" : "US Sports Market" },
+          { value: "$1.06T+", label: isRo ? "Piața Sportivă SUA" : "US Sports Market" },
           { value: "100M+", label: isRo ? "Spectatori Super Bowl" : "Super Bowl Viewers" },
           { value: "215", label: isRo ? "Difuzări Globale NBA" : "NBA Global Broadcasts" },
         ]}
@@ -479,7 +479,7 @@ export default async function CultureSportsPage() {
           {/* Bordered stats strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-white/5 rounded-3xl overflow-hidden mb-28">
             {[
-              { value: "$520B+", label: isRo ? "Piața sportivă SUA" : "US Sports Market", note: isRo ? "Inclusiv drepturi media, echipament și retail" : "Including media rights, gear, and retail" },
+              { value: "$1.06T+", label: isRo ? "Piața sportivă SUA" : "US Sports Market", note: isRo ? "Inclusiv media, echipamente și fitness" : "Including media rights, gear, and fitness" },
               { value: "$20B+", label: isRo ? "Venituri NFL anuale" : "Annual NFL Revenue", note: isRo ? "Cea mai valoroasă ligă" : "Most valuable league on Earth" },
               { value: "215", label: isRo ? "Țări difuzare NBA" : "Countries Broadcasting NBA", note: isRo ? "Cea mai globală ligă" : "The most globally distributed league" },
               { value: "1,219", label: isRo ? "Medalii olimpice de aur" : "Olympic Gold Medals", note: isRo ? "Recordul absolut mondial" : "The all-time world record" },
