@@ -1,112 +1,72 @@
 "use client";
 
 // ─── InterstateShield ─────────────────────────────────────────────────────────
-// The classic AASHTO Interstate shield, drawn as inline SVG so it renders both
-// as a standalone icon (legend, detail panel) and embedded in the map's SVG
-// (route badges). Red crown with "INTERSTATE", navy field, white numerals and a
-// white border.
+// Renders the real AASHTO Interstate shield SVGs (public/interstate-shields/,
+// sourced from the official marker set). Two entry points:
+//   · InterstateShield — an <img>, for HTML contexts (legend chips, detail panel)
+//   · MapShield        — an SVG <image>, for embedding in the zoomable map
 //
-// The white border is produced by a fat white stroke on the silhouette with a
-// solid navy fill on top (no second path, no transforms) — this keeps the clip
-// coordinate space identical to the fill, which matters when the shield is
-// embedded inside a scaled <g> on the zoomable map.
+// Shields exist for 1- and 2-digit primary routes; anything else falls back to
+// null so callers can render their own marker.
 
-import { useId } from "react";
+const SHIELD_SRC = (n: string | number) => `/interstate-shields/I-${n}.svg`;
 
-// Shield silhouette in a 0–100 box (roughly square, like a 2-digit marker).
-export const SHIELD_D =
-  "M50 4 C36 4 30 13 12 11 C14 25 10 35 6 45 C2 58 11 73 27 84 C36 90 44 95 50 98 " +
-  "C56 95 64 90 73 84 C89 73 98 58 94 45 C90 35 86 25 88 11 C70 13 64 4 50 4 Z";
-
-const NAVY = "#0B3E91";
-const RED = "#C8102E";
-
-/** Shield artwork in local 0–100 space. `uid` must be unique per instance. */
-export function ShieldContent({
-  number,
-  uid,
-  showText = false,
-}: {
-  number: string;
-  uid: string;
-  showText?: boolean;
-}) {
-  const clipId = `is-${uid}`;
-  const crown = showText ? 42 : 35;
-  const numY = showText ? 72 : 67;
-  const numSize = number.length > 2 ? 40 : 52;
-  return (
-    <g>
-      {/* White silhouette (fill + fat stroke) → the border rim */}
-      <path d={SHIELD_D} fill="#ffffff" stroke="#ffffff" strokeWidth={9} strokeLinejoin="round" />
-      {/* Navy field, inset by the exposed half of the white stroke */}
-      <path d={SHIELD_D} fill={NAVY} />
-      {/* Red crown + separator, clipped to the field */}
-      <clipPath id={clipId}>
-        <path d={SHIELD_D} />
-      </clipPath>
-      <g clipPath={`url(#${clipId})`}>
-        <rect x="0" y="0" width="100" height={crown} fill={RED} />
-        <rect x="0" y={crown - 1} width="100" height="3" fill="#ffffff" />
-        {showText && (
-          <text
-            x="50"
-            y="26"
-            textAnchor="middle"
-            fill="#ffffff"
-            style={{
-              fontFamily: "var(--font-mono), monospace",
-              fontWeight: 800,
-              fontSize: 15,
-              letterSpacing: "0.5px",
-            }}
-          >
-            INTERSTATE
-          </text>
-        )}
-      </g>
-      {/* Route number */}
-      <text
-        x="50"
-        y={numY}
-        textAnchor="middle"
-        dominantBaseline="central"
-        fill="#ffffff"
-        style={{
-          fontFamily: "var(--font-display), system-ui, sans-serif",
-          fontWeight: 800,
-          fontSize: numSize,
-        }}
-      >
-        {number}
-      </text>
-    </g>
-  );
+/** True when a shield asset exists for this route number (1–99). */
+export function hasShield(n: string | number): boolean {
+  const v = Number(n);
+  return Number.isInteger(v) && v >= 1 && v <= 99;
 }
 
 /** Standalone shield icon for HTML contexts (legend chips, detail panel). */
 export function InterstateShield({
   number,
   size = 30,
-  showText = false,
   className,
 }: {
   number: string | number;
   size?: number;
-  showText?: boolean;
   className?: string;
 }) {
-  const uid = useId().replace(/[:]/g, "");
+  if (!hasShield(number)) return null;
   return (
-    <svg
-      viewBox="0 0 100 100"
+    // eslint-disable-next-line @next/next/no-img-element -- SVG, no optimization needed
+    <img
+      src={SHIELD_SRC(number)}
       width={size}
       height={size}
+      alt={`Interstate ${number}`}
       className={className}
-      role="img"
-      aria-label={`Interstate ${number}`}
-    >
-      <ShieldContent number={String(number)} uid={uid} showText={showText} />
-    </svg>
+      loading="lazy"
+      draggable={false}
+    />
+  );
+}
+
+/** Shield as an SVG <image>, centred on (cx, cy) in the map's user space. */
+export function MapShield({
+  number,
+  cx,
+  cy,
+  size,
+  opacity = 1,
+}: {
+  number: string | number;
+  cx: number;
+  cy: number;
+  size: number;
+  opacity?: number;
+}) {
+  if (!hasShield(number)) return null;
+  return (
+    <image
+      href={SHIELD_SRC(number)}
+      x={cx - size / 2}
+      y={cy - size / 2}
+      width={size}
+      height={size}
+      opacity={opacity}
+      preserveAspectRatio="xMidYMid meet"
+      style={{ pointerEvents: "none", transition: "opacity 0.3s ease" }}
+    />
   );
 }

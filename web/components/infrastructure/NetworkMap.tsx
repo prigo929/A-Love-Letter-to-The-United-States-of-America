@@ -27,7 +27,7 @@ import {
 } from "react-simple-maps";
 import { GEO_URL } from "@/lib/data/us-geo";
 import interstatesData from "@/lib/data/interstates-simplified.json";
-import { InterstateShield, ShieldContent } from "@/components/infrastructure/InterstateShield";
+import { InterstateShield, MapShield } from "@/components/infrastructure/InterstateShield";
 import type { NetworkEra, NetworkRoute, MapNode, LngLat } from "@/lib/data/infrastructure-network-data";
 
 interface RouteGeom {
@@ -168,9 +168,12 @@ function RoutesLayer({
             key={`${era}-${route.id}`}
             className="group cursor-pointer"
             style={{ opacity: activeOpacity, transition: "opacity 0.3s ease" }}
+            // Hover or tap selects; the selection then persists (only an empty-map
+            // click or another route clears it). Leaving the map no longer resets.
+            onMouseEnter={() => onSelect(route.id)}
             onClick={(e) => {
               e.stopPropagation();
-              onSelect(selectedId === route.id ? null : route.id);
+              onSelect(route.id);
             }}
           >
             {/* Soft glow underlay — featured/selected only */}
@@ -188,7 +191,12 @@ function RoutesLayer({
                 transition={isSelected ? { duration: 2.0, repeat: Infinity, ease: "easeInOut" } : undefined}
               />
             )}
-            {/* The corridor itself */}
+            {/* The corridor itself.
+                Entrance animations run on MOUNT (animate), not whileInView: SVG
+                child elements are unreliable IntersectionObserver targets in
+                Safari/Firefox, which left the routes stuck at their initial state
+                (invisible) outside Chromium. Background routes render statically so
+                they always show regardless of animation support. */}
             {route.dashed || reducedMotion ? (
               <motion.path
                 d={d}
@@ -201,9 +209,8 @@ function RoutesLayer({
                 className="transition-all duration-200 group-hover:brightness-150"
                 style={{ pointerEvents: "none" }}
                 initial={{ opacity: 0 }}
-                whileInView={{ opacity: 0.95 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 1.1, delay: isFeatured ? i * 0.1 : 0.2 }}
+                animate={{ opacity: 0.95 }}
+                transition={{ duration: 1.1, delay: isFeatured ? i * 0.08 : 0.2 }}
               />
             ) : isFeatured ? (
               <motion.path
@@ -216,24 +223,20 @@ function RoutesLayer({
                 className="transition-all duration-200 group-hover:brightness-150"
                 style={{ pointerEvents: "none" }}
                 initial={{ pathLength: 0, opacity: 0.4 }}
-                whileInView={{ pathLength: 1, opacity: 0.95 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 2.1, ease: "easeInOut", delay: i * 0.1 }}
+                animate={{ pathLength: 1, opacity: 0.95 }}
+                transition={{ duration: 2.0, ease: "easeInOut", delay: i * 0.08 }}
               />
             ) : (
-              <motion.path
+              <path
                 d={d}
                 fill="none"
                 stroke={strokeColor}
                 strokeWidth={strokeWidth}
                 strokeLinecap="round"
+                opacity={0.9}
                 vectorEffect="non-scaling-stroke"
                 className="transition-all duration-200 group-hover:brightness-150"
                 style={{ pointerEvents: "none" }}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 0.85 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 1.4, delay: 0.35 }}
               />
             )}
             {/* Moving vehicle dot — featured routes, main alignment only */}
@@ -301,17 +304,17 @@ function RoutesLayer({
         const isFeatured = featuredIds.has(route.id);
         const isSelected = selectedId === route.id;
         if (!num || !anchor || (!isFeatured && !isSelected)) return null;
-        const px = isSelected ? 30 : 19; // on-screen size in base user units
-        const s = (px / 100) * k;
+        const px = isSelected ? 26 : 17; // on-screen size in base user units
         const faded = selectedId !== null && !isSelected;
         return (
-          <g
+          <MapShield
             key={`shield-${route.id}`}
-            transform={`translate(${anchor[0]} ${anchor[1]}) scale(${s}) translate(-50 -50)`}
-            style={{ opacity: faded ? 0.3 : 1, transition: "opacity 0.3s ease", pointerEvents: "none" }}
-          >
-            <ShieldContent number={num} uid={`map-${route.id}`} />
-          </g>
+            number={num}
+            cx={anchor[0]}
+            cy={anchor[1]}
+            size={px * k}
+            opacity={faded ? 0.35 : 1}
+          />
         );
       })}
     </g>
@@ -457,7 +460,7 @@ export function NetworkMap({
       </div>
 
       {/* Corridor chips (featured legend + selector) */}
-      <div className="mb-6 flex flex-wrap gap-x-5 gap-y-2" onMouseLeave={() => setSelectedId(null)}>
+      <div className="mb-6 flex flex-wrap gap-x-5 gap-y-2">
         {eraRoutes
           .filter((r) => featuredIds.has(r.id))
           .map((r) => {
@@ -485,7 +488,7 @@ export function NetworkMap({
       </div>
 
       {/* Map + zoom controls */}
-      <div className="relative w-full" onMouseLeave={() => setSelectedId(null)}>
+      <div className="relative w-full">
         <div className="absolute right-3 top-3 z-10 flex flex-col gap-1.5">
           {[
             { sym: "+", act: () => zoomBy(1.7), aria: "Zoom in" },
@@ -599,8 +602,7 @@ export function NetworkMap({
                 {interstateNumber(selected.id) && (
                   <InterstateShield
                     number={interstateNumber(selected.id)!}
-                    size={54}
-                    showText
+                    size={56}
                     className="mt-0.5 shrink-0 drop-shadow-md"
                   />
                 )}
