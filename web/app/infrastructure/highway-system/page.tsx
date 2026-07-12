@@ -85,6 +85,10 @@ export default async function HighwaySystemPage() {
           trafficLabel: "Trafic mediu zilnic",
           vehiclesPerDay: "veh/zi",
           zoomHint: "Zoom: butoane, pinch sau Ctrl + scroll · trage pentru a naviga",
+          viewCorridors: "Coridoare",
+          viewTraffic: "Trafic",
+          heatLow: "Liniștit",
+          heatHigh: "Aglomerat",
         },
         pullStat: "≈1%",
         pullLabel:
@@ -108,10 +112,44 @@ export default async function HighwaySystemPage() {
               "Glenwood Canyon, Colorado: 12 mile de viaducte suspendate deasupra râului Colorado, terminate abia în 1992 — porțiunea finală a Sistemului și, probabil, cea mai frumoasă autostradă din lume.",
           },
         ],
+        numbersEyebrow: "Amploarea, în cifre",
+        numbersTitle: "Un continent, în cifre",
+        costStats: [
+          { value: "$114B", label: "cost de construcție (≈$600 mld. azi)" },
+          { value: "40 ani", label: "de la primul contract la ultima milă" },
+          { value: "55,000", label: "poduri · 47.856 mile de rute" },
+        ],
+        decoderTitle: "Cum să citești un scut interstatal",
+        decoderItems: [
+          { k: "Numere pare", v: "merg est–vest (I-10, I-90)" },
+          { k: "Numere impare", v: "merg nord–sud (I-5, I-95)" },
+          { k: "Multipli de 5", v: "sunt arterele transcontinentale majore" },
+          { k: "Trei cifre", v: "sunt centuri și ramificații urbane (I-610, I-495)" },
+        ],
+        mythLabel: "MIT",
+        mythText:
+          "„Una din cinci mile trebuie să fie dreaptă, ca pistă de aterizare de urgență.” Fals — este o legendă urbană. Niciun standard federal nu a cerut vreodată acest lucru.",
+        econEyebrow: "Copiii autostrăzii",
+        econTitle: "Drumul care a construit o economie",
+        econIntro:
+          "Autostrada nu a mutat doar mașini — a dat naștere unor industrii întregi, apărute chiar la capătul rampei de ieșire.",
+        econItems: [
+          { year: "1952", name: "Holiday Inn", text: "Primul lanț hotelier standardizat s-a născut din frustrarea unei singure călătorii de familie. Camere identice, previzibile, la fiecare ieșire de autostradă." },
+          { year: "1975", name: "Drive-thru-ul McDonald's", text: "Prima fereastră drive-thru a apărut lângă o bază militară din Arizona — apoi a colonizat fiecare ieșire de autostradă din America." },
+          { year: "—", name: "Popasul rutier", text: "Pilot Flying J, Love's și TA au construit orașe-oază pentru cei 3,5 milioane de camionagii — combustibil, mâncare și dușuri, non-stop." },
+          { year: "1971", name: "FedEx & UPS", text: "Livrarea peste noapte a devenit posibilă doar pentru că un camion putea traversa un stat întreg fără să oprească la un semafor." },
+        ],
+        unfinishedEyebrow: "Drumurile care nu au fost",
+        unfinishedTitle: "Autostrăzile neterminate",
+        unfinishedIntro:
+          "Nu toate liniile de pe hărțile din anii 1950 au fost construite. Revoltele orașelor și geografia au lăsat fantome pe hartă.",
+        unfinishedItems: [
+          { name: "Westway (I-478), New York", text: "O autostradă îngropată de-a lungul râului Hudson, anulată în 1985 după un deceniu de procese. Banii au fost redirecționați către metroul din New York." },
+          { name: "Embarcadero Freeway, San Francisco", text: "O autostradă suspendată pe malul golfului, atât de nedorită încât orașul a demolat-o după cutremurul din 1989 — și nu a reconstruit-o niciodată." },
+          { name: "Breșa I-95 din New Jersey", text: "Somerset Freeway a fost anulată, lăsând I-95 fără o verigă timp de decenii. Legătura finală s-a deschis abia în 2018." },
+        ],
         defenseTitle: "Securitatea Națională și Mitul Pistelor de Aterizare",
         defenseP: "Denumit oficial Sistemul Național Dwight D. Eisenhower de Autostrăzi Interstatale și de Apărare, rețeaua a fost concepută având securitatea națională ca pilon central. Inspirat de experiența lui Eisenhower cu autostrăzile germane (Autobahn) din al Doilea Război Mondial, sistemul a fost creat pentru mobilizarea rapidă a forțelor militare. Podurile au fost construite cu o înălțime liberă de minimum 16 picioare (4,87 metri) special pentru a permite transportul rachetelor balistice intercontinentale (ICBM) și al vehiculelor militare grele. Deși credința populară conform căreia „una din cinci mile trebuie să fie dreaptă pentru a servi ca pistă de aterizare de urgență” este un mit urban, armata SUA a efectuat exerciții de aterizare a avioanelor de luptă pe secțiuni de autostradă, demonstrând capacitatea strategică a rețelei în caz de criză.",
-        revoltsTitle: "Revoltele Autostrăzilor și Revoluția Logistică",
-        revoltsP: "Traseul autostrăzilor prin marile orașe nu a fost lipsit de tensiuni. În anii 1960 și 1970, un val de proteste cetățenești cunoscute sub numele de „revoltele autostrăzilor” a cuprins orașe precum San Francisco, Boston și Washington, D.C. Locuitorii s-au opus coridoarelor masive de beton care tăiau cartiere istorice, ducând la anularea unor trasee majore și la redirecționarea fondurilor către transportul public urban. În ciuda acestor conflicte, sistemul a reconfigurat fundamental economia americană. Permițând un transport rapid și predictibil, a dat naștere industriei moderne de logistică, a popularizat producția de tip „just-in-time” și a creat elemente culturale noi: lanțurile de moteluri suburbane, drive-thru-ul fast-food și imperiile naționale de curierat precum FedEx și UPS.",
         quote:
           "Mai mult decât orice altă acțiune a guvernului de la sfârșitul războiului încoace, aceasta avea să schimbe fața Americii.",
         quoteAttribution: "Dwight D. Eisenhower",
@@ -157,6 +195,10 @@ export default async function HighwaySystemPage() {
           trafficLabel: "Avg. daily traffic",
           vehiclesPerDay: "veh/day",
           zoomHint: "Zoom: buttons, pinch, or Ctrl + scroll · drag to pan",
+          viewCorridors: "Corridors",
+          viewTraffic: "Traffic",
+          heatLow: "Quiet",
+          heatHigh: "Jammed",
         },
         pullStat: "≈1%",
         pullLabel:
@@ -180,10 +222,44 @@ export default async function HighwaySystemPage() {
               "Glenwood Canyon, Colorado: twelve miles of viaducts hung above the Colorado River, not finished until 1992 — the System's final link, and arguably the most beautiful stretch of freeway on Earth.",
           },
         ],
+        numbersEyebrow: "The Scale, in Numbers",
+        numbersTitle: "A Continent, by the Numbers",
+        costStats: [
+          { value: "$114B", label: "to build (≈$600B in today's dollars)" },
+          { value: "40 yrs", label: "from first contract to final mile" },
+          { value: "55,000", label: "bridges · 47,856 route miles" },
+        ],
+        decoderTitle: "How to Read an Interstate Shield",
+        decoderItems: [
+          { k: "Even numbers", v: "run east–west (I-10, I-90)" },
+          { k: "Odd numbers", v: "run north–south (I-5, I-95)" },
+          { k: "Multiples of 5", v: "are the major transcontinental arteries" },
+          { k: "Three digits", v: "are urban beltways & spurs (I-610, I-495)" },
+        ],
+        mythLabel: "MYTH",
+        mythText:
+          "“One in every five miles must be straight, to serve as an emergency airstrip.” False — it's an urban legend. No federal standard ever required it.",
+        econEyebrow: "The Highway's Children",
+        econTitle: "The Road That Built an Economy",
+        econIntro:
+          "The Interstate didn't just move cars — it spawned whole industries, born at the bottom of the off-ramp.",
+        econItems: [
+          { year: "1952", name: "Holiday Inn", text: "The first standardized hotel chain grew out of one bad family road trip. Identical, predictable rooms at every interchange." },
+          { year: "1975", name: "The McDonald's drive-thru", text: "The first drive-thru window opened next to an Arizona military base — then colonized every highway exit in America." },
+          { year: "—", name: "The truck stop", text: "Pilot Flying J, Love's and TA built oasis-towns for 3.5 million truckers — fuel, food and showers, around the clock." },
+          { year: "1971", name: "FedEx & UPS", text: "Overnight delivery only became possible because a truck could cross an entire state without stopping at a single light." },
+        ],
+        unfinishedEyebrow: "Roads Not Taken",
+        unfinishedTitle: "The Interstates That Never Were",
+        unfinishedIntro:
+          "Not every line on the 1950s maps got built. City revolts and geography left ghosts on the map.",
+        unfinishedItems: [
+          { name: "Westway (I-478), New York", text: "A highway buried along the Hudson, killed in 1985 after a decade of lawsuits. The money went to the New York subway instead." },
+          { name: "The Embarcadero Freeway, San Francisco", text: "A double-decker along the bayfront so unloved the city tore it down after the 1989 earthquake — and never rebuilt it." },
+          { name: "The I-95 gap, New Jersey", text: "The Somerset Freeway was canceled, leaving I-95 without a link for decades. The final connection opened only in 2018." },
+        ],
         defenseTitle: "National Security & The Airfield Myth",
         defenseP: "Officially named the Dwight D. Eisenhower National System of Interstate and Defense Highways, the network was designed with national security at its core. Drawing from Eisenhower's experience with the German Autobahn during WWII, the system was built to allow rapid mobilization of military forces. Bridges were built with a minimum vertical clearance of 16 feet specifically to accommodate the transport of Intercontinental Ballistic Missiles (ICBMs) and heavy military vehicles. While the popular belief that 'one out of every five miles must be straight to serve as emergency runways' is a urban myth, the U.S. military has indeed conducted successful exercises landing fighter jets on designated highway stretches, proving the system's strategic backup capability.",
-        revoltsTitle: "The Freeway Revolts & Modern Logistics",
-        revoltsP: "The Interstate's path through America was not without friction. In the 1960s and 1970s, a wave of citizen protests known as the 'freeway revolts' swept through cities like San Francisco, Boston, and Washington, D.C. Residents fought against massive concrete corridors cutting through historic neighborhoods, leading to the cancellation of major planned routes and the reallocation of highway funds to urban mass transit. Despite these conflicts, the system fundamentally rewired the American economy. By enabling high-speed, predictable transport, it birthed the modern logistics industry, popularized 'just-in-time' manufacturing, and spawned entirely new cultural fixtures: the suburban motel chain, the fast-food drive-thru, and the national shipping empires of FedEx and UPS.",
         quote:
           "More than any single action by the government since the end of the war, this one would change the face of America.",
         quoteAttribution: "Dwight D. Eisenhower",
@@ -247,8 +323,41 @@ export default async function HighwaySystemPage() {
               nodes={HIGHWAY_NODES}
               accent="#E8B923"
               backgroundNetwork
+              enableHeatmap
               labels={copy.mapLabels}
             />
+          </section>
+
+          {/* ── By the numbers: cost, shield decoder, myth ── */}
+          <section className="border-t border-white/5 pt-24">
+            <span className="macro-eyebrow">{copy.numbersEyebrow}</span>
+            <h2 className="macro-section-title mb-16 mt-6">{copy.numbersTitle}</h2>
+            <div className="grid gap-16 border-t border-[#E8B923]/30 pt-16 sm:grid-cols-3">
+              {copy.costStats.map((s) => (
+                <MacroStat key={s.label} value={s.value} label={s.label} />
+              ))}
+            </div>
+            <div className="mt-20 grid gap-12 md:grid-cols-2">
+              <div>
+                <h3 className="font-macro-display text-2xl font-bold text-white mb-6">{copy.decoderTitle}</h3>
+                <ul>
+                  {copy.decoderItems.map((d) => (
+                    <li key={d.k} className="flex gap-4 border-b border-white/[0.06] py-4">
+                      <span className="w-28 shrink-0 font-macro-mono text-[11px] uppercase tracking-[0.15em] text-[#E8B923]">
+                        {d.k}
+                      </span>
+                      <span className="macro-body !text-base">{d.v}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="flex flex-col justify-center rounded-2xl border border-[#b22234]/30 bg-[#b22234]/[0.06] p-8">
+                <span className="mb-4 font-macro-mono text-xs font-black uppercase tracking-[0.3em] text-[#f87171]">
+                  {copy.mythLabel}
+                </span>
+                <p className="macro-body !text-lg leading-relaxed text-white/80">{copy.mythText}</p>
+              </div>
+            </div>
           </section>
 
           {/* ── Pull stat ── */}
@@ -288,31 +397,47 @@ export default async function HighwaySystemPage() {
             <AnatomyDiagram locale={locale} />
           </section>
 
-          {/* ── Defense & Logistics ── */}
+          {/* ── Strategic design ── */}
           <section className="border-t border-white/5 pt-24">
-            <div className="grid gap-16 md:grid-cols-2">
-              <div>
-                <span className="macro-eyebrow">
-                  {isRo ? "Design Strategic & Securitate" : "Strategic Design & Security"}
-                </span>
-                <h3 className="font-macro-display text-3xl font-black text-white mt-4 mb-6">
-                  {copy.defenseTitle}
-                </h3>
-                <p className="macro-body leading-relaxed text-white/70">
-                  {copy.defenseP}
-                </p>
-              </div>
-              <div>
-                <span className="macro-eyebrow">
-                  {isRo ? "Impact Social & Economic" : "Social & Economic Impact"}
-                </span>
-                <h3 className="font-macro-display text-3xl font-black text-white mt-4 mb-6">
-                  {copy.revoltsTitle}
-                </h3>
-                <p className="macro-body leading-relaxed text-white/70">
-                  {copy.revoltsP}
-                </p>
-              </div>
+            <div className="max-w-3xl">
+              <span className="macro-eyebrow">
+                {isRo ? "Design Strategic & Securitate" : "Strategic Design & Security"}
+              </span>
+              <h3 className="font-macro-display text-3xl font-black text-white mt-4 mb-6">
+                {copy.defenseTitle}
+              </h3>
+              <p className="macro-body leading-relaxed text-white/70">{copy.defenseP}</p>
+            </div>
+          </section>
+
+          {/* ── The highway's children ── */}
+          <section className="border-t border-white/5 pt-24">
+            <span className="macro-eyebrow">{copy.econEyebrow}</span>
+            <h2 className="macro-section-title mb-6 mt-6">{copy.econTitle}</h2>
+            <p className="macro-body mb-14 max-w-4xl">{copy.econIntro}</p>
+            <div className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+              {copy.econItems.map((it) => (
+                <div key={it.name} className="border-t border-[#E8B923]/30 pt-6">
+                  <div className="font-hero text-3xl text-[#E8B923]/90">{it.year}</div>
+                  <h3 className="mb-3 mt-2 font-macro-display text-xl font-bold text-white">{it.name}</h3>
+                  <p className="macro-body !text-sm leading-relaxed text-white/60">{it.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ── Roads not taken ── */}
+          <section className="border-t border-white/5 pt-24">
+            <span className="macro-eyebrow">{copy.unfinishedEyebrow}</span>
+            <h2 className="macro-section-title mb-6 mt-6">{copy.unfinishedTitle}</h2>
+            <p className="macro-body mb-14 max-w-4xl">{copy.unfinishedIntro}</p>
+            <div className="grid gap-10 md:grid-cols-3">
+              {copy.unfinishedItems.map((it) => (
+                <div key={it.name} className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6">
+                  <h3 className="mb-3 font-macro-display text-lg font-bold leading-tight text-white">{it.name}</h3>
+                  <p className="macro-body !text-sm leading-relaxed text-white/55">{it.text}</p>
+                </div>
+              ))}
             </div>
           </section>
 

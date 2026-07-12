@@ -9,12 +9,15 @@
 // Shields exist for 1- and 2-digit primary routes; anything else falls back to
 // null so callers can render their own marker.
 
+import shieldNumbers from "@/lib/data/interstate-shield-numbers.json";
+
+const SHIELD_SET = new Set(shieldNumbers as number[]);
 const SHIELD_SRC = (n: string | number) => `/interstate-shields/I-${n}.svg`;
 
-/** True when a shield asset exists for this route number (1–99). */
+/** True when a real shield asset exists for this route number (incl. 3-digit). */
 export function hasShield(n: string | number): boolean {
   const v = Number(n);
-  return Number.isInteger(v) && v >= 1 && v <= 99;
+  return Number.isInteger(v) && SHIELD_SET.has(v);
 }
 
 /** Standalone shield icon for HTML contexts (legend chips, detail panel). */

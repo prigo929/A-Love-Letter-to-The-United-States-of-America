@@ -273,10 +273,15 @@ def splice_gaps(chains, node_pt, edges):
 
 # ─── Main ─────────────────────────────────────────────────────────────────────
 
+import re
+
+def route_key(prefix, num):
+    return f"{prefix}{num}"
+
 def main():
-    routes = defaultdict(list)     # num -> [thinned coord lists]
-    miles = defaultdict(float)     # num -> sum of MILES
-    aadt_wsum = defaultdict(float) # num -> sum AADT*MILES
+    routes = defaultdict(list)     # key -> [thinned coord lists]
+    miles = defaultdict(float)     # key -> sum of MILES
+    aadt_wsum = defaultdict(float) # key -> sum AADT*MILES
     n_feat = n_kept = 0
 
     for feat in stream_features(SRC):
@@ -286,22 +291,22 @@ def main():
         p = feat.get("properties") or {}
         if (p.get("CONNID") or " ").strip():
             continue  # airport/port connectors
+        # Alaska (2) and Hawaii (15) sign their interstates I-1/I-2/I-3, which
+        # collide with each other and with mainland auxiliaries — namespace them
+        # by state so they don't merge across oceans.
+        st = p.get("STFIPS")
+        prefix = "AK" if st == 2 else "HI" if st == 15 else "I"
         # A segment belongs to every interstate signed on it — concurrencies
         # (I-90 riding I-94, etc.) live in the SIGNT2/SIGNT3 slots.
-        nums = []
+        keys = []
         for slot in ("1", "2", "3"):
             if p.get(f"SIGNT{slot}") == "I":
-                val = str(p.get(f"SIGNN{slot}", "")).strip()
-                import re
-                m = re.match(r"^(\d+)", val)
+                m = re.match(r"^(\d+)", str(p.get(f"SIGNN{slot}", "")).strip())
                 if m:
-                    try:
-                        n = int(m.group(1))
-                    except ValueError:
-                        continue
-                    if n in REAL:
-                        nums.append(n)
-        if not nums:
+                    num = int(m.group(1))
+                    if 1 <= num <= 999:
+                        keys.append(route_key(prefix, num))
+        if not keys:
             continue
         g = feat.get("geometry") or {}
         coords_sets = []
@@ -310,50 +315,63 @@ def main():
         elif g.get("type") == "MultiLineString":
             coords_sets = g["coordinates"]
         m = float(p.get("MILES") or 0)
-        for num in nums:
+        for key in keys:
             for cs in coords_sets:
                 if len(cs) >= 2:
-                    routes[num].append(thin([[round(x, 5), round(y, 5)] for x, y in cs]))
-            miles[num] += m
-            aadt_wsum[num] += float(p.get("AADT") or 0) * m
+                    routes[key].append(thin([[round(x, 5), round(y, 5)] for x, y in cs]))
+            miles[key] += m
+            aadt_wsum[key] += float(p.get("AADT") or 0) * m
         n_kept += 1
 
     print(f"scanned {n_feat:,} features · kept {n_kept:,} interstate segments "
           f"across {len(routes)} routes", file=sys.stderr)
 
-    FEATURED = {5, 10, 15, 20, 25, 35, 40, 55, 65, 70, 75, 80, 85, 90, 94, 95}
+    FEATURED = {"I5","I10","I15","I20","I25","I35","I40","I55","I65","I70",
+                "I75","I80","I85","I90","I94","I95"}
+
+    def is_primary(key):
+        # Mainland 1–2 digit primaries are unique nationwide → safe to splice
+        # across metro data-holes. 3-digit auxiliaries reuse the same number in
+        # different cities (three separate I-495s), and AK/HI are islands, so
+        # those keep their components separate (no false connectors).
+        return key.startswith("I") and key[1:].isdigit() and int(key[1:]) in REAL
+
+    def kind(key):
+        if key in FEATURED: return "featured"
+        if key.startswith(("AK", "HI")): return "island"
+        if key.startswith("I") and key[1:].isdigit() and int(key[1:]) > 99:
+            return "aux"        # 3-digit ring / spur
+        return "primary"
 
     # First pass: stitch every route, keep pre-simplification chains.
     stitched = {}
-    for num in sorted(routes):
-        chains = stitch(routes[num])
+    for key in sorted(routes):
+        chains = stitch(routes[key])
         chains = drop_parallel(chains, overlap=0.85)
-        min_mi = 8 if num in FEATURED else 15
+        min_mi = {"featured": 8, "aux": 4, "island": 3}.get(kind(key), 12)
         chains = [c for c in chains if seg_len_mi(c) >= min_mi]
         if chains:
-            stitched[num] = chains
+            stitched[key] = chains
 
-    # Union graph over all interstate geometry, for gap splicing.
+    # Union graph over ALL geometry, for splicing primary corridors only.
     node_pt, edges = build_graph([c for chs in stitched.values() for c in chs])
 
     out = {}
-    for num, chains in sorted(stitched.items()):
-        if len(chains) > 1:
+    for key, chains in sorted(stitched.items()):
+        if is_primary(key) and len(chains) > 1:
             n_before = len(chains)
             chains = splice_gaps(chains, node_pt, edges)
             if len(chains) < n_before:
-                print(f"  I-{num}: spliced {n_before} → {len(chains)} components", file=sys.stderr)
-        tol = 0.008 if num in FEATURED else 0.03
+                print(f"  {key}: spliced {n_before} → {len(chains)} components", file=sys.stderr)
+        tol = 0.008 if key in FEATURED else 0.04 if kind(key) == "aux" else 0.03
         chains = [dp(c, tol) for c in chains]
         chains.sort(key=len, reverse=True)
         if not chains:
             continue
-        # Signed mileage undercounts where concurrencies are single-signed;
-        # the spliced geometry knows better. Take the larger of the two.
         geom_mi = sum(seg_len_mi(c) for c in chains)
-        total_mi = round(max(miles[num], geom_mi))
-        avg_aadt = round(aadt_wsum[num] / miles[num]) if miles[num] else 0
-        out[f"I{num}"] = {
+        total_mi = round(max(miles[key], geom_mi))
+        avg_aadt = round(aadt_wsum[key] / miles[key]) if miles[key] else 0
+        out[key] = {
             "segments": [[[round(x, 4), round(y, 4)] for x, y in c] for c in chains],
             "miles": total_mi,
             "aadt": avg_aadt,
@@ -362,11 +380,14 @@ def main():
     with open(OUT, "w") as f:
         json.dump(out, f, separators=(",", ":"))
 
+    counts = {"featured": 0, "primary": 0, "aux": 0, "island": 0}
+    for key in out: counts[kind(key)] += 1
     pts = sum(len(s) for v in out.values() for s in v["segments"])
-    print(f"wrote {OUT}: {len(out)} routes, {pts:,} points, "
+    print(f"wrote {OUT}: {len(out)} routes {counts}, {pts:,} points, "
           f"{os.path.getsize(OUT)/1024:.0f} KB", file=sys.stderr)
-    print("validation (published → computed miles / components / avg AADT):", file=sys.stderr)
-    for k, pub in [("I90", 3020), ("I80", 2899), ("I95", 1908), ("I10", 2460), ("I5", 1381)]:
+    print("validation (published → computed miles / comps / AADT):", file=sys.stderr)
+    for k, pub in [("I90", 3020), ("I80", 2899), ("I95", 1908), ("I5", 1381),
+                   ("I610", 38), ("I495", None), ("HI1", 27), ("AK1", None)]:
         v = out.get(k)
         if v:
             print(f"  {k}: {pub} → {v['miles']} mi · {len(v['segments'])} comps · AADT {v['aadt']:,}",
