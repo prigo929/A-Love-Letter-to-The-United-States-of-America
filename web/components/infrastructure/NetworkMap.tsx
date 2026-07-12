@@ -27,6 +27,7 @@ import {
 } from "react-simple-maps";
 import { GEO_URL } from "@/lib/data/us-geo";
 import interstatesData from "@/lib/data/interstates-simplified.json";
+import { InterstateShield, ShieldContent } from "@/components/infrastructure/InterstateShield";
 import type { NetworkEra, NetworkRoute, MapNode, LngLat } from "@/lib/data/infrastructure-network-data";
 
 interface RouteGeom {
@@ -38,6 +39,12 @@ const INTERSTATE_GEOMS = interstatesData as unknown as Record<string, RouteGeom>
 
 const US_CENTER: LngLat = [-96.6, 38.7];
 const MAX_ZOOM = 12;
+
+/** "i90" → "90"; null for the named trails (Lincoln Highway, Route 66). */
+function interstateNumber(id: string): string | null {
+  const m = /^i(\d{1,2})$/.exec(id);
+  return m ? m[1] : null;
+}
 
 // ─── Path helpers ─────────────────────────────────────────────────────────────
 
@@ -103,16 +110,25 @@ function RoutesLayer({
         .filter((r) => r.era === era)
         .map((r) => {
           const geom = INTERSTATE_GEOMS[r.id.toUpperCase()];
+          // Anchor the route's shield badge on the middle vertex of its main
+          // alignment, projected to screen space.
+          const anchorFrom = (coords: LngLat[]): [number, number] | null =>
+            coords.length ? projection(coords[Math.floor(coords.length / 2)]) : null;
           if (geom && geom.segments.length > 0) {
             const paths = geom.segments
               .map((seg) => buildPolyline(seg as LngLat[], projection))
               .filter(Boolean);
             // The generator sorts segments longest-first: the vehicle dot
             // follows the main alignment, not a disconnected twin.
-            return { route: r, d: paths.join(" "), dotD: paths[0] ?? "" };
+            return {
+              route: r,
+              d: paths.join(" "),
+              dotD: paths[0] ?? "",
+              anchor: anchorFrom(geom.segments[0] as LngLat[]),
+            };
           }
           const d = buildPath(r.waypoints, projection);
-          return { route: r, d, dotD: d };
+          return { route: r, d, dotD: d, anchor: anchorFrom(r.waypoints) };
         })
         .filter((r) => r.d),
     [routes, era, projection],
@@ -133,9 +149,19 @@ function RoutesLayer({
         const isSelected = selectedId === route.id;
         const dimmed = selectedId !== null && !isSelected;
 
-        const strokeWidth = isSelected ? 2.1 : isFeatured ? 1.5 : 0.8;
+        const strokeWidth = isSelected ? 2.1 : isFeatured ? 1.5 : 0.9;
         const strokeColor = route.color;
-        const activeOpacity = isSelected ? 1.0 : dimmed ? (isFeatured ? 0.45 : 0.22) : (isFeatured ? 0.95 : 0.35);
+        // Smaller highways (background grid) show clearly but stay subordinate to
+        // the featured corridors; both recede further when a route is selected.
+        const activeOpacity = isSelected
+          ? 1.0
+          : dimmed
+            ? isFeatured
+              ? 0.5
+              : 0.14
+            : isFeatured
+              ? 0.95
+              : 0.46;
 
         return (
           <g
@@ -267,6 +293,27 @@ function RoutesLayer({
           </text>
         </g>
       ))}
+
+      {/* Interstate shield badges — featured corridors always, plus the selected
+          route. Counter-scaled so they hold a constant on-screen size. */}
+      {drawn.map(({ route, anchor }) => {
+        const num = interstateNumber(route.id);
+        const isFeatured = featuredIds.has(route.id);
+        const isSelected = selectedId === route.id;
+        if (!num || !anchor || (!isFeatured && !isSelected)) return null;
+        const px = isSelected ? 30 : 19; // on-screen size in base user units
+        const s = (px / 100) * k;
+        const faded = selectedId !== null && !isSelected;
+        return (
+          <g
+            key={`shield-${route.id}`}
+            transform={`translate(${anchor[0]} ${anchor[1]}) scale(${s}) translate(-50 -50)`}
+            style={{ opacity: faded ? 0.3 : 1, transition: "opacity 0.3s ease", pointerEvents: "none" }}
+          >
+            <ShieldContent number={num} uid={`map-${route.id}`} />
+          </g>
+        );
+      })}
     </g>
   );
 }
@@ -423,7 +470,14 @@ export function NetworkMap({
                 className="flex items-center gap-2 transition-opacity duration-300"
                 style={{ opacity: dim ? 0.3 : 1 }}
               >
-                <span className="h-[3px] w-7 rounded-full" style={{ background: r.color, opacity: 0.9 }} />
+                {interstateNumber(r.id) ? (
+                  <span className="flex flex-col items-center" style={{ lineHeight: 0 }}>
+                    <InterstateShield number={interstateNumber(r.id)!} size={22} />
+                    <span className="mt-[3px] h-[2px] w-5 rounded-full" style={{ background: r.color }} />
+                  </span>
+                ) : (
+                  <span className="h-[3px] w-7 rounded-full" style={{ background: r.color, opacity: 0.9 }} />
+                )}
                 <span className="font-macro-body text-xs font-semibold text-white/70">{r.name[locale]}</span>
               </button>
             );
@@ -541,12 +595,24 @@ export function NetworkMap({
                   {selected.year}
                 </span>
               </div>
-              <h3 className="font-macro-display text-2xl font-bold tracking-tight text-white">
-                {selected.name[locale]}
-              </h3>
-              <p className="mt-1 font-macro-mono text-[11px] uppercase tracking-[0.15em] text-white/40">
-                {selected.endpoints[locale]}
-              </p>
+              <div className="flex items-start gap-3">
+                {interstateNumber(selected.id) && (
+                  <InterstateShield
+                    number={interstateNumber(selected.id)!}
+                    size={54}
+                    showText
+                    className="mt-0.5 shrink-0 drop-shadow-md"
+                  />
+                )}
+                <div className="min-w-0">
+                  <h3 className="font-macro-display text-2xl font-bold tracking-tight text-white">
+                    {selected.name[locale]}
+                  </h3>
+                  <p className="mt-1 font-macro-mono text-[11px] uppercase tracking-[0.15em] text-white/40">
+                    {selected.endpoints[locale]}
+                  </p>
+                </div>
+              </div>
               <div className="mt-4 flex flex-wrap gap-x-8 gap-y-3">
                 <div>
                   <div className="font-macro-mono text-[9px] uppercase tracking-[0.2em] text-white/30">
