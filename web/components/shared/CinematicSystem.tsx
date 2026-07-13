@@ -554,7 +554,7 @@ export function MacroFact({ fact, detail, index }: { fact: string, detail?: stri
 // 7. InfrastructureBand — Cinematic backdrop with blur mask
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function InfrastructureBand({ imageSrc, imageAlt, children }: { imageSrc: string, imageAlt: string, children: React.ReactNode }) {
+export function InfrastructureBand({ imageSrc, imageAlt, children, fullBleed = false }: { imageSrc: string, imageAlt: string, children: React.ReactNode, fullBleed?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -564,7 +564,7 @@ export function InfrastructureBand({ imageSrc, imageAlt, children }: { imageSrc:
   const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
 
   return (
-    <div ref={ref} className="relative w-full my-32 overflow-hidden bg-[#000000]">
+    <div ref={ref} className={`relative my-32 overflow-hidden bg-[#000000] ${fullBleed ? "w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)]" : "w-full"}`}>
       <motion.div style={{ y }} className="absolute inset-0 h-[130%] top-[-15%]">
         <Image
           src={imageSrc}

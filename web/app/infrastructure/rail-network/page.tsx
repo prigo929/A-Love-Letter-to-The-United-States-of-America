@@ -232,7 +232,7 @@ export default async function RailNetworkPage() {
           </section>
 
           {/* ── Chicago junction ── */}
-          <InfrastructureBand imageSrc={SITE_IMAGES.homeChicagoDowntownPortrait} imageAlt={copy.chicagoAlt}>
+          <InfrastructureBand imageSrc={SITE_IMAGES.homeChicagoDowntownPortrait} imageAlt={copy.chicagoAlt} fullBleed>
             <span className="macro-eyebrow">{copy.chicagoEyebrow}</span>
             <h2 className="macro-section-title mb-6 mt-4">{copy.chicagoTitle}</h2>
             <p className="macro-body max-w-4xl">{copy.chicagoBody}</p>

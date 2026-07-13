@@ -342,6 +342,7 @@ export default async function HighwaySystemPage() {
           <InfrastructureBand
             imageSrc={SITE_IMAGES.infraInterstateConstruction}
             imageAlt={copy.bandAlt}
+            fullBleed
           >
             <h2 className="macro-section-title mb-6">{copy.bandTitle}</h2>
             <p className="macro-body max-w-4xl">{copy.bandP1}</p>
