@@ -21,6 +21,7 @@ import {
   RAIL_ROUTES,
   RAIL_NODES,
 } from "@/lib/data/infrastructure-network-data";
+import railData from "@/lib/data/rail-simplified.json";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 const getPageMetadata = (locale: Locale) => ({
@@ -145,6 +146,11 @@ export default async function RailNetworkPage() {
           lengthLabel: "Length",
           openedLabel: "Completed",
           hint: "In the 1869 era the two routes draw toward each other — exactly as they were built.",
+          viewCorridors: "Networks",
+          viewTraffic: "Density",
+          heatLow: "Single track",
+          heatHigh: "Multi-track",
+          zoomHint: "Ctrl + scroll to zoom · drag to pan",
         },
         chicagoEyebrow: "The Continental Junction",
         chicagoTitle: "Chicago: Where All the Rails Meet",
@@ -232,6 +238,10 @@ export default async function RailNetworkPage() {
               routes={RAIL_ROUTES}
               nodes={RAIL_NODES}
               accent="#E8B923"
+              backgroundNetwork
+              variant="rail"
+              backgroundGeoms={railData as unknown as Record<string, { segments: [number, number][][]; miles: number; tracks?: number }>}
+              enableHeatmap
               labels={copy.mapLabels}
             />
           </section>
