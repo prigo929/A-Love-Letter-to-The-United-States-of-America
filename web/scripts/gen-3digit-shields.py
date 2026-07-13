@@ -63,19 +63,26 @@ def series_c_path(fn):
 _banner_d = series_c_path("I-5.svg")
 _bx0, _bx1, _by0, _by1 = parse_path(_banner_d).bbox()
 _bcx, _bcy = (_bx0 + _bx1) / 2, (_by0 + _by1) / 2
-BANNER_SCALE = 1.15
-BANNER_CX, BANNER_CY = 375.0, 70.5  # centre of the 3-digit shield's red field
+# The real 3-digit banner is the SAME size as the single-digit banner (verified
+# against I-101/I-135: x[184,566] w=383, y[49,114]); only its centre moves from
+# x=300 to x=375. So no scale, no vertical shift — a pure horizontal recentre.
 banner = (
-    '<path fill="#fff" d="%s" transform="translate(%.3f,%.3f) scale(%.4f) '
-    'translate(%.3f,%.3f)"/>'
-    % (_banner_d, BANNER_CX, BANNER_CY, BANNER_SCALE, -_bcx, -_bcy)
+    '<path fill="#fff" d="%s" transform="translate(%.3f,0)"/>'
+    % (_banner_d, 375.0 - _bcx)
 )
 
 # ── Number composition ────────────────────────────────────────────────────────
-GAP = 52.0        # ink gap between digits, measured on real 2-digit shields
-CENTER_X = 375.0  # horizontal centre of the 750-wide shield
-CENTER_Y = 315.0  # vertical centre of the number (matches 2-digit shields)
-TARGET_W = 540.0  # worst-case number width the 3-digit shield can hold
+# Digit metrics measured on the real 3-digit shields (I-101/I-120/I-135/I-180):
+# natural Series D glyphs, ~51px ink gap, whole number centred at x=375, held at
+# full size until it would overflow the shield.
+GAP = 51.0
+CENTER_X = 375.0
+CENTER_Y = 315.0
+TARGET_W = 545.0
+
+# The eight shields that survived as genuine AASHTO originals — kept verbatim as
+# the visual reference; everything else is regenerated to match them.
+REAL_ORIGINALS = {101, 105, 110, 120, 135, 180, 195, 685}
 
 
 def compose(num: int) -> str:
@@ -111,6 +118,8 @@ def build(num: int) -> str:
 count = 0
 for path in glob.glob(os.path.join(SHIELD_DIR, "I-[0-9][0-9][0-9].svg")):
     n = int(os.path.basename(path)[2:-4])
+    if n in REAL_ORIGINALS:
+        continue  # keep the genuine AASHTO reference shields untouched
     open(path, "w", encoding="utf-8").write(build(n))
     count += 1
 
