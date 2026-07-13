@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface Hotspot {
   id: string;
@@ -145,6 +145,20 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
 
         <svg viewBox="0 0 640 360" className="w-full h-auto relative z-10 select-none my-auto">
           <defs>
+            {/* Depth gradients: cool air above grade, warm compacted earth below */}
+            <linearGradient id="sky-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#0c0e12" />
+              <stop offset="1" stopColor="#08090b" />
+            </linearGradient>
+            <linearGradient id="earth-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#171310" />
+              <stop offset="1" stopColor="#0a0806" />
+            </linearGradient>
+            <linearGradient id="road-surf" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#26262a" />
+              <stop offset="1" stopColor="#161619" />
+            </linearGradient>
+
             {/* Soft glowing filter for interactive highlights */}
             <filter id="hud-glow" x="-30%" y="-30%" width="160%" height="160%">
               <feGaussianBlur stdDeviation="3" result="blur" />
@@ -187,6 +201,12 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
             </pattern>
           </defs>
 
+          {/* ── Ground plane: air above grade, layered earth below ── */}
+          <rect x={0} y={0} width={640} height={245} fill="url(#sky-grad)" />
+          <rect x={0} y={245} width={640} height={115} fill="url(#earth-grad)" />
+          {/* horizon grade line with a faint warm glow */}
+          <line x1={0} y1={245} x2={640} y2={245} stroke="rgba(232,185,35,0.18)" strokeWidth={1} />
+
           {/* ── Bridge Overhead Structure ── */}
           {/* Bridge solid deck */}
           <path 
@@ -203,10 +223,7 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
           <rect x={12} y={68} width={28} height={177} fill="#111" stroke={activeId === "clearance" ? "#E8B923" : "#222"} strokeWidth={1} style={{ transition: "stroke 0.3s ease" }} />
           <rect x={600} y={68} width={28} height={177} fill="#111" stroke={activeId === "clearance" ? "#E8B923" : "#222"} strokeWidth={1} style={{ transition: "stroke 0.3s ease" }} />
 
-          {/* ── Sub-base Strata Layers (Ground) ── */}
-          {/* Base bedrock layer */}
-          <rect x={0} y={245} width={640} height={115} fill="#0d0d0d" />
-          <line x1={0} y1={245} x2={640} y2={245} stroke="#333" strokeWidth={1.2} />
+          {/* ── Sub-base Strata Layers (Ground) — earth plane drawn above ── */}
 
           {/* Stabilized Granular Sub-base Strata */}
           <rect 
@@ -243,10 +260,10 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
           />
 
           {/* Paved Travel Surface */}
-          <polygon 
-            points="40,235 600,235 604,245 36,245" 
-            fill={activeId === "lanes" ? "#1a1813" : "#141414"} 
-            stroke={activeId === "lanes" ? "#E8B923" : "#383838"} 
+          <polygon
+            points="40,235 600,235 604,245 36,245"
+            fill={activeId === "lanes" ? "#211d15" : "url(#road-surf)"}
+            stroke={activeId === "lanes" ? "#E8B923" : "#4a4a4a"}
             strokeWidth={1}
             style={{ transition: "all 0.3s ease" }}
           />
@@ -265,12 +282,12 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
 
           {/* Lane Markings */}
           {/* Solid outer white fog line */}
-          <line x1={120} y1={235} x2={120} y2={245} stroke="#888" strokeWidth={1.5} />
-          <line x1={520} y1={235} x2={520} y2={245} stroke="#888" strokeWidth={1.5} />
-          
+          <line x1={120} y1={235} x2={120} y2={245} stroke="#d6d6d6" strokeWidth={1.5} />
+          <line x1={520} y1={235} x2={520} y2={245} stroke="#d6d6d6" strokeWidth={1.5} />
+
           {/* Dashed lane dividers */}
-          <line x1={220} y1={235} x2={220} y2={245} stroke={activeId === "lanes" ? "#E8B923" : "#888"} strokeWidth={1.2} strokeDasharray="4 3" style={{ transition: "stroke 0.3s ease" }} />
-          <line x1={420} y1={235} x2={420} y2={245} stroke={activeId === "lanes" ? "#E8B923" : "#888"} strokeWidth={1.2} strokeDasharray="4 3" style={{ transition: "stroke 0.3s ease" }} />
+          <line x1={220} y1={235} x2={220} y2={245} stroke={activeId === "lanes" ? "#E8B923" : "#c9c9c9"} strokeWidth={1.2} strokeDasharray="4 3" style={{ transition: "stroke 0.3s ease" }} />
+          <line x1={420} y1={235} x2={420} y2={245} stroke={activeId === "lanes" ? "#E8B923" : "#c9c9c9"} strokeWidth={1.2} strokeDasharray="4 3" style={{ transition: "stroke 0.3s ease" }} />
 
           {/* Concrete Jersey Median Barrier */}
           <polygon 
@@ -513,12 +530,13 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
             {isRo ? "Sistem Metric & Specificații" : "Metric HUD & Specifications"}
           </span>
           
-          <AnimatePresence mode="wait">
+          {/* Keyed remount (no AnimatePresence): an exit-gated swap can deadlock
+              under React 19 when the outgoing child never finishes exiting. */}
+          <div>
             <motion.div
               key={active.id}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.22, ease: "easeOut" }}
             >
               {/* Dynamic stats readout if present */}
@@ -559,7 +577,7 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
                 ))}
               </div>
             </motion.div>
-          </AnimatePresence>
+          </div>
         </div>
 
         {/* Tab selection indicators (bottom layout) */}

@@ -17,6 +17,7 @@ import {
 } from "@/components/shared/CinematicSystem";
 import { NetworkMap } from "@/components/infrastructure/NetworkMap";
 import { AnatomyDiagram } from "@/components/infrastructure/AnatomyDiagram";
+import { InterchangeTypology } from "@/components/infrastructure/InterchangeTypology";
 import { SerifLede, Reveal } from "@/components/infrastructure/InfraMotion";
 import {
   HIGHWAY_ERAS,
@@ -129,6 +130,21 @@ export default async function HighwaySystemPage() {
         mythLabel: "MIT",
         mythText:
           "„Una din cinci mile trebuie să fie dreaptă, ca pistă de aterizare de urgență.” Fals — este o legendă urbană. Niciun standard federal nu a cerut vreodată acest lucru.",
+        quirksTitle: "Ciudățeniile numerotării",
+        quirksItems: [
+          {
+            k: "Nu există I-50, nici I-60",
+            v: "Grila le sare intenționat. O I-50 sau o I-60 ar merge alături de U.S. 50 și U.S. 60 prin aceleași state, iar numere identice pe un drum federal și pe o interstatală au fost considerate o rețetă sigură pentru confuzie.",
+          },
+          {
+            k: "Ruta care se desparte: I-35E și I-35V",
+            v: "I-35 este singura rută primară care se bifurcă în două, și nu o dată, ci de două ori — în jurul aglomerării Dallas–Fort Worth și al orașelor gemene Minneapolis–Saint Paul — ca niciunul dintre orașe să nu-l revendice pe celălalt. Apoi se reunește.",
+          },
+          {
+            k: "Numerele din trei cifre se repetă",
+            v: "Rutele auxiliare se resetează de la un oraș la altul. Există mai multe I-495, I-465 și I-610 în toată țara, fiindcă o centură trebuie să fie unică doar în propriul oraș, nu la nivel național.",
+          },
+        ],
         econEyebrow: "Copiii autostrăzii",
         econTitle: "Drumul care a construit o economie",
         econIntro:
@@ -239,6 +255,21 @@ export default async function HighwaySystemPage() {
         mythLabel: "MYTH",
         mythText:
           "“One in every five miles must be straight, to serve as an emergency airstrip.” False — it's an urban legend. No federal standard ever required it.",
+        quirksTitle: "Quirks of the Numbering",
+        quirksItems: [
+          {
+            k: "No I-50, no I-60",
+            v: "The grid skips them on purpose. An I-50 or I-60 would run beside U.S. 50 and U.S. 60 through the same states, and matching numbers on both a U.S. route and an Interstate was judged a recipe for confusion.",
+          },
+          {
+            k: "The route that splits: I-35E and I-35W",
+            v: "I-35 is the one primary route that forks in two, and not once but twice — around Dallas–Fort Worth and around Minneapolis–Saint Paul — so neither city could claim the other's traffic. Then it rejoins.",
+          },
+          {
+            k: "Three-digit numbers repeat",
+            v: "Auxiliary routes reset from metro to metro. There are several I-495s, I-465s and I-610s across the country, because a beltway only needs to be unique within its own city, not nationwide.",
+          },
+        ],
         econEyebrow: "The Highway's Children",
         econTitle: "The Road That Built an Economy",
         econIntro:
@@ -360,6 +391,20 @@ export default async function HighwaySystemPage() {
                 <p className="macro-body !text-lg leading-relaxed text-white/80">{copy.mythText}</p>
               </div>
             </div>
+            {/* Number quirks — extends the shield decoder */}
+            <div className="mt-20">
+              <h3 className="mb-8 font-macro-display text-2xl font-bold text-white">{copy.quirksTitle}</h3>
+              <div className="grid gap-x-12 gap-y-8 md:grid-cols-3">
+                {copy.quirksItems.map((q) => (
+                  <div key={q.k} className="border-t border-[#E8B923]/30 pt-6">
+                    <h4 className="mb-3 font-macro-display text-lg font-bold leading-tight text-[#E8B923]">
+                      {q.k}
+                    </h4>
+                    <p className="macro-body !text-sm leading-relaxed text-white/60">{q.v}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </section>
 
           {/* ── Pull stat ── */}
@@ -397,6 +442,22 @@ export default async function HighwaySystemPage() {
               {isRo ? "Standardul de Construcție Eisenhower" : "The Eisenhower Construction Standard"}
             </h2>
             <AnatomyDiagram locale={locale} />
+          </section>
+
+          {/* ── Interchange typology ── */}
+          <section className="border-t border-white/5 pt-24">
+            <span className="macro-eyebrow">
+              {isRo ? "Unde Se Întâlnesc Autostrăzile" : "Where Highways Meet"}
+            </span>
+            <h2 className="macro-section-title mb-6 mt-6">
+              {isRo ? "Anatomia unui Nod Rutier" : "Anatomy of an Interchange"}
+            </h2>
+            <p className="macro-body mb-14 max-w-4xl">
+              {isRo
+                ? "O autostradă nu are voie să întâlnească o alta la nivel. Fiecare încrucișare este rezolvată de una dintre câteva forme standard, alese după cât teren, câți bani și cât trafic sunt în joc."
+                : "An Interstate is never allowed to cross another road at grade. Every junction is resolved by one of a handful of standard forms, chosen by how much land, money, and traffic are in play."}
+            </p>
+            <InterchangeTypology locale={locale} />
           </section>
 
           {/* ── Strategic design ── */}
