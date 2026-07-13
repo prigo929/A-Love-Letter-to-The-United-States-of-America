@@ -59,7 +59,7 @@ export default async function HighwaySystemPage() {
         heroStats: [
           { value: "1956", label: "legea semnată de Eisenhower" },
           { value: "3,020 mi", label: "cea mai lungă rută — I-90" },
-          { value: "~25%", label: "din traficul auto al națiunii" },
+          { value: "25.9%", label: "din milele parcurse de vehicule în SUA, 2024" },
         ],
         lede: "Înainte de a exista Sistemul, traversarea Americii cu mașina era o expediție. După el, a devenit un drept.",
         storyTitle: "De la noroi la autostradă",
@@ -77,6 +77,9 @@ export default async function HighwaySystemPage() {
         mapTitle: "Coridoarele continentului",
         mapBody:
           "Comută între drumurile cu nume de dinainte de 1926 și Sistemul Interstatal care le-a înlocuit. Întreaga rețea primară este desenată din geometria oficială FHWA — atinge orice linie, nu doar coridoarele evidențiate, pentru lungimea și traficul ei real.",
+        trafficSource:
+          "Sursă trafic: FHWA Highway Statistics 2024, Table VM-1. Interstatalele au transportat 854,4 miliarde mile-vehicul în 2024 — 271,8 miliarde rural + 582,6 miliarde urban — adică 25,9% din totalul SUA. Harta de căldură folosește media zilnică anuală a traficului (AADT) pe segmente din datele FHWA National Highway System.",
+        trafficSourceHref: "https://www.fhwa.dot.gov/policyinformation/statistics/2024/vm1.cfm",
         mapLabels: {
           eraLabel: "Alege epoca",
           corridorsLabel: "Treci peste un coridor pentru detalii — orice linie de pe hartă e interactivă",
@@ -91,9 +94,9 @@ export default async function HighwaySystemPage() {
           heatLow: "Liniștit",
           heatHigh: "Aglomerat",
         },
-        pullStat: "≈1%",
+        pullStat: "1.16%",
         pullLabel:
-          "din mileajul rutier al Americii este autostradă interstatală — și duce aproximativ un sfert din întregul trafic auto al națiunii.",
+          "din lungimea drumurilor publice ale Americii este autostradă interstatală — dar duce 25,9% din toate milele parcurse de vehicule, conform FHWA 2024.",
         engineeringEyebrow: "Regulile jocului",
         engineeringTitle: "Ingineria din spatele libertății",
         stats: [
@@ -184,7 +187,7 @@ export default async function HighwaySystemPage() {
         heroStats: [
           { value: "1956", label: "the Act signed by Eisenhower" },
           { value: "3,020 mi", label: "the longest route — I-90" },
-          { value: "~25%", label: "of the nation's vehicle-miles" },
+          { value: "25.9%", label: "of U.S. vehicle-miles, 2024" },
         ],
         lede: "Before the System, crossing America by car was an expedition. After it, crossing America became a birthright.",
         storyTitle: "From Mud to Motorway",
@@ -202,6 +205,9 @@ export default async function HighwaySystemPage() {
         mapTitle: "Corridors of the Continent",
         mapBody:
           "Toggle between the named trails that preceded 1926 and the Interstate System that replaced them. The entire primary grid is drawn from official FHWA geometry — touch any line, not just the featured corridors, for its real length and traffic.",
+        trafficSource:
+          "Traffic source: FHWA Highway Statistics 2024, Table VM-1. Interstates carried 854.4 billion vehicle-miles in 2024 — 271.8B rural + 582.6B urban — equal to 25.9% of all U.S. vehicle-miles. The heat map uses FHWA National Highway System segment AADT data.",
+        trafficSourceHref: "https://www.fhwa.dot.gov/policyinformation/statistics/2024/vm1.cfm",
         mapLabels: {
           eraLabel: "Choose the era",
           corridorsLabel: "Hover a corridor for its story — every line on the map is interactive",
@@ -216,9 +222,9 @@ export default async function HighwaySystemPage() {
           heatLow: "Quiet",
           heatHigh: "Jammed",
         },
-        pullStat: "≈1%",
+        pullStat: "1.16%",
         pullLabel:
-          "of America's road mileage is Interstate highway — yet it carries roughly a quarter of all the nation's vehicle traffic.",
+          "of America's public road mileage is Interstate highway — yet it carries 25.9% of all U.S. vehicle-miles, according to FHWA 2024 data.",
         engineeringEyebrow: "The Rules of the Road",
         engineeringTitle: "The Engineering Behind the Freedom",
         stats: [
@@ -303,8 +309,8 @@ export default async function HighwaySystemPage() {
     <>
       <MacroStyles />
       <MacroHero
-        imageSrc={SITE_IMAGES.infraGlenwoodCanyon}
-        imageAlt={isRo ? "I-70 prin Glenwood Canyon" : "I-70 through Glenwood Canyon"}
+        imageSrc={SITE_IMAGES.infraUs75Loop12}
+        imageAlt={isRo ? "US-75 la Texas State Highway Loop 12" : "US-75 at Texas State Highway Loop 12"}
         eyebrow={copy.heroEyebrow}
         titleLead={copy.heroLead}
         titleAccent={copy.heroAccent}
@@ -359,6 +365,17 @@ export default async function HighwaySystemPage() {
               initialEra="interstate"
               labels={copy.mapLabels}
             />
+            <p className="mt-5 max-w-4xl font-macro-mono text-[11px] uppercase leading-relaxed tracking-[0.14em] text-white/45">
+              {copy.trafficSource}{" "}
+              <a
+                href={copy.trafficSourceHref}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[#E8B923]/80 transition-colors hover:text-[#E8B923]"
+              >
+                FHWA Table VM-1
+              </a>
+            </p>
           </section>
 
           {/* ── By the numbers: cost, shield decoder, myth ── */}

@@ -556,7 +556,7 @@ export const NAV_SECTIONS = [
     title: "Infrastructure",
     href: "/infrastructure",
     description: "Continental integration, global aviation hubs, and megaprojects",
-    imageSrc: SITE_IMAGES.homeGoldenGateBridge,
+    imageSrc: SITE_IMAGES.infraUs75Loop12,
     badge: "Engineering Feats",
     items: [
       {
@@ -600,7 +600,7 @@ export const NAV_SECTIONS = [
     title: "Literature & Philosophy",
     href: "/literature-philosophy",
     description: "Individualism, pragmatism, and literary masterworks",
-    imageSrc: SITE_IMAGES.homeDeclarationIndependence,
+    imageSrc: SITE_IMAGES.literatureLibraryOfCongressReadingRoom,
     badge: "American Mind",
     items: [
       {
@@ -634,7 +634,7 @@ export const NAV_SECTIONS = [
     title: "Art & Architecture",
     href: "/art-architecture",
     description: "The skyscraper revolution, Hudson River painters, and pop art",
-    imageSrc: SITE_IMAGES.homeNycSunset,
+    imageSrc: SITE_IMAGES.artWashingtonCrossingDelaware,
     badge: "Visual Legacy",
     items: [
       {

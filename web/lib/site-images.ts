@@ -49,6 +49,9 @@ import infraFloridaKeys from "@/IMAGES/Infrastructure/Flordia Keys Highway.jpg";
 import infraPanamaCanal from "@/IMAGES/Infrastructure/Completion of the Panama Canal.jpg";
 import infraGoldenSpike from "@/IMAGES/History/The Driving of the Golden Spike.jpg";
 import infraInterstateConstruction from "@/IMAGES/Tech & Commerce/interstate-construction.jpg";
+import infraUs75Loop12 from "@/IMAGES/Infrastructure/us-75-at-texas-state-highway-loop-12.jpg";
+import literatureLibraryOfCongressReadingRoom from "@/IMAGES/Literature/Main reading room at the Library of Congress in Washington, D.C.jpg";
+import artWashingtonCrossingDelaware from "@/IMAGES/Art/Washington_Crossing_the_Delaware_by_Emanuel_Leutze,_MMA-NYC,_1851.jpg";
 
 import denaliNationalPark from "@/IMAGES/Landscapes/Mount Denali National Park.jpg";
 import glacierNationalPark from "@/IMAGES/Landscapes/Glacier National Park.jpg";
@@ -573,6 +576,9 @@ export const SITE_IMAGES = {
   infraPanamaCanal: infraPanamaCanal.src,
   infraGoldenSpike: infraGoldenSpike.src,
   infraInterstateConstruction: infraInterstateConstruction.src,
+  infraUs75Loop12: infraUs75Loop12.src,
+  literatureLibraryOfCongressReadingRoom: literatureLibraryOfCongressReadingRoom.src,
+  artWashingtonCrossingDelaware: artWashingtonCrossingDelaware.src,
   denaliNationalPark: denaliNationalPark.src,
   glacierNationalPark: glacierNationalPark.src,
   yosemiteNationalPark: yosemiteNationalPark.src,
