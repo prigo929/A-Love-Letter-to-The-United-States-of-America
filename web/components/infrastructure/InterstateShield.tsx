@@ -4,7 +4,12 @@
 // Renders the real AASHTO Interstate shield SVGs (public/interstate-shields/,
 // sourced from the official marker set). Two entry points:
 //   · InterstateShield — an <img>, for HTML contexts (legend chips, detail panel)
-//   · MapShield        — an SVG <image>, for embedding in the zoomable map
+//   · MapShield        — an <img> inside <foreignObject>, for the zoomable map
+//
+// NOTE: the map deliberately avoids an SVG <image href="*.svg"> because Safari
+// (and some Firefox versions) refuse to render an SVG document referenced that
+// way, showing a broken-image glyph. An HTML <img> inside <foreignObject> paints
+// the same asset reliably across browsers.
 //
 // Shields exist for 1- and 2-digit primary routes; anything else falls back to
 // null so callers can render their own marker.
@@ -61,15 +66,26 @@ export function MapShield({
 }) {
   if (!hasShield(number)) return null;
   return (
-    <image
-      href={SHIELD_SRC(number)}
+    <foreignObject
       x={cx - size / 2}
       y={cy - size / 2}
       width={size}
       height={size}
-      opacity={opacity}
-      preserveAspectRatio="xMidYMid meet"
-      style={{ pointerEvents: "none", transition: "opacity 0.3s ease" }}
-    />
+      style={{ overflow: "visible", pointerEvents: "none" }}
+    >
+      {/* React switches to the XHTML namespace for foreignObject children, so this
+          <img> renders as real HTML in every browser */}
+      <div style={{ width: size, height: size, lineHeight: 0 }}>
+        {/* eslint-disable-next-line @next/next/no-img-element -- SVG, no optimization needed */}
+        <img
+          src={SHIELD_SRC(number)}
+          width={size}
+          height={size}
+          alt={`Interstate ${number}`}
+          draggable={false}
+          style={{ display: "block", opacity, transition: "opacity 0.3s ease" }}
+        />
+      </div>
+    </foreignObject>
   );
 }
