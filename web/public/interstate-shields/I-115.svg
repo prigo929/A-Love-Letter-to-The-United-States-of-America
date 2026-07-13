@@ -1,41 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<meta charset="utf-8">
-<title>Wikimedia Error</title>
-<style>
-* { margin: 0; padding: 0; }
-body { background: #fff; font: 15px/1.6 sans-serif; color: #333; }
-.content { margin: 7% auto 0; padding: 2em 1em 1em; max-width: 640px; display: flex; flex-direction: row; flex-wrap: wrap; }
-.footer { clear: both; margin-top: 14%; border-top: 1px solid #e5e5e5; background: #f9f9f9; padding: 2em 0; font-size: 0.8em; text-align: center; }
-img { margin: 0 2em 2em 0; }
-a img { border: 0; }
-h1 { margin-top: 1em; font-size: 1.2em; }
-.content-text { flex: 1; }
-p { margin: 0.7em 0 1em 0; }
-a { color: #0645ad; text-decoration: none; }
-a:hover { text-decoration: underline; }
-code { font-family: sans-serif; }
-summary { font-weight: bold; cursor: pointer; }
-details[open] { background: #970302; color: #dfdedd; }
-.text-muted { color: #777; }
-@media (prefers-color-scheme: dark) {
-  a { color: #9e9eff; }
-  body { background: transparent; color: #ddd; }
-  .footer { border-top: 1px solid #444; background: #060606; }
-  #logo { filter: invert(1) hue-rotate(180deg); }
-  .text-muted { color: #888; }
-}
-</style>
-<meta name="color-scheme" content="light dark">
-<div class="content" role="main">
-<a href="https://www.wikimedia.org"><img id="logo" src="https://www.wikimedia.org/static/images/wmf-logo.png" srcset="https://www.wikimedia.org/static/images/wmf-logo-2x.png 2x" alt="Wikimedia" width="135" height="101">
-</a>
-<div class="content-text">
-<h1>Error</h1>
-
-<p>Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)</p>
-</div>
-</div>
-<div class="footer"><p>If you report this error to the Wikimedia System Administrators, please include the details below.</p><p class="text-muted"><code>Request served via cp3074 cp3074, Varnish XID 364417362<br>Upstream caches: cp3074 int<br>Error: 429, Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1) at Sun, 12 Jul 2026 13:10:04 GMT<br><details><summary>Sensitive client information</summary>IP address: 2a02:a58:950a:bd00:c997:d83:ebce:7685</details></code></p>
-</div>
-</html>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="751" height="601" viewBox="0 0 750 599.999" id="Layer_1" xml:space="preserve"><g
+     transform="matrix(0.998668,0,0,0.99867,0.499334,0.398971)"
+     id="g5"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.99999899;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"><path
+       d="M 38.915039,0 C 92.236328,15.525391 148.625,23.849609 206.95801,23.849609 265.29053,23.849609 321.6792,15.525391 375,4.883e-4 428.32031,15.525391 484.70898,23.849609 543.04199,23.849609 601.375,23.849609 657.76367,15.525391 711.08398,0 736.06445,54.121094 750,114.3877 750,177.90918 750,395.71777 586.16016,575.25391 375,599.99902 163.83887,575.25391 0,395.71777 0,177.90918 0,114.3877 13.935059,54.121094 38.915039,0 z"
+       id="path7"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.99999899;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" /><path
+       d="M 38.915039,0 C 92.236328,15.525391 148.625,23.849609 206.95801,23.849609 265.29053,23.849609 321.6792,15.525391 375,4.883e-4 428.32031,15.525391 484.70898,23.849609 543.04199,23.849609 601.375,23.849609 657.76367,15.525391 711.08398,0 736.06445,54.121094 750,114.3877 750,177.90918 750,395.71777 586.16016,575.25391 375,599.99902 163.83887,575.25391 0,395.71777 0,177.90918 0,114.3877 13.935059,54.121094 38.915039,0 z"
+       id="path9"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.99999899;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" /></g><g
+     transform="matrix(1.0056,0,0,1.01014,-2.10137,-3.70189)"
+     id="g11"
+     style="fill:#003f87;fill-opacity:1"><path
+       d="m 15,177.90918 c 0,-12.78174 0.584961,-25.42676 1.729004,-37.91016 l 716.541506,0 C 734.41504,152.48242 735,165.12744 735,177.90918 735,387.42285 577.85547,560.22852 375,584.89062 172.14453,560.22852 15,387.42285 15,177.90918 z"
+       id="path13"
+       style="fill:#003f87;fill-opacity:1" /></g><g
+     transform="matrix(1.00604,0,0,1.02708,-2.2645,-3.1523)"
+     id="g15"
+     style="fill:#af1e2d;fill-opacity:1"><path
+       d="m 47.37793,17.942871 c 50.892089,13.635254 104.38769,20.90625 159.58203,20.90625 58.26074,0 114.6294,-8.101074 168.04004,-23.237793 53.41113,15.136719 109.7793,23.237793 168.04004,23.237793 55.19434,0 108.69043,-7.270508 159.58105,-20.90625 14.26172,33.624512 24.16407,69.546387 28.9961,107.056149 l -713.235354,0 C 23.214844,87.489258 33.116211,51.567383 47.37793,17.942871 z"
+       id="path17"
+       style="fill:#af1e2d;fill-opacity:1" /></g><text x="375" y="108" text-anchor="middle" font-family="'Arial Narrow','Helvetica Neue Condensed',Helvetica,Arial,sans-serif" font-weight="bold" font-size="46" letter-spacing="2" fill="#ffffff">INTERSTATE</text><text x="375" y="470" text-anchor="middle" font-family="'Arial Narrow','Helvetica Neue Condensed',Helvetica,Arial,sans-serif" font-weight="bold" font-size="300" fill="#ffffff">115</text></svg>

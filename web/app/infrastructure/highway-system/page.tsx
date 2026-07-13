@@ -324,6 +324,8 @@ export default async function HighwaySystemPage() {
               accent="#E8B923"
               backgroundNetwork
               enableHeatmap
+              hideEraToggle
+              initialEra="interstate"
               labels={copy.mapLabels}
             />
           </section>

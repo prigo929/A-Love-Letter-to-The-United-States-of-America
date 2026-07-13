@@ -385,15 +385,25 @@ function RoutesLayer({
         </g>
       ))}
 
-      {/* Interstate shield badges — featured corridors always, plus the selected
-          route. Counter-scaled so they hold a constant on-screen size. */}
+      {/* Interstate shield badges. Every numbered route carries one — featured
+          corridors and the selected route always; the rest of the primary grid
+          and the 3-digit rings/spurs (I-610, I-495 …) reveal as you zoom in, so
+          the national overview stays legible instead of a wall of shields.
+          Counter-scaled to hold a constant on-screen size. */}
       {drawn.map(({ route, anchor }) => {
         const num = interstateNumber(route.id);
+        if (!num || !anchor) return null;
         const isFeatured = featuredIds.has(route.id);
         const isSelected = selectedId === route.id;
-        // Heat mode keeps the map uncluttered — only the selected shield shows.
-        if (!num || !anchor || (heat ? !isSelected : !isFeatured && !isSelected)) return null;
-        const px = isSelected ? 26 : 17; // on-screen size in base user units
+        const aux = parseInt(num, 10) > 99; // 3-digit beltway / spur
+        // Reveal thresholds keep the map uncluttered at low zoom.
+        let show: boolean;
+        if (heat) show = isSelected; // heat mode: only the selected shield
+        else if (isFeatured || isSelected) show = true;
+        else if (aux) show = zoom >= 3.2; // dense metro rings appear last
+        else show = zoom >= 2.2; // other primaries appear on a slight zoom-in
+        if (!show) return null;
+        const px = isSelected ? 26 : isFeatured ? 17 : 13; // on-screen size
         const faded = selectedId !== null && !isSelected;
         return (
           <MapShield
@@ -402,7 +412,7 @@ function RoutesLayer({
             cx={anchor[0]}
             cy={anchor[1]}
             size={px * k}
-            opacity={faded ? 0.35 : 1}
+            opacity={faded ? 0.5 : 1}
           />
         );
       })}
@@ -423,6 +433,10 @@ interface NetworkMapProps {
   backgroundNetwork?: boolean;
   /** Offer a traffic-heat colour mode toggle (needs AADT-bearing routes). */
   enableHeatmap?: boolean;
+  /** Hide the era-switch pills and lock the map to a single era. */
+  hideEraToggle?: boolean;
+  /** Era to open on (defaults to the first era). */
+  initialEra?: string;
   labels: {
     eraLabel: string;
     corridorsLabel: string;
@@ -449,9 +463,11 @@ export function NetworkMap({
   accent = "#fbbf24",
   backgroundNetwork = false,
   enableHeatmap = false,
+  hideEraToggle = false,
+  initialEra,
   labels,
 }: NetworkMapProps) {
-  const [era, setEra] = useState(eras[0].id);
+  const [era, setEra] = useState(initialEra ?? eras[0].id);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [heat, setHeat] = useState(false);
   const [position, setPosition] = useState<{ coordinates: LngLat; zoom: number }>({
@@ -517,39 +533,41 @@ export function NetworkMap({
 
   return (
     <div className="w-full">
-      {/* Era toggle */}
+      {/* Era toggle (hidden when the map is locked to a single era) */}
       <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <div>
-          <span className="font-macro-mono text-[11px] font-bold uppercase tracking-[0.25em] text-white/35">
-            {labels.eraLabel}
-          </span>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {eras.map((e) => {
-              const active = era === e.id;
-              return (
-                <button
-                  key={e.id}
-                  onClick={() => switchEra(e.id)}
-                  className="group rounded-full border px-5 py-2.5 text-left transition-all duration-300"
-                  style={{
-                    borderColor: active ? accent : "rgba(255,255,255,0.12)",
-                    background: active ? `${accent}14` : "transparent",
-                  }}
-                >
-                  <span
-                    className="block font-macro-display text-sm font-bold tracking-tight"
-                    style={{ color: active ? accent : "rgba(255,255,255,0.55)" }}
+        {!hideEraToggle && (
+          <div>
+            <span className="font-macro-mono text-[11px] font-bold uppercase tracking-[0.25em] text-white/35">
+              {labels.eraLabel}
+            </span>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {eras.map((e) => {
+                const active = era === e.id;
+                return (
+                  <button
+                    key={e.id}
+                    onClick={() => switchEra(e.id)}
+                    className="group rounded-full border px-5 py-2.5 text-left transition-all duration-300"
+                    style={{
+                      borderColor: active ? accent : "rgba(255,255,255,0.12)",
+                      background: active ? `${accent}14` : "transparent",
+                    }}
                   >
-                    {e.label[locale]}
-                  </span>
-                  <span className="block font-macro-mono text-[10px] uppercase tracking-[0.18em] text-white/30">
-                    {e.sublabel[locale]}
-                  </span>
-                </button>
-              );
-            })}
+                    <span
+                      className="block font-macro-display text-sm font-bold tracking-tight"
+                      style={{ color: active ? accent : "rgba(255,255,255,0.55)" }}
+                    >
+                      {e.label[locale]}
+                    </span>
+                    <span className="block font-macro-mono text-[10px] uppercase tracking-[0.18em] text-white/30">
+                      {e.sublabel[locale]}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
         <div className="flex flex-col items-start gap-3 md:items-end">
           {/* Colour-mode toggle: corridor colours vs traffic heat */}
           {enableHeatmap && era === "interstate" && (
