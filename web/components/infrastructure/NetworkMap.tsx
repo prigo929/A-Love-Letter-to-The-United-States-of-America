@@ -33,7 +33,8 @@ import type { NetworkEra, NetworkRoute, MapNode, LngLat } from "@/lib/data/infra
 interface RouteGeom {
   segments: LngLat[][];
   miles: number;
-  aadt: number;
+  aadt?: number; // interstates: average daily traffic
+  tracks?: number; // rail: average track count
 }
 const INTERSTATE_GEOMS = interstatesData as unknown as Record<string, RouteGeom>;
 
@@ -49,10 +50,14 @@ const HEAT_STOPS: [number, [number, number, number]][] = [
   [0.7, [251, 191, 36]], // amber
   [1.0, [239, 68, 68]], // red
 ];
-function heatColor(aadt: number): string {
-  const lo = Math.log10(5000);
-  const hi = Math.log10(250000);
-  const t = Math.max(0, Math.min(1, (Math.log10(Math.max(1000, aadt)) - lo) / (hi - lo)));
+/** Normalised heat value in [0,1] from a metric and its domain. */
+function heatT(value: number, lo: number, hi: number, log: boolean): number {
+  const v = log ? Math.log10(Math.max(1, value)) : value;
+  const l = log ? Math.log10(Math.max(1, lo)) : lo;
+  const h = log ? Math.log10(Math.max(1, hi)) : hi;
+  return Math.max(0, Math.min(1, (v - l) / (h - l)));
+}
+function heatColorFromT(t: number): string {
   let a = HEAT_STOPS[0];
   let b = HEAT_STOPS[HEAT_STOPS.length - 1];
   for (let i = 0; i < HEAT_STOPS.length - 1; i++) {
@@ -66,6 +71,16 @@ function heatColor(aadt: number): string {
   const c = a[1].map((v, i) => Math.round(v + (b[1][i] - v) * f));
   return `rgb(${c[0]},${c[1]},${c[2]})`;
 }
+
+/** Heat colour + metric config, chosen by the map's background variant. */
+interface HeatConfig {
+  metric: (g: RouteGeom | undefined) => number;
+  lo: number;
+  hi: number;
+  log: boolean;
+}
+const HEAT_INTERSTATE: HeatConfig = { metric: (g) => g?.aadt ?? 0, lo: 5000, hi: 250000, log: true };
+const HEAT_RAIL: HeatConfig = { metric: (g) => g?.tracks ?? 1, lo: 1, hi: 3, log: false };
 
 /** Route number for shield lookup: "i90"→"90", "i610"→"610". Null for the named
  *  trails and for Alaska/Hawaii keys (ak1/hi1), which have no numbered shield. */
@@ -114,6 +129,28 @@ function describeKey(key: string, locale: "en" | "ro") {
   };
 }
 
+// Class I freight owners + Amtrak: display name, network colour, and role.
+const RAIL_INFO: Record<string, { name: string; color: string; freight: boolean }> = {
+  BNSF: { name: "BNSF Railway", color: "#f97316", freight: true },
+  UP: { name: "Union Pacific", color: "#facc15", freight: true },
+  CSXT: { name: "CSX Transportation", color: "#3b82f6", freight: true },
+  NS: { name: "Norfolk Southern", color: "#a855f7", freight: true },
+  CPKC: { name: "Canadian Pacific Kansas City", color: "#ef4444", freight: true },
+  CN: { name: "Canadian National", color: "#ec4899", freight: true },
+  AMTK: { name: "Amtrak", color: "#22d3ee", freight: false },
+};
+function describeRail(key: string, locale: "en" | "ro") {
+  const info = RAIL_INFO[key.toUpperCase()] ?? { name: key, color: "#94a3b8", freight: true };
+  const role = info.freight
+    ? locale === "ro"
+      ? "Rețea principală de marfă (Clasa I)"
+      : "Class I freight main line"
+    : locale === "ro"
+      ? "Rețeaua națională de pasageri"
+      : "National passenger network";
+  return { name: info.name, color: info.color, endpoints: role };
+}
+
 // ─── Path helpers ─────────────────────────────────────────────────────────────
 
 /** Projects waypoints and threads a gentle quadratic curve through them. */
@@ -160,6 +197,8 @@ function RoutesLayer({
   featuredIds,
   zoom,
   heat,
+  geoms,
+  heatCfg,
 }: {
   routes: NetworkRoute[];
   nodes: MapNode[];
@@ -170,6 +209,8 @@ function RoutesLayer({
   featuredIds: Set<string>;
   zoom: number;
   heat: boolean;
+  geoms: Record<string, RouteGeom>;
+  heatCfg: HeatConfig;
 }) {
   const { projection } = useMapContext();
   const k = 1 / zoom; // counter-scale factor for screen-constant sizes
@@ -179,8 +220,8 @@ function RoutesLayer({
       routes
         .filter((r) => r.era === era)
         .map((r) => {
-          const geom = INTERSTATE_GEOMS[r.id.toUpperCase()];
-          const aadt = geom?.aadt ?? 0;
+          const geom = geoms[r.id.toUpperCase()];
+          const aadt = heatCfg.metric(geom);
           // Anchor the route's shield badge on the middle vertex of its main
           // alignment, projected to screen space.
           const anchorFrom = (coords: LngLat[]): [number, number] | null =>
@@ -203,7 +244,7 @@ function RoutesLayer({
           return { route: r, d, dotD: d, anchor: anchorFrom(r.waypoints), aadt };
         })
         .filter((r) => r.d),
-    [routes, era, projection],
+    [routes, era, projection, geoms, heatCfg],
   );
 
   const projectedNodes = useMemo(
@@ -221,17 +262,18 @@ function RoutesLayer({
         const isSelected = selectedId === route.id;
         const dimmed = selectedId !== null && !isSelected;
 
-        // Traffic-heat mode recolours every route by its average daily traffic
-        // and thickens the busiest corridors, flattening the corridor/background
-        // distinction so the whole network reads as a flow map.
+        // Heat mode recolours every route by its metric (traffic for highways,
+        // track count for rail) and thickens the busiest corridors, flattening
+        // the corridor/background distinction so the whole network reads as flow.
+        const t = heat ? heatT(aadt, heatCfg.lo, heatCfg.hi, heatCfg.log) : 0;
         const strokeWidth = heat
-          ? (isSelected ? 1.2 : 0.6) + Math.min(2.4, Math.log10(Math.max(1000, aadt)) - 3) * 1.1
+          ? (isSelected ? 1.2 : 0.6) + t * 2.4
           : isSelected
             ? 2.1
             : isFeatured
               ? 1.5
               : 0.9;
-        const strokeColor = heat ? heatColor(aadt) : route.color;
+        const strokeColor = heat ? heatColorFromT(t) : route.color;
         const activeOpacity = heat
           ? isSelected
             ? 1.0
@@ -429,9 +471,13 @@ interface NetworkMapProps {
   nodes: MapNode[];
   /** Accent for the active era pill. */
   accent?: string;
-  /** Render the full primary-Interstate grid behind the featured corridors. */
+  /** Render the full background network behind the featured corridors. */
   backgroundNetwork?: boolean;
-  /** Offer a traffic-heat colour mode toggle (needs AADT-bearing routes). */
+  /** Which background dataset drives the network: Interstates or the rail net. */
+  variant?: "interstate" | "rail";
+  /** Background geometry (defaults to the Interstate grid when variant omitted). */
+  backgroundGeoms?: Record<string, RouteGeom>;
+  /** Offer a heat colour mode toggle (traffic for highways, tracks for rail). */
   enableHeatmap?: boolean;
   /** Hide the era-switch pills and lock the map to a single era. */
   hideEraToggle?: boolean;
@@ -462,11 +508,18 @@ export function NetworkMap({
   nodes,
   accent = "#fbbf24",
   backgroundNetwork = false,
+  variant = "interstate",
+  backgroundGeoms,
   enableHeatmap = false,
   hideEraToggle = false,
   initialEra,
   labels,
 }: NetworkMapProps) {
+  const isRail = variant === "rail";
+  const GEOMS = backgroundGeoms ?? INTERSTATE_GEOMS;
+  const heatCfg = isRail ? HEAT_RAIL : HEAT_INTERSTATE;
+  const bgEra = isRail ? "modern" : "interstate";
+  const describe = isRail ? describeRail : describeKey;
   const [era, setEra] = useState(initialEra ?? eras[0].id);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [heat, setHeat] = useState(false);
@@ -484,29 +537,37 @@ export function NetworkMap({
   const combinedRoutes = useMemo(() => {
     if (!backgroundNetwork) return routes;
     const list = [...routes];
-    for (const key of Object.keys(INTERSTATE_GEOMS)) {
+    for (const key of Object.keys(GEOMS)) {
       const id = key.toLowerCase();
       if (list.some((r) => r.id === id)) continue;
-      const geom = INTERSTATE_GEOMS[key];
-      const en = describeKey(key, "en");
-      const ro = describeKey(key, "ro");
+      const geom = GEOMS[key];
+      const en = describe(key, "en");
+      const ro = describe(key, "ro");
+      const miEn = geom.miles.toLocaleString("en-US");
+      const miRo = geom.miles.toLocaleString("ro-RO");
+      const description = isRail
+        ? {
+            en: `${en.name}: ${miEn} route-miles of ${en.endpoints.toLowerCase()} across the United States (FRA / NTAD North American Rail Network data).`,
+            ro: `${ro.name}: ${miRo} mile de rețea (${ro.endpoints.toLowerCase()}) în Statele Unite (date FRA / NTAD).`,
+          }
+        : {
+            en: `A route of the Interstate System. Along its ${miEn} miles, the average segment carries about ${(geom.aadt ?? 0).toLocaleString("en-US")} vehicles every day (FHWA National Highway System data).`,
+            ro: `O rută a Sistemului Interstatal. De-a lungul celor ${miRo} mile, segmentul mediu este tranzitat de circa ${(geom.aadt ?? 0).toLocaleString("ro-RO")} de vehicule în fiecare zi (date FHWA, National Highway System).`,
+          };
       list.push({
         id,
-        era: "interstate",
+        era: bgEra,
         name: { en: en.name, ro: ro.name },
         color: en.color,
         waypoints: [],
         endpoints: { en: en.endpoints, ro: ro.endpoints },
-        lengthLabel: `${geom.miles.toLocaleString("en-US")} mi`,
-        year: "1956–",
-        description: {
-          en: `A route of the Interstate System. Along its ${geom.miles.toLocaleString("en-US")} miles, the average segment carries about ${geom.aadt.toLocaleString("en-US")} vehicles every day (FHWA National Highway System data).`,
-          ro: `O rută a Sistemului Interstatal. De-a lungul celor ${geom.miles.toLocaleString("ro-RO")} mile, segmentul mediu este tranzitat de circa ${geom.aadt.toLocaleString("ro-RO")} de vehicule în fiecare zi (date FHWA, National Highway System).`,
-        },
+        lengthLabel: `${miEn} mi`,
+        year: isRail ? "Today" : "1956–",
+        description,
       });
     }
     return list;
-  }, [routes, backgroundNetwork]);
+  }, [routes, backgroundNetwork, GEOMS, describe, bgEra, isRail]);
 
   const eraRoutes = useMemo(() => combinedRoutes.filter((r) => r.era === era), [combinedRoutes, era]);
   const selected = useMemo(
@@ -514,9 +575,9 @@ export function NetworkMap({
     [eraRoutes, selectedId],
   );
   const selectedAadt = useMemo(() => {
-    if (!selected) return 0;
-    return INTERSTATE_GEOMS[selected.id.toUpperCase()]?.aadt ?? 0;
-  }, [selected]);
+    if (!selected || isRail) return 0; // rail has no per-route traffic stat
+    return GEOMS[selected.id.toUpperCase()]?.aadt ?? 0;
+  }, [selected, isRail, GEOMS]);
 
   const switchEra = (id: string) => {
     setEra(id);
@@ -569,8 +630,8 @@ export function NetworkMap({
           </div>
         )}
         <div className="flex flex-col items-start gap-3 md:items-end">
-          {/* Colour-mode toggle: corridor colours vs traffic heat */}
-          {enableHeatmap && era === "interstate" && (
+          {/* Colour-mode toggle: corridor colours vs heat */}
+          {enableHeatmap && era === bgEra && (
             <div className="flex rounded-full border border-white/12 p-0.5">
               {[
                 { on: false, label: labels.viewCorridors ?? "Corridors" },
@@ -596,8 +657,8 @@ export function NetworkMap({
         </div>
       </div>
 
-      {/* Traffic-heat legend (replaces the corridor chips in heat mode) */}
-      {heat && era === "interstate" ? (
+      {/* Heat legend (replaces the corridor chips in heat mode) */}
+      {heat && era === bgEra ? (
         <div className="mb-6 flex flex-wrap items-center gap-4">
           <span className="font-macro-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">
             {labels.heatLow ?? "Quiet"}
@@ -605,7 +666,7 @@ export function NetworkMap({
           <div
             className="h-2 w-56 max-w-[55vw] rounded-full"
             style={{
-              background: `linear-gradient(to right, ${heatColor(5000)}, ${heatColor(20000)}, ${heatColor(70000)}, ${heatColor(250000)})`,
+              background: `linear-gradient(to right, ${heatColorFromT(0)}, ${heatColorFromT(0.4)}, ${heatColorFromT(0.7)}, ${heatColorFromT(1)})`,
             }}
           />
           <span className="font-macro-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">
@@ -721,7 +782,9 @@ export function NetworkMap({
                     reducedMotion={!!prefersReducedMotion}
                     featuredIds={featuredIds}
                     zoom={position.zoom}
-                    heat={heat && era === "interstate"}
+                    heat={heat && era === bgEra}
+                    geoms={GEOMS}
+                    heatCfg={heatCfg}
                   />
                 </>
               )}
