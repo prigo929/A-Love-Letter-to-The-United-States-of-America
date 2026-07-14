@@ -78,25 +78,47 @@ export default async function InfrastructureHubPage() {
         networksEyebrow: "Explorează rețelele",
         networksTitle: "Sistemele care leagă continentul",
         highwayCard: {
-          title: "Rețeaua de Autostrăzi Interstatale",
-          desc: "Cel mai mare proiect de lucrări publice din istorie — 47.856 de mile, cu o hartă interactivă a coridoarelor și epocilor sale.",
-          cta: "Explorează autostrăzile →",
+          title: "Autostrăzi Interstatale",
+          desc: "Cel mai mare proiect de lucrări publice din istorie — 47.856 de mile de autostrăzi.",
+          cta: "Explorează coridoarele →",
           alt: "I-70 prin Glenwood Canyon, Colorado",
         },
         railCard: {
-          title: "Rețeaua Feroviară Continentală",
-          desc: "De la cuiul de aur din 1869 la titanii de marfă de azi — două oceane legate cu șine de oțel.",
+          title: "Căi Ferate de Marfă",
+          desc: "De la cuiul de aur din 1869 la giganții feroviari moderni — legând oceanele cu linii de oțel.",
           cta: "Explorează căile ferate →",
-          alt: "Baterea cuiului de aur, Promontory, 1869",
+          alt: "Căi ferate transcontinentale",
         },
-        moreNetworks: "Celelalte rețele",
-        otherPages: [
-          { href: "/infrastructure/dams-bridges", label: "Baraje și Poduri Monumentale" },
-          { href: "/infrastructure/power-grid", label: "Rețeaua Electrică Continentală" },
-          { href: "/infrastructure/aqueducts-waterways", label: "Marile Apeducte și Căi Navigabile" },
-          { href: "/infrastructure/aviation-hubs", label: "Huburi Aviatice Globale" },
-          { href: "/infrastructure/maritime-ports", label: "Porturi Maritime de Mare Adâncime" },
-        ],
+        aviationCard: {
+          title: "Huburi Aviatice Globale",
+          desc: "Peste 19.000 de aerodromuri și cele mai aglomerate aeroporturi de pasageri și marfă de pe Pământ.",
+          cta: "Explorează zborurile →",
+          alt: "Avioane la terminal în Chicago",
+        },
+        portCard: {
+          title: "Porturi de Mare Adâncime",
+          desc: "Huburile de containere din Los Angeles și terminalele de export de energie din Golful Mexic.",
+          cta: "Explorează porturile →",
+          alt: "Nave container la portul comercial",
+        },
+        powerCard: {
+          title: "Rețeaua Electrică",
+          desc: "Cea mai mare mașinărie a omenirii, alimentând sute de milioane de case și industrii.",
+          cta: "Explorează energia →",
+          alt: "Rețeaua electrică văzută din spațiu",
+        },
+        waterCard: {
+          title: "Apeducte și Căi Navigabile",
+          desc: "Marile canale agricole din California și poarta comercială a bazinului Mississippi.",
+          cta: "Explorează apele →",
+          alt: "Râul Colorado prin canion",
+        },
+        damsCard: {
+          title: "Baraje și Poduri Monumentale",
+          desc: "Barajul Hoover, Podul Golden Gate și minunile structurale ale ingineriei americane.",
+          cta: "Explorează structurile →",
+          alt: "Vedere aeriană a Barajului Hoover",
+        },
         quote:
           "Nu face planuri mici; ele nu au puterea magică de a stârni sângele oamenilor... Fă planuri mari; țintește sus în speranță și în muncă.",
         quoteTitle: "Arhitect — Planul orașului Chicago, 1909",
@@ -141,25 +163,47 @@ export default async function InfrastructureHubPage() {
         networksEyebrow: "Explore the Networks",
         networksTitle: "The Systems That Bind the Continent",
         highwayCard: {
-          title: "The Interstate Highway Network",
-          desc: "The largest public works project in history — 47,856 miles, with an interactive map of its corridors and eras.",
-          cta: "Explore the highways →",
+          title: "Interstate Highways",
+          desc: "The largest public works project in U.S. history — 47,856 miles of arterial freeways.",
+          cta: "Explore the corridors →",
           alt: "I-70 through Glenwood Canyon, Colorado",
         },
         railCard: {
-          title: "The Continental Rail Network",
-          desc: "From the golden spike of 1869 to today's freight titans — two oceans bound by steel rails.",
+          title: "Freight Railroads",
+          desc: "From the 1869 golden spike to modern freight giants — binding two oceans with steel rails.",
           cta: "Explore the railroads →",
-          alt: "Driving the golden spike at Promontory, 1869",
+          alt: "Transcontinental railroads",
         },
-        moreNetworks: "The other networks",
-        otherPages: [
-          { href: "/infrastructure/dams-bridges", label: "Monumental Dams & Bridges" },
-          { href: "/infrastructure/power-grid", label: "The Continental Power Grid" },
-          { href: "/infrastructure/aqueducts-waterways", label: "Great Aqueducts & Waterways" },
-          { href: "/infrastructure/aviation-hubs", label: "Global Aviation Hubs" },
-          { href: "/infrastructure/maritime-ports", label: "Deepwater Maritime Ports" },
-        ],
+        aviationCard: {
+          title: "Global Aviation Hubs",
+          desc: "Over 19,000 airfields and the world's busiest passenger and air cargo hubs.",
+          cta: "Explore the skies →",
+          alt: "Jets at the terminal gates in Chicago",
+        },
+        portCard: {
+          title: "Deepwater Maritime Ports",
+          desc: "Container pipelines of San Pedro Bay and energy export portals of the Gulf Coast.",
+          cta: "Explore the ports →",
+          alt: "Container ship docked at commercial port",
+        },
+        powerCard: {
+          title: "The Power Grid",
+          desc: "The largest machine built by mankind, powering hundreds of millions of homes and businesses.",
+          cta: "Explore the grid →",
+          alt: "National electricity grid seen from space",
+        },
+        waterCard: {
+          title: "Aqueducts & Waterways",
+          desc: "Colossal water supply projects in the West and the commercial channels of the Mississippi basin.",
+          cta: "Explore the waters →",
+          alt: "Colorado river cutting through red canyons",
+        },
+        damsCard: {
+          title: "Monumental Dams & Bridges",
+          desc: "Hoover Dam, the Golden Gate Bridge, and the ultimate feats of structural engineering.",
+          cta: "Explore the structures →",
+          alt: "Aerial view of the Hoover Dam",
+        },
         quote:
           "Make no little plans; they have no magic to stir men's blood... Make big plans; aim high in hope and work.",
         quoteTitle: "Architect — The 1909 Plan of Chicago",
@@ -220,52 +264,40 @@ export default async function InfrastructureHubPage() {
             <span className="macro-eyebrow">{copy.networksEyebrow}</span>
             <h2 className="macro-section-title mb-14 mt-6">{copy.networksTitle}</h2>
 
-            <div className="grid gap-10 md:grid-cols-2">
+            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 { card: copy.highwayCard, href: "/infrastructure/highway-system", img: SITE_IMAGES.infraGlenwoodCanyon },
                 { card: copy.railCard, href: "/infrastructure/rail-network", img: SITE_IMAGES.infraGoldenSpike },
+                { card: copy.aviationCard, href: "/infrastructure/aviation-hubs", img: SITE_IMAGES.infraOHareJets },
+                { card: copy.portCard, href: "/infrastructure/maritime-ports", img: SITE_IMAGES.aerialLongBeachPort },
+                { card: copy.powerCard, href: "/infrastructure/power-grid", img: SITE_IMAGES.homeUsaAtNightFromSpace },
+                { card: copy.waterCard, href: "/infrastructure/aqueducts-waterways", img: SITE_IMAGES.landscapes.coloradoRiver },
+                { card: copy.damsCard, href: "/infrastructure/dams-bridges", img: SITE_IMAGES.infraHooverAerial },
               ].map(({ card, href, img }) => (
                 <Link key={href} href={href} className="group block">
-                  <div className="relative aspect-[16/9] w-full overflow-hidden">
+                  <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/5 bg-white/[0.01]">
                     <Image
                       src={img}
                       alt={card.alt}
                       fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       placeholder="blur"
                       blurDataURL={BLUR_PLACEHOLDER}
                       className="object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.04]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                   </div>
-                  <div className="border-t border-[#E8B923]/40 pt-6">
-                    <h3 className="font-macro-display text-2xl font-bold tracking-tight text-white md:text-3xl">
+                  <div className="border-t border-[#E8B923]/40 pt-6 mt-4">
+                    <h3 className="font-macro-display text-xl font-bold tracking-tight text-white group-hover:text-[#E8B923] transition-colors">
                       {card.title}
                     </h3>
-                    <p className="macro-body mt-3 !text-base">{card.desc}</p>
-                    <span className="mt-4 inline-block font-macro-mono text-xs uppercase tracking-[0.2em] text-[#E8B923] transition-colors group-hover:text-white">
+                    <p className="font-macro-mono text-[11px] leading-relaxed tracking-wider text-white/50 mt-3">{card.desc}</p>
+                    <span className="mt-4 inline-block font-macro-mono text-[10px] uppercase tracking-[0.2em] text-[#E8B923] transition-colors group-hover:text-white">
                       {card.cta}
                     </span>
                   </div>
                 </Link>
               ))}
-            </div>
-
-            <div className="mt-20 border-t border-white/[0.07] pt-10">
-              <span className="font-macro-mono text-[11px] uppercase tracking-[0.25em] text-white/30">
-                {copy.moreNetworks}
-              </span>
-              <div className="mt-6 flex flex-wrap gap-x-12 gap-y-4">
-                {copy.otherPages.map((p) => (
-                  <Link
-                    key={p.href}
-                    href={p.href}
-                    className="font-macro-display text-lg font-bold tracking-tight text-white/55 transition-colors hover:text-[#E8B923]"
-                  >
-                    {p.label}
-                  </Link>
-                ))}
-              </div>
             </div>
           </section>
 
