@@ -597,6 +597,7 @@ export function NetworkMap({
     if (!backgroundNetwork) return routes;
     const list = [...routes];
     for (const key of Object.keys(GEOMS)) {
+      if (key === "substations") continue;
       const id = key.toLowerCase();
       if (list.some((r) => r.id === id)) continue;
       const geom = GEOMS[key];
