@@ -179,6 +179,49 @@ function describePower(key: string, locale: "en" | "ro") {
   return { name: info.name, color: info.color, endpoints: role };
 }
 
+// Waterways and aqueducts classes: name, colour (cyan for aqueducts, blue/teal for waterways).
+const WATER_INFO: Record<string, { name: string; color: string; isAqueduct: boolean }> = {
+  aqueduct_california: { name: "California Aqueduct", color: "#06b6d4", isAqueduct: true }, // cyan
+  aqueduct_la: { name: "Los Angeles Aqueduct", color: "#0891b2", isAqueduct: true }, // dark cyan
+  aqueduct_cap: { name: "Central Arizona Project", color: "#22d3ee", isAqueduct: true }, // light cyan
+  aqueduct_catskill: { name: "Catskill Aqueduct", color: "#0ea5e9", isAqueduct: true }, // sky blue
+  aqueduct_delaware: { name: "Delaware Aqueduct", color: "#38bdf8", isAqueduct: true }, // light sky blue
+  waterway_icw_atlantic: { name: "Intracoastal Waterway (Atlantic)", color: "#1d4ed8", isAqueduct: false }, // royal blue
+  waterway_icw_gulf: { name: "Intracoastal Waterway (Gulf)", color: "#2563eb", isAqueduct: false }, // medium blue
+  waterway_seaway: { name: "St. Lawrence Seaway", color: "#1e3a8a", isAqueduct: false }, // navy blue
+  waterway_mississippi: { name: "Mississippi River", color: "#0284c7", isAqueduct: false }, // ocean blue
+  waterway_ohio: { name: "Ohio River", color: "#0369a1", isAqueduct: false }, // deeper ocean blue
+  waterway_illinois: { name: "Illinois Waterway", color: "#075985", isAqueduct: false }, // dark blue
+};
+
+function describeWater(key: string, locale: "en" | "ro") {
+  const info = WATER_INFO[key.toLowerCase()] ?? { name: key, color: "#3b82f6", isAqueduct: false };
+  let name = info.name;
+  if (locale === "ro") {
+    // Translate names bilingually
+    if (key.toLowerCase() === "aqueduct_california") name = "Apeductul Californiei";
+    else if (key.toLowerCase() === "aqueduct_la") name = "Apeductul Los Angeles";
+    else if (key.toLowerCase() === "aqueduct_cap") name = "Central Arizona Project";
+    else if (key.toLowerCase() === "aqueduct_catskill") name = "Apeductul Catskill";
+    else if (key.toLowerCase() === "aqueduct_delaware") name = "Apeductul Delaware";
+    else if (key.toLowerCase() === "waterway_icw_atlantic") name = "Intracoastal Waterway (Atlantic)";
+    else if (key.toLowerCase() === "waterway_icw_gulf") name = "Intracoastal Waterway (Golful Mexic)";
+    else if (key.toLowerCase() === "waterway_seaway") name = "Calea Navigabilă Sf. Laurențiu";
+    else if (key.toLowerCase() === "waterway_mississippi") name = "Fluviul Mississippi";
+    else if (key.toLowerCase() === "waterway_ohio") name = "Râul Ohio";
+    else if (key.toLowerCase() === "waterway_illinois") name = "Calea Navigabilă Illinois";
+  }
+  const role = info.isAqueduct
+    ? locale === "ro"
+      ? "Sistem major de alimentare cu apă"
+      : "Major water supply aqueduct"
+    : locale === "ro"
+      ? "Cale navigabilă comercială"
+      : "Commercial navigation waterway";
+  return { name, color: info.color, endpoints: role };
+}
+
+
 // ─── Path helpers ─────────────────────────────────────────────────────────────
 
 /** Projects waypoints and threads a gentle quadratic curve through them. */
@@ -531,7 +574,7 @@ interface NetworkMapProps {
   /** Render the full background network behind the featured corridors. */
   backgroundNetwork?: boolean;
   /** Which background dataset drives the network. */
-  variant?: "interstate" | "rail" | "power";
+  variant?: "interstate" | "rail" | "power" | "water";
   /** Background geometry (defaults to the Interstate grid when variant omitted). */
   backgroundGeoms?: Record<string, RouteGeom>;
   /** Offer a heat colour mode toggle (traffic for highways, tracks for rail). */
@@ -574,11 +617,12 @@ export function NetworkMap({
 }: NetworkMapProps) {
   const isRail = variant === "rail";
   const isPower = variant === "power";
-  const boldBg = isRail || isPower; // the background net is the content, not a backdrop
+  const isWater = variant === "water";
+  const boldBg = isRail || isPower || isWater; // the background net is the content, not a backdrop
   const GEOMS = backgroundGeoms ?? INTERSTATE_GEOMS;
-  const heatCfg = isPower ? HEAT_NONE : isRail ? HEAT_RAIL : HEAT_INTERSTATE;
-  const bgEra = isPower ? "grid" : isRail ? "modern" : "interstate";
-  const describe = isPower ? describePower : isRail ? describeRail : describeKey;
+  const heatCfg = isPower || isWater ? HEAT_NONE : isRail ? HEAT_RAIL : HEAT_INTERSTATE;
+  const bgEra = isPower ? "grid" : isRail ? "modern" : isWater ? "waterway" : "interstate";
+  const describe = isPower ? describePower : isRail ? describeRail : isWater ? describeWater : describeKey;
   const [era, setEra] = useState(initialEra ?? eras[0].id);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [heat, setHeat] = useState(false);
@@ -610,6 +654,11 @@ export function NetworkMap({
             en: `${en.name} lines: ${miEn} miles of ${en.endpoints.toLowerCase()} on the U.S. grid (HIFLD transmission-line data).`,
             ro: `Linii de ${ro.name}: ${miRo} mile de ${ro.endpoints.toLowerCase()} din rețeaua SUA (date HIFLD).`,
           }
+        : isWater
+        ? {
+            en: `${en.name}: ${miEn} miles of water supply or commercial transit (${en.endpoints.toLowerCase()}).`,
+            ro: `${ro.name}: ${miRo} de mile de transport comercial sau alimentare (${ro.endpoints.toLowerCase()}).`,
+          }
         : isRail
         ? {
             en: `${en.name}: ${miEn} route-miles of ${en.endpoints.toLowerCase()} across the United States (FRA / NTAD North American Rail Network data).`,
@@ -632,7 +681,7 @@ export function NetworkMap({
       });
     }
     return list;
-  }, [routes, backgroundNetwork, GEOMS, describe, bgEra, isRail, isPower, boldBg]);
+  }, [routes, backgroundNetwork, GEOMS, describe, bgEra, isRail, isPower, isWater, boldBg]);
 
   const eraRoutes = useMemo(() => combinedRoutes.filter((r) => r.era === era), [combinedRoutes, era]);
   const selected = useMemo(

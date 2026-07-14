@@ -17,6 +17,8 @@ import {
 } from "@/components/shared/CinematicSystem";
 import { WaterwayComparison } from "@/components/infrastructure/WaterwayComparison";
 import { SerifLede, Reveal } from "@/components/infrastructure/InfraMotion";
+import { NetworkMap } from "@/components/infrastructure/NetworkMap";
+import waterwaysData from "@/lib/data/waterways-simplified.json";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 const getPageMetadata = (locale: Locale) => ({
@@ -66,6 +68,17 @@ export default async function AqueductsWaterwaysPage() {
         compareTitle: "Compararea Giganților",
         compareIntro:
           "Explorează dimensiunea infrastructurii de apă a Americii. Selectează mai jos pentru a compara lungimile marilor apeducte municipale și agricole, precum și ale căilor navigabile comerciale.",
+        mapTitle: "Canale și Apeducte Continentale",
+        mapIntro:
+          "Harta interactivă a marilor proiecte de alimentare cu apă și a canalelor comerciale interioare. Atinge sau treci peste o linie pentru lungime, funcție și detalii.",
+        mapLabels: {
+          eraLabel: "Căi de Apă",
+          corridorsLabel: "Treci peste o linie pentru detalii",
+          lengthLabel: "Lungime",
+          openedLabel: "În serviciu",
+          hint: "Ctrl + scroll pentru zoom · trageți pentru panoramare",
+          zoomHint: "Ctrl + scroll pentru zoom · trageți pentru panoramare",
+        },
         bandTitle: "Sistemul Mississippi și Intracoastal Waterway",
         bandP1:
           "Bazinul fluviului Mississippi, combinat cu Intracoastal Waterway, formează cea mai extinsă rețea protejată de transport pe apă din lume. Întinzându-se pe 3.000 de mile, Intracoastal Waterway oferă o rută interioară sigură pentru ca barjele comerciale să transporte petrol, cărbune și produse agricole de-a lungul coastelor Atlanticului și Golfului, fără a se confrunta cu pericolele mării deschise.",
@@ -122,6 +135,17 @@ export default async function AqueductsWaterwaysPage() {
         compareTitle: "Comparing the Giants",
         compareIntro:
           "Explore the scale of America's water infrastructure. Toggle below to compare the lengths of the major municipal and agricultural aqueducts, and the critical commercial waterways.",
+        mapTitle: "Continental Aqueducts & Waterways",
+        mapIntro:
+          "The interactive map of America's major water conveyance systems and inland commercial channels. Hover or tap a line for length, role, and details.",
+        mapLabels: {
+          eraLabel: "Waterways",
+          corridorsLabel: "Hover a line for its details",
+          lengthLabel: "Length",
+          openedLabel: "In service",
+          hint: "Ctrl + scroll to zoom · drag to pan",
+          zoomHint: "Ctrl + scroll to zoom · drag to pan",
+        },
         bandTitle: "The Mississippi & Intracoastal Waterway System",
         bandP1:
           "The Mississippi River basin, combined with the Intracoastal Waterway, forms the most expansive protected water transport network in the world. Stretching over 3,000 miles, the Intracoastal Waterway provides a safe, inland route for commercial barges to transport petroleum, coal, and agricultural goods along the Atlantic and Gulf coasts without facing the hazards of the open sea.",
@@ -200,6 +224,26 @@ export default async function AqueductsWaterwaysPage() {
               </p>
               <p className="macro-body mt-8 max-w-3xl">{copy.pullLabel}</p>
             </div>
+          </section>
+
+          {/* ── Interactive map ── */}
+          <section className="border-t border-white/5 pt-24">
+            <span className="macro-eyebrow">{isRo ? "Harta Interactivă" : "Interactive Map"}</span>
+            <h2 className="macro-section-title mb-8 mt-6">{copy.mapTitle}</h2>
+            <p className="macro-body mb-14 max-w-4xl">{copy.mapIntro}</p>
+            <NetworkMap
+              locale={locale}
+              eras={[{ id: "waterway", label: { en: "Waterways", ro: "Ape" }, sublabel: { en: "Today", ro: "Prezent" } }]}
+              routes={[]}
+              nodes={[]}
+              accent="#E8B923"
+              backgroundNetwork
+              variant="water"
+              backgroundGeoms={waterwaysData as unknown as Record<string, { segments: [number, number][][]; miles: number }>}
+              hideEraToggle
+              initialEra="waterway"
+              labels={copy.mapLabels}
+            />
           </section>
 
           {/* ── WaterwayComparison ranked chart section ── */}
