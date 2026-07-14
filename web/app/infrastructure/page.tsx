@@ -72,7 +72,7 @@ export default async function InfrastructureHubPage() {
           "Barajul Hoover a fost turnat în plină Mare Criză, într-un canion la 49°C, cu doi ani înainte de termen. Generația care nu-și permitea prânzul a construit lucruri pe care le folosim și azi, în fiecare zi.",
         bandP2:
           "Acesta este tiparul american al infrastructurii: proiecte atât de mari încât par imposibile, terminate atât de repede încât par inevitabile.",
-        bandAlt: "Construcția Barajului Hoover",
+        bandAlt: "Vedere aeriană a Barajului Hoover",
         megaEyebrow: "Cronologia",
         megaTitle: "Două secole de megaproiecte",
         networksEyebrow: "Explorează rețelele",
@@ -135,7 +135,7 @@ export default async function InfrastructureHubPage() {
           "The Hoover Dam was poured in the depths of the Depression, in a canyon at 120°F, two years ahead of schedule. The generation that could not afford lunch built things we still use every single day.",
         bandP2:
           "That is the American pattern of infrastructure: projects so large they look impossible, finished so fast they look inevitable.",
-        bandAlt: "Construction of the Hoover Dam",
+        bandAlt: "Aerial view of the Hoover Dam",
         megaEyebrow: "The Chronology",
         megaTitle: "Two Centuries of Megaprojects",
         networksEyebrow: "Explore the Networks",
@@ -203,7 +203,7 @@ export default async function InfrastructureHubPage() {
           </section>
 
           {/* ── Megaprojects band + chronology ── */}
-          <InfrastructureBand imageSrc={SITE_IMAGES.infraHooverConstruction} imageAlt={copy.bandAlt}>
+          <InfrastructureBand imageSrc={SITE_IMAGES.infraHooverAerial} imageAlt={copy.bandAlt} fullBleed>
             <h2 className="macro-section-title mb-6">{copy.bandTitle}</h2>
             <p className="macro-body max-w-4xl">{copy.bandP1}</p>
             <p className="macro-body mt-4 max-w-4xl">{copy.bandP2}</p>

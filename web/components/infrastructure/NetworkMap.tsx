@@ -199,6 +199,7 @@ function RoutesLayer({
   heat,
   geoms,
   heatCfg,
+  prominentBackground,
 }: {
   routes: NetworkRoute[];
   nodes: MapNode[];
@@ -211,6 +212,8 @@ function RoutesLayer({
   heat: boolean;
   geoms: Record<string, RouteGeom>;
   heatCfg: HeatConfig;
+  /** Render the background network boldly (rail: the owner net is the content). */
+  prominentBackground?: boolean;
 }) {
   const { projection } = useMapContext();
   const k = 1 / zoom; // counter-scale factor for screen-constant sizes
@@ -266,14 +269,17 @@ function RoutesLayer({
         // track count for rail) and thickens the busiest corridors, flattening
         // the corridor/background distinction so the whole network reads as flow.
         const t = heat ? heatT(aadt, heatCfg.lo, heatCfg.hi, heatCfg.log) : 0;
+        const bgWidth = prominentBackground ? 1.3 : 0.9;
         const strokeWidth = heat
           ? (isSelected ? 1.2 : 0.6) + t * 2.4
           : isSelected
             ? 2.1
             : isFeatured
               ? 1.5
-              : 0.9;
+              : bgWidth;
         const strokeColor = heat ? heatColorFromT(t) : route.color;
+        const bgOpacity = prominentBackground ? 0.88 : 0.46;
+        const bgDimOpacity = prominentBackground ? 0.22 : 0.14;
         const activeOpacity = heat
           ? isSelected
             ? 1.0
@@ -285,10 +291,10 @@ function RoutesLayer({
             : dimmed
               ? isFeatured
                 ? 0.5
-                : 0.14
+                : bgDimOpacity
               : isFeatured
                 ? 0.95
-                : 0.46;
+                : bgOpacity;
 
         return (
           <g
@@ -677,7 +683,9 @@ export function NetworkMap({
       /* Corridor chips (featured legend + selector) */
       <div className="mb-6 flex flex-wrap gap-x-5 gap-y-2">
         {eraRoutes
-          .filter((r) => featuredIds.has(r.id))
+          // interstates: the featured corridors. rail: the background owner
+          // networks (there are no featured rail corridors in the modern era).
+          .filter((r) => featuredIds.has(r.id) || (isRail && r.era === bgEra))
           .map((r) => {
             const dim = selectedId !== null && selectedId !== r.id;
             return (
@@ -785,6 +793,7 @@ export function NetworkMap({
                     heat={heat && era === bgEra}
                     geoms={GEOMS}
                     heatCfg={heatCfg}
+                    prominentBackground={isRail && era === bgEra}
                   />
                 </>
               )}

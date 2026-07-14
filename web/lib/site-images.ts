@@ -43,6 +43,7 @@ import economyTradeSkyline from "@/IMAGES/Infrastructure/I-110 and I-115 Interch
 // ─── Infrastructure section ───────────────────────────────────────────────────
 import infraGlenwoodCanyon from "@/IMAGES/Infrastructure/Colorados Glenwood Canyon I-70 thruway.jpeg";
 import infraHooverConstruction from "@/IMAGES/Infrastructure/Construction of the Hoover Dam.jpg";
+import infraHooverAerial from "@/IMAGES/Nature/Resources/breathtaking aerial shot of the Hoover Dam under a clear blue sky.jpg";
 import infraGoldenGateConstruction from "@/IMAGES/Infrastructure/Golden Gate Bridge Nearing Completion.jpg";
 import infraOHareJets from "@/IMAGES/Infrastructure/American-Airlines-Jets-Parked-At-OHare-Airport-Gates-With-Chicago-Skyline.jpg";
 import infraFloridaKeys from "@/IMAGES/Infrastructure/Flordia Keys Highway.jpg";
@@ -570,6 +571,7 @@ export const SITE_IMAGES = {
   economyTradeSkyline: economyTradeSkyline.src,
   infraGlenwoodCanyon: infraGlenwoodCanyon.src,
   infraHooverConstruction: infraHooverConstruction.src,
+  infraHooverAerial: infraHooverAerial.src,
   infraGoldenGateConstruction: infraGoldenGateConstruction.src,
   infraOHareJets: infraOHareJets.src,
   infraFloridaKeys: infraFloridaKeys.src,

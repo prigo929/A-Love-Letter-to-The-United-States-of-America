@@ -235,13 +235,12 @@ export default async function RailNetworkPage() {
             <NetworkMap
               locale={locale}
               eras={RAIL_ERAS}
-              routes={RAIL_ROUTES}
+              routes={RAIL_ROUTES.filter((r) => r.era !== "modern")}
               nodes={RAIL_NODES}
               accent="#E8B923"
               backgroundNetwork
               variant="rail"
               backgroundGeoms={railData as unknown as Record<string, { segments: [number, number][][]; miles: number; tracks?: number }>}
-              enableHeatmap
               labels={copy.mapLabels}
             />
           </section>

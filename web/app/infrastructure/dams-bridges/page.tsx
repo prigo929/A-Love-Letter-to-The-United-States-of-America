@@ -173,8 +173,8 @@ export default async function DamsBridgesPage() {
     <>
       <MacroStyles />
       <MacroHero
-        imageSrc={SITE_IMAGES.infraHooverConstruction}
-        imageAlt={isRo ? "Construcția Barajului Hoover" : "Construction of the Hoover Dam"}
+        imageSrc={SITE_IMAGES.infraHooverAerial}
+        imageAlt={isRo ? "Vedere aeriană a Barajului Hoover" : "Aerial view of the Hoover Dam"}
         eyebrow={copy.heroEyebrow}
         titleLead={copy.heroLead}
         titleAccent={copy.heroAccent}
