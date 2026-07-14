@@ -81,6 +81,7 @@ interface HeatConfig {
 }
 const HEAT_INTERSTATE: HeatConfig = { metric: (g) => g?.aadt ?? 0, lo: 5000, hi: 250000, log: true };
 const HEAT_RAIL: HeatConfig = { metric: (g) => g?.tracks ?? 1, lo: 1, hi: 3, log: false };
+const HEAT_NONE: HeatConfig = { metric: () => 0, lo: 0, hi: 1, log: false };
 
 /** Route number for shield lookup: "i90"→"90", "i610"→"610". Null for the named
  *  trails and for Alaska/Hawaii keys (ak1/hi1), which have no numbered shield. */
@@ -148,6 +149,30 @@ function describeRail(key: string, locale: "en" | "ro") {
     : locale === "ro"
       ? "Rețeaua națională de pasageri"
       : "National passenger network";
+  return { name: info.name, color: info.color, endpoints: role };
+}
+
+// Transmission voltage classes: name, colour (cool→hot by voltage), and role.
+const POWER_INFO: Record<string, { name: string; color: string; ehv: boolean }> = {
+  v500: { name: "500 kV", color: "#ef4444", ehv: true },
+  v345: { name: "345 kV", color: "#f59e0b", ehv: true },
+  v230: { name: "230 kV", color: "#3b82f6", ehv: false },
+  vdc: { name: "HVDC", color: "#a855f7", ehv: true },
+};
+function describePower(key: string, locale: "en" | "ro") {
+  const info = POWER_INFO[key.toLowerCase()] ?? { name: key, color: "#94a3b8", ehv: false };
+  const role =
+    key.toLowerCase() === "vdc"
+      ? locale === "ro"
+        ? "Linie de curent continuu de înaltă tensiune"
+        : "High-voltage direct-current line"
+      : info.ehv
+        ? locale === "ro"
+          ? "Coloana vertebrală de foarte înaltă tensiune"
+          : "Extra-high-voltage backbone"
+        : locale === "ro"
+          ? "Transport de înaltă tensiune"
+          : "High-voltage transmission";
   return { name: info.name, color: info.color, endpoints: role };
 }
 
@@ -479,8 +504,8 @@ interface NetworkMapProps {
   accent?: string;
   /** Render the full background network behind the featured corridors. */
   backgroundNetwork?: boolean;
-  /** Which background dataset drives the network: Interstates or the rail net. */
-  variant?: "interstate" | "rail";
+  /** Which background dataset drives the network. */
+  variant?: "interstate" | "rail" | "power";
   /** Background geometry (defaults to the Interstate grid when variant omitted). */
   backgroundGeoms?: Record<string, RouteGeom>;
   /** Offer a heat colour mode toggle (traffic for highways, tracks for rail). */
@@ -522,10 +547,12 @@ export function NetworkMap({
   labels,
 }: NetworkMapProps) {
   const isRail = variant === "rail";
+  const isPower = variant === "power";
+  const boldBg = isRail || isPower; // the background net is the content, not a backdrop
   const GEOMS = backgroundGeoms ?? INTERSTATE_GEOMS;
-  const heatCfg = isRail ? HEAT_RAIL : HEAT_INTERSTATE;
-  const bgEra = isRail ? "modern" : "interstate";
-  const describe = isRail ? describeRail : describeKey;
+  const heatCfg = isPower ? HEAT_NONE : isRail ? HEAT_RAIL : HEAT_INTERSTATE;
+  const bgEra = isPower ? "grid" : isRail ? "modern" : "interstate";
+  const describe = isPower ? describePower : isRail ? describeRail : describeKey;
   const [era, setEra] = useState(initialEra ?? eras[0].id);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [heat, setHeat] = useState(false);
@@ -551,7 +578,12 @@ export function NetworkMap({
       const ro = describe(key, "ro");
       const miEn = geom.miles.toLocaleString("en-US");
       const miRo = geom.miles.toLocaleString("ro-RO");
-      const description = isRail
+      const description = isPower
+        ? {
+            en: `${en.name} lines: ${miEn} miles of ${en.endpoints.toLowerCase()} on the U.S. grid (HIFLD transmission-line data).`,
+            ro: `Linii de ${ro.name}: ${miRo} mile de ${ro.endpoints.toLowerCase()} din rețeaua SUA (date HIFLD).`,
+          }
+        : isRail
         ? {
             en: `${en.name}: ${miEn} route-miles of ${en.endpoints.toLowerCase()} across the United States (FRA / NTAD North American Rail Network data).`,
             ro: `${ro.name}: ${miRo} mile de rețea (${ro.endpoints.toLowerCase()}) în Statele Unite (date FRA / NTAD).`,
@@ -568,12 +600,12 @@ export function NetworkMap({
         waypoints: [],
         endpoints: { en: en.endpoints, ro: ro.endpoints },
         lengthLabel: `${miEn} mi`,
-        year: isRail ? "Today" : "1956–",
+        year: boldBg ? "Today" : "1956–",
         description,
       });
     }
     return list;
-  }, [routes, backgroundNetwork, GEOMS, describe, bgEra, isRail]);
+  }, [routes, backgroundNetwork, GEOMS, describe, bgEra, isRail, isPower, boldBg]);
 
   const eraRoutes = useMemo(() => combinedRoutes.filter((r) => r.era === era), [combinedRoutes, era]);
   const selected = useMemo(
@@ -581,9 +613,9 @@ export function NetworkMap({
     [eraRoutes, selectedId],
   );
   const selectedAadt = useMemo(() => {
-    if (!selected || isRail) return 0; // rail has no per-route traffic stat
+    if (!selected || boldBg) return 0; // rail/power have no per-route traffic stat
     return GEOMS[selected.id.toUpperCase()]?.aadt ?? 0;
-  }, [selected, isRail, GEOMS]);
+  }, [selected, boldBg, GEOMS]);
 
   const switchEra = (id: string) => {
     setEra(id);
@@ -683,9 +715,9 @@ export function NetworkMap({
       /* Corridor chips (featured legend + selector) */
       <div className="mb-6 flex flex-wrap gap-x-5 gap-y-2">
         {eraRoutes
-          // interstates: the featured corridors. rail: the background owner
-          // networks (there are no featured rail corridors in the modern era).
-          .filter((r) => featuredIds.has(r.id) || (isRail && r.era === bgEra))
+          // interstates: the featured corridors. rail/power: the background
+          // networks themselves (owners / voltage classes) are the content.
+          .filter((r) => featuredIds.has(r.id) || (boldBg && r.era === bgEra))
           .map((r) => {
             const dim = selectedId !== null && selectedId !== r.id;
             return (
@@ -793,7 +825,7 @@ export function NetworkMap({
                     heat={heat && era === bgEra}
                     geoms={GEOMS}
                     heatCfg={heatCfg}
-                    prominentBackground={isRail && era === bgEra}
+                    prominentBackground={boldBg && era === bgEra}
                   />
                 </>
               )}

@@ -81,6 +81,11 @@ export default async function AviationHubsPage() {
           towered: "Turn de control",
           international: "Punct de intrare internațional",
           perYear: "pe an",
+          scopeCommercial: "Comerciale",
+          scopeAll: "Toate cele 19.514",
+          gaAirfields: "Aerodromuri GA",
+          heliports: "Heliporturi",
+          seaplane: "Baze de hidroavioane",
         },
         bandTitle: "Rețeaua de tip hub-and-spoke",
         bandP1:
@@ -146,6 +151,11 @@ export default async function AviationHubsPage() {
           towered: "Control tower",
           international: "Intl port of entry",
           perYear: "per year",
+          scopeCommercial: "Commercial",
+          scopeAll: "All 19,514",
+          gaAirfields: "GA airfields",
+          heliports: "Heliports",
+          seaplane: "Seaplane bases",
         },
         bandTitle: "The Hub-and-Spoke Web",
         bandP1:

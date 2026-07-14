@@ -68,3 +68,8 @@ web/ASSETS/GeoJSON/NTAD_Dams_-8092301822133353470.geojson
 web/ASSETS/GeoJSON/Seaplane_Base.geojson
 web/ASSETS/GeoJSON/Ultralight.geojson
 web/ASSETS/GeoJSON/Unknown_(Airport).geojson
+web/ASSETS/GeoJSON/US_Electric_Power_Transmission_Lines_-6976209181916424225.geojson
+.gitignore
+web/ASSETS/GeoJSON/US_Electric_Power_Transmission_Lines_-6154397461067858563.csv
+web/ASSETS/GeoJSON/Electric_Power_Transmission_Lines_shp.geojson
+web/ASSETS/GeoJSON/Preliminary Monthly Electric Generator Inventory.xlsx

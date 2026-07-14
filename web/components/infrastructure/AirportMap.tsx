@@ -11,6 +11,18 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ComposableMap, Geographies, Geography, useMapContext } from "react-simple-maps";
 import { GEO_URL } from "@/lib/data/us-geo";
 import airportsData from "@/lib/data/airports.json";
+import airportsAll from "@/lib/data/airports-all.json";
+
+// Every non-commercial airfield, drawn as a faint density layer (one SVG path per
+// category via round-capped dot segments — one DOM node for thousands of points).
+const GA_LAYERS = airportsAll as unknown as Record<string, [number, number][]>;
+const GA_COLOR: Record<string, string> = {
+  ga: "rgba(255,255,255,0.30)",
+  heliport: "rgba(232,185,35,0.34)",
+  seaplane: "rgba(56,189,248,0.45)",
+  gliderport: "rgba(163,230,53,0.5)",
+  ultralight: "rgba(244,114,182,0.5)",
+};
 
 type Tier = "L" | "M" | "S";
 type Filter = "all" | Tier;
@@ -49,33 +61,57 @@ interface AirportMapLabels {
   towered: string;
   international: string;
   perYear: string;
+  scopeCommercial: string;
+  scopeAll: string;
+  gaAirfields: string;
+  heliports: string;
+  seaplane: string;
 }
 
 function AirportsLayer({
   filter,
+  scope,
   selected,
   onSelect,
   reducedMotion,
 }: {
   filter: Filter;
+  scope: "commercial" | "all";
   selected: string | null;
   onSelect: (id: string | null) => void;
   reducedMotion: boolean;
 }) {
   const { projection } = useMapContext();
 
+  // Density layer: one path of round-capped dots per GA category.
+  const gaPaths = useMemo(() => {
+    if (scope !== "all") return [];
+    return Object.entries(GA_LAYERS).map(([cat, pts]) => {
+      let d = "";
+      for (const ll of pts) {
+        const p = projection(ll);
+        if (p) d += `M${p[0].toFixed(1)} ${p[1].toFixed(1)}h0.01`;
+      }
+      return { cat, d };
+    });
+  }, [scope, projection]);
+
   const drawn = useMemo(
     () =>
-      AIRPORTS.filter((a) => filter === "all" || a.tier === filter)
+      AIRPORTS.filter((a) => scope === "all" || filter === "all" || a.tier === filter)
         .map((a) => ({ a, p: projection([a.lng, a.lat]) }))
         .filter((x): x is { a: Airport; p: [number, number] } => Array.isArray(x.p))
         // biggest first so the small dots stay clickable on top
         .sort((x, y) => y.a.enpl - x.a.enpl),
-    [filter, projection],
+    [filter, scope, projection],
   );
 
   return (
     <g>
+      {/* GA density layer (under the commercial markers) */}
+      {gaPaths.map(({ cat, d }) => (
+        <path key={cat} d={d} stroke={GA_COLOR[cat]} strokeWidth={1.1} strokeLinecap="round" fill="none" style={{ pointerEvents: "none" }} />
+      ))}
       {drawn.map(({ a, p }) => {
         const r = radius(a.enpl);
         const isSel = selected === a.id;
@@ -123,13 +159,19 @@ function AirportsLayer({
 
 export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: AirportMapLabels }) {
   const [filter, setFilter] = useState<Filter>("all");
+  const [scope, setScope] = useState<"commercial" | "all">("commercial");
   const [selected, setSelected] = useState<string | null>(null);
   const reduced = useReducedMotion();
 
   const airport = useMemo(() => AIRPORTS.find((a) => a.id === selected) ?? null, [selected]);
   const shown = useMemo(
-    () => (filter === "all" ? AIRPORTS.length : AIRPORTS.filter((a) => a.tier === filter).length),
-    [filter],
+    () =>
+      scope === "all"
+        ? 19514
+        : filter === "all"
+          ? AIRPORTS.length
+          : AIRPORTS.filter((a) => a.tier === filter).length,
+    [filter, scope],
   );
 
   const filters: { id: Filter; label: string; color?: string }[] = [
@@ -141,31 +183,66 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
 
   return (
     <div className="w-full">
+      {/* Scope toggle: commercial airports vs every airfield */}
+      <div className="mb-5 flex rounded-full border border-white/12 p-0.5 w-fit">
+        {(["commercial", "all"] as const).map((s) => (
+          <button
+            key={s}
+            onClick={() => {
+              setScope(s);
+              setSelected(null);
+            }}
+            className="rounded-full px-4 py-1.5 font-macro-mono text-[10px] font-bold uppercase tracking-[0.15em] transition-all"
+            style={{
+              background: scope === s ? "rgba(255,255,255,0.9)" : "transparent",
+              color: scope === s ? "#000" : "rgba(255,255,255,0.5)",
+            }}
+          >
+            {s === "commercial" ? labels.scopeCommercial : labels.scopeAll}
+          </button>
+        ))}
+      </div>
+
       <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div className="flex flex-wrap gap-2">
-          {filters.map((f) => {
-            const active = filter === f.id;
-            const c = f.color ?? "#E8B923";
-            return (
-              <button
-                key={f.id}
-                onClick={() => {
-                  setFilter(f.id);
-                  setSelected(null);
-                }}
-                className="flex items-center gap-2 rounded-full border px-4 py-1.5 font-macro-mono text-[10px] font-bold uppercase tracking-[0.14em] transition-all"
-                style={{
-                  borderColor: active ? c : "rgba(255,255,255,0.12)",
-                  background: active ? `${c}18` : "transparent",
-                  color: active ? c : "rgba(255,255,255,0.5)",
-                }}
-              >
-                {f.id !== "all" && <span className="h-2 w-2 rounded-full" style={{ background: c }} />}
-                {f.label}
-              </button>
-            );
-          })}
-        </div>
+        {scope === "commercial" ? (
+          <div className="flex flex-wrap gap-2">
+            {filters.map((f) => {
+              const active = filter === f.id;
+              const c = f.color ?? "#E8B923";
+              return (
+                <button
+                  key={f.id}
+                  onClick={() => {
+                    setFilter(f.id);
+                    setSelected(null);
+                  }}
+                  className="flex items-center gap-2 rounded-full border px-4 py-1.5 font-macro-mono text-[10px] font-bold uppercase tracking-[0.14em] transition-all"
+                  style={{
+                    borderColor: active ? c : "rgba(255,255,255,0.12)",
+                    background: active ? `${c}18` : "transparent",
+                    color: active ? c : "rgba(255,255,255,0.5)",
+                  }}
+                >
+                  {f.id !== "all" && <span className="h-2 w-2 rounded-full" style={{ background: c }} />}
+                  {f.label}
+                </button>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="flex flex-wrap gap-x-4 gap-y-1.5">
+            {[
+              [GA_COLOR.ga, labels.gaAirfields],
+              [GA_COLOR.heliport, labels.heliports],
+              [GA_COLOR.seaplane, labels.seaplane],
+            ].map(([c, lbl]) => (
+              <span key={lbl} className="flex items-center gap-1.5 font-macro-mono text-[9px] uppercase tracking-[0.12em] text-white/45">
+                <span className="h-2 w-2 rounded-full" style={{ background: (c as string).replace(/[\d.]+\)$/, "1)") }} />
+                {lbl}
+              </span>
+            ))}
+          </div>
+        )}
         <span className="font-macro-mono text-[10px] uppercase tracking-[0.15em] text-white/35">
           {shown.toLocaleString(locale === "ro" ? "ro-RO" : "en-US")} · {labels.hint}
         </span>
@@ -187,7 +264,7 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
                     }}
                   />
                 ))}
-                <AirportsLayer filter={filter} selected={selected} onSelect={setSelected} reducedMotion={!!reduced} />
+                <AirportsLayer filter={filter} scope={scope} selected={selected} onSelect={setSelected} reducedMotion={!!reduced} />
               </>
             )}
           </Geographies>
