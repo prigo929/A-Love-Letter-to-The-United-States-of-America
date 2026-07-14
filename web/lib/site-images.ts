@@ -163,6 +163,7 @@ import aerialChicago from "@/IMAGES/Aerials/Aerial_view_of_Chicago,_Illinois Pho
 import aerialSantaMonica from "@/IMAGES/Aerials/Aerial_View_of_Santa_Monica,_California.jpg";
 import aerialDallasHighway from "@/IMAGES/Aerials/I-30_at_TX161_Aerial_-_Facing_East.jpg";
 import aerialPasadena from "@/IMAGES/Aerials/Aerial_view_of_Pasadena,_California.jpg";
+import aerialLongBeachPort from "@/IMAGES/Aerials/Aerial_View_southwest_along_the_Los_Angeles_River_and_Interstate_710_towards_the_Port_of_Long_Beach_in_southern_Los_Angeles_County,_California_from_an_airplane_heading_toward_Los_Angeles_International_Airport.jpg";
 
 // USA Map SVGs
 import usaMapFlag from "@/ASSETS/SVGs and Logos/USA continental map filled with american flag.svg";
@@ -568,6 +569,7 @@ export const SITE_IMAGES = {
   economyGrowth: economyGrowth.src,
   economyNyseHero: economyNyseHero.src,
   economyPort: economyPort.src,
+  aerialLongBeachPort: aerialLongBeachPort.src,
   economyTradeSkyline: economyTradeSkyline.src,
   infraGlenwoodCanyon: infraGlenwoodCanyon.src,
   infraHooverConstruction: infraHooverConstruction.src,
