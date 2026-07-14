@@ -182,7 +182,7 @@ export default async function AqueductsWaterwaysPage() {
     <>
       <MacroStyles />
       <MacroHero
-        imageSrc={SITE_IMAGES.landscapes.coloradoRiver}
+        imageSrc={SITE_IMAGES.californiaAqueductCrossing}
         imageAlt={isRo ? "Canionul râului Colorado" : "The Colorado River canyon"}
         eyebrow={copy.heroEyebrow}
         titleLead={copy.heroLead}
@@ -291,13 +291,13 @@ export default async function AqueductsWaterwaysPage() {
           <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-16">
             <Link
               href="/infrastructure/power-grid"
-              className="font-macro-mono text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white"
+              className="font-sans text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white"
             >
               {copy.prevLink}
             </Link>
             <Link
               href="/infrastructure"
-              className="font-macro-mono text-sm uppercase tracking-widest text-[#E8B923] transition-colors hover:text-white"
+              className="font-sans text-sm uppercase tracking-widest text-[#E8B923] transition-colors hover:text-white"
             >
               {copy.nextLink}
             </Link>

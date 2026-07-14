@@ -269,10 +269,10 @@ export default async function AviationHubsPage() {
 
           {/* ── Nav ── */}
           <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-16">
-            <Link href="/infrastructure" className="font-macro-mono text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white">
+            <Link href="/infrastructure" className="font-sans text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white">
               {copy.prevLink}
             </Link>
-            <Link href="/infrastructure/maritime-ports" className="font-macro-mono text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white">
+            <Link href="/infrastructure/maritime-ports" className="font-sans text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white">
               {copy.nextLink}
             </Link>
           </div>

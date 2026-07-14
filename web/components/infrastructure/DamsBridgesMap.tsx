@@ -90,7 +90,7 @@ function MonumentsLayer({
                 x={p[0] + 10}
                 y={p[1] + 3}
                 style={{
-                  fontFamily: "var(--font-mono), monospace",
+                  fontFamily: "var(--font-sans), sans-serif",
                   fontSize: 9,
                   fontWeight: "bold",
                   fill: "#fff",
@@ -137,7 +137,7 @@ export function DamsBridgesMap({ locale, labels }: { locale: "en" | "ro"; labels
                   setFilter(f.id);
                   setSelected(null);
                 }}
-                className="flex items-center gap-2 rounded-full border px-4 py-1.5 font-macro-mono text-[10px] font-bold uppercase tracking-[0.14em] transition-all"
+                className="flex items-center gap-2 rounded-full border px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.14em] transition-all"
                 style={{
                   borderColor: active ? c : "rgba(255,255,255,0.12)",
                   background: active ? `${c}18` : "transparent",
@@ -150,7 +150,7 @@ export function DamsBridgesMap({ locale, labels }: { locale: "en" | "ro"; labels
             );
           })}
         </div>
-        <span className="font-macro-mono text-[10px] uppercase tracking-[0.15em] text-white/35">
+        <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-white/35">
           {labels.hint}
         </span>
       </div>
@@ -197,12 +197,12 @@ export function DamsBridgesMap({ locale, labels }: { locale: "en" | "ro"; labels
             <div className="md:col-span-5">
               <div className="mb-1 flex items-center gap-2">
                 <span
-                  className="font-macro-mono text-[10px] font-bold uppercase tracking-[0.15em]"
+                  className="font-sans text-[10px] font-bold uppercase tracking-[0.15em]"
                   style={{ color: TYPE_COLOR[monument.type] }}
                 >
                   {monument.type === "dam" ? labels.dams.replace(/e$/, "") : labels.bridges.replace(/uri$/, "")}
                 </span>
-                <span className="font-macro-mono text-[10px] uppercase tracking-[0.18em] text-white/35">
+                <span className="font-sans text-[10px] uppercase tracking-[0.18em] text-white/35">
                   · {monument.location[locale]}
                 </span>
               </div>
@@ -211,16 +211,16 @@ export function DamsBridgesMap({ locale, labels }: { locale: "en" | "ro"; labels
               </h3>
               <div className="mt-3 flex gap-4">
                 <div>
-                  <span className="font-macro-mono text-[9px] uppercase tracking-wider text-white/30 mr-1.5">
+                  <span className="font-sans text-[9px] uppercase tracking-wider text-white/30 mr-1.5">
                     {labels.completed}:
                   </span>
-                  <span className="font-macro-mono text-[11px] font-bold text-white/80">{monument.year}</span>
+                  <span className="font-sans text-[11px] font-bold text-white/80">{monument.year}</span>
                 </div>
               </div>
             </div>
             <div className="md:col-span-7 flex flex-col md:flex-row gap-6 md:gap-12">
               <div className="shrink-0">
-                <div className="font-macro-mono text-[9px] uppercase tracking-[0.2em] text-white/30">
+                <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30">
                   {labels.statLabel}
                 </div>
                 <div className="font-hero text-3xl mt-1 text-[#E8B923]">
@@ -228,10 +228,10 @@ export function DamsBridgesMap({ locale, labels }: { locale: "en" | "ro"; labels
                 </div>
               </div>
               <div className="flex-1">
-                <div className="font-macro-mono text-[9px] uppercase tracking-[0.2em] text-white/30 mb-1">
+                <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30 mb-1">
                   {locale === "ro" ? "Fisă Tehnică & Istorie" : "Fact Sheet & History"}
                 </div>
-                <p className="font-macro-mono text-[11px] uppercase leading-relaxed tracking-wider text-white/60">
+                <p className="font-sans text-[11px] uppercase leading-relaxed tracking-wider text-white/60">
                   {monument.fact[locale]}
                 </p>
               </div>

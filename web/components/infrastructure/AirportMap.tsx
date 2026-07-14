@@ -137,7 +137,7 @@ function AirportsLayer({
                 y={p[1] - r - 3}
                 textAnchor="middle"
                 style={{
-                  fontFamily: "var(--font-mono), monospace",
+                  fontFamily: "var(--font-sans), sans-serif",
                   fontSize: 8.5,
                   letterSpacing: "0.08em",
                   fill: isSel ? color : "rgba(255,255,255,0.65)",
@@ -192,7 +192,7 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
               setScope(s);
               setSelected(null);
             }}
-            className="rounded-full px-4 py-1.5 font-macro-mono text-[10px] font-bold uppercase tracking-[0.15em] transition-all"
+            className="rounded-full px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all"
             style={{
               background: scope === s ? "rgba(255,255,255,0.9)" : "transparent",
               color: scope === s ? "#000" : "rgba(255,255,255,0.5)",
@@ -216,7 +216,7 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
                     setFilter(f.id);
                     setSelected(null);
                   }}
-                  className="flex items-center gap-2 rounded-full border px-4 py-1.5 font-macro-mono text-[10px] font-bold uppercase tracking-[0.14em] transition-all"
+                  className="flex items-center gap-2 rounded-full border px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.14em] transition-all"
                   style={{
                     borderColor: active ? c : "rgba(255,255,255,0.12)",
                     background: active ? `${c}18` : "transparent",
@@ -236,14 +236,14 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
               [GA_COLOR.heliport, labels.heliports],
               [GA_COLOR.seaplane, labels.seaplane],
             ].map(([c, lbl]) => (
-              <span key={lbl} className="flex items-center gap-1.5 font-macro-mono text-[9px] uppercase tracking-[0.12em] text-white/45">
+              <span key={lbl} className="flex items-center gap-1.5 font-sans text-[9px] uppercase tracking-[0.12em] text-white/45">
                 <span className="h-2 w-2 rounded-full" style={{ background: (c as string).replace(/[\d.]+\)$/, "1)") }} />
                 {lbl}
               </span>
             ))}
           </div>
         )}
-        <span className="font-macro-mono text-[10px] uppercase tracking-[0.15em] text-white/35">
+        <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-white/35">
           {shown.toLocaleString(locale === "ro" ? "ro-RO" : "en-US")} · {labels.hint}
         </span>
       </div>
@@ -278,19 +278,19 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
             <div className="md:col-span-5">
               <div className="mb-1 flex items-center gap-2">
                 <span className="font-hero text-2xl" style={{ color: TIER_COLOR[airport.tier] }}>{airport.id}</span>
-                <span className="font-macro-mono text-[10px] uppercase tracking-[0.18em] text-white/35">
+                <span className="font-sans text-[10px] uppercase tracking-[0.18em] text-white/35">
                   {airport.city}, {airport.state}
                 </span>
               </div>
               <h3 className="font-macro-display text-2xl font-bold tracking-tight text-white">{airport.name}</h3>
               <div className="mt-3 flex flex-wrap gap-2">
                 {airport.intl && (
-                  <span className="rounded-full border border-white/12 px-2.5 py-0.5 font-macro-mono text-[9px] uppercase tracking-wider text-white/50">
+                  <span className="rounded-full border border-white/12 px-2.5 py-0.5 font-sans text-[9px] uppercase tracking-wider text-white/50">
                     {labels.international}
                   </span>
                 )}
                 {airport.tower && (
-                  <span className="rounded-full border border-white/12 px-2.5 py-0.5 font-macro-mono text-[9px] uppercase tracking-wider text-white/50">
+                  <span className="rounded-full border border-white/12 px-2.5 py-0.5 font-sans text-[9px] uppercase tracking-wider text-white/50">
                     {labels.towered}
                   </span>
                 )}
@@ -298,16 +298,16 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
             </div>
             <div className="flex gap-10 md:col-span-7">
               <div>
-                <div className="font-macro-mono text-[9px] uppercase tracking-[0.2em] text-white/30">{labels.enplanements}</div>
+                <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30">{labels.enplanements}</div>
                 <div className="font-hero text-3xl" style={{ color: TIER_COLOR[airport.tier] }}>
                   {(airport.enpl / 1_000_000).toFixed(1)}M
                 </div>
-                <div className="font-macro-mono text-[9px] uppercase tracking-wide text-white/35">{labels.perYear}</div>
+                <div className="font-sans text-[9px] uppercase tracking-wide text-white/35">{labels.perYear}</div>
               </div>
               <div>
-                <div className="font-macro-mono text-[9px] uppercase tracking-[0.2em] text-white/30">{labels.passengers}</div>
+                <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30">{labels.passengers}</div>
                 <div className="font-hero text-3xl text-white/85">{(airport.pax / 1_000_000).toFixed(1)}M</div>
-                <div className="font-macro-mono text-[9px] uppercase tracking-wide text-white/35">{labels.perYear}</div>
+                <div className="font-sans text-[9px] uppercase tracking-wide text-white/35">{labels.perYear}</div>
               </div>
             </div>
           </motion.div>

@@ -283,7 +283,7 @@ export default async function DamsBridgesPage() {
             <div className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
               {copy.bridgeCards.map((b) => (
                 <div key={b.name} className="border-t border-[#E8B923]/30 pt-6">
-                  <div className="font-macro-mono text-[10px] uppercase tracking-[0.18em] text-white/40">
+                  <div className="font-sans text-[10px] uppercase tracking-[0.18em] text-white/40">
                     {b.meta}
                   </div>
                   <h3 className="mb-1 mt-2 font-macro-display text-xl font-bold text-white">{b.name}</h3>
@@ -316,13 +316,13 @@ export default async function DamsBridgesPage() {
           <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-16">
             <Link
               href="/infrastructure"
-              className="font-macro-mono text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white"
+              className="font-sans text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white"
             >
               {copy.prevLink}
             </Link>
             <Link
               href="/infrastructure/aviation-hubs"
-              className="font-macro-mono text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white"
+              className="font-sans text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white"
             >
               {copy.nextLink}
             </Link>

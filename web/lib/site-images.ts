@@ -51,6 +51,8 @@ import infraPanamaCanal from "@/IMAGES/Infrastructure/Completion of the Panama C
 import infraGoldenSpike from "@/IMAGES/History/The Driving of the Golden Spike.jpg";
 import infraInterstateConstruction from "@/IMAGES/Tech & Commerce/interstate-construction.jpg";
 import infraUs75Loop12 from "@/IMAGES/Infrastructure/us-75-at-texas-state-highway-loop-12.jpg";
+import pier300Channel from "@/IMAGES/Infrastructure/Pier-300-Channel.jpg";
+import californiaAqueductCrossing from "@/IMAGES/Infrastructure/Aerial photo of the California Aqueduct at the Interstate 205 crossing, east of Interstate 580 junction.jpg";
 import literatureLibraryOfCongressReadingRoom from "@/IMAGES/Literature/Main reading room at the Library of Congress in Washington, D.C.jpg";
 import artWashingtonCrossingDelaware from "@/IMAGES/Art/Washington_Crossing_the_Delaware_by_Emanuel_Leutze,_MMA-NYC,_1851.jpg";
 
@@ -581,6 +583,8 @@ export const SITE_IMAGES = {
   infraGoldenSpike: infraGoldenSpike.src,
   infraInterstateConstruction: infraInterstateConstruction.src,
   infraUs75Loop12: infraUs75Loop12.src,
+  pier300Channel: pier300Channel.src,
+  californiaAqueductCrossing: californiaAqueductCrossing.src,
   literatureLibraryOfCongressReadingRoom: literatureLibraryOfCongressReadingRoom.src,
   artWashingtonCrossingDelaware: artWashingtonCrossingDelaware.src,
   denaliNationalPark: denaliNationalPark.src,

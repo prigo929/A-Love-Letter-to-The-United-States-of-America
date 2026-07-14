@@ -366,7 +366,7 @@ export default async function HighwaySystemPage() {
               initialEra="interstate"
               labels={copy.mapLabels}
             />
-            <p className="mt-5 max-w-4xl font-macro-mono text-[11px] uppercase leading-relaxed tracking-[0.14em] text-white/45">
+            <p className="mt-5 max-w-4xl font-sans text-[11px] uppercase leading-relaxed tracking-[0.14em] text-white/45">
               {copy.trafficSource}{" "}
               <a
                 href={copy.trafficSourceHref}
@@ -394,7 +394,7 @@ export default async function HighwaySystemPage() {
                 <ul>
                   {copy.decoderItems.map((d) => (
                     <li key={d.k} className="flex gap-4 border-b border-white/[0.06] py-4">
-                      <span className="w-28 shrink-0 font-macro-mono text-[11px] uppercase tracking-[0.15em] text-[#E8B923]">
+                      <span className="w-28 shrink-0 font-sans text-[11px] uppercase tracking-[0.15em] text-[#E8B923]">
                         {d.k}
                       </span>
                       <span className="macro-body !text-base">{d.v}</span>
@@ -403,7 +403,7 @@ export default async function HighwaySystemPage() {
                 </ul>
               </div>
               <div className="flex flex-col justify-center rounded-2xl border border-[#b22234]/30 bg-[#b22234]/[0.06] p-8">
-                <span className="mb-4 font-macro-mono text-xs font-black uppercase tracking-[0.3em] text-[#f87171]">
+                <span className="mb-4 font-sans text-xs font-black uppercase tracking-[0.3em] text-[#f87171]">
                   {copy.mythLabel}
                 </span>
                 <p className="macro-body !text-lg leading-relaxed text-white/80">{copy.mythText}</p>
@@ -535,13 +535,13 @@ export default async function HighwaySystemPage() {
           <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-16">
             <Link
               href="/infrastructure"
-              className="font-macro-mono text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white"
+              className="font-sans text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white"
             >
               {copy.prevLink}
             </Link>
             <Link
               href="/infrastructure/rail-network"
-              className="font-macro-mono text-sm uppercase tracking-widest text-[#E8B923] transition-colors hover:text-white"
+              className="font-sans text-sm uppercase tracking-widest text-[#E8B923] transition-colors hover:text-white"
             >
               {copy.nextLink}
             </Link>

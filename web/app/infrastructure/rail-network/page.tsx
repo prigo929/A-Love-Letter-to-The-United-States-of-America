@@ -281,13 +281,13 @@ export default async function RailNetworkPage() {
           <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-16">
             <Link
               href="/infrastructure/highway-system"
-              className="font-macro-mono text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white"
+              className="font-sans text-sm uppercase tracking-widest text-white/50 transition-colors hover:text-white"
             >
               {copy.prevLink}
             </Link>
             <Link
               href="/infrastructure"
-              className="font-macro-mono text-sm uppercase tracking-widest text-[#E8B923] transition-colors hover:text-white"
+              className="font-sans text-sm uppercase tracking-widest text-[#E8B923] transition-colors hover:text-white"
             >
               {copy.nextLink}
             </Link>

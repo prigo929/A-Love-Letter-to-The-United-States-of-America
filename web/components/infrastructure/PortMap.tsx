@@ -113,7 +113,7 @@ function PortsLayer({
                 y={coord[1] - r - 4}
                 textAnchor="middle"
                 style={{
-                  fontFamily: "var(--font-mono), monospace",
+                  fontFamily: "var(--font-sans), sans-serif",
                   fontSize: 9,
                   fontWeight: "bold",
                   fill: "#fff",
@@ -185,7 +185,7 @@ export function PortMap({ locale, labels }: { locale: "en" | "ro"; labels: MapLa
                   setFilter(f.id);
                   setSelected(null);
                 }}
-                className="flex items-center gap-2 rounded-full border px-4 py-1.5 font-macro-mono text-[10px] font-bold uppercase tracking-[0.14em] transition-all"
+                className="flex items-center gap-2 rounded-full border px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.14em] transition-all"
                 style={{
                   borderColor: active ? f.color : "rgba(255,255,255,0.12)",
                   background: active ? `${f.color}18` : "transparent",
@@ -198,7 +198,7 @@ export function PortMap({ locale, labels }: { locale: "en" | "ro"; labels: MapLa
             );
           })}
         </div>
-        <span className="font-macro-mono text-[10px] uppercase tracking-[0.15em] text-white/35">
+        <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-white/35">
           {labels.hint}
         </span>
       </div>
@@ -244,42 +244,42 @@ export function PortMap({ locale, labels }: { locale: "en" | "ro"; labels: MapLa
           >
             <div className="md:col-span-4">
               <div className="mb-1">
-                <span className="font-macro-mono text-[10px] font-bold uppercase tracking-[0.15em] text-[#E8B923]">
+                <span className="font-sans text-[10px] font-bold uppercase tracking-[0.15em] text-[#E8B923]">
                   {labels.rankLabel}: #{port.rank}
                 </span>
-                <span className="font-macro-mono text-[10px] uppercase tracking-[0.18em] text-white/35 ml-2">
+                <span className="font-sans text-[10px] uppercase tracking-[0.18em] text-white/35 ml-2">
                   · {locale === "ro" ? "Port Deepwater" : "Deepwater Port"}
                 </span>
               </div>
               <h3 className="font-macro-display text-2xl font-bold tracking-tight text-white mb-2">
                 {port.name}
               </h3>
-              <p className="font-macro-mono text-[9px] uppercase tracking-wider text-white/40 leading-relaxed">
+              <p className="font-sans text-[9px] uppercase tracking-wider text-white/40 leading-relaxed">
                 {port.fullName}
               </p>
             </div>
             
             <div className="md:col-span-8 grid gap-8 sm:grid-cols-3">
               <div>
-                <div className="font-macro-mono text-[9px] uppercase tracking-[0.2em] text-white/30">
+                <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30">
                   {labels.tonnageLabel}
                 </div>
                 <div className="font-hero text-3xl mt-1 text-[#E8B923]">
                   {detailsStats.totalM}M
-                  <span className="ml-1 font-macro-mono text-[10px] uppercase tracking-wide text-white/40">tons</span>
+                  <span className="ml-1 font-sans text-[10px] uppercase tracking-wide text-white/40">tons</span>
                 </div>
               </div>
               
               {/* Domestic vs Foreign split bar */}
               <div>
-                <div className="font-macro-mono text-[9px] uppercase tracking-[0.2em] text-white/30 mb-2">
+                <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30 mb-2">
                   {labels.splitLabel}
                 </div>
                 <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden flex">
                   <div className="h-full bg-[#3b82f6]" style={{ width: `${detailsStats.domesticPct}%` }} />
                   <div className="h-full bg-white/40" style={{ width: `${detailsStats.foreignPct}%` }} />
                 </div>
-                <div className="flex justify-between mt-2 font-macro-mono text-[8px] uppercase tracking-widest text-white/40">
+                <div className="flex justify-between mt-2 font-sans text-[8px] uppercase tracking-widest text-white/40">
                   <span className="text-[#3b82f6]">{labels.domesticLabel}: {detailsStats.domesticPct}%</span>
                   <span>{labels.foreignLabel}: {detailsStats.foreignPct}%</span>
                 </div>
@@ -287,14 +287,14 @@ export function PortMap({ locale, labels }: { locale: "en" | "ro"; labels: MapLa
 
               {/* Imports vs Exports split bar */}
               <div>
-                <div className="font-macro-mono text-[9px] uppercase tracking-[0.2em] text-white/30 mb-2">
+                <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30 mb-2">
                   {labels.splitLabel.replace(/.* vs .*/, "Imports vs Exports")}
                 </div>
                 <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden flex">
                   <div className="h-full bg-[#ec4899]" style={{ width: `${detailsStats.importPct}%` }} />
                   <div className="h-full bg-[#10b981]" style={{ width: `${detailsStats.exportPct}%` }} />
                 </div>
-                <div className="flex justify-between mt-2 font-macro-mono text-[8px] uppercase tracking-widest text-white/40">
+                <div className="flex justify-between mt-2 font-sans text-[8px] uppercase tracking-widest text-white/40">
                   <span className="text-[#ec4899]">Imports: {detailsStats.importPct}%</span>
                   <span className="text-[#10b981]">Exports: {detailsStats.exportPct}%</span>
                 </div>

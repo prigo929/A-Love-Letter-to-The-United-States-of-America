@@ -133,10 +133,10 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
       <div className="lg:col-span-7 bg-[#070707] border border-white/[0.06] rounded-2xl p-6 md:p-8 flex flex-col justify-between relative overflow-hidden min-h-[400px]">
         
         {/* CAD Blueprint styling: watermark overlay */}
-        <div className="absolute top-4 left-4 font-macro-mono text-[9px] text-white/15 uppercase tracking-widest pointer-events-none select-none">
+        <div className="absolute top-4 left-4 font-sans text-[9px] text-white/15 uppercase tracking-widest pointer-events-none select-none">
           {isRo ? "SECȚIUNE TRANSVERSALĂ STANDARD FHWA // DESEN NR: 1956-A" : "FHWA STANDARD CROSS-SECTION // DWG NO: 1956-A"}
         </div>
-        <div className="absolute bottom-4 right-4 font-macro-mono text-[9px] text-white/15 pointer-events-none select-none">
+        <div className="absolute bottom-4 right-4 font-sans text-[9px] text-white/15 pointer-events-none select-none">
           {isRo ? "SCARĂ: 1 FT = 8.33 PX // SISTEM: DWIGHT D. EISENHOWER INTR" : "SCALE: 1 FT = 8.33 PX // SYSTEM: DWIGHT D. EISENHOWER INTR"}
         </div>
         
@@ -389,7 +389,7 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
             <line x1={138} y1={110} x2={320} y2={110} stroke="rgba(232,185,35,0.4)" strokeWidth={0.8} strokeDasharray="2 2" />
 
             <rect x={328} y={140} width={90} height={20} rx={3} fill="#000" stroke="#E8B923" strokeWidth={0.8} />
-            <text x={334} y={154} fill="#E8B923" fontSize={9.5} fontFamily="var(--font-mono)" letterSpacing="0.05em" fontWeight="bold">
+            <text x={334} y={154} fill="#E8B923" fontSize={9.5} fontFamily="var(--font-sans)" letterSpacing="0.05em" fontWeight="bold">
               {isRo ? "4.87 m MIN" : "16 ft MIN"}
             </text>
           </g>
@@ -407,7 +407,7 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
             <polygon points="120,235 220,235 220,245 120,245" fill="rgba(232, 185, 35, 0.08)" style={{ pointerEvents: "none" }} />
             
             <rect x={144} y={266} width={52} height={18} rx={3} fill="#000" stroke="#E8B923" strokeWidth={0.8} />
-            <text x={150} y={279} fill="#E8B923" fontSize={9.5} fontFamily="var(--font-mono)" fontWeight="bold">
+            <text x={150} y={279} fill="#E8B923" fontSize={9.5} fontFamily="var(--font-sans)" fontWeight="bold">
               {isRo ? "3.66 m" : "12 ft"}
             </text>
           </g>
@@ -421,7 +421,7 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
             <line x1={40} y1={250} x2={40} y2={260} stroke="#E8B923" strokeWidth={1.5} />
             <line x1={120} y1={250} x2={120} y2={260} stroke="#E8B923" strokeWidth={1.5} />
             <rect x={54} y={266} width={52} height={18} rx={3} fill="#000" stroke="#E8B923" strokeWidth={0.8} />
-            <text x={60} y={279} fill="#E8B923" fontSize={9.5} fontFamily="var(--font-mono)" fontWeight="bold">
+            <text x={60} y={279} fill="#E8B923" fontSize={9.5} fontFamily="var(--font-sans)" fontWeight="bold">
               {isRo ? "3.05 m" : "10 ft"}
             </text>
           </g>
@@ -439,7 +439,7 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
             <rect x={40} y={245} width={560} height={17} fill="transparent" stroke="#E8B923" strokeWidth={1.5} filter="url(#hud-glow)" />
 
             <rect x={132} y={276} width={110} height={18} rx={3} fill="#000" stroke="#E8B923" strokeWidth={0.8} />
-            <text x={138} y={289} fill="#E8B923" fontSize={8.5} fontFamily="var(--font-mono)" fontWeight="bold">
+            <text x={138} y={289} fill="#E8B923" fontSize={8.5} fontFamily="var(--font-sans)" fontWeight="bold">
               {isRo ? "3 STRATURI BAZĂ" : "3 STRATA BASE"}
             </text>
           </g>
@@ -453,14 +453,14 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
             {/* Left slope arrow */}
             <path d="M 260 227 L 160 229" fill="none" stroke="#E8B923" strokeWidth={1.5} filter="url(#yellow-hud-glow)" />
             <path d="M 160 229 L 168 225 L 167 232 Z" fill="#E8B923" />
-            <text x={180} y={222} fill="#E8B923" fontSize={8.5} fontFamily="var(--font-mono)" fontWeight="bold">
+            <text x={180} y={222} fill="#E8B923" fontSize={8.5} fontFamily="var(--font-sans)" fontWeight="bold">
               {isRo ? "PANTĂ 2%" : "2% SLOPE"}
             </text>
 
             {/* Right slope arrow */}
             <path d="M 380 227 L 480 229" fill="none" stroke="#E8B923" strokeWidth={1.5} filter="url(#yellow-hud-glow)" />
             <path d="M 480 229 L 472 232 L 473 225 Z" fill="#E8B923" />
-            <text x={400} y={222} fill="#E8B923" fontSize={8.5} fontFamily="var(--font-mono)" fontWeight="bold">
+            <text x={400} y={222} fill="#E8B923" fontSize={8.5} fontFamily="var(--font-sans)" fontWeight="bold">
               {isRo ? "PANTĂ 2%" : "2% SLOPE"}
             </text>
             
@@ -526,7 +526,7 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
         <div className="absolute bottom-0 left-0 w-24 h-24 border-b border-l border-white/5 pointer-events-none rounded-bl-2xl" />
 
         <div className="flex-1 flex flex-col justify-center">
-          <span className="font-macro-mono text-[10px] uppercase tracking-[0.25em] text-[#E8B923] mb-4 block">
+          <span className="font-sans text-[10px] uppercase tracking-[0.25em] text-[#E8B923] mb-4 block">
             {isRo ? "Sistem Metric & Specificații" : "Metric HUD & Specifications"}
           </span>
           
@@ -548,7 +548,7 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
                   <span className="font-macro-display text-xl font-bold text-[#E8B923]">
                     {active.stats.unit}
                   </span>
-                  <span className="font-macro-mono text-[10px] text-white/30 uppercase tracking-wider ml-2 border-l border-white/10 pl-3">
+                  <span className="font-sans text-[10px] text-white/30 uppercase tracking-wider ml-2 border-l border-white/10 pl-3">
                     {active.stats.label[locale]}
                   </span>
                 </div>
@@ -565,7 +565,7 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
               {/* High-tech HUD telemetry code readouts */}
               <div className="space-y-3 pt-3 border-t border-white/[0.04]">
                 {active.hudCodes.map((codeInfo) => (
-                  <div key={codeInfo.code} className="flex items-center justify-between text-[11px] font-macro-mono">
+                  <div key={codeInfo.code} className="flex items-center justify-between text-[11px] font-sans">
                     <span className="text-white/30 tracking-tight">{codeInfo.code}</span>
                     <div className="flex items-center gap-2">
                       <span className="h-1.5 w-1.5 rounded-full bg-[#E8B923]" style={{ filter: "drop-shadow(0 0 3px rgba(232, 185, 35, 0.8))" }} />
@@ -588,7 +588,7 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
               <button
                 key={h.id}
                 onClick={() => setActiveId(h.id)}
-                className="px-3 py-1.5 rounded border text-[10px] font-macro-mono uppercase tracking-wider transition-all duration-200"
+                className="px-3 py-1.5 rounded border text-[10px] font-sans uppercase tracking-wider transition-all duration-200"
                 style={{
                   borderColor: active ? "#E8B923" : "rgba(255,255,255,0.06)",
                   background: active ? "rgba(232, 185, 35, 0.08)" : "transparent",

@@ -235,10 +235,10 @@ export function InterchangeTypology({ locale }: { locale: Loc }) {
         {/* Featured diagram + narrative */}
         <div className="lg:col-span-7">
           <div className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#070707] p-6 md:p-10">
-            <div className="pointer-events-none absolute left-4 top-4 font-macro-mono text-[9px] uppercase tracking-widest text-white/20">
+            <div className="pointer-events-none absolute left-4 top-4 font-sans text-[9px] uppercase tracking-widest text-white/20">
               {locale === "ro" ? "SCHEMĂ // VEDERE DE SUS" : "SCHEMATIC // PLAN VIEW"}
             </div>
-            <div className="pointer-events-none absolute right-4 top-4 flex items-center gap-2 font-macro-mono text-[9px] uppercase tracking-widest text-white/25">
+            <div className="pointer-events-none absolute right-4 top-4 flex items-center gap-2 font-sans text-[9px] uppercase tracking-widest text-white/25">
               <span className="inline-block h-2 w-4 rounded-full" style={{ background: GOLD }} />
               {locale === "ro" ? "autostradă" : "freeway"}
               <span className="ml-2 inline-block h-2 w-4 rounded-full" style={{ background: STEEL }} />
@@ -254,7 +254,7 @@ export function InterchangeTypology({ locale }: { locale: Loc }) {
               <h3 className="font-macro-display text-3xl font-black tracking-tight text-white">
                 {active.name[locale]}
               </h3>
-              <span className="font-macro-mono text-[11px] uppercase tracking-[0.18em] text-[#E8B923]">
+              <span className="font-sans text-[11px] uppercase tracking-[0.18em] text-[#E8B923]">
                 {active.tag[locale]}
               </span>
             </div>
@@ -298,7 +298,7 @@ export function InterchangeTypology({ locale }: { locale: Loc }) {
           <div className="mt-5 grid grid-cols-4 gap-px overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.05]">
             {specRows.map(([label, value]) => (
               <div key={label} className="bg-[#070707] px-3 py-4 text-center">
-                <div className="font-macro-mono text-[9px] uppercase tracking-[0.14em] text-white/35">
+                <div className="font-sans text-[9px] uppercase tracking-[0.14em] text-white/35">
                   {label}
                 </div>
                 <div className="mt-1.5 font-macro-display text-base font-bold text-white">{value}</div>
@@ -308,7 +308,7 @@ export function InterchangeTypology({ locale }: { locale: Loc }) {
 
           {/* Footprint comparison */}
           <div className="mt-5 rounded-xl border border-white/[0.07] bg-[#070707] p-4">
-            <div className="mb-3 font-macro-mono text-[9px] uppercase tracking-[0.16em] text-white/35">
+            <div className="mb-3 font-sans text-[9px] uppercase tracking-[0.16em] text-white/35">
               {locale === "ro" ? "Teren ocupat, comparativ" : "Land footprint, compared"}
             </div>
             <div className="space-y-2">
@@ -320,7 +320,7 @@ export function InterchangeTypology({ locale }: { locale: Loc }) {
                     onClick={() => setActiveId(k.id)}
                     className="flex w-full items-center gap-3"
                   >
-                    <span className="w-24 shrink-0 text-left font-macro-mono text-[10px] uppercase tracking-wider" style={{ color: on ? "#E8B923" : "rgba(255,255,255,0.4)" }}>
+                    <span className="w-24 shrink-0 text-left font-sans text-[10px] uppercase tracking-wider" style={{ color: on ? "#E8B923" : "rgba(255,255,255,0.4)" }}>
                       {k.name[locale]}
                     </span>
                     <span className="h-2 flex-1 overflow-hidden rounded-full bg-white/[0.05]">

@@ -14,7 +14,7 @@ import {
   MacroHero,
   InfrastructureBand,
 } from "@/components/shared/CinematicSystem";
-import { AviationMap } from "@/components/infrastructure/AviationMap";
+import { InfrastructureAtlas } from "@/components/infrastructure/InfrastructureAtlas";
 import { SerifLede, Reveal, MegaTimeline } from "@/components/infrastructure/InfraMotion";
 import { MEGAPROJECTS } from "@/lib/data/infrastructure-network-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -56,16 +56,74 @@ export default async function InfrastructureHubPage() {
           "Distanța a fost întotdeauna problema fundamentală a Americii. New York și San Francisco sunt mai departe unul de altul decât Lisabona de Moscova. Nicio piață unică nu poate exista la asemenea scară fără o infrastructură care să anuleze distanța — iar America a construit-o, strat peste strat: mai întâi canale, apoi șine, apoi beton, apoi piste.",
         thesisP2:
           "Rezultatul este singura economie continentală cu adevărat integrată de pe Pământ. Un container descărcat în Los Angeles ajunge la Chicago în mai puțin de 60 de ore pe calea ferată. Un camion poate traversa continentul fără să întâlnească un singur semafor. Iar aproape orice punct din țară se află la o zi de zbor de oricare altul.",
-        aviationEyebrow: "Cerul comercial",
-        aviationTitle: "Huburile aviatice globale",
-        aviationBody:
-          "Cele mai aglomerate aeroporturi de pasageri din lume și mașinile nocturne de sortare care mută comerțul planetei. Comută între straturi și atinge un hub.",
-        aviationLabels: {
-          passengers: "Pasageri",
-          cargo: "Marfă",
-          paxUnit: "mil. pasageri · 2024",
-          cargoUnit: "mil. tone · marfă aeriană",
-          hint: "Atinge un hub pentru detalii. Mărimea cercului = traficul anual.",
+        atlasTitle: "Atlasul Infrastructurii Naționale",
+        atlasIntro: "Explorează sistemele continentale care definesc America modernă. Selectează filele de mai jos pentru a comuta între hărțile interactive ale aviației, porturilor, barajelor, rețelei electrice, căilor ferate, apeductelor și autostrăzilor.",
+        atlasLabels: {
+          aviation: {
+            title: "Huburi Aviatice Globale",
+            desc: "Peste 19.000 de aerodromuri și cele mai aglomerate aeroporturi de pasageri și marfă de pe Pământ."
+          },
+          ports: {
+            title: "Porturi de Mare Adâncime",
+            desc: "Terminalele comerciale care conectează rețelele interioare de transport cu rutele comerciale din Pacific și Atlantic."
+          },
+          dams: {
+            title: "Baraje și Poduri Monumentale",
+            desc: "Lucrările structurale masive care au îmblânzit râurile Americii și i-au traversat marile golfuri și canioane."
+          },
+          power: {
+            title: "Rețeaua Electrică Continentală",
+            desc: "Cea mai mare mașină de pe Pământ — o rețea uriașă de linii de înaltă tensiune care alimentează un continent."
+          },
+          rail: {
+            title: "Rețeaua Feroviară de Marfă",
+            desc: "Sistemul feroviar transcontinental de marfă care mută volume enorme de resurse cu o eficiență de neegalat."
+          },
+          water: {
+            title: "Apeducte și Căi Navigabile",
+            desc: "Canalele comerciale majore (Mississippi/Intracoastal) și apeductele colosale care alimentează deșertul din Vest."
+          },
+          highway: {
+            title: "Sistemul de Autostrăzi Interstatale",
+            desc: "Rețeaua de autostrăzi federale cu acces controlat, întinzându-se pe 48.000 de mile fără semafoare."
+          },
+          aviationLabels: {
+            passengers: "Pasageri",
+            cargo: "Marfă",
+            paxUnit: "mil. pasageri · 2024",
+            cargoUnit: "mil. tone · marfă aeriană",
+            hint: "Atinge un hub pentru detalii. Mărimea cercului = traficul anual.",
+          },
+          portLabels: {
+            all: "Toate Porturile",
+            imports: "Import-Dominant",
+            exports: "Export-Dominant",
+            completed: "Înființat",
+            statLabel: "Tonaj Anual (Short Tons)",
+            hint: "Treci peste un port pe hartă pentru detalii",
+            rankLabel: "Locul în Topul SUA",
+            tonnageLabel: "Volumul Total de Marfă",
+            splitLabel: "Raport Domestic vs Foreign",
+            domesticLabel: "Domestic",
+            foreignLabel: "Extern",
+          },
+          damsLabels: {
+            all: "Toate",
+            dams: "Baraje",
+            bridges: "Poduri",
+            completed: "Finalizat",
+            statLabel: "Dimensiune / Deschidere",
+            hint: "Treci peste un punct pentru detalii",
+            scopeLabel: "Monument",
+          },
+          mapLabels: {
+            eraLabel: "Sistem",
+            corridorsLabel: "Treci peste o linie pentru detalii",
+            lengthLabel: "Lungime",
+            openedLabel: "În serviciu",
+            hint: "Trageți pentru panoramare · Scroll pentru zoom",
+            zoomHint: "Trageți pentru panoramare · Scroll pentru zoom",
+          }
         },
         bandTitle: "Construit la scară geologică",
         bandP1:
@@ -141,16 +199,74 @@ export default async function InfrastructureHubPage() {
           "Distance has always been America's founding problem. New York and San Francisco lie farther apart than Lisbon and Moscow. No single market can exist at that scale without infrastructure that cancels distance — and America built it, layer upon layer: first canals, then rails, then concrete, then runways.",
         thesisP2:
           "The result is the only truly integrated continental economy on Earth. A container unloaded in Los Angeles reaches Chicago by rail in under 60 hours. A truck can cross the continent without meeting a single traffic light. And nearly every point in the country lies within a day's flight of every other.",
-        aviationEyebrow: "The Commercial Sky",
-        aviationTitle: "The Global Aviation Hubs",
-        aviationBody:
-          "The world's busiest passenger airports — and the overnight sorting machines that move the planet's commerce. Switch layers and touch a hub.",
-        aviationLabels: {
-          passengers: "Passengers",
-          cargo: "Cargo",
-          paxUnit: "M passengers · 2024",
-          cargoUnit: "M tonnes · air cargo",
-          hint: "Tap a hub for detail. Circle size = annual throughput.",
+        atlasTitle: "National Infrastructure Atlas",
+        atlasIntro: "Explore the continental networks that define modern America. Select the tabs below to switch between interactive maps of aviation, ports, dams, power grid, rail network, aqueducts, and highways.",
+        atlasLabels: {
+          aviation: {
+            title: "Global Aviation Hubs",
+            desc: "Over 19,000 airfields and the world's busiest passenger and air cargo hubs."
+          },
+          ports: {
+            title: "Deepwater Maritime Ports",
+            desc: "The trade gateways connecting domestic transit lines to the shipping lanes of the Pacific and Atlantic."
+          },
+          dams: {
+            title: "Monumental Dams & Bridges",
+            desc: "The massive structural feats that tamed America's rivers and leaped its bays and canyons."
+          },
+          power: {
+            title: "The Continental Power Grid",
+            desc: "The largest machine built by mankind — a vast network of high-voltage transmission lines powering a continent."
+          },
+          rail: {
+            title: "Freight Rail Network",
+            desc: "The transcontinental rail freight system moving massive resource volumes with unmatched efficiency."
+          },
+          water: {
+            title: "Aqueducts & Waterways",
+            desc: "Major commercial channels (Mississippi/Intracoastal) and the colossal aqueducts watering the arid West."
+          },
+          highway: {
+            title: "Interstate Highway System",
+            desc: "The network of controlled-access federal highways, stretching 48,000 miles without a single traffic light."
+          },
+          aviationLabels: {
+            passengers: "Passengers",
+            cargo: "Cargo",
+            paxUnit: "M passengers · 2024",
+            cargoUnit: "M tonnes · air cargo",
+            hint: "Tap a hub for detail. Circle size = annual throughput.",
+          },
+          portLabels: {
+            all: "All Ports",
+            imports: "Import-Dominant",
+            exports: "Export-Dominant",
+            completed: "Established",
+            statLabel: "Annual Tonnage (Short Tons)",
+            hint: "Hover a port marker on the map for details",
+            rankLabel: "National Rank",
+            tonnageLabel: "Total Cargo Volume",
+            splitLabel: "Domestic vs Foreign Split",
+            domesticLabel: "Domestic",
+            foreignLabel: "Foreign",
+          },
+          damsLabels: {
+            all: "All",
+            dams: "Dams",
+            bridges: "Bridges",
+            completed: "Completed",
+            statLabel: "Height / Span Size",
+            hint: "Hover a marker for details",
+            scopeLabel: "Monument",
+          },
+          mapLabels: {
+            eraLabel: "System",
+            corridorsLabel: "Hover a line for its details",
+            lengthLabel: "Length",
+            openedLabel: "In service",
+            hint: "Drag to pan · Scroll to zoom",
+            zoomHint: "Drag to pan · Scroll to zoom",
+          }
         },
         bandTitle: "Built at Geological Scale",
         bandP1:
@@ -238,12 +354,12 @@ export default async function InfrastructureHubPage() {
             </div>
           </section>
 
-          {/* ── Aviation hubs ── */}
+          {/* ── Infrastructure Atlas ── */}
           <section>
-            <span className="macro-eyebrow">{copy.aviationEyebrow}</span>
-            <h2 className="macro-section-title mb-8 mt-6">{copy.aviationTitle}</h2>
-            <p className="macro-body mb-14 max-w-4xl">{copy.aviationBody}</p>
-            <AviationMap locale={locale} labels={copy.aviationLabels} />
+            <span className="macro-eyebrow">{isRo ? "Hărți Interactive" : "Interactive Maps"}</span>
+            <h2 className="macro-section-title mb-8 mt-6">{copy.atlasTitle}</h2>
+            <p className="macro-body mb-14 max-w-4xl">{copy.atlasIntro}</p>
+            <InfrastructureAtlas locale={locale} labels={copy.atlasLabels} />
           </section>
 
           {/* ── Megaprojects band + chronology ── */}
@@ -266,12 +382,12 @@ export default async function InfrastructureHubPage() {
 
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
               {[
-                { card: copy.highwayCard, href: "/infrastructure/highway-system", img: SITE_IMAGES.infraGlenwoodCanyon },
+                { card: copy.highwayCard, href: "/infrastructure/highway-system", img: SITE_IMAGES.infraUs75Loop12 },
                 { card: copy.railCard, href: "/infrastructure/rail-network", img: SITE_IMAGES.infraGoldenSpike },
                 { card: copy.aviationCard, href: "/infrastructure/aviation-hubs", img: SITE_IMAGES.infraOHareJets },
-                { card: copy.portCard, href: "/infrastructure/maritime-ports", img: SITE_IMAGES.aerialLongBeachPort },
+                { card: copy.portCard, href: "/infrastructure/maritime-ports", img: SITE_IMAGES.pier300Channel },
                 { card: copy.powerCard, href: "/infrastructure/power-grid", img: SITE_IMAGES.homeUsaAtNightFromSpace },
-                { card: copy.waterCard, href: "/infrastructure/aqueducts-waterways", img: SITE_IMAGES.landscapes.coloradoRiver },
+                { card: copy.waterCard, href: "/infrastructure/aqueducts-waterways", img: SITE_IMAGES.californiaAqueductCrossing },
                 { card: copy.damsCard, href: "/infrastructure/dams-bridges", img: SITE_IMAGES.infraHooverAerial },
               ].map(({ card, href, img }) => (
                 <Link key={href} href={href} className="group block">
@@ -291,8 +407,8 @@ export default async function InfrastructureHubPage() {
                     <h3 className="font-macro-display text-xl font-bold tracking-tight text-white group-hover:text-[#E8B923] transition-colors">
                       {card.title}
                     </h3>
-                    <p className="font-macro-mono text-[11px] leading-relaxed tracking-wider text-white/50 mt-3">{card.desc}</p>
-                    <span className="mt-4 inline-block font-macro-mono text-[10px] uppercase tracking-[0.2em] text-[#E8B923] transition-colors group-hover:text-white">
+                    <p className="font-sans text-sm text-white/50 mt-3">{card.desc}</p>
+                    <span className="mt-4 inline-block font-sans text-[11px] font-bold uppercase tracking-wider text-[#E8B923] transition-colors group-hover:text-white">
                       {card.cta}
                     </span>
                   </div>

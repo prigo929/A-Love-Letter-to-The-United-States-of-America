@@ -168,7 +168,7 @@ export default async function PortsPage() {
         titleAccent={copy.heroAccent}
         description={copy.heroBody}
         stats={copy.heroStats}
-        imageSrc={SITE_IMAGES.economyPort}
+        imageSrc={SITE_IMAGES.pier300Channel}
         imageAlt="Container ship docked at port"
       />
 
@@ -288,13 +288,13 @@ export default async function PortsPage() {
                   href={link.href}
                   className="group block border border-white/10 bg-white/[0.02] p-8 transition-all duration-300 hover:border-[#E8B923] hover:bg-[#E8B923]/[0.02] rounded-3xl"
                 >
-                  <span className="font-macro-mono text-[9px] uppercase tracking-[0.2em] text-[#E8B923] block mb-3">
+                  <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#E8B923] block mb-3">
                     {isRo ? "Capitol" : "Chapter"}
                   </span>
                   <h4 className="font-macro-display text-lg font-bold text-white group-hover:text-[#E8B923] transition-colors mb-2">
                     {isRo ? link.nameRo : link.nameEn}
                   </h4>
-                  <p className="font-macro-mono text-[10px] uppercase leading-relaxed tracking-wider text-white/50">
+                  <p className="font-sans text-[10px] uppercase leading-relaxed tracking-wider text-white/50">
                     {isRo ? link.descRo : link.descEn}
                   </p>
                 </Link>

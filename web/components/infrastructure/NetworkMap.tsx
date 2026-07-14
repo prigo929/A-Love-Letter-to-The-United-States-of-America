@@ -512,7 +512,7 @@ function RoutesLayer({
             x={p[0] + 6 * k}
             y={p[1] - 5 * k}
             style={{
-              fontFamily: "var(--font-mono), monospace",
+              fontFamily: "var(--font-sans), sans-serif",
               fontSize: (node.major ? 10.5 : 8.5) * k,
               fill: node.major ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.45)",
               letterSpacing: "0.08em",
@@ -712,7 +712,7 @@ export function NetworkMap({
       <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         {!hideEraToggle && (
           <div>
-            <span className="font-macro-mono text-[11px] font-bold uppercase tracking-[0.25em] text-white/35">
+            <span className="font-sans text-[11px] font-bold uppercase tracking-[0.25em] text-white/35">
               {labels.eraLabel}
             </span>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -734,7 +734,7 @@ export function NetworkMap({
                     >
                       {e.label[locale]}
                     </span>
-                    <span className="block font-macro-mono text-[10px] uppercase tracking-[0.18em] text-white/30">
+                    <span className="block font-sans text-[10px] uppercase tracking-[0.18em] text-white/30">
                       {e.sublabel[locale]}
                     </span>
                   </button>
@@ -754,7 +754,7 @@ export function NetworkMap({
                 <button
                   key={String(m.on)}
                   onClick={() => setHeat(m.on)}
-                  className="rounded-full px-3.5 py-1 font-macro-mono text-[10px] font-bold uppercase tracking-[0.15em] transition-all"
+                  className="rounded-full px-3.5 py-1 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all"
                   style={{
                     background: heat === m.on ? "rgba(255,255,255,0.9)" : "transparent",
                     color: heat === m.on ? "#000" : "rgba(255,255,255,0.5)",
@@ -765,7 +765,7 @@ export function NetworkMap({
               ))}
             </div>
           )}
-          <p className="max-w-xs font-macro-mono text-[10px] uppercase leading-relaxed tracking-[0.15em] text-white/25 md:text-right">
+          <p className="max-w-xs font-sans text-[10px] uppercase leading-relaxed tracking-[0.15em] text-white/25 md:text-right">
             {labels.hint}
           </p>
         </div>
@@ -774,7 +774,7 @@ export function NetworkMap({
       {/* Heat legend (replaces the corridor chips in heat mode) */}
       {heat && era === bgEra ? (
         <div className="mb-6 flex flex-wrap items-center gap-4">
-          <span className="font-macro-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">
+          <span className="font-sans text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">
             {labels.heatLow ?? "Quiet"}
           </span>
           <div
@@ -783,7 +783,7 @@ export function NetworkMap({
               background: `linear-gradient(to right, ${heatColorFromT(0)}, ${heatColorFromT(0.4)}, ${heatColorFromT(0.7)}, ${heatColorFromT(1)})`,
             }}
           />
-          <span className="font-macro-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">
+          <span className="font-sans text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">
             {labels.heatHigh ?? "Jammed"}
           </span>
         </div>
@@ -838,7 +838,7 @@ export function NetworkMap({
           ))}
         </div>
         {position.zoom > 1.01 && (
-          <div className="pointer-events-none absolute left-3 top-3 z-10 rounded-full border border-white/10 bg-black/70 px-3 py-1 font-macro-mono text-[10px] uppercase tracking-[0.15em] text-white/50 backdrop-blur-sm">
+          <div className="pointer-events-none absolute left-3 top-3 z-10 rounded-full border border-white/10 bg-black/70 px-3 py-1 font-sans text-[10px] uppercase tracking-[0.15em] text-white/50 backdrop-blur-sm">
             {position.zoom.toFixed(1)}×
           </div>
         )}
@@ -910,7 +910,7 @@ export function NetworkMap({
         </ComposableMap>
       </div>
       {labels.zoomHint && (
-        <p className="mt-2 text-right font-macro-mono text-[9px] uppercase tracking-[0.15em] text-white/20">
+        <p className="mt-2 text-right font-sans text-[9px] uppercase tracking-[0.15em] text-white/20">
           {labels.zoomHint}
         </p>
       )}
@@ -930,7 +930,7 @@ export function NetworkMap({
             <div className="md:col-span-4">
               <div className="mb-2 flex items-center gap-3">
                 <span className="h-[3px] w-10 rounded-full" style={{ background: selected.color }} />
-                <span className="font-macro-mono text-[10px] uppercase tracking-[0.2em] text-white/35">
+                <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-white/35">
                   {selected.year}
                 </span>
               </div>
@@ -946,14 +946,14 @@ export function NetworkMap({
                   <h3 className="font-macro-display text-2xl font-bold tracking-tight text-white">
                     {selected.name[locale]}
                   </h3>
-                  <p className="mt-1 font-macro-mono text-[11px] uppercase tracking-[0.15em] text-white/40">
+                  <p className="mt-1 font-sans text-[11px] uppercase tracking-[0.15em] text-white/40">
                     {selected.endpoints[locale]}
                   </p>
                 </div>
               </div>
               <div className="mt-4 flex flex-wrap gap-x-8 gap-y-3">
                 <div>
-                  <div className="font-macro-mono text-[9px] uppercase tracking-[0.2em] text-white/30">
+                  <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30">
                     {labels.lengthLabel}
                   </div>
                   <div className="font-hero text-2xl" style={{ color: selected.color }}>
@@ -961,19 +961,19 @@ export function NetworkMap({
                   </div>
                 </div>
                 <div>
-                  <div className="font-macro-mono text-[9px] uppercase tracking-[0.2em] text-white/30">
+                  <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30">
                     {labels.openedLabel}
                   </div>
                   <div className="font-hero text-2xl text-white/85">{selected.year}</div>
                 </div>
                 {selectedAadt > 0 && labels.trafficLabel && (
                   <div>
-                    <div className="font-macro-mono text-[9px] uppercase tracking-[0.2em] text-white/30">
+                    <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30">
                       {labels.trafficLabel}
                     </div>
                     <div className="font-hero text-2xl text-white/85">
                       {selectedAadt.toLocaleString(locale === "ro" ? "ro-RO" : "en-US")}
-                      <span className="ml-1.5 font-macro-mono text-[10px] uppercase tracking-[0.1em] text-white/35">
+                      <span className="ml-1.5 font-sans text-[10px] uppercase tracking-[0.1em] text-white/35">
                         {labels.vehiclesPerDay}
                       </span>
                     </div>
@@ -990,7 +990,7 @@ export function NetworkMap({
             key="empty"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="font-macro-mono text-[11px] uppercase tracking-[0.2em] text-white/25"
+            className="font-sans text-[11px] uppercase tracking-[0.2em] text-white/25"
           >
             {labels.corridorsLabel}
           </motion.p>

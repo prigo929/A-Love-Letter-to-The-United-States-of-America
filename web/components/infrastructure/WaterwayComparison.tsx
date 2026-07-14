@@ -148,7 +148,7 @@ export function WaterwayComparison({ locale }: { locale: "en" | "ro" }) {
             <button
               key={m}
               onClick={() => setMode(m)}
-              className="rounded-full px-4 py-1.5 font-macro-mono text-[10px] font-bold uppercase tracking-[0.15em] transition-all"
+              className="rounded-full px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all"
               style={{
                 background: mode === m ? "rgba(255,255,255,0.9)" : "transparent",
                 color: mode === m ? "#000" : "rgba(255,255,255,0.5)",
@@ -158,7 +158,7 @@ export function WaterwayComparison({ locale }: { locale: "en" | "ro" }) {
             </button>
           ))}
         </div>
-        <span className="font-macro-mono text-[10px] uppercase tracking-[0.16em] text-white/35">
+        <span className="font-sans text-[10px] uppercase tracking-[0.16em] text-white/35">
           {labels.caption}
         </span>
       </div>
@@ -171,13 +171,13 @@ export function WaterwayComparison({ locale }: { locale: "en" | "ro" }) {
               <div className="flex items-baseline justify-between gap-4">
                 <span className="font-macro-display text-base font-bold text-white">
                   {b.name}
-                  <span className="ml-2 font-macro-mono text-[10px] font-normal uppercase tracking-wider text-white/35">
+                  <span className="ml-2 font-sans text-[10px] font-normal uppercase tracking-wider text-white/35">
                     {b.place[locale]} · {b.year}
                   </span>
                 </span>
                 <span className="shrink-0 font-hero text-xl text-[#E8B923]">
                   {b.value.toLocaleString(locale === "ro" ? "ro-RO" : "en-US")}
-                  <span className="ml-1 font-macro-mono text-[10px] uppercase tracking-wide text-white/40">{unit}</span>
+                  <span className="ml-1 font-sans text-[10px] uppercase tracking-wide text-white/40">{unit}</span>
                 </span>
               </div>
               <div className="h-3 overflow-hidden rounded-full bg-white/[0.05]">
@@ -191,7 +191,7 @@ export function WaterwayComparison({ locale }: { locale: "en" | "ro" }) {
                 />
               </div>
               {b.note && (
-                <span className="font-macro-mono text-[10px] uppercase tracking-[0.12em] text-white/30">
+                <span className="font-sans text-[10px] uppercase tracking-[0.12em] text-white/30">
                   {b.note[locale]}
                 </span>
               )}

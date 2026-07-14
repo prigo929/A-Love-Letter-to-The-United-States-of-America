@@ -77,7 +77,7 @@ export function MegaTimeline({ projects, locale }: { projects: Megaproject[]; lo
             </h3>
             <div className="mt-2 flex items-baseline gap-2">
               <span className="font-hero text-2xl text-white/80">{p.stat}</span>
-              <span className="font-macro-mono text-[10px] uppercase tracking-[0.15em] text-white/35">
+              <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-white/35">
                 {p.statLabel[locale]}
               </span>
             </div>
