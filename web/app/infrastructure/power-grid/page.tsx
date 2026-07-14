@@ -64,13 +64,13 @@ export default async function PowerGridPage() {
           "Această coloană vertebrală de foarte înaltă tensiune poartă energia pe sute de kilometri, de la barajele și centralele îndepărtate până la orașe. Cu cât tensiunea este mai mare, cu atât pierderile sunt mai mici: de aceea liniile de 500 de kilovolți sunt arterele care fac posibilă o piață energetică continentală.",
         numbersTitle: "Anatomia rețelei",
         numbersStats: [
-          { value: "500 kV", label: "tensiunea arterelor principale ale coloanei vertebrale" },
-          { value: "~175,000 mi", label: "de linii de transport de foarte înaltă tensiune (230 kV+)" },
-          { value: "1/8 sec", label: "timpul în care o defecțiune poate fi izolată de restul rețelei" },
+          { value: "500 kV+", label: "tensiunea arterelor superioare ale coloanei vertebrale (500 kV și 765 kV)" },
+          { value: "~380,000 mi", label: "de linii de transport de înaltă tensiune (69 kV - 765 kV)" },
+          { value: "5,447", label: "substații electrice majore conectate în rețea" },
         ],
-        mapTitle: "Coloana vertebrală de înaltă tensiune",
+        mapTitle: "Rețeaua electrică și substațiile",
         mapIntro:
-          "Rețeaua de transport de 230 de kilovolți și peste, colorată după tensiune. Măreștе pentru a urmări arterele de 500 kV care leagă regiunile. Atinge o linie pentru detalii.",
+          "Rețeaua de transport de la sub-transport (sub 100 kV) până la foarte înaltă tensiune (765 kV), colorată după tensiune. Punctele portocalii reprezintă substații de transport majore. Atinge sau treci peste o linie pentru detalii.",
         mapLabels: {
           eraLabel: "Rețea",
           corridorsLabel: "Treci peste o linie pentru tensiunea ei",
@@ -125,13 +125,13 @@ export default async function PowerGridPage() {
           "That extra-high-voltage backbone carries power hundreds of miles, from distant dams and plants to the cities. The higher the voltage, the smaller the loss: which is why the 500-kilovolt lines are the arteries that make a continental energy market possible at all.",
         numbersTitle: "The Anatomy of the Grid",
         numbersStats: [
-          { value: "500 kV", label: "the voltage of the backbone's main arteries" },
-          { value: "~175,000 mi", label: "of extra-high-voltage transmission line (230 kV and up)" },
-          { value: "1/8 sec", label: "the time in which a fault can be isolated from the rest of the grid" },
+          { value: "500 kV+", label: "the voltage of the backbone's highest arteries (500 kV & 765 kV)" },
+          { value: "~380,000 mi", label: "of high-voltage transmission line (69 kV to 765 kV)" },
+          { value: "5,447", label: "major electrical substations mapping the grid nodes" },
         ],
-        mapTitle: "The High-Voltage Backbone",
+        mapTitle: "The Transmission Grid & Substations",
         mapIntro:
-          "The transmission network at 230 kilovolts and above, coloured by voltage. Zoom in to trace the 500 kV arteries that tie the regions together. Hover a line for its detail.",
+          "The transmission network from sub-transmission (under 100 kV) up to extra-high voltage (765 kV), colored by voltage. Orange dots represent major transmission substations. Hover or tap a line for details.",
         mapLabels: {
           eraLabel: "Grid",
           corridorsLabel: "Hover a line for its voltage",

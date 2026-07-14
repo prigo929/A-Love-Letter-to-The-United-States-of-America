@@ -18,20 +18,32 @@ _spec.loader.exec_module(bi)
 SRC = "ASSETS/GeoJSON/Electric_Power_Transmission_Lines_shp.geojson"
 OUT = "lib/data/powergrid-simplified.json"
 
-# HIFLD VOLT_CLASS → our key. Only the transmission backbone (230 kV+ and DC).
+# HIFLD VOLT_CLASS → our key. All voltage classes on the U.S. grid.
 CLASS_KEY = {
-    "735 And Above": "V765",
-    "500": "V500",
-    "345": "V345",
-    "220-287": "V230",
-    "DC": "VDC",
+    "735 AND ABOVE": "V765",  # 500+ kV
+    "500": "V500",            # 400-500 kV
+    "345": "V345",            # 300-400 kV
+    "220-287": "V230",        # 200-300 kV
+    "100-161": "V115",        # 100-200 kV
+    "UNDER 100": "V69",       # <100 kV
+    "DC": "VDC",              # HVDC
 }
-TOL = 0.02       # ~1.5 mi
-MIN_MI = 2.0
+
+# Category-specific DP tolerances and minimum segment lengths to balance detail & file size
+CFG = {
+    "V765": {"tol": 0.01, "min_mi": 1.0},
+    "V500": {"tol": 0.015, "min_mi": 1.5},
+    "V345": {"tol": 0.02, "min_mi": 2.0},
+    "V230": {"tol": 0.03, "min_mi": 3.0},
+    "V115": {"tol": 0.05, "min_mi": 6.0},
+    "V69":  {"tol": 0.07, "min_mi": 10.0},
+    "VDC":  {"tol": 0.01, "min_mi": 1.0},
+}
 
 
 def main():
     groups: dict[str, list] = {}
+    substations = set()
     n = 0
     kept = 0
     with open(SRC) as f:
@@ -51,15 +63,22 @@ def main():
                 lines = g["coordinates"]
             else:
                 continue
+            
+            cfg = CFG[key]
             for coords in lines:
                 if len(coords) < 2:
                     continue
                 seg = [[round(float(x), 3), round(float(y), 3)] for x, y, *_ in coords]
-                if bi.seg_len_mi(seg) < MIN_MI:
+                if bi.seg_len_mi(seg) < cfg["min_mi"]:
                     continue
-                s = bi.dp(seg, TOL)
+                s = bi.dp(seg, cfg["tol"])
                 groups.setdefault(key, []).append([[round(x, 3), round(y, 3)] for x, y in s])
                 kept += 1
+
+                # Collect major substations from EHV (230kV+) and DC line endpoints
+                if key in ["V765", "V500", "V345", "V230", "VDC"]:
+                    substations.add((round(float(coords[0][0]), 3), round(float(coords[0][1]), 3)))
+                    substations.add((round(float(coords[-1][0]), 3), round(float(coords[-1][1]), 3)))
 
     out = {}
     for key, segs in groups.items():
@@ -67,6 +86,11 @@ def main():
         out[key] = {"segments": segs, "miles": miles}
         pts = sum(len(s) for s in segs)
         print(f"  {key}: {len(segs)} segments, {pts} pts, {miles} mi", flush=True)
+
+    # Include extracted substations coordinates list
+    out["substations"] = list(list(pt) for pt in substations)
+    print(f"  Extracted {len(out['substations'])} substations", flush=True)
+
 
     json.dump(out, open(OUT, "w"), separators=(",", ":"))
     print(f"wrote {OUT} — {os.path.getsize(OUT)/1024:.0f} KB (scanned {n})", flush=True)

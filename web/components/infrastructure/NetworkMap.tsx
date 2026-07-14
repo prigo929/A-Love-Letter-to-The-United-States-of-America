@@ -154,10 +154,13 @@ function describeRail(key: string, locale: "en" | "ro") {
 
 // Transmission voltage classes: name, colour (cool→hot by voltage), and role.
 const POWER_INFO: Record<string, { name: string; color: string; ehv: boolean }> = {
-  v500: { name: "500 kV", color: "#ef4444", ehv: true },
-  v345: { name: "345 kV", color: "#f59e0b", ehv: true },
-  v230: { name: "230 kV", color: "#3b82f6", ehv: false },
-  vdc: { name: "HVDC", color: "#a855f7", ehv: true },
+  v765: { name: "500+ kV", color: "#783d19", ehv: true }, // dark brown/rust
+  v500: { name: "400-500 kV", color: "#d97706", ehv: true }, // orange/amber
+  v345: { name: "300-400 kV", color: "#eab308", ehv: true }, // yellow
+  v230: { name: "200-300 kV", color: "#22c55e", ehv: false }, // green
+  v115: { name: "100-200 kV", color: "#06b6d4", ehv: false }, // light blue
+  v69: { name: "<100 kV", color: "#8b5cf6", ehv: false }, // purple
+  vdc: { name: "HVDC", color: "#ec4899", ehv: true }, // pink/magenta
 };
 function describePower(key: string, locale: "en" | "ro") {
   const info = POWER_INFO[key.toLowerCase()] ?? { name: key, color: "#94a3b8", ehv: false };
@@ -283,8 +286,31 @@ function RoutesLayer({
     [nodes, projection],
   );
 
+  const substationPath = useMemo(() => {
+    const pts = (geoms as any).substations as LngLat[] | undefined;
+    if (!pts) return "";
+    let d = "";
+    for (const ll of pts) {
+      const p = projection(ll);
+      if (p) d += `M${p[0].toFixed(1)} ${p[1].toFixed(1)}h0.01`;
+    }
+    return d;
+  }, [geoms, projection]);
+
   return (
     <g>
+      {/* Substations density layer for the power grid */}
+      {substationPath && (
+        <path
+          d={substationPath}
+          stroke="#fb923c"
+          strokeWidth={1.8 * k}
+          strokeLinecap="round"
+          fill="none"
+          style={{ opacity: 0.65, pointerEvents: "none", transition: "stroke-width 0.1s ease" }}
+        />
+      )}
+
       {drawn.map(({ route, d, dotD, aadt }, i) => {
         const isFeatured = featuredIds.has(route.id);
         const isSelected = selectedId === route.id;
