@@ -1,0 +1,160 @@
+{
+  "monuments": [
+    {
+      "id": "hoover",
+      "type": "dam",
+      "name": { "en": "Hoover Dam", "ro": "Barajul Hoover" },
+      "location": { "en": "Nevada / Arizona border", "ro": "Granița Nevada / Arizona" },
+      "coordinates": [-114.737, 36.016],
+      "year": "1936",
+      "stat": { "en": "726 ft tall", "ro": "726 ft înălțime" },
+      "fact": {
+        "en": "Creating Lake Mead, it was the tallest dam on Earth when built and contains 3.25 million cubic yards of concrete, poured under 120°F conditions.",
+        "ro": "Creând Lacul Mead, a fost cel mai înalt baraj de pe Pământ la finalizare și conține 3,25 milioane de yarzi cubi de beton, turnat în condiții de 49°C."
+      }
+    },
+    {
+      "id": "oroville",
+      "type": "dam",
+      "name": { "en": "Oroville Dam", "ro": "Barajul Oroville" },
+      "location": { "en": "California", "ro": "California" },
+      "coordinates": [-121.486, 39.538],
+      "year": "1968",
+      "stat": { "en": "770 ft tall", "ro": "770 ft înălțime" },
+      "fact": {
+        "en": "The tallest dam in the United States, an earthen embankment structure controlling the Feather River and acting as a cornerstone of the State Water Project.",
+        "ro": "Cel mai înalt baraj din Statele Unite, o structură de terasament de pământ care controlează râul Feather și servește ca piatră de temelie a State Water Project."
+      }
+    },
+    {
+      "id": "grand_coulee",
+      "type": "dam",
+      "name": { "en": "Grand Coulee Dam", "ro": "Barajul Grand Coulee" },
+      "location": { "en": "Washington", "ro": "Washington" },
+      "coordinates": [-118.981, 47.957],
+      "year": "1942",
+      "stat": { "en": "550 ft tall", "ro": "550 ft înălțime" },
+      "fact": {
+        "en": "The largest electric power producing facility in the United States, utilizing the flow of the Columbia River to yield up to 6,809 megawatts of capacity.",
+        "ro": "Cea mai mare instalație de producere a energiei electrice din SUA, folosind debitul fluviului Columbia pentru a genera o capacitate de până la 6.809 MW."
+      }
+    },
+    {
+      "id": "glen_canyon",
+      "type": "dam",
+      "name": { "en": "Glen Canyon Dam", "ro": "Barajul Glen Canyon" },
+      "location": { "en": "Arizona", "ro": "Arizona" },
+      "coordinates": [-111.484, 36.937],
+      "year": "1966",
+      "stat": { "en": "710 ft tall", "ro": "710 ft înălțime" },
+      "fact": {
+        "en": "Forms Lake Powell, the second-largest man-made reservoir in the U.S. by capacity, regulating water delivery for millions in the Colorado River Basin.",
+        "ro": "Formează Lacul Powell, al doilea cel mai mare rezervor artificial din SUA, reglând alimentarea cu apă pentru milioane de oameni din bazinul Colorado."
+      }
+    },
+    {
+      "id": "dworshak",
+      "type": "dam",
+      "name": { "en": "Dworshak Dam", "ro": "Barajul Dworshak" },
+      "location": { "en": "Idaho", "ro": "Idaho" },
+      "coordinates": [-116.298, 46.514],
+      "year": "1973",
+      "stat": { "en": "717 ft tall", "ro": "717 ft înălțime" },
+      "fact": {
+        "en": "The tallest straight-axis concrete gravity dam in the Western Hemisphere, located on the North Fork of the Clearwater River.",
+        "ro": "Cel mai înalt baraj gravitațional din beton cu axă dreaptă din emisfera vestică, situat pe brațul de nord al râului Clearwater."
+      }
+    },
+    {
+      "id": "new_bullards",
+      "type": "dam",
+      "name": { "en": "New Bullards Bar Dam", "ro": "Barajul New Bullards" },
+      "location": { "en": "California", "ro": "California" },
+      "coordinates": [-121.141, 39.408],
+      "year": "1970",
+      "stat": { "en": "645 ft tall", "ro": "645 ft înălțime" },
+      "fact": {
+        "en": "A massive concrete double-curvature arch dam on the Yuba River, critical for flood safety, electricity, and irrigation in Northern California.",
+        "ro": "Un baraj cu arc de beton cu dublă curbură pe râul Yuba, esențial pentru protecția împotriva inundațiilor, electricitate și irigații în California de Nord."
+      }
+    },
+    {
+      "id": "golden_gate",
+      "type": "bridge",
+      "name": { "en": "Golden Gate Bridge", "ro": "Podul Golden Gate" },
+      "location": { "en": "San Francisco, California", "ro": "San Francisco, California" },
+      "coordinates": [-122.478, 37.819],
+      "year": "1937",
+      "stat": { "en": "4,200 ft span", "ro": "4.200 ft deschidere" },
+      "fact": {
+        "en": "Stretching across the Golden Gate strait, its towers rise 746 feet. It was the longest suspension span on Earth for 27 years and remains an icon of art deco design.",
+        "ro": "Întins peste strâmtoarea Golden Gate, are turnuri de 746 ft. A fost cea mai lungă deschidere suspendată din lume timp de 27 de ani, fiind un simbol art deco."
+      }
+    },
+    {
+      "id": "brooklyn",
+      "type": "bridge",
+      "name": { "en": "Brooklyn Bridge", "ro": "Podul Brooklyn" },
+      "location": { "en": "New York City, New York", "ro": "New York City, New York" },
+      "coordinates": [-73.996, 40.706],
+      "year": "1883",
+      "stat": { "en": "1,595 ft span", "ro": "1.595 ft deschidere" },
+      "fact": {
+        "en": "The first steel-wire suspension bridge in the world, linking Manhattan and Brooklyn. Designed by John A. Roebling and completed under the direction of Emily Roebling.",
+        "ro": "Primul pod suspendat pe cabluri de oțel din lume, legând Manhattan de Brooklyn. Proiectat de John A. Roebling și finalizat sub conducerea lui Emily Roebling."
+      }
+    },
+    {
+      "id": "verrazzano",
+      "type": "bridge",
+      "name": { "en": "Verrazzano-Narrows Bridge", "ro": "Podul Verrazzano-Narrows" },
+      "location": { "en": "New York City, New York", "ro": "New York City, New York" },
+      "coordinates": [-74.045, 40.606],
+      "year": "1964",
+      "stat": { "en": "4,260 ft span", "ro": "4.260 ft deschidere" },
+      "fact": {
+        "en": "The longest suspension span in the United States. Its towers are set 1.6 inches further apart at the top than the bottom to account for the Earth's curvature.",
+        "ro": "Cea mai lungă deschidere suspendată din SUA. Turnurile sale sunt cu 1,6 inchi mai depărtate la vârf decât la bază pentru a compensa curbura Pământului."
+      }
+    },
+    {
+      "id": "mackinac",
+      "type": "bridge",
+      "name": { "en": "Mackinac Bridge", "ro": "Podul Mackinac" },
+      "location": { "en": "St. Ignace / Mackinaw City, Michigan", "ro": "St. Ignace / Mackinaw City, Michigan" },
+      "coordinates": [-84.727, 45.817],
+      "year": "1957",
+      "stat": { "en": "3,800 ft span", "ro": "3.800 ft deschidere" },
+      "fact": {
+        "en": "Locally known as 'Mighty Mac,' it spans 5 miles in total length, connecting Michigan's Upper and Lower Peninsulas over the Straits of Mackinac.",
+        "ro": "Cunoscut ca „Mighty Mac”, are o lungime totală de 5 mile, legând Peninsulele Superioară și Inferioară ale statului Michigan peste strâmtoarea Mackinac."
+      }
+    },
+    {
+      "id": "new_river",
+      "type": "bridge",
+      "name": { "en": "New River Gorge Bridge", "ro": "Podul New River Gorge" },
+      "location": { "en": "Fayetteville, West Virginia", "ro": "Fayetteville, West Virginia" },
+      "coordinates": [-81.082, 38.068],
+      "year": "1977",
+      "stat": { "en": "1,700 ft span", "ro": "1.700 ft deschidere" },
+      "fact": {
+        "en": "An iconic steel arch bridge standing 876 feet above the New River, reducing a 40-minute mountain detour to a 45-second crossing.",
+        "ro": "Un pod iconic cu arc de oțel ridicat la 876 ft deasupra râului, reducând o ocolire montană de 40 de minute la o traversare de doar 45 de secunde."
+      }
+    },
+    {
+      "id": "george_washington",
+      "type": "bridge",
+      "name": { "en": "George Washington Bridge", "ro": "Podul George Washington" },
+      "location": { "en": "New York / New Jersey border", "ro": "Granița New York / New Jersey" },
+      "coordinates": [-73.962, 40.851],
+      "year": "1931",
+      "stat": { "en": "3,500 ft span", "ro": "3.500 ft deschidere" },
+      "fact": {
+        "en": "Spanning the Hudson River, it features a double-deck design with 14 lanes of travel, making it the busiest motor vehicle bridge in the world.",
+        "ro": "Traversând fluviul Hudson, dispune de două etaje și 14 benzi de circulație, fiind cel mai tranzitat pod rutier de pe planetă."
+      }
+    }
+  ]
+}

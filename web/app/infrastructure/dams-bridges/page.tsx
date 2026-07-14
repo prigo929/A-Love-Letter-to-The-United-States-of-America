@@ -18,6 +18,7 @@ import {
 } from "@/components/shared/CinematicSystem";
 import { EngineeringComparison } from "@/components/infrastructure/EngineeringComparison";
 import { SerifLede, Reveal } from "@/components/infrastructure/InfraMotion";
+import { DamsBridgesMap } from "@/components/infrastructure/DamsBridgesMap";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 const getPageMetadata = (locale: Locale): Metadata => ({
@@ -67,6 +68,17 @@ export default async function DamsBridgesPage() {
           { value: "~6.809 MW", label: "Grand Coulee — cea mai mare centrală electrică din SUA" },
           { value: "1883", label: "Podul Brooklyn — primul pod suspendat pe cabluri de oțel" },
         ],
+        mapTitle: "Harta Monumentelor Inginerești",
+        mapIntro: "Descoperă unde se află cele mai faimoase baraje și poduri din Statele Unite. Treci peste sau atinge un punct pe hartă ca să afli detalii tehnice și istoria lui.",
+        mapLabels: {
+          all: "Toate",
+          dams: "Baraje",
+          bridges: "Poduri",
+          completed: "Finalizat",
+          statLabel: "Dimensiune / Deschidere",
+          hint: "Treci peste un punct pentru detalii",
+          scopeLabel: "Monument",
+        },
         compTitle: "Cine deține recordul",
         compIntro:
           "Cele mai lungi deschideri și cele mai înalte baraje ale țării, clasate. Comutați între cele două ca să vedeți cât de departe au împins inginerii americani limita.",
@@ -126,10 +138,21 @@ export default async function DamsBridgesPage() {
           "The bridges came from the same nerve. Where a bay or a canyon said stop, engineers answered with steel cable and towers taller than anything around them. Many still hold their records today, nearly a century after the first footing was poured.",
         numbersTitle: "The Measure of the Ambition",
         numbersStats: [
-          { value: "Lake Mead", label: "the largest reservoir in the U.S. by volume, created by Hoover Dam" },
-          { value: "~6,809 MW", label: "Grand Coulee — the largest power plant in the United States" },
+          { value: "Lake Mead", label: "largest U.S. reservoir by volume, created by Hoover Dam" },
+          { value: "~6.809 MW", label: "Grand Coulee — the largest power station in the U.S." },
           { value: "1883", label: "Brooklyn Bridge — the first steel-wire suspension bridge" },
         ],
+        mapTitle: "Map of Engineering Landmarks",
+        mapIntro: "Locate the most famous dams and bridges across the United States. Hover or tap any marker on the map to reveal engineering facts and structural details.",
+        mapLabels: {
+          all: "All",
+          dams: "Dams",
+          bridges: "Bridges",
+          completed: "Completed",
+          statLabel: "Height / Span Size",
+          hint: "Hover a marker for details",
+          scopeLabel: "Monument",
+        },
         compTitle: "Who Holds the Record",
         compIntro:
           "The nation's longest spans and tallest dams, ranked. Switch between the two to see just how far American engineers pushed the limit.",
@@ -211,6 +234,14 @@ export default async function DamsBridgesPage() {
                 <MacroStat key={s.label} value={s.value} label={s.label} />
               ))}
             </div>
+          </section>
+
+          {/* ── Interactive Map ── */}
+          <section className="border-t border-white/5 pt-24">
+            <span className="macro-eyebrow">{isRo ? "Harta Interactivă" : "Interactive Map"}</span>
+            <h2 className="macro-section-title mb-8 mt-6">{copy.mapTitle}</h2>
+            <p className="macro-body mb-14 max-w-4xl">{copy.mapIntro}</p>
+            <DamsBridgesMap locale={locale} labels={copy.mapLabels} />
           </section>
 
           {/* ── Comparison visual ── */}
