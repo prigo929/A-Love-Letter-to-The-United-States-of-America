@@ -69,7 +69,7 @@ function Ribbon({
           fill="none"
           stroke={yellowDivider ? GOLD : FLOW}
           strokeWidth={1.3}
-          strokeDasharray="2 18"
+          strokeDasharray="3 17"
           strokeLinecap="round"
           filter={glowId ? `url(#${glowId})` : undefined}
           style={{ animation: "ix-flow 1.2s linear infinite" }}
@@ -176,9 +176,9 @@ const KINDS: Kind[] = [
               fill="none"
               stroke={FLOW}
               strokeWidth={1.2}
-              strokeDasharray="2 12"
+              strokeDasharray="3 17"
               filter={`url(#glow-gold-${uid})`}
-              style={{ animation: "ix-flow 1.5s linear infinite" }}
+              style={{ animation: "ix-flow 1.2s linear infinite" }}
             />
           </g>
         ))}
@@ -354,7 +354,7 @@ export function InterchangeTypology({ locale }: { locale: Loc }) {
 
   return (
     <div className="w-full">
-      <style>{`@keyframes ix-flow { to { stroke-dashoffset: -17; } }`}</style>
+      <style>{`@keyframes ix-flow { to { stroke-dashoffset: -20; } }`}</style>
       <div className="grid gap-10 lg:grid-cols-12">
         {/* Featured diagram + narrative */}
         <div className="lg:col-span-7 flex flex-col justify-between">
