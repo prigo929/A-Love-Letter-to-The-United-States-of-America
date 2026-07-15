@@ -74,7 +74,7 @@ export function SectionGrid() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
-          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-5"
+          className="flex flex-wrap justify-center gap-4 xl:gap-5"
         >
           {navSections.map((section) => (
             <NavigationCard
@@ -85,6 +85,7 @@ export function SectionGrid() {
               imageSrc={section.imageSrc}
               imageAlt={`${section.title} — explore this section`}
               badge={"badge" in section ? section.badge : undefined}
+              className="w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)] xl:w-[calc(25%-15px)] max-w-[360px]"
             />
           ))}
         </motion.div>

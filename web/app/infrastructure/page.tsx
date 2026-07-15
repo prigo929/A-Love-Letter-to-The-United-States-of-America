@@ -400,7 +400,7 @@ export default async function InfrastructureHubPage() {
             <span className="macro-eyebrow">{copy.networksEyebrow}</span>
             <h2 className="macro-section-title mb-14 mt-6">{copy.networksTitle}</h2>
 
-            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="flex flex-wrap justify-center gap-10">
               {[
                 { card: copy.highwayCard, href: "/infrastructure/highway-system", img: SITE_IMAGES.infraUs75Loop12 },
                 { card: copy.railCard, href: "/infrastructure/rail-network", img: SITE_IMAGES.infraGoldenSpike },
@@ -410,7 +410,7 @@ export default async function InfrastructureHubPage() {
                 { card: copy.waterCard, href: "/infrastructure/aqueducts-waterways", img: SITE_IMAGES.californiaAqueductCrossing },
                 { card: copy.damsCard, href: "/infrastructure/dams-bridges", img: SITE_IMAGES.infraHooverAerial },
               ].map(({ card, href, img }) => (
-                <Link key={href} href={href} className="group block">
+                <Link key={href} href={href} className="group block w-full sm:w-[calc(50%-20px)] lg:w-[calc(33.333%-27px)] max-w-[480px]">
                   <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/5 bg-white/[0.01]">
                     <Image
                       src={img}
