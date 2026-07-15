@@ -13,7 +13,6 @@ type Loc = "en" | "ro";
 
 const GOLD = "#E8B923";
 const STEEL = "#475569"; // Sleeker dark-slate grey
-const RAMP = "#d4af37";
 const CASING = "#000000"; // Pitch black road base casing
 const FLOW = "#ffffff"; // Pure white glowing flow dashes
 
@@ -25,57 +24,101 @@ function Ribbon({
   d,
   color,
   w,
-  flow,
-  glowId,
-  lanes = 2,
-  yellowDivider = false,
+  hasShadow = false,
+  shadowOffset = 3,
 }: {
   d: string;
   color: string;
   w: number;
-  flow?: boolean;
-  glowId?: string;
-  lanes?: number;
-  yellowDivider?: boolean;
+  hasShadow?: boolean;
+  shadowOffset?: number;
 }) {
   return (
     <>
+      {/* 0. High-performance drop shadow path */}
+      {hasShadow && (
+        <path
+          d={d}
+          fill="none"
+          stroke="rgba(0,0,0,0.55)"
+          strokeWidth={w + 5.5}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          transform={`translate(0, ${shadowOffset})`}
+        />
+      )}
+
       {/* 1. Road bed casing (outer outline) */}
       <path d={d} fill="none" stroke={CASING} strokeWidth={w + 3} strokeLinecap="round" strokeLinejoin="round" />
       
+      {/* 1.5 Concrete side barrier rails (bridges/guardrails) */}
+      <path d={d} fill="none" stroke="#52525b" strokeWidth={w + 1.4} strokeLinecap="round" strokeLinejoin="round" />
+
       {/* 2. Concrete shoulder lines (thin border edges) */}
-      <path d={d} fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth={w + 1} strokeLinecap="round" strokeLinejoin="round" />
+      <path d={d} fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth={w + 0.6} strokeLinecap="round" strokeLinejoin="round" />
       
       {/* 3. Asphalt road surface */}
       <path d={d} fill="none" stroke={color} strokeWidth={w} strokeLinecap="round" strokeLinejoin="round" />
-      
-      {/* 4. Dash Lane Dividers (for multi-lane highways) */}
-      {lanes > 1 && (
-        <path
-          d={d}
-          fill="none"
-          stroke={yellowDivider ? "#eab308" : "rgba(255,255,255,0.18)"}
-          strokeWidth={0.8}
-          strokeDasharray="4 8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      )}
-      
-      {/* 5. Animated Traffic Flows */}
-      {flow && (
-        <path
-          d={d}
-          fill="none"
-          stroke={yellowDivider ? GOLD : FLOW}
-          strokeWidth={1.3}
-          strokeDasharray="3 17"
-          strokeLinecap="round"
-          filter={glowId ? `url(#${glowId})` : undefined}
-          style={{ animation: "ix-flow 1.2s linear infinite" }}
-        />
-      )}
     </>
+  );
+}
+
+function DoubleYellow({ d, bg }: { d: string; bg: string }) {
+  return (
+    <>
+      <path d={d} fill="none" stroke="#eab308" strokeWidth={2.0} strokeLinecap="round" strokeLinejoin="round" />
+      <path d={d} fill="none" stroke={bg} strokeWidth={0.6} strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  );
+}
+
+function FlowLine({ d, glowId }: { d: string; glowId?: string }) {
+  return (
+    <path
+      d={d}
+      fill="none"
+      stroke={FLOW}
+      strokeWidth={1.3}
+      strokeDasharray="3 17"
+      strokeLinecap="round"
+      filter={glowId ? `url(#${glowId})` : undefined}
+      style={{ animation: "ix-flow 1.2s linear infinite" }}
+    />
+  );
+}
+
+function RouteLabel({ x, y, src }: { x: number; y: number; src: string }) {
+  return (
+    <image
+      href={src}
+      x={x - 9}
+      y={y - 9}
+      width={18}
+      height={18}
+      pointerEvents="none"
+    />
+  );
+}
+
+function Streetlight({ cx, cy, uid }: { cx: number; cy: number; uid: string }) {
+  return (
+    <g>
+      <circle cx={cx} cy={cy} r={10} fill={`url(#light-glow-${uid})`} opacity={0.35} pointerEvents="none" />
+      <circle cx={cx} cy={cy} r={1.2} fill="#fff" pointerEvents="none" />
+    </g>
+  );
+}
+
+function LandscapeLawn({ d }: { d: string }) {
+  return (
+    <path
+      d={d}
+      fill="rgba(34,197,94,0.02)"
+      stroke="rgba(34,197,94,0.07)"
+      strokeWidth={0.8}
+      strokeDasharray="2 3"
+      pointerEvents="none"
+    />
   );
 }
 
@@ -121,17 +164,62 @@ const KINDS: Kind[] = [
     },
     diagram: (uid) => (
       <>
-        {/* Crossroad (Vertical) */}
-        <Ribbon d="M110 8 V212" color={ASPHALT_CROSS} w={12} flow glowId={`glow-steel-${uid}`} />
+        {/* Landscape Grass Fields */}
+        <LandscapeLawn d="M 15 15 H 100 V 50 Q 65 65 50 100 H 15 Z" />
+        <LandscapeLawn d="M 205 15 H 120 V 50 Q 155 65 170 100 H 205 Z" />
+        <LandscapeLawn d="M 205 205 H 120 V 170 Q 155 155 170 120 H 205 Z" />
+        <LandscapeLawn d="M 15 205 H 100 V 170 Q 65 155 50 120 H 15 Z" />
+
+        {/* Level 1: Crossroad (Vertical) */}
+        <Ribbon d="M110 8 V212" color={ASPHALT_CROSS} w={12} />
+        <DoubleYellow d="M110 8 V212" bg={ASPHALT_CROSS} />
+        <FlowLine d="M106.5 8 V212" glowId={`glow-steel-${uid}`} />
+        <FlowLine d="M113.5 212 V8" glowId={`glow-steel-${uid}`} />
         
-        {/* Ramps */}
-        <Ribbon d="M58 110 Q70 70 110 58" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M110 58 Q150 70 162 110" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M162 110 Q150 150 110 162" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M110 162 Q70 150 58 110" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        {/* Level 1.5: Ramps */}
+        <Ribbon d="M58 110 Q70 70 110 58" color={ASPHALT_RAMP} w={4.5} />
+        <FlowLine d="M58 110 Q70 70 110 58" glowId={`glow-gold-${uid}`} />
+
+        <Ribbon d="M110 58 Q150 70 162 110" color={ASPHALT_RAMP} w={4.5} />
+        <FlowLine d="M110 58 Q150 70 162 110" glowId={`glow-gold-${uid}`} />
+
+        <Ribbon d="M162 110 Q150 150 110 162" color={ASPHALT_RAMP} w={4.5} />
+        <FlowLine d="M162 110 Q150 150 110 162" glowId={`glow-gold-${uid}`} />
+
+        <Ribbon d="M110 162 Q70 150 58 110" color={ASPHALT_RAMP} w={4.5} />
+        <FlowLine d="M110 162 Q70 150 58 110" glowId={`glow-gold-${uid}`} />
         
-        {/* Freeway (Horizontal) - crosses over crossroad */}
-        <Ribbon d="M8 110 H212" color={ASPHALT_FREEWAY} w={14} yellowDivider flow glowId={`glow-gold-${uid}`} />
+        {/* Level 2: Freeway (Horizontal) - casts drop shadow */}
+        <Ribbon d="M8 110 H212" color={ASPHALT_FREEWAY} w={14} hasShadow shadowOffset={2.5} />
+        <DoubleYellow d="M8 110 H212" bg={ASPHALT_FREEWAY} />
+        
+        {/* Left and Right dashed lane dividers for the 4-lane freeway */}
+        <path d="M8 106.5 H212" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth={0.8} strokeDasharray="4 8" />
+        <path d="M8 113.5 H212" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth={0.8} strokeDasharray="4 8" />
+        
+        {/* Directional freeway flows */}
+        <FlowLine d="M212 106.5 H8" glowId={`glow-gold-${uid}`} />
+        <FlowLine d="M8 113.5 H212" glowId={`glow-gold-${uid}`} />
+
+        {/* Bridge expansion joints */}
+        <line x1={96} y1={110 - 7} x2={96} y2={110 + 7} stroke="#a1a1aa" strokeWidth={1} />
+        <line x1={124} y1={110 - 7} x2={124} y2={110 + 7} stroke="#a1a1aa" strokeWidth={1} />
+
+        {/* Traffic signal lights at ramp terminals */}
+        <circle cx={110} cy={58} r={2.2} fill="#ef4444" stroke="#000" strokeWidth={0.5} filter={`url(#glow-gold-${uid})`} />
+        <circle cx={110} cy={162} r={2.2} fill="#22c55e" stroke="#000" strokeWidth={0.5} filter={`url(#glow-gold-${uid})`} />
+
+        {/* High-mast streetlights */}
+        <Streetlight cx={80} cy={70} uid={uid} />
+        <Streetlight cx={140} cy={70} uid={uid} />
+        <Streetlight cx={80} cy={150} uid={uid} />
+        <Streetlight cx={140} cy={150} uid={uid} />
+
+        {/* Official SVG Highway route labels */}
+        <RouteLabel x={18} y={110} src="/interstate-shields/I-90.svg" />
+        <RouteLabel x={202} y={110} src="/interstate-shields/I-90.svg" />
+        <RouteLabel x={110} y={18} src="/interstate-shields/California_4.svg" />
+        <RouteLabel x={110} y={202} src="/interstate-shields/California_4.svg" />
       </>
     ),
   },
@@ -158,7 +246,23 @@ const KINDS: Kind[] = [
     },
     diagram: (uid) => (
       <>
-        {/* Clover loops passing under */}
+        {/* Landscape Grass Fields (Outer Corners) */}
+        <LandscapeLawn d="M 15 15 H 95 V 50 Q 50 50 50 95 H 15 Z" />
+        <LandscapeLawn d="M 205 15 H 125 V 50 Q 170 50 170 95 H 205 Z" />
+        <LandscapeLawn d="M 205 205 H 125 V 170 Q 170 170 170 125 H 205 Z" />
+        <LandscapeLawn d="M 15 205 H 95 V 170 Q 50 170 50 125 H 15 Z" />
+
+        {/* Grass Fields Inside Loops */}
+        {[
+          [76, 76],
+          [144, 76],
+          [76, 144],
+          [144, 144],
+        ].map(([cx, cy]) => (
+          <circle key={`grass-${cx}-${cy}`} cx={cx} cy={cy} r={24} fill="rgba(34,197,94,0.02)" stroke="rgba(34,197,94,0.08)" strokeWidth={0.8} strokeDasharray="2 3" />
+        ))}
+
+        {/* Level 1: Clover loops passing under */}
         {[
           [76, 76],
           [144, 76],
@@ -183,23 +287,58 @@ const KINDS: Kind[] = [
           </g>
         ))}
 
-        {/* Outer straight ramps */}
-        <Ribbon d="M58 8 Q58 58 8 58" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M162 8 Q162 58 212 58" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M58 212 Q58 162 8 162" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M162 212 Q162 162 212 162" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        {/* Level 1: Outer straight ramps */}
+        <Ribbon d="M58 8 Q58 58 8 58" color={ASPHALT_RAMP} w={4.5} />
+        <FlowLine d="M58 8 Q58 58 8 58" glowId={`glow-gold-${uid}`} />
 
-        {/* Crossroad (Vertical) */}
-        <Ribbon d="M110 8 V212" color={ASPHALT_CROSS} w={12} flow glowId={`glow-steel-${uid}`} />
+        <Ribbon d="M162 8 Q162 58 212 58" color={ASPHALT_RAMP} w={4.5} />
+        <FlowLine d="M162 8 Q162 58 212 58" glowId={`glow-gold-${uid}`} />
+
+        <Ribbon d="M58 212 Q58 162 8 162" color={ASPHALT_RAMP} w={4.5} />
+        <FlowLine d="M58 212 Q58 162 8 162" glowId={`glow-gold-${uid}`} />
+
+        <Ribbon d="M162 212 Q162 162 212 162" color={ASPHALT_RAMP} w={4.5} />
+        <FlowLine d="M162 212 Q162 162 212 162" glowId={`glow-gold-${uid}`} />
+
+        {/* Level 1: Crossroad (Vertical) */}
+        <Ribbon d="M110 8 V212" color={ASPHALT_CROSS} w={12} />
+        <DoubleYellow d="M110 8 V212" bg={ASPHALT_CROSS} />
+        <FlowLine d="M106.5 8 V212" glowId={`glow-steel-${uid}`} />
+        <FlowLine d="M113.5 212 V8" glowId={`glow-steel-${uid}`} />
         
-        {/* Freeway (Horizontal) */}
-        <Ribbon d="M8 110 H212" color={ASPHALT_FREEWAY} w={14} yellowDivider flow glowId={`glow-gold-${uid}`} />
+        {/* Level 2: Freeway (Horizontal) - casts shadow over loops and crossroad */}
+        <Ribbon d="M8 110 H212" color={ASPHALT_FREEWAY} w={14} hasShadow shadowOffset={2.5} />
+        <DoubleYellow d="M8 110 H212" bg={ASPHALT_FREEWAY} />
+        
+        {/* Left and Right dashed lane dividers for the 4-lane freeway */}
+        <path d="M8 106.5 H212" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth={0.8} strokeDasharray="4 8" />
+        <path d="M8 113.5 H212" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth={0.8} strokeDasharray="4 8" />
+        
+        {/* Directional freeway flows */}
+        <FlowLine d="M212 106.5 H8" glowId={`glow-gold-${uid}`} />
+        <FlowLine d="M8 113.5 H212" glowId={`glow-gold-${uid}`} />
 
-        {/* Bridge Piers under main overpass crossings */}
+        {/* Bridge expansion joints */}
+        <line x1={96} y1={110 - 7} x2={96} y2={110 + 7} stroke="#a1a1aa" strokeWidth={1} />
+        <line x1={124} y1={110 - 7} x2={124} y2={110 + 7} stroke="#a1a1aa" strokeWidth={1} />
+
+        {/* Concrete bridge piers underneath */}
         <rect x={102} y={72} width={3} height={8} fill="#3f3f46" rx={0.5} />
         <rect x={115} y={72} width={3} height={8} fill="#3f3f46" rx={0.5} />
         <rect x={102} y={140} width={3} height={8} fill="#3f3f46" rx={0.5} />
         <rect x={115} y={140} width={3} height={8} fill="#3f3f46" rx={0.5} />
+
+        {/* High-mast streetlights inside loop grass */}
+        <Streetlight cx={76} cy={76} uid={uid} />
+        <Streetlight cx={144} cy={76} uid={uid} />
+        <Streetlight cx={76} cy={144} uid={uid} />
+        <Streetlight cx={144} cy={144} uid={uid} />
+
+        {/* Official SVG Highway route labels */}
+        <RouteLabel x={18} y={110} src="/interstate-shields/I-90.svg" />
+        <RouteLabel x={202} y={110} src="/interstate-shields/I-90.svg" />
+        <RouteLabel x={110} y={18} src="/interstate-shields/US_1.svg" />
+        <RouteLabel x={110} y={202} src="/interstate-shields/US_1.svg" />
       </>
     ),
   },
@@ -226,23 +365,65 @@ const KINDS: Kind[] = [
     },
     diagram: (uid) => (
       <>
-        {/* Crossroad (Vertical) */}
-        <Ribbon d="M110 8 V212" color={ASPHALT_CROSS} w={12} flow glowId={`glow-steel-${uid}`} />
+        {/* Landscape Grass Fields */}
+        <LandscapeLawn d="M 15 15 H 95 V 45 Q 45 45 45 95 H 15 Z" />
+        <LandscapeLawn d="M 205 15 H 125 V 45 Q 175 45 175 95 H 205 Z" />
+        <LandscapeLawn d="M 205 205 H 125 V 175 Q 175 175 175 125 H 205 Z" />
+        <LandscapeLawn d="M 15 205 H 95 V 175 Q 45 175 45 125 H 15 Z" />
 
-        {/* Symmetrical flyover ramps (High level - stacks over highways) */}
-        <Ribbon d="M164 92 C134 92 128 86 128 56" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M92 56 C92 86 86 92 56 92" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M56 128 C86 128 92 134 92 164" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M128 164 C128 134 134 128 164 128" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        {/* Level 1: Crossroad (Vertical) */}
+        <Ribbon d="M110 8 V212" color={ASPHALT_CROSS} w={12} />
+        <DoubleYellow d="M110 8 V212" bg={ASPHALT_CROSS} />
+        <FlowLine d="M106.5 8 V212" glowId={`glow-steel-${uid}`} />
+        <FlowLine d="M113.5 212 V8" glowId={`glow-steel-${uid}`} />
+
+        {/* Level 2: Freeway (Horizontal) - casts shadow on crossroad */}
+        <Ribbon d="M8 110 H212" color={ASPHALT_FREEWAY} w={14} hasShadow shadowOffset={2.5} />
+        <DoubleYellow d="M8 110 H212" bg={ASPHALT_FREEWAY} />
         
-        {/* Freeway (Horizontal) */}
-        <Ribbon d="M8 110 H212" color={ASPHALT_FREEWAY} w={14} yellowDivider flow glowId={`glow-gold-${uid}`} />
+        {/* Left and Right dashed lane dividers for the 4-lane freeway */}
+        <path d="M8 106.5 H212" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth={0.8} strokeDasharray="4 8" />
+        <path d="M8 113.5 H212" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth={0.8} strokeDasharray="4 8" />
+        
+        {/* Directional freeway flows */}
+        <FlowLine d="M212 106.5 H8" glowId={`glow-gold-${uid}`} />
+        <FlowLine d="M8 113.5 H212" glowId={`glow-gold-${uid}`} />
 
-        {/* Structural bridge column support piers */}
-        <circle cx={100} cy={100} r={2} fill="#3f3f46" stroke="#000" strokeWidth={0.5} />
-        <circle cx={120} cy={100} r={2} fill="#3f3f46" stroke="#000" strokeWidth={0.5} />
-        <circle cx={100} cy={120} r={2} fill="#3f3f46" stroke="#000" strokeWidth={0.5} />
-        <circle cx={120} cy={120} r={2} fill="#3f3f46" stroke="#000" strokeWidth={0.5} />
+        {/* Bridge expansion joints */}
+        <line x1={96} y1={110 - 7} x2={96} y2={110 + 7} stroke="#a1a1aa" strokeWidth={1} />
+        <line x1={124} y1={110 - 7} x2={124} y2={110 + 7} stroke="#a1a1aa" strokeWidth={1} />
+
+        {/* Level 3: Lower flyovers - cast shadow on Level 2 */}
+        <Ribbon d="M92 56 C92 86 86 92 56 92" color={ASPHALT_RAMP} w={4.5} hasShadow shadowOffset={4} />
+        <FlowLine d="M92 56 C92 86 86 92 56 92" glowId={`glow-gold-${uid}`} />
+
+        <Ribbon d="M128 164 C128 134 134 128 164 128" color={ASPHALT_RAMP} w={4.5} hasShadow shadowOffset={4} />
+        <FlowLine d="M128 164 C128 134 134 128 164 128" glowId={`glow-gold-${uid}`} />
+
+        {/* Level 4: Upper flyovers - cast shadow on everything below */}
+        <Ribbon d="M164 92 C134 92 128 86 128 56" color={ASPHALT_RAMP} w={4.5} hasShadow shadowOffset={5.5} />
+        <FlowLine d="M164 92 C134 92 128 86 128 56" glowId={`glow-gold-${uid}`} />
+
+        <Ribbon d="M56 128 C86 128 92 134 92 164" color={ASPHALT_RAMP} w={4.5} hasShadow shadowOffset={5.5} />
+        <FlowLine d="M56 128 C86 128 92 134 92 164" glowId={`glow-gold-${uid}`} />
+
+        {/* Structural bridge columns */}
+        <circle cx={100} cy={100} r={2} fill="#52525b" stroke="#000" strokeWidth={0.5} />
+        <circle cx={120} cy={100} r={2} fill="#52525b" stroke="#000" strokeWidth={0.5} />
+        <circle cx={100} cy={120} r={2} fill="#52525b" stroke="#000" strokeWidth={0.5} />
+        <circle cx={120} cy={120} r={2} fill="#52525b" stroke="#000" strokeWidth={0.5} />
+
+        {/* High-mast streetlights */}
+        <Streetlight cx={75} cy={75} uid={uid} />
+        <Streetlight cx={145} cy={75} uid={uid} />
+        <Streetlight cx={75} cy={145} uid={uid} />
+        <Streetlight cx={145} cy={145} uid={uid} />
+
+        {/* Official SVG Highway route labels */}
+        <RouteLabel x={18} y={110} src="/interstate-shields/I-95.svg" />
+        <RouteLabel x={202} y={110} src="/interstate-shields/I-95.svg" />
+        <RouteLabel x={110} y={18} src="/interstate-shields/I-10.svg" />
+        <RouteLabel x={110} y={202} src="/interstate-shields/I-10.svg" />
       </>
     ),
   },
@@ -269,21 +450,62 @@ const KINDS: Kind[] = [
     },
     diagram: (uid) => (
       <>
-        {/* Freeway (Horizontal) */}
-        <Ribbon d="M8 110 H212" color={ASPHALT_FREEWAY} w={14} yellowDivider flow glowId={`glow-gold-${uid}`} />
+        {/* Landscape Grass Fields */}
+        <LandscapeLawn d="M 15 15 H 95 V 90 Q 75 92 48 96 H 15 Z" />
+        <LandscapeLawn d="M 205 15 H 125 V 90 Q 145 92 172 96 H 205 Z" />
+        <LandscapeLawn d="M 205 205 H 125 V 130 Q 145 128 172 124 H 205 Z" />
+        <LandscapeLawn d="M 15 205 H 95 V 130 Q 75 128 48 124 H 15 Z" />
+
+        {/* Level 1: Ramps converging to center */}
+        <Ribbon d="M172 124 C142 124 126 114 110 110" color={ASPHALT_RAMP} w={4.5} />
+        <FlowLine d="M172 124 C142 124 126 114 110 110" glowId={`glow-gold-${uid}`} />
+
+        <Ribbon d="M48 124 C78 124 94 114 110 110" color={ASPHALT_RAMP} w={4.5} />
+        <FlowLine d="M48 124 C78 124 94 114 110 110" glowId={`glow-gold-${uid}`} />
+
+        <Ribbon d="M172 96 C142 96 126 106 110 110" color={ASPHALT_RAMP} w={4.5} />
+        <FlowLine d="M172 96 C142 96 126 106 110 110" glowId={`glow-gold-${uid}`} />
+
+        <Ribbon d="M48 96 C78 96 94 106 110 110" color={ASPHALT_RAMP} w={4.5} />
+        <FlowLine d="M48 96 C78 96 94 106 110 110" glowId={`glow-gold-${uid}`} />
         
-        {/* Ramps converging to center */}
-        <Ribbon d="M172 124 C142 124 126 114 110 110" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M48 124 C78 124 94 114 110 110" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M172 96 C142 96 126 106 110 110" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M48 96 C78 96 94 106 110 110" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        {/* Level 1: Crossroad (Vertical) */}
+        <Ribbon d="M110 8 V212" color={ASPHALT_CROSS} w={12} />
+        <DoubleYellow d="M110 8 V212" bg={ASPHALT_CROSS} />
+        <FlowLine d="M106.5 8 V212" glowId={`glow-steel-${uid}`} />
+        <FlowLine d="M113.5 212 V8" glowId={`glow-steel-${uid}`} />
+
+        {/* Level 2: Freeway (Horizontal) - casts shadow over central intersection */}
+        <Ribbon d="M8 110 H212" color={ASPHALT_FREEWAY} w={14} hasShadow shadowOffset={2.5} />
+        <DoubleYellow d="M8 110 H212" bg={ASPHALT_FREEWAY} />
         
-        {/* Crossroad (Vertical) */}
-        <Ribbon d="M110 8 V212" color={ASPHALT_CROSS} w={12} flow glowId={`glow-steel-${uid}`} />
+        {/* Left and Right dashed lane dividers for the 4-lane freeway */}
+        <path d="M8 106.5 H212" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth={0.8} strokeDasharray="4 8" />
+        <path d="M8 113.5 H212" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth={0.8} strokeDasharray="4 8" />
+        
+        {/* Directional freeway flows */}
+        <FlowLine d="M212 106.5 H8" glowId={`glow-gold-${uid}`} />
+        <FlowLine d="M8 113.5 H212" glowId={`glow-gold-${uid}`} />
+
+        {/* Bridge expansion joints */}
+        <line x1={86} y1={110 - 7} x2={86} y2={110 + 7} stroke="#a1a1aa" strokeWidth={1} />
+        <line x1={134} y1={110 - 7} x2={134} y2={110 + 7} stroke="#a1a1aa" strokeWidth={1} />
 
         {/* Central controller box signal (Single Point) */}
         <circle cx={110} cy={110} r={7} fill="#fff" stroke={GOLD} strokeWidth={3} filter={`url(#glow-gold-${uid})`} />
         <circle cx={110} cy={110} r={2.5} fill={GOLD} />
+
+        {/* High-mast streetlights */}
+        <Streetlight cx={75} cy={110} uid={uid} />
+        <Streetlight cx={145} cy={110} uid={uid} />
+        <Streetlight cx={110} cy={75} uid={uid} />
+        <Streetlight cx={110} cy={145} uid={uid} />
+
+        {/* Official SVG Highway route labels */}
+        <RouteLabel x={18} y={110} src="/interstate-shields/I-70.svg" />
+        <RouteLabel x={202} y={110} src="/interstate-shields/I-70.svg" />
+        <RouteLabel x={110} y={18} src="/interstate-shields/California_9.svg" />
+        <RouteLabel x={110} y={202} src="/interstate-shields/California_9.svg" />
       </>
     ),
   },
@@ -311,6 +533,12 @@ function Diagram({ uid, children }: { uid: string; children: React.ReactNode }) 
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
+        {/* Streetlight Radial Glow */}
+        <radialGradient id={`light-glow-${uid}`}>
+          <stop offset="0%" stopColor="#fef08a" stopOpacity="1" />
+          <stop offset="25%" stopColor="#eab308" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#eab308" stopOpacity="0" />
+        </radialGradient>
       </defs>
       {/* Blueprint background grid */}
       <rect x="0" y="0" width="220" height="220" fill="rgba(6,8,12,0.6)" rx="12" />
