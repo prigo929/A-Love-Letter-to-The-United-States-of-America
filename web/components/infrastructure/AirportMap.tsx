@@ -8,7 +8,7 @@
 
 import { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ComposableMap, Geographies, Geography, useMapContext } from "react-simple-maps";
+import { ComposableMap, Geographies, Geography, useMapContext, ZoomableGroup } from "react-simple-maps";
 import { GEO_URL } from "@/lib/data/us-geo";
 import airportsData from "@/lib/data/airports.json";
 import airportsAll from "@/lib/data/airports-all.json";
@@ -17,6 +17,9 @@ import {
   MEM_SORTIE_TARGETS,
   type LngLat,
 } from "@/lib/data/infrastructure-network-data";
+
+const US_CENTER: [number, number] = [-96, 38];
+const MAX_ZOOM = 12;
 
 // Every non-commercial airfield, drawn as a faint density layer (one SVG path per
 // category via round-capped dot segments — one DOM node for thousands of points).
@@ -100,6 +103,7 @@ function AirportsLayer({
   selected,
   onSelect,
   reducedMotion,
+  zoom,
 }: {
   filter: Filter;
   scope: "commercial" | "all";
@@ -107,8 +111,10 @@ function AirportsLayer({
   selected: string | null;
   onSelect: (id: string | null) => void;
   reducedMotion: boolean;
+  zoom: number;
 }) {
   const { projection } = useMapContext();
+  const k = 1 / zoom; // counter-scale factor
 
   // Density layer: one path of round-capped dots per GA category. Only in passengers + scope all
   const gaPaths = useMemo(() => {
@@ -147,16 +153,16 @@ function AirportsLayer({
 
   const radius = (a: Airport) => {
     if (mode === "cargo") {
-      return 2.5 + Math.sqrt(a.cargo) * 8;
+      return (2.5 + Math.sqrt(a.cargo) * 8) * k;
     }
-    return 1.4 + Math.sqrt(a.enpl) / 470;
+    return (1.4 + Math.sqrt(a.enpl) / 470) * k;
   };
 
   return (
     <g>
       {/* GA density layer (under the commercial markers) */}
       {gaPaths.map(({ cat, d }) => (
-        <path key={cat} d={d} stroke={GA_COLOR[cat]} strokeWidth={1.1} strokeLinecap="round" fill="none" style={{ pointerEvents: "none" }} />
+        <path key={cat} d={d} stroke={GA_COLOR[cat]} strokeWidth={1.1 * k} strokeLinecap="round" fill="none" style={{ pointerEvents: "none" }} />
       ))}
 
       {/* FedEx overnight sorties (cargo mode only) */}
@@ -166,8 +172,8 @@ function AirportsLayer({
             d={d}
             fill="none"
             stroke={TIER_COLOR.cargo}
-            strokeWidth={0.9}
-            strokeDasharray="3 7"
+            strokeWidth={0.9 * k}
+            strokeDasharray={`${3 * k} ${7 * k}`}
             opacity={0.45}
             pointerEvents="none"
             style={reducedMotion ? undefined : { animation: "infra-dash 2.6s linear infinite" }}
@@ -181,38 +187,45 @@ function AirportsLayer({
         const dim = selected !== null && !isSel;
         const color = mode === "cargo" ? TIER_COLOR.cargo : TIER_COLOR[a.tier];
         
-        // Show labels for all cargo airports or large commercial ones
-        const showLabel = mode === "cargo" || a.enpl > 3_000_000;
+        // Show labels for all cargo airports, large commercial ones, or smaller ones as we zoom in
+        const showLabel =
+          mode === "cargo" ||
+          a.enpl > 3_000_000 ||
+          (zoom >= 2.0 && a.enpl > 1_000_000) ||
+          zoom >= 3.5;
 
         return (
           <g
             key={a.id}
             style={{ opacity: dim ? 0.25 : 1, transition: "opacity 0.3s ease", cursor: "pointer" }}
             onMouseEnter={() => onSelect(a.id)}
-            onClick={() => onSelect(isSel ? null : a.id)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onSelect(isSel ? null : a.id);
+            }}
           >
             {isSel && !reducedMotion && (
-              <circle cx={p[0]} cy={p[1]} r={r} fill="none" stroke={color} strokeWidth={1}>
+              <circle cx={p[0]} cy={p[1]} r={r} fill="none" stroke={color} strokeWidth={1 * k}>
                 <animate attributeName="r" values={`${r};${r * 2.4}`} dur="1.8s" repeatCount="indefinite" />
                 <animate attributeName="opacity" values="0.8;0" dur="1.8s" repeatCount="indefinite" />
               </circle>
             )}
-            <circle cx={p[0]} cy={p[1]} r={r} fill={color} fillOpacity={0.22} stroke={color} strokeWidth={isSel ? 1.4 : 0.7} />
-            <circle cx={p[0]} cy={p[1]} r={1.6} fill="#fff" />
+            <circle cx={p[0]} cy={p[1]} r={r} fill={color} fillOpacity={0.22} stroke={color} strokeWidth={isSel ? 1.4 * k : 0.7 * k} />
+            <circle cx={p[0]} cy={p[1]} r={1.6 * k} fill="#fff" />
             
             {showLabel && (
               <text
                 x={p[0]}
-                y={p[1] - r - 3}
+                y={p[1] - r - 3 * k}
                 textAnchor="middle"
                 style={{
                   fontFamily: "var(--font-sans), sans-serif",
-                  fontSize: 8.5,
+                  fontSize: 8.5 * k,
                   letterSpacing: "0.08em",
                   fill: isSel ? color : "rgba(255,255,255,0.65)",
                   paintOrder: "stroke",
                   stroke: "rgba(0,0,0,0.85)",
-                  strokeWidth: 2.4,
+                  strokeWidth: 2.4 * k,
                   pointerEvents: "none",
                 }}
               >
@@ -231,6 +244,10 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
   const [filter, setFilter] = useState<Filter>("all");
   const [scope, setScope] = useState<"commercial" | "all">("commercial");
   const [selected, setSelected] = useState<string | null>(null);
+  const [position, setPosition] = useState<{ coordinates: [number, number]; zoom: number }>({
+    coordinates: US_CENTER,
+    zoom: 1,
+  });
   const reduced = useReducedMotion();
 
   const airport = useMemo(() => AIRPORTS.find((a) => a.id === selected) ?? null, [selected]);
@@ -253,6 +270,15 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
     { id: "S", label: labels.regional, color: TIER_COLOR.S },
   ];
 
+  const zoomBy = (factor: number) => {
+    setPosition((p) => ({
+      ...p,
+      zoom: Math.min(MAX_ZOOM, Math.max(1, p.zoom * factor)),
+    }));
+  };
+
+  const resetView = () => setPosition({ coordinates: US_CENTER, zoom: 1 });
+
   return (
     <div className="w-full">
       <style>{`@keyframes infra-dash { to { stroke-dashoffset: -20; } }`}</style>
@@ -270,6 +296,7 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
                 setSelected(null);
                 setFilter("all");
                 setScope("commercial");
+                resetView();
               }}
               className="rounded-full border px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-wider transition-all"
               style={{
@@ -295,6 +322,7 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
                   onClick={() => {
                     setScope(s);
                     setSelected(null);
+                    resetView();
                   }}
                   className="rounded-full px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all"
                   style={{
@@ -347,33 +375,83 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
         </span>
       </div>
 
-      <div onMouseLeave={() => setSelected(null)}>
-        <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1120 }} width={940} height={540} style={{ width: "100%", height: "auto" }}>
-          <Geographies geography={GEO_URL}>
-            {({ geographies }: { geographies: any[] }) => (
-              <>
-                {geographies.map((geo) => (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    style={{
-                      default: { fill: "#0a0a0a", stroke: "rgba(255,255,255,0.07)", strokeWidth: 0.6, outline: "none" },
-                      hover: { fill: "#0a0a0a", outline: "none" },
-                      pressed: { outline: "none" },
-                    }}
+      {/* Map area with zoom controls */}
+      <div className="relative w-full overflow-hidden rounded-xl border border-white/5 bg-[#050505]">
+        <div className="absolute right-3 top-3 z-10 flex flex-col gap-1.5">
+          {[
+            { sym: "+", act: () => zoomBy(1.7), aria: "Zoom in" },
+            { sym: "−", act: () => zoomBy(1 / 1.7), aria: "Zoom out" },
+            { sym: "⌂", act: resetView, aria: "Reset view" },
+          ].map((b) => (
+            <button
+              key={b.aria}
+              onClick={b.act}
+              aria-label={b.aria}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-black/70 font-macro-display text-base text-white/70 backdrop-blur-sm transition-colors hover:border-white/40 hover:text-white"
+            >
+              {b.sym}
+            </button>
+          ))}
+        </div>
+
+        {position.zoom > 1.01 && (
+          <div className="pointer-events-none absolute left-3 top-3 z-10 rounded-full border border-white/10 bg-black/70 px-3 py-1 font-sans text-[10px] uppercase tracking-[0.15em] text-white/50 backdrop-blur-sm">
+            {position.zoom.toFixed(1)}×
+          </div>
+        )}
+
+        <ComposableMap
+          projection="geoAlbersUsa"
+          projectionConfig={{ scale: 1120 }}
+          width={940}
+          height={540}
+          style={{ width: "100%", height: "auto" }}
+          onClick={() => setSelected(null)}
+        >
+          <ZoomableGroup
+            center={position.coordinates}
+            zoom={position.zoom}
+            minZoom={1}
+            maxZoom={MAX_ZOOM}
+            translateExtent={[
+              [-80, -60],
+              [1020, 600],
+            ]}
+            filterZoomEvent={(evt: any) => {
+              if (evt?.type === "wheel") return evt.ctrlKey || evt.metaKey;
+              return true;
+            }}
+            onMoveEnd={({ coordinates, zoom }: { coordinates: [number, number]; zoom: number }) =>
+              setPosition({ coordinates, zoom })
+            }
+          >
+            <Geographies geography={GEO_URL}>
+              {({ geographies }: { geographies: any[] }) => (
+                <>
+                  {geographies.map((geo) => (
+                    <Geography
+                      key={geo.rsmKey}
+                      geography={geo}
+                      style={{
+                        default: { fill: "#0a0a0a", stroke: "rgba(255,255,255,0.07)", strokeWidth: 0.6, outline: "none" },
+                        hover: { fill: "#0a0a0a", outline: "none" },
+                        pressed: { outline: "none" },
+                      }}
+                    />
+                  ))}
+                  <AirportsLayer
+                    filter={filter}
+                    scope={scope}
+                    mode={mode}
+                    selected={selected}
+                    onSelect={setSelected}
+                    reducedMotion={!!reduced}
+                    zoom={position.zoom}
                   />
-                ))}
-                <AirportsLayer
-                  filter={filter}
-                  scope={scope}
-                  mode={mode}
-                  selected={selected}
-                  onSelect={setSelected}
-                  reducedMotion={!!reduced}
-                />
-              </>
-            )}
-          </Geographies>
+                </>
+              )}
+            </Geographies>
+          </ZoomableGroup>
         </ComposableMap>
       </div>
 
