@@ -1,10 +1,10 @@
 "use client";
 
 // ─── AirportMap ───────────────────────────────────────────────────────────────
-// The 873 commercial-service airports of the United States, plotted from FAA/NTAD
-// enplanement data on a geoAlbersUsa projection. Circle area scales with annual
-// enplanements and colour marks the hub tier. Filter by tier; hover or tap any
-// airport for its detail. Alaska and Hawaii ride in the projection's insets.
+// The commercial-service airports of the United States, plotted from FAA/NTAD
+// enplanement data on a geoAlbersUsa projection. Supports both Passengers mode
+// and Cargo mode (which displays cargo volume, sized appropriately, with overnight
+// sortie lines radiating from Memphis FedEx SuperHub).
 
 import { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
@@ -12,6 +12,11 @@ import { ComposableMap, Geographies, Geography, useMapContext } from "react-simp
 import { GEO_URL } from "@/lib/data/us-geo";
 import airportsData from "@/lib/data/airports.json";
 import airportsAll from "@/lib/data/airports-all.json";
+import {
+  AVIATION_HUBS,
+  MEM_SORTIE_TARGETS,
+  type LngLat,
+} from "@/lib/data/infrastructure-network-data";
 
 // Every non-commercial airfield, drawn as a faint density layer (one SVG path per
 // category via round-capped dot segments — one DOM node for thousands of points).
@@ -26,6 +31,7 @@ const GA_COLOR: Record<string, string> = {
 
 type Tier = "L" | "M" | "S";
 type Filter = "all" | Tier;
+type Mode = "passengers" | "cargo";
 
 interface Airport {
   id: string;
@@ -39,16 +45,35 @@ interface Airport {
   tier: Tier;
   intl: boolean;
   tower: boolean;
+  cargo: number;
 }
-const AIRPORTS = (airportsData as { airports: Airport[] }).airports;
 
-const TIER_COLOR: Record<Tier, string> = {
+// Enrich FAA database with cargo statistics from AVIATION_HUBS
+const AIRPORTS = (airportsData as { airports: Omit<Airport, "cargo">[] }).airports.map((a) => {
+  const hub = AVIATION_HUBS.find((h) => h.code === a.id);
+  return {
+    ...a,
+    cargo: hub ? hub.cargo : 0,
+  } as Airport;
+});
+
+const TIER_COLOR: Record<Tier | "cargo", string> = {
   L: "#E8B923", // large hub — gold
   M: "#60a5fa", // medium hub — blue
   S: "#7c8896", // small hub — steel
+  cargo: "#fb923c", // cargo hub — orange
 };
 
-const radius = (enpl: number) => 1.4 + Math.sqrt(enpl) / 470;
+/** Quadratic arc between two projected points, bowed perpendicular to the chord. */
+function arcPath(a: [number, number], b: [number, number], bow = 0.16): string {
+  const mx = (a[0] + b[0]) / 2;
+  const my = (a[1] + b[1]) / 2;
+  const dx = b[0] - a[0];
+  const dy = b[1] - a[1];
+  const cx = mx - dy * bow;
+  const cy = my + dx * bow;
+  return `M ${a[0].toFixed(1)},${a[1].toFixed(1)} Q ${cx.toFixed(1)},${cy.toFixed(1)} ${b[0].toFixed(1)},${b[1].toFixed(1)}`;
+}
 
 interface AirportMapLabels {
   all: string;
@@ -71,21 +96,23 @@ interface AirportMapLabels {
 function AirportsLayer({
   filter,
   scope,
+  mode,
   selected,
   onSelect,
   reducedMotion,
 }: {
   filter: Filter;
   scope: "commercial" | "all";
+  mode: Mode;
   selected: string | null;
   onSelect: (id: string | null) => void;
   reducedMotion: boolean;
 }) {
   const { projection } = useMapContext();
 
-  // Density layer: one path of round-capped dots per GA category.
+  // Density layer: one path of round-capped dots per GA category. Only in passengers + scope all
   const gaPaths = useMemo(() => {
-    if (scope !== "all") return [];
+    if (scope !== "all" || mode === "cargo") return [];
     return Object.entries(GA_LAYERS).map(([cat, pts]) => {
       let d = "";
       for (const ll of pts) {
@@ -94,17 +121,36 @@ function AirportsLayer({
       }
       return { cat, d };
     });
-  }, [scope, projection]);
+  }, [scope, mode, projection]);
 
-  const drawn = useMemo(
-    () =>
-      AIRPORTS.filter((a) => scope === "all" || filter === "all" || a.tier === filter)
-        .map((a) => ({ a, p: projection([a.lng, a.lat]) }))
-        .filter((x): x is { a: Airport; p: [number, number] } => Array.isArray(x.p))
-        // biggest first so the small dots stay clickable on top
-        .sort((x, y) => y.a.enpl - x.a.enpl),
-    [filter, scope, projection],
-  );
+  const memP = projection([-89.977, 35.042]);
+  const sorties = useMemo(() => {
+    if (mode !== "cargo" || !memP) return [];
+    return MEM_SORTIE_TARGETS.map((t: LngLat) => projection(t))
+      .filter((p): p is [number, number] => Array.isArray(p))
+      .map((p) => arcPath(memP, p));
+  }, [mode, memP, projection]);
+
+  const drawn = useMemo(() => {
+    let list = AIRPORTS;
+    if (mode === "cargo") {
+      list = AIRPORTS.filter((a) => a.cargo > 0);
+    } else {
+      list = AIRPORTS.filter((a) => scope === "all" || filter === "all" || a.tier === filter);
+    }
+
+    return list
+      .map((a) => ({ a, p: projection([a.lng, a.lat]) }))
+      .filter((x): x is { a: Airport; p: [number, number] } => Array.isArray(x.p))
+      .sort((x, y) => (mode === "cargo" ? y.a.cargo - x.a.cargo : y.a.enpl - x.a.enpl));
+  }, [filter, scope, mode, projection]);
+
+  const radius = (a: Airport) => {
+    if (mode === "cargo") {
+      return 2.5 + Math.sqrt(a.cargo) * 8;
+    }
+    return 1.4 + Math.sqrt(a.enpl) / 470;
+  };
 
   return (
     <g>
@@ -112,11 +158,32 @@ function AirportsLayer({
       {gaPaths.map(({ cat, d }) => (
         <path key={cat} d={d} stroke={GA_COLOR[cat]} strokeWidth={1.1} strokeLinecap="round" fill="none" style={{ pointerEvents: "none" }} />
       ))}
+
+      {/* FedEx overnight sorties (cargo mode only) */}
+      {mode === "cargo" && sorties.map((d, i) => (
+        <g key={i} className="motion-reduce:hidden">
+          <path
+            d={d}
+            fill="none"
+            stroke={TIER_COLOR.cargo}
+            strokeWidth={0.9}
+            strokeDasharray="3 7"
+            opacity={0.45}
+            pointerEvents="none"
+            style={reducedMotion ? undefined : { animation: "infra-dash 2.6s linear infinite" }}
+          />
+        </g>
+      ))}
+
       {drawn.map(({ a, p }) => {
-        const r = radius(a.enpl);
+        const r = radius(a);
         const isSel = selected === a.id;
         const dim = selected !== null && !isSel;
-        const color = TIER_COLOR[a.tier];
+        const color = mode === "cargo" ? TIER_COLOR.cargo : TIER_COLOR[a.tier];
+        
+        // Show labels for all cargo airports or large commercial ones
+        const showLabel = mode === "cargo" || a.enpl > 3_000_000;
+
         return (
           <g
             key={a.id}
@@ -131,7 +198,9 @@ function AirportsLayer({
               </circle>
             )}
             <circle cx={p[0]} cy={p[1]} r={r} fill={color} fillOpacity={0.22} stroke={color} strokeWidth={isSel ? 1.4 : 0.7} />
-            {a.enpl > 3_000_000 && (
+            <circle cx={p[0]} cy={p[1]} r={1.6} fill="#fff" />
+            
+            {showLabel && (
               <text
                 x={p[0]}
                 y={p[1] - r - 3}
@@ -158,21 +227,24 @@ function AirportsLayer({
 }
 
 export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: AirportMapLabels }) {
+  const [mode, setMode] = useState<Mode>("passengers");
   const [filter, setFilter] = useState<Filter>("all");
   const [scope, setScope] = useState<"commercial" | "all">("commercial");
   const [selected, setSelected] = useState<string | null>(null);
   const reduced = useReducedMotion();
 
   const airport = useMemo(() => AIRPORTS.find((a) => a.id === selected) ?? null, [selected]);
-  const shown = useMemo(
-    () =>
-      scope === "all"
-        ? 19514
-        : filter === "all"
-          ? AIRPORTS.length
-          : AIRPORTS.filter((a) => a.tier === filter).length,
-    [filter, scope],
-  );
+  
+  const shown = useMemo(() => {
+    if (mode === "cargo") {
+      return AIRPORTS.filter((a) => a.cargo > 0).length;
+    }
+    return scope === "all"
+      ? 19514
+      : filter === "all"
+        ? AIRPORTS.length
+        : AIRPORTS.filter((a) => a.tier === filter).length;
+  }, [filter, scope, mode]);
 
   const filters: { id: Filter; label: string; color?: string }[] = [
     { id: "all", label: labels.all },
@@ -183,66 +255,93 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
 
   return (
     <div className="w-full">
-      {/* Scope toggle: commercial airports vs every airfield */}
-      <div className="mb-5 flex rounded-full border border-white/12 p-0.5 w-fit">
-        {(["commercial", "all"] as const).map((s) => (
-          <button
-            key={s}
-            onClick={() => {
-              setScope(s);
-              setSelected(null);
-            }}
-            className="rounded-full px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all"
-            style={{
-              background: scope === s ? "rgba(255,255,255,0.9)" : "transparent",
-              color: scope === s ? "#000" : "rgba(255,255,255,0.5)",
-            }}
-          >
-            {s === "commercial" ? labels.scopeCommercial : labels.scopeAll}
-          </button>
-        ))}
+      <style>{`@keyframes infra-dash { to { stroke-dashoffset: -20; } }`}</style>
+
+      {/* Mode selection toggle */}
+      <div className="mb-6 flex gap-2 border-b border-white/5 pb-4">
+        {(["passengers", "cargo"] as const).map((m) => {
+          const active = mode === m;
+          const color = m === "passengers" ? TIER_COLOR.L : TIER_COLOR.cargo;
+          return (
+            <button
+              key={m}
+              onClick={() => {
+                setMode(m);
+                setSelected(null);
+                setFilter("all");
+                setScope("commercial");
+              }}
+              className="rounded-full border px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-wider transition-all"
+              style={{
+                borderColor: active ? color : "rgba(255,255,255,0.08)",
+                background: active ? `${color}14` : "transparent",
+                color: active ? color : "rgba(255,255,255,0.5)",
+              }}
+            >
+              {m === "passengers" ? (locale === "ro" ? "Pasageri" : "Passengers") : (locale === "ro" ? "Marfă (Cargo)" : "Cargo")}
+            </button>
+          );
+        })}
       </div>
 
       <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        {scope === "commercial" ? (
-          <div className="flex flex-wrap gap-2">
-            {filters.map((f) => {
-              const active = filter === f.id;
-              const c = f.color ?? "#E8B923";
-              return (
+        {mode === "passengers" ? (
+          <>
+            {/* Scope toggle: commercial airports vs every airfield */}
+            <div className="flex rounded-full border border-white/12 p-0.5 w-fit">
+              {(["commercial", "all"] as const).map((s) => (
                 <button
-                  key={f.id}
+                  key={s}
                   onClick={() => {
-                    setFilter(f.id);
+                    setScope(s);
                     setSelected(null);
                   }}
-                  className="flex items-center gap-2 rounded-full border px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.14em] transition-all"
+                  className="rounded-full px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all"
                   style={{
-                    borderColor: active ? c : "rgba(255,255,255,0.12)",
-                    background: active ? `${c}18` : "transparent",
-                    color: active ? c : "rgba(255,255,255,0.5)",
+                    background: scope === s ? "rgba(255,255,255,0.9)" : "transparent",
+                    color: scope === s ? "#000" : "rgba(255,255,255,0.5)",
                   }}
                 >
-                  {f.id !== "all" && <span className="h-2 w-2 rounded-full" style={{ background: c }} />}
-                  {f.label}
+                  {s === "commercial" ? labels.scopeCommercial : labels.scopeAll}
                 </button>
-              );
-            })}
-          </div>
+              ))}
+            </div>
+
+            {scope === "commercial" && (
+              <div className="flex flex-wrap gap-2">
+                {filters.map((f) => {
+                  const active = filter === f.id;
+                  const c = f.color ?? "#E8B923";
+                  return (
+                    <button
+                      key={f.id}
+                      onClick={() => {
+                        setFilter(f.id);
+                        setSelected(null);
+                      }}
+                      className="flex items-center gap-2 rounded-full border px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.14em] transition-all"
+                      style={{
+                        borderColor: active ? c : "rgba(255,255,255,0.12)",
+                        background: active ? `${c}14` : "transparent",
+                        color: active ? c : "rgba(255,255,255,0.5)",
+                      }}
+                    >
+                      {f.id !== "all" && (
+                        <span className="h-2 w-2 rounded-full" style={{ background: c }} />
+                      )}
+                      {f.label}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </>
         ) : (
-          <div className="flex flex-wrap gap-x-4 gap-y-1.5">
-            {[
-              [GA_COLOR.ga, labels.gaAirfields],
-              [GA_COLOR.heliport, labels.heliports],
-              [GA_COLOR.seaplane, labels.seaplane],
-            ].map(([c, lbl]) => (
-              <span key={lbl} className="flex items-center gap-1.5 font-sans text-[9px] uppercase tracking-[0.12em] text-white/45">
-                <span className="h-2 w-2 rounded-full" style={{ background: (c as string).replace(/[\d.]+\)$/, "1)") }} />
-                {lbl}
-              </span>
-            ))}
+          <div className="font-sans text-[11px] font-bold uppercase tracking-wider text-orange-400">
+            {locale === "ro" ? "Rețeaua națională de marfă aeriană (Cargo)" : "National Air Cargo Network"}
           </div>
         )}
+        
         <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-white/35">
           {shown.toLocaleString(locale === "ro" ? "ro-RO" : "en-US")} · {labels.hint}
         </span>
@@ -264,7 +363,14 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
                     }}
                   />
                 ))}
-                <AirportsLayer filter={filter} scope={scope} selected={selected} onSelect={setSelected} reducedMotion={!!reduced} />
+                <AirportsLayer
+                  filter={filter}
+                  scope={scope}
+                  mode={mode}
+                  selected={selected}
+                  onSelect={setSelected}
+                  reducedMotion={!!reduced}
+                />
               </>
             )}
           </Geographies>
@@ -277,7 +383,9 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
           <motion.div key={airport.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="grid gap-6 md:grid-cols-12">
             <div className="md:col-span-5">
               <div className="mb-1 flex items-center gap-2">
-                <span className="font-hero text-2xl" style={{ color: TIER_COLOR[airport.tier] }}>{airport.id}</span>
+                <span className="font-hero text-2xl" style={{ color: mode === "cargo" ? TIER_COLOR.cargo : TIER_COLOR[airport.tier] }}>
+                  {airport.id}
+                </span>
                 <span className="font-sans text-[10px] uppercase tracking-[0.18em] text-white/35">
                   {airport.city}, {airport.state}
                 </span>
@@ -297,18 +405,35 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
               </div>
             </div>
             <div className="flex gap-10 md:col-span-7">
-              <div>
-                <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30">{labels.enplanements}</div>
-                <div className="font-hero text-3xl" style={{ color: TIER_COLOR[airport.tier] }}>
-                  {(airport.enpl / 1_000_000).toFixed(1)}M
+              {mode === "passengers" ? (
+                <>
+                  <div>
+                    <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30">{labels.enplanements}</div>
+                    <div className="font-hero text-3xl" style={{ color: TIER_COLOR[airport.tier] }}>
+                      {(airport.enpl / 1_000_000).toFixed(1)}M
+                    </div>
+                    <div className="font-sans text-[9px] uppercase tracking-wide text-white/35">{labels.perYear}</div>
+                  </div>
+                  <div>
+                    <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30">{labels.passengers}</div>
+                    <div className="font-hero text-3xl text-white/85">{(airport.pax / 1_000_000).toFixed(1)}M</div>
+                    <div className="font-sans text-[9px] uppercase tracking-wide text-white/35">{labels.perYear}</div>
+                  </div>
+                </>
+              ) : (
+                <div>
+                  <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30">
+                    {locale === "ro" ? "Volum Anual de Marfă" : "Annual Cargo Volume"}
+                  </div>
+                  <div className="font-hero text-3xl text-orange-400">
+                    {airport.cargo.toFixed(1)}M
+                    <span className="ml-1 font-sans text-[11px] uppercase tracking-wide text-white/40">tons</span>
+                  </div>
+                  <div className="font-sans text-[9px] uppercase tracking-wide text-white/35">
+                    {locale === "ro" ? "tone metrice / an" : "metric tonnes / year"}
+                  </div>
                 </div>
-                <div className="font-sans text-[9px] uppercase tracking-wide text-white/35">{labels.perYear}</div>
-              </div>
-              <div>
-                <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30">{labels.passengers}</div>
-                <div className="font-hero text-3xl text-white/85">{(airport.pax / 1_000_000).toFixed(1)}M</div>
-                <div className="font-sans text-[9px] uppercase tracking-wide text-white/35">{labels.perYear}</div>
-              </div>
+              )}
             </div>
           </motion.div>
         )}

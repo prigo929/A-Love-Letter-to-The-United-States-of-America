@@ -556,21 +556,21 @@ export function MacroFact({ fact, detail, index }: { fact: string, detail?: stri
 
 export function InfrastructureBand({ imageSrc, imageAlt, children, fullBleed = false }: { imageSrc: string, imageAlt: string, children: React.ReactNode, fullBleed?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <div ref={ref} className={`relative my-32 overflow-hidden bg-[#000000] ${fullBleed ? "w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)]" : "w-full"}`}>
-      <motion.div style={{ y }} className="absolute inset-0 h-[130%] top-[-15%]">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 0.5 } : { opacity: 0 }}
+        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute inset-0 h-full w-full"
+      >
         <Image
           src={imageSrc}
           alt={imageAlt}
           fill
-          className="object-cover opacity-50 grayscale-[0.3]"
+          className="object-cover grayscale-[0.3]"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-[#000000] pointer-events-none" />

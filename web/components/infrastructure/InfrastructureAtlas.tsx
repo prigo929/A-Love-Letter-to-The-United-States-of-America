@@ -5,7 +5,7 @@
 // infrastructure maps. Includes custom labels and datasets for each map.
 
 import { useState } from "react";
-import { AviationMap } from "@/components/infrastructure/AviationMap";
+import { AirportMap } from "@/components/infrastructure/AirportMap";
 import { PortMap } from "@/components/infrastructure/PortMap";
 import { DamsBridgesMap } from "@/components/infrastructure/DamsBridgesMap";
 import { NetworkMap } from "@/components/infrastructure/NetworkMap";
@@ -14,6 +14,12 @@ import { NetworkMap } from "@/components/infrastructure/NetworkMap";
 import powerData from "@/lib/data/powergrid-simplified.json";
 import railData from "@/lib/data/rail-simplified.json";
 import waterwaysData from "@/lib/data/waterways-simplified.json";
+
+import {
+  HIGHWAY_ERAS,
+  HIGHWAY_ROUTES,
+  HIGHWAY_NODES,
+} from "@/lib/data/infrastructure-network-data";
 
 type MapTab = "aviation" | "ports" | "dams" | "power" | "rail" | "water" | "highway";
 
@@ -81,7 +87,7 @@ export function InfrastructureAtlas({ locale, labels }: { locale: "en" | "ro"; l
       {/* Render selected map */}
       <div className="relative overflow-hidden rounded-2xl bg-black/40 border border-white/5 p-4">
         {activeTab === "aviation" && (
-          <AviationMap locale={locale} labels={labels.aviationLabels} />
+          <AirportMap locale={locale} labels={labels.aviationLabels} />
         )}
         
         {activeTab === "ports" && (
@@ -143,14 +149,12 @@ export function InfrastructureAtlas({ locale, labels }: { locale: "en" | "ro"; l
         {activeTab === "highway" && (
           <NetworkMap
             locale={locale}
-            eras={[{ id: "interstate", label: { en: "Interstate Highways", ro: "Autostrăzi" }, sublabel: { en: "Today", ro: "Prezent" } }]}
-            routes={[]}
-            nodes={[]}
+            eras={HIGHWAY_ERAS}
+            routes={HIGHWAY_ROUTES}
+            nodes={HIGHWAY_NODES}
             accent="#E8B923"
             backgroundNetwork
             variant="interstate"
-            hideEraToggle
-            initialEra="interstate"
             labels={labels.mapLabels}
           />
         )}
