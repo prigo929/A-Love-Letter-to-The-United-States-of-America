@@ -17,20 +17,60 @@ const RAMP = "#d4af37";
 const CASING = "#000000"; // Pitch black road base casing
 const FLOW = "#ffffff"; // Pure white glowing flow dashes
 
-function Ribbon({ d, color, w, flow, glowId }: { d: string; color: string; w: number; flow?: boolean; glowId?: string }) {
+const ASPHALT_FREEWAY = "#1c1c21"; // Dark charcoal asphalt for freeway
+const ASPHALT_CROSS = "#27272c"; // Slightly lighter dark asphalt for crossroad
+const ASPHALT_RAMP = "#131316"; // Darkest asphalt for ramps
+
+function Ribbon({
+  d,
+  color,
+  w,
+  flow,
+  glowId,
+  lanes = 2,
+  yellowDivider = false,
+}: {
+  d: string;
+  color: string;
+  w: number;
+  flow?: boolean;
+  glowId?: string;
+  lanes?: number;
+  yellowDivider?: boolean;
+}) {
   return (
     <>
-      <path d={d} fill="none" stroke={CASING} strokeWidth={w + 5} strokeLinecap="round" strokeLinejoin="round" />
+      {/* 1. Road bed casing (outer outline) */}
+      <path d={d} fill="none" stroke={CASING} strokeWidth={w + 3} strokeLinecap="round" strokeLinejoin="round" />
+      
+      {/* 2. Concrete shoulder lines (thin border edges) */}
+      <path d={d} fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth={w + 1} strokeLinecap="round" strokeLinejoin="round" />
+      
+      {/* 3. Asphalt road surface */}
       <path d={d} fill="none" stroke={color} strokeWidth={w} strokeLinecap="round" strokeLinejoin="round" />
+      
+      {/* 4. Dash Lane Dividers (for multi-lane highways) */}
+      {lanes > 1 && (
+        <path
+          d={d}
+          fill="none"
+          stroke={yellowDivider ? "#eab308" : "rgba(255,255,255,0.18)"}
+          strokeWidth={0.8}
+          strokeDasharray="4 8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      )}
+      
+      {/* 5. Animated Traffic Flows */}
       {flow && (
         <path
           d={d}
           fill="none"
-          stroke={FLOW}
-          strokeWidth={Math.max(1.4, w * 0.22)}
-          strokeDasharray="3 14"
+          stroke={yellowDivider ? GOLD : FLOW}
+          strokeWidth={1.3}
+          strokeDasharray="2 18"
           strokeLinecap="round"
-          opacity={0.95}
           filter={glowId ? `url(#${glowId})` : undefined}
           style={{ animation: "ix-flow 1.2s linear infinite" }}
         />
@@ -81,12 +121,17 @@ const KINDS: Kind[] = [
     },
     diagram: (uid) => (
       <>
-        <Ribbon d="M110 8 V212" color={STEEL} w={12} flow glowId={`glow-steel-${uid}`} />
-        <Ribbon d="M58 110 Q70 70 110 58" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M110 58 Q150 70 162 110" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M162 110 Q150 150 110 162" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M110 162 Q70 150 58 110" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M8 110 H212" color={GOLD} w={14} flow glowId={`glow-gold-${uid}`} />
+        {/* Crossroad (Vertical) */}
+        <Ribbon d="M110 8 V212" color={ASPHALT_CROSS} w={12} flow glowId={`glow-steel-${uid}`} />
+        
+        {/* Ramps */}
+        <Ribbon d="M58 110 Q70 70 110 58" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M110 58 Q150 70 162 110" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M162 110 Q150 150 110 162" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M110 162 Q70 150 58 110" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        
+        {/* Freeway (Horizontal) - crosses over crossroad */}
+        <Ribbon d="M8 110 H212" color={ASPHALT_FREEWAY} w={14} yellowDivider flow glowId={`glow-gold-${uid}`} />
       </>
     ),
   },
@@ -113,6 +158,7 @@ const KINDS: Kind[] = [
     },
     diagram: (uid) => (
       <>
+        {/* Clover loops passing under */}
         {[
           [76, 76],
           [144, 76],
@@ -120,23 +166,40 @@ const KINDS: Kind[] = [
           [144, 144],
         ].map(([cx, cy]) => (
           <g key={`${cx}-${cy}`}>
-            <circle cx={cx} cy={cy} r={25} fill="none" stroke={CASING} strokeWidth={9.5} />
-            <circle cx={cx} cy={cy} r={25} fill="none" stroke={RAMP} strokeWidth={4.5} />
+            <circle cx={cx} cy={cy} r={25} fill="none" stroke={CASING} strokeWidth={7.5} />
+            <circle cx={cx} cy={cy} r={25} fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth={5.5} />
+            <circle cx={cx} cy={cy} r={25} fill="none" stroke={ASPHALT_RAMP} strokeWidth={4.5} />
             <circle
               cx={cx}
               cy={cy}
               r={25}
               fill="none"
               stroke={FLOW}
-              strokeWidth={1.5}
+              strokeWidth={1.2}
               strokeDasharray="2 12"
               filter={`url(#glow-gold-${uid})`}
               style={{ animation: "ix-flow 1.5s linear infinite" }}
             />
           </g>
         ))}
-        <Ribbon d="M110 8 V212" color={STEEL} w={12} flow glowId={`glow-steel-${uid}`} />
-        <Ribbon d="M8 110 H212" color={GOLD} w={14} flow glowId={`glow-gold-${uid}`} />
+
+        {/* Outer straight ramps */}
+        <Ribbon d="M58 8 Q58 58 8 58" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M162 8 Q162 58 212 58" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M58 212 Q58 162 8 162" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M162 212 Q162 162 212 162" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+
+        {/* Crossroad (Vertical) */}
+        <Ribbon d="M110 8 V212" color={ASPHALT_CROSS} w={12} flow glowId={`glow-steel-${uid}`} />
+        
+        {/* Freeway (Horizontal) */}
+        <Ribbon d="M8 110 H212" color={ASPHALT_FREEWAY} w={14} yellowDivider flow glowId={`glow-gold-${uid}`} />
+
+        {/* Bridge Piers under main overpass crossings */}
+        <rect x={102} y={72} width={3} height={8} fill="#3f3f46" rx={0.5} />
+        <rect x={115} y={72} width={3} height={8} fill="#3f3f46" rx={0.5} />
+        <rect x={102} y={140} width={3} height={8} fill="#3f3f46" rx={0.5} />
+        <rect x={115} y={140} width={3} height={8} fill="#3f3f46" rx={0.5} />
       </>
     ),
   },
@@ -163,12 +226,23 @@ const KINDS: Kind[] = [
     },
     diagram: (uid) => (
       <>
-        <Ribbon d="M110 8 V212" color={STEEL} w={12} flow glowId={`glow-steel-${uid}`} />
-        <Ribbon d="M164 92 C134 92 128 86 128 56" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M92 56 C92 86 86 92 56 92" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M56 128 C86 128 92 134 92 164" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M128 164 C128 134 134 128 164 128" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M8 110 H212" color={GOLD} w={14} flow glowId={`glow-gold-${uid}`} />
+        {/* Crossroad (Vertical) */}
+        <Ribbon d="M110 8 V212" color={ASPHALT_CROSS} w={12} flow glowId={`glow-steel-${uid}`} />
+
+        {/* Symmetrical flyover ramps (High level - stacks over highways) */}
+        <Ribbon d="M164 92 C134 92 128 86 128 56" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M92 56 C92 86 86 92 56 92" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M56 128 C86 128 92 134 92 164" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M128 164 C128 134 134 128 164 128" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        
+        {/* Freeway (Horizontal) */}
+        <Ribbon d="M8 110 H212" color={ASPHALT_FREEWAY} w={14} yellowDivider flow glowId={`glow-gold-${uid}`} />
+
+        {/* Structural bridge column support piers */}
+        <circle cx={100} cy={100} r={2} fill="#3f3f46" stroke="#000" strokeWidth={0.5} />
+        <circle cx={120} cy={100} r={2} fill="#3f3f46" stroke="#000" strokeWidth={0.5} />
+        <circle cx={100} cy={120} r={2} fill="#3f3f46" stroke="#000" strokeWidth={0.5} />
+        <circle cx={120} cy={120} r={2} fill="#3f3f46" stroke="#000" strokeWidth={0.5} />
       </>
     ),
   },
@@ -195,13 +269,20 @@ const KINDS: Kind[] = [
     },
     diagram: (uid) => (
       <>
-        <Ribbon d="M8 110 H212" color={GOLD} w={14} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M172 124 C142 124 126 114 110 110" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M48 124 C78 124 94 114 110 110" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M172 96 C142 96 126 106 110 110" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M48 96 C78 96 94 106 110 110" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M110 8 V212" color={STEEL} w={12} flow glowId={`glow-steel-${uid}`} />
-        <circle cx={110} cy={110} r={7} fill="#fff" stroke={GOLD} strokeWidth={3} />
+        {/* Freeway (Horizontal) */}
+        <Ribbon d="M8 110 H212" color={ASPHALT_FREEWAY} w={14} yellowDivider flow glowId={`glow-gold-${uid}`} />
+        
+        {/* Ramps converging to center */}
+        <Ribbon d="M172 124 C142 124 126 114 110 110" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M48 124 C78 124 94 114 110 110" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M172 96 C142 96 126 106 110 110" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M48 96 C78 96 94 106 110 110" color={ASPHALT_RAMP} w={4.5} lanes={1} flow glowId={`glow-gold-${uid}`} />
+        
+        {/* Crossroad (Vertical) */}
+        <Ribbon d="M110 8 V212" color={ASPHALT_CROSS} w={12} flow glowId={`glow-steel-${uid}`} />
+
+        {/* Central controller box signal (Single Point) */}
+        <circle cx={110} cy={110} r={7} fill="#fff" stroke={GOLD} strokeWidth={3} filter={`url(#glow-gold-${uid})`} />
         <circle cx={110} cy={110} r={2.5} fill={GOLD} />
       </>
     ),
@@ -213,7 +294,7 @@ function Diagram({ uid, children }: { uid: string; children: React.ReactNode }) 
     <svg viewBox="0 0 220 220" className="h-auto w-full select-none">
       <defs>
         <pattern id={`ixgrid-${uid}`} width="20" height="20" patternUnits="userSpaceOnUse">
-          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.035)" strokeWidth="1" />
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
         </pattern>
         {/* Glow Filters */}
         <filter id={`glow-gold-${uid}`} x="-20%" y="-20%" width="140%" height="140%">
@@ -232,11 +313,26 @@ function Diagram({ uid, children }: { uid: string; children: React.ReactNode }) 
         </filter>
       </defs>
       {/* Blueprint background grid */}
-      <rect x="0" y="0" width="220" height="220" fill="rgba(6,8,12,0.6)" />
-      <rect x="0" y="0" width="220" height="220" fill={`url(#ixgrid-${uid})`} />
+      <rect x="0" y="0" width="220" height="220" fill="rgba(6,8,12,0.6)" rx="12" />
+      <rect x="0" y="0" width="220" height="220" fill={`url(#ixgrid-${uid})`} rx="12" />
       
+      {/* Blueprint tick marks */}
+      <g stroke="rgba(255,255,255,0.15)" strokeWidth="0.8">
+        <line x1="20" y1="2" x2="20" y2="6" />
+        <line x1="60" y1="2" x2="60" y2="6" />
+        <line x1="110" y1="2" x2="110" y2="6" />
+        <line x1="160" y1="2" x2="160" y2="6" />
+        <line x1="200" y1="2" x2="200" y2="6" />
+
+        <line x1="2" y1="20" x2="6" y2="20" />
+        <line x1="2" y1="60" x2="6" y2="60" />
+        <line x1="2" y1="110" x2="6" y2="110" />
+        <line x1="2" y1="160" x2="6" y2="160" />
+        <line x1="2" y1="200" x2="6" y2="200" />
+      </g>
+
       {/* Sleek blueprint frame */}
-      <rect x="2" y="2" width="216" height="216" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="1.2" rx="12" />
+      <rect x="2" y="2" width="216" height="216" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="1.2" rx="12" />
       {children}
     </svg>
   );
