@@ -50,6 +50,8 @@ interface Kind {
     footprint: { en: string; ro: string };
     levels: string;
     signals: { en: string; ro: string };
+    capacity: { en: string; ro: string };
+    conflict: { en: string; ro: string };
     since: string;
   };
   diagram: (uid: string) => React.ReactNode;
@@ -59,20 +61,22 @@ const KINDS: Kind[] = [
   {
     id: "diamond",
     name: { en: "Diamond", ro: "Diamant" },
-    tag: { en: "The workhorse", ro: "Calul de povară" },
+    tag: { en: "The Ubiquitous Workhorse", ro: "Calul de povară universal" },
     desc: {
-      en: "Four short ramps peel off the freeway and meet the cross street at grade, where a stop or signal handles the turns. Cheap, compact, and by far the most common junction on the system.",
-      ro: "Patru bretele scurte se desprind din autostradă și întâlnesc drumul secundar la nivel, unde un stop sau un semafor gestionează virajele. Ieftin, compact și de departe cel mai frecvent nod din sistem.",
+      en: "The baseline standard of American highway design. Four direct ramps connect the freeway to a secondary road at a single grade-separated bridge. While highly cost-effective and space-efficient, it introduces conflict points where ramp traffic meets the crossroad via stop signs or traffic signals.",
+      ro: "Standardul de bază al designului rutier american. Patru bretele directe conectează autostrada de un drum secundar printr-un singur pod denivelat. Deși este extrem de eficient ca cost și spațiu, introduce puncte de conflict acolo unde bretelele întâlnesc drumul secundar prin semafoare sau indicatoare.",
     },
     example: {
-      en: "Standard on rural and suburban Interstates nationwide.",
-      ro: "Standard pe autostrăzile rurale și suburbane din toată țara.",
+      en: "The default design for thousands of rural exits and suburban crossings across the Interstate network.",
+      ro: "Designul implicit pentru mii de ieșiri rurale și intersecții suburbane din întreaga rețea de autostrăzi.",
     },
     footprint: 1,
     spec: {
       footprint: { en: "Small", ro: "Mică" },
       levels: "2",
       signals: { en: "Yes", ro: "Da" },
+      capacity: { en: "Low (~1,500/hr)", ro: "Redusă (~1.500/h)" },
+      conflict: { en: "26 points", ro: "26 puncte" },
       since: "1930s",
     },
     diagram: (uid) => (
@@ -89,20 +93,22 @@ const KINDS: Kind[] = [
   {
     id: "cloverleaf",
     name: { en: "Cloverleaf", ro: "Treflă" },
-    tag: { en: "The first free-flow", ro: "Primul flux continuu" },
+    tag: { en: "The Pioneer of Free-Flow", ro: "Pionierul fluxului continuu" },
     desc: {
-      en: "Four looping ramps turn every left without a single stoplight. The catch is weaving: traffic entering and exiting must trade places on the same short stretch, which chokes at high volume.",
-      ro: "Patru bretele în buclă rezolvă fiecare viraj la stânga fără niciun semafor. Neajunsul este întrețeserea: traficul care intră și cel care iese fac schimb de locuri pe aceeași porțiune scurtă, ceea ce se blochează la volume mari.",
+      en: "Invented to eliminate stoplights entirely by using looping ramps for left turns. While groundbreaking in the 1930s, it created a dangerous traffic pattern known as 'weaving'—where cars accelerating to enter the highway must cross paths with cars decelerating to exit on the exact same lane.",
+      ro: "Inventat pentru a elimina complet semafoarele, folosind bucle la dreapta pentru virajele la stânga. Revoluționar în anii 1930, a creat un model de trafic periculos numit „întrețesere” — unde mașinile care accelerează pentru a intra se încrucișează cu cele care încetinesc pentru a ieși.",
     },
     example: {
-      en: "First built at Woodbridge, New Jersey, in 1928.",
-      ro: "Prima construită la Woodbridge, New Jersey, in 1928.",
+      en: "Woodbridge Interchange, NJ (1928) — America's first cloverleaf. Now largely phased out on high-volume routes.",
+      ro: "Nodul Woodbridge, NJ (1928) — prima treflă din America. Acum este eliminată treptat pe rutele cu trafic intens.",
     },
     footprint: 3.4,
     spec: {
       footprint: { en: "Large", ro: "Mare" },
       levels: "2",
-      signals: { en: "None", ro: "Niciun" },
+      signals: { en: "None", ro: "Niciunul" },
+      capacity: { en: "Medium (~2,500/hr)", ro: "Medie (~2.500/h)" },
+      conflict: { en: "16 (weaving)", ro: "16 (întrețesere)" },
       since: "1928",
     },
     diagram: (uid) => (
@@ -137,20 +143,22 @@ const KINDS: Kind[] = [
   {
     id: "stack",
     name: { en: "Stack", ro: "Suprapus" },
-    tag: { en: "The interchange king", ro: "Regele nodurilor" },
+    tag: { en: "The Peak of Highway Engineering", ro: "Apogeul ingineriei rutiere" },
     desc: {
-      en: "Freeway meets freeway. Sweeping flyover ramps carry every movement at full speed with no weaving and no signals, stacked four or five levels high. The fastest form to drive and the costliest to build.",
-      ro: "Autostradă peste autostradă. Bretele largi, suspendate, preiau fiecare mișcare la viteză maximă, fără întrețesere și fără semafoare, suprapuse pe patru sau cinci niveluri. Cea mai rapidă formă de condus și cea mai scumpă de construit.",
+      en: "A massive multi-level masterpiece designed for the high-speed junction of two major freeways. By separating every movement onto its own dedicated flyover ramp, it completely eliminates weaving and signal phases, allowing continuous flow at highway speeds, though at immense construction costs.",
+      ro: "O capodoperă masivă pe mai multe niveluri, proiectată pentru joncțiunea de mare viteză a două autostrăzi majore. Prin separarea fiecărei mișcări pe propria rampă suspendată dedicată, elimină complet întrețeserea, permițând un flux continuu la viteze de autostradă.",
     },
     example: {
-      en: "The Judge Harry Pregerson Interchange, Los Angeles — five levels.",
-      ro: "Nodul Judge Harry Pregerson, Los Angeles — cinci niveluri.",
+      en: "Judge Harry Pregerson Interchange, LA (1993) — A towering 5-level stack handling 350,000 vehicles daily.",
+      ro: "Nodul Judge Harry Pregerson, LA (1993) — o structură impunătoare pe 5 niveluri ce gestionează 350.000 de vehicule zilnic.",
     },
     footprint: 4,
     spec: {
       footprint: { en: "Very large", ro: "Foarte mare" },
       levels: "4–5",
-      signals: { en: "None", ro: "Niciun" },
+      signals: { en: "None", ro: "Niciunul" },
+      capacity: { en: "High (10,000+/hr)", ro: "Ridicată (10k+/h)" },
+      conflict: { en: "0 points", ro: "0 puncte" },
       since: "1949",
     },
     diagram: (uid) => (
@@ -166,21 +174,23 @@ const KINDS: Kind[] = [
   },
   {
     id: "spui",
-    name: { en: "Single-Point Urban", ro: "Urban cu Punct Unic" },
-    tag: { en: "The city solution", ro: "Soluția urbană" },
+    name: { en: "Single-Point Urban", ro: "SPUI - Punct Unic" },
+    tag: { en: "The Urban Space Saver", ro: "Soluția de eficiență urbană" },
     desc: {
-      en: "Every ramp converges on a single signalized point beneath the freeway, so all left turns clear on one traffic phase. It moves diamond-level traffic in a fraction of the land a cloverleaf demands.",
-      ro: "Fiecare breteă converge într-un singur punct cu semafor, sub autostradă, astfel încât toate virajele la stânga se eliberează într-o singură fază. Preia trafic cât un diamant pe o fracțiune din terenul cerut de o treflă.",
+      en: "A modern design optimizing flow in dense urban areas. By aligning all left-turn movements to converge at a single, centralized traffic signal directly beneath or above the freeway, it allows simultaneous left turns, moving massive traffic volumes within a tiny right-of-way.",
+      ro: "Un design modern ce optimizează fluxul în zonele urbane dense. Prin alinierea tuturor virajelor la stânga într-un singur semafor centralizat aflat sub sau deasupra autostrăzii, permite viraje simultane pe o suprafață minimă de teren.",
     },
     example: {
-      en: "A staple of dense suburban corridors since the 1970s.",
-      ro: "Un element de bază al coridoarelor suburbane dense din anii 1970.",
+      en: "First built in Clearwater, Florida (1974). A staple of dense suburban commercial corridors.",
+      ro: "Construit prima dată în Clearwater, Florida (1974). Un element de bază în coridoarele comerciale suburbane dense.",
     },
     footprint: 1.3,
     spec: {
       footprint: { en: "Compact", ro: "Compactă" },
       levels: "2",
-      signals: { en: "One", ro: "Unul" },
+      signals: { en: "One (Central)", ro: "Unul (Central)" },
+      capacity: { en: "Medium (~4,000/hr)", ro: "Medie (~4.000/h)" },
+      conflict: { en: "24 points", ro: "24 puncte" },
       since: "1970s",
     },
     diagram: (uid) => (
@@ -241,7 +251,9 @@ export function InterchangeTypology({ locale }: { locale: Loc }) {
     [locale === "ro" ? "Teren" : "Footprint", active.spec.footprint[locale]],
     [locale === "ro" ? "Niveluri" : "Levels", active.spec.levels],
     [locale === "ro" ? "Semafoare" : "Signals", active.spec.signals[locale]],
-    [locale === "ro" ? "Din" : "Since", active.spec.since],
+    [locale === "ro" ? "Capacitate" : "Capacity", active.spec.capacity[locale]],
+    [locale === "ro" ? "Puncte Conflict" : "Conflict Points", active.spec.conflict[locale]],
+    [locale === "ro" ? "Înființat" : "Since", active.spec.since],
   ];
 
   return (
@@ -315,14 +327,14 @@ export function InterchangeTypology({ locale }: { locale: Loc }) {
             })}
           </div>
 
-          {/* Spec readout dashboard */}
-          <div className="grid grid-cols-4 gap-px overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.08]">
+          {/* Spec readout dashboard - responsive grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-px overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.08]">
             {specRows.map(([label, value]) => (
               <div key={label} className="bg-[#050505] px-3 py-4 text-center">
                 <div className="font-sans text-[9px] font-bold uppercase tracking-[0.15em] text-white/35">
                   {label}
                 </div>
-                <div className="mt-1.5 font-macro-display text-base font-bold text-[#E8B923]">{value}</div>
+                <div className="mt-1.5 font-macro-display text-[13px] sm:text-sm font-bold text-[#E8B923]">{value}</div>
               </div>
             ))}
           </div>
