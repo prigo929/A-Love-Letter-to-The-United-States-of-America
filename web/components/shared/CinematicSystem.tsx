@@ -558,25 +558,40 @@ export function InfrastructureBand({ imageSrc, imageAlt, children, fullBleed = f
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const prefersReducedMotion = useReducedMotion();
+  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+
   return (
     <div ref={ref} className={`relative my-32 overflow-hidden bg-[#000000] ${fullBleed ? "w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)]" : "w-full"}`}>
+      {/* Static Fade-in Container */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 0.5 } : { opacity: 0 }}
+        animate={inView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute inset-0 h-full w-full"
+        className="absolute inset-0 h-full w-full overflow-hidden"
       >
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          className="object-cover grayscale-[0.3]"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-[#000000] pointer-events-none" />
-        <div className="absolute inset-0 bg-linear-to-b from-[#000000] via-transparent to-[#000000] pointer-events-none opacity-80" />
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%)' }} />
+        {/* Parallax Image Layer (Only the image translates) */}
+        <motion.div style={{ y: prefersReducedMotion ? "0%" : y }} className="absolute inset-0 h-[130%] top-[-15%]">
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            className="object-cover opacity-50 grayscale-[0.3]"
+            sizes="100vw"
+          />
+        </motion.div>
+
+        {/* Static Gradients Over the Parallax Image */}
+        <div className="absolute inset-0 bg-linear-to-t from-[#000000] via-transparent to-[#000000] pointer-events-none z-[1]" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#000000] via-transparent to-[#000000] pointer-events-none opacity-80 z-[1]" />
+        <div className="absolute inset-0 pointer-events-none z-[1]" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%)' }} />
       </motion.div>
+
       <div className="relative z-10 w-full macro-blur-mask p-12 md:p-24 lg:p-32 mt-64">
         <div className="max-w-[1600px] mx-auto">
           {children}
