@@ -3,10 +3,8 @@
 // ─── InterchangeTypology ──────────────────────────────────────────────────────
 // An illustrated field guide to the four interchange forms that stitch the
 // Interstate grid together. Each is drawn top-down as ribbon roads with animated
-// directional traffic and grade-separated crossings (the through road is drawn
-// over the crossing road, the way a real overpass sits above it). Selecting a
-// form enlarges it and reveals its engineering spec, footprint, and a landmark
-// example.
+// directional traffic and grade-separated crossings. Selecting a form enlarges
+// it and reveals its engineering spec, footprint, and a landmark example.
 
 import { useState } from "react";
 
@@ -14,13 +12,12 @@ type Id = "diamond" | "cloverleaf" | "stack" | "spui";
 type Loc = "en" | "ro";
 
 const GOLD = "#E8B923";
-const STEEL = "#7c8896";
-const RAMP = "#caa02e";
-const CASING = "#050505";
-const FLOW = "#fff3c4";
+const STEEL = "#475569"; // Sleeker dark-slate grey
+const RAMP = "#d4af37";
+const CASING = "#000000"; // Pitch black road base casing
+const FLOW = "#ffffff"; // Pure white glowing flow dashes
 
-// A road as a ribbon: dark casing under a coloured fill. Optional moving dashes.
-function Ribbon({ d, color, w, flow }: { d: string; color: string; w: number; flow?: boolean }) {
+function Ribbon({ d, color, w, flow, glowId }: { d: string; color: string; w: number; flow?: boolean; glowId?: string }) {
   return (
     <>
       <path d={d} fill="none" stroke={CASING} strokeWidth={w + 5} strokeLinecap="round" strokeLinejoin="round" />
@@ -30,11 +27,12 @@ function Ribbon({ d, color, w, flow }: { d: string; color: string; w: number; fl
           d={d}
           fill="none"
           stroke={FLOW}
-          strokeWidth={Math.max(1.4, w * 0.24)}
-          strokeDasharray="2 13"
+          strokeWidth={Math.max(1.4, w * 0.22)}
+          strokeDasharray="3 14"
           strokeLinecap="round"
-          opacity={0.9}
-          style={{ animation: "ix-flow 1.5s linear infinite" }}
+          opacity={0.95}
+          filter={glowId ? `url(#${glowId})` : undefined}
+          style={{ animation: "ix-flow 1.2s linear infinite" }}
         />
       )}
     </>
@@ -77,15 +75,14 @@ const KINDS: Kind[] = [
       signals: { en: "Yes", ro: "Da" },
       since: "1930s",
     },
-    diagram: () => (
+    diagram: (uid) => (
       <>
-        <Ribbon d="M110 8 V212" color={STEEL} w={13} />
-        {/* four ramps forming the diamond around the crossing */}
-        <Ribbon d="M58 110 Q70 70 110 58" color={RAMP} w={5} flow />
-        <Ribbon d="M110 58 Q150 70 162 110" color={RAMP} w={5} flow />
-        <Ribbon d="M162 110 Q150 150 110 162" color={RAMP} w={5} flow />
-        <Ribbon d="M110 162 Q70 150 58 110" color={RAMP} w={5} flow />
-        <Ribbon d="M8 110 H212" color={GOLD} w={15} flow />
+        <Ribbon d="M110 8 V212" color={STEEL} w={12} flow glowId={`glow-steel-${uid}`} />
+        <Ribbon d="M58 110 Q70 70 110 58" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M110 58 Q150 70 162 110" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M162 110 Q150 150 110 162" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M110 162 Q70 150 58 110" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M8 110 H212" color={GOLD} w={14} flow glowId={`glow-gold-${uid}`} />
       </>
     ),
   },
@@ -99,7 +96,7 @@ const KINDS: Kind[] = [
     },
     example: {
       en: "First built at Woodbridge, New Jersey, in 1928.",
-      ro: "Prima construită la Woodbridge, New Jersey, în 1928.",
+      ro: "Prima construită la Woodbridge, New Jersey, in 1928.",
     },
     footprint: 3.4,
     spec: {
@@ -108,9 +105,8 @@ const KINDS: Kind[] = [
       signals: { en: "None", ro: "Niciun" },
       since: "1928",
     },
-    diagram: () => (
+    diagram: (uid) => (
       <>
-        {/* four loop ramps (pass under the mainlines) */}
         {[
           [76, 76],
           [144, 76],
@@ -128,13 +124,13 @@ const KINDS: Kind[] = [
               stroke={FLOW}
               strokeWidth={1.5}
               strokeDasharray="2 12"
+              filter={`url(#glow-gold-${uid})`}
               style={{ animation: "ix-flow 1.5s linear infinite" }}
             />
           </g>
         ))}
-        {/* mainlines cross over the loops */}
-        <Ribbon d="M110 8 V212" color={STEEL} w={13} />
-        <Ribbon d="M8 110 H212" color={GOLD} w={15} flow />
+        <Ribbon d="M110 8 V212" color={STEEL} w={12} flow glowId={`glow-steel-${uid}`} />
+        <Ribbon d="M8 110 H212" color={GOLD} w={14} flow glowId={`glow-gold-${uid}`} />
       </>
     ),
   },
@@ -159,12 +155,12 @@ const KINDS: Kind[] = [
     },
     diagram: (uid) => (
       <>
-        <Ribbon d="M110 8 V212" color="#b98f2a" w={13} />
-        <Ribbon d="M164 92 C128 92 120 84 120 50" color={RAMP} w={5} flow />
-        <Ribbon d="M92 50 C92 84 84 92 50 92" color={RAMP} w={5} flow />
-        <Ribbon d="M56 128 C84 128 92 136 92 170" color={RAMP} w={5} flow />
-        <Ribbon d="M128 170 C128 136 136 128 164 128" color={RAMP} w={5} flow />
-        <Ribbon d="M8 110 H212" color={GOLD} w={15} flow />
+        <Ribbon d="M110 8 V212" color="#b98f2a" w={12} flow glowId={`glow-steel-${uid}`} />
+        <Ribbon d="M164 92 C128 92 120 84 120 50" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M92 50 C92 84 84 92 50 92" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M56 128 C84 128 92 136 92 170" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M128 170 C128 136 136 128 164 128" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M8 110 H212" color={GOLD} w={14} flow glowId={`glow-gold-${uid}`} />
       </>
     ),
   },
@@ -189,12 +185,12 @@ const KINDS: Kind[] = [
     },
     diagram: (uid) => (
       <>
-        <Ribbon d="M8 110 H212" color={GOLD} w={15} flow />
-        <Ribbon d="M172 124 C142 124 126 114 110 110" color={RAMP} w={5} flow />
-        <Ribbon d="M48 124 C78 124 94 114 110 110" color={RAMP} w={5} flow />
-        <Ribbon d="M172 96 C142 96 126 106 110 110" color={RAMP} w={5} flow />
-        <Ribbon d="M48 96 C78 96 94 106 110 110" color={RAMP} w={5} flow />
-        <Ribbon d="M110 8 V212" color={STEEL} w={13} />
+        <Ribbon d="M8 110 H212" color={GOLD} w={14} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M172 124 C142 124 126 114 110 110" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M48 124 C78 124 94 114 110 110" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M172 96 C142 96 126 106 110 110" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M48 96 C78 96 94 106 110 110" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M110 8 V212" color={STEEL} w={12} flow glowId={`glow-steel-${uid}`} />
         <circle cx={110} cy={110} r={7} fill="#fff" stroke={GOLD} strokeWidth={3} />
         <circle cx={110} cy={110} r={2.5} fill={GOLD} />
       </>
@@ -206,11 +202,31 @@ function Diagram({ uid, children }: { uid: string; children: React.ReactNode }) 
   return (
     <svg viewBox="0 0 220 220" className="h-auto w-full select-none">
       <defs>
-        <pattern id={`ixgrid-${uid}`} width="22" height="22" patternUnits="userSpaceOnUse">
-          <path d="M22 0H0V22" fill="none" stroke="rgba(255,255,255,0.045)" strokeWidth="1" />
+        <pattern id={`ixgrid-${uid}`} width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.035)" strokeWidth="1" />
         </pattern>
+        {/* Glow Filters */}
+        <filter id={`glow-gold-${uid}`} x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="2.5" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <filter id={`glow-steel-${uid}`} x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="2" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
       </defs>
+      {/* Blueprint background grid */}
+      <rect x="0" y="0" width="220" height="220" fill="rgba(6,8,12,0.6)" />
       <rect x="0" y="0" width="220" height="220" fill={`url(#ixgrid-${uid})`} />
+      
+      {/* Sleek blueprint frame */}
+      <rect x="2" y="2" width="216" height="216" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="1.2" rx="12" />
       {children}
     </svg>
   );
@@ -229,47 +245,51 @@ export function InterchangeTypology({ locale }: { locale: Loc }) {
   ];
 
   return (
-    <div>
-      <style>{`@keyframes ix-flow { to { stroke-dashoffset: -15; } }`}</style>
+    <div className="w-full">
+      <style>{`@keyframes ix-flow { to { stroke-dashoffset: -17; } }`}</style>
       <div className="grid gap-10 lg:grid-cols-12">
         {/* Featured diagram + narrative */}
-        <div className="lg:col-span-7">
-          <div className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#070707] p-6 md:p-10">
-            <div className="pointer-events-none absolute left-4 top-4 font-sans text-[9px] uppercase tracking-widest text-white/20">
-              {locale === "ro" ? "SCHEMĂ // VEDERE DE SUS" : "SCHEMATIC // PLAN VIEW"}
+        <div className="lg:col-span-7 flex flex-col justify-between">
+          <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 md:p-10 backdrop-blur-md">
+            <div className="absolute left-6 top-6 font-sans text-[9px] font-bold uppercase tracking-[0.2em] text-white/30">
+              {locale === "ro" ? "SCHEMĂ // NOD RUTIER" : "SCHEMATIC // INTERCHANGE DESIGN"}
             </div>
-            <div className="pointer-events-none absolute right-4 top-4 flex items-center gap-2 font-sans text-[9px] uppercase tracking-widest text-white/25">
-              <span className="inline-block h-2 w-4 rounded-full" style={{ background: GOLD }} />
-              {locale === "ro" ? "autostradă" : "freeway"}
-              <span className="ml-2 inline-block h-2 w-4 rounded-full" style={{ background: STEEL }} />
-              {locale === "ro" ? "drum" : "cross road"}
+            <div className="absolute right-6 top-6 flex items-center gap-3 font-sans text-[9px] font-bold uppercase tracking-[0.15em] text-white/30">
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block h-1.5 w-3 rounded-full" style={{ background: GOLD }} />
+                {locale === "ro" ? "autostradă" : "freeway"}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block h-1.5 w-3 rounded-full" style={{ background: STEEL }} />
+                {locale === "ro" ? "drum" : "cross road"}
+              </span>
             </div>
-            <div className="mx-auto max-w-[360px]">
+            <div className="mx-auto mt-8 max-w-[340px] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
               <Diagram uid={active.id}>{active.diagram(active.id)}</Diagram>
             </div>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-8">
             <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-              <h3 className="font-macro-display text-3xl font-black tracking-tight text-white">
+              <h3 className="font-macro-display text-3xl font-bold tracking-tight text-white">
                 {active.name[locale]}
               </h3>
-              <span className="font-sans text-[11px] uppercase tracking-[0.18em] text-[#E8B923]">
+              <span className="font-sans text-[11px] font-bold uppercase tracking-[0.18em] text-[#E8B923]">
                 {active.tag[locale]}
               </span>
             </div>
-            <p className="macro-body mt-4 max-w-2xl !text-base leading-relaxed text-white/65">
+            <p className="font-sans text-base leading-relaxed text-white/60 mt-4 max-w-2xl">
               {active.desc[locale]}
             </p>
-            <p className="mt-4 border-l-2 border-[#E8B923]/40 pl-4 font-macro-body text-sm italic leading-relaxed text-white/45">
+            <p className="mt-4 border-l border-[#E8B923]/60 pl-4 font-sans text-sm italic leading-relaxed text-white/40">
               {active.example[locale]}
             </p>
           </div>
         </div>
 
         {/* Selector + spec + footprint comparison */}
-        <div className="lg:col-span-5">
-          <div className="grid grid-cols-2 gap-3">
+        <div className="lg:col-span-5 flex flex-col gap-6">
+          <div className="grid grid-cols-2 gap-4">
             {KINDS.map((k) => {
               const on = k.id === activeId;
               return (
@@ -277,16 +297,17 @@ export function InterchangeTypology({ locale }: { locale: Loc }) {
                   key={k.id}
                   onClick={() => setActiveId(k.id)}
                   onMouseEnter={() => setActiveId(k.id)}
-                  className="rounded-xl border p-3 text-left transition-all duration-300"
+                  className="group relative rounded-xl border p-4 text-left transition-all duration-300 transform hover:-translate-y-0.5"
                   style={{
-                    borderColor: on ? "rgba(232,185,35,0.55)" : "rgba(255,255,255,0.06)",
-                    background: on ? "rgba(232,185,35,0.06)" : "rgba(255,255,255,0.015)",
+                    borderColor: on ? "#E8B923" : "rgba(255,255,255,0.06)",
+                    background: on ? "rgba(232,185,35,0.05)" : "rgba(255,255,255,0.015)",
+                    boxShadow: on ? "0 10px 25px -5px rgba(232,185,35,0.1)" : "none",
                   }}
                 >
-                  <div className="mx-auto max-w-[96px] opacity-90">
+                  <div className="mx-auto max-w-[80px] opacity-80 group-hover:opacity-100 transition-opacity duration-300">
                     <Diagram uid={`t-${k.id}`}>{k.diagram(`t-${k.id}`)}</Diagram>
                   </div>
-                  <div className="mt-2 font-macro-display text-[13px] font-bold leading-tight text-white">
+                  <div className="mt-3 font-macro-display text-[14px] font-bold leading-tight text-white transition-colors duration-300 group-hover:text-[#E8B923]">
                     {k.name[locale]}
                   </div>
                 </button>
@@ -294,39 +315,39 @@ export function InterchangeTypology({ locale }: { locale: Loc }) {
             })}
           </div>
 
-          {/* Spec readout */}
-          <div className="mt-5 grid grid-cols-4 gap-px overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.05]">
+          {/* Spec readout dashboard */}
+          <div className="grid grid-cols-4 gap-px overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.08]">
             {specRows.map(([label, value]) => (
-              <div key={label} className="bg-[#070707] px-3 py-4 text-center">
-                <div className="font-sans text-[9px] uppercase tracking-[0.14em] text-white/35">
+              <div key={label} className="bg-[#050505] px-3 py-4 text-center">
+                <div className="font-sans text-[9px] font-bold uppercase tracking-[0.15em] text-white/35">
                   {label}
                 </div>
-                <div className="mt-1.5 font-macro-display text-base font-bold text-white">{value}</div>
+                <div className="mt-1.5 font-macro-display text-base font-bold text-[#E8B923]">{value}</div>
               </div>
             ))}
           </div>
 
-          {/* Footprint comparison */}
-          <div className="mt-5 rounded-xl border border-white/[0.07] bg-[#070707] p-4">
-            <div className="mb-3 font-sans text-[9px] uppercase tracking-[0.16em] text-white/35">
-              {locale === "ro" ? "Teren ocupat, comparativ" : "Land footprint, compared"}
+          {/* Footprint comparison bar */}
+          <div className="rounded-xl border border-white/[0.08] bg-white/[0.01] p-5 backdrop-blur-sm">
+            <div className="mb-4 font-sans text-[9px] font-bold uppercase tracking-[0.18em] text-white/35">
+              {locale === "ro" ? "Amprenta la sol comparativă" : "Land footprint, compared"}
             </div>
-            <div className="space-y-2">
+            <div className="space-y-3">
               {KINDS.map((k) => {
                 const on = k.id === activeId;
                 return (
                   <button
                     key={k.id}
                     onClick={() => setActiveId(k.id)}
-                    className="flex w-full items-center gap-3"
+                    className="flex w-full items-center gap-3 group/bar"
                   >
-                    <span className="w-24 shrink-0 text-left font-sans text-[10px] uppercase tracking-wider" style={{ color: on ? "#E8B923" : "rgba(255,255,255,0.4)" }}>
+                    <span className="w-20 shrink-0 text-left font-sans text-[11px] font-bold uppercase tracking-wider transition-colors duration-300" style={{ color: on ? "#E8B923" : "rgba(255,255,255,0.4)" }}>
                       {k.name[locale]}
                     </span>
-                    <span className="h-2 flex-1 overflow-hidden rounded-full bg-white/[0.05]">
+                    <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/[0.05]">
                       <span
                         className="block h-full rounded-full transition-all duration-500"
-                        style={{ width: `${(k.footprint / maxFoot) * 100}%`, background: on ? GOLD : "rgba(255,255,255,0.22)" }}
+                        style={{ width: `${(k.footprint / maxFoot) * 100}%`, background: on ? GOLD : "rgba(255,255,255,0.2)" }}
                       />
                     </span>
                   </button>
