@@ -41,6 +41,171 @@ const INTERSTATE_GEOMS = interstatesData as unknown as Record<string, RouteGeom>
 const US_CENTER: LngLat = [-96.6, 38.7];
 const MAX_ZOOM = 12;
 
+interface RailHub {
+  id: string;
+  name: string;
+  location: string;
+  owner: string;
+  coordinates: [number, number];
+  description: {
+    en: string;
+    ro: string;
+  };
+}
+
+const RAIL_HUBS: RailHub[] = [
+  {
+    id: "bailey",
+    name: "Bailey Yard",
+    location: "North Platte, NE",
+    owner: "Union Pacific",
+    coordinates: [-100.77, 41.12],
+    description: {
+      en: "The largest railroad classification yard in the world, spanning 2,850 acres. Sorts 14,000 cars daily with 17 receive tracks and 114 bowl tracks.",
+      ro: "Cel mai mare triaj feroviar din lume, întins pe 1.150 hectare. Sortează zilnic 14.000 de vagoane, fiind inima rețelei Union Pacific.",
+    },
+  },
+  {
+    id: "corwith",
+    name: "Corwith Yard",
+    location: "Chicago, IL",
+    owner: "BNSF Railway",
+    coordinates: [-87.72, 41.81],
+    description: {
+      en: "The historic gateway and busiest intermodal rail terminal in North America, acting as the primary transfer hub between eastern and western railroads.",
+      ro: "Poarta istorică și cel mai aglomerat terminal feroviar intermodal din America de Nord, legând magistralele din est cu cele din vest.",
+    },
+  },
+  {
+    id: "inman",
+    name: "Inman Yard",
+    location: "Atlanta, GA",
+    owner: "Norfolk Southern",
+    coordinates: [-84.44, 33.79],
+    description: {
+      en: "A major southeastern freight gateway and critical classification hub connecting the Gulf coast, Atlantic ports, and northern industrial corridors.",
+      ro: "O poartă comercială majoră din sud-est, ce leagă porturile din Atlantic de coridoarele industriale din nord.",
+    },
+  },
+  {
+    id: "west-colton",
+    name: "West Colton Yard",
+    location: "Colton, CA",
+    owner: "Union Pacific",
+    coordinates: [-117.33, 34.06],
+    description: {
+      en: "A massive Southern California hump yard sorting freight moving to and from the busy ports of Los Angeles and Long Beach.",
+      ro: "Un triaj de triere masiv din California de Sud, care sortează mărfurile ce intră sau ies din porturile Los Angeles și Long Beach.",
+    },
+  },
+  {
+    id: "selkirk",
+    name: "Selkirk Yard",
+    location: "Selkirk, NY",
+    owner: "CSX Transportation",
+    coordinates: [-73.80, 42.53],
+    description: {
+      en: "A premier gateway to the Northeast and New England, sorting freight from across the Midwest for consumer markets on the East Coast.",
+      ro: "Poarta principală către nord-estul SUA și Noua Anglie, sortând trenurile de marfă din vest pentru coasta de est.",
+    },
+  },
+];
+
+interface PowerPlant {
+  id: string;
+  name: string;
+  type: "hydro" | "nuclear" | "solar" | "wind";
+  location: string;
+  capacity: string;
+  coordinates: [number, number];
+  description: {
+    en: string;
+    ro: string;
+  };
+}
+
+const POWER_PLANTS: PowerPlant[] = [
+  {
+    id: "grand-coulee",
+    name: "Grand Coulee Dam",
+    type: "hydro",
+    location: "Columbia River, WA",
+    capacity: "6,809 MW",
+    coordinates: [-118.98, 47.96],
+    description: {
+      en: "The largest power station in the United States. An engineering colossus on the Columbia River producing 21 billion kilowatt-hours of clean energy annually.",
+      ro: "Cea mai mare hidrocentrală din SUA. Un colos ingineresc pe râul Columbia care produce anual 21 de miliarde de kWh de energie curată.",
+    },
+  },
+  {
+    id: "palo-verde",
+    name: "Palo Verde Station",
+    type: "nuclear",
+    location: "Wintersburg, AZ",
+    capacity: "3,937 MW",
+    coordinates: [-112.86, 33.39],
+    description: {
+      en: "The largest nuclear plant and largest single power producer in the nation, providing carbon-free electricity to over 4 million people across the Southwest.",
+      ro: "Cea mai mare centrală nucleară și cel mai mare producător unic de energie din țară, alimentând peste 4 milioane de oameni din sud-vest.",
+    },
+  },
+  {
+    id: "vogtle",
+    name: "Plant Vogtle",
+    type: "nuclear",
+    location: "Waynesboro, GA",
+    capacity: "4,536 MW",
+    coordinates: [-81.76, 33.14],
+    description: {
+      en: "With its newly completed Units 3 & 4, Vogtle is now the largest generator of clean, carbon-free energy in the United States.",
+      ro: "Odată cu finalizarea recentă a reactoarelor 3 și 4, centrala Vogtle este cel mai mare generator de energie curată fără carbon din SUA.",
+    },
+  },
+  {
+    id: "alta-wind",
+    name: "Alta Wind Energy Center",
+    type: "wind",
+    location: "Tehachapi Pass, CA",
+    capacity: "1,548 MW",
+    coordinates: [-118.22, 35.02],
+    description: {
+      en: "One of the largest onshore wind farms in the world, spanning the Tehachapi wind corridor to supply clean power to Southern California.",
+      ro: "Unul dintre cele mai mari parcuri eoliene terestre din lume, situat în trecătoarea Tehachapi, alimentând California de Sud.",
+    },
+  },
+  {
+    id: "ivanpah",
+    name: "Ivanpah Solar Facility",
+    type: "solar",
+    location: "Mojave Desert, CA",
+    capacity: "392 MW",
+    coordinates: [-115.47, 35.56],
+    description: {
+      en: "A massive concentrated solar thermal plant utilizing 170,000 heliostat mirrors to focus sunlight onto steam boilers atop three solar towers.",
+      ro: "O centrală termosolară masivă în deșertul Mojave, folosind 170.000 de oglinzi heliostat pentru a concentra lumina pe trei turnuri solare.",
+    },
+  },
+  {
+    id: "hoover",
+    name: "Hoover Dam",
+    type: "hydro",
+    location: "Nevada / Arizona",
+    capacity: "2,080 MW",
+    coordinates: [-114.74, 36.02],
+    description: {
+      en: "The historic engineering marvel of the Depression era, generating clean hydroelectric power from the Colorado River for three Western states.",
+      ro: "Minunea inginerească istorică din perioada Marii Depresiuni, generând energie hidroelectrică din râul Colorado pentru trei state vestice.",
+    },
+  },
+];
+
+const PLANT_COLOR: Record<string, string> = {
+  hydro: "#38bdf8",
+  nuclear: "#a78bfa",
+  wind: "#34d399",
+  solar: "#fbbf24",
+};
+
 // ─── AADT traffic heat scale ──────────────────────────────────────────────────
 // Average daily traffic spans from ~5k (rural Alaska) to ~300k (urban cores), so
 // the ramp is logarithmic. Blue (quiet) → teal → amber → red (jammed).
@@ -271,6 +436,9 @@ function RoutesLayer({
   geoms,
   heatCfg,
   prominentBackground,
+  variant,
+  railFilter,
+  powerFilter,
 }: {
   routes: NetworkRoute[];
   nodes: MapNode[];
@@ -285,9 +453,23 @@ function RoutesLayer({
   heatCfg: HeatConfig;
   /** Render the background network boldly (rail: the owner net is the content). */
   prominentBackground?: boolean;
+  variant?: "interstate" | "rail" | "power" | "water";
+  railFilter?: "all" | "freight" | "passenger";
+  powerFilter?: "all" | "plants";
 }) {
   const { projection } = useMapContext();
   const k = 1 / zoom; // counter-scale factor for screen-constant sizes
+
+  const substationPath = useMemo(() => {
+    const pts = (geoms as any).substations as LngLat[] | undefined;
+    if (!pts) return "";
+    let d = "";
+    for (const ll of pts) {
+      const p = projection(ll);
+      if (p) d += `M${p[0].toFixed(1)} ${p[1].toFixed(1)}h0.01`;
+    }
+    return d;
+  }, [geoms, projection]);
 
   const drawn = useMemo(
     () =>
@@ -328,17 +510,6 @@ function RoutesLayer({
         .filter((n): n is { node: MapNode; p: [number, number] } => Array.isArray(n.p)),
     [nodes, projection],
   );
-
-  const substationPath = useMemo(() => {
-    const pts = (geoms as any).substations as LngLat[] | undefined;
-    if (!pts) return "";
-    let d = "";
-    for (const ll of pts) {
-      const p = projection(ll);
-      if (p) d += `M${p[0].toFixed(1)} ${p[1].toFixed(1)}h0.01`;
-    }
-    return d;
-  }, [geoms, projection]);
 
   return (
     <g>
@@ -558,6 +729,97 @@ function RoutesLayer({
           />
         );
       })}
+
+      {/* Rail Hubs point layer */}
+      {variant === "rail" && era === "modern" && RAIL_HUBS.map((hub) => {
+        const p = projection(hub.coordinates);
+        if (!p) return null;
+        const isSel = selectedId === `hub-${hub.id}`;
+        const dim = selectedId !== null && !isSel;
+        return (
+          <g
+            key={`hub-${hub.id}`}
+            style={{ opacity: dim ? 0.25 : 1, transition: "opacity 0.3s ease", cursor: "pointer" }}
+            onMouseEnter={() => onSelect(`hub-${hub.id}`)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onSelect(isSel ? null : `hub-${hub.id}`);
+            }}
+          >
+            {isSel && (
+              <circle cx={p[0]} cy={p[1]} r={6.5 * k} fill="none" stroke="#E8B923" strokeWidth={1 * k}>
+                <animate attributeName="r" values={`${6.5 * k};${15 * k}`} dur="1.8s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.8;0" dur="1.8s" repeatCount="indefinite" />
+              </circle>
+            )}
+            <circle cx={p[0]} cy={p[1]} r={5.2 * k} fill="#E8B923" fillOpacity={0.3} stroke="#E8B923" strokeWidth={1.2 * k} />
+            <circle cx={p[0]} cy={p[1]} r={1.6 * k} fill="#fff" />
+            <text
+              x={p[0]}
+              y={p[1] - 8 * k}
+              textAnchor="middle"
+              style={{
+                fontFamily: "var(--font-sans), sans-serif",
+                fontSize: 8.5 * k,
+                fontWeight: "bold",
+                fill: isSel ? "#E8B923" : "rgba(255,255,255,0.75)",
+                paintOrder: "stroke",
+                stroke: "rgba(0,0,0,0.85)",
+                strokeWidth: 2.2 * k,
+                pointerEvents: "none",
+              }}
+            >
+              {hub.name}
+            </text>
+          </g>
+        );
+      })}
+
+      {/* Power Plants point layer */}
+      {variant === "power" && powerFilter === "plants" && POWER_PLANTS.map((plant) => {
+        const p = projection(plant.coordinates);
+        if (!p) return null;
+        const isSel = selectedId === `plant-${plant.id}`;
+        const dim = selectedId !== null && !isSel;
+        const color = PLANT_COLOR[plant.type] || "#fb923c";
+        return (
+          <g
+            key={`plant-${plant.id}`}
+            style={{ opacity: dim ? 0.25 : 1, transition: "opacity 0.3s ease", cursor: "pointer" }}
+            onMouseEnter={() => onSelect(`plant-${plant.id}`)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onSelect(isSel ? null : `plant-${plant.id}`);
+            }}
+          >
+            {isSel && (
+              <circle cx={p[0]} cy={p[1]} r={6.5 * k} fill="none" stroke={color} strokeWidth={1 * k}>
+                <animate attributeName="r" values={`${6.5 * k};${15 * k}`} dur="1.8s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.8;0" dur="1.8s" repeatCount="indefinite" />
+              </circle>
+            )}
+            <circle cx={p[0]} cy={p[1]} r={5.2 * k} fill={color} fillOpacity={0.3} stroke={color} strokeWidth={1.2 * k} />
+            <circle cx={p[0]} cy={p[1]} r={1.6 * k} fill="#fff" />
+            <text
+              x={p[0]}
+              y={p[1] - 8 * k}
+              textAnchor="middle"
+              style={{
+                fontFamily: "var(--font-sans), sans-serif",
+                fontSize: 8.5 * k,
+                fontWeight: "bold",
+                fill: isSel ? color : "rgba(255,255,255,0.75)",
+                paintOrder: "stroke",
+                stroke: "rgba(0,0,0,0.85)",
+                strokeWidth: 2.2 * k,
+                pointerEvents: "none",
+              }}
+            >
+              {plant.name}
+            </text>
+          </g>
+        );
+      })}
     </g>
   );
 }
@@ -630,6 +892,9 @@ export function NetworkMap({
     coordinates: US_CENTER,
     zoom: 1,
   });
+  const [railFilter, setRailFilter] = useState<"all" | "freight" | "passenger">("all");
+  const [powerFilter, setPowerFilter] = useState<"all" | "plants">("plants");
+
   const prefersReducedMotion = useReducedMotion();
 
   const featuredIds = useMemo(() => new Set(routes.map((r) => r.id)), [routes]);
@@ -683,11 +948,35 @@ export function NetworkMap({
     return list;
   }, [routes, backgroundNetwork, GEOMS, describe, bgEra, isRail, isPower, isWater, boldBg]);
 
-  const eraRoutes = useMemo(() => combinedRoutes.filter((r) => r.era === era), [combinedRoutes, era]);
+  const filteredCombinedRoutes = useMemo(() => {
+    let list = combinedRoutes;
+    if (isRail && era === "modern") {
+      if (railFilter === "freight") {
+        list = list.filter((r) => r.id !== "amtk");
+      } else if (railFilter === "passenger") {
+        list = list.filter((r) => r.id === "amtk");
+      }
+    }
+    return list;
+  }, [combinedRoutes, isRail, era, railFilter]);
+
+  const eraRoutes = useMemo(() => filteredCombinedRoutes.filter((r) => r.era === era), [filteredCombinedRoutes, era]);
+
   const selected = useMemo(
     () => eraRoutes.find((r) => r.id === selectedId) ?? null,
     [eraRoutes, selectedId],
   );
+
+  const selectedHub = useMemo(() => {
+    if (!isRail || era !== "modern") return null;
+    return RAIL_HUBS.find((h) => `hub-${h.id}` === selectedId) ?? null;
+  }, [selectedId, isRail, era]);
+
+  const selectedPlant = useMemo(() => {
+    if (!isPower || powerFilter !== "plants") return null;
+    return POWER_PLANTS.find((p) => `plant-${p.id}` === selectedId) ?? null;
+  }, [selectedId, isPower, powerFilter]);
+
   const selectedAadt = useMemo(() => {
     if (!selected || boldBg) return 0; // rail/power have no per-route traffic stat
     return GEOMS[selected.id.toUpperCase()]?.aadt ?? 0;
@@ -741,6 +1030,63 @@ export function NetworkMap({
                 );
               })}
             </div>
+            {isRail && era === "modern" && (
+              <div className="mt-4 flex flex-col gap-2">
+                <span className="font-sans text-[9px] font-bold uppercase tracking-[0.2em] text-white/35">
+                  {locale === "ro" ? "Tip Rețea" : "Network Filter"}
+                </span>
+                <div className="flex rounded-full border border-white/12 p-0.5 w-fit">
+                  {[
+                    { id: "all", label: locale === "ro" ? "Toate" : "All" },
+                    { id: "freight", label: locale === "ro" ? "Doar Marfă" : "Freight Only" },
+                    { id: "passenger", label: locale === "ro" ? "Pasageri" : "Passenger" },
+                  ].map((t) => (
+                    <button
+                      key={t.id}
+                      onClick={() => {
+                        setRailFilter(t.id as any);
+                        setSelectedId(null);
+                      }}
+                      className="rounded-full px-3.5 py-1 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all"
+                      style={{
+                        background: railFilter === t.id ? "rgba(255,255,255,0.9)" : "transparent",
+                        color: railFilter === t.id ? "#000" : "rgba(255,255,255,0.5)",
+                      }}
+                    >
+                      {t.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+            {isPower && (
+              <div className="mt-4 flex flex-col gap-2">
+                <span className="font-sans text-[9px] font-bold uppercase tracking-[0.2em] text-white/35">
+                  {locale === "ro" ? "Centrale Energie Curată" : "Clean Power Plants"}
+                </span>
+                <div className="flex rounded-full border border-white/12 p-0.5 w-fit">
+                  {[
+                    { id: "plants", label: locale === "ro" ? "Afișează centrale" : "Show Power Plants" },
+                    { id: "all", label: locale === "ro" ? "Doar linii" : "Lines Only" },
+                  ].map((t) => (
+                    <button
+                      key={t.id}
+                      onClick={() => {
+                        setPowerFilter(t.id as any);
+                        setSelectedId(null);
+                      }}
+                      className="rounded-full px-3.5 py-1 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all"
+                      style={{
+                        background: powerFilter === t.id ? "rgba(255,255,255,0.9)" : "transparent",
+                        color: powerFilter === t.id ? "#000" : "rgba(255,255,255,0.5)",
+                      }}
+                    >
+                      {t.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         )}
         <div className="flex flex-col items-start gap-3 md:items-end">
@@ -890,7 +1236,7 @@ export function NetworkMap({
                     />
                   ))}
                   <RoutesLayer
-                    routes={combinedRoutes}
+                    routes={filteredCombinedRoutes}
                     nodes={nodes}
                     era={era}
                     selectedId={selectedId}
@@ -902,6 +1248,9 @@ export function NetworkMap({
                     geoms={GEOMS}
                     heatCfg={heatCfg}
                     prominentBackground={boldBg && era === bgEra}
+                    variant={variant}
+                    railFilter={railFilter}
+                    powerFilter={powerFilter}
                   />
                 </>
               )}
@@ -919,7 +1268,91 @@ export function NetworkMap({
           Keyed remount (no AnimatePresence): exit-gated swaps deadlock under
           React 19 when the outgoing child never finishes its exit animation. */}
       <div className="mt-2 min-h-[150px] border-t border-white/[0.07] pt-6">
-        {selected ? (
+        {selectedHub ? (
+          <motion.div
+            key={`hub-${selectedHub.id}`}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="grid gap-6 md:grid-cols-12"
+          >
+            <div className="md:col-span-4">
+              <div className="mb-2 flex items-center gap-3">
+                <span className="h-[3px] w-10 rounded-full" style={{ background: "#E8B923" }} />
+                <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#E8B923]">
+                  {locale === "ro" ? "Nod Feroviar Major" : "Major Rail Hub"}
+                </span>
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-macro-display text-2xl font-bold tracking-tight text-white">
+                  {selectedHub.name}
+                </h3>
+                <p className="mt-1 font-sans text-[11px] uppercase tracking-[0.15em] text-white/40">
+                  {selectedHub.location}
+                </p>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-x-8 gap-y-3">
+                <div>
+                  <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30">
+                    {locale === "ro" ? "Operator" : "Operator / Owner"}
+                  </div>
+                  <div className="font-hero text-2xl text-[#E8B923]">
+                    {selectedHub.owner}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p className="font-macro-body text-base font-light leading-relaxed text-white/65 md:col-span-8 md:text-lg">
+              {selectedHub.description[locale]}
+            </p>
+          </motion.div>
+        ) : selectedPlant ? (
+          <motion.div
+            key={`plant-${selectedPlant.id}`}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="grid gap-6 md:grid-cols-12"
+          >
+            <div className="md:col-span-4">
+              <div className="mb-2 flex items-center gap-3">
+                <span className="h-[3px] w-10 rounded-full" style={{ background: PLANT_COLOR[selectedPlant.type] }} />
+                <span className="font-sans text-[10px] uppercase tracking-[0.2em]" style={{ color: PLANT_COLOR[selectedPlant.type] }}>
+                  {locale === "ro" ? "Producător Energie" : "Clean Power Station"}
+                </span>
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-macro-display text-2xl font-bold tracking-tight text-white">
+                  {selectedPlant.name}
+                </h3>
+                <p className="mt-1 font-sans text-[11px] uppercase tracking-[0.15em] text-white/40">
+                  {selectedPlant.location}
+                </p>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-x-8 gap-y-3">
+                <div>
+                  <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30">
+                    {locale === "ro" ? "Capacitate" : "Capacity"}
+                  </div>
+                  <div className="font-hero text-2xl" style={{ color: PLANT_COLOR[selectedPlant.type] }}>
+                    {selectedPlant.capacity}
+                  </div>
+                </div>
+                <div>
+                  <div className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/30">
+                    {locale === "ro" ? "Tip Resursă" : "Energy Source"}
+                  </div>
+                  <div className="font-hero text-2xl text-white/85 uppercase">
+                    {selectedPlant.type}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p className="font-macro-body text-base font-light leading-relaxed text-white/65 md:col-span-8 md:text-lg">
+              {selectedPlant.description[locale]}
+            </p>
+          </motion.div>
+        ) : selected ? (
           <motion.div
             key={selected.id}
             initial={{ opacity: 0, y: 8 }}
