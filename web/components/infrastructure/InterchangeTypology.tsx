@@ -163,11 +163,11 @@ const KINDS: Kind[] = [
     },
     diagram: (uid) => (
       <>
-        <Ribbon d="M110 8 V212" color="#b98f2a" w={12} flow glowId={`glow-steel-${uid}`} />
-        <Ribbon d="M164 92 C128 92 120 84 120 50" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M92 50 C92 84 84 92 50 92" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M56 128 C84 128 92 136 92 170" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
-        <Ribbon d="M128 170 C128 136 136 128 164 128" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M110 8 V212" color={STEEL} w={12} flow glowId={`glow-steel-${uid}`} />
+        <Ribbon d="M164 92 C134 92 128 86 128 56" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M92 56 C92 86 86 92 56 92" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M56 128 C86 128 92 134 92 164" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
+        <Ribbon d="M128 164 C128 134 134 128 164 128" color={RAMP} w={4.5} flow glowId={`glow-gold-${uid}`} />
         <Ribbon d="M8 110 H212" color={GOLD} w={14} flow glowId={`glow-gold-${uid}`} />
       </>
     ),
