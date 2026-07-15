@@ -872,6 +872,13 @@ export function NetworkMap({
         "northeast-corridor",
         "cardinal",
         "city-of-new-orleans",
+        "silver-meteor",
+        "silver-star",
+        "auto-train",
+        "palmetto",
+        "carolinian",
+        "adirondack",
+        "maple-leaf",
       ];
       if (railFilter === "freight") {
         list = list.filter((r) => !amtrakIds.includes(r.id));

@@ -32,7 +32,14 @@ def main():
         "Cardinal": "CARDINAL",
         "City Of New Orleans": "CITY-OF-NEW-ORLEANS",
         "Northeast Regional": "NORTHEAST-CORRIDOR",
-        "Acela": "NORTHEAST-CORRIDOR"
+        "Acela": "NORTHEAST-CORRIDOR",
+        "Silver Meteor": "SILVER-METEOR",
+        "Silver Star": "SILVER-STAR",
+        "Auto Train": "AUTO-TRAIN",
+        "Palmetto": "PALMETTO",
+        "Carolinian": "CAROLINIAN",
+        "Adirondack": "ADIRONDACK",
+        "Maple Leaf": "MAPLE-LEAF"
     }
 
     # Group segments (list of LngLat coordinates) by target route ID
