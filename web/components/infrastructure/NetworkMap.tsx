@@ -496,19 +496,35 @@ function RoutesLayer({
               aadt,
             };
           }
-          const d = buildPath(r.waypoints, projection);
+          const d = variant === "rail" ? buildPolyline(r.waypoints, projection) : buildPath(r.waypoints, projection);
           return { route: r, d, dotD: d, anchor: anchorFrom(r.waypoints), aadt };
         })
         .filter((r) => r.d),
-    [routes, era, projection, geoms, heatCfg],
+    [routes, era, projection, geoms, heatCfg, variant],
   );
+
+  const activeNodeIds = useMemo(() => {
+    if (variant === "rail") {
+      if (era === "golden") {
+        return new Set(["oma", "sac", "promontory"]);
+      }
+      if (era === "expansion") {
+        return new Set(["chi", "kc", "la", "sea", "hou", "no", "oma", "sac"]);
+      }
+      if (era === "modern") {
+        return new Set(["chi", "kc", "la", "sea", "hou", "no", "oma", "sac"]);
+      }
+    }
+    return null;
+  }, [variant, era]);
 
   const projectedNodes = useMemo(
     () =>
       nodes
+        .filter((n) => !activeNodeIds || activeNodeIds.has(n.id))
         .map((n) => ({ node: n, p: projection(n.coordinates) }))
         .filter((n): n is { node: MapNode; p: [number, number] } => Array.isArray(n.p)),
-    [nodes, projection],
+    [nodes, projection, activeNodeIds],
   );
 
   return (
