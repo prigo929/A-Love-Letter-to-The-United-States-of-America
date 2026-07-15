@@ -235,7 +235,7 @@ export default async function RailNetworkPage() {
             <NetworkMap
               locale={locale}
               eras={RAIL_ERAS}
-              routes={RAIL_ROUTES.filter((r) => r.era !== "modern")}
+              routes={RAIL_ROUTES.filter((r) => r.era !== "modern" || !["bnsf-transcon", "up-overland", "bnsf-northern", "up-sunset"].includes(r.id))}
               nodes={RAIL_NODES}
               accent="#E8B923"
               backgroundNetwork

@@ -19,6 +19,8 @@ import {
   HIGHWAY_ERAS,
   HIGHWAY_ROUTES,
   HIGHWAY_NODES,
+  RAIL_ROUTES,
+  RAIL_NODES,
 } from "@/lib/data/infrastructure-network-data";
 
 type MapTab = "aviation" | "ports" | "dams" | "power" | "rail" | "water" | "highway";
@@ -118,8 +120,8 @@ export function InfrastructureAtlas({ locale, labels }: { locale: "en" | "ro"; l
           <NetworkMap
             locale={locale}
             eras={[{ id: "modern", label: { en: "Rail Network", ro: "Căi Ferate" }, sublabel: { en: "Today", ro: "Prezent" } }]}
-            routes={[]}
-            nodes={[]}
+            routes={RAIL_ROUTES.filter((r) => r.era === "modern" && !["bnsf-transcon", "up-overland", "bnsf-northern", "up-sunset"].includes(r.id))}
+            nodes={RAIL_NODES}
             accent="#E8B923"
             backgroundNetwork
             variant="rail"
