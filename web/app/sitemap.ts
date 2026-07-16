@@ -17,6 +17,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/immigration-demographics",
     "/united-states",
     "/natural-resources",
+
+    // Art & Architecture
+    "/art-architecture",
+    "/art-architecture/american-realism",
+    "/art-architecture/hudson-river-school",
+    "/art-architecture/modern-pop-art",
+    "/art-architecture/skyscraper-revolution",
+    "/art-architecture/smithsonian-museums",
+
+    // Infrastructure
+    "/infrastructure",
+    "/infrastructure/rail-network",
+    "/infrastructure/power-grid",
+    "/infrastructure/maritime-ports",
+    "/infrastructure/aviation-hubs",
+    "/infrastructure/dams-bridges",
+    "/infrastructure/aqueducts-waterways",
+    "/infrastructure/highway-system",
     
     // Economy
     "/economy",
@@ -81,6 +99,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/science/inventions-1890-1945",
     "/science/inventions-post-1991",
     "/science/medicine-and-biotech",
+
+    // Literature & Philosophy
+    "/literature-philosophy",
+    "/literature-philosophy/american-novel",
+    "/literature-philosophy/oratory-poetry",
+    "/literature-philosophy/pragmatism",
+    "/literature-philosophy/sci-fi-myth",
+    "/literature-philosophy/transcendentalism",
     
     // Universities
     "/universities",
