@@ -554,6 +554,18 @@ export function MacroFact({ fact, detail, index }: { fact: string, detail?: stri
 // 7. InfrastructureBand — Cinematic backdrop with blur mask
 // ─────────────────────────────────────────────────────────────────────────────
 
+// ─────────────────────────────────────────────────────────────────────────────
+// FullBleed — breaks a child out of the centred max-w content column so it spans
+// the whole viewport. Used to give the interactive maps the full screen width.
+// Keeps a small gutter so controls and legends don't touch the screen edges.
+export function FullBleed({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <div className={`w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] px-6 md:px-12 ${className}`}>
+      {children}
+    </div>
+  );
+}
+
 export function InfrastructureBand({ imageSrc, imageAlt, children, fullBleed = false }: { imageSrc: string, imageAlt: string, children: React.ReactNode, fullBleed?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });

@@ -13,6 +13,7 @@ import {
   MacroStat,
   MacroFact,
   InfrastructureBand,
+  FullBleed,
 } from "@/components/shared/CinematicSystem";
 import { NetworkMap } from "@/components/infrastructure/NetworkMap";
 import { SerifLede, Reveal } from "@/components/infrastructure/InfraMotion";
@@ -232,17 +233,19 @@ export default async function RailNetworkPage() {
             <span className="macro-eyebrow">{copy.mapEyebrow}</span>
             <h2 className="macro-section-title mb-8 mt-6">{copy.mapTitle}</h2>
             <p className="macro-body mb-14 max-w-4xl">{copy.mapBody}</p>
-            <NetworkMap
-              locale={locale}
-              eras={RAIL_ERAS}
-              routes={RAIL_ROUTES.filter((r) => r.era !== "modern" || !["bnsf-transcon", "up-overland", "bnsf-northern", "up-sunset"].includes(r.id))}
-              nodes={RAIL_NODES}
-              accent="#E8B923"
-              backgroundNetwork
-              variant="rail"
-              backgroundGeoms={railData as unknown as Record<string, { segments: [number, number][][]; miles: number; tracks?: number }>}
-              labels={copy.mapLabels}
-            />
+            <FullBleed>
+  <NetworkMap
+                locale={locale}
+                eras={RAIL_ERAS}
+                routes={RAIL_ROUTES.filter((r) => r.era !== "modern" || !["bnsf-transcon", "up-overland", "bnsf-northern", "up-sunset"].includes(r.id))}
+                nodes={RAIL_NODES}
+                accent="#E8B923"
+                backgroundNetwork
+                variant="rail"
+                backgroundGeoms={railData as unknown as Record<string, { segments: [number, number][][]; miles: number; tracks?: number }>}
+                labels={copy.mapLabels}
+              />
+            </FullBleed>
           </section>
 
           {/* ── Chicago junction ── */}

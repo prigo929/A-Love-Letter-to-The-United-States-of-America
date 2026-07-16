@@ -412,6 +412,7 @@ function RoutesLayer({
   variant,
   railFilter,
   powerFilter,
+  center,
 }: {
   routes: NetworkRoute[];
   nodes: MapNode[];
@@ -429,9 +430,39 @@ function RoutesLayer({
   variant?: "interstate" | "rail" | "power" | "water";
   railFilter?: "all" | "freight" | "passenger";
   powerFilter?: "all" | "plants";
+  /** Map centre, used to cull anything off-screen. */
+  center?: LngLat;
 }) {
   const { projection } = useMapContext();
   const k = 1 / zoom; // counter-scale factor for screen-constant sizes
+
+  // ── Level-of-detail ─────────────────────────────────────────────────────────
+  // The full grid is 23.7k segments and 6.2k plants; drawing it all at every zoom
+  // is what made this map crawl. Reveal detail as you zoom in instead, and cull
+  // whatever sits outside the viewport.
+
+  /** Voltage bands: backbone always, the distribution mesh only when zoomed in. */
+  const bandVisible = (id: string) => {
+    const kv = powerRank(id);
+    if (kv >= 230 || kv === -1) return true; // 230 kV+ and HVDC: always
+    if (kv >= 115) return zoom >= 2.2; // 100-200 kV
+    return zoom >= 3.5; // <100 kV
+  };
+
+  /** Smallest plant worth drawing at this zoom. */
+  const plantMinMw = zoom >= 5 ? 0 : zoom >= 3.5 ? 50 : zoom >= 2 ? 200 : 500;
+
+  /** Visible window in projected space (viewBox units), with a small margin. */
+  const view = useMemo(() => {
+    if (!center) return null;
+    const c = projection(center);
+    if (!c) return null;
+    const hw = (940 / (2 * zoom)) * 1.15;
+    const hh = (540 / (2 * zoom)) * 1.15;
+    return { x0: c[0] - hw, x1: c[0] + hw, y0: c[1] - hh, y1: c[1] + hh };
+  }, [center, zoom, projection]);
+  const inView = (p: [number, number]) =>
+    !view || (p[0] >= view.x0 && p[0] <= view.x1 && p[1] >= view.y0 && p[1] <= view.y1);
 
   // Project the real operating fleet once (only when the plant layer is shown).
   const fleetDrawn = useMemo(() => {
@@ -521,7 +552,9 @@ function RoutesLayer({
         />
       )}
 
-      {drawn.map(({ route, d, dotD, aadt }, i) => {
+      {drawn
+        .filter(({ route }) => variant !== "power" || bandVisible(route.id))
+        .map(({ route, d, dotD, aadt }, i) => {
         const isFeatured = featuredIds.has(route.id);
         const isSelected = selectedId === route.id;
         const dimmed = selectedId !== null && !isSelected;
@@ -730,7 +763,9 @@ function RoutesLayer({
 
       {/* Power plant layer — the real operating fleet, sized by nameplate MW.
           Biggest drawn first so the small plants stay clickable on top. */}
-      {variant === "power" && powerFilter === "plants" && fleetDrawn.map(({ plant, p, i }) => {
+      {variant === "power" && powerFilter === "plants" && fleetDrawn
+        .filter(({ plant, p }) => plant.mw >= plantMinMw && inView(p))
+        .map(({ plant, p, i }) => {
         const id = `plant-${i}`;
         const isSel = selectedId === id;
         const dim = selectedId !== null && !isSel;
@@ -1270,6 +1305,7 @@ export function NetworkMap({
                     variant={variant}
                     railFilter={railFilter}
                     powerFilter={powerFilter}
+                    center={position.coordinates}
                   />
                 </>
               )}

@@ -14,6 +14,7 @@ import {
   MacroFact,
   InfrastructureBand,
   CountUp,
+  FullBleed,
 } from "@/components/shared/CinematicSystem";
 import { NetworkMap } from "@/components/infrastructure/NetworkMap";
 import { AnatomyDiagram } from "@/components/infrastructure/AnatomyDiagram";
@@ -354,18 +355,20 @@ export default async function HighwaySystemPage() {
             <span className="macro-eyebrow">{copy.mapEyebrow}</span>
             <h2 className="macro-section-title mb-8 mt-6">{copy.mapTitle}</h2>
             <p className="macro-body mb-14 max-w-4xl">{copy.mapBody}</p>
+            <FullBleed>
             <NetworkMap
-              locale={locale}
-              eras={HIGHWAY_ERAS}
-              routes={HIGHWAY_ROUTES}
-              nodes={HIGHWAY_NODES}
-              accent="#E8B923"
-              backgroundNetwork
-              enableHeatmap
-              hideEraToggle
-              initialEra="interstate"
-              labels={copy.mapLabels}
-            />
+                locale={locale}
+                eras={HIGHWAY_ERAS}
+                routes={HIGHWAY_ROUTES}
+                nodes={HIGHWAY_NODES}
+                accent="#E8B923"
+                backgroundNetwork
+                enableHeatmap
+                hideEraToggle
+                initialEra="interstate"
+                labels={copy.mapLabels}
+              />
+            </FullBleed>
             <p className="mt-5 max-w-4xl font-sans text-[11px] uppercase leading-relaxed tracking-[0.14em] text-white/45">
               {copy.trafficSource}{" "}
               <a

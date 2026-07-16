@@ -15,6 +15,7 @@ import {
   MacroStat,
   MacroFact,
   InfrastructureBand,
+  FullBleed,
 } from "@/components/shared/CinematicSystem";
 import { AirportMap } from "@/components/infrastructure/AirportMap";
 import { SerifLede, Reveal } from "@/components/infrastructure/InfraMotion";
@@ -232,7 +233,9 @@ export default async function AviationHubsPage() {
             <span className="macro-eyebrow">{isRo ? "Harta națională" : "The National Map"}</span>
             <h2 className="macro-section-title mb-6 mt-6">{copy.mapTitle}</h2>
             <p className="macro-body mb-14 max-w-4xl">{copy.mapIntro}</p>
+            <FullBleed>
             <AirportMap locale={locale} labels={copy.mapLabels} />
+            </FullBleed>
           </section>
 
           {/* ── Full-bleed band: O'Hare ── */}

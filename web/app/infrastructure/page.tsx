@@ -13,6 +13,7 @@ import {
   MacroStyles,
   MacroHero,
   InfrastructureBand,
+  FullBleed,
 } from "@/components/shared/CinematicSystem";
 import { InfrastructureAtlas } from "@/components/infrastructure/InfrastructureAtlas";
 import { SerifLede, Reveal, MegaTimeline } from "@/components/infrastructure/InfraMotion";
@@ -379,7 +380,9 @@ export default async function InfrastructureHubPage() {
             <span className="macro-eyebrow">{isRo ? "Hărți Interactive" : "Interactive Maps"}</span>
             <h2 className="macro-section-title mb-8 mt-6">{copy.atlasTitle}</h2>
             <p className="macro-body mb-14 max-w-4xl">{copy.atlasIntro}</p>
-            <InfrastructureAtlas locale={locale} labels={copy.atlasLabels} />
+            <FullBleed>
+              <InfrastructureAtlas locale={locale} labels={copy.atlasLabels} />
+            </FullBleed>
           </section>
 
           {/* ── Megaprojects band + chronology ── */}

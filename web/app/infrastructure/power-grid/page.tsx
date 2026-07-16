@@ -15,6 +15,7 @@ import {
   MacroStat,
   MacroFact,
   InfrastructureBand,
+  FullBleed,
 } from "@/components/shared/CinematicSystem";
 import { NetworkMap } from "@/components/infrastructure/NetworkMap";
 import { SerifLede, Reveal } from "@/components/infrastructure/InfraMotion";
@@ -219,19 +220,21 @@ export default async function PowerGridPage() {
             <span className="macro-eyebrow">{isRo ? "Harta rețelei" : "The Grid Map"}</span>
             <h2 className="macro-section-title mb-6 mt-6">{copy.mapTitle}</h2>
             <p className="macro-body mb-14 max-w-4xl">{copy.mapIntro}</p>
-            <NetworkMap
-              locale={locale}
-              eras={gridEra}
-              routes={[]}
-              nodes={[]}
-              accent="#E8B923"
-              backgroundNetwork
-              variant="power"
-              backgroundGeoms={powerData as unknown as Record<string, { segments: [number, number][][]; miles: number }>}
-              hideEraToggle
-              initialEra="grid"
-              labels={copy.mapLabels}
-            />
+            <FullBleed>
+  <NetworkMap
+                locale={locale}
+                eras={gridEra}
+                routes={[]}
+                nodes={[]}
+                accent="#E8B923"
+                backgroundNetwork
+                variant="power"
+                backgroundGeoms={powerData as unknown as Record<string, { segments: [number, number][][]; miles: number }>}
+                hideEraToggle
+                initialEra="grid"
+                labels={copy.mapLabels}
+              />
+            </FullBleed>
           </section>
 
           {/* ── Full-bleed band ── */}
