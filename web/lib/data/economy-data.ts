@@ -1479,3 +1479,128 @@ export const GDP_VS_LABOR_SECTORS: GdpLaborComparisonPoint[] = [
     jobsCount: 23.4,
   },
 ];
+
+// ─── Bond Market Composition ──────────────────────────────────────────────────
+// Source: SIFMA Research Quarterly – Fixed Income Outstanding, 1Q 2026
+// Total US fixed income outstanding: $50.5 trillion
+
+export interface BondMarketPoint {
+  category: string;
+  categoryRo: string;
+  value: number;  // in trillions USD
+  percentage: number;
+  color: string;
+  description: string;
+  descriptionRo: string;
+}
+
+export const BOND_MARKET_COMPOSITION: BondMarketPoint[] = [
+  {
+    category: "US Treasuries",
+    categoryRo: "Titluri de Trezorerie SUA",
+    value: 30.8,
+    percentage: 61.0,
+    color: "#E8B923",
+    description: "Bills, Notes & Bonds — the world's risk-free benchmark",
+    descriptionRo: "Bonuri, Note & Obligațiuni — reperul global fără risc",
+  },
+  {
+    category: "Corporate Bonds",
+    categoryRo: "Obligațiuni Corporative",
+    value: 11.7,
+    percentage: 23.2,
+    color: "#3B82F6",
+    description: "Investment grade & high yield — record issuance in 2025",
+    descriptionRo: "Investment grade & high yield — emisiuni record în 2025",
+  },
+  {
+    category: "Municipal Bonds",
+    categoryRo: "Obligațiuni Municipale",
+    value: 4.5,
+    percentage: 8.9,
+    color: "#10B981",
+    description: "State & local government debt, largely tax-exempt",
+    descriptionRo: "Datoria autorităților locale, în mare parte scutită de taxe",
+  },
+  {
+    category: "Federal Agency",
+    categoryRo: "Agenții Federale",
+    value: 2.1,
+    percentage: 4.2,
+    color: "#8B5CF6",
+    description: "Fannie Mae, Freddie Mac, FHLB & other agency securities",
+    descriptionRo: "Fannie Mae, Freddie Mac, FHLB și alte titluri de agenții",
+  },
+  {
+    category: "Commercial Paper",
+    categoryRo: "Hârtii Comerciale",
+    value: 1.4,
+    percentage: 2.7,
+    color: "#F97316",
+    description: "Short-term corporate funding instruments",
+    descriptionRo: "Instrumente de finanțare corporativă pe termen scurt",
+  },
+];
+
+// ─── R&D Spending International Comparison ────────────────────────────────────
+// Source: NSF/NCSES, OECD Main Science and Technology Indicators 2024–2025
+// Metric: GERD as % of GDP (Gross Domestic Expenditure on R&D)
+
+export interface RdSpendingPoint {
+  country: string;
+  countryRo: string;
+  value: number;   // GERD as % of GDP
+  highlight?: boolean;
+}
+
+export const RD_SPENDING_BY_COUNTRY: RdSpendingPoint[] = [
+  { country: "South Korea", countryRo: "Coreea de Sud", value: 4.93 },
+  { country: "Israel",      countryRo: "Israel",         value: 4.70 },
+  { country: "United States", countryRo: "Statele Unite", value: 3.50, highlight: true },
+  { country: "Sweden",     countryRo: "Suedia",          value: 3.40 },
+  { country: "Japan",      countryRo: "Japonia",         value: 3.27 },
+  { country: "Germany",    countryRo: "Germania",        value: 3.13 },
+  { country: "Austria",    countryRo: "Austria",         value: 3.24 },
+  { country: "Denmark",    countryRo: "Danemarca",       value: 3.10 },
+  { country: "China",      countryRo: "China",           value: 2.44 },
+  { country: "France",     countryRo: "Franța",          value: 2.20 },
+  { country: "United Kingdom", countryRo: "Marea Britanie", value: 1.72 },
+];
+
+// ─── Venture Capital Investment History ───────────────────────────────────────
+// Source: NVCA / PitchBook Venture Monitor
+// Annual US VC deployed (billion USD)
+
+export interface VCHistoryPoint {
+  year: number;
+  vc: number;  // billions USD
+}
+
+export const VC_INVESTMENT_HISTORY: VCHistoryPoint[] = [
+  { year: 2000, vc: 105 },
+  { year: 2001, vc: 40  },
+  { year: 2002, vc: 22  },
+  { year: 2003, vc: 19  },
+  { year: 2004, vc: 22  },
+  { year: 2005, vc: 29  },
+  { year: 2006, vc: 31  },
+  { year: 2007, vc: 35  },
+  { year: 2008, vc: 31  },
+  { year: 2009, vc: 20  },
+  { year: 2010, vc: 30  },
+  { year: 2011, vc: 33  },
+  { year: 2012, vc: 37  },
+  { year: 2013, vc: 44  },
+  { year: 2014, vc: 60  },
+  { year: 2015, vc: 77  },
+  { year: 2016, vc: 71  },
+  { year: 2017, vc: 85  },
+  { year: 2018, vc: 140 },
+  { year: 2019, vc: 136 },
+  { year: 2020, vc: 167 },
+  { year: 2021, vc: 348 },
+  { year: 2022, vc: 242 },
+  { year: 2023, vc: 171 },
+  { year: 2024, vc: 320 },
+  { year: 2025, vc: 413 },
+];

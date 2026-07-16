@@ -14,11 +14,13 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { VCBarChart, UnicornPieChart } from "@/components/data/VCCharts";
+import { VCHistoryChart } from "@/components/data/VCHistoryChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
   VC_BY_COUNTRY,
   UNICORNS_BY_COUNTRY,
+  VC_INVESTMENT_HISTORY,
   getStartupTimeline,
   getStartupEcosystems,
   getTopVcFirms,
@@ -131,6 +133,11 @@ export default async function StartupsVCPage() {
           numbersTitle: "În cifre",
           insightsEyebrow: "Avantaje structurale",
           quoteTitle: "Co-fondator, Andreessen Horowitz — Menlo Park, California",
+          vcHistoryTitle: "Un sfert de secol de capital de risc american",
+          vcHistoryBody:
+            "Din 2000 până în 2025, capitalul de risc american a urmat o traiectorie parabolică. După explozia dot-com din 2000 (105Mld$) și contractarea care a urmat, ecosistemul și-a revenit și a crescut constant. Apoi a venit valul AI: în 2021 (348Mld$), în 2024 (320Mld$) și în 2025 (413Mld$) s-au stabilit record după record. Nici o altă țară nu atrage capital de risc la această scară.",
+          vcHistoryChartTitle:
+            "Investiții de venture capital în SUA (2000–2025, miliarde USD)",
           prevLink: "← Piețe de Capital",
           nextLink: "Dominația Dolarului →",
         }
@@ -170,6 +177,11 @@ export default async function StartupsVCPage() {
           numbersTitle: "By the Numbers",
           insightsEyebrow: "Structural advantages",
           quoteTitle: "Co-Founder, Andreessen Horowitz — Menlo Park, California",
+          vcHistoryTitle: "25 Years of American Risk Capital",
+          vcHistoryBody:
+            "From 2000 to 2025, US venture capital followed a parabolic trajectory. After the dot-com peak in 2000 ($105B) and subsequent contraction, the ecosystem recovered and grew steadily. Then came the AI wave: 2021 ($348B), 2024 ($320B), and 2025 ($413B) each set records. No other country attracts risk capital at this scale.",
+          vcHistoryChartTitle:
+            "US Venture Capital Investment (2000–2025, USD Billions)",
           prevLink: "← Capital Markets",
           nextLink: "Dollar Dominance →",
         };
@@ -220,6 +232,23 @@ export default async function StartupsVCPage() {
                 data={VC_BY_COUNTRY}
                 title={copy.vcChartTitle}
                 source="NVCA / Pitchbook 2026"
+              />
+            </div>
+          </section>
+
+          {/* VC History Chart */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.vcHistoryTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.vcHistoryBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <VCHistoryChart
+                data={VC_INVESTMENT_HISTORY}
+                title={copy.vcHistoryChartTitle}
+                source="NVCA / PitchBook Venture Monitor 2026"
               />
             </div>
           </section>

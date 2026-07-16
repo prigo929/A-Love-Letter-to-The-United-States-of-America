@@ -16,11 +16,13 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { SP500Chart } from "@/components/data/SP500Chart";
 import { MarketCapChart } from "@/components/data/DollarMarketCharts";
+import { BondMarketChart } from "@/components/data/BondMarketChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
   SP500_HISTORY,
   MARKET_CAP_BY_EXCHANGE,
+  BOND_MARKET_COMPOSITION,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -147,6 +149,10 @@ export default async function CapitalMarketsPage() {
             "Niciun indice nu este urmărit mai atent. Niciun indice nu este replicat mai larg. S&P 500 urmărește cele mai mari 500 de companii americane listate public — iar performanța lui este, de facto, fișa de evaluare a prosperității capitaliste globale. Din 1980, a generat randamente totale de peste 9.000%.",
           benchmarkChartTitle:
             "S&P 500 — 46 de ani de performanță a piețelor americane de capital",
+          bondTitle: "Piața obligațiunilor SUA — $50,5T",
+          bondBody:
+            "Cu titluri de creanță totale de 50,5 trilioane de dolari, piața obligațiunilor americane este cea mai mare și mai lichidă din lume. Titlurile de Trezorerie (30,8T $) stabilesc rata globală fără risc, iar obligațiunile corporative (11,7T $) au atins un volum record de emisiuni în 2025, alimentând expansiunea companiilor americane.",
+          bondChartTitle: "Piața Fixed Income a SUA — compoziție (1T 2026, sursa SIFMA)",
           exchangesTitle: "Marile burse ale Americii",
           estLabel: "Înființată",
           advantagePullLabel:
@@ -174,6 +180,10 @@ export default async function CapitalMarketsPage() {
             "No index is watched more closely. No index is replicated more widely. The S&P 500 tracks the 500 largest publicly traded US companies — and its performance is the world's de facto report card on capitalist prosperity. Since 1980, it has delivered total returns exceeding 9,000%.",
           benchmarkChartTitle:
             "S&P 500 — 46 Years of American Capital Market Performance",
+          bondTitle: "The US Bond Market — $50.5 Trillion",
+          bondBody:
+            "With $50.5 trillion in outstanding fixed income securities, the US bond market is the largest and most liquid in human history. US Treasuries ($30.8T) set the global risk-free rate — the anchor for every financial model on Earth. Corporate bonds ($11.7T) hit record issuance in 2025 as American companies tapped cheap capital to fund AI infrastructure and global expansion.",
+          bondChartTitle: "US Fixed Income Market — Composition (1Q 2026, SIFMA)",
           exchangesTitle: "America's Major Exchanges",
           estLabel: "Est.",
           advantagePullLabel:
@@ -240,6 +250,23 @@ export default async function CapitalMarketsPage() {
                 data={SP500_HISTORY}
                 title={copy.benchmarkChartTitle}
                 source="S&P Global / Yahoo Finance"
+              />
+            </div>
+          </section>
+
+          {/* US Bond Market */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.bondTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.bondBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <BondMarketChart
+                data={BOND_MARKET_COMPOSITION}
+                title={copy.bondChartTitle}
+                source="SIFMA Research Quarterly — Fixed Income Outstanding 1Q 2026"
               />
             </div>
           </section>

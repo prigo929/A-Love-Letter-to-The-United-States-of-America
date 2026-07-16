@@ -23,6 +23,7 @@ import { GdpDivergenceChart } from "@/components/data/GdpDivergenceChart";
 import { GdpExpendituresChart } from "@/components/data/GdpExpendituresChart";
 import { GdpGlobalComparisonChart } from "@/components/data/GdpGlobalComparisonChart";
 import { GdpLaborComparisonChart } from "@/components/data/GdpLaborComparisonChart";
+import { RdSpendingChart } from "@/components/data/RdSpendingChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -36,6 +37,7 @@ import {
   US_GDP_EXPENDITURES,
   US_VS_WORLD_GDP_HISTORY,
   GDP_VS_LABOR_SECTORS,
+  RD_SPENDING_BY_COUNTRY,
   type GdpDataPoint,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -227,6 +229,10 @@ export default async function GdpGrowthPage() {
           laborChartTitle: "Distribuția sectorială: Producție vs. Angajați",
           laborChartSubtitle: "Analiză comparativă a ponderii PIB-ului sectorial față de procentul din forța de muncă",
           laborSource: "Date combinate: BEA NIPA & BLS State of Employment 2026",
+          rdTitle: "Investiția în Inovație: Cheltuielile de C&D ca % din PIB",
+          rdBody: "Statele Unite investesc 3,50% din PIB în cercetare și dezvoltare — aproape 900 de miliarde de dolari anual. Aceasta le plasează pe locul 3 la nivel global în intensitatea C&D, dar pe locul 1 absolut în dolari absoluți. Puterea inovativă americană nu provine dintr-un program guvernamental central, ci dintr-un ecosistem de firme private, universități de top și startup-uri finanțate prin capital de risc care injectează capital în direcția celui mai mare randament.",
+          rdChartTitle: "Cheltuieli globale de C&D ca % din PIB (GERD, 2024–2025)",
+          rdSource: "Sursă: NSF/NCSES, OECD Main Science and Technology Indicators 2024–2025",
         }
       : {
           heroAlt: "New York City financial district",
@@ -301,6 +307,10 @@ export default async function GdpGrowthPage() {
           laborChartTitle: "Sector Allocation: Output vs. Employment",
           laborChartSubtitle: "Comparative analysis of sector GDP output share against labor force share",
           laborSource: "Combined Data: BEA NIPA & BLS State of Employment 2026",
+          rdTitle: "The Innovation Investment: R&D Spending as % of GDP",
+          rdBody: "The United States invests 3.50% of GDP in research and development — nearly $900 billion per year. This places the US 3rd globally in R&D intensity, but #1 in absolute dollars by a wide margin. American innovation firepower comes not from a centralized government program, but from a dense ecosystem of private firms, elite research universities, and venture-backed startups competing to deploy capital toward the highest return.",
+          rdChartTitle: "Global R&D Spending as % of GDP (GERD, 2024–2025)",
+          rdSource: "Source: NSF/NCSES, OECD Main Science and Technology Indicators 2024–2025",
         };
 
   return (
@@ -482,6 +492,22 @@ export default async function GdpGrowthPage() {
             </div>
           </section>
 
+          {/* R&D Spending */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.rdTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.rdBody}
+            </p>
+            <div className="my-24">
+              <RdSpendingChart
+                data={RD_SPENDING_BY_COUNTRY}
+                title={copy.rdChartTitle}
+                source={copy.rdSource}
+              />
+            </div>
+          </section>
 
           {/* State GDPs */}
           <section>
