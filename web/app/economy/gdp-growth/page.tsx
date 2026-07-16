@@ -24,6 +24,9 @@ import { GdpExpendituresChart } from "@/components/data/GdpExpendituresChart";
 import { GdpGlobalComparisonChart } from "@/components/data/GdpGlobalComparisonChart";
 import { GdpLaborComparisonChart } from "@/components/data/GdpLaborComparisonChart";
 import { RdSpendingChart } from "@/components/data/RdSpendingChart";
+import { GdpAnnualGrowthChart } from "@/components/data/GdpAnnualGrowthChart";
+import { ExportsByCategoryChart } from "@/components/data/ExportsByCategoryChart";
+import { LaborProductivityChart } from "@/components/data/LaborProductivityChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -38,6 +41,9 @@ import {
   US_VS_WORLD_GDP_HISTORY,
   GDP_VS_LABOR_SECTORS,
   RD_SPENDING_BY_COUNTRY,
+  US_ANNUAL_GDP_GROWTH,
+  US_EXPORTS_BY_CATEGORY,
+  LABOR_PRODUCTIVITY_COMPARISON,
   type GdpDataPoint,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -233,6 +239,18 @@ export default async function GdpGrowthPage() {
           rdBody: "Statele Unite investesc 3,50% din PIB în cercetare și dezvoltare — aproape 900 de miliarde de dolari anual. Aceasta le plasează pe locul 3 la nivel global în intensitatea C&D, dar pe locul 1 absolut în dolari absoluți. Puterea inovativă americană nu provine dintr-un program guvernamental central, ci dintr-un ecosistem de firme private, universități de top și startup-uri finanțate prin capital de risc care injectează capital în direcția celui mai mare randament.",
           rdChartTitle: "Cheltuieli globale de C&D ca % din PIB (GERD, 2024–2025)",
           rdSource: "Sursă: NSF/NCSES, OECD Main Science and Technology Indicators 2024–2025",
+          growthRateTitle: "Reziliența Anuală: Creșterea Reală a PIB-ului (1970–2025)",
+          growthRateBody: "Din 1970, economia americană a crescut în fiecare an, cu excepția a 8 recesiuni scurte definite de NBER. Ceea ce este remarcabil nu este că au existat recesiuni — toate economiile au — ci căt de rapid s-a recuperat SUA. COVID-19 a provocat o contracție de -2,2% în 2020; reboundul din 2021 a atins +5,8%, cel mai puternic avans în două decenii. Nicio altă economie de scara SUA nu a reușit aceeași recuperare.",
+          growthRateChartTitle: "Rata anuală de creștere a PIB-ului real al SUA (1970–2025)",
+          growthRateSource: "Surse: BEA NIPA, World Bank WDI | Recesiunile conform NBER",
+          exportsTitle: "Motorul Exportului: ce vinde America lumii",
+          exportsBody: "Deficitul comercial al SUA ascunde un adevăr important: Statele Unite exportă mărfuri de 2,18 trilioane de dolari pe an — de la petrol și gaze la avioane Boeing, semiconductori, produse farmaceutice și echipamente medicale. SUA sunt atât cel mai mare exportator mondial de petrol, cât și lider global în produse de înaltă tehnologie. Aceasta este o economie care produce pentru lume în sens literal.",
+          exportsChartTitle: "Topul categoriilor de export ale SUA (2025, miliarde USD)",
+          exportsSource: "Sursă: U.S. Census Bureau / BEA Raport FT-900 (2025 Annual)",
+          productivityTitle: "Productivitatea Muncii: SUA conduce toate marile economii",
+          productivityBody: "Măsurat în PIB pe oră lucrată ajustat cu puterea de cumpărare (PPP), americanul mediu produce 97,10 $/oră — mai mult decât Germania (93,8$), Franța (88,2$), Marea Britanie (78,1$) sau Japonia (56,3$). Aceasta este sursa structurală a salariilor americane ridicate: un muncitor mai productiv merită o plăti mai mare. Productivitatea superioară a SUA este rezultatul unei combinații unice de capital uman, investiții în tehnologie, piețe de capital flexibile și concurență intensă.",
+          productivityChartTitle: "PIB pe oră lucrată (USD PPP, 2024)",
+          productivitySource: "Sursă: OECD.Stat — GDP per Hour Worked, date 2024",
         }
       : {
           heroAlt: "New York City financial district",
@@ -311,6 +329,18 @@ export default async function GdpGrowthPage() {
           rdBody: "The United States invests 3.50% of GDP in research and development — nearly $900 billion per year. This places the US 3rd globally in R&D intensity, but #1 in absolute dollars by a wide margin. American innovation firepower comes not from a centralized government program, but from a dense ecosystem of private firms, elite research universities, and venture-backed startups competing to deploy capital toward the highest return.",
           rdChartTitle: "Global R&D Spending as % of GDP (GERD, 2024–2025)",
           rdSource: "Source: NSF/NCSES, OECD Main Science and Technology Indicators 2024–2025",
+          growthRateTitle: "Annual Resilience: Real GDP Growth Rate (1970–2025)",
+          growthRateBody: "Since 1970, the US economy has grown in every year except 8 short NBER-defined recessions. What's remarkable is not that recessions occurred — all economies have them — but how fast the US recovered. COVID-19 caused a -2.2% contraction in 2020; the 2021 rebound hit +5.8%, the strongest advance in two decades. No other economy at US scale has matched the same recovery speed.",
+          growthRateChartTitle: "US Annual Real GDP Growth Rate (1970–2025)",
+          growthRateSource: "Sources: BEA NIPA, World Bank WDI | Recessions per NBER",
+          exportsTitle: "The Export Engine: What America Sells the World",
+          exportsBody: "The US trade deficit obscures an important truth: the United States exports $2.18 trillion in goods per year — from oil and gas to Boeing aircraft, semiconductors, pharmaceuticals, and medical equipment. The US is simultaneously the world's largest oil exporter and a global leader in high-technology goods. This is an economy that literally produces for the world.",
+          exportsChartTitle: "Top US Goods Export Categories (2025, USD Billions)",
+          exportsSource: "Source: U.S. Census Bureau / BEA FT-900 Report (2025 Annual)",
+          productivityTitle: "Labor Productivity: The US Leads Every Major Economy",
+          productivityBody: "Measured by GDP per hour worked at purchasing power parity, the average American generates $97.10/hour — more than Germany ($93.8), France ($88.2), the UK ($78.1), or Japan ($56.3). This is the structural reason US wages are high: a more productive worker commands higher pay. America's productivity edge comes from a unique combination of human capital investment, technology deployment, deep capital markets, and intense competition.",
+          productivityChartTitle: "GDP per Hour Worked (USD PPP, 2024)",
+          productivitySource: "Source: OECD.Stat — GDP per Hour Worked, 2024 data",
         };
 
   return (
@@ -505,6 +535,57 @@ export default async function GdpGrowthPage() {
                 data={RD_SPENDING_BY_COUNTRY}
                 title={copy.rdChartTitle}
                 source={copy.rdSource}
+              />
+            </div>
+          </section>
+
+          {/* Annual GDP Growth Rate */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.growthRateTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.growthRateBody}
+            </p>
+            <div className="my-24">
+              <GdpAnnualGrowthChart
+                data={US_ANNUAL_GDP_GROWTH}
+                title={copy.growthRateChartTitle}
+                source={copy.growthRateSource}
+              />
+            </div>
+          </section>
+
+          {/* Export Engine */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.exportsTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.exportsBody}
+            </p>
+            <div className="my-24">
+              <ExportsByCategoryChart
+                data={US_EXPORTS_BY_CATEGORY}
+                title={copy.exportsChartTitle}
+                source={copy.exportsSource}
+              />
+            </div>
+          </section>
+
+          {/* Labor Productivity */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.productivityTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.productivityBody}
+            </p>
+            <div className="my-24">
+              <LaborProductivityChart
+                data={LABOR_PRODUCTIVITY_COMPARISON}
+                title={copy.productivityChartTitle}
+                source={copy.productivitySource}
               />
             </div>
           </section>

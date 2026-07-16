@@ -1604,3 +1604,118 @@ export const VC_INVESTMENT_HISTORY: VCHistoryPoint[] = [
   { year: 2024, vc: 320 },
   { year: 2025, vc: 413 },
 ];
+
+// ─── US Annual Real GDP Growth Rate (1970–2025) ───────────────────────────────
+// Source: BEA National Income and Product Accounts (NIPA) / World Bank WDI
+// Real GDP % change year-over-year (chained 2017 dollars).
+// Recession years (NBER-defined) are flagged for visual highlighting.
+
+export interface GdpGrowthRatePoint {
+  year: number;
+  growth: number;   // % YoY real GDP change
+  recession: boolean;
+}
+
+export const US_ANNUAL_GDP_GROWTH: GdpGrowthRatePoint[] = [
+  { year: 1970, growth:  0.2, recession: true  },
+  { year: 1971, growth:  3.3, recession: false },
+  { year: 1972, growth:  5.3, recession: false },
+  { year: 1973, growth:  5.6, recession: false },
+  { year: 1974, growth: -0.5, recession: true  },
+  { year: 1975, growth: -0.2, recession: true  },
+  { year: 1976, growth:  5.4, recession: false },
+  { year: 1977, growth:  4.6, recession: false },
+  { year: 1978, growth:  5.5, recession: false },
+  { year: 1979, growth:  3.2, recession: false },
+  { year: 1980, growth: -0.3, recession: true  },
+  { year: 1981, growth:  2.5, recession: true  },
+  { year: 1982, growth: -1.8, recession: true  },
+  { year: 1983, growth:  4.6, recession: false },
+  { year: 1984, growth:  7.2, recession: false },
+  { year: 1985, growth:  4.2, recession: false },
+  { year: 1986, growth:  3.5, recession: false },
+  { year: 1987, growth:  3.5, recession: false },
+  { year: 1988, growth:  4.2, recession: false },
+  { year: 1989, growth:  3.7, recession: false },
+  { year: 1990, growth:  1.9, recession: true  },
+  { year: 1991, growth: -0.1, recession: true  },
+  { year: 1992, growth:  3.5, recession: false },
+  { year: 1993, growth:  2.8, recession: false },
+  { year: 1994, growth:  4.0, recession: false },
+  { year: 1995, growth:  2.7, recession: false },
+  { year: 1996, growth:  3.8, recession: false },
+  { year: 1997, growth:  4.4, recession: false },
+  { year: 1998, growth:  4.5, recession: false },
+  { year: 1999, growth:  4.8, recession: false },
+  { year: 2000, growth:  4.1, recession: false },
+  { year: 2001, growth:  1.0, recession: true  },
+  { year: 2002, growth:  1.7, recession: false },
+  { year: 2003, growth:  2.9, recession: false },
+  { year: 2004, growth:  3.8, recession: false },
+  { year: 2005, growth:  3.5, recession: false },
+  { year: 2006, growth:  2.8, recession: false },
+  { year: 2007, growth:  2.0, recession: false },
+  { year: 2008, growth:  0.1, recession: true  },
+  { year: 2009, growth: -2.6, recession: true  },
+  { year: 2010, growth:  2.7, recession: false },
+  { year: 2011, growth:  1.5, recession: false },
+  { year: 2012, growth:  2.3, recession: false },
+  { year: 2013, growth:  1.8, recession: false },
+  { year: 2014, growth:  2.5, recession: false },
+  { year: 2015, growth:  3.1, recession: false },
+  { year: 2016, growth:  1.7, recession: false },
+  { year: 2017, growth:  2.3, recession: false },
+  { year: 2018, growth:  2.9, recession: false },
+  { year: 2019, growth:  2.3, recession: false },
+  { year: 2020, growth: -2.2, recession: true  },
+  { year: 2021, growth:  5.8, recession: false },
+  { year: 2022, growth:  1.9, recession: false },
+  { year: 2023, growth:  2.9, recession: false },
+  { year: 2024, growth:  2.8, recession: false },
+  { year: 2025, growth:  2.4, recession: false },
+];
+
+// ─── US Exports by Category (2025) ───────────────────────────────────────────
+// Source: U.S. Census Bureau / BEA FT-900 Report (2025 Annual)
+// Top export categories by value, illustrating depth and diversity of US exports.
+
+export interface ExportCategoryPoint {
+  category: string;
+  categoryRo: string;
+  value: number;   // billions USD
+  emoji: string;
+}
+
+export const US_EXPORTS_BY_CATEGORY: ExportCategoryPoint[] = [
+  { category: "Energy & Fuels",         categoryRo: "Energie & Combustibili",        value: 309, emoji: "⚡" },
+  { category: "Machinery & Computers",  categoryRo: "Utilaje & Computere",           value: 284, emoji: "⚙️" },
+  { category: "Electrical Equipment",   categoryRo: "Echipamente Electrice",         value: 226, emoji: "🔌" },
+  { category: "Aircraft & Aerospace",   categoryRo: "Aviație & Spațial",             value: 164, emoji: "✈️" },
+  { category: "Precious Metals & Gold", categoryRo: "Metale Prețioase & Aur",        value: 149, emoji: "🥇" },
+  { category: "Vehicles",               categoryRo: "Autovehicule",                  value: 131, emoji: "🚗" },
+  { category: "Medical & Optical Inst.",categoryRo: "Aparatură Medicală & Optică",   value: 106, emoji: "🔬" },
+  { category: "Pharmaceuticals",        categoryRo: "Produse Farmaceutice",          value: 120, emoji: "💊" },
+];
+
+// ─── Labor Productivity: US vs Peers ─────────────────────────────────────────
+// Source: OECD.Stat – GDP per hour worked, current USD PPP (2024 data)
+// The US leads all major economies in output per hour worked.
+
+export interface ProductivityPoint {
+  country: string;
+  countryRo: string;
+  value: number;   // USD PPP per hour worked
+  highlight?: boolean;
+}
+
+export const LABOR_PRODUCTIVITY_COMPARISON: ProductivityPoint[] = [
+  { country: "United States", countryRo: "Statele Unite",  value: 97.1, highlight: true },
+  { country: "Germany",       countryRo: "Germania",       value: 93.8 },
+  { country: "France",        countryRo: "Franța",         value: 88.2 },
+  { country: "Canada",        countryRo: "Canada",         value: 75.3 },
+  { country: "United Kingdom",countryRo: "Marea Britanie", value: 78.1 },
+  { country: "Italy",         countryRo: "Italia",         value: 70.4 },
+  { country: "Japan",         countryRo: "Japonia",        value: 56.3 },
+  { country: "South Korea",   countryRo: "Coreea de Sud",  value: 54.6 },
+  { country: "China",         countryRo: "China",          value: 28.1 },
+];
