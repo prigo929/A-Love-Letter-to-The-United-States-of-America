@@ -558,9 +558,9 @@ export function MacroFact({ fact, detail, index }: { fact: string, detail?: stri
 // FullBleed — breaks a child out of the centred max-w content column so it spans
 // the whole viewport. Used to give the interactive maps the full screen width.
 // Keeps a small gutter so controls and legends don't touch the screen edges.
-export function FullBleed({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+export function FullBleed({ children, className = "", noPadding = false }: { children: React.ReactNode; className?: string; noPadding?: boolean }) {
   return (
-    <div className={`w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] px-6 md:px-12 ${className}`}>
+    <div className={`w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] ${noPadding ? "px-0" : "px-6 md:px-12"} ${className}`}>
       {children}
     </div>
   );

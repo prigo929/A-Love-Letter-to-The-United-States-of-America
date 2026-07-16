@@ -374,17 +374,15 @@ export default async function InfrastructureHubPage() {
               <Reveal delay={0.12}><p className="macro-body">{copy.thesisP2}</p></Reveal>
             </div>
           </section>
-
           {/* ── Infrastructure Atlas ── */}
-          <section>
-            <span className="macro-eyebrow">{isRo ? "Hărți Interactive" : "Interactive Maps"}</span>
-            <h2 className="macro-section-title mb-8 mt-6">{copy.atlasTitle}</h2>
-            <p className="macro-body mb-14 max-w-4xl">{copy.atlasIntro}</p>
-            <FullBleed>
+          <FullBleed noPadding>
+            <section>
+              <span className="macro-eyebrow px-6 md:px-12 block">{isRo ? "Hărți Interactive" : "Interactive Maps"}</span>
+              <h2 className="macro-section-title mb-8 mt-6 px-6 md:px-12">{copy.atlasTitle}</h2>
+              <p className="macro-body mb-14 max-w-4xl px-6 md:px-12">{copy.atlasIntro}</p>
               <InfrastructureAtlas locale={locale} labels={copy.atlasLabels} />
-            </FullBleed>
-          </section>
-
+            </section>
+          </FullBleed>
           {/* ── Megaprojects band + chronology ── */}
           <InfrastructureBand imageSrc={SITE_IMAGES.infraHooverAerial} imageAlt={copy.bandAlt} fullBleed>
             <h2 className="macro-section-title mb-6">{copy.bandTitle}</h2>

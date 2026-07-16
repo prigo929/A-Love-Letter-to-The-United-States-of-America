@@ -54,9 +54,9 @@ export function InfrastructureAtlas({ locale, labels }: { locale: "en" | "ro"; l
   ];
 
   return (
-    <div className="w-full rounded-3xl border border-white/5 bg-white/[0.02] p-6 md:p-8">
+    <div className="w-full border-y border-white/5 bg-white/[0.02] py-8 px-0">
       {/* Tabs list */}
-      <div className="mb-6 flex flex-wrap gap-2 border-b border-white/5 pb-6">
+      <div className="mb-6 flex flex-wrap gap-2 border-b border-white/5 pb-6 px-6 md:px-12">
         {tabs.map((tab) => {
           const active = activeTab === tab.id;
           return (
@@ -77,7 +77,7 @@ export function InfrastructureAtlas({ locale, labels }: { locale: "en" | "ro"; l
       </div>
 
       {/* Map descriptions */}
-      <div className="mb-8">
+      <div className="mb-8 px-6 md:px-12">
         <h3 className="font-macro-display text-xl font-bold tracking-tight text-white mb-2">
           {labels[activeTab].title}
         </h3>
@@ -87,7 +87,7 @@ export function InfrastructureAtlas({ locale, labels }: { locale: "en" | "ro"; l
       </div>
 
       {/* Render selected map */}
-      <div className="relative overflow-hidden rounded-2xl bg-black/40 border border-white/5 p-4">
+      <div className="relative w-full">
         {activeTab === "aviation" && (
           <AirportMap locale={locale} labels={labels.aviationLabels} />
         )}

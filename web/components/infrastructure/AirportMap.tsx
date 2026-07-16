@@ -376,7 +376,7 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
       </div>
 
       {/* Map area with zoom controls */}
-      <div className="relative w-full overflow-hidden rounded-xl border border-white/5 bg-[#050505]">
+      <div className="relative w-full overflow-hidden">
         <div className="absolute right-3 top-3 z-10 flex flex-col gap-1.5">
           {[
             { sym: "+", act: () => zoomBy(1.7), aria: "Zoom in" },

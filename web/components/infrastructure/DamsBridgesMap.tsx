@@ -177,7 +177,7 @@ export function DamsBridgesMap({ locale, labels }: { locale: "en" | "ro"; labels
         </span>
       </div>
 
-      <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-[#050505]">
+      <div className="relative w-full overflow-hidden">
         {/* Floating Zoom Controls */}
         <div className="absolute right-4 top-4 z-10 flex flex-col gap-1.5">
           {[
