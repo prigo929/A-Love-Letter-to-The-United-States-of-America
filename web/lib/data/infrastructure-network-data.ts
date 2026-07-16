@@ -769,6 +769,272 @@ export const RAIL_ROUTES: NetworkRoute[] = [
       ro: "Conectând New York cu Toronto, această linie internațională traversează statul New York și trece granița pe la Cascada Niagara.",
     },
   },
+  {
+    id: "pacific-surfliner",
+    era: "modern",
+    name: { en: "Amtrak — Pacific Surfliner", ro: "Amtrak — Pacific Surfliner" },
+    color: "#22d3ee",
+    waypoints: [C.sanDiego, C.losAngeles, [-119.83, 34.42], [-120.62, 35.28]],
+    endpoints: { en: "San Diego ⇄ San Luis Obispo", ro: "San Diego ⇄ San Luis Obispo" },
+    lengthLabel: "350 mi",
+    year: "2000",
+    description: {
+      en: "Amtrak's second busiest route, hugs the Southern California coastline between San Diego and San Luis Obispo, offering stunning ocean views.",
+      ro: "A doua cea mai aglomerată rută Amtrak, șerpuiește de-a lungul coastei Californiei de Sud între San Diego și San Luis Obispo."
+    },
+  },
+  {
+    id: "san-joaquins",
+    era: "modern",
+    name: { en: "Amtrak — San Joaquins", ro: "Amtrak — San Joaquins" },
+    color: "#22d3ee",
+    waypoints: [C.oakland, C.sacramento, C.stockton, [-119.78, 36.74], [-119.01, 35.37]],
+    endpoints: { en: "Oakland / Sacramento ⇄ Bakersfield", ro: "Oakland / Sacramento ⇄ Bakersfield" },
+    lengthLabel: "361 mi",
+    year: "1974",
+    description: {
+      en: "A vital regional service running through California's Central Valley, connecting major agricultural cities with the San Francisco Bay Area and Sacramento.",
+      ro: "Un serviciu regional vital prin Valea Centrală a Californiei, care conectează marile orașe agricole cu San Francisco și Sacramento."
+    },
+  },
+  {
+    id: "amtrak-cascades",
+    era: "modern",
+    name: { en: "Amtrak — Cascades", ro: "Amtrak — Cascades" },
+    color: "#22d3ee",
+    waypoints: [[-122.3, 49.2], C.seattle, C.portlandOR, [-123.08, 44.05]],
+    endpoints: { en: "Vancouver, BC ⇄ Seattle ⇄ Eugene", ro: "Vancouver, BC ⇄ Seattle ⇄ Eugene" },
+    lengthLabel: "467 mi",
+    year: "1999",
+    description: {
+      en: "An international corridor in the Pacific Northwest linking British Columbia, Washington, and Oregon along the foot of the Cascade Mountains.",
+      ro: "Un coridor internațional din Pacificul de Nord-Vest care leagă Columbia Britanică, Washington și Oregon pe la poalele Munților Cascade."
+    },
+  },
+  {
+    id: "capitol-corridor",
+    era: "modern",
+    name: { en: "Amtrak — Capitol Corridor", ro: "Amtrak — Capitol Corridor" },
+    color: "#22d3ee",
+    waypoints: [[-121.89, 37.33], C.oakland, C.sacramento],
+    endpoints: { en: "San Jose ⇄ Oakland ⇄ Sacramento", ro: "San Jose ⇄ Oakland ⇄ Sacramento" },
+    lengthLabel: "172 mi",
+    year: "1991",
+    description: {
+      en: "A high-frequency commuter corridor connecting northern California's major economic hubs, from the Silicon Valley to the state capitol in Sacramento.",
+      ro: "Un coridor de navetă de înaltă frecvență care conectează nodurile economice majore din nordul Californiei, de la Silicon Valley la capitala statului."
+    },
+  },
+  {
+    id: "downeaster",
+    era: "modern",
+    name: { en: "Amtrak — Downeaster", ro: "Amtrak — Downeaster" },
+    color: "#22d3ee",
+    waypoints: [C.boston, C.portlandME, [-69.8, 43.9]],
+    endpoints: { en: "Boston ⇄ Portland ⇄ Brunswick, ME", ro: "Boston ⇄ Portland ⇄ Brunswick, ME" },
+    lengthLabel: "145 mi",
+    year: "2001",
+    description: {
+      en: "Connecting Boston's North Station with the coast of New Hampshire and Maine, providing scenic service to coastal communities and college towns.",
+      ro: "Conectează Boston (North Station) cu coasta de est din New Hampshire și Maine, servind comunitățile pitorești din zonă."
+    },
+  },
+  {
+    id: "hiawatha-service",
+    era: "modern",
+    name: { en: "Amtrak — Hiawatha", ro: "Amtrak — Hiawatha" },
+    color: "#22d3ee",
+    waypoints: [C.chicago, C.milwaukee],
+    endpoints: { en: "Chicago ⇄ Milwaukee", ro: "Chicago ⇄ Milwaukee" },
+    lengthLabel: "86 mi",
+    year: "1989",
+    description: {
+      en: "Amtrak's busiest route in the Midwest, carrying commuters and travelers hourly between the downtown hubs of Chicago and Milwaukee.",
+      ro: "Cea mai aglomerată rută Amtrak din Midwest, purtând călătorii oră de oră între centrele orașelor Chicago și Milwaukee."
+    },
+  },
+  {
+    id: "keystone-service",
+    era: "modern",
+    name: { en: "Amtrak — Keystone Service", ro: "Amtrak — Keystone Service" },
+    color: "#22d3ee",
+    waypoints: [[-76.88, 40.26], C.philadelphia, C.nyc],
+    endpoints: { en: "Harrisburg ⇄ Philadelphia ⇄ New York", ro: "Harrisburg ⇄ Philadelphia ⇄ New York" },
+    lengthLabel: "195 mi",
+    year: "1971",
+    description: {
+      en: "A fully electrified corridor serving as the backbone of Pennsylvania intercity transit, running frequently between Harrisburg and Philadelphia.",
+      ro: "Un coridor complet electrificat care servește ca o coloană vertebrală a tranzitului din statul Pennsylvania, rulând frecvent între Harrisburg și Philadelphia."
+    },
+  },
+  {
+    id: "wolverine",
+    era: "modern",
+    name: { en: "Amtrak — Wolverine", ro: "Amtrak — Wolverine" },
+    color: "#22d3ee",
+    waypoints: [C.chicago, C.southBend, C.toledo, [-83.05, 42.33]],
+    endpoints: { en: "Chicago ⇄ Detroit ⇄ Pontiac, MI", ro: "Chicago ⇄ Detroit ⇄ Pontiac, MI" },
+    lengthLabel: "304 mi",
+    year: "1971",
+    description: {
+      en: "A higher-speed Midwest corridor connecting Chicago with Detroit and Pontiac, operating on upgraded tracks allowing up to 110 mph travel.",
+      ro: "Un coridor de mare viteză din Midwest care conectează Chicago de Detroit și Pontiac, rulând pe linii modernizate."
+    },
+  },
+  {
+    id: "piedmont",
+    era: "modern",
+    name: { en: "Amtrak — Piedmont", ro: "Amtrak — Piedmont" },
+    color: "#22d3ee",
+    waypoints: [[-78.64, 35.78], C.charlotte],
+    endpoints: { en: "Raleigh ⇄ Charlotte", ro: "Raleigh ⇄ Charlotte" },
+    lengthLabel: "173 mi",
+    year: "1995",
+    description: {
+      en: "A state-supported regional train service running multiple daily round trips through North Carolina's booming urban crescent.",
+      ro: "Un serviciu regional subvenționat de stat, cu multiple curse zilnice tur-retur prin semiluna urbană din Carolina de Nord."
+    },
+  },
+  {
+    id: "lincoln-service",
+    era: "modern",
+    name: { en: "Amtrak — Lincoln Service", ro: "Amtrak — Lincoln Service" },
+    color: "#22d3ee",
+    waypoints: [C.chicago, C.stLouis],
+    endpoints: { en: "Chicago ⇄ St. Louis", ro: "Chicago ⇄ St. Louis" },
+    lengthLabel: "284 mi",
+    year: "2006",
+    description: {
+      en: "A high-speed rail corridor connecting Chicago to St. Louis, operating at speeds of up to 110 mph on upgraded tracks.",
+      ro: "Un coridor feroviar de mare viteză care conectează Chicago de St. Louis, rulând cu până la 177 km/h."
+    },
+  },
+  {
+    id: "missouri-river-runner",
+    era: "modern",
+    name: { en: "Amtrak — Missouri River Runner", ro: "Amtrak — Missouri River Runner" },
+    color: "#22d3ee",
+    waypoints: [C.stLouis, C.kansasCity],
+    endpoints: { en: "St. Louis ⇄ Kansas City", ro: "St. Louis ⇄ Kansas City" },
+    lengthLabel: "283 mi",
+    year: "2009",
+    description: {
+      en: "Connecting Missouri's two major urban centers along the path of the historic Missouri River, passing through Jefferson City.",
+      ro: "Conectează cele două mari centre urbane din Missouri pe lângă albia istorică a râului Missouri, trecând prin Jefferson City."
+    },
+  },
+  {
+    id: "borealis",
+    era: "modern",
+    name: { en: "Amtrak — Borealis", ro: "Amtrak — Borealis" },
+    color: "#22d3ee",
+    waypoints: [C.chicago, C.stPaul],
+    endpoints: { en: "Chicago ⇄ St. Paul", ro: "Chicago ⇄ St. Paul" },
+    lengthLabel: "411 mi",
+    year: "2024",
+    description: {
+      en: "Amtrak's newest regional train connecting Chicago to St. Paul via Milwaukee, offering a convenient daytime schedule along the Mississippi River.",
+      ro: "Cel mai nou tren regional de la Amtrak, conectând Chicago de St. Paul prin Milwaukee și oferind o cursă de zi de-a lungul râului Mississippi."
+    },
+  },
+  {
+    id: "hartford-line",
+    era: "modern",
+    name: { en: "Amtrak — Hartford Line", ro: "Amtrak — Hartford Line" },
+    color: "#22d3ee",
+    waypoints: [[-72.93, 41.30], [-72.67, 41.76], [-71.06, 42.36]],
+    endpoints: { en: "New Haven ⇄ Springfield", ro: "New Haven ⇄ Springfield" },
+    lengthLabel: "62 mi",
+    year: "2018",
+    description: {
+      en: "A regional corridor connecting Connecticut and Massachusetts, providing high-frequency service in the New Haven–Hartford–Springfield Valley.",
+      ro: "Un coridor regional ce conectează statele Connecticut și Massachusetts, servind valea New Haven–Hartford–Springfield."
+    },
+  },
+  {
+    id: "ethan-allen-express",
+    era: "modern",
+    name: { en: "Amtrak — Ethan Allen Express", ro: "Amtrak — Ethan Allen Express" },
+    color: "#22d3ee",
+    waypoints: [C.nyc, C.albany, [-73.18, 44.48]],
+    endpoints: { en: "New York ⇄ Burlington, VT", ro: "New York ⇄ Burlington, VT" },
+    lengthLabel: "311 mi",
+    year: "1996",
+    description: {
+      en: "A scenic route connecting New York City with Rutland and Burlington, Vermont, winding through the Hudson Valley and the Green Mountains.",
+      ro: "O rută pitorească de la New York spre Rutland și Burlington, Vermont, trecând prin valea Hudson și Munții Verzi."
+    },
+  },
+  {
+    id: "vermonter",
+    era: "modern",
+    name: { en: "Amtrak — Vermonter", ro: "Amtrak — Vermonter" },
+    color: "#22d3ee",
+    waypoints: [C.washington, C.nyc, [-72.23, 44.93]],
+    endpoints: { en: "Washington ⇄ St. Albans, VT", ro: "Washington ⇄ St. Albans, VT" },
+    lengthLabel: "611 mi",
+    year: "1995",
+    description: {
+      en: "A scenic long-distance train running from Washington, D.C., north through the Northeast megalopolis and into the heart of Vermont's mountains.",
+      ro: "Un tren pitoresc de lung parcurs care merge de la Washington, D.C. spre nord, prin megalopolisul de nord-est, direct în inima munților din Vermont."
+    },
+  },
+  {
+    id: "brightline",
+    era: "modern",
+    name: { en: "Brightline Florida", ro: "Brightline Florida" },
+    color: "#f59e0b",
+    waypoints: [C.miami, [-80.06, 26.71], [-81.30, 28.43]],
+    endpoints: { en: "Miami ⇄ Orlando", ro: "Miami ⇄ Orlando" },
+    lengthLabel: "235 mi",
+    year: "2018",
+    description: {
+      en: "The first privately funded intercity passenger rail system in the U.S. in over a century, operating eco-friendly trains up to 125 mph between South Florida and Orlando.",
+      ro: "Primul sistem privat de căi ferate interurbane din SUA în peste un secol, operând trenuri de mare viteză ecologice între Florida de Sud și Orlando."
+    },
+  },
+  {
+    id: "caltrain",
+    era: "modern",
+    name: { en: "Caltrain Commuter Rail", ro: "Trenul Navetiști Caltrain" },
+    color: "#f87171",
+    waypoints: [C.sanFrancisco, [-121.89, 37.33]],
+    endpoints: { en: "San Francisco ⇄ San Jose", ro: "San Francisco ⇄ San Jose" },
+    lengthLabel: "77 mi",
+    year: "1987",
+    description: {
+      en: "Serving the San Francisco Peninsula and Silicon Valley, Caltrain is a crucial commuter system, recently electrified to allow cleaner, faster, and more frequent service.",
+      ro: "Servind Peninsula San Francisco și Silicon Valley, Caltrain este o cale ferată navetă crucială, recent electrificată pentru a oferi un serviciu mai rapid și ecologic."
+    },
+  },
+  {
+    id: "metra",
+    era: "modern",
+    name: { en: "Metra Chicago", ro: "Metra Chicago" },
+    color: "#c084fc",
+    waypoints: [C.chicago, [-88.2, 42.0]],
+    endpoints: { en: "Chicago ⇄ Suburbs", ro: "Chicago ⇄ Suburbii" },
+    lengthLabel: "488 mi",
+    year: "1984",
+    description: {
+      en: "The comprehensive commuter rail system of the Chicago metropolitan area, operating 11 distinct lines and serving more than 100 communities from downtown terminals.",
+      ro: "Sistemul cuprinzător de căi ferate pentru navetiști din zona metropolitană Chicago, operând 11 linii și servind peste 100 de comunități."
+    },
+  },
+  {
+    id: "nj-transit",
+    era: "modern",
+    name: { en: "NJ Transit Rail", ro: "Calea Ferată NJ Transit" },
+    color: "#f472b6",
+    waypoints: [C.nyc, C.philadelphia],
+    endpoints: { en: "New York / Newark ⇄ New Jersey Suburbs", ro: "New York / Newark ⇄ Suburbiile New Jersey" },
+    lengthLabel: "530 mi",
+    year: "1979",
+    description: {
+      en: "One of the nation's busiest commuter railroads, connecting northern and central New Jersey suburbs with Manhattan's Penn Station and Philadelphia.",
+      ro: "Una dintre cele mai aglomerate rețele de navetă din țară, conectând nordul și centrul statului New Jersey cu gara Penn Station din Manhattan și Philadelphia."
+    },
+  },
 ];
 
 export const RAIL_NODES: MapNode[] = [

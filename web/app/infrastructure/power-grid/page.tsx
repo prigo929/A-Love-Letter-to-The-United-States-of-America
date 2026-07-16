@@ -54,7 +54,7 @@ export default async function PowerGridPage() {
         heroStats: [
           { value: "3", label: "interconexiuni uriașe — Est, Vest și Texas" },
           { value: "60 Hz", label: "frecvența pe care întreaga rețea o menține, în fiecare secundă" },
-          { value: "~11,000", label: "centrale electrice la scară industrială care alimentează rețeaua" },
+          { value: "14,420", label: "centrale electrice în funcțiune, însumând 1.399 GW instalați" },
         ],
         storyTitle: "O singură mașină, de mărimea unui continent",
         lede: "Electricitatea nu poate fi depozitată la scară. Deci rețeaua trebuie să producă, în fiecare clipă, exact cât consumă un continent — nici mai mult, nici mai puțin.",
@@ -65,7 +65,7 @@ export default async function PowerGridPage() {
         numbersTitle: "Anatomia rețelei",
         numbersStats: [
           { value: "500 kV+", label: "tensiunea arterelor superioare ale coloanei vertebrale (500 kV și 765 kV)" },
-          { value: "~380,000 mi", label: "de linii de transport de înaltă tensiune (69 kV - 765 kV)" },
+          { value: "389,000 mi", label: "de linii de transport de înaltă tensiune (69 kV - 765 kV)" },
           { value: "5,447", label: "substații electrice majore conectate în rețea" },
         ],
         mapTitle: "Rețeaua electrică și substațiile",
@@ -115,7 +115,7 @@ export default async function PowerGridPage() {
         heroStats: [
           { value: "3", label: "vast interconnections — East, West, and Texas" },
           { value: "60 Hz", label: "the frequency the entire grid holds, every second" },
-          { value: "~11,000", label: "utility-scale power plants feeding the grid" },
+          { value: "14,420", label: "operating power plants, totalling 1,399 GW of capacity" },
         ],
         storyTitle: "One Machine, the Size of a Continent",
         lede: "Electricity cannot be stored at scale. So the grid must generate, at every instant, exactly as much as a continent consumes — no more, no less.",
@@ -126,7 +126,7 @@ export default async function PowerGridPage() {
         numbersTitle: "The Anatomy of the Grid",
         numbersStats: [
           { value: "500 kV+", label: "the voltage of the backbone's highest arteries (500 kV & 765 kV)" },
-          { value: "~380,000 mi", label: "of high-voltage transmission line (69 kV to 765 kV)" },
+          { value: "389,000 mi", label: "of high-voltage transmission line (69 kV to 765 kV)" },
           { value: "5,447", label: "major electrical substations mapping the grid nodes" },
         ],
         mapTitle: "The Transmission Grid & Substations",

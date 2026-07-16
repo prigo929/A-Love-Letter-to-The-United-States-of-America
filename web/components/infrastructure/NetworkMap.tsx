@@ -27,6 +27,7 @@ import {
 } from "react-simple-maps";
 import { GEO_URL } from "@/lib/data/us-geo";
 import interstatesData from "@/lib/data/interstates-simplified.json";
+import powerPlantsData from "@/lib/data/power-plants.json";
 import { InterstateShield, MapShield } from "@/components/infrastructure/InterstateShield";
 import type { NetworkEra, NetworkRoute, MapNode, LngLat } from "@/lib/data/infrastructure-network-data";
 
@@ -136,7 +137,33 @@ const PLANT_COLOR: Record<string, string> = {
   nuclear: "#a78bfa",
   wind: "#34d399",
   solar: "#fbbf24",
+  gas: "#fb923c",
+  coal: "#94a3b8",
+  oil: "#a16207",
+  storage: "#22d3ee",
+  biomass: "#84cc16",
+  geothermal: "#f472b6",
+  other: "#64748b",
 };
+
+// ── The real operating fleet (EIA generator inventory, rolled up to plants) ────
+// 6,196 utility-scale plants (>=10 MW) covering 98% of national capacity.
+interface FleetPlant {
+  n: string; // name
+  s: string; // state
+  lng: number;
+  lat: number;
+  mw: number;
+  f: string; // fuel
+}
+const FLEET = (powerPlantsData as { plants: FleetPlant[] }).plants;
+export const FLEET_META = (powerPlantsData as { meta: Record<string, unknown> }).meta;
+/** Circle radius from nameplate capacity (area ∝ MW). */
+const plantRadius = (mw: number) => 0.9 + Math.sqrt(mw) / 13;
+/** Curated notes for the landmark plants, matched by name onto the real data. */
+const PLANT_NOTES: Record<string, { en: string; ro: string }> = Object.fromEntries(
+  POWER_PLANTS.map((p) => [p.name.toLowerCase(), p.description]),
+);
 
 // ─── AADT traffic heat scale ──────────────────────────────────────────────────
 // Average daily traffic spans from ~5k (rural Alaska) to ~300k (urban cores), so
@@ -250,14 +277,24 @@ function describeRail(key: string, locale: "en" | "ro") {
 }
 
 // Transmission voltage classes: name, colour (cool→hot by voltage), and role.
-const POWER_INFO: Record<string, { name: string; color: string; ehv: boolean }> = {
-  v765: { name: "500+ kV", color: "#783d19", ehv: true }, // dark brown/rust
-  v500: { name: "400-500 kV", color: "#d97706", ehv: true }, // orange/amber
-  v345: { name: "300-400 kV", color: "#eab308", ehv: true }, // yellow
-  v230: { name: "200-300 kV", color: "#22c55e", ehv: false }, // green
-  v115: { name: "100-200 kV", color: "#06b6d4", ehv: false }, // light blue
-  v69: { name: "<100 kV", color: "#8b5cf6", ehv: false }, // purple
-  vdc: { name: "HVDC", color: "#ec4899", ehv: true }, // pink/magenta
+// Voltage bands mirror the standard grid map legend (500+ → <100 kV), hue-ramped
+// hot-to-cool by voltage. `kv` drives legend order; HVDC sorts last.
+const POWER_INFO: Record<string, { name: string; color: string; ehv: boolean; kv: number }> = {
+  v765: { name: "500+ kV", color: "#ef4444", ehv: true, kv: 765 }, // red (brightened for the dark map)
+  v500: { name: "400-500 kV", color: "#d97706", ehv: true, kv: 500 }, // orange/amber
+  v345: { name: "300-400 kV", color: "#eab308", ehv: true, kv: 345 }, // yellow
+  v230: { name: "200-300 kV", color: "#22c55e", ehv: false, kv: 230 }, // green
+  v115: { name: "100-200 kV", color: "#06b6d4", ehv: false, kv: 115 }, // light blue
+  v69: { name: "<100 kV", color: "#8b5cf6", ehv: false, kv: 69 }, // purple
+  vdc: { name: "HVDC", color: "#ec4899", ehv: true, kv: -1 }, // pink/magenta
+};
+/** Legend rank: highest voltage first, HVDC last (matches the reference map). */
+const powerRank = (id: string) => POWER_INFO[id.toLowerCase()]?.kv ?? -99;
+/** Draw rank: low voltage underneath, so the EHV arteries read above the mesh.
+ *  HVDC sits with the high tier so its few long lines stay visible. */
+const powerDrawRank = (id: string) => {
+  const kv = POWER_INFO[id.toLowerCase()]?.kv ?? 0;
+  return kv === -1 ? 550 : kv;
 };
 function describePower(key: string, locale: "en" | "ro") {
   const info = POWER_INFO[key.toLowerCase()] ?? { name: key, color: "#94a3b8", ehv: false };
@@ -395,6 +432,13 @@ function RoutesLayer({
 }) {
   const { projection } = useMapContext();
   const k = 1 / zoom; // counter-scale factor for screen-constant sizes
+
+  // Project the real operating fleet once (only when the plant layer is shown).
+  const fleetDrawn = useMemo(() => {
+    if (variant !== "power" || powerFilter !== "plants") return [];
+    return FLEET.map((plant, i) => ({ plant, p: projection([plant.lng, plant.lat]), i }))
+      .filter((x): x is { plant: FleetPlant; p: [number, number]; i: number } => Array.isArray(x.p));
+  }, [variant, powerFilter, projection]);
 
   const substationPath = useMemo(() => {
     const pts = (geoms as any).substations as LngLat[] | undefined;
@@ -684,48 +728,51 @@ function RoutesLayer({
 
 
 
-      {/* Power Plants point layer */}
-      {variant === "power" && powerFilter === "plants" && POWER_PLANTS.map((plant) => {
-        const p = projection(plant.coordinates);
-        if (!p) return null;
-        const isSel = selectedId === `plant-${plant.id}`;
+      {/* Power plant layer — the real operating fleet, sized by nameplate MW.
+          Biggest drawn first so the small plants stay clickable on top. */}
+      {variant === "power" && powerFilter === "plants" && fleetDrawn.map(({ plant, p, i }) => {
+        const id = `plant-${i}`;
+        const isSel = selectedId === id;
         const dim = selectedId !== null && !isSel;
-        const color = PLANT_COLOR[plant.type] || "#fb923c";
+        const color = PLANT_COLOR[plant.f] || PLANT_COLOR.other;
+        const r = plantRadius(plant.mw) * k;
         return (
           <g
-            key={`plant-${plant.id}`}
+            key={id}
             style={{ opacity: dim ? 0.25 : 1, transition: "opacity 0.3s ease", cursor: "pointer" }}
-            onMouseEnter={() => onSelect(`plant-${plant.id}`)}
+            onMouseEnter={() => onSelect(id)}
             onClick={(e) => {
               e.stopPropagation();
-              onSelect(isSel ? null : `plant-${plant.id}`);
+              onSelect(isSel ? null : id);
             }}
           >
             {isSel && (
-              <circle cx={p[0]} cy={p[1]} r={6.5 * k} fill="none" stroke={color} strokeWidth={1 * k}>
-                <animate attributeName="r" values={`${6.5 * k};${15 * k}`} dur="1.8s" repeatCount="indefinite" />
+              <circle cx={p[0]} cy={p[1]} r={r} fill="none" stroke={color} strokeWidth={1 * k}>
+                <animate attributeName="r" values={`${r};${r * 2.6}`} dur="1.8s" repeatCount="indefinite" />
                 <animate attributeName="opacity" values="0.8;0" dur="1.8s" repeatCount="indefinite" />
               </circle>
             )}
-            <circle cx={p[0]} cy={p[1]} r={5.2 * k} fill={color} fillOpacity={0.3} stroke={color} strokeWidth={1.2 * k} />
-            <circle cx={p[0]} cy={p[1]} r={1.6 * k} fill="#fff" />
-            <text
-              x={p[0]}
-              y={p[1] - 8 * k}
-              textAnchor="middle"
-              style={{
-                fontFamily: "var(--font-sans), sans-serif",
-                fontSize: 8.5 * k,
-                fontWeight: "bold",
-                fill: isSel ? color : "rgba(255,255,255,0.75)",
-                paintOrder: "stroke",
-                stroke: "rgba(0,0,0,0.85)",
-                strokeWidth: 2.2 * k,
-                pointerEvents: "none",
-              }}
-            >
-              {plant.name}
-            </text>
+            <circle cx={p[0]} cy={p[1]} r={r} fill={color} fillOpacity={0.3} stroke={color} strokeWidth={0.9 * k} />
+            {/* Only the giants earn a label, or the map turns to soup */}
+            {plant.mw >= 2500 && (
+              <text
+                x={p[0]}
+                y={p[1] - r - 3 * k}
+                textAnchor="middle"
+                style={{
+                  fontFamily: "var(--font-sans), sans-serif",
+                  fontSize: 8 * k,
+                  fontWeight: "bold",
+                  fill: isSel ? color : "rgba(255,255,255,0.7)",
+                  paintOrder: "stroke",
+                  stroke: "rgba(0,0,0,0.85)",
+                  strokeWidth: 2.2 * k,
+                  pointerEvents: "none",
+                }}
+              >
+                {plant.n}
+              </text>
+            )}
           </g>
         );
       })}
@@ -819,6 +866,9 @@ export function NetworkMap({
       const id = key.toLowerCase();
       if (list.some((r) => r.id === id)) continue;
       const geom = GEOMS[key];
+      // Datasets can carry non-route entries alongside the geometry (the power
+      // grid ships a substation point list) — only routes have segments.
+      if (!geom || !Array.isArray(geom.segments)) continue;
       const en = describe(key, "en");
       const ro = describe(key, "ro");
       const miEn = geom.miles.toLocaleString("en-US");
@@ -854,6 +904,8 @@ export function NetworkMap({
         description,
       });
     }
+    // Draw the grid low-voltage-first so the EHV arteries land on top.
+    if (isPower) list.sort((a, b) => powerDrawRank(a.id) - powerDrawRank(b.id));
     return list;
   }, [routes, backgroundNetwork, GEOMS, describe, bgEra, isRail, isPower, isWater, boldBg]);
 
@@ -879,6 +931,25 @@ export function NetworkMap({
         "carolinian",
         "adirondack",
         "maple-leaf",
+        "pacific-surfliner",
+        "san-joaquins",
+        "amtrak-cascades",
+        "capitol-corridor",
+        "downeaster",
+        "hiawatha-service",
+        "keystone-service",
+        "wolverine",
+        "piedmont",
+        "lincoln-service",
+        "missouri-river-runner",
+        "borealis",
+        "hartford-line",
+        "ethan-allen-express",
+        "vermonter",
+        "brightline",
+        "caltrain",
+        "metra",
+        "nj-transit",
       ];
       if (railFilter === "freight") {
         list = list.filter((r) => !amtrakIds.includes(r.id));
@@ -898,10 +969,29 @@ export function NetworkMap({
 
 
 
+  // Resolve the selected plant out of the real EIA fleet, falling back to a
+  // generated blurb when it isn't one of the curated landmarks.
   const selectedPlant = useMemo(() => {
     if (!isPower || powerFilter !== "plants") return null;
-    return POWER_PLANTS.find((p) => `plant-${p.id}` === selectedId) ?? null;
-  }, [selectedId, isPower, powerFilter]);
+    const m = /^plant-(\d+)$/.exec(selectedId ?? "");
+    if (!m) return null;
+    const p = FLEET[Number(m[1])];
+    if (!p) return null;
+    const mwEn = p.mw.toLocaleString("en-US");
+    const mwRo = p.mw.toLocaleString("ro-RO");
+    return {
+      id: m[1],
+      name: p.n,
+      type: p.f,
+      location: p.s,
+      capacity: `${locale === "ro" ? mwRo : mwEn} MW`,
+      description:
+        PLANT_NOTES[p.n.toLowerCase()] ?? {
+          en: `A ${p.f} station in ${p.s}, carrying ${mwEn} MW of installed nameplate capacity (EIA generator inventory).`,
+          ro: `O centrală pe ${p.f} din ${p.s}, cu o capacitate instalată de ${mwRo} MW (inventarul de generatoare EIA).`,
+        },
+    };
+  }, [selectedId, isPower, powerFilter, locale]);
 
   const selectedAadt = useMemo(() => {
     if (!selected || boldBg) return 0; // rail/power have no per-route traffic stat
@@ -1066,6 +1156,9 @@ export function NetworkMap({
           // interstates: the featured corridors. rail/power: the background
           // networks themselves (owners / voltage classes) are the content.
           .filter((r) => featuredIds.has(r.id) || (boldBg && r.era === bgEra))
+          // power: order the bands 500+ → <100 kV (HVDC last), like the standard
+          // grid legend, rather than whatever order the dataset keys landed in.
+          .sort((a, b) => (isPower ? powerRank(b.id) - powerRank(a.id) : 0))
           .map((r) => {
             const dim = selectedId !== null && selectedId !== r.id;
             return (
@@ -1206,7 +1299,7 @@ export function NetworkMap({
               <div className="mb-2 flex items-center gap-3">
                 <span className="h-[3px] w-10 rounded-full" style={{ background: PLANT_COLOR[selectedPlant.type] }} />
                 <span className="font-sans text-[10px] uppercase tracking-[0.2em]" style={{ color: PLANT_COLOR[selectedPlant.type] }}>
-                  {locale === "ro" ? "Producător Energie" : "Clean Power Station"}
+                  {locale === "ro" ? "Centrală Electrică" : "Power Station"}
                 </span>
               </div>
               <div className="min-w-0">
