@@ -41,6 +41,14 @@ export interface GdpExpenditurePoint {
   color: string;
 }
 
+export interface GdpGlobalHistoryPoint {
+  year: number;
+  us: number;
+  china: number;
+  japan: number;
+  germany: number;
+}
+
 export interface GdpDataPoint {
   country: string;
   gdp: number; // USD Trillions
@@ -1399,4 +1407,14 @@ export const US_GDP_EXPENDITURES: GdpExpenditurePoint[] = [
     descriptionRo: "Balanța comercială (Exporturi minus Importuri). Reprezintă un deficit comercial substractiv.",
     color: "#6b7280", // Gray
   },
+];
+
+// ─── U.S. vs. Major Global Economies (Nominal GDP, USD Trillions, 1980–2026) ─
+export const US_VS_WORLD_GDP_HISTORY: GdpGlobalHistoryPoint[] = [
+  { year: 1980, us: 2.86, china: 0.31, japan: 1.11, germany: 0.95 },
+  { year: 1990, us: 5.96, china: 0.40, japan: 3.13, germany: 1.77 },
+  { year: 2000, us: 10.25, china: 1.21, japan: 4.97, germany: 1.95 },
+  { year: 2010, us: 14.99, china: 6.09, japan: 5.76, germany: 3.42 },
+  { year: 2020, us: 21.06, china: 14.69, japan: 5.04, germany: 3.89 },
+  { year: 2026, us: 32.40, china: 20.85, japan: 4.40, germany: 5.50 }, // projected
 ];

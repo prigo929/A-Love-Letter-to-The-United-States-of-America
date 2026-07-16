@@ -21,6 +21,7 @@ import { GdpBarChart } from "@/components/data/GdpBarChart";
 import { GdpSectorsChart } from "@/components/data/GdpSectorsChart";
 import { GdpDivergenceChart } from "@/components/data/GdpDivergenceChart";
 import { GdpExpendituresChart } from "@/components/data/GdpExpendituresChart";
+import { GdpGlobalComparisonChart } from "@/components/data/GdpGlobalComparisonChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -32,6 +33,7 @@ import {
   US_GDP_SECTORS,
   US_VS_G7_DIVERGENCE,
   US_GDP_EXPENDITURES,
+  US_VS_WORLD_GDP_HISTORY,
   type GdpDataPoint,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -213,6 +215,11 @@ export default async function GdpGrowthPage() {
           expendituresChartTitle: "Structura cheltuielilor PIB (2025/2026, % din PIB)",
           expendituresChartSubtitle: "Defalcarea standard a PIB după metoda cheltuielilor: C + I + G + NX",
           expendituresSource: "Biroul de Analiză Economică al SUA (BEA) 2026",
+          comparisonTitle: "Destine Divergente: SUA vs. Marile Economii",
+          comparisonBody: "În ultimii 45 de ani, harta economică globală s-a reconfigurat dramatic. În timp ce SUA au crescut constant de la 2,8 trilioane $ în 1980 la peste 32,4 trilioane $ în 2026, alte puteri au stagnat. De exemplu, în 1990, economia Japoniei reprezenta peste jumătate din cea a SUA (3,1T$ vs 5,9T$). Astăzi, Japonia a stagnat la 4,4 trilioane $, reprezentând mai puțin de 14% din economia americană. SUA și-au menținut supremația în fața ascensiunii Chinei și a stagnării Europei.",
+          comparisonChartTitle: "Evoluția PIB nominal (1980–2026, trilioane USD)",
+          comparisonChartSubtitle: "Comparație istorică între cele mai mari economii ale lumii",
+          comparisonSource: "Sursă date: Baza de date FMI World Economic Outlook (Aprilie 2026)",
         }
       : {
           heroAlt: "New York City financial district",
@@ -277,6 +284,11 @@ export default async function GdpGrowthPage() {
           expendituresChartTitle: "GDP Composition by Expenditures (2025/2026, % of GDP)",
           expendituresChartSubtitle: "The standard NIPA macroeconomic breakdown: C + I + G + NX",
           expendituresSource: "U.S. Bureau of Economic Analysis (BEA) 2026",
+          comparisonTitle: "Diverging Fortunes: U.S. vs. Global Peers",
+          comparisonBody: "Over the past 45 years, the global economic map has been dramatically redrawn. While the U.S. has grown steadily from $2.86T in 1980 to over $32.4T in 2026, other advanced economies have faced long-term stagnation. In 1990, Japan's economy was more than half the size of the U.S. ($3.13T vs $5.96T); today, it stands at $4.4T—less than 14% of the U.S. economy. The U.S. has sustained its leadership through a mix of dynamic technology investment and capital efficiency.",
+          comparisonChartTitle: "Nominal GDP Progression (1980–2026, USD Trillions)",
+          comparisonChartSubtitle: "Historical comparison of the world's leading economic powers",
+          comparisonSource: "Data Source: IMF World Economic Outlook Database (April 2026)",
         };
 
   return (
@@ -337,6 +349,24 @@ export default async function GdpGrowthPage() {
                 subtitle={copy.worldChartSubtitle}
                 source={`${GDP_SERIES_META.source} · ${GDP_SERIES_META.year} projection`}
                 valueLabel={copy.worldValueLabel}
+              />
+            </div>
+          </section>
+
+          {/* GDP Global Comparison */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.comparisonTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.comparisonBody}
+            </p>
+            <div className="my-24">
+              <GdpGlobalComparisonChart
+                data={US_VS_WORLD_GDP_HISTORY}
+                title={copy.comparisonChartTitle}
+                subtitle={copy.comparisonChartSubtitle}
+                source={copy.comparisonSource}
               />
             </div>
           </section>
