@@ -31,6 +31,16 @@ export interface GdpDivergencePoint {
   g7: number; // G7 ex-US Real GDP Index (2010=100)
 }
 
+export interface GdpExpenditurePoint {
+  component: string;
+  componentRo: string;
+  value: number; // in trillions USD
+  percentage: number;
+  description: string;
+  descriptionRo: string;
+  color: string;
+}
+
 export interface GdpDataPoint {
   country: string;
   gdp: number; // USD Trillions
@@ -1349,4 +1359,44 @@ export const US_VS_G7_DIVERGENCE: GdpDivergencePoint[] = [
   { year: 2022, us: 129.2, g7: 114.1 },
   { year: 2024, us: 134.6, g7: 116.8 },
   { year: 2026, us: 141.0, g7: 119.5 }, // projected
+];
+
+// ─── U.S. GDP by Expenditure Component (BEA 2025/2026) ────────────────────────
+export const US_GDP_EXPENDITURES: GdpExpenditurePoint[] = [
+  {
+    component: "Personal Consumption (C)",
+    componentRo: "Consum Personal (C)",
+    value: 22.1,
+    percentage: 68.2,
+    description: "Household spending on goods and services, powering the bulk of economic activity.",
+    descriptionRo: "Cheltuielile gospodăriilor pe bunuri și servicii, motorul principal al activității economice.",
+    color: "#E8B923", // Gold
+  },
+  {
+    component: "Gross Private Domestic Investment (I)",
+    componentRo: "Investiții Private Brute (I)",
+    value: 5.7,
+    percentage: 17.5,
+    description: "Business spending on machinery, factories, software, housing, and R&D.",
+    descriptionRo: "Cheltuielile companiilor pe echipamente, fabrici, software, locuințe și cercetare-dezvoltare.",
+    color: "#3b82f6", // Blue
+  },
+  {
+    component: "Government spending & investment (G)",
+    componentRo: "Cheltuieli și Investiții Publice (G)",
+    value: 5.7,
+    percentage: 17.6,
+    description: "Federal, state, and local spending on public services, infrastructure, and defense.",
+    descriptionRo: "Cheltuielile federale, statale și locale pe servicii publice, infrastructură și apărare.",
+    color: "#e11d48", // Red/Rose
+  },
+  {
+    component: "Net Exports of Goods & Services (NX)",
+    componentRo: "Exporturi Nete de Bunuri & Servicii (NX)",
+    value: -1.1,
+    percentage: -3.3,
+    description: "The trade balance (Exports minus Imports). Represents a subtractive trade deficit.",
+    descriptionRo: "Balanța comercială (Exporturi minus Importuri). Reprezintă un deficit comercial substractiv.",
+    color: "#6b7280", // Gray
+  },
 ];

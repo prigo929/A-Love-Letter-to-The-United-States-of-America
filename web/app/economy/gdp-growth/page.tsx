@@ -20,6 +20,7 @@ import { GdpHistoryChart } from "@/components/data/GdpHistoryChart";
 import { GdpBarChart } from "@/components/data/GdpBarChart";
 import { GdpSectorsChart } from "@/components/data/GdpSectorsChart";
 import { GdpDivergenceChart } from "@/components/data/GdpDivergenceChart";
+import { GdpExpendituresChart } from "@/components/data/GdpExpendituresChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -30,6 +31,7 @@ import {
   GDP_PER_CAPITA,
   US_GDP_SECTORS,
   US_VS_G7_DIVERGENCE,
+  US_GDP_EXPENDITURES,
   type GdpDataPoint,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -206,6 +208,11 @@ export default async function GdpGrowthPage() {
           divergenceChartTitle: "Indicele de creștere a PIB-ului real (2010 = 100)",
           divergenceChartSubtitle: "Comparație istorică între ritmul de creștere al SUA și media restului G7",
           divergenceSource: "Date de la OECD / FMI World Economic Outlook 2026",
+          expendituresTitle: "Cheltuielile PIB: Consumul ca Motor",
+          expendituresBody: "Din punct de vedere al utilizării resurselor, economia americană este condusă în mod covârșitor de consumul personal al gospodăriilor, care reprezintă 68,2% din PIB. Împreună cu investițiile private (17,5%) și cheltuielile publice (17,6%), acest sistem stimulează o cerere internă robustă. Deficitul comercial (-3,3%) reflectă absorbția masivă de importuri de către piața americană.",
+          expendituresChartTitle: "Structura cheltuielilor PIB (2025/2026, % din PIB)",
+          expendituresChartSubtitle: "Defalcarea standard a PIB după metoda cheltuielilor: C + I + G + NX",
+          expendituresSource: "Biroul de Analiză Economică al SUA (BEA) 2026",
         }
       : {
           heroAlt: "New York City financial district",
@@ -265,6 +272,11 @@ export default async function GdpGrowthPage() {
           divergenceChartTitle: "Real GDP Growth Index (2010 = 100)",
           divergenceChartSubtitle: "Historical tracking of U.S. real GDP growth vs. G7 average",
           divergenceSource: "OECD Data Explorer / IMF WEO 2026",
+          expendituresTitle: "GDP Expenditures: Consumer as the Engine",
+          expendituresBody: "By expenditure, the U.S. economy is powered by consumer spending (Personal Consumption Expenditures), which accounts for 68.2% of GDP. Adding gross private domestic investment (17.5%) and government spending (17.6%) drives a massive domestic market. The negative net exports balance (-3.3%) represents the U.S. consumer's vast absorption of global imports.",
+          expendituresChartTitle: "GDP Composition by Expenditures (2025/2026, % of GDP)",
+          expendituresChartSubtitle: "The standard NIPA macroeconomic breakdown: C + I + G + NX",
+          expendituresSource: "U.S. Bureau of Economic Analysis (BEA) 2026",
         };
 
   return (
@@ -370,6 +382,24 @@ export default async function GdpGrowthPage() {
                 title={copy.sectorsChartTitle}
                 subtitle={copy.sectorsChartSubtitle}
                 source={copy.sectorsSource}
+              />
+            </div>
+          </section>
+
+          {/* GDP Expenditure Components */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.expendituresTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.expendituresBody}
+            </p>
+            <div className="my-24">
+              <GdpExpendituresChart
+                data={US_GDP_EXPENDITURES}
+                title={copy.expendituresChartTitle}
+                subtitle={copy.expendituresChartSubtitle}
+                source={copy.expendituresSource}
               />
             </div>
           </section>
