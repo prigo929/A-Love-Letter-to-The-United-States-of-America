@@ -49,6 +49,14 @@ export interface GdpGlobalHistoryPoint {
   germany: number;
 }
 
+export interface GdpLaborComparisonPoint {
+  sector: string;
+  sectorRo: string;
+  gdpShare: number;
+  laborShare: number;
+  jobsCount: number;
+}
+
 export interface GdpDataPoint {
   country: string;
   gdp: number; // USD Trillions
@@ -1417,4 +1425,57 @@ export const US_VS_WORLD_GDP_HISTORY: GdpGlobalHistoryPoint[] = [
   { year: 2010, us: 14.99, china: 6.09, japan: 5.76, germany: 3.42 },
   { year: 2020, us: 21.06, china: 14.69, japan: 5.04, germany: 3.89 },
   { year: 2026, us: 32.40, china: 20.85, japan: 4.40, germany: 5.50 }, // projected
+];
+
+// ─── U.S. GDP vs. Labor Force Shares by Sector (BEA & BLS 2025/2026) ─────────
+export const GDP_VS_LABOR_SECTORS: GdpLaborComparisonPoint[] = [
+  {
+    sector: "Finance, Insurance & Real Estate",
+    sectorRo: "Finanțe, Asigurări & Imobiliare",
+    gdpShare: 21.0,
+    laborShare: 5.7,
+    jobsCount: 9.1,
+  },
+  {
+    sector: "Professional & Business Services",
+    sectorRo: "Servicii Profesionale & Afaceri",
+    gdpShare: 13.1,
+    laborShare: 14.5,
+    jobsCount: 23.0,
+  },
+  {
+    sector: "Manufacturing",
+    sectorRo: "Industrie Prelucrătoare",
+    gdpShare: 9.4,
+    laborShare: 8.2,
+    jobsCount: 13.0,
+  },
+  {
+    sector: "Health Care & Education",
+    sectorRo: "Sănătate & Servicii Sociale",
+    gdpShare: 8.9,
+    laborShare: 16.4,
+    jobsCount: 26.0,
+  },
+  {
+    sector: "Wholesale & Retail Trade",
+    sectorRo: "Comerț cu Amănuntul & Ridicata",
+    gdpShare: 12.6,
+    laborShare: 13.8,
+    jobsCount: 22.0,
+  },
+  {
+    sector: "Leisure & Hospitality",
+    sectorRo: "Horeca & Divertisment",
+    gdpShare: 4.2,
+    laborShare: 10.7,
+    jobsCount: 17.0,
+  },
+  {
+    sector: "Government (All Levels)",
+    sectorRo: "Sector Public & Guvern",
+    gdpShare: 14.6,
+    laborShare: 14.7,
+    jobsCount: 23.4,
+  },
 ];

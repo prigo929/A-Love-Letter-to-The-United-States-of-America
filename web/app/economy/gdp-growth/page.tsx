@@ -22,6 +22,7 @@ import { GdpSectorsChart } from "@/components/data/GdpSectorsChart";
 import { GdpDivergenceChart } from "@/components/data/GdpDivergenceChart";
 import { GdpExpendituresChart } from "@/components/data/GdpExpendituresChart";
 import { GdpGlobalComparisonChart } from "@/components/data/GdpGlobalComparisonChart";
+import { GdpLaborComparisonChart } from "@/components/data/GdpLaborComparisonChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -34,6 +35,7 @@ import {
   US_VS_G7_DIVERGENCE,
   US_GDP_EXPENDITURES,
   US_VS_WORLD_GDP_HISTORY,
+  GDP_VS_LABOR_SECTORS,
   type GdpDataPoint,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -220,6 +222,11 @@ export default async function GdpGrowthPage() {
           comparisonChartTitle: "Evoluția PIB nominal (1980–2026, trilioane USD)",
           comparisonChartSubtitle: "Comparație istorică între cele mai mari economii ale lumii",
           comparisonSource: "Sursă date: Baza de date FMI World Economic Outlook (Aprilie 2026)",
+          laborTitle: "PIB vs. Forța de Muncă: Productivitatea pe Sectoare",
+          laborBody: "Compararea ponderii unui sector în PIB (BEA) cu ponderea sa în forța de muncă (BLS) evidențiază diferențele structurale de productivitate. Sectorul financiar și cel imobiliar generează 21% din PIB utilizând doar 5,7% din totalul angajaților. În contrast, sectorul medical și cel educațional sunt mari creatori de locuri de muncă (16,4% din forța de muncă, reprezentând 26 de milioane de joburi) dar au o contribuție de doar 8,9% în PIB din cauza caracterului intensiv în muncă.",
+          laborChartTitle: "Distribuția sectorială: Producție vs. Angajați",
+          laborChartSubtitle: "Analiză comparativă a ponderii PIB-ului sectorial față de procentul din forța de muncă",
+          laborSource: "Date combinate: BEA NIPA & BLS State of Employment 2026",
         }
       : {
           heroAlt: "New York City financial district",
@@ -289,6 +296,11 @@ export default async function GdpGrowthPage() {
           comparisonChartTitle: "Nominal GDP Progression (1980–2026, USD Trillions)",
           comparisonChartSubtitle: "Historical comparison of the world's leading economic powers",
           comparisonSource: "Data Source: IMF World Economic Outlook Database (April 2026)",
+          laborTitle: "GDP vs. Labor: Productivity by Sector",
+          laborBody: "Comparing a sector's share of U.S. GDP (BEA) with its share of the labor force (BLS) highlights structural productivity differentials. The financial and real estate sectors generate 21% of total GDP while employing just 5.7% of total nonfarm payrolls. Conversely, healthcare and education are massive employment engines (16.4% of the workforce, representing 26 million employees) but contribute 8.9% of GDP due to their labor-intensive nature.",
+          laborChartTitle: "Sector Allocation: Output vs. Employment",
+          laborChartSubtitle: "Comparative analysis of sector GDP output share against labor force share",
+          laborSource: "Combined Data: BEA NIPA & BLS State of Employment 2026",
         };
 
   return (
@@ -412,6 +424,24 @@ export default async function GdpGrowthPage() {
                 title={copy.sectorsChartTitle}
                 subtitle={copy.sectorsChartSubtitle}
                 source={copy.sectorsSource}
+              />
+            </div>
+          </section>
+
+          {/* GDP vs Labor Force Sector Comparison */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.laborTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.laborBody}
+            </p>
+            <div className="my-24">
+              <GdpLaborComparisonChart
+                data={GDP_VS_LABOR_SECTORS}
+                title={copy.laborChartTitle}
+                subtitle={copy.laborChartSubtitle}
+                source={copy.laborSource}
               />
             </div>
           </section>
