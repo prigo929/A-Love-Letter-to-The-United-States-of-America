@@ -1719,3 +1719,171 @@ export const LABOR_PRODUCTIVITY_COMPARISON: ProductivityPoint[] = [
   { country: "South Korea",   countryRo: "Coreea de Sud",  value: 54.6 },
   { country: "China",         countryRo: "China",          value: 28.1 },
 ];
+
+// ─── US IPO Market History (2020–2025) ───────────────────────────────────────
+// Source: Renaissance Capital (IPOs with market cap ≥ $50M)
+// Tracks the full cycle: SPAC boom → rate hike freeze → AI-led rebound.
+
+export interface IPOMarketPoint {
+  year: number;
+  deals: number;       // number of IPOs
+  proceeds: number;    // USD billions raised
+}
+
+export const US_IPO_MARKET_HISTORY: IPOMarketPoint[] = [
+  { year: 2020, deals: 221, proceeds:  78.2 },
+  { year: 2021, deals: 397, proceeds: 142.4 },
+  { year: 2022, deals:  71, proceeds:   7.7 },
+  { year: 2023, deals: 109, proceeds:  19.5 },
+  { year: 2024, deals: 150, proceeds:  29.6 },
+  { year: 2025, deals: 202, proceeds:  44.0 },
+];
+
+// ─── US 10-Year Treasury Yield History (2000–2025) ───────────────────────────
+// Source: Federal Reserve FRED Series DGS10
+// Annual averages of daily constant maturity yields.
+// Shows the "risk-free rate" journey: from post-dot-com highs → ZIRP → taper → rate hike cycle.
+
+export interface TreasuryYieldPoint {
+  year: number;
+  yield: number;  // % annual average
+}
+
+export const US_TREASURY_10Y_HISTORY: TreasuryYieldPoint[] = [
+  { year: 2000, yield: 6.03 },
+  { year: 2001, yield: 5.02 },
+  { year: 2002, yield: 4.61 },
+  { year: 2003, yield: 4.01 },
+  { year: 2004, yield: 4.27 },
+  { year: 2005, yield: 4.29 },
+  { year: 2006, yield: 4.80 },
+  { year: 2007, yield: 4.63 },
+  { year: 2008, yield: 3.66 },
+  { year: 2009, yield: 3.26 },
+  { year: 2010, yield: 3.22 },
+  { year: 2011, yield: 2.78 },
+  { year: 2012, yield: 1.80 },
+  { year: 2013, yield: 2.35 },
+  { year: 2014, yield: 2.54 },
+  { year: 2015, yield: 2.14 },
+  { year: 2016, yield: 1.84 },
+  { year: 2017, yield: 2.33 },
+  { year: 2018, yield: 2.91 },
+  { year: 2019, yield: 2.14 },
+  { year: 2020, yield: 0.89 },
+  { year: 2021, yield: 1.45 },
+  { year: 2022, yield: 2.95 },
+  { year: 2023, yield: 4.05 },
+  { year: 2024, yield: 4.29 },
+  { year: 2025, yield: 4.35 },
+];
+
+// ─── Private Markets AUM by Firm ─────────────────────────────────────────────
+// Source: Company filings, Preqin, Bloomberg 2025
+// Top US alternative asset managers by AUM (USD billions).
+// US firms dominate global alternatives — 8 of the top 10 are American.
+
+export interface PrivateMarketsFirmPoint {
+  firm: string;
+  firmRo: string;
+  aum: number;      // USD billions
+  specialty: string;
+  specialtyRo: string;
+  highlight?: boolean;
+}
+
+export const PRIVATE_MARKETS_TOP_FIRMS: PrivateMarketsFirmPoint[] = [
+  {
+    firm: "Blackstone",
+    firmRo: "Blackstone",
+    aum: 1300,
+    specialty: "RE, PE, Credit, Infrastructure",
+    specialtyRo: "Imobiliare, PE, Credit, Infrastructură",
+    highlight: true,
+  },
+  {
+    firm: "KKR",
+    firmRo: "KKR",
+    aum: 744,
+    specialty: "Buyouts, Credit, Infrastructure",
+    specialtyRo: "Buyout-uri, Credit, Infrastructură",
+  },
+  {
+    firm: "Apollo Global",
+    firmRo: "Apollo Global",
+    aum: 650,
+    specialty: "Credit, PE, Real Assets",
+    specialtyRo: "Credit, PE, Active Reale",
+  },
+  {
+    firm: "Carlyle Group",
+    firmRo: "Carlyle Group",
+    aum: 425,
+    specialty: "Global PE, Credit",
+    specialtyRo: "PE Global, Credit",
+  },
+  {
+    firm: "Ares Management",
+    firmRo: "Ares Management",
+    aum: 464,
+    specialty: "Private Credit, RE, PE",
+    specialtyRo: "Credit Privat, Imobiliare, PE",
+  },
+  {
+    firm: "Warburg Pincus",
+    firmRo: "Warburg Pincus",
+    aum: 83,
+    specialty: "Growth Equity, Buyouts",
+    specialtyRo: "Growth Equity, Buyout-uri",
+  },
+];
+
+// ─── VC Deal Stage Breakdown (2025) ──────────────────────────────────────────
+// Source: NVCA / PitchBook Venture Monitor 2025 Full-Year
+// Shows where capital is concentrated: early-stage vs late-stage vs mega-deals.
+
+export interface VCDealStagePoint {
+  stage: string;
+  stageRo: string;
+  dealCount: number;    // number of rounds
+  capital: number;      // USD billions invested
+  color: string;
+}
+
+export const VC_DEAL_STAGE_BREAKDOWN: VCDealStagePoint[] = [
+  {
+    stage: "Angel / Pre-Seed",
+    stageRo: "Angel / Pre-Seed",
+    dealCount: 5800,
+    capital: 8.2,
+    color: "#E8B923",
+  },
+  {
+    stage: "Seed",
+    stageRo: "Seed (Sămânță)",
+    dealCount: 4200,
+    capital: 16.4,
+    color: "#60A5FA",
+  },
+  {
+    stage: "Early Venture (A/B)",
+    stageRo: "Venture Timpuriu (A/B)",
+    dealCount: 3100,
+    capital: 58.7,
+    color: "#34D399",
+  },
+  {
+    stage: "Late Venture (C/D+)",
+    stageRo: "Venture Târziu (C/D+)",
+    dealCount: 1400,
+    capital: 112.5,
+    color: "#A78BFA",
+  },
+  {
+    stage: "Mega-Rounds ($1B+)",
+    stageRo: "Runde Mega ($1Mld+)",
+    dealCount: 180,
+    capital: 217.2,
+    color: "#F97316",
+  },
+];

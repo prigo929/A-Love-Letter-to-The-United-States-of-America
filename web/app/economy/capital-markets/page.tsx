@@ -17,12 +17,15 @@ import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { SP500Chart } from "@/components/data/SP500Chart";
 import { MarketCapChart } from "@/components/data/DollarMarketCharts";
 import { BondMarketChart } from "@/components/data/BondMarketChart";
+import { TreasuryYieldChart } from "@/components/data/TreasuryYieldChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
   SP500_HISTORY,
   MARKET_CAP_BY_EXCHANGE,
   BOND_MARKET_COMPOSITION,
+  US_TREASURY_10Y_HISTORY,
+  PRIVATE_MARKETS_TOP_FIRMS,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -161,6 +164,13 @@ export default async function CapitalMarketsPage() {
           advantageTitle: "Avantajul piețelor de capital",
           insightsEyebrow: "De ce contează",
           quoteTitle: "Președinte și CEO, Berkshire Hathaway — Omaha, Nebraska",
+          treasuryTitle: "Trezoreria SUA: ancora gloțală a ratei fără risc",
+          treasuryBody:
+            "Fiecare model financiar de pe Pământ porneste de la randamentele Trezoreriei americane. De la maximele de 6% din era dot-com, la 0,89% în 2020 — minimul era ZIRP — şi revenirea la 4,35% în 2025 prin cel mai rapid ciclu de majorare a dobânzilor din ultimii 40 de ani. Nicio altă pieță de obligațiuni nu are aceeaşi adâncime, lichiditate sau relevanță globală.",
+          treasuryChartTitle: "Randamentul Trezoreriei SUA pe 10 ani (2000–2025)",
+          altTitle: "Piața Alternativă: Giganții Private Equity americani",
+          altBody:
+            "Dincolo de bursele publice, SUA domină piața globală a activelor alternative. Blackstone (1,3T$), KKR (744Mld$) şi Apollo (650Mld$) sunt doar cele mai mari trei. Aceste companii controlează fonduri de private equity, credit privat, infrastructură și imobiliare la o scară fără precedent — 8 din primele 10 firme de alternative din lume sunt americane.",
           prevLink: "← PIB și Dimensiune",
           nextLink: "Startup-uri și VC →",
         }
@@ -192,6 +202,13 @@ export default async function CapitalMarketsPage() {
           advantageTitle: "The Capital Markets Advantage",
           insightsEyebrow: "Why it matters",
           quoteTitle: "Chairman & CEO, Berkshire Hathaway — Omaha, Nebraska",
+          treasuryTitle: "The US Treasury: The World's Risk-Free Anchor",
+          treasuryBody:
+            "Every financial model on Earth starts with the US Treasury yield. From 6% highs in the dot-com era, to 0.89% in 2020's ZIRP experiment, to 4.35% in 2025 following the fastest rate-hiking cycle in 40 years. No other bond market has the same depth, liquidity, or global relevance. The 10-year yield is, literally, the price of money for the world.",
+          treasuryChartTitle: "US 10-Year Treasury Yield (2000–2025, FRED DGS10)",
+          altTitle: "The Alternative Markets: America's Private Capital Giants",
+          altBody:
+            "Beyond public equities, the US dominates global alternative assets. Blackstone ($1.3T), KKR ($744B), and Apollo ($650B) are the top three. These firms control private equity, private credit, infrastructure, and real estate funds at an unprecedented scale — 8 of the world's top 10 alternative asset managers are American.",
           prevLink: "← GDP & Scale",
           nextLink: "Startups & VC →",
         };
@@ -301,6 +318,59 @@ export default async function CapitalMarketsPage() {
                 </div>
               ))}
             </div>
+          </section>
+
+          {/* Treasury Yield History */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.treasuryTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.treasuryBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <TreasuryYieldChart
+                data={US_TREASURY_10Y_HISTORY}
+                title={copy.treasuryChartTitle}
+                source="Federal Reserve FRED — DGS10 (10-Year Treasury Constant Maturity)"
+              />
+            </div>
+          </section>
+
+          {/* Private Markets */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.altTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.altBody}
+            </p>
+            <div className="grid gap-8 mt-16 sm:grid-cols-2 lg:grid-cols-3">
+              {PRIVATE_MARKETS_TOP_FIRMS.map((firm) => (
+                <div
+                  key={firm.firm}
+                  className={`flex flex-col border-t pt-8 transition-colors duration-300 ${
+                    firm.highlight
+                      ? "border-[#E8B923]/60"
+                      : "border-white/10 hover:border-white/25"
+                  }`}
+                >
+                  <h3 className="font-macro-display text-4xl text-white mb-2">{firm.firm}</h3>
+                  <p
+                    className="font-macro-display text-3xl mb-4"
+                    style={{ color: firm.highlight ? "#E8B923" : "rgba(255,255,255,0.7)" }}
+                  >
+                    ${(firm.aum / 1000).toFixed(firm.aum >= 1000 ? 1 : 0)}{firm.aum >= 1000 ? "T" : "B"}
+                  </p>
+                  <p className="font-macro-body text-sm text-white/40 mt-auto">
+                    {locale === "ro" ? firm.specialtyRo : firm.specialty}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-8 text-right macro-metadata text-white/30">
+              {locale === "ro" ? "Sursă: Rapoarte companii, Preqin, Bloomberg 2025" : "Source: Company filings, Preqin, Bloomberg 2025"}
+            </p>
           </section>
 
           {/* Democratization of Capital Section */}

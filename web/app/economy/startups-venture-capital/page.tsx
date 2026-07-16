@@ -15,12 +15,16 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { VCBarChart, UnicornPieChart } from "@/components/data/VCCharts";
 import { VCHistoryChart } from "@/components/data/VCHistoryChart";
+import { IPOMarketChart } from "@/components/data/IPOMarketChart";
+import { VCDealStageChart } from "@/components/data/VCDealStageChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
   VC_BY_COUNTRY,
   UNICORNS_BY_COUNTRY,
   VC_INVESTMENT_HISTORY,
+  US_IPO_MARKET_HISTORY,
+  VC_DEAL_STAGE_BREAKDOWN,
   getStartupTimeline,
   getStartupEcosystems,
   getTopVcFirms,
@@ -138,6 +142,16 @@ export default async function StartupsVCPage() {
             "Din 2000 până în 2025, capitalul de risc american a urmat o traiectorie parabolică. După explozia dot-com din 2000 (105Mld$) și contractarea care a urmat, ecosistemul și-a revenit și a crescut constant. Apoi a venit valul AI: în 2021 (348Mld$), în 2024 (320Mld$) și în 2025 (413Mld$) s-au stabilit record după record. Nici o altă țară nu atrage capital de risc la această scară.",
           vcHistoryChartTitle:
             "Investiții de venture capital în SUA (2000–2025, miliarde USD)",
+          ipoTitle: "Piața IPO: Ciclul de Exitenţe Publice",
+          ipoBody:
+            "IPO-urile americane au înregistrat cel mai dramatic ciclu din istoria modernă: boom-ul SPAC din 2021 (397 IPO-uri, 142,4Mld$) urmat de cel mai sever declin din cauza ciclului de majorare al dobânzilor Fed (71 IPO-uri în 2022). Reboundul din 2025 (202 IPO-uri, 44Mld$) este alimentat de dominia în AI. Faptul că NASDAQ rămâne bursa preferată pentru IPO-uri tech este un avantaj structural american.",
+          ipoChartTitle: "Piața IPO din SUA (2020–2025): Deal-uri și Venituri",
+          ipoSource: "Sursă: Renaissance Capital — IPO-uri cu capitaliz. ≥ 50Mld$",
+          dealStageTitle: "Unde Merge Capitalul de Risc: Distribuția pe Etape (2025)",
+          dealStageBody:
+            "Mega-rundele de 1 miliard$ i-au depășit pe toți ceilalți: doar 180 de tranzacții au absorbit 217Mld$ — mai mult decât toate celelalte etape combinate. Acest lucru reflectă concentrarea structurala a capitalului de risc în ‘AI winners’ și în starturi technologice late-stage. Start-up-urile timpurii primeșc mai puțin în termeni absoluti, dar mult mai mult în număr de deal-uri.",
+          dealStageChartTitle: "Distribuția Capitalului de Risc pe Etape de Investiție (2025)",
+          dealStageSource: "Sursă: NVCA / PitchBook Venture Monitor 2025",
           prevLink: "← Piețe de Capital",
           nextLink: "Dominația Dolarului →",
         }
@@ -182,6 +196,16 @@ export default async function StartupsVCPage() {
             "From 2000 to 2025, US venture capital followed a parabolic trajectory. After the dot-com peak in 2000 ($105B) and subsequent contraction, the ecosystem recovered and grew steadily. Then came the AI wave: 2021 ($348B), 2024 ($320B), and 2025 ($413B) each set records. No other country attracts risk capital at this scale.",
           vcHistoryChartTitle:
             "US Venture Capital Investment (2000–2025, USD Billions)",
+          ipoTitle: "The IPO Market: The Public Exit Cycle",
+          ipoBody:
+            "US IPOs have seen the most dramatic cycle in modern history: the 2021 SPAC boom (397 IPOs, $142.4B) followed by the sharpest rate-driven collapse on record (71 IPOs in 2022). The 2025 rebound (202 IPOs, $44B) is being powered by AI-sector listings. The fact that NASDAQ remains the preferred exchange for high-growth tech IPOs worldwide is a structural American advantage.",
+          ipoChartTitle: "US IPO Market (2020–2025): Deal Count & Proceeds",
+          ipoSource: "Source: Renaissance Capital — IPOs with market cap ≥ $50M",
+          dealStageTitle: "Where Risk Capital Goes: Deal Stage Breakdown (2025)",
+          dealStageBody:
+            "Mega-rounds of $1B+ have outpaced everyone else: just 180 transactions absorbed $217B — more than all other stages combined. This reflects the structural concentration of risk capital into \u2018AI winners\u2019 and late-stage tech. Early-stage startups receive less in absolute terms but far more in deal count.",
+          dealStageChartTitle: "US Venture Capital Deployment by Deal Stage (2025)",
+          dealStageSource: "Source: NVCA / PitchBook Venture Monitor 2025 Full-Year",
           prevLink: "← Capital Markets",
           nextLink: "Dollar Dominance →",
         };
@@ -266,6 +290,40 @@ export default async function StartupsVCPage() {
                 data={UNICORNS_BY_COUNTRY}
                 title={copy.unicornChartTitle}
                 source="Pitchbook 2026"
+              />
+            </div>
+          </section>
+
+          {/* IPO Market History */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.ipoTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.ipoBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <IPOMarketChart
+                data={US_IPO_MARKET_HISTORY}
+                title={copy.ipoChartTitle}
+                source={copy.ipoSource}
+              />
+            </div>
+          </section>
+
+          {/* VC Deal Stage */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.dealStageTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.dealStageBody}
+            </p>
+            <div className="my-24">
+              <VCDealStageChart
+                data={VC_DEAL_STAGE_BREAKDOWN}
+                title={copy.dealStageChartTitle}
+                source={copy.dealStageSource}
               />
             </div>
           </section>
