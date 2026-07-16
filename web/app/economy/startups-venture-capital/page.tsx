@@ -17,6 +17,7 @@ import { VCBarChart, UnicornPieChart } from "@/components/data/VCCharts";
 import { VCHistoryChart } from "@/components/data/VCHistoryChart";
 import { IPOMarketChart } from "@/components/data/IPOMarketChart";
 import { VCDealStageChart } from "@/components/data/VCDealStageChart";
+import { BusinessFormationChart } from "@/components/data/BusinessFormationChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -32,6 +33,8 @@ import {
   type FoundingTimeline,
   type StartupEcosystem,
   type VcFirm,
+  BUSINESS_FORMATION,
+  BUSINESS_FORMATION_META,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -142,6 +145,11 @@ export default async function StartupsVCPage() {
             "Din 2000 până în 2025, capitalul de risc american a urmat o traiectorie parabolică. După explozia dot-com din 2000 (105Mld$) și contractarea care a urmat, ecosistemul și-a revenit și a crescut constant. Apoi a venit valul AI: în 2021 (348Mld$), în 2024 (320Mld$) și în 2025 (413Mld$) s-au stabilit record după record. Nici o altă țară nu atrage capital de risc la această scară.",
           vcHistoryChartTitle:
             "Investiții de venture capital în SUA (2000–2025, miliarde USD)",
+          formationTitle: "Motorul de sub capitalul de risc",
+          formationBody:
+            "Capitalul de risc finanțează câteva mii de companii pe an. Dedesubt se află cealaltă Americă antreprenorială: 5,25 milioane de cereri de înființare a unei firme depuse în 2024, mai mult decât dublul celor 2,50 milioane din 2005. Pandemia a declanșat cel mai mare val din istorie — 546.719 cereri doar în iulie 2020 — și, spre deosebire de alte șocuri, nivelul nu a mai coborât niciodată.",
+          formationChartTitle: "Cereri de înființare a unei afaceri, lunar",
+          formationChartSubtitle: "Statisticile Census privind formarea de firme, din 2004",
           ipoTitle: "Piața IPO: Ciclul de Exitenţe Publice",
           ipoBody:
             "IPO-urile americane au înregistrat cel mai dramatic ciclu din istoria modernă: boom-ul SPAC din 2021 (397 IPO-uri, 142,4Mld$) urmat de cel mai sever declin din cauza ciclului de majorare al dobânzilor Fed (71 IPO-uri în 2022). Reboundul din 2025 (202 IPO-uri, 44Mld$) este alimentat de dominia în AI. Faptul că NASDAQ rămâne bursa preferată pentru IPO-uri tech este un avantaj structural american.",
@@ -196,6 +204,11 @@ export default async function StartupsVCPage() {
             "From 2000 to 2025, US venture capital followed a parabolic trajectory. After the dot-com peak in 2000 ($105B) and subsequent contraction, the ecosystem recovered and grew steadily. Then came the AI wave: 2021 ($348B), 2024 ($320B), and 2025 ($413B) each set records. No other country attracts risk capital at this scale.",
           vcHistoryChartTitle:
             "US Venture Capital Investment (2000–2025, USD Billions)",
+        formationTitle: "The Engine Underneath Venture Capital",
+        formationBody:
+          "Venture capital funds a few thousand companies a year. Underneath it sits the other entrepreneurial America: 5.25 million business applications filed in 2024, more than double the 2.50 million of 2005. The pandemic set off the largest surge on record — 546,719 applications in July 2020 alone — and unlike other shocks, the level never came back down.",
+        formationChartTitle: "New business applications, monthly",
+        formationChartSubtitle: "Census Business Formation Statistics, since 2004",
           ipoTitle: "The IPO Market: The Public Exit Cycle",
           ipoBody:
             "US IPOs have seen the most dramatic cycle in modern history: the 2021 SPAC boom (397 IPOs, $142.4B) followed by the sharpest rate-driven collapse on record (71 IPOs in 2022). The 2025 rebound (202 IPOs, $44B) is being powered by AI-sector listings. The fact that NASDAQ remains the preferred exchange for high-growth tech IPOs worldwide is a structural American advantage.",
@@ -312,6 +325,24 @@ export default async function StartupsVCPage() {
           </section>
 
           {/* VC Deal Stage */}
+          {/* The startup engine — Census business formation */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.formationTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.formationBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <BusinessFormationChart
+                data={BUSINESS_FORMATION}
+                title={copy.formationChartTitle}
+                subtitle={copy.formationChartSubtitle}
+                source={BUSINESS_FORMATION_META.source}
+              />
+            </div>
+          </section>
+
           <section>
             <h2 className="macro-section-title mb-12">
               {copy.dealStageTitle}

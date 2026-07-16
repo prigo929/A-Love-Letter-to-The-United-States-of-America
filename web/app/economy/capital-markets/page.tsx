@@ -18,6 +18,8 @@ import { SP500Chart } from "@/components/data/SP500Chart";
 import { MarketCapChart } from "@/components/data/DollarMarketCharts";
 import { BondMarketChart } from "@/components/data/BondMarketChart";
 import { TreasuryYieldChart } from "@/components/data/TreasuryYieldChart";
+import { VixChart } from "@/components/data/VixChart";
+import { BuffettIndicatorChart } from "@/components/data/BuffettIndicatorChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -26,6 +28,10 @@ import {
   BOND_MARKET_COMPOSITION,
   US_TREASURY_10Y_HISTORY,
   PRIVATE_MARKETS_TOP_FIRMS,
+  VIX_HISTORY,
+  VIX_META,
+  BUFFETT_INDICATOR,
+  BUFFETT_META,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -152,6 +158,16 @@ export default async function CapitalMarketsPage() {
             "Niciun indice nu este urmărit mai atent. Niciun indice nu este replicat mai larg. S&P 500 urmărește cele mai mari 500 de companii americane listate public — iar performanța lui este, de facto, fișa de evaluare a prosperității capitaliste globale. Din 1980, a generat randamente totale de peste 9.000%.",
           benchmarkChartTitle:
             "S&P 500 — 46 de ani de performanță a piețelor americane de capital",
+          vixTitle: "Indicele fricii",
+          vixBody:
+            "VIX măsoară cât de multă turbulență se așteaptă piața în următoarele 30 de zile. În anii liniștiți stă în jurul valorii de 15. În momentele de panică, explodează: 80,86 în noiembrie 2008 și 82,69 pe 16 martie 2020, recordul absolut. Graficul de mai jos arată exact unde s-a rupt încrederea, de fiecare dată din 1990 încoace.",
+          vixChartTitle: "Volatilitatea pieței (VIX) din 1990",
+          vixChartSubtitle: "Media lunară, cu vârful lunar ca umbră deasupra",
+          buffettTitle: "Piața față de economie",
+          buffettBody:
+            "Warren Buffett a numit acest raport „probabil cea mai bună măsură unică a evaluărilor la un moment dat”: valoarea totală a acțiunilor americane împărțită la PIB. Timp de aproape tot secolul XX, piața a valorat mai puțin decât producția anuală a țării. Astăzi valorează de peste două ori cât aceasta.",
+          buffettChartTitle: "Valoarea acțiunilor ca procent din PIB, din 1947",
+          buffettChartSubtitle: "Linia de 100% marchează paritatea cu producția anuală",
           bondTitle: "Piața obligațiunilor SUA — $50,5T",
           bondBody:
             "Cu titluri de creanță totale de 50,5 trilioane de dolari, piața obligațiunilor americane este cea mai mare și mai lichidă din lume. Titlurile de Trezorerie (30,8T $) stabilesc rata globală fără risc, iar obligațiunile corporative (11,7T $) au atins un volum record de emisiuni în 2025, alimentând expansiunea companiilor americane.",
@@ -190,6 +206,16 @@ export default async function CapitalMarketsPage() {
             "No index is watched more closely. No index is replicated more widely. The S&P 500 tracks the 500 largest publicly traded US companies — and its performance is the world's de facto report card on capitalist prosperity. Since 1980, it has delivered total returns exceeding 9,000%.",
           benchmarkChartTitle:
             "S&P 500 — 46 Years of American Capital Market Performance",
+        vixTitle: "The Fear Index",
+        vixBody:
+          "The VIX measures how much turbulence the market expects over the next 30 days. In quiet years it sits around 15. In moments of panic it detonates: 80.86 in November 2008, and 82.69 on 16 March 2020, the all-time record. The chart below shows exactly where confidence broke, every time since 1990.",
+        vixChartTitle: "Market volatility (VIX) since 1990",
+        vixChartSubtitle: "Monthly average, with the monthly high ghosted above it",
+        buffettTitle: "The Market Against the Economy",
+        buffettBody:
+          "Warren Buffett called this ratio \"probably the best single measure of where valuations stand at any given moment\": the total value of American equities divided by GDP. For most of the twentieth century the market was worth less than the country's annual output. Today it is worth more than twice as much.",
+        buffettChartTitle: "Equity value as a percent of GDP, since 1947",
+        buffettChartSubtitle: "The 100% line marks parity with one year of national output",
           bondTitle: "The US Bond Market — $50.5 Trillion",
           bondBody:
             "With $50.5 trillion in outstanding fixed income securities, the US bond market is the largest and most liquid in human history. US Treasuries ($30.8T) set the global risk-free rate — the anchor for every financial model on Earth. Corporate bonds ($11.7T) hit record issuance in 2025 as American companies tapped cheap capital to fund AI infrastructure and global expansion.",
@@ -267,6 +293,42 @@ export default async function CapitalMarketsPage() {
                 data={SP500_HISTORY}
                 title={copy.benchmarkChartTitle}
                 source="S&P Global / Yahoo Finance"
+              />
+            </div>
+          </section>
+
+          {/* Volatility — the fear index */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.vixTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.vixBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <VixChart
+                data={VIX_HISTORY}
+                title={copy.vixChartTitle}
+                subtitle={copy.vixChartSubtitle}
+                source={VIX_META.source}
+              />
+            </div>
+          </section>
+
+          {/* The market measured against the economy */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.buffettTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.buffettBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <BuffettIndicatorChart
+                data={BUFFETT_INDICATOR}
+                title={copy.buffettChartTitle}
+                subtitle={copy.buffettChartSubtitle}
+                source={BUFFETT_META.source}
               />
             </div>
           </section>
