@@ -18,7 +18,8 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { GdpHistoryChart } from "@/components/data/GdpHistoryChart";
 import { GdpBarChart } from "@/components/data/GdpBarChart";
-import { SP500Chart } from "@/components/data/SP500Chart";
+import { GdpSectorsChart } from "@/components/data/GdpSectorsChart";
+import { GdpDivergenceChart } from "@/components/data/GdpDivergenceChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -27,7 +28,8 @@ import {
   GDP_HISTORY_META,
   GDP_SERIES_META,
   GDP_PER_CAPITA,
-  SP500_HISTORY,
+  US_GDP_SECTORS,
+  US_VS_G7_DIVERGENCE,
   type GdpDataPoint,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -112,7 +114,7 @@ export default async function GdpGrowthPage() {
           {
             fact: "Productivitate pe oră în topul OCDE",
             detail:
-              "Măsurată prin PIB pe oră lucrată, America depășește constant Germania, Regatul Unit și Japonia — de aceea salariile americane sunt ridicate.",
+              "Măsurată prin PIB pe oră lucrată, America depășește constant Germania, Regatul Unit și Japonia — de aceea salariile americane sunt printre cele mai mari din lume (vezi [Salarii & Productivitate](/quality-of-life/wages)).",
           },
         ]
       : [
@@ -124,7 +126,7 @@ export default async function GdpGrowthPage() {
           {
             fact: "Top-tier OECD productivity per hour",
             detail:
-              "Measured by GDP per hour worked, America consistently outperforms Germany, the UK, and Japan — which is why American wages are high.",
+              "Measured by GDP per hour worked, America consistently outperforms Germany, the UK, and Japan — which is why American wages are high (see [Wages & Productivity](/quality-of-life/wages)).",
           },
         ];
   // These local arrays let the page translate or swap a few facts without
@@ -194,6 +196,16 @@ export default async function GdpGrowthPage() {
           quoteTitle: "Laureat Nobel pentru Economie, University of Chicago",
           backLink: "← Înapoi la prezentarea economiei",
           nextLink: "Piețe de Capital →",
+          sectorsTitle: "Compoziția PIB: Servicii & Valoare Ridicată",
+          sectorsBody: "Economia americană modernă este fundamental bazată pe servicii de înaltă valoare, finanțele, asigurările și serviciile profesionale/tehnice generând peste o treime din total. Cu toate acestea, SUA mențin o bază industrială colosală (3,0T$) care singură depășește producția totală a marii majorități a țărilor lumii.",
+          sectorsChartTitle: "Valoarea adăugată pe sectoare (2025/2026, % din PIB)",
+          sectorsChartSubtitle: "Un amestec de servicii avansate și producție industrială masivă",
+          sectorsSource: "Biroul de Analiză Economică al SUA (BEA) 2026",
+          divergenceTitle: "Marea Divergență: SUA vs. G7",
+          divergenceBody: "De la criza financiară globală, Statele Unite s-au distanțat dramatic de partenerii săi din G7. Cu o bază de indexare la nivelul anului 2010 (100), economia reală a SUA a înregistrat o expansiune de 41%, în timp ce restul națiunilor din G7 (Germania, Japonia, Marea Britanie, Franța, Italia, Canada) au avansat în medie cu doar 19,5%. Această performanță reflectă dinamismul unic al piețelor de capital și flexibilitatea structurală a Americii.",
+          divergenceChartTitle: "Indicele de creștere a PIB-ului real (2010 = 100)",
+          divergenceChartSubtitle: "Comparație istorică între ritmul de creștere al SUA și media restului G7",
+          divergenceSource: "Date de la OECD / FMI World Economic Outlook 2026",
         }
       : {
           heroAlt: "New York City financial district",
@@ -243,6 +255,16 @@ export default async function GdpGrowthPage() {
           quoteTitle: "Nobel Laureate in Economics, University of Chicago",
           backLink: "← Back to Economy Overview",
           nextLink: "Capital Markets →",
+          sectorsTitle: "GDP by Sector: Services & High-Value Industry",
+          sectorsBody: "The modern U.S. economy is structurally service-oriented, with Finance, Insurance, Real Estate, and Professional/Technical Services generating over a third of total economic output. However, the U.S. also maintains a powerhouse manufacturing core ($3.0T) that outproduces almost every individual country on Earth.",
+          sectorsChartTitle: "GDP Value Added by Sector (2025/2026, % of GDP)",
+          sectorsChartSubtitle: "A combination of high-margin services and a massive industrial core",
+          sectorsSource: "U.S. Bureau of Economic Analysis (BEA) 2026",
+          divergenceTitle: "The Great Divergence: U.S. vs. G7",
+          divergenceBody: "Since the 2008 financial crisis, the United States has steadily outperformed its G7 peers. When indexing real GDP to 2010 (100), the U.S. has expanded by 41%, whereas the average of the other G7 nations (Germany, Japan, UK, France, Italy, Canada) grew by only 19.5%. This gap illustrates the compounding impact of America's tech leadership, venture capital, and flexible labor markets.",
+          divergenceChartTitle: "Real GDP Growth Index (2010 = 100)",
+          divergenceChartSubtitle: "Historical tracking of U.S. real GDP growth vs. G7 average",
+          divergenceSource: "OECD Data Explorer / IMF WEO 2026",
         };
 
   return (
@@ -334,23 +356,42 @@ export default async function GdpGrowthPage() {
             </div>
           </section>
 
-          {/* S&P 500 */}
+          {/* GDP Sector Composition */}
           <section>
             <h2 className="macro-section-title mb-12">
-              {copy.prosperityTitle}
+              {copy.sectorsTitle}
             </h2>
             <p className="macro-body max-w-4xl mb-16">
-              {copy.prosperityBody}
+              {copy.sectorsBody}
             </p>
-            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
-              <SP500Chart
-                data={SP500_HISTORY}
-                title={copy.prosperityChartTitle}
-                subtitle={copy.prosperityChartSubtitle}
-                source="S&P Global 2026"
+            <div className="my-24">
+              <GdpSectorsChart
+                data={US_GDP_SECTORS}
+                title={copy.sectorsChartTitle}
+                subtitle={copy.sectorsChartSubtitle}
+                source={copy.sectorsSource}
               />
             </div>
           </section>
+
+          {/* GDP Divergence US vs G7 */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.divergenceTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.divergenceBody}
+            </p>
+            <div className="my-24">
+              <GdpDivergenceChart
+                data={US_VS_G7_DIVERGENCE}
+                title={copy.divergenceChartTitle}
+                subtitle={copy.divergenceChartSubtitle}
+                source={copy.divergenceSource}
+              />
+            </div>
+          </section>
+
 
           {/* State GDPs */}
           <section>

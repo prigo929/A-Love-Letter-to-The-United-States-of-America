@@ -17,6 +17,20 @@ import type { Locale } from "@/lib/i18n/config";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
+export interface GdpSectorPoint {
+  sector: string;
+  sectorRo: string;
+  value: number; // in trillions USD
+  percentage: number;
+  highlight?: boolean;
+}
+
+export interface GdpDivergencePoint {
+  year: number;
+  us: number; // Real GDP Index (2010=100)
+  g7: number; // G7 ex-US Real GDP Index (2010=100)
+}
+
 export interface GdpDataPoint {
   country: string;
   gdp: number; // USD Trillions
@@ -1308,4 +1322,31 @@ export const US_GDP_HISTORY: GdpHistoryPoint[] = [
   { year: 2023, real: 22.72, nominal: 27.81 },
   { year: 2024, real: 23.36, nominal: 29.30 },
   { year: 2025, real: 23.85, nominal: 30.76 },
+];
+
+// ─── U.S. GDP by Industry Sector (BEA 2025/2026 Value Added) ──────────────────
+export const US_GDP_SECTORS: GdpSectorPoint[] = [
+  { sector: "Finance, Real Estate & Leasing", sectorRo: "Finanțe, Imobiliare & Leasing", value: 6.8, percentage: 21.8, highlight: true },
+  { sector: "Professional & Business Services", sectorRo: "Servicii Profesionale & Afaceri", value: 4.1, percentage: 13.1, highlight: true },
+  { sector: "Manufacturing", sectorRo: "Industria Prelucrătoare", value: 3.0, percentage: 9.4 },
+  { sector: "Health Care & Education", sectorRo: "Sănătate & Educație", value: 2.8, percentage: 8.9 },
+  { sector: "State & Local Government", sectorRo: "Guvernare Statală & Locală", value: 2.4, percentage: 7.6 },
+  { sector: "Wholesale Trade", sectorRo: "Comerț cu Ridicata", value: 2.0, percentage: 6.4 },
+  { sector: "Retail Trade", sectorRo: "Comerț cu Amănuntul", value: 2.0, percentage: 6.2 },
+  { sector: "Information & Technology", sectorRo: "Informație & Tehnologie", value: 1.8, percentage: 5.6 },
+  { sector: "Other Private Services & Utilities", sectorRo: "Alte Servicii Private & Utilități", value: 4.5, percentage: 14.0 },
+  { sector: "Federal Government & Construction", sectorRo: "Guvern Federal & Construcții", value: 2.2, percentage: 7.0 },
+];
+
+// ─── U.S. vs. G7 Real GDP Growth Divergence (OECD / IMF, 2010 = 100) ──────────
+export const US_VS_G7_DIVERGENCE: GdpDivergencePoint[] = [
+  { year: 2010, us: 100.0, g7: 100.0 },
+  { year: 2012, us: 104.2, g7: 102.1 },
+  { year: 2014, us: 109.1, g7: 105.0 },
+  { year: 2016, us: 113.5, g7: 108.2 },
+  { year: 2018, us: 120.1, g7: 112.4 },
+  { year: 2020, us: 121.5, g7: 108.6 },
+  { year: 2022, us: 129.2, g7: 114.1 },
+  { year: 2024, us: 134.6, g7: 116.8 },
+  { year: 2026, us: 141.0, g7: 119.5 }, // projected
 ];
