@@ -22,6 +22,7 @@ import { VixChart } from "@/components/data/VixChart";
 import { BuffettIndicatorChart } from "@/components/data/BuffettIndicatorChart";
 import { FedFundsChart } from "@/components/data/FedFundsChart";
 import { YieldCurveChart } from "@/components/data/YieldCurveChart";
+import { QuarterlySeriesChart } from "@/components/data/QuarterlySeriesChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -39,6 +40,8 @@ import {
   YIELD_CURVE,
   YIELD_CURVE_META,
   RECESSIONS,
+  CORPORATE_PROFITS,
+  CORPORATE_PROFITS_META,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -185,6 +188,14 @@ export default async function CapitalMarketsPage() {
             "În mod normal, banii pe termen lung costă mai mult decât cei pe termen scurt. Când se inversează — când titlurile pe 10 ani plătesc mai puțin decât cele pe 2 ani — piața pariază că ratele trebuie să scadă, ceea ce înseamnă de obicei că se așteaptă la necazuri. Fiecare recesiune din 1976 încoace a fost precedată de o inversiune. Reciproca nu este însă adevărată: inversiunea din 2022–2024 a fost cea mai adâncă de la Volcker și nu a urmat nicio recesiune. Este o alarmă bună, care uneori sună în gol.",
           yieldChartTitle: "Curba randamentelor (10 ani minus 2 ani), din 1976",
           yieldChartSubtitle: "Zonele umbrite marchează recesiunile datate de NBER",
+          profitsTitle: "Ce cumpără de fapt piața",
+          profitsBody:
+            "Fiecare evaluare de pe această pagină este, în cele din urmă, o creanță asupra acestui număr. Corporațiile americane au câștigat 22 de miliarde de dolari după impozitare în 1947. Astăzi câștigă aproape 4 trilioane pe an. O precizare necesară: cifrele sunt exprimate în dolarii fiecărui an, așa că o parte reală din această creștere este inflație, nu putere de câștig. Forma rămâne însă esențială — profiturile își revin după fiecare criză de pe grafic, inclusiv după cele două care ar fi trebuit să le pună capăt.",
+          profitsChartTitle: "Profituri corporative după impozitare, din 1947",
+          profitsChartSubtitle: "Trimestrial, la rată anuală, în dolari curenți",
+          profitsValueLabel: "Profituri corporative după impozitare, rată anuală",
+          profitsLatestLabel: "Cel mai recent trimestru",
+          profitsMultipleLabel: "Creștere din 1947, în dolari curenți",
           bondTitle: "Piața obligațiunilor SUA — $50,5T",
           bondBody:
             "Cu titluri de creanță totale de 50,5 trilioane de dolari, piața obligațiunilor americane este cea mai mare și mai lichidă din lume. Titlurile de Trezorerie (30,8T $) stabilesc rata globală fără risc, iar obligațiunile corporative (11,7T $) au atins un volum record de emisiuni în 2025, alimentând expansiunea companiilor americane.",
@@ -243,6 +254,14 @@ export default async function CapitalMarketsPage() {
           "Normally long money costs more than short money. When that inverts — when the 10-year Treasury pays less than the 2-year — the market is betting rates must come down, which usually means it expects trouble. Every recession since 1976 was preceded by an inversion. The reverse does not hold: the 2022–24 inversion was the deepest since Volcker, and no recession followed. It is a good alarm that sometimes cries wolf.",
         yieldChartTitle: "The Yield Curve (10-year minus 2-year), since 1976",
         yieldChartSubtitle: "Shaded bands mark NBER-dated recessions",
+        profitsTitle: "What the Market Is Buying",
+        profitsBody:
+          "Every valuation on this page is ultimately a claim on this number. American corporations earned $22 billion after tax in 1947. They now earn close to $4 trillion a year. A caution worth stating plainly: this is measured in the dollars of each year, so a real share of that rise is inflation rather than earning power. The shape is still the point — profits recover from every crisis on the chart, including the two that were supposed to end them.",
+        profitsChartTitle: "Corporate profits after tax, since 1947",
+        profitsChartSubtitle: "Quarterly, at an annual rate, in current dollars",
+        profitsValueLabel: "Corporate profits after tax, annual rate",
+        profitsLatestLabel: "Most recent quarter",
+        profitsMultipleLabel: "Growth since 1947, in current dollars",
           bondTitle: "The US Bond Market — $50.5 Trillion",
           bondBody:
             "With $50.5 trillion in outstanding fixed income securities, the US bond market is the largest and most liquid in human history. US Treasuries ($30.8T) set the global risk-free rate — the anchor for every financial model on Earth. Corporate bonds ($11.7T) hit record issuance in 2025 as American companies tapped cheap capital to fund AI infrastructure and global expansion.",
@@ -397,6 +416,32 @@ export default async function CapitalMarketsPage() {
             </div>
           </section>
 
+          {/* The earnings every valuation on this page is a claim on */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.profitsTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.profitsBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <QuarterlySeriesChart
+                data={CORPORATE_PROFITS.map((p) => ({ q: p.q, v: p.profits }))}
+                gradientId="profitsGradient"
+                title={copy.profitsChartTitle}
+                subtitle={copy.profitsChartSubtitle}
+                valueLabel={copy.profitsValueLabel}
+                latestLabel={copy.profitsLatestLabel}
+                multipleLabel={copy.profitsMultipleLabel}
+                markers={[
+                  { x: "2008-10", label: locale === "ro" ? "Criza 2008" : "2008 crisis" },
+                  { x: "2020-04", label: "COVID" },
+                ]}
+                source={CORPORATE_PROFITS_META.source}
+              />
+            </div>
+          </section>
+
           {/* US Bond Market */}
           <section>
             <h2 className="macro-section-title mb-12">
@@ -486,7 +531,12 @@ export default async function CapitalMarketsPage() {
                     className="font-macro-display text-3xl mb-4"
                     style={{ color: firm.highlight ? "#E8B923" : "rgba(255,255,255,0.7)" }}
                   >
-                    ${(firm.aum / 1000).toFixed(firm.aum >= 1000 ? 1 : 0)}{firm.aum >= 1000 ? "T" : "B"}
+                    {/* aum is USD billions. Only convert when we actually print
+                        trillions — dividing sub-$1T firms by 1000 and rounding to
+                        0dp turned $744B into "$1B" and $425B into "$0B". */}
+                    {firm.aum >= 1000
+                      ? `$${(firm.aum / 1000).toFixed(1)}T`
+                      : `$${firm.aum}B`}
                   </p>
                   <p className="font-macro-body text-sm text-white/40 mt-auto">
                     {locale === "ro" ? firm.specialtyRo : firm.specialty}
@@ -495,7 +545,9 @@ export default async function CapitalMarketsPage() {
               ))}
             </div>
             <p className="mt-8 text-right macro-metadata text-white/30">
-              {locale === "ro" ? "Sursă: Rapoarte companii, Preqin, Bloomberg 2025" : "Source: Company filings, Preqin, Bloomberg 2025"}
+              {locale === "ro"
+                ? "Sursă: Raportările companiilor, T1 2026 (31 martie 2026)"
+                : "Source: Company Q1 2026 disclosures (as of 31 March 2026)"}
             </p>
           </section>
 

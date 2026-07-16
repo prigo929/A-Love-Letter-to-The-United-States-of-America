@@ -18,6 +18,7 @@ import { VCHistoryChart } from "@/components/data/VCHistoryChart";
 import { IPOMarketChart } from "@/components/data/IPOMarketChart";
 import { VCDealStageChart } from "@/components/data/VCDealStageChart";
 import { BusinessFormationChart } from "@/components/data/BusinessFormationChart";
+import { QuarterlySeriesChart } from "@/components/data/QuarterlySeriesChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -35,6 +36,8 @@ import {
   type VcFirm,
   BUSINESS_FORMATION,
   BUSINESS_FORMATION_META,
+  RD_INVESTMENT,
+  RD_META,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -150,6 +153,14 @@ export default async function StartupsVCPage() {
             "Capitalul de risc finanțează câteva mii de companii pe an. Dedesubt se află cealaltă Americă antreprenorială: 5,25 milioane de cereri de înființare a unei firme depuse în 2024, mai mult decât dublul celor 2,50 milioane din 2005. Pandemia a declanșat cel mai mare val din istorie — 546.719 cereri doar în iulie 2020 — și, spre deosebire de alte șocuri, nivelul nu a mai coborât niciodată. A doua bandă este jumătatea lucidă a acestei povești. Doar aproximativ o treime dintre aceste cereri sunt ceea ce Census numește „high-propensity”: firme care probabil vor avea vreodată un angajat. Restul sunt persoane fizice autorizate, activități secundare și entități de tip holding. Avântul antreprenorial este real, dar înseamnă mai ales oameni care lucrează pe cont propriu.",
           formationChartTitle: "Cereri de înființare a unei afaceri, lunar",
           formationChartSubtitle: "Toate cererile față de cele care probabil vor angaja, din 2004",
+          rdTitle: "Cheltuiala de sub pariuri",
+          rdBody:
+            "Capitalul de risc prinde titlurile, dar este vârful vizibil al unui lucru mult mai mare. Investiția americană în cercetare-dezvoltare — laboratoare corporative, știință federală, cercetare universitară — a depășit 1,1 trilioane de dolari pe an, de aproximativ cinci ori cât plasează anual capitalul de risc. În 1947 era de 2,4 miliarde. Aceasta este conducta care produce lucrurile care merită finanțate: tranzistorul, GPS-ul, internetul, ARN-ul mesager. Capitalul de risc este modul în care aceste pariuri sunt comercializate, nu modul în care sunt descoperite.",
+          rdChartTitle: "Investiția SUA în cercetare-dezvoltare, din 1947",
+          rdChartSubtitle: "Trimestrial, la rată anuală, în dolari curenți",
+          rdValueLabel: "Investiție în C&D, rată anuală",
+          rdLatestLabel: "Cel mai recent trimestru",
+          rdMultipleLabel: "Creștere din 1947, în dolari curenți",
           ipoTitle: "Piața IPO: Ciclul de Exitenţe Publice",
           ipoBody:
             "IPO-urile americane au înregistrat cel mai dramatic ciclu din istoria modernă: boom-ul SPAC din 2021 (397 IPO-uri, 142,4Mld$) urmat de cel mai sever declin din cauza ciclului de majorare al dobânzilor Fed (71 IPO-uri în 2022). Reboundul din 2025 (202 IPO-uri, 44Mld$) este alimentat de dominia în AI. Faptul că NASDAQ rămâne bursa preferată pentru IPO-uri tech este un avantaj structural american.",
@@ -209,6 +220,14 @@ export default async function StartupsVCPage() {
           "Venture capital funds a few thousand companies a year. Underneath it sits the other entrepreneurial America: 5.25 million business applications filed in 2024, more than double the 2.50 million of 2005. The pandemic set off the largest surge on record — 546,719 applications in July 2020 alone — and unlike other shocks, the level never came back down. The second band is the sober half of that story. Only about a third of those applications are what the Census calls high-propensity: businesses likely to ever put someone on a payroll. The rest are sole proprietorships, side ventures, and holding entities. The founding boom is real, but it is mostly people working for themselves.",
         formationChartTitle: "New business applications, monthly",
         formationChartSubtitle: "All applications against those likely to become employers, since 2004",
+        rdTitle: "The Spending Underneath the Bets",
+        rdBody:
+          "Venture capital gets the headlines, but it is the visible tip of something much larger. American R&D investment — corporate labs, federal science, university research — crossed $1.1 trillion a year, roughly five times what venture capital deploys annually. It was $2.4 billion in 1947. This is the pipeline that produces the things worth funding: the transistor, GPS, the internet, mRNA. VC is how those bets get commercialised, not how they get discovered.",
+        rdChartTitle: "U.S. research and development investment, since 1947",
+        rdChartSubtitle: "Quarterly, at an annual rate, in current dollars",
+        rdValueLabel: "R&D investment, annual rate",
+        rdLatestLabel: "Most recent quarter",
+        rdMultipleLabel: "Growth since 1947, in current dollars",
           ipoTitle: "The IPO Market: The Public Exit Cycle",
           ipoBody:
             "US IPOs have seen the most dramatic cycle in modern history: the 2021 SPAC boom (397 IPOs, $142.4B) followed by the sharpest rate-driven collapse on record (71 IPOs in 2022). The 2025 rebound (202 IPOs, $44B) is being powered by AI-sector listings. The fact that NASDAQ remains the preferred exchange for high-growth tech IPOs worldwide is a structural American advantage.",
@@ -339,6 +358,28 @@ export default async function StartupsVCPage() {
                 title={copy.formationChartTitle}
                 subtitle={copy.formationChartSubtitle}
                 source={BUSINESS_FORMATION_META.source}
+              />
+            </div>
+          </section>
+
+          {/* R&D: the pipeline VC draws from */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.rdTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.rdBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <QuarterlySeriesChart
+                data={RD_INVESTMENT.map((p) => ({ q: p.q, v: p.rd }))}
+                gradientId="rdInvestGradient"
+                title={copy.rdChartTitle}
+                subtitle={copy.rdChartSubtitle}
+                valueLabel={copy.rdValueLabel}
+                latestLabel={copy.rdLatestLabel}
+                multipleLabel={copy.rdMultipleLabel}
+                source={RD_META.source}
               />
             </div>
           </section>

@@ -27,6 +27,7 @@ import { RdSpendingChart } from "@/components/data/RdSpendingChart";
 import { GdpAnnualGrowthChart } from "@/components/data/GdpAnnualGrowthChart";
 import { ExportsByCategoryChart } from "@/components/data/ExportsByCategoryChart";
 import { LaborProductivityChart } from "@/components/data/LaborProductivityChart";
+import { StateGdpMap } from "@/components/data/StateGdpMap";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -44,6 +45,8 @@ import {
   US_ANNUAL_GDP_GROWTH,
   US_EXPORTS_BY_CATEGORY,
   LABOR_PRODUCTIVITY_COMPARISON,
+  STATE_GDP,
+  STATE_GDP_META,
   type GdpDataPoint,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -56,44 +59,30 @@ export const metadata: Metadata = {
   alternates: { canonical: "/economy/gdp-growth" },
 };
 
-const STATE_GDP_RANKINGS = [
-  {
-    state: "California",
-    gdp: "$4.25T",
-    rank: 4,
-    comparison: "Larger than Japan",
-  },
-  { state: "Texas", gdp: "$2.9T", rank: 8, comparison: "Larger than Brazil" },
-  {
-    state: "New York",
-    gdp: "$2.5T",
-    rank: 10,
-    comparison: "Larger than Canada",
-  },
-  {
-    state: "Florida",
-    gdp: "$1.6T",
-    rank: 15,
-    comparison: "Larger than Mexico",
-  },
-  {
-    state: "Illinois",
-    gdp: "$1.1T",
-    rank: 19,
-    comparison: "Larger than Saudi Arabia",
-  },
-  {
-    state: "Washington",
-    gdp: "$0.9T",
-    rank: 21,
-    comparison: "Larger than Sweden",
-  },
-  {
-    state: "Pennsylvania",
-    gdp: "$0.9T",
-    rank: 21,
-    comparison: "Larger than Switzerland",
-  },
+// The five largest state economies, ranked as if they were countries.
+//
+// Dollar values are DERIVED from STATE_GDP (BEA via FRED) rather than restated
+// here, because restating them is how they rotted: Florida was carried at $1.6T
+// against an actual $1.83T, Illinois at $1.1T against $1.20T, Pennsylvania at
+// $0.9T against $1.06T — and the map in this same section would have contradicted
+// all three on screen.
+//
+// Ranks and comparisons are checked against IMF nominal GDP for 2026 (October 2025
+// WEO — the same vintage as GDP_COMPARISON). Five of the six original claims here
+// were false: California was said to be larger than Japan ($4.25T vs $4.38T), New
+// York larger than Canada ($2.47T vs $2.51T), Florida larger than Mexico ($1.83T vs
+// $2.12T), Illinois larger than Saudi Arabia ($1.20T vs $1.39T), Pennsylvania larger
+// than Switzerland ($1.06T vs $1.15T). Each state is now paired with the largest
+// economy it genuinely outproduces.
+//
+// Washington and Pennsylvania are dropped rather than guessed at: both fall below
+// the 20th-largest economy, and I have no verified country figures down there.
+const STATE_VS_NATION: { abbrev: string; rank: number; beats: string; beatsRo: string }[] = [
+  { abbrev: "CA", rank: 6, beats: "India", beatsRo: "India" },
+  { abbrev: "TX", rank: 8, beats: "Italy", beatsRo: "Italia" },
+  { abbrev: "NY", rank: 12, beats: "Australia", beatsRo: "Australia" },
+  { abbrev: "FL", rank: 16, beats: "Turkey", beatsRo: "Turcia" },
+  { abbrev: "IL", rank: 20, beats: "Switzerland", beatsRo: "Elveția" },
 ];
 
 export default async function GdpGrowthPage() {
@@ -146,17 +135,20 @@ export default async function GdpGrowthPage() {
   // These local arrays let the page translate or swap a few facts without
   // editing the shared source data used elsewhere in the economy section.
   const stateRankings =
-    locale === "ro"
-      ? [
-          { ...STATE_GDP_RANKINGS[0], comparison: "Mai mare decât Regatul Unit" },
-          { ...STATE_GDP_RANKINGS[1], comparison: "Mai mare decât Rusia" },
-          { ...STATE_GDP_RANKINGS[2], comparison: "Mai mare decât Coreea de Sud" },
-          { ...STATE_GDP_RANKINGS[3], comparison: "Mai mare decât Mexicul" },
-          { ...STATE_GDP_RANKINGS[4], comparison: "Mai mare decât Arabia Saudită" },
-          { ...STATE_GDP_RANKINGS[5], comparison: "Mai mare decât Suedia" },
-          { ...STATE_GDP_RANKINGS[6], comparison: "Mai mare decât Elveția" },
-        ]
-      : STATE_GDP_RANKINGS;
+    // Both locales resolve from the same verified table. They used to disagree
+    // with each other on the facts — the Romanian list claimed California was
+    // larger than the United Kingdom while the English one claimed Japan, and
+    // neither was true.
+    STATE_VS_NATION.map((entry) => {
+      const state = STATE_GDP.find((s) => s.abbrev === entry.abbrev)!;
+      return {
+        state: locale === "ro" ? state.nameRo : state.name,
+        gdp: `$${(state.gdp / 1000).toFixed(2)}T`,
+        rank: entry.rank,
+        comparison:
+          locale === "ro" ? `Mai mare decât ${entry.beatsRo}` : `Larger than ${entry.beats}`,
+      };
+    });
   // `copy` keeps all visible labels together so the JSX below reads more like
   // layout structure and less like a wall of inline strings.
   const copy =
@@ -173,6 +165,10 @@ export default async function GdpGrowthPage() {
             "Restul acestei pagini prezintă instantanee: cine este cel mai mare astăzi. Aceasta arată cum s-a ajuns acolo. Din 1929, când începe seria oficială, economia americană s-a mărit de douăzeci de ori în termeni reali — nu prin salturi, ci prin compunere, an după an, prin Marea Criză, un război mondial, două crize petroliere, o criză financiară și o pandemie.",
           growthChartTitle: "PIB-ul SUA din 1929",
           growthChartSubtitle: "Comută între real (inflația eliminată) și nominal",
+          stateMapIntro:
+            "Cifra națională ascunde cât de concentrată este: cinci state reprezintă aproximativ 41% din tot ce produce țara. Scara de mai jos este logaritmică — California produce de aproape nouăzeci de ori cât Vermont, iar pe o scară liniară toate statele în afară de primele trei ar dispărea în aceeași nuanță.",
+          stateMapTitle: "PIB nominal pe state, 2025",
+          stateMapSubtitle: "Treci cu mouse-ul peste un stat pentru producția sa și, unde se potrivește, țara de mărime comparabilă",
           worldTitle: "Statele Unite vs. lumea",
           worldBody:
             "Economia SUA nu este doar cea mai mare — operează într-o categorie complet diferită. La 32,4 trilioane de dolari, depășește PIB-urile cumulate ale Chinei (20,8T), Germaniei (5,4T) și Japoniei (4,4T). Asta înseamnă că următoarele trei mari economii, adunate, tot nu pot egala producția unei singure națiuni de 335 de milioane de oameni.",
@@ -201,7 +197,8 @@ export default async function GdpGrowthPage() {
           globalRankLabel: "Rang global",
           comparisonLabel: "Comparație",
           globallyLabel: "la nivel global",
-          statesSource: "Sursă: Bureau of Economic Analysis 2026, World Bank 2026",
+          statesSource:
+            "Surse: Bureau of Economic Analysis (PIB pe state, 2025, via FRED); FMI World Economic Outlook (PIB pe țări, 2026)",
           growthPullLabel:
             "ani de creștere din ultimii 75 — o reziliență economică pe care nicio mare economie nu o egalează.",
           byNumbersEyebrow: "Amploarea, în cifre",
@@ -264,6 +261,10 @@ export default async function GdpGrowthPage() {
           "The rest of this page is snapshots: who is biggest today. This is how it got there. Since 1929, where the official series begins, the American economy has grown twenty times over in real terms — not in leaps, but by compounding, year after year, through the Depression, a world war, two oil shocks, a financial crisis, and a pandemic.",
         growthChartTitle: "U.S. GDP since 1929",
         growthChartSubtitle: "Toggle between real (inflation removed) and nominal",
+        stateMapIntro:
+          "The national figure hides how concentrated it is: five states account for roughly 41% of everything the country makes. The scale below is logarithmic — California produces nearly ninety times what Vermont does, and on a straight ramp every state but the largest three would vanish into the same shade.",
+        stateMapTitle: "Nominal GDP by state, 2025",
+        stateMapSubtitle: "Hover any state for its output and, where it lands, its country-sized peer",
         worldTitle: "The United States vs. The World",
           worldBody:
             "The US economy is not just the largest — it operates in a different category entirely. At $32.4 trillion, it exceeds the combined GDPs of China ($20.8T), Germany ($5.4T), and Japan ($4.4T). That means the three next-largest economies, added together, still cannot match the output of a single nation of 335 million people.",
@@ -291,7 +292,8 @@ export default async function GdpGrowthPage() {
           globalRankLabel: "Global Rank",
           comparisonLabel: "Comparison",
           globallyLabel: "globally",
-          statesSource: "Source: Bureau of Economic Analysis 2026, World Bank 2026",
+          statesSource:
+            "Sources: Bureau of Economic Analysis (state GDP, 2025, via FRED); IMF World Economic Outlook (country GDP, 2026)",
           growthPullLabel:
             "years of growth out of the last 75 — a record of economic resilience no major economy can match.",
           byNumbersEyebrow: "The scale, in numbers",
@@ -385,6 +387,7 @@ export default async function GdpGrowthPage() {
               />
             </div>
           </section>
+
 
           {/* GDP Comparison */}
           <section>
@@ -598,7 +601,21 @@ export default async function GdpGrowthPage() {
             <p className="macro-body max-w-4xl mb-16">
               {copy.statesBody}
             </p>
-            
+
+            {/* The map carries all 51; the ranked list below it carries the
+                global standing, which the map cannot show. */}
+            <p className="macro-body max-w-4xl mb-10">
+              {copy.stateMapIntro}
+            </p>
+            <div className="my-16">
+              <StateGdpMap
+                data={STATE_GDP}
+                title={copy.stateMapTitle}
+                subtitle={copy.stateMapSubtitle}
+                source={STATE_GDP_META.source}
+              />
+            </div>
+
             <div className="grid gap-8 mt-16">
               {stateRankings.map((state, i) => (
                 <div key={state.state} className="grid grid-cols-2 md:grid-cols-4 gap-4 border-b border-white/10 pb-8 items-center">
