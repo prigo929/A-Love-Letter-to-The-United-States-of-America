@@ -22,7 +22,8 @@ export function getEconomyPageCopy(locale: Locale) {
       gdpPerCapitaTitle: "PIB pe cap de locuitor: SUA vs G7 și piețe emergente (2026)",
       gdpPerCapitaSubtitle:
         "La 94.400 USD per persoană, americanii produc mai multă bogăție per capita decât orice mare națiune",
-      gdpPerCapitaValueLabel: "PIB pe cap de locuitor (2026, mii USD)",
+      gdpValueLabel: "PIB (proiecție 2026, trilioane USD)",
+      gdpPerCapitaValueLabel: "PIB pe cap de locuitor (proiecție 2026, mii USD)",
       fullGdpAnalysis: "Analiza completă a PIB-ului →",
       capitalEyebrow: "Piețe de Capital",
       capitalTitle: "Wall Street pune în mișcare lumea",
@@ -106,7 +107,8 @@ export function getEconomyPageCopy(locale: Locale) {
     gdpPerCapitaTitle: "GDP Per Capita: US vs. G7 & Emerging Markets (2026)",
     gdpPerCapitaSubtitle:
       "At $94,400 per person, Americans produce more wealth per capita than any major nation",
-    gdpPerCapitaValueLabel: "GDP Per Capita (2026, thousands USD)",
+    gdpValueLabel: "GDP (2026 projection, USD Trillions)",
+    gdpPerCapitaValueLabel: "GDP Per Capita (2026 projection, thousands USD)",
     fullGdpAnalysis: "Full GDP Analysis →",
     capitalEyebrow: "Capital Markets",
     capitalTitle: "Wall Street Moves the World",
