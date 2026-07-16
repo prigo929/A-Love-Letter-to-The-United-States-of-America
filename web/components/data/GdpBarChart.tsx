@@ -39,7 +39,11 @@ interface GdpBarChartProps {
   subtitle?: string;
   source?: string;
   valueSuffix?: string;
-  valueLabel?: string;
+  /** Axis label, already localised by the caller. REQUIRED on purpose: this used
+   *  to default to "GDP (2024, USD Trillions)", which silently mislabelled five
+   *  charts (including SIPRI defence spending in USD billions). A default that
+   *  asserts a year and a metric can always go stale — so the caller must say. */
+  valueLabel: string;
   valuePrefix?: string;
   valueDecimals?: number;
 }
@@ -123,17 +127,14 @@ export function GdpBarChart({
   subtitle,
   source,
   valueSuffix = "T",
-  valueLabel = "GDP (2024, USD Trillions)",
+  valueLabel,
   valuePrefix = "$",
   valueDecimals = 1,
 }: GdpBarChartProps) {
   const { locale } = useLanguage();
-  const localizedValueLabel =
-    locale === "ro" && valueLabel === "GDP (2024, USD Trillions)"
-      ? "PIB (2024, trilioane USD)"
-      : locale === "ro" && valueLabel === "GDP per Capita (2024, USD Thousands)"
-        ? "PIB pe cap de locuitor (2024, mii USD)"
-        : valueLabel;
+  // Callers pass an already-localised label; no string-matching translation here
+  // (matching on the exact English string silently broke whenever it changed).
+  const localizedValueLabel = valueLabel;
   const sourceLabel = locale === "ro" ? "Sursă:" : "Source:";
 
   return (

@@ -49,6 +49,7 @@ import { getEconomyPageCopy } from "@/lib/i18n/messages/pages";
 // `lib/data/economy-data.ts`, not inside JSX.
 import {
   GDP_COMPARISON,
+  GDP_SERIES_META,
   GDP_PER_CAPITA,
   SP500_HISTORY,
   VC_BY_COUNTRY,
@@ -221,7 +222,8 @@ export default async function EconomyPage() {
                 data={GDP_COMPARISON}
                 title={copy.gdpChartTitle}
                 subtitle={copy.gdpChartSubtitle}
-                source="World Bank 2026"
+                source={`${GDP_SERIES_META.source} · ${GDP_SERIES_META.year} projection`}
+                valueLabel={copy.gdpValueLabel}
               />
             </div>
             <div className="flex flex-col">

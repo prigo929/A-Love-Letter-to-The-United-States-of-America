@@ -340,8 +340,8 @@ export function DataObservatory({ isRo }: { isRo: boolean }) {
       <DomainBlock shaded index="02" eyebrow={L("Economic Scale", "Scara Economică")} title={L("The Largest Economy on Earth", "Cea Mai Mare Economie de pe Pământ")} blurb={L("U.S. GDP exceeds the next three economies combined, at the highest GDP per capita of any major nation.", "PIB-ul SUA depășește următoarele trei economii la un loc, cu cel mai ridicat PIB pe cap de locuitor.")}>
         <div className="mb-6"><StatBand stats={economyStats} /></div>
         <div className="grid grid-cols-1 gap-6">
-          <ChartFrame><GdpBarChart data={GDP_COMPARISON} title={L("GDP: U.S. vs. Major Economies (2026)", "PIB: SUA vs. Marile Economii (2026)")} subtitle={L("GDP in USD trillions", "PIB în trilioane USD")} valueSuffix="T" source="IMF 2026" /></ChartFrame>
-          <ChartFrame><GdpBarChart data={GDP_PER_CAPITA.map((d) => ({ country: d.country, gdp: d.gdpPerCapita, flag: d.flag, highlight: d.highlight }))} title={L("GDP Per Capita (2026)", "PIB pe Cap de Locuitor (2026)")} subtitle={L("Thousands of USD per person", "Mii USD pe persoană")} valueSuffix="K" source="IMF 2026" /></ChartFrame>
+          <ChartFrame><GdpBarChart data={GDP_COMPARISON} title={L("GDP: U.S. vs. Major Economies (2026)", "PIB: SUA vs. Marile Economii (2026)")} subtitle={L("GDP in USD trillions", "PIB în trilioane USD")} valueSuffix="T" source="IMF 2026" valueLabel={L("GDP (2026 projection, USD Trillions)", "PIB (proiecție 2026, trilioane USD)")} /></ChartFrame>
+          <ChartFrame><GdpBarChart data={GDP_PER_CAPITA.map((d) => ({ country: d.country, gdp: d.gdpPerCapita, flag: d.flag, highlight: d.highlight }))} title={L("GDP Per Capita (2026)", "PIB pe Cap de Locuitor (2026)")} subtitle={L("Thousands of USD per person", "Mii USD pe persoană")} valueSuffix="K" source="IMF 2026" valueLabel={L("GDP per capita (2026 projection, USD Thousands)", "PIB pe cap de locuitor (proiecție 2026, mii USD)")} /></ChartFrame>
         </div>
         <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
           <ChartFrame><MarketCapChart data={MARKET_CAP_BY_EXCHANGE} title={L("Market Cap by Exchange (USD T)", "Capitalizare pe Burse (USD T)")} source="Bloomberg 2025" /></ChartFrame>
@@ -373,7 +373,7 @@ export function DataObservatory({ isRo }: { isRo: boolean }) {
       {/* §05 Military */}
       <DomainBlock index="05" eyebrow={L("Military Power", "Putere Militară")} title={L("The Most Powerful Military in History", "Cea Mai Puternică Armată din Istorie")} blurb={L("U.S. defense spending outpaces the next ten nations combined, with unmatched global reach.", "Cheltuielile de apărare ale SUA le depășesc pe ale următoarelor zece națiuni la un loc.")}>
         <div className="mb-6"><StatBand stats={militaryStats} /></div>
-        <ChartFrame><GdpBarChart data={BUDGET_DATA.map((d) => ({ country: d.country, gdp: d.budget, flag: d.flag, highlight: d.country === "United States" }))} title={L("Defense Spending by Country (USD B)", "Cheltuieli de Apărare după Țară (mld. USD)")} subtitle={L("Annual military budget", "Buget militar anual")} valueSuffix="B" source="SIPRI 2025" /></ChartFrame>
+        <ChartFrame><GdpBarChart data={BUDGET_DATA.map((d) => ({ country: d.country, gdp: d.budget, flag: d.flag, highlight: d.country === "United States" }))} title={L("Defense Spending by Country (USD B)", "Cheltuieli de Apărare după Țară (mld. USD)")} subtitle={L("Annual military budget", "Buget militar anual")} valueSuffix="B" source="SIPRI 2025" valueLabel={L("Defence spending (2025, USD Billions)", "Cheltuieli de apărare (2025, miliarde USD)")} /></ChartFrame>
       </DomainBlock>
 
       {/* §06 Science & education */}

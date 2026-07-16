@@ -16,12 +16,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
+import { GdpHistoryChart } from "@/components/data/GdpHistoryChart";
 import { GdpBarChart } from "@/components/data/GdpBarChart";
 import { SP500Chart } from "@/components/data/SP500Chart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
   GDP_COMPARISON,
+  US_GDP_HISTORY,
+  GDP_HISTORY_META,
+  GDP_SERIES_META,
   GDP_PER_CAPITA,
   SP500_HISTORY,
   type GdpDataPoint,
@@ -148,6 +152,11 @@ export default async function GdpGrowthPage() {
           heroAccent: "ȘI ÎN CREȘTERE",
           heroBody:
             "O domnie de 130 de ani în vârf. Prin fiecare criză, fiecare rival și fiecare predicție a declinului american — economia Statelor Unite nu doar că a rezistat. A dominat.",
+          growthTitle: "Creșterea, an de an",
+          growthBody:
+            "Restul acestei pagini prezintă instantanee: cine este cel mai mare astăzi. Aceasta arată cum s-a ajuns acolo. Din 1929, când începe seria oficială, economia americană s-a mărit de douăzeci de ori în termeni reali — nu prin salturi, ci prin compunere, an după an, prin Marea Criză, un război mondial, două crize petroliere, o criză financiară și o pandemie.",
+          growthChartTitle: "PIB-ul SUA din 1929",
+          growthChartSubtitle: "Comută între real (inflația eliminată) și nominal",
           worldTitle: "Statele Unite vs. lumea",
           worldBody:
             "Economia SUA nu este doar cea mai mare — operează într-o categorie complet diferită. La 32,4 trilioane de dolari, depășește PIB-urile cumulate ale Chinei (20,8T), Germaniei (5,4T) și Japoniei (4,4T). Asta înseamnă că următoarele trei mari economii, adunate, tot nu pot egala producția unei singure națiuni de 335 de milioane de oameni.",
@@ -160,7 +169,8 @@ export default async function GdpGrowthPage() {
           perCapitaChartTitle: "PIB pe cap de locuitor după țară (2026, mii USD)",
           perCapitaChartSubtitle:
             "La 94.400 USD per persoană, americanul mediu produce mai mult decât orice altă mare națiune",
-          perCapitaValueLabel: "PIB pe cap de locuitor (2026, mii USD)",
+          worldValueLabel: "PIB (proiecție 2026, trilioane USD)",
+          perCapitaValueLabel: "PIB pe cap de locuitor (proiecție 2026, mii USD)",
           prosperityTitle: "Arcul lung al prosperității americane",
           prosperityBody:
             "S&P 500 este cel mai urmărit indice bursier din lume — o fișă de evaluare în timp real a vitalității economice americane. Din 1980, a oferit un randament mediu anual de aproximativ 10,5%, transformând 1.000 USD în peste 40.000 USD. Fiecare prăbușire — dot-com, criza financiară, COVID — a fost urmată de o revenire la noi maxime. Nu este noroc; este rodul unui sistem care alocă în mod constant capitalul către utilizările sale cele mai productive.",
@@ -192,7 +202,12 @@ export default async function GdpGrowthPage() {
           heroAccent: "AND COUNTING",
           heroBody:
             "A 130-year reign at the top. Through every crisis, every challenger, every prediction of American decline — the United States economy has not just endured. It has dominated.",
-          worldTitle: "The United States vs. The World",
+          growthTitle: "The Growth, Year by Year",
+        growthBody:
+          "The rest of this page is snapshots: who is biggest today. This is how it got there. Since 1929, where the official series begins, the American economy has grown twenty times over in real terms — not in leaps, but by compounding, year after year, through the Depression, a world war, two oil shocks, a financial crisis, and a pandemic.",
+        growthChartTitle: "U.S. GDP since 1929",
+        growthChartSubtitle: "Toggle between real (inflation removed) and nominal",
+        worldTitle: "The United States vs. The World",
           worldBody:
             "The US economy is not just the largest — it operates in a different category entirely. At $32.4 trillion, it exceeds the combined GDPs of China ($20.8T), Germany ($5.4T), and Japan ($4.4T). That means the three next-largest economies, added together, still cannot match the output of a single nation of 335 million people.",
           worldChartTitle: "GDP by Country (2026, USD Trillions)",
@@ -204,7 +219,8 @@ export default async function GdpGrowthPage() {
           perCapitaChartTitle: "GDP Per Capita by Country (2026, USD Thousands)",
           perCapitaChartSubtitle:
             "At $94,400 per person, the average American produces more than any major nation",
-          perCapitaValueLabel: "GDP per capita (2026, USD Thousands)",
+          worldValueLabel: "GDP (2026 projection, USD Trillions)",
+          perCapitaValueLabel: "GDP per capita (2026 projection, USD Thousands)",
           prosperityTitle: "The Long Arc of American Prosperity",
           prosperityBody:
             "The S&P 500 is the world's most closely watched equity index — a real-time report card on American economic vitality. Since 1980, it has delivered an average annual return of approximately 10.5%, compounding $1,000 into over $40,000. Every crash — dot-com, financial crisis, COVID — was followed by recovery to new highs. This is not luck; it is the fruit of a system that consistently allocates capital to its most productive uses.",
@@ -253,6 +269,25 @@ export default async function GdpGrowthPage() {
         </div>
 
         <div className="mx-auto max-w-[1600px] px-6 md:px-12 space-y-48">
+          {/* The long run — the growth this page is named for */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.growthTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.growthBody}
+            </p>
+            <div className="my-24">
+              <GdpHistoryChart
+                data={US_GDP_HISTORY}
+                title={copy.growthChartTitle}
+                subtitle={copy.growthChartSubtitle}
+                source={GDP_HISTORY_META.source}
+                realBase={GDP_HISTORY_META.realBase}
+              />
+            </div>
+          </section>
+
           {/* GDP Comparison */}
           <section>
             <h2 className="macro-section-title mb-12">
@@ -266,7 +301,8 @@ export default async function GdpGrowthPage() {
                 data={GDP_COMPARISON}
                 title={copy.worldChartTitle}
                 subtitle={copy.worldChartSubtitle}
-                source="World Bank 2026"
+                source={`${GDP_SERIES_META.source} · ${GDP_SERIES_META.year} projection`}
+                valueLabel={copy.worldValueLabel}
               />
             </div>
           </section>

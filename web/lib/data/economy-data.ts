@@ -124,6 +124,17 @@ export interface FoundingTimeline {
 
 // ─── GDP Comparison Data ──────────────────────────────────────────────────────
 
+// Vintage recorded here, at the source of truth, so charts can't drift from it.
+// Verified against the IMF World Economic Outlook 2026 projections:
+// US 32.38 · China 20.85 · Germany 5.45 · Japan 4.38 · India 4.15 · UK 4.26 ·
+// France 3.60 · Brazil 2.64 (trillions USD). 2026 is a projection, not an actual.
+export const GDP_SERIES_META = {
+  year: 2026,
+  projected: true,
+  source: "IMF World Economic Outlook",
+  sourceHref: "https://www.imf.org/en/publications/weo",
+} as const;
+
 export const GDP_COMPARISON: GdpDataPoint[] = [
   { country: "United States", gdp: 32.4, flag: "🇺🇸", highlight: true },
   { country: "China", gdp: 20.8, flag: "🇨🇳" },
@@ -1178,3 +1189,123 @@ export function getVcExtendedFacts(locale: Locale) {
   }
   return VC_EXTENDED_FACTS;
 }
+
+// ─── U.S. GDP, the long run ───────────────────────────────────────────────────
+// The growth story the GDP page was missing: every year since the BEA series
+// begins in 1929. `real` is chained 2017 dollars (inflation removed — the honest
+// measure of growth); `nominal` is current dollars (comparable to the country
+// bars elsewhere on the page). Both in trillions USD.
+// Source: U.S. Bureau of Economic Analysis via FRED — GDPCA (real), GDPA (nominal).
+export interface GdpHistoryPoint {
+  year: number;
+  real: number;
+  nominal: number;
+}
+
+export const GDP_HISTORY_META = {
+  firstYear: 1929,
+  lastYear: 2025,
+  realBase: 2017,
+  source: "U.S. Bureau of Economic Analysis (via FRED: GDPCA, GDPA)",
+  sourceHref: "https://fred.stlouisfed.org/series/GDPCA",
+} as const;
+
+export const US_GDP_HISTORY: GdpHistoryPoint[] = [
+  { year: 1929, real: 1.19, nominal: 0.10 },
+  { year: 1930, real: 1.09, nominal: 0.09 },
+  { year: 1931, real: 1.02, nominal: 0.08 },
+  { year: 1932, real: 0.89, nominal: 0.06 },
+  { year: 1933, real: 0.88, nominal: 0.06 },
+  { year: 1934, real: 0.97, nominal: 0.07 },
+  { year: 1935, real: 1.06, nominal: 0.07 },
+  { year: 1936, real: 1.20, nominal: 0.08 },
+  { year: 1937, real: 1.26, nominal: 0.09 },
+  { year: 1938, real: 1.21, nominal: 0.09 },
+  { year: 1939, real: 1.31, nominal: 0.09 },
+  { year: 1940, real: 1.43, nominal: 0.10 },
+  { year: 1941, real: 1.68, nominal: 0.13 },
+  { year: 1942, real: 2.00, nominal: 0.17 },
+  { year: 1943, real: 2.34, nominal: 0.20 },
+  { year: 1944, real: 2.52, nominal: 0.22 },
+  { year: 1945, real: 2.50, nominal: 0.23 },
+  { year: 1946, real: 2.21, nominal: 0.23 },
+  { year: 1947, real: 2.18, nominal: 0.25 },
+  { year: 1948, real: 2.27, nominal: 0.27 },
+  { year: 1949, real: 2.26, nominal: 0.27 },
+  { year: 1950, real: 2.46, nominal: 0.30 },
+  { year: 1951, real: 2.66, nominal: 0.35 },
+  { year: 1952, real: 2.76, nominal: 0.37 },
+  { year: 1953, real: 2.89, nominal: 0.39 },
+  { year: 1954, real: 2.88, nominal: 0.39 },
+  { year: 1955, real: 3.08, nominal: 0.43 },
+  { year: 1956, real: 3.15, nominal: 0.45 },
+  { year: 1957, real: 3.22, nominal: 0.47 },
+  { year: 1958, real: 3.19, nominal: 0.48 },
+  { year: 1959, real: 3.41, nominal: 0.52 },
+  { year: 1960, real: 3.50, nominal: 0.54 },
+  { year: 1961, real: 3.59, nominal: 0.56 },
+  { year: 1962, real: 3.81, nominal: 0.60 },
+  { year: 1963, real: 3.98, nominal: 0.64 },
+  { year: 1964, real: 4.21, nominal: 0.68 },
+  { year: 1965, real: 4.48, nominal: 0.74 },
+  { year: 1966, real: 4.77, nominal: 0.81 },
+  { year: 1967, real: 4.90, nominal: 0.86 },
+  { year: 1968, real: 5.15, nominal: 0.94 },
+  { year: 1969, real: 5.31, nominal: 1.02 },
+  { year: 1970, real: 5.32, nominal: 1.07 },
+  { year: 1971, real: 5.49, nominal: 1.16 },
+  { year: 1972, real: 5.78, nominal: 1.28 },
+  { year: 1973, real: 6.11, nominal: 1.43 },
+  { year: 1974, real: 6.07, nominal: 1.55 },
+  { year: 1975, real: 6.06, nominal: 1.68 },
+  { year: 1976, real: 6.39, nominal: 1.87 },
+  { year: 1977, real: 6.68, nominal: 2.08 },
+  { year: 1978, real: 7.05, nominal: 2.35 },
+  { year: 1979, real: 7.28, nominal: 2.63 },
+  { year: 1980, real: 7.26, nominal: 2.86 },
+  { year: 1981, real: 7.44, nominal: 3.21 },
+  { year: 1982, real: 7.31, nominal: 3.34 },
+  { year: 1983, real: 7.64, nominal: 3.63 },
+  { year: 1984, real: 8.20, nominal: 4.04 },
+  { year: 1985, real: 8.54, nominal: 4.34 },
+  { year: 1986, real: 8.83, nominal: 4.58 },
+  { year: 1987, real: 9.14, nominal: 4.86 },
+  { year: 1988, real: 9.52, nominal: 5.24 },
+  { year: 1989, real: 9.87, nominal: 5.64 },
+  { year: 1990, real: 10.06, nominal: 5.96 },
+  { year: 1991, real: 10.04, nominal: 6.16 },
+  { year: 1992, real: 10.40, nominal: 6.52 },
+  { year: 1993, real: 10.68, nominal: 6.86 },
+  { year: 1994, real: 11.11, nominal: 7.29 },
+  { year: 1995, real: 11.41, nominal: 7.64 },
+  { year: 1996, real: 11.84, nominal: 8.07 },
+  { year: 1997, real: 12.37, nominal: 8.58 },
+  { year: 1998, real: 12.92, nominal: 9.06 },
+  { year: 1999, real: 13.54, nominal: 9.63 },
+  { year: 2000, real: 14.10, nominal: 10.25 },
+  { year: 2001, real: 14.23, nominal: 10.58 },
+  { year: 2002, real: 14.47, nominal: 10.93 },
+  { year: 2003, real: 14.88, nominal: 11.46 },
+  { year: 2004, real: 15.45, nominal: 12.22 },
+  { year: 2005, real: 15.99, nominal: 13.04 },
+  { year: 2006, real: 16.43, nominal: 13.82 },
+  { year: 2007, real: 16.76, nominal: 14.47 },
+  { year: 2008, real: 16.78, nominal: 14.77 },
+  { year: 2009, real: 16.35, nominal: 14.48 },
+  { year: 2010, real: 16.79, nominal: 15.05 },
+  { year: 2011, real: 17.05, nominal: 15.60 },
+  { year: 2012, real: 17.44, nominal: 16.25 },
+  { year: 2013, real: 17.81, nominal: 16.88 },
+  { year: 2014, real: 18.26, nominal: 17.61 },
+  { year: 2015, real: 18.80, nominal: 18.30 },
+  { year: 2016, real: 19.14, nominal: 18.80 },
+  { year: 2017, real: 19.61, nominal: 19.61 },
+  { year: 2018, real: 20.19, nominal: 20.66 },
+  { year: 2019, real: 20.72, nominal: 21.54 },
+  { year: 2020, real: 20.28, nominal: 21.38 },
+  { year: 2021, real: 21.53, nominal: 23.73 },
+  { year: 2022, real: 22.08, nominal: 26.05 },
+  { year: 2023, real: 22.72, nominal: 27.81 },
+  { year: 2024, real: 23.36, nominal: 29.30 },
+  { year: 2025, real: 23.85, nominal: 30.76 },
+];
