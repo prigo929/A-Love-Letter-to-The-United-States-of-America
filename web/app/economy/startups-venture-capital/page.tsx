@@ -147,9 +147,9 @@ export default async function StartupsVCPage() {
             "Investiții de venture capital în SUA (2000–2025, miliarde USD)",
           formationTitle: "Motorul de sub capitalul de risc",
           formationBody:
-            "Capitalul de risc finanțează câteva mii de companii pe an. Dedesubt se află cealaltă Americă antreprenorială: 5,25 milioane de cereri de înființare a unei firme depuse în 2024, mai mult decât dublul celor 2,50 milioane din 2005. Pandemia a declanșat cel mai mare val din istorie — 546.719 cereri doar în iulie 2020 — și, spre deosebire de alte șocuri, nivelul nu a mai coborât niciodată.",
+            "Capitalul de risc finanțează câteva mii de companii pe an. Dedesubt se află cealaltă Americă antreprenorială: 5,25 milioane de cereri de înființare a unei firme depuse în 2024, mai mult decât dublul celor 2,50 milioane din 2005. Pandemia a declanșat cel mai mare val din istorie — 546.719 cereri doar în iulie 2020 — și, spre deosebire de alte șocuri, nivelul nu a mai coborât niciodată. A doua bandă este jumătatea lucidă a acestei povești. Doar aproximativ o treime dintre aceste cereri sunt ceea ce Census numește „high-propensity”: firme care probabil vor avea vreodată un angajat. Restul sunt persoane fizice autorizate, activități secundare și entități de tip holding. Avântul antreprenorial este real, dar înseamnă mai ales oameni care lucrează pe cont propriu.",
           formationChartTitle: "Cereri de înființare a unei afaceri, lunar",
-          formationChartSubtitle: "Statisticile Census privind formarea de firme, din 2004",
+          formationChartSubtitle: "Toate cererile față de cele care probabil vor angaja, din 2004",
           ipoTitle: "Piața IPO: Ciclul de Exitenţe Publice",
           ipoBody:
             "IPO-urile americane au înregistrat cel mai dramatic ciclu din istoria modernă: boom-ul SPAC din 2021 (397 IPO-uri, 142,4Mld$) urmat de cel mai sever declin din cauza ciclului de majorare al dobânzilor Fed (71 IPO-uri în 2022). Reboundul din 2025 (202 IPO-uri, 44Mld$) este alimentat de dominia în AI. Faptul că NASDAQ rămâne bursa preferată pentru IPO-uri tech este un avantaj structural american.",
@@ -206,9 +206,9 @@ export default async function StartupsVCPage() {
             "US Venture Capital Investment (2000–2025, USD Billions)",
         formationTitle: "The Engine Underneath Venture Capital",
         formationBody:
-          "Venture capital funds a few thousand companies a year. Underneath it sits the other entrepreneurial America: 5.25 million business applications filed in 2024, more than double the 2.50 million of 2005. The pandemic set off the largest surge on record — 546,719 applications in July 2020 alone — and unlike other shocks, the level never came back down.",
+          "Venture capital funds a few thousand companies a year. Underneath it sits the other entrepreneurial America: 5.25 million business applications filed in 2024, more than double the 2.50 million of 2005. The pandemic set off the largest surge on record — 546,719 applications in July 2020 alone — and unlike other shocks, the level never came back down. The second band is the sober half of that story. Only about a third of those applications are what the Census calls high-propensity: businesses likely to ever put someone on a payroll. The rest are sole proprietorships, side ventures, and holding entities. The founding boom is real, but it is mostly people working for themselves.",
         formationChartTitle: "New business applications, monthly",
-        formationChartSubtitle: "Census Business Formation Statistics, since 2004",
+        formationChartSubtitle: "All applications against those likely to become employers, since 2004",
           ipoTitle: "The IPO Market: The Public Exit Cycle",
           ipoBody:
             "US IPOs have seen the most dramatic cycle in modern history: the 2021 SPAC boom (397 IPOs, $142.4B) followed by the sharpest rate-driven collapse on record (71 IPOs in 2022). The 2025 rebound (202 IPOs, $44B) is being powered by AI-sector listings. The fact that NASDAQ remains the preferred exchange for high-growth tech IPOs worldwide is a structural American advantage.",

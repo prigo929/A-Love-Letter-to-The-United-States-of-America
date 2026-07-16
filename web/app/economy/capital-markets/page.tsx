@@ -20,6 +20,8 @@ import { BondMarketChart } from "@/components/data/BondMarketChart";
 import { TreasuryYieldChart } from "@/components/data/TreasuryYieldChart";
 import { VixChart } from "@/components/data/VixChart";
 import { BuffettIndicatorChart } from "@/components/data/BuffettIndicatorChart";
+import { FedFundsChart } from "@/components/data/FedFundsChart";
+import { YieldCurveChart } from "@/components/data/YieldCurveChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -32,6 +34,11 @@ import {
   VIX_META,
   BUFFETT_INDICATOR,
   BUFFETT_META,
+  FED_FUNDS,
+  FED_FUNDS_META,
+  YIELD_CURVE,
+  YIELD_CURVE_META,
+  RECESSIONS,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -168,6 +175,16 @@ export default async function CapitalMarketsPage() {
             "Warren Buffett a numit acest raport „probabil cea mai bună măsură unică a evaluărilor la un moment dat”: valoarea totală a acțiunilor americane împărțită la PIB. Timp de aproape tot secolul XX, piața a valorat mai puțin decât producția anuală a țării. Astăzi valorează de peste două ori cât aceasta.",
           buffettChartTitle: "Valoarea acțiunilor ca procent din PIB, din 1947",
           buffettChartSubtitle: "Linia de 100% marchează paritatea cu producția anuală",
+          fedTitle: "Prețul banilor",
+          fedBody:
+            "Fiecare preț de pe această pagină este cotat, în cele din urmă, față de unul singur: rata la care Rezerva Federală împrumută bani peste noapte. În iunie 1981, Paul Volcker a urcat-o la 19,10% și a provocat intenționat o recesiune pentru a opri inflația anilor '70. În aprilie 2020 a coborât la 0,05%, cel mai aproape de gratuit din istorie. Distanța dintre aceste două momente este istoria financiară americană modernă.",
+          fedChartTitle: "Rata fondurilor federale, din 1954",
+          fedChartSubtitle: "Media lunară, în procente",
+          yieldTitle: "Alarma de recesiune a pieței",
+          yieldBody:
+            "În mod normal, banii pe termen lung costă mai mult decât cei pe termen scurt. Când se inversează — când titlurile pe 10 ani plătesc mai puțin decât cele pe 2 ani — piața pariază că ratele trebuie să scadă, ceea ce înseamnă de obicei că se așteaptă la necazuri. Fiecare recesiune din 1976 încoace a fost precedată de o inversiune. Reciproca nu este însă adevărată: inversiunea din 2022–2024 a fost cea mai adâncă de la Volcker și nu a urmat nicio recesiune. Este o alarmă bună, care uneori sună în gol.",
+          yieldChartTitle: "Curba randamentelor (10 ani minus 2 ani), din 1976",
+          yieldChartSubtitle: "Zonele umbrite marchează recesiunile datate de NBER",
           bondTitle: "Piața obligațiunilor SUA — $50,5T",
           bondBody:
             "Cu titluri de creanță totale de 50,5 trilioane de dolari, piața obligațiunilor americane este cea mai mare și mai lichidă din lume. Titlurile de Trezorerie (30,8T $) stabilesc rata globală fără risc, iar obligațiunile corporative (11,7T $) au atins un volum record de emisiuni în 2025, alimentând expansiunea companiilor americane.",
@@ -216,6 +233,16 @@ export default async function CapitalMarketsPage() {
           "Warren Buffett called this ratio \"probably the best single measure of where valuations stand at any given moment\": the total value of American equities divided by GDP. For most of the twentieth century the market was worth less than the country's annual output. Today it is worth more than twice as much.",
         buffettChartTitle: "Equity value as a percent of GDP, since 1947",
         buffettChartSubtitle: "The 100% line marks parity with one year of national output",
+        fedTitle: "The Price of Money",
+        fedBody:
+          "Every price on this page is ultimately quoted against a single one: the rate at which the Federal Reserve lends money overnight. In June 1981 Paul Volcker took it to 19.10% and deliberately caused a recession to break the inflation of the 1970s. In April 2020 it fell to 0.05%, about as close to free as money has ever been. The distance between those two moments is modern American financial history.",
+        fedChartTitle: "The Federal Funds Rate, since 1954",
+        fedChartSubtitle: "Monthly average, in percent",
+        yieldTitle: "The Market's Recession Alarm",
+        yieldBody:
+          "Normally long money costs more than short money. When that inverts — when the 10-year Treasury pays less than the 2-year — the market is betting rates must come down, which usually means it expects trouble. Every recession since 1976 was preceded by an inversion. The reverse does not hold: the 2022–24 inversion was the deepest since Volcker, and no recession followed. It is a good alarm that sometimes cries wolf.",
+        yieldChartTitle: "The Yield Curve (10-year minus 2-year), since 1976",
+        yieldChartSubtitle: "Shaded bands mark NBER-dated recessions",
           bondTitle: "The US Bond Market — $50.5 Trillion",
           bondBody:
             "With $50.5 trillion in outstanding fixed income securities, the US bond market is the largest and most liquid in human history. US Treasuries ($30.8T) set the global risk-free rate — the anchor for every financial model on Earth. Corporate bonds ($11.7T) hit record issuance in 2025 as American companies tapped cheap capital to fund AI infrastructure and global expansion.",
@@ -329,6 +356,43 @@ export default async function CapitalMarketsPage() {
                 title={copy.buffettChartTitle}
                 subtitle={copy.buffettChartSubtitle}
                 source={BUFFETT_META.source}
+              />
+            </div>
+          </section>
+
+          {/* The policy rate every other price is quoted against */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.fedTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.fedBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <FedFundsChart
+                data={FED_FUNDS}
+                title={copy.fedChartTitle}
+                subtitle={copy.fedChartSubtitle}
+                source={FED_FUNDS_META.source}
+              />
+            </div>
+          </section>
+
+          {/* Yield curve, with recessions shaded behind it */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.yieldTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.yieldBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <YieldCurveChart
+                data={YIELD_CURVE}
+                recessions={RECESSIONS}
+                title={copy.yieldChartTitle}
+                subtitle={copy.yieldChartSubtitle}
+                source={YIELD_CURVE_META.source}
               />
             </div>
           </section>
