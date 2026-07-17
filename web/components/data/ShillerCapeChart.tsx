@@ -11,13 +11,7 @@ import {
   ReferenceLine,
 } from "recharts";
 import { motion } from "framer-motion";
-import {
-  CHART_GOLD,
-  CHART_GRID,
-  CHART_AXIS_LINE,
-  CHART_TICK_MUTED,
-  CHART_TOOLTIP_CLASS,
-} from "@/lib/chart-theme";
+import { CHART_GOLD, CHART_GRID, CHART_AXIS_LINE, CHART_TICK_MUTED, CHART_TOOLTIP_CLASS, curveFor, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -121,13 +115,13 @@ export function ShillerCapeChart({ data, title, subtitle, source }: ShillerCapeC
                 label={{ value: copy.dotcom, position: "top", fill: "rgba(255,255,255,0.4)", fontSize: 10 }}
               />
               <Line
-                type="monotone"
+                type={curveFor(data.length)}
                 dataKey="value"
                 stroke={CHART_GOLD}
                 strokeWidth={2.2}
                 dot={false}
                 activeDot={{ r: 5 }}
-                isAnimationActive
+                isAnimationActive animationDuration={CHART_ANIM_MS}
               />
             </LineChart>
           </ResponsiveContainer>

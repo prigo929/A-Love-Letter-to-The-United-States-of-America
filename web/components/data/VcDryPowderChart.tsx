@@ -10,13 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { motion } from "framer-motion";
-import {
-  CHART_GOLD,
-  CHART_GRID,
-  CHART_AXIS_LINE,
-  CHART_TICK_MUTED,
-  CHART_TOOLTIP_CLASS,
-} from "@/lib/chart-theme";
+import { CHART_GOLD, CHART_GRID, CHART_AXIS_LINE, CHART_TICK_MUTED, CHART_TOOLTIP_CLASS, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -105,7 +99,7 @@ export function VcDryPowderChart({ data, title, subtitle, source }: VcDryPowderC
                 dataKey="value"
                 fill={CHART_GOLD}
                 radius={[4, 4, 0, 0]}
-                isAnimationActive
+                isAnimationActive animationDuration={CHART_ANIM_MS}
               />
             </BarChart>
           </ResponsiveContainer>

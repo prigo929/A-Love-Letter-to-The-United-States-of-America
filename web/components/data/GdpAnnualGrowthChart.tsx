@@ -20,7 +20,7 @@ import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
-import { CHART_GOLD } from "@/lib/chart-theme";
+import { CHART_GOLD, CHART_ANIM_MS } from "@/lib/chart-theme";
 import type { GdpGrowthRatePoint } from "@/lib/data/economy-data";
 
 interface GdpAnnualGrowthChartProps {
@@ -139,7 +139,7 @@ export function GdpAnnualGrowthChart({
                 content={<GrowthTooltip />}
                 cursor={{ fill: "rgba(255,255,255,0.04)" }}
               />
-              <Bar dataKey="growth" radius={[3, 3, 0, 0]} maxBarSize={12} isAnimationActive>
+              <Bar dataKey="growth" radius={[3, 3, 0, 0]} maxBarSize={12} isAnimationActive animationDuration={CHART_ANIM_MS}>
                 {data.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}

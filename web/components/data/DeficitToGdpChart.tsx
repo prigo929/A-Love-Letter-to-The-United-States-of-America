@@ -12,14 +12,7 @@ import {
   ReferenceLine,
 } from "recharts";
 import { motion } from "framer-motion";
-import {
-  CHART_GOLD,
-  CHART_RED,
-  CHART_GRID,
-  CHART_AXIS_LINE,
-  CHART_TICK_MUTED,
-  CHART_TOOLTIP_CLASS,
-} from "@/lib/chart-theme";
+import { CHART_GOLD, CHART_RED, CHART_GRID, CHART_AXIS_LINE, CHART_TICK_MUTED, CHART_TOOLTIP_CLASS, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -117,7 +110,7 @@ export function DeficitToGdpChart({ data, title, subtitle, source }: DeficitToGd
                 }}
               />
               <ReferenceLine y={0} stroke="rgba(255,255,255,0.4)" />
-              <Bar dataKey="value" isAnimationActive>
+              <Bar dataKey="value" isAnimationActive animationDuration={CHART_ANIM_MS}>
                 {data.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}

@@ -22,7 +22,7 @@ import {
   ReferenceLine,
 } from "recharts";
 import { motion } from "framer-motion";
-import { CHART_GOLD } from "@/lib/chart-theme";
+import { CHART_GOLD, curveFor, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -132,9 +132,9 @@ export function BusinessFormationChart({ data, title, subtitle, source }: Busine
                   label={{ value: m.l, position: "top", fill: "rgba(255,255,255,0.45)", fontSize: 10 }} />
               ))}
 
-              <Area type="monotone" dataKey="apps" stroke={CHART_GOLD} strokeWidth={1.8} fill="url(#bfsGradient)" isAnimationActive animationDuration={1400} />
+              <Area type={curveFor(data.length)} dataKey="apps" stroke={CHART_GOLD} strokeWidth={1.8} fill="url(#bfsGradient)" isAnimationActive animationDuration={CHART_ANIM_MS} />
               {/* Employer-track subset, drawn over the headline: the gap is the story */}
-              <Area type="monotone" dataKey="hp" stroke="rgba(255,255,255,0.55)" strokeWidth={1.2} fill="url(#bfsHpGradient)" isAnimationActive animationDuration={1400} />
+              <Area type={curveFor(data.length)} dataKey="hp" stroke="rgba(255,255,255,0.55)" strokeWidth={1.2} fill="url(#bfsHpGradient)" isAnimationActive animationDuration={CHART_ANIM_MS} />
             </AreaChart>
           </ResponsiveContainer>
         </div>

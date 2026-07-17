@@ -22,7 +22,7 @@ import {
 } from "recharts";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CHART_GOLD } from "@/lib/chart-theme";
+import { CHART_GOLD, curveFor, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -186,13 +186,13 @@ export function GdpHistoryChart({ data, title, subtitle, source, realBase = 2017
                   dataKey changes, so remount it to actually swap real↔nominal. */}
               <Area
                 key={basis}
-                type="monotone"
+                type={curveFor(data.length)}
                 dataKey={basis}
                 stroke={CHART_GOLD}
                 strokeWidth={2}
                 fill="url(#gdpHistGradient)"
                 isAnimationActive
-                animationDuration={1400}
+                animationDuration={CHART_ANIM_MS}
               />
             </AreaChart>
           </ResponsiveContainer>

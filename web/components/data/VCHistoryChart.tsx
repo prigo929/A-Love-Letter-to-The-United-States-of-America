@@ -19,7 +19,7 @@ import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
-import { CHART_GOLD } from "@/lib/chart-theme";
+import { CHART_GOLD, CHART_ANIM_MS } from "@/lib/chart-theme";
 import type { VCHistoryPoint } from "@/lib/data/economy-data";
 
 interface VCHistoryChartProps {
@@ -148,7 +148,7 @@ export function VCHistoryChart({ data, title, source }: VCHistoryChartProps) {
                   stroke: "#000",
                   strokeWidth: 2,
                 }}
-                isAnimationActive
+                isAnimationActive animationDuration={CHART_ANIM_MS}
               />
             </AreaChart>
           </ResponsiveContainer>

@@ -16,6 +16,7 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
+import { CHART_ANIM_MS } from "@/lib/chart-theme";
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
@@ -109,7 +110,7 @@ export function VCDealStageChart({ data, title, source }: VCDealStageChartProps)
                   width={130}
                 />
                 <Tooltip content={<StageTooltip />} cursor={{ fill: "rgba(255,255,255,0.04)" }} />
-                <Bar dataKey="capital" radius={[0, 6, 6, 0]} maxBarSize={24} isAnimationActive>
+                <Bar dataKey="capital" radius={[0, 6, 6, 0]} maxBarSize={24} isAnimationActive animationDuration={CHART_ANIM_MS}>
                   {chartData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} opacity={0.9} />
                   ))}

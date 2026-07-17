@@ -20,7 +20,7 @@ import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
-import { CHART_GOLD } from "@/lib/chart-theme";
+import { CHART_GOLD, CHART_ANIM_MS } from "@/lib/chart-theme";
 import type { IPOMarketPoint } from "@/lib/data/economy-data";
 
 interface IPOMarketChartProps {
@@ -124,7 +124,7 @@ export function IPOMarketChart({ data, title, source }: IPOMarketChartProps) {
                 fill="rgba(255,255,255,0.15)"
                 radius={[4, 4, 0, 0]}
                 maxBarSize={50}
-                isAnimationActive
+                isAnimationActive animationDuration={CHART_ANIM_MS}
               />
               <Line
                 yAxisId="proceeds"
@@ -134,7 +134,7 @@ export function IPOMarketChart({ data, title, source }: IPOMarketChartProps) {
                 dot={{ fill: CHART_GOLD, r: 5, stroke: "#000", strokeWidth: 2 }}
                 activeDot={{ r: 7 }}
                 type="monotone"
-                isAnimationActive
+                isAnimationActive animationDuration={CHART_ANIM_MS}
               />
             </ComposedChart>
           </ResponsiveContainer>

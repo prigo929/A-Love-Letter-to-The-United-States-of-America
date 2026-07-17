@@ -15,7 +15,7 @@ import {
   Legend,
 } from "recharts";
 import { motion } from "framer-motion";
-import { CHART_GOLD } from "@/lib/chart-theme";
+import { CHART_GOLD, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -121,7 +121,7 @@ export function GdpDivergenceChart({ data, title, subtitle, source }: GdpDiverge
                 dot={{ fill: CHART_GOLD, r: 4 }}
                 activeDot={{ r: 6 }}
                 isAnimationActive
-                animationDuration={1200}
+                animationDuration={CHART_ANIM_MS}
               />
               <Line
                 name={g7Label}
@@ -132,7 +132,7 @@ export function GdpDivergenceChart({ data, title, subtitle, source }: GdpDiverge
                 dot={{ fill: "rgba(255,255,255,0.4)", r: 3 }}
                 activeDot={{ r: 5 }}
                 isAnimationActive
-                animationDuration={1200}
+                animationDuration={CHART_ANIM_MS}
               />
             </LineChart>
           </ResponsiveContainer>

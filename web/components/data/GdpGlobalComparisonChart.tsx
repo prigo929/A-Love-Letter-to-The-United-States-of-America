@@ -16,7 +16,7 @@ import {
   Legend,
 } from "recharts";
 import { motion } from "framer-motion";
-import { CHART_GOLD } from "@/lib/chart-theme";
+import { CHART_GOLD, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -116,7 +116,7 @@ export function GdpGlobalComparisonChart({ data, title, subtitle, source }: GdpG
                 dot={{ fill: CHART_GOLD, r: 4 }}
                 activeDot={{ r: 6 }}
                 isAnimationActive
-                animationDuration={1200}
+                animationDuration={CHART_ANIM_MS}
               />
               <Line
                 name={chinaLabel}
@@ -127,7 +127,7 @@ export function GdpGlobalComparisonChart({ data, title, subtitle, source }: GdpG
                 dot={{ fill: "#e11d48", r: 3 }}
                 activeDot={{ r: 5 }}
                 isAnimationActive
-                animationDuration={1200}
+                animationDuration={CHART_ANIM_MS}
               />
               <Line
                 name={japanLabel}
@@ -138,7 +138,7 @@ export function GdpGlobalComparisonChart({ data, title, subtitle, source }: GdpG
                 dot={{ fill: "#a1a1aa", r: 3 }}
                 activeDot={{ r: 5 }}
                 isAnimationActive
-                animationDuration={1200}
+                animationDuration={CHART_ANIM_MS}
               />
               <Line
                 name={germanyLabel}
@@ -149,7 +149,7 @@ export function GdpGlobalComparisonChart({ data, title, subtitle, source }: GdpG
                 dot={{ fill: "#3b82f6", r: 3 }}
                 activeDot={{ r: 5 }}
                 isAnimationActive
-                animationDuration={1200}
+                animationDuration={CHART_ANIM_MS}
               />
             </LineChart>
           </ResponsiveContainer>

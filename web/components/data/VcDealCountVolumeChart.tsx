@@ -12,13 +12,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { motion } from "framer-motion";
-import {
-  CHART_GOLD,
-  CHART_GRID,
-  CHART_AXIS_LINE,
-  CHART_TICK_MUTED,
-  CHART_TOOLTIP_CLASS,
-} from "@/lib/chart-theme";
+import { CHART_GOLD, CHART_GRID, CHART_AXIS_LINE, CHART_TICK_MUTED, CHART_TOOLTIP_CLASS, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -124,7 +118,7 @@ export function VcDealCountVolumeChart({ data, title, subtitle, source }: VcDeal
                 height={36}
                 formatter={(value) => (value === "value" ? copy.valueLabel : copy.countLabel)}
               />
-              <Bar yAxisId="left" dataKey="value" fill={CHART_GOLD} opacity={0.9} barSize={28} isAnimationActive />
+              <Bar yAxisId="left" dataKey="value" fill={CHART_GOLD} opacity={0.9} barSize={28} isAnimationActive animationDuration={CHART_ANIM_MS} />
               <Line
                 yAxisId="right"
                 type="monotone"
@@ -133,7 +127,7 @@ export function VcDealCountVolumeChart({ data, title, subtitle, source }: VcDeal
                 strokeWidth={2.2}
                 dot={false}
                 activeDot={{ r: 4 }}
-                isAnimationActive
+                isAnimationActive animationDuration={CHART_ANIM_MS}
               />
             </ComposedChart>
           </ResponsiveContainer>

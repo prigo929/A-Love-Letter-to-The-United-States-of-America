@@ -11,13 +11,7 @@ import {
   ReferenceLine,
 } from "recharts";
 import { motion } from "framer-motion";
-import {
-  CHART_GOLD,
-  CHART_GRID,
-  CHART_AXIS_LINE,
-  CHART_TICK_MUTED,
-  CHART_TOOLTIP_CLASS,
-} from "@/lib/chart-theme";
+import { CHART_GOLD, CHART_GRID, CHART_AXIS_LINE, CHART_TICK_MUTED, CHART_TOOLTIP_CLASS, curveFor, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -125,12 +119,12 @@ export function DebtToGdpChart({ data, title, subtitle, source }: DebtToGdpChart
                 label={{ value: copy.covid, position: "top", fill: "rgba(255,255,255,0.4)", fontSize: 10 }}
               />
               <Area
-                type="monotone"
+                type={curveFor(data.length)}
                 dataKey="debt"
                 stroke={CHART_GOLD}
                 strokeWidth={2}
                 fill="url(#debtGradient)"
-                isAnimationActive
+                isAnimationActive animationDuration={CHART_ANIM_MS}
               />
             </AreaChart>
           </ResponsiveContainer>

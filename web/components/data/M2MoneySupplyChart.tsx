@@ -10,13 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { motion } from "framer-motion";
-import {
-  CHART_GOLD,
-  CHART_GRID,
-  CHART_AXIS_LINE,
-  CHART_TICK_MUTED,
-  CHART_TOOLTIP_CLASS,
-} from "@/lib/chart-theme";
+import { CHART_GOLD, CHART_GRID, CHART_AXIS_LINE, CHART_TICK_MUTED, CHART_TOOLTIP_CLASS, curveFor, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -110,12 +104,12 @@ export function M2MoneySupplyChart({ data, title, subtitle, source }: M2MoneySup
                 }}
               />
               <Area
-                type="monotone"
+                type={curveFor(data.length)}
                 dataKey="m2"
                 stroke={CHART_GOLD}
                 strokeWidth={2}
                 fill="url(#m2Gradient)"
-                isAnimationActive
+                isAnimationActive animationDuration={CHART_ANIM_MS}
               />
             </AreaChart>
           </ResponsiveContainer>

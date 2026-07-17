@@ -386,7 +386,6 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="relative z-10 w-full max-w-5xl max-h-[90dvh] overflow-y-auto bg-[#0a0a0a] border border-white/6 no-scrollbar"
               onClick={(e) => e.stopPropagation()}
-              data-lenis-prevent
             >
               <div className="sticky -top-px z-50 flex justify-between items-center px-6 md:px-12 py-4 bg-[#0a0a0a] border-b border-white/6">
                 <span className="mil-text-metadata tracking-[0.3em]">{locale === 'ro' ? 'DOSAR ACTIV' : 'ASSET DOSSIER'}</span>
@@ -654,7 +653,6 @@ export function DARPAProgramGrid({ programs, locale = 'en' }: { programs: DARPAP
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="relative z-10 w-full max-w-2xl max-h-[80dvh] overflow-y-auto bg-[#0a0a0a] border border-white/8 no-scrollbar"
               onClick={(e) => e.stopPropagation()}
-              data-lenis-prevent
             >
               <div className="sticky -top-px z-50 flex justify-between items-center px-8 md:px-12 py-5 bg-[#0a0a0a] border-b border-white/6">
                 <div className="flex items-center gap-2">

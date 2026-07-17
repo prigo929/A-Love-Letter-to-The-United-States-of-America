@@ -16,7 +16,7 @@ import {
   Cell,
 } from "recharts";
 import { motion } from "framer-motion";
-import { CHART_GOLD } from "@/lib/chart-theme";
+import { CHART_GOLD, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -115,7 +115,7 @@ export function GdpSectorsChart({ data, title, subtitle, source }: GdpSectorsCha
                 dataKey="percentage"
                 radius={[0, 4, 4, 0]}
                 isAnimationActive={true}
-                animationDuration={1000}
+                animationDuration={CHART_ANIM_MS}
               >
                 {chartData.map((entry, index) => (
                   <Cell

@@ -17,6 +17,7 @@ import {
   ResponsiveContainer,
   ReferenceLine,
 } from "recharts";
+import { curveFor, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
@@ -126,8 +127,8 @@ export function VixChart({ data, title, subtitle, source }: VixChartProps) {
               ))}
 
               {/* Ghost of the monthly high, so record spikes survive the averaging */}
-              <Area type="monotone" dataKey="high" stroke="rgba(239,68,68,0.28)" strokeWidth={1} fill="none" isAnimationActive={false} />
-              <Area type="monotone" dataKey="avg" stroke={FEAR} strokeWidth={1.6} fill="url(#vixGradient)" isAnimationActive animationDuration={1400} />
+              <Area type={curveFor(data.length)} dataKey="high" stroke="rgba(239,68,68,0.28)" strokeWidth={1} fill="none" isAnimationActive={false} />
+              <Area type={curveFor(data.length)} dataKey="avg" stroke={FEAR} strokeWidth={1.6} fill="url(#vixGradient)" isAnimationActive animationDuration={CHART_ANIM_MS} />
             </AreaChart>
           </ResponsiveContainer>
         </div>

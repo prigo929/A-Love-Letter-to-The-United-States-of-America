@@ -24,6 +24,7 @@ import {
   ReferenceLine,
   ReferenceArea,
 } from "recharts";
+import { curveFor, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
@@ -162,8 +163,8 @@ export function YieldCurveChart({ data, recessions, title, subtitle, source }: Y
               <ReferenceLine y={0} stroke="rgba(255,255,255,0.5)" strokeWidth={1.2}
                 label={{ value: copy.zero, position: "insideTopLeft", fill: "rgba(255,255,255,0.5)", fontSize: 10 }} />
 
-              <Area type="monotone" dataKey="pos" stroke={NORMAL} strokeWidth={1.4} fill="url(#ycPos)" isAnimationActive animationDuration={1400} />
-              <Area type="monotone" dataKey="neg" stroke={INVERTED} strokeWidth={1.4} fill="url(#ycNeg)" isAnimationActive animationDuration={1400} />
+              <Area type={curveFor(data.length)} dataKey="pos" stroke={NORMAL} strokeWidth={1.4} fill="url(#ycPos)" isAnimationActive animationDuration={CHART_ANIM_MS} />
+              <Area type={curveFor(data.length)} dataKey="neg" stroke={INVERTED} strokeWidth={1.4} fill="url(#ycNeg)" isAnimationActive animationDuration={CHART_ANIM_MS} />
             </AreaChart>
           </ResponsiveContainer>
         </div>

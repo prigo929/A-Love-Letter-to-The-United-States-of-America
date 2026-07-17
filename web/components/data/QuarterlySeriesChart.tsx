@@ -18,7 +18,7 @@ import {
   ReferenceLine,
 } from "recharts";
 import { motion } from "framer-motion";
-import { CHART_GOLD } from "@/lib/chart-theme";
+import { CHART_GOLD, curveFor, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -124,7 +124,7 @@ export function QuarterlySeriesChart({
                   label={{ value: m.label, position: "top", fill: "rgba(255,255,255,0.45)", fontSize: 10 }} />
               ))}
 
-              <Area type="monotone" dataKey="v" stroke={CHART_GOLD} strokeWidth={1.7} fill={`url(#${gradientId})`} isAnimationActive animationDuration={1400} />
+              <Area type={curveFor(data.length)} dataKey="v" stroke={CHART_GOLD} strokeWidth={1.7} fill={`url(#${gradientId})`} isAnimationActive animationDuration={CHART_ANIM_MS} />
             </AreaChart>
           </ResponsiveContainer>
         </div>

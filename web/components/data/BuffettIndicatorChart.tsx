@@ -17,7 +17,7 @@ import {
   ReferenceLine,
 } from "recharts";
 import { motion } from "framer-motion";
-import { CHART_GOLD } from "@/lib/chart-theme";
+import { CHART_GOLD, curveFor, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -115,7 +115,7 @@ export function BuffettIndicatorChart({ data, title, subtitle, source }: Buffett
                   label={{ value: m.l, position: "top", fill: "rgba(255,255,255,0.4)", fontSize: 10 }} />
               ))}
 
-              <Area type="monotone" dataKey="pct" stroke={CHART_GOLD} strokeWidth={2} fill="url(#buffettGradient)" isAnimationActive animationDuration={1400} />
+              <Area type={curveFor(data.length)} dataKey="pct" stroke={CHART_GOLD} strokeWidth={2} fill="url(#buffettGradient)" isAnimationActive animationDuration={CHART_ANIM_MS} />
             </AreaChart>
           </ResponsiveContainer>
         </div>

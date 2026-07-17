@@ -27,7 +27,7 @@ import {
   LabelList,
 } from "recharts";
 import { motion, useInView } from "framer-motion";
-import { CHART_GOLD, CHART_NAVY } from "@/lib/chart-theme";
+import { CHART_GOLD, CHART_NAVY, CHART_ANIM_MS } from "@/lib/chart-theme";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
@@ -226,7 +226,7 @@ export function GdpBarChart({
                 radius={[6, 6, 0, 0]}
                 maxBarSize={60}
                 isAnimationActive={true}
-                animationDuration={900}
+                animationDuration={CHART_ANIM_MS}
                 animationEasing="ease-out"
               >
                 {data.map((entry, index) => (

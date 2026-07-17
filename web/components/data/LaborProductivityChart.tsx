@@ -19,7 +19,7 @@ import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LazyChart } from "@/components/ui/LazyChart";
-import { CHART_GOLD, CHART_NAVY } from "@/lib/chart-theme";
+import { CHART_GOLD, CHART_NAVY, CHART_ANIM_MS } from "@/lib/chart-theme";
 import type { ProductivityPoint } from "@/lib/data/economy-data";
 
 interface ProductivityChartProps {
@@ -134,7 +134,7 @@ export function LaborProductivityChart({ data, title, source }: ProductivityChar
                 content={<ProductivityTooltip />}
                 cursor={{ fill: "rgba(255,255,255,0.04)" }}
               />
-              <Bar dataKey="value" radius={[0, 6, 6, 0]} maxBarSize={26} isAnimationActive>
+              <Bar dataKey="value" radius={[0, 6, 6, 0]} maxBarSize={26} isAnimationActive animationDuration={CHART_ANIM_MS}>
                 {sorted.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
