@@ -30,6 +30,8 @@ import { LaborProductivityChart } from "@/components/data/LaborProductivityChart
 import { StateGdpMap } from "@/components/data/StateGdpMap";
 import { DebtToGdpChart } from "@/components/data/DebtToGdpChart";
 import { RealGdpPerCapitaChart } from "@/components/data/RealGdpPerCapitaChart";
+import { DeficitToGdpChart } from "@/components/data/DeficitToGdpChart";
+import { IndustrialProductionChart } from "@/components/data/IndustrialProductionChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -51,6 +53,8 @@ import {
   STATE_GDP_META,
   US_DEBT_TO_GDP,
   US_REAL_GDP_PER_CAPITA,
+  US_FEDERAL_DEFICIT,
+  US_INDUSTRIAL_PRODUCTION,
   type GdpDataPoint,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -260,6 +264,14 @@ export default async function GdpGrowthPage() {
           gdpPerCapBody: "Dincolo de mărimea absolută a economiei, prosperitatea individuală contează cel mai mult. În termeni ajustați cu inflația (chained 2017 USD), PIB-ul pe cap de locuitor în SUA a crescut de la $25.900 în 1970 la peste $70.500 în 2026. Aceasta reprezintă o triplare a producției economice reale per persoană, reflectând eficiența crescută și progresul tehnologic pe parcursul a cinci decenii.",
           gdpPerCapChartTitle: "PIB real pe cap de locuitor în SUA (1970–2026, USD ajustat)",
           gdpPerCapSource: "Sursă: Bureau of Economic Analysis / FRED (A939RX0Q048SBEA)",
+          deficitTitle: "Balanța Fiscală: Excedentele și Deficitele Bugetare ale SUA",
+          deficitBody: "Urmărirea soldului bugetar federal ca procent din PIB arată perioadele de acumulare și utilizare a capitalului. Cu excepția surplusurilor din perioada 1998–2001, SUA a rulat deficite bugetare constante, care s-au adâncit în mod semnificativ în timpul Marii Recesiuni din 2008 (-9,8%) și al crizei pandemice din 2020 (-14,5%), stabilizându-se la aproximativ -5,8% din PIB în 2025.",
+          deficitChartTitle: "Excedent / Deficit Bugetar Federal al SUA (1970–2025)",
+          deficitSource: "Sursă: Biroul Administrării și Bugetului (OMB) / FRED (FYFSGDA188S)",
+          indproTitle: "Producția Industrială: Capacitatea de Producție Fizică a Americii",
+          indproBody: "Indicele Producției Industriale măsoară producția reală a fabricilor, minelor și utilităților din SUA. Deși economia s-a orientat puternic către servicii, capacitatea de producție industrială a SUA a crescut constant, fiind astăzi cu 172% mai mare decât în 1970. Acest lucru demonstrează că America își păstrează o infrastructură fizică masivă și o bază solidă de manufactură de înaltă tehnologie.",
+          indproChartTitle: "Indicele Producției Industriale a SUA (1970–2026, Bază 2017=100)",
+          indproSource: "Sursă: Consiliul Guvernatorilor al Rezervei Federale / FRED (INDPRO)",
         }
       : {
           heroAlt: "New York City financial district",
@@ -363,6 +375,14 @@ export default async function GdpGrowthPage() {
           gdpPerCapBody: "Beyond absolute economic size, individual prosperity is what matters most. In inflation-adjusted terms (chained 2017 USD), U.S. GDP per capita has grown from $25,900 in 1970 to over $70,500 in 2026. This represents nearly a tripling of real economic output per person, reflecting five decades of technological advancement and rising productivity.",
           gdpPerCapChartTitle: "U.S. Real GDP per Capita (1970–2026, Adjusted USD)",
           gdpPerCapSource: "Source: Bureau of Economic Analysis / FRED (A939RX0Q048SBEA)",
+          deficitTitle: "Fiscal Balance: The U.S. Federal Surplus & Deficit",
+          deficitBody: "Tracking the federal budget balance as a percentage of GDP reveals the cycles of public capital accumulation and leverage. With the brief exception of the 1998–2001 surplus years, the U.S. has operated with ongoing federal deficits. These deficits widened significantly during the Great Recession in 2009 (-9.8%) and the COVID-19 response in 2020 (-14.5%), stabilizing around -5.8% of GDP by 2025.",
+          deficitChartTitle: "U.S. Federal Surplus or Deficit as a Percentage of GDP (1970–2025)",
+          deficitSource: "Source: Office of Management and Budget / FRED (FYFSGDA188S)",
+          indproTitle: "Industrial Production: America's Physical Output Capacity",
+          indproBody: "The Industrial Production Index measures the real output of manufacturing, mining, and electric/gas utilities in the United States. Even as the U.S. transitioned toward a services-dominant economy, its total industrial output has expanded consistently, standing 172% higher today than in 1970. This underscores the massive physical industrial base that America retains behind its technology and service sectors.",
+          indproChartTitle: "U.S. Industrial Production Index (1970–2026, Base 2017=100)",
+          indproSource: "Source: Board of Governors of the Federal Reserve System / FRED (INDPRO)",
         };
 
   return (
@@ -643,6 +663,40 @@ export default async function GdpGrowthPage() {
                 data={US_REAL_GDP_PER_CAPITA}
                 title={copy.gdpPerCapChartTitle}
                 source={copy.gdpPerCapSource}
+              />
+            </div>
+          </section>
+
+          {/* Federal Deficit/Surplus */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.deficitTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.deficitBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <DeficitToGdpChart
+                data={US_FEDERAL_DEFICIT}
+                title={copy.deficitChartTitle}
+                source={copy.deficitSource}
+              />
+            </div>
+          </section>
+
+          {/* Industrial Production */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.indproTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.indproBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <IndustrialProductionChart
+                data={US_INDUSTRIAL_PRODUCTION}
+                title={copy.indproChartTitle}
+                source={copy.indproSource}
               />
             </div>
           </section>

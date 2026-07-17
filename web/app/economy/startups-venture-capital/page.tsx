@@ -20,6 +20,7 @@ import { VCDealStageChart } from "@/components/data/VCDealStageChart";
 import { BusinessFormationChart } from "@/components/data/BusinessFormationChart";
 import { QuarterlySeriesChart } from "@/components/data/QuarterlySeriesChart";
 import { VcDryPowderChart } from "@/components/data/VcDryPowderChart";
+import { VcSectorFundingChart } from "@/components/data/VcSectorFundingChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -40,6 +41,7 @@ import {
   RD_INVESTMENT,
   RD_META,
   VC_DRY_POWDER,
+  VC_SECTOR_FUNDING,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -177,6 +179,11 @@ export default async function StartupsVCPage() {
           dryPowderBody:
             "Venture capital-ul din SUA dispune de resurse financiare fără precedent care așteaptă să fie investite. În 2025, capitalul neutilizat („dry powder”) s-a menținut la nivelul masiv de 315 miliarde $, oferind o plasă de siguranță uriașă și o putere enormă de cumpărare pentru finanțarea următoarei generații de tehnologii revoluționare în următorii ani.",
           dryPowderChartTitle: "Evoluția rezervelor de capital neutilizat (Dry Powder) în SUA (2015–2025, miliarde USD)",
+          vcSectorTitle: "Alocarea pe Sectoare: Boom-ul Inteligenței Artificiale",
+          vcSectorBody:
+            "Analiza investițiilor de venture capital pe sectoare arată direcția în care se îndreaptă viitoarea economie. Începând cu 2023, finanțarea pentru companiile de AI/ML a explodat de la 18 miliarde $ în 2020 la 88 miliarde $ în 2025, depășind pentru prima dată sectorul de software tradițional. Acesta este rezultatul direct al cursei globale pentru dezvoltarea modelelor lingvistice mari și a aplicațiilor generative.",
+          vcSectorChartTitle: "Finanțarea VC în SUA pe Sectoare Principale (2020–2025, miliarde USD)",
+          vcSectorSource: "Sursă: PitchBook-NVCA Venture Monitor",
           prevLink: "← Piețe de Capital",
           nextLink: "Dominația Dolarului →",
         }
@@ -248,6 +255,11 @@ export default async function StartupsVCPage() {
           dryPowderBody:
             "U.S. venture capital commands unprecedented financial reserves that are committed but not yet deployed. In 2025, 'dry powder' stood at a massive $315 billion, offering a huge runway and purchasing power to finance the next wave of disruptive technologies over the coming years.",
           dryPowderChartTitle: "U.S. Venture Capital Dry Powder (2015–2025, USD Billions)",
+          vcSectorTitle: "Sector Allocation: The Artificial Intelligence Surge",
+          vcSectorBody:
+            "A breakdown of venture capital deployment by sector highlights where the future economy is being funded. Beginning in 2023, investment in Artificial Intelligence and Machine Learning (AI/ML) surged, rising from $18 billion in 2020 to $88 billion in 2025, eclipsing traditional enterprise software for the first time in history as funds rushed to back foundation models and generative applications.",
+          vcSectorChartTitle: "U.S. Venture Capital Funding by Key Industry Sector (2020–2025)",
+          vcSectorSource: "Source: PitchBook-NVCA Venture Monitor",
           prevLink: "← Capital Markets",
           nextLink: "Dollar Dominance →",
         };
@@ -423,6 +435,23 @@ export default async function StartupsVCPage() {
                 data={VC_DRY_POWDER}
                 title={copy.dryPowderChartTitle}
                 source="PitchBook-NVCA Venture Monitor 2025"
+              />
+            </div>
+          </section>
+
+          {/* VC Funding by Sector */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.vcSectorTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.vcSectorBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <VcSectorFundingChart
+                data={VC_SECTOR_FUNDING}
+                title={copy.vcSectorChartTitle}
+                source={copy.vcSectorSource}
               />
             </div>
           </section>

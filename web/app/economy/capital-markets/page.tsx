@@ -25,6 +25,8 @@ import { YieldCurveChart } from "@/components/data/YieldCurveChart";
 import { QuarterlySeriesChart } from "@/components/data/QuarterlySeriesChart";
 import { FedBalanceSheetChart } from "@/components/data/FedBalanceSheetChart";
 import { M2MoneySupplyChart } from "@/components/data/M2MoneySupplyChart";
+import { InterestVsInflationChart } from "@/components/data/InterestVsInflationChart";
+import { HighYieldSpreadChart } from "@/components/data/HighYieldSpreadChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -46,6 +48,8 @@ import {
   CORPORATE_PROFITS_META,
   FED_BALANCE_SHEET,
   M2_MONEY_SUPPLY,
+  FED_FUNDS_VS_INFLATION,
+  US_HIGH_YIELD_SPREAD,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -227,6 +231,16 @@ export default async function CapitalMarketsPage() {
           m2Body:
             "Masa monetară M2 măsoară cantitatea totală de monedă în circulație, inclusiv depozitele la vedere și conturile de economii. Evoluția sa arată amploarea capitalului disponibil în economie. Expansiunea puternică de după 2020 a dus masa monetară la peste 23 trilioane $ în 2026, subliniind cantitatea imensă de lichiditate care alimentează piețele de capital americane.",
           m2ChartTitle: "Evoluția Masei Monetare M2 (2000–2026, trilioane USD)",
+          interestVsInflationTitle: "Fed Funds vs. Inflație: Lupta cu Prețurile",
+          interestVsInflationBody:
+            "Rezerva Federală utilizează rata fondurilor federale ca instrument principal pentru controlul inflației. Graficul de mai jos prezintă relația istorică din ultimii 50 de ani: de la eforturile agresive din 1980 (Volcker ducând ratele la 19% pentru a stăvili inflația de 14%), până la ratele zero din anii 2010 și intervenția recentă din 2022–2024, unde ratele au fost ridicate rapid pentru a tempera puseul inflaționist post-pandemic.",
+          interestVsInflationChartTitle: "Rata Fed Funds vs. Inflația YoY CPI (1970–2026)",
+          interestVsInflationSource: "Sursă: Rezerva Federală / Bureau of Labor Statistics (via FRED)",
+          highYieldSpreadTitle: "Marjele High-Yield: Barometrul Riscului de Credit",
+          highYieldSpreadBody:
+            " ICE BofA High Yield Option-Adjusted Spread reprezintă diferența de randament cerută de investitori pentru a deține obligațiuni corporative cu risc ridicat (junk bonds) în raport cu titlurile de Trezorerie sigure. Spicurile de pe grafic indică momente istorice de stres extrem pe piețele de capital, precum spargerea bulei dot-com (2002), criza financiară din 2008 și panica COVID din 2020.",
+          highYieldSpreadChartTitle: "Marjele Obligațiunilor Corporative High-Yield (1997–2026)",
+          highYieldSpreadSource: "Sursă: ICE Data Indices, LLC / FRED (BAMLH0A0HYM2)",
           prevLink: "← PIB și Dimensiune",
           nextLink: "Startup-uri și VC →",
         }
@@ -301,6 +315,16 @@ export default async function CapitalMarketsPage() {
           m2Body:
             "M2 measures the total money supply in circulation, including currency, demand deposits, and savings accounts. It represents the liquid purchasing power of the U.S. economy. The post-2020 monetary expansion drove M2 to over $23 trillion in 2026, illustrating the sheer volume of liquidity circulating through and backing the American capital markets.",
           m2ChartTitle: "U.S. M2 Money Supply (2000–2026, USD Trillions)",
+          interestVsInflationTitle: "Fed Funds vs. Inflation: The Battle Over Prices",
+          interestVsInflationBody:
+            "The Federal Reserve uses the Federal Funds Rate as its primary tool to anchor inflation. The chart below traces this historical relationship over more than 50 years: from the aggressive rate increases in 1980 (Volcker pushing rates to 19% to tame 14% inflation), to the zero-lower-bound experiments of the 2010s, and the rapid tightening cycle in 2022–2024 to crush post-pandemic price pressures.",
+          interestVsInflationChartTitle: "U.S. Federal Funds Rate vs. YoY CPI Inflation (1970–2026)",
+          interestVsInflationSource: "Source: Federal Reserve / Bureau of Labor Statistics (via FRED)",
+          highYieldSpreadTitle: "High-Yield Spreads: Corporate Credit Risk Barometer",
+          highYieldSpreadBody:
+            "The ICE BofA High Yield Option-Adjusted Spread measures the yield premium investors demand to hold lower-rated corporate debt (junk bonds) instead of risk-free Treasuries. Spikes in this spread trace the history of capital market stress: the dot-com bubble collapse (2002), the 2008 Lehman crisis, and the 2020 pandemic market freeze.",
+          highYieldSpreadChartTitle: "U.S. Corporate High-Yield Option-Adjusted Spread (1997–2026)",
+          highYieldSpreadSource: "Source: ICE Data Indices, LLC / FRED (BAMLH0A0HYM2)",
           prevLink: "← GDP & Scale",
           nextLink: "Startups & VC →",
         };
@@ -601,6 +625,40 @@ export default async function CapitalMarketsPage() {
                 data={M2_MONEY_SUPPLY}
                 title={copy.m2ChartTitle}
                 source="Federal Reserve Board via FRED (M2SL)"
+              />
+            </div>
+          </section>
+
+          {/* Interest vs Inflation */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.interestVsInflationTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.interestVsInflationBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <InterestVsInflationChart
+                data={FED_FUNDS_VS_INFLATION}
+                title={copy.interestVsInflationChartTitle}
+                source={copy.interestVsInflationSource}
+              />
+            </div>
+          </section>
+
+          {/* High-Yield Spreads */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.highYieldSpreadTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.highYieldSpreadBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <HighYieldSpreadChart
+                data={US_HIGH_YIELD_SPREAD}
+                title={copy.highYieldSpreadChartTitle}
+                source={copy.highYieldSpreadSource}
               />
             </div>
           </section>
