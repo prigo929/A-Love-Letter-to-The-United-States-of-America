@@ -29,6 +29,7 @@ import { InterestVsInflationChart } from "@/components/data/InterestVsInflationC
 import { HighYieldSpreadChart } from "@/components/data/HighYieldSpreadChart";
 import { ShillerCapeChart } from "@/components/data/ShillerCapeChart";
 import { HouseholdNetWorthChart } from "@/components/data/HouseholdNetWorthChart";
+import { CorporateYieldsChart } from "@/components/data/CorporateYieldsChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -54,6 +55,7 @@ import {
   US_HIGH_YIELD_SPREAD,
   US_SHILLER_CAPE,
   US_HOUSEHOLD_NET_WORTH,
+  US_CORPORATE_YIELDS,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -255,6 +257,11 @@ export default async function CapitalMarketsPage() {
             "Averea netă totală a gospodăriilor americane reprezintă valoarea cumulată a tuturor activelor (imobiliare, acțiuni, conturi de pensii) minus datorii. Aceasta a înregistrat o creștere formidabilă, atingând valoarea record de 182,9 trilioane $ în 2026. Această acumulare uriașă de capital privat reprezintă motorul principal al consumului domestic și cel mai mare fond de bogăție privată de pe Pământ.",
           netWorthChartTitle: "Averea Netă Totală a Gospodăriilor din SUA (1970–2026, trilioane USD)",
           netWorthSource: "Sursă: Rezerva Federală / FRED (TNWBSHNO)",
+          corpYieldsTitle: "Dobânzile Obligațiunilor Corporative: Moody Aaa vs. Baa",
+          corpYieldsBody:
+            "Dobânzile obligațiunilor corporative reflectă costul la care companiile americane de top se pot împrumuta pe piețele fixed income. Moody's Seasoned Corporate Yields compară emisiunile de calitate superioară (Aaa) cu cele cu risc mediu (Baa). Diferența (spread-ul) dintre ele arată prima de risc cerută de investitori, oferind companiilor americane flexibilitatea de a finanța fuziuni, cercetare și infrastructură fizică la rate competitive.",
+          corpYieldsChartTitle: "Dobânzile Obligațiunilor Corporative Moody Aaa vs. Baa (1970–2026)",
+          corpYieldsSource: "Sursă: Moody's Investors Service / FRED (AAA / BAA)",
           prevLink: "← PIB și Dimensiune",
           nextLink: "Startup-uri și VC →",
         }
@@ -349,6 +356,11 @@ export default async function CapitalMarketsPage() {
             "U.S. Household Net Worth represents the total assets of all American households (real estate, equities, pension funds) minus liabilities. Over the last 50 years, this figure has seen an unprecedented expansion, climbing to a record $182.9 Trillion in 2026. This enormous private capital pool is the fundamental engine of domestic demand and the largest store of private wealth in human history.",
           netWorthChartTitle: "Total U.S. Household Net Worth (1970–2026, USD Trillions)",
           netWorthSource: "Source: Federal Reserve / FRED (TNWBSHNO)",
+          corpYieldsTitle: "Corporate Bond Yields: Moody's Aaa vs. Baa",
+          corpYieldsBody:
+            "Corporate yields measure the interest rates that prime American companies pay to borrow in fixed income markets. Moody's Seasoned Corporate Yields compare high-grade issuers (Aaa) with medium-grade issuers (Baa). The spread between them represents the credit risk premium, illustrating the continuous availability of debt capital to fund physical capital and R&D projects.",
+          corpYieldsChartTitle: "Moody's seasoned corporate bond yields Aaa vs. Baa (1970–2026)",
+          corpYieldsSource: "Source: Moody's Investors Service / FRED (AAA / BAA)",
           prevLink: "← GDP & Scale",
           nextLink: "Startups & VC →",
         };
@@ -523,6 +535,23 @@ export default async function CapitalMarketsPage() {
                 data={BOND_MARKET_COMPOSITION}
                 title={copy.bondChartTitle}
                 source="SIFMA Research Quarterly — Fixed Income Outstanding 1Q 2026"
+              />
+            </div>
+          </section>
+
+          {/* Corporate Yields */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.corpYieldsTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.corpYieldsBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <CorporateYieldsChart
+                data={US_CORPORATE_YIELDS}
+                title={copy.corpYieldsChartTitle}
+                source={copy.corpYieldsSource}
               />
             </div>
           </section>

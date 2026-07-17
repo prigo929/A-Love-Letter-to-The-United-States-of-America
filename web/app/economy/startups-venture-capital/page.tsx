@@ -22,6 +22,7 @@ import { QuarterlySeriesChart } from "@/components/data/QuarterlySeriesChart";
 import { VcDryPowderChart } from "@/components/data/VcDryPowderChart";
 import { VcSectorFundingChart } from "@/components/data/VcSectorFundingChart";
 import { VcDealCountVolumeChart } from "@/components/data/VcDealCountVolumeChart";
+import { VcExitsChart } from "@/components/data/VcExitsChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -44,6 +45,7 @@ import {
   VC_DRY_POWDER,
   VC_SECTOR_FUNDING,
   VC_DEAL_COUNT_VOLUME,
+  VC_EXITS,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -191,6 +193,11 @@ export default async function StartupsVCPage() {
             "Evoluția de lungă durată a pieței de venture capital arată fazele de boom și corecție ale capitalismului tehnologic. De la vârful bulei dot-com din 2000, la anii de reconstrucție și boom-ul excepțional din 2021 (peste 18.500 de deal-uri totalizând 345 miliarde $), piața s-a stabilizat în 2024–2025 la un ritm sustenabil de peste 10.000 de tranzacții și ~142-150 miliarde $ investiți anual.",
           vcActivityChartTitle: "Volumul Investițiilor vs. Numărul de Deal-uri VC în SUA (2000–2025)",
           vcActivitySource: "Sursă: PitchBook-NVCA Venture Monitor",
+          vcExitsTitle: "Rutele de Ieșire: IPO-uri, M&A și Răscumpărări VC",
+          vcExitsBody:
+            "Exits reprezintă mecanismul prin care investitorii de risc și fondatorii își monetizează acțiunile, fie prin listarea la bursă (IPO), fie prin achiziția de către o companie mai mare (M&A). Boom-ul extraordinar din 2021 a înregistrat un volum istoric de 797 miliarde $ în exits (dintre care 680 miliarde $ au fost IPO-uri precum Coinbase, Roblox și Rivian), urmat de o corecție bruscă în 2023–2025 din cauza ratelor ridicate ale dobânzilor.",
+          vcExitsChartTitle: "Valoarea Exits în SUA pe Tip de Tranzacție (2015–2025, miliarde USD)",
+          vcExitsSource: "Sursă: PitchBook-NVCA Venture Monitor",
           prevLink: "← Piețe de Capital",
           nextLink: "Dominația Dolarului →",
         }
@@ -272,6 +279,11 @@ export default async function StartupsVCPage() {
             "The long-term evolution of the venture capital market traces the waves of technological cycles. From the dot-com peak in 2000, through the slow rebuilding years, to the massive post-COVID boom of 2021 (over 18,500 deals deploying $345 billion), the market has normalized in 2024–2025 to a sustainable baseline of over 10,000 transactions and ~$142-150 billion deployed annually.",
           vcActivityChartTitle: "U.S. Venture Capital Deployed Capital vs. Deal Count (2000–2025)",
           vcActivitySource: "Source: PitchBook-NVCA Venture Monitor",
+          vcExitsTitle: "Exit Pathways: IPOs, M&A, and VC Buyouts",
+          vcExitsBody:
+            "Exits are the ultimate liquidity mechanism for venture investors and startup founders, letting them convert equity back into cash. The 2021 liquidity supercycle recorded a record $797 billion in total exit value (led by massive tech IPOs like Coinbase, Roblox, and Rivian), before higher interest rates led to a sharp drop and valuation reset in 2023–2025.",
+          vcExitsChartTitle: "U.S. Venture Capital Exit Value by Transaction Type (2015–2025)",
+          vcExitsSource: "Source: PitchBook-NVCA Venture Monitor",
           prevLink: "← Capital Markets",
           nextLink: "Dollar Dominance →",
         };
@@ -481,6 +493,23 @@ export default async function StartupsVCPage() {
                 data={VC_DEAL_COUNT_VOLUME}
                 title={copy.vcActivityChartTitle}
                 source={copy.vcActivitySource}
+              />
+            </div>
+          </section>
+
+          {/* VC Exits */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.vcExitsTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.vcExitsBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <VcExitsChart
+                data={VC_EXITS}
+                title={copy.vcExitsChartTitle}
+                source={copy.vcExitsSource}
               />
             </div>
           </section>

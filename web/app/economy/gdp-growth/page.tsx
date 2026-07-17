@@ -33,6 +33,7 @@ import { RealGdpPerCapitaChart } from "@/components/data/RealGdpPerCapitaChart";
 import { DeficitToGdpChart } from "@/components/data/DeficitToGdpChart";
 import { IndustrialProductionChart } from "@/components/data/IndustrialProductionChart";
 import { ExportsImportsChart } from "@/components/data/ExportsImportsChart";
+import { SavingsRateChart } from "@/components/data/SavingsRateChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -57,6 +58,7 @@ import {
   US_FEDERAL_DEFICIT,
   US_INDUSTRIAL_PRODUCTION,
   US_EXPORTS_VS_IMPORTS,
+  US_SAVINGS_RATE,
   type GdpDataPoint,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -279,6 +281,11 @@ export default async function GdpGrowthPage() {
             "Urmărirea fluxurilor comerciale arată amploarea integrării SUA în economia globală. Deși SUA rulează un deficit comercial structural începând cu anii 1970, volumul total al schimburilor comerciale a crescut masiv. În 2026, exporturile trimestriale au atins o rată anualizată de 3,5 trilioane $, în timp ce importurile au depășit 4,3 trilioane $, reflectând cererea masivă a consumatorilor americani și integrarea profundă a lanțurilor logistice globale.",
           exportsImportsChartTitle: "Exporturi vs. Importuri de Bunuri și Servicii ale SUA (1970–2026)",
           exportsImportsSource: "Sursă: Bureau of Economic Analysis (via FRED: EXPGS / IMPGS)",
+          savingsTitle: "Rata Economisirii: Comportamentul de Epargne al Gospodăriilor",
+          savingsBody:
+            "Rata economisirii personale reprezintă procentul din venitul disponibil pe care gospodăriile îl economisesc în loc să îl consume. De la nivelurile ridicate de 12–14% din anii 1970, rata economisirii a scăzut treptat, reflectând dezvoltarea creditului de consum. În timpul pandemiei COVID-19 (aprilie 2020), rata economisirii a atins recordul istoric absolut de 32%, ca urmare a blocajelor economice și a stimulilor guvernamentali, stabilizându-se ulterior în jurul valorii de 3,0% în 2026.",
+          savingsChartTitle: "Rata Economisirii Personale în SUA (1970–2026)",
+          savingsSource: "Sursă: Bureau of Economic Analysis / FRED (PSAVERT)",
         }
       : {
           heroAlt: "New York City financial district",
@@ -395,6 +402,11 @@ export default async function GdpGrowthPage() {
             "Tracking trade flows reveals the scale of U.S. integration into the global economy. While the U.S. has run a structural trade deficit since the 1970s, overall trade volume has expanded dramatically. By 2026, quarterly exports reached an annualized rate of $3.5 trillion, while imports exceeded $4.3 trillion, reflecting robust consumer demand and deeply integrated global logistics chains.",
           exportsImportsChartTitle: "U.S. Exports vs. Imports of Goods & Services (1970–2026)",
           exportsImportsSource: "Source: Bureau of Economic Analysis (via FRED: EXPGS / IMPGS)",
+          savingsTitle: "Personal Savings Rate: Household Financial Behavior",
+          savingsBody:
+            "The personal savings rate measures the percentage of disposable income that American households save rather than spend. From the 12–14% levels of the 1970s, the savings rate gradually declined as consumer credit expanded. During the COVID-19 pandemic (April 2020), it spiked to an all-time historic high of 32% due to lockdown restrictions and government fiscal support, before normalizing to around 3.0% in 2026.",
+          savingsChartTitle: "U.S. Personal Savings Rate (1970–2026)",
+          savingsSource: "Source: Bureau of Economic Analysis / FRED (PSAVERT)",
         };
 
   return (
@@ -607,6 +619,23 @@ export default async function GdpGrowthPage() {
                 data={US_ANNUAL_GDP_GROWTH}
                 title={copy.growthRateChartTitle}
                 source={copy.growthRateSource}
+              />
+            </div>
+          </section>
+
+          {/* Personal Savings Rate */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.savingsTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.savingsBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <SavingsRateChart
+                data={US_SAVINGS_RATE}
+                title={copy.savingsChartTitle}
+                source={copy.savingsSource}
               />
             </div>
           </section>
