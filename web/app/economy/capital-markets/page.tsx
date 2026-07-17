@@ -27,6 +27,8 @@ import { FedBalanceSheetChart } from "@/components/data/FedBalanceSheetChart";
 import { M2MoneySupplyChart } from "@/components/data/M2MoneySupplyChart";
 import { InterestVsInflationChart } from "@/components/data/InterestVsInflationChart";
 import { HighYieldSpreadChart } from "@/components/data/HighYieldSpreadChart";
+import { ShillerCapeChart } from "@/components/data/ShillerCapeChart";
+import { HouseholdNetWorthChart } from "@/components/data/HouseholdNetWorthChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -50,6 +52,8 @@ import {
   M2_MONEY_SUPPLY,
   FED_FUNDS_VS_INFLATION,
   US_HIGH_YIELD_SPREAD,
+  US_SHILLER_CAPE,
+  US_HOUSEHOLD_NET_WORTH,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -241,6 +245,16 @@ export default async function CapitalMarketsPage() {
             " ICE BofA High Yield Option-Adjusted Spread reprezintă diferența de randament cerută de investitori pentru a deține obligațiuni corporative cu risc ridicat (junk bonds) în raport cu titlurile de Trezorerie sigure. Spicurile de pe grafic indică momente istorice de stres extrem pe piețele de capital, precum spargerea bulei dot-com (2002), criza financiară din 2008 și panica COVID din 2020.",
           highYieldSpreadChartTitle: "Marjele Obligațiunilor Corporative High-Yield (1997–2026)",
           highYieldSpreadSource: "Sursă: ICE Data Indices, LLC / FRED (BAMLH0A0HYM2)",
+          shillerCapeTitle: "Multiplul Shiller CAPE: Evaluarea Istorică a S&P 500",
+          shillerCapeBody:
+            "Multiplul Shiller CAPE (Cyclically Adjusted Price-to-Earnings) ajustează profiturile companiilor cu inflația pe o perioadă de 10 ani pentru a netezi fluctuațiile pe termen scurt. O valoare peste media istorică de 17x arată evaluări ridicate. Graficul arată clar momentele de exuberanță irațională (precum vârful bulei dot-com de 44x în 2000) și oportunitățile de cumpărare (precum minimele de 13x din 2009). În 2026, CAPE se situează la 36,8x, reflectând evaluarea ridicată a giganților tehnologici.",
+          shillerCapeChartTitle: "Raportul Shiller CAPE al Indicelui S&P 500 (1970–2026)",
+          shillerCapeSource: "Sursă: Robert Shiller / Yale University",
+          netWorthTitle: "Averea Națiunii: Averea Netă a Gospodăriilor din SUA",
+          netWorthBody:
+            "Averea netă totală a gospodăriilor americane reprezintă valoarea cumulată a tuturor activelor (imobiliare, acțiuni, conturi de pensii) minus datorii. Aceasta a înregistrat o creștere formidabilă, atingând valoarea record de 182,9 trilioane $ în 2026. Această acumulare uriașă de capital privat reprezintă motorul principal al consumului domestic și cel mai mare fond de bogăție privată de pe Pământ.",
+          netWorthChartTitle: "Averea Netă Totală a Gospodăriilor din SUA (1970–2026, trilioane USD)",
+          netWorthSource: "Sursă: Rezerva Federală / FRED (TNWBSHNO)",
           prevLink: "← PIB și Dimensiune",
           nextLink: "Startup-uri și VC →",
         }
@@ -325,6 +339,16 @@ export default async function CapitalMarketsPage() {
             "The ICE BofA High Yield Option-Adjusted Spread measures the yield premium investors demand to hold lower-rated corporate debt (junk bonds) instead of risk-free Treasuries. Spikes in this spread trace the history of capital market stress: the dot-com bubble collapse (2002), the 2008 Lehman crisis, and the 2020 pandemic market freeze.",
           highYieldSpreadChartTitle: "U.S. Corporate High-Yield Option-Adjusted Spread (1997–2026)",
           highYieldSpreadSource: "Source: ICE Data Indices, LLC / FRED (BAMLH0A0HYM2)",
+          shillerCapeTitle: "The Shiller CAPE Multiple: S&P 500 Historical Valuation",
+          shillerCapeBody:
+            "The Shiller CAPE (Cyclically Adjusted Price-to-Earnings) Ratio adjusts earnings for inflation over a 10-year period to smooth out business cycle noise. Values above the historical average of 17x signal elevated valuations. The chart maps historical peaks of optimism (such as the 44x dot-com bubble in 2000) and bottoms of panic (such as the 13x GFC trough in 2009). In 2026, the CAPE sits at 36.8x, reflecting high market valuations led by tech giants.",
+          shillerCapeChartTitle: "S&P 500 Shiller CAPE Ratio (1970–2026)",
+          shillerCapeSource: "Source: Robert Shiller / Yale University",
+          netWorthTitle: "Nation's Balance Sheet: U.S. Household Net Worth",
+          netWorthBody:
+            "U.S. Household Net Worth represents the total assets of all American households (real estate, equities, pension funds) minus liabilities. Over the last 50 years, this figure has seen an unprecedented expansion, climbing to a record $182.9 Trillion in 2026. This enormous private capital pool is the fundamental engine of domestic demand and the largest store of private wealth in human history.",
+          netWorthChartTitle: "Total U.S. Household Net Worth (1970–2026, USD Trillions)",
+          netWorthSource: "Source: Federal Reserve / FRED (TNWBSHNO)",
           prevLink: "← GDP & Scale",
           nextLink: "Startups & VC →",
         };
@@ -659,6 +683,40 @@ export default async function CapitalMarketsPage() {
                 data={US_HIGH_YIELD_SPREAD}
                 title={copy.highYieldSpreadChartTitle}
                 source={copy.highYieldSpreadSource}
+              />
+            </div>
+          </section>
+
+          {/* Shiller CAPE Ratio */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.shillerCapeTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.shillerCapeBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <ShillerCapeChart
+                data={US_SHILLER_CAPE}
+                title={copy.shillerCapeChartTitle}
+                source={copy.shillerCapeSource}
+              />
+            </div>
+          </section>
+
+          {/* Household Net Worth */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.netWorthTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.netWorthBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <HouseholdNetWorthChart
+                data={US_HOUSEHOLD_NET_WORTH}
+                title={copy.netWorthChartTitle}
+                source={copy.netWorthSource}
               />
             </div>
           </section>

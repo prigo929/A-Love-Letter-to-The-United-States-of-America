@@ -32,6 +32,7 @@ import { DebtToGdpChart } from "@/components/data/DebtToGdpChart";
 import { RealGdpPerCapitaChart } from "@/components/data/RealGdpPerCapitaChart";
 import { DeficitToGdpChart } from "@/components/data/DeficitToGdpChart";
 import { IndustrialProductionChart } from "@/components/data/IndustrialProductionChart";
+import { ExportsImportsChart } from "@/components/data/ExportsImportsChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -55,6 +56,7 @@ import {
   US_REAL_GDP_PER_CAPITA,
   US_FEDERAL_DEFICIT,
   US_INDUSTRIAL_PRODUCTION,
+  US_EXPORTS_VS_IMPORTS,
   type GdpDataPoint,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -272,6 +274,11 @@ export default async function GdpGrowthPage() {
           indproBody: "Indicele Producției Industriale măsoară producția reală a fabricilor, minelor și utilităților din SUA. Deși economia s-a orientat puternic către servicii, capacitatea de producție industrială a SUA a crescut constant, fiind astăzi cu 172% mai mare decât în 1970. Acest lucru demonstrează că America își păstrează o infrastructură fizică masivă și o bază solidă de manufactură de înaltă tehnologie.",
           indproChartTitle: "Indicele Producției Industriale a SUA (1970–2026, Bază 2017=100)",
           indproSource: "Sursă: Consiliul Guvernatorilor al Rezervei Federale / FRED (INDPRO)",
+          exportsImportsTitle: "Comerțul Global: Exporturile vs. Importurile SUA",
+          exportsImportsBody:
+            "Urmărirea fluxurilor comerciale arată amploarea integrării SUA în economia globală. Deși SUA rulează un deficit comercial structural începând cu anii 1970, volumul total al schimburilor comerciale a crescut masiv. În 2026, exporturile trimestriale au atins o rată anualizată de 3,5 trilioane $, în timp ce importurile au depășit 4,3 trilioane $, reflectând cererea masivă a consumatorilor americani și integrarea profundă a lanțurilor logistice globale.",
+          exportsImportsChartTitle: "Exporturi vs. Importuri de Bunuri și Servicii ale SUA (1970–2026)",
+          exportsImportsSource: "Sursă: Bureau of Economic Analysis (via FRED: EXPGS / IMPGS)",
         }
       : {
           heroAlt: "New York City financial district",
@@ -383,6 +390,11 @@ export default async function GdpGrowthPage() {
           indproBody: "The Industrial Production Index measures the real output of manufacturing, mining, and electric/gas utilities in the United States. Even as the U.S. transitioned toward a services-dominant economy, its total industrial output has expanded consistently, standing 172% higher today than in 1970. This underscores the massive physical industrial base that America retains behind its technology and service sectors.",
           indproChartTitle: "U.S. Industrial Production Index (1970–2026, Base 2017=100)",
           indproSource: "Source: Board of Governors of the Federal Reserve System / FRED (INDPRO)",
+          exportsImportsTitle: "Global Trade: U.S. Exports vs. Imports",
+          exportsImportsBody:
+            "Tracking trade flows reveals the scale of U.S. integration into the global economy. While the U.S. has run a structural trade deficit since the 1970s, overall trade volume has expanded dramatically. By 2026, quarterly exports reached an annualized rate of $3.5 trillion, while imports exceeded $4.3 trillion, reflecting robust consumer demand and deeply integrated global logistics chains.",
+          exportsImportsChartTitle: "U.S. Exports vs. Imports of Goods & Services (1970–2026)",
+          exportsImportsSource: "Source: Bureau of Economic Analysis (via FRED: EXPGS / IMPGS)",
         };
 
   return (
@@ -612,6 +624,23 @@ export default async function GdpGrowthPage() {
                 data={US_EXPORTS_BY_CATEGORY}
                 title={copy.exportsChartTitle}
                 source={copy.exportsSource}
+              />
+            </div>
+          </section>
+
+          {/* U.S. Exports vs Imports */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.exportsImportsTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.exportsImportsBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <ExportsImportsChart
+                data={US_EXPORTS_VS_IMPORTS}
+                title={copy.exportsImportsChartTitle}
+                source={copy.exportsImportsSource}
               />
             </div>
           </section>

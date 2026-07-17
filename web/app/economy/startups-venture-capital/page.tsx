@@ -21,6 +21,7 @@ import { BusinessFormationChart } from "@/components/data/BusinessFormationChart
 import { QuarterlySeriesChart } from "@/components/data/QuarterlySeriesChart";
 import { VcDryPowderChart } from "@/components/data/VcDryPowderChart";
 import { VcSectorFundingChart } from "@/components/data/VcSectorFundingChart";
+import { VcDealCountVolumeChart } from "@/components/data/VcDealCountVolumeChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -42,6 +43,7 @@ import {
   RD_META,
   VC_DRY_POWDER,
   VC_SECTOR_FUNDING,
+  VC_DEAL_COUNT_VOLUME,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -184,6 +186,11 @@ export default async function StartupsVCPage() {
             "Analiza investițiilor de venture capital pe sectoare arată direcția în care se îndreaptă viitoarea economie. Începând cu 2023, finanțarea pentru companiile de AI/ML a explodat de la 18 miliarde $ în 2020 la 88 miliarde $ în 2025, depășind pentru prima dată sectorul de software tradițional. Acesta este rezultatul direct al cursei globale pentru dezvoltarea modelelor lingvistice mari și a aplicațiilor generative.",
           vcSectorChartTitle: "Finanțarea VC în SUA pe Sectoare Principale (2020–2025, miliarde USD)",
           vcSectorSource: "Sursă: PitchBook-NVCA Venture Monitor",
+          vcActivityTitle: "Activitatea Deal-urilor: Volumul vs. Numărul de Tranzacții VC",
+          vcActivityBody:
+            "Evoluția de lungă durată a pieței de venture capital arată fazele de boom și corecție ale capitalismului tehnologic. De la vârful bulei dot-com din 2000, la anii de reconstrucție și boom-ul excepțional din 2021 (peste 18.500 de deal-uri totalizând 345 miliarde $), piața s-a stabilizat în 2024–2025 la un ritm sustenabil de peste 10.000 de tranzacții și ~142-150 miliarde $ investiți anual.",
+          vcActivityChartTitle: "Volumul Investițiilor vs. Numărul de Deal-uri VC în SUA (2000–2025)",
+          vcActivitySource: "Sursă: PitchBook-NVCA Venture Monitor",
           prevLink: "← Piețe de Capital",
           nextLink: "Dominația Dolarului →",
         }
@@ -260,6 +267,11 @@ export default async function StartupsVCPage() {
             "A breakdown of venture capital deployment by sector highlights where the future economy is being funded. Beginning in 2023, investment in Artificial Intelligence and Machine Learning (AI/ML) surged, rising from $18 billion in 2020 to $88 billion in 2025, eclipsing traditional enterprise software for the first time in history as funds rushed to back foundation models and generative applications.",
           vcSectorChartTitle: "U.S. Venture Capital Funding by Key Industry Sector (2020–2025)",
           vcSectorSource: "Source: PitchBook-NVCA Venture Monitor",
+          vcActivityTitle: "Deal Activity: Venture Capital Volume vs. Transaction Count",
+          vcActivityBody:
+            "The long-term evolution of the venture capital market traces the waves of technological cycles. From the dot-com peak in 2000, through the slow rebuilding years, to the massive post-COVID boom of 2021 (over 18,500 deals deploying $345 billion), the market has normalized in 2024–2025 to a sustainable baseline of over 10,000 transactions and ~$142-150 billion deployed annually.",
+          vcActivityChartTitle: "U.S. Venture Capital Deployed Capital vs. Deal Count (2000–2025)",
+          vcActivitySource: "Source: PitchBook-NVCA Venture Monitor",
           prevLink: "← Capital Markets",
           nextLink: "Dollar Dominance →",
         };
@@ -452,6 +464,23 @@ export default async function StartupsVCPage() {
                 data={VC_SECTOR_FUNDING}
                 title={copy.vcSectorChartTitle}
                 source={copy.vcSectorSource}
+              />
+            </div>
+          </section>
+
+          {/* VC Deal Activity (Count vs Volume) */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.vcActivityTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.vcActivityBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <VcDealCountVolumeChart
+                data={VC_DEAL_COUNT_VOLUME}
+                title={copy.vcActivityChartTitle}
+                source={copy.vcActivitySource}
               />
             </div>
           </section>
