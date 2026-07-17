@@ -15,6 +15,7 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { SP500Chart } from "@/components/data/SP500Chart";
+import { NasdaqChart } from "@/components/data/NasdaqChart";
 import { MarketCapChart } from "@/components/data/DollarMarketCharts";
 import { BondMarketChart } from "@/components/data/BondMarketChart";
 import { TreasuryYieldChart } from "@/components/data/TreasuryYieldChart";
@@ -49,6 +50,8 @@ import {
   RECESSIONS,
   CORPORATE_PROFITS,
   CORPORATE_PROFITS_META,
+  NASDAQ_COMPOSITE,
+  NASDAQ_META,
   FED_BALANCE_SHEET,
   M2_MONEY_SUPPLY,
   FED_FUNDS_VS_INFLATION,
@@ -182,6 +185,11 @@ export default async function CapitalMarketsPage() {
             "Niciun indice nu este urmărit mai atent. Niciun indice nu este replicat mai larg. S&P 500 urmărește cele mai mari 500 de companii americane listate public — iar performanța lui este, de facto, fișa de evaluare a prosperității capitaliste globale. Din 1980, a generat randamente totale de peste 9.000%.",
           benchmarkChartTitle:
             "S&P 500 — 46 de ani de performanță a piețelor americane de capital",
+          nasdaqTitle: "Prețul tehnologiei americane",
+          nasdaqBody:
+            "Dacă S&P 500 este fișa de evaluare a capitalismului american, Nasdaq este cea a tehnologiei americane: bursa unde sunt listate Apple, Microsoft, NVIDIA, Alphabet, Amazon și Meta. Indicele a pornit de la 100 în 1971 și este acum în jur de 26.000, de aproximativ 261 de ori mai mare. Însă linia nu este o ascensiune lină, iar acesta este chiar rostul ei: a coborât la 58,6 în piața ursului din 1974, iar după vârful dot-com din martie 2000 a pierdut aproximativ trei sferturi din valoare și nu și-a revenit la acel nivel decât în 2015. Scara logaritmică este cea implicită pentru că este singura pe care primii treizeci de ani sunt vizibili — comută pe liniar și vezi de ce.",
+          nasdaqChartTitle: "Nasdaq Composite, din 1971",
+          nasdaqChartSubtitle: "Media lunară; comută între scara logaritmică și cea liniară",
           vixTitle: "Indicele fricii",
           vixBody:
             "VIX măsoară cât de multă turbulență se așteaptă piața în următoarele 30 de zile. În anii liniștiți stă în jurul valorii de 15. În momentele de panică, explodează: 80,86 în noiembrie 2008 și 82,69 pe 16 martie 2020, recordul absolut. Graficul de mai jos arată exact unde s-a rupt încrederea, de fiecare dată din 1990 încoace.",
@@ -281,6 +289,11 @@ export default async function CapitalMarketsPage() {
             "No index is watched more closely. No index is replicated more widely. The S&P 500 tracks the 500 largest publicly traded US companies — and its performance is the world's de facto report card on capitalist prosperity. Since 1980, it has delivered total returns exceeding 9,000%.",
           benchmarkChartTitle:
             "S&P 500 — 46 Years of American Capital Market Performance",
+        nasdaqTitle: "The Price of American Technology",
+        nasdaqBody:
+          "If the S&P 500 is the scorecard of American capitalism, the Nasdaq is the scorecard of American technology: the exchange where Apple, Microsoft, NVIDIA, Alphabet, Amazon and Meta all list. The index opened at 100 in 1971 and now sits around 26,000 — roughly 261 times higher. But the line is not a smooth ascent, and that is the point: it fell to 58.6 in the 1974 bear market, and after the dot-com peak in March 2000 it lost roughly three-quarters of its value and did not regain that level until 2015. The logarithmic scale is the default because it is the only one where the first thirty years are visible at all — switch to linear and you will see why.",
+        nasdaqChartTitle: "The Nasdaq Composite, since 1971",
+        nasdaqChartSubtitle: "Monthly average; toggle between logarithmic and linear scale",
         vixTitle: "The Fear Index",
         vixBody:
           "The VIX measures how much turbulence the market expects over the next 30 days. In quiet years it sits around 15. In moments of panic it detonates: 80.86 in November 2008, and 82.69 on 16 March 2020, the all-time record. The chart below shows exactly where confidence broke, every time since 1990.",
@@ -419,6 +432,24 @@ export default async function CapitalMarketsPage() {
                 data={SP500_HISTORY}
                 title={copy.benchmarkChartTitle}
                 source="S&P Global / Yahoo Finance"
+              />
+            </div>
+          </section>
+
+          {/* The tech index, next to the broad one it keeps outrunning */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.nasdaqTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.nasdaqBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <NasdaqChart
+                data={NASDAQ_COMPOSITE}
+                title={copy.nasdaqChartTitle}
+                subtitle={copy.nasdaqChartSubtitle}
+                source={NASDAQ_META.source}
               />
             </div>
           </section>

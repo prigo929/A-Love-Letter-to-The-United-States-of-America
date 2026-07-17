@@ -28,6 +28,7 @@ import { GdpAnnualGrowthChart } from "@/components/data/GdpAnnualGrowthChart";
 import { ExportsByCategoryChart } from "@/components/data/ExportsByCategoryChart";
 import { LaborProductivityChart } from "@/components/data/LaborProductivityChart";
 import { StateGdpMap } from "@/components/data/StateGdpMap";
+import { UnemploymentChart } from "@/components/data/UnemploymentChart";
 import { DebtToGdpChart } from "@/components/data/DebtToGdpChart";
 import { RealGdpPerCapitaChart } from "@/components/data/RealGdpPerCapitaChart";
 import { DeficitToGdpChart } from "@/components/data/DeficitToGdpChart";
@@ -53,6 +54,9 @@ import {
   LABOR_PRODUCTIVITY_COMPARISON,
   STATE_GDP,
   STATE_GDP_META,
+  US_UNEMPLOYMENT,
+  US_UNEMPLOYMENT_META,
+  RECESSIONS,
   US_DEBT_TO_GDP,
   US_REAL_GDP_PER_CAPITA,
   US_FEDERAL_DEFICIT,
@@ -177,6 +181,11 @@ export default async function GdpGrowthPage() {
             "Restul acestei pagini prezintă instantanee: cine este cel mai mare astăzi. Aceasta arată cum s-a ajuns acolo. Din 1929, când începe seria oficială, economia americană s-a mărit de douăzeci de ori în termeni reali — nu prin salturi, ci prin compunere, an după an, prin Marea Criză, un război mondial, două crize petroliere, o criză financiară și o pandemie.",
           growthChartTitle: "PIB-ul SUA din 1929",
           growthChartSubtitle: "Comută între real (inflația eliminată) și nominal",
+          joblessTitle: "Cealaltă față a cifrei",
+          joblessBody:
+            "Fiecare grafic de mai sus măsoară ce produce America. Acesta măsoară cine rămâne în afara producției și este completarea onestă a unei curbe care altfel doar urcă. Bilanțul este cu adevărat bun: șomajul a petrecut cea mai mare parte a erei postbelice între 4% și 6%, iar astăzi este aproape de 4%. Dar seria refuză să fie o linie dreaptă. A atins 14,8% în aprilie 2020, cel mai ridicat nivel înregistrat vreodată, când economia a fost oprită deliberat — și apoi și-a revenit mai repede decât după orice șoc anterior, în luni, nu în anii de care a fost nevoie după recesiunea din 1982.",
+          joblessChartTitle: "Rata șomajului în SUA, din 1948",
+          joblessChartSubtitle: "Lunar; zonele umbrite marchează recesiunile datate de NBER",
           stateMapIntro:
             "Cifra națională ascunde cât de concentrată este: cinci state reprezintă aproximativ 41% din tot ce produce țara. Scara de mai jos este logaritmică — California produce de aproape nouăzeci de ori cât Vermont, iar pe o scară liniară toate statele în afară de primele trei ar dispărea în aceeași nuanță.",
           stateMapTitle: "PIB nominal pe state, 2025",
@@ -299,6 +308,11 @@ export default async function GdpGrowthPage() {
           "The rest of this page is snapshots: who is biggest today. This is how it got there. Since 1929, where the official series begins, the American economy has grown twenty times over in real terms — not in leaps, but by compounding, year after year, through the Depression, a world war, two oil shocks, a financial crisis, and a pandemic.",
         growthChartTitle: "U.S. GDP since 1929",
         growthChartSubtitle: "Toggle between real (inflation removed) and nominal",
+        joblessTitle: "The Other Side of the Number",
+        joblessBody:
+          "Every chart above measures what America produces. This one measures who is left out of producing it, and it is the honest companion to a curve that otherwise only ever climbs. The record is genuinely good: unemployment has spent most of the post-war era between 4% and 6%, and it sits near 4% today. But the series refuses to be a straight line. It hit 14.8% in April 2020, the highest ever recorded, when the economy was switched off deliberately — and then recovered faster than after any previous shock, in months rather than the years the 1982 recession took.",
+        joblessChartTitle: "U.S. unemployment rate, since 1948",
+        joblessChartSubtitle: "Monthly; shaded bands mark NBER-dated recessions",
         stateMapIntro:
           "The national figure hides how concentrated it is: five states account for roughly 41% of everything the country makes. The scale below is logarithmic — California produces nearly ninety times what Vermont does, and on a straight ramp every state but the largest three would vanish into the same shade.",
         stateMapTitle: "Nominal GDP by state, 2025",
@@ -448,6 +462,25 @@ export default async function GdpGrowthPage() {
                 subtitle={copy.growthChartSubtitle}
                 source={GDP_HISTORY_META.source}
                 realBase={GDP_HISTORY_META.realBase}
+              />
+            </div>
+          </section>
+
+          {/* The counterweight to the GDP curve: who isn't in it */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.joblessTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.joblessBody}
+            </p>
+            <div className="my-24">
+              <UnemploymentChart
+                data={US_UNEMPLOYMENT}
+                recessions={RECESSIONS}
+                title={copy.joblessChartTitle}
+                subtitle={copy.joblessChartSubtitle}
+                source={US_UNEMPLOYMENT_META.source}
               />
             </div>
           </section>

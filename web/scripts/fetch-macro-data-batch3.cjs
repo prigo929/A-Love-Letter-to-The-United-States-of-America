@@ -1,6 +1,14 @@
 const https = require('https');
 
-const API_KEY = 'a9e0add15af0d4b1144f1950859cfb95';
+// The FRED API key is read from the environment, never hardcoded. This file
+// previously contained the key literally, which committed it to git history and
+// pushed it to a public GitHub repo — see the note in scripts/README-fred.md.
+// Run with:  FRED_API_KEY=... node scripts/<this-file>
+const API_KEY = process.env.FRED_API_KEY;
+if (!API_KEY) {
+  console.error('FRED_API_KEY is not set. Run: FRED_API_KEY=<key> node ' + __filename);
+  process.exit(1);
+}
 
 function fetchSeries(seriesId, startYear = 1970) {
   const url = `https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${API_KEY}&file_type=json&observation_start=${startYear}-01-01`;

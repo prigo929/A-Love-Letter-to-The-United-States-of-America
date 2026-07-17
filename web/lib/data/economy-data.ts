@@ -5246,2876 +5246,734 @@ export const CORPORATE_PROFITS_META = {
 } as const;
 
 export interface DebtToGdpPoint { year: number; debt: number; }
-export const US_DEBT_TO_GDP: DebtToGdpPoint[] =  [
-  {
-    "year": 1970,
-    "debt": 35.2
-  },
-  {
-    "year": 1971,
-    "debt": 34.9
-  },
-  {
-    "year": 1972,
-    "debt": 33.9
-  },
-  {
-    "year": 1973,
-    "debt": 32.4
-  },
-  {
-    "year": 1974,
-    "debt": 31.1
-  },
-  {
-    "year": 1975,
-    "debt": 32.2
-  },
-  {
-    "year": 1976,
-    "debt": 33.5
-  },
-  {
-    "year": 1977,
-    "debt": 33.2
-  },
-  {
-    "year": 1978,
-    "debt": 32.4
-  },
-  {
-    "year": 1979,
-    "debt": 31.2
-  },
-  {
-    "year": 1980,
-    "debt": 31.3
-  },
-  {
-    "year": 1981,
-    "debt": 30.9
-  },
-  {
-    "year": 1982,
-    "debt": 33.5
-  },
-  {
-    "year": 1983,
-    "debt": 36.8
-  },
-  {
-    "year": 1984,
-    "debt": 38.4
-  },
-  {
-    "year": 1985,
-    "debt": 41.8
-  },
-  {
-    "year": 1986,
-    "debt": 45.8
-  },
-  {
-    "year": 1987,
-    "debt": 48.1
-  },
-  {
-    "year": 1988,
-    "debt": 49.3
-  },
-  {
-    "year": 1989,
-    "debt": 50.3
-  },
-  {
-    "year": 1990,
-    "debt": 53.6
-  },
-  {
-    "year": 1991,
-    "debt": 58.7
-  },
-  {
-    "year": 1992,
-    "debt": 61.7
-  },
-  {
-    "year": 1993,
-    "debt": 63.9
-  },
-  {
-    "year": 1994,
-    "debt": 64.2
-  },
-  {
-    "year": 1995,
-    "debt": 64.7
-  },
-  {
-    "year": 1996,
-    "debt": 64.5
-  },
-  {
-    "year": 1997,
-    "debt": 63.2
-  },
-  {
-    "year": 1998,
-    "debt": 61.3
-  },
-  {
-    "year": 1999,
-    "debt": 59
-  },
-  {
-    "year": 2000,
-    "debt": 55.6
-  },
-  {
-    "year": 2001,
-    "debt": 54.9
-  },
-  {
-    "year": 2002,
-    "debt": 56.6
-  },
-  {
-    "year": 2003,
-    "debt": 58.7
-  },
-  {
-    "year": 2004,
-    "debt": 60.1
-  },
-  {
-    "year": 2005,
-    "debt": 60.8
-  },
-  {
-    "year": 2006,
-    "debt": 61.5
-  },
-  {
-    "year": 2007,
-    "debt": 62.1
-  },
-  {
-    "year": 2008,
-    "debt": 67.1
-  },
-  {
-    "year": 2009,
-    "debt": 81
-  },
-  {
-    "year": 2010,
-    "debt": 89
-  },
-  {
-    "year": 2011,
-    "debt": 93.9
-  },
-  {
-    "year": 2012,
-    "debt": 98.4
-  },
-  {
-    "year": 2013,
-    "debt": 99.8
-  },
-  {
-    "year": 2014,
-    "debt": 101.1
-  },
-  {
-    "year": 2015,
-    "debt": 100.3
-  },
-  {
-    "year": 2016,
-    "debt": 104
-  },
-  {
-    "year": 2017,
-    "debt": 102.5
-  },
-  {
-    "year": 2018,
-    "debt": 103.8
-  },
-  {
-    "year": 2019,
-    "debt": 104.4
-  },
-  {
-    "year": 2020,
-    "debt": 122.3
-  },
-  {
-    "year": 2021,
-    "debt": 120.9
-  },
-  {
-    "year": 2022,
-    "debt": 118.4
-  },
-  {
-    "year": 2023,
-    "debt": 117.7
-  },
-  {
-    "year": 2024,
-    "debt": 120.4
-  },
-  {
-    "year": 2025,
-    "debt": 120.7
-  },
-  {
-    "year": 2026,
-    "debt": 122.6
-  }
+export const US_DEBT_TO_GDP: DebtToGdpPoint[] = [
+  { year: 1970, debt: 35.2 },
+  { year: 1971, debt: 34.9 },
+  { year: 1972, debt: 33.9 },
+  { year: 1973, debt: 32.4 },
+  { year: 1974, debt: 31.1 },
+  { year: 1975, debt: 32.2 },
+  { year: 1976, debt: 33.5 },
+  { year: 1977, debt: 33.2 },
+  { year: 1978, debt: 32.4 },
+  { year: 1979, debt: 31.2 },
+  { year: 1980, debt: 31.3 },
+  { year: 1981, debt: 30.9 },
+  { year: 1982, debt: 33.5 },
+  { year: 1983, debt: 36.8 },
+  { year: 1984, debt: 38.4 },
+  { year: 1985, debt: 41.8 },
+  { year: 1986, debt: 45.8 },
+  { year: 1987, debt: 48.1 },
+  { year: 1988, debt: 49.3 },
+  { year: 1989, debt: 50.3 },
+  { year: 1990, debt: 53.6 },
+  { year: 1991, debt: 58.7 },
+  { year: 1992, debt: 61.7 },
+  { year: 1993, debt: 63.9 },
+  { year: 1994, debt: 64.2 },
+  { year: 1995, debt: 64.7 },
+  { year: 1996, debt: 64.5 },
+  { year: 1997, debt: 63.2 },
+  { year: 1998, debt: 61.3 },
+  { year: 1999, debt: 59 },
+  { year: 2000, debt: 55.6 },
+  { year: 2001, debt: 54.9 },
+  { year: 2002, debt: 56.6 },
+  { year: 2003, debt: 58.7 },
+  { year: 2004, debt: 60.1 },
+  { year: 2005, debt: 60.8 },
+  { year: 2006, debt: 61.5 },
+  { year: 2007, debt: 62.1 },
+  { year: 2008, debt: 67.1 },
+  { year: 2009, debt: 81 },
+  { year: 2010, debt: 89 },
+  { year: 2011, debt: 93.9 },
+  { year: 2012, debt: 98.4 },
+  { year: 2013, debt: 99.8 },
+  { year: 2014, debt: 101.1 },
+  { year: 2015, debt: 100.3 },
+  { year: 2016, debt: 104 },
+  { year: 2017, debt: 102.5 },
+  { year: 2018, debt: 103.8 },
+  { year: 2019, debt: 104.4 },
+  { year: 2020, debt: 122.3 },
+  { year: 2021, debt: 120.9 },
+  { year: 2022, debt: 118.4 },
+  { year: 2023, debt: 117.7 },
+  { year: 2024, debt: 120.4 },
+  { year: 2025, debt: 120.7 },
+  { year: 2026, debt: 122.6 }
 ];
 
 export interface RealGdpPerCapitaPoint { year: number; gdp: number; }
-export const US_REAL_GDP_PER_CAPITA: RealGdpPerCapitaPoint[] =  [
-  {
-    "year": 1970,
-    "gdp": 25923
-  },
-  {
-    "year": 1971,
-    "gdp": 26440
-  },
-  {
-    "year": 1972,
-    "gdp": 27533
-  },
-  {
-    "year": 1973,
-    "gdp": 28812
-  },
-  {
-    "year": 1974,
-    "gdp": 28394
-  },
-  {
-    "year": 1975,
-    "gdp": 28061
-  },
-  {
-    "year": 1976,
-    "gdp": 29288
-  },
-  {
-    "year": 1977,
-    "gdp": 30336
-  },
-  {
-    "year": 1978,
-    "gdp": 31678
-  },
-  {
-    "year": 1979,
-    "gdp": 32323
-  },
-  {
-    "year": 1980,
-    "gdp": 31869
-  },
-  {
-    "year": 1981,
-    "gdp": 32354
-  },
-  {
-    "year": 1982,
-    "gdp": 31468
-  },
-  {
-    "year": 1983,
-    "gdp": 32611
-  },
-  {
-    "year": 1984,
-    "gdp": 34667
-  },
-  {
-    "year": 1985,
-    "gdp": 35793
-  },
-  {
-    "year": 1986,
-    "gdp": 36698
-  },
-  {
-    "year": 1987,
-    "gdp": 37627
-  },
-  {
-    "year": 1988,
-    "gdp": 38844
-  },
-  {
-    "year": 1989,
-    "gdp": 39893
-  },
-  {
-    "year": 1990,
-    "gdp": 40192
-  },
-  {
-    "year": 1991,
-    "gdp": 39617
-  },
-  {
-    "year": 1992,
-    "gdp": 40470
-  },
-  {
-    "year": 1993,
-    "gdp": 41048
-  },
-  {
-    "year": 1994,
-    "gdp": 42187
-  },
-  {
-    "year": 1995,
-    "gdp": 42811
-  },
-  {
-    "year": 1996,
-    "gdp": 43910
-  },
-  {
-    "year": 1997,
-    "gdp": 45318
-  },
-  {
-    "year": 1998,
-    "gdp": 46802
-  },
-  {
-    "year": 1999,
-    "gdp": 48485
-  },
-  {
-    "year": 2000,
-    "gdp": 49915
-  },
-  {
-    "year": 2001,
-    "gdp": 49893
-  },
-  {
-    "year": 2002,
-    "gdp": 50260
-  },
-  {
-    "year": 2003,
-    "gdp": 51189
-  },
-  {
-    "year": 2004,
-    "gdp": 52681
-  },
-  {
-    "year": 2005,
-    "gdp": 54014
-  },
-  {
-    "year": 2006,
-    "gdp": 54994
-  },
-  {
-    "year": 2007,
-    "gdp": 55560
-  },
-  {
-    "year": 2008,
-    "gdp": 55105
-  },
-  {
-    "year": 2009,
-    "gdp": 53213
-  },
-  {
-    "year": 2010,
-    "gdp": 54188
-  },
-  {
-    "year": 2011,
-    "gdp": 54603
-  },
-  {
-    "year": 2012,
-    "gdp": 55422
-  },
-  {
-    "year": 2013,
-    "gdp": 56172
-  },
-  {
-    "year": 2014,
-    "gdp": 57138
-  },
-  {
-    "year": 2015,
-    "gdp": 58363
-  },
-  {
-    "year": 2016,
-    "gdp": 58968
-  },
-  {
-    "year": 2017,
-    "gdp": 60001
-  },
-  {
-    "year": 2018,
-    "gdp": 61418
-  },
-  {
-    "year": 2019,
-    "gdp": 62677
-  },
-  {
-    "year": 2020,
-    "gdp": 61127
-  },
-  {
-    "year": 2021,
-    "gdp": 64758
-  },
-  {
-    "year": 2022,
-    "gdp": 66026
-  },
-  {
-    "year": 2023,
-    "gdp": 67411
-  },
-  {
-    "year": 2024,
-    "gdp": 68681
-  },
-  {
-    "year": 2025,
-    "gdp": 69749
-  },
-  {
-    "year": 2026,
-    "gdp": 70583
-  }
+export const US_REAL_GDP_PER_CAPITA: RealGdpPerCapitaPoint[] = [
+  { year: 1970, gdp: 25923 },
+  { year: 1971, gdp: 26440 },
+  { year: 1972, gdp: 27533 },
+  { year: 1973, gdp: 28812 },
+  { year: 1974, gdp: 28394 },
+  { year: 1975, gdp: 28061 },
+  { year: 1976, gdp: 29288 },
+  { year: 1977, gdp: 30336 },
+  { year: 1978, gdp: 31678 },
+  { year: 1979, gdp: 32323 },
+  { year: 1980, gdp: 31869 },
+  { year: 1981, gdp: 32354 },
+  { year: 1982, gdp: 31468 },
+  { year: 1983, gdp: 32611 },
+  { year: 1984, gdp: 34667 },
+  { year: 1985, gdp: 35793 },
+  { year: 1986, gdp: 36698 },
+  { year: 1987, gdp: 37627 },
+  { year: 1988, gdp: 38844 },
+  { year: 1989, gdp: 39893 },
+  { year: 1990, gdp: 40192 },
+  { year: 1991, gdp: 39617 },
+  { year: 1992, gdp: 40470 },
+  { year: 1993, gdp: 41048 },
+  { year: 1994, gdp: 42187 },
+  { year: 1995, gdp: 42811 },
+  { year: 1996, gdp: 43910 },
+  { year: 1997, gdp: 45318 },
+  { year: 1998, gdp: 46802 },
+  { year: 1999, gdp: 48485 },
+  { year: 2000, gdp: 49915 },
+  { year: 2001, gdp: 49893 },
+  { year: 2002, gdp: 50260 },
+  { year: 2003, gdp: 51189 },
+  { year: 2004, gdp: 52681 },
+  { year: 2005, gdp: 54014 },
+  { year: 2006, gdp: 54994 },
+  { year: 2007, gdp: 55560 },
+  { year: 2008, gdp: 55105 },
+  { year: 2009, gdp: 53213 },
+  { year: 2010, gdp: 54188 },
+  { year: 2011, gdp: 54603 },
+  { year: 2012, gdp: 55422 },
+  { year: 2013, gdp: 56172 },
+  { year: 2014, gdp: 57138 },
+  { year: 2015, gdp: 58363 },
+  { year: 2016, gdp: 58968 },
+  { year: 2017, gdp: 60001 },
+  { year: 2018, gdp: 61418 },
+  { year: 2019, gdp: 62677 },
+  { year: 2020, gdp: 61127 },
+  { year: 2021, gdp: 64758 },
+  { year: 2022, gdp: 66026 },
+  { year: 2023, gdp: 67411 },
+  { year: 2024, gdp: 68681 },
+  { year: 2025, gdp: 69749 },
+  { year: 2026, gdp: 70583 }
 ];
 
 
 export interface FedBalanceSheetPoint { month: string; assets: number; }
-export const FED_BALANCE_SHEET: FedBalanceSheetPoint[] =  [
-  {
-    "month": "2003-01",
-    "assets": 725
-  },
-  {
-    "month": "2003-02",
-    "assets": 721
-  },
-  {
-    "month": "2003-03",
-    "assets": 724
-  },
-  {
-    "month": "2003-04",
-    "assets": 737
-  },
-  {
-    "month": "2003-05",
-    "assets": 738
-  },
-  {
-    "month": "2003-06",
-    "assets": 739
-  },
-  {
-    "month": "2003-07",
-    "assets": 742
-  },
-  {
-    "month": "2003-08",
-    "assets": 740
-  },
-  {
-    "month": "2003-09",
-    "assets": 743
-  },
-  {
-    "month": "2003-10",
-    "assets": 747
-  },
-  {
-    "month": "2003-11",
-    "assets": 748
-  },
-  {
-    "month": "2003-12",
-    "assets": 760
-  },
-  {
-    "month": "2004-01",
-    "assets": 760
-  },
-  {
-    "month": "2004-02",
-    "assets": 754
-  },
-  {
-    "month": "2004-03",
-    "assets": 756
-  },
-  {
-    "month": "2004-04",
-    "assets": 762
-  },
-  {
-    "month": "2004-05",
-    "assets": 763
-  },
-  {
-    "month": "2004-06",
-    "assets": 771
-  },
-  {
-    "month": "2004-07",
-    "assets": 776
-  },
-  {
-    "month": "2004-08",
-    "assets": 771
-  },
-  {
-    "month": "2004-09",
-    "assets": 786
-  },
-  {
-    "month": "2004-10",
-    "assets": 788
-  },
-  {
-    "month": "2004-11",
-    "assets": 799
-  },
-  {
-    "month": "2004-12",
-    "assets": 809
-  },
-  {
-    "month": "2005-01",
-    "assets": 807
-  },
-  {
-    "month": "2005-02",
-    "assets": 801
-  },
-  {
-    "month": "2005-03",
-    "assets": 802
-  },
-  {
-    "month": "2005-04",
-    "assets": 804
-  },
-  {
-    "month": "2005-05",
-    "assets": 806
-  },
-  {
-    "month": "2005-06",
-    "assets": 813
-  },
-  {
-    "month": "2005-07",
-    "assets": 815
-  },
-  {
-    "month": "2005-08",
-    "assets": 815
-  },
-  {
-    "month": "2005-09",
-    "assets": 821
-  },
-  {
-    "month": "2005-10",
-    "assets": 819
-  },
-  {
-    "month": "2005-11",
-    "assets": 826
-  },
-  {
-    "month": "2005-12",
-    "assets": 840
-  },
-  {
-    "month": "2006-01",
-    "assets": 837
-  },
-  {
-    "month": "2006-02",
-    "assets": 834
-  },
-  {
-    "month": "2006-03",
-    "assets": 839
-  },
-  {
-    "month": "2006-04",
-    "assets": 838
-  },
-  {
-    "month": "2006-05",
-    "assets": 842
-  },
-  {
-    "month": "2006-06",
-    "assets": 846
-  },
-  {
-    "month": "2006-07",
-    "assets": 847
-  },
-  {
-    "month": "2006-08",
-    "assets": 844
-  },
-  {
-    "month": "2006-09",
-    "assets": 844
-  },
-  {
-    "month": "2006-10",
-    "assets": 850
-  },
-  {
-    "month": "2006-11",
-    "assets": 858
-  },
-  {
-    "month": "2006-12",
-    "assets": 863
-  },
-  {
-    "month": "2007-01",
-    "assets": 861
-  },
-  {
-    "month": "2007-02",
-    "assets": 867
-  },
-  {
-    "month": "2007-03",
-    "assets": 868
-  },
-  {
-    "month": "2007-04",
-    "assets": 867
-  },
-  {
-    "month": "2007-05",
-    "assets": 875
-  },
-  {
-    "month": "2007-06",
-    "assets": 867
-  },
-  {
-    "month": "2007-07",
-    "assets": 871
-  },
-  {
-    "month": "2007-08",
-    "assets": 867
-  },
-  {
-    "month": "2007-09",
-    "assets": 879
-  },
-  {
-    "month": "2007-10",
-    "assets": 878
-  },
-  {
-    "month": "2007-11",
-    "assets": 886
-  },
-  {
-    "month": "2007-12",
-    "assets": 886
-  },
-  {
-    "month": "2008-01",
-    "assets": 895
-  },
-  {
-    "month": "2008-02",
-    "assets": 882
-  },
-  {
-    "month": "2008-03",
-    "assets": 890
-  },
-  {
-    "month": "2008-04",
-    "assets": 887
-  },
-  {
-    "month": "2008-05",
-    "assets": 893
-  },
-  {
-    "month": "2008-06",
-    "assets": 895
-  },
-  {
-    "month": "2008-07",
-    "assets": 906
-  },
-  {
-    "month": "2008-08",
-    "assets": 906
-  },
-  {
-    "month": "2008-09",
-    "assets": 1009
-  },
-  {
-    "month": "2008-10",
-    "assets": 1728
-  },
-  {
-    "month": "2008-11",
-    "assets": 2145
-  },
-  {
-    "month": "2008-12",
-    "assets": 2223
-  },
-  {
-    "month": "2009-01",
-    "assets": 2034
-  },
-  {
-    "month": "2009-02",
-    "assets": 1882
-  },
-  {
-    "month": "2009-03",
-    "assets": 1985
-  },
-  {
-    "month": "2009-04",
-    "assets": 2124
-  },
-  {
-    "month": "2009-05",
-    "assets": 2134
-  },
-  {
-    "month": "2009-06",
-    "assets": 2057
-  },
-  {
-    "month": "2009-07",
-    "assets": 2022
-  },
-  {
-    "month": "2009-08",
-    "assets": 2035
-  },
-  {
-    "month": "2009-09",
-    "assets": 2122
-  },
-  {
-    "month": "2009-10",
-    "assets": 2173
-  },
-  {
-    "month": "2009-11",
-    "assets": 2179
-  },
-  {
-    "month": "2009-12",
-    "assets": 2219
-  },
-  {
-    "month": "2010-01",
-    "assets": 2256
-  },
-  {
-    "month": "2010-02",
-    "assets": 2267
-  },
-  {
-    "month": "2010-03",
-    "assets": 2298
-  },
-  {
-    "month": "2010-04",
-    "assets": 2329
-  },
-  {
-    "month": "2010-05",
-    "assets": 2337
-  },
-  {
-    "month": "2010-06",
-    "assets": 2337
-  },
-  {
-    "month": "2010-07",
-    "assets": 2333
-  },
-  {
-    "month": "2010-08",
-    "assets": 2317
-  },
-  {
-    "month": "2010-09",
-    "assets": 2302
-  },
-  {
-    "month": "2010-10",
-    "assets": 2305
-  },
-  {
-    "month": "2010-11",
-    "assets": 2318
-  },
-  {
-    "month": "2010-12",
-    "assets": 2393
-  },
-  {
-    "month": "2011-01",
-    "assets": 2443
-  },
-  {
-    "month": "2011-02",
-    "assets": 2503
-  },
-  {
-    "month": "2011-03",
-    "assets": 2586
-  },
-  {
-    "month": "2011-04",
-    "assets": 2673
-  },
-  {
-    "month": "2011-05",
-    "assets": 2749
-  },
-  {
-    "month": "2011-06",
-    "assets": 2830
-  },
-  {
-    "month": "2011-07",
-    "assets": 2871
-  },
-  {
-    "month": "2011-08",
-    "assets": 2862
-  },
-  {
-    "month": "2011-09",
-    "assets": 2858
-  },
-  {
-    "month": "2011-10",
-    "assets": 2855
-  },
-  {
-    "month": "2011-11",
-    "assets": 2826
-  },
-  {
-    "month": "2011-12",
-    "assets": 2891
-  },
-  {
-    "month": "2012-01",
-    "assets": 2914
-  },
-  {
-    "month": "2012-02",
-    "assets": 2930
-  },
-  {
-    "month": "2012-03",
-    "assets": 2887
-  },
-  {
-    "month": "2012-04",
-    "assets": 2869
-  },
-  {
-    "month": "2012-05",
-    "assets": 2856
-  },
-  {
-    "month": "2012-06",
-    "assets": 2864
-  },
-  {
-    "month": "2012-07",
-    "assets": 2859
-  },
-  {
-    "month": "2012-08",
-    "assets": 2836
-  },
-  {
-    "month": "2012-09",
-    "assets": 2818
-  },
-  {
-    "month": "2012-10",
-    "assets": 2826
-  },
-  {
-    "month": "2012-11",
-    "assets": 2858
-  },
-  {
-    "month": "2012-12",
-    "assets": 2901
-  },
-  {
-    "month": "2013-01",
-    "assets": 2966
-  },
-  {
-    "month": "2013-02",
-    "assets": 3069
-  },
-  {
-    "month": "2013-03",
-    "assets": 3171
-  },
-  {
-    "month": "2013-04",
-    "assets": 3264
-  },
-  {
-    "month": "2013-05",
-    "assets": 3356
-  },
-  {
-    "month": "2013-06",
-    "assets": 3440
-  },
-  {
-    "month": "2013-07",
-    "assets": 3536
-  },
-  {
-    "month": "2013-08",
-    "assets": 3630
-  },
-  {
-    "month": "2013-09",
-    "assets": 3693
-  },
-  {
-    "month": "2013-10",
-    "assets": 3800
-  },
-  {
-    "month": "2013-11",
-    "assets": 3898
-  },
-  {
-    "month": "2013-12",
-    "assets": 3992
-  },
-  {
-    "month": "2014-01",
-    "assets": 4065
-  },
-  {
-    "month": "2014-02",
-    "assets": 4134
-  },
-  {
-    "month": "2014-03",
-    "assets": 4201
-  },
-  {
-    "month": "2014-04",
-    "assets": 4271
-  },
-  {
-    "month": "2014-05",
-    "assets": 4323
-  },
-  {
-    "month": "2014-06",
-    "assets": 4352
-  },
-  {
-    "month": "2014-07",
-    "assets": 4395
-  },
-  {
-    "month": "2014-08",
-    "assets": 4417
-  },
-  {
-    "month": "2014-09",
-    "assets": 4436
-  },
-  {
-    "month": "2014-10",
-    "assets": 4470
-  },
-  {
-    "month": "2014-11",
-    "assets": 4489
-  },
-  {
-    "month": "2014-12",
-    "assets": 4497
-  },
-  {
-    "month": "2015-01",
-    "assets": 4507
-  },
-  {
-    "month": "2015-02",
-    "assets": 4496
-  },
-  {
-    "month": "2015-03",
-    "assets": 4488
-  },
-  {
-    "month": "2015-04",
-    "assets": 4482
-  },
-  {
-    "month": "2015-05",
-    "assets": 4480
-  },
-  {
-    "month": "2015-06",
-    "assets": 4479
-  },
-  {
-    "month": "2015-07",
-    "assets": 4488
-  },
-  {
-    "month": "2015-08",
-    "assets": 4484
-  },
-  {
-    "month": "2015-09",
-    "assets": 4485
-  },
-  {
-    "month": "2015-10",
-    "assets": 4495
-  },
-  {
-    "month": "2015-11",
-    "assets": 4486
-  },
-  {
-    "month": "2015-12",
-    "assets": 4486
-  },
-  {
-    "month": "2016-01",
-    "assets": 4490
-  },
-  {
-    "month": "2016-02",
-    "assets": 4486
-  },
-  {
-    "month": "2016-03",
-    "assets": 4484
-  },
-  {
-    "month": "2016-04",
-    "assets": 4487
-  },
-  {
-    "month": "2016-05",
-    "assets": 4473
-  },
-  {
-    "month": "2016-06",
-    "assets": 4469
-  },
-  {
-    "month": "2016-07",
-    "assets": 4472
-  },
-  {
-    "month": "2016-08",
-    "assets": 4467
-  },
-  {
-    "month": "2016-09",
-    "assets": 4467
-  },
-  {
-    "month": "2016-10",
-    "assets": 4460
-  },
-  {
-    "month": "2016-11",
-    "assets": 4455
-  },
-  {
-    "month": "2016-12",
-    "assets": 4460
-  },
-  {
-    "month": "2017-01",
-    "assets": 4455
-  },
-  {
-    "month": "2017-02",
-    "assets": 4458
-  },
-  {
-    "month": "2017-03",
-    "assets": 4467
-  },
-  {
-    "month": "2017-04",
-    "assets": 4477
-  },
-  {
-    "month": "2017-05",
-    "assets": 4469
-  },
-  {
-    "month": "2017-06",
-    "assets": 4469
-  },
-  {
-    "month": "2017-07",
-    "assets": 4469
-  },
-  {
-    "month": "2017-08",
-    "assets": 4463
-  },
-  {
-    "month": "2017-09",
-    "assets": 4460
-  },
-  {
-    "month": "2017-10",
-    "assets": 4463
-  },
-  {
-    "month": "2017-11",
-    "assets": 4450
-  },
-  {
-    "month": "2017-12",
-    "assets": 4447
-  },
-  {
-    "month": "2018-01",
-    "assets": 4438
-  },
-  {
-    "month": "2018-02",
-    "assets": 4415
-  },
-  {
-    "month": "2018-03",
-    "assets": 4399
-  },
-  {
-    "month": "2018-04",
-    "assets": 4382
-  },
-  {
-    "month": "2018-05",
-    "assets": 4343
-  },
-  {
-    "month": "2018-06",
-    "assets": 4316
-  },
-  {
-    "month": "2018-07",
-    "assets": 4288
-  },
-  {
-    "month": "2018-08",
-    "assets": 4238
-  },
-  {
-    "month": "2018-09",
-    "assets": 4205
-  },
-  {
-    "month": "2018-10",
-    "assets": 4168
-  },
-  {
-    "month": "2018-11",
-    "assets": 4123
-  },
-  {
-    "month": "2018-12",
-    "assets": 4084
-  },
-  {
-    "month": "2019-01",
-    "assets": 4050
-  },
-  {
-    "month": "2019-02",
-    "assets": 4003
-  },
-  {
-    "month": "2019-03",
-    "assets": 3965
-  },
-  {
-    "month": "2019-04",
-    "assets": 3933
-  },
-  {
-    "month": "2019-05",
-    "assets": 3872
-  },
-  {
-    "month": "2019-06",
-    "assets": 3842
-  },
-  {
-    "month": "2019-07",
-    "assets": 3804
-  },
-  {
-    "month": "2019-08",
-    "assets": 3773
-  },
-  {
-    "month": "2019-09",
-    "assets": 3808
-  },
-  {
-    "month": "2019-10",
-    "assets": 3970
-  },
-  {
-    "month": "2019-11",
-    "assets": 4043
-  },
-  {
-    "month": "2019-12",
-    "assets": 4116
-  },
-  {
-    "month": "2020-01",
-    "assets": 4159
-  },
-  {
-    "month": "2020-02",
-    "assets": 4170
-  },
-  {
-    "month": "2020-03",
-    "assets": 4619
-  },
-  {
-    "month": "2020-04",
-    "assets": 6298
-  },
-  {
-    "month": "2020-05",
-    "assets": 6948
-  },
-  {
-    "month": "2020-06",
-    "assets": 7128
-  },
-  {
-    "month": "2020-07",
-    "assets": 6960
-  },
-  {
-    "month": "2020-08",
-    "assets": 6976
-  },
-  {
-    "month": "2020-09",
-    "assets": 7048
-  },
-  {
-    "month": "2020-10",
-    "assets": 7137
-  },
-  {
-    "month": "2020-11",
-    "assets": 7198
-  },
-  {
-    "month": "2020-12",
-    "assets": 7319
-  },
-  {
-    "month": "2021-01",
-    "assets": 7372
-  },
-  {
-    "month": "2021-02",
-    "assets": 7500
-  },
-  {
-    "month": "2021-03",
-    "assets": 7648
-  },
-  {
-    "month": "2021-04",
-    "assets": 7776
-  },
-  {
-    "month": "2021-05",
-    "assets": 7867
-  },
-  {
-    "month": "2021-06",
-    "assets": 8027
-  },
-  {
-    "month": "2021-07",
-    "assets": 8190
-  },
-  {
-    "month": "2021-08",
-    "assets": 8292
-  },
-  {
-    "month": "2021-09",
-    "assets": 8419
-  },
-  {
-    "month": "2021-10",
-    "assets": 8517
-  },
-  {
-    "month": "2021-11",
-    "assets": 8649
-  },
-  {
-    "month": "2021-12",
-    "assets": 8724
-  },
-  {
-    "month": "2022-01",
-    "assets": 8821
-  },
-  {
-    "month": "2022-02",
-    "assets": 8898
-  },
-  {
-    "month": "2022-03",
-    "assets": 8934
-  },
-  {
-    "month": "2022-04",
-    "assets": 8950
-  },
-  {
-    "month": "2022-05",
-    "assets": 8936
-  },
-  {
-    "month": "2022-06",
-    "assets": 8923
-  },
-  {
-    "month": "2022-07",
-    "assets": 8894
-  },
-  {
-    "month": "2022-08",
-    "assets": 8856
-  },
-  {
-    "month": "2022-09",
-    "assets": 8817
-  },
-  {
-    "month": "2022-10",
-    "assets": 8746
-  },
-  {
-    "month": "2022-11",
-    "assets": 8637
-  },
-  {
-    "month": "2022-12",
-    "assets": 8570
-  },
-  {
-    "month": "2023-01",
-    "assets": 8494
-  },
-  {
-    "month": "2023-02",
-    "assets": 8409
-  },
-  {
-    "month": "2023-03",
-    "assets": 8552
-  },
-  {
-    "month": "2023-04",
-    "assets": 8601
-  },
-  {
-    "month": "2023-05",
-    "assets": 8457
-  },
-  {
-    "month": "2023-06",
-    "assets": 8370
-  },
-  {
-    "month": "2023-07",
-    "assets": 8278
-  },
-  {
-    "month": "2023-08",
-    "assets": 8164
-  },
-  {
-    "month": "2023-09",
-    "assets": 8057
-  },
-  {
-    "month": "2023-10",
-    "assets": 7937
-  },
-  {
-    "month": "2023-11",
-    "assets": 7830
-  },
-  {
-    "month": "2023-12",
-    "assets": 7728
-  },
-  {
-    "month": "2024-01",
-    "assets": 7670
-  },
-  {
-    "month": "2024-02",
-    "assets": 7604
-  },
-  {
-    "month": "2024-03",
-    "assets": 7520
-  },
-  {
-    "month": "2024-04",
-    "assets": 7421
-  },
-  {
-    "month": "2024-05",
-    "assets": 7321
-  },
-  {
-    "month": "2024-06",
-    "assets": 7250
-  },
-  {
-    "month": "2024-07",
-    "assets": 7208
-  },
-  {
-    "month": "2024-08",
-    "assets": 7154
-  },
-  {
-    "month": "2024-09",
-    "assets": 7104
-  },
-  {
-    "month": "2024-10",
-    "assets": 7035
-  },
-  {
-    "month": "2024-11",
-    "assets": 6948
-  },
-  {
-    "month": "2024-12",
-    "assets": 6892
-  },
-  {
-    "month": "2025-01",
-    "assets": 6838
-  },
-  {
-    "month": "2025-02",
-    "assets": 6793
-  },
-  {
-    "month": "2025-03",
-    "assets": 6753
-  },
-  {
-    "month": "2025-04",
-    "assets": 6723
-  },
-  {
-    "month": "2025-05",
-    "assets": 6697
-  },
-  {
-    "month": "2025-06",
-    "assets": 6673
-  },
-  {
-    "month": "2025-07",
-    "assets": 6656
-  },
-  {
-    "month": "2025-08",
-    "assets": 6627
-  },
-  {
-    "month": "2025-09",
-    "assets": 6606
-  },
-  {
-    "month": "2025-10",
-    "assets": 6590
-  },
-  {
-    "month": "2025-11",
-    "assets": 6565
-  },
-  {
-    "month": "2025-12",
-    "assets": 6571
-  },
-  {
-    "month": "2026-01",
-    "assets": 6582
-  },
-  {
-    "month": "2026-02",
-    "assets": 6614
-  },
-  {
-    "month": "2026-03",
-    "assets": 6647
-  },
-  {
-    "month": "2026-04",
-    "assets": 6696
-  },
-  {
-    "month": "2026-05",
-    "assets": 6714
-  },
-  {
-    "month": "2026-06",
-    "assets": 6727
-  },
-  {
-    "month": "2026-07",
-    "assets": 6734
-  }
+export const FED_BALANCE_SHEET: FedBalanceSheetPoint[] = [
+  { month: "2003-01", assets: 725 },
+  { month: "2003-02", assets: 721 },
+  { month: "2003-03", assets: 724 },
+  { month: "2003-04", assets: 737 },
+  { month: "2003-05", assets: 738 },
+  { month: "2003-06", assets: 739 },
+  { month: "2003-07", assets: 742 },
+  { month: "2003-08", assets: 740 },
+  { month: "2003-09", assets: 743 },
+  { month: "2003-10", assets: 747 },
+  { month: "2003-11", assets: 748 },
+  { month: "2003-12", assets: 760 },
+  { month: "2004-01", assets: 760 },
+  { month: "2004-02", assets: 754 },
+  { month: "2004-03", assets: 756 },
+  { month: "2004-04", assets: 762 },
+  { month: "2004-05", assets: 763 },
+  { month: "2004-06", assets: 771 },
+  { month: "2004-07", assets: 776 },
+  { month: "2004-08", assets: 771 },
+  { month: "2004-09", assets: 786 },
+  { month: "2004-10", assets: 788 },
+  { month: "2004-11", assets: 799 },
+  { month: "2004-12", assets: 809 },
+  { month: "2005-01", assets: 807 },
+  { month: "2005-02", assets: 801 },
+  { month: "2005-03", assets: 802 },
+  { month: "2005-04", assets: 804 },
+  { month: "2005-05", assets: 806 },
+  { month: "2005-06", assets: 813 },
+  { month: "2005-07", assets: 815 },
+  { month: "2005-08", assets: 815 },
+  { month: "2005-09", assets: 821 },
+  { month: "2005-10", assets: 819 },
+  { month: "2005-11", assets: 826 },
+  { month: "2005-12", assets: 840 },
+  { month: "2006-01", assets: 837 },
+  { month: "2006-02", assets: 834 },
+  { month: "2006-03", assets: 839 },
+  { month: "2006-04", assets: 838 },
+  { month: "2006-05", assets: 842 },
+  { month: "2006-06", assets: 846 },
+  { month: "2006-07", assets: 847 },
+  { month: "2006-08", assets: 844 },
+  { month: "2006-09", assets: 844 },
+  { month: "2006-10", assets: 850 },
+  { month: "2006-11", assets: 858 },
+  { month: "2006-12", assets: 863 },
+  { month: "2007-01", assets: 861 },
+  { month: "2007-02", assets: 867 },
+  { month: "2007-03", assets: 868 },
+  { month: "2007-04", assets: 867 },
+  { month: "2007-05", assets: 875 },
+  { month: "2007-06", assets: 867 },
+  { month: "2007-07", assets: 871 },
+  { month: "2007-08", assets: 867 },
+  { month: "2007-09", assets: 879 },
+  { month: "2007-10", assets: 878 },
+  { month: "2007-11", assets: 886 },
+  { month: "2007-12", assets: 886 },
+  { month: "2008-01", assets: 895 },
+  { month: "2008-02", assets: 882 },
+  { month: "2008-03", assets: 890 },
+  { month: "2008-04", assets: 887 },
+  { month: "2008-05", assets: 893 },
+  { month: "2008-06", assets: 895 },
+  { month: "2008-07", assets: 906 },
+  { month: "2008-08", assets: 906 },
+  { month: "2008-09", assets: 1009 },
+  { month: "2008-10", assets: 1728 },
+  { month: "2008-11", assets: 2145 },
+  { month: "2008-12", assets: 2223 },
+  { month: "2009-01", assets: 2034 },
+  { month: "2009-02", assets: 1882 },
+  { month: "2009-03", assets: 1985 },
+  { month: "2009-04", assets: 2124 },
+  { month: "2009-05", assets: 2134 },
+  { month: "2009-06", assets: 2057 },
+  { month: "2009-07", assets: 2022 },
+  { month: "2009-08", assets: 2035 },
+  { month: "2009-09", assets: 2122 },
+  { month: "2009-10", assets: 2173 },
+  { month: "2009-11", assets: 2179 },
+  { month: "2009-12", assets: 2219 },
+  { month: "2010-01", assets: 2256 },
+  { month: "2010-02", assets: 2267 },
+  { month: "2010-03", assets: 2298 },
+  { month: "2010-04", assets: 2329 },
+  { month: "2010-05", assets: 2337 },
+  { month: "2010-06", assets: 2337 },
+  { month: "2010-07", assets: 2333 },
+  { month: "2010-08", assets: 2317 },
+  { month: "2010-09", assets: 2302 },
+  { month: "2010-10", assets: 2305 },
+  { month: "2010-11", assets: 2318 },
+  { month: "2010-12", assets: 2393 },
+  { month: "2011-01", assets: 2443 },
+  { month: "2011-02", assets: 2503 },
+  { month: "2011-03", assets: 2586 },
+  { month: "2011-04", assets: 2673 },
+  { month: "2011-05", assets: 2749 },
+  { month: "2011-06", assets: 2830 },
+  { month: "2011-07", assets: 2871 },
+  { month: "2011-08", assets: 2862 },
+  { month: "2011-09", assets: 2858 },
+  { month: "2011-10", assets: 2855 },
+  { month: "2011-11", assets: 2826 },
+  { month: "2011-12", assets: 2891 },
+  { month: "2012-01", assets: 2914 },
+  { month: "2012-02", assets: 2930 },
+  { month: "2012-03", assets: 2887 },
+  { month: "2012-04", assets: 2869 },
+  { month: "2012-05", assets: 2856 },
+  { month: "2012-06", assets: 2864 },
+  { month: "2012-07", assets: 2859 },
+  { month: "2012-08", assets: 2836 },
+  { month: "2012-09", assets: 2818 },
+  { month: "2012-10", assets: 2826 },
+  { month: "2012-11", assets: 2858 },
+  { month: "2012-12", assets: 2901 },
+  { month: "2013-01", assets: 2966 },
+  { month: "2013-02", assets: 3069 },
+  { month: "2013-03", assets: 3171 },
+  { month: "2013-04", assets: 3264 },
+  { month: "2013-05", assets: 3356 },
+  { month: "2013-06", assets: 3440 },
+  { month: "2013-07", assets: 3536 },
+  { month: "2013-08", assets: 3630 },
+  { month: "2013-09", assets: 3693 },
+  { month: "2013-10", assets: 3800 },
+  { month: "2013-11", assets: 3898 },
+  { month: "2013-12", assets: 3992 },
+  { month: "2014-01", assets: 4065 },
+  { month: "2014-02", assets: 4134 },
+  { month: "2014-03", assets: 4201 },
+  { month: "2014-04", assets: 4271 },
+  { month: "2014-05", assets: 4323 },
+  { month: "2014-06", assets: 4352 },
+  { month: "2014-07", assets: 4395 },
+  { month: "2014-08", assets: 4417 },
+  { month: "2014-09", assets: 4436 },
+  { month: "2014-10", assets: 4470 },
+  { month: "2014-11", assets: 4489 },
+  { month: "2014-12", assets: 4497 },
+  { month: "2015-01", assets: 4507 },
+  { month: "2015-02", assets: 4496 },
+  { month: "2015-03", assets: 4488 },
+  { month: "2015-04", assets: 4482 },
+  { month: "2015-05", assets: 4480 },
+  { month: "2015-06", assets: 4479 },
+  { month: "2015-07", assets: 4488 },
+  { month: "2015-08", assets: 4484 },
+  { month: "2015-09", assets: 4485 },
+  { month: "2015-10", assets: 4495 },
+  { month: "2015-11", assets: 4486 },
+  { month: "2015-12", assets: 4486 },
+  { month: "2016-01", assets: 4490 },
+  { month: "2016-02", assets: 4486 },
+  { month: "2016-03", assets: 4484 },
+  { month: "2016-04", assets: 4487 },
+  { month: "2016-05", assets: 4473 },
+  { month: "2016-06", assets: 4469 },
+  { month: "2016-07", assets: 4472 },
+  { month: "2016-08", assets: 4467 },
+  { month: "2016-09", assets: 4467 },
+  { month: "2016-10", assets: 4460 },
+  { month: "2016-11", assets: 4455 },
+  { month: "2016-12", assets: 4460 },
+  { month: "2017-01", assets: 4455 },
+  { month: "2017-02", assets: 4458 },
+  { month: "2017-03", assets: 4467 },
+  { month: "2017-04", assets: 4477 },
+  { month: "2017-05", assets: 4469 },
+  { month: "2017-06", assets: 4469 },
+  { month: "2017-07", assets: 4469 },
+  { month: "2017-08", assets: 4463 },
+  { month: "2017-09", assets: 4460 },
+  { month: "2017-10", assets: 4463 },
+  { month: "2017-11", assets: 4450 },
+  { month: "2017-12", assets: 4447 },
+  { month: "2018-01", assets: 4438 },
+  { month: "2018-02", assets: 4415 },
+  { month: "2018-03", assets: 4399 },
+  { month: "2018-04", assets: 4382 },
+  { month: "2018-05", assets: 4343 },
+  { month: "2018-06", assets: 4316 },
+  { month: "2018-07", assets: 4288 },
+  { month: "2018-08", assets: 4238 },
+  { month: "2018-09", assets: 4205 },
+  { month: "2018-10", assets: 4168 },
+  { month: "2018-11", assets: 4123 },
+  { month: "2018-12", assets: 4084 },
+  { month: "2019-01", assets: 4050 },
+  { month: "2019-02", assets: 4003 },
+  { month: "2019-03", assets: 3965 },
+  { month: "2019-04", assets: 3933 },
+  { month: "2019-05", assets: 3872 },
+  { month: "2019-06", assets: 3842 },
+  { month: "2019-07", assets: 3804 },
+  { month: "2019-08", assets: 3773 },
+  { month: "2019-09", assets: 3808 },
+  { month: "2019-10", assets: 3970 },
+  { month: "2019-11", assets: 4043 },
+  { month: "2019-12", assets: 4116 },
+  { month: "2020-01", assets: 4159 },
+  { month: "2020-02", assets: 4170 },
+  { month: "2020-03", assets: 4619 },
+  { month: "2020-04", assets: 6298 },
+  { month: "2020-05", assets: 6948 },
+  { month: "2020-06", assets: 7128 },
+  { month: "2020-07", assets: 6960 },
+  { month: "2020-08", assets: 6976 },
+  { month: "2020-09", assets: 7048 },
+  { month: "2020-10", assets: 7137 },
+  { month: "2020-11", assets: 7198 },
+  { month: "2020-12", assets: 7319 },
+  { month: "2021-01", assets: 7372 },
+  { month: "2021-02", assets: 7500 },
+  { month: "2021-03", assets: 7648 },
+  { month: "2021-04", assets: 7776 },
+  { month: "2021-05", assets: 7867 },
+  { month: "2021-06", assets: 8027 },
+  { month: "2021-07", assets: 8190 },
+  { month: "2021-08", assets: 8292 },
+  { month: "2021-09", assets: 8419 },
+  { month: "2021-10", assets: 8517 },
+  { month: "2021-11", assets: 8649 },
+  { month: "2021-12", assets: 8724 },
+  { month: "2022-01", assets: 8821 },
+  { month: "2022-02", assets: 8898 },
+  { month: "2022-03", assets: 8934 },
+  { month: "2022-04", assets: 8950 },
+  { month: "2022-05", assets: 8936 },
+  { month: "2022-06", assets: 8923 },
+  { month: "2022-07", assets: 8894 },
+  { month: "2022-08", assets: 8856 },
+  { month: "2022-09", assets: 8817 },
+  { month: "2022-10", assets: 8746 },
+  { month: "2022-11", assets: 8637 },
+  { month: "2022-12", assets: 8570 },
+  { month: "2023-01", assets: 8494 },
+  { month: "2023-02", assets: 8409 },
+  { month: "2023-03", assets: 8552 },
+  { month: "2023-04", assets: 8601 },
+  { month: "2023-05", assets: 8457 },
+  { month: "2023-06", assets: 8370 },
+  { month: "2023-07", assets: 8278 },
+  { month: "2023-08", assets: 8164 },
+  { month: "2023-09", assets: 8057 },
+  { month: "2023-10", assets: 7937 },
+  { month: "2023-11", assets: 7830 },
+  { month: "2023-12", assets: 7728 },
+  { month: "2024-01", assets: 7670 },
+  { month: "2024-02", assets: 7604 },
+  { month: "2024-03", assets: 7520 },
+  { month: "2024-04", assets: 7421 },
+  { month: "2024-05", assets: 7321 },
+  { month: "2024-06", assets: 7250 },
+  { month: "2024-07", assets: 7208 },
+  { month: "2024-08", assets: 7154 },
+  { month: "2024-09", assets: 7104 },
+  { month: "2024-10", assets: 7035 },
+  { month: "2024-11", assets: 6948 },
+  { month: "2024-12", assets: 6892 },
+  { month: "2025-01", assets: 6838 },
+  { month: "2025-02", assets: 6793 },
+  { month: "2025-03", assets: 6753 },
+  { month: "2025-04", assets: 6723 },
+  { month: "2025-05", assets: 6697 },
+  { month: "2025-06", assets: 6673 },
+  { month: "2025-07", assets: 6656 },
+  { month: "2025-08", assets: 6627 },
+  { month: "2025-09", assets: 6606 },
+  { month: "2025-10", assets: 6590 },
+  { month: "2025-11", assets: 6565 },
+  { month: "2025-12", assets: 6571 },
+  { month: "2026-01", assets: 6582 },
+  { month: "2026-02", assets: 6614 },
+  { month: "2026-03", assets: 6647 },
+  { month: "2026-04", assets: 6696 },
+  { month: "2026-05", assets: 6714 },
+  { month: "2026-06", assets: 6727 },
+  { month: "2026-07", assets: 6734 }
 ];
 
 export interface M2MoneySupplyPoint { month: string; m2: number; }
-export const M2_MONEY_SUPPLY: M2MoneySupplyPoint[] =  [
-  {
-    "month": "2000-01",
-    "m2": 4.7
-  },
-  {
-    "month": "2000-02",
-    "m2": 4.7
-  },
-  {
-    "month": "2000-03",
-    "m2": 4.7
-  },
-  {
-    "month": "2000-04",
-    "m2": 4.8
-  },
-  {
-    "month": "2000-05",
-    "m2": 4.8
-  },
-  {
-    "month": "2000-06",
-    "m2": 4.8
-  },
-  {
-    "month": "2000-07",
-    "m2": 4.8
-  },
-  {
-    "month": "2000-08",
-    "m2": 4.8
-  },
-  {
-    "month": "2000-09",
-    "m2": 4.9
-  },
-  {
-    "month": "2000-10",
-    "m2": 4.9
-  },
-  {
-    "month": "2000-11",
-    "m2": 4.9
-  },
-  {
-    "month": "2000-12",
-    "m2": 4.9
-  },
-  {
-    "month": "2001-01",
-    "m2": 5
-  },
-  {
-    "month": "2001-02",
-    "m2": 5
-  },
-  {
-    "month": "2001-03",
-    "m2": 5.1
-  },
-  {
-    "month": "2001-04",
-    "m2": 5.1
-  },
-  {
-    "month": "2001-05",
-    "m2": 5.1
-  },
-  {
-    "month": "2001-06",
-    "m2": 5.2
-  },
-  {
-    "month": "2001-07",
-    "m2": 5.2
-  },
-  {
-    "month": "2001-08",
-    "m2": 5.2
-  },
-  {
-    "month": "2001-09",
-    "m2": 5.4
-  },
-  {
-    "month": "2001-10",
-    "m2": 5.3
-  },
-  {
-    "month": "2001-11",
-    "m2": 5.4
-  },
-  {
-    "month": "2001-12",
-    "m2": 5.4
-  },
-  {
-    "month": "2002-01",
-    "m2": 5.5
-  },
-  {
-    "month": "2002-02",
-    "m2": 5.5
-  },
-  {
-    "month": "2002-03",
-    "m2": 5.5
-  },
-  {
-    "month": "2002-04",
-    "m2": 5.5
-  },
-  {
-    "month": "2002-05",
-    "m2": 5.5
-  },
-  {
-    "month": "2002-06",
-    "m2": 5.6
-  },
-  {
-    "month": "2002-07",
-    "m2": 5.6
-  },
-  {
-    "month": "2002-08",
-    "m2": 5.6
-  },
-  {
-    "month": "2002-09",
-    "m2": 5.7
-  },
-  {
-    "month": "2002-10",
-    "m2": 5.7
-  },
-  {
-    "month": "2002-11",
-    "m2": 5.8
-  },
-  {
-    "month": "2002-12",
-    "m2": 5.8
-  },
-  {
-    "month": "2003-01",
-    "m2": 5.8
-  },
-  {
-    "month": "2003-02",
-    "m2": 5.8
-  },
-  {
-    "month": "2003-03",
-    "m2": 5.9
-  },
-  {
-    "month": "2003-04",
-    "m2": 5.9
-  },
-  {
-    "month": "2003-05",
-    "m2": 6
-  },
-  {
-    "month": "2003-06",
-    "m2": 6
-  },
-  {
-    "month": "2003-07",
-    "m2": 6
-  },
-  {
-    "month": "2003-08",
-    "m2": 6.1
-  },
-  {
-    "month": "2003-09",
-    "m2": 6.1
-  },
-  {
-    "month": "2003-10",
-    "m2": 6.1
-  },
-  {
-    "month": "2003-11",
-    "m2": 6.1
-  },
-  {
-    "month": "2003-12",
-    "m2": 6.1
-  },
-  {
-    "month": "2004-01",
-    "m2": 6.1
-  },
-  {
-    "month": "2004-02",
-    "m2": 6.1
-  },
-  {
-    "month": "2004-03",
-    "m2": 6.2
-  },
-  {
-    "month": "2004-04",
-    "m2": 6.2
-  },
-  {
-    "month": "2004-05",
-    "m2": 6.3
-  },
-  {
-    "month": "2004-06",
-    "m2": 6.3
-  },
-  {
-    "month": "2004-07",
-    "m2": 6.3
-  },
-  {
-    "month": "2004-08",
-    "m2": 6.3
-  },
-  {
-    "month": "2004-09",
-    "m2": 6.4
-  },
-  {
-    "month": "2004-10",
-    "m2": 6.4
-  },
-  {
-    "month": "2004-11",
-    "m2": 6.4
-  },
-  {
-    "month": "2004-12",
-    "m2": 6.4
-  },
-  {
-    "month": "2005-01",
-    "m2": 6.4
-  },
-  {
-    "month": "2005-02",
-    "m2": 6.4
-  },
-  {
-    "month": "2005-03",
-    "m2": 6.4
-  },
-  {
-    "month": "2005-04",
-    "m2": 6.5
-  },
-  {
-    "month": "2005-05",
-    "m2": 6.5
-  },
-  {
-    "month": "2005-06",
-    "m2": 6.5
-  },
-  {
-    "month": "2005-07",
-    "m2": 6.5
-  },
-  {
-    "month": "2005-08",
-    "m2": 6.6
-  },
-  {
-    "month": "2005-09",
-    "m2": 6.6
-  },
-  {
-    "month": "2005-10",
-    "m2": 6.6
-  },
-  {
-    "month": "2005-11",
-    "m2": 6.7
-  },
-  {
-    "month": "2005-12",
-    "m2": 6.7
-  },
-  {
-    "month": "2006-01",
-    "m2": 6.7
-  },
-  {
-    "month": "2006-02",
-    "m2": 6.8
-  },
-  {
-    "month": "2006-03",
-    "m2": 6.8
-  },
-  {
-    "month": "2006-04",
-    "m2": 6.8
-  },
-  {
-    "month": "2006-05",
-    "m2": 6.8
-  },
-  {
-    "month": "2006-06",
-    "m2": 6.9
-  },
-  {
-    "month": "2006-07",
-    "m2": 6.9
-  },
-  {
-    "month": "2006-08",
-    "m2": 6.9
-  },
-  {
-    "month": "2006-09",
-    "m2": 7
-  },
-  {
-    "month": "2006-10",
-    "m2": 7
-  },
-  {
-    "month": "2006-11",
-    "m2": 7
-  },
-  {
-    "month": "2006-12",
-    "m2": 7.1
-  },
-  {
-    "month": "2007-01",
-    "m2": 7.1
-  },
-  {
-    "month": "2007-02",
-    "m2": 7.1
-  },
-  {
-    "month": "2007-03",
-    "m2": 7.2
-  },
-  {
-    "month": "2007-04",
-    "m2": 7.2
-  },
-  {
-    "month": "2007-05",
-    "m2": 7.3
-  },
-  {
-    "month": "2007-06",
-    "m2": 7.3
-  },
-  {
-    "month": "2007-07",
-    "m2": 7.3
-  },
-  {
-    "month": "2007-08",
-    "m2": 7.4
-  },
-  {
-    "month": "2007-09",
-    "m2": 7.4
-  },
-  {
-    "month": "2007-10",
-    "m2": 7.4
-  },
-  {
-    "month": "2007-11",
-    "m2": 7.5
-  },
-  {
-    "month": "2007-12",
-    "m2": 7.5
-  },
-  {
-    "month": "2008-01",
-    "m2": 7.5
-  },
-  {
-    "month": "2008-02",
-    "m2": 7.6
-  },
-  {
-    "month": "2008-03",
-    "m2": 7.7
-  },
-  {
-    "month": "2008-04",
-    "m2": 7.7
-  },
-  {
-    "month": "2008-05",
-    "m2": 7.7
-  },
-  {
-    "month": "2008-06",
-    "m2": 7.7
-  },
-  {
-    "month": "2008-07",
-    "m2": 7.8
-  },
-  {
-    "month": "2008-08",
-    "m2": 7.8
-  },
-  {
-    "month": "2008-09",
-    "m2": 7.9
-  },
-  {
-    "month": "2008-10",
-    "m2": 8
-  },
-  {
-    "month": "2008-11",
-    "m2": 8
-  },
-  {
-    "month": "2008-12",
-    "m2": 8.2
-  },
-  {
-    "month": "2009-01",
-    "m2": 8.3
-  },
-  {
-    "month": "2009-02",
-    "m2": 8.3
-  },
-  {
-    "month": "2009-03",
-    "m2": 8.4
-  },
-  {
-    "month": "2009-04",
-    "m2": 8.4
-  },
-  {
-    "month": "2009-05",
-    "m2": 8.4
-  },
-  {
-    "month": "2009-06",
-    "m2": 8.5
-  },
-  {
-    "month": "2009-07",
-    "m2": 8.5
-  },
-  {
-    "month": "2009-08",
-    "m2": 8.5
-  },
-  {
-    "month": "2009-09",
-    "m2": 8.5
-  },
-  {
-    "month": "2009-10",
-    "m2": 8.5
-  },
-  {
-    "month": "2009-11",
-    "m2": 8.5
-  },
-  {
-    "month": "2009-12",
-    "m2": 8.5
-  },
-  {
-    "month": "2010-01",
-    "m2": 8.5
-  },
-  {
-    "month": "2010-02",
-    "m2": 8.5
-  },
-  {
-    "month": "2010-03",
-    "m2": 8.5
-  },
-  {
-    "month": "2010-04",
-    "m2": 8.6
-  },
-  {
-    "month": "2010-05",
-    "m2": 8.6
-  },
-  {
-    "month": "2010-06",
-    "m2": 8.6
-  },
-  {
-    "month": "2010-07",
-    "m2": 8.6
-  },
-  {
-    "month": "2010-08",
-    "m2": 8.7
-  },
-  {
-    "month": "2010-09",
-    "m2": 8.7
-  },
-  {
-    "month": "2010-10",
-    "m2": 8.8
-  },
-  {
-    "month": "2010-11",
-    "m2": 8.8
-  },
-  {
-    "month": "2010-12",
-    "m2": 8.8
-  },
-  {
-    "month": "2011-01",
-    "m2": 8.8
-  },
-  {
-    "month": "2011-02",
-    "m2": 8.9
-  },
-  {
-    "month": "2011-03",
-    "m2": 9
-  },
-  {
-    "month": "2011-04",
-    "m2": 9
-  },
-  {
-    "month": "2011-05",
-    "m2": 9.1
-  },
-  {
-    "month": "2011-06",
-    "m2": 9.2
-  },
-  {
-    "month": "2011-07",
-    "m2": 9.3
-  },
-  {
-    "month": "2011-08",
-    "m2": 9.5
-  },
-  {
-    "month": "2011-09",
-    "m2": 9.6
-  },
-  {
-    "month": "2011-10",
-    "m2": 9.6
-  },
-  {
-    "month": "2011-11",
-    "m2": 9.6
-  },
-  {
-    "month": "2011-12",
-    "m2": 9.7
-  },
-  {
-    "month": "2012-01",
-    "m2": 9.8
-  },
-  {
-    "month": "2012-02",
-    "m2": 9.8
-  },
-  {
-    "month": "2012-03",
-    "m2": 9.9
-  },
-  {
-    "month": "2012-04",
-    "m2": 9.9
-  },
-  {
-    "month": "2012-05",
-    "m2": 10
-  },
-  {
-    "month": "2012-06",
-    "m2": 10
-  },
-  {
-    "month": "2012-07",
-    "m2": 10.1
-  },
-  {
-    "month": "2012-08",
-    "m2": 10.1
-  },
-  {
-    "month": "2012-09",
-    "m2": 10.2
-  },
-  {
-    "month": "2012-10",
-    "m2": 10.3
-  },
-  {
-    "month": "2012-11",
-    "m2": 10.4
-  },
-  {
-    "month": "2012-12",
-    "m2": 10.5
-  },
-  {
-    "month": "2013-01",
-    "m2": 10.5
-  },
-  {
-    "month": "2013-02",
-    "m2": 10.5
-  },
-  {
-    "month": "2013-03",
-    "m2": 10.6
-  },
-  {
-    "month": "2013-04",
-    "m2": 10.6
-  },
-  {
-    "month": "2013-05",
-    "m2": 10.6
-  },
-  {
-    "month": "2013-06",
-    "m2": 10.7
-  },
-  {
-    "month": "2013-07",
-    "m2": 10.7
-  },
-  {
-    "month": "2013-08",
-    "m2": 10.8
-  },
-  {
-    "month": "2013-09",
-    "m2": 10.9
-  },
-  {
-    "month": "2013-10",
-    "m2": 11
-  },
-  {
-    "month": "2013-11",
-    "m2": 11
-  },
-  {
-    "month": "2013-12",
-    "m2": 11.1
-  },
-  {
-    "month": "2014-01",
-    "m2": 11.1
-  },
-  {
-    "month": "2014-02",
-    "m2": 11.2
-  },
-  {
-    "month": "2014-03",
-    "m2": 11.2
-  },
-  {
-    "month": "2014-04",
-    "m2": 11.3
-  },
-  {
-    "month": "2014-05",
-    "m2": 11.3
-  },
-  {
-    "month": "2014-06",
-    "m2": 11.4
-  },
-  {
-    "month": "2014-07",
-    "m2": 11.5
-  },
-  {
-    "month": "2014-08",
-    "m2": 11.5
-  },
-  {
-    "month": "2014-09",
-    "m2": 11.5
-  },
-  {
-    "month": "2014-10",
-    "m2": 11.6
-  },
-  {
-    "month": "2014-11",
-    "m2": 11.6
-  },
-  {
-    "month": "2014-12",
-    "m2": 11.7
-  },
-  {
-    "month": "2015-01",
-    "m2": 11.8
-  },
-  {
-    "month": "2015-02",
-    "m2": 11.9
-  },
-  {
-    "month": "2015-03",
-    "m2": 11.9
-  },
-  {
-    "month": "2015-04",
-    "m2": 12
-  },
-  {
-    "month": "2015-05",
-    "m2": 12
-  },
-  {
-    "month": "2015-06",
-    "m2": 12
-  },
-  {
-    "month": "2015-07",
-    "m2": 12.1
-  },
-  {
-    "month": "2015-08",
-    "m2": 12.1
-  },
-  {
-    "month": "2015-09",
-    "m2": 12.2
-  },
-  {
-    "month": "2015-10",
-    "m2": 12.2
-  },
-  {
-    "month": "2015-11",
-    "m2": 12.3
-  },
-  {
-    "month": "2015-12",
-    "m2": 12.4
-  },
-  {
-    "month": "2016-01",
-    "m2": 12.5
-  },
-  {
-    "month": "2016-02",
-    "m2": 12.6
-  },
-  {
-    "month": "2016-03",
-    "m2": 12.7
-  },
-  {
-    "month": "2016-04",
-    "m2": 12.7
-  },
-  {
-    "month": "2016-05",
-    "m2": 12.8
-  },
-  {
-    "month": "2016-06",
-    "m2": 12.9
-  },
-  {
-    "month": "2016-07",
-    "m2": 12.9
-  },
-  {
-    "month": "2016-08",
-    "m2": 13
-  },
-  {
-    "month": "2016-09",
-    "m2": 13.1
-  },
-  {
-    "month": "2016-10",
-    "m2": 13.1
-  },
-  {
-    "month": "2016-11",
-    "m2": 13.2
-  },
-  {
-    "month": "2016-12",
-    "m2": 13.2
-  },
-  {
-    "month": "2017-01",
-    "m2": 13.3
-  },
-  {
-    "month": "2017-02",
-    "m2": 13.4
-  },
-  {
-    "month": "2017-03",
-    "m2": 13.5
-  },
-  {
-    "month": "2017-04",
-    "m2": 13.5
-  },
-  {
-    "month": "2017-05",
-    "m2": 13.6
-  },
-  {
-    "month": "2017-06",
-    "m2": 13.6
-  },
-  {
-    "month": "2017-07",
-    "m2": 13.6
-  },
-  {
-    "month": "2017-08",
-    "m2": 13.7
-  },
-  {
-    "month": "2017-09",
-    "m2": 13.7
-  },
-  {
-    "month": "2017-10",
-    "m2": 13.8
-  },
-  {
-    "month": "2017-11",
-    "m2": 13.8
-  },
-  {
-    "month": "2017-12",
-    "m2": 13.9
-  },
-  {
-    "month": "2018-01",
-    "m2": 13.9
-  },
-  {
-    "month": "2018-02",
-    "m2": 13.9
-  },
-  {
-    "month": "2018-03",
-    "m2": 14
-  },
-  {
-    "month": "2018-04",
-    "m2": 14
-  },
-  {
-    "month": "2018-05",
-    "m2": 14.1
-  },
-  {
-    "month": "2018-06",
-    "m2": 14.1
-  },
-  {
-    "month": "2018-07",
-    "m2": 14.2
-  },
-  {
-    "month": "2018-08",
-    "m2": 14.2
-  },
-  {
-    "month": "2018-09",
-    "m2": 14.2
-  },
-  {
-    "month": "2018-10",
-    "m2": 14.3
-  },
-  {
-    "month": "2018-11",
-    "m2": 14.3
-  },
-  {
-    "month": "2018-12",
-    "m2": 14.4
-  },
-  {
-    "month": "2019-01",
-    "m2": 14.5
-  },
-  {
-    "month": "2019-02",
-    "m2": 14.5
-  },
-  {
-    "month": "2019-03",
-    "m2": 14.6
-  },
-  {
-    "month": "2019-04",
-    "m2": 14.6
-  },
-  {
-    "month": "2019-05",
-    "m2": 14.7
-  },
-  {
-    "month": "2019-06",
-    "m2": 14.8
-  },
-  {
-    "month": "2019-07",
-    "m2": 14.9
-  },
-  {
-    "month": "2019-08",
-    "m2": 15
-  },
-  {
-    "month": "2019-09",
-    "m2": 15
-  },
-  {
-    "month": "2019-10",
-    "m2": 15.2
-  },
-  {
-    "month": "2019-11",
-    "m2": 15.3
-  },
-  {
-    "month": "2019-12",
-    "m2": 15.3
-  },
-  {
-    "month": "2020-01",
-    "m2": 15.4
-  },
-  {
-    "month": "2020-02",
-    "m2": 15.5
-  },
-  {
-    "month": "2020-03",
-    "m2": 16
-  },
-  {
-    "month": "2020-04",
-    "m2": 17.1
-  },
-  {
-    "month": "2020-05",
-    "m2": 17.9
-  },
-  {
-    "month": "2020-06",
-    "m2": 18.2
-  },
-  {
-    "month": "2020-07",
-    "m2": 18.3
-  },
-  {
-    "month": "2020-08",
-    "m2": 18.4
-  },
-  {
-    "month": "2020-09",
-    "m2": 18.6
-  },
-  {
-    "month": "2020-10",
-    "m2": 18.8
-  },
-  {
-    "month": "2020-11",
-    "m2": 19
-  },
-  {
-    "month": "2020-12",
-    "m2": 19.1
-  },
-  {
-    "month": "2021-01",
-    "m2": 19.4
-  },
-  {
-    "month": "2021-02",
-    "m2": 19.6
-  },
-  {
-    "month": "2021-03",
-    "m2": 19.9
-  },
-  {
-    "month": "2021-04",
-    "m2": 20.2
-  },
-  {
-    "month": "2021-05",
-    "m2": 20.5
-  },
-  {
-    "month": "2021-06",
-    "m2": 20.5
-  },
-  {
-    "month": "2021-07",
-    "m2": 20.6
-  },
-  {
-    "month": "2021-08",
-    "m2": 20.8
-  },
-  {
-    "month": "2021-09",
-    "m2": 21
-  },
-  {
-    "month": "2021-10",
-    "m2": 21.2
-  },
-  {
-    "month": "2021-11",
-    "m2": 21.3
-  },
-  {
-    "month": "2021-12",
-    "m2": 21.5
-  },
-  {
-    "month": "2022-01",
-    "m2": 21.6
-  },
-  {
-    "month": "2022-02",
-    "m2": 21.7
-  },
-  {
-    "month": "2022-03",
-    "m2": 21.8
-  },
-  {
-    "month": "2022-04",
-    "m2": 21.8
-  },
-  {
-    "month": "2022-05",
-    "m2": 21.7
-  },
-  {
-    "month": "2022-06",
-    "m2": 21.7
-  },
-  {
-    "month": "2022-07",
-    "m2": 21.7
-  },
-  {
-    "month": "2022-08",
-    "m2": 21.6
-  },
-  {
-    "month": "2022-09",
-    "m2": 21.5
-  },
-  {
-    "month": "2022-10",
-    "m2": 21.5
-  },
-  {
-    "month": "2022-11",
-    "m2": 21.4
-  },
-  {
-    "month": "2022-12",
-    "m2": 21.3
-  },
-  {
-    "month": "2023-01",
-    "m2": 21.3
-  },
-  {
-    "month": "2023-02",
-    "m2": 21.2
-  },
-  {
-    "month": "2023-03",
-    "m2": 20.9
-  },
-  {
-    "month": "2023-04",
-    "m2": 20.8
-  },
-  {
-    "month": "2023-05",
-    "m2": 20.8
-  },
-  {
-    "month": "2023-06",
-    "m2": 20.8
-  },
-  {
-    "month": "2023-07",
-    "m2": 20.8
-  },
-  {
-    "month": "2023-08",
-    "m2": 20.8
-  },
-  {
-    "month": "2023-09",
-    "m2": 20.7
-  },
-  {
-    "month": "2023-10",
-    "m2": 20.7
-  },
-  {
-    "month": "2023-11",
-    "m2": 20.7
-  },
-  {
-    "month": "2023-12",
-    "m2": 20.8
-  },
-  {
-    "month": "2024-01",
-    "m2": 20.8
-  },
-  {
-    "month": "2024-02",
-    "m2": 20.9
-  },
-  {
-    "month": "2024-03",
-    "m2": 21
-  },
-  {
-    "month": "2024-04",
-    "m2": 21
-  },
-  {
-    "month": "2024-05",
-    "m2": 21
-  },
-  {
-    "month": "2024-06",
-    "m2": 21.1
-  },
-  {
-    "month": "2024-07",
-    "m2": 21.1
-  },
-  {
-    "month": "2024-08",
-    "m2": 21.2
-  },
-  {
-    "month": "2024-09",
-    "m2": 21.3
-  },
-  {
-    "month": "2024-10",
-    "m2": 21.3
-  },
-  {
-    "month": "2024-11",
-    "m2": 21.5
-  },
-  {
-    "month": "2024-12",
-    "m2": 21.5
-  },
-  {
-    "month": "2025-01",
-    "m2": 21.5
-  },
-  {
-    "month": "2025-02",
-    "m2": 21.6
-  },
-  {
-    "month": "2025-03",
-    "m2": 21.7
-  },
-  {
-    "month": "2025-04",
-    "m2": 21.8
-  },
-  {
-    "month": "2025-05",
-    "m2": 21.8
-  },
-  {
-    "month": "2025-06",
-    "m2": 21.9
-  },
-  {
-    "month": "2025-07",
-    "m2": 22
-  },
-  {
-    "month": "2025-08",
-    "m2": 22.1
-  },
-  {
-    "month": "2025-09",
-    "m2": 22.2
-  },
-  {
-    "month": "2025-10",
-    "m2": 22.2
-  },
-  {
-    "month": "2025-11",
-    "m2": 22.3
-  },
-  {
-    "month": "2025-12",
-    "m2": 22.4
-  },
-  {
-    "month": "2026-01",
-    "m2": 22.4
-  },
-  {
-    "month": "2026-02",
-    "m2": 22.6
-  },
-  {
-    "month": "2026-03",
-    "m2": 22.7
-  },
-  {
-    "month": "2026-04",
-    "m2": 22.8
-  },
-  {
-    "month": "2026-05",
-    "m2": 23.1
-  }
+export const M2_MONEY_SUPPLY: M2MoneySupplyPoint[] = [
+  { month: "2000-01", m2: 4.7 },
+  { month: "2000-02", m2: 4.7 },
+  { month: "2000-03", m2: 4.7 },
+  { month: "2000-04", m2: 4.8 },
+  { month: "2000-05", m2: 4.8 },
+  { month: "2000-06", m2: 4.8 },
+  { month: "2000-07", m2: 4.8 },
+  { month: "2000-08", m2: 4.8 },
+  { month: "2000-09", m2: 4.9 },
+  { month: "2000-10", m2: 4.9 },
+  { month: "2000-11", m2: 4.9 },
+  { month: "2000-12", m2: 4.9 },
+  { month: "2001-01", m2: 5 },
+  { month: "2001-02", m2: 5 },
+  { month: "2001-03", m2: 5.1 },
+  { month: "2001-04", m2: 5.1 },
+  { month: "2001-05", m2: 5.1 },
+  { month: "2001-06", m2: 5.2 },
+  { month: "2001-07", m2: 5.2 },
+  { month: "2001-08", m2: 5.2 },
+  { month: "2001-09", m2: 5.4 },
+  { month: "2001-10", m2: 5.3 },
+  { month: "2001-11", m2: 5.4 },
+  { month: "2001-12", m2: 5.4 },
+  { month: "2002-01", m2: 5.5 },
+  { month: "2002-02", m2: 5.5 },
+  { month: "2002-03", m2: 5.5 },
+  { month: "2002-04", m2: 5.5 },
+  { month: "2002-05", m2: 5.5 },
+  { month: "2002-06", m2: 5.6 },
+  { month: "2002-07", m2: 5.6 },
+  { month: "2002-08", m2: 5.6 },
+  { month: "2002-09", m2: 5.7 },
+  { month: "2002-10", m2: 5.7 },
+  { month: "2002-11", m2: 5.8 },
+  { month: "2002-12", m2: 5.8 },
+  { month: "2003-01", m2: 5.8 },
+  { month: "2003-02", m2: 5.8 },
+  { month: "2003-03", m2: 5.9 },
+  { month: "2003-04", m2: 5.9 },
+  { month: "2003-05", m2: 6 },
+  { month: "2003-06", m2: 6 },
+  { month: "2003-07", m2: 6 },
+  { month: "2003-08", m2: 6.1 },
+  { month: "2003-09", m2: 6.1 },
+  { month: "2003-10", m2: 6.1 },
+  { month: "2003-11", m2: 6.1 },
+  { month: "2003-12", m2: 6.1 },
+  { month: "2004-01", m2: 6.1 },
+  { month: "2004-02", m2: 6.1 },
+  { month: "2004-03", m2: 6.2 },
+  { month: "2004-04", m2: 6.2 },
+  { month: "2004-05", m2: 6.3 },
+  { month: "2004-06", m2: 6.3 },
+  { month: "2004-07", m2: 6.3 },
+  { month: "2004-08", m2: 6.3 },
+  { month: "2004-09", m2: 6.4 },
+  { month: "2004-10", m2: 6.4 },
+  { month: "2004-11", m2: 6.4 },
+  { month: "2004-12", m2: 6.4 },
+  { month: "2005-01", m2: 6.4 },
+  { month: "2005-02", m2: 6.4 },
+  { month: "2005-03", m2: 6.4 },
+  { month: "2005-04", m2: 6.5 },
+  { month: "2005-05", m2: 6.5 },
+  { month: "2005-06", m2: 6.5 },
+  { month: "2005-07", m2: 6.5 },
+  { month: "2005-08", m2: 6.6 },
+  { month: "2005-09", m2: 6.6 },
+  { month: "2005-10", m2: 6.6 },
+  { month: "2005-11", m2: 6.7 },
+  { month: "2005-12", m2: 6.7 },
+  { month: "2006-01", m2: 6.7 },
+  { month: "2006-02", m2: 6.8 },
+  { month: "2006-03", m2: 6.8 },
+  { month: "2006-04", m2: 6.8 },
+  { month: "2006-05", m2: 6.8 },
+  { month: "2006-06", m2: 6.9 },
+  { month: "2006-07", m2: 6.9 },
+  { month: "2006-08", m2: 6.9 },
+  { month: "2006-09", m2: 7 },
+  { month: "2006-10", m2: 7 },
+  { month: "2006-11", m2: 7 },
+  { month: "2006-12", m2: 7.1 },
+  { month: "2007-01", m2: 7.1 },
+  { month: "2007-02", m2: 7.1 },
+  { month: "2007-03", m2: 7.2 },
+  { month: "2007-04", m2: 7.2 },
+  { month: "2007-05", m2: 7.3 },
+  { month: "2007-06", m2: 7.3 },
+  { month: "2007-07", m2: 7.3 },
+  { month: "2007-08", m2: 7.4 },
+  { month: "2007-09", m2: 7.4 },
+  { month: "2007-10", m2: 7.4 },
+  { month: "2007-11", m2: 7.5 },
+  { month: "2007-12", m2: 7.5 },
+  { month: "2008-01", m2: 7.5 },
+  { month: "2008-02", m2: 7.6 },
+  { month: "2008-03", m2: 7.7 },
+  { month: "2008-04", m2: 7.7 },
+  { month: "2008-05", m2: 7.7 },
+  { month: "2008-06", m2: 7.7 },
+  { month: "2008-07", m2: 7.8 },
+  { month: "2008-08", m2: 7.8 },
+  { month: "2008-09", m2: 7.9 },
+  { month: "2008-10", m2: 8 },
+  { month: "2008-11", m2: 8 },
+  { month: "2008-12", m2: 8.2 },
+  { month: "2009-01", m2: 8.3 },
+  { month: "2009-02", m2: 8.3 },
+  { month: "2009-03", m2: 8.4 },
+  { month: "2009-04", m2: 8.4 },
+  { month: "2009-05", m2: 8.4 },
+  { month: "2009-06", m2: 8.5 },
+  { month: "2009-07", m2: 8.5 },
+  { month: "2009-08", m2: 8.5 },
+  { month: "2009-09", m2: 8.5 },
+  { month: "2009-10", m2: 8.5 },
+  { month: "2009-11", m2: 8.5 },
+  { month: "2009-12", m2: 8.5 },
+  { month: "2010-01", m2: 8.5 },
+  { month: "2010-02", m2: 8.5 },
+  { month: "2010-03", m2: 8.5 },
+  { month: "2010-04", m2: 8.6 },
+  { month: "2010-05", m2: 8.6 },
+  { month: "2010-06", m2: 8.6 },
+  { month: "2010-07", m2: 8.6 },
+  { month: "2010-08", m2: 8.7 },
+  { month: "2010-09", m2: 8.7 },
+  { month: "2010-10", m2: 8.8 },
+  { month: "2010-11", m2: 8.8 },
+  { month: "2010-12", m2: 8.8 },
+  { month: "2011-01", m2: 8.8 },
+  { month: "2011-02", m2: 8.9 },
+  { month: "2011-03", m2: 9 },
+  { month: "2011-04", m2: 9 },
+  { month: "2011-05", m2: 9.1 },
+  { month: "2011-06", m2: 9.2 },
+  { month: "2011-07", m2: 9.3 },
+  { month: "2011-08", m2: 9.5 },
+  { month: "2011-09", m2: 9.6 },
+  { month: "2011-10", m2: 9.6 },
+  { month: "2011-11", m2: 9.6 },
+  { month: "2011-12", m2: 9.7 },
+  { month: "2012-01", m2: 9.8 },
+  { month: "2012-02", m2: 9.8 },
+  { month: "2012-03", m2: 9.9 },
+  { month: "2012-04", m2: 9.9 },
+  { month: "2012-05", m2: 10 },
+  { month: "2012-06", m2: 10 },
+  { month: "2012-07", m2: 10.1 },
+  { month: "2012-08", m2: 10.1 },
+  { month: "2012-09", m2: 10.2 },
+  { month: "2012-10", m2: 10.3 },
+  { month: "2012-11", m2: 10.4 },
+  { month: "2012-12", m2: 10.5 },
+  { month: "2013-01", m2: 10.5 },
+  { month: "2013-02", m2: 10.5 },
+  { month: "2013-03", m2: 10.6 },
+  { month: "2013-04", m2: 10.6 },
+  { month: "2013-05", m2: 10.6 },
+  { month: "2013-06", m2: 10.7 },
+  { month: "2013-07", m2: 10.7 },
+  { month: "2013-08", m2: 10.8 },
+  { month: "2013-09", m2: 10.9 },
+  { month: "2013-10", m2: 11 },
+  { month: "2013-11", m2: 11 },
+  { month: "2013-12", m2: 11.1 },
+  { month: "2014-01", m2: 11.1 },
+  { month: "2014-02", m2: 11.2 },
+  { month: "2014-03", m2: 11.2 },
+  { month: "2014-04", m2: 11.3 },
+  { month: "2014-05", m2: 11.3 },
+  { month: "2014-06", m2: 11.4 },
+  { month: "2014-07", m2: 11.5 },
+  { month: "2014-08", m2: 11.5 },
+  { month: "2014-09", m2: 11.5 },
+  { month: "2014-10", m2: 11.6 },
+  { month: "2014-11", m2: 11.6 },
+  { month: "2014-12", m2: 11.7 },
+  { month: "2015-01", m2: 11.8 },
+  { month: "2015-02", m2: 11.9 },
+  { month: "2015-03", m2: 11.9 },
+  { month: "2015-04", m2: 12 },
+  { month: "2015-05", m2: 12 },
+  { month: "2015-06", m2: 12 },
+  { month: "2015-07", m2: 12.1 },
+  { month: "2015-08", m2: 12.1 },
+  { month: "2015-09", m2: 12.2 },
+  { month: "2015-10", m2: 12.2 },
+  { month: "2015-11", m2: 12.3 },
+  { month: "2015-12", m2: 12.4 },
+  { month: "2016-01", m2: 12.5 },
+  { month: "2016-02", m2: 12.6 },
+  { month: "2016-03", m2: 12.7 },
+  { month: "2016-04", m2: 12.7 },
+  { month: "2016-05", m2: 12.8 },
+  { month: "2016-06", m2: 12.9 },
+  { month: "2016-07", m2: 12.9 },
+  { month: "2016-08", m2: 13 },
+  { month: "2016-09", m2: 13.1 },
+  { month: "2016-10", m2: 13.1 },
+  { month: "2016-11", m2: 13.2 },
+  { month: "2016-12", m2: 13.2 },
+  { month: "2017-01", m2: 13.3 },
+  { month: "2017-02", m2: 13.4 },
+  { month: "2017-03", m2: 13.5 },
+  { month: "2017-04", m2: 13.5 },
+  { month: "2017-05", m2: 13.6 },
+  { month: "2017-06", m2: 13.6 },
+  { month: "2017-07", m2: 13.6 },
+  { month: "2017-08", m2: 13.7 },
+  { month: "2017-09", m2: 13.7 },
+  { month: "2017-10", m2: 13.8 },
+  { month: "2017-11", m2: 13.8 },
+  { month: "2017-12", m2: 13.9 },
+  { month: "2018-01", m2: 13.9 },
+  { month: "2018-02", m2: 13.9 },
+  { month: "2018-03", m2: 14 },
+  { month: "2018-04", m2: 14 },
+  { month: "2018-05", m2: 14.1 },
+  { month: "2018-06", m2: 14.1 },
+  { month: "2018-07", m2: 14.2 },
+  { month: "2018-08", m2: 14.2 },
+  { month: "2018-09", m2: 14.2 },
+  { month: "2018-10", m2: 14.3 },
+  { month: "2018-11", m2: 14.3 },
+  { month: "2018-12", m2: 14.4 },
+  { month: "2019-01", m2: 14.5 },
+  { month: "2019-02", m2: 14.5 },
+  { month: "2019-03", m2: 14.6 },
+  { month: "2019-04", m2: 14.6 },
+  { month: "2019-05", m2: 14.7 },
+  { month: "2019-06", m2: 14.8 },
+  { month: "2019-07", m2: 14.9 },
+  { month: "2019-08", m2: 15 },
+  { month: "2019-09", m2: 15 },
+  { month: "2019-10", m2: 15.2 },
+  { month: "2019-11", m2: 15.3 },
+  { month: "2019-12", m2: 15.3 },
+  { month: "2020-01", m2: 15.4 },
+  { month: "2020-02", m2: 15.5 },
+  { month: "2020-03", m2: 16 },
+  { month: "2020-04", m2: 17.1 },
+  { month: "2020-05", m2: 17.9 },
+  { month: "2020-06", m2: 18.2 },
+  { month: "2020-07", m2: 18.3 },
+  { month: "2020-08", m2: 18.4 },
+  { month: "2020-09", m2: 18.6 },
+  { month: "2020-10", m2: 18.8 },
+  { month: "2020-11", m2: 19 },
+  { month: "2020-12", m2: 19.1 },
+  { month: "2021-01", m2: 19.4 },
+  { month: "2021-02", m2: 19.6 },
+  { month: "2021-03", m2: 19.9 },
+  { month: "2021-04", m2: 20.2 },
+  { month: "2021-05", m2: 20.5 },
+  { month: "2021-06", m2: 20.5 },
+  { month: "2021-07", m2: 20.6 },
+  { month: "2021-08", m2: 20.8 },
+  { month: "2021-09", m2: 21 },
+  { month: "2021-10", m2: 21.2 },
+  { month: "2021-11", m2: 21.3 },
+  { month: "2021-12", m2: 21.5 },
+  { month: "2022-01", m2: 21.6 },
+  { month: "2022-02", m2: 21.7 },
+  { month: "2022-03", m2: 21.8 },
+  { month: "2022-04", m2: 21.8 },
+  { month: "2022-05", m2: 21.7 },
+  { month: "2022-06", m2: 21.7 },
+  { month: "2022-07", m2: 21.7 },
+  { month: "2022-08", m2: 21.6 },
+  { month: "2022-09", m2: 21.5 },
+  { month: "2022-10", m2: 21.5 },
+  { month: "2022-11", m2: 21.4 },
+  { month: "2022-12", m2: 21.3 },
+  { month: "2023-01", m2: 21.3 },
+  { month: "2023-02", m2: 21.2 },
+  { month: "2023-03", m2: 20.9 },
+  { month: "2023-04", m2: 20.8 },
+  { month: "2023-05", m2: 20.8 },
+  { month: "2023-06", m2: 20.8 },
+  { month: "2023-07", m2: 20.8 },
+  { month: "2023-08", m2: 20.8 },
+  { month: "2023-09", m2: 20.7 },
+  { month: "2023-10", m2: 20.7 },
+  { month: "2023-11", m2: 20.7 },
+  { month: "2023-12", m2: 20.8 },
+  { month: "2024-01", m2: 20.8 },
+  { month: "2024-02", m2: 20.9 },
+  { month: "2024-03", m2: 21 },
+  { month: "2024-04", m2: 21 },
+  { month: "2024-05", m2: 21 },
+  { month: "2024-06", m2: 21.1 },
+  { month: "2024-07", m2: 21.1 },
+  { month: "2024-08", m2: 21.2 },
+  { month: "2024-09", m2: 21.3 },
+  { month: "2024-10", m2: 21.3 },
+  { month: "2024-11", m2: 21.5 },
+  { month: "2024-12", m2: 21.5 },
+  { month: "2025-01", m2: 21.5 },
+  { month: "2025-02", m2: 21.6 },
+  { month: "2025-03", m2: 21.7 },
+  { month: "2025-04", m2: 21.8 },
+  { month: "2025-05", m2: 21.8 },
+  { month: "2025-06", m2: 21.9 },
+  { month: "2025-07", m2: 22 },
+  { month: "2025-08", m2: 22.1 },
+  { month: "2025-09", m2: 22.2 },
+  { month: "2025-10", m2: 22.2 },
+  { month: "2025-11", m2: 22.3 },
+  { month: "2025-12", m2: 22.4 },
+  { month: "2026-01", m2: 22.4 },
+  { month: "2026-02", m2: 22.6 },
+  { month: "2026-03", m2: 22.7 },
+  { month: "2026-04", m2: 22.8 },
+  { month: "2026-05", m2: 23.1 }
 ];
 
 
@@ -8139,4005 +5997,847 @@ export const VC_DRY_POWDER: VcDryPowderPoint[] = [
 ];
 
 export interface DeficitToGdpPoint { year: number; value: number; }
-export const US_FEDERAL_DEFICIT: DeficitToGdpPoint[] =  [
-  {
-    "year": 1970,
-    "value": -0.26479
-  },
-  {
-    "year": 1971,
-    "value": -1.97734
-  },
-  {
-    "year": 1972,
-    "value": -1.82729
-  },
-  {
-    "year": 1973,
-    "value": -1.0459
-  },
-  {
-    "year": 1974,
-    "value": -0.39702
-  },
-  {
-    "year": 1975,
-    "value": -3.15994
-  },
-  {
-    "year": 1976,
-    "value": -3.93571
-  },
-  {
-    "year": 1977,
-    "value": -2.5775
-  },
-  {
-    "year": 1978,
-    "value": -2.5168
-  },
-  {
-    "year": 1979,
-    "value": -1.55009
-  },
-  {
-    "year": 1980,
-    "value": -2.5839
-  },
-  {
-    "year": 1981,
-    "value": -2.46233
-  },
-  {
-    "year": 1982,
-    "value": -3.8273
-  },
-  {
-    "year": 1983,
-    "value": -5.71821
-  },
-  {
-    "year": 1984,
-    "value": -4.591
-  },
-  {
-    "year": 1985,
-    "value": -4.89304
-  },
-  {
-    "year": 1986,
-    "value": -4.83067
-  },
-  {
-    "year": 1987,
-    "value": -3.0839
-  },
-  {
-    "year": 1988,
-    "value": -2.96343
-  },
-  {
-    "year": 1989,
-    "value": -2.70561
-  },
-  {
-    "year": 1990,
-    "value": -3.7067
-  },
-  {
-    "year": 1991,
-    "value": -4.37207
-  },
-  {
-    "year": 1992,
-    "value": -4.45255
-  },
-  {
-    "year": 1993,
-    "value": -3.71873
-  },
-  {
-    "year": 1994,
-    "value": -2.78825
-  },
-  {
-    "year": 1995,
-    "value": -2.14604
-  },
-  {
-    "year": 1996,
-    "value": -1.33072
-  },
-  {
-    "year": 1997,
-    "value": -0.25513
-  },
-  {
-    "year": 1998,
-    "value": 0.76433
-  },
-  {
-    "year": 1999,
-    "value": 1.3042
-  },
-  {
-    "year": 2000,
-    "value": 2.30458
-  },
-  {
-    "year": 2001,
-    "value": 1.21184
-  },
-  {
-    "year": 2002,
-    "value": -1.44347
-  },
-  {
-    "year": 2003,
-    "value": -3.29583
-  },
-  {
-    "year": 2004,
-    "value": -3.37825
-  },
-  {
-    "year": 2005,
-    "value": -2.44145
-  },
-  {
-    "year": 2006,
-    "value": -1.79638
-  },
-  {
-    "year": 2007,
-    "value": -1.11026
-  },
-  {
-    "year": 2008,
-    "value": -3.10465
-  },
-  {
-    "year": 2009,
-    "value": -9.75744
-  },
-  {
-    "year": 2010,
-    "value": -8.60107
-  },
-  {
-    "year": 2011,
-    "value": -8.33091
-  },
-  {
-    "year": 2012,
-    "value": -6.62345
-  },
-  {
-    "year": 2013,
-    "value": -4.02694
-  },
-  {
-    "year": 2014,
-    "value": -2.75323
-  },
-  {
-    "year": 2015,
-    "value": -2.41574
-  },
-  {
-    "year": 2016,
-    "value": -3.10903
-  },
-  {
-    "year": 2017,
-    "value": -3.39306
-  },
-  {
-    "year": 2018,
-    "value": -3.77157
-  },
-  {
-    "year": 2019,
-    "value": -4.56634
-  },
-  {
-    "year": 2020,
-    "value": -14.4824
-  },
-  {
-    "year": 2021,
-    "value": -11.69028
-  },
-  {
-    "year": 2022,
-    "value": -5.27419
-  },
-  {
-    "year": 2023,
-    "value": -6.06751
-  },
-  {
-    "year": 2024,
-    "value": -6.19625
-  },
-  {
-    "year": 2025,
-    "value": -5.76906
-  }
+export const US_FEDERAL_DEFICIT: DeficitToGdpPoint[] = [
+  { year: 1970, value: -0.26479 },
+  { year: 1971, value: -1.97734 },
+  { year: 1972, value: -1.82729 },
+  { year: 1973, value: -1.0459 },
+  { year: 1974, value: -0.39702 },
+  { year: 1975, value: -3.15994 },
+  { year: 1976, value: -3.93571 },
+  { year: 1977, value: -2.5775 },
+  { year: 1978, value: -2.5168 },
+  { year: 1979, value: -1.55009 },
+  { year: 1980, value: -2.5839 },
+  { year: 1981, value: -2.46233 },
+  { year: 1982, value: -3.8273 },
+  { year: 1983, value: -5.71821 },
+  { year: 1984, value: -4.591 },
+  { year: 1985, value: -4.89304 },
+  { year: 1986, value: -4.83067 },
+  { year: 1987, value: -3.0839 },
+  { year: 1988, value: -2.96343 },
+  { year: 1989, value: -2.70561 },
+  { year: 1990, value: -3.7067 },
+  { year: 1991, value: -4.37207 },
+  { year: 1992, value: -4.45255 },
+  { year: 1993, value: -3.71873 },
+  { year: 1994, value: -2.78825 },
+  { year: 1995, value: -2.14604 },
+  { year: 1996, value: -1.33072 },
+  { year: 1997, value: -0.25513 },
+  { year: 1998, value: 0.76433 },
+  { year: 1999, value: 1.3042 },
+  { year: 2000, value: 2.30458 },
+  { year: 2001, value: 1.21184 },
+  { year: 2002, value: -1.44347 },
+  { year: 2003, value: -3.29583 },
+  { year: 2004, value: -3.37825 },
+  { year: 2005, value: -2.44145 },
+  { year: 2006, value: -1.79638 },
+  { year: 2007, value: -1.11026 },
+  { year: 2008, value: -3.10465 },
+  { year: 2009, value: -9.75744 },
+  { year: 2010, value: -8.60107 },
+  { year: 2011, value: -8.33091 },
+  { year: 2012, value: -6.62345 },
+  { year: 2013, value: -4.02694 },
+  { year: 2014, value: -2.75323 },
+  { year: 2015, value: -2.41574 },
+  { year: 2016, value: -3.10903 },
+  { year: 2017, value: -3.39306 },
+  { year: 2018, value: -3.77157 },
+  { year: 2019, value: -4.56634 },
+  { year: 2020, value: -14.4824 },
+  { year: 2021, value: -11.69028 },
+  { year: 2022, value: -5.27419 },
+  { year: 2023, value: -6.06751 },
+  { year: 2024, value: -6.19625 },
+  { year: 2025, value: -5.76906 }
 ];
 
 export interface IndustrialProductionPoint { year: number; value: number; }
-export const US_INDUSTRIAL_PRODUCTION: IndustrialProductionPoint[] =  [
-  {
-    "year": 1970,
-    "value": 37.5
-  },
-  {
-    "year": 1971,
-    "value": 38
-  },
-  {
-    "year": 1972,
-    "value": 41.7
-  },
-  {
-    "year": 1973,
-    "value": 45.1
-  },
-  {
-    "year": 1974,
-    "value": 45
-  },
-  {
-    "year": 1975,
-    "value": 41
-  },
-  {
-    "year": 1976,
-    "value": 44.2
-  },
-  {
-    "year": 1977,
-    "value": 47.6
-  },
-  {
-    "year": 1978,
-    "value": 50.2
-  },
-  {
-    "year": 1979,
-    "value": 51.7
-  },
-  {
-    "year": 1980,
-    "value": 50.4
-  },
-  {
-    "year": 1981,
-    "value": 51
-  },
-  {
-    "year": 1982,
-    "value": 48.4
-  },
-  {
-    "year": 1983,
-    "value": 49.7
-  },
-  {
-    "year": 1984,
-    "value": 54.2
-  },
-  {
-    "year": 1985,
-    "value": 54.8
-  },
-  {
-    "year": 1986,
-    "value": 55.4
-  },
-  {
-    "year": 1987,
-    "value": 58.3
-  },
-  {
-    "year": 1988,
-    "value": 61.3
-  },
-  {
-    "year": 1989,
-    "value": 61.8
-  },
-  {
-    "year": 1990,
-    "value": 62.4
-  },
-  {
-    "year": 1991,
-    "value": 61.4
-  },
-  {
-    "year": 1992,
-    "value": 63.2
-  },
-  {
-    "year": 1993,
-    "value": 65.3
-  },
-  {
-    "year": 1994,
-    "value": 68.7
-  },
-  {
-    "year": 1995,
-    "value": 71.9
-  },
-  {
-    "year": 1996,
-    "value": 75.3
-  },
-  {
-    "year": 1997,
-    "value": 80.7
-  },
-  {
-    "year": 1998,
-    "value": 85.5
-  },
-  {
-    "year": 1999,
-    "value": 89.3
-  },
-  {
-    "year": 2000,
-    "value": 92.5
-  },
-  {
-    "year": 2001,
-    "value": 89.8
-  },
-  {
-    "year": 2002,
-    "value": 90
-  },
-  {
-    "year": 2003,
-    "value": 91.3
-  },
-  {
-    "year": 2004,
-    "value": 93.6
-  },
-  {
-    "year": 2005,
-    "value": 96.7
-  },
-  {
-    "year": 2006,
-    "value": 99
-  },
-  {
-    "year": 2007,
-    "value": 101.6
-  },
-  {
-    "year": 2008,
-    "value": 98.1
-  },
-  {
-    "year": 2009,
-    "value": 86.9
-  },
-  {
-    "year": 2010,
-    "value": 91.7
-  },
-  {
-    "year": 2011,
-    "value": 94.6
-  },
-  {
-    "year": 2012,
-    "value": 97.5
-  },
-  {
-    "year": 2013,
-    "value": 99.5
-  },
-  {
-    "year": 2014,
-    "value": 102.4
-  },
-  {
-    "year": 2015,
-    "value": 101
-  },
-  {
-    "year": 2016,
-    "value": 98.8
-  },
-  {
-    "year": 2017,
-    "value": 100
-  },
-  {
-    "year": 2018,
-    "value": 103.2
-  },
-  {
-    "year": 2019,
-    "value": 102.3
-  },
-  {
-    "year": 2020,
-    "value": 95.1
-  },
-  {
-    "year": 2021,
-    "value": 99.3
-  },
-  {
-    "year": 2022,
-    "value": 101
-  },
-  {
-    "year": 2023,
-    "value": 100.8
-  },
-  {
-    "year": 2024,
-    "value": 100.1
-  },
-  {
-    "year": 2025,
-    "value": 101.2
-  },
-  {
-    "year": 2026,
-    "value": 102
-  }
+export const US_INDUSTRIAL_PRODUCTION: IndustrialProductionPoint[] = [
+  { year: 1970, value: 37.5 },
+  { year: 1971, value: 38 },
+  { year: 1972, value: 41.7 },
+  { year: 1973, value: 45.1 },
+  { year: 1974, value: 45 },
+  { year: 1975, value: 41 },
+  { year: 1976, value: 44.2 },
+  { year: 1977, value: 47.6 },
+  { year: 1978, value: 50.2 },
+  { year: 1979, value: 51.7 },
+  { year: 1980, value: 50.4 },
+  { year: 1981, value: 51 },
+  { year: 1982, value: 48.4 },
+  { year: 1983, value: 49.7 },
+  { year: 1984, value: 54.2 },
+  { year: 1985, value: 54.8 },
+  { year: 1986, value: 55.4 },
+  { year: 1987, value: 58.3 },
+  { year: 1988, value: 61.3 },
+  { year: 1989, value: 61.8 },
+  { year: 1990, value: 62.4 },
+  { year: 1991, value: 61.4 },
+  { year: 1992, value: 63.2 },
+  { year: 1993, value: 65.3 },
+  { year: 1994, value: 68.7 },
+  { year: 1995, value: 71.9 },
+  { year: 1996, value: 75.3 },
+  { year: 1997, value: 80.7 },
+  { year: 1998, value: 85.5 },
+  { year: 1999, value: 89.3 },
+  { year: 2000, value: 92.5 },
+  { year: 2001, value: 89.8 },
+  { year: 2002, value: 90 },
+  { year: 2003, value: 91.3 },
+  { year: 2004, value: 93.6 },
+  { year: 2005, value: 96.7 },
+  { year: 2006, value: 99 },
+  { year: 2007, value: 101.6 },
+  { year: 2008, value: 98.1 },
+  { year: 2009, value: 86.9 },
+  { year: 2010, value: 91.7 },
+  { year: 2011, value: 94.6 },
+  { year: 2012, value: 97.5 },
+  { year: 2013, value: 99.5 },
+  { year: 2014, value: 102.4 },
+  { year: 2015, value: 101 },
+  { year: 2016, value: 98.8 },
+  { year: 2017, value: 100 },
+  { year: 2018, value: 103.2 },
+  { year: 2019, value: 102.3 },
+  { year: 2020, value: 95.1 },
+  { year: 2021, value: 99.3 },
+  { year: 2022, value: 101 },
+  { year: 2023, value: 100.8 },
+  { year: 2024, value: 100.1 },
+  { year: 2025, value: 101.2 },
+  { year: 2026, value: 102 }
 ];
 
 // --- Capital Markets Data ---
 export interface InterestVsInflationPoint { month: string; rate: number; inflation: number; }
-export const FED_FUNDS_VS_INFLATION: InterestVsInflationPoint[] =  [
-  {
-    "month": "1970-01",
-    "rate": 8.98,
-    "inflation": 6.16
-  },
-  {
-    "month": "1970-02",
-    "rate": 8.98,
-    "inflation": 6.42
-  },
-  {
-    "month": "1970-03",
-    "rate": 7.76,
-    "inflation": 6.09
-  },
-  {
-    "month": "1970-04",
-    "rate": 8.1,
-    "inflation": 6.06
-  },
-  {
-    "month": "1970-05",
-    "rate": 7.95,
-    "inflation": 6.04
-  },
-  {
-    "month": "1970-06",
-    "rate": 7.61,
-    "inflation": 6.01
-  },
-  {
-    "month": "1970-07",
-    "rate": 7.21,
-    "inflation": 5.71
-  },
-  {
-    "month": "1970-08",
-    "rate": 6.62,
-    "inflation": 5.69
-  },
-  {
-    "month": "1970-09",
-    "rate": 6.29,
-    "inflation": 5.66
-  },
-  {
-    "month": "1970-10",
-    "rate": 6.2,
-    "inflation": 5.63
-  },
-  {
-    "month": "1970-11",
-    "rate": 5.6,
-    "inflation": 5.6
-  },
-  {
-    "month": "1970-12",
-    "rate": 4.9,
-    "inflation": 5.57
-  },
-  {
-    "month": "1971-01",
-    "rate": 4.14,
-    "inflation": 5.28
-  },
-  {
-    "month": "1971-02",
-    "rate": 3.72,
-    "inflation": 4.72
-  },
-  {
-    "month": "1971-03",
-    "rate": 3.71,
-    "inflation": 4.44
-  },
-  {
-    "month": "1971-04",
-    "rate": 4.16,
-    "inflation": 4.16
-  },
-  {
-    "month": "1971-05",
-    "rate": 4.63,
-    "inflation": 4.4
-  },
-  {
-    "month": "1971-06",
-    "rate": 4.91,
-    "inflation": 4.38
-  },
-  {
-    "month": "1971-07",
-    "rate": 5.31,
-    "inflation": 4.37
-  },
-  {
-    "month": "1971-08",
-    "rate": 5.57,
-    "inflation": 4.36
-  },
-  {
-    "month": "1971-09",
-    "rate": 5.55,
-    "inflation": 4.08
-  },
-  {
-    "month": "1971-10",
-    "rate": 5.2,
-    "inflation": 3.81
-  },
-  {
-    "month": "1971-11",
-    "rate": 4.91,
-    "inflation": 3.54
-  },
-  {
-    "month": "1971-12",
-    "rate": 4.14,
-    "inflation": 3.27
-  },
-  {
-    "month": "1972-01",
-    "rate": 3.51,
-    "inflation": 3.26
-  },
-  {
-    "month": "1972-02",
-    "rate": 3.3,
-    "inflation": 3.76
-  },
-  {
-    "month": "1972-03",
-    "rate": 3.83,
-    "inflation": 3.5
-  },
-  {
-    "month": "1972-04",
-    "rate": 4.17,
-    "inflation": 3.49
-  },
-  {
-    "month": "1972-05",
-    "rate": 4.27,
-    "inflation": 3.23
-  },
-  {
-    "month": "1972-06",
-    "rate": 4.46,
-    "inflation": 2.96
-  },
-  {
-    "month": "1972-07",
-    "rate": 4.55,
-    "inflation": 2.96
-  },
-  {
-    "month": "1972-08",
-    "rate": 4.81,
-    "inflation": 2.95
-  },
-  {
-    "month": "1972-09",
-    "rate": 4.87,
-    "inflation": 3.19
-  },
-  {
-    "month": "1972-10",
-    "rate": 5.05,
-    "inflation": 3.18
-  },
-  {
-    "month": "1972-11",
-    "rate": 5.06,
-    "inflation": 3.41
-  },
-  {
-    "month": "1972-12",
-    "rate": 5.33,
-    "inflation": 3.41
-  },
-  {
-    "month": "1973-01",
-    "rate": 5.94,
-    "inflation": 3.64
-  },
-  {
-    "month": "1973-02",
-    "rate": 6.58,
-    "inflation": 3.86
-  },
-  {
-    "month": "1973-03",
-    "rate": 7.09,
-    "inflation": 4.83
-  },
-  {
-    "month": "1973-04",
-    "rate": 7.12,
-    "inflation": 5.3
-  },
-  {
-    "month": "1973-05",
-    "rate": 7.84,
-    "inflation": 5.53
-  },
-  {
-    "month": "1973-06",
-    "rate": 8.49,
-    "inflation": 6
-  },
-  {
-    "month": "1973-07",
-    "rate": 10.4,
-    "inflation": 5.74
-  },
-  {
-    "month": "1973-08",
-    "rate": 10.5,
-    "inflation": 7.4
-  },
-  {
-    "month": "1973-09",
-    "rate": 10.78,
-    "inflation": 7.36
-  },
-  {
-    "month": "1973-10",
-    "rate": 10.01,
-    "inflation": 8.06
-  },
-  {
-    "month": "1973-11",
-    "rate": 10.03,
-    "inflation": 8.25
-  },
-  {
-    "month": "1973-12",
-    "rate": 9.95,
-    "inflation": 8.94
-  },
-  {
-    "month": "1974-01",
-    "rate": 9.65,
-    "inflation": 9.6
-  },
-  {
-    "month": "1974-02",
-    "rate": 8.97,
-    "inflation": 10
-  },
-  {
-    "month": "1974-03",
-    "rate": 9.35,
-    "inflation": 10.14
-  },
-  {
-    "month": "1974-04",
-    "rate": 10.51,
-    "inflation": 10.07
-  },
-  {
-    "month": "1974-05",
-    "rate": 11.31,
-    "inflation": 10.71
-  },
-  {
-    "month": "1974-06",
-    "rate": 11.93,
-    "inflation": 10.86
-  },
-  {
-    "month": "1974-07",
-    "rate": 12.92,
-    "inflation": 11.54
-  },
-  {
-    "month": "1974-08",
-    "rate": 12.01,
-    "inflation": 10.89
-  },
-  {
-    "month": "1974-09",
-    "rate": 11.34,
-    "inflation": 11.95
-  },
-  {
-    "month": "1974-10",
-    "rate": 10.06,
-    "inflation": 11.84
-  },
-  {
-    "month": "1974-11",
-    "rate": 9.45,
-    "inflation": 12.2
-  },
-  {
-    "month": "1974-12",
-    "rate": 8.53,
-    "inflation": 12.1
-  },
-  {
-    "month": "1975-01",
-    "rate": 7.13,
-    "inflation": 11.75
-  },
-  {
-    "month": "1975-02",
-    "rate": 6.24,
-    "inflation": 11.21
-  },
-  {
-    "month": "1975-03",
-    "rate": 5.54,
-    "inflation": 10.46
-  },
-  {
-    "month": "1975-04",
-    "rate": 5.49,
-    "inflation": 10.19
-  },
-  {
-    "month": "1975-05",
-    "rate": 5.22,
-    "inflation": 9.26
-  },
-  {
-    "month": "1975-06",
-    "rate": 5.55,
-    "inflation": 9.18
-  },
-  {
-    "month": "1975-07",
-    "rate": 6.1,
-    "inflation": 9.53
-  },
-  {
-    "month": "1975-08",
-    "rate": 6.14,
-    "inflation": 8.62
-  },
-  {
-    "month": "1975-09",
-    "rate": 6.24,
-    "inflation": 7.91
-  },
-  {
-    "month": "1975-10",
-    "rate": 5.82,
-    "inflation": 7.65
-  },
-  {
-    "month": "1975-11",
-    "rate": 5.22,
-    "inflation": 7.38
-  },
-  {
-    "month": "1975-12",
-    "rate": 5.2,
-    "inflation": 7.13
-  },
-  {
-    "month": "1976-01",
-    "rate": 4.87,
-    "inflation": 6.69
-  },
-  {
-    "month": "1976-02",
-    "rate": 4.77,
-    "inflation": 6.27
-  },
-  {
-    "month": "1976-03",
-    "rate": 4.84,
-    "inflation": 6.06
-  },
-  {
-    "month": "1976-04",
-    "rate": 4.82,
-    "inflation": 5.85
-  },
-  {
-    "month": "1976-05",
-    "rate": 5.29,
-    "inflation": 6.21
-  },
-  {
-    "month": "1976-06",
-    "rate": 5.48,
-    "inflation": 5.98
-  },
-  {
-    "month": "1976-07",
-    "rate": 5.31,
-    "inflation": 5.56
-  },
-  {
-    "month": "1976-08",
-    "rate": 5.29,
-    "inflation": 5.72
-  },
-  {
-    "month": "1976-09",
-    "rate": 5.25,
-    "inflation": 5.49
-  },
-  {
-    "month": "1976-10",
-    "rate": 5.02,
-    "inflation": 5.46
-  },
-  {
-    "month": "1976-11",
-    "rate": 4.95,
-    "inflation": 5.06
-  },
-  {
-    "month": "1976-12",
-    "rate": 4.65,
-    "inflation": 5.04
-  },
-  {
-    "month": "1977-01",
-    "rate": 4.61,
-    "inflation": 5.2
-  },
-  {
-    "month": "1977-02",
-    "rate": 4.68,
-    "inflation": 6.08
-  },
-  {
-    "month": "1977-03",
-    "rate": 4.69,
-    "inflation": 6.43
-  },
-  {
-    "month": "1977-04",
-    "rate": 4.73,
-    "inflation": 6.95
-  },
-  {
-    "month": "1977-05",
-    "rate": 5.35,
-    "inflation": 6.74
-  },
-  {
-    "month": "1977-06",
-    "rate": 5.39,
-    "inflation": 6.7
-  },
-  {
-    "month": "1977-07",
-    "rate": 5.42,
-    "inflation": 6.67
-  },
-  {
-    "month": "1977-08",
-    "rate": 5.9,
-    "inflation": 6.63
-  },
-  {
-    "month": "1977-09",
-    "rate": 6.14,
-    "inflation": 6.42
-  },
-  {
-    "month": "1977-10",
-    "rate": 6.47,
-    "inflation": 6.39
-  },
-  {
-    "month": "1977-11",
-    "rate": 6.51,
-    "inflation": 6.71
-  },
-  {
-    "month": "1977-12",
-    "rate": 6.56,
-    "inflation": 6.68
-  },
-  {
-    "month": "1978-01",
-    "rate": 6.7,
-    "inflation": 6.81
-  },
-  {
-    "month": "1978-02",
-    "rate": 6.78,
-    "inflation": 6.24
-  },
-  {
-    "month": "1978-03",
-    "rate": 6.79,
-    "inflation": 6.38
-  },
-  {
-    "month": "1978-04",
-    "rate": 6.89,
-    "inflation": 6.5
-  },
-  {
-    "month": "1978-05",
-    "rate": 7.36,
-    "inflation": 7.14
-  },
-  {
-    "month": "1978-06",
-    "rate": 7.6,
-    "inflation": 7.44
-  },
-  {
-    "month": "1978-07",
-    "rate": 7.81,
-    "inflation": 7.73
-  },
-  {
-    "month": "1978-08",
-    "rate": 8.04,
-    "inflation": 7.86
-  },
-  {
-    "month": "1978-09",
-    "rate": 8.45,
-    "inflation": 8.48
-  },
-  {
-    "month": "1978-10",
-    "rate": 8.96,
-    "inflation": 8.93
-  },
-  {
-    "month": "1978-11",
-    "rate": 9.76,
-    "inflation": 8.87
-  },
-  {
-    "month": "1978-12",
-    "rate": 10.03,
-    "inflation": 8.99
-  },
-  {
-    "month": "1979-01",
-    "rate": 10.07,
-    "inflation": 9.25
-  },
-  {
-    "month": "1979-02",
-    "rate": 10.06,
-    "inflation": 9.84
-  },
-  {
-    "month": "1979-03",
-    "rate": 10.09,
-    "inflation": 10.25
-  },
-  {
-    "month": "1979-04",
-    "rate": 10.01,
-    "inflation": 10.49
-  },
-  {
-    "month": "1979-05",
-    "rate": 10.24,
-    "inflation": 10.7
-  },
-  {
-    "month": "1979-06",
-    "rate": 10.29,
-    "inflation": 11.08
-  },
-  {
-    "month": "1979-07",
-    "rate": 10.47,
-    "inflation": 11.45
-  },
-  {
-    "month": "1979-08",
-    "rate": 10.94,
-    "inflation": 11.84
-  },
-  {
-    "month": "1979-09",
-    "rate": 11.43,
-    "inflation": 11.88
-  },
-  {
-    "month": "1979-10",
-    "rate": 13.77,
-    "inflation": 12.07
-  },
-  {
-    "month": "1979-11",
-    "rate": 13.18,
-    "inflation": 12.59
-  },
-  {
-    "month": "1979-12",
-    "rate": 13.78,
-    "inflation": 13.25
-  },
-  {
-    "month": "1980-01",
-    "rate": 13.82,
-    "inflation": 13.87
-  },
-  {
-    "month": "1980-02",
-    "rate": 14.13,
-    "inflation": 14.16
-  },
-  {
-    "month": "1980-03",
-    "rate": 17.19,
-    "inflation": 14.59
-  },
-  {
-    "month": "1980-04",
-    "rate": 17.61,
-    "inflation": 14.59
-  },
-  {
-    "month": "1980-05",
-    "rate": 10.98,
-    "inflation": 14.43
-  },
-  {
-    "month": "1980-06",
-    "rate": 9.47,
-    "inflation": 14.27
-  },
-  {
-    "month": "1980-07",
-    "rate": 9.03,
-    "inflation": 13.15
-  },
-  {
-    "month": "1980-08",
-    "rate": 9.61,
-    "inflation": 12.89
-  },
-  {
-    "month": "1980-09",
-    "rate": 10.87,
-    "inflation": 12.77
-  },
-  {
-    "month": "1980-10",
-    "rate": 12.81,
-    "inflation": 12.63
-  },
-  {
-    "month": "1980-11",
-    "rate": 15.85,
-    "inflation": 12.63
-  },
-  {
-    "month": "1980-12",
-    "rate": 18.9,
-    "inflation": 12.35
-  },
-  {
-    "month": "1981-01",
-    "rate": 19.08,
-    "inflation": 11.79
-  },
-  {
-    "month": "1981-02",
-    "rate": 15.93,
-    "inflation": 11.39
-  },
-  {
-    "month": "1981-03",
-    "rate": 14.7,
-    "inflation": 10.61
-  },
-  {
-    "month": "1981-04",
-    "rate": 15.72,
-    "inflation": 10.14
-  },
-  {
-    "month": "1981-05",
-    "rate": 18.52,
-    "inflation": 9.79
-  },
-  {
-    "month": "1981-06",
-    "rate": 19.1,
-    "inflation": 9.7
-  },
-  {
-    "month": "1981-07",
-    "rate": 19.04,
-    "inflation": 10.77
-  },
-  {
-    "month": "1981-08",
-    "rate": 17.82,
-    "inflation": 10.82
-  },
-  {
-    "month": "1981-09",
-    "rate": 15.87,
-    "inflation": 10.97
-  },
-  {
-    "month": "1981-10",
-    "rate": 15.08,
-    "inflation": 10.27
-  },
-  {
-    "month": "1981-11",
-    "rate": 13.31,
-    "inflation": 9.58
-  },
-  {
-    "month": "1981-12",
-    "rate": 12.37,
-    "inflation": 8.91
-  },
-  {
-    "month": "1982-01",
-    "rate": 13.22,
-    "inflation": 8.26
-  },
-  {
-    "month": "1982-02",
-    "rate": 14.78,
-    "inflation": 7.61
-  },
-  {
-    "month": "1982-03",
-    "rate": 14.68,
-    "inflation": 6.88
-  },
-  {
-    "month": "1982-04",
-    "rate": 14.94,
-    "inflation": 6.62
-  },
-  {
-    "month": "1982-05",
-    "rate": 14.45,
-    "inflation": 6.91
-  },
-  {
-    "month": "1982-06",
-    "rate": 14.15,
-    "inflation": 7.18
-  },
-  {
-    "month": "1982-07",
-    "rate": 12.59,
-    "inflation": 6.56
-  },
-  {
-    "month": "1982-08",
-    "rate": 10.12,
-    "inflation": 5.97
-  },
-  {
-    "month": "1982-09",
-    "rate": 10.31,
-    "inflation": 4.94
-  },
-  {
-    "month": "1982-10",
-    "rate": 9.71,
-    "inflation": 5.03
-  },
-  {
-    "month": "1982-11",
-    "rate": 9.2,
-    "inflation": 4.48
-  },
-  {
-    "month": "1982-12",
-    "rate": 8.95,
-    "inflation": 3.83
-  },
-  {
-    "month": "1983-01",
-    "rate": 8.68,
-    "inflation": 3.71
-  },
-  {
-    "month": "1983-02",
-    "rate": 8.51,
-    "inflation": 3.48
-  },
-  {
-    "month": "1983-03",
-    "rate": 8.77,
-    "inflation": 3.59
-  },
-  {
-    "month": "1983-04",
-    "rate": 8.8,
-    "inflation": 4
-  },
-  {
-    "month": "1983-05",
-    "rate": 8.63,
-    "inflation": 3.44
-  },
-  {
-    "month": "1983-06",
-    "rate": 8.98,
-    "inflation": 2.47
-  },
-  {
-    "month": "1983-07",
-    "rate": 9.37,
-    "inflation": 2.36
-  },
-  {
-    "month": "1983-08",
-    "rate": 9.56,
-    "inflation": 2.46
-  },
-  {
-    "month": "1983-09",
-    "rate": 9.45,
-    "inflation": 2.76
-  },
-  {
-    "month": "1983-10",
-    "rate": 9.48,
-    "inflation": 2.75
-  },
-  {
-    "month": "1983-11",
-    "rate": 9.34,
-    "inflation": 3.16
-  },
-  {
-    "month": "1983-12",
-    "rate": 9.47,
-    "inflation": 3.79
-  },
-  {
-    "month": "1984-01",
-    "rate": 9.56,
-    "inflation": 4.29
-  },
-  {
-    "month": "1984-02",
-    "rate": 9.59,
-    "inflation": 4.69
-  },
-  {
-    "month": "1984-03",
-    "rate": 9.91,
-    "inflation": 4.89
-  },
-  {
-    "month": "1984-04",
-    "rate": 10.29,
-    "inflation": 4.55
-  },
-  {
-    "month": "1984-05",
-    "rate": 10.32,
-    "inflation": 4.33
-  },
-  {
-    "month": "1984-06",
-    "rate": 11.06,
-    "inflation": 4.33
-  },
-  {
-    "month": "1984-07",
-    "rate": 11.23,
-    "inflation": 4.31
-  },
-  {
-    "month": "1984-08",
-    "rate": 11.64,
-    "inflation": 4.3
-  },
-  {
-    "month": "1984-09",
-    "rate": 11.3,
-    "inflation": 4.28
-  },
-  {
-    "month": "1984-10",
-    "rate": 9.99,
-    "inflation": 4.27
-  },
-  {
-    "month": "1984-11",
-    "rate": 9.43,
-    "inflation": 4.15
-  },
-  {
-    "month": "1984-12",
-    "rate": 8.38,
-    "inflation": 4.04
-  },
-  {
-    "month": "1985-01",
-    "rate": 8.35,
-    "inflation": 3.53
-  },
-  {
-    "month": "1985-02",
-    "rate": 8.5,
-    "inflation": 3.61
-  },
-  {
-    "month": "1985-03",
-    "rate": 8.58,
-    "inflation": 3.79
-  },
-  {
-    "month": "1985-04",
-    "rate": 8.27,
-    "inflation": 3.58
-  },
-  {
-    "month": "1985-05",
-    "rate": 7.97,
-    "inflation": 3.57
-  },
-  {
-    "month": "1985-06",
-    "rate": 7.53,
-    "inflation": 3.66
-  },
-  {
-    "month": "1985-07",
-    "rate": 7.88,
-    "inflation": 3.46
-  },
-  {
-    "month": "1985-08",
-    "rate": 7.9,
-    "inflation": 3.35
-  },
-  {
-    "month": "1985-09",
-    "rate": 7.92,
-    "inflation": 3.25
-  },
-  {
-    "month": "1985-10",
-    "rate": 7.99,
-    "inflation": 3.24
-  },
-  {
-    "month": "1985-11",
-    "rate": 8.05,
-    "inflation": 3.51
-  },
-  {
-    "month": "1985-12",
-    "rate": 8.27,
-    "inflation": 3.79
-  },
-  {
-    "month": "1986-01",
-    "rate": 8.14,
-    "inflation": 3.97
-  },
-  {
-    "month": "1986-02",
-    "rate": 7.86,
-    "inflation": 3.2
-  },
-  {
-    "month": "1986-03",
-    "rate": 7.48,
-    "inflation": 2.15
-  },
-  {
-    "month": "1986-04",
-    "rate": 6.99,
-    "inflation": 1.59
-  },
-  {
-    "month": "1986-05",
-    "rate": 6.85,
-    "inflation": 1.68
-  },
-  {
-    "month": "1986-06",
-    "rate": 6.92,
-    "inflation": 1.77
-  },
-  {
-    "month": "1986-07",
-    "rate": 6.56,
-    "inflation": 1.67
-  },
-  {
-    "month": "1986-08",
-    "rate": 6.17,
-    "inflation": 1.58
-  },
-  {
-    "month": "1986-09",
-    "rate": 5.89,
-    "inflation": 1.76
-  },
-  {
-    "month": "1986-10",
-    "rate": 5.85,
-    "inflation": 1.57
-  },
-  {
-    "month": "1986-11",
-    "rate": 6.04,
-    "inflation": 1.28
-  },
-  {
-    "month": "1986-12",
-    "rate": 6.91,
-    "inflation": 1.19
-  },
-  {
-    "month": "1987-01",
-    "rate": 6.43,
-    "inflation": 1.36
-  },
-  {
-    "month": "1987-02",
-    "rate": 6.1,
-    "inflation": 1.91
-  },
-  {
-    "month": "1987-03",
-    "rate": 6.13,
-    "inflation": 2.84
-  },
-  {
-    "month": "1987-04",
-    "rate": 6.37,
-    "inflation": 3.68
-  },
-  {
-    "month": "1987-05",
-    "rate": 6.85,
-    "inflation": 3.67
-  },
-  {
-    "month": "1987-06",
-    "rate": 6.73,
-    "inflation": 3.75
-  },
-  {
-    "month": "1987-07",
-    "rate": 6.58,
-    "inflation": 3.93
-  },
-  {
-    "month": "1987-08",
-    "rate": 6.73,
-    "inflation": 4.29
-  },
-  {
-    "month": "1987-09",
-    "rate": 7.22,
-    "inflation": 4.27
-  },
-  {
-    "month": "1987-10",
-    "rate": 7.29,
-    "inflation": 4.36
-  },
-  {
-    "month": "1987-11",
-    "rate": 6.69,
-    "inflation": 4.53
-  },
-  {
-    "month": "1987-12",
-    "rate": 6.77,
-    "inflation": 4.33
-  },
-  {
-    "month": "1988-01",
-    "rate": 6.83,
-    "inflation": 4.13
-  },
-  {
-    "month": "1988-02",
-    "rate": 6.58,
-    "inflation": 3.94
-  },
-  {
-    "month": "1988-03",
-    "rate": 6.58,
-    "inflation": 3.83
-  },
-  {
-    "month": "1988-04",
-    "rate": 6.87,
-    "inflation": 3.99
-  },
-  {
-    "month": "1988-05",
-    "rate": 7.09,
-    "inflation": 3.98
-  },
-  {
-    "month": "1988-06",
-    "rate": 7.51,
-    "inflation": 3.96
-  },
-  {
-    "month": "1988-07",
-    "rate": 7.75,
-    "inflation": 4.13
-  },
-  {
-    "month": "1988-08",
-    "rate": 8.01,
-    "inflation": 4.11
-  },
-  {
-    "month": "1988-09",
-    "rate": 8.19,
-    "inflation": 4.18
-  },
-  {
-    "month": "1988-10",
-    "rate": 8.3,
-    "inflation": 4.26
-  },
-  {
-    "month": "1988-11",
-    "rate": 8.35,
-    "inflation": 4.25
-  },
-  {
-    "month": "1988-12",
-    "rate": 8.76,
-    "inflation": 4.41
-  },
-  {
-    "month": "1989-01",
-    "rate": 9.12,
-    "inflation": 4.48
-  },
-  {
-    "month": "1989-02",
-    "rate": 9.36,
-    "inflation": 4.65
-  },
-  {
-    "month": "1989-03",
-    "rate": 9.85,
-    "inflation": 4.89
-  },
-  {
-    "month": "1989-04",
-    "rate": 9.84,
-    "inflation": 5.03
-  },
-  {
-    "month": "1989-05",
-    "rate": 9.81,
-    "inflation": 5.28
-  },
-  {
-    "month": "1989-06",
-    "rate": 9.53,
-    "inflation": 5.17
-  },
-  {
-    "month": "1989-07",
-    "rate": 9.24,
-    "inflation": 5.06
-  },
-  {
-    "month": "1989-08",
-    "rate": 8.99,
-    "inflation": 4.62
-  },
-  {
-    "month": "1989-09",
-    "rate": 9.02,
-    "inflation": 4.44
-  },
-  {
-    "month": "1989-10",
-    "rate": 8.84,
-    "inflation": 4.59
-  },
-  {
-    "month": "1989-11",
-    "rate": 8.55,
-    "inflation": 4.66
-  },
-  {
-    "month": "1989-12",
-    "rate": 8.45,
-    "inflation": 4.64
-  },
-  {
-    "month": "1990-01",
-    "rate": 8.23,
-    "inflation": 5.2
-  },
-  {
-    "month": "1990-02",
-    "rate": 8.24,
-    "inflation": 5.26
-  },
-  {
-    "month": "1990-03",
-    "rate": 8.28,
-    "inflation": 5.24
-  },
-  {
-    "month": "1990-04",
-    "rate": 8.26,
-    "inflation": 4.71
-  },
-  {
-    "month": "1990-05",
-    "rate": 8.18,
-    "inflation": 4.37
-  },
-  {
-    "month": "1990-06",
-    "rate": 8.29,
-    "inflation": 4.67
-  },
-  {
-    "month": "1990-07",
-    "rate": 8.15,
-    "inflation": 4.82
-  },
-  {
-    "month": "1990-08",
-    "rate": 8.13,
-    "inflation": 5.7
-  },
-  {
-    "month": "1990-09",
-    "rate": 8.2,
-    "inflation": 6.17
-  },
-  {
-    "month": "1990-10",
-    "rate": 8.11,
-    "inflation": 6.38
-  },
-  {
-    "month": "1990-11",
-    "rate": 7.81,
-    "inflation": 6.2
-  },
-  {
-    "month": "1990-12",
-    "rate": 7.31,
-    "inflation": 6.25
-  },
-  {
-    "month": "1991-01",
-    "rate": 6.91,
-    "inflation": 5.65
-  },
-  {
-    "month": "1991-02",
-    "rate": 6.25,
-    "inflation": 5.31
-  },
-  {
-    "month": "1991-03",
-    "rate": 6.12,
-    "inflation": 4.82
-  },
-  {
-    "month": "1991-04",
-    "rate": 5.91,
-    "inflation": 4.81
-  },
-  {
-    "month": "1991-05",
-    "rate": 5.78,
-    "inflation": 5.03
-  },
-  {
-    "month": "1991-06",
-    "rate": 5.9,
-    "inflation": 4.7
-  },
-  {
-    "month": "1991-07",
-    "rate": 5.82,
-    "inflation": 4.37
-  },
-  {
-    "month": "1991-08",
-    "rate": 5.66,
-    "inflation": 3.8
-  },
-  {
-    "month": "1991-09",
-    "rate": 5.45,
-    "inflation": 3.4
-  },
-  {
-    "month": "1991-10",
-    "rate": 5.21,
-    "inflation": 2.85
-  },
-  {
-    "month": "1991-11",
-    "rate": 4.81,
-    "inflation": 3.07
-  },
-  {
-    "month": "1991-12",
-    "rate": 4.43,
-    "inflation": 2.98
-  },
-  {
-    "month": "1992-01",
-    "rate": 4.03,
-    "inflation": 2.67
-  },
-  {
-    "month": "1992-02",
-    "rate": 4.06,
-    "inflation": 2.82
-  },
-  {
-    "month": "1992-03",
-    "rate": 3.98,
-    "inflation": 3.19
-  },
-  {
-    "month": "1992-04",
-    "rate": 3.73,
-    "inflation": 3.18
-  },
-  {
-    "month": "1992-05",
-    "rate": 3.82,
-    "inflation": 3.02
-  },
-  {
-    "month": "1992-06",
-    "rate": 3.76,
-    "inflation": 3.01
-  },
-  {
-    "month": "1992-07",
-    "rate": 3.25,
-    "inflation": 3.16
-  },
-  {
-    "month": "1992-08",
-    "rate": 3.3,
-    "inflation": 3.07
-  },
-  {
-    "month": "1992-09",
-    "rate": 3.22,
-    "inflation": 2.99
-  },
-  {
-    "month": "1992-10",
-    "rate": 3.1,
-    "inflation": 3.28
-  },
-  {
-    "month": "1992-11",
-    "rate": 3.09,
-    "inflation": 3.12
-  },
-  {
-    "month": "1992-12",
-    "rate": 2.92,
-    "inflation": 2.97
-  },
-  {
-    "month": "1993-01",
-    "rate": 3.02,
-    "inflation": 3.25
-  },
-  {
-    "month": "1993-02",
-    "rate": 3.03,
-    "inflation": 3.25
-  },
-  {
-    "month": "1993-03",
-    "rate": 3.07,
-    "inflation": 3.02
-  },
-  {
-    "month": "1993-04",
-    "rate": 2.96,
-    "inflation": 3.16
-  },
-  {
-    "month": "1993-05",
-    "rate": 3,
-    "inflation": 3.22
-  },
-  {
-    "month": "1993-06",
-    "rate": 3.04,
-    "inflation": 3
-  },
-  {
-    "month": "1993-07",
-    "rate": 3.06,
-    "inflation": 2.85
-  },
-  {
-    "month": "1993-08",
-    "rate": 3.03,
-    "inflation": 2.84
-  },
-  {
-    "month": "1993-09",
-    "rate": 3.09,
-    "inflation": 2.76
-  },
-  {
-    "month": "1993-10",
-    "rate": 2.99,
-    "inflation": 2.75
-  },
-  {
-    "month": "1993-11",
-    "rate": 3.02,
-    "inflation": 2.74
-  },
-  {
-    "month": "1993-12",
-    "rate": 2.96,
-    "inflation": 2.81
-  },
-  {
-    "month": "1994-01",
-    "rate": 3.05,
-    "inflation": 2.45
-  },
-  {
-    "month": "1994-02",
-    "rate": 3.25,
-    "inflation": 2.52
-  },
-  {
-    "month": "1994-03",
-    "rate": 3.34,
-    "inflation": 2.65
-  },
-  {
-    "month": "1994-04",
-    "rate": 3.56,
-    "inflation": 2.36
-  },
-  {
-    "month": "1994-05",
-    "rate": 4.01,
-    "inflation": 2.29
-  },
-  {
-    "month": "1994-06",
-    "rate": 4.25,
-    "inflation": 2.49
-  },
-  {
-    "month": "1994-07",
-    "rate": 4.26,
-    "inflation": 2.7
-  },
-  {
-    "month": "1994-08",
-    "rate": 4.47,
-    "inflation": 2.9
-  },
-  {
-    "month": "1994-09",
-    "rate": 4.73,
-    "inflation": 2.97
-  },
-  {
-    "month": "1994-10",
-    "rate": 4.76,
-    "inflation": 2.61
-  },
-  {
-    "month": "1994-11",
-    "rate": 5.29,
-    "inflation": 2.6
-  },
-  {
-    "month": "1994-12",
-    "rate": 5.45,
-    "inflation": 2.6
-  },
-  {
-    "month": "1995-01",
-    "rate": 5.53,
-    "inflation": 2.87
-  },
-  {
-    "month": "1995-02",
-    "rate": 5.92,
-    "inflation": 2.86
-  },
-  {
-    "month": "1995-03",
-    "rate": 5.98,
-    "inflation": 2.79
-  },
-  {
-    "month": "1995-04",
-    "rate": 6.05,
-    "inflation": 3.13
-  },
-  {
-    "month": "1995-05",
-    "rate": 6.01,
-    "inflation": 3.12
-  },
-  {
-    "month": "1995-06",
-    "rate": 6,
-    "inflation": 3.04
-  },
-  {
-    "month": "1995-07",
-    "rate": 5.85,
-    "inflation": 2.83
-  },
-  {
-    "month": "1995-08",
-    "rate": 5.74,
-    "inflation": 2.62
-  },
-  {
-    "month": "1995-09",
-    "rate": 5.8,
-    "inflation": 2.55
-  },
-  {
-    "month": "1995-10",
-    "rate": 5.76,
-    "inflation": 2.74
-  },
-  {
-    "month": "1995-11",
-    "rate": 5.8,
-    "inflation": 2.6
-  },
-  {
-    "month": "1995-12",
-    "rate": 5.6,
-    "inflation": 2.53
-  },
-  {
-    "month": "1996-01",
-    "rate": 5.56,
-    "inflation": 2.79
-  },
-  {
-    "month": "1996-02",
-    "rate": 5.22,
-    "inflation": 2.72
-  },
-  {
-    "month": "1996-03",
-    "rate": 5.31,
-    "inflation": 2.84
-  },
-  {
-    "month": "1996-04",
-    "rate": 5.22,
-    "inflation": 2.83
-  },
-  {
-    "month": "1996-05",
-    "rate": 5.24,
-    "inflation": 2.83
-  },
-  {
-    "month": "1996-06",
-    "rate": 5.27,
-    "inflation": 2.82
-  },
-  {
-    "month": "1996-07",
-    "rate": 5.4,
-    "inflation": 2.88
-  },
-  {
-    "month": "1996-08",
-    "rate": 5.22,
-    "inflation": 2.81
-  },
-  {
-    "month": "1996-09",
-    "rate": 5.3,
-    "inflation": 3
-  },
-  {
-    "month": "1996-10",
-    "rate": 5.24,
-    "inflation": 3.06
-  },
-  {
-    "month": "1996-11",
-    "rate": 5.31,
-    "inflation": 3.25
-  },
-  {
-    "month": "1996-12",
-    "rate": 5.29,
-    "inflation": 3.38
-  },
-  {
-    "month": "1997-01",
-    "rate": 5.25,
-    "inflation": 3.04
-  },
-  {
-    "month": "1997-02",
-    "rate": 5.19,
-    "inflation": 3.03
-  },
-  {
-    "month": "1997-03",
-    "rate": 5.39,
-    "inflation": 2.77
-  },
-  {
-    "month": "1997-04",
-    "rate": 5.51,
-    "inflation": 2.43
-  },
-  {
-    "month": "1997-05",
-    "rate": 5.5,
-    "inflation": 2.24
-  },
-  {
-    "month": "1997-06",
-    "rate": 5.56,
-    "inflation": 2.23
-  },
-  {
-    "month": "1997-07",
-    "rate": 5.52,
-    "inflation": 2.17
-  },
-  {
-    "month": "1997-08",
-    "rate": 5.54,
-    "inflation": 2.29
-  },
-  {
-    "month": "1997-09",
-    "rate": 5.54,
-    "inflation": 2.22
-  },
-  {
-    "month": "1997-10",
-    "rate": 5.5,
-    "inflation": 2.09
-  },
-  {
-    "month": "1997-11",
-    "rate": 5.52,
-    "inflation": 1.89
-  },
-  {
-    "month": "1997-12",
-    "rate": 5.5,
-    "inflation": 1.7
-  },
-  {
-    "month": "1998-01",
-    "rate": 5.56,
-    "inflation": 1.63
-  },
-  {
-    "month": "1998-02",
-    "rate": 5.51,
-    "inflation": 1.44
-  },
-  {
-    "month": "1998-03",
-    "rate": 5.49,
-    "inflation": 1.38
-  },
-  {
-    "month": "1998-04",
-    "rate": 5.45,
-    "inflation": 1.44
-  },
-  {
-    "month": "1998-05",
-    "rate": 5.49,
-    "inflation": 1.69
-  },
-  {
-    "month": "1998-06",
-    "rate": 5.56,
-    "inflation": 1.62
-  },
-  {
-    "month": "1998-07",
-    "rate": 5.54,
-    "inflation": 1.75
-  },
-  {
-    "month": "1998-08",
-    "rate": 5.55,
-    "inflation": 1.62
-  },
-  {
-    "month": "1998-09",
-    "rate": 5.51,
-    "inflation": 1.43
-  },
-  {
-    "month": "1998-10",
-    "rate": 5.07,
-    "inflation": 1.49
-  },
-  {
-    "month": "1998-11",
-    "rate": 4.83,
-    "inflation": 1.48
-  },
-  {
-    "month": "1998-12",
-    "rate": 4.68,
-    "inflation": 1.61
-  },
-  {
-    "month": "1999-01",
-    "rate": 4.63,
-    "inflation": 1.67
-  },
-  {
-    "month": "1999-02",
-    "rate": 4.76,
-    "inflation": 1.67
-  },
-  {
-    "month": "1999-03",
-    "rate": 4.81,
-    "inflation": 1.73
-  },
-  {
-    "month": "1999-04",
-    "rate": 4.74,
-    "inflation": 2.28
-  },
-  {
-    "month": "1999-05",
-    "rate": 4.74,
-    "inflation": 2.09
-  },
-  {
-    "month": "1999-06",
-    "rate": 4.76,
-    "inflation": 1.97
-  },
-  {
-    "month": "1999-07",
-    "rate": 4.99,
-    "inflation": 2.14
-  },
-  {
-    "month": "1999-08",
-    "rate": 5.07,
-    "inflation": 2.26
-  },
-  {
-    "month": "1999-09",
-    "rate": 5.22,
-    "inflation": 2.63
-  },
-  {
-    "month": "1999-10",
-    "rate": 5.2,
-    "inflation": 2.56
-  },
-  {
-    "month": "1999-11",
-    "rate": 5.42,
-    "inflation": 2.62
-  },
-  {
-    "month": "1999-12",
-    "rate": 5.3,
-    "inflation": 2.68
-  },
-  {
-    "month": "2000-01",
-    "rate": 5.45,
-    "inflation": 2.79
-  },
-  {
-    "month": "2000-02",
-    "rate": 5.73,
-    "inflation": 3.22
-  },
-  {
-    "month": "2000-03",
-    "rate": 5.85,
-    "inflation": 3.76
-  },
-  {
-    "month": "2000-04",
-    "rate": 6.02,
-    "inflation": 3.01
-  },
-  {
-    "month": "2000-05",
-    "rate": 6.27,
-    "inflation": 3.13
-  },
-  {
-    "month": "2000-06",
-    "rate": 6.53,
-    "inflation": 3.73
-  },
-  {
-    "month": "2000-07",
-    "rate": 6.54,
-    "inflation": 3.6
-  },
-  {
-    "month": "2000-08",
-    "rate": 6.5,
-    "inflation": 3.35
-  },
-  {
-    "month": "2000-09",
-    "rate": 6.52,
-    "inflation": 3.46
-  },
-  {
-    "month": "2000-10",
-    "rate": 6.51,
-    "inflation": 3.45
-  },
-  {
-    "month": "2000-11",
-    "rate": 6.51,
-    "inflation": 3.44
-  },
-  {
-    "month": "2000-12",
-    "rate": 6.4,
-    "inflation": 3.44
-  },
-  {
-    "month": "2001-01",
-    "rate": 5.98,
-    "inflation": 3.72
-  },
-  {
-    "month": "2001-02",
-    "rate": 5.49,
-    "inflation": 3.53
-  },
-  {
-    "month": "2001-03",
-    "rate": 5.31,
-    "inflation": 2.98
-  },
-  {
-    "month": "2001-04",
-    "rate": 4.8,
-    "inflation": 3.22
-  },
-  {
-    "month": "2001-05",
-    "rate": 4.21,
-    "inflation": 3.56
-  },
-  {
-    "month": "2001-06",
-    "rate": 3.97,
-    "inflation": 3.19
-  },
-  {
-    "month": "2001-07",
-    "rate": 3.77,
-    "inflation": 2.72
-  },
-  {
-    "month": "2001-08",
-    "rate": 3.65,
-    "inflation": 2.72
-  },
-  {
-    "month": "2001-09",
-    "rate": 3.07,
-    "inflation": 2.59
-  },
-  {
-    "month": "2001-10",
-    "rate": 2.49,
-    "inflation": 2.13
-  },
-  {
-    "month": "2001-11",
-    "rate": 2.09,
-    "inflation": 1.89
-  },
-  {
-    "month": "2001-12",
-    "rate": 1.82,
-    "inflation": 1.6
-  },
-  {
-    "month": "2002-01",
-    "rate": 1.73,
-    "inflation": 1.2
-  },
-  {
-    "month": "2002-02",
-    "rate": 1.74,
-    "inflation": 1.14
-  },
-  {
-    "month": "2002-03",
-    "rate": 1.73,
-    "inflation": 1.36
-  },
-  {
-    "month": "2002-04",
-    "rate": 1.75,
-    "inflation": 1.64
-  },
-  {
-    "month": "2002-05",
-    "rate": 1.75,
-    "inflation": 1.24
-  },
-  {
-    "month": "2002-06",
-    "rate": 1.75,
-    "inflation": 1.07
-  },
-  {
-    "month": "2002-07",
-    "rate": 1.73,
-    "inflation": 1.47
-  },
-  {
-    "month": "2002-08",
-    "rate": 1.74,
-    "inflation": 1.75
-  },
-  {
-    "month": "2002-09",
-    "rate": 1.75,
-    "inflation": 1.52
-  },
-  {
-    "month": "2002-10",
-    "rate": 1.75,
-    "inflation": 2.03
-  },
-  {
-    "month": "2002-11",
-    "rate": 1.34,
-    "inflation": 2.25
-  },
-  {
-    "month": "2002-12",
-    "rate": 1.24,
-    "inflation": 2.48
-  },
-  {
-    "month": "2003-01",
-    "rate": 1.24,
-    "inflation": 2.76
-  },
-  {
-    "month": "2003-02",
-    "rate": 1.26,
-    "inflation": 3.15
-  },
-  {
-    "month": "2003-03",
-    "rate": 1.25,
-    "inflation": 3.03
-  },
-  {
-    "month": "2003-04",
-    "rate": 1.26,
-    "inflation": 2.18
-  },
-  {
-    "month": "2003-05",
-    "rate": 1.26,
-    "inflation": 1.89
-  },
-  {
-    "month": "2003-06",
-    "rate": 1.22,
-    "inflation": 1.95
-  },
-  {
-    "month": "2003-07",
-    "rate": 1.01,
-    "inflation": 2.06
-  },
-  {
-    "month": "2003-08",
-    "rate": 1.03,
-    "inflation": 2.22
-  },
-  {
-    "month": "2003-09",
-    "rate": 1.01,
-    "inflation": 2.38
-  },
-  {
-    "month": "2003-10",
-    "rate": 1.01,
-    "inflation": 2.04
-  },
-  {
-    "month": "2003-11",
-    "rate": 1,
-    "inflation": 1.93
-  },
-  {
-    "month": "2003-12",
-    "rate": 0.98,
-    "inflation": 2.04
-  },
-  {
-    "month": "2004-01",
-    "rate": 1,
-    "inflation": 2.03
-  },
-  {
-    "month": "2004-02",
-    "rate": 1.01,
-    "inflation": 1.69
-  },
-  {
-    "month": "2004-03",
-    "rate": 1,
-    "inflation": 1.74
-  },
-  {
-    "month": "2004-04",
-    "rate": 1,
-    "inflation": 2.29
-  },
-  {
-    "month": "2004-05",
-    "rate": 1,
-    "inflation": 2.9
-  },
-  {
-    "month": "2004-06",
-    "rate": 1.03,
-    "inflation": 3.17
-  },
-  {
-    "month": "2004-07",
-    "rate": 1.26,
-    "inflation": 2.94
-  },
-  {
-    "month": "2004-08",
-    "rate": 1.43,
-    "inflation": 2.55
-  },
-  {
-    "month": "2004-09",
-    "rate": 1.61,
-    "inflation": 2.54
-  },
-  {
-    "month": "2004-10",
-    "rate": 1.76,
-    "inflation": 3.19
-  },
-  {
-    "month": "2004-11",
-    "rate": 1.93,
-    "inflation": 3.62
-  },
-  {
-    "month": "2004-12",
-    "rate": 2.16,
-    "inflation": 3.34
-  },
-  {
-    "month": "2005-01",
-    "rate": 2.28,
-    "inflation": 2.84
-  },
-  {
-    "month": "2005-02",
-    "rate": 2.5,
-    "inflation": 3.05
-  },
-  {
-    "month": "2005-03",
-    "rate": 2.63,
-    "inflation": 3.21
-  },
-  {
-    "month": "2005-04",
-    "rate": 2.79,
-    "inflation": 3.36
-  },
-  {
-    "month": "2005-05",
-    "rate": 3,
-    "inflation": 2.87
-  },
-  {
-    "month": "2005-06",
-    "rate": 3.04,
-    "inflation": 2.54
-  },
-  {
-    "month": "2005-07",
-    "rate": 3.26,
-    "inflation": 3.07
-  },
-  {
-    "month": "2005-08",
-    "rate": 3.5,
-    "inflation": 3.65
-  },
-  {
-    "month": "2005-09",
-    "rate": 3.62,
-    "inflation": 4.74
-  },
-  {
-    "month": "2005-10",
-    "rate": 3.78,
-    "inflation": 4.35
-  },
-  {
-    "month": "2005-11",
-    "rate": 4,
-    "inflation": 3.34
-  },
-  {
-    "month": "2005-12",
-    "rate": 4.16,
-    "inflation": 3.34
-  },
-  {
-    "month": "2006-01",
-    "rate": 4.29,
-    "inflation": 4.02
-  },
-  {
-    "month": "2006-02",
-    "rate": 4.49,
-    "inflation": 3.64
-  },
-  {
-    "month": "2006-03",
-    "rate": 4.59,
-    "inflation": 3.42
-  },
-  {
-    "month": "2006-04",
-    "rate": 4.79,
-    "inflation": 3.61
-  },
-  {
-    "month": "2006-05",
-    "rate": 4.94,
-    "inflation": 3.98
-  },
-  {
-    "month": "2006-06",
-    "rate": 4.99,
-    "inflation": 4.18
-  },
-  {
-    "month": "2006-07",
-    "rate": 5.24,
-    "inflation": 4.1
-  },
-  {
-    "month": "2006-08",
-    "rate": 5.25,
-    "inflation": 3.93
-  },
-  {
-    "month": "2006-09",
-    "rate": 5.25,
-    "inflation": 2.01
-  },
-  {
-    "month": "2006-10",
-    "rate": 5.25,
-    "inflation": 1.41
-  },
-  {
-    "month": "2006-11",
-    "rate": 5.25,
-    "inflation": 1.97
-  },
-  {
-    "month": "2006-12",
-    "rate": 5.24,
-    "inflation": 2.52
-  },
-  {
-    "month": "2007-01",
-    "rate": 5.25,
-    "inflation": 2.08
-  },
-  {
-    "month": "2007-02",
-    "rate": 5.26,
-    "inflation": 2.42
-  },
-  {
-    "month": "2007-03",
-    "rate": 5.26,
-    "inflation": 2.8
-  },
-  {
-    "month": "2007-04",
-    "rate": 5.25,
-    "inflation": 2.59
-  },
-  {
-    "month": "2007-05",
-    "rate": 5.25,
-    "inflation": 2.71
-  },
-  {
-    "month": "2007-06",
-    "rate": 5.25,
-    "inflation": 2.69
-  },
-  {
-    "month": "2007-07",
-    "rate": 5.26,
-    "inflation": 2.32
-  },
-  {
-    "month": "2007-08",
-    "rate": 5.02,
-    "inflation": 1.9
-  },
-  {
-    "month": "2007-09",
-    "rate": 4.94,
-    "inflation": 2.83
-  },
-  {
-    "month": "2007-10",
-    "rate": 4.76,
-    "inflation": 3.61
-  },
-  {
-    "month": "2007-11",
-    "rate": 4.49,
-    "inflation": 4.37
-  },
-  {
-    "month": "2007-12",
-    "rate": 4.24,
-    "inflation": 4.11
-  },
-  {
-    "month": "2008-01",
-    "rate": 3.94,
-    "inflation": 4.29
-  },
-  {
-    "month": "2008-02",
-    "rate": 2.98,
-    "inflation": 4.14
-  },
-  {
-    "month": "2008-03",
-    "rate": 2.61,
-    "inflation": 3.97
-  },
-  {
-    "month": "2008-04",
-    "rate": 2.28,
-    "inflation": 3.9
-  },
-  {
-    "month": "2008-05",
-    "rate": 1.98,
-    "inflation": 4.09
-  },
-  {
-    "month": "2008-06",
-    "rate": 2,
-    "inflation": 4.94
-  },
-  {
-    "month": "2008-07",
-    "rate": 2.01,
-    "inflation": 5.5
-  },
-  {
-    "month": "2008-08",
-    "rate": 2,
-    "inflation": 5.31
-  },
-  {
-    "month": "2008-09",
-    "rate": 1.81,
-    "inflation": 4.95
-  },
-  {
-    "month": "2008-10",
-    "rate": 0.97,
-    "inflation": 3.73
-  },
-  {
-    "month": "2008-11",
-    "rate": 0.39,
-    "inflation": 1.1
-  },
-  {
-    "month": "2008-12",
-    "rate": 0.16,
-    "inflation": -0.02
-  },
-  {
-    "month": "2009-01",
-    "rate": 0.15,
-    "inflation": -0.11
-  },
-  {
-    "month": "2009-02",
-    "rate": 0.22,
-    "inflation": 0.01
-  },
-  {
-    "month": "2009-03",
-    "rate": 0.18,
-    "inflation": -0.45
-  },
-  {
-    "month": "2009-04",
-    "rate": 0.15,
-    "inflation": -0.58
-  },
-  {
-    "month": "2009-05",
-    "rate": 0.18,
-    "inflation": -1.02
-  },
-  {
-    "month": "2009-06",
-    "rate": 0.21,
-    "inflation": -1.23
-  },
-  {
-    "month": "2009-07",
-    "rate": 0.16,
-    "inflation": -1.96
-  },
-  {
-    "month": "2009-08",
-    "rate": 0.16,
-    "inflation": -1.48
-  },
-  {
-    "month": "2009-09",
-    "rate": 0.15,
-    "inflation": -1.38
-  },
-  {
-    "month": "2009-10",
-    "rate": 0.12,
-    "inflation": -0.22
-  },
-  {
-    "month": "2009-11",
-    "rate": 0.12,
-    "inflation": 1.91
-  },
-  {
-    "month": "2009-12",
-    "rate": 0.12,
-    "inflation": 2.81
-  },
-  {
-    "month": "2010-01",
-    "rate": 0.11,
-    "inflation": 2.62
-  },
-  {
-    "month": "2010-02",
-    "rate": 0.13,
-    "inflation": 2.15
-  },
-  {
-    "month": "2010-03",
-    "rate": 0.16,
-    "inflation": 2.29
-  },
-  {
-    "month": "2010-04",
-    "rate": 0.2,
-    "inflation": 2.21
-  },
-  {
-    "month": "2010-05",
-    "rate": 0.2,
-    "inflation": 2
-  },
-  {
-    "month": "2010-06",
-    "rate": 0.18,
-    "inflation": 1.12
-  },
-  {
-    "month": "2010-07",
-    "rate": 0.18,
-    "inflation": 1.34
-  },
-  {
-    "month": "2010-08",
-    "rate": 0.19,
-    "inflation": 1.15
-  },
-  {
-    "month": "2010-09",
-    "rate": 0.19,
-    "inflation": 1.12
-  },
-  {
-    "month": "2010-10",
-    "rate": 0.19,
-    "inflation": 1.17
-  },
-  {
-    "month": "2010-11",
-    "rate": 0.19,
-    "inflation": 1.08
-  },
-  {
-    "month": "2010-12",
-    "rate": 0.18,
-    "inflation": 1.44
-  },
-  {
-    "month": "2011-01",
-    "rate": 0.17,
-    "inflation": 1.7
-  },
-  {
-    "month": "2011-02",
-    "rate": 0.16,
-    "inflation": 2.12
-  },
-  {
-    "month": "2011-03",
-    "rate": 0.14,
-    "inflation": 2.62
-  },
-  {
-    "month": "2011-04",
-    "rate": 0.1,
-    "inflation": 3.08
-  },
-  {
-    "month": "2011-05",
-    "rate": 0.09,
-    "inflation": 3.46
-  },
-  {
-    "month": "2011-06",
-    "rate": 0.09,
-    "inflation": 3.5
-  },
-  {
-    "month": "2011-07",
-    "rate": 0.07,
-    "inflation": 3.58
-  },
-  {
-    "month": "2011-08",
-    "rate": 0.1,
-    "inflation": 3.75
-  },
-  {
-    "month": "2011-09",
-    "rate": 0.08,
-    "inflation": 3.81
-  },
-  {
-    "month": "2011-10",
-    "rate": 0.07,
-    "inflation": 3.52
-  },
-  {
-    "month": "2011-11",
-    "rate": 0.08,
-    "inflation": 3.45
-  },
-  {
-    "month": "2011-12",
-    "rate": 0.07,
-    "inflation": 3.06
-  },
-  {
-    "month": "2012-01",
-    "rate": 0.08,
-    "inflation": 3.01
-  },
-  {
-    "month": "2012-02",
-    "rate": 0.1,
-    "inflation": 2.9
-  },
-  {
-    "month": "2012-03",
-    "rate": 0.13,
-    "inflation": 2.58
-  },
-  {
-    "month": "2012-04",
-    "rate": 0.14,
-    "inflation": 2.27
-  },
-  {
-    "month": "2012-05",
-    "rate": 0.16,
-    "inflation": 1.74
-  },
-  {
-    "month": "2012-06",
-    "rate": 0.16,
-    "inflation": 1.65
-  },
-  {
-    "month": "2012-07",
-    "rate": 0.16,
-    "inflation": 1.42
-  },
-  {
-    "month": "2012-08",
-    "rate": 0.13,
-    "inflation": 1.69
-  },
-  {
-    "month": "2012-09",
-    "rate": 0.14,
-    "inflation": 1.95
-  },
-  {
-    "month": "2012-10",
-    "rate": 0.16,
-    "inflation": 2.16
-  },
-  {
-    "month": "2012-11",
-    "rate": 0.16,
-    "inflation": 1.8
-  },
-  {
-    "month": "2012-12",
-    "rate": 0.16,
-    "inflation": 1.76
-  },
-  {
-    "month": "2013-01",
-    "rate": 0.14,
-    "inflation": 1.68
-  },
-  {
-    "month": "2013-02",
-    "rate": 0.15,
-    "inflation": 2.02
-  },
-  {
-    "month": "2013-03",
-    "rate": 0.14,
-    "inflation": 1.52
-  },
-  {
-    "month": "2013-04",
-    "rate": 0.15,
-    "inflation": 1.14
-  },
-  {
-    "month": "2013-05",
-    "rate": 0.11,
-    "inflation": 1.39
-  },
-  {
-    "month": "2013-06",
-    "rate": 0.09,
-    "inflation": 1.72
-  },
-  {
-    "month": "2013-07",
-    "rate": 0.09,
-    "inflation": 1.89
-  },
-  {
-    "month": "2013-08",
-    "rate": 0.08,
-    "inflation": 1.54
-  },
-  {
-    "month": "2013-09",
-    "rate": 0.08,
-    "inflation": 1.09
-  },
-  {
-    "month": "2013-10",
-    "rate": 0.09,
-    "inflation": 0.88
-  },
-  {
-    "month": "2013-11",
-    "rate": 0.08,
-    "inflation": 1.23
-  },
-  {
-    "month": "2013-12",
-    "rate": 0.09,
-    "inflation": 1.51
-  },
-  {
-    "month": "2014-01",
-    "rate": 0.07,
-    "inflation": 1.56
-  },
-  {
-    "month": "2014-02",
-    "rate": 0.07,
-    "inflation": 1.12
-  },
-  {
-    "month": "2014-03",
-    "rate": 0.08,
-    "inflation": 1.61
-  },
-  {
-    "month": "2014-04",
-    "rate": 0.09,
-    "inflation": 2.02
-  },
-  {
-    "month": "2014-05",
-    "rate": 0.09,
-    "inflation": 2.17
-  },
-  {
-    "month": "2014-06",
-    "rate": 0.1,
-    "inflation": 2.06
-  },
-  {
-    "month": "2014-07",
-    "rate": 0.09,
-    "inflation": 1.97
-  },
-  {
-    "month": "2014-08",
-    "rate": 0.09,
-    "inflation": 1.72
-  },
-  {
-    "month": "2014-09",
-    "rate": 0.09,
-    "inflation": 1.68
-  },
-  {
-    "month": "2014-10",
-    "rate": 0.09,
-    "inflation": 1.61
-  },
-  {
-    "month": "2014-11",
-    "rate": 0.09,
-    "inflation": 1.23
-  },
-  {
-    "month": "2014-12",
-    "rate": 0.12,
-    "inflation": 0.65
-  },
-  {
-    "month": "2015-01",
-    "rate": 0.11,
-    "inflation": -0.23
-  },
-  {
-    "month": "2015-02",
-    "rate": 0.11,
-    "inflation": -0.09
-  },
-  {
-    "month": "2015-03",
-    "rate": 0.11,
-    "inflation": -0.02
-  },
-  {
-    "month": "2015-04",
-    "rate": 0.12,
-    "inflation": -0.1
-  },
-  {
-    "month": "2015-05",
-    "rate": 0.12,
-    "inflation": 0.04
-  },
-  {
-    "month": "2015-06",
-    "rate": 0.13,
-    "inflation": 0.18
-  },
-  {
-    "month": "2015-07",
-    "rate": 0.13,
-    "inflation": 0.23
-  },
-  {
-    "month": "2015-08",
-    "rate": 0.14,
-    "inflation": 0.24
-  },
-  {
-    "month": "2015-09",
-    "rate": 0.14,
-    "inflation": 0.01
-  },
-  {
-    "month": "2015-10",
-    "rate": 0.12,
-    "inflation": 0.13
-  },
-  {
-    "month": "2015-11",
-    "rate": 0.12,
-    "inflation": 0.44
-  },
-  {
-    "month": "2015-12",
-    "rate": 0.24,
-    "inflation": 0.64
-  },
-  {
-    "month": "2016-01",
-    "rate": 0.34,
-    "inflation": 1.24
-  },
-  {
-    "month": "2016-02",
-    "rate": 0.38,
-    "inflation": 0.85
-  },
-  {
-    "month": "2016-03",
-    "rate": 0.36,
-    "inflation": 0.89
-  },
-  {
-    "month": "2016-04",
-    "rate": 0.37,
-    "inflation": 1.17
-  },
-  {
-    "month": "2016-05",
-    "rate": 0.37,
-    "inflation": 1.08
-  },
-  {
-    "month": "2016-06",
-    "rate": 0.38,
-    "inflation": 1.08
-  },
-  {
-    "month": "2016-07",
-    "rate": 0.39,
-    "inflation": 0.87
-  },
-  {
-    "month": "2016-08",
-    "rate": 0.4,
-    "inflation": 1.06
-  },
-  {
-    "month": "2016-09",
-    "rate": 0.4,
-    "inflation": 1.55
-  },
-  {
-    "month": "2016-10",
-    "rate": 0.4,
-    "inflation": 1.69
-  },
-  {
-    "month": "2016-11",
-    "rate": 0.41,
-    "inflation": 1.68
-  },
-  {
-    "month": "2016-12",
-    "rate": 0.54,
-    "inflation": 2.05
-  },
-  {
-    "month": "2017-01",
-    "rate": 0.65,
-    "inflation": 2.51
-  },
-  {
-    "month": "2017-02",
-    "rate": 0.66,
-    "inflation": 2.81
-  },
-  {
-    "month": "2017-03",
-    "rate": 0.79,
-    "inflation": 2.44
-  },
-  {
-    "month": "2017-04",
-    "rate": 0.9,
-    "inflation": 2.18
-  },
-  {
-    "month": "2017-05",
-    "rate": 0.91,
-    "inflation": 1.86
-  },
-  {
-    "month": "2017-06",
-    "rate": 1.04,
-    "inflation": 1.64
-  },
-  {
-    "month": "2017-07",
-    "rate": 1.15,
-    "inflation": 1.73
-  },
-  {
-    "month": "2017-08",
-    "rate": 1.16,
-    "inflation": 1.93
-  },
-  {
-    "month": "2017-09",
-    "rate": 1.15,
-    "inflation": 2.18
-  },
-  {
-    "month": "2017-10",
-    "rate": 1.15,
-    "inflation": 2.02
-  },
-  {
-    "month": "2017-11",
-    "rate": 1.16,
-    "inflation": 2.17
-  },
-  {
-    "month": "2017-12",
-    "rate": 1.3,
-    "inflation": 2.13
-  },
-  {
-    "month": "2018-01",
-    "rate": 1.41,
-    "inflation": 2.15
-  },
-  {
-    "month": "2018-02",
-    "rate": 1.42,
-    "inflation": 2.26
-  },
-  {
-    "month": "2018-03",
-    "rate": 1.51,
-    "inflation": 2.33
-  },
-  {
-    "month": "2018-04",
-    "rate": 1.69,
-    "inflation": 2.47
-  },
-  {
-    "month": "2018-05",
-    "rate": 1.7,
-    "inflation": 2.78
-  },
-  {
-    "month": "2018-06",
-    "rate": 1.82,
-    "inflation": 2.81
-  },
-  {
-    "month": "2018-07",
-    "rate": 1.91,
-    "inflation": 2.85
-  },
-  {
-    "month": "2018-08",
-    "rate": 1.91,
-    "inflation": 2.64
-  },
-  {
-    "month": "2018-09",
-    "rate": 1.95,
-    "inflation": 2.33
-  },
-  {
-    "month": "2018-10",
-    "rate": 2.19,
-    "inflation": 2.49
-  },
-  {
-    "month": "2018-11",
-    "rate": 2.2,
-    "inflation": 2.15
-  },
-  {
-    "month": "2018-12",
-    "rate": 2.27,
-    "inflation": 2
-  },
-  {
-    "month": "2019-01",
-    "rate": 2.4,
-    "inflation": 1.49
-  },
-  {
-    "month": "2019-02",
-    "rate": 2.4,
-    "inflation": 1.52
-  },
-  {
-    "month": "2019-03",
-    "rate": 2.41,
-    "inflation": 1.88
-  },
-  {
-    "month": "2019-04",
-    "rate": 2.42,
-    "inflation": 2
-  },
-  {
-    "month": "2019-05",
-    "rate": 2.39,
-    "inflation": 1.8
-  },
-  {
-    "month": "2019-06",
-    "rate": 2.38,
-    "inflation": 1.67
-  },
-  {
-    "month": "2019-07",
-    "rate": 2.4,
-    "inflation": 1.83
-  },
-  {
-    "month": "2019-08",
-    "rate": 2.13,
-    "inflation": 1.74
-  },
-  {
-    "month": "2019-09",
-    "rate": 2.04,
-    "inflation": 1.68
-  },
-  {
-    "month": "2019-10",
-    "rate": 1.83,
-    "inflation": 1.73
-  },
-  {
-    "month": "2019-11",
-    "rate": 1.55,
-    "inflation": 2.09
-  },
-  {
-    "month": "2019-12",
-    "rate": 1.55,
-    "inflation": 2.32
-  },
-  {
-    "month": "2020-01",
-    "rate": 1.55,
-    "inflation": 2.6
-  },
-  {
-    "month": "2020-02",
-    "rate": 1.58,
-    "inflation": 2.34
-  },
-  {
-    "month": "2020-03",
-    "rate": 0.65,
-    "inflation": 1.49
-  },
-  {
-    "month": "2020-04",
-    "rate": 0.05,
-    "inflation": 0.31
-  },
-  {
-    "month": "2020-05",
-    "rate": 0.05,
-    "inflation": 0.2
-  },
-  {
-    "month": "2020-06",
-    "rate": 0.08,
-    "inflation": 0.72
-  },
-  {
-    "month": "2020-07",
-    "rate": 0.09,
-    "inflation": 1
-  },
-  {
-    "month": "2020-08",
-    "rate": 0.1,
-    "inflation": 1.28
-  },
-  {
-    "month": "2020-09",
-    "rate": 0.09,
-    "inflation": 1.39
-  },
-  {
-    "month": "2020-10",
-    "rate": 0.09,
-    "inflation": 1.23
-  },
-  {
-    "month": "2020-11",
-    "rate": 0.09,
-    "inflation": 1.18
-  },
-  {
-    "month": "2020-12",
-    "rate": 0.09,
-    "inflation": 1.32
-  },
-  {
-    "month": "2021-01",
-    "rate": 0.09,
-    "inflation": 1.37
-  },
-  {
-    "month": "2021-02",
-    "rate": 0.08,
-    "inflation": 1.67
-  },
-  {
-    "month": "2021-03",
-    "rate": 0.07,
-    "inflation": 2.67
-  },
-  {
-    "month": "2021-04",
-    "rate": 0.07,
-    "inflation": 4.13
-  },
-  {
-    "month": "2021-05",
-    "rate": 0.06,
-    "inflation": 4.92
-  },
-  {
-    "month": "2021-06",
-    "rate": 0.08,
-    "inflation": 5.3
-  },
-  {
-    "month": "2021-07",
-    "rate": 0.1,
-    "inflation": 5.25
-  },
-  {
-    "month": "2021-08",
-    "rate": 0.09,
-    "inflation": 5.15
-  },
-  {
-    "month": "2021-09",
-    "rate": 0.08,
-    "inflation": 5.35
-  },
-  {
-    "month": "2021-10",
-    "rate": 0.08,
-    "inflation": 6.24
-  },
-  {
-    "month": "2021-11",
-    "rate": 0.08,
-    "inflation": 6.9
-  },
-  {
-    "month": "2021-12",
-    "rate": 0.08,
-    "inflation": 7.17
-  },
-  {
-    "month": "2022-01",
-    "rate": 0.08,
-    "inflation": 7.56
-  },
-  {
-    "month": "2022-02",
-    "rate": 0.08,
-    "inflation": 7.94
-  },
-  {
-    "month": "2022-03",
-    "rate": 0.2,
-    "inflation": 8.57
-  },
-  {
-    "month": "2022-04",
-    "rate": 0.33,
-    "inflation": 8.23
-  },
-  {
-    "month": "2022-05",
-    "rate": 0.77,
-    "inflation": 8.54
-  },
-  {
-    "month": "2022-06",
-    "rate": 1.21,
-    "inflation": 8.98
-  },
-  {
-    "month": "2022-07",
-    "rate": 1.68,
-    "inflation": 8.46
-  },
-  {
-    "month": "2022-08",
-    "rate": 2.33,
-    "inflation": 8.22
-  },
-  {
-    "month": "2022-09",
-    "rate": 2.56,
-    "inflation": 8.19
-  },
-  {
-    "month": "2022-10",
-    "rate": 3.08,
-    "inflation": 7.76
-  },
-  {
-    "month": "2022-11",
-    "rate": 3.78,
-    "inflation": 7.12
-  },
-  {
-    "month": "2022-12",
-    "rate": 4.1,
-    "inflation": 6.4
-  },
-  {
-    "month": "2023-01",
-    "rate": 4.33,
-    "inflation": 6.33
-  },
-  {
-    "month": "2023-02",
-    "rate": 4.57,
-    "inflation": 5.96
-  },
-  {
-    "month": "2023-03",
-    "rate": 4.65,
-    "inflation": 4.92
-  },
-  {
-    "month": "2023-04",
-    "rate": 4.83,
-    "inflation": 4.95
-  },
-  {
-    "month": "2023-05",
-    "rate": 5.06,
-    "inflation": 4.13
-  },
-  {
-    "month": "2023-06",
-    "rate": 5.08,
-    "inflation": 3.07
-  },
-  {
-    "month": "2023-07",
-    "rate": 5.12,
-    "inflation": 3.29
-  },
-  {
-    "month": "2023-08",
-    "rate": 5.33,
-    "inflation": 3.72
-  },
-  {
-    "month": "2023-09",
-    "rate": 5.33,
-    "inflation": 3.69
-  },
-  {
-    "month": "2023-10",
-    "rate": 5.33,
-    "inflation": 3.25
-  },
-  {
-    "month": "2023-11",
-    "rate": 5.33,
-    "inflation": 3.13
-  },
-  {
-    "month": "2023-12",
-    "rate": 5.33,
-    "inflation": 3.32
-  },
-  {
-    "month": "2024-01",
-    "rate": 5.33,
-    "inflation": 3.09
-  },
-  {
-    "month": "2024-02",
-    "rate": 5.33,
-    "inflation": 3.16
-  },
-  {
-    "month": "2024-03",
-    "rate": 5.33,
-    "inflation": 3.49
-  },
-  {
-    "month": "2024-04",
-    "rate": 5.33,
-    "inflation": 3.36
-  },
-  {
-    "month": "2024-05",
-    "rate": 5.33,
-    "inflation": 3.24
-  },
-  {
-    "month": "2024-06",
-    "rate": 5.33,
-    "inflation": 2.97
-  },
-  {
-    "month": "2024-07",
-    "rate": 5.33,
-    "inflation": 2.94
-  },
-  {
-    "month": "2024-08",
-    "rate": 5.33,
-    "inflation": 2.61
-  },
-  {
-    "month": "2024-09",
-    "rate": 5.13,
-    "inflation": 2.43
-  },
-  {
-    "month": "2024-10",
-    "rate": 4.83,
-    "inflation": 2.58
-  },
-  {
-    "month": "2024-11",
-    "rate": 4.64,
-    "inflation": 2.72
-  },
-  {
-    "month": "2024-12",
-    "rate": 4.48,
-    "inflation": 2.87
-  },
-  {
-    "month": "2025-01",
-    "rate": 4.33,
-    "inflation": 2.99
-  },
-  {
-    "month": "2025-02",
-    "rate": 4.33,
-    "inflation": 2.8
-  },
-  {
-    "month": "2025-03",
-    "rate": 4.33,
-    "inflation": 2.38
-  },
-  {
-    "month": "2025-04",
-    "rate": 4.33,
-    "inflation": 2.33
-  },
-  {
-    "month": "2025-05",
-    "rate": 4.33,
-    "inflation": 2.38
-  },
-  {
-    "month": "2025-06",
-    "rate": 4.33,
-    "inflation": 2.68
-  },
-  {
-    "month": "2025-07",
-    "rate": 4.33,
-    "inflation": 2.74
-  },
-  {
-    "month": "2025-08",
-    "rate": 4.33,
-    "inflation": 2.94
-  },
-  {
-    "month": "2025-09",
-    "rate": 4.22,
-    "inflation": 3.02
-  },
-  {
-    "month": "2025-11",
-    "rate": 3.88,
-    "inflation": 2.99
-  },
-  {
-    "month": "2025-12",
-    "rate": 3.72,
-    "inflation": 3
-  },
-  {
-    "month": "2026-01",
-    "rate": 3.64,
-    "inflation": 2.83
-  },
-  {
-    "month": "2026-02",
-    "rate": 3.64,
-    "inflation": 2.66
-  },
-  {
-    "month": "2026-03",
-    "rate": 3.64,
-    "inflation": 3.32
-  },
-  {
-    "month": "2026-04",
-    "rate": 3.64,
-    "inflation": 3.95
-  },
-  {
-    "month": "2026-05",
-    "rate": 3.63,
-    "inflation": 4.27
-  },
-  {
-    "month": "2026-06",
-    "rate": 3.63,
-    "inflation": 3.73
-  }
+export const FED_FUNDS_VS_INFLATION: InterestVsInflationPoint[] = [
+  { month: "1970-01", rate: 8.98, inflation: 6.16 },
+  { month: "1970-02", rate: 8.98, inflation: 6.42 },
+  { month: "1970-03", rate: 7.76, inflation: 6.09 },
+  { month: "1970-04", rate: 8.1, inflation: 6.06 },
+  { month: "1970-05", rate: 7.95, inflation: 6.04 },
+  { month: "1970-06", rate: 7.61, inflation: 6.01 },
+  { month: "1970-07", rate: 7.21, inflation: 5.71 },
+  { month: "1970-08", rate: 6.62, inflation: 5.69 },
+  { month: "1970-09", rate: 6.29, inflation: 5.66 },
+  { month: "1970-10", rate: 6.2, inflation: 5.63 },
+  { month: "1970-11", rate: 5.6, inflation: 5.6 },
+  { month: "1970-12", rate: 4.9, inflation: 5.57 },
+  { month: "1971-01", rate: 4.14, inflation: 5.28 },
+  { month: "1971-02", rate: 3.72, inflation: 4.72 },
+  { month: "1971-03", rate: 3.71, inflation: 4.44 },
+  { month: "1971-04", rate: 4.16, inflation: 4.16 },
+  { month: "1971-05", rate: 4.63, inflation: 4.4 },
+  { month: "1971-06", rate: 4.91, inflation: 4.38 },
+  { month: "1971-07", rate: 5.31, inflation: 4.37 },
+  { month: "1971-08", rate: 5.57, inflation: 4.36 },
+  { month: "1971-09", rate: 5.55, inflation: 4.08 },
+  { month: "1971-10", rate: 5.2, inflation: 3.81 },
+  { month: "1971-11", rate: 4.91, inflation: 3.54 },
+  { month: "1971-12", rate: 4.14, inflation: 3.27 },
+  { month: "1972-01", rate: 3.51, inflation: 3.26 },
+  { month: "1972-02", rate: 3.3, inflation: 3.76 },
+  { month: "1972-03", rate: 3.83, inflation: 3.5 },
+  { month: "1972-04", rate: 4.17, inflation: 3.49 },
+  { month: "1972-05", rate: 4.27, inflation: 3.23 },
+  { month: "1972-06", rate: 4.46, inflation: 2.96 },
+  { month: "1972-07", rate: 4.55, inflation: 2.96 },
+  { month: "1972-08", rate: 4.81, inflation: 2.95 },
+  { month: "1972-09", rate: 4.87, inflation: 3.19 },
+  { month: "1972-10", rate: 5.05, inflation: 3.18 },
+  { month: "1972-11", rate: 5.06, inflation: 3.41 },
+  { month: "1972-12", rate: 5.33, inflation: 3.41 },
+  { month: "1973-01", rate: 5.94, inflation: 3.64 },
+  { month: "1973-02", rate: 6.58, inflation: 3.86 },
+  { month: "1973-03", rate: 7.09, inflation: 4.83 },
+  { month: "1973-04", rate: 7.12, inflation: 5.3 },
+  { month: "1973-05", rate: 7.84, inflation: 5.53 },
+  { month: "1973-06", rate: 8.49, inflation: 6 },
+  { month: "1973-07", rate: 10.4, inflation: 5.74 },
+  { month: "1973-08", rate: 10.5, inflation: 7.4 },
+  { month: "1973-09", rate: 10.78, inflation: 7.36 },
+  { month: "1973-10", rate: 10.01, inflation: 8.06 },
+  { month: "1973-11", rate: 10.03, inflation: 8.25 },
+  { month: "1973-12", rate: 9.95, inflation: 8.94 },
+  { month: "1974-01", rate: 9.65, inflation: 9.6 },
+  { month: "1974-02", rate: 8.97, inflation: 10 },
+  { month: "1974-03", rate: 9.35, inflation: 10.14 },
+  { month: "1974-04", rate: 10.51, inflation: 10.07 },
+  { month: "1974-05", rate: 11.31, inflation: 10.71 },
+  { month: "1974-06", rate: 11.93, inflation: 10.86 },
+  { month: "1974-07", rate: 12.92, inflation: 11.54 },
+  { month: "1974-08", rate: 12.01, inflation: 10.89 },
+  { month: "1974-09", rate: 11.34, inflation: 11.95 },
+  { month: "1974-10", rate: 10.06, inflation: 11.84 },
+  { month: "1974-11", rate: 9.45, inflation: 12.2 },
+  { month: "1974-12", rate: 8.53, inflation: 12.1 },
+  { month: "1975-01", rate: 7.13, inflation: 11.75 },
+  { month: "1975-02", rate: 6.24, inflation: 11.21 },
+  { month: "1975-03", rate: 5.54, inflation: 10.46 },
+  { month: "1975-04", rate: 5.49, inflation: 10.19 },
+  { month: "1975-05", rate: 5.22, inflation: 9.26 },
+  { month: "1975-06", rate: 5.55, inflation: 9.18 },
+  { month: "1975-07", rate: 6.1, inflation: 9.53 },
+  { month: "1975-08", rate: 6.14, inflation: 8.62 },
+  { month: "1975-09", rate: 6.24, inflation: 7.91 },
+  { month: "1975-10", rate: 5.82, inflation: 7.65 },
+  { month: "1975-11", rate: 5.22, inflation: 7.38 },
+  { month: "1975-12", rate: 5.2, inflation: 7.13 },
+  { month: "1976-01", rate: 4.87, inflation: 6.69 },
+  { month: "1976-02", rate: 4.77, inflation: 6.27 },
+  { month: "1976-03", rate: 4.84, inflation: 6.06 },
+  { month: "1976-04", rate: 4.82, inflation: 5.85 },
+  { month: "1976-05", rate: 5.29, inflation: 6.21 },
+  { month: "1976-06", rate: 5.48, inflation: 5.98 },
+  { month: "1976-07", rate: 5.31, inflation: 5.56 },
+  { month: "1976-08", rate: 5.29, inflation: 5.72 },
+  { month: "1976-09", rate: 5.25, inflation: 5.49 },
+  { month: "1976-10", rate: 5.02, inflation: 5.46 },
+  { month: "1976-11", rate: 4.95, inflation: 5.06 },
+  { month: "1976-12", rate: 4.65, inflation: 5.04 },
+  { month: "1977-01", rate: 4.61, inflation: 5.2 },
+  { month: "1977-02", rate: 4.68, inflation: 6.08 },
+  { month: "1977-03", rate: 4.69, inflation: 6.43 },
+  { month: "1977-04", rate: 4.73, inflation: 6.95 },
+  { month: "1977-05", rate: 5.35, inflation: 6.74 },
+  { month: "1977-06", rate: 5.39, inflation: 6.7 },
+  { month: "1977-07", rate: 5.42, inflation: 6.67 },
+  { month: "1977-08", rate: 5.9, inflation: 6.63 },
+  { month: "1977-09", rate: 6.14, inflation: 6.42 },
+  { month: "1977-10", rate: 6.47, inflation: 6.39 },
+  { month: "1977-11", rate: 6.51, inflation: 6.71 },
+  { month: "1977-12", rate: 6.56, inflation: 6.68 },
+  { month: "1978-01", rate: 6.7, inflation: 6.81 },
+  { month: "1978-02", rate: 6.78, inflation: 6.24 },
+  { month: "1978-03", rate: 6.79, inflation: 6.38 },
+  { month: "1978-04", rate: 6.89, inflation: 6.5 },
+  { month: "1978-05", rate: 7.36, inflation: 7.14 },
+  { month: "1978-06", rate: 7.6, inflation: 7.44 },
+  { month: "1978-07", rate: 7.81, inflation: 7.73 },
+  { month: "1978-08", rate: 8.04, inflation: 7.86 },
+  { month: "1978-09", rate: 8.45, inflation: 8.48 },
+  { month: "1978-10", rate: 8.96, inflation: 8.93 },
+  { month: "1978-11", rate: 9.76, inflation: 8.87 },
+  { month: "1978-12", rate: 10.03, inflation: 8.99 },
+  { month: "1979-01", rate: 10.07, inflation: 9.25 },
+  { month: "1979-02", rate: 10.06, inflation: 9.84 },
+  { month: "1979-03", rate: 10.09, inflation: 10.25 },
+  { month: "1979-04", rate: 10.01, inflation: 10.49 },
+  { month: "1979-05", rate: 10.24, inflation: 10.7 },
+  { month: "1979-06", rate: 10.29, inflation: 11.08 },
+  { month: "1979-07", rate: 10.47, inflation: 11.45 },
+  { month: "1979-08", rate: 10.94, inflation: 11.84 },
+  { month: "1979-09", rate: 11.43, inflation: 11.88 },
+  { month: "1979-10", rate: 13.77, inflation: 12.07 },
+  { month: "1979-11", rate: 13.18, inflation: 12.59 },
+  { month: "1979-12", rate: 13.78, inflation: 13.25 },
+  { month: "1980-01", rate: 13.82, inflation: 13.87 },
+  { month: "1980-02", rate: 14.13, inflation: 14.16 },
+  { month: "1980-03", rate: 17.19, inflation: 14.59 },
+  { month: "1980-04", rate: 17.61, inflation: 14.59 },
+  { month: "1980-05", rate: 10.98, inflation: 14.43 },
+  { month: "1980-06", rate: 9.47, inflation: 14.27 },
+  { month: "1980-07", rate: 9.03, inflation: 13.15 },
+  { month: "1980-08", rate: 9.61, inflation: 12.89 },
+  { month: "1980-09", rate: 10.87, inflation: 12.77 },
+  { month: "1980-10", rate: 12.81, inflation: 12.63 },
+  { month: "1980-11", rate: 15.85, inflation: 12.63 },
+  { month: "1980-12", rate: 18.9, inflation: 12.35 },
+  { month: "1981-01", rate: 19.08, inflation: 11.79 },
+  { month: "1981-02", rate: 15.93, inflation: 11.39 },
+  { month: "1981-03", rate: 14.7, inflation: 10.61 },
+  { month: "1981-04", rate: 15.72, inflation: 10.14 },
+  { month: "1981-05", rate: 18.52, inflation: 9.79 },
+  { month: "1981-06", rate: 19.1, inflation: 9.7 },
+  { month: "1981-07", rate: 19.04, inflation: 10.77 },
+  { month: "1981-08", rate: 17.82, inflation: 10.82 },
+  { month: "1981-09", rate: 15.87, inflation: 10.97 },
+  { month: "1981-10", rate: 15.08, inflation: 10.27 },
+  { month: "1981-11", rate: 13.31, inflation: 9.58 },
+  { month: "1981-12", rate: 12.37, inflation: 8.91 },
+  { month: "1982-01", rate: 13.22, inflation: 8.26 },
+  { month: "1982-02", rate: 14.78, inflation: 7.61 },
+  { month: "1982-03", rate: 14.68, inflation: 6.88 },
+  { month: "1982-04", rate: 14.94, inflation: 6.62 },
+  { month: "1982-05", rate: 14.45, inflation: 6.91 },
+  { month: "1982-06", rate: 14.15, inflation: 7.18 },
+  { month: "1982-07", rate: 12.59, inflation: 6.56 },
+  { month: "1982-08", rate: 10.12, inflation: 5.97 },
+  { month: "1982-09", rate: 10.31, inflation: 4.94 },
+  { month: "1982-10", rate: 9.71, inflation: 5.03 },
+  { month: "1982-11", rate: 9.2, inflation: 4.48 },
+  { month: "1982-12", rate: 8.95, inflation: 3.83 },
+  { month: "1983-01", rate: 8.68, inflation: 3.71 },
+  { month: "1983-02", rate: 8.51, inflation: 3.48 },
+  { month: "1983-03", rate: 8.77, inflation: 3.59 },
+  { month: "1983-04", rate: 8.8, inflation: 4 },
+  { month: "1983-05", rate: 8.63, inflation: 3.44 },
+  { month: "1983-06", rate: 8.98, inflation: 2.47 },
+  { month: "1983-07", rate: 9.37, inflation: 2.36 },
+  { month: "1983-08", rate: 9.56, inflation: 2.46 },
+  { month: "1983-09", rate: 9.45, inflation: 2.76 },
+  { month: "1983-10", rate: 9.48, inflation: 2.75 },
+  { month: "1983-11", rate: 9.34, inflation: 3.16 },
+  { month: "1983-12", rate: 9.47, inflation: 3.79 },
+  { month: "1984-01", rate: 9.56, inflation: 4.29 },
+  { month: "1984-02", rate: 9.59, inflation: 4.69 },
+  { month: "1984-03", rate: 9.91, inflation: 4.89 },
+  { month: "1984-04", rate: 10.29, inflation: 4.55 },
+  { month: "1984-05", rate: 10.32, inflation: 4.33 },
+  { month: "1984-06", rate: 11.06, inflation: 4.33 },
+  { month: "1984-07", rate: 11.23, inflation: 4.31 },
+  { month: "1984-08", rate: 11.64, inflation: 4.3 },
+  { month: "1984-09", rate: 11.3, inflation: 4.28 },
+  { month: "1984-10", rate: 9.99, inflation: 4.27 },
+  { month: "1984-11", rate: 9.43, inflation: 4.15 },
+  { month: "1984-12", rate: 8.38, inflation: 4.04 },
+  { month: "1985-01", rate: 8.35, inflation: 3.53 },
+  { month: "1985-02", rate: 8.5, inflation: 3.61 },
+  { month: "1985-03", rate: 8.58, inflation: 3.79 },
+  { month: "1985-04", rate: 8.27, inflation: 3.58 },
+  { month: "1985-05", rate: 7.97, inflation: 3.57 },
+  { month: "1985-06", rate: 7.53, inflation: 3.66 },
+  { month: "1985-07", rate: 7.88, inflation: 3.46 },
+  { month: "1985-08", rate: 7.9, inflation: 3.35 },
+  { month: "1985-09", rate: 7.92, inflation: 3.25 },
+  { month: "1985-10", rate: 7.99, inflation: 3.24 },
+  { month: "1985-11", rate: 8.05, inflation: 3.51 },
+  { month: "1985-12", rate: 8.27, inflation: 3.79 },
+  { month: "1986-01", rate: 8.14, inflation: 3.97 },
+  { month: "1986-02", rate: 7.86, inflation: 3.2 },
+  { month: "1986-03", rate: 7.48, inflation: 2.15 },
+  { month: "1986-04", rate: 6.99, inflation: 1.59 },
+  { month: "1986-05", rate: 6.85, inflation: 1.68 },
+  { month: "1986-06", rate: 6.92, inflation: 1.77 },
+  { month: "1986-07", rate: 6.56, inflation: 1.67 },
+  { month: "1986-08", rate: 6.17, inflation: 1.58 },
+  { month: "1986-09", rate: 5.89, inflation: 1.76 },
+  { month: "1986-10", rate: 5.85, inflation: 1.57 },
+  { month: "1986-11", rate: 6.04, inflation: 1.28 },
+  { month: "1986-12", rate: 6.91, inflation: 1.19 },
+  { month: "1987-01", rate: 6.43, inflation: 1.36 },
+  { month: "1987-02", rate: 6.1, inflation: 1.91 },
+  { month: "1987-03", rate: 6.13, inflation: 2.84 },
+  { month: "1987-04", rate: 6.37, inflation: 3.68 },
+  { month: "1987-05", rate: 6.85, inflation: 3.67 },
+  { month: "1987-06", rate: 6.73, inflation: 3.75 },
+  { month: "1987-07", rate: 6.58, inflation: 3.93 },
+  { month: "1987-08", rate: 6.73, inflation: 4.29 },
+  { month: "1987-09", rate: 7.22, inflation: 4.27 },
+  { month: "1987-10", rate: 7.29, inflation: 4.36 },
+  { month: "1987-11", rate: 6.69, inflation: 4.53 },
+  { month: "1987-12", rate: 6.77, inflation: 4.33 },
+  { month: "1988-01", rate: 6.83, inflation: 4.13 },
+  { month: "1988-02", rate: 6.58, inflation: 3.94 },
+  { month: "1988-03", rate: 6.58, inflation: 3.83 },
+  { month: "1988-04", rate: 6.87, inflation: 3.99 },
+  { month: "1988-05", rate: 7.09, inflation: 3.98 },
+  { month: "1988-06", rate: 7.51, inflation: 3.96 },
+  { month: "1988-07", rate: 7.75, inflation: 4.13 },
+  { month: "1988-08", rate: 8.01, inflation: 4.11 },
+  { month: "1988-09", rate: 8.19, inflation: 4.18 },
+  { month: "1988-10", rate: 8.3, inflation: 4.26 },
+  { month: "1988-11", rate: 8.35, inflation: 4.25 },
+  { month: "1988-12", rate: 8.76, inflation: 4.41 },
+  { month: "1989-01", rate: 9.12, inflation: 4.48 },
+  { month: "1989-02", rate: 9.36, inflation: 4.65 },
+  { month: "1989-03", rate: 9.85, inflation: 4.89 },
+  { month: "1989-04", rate: 9.84, inflation: 5.03 },
+  { month: "1989-05", rate: 9.81, inflation: 5.28 },
+  { month: "1989-06", rate: 9.53, inflation: 5.17 },
+  { month: "1989-07", rate: 9.24, inflation: 5.06 },
+  { month: "1989-08", rate: 8.99, inflation: 4.62 },
+  { month: "1989-09", rate: 9.02, inflation: 4.44 },
+  { month: "1989-10", rate: 8.84, inflation: 4.59 },
+  { month: "1989-11", rate: 8.55, inflation: 4.66 },
+  { month: "1989-12", rate: 8.45, inflation: 4.64 },
+  { month: "1990-01", rate: 8.23, inflation: 5.2 },
+  { month: "1990-02", rate: 8.24, inflation: 5.26 },
+  { month: "1990-03", rate: 8.28, inflation: 5.24 },
+  { month: "1990-04", rate: 8.26, inflation: 4.71 },
+  { month: "1990-05", rate: 8.18, inflation: 4.37 },
+  { month: "1990-06", rate: 8.29, inflation: 4.67 },
+  { month: "1990-07", rate: 8.15, inflation: 4.82 },
+  { month: "1990-08", rate: 8.13, inflation: 5.7 },
+  { month: "1990-09", rate: 8.2, inflation: 6.17 },
+  { month: "1990-10", rate: 8.11, inflation: 6.38 },
+  { month: "1990-11", rate: 7.81, inflation: 6.2 },
+  { month: "1990-12", rate: 7.31, inflation: 6.25 },
+  { month: "1991-01", rate: 6.91, inflation: 5.65 },
+  { month: "1991-02", rate: 6.25, inflation: 5.31 },
+  { month: "1991-03", rate: 6.12, inflation: 4.82 },
+  { month: "1991-04", rate: 5.91, inflation: 4.81 },
+  { month: "1991-05", rate: 5.78, inflation: 5.03 },
+  { month: "1991-06", rate: 5.9, inflation: 4.7 },
+  { month: "1991-07", rate: 5.82, inflation: 4.37 },
+  { month: "1991-08", rate: 5.66, inflation: 3.8 },
+  { month: "1991-09", rate: 5.45, inflation: 3.4 },
+  { month: "1991-10", rate: 5.21, inflation: 2.85 },
+  { month: "1991-11", rate: 4.81, inflation: 3.07 },
+  { month: "1991-12", rate: 4.43, inflation: 2.98 },
+  { month: "1992-01", rate: 4.03, inflation: 2.67 },
+  { month: "1992-02", rate: 4.06, inflation: 2.82 },
+  { month: "1992-03", rate: 3.98, inflation: 3.19 },
+  { month: "1992-04", rate: 3.73, inflation: 3.18 },
+  { month: "1992-05", rate: 3.82, inflation: 3.02 },
+  { month: "1992-06", rate: 3.76, inflation: 3.01 },
+  { month: "1992-07", rate: 3.25, inflation: 3.16 },
+  { month: "1992-08", rate: 3.3, inflation: 3.07 },
+  { month: "1992-09", rate: 3.22, inflation: 2.99 },
+  { month: "1992-10", rate: 3.1, inflation: 3.28 },
+  { month: "1992-11", rate: 3.09, inflation: 3.12 },
+  { month: "1992-12", rate: 2.92, inflation: 2.97 },
+  { month: "1993-01", rate: 3.02, inflation: 3.25 },
+  { month: "1993-02", rate: 3.03, inflation: 3.25 },
+  { month: "1993-03", rate: 3.07, inflation: 3.02 },
+  { month: "1993-04", rate: 2.96, inflation: 3.16 },
+  { month: "1993-05", rate: 3, inflation: 3.22 },
+  { month: "1993-06", rate: 3.04, inflation: 3 },
+  { month: "1993-07", rate: 3.06, inflation: 2.85 },
+  { month: "1993-08", rate: 3.03, inflation: 2.84 },
+  { month: "1993-09", rate: 3.09, inflation: 2.76 },
+  { month: "1993-10", rate: 2.99, inflation: 2.75 },
+  { month: "1993-11", rate: 3.02, inflation: 2.74 },
+  { month: "1993-12", rate: 2.96, inflation: 2.81 },
+  { month: "1994-01", rate: 3.05, inflation: 2.45 },
+  { month: "1994-02", rate: 3.25, inflation: 2.52 },
+  { month: "1994-03", rate: 3.34, inflation: 2.65 },
+  { month: "1994-04", rate: 3.56, inflation: 2.36 },
+  { month: "1994-05", rate: 4.01, inflation: 2.29 },
+  { month: "1994-06", rate: 4.25, inflation: 2.49 },
+  { month: "1994-07", rate: 4.26, inflation: 2.7 },
+  { month: "1994-08", rate: 4.47, inflation: 2.9 },
+  { month: "1994-09", rate: 4.73, inflation: 2.97 },
+  { month: "1994-10", rate: 4.76, inflation: 2.61 },
+  { month: "1994-11", rate: 5.29, inflation: 2.6 },
+  { month: "1994-12", rate: 5.45, inflation: 2.6 },
+  { month: "1995-01", rate: 5.53, inflation: 2.87 },
+  { month: "1995-02", rate: 5.92, inflation: 2.86 },
+  { month: "1995-03", rate: 5.98, inflation: 2.79 },
+  { month: "1995-04", rate: 6.05, inflation: 3.13 },
+  { month: "1995-05", rate: 6.01, inflation: 3.12 },
+  { month: "1995-06", rate: 6, inflation: 3.04 },
+  { month: "1995-07", rate: 5.85, inflation: 2.83 },
+  { month: "1995-08", rate: 5.74, inflation: 2.62 },
+  { month: "1995-09", rate: 5.8, inflation: 2.55 },
+  { month: "1995-10", rate: 5.76, inflation: 2.74 },
+  { month: "1995-11", rate: 5.8, inflation: 2.6 },
+  { month: "1995-12", rate: 5.6, inflation: 2.53 },
+  { month: "1996-01", rate: 5.56, inflation: 2.79 },
+  { month: "1996-02", rate: 5.22, inflation: 2.72 },
+  { month: "1996-03", rate: 5.31, inflation: 2.84 },
+  { month: "1996-04", rate: 5.22, inflation: 2.83 },
+  { month: "1996-05", rate: 5.24, inflation: 2.83 },
+  { month: "1996-06", rate: 5.27, inflation: 2.82 },
+  { month: "1996-07", rate: 5.4, inflation: 2.88 },
+  { month: "1996-08", rate: 5.22, inflation: 2.81 },
+  { month: "1996-09", rate: 5.3, inflation: 3 },
+  { month: "1996-10", rate: 5.24, inflation: 3.06 },
+  { month: "1996-11", rate: 5.31, inflation: 3.25 },
+  { month: "1996-12", rate: 5.29, inflation: 3.38 },
+  { month: "1997-01", rate: 5.25, inflation: 3.04 },
+  { month: "1997-02", rate: 5.19, inflation: 3.03 },
+  { month: "1997-03", rate: 5.39, inflation: 2.77 },
+  { month: "1997-04", rate: 5.51, inflation: 2.43 },
+  { month: "1997-05", rate: 5.5, inflation: 2.24 },
+  { month: "1997-06", rate: 5.56, inflation: 2.23 },
+  { month: "1997-07", rate: 5.52, inflation: 2.17 },
+  { month: "1997-08", rate: 5.54, inflation: 2.29 },
+  { month: "1997-09", rate: 5.54, inflation: 2.22 },
+  { month: "1997-10", rate: 5.5, inflation: 2.09 },
+  { month: "1997-11", rate: 5.52, inflation: 1.89 },
+  { month: "1997-12", rate: 5.5, inflation: 1.7 },
+  { month: "1998-01", rate: 5.56, inflation: 1.63 },
+  { month: "1998-02", rate: 5.51, inflation: 1.44 },
+  { month: "1998-03", rate: 5.49, inflation: 1.38 },
+  { month: "1998-04", rate: 5.45, inflation: 1.44 },
+  { month: "1998-05", rate: 5.49, inflation: 1.69 },
+  { month: "1998-06", rate: 5.56, inflation: 1.62 },
+  { month: "1998-07", rate: 5.54, inflation: 1.75 },
+  { month: "1998-08", rate: 5.55, inflation: 1.62 },
+  { month: "1998-09", rate: 5.51, inflation: 1.43 },
+  { month: "1998-10", rate: 5.07, inflation: 1.49 },
+  { month: "1998-11", rate: 4.83, inflation: 1.48 },
+  { month: "1998-12", rate: 4.68, inflation: 1.61 },
+  { month: "1999-01", rate: 4.63, inflation: 1.67 },
+  { month: "1999-02", rate: 4.76, inflation: 1.67 },
+  { month: "1999-03", rate: 4.81, inflation: 1.73 },
+  { month: "1999-04", rate: 4.74, inflation: 2.28 },
+  { month: "1999-05", rate: 4.74, inflation: 2.09 },
+  { month: "1999-06", rate: 4.76, inflation: 1.97 },
+  { month: "1999-07", rate: 4.99, inflation: 2.14 },
+  { month: "1999-08", rate: 5.07, inflation: 2.26 },
+  { month: "1999-09", rate: 5.22, inflation: 2.63 },
+  { month: "1999-10", rate: 5.2, inflation: 2.56 },
+  { month: "1999-11", rate: 5.42, inflation: 2.62 },
+  { month: "1999-12", rate: 5.3, inflation: 2.68 },
+  { month: "2000-01", rate: 5.45, inflation: 2.79 },
+  { month: "2000-02", rate: 5.73, inflation: 3.22 },
+  { month: "2000-03", rate: 5.85, inflation: 3.76 },
+  { month: "2000-04", rate: 6.02, inflation: 3.01 },
+  { month: "2000-05", rate: 6.27, inflation: 3.13 },
+  { month: "2000-06", rate: 6.53, inflation: 3.73 },
+  { month: "2000-07", rate: 6.54, inflation: 3.6 },
+  { month: "2000-08", rate: 6.5, inflation: 3.35 },
+  { month: "2000-09", rate: 6.52, inflation: 3.46 },
+  { month: "2000-10", rate: 6.51, inflation: 3.45 },
+  { month: "2000-11", rate: 6.51, inflation: 3.44 },
+  { month: "2000-12", rate: 6.4, inflation: 3.44 },
+  { month: "2001-01", rate: 5.98, inflation: 3.72 },
+  { month: "2001-02", rate: 5.49, inflation: 3.53 },
+  { month: "2001-03", rate: 5.31, inflation: 2.98 },
+  { month: "2001-04", rate: 4.8, inflation: 3.22 },
+  { month: "2001-05", rate: 4.21, inflation: 3.56 },
+  { month: "2001-06", rate: 3.97, inflation: 3.19 },
+  { month: "2001-07", rate: 3.77, inflation: 2.72 },
+  { month: "2001-08", rate: 3.65, inflation: 2.72 },
+  { month: "2001-09", rate: 3.07, inflation: 2.59 },
+  { month: "2001-10", rate: 2.49, inflation: 2.13 },
+  { month: "2001-11", rate: 2.09, inflation: 1.89 },
+  { month: "2001-12", rate: 1.82, inflation: 1.6 },
+  { month: "2002-01", rate: 1.73, inflation: 1.2 },
+  { month: "2002-02", rate: 1.74, inflation: 1.14 },
+  { month: "2002-03", rate: 1.73, inflation: 1.36 },
+  { month: "2002-04", rate: 1.75, inflation: 1.64 },
+  { month: "2002-05", rate: 1.75, inflation: 1.24 },
+  { month: "2002-06", rate: 1.75, inflation: 1.07 },
+  { month: "2002-07", rate: 1.73, inflation: 1.47 },
+  { month: "2002-08", rate: 1.74, inflation: 1.75 },
+  { month: "2002-09", rate: 1.75, inflation: 1.52 },
+  { month: "2002-10", rate: 1.75, inflation: 2.03 },
+  { month: "2002-11", rate: 1.34, inflation: 2.25 },
+  { month: "2002-12", rate: 1.24, inflation: 2.48 },
+  { month: "2003-01", rate: 1.24, inflation: 2.76 },
+  { month: "2003-02", rate: 1.26, inflation: 3.15 },
+  { month: "2003-03", rate: 1.25, inflation: 3.03 },
+  { month: "2003-04", rate: 1.26, inflation: 2.18 },
+  { month: "2003-05", rate: 1.26, inflation: 1.89 },
+  { month: "2003-06", rate: 1.22, inflation: 1.95 },
+  { month: "2003-07", rate: 1.01, inflation: 2.06 },
+  { month: "2003-08", rate: 1.03, inflation: 2.22 },
+  { month: "2003-09", rate: 1.01, inflation: 2.38 },
+  { month: "2003-10", rate: 1.01, inflation: 2.04 },
+  { month: "2003-11", rate: 1, inflation: 1.93 },
+  { month: "2003-12", rate: 0.98, inflation: 2.04 },
+  { month: "2004-01", rate: 1, inflation: 2.03 },
+  { month: "2004-02", rate: 1.01, inflation: 1.69 },
+  { month: "2004-03", rate: 1, inflation: 1.74 },
+  { month: "2004-04", rate: 1, inflation: 2.29 },
+  { month: "2004-05", rate: 1, inflation: 2.9 },
+  { month: "2004-06", rate: 1.03, inflation: 3.17 },
+  { month: "2004-07", rate: 1.26, inflation: 2.94 },
+  { month: "2004-08", rate: 1.43, inflation: 2.55 },
+  { month: "2004-09", rate: 1.61, inflation: 2.54 },
+  { month: "2004-10", rate: 1.76, inflation: 3.19 },
+  { month: "2004-11", rate: 1.93, inflation: 3.62 },
+  { month: "2004-12", rate: 2.16, inflation: 3.34 },
+  { month: "2005-01", rate: 2.28, inflation: 2.84 },
+  { month: "2005-02", rate: 2.5, inflation: 3.05 },
+  { month: "2005-03", rate: 2.63, inflation: 3.21 },
+  { month: "2005-04", rate: 2.79, inflation: 3.36 },
+  { month: "2005-05", rate: 3, inflation: 2.87 },
+  { month: "2005-06", rate: 3.04, inflation: 2.54 },
+  { month: "2005-07", rate: 3.26, inflation: 3.07 },
+  { month: "2005-08", rate: 3.5, inflation: 3.65 },
+  { month: "2005-09", rate: 3.62, inflation: 4.74 },
+  { month: "2005-10", rate: 3.78, inflation: 4.35 },
+  { month: "2005-11", rate: 4, inflation: 3.34 },
+  { month: "2005-12", rate: 4.16, inflation: 3.34 },
+  { month: "2006-01", rate: 4.29, inflation: 4.02 },
+  { month: "2006-02", rate: 4.49, inflation: 3.64 },
+  { month: "2006-03", rate: 4.59, inflation: 3.42 },
+  { month: "2006-04", rate: 4.79, inflation: 3.61 },
+  { month: "2006-05", rate: 4.94, inflation: 3.98 },
+  { month: "2006-06", rate: 4.99, inflation: 4.18 },
+  { month: "2006-07", rate: 5.24, inflation: 4.1 },
+  { month: "2006-08", rate: 5.25, inflation: 3.93 },
+  { month: "2006-09", rate: 5.25, inflation: 2.01 },
+  { month: "2006-10", rate: 5.25, inflation: 1.41 },
+  { month: "2006-11", rate: 5.25, inflation: 1.97 },
+  { month: "2006-12", rate: 5.24, inflation: 2.52 },
+  { month: "2007-01", rate: 5.25, inflation: 2.08 },
+  { month: "2007-02", rate: 5.26, inflation: 2.42 },
+  { month: "2007-03", rate: 5.26, inflation: 2.8 },
+  { month: "2007-04", rate: 5.25, inflation: 2.59 },
+  { month: "2007-05", rate: 5.25, inflation: 2.71 },
+  { month: "2007-06", rate: 5.25, inflation: 2.69 },
+  { month: "2007-07", rate: 5.26, inflation: 2.32 },
+  { month: "2007-08", rate: 5.02, inflation: 1.9 },
+  { month: "2007-09", rate: 4.94, inflation: 2.83 },
+  { month: "2007-10", rate: 4.76, inflation: 3.61 },
+  { month: "2007-11", rate: 4.49, inflation: 4.37 },
+  { month: "2007-12", rate: 4.24, inflation: 4.11 },
+  { month: "2008-01", rate: 3.94, inflation: 4.29 },
+  { month: "2008-02", rate: 2.98, inflation: 4.14 },
+  { month: "2008-03", rate: 2.61, inflation: 3.97 },
+  { month: "2008-04", rate: 2.28, inflation: 3.9 },
+  { month: "2008-05", rate: 1.98, inflation: 4.09 },
+  { month: "2008-06", rate: 2, inflation: 4.94 },
+  { month: "2008-07", rate: 2.01, inflation: 5.5 },
+  { month: "2008-08", rate: 2, inflation: 5.31 },
+  { month: "2008-09", rate: 1.81, inflation: 4.95 },
+  { month: "2008-10", rate: 0.97, inflation: 3.73 },
+  { month: "2008-11", rate: 0.39, inflation: 1.1 },
+  { month: "2008-12", rate: 0.16, inflation: -0.02 },
+  { month: "2009-01", rate: 0.15, inflation: -0.11 },
+  { month: "2009-02", rate: 0.22, inflation: 0.01 },
+  { month: "2009-03", rate: 0.18, inflation: -0.45 },
+  { month: "2009-04", rate: 0.15, inflation: -0.58 },
+  { month: "2009-05", rate: 0.18, inflation: -1.02 },
+  { month: "2009-06", rate: 0.21, inflation: -1.23 },
+  { month: "2009-07", rate: 0.16, inflation: -1.96 },
+  { month: "2009-08", rate: 0.16, inflation: -1.48 },
+  { month: "2009-09", rate: 0.15, inflation: -1.38 },
+  { month: "2009-10", rate: 0.12, inflation: -0.22 },
+  { month: "2009-11", rate: 0.12, inflation: 1.91 },
+  { month: "2009-12", rate: 0.12, inflation: 2.81 },
+  { month: "2010-01", rate: 0.11, inflation: 2.62 },
+  { month: "2010-02", rate: 0.13, inflation: 2.15 },
+  { month: "2010-03", rate: 0.16, inflation: 2.29 },
+  { month: "2010-04", rate: 0.2, inflation: 2.21 },
+  { month: "2010-05", rate: 0.2, inflation: 2 },
+  { month: "2010-06", rate: 0.18, inflation: 1.12 },
+  { month: "2010-07", rate: 0.18, inflation: 1.34 },
+  { month: "2010-08", rate: 0.19, inflation: 1.15 },
+  { month: "2010-09", rate: 0.19, inflation: 1.12 },
+  { month: "2010-10", rate: 0.19, inflation: 1.17 },
+  { month: "2010-11", rate: 0.19, inflation: 1.08 },
+  { month: "2010-12", rate: 0.18, inflation: 1.44 },
+  { month: "2011-01", rate: 0.17, inflation: 1.7 },
+  { month: "2011-02", rate: 0.16, inflation: 2.12 },
+  { month: "2011-03", rate: 0.14, inflation: 2.62 },
+  { month: "2011-04", rate: 0.1, inflation: 3.08 },
+  { month: "2011-05", rate: 0.09, inflation: 3.46 },
+  { month: "2011-06", rate: 0.09, inflation: 3.5 },
+  { month: "2011-07", rate: 0.07, inflation: 3.58 },
+  { month: "2011-08", rate: 0.1, inflation: 3.75 },
+  { month: "2011-09", rate: 0.08, inflation: 3.81 },
+  { month: "2011-10", rate: 0.07, inflation: 3.52 },
+  { month: "2011-11", rate: 0.08, inflation: 3.45 },
+  { month: "2011-12", rate: 0.07, inflation: 3.06 },
+  { month: "2012-01", rate: 0.08, inflation: 3.01 },
+  { month: "2012-02", rate: 0.1, inflation: 2.9 },
+  { month: "2012-03", rate: 0.13, inflation: 2.58 },
+  { month: "2012-04", rate: 0.14, inflation: 2.27 },
+  { month: "2012-05", rate: 0.16, inflation: 1.74 },
+  { month: "2012-06", rate: 0.16, inflation: 1.65 },
+  { month: "2012-07", rate: 0.16, inflation: 1.42 },
+  { month: "2012-08", rate: 0.13, inflation: 1.69 },
+  { month: "2012-09", rate: 0.14, inflation: 1.95 },
+  { month: "2012-10", rate: 0.16, inflation: 2.16 },
+  { month: "2012-11", rate: 0.16, inflation: 1.8 },
+  { month: "2012-12", rate: 0.16, inflation: 1.76 },
+  { month: "2013-01", rate: 0.14, inflation: 1.68 },
+  { month: "2013-02", rate: 0.15, inflation: 2.02 },
+  { month: "2013-03", rate: 0.14, inflation: 1.52 },
+  { month: "2013-04", rate: 0.15, inflation: 1.14 },
+  { month: "2013-05", rate: 0.11, inflation: 1.39 },
+  { month: "2013-06", rate: 0.09, inflation: 1.72 },
+  { month: "2013-07", rate: 0.09, inflation: 1.89 },
+  { month: "2013-08", rate: 0.08, inflation: 1.54 },
+  { month: "2013-09", rate: 0.08, inflation: 1.09 },
+  { month: "2013-10", rate: 0.09, inflation: 0.88 },
+  { month: "2013-11", rate: 0.08, inflation: 1.23 },
+  { month: "2013-12", rate: 0.09, inflation: 1.51 },
+  { month: "2014-01", rate: 0.07, inflation: 1.56 },
+  { month: "2014-02", rate: 0.07, inflation: 1.12 },
+  { month: "2014-03", rate: 0.08, inflation: 1.61 },
+  { month: "2014-04", rate: 0.09, inflation: 2.02 },
+  { month: "2014-05", rate: 0.09, inflation: 2.17 },
+  { month: "2014-06", rate: 0.1, inflation: 2.06 },
+  { month: "2014-07", rate: 0.09, inflation: 1.97 },
+  { month: "2014-08", rate: 0.09, inflation: 1.72 },
+  { month: "2014-09", rate: 0.09, inflation: 1.68 },
+  { month: "2014-10", rate: 0.09, inflation: 1.61 },
+  { month: "2014-11", rate: 0.09, inflation: 1.23 },
+  { month: "2014-12", rate: 0.12, inflation: 0.65 },
+  { month: "2015-01", rate: 0.11, inflation: -0.23 },
+  { month: "2015-02", rate: 0.11, inflation: -0.09 },
+  { month: "2015-03", rate: 0.11, inflation: -0.02 },
+  { month: "2015-04", rate: 0.12, inflation: -0.1 },
+  { month: "2015-05", rate: 0.12, inflation: 0.04 },
+  { month: "2015-06", rate: 0.13, inflation: 0.18 },
+  { month: "2015-07", rate: 0.13, inflation: 0.23 },
+  { month: "2015-08", rate: 0.14, inflation: 0.24 },
+  { month: "2015-09", rate: 0.14, inflation: 0.01 },
+  { month: "2015-10", rate: 0.12, inflation: 0.13 },
+  { month: "2015-11", rate: 0.12, inflation: 0.44 },
+  { month: "2015-12", rate: 0.24, inflation: 0.64 },
+  { month: "2016-01", rate: 0.34, inflation: 1.24 },
+  { month: "2016-02", rate: 0.38, inflation: 0.85 },
+  { month: "2016-03", rate: 0.36, inflation: 0.89 },
+  { month: "2016-04", rate: 0.37, inflation: 1.17 },
+  { month: "2016-05", rate: 0.37, inflation: 1.08 },
+  { month: "2016-06", rate: 0.38, inflation: 1.08 },
+  { month: "2016-07", rate: 0.39, inflation: 0.87 },
+  { month: "2016-08", rate: 0.4, inflation: 1.06 },
+  { month: "2016-09", rate: 0.4, inflation: 1.55 },
+  { month: "2016-10", rate: 0.4, inflation: 1.69 },
+  { month: "2016-11", rate: 0.41, inflation: 1.68 },
+  { month: "2016-12", rate: 0.54, inflation: 2.05 },
+  { month: "2017-01", rate: 0.65, inflation: 2.51 },
+  { month: "2017-02", rate: 0.66, inflation: 2.81 },
+  { month: "2017-03", rate: 0.79, inflation: 2.44 },
+  { month: "2017-04", rate: 0.9, inflation: 2.18 },
+  { month: "2017-05", rate: 0.91, inflation: 1.86 },
+  { month: "2017-06", rate: 1.04, inflation: 1.64 },
+  { month: "2017-07", rate: 1.15, inflation: 1.73 },
+  { month: "2017-08", rate: 1.16, inflation: 1.93 },
+  { month: "2017-09", rate: 1.15, inflation: 2.18 },
+  { month: "2017-10", rate: 1.15, inflation: 2.02 },
+  { month: "2017-11", rate: 1.16, inflation: 2.17 },
+  { month: "2017-12", rate: 1.3, inflation: 2.13 },
+  { month: "2018-01", rate: 1.41, inflation: 2.15 },
+  { month: "2018-02", rate: 1.42, inflation: 2.26 },
+  { month: "2018-03", rate: 1.51, inflation: 2.33 },
+  { month: "2018-04", rate: 1.69, inflation: 2.47 },
+  { month: "2018-05", rate: 1.7, inflation: 2.78 },
+  { month: "2018-06", rate: 1.82, inflation: 2.81 },
+  { month: "2018-07", rate: 1.91, inflation: 2.85 },
+  { month: "2018-08", rate: 1.91, inflation: 2.64 },
+  { month: "2018-09", rate: 1.95, inflation: 2.33 },
+  { month: "2018-10", rate: 2.19, inflation: 2.49 },
+  { month: "2018-11", rate: 2.2, inflation: 2.15 },
+  { month: "2018-12", rate: 2.27, inflation: 2 },
+  { month: "2019-01", rate: 2.4, inflation: 1.49 },
+  { month: "2019-02", rate: 2.4, inflation: 1.52 },
+  { month: "2019-03", rate: 2.41, inflation: 1.88 },
+  { month: "2019-04", rate: 2.42, inflation: 2 },
+  { month: "2019-05", rate: 2.39, inflation: 1.8 },
+  { month: "2019-06", rate: 2.38, inflation: 1.67 },
+  { month: "2019-07", rate: 2.4, inflation: 1.83 },
+  { month: "2019-08", rate: 2.13, inflation: 1.74 },
+  { month: "2019-09", rate: 2.04, inflation: 1.68 },
+  { month: "2019-10", rate: 1.83, inflation: 1.73 },
+  { month: "2019-11", rate: 1.55, inflation: 2.09 },
+  { month: "2019-12", rate: 1.55, inflation: 2.32 },
+  { month: "2020-01", rate: 1.55, inflation: 2.6 },
+  { month: "2020-02", rate: 1.58, inflation: 2.34 },
+  { month: "2020-03", rate: 0.65, inflation: 1.49 },
+  { month: "2020-04", rate: 0.05, inflation: 0.31 },
+  { month: "2020-05", rate: 0.05, inflation: 0.2 },
+  { month: "2020-06", rate: 0.08, inflation: 0.72 },
+  { month: "2020-07", rate: 0.09, inflation: 1 },
+  { month: "2020-08", rate: 0.1, inflation: 1.28 },
+  { month: "2020-09", rate: 0.09, inflation: 1.39 },
+  { month: "2020-10", rate: 0.09, inflation: 1.23 },
+  { month: "2020-11", rate: 0.09, inflation: 1.18 },
+  { month: "2020-12", rate: 0.09, inflation: 1.32 },
+  { month: "2021-01", rate: 0.09, inflation: 1.37 },
+  { month: "2021-02", rate: 0.08, inflation: 1.67 },
+  { month: "2021-03", rate: 0.07, inflation: 2.67 },
+  { month: "2021-04", rate: 0.07, inflation: 4.13 },
+  { month: "2021-05", rate: 0.06, inflation: 4.92 },
+  { month: "2021-06", rate: 0.08, inflation: 5.3 },
+  { month: "2021-07", rate: 0.1, inflation: 5.25 },
+  { month: "2021-08", rate: 0.09, inflation: 5.15 },
+  { month: "2021-09", rate: 0.08, inflation: 5.35 },
+  { month: "2021-10", rate: 0.08, inflation: 6.24 },
+  { month: "2021-11", rate: 0.08, inflation: 6.9 },
+  { month: "2021-12", rate: 0.08, inflation: 7.17 },
+  { month: "2022-01", rate: 0.08, inflation: 7.56 },
+  { month: "2022-02", rate: 0.08, inflation: 7.94 },
+  { month: "2022-03", rate: 0.2, inflation: 8.57 },
+  { month: "2022-04", rate: 0.33, inflation: 8.23 },
+  { month: "2022-05", rate: 0.77, inflation: 8.54 },
+  { month: "2022-06", rate: 1.21, inflation: 8.98 },
+  { month: "2022-07", rate: 1.68, inflation: 8.46 },
+  { month: "2022-08", rate: 2.33, inflation: 8.22 },
+  { month: "2022-09", rate: 2.56, inflation: 8.19 },
+  { month: "2022-10", rate: 3.08, inflation: 7.76 },
+  { month: "2022-11", rate: 3.78, inflation: 7.12 },
+  { month: "2022-12", rate: 4.1, inflation: 6.4 },
+  { month: "2023-01", rate: 4.33, inflation: 6.33 },
+  { month: "2023-02", rate: 4.57, inflation: 5.96 },
+  { month: "2023-03", rate: 4.65, inflation: 4.92 },
+  { month: "2023-04", rate: 4.83, inflation: 4.95 },
+  { month: "2023-05", rate: 5.06, inflation: 4.13 },
+  { month: "2023-06", rate: 5.08, inflation: 3.07 },
+  { month: "2023-07", rate: 5.12, inflation: 3.29 },
+  { month: "2023-08", rate: 5.33, inflation: 3.72 },
+  { month: "2023-09", rate: 5.33, inflation: 3.69 },
+  { month: "2023-10", rate: 5.33, inflation: 3.25 },
+  { month: "2023-11", rate: 5.33, inflation: 3.13 },
+  { month: "2023-12", rate: 5.33, inflation: 3.32 },
+  { month: "2024-01", rate: 5.33, inflation: 3.09 },
+  { month: "2024-02", rate: 5.33, inflation: 3.16 },
+  { month: "2024-03", rate: 5.33, inflation: 3.49 },
+  { month: "2024-04", rate: 5.33, inflation: 3.36 },
+  { month: "2024-05", rate: 5.33, inflation: 3.24 },
+  { month: "2024-06", rate: 5.33, inflation: 2.97 },
+  { month: "2024-07", rate: 5.33, inflation: 2.94 },
+  { month: "2024-08", rate: 5.33, inflation: 2.61 },
+  { month: "2024-09", rate: 5.13, inflation: 2.43 },
+  { month: "2024-10", rate: 4.83, inflation: 2.58 },
+  { month: "2024-11", rate: 4.64, inflation: 2.72 },
+  { month: "2024-12", rate: 4.48, inflation: 2.87 },
+  { month: "2025-01", rate: 4.33, inflation: 2.99 },
+  { month: "2025-02", rate: 4.33, inflation: 2.8 },
+  { month: "2025-03", rate: 4.33, inflation: 2.38 },
+  { month: "2025-04", rate: 4.33, inflation: 2.33 },
+  { month: "2025-05", rate: 4.33, inflation: 2.38 },
+  { month: "2025-06", rate: 4.33, inflation: 2.68 },
+  { month: "2025-07", rate: 4.33, inflation: 2.74 },
+  { month: "2025-08", rate: 4.33, inflation: 2.94 },
+  { month: "2025-09", rate: 4.22, inflation: 3.02 },
+  { month: "2025-11", rate: 3.88, inflation: 2.99 },
+  { month: "2025-12", rate: 3.72, inflation: 3 },
+  { month: "2026-01", rate: 3.64, inflation: 2.83 },
+  { month: "2026-02", rate: 3.64, inflation: 2.66 },
+  { month: "2026-03", rate: 3.64, inflation: 3.32 },
+  { month: "2026-04", rate: 3.64, inflation: 3.95 },
+  { month: "2026-05", rate: 3.63, inflation: 4.27 },
+  { month: "2026-06", rate: 3.63, inflation: 3.73 }
 ];
 
 export interface HighYieldSpreadPoint { month: string; value: number; }
-export const US_HIGH_YIELD_SPREAD: HighYieldSpreadPoint[] =  [
-  {
-    "month": "2023-07",
-    "value": 3.86
-  },
-  {
-    "month": "2023-08",
-    "value": 3.9
-  },
-  {
-    "month": "2023-09",
-    "value": 3.89
-  },
-  {
-    "month": "2023-10",
-    "value": 4.36
-  },
-  {
-    "month": "2023-11",
-    "value": 3.99
-  },
-  {
-    "month": "2023-12",
-    "value": 3.57
-  },
-  {
-    "month": "2024-01",
-    "value": 3.55
-  },
-  {
-    "month": "2024-02",
-    "value": 3.36
-  },
-  {
-    "month": "2024-03",
-    "value": 3.18
-  },
-  {
-    "month": "2024-04",
-    "value": 3.23
-  },
-  {
-    "month": "2024-05",
-    "value": 3.12
-  },
-  {
-    "month": "2024-06",
-    "value": 3.2
-  },
-  {
-    "month": "2024-07",
-    "value": 3.16
-  },
-  {
-    "month": "2024-08",
-    "value": 3.37
-  },
-  {
-    "month": "2024-09",
-    "value": 3.26
-  },
-  {
-    "month": "2024-10",
-    "value": 2.93
-  },
-  {
-    "month": "2024-11",
-    "value": 2.7
-  },
-  {
-    "month": "2024-12",
-    "value": 2.76
-  },
-  {
-    "month": "2025-01",
-    "value": 2.72
-  },
-  {
-    "month": "2025-02",
-    "value": 2.71
-  },
-  {
-    "month": "2025-03",
-    "value": 3.17
-  },
-  {
-    "month": "2025-04",
-    "value": 4.03
-  },
-  {
-    "month": "2025-05",
-    "value": 3.35
-  },
-  {
-    "month": "2025-06",
-    "value": 3.13
-  },
-  {
-    "month": "2025-07",
-    "value": 2.89
-  },
-  {
-    "month": "2025-08",
-    "value": 2.9
-  },
-  {
-    "month": "2025-09",
-    "value": 2.79
-  },
-  {
-    "month": "2025-10",
-    "value": 2.92
-  },
-  {
-    "month": "2025-11",
-    "value": 3.08
-  },
-  {
-    "month": "2025-12",
-    "value": 2.89
-  },
-  {
-    "month": "2026-01",
-    "value": 2.74
-  },
-  {
-    "month": "2026-02",
-    "value": 2.92
-  },
-  {
-    "month": "2026-03",
-    "value": 3.19
-  },
-  {
-    "month": "2026-04",
-    "value": 2.93
-  },
-  {
-    "month": "2026-05",
-    "value": 2.77
-  },
-  {
-    "month": "2026-06",
-    "value": 2.73
-  },
-  {
-    "month": "2026-07",
-    "value": 2.71
-  }
+export const US_HIGH_YIELD_SPREAD: HighYieldSpreadPoint[] = [
+  { month: "2023-07", value: 3.86 },
+  { month: "2023-08", value: 3.9 },
+  { month: "2023-09", value: 3.89 },
+  { month: "2023-10", value: 4.36 },
+  { month: "2023-11", value: 3.99 },
+  { month: "2023-12", value: 3.57 },
+  { month: "2024-01", value: 3.55 },
+  { month: "2024-02", value: 3.36 },
+  { month: "2024-03", value: 3.18 },
+  { month: "2024-04", value: 3.23 },
+  { month: "2024-05", value: 3.12 },
+  { month: "2024-06", value: 3.2 },
+  { month: "2024-07", value: 3.16 },
+  { month: "2024-08", value: 3.37 },
+  { month: "2024-09", value: 3.26 },
+  { month: "2024-10", value: 2.93 },
+  { month: "2024-11", value: 2.7 },
+  { month: "2024-12", value: 2.76 },
+  { month: "2025-01", value: 2.72 },
+  { month: "2025-02", value: 2.71 },
+  { month: "2025-03", value: 3.17 },
+  { month: "2025-04", value: 4.03 },
+  { month: "2025-05", value: 3.35 },
+  { month: "2025-06", value: 3.13 },
+  { month: "2025-07", value: 2.89 },
+  { month: "2025-08", value: 2.9 },
+  { month: "2025-09", value: 2.79 },
+  { month: "2025-10", value: 2.92 },
+  { month: "2025-11", value: 3.08 },
+  { month: "2025-12", value: 2.89 },
+  { month: "2026-01", value: 2.74 },
+  { month: "2026-02", value: 2.92 },
+  { month: "2026-03", value: 3.19 },
+  { month: "2026-04", value: 2.93 },
+  { month: "2026-05", value: 2.77 },
+  { month: "2026-06", value: 2.73 },
+  { month: "2026-07", value: 2.71 }
 ];
 
 
@@ -12163,2037 +6863,462 @@ export const VC_SECTOR_FUNDING: VcSectorFundingPoint[] = [
 ];
 
 export interface ExportsImportsPoint { date: string; exports: number; imports: number; }
-export const US_EXPORTS_VS_IMPORTS: ExportsImportsPoint[] =  [
-  {
-    "date": "1970-01-01",
-    "exports": 57.031,
-    "imports": 53.517
-  },
-  {
-    "date": "1970-04-01",
-    "exports": 60.411,
-    "imports": 55.204
-  },
-  {
-    "date": "1970-07-01",
-    "exports": 60.519,
-    "imports": 56.431
-  },
-  {
-    "date": "1970-10-01",
-    "exports": 60.873,
-    "imports": 57.888
-  },
-  {
-    "date": "1971-01-01",
-    "exports": 63.221,
-    "imports": 58.651
-  },
-  {
-    "date": "1971-04-01",
-    "exports": 62.894,
-    "imports": 63.296
-  },
-  {
-    "date": "1971-07-01",
-    "exports": 65.717,
-    "imports": 65.482
-  },
-  {
-    "date": "1971-10-01",
-    "exports": 60.019,
-    "imports": 61.939
-  },
-  {
-    "date": "1972-01-01",
-    "exports": 68.639,
-    "imports": 72.173
-  },
-  {
-    "date": "1972-04-01",
-    "exports": 67.152,
-    "imports": 71.409
-  },
-  {
-    "date": "1972-07-01",
-    "exports": 71.453,
-    "imports": 74.09
-  },
-  {
-    "date": "1972-10-01",
-    "exports": 76.129,
-    "imports": 79.19
-  },
-  {
-    "date": "1973-01-01",
-    "exports": 83.959,
-    "imports": 85.36
-  },
-  {
-    "date": "1973-04-01",
-    "exports": 91.923,
-    "imports": 89.468
-  },
-  {
-    "date": "1973-07-01",
-    "exports": 97.576,
-    "imports": 91.139
-  },
-  {
-    "date": "1973-10-01",
-    "exports": 107.62,
-    "imports": 98.669
-  },
-  {
-    "date": "1974-01-01",
-    "exports": 116.709,
-    "imports": 110.315
-  },
-  {
-    "date": "1974-04-01",
-    "exports": 126.668,
-    "imports": 129.382
-  },
-  {
-    "date": "1974-07-01",
-    "exports": 126.638,
-    "imports": 133.61
-  },
-  {
-    "date": "1974-10-01",
-    "exports": 136.585,
-    "imports": 136.552
-  },
-  {
-    "date": "1975-01-01",
-    "exports": 141.369,
-    "imports": 124.888
-  },
-  {
-    "date": "1975-04-01",
-    "exports": 136.827,
-    "imports": 115.245
-  },
-  {
-    "date": "1975-07-01",
-    "exports": 134.098,
-    "imports": 122.055
-  },
-  {
-    "date": "1975-10-01",
-    "exports": 142.531,
-    "imports": 128.73
-  },
-  {
-    "date": "1976-01-01",
-    "exports": 143.588,
-    "imports": 138.938
-  },
-  {
-    "date": "1976-04-01",
-    "exports": 146.621,
-    "imports": 147.116
-  },
-  {
-    "date": "1976-07-01",
-    "exports": 151.775,
-    "imports": 155.848
-  },
-  {
-    "date": "1976-10-01",
-    "exports": 156.076,
-    "imports": 162.68
-  },
-  {
-    "date": "1977-01-01",
-    "exports": 155.354,
-    "imports": 176.433
-  },
-  {
-    "date": "1977-04-01",
-    "exports": 161.906,
-    "imports": 183.042
-  },
-  {
-    "date": "1977-07-01",
-    "exports": 162.325,
-    "imports": 182.904
-  },
-  {
-    "date": "1977-10-01",
-    "exports": 157.809,
-    "imports": 187.391
-  },
-  {
-    "date": "1978-01-01",
-    "exports": 164.601,
-    "imports": 203.282
-  },
-  {
-    "date": "1978-04-01",
-    "exports": 186.215,
-    "imports": 208.84
-  },
-  {
-    "date": "1978-07-01",
-    "exports": 191.302,
-    "imports": 215.062
-  },
-  {
-    "date": "1978-10-01",
-    "exports": 205.415,
-    "imports": 221.815
-  },
-  {
-    "date": "1979-01-01",
-    "exports": 211.669,
-    "imports": 229.828
-  },
-  {
-    "date": "1979-04-01",
-    "exports": 220.908,
-    "imports": 243.097
-  },
-  {
-    "date": "1979-07-01",
-    "exports": 234.277,
-    "imports": 257.306
-  },
-  {
-    "date": "1979-10-01",
-    "exports": 253.664,
-    "imports": 280.466
-  },
-  {
-    "date": "1980-01-01",
-    "exports": 268.508,
-    "imports": 304.311
-  },
-  {
-    "date": "1980-04-01",
-    "exports": 277.389,
-    "imports": 292.6
-  },
-  {
-    "date": "1980-07-01",
-    "exports": 284.673,
-    "imports": 279.202
-  },
-  {
-    "date": "1980-10-01",
-    "exports": 292.517,
-    "imports": 299.2
-  },
-  {
-    "date": "1981-01-01",
-    "exports": 305.467,
-    "imports": 319.726
-  },
-  {
-    "date": "1981-04-01",
-    "exports": 308.455,
-    "imports": 321.963
-  },
-  {
-    "date": "1981-07-01",
-    "exports": 302.339,
-    "imports": 309.9
-  },
-  {
-    "date": "1981-10-01",
-    "exports": 304.695,
-    "imports": 319.445
-  },
-  {
-    "date": "1982-01-01",
-    "exports": 293.202,
-    "imports": 309.478
-  },
-  {
-    "date": "1982-04-01",
-    "exports": 294.729,
-    "imports": 299.115
-  },
-  {
-    "date": "1982-07-01",
-    "exports": 279.634,
-    "imports": 309.282
-  },
-  {
-    "date": "1982-10-01",
-    "exports": 265.274,
-    "imports": 294.861
-  },
-  {
-    "date": "1983-01-01",
-    "exports": 270.703,
-    "imports": 295.251
-  },
-  {
-    "date": "1983-04-01",
-    "exports": 272.514,
-    "imports": 317.949
-  },
-  {
-    "date": "1983-07-01",
-    "exports": 278.181,
-    "imports": 343.381
-  },
-  {
-    "date": "1983-10-01",
-    "exports": 286.587,
-    "imports": 357.972
-  },
-  {
-    "date": "1984-01-01",
-    "exports": 292.975,
-    "imports": 387.978
-  },
-  {
-    "date": "1984-04-01",
-    "exports": 302.2,
-    "imports": 406.501
-  },
-  {
-    "date": "1984-07-01",
-    "exports": 305.744,
-    "imports": 409.591
-  },
-  {
-    "date": "1984-10-01",
-    "exports": 308.603,
-    "imports": 416.359
-  },
-  {
-    "date": "1985-01-01",
-    "exports": 306.01,
-    "imports": 397.308
-  },
-  {
-    "date": "1985-04-01",
-    "exports": 304.126,
-    "imports": 418.571
-  },
-  {
-    "date": "1985-07-01",
-    "exports": 297.273,
-    "imports": 414.168
-  },
-  {
-    "date": "1985-10-01",
-    "exports": 305.433,
-    "imports": 438.867
-  },
-  {
-    "date": "1986-01-01",
-    "exports": 313.404,
-    "imports": 439.418
-  },
-  {
-    "date": "1986-04-01",
-    "exports": 315.119,
-    "imports": 443.99
-  },
-  {
-    "date": "1986-07-01",
-    "exports": 320.471,
-    "imports": 459.432
-  },
-  {
-    "date": "1986-10-01",
-    "exports": 334.999,
-    "imports": 468.628
-  },
-  {
-    "date": "1987-01-01",
-    "exports": 336.451,
-    "imports": 477.685
-  },
-  {
-    "date": "1987-04-01",
-    "exports": 355.36,
-    "imports": 502.337
-  },
-  {
-    "date": "1987-07-01",
-    "exports": 371.854,
-    "imports": 517.318
-  },
-  {
-    "date": "1987-10-01",
-    "exports": 392.107,
-    "imports": 537.511
-  },
-  {
-    "date": "1988-01-01",
-    "exports": 418.727,
-    "imports": 542.714
-  },
-  {
-    "date": "1988-04-01",
-    "exports": 439.471,
-    "imports": 546.098
-  },
-  {
-    "date": "1988-07-01",
-    "exports": 453.586,
-    "imports": 552.849
-  },
-  {
-    "date": "1988-10-01",
-    "exports": 466.619,
-    "imports": 574.314
-  },
-  {
-    "date": "1989-01-01",
-    "exports": 485.189,
-    "imports": 586.154
-  },
-  {
-    "date": "1989-04-01",
-    "exports": 507.229,
-    "imports": 595.389
-  },
-  {
-    "date": "1989-07-01",
-    "exports": 509.352,
-    "imports": 584.427
-  },
-  {
-    "date": "1989-10-01",
-    "exports": 515.387,
-    "imports": 598.152
-  },
-  {
-    "date": "1990-01-01",
-    "exports": 538.232,
-    "imports": 626.767
-  },
-  {
-    "date": "1990-04-01",
-    "exports": 545.925,
-    "imports": 614.759
-  },
-  {
-    "date": "1990-07-01",
-    "exports": 555.149,
-    "imports": 630.102
-  },
-  {
-    "date": "1990-10-01",
-    "exports": 568.186,
-    "imports": 647.282
-  },
-  {
-    "date": "1991-01-01",
-    "exports": 573.177,
-    "imports": 620.317
-  },
-  {
-    "date": "1991-04-01",
-    "exports": 590.733,
-    "imports": 613.921
-  },
-  {
-    "date": "1991-07-01",
-    "exports": 600.595,
-    "imports": 621.669
-  },
-  {
-    "date": "1991-10-01",
-    "exports": 615.217,
-    "imports": 638.27
-  },
-  {
-    "date": "1992-01-01",
-    "exports": 625.287,
-    "imports": 645.823
-  },
-  {
-    "date": "1992-04-01",
-    "exports": 626.163,
-    "imports": 658.951
-  },
-  {
-    "date": "1992-07-01",
-    "exports": 639.365,
-    "imports": 677.853
-  },
-  {
-    "date": "1992-10-01",
-    "exports": 641.396,
-    "imports": 688.536
-  },
-  {
-    "date": "1993-01-01",
-    "exports": 643.606,
-    "imports": 699.31
-  },
-  {
-    "date": "1993-04-01",
-    "exports": 653.094,
-    "imports": 716.281
-  },
-  {
-    "date": "1993-07-01",
-    "exports": 650.897,
-    "imports": 719.251
-  },
-  {
-    "date": "1993-10-01",
-    "exports": 671.6,
-    "imports": 745.049
-  },
-  {
-    "date": "1994-01-01",
-    "exports": 681.232,
-    "imports": 761.827
-  },
-  {
-    "date": "1994-04-01",
-    "exports": 706.988,
-    "imports": 797.56
-  },
-  {
-    "date": "1994-07-01",
-    "exports": 736.883,
-    "imports": 833.751
-  },
-  {
-    "date": "1994-10-01",
-    "exports": 758.646,
-    "imports": 860.559
-  },
-  {
-    "date": "1995-01-01",
-    "exports": 781.57,
-    "imports": 886.899
-  },
-  {
-    "date": "1995-04-01",
-    "exports": 798.851,
-    "imports": 908.343
-  },
-  {
-    "date": "1995-07-01",
-    "exports": 831.399,
-    "imports": 905.843
-  },
-  {
-    "date": "1995-10-01",
-    "exports": 839.421,
-    "imports": 909.201
-  },
-  {
-    "date": "1996-01-01",
-    "exports": 847.94,
-    "imports": 936.735
-  },
-  {
-    "date": "1996-04-01",
-    "exports": 859.042,
-    "imports": 952.751
-  },
-  {
-    "date": "1996-07-01",
-    "exports": 859.577,
-    "imports": 973.757
-  },
-  {
-    "date": "1996-10-01",
-    "exports": 903.798,
-    "imports": 992.62
-  },
-  {
-    "date": "1997-01-01",
-    "exports": 918.374,
-    "imports": 1027.213
-  },
-  {
-    "date": "1997-04-01",
-    "exports": 954.45,
-    "imports": 1039.651
-  },
-  {
-    "date": "1997-07-01",
-    "exports": 974.057,
-    "imports": 1070.888
-  },
-  {
-    "date": "1997-10-01",
-    "exports": 968.33,
-    "imports": 1085.344
-  },
-  {
-    "date": "1998-01-01",
-    "exports": 963.021,
-    "imports": 1098.236
-  },
-  {
-    "date": "1998-04-01",
-    "exports": 947.295,
-    "imports": 1109.626
-  },
-  {
-    "date": "1998-07-01",
-    "exports": 935.263,
-    "imports": 1109.897
-  },
-  {
-    "date": "1998-10-01",
-    "exports": 966.337,
-    "imports": 1145
-  },
-  {
-    "date": "1999-01-01",
-    "exports": 960.764,
-    "imports": 1173.324
-  },
-  {
-    "date": "1999-04-01",
-    "exports": 974.597,
-    "imports": 1222.126
-  },
-  {
-    "date": "1999-07-01",
-    "exports": 1005.309,
-    "imports": 1281.712
-  },
-  {
-    "date": "1999-10-01",
-    "exports": 1030.971,
-    "imports": 1332.679
-  },
-  {
-    "date": "2000-01-01",
-    "exports": 1052.904,
-    "imports": 1409.487
-  },
-  {
-    "date": "2000-04-01",
-    "exports": 1093.36,
-    "imports": 1455.86
-  },
-  {
-    "date": "2000-07-01",
-    "exports": 1125.002,
-    "imports": 1518.869
-  },
-  {
-    "date": "2000-10-01",
-    "exports": 1113.177,
-    "imports": 1524.52
-  },
-  {
-    "date": "2001-01-01",
-    "exports": 1096.812,
-    "imports": 1499.464
-  },
-  {
-    "date": "2001-04-01",
-    "exports": 1058.013,
-    "imports": 1422.028
-  },
-  {
-    "date": "2001-07-01",
-    "exports": 998.902,
-    "imports": 1369.536
-  },
-  {
-    "date": "2001-10-01",
-    "exports": 953.52,
-    "imports": 1323.208
-  },
-  {
-    "date": "2002-01-01",
-    "exports": 969.157,
-    "imports": 1356.041
-  },
-  {
-    "date": "2002-04-01",
-    "exports": 1004.154,
-    "imports": 1432.413
-  },
-  {
-    "date": "2002-07-01",
-    "exports": 1015.56,
-    "imports": 1463.107
-  },
-  {
-    "date": "2002-10-01",
-    "exports": 1003.046,
-    "imports": 1499.335
-  },
-  {
-    "date": "2003-01-01",
-    "exports": 1004.201,
-    "imports": 1529.463
-  },
-  {
-    "date": "2003-04-01",
-    "exports": 1007.465,
-    "imports": 1527.336
-  },
-  {
-    "date": "2003-07-01",
-    "exports": 1037.31,
-    "imports": 1556.304
-  },
-  {
-    "date": "2003-10-01",
-    "exports": 1091.682,
-    "imports": 1615.376
-  },
-  {
-    "date": "2004-01-01",
-    "exports": 1133.669,
-    "imports": 1699.644
-  },
-  {
-    "date": "2004-04-01",
-    "exports": 1170.152,
-    "imports": 1787.734
-  },
-  {
-    "date": "2004-07-01",
-    "exports": 1180.185,
-    "imports": 1832.856
-  },
-  {
-    "date": "2004-10-01",
-    "exports": 1221.444,
-    "imports": 1921.78
-  },
-  {
-    "date": "2005-01-01",
-    "exports": 1258.408,
-    "imports": 1955.063
-  },
-  {
-    "date": "2005-04-01",
-    "exports": 1294.853,
-    "imports": 2002.063
-  },
-  {
-    "date": "2005-07-01",
-    "exports": 1302.315,
-    "imports": 2053.275
-  },
-  {
-    "date": "2005-10-01",
-    "exports": 1350.743,
-    "imports": 2155.529
-  },
-  {
-    "date": "2006-01-01",
-    "exports": 1413.966,
-    "imports": 2204.784
-  },
-  {
-    "date": "2006-04-01",
-    "exports": 1459.767,
-    "imports": 2253.809
-  },
-  {
-    "date": "2006-07-01",
-    "exports": 1475.417,
-    "imports": 2298.702
-  },
-  {
-    "date": "2006-10-01",
-    "exports": 1531.531,
-    "imports": 2269.198
-  },
-  {
-    "date": "2007-01-01",
-    "exports": 1577.991,
-    "imports": 2317.264
-  },
-  {
-    "date": "2007-04-01",
-    "exports": 1622.764,
-    "imports": 2368.569
-  },
-  {
-    "date": "2007-07-01",
-    "exports": 1685.71,
-    "imports": 2414.664
-  },
-  {
-    "date": "2007-10-01",
-    "exports": 1750.714,
-    "imports": 2480.413
-  },
-  {
-    "date": "2008-01-01",
-    "exports": 1813.321,
-    "imports": 2584.568
-  },
-  {
-    "date": "2008-04-01",
-    "exports": 1905.282,
-    "imports": 2681.686
-  },
-  {
-    "date": "2008-07-01",
-    "exports": 1922.215,
-    "imports": 2709.569
-  },
-  {
-    "date": "2008-10-01",
-    "exports": 1700.304,
-    "imports": 2328.779
-  },
-  {
-    "date": "2009-01-01",
-    "exports": 1511.768,
-    "imports": 1932.761
-  },
-  {
-    "date": "2009-04-01",
-    "exports": 1521.093,
-    "imports": 1879.461
-  },
-  {
-    "date": "2009-07-01",
-    "exports": 1594.725,
-    "imports": 2018.722
-  },
-  {
-    "date": "2009-10-01",
-    "exports": 1703.508,
-    "imports": 2176.763
-  },
-  {
-    "date": "2010-01-01",
-    "exports": 1759.877,
-    "imports": 2269.069
-  },
-  {
-    "date": "2010-04-01",
-    "exports": 1819.741,
-    "imports": 2362.255
-  },
-  {
-    "date": "2010-07-01",
-    "exports": 1877.253,
-    "imports": 2431.195
-  },
-  {
-    "date": "2010-10-01",
-    "exports": 1972.116,
-    "imports": 2495.702
-  },
-  {
-    "date": "2011-01-01",
-    "exports": 2040.407,
-    "imports": 2608.884
-  },
-  {
-    "date": "2011-04-01",
-    "exports": 2116.132,
-    "imports": 2697.224
-  },
-  {
-    "date": "2011-07-01",
-    "exports": 2156.793,
-    "imports": 2723.903
-  },
-  {
-    "date": "2011-10-01",
-    "exports": 2150.123,
-    "imports": 2751.911
-  },
-  {
-    "date": "2012-01-01",
-    "exports": 2189.981,
-    "imports": 2792.253
-  },
-  {
-    "date": "2012-04-01",
-    "exports": 2215.586,
-    "imports": 2780.827
-  },
-  {
-    "date": "2012-07-01",
-    "exports": 2227.734,
-    "imports": 2750.817
-  },
-  {
-    "date": "2012-10-01",
-    "exports": 2237.498,
-    "imports": 2753.373
-  },
-  {
-    "date": "2013-01-01",
-    "exports": 2255.929,
-    "imports": 2755.277
-  },
-  {
-    "date": "2013-04-01",
-    "exports": 2261.403,
-    "imports": 2759.783
-  },
-  {
-    "date": "2013-07-01",
-    "exports": 2285.116,
-    "imports": 2767.183
-  },
-  {
-    "date": "2013-10-01",
-    "exports": 2349.24,
-    "imports": 2783.259
-  },
-  {
-    "date": "2014-01-01",
-    "exports": 2343.602,
-    "imports": 2853.69
-  },
-  {
-    "date": "2014-04-01",
-    "exports": 2395.168,
-    "imports": 2900.572
-  },
-  {
-    "date": "2014-07-01",
-    "exports": 2399.191,
-    "imports": 2888.549
-  },
-  {
-    "date": "2014-10-01",
-    "exports": 2376.218,
-    "imports": 2906.969
-  },
-  {
-    "date": "2015-01-01",
-    "exports": 2299.045,
-    "imports": 2825.476
-  },
-  {
-    "date": "2015-04-01",
-    "exports": 2300.441,
-    "imports": 2809.968
-  },
-  {
-    "date": "2015-07-01",
-    "exports": 2260.724,
-    "imports": 2798.806
-  },
-  {
-    "date": "2015-10-01",
-    "exports": 2222.279,
-    "imports": 2745.517
-  },
-  {
-    "date": "2016-01-01",
-    "exports": 2181.957,
-    "imports": 2693.639
-  },
-  {
-    "date": "2016-04-01",
-    "exports": 2221.936,
-    "imports": 2711.306
-  },
-  {
-    "date": "2016-07-01",
-    "exports": 2270,
-    "imports": 2751.229
-  },
-  {
-    "date": "2016-10-01",
-    "exports": 2268.339,
-    "imports": 2799.145
-  },
-  {
-    "date": "2017-01-01",
-    "exports": 2339.728,
-    "imports": 2873.148
-  },
-  {
-    "date": "2017-04-01",
-    "exports": 2349.681,
-    "imports": 2903.18
-  },
-  {
-    "date": "2017-07-01",
-    "exports": 2384.524,
-    "imports": 2916.022
-  },
-  {
-    "date": "2017-10-01",
-    "exports": 2479.107,
-    "imports": 3034.004
-  },
-  {
-    "date": "2018-01-01",
-    "exports": 2517.268,
-    "imports": 3093.299
-  },
-  {
-    "date": "2018-04-01",
-    "exports": 2562.172,
-    "imports": 3105.995
-  },
-  {
-    "date": "2018-07-01",
-    "exports": 2535.501,
-    "imports": 3153.747
-  },
-  {
-    "date": "2018-10-01",
-    "exports": 2537.415,
-    "imports": 3171.622
-  },
-  {
-    "date": "2019-01-01",
-    "exports": 2540.244,
-    "imports": 3132.539
-  },
-  {
-    "date": "2019-04-01",
-    "exports": 2547.448,
-    "imports": 3165.41
-  },
-  {
-    "date": "2019-07-01",
-    "exports": 2532.405,
-    "imports": 3117.952
-  },
-  {
-    "date": "2019-10-01",
-    "exports": 2537.466,
-    "imports": 3050.824
-  },
-  {
-    "date": "2020-01-01",
-    "exports": 2430.941,
-    "imports": 2932.536
-  },
-  {
-    "date": "2020-04-01",
-    "exports": 1829.691,
-    "imports": 2356.583
-  },
-  {
-    "date": "2020-07-01",
-    "exports": 2116.753,
-    "imports": 2804.369
-  },
-  {
-    "date": "2020-10-01",
-    "exports": 2277.965,
-    "imports": 3036.076
-  },
-  {
-    "date": "2021-01-01",
-    "exports": 2393.033,
-    "imports": 3182.082
-  },
-  {
-    "date": "2021-04-01",
-    "exports": 2522.815,
-    "imports": 3348.435
-  },
-  {
-    "date": "2021-07-01",
-    "exports": 2581.341,
-    "imports": 3454.82
-  },
-  {
-    "date": "2021-10-01",
-    "exports": 2777.597,
-    "imports": 3686.382
-  },
-  {
-    "date": "2022-01-01",
-    "exports": 2865.226,
-    "imports": 3914.397
-  },
-  {
-    "date": "2022-04-01",
-    "exports": 3093.734,
-    "imports": 4089.904
-  },
-  {
-    "date": "2022-07-01",
-    "exports": 3129.075,
-    "imports": 3984.675
-  },
-  {
-    "date": "2022-10-01",
-    "exports": 3057.684,
-    "imports": 3908.3
-  },
-  {
-    "date": "2023-01-01",
-    "exports": 3085.516,
-    "imports": 3880.433
-  },
-  {
-    "date": "2023-04-01",
-    "exports": 3016.211,
-    "imports": 3813.697
-  },
-  {
-    "date": "2023-07-01",
-    "exports": 3082.082,
-    "imports": 3847.616
-  },
-  {
-    "date": "2023-10-01",
-    "exports": 3109.632,
-    "imports": 3897.676
-  },
-  {
-    "date": "2024-01-01",
-    "exports": 3164.101,
-    "imports": 3986.579
-  },
-  {
-    "date": "2024-04-01",
-    "exports": 3192.632,
-    "imports": 4087.002
-  },
-  {
-    "date": "2024-07-01",
-    "exports": 3256.486,
-    "imports": 4194.811
-  },
-  {
-    "date": "2024-10-01",
-    "exports": 3248.255,
-    "imports": 4186.921
-  },
-  {
-    "date": "2025-01-01",
-    "exports": 3293.661,
-    "imports": 4558.265
-  },
-  {
-    "date": "2025-04-01",
-    "exports": 3267.506,
-    "imports": 4167.305
-  },
-  {
-    "date": "2025-07-01",
-    "exports": 3366.868,
-    "imports": 4123.437
-  },
-  {
-    "date": "2025-10-01",
-    "exports": 3350.605,
-    "imports": 4135.581
-  },
-  {
-    "date": "2026-01-01",
-    "exports": 3508.703,
-    "imports": 4328.659
-  }
+export const US_EXPORTS_VS_IMPORTS: ExportsImportsPoint[] = [
+  { date: "1970-01-01", exports: 57.031, imports: 53.517 },
+  { date: "1970-04-01", exports: 60.411, imports: 55.204 },
+  { date: "1970-07-01", exports: 60.519, imports: 56.431 },
+  { date: "1970-10-01", exports: 60.873, imports: 57.888 },
+  { date: "1971-01-01", exports: 63.221, imports: 58.651 },
+  { date: "1971-04-01", exports: 62.894, imports: 63.296 },
+  { date: "1971-07-01", exports: 65.717, imports: 65.482 },
+  { date: "1971-10-01", exports: 60.019, imports: 61.939 },
+  { date: "1972-01-01", exports: 68.639, imports: 72.173 },
+  { date: "1972-04-01", exports: 67.152, imports: 71.409 },
+  { date: "1972-07-01", exports: 71.453, imports: 74.09 },
+  { date: "1972-10-01", exports: 76.129, imports: 79.19 },
+  { date: "1973-01-01", exports: 83.959, imports: 85.36 },
+  { date: "1973-04-01", exports: 91.923, imports: 89.468 },
+  { date: "1973-07-01", exports: 97.576, imports: 91.139 },
+  { date: "1973-10-01", exports: 107.62, imports: 98.669 },
+  { date: "1974-01-01", exports: 116.709, imports: 110.315 },
+  { date: "1974-04-01", exports: 126.668, imports: 129.382 },
+  { date: "1974-07-01", exports: 126.638, imports: 133.61 },
+  { date: "1974-10-01", exports: 136.585, imports: 136.552 },
+  { date: "1975-01-01", exports: 141.369, imports: 124.888 },
+  { date: "1975-04-01", exports: 136.827, imports: 115.245 },
+  { date: "1975-07-01", exports: 134.098, imports: 122.055 },
+  { date: "1975-10-01", exports: 142.531, imports: 128.73 },
+  { date: "1976-01-01", exports: 143.588, imports: 138.938 },
+  { date: "1976-04-01", exports: 146.621, imports: 147.116 },
+  { date: "1976-07-01", exports: 151.775, imports: 155.848 },
+  { date: "1976-10-01", exports: 156.076, imports: 162.68 },
+  { date: "1977-01-01", exports: 155.354, imports: 176.433 },
+  { date: "1977-04-01", exports: 161.906, imports: 183.042 },
+  { date: "1977-07-01", exports: 162.325, imports: 182.904 },
+  { date: "1977-10-01", exports: 157.809, imports: 187.391 },
+  { date: "1978-01-01", exports: 164.601, imports: 203.282 },
+  { date: "1978-04-01", exports: 186.215, imports: 208.84 },
+  { date: "1978-07-01", exports: 191.302, imports: 215.062 },
+  { date: "1978-10-01", exports: 205.415, imports: 221.815 },
+  { date: "1979-01-01", exports: 211.669, imports: 229.828 },
+  { date: "1979-04-01", exports: 220.908, imports: 243.097 },
+  { date: "1979-07-01", exports: 234.277, imports: 257.306 },
+  { date: "1979-10-01", exports: 253.664, imports: 280.466 },
+  { date: "1980-01-01", exports: 268.508, imports: 304.311 },
+  { date: "1980-04-01", exports: 277.389, imports: 292.6 },
+  { date: "1980-07-01", exports: 284.673, imports: 279.202 },
+  { date: "1980-10-01", exports: 292.517, imports: 299.2 },
+  { date: "1981-01-01", exports: 305.467, imports: 319.726 },
+  { date: "1981-04-01", exports: 308.455, imports: 321.963 },
+  { date: "1981-07-01", exports: 302.339, imports: 309.9 },
+  { date: "1981-10-01", exports: 304.695, imports: 319.445 },
+  { date: "1982-01-01", exports: 293.202, imports: 309.478 },
+  { date: "1982-04-01", exports: 294.729, imports: 299.115 },
+  { date: "1982-07-01", exports: 279.634, imports: 309.282 },
+  { date: "1982-10-01", exports: 265.274, imports: 294.861 },
+  { date: "1983-01-01", exports: 270.703, imports: 295.251 },
+  { date: "1983-04-01", exports: 272.514, imports: 317.949 },
+  { date: "1983-07-01", exports: 278.181, imports: 343.381 },
+  { date: "1983-10-01", exports: 286.587, imports: 357.972 },
+  { date: "1984-01-01", exports: 292.975, imports: 387.978 },
+  { date: "1984-04-01", exports: 302.2, imports: 406.501 },
+  { date: "1984-07-01", exports: 305.744, imports: 409.591 },
+  { date: "1984-10-01", exports: 308.603, imports: 416.359 },
+  { date: "1985-01-01", exports: 306.01, imports: 397.308 },
+  { date: "1985-04-01", exports: 304.126, imports: 418.571 },
+  { date: "1985-07-01", exports: 297.273, imports: 414.168 },
+  { date: "1985-10-01", exports: 305.433, imports: 438.867 },
+  { date: "1986-01-01", exports: 313.404, imports: 439.418 },
+  { date: "1986-04-01", exports: 315.119, imports: 443.99 },
+  { date: "1986-07-01", exports: 320.471, imports: 459.432 },
+  { date: "1986-10-01", exports: 334.999, imports: 468.628 },
+  { date: "1987-01-01", exports: 336.451, imports: 477.685 },
+  { date: "1987-04-01", exports: 355.36, imports: 502.337 },
+  { date: "1987-07-01", exports: 371.854, imports: 517.318 },
+  { date: "1987-10-01", exports: 392.107, imports: 537.511 },
+  { date: "1988-01-01", exports: 418.727, imports: 542.714 },
+  { date: "1988-04-01", exports: 439.471, imports: 546.098 },
+  { date: "1988-07-01", exports: 453.586, imports: 552.849 },
+  { date: "1988-10-01", exports: 466.619, imports: 574.314 },
+  { date: "1989-01-01", exports: 485.189, imports: 586.154 },
+  { date: "1989-04-01", exports: 507.229, imports: 595.389 },
+  { date: "1989-07-01", exports: 509.352, imports: 584.427 },
+  { date: "1989-10-01", exports: 515.387, imports: 598.152 },
+  { date: "1990-01-01", exports: 538.232, imports: 626.767 },
+  { date: "1990-04-01", exports: 545.925, imports: 614.759 },
+  { date: "1990-07-01", exports: 555.149, imports: 630.102 },
+  { date: "1990-10-01", exports: 568.186, imports: 647.282 },
+  { date: "1991-01-01", exports: 573.177, imports: 620.317 },
+  { date: "1991-04-01", exports: 590.733, imports: 613.921 },
+  { date: "1991-07-01", exports: 600.595, imports: 621.669 },
+  { date: "1991-10-01", exports: 615.217, imports: 638.27 },
+  { date: "1992-01-01", exports: 625.287, imports: 645.823 },
+  { date: "1992-04-01", exports: 626.163, imports: 658.951 },
+  { date: "1992-07-01", exports: 639.365, imports: 677.853 },
+  { date: "1992-10-01", exports: 641.396, imports: 688.536 },
+  { date: "1993-01-01", exports: 643.606, imports: 699.31 },
+  { date: "1993-04-01", exports: 653.094, imports: 716.281 },
+  { date: "1993-07-01", exports: 650.897, imports: 719.251 },
+  { date: "1993-10-01", exports: 671.6, imports: 745.049 },
+  { date: "1994-01-01", exports: 681.232, imports: 761.827 },
+  { date: "1994-04-01", exports: 706.988, imports: 797.56 },
+  { date: "1994-07-01", exports: 736.883, imports: 833.751 },
+  { date: "1994-10-01", exports: 758.646, imports: 860.559 },
+  { date: "1995-01-01", exports: 781.57, imports: 886.899 },
+  { date: "1995-04-01", exports: 798.851, imports: 908.343 },
+  { date: "1995-07-01", exports: 831.399, imports: 905.843 },
+  { date: "1995-10-01", exports: 839.421, imports: 909.201 },
+  { date: "1996-01-01", exports: 847.94, imports: 936.735 },
+  { date: "1996-04-01", exports: 859.042, imports: 952.751 },
+  { date: "1996-07-01", exports: 859.577, imports: 973.757 },
+  { date: "1996-10-01", exports: 903.798, imports: 992.62 },
+  { date: "1997-01-01", exports: 918.374, imports: 1027.213 },
+  { date: "1997-04-01", exports: 954.45, imports: 1039.651 },
+  { date: "1997-07-01", exports: 974.057, imports: 1070.888 },
+  { date: "1997-10-01", exports: 968.33, imports: 1085.344 },
+  { date: "1998-01-01", exports: 963.021, imports: 1098.236 },
+  { date: "1998-04-01", exports: 947.295, imports: 1109.626 },
+  { date: "1998-07-01", exports: 935.263, imports: 1109.897 },
+  { date: "1998-10-01", exports: 966.337, imports: 1145 },
+  { date: "1999-01-01", exports: 960.764, imports: 1173.324 },
+  { date: "1999-04-01", exports: 974.597, imports: 1222.126 },
+  { date: "1999-07-01", exports: 1005.309, imports: 1281.712 },
+  { date: "1999-10-01", exports: 1030.971, imports: 1332.679 },
+  { date: "2000-01-01", exports: 1052.904, imports: 1409.487 },
+  { date: "2000-04-01", exports: 1093.36, imports: 1455.86 },
+  { date: "2000-07-01", exports: 1125.002, imports: 1518.869 },
+  { date: "2000-10-01", exports: 1113.177, imports: 1524.52 },
+  { date: "2001-01-01", exports: 1096.812, imports: 1499.464 },
+  { date: "2001-04-01", exports: 1058.013, imports: 1422.028 },
+  { date: "2001-07-01", exports: 998.902, imports: 1369.536 },
+  { date: "2001-10-01", exports: 953.52, imports: 1323.208 },
+  { date: "2002-01-01", exports: 969.157, imports: 1356.041 },
+  { date: "2002-04-01", exports: 1004.154, imports: 1432.413 },
+  { date: "2002-07-01", exports: 1015.56, imports: 1463.107 },
+  { date: "2002-10-01", exports: 1003.046, imports: 1499.335 },
+  { date: "2003-01-01", exports: 1004.201, imports: 1529.463 },
+  { date: "2003-04-01", exports: 1007.465, imports: 1527.336 },
+  { date: "2003-07-01", exports: 1037.31, imports: 1556.304 },
+  { date: "2003-10-01", exports: 1091.682, imports: 1615.376 },
+  { date: "2004-01-01", exports: 1133.669, imports: 1699.644 },
+  { date: "2004-04-01", exports: 1170.152, imports: 1787.734 },
+  { date: "2004-07-01", exports: 1180.185, imports: 1832.856 },
+  { date: "2004-10-01", exports: 1221.444, imports: 1921.78 },
+  { date: "2005-01-01", exports: 1258.408, imports: 1955.063 },
+  { date: "2005-04-01", exports: 1294.853, imports: 2002.063 },
+  { date: "2005-07-01", exports: 1302.315, imports: 2053.275 },
+  { date: "2005-10-01", exports: 1350.743, imports: 2155.529 },
+  { date: "2006-01-01", exports: 1413.966, imports: 2204.784 },
+  { date: "2006-04-01", exports: 1459.767, imports: 2253.809 },
+  { date: "2006-07-01", exports: 1475.417, imports: 2298.702 },
+  { date: "2006-10-01", exports: 1531.531, imports: 2269.198 },
+  { date: "2007-01-01", exports: 1577.991, imports: 2317.264 },
+  { date: "2007-04-01", exports: 1622.764, imports: 2368.569 },
+  { date: "2007-07-01", exports: 1685.71, imports: 2414.664 },
+  { date: "2007-10-01", exports: 1750.714, imports: 2480.413 },
+  { date: "2008-01-01", exports: 1813.321, imports: 2584.568 },
+  { date: "2008-04-01", exports: 1905.282, imports: 2681.686 },
+  { date: "2008-07-01", exports: 1922.215, imports: 2709.569 },
+  { date: "2008-10-01", exports: 1700.304, imports: 2328.779 },
+  { date: "2009-01-01", exports: 1511.768, imports: 1932.761 },
+  { date: "2009-04-01", exports: 1521.093, imports: 1879.461 },
+  { date: "2009-07-01", exports: 1594.725, imports: 2018.722 },
+  { date: "2009-10-01", exports: 1703.508, imports: 2176.763 },
+  { date: "2010-01-01", exports: 1759.877, imports: 2269.069 },
+  { date: "2010-04-01", exports: 1819.741, imports: 2362.255 },
+  { date: "2010-07-01", exports: 1877.253, imports: 2431.195 },
+  { date: "2010-10-01", exports: 1972.116, imports: 2495.702 },
+  { date: "2011-01-01", exports: 2040.407, imports: 2608.884 },
+  { date: "2011-04-01", exports: 2116.132, imports: 2697.224 },
+  { date: "2011-07-01", exports: 2156.793, imports: 2723.903 },
+  { date: "2011-10-01", exports: 2150.123, imports: 2751.911 },
+  { date: "2012-01-01", exports: 2189.981, imports: 2792.253 },
+  { date: "2012-04-01", exports: 2215.586, imports: 2780.827 },
+  { date: "2012-07-01", exports: 2227.734, imports: 2750.817 },
+  { date: "2012-10-01", exports: 2237.498, imports: 2753.373 },
+  { date: "2013-01-01", exports: 2255.929, imports: 2755.277 },
+  { date: "2013-04-01", exports: 2261.403, imports: 2759.783 },
+  { date: "2013-07-01", exports: 2285.116, imports: 2767.183 },
+  { date: "2013-10-01", exports: 2349.24, imports: 2783.259 },
+  { date: "2014-01-01", exports: 2343.602, imports: 2853.69 },
+  { date: "2014-04-01", exports: 2395.168, imports: 2900.572 },
+  { date: "2014-07-01", exports: 2399.191, imports: 2888.549 },
+  { date: "2014-10-01", exports: 2376.218, imports: 2906.969 },
+  { date: "2015-01-01", exports: 2299.045, imports: 2825.476 },
+  { date: "2015-04-01", exports: 2300.441, imports: 2809.968 },
+  { date: "2015-07-01", exports: 2260.724, imports: 2798.806 },
+  { date: "2015-10-01", exports: 2222.279, imports: 2745.517 },
+  { date: "2016-01-01", exports: 2181.957, imports: 2693.639 },
+  { date: "2016-04-01", exports: 2221.936, imports: 2711.306 },
+  { date: "2016-07-01", exports: 2270, imports: 2751.229 },
+  { date: "2016-10-01", exports: 2268.339, imports: 2799.145 },
+  { date: "2017-01-01", exports: 2339.728, imports: 2873.148 },
+  { date: "2017-04-01", exports: 2349.681, imports: 2903.18 },
+  { date: "2017-07-01", exports: 2384.524, imports: 2916.022 },
+  { date: "2017-10-01", exports: 2479.107, imports: 3034.004 },
+  { date: "2018-01-01", exports: 2517.268, imports: 3093.299 },
+  { date: "2018-04-01", exports: 2562.172, imports: 3105.995 },
+  { date: "2018-07-01", exports: 2535.501, imports: 3153.747 },
+  { date: "2018-10-01", exports: 2537.415, imports: 3171.622 },
+  { date: "2019-01-01", exports: 2540.244, imports: 3132.539 },
+  { date: "2019-04-01", exports: 2547.448, imports: 3165.41 },
+  { date: "2019-07-01", exports: 2532.405, imports: 3117.952 },
+  { date: "2019-10-01", exports: 2537.466, imports: 3050.824 },
+  { date: "2020-01-01", exports: 2430.941, imports: 2932.536 },
+  { date: "2020-04-01", exports: 1829.691, imports: 2356.583 },
+  { date: "2020-07-01", exports: 2116.753, imports: 2804.369 },
+  { date: "2020-10-01", exports: 2277.965, imports: 3036.076 },
+  { date: "2021-01-01", exports: 2393.033, imports: 3182.082 },
+  { date: "2021-04-01", exports: 2522.815, imports: 3348.435 },
+  { date: "2021-07-01", exports: 2581.341, imports: 3454.82 },
+  { date: "2021-10-01", exports: 2777.597, imports: 3686.382 },
+  { date: "2022-01-01", exports: 2865.226, imports: 3914.397 },
+  { date: "2022-04-01", exports: 3093.734, imports: 4089.904 },
+  { date: "2022-07-01", exports: 3129.075, imports: 3984.675 },
+  { date: "2022-10-01", exports: 3057.684, imports: 3908.3 },
+  { date: "2023-01-01", exports: 3085.516, imports: 3880.433 },
+  { date: "2023-04-01", exports: 3016.211, imports: 3813.697 },
+  { date: "2023-07-01", exports: 3082.082, imports: 3847.616 },
+  { date: "2023-10-01", exports: 3109.632, imports: 3897.676 },
+  { date: "2024-01-01", exports: 3164.101, imports: 3986.579 },
+  { date: "2024-04-01", exports: 3192.632, imports: 4087.002 },
+  { date: "2024-07-01", exports: 3256.486, imports: 4194.811 },
+  { date: "2024-10-01", exports: 3248.255, imports: 4186.921 },
+  { date: "2025-01-01", exports: 3293.661, imports: 4558.265 },
+  { date: "2025-04-01", exports: 3267.506, imports: 4167.305 },
+  { date: "2025-07-01", exports: 3366.868, imports: 4123.437 },
+  { date: "2025-10-01", exports: 3350.605, imports: 4135.581 },
+  { date: "2026-01-01", exports: 3508.703, imports: 4328.659 }
 ];
 
 // --- Capital Markets Batch 3 Data ---
 export interface HouseholdNetWorthPoint { date: string; value: number; }
-export const US_HOUSEHOLD_NET_WORTH: HouseholdNetWorthPoint[] =  [
-  {
-    "date": "1970-01-01",
-    "value": 3.69
-  },
-  {
-    "date": "1970-04-01",
-    "value": 3.62
-  },
-  {
-    "date": "1970-07-01",
-    "value": 3.75
-  },
-  {
-    "date": "1970-10-01",
-    "value": 3.88
-  },
-  {
-    "date": "1971-01-01",
-    "value": 4.04
-  },
-  {
-    "date": "1971-04-01",
-    "value": 4.11
-  },
-  {
-    "date": "1971-07-01",
-    "value": 4.17
-  },
-  {
-    "date": "1971-10-01",
-    "value": 4.29
-  },
-  {
-    "date": "1972-01-01",
-    "value": 4.45
-  },
-  {
-    "date": "1972-04-01",
-    "value": 4.52
-  },
-  {
-    "date": "1972-07-01",
-    "value": 4.64
-  },
-  {
-    "date": "1972-10-01",
-    "value": 4.89
-  },
-  {
-    "date": "1973-01-01",
-    "value": 4.92
-  },
-  {
-    "date": "1973-04-01",
-    "value": 4.96
-  },
-  {
-    "date": "1973-07-01",
-    "value": 5.14
-  },
-  {
-    "date": "1973-10-01",
-    "value": 5.1
-  },
-  {
-    "date": "1974-01-01",
-    "value": 5.13
-  },
-  {
-    "date": "1974-04-01",
-    "value": 5.11
-  },
-  {
-    "date": "1974-07-01",
-    "value": 5.07
-  },
-  {
-    "date": "1974-10-01",
-    "value": 5.21
-  },
-  {
-    "date": "1975-01-01",
-    "value": 5.47
-  },
-  {
-    "date": "1975-04-01",
-    "value": 5.7
-  },
-  {
-    "date": "1975-07-01",
-    "value": 5.7
-  },
-  {
-    "date": "1975-10-01",
-    "value": 5.86
-  },
-  {
-    "date": "1976-01-01",
-    "value": 6.06
-  },
-  {
-    "date": "1976-04-01",
-    "value": 6.24
-  },
-  {
-    "date": "1976-07-01",
-    "value": 6.35
-  },
-  {
-    "date": "1976-10-01",
-    "value": 6.52
-  },
-  {
-    "date": "1977-01-01",
-    "value": 6.63
-  },
-  {
-    "date": "1977-04-01",
-    "value": 6.81
-  },
-  {
-    "date": "1977-07-01",
-    "value": 6.95
-  },
-  {
-    "date": "1977-10-01",
-    "value": 7.11
-  },
-  {
-    "date": "1978-01-01",
-    "value": 7.28
-  },
-  {
-    "date": "1978-04-01",
-    "value": 7.53
-  },
-  {
-    "date": "1978-07-01",
-    "value": 7.77
-  },
-  {
-    "date": "1978-10-01",
-    "value": 7.96
-  },
-  {
-    "date": "1979-01-01",
-    "value": 8.27
-  },
-  {
-    "date": "1979-04-01",
-    "value": 8.55
-  },
-  {
-    "date": "1979-07-01",
-    "value": 8.83
-  },
-  {
-    "date": "1979-10-01",
-    "value": 9.1
-  },
-  {
-    "date": "1980-01-01",
-    "value": 9.3
-  },
-  {
-    "date": "1980-04-01",
-    "value": 9.65
-  },
-  {
-    "date": "1980-07-01",
-    "value": 10.04
-  },
-  {
-    "date": "1980-10-01",
-    "value": 10.36
-  },
-  {
-    "date": "1981-01-01",
-    "value": 10.55
-  },
-  {
-    "date": "1981-04-01",
-    "value": 10.84
-  },
-  {
-    "date": "1981-07-01",
-    "value": 10.95
-  },
-  {
-    "date": "1981-10-01",
-    "value": 11.26
-  },
-  {
-    "date": "1982-01-01",
-    "value": 11.41
-  },
-  {
-    "date": "1982-04-01",
-    "value": 11.55
-  },
-  {
-    "date": "1982-07-01",
-    "value": 11.76
-  },
-  {
-    "date": "1982-10-01",
-    "value": 12.08
-  },
-  {
-    "date": "1983-01-01",
-    "value": 12.43
-  },
-  {
-    "date": "1983-04-01",
-    "value": 12.72
-  },
-  {
-    "date": "1983-07-01",
-    "value": 12.88
-  },
-  {
-    "date": "1983-10-01",
-    "value": 12.98
-  },
-  {
-    "date": "1984-01-01",
-    "value": 13.24
-  },
-  {
-    "date": "1984-04-01",
-    "value": 13.47
-  },
-  {
-    "date": "1984-07-01",
-    "value": 13.81
-  },
-  {
-    "date": "1984-10-01",
-    "value": 14.1
-  },
-  {
-    "date": "1985-01-01",
-    "value": 14.5
-  },
-  {
-    "date": "1985-04-01",
-    "value": 14.84
-  },
-  {
-    "date": "1985-07-01",
-    "value": 15.04
-  },
-  {
-    "date": "1985-10-01",
-    "value": 15.55
-  },
-  {
-    "date": "1986-01-01",
-    "value": 16.05
-  },
-  {
-    "date": "1986-04-01",
-    "value": 16.43
-  },
-  {
-    "date": "1986-07-01",
-    "value": 16.61
-  },
-  {
-    "date": "1986-10-01",
-    "value": 17.18
-  },
-  {
-    "date": "1987-01-01",
-    "value": 17.8
-  },
-  {
-    "date": "1987-04-01",
-    "value": 18.09
-  },
-  {
-    "date": "1987-07-01",
-    "value": 18.5
-  },
-  {
-    "date": "1987-10-01",
-    "value": 18.44
-  },
-  {
-    "date": "1988-01-01",
-    "value": 18.94
-  },
-  {
-    "date": "1988-04-01",
-    "value": 19.37
-  },
-  {
-    "date": "1988-07-01",
-    "value": 19.69
-  },
-  {
-    "date": "1988-10-01",
-    "value": 20.18
-  },
-  {
-    "date": "1989-01-01",
-    "value": 20.61
-  },
-  {
-    "date": "1989-04-01",
-    "value": 21.04
-  },
-  {
-    "date": "1989-07-01",
-    "value": 21.58
-  },
-  {
-    "date": "1989-10-01",
-    "value": 21.98
-  },
-  {
-    "date": "1990-01-01",
-    "value": 22.02
-  },
-  {
-    "date": "1990-04-01",
-    "value": 22.31
-  },
-  {
-    "date": "1990-07-01",
-    "value": 22.17
-  },
-  {
-    "date": "1990-10-01",
-    "value": 22.63
-  },
-  {
-    "date": "1991-01-01",
-    "value": 23.13
-  },
-  {
-    "date": "1991-04-01",
-    "value": 23.22
-  },
-  {
-    "date": "1991-07-01",
-    "value": 23.56
-  },
-  {
-    "date": "1991-10-01",
-    "value": 24.13
-  },
-  {
-    "date": "1992-01-01",
-    "value": 24.14
-  },
-  {
-    "date": "1992-04-01",
-    "value": 24.25
-  },
-  {
-    "date": "1992-07-01",
-    "value": 24.64
-  },
-  {
-    "date": "1992-10-01",
-    "value": 25.24
-  },
-  {
-    "date": "1993-01-01",
-    "value": 25.57
-  },
-  {
-    "date": "1993-04-01",
-    "value": 25.86
-  },
-  {
-    "date": "1993-07-01",
-    "value": 26.29
-  },
-  {
-    "date": "1993-10-01",
-    "value": 26.75
-  },
-  {
-    "date": "1994-01-01",
-    "value": 26.89
-  },
-  {
-    "date": "1994-04-01",
-    "value": 27.1
-  },
-  {
-    "date": "1994-07-01",
-    "value": 27.5
-  },
-  {
-    "date": "1994-10-01",
-    "value": 27.72
-  },
-  {
-    "date": "1995-01-01",
-    "value": 28.29
-  },
-  {
-    "date": "1995-04-01",
-    "value": 28.89
-  },
-  {
-    "date": "1995-07-01",
-    "value": 29.35
-  },
-  {
-    "date": "1995-10-01",
-    "value": 30.08
-  },
-  {
-    "date": "1996-01-01",
-    "value": 30.63
-  },
-  {
-    "date": "1996-04-01",
-    "value": 31.12
-  },
-  {
-    "date": "1996-07-01",
-    "value": 31.44
-  },
-  {
-    "date": "1996-10-01",
-    "value": 32.17
-  },
-  {
-    "date": "1997-01-01",
-    "value": 32.48
-  },
-  {
-    "date": "1997-04-01",
-    "value": 33.88
-  },
-  {
-    "date": "1997-07-01",
-    "value": 34.91
-  },
-  {
-    "date": "1997-10-01",
-    "value": 35.54
-  },
-  {
-    "date": "1998-01-01",
-    "value": 37.18
-  },
-  {
-    "date": "1998-04-01",
-    "value": 37.9
-  },
-  {
-    "date": "1998-07-01",
-    "value": 37.25
-  },
-  {
-    "date": "1998-10-01",
-    "value": 39.32
-  },
-  {
-    "date": "1999-01-01",
-    "value": 39.63
-  },
-  {
-    "date": "1999-04-01",
-    "value": 40.76
-  },
-  {
-    "date": "1999-07-01",
-    "value": 40.73
-  },
-  {
-    "date": "1999-10-01",
-    "value": 43.27
-  },
-  {
-    "date": "2000-01-01",
-    "value": 44.33
-  },
-  {
-    "date": "2000-04-01",
-    "value": 44.39
-  },
-  {
-    "date": "2000-07-01",
-    "value": 45.04
-  },
-  {
-    "date": "2000-10-01",
-    "value": 44.49
-  },
-  {
-    "date": "2001-01-01",
-    "value": 44.29
-  },
-  {
-    "date": "2001-04-01",
-    "value": 45.58
-  },
-  {
-    "date": "2001-07-01",
-    "value": 44.54
-  },
-  {
-    "date": "2001-10-01",
-    "value": 46.03
-  },
-  {
-    "date": "2002-01-01",
-    "value": 46.7
-  },
-  {
-    "date": "2002-04-01",
-    "value": 46.12
-  },
-  {
-    "date": "2002-07-01",
-    "value": 45.01
-  },
-  {
-    "date": "2002-10-01",
-    "value": 45.94
-  },
-  {
-    "date": "2003-01-01",
-    "value": 46.21
-  },
-  {
-    "date": "2003-04-01",
-    "value": 48.1
-  },
-  {
-    "date": "2003-07-01",
-    "value": 49.01
-  },
-  {
-    "date": "2003-10-01",
-    "value": 50.91
-  },
-  {
-    "date": "2004-01-01",
-    "value": 53.41
-  },
-  {
-    "date": "2004-04-01",
-    "value": 54.3
-  },
-  {
-    "date": "2004-07-01",
-    "value": 55.56
-  },
-  {
-    "date": "2004-10-01",
-    "value": 57.79
-  },
-  {
-    "date": "2005-01-01",
-    "value": 58.71
-  },
-  {
-    "date": "2005-04-01",
-    "value": 60.24
-  },
-  {
-    "date": "2005-07-01",
-    "value": 61.94
-  },
-  {
-    "date": "2005-10-01",
-    "value": 63.35
-  },
-  {
-    "date": "2006-01-01",
-    "value": 65.37
-  },
-  {
-    "date": "2006-04-01",
-    "value": 65.64
-  },
-  {
-    "date": "2006-07-01",
-    "value": 66.77
-  },
-  {
-    "date": "2006-10-01",
-    "value": 68.28
-  },
-  {
-    "date": "2007-01-01",
-    "value": 69.19
-  },
-  {
-    "date": "2007-04-01",
-    "value": 69.9
-  },
-  {
-    "date": "2007-07-01",
-    "value": 70.72
-  },
-  {
-    "date": "2007-10-01",
-    "value": 69.92
-  },
-  {
-    "date": "2008-01-01",
-    "value": 67.72
-  },
-  {
-    "date": "2008-04-01",
-    "value": 66.62
-  },
-  {
-    "date": "2008-07-01",
-    "value": 64.23
-  },
-  {
-    "date": "2008-10-01",
-    "value": 61.06
-  },
-  {
-    "date": "2009-01-01",
-    "value": 59.21
-  },
-  {
-    "date": "2009-04-01",
-    "value": 59.61
-  },
-  {
-    "date": "2009-07-01",
-    "value": 61.36
-  },
-  {
-    "date": "2009-10-01",
-    "value": 61.5
-  },
-  {
-    "date": "2010-01-01",
-    "value": 62.74
-  },
-  {
-    "date": "2010-04-01",
-    "value": 62.2
-  },
-  {
-    "date": "2010-07-01",
-    "value": 64.25
-  },
-  {
-    "date": "2010-10-01",
-    "value": 65.96
-  },
-  {
-    "date": "2011-01-01",
-    "value": 67.05
-  },
-  {
-    "date": "2011-04-01",
-    "value": 67.45
-  },
-  {
-    "date": "2011-07-01",
-    "value": 65.58
-  },
-  {
-    "date": "2011-10-01",
-    "value": 67.03
-  },
-  {
-    "date": "2012-01-01",
-    "value": 68.99
-  },
-  {
-    "date": "2012-04-01",
-    "value": 69.1
-  },
-  {
-    "date": "2012-07-01",
-    "value": 71
-  },
-  {
-    "date": "2012-10-01",
-    "value": 72.03
-  },
-  {
-    "date": "2013-01-01",
-    "value": 74.85
-  },
-  {
-    "date": "2013-04-01",
-    "value": 76.1
-  },
-  {
-    "date": "2013-07-01",
-    "value": 78.64
-  },
-  {
-    "date": "2013-10-01",
-    "value": 80.86
-  },
-  {
-    "date": "2014-01-01",
-    "value": 82.56
-  },
-  {
-    "date": "2014-04-01",
-    "value": 84.74
-  },
-  {
-    "date": "2014-07-01",
-    "value": 85.43
-  },
-  {
-    "date": "2014-10-01",
-    "value": 87
-  },
-  {
-    "date": "2015-01-01",
-    "value": 88.63
-  },
-  {
-    "date": "2015-04-01",
-    "value": 89.49
-  },
-  {
-    "date": "2015-07-01",
-    "value": 88.52
-  },
-  {
-    "date": "2015-10-01",
-    "value": 90
-  },
-  {
-    "date": "2016-01-01",
-    "value": 91.13
-  },
-  {
-    "date": "2016-04-01",
-    "value": 92.84
-  },
-  {
-    "date": "2016-07-01",
-    "value": 94.56
-  },
-  {
-    "date": "2016-10-01",
-    "value": 95.24
-  },
-  {
-    "date": "2017-01-01",
-    "value": 97.59
-  },
-  {
-    "date": "2017-04-01",
-    "value": 99.79
-  },
-  {
-    "date": "2017-07-01",
-    "value": 101.45
-  },
-  {
-    "date": "2017-10-01",
-    "value": 104.04
-  },
-  {
-    "date": "2018-01-01",
-    "value": 105.1
-  },
-  {
-    "date": "2018-04-01",
-    "value": 106.34
-  },
-  {
-    "date": "2018-07-01",
-    "value": 108.42
-  },
-  {
-    "date": "2018-10-01",
-    "value": 103.98
-  },
-  {
-    "date": "2019-01-01",
-    "value": 109.42
-  },
-  {
-    "date": "2019-04-01",
-    "value": 112.32
-  },
-  {
-    "date": "2019-07-01",
-    "value": 112.8
-  },
-  {
-    "date": "2019-10-01",
-    "value": 115.67
-  },
-  {
-    "date": "2020-01-01",
-    "value": 109.84
-  },
-  {
-    "date": "2020-04-01",
-    "value": 117.47
-  },
-  {
-    "date": "2020-07-01",
-    "value": 122.31
-  },
-  {
-    "date": "2020-10-01",
-    "value": 130.66
-  },
-  {
-    "date": "2021-01-01",
-    "value": 136.27
-  },
-  {
-    "date": "2021-04-01",
-    "value": 143.8
-  },
-  {
-    "date": "2021-07-01",
-    "value": 147.42
-  },
-  {
-    "date": "2021-10-01",
-    "value": 151.6
-  },
-  {
-    "date": "2022-01-01",
-    "value": 152.21
-  },
-  {
-    "date": "2022-04-01",
-    "value": 146.36
-  },
-  {
-    "date": "2022-07-01",
-    "value": 142.75
-  },
-  {
-    "date": "2022-10-01",
-    "value": 143.7
-  },
-  {
-    "date": "2023-01-01",
-    "value": 147.35
-  },
-  {
-    "date": "2023-04-01",
-    "value": 153.21
-  },
-  {
-    "date": "2023-07-01",
-    "value": 152.06
-  },
-  {
-    "date": "2023-10-01",
-    "value": 156.28
-  },
-  {
-    "date": "2024-01-01",
-    "value": 161.89
-  },
-  {
-    "date": "2024-04-01",
-    "value": 164.87
-  },
-  {
-    "date": "2024-07-01",
-    "value": 168.99
-  },
-  {
-    "date": "2024-10-01",
-    "value": 169.76
-  },
-  {
-    "date": "2025-01-01",
-    "value": 169.61
-  },
-  {
-    "date": "2025-04-01",
-    "value": 175.93
-  },
-  {
-    "date": "2025-07-01",
-    "value": 181.14
-  },
-  {
-    "date": "2025-10-01",
-    "value": 182.87
-  },
-  {
-    "date": "2026-01-01",
-    "value": 182.98
-  }
+export const US_HOUSEHOLD_NET_WORTH: HouseholdNetWorthPoint[] = [
+  { date: "1970-01-01", value: 3.69 },
+  { date: "1970-04-01", value: 3.62 },
+  { date: "1970-07-01", value: 3.75 },
+  { date: "1970-10-01", value: 3.88 },
+  { date: "1971-01-01", value: 4.04 },
+  { date: "1971-04-01", value: 4.11 },
+  { date: "1971-07-01", value: 4.17 },
+  { date: "1971-10-01", value: 4.29 },
+  { date: "1972-01-01", value: 4.45 },
+  { date: "1972-04-01", value: 4.52 },
+  { date: "1972-07-01", value: 4.64 },
+  { date: "1972-10-01", value: 4.89 },
+  { date: "1973-01-01", value: 4.92 },
+  { date: "1973-04-01", value: 4.96 },
+  { date: "1973-07-01", value: 5.14 },
+  { date: "1973-10-01", value: 5.1 },
+  { date: "1974-01-01", value: 5.13 },
+  { date: "1974-04-01", value: 5.11 },
+  { date: "1974-07-01", value: 5.07 },
+  { date: "1974-10-01", value: 5.21 },
+  { date: "1975-01-01", value: 5.47 },
+  { date: "1975-04-01", value: 5.7 },
+  { date: "1975-07-01", value: 5.7 },
+  { date: "1975-10-01", value: 5.86 },
+  { date: "1976-01-01", value: 6.06 },
+  { date: "1976-04-01", value: 6.24 },
+  { date: "1976-07-01", value: 6.35 },
+  { date: "1976-10-01", value: 6.52 },
+  { date: "1977-01-01", value: 6.63 },
+  { date: "1977-04-01", value: 6.81 },
+  { date: "1977-07-01", value: 6.95 },
+  { date: "1977-10-01", value: 7.11 },
+  { date: "1978-01-01", value: 7.28 },
+  { date: "1978-04-01", value: 7.53 },
+  { date: "1978-07-01", value: 7.77 },
+  { date: "1978-10-01", value: 7.96 },
+  { date: "1979-01-01", value: 8.27 },
+  { date: "1979-04-01", value: 8.55 },
+  { date: "1979-07-01", value: 8.83 },
+  { date: "1979-10-01", value: 9.1 },
+  { date: "1980-01-01", value: 9.3 },
+  { date: "1980-04-01", value: 9.65 },
+  { date: "1980-07-01", value: 10.04 },
+  { date: "1980-10-01", value: 10.36 },
+  { date: "1981-01-01", value: 10.55 },
+  { date: "1981-04-01", value: 10.84 },
+  { date: "1981-07-01", value: 10.95 },
+  { date: "1981-10-01", value: 11.26 },
+  { date: "1982-01-01", value: 11.41 },
+  { date: "1982-04-01", value: 11.55 },
+  { date: "1982-07-01", value: 11.76 },
+  { date: "1982-10-01", value: 12.08 },
+  { date: "1983-01-01", value: 12.43 },
+  { date: "1983-04-01", value: 12.72 },
+  { date: "1983-07-01", value: 12.88 },
+  { date: "1983-10-01", value: 12.98 },
+  { date: "1984-01-01", value: 13.24 },
+  { date: "1984-04-01", value: 13.47 },
+  { date: "1984-07-01", value: 13.81 },
+  { date: "1984-10-01", value: 14.1 },
+  { date: "1985-01-01", value: 14.5 },
+  { date: "1985-04-01", value: 14.84 },
+  { date: "1985-07-01", value: 15.04 },
+  { date: "1985-10-01", value: 15.55 },
+  { date: "1986-01-01", value: 16.05 },
+  { date: "1986-04-01", value: 16.43 },
+  { date: "1986-07-01", value: 16.61 },
+  { date: "1986-10-01", value: 17.18 },
+  { date: "1987-01-01", value: 17.8 },
+  { date: "1987-04-01", value: 18.09 },
+  { date: "1987-07-01", value: 18.5 },
+  { date: "1987-10-01", value: 18.44 },
+  { date: "1988-01-01", value: 18.94 },
+  { date: "1988-04-01", value: 19.37 },
+  { date: "1988-07-01", value: 19.69 },
+  { date: "1988-10-01", value: 20.18 },
+  { date: "1989-01-01", value: 20.61 },
+  { date: "1989-04-01", value: 21.04 },
+  { date: "1989-07-01", value: 21.58 },
+  { date: "1989-10-01", value: 21.98 },
+  { date: "1990-01-01", value: 22.02 },
+  { date: "1990-04-01", value: 22.31 },
+  { date: "1990-07-01", value: 22.17 },
+  { date: "1990-10-01", value: 22.63 },
+  { date: "1991-01-01", value: 23.13 },
+  { date: "1991-04-01", value: 23.22 },
+  { date: "1991-07-01", value: 23.56 },
+  { date: "1991-10-01", value: 24.13 },
+  { date: "1992-01-01", value: 24.14 },
+  { date: "1992-04-01", value: 24.25 },
+  { date: "1992-07-01", value: 24.64 },
+  { date: "1992-10-01", value: 25.24 },
+  { date: "1993-01-01", value: 25.57 },
+  { date: "1993-04-01", value: 25.86 },
+  { date: "1993-07-01", value: 26.29 },
+  { date: "1993-10-01", value: 26.75 },
+  { date: "1994-01-01", value: 26.89 },
+  { date: "1994-04-01", value: 27.1 },
+  { date: "1994-07-01", value: 27.5 },
+  { date: "1994-10-01", value: 27.72 },
+  { date: "1995-01-01", value: 28.29 },
+  { date: "1995-04-01", value: 28.89 },
+  { date: "1995-07-01", value: 29.35 },
+  { date: "1995-10-01", value: 30.08 },
+  { date: "1996-01-01", value: 30.63 },
+  { date: "1996-04-01", value: 31.12 },
+  { date: "1996-07-01", value: 31.44 },
+  { date: "1996-10-01", value: 32.17 },
+  { date: "1997-01-01", value: 32.48 },
+  { date: "1997-04-01", value: 33.88 },
+  { date: "1997-07-01", value: 34.91 },
+  { date: "1997-10-01", value: 35.54 },
+  { date: "1998-01-01", value: 37.18 },
+  { date: "1998-04-01", value: 37.9 },
+  { date: "1998-07-01", value: 37.25 },
+  { date: "1998-10-01", value: 39.32 },
+  { date: "1999-01-01", value: 39.63 },
+  { date: "1999-04-01", value: 40.76 },
+  { date: "1999-07-01", value: 40.73 },
+  { date: "1999-10-01", value: 43.27 },
+  { date: "2000-01-01", value: 44.33 },
+  { date: "2000-04-01", value: 44.39 },
+  { date: "2000-07-01", value: 45.04 },
+  { date: "2000-10-01", value: 44.49 },
+  { date: "2001-01-01", value: 44.29 },
+  { date: "2001-04-01", value: 45.58 },
+  { date: "2001-07-01", value: 44.54 },
+  { date: "2001-10-01", value: 46.03 },
+  { date: "2002-01-01", value: 46.7 },
+  { date: "2002-04-01", value: 46.12 },
+  { date: "2002-07-01", value: 45.01 },
+  { date: "2002-10-01", value: 45.94 },
+  { date: "2003-01-01", value: 46.21 },
+  { date: "2003-04-01", value: 48.1 },
+  { date: "2003-07-01", value: 49.01 },
+  { date: "2003-10-01", value: 50.91 },
+  { date: "2004-01-01", value: 53.41 },
+  { date: "2004-04-01", value: 54.3 },
+  { date: "2004-07-01", value: 55.56 },
+  { date: "2004-10-01", value: 57.79 },
+  { date: "2005-01-01", value: 58.71 },
+  { date: "2005-04-01", value: 60.24 },
+  { date: "2005-07-01", value: 61.94 },
+  { date: "2005-10-01", value: 63.35 },
+  { date: "2006-01-01", value: 65.37 },
+  { date: "2006-04-01", value: 65.64 },
+  { date: "2006-07-01", value: 66.77 },
+  { date: "2006-10-01", value: 68.28 },
+  { date: "2007-01-01", value: 69.19 },
+  { date: "2007-04-01", value: 69.9 },
+  { date: "2007-07-01", value: 70.72 },
+  { date: "2007-10-01", value: 69.92 },
+  { date: "2008-01-01", value: 67.72 },
+  { date: "2008-04-01", value: 66.62 },
+  { date: "2008-07-01", value: 64.23 },
+  { date: "2008-10-01", value: 61.06 },
+  { date: "2009-01-01", value: 59.21 },
+  { date: "2009-04-01", value: 59.61 },
+  { date: "2009-07-01", value: 61.36 },
+  { date: "2009-10-01", value: 61.5 },
+  { date: "2010-01-01", value: 62.74 },
+  { date: "2010-04-01", value: 62.2 },
+  { date: "2010-07-01", value: 64.25 },
+  { date: "2010-10-01", value: 65.96 },
+  { date: "2011-01-01", value: 67.05 },
+  { date: "2011-04-01", value: 67.45 },
+  { date: "2011-07-01", value: 65.58 },
+  { date: "2011-10-01", value: 67.03 },
+  { date: "2012-01-01", value: 68.99 },
+  { date: "2012-04-01", value: 69.1 },
+  { date: "2012-07-01", value: 71 },
+  { date: "2012-10-01", value: 72.03 },
+  { date: "2013-01-01", value: 74.85 },
+  { date: "2013-04-01", value: 76.1 },
+  { date: "2013-07-01", value: 78.64 },
+  { date: "2013-10-01", value: 80.86 },
+  { date: "2014-01-01", value: 82.56 },
+  { date: "2014-04-01", value: 84.74 },
+  { date: "2014-07-01", value: 85.43 },
+  { date: "2014-10-01", value: 87 },
+  { date: "2015-01-01", value: 88.63 },
+  { date: "2015-04-01", value: 89.49 },
+  { date: "2015-07-01", value: 88.52 },
+  { date: "2015-10-01", value: 90 },
+  { date: "2016-01-01", value: 91.13 },
+  { date: "2016-04-01", value: 92.84 },
+  { date: "2016-07-01", value: 94.56 },
+  { date: "2016-10-01", value: 95.24 },
+  { date: "2017-01-01", value: 97.59 },
+  { date: "2017-04-01", value: 99.79 },
+  { date: "2017-07-01", value: 101.45 },
+  { date: "2017-10-01", value: 104.04 },
+  { date: "2018-01-01", value: 105.1 },
+  { date: "2018-04-01", value: 106.34 },
+  { date: "2018-07-01", value: 108.42 },
+  { date: "2018-10-01", value: 103.98 },
+  { date: "2019-01-01", value: 109.42 },
+  { date: "2019-04-01", value: 112.32 },
+  { date: "2019-07-01", value: 112.8 },
+  { date: "2019-10-01", value: 115.67 },
+  { date: "2020-01-01", value: 109.84 },
+  { date: "2020-04-01", value: 117.47 },
+  { date: "2020-07-01", value: 122.31 },
+  { date: "2020-10-01", value: 130.66 },
+  { date: "2021-01-01", value: 136.27 },
+  { date: "2021-04-01", value: 143.8 },
+  { date: "2021-07-01", value: 147.42 },
+  { date: "2021-10-01", value: 151.6 },
+  { date: "2022-01-01", value: 152.21 },
+  { date: "2022-04-01", value: 146.36 },
+  { date: "2022-07-01", value: 142.75 },
+  { date: "2022-10-01", value: 143.7 },
+  { date: "2023-01-01", value: 147.35 },
+  { date: "2023-04-01", value: 153.21 },
+  { date: "2023-07-01", value: 152.06 },
+  { date: "2023-10-01", value: 156.28 },
+  { date: "2024-01-01", value: 161.89 },
+  { date: "2024-04-01", value: 164.87 },
+  { date: "2024-07-01", value: 168.99 },
+  { date: "2024-10-01", value: 169.76 },
+  { date: "2025-01-01", value: 169.61 },
+  { date: "2025-04-01", value: 175.93 },
+  { date: "2025-07-01", value: 181.14 },
+  { date: "2025-10-01", value: 182.87 },
+  { date: "2026-01-01", value: 182.98 }
 ];
 
 
@@ -14273,6110 +7398,1367 @@ export const VC_DEAL_COUNT_VOLUME: VcDealActivityPoint[] = [
 ];
 
 export interface SavingsRatePoint { month: string; value: number; }
-export const US_SAVINGS_RATE: SavingsRatePoint[] =  [
-  {
-    "month": "1970-01",
-    "value": 11.8
-  },
-  {
-    "month": "1970-02",
-    "value": 11.7
-  },
-  {
-    "month": "1970-03",
-    "value": 12.4
-  },
-  {
-    "month": "1970-04",
-    "value": 13.3
-  },
-  {
-    "month": "1970-05",
-    "value": 12.4
-  },
-  {
-    "month": "1970-06",
-    "value": 12.3
-  },
-  {
-    "month": "1970-07",
-    "value": 13.5
-  },
-  {
-    "month": "1970-08",
-    "value": 13.4
-  },
-  {
-    "month": "1970-09",
-    "value": 12.9
-  },
-  {
-    "month": "1970-10",
-    "value": 13.1
-  },
-  {
-    "month": "1970-11",
-    "value": 13.6
-  },
-  {
-    "month": "1970-12",
-    "value": 13.2
-  },
-  {
-    "month": "1971-01",
-    "value": 13.3
-  },
-  {
-    "month": "1971-02",
-    "value": 13.3
-  },
-  {
-    "month": "1971-03",
-    "value": 13.5
-  },
-  {
-    "month": "1971-04",
-    "value": 13.2
-  },
-  {
-    "month": "1971-05",
-    "value": 13.6
-  },
-  {
-    "month": "1971-06",
-    "value": 14.7
-  },
-  {
-    "month": "1971-07",
-    "value": 13.8
-  },
-  {
-    "month": "1971-08",
-    "value": 13.6
-  },
-  {
-    "month": "1971-09",
-    "value": 13.3
-  },
-  {
-    "month": "1971-10",
-    "value": 13.3
-  },
-  {
-    "month": "1971-11",
-    "value": 13.1
-  },
-  {
-    "month": "1971-12",
-    "value": 13
-  },
-  {
-    "month": "1972-01",
-    "value": 12.5
-  },
-  {
-    "month": "1972-02",
-    "value": 12.8
-  },
-  {
-    "month": "1972-03",
-    "value": 11.8
-  },
-  {
-    "month": "1972-04",
-    "value": 11.5
-  },
-  {
-    "month": "1972-05",
-    "value": 11.7
-  },
-  {
-    "month": "1972-06",
-    "value": 11.7
-  },
-  {
-    "month": "1972-07",
-    "value": 11.7
-  },
-  {
-    "month": "1972-08",
-    "value": 12
-  },
-  {
-    "month": "1972-09",
-    "value": 12.2
-  },
-  {
-    "month": "1972-10",
-    "value": 13
-  },
-  {
-    "month": "1972-11",
-    "value": 13.6
-  },
-  {
-    "month": "1972-12",
-    "value": 13.7
-  },
-  {
-    "month": "1973-01",
-    "value": 12.4
-  },
-  {
-    "month": "1973-02",
-    "value": 12.5
-  },
-  {
-    "month": "1973-03",
-    "value": 12.7
-  },
-  {
-    "month": "1973-04",
-    "value": 13.2
-  },
-  {
-    "month": "1973-05",
-    "value": 13.2
-  },
-  {
-    "month": "1973-06",
-    "value": 13.6
-  },
-  {
-    "month": "1973-07",
-    "value": 13.2
-  },
-  {
-    "month": "1973-08",
-    "value": 13.9
-  },
-  {
-    "month": "1973-09",
-    "value": 13.1
-  },
-  {
-    "month": "1973-10",
-    "value": 14.4
-  },
-  {
-    "month": "1973-11",
-    "value": 14.4
-  },
-  {
-    "month": "1973-12",
-    "value": 14.8
-  },
-  {
-    "month": "1974-01",
-    "value": 14.3
-  },
-  {
-    "month": "1974-02",
-    "value": 14.2
-  },
-  {
-    "month": "1974-03",
-    "value": 13.4
-  },
-  {
-    "month": "1974-04",
-    "value": 13.1
-  },
-  {
-    "month": "1974-05",
-    "value": 12.8
-  },
-  {
-    "month": "1974-06",
-    "value": 12.8
-  },
-  {
-    "month": "1974-07",
-    "value": 12.8
-  },
-  {
-    "month": "1974-08",
-    "value": 12.1
-  },
-  {
-    "month": "1974-09",
-    "value": 12.9
-  },
-  {
-    "month": "1974-10",
-    "value": 13.4
-  },
-  {
-    "month": "1974-11",
-    "value": 13.8
-  },
-  {
-    "month": "1974-12",
-    "value": 14
-  },
-  {
-    "month": "1975-01",
-    "value": 13.2
-  },
-  {
-    "month": "1975-02",
-    "value": 12.5
-  },
-  {
-    "month": "1975-03",
-    "value": 12.7
-  },
-  {
-    "month": "1975-04",
-    "value": 14.2
-  },
-  {
-    "month": "1975-05",
-    "value": 17.3
-  },
-  {
-    "month": "1975-06",
-    "value": 14.3
-  },
-  {
-    "month": "1975-07",
-    "value": 12.6
-  },
-  {
-    "month": "1975-08",
-    "value": 13
-  },
-  {
-    "month": "1975-09",
-    "value": 13
-  },
-  {
-    "month": "1975-10",
-    "value": 13.4
-  },
-  {
-    "month": "1975-11",
-    "value": 12.7
-  },
-  {
-    "month": "1975-12",
-    "value": 12
-  },
-  {
-    "month": "1976-01",
-    "value": 11.7
-  },
-  {
-    "month": "1976-02",
-    "value": 12.3
-  },
-  {
-    "month": "1976-03",
-    "value": 12.2
-  },
-  {
-    "month": "1976-04",
-    "value": 11.7
-  },
-  {
-    "month": "1976-05",
-    "value": 12.3
-  },
-  {
-    "month": "1976-06",
-    "value": 11.4
-  },
-  {
-    "month": "1976-07",
-    "value": 11.7
-  },
-  {
-    "month": "1976-08",
-    "value": 11.7
-  },
-  {
-    "month": "1976-09",
-    "value": 11.4
-  },
-  {
-    "month": "1976-10",
-    "value": 11.1
-  },
-  {
-    "month": "1976-11",
-    "value": 11.4
-  },
-  {
-    "month": "1976-12",
-    "value": 10.6
-  },
-  {
-    "month": "1977-01",
-    "value": 10.6
-  },
-  {
-    "month": "1977-02",
-    "value": 9.3
-  },
-  {
-    "month": "1977-03",
-    "value": 10.5
-  },
-  {
-    "month": "1977-04",
-    "value": 10.5
-  },
-  {
-    "month": "1977-05",
-    "value": 10.3
-  },
-  {
-    "month": "1977-06",
-    "value": 10.6
-  },
-  {
-    "month": "1977-07",
-    "value": 10.5
-  },
-  {
-    "month": "1977-08",
-    "value": 10.9
-  },
-  {
-    "month": "1977-09",
-    "value": 11.1
-  },
-  {
-    "month": "1977-10",
-    "value": 11
-  },
-  {
-    "month": "1977-11",
-    "value": 11.2
-  },
-  {
-    "month": "1977-12",
-    "value": 11.4
-  },
-  {
-    "month": "1978-01",
-    "value": 11.9
-  },
-  {
-    "month": "1978-02",
-    "value": 11.1
-  },
-  {
-    "month": "1978-03",
-    "value": 11
-  },
-  {
-    "month": "1978-04",
-    "value": 10.8
-  },
-  {
-    "month": "1978-05",
-    "value": 10.3
-  },
-  {
-    "month": "1978-06",
-    "value": 10
-  },
-  {
-    "month": "1978-07",
-    "value": 10.9
-  },
-  {
-    "month": "1978-08",
-    "value": 10.5
-  },
-  {
-    "month": "1978-09",
-    "value": 10.6
-  },
-  {
-    "month": "1978-10",
-    "value": 10.7
-  },
-  {
-    "month": "1978-11",
-    "value": 10.5
-  },
-  {
-    "month": "1978-12",
-    "value": 10.4
-  },
-  {
-    "month": "1979-01",
-    "value": 11.1
-  },
-  {
-    "month": "1979-02",
-    "value": 11
-  },
-  {
-    "month": "1979-03",
-    "value": 11.2
-  },
-  {
-    "month": "1979-04",
-    "value": 11
-  },
-  {
-    "month": "1979-05",
-    "value": 10.3
-  },
-  {
-    "month": "1979-06",
-    "value": 9.8
-  },
-  {
-    "month": "1979-07",
-    "value": 10.6
-  },
-  {
-    "month": "1979-08",
-    "value": 9.7
-  },
-  {
-    "month": "1979-09",
-    "value": 9.4
-  },
-  {
-    "month": "1979-10",
-    "value": 9.7
-  },
-  {
-    "month": "1979-11",
-    "value": 9.7
-  },
-  {
-    "month": "1979-12",
-    "value": 10.1
-  },
-  {
-    "month": "1980-01",
-    "value": 9.9
-  },
-  {
-    "month": "1980-02",
-    "value": 10.1
-  },
-  {
-    "month": "1980-03",
-    "value": 10.3
-  },
-  {
-    "month": "1980-04",
-    "value": 11.4
-  },
-  {
-    "month": "1980-05",
-    "value": 11.5
-  },
-  {
-    "month": "1980-06",
-    "value": 11.3
-  },
-  {
-    "month": "1980-07",
-    "value": 11.4
-  },
-  {
-    "month": "1980-08",
-    "value": 11.4
-  },
-  {
-    "month": "1980-09",
-    "value": 11.7
-  },
-  {
-    "month": "1980-10",
-    "value": 11.3
-  },
-  {
-    "month": "1980-11",
-    "value": 11.6
-  },
-  {
-    "month": "1980-12",
-    "value": 11.4
-  },
-  {
-    "month": "1981-01",
-    "value": 10.9
-  },
-  {
-    "month": "1981-02",
-    "value": 10.8
-  },
-  {
-    "month": "1981-03",
-    "value": 10.8
-  },
-  {
-    "month": "1981-04",
-    "value": 10.8
-  },
-  {
-    "month": "1981-05",
-    "value": 10.9
-  },
-  {
-    "month": "1981-06",
-    "value": 10.8
-  },
-  {
-    "month": "1981-07",
-    "value": 12.3
-  },
-  {
-    "month": "1981-08",
-    "value": 12
-  },
-  {
-    "month": "1981-09",
-    "value": 12.3
-  },
-  {
-    "month": "1981-10",
-    "value": 12.9
-  },
-  {
-    "month": "1981-11",
-    "value": 13
-  },
-  {
-    "month": "1981-12",
-    "value": 12.4
-  },
-  {
-    "month": "1982-01",
-    "value": 12.6
-  },
-  {
-    "month": "1982-02",
-    "value": 12
-  },
-  {
-    "month": "1982-03",
-    "value": 12.1
-  },
-  {
-    "month": "1982-04",
-    "value": 12.8
-  },
-  {
-    "month": "1982-05",
-    "value": 12.2
-  },
-  {
-    "month": "1982-06",
-    "value": 12.2
-  },
-  {
-    "month": "1982-07",
-    "value": 12.5
-  },
-  {
-    "month": "1982-08",
-    "value": 12.5
-  },
-  {
-    "month": "1982-09",
-    "value": 11.7
-  },
-  {
-    "month": "1982-10",
-    "value": 11.2
-  },
-  {
-    "month": "1982-11",
-    "value": 10.9
-  },
-  {
-    "month": "1982-12",
-    "value": 10.9
-  },
-  {
-    "month": "1983-01",
-    "value": 11.1
-  },
-  {
-    "month": "1983-02",
-    "value": 11.2
-  },
-  {
-    "month": "1983-03",
-    "value": 10.7
-  },
-  {
-    "month": "1983-04",
-    "value": 10.3
-  },
-  {
-    "month": "1983-05",
-    "value": 9.9
-  },
-  {
-    "month": "1983-06",
-    "value": 9.2
-  },
-  {
-    "month": "1983-07",
-    "value": 9.7
-  },
-  {
-    "month": "1983-08",
-    "value": 9.2
-  },
-  {
-    "month": "1983-09",
-    "value": 9.6
-  },
-  {
-    "month": "1983-10",
-    "value": 9.7
-  },
-  {
-    "month": "1983-11",
-    "value": 10.3
-  },
-  {
-    "month": "1983-12",
-    "value": 10.1
-  },
-  {
-    "month": "1984-01",
-    "value": 9.9
-  },
-  {
-    "month": "1984-02",
-    "value": 11.6
-  },
-  {
-    "month": "1984-03",
-    "value": 11.4
-  },
-  {
-    "month": "1984-04",
-    "value": 11.4
-  },
-  {
-    "month": "1984-05",
-    "value": 11
-  },
-  {
-    "month": "1984-06",
-    "value": 11
-  },
-  {
-    "month": "1984-07",
-    "value": 11.4
-  },
-  {
-    "month": "1984-08",
-    "value": 11.7
-  },
-  {
-    "month": "1984-09",
-    "value": 11.7
-  },
-  {
-    "month": "1984-10",
-    "value": 11.6
-  },
-  {
-    "month": "1984-11",
-    "value": 10.7
-  },
-  {
-    "month": "1984-12",
-    "value": 11.1
-  },
-  {
-    "month": "1985-01",
-    "value": 10.2
-  },
-  {
-    "month": "1985-02",
-    "value": 8.9
-  },
-  {
-    "month": "1985-03",
-    "value": 8.6
-  },
-  {
-    "month": "1985-04",
-    "value": 9.8
-  },
-  {
-    "month": "1985-05",
-    "value": 11
-  },
-  {
-    "month": "1985-06",
-    "value": 9.6
-  },
-  {
-    "month": "1985-07",
-    "value": 9.1
-  },
-  {
-    "month": "1985-08",
-    "value": 8.1
-  },
-  {
-    "month": "1985-09",
-    "value": 7.3
-  },
-  {
-    "month": "1985-10",
-    "value": 9.1
-  },
-  {
-    "month": "1985-11",
-    "value": 9
-  },
-  {
-    "month": "1985-12",
-    "value": 8.6
-  },
-  {
-    "month": "1986-01",
-    "value": 8.7
-  },
-  {
-    "month": "1986-02",
-    "value": 9.3
-  },
-  {
-    "month": "1986-03",
-    "value": 9.9
-  },
-  {
-    "month": "1986-04",
-    "value": 9.7
-  },
-  {
-    "month": "1986-05",
-    "value": 9.3
-  },
-  {
-    "month": "1986-06",
-    "value": 9.4
-  },
-  {
-    "month": "1986-07",
-    "value": 9.3
-  },
-  {
-    "month": "1986-08",
-    "value": 8.9
-  },
-  {
-    "month": "1986-09",
-    "value": 7.1
-  },
-  {
-    "month": "1986-10",
-    "value": 8.3
-  },
-  {
-    "month": "1986-11",
-    "value": 8.6
-  },
-  {
-    "month": "1986-12",
-    "value": 6.8
-  },
-  {
-    "month": "1987-01",
-    "value": 9.4
-  },
-  {
-    "month": "1987-02",
-    "value": 8.2
-  },
-  {
-    "month": "1987-03",
-    "value": 8.1
-  },
-  {
-    "month": "1987-04",
-    "value": 4.1
-  },
-  {
-    "month": "1987-05",
-    "value": 7.8
-  },
-  {
-    "month": "1987-06",
-    "value": 7.3
-  },
-  {
-    "month": "1987-07",
-    "value": 7.1
-  },
-  {
-    "month": "1987-08",
-    "value": 6.8
-  },
-  {
-    "month": "1987-09",
-    "value": 7.2
-  },
-  {
-    "month": "1987-10",
-    "value": 7.9
-  },
-  {
-    "month": "1987-11",
-    "value": 8.2
-  },
-  {
-    "month": "1987-12",
-    "value": 8.4
-  },
-  {
-    "month": "1988-01",
-    "value": 7.9
-  },
-  {
-    "month": "1988-02",
-    "value": 8.4
-  },
-  {
-    "month": "1988-03",
-    "value": 8
-  },
-  {
-    "month": "1988-04",
-    "value": 8.7
-  },
-  {
-    "month": "1988-05",
-    "value": 8.3
-  },
-  {
-    "month": "1988-06",
-    "value": 8.4
-  },
-  {
-    "month": "1988-07",
-    "value": 8.6
-  },
-  {
-    "month": "1988-08",
-    "value": 8.4
-  },
-  {
-    "month": "1988-09",
-    "value": 8.8
-  },
-  {
-    "month": "1988-10",
-    "value": 8.6
-  },
-  {
-    "month": "1988-11",
-    "value": 8.4
-  },
-  {
-    "month": "1988-12",
-    "value": 8.3
-  },
-  {
-    "month": "1989-01",
-    "value": 8.5
-  },
-  {
-    "month": "1989-02",
-    "value": 8.9
-  },
-  {
-    "month": "1989-03",
-    "value": 9.4
-  },
-  {
-    "month": "1989-04",
-    "value": 8.3
-  },
-  {
-    "month": "1989-05",
-    "value": 8
-  },
-  {
-    "month": "1989-06",
-    "value": 8.1
-  },
-  {
-    "month": "1989-07",
-    "value": 8.1
-  },
-  {
-    "month": "1989-08",
-    "value": 7.5
-  },
-  {
-    "month": "1989-09",
-    "value": 7.9
-  },
-  {
-    "month": "1989-10",
-    "value": 8.4
-  },
-  {
-    "month": "1989-11",
-    "value": 8.5
-  },
-  {
-    "month": "1989-12",
-    "value": 7.7
-  },
-  {
-    "month": "1990-01",
-    "value": 7.9
-  },
-  {
-    "month": "1990-02",
-    "value": 8.5
-  },
-  {
-    "month": "1990-03",
-    "value": 8.3
-  },
-  {
-    "month": "1990-04",
-    "value": 8.7
-  },
-  {
-    "month": "1990-05",
-    "value": 8.7
-  },
-  {
-    "month": "1990-06",
-    "value": 8.6
-  },
-  {
-    "month": "1990-07",
-    "value": 8.7
-  },
-  {
-    "month": "1990-08",
-    "value": 8.1
-  },
-  {
-    "month": "1990-09",
-    "value": 8.1
-  },
-  {
-    "month": "1990-10",
-    "value": 7.9
-  },
-  {
-    "month": "1990-11",
-    "value": 8
-  },
-  {
-    "month": "1990-12",
-    "value": 8.8
-  },
-  {
-    "month": "1991-01",
-    "value": 9.4
-  },
-  {
-    "month": "1991-02",
-    "value": 9
-  },
-  {
-    "month": "1991-03",
-    "value": 8.1
-  },
-  {
-    "month": "1991-04",
-    "value": 8.7
-  },
-  {
-    "month": "1991-05",
-    "value": 8.5
-  },
-  {
-    "month": "1991-06",
-    "value": 9
-  },
-  {
-    "month": "1991-07",
-    "value": 8.4
-  },
-  {
-    "month": "1991-08",
-    "value": 8.7
-  },
-  {
-    "month": "1991-09",
-    "value": 8.9
-  },
-  {
-    "month": "1991-10",
-    "value": 9.4
-  },
-  {
-    "month": "1991-11",
-    "value": 9.1
-  },
-  {
-    "month": "1991-12",
-    "value": 9.8
-  },
-  {
-    "month": "1992-01",
-    "value": 9.5
-  },
-  {
-    "month": "1992-02",
-    "value": 9.8
-  },
-  {
-    "month": "1992-03",
-    "value": 9.7
-  },
-  {
-    "month": "1992-04",
-    "value": 9.8
-  },
-  {
-    "month": "1992-05",
-    "value": 9.8
-  },
-  {
-    "month": "1992-06",
-    "value": 10
-  },
-  {
-    "month": "1992-07",
-    "value": 9.5
-  },
-  {
-    "month": "1992-08",
-    "value": 9.6
-  },
-  {
-    "month": "1992-09",
-    "value": 8.6
-  },
-  {
-    "month": "1992-10",
-    "value": 7.9
-  },
-  {
-    "month": "1992-11",
-    "value": 7.9
-  },
-  {
-    "month": "1992-12",
-    "value": 10.5
-  },
-  {
-    "month": "1993-01",
-    "value": 8.5
-  },
-  {
-    "month": "1993-02",
-    "value": 8.8
-  },
-  {
-    "month": "1993-03",
-    "value": 8.8
-  },
-  {
-    "month": "1993-04",
-    "value": 8.7
-  },
-  {
-    "month": "1993-05",
-    "value": 8.2
-  },
-  {
-    "month": "1993-06",
-    "value": 7.7
-  },
-  {
-    "month": "1993-07",
-    "value": 7.5
-  },
-  {
-    "month": "1993-08",
-    "value": 7.6
-  },
-  {
-    "month": "1993-09",
-    "value": 6.8
-  },
-  {
-    "month": "1993-10",
-    "value": 6.2
-  },
-  {
-    "month": "1993-11",
-    "value": 6.2
-  },
-  {
-    "month": "1993-12",
-    "value": 9
-  },
-  {
-    "month": "1994-01",
-    "value": 7
-  },
-  {
-    "month": "1994-02",
-    "value": 6.4
-  },
-  {
-    "month": "1994-03",
-    "value": 6.7
-  },
-  {
-    "month": "1994-04",
-    "value": 6.3
-  },
-  {
-    "month": "1994-05",
-    "value": 7.5
-  },
-  {
-    "month": "1994-06",
-    "value": 6.8
-  },
-  {
-    "month": "1994-07",
-    "value": 6.9
-  },
-  {
-    "month": "1994-08",
-    "value": 6.4
-  },
-  {
-    "month": "1994-09",
-    "value": 6.7
-  },
-  {
-    "month": "1994-10",
-    "value": 7
-  },
-  {
-    "month": "1994-11",
-    "value": 6.9
-  },
-  {
-    "month": "1994-12",
-    "value": 7
-  },
-  {
-    "month": "1995-01",
-    "value": 7.3
-  },
-  {
-    "month": "1995-02",
-    "value": 7.7
-  },
-  {
-    "month": "1995-03",
-    "value": 7.4
-  },
-  {
-    "month": "1995-04",
-    "value": 6.8
-  },
-  {
-    "month": "1995-05",
-    "value": 7
-  },
-  {
-    "month": "1995-06",
-    "value": 6.5
-  },
-  {
-    "month": "1995-07",
-    "value": 6.9
-  },
-  {
-    "month": "1995-08",
-    "value": 6.6
-  },
-  {
-    "month": "1995-09",
-    "value": 6.6
-  },
-  {
-    "month": "1995-10",
-    "value": 7
-  },
-  {
-    "month": "1995-11",
-    "value": 6.4
-  },
-  {
-    "month": "1995-12",
-    "value": 6
-  },
-  {
-    "month": "1996-01",
-    "value": 6.5
-  },
-  {
-    "month": "1996-02",
-    "value": 6.6
-  },
-  {
-    "month": "1996-03",
-    "value": 6.4
-  },
-  {
-    "month": "1996-04",
-    "value": 5.5
-  },
-  {
-    "month": "1996-05",
-    "value": 6.5
-  },
-  {
-    "month": "1996-06",
-    "value": 6.9
-  },
-  {
-    "month": "1996-07",
-    "value": 6.5
-  },
-  {
-    "month": "1996-08",
-    "value": 6.4
-  },
-  {
-    "month": "1996-09",
-    "value": 6.4
-  },
-  {
-    "month": "1996-10",
-    "value": 6.1
-  },
-  {
-    "month": "1996-11",
-    "value": 6.2
-  },
-  {
-    "month": "1996-12",
-    "value": 6.1
-  },
-  {
-    "month": "1997-01",
-    "value": 5.9
-  },
-  {
-    "month": "1997-02",
-    "value": 6
-  },
-  {
-    "month": "1997-03",
-    "value": 6.1
-  },
-  {
-    "month": "1997-04",
-    "value": 6.2
-  },
-  {
-    "month": "1997-05",
-    "value": 6.5
-  },
-  {
-    "month": "1997-06",
-    "value": 6.3
-  },
-  {
-    "month": "1997-07",
-    "value": 5.8
-  },
-  {
-    "month": "1997-08",
-    "value": 5.7
-  },
-  {
-    "month": "1997-09",
-    "value": 5.9
-  },
-  {
-    "month": "1997-10",
-    "value": 5.9
-  },
-  {
-    "month": "1997-11",
-    "value": 6.1
-  },
-  {
-    "month": "1997-12",
-    "value": 6.1
-  },
-  {
-    "month": "1998-01",
-    "value": 7
-  },
-  {
-    "month": "1998-02",
-    "value": 7
-  },
-  {
-    "month": "1998-03",
-    "value": 7.1
-  },
-  {
-    "month": "1998-04",
-    "value": 6.9
-  },
-  {
-    "month": "1998-05",
-    "value": 6.6
-  },
-  {
-    "month": "1998-06",
-    "value": 6.5
-  },
-  {
-    "month": "1998-07",
-    "value": 6.6
-  },
-  {
-    "month": "1998-08",
-    "value": 6.5
-  },
-  {
-    "month": "1998-09",
-    "value": 6.1
-  },
-  {
-    "month": "1998-10",
-    "value": 5.9
-  },
-  {
-    "month": "1998-11",
-    "value": 6
-  },
-  {
-    "month": "1998-12",
-    "value": 5.5
-  },
-  {
-    "month": "1999-01",
-    "value": 6.1
-  },
-  {
-    "month": "1999-02",
-    "value": 6
-  },
-  {
-    "month": "1999-03",
-    "value": 5.6
-  },
-  {
-    "month": "1999-04",
-    "value": 4.7
-  },
-  {
-    "month": "1999-05",
-    "value": 4.4
-  },
-  {
-    "month": "1999-06",
-    "value": 4.3
-  },
-  {
-    "month": "1999-07",
-    "value": 4.4
-  },
-  {
-    "month": "1999-08",
-    "value": 4.3
-  },
-  {
-    "month": "1999-09",
-    "value": 3.7
-  },
-  {
-    "month": "1999-10",
-    "value": 4
-  },
-  {
-    "month": "1999-11",
-    "value": 4.1
-  },
-  {
-    "month": "1999-12",
-    "value": 3.7
-  },
-  {
-    "month": "2000-01",
-    "value": 4.5
-  },
-  {
-    "month": "2000-02",
-    "value": 4
-  },
-  {
-    "month": "2000-03",
-    "value": 3.8
-  },
-  {
-    "month": "2000-04",
-    "value": 4.3
-  },
-  {
-    "month": "2000-05",
-    "value": 4.3
-  },
-  {
-    "month": "2000-06",
-    "value": 4.3
-  },
-  {
-    "month": "2000-07",
-    "value": 4.7
-  },
-  {
-    "month": "2000-08",
-    "value": 4.8
-  },
-  {
-    "month": "2000-09",
-    "value": 4.1
-  },
-  {
-    "month": "2000-10",
-    "value": 4.3
-  },
-  {
-    "month": "2000-11",
-    "value": 4.3
-  },
-  {
-    "month": "2000-12",
-    "value": 4.1
-  },
-  {
-    "month": "2001-01",
-    "value": 4.5
-  },
-  {
-    "month": "2001-02",
-    "value": 4.6
-  },
-  {
-    "month": "2001-03",
-    "value": 4.9
-  },
-  {
-    "month": "2001-04",
-    "value": 4.8
-  },
-  {
-    "month": "2001-05",
-    "value": 4.3
-  },
-  {
-    "month": "2001-06",
-    "value": 4.2
-  },
-  {
-    "month": "2001-07",
-    "value": 5.4
-  },
-  {
-    "month": "2001-08",
-    "value": 6.5
-  },
-  {
-    "month": "2001-09",
-    "value": 6.9
-  },
-  {
-    "month": "2001-10",
-    "value": 2.9
-  },
-  {
-    "month": "2001-11",
-    "value": 3.4
-  },
-  {
-    "month": "2001-12",
-    "value": 3.7
-  },
-  {
-    "month": "2002-01",
-    "value": 5.6
-  },
-  {
-    "month": "2002-02",
-    "value": 5.4
-  },
-  {
-    "month": "2002-03",
-    "value": 5.5
-  },
-  {
-    "month": "2002-04",
-    "value": 5.4
-  },
-  {
-    "month": "2002-05",
-    "value": 6.1
-  },
-  {
-    "month": "2002-06",
-    "value": 6.1
-  },
-  {
-    "month": "2002-07",
-    "value": 5.3
-  },
-  {
-    "month": "2002-08",
-    "value": 5.2
-  },
-  {
-    "month": "2002-09",
-    "value": 5.8
-  },
-  {
-    "month": "2002-10",
-    "value": 5.6
-  },
-  {
-    "month": "2002-11",
-    "value": 5.6
-  },
-  {
-    "month": "2002-12",
-    "value": 5.3
-  },
-  {
-    "month": "2003-01",
-    "value": 5.3
-  },
-  {
-    "month": "2003-02",
-    "value": 5.2
-  },
-  {
-    "month": "2003-03",
-    "value": 4.9
-  },
-  {
-    "month": "2003-04",
-    "value": 5
-  },
-  {
-    "month": "2003-05",
-    "value": 5.3
-  },
-  {
-    "month": "2003-06",
-    "value": 5.1
-  },
-  {
-    "month": "2003-07",
-    "value": 5.9
-  },
-  {
-    "month": "2003-08",
-    "value": 5.7
-  },
-  {
-    "month": "2003-09",
-    "value": 4.9
-  },
-  {
-    "month": "2003-10",
-    "value": 5
-  },
-  {
-    "month": "2003-11",
-    "value": 5
-  },
-  {
-    "month": "2003-12",
-    "value": 5
-  },
-  {
-    "month": "2004-01",
-    "value": 4.6
-  },
-  {
-    "month": "2004-02",
-    "value": 4.6
-  },
-  {
-    "month": "2004-03",
-    "value": 4.5
-  },
-  {
-    "month": "2004-04",
-    "value": 4.9
-  },
-  {
-    "month": "2004-05",
-    "value": 4.8
-  },
-  {
-    "month": "2004-06",
-    "value": 5.4
-  },
-  {
-    "month": "2004-07",
-    "value": 4.7
-  },
-  {
-    "month": "2004-08",
-    "value": 4.7
-  },
-  {
-    "month": "2004-09",
-    "value": 4.1
-  },
-  {
-    "month": "2004-10",
-    "value": 3.9
-  },
-  {
-    "month": "2004-11",
-    "value": 3.4
-  },
-  {
-    "month": "2004-12",
-    "value": 6.2
-  },
-  {
-    "month": "2005-01",
-    "value": 2.7
-  },
-  {
-    "month": "2005-02",
-    "value": 2.3
-  },
-  {
-    "month": "2005-03",
-    "value": 2.5
-  },
-  {
-    "month": "2005-04",
-    "value": 2.1
-  },
-  {
-    "month": "2005-05",
-    "value": 2.6
-  },
-  {
-    "month": "2005-06",
-    "value": 2
-  },
-  {
-    "month": "2005-07",
-    "value": 1.4
-  },
-  {
-    "month": "2005-08",
-    "value": 2
-  },
-  {
-    "month": "2005-09",
-    "value": 2
-  },
-  {
-    "month": "2005-10",
-    "value": 2.3
-  },
-  {
-    "month": "2005-11",
-    "value": 2.6
-  },
-  {
-    "month": "2005-12",
-    "value": 2.5
-  },
-  {
-    "month": "2006-01",
-    "value": 3
-  },
-  {
-    "month": "2006-02",
-    "value": 3.2
-  },
-  {
-    "month": "2006-03",
-    "value": 3.3
-  },
-  {
-    "month": "2006-04",
-    "value": 3.1
-  },
-  {
-    "month": "2006-05",
-    "value": 2.9
-  },
-  {
-    "month": "2006-06",
-    "value": 2.9
-  },
-  {
-    "month": "2006-07",
-    "value": 2.3
-  },
-  {
-    "month": "2006-08",
-    "value": 2.5
-  },
-  {
-    "month": "2006-09",
-    "value": 2.4
-  },
-  {
-    "month": "2006-10",
-    "value": 2.4
-  },
-  {
-    "month": "2006-11",
-    "value": 2.7
-  },
-  {
-    "month": "2006-12",
-    "value": 2.6
-  },
-  {
-    "month": "2007-01",
-    "value": 2.4
-  },
-  {
-    "month": "2007-02",
-    "value": 2.8
-  },
-  {
-    "month": "2007-03",
-    "value": 3
-  },
-  {
-    "month": "2007-04",
-    "value": 3
-  },
-  {
-    "month": "2007-05",
-    "value": 2.8
-  },
-  {
-    "month": "2007-06",
-    "value": 2.7
-  },
-  {
-    "month": "2007-07",
-    "value": 2.6
-  },
-  {
-    "month": "2007-08",
-    "value": 2.2
-  },
-  {
-    "month": "2007-09",
-    "value": 2.3
-  },
-  {
-    "month": "2007-10",
-    "value": 2.2
-  },
-  {
-    "month": "2007-11",
-    "value": 1.9
-  },
-  {
-    "month": "2007-12",
-    "value": 2.4
-  },
-  {
-    "month": "2008-01",
-    "value": 2.6
-  },
-  {
-    "month": "2008-02",
-    "value": 3
-  },
-  {
-    "month": "2008-03",
-    "value": 2.9
-  },
-  {
-    "month": "2008-04",
-    "value": 2.4
-  },
-  {
-    "month": "2008-05",
-    "value": 6.8
-  },
-  {
-    "month": "2008-06",
-    "value": 4.6
-  },
-  {
-    "month": "2008-07",
-    "value": 3.6
-  },
-  {
-    "month": "2008-08",
-    "value": 3.1
-  },
-  {
-    "month": "2008-09",
-    "value": 3.9
-  },
-  {
-    "month": "2008-10",
-    "value": 4.9
-  },
-  {
-    "month": "2008-11",
-    "value": 6
-  },
-  {
-    "month": "2008-12",
-    "value": 5.8
-  },
-  {
-    "month": "2009-01",
-    "value": 5.9
-  },
-  {
-    "month": "2009-02",
-    "value": 5.4
-  },
-  {
-    "month": "2009-03",
-    "value": 5.8
-  },
-  {
-    "month": "2009-04",
-    "value": 6.5
-  },
-  {
-    "month": "2009-05",
-    "value": 7.8
-  },
-  {
-    "month": "2009-06",
-    "value": 6.1
-  },
-  {
-    "month": "2009-07",
-    "value": 5.4
-  },
-  {
-    "month": "2009-08",
-    "value": 4.4
-  },
-  {
-    "month": "2009-09",
-    "value": 5.5
-  },
-  {
-    "month": "2009-10",
-    "value": 5.1
-  },
-  {
-    "month": "2009-11",
-    "value": 5.5
-  },
-  {
-    "month": "2009-12",
-    "value": 5.4
-  },
-  {
-    "month": "2010-01",
-    "value": 5.6
-  },
-  {
-    "month": "2010-02",
-    "value": 5.3
-  },
-  {
-    "month": "2010-03",
-    "value": 5.3
-  },
-  {
-    "month": "2010-04",
-    "value": 6
-  },
-  {
-    "month": "2010-05",
-    "value": 6.4
-  },
-  {
-    "month": "2010-06",
-    "value": 6.2
-  },
-  {
-    "month": "2010-07",
-    "value": 6.1
-  },
-  {
-    "month": "2010-08",
-    "value": 6.2
-  },
-  {
-    "month": "2010-09",
-    "value": 6.1
-  },
-  {
-    "month": "2010-10",
-    "value": 5.9
-  },
-  {
-    "month": "2010-11",
-    "value": 5.8
-  },
-  {
-    "month": "2010-12",
-    "value": 6.2
-  },
-  {
-    "month": "2011-01",
-    "value": 6.6
-  },
-  {
-    "month": "2011-02",
-    "value": 6.9
-  },
-  {
-    "month": "2011-03",
-    "value": 6.3
-  },
-  {
-    "month": "2011-04",
-    "value": 6.3
-  },
-  {
-    "month": "2011-05",
-    "value": 6.3
-  },
-  {
-    "month": "2011-06",
-    "value": 6.5
-  },
-  {
-    "month": "2011-07",
-    "value": 6.7
-  },
-  {
-    "month": "2011-08",
-    "value": 6.7
-  },
-  {
-    "month": "2011-09",
-    "value": 6.4
-  },
-  {
-    "month": "2011-10",
-    "value": 6.3
-  },
-  {
-    "month": "2011-11",
-    "value": 6.4
-  },
-  {
-    "month": "2011-12",
-    "value": 7.2
-  },
-  {
-    "month": "2012-01",
-    "value": 7.4
-  },
-  {
-    "month": "2012-02",
-    "value": 7.3
-  },
-  {
-    "month": "2012-03",
-    "value": 7.6
-  },
-  {
-    "month": "2012-04",
-    "value": 7.9
-  },
-  {
-    "month": "2012-05",
-    "value": 7.9
-  },
-  {
-    "month": "2012-06",
-    "value": 7.9
-  },
-  {
-    "month": "2012-07",
-    "value": 7
-  },
-  {
-    "month": "2012-08",
-    "value": 6.7
-  },
-  {
-    "month": "2012-09",
-    "value": 7.2
-  },
-  {
-    "month": "2012-10",
-    "value": 7.8
-  },
-  {
-    "month": "2012-11",
-    "value": 8.7
-  },
-  {
-    "month": "2012-12",
-    "value": 10.9
-  },
-  {
-    "month": "2013-01",
-    "value": 4.9
-  },
-  {
-    "month": "2013-02",
-    "value": 4.7
-  },
-  {
-    "month": "2013-03",
-    "value": 4.8
-  },
-  {
-    "month": "2013-04",
-    "value": 5.1
-  },
-  {
-    "month": "2013-05",
-    "value": 5.3
-  },
-  {
-    "month": "2013-06",
-    "value": 5.4
-  },
-  {
-    "month": "2013-07",
-    "value": 5.2
-  },
-  {
-    "month": "2013-08",
-    "value": 5.2
-  },
-  {
-    "month": "2013-09",
-    "value": 5.3
-  },
-  {
-    "month": "2013-10",
-    "value": 4.7
-  },
-  {
-    "month": "2013-11",
-    "value": 4.5
-  },
-  {
-    "month": "2013-12",
-    "value": 4.5
-  },
-  {
-    "month": "2014-01",
-    "value": 5.2
-  },
-  {
-    "month": "2014-02",
-    "value": 5.3
-  },
-  {
-    "month": "2014-03",
-    "value": 5.2
-  },
-  {
-    "month": "2014-04",
-    "value": 5.4
-  },
-  {
-    "month": "2014-05",
-    "value": 5.6
-  },
-  {
-    "month": "2014-06",
-    "value": 5.6
-  },
-  {
-    "month": "2014-07",
-    "value": 5.5
-  },
-  {
-    "month": "2014-08",
-    "value": 5.3
-  },
-  {
-    "month": "2014-09",
-    "value": 5.5
-  },
-  {
-    "month": "2014-10",
-    "value": 5.4
-  },
-  {
-    "month": "2014-11",
-    "value": 5.6
-  },
-  {
-    "month": "2014-12",
-    "value": 6
-  },
-  {
-    "month": "2015-01",
-    "value": 6.3
-  },
-  {
-    "month": "2015-02",
-    "value": 6.4
-  },
-  {
-    "month": "2015-03",
-    "value": 5.9
-  },
-  {
-    "month": "2015-04",
-    "value": 5.9
-  },
-  {
-    "month": "2015-05",
-    "value": 5.8
-  },
-  {
-    "month": "2015-06",
-    "value": 5.7
-  },
-  {
-    "month": "2015-07",
-    "value": 5.6
-  },
-  {
-    "month": "2015-08",
-    "value": 5.6
-  },
-  {
-    "month": "2015-09",
-    "value": 5.8
-  },
-  {
-    "month": "2015-10",
-    "value": 5.8
-  },
-  {
-    "month": "2015-11",
-    "value": 5.6
-  },
-  {
-    "month": "2015-12",
-    "value": 5.8
-  },
-  {
-    "month": "2016-01",
-    "value": 6.1
-  },
-  {
-    "month": "2016-02",
-    "value": 5.6
-  },
-  {
-    "month": "2016-03",
-    "value": 5.9
-  },
-  {
-    "month": "2016-04",
-    "value": 5.5
-  },
-  {
-    "month": "2016-05",
-    "value": 5.3
-  },
-  {
-    "month": "2016-06",
-    "value": 4.9
-  },
-  {
-    "month": "2016-07",
-    "value": 5.1
-  },
-  {
-    "month": "2016-08",
-    "value": 5.1
-  },
-  {
-    "month": "2016-09",
-    "value": 5.1
-  },
-  {
-    "month": "2016-10",
-    "value": 5.3
-  },
-  {
-    "month": "2016-11",
-    "value": 5.4
-  },
-  {
-    "month": "2016-12",
-    "value": 5
-  },
-  {
-    "month": "2017-01",
-    "value": 5.3
-  },
-  {
-    "month": "2017-02",
-    "value": 5.6
-  },
-  {
-    "month": "2017-03",
-    "value": 5.6
-  },
-  {
-    "month": "2017-04",
-    "value": 5.7
-  },
-  {
-    "month": "2017-05",
-    "value": 6.3
-  },
-  {
-    "month": "2017-06",
-    "value": 6
-  },
-  {
-    "month": "2017-07",
-    "value": 6
-  },
-  {
-    "month": "2017-08",
-    "value": 6.1
-  },
-  {
-    "month": "2017-09",
-    "value": 5.9
-  },
-  {
-    "month": "2017-10",
-    "value": 6
-  },
-  {
-    "month": "2017-11",
-    "value": 5.6
-  },
-  {
-    "month": "2017-12",
-    "value": 5
-  },
-  {
-    "month": "2018-01",
-    "value": 5.7
-  },
-  {
-    "month": "2018-02",
-    "value": 5.8
-  },
-  {
-    "month": "2018-03",
-    "value": 5.9
-  },
-  {
-    "month": "2018-04",
-    "value": 6
-  },
-  {
-    "month": "2018-05",
-    "value": 6
-  },
-  {
-    "month": "2018-06",
-    "value": 6.3
-  },
-  {
-    "month": "2018-07",
-    "value": 6.5
-  },
-  {
-    "month": "2018-08",
-    "value": 6.6
-  },
-  {
-    "month": "2018-09",
-    "value": 6.8
-  },
-  {
-    "month": "2018-10",
-    "value": 6.7
-  },
-  {
-    "month": "2018-11",
-    "value": 6.5
-  },
-  {
-    "month": "2018-12",
-    "value": 8.4
-  },
-  {
-    "month": "2019-01",
-    "value": 8.4
-  },
-  {
-    "month": "2019-02",
-    "value": 8.5
-  },
-  {
-    "month": "2019-03",
-    "value": 7.9
-  },
-  {
-    "month": "2019-04",
-    "value": 7.6
-  },
-  {
-    "month": "2019-05",
-    "value": 7.3
-  },
-  {
-    "month": "2019-06",
-    "value": 7.1
-  },
-  {
-    "month": "2019-07",
-    "value": 6.8
-  },
-  {
-    "month": "2019-08",
-    "value": 6.9
-  },
-  {
-    "month": "2019-09",
-    "value": 7
-  },
-  {
-    "month": "2019-10",
-    "value": 7.1
-  },
-  {
-    "month": "2019-11",
-    "value": 6.9
-  },
-  {
-    "month": "2019-12",
-    "value": 6.2
-  },
-  {
-    "month": "2020-01",
-    "value": 6.8
-  },
-  {
-    "month": "2020-02",
-    "value": 7.5
-  },
-  {
-    "month": "2020-03",
-    "value": 12.4
-  },
-  {
-    "month": "2020-04",
-    "value": 31.8
-  },
-  {
-    "month": "2020-05",
-    "value": 22.6
-  },
-  {
-    "month": "2020-06",
-    "value": 18.3
-  },
-  {
-    "month": "2020-07",
-    "value": 17.9
-  },
-  {
-    "month": "2020-08",
-    "value": 13.9
-  },
-  {
-    "month": "2020-09",
-    "value": 13.3
-  },
-  {
-    "month": "2020-10",
-    "value": 12.8
-  },
-  {
-    "month": "2020-11",
-    "value": 12
-  },
-  {
-    "month": "2020-12",
-    "value": 11.8
-  },
-  {
-    "month": "2021-01",
-    "value": 19.5
-  },
-  {
-    "month": "2021-02",
-    "value": 13
-  },
-  {
-    "month": "2021-03",
-    "value": 26.2
-  },
-  {
-    "month": "2021-04",
-    "value": 12.4
-  },
-  {
-    "month": "2021-05",
-    "value": 10
-  },
-  {
-    "month": "2021-06",
-    "value": 8.8
-  },
-  {
-    "month": "2021-07",
-    "value": 9.5
-  },
-  {
-    "month": "2021-08",
-    "value": 8.7
-  },
-  {
-    "month": "2021-09",
-    "value": 7.6
-  },
-  {
-    "month": "2021-10",
-    "value": 7
-  },
-  {
-    "month": "2021-11",
-    "value": 6.6
-  },
-  {
-    "month": "2021-12",
-    "value": 6.6
-  },
-  {
-    "month": "2022-01",
-    "value": 4.2
-  },
-  {
-    "month": "2022-02",
-    "value": 4.1
-  },
-  {
-    "month": "2022-03",
-    "value": 3.2
-  },
-  {
-    "month": "2022-04",
-    "value": 2.6
-  },
-  {
-    "month": "2022-05",
-    "value": 2.6
-  },
-  {
-    "month": "2022-06",
-    "value": 2.2
-  },
-  {
-    "month": "2022-07",
-    "value": 3.3
-  },
-  {
-    "month": "2022-08",
-    "value": 3.2
-  },
-  {
-    "month": "2022-09",
-    "value": 3.4
-  },
-  {
-    "month": "2022-10",
-    "value": 3.4
-  },
-  {
-    "month": "2022-11",
-    "value": 3.8
-  },
-  {
-    "month": "2022-12",
-    "value": 4.2
-  },
-  {
-    "month": "2023-01",
-    "value": 4.9
-  },
-  {
-    "month": "2023-02",
-    "value": 5.5
-  },
-  {
-    "month": "2023-03",
-    "value": 6
-  },
-  {
-    "month": "2023-04",
-    "value": 5.8
-  },
-  {
-    "month": "2023-05",
-    "value": 6.1
-  },
-  {
-    "month": "2023-06",
-    "value": 5.8
-  },
-  {
-    "month": "2023-07",
-    "value": 5.5
-  },
-  {
-    "month": "2023-08",
-    "value": 5.6
-  },
-  {
-    "month": "2023-09",
-    "value": 5.3
-  },
-  {
-    "month": "2023-10",
-    "value": 5.4
-  },
-  {
-    "month": "2023-11",
-    "value": 5.6
-  },
-  {
-    "month": "2023-12",
-    "value": 5.6
-  },
-  {
-    "month": "2024-01",
-    "value": 6.4
-  },
-  {
-    "month": "2024-02",
-    "value": 6.1
-  },
-  {
-    "month": "2024-03",
-    "value": 5.9
-  },
-  {
-    "month": "2024-04",
-    "value": 5.8
-  },
-  {
-    "month": "2024-05",
-    "value": 5.8
-  },
-  {
-    "month": "2024-06",
-    "value": 5.7
-  },
-  {
-    "month": "2024-07",
-    "value": 5.3
-  },
-  {
-    "month": "2024-08",
-    "value": 5.2
-  },
-  {
-    "month": "2024-09",
-    "value": 4.8
-  },
-  {
-    "month": "2024-10",
-    "value": 5
-  },
-  {
-    "month": "2024-11",
-    "value": 4.9
-  },
-  {
-    "month": "2024-12",
-    "value": 4.3
-  },
-  {
-    "month": "2025-01",
-    "value": 5.1
-  },
-  {
-    "month": "2025-02",
-    "value": 5.2
-  },
-  {
-    "month": "2025-03",
-    "value": 5.1
-  },
-  {
-    "month": "2025-04",
-    "value": 5.5
-  },
-  {
-    "month": "2025-05",
-    "value": 4.9
-  },
-  {
-    "month": "2025-06",
-    "value": 4.6
-  },
-  {
-    "month": "2025-07",
-    "value": 4.5
-  },
-  {
-    "month": "2025-08",
-    "value": 4.4
-  },
-  {
-    "month": "2025-09",
-    "value": 4.3
-  },
-  {
-    "month": "2025-10",
-    "value": 3.9
-  },
-  {
-    "month": "2025-11",
-    "value": 3.8
-  },
-  {
-    "month": "2025-12",
-    "value": 3.6
-  },
-  {
-    "month": "2026-01",
-    "value": 4.4
-  },
-  {
-    "month": "2026-02",
-    "value": 3.8
-  },
-  {
-    "month": "2026-03",
-    "value": 3.5
-  },
-  {
-    "month": "2026-04",
-    "value": 3
-  },
-  {
-    "month": "2026-05",
-    "value": 3
-  }
+export const US_SAVINGS_RATE: SavingsRatePoint[] = [
+  { month: "1970-01", value: 11.8 },
+  { month: "1970-02", value: 11.7 },
+  { month: "1970-03", value: 12.4 },
+  { month: "1970-04", value: 13.3 },
+  { month: "1970-05", value: 12.4 },
+  { month: "1970-06", value: 12.3 },
+  { month: "1970-07", value: 13.5 },
+  { month: "1970-08", value: 13.4 },
+  { month: "1970-09", value: 12.9 },
+  { month: "1970-10", value: 13.1 },
+  { month: "1970-11", value: 13.6 },
+  { month: "1970-12", value: 13.2 },
+  { month: "1971-01", value: 13.3 },
+  { month: "1971-02", value: 13.3 },
+  { month: "1971-03", value: 13.5 },
+  { month: "1971-04", value: 13.2 },
+  { month: "1971-05", value: 13.6 },
+  { month: "1971-06", value: 14.7 },
+  { month: "1971-07", value: 13.8 },
+  { month: "1971-08", value: 13.6 },
+  { month: "1971-09", value: 13.3 },
+  { month: "1971-10", value: 13.3 },
+  { month: "1971-11", value: 13.1 },
+  { month: "1971-12", value: 13 },
+  { month: "1972-01", value: 12.5 },
+  { month: "1972-02", value: 12.8 },
+  { month: "1972-03", value: 11.8 },
+  { month: "1972-04", value: 11.5 },
+  { month: "1972-05", value: 11.7 },
+  { month: "1972-06", value: 11.7 },
+  { month: "1972-07", value: 11.7 },
+  { month: "1972-08", value: 12 },
+  { month: "1972-09", value: 12.2 },
+  { month: "1972-10", value: 13 },
+  { month: "1972-11", value: 13.6 },
+  { month: "1972-12", value: 13.7 },
+  { month: "1973-01", value: 12.4 },
+  { month: "1973-02", value: 12.5 },
+  { month: "1973-03", value: 12.7 },
+  { month: "1973-04", value: 13.2 },
+  { month: "1973-05", value: 13.2 },
+  { month: "1973-06", value: 13.6 },
+  { month: "1973-07", value: 13.2 },
+  { month: "1973-08", value: 13.9 },
+  { month: "1973-09", value: 13.1 },
+  { month: "1973-10", value: 14.4 },
+  { month: "1973-11", value: 14.4 },
+  { month: "1973-12", value: 14.8 },
+  { month: "1974-01", value: 14.3 },
+  { month: "1974-02", value: 14.2 },
+  { month: "1974-03", value: 13.4 },
+  { month: "1974-04", value: 13.1 },
+  { month: "1974-05", value: 12.8 },
+  { month: "1974-06", value: 12.8 },
+  { month: "1974-07", value: 12.8 },
+  { month: "1974-08", value: 12.1 },
+  { month: "1974-09", value: 12.9 },
+  { month: "1974-10", value: 13.4 },
+  { month: "1974-11", value: 13.8 },
+  { month: "1974-12", value: 14 },
+  { month: "1975-01", value: 13.2 },
+  { month: "1975-02", value: 12.5 },
+  { month: "1975-03", value: 12.7 },
+  { month: "1975-04", value: 14.2 },
+  { month: "1975-05", value: 17.3 },
+  { month: "1975-06", value: 14.3 },
+  { month: "1975-07", value: 12.6 },
+  { month: "1975-08", value: 13 },
+  { month: "1975-09", value: 13 },
+  { month: "1975-10", value: 13.4 },
+  { month: "1975-11", value: 12.7 },
+  { month: "1975-12", value: 12 },
+  { month: "1976-01", value: 11.7 },
+  { month: "1976-02", value: 12.3 },
+  { month: "1976-03", value: 12.2 },
+  { month: "1976-04", value: 11.7 },
+  { month: "1976-05", value: 12.3 },
+  { month: "1976-06", value: 11.4 },
+  { month: "1976-07", value: 11.7 },
+  { month: "1976-08", value: 11.7 },
+  { month: "1976-09", value: 11.4 },
+  { month: "1976-10", value: 11.1 },
+  { month: "1976-11", value: 11.4 },
+  { month: "1976-12", value: 10.6 },
+  { month: "1977-01", value: 10.6 },
+  { month: "1977-02", value: 9.3 },
+  { month: "1977-03", value: 10.5 },
+  { month: "1977-04", value: 10.5 },
+  { month: "1977-05", value: 10.3 },
+  { month: "1977-06", value: 10.6 },
+  { month: "1977-07", value: 10.5 },
+  { month: "1977-08", value: 10.9 },
+  { month: "1977-09", value: 11.1 },
+  { month: "1977-10", value: 11 },
+  { month: "1977-11", value: 11.2 },
+  { month: "1977-12", value: 11.4 },
+  { month: "1978-01", value: 11.9 },
+  { month: "1978-02", value: 11.1 },
+  { month: "1978-03", value: 11 },
+  { month: "1978-04", value: 10.8 },
+  { month: "1978-05", value: 10.3 },
+  { month: "1978-06", value: 10 },
+  { month: "1978-07", value: 10.9 },
+  { month: "1978-08", value: 10.5 },
+  { month: "1978-09", value: 10.6 },
+  { month: "1978-10", value: 10.7 },
+  { month: "1978-11", value: 10.5 },
+  { month: "1978-12", value: 10.4 },
+  { month: "1979-01", value: 11.1 },
+  { month: "1979-02", value: 11 },
+  { month: "1979-03", value: 11.2 },
+  { month: "1979-04", value: 11 },
+  { month: "1979-05", value: 10.3 },
+  { month: "1979-06", value: 9.8 },
+  { month: "1979-07", value: 10.6 },
+  { month: "1979-08", value: 9.7 },
+  { month: "1979-09", value: 9.4 },
+  { month: "1979-10", value: 9.7 },
+  { month: "1979-11", value: 9.7 },
+  { month: "1979-12", value: 10.1 },
+  { month: "1980-01", value: 9.9 },
+  { month: "1980-02", value: 10.1 },
+  { month: "1980-03", value: 10.3 },
+  { month: "1980-04", value: 11.4 },
+  { month: "1980-05", value: 11.5 },
+  { month: "1980-06", value: 11.3 },
+  { month: "1980-07", value: 11.4 },
+  { month: "1980-08", value: 11.4 },
+  { month: "1980-09", value: 11.7 },
+  { month: "1980-10", value: 11.3 },
+  { month: "1980-11", value: 11.6 },
+  { month: "1980-12", value: 11.4 },
+  { month: "1981-01", value: 10.9 },
+  { month: "1981-02", value: 10.8 },
+  { month: "1981-03", value: 10.8 },
+  { month: "1981-04", value: 10.8 },
+  { month: "1981-05", value: 10.9 },
+  { month: "1981-06", value: 10.8 },
+  { month: "1981-07", value: 12.3 },
+  { month: "1981-08", value: 12 },
+  { month: "1981-09", value: 12.3 },
+  { month: "1981-10", value: 12.9 },
+  { month: "1981-11", value: 13 },
+  { month: "1981-12", value: 12.4 },
+  { month: "1982-01", value: 12.6 },
+  { month: "1982-02", value: 12 },
+  { month: "1982-03", value: 12.1 },
+  { month: "1982-04", value: 12.8 },
+  { month: "1982-05", value: 12.2 },
+  { month: "1982-06", value: 12.2 },
+  { month: "1982-07", value: 12.5 },
+  { month: "1982-08", value: 12.5 },
+  { month: "1982-09", value: 11.7 },
+  { month: "1982-10", value: 11.2 },
+  { month: "1982-11", value: 10.9 },
+  { month: "1982-12", value: 10.9 },
+  { month: "1983-01", value: 11.1 },
+  { month: "1983-02", value: 11.2 },
+  { month: "1983-03", value: 10.7 },
+  { month: "1983-04", value: 10.3 },
+  { month: "1983-05", value: 9.9 },
+  { month: "1983-06", value: 9.2 },
+  { month: "1983-07", value: 9.7 },
+  { month: "1983-08", value: 9.2 },
+  { month: "1983-09", value: 9.6 },
+  { month: "1983-10", value: 9.7 },
+  { month: "1983-11", value: 10.3 },
+  { month: "1983-12", value: 10.1 },
+  { month: "1984-01", value: 9.9 },
+  { month: "1984-02", value: 11.6 },
+  { month: "1984-03", value: 11.4 },
+  { month: "1984-04", value: 11.4 },
+  { month: "1984-05", value: 11 },
+  { month: "1984-06", value: 11 },
+  { month: "1984-07", value: 11.4 },
+  { month: "1984-08", value: 11.7 },
+  { month: "1984-09", value: 11.7 },
+  { month: "1984-10", value: 11.6 },
+  { month: "1984-11", value: 10.7 },
+  { month: "1984-12", value: 11.1 },
+  { month: "1985-01", value: 10.2 },
+  { month: "1985-02", value: 8.9 },
+  { month: "1985-03", value: 8.6 },
+  { month: "1985-04", value: 9.8 },
+  { month: "1985-05", value: 11 },
+  { month: "1985-06", value: 9.6 },
+  { month: "1985-07", value: 9.1 },
+  { month: "1985-08", value: 8.1 },
+  { month: "1985-09", value: 7.3 },
+  { month: "1985-10", value: 9.1 },
+  { month: "1985-11", value: 9 },
+  { month: "1985-12", value: 8.6 },
+  { month: "1986-01", value: 8.7 },
+  { month: "1986-02", value: 9.3 },
+  { month: "1986-03", value: 9.9 },
+  { month: "1986-04", value: 9.7 },
+  { month: "1986-05", value: 9.3 },
+  { month: "1986-06", value: 9.4 },
+  { month: "1986-07", value: 9.3 },
+  { month: "1986-08", value: 8.9 },
+  { month: "1986-09", value: 7.1 },
+  { month: "1986-10", value: 8.3 },
+  { month: "1986-11", value: 8.6 },
+  { month: "1986-12", value: 6.8 },
+  { month: "1987-01", value: 9.4 },
+  { month: "1987-02", value: 8.2 },
+  { month: "1987-03", value: 8.1 },
+  { month: "1987-04", value: 4.1 },
+  { month: "1987-05", value: 7.8 },
+  { month: "1987-06", value: 7.3 },
+  { month: "1987-07", value: 7.1 },
+  { month: "1987-08", value: 6.8 },
+  { month: "1987-09", value: 7.2 },
+  { month: "1987-10", value: 7.9 },
+  { month: "1987-11", value: 8.2 },
+  { month: "1987-12", value: 8.4 },
+  { month: "1988-01", value: 7.9 },
+  { month: "1988-02", value: 8.4 },
+  { month: "1988-03", value: 8 },
+  { month: "1988-04", value: 8.7 },
+  { month: "1988-05", value: 8.3 },
+  { month: "1988-06", value: 8.4 },
+  { month: "1988-07", value: 8.6 },
+  { month: "1988-08", value: 8.4 },
+  { month: "1988-09", value: 8.8 },
+  { month: "1988-10", value: 8.6 },
+  { month: "1988-11", value: 8.4 },
+  { month: "1988-12", value: 8.3 },
+  { month: "1989-01", value: 8.5 },
+  { month: "1989-02", value: 8.9 },
+  { month: "1989-03", value: 9.4 },
+  { month: "1989-04", value: 8.3 },
+  { month: "1989-05", value: 8 },
+  { month: "1989-06", value: 8.1 },
+  { month: "1989-07", value: 8.1 },
+  { month: "1989-08", value: 7.5 },
+  { month: "1989-09", value: 7.9 },
+  { month: "1989-10", value: 8.4 },
+  { month: "1989-11", value: 8.5 },
+  { month: "1989-12", value: 7.7 },
+  { month: "1990-01", value: 7.9 },
+  { month: "1990-02", value: 8.5 },
+  { month: "1990-03", value: 8.3 },
+  { month: "1990-04", value: 8.7 },
+  { month: "1990-05", value: 8.7 },
+  { month: "1990-06", value: 8.6 },
+  { month: "1990-07", value: 8.7 },
+  { month: "1990-08", value: 8.1 },
+  { month: "1990-09", value: 8.1 },
+  { month: "1990-10", value: 7.9 },
+  { month: "1990-11", value: 8 },
+  { month: "1990-12", value: 8.8 },
+  { month: "1991-01", value: 9.4 },
+  { month: "1991-02", value: 9 },
+  { month: "1991-03", value: 8.1 },
+  { month: "1991-04", value: 8.7 },
+  { month: "1991-05", value: 8.5 },
+  { month: "1991-06", value: 9 },
+  { month: "1991-07", value: 8.4 },
+  { month: "1991-08", value: 8.7 },
+  { month: "1991-09", value: 8.9 },
+  { month: "1991-10", value: 9.4 },
+  { month: "1991-11", value: 9.1 },
+  { month: "1991-12", value: 9.8 },
+  { month: "1992-01", value: 9.5 },
+  { month: "1992-02", value: 9.8 },
+  { month: "1992-03", value: 9.7 },
+  { month: "1992-04", value: 9.8 },
+  { month: "1992-05", value: 9.8 },
+  { month: "1992-06", value: 10 },
+  { month: "1992-07", value: 9.5 },
+  { month: "1992-08", value: 9.6 },
+  { month: "1992-09", value: 8.6 },
+  { month: "1992-10", value: 7.9 },
+  { month: "1992-11", value: 7.9 },
+  { month: "1992-12", value: 10.5 },
+  { month: "1993-01", value: 8.5 },
+  { month: "1993-02", value: 8.8 },
+  { month: "1993-03", value: 8.8 },
+  { month: "1993-04", value: 8.7 },
+  { month: "1993-05", value: 8.2 },
+  { month: "1993-06", value: 7.7 },
+  { month: "1993-07", value: 7.5 },
+  { month: "1993-08", value: 7.6 },
+  { month: "1993-09", value: 6.8 },
+  { month: "1993-10", value: 6.2 },
+  { month: "1993-11", value: 6.2 },
+  { month: "1993-12", value: 9 },
+  { month: "1994-01", value: 7 },
+  { month: "1994-02", value: 6.4 },
+  { month: "1994-03", value: 6.7 },
+  { month: "1994-04", value: 6.3 },
+  { month: "1994-05", value: 7.5 },
+  { month: "1994-06", value: 6.8 },
+  { month: "1994-07", value: 6.9 },
+  { month: "1994-08", value: 6.4 },
+  { month: "1994-09", value: 6.7 },
+  { month: "1994-10", value: 7 },
+  { month: "1994-11", value: 6.9 },
+  { month: "1994-12", value: 7 },
+  { month: "1995-01", value: 7.3 },
+  { month: "1995-02", value: 7.7 },
+  { month: "1995-03", value: 7.4 },
+  { month: "1995-04", value: 6.8 },
+  { month: "1995-05", value: 7 },
+  { month: "1995-06", value: 6.5 },
+  { month: "1995-07", value: 6.9 },
+  { month: "1995-08", value: 6.6 },
+  { month: "1995-09", value: 6.6 },
+  { month: "1995-10", value: 7 },
+  { month: "1995-11", value: 6.4 },
+  { month: "1995-12", value: 6 },
+  { month: "1996-01", value: 6.5 },
+  { month: "1996-02", value: 6.6 },
+  { month: "1996-03", value: 6.4 },
+  { month: "1996-04", value: 5.5 },
+  { month: "1996-05", value: 6.5 },
+  { month: "1996-06", value: 6.9 },
+  { month: "1996-07", value: 6.5 },
+  { month: "1996-08", value: 6.4 },
+  { month: "1996-09", value: 6.4 },
+  { month: "1996-10", value: 6.1 },
+  { month: "1996-11", value: 6.2 },
+  { month: "1996-12", value: 6.1 },
+  { month: "1997-01", value: 5.9 },
+  { month: "1997-02", value: 6 },
+  { month: "1997-03", value: 6.1 },
+  { month: "1997-04", value: 6.2 },
+  { month: "1997-05", value: 6.5 },
+  { month: "1997-06", value: 6.3 },
+  { month: "1997-07", value: 5.8 },
+  { month: "1997-08", value: 5.7 },
+  { month: "1997-09", value: 5.9 },
+  { month: "1997-10", value: 5.9 },
+  { month: "1997-11", value: 6.1 },
+  { month: "1997-12", value: 6.1 },
+  { month: "1998-01", value: 7 },
+  { month: "1998-02", value: 7 },
+  { month: "1998-03", value: 7.1 },
+  { month: "1998-04", value: 6.9 },
+  { month: "1998-05", value: 6.6 },
+  { month: "1998-06", value: 6.5 },
+  { month: "1998-07", value: 6.6 },
+  { month: "1998-08", value: 6.5 },
+  { month: "1998-09", value: 6.1 },
+  { month: "1998-10", value: 5.9 },
+  { month: "1998-11", value: 6 },
+  { month: "1998-12", value: 5.5 },
+  { month: "1999-01", value: 6.1 },
+  { month: "1999-02", value: 6 },
+  { month: "1999-03", value: 5.6 },
+  { month: "1999-04", value: 4.7 },
+  { month: "1999-05", value: 4.4 },
+  { month: "1999-06", value: 4.3 },
+  { month: "1999-07", value: 4.4 },
+  { month: "1999-08", value: 4.3 },
+  { month: "1999-09", value: 3.7 },
+  { month: "1999-10", value: 4 },
+  { month: "1999-11", value: 4.1 },
+  { month: "1999-12", value: 3.7 },
+  { month: "2000-01", value: 4.5 },
+  { month: "2000-02", value: 4 },
+  { month: "2000-03", value: 3.8 },
+  { month: "2000-04", value: 4.3 },
+  { month: "2000-05", value: 4.3 },
+  { month: "2000-06", value: 4.3 },
+  { month: "2000-07", value: 4.7 },
+  { month: "2000-08", value: 4.8 },
+  { month: "2000-09", value: 4.1 },
+  { month: "2000-10", value: 4.3 },
+  { month: "2000-11", value: 4.3 },
+  { month: "2000-12", value: 4.1 },
+  { month: "2001-01", value: 4.5 },
+  { month: "2001-02", value: 4.6 },
+  { month: "2001-03", value: 4.9 },
+  { month: "2001-04", value: 4.8 },
+  { month: "2001-05", value: 4.3 },
+  { month: "2001-06", value: 4.2 },
+  { month: "2001-07", value: 5.4 },
+  { month: "2001-08", value: 6.5 },
+  { month: "2001-09", value: 6.9 },
+  { month: "2001-10", value: 2.9 },
+  { month: "2001-11", value: 3.4 },
+  { month: "2001-12", value: 3.7 },
+  { month: "2002-01", value: 5.6 },
+  { month: "2002-02", value: 5.4 },
+  { month: "2002-03", value: 5.5 },
+  { month: "2002-04", value: 5.4 },
+  { month: "2002-05", value: 6.1 },
+  { month: "2002-06", value: 6.1 },
+  { month: "2002-07", value: 5.3 },
+  { month: "2002-08", value: 5.2 },
+  { month: "2002-09", value: 5.8 },
+  { month: "2002-10", value: 5.6 },
+  { month: "2002-11", value: 5.6 },
+  { month: "2002-12", value: 5.3 },
+  { month: "2003-01", value: 5.3 },
+  { month: "2003-02", value: 5.2 },
+  { month: "2003-03", value: 4.9 },
+  { month: "2003-04", value: 5 },
+  { month: "2003-05", value: 5.3 },
+  { month: "2003-06", value: 5.1 },
+  { month: "2003-07", value: 5.9 },
+  { month: "2003-08", value: 5.7 },
+  { month: "2003-09", value: 4.9 },
+  { month: "2003-10", value: 5 },
+  { month: "2003-11", value: 5 },
+  { month: "2003-12", value: 5 },
+  { month: "2004-01", value: 4.6 },
+  { month: "2004-02", value: 4.6 },
+  { month: "2004-03", value: 4.5 },
+  { month: "2004-04", value: 4.9 },
+  { month: "2004-05", value: 4.8 },
+  { month: "2004-06", value: 5.4 },
+  { month: "2004-07", value: 4.7 },
+  { month: "2004-08", value: 4.7 },
+  { month: "2004-09", value: 4.1 },
+  { month: "2004-10", value: 3.9 },
+  { month: "2004-11", value: 3.4 },
+  { month: "2004-12", value: 6.2 },
+  { month: "2005-01", value: 2.7 },
+  { month: "2005-02", value: 2.3 },
+  { month: "2005-03", value: 2.5 },
+  { month: "2005-04", value: 2.1 },
+  { month: "2005-05", value: 2.6 },
+  { month: "2005-06", value: 2 },
+  { month: "2005-07", value: 1.4 },
+  { month: "2005-08", value: 2 },
+  { month: "2005-09", value: 2 },
+  { month: "2005-10", value: 2.3 },
+  { month: "2005-11", value: 2.6 },
+  { month: "2005-12", value: 2.5 },
+  { month: "2006-01", value: 3 },
+  { month: "2006-02", value: 3.2 },
+  { month: "2006-03", value: 3.3 },
+  { month: "2006-04", value: 3.1 },
+  { month: "2006-05", value: 2.9 },
+  { month: "2006-06", value: 2.9 },
+  { month: "2006-07", value: 2.3 },
+  { month: "2006-08", value: 2.5 },
+  { month: "2006-09", value: 2.4 },
+  { month: "2006-10", value: 2.4 },
+  { month: "2006-11", value: 2.7 },
+  { month: "2006-12", value: 2.6 },
+  { month: "2007-01", value: 2.4 },
+  { month: "2007-02", value: 2.8 },
+  { month: "2007-03", value: 3 },
+  { month: "2007-04", value: 3 },
+  { month: "2007-05", value: 2.8 },
+  { month: "2007-06", value: 2.7 },
+  { month: "2007-07", value: 2.6 },
+  { month: "2007-08", value: 2.2 },
+  { month: "2007-09", value: 2.3 },
+  { month: "2007-10", value: 2.2 },
+  { month: "2007-11", value: 1.9 },
+  { month: "2007-12", value: 2.4 },
+  { month: "2008-01", value: 2.6 },
+  { month: "2008-02", value: 3 },
+  { month: "2008-03", value: 2.9 },
+  { month: "2008-04", value: 2.4 },
+  { month: "2008-05", value: 6.8 },
+  { month: "2008-06", value: 4.6 },
+  { month: "2008-07", value: 3.6 },
+  { month: "2008-08", value: 3.1 },
+  { month: "2008-09", value: 3.9 },
+  { month: "2008-10", value: 4.9 },
+  { month: "2008-11", value: 6 },
+  { month: "2008-12", value: 5.8 },
+  { month: "2009-01", value: 5.9 },
+  { month: "2009-02", value: 5.4 },
+  { month: "2009-03", value: 5.8 },
+  { month: "2009-04", value: 6.5 },
+  { month: "2009-05", value: 7.8 },
+  { month: "2009-06", value: 6.1 },
+  { month: "2009-07", value: 5.4 },
+  { month: "2009-08", value: 4.4 },
+  { month: "2009-09", value: 5.5 },
+  { month: "2009-10", value: 5.1 },
+  { month: "2009-11", value: 5.5 },
+  { month: "2009-12", value: 5.4 },
+  { month: "2010-01", value: 5.6 },
+  { month: "2010-02", value: 5.3 },
+  { month: "2010-03", value: 5.3 },
+  { month: "2010-04", value: 6 },
+  { month: "2010-05", value: 6.4 },
+  { month: "2010-06", value: 6.2 },
+  { month: "2010-07", value: 6.1 },
+  { month: "2010-08", value: 6.2 },
+  { month: "2010-09", value: 6.1 },
+  { month: "2010-10", value: 5.9 },
+  { month: "2010-11", value: 5.8 },
+  { month: "2010-12", value: 6.2 },
+  { month: "2011-01", value: 6.6 },
+  { month: "2011-02", value: 6.9 },
+  { month: "2011-03", value: 6.3 },
+  { month: "2011-04", value: 6.3 },
+  { month: "2011-05", value: 6.3 },
+  { month: "2011-06", value: 6.5 },
+  { month: "2011-07", value: 6.7 },
+  { month: "2011-08", value: 6.7 },
+  { month: "2011-09", value: 6.4 },
+  { month: "2011-10", value: 6.3 },
+  { month: "2011-11", value: 6.4 },
+  { month: "2011-12", value: 7.2 },
+  { month: "2012-01", value: 7.4 },
+  { month: "2012-02", value: 7.3 },
+  { month: "2012-03", value: 7.6 },
+  { month: "2012-04", value: 7.9 },
+  { month: "2012-05", value: 7.9 },
+  { month: "2012-06", value: 7.9 },
+  { month: "2012-07", value: 7 },
+  { month: "2012-08", value: 6.7 },
+  { month: "2012-09", value: 7.2 },
+  { month: "2012-10", value: 7.8 },
+  { month: "2012-11", value: 8.7 },
+  { month: "2012-12", value: 10.9 },
+  { month: "2013-01", value: 4.9 },
+  { month: "2013-02", value: 4.7 },
+  { month: "2013-03", value: 4.8 },
+  { month: "2013-04", value: 5.1 },
+  { month: "2013-05", value: 5.3 },
+  { month: "2013-06", value: 5.4 },
+  { month: "2013-07", value: 5.2 },
+  { month: "2013-08", value: 5.2 },
+  { month: "2013-09", value: 5.3 },
+  { month: "2013-10", value: 4.7 },
+  { month: "2013-11", value: 4.5 },
+  { month: "2013-12", value: 4.5 },
+  { month: "2014-01", value: 5.2 },
+  { month: "2014-02", value: 5.3 },
+  { month: "2014-03", value: 5.2 },
+  { month: "2014-04", value: 5.4 },
+  { month: "2014-05", value: 5.6 },
+  { month: "2014-06", value: 5.6 },
+  { month: "2014-07", value: 5.5 },
+  { month: "2014-08", value: 5.3 },
+  { month: "2014-09", value: 5.5 },
+  { month: "2014-10", value: 5.4 },
+  { month: "2014-11", value: 5.6 },
+  { month: "2014-12", value: 6 },
+  { month: "2015-01", value: 6.3 },
+  { month: "2015-02", value: 6.4 },
+  { month: "2015-03", value: 5.9 },
+  { month: "2015-04", value: 5.9 },
+  { month: "2015-05", value: 5.8 },
+  { month: "2015-06", value: 5.7 },
+  { month: "2015-07", value: 5.6 },
+  { month: "2015-08", value: 5.6 },
+  { month: "2015-09", value: 5.8 },
+  { month: "2015-10", value: 5.8 },
+  { month: "2015-11", value: 5.6 },
+  { month: "2015-12", value: 5.8 },
+  { month: "2016-01", value: 6.1 },
+  { month: "2016-02", value: 5.6 },
+  { month: "2016-03", value: 5.9 },
+  { month: "2016-04", value: 5.5 },
+  { month: "2016-05", value: 5.3 },
+  { month: "2016-06", value: 4.9 },
+  { month: "2016-07", value: 5.1 },
+  { month: "2016-08", value: 5.1 },
+  { month: "2016-09", value: 5.1 },
+  { month: "2016-10", value: 5.3 },
+  { month: "2016-11", value: 5.4 },
+  { month: "2016-12", value: 5 },
+  { month: "2017-01", value: 5.3 },
+  { month: "2017-02", value: 5.6 },
+  { month: "2017-03", value: 5.6 },
+  { month: "2017-04", value: 5.7 },
+  { month: "2017-05", value: 6.3 },
+  { month: "2017-06", value: 6 },
+  { month: "2017-07", value: 6 },
+  { month: "2017-08", value: 6.1 },
+  { month: "2017-09", value: 5.9 },
+  { month: "2017-10", value: 6 },
+  { month: "2017-11", value: 5.6 },
+  { month: "2017-12", value: 5 },
+  { month: "2018-01", value: 5.7 },
+  { month: "2018-02", value: 5.8 },
+  { month: "2018-03", value: 5.9 },
+  { month: "2018-04", value: 6 },
+  { month: "2018-05", value: 6 },
+  { month: "2018-06", value: 6.3 },
+  { month: "2018-07", value: 6.5 },
+  { month: "2018-08", value: 6.6 },
+  { month: "2018-09", value: 6.8 },
+  { month: "2018-10", value: 6.7 },
+  { month: "2018-11", value: 6.5 },
+  { month: "2018-12", value: 8.4 },
+  { month: "2019-01", value: 8.4 },
+  { month: "2019-02", value: 8.5 },
+  { month: "2019-03", value: 7.9 },
+  { month: "2019-04", value: 7.6 },
+  { month: "2019-05", value: 7.3 },
+  { month: "2019-06", value: 7.1 },
+  { month: "2019-07", value: 6.8 },
+  { month: "2019-08", value: 6.9 },
+  { month: "2019-09", value: 7 },
+  { month: "2019-10", value: 7.1 },
+  { month: "2019-11", value: 6.9 },
+  { month: "2019-12", value: 6.2 },
+  { month: "2020-01", value: 6.8 },
+  { month: "2020-02", value: 7.5 },
+  { month: "2020-03", value: 12.4 },
+  { month: "2020-04", value: 31.8 },
+  { month: "2020-05", value: 22.6 },
+  { month: "2020-06", value: 18.3 },
+  { month: "2020-07", value: 17.9 },
+  { month: "2020-08", value: 13.9 },
+  { month: "2020-09", value: 13.3 },
+  { month: "2020-10", value: 12.8 },
+  { month: "2020-11", value: 12 },
+  { month: "2020-12", value: 11.8 },
+  { month: "2021-01", value: 19.5 },
+  { month: "2021-02", value: 13 },
+  { month: "2021-03", value: 26.2 },
+  { month: "2021-04", value: 12.4 },
+  { month: "2021-05", value: 10 },
+  { month: "2021-06", value: 8.8 },
+  { month: "2021-07", value: 9.5 },
+  { month: "2021-08", value: 8.7 },
+  { month: "2021-09", value: 7.6 },
+  { month: "2021-10", value: 7 },
+  { month: "2021-11", value: 6.6 },
+  { month: "2021-12", value: 6.6 },
+  { month: "2022-01", value: 4.2 },
+  { month: "2022-02", value: 4.1 },
+  { month: "2022-03", value: 3.2 },
+  { month: "2022-04", value: 2.6 },
+  { month: "2022-05", value: 2.6 },
+  { month: "2022-06", value: 2.2 },
+  { month: "2022-07", value: 3.3 },
+  { month: "2022-08", value: 3.2 },
+  { month: "2022-09", value: 3.4 },
+  { month: "2022-10", value: 3.4 },
+  { month: "2022-11", value: 3.8 },
+  { month: "2022-12", value: 4.2 },
+  { month: "2023-01", value: 4.9 },
+  { month: "2023-02", value: 5.5 },
+  { month: "2023-03", value: 6 },
+  { month: "2023-04", value: 5.8 },
+  { month: "2023-05", value: 6.1 },
+  { month: "2023-06", value: 5.8 },
+  { month: "2023-07", value: 5.5 },
+  { month: "2023-08", value: 5.6 },
+  { month: "2023-09", value: 5.3 },
+  { month: "2023-10", value: 5.4 },
+  { month: "2023-11", value: 5.6 },
+  { month: "2023-12", value: 5.6 },
+  { month: "2024-01", value: 6.4 },
+  { month: "2024-02", value: 6.1 },
+  { month: "2024-03", value: 5.9 },
+  { month: "2024-04", value: 5.8 },
+  { month: "2024-05", value: 5.8 },
+  { month: "2024-06", value: 5.7 },
+  { month: "2024-07", value: 5.3 },
+  { month: "2024-08", value: 5.2 },
+  { month: "2024-09", value: 4.8 },
+  { month: "2024-10", value: 5 },
+  { month: "2024-11", value: 4.9 },
+  { month: "2024-12", value: 4.3 },
+  { month: "2025-01", value: 5.1 },
+  { month: "2025-02", value: 5.2 },
+  { month: "2025-03", value: 5.1 },
+  { month: "2025-04", value: 5.5 },
+  { month: "2025-05", value: 4.9 },
+  { month: "2025-06", value: 4.6 },
+  { month: "2025-07", value: 4.5 },
+  { month: "2025-08", value: 4.4 },
+  { month: "2025-09", value: 4.3 },
+  { month: "2025-10", value: 3.9 },
+  { month: "2025-11", value: 3.8 },
+  { month: "2025-12", value: 3.6 },
+  { month: "2026-01", value: 4.4 },
+  { month: "2026-02", value: 3.8 },
+  { month: "2026-03", value: 3.5 },
+  { month: "2026-04", value: 3 },
+  { month: "2026-05", value: 3 }
 ];
 
 // --- Capital Markets Batch 4 Data ---
 export interface CorporateYieldPoint { month: string; aaa: number; baa: number; }
-export const US_CORPORATE_YIELDS: CorporateYieldPoint[] =  [
-  {
-    "month": "1970-01",
-    "aaa": 7.91,
-    "baa": 8.86
-  },
-  {
-    "month": "1970-02",
-    "aaa": 7.93,
-    "baa": 8.78
-  },
-  {
-    "month": "1970-03",
-    "aaa": 7.84,
-    "baa": 8.63
-  },
-  {
-    "month": "1970-04",
-    "aaa": 7.83,
-    "baa": 8.7
-  },
-  {
-    "month": "1970-05",
-    "aaa": 8.11,
-    "baa": 8.98
-  },
-  {
-    "month": "1970-06",
-    "aaa": 8.48,
-    "baa": 9.25
-  },
-  {
-    "month": "1970-07",
-    "aaa": 8.44,
-    "baa": 9.4
-  },
-  {
-    "month": "1970-08",
-    "aaa": 8.13,
-    "baa": 9.44
-  },
-  {
-    "month": "1970-09",
-    "aaa": 8.09,
-    "baa": 9.39
-  },
-  {
-    "month": "1970-10",
-    "aaa": 8.03,
-    "baa": 9.33
-  },
-  {
-    "month": "1970-11",
-    "aaa": 8.05,
-    "baa": 9.38
-  },
-  {
-    "month": "1970-12",
-    "aaa": 7.64,
-    "baa": 9.12
-  },
-  {
-    "month": "1971-01",
-    "aaa": 7.36,
-    "baa": 8.74
-  },
-  {
-    "month": "1971-02",
-    "aaa": 7.08,
-    "baa": 8.39
-  },
-  {
-    "month": "1971-03",
-    "aaa": 7.21,
-    "baa": 8.46
-  },
-  {
-    "month": "1971-04",
-    "aaa": 7.25,
-    "baa": 8.45
-  },
-  {
-    "month": "1971-05",
-    "aaa": 7.53,
-    "baa": 8.62
-  },
-  {
-    "month": "1971-06",
-    "aaa": 7.64,
-    "baa": 8.75
-  },
-  {
-    "month": "1971-07",
-    "aaa": 7.64,
-    "baa": 8.76
-  },
-  {
-    "month": "1971-08",
-    "aaa": 7.59,
-    "baa": 8.76
-  },
-  {
-    "month": "1971-09",
-    "aaa": 7.44,
-    "baa": 8.59
-  },
-  {
-    "month": "1971-10",
-    "aaa": 7.39,
-    "baa": 8.48
-  },
-  {
-    "month": "1971-11",
-    "aaa": 7.26,
-    "baa": 8.38
-  },
-  {
-    "month": "1971-12",
-    "aaa": 7.25,
-    "baa": 8.38
-  },
-  {
-    "month": "1972-01",
-    "aaa": 7.19,
-    "baa": 8.23
-  },
-  {
-    "month": "1972-02",
-    "aaa": 7.27,
-    "baa": 8.23
-  },
-  {
-    "month": "1972-03",
-    "aaa": 7.24,
-    "baa": 8.24
-  },
-  {
-    "month": "1972-04",
-    "aaa": 7.3,
-    "baa": 8.24
-  },
-  {
-    "month": "1972-05",
-    "aaa": 7.3,
-    "baa": 8.23
-  },
-  {
-    "month": "1972-06",
-    "aaa": 7.23,
-    "baa": 8.2
-  },
-  {
-    "month": "1972-07",
-    "aaa": 7.21,
-    "baa": 8.23
-  },
-  {
-    "month": "1972-08",
-    "aaa": 7.19,
-    "baa": 8.19
-  },
-  {
-    "month": "1972-09",
-    "aaa": 7.22,
-    "baa": 8.09
-  },
-  {
-    "month": "1972-10",
-    "aaa": 7.21,
-    "baa": 8.06
-  },
-  {
-    "month": "1972-11",
-    "aaa": 7.12,
-    "baa": 7.99
-  },
-  {
-    "month": "1972-12",
-    "aaa": 7.08,
-    "baa": 7.93
-  },
-  {
-    "month": "1973-01",
-    "aaa": 7.15,
-    "baa": 7.9
-  },
-  {
-    "month": "1973-02",
-    "aaa": 7.22,
-    "baa": 7.97
-  },
-  {
-    "month": "1973-03",
-    "aaa": 7.29,
-    "baa": 8.03
-  },
-  {
-    "month": "1973-04",
-    "aaa": 7.26,
-    "baa": 8.09
-  },
-  {
-    "month": "1973-05",
-    "aaa": 7.29,
-    "baa": 8.06
-  },
-  {
-    "month": "1973-06",
-    "aaa": 7.37,
-    "baa": 8.13
-  },
-  {
-    "month": "1973-07",
-    "aaa": 7.45,
-    "baa": 8.24
-  },
-  {
-    "month": "1973-08",
-    "aaa": 7.68,
-    "baa": 8.53
-  },
-  {
-    "month": "1973-09",
-    "aaa": 7.63,
-    "baa": 8.63
-  },
-  {
-    "month": "1973-10",
-    "aaa": 7.6,
-    "baa": 8.41
-  },
-  {
-    "month": "1973-11",
-    "aaa": 7.67,
-    "baa": 8.42
-  },
-  {
-    "month": "1973-12",
-    "aaa": 7.68,
-    "baa": 8.48
-  },
-  {
-    "month": "1974-01",
-    "aaa": 7.83,
-    "baa": 8.48
-  },
-  {
-    "month": "1974-02",
-    "aaa": 7.85,
-    "baa": 8.53
-  },
-  {
-    "month": "1974-03",
-    "aaa": 8.01,
-    "baa": 8.62
-  },
-  {
-    "month": "1974-04",
-    "aaa": 8.25,
-    "baa": 8.87
-  },
-  {
-    "month": "1974-05",
-    "aaa": 8.37,
-    "baa": 9.05
-  },
-  {
-    "month": "1974-06",
-    "aaa": 8.47,
-    "baa": 9.27
-  },
-  {
-    "month": "1974-07",
-    "aaa": 8.72,
-    "baa": 9.48
-  },
-  {
-    "month": "1974-08",
-    "aaa": 9,
-    "baa": 9.77
-  },
-  {
-    "month": "1974-09",
-    "aaa": 9.24,
-    "baa": 10.18
-  },
-  {
-    "month": "1974-10",
-    "aaa": 9.27,
-    "baa": 10.48
-  },
-  {
-    "month": "1974-11",
-    "aaa": 8.89,
-    "baa": 10.6
-  },
-  {
-    "month": "1974-12",
-    "aaa": 8.89,
-    "baa": 10.63
-  },
-  {
-    "month": "1975-01",
-    "aaa": 8.83,
-    "baa": 10.81
-  },
-  {
-    "month": "1975-02",
-    "aaa": 8.62,
-    "baa": 10.65
-  },
-  {
-    "month": "1975-03",
-    "aaa": 8.67,
-    "baa": 10.48
-  },
-  {
-    "month": "1975-04",
-    "aaa": 8.95,
-    "baa": 10.58
-  },
-  {
-    "month": "1975-05",
-    "aaa": 8.9,
-    "baa": 10.69
-  },
-  {
-    "month": "1975-06",
-    "aaa": 8.77,
-    "baa": 10.62
-  },
-  {
-    "month": "1975-07",
-    "aaa": 8.84,
-    "baa": 10.55
-  },
-  {
-    "month": "1975-08",
-    "aaa": 8.95,
-    "baa": 10.59
-  },
-  {
-    "month": "1975-09",
-    "aaa": 8.95,
-    "baa": 10.61
-  },
-  {
-    "month": "1975-10",
-    "aaa": 8.86,
-    "baa": 10.62
-  },
-  {
-    "month": "1975-11",
-    "aaa": 8.78,
-    "baa": 10.56
-  },
-  {
-    "month": "1975-12",
-    "aaa": 8.79,
-    "baa": 10.56
-  },
-  {
-    "month": "1976-01",
-    "aaa": 8.6,
-    "baa": 10.41
-  },
-  {
-    "month": "1976-02",
-    "aaa": 8.55,
-    "baa": 10.24
-  },
-  {
-    "month": "1976-03",
-    "aaa": 8.52,
-    "baa": 10.12
-  },
-  {
-    "month": "1976-04",
-    "aaa": 8.4,
-    "baa": 9.94
-  },
-  {
-    "month": "1976-05",
-    "aaa": 8.58,
-    "baa": 9.86
-  },
-  {
-    "month": "1976-06",
-    "aaa": 8.62,
-    "baa": 9.89
-  },
-  {
-    "month": "1976-07",
-    "aaa": 8.56,
-    "baa": 9.82
-  },
-  {
-    "month": "1976-08",
-    "aaa": 8.45,
-    "baa": 9.64
-  },
-  {
-    "month": "1976-09",
-    "aaa": 8.38,
-    "baa": 9.4
-  },
-  {
-    "month": "1976-10",
-    "aaa": 8.32,
-    "baa": 9.29
-  },
-  {
-    "month": "1976-11",
-    "aaa": 8.25,
-    "baa": 9.23
-  },
-  {
-    "month": "1976-12",
-    "aaa": 7.98,
-    "baa": 9.12
-  },
-  {
-    "month": "1977-01",
-    "aaa": 7.96,
-    "baa": 9.08
-  },
-  {
-    "month": "1977-02",
-    "aaa": 8.04,
-    "baa": 9.12
-  },
-  {
-    "month": "1977-03",
-    "aaa": 8.1,
-    "baa": 9.12
-  },
-  {
-    "month": "1977-04",
-    "aaa": 8.04,
-    "baa": 9.07
-  },
-  {
-    "month": "1977-05",
-    "aaa": 8.05,
-    "baa": 9.01
-  },
-  {
-    "month": "1977-06",
-    "aaa": 7.95,
-    "baa": 8.91
-  },
-  {
-    "month": "1977-07",
-    "aaa": 7.94,
-    "baa": 8.87
-  },
-  {
-    "month": "1977-08",
-    "aaa": 7.98,
-    "baa": 8.82
-  },
-  {
-    "month": "1977-09",
-    "aaa": 7.92,
-    "baa": 8.8
-  },
-  {
-    "month": "1977-10",
-    "aaa": 8.04,
-    "baa": 8.89
-  },
-  {
-    "month": "1977-11",
-    "aaa": 8.08,
-    "baa": 8.95
-  },
-  {
-    "month": "1977-12",
-    "aaa": 8.19,
-    "baa": 8.99
-  },
-  {
-    "month": "1978-01",
-    "aaa": 8.41,
-    "baa": 9.17
-  },
-  {
-    "month": "1978-02",
-    "aaa": 8.47,
-    "baa": 9.2
-  },
-  {
-    "month": "1978-03",
-    "aaa": 8.47,
-    "baa": 9.22
-  },
-  {
-    "month": "1978-04",
-    "aaa": 8.56,
-    "baa": 9.32
-  },
-  {
-    "month": "1978-05",
-    "aaa": 8.69,
-    "baa": 9.49
-  },
-  {
-    "month": "1978-06",
-    "aaa": 8.76,
-    "baa": 9.6
-  },
-  {
-    "month": "1978-07",
-    "aaa": 8.88,
-    "baa": 9.6
-  },
-  {
-    "month": "1978-08",
-    "aaa": 8.69,
-    "baa": 9.48
-  },
-  {
-    "month": "1978-09",
-    "aaa": 8.69,
-    "baa": 9.42
-  },
-  {
-    "month": "1978-10",
-    "aaa": 8.89,
-    "baa": 9.59
-  },
-  {
-    "month": "1978-11",
-    "aaa": 9.03,
-    "baa": 9.83
-  },
-  {
-    "month": "1978-12",
-    "aaa": 9.16,
-    "baa": 9.94
-  },
-  {
-    "month": "1979-01",
-    "aaa": 9.25,
-    "baa": 10.13
-  },
-  {
-    "month": "1979-02",
-    "aaa": 9.26,
-    "baa": 10.08
-  },
-  {
-    "month": "1979-03",
-    "aaa": 9.37,
-    "baa": 10.26
-  },
-  {
-    "month": "1979-04",
-    "aaa": 9.38,
-    "baa": 10.33
-  },
-  {
-    "month": "1979-05",
-    "aaa": 9.5,
-    "baa": 10.47
-  },
-  {
-    "month": "1979-06",
-    "aaa": 9.29,
-    "baa": 10.38
-  },
-  {
-    "month": "1979-07",
-    "aaa": 9.2,
-    "baa": 10.29
-  },
-  {
-    "month": "1979-08",
-    "aaa": 9.23,
-    "baa": 10.35
-  },
-  {
-    "month": "1979-09",
-    "aaa": 9.44,
-    "baa": 10.54
-  },
-  {
-    "month": "1979-10",
-    "aaa": 10.13,
-    "baa": 11.4
-  },
-  {
-    "month": "1979-11",
-    "aaa": 10.76,
-    "baa": 11.99
-  },
-  {
-    "month": "1979-12",
-    "aaa": 10.74,
-    "baa": 12.06
-  },
-  {
-    "month": "1980-01",
-    "aaa": 11.09,
-    "baa": 12.42
-  },
-  {
-    "month": "1980-02",
-    "aaa": 12.38,
-    "baa": 13.57
-  },
-  {
-    "month": "1980-03",
-    "aaa": 12.96,
-    "baa": 14.45
-  },
-  {
-    "month": "1980-04",
-    "aaa": 12.04,
-    "baa": 14.19
-  },
-  {
-    "month": "1980-05",
-    "aaa": 10.99,
-    "baa": 13.17
-  },
-  {
-    "month": "1980-06",
-    "aaa": 10.58,
-    "baa": 12.71
-  },
-  {
-    "month": "1980-07",
-    "aaa": 11.07,
-    "baa": 12.65
-  },
-  {
-    "month": "1980-08",
-    "aaa": 11.64,
-    "baa": 13.15
-  },
-  {
-    "month": "1980-09",
-    "aaa": 12.02,
-    "baa": 13.7
-  },
-  {
-    "month": "1980-10",
-    "aaa": 12.31,
-    "baa": 14.23
-  },
-  {
-    "month": "1980-11",
-    "aaa": 12.97,
-    "baa": 14.64
-  },
-  {
-    "month": "1980-12",
-    "aaa": 13.21,
-    "baa": 15.14
-  },
-  {
-    "month": "1981-01",
-    "aaa": 12.81,
-    "baa": 15.03
-  },
-  {
-    "month": "1981-02",
-    "aaa": 13.35,
-    "baa": 15.37
-  },
-  {
-    "month": "1981-03",
-    "aaa": 13.33,
-    "baa": 15.34
-  },
-  {
-    "month": "1981-04",
-    "aaa": 13.88,
-    "baa": 15.56
-  },
-  {
-    "month": "1981-05",
-    "aaa": 14.32,
-    "baa": 15.95
-  },
-  {
-    "month": "1981-06",
-    "aaa": 13.75,
-    "baa": 15.8
-  },
-  {
-    "month": "1981-07",
-    "aaa": 14.38,
-    "baa": 16.17
-  },
-  {
-    "month": "1981-08",
-    "aaa": 14.89,
-    "baa": 16.34
-  },
-  {
-    "month": "1981-09",
-    "aaa": 15.49,
-    "baa": 16.92
-  },
-  {
-    "month": "1981-10",
-    "aaa": 15.4,
-    "baa": 17.11
-  },
-  {
-    "month": "1981-11",
-    "aaa": 14.22,
-    "baa": 16.39
-  },
-  {
-    "month": "1981-12",
-    "aaa": 14.23,
-    "baa": 16.55
-  },
-  {
-    "month": "1982-01",
-    "aaa": 15.18,
-    "baa": 17.1
-  },
-  {
-    "month": "1982-02",
-    "aaa": 15.27,
-    "baa": 17.18
-  },
-  {
-    "month": "1982-03",
-    "aaa": 14.58,
-    "baa": 16.82
-  },
-  {
-    "month": "1982-04",
-    "aaa": 14.46,
-    "baa": 16.78
-  },
-  {
-    "month": "1982-05",
-    "aaa": 14.26,
-    "baa": 16.64
-  },
-  {
-    "month": "1982-06",
-    "aaa": 14.81,
-    "baa": 16.92
-  },
-  {
-    "month": "1982-07",
-    "aaa": 14.61,
-    "baa": 16.8
-  },
-  {
-    "month": "1982-08",
-    "aaa": 13.71,
-    "baa": 16.32
-  },
-  {
-    "month": "1982-09",
-    "aaa": 12.94,
-    "baa": 15.63
-  },
-  {
-    "month": "1982-10",
-    "aaa": 12.12,
-    "baa": 14.73
-  },
-  {
-    "month": "1982-11",
-    "aaa": 11.68,
-    "baa": 14.3
-  },
-  {
-    "month": "1982-12",
-    "aaa": 11.83,
-    "baa": 14.14
-  },
-  {
-    "month": "1983-01",
-    "aaa": 11.79,
-    "baa": 13.94
-  },
-  {
-    "month": "1983-02",
-    "aaa": 12.01,
-    "baa": 13.95
-  },
-  {
-    "month": "1983-03",
-    "aaa": 11.73,
-    "baa": 13.61
-  },
-  {
-    "month": "1983-04",
-    "aaa": 11.51,
-    "baa": 13.29
-  },
-  {
-    "month": "1983-05",
-    "aaa": 11.46,
-    "baa": 13.09
-  },
-  {
-    "month": "1983-06",
-    "aaa": 11.74,
-    "baa": 13.37
-  },
-  {
-    "month": "1983-07",
-    "aaa": 12.15,
-    "baa": 13.39
-  },
-  {
-    "month": "1983-08",
-    "aaa": 12.51,
-    "baa": 13.64
-  },
-  {
-    "month": "1983-09",
-    "aaa": 12.37,
-    "baa": 13.55
-  },
-  {
-    "month": "1983-10",
-    "aaa": 12.25,
-    "baa": 13.46
-  },
-  {
-    "month": "1983-11",
-    "aaa": 12.41,
-    "baa": 13.61
-  },
-  {
-    "month": "1983-12",
-    "aaa": 12.57,
-    "baa": 13.75
-  },
-  {
-    "month": "1984-01",
-    "aaa": 12.2,
-    "baa": 13.65
-  },
-  {
-    "month": "1984-02",
-    "aaa": 12.08,
-    "baa": 13.59
-  },
-  {
-    "month": "1984-03",
-    "aaa": 12.57,
-    "baa": 13.99
-  },
-  {
-    "month": "1984-04",
-    "aaa": 12.81,
-    "baa": 14.31
-  },
-  {
-    "month": "1984-05",
-    "aaa": 13.28,
-    "baa": 14.74
-  },
-  {
-    "month": "1984-06",
-    "aaa": 13.55,
-    "baa": 15.05
-  },
-  {
-    "month": "1984-07",
-    "aaa": 13.44,
-    "baa": 15.15
-  },
-  {
-    "month": "1984-08",
-    "aaa": 12.87,
-    "baa": 14.63
-  },
-  {
-    "month": "1984-09",
-    "aaa": 12.66,
-    "baa": 14.35
-  },
-  {
-    "month": "1984-10",
-    "aaa": 12.63,
-    "baa": 13.94
-  },
-  {
-    "month": "1984-11",
-    "aaa": 12.29,
-    "baa": 13.48
-  },
-  {
-    "month": "1984-12",
-    "aaa": 12.13,
-    "baa": 13.4
-  },
-  {
-    "month": "1985-01",
-    "aaa": 12.08,
-    "baa": 13.26
-  },
-  {
-    "month": "1985-02",
-    "aaa": 12.13,
-    "baa": 13.23
-  },
-  {
-    "month": "1985-03",
-    "aaa": 12.56,
-    "baa": 13.69
-  },
-  {
-    "month": "1985-04",
-    "aaa": 12.23,
-    "baa": 13.51
-  },
-  {
-    "month": "1985-05",
-    "aaa": 11.72,
-    "baa": 13.15
-  },
-  {
-    "month": "1985-06",
-    "aaa": 10.94,
-    "baa": 12.4
-  },
-  {
-    "month": "1985-07",
-    "aaa": 10.97,
-    "baa": 12.43
-  },
-  {
-    "month": "1985-08",
-    "aaa": 11.05,
-    "baa": 12.5
-  },
-  {
-    "month": "1985-09",
-    "aaa": 11.07,
-    "baa": 12.48
-  },
-  {
-    "month": "1985-10",
-    "aaa": 11.02,
-    "baa": 12.36
-  },
-  {
-    "month": "1985-11",
-    "aaa": 10.55,
-    "baa": 11.99
-  },
-  {
-    "month": "1985-12",
-    "aaa": 10.16,
-    "baa": 11.58
-  },
-  {
-    "month": "1986-01",
-    "aaa": 10.05,
-    "baa": 11.44
-  },
-  {
-    "month": "1986-02",
-    "aaa": 9.67,
-    "baa": 11.11
-  },
-  {
-    "month": "1986-03",
-    "aaa": 9,
-    "baa": 10.5
-  },
-  {
-    "month": "1986-04",
-    "aaa": 8.79,
-    "baa": 10.19
-  },
-  {
-    "month": "1986-05",
-    "aaa": 9.09,
-    "baa": 10.29
-  },
-  {
-    "month": "1986-06",
-    "aaa": 9.13,
-    "baa": 10.34
-  },
-  {
-    "month": "1986-07",
-    "aaa": 8.88,
-    "baa": 10.16
-  },
-  {
-    "month": "1986-08",
-    "aaa": 8.72,
-    "baa": 10.18
-  },
-  {
-    "month": "1986-09",
-    "aaa": 8.89,
-    "baa": 10.2
-  },
-  {
-    "month": "1986-10",
-    "aaa": 8.86,
-    "baa": 10.24
-  },
-  {
-    "month": "1986-11",
-    "aaa": 8.68,
-    "baa": 10.07
-  },
-  {
-    "month": "1986-12",
-    "aaa": 8.49,
-    "baa": 9.97
-  },
-  {
-    "month": "1987-01",
-    "aaa": 8.36,
-    "baa": 9.72
-  },
-  {
-    "month": "1987-02",
-    "aaa": 8.38,
-    "baa": 9.65
-  },
-  {
-    "month": "1987-03",
-    "aaa": 8.36,
-    "baa": 9.61
-  },
-  {
-    "month": "1987-04",
-    "aaa": 8.85,
-    "baa": 10.04
-  },
-  {
-    "month": "1987-05",
-    "aaa": 9.33,
-    "baa": 10.51
-  },
-  {
-    "month": "1987-06",
-    "aaa": 9.32,
-    "baa": 10.52
-  },
-  {
-    "month": "1987-07",
-    "aaa": 9.42,
-    "baa": 10.61
-  },
-  {
-    "month": "1987-08",
-    "aaa": 9.67,
-    "baa": 10.8
-  },
-  {
-    "month": "1987-09",
-    "aaa": 10.18,
-    "baa": 11.31
-  },
-  {
-    "month": "1987-10",
-    "aaa": 10.52,
-    "baa": 11.62
-  },
-  {
-    "month": "1987-11",
-    "aaa": 10.01,
-    "baa": 11.23
-  },
-  {
-    "month": "1987-12",
-    "aaa": 10.11,
-    "baa": 11.29
-  },
-  {
-    "month": "1988-01",
-    "aaa": 9.88,
-    "baa": 11.07
-  },
-  {
-    "month": "1988-02",
-    "aaa": 9.4,
-    "baa": 10.62
-  },
-  {
-    "month": "1988-03",
-    "aaa": 9.39,
-    "baa": 10.57
-  },
-  {
-    "month": "1988-04",
-    "aaa": 9.67,
-    "baa": 10.9
-  },
-  {
-    "month": "1988-05",
-    "aaa": 9.9,
-    "baa": 11.04
-  },
-  {
-    "month": "1988-06",
-    "aaa": 9.86,
-    "baa": 11
-  },
-  {
-    "month": "1988-07",
-    "aaa": 9.96,
-    "baa": 11.11
-  },
-  {
-    "month": "1988-08",
-    "aaa": 10.11,
-    "baa": 11.21
-  },
-  {
-    "month": "1988-09",
-    "aaa": 9.82,
-    "baa": 10.9
-  },
-  {
-    "month": "1988-10",
-    "aaa": 9.51,
-    "baa": 10.41
-  },
-  {
-    "month": "1988-11",
-    "aaa": 9.45,
-    "baa": 10.48
-  },
-  {
-    "month": "1988-12",
-    "aaa": 9.57,
-    "baa": 10.65
-  },
-  {
-    "month": "1989-01",
-    "aaa": 9.62,
-    "baa": 10.65
-  },
-  {
-    "month": "1989-02",
-    "aaa": 9.64,
-    "baa": 10.61
-  },
-  {
-    "month": "1989-03",
-    "aaa": 9.8,
-    "baa": 10.67
-  },
-  {
-    "month": "1989-04",
-    "aaa": 9.79,
-    "baa": 10.61
-  },
-  {
-    "month": "1989-05",
-    "aaa": 9.57,
-    "baa": 10.46
-  },
-  {
-    "month": "1989-06",
-    "aaa": 9.1,
-    "baa": 10.03
-  },
-  {
-    "month": "1989-07",
-    "aaa": 8.93,
-    "baa": 9.87
-  },
-  {
-    "month": "1989-08",
-    "aaa": 8.96,
-    "baa": 9.88
-  },
-  {
-    "month": "1989-09",
-    "aaa": 9.01,
-    "baa": 9.91
-  },
-  {
-    "month": "1989-10",
-    "aaa": 8.92,
-    "baa": 9.81
-  },
-  {
-    "month": "1989-11",
-    "aaa": 8.89,
-    "baa": 9.81
-  },
-  {
-    "month": "1989-12",
-    "aaa": 8.86,
-    "baa": 9.82
-  },
-  {
-    "month": "1990-01",
-    "aaa": 8.99,
-    "baa": 9.94
-  },
-  {
-    "month": "1990-02",
-    "aaa": 9.22,
-    "baa": 10.14
-  },
-  {
-    "month": "1990-03",
-    "aaa": 9.37,
-    "baa": 10.21
-  },
-  {
-    "month": "1990-04",
-    "aaa": 9.46,
-    "baa": 10.3
-  },
-  {
-    "month": "1990-05",
-    "aaa": 9.47,
-    "baa": 10.41
-  },
-  {
-    "month": "1990-06",
-    "aaa": 9.26,
-    "baa": 10.22
-  },
-  {
-    "month": "1990-07",
-    "aaa": 9.24,
-    "baa": 10.2
-  },
-  {
-    "month": "1990-08",
-    "aaa": 9.41,
-    "baa": 10.41
-  },
-  {
-    "month": "1990-09",
-    "aaa": 9.56,
-    "baa": 10.64
-  },
-  {
-    "month": "1990-10",
-    "aaa": 9.53,
-    "baa": 10.74
-  },
-  {
-    "month": "1990-11",
-    "aaa": 9.3,
-    "baa": 10.62
-  },
-  {
-    "month": "1990-12",
-    "aaa": 9.05,
-    "baa": 10.43
-  },
-  {
-    "month": "1991-01",
-    "aaa": 9.04,
-    "baa": 10.45
-  },
-  {
-    "month": "1991-02",
-    "aaa": 8.83,
-    "baa": 10.07
-  },
-  {
-    "month": "1991-03",
-    "aaa": 8.93,
-    "baa": 10.09
-  },
-  {
-    "month": "1991-04",
-    "aaa": 8.86,
-    "baa": 9.94
-  },
-  {
-    "month": "1991-05",
-    "aaa": 8.86,
-    "baa": 9.86
-  },
-  {
-    "month": "1991-06",
-    "aaa": 9.01,
-    "baa": 9.96
-  },
-  {
-    "month": "1991-07",
-    "aaa": 9,
-    "baa": 9.89
-  },
-  {
-    "month": "1991-08",
-    "aaa": 8.75,
-    "baa": 9.65
-  },
-  {
-    "month": "1991-09",
-    "aaa": 8.61,
-    "baa": 9.51
-  },
-  {
-    "month": "1991-10",
-    "aaa": 8.55,
-    "baa": 9.49
-  },
-  {
-    "month": "1991-11",
-    "aaa": 8.48,
-    "baa": 9.45
-  },
-  {
-    "month": "1991-12",
-    "aaa": 8.31,
-    "baa": 9.26
-  },
-  {
-    "month": "1992-01",
-    "aaa": 8.2,
-    "baa": 9.13
-  },
-  {
-    "month": "1992-02",
-    "aaa": 8.29,
-    "baa": 9.23
-  },
-  {
-    "month": "1992-03",
-    "aaa": 8.35,
-    "baa": 9.25
-  },
-  {
-    "month": "1992-04",
-    "aaa": 8.33,
-    "baa": 9.21
-  },
-  {
-    "month": "1992-05",
-    "aaa": 8.28,
-    "baa": 9.13
-  },
-  {
-    "month": "1992-06",
-    "aaa": 8.22,
-    "baa": 9.05
-  },
-  {
-    "month": "1992-07",
-    "aaa": 8.07,
-    "baa": 8.84
-  },
-  {
-    "month": "1992-08",
-    "aaa": 7.95,
-    "baa": 8.65
-  },
-  {
-    "month": "1992-09",
-    "aaa": 7.92,
-    "baa": 8.62
-  },
-  {
-    "month": "1992-10",
-    "aaa": 7.99,
-    "baa": 8.84
-  },
-  {
-    "month": "1992-11",
-    "aaa": 8.1,
-    "baa": 8.96
-  },
-  {
-    "month": "1992-12",
-    "aaa": 7.98,
-    "baa": 8.81
-  },
-  {
-    "month": "1993-01",
-    "aaa": 7.91,
-    "baa": 8.67
-  },
-  {
-    "month": "1993-02",
-    "aaa": 7.71,
-    "baa": 8.39
-  },
-  {
-    "month": "1993-03",
-    "aaa": 7.58,
-    "baa": 8.15
-  },
-  {
-    "month": "1993-04",
-    "aaa": 7.46,
-    "baa": 8.14
-  },
-  {
-    "month": "1993-05",
-    "aaa": 7.43,
-    "baa": 8.21
-  },
-  {
-    "month": "1993-06",
-    "aaa": 7.33,
-    "baa": 8.07
-  },
-  {
-    "month": "1993-07",
-    "aaa": 7.17,
-    "baa": 7.93
-  },
-  {
-    "month": "1993-08",
-    "aaa": 6.85,
-    "baa": 7.6
-  },
-  {
-    "month": "1993-09",
-    "aaa": 6.66,
-    "baa": 7.34
-  },
-  {
-    "month": "1993-10",
-    "aaa": 6.67,
-    "baa": 7.31
-  },
-  {
-    "month": "1993-11",
-    "aaa": 6.93,
-    "baa": 7.66
-  },
-  {
-    "month": "1993-12",
-    "aaa": 6.93,
-    "baa": 7.69
-  },
-  {
-    "month": "1994-01",
-    "aaa": 6.92,
-    "baa": 7.65
-  },
-  {
-    "month": "1994-02",
-    "aaa": 7.08,
-    "baa": 7.76
-  },
-  {
-    "month": "1994-03",
-    "aaa": 7.48,
-    "baa": 8.13
-  },
-  {
-    "month": "1994-04",
-    "aaa": 7.88,
-    "baa": 8.52
-  },
-  {
-    "month": "1994-05",
-    "aaa": 7.99,
-    "baa": 8.62
-  },
-  {
-    "month": "1994-06",
-    "aaa": 7.97,
-    "baa": 8.65
-  },
-  {
-    "month": "1994-07",
-    "aaa": 8.11,
-    "baa": 8.8
-  },
-  {
-    "month": "1994-08",
-    "aaa": 8.07,
-    "baa": 8.74
-  },
-  {
-    "month": "1994-09",
-    "aaa": 8.34,
-    "baa": 8.98
-  },
-  {
-    "month": "1994-10",
-    "aaa": 8.57,
-    "baa": 9.2
-  },
-  {
-    "month": "1994-11",
-    "aaa": 8.68,
-    "baa": 9.32
-  },
-  {
-    "month": "1994-12",
-    "aaa": 8.46,
-    "baa": 9.1
-  },
-  {
-    "month": "1995-01",
-    "aaa": 8.46,
-    "baa": 9.08
-  },
-  {
-    "month": "1995-02",
-    "aaa": 8.26,
-    "baa": 8.85
-  },
-  {
-    "month": "1995-03",
-    "aaa": 8.12,
-    "baa": 8.7
-  },
-  {
-    "month": "1995-04",
-    "aaa": 8.03,
-    "baa": 8.6
-  },
-  {
-    "month": "1995-05",
-    "aaa": 7.65,
-    "baa": 8.2
-  },
-  {
-    "month": "1995-06",
-    "aaa": 7.3,
-    "baa": 7.9
-  },
-  {
-    "month": "1995-07",
-    "aaa": 7.41,
-    "baa": 8.04
-  },
-  {
-    "month": "1995-08",
-    "aaa": 7.57,
-    "baa": 8.19
-  },
-  {
-    "month": "1995-09",
-    "aaa": 7.32,
-    "baa": 7.93
-  },
-  {
-    "month": "1995-10",
-    "aaa": 7.12,
-    "baa": 7.75
-  },
-  {
-    "month": "1995-11",
-    "aaa": 7.02,
-    "baa": 7.68
-  },
-  {
-    "month": "1995-12",
-    "aaa": 6.82,
-    "baa": 7.49
-  },
-  {
-    "month": "1996-01",
-    "aaa": 6.81,
-    "baa": 7.47
-  },
-  {
-    "month": "1996-02",
-    "aaa": 6.99,
-    "baa": 7.63
-  },
-  {
-    "month": "1996-03",
-    "aaa": 7.35,
-    "baa": 8.03
-  },
-  {
-    "month": "1996-04",
-    "aaa": 7.5,
-    "baa": 8.19
-  },
-  {
-    "month": "1996-05",
-    "aaa": 7.62,
-    "baa": 8.3
-  },
-  {
-    "month": "1996-06",
-    "aaa": 7.71,
-    "baa": 8.4
-  },
-  {
-    "month": "1996-07",
-    "aaa": 7.65,
-    "baa": 8.35
-  },
-  {
-    "month": "1996-08",
-    "aaa": 7.46,
-    "baa": 8.18
-  },
-  {
-    "month": "1996-09",
-    "aaa": 7.66,
-    "baa": 8.35
-  },
-  {
-    "month": "1996-10",
-    "aaa": 7.39,
-    "baa": 8.07
-  },
-  {
-    "month": "1996-11",
-    "aaa": 7.1,
-    "baa": 7.79
-  },
-  {
-    "month": "1996-12",
-    "aaa": 7.2,
-    "baa": 7.89
-  },
-  {
-    "month": "1997-01",
-    "aaa": 7.42,
-    "baa": 8.09
-  },
-  {
-    "month": "1997-02",
-    "aaa": 7.31,
-    "baa": 7.94
-  },
-  {
-    "month": "1997-03",
-    "aaa": 7.55,
-    "baa": 8.18
-  },
-  {
-    "month": "1997-04",
-    "aaa": 7.73,
-    "baa": 8.34
-  },
-  {
-    "month": "1997-05",
-    "aaa": 7.58,
-    "baa": 8.2
-  },
-  {
-    "month": "1997-06",
-    "aaa": 7.41,
-    "baa": 8.02
-  },
-  {
-    "month": "1997-07",
-    "aaa": 7.14,
-    "baa": 7.75
-  },
-  {
-    "month": "1997-08",
-    "aaa": 7.22,
-    "baa": 7.82
-  },
-  {
-    "month": "1997-09",
-    "aaa": 7.15,
-    "baa": 7.7
-  },
-  {
-    "month": "1997-10",
-    "aaa": 7,
-    "baa": 7.57
-  },
-  {
-    "month": "1997-11",
-    "aaa": 6.87,
-    "baa": 7.42
-  },
-  {
-    "month": "1997-12",
-    "aaa": 6.76,
-    "baa": 7.32
-  },
-  {
-    "month": "1998-01",
-    "aaa": 6.61,
-    "baa": 7.19
-  },
-  {
-    "month": "1998-02",
-    "aaa": 6.67,
-    "baa": 7.25
-  },
-  {
-    "month": "1998-03",
-    "aaa": 6.72,
-    "baa": 7.32
-  },
-  {
-    "month": "1998-04",
-    "aaa": 6.69,
-    "baa": 7.33
-  },
-  {
-    "month": "1998-05",
-    "aaa": 6.69,
-    "baa": 7.3
-  },
-  {
-    "month": "1998-06",
-    "aaa": 6.53,
-    "baa": 7.13
-  },
-  {
-    "month": "1998-07",
-    "aaa": 6.55,
-    "baa": 7.15
-  },
-  {
-    "month": "1998-08",
-    "aaa": 6.52,
-    "baa": 7.14
-  },
-  {
-    "month": "1998-09",
-    "aaa": 6.4,
-    "baa": 7.09
-  },
-  {
-    "month": "1998-10",
-    "aaa": 6.37,
-    "baa": 7.18
-  },
-  {
-    "month": "1998-11",
-    "aaa": 6.41,
-    "baa": 7.34
-  },
-  {
-    "month": "1998-12",
-    "aaa": 6.22,
-    "baa": 7.23
-  },
-  {
-    "month": "1999-01",
-    "aaa": 6.24,
-    "baa": 7.29
-  },
-  {
-    "month": "1999-02",
-    "aaa": 6.4,
-    "baa": 7.39
-  },
-  {
-    "month": "1999-03",
-    "aaa": 6.62,
-    "baa": 7.53
-  },
-  {
-    "month": "1999-04",
-    "aaa": 6.64,
-    "baa": 7.48
-  },
-  {
-    "month": "1999-05",
-    "aaa": 6.93,
-    "baa": 7.72
-  },
-  {
-    "month": "1999-06",
-    "aaa": 7.23,
-    "baa": 8.02
-  },
-  {
-    "month": "1999-07",
-    "aaa": 7.19,
-    "baa": 7.95
-  },
-  {
-    "month": "1999-08",
-    "aaa": 7.4,
-    "baa": 8.15
-  },
-  {
-    "month": "1999-09",
-    "aaa": 7.39,
-    "baa": 8.2
-  },
-  {
-    "month": "1999-10",
-    "aaa": 7.55,
-    "baa": 8.38
-  },
-  {
-    "month": "1999-11",
-    "aaa": 7.36,
-    "baa": 8.15
-  },
-  {
-    "month": "1999-12",
-    "aaa": 7.55,
-    "baa": 8.19
-  },
-  {
-    "month": "2000-01",
-    "aaa": 7.78,
-    "baa": 8.33
-  },
-  {
-    "month": "2000-02",
-    "aaa": 7.68,
-    "baa": 8.29
-  },
-  {
-    "month": "2000-03",
-    "aaa": 7.68,
-    "baa": 8.37
-  },
-  {
-    "month": "2000-04",
-    "aaa": 7.64,
-    "baa": 8.4
-  },
-  {
-    "month": "2000-05",
-    "aaa": 7.99,
-    "baa": 8.9
-  },
-  {
-    "month": "2000-06",
-    "aaa": 7.67,
-    "baa": 8.48
-  },
-  {
-    "month": "2000-07",
-    "aaa": 7.65,
-    "baa": 8.35
-  },
-  {
-    "month": "2000-08",
-    "aaa": 7.55,
-    "baa": 8.26
-  },
-  {
-    "month": "2000-09",
-    "aaa": 7.62,
-    "baa": 8.35
-  },
-  {
-    "month": "2000-10",
-    "aaa": 7.55,
-    "baa": 8.34
-  },
-  {
-    "month": "2000-11",
-    "aaa": 7.45,
-    "baa": 8.28
-  },
-  {
-    "month": "2000-12",
-    "aaa": 7.21,
-    "baa": 8.02
-  },
-  {
-    "month": "2001-01",
-    "aaa": 7.15,
-    "baa": 7.93
-  },
-  {
-    "month": "2001-02",
-    "aaa": 7.1,
-    "baa": 7.87
-  },
-  {
-    "month": "2001-03",
-    "aaa": 6.98,
-    "baa": 7.84
-  },
-  {
-    "month": "2001-04",
-    "aaa": 7.2,
-    "baa": 8.07
-  },
-  {
-    "month": "2001-05",
-    "aaa": 7.29,
-    "baa": 8.07
-  },
-  {
-    "month": "2001-06",
-    "aaa": 7.18,
-    "baa": 7.97
-  },
-  {
-    "month": "2001-07",
-    "aaa": 7.13,
-    "baa": 7.97
-  },
-  {
-    "month": "2001-08",
-    "aaa": 7.02,
-    "baa": 7.85
-  },
-  {
-    "month": "2001-09",
-    "aaa": 7.17,
-    "baa": 8.03
-  },
-  {
-    "month": "2001-10",
-    "aaa": 7.03,
-    "baa": 7.91
-  },
-  {
-    "month": "2001-11",
-    "aaa": 6.97,
-    "baa": 7.81
-  },
-  {
-    "month": "2001-12",
-    "aaa": 6.77,
-    "baa": 8.05
-  },
-  {
-    "month": "2002-01",
-    "aaa": 6.55,
-    "baa": 7.87
-  },
-  {
-    "month": "2002-02",
-    "aaa": 6.51,
-    "baa": 7.89
-  },
-  {
-    "month": "2002-03",
-    "aaa": 6.81,
-    "baa": 8.11
-  },
-  {
-    "month": "2002-04",
-    "aaa": 6.76,
-    "baa": 8.03
-  },
-  {
-    "month": "2002-05",
-    "aaa": 6.75,
-    "baa": 8.09
-  },
-  {
-    "month": "2002-06",
-    "aaa": 6.63,
-    "baa": 7.95
-  },
-  {
-    "month": "2002-07",
-    "aaa": 6.53,
-    "baa": 7.9
-  },
-  {
-    "month": "2002-08",
-    "aaa": 6.37,
-    "baa": 7.58
-  },
-  {
-    "month": "2002-09",
-    "aaa": 6.15,
-    "baa": 7.4
-  },
-  {
-    "month": "2002-10",
-    "aaa": 6.32,
-    "baa": 7.73
-  },
-  {
-    "month": "2002-11",
-    "aaa": 6.31,
-    "baa": 7.62
-  },
-  {
-    "month": "2002-12",
-    "aaa": 6.21,
-    "baa": 7.45
-  },
-  {
-    "month": "2003-01",
-    "aaa": 6.17,
-    "baa": 7.35
-  },
-  {
-    "month": "2003-02",
-    "aaa": 5.95,
-    "baa": 7.06
-  },
-  {
-    "month": "2003-03",
-    "aaa": 5.89,
-    "baa": 6.95
-  },
-  {
-    "month": "2003-04",
-    "aaa": 5.74,
-    "baa": 6.85
-  },
-  {
-    "month": "2003-05",
-    "aaa": 5.22,
-    "baa": 6.38
-  },
-  {
-    "month": "2003-06",
-    "aaa": 4.97,
-    "baa": 6.19
-  },
-  {
-    "month": "2003-07",
-    "aaa": 5.49,
-    "baa": 6.62
-  },
-  {
-    "month": "2003-08",
-    "aaa": 5.88,
-    "baa": 7.01
-  },
-  {
-    "month": "2003-09",
-    "aaa": 5.72,
-    "baa": 6.79
-  },
-  {
-    "month": "2003-10",
-    "aaa": 5.7,
-    "baa": 6.73
-  },
-  {
-    "month": "2003-11",
-    "aaa": 5.65,
-    "baa": 6.66
-  },
-  {
-    "month": "2003-12",
-    "aaa": 5.62,
-    "baa": 6.6
-  },
-  {
-    "month": "2004-01",
-    "aaa": 5.54,
-    "baa": 6.44
-  },
-  {
-    "month": "2004-02",
-    "aaa": 5.5,
-    "baa": 6.27
-  },
-  {
-    "month": "2004-03",
-    "aaa": 5.33,
-    "baa": 6.11
-  },
-  {
-    "month": "2004-04",
-    "aaa": 5.73,
-    "baa": 6.46
-  },
-  {
-    "month": "2004-05",
-    "aaa": 6.04,
-    "baa": 6.75
-  },
-  {
-    "month": "2004-06",
-    "aaa": 6.01,
-    "baa": 6.78
-  },
-  {
-    "month": "2004-07",
-    "aaa": 5.82,
-    "baa": 6.62
-  },
-  {
-    "month": "2004-08",
-    "aaa": 5.65,
-    "baa": 6.46
-  },
-  {
-    "month": "2004-09",
-    "aaa": 5.46,
-    "baa": 6.27
-  },
-  {
-    "month": "2004-10",
-    "aaa": 5.47,
-    "baa": 6.21
-  },
-  {
-    "month": "2004-11",
-    "aaa": 5.52,
-    "baa": 6.2
-  },
-  {
-    "month": "2004-12",
-    "aaa": 5.47,
-    "baa": 6.15
-  },
-  {
-    "month": "2005-01",
-    "aaa": 5.36,
-    "baa": 6.02
-  },
-  {
-    "month": "2005-02",
-    "aaa": 5.2,
-    "baa": 5.82
-  },
-  {
-    "month": "2005-03",
-    "aaa": 5.4,
-    "baa": 6.06
-  },
-  {
-    "month": "2005-04",
-    "aaa": 5.33,
-    "baa": 6.05
-  },
-  {
-    "month": "2005-05",
-    "aaa": 5.15,
-    "baa": 6.01
-  },
-  {
-    "month": "2005-06",
-    "aaa": 4.96,
-    "baa": 5.86
-  },
-  {
-    "month": "2005-07",
-    "aaa": 5.06,
-    "baa": 5.95
-  },
-  {
-    "month": "2005-08",
-    "aaa": 5.09,
-    "baa": 5.96
-  },
-  {
-    "month": "2005-09",
-    "aaa": 5.13,
-    "baa": 6.03
-  },
-  {
-    "month": "2005-10",
-    "aaa": 5.35,
-    "baa": 6.3
-  },
-  {
-    "month": "2005-11",
-    "aaa": 5.42,
-    "baa": 6.39
-  },
-  {
-    "month": "2005-12",
-    "aaa": 5.37,
-    "baa": 6.32
-  },
-  {
-    "month": "2006-01",
-    "aaa": 5.29,
-    "baa": 6.24
-  },
-  {
-    "month": "2006-02",
-    "aaa": 5.35,
-    "baa": 6.27
-  },
-  {
-    "month": "2006-03",
-    "aaa": 5.53,
-    "baa": 6.41
-  },
-  {
-    "month": "2006-04",
-    "aaa": 5.84,
-    "baa": 6.68
-  },
-  {
-    "month": "2006-05",
-    "aaa": 5.95,
-    "baa": 6.75
-  },
-  {
-    "month": "2006-06",
-    "aaa": 5.89,
-    "baa": 6.78
-  },
-  {
-    "month": "2006-07",
-    "aaa": 5.85,
-    "baa": 6.76
-  },
-  {
-    "month": "2006-08",
-    "aaa": 5.68,
-    "baa": 6.59
-  },
-  {
-    "month": "2006-09",
-    "aaa": 5.51,
-    "baa": 6.43
-  },
-  {
-    "month": "2006-10",
-    "aaa": 5.51,
-    "baa": 6.42
-  },
-  {
-    "month": "2006-11",
-    "aaa": 5.33,
-    "baa": 6.2
-  },
-  {
-    "month": "2006-12",
-    "aaa": 5.32,
-    "baa": 6.22
-  },
-  {
-    "month": "2007-01",
-    "aaa": 5.4,
-    "baa": 6.34
-  },
-  {
-    "month": "2007-02",
-    "aaa": 5.39,
-    "baa": 6.28
-  },
-  {
-    "month": "2007-03",
-    "aaa": 5.3,
-    "baa": 6.27
-  },
-  {
-    "month": "2007-04",
-    "aaa": 5.47,
-    "baa": 6.39
-  },
-  {
-    "month": "2007-05",
-    "aaa": 5.47,
-    "baa": 6.39
-  },
-  {
-    "month": "2007-06",
-    "aaa": 5.79,
-    "baa": 6.7
-  },
-  {
-    "month": "2007-07",
-    "aaa": 5.73,
-    "baa": 6.65
-  },
-  {
-    "month": "2007-08",
-    "aaa": 5.79,
-    "baa": 6.65
-  },
-  {
-    "month": "2007-09",
-    "aaa": 5.74,
-    "baa": 6.59
-  },
-  {
-    "month": "2007-10",
-    "aaa": 5.66,
-    "baa": 6.48
-  },
-  {
-    "month": "2007-11",
-    "aaa": 5.44,
-    "baa": 6.4
-  },
-  {
-    "month": "2007-12",
-    "aaa": 5.49,
-    "baa": 6.65
-  },
-  {
-    "month": "2008-01",
-    "aaa": 5.33,
-    "baa": 6.54
-  },
-  {
-    "month": "2008-02",
-    "aaa": 5.53,
-    "baa": 6.82
-  },
-  {
-    "month": "2008-03",
-    "aaa": 5.51,
-    "baa": 6.89
-  },
-  {
-    "month": "2008-04",
-    "aaa": 5.55,
-    "baa": 6.97
-  },
-  {
-    "month": "2008-05",
-    "aaa": 5.57,
-    "baa": 6.93
-  },
-  {
-    "month": "2008-06",
-    "aaa": 5.68,
-    "baa": 7.07
-  },
-  {
-    "month": "2008-07",
-    "aaa": 5.67,
-    "baa": 7.16
-  },
-  {
-    "month": "2008-08",
-    "aaa": 5.64,
-    "baa": 7.15
-  },
-  {
-    "month": "2008-09",
-    "aaa": 5.65,
-    "baa": 7.31
-  },
-  {
-    "month": "2008-10",
-    "aaa": 6.28,
-    "baa": 8.88
-  },
-  {
-    "month": "2008-11",
-    "aaa": 6.12,
-    "baa": 9.21
-  },
-  {
-    "month": "2008-12",
-    "aaa": 5.05,
-    "baa": 8.43
-  },
-  {
-    "month": "2009-01",
-    "aaa": 5.05,
-    "baa": 8.14
-  },
-  {
-    "month": "2009-02",
-    "aaa": 5.27,
-    "baa": 8.08
-  },
-  {
-    "month": "2009-03",
-    "aaa": 5.5,
-    "baa": 8.42
-  },
-  {
-    "month": "2009-04",
-    "aaa": 5.39,
-    "baa": 8.39
-  },
-  {
-    "month": "2009-05",
-    "aaa": 5.54,
-    "baa": 8.06
-  },
-  {
-    "month": "2009-06",
-    "aaa": 5.61,
-    "baa": 7.5
-  },
-  {
-    "month": "2009-07",
-    "aaa": 5.41,
-    "baa": 7.09
-  },
-  {
-    "month": "2009-08",
-    "aaa": 5.26,
-    "baa": 6.58
-  },
-  {
-    "month": "2009-09",
-    "aaa": 5.13,
-    "baa": 6.31
-  },
-  {
-    "month": "2009-10",
-    "aaa": 5.15,
-    "baa": 6.29
-  },
-  {
-    "month": "2009-11",
-    "aaa": 5.19,
-    "baa": 6.32
-  },
-  {
-    "month": "2009-12",
-    "aaa": 5.26,
-    "baa": 6.37
-  },
-  {
-    "month": "2010-01",
-    "aaa": 5.26,
-    "baa": 6.25
-  },
-  {
-    "month": "2010-02",
-    "aaa": 5.35,
-    "baa": 6.34
-  },
-  {
-    "month": "2010-03",
-    "aaa": 5.27,
-    "baa": 6.27
-  },
-  {
-    "month": "2010-04",
-    "aaa": 5.29,
-    "baa": 6.25
-  },
-  {
-    "month": "2010-05",
-    "aaa": 4.96,
-    "baa": 6.05
-  },
-  {
-    "month": "2010-06",
-    "aaa": 4.88,
-    "baa": 6.23
-  },
-  {
-    "month": "2010-07",
-    "aaa": 4.72,
-    "baa": 6.01
-  },
-  {
-    "month": "2010-08",
-    "aaa": 4.49,
-    "baa": 5.66
-  },
-  {
-    "month": "2010-09",
-    "aaa": 4.53,
-    "baa": 5.66
-  },
-  {
-    "month": "2010-10",
-    "aaa": 4.68,
-    "baa": 5.72
-  },
-  {
-    "month": "2010-11",
-    "aaa": 4.87,
-    "baa": 5.92
-  },
-  {
-    "month": "2010-12",
-    "aaa": 5.02,
-    "baa": 6.1
-  },
-  {
-    "month": "2011-01",
-    "aaa": 5.04,
-    "baa": 6.09
-  },
-  {
-    "month": "2011-02",
-    "aaa": 5.22,
-    "baa": 6.15
-  },
-  {
-    "month": "2011-03",
-    "aaa": 5.13,
-    "baa": 6.03
-  },
-  {
-    "month": "2011-04",
-    "aaa": 5.16,
-    "baa": 6.02
-  },
-  {
-    "month": "2011-05",
-    "aaa": 4.96,
-    "baa": 5.78
-  },
-  {
-    "month": "2011-06",
-    "aaa": 4.99,
-    "baa": 5.75
-  },
-  {
-    "month": "2011-07",
-    "aaa": 4.93,
-    "baa": 5.76
-  },
-  {
-    "month": "2011-08",
-    "aaa": 4.37,
-    "baa": 5.36
-  },
-  {
-    "month": "2011-09",
-    "aaa": 4.09,
-    "baa": 5.27
-  },
-  {
-    "month": "2011-10",
-    "aaa": 3.98,
-    "baa": 5.37
-  },
-  {
-    "month": "2011-11",
-    "aaa": 3.87,
-    "baa": 5.14
-  },
-  {
-    "month": "2011-12",
-    "aaa": 3.93,
-    "baa": 5.25
-  },
-  {
-    "month": "2012-01",
-    "aaa": 3.85,
-    "baa": 5.23
-  },
-  {
-    "month": "2012-02",
-    "aaa": 3.85,
-    "baa": 5.14
-  },
-  {
-    "month": "2012-03",
-    "aaa": 3.99,
-    "baa": 5.23
-  },
-  {
-    "month": "2012-04",
-    "aaa": 3.96,
-    "baa": 5.19
-  },
-  {
-    "month": "2012-05",
-    "aaa": 3.8,
-    "baa": 5.07
-  },
-  {
-    "month": "2012-06",
-    "aaa": 3.64,
-    "baa": 5.02
-  },
-  {
-    "month": "2012-07",
-    "aaa": 3.4,
-    "baa": 4.87
-  },
-  {
-    "month": "2012-08",
-    "aaa": 3.48,
-    "baa": 4.91
-  },
-  {
-    "month": "2012-09",
-    "aaa": 3.49,
-    "baa": 4.84
-  },
-  {
-    "month": "2012-10",
-    "aaa": 3.47,
-    "baa": 4.58
-  },
-  {
-    "month": "2012-11",
-    "aaa": 3.5,
-    "baa": 4.51
-  },
-  {
-    "month": "2012-12",
-    "aaa": 3.65,
-    "baa": 4.63
-  },
-  {
-    "month": "2013-01",
-    "aaa": 3.8,
-    "baa": 4.73
-  },
-  {
-    "month": "2013-02",
-    "aaa": 3.9,
-    "baa": 4.85
-  },
-  {
-    "month": "2013-03",
-    "aaa": 3.93,
-    "baa": 4.85
-  },
-  {
-    "month": "2013-04",
-    "aaa": 3.73,
-    "baa": 4.59
-  },
-  {
-    "month": "2013-05",
-    "aaa": 3.89,
-    "baa": 4.73
-  },
-  {
-    "month": "2013-06",
-    "aaa": 4.27,
-    "baa": 5.19
-  },
-  {
-    "month": "2013-07",
-    "aaa": 4.34,
-    "baa": 5.32
-  },
-  {
-    "month": "2013-08",
-    "aaa": 4.54,
-    "baa": 5.42
-  },
-  {
-    "month": "2013-09",
-    "aaa": 4.64,
-    "baa": 5.47
-  },
-  {
-    "month": "2013-10",
-    "aaa": 4.53,
-    "baa": 5.31
-  },
-  {
-    "month": "2013-11",
-    "aaa": 4.63,
-    "baa": 5.38
-  },
-  {
-    "month": "2013-12",
-    "aaa": 4.62,
-    "baa": 5.38
-  },
-  {
-    "month": "2014-01",
-    "aaa": 4.49,
-    "baa": 5.19
-  },
-  {
-    "month": "2014-02",
-    "aaa": 4.45,
-    "baa": 5.1
-  },
-  {
-    "month": "2014-03",
-    "aaa": 4.38,
-    "baa": 5.06
-  },
-  {
-    "month": "2014-04",
-    "aaa": 4.24,
-    "baa": 4.9
-  },
-  {
-    "month": "2014-05",
-    "aaa": 4.16,
-    "baa": 4.76
-  },
-  {
-    "month": "2014-06",
-    "aaa": 4.25,
-    "baa": 4.8
-  },
-  {
-    "month": "2014-07",
-    "aaa": 4.16,
-    "baa": 4.73
-  },
-  {
-    "month": "2014-08",
-    "aaa": 4.08,
-    "baa": 4.69
-  },
-  {
-    "month": "2014-09",
-    "aaa": 4.11,
-    "baa": 4.8
-  },
-  {
-    "month": "2014-10",
-    "aaa": 3.92,
-    "baa": 4.69
-  },
-  {
-    "month": "2014-11",
-    "aaa": 3.92,
-    "baa": 4.79
-  },
-  {
-    "month": "2014-12",
-    "aaa": 3.79,
-    "baa": 4.74
-  },
-  {
-    "month": "2015-01",
-    "aaa": 3.46,
-    "baa": 4.45
-  },
-  {
-    "month": "2015-02",
-    "aaa": 3.61,
-    "baa": 4.51
-  },
-  {
-    "month": "2015-03",
-    "aaa": 3.64,
-    "baa": 4.54
-  },
-  {
-    "month": "2015-04",
-    "aaa": 3.52,
-    "baa": 4.48
-  },
-  {
-    "month": "2015-05",
-    "aaa": 3.98,
-    "baa": 4.89
-  },
-  {
-    "month": "2015-06",
-    "aaa": 4.19,
-    "baa": 5.13
-  },
-  {
-    "month": "2015-07",
-    "aaa": 4.15,
-    "baa": 5.2
-  },
-  {
-    "month": "2015-08",
-    "aaa": 4.04,
-    "baa": 5.19
-  },
-  {
-    "month": "2015-09",
-    "aaa": 4.07,
-    "baa": 5.34
-  },
-  {
-    "month": "2015-10",
-    "aaa": 3.95,
-    "baa": 5.34
-  },
-  {
-    "month": "2015-11",
-    "aaa": 4.06,
-    "baa": 5.46
-  },
-  {
-    "month": "2015-12",
-    "aaa": 3.97,
-    "baa": 5.46
-  },
-  {
-    "month": "2016-01",
-    "aaa": 4,
-    "baa": 5.45
-  },
-  {
-    "month": "2016-02",
-    "aaa": 3.96,
-    "baa": 5.34
-  },
-  {
-    "month": "2016-03",
-    "aaa": 3.82,
-    "baa": 5.13
-  },
-  {
-    "month": "2016-04",
-    "aaa": 3.62,
-    "baa": 4.79
-  },
-  {
-    "month": "2016-05",
-    "aaa": 3.65,
-    "baa": 4.68
-  },
-  {
-    "month": "2016-06",
-    "aaa": 3.5,
-    "baa": 4.53
-  },
-  {
-    "month": "2016-07",
-    "aaa": 3.28,
-    "baa": 4.22
-  },
-  {
-    "month": "2016-08",
-    "aaa": 3.32,
-    "baa": 4.24
-  },
-  {
-    "month": "2016-09",
-    "aaa": 3.41,
-    "baa": 4.31
-  },
-  {
-    "month": "2016-10",
-    "aaa": 3.51,
-    "baa": 4.38
-  },
-  {
-    "month": "2016-11",
-    "aaa": 3.86,
-    "baa": 4.71
-  },
-  {
-    "month": "2016-12",
-    "aaa": 4.06,
-    "baa": 4.83
-  },
-  {
-    "month": "2017-01",
-    "aaa": 3.92,
-    "baa": 4.66
-  },
-  {
-    "month": "2017-02",
-    "aaa": 3.95,
-    "baa": 4.64
-  },
-  {
-    "month": "2017-03",
-    "aaa": 4.01,
-    "baa": 4.68
-  },
-  {
-    "month": "2017-04",
-    "aaa": 3.87,
-    "baa": 4.57
-  },
-  {
-    "month": "2017-05",
-    "aaa": 3.85,
-    "baa": 4.55
-  },
-  {
-    "month": "2017-06",
-    "aaa": 3.68,
-    "baa": 4.37
-  },
-  {
-    "month": "2017-07",
-    "aaa": 3.7,
-    "baa": 4.39
-  },
-  {
-    "month": "2017-08",
-    "aaa": 3.63,
-    "baa": 4.31
-  },
-  {
-    "month": "2017-09",
-    "aaa": 3.63,
-    "baa": 4.3
-  },
-  {
-    "month": "2017-10",
-    "aaa": 3.6,
-    "baa": 4.32
-  },
-  {
-    "month": "2017-11",
-    "aaa": 3.57,
-    "baa": 4.27
-  },
-  {
-    "month": "2017-12",
-    "aaa": 3.51,
-    "baa": 4.22
-  },
-  {
-    "month": "2018-01",
-    "aaa": 3.55,
-    "baa": 4.26
-  },
-  {
-    "month": "2018-02",
-    "aaa": 3.82,
-    "baa": 4.51
-  },
-  {
-    "month": "2018-03",
-    "aaa": 3.87,
-    "baa": 4.64
-  },
-  {
-    "month": "2018-04",
-    "aaa": 3.85,
-    "baa": 4.67
-  },
-  {
-    "month": "2018-05",
-    "aaa": 4,
-    "baa": 4.83
-  },
-  {
-    "month": "2018-06",
-    "aaa": 3.96,
-    "baa": 4.83
-  },
-  {
-    "month": "2018-07",
-    "aaa": 3.87,
-    "baa": 4.79
-  },
-  {
-    "month": "2018-08",
-    "aaa": 3.88,
-    "baa": 4.77
-  },
-  {
-    "month": "2018-09",
-    "aaa": 3.98,
-    "baa": 4.88
-  },
-  {
-    "month": "2018-10",
-    "aaa": 4.14,
-    "baa": 5.07
-  },
-  {
-    "month": "2018-11",
-    "aaa": 4.22,
-    "baa": 5.22
-  },
-  {
-    "month": "2018-12",
-    "aaa": 4.02,
-    "baa": 5.13
-  },
-  {
-    "month": "2019-01",
-    "aaa": 3.93,
-    "baa": 5.12
-  },
-  {
-    "month": "2019-02",
-    "aaa": 3.79,
-    "baa": 4.95
-  },
-  {
-    "month": "2019-03",
-    "aaa": 3.77,
-    "baa": 4.84
-  },
-  {
-    "month": "2019-04",
-    "aaa": 3.69,
-    "baa": 4.7
-  },
-  {
-    "month": "2019-05",
-    "aaa": 3.67,
-    "baa": 4.63
-  },
-  {
-    "month": "2019-06",
-    "aaa": 3.42,
-    "baa": 4.46
-  },
-  {
-    "month": "2019-07",
-    "aaa": 3.29,
-    "baa": 4.28
-  },
-  {
-    "month": "2019-08",
-    "aaa": 2.98,
-    "baa": 3.87
-  },
-  {
-    "month": "2019-09",
-    "aaa": 3.03,
-    "baa": 3.91
-  },
-  {
-    "month": "2019-10",
-    "aaa": 3.01,
-    "baa": 3.92
-  },
-  {
-    "month": "2019-11",
-    "aaa": 3.06,
-    "baa": 3.94
-  },
-  {
-    "month": "2019-12",
-    "aaa": 3.01,
-    "baa": 3.88
-  },
-  {
-    "month": "2020-01",
-    "aaa": 2.94,
-    "baa": 3.77
-  },
-  {
-    "month": "2020-02",
-    "aaa": 2.78,
-    "baa": 3.61
-  },
-  {
-    "month": "2020-03",
-    "aaa": 3.02,
-    "baa": 4.29
-  },
-  {
-    "month": "2020-04",
-    "aaa": 2.43,
-    "baa": 4.13
-  },
-  {
-    "month": "2020-05",
-    "aaa": 2.5,
-    "baa": 3.95
-  },
-  {
-    "month": "2020-06",
-    "aaa": 2.44,
-    "baa": 3.64
-  },
-  {
-    "month": "2020-07",
-    "aaa": 2.14,
-    "baa": 3.31
-  },
-  {
-    "month": "2020-08",
-    "aaa": 2.25,
-    "baa": 3.27
-  },
-  {
-    "month": "2020-09",
-    "aaa": 2.31,
-    "baa": 3.36
-  },
-  {
-    "month": "2020-10",
-    "aaa": 2.35,
-    "baa": 3.44
-  },
-  {
-    "month": "2020-11",
-    "aaa": 2.3,
-    "baa": 3.3
-  },
-  {
-    "month": "2020-12",
-    "aaa": 2.26,
-    "baa": 3.16
-  },
-  {
-    "month": "2021-01",
-    "aaa": 2.45,
-    "baa": 3.24
-  },
-  {
-    "month": "2021-02",
-    "aaa": 2.7,
-    "baa": 3.42
-  },
-  {
-    "month": "2021-03",
-    "aaa": 3.04,
-    "baa": 3.74
-  },
-  {
-    "month": "2021-04",
-    "aaa": 2.9,
-    "baa": 3.6
-  },
-  {
-    "month": "2021-05",
-    "aaa": 2.96,
-    "baa": 3.62
-  },
-  {
-    "month": "2021-06",
-    "aaa": 2.79,
-    "baa": 3.44
-  },
-  {
-    "month": "2021-07",
-    "aaa": 2.57,
-    "baa": 3.24
-  },
-  {
-    "month": "2021-08",
-    "aaa": 2.55,
-    "baa": 3.24
-  },
-  {
-    "month": "2021-09",
-    "aaa": 2.53,
-    "baa": 3.23
-  },
-  {
-    "month": "2021-10",
-    "aaa": 2.68,
-    "baa": 3.35
-  },
-  {
-    "month": "2021-11",
-    "aaa": 2.62,
-    "baa": 3.28
-  },
-  {
-    "month": "2021-12",
-    "aaa": 2.65,
-    "baa": 3.3
-  },
-  {
-    "month": "2022-01",
-    "aaa": 2.93,
-    "baa": 3.58
-  },
-  {
-    "month": "2022-02",
-    "aaa": 3.25,
-    "baa": 3.97
-  },
-  {
-    "month": "2022-03",
-    "aaa": 3.43,
-    "baa": 4.29
-  },
-  {
-    "month": "2022-04",
-    "aaa": 3.76,
-    "baa": 4.66
-  },
-  {
-    "month": "2022-05",
-    "aaa": 4.13,
-    "baa": 5.12
-  },
-  {
-    "month": "2022-06",
-    "aaa": 4.24,
-    "baa": 5.27
-  },
-  {
-    "month": "2022-07",
-    "aaa": 4.06,
-    "baa": 5.21
-  },
-  {
-    "month": "2022-08",
-    "aaa": 4.07,
-    "baa": 5.15
-  },
-  {
-    "month": "2022-09",
-    "aaa": 4.59,
-    "baa": 5.69
-  },
-  {
-    "month": "2022-10",
-    "aaa": 5.1,
-    "baa": 6.26
-  },
-  {
-    "month": "2022-11",
-    "aaa": 4.9,
-    "baa": 6.07
-  },
-  {
-    "month": "2022-12",
-    "aaa": 4.43,
-    "baa": 5.59
-  },
-  {
-    "month": "2023-01",
-    "aaa": 4.4,
-    "baa": 5.5
-  },
-  {
-    "month": "2023-02",
-    "aaa": 4.56,
-    "baa": 5.59
-  },
-  {
-    "month": "2023-03",
-    "aaa": 4.6,
-    "baa": 5.71
-  },
-  {
-    "month": "2023-04",
-    "aaa": 4.47,
-    "baa": 5.53
-  },
-  {
-    "month": "2023-05",
-    "aaa": 4.67,
-    "baa": 5.77
-  },
-  {
-    "month": "2023-06",
-    "aaa": 4.65,
-    "baa": 5.75
-  },
-  {
-    "month": "2023-07",
-    "aaa": 4.66,
-    "baa": 5.74
-  },
-  {
-    "month": "2023-08",
-    "aaa": 4.95,
-    "baa": 6.02
-  },
-  {
-    "month": "2023-09",
-    "aaa": 5.13,
-    "baa": 6.16
-  },
-  {
-    "month": "2023-10",
-    "aaa": 5.61,
-    "baa": 6.63
-  },
-  {
-    "month": "2023-11",
-    "aaa": 5.28,
-    "baa": 6.29
-  },
-  {
-    "month": "2023-12",
-    "aaa": 4.74,
-    "baa": 5.64
-  },
-  {
-    "month": "2024-01",
-    "aaa": 4.87,
-    "baa": 5.68
-  },
-  {
-    "month": "2024-02",
-    "aaa": 5.03,
-    "baa": 5.77
-  },
-  {
-    "month": "2024-03",
-    "aaa": 5.01,
-    "baa": 5.75
-  },
-  {
-    "month": "2024-04",
-    "aaa": 5.28,
-    "baa": 6
-  },
-  {
-    "month": "2024-05",
-    "aaa": 5.25,
-    "baa": 5.95
-  },
-  {
-    "month": "2024-06",
-    "aaa": 5.13,
-    "baa": 5.82
-  },
-  {
-    "month": "2024-07",
-    "aaa": 5.12,
-    "baa": 5.84
-  },
-  {
-    "month": "2024-08",
-    "aaa": 4.87,
-    "baa": 5.6
-  },
-  {
-    "month": "2024-09",
-    "aaa": 4.68,
-    "baa": 5.42
-  },
-  {
-    "month": "2024-10",
-    "aaa": 4.95,
-    "baa": 5.63
-  },
-  {
-    "month": "2024-11",
-    "aaa": 5.14,
-    "baa": 5.78
-  },
-  {
-    "month": "2024-12",
-    "aaa": 5.2,
-    "baa": 5.8
-  },
-  {
-    "month": "2025-01",
-    "aaa": 5.46,
-    "baa": 6.08
-  },
-  {
-    "month": "2025-02",
-    "aaa": 5.32,
-    "baa": 5.92
-  },
-  {
-    "month": "2025-03",
-    "aaa": 5.29,
-    "baa": 5.93
-  },
-  {
-    "month": "2025-04",
-    "aaa": 5.45,
-    "baa": 6.18
-  },
-  {
-    "month": "2025-05",
-    "aaa": 5.54,
-    "baa": 6.29
-  },
-  {
-    "month": "2025-06",
-    "aaa": 5.46,
-    "baa": 6.15
-  },
-  {
-    "month": "2025-07",
-    "aaa": 5.45,
-    "baa": 6.1
-  },
-  {
-    "month": "2025-08",
-    "aaa": 5.35,
-    "baa": 6
-  },
-  {
-    "month": "2025-09",
-    "aaa": 5.21,
-    "baa": 5.83
-  },
-  {
-    "month": "2025-10",
-    "aaa": 5.13,
-    "baa": 5.74
-  },
-  {
-    "month": "2025-11",
-    "aaa": 5.26,
-    "baa": 5.86
-  },
-  {
-    "month": "2025-12",
-    "aaa": 5.31,
-    "baa": 5.9
-  },
-  {
-    "month": "2026-01",
-    "aaa": 5.34,
-    "baa": 5.88
-  },
-  {
-    "month": "2026-02",
-    "aaa": 5.3,
-    "baa": 5.81
-  },
-  {
-    "month": "2026-03",
-    "aaa": 5.48,
-    "baa": 6.04
-  },
-  {
-    "month": "2026-04",
-    "aaa": 5.42,
-    "baa": 6.03
-  },
-  {
-    "month": "2026-05",
-    "aaa": 5.56,
-    "baa": 6.1
-  },
-  {
-    "month": "2026-06",
-    "aaa": 5.52,
-    "baa": 6
-  }
+export const US_CORPORATE_YIELDS: CorporateYieldPoint[] = [
+  { month: "1970-01", aaa: 7.91, baa: 8.86 },
+  { month: "1970-02", aaa: 7.93, baa: 8.78 },
+  { month: "1970-03", aaa: 7.84, baa: 8.63 },
+  { month: "1970-04", aaa: 7.83, baa: 8.7 },
+  { month: "1970-05", aaa: 8.11, baa: 8.98 },
+  { month: "1970-06", aaa: 8.48, baa: 9.25 },
+  { month: "1970-07", aaa: 8.44, baa: 9.4 },
+  { month: "1970-08", aaa: 8.13, baa: 9.44 },
+  { month: "1970-09", aaa: 8.09, baa: 9.39 },
+  { month: "1970-10", aaa: 8.03, baa: 9.33 },
+  { month: "1970-11", aaa: 8.05, baa: 9.38 },
+  { month: "1970-12", aaa: 7.64, baa: 9.12 },
+  { month: "1971-01", aaa: 7.36, baa: 8.74 },
+  { month: "1971-02", aaa: 7.08, baa: 8.39 },
+  { month: "1971-03", aaa: 7.21, baa: 8.46 },
+  { month: "1971-04", aaa: 7.25, baa: 8.45 },
+  { month: "1971-05", aaa: 7.53, baa: 8.62 },
+  { month: "1971-06", aaa: 7.64, baa: 8.75 },
+  { month: "1971-07", aaa: 7.64, baa: 8.76 },
+  { month: "1971-08", aaa: 7.59, baa: 8.76 },
+  { month: "1971-09", aaa: 7.44, baa: 8.59 },
+  { month: "1971-10", aaa: 7.39, baa: 8.48 },
+  { month: "1971-11", aaa: 7.26, baa: 8.38 },
+  { month: "1971-12", aaa: 7.25, baa: 8.38 },
+  { month: "1972-01", aaa: 7.19, baa: 8.23 },
+  { month: "1972-02", aaa: 7.27, baa: 8.23 },
+  { month: "1972-03", aaa: 7.24, baa: 8.24 },
+  { month: "1972-04", aaa: 7.3, baa: 8.24 },
+  { month: "1972-05", aaa: 7.3, baa: 8.23 },
+  { month: "1972-06", aaa: 7.23, baa: 8.2 },
+  { month: "1972-07", aaa: 7.21, baa: 8.23 },
+  { month: "1972-08", aaa: 7.19, baa: 8.19 },
+  { month: "1972-09", aaa: 7.22, baa: 8.09 },
+  { month: "1972-10", aaa: 7.21, baa: 8.06 },
+  { month: "1972-11", aaa: 7.12, baa: 7.99 },
+  { month: "1972-12", aaa: 7.08, baa: 7.93 },
+  { month: "1973-01", aaa: 7.15, baa: 7.9 },
+  { month: "1973-02", aaa: 7.22, baa: 7.97 },
+  { month: "1973-03", aaa: 7.29, baa: 8.03 },
+  { month: "1973-04", aaa: 7.26, baa: 8.09 },
+  { month: "1973-05", aaa: 7.29, baa: 8.06 },
+  { month: "1973-06", aaa: 7.37, baa: 8.13 },
+  { month: "1973-07", aaa: 7.45, baa: 8.24 },
+  { month: "1973-08", aaa: 7.68, baa: 8.53 },
+  { month: "1973-09", aaa: 7.63, baa: 8.63 },
+  { month: "1973-10", aaa: 7.6, baa: 8.41 },
+  { month: "1973-11", aaa: 7.67, baa: 8.42 },
+  { month: "1973-12", aaa: 7.68, baa: 8.48 },
+  { month: "1974-01", aaa: 7.83, baa: 8.48 },
+  { month: "1974-02", aaa: 7.85, baa: 8.53 },
+  { month: "1974-03", aaa: 8.01, baa: 8.62 },
+  { month: "1974-04", aaa: 8.25, baa: 8.87 },
+  { month: "1974-05", aaa: 8.37, baa: 9.05 },
+  { month: "1974-06", aaa: 8.47, baa: 9.27 },
+  { month: "1974-07", aaa: 8.72, baa: 9.48 },
+  { month: "1974-08", aaa: 9, baa: 9.77 },
+  { month: "1974-09", aaa: 9.24, baa: 10.18 },
+  { month: "1974-10", aaa: 9.27, baa: 10.48 },
+  { month: "1974-11", aaa: 8.89, baa: 10.6 },
+  { month: "1974-12", aaa: 8.89, baa: 10.63 },
+  { month: "1975-01", aaa: 8.83, baa: 10.81 },
+  { month: "1975-02", aaa: 8.62, baa: 10.65 },
+  { month: "1975-03", aaa: 8.67, baa: 10.48 },
+  { month: "1975-04", aaa: 8.95, baa: 10.58 },
+  { month: "1975-05", aaa: 8.9, baa: 10.69 },
+  { month: "1975-06", aaa: 8.77, baa: 10.62 },
+  { month: "1975-07", aaa: 8.84, baa: 10.55 },
+  { month: "1975-08", aaa: 8.95, baa: 10.59 },
+  { month: "1975-09", aaa: 8.95, baa: 10.61 },
+  { month: "1975-10", aaa: 8.86, baa: 10.62 },
+  { month: "1975-11", aaa: 8.78, baa: 10.56 },
+  { month: "1975-12", aaa: 8.79, baa: 10.56 },
+  { month: "1976-01", aaa: 8.6, baa: 10.41 },
+  { month: "1976-02", aaa: 8.55, baa: 10.24 },
+  { month: "1976-03", aaa: 8.52, baa: 10.12 },
+  { month: "1976-04", aaa: 8.4, baa: 9.94 },
+  { month: "1976-05", aaa: 8.58, baa: 9.86 },
+  { month: "1976-06", aaa: 8.62, baa: 9.89 },
+  { month: "1976-07", aaa: 8.56, baa: 9.82 },
+  { month: "1976-08", aaa: 8.45, baa: 9.64 },
+  { month: "1976-09", aaa: 8.38, baa: 9.4 },
+  { month: "1976-10", aaa: 8.32, baa: 9.29 },
+  { month: "1976-11", aaa: 8.25, baa: 9.23 },
+  { month: "1976-12", aaa: 7.98, baa: 9.12 },
+  { month: "1977-01", aaa: 7.96, baa: 9.08 },
+  { month: "1977-02", aaa: 8.04, baa: 9.12 },
+  { month: "1977-03", aaa: 8.1, baa: 9.12 },
+  { month: "1977-04", aaa: 8.04, baa: 9.07 },
+  { month: "1977-05", aaa: 8.05, baa: 9.01 },
+  { month: "1977-06", aaa: 7.95, baa: 8.91 },
+  { month: "1977-07", aaa: 7.94, baa: 8.87 },
+  { month: "1977-08", aaa: 7.98, baa: 8.82 },
+  { month: "1977-09", aaa: 7.92, baa: 8.8 },
+  { month: "1977-10", aaa: 8.04, baa: 8.89 },
+  { month: "1977-11", aaa: 8.08, baa: 8.95 },
+  { month: "1977-12", aaa: 8.19, baa: 8.99 },
+  { month: "1978-01", aaa: 8.41, baa: 9.17 },
+  { month: "1978-02", aaa: 8.47, baa: 9.2 },
+  { month: "1978-03", aaa: 8.47, baa: 9.22 },
+  { month: "1978-04", aaa: 8.56, baa: 9.32 },
+  { month: "1978-05", aaa: 8.69, baa: 9.49 },
+  { month: "1978-06", aaa: 8.76, baa: 9.6 },
+  { month: "1978-07", aaa: 8.88, baa: 9.6 },
+  { month: "1978-08", aaa: 8.69, baa: 9.48 },
+  { month: "1978-09", aaa: 8.69, baa: 9.42 },
+  { month: "1978-10", aaa: 8.89, baa: 9.59 },
+  { month: "1978-11", aaa: 9.03, baa: 9.83 },
+  { month: "1978-12", aaa: 9.16, baa: 9.94 },
+  { month: "1979-01", aaa: 9.25, baa: 10.13 },
+  { month: "1979-02", aaa: 9.26, baa: 10.08 },
+  { month: "1979-03", aaa: 9.37, baa: 10.26 },
+  { month: "1979-04", aaa: 9.38, baa: 10.33 },
+  { month: "1979-05", aaa: 9.5, baa: 10.47 },
+  { month: "1979-06", aaa: 9.29, baa: 10.38 },
+  { month: "1979-07", aaa: 9.2, baa: 10.29 },
+  { month: "1979-08", aaa: 9.23, baa: 10.35 },
+  { month: "1979-09", aaa: 9.44, baa: 10.54 },
+  { month: "1979-10", aaa: 10.13, baa: 11.4 },
+  { month: "1979-11", aaa: 10.76, baa: 11.99 },
+  { month: "1979-12", aaa: 10.74, baa: 12.06 },
+  { month: "1980-01", aaa: 11.09, baa: 12.42 },
+  { month: "1980-02", aaa: 12.38, baa: 13.57 },
+  { month: "1980-03", aaa: 12.96, baa: 14.45 },
+  { month: "1980-04", aaa: 12.04, baa: 14.19 },
+  { month: "1980-05", aaa: 10.99, baa: 13.17 },
+  { month: "1980-06", aaa: 10.58, baa: 12.71 },
+  { month: "1980-07", aaa: 11.07, baa: 12.65 },
+  { month: "1980-08", aaa: 11.64, baa: 13.15 },
+  { month: "1980-09", aaa: 12.02, baa: 13.7 },
+  { month: "1980-10", aaa: 12.31, baa: 14.23 },
+  { month: "1980-11", aaa: 12.97, baa: 14.64 },
+  { month: "1980-12", aaa: 13.21, baa: 15.14 },
+  { month: "1981-01", aaa: 12.81, baa: 15.03 },
+  { month: "1981-02", aaa: 13.35, baa: 15.37 },
+  { month: "1981-03", aaa: 13.33, baa: 15.34 },
+  { month: "1981-04", aaa: 13.88, baa: 15.56 },
+  { month: "1981-05", aaa: 14.32, baa: 15.95 },
+  { month: "1981-06", aaa: 13.75, baa: 15.8 },
+  { month: "1981-07", aaa: 14.38, baa: 16.17 },
+  { month: "1981-08", aaa: 14.89, baa: 16.34 },
+  { month: "1981-09", aaa: 15.49, baa: 16.92 },
+  { month: "1981-10", aaa: 15.4, baa: 17.11 },
+  { month: "1981-11", aaa: 14.22, baa: 16.39 },
+  { month: "1981-12", aaa: 14.23, baa: 16.55 },
+  { month: "1982-01", aaa: 15.18, baa: 17.1 },
+  { month: "1982-02", aaa: 15.27, baa: 17.18 },
+  { month: "1982-03", aaa: 14.58, baa: 16.82 },
+  { month: "1982-04", aaa: 14.46, baa: 16.78 },
+  { month: "1982-05", aaa: 14.26, baa: 16.64 },
+  { month: "1982-06", aaa: 14.81, baa: 16.92 },
+  { month: "1982-07", aaa: 14.61, baa: 16.8 },
+  { month: "1982-08", aaa: 13.71, baa: 16.32 },
+  { month: "1982-09", aaa: 12.94, baa: 15.63 },
+  { month: "1982-10", aaa: 12.12, baa: 14.73 },
+  { month: "1982-11", aaa: 11.68, baa: 14.3 },
+  { month: "1982-12", aaa: 11.83, baa: 14.14 },
+  { month: "1983-01", aaa: 11.79, baa: 13.94 },
+  { month: "1983-02", aaa: 12.01, baa: 13.95 },
+  { month: "1983-03", aaa: 11.73, baa: 13.61 },
+  { month: "1983-04", aaa: 11.51, baa: 13.29 },
+  { month: "1983-05", aaa: 11.46, baa: 13.09 },
+  { month: "1983-06", aaa: 11.74, baa: 13.37 },
+  { month: "1983-07", aaa: 12.15, baa: 13.39 },
+  { month: "1983-08", aaa: 12.51, baa: 13.64 },
+  { month: "1983-09", aaa: 12.37, baa: 13.55 },
+  { month: "1983-10", aaa: 12.25, baa: 13.46 },
+  { month: "1983-11", aaa: 12.41, baa: 13.61 },
+  { month: "1983-12", aaa: 12.57, baa: 13.75 },
+  { month: "1984-01", aaa: 12.2, baa: 13.65 },
+  { month: "1984-02", aaa: 12.08, baa: 13.59 },
+  { month: "1984-03", aaa: 12.57, baa: 13.99 },
+  { month: "1984-04", aaa: 12.81, baa: 14.31 },
+  { month: "1984-05", aaa: 13.28, baa: 14.74 },
+  { month: "1984-06", aaa: 13.55, baa: 15.05 },
+  { month: "1984-07", aaa: 13.44, baa: 15.15 },
+  { month: "1984-08", aaa: 12.87, baa: 14.63 },
+  { month: "1984-09", aaa: 12.66, baa: 14.35 },
+  { month: "1984-10", aaa: 12.63, baa: 13.94 },
+  { month: "1984-11", aaa: 12.29, baa: 13.48 },
+  { month: "1984-12", aaa: 12.13, baa: 13.4 },
+  { month: "1985-01", aaa: 12.08, baa: 13.26 },
+  { month: "1985-02", aaa: 12.13, baa: 13.23 },
+  { month: "1985-03", aaa: 12.56, baa: 13.69 },
+  { month: "1985-04", aaa: 12.23, baa: 13.51 },
+  { month: "1985-05", aaa: 11.72, baa: 13.15 },
+  { month: "1985-06", aaa: 10.94, baa: 12.4 },
+  { month: "1985-07", aaa: 10.97, baa: 12.43 },
+  { month: "1985-08", aaa: 11.05, baa: 12.5 },
+  { month: "1985-09", aaa: 11.07, baa: 12.48 },
+  { month: "1985-10", aaa: 11.02, baa: 12.36 },
+  { month: "1985-11", aaa: 10.55, baa: 11.99 },
+  { month: "1985-12", aaa: 10.16, baa: 11.58 },
+  { month: "1986-01", aaa: 10.05, baa: 11.44 },
+  { month: "1986-02", aaa: 9.67, baa: 11.11 },
+  { month: "1986-03", aaa: 9, baa: 10.5 },
+  { month: "1986-04", aaa: 8.79, baa: 10.19 },
+  { month: "1986-05", aaa: 9.09, baa: 10.29 },
+  { month: "1986-06", aaa: 9.13, baa: 10.34 },
+  { month: "1986-07", aaa: 8.88, baa: 10.16 },
+  { month: "1986-08", aaa: 8.72, baa: 10.18 },
+  { month: "1986-09", aaa: 8.89, baa: 10.2 },
+  { month: "1986-10", aaa: 8.86, baa: 10.24 },
+  { month: "1986-11", aaa: 8.68, baa: 10.07 },
+  { month: "1986-12", aaa: 8.49, baa: 9.97 },
+  { month: "1987-01", aaa: 8.36, baa: 9.72 },
+  { month: "1987-02", aaa: 8.38, baa: 9.65 },
+  { month: "1987-03", aaa: 8.36, baa: 9.61 },
+  { month: "1987-04", aaa: 8.85, baa: 10.04 },
+  { month: "1987-05", aaa: 9.33, baa: 10.51 },
+  { month: "1987-06", aaa: 9.32, baa: 10.52 },
+  { month: "1987-07", aaa: 9.42, baa: 10.61 },
+  { month: "1987-08", aaa: 9.67, baa: 10.8 },
+  { month: "1987-09", aaa: 10.18, baa: 11.31 },
+  { month: "1987-10", aaa: 10.52, baa: 11.62 },
+  { month: "1987-11", aaa: 10.01, baa: 11.23 },
+  { month: "1987-12", aaa: 10.11, baa: 11.29 },
+  { month: "1988-01", aaa: 9.88, baa: 11.07 },
+  { month: "1988-02", aaa: 9.4, baa: 10.62 },
+  { month: "1988-03", aaa: 9.39, baa: 10.57 },
+  { month: "1988-04", aaa: 9.67, baa: 10.9 },
+  { month: "1988-05", aaa: 9.9, baa: 11.04 },
+  { month: "1988-06", aaa: 9.86, baa: 11 },
+  { month: "1988-07", aaa: 9.96, baa: 11.11 },
+  { month: "1988-08", aaa: 10.11, baa: 11.21 },
+  { month: "1988-09", aaa: 9.82, baa: 10.9 },
+  { month: "1988-10", aaa: 9.51, baa: 10.41 },
+  { month: "1988-11", aaa: 9.45, baa: 10.48 },
+  { month: "1988-12", aaa: 9.57, baa: 10.65 },
+  { month: "1989-01", aaa: 9.62, baa: 10.65 },
+  { month: "1989-02", aaa: 9.64, baa: 10.61 },
+  { month: "1989-03", aaa: 9.8, baa: 10.67 },
+  { month: "1989-04", aaa: 9.79, baa: 10.61 },
+  { month: "1989-05", aaa: 9.57, baa: 10.46 },
+  { month: "1989-06", aaa: 9.1, baa: 10.03 },
+  { month: "1989-07", aaa: 8.93, baa: 9.87 },
+  { month: "1989-08", aaa: 8.96, baa: 9.88 },
+  { month: "1989-09", aaa: 9.01, baa: 9.91 },
+  { month: "1989-10", aaa: 8.92, baa: 9.81 },
+  { month: "1989-11", aaa: 8.89, baa: 9.81 },
+  { month: "1989-12", aaa: 8.86, baa: 9.82 },
+  { month: "1990-01", aaa: 8.99, baa: 9.94 },
+  { month: "1990-02", aaa: 9.22, baa: 10.14 },
+  { month: "1990-03", aaa: 9.37, baa: 10.21 },
+  { month: "1990-04", aaa: 9.46, baa: 10.3 },
+  { month: "1990-05", aaa: 9.47, baa: 10.41 },
+  { month: "1990-06", aaa: 9.26, baa: 10.22 },
+  { month: "1990-07", aaa: 9.24, baa: 10.2 },
+  { month: "1990-08", aaa: 9.41, baa: 10.41 },
+  { month: "1990-09", aaa: 9.56, baa: 10.64 },
+  { month: "1990-10", aaa: 9.53, baa: 10.74 },
+  { month: "1990-11", aaa: 9.3, baa: 10.62 },
+  { month: "1990-12", aaa: 9.05, baa: 10.43 },
+  { month: "1991-01", aaa: 9.04, baa: 10.45 },
+  { month: "1991-02", aaa: 8.83, baa: 10.07 },
+  { month: "1991-03", aaa: 8.93, baa: 10.09 },
+  { month: "1991-04", aaa: 8.86, baa: 9.94 },
+  { month: "1991-05", aaa: 8.86, baa: 9.86 },
+  { month: "1991-06", aaa: 9.01, baa: 9.96 },
+  { month: "1991-07", aaa: 9, baa: 9.89 },
+  { month: "1991-08", aaa: 8.75, baa: 9.65 },
+  { month: "1991-09", aaa: 8.61, baa: 9.51 },
+  { month: "1991-10", aaa: 8.55, baa: 9.49 },
+  { month: "1991-11", aaa: 8.48, baa: 9.45 },
+  { month: "1991-12", aaa: 8.31, baa: 9.26 },
+  { month: "1992-01", aaa: 8.2, baa: 9.13 },
+  { month: "1992-02", aaa: 8.29, baa: 9.23 },
+  { month: "1992-03", aaa: 8.35, baa: 9.25 },
+  { month: "1992-04", aaa: 8.33, baa: 9.21 },
+  { month: "1992-05", aaa: 8.28, baa: 9.13 },
+  { month: "1992-06", aaa: 8.22, baa: 9.05 },
+  { month: "1992-07", aaa: 8.07, baa: 8.84 },
+  { month: "1992-08", aaa: 7.95, baa: 8.65 },
+  { month: "1992-09", aaa: 7.92, baa: 8.62 },
+  { month: "1992-10", aaa: 7.99, baa: 8.84 },
+  { month: "1992-11", aaa: 8.1, baa: 8.96 },
+  { month: "1992-12", aaa: 7.98, baa: 8.81 },
+  { month: "1993-01", aaa: 7.91, baa: 8.67 },
+  { month: "1993-02", aaa: 7.71, baa: 8.39 },
+  { month: "1993-03", aaa: 7.58, baa: 8.15 },
+  { month: "1993-04", aaa: 7.46, baa: 8.14 },
+  { month: "1993-05", aaa: 7.43, baa: 8.21 },
+  { month: "1993-06", aaa: 7.33, baa: 8.07 },
+  { month: "1993-07", aaa: 7.17, baa: 7.93 },
+  { month: "1993-08", aaa: 6.85, baa: 7.6 },
+  { month: "1993-09", aaa: 6.66, baa: 7.34 },
+  { month: "1993-10", aaa: 6.67, baa: 7.31 },
+  { month: "1993-11", aaa: 6.93, baa: 7.66 },
+  { month: "1993-12", aaa: 6.93, baa: 7.69 },
+  { month: "1994-01", aaa: 6.92, baa: 7.65 },
+  { month: "1994-02", aaa: 7.08, baa: 7.76 },
+  { month: "1994-03", aaa: 7.48, baa: 8.13 },
+  { month: "1994-04", aaa: 7.88, baa: 8.52 },
+  { month: "1994-05", aaa: 7.99, baa: 8.62 },
+  { month: "1994-06", aaa: 7.97, baa: 8.65 },
+  { month: "1994-07", aaa: 8.11, baa: 8.8 },
+  { month: "1994-08", aaa: 8.07, baa: 8.74 },
+  { month: "1994-09", aaa: 8.34, baa: 8.98 },
+  { month: "1994-10", aaa: 8.57, baa: 9.2 },
+  { month: "1994-11", aaa: 8.68, baa: 9.32 },
+  { month: "1994-12", aaa: 8.46, baa: 9.1 },
+  { month: "1995-01", aaa: 8.46, baa: 9.08 },
+  { month: "1995-02", aaa: 8.26, baa: 8.85 },
+  { month: "1995-03", aaa: 8.12, baa: 8.7 },
+  { month: "1995-04", aaa: 8.03, baa: 8.6 },
+  { month: "1995-05", aaa: 7.65, baa: 8.2 },
+  { month: "1995-06", aaa: 7.3, baa: 7.9 },
+  { month: "1995-07", aaa: 7.41, baa: 8.04 },
+  { month: "1995-08", aaa: 7.57, baa: 8.19 },
+  { month: "1995-09", aaa: 7.32, baa: 7.93 },
+  { month: "1995-10", aaa: 7.12, baa: 7.75 },
+  { month: "1995-11", aaa: 7.02, baa: 7.68 },
+  { month: "1995-12", aaa: 6.82, baa: 7.49 },
+  { month: "1996-01", aaa: 6.81, baa: 7.47 },
+  { month: "1996-02", aaa: 6.99, baa: 7.63 },
+  { month: "1996-03", aaa: 7.35, baa: 8.03 },
+  { month: "1996-04", aaa: 7.5, baa: 8.19 },
+  { month: "1996-05", aaa: 7.62, baa: 8.3 },
+  { month: "1996-06", aaa: 7.71, baa: 8.4 },
+  { month: "1996-07", aaa: 7.65, baa: 8.35 },
+  { month: "1996-08", aaa: 7.46, baa: 8.18 },
+  { month: "1996-09", aaa: 7.66, baa: 8.35 },
+  { month: "1996-10", aaa: 7.39, baa: 8.07 },
+  { month: "1996-11", aaa: 7.1, baa: 7.79 },
+  { month: "1996-12", aaa: 7.2, baa: 7.89 },
+  { month: "1997-01", aaa: 7.42, baa: 8.09 },
+  { month: "1997-02", aaa: 7.31, baa: 7.94 },
+  { month: "1997-03", aaa: 7.55, baa: 8.18 },
+  { month: "1997-04", aaa: 7.73, baa: 8.34 },
+  { month: "1997-05", aaa: 7.58, baa: 8.2 },
+  { month: "1997-06", aaa: 7.41, baa: 8.02 },
+  { month: "1997-07", aaa: 7.14, baa: 7.75 },
+  { month: "1997-08", aaa: 7.22, baa: 7.82 },
+  { month: "1997-09", aaa: 7.15, baa: 7.7 },
+  { month: "1997-10", aaa: 7, baa: 7.57 },
+  { month: "1997-11", aaa: 6.87, baa: 7.42 },
+  { month: "1997-12", aaa: 6.76, baa: 7.32 },
+  { month: "1998-01", aaa: 6.61, baa: 7.19 },
+  { month: "1998-02", aaa: 6.67, baa: 7.25 },
+  { month: "1998-03", aaa: 6.72, baa: 7.32 },
+  { month: "1998-04", aaa: 6.69, baa: 7.33 },
+  { month: "1998-05", aaa: 6.69, baa: 7.3 },
+  { month: "1998-06", aaa: 6.53, baa: 7.13 },
+  { month: "1998-07", aaa: 6.55, baa: 7.15 },
+  { month: "1998-08", aaa: 6.52, baa: 7.14 },
+  { month: "1998-09", aaa: 6.4, baa: 7.09 },
+  { month: "1998-10", aaa: 6.37, baa: 7.18 },
+  { month: "1998-11", aaa: 6.41, baa: 7.34 },
+  { month: "1998-12", aaa: 6.22, baa: 7.23 },
+  { month: "1999-01", aaa: 6.24, baa: 7.29 },
+  { month: "1999-02", aaa: 6.4, baa: 7.39 },
+  { month: "1999-03", aaa: 6.62, baa: 7.53 },
+  { month: "1999-04", aaa: 6.64, baa: 7.48 },
+  { month: "1999-05", aaa: 6.93, baa: 7.72 },
+  { month: "1999-06", aaa: 7.23, baa: 8.02 },
+  { month: "1999-07", aaa: 7.19, baa: 7.95 },
+  { month: "1999-08", aaa: 7.4, baa: 8.15 },
+  { month: "1999-09", aaa: 7.39, baa: 8.2 },
+  { month: "1999-10", aaa: 7.55, baa: 8.38 },
+  { month: "1999-11", aaa: 7.36, baa: 8.15 },
+  { month: "1999-12", aaa: 7.55, baa: 8.19 },
+  { month: "2000-01", aaa: 7.78, baa: 8.33 },
+  { month: "2000-02", aaa: 7.68, baa: 8.29 },
+  { month: "2000-03", aaa: 7.68, baa: 8.37 },
+  { month: "2000-04", aaa: 7.64, baa: 8.4 },
+  { month: "2000-05", aaa: 7.99, baa: 8.9 },
+  { month: "2000-06", aaa: 7.67, baa: 8.48 },
+  { month: "2000-07", aaa: 7.65, baa: 8.35 },
+  { month: "2000-08", aaa: 7.55, baa: 8.26 },
+  { month: "2000-09", aaa: 7.62, baa: 8.35 },
+  { month: "2000-10", aaa: 7.55, baa: 8.34 },
+  { month: "2000-11", aaa: 7.45, baa: 8.28 },
+  { month: "2000-12", aaa: 7.21, baa: 8.02 },
+  { month: "2001-01", aaa: 7.15, baa: 7.93 },
+  { month: "2001-02", aaa: 7.1, baa: 7.87 },
+  { month: "2001-03", aaa: 6.98, baa: 7.84 },
+  { month: "2001-04", aaa: 7.2, baa: 8.07 },
+  { month: "2001-05", aaa: 7.29, baa: 8.07 },
+  { month: "2001-06", aaa: 7.18, baa: 7.97 },
+  { month: "2001-07", aaa: 7.13, baa: 7.97 },
+  { month: "2001-08", aaa: 7.02, baa: 7.85 },
+  { month: "2001-09", aaa: 7.17, baa: 8.03 },
+  { month: "2001-10", aaa: 7.03, baa: 7.91 },
+  { month: "2001-11", aaa: 6.97, baa: 7.81 },
+  { month: "2001-12", aaa: 6.77, baa: 8.05 },
+  { month: "2002-01", aaa: 6.55, baa: 7.87 },
+  { month: "2002-02", aaa: 6.51, baa: 7.89 },
+  { month: "2002-03", aaa: 6.81, baa: 8.11 },
+  { month: "2002-04", aaa: 6.76, baa: 8.03 },
+  { month: "2002-05", aaa: 6.75, baa: 8.09 },
+  { month: "2002-06", aaa: 6.63, baa: 7.95 },
+  { month: "2002-07", aaa: 6.53, baa: 7.9 },
+  { month: "2002-08", aaa: 6.37, baa: 7.58 },
+  { month: "2002-09", aaa: 6.15, baa: 7.4 },
+  { month: "2002-10", aaa: 6.32, baa: 7.73 },
+  { month: "2002-11", aaa: 6.31, baa: 7.62 },
+  { month: "2002-12", aaa: 6.21, baa: 7.45 },
+  { month: "2003-01", aaa: 6.17, baa: 7.35 },
+  { month: "2003-02", aaa: 5.95, baa: 7.06 },
+  { month: "2003-03", aaa: 5.89, baa: 6.95 },
+  { month: "2003-04", aaa: 5.74, baa: 6.85 },
+  { month: "2003-05", aaa: 5.22, baa: 6.38 },
+  { month: "2003-06", aaa: 4.97, baa: 6.19 },
+  { month: "2003-07", aaa: 5.49, baa: 6.62 },
+  { month: "2003-08", aaa: 5.88, baa: 7.01 },
+  { month: "2003-09", aaa: 5.72, baa: 6.79 },
+  { month: "2003-10", aaa: 5.7, baa: 6.73 },
+  { month: "2003-11", aaa: 5.65, baa: 6.66 },
+  { month: "2003-12", aaa: 5.62, baa: 6.6 },
+  { month: "2004-01", aaa: 5.54, baa: 6.44 },
+  { month: "2004-02", aaa: 5.5, baa: 6.27 },
+  { month: "2004-03", aaa: 5.33, baa: 6.11 },
+  { month: "2004-04", aaa: 5.73, baa: 6.46 },
+  { month: "2004-05", aaa: 6.04, baa: 6.75 },
+  { month: "2004-06", aaa: 6.01, baa: 6.78 },
+  { month: "2004-07", aaa: 5.82, baa: 6.62 },
+  { month: "2004-08", aaa: 5.65, baa: 6.46 },
+  { month: "2004-09", aaa: 5.46, baa: 6.27 },
+  { month: "2004-10", aaa: 5.47, baa: 6.21 },
+  { month: "2004-11", aaa: 5.52, baa: 6.2 },
+  { month: "2004-12", aaa: 5.47, baa: 6.15 },
+  { month: "2005-01", aaa: 5.36, baa: 6.02 },
+  { month: "2005-02", aaa: 5.2, baa: 5.82 },
+  { month: "2005-03", aaa: 5.4, baa: 6.06 },
+  { month: "2005-04", aaa: 5.33, baa: 6.05 },
+  { month: "2005-05", aaa: 5.15, baa: 6.01 },
+  { month: "2005-06", aaa: 4.96, baa: 5.86 },
+  { month: "2005-07", aaa: 5.06, baa: 5.95 },
+  { month: "2005-08", aaa: 5.09, baa: 5.96 },
+  { month: "2005-09", aaa: 5.13, baa: 6.03 },
+  { month: "2005-10", aaa: 5.35, baa: 6.3 },
+  { month: "2005-11", aaa: 5.42, baa: 6.39 },
+  { month: "2005-12", aaa: 5.37, baa: 6.32 },
+  { month: "2006-01", aaa: 5.29, baa: 6.24 },
+  { month: "2006-02", aaa: 5.35, baa: 6.27 },
+  { month: "2006-03", aaa: 5.53, baa: 6.41 },
+  { month: "2006-04", aaa: 5.84, baa: 6.68 },
+  { month: "2006-05", aaa: 5.95, baa: 6.75 },
+  { month: "2006-06", aaa: 5.89, baa: 6.78 },
+  { month: "2006-07", aaa: 5.85, baa: 6.76 },
+  { month: "2006-08", aaa: 5.68, baa: 6.59 },
+  { month: "2006-09", aaa: 5.51, baa: 6.43 },
+  { month: "2006-10", aaa: 5.51, baa: 6.42 },
+  { month: "2006-11", aaa: 5.33, baa: 6.2 },
+  { month: "2006-12", aaa: 5.32, baa: 6.22 },
+  { month: "2007-01", aaa: 5.4, baa: 6.34 },
+  { month: "2007-02", aaa: 5.39, baa: 6.28 },
+  { month: "2007-03", aaa: 5.3, baa: 6.27 },
+  { month: "2007-04", aaa: 5.47, baa: 6.39 },
+  { month: "2007-05", aaa: 5.47, baa: 6.39 },
+  { month: "2007-06", aaa: 5.79, baa: 6.7 },
+  { month: "2007-07", aaa: 5.73, baa: 6.65 },
+  { month: "2007-08", aaa: 5.79, baa: 6.65 },
+  { month: "2007-09", aaa: 5.74, baa: 6.59 },
+  { month: "2007-10", aaa: 5.66, baa: 6.48 },
+  { month: "2007-11", aaa: 5.44, baa: 6.4 },
+  { month: "2007-12", aaa: 5.49, baa: 6.65 },
+  { month: "2008-01", aaa: 5.33, baa: 6.54 },
+  { month: "2008-02", aaa: 5.53, baa: 6.82 },
+  { month: "2008-03", aaa: 5.51, baa: 6.89 },
+  { month: "2008-04", aaa: 5.55, baa: 6.97 },
+  { month: "2008-05", aaa: 5.57, baa: 6.93 },
+  { month: "2008-06", aaa: 5.68, baa: 7.07 },
+  { month: "2008-07", aaa: 5.67, baa: 7.16 },
+  { month: "2008-08", aaa: 5.64, baa: 7.15 },
+  { month: "2008-09", aaa: 5.65, baa: 7.31 },
+  { month: "2008-10", aaa: 6.28, baa: 8.88 },
+  { month: "2008-11", aaa: 6.12, baa: 9.21 },
+  { month: "2008-12", aaa: 5.05, baa: 8.43 },
+  { month: "2009-01", aaa: 5.05, baa: 8.14 },
+  { month: "2009-02", aaa: 5.27, baa: 8.08 },
+  { month: "2009-03", aaa: 5.5, baa: 8.42 },
+  { month: "2009-04", aaa: 5.39, baa: 8.39 },
+  { month: "2009-05", aaa: 5.54, baa: 8.06 },
+  { month: "2009-06", aaa: 5.61, baa: 7.5 },
+  { month: "2009-07", aaa: 5.41, baa: 7.09 },
+  { month: "2009-08", aaa: 5.26, baa: 6.58 },
+  { month: "2009-09", aaa: 5.13, baa: 6.31 },
+  { month: "2009-10", aaa: 5.15, baa: 6.29 },
+  { month: "2009-11", aaa: 5.19, baa: 6.32 },
+  { month: "2009-12", aaa: 5.26, baa: 6.37 },
+  { month: "2010-01", aaa: 5.26, baa: 6.25 },
+  { month: "2010-02", aaa: 5.35, baa: 6.34 },
+  { month: "2010-03", aaa: 5.27, baa: 6.27 },
+  { month: "2010-04", aaa: 5.29, baa: 6.25 },
+  { month: "2010-05", aaa: 4.96, baa: 6.05 },
+  { month: "2010-06", aaa: 4.88, baa: 6.23 },
+  { month: "2010-07", aaa: 4.72, baa: 6.01 },
+  { month: "2010-08", aaa: 4.49, baa: 5.66 },
+  { month: "2010-09", aaa: 4.53, baa: 5.66 },
+  { month: "2010-10", aaa: 4.68, baa: 5.72 },
+  { month: "2010-11", aaa: 4.87, baa: 5.92 },
+  { month: "2010-12", aaa: 5.02, baa: 6.1 },
+  { month: "2011-01", aaa: 5.04, baa: 6.09 },
+  { month: "2011-02", aaa: 5.22, baa: 6.15 },
+  { month: "2011-03", aaa: 5.13, baa: 6.03 },
+  { month: "2011-04", aaa: 5.16, baa: 6.02 },
+  { month: "2011-05", aaa: 4.96, baa: 5.78 },
+  { month: "2011-06", aaa: 4.99, baa: 5.75 },
+  { month: "2011-07", aaa: 4.93, baa: 5.76 },
+  { month: "2011-08", aaa: 4.37, baa: 5.36 },
+  { month: "2011-09", aaa: 4.09, baa: 5.27 },
+  { month: "2011-10", aaa: 3.98, baa: 5.37 },
+  { month: "2011-11", aaa: 3.87, baa: 5.14 },
+  { month: "2011-12", aaa: 3.93, baa: 5.25 },
+  { month: "2012-01", aaa: 3.85, baa: 5.23 },
+  { month: "2012-02", aaa: 3.85, baa: 5.14 },
+  { month: "2012-03", aaa: 3.99, baa: 5.23 },
+  { month: "2012-04", aaa: 3.96, baa: 5.19 },
+  { month: "2012-05", aaa: 3.8, baa: 5.07 },
+  { month: "2012-06", aaa: 3.64, baa: 5.02 },
+  { month: "2012-07", aaa: 3.4, baa: 4.87 },
+  { month: "2012-08", aaa: 3.48, baa: 4.91 },
+  { month: "2012-09", aaa: 3.49, baa: 4.84 },
+  { month: "2012-10", aaa: 3.47, baa: 4.58 },
+  { month: "2012-11", aaa: 3.5, baa: 4.51 },
+  { month: "2012-12", aaa: 3.65, baa: 4.63 },
+  { month: "2013-01", aaa: 3.8, baa: 4.73 },
+  { month: "2013-02", aaa: 3.9, baa: 4.85 },
+  { month: "2013-03", aaa: 3.93, baa: 4.85 },
+  { month: "2013-04", aaa: 3.73, baa: 4.59 },
+  { month: "2013-05", aaa: 3.89, baa: 4.73 },
+  { month: "2013-06", aaa: 4.27, baa: 5.19 },
+  { month: "2013-07", aaa: 4.34, baa: 5.32 },
+  { month: "2013-08", aaa: 4.54, baa: 5.42 },
+  { month: "2013-09", aaa: 4.64, baa: 5.47 },
+  { month: "2013-10", aaa: 4.53, baa: 5.31 },
+  { month: "2013-11", aaa: 4.63, baa: 5.38 },
+  { month: "2013-12", aaa: 4.62, baa: 5.38 },
+  { month: "2014-01", aaa: 4.49, baa: 5.19 },
+  { month: "2014-02", aaa: 4.45, baa: 5.1 },
+  { month: "2014-03", aaa: 4.38, baa: 5.06 },
+  { month: "2014-04", aaa: 4.24, baa: 4.9 },
+  { month: "2014-05", aaa: 4.16, baa: 4.76 },
+  { month: "2014-06", aaa: 4.25, baa: 4.8 },
+  { month: "2014-07", aaa: 4.16, baa: 4.73 },
+  { month: "2014-08", aaa: 4.08, baa: 4.69 },
+  { month: "2014-09", aaa: 4.11, baa: 4.8 },
+  { month: "2014-10", aaa: 3.92, baa: 4.69 },
+  { month: "2014-11", aaa: 3.92, baa: 4.79 },
+  { month: "2014-12", aaa: 3.79, baa: 4.74 },
+  { month: "2015-01", aaa: 3.46, baa: 4.45 },
+  { month: "2015-02", aaa: 3.61, baa: 4.51 },
+  { month: "2015-03", aaa: 3.64, baa: 4.54 },
+  { month: "2015-04", aaa: 3.52, baa: 4.48 },
+  { month: "2015-05", aaa: 3.98, baa: 4.89 },
+  { month: "2015-06", aaa: 4.19, baa: 5.13 },
+  { month: "2015-07", aaa: 4.15, baa: 5.2 },
+  { month: "2015-08", aaa: 4.04, baa: 5.19 },
+  { month: "2015-09", aaa: 4.07, baa: 5.34 },
+  { month: "2015-10", aaa: 3.95, baa: 5.34 },
+  { month: "2015-11", aaa: 4.06, baa: 5.46 },
+  { month: "2015-12", aaa: 3.97, baa: 5.46 },
+  { month: "2016-01", aaa: 4, baa: 5.45 },
+  { month: "2016-02", aaa: 3.96, baa: 5.34 },
+  { month: "2016-03", aaa: 3.82, baa: 5.13 },
+  { month: "2016-04", aaa: 3.62, baa: 4.79 },
+  { month: "2016-05", aaa: 3.65, baa: 4.68 },
+  { month: "2016-06", aaa: 3.5, baa: 4.53 },
+  { month: "2016-07", aaa: 3.28, baa: 4.22 },
+  { month: "2016-08", aaa: 3.32, baa: 4.24 },
+  { month: "2016-09", aaa: 3.41, baa: 4.31 },
+  { month: "2016-10", aaa: 3.51, baa: 4.38 },
+  { month: "2016-11", aaa: 3.86, baa: 4.71 },
+  { month: "2016-12", aaa: 4.06, baa: 4.83 },
+  { month: "2017-01", aaa: 3.92, baa: 4.66 },
+  { month: "2017-02", aaa: 3.95, baa: 4.64 },
+  { month: "2017-03", aaa: 4.01, baa: 4.68 },
+  { month: "2017-04", aaa: 3.87, baa: 4.57 },
+  { month: "2017-05", aaa: 3.85, baa: 4.55 },
+  { month: "2017-06", aaa: 3.68, baa: 4.37 },
+  { month: "2017-07", aaa: 3.7, baa: 4.39 },
+  { month: "2017-08", aaa: 3.63, baa: 4.31 },
+  { month: "2017-09", aaa: 3.63, baa: 4.3 },
+  { month: "2017-10", aaa: 3.6, baa: 4.32 },
+  { month: "2017-11", aaa: 3.57, baa: 4.27 },
+  { month: "2017-12", aaa: 3.51, baa: 4.22 },
+  { month: "2018-01", aaa: 3.55, baa: 4.26 },
+  { month: "2018-02", aaa: 3.82, baa: 4.51 },
+  { month: "2018-03", aaa: 3.87, baa: 4.64 },
+  { month: "2018-04", aaa: 3.85, baa: 4.67 },
+  { month: "2018-05", aaa: 4, baa: 4.83 },
+  { month: "2018-06", aaa: 3.96, baa: 4.83 },
+  { month: "2018-07", aaa: 3.87, baa: 4.79 },
+  { month: "2018-08", aaa: 3.88, baa: 4.77 },
+  { month: "2018-09", aaa: 3.98, baa: 4.88 },
+  { month: "2018-10", aaa: 4.14, baa: 5.07 },
+  { month: "2018-11", aaa: 4.22, baa: 5.22 },
+  { month: "2018-12", aaa: 4.02, baa: 5.13 },
+  { month: "2019-01", aaa: 3.93, baa: 5.12 },
+  { month: "2019-02", aaa: 3.79, baa: 4.95 },
+  { month: "2019-03", aaa: 3.77, baa: 4.84 },
+  { month: "2019-04", aaa: 3.69, baa: 4.7 },
+  { month: "2019-05", aaa: 3.67, baa: 4.63 },
+  { month: "2019-06", aaa: 3.42, baa: 4.46 },
+  { month: "2019-07", aaa: 3.29, baa: 4.28 },
+  { month: "2019-08", aaa: 2.98, baa: 3.87 },
+  { month: "2019-09", aaa: 3.03, baa: 3.91 },
+  { month: "2019-10", aaa: 3.01, baa: 3.92 },
+  { month: "2019-11", aaa: 3.06, baa: 3.94 },
+  { month: "2019-12", aaa: 3.01, baa: 3.88 },
+  { month: "2020-01", aaa: 2.94, baa: 3.77 },
+  { month: "2020-02", aaa: 2.78, baa: 3.61 },
+  { month: "2020-03", aaa: 3.02, baa: 4.29 },
+  { month: "2020-04", aaa: 2.43, baa: 4.13 },
+  { month: "2020-05", aaa: 2.5, baa: 3.95 },
+  { month: "2020-06", aaa: 2.44, baa: 3.64 },
+  { month: "2020-07", aaa: 2.14, baa: 3.31 },
+  { month: "2020-08", aaa: 2.25, baa: 3.27 },
+  { month: "2020-09", aaa: 2.31, baa: 3.36 },
+  { month: "2020-10", aaa: 2.35, baa: 3.44 },
+  { month: "2020-11", aaa: 2.3, baa: 3.3 },
+  { month: "2020-12", aaa: 2.26, baa: 3.16 },
+  { month: "2021-01", aaa: 2.45, baa: 3.24 },
+  { month: "2021-02", aaa: 2.7, baa: 3.42 },
+  { month: "2021-03", aaa: 3.04, baa: 3.74 },
+  { month: "2021-04", aaa: 2.9, baa: 3.6 },
+  { month: "2021-05", aaa: 2.96, baa: 3.62 },
+  { month: "2021-06", aaa: 2.79, baa: 3.44 },
+  { month: "2021-07", aaa: 2.57, baa: 3.24 },
+  { month: "2021-08", aaa: 2.55, baa: 3.24 },
+  { month: "2021-09", aaa: 2.53, baa: 3.23 },
+  { month: "2021-10", aaa: 2.68, baa: 3.35 },
+  { month: "2021-11", aaa: 2.62, baa: 3.28 },
+  { month: "2021-12", aaa: 2.65, baa: 3.3 },
+  { month: "2022-01", aaa: 2.93, baa: 3.58 },
+  { month: "2022-02", aaa: 3.25, baa: 3.97 },
+  { month: "2022-03", aaa: 3.43, baa: 4.29 },
+  { month: "2022-04", aaa: 3.76, baa: 4.66 },
+  { month: "2022-05", aaa: 4.13, baa: 5.12 },
+  { month: "2022-06", aaa: 4.24, baa: 5.27 },
+  { month: "2022-07", aaa: 4.06, baa: 5.21 },
+  { month: "2022-08", aaa: 4.07, baa: 5.15 },
+  { month: "2022-09", aaa: 4.59, baa: 5.69 },
+  { month: "2022-10", aaa: 5.1, baa: 6.26 },
+  { month: "2022-11", aaa: 4.9, baa: 6.07 },
+  { month: "2022-12", aaa: 4.43, baa: 5.59 },
+  { month: "2023-01", aaa: 4.4, baa: 5.5 },
+  { month: "2023-02", aaa: 4.56, baa: 5.59 },
+  { month: "2023-03", aaa: 4.6, baa: 5.71 },
+  { month: "2023-04", aaa: 4.47, baa: 5.53 },
+  { month: "2023-05", aaa: 4.67, baa: 5.77 },
+  { month: "2023-06", aaa: 4.65, baa: 5.75 },
+  { month: "2023-07", aaa: 4.66, baa: 5.74 },
+  { month: "2023-08", aaa: 4.95, baa: 6.02 },
+  { month: "2023-09", aaa: 5.13, baa: 6.16 },
+  { month: "2023-10", aaa: 5.61, baa: 6.63 },
+  { month: "2023-11", aaa: 5.28, baa: 6.29 },
+  { month: "2023-12", aaa: 4.74, baa: 5.64 },
+  { month: "2024-01", aaa: 4.87, baa: 5.68 },
+  { month: "2024-02", aaa: 5.03, baa: 5.77 },
+  { month: "2024-03", aaa: 5.01, baa: 5.75 },
+  { month: "2024-04", aaa: 5.28, baa: 6 },
+  { month: "2024-05", aaa: 5.25, baa: 5.95 },
+  { month: "2024-06", aaa: 5.13, baa: 5.82 },
+  { month: "2024-07", aaa: 5.12, baa: 5.84 },
+  { month: "2024-08", aaa: 4.87, baa: 5.6 },
+  { month: "2024-09", aaa: 4.68, baa: 5.42 },
+  { month: "2024-10", aaa: 4.95, baa: 5.63 },
+  { month: "2024-11", aaa: 5.14, baa: 5.78 },
+  { month: "2024-12", aaa: 5.2, baa: 5.8 },
+  { month: "2025-01", aaa: 5.46, baa: 6.08 },
+  { month: "2025-02", aaa: 5.32, baa: 5.92 },
+  { month: "2025-03", aaa: 5.29, baa: 5.93 },
+  { month: "2025-04", aaa: 5.45, baa: 6.18 },
+  { month: "2025-05", aaa: 5.54, baa: 6.29 },
+  { month: "2025-06", aaa: 5.46, baa: 6.15 },
+  { month: "2025-07", aaa: 5.45, baa: 6.1 },
+  { month: "2025-08", aaa: 5.35, baa: 6 },
+  { month: "2025-09", aaa: 5.21, baa: 5.83 },
+  { month: "2025-10", aaa: 5.13, baa: 5.74 },
+  { month: "2025-11", aaa: 5.26, baa: 5.86 },
+  { month: "2025-12", aaa: 5.31, baa: 5.9 },
+  { month: "2026-01", aaa: 5.34, baa: 5.88 },
+  { month: "2026-02", aaa: 5.3, baa: 5.81 },
+  { month: "2026-03", aaa: 5.48, baa: 6.04 },
+  { month: "2026-04", aaa: 5.42, baa: 6.03 },
+  { month: "2026-05", aaa: 5.56, baa: 6.1 },
+  { month: "2026-06", aaa: 5.52, baa: 6 }
 ];
 
 
@@ -20404,3 +8786,1658 @@ export const VC_EXITS: VcExitPoint[] = [
   { year: 2024, ipo: 38.0, ma: 40.0, buyout: 9.0 },
   { year: 2025, ipo: 45.0, ma: 48.0, buyout: 11.0 }
 ];
+
+// ─── Unemployment ────────────────────────────────────────────────────────────
+// The civilian unemployment rate, monthly since 1948. GDP measures what the
+// country produces; this measures who is left out of producing it, which is why
+// it belongs next to the GDP curve rather than buried on a labour page.
+//
+// The COVID spike is the real shape of the series: 14.8% in 2020-04, the highest
+// on record and a near-vertical move — and then a recovery far faster than any
+// previous one. The 1982 peak took years to unwind; this took months.
+// Source: U.S. Bureau of Labor Statistics (UNRATE), via FRED.
+export interface UnemploymentPoint { month: string; rate: number; }
+export const US_UNEMPLOYMENT: UnemploymentPoint[] = [
+  { month: "1948-01", rate: 3.4 },
+  { month: "1948-02", rate: 3.8 },
+  { month: "1948-03", rate: 4.0 },
+  { month: "1948-04", rate: 3.9 },
+  { month: "1948-05", rate: 3.5 },
+  { month: "1948-06", rate: 3.6 },
+  { month: "1948-07", rate: 3.6 },
+  { month: "1948-08", rate: 3.9 },
+  { month: "1948-09", rate: 3.8 },
+  { month: "1948-10", rate: 3.7 },
+  { month: "1948-11", rate: 3.8 },
+  { month: "1948-12", rate: 4.0 },
+  { month: "1949-01", rate: 4.3 },
+  { month: "1949-02", rate: 4.7 },
+  { month: "1949-03", rate: 5.0 },
+  { month: "1949-04", rate: 5.3 },
+  { month: "1949-05", rate: 6.1 },
+  { month: "1949-06", rate: 6.2 },
+  { month: "1949-07", rate: 6.7 },
+  { month: "1949-08", rate: 6.8 },
+  { month: "1949-09", rate: 6.6 },
+  { month: "1949-10", rate: 7.9 },
+  { month: "1949-11", rate: 6.4 },
+  { month: "1949-12", rate: 6.6 },
+  { month: "1950-01", rate: 6.5 },
+  { month: "1950-02", rate: 6.4 },
+  { month: "1950-03", rate: 6.3 },
+  { month: "1950-04", rate: 5.8 },
+  { month: "1950-05", rate: 5.5 },
+  { month: "1950-06", rate: 5.4 },
+  { month: "1950-07", rate: 5.0 },
+  { month: "1950-08", rate: 4.5 },
+  { month: "1950-09", rate: 4.4 },
+  { month: "1950-10", rate: 4.2 },
+  { month: "1950-11", rate: 4.2 },
+  { month: "1950-12", rate: 4.3 },
+  { month: "1951-01", rate: 3.7 },
+  { month: "1951-02", rate: 3.4 },
+  { month: "1951-03", rate: 3.4 },
+  { month: "1951-04", rate: 3.1 },
+  { month: "1951-05", rate: 3.0 },
+  { month: "1951-06", rate: 3.2 },
+  { month: "1951-07", rate: 3.1 },
+  { month: "1951-08", rate: 3.1 },
+  { month: "1951-09", rate: 3.3 },
+  { month: "1951-10", rate: 3.5 },
+  { month: "1951-11", rate: 3.5 },
+  { month: "1951-12", rate: 3.1 },
+  { month: "1952-01", rate: 3.2 },
+  { month: "1952-02", rate: 3.1 },
+  { month: "1952-03", rate: 2.9 },
+  { month: "1952-04", rate: 2.9 },
+  { month: "1952-05", rate: 3.0 },
+  { month: "1952-06", rate: 3.0 },
+  { month: "1952-07", rate: 3.2 },
+  { month: "1952-08", rate: 3.4 },
+  { month: "1952-09", rate: 3.1 },
+  { month: "1952-10", rate: 3.0 },
+  { month: "1952-11", rate: 2.8 },
+  { month: "1952-12", rate: 2.7 },
+  { month: "1953-01", rate: 2.9 },
+  { month: "1953-02", rate: 2.6 },
+  { month: "1953-03", rate: 2.6 },
+  { month: "1953-04", rate: 2.7 },
+  { month: "1953-05", rate: 2.5 },
+  { month: "1953-06", rate: 2.5 },
+  { month: "1953-07", rate: 2.6 },
+  { month: "1953-08", rate: 2.7 },
+  { month: "1953-09", rate: 2.9 },
+  { month: "1953-10", rate: 3.1 },
+  { month: "1953-11", rate: 3.5 },
+  { month: "1953-12", rate: 4.5 },
+  { month: "1954-01", rate: 4.9 },
+  { month: "1954-02", rate: 5.2 },
+  { month: "1954-03", rate: 5.7 },
+  { month: "1954-04", rate: 5.9 },
+  { month: "1954-05", rate: 5.9 },
+  { month: "1954-06", rate: 5.6 },
+  { month: "1954-07", rate: 5.8 },
+  { month: "1954-08", rate: 6.0 },
+  { month: "1954-09", rate: 6.1 },
+  { month: "1954-10", rate: 5.7 },
+  { month: "1954-11", rate: 5.3 },
+  { month: "1954-12", rate: 5.0 },
+  { month: "1955-01", rate: 4.9 },
+  { month: "1955-02", rate: 4.7 },
+  { month: "1955-03", rate: 4.6 },
+  { month: "1955-04", rate: 4.7 },
+  { month: "1955-05", rate: 4.3 },
+  { month: "1955-06", rate: 4.2 },
+  { month: "1955-07", rate: 4.0 },
+  { month: "1955-08", rate: 4.2 },
+  { month: "1955-09", rate: 4.1 },
+  { month: "1955-10", rate: 4.3 },
+  { month: "1955-11", rate: 4.2 },
+  { month: "1955-12", rate: 4.2 },
+  { month: "1956-01", rate: 4.0 },
+  { month: "1956-02", rate: 3.9 },
+  { month: "1956-03", rate: 4.2 },
+  { month: "1956-04", rate: 4.0 },
+  { month: "1956-05", rate: 4.3 },
+  { month: "1956-06", rate: 4.3 },
+  { month: "1956-07", rate: 4.4 },
+  { month: "1956-08", rate: 4.1 },
+  { month: "1956-09", rate: 3.9 },
+  { month: "1956-10", rate: 3.9 },
+  { month: "1956-11", rate: 4.3 },
+  { month: "1956-12", rate: 4.2 },
+  { month: "1957-01", rate: 4.2 },
+  { month: "1957-02", rate: 3.9 },
+  { month: "1957-03", rate: 3.7 },
+  { month: "1957-04", rate: 3.9 },
+  { month: "1957-05", rate: 4.1 },
+  { month: "1957-06", rate: 4.3 },
+  { month: "1957-07", rate: 4.2 },
+  { month: "1957-08", rate: 4.1 },
+  { month: "1957-09", rate: 4.4 },
+  { month: "1957-10", rate: 4.5 },
+  { month: "1957-11", rate: 5.1 },
+  { month: "1957-12", rate: 5.2 },
+  { month: "1958-01", rate: 5.8 },
+  { month: "1958-02", rate: 6.4 },
+  { month: "1958-03", rate: 6.7 },
+  { month: "1958-04", rate: 7.4 },
+  { month: "1958-05", rate: 7.4 },
+  { month: "1958-06", rate: 7.3 },
+  { month: "1958-07", rate: 7.5 },
+  { month: "1958-08", rate: 7.4 },
+  { month: "1958-09", rate: 7.1 },
+  { month: "1958-10", rate: 6.7 },
+  { month: "1958-11", rate: 6.2 },
+  { month: "1958-12", rate: 6.2 },
+  { month: "1959-01", rate: 6.0 },
+  { month: "1959-02", rate: 5.9 },
+  { month: "1959-03", rate: 5.6 },
+  { month: "1959-04", rate: 5.2 },
+  { month: "1959-05", rate: 5.1 },
+  { month: "1959-06", rate: 5.0 },
+  { month: "1959-07", rate: 5.1 },
+  { month: "1959-08", rate: 5.2 },
+  { month: "1959-09", rate: 5.5 },
+  { month: "1959-10", rate: 5.7 },
+  { month: "1959-11", rate: 5.8 },
+  { month: "1959-12", rate: 5.3 },
+  { month: "1960-01", rate: 5.2 },
+  { month: "1960-02", rate: 4.8 },
+  { month: "1960-03", rate: 5.4 },
+  { month: "1960-04", rate: 5.2 },
+  { month: "1960-05", rate: 5.1 },
+  { month: "1960-06", rate: 5.4 },
+  { month: "1960-07", rate: 5.5 },
+  { month: "1960-08", rate: 5.6 },
+  { month: "1960-09", rate: 5.5 },
+  { month: "1960-10", rate: 6.1 },
+  { month: "1960-11", rate: 6.1 },
+  { month: "1960-12", rate: 6.6 },
+  { month: "1961-01", rate: 6.6 },
+  { month: "1961-02", rate: 6.9 },
+  { month: "1961-03", rate: 6.9 },
+  { month: "1961-04", rate: 7.0 },
+  { month: "1961-05", rate: 7.1 },
+  { month: "1961-06", rate: 6.9 },
+  { month: "1961-07", rate: 7.0 },
+  { month: "1961-08", rate: 6.6 },
+  { month: "1961-09", rate: 6.7 },
+  { month: "1961-10", rate: 6.5 },
+  { month: "1961-11", rate: 6.1 },
+  { month: "1961-12", rate: 6.0 },
+  { month: "1962-01", rate: 5.8 },
+  { month: "1962-02", rate: 5.5 },
+  { month: "1962-03", rate: 5.6 },
+  { month: "1962-04", rate: 5.6 },
+  { month: "1962-05", rate: 5.5 },
+  { month: "1962-06", rate: 5.5 },
+  { month: "1962-07", rate: 5.4 },
+  { month: "1962-08", rate: 5.7 },
+  { month: "1962-09", rate: 5.6 },
+  { month: "1962-10", rate: 5.4 },
+  { month: "1962-11", rate: 5.7 },
+  { month: "1962-12", rate: 5.5 },
+  { month: "1963-01", rate: 5.7 },
+  { month: "1963-02", rate: 5.9 },
+  { month: "1963-03", rate: 5.7 },
+  { month: "1963-04", rate: 5.7 },
+  { month: "1963-05", rate: 5.9 },
+  { month: "1963-06", rate: 5.6 },
+  { month: "1963-07", rate: 5.6 },
+  { month: "1963-08", rate: 5.4 },
+  { month: "1963-09", rate: 5.5 },
+  { month: "1963-10", rate: 5.5 },
+  { month: "1963-11", rate: 5.7 },
+  { month: "1963-12", rate: 5.5 },
+  { month: "1964-01", rate: 5.6 },
+  { month: "1964-02", rate: 5.4 },
+  { month: "1964-03", rate: 5.4 },
+  { month: "1964-04", rate: 5.3 },
+  { month: "1964-05", rate: 5.1 },
+  { month: "1964-06", rate: 5.2 },
+  { month: "1964-07", rate: 4.9 },
+  { month: "1964-08", rate: 5.0 },
+  { month: "1964-09", rate: 5.1 },
+  { month: "1964-10", rate: 5.1 },
+  { month: "1964-11", rate: 4.8 },
+  { month: "1964-12", rate: 5.0 },
+  { month: "1965-01", rate: 4.9 },
+  { month: "1965-02", rate: 5.1 },
+  { month: "1965-03", rate: 4.7 },
+  { month: "1965-04", rate: 4.8 },
+  { month: "1965-05", rate: 4.6 },
+  { month: "1965-06", rate: 4.6 },
+  { month: "1965-07", rate: 4.4 },
+  { month: "1965-08", rate: 4.4 },
+  { month: "1965-09", rate: 4.3 },
+  { month: "1965-10", rate: 4.2 },
+  { month: "1965-11", rate: 4.1 },
+  { month: "1965-12", rate: 4.0 },
+  { month: "1966-01", rate: 4.0 },
+  { month: "1966-02", rate: 3.8 },
+  { month: "1966-03", rate: 3.8 },
+  { month: "1966-04", rate: 3.8 },
+  { month: "1966-05", rate: 3.9 },
+  { month: "1966-06", rate: 3.8 },
+  { month: "1966-07", rate: 3.8 },
+  { month: "1966-08", rate: 3.8 },
+  { month: "1966-09", rate: 3.7 },
+  { month: "1966-10", rate: 3.7 },
+  { month: "1966-11", rate: 3.6 },
+  { month: "1966-12", rate: 3.8 },
+  { month: "1967-01", rate: 3.9 },
+  { month: "1967-02", rate: 3.8 },
+  { month: "1967-03", rate: 3.8 },
+  { month: "1967-04", rate: 3.8 },
+  { month: "1967-05", rate: 3.8 },
+  { month: "1967-06", rate: 3.9 },
+  { month: "1967-07", rate: 3.8 },
+  { month: "1967-08", rate: 3.8 },
+  { month: "1967-09", rate: 3.8 },
+  { month: "1967-10", rate: 4.0 },
+  { month: "1967-11", rate: 3.9 },
+  { month: "1967-12", rate: 3.8 },
+  { month: "1968-01", rate: 3.7 },
+  { month: "1968-02", rate: 3.8 },
+  { month: "1968-03", rate: 3.7 },
+  { month: "1968-04", rate: 3.5 },
+  { month: "1968-05", rate: 3.5 },
+  { month: "1968-06", rate: 3.7 },
+  { month: "1968-07", rate: 3.7 },
+  { month: "1968-08", rate: 3.5 },
+  { month: "1968-09", rate: 3.4 },
+  { month: "1968-10", rate: 3.4 },
+  { month: "1968-11", rate: 3.4 },
+  { month: "1968-12", rate: 3.4 },
+  { month: "1969-01", rate: 3.4 },
+  { month: "1969-02", rate: 3.4 },
+  { month: "1969-03", rate: 3.4 },
+  { month: "1969-04", rate: 3.4 },
+  { month: "1969-05", rate: 3.4 },
+  { month: "1969-06", rate: 3.5 },
+  { month: "1969-07", rate: 3.5 },
+  { month: "1969-08", rate: 3.5 },
+  { month: "1969-09", rate: 3.7 },
+  { month: "1969-10", rate: 3.7 },
+  { month: "1969-11", rate: 3.5 },
+  { month: "1969-12", rate: 3.5 },
+  { month: "1970-01", rate: 3.9 },
+  { month: "1970-02", rate: 4.2 },
+  { month: "1970-03", rate: 4.4 },
+  { month: "1970-04", rate: 4.6 },
+  { month: "1970-05", rate: 4.8 },
+  { month: "1970-06", rate: 4.9 },
+  { month: "1970-07", rate: 5.0 },
+  { month: "1970-08", rate: 5.1 },
+  { month: "1970-09", rate: 5.4 },
+  { month: "1970-10", rate: 5.5 },
+  { month: "1970-11", rate: 5.9 },
+  { month: "1970-12", rate: 6.1 },
+  { month: "1971-01", rate: 5.9 },
+  { month: "1971-02", rate: 5.9 },
+  { month: "1971-03", rate: 6.0 },
+  { month: "1971-04", rate: 5.9 },
+  { month: "1971-05", rate: 5.9 },
+  { month: "1971-06", rate: 5.9 },
+  { month: "1971-07", rate: 6.0 },
+  { month: "1971-08", rate: 6.1 },
+  { month: "1971-09", rate: 6.0 },
+  { month: "1971-10", rate: 5.8 },
+  { month: "1971-11", rate: 6.0 },
+  { month: "1971-12", rate: 6.0 },
+  { month: "1972-01", rate: 5.8 },
+  { month: "1972-02", rate: 5.7 },
+  { month: "1972-03", rate: 5.8 },
+  { month: "1972-04", rate: 5.7 },
+  { month: "1972-05", rate: 5.7 },
+  { month: "1972-06", rate: 5.7 },
+  { month: "1972-07", rate: 5.6 },
+  { month: "1972-08", rate: 5.6 },
+  { month: "1972-09", rate: 5.5 },
+  { month: "1972-10", rate: 5.6 },
+  { month: "1972-11", rate: 5.3 },
+  { month: "1972-12", rate: 5.2 },
+  { month: "1973-01", rate: 4.9 },
+  { month: "1973-02", rate: 5.0 },
+  { month: "1973-03", rate: 4.9 },
+  { month: "1973-04", rate: 5.0 },
+  { month: "1973-05", rate: 4.9 },
+  { month: "1973-06", rate: 4.9 },
+  { month: "1973-07", rate: 4.8 },
+  { month: "1973-08", rate: 4.8 },
+  { month: "1973-09", rate: 4.8 },
+  { month: "1973-10", rate: 4.6 },
+  { month: "1973-11", rate: 4.8 },
+  { month: "1973-12", rate: 4.9 },
+  { month: "1974-01", rate: 5.1 },
+  { month: "1974-02", rate: 5.2 },
+  { month: "1974-03", rate: 5.1 },
+  { month: "1974-04", rate: 5.1 },
+  { month: "1974-05", rate: 5.1 },
+  { month: "1974-06", rate: 5.4 },
+  { month: "1974-07", rate: 5.5 },
+  { month: "1974-08", rate: 5.5 },
+  { month: "1974-09", rate: 5.9 },
+  { month: "1974-10", rate: 6.0 },
+  { month: "1974-11", rate: 6.6 },
+  { month: "1974-12", rate: 7.2 },
+  { month: "1975-01", rate: 8.1 },
+  { month: "1975-02", rate: 8.1 },
+  { month: "1975-03", rate: 8.6 },
+  { month: "1975-04", rate: 8.8 },
+  { month: "1975-05", rate: 9.0 },
+  { month: "1975-06", rate: 8.8 },
+  { month: "1975-07", rate: 8.6 },
+  { month: "1975-08", rate: 8.4 },
+  { month: "1975-09", rate: 8.4 },
+  { month: "1975-10", rate: 8.4 },
+  { month: "1975-11", rate: 8.3 },
+  { month: "1975-12", rate: 8.2 },
+  { month: "1976-01", rate: 7.9 },
+  { month: "1976-02", rate: 7.7 },
+  { month: "1976-03", rate: 7.6 },
+  { month: "1976-04", rate: 7.7 },
+  { month: "1976-05", rate: 7.4 },
+  { month: "1976-06", rate: 7.6 },
+  { month: "1976-07", rate: 7.8 },
+  { month: "1976-08", rate: 7.8 },
+  { month: "1976-09", rate: 7.6 },
+  { month: "1976-10", rate: 7.7 },
+  { month: "1976-11", rate: 7.8 },
+  { month: "1976-12", rate: 7.8 },
+  { month: "1977-01", rate: 7.5 },
+  { month: "1977-02", rate: 7.6 },
+  { month: "1977-03", rate: 7.4 },
+  { month: "1977-04", rate: 7.2 },
+  { month: "1977-05", rate: 7.0 },
+  { month: "1977-06", rate: 7.2 },
+  { month: "1977-07", rate: 6.9 },
+  { month: "1977-08", rate: 7.0 },
+  { month: "1977-09", rate: 6.8 },
+  { month: "1977-10", rate: 6.8 },
+  { month: "1977-11", rate: 6.8 },
+  { month: "1977-12", rate: 6.4 },
+  { month: "1978-01", rate: 6.4 },
+  { month: "1978-02", rate: 6.3 },
+  { month: "1978-03", rate: 6.3 },
+  { month: "1978-04", rate: 6.1 },
+  { month: "1978-05", rate: 6.0 },
+  { month: "1978-06", rate: 5.9 },
+  { month: "1978-07", rate: 6.2 },
+  { month: "1978-08", rate: 5.9 },
+  { month: "1978-09", rate: 6.0 },
+  { month: "1978-10", rate: 5.8 },
+  { month: "1978-11", rate: 5.9 },
+  { month: "1978-12", rate: 6.0 },
+  { month: "1979-01", rate: 5.9 },
+  { month: "1979-02", rate: 5.9 },
+  { month: "1979-03", rate: 5.8 },
+  { month: "1979-04", rate: 5.8 },
+  { month: "1979-05", rate: 5.6 },
+  { month: "1979-06", rate: 5.7 },
+  { month: "1979-07", rate: 5.7 },
+  { month: "1979-08", rate: 6.0 },
+  { month: "1979-09", rate: 5.9 },
+  { month: "1979-10", rate: 6.0 },
+  { month: "1979-11", rate: 5.9 },
+  { month: "1979-12", rate: 6.0 },
+  { month: "1980-01", rate: 6.3 },
+  { month: "1980-02", rate: 6.3 },
+  { month: "1980-03", rate: 6.3 },
+  { month: "1980-04", rate: 6.9 },
+  { month: "1980-05", rate: 7.5 },
+  { month: "1980-06", rate: 7.6 },
+  { month: "1980-07", rate: 7.8 },
+  { month: "1980-08", rate: 7.7 },
+  { month: "1980-09", rate: 7.5 },
+  { month: "1980-10", rate: 7.5 },
+  { month: "1980-11", rate: 7.5 },
+  { month: "1980-12", rate: 7.2 },
+  { month: "1981-01", rate: 7.5 },
+  { month: "1981-02", rate: 7.4 },
+  { month: "1981-03", rate: 7.4 },
+  { month: "1981-04", rate: 7.2 },
+  { month: "1981-05", rate: 7.5 },
+  { month: "1981-06", rate: 7.5 },
+  { month: "1981-07", rate: 7.2 },
+  { month: "1981-08", rate: 7.4 },
+  { month: "1981-09", rate: 7.6 },
+  { month: "1981-10", rate: 7.9 },
+  { month: "1981-11", rate: 8.3 },
+  { month: "1981-12", rate: 8.5 },
+  { month: "1982-01", rate: 8.6 },
+  { month: "1982-02", rate: 8.9 },
+  { month: "1982-03", rate: 9.0 },
+  { month: "1982-04", rate: 9.3 },
+  { month: "1982-05", rate: 9.4 },
+  { month: "1982-06", rate: 9.6 },
+  { month: "1982-07", rate: 9.8 },
+  { month: "1982-08", rate: 9.8 },
+  { month: "1982-09", rate: 10.1 },
+  { month: "1982-10", rate: 10.4 },
+  { month: "1982-11", rate: 10.8 },
+  { month: "1982-12", rate: 10.8 },
+  { month: "1983-01", rate: 10.4 },
+  { month: "1983-02", rate: 10.4 },
+  { month: "1983-03", rate: 10.3 },
+  { month: "1983-04", rate: 10.2 },
+  { month: "1983-05", rate: 10.1 },
+  { month: "1983-06", rate: 10.1 },
+  { month: "1983-07", rate: 9.4 },
+  { month: "1983-08", rate: 9.5 },
+  { month: "1983-09", rate: 9.2 },
+  { month: "1983-10", rate: 8.8 },
+  { month: "1983-11", rate: 8.5 },
+  { month: "1983-12", rate: 8.3 },
+  { month: "1984-01", rate: 8.0 },
+  { month: "1984-02", rate: 7.8 },
+  { month: "1984-03", rate: 7.8 },
+  { month: "1984-04", rate: 7.7 },
+  { month: "1984-05", rate: 7.4 },
+  { month: "1984-06", rate: 7.2 },
+  { month: "1984-07", rate: 7.5 },
+  { month: "1984-08", rate: 7.5 },
+  { month: "1984-09", rate: 7.3 },
+  { month: "1984-10", rate: 7.4 },
+  { month: "1984-11", rate: 7.2 },
+  { month: "1984-12", rate: 7.3 },
+  { month: "1985-01", rate: 7.3 },
+  { month: "1985-02", rate: 7.2 },
+  { month: "1985-03", rate: 7.2 },
+  { month: "1985-04", rate: 7.3 },
+  { month: "1985-05", rate: 7.2 },
+  { month: "1985-06", rate: 7.4 },
+  { month: "1985-07", rate: 7.4 },
+  { month: "1985-08", rate: 7.1 },
+  { month: "1985-09", rate: 7.1 },
+  { month: "1985-10", rate: 7.1 },
+  { month: "1985-11", rate: 7.0 },
+  { month: "1985-12", rate: 7.0 },
+  { month: "1986-01", rate: 6.7 },
+  { month: "1986-02", rate: 7.2 },
+  { month: "1986-03", rate: 7.2 },
+  { month: "1986-04", rate: 7.1 },
+  { month: "1986-05", rate: 7.2 },
+  { month: "1986-06", rate: 7.2 },
+  { month: "1986-07", rate: 7.0 },
+  { month: "1986-08", rate: 6.9 },
+  { month: "1986-09", rate: 7.0 },
+  { month: "1986-10", rate: 7.0 },
+  { month: "1986-11", rate: 6.9 },
+  { month: "1986-12", rate: 6.6 },
+  { month: "1987-01", rate: 6.6 },
+  { month: "1987-02", rate: 6.6 },
+  { month: "1987-03", rate: 6.6 },
+  { month: "1987-04", rate: 6.3 },
+  { month: "1987-05", rate: 6.3 },
+  { month: "1987-06", rate: 6.2 },
+  { month: "1987-07", rate: 6.1 },
+  { month: "1987-08", rate: 6.0 },
+  { month: "1987-09", rate: 5.9 },
+  { month: "1987-10", rate: 6.0 },
+  { month: "1987-11", rate: 5.8 },
+  { month: "1987-12", rate: 5.7 },
+  { month: "1988-01", rate: 5.7 },
+  { month: "1988-02", rate: 5.7 },
+  { month: "1988-03", rate: 5.7 },
+  { month: "1988-04", rate: 5.4 },
+  { month: "1988-05", rate: 5.6 },
+  { month: "1988-06", rate: 5.4 },
+  { month: "1988-07", rate: 5.4 },
+  { month: "1988-08", rate: 5.6 },
+  { month: "1988-09", rate: 5.4 },
+  { month: "1988-10", rate: 5.4 },
+  { month: "1988-11", rate: 5.3 },
+  { month: "1988-12", rate: 5.3 },
+  { month: "1989-01", rate: 5.4 },
+  { month: "1989-02", rate: 5.2 },
+  { month: "1989-03", rate: 5.0 },
+  { month: "1989-04", rate: 5.2 },
+  { month: "1989-05", rate: 5.2 },
+  { month: "1989-06", rate: 5.3 },
+  { month: "1989-07", rate: 5.2 },
+  { month: "1989-08", rate: 5.2 },
+  { month: "1989-09", rate: 5.3 },
+  { month: "1989-10", rate: 5.3 },
+  { month: "1989-11", rate: 5.4 },
+  { month: "1989-12", rate: 5.4 },
+  { month: "1990-01", rate: 5.4 },
+  { month: "1990-02", rate: 5.3 },
+  { month: "1990-03", rate: 5.2 },
+  { month: "1990-04", rate: 5.4 },
+  { month: "1990-05", rate: 5.4 },
+  { month: "1990-06", rate: 5.2 },
+  { month: "1990-07", rate: 5.5 },
+  { month: "1990-08", rate: 5.7 },
+  { month: "1990-09", rate: 5.9 },
+  { month: "1990-10", rate: 5.9 },
+  { month: "1990-11", rate: 6.2 },
+  { month: "1990-12", rate: 6.3 },
+  { month: "1991-01", rate: 6.4 },
+  { month: "1991-02", rate: 6.6 },
+  { month: "1991-03", rate: 6.8 },
+  { month: "1991-04", rate: 6.7 },
+  { month: "1991-05", rate: 6.9 },
+  { month: "1991-06", rate: 6.9 },
+  { month: "1991-07", rate: 6.8 },
+  { month: "1991-08", rate: 6.9 },
+  { month: "1991-09", rate: 6.9 },
+  { month: "1991-10", rate: 7.0 },
+  { month: "1991-11", rate: 7.0 },
+  { month: "1991-12", rate: 7.3 },
+  { month: "1992-01", rate: 7.3 },
+  { month: "1992-02", rate: 7.4 },
+  { month: "1992-03", rate: 7.4 },
+  { month: "1992-04", rate: 7.4 },
+  { month: "1992-05", rate: 7.6 },
+  { month: "1992-06", rate: 7.8 },
+  { month: "1992-07", rate: 7.7 },
+  { month: "1992-08", rate: 7.6 },
+  { month: "1992-09", rate: 7.6 },
+  { month: "1992-10", rate: 7.3 },
+  { month: "1992-11", rate: 7.4 },
+  { month: "1992-12", rate: 7.4 },
+  { month: "1993-01", rate: 7.3 },
+  { month: "1993-02", rate: 7.1 },
+  { month: "1993-03", rate: 7.0 },
+  { month: "1993-04", rate: 7.1 },
+  { month: "1993-05", rate: 7.1 },
+  { month: "1993-06", rate: 7.0 },
+  { month: "1993-07", rate: 6.9 },
+  { month: "1993-08", rate: 6.8 },
+  { month: "1993-09", rate: 6.7 },
+  { month: "1993-10", rate: 6.8 },
+  { month: "1993-11", rate: 6.6 },
+  { month: "1993-12", rate: 6.5 },
+  { month: "1994-01", rate: 6.6 },
+  { month: "1994-02", rate: 6.6 },
+  { month: "1994-03", rate: 6.5 },
+  { month: "1994-04", rate: 6.4 },
+  { month: "1994-05", rate: 6.1 },
+  { month: "1994-06", rate: 6.1 },
+  { month: "1994-07", rate: 6.1 },
+  { month: "1994-08", rate: 6.0 },
+  { month: "1994-09", rate: 5.9 },
+  { month: "1994-10", rate: 5.8 },
+  { month: "1994-11", rate: 5.6 },
+  { month: "1994-12", rate: 5.5 },
+  { month: "1995-01", rate: 5.6 },
+  { month: "1995-02", rate: 5.4 },
+  { month: "1995-03", rate: 5.4 },
+  { month: "1995-04", rate: 5.8 },
+  { month: "1995-05", rate: 5.6 },
+  { month: "1995-06", rate: 5.6 },
+  { month: "1995-07", rate: 5.7 },
+  { month: "1995-08", rate: 5.7 },
+  { month: "1995-09", rate: 5.6 },
+  { month: "1995-10", rate: 5.5 },
+  { month: "1995-11", rate: 5.6 },
+  { month: "1995-12", rate: 5.6 },
+  { month: "1996-01", rate: 5.6 },
+  { month: "1996-02", rate: 5.5 },
+  { month: "1996-03", rate: 5.5 },
+  { month: "1996-04", rate: 5.6 },
+  { month: "1996-05", rate: 5.6 },
+  { month: "1996-06", rate: 5.3 },
+  { month: "1996-07", rate: 5.5 },
+  { month: "1996-08", rate: 5.1 },
+  { month: "1996-09", rate: 5.2 },
+  { month: "1996-10", rate: 5.2 },
+  { month: "1996-11", rate: 5.4 },
+  { month: "1996-12", rate: 5.4 },
+  { month: "1997-01", rate: 5.3 },
+  { month: "1997-02", rate: 5.2 },
+  { month: "1997-03", rate: 5.2 },
+  { month: "1997-04", rate: 5.1 },
+  { month: "1997-05", rate: 4.9 },
+  { month: "1997-06", rate: 5.0 },
+  { month: "1997-07", rate: 4.9 },
+  { month: "1997-08", rate: 4.8 },
+  { month: "1997-09", rate: 4.9 },
+  { month: "1997-10", rate: 4.7 },
+  { month: "1997-11", rate: 4.6 },
+  { month: "1997-12", rate: 4.7 },
+  { month: "1998-01", rate: 4.6 },
+  { month: "1998-02", rate: 4.6 },
+  { month: "1998-03", rate: 4.7 },
+  { month: "1998-04", rate: 4.3 },
+  { month: "1998-05", rate: 4.4 },
+  { month: "1998-06", rate: 4.5 },
+  { month: "1998-07", rate: 4.5 },
+  { month: "1998-08", rate: 4.5 },
+  { month: "1998-09", rate: 4.6 },
+  { month: "1998-10", rate: 4.5 },
+  { month: "1998-11", rate: 4.4 },
+  { month: "1998-12", rate: 4.4 },
+  { month: "1999-01", rate: 4.3 },
+  { month: "1999-02", rate: 4.4 },
+  { month: "1999-03", rate: 4.2 },
+  { month: "1999-04", rate: 4.3 },
+  { month: "1999-05", rate: 4.2 },
+  { month: "1999-06", rate: 4.3 },
+  { month: "1999-07", rate: 4.3 },
+  { month: "1999-08", rate: 4.2 },
+  { month: "1999-09", rate: 4.2 },
+  { month: "1999-10", rate: 4.1 },
+  { month: "1999-11", rate: 4.1 },
+  { month: "1999-12", rate: 4.0 },
+  { month: "2000-01", rate: 4.0 },
+  { month: "2000-02", rate: 4.1 },
+  { month: "2000-03", rate: 4.0 },
+  { month: "2000-04", rate: 3.8 },
+  { month: "2000-05", rate: 4.0 },
+  { month: "2000-06", rate: 4.0 },
+  { month: "2000-07", rate: 4.0 },
+  { month: "2000-08", rate: 4.1 },
+  { month: "2000-09", rate: 3.9 },
+  { month: "2000-10", rate: 3.9 },
+  { month: "2000-11", rate: 3.9 },
+  { month: "2000-12", rate: 3.9 },
+  { month: "2001-01", rate: 4.2 },
+  { month: "2001-02", rate: 4.2 },
+  { month: "2001-03", rate: 4.3 },
+  { month: "2001-04", rate: 4.4 },
+  { month: "2001-05", rate: 4.3 },
+  { month: "2001-06", rate: 4.5 },
+  { month: "2001-07", rate: 4.6 },
+  { month: "2001-08", rate: 4.9 },
+  { month: "2001-09", rate: 5.0 },
+  { month: "2001-10", rate: 5.3 },
+  { month: "2001-11", rate: 5.5 },
+  { month: "2001-12", rate: 5.7 },
+  { month: "2002-01", rate: 5.7 },
+  { month: "2002-02", rate: 5.7 },
+  { month: "2002-03", rate: 5.7 },
+  { month: "2002-04", rate: 5.9 },
+  { month: "2002-05", rate: 5.8 },
+  { month: "2002-06", rate: 5.8 },
+  { month: "2002-07", rate: 5.8 },
+  { month: "2002-08", rate: 5.7 },
+  { month: "2002-09", rate: 5.7 },
+  { month: "2002-10", rate: 5.7 },
+  { month: "2002-11", rate: 5.9 },
+  { month: "2002-12", rate: 6.0 },
+  { month: "2003-01", rate: 5.8 },
+  { month: "2003-02", rate: 5.9 },
+  { month: "2003-03", rate: 5.9 },
+  { month: "2003-04", rate: 6.0 },
+  { month: "2003-05", rate: 6.1 },
+  { month: "2003-06", rate: 6.3 },
+  { month: "2003-07", rate: 6.2 },
+  { month: "2003-08", rate: 6.1 },
+  { month: "2003-09", rate: 6.1 },
+  { month: "2003-10", rate: 6.0 },
+  { month: "2003-11", rate: 5.8 },
+  { month: "2003-12", rate: 5.7 },
+  { month: "2004-01", rate: 5.7 },
+  { month: "2004-02", rate: 5.6 },
+  { month: "2004-03", rate: 5.8 },
+  { month: "2004-04", rate: 5.6 },
+  { month: "2004-05", rate: 5.6 },
+  { month: "2004-06", rate: 5.6 },
+  { month: "2004-07", rate: 5.5 },
+  { month: "2004-08", rate: 5.4 },
+  { month: "2004-09", rate: 5.4 },
+  { month: "2004-10", rate: 5.5 },
+  { month: "2004-11", rate: 5.4 },
+  { month: "2004-12", rate: 5.4 },
+  { month: "2005-01", rate: 5.3 },
+  { month: "2005-02", rate: 5.4 },
+  { month: "2005-03", rate: 5.2 },
+  { month: "2005-04", rate: 5.2 },
+  { month: "2005-05", rate: 5.1 },
+  { month: "2005-06", rate: 5.0 },
+  { month: "2005-07", rate: 5.0 },
+  { month: "2005-08", rate: 4.9 },
+  { month: "2005-09", rate: 5.0 },
+  { month: "2005-10", rate: 5.0 },
+  { month: "2005-11", rate: 5.0 },
+  { month: "2005-12", rate: 4.9 },
+  { month: "2006-01", rate: 4.7 },
+  { month: "2006-02", rate: 4.8 },
+  { month: "2006-03", rate: 4.7 },
+  { month: "2006-04", rate: 4.7 },
+  { month: "2006-05", rate: 4.6 },
+  { month: "2006-06", rate: 4.6 },
+  { month: "2006-07", rate: 4.7 },
+  { month: "2006-08", rate: 4.7 },
+  { month: "2006-09", rate: 4.5 },
+  { month: "2006-10", rate: 4.4 },
+  { month: "2006-11", rate: 4.5 },
+  { month: "2006-12", rate: 4.4 },
+  { month: "2007-01", rate: 4.6 },
+  { month: "2007-02", rate: 4.5 },
+  { month: "2007-03", rate: 4.4 },
+  { month: "2007-04", rate: 4.5 },
+  { month: "2007-05", rate: 4.4 },
+  { month: "2007-06", rate: 4.6 },
+  { month: "2007-07", rate: 4.7 },
+  { month: "2007-08", rate: 4.6 },
+  { month: "2007-09", rate: 4.7 },
+  { month: "2007-10", rate: 4.7 },
+  { month: "2007-11", rate: 4.7 },
+  { month: "2007-12", rate: 5.0 },
+  { month: "2008-01", rate: 5.0 },
+  { month: "2008-02", rate: 4.9 },
+  { month: "2008-03", rate: 5.1 },
+  { month: "2008-04", rate: 5.0 },
+  { month: "2008-05", rate: 5.4 },
+  { month: "2008-06", rate: 5.6 },
+  { month: "2008-07", rate: 5.8 },
+  { month: "2008-08", rate: 6.1 },
+  { month: "2008-09", rate: 6.1 },
+  { month: "2008-10", rate: 6.5 },
+  { month: "2008-11", rate: 6.8 },
+  { month: "2008-12", rate: 7.3 },
+  { month: "2009-01", rate: 7.8 },
+  { month: "2009-02", rate: 8.3 },
+  { month: "2009-03", rate: 8.7 },
+  { month: "2009-04", rate: 9.0 },
+  { month: "2009-05", rate: 9.4 },
+  { month: "2009-06", rate: 9.5 },
+  { month: "2009-07", rate: 9.5 },
+  { month: "2009-08", rate: 9.6 },
+  { month: "2009-09", rate: 9.8 },
+  { month: "2009-10", rate: 10.0 },
+  { month: "2009-11", rate: 9.9 },
+  { month: "2009-12", rate: 9.9 },
+  { month: "2010-01", rate: 9.8 },
+  { month: "2010-02", rate: 9.8 },
+  { month: "2010-03", rate: 9.9 },
+  { month: "2010-04", rate: 9.9 },
+  { month: "2010-05", rate: 9.6 },
+  { month: "2010-06", rate: 9.4 },
+  { month: "2010-07", rate: 9.4 },
+  { month: "2010-08", rate: 9.5 },
+  { month: "2010-09", rate: 9.5 },
+  { month: "2010-10", rate: 9.4 },
+  { month: "2010-11", rate: 9.8 },
+  { month: "2010-12", rate: 9.3 },
+  { month: "2011-01", rate: 9.1 },
+  { month: "2011-02", rate: 9.0 },
+  { month: "2011-03", rate: 9.0 },
+  { month: "2011-04", rate: 9.1 },
+  { month: "2011-05", rate: 9.0 },
+  { month: "2011-06", rate: 9.1 },
+  { month: "2011-07", rate: 9.0 },
+  { month: "2011-08", rate: 9.0 },
+  { month: "2011-09", rate: 9.0 },
+  { month: "2011-10", rate: 8.8 },
+  { month: "2011-11", rate: 8.6 },
+  { month: "2011-12", rate: 8.5 },
+  { month: "2012-01", rate: 8.3 },
+  { month: "2012-02", rate: 8.3 },
+  { month: "2012-03", rate: 8.2 },
+  { month: "2012-04", rate: 8.2 },
+  { month: "2012-05", rate: 8.2 },
+  { month: "2012-06", rate: 8.2 },
+  { month: "2012-07", rate: 8.2 },
+  { month: "2012-08", rate: 8.1 },
+  { month: "2012-09", rate: 7.8 },
+  { month: "2012-10", rate: 7.8 },
+  { month: "2012-11", rate: 7.7 },
+  { month: "2012-12", rate: 7.9 },
+  { month: "2013-01", rate: 8.0 },
+  { month: "2013-02", rate: 7.7 },
+  { month: "2013-03", rate: 7.5 },
+  { month: "2013-04", rate: 7.6 },
+  { month: "2013-05", rate: 7.5 },
+  { month: "2013-06", rate: 7.5 },
+  { month: "2013-07", rate: 7.3 },
+  { month: "2013-08", rate: 7.2 },
+  { month: "2013-09", rate: 7.2 },
+  { month: "2013-10", rate: 7.2 },
+  { month: "2013-11", rate: 6.9 },
+  { month: "2013-12", rate: 6.7 },
+  { month: "2014-01", rate: 6.6 },
+  { month: "2014-02", rate: 6.7 },
+  { month: "2014-03", rate: 6.7 },
+  { month: "2014-04", rate: 6.2 },
+  { month: "2014-05", rate: 6.3 },
+  { month: "2014-06", rate: 6.1 },
+  { month: "2014-07", rate: 6.2 },
+  { month: "2014-08", rate: 6.1 },
+  { month: "2014-09", rate: 5.9 },
+  { month: "2014-10", rate: 5.7 },
+  { month: "2014-11", rate: 5.8 },
+  { month: "2014-12", rate: 5.6 },
+  { month: "2015-01", rate: 5.7 },
+  { month: "2015-02", rate: 5.5 },
+  { month: "2015-03", rate: 5.4 },
+  { month: "2015-04", rate: 5.4 },
+  { month: "2015-05", rate: 5.6 },
+  { month: "2015-06", rate: 5.3 },
+  { month: "2015-07", rate: 5.2 },
+  { month: "2015-08", rate: 5.1 },
+  { month: "2015-09", rate: 5.0 },
+  { month: "2015-10", rate: 5.0 },
+  { month: "2015-11", rate: 5.1 },
+  { month: "2015-12", rate: 5.0 },
+  { month: "2016-01", rate: 4.8 },
+  { month: "2016-02", rate: 4.9 },
+  { month: "2016-03", rate: 5.0 },
+  { month: "2016-04", rate: 5.1 },
+  { month: "2016-05", rate: 4.8 },
+  { month: "2016-06", rate: 4.9 },
+  { month: "2016-07", rate: 4.8 },
+  { month: "2016-08", rate: 4.9 },
+  { month: "2016-09", rate: 5.0 },
+  { month: "2016-10", rate: 4.9 },
+  { month: "2016-11", rate: 4.7 },
+  { month: "2016-12", rate: 4.7 },
+  { month: "2017-01", rate: 4.7 },
+  { month: "2017-02", rate: 4.6 },
+  { month: "2017-03", rate: 4.4 },
+  { month: "2017-04", rate: 4.4 },
+  { month: "2017-05", rate: 4.4 },
+  { month: "2017-06", rate: 4.3 },
+  { month: "2017-07", rate: 4.3 },
+  { month: "2017-08", rate: 4.4 },
+  { month: "2017-09", rate: 4.3 },
+  { month: "2017-10", rate: 4.2 },
+  { month: "2017-11", rate: 4.2 },
+  { month: "2017-12", rate: 4.1 },
+  { month: "2018-01", rate: 4.0 },
+  { month: "2018-02", rate: 4.1 },
+  { month: "2018-03", rate: 4.0 },
+  { month: "2018-04", rate: 4.0 },
+  { month: "2018-05", rate: 3.8 },
+  { month: "2018-06", rate: 4.0 },
+  { month: "2018-07", rate: 3.8 },
+  { month: "2018-08", rate: 3.8 },
+  { month: "2018-09", rate: 3.7 },
+  { month: "2018-10", rate: 3.8 },
+  { month: "2018-11", rate: 3.8 },
+  { month: "2018-12", rate: 3.9 },
+  { month: "2019-01", rate: 4.0 },
+  { month: "2019-02", rate: 3.8 },
+  { month: "2019-03", rate: 3.8 },
+  { month: "2019-04", rate: 3.7 },
+  { month: "2019-05", rate: 3.6 },
+  { month: "2019-06", rate: 3.6 },
+  { month: "2019-07", rate: 3.7 },
+  { month: "2019-08", rate: 3.6 },
+  { month: "2019-09", rate: 3.5 },
+  { month: "2019-10", rate: 3.6 },
+  { month: "2019-11", rate: 3.6 },
+  { month: "2019-12", rate: 3.6 },
+  { month: "2020-01", rate: 3.6 },
+  { month: "2020-02", rate: 3.5 },
+  { month: "2020-03", rate: 4.4 },
+  { month: "2020-04", rate: 14.8 },
+  { month: "2020-05", rate: 13.2 },
+  { month: "2020-06", rate: 11.0 },
+  { month: "2020-07", rate: 10.2 },
+  { month: "2020-08", rate: 8.4 },
+  { month: "2020-09", rate: 7.8 },
+  { month: "2020-10", rate: 6.9 },
+  { month: "2020-11", rate: 6.7 },
+  { month: "2020-12", rate: 6.7 },
+  { month: "2021-01", rate: 6.4 },
+  { month: "2021-02", rate: 6.2 },
+  { month: "2021-03", rate: 6.1 },
+  { month: "2021-04", rate: 6.1 },
+  { month: "2021-05", rate: 5.8 },
+  { month: "2021-06", rate: 5.9 },
+  { month: "2021-07", rate: 5.4 },
+  { month: "2021-08", rate: 5.1 },
+  { month: "2021-09", rate: 4.7 },
+  { month: "2021-10", rate: 4.5 },
+  { month: "2021-11", rate: 4.1 },
+  { month: "2021-12", rate: 3.9 },
+  { month: "2022-01", rate: 4.0 },
+  { month: "2022-02", rate: 3.9 },
+  { month: "2022-03", rate: 3.7 },
+  { month: "2022-04", rate: 3.7 },
+  { month: "2022-05", rate: 3.6 },
+  { month: "2022-06", rate: 3.6 },
+  { month: "2022-07", rate: 3.5 },
+  { month: "2022-08", rate: 3.6 },
+  { month: "2022-09", rate: 3.5 },
+  { month: "2022-10", rate: 3.6 },
+  { month: "2022-11", rate: 3.6 },
+  { month: "2022-12", rate: 3.5 },
+  { month: "2023-01", rate: 3.5 },
+  { month: "2023-02", rate: 3.6 },
+  { month: "2023-03", rate: 3.5 },
+  { month: "2023-04", rate: 3.4 },
+  { month: "2023-05", rate: 3.6 },
+  { month: "2023-06", rate: 3.6 },
+  { month: "2023-07", rate: 3.5 },
+  { month: "2023-08", rate: 3.7 },
+  { month: "2023-09", rate: 3.7 },
+  { month: "2023-10", rate: 3.9 },
+  { month: "2023-11", rate: 3.7 },
+  { month: "2023-12", rate: 3.8 },
+  { month: "2024-01", rate: 3.7 },
+  { month: "2024-02", rate: 3.9 },
+  { month: "2024-03", rate: 3.9 },
+  { month: "2024-04", rate: 3.9 },
+  { month: "2024-05", rate: 3.9 },
+  { month: "2024-06", rate: 4.1 },
+  { month: "2024-07", rate: 4.2 },
+  { month: "2024-08", rate: 4.2 },
+  { month: "2024-09", rate: 4.1 },
+  { month: "2024-10", rate: 4.1 },
+  { month: "2024-11", rate: 4.2 },
+  { month: "2024-12", rate: 4.1 },
+  { month: "2025-01", rate: 4.0 },
+  { month: "2025-02", rate: 4.2 },
+  { month: "2025-03", rate: 4.2 },
+  { month: "2025-04", rate: 4.2 },
+  { month: "2025-05", rate: 4.3 },
+  { month: "2025-06", rate: 4.1 },
+  { month: "2025-07", rate: 4.3 },
+  { month: "2025-08", rate: 4.3 },
+  { month: "2025-09", rate: 4.4 },
+  { month: "2025-11", rate: 4.5 },
+  { month: "2025-12", rate: 4.4 },
+  { month: "2026-01", rate: 4.3 },
+  { month: "2026-02", rate: 4.4 },
+  { month: "2026-03", rate: 4.3 },
+  { month: "2026-04", rate: 4.3 },
+  { month: "2026-05", rate: 4.3 },
+  { month: "2026-06", rate: 4.2 }
+];
+
+export const US_UNEMPLOYMENT_META = {
+  source: "U.S. Bureau of Labor Statistics (UNRATE)",
+  sourceHref: "https://fred.stlouisfed.org/series/UNRATE",
+  peakRate: 14.8,
+  peakMonth: "2020-04",
+  lowRate: 2.5,
+  lowMonth: "1953-05",
+  latestRate: 4.2,
+  latestMonth: "2026-06",
+} as const;
+
+// ─── Nasdaq Composite ────────────────────────────────────────────────────────
+// The Nasdaq Composite, monthly since the index began in 1971. It is the closest
+// thing to a price for American technology: the exchange where Apple, Microsoft,
+// NVIDIA, Alphabet, Amazon and Meta all list.
+//
+// The index started at 100. It is now about 26,075 — roughly 261x — but the
+// line is not a smooth ascent, and that is the point: it fell to 58.6 in the
+// 1974 bear market, then lost roughly three-quarters of its value after the
+// dot-com peak in March 2000 and did not regain that level until 2015.
+// Source: Nasdaq OMX Group (NASDAQCOM), via FRED. Monthly average of daily closes.
+export interface NasdaqPoint { month: string; close: number; }
+export const NASDAQ_COMPOSITE: NasdaqPoint[] = [
+  { month: "1971-03", close: 104.5 },
+  { month: "1971-04", close: 109.6 },
+  { month: "1971-05", close: 109.6 },
+  { month: "1971-06", close: 108.6 },
+  { month: "1971-07", close: 109.3 },
+  { month: "1971-08", close: 106.5 },
+  { month: "1971-09", close: 109.5 },
+  { month: "1971-10", close: 108.4 },
+  { month: "1971-11", close: 103.6 },
+  { month: "1971-12", close: 109.8 },
+  { month: "1972-01", close: 116.5 },
+  { month: "1972-02", close: 122.7 },
+  { month: "1972-03", close: 127.5 },
+  { month: "1972-04", close: 131.8 },
+  { month: "1972-05", close: 130.5 },
+  { month: "1972-06", close: 131.0 },
+  { month: "1972-07", close: 129.2 },
+  { month: "1972-08", close: 130.6 },
+  { month: "1972-09", close: 128.3 },
+  { month: "1972-10", close: 128.4 },
+  { month: "1972-11", close: 132.7 },
+  { month: "1972-12", close: 133.3 },
+  { month: "1973-01", close: 133.5 },
+  { month: "1973-02", close: 124.5 },
+  { month: "1973-03", close: 119.6 },
+  { month: "1973-04", close: 113.0 },
+  { month: "1973-05", close: 106.4 },
+  { month: "1973-06", close: 101.8 },
+  { month: "1973-07", close: 104.7 },
+  { month: "1973-08", close: 104.4 },
+  { month: "1973-09", close: 107.6 },
+  { month: "1973-10", close: 112.4 },
+  { month: "1973-11", close: 101.3 },
+  { month: "1973-12", close: 90.8 },
+  { month: "1974-01", close: 94.2 },
+  { month: "1974-02", close: 92.2 },
+  { month: "1974-03", close: 95.0 },
+  { month: "1974-04", close: 89.6 },
+  { month: "1974-05", close: 83.4 },
+  { month: "1974-06", close: 81.0 },
+  { month: "1974-07", close: 72.4 },
+  { month: "1974-08", close: 66.6 },
+  { month: "1974-09", close: 58.6 },
+  { month: "1974-10", close: 60.6 },
+  { month: "1974-11", close: 63.9 },
+  { month: "1974-12", close: 59.2 },
+  { month: "1975-01", close: 64.5 },
+  { month: "1975-02", close: 72.1 },
+  { month: "1975-03", close: 75.1 },
+  { month: "1975-04", close: 77.0 },
+  { month: "1975-05", close: 81.8 },
+  { month: "1975-06", close: 84.6 },
+  { month: "1975-07", close: 85.6 },
+  { month: "1975-08", close: 78.4 },
+  { month: "1975-09", close: 75.9 },
+  { month: "1975-10", close: 77.3 },
+  { month: "1975-11", close: 78.0 },
+  { month: "1975-12", close: 75.9 },
+  { month: "1976-01", close: 83.4 },
+  { month: "1976-02", close: 89.3 },
+  { month: "1976-03", close: 90.2 },
+  { month: "1976-04", close: 90.1 },
+  { month: "1976-05", close: 89.3 },
+  { month: "1976-06", close: 88.8 },
+  { month: "1976-07", close: 91.4 },
+  { month: "1976-08", close: 90.9 },
+  { month: "1976-09", close: 91.4 },
+  { month: "1976-10", close: 89.5 },
+  { month: "1976-11", close: 89.5 },
+  { month: "1976-12", close: 94.6 },
+  { month: "1977-01", close: 96.9 },
+  { month: "1977-02", close: 96.1 },
+  { month: "1977-03", close: 95.7 },
+  { month: "1977-04", close: 95.0 },
+  { month: "1977-05", close: 96.9 },
+  { month: "1977-06", close: 97.9 },
+  { month: "1977-07", close: 101.3 },
+  { month: "1977-08", close: 100.6 },
+  { month: "1977-09", close: 100.4 },
+  { month: "1977-10", close: 99.2 },
+  { month: "1977-11", close: 100.7 },
+  { month: "1977-12", close: 103.7 },
+  { month: "1978-01", close: 100.8 },
+  { month: "1978-02", close: 102.4 },
+  { month: "1978-03", close: 104.0 },
+  { month: "1978-04", close: 110.8 },
+  { month: "1978-05", close: 119.1 },
+  { month: "1978-06", close: 122.0 },
+  { month: "1978-07", close: 122.1 },
+  { month: "1978-08", close: 132.5 },
+  { month: "1978-09", close: 135.2 },
+  { month: "1978-10", close: 127.7 },
+  { month: "1978-11", close: 114.1 },
+  { month: "1978-12", close: 117.2 },
+  { month: "1979-01", close: 123.7 },
+  { month: "1979-02", close: 124.5 },
+  { month: "1979-03", close: 128.1 },
+  { month: "1979-04", close: 133.4 },
+  { month: "1979-05", close: 131.3 },
+  { month: "1979-06", close: 135.6 },
+  { month: "1979-07", close: 138.6 },
+  { month: "1979-08", close: 146.7 },
+  { month: "1979-09", close: 149.2 },
+  { month: "1979-10", close: 140.5 },
+  { month: "1979-11", close: 138.8 },
+  { month: "1979-12", close: 148.7 },
+  { month: "1980-01", close: 155.1 },
+  { month: "1980-02", close: 161.6 },
+  { month: "1980-03", close: 141.1 },
+  { month: "1980-04", close: 136.3 },
+  { month: "1980-05", close: 145.7 },
+  { month: "1980-06", close: 155.4 },
+  { month: "1980-07", close: 166.9 },
+  { month: "1980-08", close: 177.7 },
+  { month: "1980-09", close: 189.5 },
+  { month: "1980-10", close: 195.8 },
+  { month: "1980-11", close: 200.7 },
+  { month: "1980-12", close: 198.4 },
+  { month: "1981-01", close: 198.8 },
+  { month: "1981-02", close: 194.9 },
+  { month: "1981-03", close: 203.6 },
+  { month: "1981-04", close: 215.1 },
+  { month: "1981-05", close: 216.5 },
+  { month: "1981-06", close: 220.0 },
+  { month: "1981-07", close: 209.7 },
+  { month: "1981-08", close: 206.6 },
+  { month: "1981-09", close: 185.4 },
+  { month: "1981-10", close: 190.2 },
+  { month: "1981-11", close: 199.2 },
+  { month: "1981-12", close: 197.2 },
+  { month: "1982-01", close: 187.7 },
+  { month: "1982-02", close: 182.6 },
+  { month: "1982-03", close: 173.3 },
+  { month: "1982-04", close: 181.8 },
+  { month: "1982-05", close: 184.6 },
+  { month: "1982-06", close: 172.1 },
+  { month: "1982-07", close: 169.6 },
+  { month: "1982-08", close: 167.4 },
+  { month: "1982-09", close: 185.1 },
+  { month: "1982-10", close: 203.9 },
+  { month: "1982-11", close: 227.0 },
+  { month: "1982-12", close: 233.0 },
+  { month: "1983-01", close: 241.5 },
+  { month: "1983-02", close: 256.1 },
+  { month: "1983-03", close: 266.5 },
+  { month: "1983-04", close: 279.5 },
+  { month: "1983-05", close: 302.4 },
+  { month: "1983-06", close: 319.3 },
+  { month: "1983-07", close: 316.1 },
+  { month: "1983-08", close: 296.9 },
+  { month: "1983-09", close: 300.4 },
+  { month: "1983-10", close: 286.7 },
+  { month: "1983-11", close: 278.7 },
+  { month: "1983-12", close: 278.7 },
+  { month: "1984-01", close: 282.0 },
+  { month: "1984-02", close: 254.4 },
+  { month: "1984-03", close: 251.2 },
+  { month: "1984-04", close: 245.2 },
+  { month: "1984-05", close: 245.2 },
+  { month: "1984-06", close: 238.5 },
+  { month: "1984-07", close: 232.4 },
+  { month: "1984-08", close: 250.3 },
+  { month: "1984-09", close: 252.0 },
+  { month: "1984-10", close: 247.2 },
+  { month: "1984-11", close: 246.4 },
+  { month: "1984-12", close: 241.9 },
+  { month: "1985-01", close: 260.8 },
+  { month: "1985-02", close: 285.5 },
+  { month: "1985-03", close: 280.8 },
+  { month: "1985-04", close: 280.9 },
+  { month: "1985-05", close: 287.5 },
+  { month: "1985-06", close: 290.4 },
+  { month: "1985-07", close: 302.0 },
+  { month: "1985-08", close: 298.2 },
+  { month: "1985-09", close: 287.9 },
+  { month: "1985-10", close: 285.4 },
+  { month: "1985-11", close: 304.4 },
+  { month: "1985-12", close: 320.2 },
+  { month: "1986-01", close: 328.5 },
+  { month: "1986-02", close: 348.8 },
+  { month: "1986-03", close: 368.2 },
+  { month: "1986-04", close: 382.5 },
+  { month: "1986-05", close: 388.5 },
+  { month: "1986-06", close: 398.6 },
+  { month: "1986-07", close: 385.9 },
+  { month: "1986-08", close: 375.6 },
+  { month: "1986-09", close: 358.3 },
+  { month: "1986-10", close: 355.0 },
+  { month: "1986-11", close: 358.1 },
+  { month: "1986-12", close: 354.9 },
+  { month: "1987-01", close: 384.2 },
+  { month: "1987-02", close: 411.7 },
+  { month: "1987-03", close: 432.2 },
+  { month: "1987-04", close: 422.8 },
+  { month: "1987-05", close: 416.6 },
+  { month: "1987-06", close: 423.7 },
+  { month: "1987-07", close: 429.0 },
+  { month: "1987-08", close: 448.4 },
+  { month: "1987-09", close: 442.8 },
+  { month: "1987-10", close: 385.1 },
+  { month: "1987-11", close: 318.8 },
+  { month: "1987-12", close: 314.5 },
+  { month: "1988-01", close: 339.3 },
+  { month: "1988-02", close: 353.6 },
+  { month: "1988-03", close: 375.5 },
+  { month: "1988-04", close: 377.2 },
+  { month: "1988-05", close: 371.9 },
+  { month: "1988-06", close: 386.0 },
+  { month: "1988-07", close: 391.4 },
+  { month: "1988-08", close: 379.6 },
+  { month: "1988-09", close: 382.2 },
+  { month: "1988-10", close: 385.0 },
+  { month: "1988-11", close: 372.9 },
+  { month: "1988-12", close: 375.8 },
+  { month: "1989-01", close: 389.3 },
+  { month: "1989-02", close: 404.1 },
+  { month: "1989-03", close: 404.0 },
+  { month: "1989-04", close: 417.1 },
+  { month: "1989-05", close: 436.0 },
+  { month: "1989-06", close: 447.6 },
+  { month: "1989-07", close: 446.7 },
+  { month: "1989-08", close: 461.8 },
+  { month: "1989-09", close: 469.3 },
+  { month: "1989-10", close: 469.7 },
+  { month: "1989-11", close: 454.7 },
+  { month: "1989-12", close: 449.0 },
+  { month: "1990-01", close: 439.4 },
+  { month: "1990-02", close: 424.5 },
+  { month: "1990-03", close: 436.1 },
+  { month: "1990-04", close: 429.0 },
+  { month: "1990-05", close: 442.6 },
+  { month: "1990-06", close: 462.3 },
+  { month: "1990-07", close: 455.8 },
+  { month: "1990-08", close: 396.3 },
+  { month: "1990-09", close: 368.6 },
+  { month: "1990-10", close: 338.0 },
+  { month: "1990-11", close: 347.7 },
+  { month: "1990-12", close: 370.2 },
+  { month: "1991-01", close: 376.7 },
+  { month: "1991-02", close: 442.6 },
+  { month: "1991-03", close: 469.1 },
+  { month: "1991-04", close: 496.3 },
+  { month: "1991-05", close: 490.9 },
+  { month: "1991-06", close: 490.4 },
+  { month: "1991-07", close: 489.4 },
+  { month: "1991-08", close: 513.3 },
+  { month: "1991-09", close: 520.6 },
+  { month: "1991-10", close: 528.9 },
+  { month: "1991-11", close: 536.6 },
+  { month: "1991-12", close: 544.1 },
+  { month: "1992-01", close: 615.7 },
+  { month: "1992-02", close: 632.0 },
+  { month: "1992-03", close: 619.6 },
+  { month: "1992-04", close: 582.8 },
+  { month: "1992-05", close: 581.5 },
+  { month: "1992-06", close: 566.7 },
+  { month: "1992-07", close: 568.7 },
+  { month: "1992-08", close: 569.0 },
+  { month: "1992-09", close: 580.7 },
+  { month: "1992-10", close: 585.0 },
+  { month: "1992-11", close: 630.9 },
+  { month: "1992-12", close: 661.3 },
+  { month: "1993-01", close: 691.1 },
+  { month: "1993-02", close: 681.7 },
+  { month: "1993-03", close: 684.5 },
+  { month: "1993-04", close: 665.3 },
+  { month: "1993-05", close: 686.5 },
+  { month: "1993-06", close: 695.4 },
+  { month: "1993-07", close: 703.4 },
+  { month: "1993-08", close: 725.1 },
+  { month: "1993-09", close: 745.9 },
+  { month: "1993-10", close: 771.3 },
+  { month: "1993-11", close: 764.0 },
+  { month: "1993-12", close: 762.9 },
+  { month: "1994-01", close: 787.8 },
+  { month: "1994-02", close: 787.8 },
+  { month: "1994-03", close: 785.9 },
+  { month: "1994-04", close: 732.3 },
+  { month: "1994-05", close: 727.8 },
+  { month: "1994-06", close: 723.2 },
+  { month: "1994-07", close: 713.5 },
+  { month: "1994-08", close: 738.9 },
+  { month: "1994-09", close: 763.9 },
+  { month: "1994-10", close: 762.5 },
+  { month: "1994-11", close: 760.4 },
+  { month: "1994-12", close: 735.0 },
+  { month: "1995-01", close: 758.0 },
+  { month: "1995-02", close: 784.2 },
+  { month: "1995-03", close: 807.2 },
+  { month: "1995-04", close: 825.3 },
+  { month: "1995-05", close: 859.8 },
+  { month: "1995-06", close: 906.0 },
+  { month: "1995-07", close: 979.4 },
+  { month: "1995-08", close: 1009.6 },
+  { month: "1995-09", close: 1051.0 },
+  { month: "1995-10", close: 1022.1 },
+  { month: "1995-11", close: 1046.6 },
+  { month: "1995-12", close: 1047.0 },
+  { month: "1996-01", close: 1024.9 },
+  { month: "1996-02", close: 1094.0 },
+  { month: "1996-03", close: 1092.6 },
+  { month: "1996-04", close: 1135.6 },
+  { month: "1996-05", close: 1220.5 },
+  { month: "1996-06", close: 1205.1 },
+  { month: "1996-07", close: 1105.6 },
+  { month: "1996-08", close: 1134.2 },
+  { month: "1996-09", close: 1186.4 },
+  { month: "1996-10", close: 1234.0 },
+  { month: "1996-11", close: 1259.8 },
+  { month: "1996-12", close: 1292.2 },
+  { month: "1997-01", close: 1345.4 },
+  { month: "1997-02", close: 1349.2 },
+  { month: "1997-03", close: 1282.9 },
+  { month: "1997-04", close: 1225.0 },
+  { month: "1997-05", close: 1352.6 },
+  { month: "1997-06", close: 1422.5 },
+  { month: "1997-07", close: 1531.1 },
+  { month: "1997-08", close: 1596.7 },
+  { month: "1997-09", close: 1660.1 },
+  { month: "1997-10", close: 1682.3 },
+  { month: "1997-11", close: 1601.0 },
+  { month: "1997-12", close: 1567.0 },
+  { month: "1998-01", close: 1570.2 },
+  { month: "1998-02", close: 1714.9 },
+  { month: "1998-03", close: 1781.3 },
+  { month: "1998-04", close: 1852.3 },
+  { month: "1998-05", close: 1836.4 },
+  { month: "1998-06", close: 1795.7 },
+  { month: "1998-07", close: 1941.6 },
+  { month: "1998-08", close: 1784.8 },
+  { month: "1998-09", close: 1663.4 },
+  { month: "1998-10", close: 1615.7 },
+  { month: "1998-11", close: 1888.7 },
+  { month: "1998-12", close: 2071.0 },
+  { month: "1999-01", close: 2357.8 },
+  { month: "1999-02", close: 2357.0 },
+  { month: "1999-03", close: 2391.1 },
+  { month: "1999-04", close: 2537.9 },
+  { month: "1999-05", close: 2512.6 },
+  { month: "1999-06", close: 2521.0 },
+  { month: "1999-07", close: 2741.3 },
+  { month: "1999-08", close: 2642.4 },
+  { month: "1999-09", close: 2807.9 },
+  { month: "1999-10", close: 2815.3 },
+  { month: "1999-11", close: 3230.5 },
+  { month: "1999-12", close: 3739.9 },
+  { month: "2000-01", close: 4013.5 },
+  { month: "2000-02", close: 4410.9 },
+  { month: "2000-03", close: 4803.0 },
+  { month: "2000-04", close: 3863.6 },
+  { month: "2000-05", close: 3528.4 },
+  { month: "2000-06", close: 3865.5 },
+  { month: "2000-07", close: 4017.7 },
+  { month: "2000-08", close: 3909.6 },
+  { month: "2000-09", close: 3875.8 },
+  { month: "2000-10", close: 3333.8 },
+  { month: "2000-11", close: 3055.4 },
+  { month: "2000-12", close: 2657.8 },
+  { month: "2001-01", close: 2656.9 },
+  { month: "2001-02", close: 2449.6 },
+  { month: "2001-03", close: 1986.7 },
+  { month: "2001-04", close: 1933.9 },
+  { month: "2001-05", close: 2181.1 },
+  { month: "2001-06", close: 2112.1 },
+  { month: "2001-07", close: 2034.0 },
+  { month: "2001-08", close: 1929.7 },
+  { month: "2001-09", close: 1573.3 },
+  { month: "2001-10", close: 1656.4 },
+  { month: "2001-11", close: 1870.1 },
+  { month: "2001-12", close: 1977.7 },
+  { month: "2002-01", close: 1976.8 },
+  { month: "2002-02", close: 1799.7 },
+  { month: "2002-03", close: 1863.0 },
+  { month: "2002-04", close: 1758.8 },
+  { month: "2002-05", close: 1660.3 },
+  { month: "2002-06", close: 1505.5 },
+  { month: "2002-07", close: 1346.1 },
+  { month: "2002-08", close: 1327.4 },
+  { month: "2002-09", close: 1251.1 },
+  { month: "2002-10", close: 1241.9 },
+  { month: "2002-11", close: 1409.2 },
+  { month: "2002-12", close: 1387.2 },
+  { month: "2003-01", close: 1390.4 },
+  { month: "2003-02", close: 1312.1 },
+  { month: "2003-03", close: 1349.5 },
+  { month: "2003-04", close: 1411.2 },
+  { month: "2003-05", close: 1525.4 },
+  { month: "2003-06", close: 1630.2 },
+  { month: "2003-07", close: 1716.0 },
+  { month: "2003-08", close: 1726.6 },
+  { month: "2003-09", close: 1856.0 },
+  { month: "2003-10", close: 1905.9 },
+  { month: "2003-11", close: 1937.9 },
+  { month: "2003-12", close: 1953.9 },
+  { month: "2004-01", close: 2096.2 },
+  { month: "2004-02", close: 2048.3 },
+  { month: "2004-03", close: 1979.6 },
+  { month: "2004-04", close: 2018.9 },
+  { month: "2004-05", close: 1930.2 },
+  { month: "2004-06", close: 2002.1 },
+  { month: "2004-07", close: 1912.7 },
+  { month: "2004-08", close: 1821.9 },
+  { month: "2004-09", close: 1884.7 },
+  { month: "2004-10", close: 1938.3 },
+  { month: "2004-11", close: 2062.9 },
+  { month: "2004-12", close: 2149.5 },
+  { month: "2005-01", close: 2071.9 },
+  { month: "2005-02", close: 2065.7 },
+  { month: "2005-03", close: 2030.4 },
+  { month: "2005-04", close: 1957.5 },
+  { month: "2005-05", close: 2005.2 },
+  { month: "2005-06", close: 2074.1 },
+  { month: "2005-07", close: 2145.1 },
+  { month: "2005-08", close: 2158.0 },
+  { month: "2005-09", close: 2144.7 },
+  { month: "2005-10", close: 2087.2 },
+  { month: "2005-11", close: 2202.9 },
+  { month: "2005-12", close: 2246.1 },
+  { month: "2006-01", close: 2290.0 },
+  { month: "2006-02", close: 2273.7 },
+  { month: "2006-03", close: 2300.3 },
+  { month: "2006-04", close: 2338.7 },
+  { month: "2006-05", close: 2245.3 },
+  { month: "2006-06", close: 2137.4 },
+  { month: "2006-07", close: 2086.2 },
+  { month: "2006-08", close: 2117.8 },
+  { month: "2006-09", close: 2221.9 },
+  { month: "2006-10", close: 2330.2 },
+  { month: "2006-11", close: 2408.7 },
+  { month: "2006-12", close: 2431.9 },
+  { month: "2007-01", close: 2453.2 },
+  { month: "2007-02", close: 2479.9 },
+  { month: "2007-03", close: 2401.5 },
+  { month: "2007-04", close: 2499.6 },
+  { month: "2007-05", close: 2562.1 },
+  { month: "2007-06", close: 2595.4 },
+  { month: "2007-07", close: 2655.1 },
+  { month: "2007-08", close: 2539.5 },
+  { month: "2007-09", close: 2634.5 },
+  { month: "2007-10", close: 2780.4 },
+  { month: "2007-11", close: 2662.8 },
+  { month: "2007-12", close: 2661.5 },
+  { month: "2008-01", close: 2418.1 },
+  { month: "2008-02", close: 2325.8 },
+  { month: "2008-03", close: 2254.8 },
+  { month: "2008-04", close: 2368.1 },
+  { month: "2008-05", close: 2483.2 },
+  { month: "2008-06", close: 2427.5 },
+  { month: "2008-07", close: 2278.1 },
+  { month: "2008-08", close: 2389.3 },
+  { month: "2008-09", close: 2205.7 },
+  { month: "2008-10", close: 1730.3 },
+  { month: "2008-11", close: 1542.7 },
+  { month: "2008-12", close: 1525.9 },
+  { month: "2009-01", close: 1537.2 },
+  { month: "2009-02", close: 1486.0 },
+  { month: "2009-03", close: 1432.2 },
+  { month: "2009-04", close: 1641.1 },
+  { month: "2009-05", close: 1726.1 },
+  { month: "2009-06", close: 1827.0 },
+  { month: "2009-07", close: 1873.8 },
+  { month: "2009-08", close: 1997.2 },
+  { month: "2009-09", close: 2084.7 },
+  { month: "2009-10", close: 2122.8 },
+  { month: "2009-11", close: 2143.5 },
+  { month: "2009-12", close: 2220.6 },
+  { month: "2010-01", close: 2267.8 },
+  { month: "2010-02", close: 2194.4 },
+  { month: "2010-03", close: 2362.2 },
+  { month: "2010-04", close: 2475.7 },
+  { month: "2010-05", close: 2319.2 },
+  { month: "2010-06", close: 2235.2 },
+  { month: "2010-07", close: 2210.3 },
+  { month: "2010-08", close: 2205.3 },
+  { month: "2010-09", close: 2298.3 },
+  { month: "2010-10", close: 2441.3 },
+  { month: "2010-11", close: 2531.0 },
+  { month: "2010-12", close: 2631.6 },
+  { month: "2011-01", close: 2717.2 },
+  { month: "2011-02", close: 2783.5 },
+  { month: "2011-03", close: 2722.3 },
+  { month: "2011-04", close: 2797.1 },
+  { month: "2011-05", close: 2815.1 },
+  { month: "2011-06", close: 2687.8 },
+  { month: "2011-07", close: 2810.6 },
+  { month: "2011-08", close: 2504.6 },
+  { month: "2011-09", close: 2524.1 },
+  { month: "2011-10", close: 2594.8 },
+  { month: "2011-11", close: 2606.3 },
+  { month: "2011-12", close: 2601.7 },
+  { month: "2012-01", close: 2743.8 },
+  { month: "2012-02", close: 2929.0 },
+  { month: "2012-03", close: 3035.9 },
+  { month: "2012-04", close: 3035.1 },
+  { month: "2012-05", close: 2900.4 },
+  { month: "2012-06", close: 2850.4 },
+  { month: "2012-07", close: 2920.1 },
+  { month: "2012-08", close: 3032.7 },
+  { month: "2012-09", close: 3136.8 },
+  { month: "2012-10", close: 3060.3 },
+  { month: "2012-11", close: 2941.0 },
+  { month: "2012-12", close: 3003.8 },
+  { month: "2013-01", close: 3125.9 },
+  { month: "2013-02", close: 3169.2 },
+  { month: "2013-03", close: 3236.2 },
+  { month: "2013-04", close: 3251.4 },
+  { month: "2013-05", close: 3440.4 },
+  { month: "2013-06", close: 3416.7 },
+  { month: "2013-07", close: 3559.7 },
+  { month: "2013-08", close: 3639.9 },
+  { month: "2013-09", close: 3731.3 },
+  { month: "2013-10", close: 3848.2 },
+  { month: "2013-11", close: 3957.5 },
+  { month: "2013-12", close: 4075.9 },
+  { month: "2014-01", close: 4154.4 },
+  { month: "2014-02", close: 4199.5 },
+  { month: "2014-03", close: 4276.4 },
+  { month: "2014-04", close: 4119.3 },
+  { month: "2014-05", close: 4135.4 },
+  { month: "2014-06", close: 4332.7 },
+  { month: "2014-07", close: 4434.1 },
+  { month: "2014-08", close: 4464.8 },
+  { month: "2014-09", close: 4551.6 },
+  { month: "2014-10", close: 4403.2 },
+  { month: "2014-11", close: 4687.7 },
+  { month: "2014-12", close: 4732.7 },
+  { month: "2015-01", close: 4673.7 },
+  { month: "2015-02", close: 4854.3 },
+  { month: "2015-03", close: 4938.0 },
+  { month: "2015-04", close: 4986.0 },
+  { month: "2015-05", close: 5029.4 },
+  { month: "2015-06", close: 5073.0 },
+  { month: "2015-07", close: 5082.8 },
+  { month: "2015-08", close: 4934.6 },
+  { month: "2015-09", close: 4748.0 },
+  { month: "2015-10", close: 4879.0 },
+  { month: "2015-11", close: 5082.5 },
+  { month: "2015-12", close: 5040.5 },
+  { month: "2016-01", close: 4610.7 },
+  { month: "2016-02", close: 4463.2 },
+  { month: "2016-03", close: 4754.5 },
+  { month: "2016-04", close: 4892.2 },
+  { month: "2016-05", close: 4788.2 },
+  { month: "2016-06", close: 4856.2 },
+  { month: "2016-07", close: 5024.0 },
+  { month: "2016-08", close: 5217.0 },
+  { month: "2016-09", close: 5254.2 },
+  { month: "2016-10", close: 5256.0 },
+  { month: "2016-11", close: 5260.6 },
+  { month: "2016-12", close: 5413.1 },
+  { month: "2017-01", close: 5561.4 },
+  { month: "2017-02", close: 5764.7 },
+  { month: "2017-03", close: 5865.0 },
+  { month: "2017-04", close: 5912.2 },
+  { month: "2017-05", close: 6124.9 },
+  { month: "2017-06", close: 6224.3 },
+  { month: "2017-07", close: 6294.7 },
+  { month: "2017-08", close: 6311.4 },
+  { month: "2017-09", close: 6428.1 },
+  { month: "2017-10", close: 6603.0 },
+  { month: "2017-11", close: 6796.0 },
+  { month: "2017-12", close: 6889.7 },
+  { month: "2018-01", close: 7279.5 },
+  { month: "2018-02", close: 7161.8 },
+  { month: "2018-03", close: 7311.5 },
+  { month: "2018-04", close: 7084.1 },
+  { month: "2018-05", close: 7339.3 },
+  { month: "2018-06", close: 7645.1 },
+  { month: "2018-07", close: 7756.9 },
+  { month: "2018-08", close: 7892.2 },
+  { month: "2018-09", close: 7983.3 },
+  { month: "2018-10", close: 7527.1 },
+  { month: "2018-11", close: 7236.1 },
+  { month: "2018-12", close: 6814.3 },
+  { month: "2019-01", close: 6979.7 },
+  { month: "2019-02", close: 7430.1 },
+  { month: "2019-03", close: 7629.4 },
+  { month: "2019-04", close: 7993.4 },
+  { month: "2019-05", close: 7804.8 },
+  { month: "2019-06", close: 7825.5 },
+  { month: "2019-07", close: 8205.6 },
+  { month: "2019-08", close: 7910.9 },
+  { month: "2019-09", close: 8087.7 },
+  { month: "2019-10", close: 8079.3 },
+  { month: "2019-11", close: 8517.6 },
+  { month: "2019-12", close: 8778.6 },
+  { month: "2020-01", close: 9233.4 },
+  { month: "2020-02", close: 9418.8 },
+  { month: "2020-03", close: 7772.2 },
+  { month: "2020-04", close: 8292.4 },
+  { month: "2020-05", close: 9105.7 },
+  { month: "2020-06", close: 9840.0 },
+  { month: "2020-07", close: 10499.9 },
+  { month: "2020-08", close: 11212.3 },
+  { month: "2020-09", close: 11088.7 },
+  { month: "2020-10", close: 11435.3 },
+  { month: "2020-11", close: 11794.5 },
+  { month: "2020-12", close: 12619.1 },
+  { month: "2021-01", close: 13186.6 },
+  { month: "2021-02", close: 13737.4 },
+  { month: "2021-03", close: 13168.8 },
+  { month: "2021-04", close: 13900.4 },
+  { month: "2021-05", close: 13520.2 },
+  { month: "2021-06", close: 14097.2 },
+  { month: "2021-07", close: 14639.1 },
+  { month: "2021-08", close: 14856.5 },
+  { month: "2021-09", close: 15023.5 },
+  { month: "2021-10", close: 14879.0 },
+  { month: "2021-11", close: 15814.9 },
+  { month: "2021-12", close: 15474.4 },
+  { month: "2022-01", close: 14531.4 },
+  { month: "2022-02", close: 13898.7 },
+  { month: "2022-03", close: 13623.3 },
+  { month: "2022-04", close: 13394.2 },
+  { month: "2022-05", close: 11829.7 },
+  { month: "2022-06", close: 11418.9 },
+  { month: "2022-07", close: 11622.6 },
+  { month: "2022-08", close: 12570.3 },
+  { month: "2022-09", close: 11402.9 },
+  { month: "2022-10", close: 10801.5 },
+  { month: "2022-11", close: 10973.6 },
+  { month: "2022-12", close: 10839.0 },
+  { month: "2023-01", close: 11014.0 },
+  { month: "2023-02", close: 11785.1 },
+  { month: "2023-03", close: 11637.1 },
+  { month: "2023-04", close: 12073.5 },
+  { month: "2023-05", close: 12446.5 },
+  { month: "2023-06", close: 13463.8 },
+  { month: "2023-07", close: 14033.1 },
+  { month: "2023-08", close: 13739.5 },
+  { month: "2023-09", close: 13585.8 },
+  { month: "2023-10", close: 13199.4 },
+  { month: "2023-11", close: 13913.2 },
+  { month: "2023-12", close: 14690.5 },
+  { month: "2024-01", close: 15081.4 },
+  { month: "2024-02", close: 15808.9 },
+  { month: "2024-03", close: 16216.3 },
+  { month: "2024-04", close: 15950.9 },
+  { month: "2024-05", close: 16536.3 },
+  { month: "2024-06", close: 17495.9 },
+  { month: "2024-07", close: 17963.3 },
+  { month: "2024-08", close: 17268.3 },
+  { month: "2024-09", close: 17599.2 },
+  { month: "2024-10", close: 18316.1 },
+  { month: "2024-11", close: 18961.4 },
+  { month: "2024-12", close: 19734.6 },
+  { month: "2025-01", close: 19565.0 },
+  { month: "2025-02", close: 19547.3 },
+  { month: "2025-03", close: 17828.0 },
+  { month: "2025-04", close: 16678.5 },
+  { month: "2025-05", close: 18642.4 },
+  { month: "2025-06", close: 19673.3 },
+  { month: "2025-07", close: 20784.9 },
+  { month: "2025-08", close: 21383.6 },
+  { month: "2025-09", close: 22188.6 },
+  { month: "2025-10", close: 23003.1 },
+  { month: "2025-11", close: 23023.6 },
+  { month: "2025-12", close: 23377.3 },
+  { month: "2026-01", close: 23520.7 },
+  { month: "2026-02", close: 22892.9 },
+  { month: "2026-03", close: 22130.0 },
+  { month: "2026-04", close: 23677.1 },
+  { month: "2026-05", close: 26155.8 },
+  { month: "2026-06", close: 26074.8 }
+];
+
+export const NASDAQ_META = {
+  source: "Nasdaq OMX Group (NASDAQCOM)",
+  sourceHref: "https://fred.stlouisfed.org/series/NASDAQCOM",
+  inceptionValue: 100,
+  latestClose: 26074.8,
+  latestMonth: "2026-06",
+  peakClose: 26155.8,
+  peakMonth: "2026-05",
+  multipleSinceInception: 261,
+} as const;
+
