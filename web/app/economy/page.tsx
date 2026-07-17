@@ -85,7 +85,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "The Engine of the World — US Economy",
     description:
-      "America's economic dominance explained: $32.4T GDP, 47% of global VC, world reserve currency, and 659+ unicorn companies.",
+      "America's economic dominance explained: $32.4T GDP, 65% of global venture capital, the world reserve currency, and 659 unicorn companies.",
     url: "/economy",
     images: [
       {

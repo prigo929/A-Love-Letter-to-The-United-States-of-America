@@ -15,9 +15,12 @@ import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import type { Locale } from "@/lib/i18n/config";
 import { getServerLocale } from "@/lib/i18n/server";
 import { MacroStyles, MacroHero, MacroStat, InfrastructureBand, CountUp, MacroFact } from "@/components/economy/EconomyAnimations";
+import { ExportsByCategoryChart } from "@/components/data/ExportsByCategoryChart";
+import { ExportsImportsChart } from "@/components/data/ExportsImportsChart";
 import {
   getTradeOverviewParagraphs,
-  US_EXPORT_CATEGORIES,
+  US_EXPORTS_BY_CATEGORY,
+  US_EXPORTS_VS_IMPORTS,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -150,25 +153,14 @@ export default async function TradeAndExportsPage() {
   const breadcrumbEconomy = locale === "ro" ? "Economie" : "Economy";
   const pageLabel = locale === "ro" ? "Comerț și Exporturi" : "Trade & Exports";
   const overviewParagraphs = getTradeOverviewParagraphs(locale);
-  // This shared export-category dataset is translated here before it is passed
-  // into the chart/card UI below.
-  const exportCategories =
-    locale === "ro"
-      ? US_EXPORT_CATEGORIES.map((category) => ({
-          ...category,
-          category:
-            {
-              "Aircraft & Parts": "Avioane și componente",
-              "Petroleum Products": "Produse petroliere",
-              Semiconductors: "Semiconductori",
-              "Medical Devices": "Dispozitive medicale",
-              Automobiles: "Automobile",
-              Pharmaceuticals: "Produse farmaceutice",
-              "Agricultural Products": "Produse agricole",
-              "Industrial Machinery": "Mașini industriale",
-            }[category.category] ?? category.category,
-        }))
-      : US_EXPORT_CATEGORIES;
+  // Export categories come from US_EXPORTS_BY_CATEGORY, which carries its own
+  // Romanian labels — no translation map needed here.
+  //
+  // This page used to render a second, contradictory dataset (US_EXPORT_CATEGORIES)
+  // as static cards: it put pharmaceuticals at $63B and aircraft at $132B, against
+  // the $120B and $164B the GDP page showed for the same year. Census FT-900 puts
+  // pharmaceutical preparations at $119.8B, so the other dataset was the wrong one
+  // and has been deleted rather than left to contradict this page's neighbour.
   const tradePartners =
     locale === "ro"
       ? TRADE_PARTNERS.map((partner) => ({
@@ -234,11 +226,17 @@ export default async function TradeAndExportsPage() {
           heroBody:
             "Avioane, semiconductori, produse farmaceutice, petrol, produse agricole și trilioane în software și servicii financiare. America nu doar face comerț — furnizează lumii cele mai avansate și valoroase bunuri ale ei.",
           overviewTitle: "Mașina de export a Americii",
-          exportTitle: "Principalele categorii de export ale SUA (2026)",
+          exportTitle: "Principalele categorii de export ale SUA",
           exportBody:
-            "Spre deosebire de țările în curs de dezvoltare care exportă materii prime, Statele Unite exportă cele mai sofisticate produse cu marjă mare din lume — avioane, microcipuri, dispozitive medicale și produse farmaceutice. Sunt produse care cer decenii și miliarde în cercetare și dezvoltare, consolidând poziția Americii în vârful lanțului valoric global.",
-          topCategorySuffix: "% din categoria de top",
-          exportSource: "Sursă: US Census Bureau / Bureau of Economic Analysis 2026",
+            "Spre deosebire de țările în curs de dezvoltare care exportă materii prime, Statele Unite exportă cele mai sofisticate produse cu marjă mare din lume — avioane, microcipuri, dispozitive medicale și produse farmaceutice. Sunt produse care cer decenii și miliarde în cercetare și dezvoltare, consolidând poziția Americii în vârful lanțului valoric global. Numai produsele farmaceutice reprezintă o linie de export de 120 de miliarde de dolari.",
+          exportChartTitle: "Topul categoriilor de export ale SUA (2025, miliarde USD)",
+          exportSource: "Sursă: U.S. Census Bureau / BEA Raport FT-900 (2025 Annual)",
+          balanceTitle: "Deficitul, spus pe șleau",
+          balanceBody:
+            "America cumpără de la lume mai mult decât îi vinde, și face asta din anii '70. Această pagină susține că firma comercială americană este o forță, așa că trebuie să arate cifra pe care acest argument trebuie să o treacă, nu să o ocolească. Două lucruri merită citite de pe grafic. Diferența este reală și persistentă. Dar ambele linii urcă abrupt — Statele Unite exportă astăzi mult mai mult decât au făcut-o vreodată, iar un deficit este ceea ce se vede atunci când o țară este suficient de bogată încât să cumpere producția lumii, vânzând în același timp 2,2 trilioane de dolari din propria producție.",
+          balanceChartTitle: "Exporturi vs. importuri de bunuri și servicii ale SUA, 1970–2026",
+          balanceChartSubtitle: "Trimestrial, la rată anuală, în dolari curenți",
+          balanceSource: "Sursă: Bureau of Economic Analysis (via FRED: EXPGS / IMPGS)",
           partnersTitle: "Principalii parteneri comerciali ai Americii",
           partnersBody:
             "Comerțul total al SUA (bunuri + servicii) depășește anual 6 trilioane de dolari. Cele mai mari relații comerciale se întind pe tot globul — de la Canada și Mexic în cadrul USMCA până la centrele tehnologice și de producție ale Asiei.",
@@ -282,11 +280,17 @@ export default async function TradeAndExportsPage() {
           heroBody:
             "Aircraft, semiconductors, pharmaceuticals, petroleum, agricultural products, and trillions in software and financial services. America doesn't just trade — it supplies the world with its most advanced and high-value goods.",
           overviewTitle: "America's Export Machine",
-          exportTitle: "Top US Export Categories (2026)",
+          exportTitle: "Top US Export Categories",
           exportBody:
-            "Unlike developing nations that export raw commodities, the United States exports the world's most sophisticated, highest-margin goods — aircraft, microchips, medical devices, and pharmaceuticals. These are products that take decades and billions in R&D to develop, cementing America's position at the top of the global value chain.",
-          topCategorySuffix: "% of top category",
-          exportSource: "Source: US Census Bureau / Bureau of Economic Analysis 2026",
+            "Unlike developing nations that export raw commodities, the United States exports the world's most sophisticated, highest-margin goods — aircraft, microchips, medical devices, and pharmaceuticals. These are products that take decades and billions in R&D to develop, cementing America's position at the top of the global value chain. Pharmaceutical preparations alone are a $120 billion export line.",
+          exportChartTitle: "Top US goods export categories (2025, USD billions)",
+          exportSource: "Source: U.S. Census Bureau / BEA FT-900 Report (2025 Annual)",
+          balanceTitle: "The Deficit, Stated Plainly",
+          balanceBody:
+            "America buys more from the world than it sells to it, and has since the 1970s. This page argues that American trade is a strength, so it should show the number that argument has to survive rather than route around it. Two things are worth reading off the chart. The gap is real and persistent. But both lines climb steeply — the United States exports far more today than it ever has, and a deficit is what it looks like when a country is rich enough to buy the world's output while still selling $2.2 trillion of its own.",
+          balanceChartTitle: "US exports vs imports of goods and services, 1970–2026",
+          balanceChartSubtitle: "Quarterly, at an annual rate, in current dollars",
+          balanceSource: "Source: Bureau of Economic Analysis (via FRED: EXPGS / IMPGS)",
           partnersTitle: "America's Top Trading Partners",
           partnersBody:
             "US total trade (goods + services) exceeds $6 trillion annually. The largest trading relationships span the entire globe — from Canada and Mexico under USMCA to Asia's technology and manufacturing hubs.",
@@ -324,7 +328,6 @@ export default async function TradeAndExportsPage() {
         };
 
   // Used to scale each export bar relative to the biggest category.
-  const maxExport = Math.max(...exportCategories.map((c) => c.exports));
 
   // The two headline export streams — rendered as big borderless stats rather
   // than another wall of paragraphs.
@@ -431,20 +434,30 @@ export default async function TradeAndExportsPage() {
               {copy.exportBody}
             </p>
 
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 mt-24">
-              {exportCategories.map((cat) => (
-                <div key={cat.category} className="flex flex-col border-t border-[#E8B923]/30 pt-8 hover:border-[#E8B923]/60 transition-colors duration-300">
-                  <h3 className="font-macro-display text-2xl text-white mb-6">{cat.category}</h3>
-                  <p className="font-macro-display text-5xl text-[#E8B923] mt-auto">
-                    $<CountUp value={cat.exports} suffix="B" decimals={0} />+
-                  </p>
-                </div>
-              ))}
-              <div className="col-span-full pt-8 border-t border-white/5">
-                <p className="text-right macro-metadata text-white/30">
-                  {copy.exportSource}
-                </p>
-              </div>
+            <div className="my-24">
+              <ExportsByCategoryChart
+                data={US_EXPORTS_BY_CATEGORY}
+                title={copy.exportChartTitle}
+                source={copy.exportSource}
+              />
+            </div>
+          </section>
+
+          {/* The balance itself — the number this page's argument has to survive */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.balanceTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.balanceBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <ExportsImportsChart
+                data={US_EXPORTS_VS_IMPORTS}
+                title={copy.balanceChartTitle}
+                subtitle={copy.balanceChartSubtitle}
+                source={copy.balanceSource}
+              />
             </div>
           </section>
 

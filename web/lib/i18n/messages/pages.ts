@@ -68,7 +68,7 @@ export function getEconomyPageCopy(locale: Locale) {
       heroStats: [
         { value: "$32.4T", label: "PIB 2026", sub: "Proiecție FMI" },
         { value: "$69T+", label: "Piețe Bursiere", sub: "NYSE + NASDAQ" },
-        { value: "1.172", label: "Companii Unicorn", sub: "65% din totalul global" },
+        { value: "659", label: "Companii Unicorn", sub: "~jumătate din totalul global" },
       ],
       tocItems: [
         { label: "Prezentare", href: "#overview" },
@@ -152,7 +152,7 @@ export function getEconomyPageCopy(locale: Locale) {
     heroStats: [
       { value: "$32.4T", label: "2026 GDP", sub: "IMF Projection" },
       { value: "$69T+", label: "Stock Markets", sub: "NYSE + NASDAQ" },
-      { value: "1,172", label: "Unicorn Companies", sub: "65% of Global Total" },
+      { value: "659", label: "Unicorn Companies", sub: "~half the global total" },
     ],
     tocItems: [
       { label: "Overview", href: "#overview" },

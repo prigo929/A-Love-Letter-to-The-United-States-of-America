@@ -25,7 +25,6 @@ import { GdpGlobalComparisonChart } from "@/components/data/GdpGlobalComparisonC
 import { GdpLaborComparisonChart } from "@/components/data/GdpLaborComparisonChart";
 import { RdSpendingChart } from "@/components/data/RdSpendingChart";
 import { GdpAnnualGrowthChart } from "@/components/data/GdpAnnualGrowthChart";
-import { ExportsByCategoryChart } from "@/components/data/ExportsByCategoryChart";
 import { LaborProductivityChart } from "@/components/data/LaborProductivityChart";
 import { StateGdpMap } from "@/components/data/StateGdpMap";
 import { UnemploymentChart } from "@/components/data/UnemploymentChart";
@@ -33,7 +32,6 @@ import { DebtToGdpChart } from "@/components/data/DebtToGdpChart";
 import { RealGdpPerCapitaChart } from "@/components/data/RealGdpPerCapitaChart";
 import { DeficitToGdpChart } from "@/components/data/DeficitToGdpChart";
 import { IndustrialProductionChart } from "@/components/data/IndustrialProductionChart";
-import { ExportsImportsChart } from "@/components/data/ExportsImportsChart";
 import { SavingsRateChart } from "@/components/data/SavingsRateChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
@@ -50,7 +48,6 @@ import {
   GDP_VS_LABOR_SECTORS,
   RD_SPENDING_BY_COUNTRY,
   US_ANNUAL_GDP_GROWTH,
-  US_EXPORTS_BY_CATEGORY,
   LABOR_PRODUCTIVITY_COMPARISON,
   STATE_GDP,
   STATE_GDP_META,
@@ -61,7 +58,6 @@ import {
   US_REAL_GDP_PER_CAPITA,
   US_FEDERAL_DEFICIT,
   US_INDUSTRIAL_PRODUCTION,
-  US_EXPORTS_VS_IMPORTS,
   US_SAVINGS_RATE,
   type GdpDataPoint,
 } from "@/lib/data/economy-data";
@@ -261,10 +257,6 @@ export default async function GdpGrowthPage() {
           growthRateBody: "Din 1970, economia americană a crescut în fiecare an, cu excepția a 8 recesiuni scurte definite de NBER. Ceea ce este remarcabil nu este că au existat recesiuni — toate economiile au — ci căt de rapid s-a recuperat SUA. COVID-19 a provocat o contracție de -2,2% în 2020; reboundul din 2021 a atins +5,8%, cel mai puternic avans în două decenii. Nicio altă economie de scara SUA nu a reușit aceeași recuperare.",
           growthRateChartTitle: "Rata anuală de creștere a PIB-ului real al SUA (1970–2025)",
           growthRateSource: "Surse: BEA NIPA, World Bank WDI | Recesiunile conform NBER",
-          exportsTitle: "Motorul Exportului: ce vinde America lumii",
-          exportsBody: "Deficitul comercial al SUA ascunde un adevăr important: Statele Unite exportă mărfuri de 2,18 trilioane de dolari pe an — de la petrol și gaze la avioane Boeing, semiconductori, produse farmaceutice și echipamente medicale. SUA sunt atât cel mai mare exportator mondial de petrol, cât și lider global în produse de înaltă tehnologie. Aceasta este o economie care produce pentru lume în sens literal.",
-          exportsChartTitle: "Topul categoriilor de export ale SUA (2025, miliarde USD)",
-          exportsSource: "Sursă: U.S. Census Bureau / BEA Raport FT-900 (2025 Annual)",
           productivityTitle: "Productivitatea Muncii: SUA conduce toate marile economii",
           productivityBody: "Măsurat în PIB pe oră lucrată ajustat cu puterea de cumpărare (PPP), americanul mediu produce 97,10 $/oră — mai mult decât Germania (93,8$), Franța (88,2$), Marea Britanie (78,1$) sau Japonia (56,3$). Aceasta este sursa structurală a salariilor americane ridicate: un muncitor mai productiv merită o plăti mai mare. Productivitatea superioară a SUA este rezultatul unei combinații unice de capital uman, investiții în tehnologie, piețe de capital flexibile și concurență intensă.",
           productivityChartTitle: "PIB pe oră lucrată (USD PPP, 2024)",
@@ -285,11 +277,6 @@ export default async function GdpGrowthPage() {
           indproBody: "Indicele Producției Industriale măsoară producția reală a fabricilor, minelor și utilităților din SUA. Deși economia s-a orientat puternic către servicii, capacitatea de producție industrială a SUA a crescut constant, fiind astăzi cu 172% mai mare decât în 1970. Acest lucru demonstrează că America își păstrează o infrastructură fizică masivă și o bază solidă de manufactură de înaltă tehnologie.",
           indproChartTitle: "Indicele Producției Industriale a SUA (1970–2026, Bază 2017=100)",
           indproSource: "Sursă: Consiliul Guvernatorilor al Rezervei Federale / FRED (INDPRO)",
-          exportsImportsTitle: "Comerțul Global: Exporturile vs. Importurile SUA",
-          exportsImportsBody:
-            "Urmărirea fluxurilor comerciale arată amploarea integrării SUA în economia globală. Deși SUA rulează un deficit comercial structural începând cu anii 1970, volumul total al schimburilor comerciale a crescut masiv. În 2026, exporturile trimestriale au atins o rată anualizată de 3,5 trilioane $, în timp ce importurile au depășit 4,3 trilioane $, reflectând cererea masivă a consumatorilor americani și integrarea profundă a lanțurilor logistice globale.",
-          exportsImportsChartTitle: "Exporturi vs. Importuri de Bunuri și Servicii ale SUA (1970–2026)",
-          exportsImportsSource: "Sursă: Bureau of Economic Analysis (via FRED: EXPGS / IMPGS)",
           savingsTitle: "Rata Economisirii: Comportamentul de Epargne al Gospodăriilor",
           savingsBody:
             "Rata economisirii personale reprezintă procentul din venitul disponibil pe care gospodăriile îl economisesc în loc să îl consume. De la nivelurile ridicate de 12–14% din anii 1970, rata economisirii a scăzut treptat, reflectând dezvoltarea creditului de consum. În timpul pandemiei COVID-19 (aprilie 2020), rata economisirii a atins recordul istoric absolut de 32%, ca urmare a blocajelor economice și a stimulilor guvernamentali, stabilizându-se ulterior în jurul valorii de 3,0% în 2026.",
@@ -387,10 +374,6 @@ export default async function GdpGrowthPage() {
           growthRateBody: "Since 1970, the US economy has grown in every year except 8 short NBER-defined recessions. What's remarkable is not that recessions occurred — all economies have them — but how fast the US recovered. COVID-19 caused a -2.2% contraction in 2020; the 2021 rebound hit +5.8%, the strongest advance in two decades. No other economy at US scale has matched the same recovery speed.",
           growthRateChartTitle: "US Annual Real GDP Growth Rate (1970–2025)",
           growthRateSource: "Sources: BEA NIPA, World Bank WDI | Recessions per NBER",
-          exportsTitle: "The Export Engine: What America Sells the World",
-          exportsBody: "The US trade deficit obscures an important truth: the United States exports $2.18 trillion in goods per year — from oil and gas to Boeing aircraft, semiconductors, pharmaceuticals, and medical equipment. The US is simultaneously the world's largest oil exporter and a global leader in high-technology goods. This is an economy that literally produces for the world.",
-          exportsChartTitle: "Top US Goods Export Categories (2025, USD Billions)",
-          exportsSource: "Source: U.S. Census Bureau / BEA FT-900 Report (2025 Annual)",
           productivityTitle: "Labor Productivity: The US Leads Every Major Economy",
           productivityBody: "Measured by GDP per hour worked at purchasing power parity, the average American generates $97.10/hour — more than Germany ($93.8), France ($88.2), the UK ($78.1), or Japan ($56.3). This is the structural reason US wages are high: a more productive worker commands higher pay. America's productivity edge comes from a unique combination of human capital investment, technology deployment, deep capital markets, and intense competition.",
           productivityChartTitle: "GDP per Hour Worked (USD PPP, 2024)",
@@ -411,11 +394,6 @@ export default async function GdpGrowthPage() {
           indproBody: "The Industrial Production Index measures the real output of manufacturing, mining, and electric/gas utilities in the United States. Even as the U.S. transitioned toward a services-dominant economy, its total industrial output has expanded consistently, standing 172% higher today than in 1970. This underscores the massive physical industrial base that America retains behind its technology and service sectors.",
           indproChartTitle: "U.S. Industrial Production Index (1970–2026, Base 2017=100)",
           indproSource: "Source: Board of Governors of the Federal Reserve System / FRED (INDPRO)",
-          exportsImportsTitle: "Global Trade: U.S. Exports vs. Imports",
-          exportsImportsBody:
-            "Tracking trade flows reveals the scale of U.S. integration into the global economy. While the U.S. has run a structural trade deficit since the 1970s, overall trade volume has expanded dramatically. By 2026, quarterly exports reached an annualized rate of $3.5 trillion, while imports exceeded $4.3 trillion, reflecting robust consumer demand and deeply integrated global logistics chains.",
-          exportsImportsChartTitle: "U.S. Exports vs. Imports of Goods & Services (1970–2026)",
-          exportsImportsSource: "Source: Bureau of Economic Analysis (via FRED: EXPGS / IMPGS)",
           savingsTitle: "Personal Savings Rate: Household Financial Behavior",
           savingsBody:
             "The personal savings rate measures the percentage of disposable income that American households save rather than spend. From the 12–14% levels of the 1970s, the savings rate gradually declined as consumer credit expanded. During the COVID-19 pandemic (April 2020), it spiked to an all-time historic high of 32% due to lockdown restrictions and government fiscal support, before normalizing to around 3.0% in 2026.",
@@ -673,39 +651,9 @@ export default async function GdpGrowthPage() {
             </div>
           </section>
 
-          {/* Export Engine */}
-          <section>
-            <h2 className="macro-section-title mb-12">
-              {copy.exportsTitle}
-            </h2>
-            <p className="macro-body max-w-4xl mb-16">
-              {copy.exportsBody}
-            </p>
-            <div className="my-24">
-              <ExportsByCategoryChart
-                data={US_EXPORTS_BY_CATEGORY}
-                title={copy.exportsChartTitle}
-                source={copy.exportsSource}
-              />
-            </div>
-          </section>
-
-          {/* U.S. Exports vs Imports */}
-          <section>
-            <h2 className="macro-section-title mb-12">
-              {copy.exportsImportsTitle}
-            </h2>
-            <p className="macro-body max-w-4xl mb-16">
-              {copy.exportsImportsBody}
-            </p>
-            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
-              <ExportsImportsChart
-                data={US_EXPORTS_VS_IMPORTS}
-                title={copy.exportsImportsChartTitle}
-                source={copy.exportsImportsSource}
-              />
-            </div>
-          </section>
+          {/* Exports and the trade balance now live on /economy/trade-and-exports,
+              which is the page actually about them and which previously had no
+              charts at all. This page was carrying twenty. */}
 
           {/* Labor Productivity */}
           <section>

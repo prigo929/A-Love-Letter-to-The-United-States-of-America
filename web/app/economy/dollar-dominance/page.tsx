@@ -14,10 +14,14 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { QuoteBlock } from "@/components/sections/QuoteBlock";
 import { DollarReserveChart } from "@/components/data/DollarMarketCharts";
+import { DollarIndexChart } from "@/components/data/DollarIndexChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
   DOLLAR_RESERVE_SHARE,
+  DOLLAR_RESERVE_META,
+  DOLLAR_INDEX,
+  DOLLAR_INDEX_META,
   getDollarOverviewParagraphs,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -27,7 +31,7 @@ import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 export const metadata: Metadata = {
   title: "Dollar Dominance | Economy",
   description:
-    "The US dollar: 57.4% of global FX reserves, the Petrodollar system, Bretton Woods to today. The world's reserve currency and its extraordinary advantages for America.",
+    "The US dollar: 56.8% of global FX reserves, the Petrodollar system, Bretton Woods to today. The world's reserve currency and its extraordinary advantages for America.",
   alternates: { canonical: "/economy/dollar-dominance" },
 };
 
@@ -74,7 +78,7 @@ const DOLLAR_TIMELINE = [
     year: 2026,
     event: "Dollar Still Reigns at 80 Years",
     description:
-      'Despite repeated predictions of "de-dollarization," the dollar\'s share of global reserves remains above 57.4%, SWIFT dominance holds above 40%, and no credible rival has emerged. The dollar endures.',
+      'Despite repeated predictions of "de-dollarization," the dollar\'s share of global reserves remains above 56.8%, SWIFT dominance holds above 40%, and no credible rival has emerged. The dollar endures.',
   },
 ];
 
@@ -171,7 +175,7 @@ export default async function DollarDominancePage() {
             ...DOLLAR_TIMELINE[6],
             event: "Dolarul încă domnește la 82 de ani",
             description:
-              "În ciuda previziunilor repetate despre «de-dolarizare», ponderea dolarului în rezervele globale rămâne peste 57.4%, dominația SWIFT rămâne peste 40% și nu a apărut niciun rival credibil.",
+              "În ciuda previziunilor repetate despre «de-dolarizare», ponderea dolarului în rezervele globale rămâne peste 56.8%, dominația SWIFT rămâne peste 40% și nu a apărut niciun rival credibil.",
           },
         ]
       : DOLLAR_TIMELINE;
@@ -183,14 +187,20 @@ export default async function DollarDominancePage() {
           heroLead: "MONEDA DE REZERVĂ",
           heroAccent: "A LUMII",
           heroBody:
-            "Dolarul american este sistemul de operare al economiei globale. 57.4% din toate rezervele valutare. Peste 40% din comerțul mondial. Fiecare baril de petrol. O domnie de 82 de ani care nu a fost niciodată amenințată serios.",
+            "Dolarul american este sistemul de operare al economiei globale. 56.8% din toate rezervele valutare. Peste 40% din comerțul mondial. Fiecare baril de petrol. O domnie de 82 de ani care nu a fost niciodată amenințată serios.",
           heroStats: [
-            { value: "57.4%", label: "din rezervele FX globale", source: "IMF COFER 2026" },
+            { value: "56.8%", label: "din rezervele FX globale", source: "IMF COFER, T4 2025" },
             { value: "40%+", label: "din tranzacțiile SWIFT", source: "SWIFT 2026" },
             { value: "65+", label: "țări legate de USD", source: "IMF 2026" },
           ],
           overviewTitle: "Privilegiul exorbitant",
-          chartTitle: "Rezerve valutare globale pe monedă (2026)",
+          chartTitle: "Rezerve valutare globale pe monedă (T4 2025)",
+          allocatedLabel: "rezerve alocate",
+          indexTitle: "O felie mai mică dintr-un bazin mai mare",
+          indexBody:
+            "Graficul de mai sus este citit adesea ca declin, iar tendința din el este reală: dolarul deținea aproximativ 71% din rezervele alocate în 2000 și deține 56,8% acum. Dar trebuie citit cu atenție. Două lucruri complică necrologul. În primul rând, bazinul însuși a crescut enorm — o felie mai mică din 13,1 trilioane de dolari nu înseamnă mai puțini dolari. În al doilea rând, când FMI a analizat scăderea din al doilea trimestru din 2025, a constatat că mișcările cursului de schimb, nu vânzarea efectivă de dolari de către băncile centrale, au explicat 92% din ea. Și iată cifra care tranșează disputa: valoarea de schimb a dolarului față de monedele cu care America face comerț este aproape de vârful intervalului său pe douăzeci de ani. Proporțional, mai puține rezerve sunt ținute în dolari. Dolarul nu valorează mai puțin din cauza asta.",
+          indexChartTitle: "Indicele nominal larg al dolarului, din 2006",
+          indexChartSubtitle: "Ponderat comercial față de partenerii SUA; ianuarie 2006 = 100",
           timelineTitle: "82 de ani de supremație a dolarului",
           timelineBody:
             "Dominația dolarului nu a fost accidentală — a fost construită prin politică deliberată, putere militară și forță economică de-a lungul a peste opt decenii.",
@@ -216,14 +226,20 @@ export default async function DollarDominancePage() {
           heroLead: "THE WORLD'S",
           heroAccent: "RESERVE CURRENCY",
           heroBody:
-            "The US dollar is the operating system of the global economy. 57.4% of all foreign exchange reserves. 40%+ of global trade. Every barrel of oil. An 82-year reign that has never been seriously threatened.",
+            "The US dollar is the operating system of the global economy. 56.8% of all foreign exchange reserves. 40%+ of global trade. Every barrel of oil. An 82-year reign that has never been seriously threatened.",
           heroStats: [
-            { value: "57.4%", label: "of global FX reserves", source: "IMF COFER 2026" },
+            { value: "56.8%", label: "of global FX reserves", source: "IMF COFER, Q4 2025" },
             { value: "40%+", label: "of SWIFT transactions", source: "SWIFT 2026" },
             { value: "65+", label: "countries pegged to USD", source: "IMF 2026" },
           ],
           overviewTitle: "The Exorbitant Privilege",
-          chartTitle: "Global Foreign Exchange Reserves by Currency (2026)",
+          chartTitle: "Global Foreign Exchange Reserves by Currency (Q4 2025)",
+          allocatedLabel: "allocated reserves",
+          indexTitle: "A Smaller Share of a Bigger Pool",
+          indexBody:
+            "The chart above is often read as decline, and the trend in it is real: the dollar held about 71% of allocated reserves in 2000 and holds 56.8% now. But read it carefully. Two things complicate the obituary. First, the pool itself has grown enormously — a smaller slice of $13.1 trillion is not a smaller number of dollars. Second, when the IMF examined the drop in the second quarter of 2025, it found that exchange-rate movements, not central banks actually selling dollars, explained 92% of it. And here is the number that settles the argument: the dollar's own exchange value against the currencies America trades with is near the top of its twenty-year range. Fewer reserves are held in dollars, proportionally. The dollar is not worth less for it.",
+          indexChartTitle: "The nominal broad dollar index, since 2006",
+          indexChartSubtitle: "Trade-weighted against America's trading partners; January 2006 = 100",
           timelineTitle: "82 Years of Dollar Supremacy",
           timelineBody:
             "The dollar's dominance was not accidental — it was built through deliberate policy, military power, and economic strength over eight decades.",
@@ -290,7 +306,25 @@ export default async function DollarDominancePage() {
               <DollarReserveChart
                 data={DOLLAR_RESERVE_SHARE}
                 title={copy.chartTitle}
-                source="IMF COFER Q4 2023 — allocated reserves"
+                source={`${DOLLAR_RESERVE_META.source} — ${copy.allocatedLabel}`}
+              />
+            </div>
+          </section>
+
+          {/* The counterweight: share is falling, price is not */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.indexTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.indexBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <DollarIndexChart
+                data={DOLLAR_INDEX}
+                title={copy.indexChartTitle}
+                subtitle={copy.indexChartSubtitle}
+                source={DOLLAR_INDEX_META.source}
               />
             </div>
           </section>

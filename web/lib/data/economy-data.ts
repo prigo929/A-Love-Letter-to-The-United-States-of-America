@@ -118,11 +118,6 @@ export interface ExtendedFact {
   color: "gold" | "red" | "blue";
 }
 
-export interface TradeDataPoint {
-  category: string;
-  exports: number; // USD Billions
-}
-
 export interface EconomyStat {
   id: string;
   value: number;
@@ -241,26 +236,69 @@ export const VC_BY_COUNTRY: VCDataPoint[] = [
   { country: "Rest of World", investment: 15, percentage: 4.5 },
 ];
 
+// Unicorn counts by country, CB Insights, Q1 2026 (~1,270 globally).
+//
+// The US figure was previously 1,172 at a 65% share. That was wrong, and this
+// file disproved it on its own: China at 168 unicorns and 13% implies a global
+// total near 1,290, which puts the US near 650 — not 1,172. Every non-US count
+// here was already right; only the American one was inflated.
+//
+// No tracker agrees exactly, because "unicorn" is a methodology rather than a
+// fact: CB Insights counts ~650 US of ~1,250 (52%), PitchBook 853 of 1,590
+// (53.6%), Hurun 806 of 1,603 (50.3%). All three land near half. We follow CB
+// Insights and say so, rather than picking the most flattering number.
+//
+// Note this is a STOCK and the 65% VC share is a FLOW — America takes about
+// two-thirds of the money invested each year while holding about half the
+// accumulated unicorns. Both are true; they measure different things.
 export const UNICORNS_BY_COUNTRY: UnicornDataPoint[] = [
-  { country: "United States", unicorns: 1172, percentage: 65, highlight: true },
-  { country: "China", unicorns: 168, percentage: 13 },
+  { country: "United States", unicorns: 659, percentage: 51.9, highlight: true },
+  { country: "China", unicorns: 168, percentage: 13.2 },
   { country: "India", unicorns: 70, percentage: 5.5 },
-  { country: "United Kingdom", unicorns: 52, percentage: 4 },
+  { country: "United Kingdom", unicorns: 52, percentage: 4.1 },
   { country: "Germany", unicorns: 32, percentage: 2.5 },
-  { country: "France", unicorns: 27, percentage: 2 },
-  { country: "Rest of World", unicorns: 262, percentage: 21 },
+  { country: "France", unicorns: 27, percentage: 2.1 },
+  { country: "Rest of World", unicorns: 262, percentage: 20.6 },
 ];
+
+export const UNICORNS_META = {
+  source: "CB Insights, Q1 2026",
+  sourceHref: "https://www.cbinsights.com/research-unicorn-companies",
+  usUnicorns: 659,
+  globalTotal: 1270,
+  usSharePct: 51.9,
+} as const;
 
 // ─── Dollar Reserve Data (IMF COFER 2026) ─────────────────────────────────────
 
+// Currency composition of allocated official FX reserves, IMF COFER, Q4 2025.
+// The page previously carried an undated snapshot (USD 57.4%) with no source,
+// roughly a year stale. "Other" is the residual so the shares sum to 100 —
+// it holds the Canadian and Australian dollars and the Swiss franc.
+//
+// The dollar's share is in a real long-run decline: about 71% in 2000, 64.7% in
+// early 2017, 56.8% now. Read the quarter-to-quarter moves with care though —
+// the IMF found that exchange-rate movements, not central banks actually selling
+// dollars, explained 92% of the drop in Q2 2025. The trend is genuine; most of
+// any single quarter's wobble is the dollar's own price.
 export const DOLLAR_RESERVE_SHARE: DollarReservePoint[] = [
-  { currency: "US Dollar (USD)", percentage: 57.4, color: "#B22234" },
-  { currency: "Euro (EUR)", percentage: 20.0, color: "#3C3B6E" },
-  { currency: "Japanese Yen", percentage: 5.8, color: "#4B5563" },
-  { currency: "British Pound", percentage: 4.8, color: "#6B7280" },
-  { currency: "Chinese Renminbi", percentage: 2.3, color: "#9CA3AF" },
-  { currency: "Other", percentage: 9.7, color: "#374151" },
+  { currency: "US Dollar (USD)", percentage: 56.77, color: "#B22234" },
+  { currency: "Euro (EUR)", percentage: 20.25, color: "#3C3B6E" },
+  { currency: "Japanese Yen", percentage: 5.56, color: "#4B5563" },
+  { currency: "British Pound", percentage: 4.64, color: "#6B7280" },
+  { currency: "Chinese Renminbi", percentage: 1.95, color: "#9CA3AF" },
+  { currency: "Other", percentage: 10.83, color: "#374151" },
 ];
+
+export const DOLLAR_RESERVE_META = {
+  source: "IMF COFER, Q4 2025",
+  sourceHref: "https://data.imf.org/en/datasets/IMF.STA:COFER",
+  quarter: "2025-Q4",
+  usdPct: 56.77,
+  usdPct2000: 71,
+  usdPct2017Q1: 64.7,
+  totalReservesTn: 13.1,
+} as const;
 
 // ─── Stock Market Cap Data ────────────────────────────────────────────────────
 
@@ -274,18 +312,7 @@ export const MARKET_CAP_BY_EXCHANGE: MarketCapPoint[] = [
   { exchange: "London", marketCap: 3.2, country: "🇬🇧 UK" },
 ];
 
-// ─── US Trade Exports ─────────────────────────────────────────────────────────
 
-export const US_EXPORT_CATEGORIES: TradeDataPoint[] = [
-  { category: "Aircraft & Parts", exports: 132 },
-  { category: "Petroleum Products", exports: 119 },
-  { category: "Semiconductors", exports: 87 },
-  { category: "Medical Devices", exports: 74 },
-  { category: "Automobiles", exports: 65 },
-  { category: "Pharmaceuticals", exports: 63 },
-  { category: "Agricultural Products", exports: 58 },
-  { category: "Industrial Machinery", exports: 52 },
-];
 
 // ─── Economy Hero Stats ───────────────────────────────────────────────────────
 // These cards appear near the top of /economy.
@@ -315,11 +342,13 @@ export const ECONOMY_HERO_STATS: EconomyStat[] = [
   },
   {
     id: "reserves",
-    value: 57.4,
+    // IMF COFER, Q4 2025 — the latest published quarter. There is no 2026 COFER
+    // yet, though this was previously sourced to one.
+    value: 56.8,
     suffix: "%",
     label: "Global Reserves",
     description: "Share of world FX reserves in USD",
-    source: "IMF 2026",
+    source: "IMF COFER, Q4 2025",
     color: "white",
   },
   {
@@ -408,7 +437,7 @@ export const VC_FACTS: EconomyFact[] = [
   },
   {
     id: "unicorn-share",
-    fact: "1,172 US unicorns — over 65% of the global total",
+    fact: "659 US unicorns — about half the global total",
     detail:
       'A "unicorn" is a private company valued at $1 billion or more. America has built more of them than all other nations combined.',
     source: "Pitchbook 2026",
@@ -741,12 +770,12 @@ export const CAPITAL_MARKETS_PARAGRAPHS = [
 
 export const VC_OVERVIEW_PARAGRAPHS = [
   "[Silicon Valley](#deep-dive-Silicon_Valley) is not a place — it is a philosophy made physical. The venture capital ecosystem centered in the San Francisco Bay Area, with satellites in New York, Boston, Seattle, Austin, and Miami, channels more patient, risk-seeking capital into early-stage innovation than the rest of the world combined.",
-  "The numbers are breathtaking: American startups raised approximately $210 billion in venture capital in 2025 — nearly 65% of all VC deployed globally. The result? 1,172 unicorn companies (private businesses valued over $1 billion), representing 65% of the entire global unicorn ecosystem. From the iPhone to Google Search to ChatGPT, the tools that define modern civilization were born here.",
+  "The numbers are breathtaking: American startups raised approximately $210 billion in venture capital in 2025 — nearly 65% of all VC deployed globally. The result is 659 unicorn companies (private businesses valued over $1 billion), about half the world's total. From the iPhone to Google Search to ChatGPT, the tools that define modern civilization were born here.",
 ];
 
 export const DOLLAR_OVERVIEW_PARAGRAPHS = [
   'The US dollar is not merely the currency of 335 million Americans — it is the operating system of the global economy. Since the [Bretton Woods system](#deep-dive-Bretton_Woods_system) of 1944, and reinforced by the Petrodollar arrangements of the 1970s, the dollar has served as the world\'s reserve currency, trade medium, and ultimate store of value. This status confers on the United States an "exorbitant privilege" — the ability to borrow in its own currency at globally competitive rates.',
-  "Today, 57.4% of all global foreign exchange reserves are held in US dollars. Over 40% of international trade is invoiced in dollars regardless of whether the United States is a party to the transaction. Oil, the world's most traded commodity, is priced in dollars in nearly every market on Earth. These structural facts embed dollar demand into the financial architecture of every nation on the planet.",
+  "Today, 56.8% of all global foreign exchange reserves are held in US dollars. Over 40% of international trade is invoiced in dollars regardless of whether the United States is a party to the transaction. Oil, the world's most traded commodity, is priced in dollars in nearly every market on Earth. These structural facts embed dollar demand into the financial architecture of every nation on the planet.",
 ];
 
 export const TRADE_OVERVIEW_PARAGRAPHS = [
@@ -810,7 +839,7 @@ export const ECONOMY_SUB_PAGES = [
     imageSrc:
       SITE_IMAGES.siliconValleyOffice,
     imageAlt: "Modern startup office",
-    badge: "47% of global VC",
+    badge: "65% of global VC",
   },
   {
     href: "/economy/dollar-dominance",
@@ -933,7 +962,7 @@ export function getVcFacts(locale: Locale) {
       },
       {
         ...VC_FACTS[1],
-        fact: "1.172 unicorni americani — peste 65% din totalul global",
+        fact: "659 de unicorni americani — aproximativ jumătate din totalul global",
         detail:
           'Un "unicorn" este o companie privată evaluată la cel puțin 1 miliard de dolari. America a construit mai mulți astfel de companii decât toate celelalte națiuni la un loc.',
       },
@@ -1014,7 +1043,7 @@ export function getVcOverviewParagraphs(locale: Locale) {
   if (locale === "ro") {
     return [
       "[Silicon Valley](#deep-dive-Silicon_Valley) nu este doar un loc — este o filosofie făcută realitate. Ecosistemul de venture capital centrat în zona golfului San Francisco, cu sateliți în New York, Boston, Seattle, Austin și Miami, direcționează mai mult capital răbdător și dispus la risc către inovația aflată la început de drum decât restul lumii la un loc.",
-      "Cifrele sunt uimitoare: startup-urile americane au atras aproximativ 210 miliarde de dolari în venture capital în 2025 — aproape 65% din tot VC-ul investit global. Rezultatul? 1.172 de companii unicorn, adică 65% din întreg ecosistemul global. De la iPhone la Google Search și ChatGPT, instrumentele care definesc civilizația modernă s-au născut aici.",
+      "Cifrele sunt uimitoare: startup-urile americane au atras aproximativ 210 miliarde de dolari în venture capital în 2025 — aproape 65% din tot VC-ul investit global. Rezultatul este de 659 de companii unicorn, aproximativ jumătate din totalul mondial. De la iPhone la Google Search și ChatGPT, instrumentele care definesc civilizația modernă s-au născut aici.",
     ];
   }
 
@@ -10439,5 +10468,280 @@ export const NASDAQ_META = {
   peakClose: 26155.8,
   peakMonth: "2026-05",
   multipleSinceInception: 261,
+} as const;
+
+// ─── The broad dollar index ──────────────────────────────────────────────────
+// What the dollar is actually worth against a trade-weighted basket of the
+// currencies America trades with, monthly since the index was set to 100 in
+// January 2006.
+//
+// This is the useful counterweight to the reserve-share story. The dollar's slice
+// of global reserves has been shrinking for twenty years, which is often read as
+// decline — but its exchange value is near the top of its range: 128.8 in 2025-01,
+// against a low of 86.3 in 2011-07 when the financial crisis was still unwinding.
+// Fewer central banks hold dollars as a share of their reserves; the dollar is not
+// worth less for it.
+// Source: Federal Reserve Board (DTWEXBGS), via FRED. Monthly average of daily.
+export interface DollarIndexPoint { month: string; index: number; }
+export const DOLLAR_INDEX: DollarIndexPoint[] = [
+  { month: "2006-01", index: 100.0 },
+  { month: "2006-02", index: 100.2 },
+  { month: "2006-03", index: 100.4 },
+  { month: "2006-04", index: 99.7 },
+  { month: "2006-05", index: 97.5 },
+  { month: "2006-06", index: 98.7 },
+  { month: "2006-07", index: 98.4 },
+  { month: "2006-08", index: 97.7 },
+  { month: "2006-09", index: 98.0 },
+  { month: "2006-10", index: 98.3 },
+  { month: "2006-11", index: 97.5 },
+  { month: "2006-12", index: 96.8 },
+  { month: "2007-01", index: 97.8 },
+  { month: "2007-02", index: 97.5 },
+  { month: "2007-03", index: 97.0 },
+  { month: "2007-04", index: 95.6 },
+  { month: "2007-05", index: 94.7 },
+  { month: "2007-06", index: 94.4 },
+  { month: "2007-07", index: 93.2 },
+  { month: "2007-08", index: 93.8 },
+  { month: "2007-09", index: 92.4 },
+  { month: "2007-10", index: 90.4 },
+  { month: "2007-11", index: 89.1 },
+  { month: "2007-12", index: 90.0 },
+  { month: "2008-01", index: 89.4 },
+  { month: "2008-02", index: 88.6 },
+  { month: "2008-03", index: 86.8 },
+  { month: "2008-04", index: 86.5 },
+  { month: "2008-05", index: 86.8 },
+  { month: "2008-06", index: 87.1 },
+  { month: "2008-07", index: 86.5 },
+  { month: "2008-08", index: 88.9 },
+  { month: "2008-09", index: 91.3 },
+  { month: "2008-10", index: 98.0 },
+  { month: "2008-11", index: 100.8 },
+  { month: "2008-12", index: 99.7 },
+  { month: "2009-01", index: 100.4 },
+  { month: "2009-02", index: 103.0 },
+  { month: "2009-03", index: 103.4 },
+  { month: "2009-04", index: 100.7 },
+  { month: "2009-05", index: 97.6 },
+  { month: "2009-06", index: 96.0 },
+  { month: "2009-07", index: 95.7 },
+  { month: "2009-08", index: 94.4 },
+  { month: "2009-09", index: 93.7 },
+  { month: "2009-10", index: 92.3 },
+  { month: "2009-11", index: 91.8 },
+  { month: "2009-12", index: 92.3 },
+  { month: "2010-01", index: 92.4 },
+  { month: "2010-02", index: 93.9 },
+  { month: "2010-03", index: 93.1 },
+  { month: "2010-04", index: 92.6 },
+  { month: "2010-05", index: 95.5 },
+  { month: "2010-06", index: 96.1 },
+  { month: "2010-07", index: 94.5 },
+  { month: "2010-08", index: 93.7 },
+  { month: "2010-09", index: 92.8 },
+  { month: "2010-10", index: 90.2 },
+  { month: "2010-11", index: 90.5 },
+  { month: "2010-12", index: 91.2 },
+  { month: "2011-01", index: 90.1 },
+  { month: "2011-02", index: 89.4 },
+  { month: "2011-03", index: 88.5 },
+  { month: "2011-04", index: 86.9 },
+  { month: "2011-05", index: 86.9 },
+  { month: "2011-06", index: 86.9 },
+  { month: "2011-07", index: 86.3 },
+  { month: "2011-08", index: 86.9 },
+  { month: "2011-09", index: 89.7 },
+  { month: "2011-10", index: 90.6 },
+  { month: "2011-11", index: 91.3 },
+  { month: "2011-12", index: 92.2 },
+  { month: "2012-01", index: 91.6 },
+  { month: "2012-02", index: 90.0 },
+  { month: "2012-03", index: 90.5 },
+  { month: "2012-04", index: 90.8 },
+  { month: "2012-05", index: 92.5 },
+  { month: "2012-06", index: 93.9 },
+  { month: "2012-07", index: 93.4 },
+  { month: "2012-08", index: 92.5 },
+  { month: "2012-09", index: 91.0 },
+  { month: "2012-10", index: 90.8 },
+  { month: "2012-11", index: 91.5 },
+  { month: "2012-12", index: 90.9 },
+  { month: "2013-01", index: 90.8 },
+  { month: "2013-02", index: 91.6 },
+  { month: "2013-03", index: 92.4 },
+  { month: "2013-04", index: 92.0 },
+  { month: "2013-05", index: 92.5 },
+  { month: "2013-06", index: 93.3 },
+  { month: "2013-07", index: 93.9 },
+  { month: "2013-08", index: 93.7 },
+  { month: "2013-09", index: 93.5 },
+  { month: "2013-10", index: 92.5 },
+  { month: "2013-11", index: 93.4 },
+  { month: "2013-12", index: 93.5 },
+  { month: "2014-01", index: 94.5 },
+  { month: "2014-02", index: 94.6 },
+  { month: "2014-03", index: 94.4 },
+  { month: "2014-04", index: 94.0 },
+  { month: "2014-05", index: 93.7 },
+  { month: "2014-06", index: 93.8 },
+  { month: "2014-07", index: 93.6 },
+  { month: "2014-08", index: 94.6 },
+  { month: "2014-09", index: 96.1 },
+  { month: "2014-10", index: 97.4 },
+  { month: "2014-11", index: 99.1 },
+  { month: "2014-12", index: 101.4 },
+  { month: "2015-01", index: 103.8 },
+  { month: "2015-02", index: 105.2 },
+  { month: "2015-03", index: 107.4 },
+  { month: "2015-04", index: 106.4 },
+  { month: "2015-05", index: 105.4 },
+  { month: "2015-06", index: 106.2 },
+  { month: "2015-07", index: 108.1 },
+  { month: "2015-08", index: 110.0 },
+  { month: "2015-09", index: 110.9 },
+  { month: "2015-10", index: 109.9 },
+  { month: "2015-11", index: 111.7 },
+  { month: "2015-12", index: 112.8 },
+  { month: "2016-01", index: 115.2 },
+  { month: "2016-02", index: 114.3 },
+  { month: "2016-03", index: 111.9 },
+  { month: "2016-04", index: 110.0 },
+  { month: "2016-05", index: 111.1 },
+  { month: "2016-06", index: 111.6 },
+  { month: "2016-07", index: 112.5 },
+  { month: "2016-08", index: 111.4 },
+  { month: "2016-09", index: 112.3 },
+  { month: "2016-10", index: 113.5 },
+  { month: "2016-11", index: 116.1 },
+  { month: "2016-12", index: 117.9 },
+  { month: "2017-01", index: 117.8 },
+  { month: "2017-02", index: 116.1 },
+  { month: "2017-03", index: 115.7 },
+  { month: "2017-04", index: 114.8 },
+  { month: "2017-05", index: 114.3 },
+  { month: "2017-06", index: 112.8 },
+  { month: "2017-07", index: 111.1 },
+  { month: "2017-08", index: 109.9 },
+  { month: "2017-09", index: 108.9 },
+  { month: "2017-10", index: 110.9 },
+  { month: "2017-11", index: 111.2 },
+  { month: "2017-12", index: 110.9 },
+  { month: "2018-01", index: 108.4 },
+  { month: "2018-02", index: 107.7 },
+  { month: "2018-03", index: 107.9 },
+  { month: "2018-04", index: 107.9 },
+  { month: "2018-05", index: 111.0 },
+  { month: "2018-06", index: 112.8 },
+  { month: "2018-07", index: 113.1 },
+  { month: "2018-08", index: 113.8 },
+  { month: "2018-09", index: 114.1 },
+  { month: "2018-10", index: 114.8 },
+  { month: "2018-11", index: 116.2 },
+  { month: "2018-12", index: 116.2 },
+  { month: "2019-01", index: 114.4 },
+  { month: "2019-02", index: 114.4 },
+  { month: "2019-03", index: 114.8 },
+  { month: "2019-04", index: 114.9 },
+  { month: "2019-05", index: 116.0 },
+  { month: "2019-06", index: 115.4 },
+  { month: "2019-07", index: 115.1 },
+  { month: "2019-08", index: 117.1 },
+  { month: "2019-09", index: 117.3 },
+  { month: "2019-10", index: 116.7 },
+  { month: "2019-11", index: 116.6 },
+  { month: "2019-12", index: 115.9 },
+  { month: "2020-01", index: 115.3 },
+  { month: "2020-02", index: 116.7 },
+  { month: "2020-03", index: 121.0 },
+  { month: "2020-04", index: 123.3 },
+  { month: "2020-05", index: 122.6 },
+  { month: "2020-06", index: 119.7 },
+  { month: "2020-07", index: 118.7 },
+  { month: "2020-08", index: 116.9 },
+  { month: "2020-09", index: 116.3 },
+  { month: "2020-10", index: 115.8 },
+  { month: "2020-11", index: 114.1 },
+  { month: "2020-12", index: 111.9 },
+  { month: "2021-01", index: 111.5 },
+  { month: "2021-02", index: 112.0 },
+  { month: "2021-03", index: 113.3 },
+  { month: "2021-04", index: 112.6 },
+  { month: "2021-05", index: 111.2 },
+  { month: "2021-06", index: 111.6 },
+  { month: "2021-07", index: 113.1 },
+  { month: "2021-08", index: 113.4 },
+  { month: "2021-09", index: 113.4 },
+  { month: "2021-10", index: 114.1 },
+  { month: "2021-11", index: 115.0 },
+  { month: "2021-12", index: 115.8 },
+  { month: "2022-01", index: 115.0 },
+  { month: "2022-02", index: 115.0 },
+  { month: "2022-03", index: 116.3 },
+  { month: "2022-04", index: 117.2 },
+  { month: "2022-05", index: 119.7 },
+  { month: "2022-06", index: 120.0 },
+  { month: "2022-07", index: 122.8 },
+  { month: "2022-08", index: 122.3 },
+  { month: "2022-09", index: 125.6 },
+  { month: "2022-10", index: 127.5 },
+  { month: "2022-11", index: 124.9 },
+  { month: "2022-12", index: 122.2 },
+  { month: "2023-01", index: 119.8 },
+  { month: "2023-02", index: 120.3 },
+  { month: "2023-03", index: 120.7 },
+  { month: "2023-04", index: 119.2 },
+  { month: "2023-05", index: 119.6 },
+  { month: "2023-06", index: 119.3 },
+  { month: "2023-07", index: 118.0 },
+  { month: "2023-08", index: 119.9 },
+  { month: "2023-09", index: 121.6 },
+  { month: "2023-10", index: 123.5 },
+  { month: "2023-11", index: 121.2 },
+  { month: "2023-12", index: 119.8 },
+  { month: "2024-01", index: 120.2 },
+  { month: "2024-02", index: 121.1 },
+  { month: "2024-03", index: 120.7 },
+  { month: "2024-04", index: 122.1 },
+  { month: "2024-05", index: 121.9 },
+  { month: "2024-06", index: 123.7 },
+  { month: "2024-07", index: 123.4 },
+  { month: "2024-08", index: 122.6 },
+  { month: "2024-09", index: 121.9 },
+  { month: "2024-10", index: 123.6 },
+  { month: "2024-11", index: 126.3 },
+  { month: "2024-12", index: 127.6 },
+  { month: "2025-01", index: 128.8 },
+  { month: "2025-02", index: 127.9 },
+  { month: "2025-03", index: 126.2 },
+  { month: "2025-04", index: 124.1 },
+  { month: "2025-05", index: 122.3 },
+  { month: "2025-06", index: 120.6 },
+  { month: "2025-07", index: 120.1 },
+  { month: "2025-08", index: 120.6 },
+  { month: "2025-09", index: 120.0 },
+  { month: "2025-10", index: 120.8 },
+  { month: "2025-11", index: 121.4 },
+  { month: "2025-12", index: 120.2 },
+  { month: "2026-01", index: 119.2 },
+  { month: "2026-02", index: 117.9 },
+  { month: "2026-03", index: 119.9 },
+  { month: "2026-04", index: 119.0 },
+  { month: "2026-05", index: 118.8 },
+  { month: "2026-06", index: 120.1 }
+];
+
+export const DOLLAR_INDEX_META = {
+  source: "Federal Reserve Board (DTWEXBGS)",
+  sourceHref: "https://fred.stlouisfed.org/series/DTWEXBGS",
+  base: 100,
+  baseMonth: "2006-01",
+  latestIndex: 120.1,
+  latestMonth: "2026-06",
+  peakIndex: 128.8,
+  peakMonth: "2025-01",
+  lowIndex: 86.3,
+  lowMonth: "2011-07",
 } as const;
 

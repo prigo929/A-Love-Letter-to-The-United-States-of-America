@@ -2,7 +2,7 @@
 // A deep-dive into the "Silicon Valley Philosophy" and the funding of the future.
 //
 // Pedagogical Goal:
-// - To demonstrate American dominance in risk capital (47% of global VC).
+// - To demonstrate American dominance in risk capital (65% of global VC).
 // - To showcase the "Unicorn" ecosystem and the history of tech founders.
 //
 // Beginner guide:
@@ -53,7 +53,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Startups & Venture Capital | Economy",
   description:
-    "America attracts 65% of all global venture capital. 1,172 unicorn companies. Silicon Valley, the greatest engine of innovation and wealth creation in history.",
+    "America attracts 65% of all global venture capital and is home to 659 unicorn companies — about half the world's total. Silicon Valley, the greatest engine of innovation and wealth creation in history.",
   alternates: { canonical: "/economy/startups-venture-capital" },
 };
 
@@ -124,9 +124,9 @@ export default async function StartupsVCPage() {
             "Niciun colț al Pământului nu a produs mai multe companii transformatoare, mai mulți miliardari sau mai multă tehnologie care schimbă lumea pe kilometru pătrat. Ecosistemul american de startup-uri este o forță a naturii.",
           overviewTitle: "De ce America conduce lumea în capitalul pentru inovație",
           vcChartTitle: "Investiții venture capital după țară (2026, miliarde USD)",
-          unicornTitle: "Economia unicornilor — 1.172 și în creștere",
+          unicornTitle: "Economia unicornilor — 659 și în creștere",
           unicornBody:
-            "Un «unicorn» — o companie privată evaluată la cel puțin 1 miliard de dolari — era cândva considerat o raritate mitologică. America a construit 1.172, reprezentând peste 65% din totalul global. Numai în California s-au născut mai mulți unicorni decât în toată Europa la un loc.",
+            "Un «unicorn» — o companie privată evaluată la cel puțin 1 miliard de dolari — era cândva considerat o raritate mitologică. America a construit 659, aproximativ jumătate din totalul mondial de circa 1.270. Sursele diferă asupra numărului exact, fiindcă «unicorn» este mai degrabă o metodologie decât un fapt — CB Insights, PitchBook și Hurun plasează toate SUA în jurul a jumătate. Numai în California s-au născut mai mulți unicorni decât în toată Europa la un loc.",
           unicornChartTitle: "Companii unicorn după țara de origine (2026)",
           rewiredTitle: "Companiile care au rescris civilizația umană",
           rewiredBody:
@@ -210,9 +210,9 @@ export default async function StartupsVCPage() {
             "No corner of Earth has produced more transformative companies, more billionaires, or more world-changing technology per square mile. America's startup ecosystem is a force of nature.",
           overviewTitle: "Why America Leads the World in Innovation Capital",
           vcChartTitle: "Venture Capital Investment by Country (2026, USD Billions)",
-          unicornTitle: "The Unicorn Economy — 1,172 and Counting",
+          unicornTitle: "The Unicorn Economy — 659 and Counting",
           unicornBody:
-            'A "unicorn" — a private company valued at $1 billion or more — was once considered a mythological rarity. America has built 1,172 of them, representing over 65% of the global total. More unicorns have been born in California alone than in all of Europe combined.',
+            'A "unicorn" — a private company valued at $1 billion or more — was once considered a mythological rarity. America has built 659 of them, about half the world\'s total of roughly 1,270. Trackers disagree on the exact count because "unicorn" is a methodology rather than a fact — CB Insights, PitchBook and Hurun all put the US somewhere near half. More unicorns have been born in California alone than in all of Europe combined.',
           unicornChartTitle: "Unicorn Companies by Country of Origin (2026)",
           rewiredTitle: "The Companies That Rewired Human Civilization",
           rewiredBody:
