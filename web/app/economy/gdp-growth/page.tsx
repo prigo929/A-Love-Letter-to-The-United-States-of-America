@@ -28,6 +28,8 @@ import { GdpAnnualGrowthChart } from "@/components/data/GdpAnnualGrowthChart";
 import { ExportsByCategoryChart } from "@/components/data/ExportsByCategoryChart";
 import { LaborProductivityChart } from "@/components/data/LaborProductivityChart";
 import { StateGdpMap } from "@/components/data/StateGdpMap";
+import { DebtToGdpChart } from "@/components/data/DebtToGdpChart";
+import { RealGdpPerCapitaChart } from "@/components/data/RealGdpPerCapitaChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -47,6 +49,8 @@ import {
   LABOR_PRODUCTIVITY_COMPARISON,
   STATE_GDP,
   STATE_GDP_META,
+  US_DEBT_TO_GDP,
+  US_REAL_GDP_PER_CAPITA,
   type GdpDataPoint,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
@@ -248,6 +252,14 @@ export default async function GdpGrowthPage() {
           productivityBody: "Măsurat în PIB pe oră lucrată ajustat cu puterea de cumpărare (PPP), americanul mediu produce 97,10 $/oră — mai mult decât Germania (93,8$), Franța (88,2$), Marea Britanie (78,1$) sau Japonia (56,3$). Aceasta este sursa structurală a salariilor americane ridicate: un muncitor mai productiv merită o plăti mai mare. Productivitatea superioară a SUA este rezultatul unei combinații unice de capital uman, investiții în tehnologie, piețe de capital flexibile și concurență intensă.",
           productivityChartTitle: "PIB pe oră lucrată (USD PPP, 2024)",
           productivitySource: "Sursă: OECD.Stat — GDP per Hour Worked, date 2024",
+          debtTitle: "Datoria Publică: Finanțarea Superputerii",
+          debtBody: "Ca procent din PIB, datoria federală a SUA a crescut de la 35% în 1970 la peste 122% în 2026. În timp ce cifrele absolute sunt masive, capacitatea unică a SUA de a emite datorie în propria monedă de rezervă globală oferă o flexibilitate fiscală de neegalat. Cu toate acestea, gestionarea acestei îndatorări reprezintă una dintre provocările structurale majore ale economiei moderne.",
+          debtChartTitle: "Datoria Federală a SUA ca procent din PIB (1970–2026)",
+          debtSource: "Sursă: Rezerva Federală FRED (GFDEGDQ188S)",
+          gdpPerCapTitle: "Standardul de Viață: Creșterea PIB-ului Real pe Cap de Locuitor",
+          gdpPerCapBody: "Dincolo de mărimea absolută a economiei, prosperitatea individuală contează cel mai mult. În termeni ajustați cu inflația (chained 2017 USD), PIB-ul pe cap de locuitor în SUA a crescut de la $25.900 în 1970 la peste $70.500 în 2026. Aceasta reprezintă o triplare a producției economice reale per persoană, reflectând eficiența crescută și progresul tehnologic pe parcursul a cinci decenii.",
+          gdpPerCapChartTitle: "PIB real pe cap de locuitor în SUA (1970–2026, USD ajustat)",
+          gdpPerCapSource: "Sursă: Bureau of Economic Analysis / FRED (A939RX0Q048SBEA)",
         }
       : {
           heroAlt: "New York City financial district",
@@ -343,6 +355,14 @@ export default async function GdpGrowthPage() {
           productivityBody: "Measured by GDP per hour worked at purchasing power parity, the average American generates $97.10/hour — more than Germany ($93.8), France ($88.2), the UK ($78.1), or Japan ($56.3). This is the structural reason US wages are high: a more productive worker commands higher pay. America's productivity edge comes from a unique combination of human capital investment, technology deployment, deep capital markets, and intense competition.",
           productivityChartTitle: "GDP per Hour Worked (USD PPP, 2024)",
           productivitySource: "Source: OECD.Stat — GDP per Hour Worked, 2024 data",
+          debtTitle: "Public Debt: Funding the Superpower",
+          debtBody: "As a percentage of GDP, U.S. federal debt has risen from 35% in 1970 to over 122% in 2026. While the absolute numbers are massive, the unique capacity of the U.S. to issue debt in its own global reserve currency provides unmatched fiscal flexibility. However, managing this leverage remains one of the major structural challenges of the modern economy.",
+          debtChartTitle: "U.S. Federal Debt as a Percentage of GDP (1970–2026)",
+          debtSource: "Source: Federal Reserve FRED (GFDEGDQ188S)",
+          gdpPerCapTitle: "Standard of Living: Real GDP per Capita Growth",
+          gdpPerCapBody: "Beyond absolute economic size, individual prosperity is what matters most. In inflation-adjusted terms (chained 2017 USD), U.S. GDP per capita has grown from $25,900 in 1970 to over $70,500 in 2026. This represents nearly a tripling of real economic output per person, reflecting five decades of technological advancement and rising productivity.",
+          gdpPerCapChartTitle: "U.S. Real GDP per Capita (1970–2026, Adjusted USD)",
+          gdpPerCapSource: "Source: Bureau of Economic Analysis / FRED (A939RX0Q048SBEA)",
         };
 
   return (
@@ -589,6 +609,40 @@ export default async function GdpGrowthPage() {
                 data={LABOR_PRODUCTIVITY_COMPARISON}
                 title={copy.productivityChartTitle}
                 source={copy.productivitySource}
+              />
+            </div>
+          </section>
+
+          {/* Public Debt */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.debtTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.debtBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <DebtToGdpChart
+                data={US_DEBT_TO_GDP}
+                title={copy.debtChartTitle}
+                source={copy.debtSource}
+              />
+            </div>
+          </section>
+
+          {/* Real GDP per Capita */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.gdpPerCapTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.gdpPerCapBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <RealGdpPerCapitaChart
+                data={US_REAL_GDP_PER_CAPITA}
+                title={copy.gdpPerCapChartTitle}
+                source={copy.gdpPerCapSource}
               />
             </div>
           </section>

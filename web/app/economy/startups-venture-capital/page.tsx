@@ -19,6 +19,7 @@ import { IPOMarketChart } from "@/components/data/IPOMarketChart";
 import { VCDealStageChart } from "@/components/data/VCDealStageChart";
 import { BusinessFormationChart } from "@/components/data/BusinessFormationChart";
 import { QuarterlySeriesChart } from "@/components/data/QuarterlySeriesChart";
+import { VcDryPowderChart } from "@/components/data/VcDryPowderChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -38,6 +39,7 @@ import {
   BUSINESS_FORMATION_META,
   RD_INVESTMENT,
   RD_META,
+  VC_DRY_POWDER,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -171,6 +173,10 @@ export default async function StartupsVCPage() {
             "Mega-rundele de 1 miliard$ i-au depășit pe toți ceilalți: doar 180 de tranzacții au absorbit 217Mld$ — mai mult decât toate celelalte etape combinate. Acest lucru reflectă concentrarea structurala a capitalului de risc în ‘AI winners’ și în starturi technologice late-stage. Start-up-urile timpurii primeșc mai puțin în termeni absoluti, dar mult mai mult în număr de deal-uri.",
           dealStageChartTitle: "Distribuția Capitalului de Risc pe Etape de Investiție (2025)",
           dealStageSource: "Sursă: NVCA / PitchBook Venture Monitor 2025",
+          dryPowderTitle: "Rezervele de Capital: Capitalul de Risc Neutilizat (Dry Powder)",
+          dryPowderBody:
+            "Venture capital-ul din SUA dispune de resurse financiare fără precedent care așteaptă să fie investite. În 2025, capitalul neutilizat („dry powder”) s-a menținut la nivelul masiv de 315 miliarde $, oferind o plasă de siguranță uriașă și o putere enormă de cumpărare pentru finanțarea următoarei generații de tehnologii revoluționare în următorii ani.",
+          dryPowderChartTitle: "Evoluția rezervelor de capital neutilizat (Dry Powder) în SUA (2015–2025, miliarde USD)",
           prevLink: "← Piețe de Capital",
           nextLink: "Dominația Dolarului →",
         }
@@ -238,6 +244,10 @@ export default async function StartupsVCPage() {
             "Mega-rounds of $1B+ have outpaced everyone else: just 180 transactions absorbed $217B — more than all other stages combined. This reflects the structural concentration of risk capital into \u2018AI winners\u2019 and late-stage tech. Early-stage startups receive less in absolute terms but far more in deal count.",
           dealStageChartTitle: "US Venture Capital Deployment by Deal Stage (2025)",
           dealStageSource: "Source: NVCA / PitchBook Venture Monitor 2025 Full-Year",
+          dryPowderTitle: "Unspent Capital: U.S. Venture Capital Dry Powder",
+          dryPowderBody:
+            "U.S. venture capital commands unprecedented financial reserves that are committed but not yet deployed. In 2025, 'dry powder' stood at a massive $315 billion, offering a huge runway and purchasing power to finance the next wave of disruptive technologies over the coming years.",
+          dryPowderChartTitle: "U.S. Venture Capital Dry Powder (2015–2025, USD Billions)",
           prevLink: "← Capital Markets",
           nextLink: "Dollar Dominance →",
         };
@@ -396,6 +406,23 @@ export default async function StartupsVCPage() {
                 data={VC_DEAL_STAGE_BREAKDOWN}
                 title={copy.dealStageChartTitle}
                 source={copy.dealStageSource}
+              />
+            </div>
+          </section>
+
+          {/* VC Dry Powder */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.dryPowderTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.dryPowderBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <VcDryPowderChart
+                data={VC_DRY_POWDER}
+                title={copy.dryPowderChartTitle}
+                source="PitchBook-NVCA Venture Monitor 2025"
               />
             </div>
           </section>

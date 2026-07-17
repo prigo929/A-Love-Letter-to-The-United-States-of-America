@@ -23,6 +23,8 @@ import { BuffettIndicatorChart } from "@/components/data/BuffettIndicatorChart";
 import { FedFundsChart } from "@/components/data/FedFundsChart";
 import { YieldCurveChart } from "@/components/data/YieldCurveChart";
 import { QuarterlySeriesChart } from "@/components/data/QuarterlySeriesChart";
+import { FedBalanceSheetChart } from "@/components/data/FedBalanceSheetChart";
+import { M2MoneySupplyChart } from "@/components/data/M2MoneySupplyChart";
 import { MacroStyles, MacroHero, MacroStat, MacroFact, InfrastructureBand, CountUp } from "@/components/economy/EconomyAnimations";
 import { getServerLocale } from "@/lib/i18n/server";
 import {
@@ -42,6 +44,8 @@ import {
   RECESSIONS,
   CORPORATE_PROFITS,
   CORPORATE_PROFITS_META,
+  FED_BALANCE_SHEET,
+  M2_MONEY_SUPPLY,
 } from "@/lib/data/economy-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -215,6 +219,14 @@ export default async function CapitalMarketsPage() {
           altTitle: "Piața Alternativă: Giganții Private Equity americani",
           altBody:
             "Dincolo de bursele publice, SUA domină piața globală a activelor alternative. Blackstone (1,3T$), KKR (744Mld$) şi Apollo (650Mld$) sunt doar cele mai mari trei. Aceste companii controlează fonduri de private equity, credit privat, infrastructură și imobiliare la o scară fără precedent — 8 din primele 10 firme de alternative din lume sunt americane.",
+          fedBalanceSheetTitle: "Bilanțul Rezervei Federale: Fundația de Lichiditate",
+          fedBalanceSheetBody:
+            "Totalul activelor deținute de Rezerva Federală (FED) reprezintă un indicator cheie al injecțiilor de lichiditate în sistemul financiar global. De la sub 1 trilion $ înainte de 2008, bilanțul Fed a crescut prin programe succesive de relaxare cantitativă (QE) pentru a susține piețele în timpul crizelor, atingând un vârf de aproape 9 trilioane $ în timpul pandemiei COVID-19, înainte de a începe o reducere controlată (QT) până la 6,7 trilioane $ în 2026.",
+          fedBalanceSheetChartTitle: "Activele Rezervei Federale a SUA (2003–2026, trilioane USD)",
+          m2Title: "Masa Monetară M2: Combustibilul Sistemului Financiar",
+          m2Body:
+            "Masa monetară M2 măsoară cantitatea totală de monedă în circulație, inclusiv depozitele la vedere și conturile de economii. Evoluția sa arată amploarea capitalului disponibil în economie. Expansiunea puternică de după 2020 a dus masa monetară la peste 23 trilioane $ în 2026, subliniind cantitatea imensă de lichiditate care alimentează piețele de capital americane.",
+          m2ChartTitle: "Evoluția Masei Monetare M2 (2000–2026, trilioane USD)",
           prevLink: "← PIB și Dimensiune",
           nextLink: "Startup-uri și VC →",
         }
@@ -281,6 +293,14 @@ export default async function CapitalMarketsPage() {
           altTitle: "The Alternative Markets: America's Private Capital Giants",
           altBody:
             "Beyond public equities, the US dominates global alternative assets. Blackstone ($1.3T), KKR ($744B), and Apollo ($650B) are the top three. These firms control private equity, private credit, infrastructure, and real estate funds at an unprecedented scale — 8 of the world's top 10 alternative asset managers are American.",
+          fedBalanceSheetTitle: "The Fed Balance Sheet: The Liquidity Foundation",
+          fedBalanceSheetBody:
+            "The total assets held by the Federal Reserve represent the ultimate liquidity foundation of the global financial system. Growing from under $1 trillion before the 2008 Financial Crisis, the balance sheet expanded through successive Quantitative Easing (QE) programs to support the economy during shocks, peaking near $9 trillion during the COVID-19 pandemic before transitioning into Quantitative Tightening (QT), ending at $6.7 trillion in 2026.",
+          fedBalanceSheetChartTitle: "Federal Reserve Total Assets (2003–2026, USD Trillions)",
+          m2Title: "M2 Money Supply: The Capital Engine's Fuel",
+          m2Body:
+            "M2 measures the total money supply in circulation, including currency, demand deposits, and savings accounts. It represents the liquid purchasing power of the U.S. economy. The post-2020 monetary expansion drove M2 to over $23 trillion in 2026, illustrating the sheer volume of liquidity circulating through and backing the American capital markets.",
+          m2ChartTitle: "U.S. M2 Money Supply (2000–2026, USD Trillions)",
           prevLink: "← GDP & Scale",
           nextLink: "Startups & VC →",
         };
@@ -549,6 +569,40 @@ export default async function CapitalMarketsPage() {
                 ? "Sursă: Raportările companiilor, T1 2026 (31 martie 2026)"
                 : "Source: Company Q1 2026 disclosures (as of 31 March 2026)"}
             </p>
+          </section>
+
+          {/* Federal Reserve Balance Sheet */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.fedBalanceSheetTitle}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.fedBalanceSheetBody}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <FedBalanceSheetChart
+                data={FED_BALANCE_SHEET}
+                title={copy.fedBalanceSheetChartTitle}
+                source="Federal Reserve Board via FRED (WALCL)"
+              />
+            </div>
+          </section>
+
+          {/* M2 Money Supply */}
+          <section>
+            <h2 className="macro-section-title mb-12">
+              {copy.m2Title}
+            </h2>
+            <p className="macro-body max-w-4xl mb-16">
+              {copy.m2Body}
+            </p>
+            <div className="my-24 bg-[#000000]/50 backdrop-blur-md p-8 border border-white/10">
+              <M2MoneySupplyChart
+                data={M2_MONEY_SUPPLY}
+                title={copy.m2ChartTitle}
+                source="Federal Reserve Board via FRED (M2SL)"
+              />
+            </div>
           </section>
 
           {/* Democratization of Capital Section */}
