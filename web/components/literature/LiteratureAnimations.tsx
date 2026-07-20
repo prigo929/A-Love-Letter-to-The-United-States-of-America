@@ -32,13 +32,31 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 export function LitStyles() {
   return (
     <style>{`
-      .lit-serif { font-family: var(--font-display, Georgia), serif; }
+      /* --font-display is Playfair Display, already loaded site-wide. Turning on
+         its typographic extras is what separates "a serif" from "typesetting":
+         real ligatures, contextual alternates, and old-style figures that sit on
+         the baseline like the letters do. On a page that is mostly large-set
+         quotation, these details are most of the beauty. */
+      .lit-serif {
+        font-family: var(--font-display, Georgia), serif;
+        font-feature-settings: "liga" 1, "clig" 1, "calt" 1, "onum" 1;
+        text-rendering: optimizeLegibility;
+      }
       .lit-measure { max-width: 34em; }
+      /* A hanging opening quote: the big quotation marks sit in the margin so the
+         first real word stays flush with the text block. Standard fine-press
+         detail, one line of CSS. */
+      .lit-hang { text-indent: -0.5em; }
+      /* Small caps for the drop-style era labels, from the font rather than by
+         faking it with letter-spacing on uppercased text. */
+      .lit-smallcaps { font-variant-caps: all-small-caps; letter-spacing: 0.08em; }
+
       /* Respect the OS setting. Everything below degrades to "fully lit,
          instantly" rather than "invisible", which is the failure mode that
          matters: a reader who disables motion must still get the text. */
       @media (prefers-reduced-motion: reduce) {
         .lit-illuminate { -webkit-text-fill-color: currentColor !important; }
+        .lit-word { opacity: 1 !important; filter: none !important; }
       }
     `}</style>
   );
@@ -163,14 +181,21 @@ interface AnnotatedPassageProps {
 }
 
 /**
- * A passage the reader can take apart. Clicking a phrase explains what it is
- * doing — the rhetorical move, the borrowed cadence, the buried argument.
+ * A passage the reader can take apart, annotated in the MARGIN.
  *
- * The text is split on the annotated phrases rather than authored as JSX so the
- * passage stays a single readable string in the caller. If a phrase does not
- * appear verbatim it is skipped rather than throwing, and `missing` surfaces it
- * in development, because the failure is otherwise invisible: the passage still
- * renders, just without that annotation.
+ * The first version of this put the note in a panel under the passage. It read
+ * badly for an obvious reason once you use it: clicking a phrase sends your eye
+ * to the bottom of the section, and by the time you have read the note you have
+ * lost the line you were in. The whole point is to look at a sentence closely,
+ * and the interaction was pulling you away from it.
+ *
+ * So the note is now set beside the phrase, vertically aligned to the line it
+ * belongs to, the way a scholarly edition or an annotated manuscript does it.
+ * Your eye moves sideways a few centimetres instead of down a screen, and the
+ * sentence never leaves view.
+ *
+ * On narrow screens there is no margin to put it in, so it falls back to an
+ * inline note directly beneath the passage — still close, still in view.
  */
 export function AnnotatedPassage({
   text,
@@ -182,6 +207,8 @@ export function AnnotatedPassage({
   const { locale } = useLanguage();
   const ro = locale === "ro";
   const [active, setActive] = useState<number | null>(null);
+  const [noteTop, setNoteTop] = useState(0);
+  const wrapRef = useRef<HTMLDivElement>(null);
   const uid = useId();
 
   const present = annotations.filter((a) => text.includes(a.phrase));
@@ -196,7 +223,7 @@ export function AnnotatedPassage({
   // Build an ordered split of the passage around each annotated phrase.
   const parts: { text: string; idx: number | null }[] = [];
   let rest = text;
-  let consumed = 0;
+  let guard = 0;
   while (rest.length) {
     let best: { at: number; i: number } | null = null;
     present.forEach((a, i) => {
@@ -211,64 +238,95 @@ export function AnnotatedPassage({
     if (b.at > 0) parts.push({ text: rest.slice(0, b.at), idx: null });
     parts.push({ text: present[b.i].phrase, idx: b.i });
     rest = rest.slice(b.at + present[b.i].phrase.length);
-    consumed += 1;
-    if (consumed > present.length + 2) break; // belt and braces against a bad loop
+    if (++guard > present.length + 2) break;
   }
 
   const shown = active !== null ? present[active] : null;
 
-  return (
-    <div className={className}>
-      <p className="lit-serif lit-measure text-xl leading-[1.85] text-white/90 md:text-[26px] md:leading-[1.8]">
-        {parts.map((p, i) =>
-          p.idx === null ? (
-            <span key={`${uid}-t-${i}`}>{p.text}</span>
-          ) : (
-            <button
-              key={`${uid}-a-${i}`}
-              type="button"
-              onClick={() => setActive(active === p.idx ? null : p.idx)}
-              aria-expanded={active === p.idx}
-              className="rounded-[3px] px-[2px] transition-colors duration-200"
-              style={{
-                borderBottom: "1.5px solid rgba(232,185,35,0.55)",
-                backgroundColor: active === p.idx ? "rgba(232,185,35,0.16)" : "transparent",
-                color: active === p.idx ? "#E8B923" : "inherit",
-                // -webkit-text-fill-color is an INHERITED property and it beats
-                // `color` when painting glyphs. Any ancestor that resolves one —
-                // and this component is used inside sections that do — hands it
-                // down and silently wins over the gold above. Setting it here
-                // explicitly is what actually makes the active phrase change
-                // colour in WebKit.
-                WebkitTextFillColor: active === p.idx ? "#E8B923" : "currentColor",
-                font: "inherit",
-                cursor: "pointer",
-              }}
-            >
-              {p.text}
-            </button>
-          )
-        )}
-      </p>
+  // Align the margin note to the top of whichever line the phrase starts on.
+  const select = (idx: number, el: HTMLButtonElement) => {
+    if (active === idx) {
+      setActive(null);
+      return;
+    }
+    const wrap = wrapRef.current;
+    if (wrap) {
+      const top = el.getBoundingClientRect().top - wrap.getBoundingClientRect().top;
+      setNoteTop(Math.max(0, top));
+    }
+    setActive(idx);
+  };
 
-      {/* Reserve the space so picking a phrase never shifts the passage. */}
-      <div className="mt-10 min-h-[132px] border-t border-white/10 pt-6">
-        {shown ? (
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="font-body text-[11px] font-bold uppercase tracking-[0.18em] text-glory-gold">
-              {shown.phrase}
-            </div>
-            <p className="mt-3 max-w-2xl font-body text-[15px] leading-relaxed text-white/65">
-              {ro ? shown.noteRo : shown.note}
+  const note = shown && (
+    <motion.div
+      key={active}
+      initial={{ opacity: 0, x: -6 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      className="border-l-2 pl-5"
+      style={{ borderColor: "rgba(232,185,35,0.5)" }}
+    >
+      <div className="font-body text-[11px] font-bold uppercase tracking-[0.16em] text-glory-gold">
+        {shown.phrase}
+      </div>
+      <p className="mt-3 font-body text-[14px] leading-relaxed text-white/65">
+        {ro ? shown.noteRo : shown.note}
+      </p>
+    </motion.div>
+  );
+
+  return (
+    <div ref={wrapRef} className={`relative lg:grid lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14 ${className}`}>
+      <div>
+        <p className="lit-serif text-xl leading-[1.9] text-white/90 md:text-[26px] md:leading-[1.85]">
+          {parts.map((p, i) =>
+            p.idx === null ? (
+              <span key={`${uid}-t-${i}`}>{p.text}</span>
+            ) : (
+              <button
+                key={`${uid}-a-${i}`}
+                type="button"
+                onClick={(e) => select(p.idx as number, e.currentTarget)}
+                aria-expanded={active === p.idx}
+                className="rounded-[3px] px-[2px] transition-colors duration-200"
+                style={{
+                  borderBottom:
+                    active === p.idx
+                      ? "1.5px solid rgba(232,185,35,0.9)"
+                      : "1.5px solid rgba(232,185,35,0.4)",
+                  backgroundColor: active === p.idx ? "rgba(232,185,35,0.14)" : "transparent",
+                  color: active === p.idx ? "#E8B923" : "inherit",
+                  // Inherited and beats `color` in WebKit — must be set explicitly.
+                  WebkitTextFillColor: active === p.idx ? "#E8B923" : "currentColor",
+                  font: "inherit",
+                  cursor: "pointer",
+                }}
+              >
+                {p.text}
+              </button>
+            )
+          )}
+        </p>
+
+        {/* Narrow screens: no margin exists, so the note sits just under the
+            passage rather than a screen away. */}
+        <div className="mt-8 lg:hidden">
+          {note ?? (
+            <p className="font-body text-[14px] leading-relaxed text-white/35">
+              {ro ? primerRo : primer}
             </p>
-          </motion.div>
+          )}
+        </div>
+      </div>
+
+      {/* Wide screens: true marginalia, aligned to the clicked line. */}
+      <div className="relative hidden lg:block">
+        {shown ? (
+          <div className="absolute left-0 right-0" style={{ top: noteTop }}>
+            {note}
+          </div>
         ) : (
-          <p className="max-w-2xl font-body text-[15px] leading-relaxed text-white/40">
+          <p className="font-body text-[14px] leading-relaxed text-white/35">
             {ro ? primerRo : primer}
           </p>
         )}
@@ -383,7 +441,9 @@ export interface Opening {
   line: string;
   note: string;
   noteRo: string;
-  portrait: LiteratureAssetKey;
+  /** Omit when no correctly-licensed likeness exists. A typographic panel is
+   *  rendered instead — better an honest blank than a confidently wrong face. */
+  portrait?: LiteratureAssetKey;
   /** True when the whole book is free to read, which is worth telling a reader. */
   publicDomain: boolean;
 }
@@ -420,7 +480,7 @@ export function OpeningLinesWall({
   const ro = locale === "ro";
   const [sel, setSel] = useState(0);
   const active = openings[sel];
-  const portrait = LITERATURE_ASSETS[active.portrait];
+  const portrait = active.portrait ? LITERATURE_ASSETS[active.portrait] : null;
 
   return (
     <div className="grid gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
@@ -467,15 +527,24 @@ export function OpeningLinesWall({
 
       {/* Portrait, plus the rack of everything else */}
       <div>
-        <div className="relative mb-8 aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]">
-          <Image
-            key={active.portrait}
-            src={portrait.src}
-            alt={ro ? portrait.altRo : portrait.alt}
-            fill
-            sizes="(min-width: 1024px) 34vw, 90vw"
-            className="object-cover grayscale transition-opacity duration-500"
-          />
+        <div className="relative mb-8 flex aspect-[4/5] w-full items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]">
+          {portrait ? (
+            <Image
+              key={active.portrait}
+              src={portrait.src}
+              alt={ro ? portrait.altRo : portrait.alt}
+              fill
+              sizes="(min-width: 1024px) 34vw, 90vw"
+              className="object-cover grayscale transition-opacity duration-500"
+            />
+          ) : (
+            <div className="px-8 text-center">
+              <div className="lit-serif text-3xl leading-tight text-white/70">{active.author}</div>
+              <div className="mt-3 font-body text-[10px] uppercase tracking-[0.18em] text-white/25">
+                {active.year}
+              </div>
+            </div>
+          )}
         </div>
 
         <ul className="space-y-1">
@@ -501,5 +570,214 @@ export function OpeningLinesWall({
         </ul>
       </div>
     </div>
+  );
+}
+
+/* ── 6. Era timeline ───────────────────────────────────────────────────────── */
+
+export interface EraDatum {
+  id: string;
+  name: string;
+  nameRo: string;
+  from: number;
+  to: number;
+  question: string;
+  questionRo: string;
+  body: string;
+  bodyRo: string;
+  figures: string[];
+  href?: string;
+}
+
+interface EraTimelineProps {
+  eras: EraDatum[];
+  readLabel: string;
+  readLabelRo: string;
+}
+
+/**
+ * The spine of the hub: four centuries of American writing as a single
+ * horizontal band you scrub through. Each era's width is proportional to its
+ * real duration, so the reader sees at a glance that the Puritan stretch is long
+ * and thin while modernism is a dense thirty-year burst.
+ *
+ * Selection is click-driven state, not scroll-driven — the one interaction on
+ * these pages that must keep working even in a browser that reports scroll badly,
+ * because it is how you navigate the whole section.
+ */
+export function EraTimeline({ eras, readLabel, readLabelRo }: EraTimelineProps) {
+  const { locale } = useLanguage();
+  const ro = locale === "ro";
+  const [sel, setSel] = useState(0);
+  const active = eras[sel];
+
+  const span0 = eras[0].from;
+  const span1 = eras[eras.length - 1].to;
+  const total = span1 - span0;
+  const pct = (n: number) => ((n - span0) / total) * 100;
+
+  return (
+    <div>
+      {/* The band */}
+      <div className="relative h-16 w-full overflow-hidden rounded-xl border border-white/10 bg-white/[0.02]">
+        {eras.map((e, i) => {
+          const left = pct(e.from);
+          const width = ((e.to - e.from) / total) * 100;
+          const on = i === sel;
+          return (
+            <button
+              key={e.id}
+              type="button"
+              onClick={() => setSel(i)}
+              aria-current={on}
+              className="absolute inset-y-0 flex items-center justify-center overflow-hidden border-r border-black/40 transition-colors duration-300"
+              style={{
+                left: `${left}%`,
+                width: `${width}%`,
+                backgroundColor: on ? "rgba(232,185,35,0.22)" : "rgba(255,255,255,0.015)",
+                cursor: "pointer",
+              }}
+            >
+              <span
+                className="px-1 font-body text-[9px] font-bold uppercase tracking-wider"
+                style={{ color: on ? "#E8B923" : "rgba(255,255,255,0.3)" }}
+              >
+                {e.from}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* The selected era */}
+      <motion.div
+        key={active.id}
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_18rem]"
+      >
+        <div>
+          <div className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-glory-gold">
+            {active.from}–{active.to} · {ro ? active.nameRo : active.name}
+          </div>
+          <h3 className="mt-3 lit-serif text-2xl leading-tight text-white md:text-4xl md:leading-[1.15]">
+            {ro ? active.questionRo : active.question}
+          </h3>
+          <p className="mt-6 max-w-2xl font-body text-[15px] leading-relaxed text-white/65">
+            {ro ? active.bodyRo : active.body}
+          </p>
+          {active.href && (
+            <a
+              href={active.href}
+              className="mt-6 inline-block font-body text-sm text-glory-gold transition-opacity hover:opacity-70"
+            >
+              {ro ? readLabelRo : readLabel} →
+            </a>
+          )}
+        </div>
+
+        <div className="lg:border-l lg:border-white/10 lg:pl-8">
+          <div className="font-body text-[10px] font-bold uppercase tracking-[0.18em] text-white/30">
+            {ro ? "Voci" : "Voices"}
+          </div>
+          <ul className="mt-4 space-y-2">
+            {active.figures.map((f) => (
+              <li key={f} className="lit-serif text-lg text-white/80">
+                {f}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+/* ── 7. Word-by-word reveal ────────────────────────────────────────────────── */
+
+interface WordRevealProps {
+  children: string;
+  className?: string;
+}
+
+/**
+ * A short passage that assembles one word at a time as it crosses the viewport,
+ * each word rising and sharpening into place. Reserved for a single famous
+ * sentence per page — it is a spotlight, and a page full of spotlights is just a
+ * page with the lights left on.
+ *
+ * The cost warning from ScrollIlluminatedText applies and is handled differently
+ * here, because this genuinely does need per-word state. Two things keep it cheap:
+ *
+ *  1. It is only ever pointed at short text (a sentence, not a paragraph), so the
+ *     word count is small by construction.
+ *  2. Each word is a spring driven off ONE shared scroll progress value via a
+ *     per-word useTransform, animating only opacity and transform — both
+ *     compositor properties, so the main thread stays out of it.
+ *
+ * And the same progressive-enhancement contract: if the scroll value never fires
+ * (a browser that reports scroll badly), `armed` stays false and every word is
+ * rendered plainly visible. The sentence is never hidden behind an effect that
+ * might not run.
+ */
+export function WordReveal({ children, className = "" }: WordRevealProps) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const reduced = useReducedMotion();
+  const [armed, setArmed] = useState(false);
+  const words = children.split(" ");
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.85", "end 0.65"],
+  });
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    if (!armed && v > 0) setArmed(true);
+  });
+
+  if (reduced || !armed) {
+    return (
+      <p ref={ref} className={`lit-serif ${className}`} style={{ color: "rgba(255,255,255,0.97)" }}>
+        {children}
+      </p>
+    );
+  }
+
+  return (
+    <p ref={ref} className={`lit-serif ${className}`}>
+      {words.map((w, i) => (
+        <Word key={i} progress={scrollYProgress} index={i} total={words.length}>
+          {w}
+        </Word>
+      ))}
+    </p>
+  );
+}
+
+function Word({
+  children,
+  progress,
+  index,
+  total,
+}: {
+  children: string;
+  progress: MotionValue<number>;
+  index: number;
+  total: number;
+}) {
+  // Each word owns a slice of the scroll range and finishes a little after it
+  // starts, so the words overlap into a wave rather than snapping one by one.
+  const start = index / total;
+  const end = Math.min(1, start + 1.4 / total);
+  const opacity = useTransform(progress, [start, end], [0.12, 1]);
+  const y = useTransform(progress, [start, end], [14, 0]);
+  const blur = useTransform(progress, [start, end], [6, 0]);
+  const filter = useTransform(blur, (b) => `blur(${b}px)`);
+
+  return (
+    <motion.span className="lit-word" style={{ opacity, y, filter, display: "inline-block", willChange: "opacity, transform" }}>
+      {children}
+      {" "}
+    </motion.span>
   );
 }

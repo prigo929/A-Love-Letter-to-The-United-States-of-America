@@ -21,6 +21,20 @@
 // the Library of Congress, and everything published before 1930 has aged into
 // it. Where a licence does require attribution, `credit` carries it.
 
+//
+// VERIFY THE FILENAME, NOT JUST THE LICENCE. Four of the first nineteen entries
+// pointed at completely unrelated images that nonetheless passed every check —
+// hemingwayPortrait was an Auckland Museum annual report, mobyDickTitlePage and
+// ellisonPortrait were page-1 renders of unrelated PDFs. They were correctly
+// licensed and returned HTTP 200, they were just the wrong picture. Commons
+// search will happily hand back garbage that matches on incidental text. So the
+// acceptance test is now: licence is usable AND the file returns 200 AND the
+// filename contains the subject's name.
+//
+// Ralph Ellison has no freely licensed image on Commons — he died in 1994, so
+// that is expected rather than a search failure. OpeningLinesWall renders a
+// typographic panel when `portrait` is omitted rather than showing a wrong face.
+
 export interface LiteratureAsset {
   src: string;
   alt: string;
@@ -38,10 +52,10 @@ export const LITERATURE_ASSETS = {
     license: "Public domain",
   },
   mobyDickTitlePage: {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Catalogue_of_children%27s_books_recommended_for_public_libraries%3B_alphabetically_arranged_by_authors%2C_giving_title%2C_publisher_and_price%3B_%28IA_catalogueofchild00ontarich%29.pdf/page1-500px-thumbnail.pdf.jpg",
+    src: "https://upload.wikimedia.org/wikipedia/commons/3/36/Moby-Dick_FE_title_page.jpg",
     alt: "Title page, first American edition of Moby-Dick, 1851",
     altRo: "Pagina de titlu, prima ediție americană Moby-Dick, 1851",
-    credit: "Catalogue of children's books recommended for public libraries; alphabetically arranged by authors, giving title, publisher and price; (IA catalogueofchild00ontarich).pdf · Wikimedia Commons",
+    credit: "Moby-Dick FE title page.jpg · Wikimedia Commons",
     license: "Public domain",
   },
   waldenTitlePage: {
@@ -115,10 +129,10 @@ export const LITERATURE_ASSETS = {
     license: "Public domain",
   },
   hemingwayPortrait: {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Auckland_Museum_Annual_Report%2C_1957%E2%80%931958.pdf/page1-500px-Auckland_Museum_Annual_Report%2C_1957%E2%80%931958.pdf.jpg",
-    alt: "Ernest Hemingway",
-    altRo: "Ernest Hemingway",
-    credit: "Auckland Museum Annual Report, 1957–1958.pdf · Wikimedia Commons",
+    src: "https://upload.wikimedia.org/wikipedia/commons/8/8b/The_Sun_Also_Rises_%281st_ed._cover%29.jpg",
+    alt: "The Sun Also Rises, first edition cover, 1926",
+    altRo: "The Sun Also Rises, coperta primei ediții, 1926",
+    credit: "The Sun Also Rises (1st ed. cover).jpg · Wikimedia Commons",
     license: "Public domain",
   },
   faulknerPortrait: {
@@ -135,13 +149,6 @@ export const LITERATURE_ASSETS = {
     credit: "Portrait of Zora Neale Hurston LCCN2004663047.jpg · Wikimedia Commons",
     license: "Public domain",
   },
-  ellisonPortrait: {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/At_the_Auditorium_playe-house%2C_Chicago_neare_to_the_bank-side%2C_Saturday_evening%2C_the_seventeenth_of_Maye_next%2C_a_right_mery_and_wittie_comedie_intituled_The_case_is_alterd_%28IA_atauditoriumplay00jonsrich%29.pdf/page1-500px-thumbnail.pdf.jpg",
-    alt: "Ralph Ellison, photographed by Carl Van Vechten",
-    altRo: "Ralph Ellison, fotografiat de Carl Van Vechten",
-    credit: "At the Auditorium playe-house, Chicago neare to the bank-side, Saturday evening, the seventeenth of Maye next, a right mery and wittie comedie intituled The case is alterd (IA atauditoriumplay00jonsrich).pdf · Wikimedia Commons",
-    license: "Public domain",
-  },
   baldwinPortrait: {
     src: "https://upload.wikimedia.org/wikipedia/commons/7/7c/%28Portrait_of_James_Baldwin%29_%28LOC%29_-_Flickr_-_The_Library_of_Congress.jpg",
     alt: "James Baldwin",
@@ -150,10 +157,10 @@ export const LITERATURE_ASSETS = {
     license: "No restrictions",
   },
   steinbeckPortrait: {
-    src: "https://upload.wikimedia.org/wikipedia/commons/d/df/Grapes_of_Wrath%2C_The_-_%28Original_Trailer%29_-_03.png",
-    alt: "John Steinbeck",
-    altRo: "John Steinbeck",
-    credit: "Grapes of Wrath, The - (Original Trailer) - 03.png · Wikimedia Commons",
+    src: "https://upload.wikimedia.org/wikipedia/commons/e/e7/John_Steinbeck_1962.jpg",
+    alt: "John Steinbeck, 1962",
+    altRo: "John Steinbeck, 1962",
+    credit: "John Steinbeck 1962.jpg · Wikimedia Commons",
     license: "Public domain",
   },
   gatsbyCover: {
