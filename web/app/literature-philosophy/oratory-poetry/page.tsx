@@ -30,6 +30,7 @@ import {
 } from "@/components/literature/LiteratureAnimations";
 import { LITERATURE_ASSETS } from "@/lib/data/literature-assets";
 import { getServerLocale } from "@/lib/i18n/server";
+import { BookShowcase } from "@/components/literature/BookShowcase";
 
 export const metadata: Metadata = {
   title: "Oratory & Poetry | Literature & Philosophy",
@@ -235,6 +236,8 @@ export default async function OratoryPoetryPage() {
           <h2 className="macro-section-title mb-12">{copy.kingTitle}</h2>
           <p className="macro-body max-w-3xl">{copy.kingBody}</p>
         </section>
+
+        <BookShowcase category="oratory-poetry" />
 
         <div className="border-t border-white/10 py-12">
           <p className="font-body text-xs text-white/30">{copy.sourceNote}</p>

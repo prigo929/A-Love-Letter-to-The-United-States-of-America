@@ -19,6 +19,7 @@ import {
 } from "@/components/literature/LiteratureAnimations";
 import { LITERATURE_ASSETS } from "@/lib/data/literature-assets";
 import { getServerLocale } from "@/lib/i18n/server";
+import { BookShowcase } from "@/components/literature/BookShowcase";
 
 export const metadata: Metadata = {
   title: "Science Fiction & Myth | Literature & Philosophy",
@@ -186,6 +187,8 @@ export default async function SciFiMythPage() {
             {copy.heinleinBody}
           </p>
         </section>
+
+        <BookShowcase category="sci-fi-myth" />
 
         <div className="border-t border-white/10 py-12">
           <p className="font-body text-xs text-white/30">{copy.sourceNote}</p>

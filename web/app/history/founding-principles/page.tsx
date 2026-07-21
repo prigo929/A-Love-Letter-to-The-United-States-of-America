@@ -3,6 +3,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerLocale } from "@/lib/i18n/server";
 import { THEMATIC_HISTORY_DATA } from "@/lib/data/history-thematic-data";
 import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
+import { BookShowcase } from "@/components/literature/BookShowcase";
 
 export const metadata: Metadata = {
   title: "Founding Principles | Patriotic USA",
@@ -43,6 +44,9 @@ export default async function FoundingPrinciplesPage() {
         description={description}
         topics={topics}
       />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
+        <BookShowcase category="founding-principles" />
+      </div>
     </main>
   );
 }

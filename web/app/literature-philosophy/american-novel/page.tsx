@@ -25,6 +25,7 @@ import {
 } from "@/components/literature/LiteratureAnimations";
 import { LITERATURE_ASSETS } from "@/lib/data/literature-assets";
 import { getServerLocale } from "@/lib/i18n/server";
+import { BookShowcase } from "@/components/literature/BookShowcase";
 
 export const metadata: Metadata = {
   title: "The American Novel | Literature & Philosophy",
@@ -227,6 +228,8 @@ export default async function AmericanNovelPage() {
             {copy.driftBody}
           </ScrollIlluminatedText>
         </section>
+
+        <BookShowcase category="american-novel" />
 
         <div className="border-t border-white/10 py-12">
           <p className="max-w-3xl font-body text-xs leading-relaxed text-white/30">
