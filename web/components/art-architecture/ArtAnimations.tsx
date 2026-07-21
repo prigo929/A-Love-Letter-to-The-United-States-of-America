@@ -289,11 +289,11 @@ export function ArtHeroCrossfade({
       }} />
       <div className="absolute inset-0 z-10 art-noise pointer-events-none" />
 
-      {/* Slide badge — top right */}
+      {/* Slide badge — top right, positioned below top main menu header */}
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          className="absolute top-8 right-8 z-20 flex flex-col items-end gap-1"
+          className="absolute top-24 md:top-28 right-6 md:right-12 z-20 flex flex-col items-end gap-1 text-right pointer-events-none"
           initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}
           transition={{ duration: 0.5 }}
         >
@@ -373,9 +373,9 @@ export function ArtSingleHero({
       }} />
       <div className="absolute inset-0 z-10 art-noise pointer-events-none" />
 
-      {/* Badge / label — top right */}
+      {/* Badge / label — top right, positioned below top main menu header */}
       {(badge || label) && (
-        <div className="absolute top-8 right-8 z-20 flex flex-col items-end gap-1">
+        <div className="absolute top-24 md:top-28 right-6 md:right-12 z-20 flex flex-col items-end gap-1 text-right pointer-events-none">
           {badge && (
             <p className="art-text-metadata" style={{ color: 'var(--art-accent-copper)' }}>
               {badge}
