@@ -14,8 +14,8 @@
 // - All text via React JSX text nodes (textContent equivalent)
 // - No user input or sensitive data on this page
 
-import { useState, useEffect, useRef, useCallback } from "react";
-import { motion, AnimatePresence, useScroll, useTransform, useInView } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform, useInView, useMotionValueEvent } from "framer-motion";
 import { useMotionValue, animate } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -377,19 +377,25 @@ interface ArtParallaxBandProps {
 export function ArtParallaxBand({
   imageSrc, imageAlt, children, height = 550, unoptimized: unopt = false
 }: ArtParallaxBandProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  // Use numeric values (pixels) — WAAPI requires numbers, not string percentages
-  // The inner div is inset -14% ≈ 0.14 × height on each side, so total height ≈ 1.28×.
-  // We translate by ±0.08 of the container height as a fraction, passed as pure numbers.
+  const outerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: outerRef, offset: ["start end", "end start"] });
+
+  // Use useMotionValueEvent → direct DOM ref update to avoid WAAPI entirely.
+  // No motion.div with MotionValue style props — that triggers startWaapiAnimation.
   const yOffset = height * 0.14;
-  const y = useTransform(scrollYProgress, [0, 1], [-yOffset, yOffset]);
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    if (innerRef.current) {
+      innerRef.current.style.transform = `translateY(${(v * 2 - 1) * yOffset}px)`;
+    }
+  });
 
   return (
-    <div ref={ref} className="relative w-full overflow-hidden" style={{ height }}>
-      <motion.div
+    <div ref={outerRef} className="relative w-full overflow-hidden" style={{ height }}>
+      <div
+        ref={innerRef}
         className="absolute inset-[-14%]"
-        style={{ translateY: y }}
+        style={{ willChange: 'transform', transform: `translateY(${-yOffset}px)` }}
       >
         <Image
           src={imageSrc}
@@ -400,7 +406,7 @@ export function ArtParallaxBand({
           sizes="100vw"
           unoptimized={unopt}
         />
-      </motion.div>
+      </div>
       <div className="absolute inset-0 art-edge-fade" />
       <div className="absolute inset-0" style={{
         background: 'radial-gradient(ellipse at center, transparent 20%, rgba(8,6,9,0.65) 100%)'
@@ -621,17 +627,15 @@ interface EraData {
 export function ArtEraTimeline({ eras }: { eras: EraData[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // Map vertical scroll to horizontal translation.
-  // IMPORTANT: useTransform requires pure numeric values — never string pixels.
-  // "0px" / "-300px" breaks Framer Motion's WAAPI path and throws TypeError.
+  // Measure track overflow once mounted and on resize
   const [maxTranslate, setMaxTranslate] = useState(0);
-
   useEffect(() => {
     function measure() {
       if (trackRef.current && containerRef.current) {
@@ -644,17 +648,23 @@ export function ArtEraTimeline({ eras }: { eras: EraData[] }) {
     return () => window.removeEventListener("resize", measure);
   }, []);
 
-  // Pure numbers — Framer Motion appends "px" automatically for translateX
-  const x = useTransform(scrollYProgress, [0, 1], [0, -maxTranslate]);
+  // Drive ALL scroll-linked DOM mutations via useMotionValueEvent → direct ref.style.
+  // This completely bypasses Framer Motion's WAAPI path (startWaapiAnimation).
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translateX(${-v * maxTranslate}px)`;
+    }
+    if (progressBarRef.current) {
+      progressBarRef.current.style.width = `${v * 100}%`;
+    }
+  });
 
-  // Height = enough to scroll through all eras smoothly
   const scrollHeight = `${Math.max(300, eras.length * 120)}vh`;
 
   return (
     <div ref={containerRef} style={{ height: scrollHeight, position: 'relative' }}>
-      {/* Sticky viewport */}
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center" style={{ background: 'var(--art-void)' }}>
-        {/* Section label */}
+        {/* Header */}
         <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12 mb-8 flex-shrink-0">
           <p className="art-text-label" style={{ color: 'var(--art-accent-copper)' }}>
             The Architecture of a Nation
@@ -665,31 +675,26 @@ export function ArtEraTimeline({ eras }: { eras: EraData[] }) {
           <p className="art-text-metadata mt-2">Scroll to travel through time →</p>
         </div>
 
-        {/* Thin divider */}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }} />
 
-        {/* Horizontally scrolling track */}
+        {/* Track — plain div, translated via direct DOM ref update */}
         <div className="overflow-hidden flex-1 flex items-center">
-          <motion.div
+          <div
             ref={trackRef}
             className="art-era-track h-full"
-            style={{ x }}
+            style={{ willChange: 'transform', transform: 'translateX(0px)' }}
           >
             {eras.map((era, i) => (
               <EraCard key={era.era} era={era} index={i} total={eras.length} scrollYProgress={scrollYProgress} />
             ))}
-          </motion.div>
+          </div>
         </div>
 
-        {/* Progress bar */}
+        {/* Progress bar — plain div updated via ref */}
         <div className="flex-shrink-0" style={{ height: '2px', background: 'rgba(255,255,255,0.04)' }}>
-          <motion.div
-            style={{
-              height: '2px',
-              background: 'var(--art-accent-copper)',
-              transformOrigin: 'left',
-              scaleX: scrollYProgress,
-            }}
+          <div
+            ref={progressBarRef}
+            style={{ height: '2px', width: '0%', background: 'var(--art-accent-copper)', willChange: 'width' }}
           />
         </div>
       </div>
@@ -705,19 +710,47 @@ function EraCard({
   total: number;
   scrollYProgress: ReturnType<typeof useScroll>["scrollYProgress"];
 }) {
-  // Each card activates within its 1/total portion of scroll
+  const cardRef = useRef<HTMLDivElement>(null);
+
   const start = index / total;
   const end = (index + 1) / total;
 
-  const opacity = useTransform(scrollYProgress, [start - 0.1, start + 0.05, end - 0.05, end + 0.1], [0.3, 1, 1, 0.3]);
-  const scale = useTransform(scrollYProgress, [start, start + 0.05, end - 0.05, end], [0.96, 1, 1, 0.96]);
+  // Drive opacity + scale via direct DOM ref mutation (useMotionValueEvent).
+  // Avoids motion.div with MotionValue style props → no WAAPI TypeError.
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    if (!cardRef.current) return;
+
+    // Opacity: ramp 0.3→1 entering, hold at 1, ramp 1→0.3 leaving
+    const opacityIn = start - 0.1;
+    const opacityPeak = start + 0.05;
+    const opacityFall = end - 0.05;
+    const opacityOut = end + 0.1;
+    let opacity: number;
+    if (v <= opacityIn) opacity = 0.3;
+    else if (v <= opacityPeak) opacity = 0.3 + ((v - opacityIn) / (opacityPeak - opacityIn)) * 0.7;
+    else if (v <= opacityFall) opacity = 1;
+    else if (v <= opacityOut) opacity = 1 - ((v - opacityFall) / (opacityOut - opacityFall)) * 0.7;
+    else opacity = 0.3;
+
+    // Scale: 0.96→1 entering, hold at 1, 1→0.96 leaving
+    let scale: number;
+    if (v <= start) scale = 0.96;
+    else if (v <= start + 0.05) scale = 0.96 + ((v - start) / 0.05) * 0.04;
+    else if (v <= end - 0.05) scale = 1;
+    else if (v <= end) scale = 1 - ((v - (end - 0.05)) / 0.05) * 0.04;
+    else scale = 0.96;
+
+    cardRef.current.style.opacity = String(opacity);
+    cardRef.current.style.transform = `scale(${scale})`;
+  });
 
   return (
-    <motion.div
+    <div
+      ref={cardRef}
       className="art-era-card h-full flex flex-col justify-center px-10 py-12 relative"
-      style={{ opacity, scale, background: 'var(--art-void)' }}
+      style={{ opacity: 0.3, transform: 'scale(0.96)', background: 'var(--art-void)', willChange: 'opacity, transform' }}
     >
-      {/* Era index */}
+      {/* Large ghost index number */}
       <p
         className="art-text-display mb-6 select-none"
         style={{
@@ -733,15 +766,12 @@ function EraCard({
         {String(index + 1).padStart(2, '0')}
       </p>
 
-      {/* Era icon */}
       <span style={{ fontSize: '2rem', marginBottom: '1rem' }}>{era.icon}</span>
 
-      {/* Years */}
       <p className="art-text-metadata mb-2" style={{ color: era.color }}>
         {era.years}
       </p>
 
-      {/* Movement name */}
       <h3
         className="text-white mb-4"
         style={{
@@ -756,21 +786,18 @@ function EraCard({
         {era.movement}
       </h3>
 
-      {/* Thin colored rule */}
       <div style={{ height: '2px', width: '40px', background: era.color, marginBottom: '1.25rem' }} />
 
-      {/* Description */}
       <p className="art-text-body mb-6" style={{ fontSize: 'clamp(13px, 1.1vw, 15px)' }}>
         {era.description}
       </p>
 
-      {/* Key work */}
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '1rem' }}>
         <p className="art-text-metadata mb-1">Landmark Work</p>
         <p className="text-white text-sm font-semibold">{era.keywork}</p>
         <p className="art-text-metadata mt-1">{era.architect}</p>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
