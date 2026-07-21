@@ -31,8 +31,10 @@ const getEpub = (): ((url: string, opts?: Record<string, unknown>) => any) | und
 
 type Theme = "dark" | "sepia" | "light";
 
+// Dark is pure OLED black (#000000) — the reading area, both bars, and the epub
+// page background all sit at true black so the page is one seamless black field.
 const THEMES: Record<Theme, { bg: string; fg: string; label: string; barBg: string }> = {
-  dark:  { bg: "#0c0c12", fg: "#e2d9c8", label: "Dark",  barBg: "#111118" },
+  dark:  { bg: "#000000", fg: "#e8e0d0", label: "Dark",  barBg: "#000000" },
   sepia: { bg: "#f5ede0", fg: "#3b2f20", label: "Sepia", barBg: "#e8d9c4" },
   light: { bg: "#fafafa", fg: "#1a1a1a", label: "Light", barBg: "#f0f0f0" },
 };
@@ -53,6 +55,10 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
   const [canPrev,   setCanPrev]   = useState(false);
   const [canNext,   setCanNext]   = useState(true);
   const [atEnd,     setAtEnd]     = useState(false);
+  const [toc,       setToc]       = useState<Array<{ label: string; href: string }>>([]);
+  const [tocOpen,   setTocOpen]   = useState(false);
+  // Current chapter href, so the contents panel can highlight where you are.
+  const [currentHref, setCurrentHref] = useState("");
 
   // Keep a ref to isLoading so the rAF callback and keyboard handler
   // always see the current value without being in their dependency arrays.
@@ -105,7 +111,15 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
         height:  Math.max(1, Math.floor(rect.height)),
         spread:  "none",
         flow:    "paginated",
-        manager: "default",
+        // epub.js renders each page into a sandboxed iframe. By default
+        // (allowScriptedContent: false) the sandbox is just "allow-same-origin",
+        // and modern WebKit then blocks epub.js from reaching into the frame to
+        // paginate and theme it — surfacing as `SecurityError: … lacks the
+        // allow-same-origin flag` and `null is not an object (this.document.body)`,
+        // with a blank reading pane and dead chapter links. Enabling scripted
+        // content adds "allow-scripts" so the frame is fully same-origin
+        // accessible. The content is our own public-domain EPUBs, not untrusted.
+        allowScriptedContent: true,
       });
       renditionRef.current = rendition;
 
@@ -115,6 +129,22 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
       rendition.display().then(() => {
         setIsLoading(false);
         isLoadingRef.current = false;
+        // Build a location index so the progress bar and percentage are real.
+        // Without this, epub.js reports percentage 0 for a whole spine item and
+        // the bar barely moves. generate() is async and can take a moment on a
+        // long book; the `relocated` handler picks up accurate percentages once
+        // it resolves. Guard everything — a destroyed book must not throw here.
+        try {
+          epubBook.locations?.generate?.(1600).then(() => {
+            try {
+              const loc = rendition.currentLocation?.();
+              const cfi = loc?.start?.cfi;
+              if (cfi && epubBook.locations?.percentageFromCfi) {
+                setProgress(Math.round(epubBook.locations.percentageFromCfi(cfi) * 100));
+              }
+            } catch { /* ignore */ }
+          }).catch(() => {});
+        } catch { /* ignore */ }
       }).catch(() => {
         setError("This eBook could not be rendered. Try downloading it instead.");
         setIsLoading(false);
@@ -126,20 +156,42 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
       // (rather than a percentage that is 0 for the whole first chapter) is what
       // makes the "previous page" button reliably enable and work.
       rendition.on("relocated", (location: {
-        start?: { percentage?: number };
+        start?: { percentage?: number; href?: string; cfi?: string };
         atStart?: boolean;
         atEnd?: boolean;
       }) => {
-        setProgress(Math.round((location?.start?.percentage ?? 0) * 100));
+        // Prefer the generated location index (accurate); fall back to whatever
+        // epub.js put on the event before generate() has finished.
+        let pct = location?.start?.percentage ?? 0;
+        try {
+          const cfi = location?.start?.cfi;
+          if (cfi && epubBook.locations?.length?.() && epubBook.locations?.percentageFromCfi) {
+            pct = epubBook.locations.percentageFromCfi(cfi);
+          }
+        } catch { /* ignore */ }
+        setProgress(Math.round(pct * 100));
         setCanPrev(!location?.atStart);
         setCanNext(!location?.atEnd);
         setAtEnd(!!location?.atEnd);
+        if (location?.start?.href) setCurrentHref(location.start.href);
       });
 
-      // Try to get chapter title from TOC
-      epubBook.loaded.navigation.then((nav: { toc?: Array<{ label: string }> }) => {
-        const first = nav?.toc?.[0];
-        if (first?.label) setChapter(first.label.trim());
+      // Load the full table of contents for chapter navigation. epub.js TOC
+      // items can nest (parts → chapters); flatten one level so the panel is a
+      // simple, scannable list. The reader's top-bar title also follows the
+      // current chapter via `currentHref` matched against this list.
+      epubBook.loaded.navigation.then((nav: {
+        toc?: Array<{ label: string; href: string; subitems?: Array<{ label: string; href: string }> }>;
+      }) => {
+        const flat: Array<{ label: string; href: string }> = [];
+        for (const item of nav?.toc ?? []) {
+          if (item.label?.trim()) flat.push({ label: item.label.trim(), href: item.href });
+          for (const sub of item.subitems ?? []) {
+            if (sub.label?.trim()) flat.push({ label: "  " + sub.label.trim(), href: sub.href });
+          }
+        }
+        setToc(flat);
+        if (flat[0]?.label) setChapter(flat[0].label.trim());
       }).catch(() => {});
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -236,6 +288,25 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
     catch { /* ignore */ }
   }, [canPrev]);
 
+  // Jump straight to a chapter from the contents panel.
+  const jumpTo = useCallback((href: string) => {
+    setTocOpen(false);
+    if (!renditionRef.current) return;
+    try { renditionRef.current.display(href).catch(() => {}); }
+    catch { /* ignore */ }
+  }, []);
+
+  // Keep the top-bar title on the current chapter as the reader relocates.
+  useEffect(() => {
+    if (!currentHref || toc.length === 0) return;
+    // Match on the path before any #fragment — TOC hrefs and location hrefs
+    // often differ only by the anchor.
+    const base = (h: string) => h.split("#")[0];
+    const hit = toc.find((t) => base(t.href) === base(currentHref))
+             ?? [...toc].reverse().find((t) => base(currentHref).endsWith(base(t.href)));
+    if (hit) setChapter(hit.label.trim());
+  }, [currentHref, toc]);
+
   // ── Keyboard shortcuts ────────────────────────────────────────────────────
   useEffect(() => {
     if (!book) return;
@@ -245,11 +316,11 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
       if (e.key === "ArrowRight")               { e.preventDefault(); goNext(); }
       if (e.key === " " && !isLoadingRef.current) { e.preventDefault(); goNext(); }
       if (e.key === "ArrowLeft")                { e.preventDefault(); goPrev(); }
-      if (e.key === "Escape")                   { e.preventDefault(); onClose(); }
+      if (e.key === "Escape")                   { e.preventDefault(); if (tocOpen) setTocOpen(false); else onClose(); }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [book, goNext, goPrev, onClose]);
+  }, [book, goNext, goPrev, onClose, tocOpen]);
 
   // ── Lock body scroll when reader is active ────────────────────────────────
   useEffect(() => {
@@ -298,6 +369,22 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
             aria-label="Close Reader"
           >
             ←
+          </button>
+
+          {/* Contents (chapter navigation) */}
+          <button
+            id="reader-toc"
+            onClick={() => setTocOpen((o) => !o)}
+            disabled={toc.length === 0}
+            className="shrink-0 w-8 h-8 flex items-center justify-center rounded-full opacity-50 hover:opacity-100 transition-opacity disabled:opacity-20"
+            style={{ color: tocOpen ? "#e8b923" : t.fg }}
+            title="Contents"
+            aria-label="Table of contents"
+            aria-expanded={tocOpen}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h10" />
+            </svg>
           </button>
 
           {/* Book info */}
@@ -376,6 +463,57 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
 
         {/* ── Reading area ─────────────────────────────────────────────────── */}
         <div className="flex-1 flex items-stretch relative overflow-hidden" style={{ background: t.bg }}>
+
+          {/* ── Contents panel (chapter navigation) ─────────────────────────── */}
+          {tocOpen && (
+            <>
+              <div
+                className="absolute inset-0 z-30"
+                style={{ background: "rgba(0,0,0,0.5)" }}
+                onClick={() => setTocOpen(false)}
+                aria-hidden
+              />
+              <motion.nav
+                initial={{ x: "-100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "-100%" }}
+                transition={{ duration: 0.28, ease: "easeOut" }}
+                className="absolute left-0 top-0 bottom-0 z-40 w-[min(360px,85vw)] flex flex-col border-r"
+                style={{ background: t.barBg, borderColor: theme === "dark" ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.12)" }}
+                aria-label="Table of contents"
+              >
+                <div className="flex items-center justify-between px-5 py-4 border-b shrink-0"
+                  style={{ borderColor: theme === "dark" ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.1)" }}>
+                  <span className="text-[11px] font-bold uppercase tracking-widest opacity-50" style={{ color: t.fg }}>
+                    Contents
+                  </span>
+                  <button onClick={() => setTocOpen(false)} className="opacity-50 hover:opacity-100 transition-opacity text-lg"
+                    style={{ color: t.fg }} aria-label="Close contents">✕</button>
+                </div>
+                <div className="flex-1 overflow-y-auto py-2">
+                  {toc.map((item, i) => {
+                    const active = currentHref.split("#")[0] === item.href.split("#")[0];
+                    return (
+                      <button
+                        key={`${item.href}-${i}`}
+                        onClick={() => jumpTo(item.href)}
+                        className="w-full text-left px-5 py-2.5 text-sm transition-colors hover:bg-white/5"
+                        style={{
+                          color: active ? "#e8b923" : t.fg,
+                          opacity: active ? 1 : 0.6,
+                          borderLeft: active ? "2px solid #e8b923" : "2px solid transparent",
+                          whiteSpace: "pre",
+                        }}
+                        aria-current={active}
+                      >
+                        {item.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </motion.nav>
+            </>
+          )}
 
           {/* Prev button */}
           <button
