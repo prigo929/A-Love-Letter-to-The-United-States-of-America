@@ -168,42 +168,6 @@ const MODERN_SUPERTALLS = [
   },
 ];
 
-// Supertall Physics & Engineering Matrix
-const PHYSICS_MODULES = [
-  {
-    title: "Bedrock Anchor Caissons",
-    titleRo: "Caroaje Ancorate în Roca de Bază",
-    stat: "100 FT DEEP",
-    detail: "Drilled 80-100 feet deep into 450-million-year-old Manhattan schist rock, anchoring 1,400+ ft supertalls against hurricane overturn torque.",
-    detailRo: "Forate 25-30m adâncime în roca de ardezie de 450 milioane de ani din Manhattan, ancorând turnurile împotriva forțelor de răsturnare.",
-    color: "copper" as const,
-  },
-  {
-    title: "Vortex Shedding Aerodynamics",
-    titleRo: "Aerodinamică și Amortizarea Vârtejurilor",
-    stat: "100+ MPH WINDS",
-    detail: "Spiral setbacks, chamfered corners, and porous blow-through floors break up wind vortexes to eliminate dangerous swaying resonance.",
-    detailRo: "Retragerile spiralați, colțurile bizotate și etajele perforate sparg vârtejurile de aer pentru a elimina balansul de rezonanță.",
-    color: "slate" as const,
-  },
-  {
-    title: "800-Ton Tuned Mass Pendulums",
-    titleRo: "Pendule Amortizoare de 800 Tone",
-    stat: "800 TON SWAY DAMPER",
-    detail: "Giant steel or lead counterweight pendulums suspended near the crown act like shock absorbers, swinging counter to wind sway.",
-    detailRo: "Pendule masive din oțel sau plumb suspendate lângă coroana turnului acționează ca amortizoare, balansându-se în sens opus vântului.",
-    color: "crimson" as const,
-  },
-  {
-    title: "High-Speed SkyPod Elevators",
-    titleRo: "Ascensoare Expres de Mare Viteză",
-    stat: "45 MPH / 2,000 FPM",
-    detail: "Double-deck express shuttles ascend to sky lobbies in 45 seconds using pressurized cabs and aerodynamic wind fairings.",
-    detailRo: "Ascensoare expres supraetajate urcă la etajele panoramice în 45 de secunde folosind cabine presurizate aerodinamice.",
-    color: "copper" as const,
-  },
-];
-
 export default async function SkyscraperRevolutionPage() {
   const locale = await getServerLocale();
   const isRo = locale === "ro";
@@ -365,27 +329,9 @@ export default async function SkyscraperRevolutionPage() {
         {/* Interactive Data, Engineering & Master Architects Suite */}
         <SkyscraperVisualizations />
 
-        {/* Dynamic Wind Tunnel, 24h Lighting & Proportional Scale Visualizers */}
+        {/* Dynamic Proportional Scale Visualizer */}
         <div className="mx-auto max-w-[1440px] px-6 md:px-12 py-12">
           <SkyscraperInteractiveVisuals />
-        </div>
-
-        {/* Supertall Physics & Anatomy Matrix */}
-        <div className="mx-auto max-w-[900px] px-6 md:px-12 py-16">
-          <p className="art-text-label mb-8" style={{ color: "var(--art-accent-copper)" }}>
-            {copy.physicsTitle}
-          </p>
-          <div className="space-y-4">
-            {PHYSICS_MODULES.map((pm) => (
-              <ArtFactModule
-                key={pm.title}
-                fact={isRo ? pm.titleRo : pm.title}
-                detail={isRo ? pm.detailRo : pm.detail}
-                source={`PHYSICS MATRIX · ${pm.stat}`}
-                color={pm.color}
-              />
-            ))}
-          </div>
         </div>
 
         <ArtQuoteBreak quote={copy.quote} attribution={copy.quoteBy} />
