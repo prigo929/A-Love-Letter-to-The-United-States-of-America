@@ -183,56 +183,74 @@ export function ArtStyles() {
 // 1. ArtHeroCrossfade — 5-slide crossfade with Ken-Burns zoom
 // ─────────────────────────────────────────────────────────────────────────────
 
-// Every URL here is a VERIFIED Wikimedia Commons file (queried via the API, then
-// fetched to confirm HTTP 200). The previous set was five hallucinated paths that
-// all 404'd — which is why the hero showed nothing. Do not hand-write these; if
-// you change one, fetch it first and confirm it resolves.
-const ART_HERO_SLIDES = [
+import empireStateNight from "@/IMAGES/Architecture/Empire_State_Building_night_view.jpg";
+import brooklynBridge from "@/IMAGES/Architecture/Brooklyn_Bridge_NYC.jpg";
+import gatewayArch from "@/IMAGES/Architecture/Gateway_Arch_St_Louis.jpg";
+import guggenheim from "@/IMAGES/Architecture/Guggenheim_Museum.jpg";
+import oneWTCLocal from "@/IMAGES/Architecture/One_World_Trade_Center,_Financial_District,_Manhattan,_New_York.jpg";
+import chryslerLocal from "@/IMAGES/Architecture/Chrysler_Building.jpg";
+import woolworthLocal from "@/IMAGES/Architecture/The_Woolworth_Building_in_New_York_City.jpg";
+import willisLocal from "@/IMAGES/Architecture/Willis-Tower-Chicago.jpg";
+
+export interface HeroSlide {
+  src: string;
+  alt: string;
+  label: string;
+  badge: string;
+}
+
+const ART_HERO_SLIDES: HeroSlide[] = [
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/EMPIRE_STATE_BUILDING%2C_NIGHT%2C_COLORFUL.jpg/1920px-EMPIRE_STATE_BUILDING%2C_NIGHT%2C_COLORFUL.jpg",
+    src: empireStateNight.src,
     alt: "Empire State Building at night, New York City",
     label: "EMPIRE STATE · NEW YORK CITY",
     badge: "1931 — ART DECO",
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Brooklyn-side_tower_of_the_Brooklyn_Bridge_from_Brooklyn_Bridge_Park%2C_New_York_City.jpg/1920px-Brooklyn-side_tower_of_the_Brooklyn_Bridge_from_Brooklyn_Bridge_Park%2C_New_York_City.jpg",
+    src: brooklynBridge.src,
     alt: "Brooklyn Bridge tower, New York City",
     label: "BROOKLYN BRIDGE · 1883",
     badge: "GOTHIC REVIVAL",
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Gateway_Arch%2C_St._Louis.jpg/1920px-Gateway_Arch%2C_St._Louis.jpg",
+    src: gatewayArch.src,
     alt: "Gateway Arch, St. Louis, Missouri",
     label: "GATEWAY ARCH · ST. LOUIS",
     badge: "1965 — MODERNIST",
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/5/54/Exterior_and_Museum_Mile_View_from_Interior_Circular_Window_of_the_Solomon_R_Guggenheim_Museum.jpg",
+    src: guggenheim.src,
     alt: "Solomon R. Guggenheim Museum, Frank Lloyd Wright, New York City",
     label: "GUGGENHEIM · NEW YORK CITY",
     badge: "1959 — F. L. WRIGHT",
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/New_York_City_%28New_York%2C_USA%29%2C_One_World_Trade_Center_--_2012_--_6566.jpg/1920px-New_York_City_%28New_York%2C_USA%29%2C_One_World_Trade_Center_--_2012_--_6566.jpg",
+    src: oneWTCLocal.src,
     alt: "One World Trade Center, New York City",
     label: "ONE WORLD TRADE · NEW YORK",
     badge: "2013 — SUPERTALL",
   },
 ];
 
-export function ArtHeroCrossfade({ children }: { children: React.ReactNode }) {
+export function ArtHeroCrossfade({
+  slides = ART_HERO_SLIDES,
+  children,
+}: {
+  slides?: HeroSlide[];
+  children: React.ReactNode;
+}) {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => setCurrent((c) => (c + 1) % ART_HERO_SLIDES.length), 7500);
+    const id = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 7500);
     return () => clearInterval(id);
-  }, []);
+  }, [slides.length]);
 
   return (
     <section className="relative h-screen overflow-hidden" style={{ background: 'var(--art-void)' }}>
-      {ART_HERO_SLIDES.map((slide, i) => {
-        const isPrev = i === (current - 1 + ART_HERO_SLIDES.length) % ART_HERO_SLIDES.length;
-        const isNext = i === (current + 1) % ART_HERO_SLIDES.length;
+      {slides.map((slide, i) => {
+        const isPrev = i === (current - 1 + slides.length) % slides.length;
+        const isNext = i === (current + 1) % slides.length;
         const isActive = i === current;
         if (!isActive && !isPrev && !isNext) return null;
 
@@ -280,15 +298,15 @@ export function ArtHeroCrossfade({ children }: { children: React.ReactNode }) {
           transition={{ duration: 0.5 }}
         >
           <p className="art-text-metadata" style={{ color: 'var(--art-accent-copper)' }}>
-            {ART_HERO_SLIDES[current].badge}
+            {slides[current].badge}
           </p>
-          <p className="art-text-metadata">{ART_HERO_SLIDES[current].label}</p>
+          <p className="art-text-metadata">{slides[current].label}</p>
         </motion.div>
       </AnimatePresence>
 
       {/* Dot nav */}
       <div className="absolute bottom-8 right-8 z-20 flex items-center gap-2">
-        {ART_HERO_SLIDES.map((_, i) => (
+        {slides.map((_, i) => (
           <button
             key={i}
             id={`art-hero-dot-${i}`}

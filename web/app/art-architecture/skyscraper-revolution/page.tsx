@@ -5,18 +5,19 @@
 // to-scale interactive skyline (SkyscraperRace) plus the three engineering
 // breakthroughs that made it possible.
 //
-// Imagery is verified public-domain / CC from Wikimedia Commons — see
-// lib/data/art-assets.ts — and every credit line is carried into the captions.
+// All imagery is stored locally in /IMAGES/Architecture — see lib/data/art-assets.ts
 
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import {
   ArtStyles,
+  ArtHeroCrossfade,
   ArtHeroTitle,
   ArtParallaxBand,
   ArtQuoteBreak,
   ArtFactModule,
+  type HeroSlide,
 } from "@/components/art-architecture/ArtAnimations";
 import { SkyscraperRace, type Tower } from "@/components/art-architecture/SkyscraperRace";
 import { ART_ASSETS } from "@/lib/data/art-assets";
@@ -29,9 +30,42 @@ export const metadata: Metadata = {
   alternates: { canonical: "/art-architecture/skyscraper-revolution" },
 };
 
+// Local skyscraper hero slideshow
+const SKYSCRAPER_HERO_SLIDES: HeroSlide[] = [
+  {
+    src: ART_ASSETS.chrysler.src,
+    alt: "The Chrysler Building Art Deco crown, 1930",
+    label: "CHRYSLER BUILDING · NEW YORK CITY",
+    badge: "1930 — ART DECO",
+  },
+  {
+    src: ART_ASSETS.oneWTC.src,
+    alt: "One World Trade Center soaring into the sky",
+    label: "ONE WORLD TRADE CENTER · NEW YORK CITY",
+    badge: "2013 — SUPERTALL",
+  },
+  {
+    src: ART_ASSETS.woolworth.src,
+    alt: "The Woolworth Building Gothic facade",
+    label: "WOOLWORTH BUILDING · NEW YORK CITY",
+    badge: "1913 — GOTHIC REVIVAL",
+  },
+  {
+    src: ART_ASSETS.willisTower.src,
+    alt: "The Willis Tower in Chicago",
+    label: "WILLIS TOWER · CHICAGO",
+    badge: "1973 — BUNDLED TUBE",
+  },
+  {
+    src: ART_ASSETS.flatiron.src,
+    alt: "The Flatiron Building, New York, 1902",
+    label: "FLATIRON BUILDING · NEW YORK CITY",
+    badge: "1902 — BEAUX-ARTS",
+  },
+];
+
 // The height race. Feet are architectural height (roof, except where a building's
-// fame IS its spire — Chrysler and Empire State — noted in the copy). Heights are
-// the widely cited figures; treat them as the well-known numbers they are.
+// fame IS its spire — Chrysler and Empire State — noted in the copy).
 const TOWERS: Tower[] = [
   {
     key: "home-insurance", name: "Home Insurance Building", city: "Chicago", cityRo: "Chicago",
@@ -117,7 +151,7 @@ export default async function SkyscraperRevolutionPage() {
         f3s: "Seagram Building, New York, 1958",
         quote: "Un zgârie-nori trebuie să fie fiecare centimetru mândru și înălțător, o unitate lipsită de o singură linie disidentă.",
         quoteBy: "Louis Sullivan, 1896",
-        sourceNote: "Imagini: domeniu public sau licențe CC, via Wikimedia Commons.",
+        sourceNote: "Imagini: stocate local în /IMAGES/Architecture.",
         backLink: "Toate temele de artă și arhitectură",
       }
     : {
@@ -142,7 +176,7 @@ export default async function SkyscraperRevolutionPage() {
         f3s: "Seagram Building, New York, 1958",
         quote: "A tall building must be every inch a proud and soaring thing, rising in sheer exultation from bottom to top without a single dissenting line.",
         quoteBy: "Louis Sullivan, 1896",
-        sourceNote: "Imagery: public domain or CC-licensed, via Wikimedia Commons.",
+        sourceNote: "Imagery: stored locally in /IMAGES/Architecture.",
         backLink: "All art and architecture topics",
       };
 
@@ -150,24 +184,29 @@ export default async function SkyscraperRevolutionPage() {
     <>
       <ArtStyles />
       <main style={{ background: "var(--art-void)" }} className="min-h-screen text-white">
-        {/* Hero over the Chrysler crown */}
-        <ArtParallaxBand imageSrc={ART_ASSETS.chrysler.src} imageAlt={isRo ? ART_ASSETS.chrysler.altRo : ART_ASSETS.chrysler.alt} height={620} unoptimized>
-          <div className="mx-auto max-w-5xl px-6">
-            <ArtHeroTitle eyebrow={copy.eyebrow} line1={copy.line1} line2={copy.line2} body={copy.heroBody} />
-          </div>
-        </ArtParallaxBand>
+        {/* Full-screen Hero matching the exact format, design & header distance of main Art & Architecture page */}
+        <ArtHeroCrossfade slides={SKYSCRAPER_HERO_SLIDES}>
+          <ArtHeroTitle
+            eyebrow={copy.eyebrow}
+            line1={copy.line1}
+            line2={copy.line2}
+            body={copy.heroBody}
+          >
+            <div className="mt-8">
+              <Breadcrumb
+                items={[
+                  { label: copy.home, href: "/" },
+                  { label: copy.section, href: "/art-architecture" },
+                  { label: copy.pageLabel },
+                ]}
+                className="py-0 text-white/80"
+              />
+            </div>
+          </ArtHeroTitle>
+        </ArtHeroCrossfade>
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Breadcrumb
-            items={[
-              { label: copy.home, href: "/" },
-              { label: copy.section, href: "/art-architecture" },
-              { label: copy.pageLabel },
-            ]}
-            className="py-8"
-          />
-
-          {/* The signature interaction */}
+          {/* The signature height race interaction */}
           <section className="py-16 md:py-24">
             <p className="art-text-label mb-6" style={{ color: "var(--art-accent-copper)" }}>
               {copy.raceTitle}
@@ -203,7 +242,7 @@ export default async function SkyscraperRevolutionPage() {
         </div>
 
         {/* Full-bleed Chicago, where it began */}
-        <ArtParallaxBand imageSrc={ART_ASSETS.chicagoLoop.src} imageAlt={isRo ? ART_ASSETS.chicagoLoop.altRo : ART_ASSETS.chicagoLoop.alt} height={480} unoptimized>
+        <ArtParallaxBand imageSrc={ART_ASSETS.chicagoLoop.src} imageAlt={isRo ? ART_ASSETS.chicagoLoop.altRo : ART_ASSETS.chicagoLoop.alt} height={480}>
           <div className="mx-auto max-w-3xl px-6 text-center">
             <p className="art-text-label" style={{ color: "var(--art-accent-copper)" }}>
               {isRo ? "Chicago — unde a început totul, 1885" : "Chicago — where it began, 1885"}
