@@ -50,7 +50,6 @@ function ReaderInner() {
   const renditionRef = useRef<any>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const bookObjRef   = useRef<any>(null);
-  const scriptLoaded = useRef(false);
 
   const [theme,     setTheme]     = useState<Theme>("dark");
   const [fontSize,  setFontSize]  = useState(100);
@@ -129,36 +128,53 @@ function ReaderInner() {
   }, [bookMeta, destroyBook]);
 
   // ── Load epub.js script once, then init reader ─────────────────────────────
+  // Idempotent by design. The previous version used a `scriptLoaded` ref as a
+  // one-shot guard, which deadlocks under React StrictMode's dev double-invoke:
+  // the first pass flips the ref to true and appends the script, the second pass
+  // sees the ref already true and returns before appending — but StrictMode had
+  // torn down the first pass, so no <script> ends up in the DOM at all and the
+  // reader spins forever. Confirmed live: engine present, book fetchable, zero
+  // script tags injected.
+  //
+  // The fix keys off a stable element id instead of a ref, so it does the right
+  // thing however many times the effect runs (StrictMode, Fast Refresh, or a
+  // real book change): reuse the tag if present, attach a load handler either
+  // way, and initialise the moment ePub is available.
+  const SCRIPT_ID = "epubjs-lib";
   useEffect(() => {
     if (!bookMeta) return;
+    let cancelled = false;
+    const start = () => { if (!cancelled) initReader(); };
 
     if (window.ePub) {
-      // Already loaded
-      scriptLoaded.current = true;
-      initReader();
-      return;
+      start();
+      return () => { cancelled = true; destroyBook(); };
     }
 
-    if (scriptLoaded.current) {
-      // Script tag injected but not yet executed — wait
-      return;
+    let script = document.getElementById(SCRIPT_ID) as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement("script");
+      script.id = SCRIPT_ID;
+      script.src = "/assets/epubjs.min.js"; // own origin → no SRI needed
+      script.async = true;
+      document.head.appendChild(script);
     }
 
-    scriptLoaded.current = true;
-    const script = document.createElement("script");
-    script.src = "/assets/epubjs.min.js";
-    // No external CDN → no SRI hash needed (served from own origin).
-    script.async = true;
-    script.onload = () => {
-      initReader();
-    };
-    script.onerror = () => {
+    const onLoad = () => start();
+    const onError = () => {
+      if (cancelled) return;
       setError("Failed to load the reader engine.");
       setIsLoading(false);
     };
-    document.head.appendChild(script);
+    script.addEventListener("load", onLoad);
+    script.addEventListener("error", onError);
+    // If the tag existed and finished loading between the check above and now.
+    if (window.ePub) start();
 
     return () => {
+      cancelled = true;
+      script?.removeEventListener("load", onLoad);
+      script?.removeEventListener("error", onError);
       destroyBook();
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -435,6 +435,40 @@ export const BOOK_DATABASE: BookItem[] = [
     coverBg: "linear-gradient(135deg, #1e1b4b 0%, #03001e 100%)",
     textColor: "#d8b4fe",
   },
+  // ── Previously missing — added to ensure every file in /public/assets/books is represented ──
+  {
+    title: "The Gettysburg Address",
+    author: "Abraham Lincoln",
+    year: "1863",
+    fileName: "pg4-images-3.epub",
+    category: "oratory-poetry",
+    descriptionEn: "Lincoln's 272-word masterpiece dedicating the Soldiers' National Cemetery and redefining the Civil War as a struggle for human equality and national rebirth.",
+    descriptionRo: "Capodopera de 272 de cuvinte a lui Lincoln, care a redefinit Războiul Civil ca o luptă pentru egalitate umană și renaștere națională.",
+    coverBg: "linear-gradient(135deg, #1e2d40 0%, #0a1520 100%)",
+    textColor: "#e2d9c8",
+  },
+  {
+    title: "A Teacher's Guide to Land of Hope",
+    author: "Wilfred M. McClay & John McBride",
+    year: "2020",
+    fileName: "A teacher's guide to Land of hope - an invitation to the -- Wilfred M_ McClay; John McBride -- First American edition, New York, 2020 -- Encounter -- isbn13 9781641771405 -- 1f1f3261c01964965f28e44c790774c0 -- Anna’s Archive.epub",
+    category: "history-hub",
+    descriptionEn: "A structured companion to McClay's celebrated American history narrative, providing discussion questions, primary sources, and classroom frameworks.",
+    descriptionRo: "Un ghid structurat pentru narațiunea istorică americană a lui McClay, oferind întrebări de discuție și cadre pedagogice.",
+    coverBg: "linear-gradient(135deg, #3b2e1a 0%, #1c160a 100%)",
+    textColor: "#fef3c7",
+  },
+  {
+    title: "Suicidal Empathy",
+    author: "Gad Saad",
+    year: "2026",
+    fileName: "Suicidal Empathy- Dying to Be Kind -- Gad Saad -- 2026 -- Broadside Books -- isbn13 9780063446540 -- 40ee5a78780bda78d9a9720213540567 -- Anna’s Archive.epub",
+    category: "history-hub",
+    descriptionEn: "Saad's provocative cultural critique arguing that misplaced compassion and ideological conformity are eroding Western civilization's foundations.",
+    descriptionRo: "Critica culturală provocatoare a lui Saad, argumentând că empatia greșit direcționată erodează fundamentele civilizației occidentale.",
+    coverBg: "linear-gradient(135deg, #3f1515 0%, #200a0a 100%)",
+    textColor: "#fecaca",
+  },
 ];
 
 interface BookShowcaseProps {

@@ -34,6 +34,7 @@ import {
 
 import { getServerLocale } from "@/lib/i18n/server";
 import { SITE_IMAGES } from "@/lib/site-images";
+import { ART_ASSETS } from "@/lib/data/art-assets";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
@@ -214,16 +215,16 @@ const SUB_PAGE_CARDS = [
     title: "Skyscraper Revolution",
     description: "How America invented the most audacious building type in history and kept building taller.",
     badge: "ARCHITECTURE",
-    imageSrc: SITE_IMAGES.cities.midtownGolden,
-    imageAlt: "Manhattan skyscraper skyline at golden hour",
+    imageSrc: ART_ASSETS.flatiron.src,
+    imageAlt: "The Flatiron Building, New York, 1902",
   },
   {
     href: "/art-architecture/hudson-river-school",
     title: "Hudson River School",
     description: "America's first great art movement — painters who saw the continent as Eden.",
     badge: "FINE ART",
-    imageSrc: SITE_IMAGES.homeGrandCanyon,
-    imageAlt: "Grand Canyon representing American landscape painting tradition",
+    imageSrc: ART_ASSETS.coleOxbow.src,
+    imageAlt: "The Oxbow by Thomas Cole, 1836 — Hudson River School",
   },
   {
     href: "/art-architecture/american-realism",
@@ -246,8 +247,8 @@ const SUB_PAGE_CARDS = [
     title: "Smithsonian Museums",
     description: "The world's largest museum complex, held in trust for every American.",
     badge: "MUSEUMS",
-    imageSrc: SITE_IMAGES.literatureLibraryOfCongressReadingRoom,
-    imageAlt: "Library of Congress reading room",
+    imageSrc: ART_ASSETS.smithsonianCastle.src,
+    imageAlt: "The Smithsonian Institution Building, the Castle",
   },
 ];
 
