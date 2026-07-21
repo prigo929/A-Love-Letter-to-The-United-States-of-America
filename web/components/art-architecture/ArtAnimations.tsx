@@ -191,19 +191,19 @@ export function ArtStyles() {
 // you change one, fetch it first and confirm it resolves.
 const ART_HERO_SLIDES = [
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/9/92/EMPIRE_STATE_BUILDING%2C_NIGHT%2C_COLORFUL.jpg",
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/EMPIRE_STATE_BUILDING%2C_NIGHT%2C_COLORFUL.jpg/1920px-EMPIRE_STATE_BUILDING%2C_NIGHT%2C_COLORFUL.jpg",
     alt: "Empire State Building at night, New York City",
     label: "EMPIRE STATE · NEW YORK CITY",
     badge: "1931 — ART DECO",
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Brooklyn-side_tower_of_the_Brooklyn_Bridge_from_Brooklyn_Bridge_Park%2C_New_York_City.jpg/3840px-Brooklyn-side_tower_of_the_Brooklyn_Bridge_from_Brooklyn_Bridge_Park%2C_New_York_City.jpg",
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Brooklyn-side_tower_of_the_Brooklyn_Bridge_from_Brooklyn_Bridge_Park%2C_New_York_City.jpg/1920px-Brooklyn-side_tower_of_the_Brooklyn_Bridge_from_Brooklyn_Bridge_Park%2C_New_York_City.jpg",
     alt: "Brooklyn Bridge tower, New York City",
     label: "BROOKLYN BRIDGE · 1883",
     badge: "GOTHIC REVIVAL",
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/d/de/Gateway_Arch%2C_St._Louis.jpg",
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Gateway_Arch%2C_St._Louis.jpg/1920px-Gateway_Arch%2C_St._Louis.jpg",
     alt: "Gateway Arch, St. Louis, Missouri",
     label: "GATEWAY ARCH · ST. LOUIS",
     badge: "1965 — MODERNIST",
