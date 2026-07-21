@@ -1,0 +1,29 @@
+# September 11 Attacks
+
+## Introduction
+
+The September 11, 2001, attacks were a series of four coordinated suicide terrorist attacks carried out by al-Qaeda against the United States, killing 2,977 people — the deadliest terrorist attack in history and the deadliest attack on American soil since Pearl Harbor. Nineteen hijackers seized four commercial airliners: two were flown into the Twin Towers of the World Trade Center in New York City, one into the Pentagon in Arlington, Virginia, and a fourth crashed into a field near Shanksville, Pennsylvania, after passengers attempted to retake the aircraft. The attacks collapsed both World Trade Center towers within two hours, killed 343 firefighters and 72 law enforcement officers, and caused an estimated $10 billion in direct property damage.
+
+Al-Qaeda, led by Osama bin Laden operating from Taliban-controlled Afghanistan, orchestrated the attacks as retaliation for American military presence in Saudi Arabia, U.S. support for Israel, and sanctions against Iraq. The 9/11 Commission, established in 2002, documented systemic intelligence failures across the CIA and FBI that allowed the plot to proceed despite warning signs detected as early as 1999.
+
+## The Attacks and Immediate Response
+
+### Timeline and Political Consequences
+
+At 8:46 a.m., American Airlines Flight 11 struck the North Tower; at 9:03 a.m., United Airlines Flight 175 struck the South Tower. The South Tower collapsed at 9:59 a.m. and the North Tower at 10:28 a.m. At 9:37 a.m., American Airlines Flight 77 struck the Pentagon, killing 125 military and civilian personnel. At 10:03 a.m., United Airlines Flight 93 crashed near Shanksville after passengers stormed the cockpit, preventing the hijackers from reaching the U.S. Capitol or White House. Congress passed the Authorization for Use of Military Force (AUMF) on September 18, 2001, and the USA PATRIOT Act on October 26, 2001.
+
+The Department of Homeland Security, established in 2002, consolidated 22 federal agencies into the largest government reorganization since the creation of the Defense Department in 1947. The Transportation Security Administration (TSA) replaced private airport security contractors. The 9/11 Commission's 2004 report recommended sweeping intelligence community reforms, implemented through the Intelligence Reform and Terrorism Prevention Act of 2004, which created the Director of National Intelligence position overseeing all 17 U.S. intelligence agencies.
+
+## The Wars in Afghanistan and Iraq
+
+### Operation Enduring Freedom
+
+Operation Enduring Freedom launched October 7, 2001, as a U.S.-led coalition invasion of Afghanistan to destroy al-Qaeda and remove the Taliban government. Kabul fell within weeks; Osama bin Laden narrowly escaped at Tora Bora in December 2001. The counterinsurgency campaign lasted nearly 20 years — the longest war in American history — costing 2,448 American military lives and over $2 trillion. Bin Laden was killed by Navy SEALs in Abbottabad, Pakistan, on May 2, 2011. The U.S. withdrawal, completed August 30, 2021, ended with the Taliban retaking Kabul in hours, the chaotic evacuation killing 13 American service members in a suicide bombing.
+
+The Iraq War, launched March 20, 2003, was justified by claims of Iraqi WMD possession and al-Qaeda ties, both of which proved false. The invasion toppled Saddam Hussein in 21 days, but the subsequent insurgency cost 4,418 American lives and $2 trillion. No WMD stockpiles were ever found; the Iraq Survey Group confirmed Iraq had destroyed its programs in the 1990s. The Abu Ghraib prison scandal (2004), revealing systematic detainee abuse by U.S. soldiers, severely damaged American international credibility. The 2007 troop surge under General Petraeus reduced violence significantly, but the 2011 withdrawal created a vacuum allowing ISIS to seize vast territories in 2013-2014, requiring renewed U.S. military intervention.
+
+## Surveillance, Civil Liberties, and Guantanamo
+
+### The NSA, PATRIOT Act, and Detention Without Trial
+
+The NSA's classified surveillance programs, revealed by contractor Edward Snowden in June 2013, showed the PRISM program collected data directly from servers of Google, Facebook, Apple, and Microsoft, while the bulk telephone metadata program recorded virtually every phone call in the United States under Section 215 of the Patriot Act. A federal appeals court ruled the bulk metadata collection illegal in 2015. Guantanamo Bay detention facility, opened January 11, 2002, held enemy combatants outside the U.S. court system; the Supreme Court extended habeas corpus rights to detainees in Boumediene v. Bush (2008). The Senate Intelligence Committee's 2014 report revealed the CIA had waterboarded Khalid Sheikh Mohammed 183 times and that the program produced no unique intelligence that prevented attacks.
