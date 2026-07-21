@@ -112,6 +112,9 @@ export function SkyscraperRace({ towers, hint, hintRo, tallestLabel, tallestLabe
             fill
             sizes="(min-width: 1024px) 22rem, 90vw"
             className="object-cover"
+            // Already a right-sized Commons thumbnail — skip Next's re-optimisation,
+            // which in dev re-fetches the remote image on every switch and stalls.
+            unoptimized
           />
           {active.wasWorldsTallest && (
             <span
