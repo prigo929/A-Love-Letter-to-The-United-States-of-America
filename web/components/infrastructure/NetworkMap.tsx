@@ -394,6 +394,39 @@ function buildPolyline(
   return "M " + pts.map((p) => `${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(" L ");
 }
 
+function getPathLength(coords: LngLat[]): number {
+  if (!coords || coords.length < 2) return 0;
+  let len = 0;
+  for (let i = 0; i < coords.length - 1; i++) {
+    const p1 = coords[i];
+    const p2 = coords[i + 1];
+    if (p1 && p2) {
+      const dx = p2[0] - p1[0];
+      const dy = p2[1] - p1[1];
+      len += Math.sqrt(dx * dx + dy * dy);
+    }
+  }
+  return len;
+}
+
+function getRouteMiles(route: NetworkRoute, geom: RouteGeom | undefined): number {
+  if (geom && geom.miles) return geom.miles;
+  
+  if (route.lengthLabel) {
+    const clean = route.lengthLabel.replace(/,/g, "");
+    const match = /(\d+)\s*(mi|miles)/i.exec(clean);
+    if (match) return parseInt(match[1], 10);
+    
+    const matchKm = /(\d+)\s*(km|kilometers)/i.exec(clean);
+    if (matchKm) return parseInt(matchKm[1], 10) * 0.621371;
+  }
+
+  const coords = geom && geom.segments.length > 0 ? (geom.segments[0] as LngLat[]) : route.waypoints;
+  if (!coords || coords.length < 2) return 100;
+  
+  return getPathLength(coords) * 65;
+}
+
 // ─── Route layer (needs the projection, so it must live inside the map) ──────
 
 function RoutesLayer({
@@ -493,6 +526,10 @@ function RoutesLayer({
           // alignment, projected to screen space.
           const anchorFrom = (coords: LngLat[]): [number, number] | null =>
             coords.length ? projection(coords[Math.floor(coords.length / 2)]) : null;
+          
+          const miles = getRouteMiles(r, geom);
+          const duration = Math.max(3.5, miles / 80);
+
           if (geom && geom.segments.length > 0) {
             const paths = geom.segments
               .map((seg) => buildPolyline(seg as LngLat[], projection))
@@ -505,10 +542,11 @@ function RoutesLayer({
               dotD: paths[0] ?? "",
               anchor: anchorFrom(geom.segments[0] as LngLat[]),
               aadt,
+              duration,
             };
           }
           const d = variant === "rail" ? buildPolyline(r.waypoints, projection) : buildPath(r.waypoints, projection);
-          return { route: r, d, dotD: d, anchor: anchorFrom(r.waypoints), aadt };
+          return { route: r, d, dotD: d, anchor: anchorFrom(r.waypoints), aadt, duration };
         })
         .filter((r) => r.d),
     [routes, era, projection, geoms, heatCfg, variant],
@@ -554,7 +592,7 @@ function RoutesLayer({
 
       {drawn
         .filter(({ route }) => variant !== "power" || bandVisible(route.id))
-        .map(({ route, d, dotD, aadt }, i) => {
+        .map(({ route, d, dotD, aadt, duration }, i) => {
         const isFeatured = featuredIds.has(route.id);
         const isSelected = selectedId === route.id;
         const dimmed = selectedId !== null && !isSelected;
@@ -681,7 +719,7 @@ function RoutesLayer({
                 animate={{ r: [2.0 * k, 3.2 * k, 2.0 * k] }}
                 transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
               >
-                <animateMotion dur={`${11 + i * 2.5}s`} repeatCount="indefinite" path={dotD} />
+                <animateMotion dur={`${duration.toFixed(2)}s`} repeatCount="indefinite" path={dotD} />
               </motion.circle>
             )}
             {/* Fat invisible hit-area for hover/tap */}
