@@ -55,7 +55,7 @@ const SUB_PAGES = [
   },
   {
     href: "/literature-philosophy/sci-fi-myth",
-    built: false,
+    built: true,
     title: "Science Fiction & Myth",
     titleRo: "Science-fiction & mit",
     blurb: "How the frontier story left the West and went to space.",
