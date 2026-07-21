@@ -9,14 +9,8 @@
 // - Animated stat wall, parallax quote bands
 //
 // Server Component — all interactive parts imported as client leaves.
-//
-// Security:
-// - JSON-LD uses JSON.stringify (no user-controlled input)
-// - No innerHTML in any component
-// - All user-facing text is static editorial content
 
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 
 import {
@@ -33,9 +27,7 @@ import {
 } from "@/components/art-architecture/ArtAnimations";
 
 import { getServerLocale } from "@/lib/i18n/server";
-import { SITE_IMAGES } from "@/lib/site-images";
 import { ART_ASSETS } from "@/lib/data/art-assets";
-import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
@@ -76,8 +68,8 @@ const HERO_STATS = [
 const GALLERY_TILES = [
   {
     href: "/art-architecture/skyscraper-revolution",
-    imageSrc: SITE_IMAGES.cities.midtownGolden,
-    imageAlt: "Manhattan skyscrapers at golden hour",
+    imageSrc: ART_ASSETS.empireStateRockefeller.src,
+    imageAlt: "View of Empire State Building from Rockefeller Center",
     era: "1880 – PRESENT",
     title: "The Skyscraper Revolution",
     description:
@@ -85,17 +77,17 @@ const GALLERY_TILES = [
   },
   {
     href: "/art-architecture/modern-pop-art",
-    imageSrc: SITE_IMAGES.artWashingtonCrossingDelaware,
-    imageAlt: "Washington Crossing the Delaware painting by Emanuel Leutze",
+    imageSrc: ART_ASSETS.lichtensteinWhaam.src,
+    imageAlt: "Whaam! by Roy Lichtenstein, 1963 — Pop Art",
     era: "1950 – 1980",
     title: "Modern & Pop Art",
     description:
-      "Pollock's drip paintings, Warhol's screen-prints, Basquiat's raw energy — American artists remade the global art world in the 20th century.",
+      "Pollock's drip paintings, Warhol's screen-prints, Lichtenstein's pop icons, Basquiat's raw energy — American artists remade the global art world.",
   },
   {
     href: "/art-architecture/hudson-river-school",
-    imageSrc: SITE_IMAGES.homeGrandCanyon,
-    imageAlt: "Grand Canyon — Hudson River School landscape tradition",
+    imageSrc: ART_ASSETS.bierstadtSierra.src,
+    imageAlt: "Among the Sierra Nevada Mountains by Albert Bierstadt, 1868",
     era: "1825 – 1880",
     title: "Hudson River School",
     description:
@@ -103,8 +95,8 @@ const GALLERY_TILES = [
   },
   {
     href: "/art-architecture/american-realism",
-    imageSrc: SITE_IMAGES.cities.nycCentralPark,
-    imageAlt: "New York City — urban realism tradition",
+    imageSrc: ART_ASSETS.leutzeWashington.src,
+    imageAlt: "Washington Crossing the Delaware by Emanuel Leutze, 1851",
     era: "1870 – 1940",
     title: "American Realism",
     description:
@@ -112,8 +104,8 @@ const GALLERY_TILES = [
   },
   {
     href: "/art-architecture/smithsonian-museums",
-    imageSrc: SITE_IMAGES.literatureLibraryOfCongressReadingRoom,
-    imageAlt: "Library of Congress Reading Room — Smithsonian museum tradition",
+    imageSrc: ART_ASSETS.smithsonianCastle.src,
+    imageAlt: "The Smithsonian Institution Building, the Castle",
     era: "1846 – PRESENT",
     title: "Smithsonian Museums",
     description:
@@ -173,7 +165,7 @@ const ART_ERAS = [
     keywork: "One World Trade Center",
     architect: "Skidmore, Owings & Merrill, 2014",
     description:
-      "A new generation of supertalls—432 Park, Central Park Tower, the Salesforce Tower—pushed the sky ever higher. Computational design, sustainable facades, and structural engineering fused into architecture as spectacle.",
+      "A new generation of supertalls—One Vanderbilt, Central Park Tower, 111 West 57th—pushed the sky ever higher. Computational design and structural engineering fused into architecture as spectacle.",
     color: "var(--art-accent-crimson)",
     icon: "⬡",
   },
@@ -215,32 +207,32 @@ const SUB_PAGE_CARDS = [
     title: "Skyscraper Revolution",
     description: "How America invented the most audacious building type in history and kept building taller.",
     badge: "ARCHITECTURE",
-    imageSrc: ART_ASSETS.flatiron.src,
-    imageAlt: "The Flatiron Building, New York, 1902",
+    imageSrc: ART_ASSETS.oneVanderbilt.src,
+    imageAlt: "One Vanderbilt Tower, Midtown Manhattan",
   },
   {
     href: "/art-architecture/hudson-river-school",
     title: "Hudson River School",
     description: "America's first great art movement — painters who saw the continent as Eden.",
     badge: "FINE ART",
-    imageSrc: ART_ASSETS.coleOxbow.src,
-    imageAlt: "The Oxbow by Thomas Cole, 1836 — Hudson River School",
+    imageSrc: ART_ASSETS.bierstadtYosemite.src,
+    imageAlt: "Valley of the Yosemite by Albert Bierstadt, 1864",
   },
   {
     href: "/art-architecture/american-realism",
     title: "American Realism",
     description: "Hopper, Homer, Eakins — an unflinching visual account of American life.",
     badge: "FINE ART",
-    imageSrc: SITE_IMAGES.artWashingtonCrossingDelaware,
+    imageSrc: ART_ASSETS.leutzeWashington.src,
     imageAlt: "Washington Crossing the Delaware by Emanuel Leutze",
   },
   {
     href: "/art-architecture/modern-pop-art",
     title: "Modern & Pop Art",
-    description: "Warhol's prints, Pollock's drips, Basquiat's streets — the American avant-garde.",
+    description: "Warhol's prints, Pollock's drips, Lichtenstein's pop icons — the American avant-garde.",
     badge: "CONTEMPORARY",
-    imageSrc: SITE_IMAGES.cities.nycCentralPark,
-    imageAlt: "New York City — center of the American art world",
+    imageSrc: ART_ASSETS.pollockConvergence.src,
+    imageAlt: "Convergence by Jackson Pollock, 1952",
   },
   {
     href: "/art-architecture/smithsonian-museums",
@@ -309,8 +301,8 @@ export default async function ArtArchitecturePage() {
 
       {/* ── PARALLAX QUOTE 1 — Frank Lloyd Wright ────────────────────────── */}
       <ArtParallaxBand
-        imageSrc={SITE_IMAGES.homeNycSkyline}
-        imageAlt="New York City skyline — One World Trade Center"
+        imageSrc={ART_ASSETS.chrysler.src}
+        imageAlt="The Chrysler Building Art Deco Crown"
         height={520}
       >
         <div className="mx-auto max-w-3xl text-center">
@@ -392,8 +384,8 @@ export default async function ArtArchitecturePage() {
 
       {/* ── PARALLAX QUOTE 2 — Thomas Jefferson ─────────────────────────── */}
       <ArtParallaxBand
-        imageSrc={SITE_IMAGES.constitution.independenceHall}
-        imageAlt="Independence Hall Philadelphia — architecture as symbol"
+        imageSrc={ART_ASSETS.bierstadtYosemite.src}
+        imageAlt="Valley of the Yosemite by Albert Bierstadt, 1864"
         height={480}
       >
         <div className="mx-auto max-w-3xl text-center">
@@ -435,10 +427,10 @@ export default async function ArtArchitecturePage() {
         />
       </section>
 
-      {/* ── PARALLAX QUOTE 3 ─ Warhol ────────────────────────────────────── */}
+      {/* ── PARALLAX QUOTE 3 ─ Pollock / Warhol ──────────────────────────── */}
       <ArtParallaxBand
-        imageSrc={SITE_IMAGES.cities.chicagoTwilight}
-        imageAlt="Chicago skyline at twilight — American urban architecture"
+        imageSrc={ART_ASSETS.pollockConvergence.src}
+        imageAlt="Convergence by Jackson Pollock, 1952"
         height={420}
       >
         <div className="mx-auto max-w-3xl text-center">

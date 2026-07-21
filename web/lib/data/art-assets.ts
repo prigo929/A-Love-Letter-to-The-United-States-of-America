@@ -1,7 +1,8 @@
 // ─── Art & Architecture: local imagery ──────────────────────────────────────
-// All imagery for art & architecture is stored locally in /IMAGES/Architecture.
+// All imagery for art & architecture is stored locally in /IMAGES/Architecture and /IMAGES/Art.
 // High resolution local files verified for building history & visual culture.
 
+// Architecture assets
 import flatiron from "@/IMAGES/Architecture/Flatiron_Building.jpg";
 import woolworth from "@/IMAGES/Architecture/The_Woolworth_Building_in_New_York_City.jpg";
 import chrysler from "@/IMAGES/Architecture/Chrysler_Building.jpg";
@@ -16,6 +17,22 @@ import smithsonianCastle from "@/IMAGES/Architecture/Smithsonian_Castle.jpg";
 import coleOxbow from "@/IMAGES/Architecture/Cole_The_Oxbow.jpg";
 import churchNiagara from "@/IMAGES/Architecture/Church_Niagara.jpg";
 import oneWTC from "@/IMAGES/Architecture/One_World_Trade_Center,_Financial_District,_Manhattan,_New_York.jpg";
+import oneVanderbilt from "@/IMAGES/Architecture/One_Vanderbilt_April_2021.jpg";
+import centralParkTower from "@/IMAGES/Architecture/Central_Park_Tower_April_2021.jpg";
+import st57West from "@/IMAGES/Architecture/111_West_57th_Street.png";
+import park270 from "@/IMAGES/Architecture/270 Park Avenue.jpg";
+import park432 from "@/IMAGES/Architecture/432_Park_Avenue,_NY_(cropped).jpg";
+import boaTower from "@/IMAGES/Architecture/BoA_Tower.jpg";
+import hudsonYards from "@/IMAGES/Architecture/Hudson_Yards_from_Hudson_Commons_(95131p)_(30_Hudson_Yards).jpg";
+import trumpTower from "@/IMAGES/Architecture/Trump International Hotel and Tower.jpg";
+
+// Art assets
+import bierstadtYosemite from "@/IMAGES/Art/Albert Bierstadt - Valley of the Yosemite - 1864.jpg";
+import bierstadtSierra from "@/IMAGES/Art/Bierstadt - Among the Sierra Nevada Mountains - 1868.jpg";
+import pollockConvergence from "@/IMAGES/Art/Convergence by Jackson Pollock 1952.jpeg";
+import lichtensteinWhaam from "@/IMAGES/Art/Whaam! by Roy Lichtenstein.png";
+import StuartWashington from "@/IMAGES/Art/Gilbert_Stuart_1796_portrait_of_Washington.jpg";
+import leutzeWashington from "@/IMAGES/Art/Washington_Crossing_the_Delaware_by_Emanuel_Leutze,_MMA-NYC,_1851.jpg";
 
 export interface ArtAsset {
   src: string;
@@ -123,6 +140,104 @@ export const ART_ASSETS = {
     altRo: "One World Trade Center, 2013",
     credit: "One_World_Trade_Center.jpg · Local Asset",
     license: "CC BY-SA 4.0",
+  },
+  oneVanderbilt: {
+    src: oneVanderbilt.src,
+    alt: "One Vanderbilt Tower, Midtown Manhattan, 2021",
+    altRo: "Turnul One Vanderbilt, Midtown Manhattan, 2021",
+    credit: "One_Vanderbilt_April_2021.jpg · Local Asset",
+    license: "CC BY-SA 4.0",
+  },
+  centralParkTower: {
+    src: centralParkTower.src,
+    alt: "Central Park Tower, World's Tallest Residential Building, 2021",
+    altRo: "Central Park Tower, Cea mai înaltă clădire rezidențială din lume, 2021",
+    credit: "Central_Park_Tower_April_2021.jpg · Local Asset",
+    license: "CC BY-SA 4.0",
+  },
+  st57West: {
+    src: st57West.src,
+    alt: "111 West 57th Street (Steinway Tower), Midtown Manhattan",
+    altRo: "111 West 57th Street (Steinway Tower), Midtown Manhattan",
+    credit: "111_West_57th_Street.png · Local Asset",
+    license: "Public domain",
+  },
+  park270: {
+    src: park270.src,
+    alt: "270 Park Avenue (JPMorgan Chase Headquarters), Manhattan",
+    altRo: "270 Park Avenue (Sediul JPMorgan Chase), Manhattan",
+    credit: "270 Park Avenue.jpg · Local Asset",
+    license: "CC BY-SA 4.0",
+  },
+  park432: {
+    src: park432.src,
+    alt: "432 Park Avenue, Midtown Manhattan Supertall",
+    altRo: "432 Park Avenue, Supraturn în Midtown Manhattan",
+    credit: "432_Park_Avenue.jpg · Local Asset",
+    license: "CC BY-SA 4.0",
+  },
+  boaTower: {
+    src: boaTower.src,
+    alt: "Bank of America Tower at One Bryant Park, New York",
+    altRo: "Bank of America Tower la One Bryant Park, New York",
+    credit: "BoA_Tower.jpg · Local Asset",
+    license: "CC BY-SA 4.0",
+  },
+  hudsonYards: {
+    src: hudsonYards.src,
+    alt: "30 Hudson Yards and the Hudson Yards Skyline",
+    altRo: "30 Hudson Yards și silueta Hudson Yards",
+    credit: "Hudson_Yards.jpg · Local Asset",
+    license: "CC BY-SA 4.0",
+  },
+  trumpTower: {
+    src: trumpTower.src,
+    alt: "Trump International Hotel and Tower, Chicago",
+    altRo: "Trump International Hotel and Tower, Chicago",
+    credit: "Trump_Tower_Chicago.jpg · Local Asset",
+    license: "CC BY-SA 4.0",
+  },
+  bierstadtYosemite: {
+    src: bierstadtYosemite.src,
+    alt: "Valley of the Yosemite, Albert Bierstadt, 1864",
+    altRo: "Valea Yosemite, Albert Bierstadt, 1864",
+    credit: "Albert Bierstadt - Valley of the Yosemite - 1864.jpg · Local Asset",
+    license: "Public domain",
+  },
+  bierstadtSierra: {
+    src: bierstadtSierra.src,
+    alt: "Among the Sierra Nevada Mountains, Albert Bierstadt, 1868",
+    altRo: "În munții Sierra Nevada, Albert Bierstadt, 1868",
+    credit: "Bierstadt - Among the Sierra Nevada Mountains - 1868.jpg · Local Asset",
+    license: "Public domain",
+  },
+  pollockConvergence: {
+    src: pollockConvergence.src,
+    alt: "Convergence, Jackson Pollock, 1952 — Abstract Expressionism",
+    altRo: "Convergence, Jackson Pollock, 1952 — Expresionism Abstract",
+    credit: "Convergence by Jackson Pollock 1952.jpeg · Local Asset",
+    license: "Fair use / Fine art archive",
+  },
+  lichtensteinWhaam: {
+    src: lichtensteinWhaam.src,
+    alt: "Whaam!, Roy Lichtenstein, 1963 — American Pop Art",
+    altRo: "Whaam!, Roy Lichtenstein, 1963 — Pop Art American",
+    credit: "Whaam! by Roy Lichtenstein.png · Local Asset",
+    license: "Fair use / Fine art archive",
+  },
+  stuartWashington: {
+    src: StuartWashington.src,
+    alt: "George Washington (The Lansdowne Portrait), Gilbert Stuart, 1796",
+    altRo: "George Washington (Portretul Lansdowne), Gilbert Stuart, 1796",
+    credit: "Gilbert_Stuart_1796_portrait_of_Washington.jpg · Local Asset",
+    license: "Public domain",
+  },
+  leutzeWashington: {
+    src: leutzeWashington.src,
+    alt: "Washington Crossing the Delaware, Emanuel Leutze, 1851",
+    altRo: "Washington traversând Râul Delaware, Emanuel Leutze, 1851",
+    credit: "Washington_Crossing_the_Delaware.jpg · Local Asset",
+    license: "Public domain",
   },
 } as const satisfies Record<string, ArtAsset>;
 

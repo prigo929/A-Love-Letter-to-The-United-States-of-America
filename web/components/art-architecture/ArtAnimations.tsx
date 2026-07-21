@@ -183,14 +183,14 @@ export function ArtStyles() {
 // 1. ArtHeroCrossfade — 5-slide crossfade with Ken-Burns zoom
 // ─────────────────────────────────────────────────────────────────────────────
 
-import empireStateNight from "@/IMAGES/Architecture/Empire_State_Building_night_view.jpg";
-import brooklynBridge from "@/IMAGES/Architecture/Brooklyn_Bridge_NYC.jpg";
-import gatewayArch from "@/IMAGES/Architecture/Gateway_Arch_St_Louis.jpg";
-import guggenheim from "@/IMAGES/Architecture/Guggenheim_Museum.jpg";
-import oneWTCLocal from "@/IMAGES/Architecture/One_World_Trade_Center,_Financial_District,_Manhattan,_New_York.jpg";
+import empireStateRockefeller from "@/IMAGES/Architecture/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City.jpg";
+import bierstadtSierra from "@/IMAGES/Art/Bierstadt - Among the Sierra Nevada Mountains - 1868.jpg";
+import pollockConvergence from "@/IMAGES/Art/Convergence by Jackson Pollock 1952.jpeg";
+import lichtensteinWhaam from "@/IMAGES/Art/Whaam! by Roy Lichtenstein.png";
 import chryslerLocal from "@/IMAGES/Architecture/Chrysler_Building.jpg";
-import woolworthLocal from "@/IMAGES/Architecture/The_Woolworth_Building_in_New_York_City.jpg";
-import willisLocal from "@/IMAGES/Architecture/Willis-Tower-Chicago.jpg";
+import oneVanderbilt from "@/IMAGES/Architecture/One_Vanderbilt_April_2021.jpg";
+import guggenheim from "@/IMAGES/Architecture/Guggenheim_Museum.jpg";
+import brooklynBridge from "@/IMAGES/Architecture/Brooklyn_Bridge_NYC.jpg";
 
 export interface HeroSlide {
   src: string;
@@ -201,34 +201,40 @@ export interface HeroSlide {
 
 const ART_HERO_SLIDES: HeroSlide[] = [
   {
-    src: empireStateNight.src,
-    alt: "Empire State Building at night, New York City",
+    src: bierstadtSierra.src,
+    alt: "Among the Sierra Nevada Mountains, Albert Bierstadt, 1868",
+    label: "BIERSTADT · SIERRA NEVADA",
+    badge: "1868 — HUDSON RIVER SCHOOL",
+  },
+  {
+    src: empireStateRockefeller.src,
+    alt: "View of Empire State Building from Rockefeller Center, New York City",
     label: "EMPIRE STATE · NEW YORK CITY",
     badge: "1931 — ART DECO",
   },
   {
-    src: brooklynBridge.src,
-    alt: "Brooklyn Bridge tower, New York City",
-    label: "BROOKLYN BRIDGE · 1883",
-    badge: "GOTHIC REVIVAL",
+    src: pollockConvergence.src,
+    alt: "Convergence, Jackson Pollock, 1952",
+    label: "POLLOCK · CONVERGENCE",
+    badge: "1952 — ABSTRACT EXPRESSIONISM",
   },
   {
-    src: gatewayArch.src,
-    alt: "Gateway Arch, St. Louis, Missouri",
-    label: "GATEWAY ARCH · ST. LOUIS",
-    badge: "1965 — MODERNIST",
+    src: chryslerLocal.src,
+    alt: "Chrysler Building Art Deco Crown, New York City",
+    label: "CHRYSLER BUILDING · NEW YORK",
+    badge: "1930 — ART DECO",
   },
   {
-    src: guggenheim.src,
-    alt: "Solomon R. Guggenheim Museum, Frank Lloyd Wright, New York City",
-    label: "GUGGENHEIM · NEW YORK CITY",
-    badge: "1959 — F. L. WRIGHT",
+    src: lichtensteinWhaam.src,
+    alt: "Whaam!, Roy Lichtenstein, 1963",
+    label: "LICHTENSTEIN · WHAAM!",
+    badge: "1963 — AMERICAN POP ART",
   },
   {
-    src: oneWTCLocal.src,
-    alt: "One World Trade Center, New York City",
-    label: "ONE WORLD TRADE · NEW YORK",
-    badge: "2013 — SUPERTALL",
+    src: oneVanderbilt.src,
+    alt: "One Vanderbilt, Midtown Manhattan, 2021",
+    label: "ONE VANDERBILT · NEW YORK",
+    badge: "2021 — CONTEMPORARY SUPERTALL",
   },
 ];
 

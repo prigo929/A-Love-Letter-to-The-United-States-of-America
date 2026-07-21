@@ -2,12 +2,13 @@
 // Built out from a 53-line stub. The subject is the one building type America
 // genuinely invented, so the page is organised as a height race: nine towers
 // that each redefined how tall an American building could be, told through a
-// to-scale interactive skyline (SkyscraperRace) plus the three engineering
-// breakthroughs that made it possible.
+// to-scale interactive skyline (SkyscraperRace), plus a gallery of 21st-century
+// supertalls and the three engineering breakthroughs that made it possible.
 //
 // All imagery is stored locally in /IMAGES/Architecture — see lib/data/art-assets.ts
 
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import {
@@ -21,16 +22,16 @@ import {
 import { SkyscraperRace, type Tower } from "@/components/art-architecture/SkyscraperRace";
 import { ART_ASSETS } from "@/lib/data/art-assets";
 import { getServerLocale } from "@/lib/i18n/server";
+import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "The Skyscraper Revolution | Art & Architecture",
   description:
-    "America invented the skyscraper in Chicago in 1885 and never stopped building taller. Nine towers, a to-scale height race, and the three inventions that made the tall building possible.",
+    "America invented the skyscraper in Chicago in 1885 and never stopped building taller. Nine historical towers, modern 21st-century supertalls, a to-scale height race, and the three inventions that made tall buildings possible.",
   alternates: { canonical: "/art-architecture/skyscraper-revolution" },
 };
 
-// The height race. Feet are architectural height (roof, except where a building's
-// fame IS its spire — Chrysler and Empire State — noted in the copy).
+// The height race. Feet are architectural height.
 const TOWERS: Tower[] = [
   {
     key: "home-insurance", name: "Home Insurance Building", city: "Chicago", cityRo: "Chicago",
@@ -89,6 +90,82 @@ const TOWERS: Tower[] = [
   },
 ];
 
+// Modern Supertalls Showcase
+const MODERN_SUPERTALLS = [
+  {
+    name: "Central Park Tower",
+    feet: "1,550 FT",
+    city: "New York City",
+    year: "2020",
+    note: "The tallest residential building on Earth, soaring above Central Park.",
+    imageSrc: ART_ASSETS.centralParkTower.src,
+    imageAlt: "Central Park Tower, New York",
+  },
+  {
+    name: "111 West 57th Street",
+    feet: "1,428 FT",
+    city: "New York City",
+    year: "2021",
+    note: "Steinway Tower — the world's most slender skyscraper with a 1:24 ratio.",
+    imageSrc: ART_ASSETS.st57West.src,
+    imageAlt: "111 West 57th Street, New York",
+  },
+  {
+    name: "One Vanderbilt",
+    feet: "1,401 FT",
+    city: "New York City",
+    year: "2020",
+    note: "Grand Central's modern companion, piercing Midtown Manhattan with glass and steel.",
+    imageSrc: ART_ASSETS.oneVanderbilt.src,
+    imageAlt: "One Vanderbilt, New York",
+  },
+  {
+    name: "270 Park Avenue",
+    feet: "1,388 FT",
+    city: "New York City",
+    year: "2025",
+    note: "JPMorgan Chase headquarters — an all-electric supertall designed by Foster + Partners.",
+    imageSrc: ART_ASSETS.park270.src,
+    imageAlt: "270 Park Avenue, New York",
+  },
+  {
+    name: "432 Park Avenue",
+    feet: "1,396 FT",
+    city: "New York City",
+    year: "2015",
+    note: "Rafael Viñoly's grid supertall that helped define 57th Street.",
+    imageSrc: ART_ASSETS.park432.src,
+    imageAlt: "432 Park Avenue, New York",
+  },
+  {
+    name: "30 Hudson Yards",
+    feet: "1,268 FT",
+    city: "New York City",
+    year: "2019",
+    note: "Anchor of Hudson Yards featuring the highest outdoor skydeck in the West.",
+    imageSrc: ART_ASSETS.hudsonYards.src,
+    imageAlt: "30 Hudson Yards, New York",
+  },
+  {
+    name: "Bank of America Tower",
+    feet: "1,200 FT",
+    city: "New York City",
+    year: "2009",
+    note: "One Bryant Park — a model of sustainable high-performance architecture.",
+    imageSrc: ART_ASSETS.boaTower.src,
+    imageAlt: "Bank of America Tower, New York",
+  },
+  {
+    name: "Trump Tower Chicago",
+    feet: "1,388 FT",
+    city: "Chicago",
+    year: "2009",
+    note: "Adrian Smith's curving stainless steel spire along the Chicago River.",
+    imageSrc: ART_ASSETS.trumpTower.src,
+    imageAlt: "Trump International Hotel & Tower Chicago",
+  },
+];
+
 export default async function SkyscraperRevolutionPage() {
   const locale = await getServerLocale();
   const isRo = locale === "ro";
@@ -103,6 +180,8 @@ export default async function SkyscraperRevolutionPage() {
         raceBody: "Nouă clădiri care, fiecare la momentul ei, au redefinit cât de înaltă putea fi o construcție americană. Fiecare siluetă de mai jos este desenată proporțional cu înălțimea reală. Apasă pe oricare.",
         raceHint: "Fiecare bară este la scară · apasă o clădire",
         tallestLabel: "Cea mai înaltă din lume",
+        supertallsTitle: "Noua eră a supraturnurilor din secolul XXI",
+        supertallsSub: "O nouă generație de zgârie-nori ultra-subțiri și ecologici care împing New York-ul și Chicago-ul spre noi înălțimi.",
         howTitle: "Trei invenții, o clădire",
         howBody: "Zgârie-norul nu a fost o singură idee, ci trei care au sosit împreună. Fără oricare dintre ele, clădirea înaltă rămâne imposibilă.",
         f1: "Scheletul de oțel",
@@ -128,6 +207,8 @@ export default async function SkyscraperRevolutionPage() {
         raceBody: "Nine buildings that each, in their moment, redefined how tall an American structure could be. Every silhouette below is drawn in proportion to its real height. Click any of them.",
         raceHint: "Every bar is to scale · click a building",
         tallestLabel: "World's tallest",
+        supertallsTitle: "The 21st-Century Supertall Era",
+        supertallsSub: "A new generation of ultra-slender, engineering marvels pushing New York and Chicago past 1,400 feet.",
         howTitle: "Three inventions, one building",
         howBody: "The skyscraper was not one idea but three that arrived together. Take any one away and the tall building is impossible again.",
         f1: "The steel frame",
@@ -192,6 +273,51 @@ export default async function SkyscraperRevolutionPage() {
                 tallestLabel={copy.tallestLabel}
                 tallestLabelRo={copy.tallestLabel}
               />
+            </div>
+          </section>
+
+          {/* Modern Supertalls Showcase Grid */}
+          <section className="py-16 border-t border-white/10">
+            <p className="art-text-label mb-4" style={{ color: "var(--art-accent-copper)" }}>
+              {copy.supertallsTitle}
+            </p>
+            <p className="font-sans text-base text-white/70 mb-12 max-w-2xl">
+              {copy.supertallsSub}
+            </p>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {MODERN_SUPERTALLS.map((st) => (
+                <div
+                  key={st.name}
+                  className="group relative overflow-hidden rounded-none border border-white/10 bg-[var(--art-surface)] transition-all duration-300 hover:border-[var(--art-accent-copper)]"
+                >
+                  <div className="relative h-64 w-full overflow-hidden">
+                    <Image
+                      src={st.imageSrc}
+                      alt={st.imageAlt}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      style={{ filter: "brightness(0.55) contrast(1.05)" }}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      placeholder="blur"
+                      blurDataURL={BLUR_PLACEHOLDER}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#080609] via-transparent to-transparent opacity-80" />
+                    <span className="absolute top-3 right-3 art-text-metadata px-2 py-1 bg-black/60 backdrop-blur-md border border-white/10" style={{ color: "var(--art-accent-copper)" }}>
+                      {st.feet}
+                    </span>
+                  </div>
+                  <div className="p-5">
+                    <p className="art-text-metadata mb-1 text-white/50">{st.city} · {st.year}</p>
+                    <h3 className="art-text-heading text-lg text-white group-hover:text-[var(--art-accent-copper)] transition-colors mb-2">
+                      {st.name}
+                    </h3>
+                    <p className="art-text-body text-xs text-white/60 line-clamp-2">
+                      {st.note}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
         </div>
