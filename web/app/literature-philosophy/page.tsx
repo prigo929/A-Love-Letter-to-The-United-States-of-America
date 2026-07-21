@@ -47,7 +47,7 @@ const SUB_PAGES = [
   },
   {
     href: "/literature-philosophy/pragmatism",
-    built: false,
+    built: true,
     title: "Pragmatism",
     titleRo: "Pragmatism",
     blurb: "America's one native philosophy: truth as the thing that works, from Peirce to Rorty.",
