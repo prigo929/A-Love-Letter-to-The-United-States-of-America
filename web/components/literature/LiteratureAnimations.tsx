@@ -22,6 +22,7 @@ import {
   useTransform,
   useReducedMotion,
   useMotionValueEvent,
+  useSpring,
   type MotionValue,
 } from "framer-motion";
 import { LITERATURE_ASSETS, type LiteratureAssetKey } from "@/lib/data/literature-assets";
@@ -90,6 +91,34 @@ interface ScrollIlluminatedTextProps {
  * `background-clip: text` needs the -webkit- prefix to work in Safari, which is
  * why both are set.
  */
+function ScrollWord({
+  children,
+  progress,
+  index,
+  total,
+  dim,
+  lit,
+}: {
+  children: string;
+  progress: MotionValue<number>;
+  index: number;
+  total: number;
+  dim: string;
+  lit: string;
+}) {
+  // Let each word fade in sequentially over a small slice of the scroll progress
+  const start = index / total;
+  const end = Math.min(1, start + 1.5 / total);
+  const color = useTransform(progress, [start, end], [dim, lit]);
+
+  return (
+    <motion.span style={{ color, willChange: "color" }}>
+      {children}
+      {" "}
+    </motion.span>
+  );
+}
+
 export function ScrollIlluminatedText({
   children,
   className = "",
@@ -99,30 +128,9 @@ export function ScrollIlluminatedText({
   const ref = useRef<HTMLParagraphElement>(null);
   const reduced = useReducedMotion();
 
-  // Progressive enhancement, and it is not optional here.
-  //
-  // The effect works by painting the glyphs with a clipped gradient, which means
-  // setting `-webkit-text-fill-color: transparent`. If the scroll value never
-  // updates, the gradient never moves off its start position and the entire
-  // paragraph renders at the `dim` colour — on a page whose only job is reading.
-  // That is a severe failure for one animation's worth of polish.
-  //
-  // This is not hypothetical. Framer 12 drives this through the native
-  // ScrollTimeline where the browser offers it, so a browser that reports scroll
-  // badly takes the whole chain down with it, and no JS `scroll` event will
-  // revive it. So: render ordinary, fully legible text until the scroll value
-  // actually moves at least once. Only then do we hand the paint over to the
-  // gradient. If it never fires, the reader simply gets a normal paragraph and
-  // never knows an effect was intended.
-  //
-  // `dim` also sits at 0.55 rather than the 0.22 this started at, so that even
-  // mid-sweep the text ahead of the light stays readable rather than merely
-  // suggested.
   const [armed, setArmed] = useState(false);
 
   const { scrollYProgress } = useScroll({
-    // Start when the block's top reaches 80% down the viewport, finish when its
-    // bottom passes the middle. The reader is always slightly ahead of the light.
     target: ref,
     offset: ["start 0.8", "end 0.5"],
   });
@@ -131,34 +139,29 @@ export function ScrollIlluminatedText({
     if (!armed && v > 0) setArmed(true);
   });
 
-  const pos = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-  const bg = useTransform(
-    pos,
-    (p) => `linear-gradient(to bottom, ${lit} ${p}, ${dim} ${p})`
-  );
+  const easedProgress = useTransform(scrollYProgress, (v) => 1 - Math.pow(1 - v, 3)); // cubic ease-out
 
-  if (reduced) {
-    return <p className={`lit-illuminate ${className}`} style={{ color: lit }}>{children}</p>;
+  if (reduced || !armed) {
+    return <p ref={ref} className={className} style={{ color: lit }}>{children}</p>;
   }
 
+  const words = children.split(" ");
+
   return (
-    <motion.p
-      ref={ref}
-      className={`lit-illuminate ${className}`}
-      style={
-        armed
-          ? {
-              backgroundImage: bg as unknown as MotionValue<string>,
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              color: lit,
-            }
-          : { color: lit }
-      }
-    >
-      {children}
-    </motion.p>
+    <p ref={ref} className={className}>
+      {words.map((w, i) => (
+        <ScrollWord
+          key={i}
+          progress={easedProgress}
+          index={i}
+          total={words.length}
+          dim={dim}
+          lit={lit}
+        >
+          {w}
+        </ScrollWord>
+      ))}
+    </p>
   );
 }
 
@@ -281,27 +284,42 @@ export function AnnotatedPassage({
         <p className="lit-serif text-xl leading-[1.9] text-white/90 md:text-[26px] md:leading-[1.85]">
           {parts.map((p, i) =>
             p.idx === null ? (
-              <span key={`${uid}-t-${i}`}>{p.text}</span>
+              <motion.span
+                key={`${uid}-t-${i}`}
+                animate={{ opacity: active === null ? 1 : 0.35 }}
+                transition={{ duration: 0.3 }}
+              >
+                {p.text}
+              </motion.span>
             ) : (
               <button
                 key={`${uid}-a-${i}`}
                 type="button"
                 onClick={(e) => select(p.idx as number, e.currentTarget)}
                 aria-expanded={active === p.idx}
-                className="rounded-[3px] px-[2px] transition-colors duration-200"
+                className="relative rounded-[3px] px-[2px] transition-all duration-300 font-inherit cursor-pointer inline"
                 style={{
-                  borderBottom:
-                    active === p.idx
-                      ? "1.5px solid rgba(232,185,35,0.9)"
-                      : "1.5px solid rgba(232,185,35,0.4)",
-                  backgroundColor: active === p.idx ? "rgba(232,185,35,0.14)" : "transparent",
+                  opacity: active === null || active === p.idx ? 1 : 0.35,
                   color: active === p.idx ? "#E8B923" : "inherit",
                   // Inherited and beats `color` in WebKit — must be set explicitly.
                   WebkitTextFillColor: active === p.idx ? "#E8B923" : "currentColor",
-                  font: "inherit",
-                  cursor: "pointer",
+                  borderBottom: active === p.idx ? "none" : "1.5px solid rgba(232,185,35,0.4)",
                 }}
               >
+                {active === p.idx && (
+                  <motion.span
+                    layoutId="active-bg"
+                    className="absolute inset-0 -z-10 rounded-[3px] bg-glory-gold/10"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
+                {active === p.idx && (
+                  <motion.span
+                    layoutId="active-underline"
+                    className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-glory-gold"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
                 {p.text}
               </button>
             )
@@ -369,7 +387,12 @@ export function ManuscriptParallax({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [-drift, drift]);
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 65,
+    damping: 26,
+    restDelta: 0.001,
+  });
+  const y = useTransform(smoothProgress, [0, 1], [-drift, drift]);
 
   return (
     <div ref={ref} className={`relative overflow-hidden ${className}`}>
@@ -731,6 +754,11 @@ export function WordReveal({ children, className = "" }: WordRevealProps) {
     target: ref,
     offset: ["start 0.85", "end 0.65"],
   });
+  const springProgress = useSpring(scrollYProgress, {
+    stiffness: 85,
+    damping: 22,
+    restDelta: 0.001,
+  });
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     if (!armed && v > 0) setArmed(true);
   });
@@ -746,7 +774,7 @@ export function WordReveal({ children, className = "" }: WordRevealProps) {
   return (
     <p ref={ref} className={`lit-serif ${className}`}>
       {words.map((w, i) => (
-        <Word key={i} progress={scrollYProgress} index={i} total={words.length}>
+        <Word key={i} progress={springProgress} index={i} total={words.length}>
           {w}
         </Word>
       ))}
@@ -771,11 +799,22 @@ function Word({
   const end = Math.min(1, start + 1.4 / total);
   const opacity = useTransform(progress, [start, end], [0.12, 1]);
   const y = useTransform(progress, [start, end], [14, 0]);
+  const scale = useTransform(progress, [start, end], [0.94, 1]);
   const blur = useTransform(progress, [start, end], [6, 0]);
   const filter = useTransform(blur, (b) => `blur(${b}px)`);
 
   return (
-    <motion.span className="lit-word" style={{ opacity, y, filter, display: "inline-block", willChange: "opacity, transform" }}>
+    <motion.span
+      className="lit-word"
+      style={{
+        opacity,
+        y,
+        scale,
+        filter,
+        display: "inline-block",
+        willChange: "opacity, transform, filter",
+      }}
+    >
       {children}
       {" "}
     </motion.span>
