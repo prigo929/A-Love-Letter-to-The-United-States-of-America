@@ -39,7 +39,7 @@ const SUB_PAGES = [
   },
   {
     href: "/literature-philosophy/transcendentalism",
-    built: false,
+    built: true,
     title: "Transcendentalism",
     titleRo: "Transcendentalism",
     blurb: "Emerson, Thoreau, and the argument that the individual conscience outranks the crowd.",
