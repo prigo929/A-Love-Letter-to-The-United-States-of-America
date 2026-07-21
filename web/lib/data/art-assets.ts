@@ -25,6 +25,7 @@ import park432 from "@/IMAGES/Architecture/432_Park_Avenue,_NY_(cropped).jpg";
 import boaTower from "@/IMAGES/Architecture/BoA_Tower.jpg";
 import hudsonYards from "@/IMAGES/Architecture/Hudson_Yards_from_Hudson_Commons_(95131p)_(30_Hudson_Yards).jpg";
 import trumpTower from "@/IMAGES/Architecture/Trump International Hotel and Tower.jpg";
+import eiffelTower from "@/IMAGES/Architecture/Tour_Eiffel_Wikimedia_Commons.jpg";
 
 // Art assets
 import bierstadtYosemite from "@/IMAGES/Art/Albert Bierstadt - Valley of the Yosemite - 1864.jpg";
@@ -237,6 +238,13 @@ export const ART_ASSETS = {
     alt: "Washington Crossing the Delaware, Emanuel Leutze, 1851",
     altRo: "Washington traversând Râul Delaware, Emanuel Leutze, 1851",
     credit: "Washington_Crossing_the_Delaware.jpg · Local Asset",
+    license: "Public domain",
+  },
+  eiffelTower: {
+    src: eiffelTower.src,
+    alt: "Eiffel Tower, Paris (1889)",
+    altRo: "Turnul Eiffel, Paris (1889)",
+    credit: "Tour_Eiffel_Wikimedia_Commons.jpg · Local Asset",
     license: "Public domain",
   },
 } as const satisfies Record<string, ArtAsset>;

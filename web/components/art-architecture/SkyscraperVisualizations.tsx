@@ -155,7 +155,7 @@ const STRUCTURAL_SYSTEMS: StructuralSystem[] = [
     conceptRo: "Turnurile se îngustează în sus pentru a lăsa lumina soarelui să ajungă la stradă.",
     techDetail: "Triggered by New York's 1916 Zoning Resolution, architects created the classic 'wedding-cake' silhouette, blending steel strength with Art Deco sculpture.",
     techDetailRo: "Impulsionată de Legea de Zonare din New York din 1916, arhitecții au creat silueta clasică cu retrageri succesive.",
-    badgeColor: "#E8C97A",
+    badgeColor: "var(--art-accent-copper)",
   },
   {
     id: "framed-tube",
@@ -168,7 +168,7 @@ const STRUCTURAL_SYSTEMS: StructuralSystem[] = [
     conceptRo: "Perimetrul exterior funcționează ca un tub rigid ce rezistă vântului.",
     techDetail: "Invented by SOM structural genius Fazlur Rahman Khan. Bundling multiple hollow tubes together reduced steel usage by 50% per square foot while reaching unprecedented heights.",
     techDetailRo: "Invenția lui Fazlur Rahman Khan (SOM). Mănunchiul de tuburi a redus consumul de oțel cu 50% per metru pătrat.",
-    badgeColor: "#7DD3FC",
+    badgeColor: "var(--art-accent-slate)",
   },
   {
     id: "tuned-mass",
