@@ -21,6 +21,7 @@ import {
 } from "@/components/art-architecture/ArtAnimations";
 import { SkyscraperRace, type Tower } from "@/components/art-architecture/SkyscraperRace";
 import { SkyscraperVisualizations } from "@/components/art-architecture/SkyscraperVisualizations";
+import { SkyscraperInteractiveVisuals } from "@/components/art-architecture/SkyscraperInteractiveVisuals";
 import { ART_ASSETS } from "@/lib/data/art-assets";
 import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -363,6 +364,11 @@ export default async function SkyscraperRevolutionPage() {
 
         {/* Interactive Data, Engineering & Master Architects Suite */}
         <SkyscraperVisualizations />
+
+        {/* Dynamic Wind Tunnel, 24h Lighting & Proportional Scale Visualizers */}
+        <div className="mx-auto max-w-[1440px] px-6 md:px-12 py-12">
+          <SkyscraperInteractiveVisuals />
+        </div>
 
         {/* Supertall Physics & Anatomy Matrix */}
         <div className="mx-auto max-w-[900px] px-6 md:px-12 py-16">
