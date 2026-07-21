@@ -150,10 +150,17 @@ export function ArtStyles() {
         display: flex;
         gap: 0;
         width: max-content;
+        /* Trailing pad so the track ALWAYS overflows the viewport, even on wide
+           monitors. Without it, five 340px cards (~1700px) fit inside a 1920px
+           screen, the measured overflow is 0, and the pinned horizontal scroll
+           never translates — which read as "the scroll section is broken". The
+           pad guarantees real travel on any screen width and lets the last card
+           settle to centre instead of jamming against the right edge. */
+        padding-right: 40vw;
       }
 
       .art-era-card {
-        width: min(340px, 80vw);
+        width: min(440px, 82vw);
         flex-shrink: 0;
         border-right: 1px solid rgba(255,255,255,0.06);
       }
@@ -178,37 +185,40 @@ export function ArtStyles() {
 // 1. ArtHeroCrossfade — 5-slide crossfade with Ken-Burns zoom
 // ─────────────────────────────────────────────────────────────────────────────
 
+// Every URL here is a VERIFIED Wikimedia Commons file (queried via the API, then
+// fetched to confirm HTTP 200). The previous set was five hallucinated paths that
+// all 404'd — which is why the hero showed nothing. Do not hand-write these; if
+// you change one, fetch it first and confirm it resolves.
 const ART_HERO_SLIDES = [
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Empire_State_Building_night_view.jpg",
+    src: "https://upload.wikimedia.org/wikipedia/commons/9/92/EMPIRE_STATE_BUILDING%2C_NIGHT%2C_COLORFUL.jpg",
     alt: "Empire State Building at night, New York City",
     label: "EMPIRE STATE · NEW YORK CITY",
     badge: "1931 — ART DECO",
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Brooklyn_Bridge%2C_NYC.jpg",
-    alt: "Brooklyn Bridge spanning the East River, New York City",
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Brooklyn-side_tower_of_the_Brooklyn_Bridge_from_Brooklyn_Bridge_Park%2C_New_York_City.jpg/3840px-Brooklyn-side_tower_of_the_Brooklyn_Bridge_from_Brooklyn_Bridge_Park%2C_New_York_City.jpg",
+    alt: "Brooklyn Bridge tower, New York City",
     label: "BROOKLYN BRIDGE · 1883",
     badge: "GOTHIC REVIVAL",
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Gateway_Arch_at_Sunset.jpg",
-    alt: "Gateway Arch at sunset, St. Louis, Missouri",
+    src: "https://upload.wikimedia.org/wikipedia/commons/d/de/Gateway_Arch%2C_St._Louis.jpg",
+    alt: "Gateway Arch, St. Louis, Missouri",
     label: "GATEWAY ARCH · ST. LOUIS",
     badge: "1965 — MODERNIST",
   },
   {
-    // Chicago skyline — local already in site-images but we need a string src for the hero
-    src: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Brooklyn_Bridge_from_60_water.jpg",
-    alt: "Brooklyn Bridge and Manhattan skyline at dusk",
-    label: "MANHATTAN SKYLINE",
-    badge: "STEEL & GLASS",
+    src: "https://upload.wikimedia.org/wikipedia/commons/5/54/Exterior_and_Museum_Mile_View_from_Interior_Circular_Window_of_the_Solomon_R_Guggenheim_Museum.jpg",
+    alt: "Solomon R. Guggenheim Museum, Frank Lloyd Wright, New York City",
+    label: "GUGGENHEIM · NEW YORK CITY",
+    badge: "1959 — F. L. WRIGHT",
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Empire_State_Building_Night_II.jpg",
-    alt: "Empire State Building with city lights at night",
-    label: "NEW YORK AT NIGHT",
-    badge: "SUPERTALL ERA",
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/New_York_City_%28New_York%2C_USA%29%2C_One_World_Trade_Center_--_2012_--_6566.jpg/1920px-New_York_City_%28New_York%2C_USA%29%2C_One_World_Trade_Center_--_2012_--_6566.jpg",
+    alt: "One World Trade Center, New York City",
+    label: "ONE WORLD TRADE · NEW YORK",
+    badge: "2013 — SUPERTALL",
   },
 ];
 
