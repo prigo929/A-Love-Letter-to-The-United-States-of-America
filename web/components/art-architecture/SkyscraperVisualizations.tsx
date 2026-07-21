@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { ART_ASSETS } from "@/lib/data/art-assets";
+import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 // ─── Data: U.S. Skyline Capitals ─────────────────────────────────────────────
 
@@ -224,6 +227,148 @@ const HEIGHT_RACE_STORY: HeightRaceStep[] = [
   },
 ];
 
+// ─── Data: Famous Observation Decks ─────────────────────────────────────────
+
+interface ObservatoryData {
+  name: string;
+  city: string;
+  feet: number;
+  meters: number;
+  feature: string;
+  featureRo: string;
+  imageSrc: string;
+  imageAlt: string;
+}
+
+const OBSERVATORIES_DATA: ObservatoryData[] = [
+  {
+    name: "SUMMIT One Vanderbilt",
+    city: "New York City",
+    feet: 1210,
+    meters: 369,
+    feature: "Levitation glass skyboxes suspended 1,000+ feet directly over Madison Avenue.",
+    featureRo: "Cutii de sticlă suspendate peste Bulevardul Madison la peste 360m înălțime.",
+    imageSrc: ART_ASSETS.oneVanderbilt.src,
+    imageAlt: "One Vanderbilt, SUMMIT Observation Deck",
+  },
+  {
+    name: "The Edge at 30 Hudson Yards",
+    city: "New York City",
+    feet: 1131,
+    meters: 345,
+    feature: "Highest outdoor sky deck in the Western Hemisphere, extending 80ft into mid-air with glass floor panels.",
+    featureRo: "Cea mai înaltă platformă exterioară din emisfera vestică, extinsă 24m în aer liber cu podea de sticlă.",
+    imageSrc: ART_ASSETS.hudsonYards.src,
+    imageAlt: "The Edge at 30 Hudson Yards",
+  },
+  {
+    name: "Skydeck Chicago (Willis Tower)",
+    city: "Chicago",
+    feet: 1353,
+    meters: 412,
+    feature: "'The Ledge' — all-glass balcony boxes stepping out 4.3 feet from the 103rd floor facade.",
+    featureRo: "„The Ledge” — balcoane complet din sticlă care ies 1,3 metri în exterior la etajul 103.",
+    imageSrc: ART_ASSETS.willisTower.src,
+    imageAlt: "Skydeck Chicago Willis Tower",
+  },
+  {
+    name: "Empire State 102nd Observatory",
+    city: "New York City",
+    feet: 1250,
+    meters: 381,
+    feature: "Floor-to-ceiling glass enclosed pinnacle observatory offering 80-mile views across 6 states.",
+    featureRo: "Observator cu pereți de sticlă de la podea la tavan ce oferă vizibilitate până la 130 km peste 6 state.",
+    imageSrc: ART_ASSETS.empireStateRockefeller.src,
+    imageAlt: "Empire State Observatory View",
+  },
+  {
+    name: "Top of the Rock (Rockefeller Center)",
+    city: "New York City",
+    feet: 850,
+    meters: 259,
+    feature: "Unobstructed 360-degree open-air decks designed like a 1930s ocean liner, directly facing Empire State.",
+    featureRo: "Platforme în aer liber cu vedere 360° direct către Empire State și Central Park.",
+    imageSrc: ART_ASSETS.chrysler.src,
+    imageAlt: "Top of the Rock Rockefeller Center View",
+  },
+  {
+    name: "One World Observatory",
+    city: "New York City",
+    feet: 1268,
+    meters: 386,
+    feature: "SkyPod elevators ascending 102 floors in 47 seconds with a time-lapse history of Manhattan's skyline.",
+    featureRo: "Ascensoare SkyPod care urcă 102 etaje în 47 de secunde cu o animație time-lapse a evoluției Manhattanului.",
+    imageSrc: ART_ASSETS.oneWTC.src,
+    imageAlt: "One World Observatory",
+  },
+];
+
+// ─── Data: Master Architects of the Sky ─────────────────────────────────────
+
+interface ArchitectProfile {
+  name: string;
+  title: string;
+  titleRo: string;
+  era: string;
+  landmarkWork: string;
+  quote: string;
+  bio: string;
+  bioRo: string;
+}
+
+const MASTER_ARCHITECTS: ArchitectProfile[] = [
+  {
+    name: "Louis Sullivan",
+    title: "Father of Modern Skyscrapers",
+    titleRo: "Părintele Zgârie-Norilor Moderni",
+    era: "1856 – 1924",
+    landmarkWork: "Wainwright Building (1891) & Guaranty Building (1896)",
+    quote: "Form follows function.",
+    bio: "Coined the universal rule 'Form follows function'. Sullivan was the first architect to treat the skyscraper as an proud, soaring vertical entity rather than a stacked classical building.",
+    bioRo: "A creat regula universală „Forma urmează funcția”. Sullivan a fost primul arhitect care a tratat zgârie-norul ca o entitate verticală mândră.",
+  },
+  {
+    name: "William Van Alen",
+    title: "Art Deco Mastermind",
+    titleRo: "Maestrul Art Deco",
+    era: "1882 – 1954",
+    landmarkWork: "Chrysler Building (1930)",
+    quote: "Architecture is the art of soaring ambition.",
+    bio: "Designed the Chrysler Building with its iconic sunburst stainless steel crown and eagle gargoyles, winning the world's tallest building title in secret.",
+    bioRo: "A proiectat Chrysler Building cu emblematica sa coroană Art Deco din oțel inoxidabil și gargui în formă de vultur.",
+  },
+  {
+    name: "Ludwig Mies van der Rohe",
+    title: "Pioneer of International Style",
+    titleRo: "Pionierul Stilului Internațional",
+    era: "1886 – 1969",
+    landmarkWork: "Seagram Building (1958) & 860-880 Lake Shore Drive",
+    quote: "Less is more.",
+    bio: "Transformed American corporate architecture by stripping ornament and creating pure bronze-and-glass curtain towers with elevated granite plazas.",
+    bioRo: "A transformat arhitectura corporativă americană prin eliminarea ornamentelor și crearea turnurilor cortină din bronz și sticlă.",
+  },
+  {
+    name: "Fazlur Rahman Khan",
+    title: "Einstein of Structural Engineering",
+    titleRo: "Einstein al Ingineriei Structurale",
+    era: "1929 – 1982",
+    landmarkWork: "Willis (Sears) Tower (1973) & John Hancock Center (1969)",
+    quote: "The skyscraper is a structural system, not just a facade.",
+    bio: "SOM structural partner who invented the framed-tube, trussed-tube, and bundled-tube systems, making 100+ story supertalls economically feasible.",
+    bioRo: "Partener structural SOM care a inventat sistemele tubulare, făcând posibile supraturnurile de peste 100 de etaje.",
+  },
+  {
+    name: "Adrian Smith & David Childs",
+    title: "Supertall Age Masters (SOM)",
+    titleRo: "Maestrii Epocii Supraturnurilor",
+    era: "CONTEMPORARY",
+    landmarkWork: "One World Trade Center (2013) & Trump Tower Chicago (2009)",
+    quote: "Building tall is an act of civic confidence.",
+    bio: "Led the design of 21st-century American supertalls, blending high-strength reinforced concrete cores, aerodynamics, and sustainable facades.",
+    bioRo: "Au condus proiectarea supraturnurilor americane din secolul XXI, combinând nuclee de beton de înaltă rezistență cu aerodinamică avansată.",
+  },
+];
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Component: SkyscraperVisualizations
 // ─────────────────────────────────────────────────────────────────────────────
@@ -232,7 +377,7 @@ export function SkyscraperVisualizations() {
   const { locale } = useLanguage();
   const isRo = locale === "ro";
 
-  const [activeTab, setActiveTab] = useState<"skylines" | "engineering" | "race">("skylines");
+  const [activeTab, setActiveTab] = useState<"skylines" | "engineering" | "race" | "observatories" | "architects">("skylines");
   const [activeSystem, setActiveSystem] = useState<string>("tuned-mass");
   const [cityMetric, setCityMetric] = useState<"skyscrapers" | "supertalls" | "peak">("skyscrapers");
 
@@ -266,7 +411,9 @@ export function SkyscraperVisualizations() {
             {[
               { id: "skylines", label: isRo ? "Capitalele Siluetelor" : "Skyline Capitals" },
               { id: "engineering", label: isRo ? "Sisteme Structurale" : "Structural Systems" },
-              { id: "race", label: isRo ? "Marea Cursă din 1930" : "The Great 1930 Race" },
+              { id: "race", label: isRo ? "Marea Cursă 1930" : "1930 Height Race" },
+              { id: "observatories", label: isRo ? "Observatoare Faimoase" : "Observation Decks" },
+              { id: "architects", label: isRo ? "Maeștrii Arhitecți" : "Master Architects" },
             ].map((t) => (
               <button
                 key={t.id}
@@ -354,7 +501,6 @@ export function SkyscraperVisualizations() {
                       </div>
                     </div>
 
-                    {/* Progress bar */}
                     <div className="h-2 w-full bg-white/5 overflow-hidden mb-4">
                       <motion.div
                         className="h-full bg-gradient-to-r from-[var(--art-accent-copper)] to-[#F0EBE1]"
@@ -385,7 +531,6 @@ export function SkyscraperVisualizations() {
             transition={{ duration: 0.5 }}
             className="grid gap-8 lg:grid-cols-12"
           >
-            {/* System Selector Buttons */}
             <div className="lg:col-span-4 space-y-3">
               {STRUCTURAL_SYSTEMS.map((sys) => {
                 const isActive = activeSystem === sys.id;
@@ -414,7 +559,6 @@ export function SkyscraperVisualizations() {
               })}
             </div>
 
-            {/* System Detail View */}
             <div className="lg:col-span-8 border border-white/10 bg-[var(--art-surface)] p-8 md:p-12 flex flex-col justify-between">
               {(() => {
                 const sys = STRUCTURAL_SYSTEMS.find((s) => s.id === activeSystem)!;
@@ -514,6 +658,112 @@ export function SkyscraperVisualizations() {
 
                     <p className="font-sans text-xs text-white/60 leading-relaxed">
                       {isRo ? step.detailRo : step.detail}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {/* Tab 4: Famous Observation Decks */}
+        {activeTab === "observatories" && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="space-y-12"
+          >
+            <div className="max-w-2xl">
+              <p className="font-sans text-base text-white/70 leading-relaxed">
+                {isRo
+                  ? "Platformele de observare ale Americii oferă vederi uluitoare dincolo de nori, îmbinând podele de sticlă suspendate și ascensoare ultra-rapide."
+                  : "America's legendary observation decks offer breathtaking vistas above the clouds, featuring levitating glass skyboxes, open-air platforms, and ultra-high-speed elevators."}
+              </p>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {OBSERVATORIES_DATA.map((obs) => (
+                <div
+                  key={obs.name}
+                  className="group border border-white/10 bg-[var(--art-surface)] overflow-hidden transition-all duration-300 hover:border-[var(--art-accent-copper)]"
+                >
+                  <div className="relative h-56 w-full overflow-hidden">
+                    <Image
+                      src={obs.imageSrc}
+                      alt={obs.imageAlt}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      style={{ filter: "brightness(0.5) contrast(1.05)" }}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      placeholder="blur"
+                      blurDataURL={BLUR_PLACEHOLDER}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#080609] via-transparent to-transparent opacity-80" />
+                    <span className="absolute top-3 right-3 font-mono text-xs font-bold px-2 py-1 bg-black/60 backdrop-blur-md border border-white/10 text-[var(--art-accent-copper)]">
+                      {obs.feet.toLocaleString()} FT ({obs.meters}m)
+                    </span>
+                  </div>
+
+                  <div className="p-6">
+                    <p className="art-text-metadata mb-1 text-white/40">{obs.city}</p>
+                    <h3 className="art-text-heading text-xl text-white mb-3 group-hover:text-[var(--art-accent-copper)] transition-colors">
+                      {obs.name}
+                    </h3>
+                    <p className="font-sans text-xs text-white/70 leading-relaxed">
+                      {isRo ? obs.featureRo : obs.feature}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {/* Tab 5: Master Architects */}
+        {activeTab === "architects" && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="space-y-12"
+          >
+            <div className="max-w-2xl">
+              <p className="font-sans text-base text-white/70 leading-relaxed">
+                {isRo
+                  ? "Vizionarii, inginerii și pionierii care au transformat silueta americană din piatră în oțel, sticlă și supraturnuri."
+                  : "The visionaries, structural geniuses, and master builders who transformed the American skyline from stone to steel, glass, and supertalls."}
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {MASTER_ARCHITECTS.map((arch) => (
+                <div
+                  key={arch.name}
+                  className="border border-white/10 bg-[var(--art-surface)] p-8 flex flex-col justify-between transition-all duration-300 hover:border-[var(--art-accent-copper)]"
+                >
+                  <div>
+                    <span className="font-mono text-xs font-bold text-[var(--art-accent-copper)]">
+                      {arch.era}
+                    </span>
+                    <h3 className="art-text-heading text-2xl text-white mt-1 mb-1">{arch.name}</h3>
+                    <p className="font-sans text-xs text-white/50 mb-4">{isRo ? arch.titleRo : arch.title}</p>
+                    
+                    <p className="font-sans text-xs italic text-[var(--art-accent-ivory)] border-l-2 border-[var(--art-accent-copper)] pl-3 py-1 mb-6">
+                      &ldquo;{arch.quote}&rdquo;
+                    </p>
+
+                    <p className="font-sans text-xs text-white/70 leading-relaxed mb-6">
+                      {isRo ? arch.bioRo : arch.bio}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-white/10">
+                    <p className="font-sans text-[11px] uppercase tracking-wider text-white/40 mb-1">
+                      {isRo ? "Lucrări Emblematice" : "Landmark Works"}
+                    </p>
+                    <p className="font-mono text-xs font-semibold text-white">
+                      {arch.landmarkWork}
                     </p>
                   </div>
                 </div>

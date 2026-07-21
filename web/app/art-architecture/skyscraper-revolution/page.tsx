@@ -3,7 +3,7 @@
 // genuinely invented, so the page is organised as a height race: nine towers
 // that each redefined how tall an American building could be, told through a
 // to-scale interactive skyline (SkyscraperRace), plus a gallery of 21st-century
-// supertalls and the three engineering breakthroughs that made it possible.
+// supertalls, interactive engineering data visualizer, and the physics of high-rises.
 //
 // All imagery is stored locally in /IMAGES/Architecture — see lib/data/art-assets.ts
 
@@ -28,7 +28,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "The Skyscraper Revolution | Art & Architecture",
   description:
-    "America invented the skyscraper in Chicago in 1885 and never stopped building taller. Nine historical towers, modern 21st-century supertalls, a to-scale height race, and the three inventions that made tall buildings possible.",
+    "America invented the skyscraper in Chicago in 1885 and never stopped building taller. Nine historical towers, modern 21st-century supertalls, interactive engineering visualizations, observation decks, and supertall physics.",
   alternates: { canonical: "/art-architecture/skyscraper-revolution" },
 };
 
@@ -167,6 +167,42 @@ const MODERN_SUPERTALLS = [
   },
 ];
 
+// Supertall Physics & Engineering Matrix
+const PHYSICS_MODULES = [
+  {
+    title: "Bedrock Anchor Caissons",
+    titleRo: "Caroaje Ancorate în Roca de Bază",
+    stat: "100 FT DEEP",
+    detail: "Drilled 80-100 feet deep into 450-million-year-old Manhattan schist rock, anchoring 1,400+ ft supertalls against hurricane overturn torque.",
+    detailRo: "Forate 25-30m adâncime în roca de ardezie de 450 milioane de ani din Manhattan, ancorând turnurile împotriva forțelor de răsturnare.",
+    color: "copper" as const,
+  },
+  {
+    title: "Vortex Shedding Aerodynamics",
+    titleRo: "Aerodinamică și Amortizarea Vârtejurilor",
+    stat: "100+ MPH WINDS",
+    detail: "Spiral setbacks, chamfered corners, and porous blow-through floors break up wind vortexes to eliminate dangerous swaying resonance.",
+    detailRo: "Retragerile spiralați, colțurile bizotate și etajele perforate sparg vârtejurile de aer pentru a elimina balansul de rezonanță.",
+    color: "slate" as const,
+  },
+  {
+    title: "800-Ton Tuned Mass Pendulums",
+    titleRo: "Pendule Amortizoare de 800 Tone",
+    stat: "800 TON SWAY DAMPER",
+    detail: "Giant steel or lead counterweight pendulums suspended near the crown act like shock absorbers, swinging counter to wind sway.",
+    detailRo: "Pendule masive din oțel sau plumb suspendate lângă coroana turnului acționează ca amortizoare, balansându-se în sens opus vântului.",
+    color: "crimson" as const,
+  },
+  {
+    title: "High-Speed SkyPod Elevators",
+    titleRo: "Ascensoare Expres de Mare Viteză",
+    stat: "45 MPH / 2,000 FPM",
+    detail: "Double-deck express shuttles ascend to sky lobbies in 45 seconds using pressurized cabs and aerodynamic wind fairings.",
+    detailRo: "Ascensoare expres supraetajate urcă la etajele panoramice în 45 de secunde folosind cabine presurizate aerodinamice.",
+    color: "copper" as const,
+  },
+];
+
 export default async function SkyscraperRevolutionPage() {
   const locale = await getServerLocale();
   const isRo = locale === "ro";
@@ -183,6 +219,7 @@ export default async function SkyscraperRevolutionPage() {
         tallestLabel: "Cea mai înaltă din lume",
         supertallsTitle: "Noua eră a supraturnurilor din secolul XXI",
         supertallsSub: "O nouă generație de zgârie-nori ultra-subțiri și ecologici care împing New York-ul și Chicago-ul spre noi înălțimi.",
+        physicsTitle: "Fizica & Anatomia unui Supraturn",
         howTitle: "Trei invenții, o clădire",
         howBody: "Zgârie-norul nu a fost o singură idee, ci trei care au sosit împreună. Fără oricare dintre ele, clădirea înaltă rămâne imposibilă.",
         f1: "Scheletul de oțel",
@@ -210,6 +247,7 @@ export default async function SkyscraperRevolutionPage() {
         tallestLabel: "World's tallest",
         supertallsTitle: "The 21st-Century Supertall Era",
         supertallsSub: "A new generation of ultra-slender, engineering marvels pushing New York and Chicago past 1,400 feet.",
+        physicsTitle: "The Physics & Anatomy of a Supertall",
         howTitle: "Three inventions, one building",
         howBody: "The skyscraper was not one idea but three that arrived together. Take any one away and the tall building is impossible again.",
         f1: "The steel frame",
@@ -323,8 +361,26 @@ export default async function SkyscraperRevolutionPage() {
           </section>
         </div>
 
-        {/* Interactive Data & Engineering Visualizations */}
+        {/* Interactive Data, Engineering & Master Architects Suite */}
         <SkyscraperVisualizations />
+
+        {/* Supertall Physics & Anatomy Matrix */}
+        <div className="mx-auto max-w-[900px] px-6 md:px-12 py-16">
+          <p className="art-text-label mb-8" style={{ color: "var(--art-accent-copper)" }}>
+            {copy.physicsTitle}
+          </p>
+          <div className="space-y-4">
+            {PHYSICS_MODULES.map((pm) => (
+              <ArtFactModule
+                key={pm.title}
+                fact={isRo ? pm.titleRo : pm.title}
+                detail={isRo ? pm.detailRo : pm.detail}
+                source={`PHYSICS MATRIX · ${pm.stat}`}
+                color={pm.color}
+              />
+            ))}
+          </div>
+        </div>
 
         <ArtQuoteBreak quote={copy.quote} attribution={copy.quoteBy} />
 
