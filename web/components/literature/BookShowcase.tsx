@@ -6,8 +6,10 @@
 // a realistic spine shadow, and elegant typography.
 // Offers a clean, bilingual download button and an in-browser EPUB reader.
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { EpubReader } from "./EpubReader";
 
 export interface BookItem {
   title: string;
@@ -500,11 +502,13 @@ export function BookShowcase({
   const { locale } = useLanguage();
   const isRo = locale === "ro";
   const books = BOOK_DATABASE.filter((b) => b.categories.includes(category));
+  const [readerBook, setReaderBook] = useState<BookItem | null>(null);
 
   if (books.length === 0) return null;
 
   return (
     <>
+      <EpubReader book={readerBook} onClose={() => setReaderBook(null)} />
 
     <section className="py-20 md:py-28 border-t border-white/10 mt-20">
       <h2 className="macro-section-title mb-4">{isRo ? titleRo : titleEn}</h2>
@@ -576,19 +580,17 @@ export function BookShowcase({
                 </div>
 
                 <div className="mt-6 flex gap-2">
-                  {/* Read in browser — opens dedicated /reader page in a new tab */}
-                  <a
+                  {/* Read in browser — opens full-screen overlay modal */}
+                  <button
                     id={`read-book-${book.title.replace(/\s+/g, "-").toLowerCase()}`}
-                    href={`/reader?book=${encodeURIComponent(book.fileName)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onClick={() => setReaderBook(book)}
                     className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-glory-gold/90 border border-glory-gold px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-black hover:bg-glory-gold transition-all duration-300"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
                     {isRo ? "Citește" : "Read"}
-                  </a>
+                  </button>
 
                   {/* Download ePub */}
                   <a
