@@ -334,6 +334,66 @@ export function ArtHeroCrossfade({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// 1b. ArtSingleHero — Single static hero image with no zoom / crossfade
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function ArtSingleHero({
+  imageSrc,
+  imageAlt = "Hero image",
+  label,
+  badge,
+  children,
+}: {
+  imageSrc: string;
+  imageAlt?: string;
+  label?: string;
+  badge?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="relative h-screen overflow-hidden" style={{ background: 'var(--art-void)' }}>
+      {/* Static background image — NO zoom */}
+      <div className="absolute inset-0">
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          style={{ filter: 'brightness(0.38) saturate(0.55)', transform: 'scale(1)' }}
+          unoptimized
+        />
+      </div>
+
+      {/* Cinematic vignettes */}
+      <div className="absolute inset-0 z-10 art-edge-fade" />
+      <div className="absolute inset-0 z-10" style={{
+        background: 'radial-gradient(ellipse at center, transparent 25%, rgba(8,6,9,0.75) 100%)'
+      }} />
+      <div className="absolute inset-0 z-10 art-noise pointer-events-none" />
+
+      {/* Badge / label — top right */}
+      {(badge || label) && (
+        <div className="absolute top-8 right-8 z-20 flex flex-col items-end gap-1">
+          {badge && (
+            <p className="art-text-metadata" style={{ color: 'var(--art-accent-copper)' }}>
+              {badge}
+            </p>
+          )}
+          {label && <p className="art-text-metadata">{label}</p>}
+        </div>
+      )}
+
+      {/* Content overlay */}
+      <div className="relative z-20 flex h-screen flex-col justify-end pb-16 pt-32 md:pb-24 md:pt-48">
+        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12">{children}</div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // 2. ArtHeroTitle — Animated hero title reveal
 // ─────────────────────────────────────────────────────────────────────────────
 

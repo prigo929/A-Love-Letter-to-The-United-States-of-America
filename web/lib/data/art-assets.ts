@@ -6,6 +6,7 @@ import flatiron from "@/IMAGES/Architecture/Flatiron_Building.jpg";
 import woolworth from "@/IMAGES/Architecture/The_Woolworth_Building_in_New_York_City.jpg";
 import chrysler from "@/IMAGES/Architecture/Chrysler_Building.jpg";
 import empireState from "@/IMAGES/Architecture/Empire_State_Building.jpg";
+import viewOfEmpireStateBuilding from "@/IMAGES/Architecture/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City.jpg";
 import seagram from "@/IMAGES/Architecture/Seagram_Building.jpg";
 import willisTower from "@/IMAGES/Architecture/Willis-Tower-Chicago.jpg";
 import homeInsurance from "@/IMAGES/Architecture/Home_Insurance_Building.jpg";
@@ -51,6 +52,13 @@ export const ART_ASSETS = {
     alt: "The Empire State Building, 1931",
     altRo: "Empire State Building, 1931",
     credit: "Empire_State_Building.jpg · Local Asset",
+    license: "Public domain",
+  },
+  empireStateRockefeller: {
+    src: viewOfEmpireStateBuilding.src,
+    alt: "View of Empire State Building from Rockefeller Center, New York City",
+    altRo: "Vedere a Empire State Building de la Centrul Rockefeller, New York City",
+    credit: "View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City.jpg · Local Asset",
     license: "Public domain",
   },
   seagram: {

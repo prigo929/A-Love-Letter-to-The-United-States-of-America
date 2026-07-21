@@ -12,12 +12,11 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import {
   ArtStyles,
-  ArtHeroCrossfade,
+  ArtSingleHero,
   ArtHeroTitle,
   ArtParallaxBand,
   ArtQuoteBreak,
   ArtFactModule,
-  type HeroSlide,
 } from "@/components/art-architecture/ArtAnimations";
 import { SkyscraperRace, type Tower } from "@/components/art-architecture/SkyscraperRace";
 import { ART_ASSETS } from "@/lib/data/art-assets";
@@ -29,40 +28,6 @@ export const metadata: Metadata = {
     "America invented the skyscraper in Chicago in 1885 and never stopped building taller. Nine towers, a to-scale height race, and the three inventions that made the tall building possible.",
   alternates: { canonical: "/art-architecture/skyscraper-revolution" },
 };
-
-// Local skyscraper hero slideshow
-const SKYSCRAPER_HERO_SLIDES: HeroSlide[] = [
-  {
-    src: ART_ASSETS.chrysler.src,
-    alt: "The Chrysler Building Art Deco crown, 1930",
-    label: "CHRYSLER BUILDING · NEW YORK CITY",
-    badge: "1930 — ART DECO",
-  },
-  {
-    src: ART_ASSETS.oneWTC.src,
-    alt: "One World Trade Center soaring into the sky",
-    label: "ONE WORLD TRADE CENTER · NEW YORK CITY",
-    badge: "2013 — SUPERTALL",
-  },
-  {
-    src: ART_ASSETS.woolworth.src,
-    alt: "The Woolworth Building Gothic facade",
-    label: "WOOLWORTH BUILDING · NEW YORK CITY",
-    badge: "1913 — GOTHIC REVIVAL",
-  },
-  {
-    src: ART_ASSETS.willisTower.src,
-    alt: "The Willis Tower in Chicago",
-    label: "WILLIS TOWER · CHICAGO",
-    badge: "1973 — BUNDLED TUBE",
-  },
-  {
-    src: ART_ASSETS.flatiron.src,
-    alt: "The Flatiron Building, New York, 1902",
-    label: "FLATIRON BUILDING · NEW YORK CITY",
-    badge: "1902 — BEAUX-ARTS",
-  },
-];
 
 // The height race. Feet are architectural height (roof, except where a building's
 // fame IS its spire — Chrysler and Empire State — noted in the copy).
@@ -184,8 +149,13 @@ export default async function SkyscraperRevolutionPage() {
     <>
       <ArtStyles />
       <main style={{ background: "var(--art-void)" }} className="min-h-screen text-white">
-        {/* Full-screen Hero matching the exact format, design & header distance of main Art & Architecture page */}
-        <ArtHeroCrossfade slides={SKYSCRAPER_HERO_SLIDES}>
+        {/* Single Hero with View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City, no zooming in */}
+        <ArtSingleHero
+          imageSrc={ART_ASSETS.empireStateRockefeller.src}
+          imageAlt={isRo ? ART_ASSETS.empireStateRockefeller.altRo : ART_ASSETS.empireStateRockefeller.alt}
+          badge="1931 — ART DECO"
+          label="EMPIRE STATE BUILDING · NEW YORK CITY"
+        >
           <ArtHeroTitle
             eyebrow={copy.eyebrow}
             line1={copy.line1}
@@ -203,7 +173,7 @@ export default async function SkyscraperRevolutionPage() {
               />
             </div>
           </ArtHeroTitle>
-        </ArtHeroCrossfade>
+        </ArtSingleHero>
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* The signature height race interaction */}
