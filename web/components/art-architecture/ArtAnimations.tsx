@@ -146,21 +146,19 @@ export function ArtStyles() {
       }
 
       /* ── Era Timeline horizontal track ── */
-      .art-era-track {
-        display: flex;
-        gap: 0;
-        width: max-content;
-        /* Trailing pad so the track ALWAYS overflows the viewport, even on wide
-           monitors. Without it, five 340px cards (~1700px) fit inside a 1920px
-           screen, the measured overflow is 0, and the pinned horizontal scroll
-           never translates — which read as "the scroll section is broken". The
-           pad guarantees real travel on any screen width and lets the last card
-           settle to centre instead of jamming against the right edge. */
-        padding-right: 40vw;
+      /* Native horizontal scroller. A slim copper scrollbar in webkit; the
+         Firefox equivalent is set inline on the element. */
+      .art-era-scroller::-webkit-scrollbar { height: 8px; }
+      .art-era-scroller::-webkit-scrollbar-track { background: transparent; }
+      .art-era-scroller::-webkit-scrollbar-thumb {
+        background: rgba(196,149,106,0.35);
+        border-radius: 999px;
       }
+      .art-era-scroller::-webkit-scrollbar-thumb:hover { background: rgba(196,149,106,0.6); }
 
       .art-era-card {
         width: min(440px, 82vw);
+        min-height: 460px;
         flex-shrink: 0;
         border-right: 1px solid rgba(255,255,255,0.06);
       }
@@ -635,130 +633,76 @@ interface EraData {
 }
 
 export function ArtEraTimeline({ eras }: { eras: EraData[] }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const progressBarRef = useRef<HTMLDivElement>(null);
+  // A TRUE horizontal scroller, not a pinned vertical-scroll section.
+  //
+  // The previous version reserved eras.length × 120vh (600vh) of page height and
+  // translated the cards sideways as you scrolled DOWN. That did two bad things:
+  // it froze entirely on wide monitors (the track fit the viewport, so there was
+  // nothing to translate), and it left a screen-height gap of empty void between
+  // the cards and the next section. It also confused the gesture — you scrolled
+  // up/down to move side to side.
+  //
+  // Now it is what it looks like: a normal-height band you scroll horizontally,
+  // with arrow buttons and scroll-snap so it is obvious and works on every input
+  // (trackpad, shift-wheel, drag, arrows). No scroll measurement, no 600vh.
+  const scrollerRef = useRef<HTMLDivElement>(null);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  // Measure track overflow once mounted and on resize
-  const [maxTranslate, setMaxTranslate] = useState(0);
-  useEffect(() => {
-    function measure() {
-      if (trackRef.current && containerRef.current) {
-        const overflow = trackRef.current.scrollWidth - containerRef.current.offsetWidth;
-        setMaxTranslate(Math.max(0, overflow));
-      }
-    }
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, []);
-
-  // Drive ALL scroll-linked DOM mutations via useMotionValueEvent → direct ref.style.
-  // This completely bypasses Framer Motion's WAAPI path (startWaapiAnimation).
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    if (trackRef.current) {
-      trackRef.current.style.transform = `translateX(${-v * maxTranslate}px)`;
-    }
-    if (progressBarRef.current) {
-      progressBarRef.current.style.width = `${v * 100}%`;
-    }
-  });
-
-  const scrollHeight = `${Math.max(300, eras.length * 120)}vh`;
+  const nudge = (dir: 1 | -1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * Math.min(el.clientWidth * 0.85, 480), behavior: "smooth" });
+  };
 
   return (
-    <div ref={containerRef} style={{ height: scrollHeight, position: 'relative' }}>
-      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center" style={{ background: 'var(--art-void)' }}>
-        {/* Header */}
-        <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12 mb-8 flex-shrink-0">
+    <div style={{ background: 'var(--art-void)' }} className="py-16 md:py-24">
+      {/* Header + arrow controls */}
+      <div className="mx-auto max-w-[1440px] w-full px-6 md:px-12 mb-10 flex items-end justify-between gap-6">
+        <div>
           <p className="art-text-label" style={{ color: 'var(--art-accent-copper)' }}>
             The Architecture of a Nation
           </p>
           <h2 className="art-text-section text-white mt-2" style={{ fontSize: 'clamp(28px, 4.5vw, 64px)' }}>
             Five Eras
           </h2>
-          <p className="art-text-metadata mt-2">Scroll to travel through time →</p>
+          <p className="art-text-metadata mt-2">Scroll sideways to travel through time →</p>
         </div>
-
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }} />
-
-        {/* Track — plain div, translated via direct DOM ref update */}
-        <div className="overflow-hidden flex-1 flex items-center">
-          <div
-            ref={trackRef}
-            className="art-era-track h-full"
-            style={{ willChange: 'transform', transform: 'translateX(0px)' }}
-          >
-            {eras.map((era, i) => (
-              <EraCard key={era.era} era={era} index={i} total={eras.length} scrollYProgress={scrollYProgress} />
-            ))}
-          </div>
+        <div className="hidden md:flex gap-2 shrink-0">
+          {([-1, 1] as const).map((dir) => (
+            <button
+              key={dir}
+              type="button"
+              onClick={() => nudge(dir)}
+              aria-label={dir === -1 ? "Previous eras" : "Next eras"}
+              className="w-11 h-11 flex items-center justify-center rounded-full border transition-colors duration-200"
+              style={{ borderColor: 'rgba(196,149,106,0.4)', color: 'var(--art-accent-copper)' }}
+            >
+              <span className="text-2xl leading-none">{dir === -1 ? '‹' : '›'}</span>
+            </button>
+          ))}
         </div>
+      </div>
 
-        {/* Progress bar — plain div updated via ref */}
-        <div className="flex-shrink-0" style={{ height: '2px', background: 'rgba(255,255,255,0.04)' }}>
-          <div
-            ref={progressBarRef}
-            style={{ height: '2px', width: '0%', background: 'var(--art-accent-copper)', willChange: 'width' }}
-          />
-        </div>
+      {/* The scroller — full-bleed, with edge insets so cards don't jam the rim */}
+      <div
+        ref={scrollerRef}
+        className="art-era-scroller flex overflow-x-auto overflow-y-hidden"
+        style={{ scrollSnapType: 'x proximity', scrollbarWidth: 'thin', scrollbarColor: 'rgba(196,149,106,0.4) transparent' }}
+      >
+        <div className="shrink-0" aria-hidden style={{ width: 'max(1.5rem, calc((100vw - 1440px) / 2 + 1.5rem))' }} />
+        {eras.map((era, i) => (
+          <EraCard key={era.era} era={era} index={i} />
+        ))}
+        <div className="shrink-0 w-8" aria-hidden />
       </div>
     </div>
   );
 }
 
-function EraCard({
-  era, index, total, scrollYProgress
-}: {
-  era: EraData;
-  index: number;
-  total: number;
-  scrollYProgress: ReturnType<typeof useScroll>["scrollYProgress"];
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const start = index / total;
-  const end = (index + 1) / total;
-
-  // Drive opacity + scale via direct DOM ref mutation (useMotionValueEvent).
-  // Avoids motion.div with MotionValue style props → no WAAPI TypeError.
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    if (!cardRef.current) return;
-
-    // Opacity: ramp 0.3→1 entering, hold at 1, ramp 1→0.3 leaving
-    const opacityIn = start - 0.1;
-    const opacityPeak = start + 0.05;
-    const opacityFall = end - 0.05;
-    const opacityOut = end + 0.1;
-    let opacity: number;
-    if (v <= opacityIn) opacity = 0.3;
-    else if (v <= opacityPeak) opacity = 0.3 + ((v - opacityIn) / (opacityPeak - opacityIn)) * 0.7;
-    else if (v <= opacityFall) opacity = 1;
-    else if (v <= opacityOut) opacity = 1 - ((v - opacityFall) / (opacityOut - opacityFall)) * 0.7;
-    else opacity = 0.3;
-
-    // Scale: 0.96→1 entering, hold at 1, 1→0.96 leaving
-    let scale: number;
-    if (v <= start) scale = 0.96;
-    else if (v <= start + 0.05) scale = 0.96 + ((v - start) / 0.05) * 0.04;
-    else if (v <= end - 0.05) scale = 1;
-    else if (v <= end) scale = 1 - ((v - (end - 0.05)) / 0.05) * 0.04;
-    else scale = 0.96;
-
-    cardRef.current.style.opacity = String(opacity);
-    cardRef.current.style.transform = `scale(${scale})`;
-  });
-
+function EraCard({ era, index }: { era: EraData; index: number }) {
   return (
     <div
-      ref={cardRef}
-      className="art-era-card h-full flex flex-col justify-center px-10 py-12 relative"
-      style={{ opacity: 0.3, transform: 'scale(0.96)', background: 'var(--art-void)', willChange: 'opacity, transform' }}
+      className="art-era-card flex flex-col justify-center px-10 py-12 relative"
+      style={{ background: 'var(--art-void)', scrollSnapAlign: 'start' }}
     >
       {/* Large ghost index number */}
       <p

@@ -87,16 +87,25 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
     // Defer one animation frame so the modal is fully painted and the
     // flex container has real pixel dimensions before epub.js measures it.
     requestAnimationFrame(() => {
-      if (!viewerRef.current || !getEpub()) return;
+      const viewer = viewerRef.current;
+      if (!viewer || !getEpub()) return;
 
       const epubBook = getEpub()!(url);
       bookObjRef.current = epubBook;
 
-      const rendition = epubBook.renderTo(viewerRef.current, {
-        width:  "100%",
-        height: "100%",
-        spread: "none",
-        flow:   "paginated",
+      // Paginated mode columnises the content, and epub.js only sets that up
+      // correctly when given EXPLICIT PIXEL dimensions. Passing "100%"/"100%" was
+      // the bug behind two complaints at once: the text ran as one tall column
+      // that scrolled up and down instead of turning pages, and prev/next
+      // couldn't step through pages that didn't exist. Measure the viewer and
+      // hand epub.js real numbers.
+      const rect = viewer.getBoundingClientRect();
+      const rendition = epubBook.renderTo(viewer, {
+        width:   Math.max(1, Math.floor(rect.width)),
+        height:  Math.max(1, Math.floor(rect.height)),
+        spread:  "none",
+        flow:    "paginated",
+        manager: "default",
       });
       renditionRef.current = rendition;
 
@@ -112,17 +121,19 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
         isLoadingRef.current = false;
       });
 
-      // Track progress
-      rendition.on("locationChanged", (loc: { start: { percentage: number } }) => {
-        const pct = Math.round((loc?.start?.percentage ?? 0) * 100);
-        setProgress(pct);
-        setCanPrev(pct > 0);
-      });
-
-      // Detect end of book
-      rendition.on("finished", () => {
-        setCanNext(false);
-        setAtEnd(true);
+      // `relocated` fires after every page turn with the authoritative location,
+      // including atStart / atEnd. Driving the nav state from these booleans
+      // (rather than a percentage that is 0 for the whole first chapter) is what
+      // makes the "previous page" button reliably enable and work.
+      rendition.on("relocated", (location: {
+        start?: { percentage?: number };
+        atStart?: boolean;
+        atEnd?: boolean;
+      }) => {
+        setProgress(Math.round((location?.start?.percentage ?? 0) * 100));
+        setCanPrev(!location?.atStart);
+        setCanNext(!location?.atEnd);
+        setAtEnd(!!location?.atEnd);
       });
 
       // Try to get chapter title from TOC
@@ -133,6 +144,22 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [book, destroyBook]);
+
+  // ── Re-flow pagination when the window resizes ─────────────────────────────
+  // Paginated columns are computed from a fixed pixel size, so a resize (or the
+  // browser chrome changing) must trigger a re-measure or the last page clips.
+  useEffect(() => {
+    if (!book) return;
+    const onResize = () => {
+      const viewer = viewerRef.current;
+      if (!renditionRef.current || !viewer) return;
+      const rect = viewer.getBoundingClientRect();
+      try { renditionRef.current.resize(Math.floor(rect.width), Math.floor(rect.height)); }
+      catch { /* rendition not ready yet — ignore */ }
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [book]);
 
   // ── Load JSZip, THEN epub.js, then init the reader ─────────────────────────
   // Order is load-bearing. epub.js unzips the .epub with JSZip and binds to
