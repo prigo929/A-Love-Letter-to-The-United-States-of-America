@@ -134,42 +134,55 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [book, destroyBook]);
 
-  // ── Load epub.js script once, then init reader ─────────────────────────────
-  const SCRIPT_ID = "epubjs-lib";
+  // ── Load JSZip, THEN epub.js, then init the reader ─────────────────────────
+  // Order is load-bearing. epub.js unzips the .epub with JSZip and binds to
+  // `window.JSZip` at its own module-init time — so if JSZip is not already
+  // present when epubjs.min.js runs, `book.ready` never resolves and the reader
+  // spins forever with no error. That was the bug: the engine loaded and the
+  // book fetched (HTTP 200), but the archive could never be opened. Verified by
+  // driving epub.js by hand: JSZip-first → book.ready resolves (137 spine items
+  // for Moby-Dick); JSZip-after or absent → indefinite hang.
+  //
+  // Both libraries are self-hosted in /public/assets and loaded idempotently by
+  // a stable id, so re-opening the reader (or React's StrictMode double-invoke)
+  // reuses the existing tags instead of racing new ones.
   useEffect(() => {
     if (!book) return;
     let cancelled = false;
-    const start = () => { if (!cancelled) initReader(); };
 
-    if (getEpub()) {
-      start();
-      return () => { cancelled = true; destroyBook(); };
-    }
+    const ensureScript = (id: string, src: string) =>
+      new Promise<void>((resolve, reject) => {
+        const existing = document.getElementById(id) as HTMLScriptElement | null;
+        if (existing) {
+          if (existing.dataset.loaded === "true") return resolve();
+          existing.addEventListener("load", () => resolve());
+          existing.addEventListener("error", () => reject(new Error(src)));
+          return;
+        }
+        const s = document.createElement("script");
+        s.id = id;
+        s.src = src; // own origin → no SRI needed
+        s.async = true;
+        s.addEventListener("load", () => { s.dataset.loaded = "true"; resolve(); });
+        s.addEventListener("error", () => reject(new Error(src)));
+        document.head.appendChild(s);
+      });
 
-    let script = document.getElementById(SCRIPT_ID) as HTMLScriptElement | null;
-    if (!script) {
-      script = document.createElement("script");
-      script.id = SCRIPT_ID;
-      script.src = "/assets/epubjs.min.js"; // own origin → no SRI needed
-      script.async = true;
-      document.head.appendChild(script);
-    }
-
-    const onLoad = () => start();
-    const onError = () => {
-      if (cancelled) return;
-      setError("Failed to load the reader engine.");
-      setIsLoading(false);
-    };
-    script.addEventListener("load", onLoad);
-    script.addEventListener("error", onError);
-    
-    if (getEpub()) start();
+    (async () => {
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        if (!(window as any).JSZip) await ensureScript("jszip-lib", "/assets/jszip.min.js");
+        if (!getEpub()) await ensureScript("epubjs-lib", "/assets/epubjs.min.js");
+        if (!cancelled) initReader();
+      } catch {
+        if (cancelled) return;
+        setError("Failed to load the reader engine.");
+        setIsLoading(false);
+      }
+    })();
 
     return () => {
       cancelled = true;
-      script?.removeEventListener("load", onLoad);
-      script?.removeEventListener("error", onError);
       destroyBook();
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
