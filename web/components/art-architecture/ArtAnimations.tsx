@@ -379,11 +379,18 @@ export function ArtParallaxBand({
 }: ArtParallaxBandProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["-14%", "14%"]);
+  // Use numeric values (pixels) — WAAPI requires numbers, not string percentages
+  // The inner div is inset -14% ≈ 0.14 × height on each side, so total height ≈ 1.28×.
+  // We translate by ±0.08 of the container height as a fraction, passed as pure numbers.
+  const yOffset = height * 0.14;
+  const y = useTransform(scrollYProgress, [0, 1], [-yOffset, yOffset]);
 
   return (
     <div ref={ref} className="relative w-full overflow-hidden" style={{ height }}>
-      <motion.div className="absolute inset-[-14%]" style={{ y }}>
+      <motion.div
+        className="absolute inset-[-14%]"
+        style={{ translateY: y }}
+      >
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -620,15 +627,16 @@ export function ArtEraTimeline({ eras }: { eras: EraData[] }) {
     offset: ["start start", "end end"],
   });
 
-  // Map vertical scroll to horizontal translation
-  const [trackWidth, setTrackWidth] = useState(0);
-  const [containerWidth, setContainerWidth] = useState(0);
+  // Map vertical scroll to horizontal translation.
+  // IMPORTANT: useTransform requires pure numeric values — never string pixels.
+  // "0px" / "-300px" breaks Framer Motion's WAAPI path and throws TypeError.
+  const [maxTranslate, setMaxTranslate] = useState(0);
 
   useEffect(() => {
     function measure() {
       if (trackRef.current && containerRef.current) {
-        setTrackWidth(trackRef.current.scrollWidth);
-        setContainerWidth(containerRef.current.offsetWidth);
+        const overflow = trackRef.current.scrollWidth - containerRef.current.offsetWidth;
+        setMaxTranslate(Math.max(0, overflow));
       }
     }
     measure();
@@ -636,11 +644,8 @@ export function ArtEraTimeline({ eras }: { eras: EraData[] }) {
     return () => window.removeEventListener("resize", measure);
   }, []);
 
-  const x = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["0px", `-${Math.max(0, trackWidth - containerWidth)}px`]
-  );
+  // Pure numbers — Framer Motion appends "px" automatically for translateX
+  const x = useTransform(scrollYProgress, [0, 1], [0, -maxTranslate]);
 
   // Height = enough to scroll through all eras smoothly
   const scrollHeight = `${Math.max(300, eras.length * 120)}vh`;
@@ -657,11 +662,10 @@ export function ArtEraTimeline({ eras }: { eras: EraData[] }) {
           <h2 className="art-text-section text-white mt-2" style={{ fontSize: 'clamp(28px, 4.5vw, 64px)' }}>
             Five Eras
           </h2>
-          {/* Scroll hint */}
           <p className="art-text-metadata mt-2">Scroll to travel through time →</p>
         </div>
 
-        {/* Thin top border line */}
+        {/* Thin divider */}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }} />
 
         {/* Horizontally scrolling track */}
