@@ -23,10 +23,10 @@ export const ART_ASSETS = {
     license: "CC BY-SA 4.0",
   },
   woolworth: {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Lobby_Woolworth_Building_New_York_City_June_2019.jpg/1920px-Lobby_Woolworth_Building_New_York_City_June_2019.jpg",
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Woolworth_bldg.jpg/1280px-Woolworth_bldg.jpg",
     alt: "The Woolworth Building, the 'Cathedral of Commerce', 1913",
     altRo: "Woolworth Building, 1913",
-    credit: "Lobby Woolworth Building New York City June 2019.jpg · Wikimedia Commons",
+    credit: "Woolworth_bldg.jpg · Wikimedia Commons",
     license: "CC BY-SA 4.0",
   },
   chrysler: {
@@ -51,11 +51,11 @@ export const ART_ASSETS = {
     license: "CC BY 2.0",
   },
   willisTower: {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Atrium%2C_Sears_Tower%2C_Wacker_Drive_and_Jackson_Boulevard%2C_Chicago%2C_IL.jpg/1920px-Atrium%2C_Sears_Tower%2C_Wacker_Drive_and_Jackson_Boulevard%2C_Chicago%2C_IL.jpg",
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Chicago_%28ILL%29_Willis_Tower_%28_Ex._SEARS_Tower_%29_1974%2C_N-E_side_%22_the_loop_%22_%284800235689%29.jpg/1920px-Chicago_%28ILL%29_Willis_Tower_%28_Ex._SEARS_Tower_%29_1974%2C_N-E_side_%22_the_loop_%22_%284800235689%29.jpg",
     alt: "The Willis (Sears) Tower, Chicago, 1973",
     altRo: "Willis (Sears) Tower, Chicago, 1973",
-    credit: "Atrium, Sears Tower, Wacker Drive and Jackson Boulevard, Chicago, IL.jpg · Wikimedia Commons",
-    license: "CC BY-SA 2.0",
+    credit: "Willis Tower (ex-Sears Tower), Chicago, 1974 · Wikimedia Commons",
+    license: "CC BY 2.0",
   },
   homeInsurance: {
     src: "https://upload.wikimedia.org/wikipedia/commons/3/38/Home_Insurance_Building.JPG",
@@ -72,11 +72,11 @@ export const ART_ASSETS = {
     license: "CC BY 2.0",
   },
   sullivanWainwright: {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Door_Handles%2C_Wainwright_Building%2C_7th_Street_and_Chestnut_Street%2C_St._Louis%2C_MO.jpg/1920px-Door_Handles%2C_Wainwright_Building%2C_7th_Street_and_Chestnut_Street%2C_St._Louis%2C_MO.jpg",
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Louis_Sullivan_-_Wainwright_Building%2C_Seventh_%2B_Chestnut_Streets%2C_Saint_Louis%2C_St._Louis_City_County%2C_MO.jpg/1920px-Louis_Sullivan_-_Wainwright_Building%2C_Seventh_%2B_Chestnut_Streets%2C_Saint_Louis%2C_St._Louis_City_County%2C_MO.jpg",
     alt: "The Wainwright Building, Louis Sullivan, 1891",
     altRo: "Wainwright Building, Louis Sullivan, 1891",
-    credit: "Door Handles, Wainwright Building, 7th Street and Chestnut Street, St. Louis, MO.jpg · Wikimedia Commons",
-    license: "CC BY-SA 2.0",
+    credit: "Louis Sullivan - Wainwright Building, Seventh + Chestnut Streets, Saint Louis, St. Louis City County, MO.jpg · Wikimedia Commons",
+    license: "Public domain",
   },
   smithsonianCastle: {
     src: "https://upload.wikimedia.org/wikipedia/commons/a/ae/12072012_Smithsonian_Building_01.jpg",
