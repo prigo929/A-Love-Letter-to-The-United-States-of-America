@@ -20,6 +20,7 @@ import {
   ArtFactModule,
 } from "@/components/art-architecture/ArtAnimations";
 import { SkyscraperRace, type Tower } from "@/components/art-architecture/SkyscraperRace";
+import { SkyscraperVisualizations } from "@/components/art-architecture/SkyscraperVisualizations";
 import { ART_ASSETS } from "@/lib/data/art-assets";
 import { getServerLocale } from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
@@ -321,6 +322,9 @@ export default async function SkyscraperRevolutionPage() {
             </div>
           </section>
         </div>
+
+        {/* Interactive Data & Engineering Visualizations */}
+        <SkyscraperVisualizations />
 
         <ArtQuoteBreak quote={copy.quote} attribution={copy.quoteBy} />
 
