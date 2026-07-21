@@ -54,6 +54,11 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
   const [canNext,   setCanNext]   = useState(true);
   const [atEnd,     setAtEnd]     = useState(false);
 
+  // Keep a ref to isLoading so the rAF callback and keyboard handler
+  // always see the current value without being in their dependency arrays.
+  const isLoadingRef = useRef(true);
+  useEffect(() => { isLoadingRef.current = isLoading; }, [isLoading]);
+
   // ── Destroy helpers ────────────────────────────────────────────────────────
   const destroyBook = useCallback(() => {
     try { renditionRef.current?.destroy(); } catch { /* ignore */ }
@@ -68,6 +73,7 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
     destroyBook();
 
     setIsLoading(true);
+    isLoadingRef.current = true;
     setError(null);
     setProgress(0);
     setChapter("");
@@ -78,45 +84,53 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
     const encodedFile = encodeURIComponent(book.fileName);
     const url = `/assets/books/${encodedFile}`;
 
-    const epubBook = getEpub()!(url);
-    bookObjRef.current = epubBook;
+    // Defer one animation frame so the modal is fully painted and the
+    // flex container has real pixel dimensions before epub.js measures it.
+    requestAnimationFrame(() => {
+      if (!viewerRef.current || !getEpub()) return;
 
-    const rendition = epubBook.renderTo(viewerRef.current, {
-      width:  "100%",
-      height: "100%",
-      spread: "none",
-      flow:   "paginated",
+      const epubBook = getEpub()!(url);
+      bookObjRef.current = epubBook;
+
+      const rendition = epubBook.renderTo(viewerRef.current, {
+        width:  "100%",
+        height: "100%",
+        spread: "none",
+        flow:   "paginated",
+      });
+      renditionRef.current = rendition;
+
+      // Apply initial styles
+      applyStyles(rendition, theme, fontSize);
+
+      rendition.display().then(() => {
+        setIsLoading(false);
+        isLoadingRef.current = false;
+      }).catch(() => {
+        setError("This eBook could not be rendered. Try downloading it instead.");
+        setIsLoading(false);
+        isLoadingRef.current = false;
+      });
+
+      // Track progress
+      rendition.on("locationChanged", (loc: { start: { percentage: number } }) => {
+        const pct = Math.round((loc?.start?.percentage ?? 0) * 100);
+        setProgress(pct);
+        setCanPrev(pct > 0);
+      });
+
+      // Detect end of book
+      rendition.on("finished", () => {
+        setCanNext(false);
+        setAtEnd(true);
+      });
+
+      // Try to get chapter title from TOC
+      epubBook.loaded.navigation.then((nav: { toc?: Array<{ label: string }> }) => {
+        const first = nav?.toc?.[0];
+        if (first?.label) setChapter(first.label.trim());
+      }).catch(() => {});
     });
-    renditionRef.current = rendition;
-
-    // Apply initial styles
-    applyStyles(rendition, theme, fontSize);
-
-    rendition.display().then(() => {
-      setIsLoading(false);
-    }).catch(() => {
-      setError("This eBook could not be rendered. Try downloading it instead.");
-      setIsLoading(false);
-    });
-
-    // Track progress
-    rendition.on("locationChanged", (loc: { start: { percentage: number } }) => {
-      const pct = Math.round((loc?.start?.percentage ?? 0) * 100);
-      setProgress(pct);
-      setCanPrev(pct > 0);
-    });
-
-    // Detect end of book
-    rendition.on("finished", () => {
-      setCanNext(false);
-      setAtEnd(true);
-    });
-
-    // Try to get chapter title from TOC
-    epubBook.loaded.navigation.then((nav: { toc?: Array<{ label: string }> }) => {
-      const first = nav?.toc?.[0];
-      if (first?.label) setChapter(first.label.trim());
-    }).catch(() => {});
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [book, destroyBook]);
 
@@ -170,22 +184,28 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
 
   // ── Navigation helpers ────────────────────────────────────────────────────
   const goNext = useCallback(() => {
-    if (!renditionRef.current || atEnd) return;
-    renditionRef.current.next().catch(() => setCanNext(false));
+    // Guard: don't navigate while book is still loading or manager isn't ready
+    if (!renditionRef.current || atEnd || isLoadingRef.current) return;
+    try { renditionRef.current.next().catch(() => setCanNext(false)); }
+    catch { /* epub.js internal state not ready yet — ignore */ }
   }, [atEnd]);
 
   const goPrev = useCallback(() => {
-    if (!renditionRef.current || !canPrev) return;
-    renditionRef.current.prev().catch(() => {});
+    if (!renditionRef.current || !canPrev || isLoadingRef.current) return;
+    try { renditionRef.current.prev().catch(() => {}); }
+    catch { /* ignore */ }
   }, [canPrev]);
 
   // ── Keyboard shortcuts ────────────────────────────────────────────────────
   useEffect(() => {
     if (!book) return;
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); goNext(); }
-      if (e.key === "ArrowLeft")                    { e.preventDefault(); goPrev(); }
-      if (e.key === "Escape")                       { e.preventDefault(); onClose(); }
+      // Skip Space while loading: the button click that opened the reader
+      // dispatches a synthetic space keydown which would otherwise hit goNext.
+      if (e.key === "ArrowRight")               { e.preventDefault(); goNext(); }
+      if (e.key === " " && !isLoadingRef.current) { e.preventDefault(); goNext(); }
+      if (e.key === "ArrowLeft")                { e.preventDefault(); goPrev(); }
+      if (e.key === "Escape")                   { e.preventDefault(); onClose(); }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
