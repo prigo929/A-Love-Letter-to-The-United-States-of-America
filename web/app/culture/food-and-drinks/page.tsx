@@ -6,6 +6,8 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 import { CultureStyles } from "@/components/culture/CulturePageComponents";
+import { FourFoodsExplorer } from "@/components/culture/FourFoodsExplorer";
+import { SevenDessertsExplorer } from "@/components/culture/SevenDessertsExplorer";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 
@@ -202,6 +204,28 @@ export default async function FoodAndDrinksPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* CREAM: Four foods that define America (interactive) */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-24 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "PATRU POVEȘTI DE ORIGINE" : "FOUR ORIGIN STORIES"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">
+                {isRo ? "PATRU ALIMENTE CARE DEFINESC AMERICA" : "FOUR FOODS THAT DEFINE AMERICA"}
+              </h2>
+              <p className="mx-auto mt-6 max-w-2xl font-editorial text-lg text-[#0C0907]/60">
+                {isRo
+                  ? "Friptura, laptele, sandvișul, mărul — atât de obișnuite încât abia le mai vedem ca mâncare. Fiecare are o poveste de origine care se dovedește a fi istorie americană pură. Apasă pe oricare."
+                  : "Steak, milk, the sandwich, the apple — so ordinary we barely see them as food. Each has an origin story that turns out to be pure American history. Click any of them."}
+              </p>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+            <FourFoodsExplorer />
           </div>
         </section>
 
