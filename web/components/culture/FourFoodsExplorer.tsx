@@ -18,7 +18,7 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 // CC/CC0 imagery from Wikimedia Commons (upload.wikimedia.org is allow-listed).
 const IMG = {
   steak: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/DFC_2081_Juicy_grilled_steak_topped_with_herb_butter_served_with_fries_saut%C3%A9ed_green_beans_coleslaw_and_a_side_of_gravy.jpg/1280px-DFC_2081_Juicy_grilled_steak_topped_with_herb_butter_served_with_fries_saut%C3%A9ed_green_beans_coleslaw_and_a_side_of_gravy.jpg",
-  milk: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Abbotts_Glass_Milk_Bottles_1920s-1960s.jpg/1280px-Abbotts_Glass_Milk_Bottles_1920s-1960s.jpg",
+  milk: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Glass_of_Milk_%2833657535532%29.jpg/1280px-Glass_of_Milk_%2833657535532%29.jpg",
   sandwich: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Carnegie_Deli_Huge_Club_Sandwich_%286279792312%29.jpg",
   apple: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/2020-03-14_23_55_38_A_single_Nature%27s_Promise_Organic_Red_Delicious_Apple_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/1280px-2020-03-14_23_55_38_A_single_Nature%27s_Promise_Organic_Red_Delicious_Apple_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg",
 } as const;
