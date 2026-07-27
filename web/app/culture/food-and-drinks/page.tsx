@@ -229,6 +229,28 @@ export default async function FoodAndDrinksPage() {
           </div>
         </section>
 
+        {/* CREAM: Seven great American desserts (interactive) */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-24 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "CANONUL DULCE" : "THE SWEET CANON"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">
+                {isRo ? "ȘAPTE MARI DESERTURI AMERICANE" : "SEVEN GREAT AMERICAN DESSERTS"}
+              </h2>
+              <p className="mx-auto mt-6 max-w-2xl font-editorial text-lg text-[#0C0907]/60">
+                {isRo
+                  ? "Fiecare desert de aici poartă o felie de istorie americană — de la gogoașa creuzetului la vata de zahăr inventată de un dentist. Apasă pe oricare."
+                  : "Every dessert here carries a slab of American history — from the melting-pot donut to the cotton candy a dentist invented. Click any of them."}
+              </p>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+            <SevenDessertsExplorer />
+          </div>
+        </section>
+
         {/* CREAM: BBQ Map */}
         <section className="relative culture-cream-bg text-[#0C0907] pb-20 overflow-hidden border-t border-[#0C0907]/5">
           <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
