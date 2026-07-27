@@ -251,6 +251,69 @@ export default async function FoodAndDrinksPage() {
           </div>
         </section>
 
+        {/* CREAM: How pizza became American */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-24 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-14">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "350 DE FELII PE SECUNDĂ" : "350 SLICES A SECOND"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">
+                {isRo ? "CUM A DEVENIT PIZZA AMERICANĂ" : "HOW PIZZA BECAME AMERICAN"}
+              </h2>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+
+            <div className="mx-auto max-w-3xl space-y-6 font-editorial text-lg leading-relaxed text-[#0C0907]/75">
+              <p>
+                {isRo
+                  ? "Pizza a început ca mâncare de stradă a țăranilor din Napoli — aluat turtit cu untură și sare, mâncat de zilierii care nu-și permiteau altceva. Peste patru milioane de italieni din sud au emigrat pe Coasta de Est între 1880 și 1920, iar în America au descoperit o abundență de negândit acasă: blocuri de brânză, roșii, carne. Au reconstruit pizza cu acele ingrediente. Spaghetti with meatballs, lasagna și pizza modernă nu sunt tradiții italiene vechi — sunt invenții italo-americane."
+                  : "Pizza began as the peasant street food of Naples — flattened dough with lard and salt, eaten by day laborers who could afford little else. Over four million southern Italians emigrated to the East Coast between 1880 and 1920, and in America they found an abundance unthinkable back home: blocks of cheese, tomatoes, meat. They rebuilt pizza around those ingredients. Spaghetti and meatballs, lasagna, and modern pizza aren't ancient Italian traditions — they're Italian-American inventions."}
+              </p>
+              <p>
+                {isRo
+                  ? "Lombardi's din New York (1905) este de obicei numită prima pizzerie a Americii. Experimentarea a produs stilurile regionale care încă se ceartă între ele. După război, tehnologia a preluat controlul: pizza congelată la supermarket, apoi lanțurile — Pizza Hut vindea peste 100 de milioane de pizza pe an până la sfârșitul anilor '70. Domino's a făscut faimos „30 de minute sau gratis” — deși, de fapt, nu au dat niciodată pizza gratis, iar promisiunea a fost abandonată în 1994 după acuzații că provoacă accidente. Iar Țestoasele Ninja au făcut restul, transformând pizza în mâncarea-simbol a copilăriei americane."
+                  : "Lombardi's in New York (1905) is usually called America's first pizzeria. Experimentation bred the regional styles that still argue with each other. After the war, technology took over: frozen supermarket pizza, then the chains — Pizza Hut was selling over 100 million pizzas a year by the late 1970s. Domino's made '30 minutes or it's free' famous — though it never actually gave away free pizza, and dropped the promise in 1994 after accusations it was causing accidents. And the Teenage Mutant Ninja Turtles did the rest, making pizza the signature food of an American childhood."}
+              </p>
+            </div>
+
+            {/* Three regional styles */}
+            <div className="mt-16 grid gap-6 sm:grid-cols-3">
+              {[
+                { src: SITE_IMAGES.culture.foodPepperoniPizza, opt: false, en: "Pepperoni", ro: "Pepperoni", subEn: "The American default", subRo: "Standardul american" },
+                { src: "https://upload.wikimedia.org/wikipedia/commons/c/ce/Slices_of_thin-crust_New_York_style_pizza.jpg", opt: true, en: "New York Slice", ro: "Felie New York", subEn: "Thin, foldable, by the slice", subRo: "Subțire, pliabilă, la felie" },
+                { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Bristol_Farms_Chicago_Deep_Dish_meat_pizza.JPG/1280px-Bristol_Farms_Chicago_Deep_Dish_meat_pizza.JPG", opt: true, en: "Chicago Deep Dish", ro: "Chicago Deep Dish", subEn: "A pie you eat with a fork", subRo: "O plăcintă mâncată cu furculița" },
+              ].map((p) => (
+                <figure key={p.en} className="group">
+                  <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl shadow-[0_20px_60px_rgb(12,9,7,0.14)]">
+                    <Image src={p.src} alt={isRo ? p.ro : p.en} fill sizes="(max-width: 640px) 100vw, 32vw" className="object-cover transition-transform duration-500 group-hover:scale-105" unoptimized={p.opt} />
+                  </div>
+                  <figcaption className="mt-4">
+                    <div className="font-macro-display text-xl font-black text-[#0C0907]">{isRo ? p.ro : p.en}</div>
+                    <div className="font-body text-sm text-[#0C0907]/55">{isRo ? p.subRo : p.subEn}</div>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+
+            {/* Stat row */}
+            <div className="mt-16 grid grid-cols-2 gap-8 border-t border-[#0C0907]/10 pt-10 md:grid-cols-4">
+              {[
+                { stat: "1905", en: "Lombardi's, America's first pizzeria", ro: "Lombardi's, prima pizzerie a Americii" },
+                { stat: "4M+", en: "Italian immigrants, 1880–1920", ro: "Imigranți italieni, 1880–1920" },
+                { stat: "100M", en: "Pizza Hut pizzas/year by 1979", ro: "Pizza Hut pe an, până în 1979" },
+                { stat: "350", en: "Slices Americans eat per second", ro: "Felii pe secundă în SUA" },
+              ].map((s) => (
+                <div key={s.stat}>
+                  <div className="font-macro-display text-4xl md:text-5xl font-black text-[#E8391B] leading-none">{s.stat}</div>
+                  <div className="mt-2 font-body text-sm text-[#0C0907]/55">{isRo ? s.ro : s.en}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* CREAM: BBQ Map */}
         <section className="relative culture-cream-bg text-[#0C0907] pb-20 overflow-hidden border-t border-[#0C0907]/5">
           <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />

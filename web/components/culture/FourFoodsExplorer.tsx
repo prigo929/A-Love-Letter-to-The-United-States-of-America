@@ -12,11 +12,21 @@
 // for the food page's cream/parchment editorial surface (dark text on cream).
 
 import { useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+
+// CC/CC0 imagery from Wikimedia Commons (upload.wikimedia.org is allow-listed).
+const IMG = {
+  steak: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/DFC_2081_Juicy_grilled_steak_topped_with_herb_butter_served_with_fries_saut%C3%A9ed_green_beans_coleslaw_and_a_side_of_gravy.jpg/1280px-DFC_2081_Juicy_grilled_steak_topped_with_herb_butter_served_with_fries_saut%C3%A9ed_green_beans_coleslaw_and_a_side_of_gravy.jpg",
+  milk: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Abbotts_Glass_Milk_Bottles_1920s-1960s.jpg/1280px-Abbotts_Glass_Milk_Bottles_1920s-1960s.jpg",
+  sandwich: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Carnegie_Deli_Huge_Club_Sandwich_%286279792312%29.jpg",
+  apple: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/2020-03-14_23_55_38_A_single_Nature%27s_Promise_Organic_Red_Delicious_Apple_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/1280px-2020-03-14_23_55_38_A_single_Nature%27s_Promise_Organic_Red_Delicious_Apple_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg",
+} as const;
 
 interface Food {
   key: string;
   icon: string;
+  image: string;
   name: string;
   nameRo: string;
   tagline: string;
@@ -30,6 +40,7 @@ const FOODS: Food[] = [
   {
     key: "steak",
     icon: "🥩",
+    image: IMG.steak,
     name: "Steak",
     nameRo: "Friptura",
     tagline: "From two directions · 1520s",
@@ -47,6 +58,7 @@ const FOODS: Food[] = [
   {
     key: "milk",
     icon: "🥛",
+    image: IMG.milk,
     name: "Milk",
     nameRo: "Laptele",
     tagline: "The Holstein century · 1852",
@@ -64,6 +76,7 @@ const FOODS: Food[] = [
   {
     key: "sandwich",
     icon: "🥪",
+    image: IMG.sandwich,
     name: "Sandwich",
     nameRo: "Sandvișul",
     tagline: "The Earl's one free hand · 1740s",
@@ -81,6 +94,7 @@ const FOODS: Food[] = [
   {
     key: "apple",
     icon: "🍎",
+    image: IMG.apple,
     name: "Apple",
     nameRo: "Mărul",
     tagline: "Johnny Appleseed's cider · 1800s",
@@ -105,8 +119,8 @@ export function FourFoodsExplorer() {
 
   return (
     <div>
-      {/* Food selector — four buttons */}
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+      {/* Food selector — four image thumbnails */}
+      <div className="grid grid-cols-4 gap-3 sm:gap-6">
         {FOODS.map((f, i) => {
           const on = i === sel;
           return (
@@ -115,16 +129,25 @@ export function FourFoodsExplorer() {
               type="button"
               onClick={() => setSel(i)}
               aria-current={on}
-              className="flex flex-col items-center gap-2 rounded-2xl border px-4 py-6 transition-all duration-300"
-              style={{
-                borderColor: on ? "#E8391B" : "rgba(12,9,7,0.12)",
-                background: on ? "rgba(232,57,27,0.06)" : "transparent",
-                cursor: "pointer",
-              }}
+              className="group flex flex-col items-center gap-3"
+              style={{ cursor: "pointer" }}
             >
-              <span style={{ fontSize: "2.2rem", lineHeight: 1 }}>{f.icon}</span>
+              <div
+                className="relative aspect-square w-full overflow-hidden rounded-full border-2 transition-all duration-300"
+                style={{ borderColor: on ? "#E8391B" : "rgba(12,9,7,0.12)", transform: on ? "scale(1.05)" : "scale(1)" }}
+              >
+                <Image
+                  src={f.image}
+                  alt={ro ? f.nameRo : f.name}
+                  fill
+                  sizes="160px"
+                  className="object-cover transition-all duration-300"
+                  style={{ filter: on ? "none" : "grayscale(0.35)" }}
+                  unoptimized
+                />
+              </div>
               <span
-                className="font-macro-display text-lg font-black tracking-tight"
+                className="font-macro-display text-base font-black tracking-tight sm:text-lg"
                 style={{ color: on ? "#E8391B" : "#0C0907" }}
               >
                 {ro ? f.nameRo : f.name}
@@ -135,31 +158,39 @@ export function FourFoodsExplorer() {
       </div>
 
       {/* Active food story */}
-      <div key={active.key} className="mt-12 grid gap-10 md:grid-cols-[3fr_2fr] md:gap-16">
-        <div>
+      <div key={active.key} className="mt-14 grid gap-10 md:grid-cols-2 md:gap-16">
+        <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl shadow-[0_30px_80px_rgb(12,9,7,0.18)]">
+          <Image
+            src={active.image}
+            alt={ro ? active.nameRo : active.name}
+            fill
+            sizes="(max-width: 768px) 100vw, 48vw"
+            className="object-cover"
+            unoptimized
+          />
+        </div>
+        <div className="flex flex-col justify-center">
           <p className="font-body text-[10px] font-bold uppercase tracking-[0.35em] text-[#E8391B] mb-3">
             {ro ? active.taglineRo : active.tagline}
           </p>
-          <h3 className="font-macro-display text-4xl md:text-5xl font-black text-[#0C0907] tracking-tight mb-6 leading-none">
+          <h3 className="font-macro-display text-4xl md:text-5xl font-black text-[#0C0907] tracking-tight mb-5 leading-none">
             {ro ? active.nameRo : active.name}
           </h3>
-          <p className="font-editorial text-lg leading-relaxed text-[#0C0907]/75">
+          <p className="font-editorial text-[17px] leading-relaxed text-[#0C0907]/75">
             {ro ? active.storyRo : active.story}
           </p>
-        </div>
-
-        {/* Key facts */}
-        <div className="flex flex-col justify-center gap-6">
-          {active.facts.map((fact) => (
-            <div key={fact.label} className="border-l-2 border-[#E8391B]/40 pl-5">
-              <div className="font-macro-display text-4xl font-black text-[#0C0907] leading-none">
-                {fact.stat}
+          <div className="mt-7 flex flex-wrap gap-8">
+            {active.facts.map((fact) => (
+              <div key={fact.label} className="border-l-2 border-[#E8391B]/40 pl-4">
+                <div className="font-macro-display text-3xl font-black text-[#0C0907] leading-none">
+                  {fact.stat}
+                </div>
+                <div className="mt-1.5 font-body text-xs text-[#0C0907]/55 max-w-[9rem]">
+                  {ro ? fact.labelRo : fact.label}
+                </div>
               </div>
-              <div className="mt-2 font-body text-sm text-[#0C0907]/55">
-                {ro ? fact.labelRo : fact.label}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
