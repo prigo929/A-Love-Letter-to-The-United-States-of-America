@@ -24,7 +24,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Electoral Archive Map | Constitution",
   description:
-    "An interactive historical archive of United States elections — explore presidential, senate, house, and gubernatorial results across every election year on a museum-grade interactive map.",
+    "An interactive historical archive of United States elections, explore presidential, senate, house, and gubernatorial results across every election year on a museum-grade interactive map.",
 };
 
 export default async function ElectoralMapPage() {
@@ -85,8 +85,8 @@ export default async function ElectoralMapPage() {
 
           <p className="max-w-2xl font-body text-lg leading-relaxed text-[#B8B4AC]">
             {isRo
-              ? "Un arhiv interactiv complet al alegerilor din Statele Unite — de la colegiul electoral la reprezentanți individuali. Patru perspective constituționale, o singură hartă."
-              : "A complete interactive archive of United States elections — from the Electoral College to individual representatives. Four constitutional perspectives, one map."}
+              ? "Un arhiv interactiv complet al alegerilor din Statele Unite, de la colegiul electoral la reprezentanți individuali. Patru perspective constituționale, o singură hartă."
+              : "A complete interactive archive of United States elections, from the Electoral College to individual representatives. Four constitutional perspectives, one map."}
           </p>
 
           {/* Quick stat pills */}
@@ -144,8 +144,8 @@ export default async function ElectoralMapPage() {
                 {
                   title: isRo ? "Perspectiva Camerei" : "House View",
                   desc: isRo
-                    ? "Granițele statelor dispar. În locul lor, puncte individuale egale cu numărul de reprezentanți ai fiecărui stat apar — colorate proporțional pentru a arăta echilibrul partizan."
-                    : "State borders dissolve. In their place, individual dots equal to each state's representative count appear — colored proportionally to show the partisan balance.",
+                    ? "Granițele statelor dispar. În locul lor, puncte individuale egale cu numărul de reprezentanți ai fiecărui stat apar, colorate proporțional pentru a arăta echilibrul partizan."
+                    : "State borders dissolve. In their place, individual dots equal to each state's representative count appear, colored proportionally to show the partisan balance.",
                   icon: "📊",
                 },
                 {
@@ -183,8 +183,8 @@ export default async function ElectoralMapPage() {
             </h2>
             <p className="mb-6 max-w-3xl font-body text-base text-[#B8B4AC]">
               {isRo
-                ? "Sistemul electoral american nu alege un singur lider. El distribuie puterea pe patru straturi suprapuse — fiecare cu propriile reguli, propriul calendar și propria logică."
-                : "The American electoral system does not choose a single leader. It distributes power across four overlapping layers — each with its own rules, its own calendar, and its own logic."}
+                ? "Sistemul electoral american nu alege un singur lider. El distribuie puterea pe patru straturi suprapuse, fiecare cu propriile reguli, propriul calendar și propria logică."
+                : "The American electoral system does not choose a single leader. It distributes power across four overlapping layers, each with its own rules, its own calendar, and its own logic."}
             </p>
             <div className="grid gap-4 md:grid-cols-2">
               {[
@@ -203,8 +203,8 @@ export default async function ElectoralMapPage() {
                   frequency: isRo ? "1/3 la fiecare 2 ani" : "1/3 every 2 years",
                   seats: isRo ? "100 locuri (2 pe stat)" : "100 seats (2 per state)",
                   desc: isRo
-                    ? "Fiecare stat — indiferent de populație — primește exact doi senatori. California (40M oameni) și Wyoming (580K oameni) au aceeași putere de vot."
-                    : "Every state — regardless of population — gets exactly two senators. California (40M people) and Wyoming (580K people) carry the same voting power.",
+                    ? "Fiecare stat, indiferent de populație, primește exact doi senatori. California (40M oameni) și Wyoming (580K oameni) au aceeași putere de vot."
+                    : "Every state, regardless of population, gets exactly two senators. California (40M people) and Wyoming (580K people) carry the same voting power.",
                 },
                 {
                   pillar: isRo ? "Camera Reprezentanților" : "House of Representatives",
@@ -212,8 +212,8 @@ export default async function ElectoralMapPage() {
                   frequency: isRo ? "La fiecare 2 ani" : "Every 2 years",
                   seats: isRo ? "435 locuri (pe bază de populație)" : "435 seats (population-based)",
                   desc: isRo
-                    ? "Distribuite în funcție de recensământ. Fiecare district — nu fiecare stat — alege un singur reprezentant. De aceea am folosit puncte, nu poligoane."
-                    : "Apportioned by census. Each district — not each state — elects one representative. That is why we use dots, not polygons.",
+                    ? "Distribuite în funcție de recensământ. Fiecare district, nu fiecare stat, alege un singur reprezentant. De aceea am folosit puncte, nu poligoane."
+                    : "Apportioned by census. Each district, not each state, elects one representative. That is why we use dots, not polygons.",
                 },
                 {
                   pillar: isRo ? "Guvernator" : "Governor",
@@ -221,8 +221,8 @@ export default async function ElectoralMapPage() {
                   frequency: isRo ? "Variabil (majoritatea la 4 ani)" : "Varies (most every 4 years)",
                   seats: isRo ? "50 locuri (1 pe stat)" : "50 seats (1 per state)",
                   desc: isRo
-                    ? "Cel mai simplu concurs: un vot direct pe stat. Niciun colegiu, niciun district, nicio proporționalitate — cel care ia cele mai multe voturi câștigă."
-                    : "The simplest contest: one direct vote per state. No college, no districts, no proportionality — whoever gets the most votes wins.",
+                    ? "Cel mai simplu concurs: un vot direct pe stat. Niciun colegiu, niciun district, nicio proporționalitate, cel care ia cele mai multe voturi câștigă."
+                    : "The simplest contest: one direct vote per state. No college, no districts, no proportionality, whoever gets the most votes wins.",
                 },
               ].map((item) => (
                 <div

@@ -1,5 +1,5 @@
 // ─── First Amendment Sub-Page ─────────────────────────────────────────────────
-// This page focuses on the First Amendment — the bedrock of American liberty.
+// This page focuses on the First Amendment, the bedrock of American liberty.
 // It explains why the U.S. has the strongest free speech laws in the world.
 //
 // For Beginners: This page uses comparative data to show the difference 
@@ -18,28 +18,28 @@ import { SubpagePhotographs } from "@/components/shared/SubpagePhotographs";
 export const metadata: Metadata = {
   title: "First Amendment | Constitution",
   description:
-    "The broadest free speech protection of any democracy in history. Why America protects speech other nations criminalize — and why that matters.",
+    "The broadest free speech protection of any democracy in history. Why America protects speech other nations criminalize, and why that matters.",
   alternates: { canonical: "/constitution/first-amendment" },
 };
 
 const SPEECH_CASES_EN = [
-  { name: "Schenck v. United States", year: 1919, ruling: "Government can restrict speech that creates 'clear and present danger'", significance: "First major First Amendment case — established initial limits on speech during wartime" },
+  { name: "Schenck v. United States", year: 1919, ruling: "Government can restrict speech that creates 'clear and present danger'", significance: "First major First Amendment case, established initial limits on speech during wartime" },
   { name: "Whitney v. California", year: 1927, ruling: "States can restrict speech advocating illegal acts", significance: "Justice Brandeis wrote the most powerful dissent for free speech in American history: 'If there be time to expose through discussion the falsehood and fallacies, to avert the evil by the processes of education, the remedy to be applied is more speech, not enforced silence.'" },
   { name: "New York Times v. Sullivan", year: 1964, ruling: "Public officials must prove 'actual malice' to win defamation suits", significance: "Protects robust press coverage of government. No democracy offers broader defamation protection to journalists covering public officials." },
-  { name: "Brandenburg v. Ohio", year: 1969, ruling: "Government can only restrict speech inciting 'imminent lawless action'", significance: "The modern First Amendment standard. Speech must be directed to producing and likely to produce imminent lawless action — a very high bar." },
-  { name: "Texas v. Johnson", year: 1989, ruling: "Flag burning is constitutionally protected expression", significance: "5-4 decision that shocked many Americans. But the principle it upheld — that government cannot punish expression because it finds it offensive — is the cornerstone of free speech." },
+  { name: "Brandenburg v. Ohio", year: 1969, ruling: "Government can only restrict speech inciting 'imminent lawless action'", significance: "The modern First Amendment standard. Speech must be directed to producing and likely to produce imminent lawless action, a very high bar." },
+  { name: "Texas v. Johnson", year: 1989, ruling: "Flag burning is constitutionally protected expression", significance: "5-4 decision that shocked many Americans. But the principle it upheld, that government cannot punish expression because it finds it offensive, is the cornerstone of free speech." },
   { name: "Citizens United v. FEC", year: 2010, ruling: "Corporations and unions may spend unlimited amounts in elections", significance: "The most contested First Amendment ruling of the modern era. 5-4. Held that political spending is protected speech. Critics argue it gave corporations constitutional personhood for speech purposes." },
-  { name: "Matal v. Tam", year: 2017, ruling: "Government cannot refuse to register 'disparaging' trademarks", significance: "Unanimous court struck down a law banning 'disparaging' trademarks. The government may not discriminate against speech based on its viewpoint — even offensive viewpoints." },
-  { name: "303 Creative v. Elenis", year: 2023, ruling: "First Amendment protects a web designer's right to decline same-sex wedding websites", significance: "6-3. The tension between free speech and anti-discrimination law — the defining First Amendment debate of the current era." },
+  { name: "Matal v. Tam", year: 2017, ruling: "Government cannot refuse to register 'disparaging' trademarks", significance: "Unanimous court struck down a law banning 'disparaging' trademarks. The government may not discriminate against speech based on its viewpoint, even offensive viewpoints." },
+  { name: "303 Creative v. Elenis", year: 2023, ruling: "First Amendment protects a web designer's right to decline same-sex wedding websites", significance: "6-3. The tension between free speech and anti-discrimination law, the defining First Amendment debate of the current era." },
 ];
 
 const SPEECH_CASES_RO = [
-  { name: "Schenck v. United States", year: 1919, ruling: "Guvernul poate restricționa discursul care creează 'pericol clar și prezent'", significance: "Primul caz major al Primului Amendament — a stabilit primele limite ale discursului în timp de război." },
+  { name: "Schenck v. United States", year: 1919, ruling: "Guvernul poate restricționa discursul care creează 'pericol clar și prezent'", significance: "Primul caz major al Primului Amendament, a stabilit primele limite ale discursului în timp de război." },
   { name: "New York Times v. Sullivan", year: 1964, ruling: "Funcționarii publici trebuie să dovedească 'răutate reală' pentru a câștiga procese de defăimare", significance: "Protejează presa în acoperirea guvernului. Nicio democrație nu oferă o protecție mai largă a libertății presei față de procese de defăimare." },
   { name: "Brandenburg v. Ohio", year: 1969, ruling: "Guvernul poate restricționa doar discursul care incită 'acțiunea ilegală iminentă'", significance: "Standardul modern al Primului Amendament. Un prag extrem de ridicat." },
-  { name: "Texas v. Johnson", year: 1989, ruling: "Arderea steagului este expresie protejată constituțional", significance: "Decizie 5-4 care a șocat mulți americani. Dar principiul — că guvernul nu poate pedepsi expresia pe care o găsește ofensivă — este piatra de temelie a libertății de exprimare." },
+  { name: "Texas v. Johnson", year: 1989, ruling: "Arderea steagului este expresie protejată constituțional", significance: "Decizie 5-4 care a șocat mulți americani. Dar principiul, că guvernul nu poate pedepsi expresia pe care o găsește ofensivă, este piatra de temelie a libertății de exprimare." },
   { name: "Citizens United v. FEC", year: 2010, ruling: "Corporațiile și sindicatele pot cheltui sume nelimitate în alegeri", significance: "Cel mai contestat decret al Primului Amendament din era modernă. 5-4. Cheltuielile politice sunt discurs protejat." },
-  { name: "303 Creative v. Elenis", year: 2023, ruling: "Primul Amendament protejează dreptul unui web designer de a refuza site-uri de nuntă pentru cupluri de același sex", significance: "6-3. Tensiunea dintre libertatea de exprimare și legile anti-discriminare — dezbaterea definitorie a Primului Amendament în era actuală." },
+  { name: "303 Creative v. Elenis", year: 2023, ruling: "Primul Amendament protejează dreptul unui web designer de a refuza site-uri de nuntă pentru cupluri de același sex", significance: "6-3. Tensiunea dintre libertatea de exprimare și legile anti-discriminare, dezbaterea definitorie a Primului Amendament în era actuală." },
 ];
 
 const GLOBAL_COMPARISON_EN = [
@@ -47,7 +47,7 @@ const GLOBAL_COMPARISON_EN = [
   { country: "United Kingdom", flag: "🇬🇧", rule: "The Public Order Act and Racial and Religious Hatred Act restrict hate speech and offensive public expression", context: "UK law balances free expression with public order and community harmony. Speech that 'causes harassment, alarm or distress' can be criminal." },
   { country: "Canada", flag: "🇨🇦", rule: "Section 319 of the Criminal Code prohibits 'willful promotion of hatred' against identifiable groups", context: "Canada's Charter protects freedom of expression but Parliament has limited hate speech. The Supreme Court has upheld hate speech laws as consistent with Charter values." },
   { country: "France", flag: "🇫🇷", rule: "The Loi Pleven (1972) prohibits incitement to discrimination, hatred or violence based on origin, race, religion", context: "France has extensive hate speech laws. Defamation of a group based on religion, race, ethnicity, or sexual orientation is a criminal offense." },
-  { country: "United States", flag: "🇺🇸", rule: "Speech can only be restricted when it presents a danger of imminent lawless action — a very high bar", context: "The United States protects vastly more speech than any other developed democracy. Hate speech, offensive speech, Nazi symbols, Holocaust denial — all constitutionally protected." },
+  { country: "United States", flag: "🇺🇸", rule: "Speech can only be restricted when it presents a danger of imminent lawless action, a very high bar", context: "The United States protects vastly more speech than any other developed democracy. Hate speech, offensive speech, Nazi symbols, Holocaust denial, all constitutionally protected." },
 ];
 
 const GLOBAL_COMPARISON_RO = [
@@ -55,7 +55,7 @@ const GLOBAL_COMPARISON_RO = [
   { country: "Regatul Unit", flag: "🇬🇧", rule: "Legea Ordinii Publice restricționează discursul de ură și expresia publică ofensivă", context: "Legea britanică echilibrează libertatea de exprimare cu ordinea publică. Discursul care 'cauzează hărțuire, alarmă sau suferință' poate fi infracțiune." },
   { country: "Canada", flag: "🇨🇦", rule: "Secțiunea 319 a Codului Penal interzice 'promovarea deliberată a urii' față de grupuri identificabile", context: "Carta canadiană protejează libertatea de exprimare, dar Parlamentul a limitat discursul de ură. Curtea Supremă a menținut legile privind discursul de ură." },
   { country: "Franța", flag: "🇫🇷", rule: "Legea Pleven (1972) interzice incitarea la discriminare, ură sau violență pe baza originii, rasei, religiei", context: "Franța are legi extinse privind discursul de ură. Defăimarea unui grup pe baza religiei sau rasei este o infracțiune penală." },
-  { country: "Statele Unite", flag: "🇺🇸", rule: "Discursul poate fi restricționat doar când prezintă pericolul iminent de acțiune ilegală — un prag foarte ridicat", context: "SUA protejează mult mai mult discursul decât orice altă democrație dezvoltată. Discursul de ură, simbolurile naziste, negarea Holocaustului — toate protejate constituțional." },
+  { country: "Statele Unite", flag: "🇺🇸", rule: "Discursul poate fi restricționat doar când prezintă pericolul iminent de acțiune ilegală, un prag foarte ridicat", context: "SUA protejează mult mai mult discursul decât orice altă democrație dezvoltată. Discursul de ură, simbolurile naziste, negarea Holocaustului, toate protejate constituțional." },
 ];
 
 export default async function FirstAmendmentPage() {
@@ -106,8 +106,8 @@ export default async function FirstAmendmentPage() {
           </h1>
           <p className="max-w-2xl font-body text-lg leading-relaxed text-[#B8B4AC]">
             {isRo
-              ? "America protejează discursul pe care alte națiuni îl incriminează. Arderea steagului. Marșurile neo-naziste. Arta ofensivă. Aceasta nu este o accident — este o filozofie juridică elaborată pe 200 de ani."
-              : "America protects speech other nations criminalize. Flag burning. Neo-Nazi marches. Offensive art. This is not an accident — it is a legal philosophy built over 200 years."}
+              ? "America protejează discursul pe care alte națiuni îl incriminează. Arderea steagului. Marșurile neo-naziste. Arta ofensivă. Aceasta nu este o accident, este o filozofie juridică elaborată pe 200 de ani."
+              : "America protects speech other nations criminalize. Flag burning. Neo-Nazi marches. Offensive art. This is not an accident, it is a legal philosophy built over 200 years."}
           </p>
         </div>
       </div>
@@ -125,7 +125,7 @@ export default async function FirstAmendmentPage() {
                 className="mb-4 text-center font-body text-xs font-semibold uppercase tracking-[0.2em]"
                 style={{ color: "#8B6A2A" }}
               >
-                {isRo ? "Textul Original — Amendamentul I, Ratificat 15 Decembrie 1791" : "Original Text — Amendment I, Ratified December 15, 1791"}
+                {isRo ? "Textul Original, Amendamentul I, Ratificat 15 Decembrie 1791" : "Original Text, Amendment I, Ratified December 15, 1791"}
               </p>
               <blockquote
                 className="text-center"
@@ -149,10 +149,10 @@ export default async function FirstAmendmentPage() {
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {[
-                { icon: "🗣️", title: isRo ? "Libertatea de Exprimare" : "Free Speech",    body: isRo ? "Guvernul nu te poate pedepsi pentru că îl critici — chiar dur, chiar ofensiv. Standardul: pericolul iminent de acțiune ilegală." : "Government cannot punish you for criticizing it — even harshly, even offensively. The standard: imminent danger of illegal action." },
+                { icon: "🗣️", title: isRo ? "Libertatea de Exprimare" : "Free Speech",    body: isRo ? "Guvernul nu te poate pedepsi pentru că îl critici, chiar dur, chiar ofensiv. Standardul: pericolul iminent de acțiune ilegală." : "Government cannot punish you for criticizing it, even harshly, even offensively. The standard: imminent danger of illegal action." },
                 { icon: "⛪", title: isRo ? "Libertatea Religiei" : "Free Religion",       body: isRo ? "Nicio religie de stat și nicio interferență cu credința ta. Motivul pentru care America este paradoxal cea mai religioasă democrație." : "No state religion and no interference with your faith. The reason America is paradoxically the most religious democracy." },
                 { icon: "📰", title: isRo ? "Libertatea Presei" : "Free Press",            body: isRo ? "Presa poate publica secrete guvernamentale dacă servesc interesul public. Pentagon Papers (1971): New York Times a publicat împotriva dorințelor Casei Albe." : "The press can publish government secrets if they serve public interest. Pentagon Papers (1971): the Times published against the White House's explicit wishes." },
-                { icon: "✊", title: isRo ? "Dreptul la Adunare" : "Free Assembly",        body: isRo ? "Poți protesta, demonstra și advocacy — chiar cauze pe care majoritatea le dezaprobă. Marșuri ale KKK, marșuri neo-naziste, proteste anti-avort — toate protejate." : "You can protest, demonstrate, and advocate — even for causes the majority despises. KKK marches, neo-Nazi marches, anti-abortion protests — all protected." },
+                { icon: "✊", title: isRo ? "Dreptul la Adunare" : "Free Assembly",        body: isRo ? "Poți protesta, demonstra și advocacy, chiar cauze pe care majoritatea le dezaprobă. Marșuri ale KKK, marșuri neo-naziste, proteste anti-avort, toate protejate." : "You can protest, demonstrate, and advocate, even for causes the majority despises. KKK marches, neo-Nazi marches, anti-abortion protests, all protected." },
                 { icon: "📜", title: isRo ? "Dreptul la Petiție" : "Right to Petition",    body: isRo ? "Poți cere guvernului să îți redreseze nemulțumirile. Fundamentul pentru lobby, advocacy civic și contactarea reprezentanților aleși." : "You can petition the government to redress your grievances. The foundation for lobbying, civic advocacy, and contacting elected representatives." },
               ].map((item, i) => (
                 <div
@@ -172,7 +172,7 @@ export default async function FirstAmendmentPage() {
           {/* Key Cases */}
           <section>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "Cazuri Definitorii — Cum S-a Construit Protecția" : "Defining Cases — How the Protection Was Built"}
+              {isRo ? "Cazuri Definitorii, Cum S-a Construit Protecția" : "Defining Cases, How the Protection Was Built"}
             </h2>
             <p className="mb-8 font-body text-base text-[#B8B4AC]">
               {isRo
@@ -237,7 +237,7 @@ export default async function FirstAmendmentPage() {
 
           <QuoteBlock
             quote={isRo
-              ? "\"Dacă există o lege imperativă în constituția noastră, este că niciun oficial — înalt sau mărunt — nu poate prescrie ce va fi ortodox în politică, naționalism, religie sau alte chestiuni de opinie, sau forța cetățenilor să-și mărturisească credința prin cuvinte sau acte.\""
+              ? "\"Dacă există o lege imperativă în constituția noastră, este că niciun oficial, înalt sau mărunt, nu poate prescrie ce va fi ortodox în politică, naționalism, religie sau alte chestiuni de opinie, sau forța cetățenilor să-și mărturisească credința prin cuvinte sau acte.\""
               : "\"If there is any fixed star in our constitutional constellation, it is that no official, high or petty, can prescribe what shall be orthodox in politics, nationalism, religion, or other matters of opinion, or force citizens to confess by word or act their faith therein.\""}
             attribution="Justice Robert Jackson"
             title={isRo ? "West Virginia State Board of Education v. Barnette, 1943" : "West Virginia State Board of Education v. Barnette, 1943"}
@@ -248,8 +248,8 @@ export default async function FirstAmendmentPage() {
             subpage="first-amendment"
             title={isRo ? "Mărturia Vizuală" : "The Visual Record"}
             intro={isRo
-              ? "Cuvânt, presă, credință și adunare — cele cinci libertăți ale Primului Amendament în acțiune."
-              : "Speech, press, faith, and assembly — the five freedoms of the First Amendment in action."}
+              ? "Cuvânt, presă, credință și adunare, cele cinci libertăți ale Primului Amendament în acțiune."
+              : "Speech, press, faith, and assembly, the five freedoms of the First Amendment in action."}
           />
 
           <div className="flex items-center justify-between border-t border-white/8 pt-8">

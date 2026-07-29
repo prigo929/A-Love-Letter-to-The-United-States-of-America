@@ -1,5 +1,5 @@
 // ─── Separation of Powers Sub-Page ──────────────────────────────────────────
-// This page explains "Checks and Balances" — how the three branches of
+// This page explains "Checks and Balances", how the three branches of
 // government (Congress, President, and Supreme Court) watch over each other.
 //
 // For Beginners: This page uses a "Triangle of Tension" diagram. It's a
@@ -18,12 +18,12 @@ import { POWERS_CHECK_EXAMPLES } from "@/lib/data/constitution-data";
 
 export const metadata: Metadata = {
   title: "Separation of Powers | Constitution",
-  description: "Three branches, each checking the other two. Why tyranny is nearly impossible in America — and the historical proof that the system works.",
+  description: "Three branches, each checking the other two. Why tyranny is nearly impossible in America, and the historical proof that the system works.",
 };
 
 const TYRANNY_CHECKLIST_EN = [
   "The House of Representatives (435 individually elected members)",
-  "The Senate (100 senators, 6-year staggered terms — 1/3 up every 2 years)",
+  "The Senate (100 senators, 6-year staggered terms, 1/3 up every 2 years)",
   "The White House (1 person, limited to two 4-year terms by the 22nd Amendment)",
   "The Supreme Court (9 justices, lifetime tenure, not elected by anyone)",
   "The entire Cabinet (Senate-confirmed, can be removed by Congress)",
@@ -38,7 +38,7 @@ const TYRANNY_CHECKLIST_EN = [
 
 const TYRANNY_CHECKLIST_RO = [
   "Camera Reprezentanților (435 de membri aleși individual)",
-  "Senatul (100 de senatori, mandate de 6 ani eșalonate — 1/3 la fiecare 2 ani)",
+  "Senatul (100 de senatori, mandate de 6 ani eșalonate, 1/3 la fiecare 2 ani)",
   "Casa Albă (o persoană, limitată la două mandate de 4 ani prin al 22-lea Amendament)",
   "Curtea Supremă (9 judecători, mandat pe viață, nu aleși de nimeni)",
   "Întregul Cabinet (confirmat de Senat, poate fi îndepărtat de Congres)",
@@ -56,25 +56,25 @@ const BRANCH_POWERS_EN = [
     branch: "Legislative",
     icon: "🏛️",
     color: "#C9A84C",
-    description: "Congress — the people's direct representatives",
+    description: "Congress, the people's direct representatives",
     powers: ["Writes federal law", "Controls the federal budget", "Declares war", "Confirms presidential appointments", "Ratifies treaties", "Can override presidential veto (2/3 majority)", "Can impeach and remove the President and judges"],
-    checksOnIt: ["President can veto legislation", "Courts can strike down unconstitutional laws", "Senate and House must agree — bicameralism slows rash action"],
+    checksOnIt: ["President can veto legislation", "Courts can strike down unconstitutional laws", "Senate and House must agree, bicameralism slows rash action"],
   },
   {
     branch: "Executive",
     icon: "🦅",
     color: "#C9A84C",
-    description: "The President — implements and enforces law",
+    description: "The President, implements and enforces law",
     powers: ["Enforces federal law", "Commands the military", "Conducts foreign policy", "Nominates federal judges and officials", "Can veto congressional legislation", "Issues executive orders (within statutory authority)"],
-    checksOnIt: ["Congress can override veto (2/3)", "Senate must confirm major appointments", "Congress controls the budget — no money without legislative approval", "Courts review executive actions", "Impeachment for high crimes and misdemeanors"],
+    checksOnIt: ["Congress can override veto (2/3)", "Senate must confirm major appointments", "Congress controls the budget, no money without legislative approval", "Courts review executive actions", "Impeachment for high crimes and misdemeanors"],
   },
   {
     branch: "Judicial",
     icon: "⚖️",
     color: "#C9A84C",
-    description: "The Courts — guardians of the Constitution",
+    description: "The Courts, guardians of the Constitution",
     powers: ["Interprets the Constitution and federal law", "Can invalidate legislation as unconstitutional", "Can strike down executive actions as unlawful", "Protects individual rights against both branches", "Ensures due process in criminal and civil law"],
-    checksOnIt: ["President nominates all federal judges", "Senate must confirm all federal judges", "Congress can impeach judges (extremely rare)", "Congress can propose constitutional amendments to override court decisions", "Court has no enforcement mechanism — depends on executive compliance"],
+    checksOnIt: ["President nominates all federal judges", "Senate must confirm all federal judges", "Congress can impeach judges (extremely rare)", "Congress can propose constitutional amendments to override court decisions", "Court has no enforcement mechanism, depends on executive compliance"],
   },
 ];
 
@@ -83,15 +83,15 @@ const BRANCH_POWERS_RO = [
     branch: "Legislativul",
     icon: "🏛️",
     color: "#C9A84C",
-    description: "Congresul — reprezentanții direcți ai poporului",
+    description: "Congresul, reprezentanții direcți ai poporului",
     powers: ["Redactează legea federală", "Controlează bugetul federal", "Declară război", "Confirmă numirile prezidențiale", "Ratifică tratatele", "Poate anula veto-ul prezidențial (majoritate de 2/3)", "Poate demite și înlătura Președintele și judecătorii"],
-    checksOnIt: ["Președintele poate pune veto pe legislație", "Tribunalele pot anula legile neconstituționale", "Senatul și Camera trebuie să fie de acord — bicameralismul încetinește acțiunile pripite"],
+    checksOnIt: ["Președintele poate pune veto pe legislație", "Tribunalele pot anula legile neconstituționale", "Senatul și Camera trebuie să fie de acord, bicameralismul încetinește acțiunile pripite"],
   },
   {
     branch: "Executivul",
     icon: "🦅",
     color: "#C9A84C",
-    description: "Președintele — implementează și aplică legea",
+    description: "Președintele, implementează și aplică legea",
     powers: ["Aplică legea federală", "Comandă armata", "Conduce politica externă", "Numește judecători federali și funcționari", "Poate pune veto pe legislația congresională", "Emite ordine executive (în limitele autorității statutare)"],
     checksOnIt: ["Congresul poate anula veto-ul (2/3)", "Senatul trebuie să confirme numirile majore", "Congresul controlează bugetul", "Instanțele revizuiesc acțiunile executive", "Demiterea pentru infracțiuni grave și delicte"],
   },
@@ -99,9 +99,9 @@ const BRANCH_POWERS_RO = [
     branch: "Judiciarul",
     icon: "⚖️",
     color: "#C9A84C",
-    description: "Instanțele — gardieni ai Constituției",
+    description: "Instanțele, gardieni ai Constituției",
     powers: ["Interpretează Constituția și legea federală", "Poate anula legislația ca neconstituțională", "Poate anula acțiunile executive ca ilegale", "Protejează drepturile individuale", "Asigură procesul echitabil"],
-    checksOnIt: ["Președintele numește toți judecătorii federali", "Senatul trebuie să confirme toți judecătorii federali", "Congresul poate demite judecătorii (extrem de rar)", "Congresul poate propune amendamente constituționale", "Instanța nu are mecanism de executare propriu — depinde de conformitatea executivului"],
+    checksOnIt: ["Președintele numește toți judecătorii federali", "Senatul trebuie să confirme toți judecătorii federali", "Congresul poate demite judecătorii (extrem de rar)", "Congresul poate propune amendamente constituționale", "Instanța nu are mecanism de executare propriu, depinde de conformitatea executivului"],
   },
 ];
 
@@ -134,7 +134,7 @@ export default async function SeparationOfPowersPage() {
             </span>
           </h1>
           <p className="max-w-2xl font-body text-lg leading-relaxed text-[#B8B4AC]">
-            {isRo ? "Madison a proiectat un sistem în care ambiția trebuie să contracareze ambiția. Trei ramuri — fiecare verificând celelalte două. Nu o ierarhie, ci un triunghi de tensiune permanentă." : "Madison engineered a system where ambition must counteract ambition. Three branches — each checking the other two. Not a hierarchy — a triangle of permanent tension."}
+            {isRo ? "Madison a proiectat un sistem în care ambiția trebuie să contracareze ambiția. Trei ramuri, fiecare verificând celelalte două. Nu o ierarhie, ci un triunghi de tensiune permanentă." : "Madison engineered a system where ambition must counteract ambition. Three branches, each checking the other two. Not a hierarchy, a triangle of permanent tension."}
           </p>
         </div>
       </div>
@@ -145,7 +145,7 @@ export default async function SeparationOfPowersPage() {
           {/* Interactive diagram */}
           <section>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">{isRo ? "Diagrama Echilibrului" : "The Equilibrium Diagram"}</h2>
-            <p className="mb-8 font-body text-base text-[#B8B4AC]">{isRo ? "Selectează un exemplu real pentru a vedea cum ramura corespunzătoare verifică o altă ramură." : "Select a real-world example to see how one branch checked another — and how the system held."}</p>
+            <p className="mb-8 font-body text-base text-[#B8B4AC]">{isRo ? "Selectează un exemplu real pentru a vedea cum ramura corespunzătoare verifică o altă ramură." : "Select a real-world example to see how one branch checked another, and how the system held."}</p>
             <SeparationDiagram examples={POWERS_CHECK_EXAMPLES} />
           </section>
 
@@ -219,8 +219,8 @@ export default async function SeparationOfPowersPage() {
             subpage="separation-of-powers"
             title={isRo ? "Mărturia Vizuală" : "The Visual Record"}
             intro={isRo
-              ? "Cele trei ramuri în acțiune — momentele în care controalele și echilibrele s-au dovedit reale."
-              : "The three branches in action — the moments when checks and balances proved real."}
+              ? "Cele trei ramuri în acțiune, momentele în care controalele și echilibrele s-au dovedit reale."
+              : "The three branches in action, the moments when checks and balances proved real."}
           />
 
           <div className="flex items-center justify-between border-t border-white/8 pt-8">

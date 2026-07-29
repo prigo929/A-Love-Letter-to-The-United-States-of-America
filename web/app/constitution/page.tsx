@@ -58,7 +58,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Constitution & Democracy",
-  description: "237 years of unbroken constitutional government — a record no other nation comes close to matching. An interactive deep dive into the most sophisticated legal architecture in human history.",
+  description: "237 years of unbroken constitutional government. No other nation comes close to matching it. An interactive deep dive into the most sophisticated legal architecture in human history.",
   alternates: { canonical: "/constitution" },
   openGraph: {
     title: "The Longest Experiment in Democracy",
@@ -101,11 +101,11 @@ export default async function ConstitutionPage() {
     <>
       <FloatingTOC items={tocItems} />
       {/* ══════════════════════════════════════════════════════════════════════
-          CINEMATIC HERO — "We the People" + headline + CTAs
+          CINEMATIC HERO, "We the People" + headline + CTAs
           ══════════════════════════════════════════════════════════════════════ */}
       <CinematicHero isRo={isRo} />
 
-      {/* Floating scroll progress sidebar — xl screens only */}
+      {/* Floating scroll progress sidebar, xl screens only */}
       <ScrollProgressSidebar isRo={isRo} />
 
       {/* Persistent running chapter indicator */}
@@ -140,10 +140,10 @@ export default async function ConstitutionPage() {
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          SECTIONS — Main content
+          SECTIONS, Main content
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="relative bg-[#080B12]">
-        {/* Marble texture ambient layer — GPU-friendly static bitmap */}
+        {/* Marble texture ambient layer, GPU-friendly static bitmap */}
         <div
           className="pointer-events-none absolute inset-0 z-0"
           style={{
@@ -185,7 +185,7 @@ export default async function ConstitutionPage() {
                 <div className="relative overflow-hidden">
                   <Image
                     src={SITE_IMAGES.constitution.pg1}
-                    alt="United States Constitution, Page 1 — original parchment, National Archives"
+                    alt="United States Constitution, Page 1, original parchment, National Archives"
                     width={1200} height={500}
                     className="h-[320px] w-full object-cover object-top md:h-[420px]"
                     placeholder="blur" blurDataURL={BLUR_PLACEHOLDER}
@@ -224,7 +224,7 @@ export default async function ConstitutionPage() {
             <ClauseVault clauses={getConstitutionClauses(isRo)} isRo={isRo} />
           </Section>
 
-          {/* ── Breathing section — emotional reset ── */}
+          {/* ── Breathing section, emotional reset ── */}
           <BreathingSection word={isRo ? "LIBERTATE" : "LIBERTY"} />
 
           {/* ── Founders ─────────────────────────────────────────────────────── */}
@@ -273,7 +273,7 @@ export default async function ConstitutionPage() {
             </div>
           </Section>
 
-          {/* ── Breathing section — emotional reset ── */}
+          {/* ── Breathing section, emotional reset ── */}
           <BreathingSection word={isRo ? "JUSTIȚIE" : "JUSTICE"} />
 
           {/* ── Separation of Powers ─────────────────────────────────────────── */}
@@ -333,7 +333,7 @@ export default async function ConstitutionPage() {
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          THE UNBROKEN LINE — Vertical transfer of power timeline
+          THE UNBROKEN LINE, Vertical transfer of power timeline
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="relative bg-[#080B12]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -421,11 +421,11 @@ export default async function ConstitutionPage() {
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          VII. THE GREAT STABILITY — Electoral Archive Map
+          VII. THE GREAT STABILITY, Electoral Archive Map
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="relative bg-[#080B12]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* ── Breathing section — emotional reset ── */}
+          {/* ── Breathing section, emotional reset ── */}
           <BreathingSection word={isRo ? "UNIUNE" : "UNION"} />
 
           <Entablature
@@ -577,7 +577,7 @@ export default async function ConstitutionPage() {
       {/* Deep Dive Archive */}
       <IconicPhotographs
         section="constitution"
-        intro="The institutions and milestones of American self-government — from the Capitol dome to the modern Court, captured on film."
+        intro="The institutions and milestones of American self-government, from the Capitol dome to the modern Court, captured on film."
       />
 
       <div className="bg-[#080B12]">
@@ -597,7 +597,7 @@ export default async function ConstitutionPage() {
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          LUXURY CLOSING — "This exhibit is free. These rights are yours."
+          LUXURY CLOSING, "This exhibit is free. These rights are yours."
           ══════════════════════════════════════════════════════════════════════ */}
       <LuxuryClosing isRo={isRo} />
     </>

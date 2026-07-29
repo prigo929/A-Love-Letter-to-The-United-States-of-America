@@ -2,7 +2,7 @@
 // This page explores the Second Amendment and the right to bear arms.
 // It explains the landmark court cases that have shaped gun laws.
 //
-// For Beginners: This page highlights the "Core Debate" — showing both sides
+// For Beginners: This page highlights the "Core Debate", showing both sides
 // of how the law is interpreted in modern America.
 
 import type { Metadata } from "next";
@@ -34,7 +34,7 @@ const LANDMARK_CASES_EN = [
     year: 2008,
     name: "District of Columbia v. Heller",
     ruling: "The 2nd Amendment protects an individual right to possess firearms in the home for self-defense",
-    detail: "5-4 decision written by Scalia. Struck down DC's handgun ban. Established for the first time that the 2nd Amendment protects individual gun ownership — not just collective militia service. Also said some regulations (felon prohibitions, sensitive places) are presumptively lawful.",
+    detail: "5-4 decision written by Scalia. Struck down DC's handgun ban. Established for the first time that the 2nd Amendment protects individual gun ownership, not just collective militia service. Also said some regulations (felon prohibitions, sensitive places) are presumptively lawful.",
     pro: true,
   },
   {
@@ -54,7 +54,7 @@ const LANDMARK_CASES_EN = [
   {
     year: 2022,
     name: "New York State Rifle & Pistol Assoc. v. Bruen",
-    ruling: "Gun regulations must be consistent with historical tradition — not just reasonably related to a legitimate government interest",
+    ruling: "Gun regulations must be consistent with historical tradition, not just reasonably related to a legitimate government interest",
     detail: "6-3 written by Thomas. Replaced the two-step 'means-end scrutiny' test used by lower courts with a purely historical test: does the regulation have a historical analogue? Overturned New York's 'proper cause' requirement for concealed carry permits. Has been used to challenge bump stock bans, domestic violence restrictions, marijuana user prohibitions, and dozens of other laws.",
     pro: true,
   },
@@ -72,7 +72,7 @@ const LANDMARK_CASES_RO = [
     year: 2008,
     name: "District of Columbia v. Heller",
     ruling: "Al 2-lea Amendament protejează dreptul individual de a deține arme de foc acasă pentru autoapărare",
-    detail: "Decizie 5-4. A stabilit pentru prima dată că al 2-lea Amendament protejează proprietatea individuală de arme — nu doar serviciul colectiv în miliție. A anulat interdicția armelor de mână în DC.",
+    detail: "Decizie 5-4. A stabilit pentru prima dată că al 2-lea Amendament protejează proprietatea individuală de arme, nu doar serviciul colectiv în miliție. A anulat interdicția armelor de mână în DC.",
     pro: true,
   },
   {
@@ -110,7 +110,7 @@ export default async function SecondAmendmentPage() {
         <InkParticles count={60} />
         <Image
           src="/images/us-buildings/us-supreme-court-building.jpg"
-          alt="US Supreme Court building — where the Second Amendment's meaning is decided"
+          alt="US Supreme Court building, where the Second Amendment's meaning is decided"
           fill className="object-cover opacity-15" priority sizes="100vw"
           placeholder="blur" blurDataURL={BLUR_PLACEHOLDER}
           quality={100}
@@ -154,7 +154,7 @@ export default async function SecondAmendmentPage() {
               style={{ background: "linear-gradient(168deg, #F9F3E3 0%, #F4EDD8 30%, #EDE4C8 65%, #E8DDB8 100%)" }}
             >
               <p className="mb-4 text-center font-body text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: "#8B6A2A" }}>
-                {isRo ? "Textul Original — Amendamentul II, Ratificat 15 Decembrie 1791" : "Original Text — Amendment II, Ratified December 15, 1791"}
+                {isRo ? "Textul Original, Amendamentul II, Ratificat 15 Decembrie 1791" : "Original Text, Amendment II, Ratified December 15, 1791"}
               </p>
               <blockquote className="text-center" style={{
                 fontFamily: "'EB Garamond', 'Georgia', serif",
@@ -178,8 +178,8 @@ export default async function SecondAmendmentPage() {
                 </p>
                 <p className="mb-4 font-body text-sm leading-relaxed text-[#B8B4AC]">
                   {isRo
-                    ? "Clauza 'dreptul poporului de a deține și purta arme' este clar un drept individual — la fel ca 'dreptul poporului' în primul și al patrulea amendament. Fundalul miliționar descrie o motivație, nu o limitare. Fondatorii credeau că cetățenii înarmați sunt garanția finală împotriva tiraniei."
-                    : "The phrase 'the right of the people to keep and bear Arms' is clearly an individual right — just as 'the right of the people' in the First and Fourth Amendments. The militia preamble describes a motivation, not a limitation. The Founders believed armed citizens are the ultimate check on tyranny."}
+                    ? "Clauza 'dreptul poporului de a deține și purta arme' este clar un drept individual, la fel ca 'dreptul poporului' în primul și al patrulea amendament. Fundalul miliționar descrie o motivație, nu o limitare. Fondatorii credeau că cetățenii înarmați sunt garanția finală împotriva tiraniei."
+                    : "The phrase 'the right of the people to keep and bear Arms' is clearly an individual right, just as 'the right of the people' in the First and Fourth Amendments. The militia preamble describes a motivation, not a limitation. The Founders believed armed citizens are the ultimate check on tyranny."}
                 </p>
                 <p className="font-body text-xs text-[#6B6860]">
                   {isRo ? "Majoritar în: Heller (2008), McDonald (2010), Bruen (2022)" : "Majority in: Heller (2008), McDonald (2010), Bruen (2022)"}
@@ -191,8 +191,8 @@ export default async function SecondAmendmentPage() {
                 </p>
                 <p className="mb-4 font-body text-sm leading-relaxed text-[#B8B4AC]">
                   {isRo
-                    ? "Clauza prefatoare — 'o milițle bine reglementată, fiind necesară securității unui stat liber' — condiționează dreptul. Amendamentul protejează dreptul de a purta arme în contextul serviciului milițiar, nu proprietatea individuală de arme pentru autoapărare personală."
-                    : "The prefatory clause — 'A well regulated Militia, being necessary to the security of a free State' — conditions the right. The amendment protects the right to bear arms in connection with militia service, not individual ownership for personal self-defense."}
+                    ? "Clauza prefatoare, 'o milițle bine reglementată, fiind necesară securității unui stat liber', condiționează dreptul. Amendamentul protejează dreptul de a purta arme în contextul serviciului milițiar, nu proprietatea individuală de arme pentru autoapărare personală."
+                    : "The prefatory clause, 'A well regulated Militia, being necessary to the security of a free State', conditions the right. The amendment protects the right to bear arms in connection with militia service, not individual ownership for personal self-defense."}
                 </p>
                 <p className="font-body text-xs text-[#6B6860]">
                   {isRo ? "Minoritar în: Heller, McDonald, Bruen (Stevens dissent)" : "Dissent in: Heller, McDonald, Bruen (Stevens dissent)"}
@@ -263,8 +263,8 @@ export default async function SecondAmendmentPage() {
 
           <QuoteBlock
             quote={isRo
-              ? "\"Un drept garantat de Constituție nu poate fi supus votului majoritar. Dacă Constituția îl garantează, există — indiferent de cât de nepopular este pentru o majoritate.\""
-              : "\"A right guaranteed by the Constitution cannot be submitted to a vote. If the Constitution guarantees it, it exists — regardless of how unpopular it may be to a majority.\""}
+              ? "\"Un drept garantat de Constituție nu poate fi supus votului majoritar. Dacă Constituția îl garantează, există, indiferent de cât de nepopular este pentru o majoritate.\""
+              : "\"A right guaranteed by the Constitution cannot be submitted to a vote. If the Constitution guarantees it, it exists, regardless of how unpopular it may be to a majority.\""}
             attribution={isRo ? "Judecătorul Antonin Scalia" : "Justice Antonin Scalia"}
             title={isRo ? "District of Columbia v. Heller, 2008" : "District of Columbia v. Heller, 2008"}
             variant="dark"
@@ -274,8 +274,8 @@ export default async function SecondAmendmentPage() {
             subpage="second-amendment"
             title={isRo ? "Mărturia Vizuală" : "The Visual Record"}
             intro={isRo
-              ? "De la Minutemen la Heller — armele, oamenii și momentele din spatele Amendamentului II."
-              : "From the Minutemen to Heller — the arms, people, and moments behind the Second Amendment."}
+              ? "De la Minutemen la Heller, armele, oamenii și momentele din spatele Amendamentului II."
+              : "From the Minutemen to Heller, the arms, people, and moments behind the Second Amendment."}
           />
 
           <div className="flex items-center justify-between border-t border-white/8 pt-8">

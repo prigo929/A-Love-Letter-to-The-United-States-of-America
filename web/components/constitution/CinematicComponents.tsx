@@ -47,7 +47,7 @@ function CountUp({ to, suffix = "", delay = 0 }: { to: number; suffix?: string; 
   return <span ref={ref}>0{suffix}</span>;
 }
 
-// 1. CINEMATIC STAT — A huge, impact-focused number.
+// 1. CINEMATIC STAT, A huge, impact-focused number.
 // We use this to highlight scale, like the "$31 Trillion economy" or "237 years".
 export function CinematicStat({
   value,
@@ -119,7 +119,7 @@ export function CinematicStat({
 
 
 
-// 2. CINEMATIC HERO — The grand introduction of the exhibit.
+// 2. CINEMATIC HERO, The grand introduction of the exhibit.
 // This component uses "Scroll-Driven Animations". 
 // As you scroll down the page, different elements fade in and out.
 //
@@ -138,12 +138,12 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
   // 'scrollYProgress' is a number from 0 to 1.
   // 0 means you just started the section. 1 means you finished it.
 
-  // Phase 1: "We the People" — visible at the start (0), fades out by the time you're 35% through (0.35).
+  // Phase 1: "We the People", visible at the start (0), fades out by the time you're 35% through (0.35).
   const wtpOpacity = useTransform(scrollYProgress, [0, 0.25, 0.35], [1, 1, 0]);
   const wtpScale   = useTransform(scrollYProgress, [0, 0.35], [1, 0.88]);
   const wtpY       = useTransform(scrollYProgress, [0, 0.35], [0, -60]);
 
-  // Phase 2: Main headline — starts invisible (0), fades in at 42% (0.42), stays until 72% (0.72).
+  // Phase 2: Main headline, starts invisible (0), fades in at 42% (0.42), stays until 72% (0.72).
   const headlineOpacity = useTransform(scrollYProgress, [0.3, 0.42, 0.72, 0.92], [0, 1, 1, 0]);
   const headlineY       = useTransform(scrollYProgress, [0.3, 0.42, 0.72, 0.92], [60, 0, 0, -20]);
 
@@ -158,7 +158,7 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
   // Golden line
   const lineWidth = useTransform(scrollYProgress, [0.3, 0.42], ["0%", "100%"]);
 
-  // Scroll indicator — visible at the start
+  // Scroll indicator, visible at the start
   const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.02, 0.12], [0.7, 0.7, 0]);
 
   return (
@@ -244,8 +244,8 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
                 style={{ fontFamily: "'EB Garamond', 'Georgia', serif", fontStyle: "italic" }}
               >
                 {isRo
-                  ? '"250 de ani de guvernare constituțională neîntreruptă — un record pe care nicio altă națiune de pe Pământ nu îl poate egala."'
-                  : '"250 years of unbroken constitutional government — a record no other nation on Earth comes close to matching."'}
+                  ? '"250 de ani de guvernare constituțională neîntreruptă, un record pe care nicio altă națiune de pe Pământ nu îl poate egala."'
+                  : '"250 years of unbroken constitutional government, a record no other nation on Earth comes close to matching."'}
               </p>
               <p className="mb-12 max-w-lg font-body text-base leading-relaxed text-[#6B6860]">
                 {isRo
@@ -292,7 +292,7 @@ export function CinematicHero({ isRo }: { isRo: boolean }) {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// 3. UNBROKEN LINE — Vertical transfer of power timeline
+// 3. UNBROKEN LINE, Vertical transfer of power timeline
 // ═════════════════════════════════════════════════════════════════════════════
 
 function TransferNode({
@@ -412,7 +412,7 @@ function TransferNode({
   );
 }
 
-// 3. THE UNBROKEN LINE — A vertical timeline of power transfers.
+// 3. THE UNBROKEN LINE, A vertical timeline of power transfers.
 // This is a metaphor for the stability of American democracy.
 // As you scroll, the "golden thread" follows you down the page.
 export function UnbrokenLine({
@@ -486,7 +486,7 @@ export function UnbrokenLine({
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// 4. CINEMATIC SECTION BREAK — golden thread between sections
+// 4. CINEMATIC SECTION BREAK, golden thread between sections
 // ═════════════════════════════════════════════════════════════════════════════
 
 export function CinematicSectionBreak({
@@ -510,7 +510,7 @@ export function CinematicSectionBreak({
     >
       {/* Grid stacking: numeral + title perfectly centered on top of each other */}
       <div className="grid place-items-center" style={{ gridTemplateAreas: "'center'" }}>
-        {/* Chapter number — background layer */}
+        {/* Chapter number, background layer */}
         <motion.p
           initial={{ opacity: 0, scale: 0.8 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
@@ -531,7 +531,7 @@ export function CinematicSectionBreak({
           {chapter}
         </motion.p>
 
-        {/* Title + decorative lines — foreground layer */}
+        {/* Title + decorative lines, foreground layer */}
         <div className="flex flex-col items-center gap-3" style={{ gridArea: "center" }}>
           <motion.div
             initial={{ scaleX: 0 }}
@@ -560,7 +560,7 @@ export function CinematicSectionBreak({
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// 5. CINEMATIC PULL QUOTE — full-width dramatic quote
+// 5. CINEMATIC PULL QUOTE, full-width dramatic quote
 // ═════════════════════════════════════════════════════════════════════════════
 
 export function CinematicPullQuote({
@@ -623,7 +623,7 @@ export function CinematicPullQuote({
   );
 }
 
-// 5. CONSTITUTION RACE — A data visualization "race" between nations.
+// 5. CONSTITUTION RACE, A data visualization "race" between nations.
 // It shows how most constitutions fail or get replaced while the U.S. bar keeps going.
 // Principle: "Stability". A stable constitution provides a predictable environment for growth.
 interface ConstitutionEra {
@@ -634,7 +634,7 @@ interface ConstitutionEra {
 }
 
 const CONSTITUTION_ERAS: ConstitutionEra[] = [
-  { country: "United States", start: 1789, end: null, label: "1789 — present" },
+  { country: "United States", start: 1789, end: null, label: "1789, present" },
   { country: "France (1st Rep)", start: 1791, end: 1795, label: "1st Republic" },
   { country: "France (Dir.)", start: 1795, end: 1799, label: "Directoire" },
   { country: "France (2nd Rep)", start: 1848, end: 1852, label: "2nd Republic" },
@@ -800,7 +800,7 @@ export function ConstitutionRace({ isRo }: { isRo: boolean }) {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// 7. WORLD WITHOUT — Dark counter-factual split-screen
+// 7. WORLD WITHOUT, Dark counter-factual split-screen
 // ═════════════════════════════════════════════════════════════════════════════
 
 interface CounterFactual {
@@ -827,14 +827,14 @@ const COUNTER_FACTUALS_EN: CounterFactual[] = [
     country: "Turkey",
   },
   {
-    right: "You can practice any religion — or none",
+    right: "You can practice any religion, or none",
     rightDetail: "The First Amendment's Establishment and Free Exercise Clauses prohibit government-imposed religion and protect individual religious choices.",
     without: "Over 1 million people are in detention camps for their faith",
     withoutDetail: "In China's Xinjiang region, the UN estimates that over 1 million Uyghur Muslims have been detained in re-education camps since 2017.",
     country: "China",
   },
   {
-    right: "A jury of 12 citizens decides your fate — not the state",
+    right: "A jury of 12 citizens decides your fate, not the state",
     rightDetail: "The Sixth and Seventh Amendments guarantee jury trials in criminal and civil cases. The state cannot convict you alone.",
     without: "Courts have a 99.9% conviction rate",
     withoutDetail: "In Japan, the conviction rate in criminal cases exceeds 99.9%. In Russia, acquittals run at 0.3%. The outcome is decided before the trial begins.",
@@ -865,7 +865,7 @@ const COUNTER_FACTUALS_RO: CounterFactual[] = [
     country: "Turcia",
   },
   {
-    right: "Poți practica orice religie — sau niciuna",
+    right: "Poți practica orice religie, sau niciuna",
     rightDetail: "Clauzele Primului Amendament interzic religia impusă de stat.",
     without: "Peste 1 milion de oameni sunt în lagăre de detenție",
     withoutDetail: "În Xinjiang, ONU estimează peste 1 milion de musulmani uiguri reținuți din 2017.",
@@ -953,7 +953,7 @@ export function WorldWithout({ isRo }: { isRo: boolean }) {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// 8. SCROLL PROGRESS SIDEBAR — Constitution-themed floating navigation
+// 8. SCROLL PROGRESS SIDEBAR, Constitution-themed floating navigation
 // ═════════════════════════════════════════════════════════════════════════════
 
 interface SidebarSection {

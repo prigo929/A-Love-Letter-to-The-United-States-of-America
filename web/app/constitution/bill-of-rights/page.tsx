@@ -21,35 +21,35 @@ import { SubpagePhotographs } from "@/components/shared/SubpagePhotographs";
 export const metadata: Metadata = {
   title: "Bill of Rights | Constitution",
   description:
-    "The first ten amendments to the US Constitution — ratified 1791. Free speech, the right to bear arms, due process, and seven other foundational protections.",
+    "The first ten amendments to the US Constitution, ratified 1791. Free speech, the right to bear arms, due process, and seven other foundational protections.",
   alternates: { canonical: "/constitution/bill-of-rights" },
 };
 
 const BILL_FACTS_EN = [
   {
     id: "br-proposal",
-    fact: "Madison drafted 12 amendments — Congress sent 10 to the states",
-    detail: "Two were not ratified in 1791. One of them — on congressional pay raises — was finally ratified in 1992 as the 27th Amendment, 203 years after Madison proposed it.",
+    fact: "Madison drafted 12 amendments, Congress sent 10 to the states",
+    detail: "Two were not ratified in 1791. One of them, on congressional pay raises, was finally ratified in 1992 as the 27th Amendment, 203 years after Madison proposed it.",
     source: "National Archives / Constitutional Amendments",
     color: "gold" as const,
   },
   {
     id: "br-ratification",
     fact: "Virginia's ratification on December 15, 1791 made the Bill of Rights law",
-    detail: "Virginia was the 11th of 14 states to ratify — the 3/4 threshold. The date is now celebrated as Bill of Rights Day. Virginia was also the state that had most insisted on a bill of rights as a condition of ratification.",
+    detail: "Virginia was the 11th of 14 states to ratify, the 3/4 threshold. The date is now celebrated as Bill of Rights Day. Virginia was also the state that had most insisted on a bill of rights as a condition of ratification.",
     source: "National Archives",
     color: "red" as const,
   },
   {
     id: "br-incorporation",
-    fact: "Originally only applied to the federal government — states added later",
+    fact: "Originally only applied to the federal government, states added later",
     detail: "For most of US history, states could restrict rights the federal government could not. The 14th Amendment (1868) and a series of 20th-century Supreme Court decisions 'incorporated' the Bill of Rights against state governments one amendment at a time.",
     source: "McDonald v. Chicago (2010) / Gitlow v. New York (1925)",
     color: "blue" as const,
   },
   {
     id: "br-27th",
-    fact: "The 27th Amendment was proposed in 1789 and ratified in 1992 — 203 years later",
+    fact: "The 27th Amendment was proposed in 1789 and ratified in 1992, 203 years later",
     detail: "No congressional pay raise can take effect until after an intervening election. A University of Texas undergraduate student rediscovered the unratified amendment in 1982, began a campaign to ratify it, and succeeded in 1992 after Michigan became the 38th state to ratify.",
     source: "Congressional Research Service",
     color: "gold" as const,
@@ -59,28 +59,28 @@ const BILL_FACTS_EN = [
 const BILL_FACTS_RO = [
   {
     id: "br-proposal",
-    fact: "Madison a propus 12 amendamente — Congresul a trimis 10 statelor",
-    detail: "Două nu au fost ratificate în 1791. Unul dintre ele — privind majorările de salarii ale congresmenilor — a fost ratificat în cele din urmă în 1992 ca al 27-lea Amendament, la 203 ani după ce Madison l-a propus.",
+    fact: "Madison a propus 12 amendamente, Congresul a trimis 10 statelor",
+    detail: "Două nu au fost ratificate în 1791. Unul dintre ele, privind majorările de salarii ale congresmenilor, a fost ratificat în cele din urmă în 1992 ca al 27-lea Amendament, la 203 ani după ce Madison l-a propus.",
     source: "National Archives / Constitutional Amendments",
     color: "gold" as const,
   },
   {
     id: "br-ratification",
     fact: "Ratificarea Virginiei pe 15 decembrie 1791 a dat forță legală Declarației Drepturilor",
-    detail: "Virginia a fost al 11-lea din 14 state care au ratificat — pragul de 3/4. Data este acum sărbătorită ca Ziua Declarației Drepturilor. Virginia a fost și statul care insistase cel mai mult pentru o declarație a drepturilor ca o condiție de ratificare.",
+    detail: "Virginia a fost al 11-lea din 14 state care au ratificat, pragul de 3/4. Data este acum sărbătorită ca Ziua Declarației Drepturilor. Virginia a fost și statul care insistase cel mai mult pentru o declarație a drepturilor ca o condiție de ratificare.",
     source: "National Archives",
     color: "red" as const,
   },
   {
     id: "br-incorporation",
-    fact: "Inițial se aplica doar guvernului federal — statele au fost incluse mai târziu",
+    fact: "Inițial se aplica doar guvernului federal, statele au fost incluse mai târziu",
     detail: "Pentru cea mai mare parte a istoriei SUA, statele puteau restricționa drepturi pe care guvernul federal nu le putea restricționa. Al 14-lea Amendament (1868) și o serie de hotărâri ale Curții Supreme din secolul XX au 'incorporat' Declarația Drepturilor față de guvernele statale, un amendament pe rând.",
     source: "McDonald v. Chicago (2010) / Gitlow v. New York (1925)",
     color: "blue" as const,
   },
   {
     id: "br-27th",
-    fact: "Al 27-lea Amendament a fost propus în 1789 și ratificat în 1992 — 203 ani mai târziu",
+    fact: "Al 27-lea Amendament a fost propus în 1789 și ratificat în 1992, 203 ani mai târziu",
     detail: "Nicio majorare de salariu congresional nu poate intra în vigoare înainte de o alegere intermediară. Un student de la Universitatea din Texas a redescoperit amendamentul neratificat în 1982 și a declanșat o campanie de ratificare, reușind în 1992.",
     source: "Congressional Research Service",
     color: "gold" as const,
@@ -102,7 +102,7 @@ export default async function BillOfRightsPage() {
         {/* Bill of Rights parchment */}
         <Image
           src="/images/constitution/bill-of-rights-page-1.jpg"
-          alt="The Bill of Rights — original engrossed parchment, National Archives"
+          alt="The Bill of Rights, original engrossed parchment, National Archives"
           fill
           priority
           className="object-cover object-top opacity-10"
@@ -156,7 +156,7 @@ export default async function BillOfRightsPage() {
             <div className="overflow-hidden rounded-2xl border border-[rgba(201,168,76,0.15)]">
               <Image
                 src="/images/constitution/bill-of-rights-page-1.jpg"
-                alt="The Bill of Rights — complete original parchment, National Archives, Washington DC"
+                alt="The Bill of Rights, complete original parchment, National Archives, Washington DC"
                 width={1200}
                 height={600}
                 className="h-[300px] w-full object-cover object-top md:h-[420px]"
@@ -167,8 +167,8 @@ export default async function BillOfRightsPage() {
             </div>
             <p className="mt-2 text-right font-body text-xs text-[#6B6860]">
               {isRo
-                ? "Declarația Drepturilor originală — Arhivele Naționale ale SUA, Washington DC"
-                : "Original Bill of Rights parchment — National Archives, Washington DC"}
+                ? "Declarația Drepturilor originală, Arhivele Naționale ale SUA, Washington DC"
+                : "Original Bill of Rights parchment, National Archives, Washington DC"}
             </p>
           </section>
 
@@ -180,8 +180,8 @@ export default async function BillOfRightsPage() {
             <div className="grid gap-6 md:grid-cols-2">
               <p className="font-body text-lg leading-relaxed text-[#B8B4AC]">
                 {isRo
-                  ? "Constituția originală fusese ratificată fără o declarație a drepturilor — o omisiune deliberată. Hamilton a argumentat în Federalistul Nr. 84 că o declarație a drepturilor ar fi inutilă și chiar periculoasă: dacă enumerezi drepturi, s-ar putea să implici că guvernul are puterea de a restricționa drepturile neenumerate."
-                  : "The original Constitution was ratified without a bill of rights — a deliberate omission. Hamilton argued in Federalist No. 84 that a bill of rights would be unnecessary and even dangerous: if you enumerate rights, you might imply the government has power to restrict unenumerated ones."}
+                  ? "Constituția originală fusese ratificată fără o declarație a drepturilor, o omisiune deliberată. Hamilton a argumentat în Federalistul Nr. 84 că o declarație a drepturilor ar fi inutilă și chiar periculoasă: dacă enumerezi drepturi, s-ar putea să implici că guvernul are puterea de a restricționa drepturile neenumerate."
+                  : "The original Constitution was ratified without a bill of rights, a deliberate omission. Hamilton argued in Federalist No. 84 that a bill of rights would be unnecessary and even dangerous: if you enumerate rights, you might imply the government has power to restrict unenumerated ones."}
               </p>
               <p className="font-body text-lg leading-relaxed text-[#B8B4AC]">
                 {isRo

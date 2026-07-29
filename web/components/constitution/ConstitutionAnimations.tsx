@@ -183,7 +183,7 @@ export function ClauseVault({ clauses, isRo }: { clauses: ConstitutionClause[], 
                   aria-expanded={active?.id===c.id}
                 >
                   {(active?.id===c.id||hovered===c.id)&&<span className="pointer-events-none absolute inset-[-1px] rounded-md" style={{ border:"1px solid rgba(201,168,76,.4)", boxShadow:"0 0 20px rgba(201,168,76,.15),0 0 60px rgba(201,168,76,.08)" }}/>}
-                  <span className="font-bold not-italic text-[#C9A84C]">{c.name} — </span>{c.originalText}
+                  <span className="font-bold not-italic text-[#C9A84C]">{c.name}:</span>{" "}{c.originalText}
                 </button>
                 {hovered&&hovered!==c.id&&!active&&<div className="pointer-events-none absolute inset-0 rounded-md bg-[#F4EDD8]/40"/>}
               </div>
@@ -358,7 +358,7 @@ export function FounderConstellation({ founders, isRo }: { founders: FoundingFat
                 <p className="mb-4 font-body text-sm text-[#6B6860]">{active.role}</p>
                 <blockquote className="mb-6 border-l-2 border-[#C9A84C]/50 pl-4">
                   <p className="font-display text-lg italic leading-relaxed text-[#F5F0E8]/80">&ldquo;{active.quote}&rdquo;</p>
-                  <cite className="mt-2 block font-body text-xs not-italic uppercase tracking-[.15em] text-[#C9A84C]">— {active.quoteSource}</cite>
+                  <cite className="mt-2 block font-body text-xs not-italic uppercase tracking-[.15em] text-[#C9A84C]">{active.quoteSource}</cite>
                 </blockquote>
                 <ol className="space-y-2">
                   {active.contributions.map((c,i)=>(
@@ -664,7 +664,7 @@ export function FederalismSimulator({ states, isRo }: { states: StatePolicy[], i
     <div className="grid gap-6 lg:grid-cols-[340px_1fr]">
       <div className="rounded-2xl border border-[rgba(201,168,76,.15)] bg-[#12181F] p-6">
         <p className="mb-1 font-body text-xs font-semibold uppercase tracking-[.15em] text-[#C9A84C]">{isRo ? "Controale Politice" : "Policy Controls"}</p>
-        <p className="mb-6 font-body text-xs text-[#6B6860]">{isRo ? "Ajustează pârghiile — vezi cum reacționează statele" : "Adjust levers — watch states respond"}</p>
+        <p className="mb-6 font-body text-xs text-[#6B6860]">{isRo ? "Ajustează pârghiile. Harta reacționează instant." : "Adjust the levers. Watch states respond."}</p>
         {[
           {label:isRo ? "Impozitul pe Profit" : "Corporate Tax Rate",min:0,max:10,step:.5,value:corpTax,set:setCorpTax,unit:"%"},
           {label:isRo ? "Salariul Minim" : "Minimum Wage",min:7.25,max:20,step:.25,value:minWage,set:setMinWage,unit:"$/hr"},

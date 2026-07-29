@@ -282,7 +282,7 @@ function DossierPanel({
                   &ldquo;{founder.quote}&rdquo;
                 </p>
                 <cite className="mt-2 block font-body text-[10px] not-italic uppercase tracking-[0.15em] text-[#C9A84C]">
-                  — {founder.quoteSource}
+                  {founder.quoteSource}
                 </cite>
               </blockquote>
             </div>

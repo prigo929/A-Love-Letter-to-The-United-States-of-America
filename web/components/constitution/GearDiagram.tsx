@@ -1,5 +1,5 @@
 "use client";
-// ─── Constitutional Mechanism — Separation of Powers ─────────────────────────
+// ─── Constitutional Mechanism, Separation of Powers ─────────────────────────
 // Patek Philippe-inspired interlocking gears representing the three branches.
 // Ratchet animation (22.5° per click), spring physics, counter-rotation,
 // axle bridges engraved with "Article I/II/III", and a fixed Complication Ledger.
@@ -27,7 +27,7 @@ function gearPath(cx: number, cy: number, outerR: number, innerR: number, teeth:
 
 // ── Gear data ────────────────────────────────────────────────────────────────
 // Wider equilateral triangle layout: Leg/Exec at top, Judicial below.
-// Central "We the People" at (350, 265) — centered in the triangle.
+// Central "We the People" at (350, 265), centered in the triangle.
 
 interface GearInfo {
   id: string;
@@ -101,7 +101,7 @@ const CENTER_Y = 265;
 // Ratchet step (one tooth = 22.5°)
 const RATCHET_DEG = 22.5;
 
-// Spring physics — heavy brass escapement feel
+// Spring physics, heavy brass escapement feel
 const RATCHET_SPRING = {
   type: "spring" as const,
   stiffness: 400,
@@ -197,7 +197,7 @@ export function GearDiagram({ isRo }: { isRo: boolean }) {
             </filter>
           </defs>
 
-          {/* ── Constitutional Bridges — axle lines with Article labels ── */}
+          {/* ── Constitutional Bridges, axle lines with Article labels ── */}
           {GEARS.map((gear) => {
             const isActive = activeGear === gear.id;
             // SSR-safe rounding for calculated SVG properties
@@ -238,7 +238,7 @@ export function GearDiagram({ isRo }: { isRo: boolean }) {
             );
           })}
 
-          {/* ── Central Tourbillon — "We the People" ── */}
+          {/* ── Central Tourbillon, "We the People" ── */}
           <circle cx={CENTER_X} cy={CENTER_Y} r="38" fill="url(#center-glow)" />
           <circle cx={CENTER_X} cy={CENTER_Y} r="38" fill="none" stroke="rgba(201,168,76,0.15)" strokeWidth="1" />
           <circle cx={CENTER_X} cy={CENTER_Y} r="30" fill="none" stroke="rgba(201,168,76,0.08)" strokeWidth="0.5" strokeDasharray="2 3" />
@@ -288,7 +288,7 @@ export function GearDiagram({ isRo }: { isRo: boolean }) {
                   style={{ transformOrigin: `${gear.cx}px ${gear.cy}px` }}
                 />
 
-                {/* Inner detail ring — "jewel" */}
+                {/* Inner detail ring, "jewel" */}
                 <motion.circle
                   cx={gear.cx} cy={gear.cy} r="50"
                   fill="none"
@@ -342,7 +342,7 @@ export function GearDiagram({ isRo }: { isRo: boolean }) {
           })}
         </svg>
 
-        {/* ── Complication Ledger — fixed-height data plate ── */}
+        {/* ── Complication Ledger, fixed-height data plate ── */}
         <div
           className="border-t border-[rgba(201,168,76,0.08)] px-5 py-4"
           style={{ background: "rgba(201,168,76,0.02)", minHeight: "88px" }}
@@ -357,12 +357,12 @@ export function GearDiagram({ isRo }: { isRo: boolean }) {
                 transition={{ duration: 0.2 }}
               >
                 <p className="mb-2 font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-[#B8860B]">
-                  ⚙ SYS: {isRo ? "BLOCAJ DETECTAT" : "GRIDLOCK DETECTED"} — {isRo ? "LIBERTATEA ESTE PREZERVATĂ" : "LIBERTY PRESERVED"}
+                  ⚙ SYS: {isRo ? "BLOCAJ DETECTAT" : "GRIDLOCK DETECTED"}, {isRo ? "LIBERTATEA ESTE PREZERVATĂ" : "LIBERTY PRESERVED"}
                 </p>
                 <p className="font-body text-xs text-[#B8B4AC]" style={{ fontFamily: "'IBM Plex Mono', 'Courier New', monospace" }}>
                   {isRo
-                    ? "Când ramurile se blochează reciproc, sistemul funcționează exact așa cum a fost conceput. Separarea puterilor există pentru a preveni tirania — nu pentru eficiență."
-                    : "When the branches lock against each other, the system is working exactly as designed. Separation of powers exists to prevent tyranny — not for efficiency."}
+                    ? "Când ramurile se blochează reciproc, sistemul funcționează exact așa cum a fost conceput. Separarea puterilor există pentru a preveni tirania, nu pentru eficiență."
+                    : "When the branches lock against each other, the system is working exactly as designed. Separation of powers exists to prevent tyranny, not for efficiency."}
                 </p>
               </motion.div>
             ) : activeGearData ? (
@@ -374,7 +374,7 @@ export function GearDiagram({ isRo }: { isRo: boolean }) {
                 transition={{ duration: 0.2 }}
               >
                 <p className="mb-2 font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-[rgba(201,168,76,0.5)]">
-                  ⚙ {isRo ? activeGearData.labelRo : activeGearData.label} — {activeGearData.article} — {isRo ? "Puteri Constituționale" : "Constitutional Powers"}
+                  ⚙ {isRo ? activeGearData.labelRo : activeGearData.label}, {activeGearData.article}, {isRo ? "Puteri Constituționale" : "Constitutional Powers"}
                 </p>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                   {activeGearData.powers.map((p, i) => (
@@ -410,7 +410,7 @@ export function GearDiagram({ isRo }: { isRo: boolean }) {
         </div>
       </div>
 
-      {/* ── Controls — instruction + gridlock button ── */}
+      {/* ── Controls, instruction + gridlock button ── */}
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
         <p className="font-body text-[10px] uppercase tracking-[0.3em] text-[#6B6860]">
           {isRo

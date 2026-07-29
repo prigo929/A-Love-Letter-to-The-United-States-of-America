@@ -86,7 +86,7 @@ export function FederalismHook({ isRo }: { isRo: boolean }) {
             {isRo ? "── Controale Politice ──" : "── Policy Controls ──"}
           </p>
           <p className="mb-5 font-body text-xs text-[#6B6860]">
-            {isRo ? "Ajustează — harta reacționează instant" : "Adjust — the map responds instantly"}
+            {isRo ? "Ajustează: harta reacționează instant" : "Adjust: the map responds instantly"}
           </p>
 
           {sliders.map((sl) => (

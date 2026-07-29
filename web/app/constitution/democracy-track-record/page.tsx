@@ -19,43 +19,43 @@ import { PRESIDENTIAL_TRANSFERS } from "@/lib/data/constitution-data";
 export const metadata: Metadata = {
   title: "250-Year Track Record | Constitution",
   description:
-    "60 presidential elections. Zero coups. Zero suspensions. The unbroken 237-year record of American constitutional democracy — the longest in recorded history.",
+    "60 presidential elections. Zero coups. Zero suspensions. The unbroken 237-year record of American constitutional democracy, the longest in recorded history.",
   alternates: { canonical: "/constitution/democracy-track-record" },
 };
 
 const CONSTITUTION_AGES = [
   { country: "United States",   years: 237, note: "Same framework since 1789" },
   { country: "Australia",       years: 123, note: "Federation since 1901" },
-  { country: "Norway",          years: 210, note: "1814 — but has been revised extensively" },
+  { country: "Norway",          years: 210, note: "1814, but has been revised extensively" },
   { country: "Canada",          years: 157, note: "British North America Act 1867" },
   { country: "Switzerland",     years: 131, note: "Federal Constitution 1893 (revised 1999)" },
-  { country: "Germany",         years: 75,  note: "Basic Law 1949 — replaced failed Weimar" },
+  { country: "Germany",         years: 75,  note: "Basic Law 1949, replaced failed Weimar" },
   { country: "Japan",           years: 77,  note: "Post-WWII constitution, 1947" },
   { country: "Italy",           years: 76,  note: "Republic constitution 1948" },
-  { country: "France",          years: 66,  note: "5th Republic — France's FIFTH constitution" },
+  { country: "France",          years: 66,  note: "5th Republic, France's FIFTH constitution" },
   { country: "Spain",           years: 46,  note: "Post-Franco constitution 1978" },
   { country: "Russia",          years: 31,  note: "Post-Soviet constitution 1993" },
   { country: "China",           years: 45,  note: "Current version since 1982 (4th version)" },
 ];
 
 const TESTS_EN = [
-  { year: "1800", title: "First Partisan Transfer", detail: "Adams to Jefferson — opposing parties. The world expected it to fail. It didn't. The constitutional machinery held without a single soldier deployed." },
-  { year: "1861", title: "The Civil War Began — The Election Didn't Stop", detail: "Seven states had seceded before Lincoln was inaugurated. The transfer still happened on schedule. Lincoln still took the oath. That oath bound him even as the union was literally fracturing." },
+  { year: "1800", title: "First Partisan Transfer", detail: "Adams to Jefferson, opposing parties. The world expected it to fail. It didn't. The constitutional machinery held without a single soldier deployed." },
+  { year: "1861", title: "The Civil War Began, The Election Didn't Stop", detail: "Seven states had seceded before Lincoln was inaugurated. The transfer still happened on schedule. Lincoln still took the oath. That oath bound him even as the union was literally fracturing." },
   { year: "1877", title: "The Most Disputed Election Before 2000", detail: "Hayes-Tilden required a bipartisan Electoral Commission to resolve disputed electors from three states. The commission ruled, both parties accepted, Hayes was inaugurated three days before the deadline." },
-  { year: "1933", title: "The Great Depression — No Emergency Dictatorship", detail: "25% unemployment. Banks collapsing. Mussolini and Hitler rising in Europe. FDR was genuinely offered dictatorial powers by some advisors. He refused. He worked through Congress instead. The republic held." },
-  { year: "1974", title: "Nixon Resigned — He Didn't Need To Be Removed By Force", detail: "The constitutional process — impeachment proceedings — was sufficient. Nixon resigned before a vote. Ford was sworn in peacefully. 'Our long national nightmare is over.' No troops moved. No courts were suspended." },
-  { year: "2001", title: "9/11 — Emergency Powers Without Emergency Suspension", detail: "The deadliest attack on American soil since Pearl Harbor. Extraordinary emergency powers were invoked. But the Constitution was not suspended. Courts continued to function. Elections continued on schedule. The framework held." },
-  { year: "2021", title: "January 6th — The Most Recent Test", detail: "A mob breached the Capitol while Congress was certifying electoral votes. For hours, the transfer was in genuine jeopardy. Congress reconvened at midnight. Certification was completed. Biden was inaugurated on January 20th. For the 59th consecutive time, the constitutional process held." },
+  { year: "1933", title: "The Great Depression, No Emergency Dictatorship", detail: "25% unemployment. Banks collapsing. Mussolini and Hitler rising in Europe. FDR was genuinely offered dictatorial powers by some advisors. He refused. He worked through Congress instead. The republic held." },
+  { year: "1974", title: "Nixon Resigned, He Didn't Need To Be Removed By Force", detail: "The constitutional process, impeachment proceedings, was sufficient. Nixon resigned before a vote. Ford was sworn in peacefully. 'Our long national nightmare is over.' No troops moved. No courts were suspended." },
+  { year: "2001", title: "9/11, Emergency Powers Without Emergency Suspension", detail: "The deadliest attack on American soil since Pearl Harbor. Extraordinary emergency powers were invoked. But the Constitution was not suspended. Courts continued to function. Elections continued on schedule. The framework held." },
+  { year: "2021", title: "January 6th, The Most Recent Test", detail: "A mob breached the Capitol while Congress was certifying electoral votes. For hours, the transfer was in genuine jeopardy. Congress reconvened at midnight. Certification was completed. Biden was inaugurated on January 20th. For the 59th consecutive time, the constitutional process held." },
 ];
 
 const TESTS_RO = [
-  { year: "1800", title: "Primul Transfer Partizan", detail: "Adams la Jefferson — partide opuse. Lumea se aștepta să eșueze. Nu a eșuat. Mecanismul constituțional a funcționat fără un singur soldat desfășurat." },
-  { year: "1861", title: "Războiul Civil a Început — Alegerile Nu s-au Oprit", detail: "Șapte state se separaseră înainte ca Lincoln să fie investit. Transferul a avut loc totuși conform programului. Lincoln a depus jurământul. Acel jurământ l-a legat chiar în timp ce uniunea se fragmenta." },
+  { year: "1800", title: "Primul Transfer Partizan", detail: "Adams la Jefferson, partide opuse. Lumea se aștepta să eșueze. Nu a eșuat. Mecanismul constituțional a funcționat fără un singur soldat desfășurat." },
+  { year: "1861", title: "Războiul Civil a Început, Alegerile Nu s-au Oprit", detail: "Șapte state se separaseră înainte ca Lincoln să fie investit. Transferul a avut loc totuși conform programului. Lincoln a depus jurământul. Acel jurământ l-a legat chiar în timp ce uniunea se fragmenta." },
   { year: "1877", title: "Cea Mai Disputată Alegere Înainte de 2000", detail: "Hayes-Tilden a necesitat o Comisie Electorală bipartizană pentru a rezolva alegătorii contestați din trei state. Comisia a decis, ambele partide au acceptat, Hayes a depus jurământul cu trei zile înainte de termen." },
-  { year: "1933", title: "Marea Depresie — Nicio Dictatură de Urgență", detail: "25% șomaj. Bănci în colaps. Mussolini și Hitler în ascensiune în Europa. FDR a refuzat puterile dictatoriale care i-au fost oferite. A lucrat prin Congres. Republica a rezistat." },
-  { year: "1974", title: "Nixon a Demisionat — Nu a Trebuit Îndepărtat cu Forța", detail: "Procesul constituțional — procedurile de demitere — a fost suficient. Nixon a demisionat înainte de vot. Ford a depus jurământul pașnic. Nicio trupă nu s-a mișcat. Nicio curte nu a fost suspendată." },
-  { year: "2001", title: "11 Septembrie — Puteri de Urgență Fără Suspendarea Constituției", detail: "Cel mai mortal atac pe pământ american de la Pearl Harbor. Au fost invocate puteri de urgență extraordinare. Dar Constituția nu a fost suspendată. Instanțele au continuat să funcționeze. Alegerile s-au desfășurat conform programului." },
-  { year: "2021", title: "6 Ianuarie — Cel Mai Recent Test", detail: "O mulțime a spart Capitoliul în timp ce Congresul certifica voturile electorale. Congresul s-a reunit la miezul nopții. Certificarea a fost finalizată. Biden a depus jurământul pe 20 ianuarie. Pentru a 59-a oară consecutivă, procesul constituțional a rezistat." },
+  { year: "1933", title: "Marea Depresie, Nicio Dictatură de Urgență", detail: "25% șomaj. Bănci în colaps. Mussolini și Hitler în ascensiune în Europa. FDR a refuzat puterile dictatoriale care i-au fost oferite. A lucrat prin Congres. Republica a rezistat." },
+  { year: "1974", title: "Nixon a Demisionat, Nu a Trebuit Îndepărtat cu Forța", detail: "Procesul constituțional, procedurile de demitere, a fost suficient. Nixon a demisionat înainte de vot. Ford a depus jurământul pașnic. Nicio trupă nu s-a mișcat. Nicio curte nu a fost suspendată." },
+  { year: "2001", title: "11 Septembrie, Puteri de Urgență Fără Suspendarea Constituției", detail: "Cel mai mortal atac pe pământ american de la Pearl Harbor. Au fost invocate puteri de urgență extraordinare. Dar Constituția nu a fost suspendată. Instanțele au continuat să funcționeze. Alegerile s-au desfășurat conform programului." },
+  { year: "2021", title: "6 Ianuarie, Cel Mai Recent Test", detail: "O mulțime a spart Capitoliul în timp ce Congresul certifica voturile electorale. Congresul s-a reunit la miezul nopții. Certificarea a fost finalizată. Biden a depus jurământul pe 20 ianuarie. Pentru a 59-a oară consecutivă, procesul constituțional a rezistat." },
 ];
 
 export default async function DemocracyTrackRecordPage() {
@@ -72,7 +72,7 @@ export default async function DemocracyTrackRecordPage() {
         <InkParticles count={60} />
         <Image
           src="/images/constitution/us-capitol-presidential-inauguration.jpg"
-          alt="Presidential inauguration at the United States Capitol — symbol of peaceful transfer of power"
+          alt="Presidential inauguration at the United States Capitol, symbol of peaceful transfer of power"
           fill className="object-cover opacity-20" priority sizes="100vw"
           placeholder="blur" blurDataURL={BLUR_PLACEHOLDER}
           quality={100}
@@ -130,7 +130,7 @@ export default async function DemocracyTrackRecordPage() {
           {/* Full transfer timeline */}
           <section>
             <h2 className="mb-4 font-display text-h2 text-[#F5F0E8]">
-              {isRo ? "Fiecare Transfer Pașnic — Cronologie" : "Every Peaceful Transfer — Timeline"}
+              {isRo ? "Fiecare Transfer Pașnic, Cronologie" : "Every Peaceful Transfer, Timeline"}
             </h2>
             <p className="mb-8 font-body text-base leading-relaxed text-[#B8B4AC]">
               {isRo
@@ -226,8 +226,8 @@ export default async function DemocracyTrackRecordPage() {
 
           <QuoteBlock
             quote={isRo
-              ? "\"Republica, dacă o puteți păstra.\" — Benjamin Franklin, la ieșirea din Convenția Constituțională, 1787. 237 de ani mai târziu: am păstrat-o."
-              : "\"A Republic, if you can keep it.\" — Benjamin Franklin, on leaving the Constitutional Convention, 1787. 237 years later: we kept it."}
+              ? "\"Republica, dacă o puteți păstra.\", Benjamin Franklin, la ieșirea din Convenția Constituțională, 1787. 237 de ani mai târziu: am păstrat-o."
+              : "\"A Republic, if you can keep it.\", Benjamin Franklin, on leaving the Constitutional Convention, 1787. 237 years later: we kept it."}
             attribution={isRo ? "Benjamin Franklin / Poporul American" : "Benjamin Franklin / The American People"}
             title={isRo ? "1787–2024" : "1787–2024"}
             variant="dark"
