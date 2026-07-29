@@ -224,7 +224,7 @@ export default async function TradeAndExportsPage() {
           heroLead: "AMERICA SUSȚINE",
           heroAccent: "COMERȚUL GLOBAL",
           heroBody:
-            "Avioane, semiconductori, produse farmaceutice, petrol, produse agricole și trilioane în software și servicii financiare. America nu doar face comerț — furnizează lumii cele mai avansate și valoroase bunuri ale ei.",
+            "America exportă o diversitate largă de bunuri cu valoare adăugată ridicată — de la avioane și semiconductori la produse agricole, petrol și servicii tehnologice.",
           overviewTitle: "Mașina de export a Americii",
           exportTitle: "Principalele categorii de export ale SUA",
           exportBody:
@@ -278,7 +278,7 @@ export default async function TradeAndExportsPage() {
           heroLead: "AMERICA POWERS",
           heroAccent: "GLOBAL COMMERCE",
           heroBody:
-            "Aircraft, semiconductors, pharmaceuticals, petroleum, agricultural products, and trillions in software and financial services. America doesn't just trade — it supplies the world with its most advanced and high-value goods.",
+            "America exports a wide diversity of high-value goods — from aircraft and semiconductors to agricultural products, petroleum, and technology services.",
           overviewTitle: "America's Export Machine",
           exportTitle: "Top US Export Categories",
           exportBody:

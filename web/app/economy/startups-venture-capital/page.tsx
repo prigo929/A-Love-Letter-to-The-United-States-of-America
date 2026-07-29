@@ -121,16 +121,16 @@ export default async function StartupsVCPage() {
           heroLead: "SILICON\nVALLEY",
           heroAccent: "ESTE O\nPLANETĂ",
           heroBody:
-            "Niciun colț al Pământului nu a produs mai multe companii transformatoare, mai mulți miliardari sau mai multă tehnologie care schimbă lumea pe kilometru pătrat. Ecosistemul american de startup-uri este o forță a naturii.",
+            "Ecosistemul american de startup-uri concentrează companii de top și resurse financiare pentru inovație tehnologică.",
           overviewTitle: "De ce America conduce lumea în capitalul pentru inovație",
           vcChartTitle: "Investiții venture capital după țară (2026, miliarde USD)",
           unicornTitle: "Economia unicornilor — 659 și în creștere",
           unicornBody:
             "Un «unicorn» — o companie privată evaluată la cel puțin 1 miliard de dolari — era cândva considerat o raritate mitologică. America a construit 659, aproximativ jumătate din totalul mondial de circa 1.270. Sursele diferă asupra numărului exact, fiindcă «unicorn» este mai degrabă o metodologie decât un fapt — CB Insights, PitchBook și Hurun plasează toate SUA în jurul a jumătate. Numai în California s-au născut mai mulți unicorni decât în toată Europa la un loc.",
           unicornChartTitle: "Companii unicorn după țara de origine (2026)",
-          rewiredTitle: "Companiile care au rescris civilizația umană",
+          rewiredTitle: "Companiile care au transformat tehnologia globală",
           rewiredBody:
-            "Cele mai importante companii ale erei digitale au fost fondate de americani — sau de imigranți veniți în America. Nu este o coincidență. Combinația dintre talentul de la Stanford și MIT, venture capitalul răbdător, protecția puternică a proprietății intelectuale și o cultură care celebrează ambiția a creat laboratorul perfect pentru inovații care schimbă lumea.",
+            "Marile companii ale erei digitale au fost fondate de antreprenori americani și imigranți atrași de piața din SUA. Combinarea talentului academic de la Stanford și MIT, capitalul de risc pe termen lung și protecția proprietății intelectuale a favorizat dezvoltarea inovației.",
           yearLabel: "An",
           companyLabel: "Companie",
           founderLabel: "Fondator(i)",
@@ -207,16 +207,16 @@ export default async function StartupsVCPage() {
           heroLead: "SILICON\nVALLEY",
           heroAccent: "IS A\nPLANET",
           heroBody:
-            "No corner of Earth has produced more transformative companies, more billionaires, or more world-changing technology per square mile. America's startup ecosystem is a force of nature.",
+            "America's startup ecosystem hosts leading global technology companies and venture capital resources.",
           overviewTitle: "Why America Leads the World in Innovation Capital",
           vcChartTitle: "Venture Capital Investment by Country (2026, USD Billions)",
           unicornTitle: "The Unicorn Economy — 659 and Counting",
           unicornBody:
             'A "unicorn" — a private company valued at $1 billion or more — was once considered a mythological rarity. America has built 659 of them, about half the world\'s total of roughly 1,270. Trackers disagree on the exact count because "unicorn" is a methodology rather than a fact — CB Insights, PitchBook and Hurun all put the US somewhere near half. More unicorns have been born in California alone than in all of Europe combined.',
           unicornChartTitle: "Unicorn Companies by Country of Origin (2026)",
-          rewiredTitle: "The Companies That Rewired Human Civilization",
+          rewiredTitle: "The Companies That Transformed Global Technology",
           rewiredBody:
-            "The most consequential companies of the digital age were founded by Americans — or immigrants who came to America. This is not a coincidence. The combination of Stanford and MIT talent, patient venture capital, strong IP protection, and a culture that celebrates ambition created a perfect laboratory for world-changing innovation.",
+            "Major digital age companies were founded by American entrepreneurs and immigrants drawn to the US market. Combining academic talent from Stanford and MIT, long-term venture capital, and intellectual property protections fostered technological development.",
           yearLabel: "Year",
           companyLabel: "Company",
           founderLabel: "Founder(s)",

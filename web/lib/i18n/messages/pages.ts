@@ -18,7 +18,7 @@ export function getEconomyPageCopy(locale: Locale) {
       gdpTitle: "25% din tot ce există pe Pământ",
       gdpChartTitle: "PIB: Statele Unite vs economiile majore (2026)",
       gdpChartSubtitle:
-        "PIB-ul SUA în trilioane USD — mai mare decât următoarele trei economii la un loc",
+        "PIB-ul SUA de 32,4 trilioane USD depășește însumat producția următoarelor trei mari economii.",
       gdpPerCapitaTitle: "PIB pe cap de locuitor: SUA vs G7 și piețe emergente (2026)",
       gdpPerCapitaSubtitle:
         "La 94.400 USD per persoană, americanii produc mai multă bogăție per capita decât orice mare națiune",
@@ -27,15 +27,15 @@ export function getEconomyPageCopy(locale: Locale) {
       fullGdpAnalysis: "Analiza completă a PIB-ului →",
       capitalEyebrow: "Piețe de Capital",
       capitalTitle: "Wall Street pune în mișcare lumea",
-      capitalChartTitle: "Indicele S&P 500 — 45 de ani de prosperitate americană",
+      capitalChartTitle: "Indicele S&P 500: Evoluția pe termen lung a piețelor americane",
       capitalChartSubtitle:
-        "Cel mai urmărit indice bursier din lume: 1980 → 2026",
+        "Cel mai urmărit indice bursier din lume (1980–2026)",
       marketCapLabel: "Capitalizare combinată NYSE + NASDAQ",
       fullCapitalMarketsAnalysis: "Analiza completă a piețelor de capital →",
       vcEyebrow: "Venture Capital și Startup-uri",
       vcTitle: "Silicon Valley este o planetă",
       vcChartTitle: "Investiții venture capital după țară (2023)",
-      startupTimelineTitle: "Companiile americane care au rescris lumea",
+      startupTimelineTitle: "Companiile americane care au transformat tehnologia globală",
       foundedLabel: "Fondat",
       companyLabel: "Companie",
       foundersLabel: "Fondator(i)",
@@ -49,7 +49,7 @@ export function getEconomyPageCopy(locale: Locale) {
       dollarTitle: "Moneda de rezervă a lumii",
       dollarChartTitle: "Rezerve valutare globale pe monedă (2026)",
       dollarReserveCaption:
-        "Statutul de monedă de rezervă oferă dolarului «privilegiul exorbitant» — SUA își pot finanța deficitele în propria monedă la costuri favorabile la nivel global",
+        "Statutul de monedă de rezervă oferă dolarului un avantaj structural semnificativ, permițând Statelor Unite să finanțeze investițiile în propria monedă la costuri globale favorabile.",
       fullDollarAnalysis: "Analiza completă a dolarului →",
       tradeEyebrow: "Comerț și Exporturi",
       tradeTitle: "America susține comerțul global",
@@ -57,14 +57,14 @@ export function getEconomyPageCopy(locale: Locale) {
         "Principalele categorii de export ale SUA (2026, miliarde USD)",
       tradePercentOfTopCategory: "% din categoria de top",
       fullTradeAnalysis: "Analiza completă a comerțului →",
-      subPagesEyebrow: "Explorați Mai Departer",
+      subPagesEyebrow: "Explorați Mai Departe",
       subPagesTitle: "Analize aprofundate",
       exploreCta: "Explorează →",
       heroEyebrow: "Secțiunea Economie",
       heroTitleLead: "MOTORUL",
       heroTitleAccent: "LUMII",
       heroDescription:
-        "Economia Statelor Unite este cea mai puternică forță economică din istoria civilizației umane — 32,4 trilioane de dolari producție anuală, moneda de rezervă a lumii și capitala globală a inovației.",
+        "Economia Statelor Unite generează o producție anuală de 32,4 trilioane de dolari, reprezentând cel mai important hub financiar și de inovație al lumii.",
       heroStats: [
         { value: "$32.4T", label: "PIB 2026", sub: "Proiecție FMI" },
         { value: "$69T+", label: "Piețe Bursiere", sub: "NYSE + NASDAQ" },
@@ -103,7 +103,7 @@ export function getEconomyPageCopy(locale: Locale) {
     gdpTitle: "25% of Everything on Earth",
     gdpChartTitle: "GDP: United States vs. Major Economies (2026)",
     gdpChartSubtitle:
-      "US GDP in trillions USD — larger than the next three economies combined",
+      "US GDP reaches $32.4 trillion, exceeding the total output of the next three economies combined.",
     gdpPerCapitaTitle: "GDP Per Capita: US vs. G7 & Emerging Markets (2026)",
     gdpPerCapitaSubtitle:
       "At $94,400 per person, Americans produce more wealth per capita than any major nation",
@@ -112,15 +112,15 @@ export function getEconomyPageCopy(locale: Locale) {
     fullGdpAnalysis: "Full GDP Analysis →",
     capitalEyebrow: "Capital Markets",
     capitalTitle: "Wall Street Moves the World",
-    capitalChartTitle: "S&P 500 Index — 45 Years of American Prosperity",
+    capitalChartTitle: "S&P 500 Index: Long-Term Growth of American Markets",
     capitalChartSubtitle:
-      "The most watched stock index on earth: 1980 → 2026",
+      "The most watched stock index on earth (1980–2026)",
     marketCapLabel: "Combined NYSE + NASDAQ Market Cap",
     fullCapitalMarketsAnalysis: "Full Capital Markets Analysis →",
     vcEyebrow: "Venture Capital & Startups",
     vcTitle: "Silicon Valley is a Planet",
     vcChartTitle: "Venture Capital Funding by Country (2023)",
-    startupTimelineTitle: "The American Companies That Rewrote the World",
+    startupTimelineTitle: "The American Companies That Transformed Technology",
     foundedLabel: "Founded",
     companyLabel: "Company",
     foundersLabel: "Founder(s)",
@@ -134,7 +134,7 @@ export function getEconomyPageCopy(locale: Locale) {
     dollarTitle: "Reserve Currency of the World",
     dollarChartTitle: "Global Currency Reserves by Currency (2026)",
     dollarReserveCaption:
-      "Reserve status yields the dollar the 'exorbitant privilege' — the US can run deficits financed in its own currency at highly favorable costs globally",
+      "Reserve currency status gives the dollar structural funding advantages, allowing the US to finance global investments directly in its own currency.",
     fullDollarAnalysis: "Full Dollar Analysis →",
     tradeEyebrow: "Trade & Exports",
     tradeTitle: "America Powers Global Commerce",
@@ -148,7 +148,7 @@ export function getEconomyPageCopy(locale: Locale) {
     heroTitleLead: "THE ENGINE OF THE",
     heroTitleAccent: "WORLD",
     heroDescription:
-      "The United States economy is the most powerful economic force in the history of human civilization — $32.4 trillion in annual output, the world's reserve currency, and the innovation capital of Earth.",
+      "The United States economy generates $32.4 trillion in annual output, anchoring global capital markets and technology development.",
     heroStats: [
       { value: "$32.4T", label: "2026 GDP", sub: "IMF Projection" },
       { value: "$69T+", label: "Stock Markets", sub: "NYSE + NASDAQ" },

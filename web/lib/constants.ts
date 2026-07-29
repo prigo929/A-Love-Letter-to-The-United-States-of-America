@@ -66,7 +66,7 @@ export const NAV_SECTIONS = [
       {
         label: "Capital Markets",
         href: "/economy/capital-markets",
-        description: "NYSE, NASDAQ & Wall Street",
+        description: "Global stock exchanges and Wall Street",
       },
       {
         label: "Venture Capital",
@@ -717,7 +717,7 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       },
       "/economy/capital-markets": {
         label: "Piețe de Capital",
-        description: "NYSE, NASDAQ și Wall Street",
+        description: "Bursele globale și centrul Wall Street",
       },
       "/economy/startups-venture-capital": {
         label: "Capital de Risc",

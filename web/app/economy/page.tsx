@@ -80,19 +80,19 @@ import { BLUR_PLACEHOLDER, cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Economy",
   description:
-    "The US economy — $32.4 trillion in GDP, the world's largest stock markets, the global reserve currency, and the innovation capital of Earth. A deep-dive into American economic dominance.",
+    "The US economy: $32.4 trillion in GDP, major global stock exchanges, reserve currency status, and tech innovation hubs.",
   alternates: { canonical: "/economy" },
   openGraph: {
-    title: "The Engine of the World — US Economy",
+    title: "The United States Economy",
     description:
-      "America's economic dominance explained: $32.4T GDP, 65% of global venture capital, the world reserve currency, and 659 unicorn companies.",
+      "America's economic structure: $32.4T GDP, 65% of global venture capital, reserve currency status, and 659 unicorn companies.",
     url: "/economy",
     images: [
       {
         url: SITE_IMAGES.economyNYSEUpsideDown,
         width: 1200,
         height: 630,
-        alt: "New York Stock Exchange — heart of the world's largest economy",
+        alt: "New York Stock Exchange trading floor",
       },
     ],
   },
@@ -103,9 +103,9 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "The United States Economy — The Engine of the World",
+  headline: "The United States Economy",
   description:
-    "A comprehensive analysis of US economic dominance: GDP, capital markets, venture capital, the dollar, and trade.",
+    "A comprehensive analysis of US economic data: GDP, capital markets, venture capital, the dollar, and trade.",
   url: "https://america-greatest.vercel.app/economy",
   author: { "@type": "Organization", name: "America: The Greatest Nation" },
 };
@@ -627,7 +627,7 @@ export default async function EconomyPage() {
       {/* Iconic Photographs */}
       <IconicPhotographs
         section="economy"
-        intro="The industry, enterprise, and infrastructure that built American prosperity — from the golden spike to the skyline, captured on film."
+        intro="Photographs documenting the development of American industry, infrastructure, and financial hubs."
       />
 
       {/* Deep Dive Archive */}

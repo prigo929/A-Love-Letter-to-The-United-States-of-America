@@ -173,9 +173,9 @@ export default async function DollarDominancePage() {
           },
           {
             ...DOLLAR_TIMELINE[6],
-            event: "Dolarul încă domnește la 82 de ani",
+            event: "Statutul global al dolarului la 82 de ani",
             description:
-              "În ciuda previziunilor repetate despre «de-dolarizare», ponderea dolarului în rezervele globale rămâne peste 56.8%, dominația SWIFT rămâne peste 40% și nu a apărut niciun rival credibil.",
+              "Ponderea dolarului în rezervele globale și decontările internaționale își menține nivelul ridicat în comerțul mondial.",
           },
         ]
       : DOLLAR_TIMELINE;
@@ -187,7 +187,7 @@ export default async function DollarDominancePage() {
           heroLead: "MONEDA DE REZERVĂ",
           heroAccent: "A LUMII",
           heroBody:
-            "Dolarul american este sistemul de operare al economiei globale. 56.8% din toate rezervele valutare. Peste 40% din comerțul mondial. Fiecare baril de petrol. O domnie de 82 de ani care nu a fost niciodată amenințată serios.",
+            "Dolarul american este sistemul de operare al economiei globale: 56,8% din toate rezervele valutare și peste 40% din comerțul mondial.",
           heroStats: [
             { value: "56.8%", label: "din rezervele FX globale", source: "IMF COFER, T4 2025" },
             { value: "40%+", label: "din tranzacțiile SWIFT", source: "SWIFT 2026" },
@@ -198,24 +198,24 @@ export default async function DollarDominancePage() {
           allocatedLabel: "rezerve alocate",
           indexTitle: "O felie mai mică dintr-un bazin mai mare",
           indexBody:
-            "Graficul de mai sus este citit adesea ca declin, iar tendința din el este reală: dolarul deținea aproximativ 71% din rezervele alocate în 2000 și deține 56,8% acum. Dar trebuie citit cu atenție. Două lucruri complică necrologul. În primul rând, bazinul însuși a crescut enorm — o felie mai mică din 13,1 trilioane de dolari nu înseamnă mai puțini dolari. În al doilea rând, când FMI a analizat scăderea din al doilea trimestru din 2025, a constatat că mișcările cursului de schimb, nu vânzarea efectivă de dolari de către băncile centrale, au explicat 92% din ea. Și iată cifra care tranșează disputa: valoarea de schimb a dolarului față de monedele cu care America face comerț este aproape de vârful intervalului său pe douăzeci de ani. Proporțional, mai puține rezerve sunt ținute în dolari. Dolarul nu valorează mai puțin din cauza asta.",
+            "Graficul de mai sus este citit adesea ca declin, iar tendința din el este reală: dolarul deținea aproximativ 71% din rezervele alocate în 2000 și deține 56,8% acum. Bazinul însuși a crescut enorm — o felie mai mică din 13,1 trilioane de dolari nu înseamnă mai puțini dolari. Când FMI a analizat scăderea din al doilea trimestru din 2025, a constatat că mișcările cursului de schimb au explicat 92% din ea.",
           indexChartTitle: "Indicele nominal larg al dolarului, din 2006",
           indexChartSubtitle: "Ponderat comercial față de partenerii SUA; ianuarie 2006 = 100",
-          timelineTitle: "82 de ani de supremație a dolarului",
+          timelineTitle: "Evoluția istorică a rolului global al dolarului",
           timelineBody:
-            "Dominația dolarului nu a fost accidentală — a fost construită prin politică deliberată, putere militară și forță economică de-a lungul a peste opt decenii.",
+            "Pozitionarea dolarului s-a consolidat prin acorduri economice, piețe financiare transparente și forță economică de-a lungul deceniilor.",
           detailPullLabel:
-            "din fiecare tranzacție internațională de pe Pământ implică dolarul american — sistemul de operare invizibil al comerțului global.",
+            "din tranzacțiile internaționale implică dolarul american, susținând comerțul global.",
           detailEyebrow: "Dominația, în cifre",
           detailTitle: "Avantajul dolarului — în detaliu",
           insightsEyebrow: "De ce contează",
-          calloutTitle: "Despre «de-dolarizare» — o verificare a realității",
+          calloutTitle: "Despre «de-dolarizare» — O analiză a piețelor",
           calloutP1:
-            "În fiecare deceniu de la Bretton Woods, analiștii au prezis înlocuirea iminentă a dolarului. Lansarea euro în 1999, ascensiunea Chinei în anii 2000, propunerile BRICS în anii 2020 — fiecare a fost prezentată cu încredere drept clopotul funerar al dolarului. De fiecare dată, ponderea dolarului în rezervele globale a scăzut modest, apoi s-a stabilizat.",
+            "Analiștii au discutat periodic despre potențiala înlocuire a dolarului. Lansarea euro în 1999 și ascensiunea Chinei în anii 2000 au fost văzute ca provocări pentru USD, însă de fiecare dată ponderea dolarului s-a stabilizat.",
           calloutP2:
-            "Motivul este structural: niciun rival nu oferă combinația de piețe lichide și profunde, stat de drept, stabilitate politică, putere militară și efecte de rețea pe care le oferă dolarul. Renminbi-ul chinez nu este liber convertibil. Euro nu are un sprijin fiscal unificat. Poziția dolarului nu este doar obișnuință — este alegerea rațională a oricărui bancher central rațional de pe Pământ.",
+            "Niciun alt activ nu oferă combinația de piețe lichide, stabilitate instituțională și stat de drept ale piețelor americane. Dolarul rămâne alegerea principală pentru băncile centrale globale.",
           calloutConclusion:
-            "Dolarul rezistă — nu din inerție, ci pentru că nu există nimic mai bun.",
+            "Dolarul își păstrează statutul datorită adâncimii piețelor de capital americane.",
           quoteTitle: "Fost secretar al Trezoreriei SUA, Harvard University",
           prevLink: "← Startup-uri și VC",
           nextLink: "Comerț și Exporturi →",
@@ -226,7 +226,7 @@ export default async function DollarDominancePage() {
           heroLead: "THE WORLD'S",
           heroAccent: "RESERVE CURRENCY",
           heroBody:
-            "The US dollar is the operating system of the global economy. 56.8% of all foreign exchange reserves. 40%+ of global trade. Every barrel of oil. An 82-year reign that has never been seriously threatened.",
+            "The US dollar functions as the central operating currency of global finance, accounting for 56.8% of official FX reserves and over 40% of international trade.",
           heroStats: [
             { value: "56.8%", label: "of global FX reserves", source: "IMF COFER, Q4 2025" },
             { value: "40%+", label: "of SWIFT transactions", source: "SWIFT 2026" },
@@ -235,26 +235,24 @@ export default async function DollarDominancePage() {
           overviewTitle: "The Exorbitant Privilege",
           chartTitle: "Global Foreign Exchange Reserves by Currency (Q4 2025)",
           allocatedLabel: "allocated reserves",
-          indexTitle: "A Smaller Share of a Bigger Pool",
+          indexTitle: "Reserve Allocations and Market Value",
           indexBody:
-            "The chart above is often read as decline, and the trend in it is real: the dollar held about 71% of allocated reserves in 2000 and holds 56.8% now. But read it carefully. Two things complicate the obituary. First, the pool itself has grown enormously — a smaller slice of $13.1 trillion is not a smaller number of dollars. Second, when the IMF examined the drop in the second quarter of 2025, it found that exchange-rate movements, not central banks actually selling dollars, explained 92% of it. And here is the number that settles the argument: the dollar's own exchange value against the currencies America trades with is near the top of its twenty-year range. Fewer reserves are held in dollars, proportionally. The dollar is not worth less for it.",
+            "While the dollar's share of allocated global FX reserves moved from 71% in 2000 to 56.8% today, total global reserves expanded significantly. The IMF attributed 92% of recent quarterly fluctuations to exchange-rate valuation changes rather than reserve sales.",
           indexChartTitle: "The nominal broad dollar index, since 2006",
           indexChartSubtitle: "Trade-weighted against America's trading partners; January 2006 = 100",
-          timelineTitle: "82 Years of Dollar Supremacy",
+          timelineTitle: "Historical Development of Dollar Reserve Status",
           timelineBody:
-            "The dollar's dominance was not accidental — it was built through deliberate policy, military power, and economic strength over eight decades.",
+            "The dollar's reserve status developed through international financial agreements, capital market liquidity, and trade flows over eight decades.",
           detailPullLabel:
-            "of every international transaction on Earth involves the US dollar — the invisible operating system of global trade.",
+            "of international transactions involve the US dollar, anchoring global trade.",
           detailEyebrow: "Dominance, in numbers",
           detailTitle: "The Dollar Advantage — In Detail",
           insightsEyebrow: "Why it matters",
           calloutTitle: "On “De-Dollarization” — A Reality Check",
           calloutP1:
-            "Every decade since Bretton Woods, analysts have predicted the dollar's imminent replacement. The Euro launch in 1999, China's rise in the 2000s, BRICS proposals in the 2020s — each was confidently declared the dollar's death knell. Each time, the dollar's share of global reserves declined modestly, then stabilized.",
-          calloutP2:
-            "The reason is structural: no rival offers the combination of deep liquid markets, rule of law, political stability, military power, and network effects that the dollar provides. The Chinese renminbi is not freely convertible. The Euro lacks a unified fiscal backstop. The dollar's position is not merely habitual — it is the rational choice of every rational central banker on Earth.",
+            "Periodic predictions of de-dollarization have accompanied major financial shifts, including the launch of the Euro in 1999 and the expansion of emerging market trade. In each period, dollar demand stabilized.",
           calloutConclusion:
-            "The dollar endures — not because of inertia, but because nothing better exists.",
+            "The dollar maintains its role due to the unmatched liquidity of US financial markets.",
           quoteTitle: "Former US Secretary of the Treasury, Harvard University",
           prevLink: "← Startups & VC",
           nextLink: "Trade & Exports →",
