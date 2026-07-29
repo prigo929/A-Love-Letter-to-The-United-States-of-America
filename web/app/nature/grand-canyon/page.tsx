@@ -29,7 +29,7 @@ import { getGrandCanyonFacts } from "@/lib/data/nature-data";
 
 export const metadata: Metadata = {
   title: "Grand Canyon | Nature",
-  description: "277 miles long, 18 miles wide, one mile deep — exposing 1.8 billion years of Earth's geological history.",
+  description: "277 miles long, 18 miles wide, one mile deep: exposing 1.8 billion years of Earth's geological history.",
 };
 
 const GEOLOGY_LAYERS_EN = [
@@ -55,15 +55,15 @@ const GEOLOGY_LAYERS_RO = [
 ];
 
 const GC_EXTENDED_EN = [
-  { id: "gc-condor", fact: "The Grand Canyon saved the California condor from extinction",     detail: "Once reduced to just 27 individuals, California condors were released here in 1996. Over 500 now exist — one of conservation's greatest success stories.", source: "USFWS / Peregrine Fund", color: "gold" as const },
-  { id: "gc-river",  fact: "The Colorado River carved the entire canyon in just 5–6 million years", detail: "Geologically a very short time — the river carved through rock deposited over 1.8 billion years, exposing nearly half the Earth's age in one vertical mile.", source: "USGS Grand Canyon Geology", color: "red"  as const },
+  { id: "gc-condor", fact: "The Grand Canyon saved the California condor from extinction",     detail: "Once reduced to just 27 individuals, California condors were released here in 1996. Over 500 now exist, one of conservation's greatest success stories.", source: "USFWS / Peregrine Fund", color: "gold" as const },
+  { id: "gc-river",  fact: "The Colorado River carved the entire canyon in just 5–6 million years", detail: "Geologically a very short time: the river carved through rock deposited over 1.8 billion years, exposing nearly half the Earth's age in one vertical mile.", source: "USGS Grand Canyon Geology", color: "red"  as const },
   { id: "gc-sky",    fact: "On a clear day, you can see for 200 miles from the South Rim",       detail: "The Grand Canyon's scale is so vast you experience a view measured in tens of miles. The far rim is 10+ miles away; the horizon over 200 miles distant on clear winter days.", source: "NPS Visitor Center", color: "blue" as const },
   { id: "gc-dark",   fact: "Grand Canyon is a certified International Dark Sky Park",             detail: "Far from city lights, the canyon offers spectacular stargazing. The Milky Way is visible with the naked eye on clear nights, and the park holds annual Star Party events for astronomers.", source: "International Dark-Sky Association", color: "gold" as const },
 ];
 
 const GC_EXTENDED_RO = [
-  { id: "gc-condor", fact: "Marele Canion a salvat condorul californian de la dispariție",       detail: "Odată redus la doar 27 de exemplare, condorii californieni au fost eliberați în 1996. Acum există peste 500 — una dintre cele mai mari reușite ale conservării.", source: "USFWS / Peregrine Fund", color: "gold" as const },
-  { id: "gc-river",  fact: "Râul Colorado a sculptat întregul canion în doar 5–6 milioane de ani", detail: "Geologic, este un timp foarte scurt — râul a tăiat prin roci depuse pe parcursul a 1,8 miliarde de ani, expunând aproape jumătate din vârsta Pământului într-un singur mile vertical.", source: "USGS Grand Canyon Geology", color: "red"  as const },
+  { id: "gc-condor", fact: "Marele Canion a salvat condorul californian de la dispariție",       detail: "Odată redus la doar 27 de exemplare, condorii californieni au fost eliberați în 1996. Acum există peste 500, una dintre cele mai mari reușite ale conservării.", source: "USFWS / Peregrine Fund", color: "gold" as const },
+  { id: "gc-river",  fact: "Râul Colorado a sculptat întregul canion în doar 5–6 milioane de ani", detail: "Geologic, este un timp foarte scurt: râul a tăiat prin roci depuse pe parcursul a 1,8 miliarde de ani, expunând aproape jumătate din vârsta Pământului într-un singur mile vertical.", source: "USGS Grand Canyon Geology", color: "red"  as const },
   { id: "gc-sky",    fact: "Pe vreme senină, poți vedea 320 km de pe South Rim",                  detail: "Scara Marelui Canion este atât de vastă încât experiezi o priveliște măsurată în zeci de mile. Malul opus este la 16+ km distanță; orizontul la peste 320 km în zilele senine de iarnă.", source: "NPS Visitor Center", color: "blue" as const },
   { id: "gc-dark",   fact: "Marele Canion este un Parc Internațional cu Cer Întunecat certificat",  detail: "Departe de luminile orașului, canionul oferă o priveliște spectaculoasă spre stele. Calea Lactee este vizibilă cu ochiul liber în nopțile senine.", source: "International Dark-Sky Association", color: "gold" as const },
 ];
@@ -101,8 +101,8 @@ export default async function GrandCanyonPage() {
           line2={isRo ? "SCULPTURĂ" : "GREATEST SCULPTURE"}
           line2Color="var(--nat-accent-earth)"
           body={isRo
-            ? "277 de mile lungime, 18 mile lățime, un mile adâncime — expunând 1,8 miliarde de ani de geologie. Niciun cuvânt, nicio fotografie nu poate pregăti un vizitator pentru primul contact cu Marele Canion."
-            : "277 miles long, 18 miles wide, one mile deep — exposing 1.8 billion years of Earth's geological history. No words, no photograph can prepare a first-time visitor."}
+            ? "277 de mile lungime, 18 mile lățime, un mile adâncime: expunând 1,8 miliarde de ani de geologie. Niciun cuvânt, nicio fotografie nu poate pregăti un vizitator pentru primul contact cu Marele Canion."
+            : "277 miles long, 18 miles wide, one mile deep: exposing 1.8 billion years of Earth's geological history. No words, no photograph can prepare a first-time visitor."}
         />
       </NatureSubPageHero>
 
@@ -123,8 +123,8 @@ export default async function GrandCanyonPage() {
               <h2 className="nat-text-section text-white mb-6">{isRo ? "Un Mile prin Timp" : "A Mile Through Time"}</h2>
               <p className="nat-text-body max-w-2xl">
                 {isRo
-                  ? "Peretele canionului este un calendar de piatră. Fiecare strat reprezintă un mediu complet diferit — mări tropicale, deșerturi antice, câmpii de inundații — depozitate de-a lungul a sute de milioane de ani."
-                  : "The canyon wall is a stone calendar. Each layer represents a completely different ancient environment — tropical seas, ancient deserts, flood plains — deposited over hundreds of millions of years."}
+                  ? "Peretele canionului este un calendar de piatră. Fiecare strat reprezintă un mediu complet diferit: mări tropicale, deșerturi antice, câmpii de inundații: depozitate de-a lungul a sute de milioane de ani."
+                  : "The canyon wall is a stone calendar. Each layer represents a completely different ancient environment: tropical seas, ancient deserts, flood plains: deposited over hundreds of millions of years."}
               </p>
             </div>
             <CanyonStrataReveal layers={layers} />
@@ -150,7 +150,7 @@ export default async function GrandCanyonPage() {
                   placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
                 <div className="absolute bottom-8 left-8 z-10">
-                  <p className="nat-text-label">{isRo ? "Zion NP — la 160 km nord" : "Zion NP — 100 miles north"}</p>
+                  <p className="nat-text-label">{isRo ? "Zion NP: la 160 km nord" : "Zion NP: 100 miles north"}</p>
                 </div>
               </div>
             </div>

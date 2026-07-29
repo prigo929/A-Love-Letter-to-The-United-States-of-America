@@ -127,7 +127,7 @@ export const metadata: Metadata = {
     "The wealth of a continent: America is the world's #1 oil & gas producer, top LNG exporter, holder of the largest coal reserves and nuclear fleet on Earth, a leading agricultural power, and guardian of a fifth of the planet's surface fresh water.",
   alternates: { canonical: "/natural-resources" },
   openGraph: {
-    title: "Natural Resources — The Wealth of a Continent",
+    title: "Natural Resources: The Wealth of a Continent",
     description:
       "Energy, renewables, agriculture, minerals, water, and forests: the most complete endowment of natural wealth ever granted to a single nation.",
     url: "/natural-resources",
@@ -145,7 +145,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "American Natural Resources — The Wealth of a Continent",
+  headline: "American Natural Resources: The Wealth of a Continent",
   description:
     "A deep-dive into American resource abundance: energy, renewables, agriculture, minerals, fresh water, and forests.",
   url: "https://america-greatest.vercel.app/natural-resources",
@@ -721,8 +721,8 @@ export default async function NaturalResourcesPage() {
             </p>
             <p className="macro-metadata text-white/70">
               {locale === "ro"
-                ? "Acri de teren public — aproape 28% din America"
-                : "Acres of public land — nearly 28% of America"}
+                ? "Acri de teren public: aproape 28% din America"
+                : "Acres of public land: nearly 28% of America"}
             </p>
           </div>
         </InfrastructureBand>

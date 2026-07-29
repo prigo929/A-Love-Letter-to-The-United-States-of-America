@@ -94,8 +94,8 @@ const KNOWLEDGE_BASE: KnowledgeItem[] = [
   },
   {
     keywords: ["nature", "parks", "yellowstone", "alaska", "grand canyon", "conserv", "natur", "parc"],
-    responseEn: "The modern conservation movement was born in America, leading to the creation of the world's first national park (Yellowstone) in 1872. Today, 63 national parks cover 85 million acres of protected wilderness, spanning from the Arctic wilderness of Alaska to the deep chasms of the Grand Canyon.",
-    responseRo: "Mișcarea modernă de conservare s-a născut în America, ducând la crearea primului parc național din lume (Yellowstone, 1872). Astăzi, 63 de parcuri naționale protejează 85 de milioane de acri de sălbăticie, de la Alaska la Grand Canyon.",
+    responseEn: "The modern conservation movement was born in America, leading to the creation of the world's first national park (Yellowstone) in 1872. Today, 63 national parks cover 85 million acres of protected wilderness, preserving the Arctic tundra of Alaska, the granite peaks of Yosemite, and the deep chasms of the Grand Canyon.",
+    responseRo: "Mișcarea modernă de conservare s-a născut în America, ducând la crearea primului parc național din lume (Yellowstone, 1872). Astăzi, 63 de parcuri naționale protejează 85 de milioane de acri de sălbăticie, incluzând tundra arctică din Alaska, munții din Yosemite și Marele Canion.",
     cta: {
       labelEn: "Explore National Parks & Wilderness →",
       labelRo: "Explorează Parcurile Naționale și Sălbăticia →",

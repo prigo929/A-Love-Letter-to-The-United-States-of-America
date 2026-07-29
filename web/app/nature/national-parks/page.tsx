@@ -53,24 +53,24 @@ const ALL_PARKS = [
 ];
 
 const PARKS_SYSTEM_FACTS_EN = [
-  { id: "ps-age",       fact: "The NPS protects 423 sites across every US state and territory",        detail: "Beyond 63 national parks, the NPS manages monuments, seashores, historic trails, battlefields, and recreation areas — a mosaic of American natural and cultural heritage.", source: "NPS 2024", color: "gold" as const },
+  { id: "ps-age",       fact: "The NPS protects 423 sites across every US state and territory",        detail: "Beyond 63 national parks, the NPS manages monuments, seashores, historic trails, battlefields, and recreation areas: a mosaic of American natural and cultural heritage.", source: "NPS 2024", color: "gold" as const },
   { id: "ps-biodiversity", fact: "National Parks serve as a biodiversity ark for 1,000+ endangered species", detail: "From the recovery of the California Condor to the reintroduction of Gray Wolves in Yellowstone, the NPS provides the critical, undisturbed habitat necessary for species that have vanished elsewhere.", source: "NPS Biodiversity Study 2024", color: "red"  as const },
   { id: "ps-influence", fact: "The US national park model has been copied by 100+ countries",           detail: "After Congress established Yellowstone in 1872, nations from Canada to Kenya adopted the American model. The US invented the concept of the national park.", source: "IUCN World Commission on Protected Areas", color: "blue" as const },
   { id: "ps-largest",   fact: "Wrangell–St. Elias (AK) is larger than Switzerland at 13.2 million acres", detail: "America's biggest park contains 9 of the 16 highest peaks in the US and more wilderness than most nations' entire protected area systems combined.", source: "NPS", color: "gold" as const },
   { id: "ps-trail",     fact: "The US National Trails System spans 50,000+ miles",                     detail: "The Appalachian Trail (2,190 mi), Pacific Crest Trail (2,653 mi), Continental Divide Trail (3,100 mi), and thousands of local trails form a free public wilderness network.", source: "American Hiking Society 2024", color: "red"  as const },
-  { id: "ps-newest",    fact: "New River Gorge became the 63rd national park in December 2020",         detail: "West Virginia's New River Gorge — one of the oldest rivers in the world, predating the Appalachians — protects 70,000 acres of Appalachian wilderness.", source: "NPS", color: "blue" as const },
-  { id: "ps-public-land", fact: "The US manages 640 million acres of public land for recreation", detail: "Freely accessible to every citizen for hiking, hunting, fishing, and camping, this massive system covers roughly 28% of the US land area — a democratic inheritance of wilderness at a continental scale.", source: "Bureau of Land Management (BLM)", color: "gold" as const },
+  { id: "ps-newest",    fact: "New River Gorge became the 63rd national park in December 2020",         detail: "West Virginia's New River Gorge, one of the oldest rivers in the world predating the Appalachians, protects 70,000 acres of Appalachian wilderness.", source: "NPS", color: "blue" as const },
+  { id: "ps-public-land", fact: "The US manages 640 million acres of public land for recreation", detail: "Freely accessible to every citizen for hiking, hunting, fishing, and camping, this massive system covers roughly 28% of the US land area: a democratic inheritance of wilderness at a continental scale.", source: "Bureau of Land Management (BLM)", color: "gold" as const },
   { id: "ps-rv", fact: "The RV Civilization: 11.2 million households with a mobile home", detail: "Over 11 million American households own an RV, with 1 million living in them full-time. This unique mobile lifestyle is supported by cheap gas, 4.1 million miles of roads, and 15,000 campgrounds, generating over $100B in economic activity.", source: "RV Industry Association (RVIA)", color: "gold" as const },
 ];
 
 const PARKS_SYSTEM_FACTS_RO = [
-  { id: "ps-age",       fact: "NPS protejează 423 de situri în toate statele și teritoriile SUA",           detail: "Pe lângă 63 de parcuri naționale, NPS administrează monumente, maluri de mare, trasee istorice, câmpuri de bătălie și zone de recreere — un mozaic al patrimoniului natural și cultural american.", source: "NPS 2024", color: "gold" as const },
+  { id: "ps-age",       fact: "NPS protejează 423 de situri în toate statele și teritoriile SUA",           detail: "Pe lângă 63 de parcuri naționale, NPS administrează monumente, maluri de mare, trasee istorice, câmpuri de bătălie și zone de recreere: un mozaic al patrimoniului natural și cultural american.", source: "NPS 2024", color: "gold" as const },
   { id: "ps-biodiversity", fact: "Parcurile Naționale servesc ca o arcă a biodiversității pentru peste 1.000 de specii", detail: "De la recuperarea Condorului de California la reintroducerea lupilor cenușii în Yellowstone, NPS oferă habitatul critic necesar pentru speciile care au dispărut din alte locuri.", source: "NPS Biodiversity Study 2024", color: "red"  as const },
   { id: "ps-influence", fact: "Modelul american de parc național a fost copiat de 100+ de țări",            detail: "După ce Congresul a înființat Yellowstone în 1872, națiuni din Canada până în Kenya au adoptat modelul american. SUA a inventat conceptul de parc național.", source: "IUCN World Commission on Protected Areas", color: "blue" as const },
-  { id: "ps-largest",   fact: "Wrangell–St. Elias (AK) este mai mare decât Elveția — 13,2 milioane de acri", detail: "Cel mai mare parc al Americii conține 9 din cele 16 cele mai înalte vârfuri din SUA și mai multă sălbăticie decât sistemul total de arii protejate al majorității națiunilor.", source: "NPS", color: "gold" as const },
+  { id: "ps-largest",   fact: "Wrangell–St. Elias (AK) este mai mare decât Elveția: 13,2 milioane de acri", detail: "Cel mai mare parc al Americii conține 9 din cele 16 cele mai înalte vârfuri din SUA și mai multă sălbăticie decât sistemul total de arii protejate al majorității națiunilor.", source: "NPS", color: "gold" as const },
   { id: "ps-trail",     fact: "Sistemul Național de Trasee al SUA se întinde pe 80.000+ km",                detail: "Appalachian Trail (3.524 km), Pacific Crest Trail (4.270 km), Continental Divide Trail (4.989 km) și mii de trasee locale formează o rețea gratuită de acces în sălbăticie.", source: "American Hiking Society 2024", color: "red"  as const },
-  { id: "ps-newest",    fact: "New River Gorge a devenit al 63-lea parc național în decembrie 2020",        detail: "New River Gorge din West Virginia — unul dintre cele mai vechi râuri din lume, mai vechi decât Munții Apalachieni — protejează 113.000 de acri de sălbăticie apalachiană.", source: "NPS", color: "blue" as const },
-  { id: "ps-public-land", fact: "SUA administrează 640 de milioane de acri de teren public pentru recreere", detail: "Liber accesibile fiecărui cetățean pentru drumeții, vânătoare, pescuit și camping, aceste terenuri acoperă 28% din suprafața țării — o moștenire democratică neegalată în lume.", source: "Bureau of Land Management (BLM)", color: "gold" as const },
+  { id: "ps-newest",    fact: "New River Gorge a devenit al 63-lea parc național în decembrie 2020",        detail: "New River Gorge din West Virginia, unul dintre cele mai vechi râuri din lume mai vechi decât Munții Apalachieni, protejează 113.000 de acri de sălbăticie apalachiană.", source: "NPS", color: "blue" as const },
+  { id: "ps-public-land", fact: "SUA administrează 640 de milioane de acri de teren public pentru recreere", detail: "Liber accesibile fiecărui cetățean pentru drumeții, vânătoare, pescuit și camping, aceste terenuri acoperă 28% din suprafața țării, o moștenire democratică de amploare continentală.", source: "Bureau of Land Management (BLM)", color: "gold" as const },
   { id: "ps-rv", fact: "Civilizația RV: 11,2 milioane de gospodării dețin o locuință mobilă", detail: "Peste 11 milioane de gospodării americane dețin un vehicul recreațional (RV), iar aproximativ 1 milion locuiesc în ele cu normă întreagă. Acest stil de viață mobil este susținut de combustibil ieftin, 6,6 milioane km de drumuri și 15.000 de campinguri.", source: "RV Industry Association (RVIA)", color: "gold" as const },
 ];
 
@@ -117,8 +117,8 @@ export default async function NationalParksPage() {
           line2={isRo ? "A AMERICII" : "AMERICA EVER HAD"}
           line2Color="var(--nat-accent-forest)"
           body={isRo
-            ? "Șaizeci și trei de parcuri naționale. Patru sute douăzeci și trei de situri protejate. Optzeci și cinci de milioane de acri — păstrați pentru totdeauna pentru fiecare american."
-            : "Sixty-three national parks. Four hundred twenty-three protected sites. Eighty-five million acres — preserved forever for every American."}
+            ? "Șaizeci și trei de parcuri naționale. Patru sute douăzeci și trei de situri protejate. Optzeci și cinci de milioane de acri, păstrați pentru totdeauna pentru fiecare american."
+            : "Sixty-three national parks. Four hundred twenty-three protected sites. Eighty-five million acres, preserved forever for every American."}
         />
       </NatureSubPageHero>
 
@@ -138,8 +138,8 @@ export default async function NationalParksPage() {
             <h2 className="nat-text-section text-white mb-4">{isRo ? "Cele Mai Vizitate Parcuri" : "Most Visited Parks"}</h2>
             <p className="nat-text-body mb-12">
               {isRo
-                ? "Peste 325 de milioane de vizite anuale — mai mult decât întreaga populație a SUA — demonstrează că parcurile naționale sunt cu adevărat moștenirea fiecărui american."
-                : "Over 325 million annual visits — more than the entire US population — prove that national parks are truly every American's inheritance."}
+                ? "Peste 325 de milioane de vizite anuale, mai mult decât întreaga populație a SUA, demonstrează că parcurile naționale sunt cu adevărat moștenirea fiecărui american."
+                : "Over 325 million annual visits, more than the entire US population, prove that national parks are truly every American's inheritance."}
             </p>
             <div className="px-4">
               <ParkVisitorsChart

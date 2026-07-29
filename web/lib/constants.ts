@@ -88,7 +88,7 @@ export const NAV_SECTIONS = [
   {
     title: "Nature",
     href: "/nature",
-    description: "Unrivaled natural beauty spanning from the Arctic to the tropics",
+    description: "63 national parks, 85 million acres of protected wilderness, and a fifth of Earth's surface freshwater",
     imageSrc: SITE_IMAGES.grandTeton,
     badge: "63 National Parks",
     items: [
@@ -735,7 +735,7 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
   },
   "/nature": {
     title: "Natură",
-    description: "Frumusețe naturală fără rival din Arctica până în zonele tropicale",
+    description: "63 de parcuri naționale, 85 de milioane de acri de sălbăticie protejată și o cincime din apa dulce a planetei",
     badge: "63 Parcuri Naționale",
     items: {
       "/nature/national-parks": {

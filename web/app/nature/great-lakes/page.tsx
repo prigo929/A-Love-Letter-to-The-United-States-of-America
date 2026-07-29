@@ -27,7 +27,7 @@ import { SITE_IMAGES } from "@/lib/site-images";
 export const metadata: Metadata = {
   title: "Great Lakes | Nature",
   description:
-    "The Great Lakes — 21% of Earth's surface freshwater, 10,900 miles of coastline, and the economic engine of the Midwest.",
+    "The Great Lakes: 21% of Earth's surface freshwater, 10,900 miles of coastline, and the economic engine of the Midwest.",
 };
 
 const GREAT_LAKES_HERO = SITE_IMAGES.greatLakesChicago;
@@ -57,7 +57,7 @@ const LAKES_DETAIL_EN = [
     area: "23,000 mi²",
     volume: "850 mi³",
     depth: "750 ft",
-    note: "Contains Manitoulin Island — the largest freshwater island in the world. Georgian Bay is sometimes called the 6th Great Lake.",
+    note: "Contains Manitoulin Island, the largest freshwater island in the world. Georgian Bay is sometimes called the 6th Great Lake.",
     color: "#5554A0",
   },
   {
@@ -105,7 +105,7 @@ const LAKES_DETAIL_RO = [
     area: "59.600 km²",
     volume: "3.540 km³",
     depth: "229 m",
-    note: "Conține Insula Manitoulin — cea mai mare insulă de apă dulce din lume. Golful Georgian este uneori numit al 6-lea Lac Mare.",
+    note: "Conține Insula Manitoulin, cea mai mare insulă de apă dulce din lume. Golful Georgian este uneori numit al 6-lea Lac Mare.",
     color: "#5554A0",
   },
   {
@@ -149,7 +149,7 @@ const GL_EXTENDED_EN = [
     id: "gl-drink",
     fact: "The Great Lakes provide drinking water for 30 million Americans",
     detail:
-      "Chicago, Detroit, Cleveland, Buffalo, and Milwaukee all draw municipal water from the Great Lakes system — the largest surface freshwater reservoir available to any major urban population.",
+      "Chicago, Detroit, Cleveland, Buffalo, and Milwaukee all draw municipal water from the Great Lakes system: the largest surface freshwater reservoir available to any major urban population.",
     source: "American Water Works Association",
     color: "blue" as const,
   },
@@ -157,14 +157,14 @@ const GL_EXTENDED_EN = [
     id: "gl-island",
     fact: "Manitoulin Island in Lake Huron is the world's largest freshwater island",
     detail:
-      "At 1,068 mi², Manitoulin Island is larger than many US counties. It contains numerous lakes itself — including the world's largest lake on an island in a freshwater lake.",
+      "At 1,068 mi², Manitoulin Island is larger than many US counties. It contains numerous lakes itself, including the world's largest lake on an island in a freshwater lake.",
     source: "Natural Resources Canada",
     color: "gold" as const,
   },
   {
     id: "gl-boating",
     fact: "Freshwater Geography: Seeding a Recreational Boating Civilization",
-    detail: "Containing over 20% of Earth's surface freshwater, the Great Lakes region is the epicenter of the American recreational boating civilization. Lake Michigan's shoreline alone exceeds the entire US Atlantic coast, and Michigan, Minnesota, and Wisconsin host over 2.5 million registered boats — demonstrating how massive freshwater geography creates democratization of outdoor leisure.",
+    detail: "Containing over 20% of Earth's surface freshwater, the Great Lakes region is the epicenter of the American recreational boating civilization. Lake Michigan's shoreline alone exceeds the entire US Atlantic coast, and Michigan, Minnesota, and Wisconsin host over 2.5 million registered boats, demonstrating how massive freshwater geography creates democratization of outdoor leisure.",
     source: "US Coast Guard / National Marine Manufacturers Association 2025",
     color: "blue" as const,
   },
@@ -191,7 +191,7 @@ const GL_EXTENDED_RO = [
     id: "gl-drink",
     fact: "Marile Lacuri furnizează apă potabilă pentru 30 de milioane de americani",
     detail:
-      "Chicago, Detroit, Cleveland, Buffalo și Milwaukee iau apa municipală din sistemul Marilor Lacuri — cea mai mare rezervă de apă dulce de suprafață disponibilă oricărei populații urbane majore.",
+      "Chicago, Detroit, Cleveland, Buffalo și Milwaukee iau apa municipală din sistemul Marilor Lacuri: cea mai mare rezervă de apă dulce de suprafață disponibilă oricărei populații urbane majore.",
     source: "American Water Works Association",
     color: "blue" as const,
   },
@@ -199,14 +199,14 @@ const GL_EXTENDED_RO = [
     id: "gl-island",
     fact: "Insula Manitoulin din Lacul Huron este cea mai mare insulă de apă dulce din lume",
     detail:
-      "Cu 2.766 km², Insula Manitoulin este mai mare decât multe județe americane. Conține numeroase lacuri în interior — inclusiv cel mai mare lac de pe o insulă dintr-un lac de apă dulce din lume.",
+      "Cu 2.766 km², Insula Manitoulin este mai mare decât multe județe americane. Conține numeroase lacuri în interior, inclusiv cel mai mare lac de pe o insulă dintr-un lac de apă dulce din lume.",
     source: "Natural Resources Canada",
     color: "gold" as const,
   },
   {
     id: "gl-boating",
     fact: "Geografia Apei Dulci: Civilizația Navigației de Recreere",
-    detail: "Deținând peste 20% din apa dulce de suprafață a lumii, regiunea Marilor Lacuri este epicentrul navigației de agrement din SUA. Linia de coastă a Lacului Michigan depășește întreaga coastă atlantică a SUA, iar state precum Michigan, Minnesota și Wisconsin găzduiesc peste 2,5 milioane de ambarcațiuni înregistrate — demonstrând cum geografia apei dulci democratizează recreerea în aer liber.",
+    detail: "Deținând peste 20% din apa dulce de suprafață a lumii, regiunea Marilor Lacuri este epicentrul navigației de agrement din SUA. Linia de coastă a Lacului Michigan depășește întreaga coastă atlantică a SUA, iar state precum Michigan, Minnesota și Wisconsin găzduiesc peste 2,5 milioane de ambarcațiuni înregistrate, demonstrând cum geografia apei dulci democratizează recreerea în aer liber.",
     source: "US Coast Guard / National Marine Manufacturers Association 2025",
     color: "blue" as const,
   },
@@ -277,8 +277,8 @@ export default async function GreatLakesPage() {
           line2Color="var(--nat-accent-glacier)"
           body={
             isRo
-              ? "Cinci lacuri. 21% din toată apa dulce de suprafață a Pământului. 17.560 km de coastă — mai mult decât Atlantic și Golf la un loc. Cel mai mare sistem de apă dulce din lume, în inima Americii."
-              : "Five lakes. 21% of all Earth's surface fresh water. 10,900 miles of coastline — more than the Atlantic and Gulf coasts combined. The largest freshwater system in the world, in the heart of America."
+              ? "Cinci lacuri. 21% din toată apa dulce de suprafață a Pământului. 17.560 km de coastă, mai mult decât Atlantic și Golf la un loc. Cel mai mare sistem de apă dulce din lume, în inima Americii."
+              : "Five lakes. 21% of all Earth's surface fresh water. 10,900 miles of coastline, more than the Atlantic and Gulf coasts combined. The largest freshwater system in the world, in the heart of America."
           }
         />
       </NatureSubPageHero>
@@ -368,7 +368,7 @@ export default async function GreatLakesPage() {
             <p className="nat-text-body mb-8">
               {isRo
                 ? "Într-o lume în care apa dulce devine din ce în ce mai rară, Marile Lacuri reprezintă un avantaj strategic fără precedent. 6 cvadriliane de galoane de apă dulce ce alimentează 30 de milioane de americani și susțin o economie regională de 6 trilioane de dolari."
-                : "In a world where fresh water is increasingly scarce, the Great Lakes represent an unparalleled strategic advantage — 6 quadrillion gallons supplying 30 million Americans and sustaining a $6 trillion regional economy."}
+                : "In a world where fresh water is increasingly scarce, the Great Lakes represent an unparalleled strategic advantage: 6 quadrillion gallons supplying 30 million Americans and sustaining a $6 trillion regional economy."}
             </p>
             <div className="grid grid-cols-2 gap-12 pt-8 border-t border-white/4">
               <div>

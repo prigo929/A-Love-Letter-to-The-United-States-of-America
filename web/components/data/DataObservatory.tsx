@@ -280,7 +280,7 @@ export function DataObservatory({ isRo }: { isRo: boolean }) {
   // ── Verticals + tools ──────────────────────────────────────────────────────
   const verticals = [
     { href: "/economy", label: L("Economy", "Economie"), blurb: L("$32.4T GDP, markets, the dollar", "PIB $32,4T, piețe, dolarul"), accent: "gold" as Accent },
-    { href: "/nature", label: L("Nature", "Natură"), blurb: L("63 parks, Arctic to tropics", "63 de parcuri, Arctica la tropice"), accent: "green" as Accent },
+    { href: "/nature", label: L("Nature", "Natură"), blurb: L("63 parks, 85M protected acres", "63 de parcuri, 85M acri protejați"), accent: "green" as Accent },
     { href: "/military", label: L("Military", "Armată"), blurb: L("11 carriers, global reach", "11 portavioane, acoperire globală"), accent: "red" as Accent },
     { href: "/constitution", label: L("Constitution", "Constituție"), blurb: L("250 years of self-government", "250 de ani de autoguvernare"), accent: "blue" as Accent },
     { href: "/culture", label: L("Culture", "Cultură"), blurb: L("Film, music, food, brands", "Film, muzică, mâncare, branduri"), accent: "gold" as Accent },
@@ -362,7 +362,7 @@ export function DataObservatory({ isRo }: { isRo: boolean }) {
       </DomainBlock>
 
       {/* §04 Nature */}
-      <DomainBlock shaded index="04" eyebrow={L("Nature & Geography", "Natură și Geografie")} title={L("A Continent of Natural Wealth", "Un Continent de Bogăție Naturală")} blurb={L("Unrivaled natural beauty spanning from the Arctic to the tropics, featuring 63 national parks and a fifth of Earth's surface freshwater.", "Frumusețe naturală fără rival din Arctica până în zonele tropicale, cu 63 de parcuri naționale și o cincime din apa dulce a planetei.")}>
+      <DomainBlock shaded index="04" eyebrow={L("Nature & Geography", "Natură și Geografie")} title={L("A Continent of Natural Wealth", "Un Continent de Bogăție Naturală")} blurb={L("85 million acres of protected wilderness, 63 national parks, and a fifth of Earth's surface freshwater.", "85 de milioane de acri de sălbăticie protejată, 63 de parcuri naționale și o cincime din apa dulce a planetei.")}>
         <div className="mb-6"><StatBand stats={natureStats} /></div>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <ChartFrame><ParkVisitorsChart data={TOP_PARKS_VISITORS} title={L("Most-Visited National Parks (M visitors)", "Cele Mai Vizitate Parcuri (mil. vizitatori)")} source="NPS 2024" /></ChartFrame>

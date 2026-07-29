@@ -30,23 +30,23 @@ import { getYellowstoneFacts } from "@/lib/data/nature-data";
 
 export const metadata: Metadata = {
   title: "Yellowstone | Nature",
-  description: "Yellowstone — the world's first national park. 10,000 hydrothermal features, 5,000 bison, and a supervolcano.",
+  description: "Yellowstone: the world's first national park. 10,000 hydrothermal features, 5,000 bison, and a supervolcano.",
 };
 
 const HYDROTHERMAL_FEATURES_EN = [
   { type: "Geysers",              count: "500+",    note: "Old Faithful erupts every 44–125 minutes, 100–180 ft high" },
-  { type: "Hot Springs",          count: "10,000+", note: "Grand Prismatic Spring — largest hot spring in the US, 370 ft wide" },
-  { type: "Mud Pots",             count: "~300",    note: "Bubbling pools of acidic clay — some so acidic they dissolve rock" },
+  { type: "Hot Springs",          count: "10,000+", note: "Grand Prismatic Spring: largest hot spring in the US, 370 ft wide" },
+  { type: "Mud Pots",             count: "~300",    note: "Bubbling pools of acidic clay, some so acidic they dissolve rock" },
   { type: "Fumaroles",            count: "~3,000",  note: "Steam vents releasing SO₂, H₂S, CO₂ from magma 2–5 miles below" },
-  { type: "Travertine Terraces",  count: "~2",      note: "Mammoth Hot Springs — a constantly changing calcium carbonate landscape" },
+  { type: "Travertine Terraces",  count: "~2",      note: "Mammoth Hot Springs: a constantly changing calcium carbonate formation" },
 ];
 
 const HYDROTHERMAL_FEATURES_RO = [
   { type: "Gheizeri",             count: "500+",    note: "Old Faithful erupe la fiecare 44–125 minute, 30–55 m înălțime" },
-  { type: "Izvoare Termale",      count: "10.000+", note: "Marele Izvoare Prismatice — cel mai mare izvor termal din SUA, 113 m lărgime" },
-  { type: "Mlaștini Noroioase",   count: "~300",    note: "Mlaștini cu argilă acidă — unele atât de acide încât dizolvă rocile" },
+  { type: "Izvoare Termale",      count: "10.000+", note: "Marele Izvoare Prismatice: cel mai mare izvor termal din SUA, 113 m lărgime" },
+  { type: "Mlaștini Noroioase",   count: "~300",    note: "Mlaștini cu argilă acidă, unele atât de acide încât dizolvă rocile" },
   { type: "Fumarole",             count: "~3.000",  note: "Venturi de abur ce eliberează SO₂, H₂S, CO₂ din magmă la 3–8 km adâncime" },
-  { type: "Terase Travertin",     count: "~2",      note: "Mammoth Hot Springs — un peisaj de carbonat de calciu în continuă schimbare" },
+  { type: "Terase Travertin",     count: "~2",      note: "Mammoth Hot Springs: un peisaj de carbonat de calciu în continuă schimbare" },
 ];
 
 const YS_WILDLIFE_EN = [
@@ -68,14 +68,14 @@ const YS_WILDLIFE_RO = [
 ];
 
 const YS_EXTENDED_FACTS_EN = [
-  { id: "ys-wolf", fact: "Wolf reintroduction changed Yellowstone's rivers — a trophic cascade", detail: "When wolves returned in 1995, they changed elk behavior, which allowed riverbanks to revegetate, which reduced erosion, which changed river courses. One of the most famous ecology case studies ever.", source: "PNAS / Yellowstone Center for Resources", color: "gold" as const },
-  { id: "ys-pcr",  fact: "Yellowstone's hot springs led to a revolution in biology and medicine",   detail: "Thermus aquaticus, discovered in Yellowstone hot springs, provided Taq polymerase — the foundation of PCR technology, used in COVID testing, DNA forensics, and every modern genetics lab.", source: "ATCC / NIH", color: "red" as const },
+  { id: "ys-wolf", fact: "Wolf reintroduction changed Yellowstone's rivers: a trophic cascade", detail: "When wolves returned in 1995, they changed elk behavior, which allowed riverbanks to revegetate, which reduced erosion, which changed river courses. One of the most famous ecology case studies ever.", source: "PNAS / Yellowstone Center for Resources", color: "gold" as const },
+  { id: "ys-pcr",  fact: "Yellowstone's hot springs led to a revolution in biology and medicine",   detail: "Thermus aquaticus, discovered in Yellowstone hot springs, provided Taq polymerase, the foundation of PCR technology, used in COVID testing, DNA forensics, and every modern genetics lab.", source: "ATCC / NIH", color: "red" as const },
   { id: "ys-caldera",fact:"Yellowstone's magma chamber could power all US electricity for 30,000 years", detail: "The supervolcano system contains ~240 cubic miles of partly molten rock. Its last full eruption 640,000 years ago deposited ash across half of North America.", source: "USGS Yellowstone Volcano Observatory", color: "blue" as const },
 ];
 
 const YS_EXTENDED_FACTS_RO = [
-  { id: "ys-wolf", fact: "Reintroducerea lupilor a schimbat cursurile râurilor din Yellowstone — o cascadă trofică", detail: "Când lupii au revenit în 1995, au schimbat comportamentul elanilor, ceea ce a permis revegetalizarea malurilor, care a redus eroziunea, care a modificat cursurile râurilor. Unul dintre cele mai faimoase studii de caz din ecologie.", source: "PNAS / Yellowstone Center for Resources", color: "gold" as const },
-  { id: "ys-pcr",  fact: "Izvoarele termale din Yellowstone au declanșat o revoluție în biologie și medicină",         detail: "Thermus aquaticus, descoperit în izvoarele din Yellowstone, a furnizat enzima Taq polimerazei — baza tehnologiei PCR, folosită în testele COVID, criminalistică ADN și orice laborator de genetică modern.", source: "ATCC / NIH", color: "red" as const },
+  { id: "ys-wolf", fact: "Reintroducerea lupilor a schimbat cursurile râurilor din Yellowstone: o cascadă trofică", detail: "Când lupii au revenit în 1995, au schimbat comportamentul elanilor, ceea ce a permis revegetalizarea malurilor, care a redus eroziunea, care a modificat cursurile râurilor. Unul dintre cele mai faimoase studii de caz din ecologie.", source: "PNAS / Yellowstone Center for Resources", color: "gold" as const },
+  { id: "ys-pcr",  fact: "Izvoarele termale din Yellowstone au declanșat o revoluție în biologie și medicină",         detail: "Thermus aquaticus, descoperit în izvoarele din Yellowstone, a furnizat enzima Taq polimerazei, baza tehnologiei PCR, folosită în testele COVID, criminalistică ADN și orice laborator de genetică modern.", source: "ATCC / NIH", color: "red" as const },
   { id: "ys-caldera",fact:"Camera de magmă din Yellowstone ar putea alimenta toată electricitatea SUA timp de 30.000 de ani", detail: "Sistemul supervolcanic conține ~400 km³ de rocă parțial topită. Ultima erupție completă, acum 640.000 de ani, a depus cenușă pe jumătate din America de Nord.", source: "USGS Yellowstone Volcano Observatory", color: "blue" as const },
 ];
 
@@ -113,8 +113,8 @@ export default async function YellowstonePage() {
           line2Color="var(--nat-accent-earth)"
           body={
             isRo
-              ? "Primul parc național din lume, înființat în 1872. Peste 10.000 de fenomene hidrotermale — mai mult decât restul lumii la un loc. Cel mai mare turmă de bizon liber din America de Nord. Și un supervolcan dedesubt."
-              : "The world's first national park, established 1872. Over 10,000 hydrothermal features — more than the rest of the world combined. The largest free-roaming bison herd in North America. And a supervolcano beneath it all."
+              ? "Primul parc național din lume, înființat în 1872. Peste 10.000 de fenomene hidrotermale, mai mult decât restul lumii la un loc. Cel mai mare turmă de bizon liber din America de Nord. Și un supervolcan dedesubt."
+              : "The world's first national park, established 1872. Over 10,000 hydrothermal features, more than the rest of the world combined. The largest free-roaming bison herd in North America. And a supervolcano beneath it all."
           }
         />
       </NatureSubPageHero>
@@ -140,8 +140,8 @@ export default async function YellowstonePage() {
               <div>
                 <p className="nat-text-body">
                   {isRo
-                    ? "Sub Yellowstone se află un rezervor de magmă parțial topit la numai 3–8 km adâncime. Apa de precipitații se infiltrează, se încălzește și revine la suprafață ca un spectacol termic fără egal pe Terra. Yellowstone conține peste 500 de gheizeri — jumătate din totalul mondial."
-                    : "Beneath Yellowstone lies a partly molten magma reservoir just 2–5 miles underground. Surface water seeps down, heats up, and returns as the most spectacular thermal display on Earth. Yellowstone contains over 500 geysers — half of the world's total."}
+                    ? "Sub Yellowstone se află un rezervor de magmă parțial topit la numai 3–8 km adâncime. Apa de precipitații se infiltrează, se încălzește și revine la suprafață ca un spectacol termic fără egal pe Terra. Yellowstone conține peste 500 de gheizeri, reprezentând jumătate din totalul mondial."
+                    : "Beneath Yellowstone lies a partly molten magma reservoir just 2–5 miles underground. Surface water seeps down, heats up, and returns as the most spectacular thermal display on Earth. Yellowstone contains over 500 geysers, representing half of the world's total."}
                 </p>
                 <div className="grid grid-cols-2 gap-x-20 gap-y-12 mt-12 border-t border-white/4 pt-12">
                   {[
@@ -263,8 +263,8 @@ export default async function YellowstonePage() {
           {/* Quote Section */}
           <NatureQuoteBreak
             quote={isRo
-              ? "Yellowstone nu este doar un parc național. Este o fereastră spre timpul geologic, un laborator viu al evoluției și dovada că, dacă lași natura în pace, ea se vindecă singură, magnific."
-              : "Yellowstone is not just a national park. It is a window into geological time, a living laboratory of evolution, and proof that if you leave nature alone, it heals itself magnificently."}
+              ? "Yellowstone oferă o fereastră spre timpul geologic, un laborator viu al evoluției și dovada că natura se poate vindeca magnific."
+              : "Yellowstone serves as a window into geological time, a living laboratory of evolution, and proof that nature heals itself magnificently."}
             attribution="E.O. Wilson"
             title={isRo ? "Biolog, Universitatea Harvard" : "Biologist, Harvard University"}
           />

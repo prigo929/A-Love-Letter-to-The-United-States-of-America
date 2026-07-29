@@ -51,15 +51,13 @@ import {
   getBiodiversityByCountry,
 } from "@/lib/data/nature-data";
 
-// ─── Metadata ─────────────────────────────────────────────────────────────────
-
 export const metadata: Metadata = {
   title: "Nature & Geography",
   description:
-    "From Arctic Alaska to tropical Hawaii — no nation on Earth possesses such extraordinary diversity of natural wonders. 63 national parks, the Great Lakes, Yellowstone, the Grand Canyon, and more.",
+    "63 national parks, the Great Lakes, Yellowstone, the Grand Canyon, and millions of acres of protected wilderness.",
   alternates: { canonical: "/nature" },
   openGraph: {
-    title: "America the Beautiful — Nature & Geography",
+    title: "America the Beautiful: Nature & Geography",
     description:
       "63 national parks, 85 million protected acres, 21% of Earth's freshwater, and landscapes found nowhere else on the planet.",
     url: "/nature",
@@ -70,7 +68,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "America the Beautiful — Nature & Geography",
+  headline: "America the Beautiful: Nature & Geography",
   description: "A deep dive into the extraordinary natural diversity of the United States.",
   url: "https://americagreatest.com/nature",
   author: { "@type": "Organization", name: "America: The Greatest Nation" },
@@ -126,8 +124,8 @@ export default async function NaturePage() {
           line2Color="#4ade80"
           body={
             isRo
-              ? "Nicio națiune de pe Pământ nu posedă o diversitate atât de extraordinară de minuni naturale — de la tundra arctică la pădurile tropicale, de la cel mai înalt vârf al Americii de Nord la cel mai mare sistem de apă dulce din lume."
-              : "No nation on Earth possesses such extraordinary diversity of natural wonders — from Arctic tundra to tropical rainforests, from North America's highest peak to the world's greatest freshwater system."
+              ? "Statele Unite adăpostesc o diversitate remarcabilă de peisaje naturale: tundră arctică, păduri tropicale, cel mai înalt vârf din America de Nord și cel mai mare sistem de apă dulce din lume."
+              : "The United States features exceptional natural diversity: Arctic tundra, tropical rainforests, North America's highest peak, and the world's greatest freshwater system."
           }
         >
           <div className="mt-10 flex flex-wrap gap-10">
@@ -166,7 +164,7 @@ export default async function NaturePage() {
               : "Do nothing to mar its grandeur. You cannot improve on it. Keep it for your children and your children's children."
             }&rdquo;
           </p>
-          <p className="nat-text-label" style={{ color: 'var(--nat-accent-earth)' }}>— Theodore Roosevelt, 1903</p>
+          <p className="nat-text-label" style={{ color: 'var(--nat-accent-earth)' }}>Theodore Roosevelt, 1903</p>
         </div>
       </ParallaxImageBand>
 
@@ -209,8 +207,8 @@ export default async function NaturePage() {
           </h2>
           <p className="nat-text-body mb-12 max-w-[700px]">
             {isRo
-              ? "Înființat în 1872 cu Yellowstone, Sistemul Național de Parcuri al SUA protejează astăzi 85 de milioane de acri în 63 de parcuri și 423 de situri totale — un model de conservare pe care fiecare altă națiune a încercat să îl imite."
-              : "Established in 1872 with Yellowstone, the US National Park System today protects 85 million acres across 63 parks and 423 total sites — a conservation model every other nation has tried to imitate."}
+              ? "Înființat în 1872 cu Yellowstone, Sistemul Național de Parcuri al SUA protejează astăzi 85 de milioane de acri în 63 de parcuri și 423 de situri totale: un model de conservare pe care fiecare altă națiune a încercat să îl imite."
+              : "Established in 1872 with Yellowstone, the US National Park System today protects 85 million acres across 63 parks and 423 total sites: a conservation model every other nation has tried to imitate."}
           </p>
           <div className="bg-(--nat-surface) p-6 md:p-10">
             <ParkVisitorsChart
@@ -269,7 +267,7 @@ export default async function NaturePage() {
           <p className="nat-text-section italic leading-[1.8] mb-14" style={{ fontSize: 'clamp(20px, 3.5vw, 40px)', fontWeight: 400, letterSpacing: '0.04em', wordSpacing: '0.1em' }}>
             &ldquo;{quotes[1].quote}&rdquo;
           </p>
-          <p className="nat-text-label" style={{ color: 'var(--nat-accent-earth)' }}>— {quotes[1].attribution}</p>
+          <p className="nat-text-label" style={{ color: 'var(--nat-accent-earth)' }}>{quotes[1].attribution}</p>
         </div>
       </ParallaxImageBand>
 
@@ -341,27 +339,27 @@ export default async function NaturePage() {
             {isRo ? "Diversitatea Peisajelor" : "Landscape Diversity"}
           </p>
           <h2 className="nat-text-heading text-white mb-4">
-            {isRo ? "De la Deșert la Ghetar" : "Desert to Glacier"}
+            {isRo ? "Deserts & Glaciers" : "Deserts & Glaciers"}
           </h2>
           <p className="nat-text-body mb-12 max-w-[700px]">
             {isRo
-              ? "Nicio altă țară dezvoltată nu cuprinde un spectru atât de vast de ecosisteme — deșerturi de cactus saguaro, păduri de secvoia, munți stâncoși, câmpii de iarbă, fluvii și lanțuri muntoase îmbrăcate în brumă."
-              : "No other developed nation spans such a breadth of ecosystems — saguaro deserts, sequoia forests, rocky badlands, prairies, rivers, and mist-covered mountain ranges all within one country."}
+              ? "Nicio altă țară dezvoltată nu cuprinde un spectru atât de vast de ecosisteme: deșerturi de cactus saguaro, păduri de secvoia, munți stâncoși, câmpii de iarbă, fluvii și lanțuri muntoase îmbrăcate în brumă."
+              : "No other developed nation spans such a breadth of ecosystems: saguaro deserts, sequoia forests, rocky badlands, prairies, rivers, and mist-covered mountain ranges all within one country."}
           </p>
           <PhotoLightboxGrid
             gridClassName="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2"
             photos={[
-              { src: SITE_IMAGES.landscapes.grandTeton,         alt: isRo ? "Munții Grand Teton, Wyoming" : "Grand Teton Mountains, Wyoming",              caption: isRo ? "Munții Grand Teton — Wyoming" : "Grand Teton NP — Wyoming",              aspect: "3/2" },
-              { src: SITE_IMAGES.landscapes.saguaro,            alt: isRo ? "Parcul Național Saguaro, Arizona" : "Saguaro National Park, Arizona",         caption: isRo ? "P.N. Saguaro — Arizona" : "Saguaro NP — Arizona",                    aspect: "3/2" },
-              { src: SITE_IMAGES.landscapes.sequoia,            alt: isRo ? "Parcul Național Sequoia, California" : "Sequoia National Park, California",   caption: isRo ? "P.N. Sequoia — California" : "Sequoia NP — California",               aspect: "3/2" },
-              { src: SITE_IMAGES.landscapes.theodoreRoosevelt,  alt: isRo ? "P.N. Theodore Roosevelt, Dakota de Nord" : "Theodore Roosevelt NP, North Dakota", caption: isRo ? "P.N. Theodore Roosevelt — Dakota de Nord" : "Theodore Roosevelt NP — North Dakota", aspect: "3/2" },
-              { src: SITE_IMAGES.landscapes.blueRidge,          alt: isRo ? "Munții Blue Ridge, Carolina de Nord" : "Blue Ridge Mountains, North Carolina", caption: isRo ? "Munții Blue Ridge — Carolina de Nord" : "Blue Ridge Mountains — NC",    aspect: "3/2" },
-              { src: SITE_IMAGES.landscapes.tunnelViewYosemite, alt: isRo ? "Yosemite — Tunnel View, California" : "Yosemite Tunnel View, California",     caption: isRo ? "Yosemite — Tunnel View, CA" : "Yosemite Tunnel View — CA",           aspect: "3/2" },
-              { src: SITE_IMAGES.landscapes.grandCanyonCave,    alt: isRo ? "Grand Canyon — Peșteră, Arizona" : "Grand Canyon Cave, Arizona",              caption: isRo ? "Grand Canyon Cave — Arizona" : "Grand Canyon Cave — AZ",             aspect: "3/2" },
-              { src: SITE_IMAGES.landscapes.coloradoRiver,      alt: isRo ? "Râul Colorado, Grand Canyon" : "Colorado River through the Grand Canyon",     caption: isRo ? "Râul Colorado — Grand Canyon" : "Colorado River — Grand Canyon",     aspect: "3/2" },
-              { src: SITE_IMAGES.landscapes.mississippi,        alt: isRo ? "Fluviul Mississippi, Minneapolis" : "Mississippi River at Minneapolis",       caption: isRo ? "Fluviul Mississippi — Minneapolis" : "Mississippi River — Minneapolis", aspect: "3/2" },
-              { src: SITE_IMAGES.landscapes.chattanooga,        alt: isRo ? "Chattanooga, Tennessee" : "Chattanooga, Tennessee",                           caption: isRo ? "Chattanooga — Tennessee" : "Chattanooga — Tennessee",               aspect: "3/2" },
-              { src: SITE_IMAGES.landscapes.arizonaHighway,     alt: isRo ? "Autostradă prin canyon, Arizona" : "Canyon highway through Arizona desert",   caption: isRo ? "Autostradă prin Canyon — Arizona" : "Canyon Highway — Arizona",     aspect: "3/2" },
+              { src: SITE_IMAGES.landscapes.grandTeton,         alt: isRo ? "Munții Grand Teton, Wyoming" : "Grand Teton Mountains, Wyoming",              caption: isRo ? "Munții Grand Teton: Wyoming" : "Grand Teton NP: Wyoming",              aspect: "3/2" },
+              { src: SITE_IMAGES.landscapes.saguaro,            alt: isRo ? "Parcul Național Saguaro, Arizona" : "Saguaro National Park, Arizona",         caption: isRo ? "P.N. Saguaro: Arizona" : "Saguaro NP: Arizona",                    aspect: "3/2" },
+              { src: SITE_IMAGES.landscapes.sequoia,            alt: isRo ? "Parcul Național Sequoia, California" : "Sequoia National Park, California",   caption: isRo ? "P.N. Sequoia: California" : "Sequoia NP: California",               aspect: "3/2" },
+              { src: SITE_IMAGES.landscapes.theodoreRoosevelt,  alt: isRo ? "P.N. Theodore Roosevelt, Dakota de Nord" : "Theodore Roosevelt NP, North Dakota", caption: isRo ? "P.N. Theodore Roosevelt: Dakota de Nord" : "Theodore Roosevelt NP: North Dakota", aspect: "3/2" },
+              { src: SITE_IMAGES.landscapes.blueRidge,          alt: isRo ? "Munții Blue Ridge, Carolina de Nord" : "Blue Ridge Mountains, North Carolina", caption: isRo ? "Munții Blue Ridge: Carolina de Nord" : "Blue Ridge Mountains: NC",    aspect: "3/2" },
+              { src: SITE_IMAGES.landscapes.tunnelViewYosemite, alt: isRo ? "Yosemite: Tunnel View, California" : "Yosemite Tunnel View, California",     caption: isRo ? "Yosemite: Tunnel View, CA" : "Yosemite Tunnel View: CA",           aspect: "3/2" },
+              { src: SITE_IMAGES.landscapes.grandCanyonCave,    alt: isRo ? "Grand Canyon: Peșteră, Arizona" : "Grand Canyon Cave, Arizona",              caption: isRo ? "Grand Canyon Cave: Arizona" : "Grand Canyon Cave: AZ",             aspect: "3/2" },
+              { src: SITE_IMAGES.landscapes.coloradoRiver,      alt: isRo ? "Râul Colorado, Grand Canyon" : "Colorado River through the Grand Canyon",     caption: isRo ? "Râul Colorado: Grand Canyon" : "Colorado River: Grand Canyon",     aspect: "3/2" },
+              { src: SITE_IMAGES.landscapes.mississippi,        alt: isRo ? "Fluviul Mississippi, Minneapolis" : "Mississippi River at Minneapolis",       caption: isRo ? "Fluviul Mississippi: Minneapolis" : "Mississippi River: Minneapolis", aspect: "3/2" },
+              { src: SITE_IMAGES.landscapes.chattanooga,        alt: isRo ? "Chattanooga, Tennessee" : "Chattanooga, Tennessee",                           caption: isRo ? "Chattanooga: Tennessee" : "Chattanooga: Tennessee",               aspect: "3/2" },
+              { src: SITE_IMAGES.landscapes.arizonaHighway,     alt: isRo ? "Autostradă prin canyon, Arizona" : "Canyon highway through Arizona desert",   caption: isRo ? "Autostradă prin Canyon: Arizona" : "Canyon Highway: Arizona",     aspect: "3/2" },
             ]}
           />
         </div>
@@ -375,9 +373,9 @@ export default async function NaturePage() {
       >
         <div className="mx-auto max-w-3xl text-center">
           <p className="nat-text-section italic leading-[1.8]" style={{ fontSize: 'clamp(18px, 3vw, 36px)', fontWeight: 400, letterSpacing: '0.04em', wordSpacing: '0.1em' }}>
-            &ldquo;{isRo ? "Cel mai frumos dar pe care orice țară l-ar putea oferi" : "The best idea America ever had"}&rdquo;
+            &ldquo;{isRo ? "Cea mai bună idee pe care a avut-o America" : "The best idea America ever had"}&rdquo;
           </p>
-          <p className="nat-text-label mt-6" style={{ color: 'var(--nat-accent-earth)' }}>— Ken Burns</p>
+          <p className="nat-text-label mt-6" style={{ color: 'var(--nat-accent-earth)' }}>Ken Burns</p>
         </div>
       </ParallaxImageBand>
 
