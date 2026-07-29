@@ -158,7 +158,7 @@ const SUBPAGES_EN: CultureSubpage[] = [
     imageKey: "film",
     href: "/culture/entertainment",
     size: "small",
-    description: "Hollywood didn't just capture attention, it exported the visual syntax of human dreaming, shaping international narratives and values.",
+    description: "Hollywood exported the visual syntax of human dreaming, shaping international narratives and the way people understood themselves.",
   },
   {
     id: "sports",
@@ -260,7 +260,7 @@ const SUBPAGES_RO: CultureSubpage[] = [
     imageKey: "film",
     href: "/culture/entertainment",
     size: "small",
-    description: "Hollywood-ul nu a captat doar atenția, a exportat sintaxa vizuală a viselor umane, modelând narațiunile și valorile internaționale.",
+    description: "Hollywood-ul a exportat sintaxa vizuală a viselor umane, modelând narațiunile internaționale și felul în care oamenii se înțeleg pe ei înșiși.",
   },
   {
     id: "sports",
@@ -896,7 +896,7 @@ const CULINARY_PILLARS_EN: CultureCulinaryPillar[] = [
   {
     title: "The Logistics Franchise",
     subtitle: "Exporting Operational Systems",
-    body: "McDonald's and Starbucks didn't just export burgers and lattes; they exported operational logistics. Their global reach is a triumph of cold-chain supply management, strict food safety protocols, real estate site-selection algorithms, and hyper-optimized labor productivity standards. It turned culinary service into a highly engineered, predictable system of global replication.",
+    body: "McDonald's and Starbucks exported operational logistics along with the food. Their global reach is a triumph of cold-chain supply management, strict food safety protocols, real estate site-selection algorithms, and hyper-optimized labor productivity standards. It turned culinary service into a highly engineered, predictable system of global replication.",
     imageKey: "food",
   },
 ];
@@ -1072,7 +1072,7 @@ const DIGITAL_PIPES_EN: CultureDigitalPipesData = {
   eyebrow: "THE 21ST CENTURY INFRASTRUCTURE · DIGITAL AMERICA",
   headline: "BUILDING THE PIPES OF GLOBAL CULTURE",
   statement: "The medium is the American message.",
-  body: "In the 20th century, American cultural power was defined by the content it exported: Hollywood films, Motown records, Levi's jeans, and Coca-Cola bottles. But in the 21st century, America did something far more profound: it built the digital pipes upon which the entire world's culture now runs. Every dominant search engine that indexes human knowledge, every major social platform where global conversations happen, every frontier AI model, the streaming paradigm, the podcast format, and the smartphone UX itself, these are not just technological feats; they are the new infrastructure of global human expression. The world doesn't just watch American movies anymore; it lives inside the American digital landscape.",
+  body: "In the 20th century, American cultural power was defined by the content it exported: Hollywood films, Motown records, Levi's jeans, and Coca-Cola bottles. In the 21st century, America built the infrastructure those things run on. Every dominant search engine, every major social platform, every frontier model, the streaming paradigm, the podcast format, and the smartphone UX are the new pipes of global human expression. The world no longer watches American movies from the outside. It runs on the American digital stack.",
   bridgeText: "Explore the venture capital engines and technological breakthroughs that built this digital foundation in [Economy & Growth](/economy) and [Tech & Innovation](/innovation).",
   pipes: [
     {
@@ -1101,7 +1101,7 @@ const DIGITAL_PIPES_EN: CultureDigitalPipesData = {
       iconKey: "smartphone",
     },
     {
-      title: "Frontier AI",
+      title: "Frontier Intelligence",
       description: "Inventing the cognitive engines that synthesize information, code, and creative output in real time.",
       iconKey: "ai",
     },
@@ -1112,7 +1112,7 @@ const DIGITAL_PIPES_RO: CultureDigitalPipesData = {
   eyebrow: "INFRASTRUCTURA SECOLULUI XXI · AMERICA DIGITALĂ",
   headline: "CONSTRUIREA CANALELOR CULTURII GLOBALE",
   statement: "Mediul este mesajul american.",
-  body: "În secolul XX, puterea culturală a Americii a fost definită de conținutul pe care l-a exportat: filme de la Hollywood, discuri Motown, blugi Levi's și sticle de Coca-Cola. Însă în secolul XXI, America a realizat ceva mult mai profund: a construit canalele digitale pe care rulează acum întreaga cultură a lumii. Fiecare motor de căutare dominant care indexează cunoașterea umană, fiecare platformă socială majoră unde au loc conversațiile globale, fiecare model AI de frontieră, paradigma de streaming, formatul de podcast și interfața smartphone-ului în sine, acestea nu sunt doar realizări tehnologice; ele reprezintă noua infrastructură a exprimării umane globale. Lumea nu se mai uită doar la filme americane, ci trăiește în interiorul peisajului digital american.",
+  body: "În secolul XX, puterea culturală a Americii a fost definită de conținutul pe care l-a exportat: filme de la Hollywood, discuri Motown, blugi Levi's și sticle de Coca-Cola. În secolul XXI, America a construit infrastructura pe care acel conținut rulează. Fiecare motor de căutare dominant, fiecare platformă socială majoră, fiecare model de inteligență, paradigma de streaming, formatul de podcast și interfața smartphone-ului sunt noile canale ale exprimării umane globale. Lumea nu se mai uită la filme americane din exterior. Rulează pe stiva digitală americană.",
   bridgeText: "Explorați motoarele capitalului de risc și inovațiile tehnologice care au clădit această fundație digitală în [Economie și Creștere](/economy) și [Tehnologie și Inovare](/innovation).",
   pipes: [
     {
@@ -1141,7 +1141,7 @@ const DIGITAL_PIPES_RO: CultureDigitalPipesData = {
       iconKey: "smartphone",
     },
     {
-      title: "Modelele AI de Frontieră",
+      title: "Inteligența de Frontieră",
       description: "Inventarea motoarelor cognitive care sintetizează informații, cod și creație în timp real.",
       iconKey: "ai",
     },
@@ -1174,7 +1174,7 @@ export interface CultureIconsSectionData {
 const CULTURE_ICONS_EN: CultureIconsSectionData = {
   eyebrow: "CULTURAL AMBASSADORS · THE FACES OF AMERICA",
   title: "THE PERSONALITY DEFAULT",
-  deck: "Unlike other nations, America has no ministry of culture. It does not export its lifestyle through state mandates. Instead, the global face of America was built by individuals, ambitious dreamers, rebels, and creators whose talent and drive were rewarded by free markets at global scale.",
+  deck: "Unlike other nations, America has no ministry of culture. It does not export its lifestyle through state mandates. Instead, the global face of America was built by dreamers, rebels, and creators whose talent was rewarded by free markets at global scale.",
   icons: [
     {
       name: "Walt Disney",
@@ -1272,7 +1272,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
 const CULTURE_ICONS_RO: CultureIconsSectionData = {
   eyebrow: "AMBASADORI CULTURALI · CHIPURILE AMERICII",
   title: "REPREZENTAREA PRIN PERSONALITATE",
-  deck: "Spre deosebire de alte națiuni, America nu are un minister al culturii. Nu își exportă stilul de viață prin mandate de stat. În schimb, fața globală a Americii a fost construită de indivizi, visători ambițioși, rebelii și creatori ale căror talent și determinare au fost răsplătite de piețele libere la scară globală.",
+  deck: "Spre deosebire de alte națiuni, America nu are un minister al culturii. Nu își exportă stilul de viață prin mandate de stat. În schimb, fața globală a Americii a fost construită de visători, rebeli și creatori al căror talent a fost răsplătit de piețele libere la scară globală.",
   icons: [
     {
       name: "Walt Disney",
@@ -1431,7 +1431,7 @@ export interface CultureManifestoData {
 
 const MANIFESTO_EN: CultureManifestoData = {
   eyebrow: "THE AMERICAN MANIFESTO",
-  statement: "This isn't accidental. It's the consequence of a very specific idea about what happens when you leave human ambition free.",
+  statement: "This is no accident. It is the consequence of a specific idea about what happens when you leave human ambition free.",
   body: "America's global cultural footprint represents the downstream consequence of a single, revolutionary context: a system that secures individual liberty, protects private enterprise, and trusts voluntary exchange. When you leave the human imagination free from state coercion, people create forms that the rest of the world freely chooses to listen to, watch, stream, and adopt. The ultimate soft power is the power of free choices.",
   ctaLabel: "Continue the Journey",
   verticals: [
@@ -1443,7 +1443,7 @@ const MANIFESTO_EN: CultureManifestoData = {
 
 const MANIFESTO_RO: CultureManifestoData = {
   eyebrow: "MANIFESTUL AMERICAN",
-  statement: "Acest lucru nu este accidental. Consecința unei idei foarte specifice despre ceea ce se întâmplă atunci când lași ambiția umană liberă.",
+  statement: "Acesta nu este un accident. Este consecința unei idei specifice despre ceea ce se întâmplă atunci când lași ambiția umană liberă.",
   body: "Amprenta culturală globală a Americii reprezintă consecința directă a unui singur context revoluționar: un sistem care garantează libertatea individuală, protejează inițiativa privată și are încredere în schimbul voluntar. Atunci când lași imaginația umană liberă de constrângerea statului, oamenii creează formate pe care restul lumii alege în mod liber să le asculte, să le privească, să le acceseze și să le adopte. Puterea soft supremă este puterea alegerilor libere.",
   ctaLabel: "Continuă călătoria",
   verticals: [
