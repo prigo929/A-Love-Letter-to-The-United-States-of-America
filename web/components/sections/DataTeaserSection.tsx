@@ -258,7 +258,7 @@ export function DataTeaserSection() {
           eyebrow: "Cifrele Nu Mint",
           title: "Date Dure. Fapte de Necontestat.",
           description:
-            "Fiecare grafic, fiecare studiu, fiecare indice spune aceeași poveste. America conduce, la o distanță uriașă.",
+            "Datele empirice referitoare la producția economică, cercetare și apărare demonstrează un leadership clar al SUA.",
           usLegend: "Statele Unite",
           othersLegend: "Alte națiuni",
           cta: "Vezi Analiza Completă",
@@ -267,7 +267,7 @@ export function DataTeaserSection() {
           eyebrow: "The Numbers Don't Lie",
           title: "Hard Data. Undeniable Facts.",
           description:
-            "Every bar chart, every study, every index tells the same story. America leads, by an enormous margin.",
+            "Empirical metrics across economic output, research, and defense display clear American leadership.",
           usLegend: "United States",
           othersLegend: "Other nations",
           cta: "See Full Analysis",

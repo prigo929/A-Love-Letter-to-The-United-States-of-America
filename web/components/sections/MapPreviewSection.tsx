@@ -104,7 +104,7 @@ export function MapPreviewSection() {
           AK: { fact: "Cel mai mare stat — de două ori cât Texasul, cu peste 100.000 de ghețari.", emoji: "🏔️" },
           AZ: { fact: "Marele Canion — una dintre cele șapte minuni naturale ale lumii.", emoji: "🏜️" },
           AR: { fact: "Crater of Diamonds — singurul sit de diamante activ din lume deschis publicului.", emoji: "💎" },
-          CA: { fact: "Silicon Valley — epicentrul global al tehnologiei, capitalului de risc și AI.", emoji: "🌊" },
+          CA: { fact: "Silicon Valley — epicentrul global al tehnologiei și capitalului de risc.", emoji: "🌊" },
           CO: { fact: "Cea mai mare altitudine medie dintre toate statele, cu 58 de vârfuri peste 4.200m.", emoji: "⛰️" },
           CT: { fact: "USS Nautilus — primul submarin cu propulsie nucleară din lume, construit în Groton.", emoji: "⚓" },
           DE: { fact: "Primul Stat — primul care a ratificat Constituția SUA pe 7 decembrie 1787.", emoji: "📜" },
@@ -147,7 +147,7 @@ export function MapPreviewSection() {
           UT: { fact: "Mighty 5 — cinci parcuri naționale celebre pentru stâncile roșii și schi.", emoji: "🎿" },
           VT: { fact: "Cel mai mare producător de sirop de arțar din SUA și pionier ecologist.", emoji: "🍁" },
           VA: { fact: "Mama Președinților — locul de naștere a 8 președinți, inclusiv George Washington.", emoji: "🏛️" },
-          WA: { fact: "Statul Veșnic Verde — principalul exportator de mere, cireșe și software.", emoji: "🌲" },
+          WA: { fact: "Statul Veșnic Verde — lider în producția agricolă și software global.", emoji: "🌲" },
           WV: { fact: "New River Gorge Bridge — unul dintre cele mai înalte poduri cu arc de oțel din lume.", emoji: "🌉" },
           WI: { fact: "Țara Lactatelor din America — produce peste 3,4 miliarde de lire de brânză anual.", emoji: "🧀" },
           WY: { fact: "Yellowstone și Grand Teton — parcuri care protejează fauna sălbatică a Americii.", emoji: "🦬" },
@@ -156,7 +156,7 @@ export function MapPreviewSection() {
   const copy =
     locale === "ro"
       ? {
-          eyebrow: "De la un Ocean la Altul",
+          eyebrow: "Cele 50 de State",
           title: "Explorează America",
           description:
             "Treci cu cursorul peste orice stat pentru a descoperi ce îl face excepțional. Fiecare stat spune o poveste.",
@@ -166,7 +166,7 @@ export function MapPreviewSection() {
           cta: "Deschide Exploratorul Complet al Hărții",
         }
       : {
-          eyebrow: "From Sea to Shining Sea",
+          eyebrow: "The 50 United States",
           title: "Explore America",
           description:
             "Hover any state to discover what makes it exceptional. Every state is a story.",

@@ -21,14 +21,14 @@ export function VideoSection() {
             ...VIDEO_PREVIEWS[0],
             title: "America în 16K",
             description:
-              "Statele Unite în 16K ultra-HD uimitor — cea mai mare economie din lume, de la un ocean la altul.",
+              "Statele Unite prezentate în format 16K ultra-HD, evidențiind infrastructura și cadrul natural ale celei mai mari economii.",
             category: "Națiunea",
           },
           {
             ...VIDEO_PREVIEWS[1],
             title: "Zbor Peste Orașele Americane",
             description:
-              "O călătorie aeriană în 8K peste skyline-urile, grilele și suburbiile nesfârșite ale marilor orașe americane.",
+              "O perspectivă aeriană în 8K asupra densității arhitecturale și zonelor metropolitane ale Americii.",
             category: "Orașe",
           },
           {

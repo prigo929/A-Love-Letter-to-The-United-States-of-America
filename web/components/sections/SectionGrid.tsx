@@ -19,7 +19,7 @@ export function SectionGrid() {
           eyebrow: "Tot Ceea Ce Face America Măreață",
           title: "Explorează Fiecare Dimensiune",
           summary:
-            "De la economia sa de 28,8 trilioane de dolari la 63 de parcuri naționale. De la Constituție la semiconductor. Fiecare capitol al poveștii extraordinare a Americii.",
+            "Analiză detaliată a economiei de 32,4 trilioane de dolari, celor 63 de parcuri naționale, cadrului constituțional și inovației tehnologice americane.",
         }
       : {
           eyebrow: "Everything That Makes America Great",

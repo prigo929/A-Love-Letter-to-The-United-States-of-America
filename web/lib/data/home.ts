@@ -79,16 +79,16 @@ export const KEY_STATS = [
 
 export const HOME_COPY = {
   sectionGridSummary:
-    "From its $32.4 trillion economy to 63 national parks. From the Constitution to the semiconductor. Every chapter of America's extraordinary story.",
+    "Explore the $32.4 trillion economy, 63 national parks, constitutional governance, and technological breakthroughs that define America.",
   statSources:
-    "Sources: IMF, SIPRI, NPS, Nobel Foundation, DoD — 2025/2026 data",
+    "Sources: IMF, SIPRI, NPS, Nobel Foundation, DoD (2025–2026 data)",
 } as const;
 
 // Placeholder copy for the economy landing summary used on the homepage.
 export const ECONOMY_PAGE_COPY = {
   heroValue: "$32.4T",
   description:
-    "The United States economy — $32.4 trillion, the largest in human history.",
+    "The United States economy, valued at $32.4 trillion, represents the largest national economy in human history.",
   body: "Phase 3 — Economy section — coming soon. Full charts, data, and analysis of America's unrivaled economic dominance.",
 } as const;
 
@@ -105,8 +105,8 @@ export const WHY_AMERICA_BLOCKS: ContentBlockItem[] = [
     heading: "The Land of the Free",
     subheading: "250 Years of Unbroken Constitutional Government",
     paragraphs: [
-      "No nation in history has maintained the same constitutional framework for as long as the United States — 250 years and counting. While empires fell, republics collapsed, and constitutions were rewritten across the globe, America's founding document endured through civil war, world wars, economic depression, and social upheaval.",
-      "The First Amendment alone is without parallel: no nation on Earth extends freedom of speech as broadly as the United States. The Bill of Rights was not a gift from government — it was a recognition of rights that existed before government. That distinction changes everything.",
+      "No nation in history has maintained the same constitutional framework for as long as the United States, spanning 250 years. While regimes crumbled and national constitutions were repeatedly rewritten across the globe, America's founding text stood firm through civil war, world wars, and economic turmoil.",
+      "The First Amendment alone is without parallel: no nation on Earth extends freedom of speech as broadly as the United States. The Bill of Rights recognized fundamental human freedoms that predated the government itself. That constitutional distinction shapes American society.",
     ],
     imageSrc: SITE_IMAGES.constitutionDocument,
     imageAlt:
@@ -135,10 +135,10 @@ export const WHY_AMERICA_BLOCKS: ContentBlockItem[] = [
   },
   {
     heading: "The Engine of Innovation",
-    subheading: "Silicon Valley to Cape Canaveral — America Invents the Future",
+    subheading: "Technological Enterprise and Industrial Achievement",
     paragraphs: [
-      "The telephone. The airplane. The transistor. The microchip. The internet. The iPhone. The mRNA vaccine. Artificial intelligence. Every technology that defines modern civilization traces its lineage to American laboratories, garages, and university campuses.",
-      "America receives approximately 50% of all global venture capital investment. It is home to 7 of the world's top 10 universities. Its researchers have won more Nobel Prizes than the next three nations combined. This is not coincidence — it is the fruit of a system that rewards risk-taking, tolerates failure, and celebrates the individual.",
+      "The telephone, airplane, transistor, microchip, internet, iPhone, mRNA vaccine, and artificial intelligence all trace their origins to American research centers and private enterprise.",
+      "America receives approximately 50% of global venture capital funding and houses 7 of the world's top 10 universities. Its researchers have earned more Nobel Prizes than the next three nations combined. This extraordinary output stems directly from an economic model built on free enterprise, risk tolerance, and individual initiative.",
     ],
     imageSrc: SITE_IMAGES.homeSiliconValley,
     imageAlt:
@@ -167,10 +167,10 @@ export const WHY_AMERICA_BLOCKS: ContentBlockItem[] = [
   },
   {
     heading: "America the Beautiful",
-    subheading: "From the Arctic Tundra to the Tropical Everglades",
+    subheading: "Continental Ecosystems and Protected Public Lands",
     paragraphs: [
-      "No country on Earth possesses such extraordinary diversity of natural landscapes within a single border. The United States spans Arctic tundra in Alaska, tropical rainforests in Hawaii, towering granite walls in Yosemite, geothermal wonders in Yellowstone, the world's largest canyon, and the Great Lakes — containing 21% of Earth's entire surface freshwater.",
-      "Theodore Roosevelt called the preservation of this land \"the greatest gift a generation can give to those who come after.\" America answered that call with the world's first national park system — 63 parks protecting 85 million acres, more than most countries' entire landmass.",
+      "The United States holds extraordinary ecological diversity within a single nation. Its geography encompasses Arctic tundra in Alaska, tropical rainforests in Hawaii, granite peaks in Yosemite, geothermal basins in Yellowstone, the Grand Canyon, and the Great Lakes, which contain 21% of Earth's surface freshwater.",
+      'Theodore Roosevelt called the preservation of this land "the greatest gift a generation can give to those who come after." America fulfilled that vision by establishing the world\'s first national park system, protecting 85 million acres across 63 designated parks.',
     ],
     imageSrc: SITE_IMAGES.grandTeton,
     imageAlt:
@@ -202,8 +202,8 @@ export const WHY_AMERICA_BLOCKS: ContentBlockItem[] = [
     subheading:
       "The Most Powerful Military in the History of Human Civilization",
     paragraphs: [
-      "The United States maintains 11 aircraft carrier strike groups — the rest of the world combined has roughly four. Its defense budget of $954 billion exceeds the next ten nations' budgets combined. It operates bases in more than 80 countries, maintains a nuclear triad, and fields the most technologically advanced military force in history.",
-      "But American military power is not merely about hardware. It is about what that power has preserved: the post-1945 rules-based international order, the freedom of navigation that enables global trade, and the security umbrella under which democracies across Europe, Asia, and the Pacific have flourished for eight decades.",
+      "The United States operates 11 aircraft carrier strike groups, while the rest of the world combined maintains four. Its defense budget of $954 billion exceeds the next ten nations' defense spending combined. America maintains strategic installations across 80 countries, operates a complete nuclear triad, and deploys advanced military technologies.",
+      "Beyond raw hardware and manpower, American force projection sustains the global rules-based order, open maritime trade lanes, and democratic security alliances across key regions.",
     ],
     imageSrc: SITE_IMAGES.homeAirForcePlane,
     imageAlt:
@@ -237,7 +237,7 @@ export const VIDEO_PREVIEWS = [
     id: "cinematic",
     title: "America in 16K",
     description:
-      "The United States in stunning 16K ultra-HD — the world's largest economy, from coast to shining coast.",
+      "The United States captured in 16K ultra-HD, showcasing the infrastructure and geography of the world's largest economy.",
     youtubeId: "jPBfZrgvpSo",
     thumbnailSrc: SITE_IMAGES.homeNycSkyline,
     thumbnailAlt: "American skyline in ultra-high definition",
@@ -248,7 +248,7 @@ export const VIDEO_PREVIEWS = [
     id: "cities",
     title: "Flying Over American Cities",
     description:
-      "An 8K aerial journey over the skylines, grids, and endless suburbs of America's great cities.",
+      "An 8K aerial flight highlighting the architectural density and expansive suburbs of America's metropolitan areas.",
     youtubeId: "vE3BAgh_VAQ",
     thumbnailSrc: SITE_IMAGES.cities.aerialChicago,
     thumbnailAlt: "Aerial view of an American city",
@@ -398,7 +398,7 @@ export const STATE_FACTS: Record<string, { fact: string; emoji: string }> = {
   AK: { fact: "Largest state — twice the size of Texas, with over 100,000 glaciers.", emoji: "🏔️" },
   AZ: { fact: "Grand Canyon — one of the seven natural wonders of the world.", emoji: "🏜️" },
   AR: { fact: "Crater of Diamonds — the world's only active diamond site open to the public.", emoji: "💎" },
-  CA: { fact: "Silicon Valley — global epicenter of tech, venture capital, and AI innovation.", emoji: "🌊" },
+  CA: { fact: "Silicon Valley — global epicenter of technology and venture capital innovation.", emoji: "🌊" },
   CO: { fact: "Highest average elevation of any US state, with 58 peaks over 14,000 feet.", emoji: "⛰️" },
   CT: { fact: "USS Nautilus — the world's first nuclear-powered submarine, built in Groton.", emoji: "⚓" },
   DE: { fact: "The First State — the very first to ratify the US Constitution on December 7, 1787.", emoji: "📜" },
@@ -441,7 +441,7 @@ export const STATE_FACTS: Record<string, { fact: string; emoji: string }> = {
   UT: { fact: "The Mighty 5 National Parks — famous for red rock arches and world-class skiing.", emoji: "🎿" },
   VT: { fact: "Largest producer of maple syrup in the US and pioneer in environmental protection.", emoji: "🍁" },
   VA: { fact: "Mother of Presidents — birthplace of 8 US Presidents, including George Washington.", emoji: "🏛️" },
-  WA: { fact: "The Evergreen State — leading exporter of apples, cherries, and software.", emoji: "🌲" },
+  WA: { fact: "The Evergreen State — leading exporter of agricultural products and enterprise software.", emoji: "🌲" },
   WV: { fact: "New River Gorge Bridge — one of the tallest steel arch bridges in the Western hemisphere.", emoji: "🌉" },
   WI: { fact: "America's Dairyland — produces over 3.4 billion pounds of cheese annually.", emoji: "🧀" },
   WY: { fact: "Yellowstone & Grand Teton — national parks that protect America's grandest wildlife.", emoji: "🦬" },

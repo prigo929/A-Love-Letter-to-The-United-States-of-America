@@ -48,8 +48,8 @@ export function WhyAmericaSection() {
             heading: "Țara Oamenilor Liberi",
             subheading: "250 de Ani de Guvernare Constituțională Neîntreruptă",
             paragraphs: [
-              "Nicio națiune din istorie nu a menținut același cadru constituțional atât de mult precum Statele Unite — 250 de ani și încă continuă. În timp ce imperii au căzut, republici s-au prăbușit și constituții au fost rescrise în toată lumea, documentul fondator al Americii a rezistat prin război civil, războaie mondiale, depresie economică și convulsii sociale.",
-              "Numai Primul Amendament este fără egal: nicio națiune de pe Pământ nu oferă libertății de exprimare o protecție atât de largă precum Statele Unite. Carta Drepturilor nu a fost un dar al guvernului — a fost recunoașterea unor drepturi care existau înaintea guvernului. Acea diferență schimbă totul.",
+              "Nicio națiune din istorie nu a menținut același cadru constituțional pe o durată de 250 de ani precum Statele Unite. În timp ce numeroase regimuri și constituții s-au prăbușit sau au fost rescrise pe glob, documentul fondator al Americii a rămas în picioare de-a lungul a două secole și jumătate de încercări.",
+              "Primul Amendament rămâne un reper unic: nicio altă națiune nu garantează libertatea de exprimare atât de ferm. Carta Drepturilor a consacrat libertăți umane fundamentale care preexistau statului, stabilind un model constituțional durabil.",
             ],
             imageAlt:
               "Constituția Statelor Unite — cea mai longevivă constituție națională scrisă din istorie",
@@ -78,10 +78,10 @@ export function WhyAmericaSection() {
             ...WHY_AMERICA_BLOCKS[1],
             heading: "Motorul Inovației",
             subheading:
-              "De la Silicon Valley la Cape Canaveral — America inventează viitorul",
+              "Pionierat Tehnologic și Progres Industrial",
             paragraphs: [
-              "Telefonul. Avionul. Tranzistorul. Microcipul. Internetul. iPhone-ul. Vaccinul mRNA. Inteligența artificială. Fiecare tehnologie care definește civilizația modernă își are rădăcinile în laboratoare, garaje și campusuri universitare americane.",
-              "America atrage aproximativ 50% din toate investițiile globale de venture capital. Găzduiește 7 dintre primele 10 universități ale lumii. Cercetătorii săi au câștigat mai multe Premii Nobel decât următoarele trei națiuni la un loc. Nu este o coincidență — este rezultatul unui sistem care răsplătește riscul, tolerează eșecul și celebrează individul.",
+              "Telefonul, avionul, tranzistorul, microcipul, internetul, iPhone-ul, vaccinul mRNA și inteligența artificială își au originea în centrele americane de cercetare și inovare.",
+              "Statele Unite atrag aproximativ 50% din investițiile globale de venture capital și concentrează 7 dintre primele 10 universități ale lumii. Această performanță reflectă un model economic axat pe investiții în inovare, mediu universitar de elită și libertate de inițiativă.",
             ],
             imageAlt:
               "Microcip și circuite — simbol al dominației tehnologice americane",
@@ -110,10 +110,10 @@ export function WhyAmericaSection() {
             ...WHY_AMERICA_BLOCKS[2],
             heading: "America cea Frumoasă",
             subheading:
-              "Din tundra arctică până în Everglades-ul tropical",
+              "Ecosisteme Continentale și Parcuri Protejate",
             paragraphs: [
-              "Nicio țară de pe Pământ nu deține o diversitate atât de extraordinară de peisaje naturale în interiorul unei singure frontiere. Statele Unite cuprind tundră arctică în Alaska, păduri tropicale în Hawaii, pereți de granit în Yosemite, minuni geotermale în Yellowstone, cel mai mare canion din lume și Marile Lacuri — care conțin 21% din toată apa dulce de la suprafața Pământului.",
-              'Theodore Roosevelt a numit conservarea acestui pământ "cel mai mare dar pe care o generație îl poate oferi celor care vin după". America a răspuns acestui apel prin primul sistem de parcuri naționale din lume — 63 de parcuri care protejează 85 de milioane de acri, mai mult decât masa terestră a multor țări.',
+              "Statele Unite adăpostesc o diversitate ecologică remarcabilă pe un singur continent. Cadrul lor natural include tundra arctică din Alaska, pădurile tropicale din Hawaii, pereții masivi de granit din Yosemite, bazinele geotermale din Yellowstone, Marele Canion și Marile Lacuri, care rețin 21% din apa dulce de la suprafața Pământului.",
+              'Theodore Roosevelt a numit conservarea acestui pământ "cel mai mare dar pe care o generație îl poate oferă urmașilor". America a concretizat această viziune prin crearea primului sistem de parcuri naționale din lume, protejând 85 de milioane de acri în 63 de parcuri naționale.',
             ],
             imageAlt:
               "Parc național american — bijuterie a sistemului de parcuri naționale din SUA",
@@ -144,8 +144,8 @@ export function WhyAmericaSection() {
             subheading:
               "Cea mai puternică forță militară din istoria civilizației umane",
             paragraphs: [
-              "Statele Unite mențin 11 grupuri de atac cu portavion — restul lumii la un loc are aproximativ patru. Bugetul lor de apărare, de 954 de miliarde de dolari, îl depășește pe cel al următoarelor zece națiuni la un loc. America operează baze în peste 80 de țări, menține o triadă nucleară și dispune de cea mai avansată forță militară din istorie.",
-              "Dar puterea militară americană nu se rezumă la echipamente. Ea a protejat ordinea internațională bazată pe reguli după 1945, libertatea de navigație care face posibil comerțul global și umbrela de securitate sub care democrațiile din Europa, Asia și Pacific au prosperat timp de opt decenii.",
+              "Statele Unite operează 11 grupuri de atac cu portavion, în timp ce restul lumii la un loc menține patru. Cu un buget de apărare de 954 de miliarde de dolari, America dispune de baze strategice în 80 de țări, operează o triadă nucleară completă și tehnică militară de ultimă generație.",
+              "Dincolo de echipamente și efective, forța militară americană menține ordinea internațională bazată pe reguli, libertatea căilor maritime comerciale și alianțele de securitate ale democrațiilor lumii.",
             ],
             imageAlt:
               "Avion cargo al Forțelor Aeriene SUA — simbol al razei de acțiune americane",

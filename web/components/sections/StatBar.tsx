@@ -67,7 +67,7 @@ export function StatBar() {
       : KEY_STATS;
   const statSources =
     locale === "ro"
-      ? "Surse: FMI, SIPRI, NPS, Fundația Nobel, DoD — date din 2025/2026"
+      ? "Surse: FMI, SIPRI, NPS, Fundația Nobel, DoD (date 2025–2026)"
       : HOME_COPY.statSources;
 
   return (

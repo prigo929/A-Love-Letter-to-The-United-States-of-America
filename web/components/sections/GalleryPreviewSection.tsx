@@ -241,7 +241,7 @@ export function GalleryPreviewSection() {
           eyebrow: "America Prin Obiectiv",
           title: "O Călătorie Vizuală",
           description:
-            "Opt cadre, organizate în jurul scării și simbolului: orbită, skyline, drum, monument, campus, suburbie, rampă de lansare. Galeria închide acum homepage-ul cu imagini care par curatoriate, nu întâmplătoare.",
+            "Opt cadre selectate ce reflectă scara teritorială, arhitectura urbană, patrimoniul natural și realizările tehnologice ale Statelor Unite.",
           previewLabel: "Previzualizare Galerie",
           featuredFrames: "Cadre Evidențiate",
           visualThemes: "Teme Vizuale",
@@ -249,7 +249,7 @@ export function GalleryPreviewSection() {
             "Deschide orice cadru pentru o privire mai atentă sau intră în galeria completă pentru a transforma această previzualizare într-o arhivă vizuală mai amplă.",
           cta: "Explorează Galeria Completă",
           closing:
-            "Secțiunea finală merge acum de la orbită la nivelul străzii: continent, skyline, peisaj, monument, campus, casă și rampă de lansare. Se citește mai mult ca o secvență și mai puțin ca o grămadă de miniaturi.",
+            "Galerie foto structurată pe arii fundamentale: scara continentală, profilele urbane, monumentele naturale, campusurile universitare, comunitățile rezidențiale și infrastructura spațială.",
           bottomCta: "Vezi Toate Fotografiile",
           closeLightbox: "Închide lightbox-ul",
         }
@@ -257,7 +257,7 @@ export function GalleryPreviewSection() {
           eyebrow: "America Through the Lens",
           title: "A Visual Journey",
           description:
-            "Eight frames, organized around scale and symbol: orbit, skyline, road, monument, campus, suburb, launchpad. The gallery now closes the homepage with images that feel curated rather than incidental.",
+            "Eight selected frames capturing the scale, urban architecture, natural heritage, and technological achievements of the United States.",
           previewLabel: "Gallery Preview",
           featuredFrames: "Featured Frames",
           visualThemes: "Visual Themes",
@@ -265,7 +265,7 @@ export function GalleryPreviewSection() {
             "Open any frame for a closer look, or jump into the full gallery page to turn this preview into a deeper visual archive.",
           cta: "Explore Full Gallery",
           closing:
-            "The final section now moves from orbit to street level: continent, skyline, landscape, monument, campus, home, and launch. It reads more like a sequence and less like a loose pile of thumbnails.",
+            "The closing gallery presents key perspectives: continental scale, urban skylines, natural monuments, university centers, residential communities, and space infrastructure.",
           bottomCta: "View All Photos",
           closeLightbox: "Close lightbox",
         };

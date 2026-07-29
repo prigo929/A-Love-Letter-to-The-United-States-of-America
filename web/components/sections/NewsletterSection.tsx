@@ -15,12 +15,12 @@ export function NewsletterSection() {
       ? {
           title: "Alătură-te Celebrării",
           description:
-            "Primește actualizări despre conținut nou care celebrează realizările Americii — de la repere economice la descoperiri științifice și minuni naturale.",
+            "Rămâi la curent cu analize noi privind datele economice, avansul tehnologic și patrimoniul natural al Statelor Unite.",
         }
       : {
           title: "Join the Celebration",
           description:
-            "Get updates on new content celebrating America's achievements — from economic milestones to scientific breakthroughs to natural wonders.",
+            "Receive updates on original analysis covering American economic data, technological milestones, and heritage.",
         };
 
   return (
