@@ -30,10 +30,8 @@ interface Dessert {
 
 const WIKI = {
   cheesecake: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Carnegie_Deli_Strawberry_Cheesecake.jpg/1280px-Carnegie_Deli_Strawberry_Cheesecake.jpg",
-  jello: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Strawberry_flavored_Gelatin.jpg/1280px-Strawberry_flavored_Gelatin.jpg",
   cupcake: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/2019-08-05_15_07_53_Cupcakes_with_chocolate_frosting_and_sprinkles_in_the_Dulles_section_of_Sterling%2C_Loudoun_County%2C_Virginia.jpg/1280px-2019-08-05_15_07_53_Cupcakes_with_chocolate_frosting_and_sprinkles_in_the_Dulles_section_of_Sterling%2C_Loudoun_County%2C_Virginia.jpg",
   bananaSplit: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/%E2%80%9CAll_American%E2%80%9D_Banana_Split.jpg/1280px-%E2%80%9CAll_American%E2%80%9D_Banana_Split.jpg",
-  cottonCandy: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Candy_Floss_-_Wellington%2C_NZ_-_DSC09546.jpg/1280px-Candy_Floss_-_Wellington%2C_NZ_-_DSC09546.jpg",
 } as const;
 
 const DESSERTS: Dessert[] = [
@@ -63,7 +61,7 @@ const DESSERTS: Dessert[] = [
   },
   {
     key: "jello", name: "Jell-O", nameRo: "Jell-O", year: "1899",
-    image: WIKI.jello, unoptimized: true,
+    image: SITE_IMAGES.culture.foodJelloMold,
     story:
       "Gelatin is boiled animal collagen — skin, cartilage, bone — and for centuries a shimmering mound of it signaled banquet luxury because it took a master chef to make. The Industrial Revolution changed that: in 1899 Orator Woodward of LeRoy, New York bought a powdered-gelatin recipe from a glue maker and churned it out in 3-ounce boxes identical to today's. It was a miracle product — mix, add anything, wait, and you had a dessert — and it was proclaimed 'America's dessert', at one point handed to new arrivals at Ellis Island as an introduction to American life. It later curdled into a symbol of square 1950s conformity, which is roughly where its reputation still sits.",
     storyRo:
@@ -111,7 +109,7 @@ const DESSERTS: Dessert[] = [
   },
   {
     key: "cotton-candy", name: "Cotton Candy", nameRo: "Vată de zahăr", year: "1904",
-    image: WIKI.cottonCandy, unoptimized: true,
+    image: SITE_IMAGES.culture.foodCottonCandy,
     story:
       "Cotton candy exists because of one machine. In 1897 two men from Nashville — one of them, fittingly, a dentist named William Morrison — patented a device that spun sugar into fine filaments, and debuted it as 'fairy floss' at the 1904 St. Louis World's Fair, an event that shaped an astonishing amount of American food culture. It was an instant hit and has been a carnival fixture ever since. More than a century on, we make it the same way, with the same technology, for the same purpose: something for a child to munch on, brainlessly, while staring at a prize-winning hog.",
     storyRo:

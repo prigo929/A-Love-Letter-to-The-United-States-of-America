@@ -14,12 +14,14 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { SITE_IMAGES } from "@/lib/site-images";
 
-// CC/CC0 imagery from Wikimedia Commons (upload.wikimedia.org is allow-listed).
+// Steak, milk and the sandwich are local (SITE_IMAGES); the apple is CC/CC0 from
+// Wikimedia Commons (upload.wikimedia.org is allow-listed).
 const IMG = {
-  steak: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/DFC_2081_Juicy_grilled_steak_topped_with_herb_butter_served_with_fries_saut%C3%A9ed_green_beans_coleslaw_and_a_side_of_gravy.jpg/1280px-DFC_2081_Juicy_grilled_steak_topped_with_herb_butter_served_with_fries_saut%C3%A9ed_green_beans_coleslaw_and_a_side_of_gravy.jpg",
-  milk: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Glass_of_Milk_%2833657535532%29.jpg/1280px-Glass_of_Milk_%2833657535532%29.jpg",
-  sandwich: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Carnegie_Deli_Huge_Club_Sandwich_%286279792312%29.jpg",
+  steak: SITE_IMAGES.culture.foodSteak,
+  milk: SITE_IMAGES.culture.foodGlassOfMilk,
+  sandwich: SITE_IMAGES.culture.foodHamSandwich,
   apple: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/2020-03-14_23_55_38_A_single_Nature%27s_Promise_Organic_Red_Delicious_Apple_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/1280px-2020-03-14_23_55_38_A_single_Nature%27s_Promise_Organic_Red_Delicious_Apple_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg",
 } as const;
 
@@ -27,6 +29,10 @@ interface Food {
   key: string;
   icon: string;
   image: string;
+  // object-position for the crop; the milk pour needs to stay centered.
+  objectPosition?: string;
+  // remote images need `unoptimized`; local ones are already sized.
+  unoptimized?: boolean;
   name: string;
   nameRo: string;
   tagline: string;
@@ -59,6 +65,7 @@ const FOODS: Food[] = [
     key: "milk",
     icon: "🥛",
     image: IMG.milk,
+    objectPosition: "center",
     name: "Milk",
     nameRo: "Laptele",
     tagline: "The Holstein century · 1852",
@@ -95,6 +102,7 @@ const FOODS: Food[] = [
     key: "apple",
     icon: "🍎",
     image: IMG.apple,
+    unoptimized: true,
     name: "Apple",
     nameRo: "Mărul",
     tagline: "Johnny Appleseed's cider · 1800s",
@@ -142,8 +150,8 @@ export function FourFoodsExplorer() {
                   fill
                   sizes="160px"
                   className="object-cover transition-all duration-300"
-                  style={{ filter: on ? "none" : "grayscale(0.35)" }}
-                  unoptimized
+                  style={{ filter: on ? "none" : "grayscale(0.35)", objectPosition: f.objectPosition ?? "center" }}
+                  unoptimized={f.unoptimized}
                 />
               </div>
               <span
@@ -166,7 +174,8 @@ export function FourFoodsExplorer() {
             fill
             sizes="(max-width: 768px) 100vw, 48vw"
             className="object-cover"
-            unoptimized
+            style={{ objectPosition: active.objectPosition ?? "center" }}
+            unoptimized={active.unoptimized}
           />
         </div>
         <div className="flex flex-col justify-center">

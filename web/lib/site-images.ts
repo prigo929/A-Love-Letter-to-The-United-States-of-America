@@ -429,6 +429,11 @@ import foodBrisket from "@/IMAGES/Culture/Food/Texas Barbecue Brisket.jpeg";
 import foodMacCheese from "@/IMAGES/Culture/Food/mac-cheese-stretching-fork.jpg";
 import foodIceCreamTruck from "@/IMAGES/Culture/Food/ice cream truck.jpg";
 import foodBbqMap from "@/IMAGES/Culture/Food/Illustrated Regional United States Barbecue Map Showing Local Meat Specialties.jpg";
+import foodSteak from "@/IMAGES/Culture/Food/Steak.jpg";
+import foodHamSandwich from "@/IMAGES/Culture/Food/Ham Sandwich.jpg";
+import foodGlassOfMilk from "@/IMAGES/Culture/Food/Glass of Milk.jpg";
+import foodJelloMold from "@/IMAGES/Culture/Food/Jello Mold.jpg";
+import foodCottonCandy from "@/IMAGES/Culture/Food/Cotton Candy.jpg";
 
 // Sports — new action images
 import sportsAliVsFrazierJab from "@/IMAGES/Culture/Sports/Muhammad Ali Landing Powerful Left Jab On Joe Frazier During Historic Bout.webp";
@@ -890,6 +895,11 @@ export const SITE_IMAGES = {
     foodIceCreamTruck: foodIceCreamTruck.src,
     foodBbqMap: foodBbqMap.src,
     foodPepperoniPizza: foodPepperoniPizza.src,
+    foodSteak: foodSteak.src,
+    foodHamSandwich: foodHamSandwich.src,
+    foodGlassOfMilk: foodGlassOfMilk.src,
+    foodJelloMold: foodJelloMold.src,
+    foodCottonCandy: foodCottonCandy.src,
 
     // Sports — action & venues
     jesseOwens: sportsJesseOwens.src,
