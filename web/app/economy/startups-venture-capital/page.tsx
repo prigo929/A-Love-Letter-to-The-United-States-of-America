@@ -53,7 +53,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Startups & Venture Capital | Economy",
   description:
-    "America attracts 65% of all global venture capital and is home to 659 unicorn companies — about half the world's total. Silicon Valley, the greatest engine of innovation and wealth creation in history.",
+    "America attracts 65% of all global venture capital and is home to 659 unicorn companies, about half the world's total. Silicon Valley, the greatest engine of innovation and wealth creation in history.",
   alternates: { canonical: "/economy/startups-venture-capital" },
 };
 
@@ -77,12 +77,12 @@ export default async function StartupsVCPage() {
   const vcStatTrio =
     locale === "ro"
       ? [
-          { value: "350K", label: "brevete acordate anual în SUA — nr. 1 mondial ca valoare a PI" },
+          { value: "350K", label: "brevete acordate anual în SUA: nr. 1 mondial ca valoare a PI" },
           { value: "$250B+", label: "investiți anual în R&D de firmele tech americane (Amazon, Alphabet, Meta, Microsoft)" },
           { value: "$2T+", label: "valoarea produsă de primele 10 randamente VC din SUA, din investiții minuscule" },
         ]
       : [
-          { value: "350K", label: "US patents granted every year — #1 in the world by IP value" },
+          { value: "350K", label: "US patents granted every year: #1 in the world by IP value" },
           { value: "$250B+", label: "invested in R&D each year by US tech firms (Amazon, Alphabet, Meta, Microsoft)" },
           { value: "$2T+", label: "in value produced by the top 10 US VC returns from tiny checks" },
         ];
@@ -92,12 +92,12 @@ export default async function StartupsVCPage() {
           {
             fact: "Capitolul 11: eșecul ca stare recuperabilă",
             detail:
-              "Niciun alt cadru de faliment nu protejează atât de complet capacitatea unei afaceri de a continua să opereze în timp ce își restructurează datoriile. A trata eșecul ca recuperabil, nu ca un stigmat permanent, este un avantaj structural discret al ecosistemului american.",
+              "Niciun alt cadru de faliment nu protejează atât de complet capacitatea unei afaceri de a continua să opereze în timp ce își restructurează datoriile. A tratar eșecul ca recuperabil, nu ca un stigmat permanent, este un avantaj structural discret al ecosistemului american.",
           },
           {
             fact: "Formare fără fricțiune",
             detail:
-              "În timp ce reglementările europene cer săptămâni sau luni pentru a înființa și angaja legal, o companie americană se poate forma în ore — atrăgând marea majoritate a capitalului de risc global.",
+              "În timp ce reglementările europene cer săptămâni sau luni pentru a înființa și angaja legal, o companie americană se poate forma în ore, atrăgând marea majoritate a capitalului de risc global.",
           },
         ]
       : [
@@ -109,14 +109,14 @@ export default async function StartupsVCPage() {
           {
             fact: "Frictionless formation",
             detail:
-              "Where European regulation takes weeks or months to legally incorporate and hire, an American company can form in hours — attracting the vast majority of global venture capital.",
+              "Where European regulation takes weeks or months to legally incorporate and hire, an American company can form in hours, attracting the vast majority of global venture capital.",
           },
         ];
 
   const copy =
     locale === "ro"
       ? {
-          heroAlt: "Birou modern de startup — cultura inovației din Silicon Valley",
+          heroAlt: "Birou modern de startup: cultura inovației din Silicon Valley",
           heroEyebrow: "Venture Capital și Startup-uri",
           heroLead: "SILICON\nVALLEY",
           heroAccent: "ESTE O\nPLANETĂ",
@@ -124,9 +124,9 @@ export default async function StartupsVCPage() {
             "Ecosistemul american de startup-uri concentrează companii de top și resurse financiare pentru inovație tehnologică.",
           overviewTitle: "De ce America conduce lumea în capitalul pentru inovație",
           vcChartTitle: "Investiții venture capital după țară (2026, miliarde USD)",
-          unicornTitle: "Economia unicornilor — 659 și în creștere",
+          unicornTitle: "Economia unicornilor: 659 și în creștere",
           unicornBody:
-            "Un «unicorn» — o companie privată evaluată la cel puțin 1 miliard de dolari — era cândva considerat o raritate mitologică. America a construit 659, aproximativ jumătate din totalul mondial de circa 1.270. Sursele diferă asupra numărului exact, fiindcă «unicorn» este mai degrabă o metodologie decât un fapt — CB Insights, PitchBook și Hurun plasează toate SUA în jurul a jumătate. Numai în California s-au născut mai mulți unicorni decât în toată Europa la un loc.",
+            "Un «unicorn» (o companie privată evaluată la cel puțin 1 miliard de dolari) era cândva considerat o raritate mitologică. America a construit 659, aproximativ jumătate din totalul mondial de circa 1.270. Sursele diferă asupra numărului exact, fiindcă «unicorn» este mai degrabă o metodologie decât un fapt: CB Insights, PitchBook și Hurun plasează toate SUA în jurul a jumătate. Numai în California s-au născut mai mulți unicorni decât în toată Europa la un loc.",
           unicornChartTitle: "Companii unicorn după țara de origine (2026)",
           rewiredTitle: "Companiile care au transformat tehnologia globală",
           rewiredBody:
@@ -138,19 +138,19 @@ export default async function StartupsVCPage() {
           valueLabel: "Valoarea de azi",
           ecosystemsTitle: "Ecosistemele de startup ale Americii",
           ecosystemsBody:
-            "Silicon Valley ia cele mai multe titluri, dar ecosistemul american de startup-uri se întinde acum în șase mari centre metropolitane — fiecare cu propria specializare, bază de talent și comunitate de investitori.",
+            "Silicon Valley ia cele mai multe titluri, dar ecosistemul american de startup-uri se întinde acum în șase mari centre metropolitane, fiecare cu propria specializare, bază de talent și comunitate de investitori.",
           unicornsLabel: "Unicorni",
           annualVcLabel: "VC anual",
           firmsTitle: "Cele mai influente firme VC din lume",
           firmsBody:
-            "Toate cele mai importante firme de venture capital din lume își au sediul în Statele Unite. Aceste firme nu doar investesc — ele modelează strategia tehnologică globală, recrutează cei mai buni ingineri din lume și fabrică companiile de mâine.",
+            "Toate cele mai importante firme de venture capital din lume își au sediul în Statele Unite. Aceste firme nu doar investesc: ele modelează strategia tehnologică globală, recrutează cei mai buni ingineri din lume și fabrică companiile de mâine.",
           portfolioLabel: "Portofoliu notabil:",
           vcPullLabel:
-            "valoarea combinată a companiilor fondate doar de absolvenți Stanford — Google, NVIDIA, Netflix, PayPal, Cisco, HP.",
+            "valoarea combinată a companiilor fondate doar de absolvenți Stanford: Google, NVIDIA, Netflix, PayPal, Cisco, HP.",
           vcNumbersEyebrow: "Motorul, în cifre",
           numbersTitle: "În cifre",
           insightsEyebrow: "Avantaje structurale",
-          quoteTitle: "Co-fondator, Andreessen Horowitz — Menlo Park, California",
+          quoteTitle: "Co-fondator, Andreessen Horowitz: Menlo Park, California",
           vcHistoryTitle: "Un sfert de secol de capital de risc american",
           vcHistoryBody:
             "Din 2000 până în 2025, capitalul de risc american a urmat o traiectorie parabolică. După explozia dot-com din 2000 (105Mld$) și contractarea care a urmat, ecosistemul și-a revenit și a crescut constant. Apoi a venit valul AI: în 2021 (348Mld$), în 2024 (320Mld$) și în 2025 (413Mld$) s-au stabilit record după record. Nici o altă țară nu atrage capital de risc la această scară.",
@@ -158,12 +158,12 @@ export default async function StartupsVCPage() {
             "Investiții de venture capital în SUA (2000–2025, miliarde USD)",
           formationTitle: "Motorul de sub capitalul de risc",
           formationBody:
-            "Capitalul de risc finanțează câteva mii de companii pe an. Dedesubt se află cealaltă Americă antreprenorială: 5,25 milioane de cereri de înființare a unei firme depuse în 2024, mai mult decât dublul celor 2,50 milioane din 2005. Pandemia a declanșat cel mai mare val din istorie — 546.719 cereri doar în iulie 2020 — și, spre deosebire de alte șocuri, nivelul nu a mai coborât niciodată. A doua bandă este jumătatea lucidă a acestei povești. Doar aproximativ o treime dintre aceste cereri sunt ceea ce Census numește „high-propensity”: firme care probabil vor avea vreodată un angajat. Restul sunt persoane fizice autorizate, activități secundare și entități de tip holding. Avântul antreprenorial este real, dar înseamnă mai ales oameni care lucrează pe cont propriu.",
+            "Capitalul de risc finanțează câteva mii de companii pe an. Dedesubt se află cealaltă Americă antreprenorială: 5,25 milioane de cereri de înființare a unei firme depuse în 2024, mai mult decât dublul celor 2,50 milioane din 2005. Pandemia a declanșat cel mai mare val din istorie (546.719 cereri doar în iulie 2020) și, spre deosebire de alte șocuri, nivelul nu a mai coborât niciodată. A doua bandă este jumătatea lucidă a acestei povești. Doar aproximativ o treime dintre aceste cereri sunt ceea ce Census numește „high-propensity”: firme care probabil vor avea vreodată un angajat. Restul sunt persoane fizice autorizate, activități secundare și entități de tip holding. Avântul antreprenorial este real, dar înseamnă mai ales oameni care lucrează pe cont propriu.",
           formationChartTitle: "Cereri de înființare a unei afaceri, lunar",
           formationChartSubtitle: "Toate cererile față de cele care probabil vor angaja, din 2004",
           rdTitle: "Cheltuiala de sub pariuri",
           rdBody:
-            "Capitalul de risc prinde titlurile, dar este vârful vizibil al unui lucru mult mai mare. Investiția americană în cercetare-dezvoltare — laboratoare corporative, știință federală, cercetare universitară — a depășit 1,1 trilioane de dolari pe an, de aproximativ cinci ori cât plasează anual capitalul de risc. În 1947 era de 2,4 miliarde. Aceasta este conducta care produce lucrurile care merită finanțate: tranzistorul, GPS-ul, internetul, ARN-ul mesager. Capitalul de risc este modul în care aceste pariuri sunt comercializate, nu modul în care sunt descoperite.",
+            "Capitalul de risc prinde titlurile, dar este vârful vizibil al unui lucru mult mai mare. Investiția americană în cercetare-dezvoltare (laboratoare corporative, știință federală, cercetare universitară) a depășit 1,1 trilioane de dolari pe an, de aproximativ cinci ori cât plasează anual capitalul de risc. În 1947 era de 2,4 miliarde. Aceasta este conducta care produce lucrurile care merită finanțate: tranzistorul, GPS-ul, internetul, ARN-ul mesager. Capitalul de risc este modul în care aceste pariuri sunt comercializate, nu modul în care sunt descoperite.",
           rdChartTitle: "Investiția SUA în cercetare-dezvoltare, din 1947",
           rdChartSubtitle: "Trimestrial, la rată anuală, în dolari curenți",
           rdValueLabel: "Investiție în C&D, rată anuală",
@@ -173,10 +173,10 @@ export default async function StartupsVCPage() {
           ipoBody:
             "IPO-urile americane au înregistrat cel mai dramatic ciclu din istoria modernă: boom-ul SPAC din 2021 (397 IPO-uri, 142,4Mld$) urmat de cel mai sever declin din cauza ciclului de majorare al dobânzilor Fed (71 IPO-uri în 2022). Reboundul din 2025 (202 IPO-uri, 44Mld$) este alimentat de dominia în AI. Faptul că NASDAQ rămâne bursa preferată pentru IPO-uri tech este un avantaj structural american.",
           ipoChartTitle: "Piața IPO din SUA (2020–2025): Deal-uri și Venituri",
-          ipoSource: "Sursă: Renaissance Capital — IPO-uri cu capitaliz. ≥ 50Mld$",
+          ipoSource: "Sursă: Renaissance Capital: IPO-uri cu capitaliz. ≥ 50Mld$",
           dealStageTitle: "Unde Merge Capitalul de Risc: Distribuția pe Etape (2025)",
           dealStageBody:
-            "Mega-rundele de 1 miliard$ i-au depășit pe toți ceilalți: doar 180 de tranzacții au absorbit 217Mld$ — mai mult decât toate celelalte etape combinate. Acest lucru reflectă concentrarea structurala a capitalului de risc în ‘AI winners’ și în starturi technologice late-stage. Start-up-urile timpurii primeșc mai puțin în termeni absoluti, dar mult mai mult în număr de deal-uri.",
+            "Mega-rundele de 1 miliard$ i-au depășit pe toți ceilalți: doar 180 de tranzacții au absorbit 217Mld$, mai mult decât toate celelalte etape combinate. Acest lucru reflectă concentrarea structurala a capitalului de risc în ‘AI winners’ și în starturi technologice late-stage. Start-up-urile timpurii primeșc mai puțin în termeni absoluti, dar mult mai mult în număr de deal-uri.",
           dealStageChartTitle: "Distribuția Capitalului de Risc pe Etape de Investiție (2025)",
           dealStageSource: "Sursă: NVCA / PitchBook Venture Monitor 2025",
           dryPowderTitle: "Rezervele de Capital: Capitalul de Risc Neutilizat (Dry Powder)",
@@ -202,7 +202,7 @@ export default async function StartupsVCPage() {
           nextLink: "Dominația Dolarului →",
         }
       : {
-          heroAlt: "Modern startup office — Silicon Valley innovation culture",
+          heroAlt: "Modern startup office: Silicon Valley innovation culture",
           heroEyebrow: "Venture Capital & Startups",
           heroLead: "SILICON\nVALLEY",
           heroAccent: "IS A\nPLANET",
@@ -210,9 +210,9 @@ export default async function StartupsVCPage() {
             "America's startup ecosystem hosts leading global technology companies and venture capital resources.",
           overviewTitle: "Why America Leads the World in Innovation Capital",
           vcChartTitle: "Venture Capital Investment by Country (2026, USD Billions)",
-          unicornTitle: "The Unicorn Economy — 659 and Counting",
+          unicornTitle: "The Unicorn Economy: 659 and Counting",
           unicornBody:
-            'A "unicorn" — a private company valued at $1 billion or more — was once considered a mythological rarity. America has built 659 of them, about half the world\'s total of roughly 1,270. Trackers disagree on the exact count because "unicorn" is a methodology rather than a fact — CB Insights, PitchBook and Hurun all put the US somewhere near half. More unicorns have been born in California alone than in all of Europe combined.',
+            'A "unicorn" (a private company valued at $1 billion or more) was once considered a mythological rarity. America has built 659 of them, about half the world\'s total of roughly 1,270. Trackers disagree on the exact count because "unicorn" is a methodology rather than a fact: CB Insights, PitchBook and Hurun all put the US somewhere near half. More unicorns have been born in California alone than in all of Europe combined.',
           unicornChartTitle: "Unicorn Companies by Country of Origin (2026)",
           rewiredTitle: "The Companies That Transformed Global Technology",
           rewiredBody:
@@ -224,19 +224,19 @@ export default async function StartupsVCPage() {
           valueLabel: "Today's Value",
           ecosystemsTitle: "America's Startup Ecosystems",
           ecosystemsBody:
-            "Silicon Valley gets the headlines, but the American startup ecosystem now spans six major metropolitan hubs — each with its own specialization, talent base, and investor community.",
+            "Silicon Valley gets the headlines, but the American startup ecosystem now spans six major metropolitan hubs, each with its own specialization, talent base, and investor community.",
           unicornsLabel: "Unicorns",
           annualVcLabel: "Annual VC",
           firmsTitle: "The World's Most Influential VC Firms",
           firmsBody:
-            "Every one of the world's most consequential venture capital firms is headquartered in the United States. These firms don't just invest — they shape global technology strategy, recruit the world's best engineers, and manufacture the companies of tomorrow.",
+            "Every one of the world's most consequential venture capital firms is headquartered in the United States. These firms don't just invest: they shape global technology strategy, recruit the world's best engineers, and manufacture the companies of tomorrow.",
           portfolioLabel: "Notable portfolio:",
           vcPullLabel:
-            "the combined value of companies founded by Stanford alumni alone — Google, NVIDIA, Netflix, PayPal, Cisco, HP.",
+            "the combined value of companies founded by Stanford alumni alone: Google, NVIDIA, Netflix, PayPal, Cisco, HP.",
           vcNumbersEyebrow: "The engine, in numbers",
           numbersTitle: "By the Numbers",
           insightsEyebrow: "Structural advantages",
-          quoteTitle: "Co-Founder, Andreessen Horowitz — Menlo Park, California",
+          quoteTitle: "Co-Founder, Andreessen Horowitz: Menlo Park, California",
           vcHistoryTitle: "25 Years of American Risk Capital",
           vcHistoryBody:
             "From 2000 to 2025, US venture capital followed a parabolic trajectory. After the dot-com peak in 2000 ($105B) and subsequent contraction, the ecosystem recovered and grew steadily. Then came the AI wave: 2021 ($348B), 2024 ($320B), and 2025 ($413B) each set records. No other country attracts risk capital at this scale.",
@@ -244,12 +244,12 @@ export default async function StartupsVCPage() {
             "US Venture Capital Investment (2000–2025, USD Billions)",
         formationTitle: "The Engine Underneath Venture Capital",
         formationBody:
-          "Venture capital funds a few thousand companies a year. Underneath it sits the other entrepreneurial America: 5.25 million business applications filed in 2024, more than double the 2.50 million of 2005. The pandemic set off the largest surge on record — 546,719 applications in July 2020 alone — and unlike other shocks, the level never came back down. The second band is the sober half of that story. Only about a third of those applications are what the Census calls high-propensity: businesses likely to ever put someone on a payroll. The rest are sole proprietorships, side ventures, and holding entities. The founding boom is real, but it is mostly people working for themselves.",
+          "Venture capital funds a few thousand companies a year. Underneath it sits the other entrepreneurial America: 5.25 million business applications filed in 2024, more than double the 2.50 million of 2005. The pandemic set off the largest surge on record (546,719 applications in July 2020 alone) and unlike other shocks, the level never came back down. The second band is the sober half of that story. Only about a third of those applications are what the Census calls high-propensity: businesses likely to ever put someone on a payroll. The rest are sole proprietorships, side ventures, and holding entities. The founding boom is real, but it is mostly people working for themselves.",
         formationChartTitle: "New business applications, monthly",
         formationChartSubtitle: "All applications against those likely to become employers, since 2004",
         rdTitle: "The Spending Underneath the Bets",
         rdBody:
-          "Venture capital gets the headlines, but it is the visible tip of something much larger. American R&D investment — corporate labs, federal science, university research — crossed $1.1 trillion a year, roughly five times what venture capital deploys annually. It was $2.4 billion in 1947. This is the pipeline that produces the things worth funding: the transistor, GPS, the internet, mRNA. VC is how those bets get commercialised, not how they get discovered.",
+          "Venture capital gets the headlines, but it is the visible tip of something much larger. American R&D investment (corporate labs, federal science, university research) crossed $1.1 trillion a year, roughly five times what venture capital deploys annually. It was $2.4 billion in 1947. This is the pipeline that produces the things worth funding: the transistor, GPS, the internet, mRNA. VC is how those bets get commercialised, not how they get discovered.",
         rdChartTitle: "U.S. research and development investment, since 1947",
         rdChartSubtitle: "Quarterly, at an annual rate, in current dollars",
         rdValueLabel: "R&D investment, annual rate",
@@ -259,10 +259,10 @@ export default async function StartupsVCPage() {
           ipoBody:
             "US IPOs have seen the most dramatic cycle in modern history: the 2021 SPAC boom (397 IPOs, $142.4B) followed by the sharpest rate-driven collapse on record (71 IPOs in 2022). The 2025 rebound (202 IPOs, $44B) is being powered by AI-sector listings. The fact that NASDAQ remains the preferred exchange for high-growth tech IPOs worldwide is a structural American advantage.",
           ipoChartTitle: "US IPO Market (2020–2025): Deal Count & Proceeds",
-          ipoSource: "Source: Renaissance Capital — IPOs with market cap ≥ $50M",
+          ipoSource: "Source: Renaissance Capital: IPOs with market cap ≥ $50M",
           dealStageTitle: "Where Risk Capital Goes: Deal Stage Breakdown (2025)",
           dealStageBody:
-            "Mega-rounds of $1B+ have outpaced everyone else: just 180 transactions absorbed $217B — more than all other stages combined. This reflects the structural concentration of risk capital into \u2018AI winners\u2019 and late-stage tech. Early-stage startups receive less in absolute terms but far more in deal count.",
+            "Mega-rounds of $1B+ have outpaced everyone else: just 180 transactions absorbed $217B, more than all other stages combined. This reflects the structural concentration of risk capital into \u2018AI winners\u2019 and late-stage tech. Early-stage startups receive less in absolute terms but far more in deal count.",
           dealStageChartTitle: "US Venture Capital Deployment by Deal Stage (2025)",
           dealStageSource: "Source: NVCA / PitchBook Venture Monitor 2025 Full-Year",
           dryPowderTitle: "Unspent Capital: U.S. Venture Capital Dry Powder",

@@ -219,27 +219,27 @@ export default async function TradeAndExportsPage() {
   const copy =
     locale === "ro"
       ? {
-          heroAlt: "Port de containere — motorul exporturilor americane",
+          heroAlt: "Port de containere: motorul exporturilor americane",
           heroEyebrow: "Comerț și Exporturi",
           heroLead: "AMERICA SUSȚINE",
           heroAccent: "COMERȚUL GLOBAL",
           heroBody:
-            "America exportă o diversitate largă de bunuri cu valoare adăugată ridicată — de la avioane și semiconductori la produse agricole, petrol și servicii tehnologice.",
+            "America exportă o diversitate largă de bunuri cu valoare adăugată ridicată: de la avioane și semiconductori la produse agricole, petrol și servicii tehnologice.",
           overviewTitle: "Mașina de export a Americii",
           exportTitle: "Principalele categorii de export ale SUA",
           exportBody:
-            "Spre deosebire de țările în curs de dezvoltare care exportă materii prime, Statele Unite exportă cele mai sofisticate produse cu marjă mare din lume — avioane, microcipuri, dispozitive medicale și produse farmaceutice. Sunt produse care cer decenii și miliarde în cercetare și dezvoltare, consolidând poziția Americii în vârful lanțului valoric global. Numai produsele farmaceutice reprezintă o linie de export de 120 de miliarde de dolari.",
+            "Spre deosebire de țările în curs de dezvoltare care exportă materii prime, Statele Unite exportă cele mai sofisticate produse cu marjă mare din lume: avioane, microcipuri, dispozitive medicale și produse farmaceutice. Sunt produse care cer decenii și miliarde în cercetare și dezvoltare, consolidând poziția Americii în vârful lanțului valoric global. Numai produsele farmaceutice reprezintă o linie de export de 120 de miliarde de dolari.",
           exportChartTitle: "Topul categoriilor de export ale SUA (2025, miliarde USD)",
           exportSource: "Sursă: U.S. Census Bureau / BEA Raport FT-900 (2025 Annual)",
           balanceTitle: "Deficitul, spus pe șleau",
           balanceBody:
-            "America cumpără de la lume mai mult decât îi vinde, și face asta din anii '70. Această pagină susține că firma comercială americană este o forță, așa că trebuie să arate cifra pe care acest argument trebuie să o treacă, nu să o ocolească. Două lucruri merită citite de pe grafic. Diferența este reală și persistentă. Dar ambele linii urcă abrupt — Statele Unite exportă astăzi mult mai mult decât au făcut-o vreodată, iar un deficit este ceea ce se vede atunci când o țară este suficient de bogată încât să cumpere producția lumii, vânzând în același timp 2,2 trilioane de dolari din propria producție.",
+            "America cumpără de la lume mai mult decât îi vinde, și face asta din anii '70. Această pagină susține că firma comercială americană este o forță, așa că trebuie să arate cifra pe care acest argument trebuie să o treacă, nu să o ocolească. Două lucruri merită citite de pe grafic. Diferența este reală și persistentă. Dar ambele linii urcă abrupt: Statele Unite exportă astăzi mult mai mult decât au făcut-o vreodată, iar un deficit este ceea ce se vede atunci când o țară este suficient de bogată încât să cumpere producția lumii, vânzând în același timp 2,2 trilioane de dolari din propria producție.",
           balanceChartTitle: "Exporturi vs. importuri de bunuri și servicii ale SUA, 1970–2026",
           balanceChartSubtitle: "Trimestrial, la rată anuală, în dolari curenți",
           balanceSource: "Sursă: Bureau of Economic Analysis (via FRED: EXPGS / IMPGS)",
           partnersTitle: "Principalii parteneri comerciali ai Americii",
           partnersBody:
-            "Comerțul total al SUA (bunuri + servicii) depășește anual 6 trilioane de dolari. Cele mai mari relații comerciale se întind pe tot globul — de la Canada și Mexic în cadrul USMCA până la centrele tehnologice și de producție ale Asiei.",
+            "Comerțul total al SUA (bunuri + servicii) depășește anual 6 trilioane de dolari. Cele mai mari relații comerciale se întind pe tot globul: de la Canada și Mexic în cadrul USMCA până la centrele tehnologice și de producție ale Asiei.",
           championsTitle: "Campionii globali ai exporturilor americane",
           companyLabel: "Companie",
           sectorLabel: "Sector",
@@ -248,7 +248,7 @@ export default async function TradeAndExportsPage() {
           enginesEyebrow: "Cele două motoare",
           enginesTitle: "Bunuri și servicii: motoarele gemene ale comerțului american",
           enginesLead:
-            "Două motoare distincte propulsează comerțul american: bunuri fizice expediate din porturi și ferme, și servicii invizibile livrate prin cabluri și contracte. Împreună depășesc 3 trilioane de dolari în exporturi anuale — o combinație pe care nicio altă economie nu o poate egala.",
+            "Două motoare distincte propulsează comerțul american: bunuri fizice expediate din porturi și ferme, și servicii invizibile livrate prin cabluri și contracte. Împreună depășesc 3 trilioane de dolari în exporturi anuale, o combinație pe care nicio altă economie nu o poate egala.",
           engineGoodsLabel: "Exporturi de bunuri / an",
           engineServicesLabel: "Exporturi de servicii / an",
           engineSoftwareLabel: "Software și proprietate intelectuală / an",
@@ -259,41 +259,41 @@ export default async function TradeAndExportsPage() {
           vsUsHeader: "Statele Unite",
           vsWorldHeader: "Restul lumii",
           pullStatLabel:
-            "de colete traversează America în fiecare zi — coloana vertebrală privată a comerțului global, FedEx și UPS, finanțată integral de piețele de capital.",
+            "de colete traversează America în fiecare zi: coloana vertebrală privată a comerțului global, FedEx și UPS, finanțată integral de piețele de capital.",
           servicesEyebrow: "Superputerea ascunsă a exporturilor",
           servicesTitle: "Serviciile: surplusul comercial de un trilion de dolari al Americii",
           servicesP1:
-            "Deși SUA au deficit comercial la bunuri, ele au un surplus masiv în servicii — aproximativ 250+ mld. $ anual. Consultanță financiară, cloud computing, licențiere TV și film, educație universitară pentru studenți străini, abonamente software și consultanță — aceste exporturi invizibile depășesc ceea ce majoritatea țărilor vând în bunuri.",
+            "Deși SUA au deficit comercial la bunuri, ele au un surplus masiv în servicii: aproximativ 250+ mld. $ anual. Consultanță financiară, cloud computing, licențiere TV și film, educație universitară pentru studenți străini, abonamente software și consultanță: aceste exporturi invizibile depășesc ceea ce majoritatea țărilor vând în bunuri.",
           servicesP2:
-            "Când o bancă din Coreea plătește Goldman Sachs pentru consultanță M&A, când o firmă germană licențiază Adobe Creative Suite, când un student brazilian plătește taxa la Harvard — America exportă bogăție fără să trimită niciun container.",
+            "Când o bancă din Coreea plătește Goldman Sachs pentru consultanță M&A, când o firmă germană licențiază Adobe Creative Suite, când un student brazilian plătește taxa la Harvard: America exportă bogăție fără să trimită niciun container.",
           servicesImageAlt:
-            "New York City — capitala exporturilor americane de servicii financiare",
+            "New York City: capitala exporturilor americane de servicii financiare",
           quoteTitle: "Al 40-lea președinte al Statelor Unite",
           prevLink: "← Dominația Dolarului",
           nextLink: "↑ Prezentare economie",
         }
       : {
-          heroAlt: "Container port — America's export machine",
+          heroAlt: "Container port: America's export machine",
           heroEyebrow: "Trade & Exports",
           heroLead: "AMERICA POWERS",
           heroAccent: "GLOBAL COMMERCE",
           heroBody:
-            "America exports a wide diversity of high-value goods — from aircraft and semiconductors to agricultural products, petroleum, and technology services.",
+            "America exports a wide diversity of high-value goods: from aircraft and semiconductors to agricultural products, petroleum, and technology services.",
           overviewTitle: "America's Export Machine",
           exportTitle: "Top US Export Categories",
           exportBody:
-            "Unlike developing nations that export raw commodities, the United States exports the world's most sophisticated, highest-margin goods — aircraft, microchips, medical devices, and pharmaceuticals. These are products that take decades and billions in R&D to develop, cementing America's position at the top of the global value chain. Pharmaceutical preparations alone are a $120 billion export line.",
+            "Unlike developing nations that export raw commodities, the United States exports the world's most sophisticated, highest-margin goods: aircraft, microchips, medical devices, and pharmaceuticals. These are products that take decades and billions in R&D to develop, cementing America's position at the top of the global value chain. Pharmaceutical preparations alone are a $120 billion export line.",
           exportChartTitle: "Top US goods export categories (2025, USD billions)",
           exportSource: "Source: U.S. Census Bureau / BEA FT-900 Report (2025 Annual)",
           balanceTitle: "The Deficit, Stated Plainly",
           balanceBody:
-            "America buys more from the world than it sells to it, and has since the 1970s. This page argues that American trade is a strength, so it should show the number that argument has to survive rather than route around it. Two things are worth reading off the chart. The gap is real and persistent. But both lines climb steeply — the United States exports far more today than it ever has, and a deficit is what it looks like when a country is rich enough to buy the world's output while still selling $2.2 trillion of its own.",
+            "America buys more from the world than it sells to it, and has since the 1970s. This page argues that American trade is a strength, so it should show the number that argument has to survive rather than route around it. Two things are worth reading off the chart. The gap is real and persistent. But both lines climb steeply: the United States exports far more today than it ever has, and a deficit is what it looks like when a country is rich enough to buy the world's output while still selling $2.2 trillion of its own.",
           balanceChartTitle: "US exports vs imports of goods and services, 1970–2026",
           balanceChartSubtitle: "Quarterly, at an annual rate, in current dollars",
           balanceSource: "Source: Bureau of Economic Analysis (via FRED: EXPGS / IMPGS)",
           partnersTitle: "America's Top Trading Partners",
           partnersBody:
-            "US total trade (goods + services) exceeds $6 trillion annually. The largest trading relationships span the entire globe — from Canada and Mexico under USMCA to Asia's technology and manufacturing hubs.",
+            "US total trade (goods + services) exceeds $6 trillion annually. The largest trading relationships span the entire globe: from Canada and Mexico under USMCA to Asia's technology and manufacturing hubs.",
           championsTitle: "America's Global Export Champions",
           companyLabel: "Company",
           sectorLabel: "Sector",
@@ -302,7 +302,7 @@ export default async function TradeAndExportsPage() {
           enginesEyebrow: "The Two Engines",
           enginesTitle: "Goods & Services: The Twin Engines of American Trade",
           enginesLead:
-            "Two distinct engines drive American trade: physical goods shipped from ports and farms, and invisible services delivered over wires and contracts. Together they top $3 trillion in annual exports — a combination no other economy can match.",
+            "Two distinct engines drive American trade: physical goods shipped from ports and farms, and invisible services delivered over wires and contracts. Together they top $3 trillion in annual exports, a combination no other economy can match.",
           engineGoodsLabel: "Goods exports / year",
           engineServicesLabel: "Services exports / year",
           engineSoftwareLabel: "Software & intellectual property / year",
@@ -313,15 +313,15 @@ export default async function TradeAndExportsPage() {
           vsUsHeader: "United States",
           vsWorldHeader: "The Rest of the World",
           pullStatLabel:
-            "packages move across America every day — the private backbone of global commerce, FedEx and UPS, funded entirely by capital markets.",
+            "packages move across America every day: the private backbone of global commerce, FedEx and UPS, funded entirely by capital markets.",
           servicesEyebrow: "The Hidden Export Superpower",
           servicesTitle: "Services: America's Trillion-Dollar Trade Surplus",
           servicesP1:
-            "While the US runs a trade deficit in goods, it runs a massive surplus in services — approximately $250+ billion annually. Financial advisory, cloud computing, film and TV licensing, university education for foreign students, software subscriptions, and consulting — these invisible exports dwarf what most nations sell in goods.",
+            "While the US runs a trade deficit in goods, it runs a massive surplus in services: approximately $250+ billion annually. Financial advisory, cloud computing, film and TV licensing, university education for foreign students, software subscriptions, and consulting: these invisible exports dwarf what most nations sell in goods.",
           servicesP2:
-            "When a Korean bank pays Goldman Sachs for M&A advisory, when a German firm licenses Adobe Creative Suite, when a Brazilian student pays Harvard tuition — America exports wealth without shipping a single container.",
+            "When a Korean bank pays Goldman Sachs for M&A advisory, when a German firm licenses Adobe Creative Suite, when a Brazilian student pays Harvard tuition: America exports wealth without shipping a single container.",
           servicesImageAlt:
-            "New York City — export capital of American financial services",
+            "New York City: export capital of American financial services",
           quoteTitle: "40th President of the United States",
           prevLink: "← Dollar Dominance",
           nextLink: "↑ Economy Overview",

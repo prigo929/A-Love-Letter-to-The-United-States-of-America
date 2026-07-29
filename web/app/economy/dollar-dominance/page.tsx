@@ -48,7 +48,7 @@ const DOLLAR_TIMELINE = [
     year: 1971,
     event: "Nixon Closes the Gold Window",
     description:
-      "President Nixon ends dollar-gold convertibility. Rather than weaken the dollar's position, the move ushers in the era of the pure fiat dollar — which has only grown stronger.",
+      "President Nixon ends dollar-gold convertibility. Rather than weaken the dollar's position, the move ushers in the era of the pure fiat dollar, which has only grown stronger.",
   },
   {
     year: 1973,
@@ -66,7 +66,7 @@ const DOLLAR_TIMELINE = [
     year: 2008,
     event: "Financial Crisis Confirms Dollar Supremacy",
     description:
-      "During the worst financial crisis since 1929 — a crisis that originated in America — global investors fled TO the dollar, not away from it. The dollar strengthened. This proved the dollar's irreplaceable safe-haven status.",
+      "During the worst financial crisis since 1929 (a crisis that originated in America), global investors fled TO the dollar, not away from it. The dollar strengthened. This proved the dollar's irreplaceable safe-haven status.",
   },
   {
     year: 2022,
@@ -96,12 +96,12 @@ export default async function DollarDominancePage() {
     locale === "ro"
       ? [
           { value: "50%+", label: "din datoria internațională este denominată în dolari" },
-          { value: "$100–500B", label: "economisiți anual prin seigniorage — profitul din emiterea banilor lumii" },
-          { value: "$450B", label: "în linii de swap de urgență extinse de Fed băncilor centrale străine în 2020" },
+          { value: "$100–500B", label: "economisiți anual prin seigniorage: profitul din emiterea banilor lumii" },
+          { value: "$450B", label: "în linii de swap de urgență extended de Fed băncilor centrale străine în 2020" },
         ]
       : [
           { value: "50%+", label: "of all international debt is denominated in US dollars" },
-          { value: "$100–500B", label: "saved every year through seigniorage — the profit of issuing the world's money" },
+          { value: "$100–500B", label: "saved every year through seigniorage: the profit of issuing the world's money" },
           { value: "$450B", label: "in emergency swap lines the Fed extended to foreign central banks in 2020" },
         ];
   const dollarInsights =
@@ -110,24 +110,24 @@ export default async function DollarDominancePage() {
           {
             fact: "Petrodolarul",
             detail:
-              "De la acordul din anii 1970, petrolul — și practic orice marfă majoră — este prețuit și decontat în dolari, înglobând cererea de dolari în economia fiecărei națiuni.",
+              "De la acordul din anii 1970, petrolul (și practic orice marfă majoră) este prețuit și decontat în dolari, înglobând cererea de dolari în economia fiecărei națiuni.",
           },
           {
             fact: "Dolarul ca armă geopolitică",
             detail:
-              "A fi tăiat de la sistemul dolarului prin sancțiuni SWIFT este una dintre cele mai puternice arme economice de pe Pământ — Iranul, Rusia și Coreea de Nord au simțit-o direct.",
+              "A fi tăiat de la sistemul dolarului prin sancțiuni SWIFT este una dintre cele mai puternice arme economice de pe Pământ: Iranul, Rusia și Coreea de Nord au simțit-o direct.",
           },
         ]
       : [
           {
             fact: "The petrodollar",
             detail:
-              "Since the 1970s agreement, oil — and virtually every major commodity — is priced and settled in dollars, embedding dollar demand into every nation's economy.",
+              "Since the 1970s agreement, oil (and virtually every major commodity) is priced and settled in dollars, embedding dollar demand into every nation's economy.",
           },
           {
             fact: "The dollar as a geopolitical weapon",
             detail:
-              "Being cut off from the dollar system through SWIFT sanctions is one of the most powerful economic weapons on Earth — Iran, Russia, and North Korea have all felt it directly.",
+              "Being cut off from the dollar system through SWIFT sanctions is one of the most powerful economic weapons on Earth: Iran, Russia, and North Korea have all felt it directly.",
           },
         ];
   // The timeline is plain data on purpose so the render section can stay
@@ -145,7 +145,7 @@ export default async function DollarDominancePage() {
             ...DOLLAR_TIMELINE[1],
             event: "Nixon închide fereastra aurului",
             description:
-              "Președintele Nixon pune capăt convertibilității dolar-aur. În loc să slăbească poziția dolarului, mișcarea deschide era dolarului pur fiat — care a devenit și mai puternic.",
+              "Președintele Nixon pune capăt convertibilității dolar-aur. În loc să slăbească poziția dolarului, mișcarea deschide era dolarului pur fiat, care a devenit și mai puternic.",
           },
           {
             ...DOLLAR_TIMELINE[2],
@@ -163,7 +163,7 @@ export default async function DollarDominancePage() {
             ...DOLLAR_TIMELINE[4],
             event: "Criza financiară confirmă supremația dolarului",
             description:
-              "În timpul celei mai grave crize financiare de după 1929 — o criză pornită din America — investitorii globali au fugit SPRE dolar, nu departe de el. Dolarul s-a întărit.",
+              "În timpul celei mai grave crize financiare de după 1929 (o criză pornită din America), investitorii globali au fugit SPRE dolar, nu departe de el. Dolarul s-a întărit.",
           },
           {
             ...DOLLAR_TIMELINE[5],
@@ -182,7 +182,7 @@ export default async function DollarDominancePage() {
   const copy =
     locale === "ro"
       ? {
-          heroAlt: "Bancnote de dolari americani — moneda de rezervă a lumii",
+          heroAlt: "Bancnote de dolari americani: moneda de rezervă a lumii",
           heroEyebrow: "Dominația Dolarului",
           heroLead: "MONEDA DE REZERVĂ",
           heroAccent: "A LUMII",
@@ -198,18 +198,18 @@ export default async function DollarDominancePage() {
           allocatedLabel: "rezerve alocate",
           indexTitle: "O felie mai mică dintr-un bazin mai mare",
           indexBody:
-            "Graficul de mai sus este citit adesea ca declin, iar tendința din el este reală: dolarul deținea aproximativ 71% din rezervele alocate în 2000 și deține 56,8% acum. Bazinul însuși a crescut enorm — o felie mai mică din 13,1 trilioane de dolari nu înseamnă mai puțini dolari. Când FMI a analizat scăderea din al doilea trimestru din 2025, a constatat că mișcările cursului de schimb au explicat 92% din ea.",
+            "Graficul de mai sus este citit adesea ca declin, iar tendința din el este reală: dolarul deținea aproximativ 71% din rezervele alocate în 2000 și deține 56,8% acum. Bazinul însuși a crescut enorm: o felie mai mică din 13,1 trilioane de dolari nu înseamnă mai puțini dolari. Când FMI a analizat scăderea din al doilea trimestru din 2025, a constatat că mișcările cursului de schimb au explicat 92% din ea.",
           indexChartTitle: "Indicele nominal larg al dolarului, din 2006",
           indexChartSubtitle: "Ponderat comercial față de partenerii SUA; ianuarie 2006 = 100",
           timelineTitle: "Evoluția istorică a rolului global al dolarului",
           timelineBody:
-            "Pozitionarea dolarului s-a consolidat prin acorduri economice, piețe financiare transparente și forță economică de-a lungul deceniilor.",
+            "Poziționarea dolarului s-a consolidat prin acorduri economice, piețe financiare transparente și forță economică de-a lungul deceniilor.",
           detailPullLabel:
             "din tranzacțiile internaționale implică dolarul american, susținând comerțul global.",
           detailEyebrow: "Dominația, în cifre",
-          detailTitle: "Avantajul dolarului — în detaliu",
+          detailTitle: "Avantajul dolarului: în detaliu",
           insightsEyebrow: "De ce contează",
-          calloutTitle: "Despre «de-dolarizare» — O analiză a piețelor",
+          calloutTitle: "Despre «de-dolarizare»: O analiză a piețelor",
           calloutP1:
             "Analiștii au discutat periodic despre potențiala înlocuire a dolarului. Lansarea euro în 1999 și ascensiunea Chinei în anii 2000 au fost văzute ca provocări pentru USD, însă de fiecare dată ponderea dolarului s-a stabilizat.",
           calloutP2:
@@ -221,7 +221,7 @@ export default async function DollarDominancePage() {
           nextLink: "Comerț și Exporturi →",
         }
       : {
-          heroAlt: "US dollar bills — the world's reserve currency",
+          heroAlt: "US dollar bills: the world's reserve currency",
           heroEyebrow: "Dollar Dominance",
           heroLead: "THE WORLD'S",
           heroAccent: "RESERVE CURRENCY",
@@ -246,9 +246,9 @@ export default async function DollarDominancePage() {
           detailPullLabel:
             "of international transactions involve the US dollar, anchoring global trade.",
           detailEyebrow: "Dominance, in numbers",
-          detailTitle: "The Dollar Advantage — In Detail",
+          detailTitle: "The Dollar Advantage: In Detail",
           insightsEyebrow: "Why it matters",
-          calloutTitle: "On “De-Dollarization” — A Reality Check",
+          calloutTitle: "On “De-Dollarization”: A Reality Check",
           calloutP1:
             "Periodic predictions of de-dollarization have accompanied major financial shifts, including the launch of the Euro in 1999 and the expansion of emerging market trade. In each period, dollar demand stabilized.",
           calloutConclusion:
@@ -304,7 +304,7 @@ export default async function DollarDominancePage() {
               <DollarReserveChart
                 data={DOLLAR_RESERVE_SHARE}
                 title={copy.chartTitle}
-                source={`${DOLLAR_RESERVE_META.source} — ${copy.allocatedLabel}`}
+                source={`${DOLLAR_RESERVE_META.source}: ${copy.allocatedLabel}`}
               />
             </div>
           </section>
@@ -407,8 +407,8 @@ export default async function DollarDominancePage() {
             <QuoteBlock
               quote={
                 locale === "ro"
-                  ? "Capacitatea Americii de a se împrumuta în propria monedă la cele mai mici costuri din lume nu este noroc — este recompensa pentru că a construit cel mai credibil sistem financiar din istoria omenirii."
-                  : "America's ability to borrow in its own currency at the world's lowest rates is not luck — it is the reward for having built the most trustworthy financial system in human history."
+                  ? "Capacitatea Americii de a se împrumuta în propria monedă la cele mai mici costuri din lume reprezintă recompensa directă pentru construirea celui mai credibil sistem financiar din istorie."
+                  : "America's ability to borrow in its own currency at the world's lowest rates is the direct reward for building the most trustworthy financial system in human history."
               }
               attribution="Lawrence Summers"
               title={copy.quoteTitle}
@@ -424,11 +424,11 @@ export default async function DollarDominancePage() {
             <h3 className="text-white font-display text-xl font-bold mb-4">
               {locale === "ro"
                 ? "Designul Dolarului American"
-                : "The Dollar Bill — Designed in Detail"}
+                : "The Dollar Bill: Designed in Detail"}
             </h3>
             <p className="text-white/50 text-sm font-body leading-relaxed mb-8 max-w-2xl">
               {locale === "ro"
-                ? "Fiecare bancnotă americană poartă simboluri cu rezonanță istorică profundă: Ochiul Providenței, constelația celor 13 stele, vulturul și scutul. Peste 2 trilioane de dolari circulă la nivel global — circa 60% în afara Statelor Unite."
+                ? "Fiecare bancnotă americană poartă simboluri cu rezonanță istorică profundă: Ochiul Providenței, constelația celor 13 stele, vulturul și scutul. Peste 2 trilioane de dolari circulă la nivel global, circa 60% în afara Statelor Unite."
                 : "Every Federal Reserve Note carries centuries of symbolism: the Eye of Providence, the thirteen-star constellation, the eagle and shield. Over $2 trillion in physical dollars circulate globally, with roughly 60% held outside the United States."}
             </p>
             {/* The two banknote faces (wide/landscape) share one row; the vertical
@@ -438,14 +438,14 @@ export default async function DollarDominancePage() {
               photos={[
                 {
                   src: SITE_IMAGES.economyDollarObverse,
-                  alt: "United States one dollar bill — obverse side with George Washington portrait",
-                  caption: locale === "ro" ? "Dolarul — față (George Washington)" : "Dollar Bill — Obverse",
+                  alt: "United States one dollar bill: obverse side with George Washington portrait",
+                  caption: locale === "ro" ? "Dolarul: față (George Washington)" : "Dollar Bill: Obverse",
                   aspect: "12/5",
                 },
                 {
                   src: SITE_IMAGES.economyDollarReverse,
-                  alt: "United States one dollar bill — reverse side with the Great Seal",
-                  caption: locale === "ro" ? "Dolarul — verso (Marele Sigiliu)" : "Dollar Bill — Reverse (Great Seal)",
+                  alt: "United States one dollar bill: reverse side with the Great Seal",
+                  caption: locale === "ro" ? "Dolarul: verso (Marele Sigiliu)" : "Dollar Bill: Reverse (Great Seal)",
                   aspect: "12/5",
                 },
               ]}
@@ -456,7 +456,7 @@ export default async function DollarDominancePage() {
                 {
                   src: SITE_IMAGES.economyPaperMoney,
                   alt: "American paper money denominations laid out from small to large bills",
-                  caption: locale === "ro" ? "Bancnotele Americane — de la $1 la $100" : "US Currency — $1 to $100",
+                  caption: locale === "ro" ? "Bancnotele Americane: de la $1 la $100" : "US Currency: $1 to $100",
                   aspect: "2975/4460",
                 },
               ]}

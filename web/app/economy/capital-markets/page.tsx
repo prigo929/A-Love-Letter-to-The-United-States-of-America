@@ -77,7 +77,7 @@ const MAJOR_US_EXCHANGES = [
     founded: 1792,
     marketCap: "$33.2 Trillion",
     description:
-      "The world's largest stock exchange by market cap — home to the world's most iconic corporations, from JPMorgan Chase to Berkshire Hathaway.",
+      "The world's largest stock exchange by market cap, home to the world's most iconic corporations, from JPMorgan Chase to Berkshire Hathaway.",
     famous: "JPMorgan Chase, Berkshire Hathaway, ExxonMobil, J&J, Visa",
   },
   {
@@ -85,7 +85,7 @@ const MAJOR_US_EXCHANGES = [
     founded: 1971,
     marketCap: "$35.8 Trillion",
     description:
-      "The technology exchange — where Apple, Microsoft, NVIDIA, Alphabet, Amazon, and Meta are listed. NASDAQ is synonymous with American technological dominance.",
+      "The technology exchange where Apple, Microsoft, NVIDIA, Alphabet, Amazon, and Meta are listed. NASDAQ is synonymous with American technological dominance.",
     famous: "Apple, Microsoft, NVIDIA, Alphabet, Amazon, Meta, Tesla",
   },
   {
@@ -93,7 +93,7 @@ const MAJOR_US_EXCHANGES = [
     founded: 1848,
     marketCap: "Derivatives Exchange",
     description:
-      "The world's leading derivatives exchange — setting global prices for everything from corn futures to interest rate swaps and foreign currency options.",
+      "The world's leading derivatives exchange, setting global prices for everything from corn futures to interest rate swaps and foreign currency options.",
     famous:
       "Oil futures, agricultural futures, interest rate swaps, FX options",
   },
@@ -111,12 +111,12 @@ export default async function CapitalMarketsPage() {
     locale === "ro"
       ? [
           { value: "$40T+", label: "capitalizarea combinată a NYSE și NASDAQ" },
-          { value: "$27T", label: "piața de obligațiuni a SUA — cea mai adâncă și lichidă din istorie" },
+          { value: "$27T", label: "piața de obligațiuni a SUA, cea mai adâncă și lichidă din istorie" },
           { value: "$12T", label: "administrați de private equity-ul american (Blackstone, Apollo, KKR)" },
         ]
       : [
           { value: "$40T+", label: "combined market cap of the NYSE and NASDAQ" },
-          { value: "$27T", label: "the US bond market — the deepest, most liquid in history" },
+          { value: "$27T", label: "the US bond market, the deepest, most liquid in history" },
           { value: "$12T", label: "managed by American private equity (Blackstone, Apollo, KKR)" },
         ];
   const cmInsights =
@@ -125,7 +125,7 @@ export default async function CapitalMarketsPage() {
           {
             fact: "Titlurile de Trezorerie ale SUA sunt reperul global fără risc",
             detail:
-              "Fiecare model financiar de pe Pământ pornește de la randamentele Trezoreriei americane ca bază pentru randamentul fără risc — nicio altă piață nu are aceeași adâncime și încredere.",
+              "Fiecare model financiar de pe Pământ pornește de la randamentele Trezoreriei americane ca bază pentru randamentul fără risc, nicio altă piață neavând aceeași adâncime și încredere.",
           },
           {
             fact: "Revoluția 401(k) a transformat muncitorii în investitori",
@@ -137,7 +137,7 @@ export default async function CapitalMarketsPage() {
           {
             fact: "US Treasuries are the world's risk-free benchmark",
             detail:
-              "Every financial model on Earth prices off US Treasury yields as the baseline for risk-free returns — no other market matches their depth and trust.",
+              "Every financial model on Earth prices off US Treasury yields as the baseline for risk-free returns: no other market matches their depth and trust.",
           },
           {
             fact: "The 401(k) revolution turned workers into investors",
@@ -153,17 +153,17 @@ export default async function CapitalMarketsPage() {
           {
             ...MAJOR_US_EXCHANGES[0],
             description:
-              "Cea mai mare bursă din lume după capitalizare — casa celor mai iconice corporații ale lumii, de la JPMorgan Chase la Berkshire Hathaway.",
+              "Cea mai mare bursă din lume după capitalizare, casa celor mai iconice corporații ale lumii, de la JPMorgan Chase la Berkshire Hathaway.",
           },
           {
             ...MAJOR_US_EXCHANGES[1],
             description:
-              "Bursa tehnologiei — locul unde sunt listate Apple, Microsoft, NVIDIA, Alphabet, Amazon și Meta. NASDAQ este sinonimă cu dominația tehnologică americană.",
+              "Bursa tehnologiei, locul unde sunt listate Apple, Microsoft, NVIDIA, Alphabet, Amazon și Meta. NASDAQ este sinonimă cu dominația tehnologică americană.",
           },
           {
             ...MAJOR_US_EXCHANGES[2],
             description:
-              "Cea mai importantă bursă de derivate din lume — stabilește prețuri globale pentru orice, de la futures pe porumb la swap-uri de dobândă și opțiuni valutare.",
+              "Cea mai importantă bursă de derivate din lume, stabilește prețuri globale pentru orice, de la futures pe porumb la swap-uri de dobândă și opțiuni valutare.",
           },
         ]
       : MAJOR_US_EXCHANGES;
@@ -176,18 +176,18 @@ export default async function CapitalMarketsPage() {
           heroAccent: "SUSȚINE LUMEA",
           heroBody:
             "NYSE + NASDAQ: 69 de trilioane de dolari capitalizare combinată. Titlurile de Trezorerie americane ca reper global pentru rata fără risc. Cele mai adânci, transparente și lichide piețe de capital din istoria umană.",
-          marketCapTitle: "Capitalizarea burselor — SUA vs. lume",
+          marketCapTitle: "Capitalizarea burselor: SUA vs. lume",
           marketCapBody:
-            "Statele Unite găzduiesc cele mai mari două burse de pe Pământ — la o distanță uriașă. NYSE (33,2T $) și NASDAQ (35,8T $) reprezintă împreună mai multă capitalizare decât următoarele cinci burse combinate. Bursele americane nu doar conduc — domină.",
+            "Statele Unite găzduiesc cele mai mari două burse de pe Pământ, la o distanță uriașă. NYSE (33,2T $) și NASDAQ (35,8T $) reprezintă împreună mai multă capitalizare decât următoarele cinci burse combinate. Bursele americane nu doar conduc, domină.",
           marketCapChartTitle: "Capitalizarea burselor globale (2026, trilioane USD)",
-          benchmarkTitle: "S&P 500 — reperul lumii",
+          benchmarkTitle: "S&P 500: reperul lumii",
           benchmarkBody:
-            "Niciun indice nu este urmărit mai atent. Niciun indice nu este replicat mai larg. S&P 500 urmărește cele mai mari 500 de companii americane listate public — iar performanța lui este, de facto, fișa de evaluare a prosperității capitaliste globale. Din 1980, a generat randamente totale de peste 9.000%.",
+            "Niciun indice nu este urmărit mai atent. Niciun indice nu este replicat mai larg. S&P 500 urmărește cele mai mari 500 de companii americane listate public, iar performanța lui este, de facto, fișa de evaluare a prosperității capitaliste globale. Din 1980, a generat randamente totale de peste 9.000%.",
           benchmarkChartTitle:
-            "S&P 500 — 46 de ani de performanță a piețelor americane de capital",
+            "S&P 500: 46 de ani de performanță a piețelor americane de capital",
           nasdaqTitle: "Prețul tehnologiei americane",
           nasdaqBody:
-            "Dacă S&P 500 este fișa de evaluare a capitalismului american, Nasdaq este cea a tehnologiei americane: bursa unde sunt listate Apple, Microsoft, NVIDIA, Alphabet, Amazon și Meta. Indicele a pornit de la 100 în 1971 și este acum în jur de 26.000, de aproximativ 261 de ori mai mare. Însă linia nu este o ascensiune lină, iar acesta este chiar rostul ei: a coborât la 58,6 în piața ursului din 1974, iar după vârful dot-com din martie 2000 a pierdut aproximativ trei sferturi din valoare și nu și-a revenit la acel nivel decât în 2015. Scara logaritmică este cea implicită pentru că este singura pe care primii treizeci de ani sunt vizibili — comută pe liniar și vezi de ce.",
+            "Dacă S&P 500 este fișa de evaluare a capitalismului american, Nasdaq este cea a tehnologiei americane: bursa unde sunt listate Apple, Microsoft, NVIDIA, Alphabet, Amazon și Meta. Indicele a pornit de la 100 în 1971 și este acum în jur de 26.000, de aproximativ 261 de ori mai mare. Însă linia nu este o ascensiune lină, iar acesta este chiar rostul ei: a coborât la 58,6 în piața ursului din 1974, iar după vârful dot-com din martie 2000 a pierdut aproximativ trei sferturi din valoare și nu și-a revenit la acel nivel decât în 2015. Scara logaritmică este cea implicită pentru că este singura pe care primii treizeci de ani sunt vizibili: comută pe liniar și vezi de ce.",
           nasdaqChartTitle: "Nasdaq Composite, din 1971",
           nasdaqChartSubtitle: "Media lunară; comută între scara logaritmică și cea liniară",
           vixTitle: "Indicele fricii",
@@ -207,39 +207,39 @@ export default async function CapitalMarketsPage() {
           fedChartSubtitle: "Media lunară, în procente",
           yieldTitle: "Alarma de recesiune a pieței",
           yieldBody:
-            "În mod normal, banii pe termen lung costă mai mult decât cei pe termen scurt. Când se inversează — când titlurile pe 10 ani plătesc mai puțin decât cele pe 2 ani — piața pariază că ratele trebuie să scadă, ceea ce înseamnă de obicei că se așteaptă la necazuri. Fiecare recesiune din 1976 încoace a fost precedată de o inversiune. Reciproca nu este însă adevărată: inversiunea din 2022–2024 a fost cea mai adâncă de la Volcker și nu a urmat nicio recesiune. Este o alarmă bună, care uneori sună în gol.",
+            "În mod normal, banii pe termen lung costă mai mult decât cei pe termen scurt. Când se inversează (când titlurile pe 10 ani plătesc mai puțin decât cele pe 2 ani), piața pariază că ratele trebuie să scadă, ceea ce înseamnă de obicei că se așteaptă la necazuri. Fiecare recesiune din 1976 încoace a fost precedată de o inversiune. Reciproca nu este însă adevărată: inversiunea din 2022–2024 a fost cea mai adâncă de la Volcker și nu a urmat nicio recesiune. Este o alarmă bună, care uneori sună în gol.",
           yieldChartTitle: "Curba randamentelor (10 ani minus 2 ani), din 1976",
           yieldChartSubtitle: "Zonele umbrite marchează recesiunile datate de NBER",
           profitsTitle: "Ce cumpără de fapt piața",
           profitsBody:
-            "Fiecare evaluare de pe această pagină este, în cele din urmă, o creanță asupra acestui număr. Corporațiile americane au câștigat 22 de miliarde de dolari după impozitare în 1947. Astăzi câștigă aproape 4 trilioane pe an. O precizare necesară: cifrele sunt exprimate în dolarii fiecărui an, așa că o parte reală din această creștere este inflație, nu putere de câștig. Forma rămâne însă esențială — profiturile își revin după fiecare criză de pe grafic, inclusiv după cele două care ar fi trebuit să le pună capăt.",
+            "Fiecare evaluare de pe această pagină este, în cele din urmă, o creanță asupra acestui număr. Corporațiile americane au câștigat 22 de miliarde de dolari după impozitare în 1947. Astăzi câștigă aproape 4 trilioane pe an. O precizare necesară: cifrele sunt exprimate în dolarii fiecărui an, așa că o parte reală din această creștere este inflație, nu putere de câștig. Forma rămâne însă esențială: profiturile își revin după fiecare criză de pe grafic, inclusiv după cele două care ar fi trebuit să le pună capăt.",
           profitsChartTitle: "Profituri corporative după impozitare, din 1947",
           profitsChartSubtitle: "Trimestrial, la rată anuală, în dolari curenți",
           profitsValueLabel: "Profituri corporative după impozitare, rată anuală",
           profitsLatestLabel: "Cel mai recent trimestru",
           profitsMultipleLabel: "Creștere din 1947, în dolari curenți",
-          bondTitle: "Piața obligațiunilor SUA — $50,5T",
+          bondTitle: "Piața obligațiunilor SUA: $50,5T",
           bondBody:
             "Cu titluri de creanță totale de 50,5 trilioane de dolari, piața obligațiunilor americane este cea mai mare și mai lichidă din lume. Titlurile de Trezorerie (30,8T $) stabilesc rata globală fără risc, iar obligațiunile corporative (11,7T $) au atins un volum record de emisiuni în 2025, alimentând expansiunea companiilor americane.",
-          bondChartTitle: "Piața Fixed Income a SUA — compoziție (1T 2026, sursa SIFMA)",
+          bondChartTitle: "Piața Fixed Income a SUA: compoziție (1T 2026, sursa SIFMA)",
           exchangesTitle: "Marile burse ale Americii",
           estLabel: "Înființată",
           advantagePullLabel:
-            "din valoarea acțiunilor publice de pe Pământ se tranzacționează pe piețele americane — dintr-o țară cu doar 4% din populația lumii.",
+            "din valoarea acțiunilor publice de pe Pământ se tranzacționează pe piețele americane, dintr-o țară cu doar 4% din populația lumii.",
           advantageEyebrow: "Adâncimea, în cifre",
           advantageTitle: "Avantajul piețelor de capital",
           insightsEyebrow: "De ce contează",
-          quoteTitle: "Președinte și CEO, Berkshire Hathaway — Omaha, Nebraska",
+          quoteTitle: "Președinte și CEO, Berkshire Hathaway: Omaha, Nebraska",
           treasuryTitle: "Trezoreria SUA: ancora gloțală a ratei fără risc",
           treasuryBody:
-            "Fiecare model financiar de pe Pământ porneste de la randamentele Trezoreriei americane. De la maximele de 6% din era dot-com, la 0,89% în 2020 — minimul era ZIRP — şi revenirea la 4,35% în 2025 prin cel mai rapid ciclu de majorare a dobânzilor din ultimii 40 de ani. Nicio altă pieță de obligațiuni nu are aceeaşi adâncime, lichiditate sau relevanță globală.",
+            "Fiecare model financiar de pe Pământ porneste de la randamentele Trezoreriei americane. De la maximele de 6% din era dot-com, la 0,89% în 2020 (minimul era ZIRP) și revenirea la 4,35% în 2025 prin cel mai rapid ciclu de majorare a dobânzilor din ultimii 40 de ani. Nicio altă pieță de obligațiuni nu are aceeași adâncime, lichiditate sau relevanță globală.",
           treasuryChartTitle: "Randamentul Trezoreriei SUA pe 10 ani (2000–2025)",
           altTitle: "Piața Alternativă: Giganții Private Equity americani",
           altBody:
-            "Dincolo de bursele publice, SUA domină piața globală a activelor alternative. Blackstone (1,3T$), KKR (744Mld$) şi Apollo (650Mld$) sunt doar cele mai mari trei. Aceste companii controlează fonduri de private equity, credit privat, infrastructură și imobiliare la o scară fără precedent — 8 din primele 10 firme de alternative din lume sunt americane.",
+            "Dincolo de bursele publice, SUA domină piața globală a activelor alternative. Blackstone (1,3T$), KKR (744Mld$) și Apollo (650Mld$) sunt doar cele mai mari trei. Aceste companii controlează fonduri de private equity, credit privat, infrastructură și imobiliare la o scară fără precedent: 8 din primele 10 firme de alternative din lume sunt americane.",
           fedBalanceSheetTitle: "Bilanțul Rezervei Federale: Fundația de Lichiditate",
           fedBalanceSheetBody:
-            "Totalul activelor deținute de Rezerva Federală (FED) reprezintă un indicator cheie al injecțiilor de lichiditate în sistemul financiar global. De la sub 1 trilion $ înainte de 2008, bilanțul Fed a crescut prin programe succesive de relaxare cantitativă (QE) pentru a susține piețele în timpul crizelor, atingând un vârf de aproape 9 trilioane $ în timpul pandemiei COVID-19, înainte de a începe o reducere controlată (QT) până la 6,7 trilioane $ în 2026.",
+            "Totalul activelor deținute de Rezerva Federală (FED) reprezintă un indicator cheie al injecțiilor de lichiditate în sistemul financiar global. De la sub 1 trilion $ înainte de 2008, bilanțul Fed a crescut prin programe succesive de relaxare quantitativă (QE) pentru a susține piețele în timpul crizelor, atingând un vârf de aproape 9 trilioane $ în timpul pandemiei COVID-19, înainte de a începe o reducere controlată (QT) până la 6,7 trilioane $ în 2026.",
           fedBalanceSheetChartTitle: "Activele Rezervei Federale a SUA (2003–2026, trilioane USD)",
           m2Title: "Masa Monetară M2: Combustibilul Sistemului Financiar",
           m2Body:
@@ -280,18 +280,18 @@ export default async function CapitalMarketsPage() {
           heroAccent: "POWERS THE WORLD",
           heroBody:
             "NYSE + NASDAQ: $69 trillion in combined market capitalization. The US Treasury as the world's risk-free benchmark. The deepest, most transparent, most liquid capital markets in human history.",
-          marketCapTitle: "Stock Exchange Market Cap — US vs World",
+          marketCapTitle: "Stock Exchange Market Cap: US vs World",
           marketCapBody:
-            "The United States hosts the two largest stock exchanges on Earth — by a staggering margin. The NYSE ($33.2T) and NASDAQ ($35.8T) together represent more market capitalization than the next five exchanges combined. American exchanges don't just lead — they dominate.",
+            "The United States hosts the two largest stock exchanges on Earth by a staggering margin. The NYSE ($33.2T) and NASDAQ ($35.8T) together represent more market capitalization than the next five exchanges combined. American exchanges don't just lead: they dominate.",
           marketCapChartTitle: "Global Stock Exchange Market Cap (2026, USD Trillions)",
-          benchmarkTitle: "The S&P 500 — The World's Benchmark",
+          benchmarkTitle: "The S&P 500: The World's Benchmark",
           benchmarkBody:
-            "No index is watched more closely. No index is replicated more widely. The S&P 500 tracks the 500 largest publicly traded US companies — and its performance is the world's de facto report card on capitalist prosperity. Since 1980, it has delivered total returns exceeding 9,000%.",
+            "No index is watched more closely. No index is replicated more widely. The S&P 500 tracks the 500 largest publicly traded US companies, and its performance is the world's de facto report card on capitalist prosperity. Since 1980, it has delivered total returns exceeding 9,000%.",
           benchmarkChartTitle:
-            "S&P 500 — 46 Years of American Capital Market Performance",
+            "S&P 500: 46 Years of American Capital Market Performance",
         nasdaqTitle: "The Price of American Technology",
         nasdaqBody:
-          "If the S&P 500 is the scorecard of American capitalism, the Nasdaq is the scorecard of American technology: the exchange where Apple, Microsoft, NVIDIA, Alphabet, Amazon and Meta all list. The index opened at 100 in 1971 and now sits around 26,000 — roughly 261 times higher. But the line is not a smooth ascent, and that is the point: it fell to 58.6 in the 1974 bear market, and after the dot-com peak in March 2000 it lost roughly three-quarters of its value and did not regain that level until 2015. The logarithmic scale is the default because it is the only one where the first thirty years are visible at all — switch to linear and you will see why.",
+          "If the S&P 500 is the scorecard of American capitalism, the Nasdaq is the scorecard of American technology: the exchange where Apple, Microsoft, NVIDIA, Alphabet, Amazon and Meta all list. The index opened at 100 in 1971 and now sits around 26,000, roughly 261 times higher. But the line is not a smooth ascent, and that is the point: it fell to 58.6 in the 1974 bear market, and after the dot-com peak in March 2000 it lost roughly three-quarters of its value and did not regain that level until 2015. The logarithmic scale is the default because it is the only one where the first thirty years are visible at all: switch to linear and you will see why.",
         nasdaqChartTitle: "The Nasdaq Composite, since 1971",
         nasdaqChartSubtitle: "Monthly average; toggle between logarithmic and linear scale",
         vixTitle: "The Fear Index",
@@ -311,36 +311,36 @@ export default async function CapitalMarketsPage() {
         fedChartSubtitle: "Monthly average, in percent",
         yieldTitle: "The Market's Recession Alarm",
         yieldBody:
-          "Normally long money costs more than short money. When that inverts — when the 10-year Treasury pays less than the 2-year — the market is betting rates must come down, which usually means it expects trouble. Every recession since 1976 was preceded by an inversion. The reverse does not hold: the 2022–24 inversion was the deepest since Volcker, and no recession followed. It is a good alarm that sometimes cries wolf.",
+          "Normally long money costs more than short money. When that inverts (when the 10-year Treasury pays less than the 2-year), the market is betting rates must come down, which usually means it expects trouble. Every recession since 1976 was preceded by an inversion. The reverse does not hold: the 2022–24 inversion was the deepest since Volcker, and no recession followed. It is a good alarm that sometimes cries wolf.",
         yieldChartTitle: "The Yield Curve (10-year minus 2-year), since 1976",
         yieldChartSubtitle: "Shaded bands mark NBER-dated recessions",
         profitsTitle: "What the Market Is Buying",
         profitsBody:
-          "Every valuation on this page is ultimately a claim on this number. American corporations earned $22 billion after tax in 1947. They now earn close to $4 trillion a year. A caution worth stating plainly: this is measured in the dollars of each year, so a real share of that rise is inflation rather than earning power. The shape is still the point — profits recover from every crisis on the chart, including the two that were supposed to end them.",
+          "Every valuation on this page is ultimately a claim on this number. American corporations earned $22 billion after tax in 1947. They now earn close to $4 trillion a year. A caution worth stating plainly: this is measured in the dollars of each year, so a real share of that rise is inflation rather than earning power. The shape is still the point: profits recover from every crisis on the chart, including the two that were supposed to end them.",
         profitsChartTitle: "Corporate profits after tax, since 1947",
         profitsChartSubtitle: "Quarterly, at an annual rate, in current dollars",
         profitsValueLabel: "Corporate profits after tax, annual rate",
         profitsLatestLabel: "Most recent quarter",
         profitsMultipleLabel: "Growth since 1947, in current dollars",
-          bondTitle: "The US Bond Market — $50.5 Trillion",
+          bondTitle: "The US Bond Market: $50.5 Trillion",
           bondBody:
-            "With $50.5 trillion in outstanding fixed income securities, the US bond market is the largest and most liquid in human history. US Treasuries ($30.8T) set the global risk-free rate — the anchor for every financial model on Earth. Corporate bonds ($11.7T) hit record issuance in 2025 as American companies tapped cheap capital to fund AI infrastructure and global expansion.",
-          bondChartTitle: "US Fixed Income Market — Composition (1Q 2026, SIFMA)",
+            "With $50.5 trillion in outstanding fixed income securities, the US bond market is the largest and most liquid in human history. US Treasuries ($30.8T) set the global risk-free rate, the anchor for every financial model on Earth. Corporate bonds ($11.7T) hit record issuance in 2025 as American companies tapped cheap capital to fund AI infrastructure and global expansion.",
+          bondChartTitle: "US Fixed Income Market: Composition (1Q 2026, SIFMA)",
           exchangesTitle: "America's Major Exchanges",
           estLabel: "Est.",
           advantagePullLabel:
-            "of all the public equity value on Earth trades on US markets — from a country with just 4% of the world's population.",
+            "of all the public equity value on Earth trades on US markets, from a country with just 4% of the world's population.",
           advantageEyebrow: "The depth, in numbers",
           advantageTitle: "The Capital Markets Advantage",
           insightsEyebrow: "Why it matters",
-          quoteTitle: "Chairman & CEO, Berkshire Hathaway — Omaha, Nebraska",
+          quoteTitle: "Chairman & CEO, Berkshire Hathaway: Omaha, Nebraska",
           treasuryTitle: "The US Treasury: The World's Risk-Free Anchor",
           treasuryBody:
             "Every financial model on Earth starts with the US Treasury yield. From 6% highs in the dot-com era, to 0.89% in 2020's ZIRP experiment, to 4.35% in 2025 following the fastest rate-hiking cycle in 40 years. No other bond market has the same depth, liquidity, or global relevance. The 10-year yield is, literally, the price of money for the world.",
           treasuryChartTitle: "US 10-Year Treasury Yield (2000–2025, FRED DGS10)",
           altTitle: "The Alternative Markets: America's Private Capital Giants",
           altBody:
-            "Beyond public equities, the US dominates global alternative assets. Blackstone ($1.3T), KKR ($744B), and Apollo ($650B) are the top three. These firms control private equity, private credit, infrastructure, and real estate funds at an unprecedented scale — 8 of the world's top 10 alternative asset managers are American.",
+            "Beyond public equities, the US dominates global alternative assets. Blackstone ($1.3T), KKR ($744B), and Apollo ($650B) are the top three. These firms control private equity, private credit, infrastructure, and real estate funds at an unprecedented scale: 8 of the world's top 10 alternative asset managers are American.",
           fedBalanceSheetTitle: "The Fed Balance Sheet: The Liquidity Foundation",
           fedBalanceSheetBody:
             "The total assets held by the Federal Reserve represent the ultimate liquidity foundation of the global financial system. Growing from under $1 trillion before the 2008 Financial Crisis, the balance sheet expanded through successive Quantitative Easing (QE) programs to support the economy during shocks, peaking near $9 trillion during the COVID-19 pandemic before transitioning into Quantitative Tightening (QT), ending at $6.7 trillion in 2026.",

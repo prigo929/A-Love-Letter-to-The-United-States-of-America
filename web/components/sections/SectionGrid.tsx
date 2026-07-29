@@ -83,7 +83,7 @@ export function SectionGrid() {
               title={section.title}
               description={section.description}
               imageSrc={section.imageSrc}
-              imageAlt={`${section.title} — explore this section`}
+              imageAlt={`${section.title}: explore this section`}
               badge={"badge" in section ? section.badge : undefined}
               className="w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)] xl:w-[calc(25%-15px)] max-w-[360px]"
             />

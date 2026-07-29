@@ -29,7 +29,7 @@ const QUOTES = [
   {
     id: 3,
     quote:
-      "I can say—not as a patriotic bromide, but with full knowledge of the necessary metaphysical, epistemological, ethical, political and esthetic roots—that the United States of America is the greatest, the noblest and, in its original founding principles, the only moral country in the history of the world.",
+      "I can say, not as a patriotic bromide, but with full knowledge of the necessary metaphysical, epistemological, ethical, political and esthetic roots, that the United States of America is the greatest, the noblest and, in its original founding principles, the only moral country in the history of the world.",
     attribution: "Ayn Rand",
     role: "Philosopher and novelist who immigrated to the U.S. to escape the Soviet Union",
     year: 1964,
@@ -53,7 +53,7 @@ const QUOTES = [
   {
     id: 6,
     quote:
-      "Ask not what your country can do for you — ask what you can do for your country.",
+      "Ask not what your country can do for you; ask what you can do for your country.",
     attribution: "John F. Kennedy",
     role: "35th President of the United States",
     year: 1961,
@@ -159,7 +159,7 @@ export function QuoteCarousel() {
           {
             id: 3,
             quote:
-              "Pot spune — nu ca o banalitate patriotică, ci cu deplină cunoaștere a rădăcinilor metafizice, epistemologice, etice, politice și estetice necesare — că Statele Unite ale Americii sunt cea mai mare, cea mai nobilă și, în principiile sale fondatoare, singura țară morală din istoria lumii.",
+              "Pot spune, nu ca o banalitate patriotică, ci cu deplină cunoaștere a rădăcinilor metafizice, epistemologice, etice, politice și estetice necesare, că Statele Unite ale Americii sunt cea mai mare, cea mai nobilă și, în principiile sale fondatoare, singura țară morală din istoria lumii.",
             attribution: "Ayn Rand",
             role: "Filosoafă și romancieră care a emigrat în SUA pentru a scăpa de Uniunea Sovietică",
             year: 1964,
@@ -183,7 +183,7 @@ export function QuoteCarousel() {
           {
             id: 6,
             quote:
-              "Nu întreba ce poate face țara ta pentru tine — întreabă ce poți face tu pentru țara ta.",
+              "Nu întreba ce poate face țara ta pentru tine; întreabă ce poți face tu pentru țara ta.",
             attribution: "John F. Kennedy",
             role: "Al 35-lea președinte al Statelor Unite",
             year: 1961,

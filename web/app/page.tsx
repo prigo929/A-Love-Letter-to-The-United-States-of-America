@@ -43,7 +43,7 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 800,
-        alt: "Midtown Manhattan skyline at golden hour — the United States of America",
+        alt: "Midtown Manhattan skyline at golden hour: the United States of America",
       },
     ],
   },
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: `${SITE.name} — Home`,
+  name: `${SITE.name}: Home`,
   description: SITE.description,
   url: SITE.url,
 };

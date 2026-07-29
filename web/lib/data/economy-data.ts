@@ -377,7 +377,7 @@ export const GDP_FACTS: EconomyFact[] = [
     id: "gdp-100-years",
     fact: "Largest economy for 100+ consecutive years",
     detail:
-      "The United States has been the world's largest economy since the late 1800s — an unbroken reign of over a century.",
+      "The United States has been the world's largest economy since the late 1800s, an unbroken reign of over a century.",
     source: "IMF Historical Data",
     color: "red",
   },
@@ -385,7 +385,7 @@ export const GDP_FACTS: EconomyFact[] = [
     id: "gdp-consumer",
     fact: "US consumer spending alone ≈ Germany's entire GDP",
     detail:
-      "American household consumption is approximately $19 trillion — larger than the GDP of every nation except the US itself.",
+      "American household consumption is approximately $19 trillion, larger than the GDP of every nation except the US itself.",
     source: "BEA & World Bank 2026",
     color: "blue",
   },
@@ -393,7 +393,7 @@ export const GDP_FACTS: EconomyFact[] = [
     id: "gdp-companies",
     fact: "12 of the world's 20 most valuable companies are American",
     detail:
-      "Apple, Microsoft, NVIDIA, Alphabet, Amazon, Meta, Berkshire Hathaway — the global corporate elite is overwhelmingly American.",
+      "Apple, Microsoft, NVIDIA, Alphabet, Amazon, Meta, Berkshire Hathaway: the global corporate elite is overwhelmingly American.",
     source: "Forbes Global 2000, 2026",
     color: "gold",
   },
@@ -404,7 +404,7 @@ export const CAPITAL_MARKETS_FACTS: EconomyFact[] = [
     id: "nyse-age",
     fact: "The NYSE has operated continuously since 1792",
     detail:
-      "The New York Stock Exchange is the largest stock exchange on Earth by market capitalization — $33+ trillion — and has been the world's financial anchor for over 230 years.",
+      "The New York Stock Exchange is the largest stock exchange on Earth by market capitalization ($33+ trillion) and has been the world's financial anchor for over 230 years.",
     source: "NYSE / WFE 2026",
     color: "gold",
   },
@@ -412,7 +412,7 @@ export const CAPITAL_MARKETS_FACTS: EconomyFact[] = [
     id: "treasury-risk-free",
     fact: "US Treasuries are the world's risk-free rate benchmark",
     detail:
-      "Every financial model on Earth uses US Treasury yields as the baseline for risk-free returns. The US bond market is $27 trillion — the deepest, most liquid market in history.",
+      "Every financial model on Earth uses US Treasury yields as the baseline for risk-free returns. The US bond market is $27 trillion, the deepest, most liquid market in history.",
     source: "SIFMA 2026",
     color: "red",
   },
@@ -420,7 +420,7 @@ export const CAPITAL_MARKETS_FACTS: EconomyFact[] = [
     id: "nasdaq-tech",
     fact: "NASDAQ lists the most valuable tech companies in history",
     detail:
-      "Apple, Microsoft, NVIDIA, Alphabet, Amazon, Meta — all listed on a single American exchange. The NASDAQ Composite has returned over 4,500% since 1985.",
+      "Apple, Microsoft, NVIDIA, Alphabet, Amazon, Meta: all listed on a single American exchange. The NASDAQ Composite has returned over 4,500% since 1985.",
     source: "NASDAQ 2026",
     color: "blue",
   },
@@ -429,15 +429,15 @@ export const CAPITAL_MARKETS_FACTS: EconomyFact[] = [
 export const VC_FACTS: EconomyFact[] = [
   {
     id: "vc-ai",
-    fact: "US AI startups raised $85B in 2025 — 65% of global AI investment",
+    fact: "US AI startups raised $85B in 2025, 65% of global AI investment",
     detail:
-      "OpenAI, Anthropic, and Scale AI — the AI revolution is being financed almost entirely by American capital and talent.",
+      "OpenAI, Anthropic, and Scale AI: the AI revolution is being financed almost entirely by American capital and talent.",
     source: "Pitchbook 2026",
     color: "gold",
   },
   {
     id: "unicorn-share",
-    fact: "659 US unicorns — about half the global total",
+    fact: "659 US unicorns, about half the global total",
     detail:
       'A "unicorn" is a private company valued at $1 billion or more. America has built more of them than all other nations combined.',
     source: "Pitchbook 2026",
@@ -447,7 +447,7 @@ export const VC_FACTS: EconomyFact[] = [
     id: "immigrant-founders",
     fact: "55%+ of US billion-dollar startups were founded by immigrants",
     detail:
-      "Elon Musk (South Africa), Sergey Brin (Russia), Andy Grove (Hungary), Jensen Huang (Taiwan) — America's open door to talent is a core economic superpower.",
+      "Elon Musk (South Africa), Sergey Brin (Russia), Andy Grove (Hungary), Jensen Huang (Taiwan): America's open door to talent is a core economic superpower.",
     source: "NFAP 2022",
     color: "blue",
   },
@@ -458,7 +458,7 @@ export const DOLLAR_FACTS: EconomyFact[] = [
     id: "reserve-share",
     fact: "USD is held in 57%+ of all global foreign exchange reserves",
     detail:
-      "Central banks around the world collectively hold $6.8 trillion in US dollar reserves. The next closest currency — the Euro — holds just 20%.",
+      "Central banks around the world collectively hold $6.8 trillion in US dollar reserves. The next closest currency, the Euro, holds just 20%.",
     source: "IMF COFER Q4 2023",
     color: "gold",
   },
@@ -466,7 +466,7 @@ export const DOLLAR_FACTS: EconomyFact[] = [
     id: "swift-share",
     fact: "Over 40% of global SWIFT transactions are in US dollars",
     detail:
-      "International trade, commodities, oil, gas, gold — all priced and settled in dollars. This creates an extraordinary structural advantage for the American economy.",
+      "International trade, commodities, oil, gas, gold: all priced and settled in dollars. This creates an extraordinary structural advantage for the American economy.",
     source: "SWIFT 2026",
     color: "red",
   },
@@ -474,7 +474,7 @@ export const DOLLAR_FACTS: EconomyFact[] = [
     id: "petrodollar",
     fact: "Global oil markets are settled almost exclusively in dollars",
     detail:
-      "Since the 1970s Petrodollar agreement, oil — the world's most traded commodity — has been denominated in USD, embedding dollar demand into every nation's economy.",
+      "Since the 1970s Petrodollar agreement, oil, the world's most traded commodity, has been denominated in USD, embedding dollar demand into every nation's economy.",
     source: "Federal Reserve / IMF",
     color: "blue",
   },
@@ -593,7 +593,7 @@ export const TOP_VC_FIRMS: VcFirm[] = [
 export const VC_EXTENDED_FACTS: ExtendedFact[] = [
   {
     id: "vc-patents",
-    fact: "The US grants over 350,000 patents annually — #1 in IP value",
+    fact: "The US grants over 350,000 patents annually (#1 in IP value)",
     detail:
       "American innovation is protected by the world's most robust intellectual property system, ensuring that inventors can monetize their breakthroughs globally.",
     source: "USPTO 2026",
@@ -603,7 +603,7 @@ export const VC_EXTENDED_FACTS: ExtendedFact[] = [
     id: "vc-stanford",
     fact: "Stanford alumni have founded companies worth $5 trillion+",
     detail:
-      "Google (Brin & Page), NVIDIA (Jensen Huang), Netflix (Reed Hastings), Instagram (Mike Krieger), PayPal (Peter Thiel), Yahoo, Cisco, HP, Sun Microsystems — all Stanford.",
+      "Google (Brin & Page), NVIDIA (Jensen Huang), Netflix (Reed Hastings), Instagram (Mike Krieger), PayPal (Peter Thiel), Yahoo, Cisco, HP, Sun Microsystems: all Stanford.",
     source: "Stanford University Alumni Relations 2026",
     color: "red",
   },
@@ -904,19 +904,19 @@ export function getGdpFacts(locale: Locale) {
         ...GDP_FACTS[1],
         fact: "Cea mai mare economie pentru peste 100 de ani consecutivi",
         detail:
-          "Statele Unite sunt cea mai mare economie a lumii încă de la sfârșitul anilor 1800 — o domnie neîntreruptă de peste un secol.",
+          "Statele Unite sunt cea mai mare economie a lumii încă de la sfârșitul anilor 1800, având o perioadă de expansiune de peste un secol.",
       },
       {
         ...GDP_FACTS[2],
         fact: "Cheltuielile consumatorilor americani ≈ întregul PIB al Germaniei",
         detail:
-          "Consumul gospodăriilor americane este de aproximativ 19 trilioane de dolari — mai mare decât PIB-ul oricărei națiuni, cu excepția SUA.",
+          "Consumul gospodăriilor americane este de aproximativ 19 trilioane de dolari, mai mare decât PIB-ul oricărei națiuni, cu excepția SUA.",
       },
       {
         ...GDP_FACTS[3],
         fact: "12 dintre cele mai valoroase 20 de companii din lume sunt americane",
         detail:
-          "Apple, Microsoft, NVIDIA, Alphabet, Amazon, Meta, Berkshire Hathaway — elita corporativă globală este covârșitor americană.",
+          "Apple, Microsoft, NVIDIA, Alphabet, Amazon, Meta, Berkshire Hathaway: elita corporativă globală este covârșitor americană.",
       },
     ];
   }
@@ -931,19 +931,19 @@ export function getCapitalMarketsFacts(locale: Locale) {
         ...CAPITAL_MARKETS_FACTS[0],
         fact: "NYSE funcționează neîntrerupt din 1792",
         detail:
-          "Bursa din New York este cea mai mare bursă din lume după capitalizare — peste 33 de trilioane de dolari — și ancora financiară a lumii de peste 230 de ani.",
+          "Bursa din New York este cea mai mare bursă din lume după capitalizare (peste 33 de trilioane de dolari) și ancora financiară a lumii de peste 230 de ani.",
       },
       {
         ...CAPITAL_MARKETS_FACTS[1],
         fact: "Titlurile de Trezorerie SUA sunt reperul global pentru rata fără risc",
         detail:
-          "Orice model financiar de pe Pământ folosește randamentele Trezoreriei SUA ca bază pentru randamentele fără risc. Piața americană de obligațiuni are 27 de trilioane de dolari — cea mai adâncă și mai lichidă din istorie.",
+          "Orice model financiar de pe Pământ folosește randamentele Trezoreriei SUA ca bază pentru randamentele fără risc. Piața americană de obligațiuni are 27 de trilioane de dolari, fiind cea mai adâncă și mai lichidă din istorie.",
       },
       {
         ...CAPITAL_MARKETS_FACTS[2],
         fact: "NASDAQ listează cele mai valoroase companii tech din istorie",
         detail:
-          "Apple, Microsoft, NVIDIA, Alphabet, Amazon, Meta — toate listate pe o singură bursă americană. NASDAQ Composite a generat un randament de peste 4.500% din 1985.",
+          "Apple, Microsoft, NVIDIA, Alphabet, Amazon, Meta: toate listate pe o singură bursă americană. NASDAQ Composite a generat un randament de peste 4.500% din 1985.",
       },
     ];
   }
@@ -956,13 +956,13 @@ export function getVcFacts(locale: Locale) {
     return [
       {
         ...VC_FACTS[0],
-        fact: "Startup-urile americane de AI au strâns 85 mld. $ în 2025 — 65% din investițiile globale",
+        fact: "Startup-urile americane de AI au strâns 85 mld. $ în 2025, adică 65% din investițiile globale",
         detail:
-          "OpenAI, Anthropic și Scale AI — revoluția inteligenței artificiale este finanțată aproape în totalitate de capitalul și talentul american.",
+          "OpenAI, Anthropic și Scale AI: revoluția inteligenței artificiale este finanțată aproape în totalitate de capitalul și talentul american.",
       },
       {
         ...VC_FACTS[1],
-        fact: "659 de unicorni americani — aproximativ jumătate din totalul global",
+        fact: "659 de unicorni americani, aproximativ jumătate din totalul global",
         detail:
           'Un "unicorn" este o companie privată evaluată la cel puțin 1 miliard de dolari. America a construit mai mulți astfel de companii decât toate celelalte națiuni la un loc.',
       },
@@ -970,7 +970,7 @@ export function getVcFacts(locale: Locale) {
         ...VC_FACTS[2],
         fact: "Peste 55% dintre startup-urile americane de un miliard de dolari au fost fondate de imigranți",
         detail:
-          "Elon Musk, Sergey Brin, Andy Grove, Jensen Huang — deschiderea Americii către talent este o superputere economică de bază.",
+          "Elon Musk, Sergey Brin, Andy Grove, Jensen Huang: deschiderea Americii către talent este o superputere economică de bază.",
       },
     ];
   }
@@ -985,19 +985,19 @@ export function getDollarFacts(locale: Locale) {
         ...DOLLAR_FACTS[0],
         fact: "USD este păstrat în peste 57% din toate rezervele valutare globale",
         detail:
-          "Băncile centrale din toată lumea dețin împreună 6,8 trilioane de dolari în rezerve americane. Următoarea monedă — Euro — are doar 20%.",
+          "Băncile centrale din toată lumea dețin împreună 6,8 trilioane de dolari în rezerve americane. Următoarea monedă, Euro, are doar 20%.",
       },
       {
         ...DOLLAR_FACTS[1],
         fact: "Peste 40% din tranzacțiile globale SWIFT sunt în dolari americani",
         detail:
-          "Comerțul internațional, materiile prime, petrolul, gazele, aurul — toate sunt evaluate și decontate în dolari. Asta creează un avantaj structural extraordinar pentru economia americană.",
+          "Comerțul internațional, materiile prime, petrolul, gazele, aurul: toate sunt evaluate și decontate în dolari. Asta creează un avantaj structural extraordinar pentru economia americană.",
       },
       {
         ...DOLLAR_FACTS[2],
         fact: "Piețele globale de petrol sunt decontate aproape exclusiv în dolari",
         detail:
-          "De la acordurile petrodolarului din anii 1970, petrolul — cea mai tranzacționată marfă din lume — este denominat în USD în aproape toate piețele de pe Pământ.",
+          "De la acordurile petrodolarului din anii 1970, petrolul, cea mai tranzacționată marfă din lume, este denominat în USD în aproape toate piețele de pe Pământ.",
       },
     ];
   }
@@ -1106,30 +1106,30 @@ export function getEconomySubPages(locale: Locale) {
         ...ECONOMY_SUB_PAGES[0],
         title: "PIB și Dimensiune",
         description:
-          "Cea mai mare economie din istoria umană — 32,4 trilioane de dolari și în creștere",
+          "Cea mai mare economie din istoria umană (32,4 trilioane de dolari și în creștere)",
       },
       {
         ...ECONOMY_SUB_PAGES[1],
         title: "Piețe de Capital",
         description:
-          "NYSE, NASDAQ și Wall Street — coloana vertebrală financiară a civilizației",
+          "NYSE, NASDAQ și Wall Street: coloana vertebrală financiară a civilizației",
       },
       {
         ...ECONOMY_SUB_PAGES[2],
         title: "Startup-uri și VC",
-        description: "Silicon Valley și dincolo de ea — locul unde este finanțat viitorul",
+        description: "Silicon Valley și dincolo de ea: locul unde este finanțat viitorul",
       },
       {
         ...ECONOMY_SUB_PAGES[3],
         title: "Dominația Dolarului",
         description:
-          "Moneda de rezervă a lumii — sistemul de operare al finanțelor globale",
+          "Moneda de rezervă a lumii: sistemul de operare al finanțelor globale",
       },
       {
         ...ECONOMY_SUB_PAGES[4],
         title: "Comerț și Exporturi",
         description:
-          "America susține comerțul global — de la avioane la software",
+          "America susține comerțul global: de la avioane la software",
       },
     ];
   }
@@ -1206,7 +1206,7 @@ export function getVcExtendedFacts(locale: Locale) {
     return [
       {
         ...VC_EXTENDED_FACTS[0],
-        fact: "SUA acordă peste 350.000 de brevete anual — locul #1 în valoarea proprietății intelectuale",
+        fact: "SUA acordă peste 350.000 de brevete anual (locul #1 în valoarea proprietății intelectuale)",
         detail:
           "Inovația americană este protejată de cel mai robust sistem de proprietate intelectuală din lume, asigurând că inventatorii își pot monetiza descoperirile la nivel global.",
       },
@@ -1214,7 +1214,7 @@ export function getVcExtendedFacts(locale: Locale) {
         ...VC_EXTENDED_FACTS[1],
         fact: "Absolvenții Stanford au fondat companii evaluate la peste 5 trilioane de dolari",
         detail:
-          "Google, NVIDIA, Netflix, Instagram, PayPal, Yahoo, Cisco, HP, Sun Microsystems — toate au legături puternice cu Stanford.",
+          "Google, NVIDIA, Netflix, Instagram, PayPal, Yahoo, Cisco, HP, Sun Microsystems: toate au legături puternice cu Stanford.",
       },
       {
         id: "vc-quantum",
@@ -1530,8 +1530,8 @@ export const BOND_MARKET_COMPOSITION: BondMarketPoint[] = [
     value: 30.8,
     percentage: 61.0,
     color: "#E8B923",
-    description: "Bills, Notes & Bonds — the world's risk-free benchmark",
-    descriptionRo: "Bonuri, Note & Obligațiuni — reperul global fără risc",
+    description: "Bills, Notes & Bonds: the world's risk-free benchmark",
+    descriptionRo: "Bonuri, Note & Obligațiuni: reperul global fără risc",
   },
   {
     category: "Corporate Bonds",
@@ -1539,8 +1539,8 @@ export const BOND_MARKET_COMPOSITION: BondMarketPoint[] = [
     value: 11.7,
     percentage: 23.2,
     color: "#3B82F6",
-    description: "Investment grade & high yield — record issuance in 2025",
-    descriptionRo: "Investment grade & high yield — emisiuni record în 2025",
+    description: "Investment grade & high yield: record issuance in 2025",
+    descriptionRo: "Investment grade & high yield: emisiuni record în 2025",
   },
   {
     category: "Municipal Bonds",

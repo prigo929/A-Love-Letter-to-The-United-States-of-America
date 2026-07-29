@@ -472,7 +472,7 @@ export default async function EconomyPage() {
           <div className="relative mb-24 overflow-hidden h-[400px]">
             <Image
               src={SITE_IMAGES.economyDollar}
-              alt="US dollar bills — the world's reserve currency"
+              alt="US dollar bills, the world's reserve currency"
               fill
               className="object-cover macro-edge-fade opacity-70 grayscale-[0.2]"
               sizes="100vw"
@@ -526,7 +526,7 @@ export default async function EconomyPage() {
 
           <InfrastructureBand 
             imageSrc={SITE_IMAGES.economyPort} 
-            imageAlt="Container port — America's export machine"
+            imageAlt="Container port, America's export machine"
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>

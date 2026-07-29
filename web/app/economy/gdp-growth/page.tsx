@@ -67,7 +67,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "GDP & Scale | Economy",
   description:
-    "$32.4 trillion GDP — the United States has been the world's largest economy for over 130 years. A deep dive into American economic scale, resilience, and dominance.",
+    "$32.4 trillion GDP: the United States has been the world's largest economy for over 130 years. A deep dive into American economic scale, resilience, and dominance.",
   alternates: { canonical: "/economy/gdp-growth" },
 };
 
@@ -110,13 +110,13 @@ export default async function GdpGrowthPage() {
     locale === "ro"
       ? [
           { value: "80%", label: "din PIB provine din servicii cu valoare mare" },
-          { value: "$21T", label: "cheltuieli de consum — depășesc întreg PIB-ul Chinei" },
-          { value: "$900B+", label: "investiți anual în cercetare și dezvoltare — nr. 1 mondial" },
+          { value: "$21T", label: "cheltuieli de consum: depășesc întreg PIB-ul Chinei" },
+          { value: "$900B+", label: "investiți anual în cercetare și dezvoltare: nr. 1 mondial" },
         ]
       : [
           { value: "80%", label: "of GDP comes from high-value services" },
-          { value: "$21T", label: "in consumer spending — exceeds China's entire GDP" },
-          { value: "$900B+", label: "invested in R&D every year — #1 on Earth" },
+          { value: "$21T", label: "in consumer spending: exceeds China's entire GDP" },
+          { value: "$900B+", label: "invested in R&D every year: #1 on Earth" },
         ];
   const gdpInsights =
     locale === "ro"
@@ -124,24 +124,24 @@ export default async function GdpGrowthPage() {
           {
             fact: "Cel mai mare producător de energie de pe Pământ",
             detail:
-              "SUA produc mai mult petrol și gaze naturale decât orice altă națiune — un avantaj structural în costurile industriale și securitatea națională.",
+              "SUA produc mai mult petrol și gaze naturale decât orice altă națiune: un avantaj structural în costurile industriale și securitatea națională.",
           },
           {
             fact: "Productivitate pe oră în topul OCDE",
             detail:
-              "Măsurată prin PIB pe oră lucrată, America depășește constant Germania, Regatul Unit și Japonia — de aceea salariile americane sunt printre cele mai mari din lume (vezi [Salarii & Productivitate](/quality-of-life/wages)).",
+              "Măsurată prin PIB pe oră lucrată, America depășește constant Germania, Regatul Unit și Japonia: de aceea salariile americane sunt printre cele mai mari din lume (vezi [Salarii & Productivitate](/quality-of-life/wages)).",
           },
         ]
       : [
           {
             fact: "The largest energy producer on Earth",
             detail:
-              "The US pumps more oil and natural gas than any nation — a structural advantage in industrial costs and national security.",
+              "The US pumps more oil and natural gas than any nation: a structural advantage in industrial costs and national security.",
           },
           {
             fact: "Top-tier OECD productivity per hour",
             detail:
-              "Measured by GDP per hour worked, America consistently outperforms Germany, the UK, and Japan — which is why American wages are high (see [Wages & Productivity](/quality-of-life/wages)).",
+              "Measured by GDP per hour worked, America consistently outperforms Germany, the UK, and Japan: which is why American wages are high (see [Wages & Productivity](/quality-of-life/wages)).",
           },
         ];
   // These local arrays let the page translate or swap a few facts without
@@ -260,7 +260,7 @@ export default async function GdpGrowthPage() {
           productivityTitle: "Productivitatea Muncii în SUA",
           productivityBody: "Măsurat în PIB pe oră lucrată ajustat cu puterea de cumpărare (PPP), americanul mediu produce 97,10 $/oră, depășind Germania (93,8$), Franța (88,2$) și Marea Britanie (78,1$).",
           productivityChartTitle: "PIB pe oră lucrată (USD PPP, 2024)",
-          productivitySource: "Sursă: OECD.Stat — GDP per Hour Worked, date 2024",
+          productivitySource: "Sursă: OECD.Stat: GDP per Hour Worked, date 2024",
           debtTitle: "Datoria Publică ca Procent din PIB",
           debtBody: "Ca procent din PIB, datoria federală a SUA a ajuns la 122% în 2026, fiind susținută de capacitatea de emisiune în moneda de rezervă globală.",
           debtChartTitle: "Datoria Federală a SUA ca procent din PIB (1970–2026)",
@@ -377,7 +377,7 @@ export default async function GdpGrowthPage() {
           productivityTitle: "Labor Productivity Comparison",
           productivityBody: "Measured by GDP per hour worked at purchasing power parity, the average American worker produces $97.10/hour, leading Germany ($93.80), France ($88.20), and the UK ($78.10).",
           productivityChartTitle: "GDP per Hour Worked (USD PPP, 2024)",
-          productivitySource: "Source: OECD.Stat — GDP per Hour Worked, 2024 data",
+          productivitySource: "Source: OECD.Stat: GDP per Hour Worked, 2024 data",
           debtTitle: "Federal Debt as a Share of GDP",
           debtBody: "US federal debt as a percentage of GDP stands at 122% in 2026, backed by the ability to issue debt in the global reserve currency.",
           debtChartTitle: "U.S. Federal Debt as a Percentage of GDP (1970–2026)",

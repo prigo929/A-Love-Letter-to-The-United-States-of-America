@@ -52,7 +52,7 @@ export function WhyAmericaSection() {
               "Primul Amendament rămâne un reper unic: nicio altă națiune nu garantează libertatea de exprimare atât de ferm. Carta Drepturilor a consacrat libertăți umane fundamentale care preexistau statului, stabilind un model constituțional durabil.",
             ],
             imageAlt:
-              "Constituția Statelor Unite — cea mai longevivă constituție națională scrisă din istorie",
+              "Constituția Statelor Unite, cea mai longevivă constituție națională scrisă din istorie",
             facts: [
               {
                 id: "const-1",
@@ -68,7 +68,7 @@ export function WhyAmericaSection() {
               },
               {
                 id: "const-3",
-                fact: "27 de amendamente — dovada că sistemul poate evolua",
+                fact: "27 de amendamente, dovada că sistemul poate evolua",
                 source: "Arhivele Naționale",
                 color: "blue",
               },
@@ -84,7 +84,7 @@ export function WhyAmericaSection() {
               "Statele Unite atrag aproximativ 50% din investițiile globale de venture capital și concentrează 7 dintre primele 10 universități ale lumii. Această performanță reflectă un model economic axat pe investiții în inovare, mediu universitar de elită și libertate de inițiativă.",
             ],
             imageAlt:
-              "Microcip și circuite — simbol al dominației tehnologice americane",
+              "Microcip și circuite, simbol al dominației tehnologice americane",
             facts: [
               {
                 id: "tech-1",
@@ -94,13 +94,13 @@ export function WhyAmericaSection() {
               },
               {
                 id: "tech-2",
-                fact: "400+ Premii Nobel — mai multe decât orice altă națiune",
+                fact: "400+ Premii Nobel, mai multe decât orice altă națiune",
                 source: "Fundația Nobel",
                 color: "red",
               },
               {
                 id: "tech-3",
-                fact: "650+ companii unicorn — peste 50% din totalul global",
+                fact: "650+ companii unicorn, peste 50% din totalul global",
                 source: "Pitchbook 2024",
                 color: "blue",
               },
@@ -116,11 +116,11 @@ export function WhyAmericaSection() {
               'Theodore Roosevelt a numit conservarea acestui pământ "cel mai mare dar pe care o generație îl poate oferă urmașilor". America a concretizat această viziune prin crearea primului sistem de parcuri naționale din lume, protejând 85 de milioane de acri în 63 de parcuri naționale.',
             ],
             imageAlt:
-              "Parc național american — bijuterie a sistemului de parcuri naționale din SUA",
+              "Parc național american, bijuterie a sistemului de parcuri naționale din SUA",
             facts: [
               {
                 id: "nat-1",
-                fact: "63 de parcuri naționale — 85 de milioane de acri protejați",
+                fact: "63 de parcuri naționale, 85 de milioane de acri protejați",
                 source: "Serviciul Parcurilor Naționale",
                 color: "gold",
               },
@@ -148,11 +148,11 @@ export function WhyAmericaSection() {
               "Dincolo de echipamente și efective, forța militară americană menține ordinea internațională bazată pe reguli, libertatea căilor maritime comerciale și alianțele de securitate ale democrațiilor lumii.",
             ],
             imageAlt:
-              "Avion cargo al Forțelor Aeriene SUA — simbol al razei de acțiune americane",
+              "Avion cargo al Forțelor Aeriene SUA, simbol al razei de acțiune americane",
             facts: [
               {
                 id: "mil-1",
-                fact: "11 grupuri de atac cu portavion — mai multe decât restul lumii la un loc",
+                fact: "11 grupuri de atac cu portavion, mai multe decât restul lumii la un loc",
                 source: "IISS 2024",
                 color: "gold",
               },
@@ -164,7 +164,7 @@ export function WhyAmericaSection() {
               },
               {
                 id: "mil-3",
-                fact: "800+ baze în 80+ țări — rază de acțiune cu adevărat globală",
+                fact: "800+ baze în 80+ țări: rază de acțiune cu adevărat globală",
                 source: "DoD",
                 color: "blue",
               },
