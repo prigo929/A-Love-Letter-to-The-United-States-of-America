@@ -10,6 +10,7 @@ import { FourFoodsExplorer } from "@/components/culture/FourFoodsExplorer";
 import { SevenDessertsExplorer } from "@/components/culture/SevenDessertsExplorer";
 import { FastFoodBigThree } from "@/components/culture/FastFoodBigThree";
 import { FoodEvolutionExplorer } from "@/components/culture/FoodEvolutionExplorer";
+import { ChipFlavorCanon } from "@/components/culture/ChipFlavorCanon";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 
@@ -335,6 +336,28 @@ export default async function FoodAndDrinksPage() {
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
             <FastFoodBigThree />
+          </div>
+        </section>
+
+        {/* CREAM: The chip flavor canon (interactive) */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-24 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-14">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "PATRU AROME, PATRU POVEȘTI" : "FOUR FLAVORS, FOUR STORIES"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">
+                {isRo ? "CANONUL AROMELOR DE CHIPS" : "THE CHIP FLAVOR CANON"}
+              </h2>
+              <p className="mx-auto mt-6 max-w-2xl font-editorial text-lg text-[#0C0907]/60">
+                {isRo
+                  ? "Clasic, smântână și ceapă, barbecue, sare și oțet — cele patru arome dominante par firești în America, dar sunt profund arbitrare (în Olanda domină ardeiul, în Asia creveții). Fiecare ascunde o poveste despre evoluția culturală a Americii. Apasă pe oricare."
+                  : "Classic, sour cream & onion, barbecue, salt & vinegar — the four dominant American flavors feel natural here, but they're deeply arbitrary (Holland runs on pepper, much of Asia on shrimp). Each one hides a tale of America's cultural evolution. Click any of them."}
+              </p>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+            <ChipFlavorCanon />
           </div>
         </section>
 
